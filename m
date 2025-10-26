@@ -4,80 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FBA3CCD193
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Oct 2025 05:14:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E88ADCCF9E5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Oct 2025 07:30:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TVGPySEnxjFy2QOQpcAfInwnpkDXb9sJXNYBkhDhx/c=; b=35Ra1g5EFVFwRzFOycxJzDQyHm
-	9COmdRTULNWzzPcl465qdeM/k3puPF05wtBvLZBVwHfIkSBkEF6u2GPTVwKZVlmn0gTVRh8L2Yice
-	2aBs5sNEQNvk0Xi4F/iqgKqLJvlHr6o2VBLJOM8UflqzDWKhpWbzK0fMuzT7AZ8cgqaxF82h0TiOz
-	XMOI1XMRj5FIi8J7RbcvuOJHxedRmVhGpdK0CgQygka2fr+STgmp3A65BJrxnABRWfHoJceWRtWgL
-	sX+7kskG6bLuxDkML8jL4uGQU33EQUr3JlWQQ84dFQmmVe5qt0oQ/xPsPDCSq0lt7YW9hgvHVNAVl
-	uXNFgSjA==;
+	bh=sHIz0pXObPUkMBRb/Fz5nEm2cV7kwuybKTa2FpwxhYA=; b=snyv3rtl2GrjmyK6kqLgHtpQ/2
+	XAx9ZAH59+XK1gsEm2Ksl6T61L9u/+oLZediAf3HDQziJW74rcGDqn+u+ID0VDzi8+If3k4ZPWkOX
+	NMhAufqy/qQrNzvBGYGKsg5Hv65SFvp20nUbsB5QzMNuyWJPWOdu77kItsL2bSo2een72tvZoG0Cf
+	H8gnCI9JYD9SHl1ZvwV1cY91KHfjE0dL4Vpav1K7GVlkYw4JGDjGqJZ7A86jkUN1KWPwVKTzMY9Cl
+	bbJ01swA0T5Igbd4Z2WB3h5QIpLm1obO1Noh15/14EusS0oqpWoLHSS9c2L6ImPSUfFW5K76NFtub
+	oPfZnDtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCt5h-0000000C1TZ-3YxU;
-	Sun, 26 Oct 2025 05:14:53 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1vCvCZ-0000000C8FQ-1KnR;
+	Sun, 26 Oct 2025 07:30:07 +0000
+Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vCt5e-0000000C1T6-3HXW;
-	Sun, 26 Oct 2025 05:14:52 +0000
+	id 1vCvCV-0000000C8Ew-3aAC;
+	Sun, 26 Oct 2025 07:30:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1761455690; x=1792991690;
+  t=1761463804; x=1792999804;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=gKJE14w1KDbJqmE7/dHsKdynDf2xulvE3IRzaIW6bj4=;
-  b=dkjTTV+T/qLsrQrcuRto5ZwAnVm3UAIIB/JPhFgLXrPdo+idq981jKW7
-   a4S4C4Fln2L0dJQi3NltYqKBHBSffYS7jkankFxG4vr93XGdOZvEcGPwA
-   DkY2umU7iDf6tHJqzE2HJJfDlEol97keT3AMLFhgpSlW69TJuifckRXub
-   5AI7kVbm0Qztd/9FAHGhE/cXI3Md6FeOpjEJyqTYtgmqgWPtSXjjaVwLV
-   UBIyVao61BjArkdKMDyG/5Cv7E4r5alZVDvFGBb2hceGU5jcxr9u2eAlf
-   Vg+dsVVj8FN84vvYUjhdaxzYtZTkLRVDhwQuI9o5OmR0/a9b3pQBypo7c
-   Q==;
-X-CSE-ConnectionGUID: o1uogyzHS+K/ZDtPJtfqcg==
-X-CSE-MsgGUID: /HVxjU/2S0yx6wENsrxCWw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="74919508"
+  bh=htiWAq6iMZXxfabupy1JM4kiUVfrOnJOCEMU/JiJmzQ=;
+  b=cmqO2er71GR+w2WJnf/KEXQycwu4Ir/P1HFi7QPu5M6v+TIWFUHoxjEB
+   +dMlWe3W1euuNFbJjIxNq5cRhP1hyGcnAaEVlitOfAseGLs0QIYAIG7ci
+   vjV5M7OFmoCFNlIOTkswYLg+h5KWzzihZosqQSa3UGKzoIqueGftDh8hA
+   saECgoP5z5nSFn/WGpXcg/T6kMeFlHBgogTr9v7USIjAoMl1WpJz7Mb0F
+   RzK0UdWHc9sJ7gQa+gaQHbx/NOyjbIai3FA4n7p3Z3aSWPjI2maZUve+k
+   BaGjDSIAkuMysh+9cyTjWxZWGc8ZwKAfyrk8OgqYFIsn6t+uOhuPC5JL4
+   w==;
+X-CSE-ConnectionGUID: VIIK7nKtQ7+8sT3e3wJs1g==
+X-CSE-MsgGUID: zmuqMGOETcuE46OBqVojQw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11586"; a="63613086"
 X-IronPort-AV: E=Sophos;i="6.19,256,1754982000"; 
-   d="scan'208";a="74919508"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Oct 2025 22:14:45 -0700
-X-CSE-ConnectionGUID: 3IfibMsMR/SdoNhlTH/RrA==
-X-CSE-MsgGUID: x7CYNeabSyG2So3RbmdNKA==
+   d="scan'208";a="63613086"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Oct 2025 00:30:02 -0700
+X-CSE-ConnectionGUID: IOhbygVPQmG+sECxKbCJdQ==
+X-CSE-MsgGUID: FpsA08v6Q5KZpnC9I5OBIw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.19,256,1754982000"; 
-   d="scan'208";a="184839789"
+   d="scan'208";a="189155119"
 Received: from lkp-server02.sh.intel.com (HELO 66d7546c76b2) ([10.239.97.151])
-  by orviesa008.jf.intel.com with ESMTP; 25 Oct 2025 22:14:42 -0700
+  by fmviesa005.fm.intel.com with ESMTP; 26 Oct 2025 00:29:57 -0700
 Received: from kbuild by 66d7546c76b2 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1vCt5F-000Fty-0a;
-	Sun, 26 Oct 2025 05:14:34 +0000
-Date: Sun, 26 Oct 2025 13:13:51 +0800
+	id 1vCvCN-000FxV-0H;
+	Sun, 26 Oct 2025 07:29:55 +0000
+Date: Sun, 26 Oct 2025 15:29:29 +0800
 From: kernel test robot <lkp@intel.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	alexandre.belloni@bootlin.com
-Cc: oe-kbuild-all@lists.linux.dev, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, linux-rtc@vger.kernel.org,
+	sboyd@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, mturquette@baylibre.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, laura.nao@collabora.com,
+	nfraprado@collabora.com, wenst@chromium.org,
+	y.oudjana@protonmail.com, linux-clk@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v1 2/2] rtc: Add support for MT6685 Clock IC's RTC over
- SPMI
-Message-ID: <202510261223.NRLximA4-lkp@intel.com>
-References: <20251024083318.25890-3-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v1 7/7] clk: mediatek: Add support for MT6685 PM/Clock IC
+ Clock Controller
+Message-ID: <202510261450.oYPrwZwR-lkp@intel.com>
+References: <20251024083301.25845-8-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251024083318.25890-3-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20251024083301.25845-8-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251025_221450_888020_5221C04E 
-X-CRM114-Status: GOOD (  16.26  )
+X-CRM114-CacheID: sfid-20251026_003003_910502_05ECFD75 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,122 +98,87 @@ Hi AngeloGioacchino,
 
 kernel test robot noticed the following build errors:
 
-[auto build test ERROR on abelloni/rtc-next]
-[also build test ERROR on robh/for-next linus/master v6.18-rc2 next-20251024]
+[auto build test ERROR on clk/clk-next]
+[also build test ERROR on linus/master v6.18-rc2 next-20251024]
 [If your patch is applied to the wrong git tree, kindly drop us a note.
 And when submitting patch, we suggest to use '--base' as documented in
 https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/dt-bindings-rtc-Add-MediaTek-MT6685-PM-Clock-IC-Real-Time-Clock/20251024-164423
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/abelloni/linux.git rtc-next
-patch link:    https://lore.kernel.org/r/20251024083318.25890-3-angelogioacchino.delregno%40collabora.com
-patch subject: [PATCH v1 2/2] rtc: Add support for MT6685 Clock IC's RTC over SPMI
-config: sparc64-randconfig-r062-20251026 (https://download.01.org/0day-ci/archive/20251026/202510261223.NRLximA4-lkp@intel.com/config)
-compiler: sparc64-linux-gcc (GCC) 9.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251026/202510261223.NRLximA4-lkp@intel.com/reproduce)
+url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/clk-mediatek-Split-out-registration-from-mtk_clk_register_gates/20251024-164213
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
+patch link:    https://lore.kernel.org/r/20251024083301.25845-8-angelogioacchino.delregno%40collabora.com
+patch subject: [PATCH v1 7/7] clk: mediatek: Add support for MT6685 PM/Clock IC Clock Controller
+config: arm-allmodconfig (https://download.01.org/0day-ci/archive/20251026/202510261450.oYPrwZwR-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 15.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251026/202510261450.oYPrwZwR-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202510261223.NRLximA4-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202510261450.oYPrwZwR-lkp@intel.com/
 
-All error/warnings (new ones prefixed by >>):
+All errors (new ones prefixed by >>):
 
-   drivers/rtc/rtc-mt6685.c: In function 'rtc_mt6685_probe':
-   drivers/rtc/rtc-mt6685.c:380:13: error: implicit declaration of function 'devm_spmi_subdevice_alloc_and_add' [-Werror=implicit-function-declaration]
-     380 |  sub_sdev = devm_spmi_subdevice_alloc_and_add(dev, sparent);
-         |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> drivers/rtc/rtc-mt6685.c:380:11: warning: assignment to 'struct spmi_subdevice *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
-     380 |  sub_sdev = devm_spmi_subdevice_alloc_and_add(dev, sparent);
-         |           ^
-   In file included from drivers/rtc/rtc-mt6685.c:20:
->> drivers/rtc/rtc-mt6685.c:397:51: error: dereferencing pointer to incomplete type 'struct spmi_subdevice'
-     397 |  rtc->regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mt6685_rtc_regmap_config);
-         |                                                   ^~
-   include/linux/regmap.h:775:6: note: in definition of macro '__regmap_lockdep_wrapper'
-     775 |   fn(__VA_ARGS__, &_key,     \
-         |      ^~~~~~~~~~~
-   drivers/rtc/rtc-mt6685.c:397:16: note: in expansion of macro 'devm_regmap_init_spmi_ext'
-     397 |  rtc->regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mt6685_rtc_regmap_config);
-         |                ^~~~~~~~~~~~~~~~~~~~~~~~~
-   cc1: some warnings being treated as errors
+   drivers/clk/mediatek/clk-mtk-spmi.c: In function 'mtk_spmi_clk_simple_probe':
+>> drivers/clk/mediatek/clk-mtk-spmi.c:48:20: error: implicit declaration of function 'devm_spmi_subdevice_alloc_and_add' [-Wimplicit-function-declaration]
+      48 |         sub_sdev = devm_spmi_subdevice_alloc_and_add(&pdev->dev, sparent);
+         |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>> drivers/clk/mediatek/clk-mtk-spmi.c:48:18: error: assignment to 'struct spmi_subdevice *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+      48 |         sub_sdev = devm_spmi_subdevice_alloc_and_add(&pdev->dev, sparent);
+         |                  ^
+   In file included from drivers/clk/mediatek/clk-mtk-spmi.c:16:
+>> drivers/clk/mediatek/clk-mtk-spmi.c:52:53: error: invalid use of undefined type 'struct spmi_subdevice'
+      52 |         regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mtk_spmi_clk_regmap_config);
+         |                                                     ^~
+   include/linux/regmap.h:775:20: note: in definition of macro '__regmap_lockdep_wrapper'
+     775 |                 fn(__VA_ARGS__, &_key,                                  \
+         |                    ^~~~~~~~~~~
+   drivers/clk/mediatek/clk-mtk-spmi.c:52:18: note: in expansion of macro 'devm_regmap_init_spmi_ext'
+      52 |         regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mtk_spmi_clk_regmap_config);
+         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-vim +397 drivers/rtc/rtc-mt6685.c
+vim +/devm_spmi_subdevice_alloc_and_add +48 drivers/clk/mediatek/clk-mtk-spmi.c
 
-   358	
-   359	static int rtc_mt6685_probe(struct platform_device *pdev)
-   360	{
-   361		struct regmap_config mt6685_rtc_regmap_config = {
-   362			.reg_bits = 16,
-   363			.val_bits = 8,
-   364			.max_register = 0x60,
-   365			.fast_io = true,
-   366			.use_single_read = true,
-   367			.use_single_write = true,
-   368		};
-   369		struct device *dev = &pdev->dev;
-   370		struct spmi_subdevice *sub_sdev;
-   371		struct spmi_device *sparent;
-   372		struct mt6685_rtc *rtc;
-   373		int ret;
-   374	
-   375		rtc = devm_kzalloc(dev, sizeof(struct mt6685_rtc), GFP_KERNEL);
-   376		if (!rtc)
-   377			return -ENOMEM;
-   378	
-   379		sparent = to_spmi_device(dev->parent);
- > 380		sub_sdev = devm_spmi_subdevice_alloc_and_add(dev, sparent);
-   381		if (IS_ERR(sub_sdev))
-   382			return PTR_ERR(sub_sdev);
-   383	
-   384		ret = of_property_read_u32(pdev->dev.of_node, "reg",
-   385					   &mt6685_rtc_regmap_config.reg_base);
-   386		if (ret)
-   387			return ret;
-   388	
-   389		rtc->irq = platform_get_irq(pdev, 0);
-   390		if (rtc->irq < 0)
-   391			return rtc->irq;
-   392	
-   393		rtc->mclk = devm_clk_get(dev, 0);
-   394		if (IS_ERR(rtc->mclk))
-   395			return PTR_ERR(rtc->mclk);
-   396	
- > 397		rtc->regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mt6685_rtc_regmap_config);
-   398		if (IS_ERR(rtc->regmap))
-   399			return PTR_ERR(rtc->regmap);
-   400	
-   401		rtc->rdev = devm_rtc_allocate_device(dev);
-   402		if (IS_ERR(rtc->rdev))
-   403			return PTR_ERR(rtc->rdev);
-   404	
-   405		platform_set_drvdata(pdev, rtc);
-   406	
-   407		/* Clock is required to auto-synchronize IRQ enable to RTC */
-   408		ret = clk_prepare_enable(rtc->mclk);
-   409		if (ret)
-   410			return ret;
-   411	
-   412		ret = devm_request_threaded_irq(&pdev->dev, rtc->irq, NULL,
-   413						rtc_mt6685_irq_handler_thread,
-   414						IRQF_ONESHOT | IRQF_TRIGGER_HIGH,
-   415						"mt6685-rtc", rtc);
-   416		clk_disable_unprepare(rtc->mclk);
-   417		if (ret)
-   418			return dev_err_probe(&pdev->dev, ret, "Cannot request alarm IRQ");
-   419	
-   420		device_init_wakeup(&pdev->dev, true);
-   421	
-   422		rtc->rdev->ops = &rtc_mt6685_ops;
-   423		rtc->rdev->range_min = RTC_TIMESTAMP_BEGIN_1900;
-   424		rtc->rdev->range_max = mktime64(2027, 12, 31, 23, 59, 59);
-   425		rtc->rdev->start_secs = mktime64(1968, 1, 1, 0, 0, 0);
-   426		rtc->rdev->set_start_time = true;
-   427	
-   428		return devm_rtc_register_device(rtc->rdev);
-   429	}
-   430	
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  21  
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  22  int mtk_spmi_clk_simple_probe(struct platform_device *pdev)
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  23  {
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  24  	struct regmap_config mtk_spmi_clk_regmap_config = {
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  25  		.reg_bits = 16,
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  26  		.val_bits = 8,
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  27  		.fast_io = true
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  28  	};
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  29  	struct device_node *node = pdev->dev.of_node;
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  30  	const struct mtk_spmi_clk_desc *mscd;
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  31  	struct spmi_subdevice *sub_sdev;
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  32  	struct spmi_device *sparent;
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  33  	struct regmap *regmap;
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  34  	int ret;
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  35  
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  36  	ret = of_property_read_u32(node, "reg", &mtk_spmi_clk_regmap_config.reg_base);
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  37  	if (ret)
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  38  		return ret;
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  39  
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  40  	/* If the max_register was not declared the pdata is not valid */
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  41  	mscd = device_get_match_data(&pdev->dev);
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  42  	if (mscd->max_register == 0)
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  43  		return -EINVAL;
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  44  
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  45  	mtk_spmi_clk_regmap_config.max_register = mscd->max_register;
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  46  
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  47  	sparent = to_spmi_device(pdev->dev.parent);
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24 @48  	sub_sdev = devm_spmi_subdevice_alloc_and_add(&pdev->dev, sparent);
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  49  	if (IS_ERR(sub_sdev))
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  50  		return PTR_ERR(sub_sdev);
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  51  
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24 @52  	regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mtk_spmi_clk_regmap_config);
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  53  	if (IS_ERR(regmap))
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  54  		return PTR_ERR(regmap);
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  55  
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  56  	return mtk_clk_simple_probe_internal(pdev, node, mscd->desc, regmap);
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  57  }
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  58  EXPORT_SYMBOL_GPL(mtk_spmi_clk_simple_probe);
+0986bdc04bd40e AngeloGioacchino Del Regno 2025-10-24  59  
 
 -- 
 0-DAY CI Kernel Test Service
