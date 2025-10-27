@@ -4,94 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F637CCF9E5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 19:29:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CE7DCCF9E5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 19:32:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f9EDrPJeYdZjLKyR1XWnZR+LIS5FB0S1PQr/AgxT/ps=; b=HeiAhZh+0vjDmRJ+6vSy4jahgP
-	B4B/MexXa/2FWwWVDnoYABzEpDPVyVi6gJzHkb5zwh8JCxrOE7rShOPOBHlvDTB5QSbo63hi8ktUC
-	U/Lmrp6YuIe+bqsfYp2u+0fgM5EweohRD/V4ETXIAg/LLEELYQm1GZZPXI8P4RI7cD1HpUO8i07or
-	Dbz6T+8AZ4PKsXIcpiSYPTL3+HpJ87YTCp14fndymyNdo/UU1WwZkLkLaZvMA5IjSOMERbz2yeaNS
-	vkne76luZwnt+QyCrcqTT7tOkzke5DyBjqbRRTFXkcbQkCmA0Viy/ahxB+X27/KVllT3YoTI72hzS
-	PmE2XHJA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ROb6l0esQuEFMG0ONS9trNOcFqKanMbtjSg64V55ITE=; b=MDfOc/t6+fANxgsug0YFGuffge
+	BWAd3gFEfeVs4aV5eWOsvOVsUUw7DYONr5C5vAeXMmGuQPK/CH2TljpEBAaK9DlvWHyMdPis0zgrM
+	TS6tJbeFfKjyupUGhQwymBKAkeY0qdXnuNkl0UfeGeCpGGS/nbeM46hZ8FFPRp+Y7VOcNG2wqiFyk
+	odNWntXaZASWW3QvxOPLLw37jDgN7cfB/8/BuIx2KEiNzpDbtiwAeCl3WfTFXnJzsPGFQOYAD30E1
+	f6JpK6Yex8/7wEpaz4ES6CrQKfD7E+5x7nGcZSuOX78XdL4HzrmfbQWUtlcJT1WpzYsmbx7HW9EZT
+	C2T2bqpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDSua-0000000EfXb-24TO;
-	Mon, 27 Oct 2025 19:29:48 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1vDSx4-0000000Efzr-1PXB;
+	Mon, 27 Oct 2025 19:32:22 +0000
+Received: from mx13.kaspersky-labs.com ([91.103.66.164])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDSuW-0000000EfTC-3C0t
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Oct 2025 19:29:46 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-471191ac79dso52902175e9.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Oct 2025 12:29:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1761593382; x=1762198182; darn=lists.infradead.org;
-        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
-         :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=f9EDrPJeYdZjLKyR1XWnZR+LIS5FB0S1PQr/AgxT/ps=;
-        b=0rBIpzjOtTXehKmZK+9Jfu7JBu++MCogLO6K4i9NrjGVjn0Yeacvc5XaESPYQ4g55h
-         O6eoNEPXAuDi8POx4NymOsiKt+pmjT0DFU9OWJQJSZg8+B+QYYFb9pJfhfzINGa5rslR
-         GIbrD8taTUgt/ftr1wtaGC0br4AHd6Qn5gBfGx/qIjJHCTMF0kL33pXXZ+iZxMK1/whA
-         TK2kPMqbQ89HnohNZil6P5v5fWm7JFe/ieDDUWQtXo7QDA2kSn5SiuPFwjaglp1/jLxg
-         HpEdxNvuiQuP+bxGpgfV4KRK5I71CKtB7G6nrh9qiuJC+xcN8wPc4Fmjs3X5nhC/h3SJ
-         wU9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761593382; x=1762198182;
-        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
-         :subject:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=f9EDrPJeYdZjLKyR1XWnZR+LIS5FB0S1PQr/AgxT/ps=;
-        b=ENKIu0fE2hE+KvGhd0PC5n2vGAFX0/UUnKH5WJWyMkrJrGqAMNg/SVS4Nrx0S7PABy
-         ldopb7isEfHmzSXrgIKeEdxmB1kWVXE9jKp35T0YuQvB59+uWl+iXHnMxmzyLOKS7LdV
-         RRLUr3SgWfedtTkyxxC0sYy10BwdDjmiKeD3NIIOci5sBbM2SgLODJZyJMFUtNujgkd2
-         zNy0USac0mweogQSR9vTuD9RoxuVmfmoE3b88hyfNOm6eaCAcqbZtZjwOldPRhWYZT6E
-         obB2awxQl3a8HoUILLA/ZGkd1ZJuHpuH9RzL1M/3tZ63QglB/uX3FeLWOroy19R16rag
-         gC5w==
-X-Forwarded-Encrypted: i=1; AJvYcCWEqqcubvBhc9MvTLb1VRTERI65MZWVSoZvm28+rOvaj/SDPKl65AyObm4Vx6G2RQTLZ5Sxz45pMrHojuWgUQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxo/K9nTsky9z/ytaojq9E7CzHi2eNPkxpV0UQGg75uBf53FEO/
-	B58xDxPNhE8/IdsnlUBzyjTnrMTDk4sqkaCEUMv5ylihlQt4Hx6K8svTmGRqD8tASB8=
-X-Gm-Gg: ASbGncty4r5+lfEKRcBhaXMK+bC6JrDQlo4l1tlnFUlZrpEiz5Gd2ife3IEIkRVxMIW
-	Ba2qqmfEyVqnuBFTevhJnPjSrhGLdI3rRge7QKIW7QYMjLVWMkRbSSXixdTjXjyQyrJOtBCvn6C
-	IGAlK90uU+pX8vNUK8YGJr5z/Wgylg98+JY/Y74gFV2EMVy2QYQj0ikAhIeCUZDwS6aIjiFntyI
-	uy+rmOoGbgR1Cw2YGDkUXSpQS0hnBimQWGJ8APqD5iTiiySsrGjylnPOh11Q0PqxIS7uZUkxdY3
-	zgb2adER3J1K8HVXOn4XaZMnT9BMC8d933PZ1eykPy3sLueF7uHfPtC4TYuVke7PBXVaOBkLQFc
-	aRnsy06fpOVEXal4cov+jIuWdW+H0ZJcFMmKfi5pxKNnwZQvwgGuIX98PxA8TANYwSQFm0h6cLK
-	UR/1ZRt4uKRdBMn+k=
-X-Google-Smtp-Source: AGHT+IGocaODkva4Vi+tf+oBbjpK958/QSI3Hxe2akrbLW5jasCr9HasaaEHo3kz7/sJopvmcF8bNw==
-X-Received: by 2002:a05:600c:8488:b0:477:bb0:7528 with SMTP id 5b1f17b1804b1-47717e4df87mr6180765e9.22.1761593381986;
-        Mon, 27 Oct 2025 12:29:41 -0700 (PDT)
-Received: from [192.168.4.57] ([79.79.193.116])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-429952b7b6fsm16002057f8f.1.2025.10.27.12.29.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Oct 2025 12:29:40 -0700 (PDT)
-Message-ID: <ac27d9b1da68746c62c03047fd7896e2303ef1fd.camel@ndufresne.ca>
-Subject: Re: [PATCH 0/3] media: mediatek: fix VPU device leaks on probe
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Johan Hovold <johan@kernel.org>, Minghsiu Tsai
- <minghsiu.tsai@mediatek.com>,  Houlong Wei <houlong.wei@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin	
- <tiffany.lin@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger	
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, Hans Verkuil
- <hans.verkuil@cisco.com>, 	linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org, 	linux-kernel@vger.kernel.org
-Date: Mon, 27 Oct 2025 19:29:39 +0000
-In-Reply-To: <aP91nfnpShIhXcVQ@hovoldconsulting.com>
-References: <20250924133552.28841-1-johan@kernel.org>
-	 <aP91nfnpShIhXcVQ@hovoldconsulting.com>
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-D/OargbqI2TIFLsZob0G"
-User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
+	id 1vDSwz-0000000EfwH-3Kn8;
+	Mon, 27 Oct 2025 19:32:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kaspersky.com;
+	s=mail202505; t=1761593525;
+	bh=ROb6l0esQuEFMG0ONS9trNOcFqKanMbtjSg64V55ITE=;
+	h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type;
+	b=Kkm2QTIP+APmb1lWTFbiC33JTqXdsEvG5B3i/ZuhOW1nQdrko/2ij7dr8dtatYgfy
+	 hqzdR6UpYdSq7hibshNSU4nx2gE6s9EeDVroaRNghUohTqxNfIqbjooJbYXuG0OyTZ
+	 hz93vnvB7bG+6aXqEmjLzyVMNjiG+29JuMQbRqf9g+iDsgshQkNoWxeIog59KMp8Ah
+	 sDX10he711NrqQLUjLQIrlcx/3EWm+ZrHpNHik3kPdrTOjNlkmzj0+szcduuBXmIxG
+	 BZ2HLjJyAwhFY4iLsYGf8aCjnoF8Qzj/mAv54QnFg9ddVfxjOL2WToWL2x/W4btNNc
+	 3Lwalcp2sD2QQ==
+Received: from relay13.kaspersky-labs.com (localhost [127.0.0.1])
+	by relay13.kaspersky-labs.com (Postfix) with ESMTP id 3B5C43E273E;
+	Mon, 27 Oct 2025 22:32:05 +0300 (MSK)
+Received: from mail-hq2.kaspersky.com (unknown [91.103.66.200])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(Client CN "mail-hq2.kaspersky.com", Issuer "Kaspersky MailRelays CA G3" (verified OK))
+	by mailhub13.kaspersky-labs.com (Postfix) with ESMTPS id 7AAAB3E26EC;
+	Mon, 27 Oct 2025 22:32:04 +0300 (MSK)
+Received: from zhigulin-p.avp.ru (10.16.104.190) by HQMAILSRV2.avp.ru
+ (10.64.57.52) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Mon, 27 Oct
+ 2025 22:32:03 +0300
+From: Pavel Zhigulin <Pavel.Zhigulin@kaspersky.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+CC: Pavel Zhigulin <Pavel.Zhigulin@kaspersky.com>, Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>, <linux-usb@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>, <lvc-project@linuxtesting.org>
+Subject: [PATCH] usb: mtu3: fix possible NULL pointer dereference in ep0_rx_state()
+Date: Mon, 27 Oct 2025 22:31:50 +0300
+Message-ID: <20251027193152.3906497-1-Pavel.Zhigulin@kaspersky.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.16.104.190]
+X-ClientProxiedBy: HQMAILSRV2.avp.ru (10.64.57.52) To HQMAILSRV2.avp.ru
+ (10.64.57.52)
+X-KSE-ServerInfo: HQMAILSRV2.avp.ru, 9
+X-KSE-AntiSpam-Interceptor-Info: scan successful
+X-KSE-AntiSpam-Version: 6.1.1, Database issued on: 10/27/2025 19:22:10
+X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
+X-KSE-AntiSpam-Method: none
+X-KSE-AntiSpam-Rate: 0
+X-KSE-AntiSpam-Info: Lua profiles 197495 [Oct 27 2025]
+X-KSE-AntiSpam-Info: Version: 6.1.1.11
+X-KSE-AntiSpam-Info: Envelope from: Pavel.Zhigulin@kaspersky.com
+X-KSE-AntiSpam-Info: LuaCore: 72 0.3.72
+ 80ff96170b649fb7ebd1aa4cb544c36c109810bd
+X-KSE-AntiSpam-Info: {Tracking_cluster_exceptions}
+X-KSE-AntiSpam-Info: {Tracking_real_kaspersky_domains}
+X-KSE-AntiSpam-Info: {Tracking_uf_ne_domains}
+X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
+X-KSE-AntiSpam-Info: zhigulin-p.avp.ru:7.1.1,5.0.1;kaspersky.com:7.1.1,5.0.1;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1;127.0.0.199:7.1.2
+X-KSE-AntiSpam-Info: {Tracking_white_helo}
+X-KSE-AntiSpam-Info: FromAlignment: s
+X-KSE-AntiSpam-Info: Rate: 0
+X-KSE-AntiSpam-Info: Status: not_detected
+X-KSE-AntiSpam-Info: Method: none
+X-KSE-Antiphishing-Info: Clean
+X-KSE-Antiphishing-ScanningType: Deterministic
+X-KSE-Antiphishing-Method: None
+X-KSE-Antiphishing-Bases: 10/27/2025 19:24:00
+X-KSE-AttachmentFiltering-Interceptor-Info: no applicable attachment filtering
+ rules found
+X-KSE-Antivirus-Interceptor-Info: scan successful
+X-KSE-Antivirus-Info: Clean, bases: 10/27/2025 6:00:00 PM
+X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
+X-KSE-AttachmentFiltering-Interceptor-Info: no applicable attachment filtering
+ rules found
+X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
+X-KSMG-AntiPhishing: NotDetected
+X-KSMG-AntiSpam-Interceptor-Info: not scanned
+X-KSMG-AntiSpam-Status: not scanned, disabled by settings
+X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.1.1.8310, bases: 2025/10/27 14:30:00 #27802224
+X-KSMG-AntiVirus-Status: NotDetected, skipped
+X-KSMG-LinksScanning: NotDetected
+X-KSMG-Message-Action: skipped
+X-KSMG-Rule-ID: 52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_122945_091285_CE1A2956 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20251027_123218_439223_2B529196 
+X-CRM114-Status: GOOD (  15.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,42 +122,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The function 'ep0_rx_state()' accessed 'mreq->request' before verifying
+that mreq was valid. If 'next_ep0_request()' returned NULL, this could
+lead to a NULL pointer dereference. The return value of
+'next_ep0_request()' is checked in every other code path except
+here. It appears that the intended 'if (mreq)' check was mistakenly
+written as 'if (req)', since the req pointer cannot be NULL when mreq
+is not NULL.
 
---=-D/OargbqI2TIFLsZob0G
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Initialize 'mreq' and 'req' to NULL by default, and switch 'req'
+NULL-checking to 'mreq' non-NULL check to prevent invalid memory access.
 
-Hi,
+Found by Linux Verification Center (linuxtesting.org) with SVACE.
 
-Le lundi 27 octobre 2025 =C3=A0 14:37 +0100, Johan Hovold a =C3=A9crit=C2=
-=A0:
-> On Wed, Sep 24, 2025 at 03:35:49PM +0200, Johan Hovold wrote:
-> > This series fixes VPU device leaks during probe of the mdp and two code=
-c
-> > drivers.
-> >=20
-> > Included is also a minor documentation update to make it clear that the
-> > VPU lookup helper returns the device with an incremented refcount.
->=20
-> Can these be picked up for 6.19?
+Fixes: df2069acb005 ("usb: Add MediaTek USB3 DRD driver")
+Signed-off-by: Pavel Zhigulin <Pavel.Zhigulin@kaspersky.com>
+---
+ drivers/usb/mtu3/mtu3_gadget_ep0.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-They are picked already, please check in the tree,
+diff --git a/drivers/usb/mtu3/mtu3_gadget_ep0.c b/drivers/usb/mtu3/mtu3_gadget_ep0.c
+index e4fd1bb14a55..ee7466ca4d99 100644
+--- a/drivers/usb/mtu3/mtu3_gadget_ep0.c
++++ b/drivers/usb/mtu3/mtu3_gadget_ep0.c
+@@ -508,8 +508,8 @@ static int handle_standard_request(struct mtu3 *mtu,
+ /* receive an data packet (OUT) */
+ static void ep0_rx_state(struct mtu3 *mtu)
+ {
+-	struct mtu3_request *mreq;
+-	struct usb_request *req;
++	struct mtu3_request *mreq = NULL;
++	struct usb_request *req = NULL;
+ 	void __iomem *mbase = mtu->mac_base;
+ 	u32 maxp;
+ 	u32 csr;
+@@ -519,10 +519,11 @@ static void ep0_rx_state(struct mtu3 *mtu)
 
-https://gitlab.freedesktop.org/linux-media/media-committers/-/commits/next
+ 	csr = mtu3_readl(mbase, U3D_EP0CSR) & EP0_W1C_BITS;
+ 	mreq = next_ep0_request(mtu);
+-	req = &mreq->request;
 
-Nicolas
+ 	/* read packet and ack; or stall because of gadget driver bug */
+-	if (req) {
++	if (mreq) {
++		req = &mreq->request;
++
+ 		void *buf = req->buf + req->actual;
+ 		unsigned int len = req->length - req->actual;
 
---=-D/OargbqI2TIFLsZob0G
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
+--
+2.43.0
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaP/IIwAKCRDZQZRRKWBy
-9Fc7AQCPNa5G9ciLazzEbjeyVuuoqH63GaI8a209fxcD9GMEFwD/eiCo3UjnKnEv
-ruFn5dSHzalVI5zJt+gwoMAc3YEJuw4=
-=8nKN
------END PGP SIGNATURE-----
-
---=-D/OargbqI2TIFLsZob0G--
 
