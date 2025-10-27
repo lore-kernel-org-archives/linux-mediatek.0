@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AE48CCF9E5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 11:56:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83CA4CCF9EA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 12:15:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=q1+2gFkrxY6m/U7u8dzCBDzgNo3djn7xfSEsltllsG4=; b=0IqaCdAddqsCcSW9fvYeG28zHI
-	xpUlnpE0uL3f+ffdEhhTaqWLmzupBKBkRB2bnWfZxcX9lYKZcX2w+RE41O78b0yvMJ+dpjDRLJPUV
-	0YDVbVAB/H6JMI/WWMJcuPhp3fgs+Ba6x2WwP1EpB60t3UGPldRigWA9IP9ZE69GgipwxJcJbU19W
-	QybiouPmnkmrNmG4ZQEvfa4lord58V1j34quIwTCk4lLHjvrOmzth1KiNrFHxdIbDbvBfdh8htpqL
-	qEaHqPc/aos2hbvkLKeBmFnn0qGVWApW+mNngdkXMcQuCMIVWvb4GPYm5TXDreixFIa4RjzsiylIL
-	/lpk4+pQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5MoVf5Kl/6L1RrhGRcruXT/51Lf6AulqPFulSW9hKkI=; b=q/+6XChCRbZ6D0MqrZ+s/AdRHY
+	0F9LN+pIAmbtTjqcRi/hBdoLA9dCMp6r2GBq2MnQT3zIgtD9rmZwWTKZsAfUneNfwH71GDnU9K8vC
+	0uK8YVG+NWbHoAaHksiTu/lFSuh1dRkBBg8RNUt0Y4pweq0L1e1Lfmn4aTWMl1pgljtNcG8HwLBQz
+	ACOuW/rDSDflbr5iWl6XBbSvaV1n/4VZ6H+xo4qMtmy5cxYJ9A8idY+gZtm3sWDa/jS7Chh2lx+zm
+	9e9fU2R6H+gAp5lgpjuBP4cq5U5gYqozJ1fv6P78CpszFrYvKFjUwBHpHXl4zph9/unzNsa7mQPfz
+	Uy0AXWng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDLqA-0000000DpOf-04XS;
-	Mon, 27 Oct 2025 11:56:46 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1vDM83-0000000DrxM-3PxN;
+	Mon, 27 Oct 2025 12:15:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDLq6-0000000DpMD-3reZ;
-	Mon, 27 Oct 2025 11:56:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1761566188; x=1762170988; i=frank-w@public-files.de;
-	bh=q1+2gFkrxY6m/U7u8dzCBDzgNo3djn7xfSEsltllsG4=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:In-Reply-To:References:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=civc0jIUwW6SoLobk7dIdSQStdwux08xKrwkDcRuzbluG+oK4Rr3A2Dqno+bYfYW
-	 rHSc0kMXS+GzW0p4LITyYrTyAkNOM+lwwNE8uMdfGyHdbN5Om6ULOWe0skarFhKdZ
-	 mij0PvBZoVaANU2m1UVeAX9eKCxsL9Egd5SltPqXa9lRpq1YrTTSdOEjDbcs8aNEV
-	 8X0tWQIaaB+lzmSyymdv0U97l5/XAOLDaW8DX5CxxWfiLgie33Jt/x/lGrXISqD7Y
-	 fKVQ/GzF23CuwTa8bkEoDKxg6pdMQgT83i50qX6TYVohHRDeXWWkByyzzJUGWpLWS
-	 WJ/vHwke3/CqRwLqzA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [217.61.159.158] ([217.61.159.158]) by
- trinity-msg-rest-gmx-gmx-live-654c5495b9-nsbx8 (via HTTP); Mon, 27 Oct 2025
- 11:56:28 +0000
+	id 1vDM81-0000000DrwZ-1GXc;
+	Mon, 27 Oct 2025 12:15:14 +0000
+X-UUID: 952becbab32e11f0a52f393f94899d25-20251027
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=5MoVf5Kl/6L1RrhGRcruXT/51Lf6AulqPFulSW9hKkI=;
+	b=lUnCNaqxmtr7DSdHq3OfLvKLxVrYHs4jhRwvZ1CmwnPQOjU2ELigq5/pL9IImInpLDafDPH8QBtIp6DbdnU+RJq09y5VG7zhSdZB3jDE8SQKNLAsyK/4EinoigixLdIgLPAclRozC/oS7EN9SHjhoSuYbwhf+j2DeYO8t6gHcWA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:d212d466-9109-49ea-83c4-54d4adf3c320,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:d2b8de3a-b16f-49fc-bb37-560773c432f7,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:99|1,File:130,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 952becbab32e11f0a52f393f94899d25-20251027
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <zhengnan.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 337042274; Mon, 27 Oct 2025 05:15:10 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Mon, 27 Oct 2025 20:15:06 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Mon, 27 Oct 2025 20:15:05 +0800
+From: Zhengnan Chen <zhengnan.chen@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, Rob
+ Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Zhengnan Chen
+	<zhengnan.chen@mediatek.com>
+Subject: [PATCH v2 0/2] MT8189 SMI SUPPORT
+Date: Mon, 27 Oct 2025 20:14:26 +0800
+Message-ID: <20251027121443.16783-1-zhengnan.chen@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Message-ID: <trinity-ecc07569-6b82-472e-80d4-5e41728a4ed1-1761566187916@trinity-msg-rest-gmx-gmx-live-654c5495b9-nsbx8>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: angelogioacchino.delregno@collabora.com, linux@fw-web.de,
- daniel.lezcano@linaro.org, rui.zhang@intel.com, lukasz.luba@arm.com,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com
-Cc: nfraprado@collabora.com, mason-cw.chang@mediatek.com,
- u.kleine-koenig@baylibre.com, bchihi@baylibre.com,
- linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, rafael@kernel.org
-Subject: Aw: Re: [PATCH v1 4/5] thermal/drivers/mediatek/lvts_thermal: Add
- SoC based golden Temp
-Content-Type: text/plain; charset=UTF-8
-Date: Mon, 27 Oct 2025 11:56:28 +0000
-In-Reply-To: <6f71b834-2b4d-48a8-be6f-1efdf0e78812@collabora.com>
-References: <20251026122143.71100-1-linux@fw-web.de>
- <20251026122143.71100-5-linux@fw-web.de>
- <6f71b834-2b4d-48a8-be6f-1efdf0e78812@collabora.com>
-X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:6q6PGOlzcCNzMNaTrdZ3gzfoNmPOdU+wx3DB5m2may/IeMwf4QtuG3f9yeaLhhpA05smP
- jruORDfxpBXBuQT5ScmHGSRedy6RIjK4f8L4doDqjyVOo7KG/PILZPnhJjeK3Xm8S5JgAjz4IwU6
- dX9IJevAcU29kLeuyZX/9pbbR0BavbvPzIXl4xG6x1LZjOYdKUz0n+8Y6pG+8FcN8ECilxjt8Nbt
- WPvnr0bursIzseoEtQAdh2Hd+4a8pP08NbVtU3On7udme1LOsbuGjLAPD/Q3jpjBnxgCbH9mImPy
- tbuoBShVH9e6v2kctnnxNmqYORCeZCJU5ndP91hoO2qCYncp5OTLIPe5siQ69Ql/vg=
-UI-OutboundReport: notjunk:1;M01:P0:1mI2S1j+1GM=;c6wDB2P1jLfG5s0jCPIAv7ijtL0 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 ob+zRueSpyvQNv27eHgxrBa0UJcT0lrw==
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_045643_315552_1ED90917 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20251027_051513_349544_C86B34F3 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,65 +88,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+Based on tag: next-20251024, linux-next/master
 
-> Gesendet: Montag, 27. Oktober 2025 um 11:45
-> Von: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.c=
-om>
-> Betreff: Re: [PATCH v1 4/5] thermal/drivers/mediatek/lvts_thermal: Add S=
-oC based golden Temp
->
-> Il 26/10/25 13:21, Frank Wunderlich ha scritto:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >=20
-> > Add SoC based golden temp for invalid efuse data.
-> >=20
-> > This is a preliminary patch for mt7987 support where goldentemp is
-> > slightly higher than other SOCs.
-> >=20
->=20
-> I've found this "hack" required for all of the preproduction SoCs, as th=
-ose are
-> usually unfused and/or missing at least some calibration parameters.
->=20
-> Are you using an early/preproduction/whatever SoC, or are you testing on=
- a retail
-> board?
+This patchset add mt8189 smi support.
 
-thanks for looking into it. I'm using a Bananapi R4 Lite v1.1 so not pre-p=
-roduction SoC afaik.
+---
+Changes in v2:
+Just modify the mediatek,smi-common.yaml file as follows:
+- Add schematic diagram explanation between smi-common and smi-sub-common
+- Change the clock numbers of smi-sub-common to minimum 2, the third clock
+  is optional
+- Link to v1:
+  https://lore.kernel.org/all/20250919081014.14100-1-zhengnan.chen@mediatek.com/
+---
 
-Not sure why i ported this patch from sdk (maybe due to patch compatibilit=
-y and thinking this is needed).
-Tested without it and it seems to work as far as i can tell. Will drop it =
-in next round.
+Zhengnan Chen (2):
+  dt-bindings: memory-controllers: mtk-smi: Add support for mt8189
+  memory: mtk-smi: Add mt8189 support
 
-For the no-irq part i also ported this from SDK where no irq is defined (i=
- also wondered about missing irq-support as it would require polling to ha=
-ndle emergency shutdown which seems not done in sdk too):
+ .../mediatek,smi-common.yaml                  | 25 ++++++++++-
+ .../memory-controllers/mediatek,smi-larb.yaml |  3 ++
+ drivers/memory/mtk-smi.c                      | 44 +++++++++++++++++++
+ 3 files changed, 70 insertions(+), 2 deletions(-)
 
-https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds=
-/+/HEAD/autobuild/unified/filogic/24.10/files/target/linux/mediatek/files-=
-6.6/arch/arm64/boot/dts/mediatek/mt7987.dtsi#556
-
-https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds=
-/+/HEAD/autobuild/unified/filogic/24.10/files/target/linux/mediatek/patche=
-s-6.6/999-2101-thermal-mediatek-add-mt7987-lvts-support.patch#160
-
-the irq_enable part is squashed with the mt7988 lvts support:
-
-https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds=
-/+/HEAD/autobuild/unified/filogic/24.10/files/target/linux/mediatek/patche=
-s-6.6/999-2100-thermal-mediatek-add-mt7988-lvts-support.patch#110
-
-regards Frank
-
-> Regards,
-> Angelo
->=20
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> > ---
-> >   drivers/thermal/mediatek/lvts_thermal.c | 13 ++++++++++++-
-> >   1 file changed, 12 insertions(+), 1 deletion(-)
+-- 
+2.46.0
 
 
