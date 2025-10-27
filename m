@@ -4,101 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 744EFCCF9EA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 09:51:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 352E7CCF9EA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 10:24:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KEm4VUNhIRm4CI9cgj3+YaFqPnvC9u9Y16aUqGdcNbA=; b=eM6edU0/fqcuCwvPTwl4C4geK5
-	jwgOPpxoRnq9KYh+ExlDnEYlsrpMZX32vgO6jTum3eLZ7KYSOLIwtFQ7U93WaldnBX8Pt+BpxUpFm
-	6nNWwDA/uMHmdVsoU0gBehJwoqeJzCUjlzOQ8sG0QYSjEyMNb4r8HX59TuhacBWBbzT7zZzU0ygPJ
-	OkKVJKnYtI37IbT6nsICEAnbEWV4AZ7c1BA+OeS4Mo3tBMjYlO52qlNITZ9N7Iyvx66dsz6guFuYy
-	Neu4t/hwBvF4siRfmMSQN8JTlEjCz42fhzyWiax4AIqEEDhaqrGSfdKvGf7ih5EMIbB+t4zTXb6ZI
-	DiQ3/gdw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/NKXZxeacKGxOR1xtLh9538zKINcBqslvUDNS2+6+Rs=; b=OrWDuFZAsUNfcxktWpJPSdkSUR
+	digb1mEO/K+0oASnYcw723MkkC1+SzWtpazOtgrVJ2HA5xiy9BwJ5eaITbSc8C+zf823eTbQeqhgH
+	eSiediugfI7rkSZY6MabnJ0H6g92YriIjwN7Y0AHrN62mIoSm+ktcdWbNBu3VMK5x6e5PpN2sQ+yf
+	sW/XSi1+Z5Nf3fq/+p8ajSWSN7j9+MshTNwbo+jMBOVk+Sgb4jXsu82Zaj8jdyEoIK2CIa/agHLoc
+	VQdpzT8lnEgmSQkMjQ2NJvtgLD0lCxAzAoSvQ9njA227ALYA9j7I//5zRbcW3xVnQVV5FcujJA0p6
+	ewH5EmUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDJsp-0000000Da4I-21lV;
-	Mon, 27 Oct 2025 09:51:23 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vDKOM-0000000DeKg-44QX;
+	Mon, 27 Oct 2025 10:23:58 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDJso-0000000Da3c-2GZG
-	for linux-mediatek@bombadil.infradead.org;
-	Mon, 27 Oct 2025 09:51:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Cc:To:Subject:Message-ID:
-	Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=KEm4VUNhIRm4CI9cgj3+YaFqPnvC9u9Y16aUqGdcNbA=; b=eVY6CjkCv69k1HtwMYCmG+NxBb
-	1ezyxJfPeMtfaHhox70GUwLTCC43VOaNjaVRCyxTKb+P4K7yab4uHgE+J3iE2kI6/288BbSMJ2Sgt
-	dQWZu0gmsLLbHvZq2VK0LWTntt+bD4eVUkMJGwJz7hI7jbPE8zJaD7RPazSwAWv5TX0RoJFA/T0Lq
-	UdU9HpWffLL9GV55ChPVAc3d6mRb9PRayyTo7JkPjkwUew0izg4nnAD5w1JuvzFPYnSSRA9dSGzHe
-	e0BKa5+V/CFTUdaaN84/ki8L/vzaeeZ47DHFVzcr+srSOoVEDSGgxwnx2NrwXK4xL9983nu7reMVn
-	EvjGt07g==;
-Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDJ11-00000001nAu-07cM
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Oct 2025 08:55:49 +0000
-Received: by mail-qk1-x72a.google.com with SMTP id af79cd13be357-89e7a7e0256so319288185a.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Oct 2025 02:51:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1761558676; x=1762163476; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=KEm4VUNhIRm4CI9cgj3+YaFqPnvC9u9Y16aUqGdcNbA=;
-        b=LVxnRgO28WZacs8mx59+TXEYSV4YHYuKy32qBGfp8nazUavvksrrm3HuGS1TmNmN/r
-         pVS0vBBPTWeZXADwCc53mlE5W3rpg0XI+qlYkpcR8NT+A4EhjBwLqXh4OEX8zdOBRMPH
-         8fTxCVzmfe3dCHrKP10LD6pGCIB9pDU0ERxfutAgMZTqpWDIXdt0IX5trq8VXvuBnekM
-         /j/fYR0Xg2qy/8o2fg+2ZQc0cTnRl1W/cnQnVzIiDRVCwplAwtQqwdgTVd0FVC3H80Fv
-         /Qmg4rh55n8E40EJJMWh34oAtpBT8jKKUYZdYRix9cnB6pilMSF8v1onh3dEUVOOP3Yl
-         d6Ug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761558676; x=1762163476;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=KEm4VUNhIRm4CI9cgj3+YaFqPnvC9u9Y16aUqGdcNbA=;
-        b=iVCnsJrEwy4IrPDj/njTqey4Iz5roBLiaCHSYUZdw0sbA1CQEtSyNgTw6YGqFklP/m
-         7hMYv0ksrrVAMtAr8P7Cxe9OhXNprjL3IIlEcf8AD6UGCac451cf+8ZMb/7sWhqvzJa9
-         2m6NmkScai4PRPwJtUYt31ZnOl052ZZfDSXnm9vDjPoyhNvZN3ZEmo+FC1IEG4Q+fVNz
-         S8fjs881PWrRHwEORqkyuyeZDelnX1defzquwHspBFKLAPFMjJYdQPKbcKut+wnIwE9c
-         i/wWkLZnK29ZOfZVEn7bOfnU93LP3pDJx8oNmq20hliVBrvLclwNP8biUXMltj2irvPQ
-         slKQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXCrE/FB7Be1BJeGFRKbcNVLSXdYptfQx9RJiP8kwc7Hl2bpy3W4l3JUxUIsffsOaNuecBWLM2mSFXCgGJn9g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxMWjhgqCJYMt40cflhiZpCmoyzX7HRespdaBScb2JzBCd0IEFE
-	D6raAXRruDjV7a6drtnR17ifN5jMjN66N549e8+Ka0tzw6nbX2BdttrJmZ6sUG3fuhgv7nI5q0J
-	HYV4k07Fip4PY9dW6eTx2orTRiWClvJaRlvlbs2y4Kg==
-X-Gm-Gg: ASbGnct0FRAMkQLoFmLRvDfimwaZMhLoeK6Mc+jRfk+q8N3tA0z3M7mVwlRZoZEXxw5
-	zTGEadeTXIku42gXxIkajh/1aWZmiWpOEMJe5VYh+zYvqVQqpTX0TmFo9HGb2fuHteM61ezAToC
-	Lkffa9lkFUudAj1sbbiso2qNxC6/4r7YQfPaLnzPBmBZMaNAwTMi/PWNBC6fRTz5DheQjMFkRgX
-	PlKpzHPYspx1JCOOTxOpgICthRgv3k9ricDUEL6kn3IZbmtTwAsg1o76o6W
-X-Google-Smtp-Source: AGHT+IEmWTiOrlsUD5Hm5bOmrc4XIQtZAwVHNawNjN449YPwWXnSlk4xpszoLq7387lR+vuxodMoY2+83tdmzyojrLY=
-X-Received: by 2002:a05:620a:c47:b0:891:a91e:98c8 with SMTP id
- af79cd13be357-891a91e99eamr3319941285a.23.1761558676598; Mon, 27 Oct 2025
- 02:51:16 -0700 (PDT)
+	id 1vDKOJ-0000000DeJd-2yTS;
+	Mon, 27 Oct 2025 10:23:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1761560633;
+	bh=aFMORePwcPTydUz6VlH0qFjjkLxDJNo9Sxr1SvlX4OI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Rd/JJOKkBJ6qfsuqB4Cgu8aRpKGVbvpGEx/Ba7CyBGBbgO/fIWdmBBkbySU5EtwKE
+	 JB1+ywk2KG9+72spaR2LMlhL2l7fd2pGl0ExFMZtlMs6Rm9HSFqdQY3wpAAIH92QII
+	 P5VqiphDEpMntKyHokuD4Qf9Wpblleqo2yNEhYJx1L42Z/4Z5NNP8S1nhOfEoC79Jr
+	 YCIFr7qGrTUi2a6rcqUIclqQGQUk0Y/AM7XUsIj1oMHXABwIybSOWhYWw1eTikrc2+
+	 6z0NZIp+EecFE2ZEuggIiVzqF/X+KkkGrYt6HgW05CMEZDfKT091+h2LpBzZxqAXbM
+	 DSxMDfhXG5I8Q==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AC55017E0DC0;
+	Mon, 27 Oct 2025 11:23:52 +0100 (CET)
+Message-ID: <305a2d9c-92c3-4608-b5f6-57f6db51c08e@collabora.com>
+Date: Mon, 27 Oct 2025 11:23:52 +0100
 MIME-Version: 1.0
-References: <20251024202756.811425-1-ariel.dalessandro@collabora.com>
-In-Reply-To: <20251024202756.811425-1-ariel.dalessandro@collabora.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Mon, 27 Oct 2025 09:51:05 +0000
-X-Gm-Features: AWmQ_bnUJmMH5yn8SNjXD9lhXOuvZ_9iWgyNcdJBRyB2VgWGh475OYJjqyOR-w4
-Message-ID: <CAPj87rPTKv=qv_fHTVvymNmi=nZHyxW-PgR1EFQE7T8gV1pNzg@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Disable AFBC support on Mediatek DRM driver
-To: "Ariel D'Alessandro" <ariel.dalessandro@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, greenjustin@chromium.org, 
-	sjoerd@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v10 1/9] dt-bindings: regulator: Document MediaTek MT6316
+ PMIC Regulators
+To: Conor Dooley <conor@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ lgirdwood@gmail.com, broonie@kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com, wenst@chromium.org,
+ igor.belwon@mentallysanemainliners.org
+References: <20251024083221.25758-1-angelogioacchino.delregno@collabora.com>
+ <20251024083221.25758-2-angelogioacchino.delregno@collabora.com>
+ <20251024-think-handwoven-504634ca620d@spud>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20251024-think-handwoven-504634ca620d@spud>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_085547_183427_F5BA7F27 
-X-CRM114-Status: UNSURE (   8.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251027_032355_913173_FAB5B86A 
+X-CRM114-Status: GOOD (  27.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,24 +81,144 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 24 Oct 2025 at 21:28, Ariel D'Alessandro
-<ariel.dalessandro@collabora.com> wrote:
-> Commit c410fa9b07c32 ("drm/mediatek: Add AFBC support to Mediatek DRM
-> driver") added AFBC support to Mediatek DRM and enabled the
-> 32x8/split/sparse modifier.
->
-> However, this is currently broken on Mediatek MT8188 (Genio 700 EVK
-> platform); tested using upstream Kernel and Mesa (v25.2.1), AFBC is used by
-> default since Mesa v25.0.
->
-> Kernel trace reports vblank timeouts constantly, and the render is garbled:
+Il 24/10/25 18:29, Conor Dooley ha scritto:
+> On Fri, Oct 24, 2025 at 10:32:13AM +0200, AngeloGioacchino Del Regno wrote:
+>> Add bindings for the regulators found in the MediaTek MT6316 PMIC,
+>> usually found in board designs using the MT6991 Dimensity 9400 and
+>> on MT8196 Kompanio SoC for Chromebooks.
+>>
+>> This chip is fully controlled by SPMI and has multiple variants
+>> providing different phase configurations.
+>>
+>> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>   .../regulator/mediatek,mt6316b-regulator.yaml | 78 +++++++++++++++++++
+>>   .../regulator/mediatek,mt6316c-regulator.yaml | 78 +++++++++++++++++++
+>>   .../regulator/mediatek,mt6316d-regulator.yaml | 77 ++++++++++++++++++
+>>   3 files changed, 233 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+>>   create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
+>>   create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
+>>
+>> diff --git a/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+>> new file mode 100644
+>> index 000000000000..65b70dd90728
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+>> @@ -0,0 +1,78 @@
+>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/regulator/mediatek,mt6316b-regulator.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: MediaTek MT6316 BP/VP SPMI PMIC Regulators
+>> +
+>> +maintainers:
+>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> +
+>> +description:
+>> +  The MediaTek MT6316BP/VP PMICs are fully controlled by SPMI interface, both
+>> +  feature four step-down DC/DC (buck) converters, and provides 2+2 Phases,
+>> +  joining Buck 1+2 for the first phase, and Buck 3+4 for the second phase.
+>> +
+>> +properties:
+>> +  compatible:
+>> +    const: mediatek,mt6316b-regulator
+>> +
+>> +  reg:
+>> +    maxItems: 1
+>> +
+>> +patternProperties:
+>> +  "^vbuck(12|34)$":
+>> +    type: object
+>> +    $ref: regulator.yaml#
+>> +    unevaluatedProperties: false
+>> +    properties:
+>> +      regulator-allowed-modes:
+>> +        description: |
+>> +          Allowed Buck regulator operating modes allowed. Valid values below.
+>> +            0 - Normal mode with automatic power saving, reducing the switching
+>> +                frequency when light load conditions are detected
+>> +            1 - Forced Continuous Conduction mode (FCCM) for improved voltage
+>> +                regulation accuracy with constant switching frequency but lower
+>> +                regulator efficiency
+>> +            2 - Forced Low Power mode for improved regulator efficiency, used
+>> +                when no heavy load is expected, will shut down unnecessary IP
+>> +                blocks and secondary phases to reduce quiescent current.
+>> +                This mode does not limit the maximum output current but unless
+>> +                only a light load is applied, there will be regulation accuracy
+>> +                and efficiency losses.
+>> +        minItems: 1
+>> +        maxItems: 3
+>> +        items:
+>> +          enum: [ 0, 1, 2 ]
+> 
+> This property has no default, and the property is not required. Is one
+> of these modes the default, or is there another mode beyond what's here
+> that is used if the property is absent? Or are all modes allowed with no
+> property?
+> 
 
-Reviewed-by: Daniel Stone <daniels@collabora.com>
+The default is what the bootloader sets before jumping to the kernel... this may
+vary from one to the other.
 
-This is definitely the right thing to do until we can figure out why
-the DRM driver doesn't like the GPU's images, and how we can get it
-fixed in either DRM or Mesa.
+Even though "in theory" the default should be 0, I can't guarantee that this will
+really be the default for when Linux boots.... and "resetting" is not possible
+(either as a real reset or forcing a default) because those are CPU regulators
+and if anything goes wrong the CPUs may freeze execution.
 
-Cheers,
-Daniel
+It should be kinda safe to force the default to 0 at boot, but I'm not sure that
+I should really take that assumption for granted - I prefer leaving this untouched
+and without any "forced" default unless DT specifies some.
+
+So, well, that's why there's no default, and that's why this is not a required
+property at the end of the day.
+
+>> +
+>> +required:
+>> +  - compatible
+>> +  - reg
+>> +  - '#address-cells'
+> 
+> Why is address-cells required here? Your bucks don't have addresses.
+
+Ugh. I forgot it there. No, that's not intentional.
+
+The #address-cells makes no sense here.
+
+> If it is actually required, Rob's bot has pointed out that the property
+> isn't defined for the device anyway.
+> 
+> pw-bot: changes-requested
+> 
+>> +
+>> +additionalProperties: false
+>> +
+>> +examples:
+>> +  - |
+>> +    #include <dt-bindings/spmi/spmi.h>
+>> +
+>> +    spmi {
+>> +      #address-cells = <2>;
+>> +      #size-cells = <0>;
+>> +
+>> +      pmic@8 {
+>> +        compatible = "mediatek,mt6316b-regulator";
+>> +        reg = <0x8 SPMI_USID>;
+>> +        #address-cells = <0>;
+>> +
+>> +        vbuck12 {
+>> +          regulator-name = "dvdd_core";
+>> +          regulator-min-microvolt = <450000>;
+>> +          regulator-max-microvolt = <965000>;
+>> +          regulator-allowed-modes = <0 1 2>;
+>> +          regulator-enable-ramp-delay = <256>;
+>> +        };
+>> +      };
+>> +    };
+>> +...
+
+
 
