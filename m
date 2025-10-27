@@ -4,84 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4A4CCCF9EB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 07:05:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F9A5CCF9EB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 07:09:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HJFfYykRlBHOdi5XlphjJ7Of6rfFrNXO8UImzwMboPo=; b=RTmDuPCZocfE9lb2TYO6ywtGxy
-	SVjOePYYVx6BgRwQF8vtCrWl5b1coYdV2RQxnmKeXEcClw1rqe2CMWUYgyXNaTNYCzQRJhdh7+joG
-	ek/KY7R2IDEhKwiacH4g2IyWSBnZRa8hPf0RyU0YsnjVoWsSPmo1PPnLfjSU9a++Kxjc84Ze6pIPj
-	fW8JSmnR0R0+MHd/Q46vsMQDOn4ihXQsmfndi/D24xxKCicvGmkOZaYH/43cVCJmpRg/OFWP0g9oP
-	CpHQVlVRX/SGoRjrg0ln39s+FwmvZqSiYV7rLkB/fARFE03ktj/nwSqel2VN9Scxeje3WKb5xuWFw
-	cRiaw7GA==;
+	bh=2VCn7I67W0lot093gUV4e8FUZ2HcsegXwgZoOoSOv7c=; b=PfWvZAQgMFnF4xfDXij5Pw3+U2
+	Nvp11ZXPQ7C/ZmxtoEZWAFWuqj7q+eoZUfrR3OJOFjQ8g5AoRPTU3Qb3EkB51UxJG6i4b5ZjeTMqw
+	eGxtpGccj8TBemtf75XGrZbhRV7nBC7SwqsA42ZRBeHH4SDQNoRugphziWQXefF+e07ku5AcPvYWd
+	/dQ/3e2zMMb5XPjCtIcJWw40f/wxklAv8bXeaBU96TIRPfrdzr/IfBmpBBmc+3Peplv8YS5/cDhxp
+	C+YLY28CKkaVfQTAYBB0OuE2rfS5S3nNGT8rYbZWQ3JyimaMqXC01I/Dq0N7GhXmSJAoHR2fHUWEj
+	L/l62O0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDHHy-0000000DFYM-1cmj;
-	Mon, 27 Oct 2025 07:05:10 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1vDHLg-0000000DFpR-1xKr;
+	Mon, 27 Oct 2025 07:09:00 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDHHv-0000000DFXR-2sYq
+	id 1vDHLd-0000000DFod-33Wo
 	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Oct 2025 07:05:08 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-427084a641aso3075981f8f.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 27 Oct 2025 00:05:07 -0700 (PDT)
+	Mon, 27 Oct 2025 07:08:58 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-4298b865f84so2284780f8f.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 27 Oct 2025 00:08:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1761548706; x=1762153506; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1761548936; x=1762153736; darn=lists.infradead.org;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=HJFfYykRlBHOdi5XlphjJ7Of6rfFrNXO8UImzwMboPo=;
-        b=yT/gtb9QZebZGBbhibQ/UJNQMpapm8NNStTMG9IeqMXpgBXgf+yYj8nJPBErIypGCY
-         cK2D1UgC0UB87V5n7HwVCzcU8+ORLqOE3ZzNvZW5L8KkrKfGyNGFncMuPw2CrqWVegdc
-         he5aPFKUMRNXgosqSXVGP8gE8AQW8F3jnubOX+JEH9CiR0/ohD1nLm13RBAV/+bmikSN
-         JID1fnWTXLhna+OB/tbVMaMEuXI8AO9pBm8mcwMuT1y889rUl/LvOOlveHXlEH9Mfs27
-         JBiy6cABp0TlkeEBxfxKs2dnN7OB5mcJjQJMD++WhPTYAYBbsw3UGK3wPLU+nKI4iL5v
-         ZBmw==
+        bh=2VCn7I67W0lot093gUV4e8FUZ2HcsegXwgZoOoSOv7c=;
+        b=XUmApBNmNg5rA8Ih7XshrXzIuN9HS05/LgYKdLE7iDtZSw58PEKiOkx82HL85i9uhL
+         wGzWTKwIK04Q87e9i9kzYJ7vCAks5MEFYjdttboVzaiCGZdylPFokILL1iO9X3/8ezBB
+         ZMb7H/VdxC9tOOKbCMUTXr5aI7jnizShNhH+5Yv9FzRIZ5KZH+m68BszHnVjmFANVNas
+         gduJz+vm16K/zR9QYV4/FM2/DrtU7Y2dlz7dlNWKobPuRefe/O2eHVF89A4lNGfMY0M3
+         p9iknlpvFPHVhWle2sw4jEpRCzLrL8s5t5PE8DuPLQFiod5ajlcGtiRR0hYppeyFYrwQ
+         bv5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761548706; x=1762153506;
+        d=1e100.net; s=20230601; t=1761548936; x=1762153736;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HJFfYykRlBHOdi5XlphjJ7Of6rfFrNXO8UImzwMboPo=;
-        b=twFtJQpdlXizM7ArzrGuOjGD0j9p67PQxeA6brKYgn7bwd8oed/P8VjrqtSdxD+Vop
-         YTeW1V7h7ObgYhojaaxNNpDgNVU5d7julDCAbemp4on5SNgMt6BUqnjZmZ20GCs1Yg6T
-         6DQbh1yufceAtH+SotFnJ7MavPyMkuj0i7Uhv4npcrx7RvnTnKnazJrEdRBT50+U868K
-         9Msu8rBB0J6O4XeMnPsMCjHArQv3Na0CG/KxShCbyutvQ/Kb2zA4gSPio7li6CUncexM
-         2oOsGM9ntN4qpHgcdHFSSrN6OAAVYybHWNkE6oPy6ARJvPnf1+YceFf8C8BULu8JDXF1
-         UlBw==
-X-Forwarded-Encrypted: i=1; AJvYcCVh41KS4ZfKbOivAwv4lqxgB0tkekG7N2BP6ECNarlp5O3s+TNQFkjsV+aAJIMUlFx507KqtqKsXG3dFUztjA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx2ecipH1mBVb9w/kQfOx0jQQmc4UfGoDUNaHUgKWzJrhSs4a+H
-	3Khqc1ud7qwgmKVhKNsS8CE30L9ZreNXTBWomaRH4RTjDCMVTE77Oo4/zcJwSrL0yqE=
-X-Gm-Gg: ASbGncsPUbh3sNnckr49yJMfLn6TMJ9IlJulvRI/508yoQQ0+LkWqElF6m4YkpclwOH
-	IFENfzVWf3s6BnVv2tSb6ar+sC1CIBTXzvrkvXFhaAdRReNKM/IFvWkr+eBd+Jqhvx9GHINgwUz
-	nIirSwiW/3ADwE2Xgt4/q2Wr6jvBDZrmk6MRJiwV0KIiVm3XW/W8t8RyXVyFdm4iSgwTCFEKJfK
-	LzTuHxe0fJSZWlsQeh8nGT5szSlO8efGg5xcm8q5YI1WLJH2KPznaRCkd70llVi2XdRYnVFfcZ8
-	bfP2K+nSFSnfjHDQG7mbXv7wKMC3hJ39G57r3y7J9j95vNgGiOX8FYzXmLCDJqTByC0PfKsPiH8
-	VNBwouEs4XfYA22XIvRqI7OkE1Jis2pQFFE+u6uUTfQa8BrYcjF5rwVowC27RXswWoR5cEDqQEk
-	lOoJP1Tw==
-X-Google-Smtp-Source: AGHT+IHDnxuF6aY8pbvXwwIn4O7yBK8Zhk1QQ4A/6lD/VCtErpeSNtvVwKJ1RrIizvoFYs0suVFpwg==
-X-Received: by 2002:a5d:64c4:0:b0:426:d51c:4d71 with SMTP id ffacd0b85a97d-42704d44253mr22554112f8f.8.1761548705515;
-        Mon, 27 Oct 2025 00:05:05 -0700 (PDT)
+        bh=2VCn7I67W0lot093gUV4e8FUZ2HcsegXwgZoOoSOv7c=;
+        b=slCAdEgnnSO30gt2uVJFjDmQyQeSpDxZfwwLRcHj2EUMVDOZffHKXO1tHfZq8yU/6B
+         HEJranu/PbNXxofh9pCN4+0Vk2TrWAOpxfGHbYfI67OXHcQgaafHPE0FGTKwq2XyWrg2
+         AeYyB9v6+/EiY5+rx0sK8pNSHOgtOJF3OFWI1HPijS26cKomI5N6eBFAoOUtdAoyiN9Z
+         zvJrmD7urb3A/3j9pcG/6r6xf74Csbb4lyV6qeowCHr7wKPS7xYuAB7n+JRLaXXC7SIx
+         V/xOHNwkgGWaDRhM1nIFfPY3QY+A+DSgKInXy4idVmWGvZTd0sm6n255Xu4j5atxxPib
+         43Ag==
+X-Forwarded-Encrypted: i=1; AJvYcCX1EDhhfq5t3PvJqShFmlD62OoT/jDSfC4Ml6FmXmF2fxvblEHuCsLDXnnaqqp964KJRizQq9HSbhulhw/acA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzJYeRGWHwKKUk8580FeeIZWXpkwcrhFJiAb28kW2TXTPpEwsJ3
+	wfFjN9zIo7WaFKIlM/T7Os0mN9/Wz2u2VHC7g7jAKUjOrHi/jPCGWINOec2IjL0VDQ4=
+X-Gm-Gg: ASbGncuO06y9twaJhau0rOqKiNnYOJXGDR3b6u6PvVHg8mcrcS5+ozUXsOOeQpavQCn
+	Kzgy+D7OaS4MmB/Si5JumDdaFxIQGa5vJomEkuJt2snmhRfX8Tek0Prx6SF+Bc8zxXaZYQ9kOdj
+	gJrjjwHJTDjkDcra9U7QEH8Ik7eL4IwnmxBYYNYJO+63Wjozq+HU+rV5w/kjH4k3Kz5L9JmiU/C
+	aMDtQiUaNhw3gjwwanqJo+hb8rStumL+XeMXUQzqIo0CriQAMtSdwZTiyelyifGFAfhnbnh9qSI
+	TFJX7uxwRu6t5SejR0FdAUwayR1TdKU4rm+OwJbwV2BKzQG48QMYdpqJ1ttsg5tV8c2Y+iNPD5Q
+	PT7FI3V0UHA4mLTMU99C7bpOXzPNxWHRTf9at7cw87C7Qv2VSzWLqqi9rYyaquMhaUedQVPDN/J
+	7AUREDp9PgXxTZm0Hz
+X-Google-Smtp-Source: AGHT+IGoQx8B5H77NlYFS00H5yXNOz5JUZs/694lcXu0yPBw3rKGoC7GgPX+DZXHN83AY89E6HX4rA==
+X-Received: by 2002:a5d:5f82:0:b0:3ec:db87:e8fa with SMTP id ffacd0b85a97d-42704d768b6mr25913703f8f.26.1761548935732;
+        Mon, 27 Oct 2025 00:08:55 -0700 (PDT)
 Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-429952d9e80sm12345048f8f.28.2025.10.27.00.05.04
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-429952e3201sm12634747f8f.47.2025.10.27.00.08.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Oct 2025 00:05:05 -0700 (PDT)
-Date: Mon, 27 Oct 2025 10:05:01 +0300
+        Mon, 27 Oct 2025 00:08:55 -0700 (PDT)
+Date: Mon, 27 Oct 2025 10:08:51 +0300
 From: Dan Carpenter <dan.carpenter@linaro.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [bug report] pmdomain: mediatek: Add support for MT8196 SCPSYS power
- domains
-Message-ID: <aP8ZneXa5pcsb_9N@stanley.mountain>
+To: Bjorn Andersson <andersson@kernel.org>
+Cc: Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH v2] remoteproc: mtk_scp: change the snprintf() checking
+Message-ID: <aP8agyKj73bLZrTQ@stanley.mountain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_000507_779362_5A108E03 
-X-CRM114-Status: UNSURE (   9.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251027_000857_814018_18D346E0 
+X-CRM114-Status: GOOD (  14.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,191 +100,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello AngeloGioacchino Del Regno,
+The snprintf() calls here work but they have several minor style issues:
 
-Commit ead9cf65d50f ("pmdomain: mediatek: Add support for MT8196
-SCPSYS power domains") from Sep 25, 2025 (linux-next), leads to the
-following Smatch static checker warning:
+1) It uses ARRAY_SIZE() which is the number of elements in an array.
+   Since were talking about char that works, but it's more common to
+   use sizeof() which is the number of bytes.
+2) The printf format is "%1d".  The "1" ensures we always print at
+   least 1 character but since numbers all have at least 1 digit this
+   can be removed.
+3) The kernel implementation of snprintf() cannot return negative error
+   codes.  Also these particular calls to snprintf() can't return zero
+   and the code to handle that zero return is sort of questionable.
+4) In the current kernel the only "core_id" we print is "0" but if it
+   was more than 9 then the output would be truncated so GCC complains.
+   Add an "a >= sizeof(scp_fw_file)" check for output which is too long.
 
-	drivers/pmdomain/mediatek/mtk-pm-domains.c:865 scpsys_add_one_domain()
-	error: we previously assumed 'pd->data' could be null (see line 840)
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+---
+v2: The v1 introduced a W=1 warning because of the truncation issue.
+    It's a false positive because GCC assumes that "core_id" can be
+    every possible value of int but actually it can only be zero.  And
+    also generally, in the kernel, truncating is fine and it is fine
+    here too.
 
-drivers/pmdomain/mediatek/mtk-pm-domains.c
-    718 static struct
-    719 generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_node *node)
-    720 {
-    721         const struct scpsys_domain_data *domain_data;
-    722         const struct scpsys_hwv_domain_data *hwv_domain_data;
-    723         struct scpsys_domain *pd;
-    724         struct property *prop;
-    725         const char *clk_name;
-    726         int i, ret, num_clks;
-    727         struct clk *clk;
-    728         int clk_ind = 0;
-    729         u32 id;
-    730 
-    731         ret = of_property_read_u32(node, "reg", &id);
-    732         if (ret) {
-    733                 dev_err(scpsys->dev, "%pOF: failed to retrieve domain id from reg: %d\n",
-    734                         node, ret);
-    735                 return ERR_PTR(-EINVAL);
-    736         }
-    737 
-    738         switch (scpsys->soc_data->type) {
-    739         case SCPSYS_MTCMOS_TYPE_DIRECT_CTL:
-    740                 if (id >= scpsys->soc_data->num_domains) {
-    741                         dev_err(scpsys->dev, "%pOF: invalid domain id %d\n", node, id);
-    742                         return ERR_PTR(-EINVAL);
-    743                 }
-    744 
-    745                 domain_data = &scpsys->soc_data->domains_data[id];
-    746                 hwv_domain_data = NULL;
-    747 
-    748                 if (domain_data->sta_mask == 0) {
-    749                         dev_err(scpsys->dev, "%pOF: undefined domain id %d\n", node, id);
-    750                         return ERR_PTR(-EINVAL);
-    751                 }
-    752 
-    753                 break;
-    754         case SCPSYS_MTCMOS_TYPE_HW_VOTER:
-    755                 if (id >= scpsys->soc_data->num_hwv_domains) {
-    756                         dev_err(scpsys->dev, "%pOF: invalid HWV domain id %d\n", node, id);
-    757                         return ERR_PTR(-EINVAL);
-    758                 }
-    759 
-    760                 domain_data = NULL;
+    But let's use that as an opportunity to do more cleanups.
 
-NULL here.
+ drivers/remoteproc/mtk_scp.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-    761                 hwv_domain_data = &scpsys->soc_data->hwv_domains_data[id];
-    762 
-    763                 break;
-    764         default:
-    765                 return ERR_PTR(-EINVAL);
-    766         }
-    767 
-    768         pd = devm_kzalloc(scpsys->dev, sizeof(*pd), GFP_KERNEL);
-    769         if (!pd)
-    770                 return ERR_PTR(-ENOMEM);
-    771 
-    772         pd->data = domain_data;
-                ^^^^^^^^^^^^^^^^^^^^^^
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 10e3f9eb8cd2..db8fd045468d 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -1127,11 +1127,11 @@ static const char *scp_get_default_fw_path(struct device *dev, int core_id)
+ 		return ERR_PTR(-EINVAL);
+ 
+ 	if (core_id >= 0)
+-		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp_c%1d", core_id);
++		ret = snprintf(scp_fw_file, sizeof(scp_fw_file), "scp_c%d", core_id);
+ 	else
+-		ret = snprintf(scp_fw_file, ARRAY_SIZE(scp_fw_file), "scp");
+-	if (ret <= 0)
+-		return ERR_PTR(ret);
++		ret = snprintf(scp_fw_file, sizeof(scp_fw_file), "scp");
++	if (ret >= sizeof(scp_fw_file))
++		return ERR_PTR(-ENAMETOOLONG);
+ 
+ 	/* Not using strchr here, as strlen of a const gets optimized by compiler */
+ 	soc = &compatible[strlen("mediatek,")];
+-- 
+2.51.0
 
-    773         pd->hwv_data = hwv_domain_data;
-    774         pd->scpsys = scpsys;
-    775 
-    776         if (MTK_SCPD_CAPS(pd, MTK_SCPD_DOMAIN_SUPPLY)) {
-    777                 pd->supply = devm_of_regulator_get_optional(scpsys->dev, node, "domain");
-    778                 if (IS_ERR(pd->supply))
-    779                         return dev_err_cast_probe(scpsys->dev, pd->supply,
-    780                                       "%pOF: failed to get power supply.\n",
-    781                                       node);
-    782         }
-    783 
-    784         num_clks = of_clk_get_parent_count(node);
-    785         if (num_clks > 0) {
-    786                 /* Calculate number of subsys_clks */
-    787                 of_property_for_each_string(node, "clock-names", prop, clk_name) {
-    788                         char *subsys;
-    789 
-    790                         subsys = strchr(clk_name, '-');
-    791                         if (subsys)
-    792                                 pd->num_subsys_clks++;
-    793                         else
-    794                                 pd->num_clks++;
-    795                 }
-    796 
-    797                 pd->clks = devm_kcalloc(scpsys->dev, pd->num_clks, sizeof(*pd->clks), GFP_KERNEL);
-    798                 if (!pd->clks)
-    799                         return ERR_PTR(-ENOMEM);
-    800 
-    801                 pd->subsys_clks = devm_kcalloc(scpsys->dev, pd->num_subsys_clks,
-    802                                                sizeof(*pd->subsys_clks), GFP_KERNEL);
-    803                 if (!pd->subsys_clks)
-    804                         return ERR_PTR(-ENOMEM);
-    805 
-    806         }
-    807 
-    808         for (i = 0; i < pd->num_clks; i++) {
-    809                 clk = of_clk_get(node, i);
-    810                 if (IS_ERR(clk)) {
-    811                         ret = PTR_ERR(clk);
-    812                         dev_err_probe(scpsys->dev, ret,
-    813                                       "%pOF: failed to get clk at index %d\n", node, i);
-    814                         goto err_put_clocks;
-    815                 }
-    816 
-    817                 pd->clks[clk_ind++].clk = clk;
-    818         }
-    819 
-    820         for (i = 0; i < pd->num_subsys_clks; i++) {
-    821                 clk = of_clk_get(node, i + clk_ind);
-    822                 if (IS_ERR(clk)) {
-    823                         ret = PTR_ERR(clk);
-    824                         dev_err_probe(scpsys->dev, ret,
-    825                                       "%pOF: failed to get clk at index %d\n", node,
-    826                                       i + clk_ind);
-    827                         goto err_put_subsys_clocks;
-    828                 }
-    829 
-    830                 pd->subsys_clks[i].clk = clk;
-    831         }
-    832 
-    833         if (scpsys->domains[id]) {
-    834                 ret = -EINVAL;
-    835                 dev_err(scpsys->dev,
-    836                         "power domain with id %d already exists, check your device-tree\n", id);
-    837                 goto err_put_subsys_clocks;
-    838         }
-    839 
-    840         if (pd->data && pd->data->name)
-                    ^^^^^^^^
-Check for NULL
-
-    841                 pd->genpd.name = pd->data->name;
-    842         else if (pd->hwv_data && pd->hwv_data->name)
-    843                 pd->genpd.name = pd->hwv_data->name;
-    844         else
-    845                 pd->genpd.name = node->name;
-    846 
-    847         if (scpsys->soc_data->type == SCPSYS_MTCMOS_TYPE_DIRECT_CTL) {
-    848                 pd->genpd.power_off = scpsys_power_off;
-    849                 pd->genpd.power_on = scpsys_power_on;
-    850         } else {
-    851                 pd->genpd.power_off = scpsys_hwv_power_off;
-    852                 pd->genpd.power_on = scpsys_hwv_power_on;
-    853 
-    854                 /* HW-Voter code can be invoked in atomic context */
-    855                 pd->genpd.flags |= GENPD_FLAG_IRQ_SAFE;
-    856         }
-    857 
-    858         /*
-    859          * Initially turn on all domains to make the domains usable
-    860          * with !CONFIG_PM and to get the hardware in sync with the
-    861          * software.  The unused domains will be switched off during
-    862          * late_init time.
-    863          */
-    864         if (MTK_SCPD_CAPS(pd, MTK_SCPD_KEEP_DEFAULT_OFF)) {
---> 865                 if (scpsys_domain_is_on(pd))
-                                                ^^
-The patch adds an unchecked dereference of pd->data in the
-scpsys_domain_is_on() function.
-
-
-    866                         dev_warn(scpsys->dev,
-    867                                  "%pOF: A default off power domain has been ON\n", node);
-    868         } else {
-    869                 ret = pd->genpd.power_on(&pd->genpd);
-    870                 if (ret < 0) {
-    871                         dev_err(scpsys->dev, "%pOF: failed to power on domain: %d\n", node, ret);
-    872                         goto err_put_subsys_clocks;
-    873                 }
-    874 
-    875                 if (MTK_SCPD_CAPS(pd, MTK_SCPD_ALWAYS_ON))
-    876                         pd->genpd.flags |= GENPD_FLAG_ALWAYS_ON;
-    877         }
-    878 
-
-regards,
-dan carpenter
 
