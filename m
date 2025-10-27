@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B53ECCF9E5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 18:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E99E1CCF9E5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 18:59:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MFWQummmvWqtMZ6PmEi7qpi+SlTV+/WN6UNFhAkDscU=; b=1JaFWibT7qMqmG
-	Uxx0PyCNBWmHCSOGjfcnHrpEmCs7vxJIC3N+T4JJx8ATv3kSJLvGg4A+foTQ3wKPnoISN8QNkl6Cn
-	fD9QAQnM1GJkNxgAdAb6Ogwp3omvlq4dW2UgvxX462Dwy+hsDlI/JcCwN3eYKAzpkjEbyX2iOiWE/
-	Cm1kYiUFQIihwMaZoWPStAlIMW6yk2dvZYrt7oa/1VIQc190tTTS/ih1uF/sbAEPE1AfkpkO86Mv0
-	xoYkRvTTo1w8drW+B2DDc1laEgpgc2NXUT3QLZV+r2imtSQ8kcwE5xAods0RCy8uTPB6jCk9PGq1K
-	V1JYcz2wc7WYx2JFYC0A==;
+	List-Owner; bh=dQXGy4CtXp99A9pz3fr6LNjYFnRRd4Px2etwlfPAaLs=; b=vzheGgDX0RcZmf
+	C3INokCcNjS/2CUs/NrFdeNX18hgsv/UhqRE2cBjcWNZ+oD9DjSGGWEDTomkUYdr6fqh9axF1gGFa
+	m5izGQCiXhIL4YapuiQkTZQbpTfKBzbpP8N83HNh2HRS9FjgYNMv8bv8NOJBwxMOE0idc8ttDXtOf
+	itoLxxEusI+3XjPHrIicS+TdK3bAHmrC39fYGptlkBWJnumEuo2x6sNfOttgQvioftfVQbfUOAuWL
+	0jAt3JciXHEXEz/DwBADWQUbXHEpsgkLD0prCa0CtpmcLfrVX4NwmUreY9R0n7RLPtqZC2urpLgKX
+	aRFutU7BHrZFk53WIy+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDSQJ-0000000EbKP-11oa;
-	Mon, 27 Oct 2025 18:58:31 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vDSRZ-0000000Ebaa-1iiT;
+	Mon, 27 Oct 2025 18:59:50 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDSQH-0000000EbJX-3wRQ;
-	Mon, 27 Oct 2025 18:58:30 +0000
+	id 1vDSRW-0000000EbZf-2yb5;
+	Mon, 27 Oct 2025 18:59:47 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5AEF861753;
-	Mon, 27 Oct 2025 18:58:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2FAEC4CEFD;
-	Mon, 27 Oct 2025 18:58:25 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4EBB14416E;
+	Mon, 27 Oct 2025 18:59:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB671C113D0;
+	Mon, 27 Oct 2025 18:59:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761591509;
-	bh=KokesvZHTOYQVYRu9cUCVazcgroa5wNFAdW6lFmynfU=;
+	s=k20201202; t=1761591586;
+	bh=KhgvbrvaBrtsnsIalrn68qZxPcbhrZCYUVd0ZLBgFNU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=o+cHlvQ2JfWjnvTt2kdqYgthP/vlrcpy4gAoTrRDCW6CGk913gZrYcilQZRo4N93K
-	 E8Z8+3SRvCMaxywSn1AA+I9RRNIQQsJFUWyCU1zqOX0eeGJPMoSi9EmgES+uo0dcBl
-	 uTIoP008ffuWVmUHWzFviljVEec5rAg4nq2J+Gc0hMzvaVPJgPTu4RdaYh7HkeFSa1
-	 ekIWFRrhQJOwCupAPCMXOGyhwjYC85fudYK6ecB1ik7/B0Xk6R/HOr/+SOYvUT5p6G
-	 aGFG4KrdBdaQfE5Se9OsjStC+Vl2kkxb5tvAY83qfatnoSBecArg2oYiSvonhag9Dy
-	 z1/gD7v3rrntw==
-Message-ID: <35504988-448e-4a5c-8ea6-769c06117c01@kernel.org>
-Date: Mon, 27 Oct 2025 19:58:23 +0100
+	b=UJgIJchWLCw7535j6aGg49tYl7XoYbpvFXON5wSny0BF+yHlwyoEh4bnYpaVGBxJi
+	 xPfl/usGdCdtIpnevYAuXWZqVDORWKF/OHcwVTuubvyDZL47aUPeH0btM/Uz3rQkry
+	 ORuJl02JZbK9lE/yXmpXcrihwiX8evARxvb3sBlHhyWd8tzFb98hEy6w1OUpYbUzsr
+	 UNWx64wHBzOoDjYEzLXF1O+pTZcxl3OG+Td3UlU0sGgjzRDtPJ0f9oQAH25/HkgTGO
+	 WSJsmIS8xJDN6KG8EwHmXzYr6zhq4KuArDiG5H7WQTYBpUQmiNONu44PFi0y85bksr
+	 RHy9jEYokobYw==
+Message-ID: <b6d51f3c-bf53-475e-ab2e-7346283fd881@kernel.org>
+Date: Mon, 27 Oct 2025 19:59:40 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 3/6] arm64: dts: mediatek: mt7988a: Add label for
- ssusb0
+Subject: Re: [PATCH v1 4/6] arm64: dts: mt7988: Add devicetree for BananaPi R4
+ Pro
 To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 References: <20251027132817.212534-1-linux@fw-web.de>
- <20251027132817.212534-4-linux@fw-web.de>
+ <20251027132817.212534-5-linux@fw-web.de>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -99,9 +99,13 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20251027132817.212534-4-linux@fw-web.de>
+In-Reply-To: <20251027132817.212534-5-linux@fw-web.de>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251027_115946_794711_10A7763F 
+X-CRM114-Status: UNSURE (   7.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,14 +122,32 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 27/10/2025 14:28, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Add label for ssusb0 node which is used for BPI-R4-Pro.
+> +
+> +/ {
+> +	aliases {
+> +		ethernet0 = &gmac0;
+> +		i2c0 = &i2c0;
+> +		i2c1 = &i2c1;
+> +		i2c2 = &i2c2;
+> +		/* PCA9548 (0-0070) provides 4 i2c channels */
+> +		i2c3 = &imux0;
+> +		i2c4 = &imux1_sfp1;
+> +		i2c5 = &imux2_sfp2;
+> +		i2c6 = &imux3_wifi;
+> +	};
+> +
+> +	chosen {
+> +		stdout-path = &serial0;
+> +		bootargs = "console=ttyS0,115200n1 \
 
-This makes no sense on its own. We do not add labels because they have 0
-impact.
+Drop, stdout-path is for that.
 
-Please drop or squash.
+> +			    earlycon=uart8250,mmio32,0x11000000";
+
+earlycon is debugging, not for mainline usage, so also drop.
+
+> +	};
+> +
 
 Best regards,
 Krzysztof
