@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF326CCF9EA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF4F1CCF9E5
 	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 13:28:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
@@ -12,22 +12,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AjynTW9Z5XWRZ3pVLcdDTKEvclTG+KRQvKgbPZLy9QI=; b=u50ckL+jtmpKf1
-	49jCEuyLM25OxUK7mA57skfDgoLRP3y1xhPRSFp8WBFM8h/5ah4I23cpLKxEHeYR9nA4yxwZGS36P
-	yYVhP0pFH+Gy2QVJK9WtIJjKjjxIT9G3yU2B7wlVvc4ByBO2jeEZ9i+47l4zMouJCRj843lQ0t/yv
-	jB8dhjaeyPC/XjfKTpkustbr3ezQzzx8aK6n3oT4oby5d+bWjnDTLMumQTXoklijOa4kuB8sc7M18
-	E9FtExyo0T7zxL9unZoyHFE0aukFvqy/qHddsKrY60rK/MzhtG3+CSyESq3KfzeYhfs3vOliL2g4G
-	tRTpVn4XU6PwXfr6InLQ==;
+	List-Owner; bh=VysT7Mn8NKFGdQhAHI7tG5Xcp6xnNIZ6sTmQJxUySJc=; b=ZU0+mCCwvXc8xh
+	9EFo18vufbN6o4xBy59KITvKb3Hl1OFZUnHlYrNvzsO1b9ofgrDa9QBjPTW+D0jYs8Jq0KosVRMCV
+	I1PGTioeWSsz6tlfvxQtfywy6ZYz8N452picsX4MFiLlTgeigpStrxZpiBhb/uSEXTYvXALoiDzPY
+	CosDroi1JQxUxOnFr0UBLwJp6ofwopjwGcMN3Y8yVcMys7ge9Sjaj0zRUl+sVSPSPx+FmnxegWD2q
+	dGWWab1Hqv0BJTFWUKjnLdf8/AzzGEQ0063YOd7/rkzO4Zyty27+b8isN+2/ipSEf3Al7Cm17ZON6
+	4ejvXP8gDPQn2Igh/5Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDNHG-0000000E1E0-3bVA;
-	Mon, 27 Oct 2025 13:28:50 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1vDNHH-0000000E1ET-0d0P;
+	Mon, 27 Oct 2025 13:28:51 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDNGw-0000000E11Q-4C7M;
+	id 1vDNGx-0000000E11R-04od;
 	Mon, 27 Oct 2025 13:28:33 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout4.routing.net (Postfix) with ESMTP id 3D502100FD8;
+	by mxout1.routing.net (Postfix) with ESMTP id 7A9DD40392;
 	Mon, 27 Oct 2025 13:28:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
 	s=routing; t=1761571707;
@@ -35,12 +35,12 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=AjynTW9Z5XWRZ3pVLcdDTKEvclTG+KRQvKgbPZLy9QI=;
-	b=ATSTPevjWT8GaLNd3B7QmTXfShQT637u83iztzhpOy/LyqNqpYDZIg/vrPvfxXVbEsnOrE
-	wPmzijSAssRWU+C/YBGmr8mhMT9upWF1adtPRZl30keEhpbXRhir2RD/7kz6TgczKDePC1
-	RyUwkJe+yPCMs57KwDsg5cU5NgN08JI=
+	bh=VysT7Mn8NKFGdQhAHI7tG5Xcp6xnNIZ6sTmQJxUySJc=;
+	b=WN8hrkiVN5VNPPdh87i8/QAbQJLN/STRD8uRX4U9/s2m8nmlKcYpdsQKsI8JSNRrWx0zRv
+	p7E3NsIxvLr9OgTZYgEAZ4rZsE6DLbtxWRtIadDqgUoLwa0iRkJkmxjhNf+CGMJODFwE/J
+	qQyT05B1AmdHr2kNUInx5HBXcc8hM0c=
 Received: from frank-u24.. (fttx-pool-217.61.159.158.bambit.de [217.61.159.158])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 0E7A0122700;
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 48BD41226C0;
 	Mon, 27 Oct 2025 13:28:27 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Rob Herring <robh@kernel.org>,
@@ -49,17 +49,17 @@ To: Rob Herring <robh@kernel.org>,
 	Linus Walleij <linus.walleij@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v1 5/6] arm64: dts: mediatek: mt7988a-bpi-r4-pro: add PCIe overlays
-Date: Mon, 27 Oct 2025 14:28:15 +0100
-Message-ID: <20251027132817.212534-6-linux@fw-web.de>
+Subject: [PATCH v1 6/6] arm64: dts: mediatek: mt7988a-bpi-r4pro: Add mmc overlays
+Date: Mon, 27 Oct 2025 14:28:16 +0100
+Message-ID: <20251027132817.212534-7-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251027132817.212534-1-linux@fw-web.de>
 References: <20251027132817.212534-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_062831_266176_803A76C6 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20251027_062831_259593_35906331 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,43 +77,80 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add overlays to switch between key-m and key-e slots.
+Add MMC overlays for BPI-R4 Pro.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
  arch/arm64/boot/dts/mediatek/Makefile         |  2 ++
- .../mt7988a-bananapi-bpi-r4-pro-cn15.dtso     | 20 +++++++++++++++++++
- .../mt7988a-bananapi-bpi-r4-pro-cn18.dtso     | 20 +++++++++++++++++++
- 3 files changed, 42 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso
+ .../mt7988a-bananapi-bpi-r4-pro-emmc.dtso     | 33 +++++++++++++++++++
+ .../mt7988a-bananapi-bpi-r4-pro-sd.dtso       | 31 +++++++++++++++++
+ 3 files changed, 66 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-emmc.dtso
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-sd.dtso
 
 diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 8640e5f32d4b..8e99f6e33b25 100644
+index 8e99f6e33b25..776b9274e8fa 100644
 --- a/arch/arm64/boot/dts/mediatek/Makefile
 +++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -26,6 +26,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-2g5.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-emmc.dtbo
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-pro-4e.dtb
+@@ -28,6 +28,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-pro-4e.dtb
  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-pro-8x.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-pro-cn15.dtbo
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-pro-cn18.dtbo
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-pro-cn15.dtbo
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-pro-cn18.dtbo
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-pro-emmc.dtbo
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-pro-sd.dtbo
  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-sd.dtbo
  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-emmc.dtso b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-emmc.dtso
 new file mode 100644
-index 000000000000..9750916042de
+index 000000000000..5ed2f0a6bd66
 --- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso
-@@ -0,0 +1,20 @@
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-emmc.dtso
+@@ -0,0 +1,33 @@
 +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
 +/*
-+ * Copyright (C) 2025 MediaTek Inc.
++ * Copyright (C) 2021 MediaTek Inc.
 + * Author: Frank Wunderlich <frank-w@public-files.de>
 + */
 +
-+/* This enables key-b slot CN15 on pcie2(11280000 1L0) on BPI-R4-Pro */
++/dts-v1/;
++/plugin/;
++
++/ {
++	compatible = "bananapi,bpi-r4-pro", "mediatek,mt7988a";
++};
++
++&{/soc/mmc@11230000} {
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc0_pins_emmc_51>;
++	pinctrl-1 = <&mmc0_pins_emmc_51>;
++	bus-width = <8>;
++	max-frequency = <200000000>;
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	mmc-hs400-1_8v;
++	hs400-ds-delay = <0x12814>;
++	vqmmc-supply = <&reg_1p8v>;
++	vmmc-supply = <&reg_3p3v>;
++	non-removable;
++	no-sd;
++	no-sdio;
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++};
++
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-sd.dtso b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-sd.dtso
+new file mode 100644
+index 000000000000..1ec1a9fbd8ba
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-sd.dtso
+@@ -0,0 +1,31 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright (C) 2023 MediaTek Inc.
++ * Author: Frank Wunderlich <frank-w@public-files.de>
++ */
 +
 +/dts-v1/;
 +/plugin/;
@@ -124,35 +161,22 @@ index 000000000000..9750916042de
 +	compatible = "bananapi,bpi-r4-pro", "mediatek,mt7988a";
 +};
 +
-+&{/soc/pinctrl@1001f000/pcie-2-hog} {
-+	output-low;
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso
-new file mode 100644
-index 000000000000..9830fb0fd97a
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso
-@@ -0,0 +1,20 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2025 MediaTek Inc.
-+ * Author: Frank Wunderlich <frank-w@public-files.de>
-+ */
-+
-+/* This enables key-b slot CN18 on pcie3(11290000 1L1) on BPI-R4-Pro */
-+
-+/dts-v1/;
-+/plugin/;
-+
-+#include <dt-bindings/gpio/gpio.h>
-+
-+/ {
-+	compatible = "bananapi,bpi-r4-pro", "mediatek,mt7988a";
++&{/soc/mmc@11230000} {
++	pinctrl-names = "default", "state_uhs";
++	pinctrl-0 = <&mmc0_pins_sdcard>;
++	pinctrl-1 = <&mmc0_pins_sdcard>;
++	cd-gpios = <&pio 12 GPIO_ACTIVE_LOW>;
++	bus-width = <4>;
++	max-frequency = <48000000>;
++	cap-sd-highspeed;
++	vmmc-supply = <&reg_3p3v>;
++	vqmmc-supply = <&reg_3p3v>;
++	no-mmc;
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
 +};
 +
-+&{/soc/pinctrl@1001f000/pcie-3-hog} {
-+	output-low;
-+};
 -- 
 2.43.0
 
