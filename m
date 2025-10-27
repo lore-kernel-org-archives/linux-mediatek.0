@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E43C9CCF9EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 11:14:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E0ADCCF9F0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 11:14:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5u937czeQ8wfqrMraWRbdfWBqJBE4/bUqRQeDYEu5bs=; b=arV41NWePruvw09Cy+MedGjMTP
-	Z3C317IXYlZFhJWvhhOdkmyRqaQWtzAewoMaCq6nPQQRL9AmuyIx9qZ16GWJvAKt3ukt8huqn0UNS
-	KsDb81PWdLGAmVi9MAw2H50qA0JzOtX/OgOshlt0xGSsmyi58he9VAmj5XBXoIXAm/Q8V1KYH6Ycd
-	Shy+IUhjF0D153x6I9ZyjO/F5CGjXcGZUzBLM1VdgEnBsY+iDhPVPSILBa79exvjIAIIBP4D8TOUn
-	wbTkBPBrqHpIgxLTSldP0zsRSAg4NSKtqPJROMlYePmYe8XC01PeT0uoSw2+KwxRY7xsD3znMnbgR
-	gL55BoGQ==;
+	bh=bLUe7ok4FRIwf0amsFxxdNsa8W0l4xogDvz9PTcumrA=; b=ZqKuaCc2PEUtVkzyq/j1XP0l1c
+	yo33jNIaun1LKMsxM87e9gzfrtj/R/Hg+IUsoPccee5IrkmLKM0N8T4w5uZQZL9FIdVLdPbxnVSGB
+	hyrgfamYpQKBLr7IqqGGlAqxjkSAJ76BB20uVjVq0Q3iYbD6VYsbENw7/PBZzOA1vm4Z3cyLyjD3p
+	9/3kOaUqdgn31OIvdIJlpYiaEGdbu0/ju+elUsYQtN2L4Pm04lPoiouulIF97+SSnV7D+kl1Qp9nZ
+	GfpGRyzPgBFKz6gxhu/+kKE66RCPNrMlzbajQBL+ARetzUyqkykTvibxBzZaI8xAJ49gcxb/CRtRF
+	YVIhhjGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDLAs-0000000DjtR-0Ph9;
+	id 1vDLAs-0000000DjuI-2f9Q;
 	Mon, 27 Oct 2025 11:14:06 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDLAc-0000000DjjY-1lwc;
-	Mon, 27 Oct 2025 11:13:51 +0000
+	id 1vDLAd-0000000Djjv-1P41;
+	Mon, 27 Oct 2025 11:13:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761563628;
-	bh=lzGnPtkld4klxH26DmZNGJG2N0pnPsOl2zEvnIGz8vY=;
+	s=mail; t=1761563629;
+	bh=f5P3+e3xtzKeCpgjf0REjVgwacDa/HF6QyCwbdP8mxs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LB6x0IZH48gZVHfk8esGZZBVkuoMxtX2N3GZP9MJ8L+0Nt0JR1D2pJOBlE4gwILCd
-	 ffJGmdpJ9mwOmIieoQIOcyvp8r0/gsGTy7yQ+y84UFaVw901uU9tJ9YSXcl2X7Dyqy
-	 FgioIp4wjj0NqlNGs/Tng66PhUf6+BMN9R22+cO6HfwjEd5i8yMghBtpj9zXwQWqoZ
-	 aegtmI0XEnGN7gkZ5jvt2fAPvYN/8ArCzF6lOLhbdUJ5m43qyVCpIrLeE1/KK9l6cK
-	 r5XHKbewTrI6ZvhQ7cVEvWabVNvQmU+GlE9c6KHakcJuwR/doUVd/DnHh38npZDZ3K
-	 q/8xRCIw1WoPQ==
+	b=Xyxvd/U1O2a3lCyj/QysGL0noPhkvEb7ZearpAdcQoN6BXRe8Dt7PpdbzbncKghY8
+	 jgrCcHOhdOxIkemvrtoxwVUERBEfcSICh++GmgL7Jso0rOgCl2Woehj0iDdQ+qGIA4
+	 cK/yK2FfFbFJtuW1AHq7t7IDgMg3PSDjf6LLGYI7hyqpiR7ZjGELWKVKpxJq1IZNie
+	 xOzwvxEtrRC30UTtyFx1KOo+rsMYUo2+hNTtaN8QakQlIlyGmgk+h4e0psdbZ7/jct
+	 tXuVgNUFQ7cI5XkmiIbGLhF/rDJLywAyM0QLJPTt/B0u+grXtAld7yOkQ3zvsZkiDP
+	 lJLhahC/Mxh4w==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DD01817E1401;
-	Mon, 27 Oct 2025 12:13:47 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id ADD0817E1413;
+	Mon, 27 Oct 2025 12:13:48 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: sboyd@kernel.org
 Cc: mturquette@baylibre.com,
@@ -61,17 +61,17 @@ Cc: mturquette@baylibre.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v2 3/7] clk: mediatek: clk-mtk: Split and rename __mtk_clk_simple_probe()
-Date: Mon, 27 Oct 2025 12:13:39 +0100
-Message-ID: <20251027111343.21723-4-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 4/7] clk: mediatek: Add and wire up mtk_spmi_clk_register_gates()
+Date: Mon, 27 Oct 2025 12:13:40 +0100
+Message-ID: <20251027111343.21723-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.51.1
 In-Reply-To: <20251027111343.21723-1-angelogioacchino.delregno@collabora.com>
 References: <20251027111343.21723-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_041350_623424_B41C5BB7 
-X-CRM114-Status: GOOD (  17.47  )
+X-CRM114-CacheID: sfid-20251027_041351_530575_DBF67DC3 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,147 +86,81 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for adding support to register clock controllers
-that are not reachable over MMIO but rather over a different bus,
-especially SPMI (for PMIC clocks!), split out the current private
-__mtk_clk_simple_probe() function in two, make it accept a handle
-to regmap in and call it mtk_clk_simple_probe_internal().
-
-The new function is not static, but its symbol is *not* exported:
-this is done on purpose, because this is supposed to be usable
-only by clock registration helpers inside of clk/mediatek, and
-only ones built inside of the same module as clk-mtk, as will be
-done in a later change.
+In preparation for adding means to register SPMI clock controllers
+add a new mtk_spmi_clk_register_gates() function and wire it up to
+mtk_clk_simple_probe_internal().
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/clk/mediatek/clk-mtk.c | 58 ++++++++++++++++++++++++----------
- drivers/clk/mediatek/clk-mtk.h |  5 +++
- 2 files changed, 46 insertions(+), 17 deletions(-)
+ drivers/clk/mediatek/clk-gate.c | 10 ++++++++++
+ drivers/clk/mediatek/clk-gate.h |  6 ++++++
+ drivers/clk/mediatek/clk-mtk.c  |  8 ++++++--
+ 3 files changed, 22 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
+index 8d1cc6a98a5f..1bc09c5ca897 100644
+--- a/drivers/clk/mediatek/clk-gate.c
++++ b/drivers/clk/mediatek/clk-gate.c
+@@ -319,6 +319,16 @@ int mtk_clk_register_gates(struct device *dev, struct device_node *node,
+ }
+ EXPORT_SYMBOL_GPL(mtk_clk_register_gates);
+ 
++int mtk_spmi_clk_register_gates(struct device *dev, struct device_node *node,
++				const struct mtk_gate *clks, int num,
++				struct clk_hw_onecell_data *clk_data,
++				struct regmap *regmap)
++{
++	return mtk_clk_register_all_gates(dev, node, regmap, NULL,
++					  clks, num, clk_data);
++}
++EXPORT_SYMBOL_GPL(mtk_spmi_clk_register_gates);
++
+ void mtk_clk_unregister_gates(const struct mtk_gate *clks, int num,
+ 			      struct clk_hw_onecell_data *clk_data)
+ {
+diff --git a/drivers/clk/mediatek/clk-gate.h b/drivers/clk/mediatek/clk-gate.h
+index 4f05b9855dae..924219344021 100644
+--- a/drivers/clk/mediatek/clk-gate.h
++++ b/drivers/clk/mediatek/clk-gate.h
+@@ -14,6 +14,7 @@ struct clk_hw_onecell_data;
+ struct clk_ops;
+ struct device;
+ struct device_node;
++struct regmap;
+ 
+ extern const struct clk_ops mtk_clk_gate_ops_setclr;
+ extern const struct clk_ops mtk_clk_gate_ops_setclr_inv;
+@@ -57,6 +58,11 @@ int mtk_clk_register_gates(struct device *dev, struct device_node *node,
+ 			   const struct mtk_gate *clks, int num,
+ 			   struct clk_hw_onecell_data *clk_data);
+ 
++int mtk_spmi_clk_register_gates(struct device *dev, struct device_node *node,
++				const struct mtk_gate *clks, int num,
++				struct clk_hw_onecell_data *clk_data,
++				struct regmap *regmap);
++
+ void mtk_clk_unregister_gates(const struct mtk_gate *clks, int num,
+ 			      struct clk_hw_onecell_data *clk_data);
+ 
 diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index 19cd27941747..bf57c65b01ff 100644
+index bf57c65b01ff..a33011358f08 100644
 --- a/drivers/clk/mediatek/clk-mtk.c
 +++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -2,6 +2,8 @@
- /*
-  * Copyright (c) 2014 MediaTek Inc.
-  * Author: James Liao <jamesjj.liao@mediatek.com>
-+ * Copyright (c) 2025 Collabora Ltd
-+ *		      AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-  */
+@@ -552,8 +552,12 @@ int mtk_clk_simple_probe_internal(struct platform_device *pdev,
+ 	}
  
- #include <linux/bitops.h>
-@@ -14,6 +16,7 @@
- #include <linux/of_address.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
- #include <linux/slab.h>
- 
- #include "clk-mtk.h"
-@@ -464,26 +467,15 @@ void mtk_clk_unregister_dividers(const struct mtk_clk_divider *mcds, int num,
- }
- EXPORT_SYMBOL_GPL(mtk_clk_unregister_dividers);
- 
--static int __mtk_clk_simple_probe(struct platform_device *pdev,
--				  struct device_node *node)
-+int mtk_clk_simple_probe_internal(struct platform_device *pdev,
-+				  struct device_node *node,
-+				  const struct mtk_clk_desc *mcd,
-+				  struct regmap *regmap)
- {
--	const struct platform_device_id *id;
--	const struct mtk_clk_desc *mcd;
- 	struct clk_hw_onecell_data *clk_data;
- 	void __iomem *base = NULL;
- 	int num_clks, r;
- 
--	mcd = device_get_match_data(&pdev->dev);
--	if (!mcd) {
--		/* Clock driver wasn't registered from devicetree */
--		id = platform_get_device_id(pdev);
--		if (id)
--			mcd = (const struct mtk_clk_desc *)id->driver_data;
--
--		if (!mcd)
--			return -EINVAL;
--	}
--
- 	/* Composite and divider clocks needs us to pass iomem pointer */
- 	if (mcd->composite_clks || mcd->divider_clks) {
- 		if (!mcd->shared_io)
-@@ -653,20 +645,52 @@ static void __mtk_clk_simple_remove(struct platform_device *pdev,
- 	mtk_free_clk_data(clk_data);
- }
- 
-+static int mtk_clk_get_desc(struct platform_device *pdev, const struct mtk_clk_desc **d)
-+{
-+	const struct platform_device_id *id;
-+	const struct mtk_clk_desc *mcd;
-+
-+	mcd = device_get_match_data(&pdev->dev);
-+	if (!mcd) {
-+		/* Clock driver wasn't registered from devicetree */
-+		id = platform_get_device_id(pdev);
-+		if (id)
-+			mcd = (const struct mtk_clk_desc *)id->driver_data;
-+
-+		if (!mcd)
-+			return -EINVAL;
-+	}
-+	*d = mcd;
-+
-+	return 0;
-+}
-+
- int mtk_clk_pdev_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct device_node *node = dev->parent->of_node;
-+	const struct mtk_clk_desc *mcd;
-+	int ret;
- 
--	return __mtk_clk_simple_probe(pdev, node);
-+	ret = mtk_clk_get_desc(pdev, &mcd);
-+	if (ret)
-+		return ret;
-+
-+	return mtk_clk_simple_probe_internal(pdev, node, mcd, NULL);
- }
- EXPORT_SYMBOL_GPL(mtk_clk_pdev_probe);
- 
- int mtk_clk_simple_probe(struct platform_device *pdev)
- {
- 	struct device_node *node = pdev->dev.of_node;
-+	const struct mtk_clk_desc *mcd;
-+	int ret;
-+
-+	ret = mtk_clk_get_desc(pdev, &mcd);
-+	if (ret)
-+		return ret;
- 
--	return __mtk_clk_simple_probe(pdev, node);
-+	return mtk_clk_simple_probe_internal(pdev, node, mcd, NULL);
- }
- EXPORT_SYMBOL_GPL(mtk_clk_simple_probe);
- 
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index 5417b9264e6d..945fd3ee79ca 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -262,6 +262,11 @@ struct mtk_clk_desc {
- 	bool need_runtime_pm;
- };
- 
-+int mtk_clk_simple_probe_internal(struct platform_device *pdev,
-+				  struct device_node *node,
-+				  const struct mtk_clk_desc *mcd,
-+				  struct regmap *regmap);
-+
- int mtk_clk_pdev_probe(struct platform_device *pdev);
- void mtk_clk_pdev_remove(struct platform_device *pdev);
- int mtk_clk_simple_probe(struct platform_device *pdev);
+ 	if (mcd->clks) {
+-		r = mtk_clk_register_gates(&pdev->dev, node, mcd->clks,
+-					   mcd->num_clks, clk_data);
++		if (regmap)
++			r = mtk_spmi_clk_register_gates(&pdev->dev, node, mcd->clks,
++							mcd->num_clks, clk_data, regmap);
++		else
++			r = mtk_clk_register_gates(&pdev->dev, node, mcd->clks,
++						   mcd->num_clks, clk_data);
+ 		if (r)
+ 			goto unregister_dividers;
+ 	}
 -- 
 2.51.1
 
