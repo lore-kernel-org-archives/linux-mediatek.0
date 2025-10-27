@@ -4,66 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7F49CCF9EA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 10:45:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A0BCCF9E0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 11:05:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RH73zBVKuQkP3GCHlHab0zdB083Sd0sv+mvJjkV1Q6k=; b=NOJwyYmdeDoLCL
-	kkTDCSzeLoymNlxoo3LO2lNQX0zjnmqDsBwSJtj+Ru+OSKzGZH8fRiqF/2ZSvtVl9fXT3kxVAmY6M
-	9ZV57P5F6qK5rptlaNSHsgc69tV9VRoinly7qDQ8+zWGwMdtRjmES2JikHgQJFbkyFs8bdctyuU1j
-	FZARZXmQ44JBU7P9df71xOxHW9RxJNxE8aN1LqUHJ0HudPKKydyB6cQiXMOUV0EA6AmtEHfkKuaWS
-	VVM24p8EuSa+zqYgCTdPtCAz4zO3BU3X1DlRGYhdtih/e3phqYH033vBwePNflRaBqZLiO5dbA2Pg
-	PIwr8QkINO96+7BCsuQA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=X9tN7opxrbk6rFsgVuMK+J6MNyK+nY2qmoGtVGBjQ1s=; b=s1LNah2QVCLysFriYYOakJwJ2W
+	BITfi8+w+6At+870SXETKfXVC0eGcwsbLehPXrAkI6zoOHd0U10M82HpYj3hvPUV2y6JOLW12prci
+	2/TLV4WmLzQLr1UFx7YOHO9p+5RwQeN3GkCg2x8N1lj/xPxJa0ioxLWg18XnN6IOiiUh4+X4TUXUR
+	DC661PZpEqSD3cMjS8Q7trckQ7sbtGKYbdOBGtTUgZTT9sWOnpxGNV7F60akKH0omKbwthAgRiVcN
+	z9giKqJM9e4uOPEFhTMm2lzPlbwoNSRCbbEDPeet8gcHPUp4hQR7/UbyZbtzqWVtdihnEPBSE5o7y
+	Pc3D+c7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDKjN-0000000DgRg-42wR;
-	Mon, 27 Oct 2025 10:45:41 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vDL2g-0000000Dhpk-3Ha2;
+	Mon, 27 Oct 2025 11:05:38 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDKjK-0000000DgQ4-3kHl;
-	Mon, 27 Oct 2025 10:45:40 +0000
+	id 1vDL2d-0000000Dhnr-3YFn;
+	Mon, 27 Oct 2025 11:05:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761561936;
-	bh=Cnd+maDU7k3O40OcWpqyGgAGPEQpq+P5xfKyEVyrjBE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=U45os+jLfd0887hvFUj71ZP2F31oUBAvFO+VEBMzsN7YaRJI5C3ZhpJModkXo0KS7
-	 De8mnQ8zto8gBMm/3Vz8Ko8kjQ4N1naAgMKgkf8Q0tQPV6U1X1thK8DKCIOtpnuiXa
-	 TjSPWMx0lKxDy8W66GclINLh808pkHfg0iqSaWfewF5GksELs+4bMlmBUbwxES2TNQ
-	 uIBicZJ+PGDD8l7LQGdQsHYtM1Ac1MoyTXc9Ug2Z6Som06nV9CrqnMi8El3VrFj/HK
-	 8Oon8dQxdpHrQOjNlcSe/PrtWjW84iP1YfHMu8p5t9sBQ4ZgUY2NpyP+9thD/aBRLv
-	 p7wTvScjPHwxA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1761563133;
+	bh=IWto035l40+fJaTY2m3Tpy98wIXGiNE2cvLuilb0WyM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=BcW4d8ehuXlhmjGDAvjhvlFbZkhIpJQLjnkf7/l2mRMdAbtFeAdAd+OHhsazYBu+J
+	 Kvq3cU8wxpcoh+3NZh6jMgyzSiST8ZxYglJJWAHsBqqjO4LNaKs+tmeXw23WYlGbSO
+	 fJB2hhfOZGAi759dpa+n7EfclPLuZoUhLxB9EmqUHHOyC7cEbx3jTbeKE7+fE/6Y/a
+	 BM3mVX7TTW4lbiARpqXtI/AlnkAgH7qdLJjkQyRfB2Ay+BLbl5r0LP46x1e9sYbd6+
+	 bYcBSXFplpEEWrJqZmOMqlW6IvR9Tqt2wxCg9td2um9HRPBJJgBb3coMJSxgMPFO9z
+	 lB+aR5u6h6kOQ==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6D18717E0DC0;
-	Mon, 27 Oct 2025 11:45:35 +0100 (CET)
-Message-ID: <6f71b834-2b4d-48a8-be6f-1efdf0e78812@collabora.com>
-Date: Mon, 27 Oct 2025 11:45:34 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 4/5] thermal/drivers/mediatek/lvts_thermal: Add SoC
- based golden Temp
-To: Frank Wunderlich <linux@fw-web.de>, "Rafael J. Wysocki"
- <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-References: <20251026122143.71100-1-linux@fw-web.de>
- <20251026122143.71100-5-linux@fw-web.de>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B167E17E1276;
+	Mon, 27 Oct 2025 12:05:32 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20251026122143.71100-5-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: linux-mediatek@lists.infradead.org
+Cc: lee@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	lgirdwood@gmail.com,
+	broonie@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	wenst@chromium.org,
+	igor.belwon@mentallysanemainliners.org
+Subject: [PATCH v11 0/9] Add support MT6316/6363/MT6373 PMICs regulators and MFD
+Date: Mon, 27 Oct 2025 12:05:18 +0100
+Message-ID: <20251027110527.21002-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.51.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_034539_116250_B6A0D7DB 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20251027_040536_210776_3194F0D1 
+X-CRM114-Status: GOOD (  23.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,120 +80,177 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Mason Chang <mason-cw.chang@mediatek.com>, =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Balsam CHIHI <bchihi@baylibre.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/10/25 13:21, Frank Wunderlich ha scritto:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Add SoC based golden temp for invalid efuse data.
-> 
-> This is a preliminary patch for mt7987 support where goldentemp is
-> slightly higher than other SOCs.
-> 
+Changes in v11:
+ - Removed unnecessary #address-cells in all mt6316 bindings
 
-I've found this "hack" required for all of the preproduction SoCs, as those are
-usually unfused and/or missing at least some calibration parameters.
+Changes in v10:
+ - Added "struct" prefix to structs kerneldoc
+ - Renamed struct mtk_spmi_pmic_pdata to mtk_spmi_pmic_variant
+ - Added "REG_" to MT6363/73 mfd register definitions to disambiguate
+ - Expanded MTK_SPMI_PMIC_IRQ_GROUP macro parameter names as suggested
+ - Some rewording of comments as suggested, addition of more comments
+ - Refactored IRQ domain handling due to deprecation of function
+   irq_domain_add_tree() to use the new irq_domain_create_tree()
+ - Fixed to use generic_handle_domain_irq_safe() to avoid races
+ - Added support for two interrupt cells in translation
+ - Removed .irq_lock() and .irq_unlock() in favor of lockdep classes
+ - Added support for handling PMICs without IRQ Group register for
+   upcoming MT6685 implementation
 
-Are you using an early/preproduction/whatever SoC, or are you testing on a retail
-board?
+Changes in v9:
+ - Applied more bindings fixes as pointed out by Rob
+ - Changed irq fwspec to have 3 cells as the mfd driver handles 3
+ - Using intsize instead of fwspec.param_count in xlate (thanks Nicolas!)
 
-Regards,
-Angelo
+Changes in v8:
+ - Added REGMAP_SPMI selection in Kconfig for all of MT6316/6363/6373
+   to satisfy __devm_regmap_init_spmi_ext() dependency in case they
+   are built with COMPILE_TEST (+randconfig) configuration
+ - Fixed indentation in Kconfig on help lines (some were using spaces
+   instead of tab + 2 spaces, don't know how that happened)
+ - Removed forgotten final blank line on mt63{6,7}3-regulator.h header
+ - Fixed error checks in mt6363-regulator, mt6373-regulator for call
+   to mt63{6,7}e_spmi_register_regmap()
+ - Tested again on MT8196 Chromebook.
 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->   drivers/thermal/mediatek/lvts_thermal.c | 13 ++++++++++++-
->   1 file changed, 12 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-> index 9413b30f7b69..544941e8219a 100644
-> --- a/drivers/thermal/mediatek/lvts_thermal.c
-> +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> @@ -134,6 +134,7 @@ struct lvts_data {
->   	int num_init_cmd;
->   	int temp_factor;
->   	int temp_offset;
-> +	int golden_temp;
->   	int gt_calib_bit_offset;
->   	unsigned int def_calibration;
->   	bool irq_enable;
-> @@ -811,8 +812,10 @@ static int lvts_golden_temp_init(struct device *dev, u8 *calib,
->   	gt = (((u32 *)calib)[0] >> lvts_data->gt_calib_bit_offset) & 0xff;
->   
->   	/* A zero value for gt means that device has invalid efuse data */
-> -	if (gt && gt < LVTS_GOLDEN_TEMP_MAX)
-> +	if (gt && gt <= LVTS_GOLDEN_TEMP_MAX)
->   		golden_temp = gt;
-> +	else
-> +		golden_temp = lvts_data->golden_temp;
->   
->   	golden_temp_offset = golden_temp * 500 + lvts_data->temp_offset;
->   
-> @@ -1786,6 +1789,7 @@ static const struct lvts_data mt7988_lvts_ap_data = {
->   	.num_init_cmd	= ARRAY_SIZE(mt7988_init_cmds),
->   	.temp_factor	= LVTS_COEFF_A_MT7988,
->   	.temp_offset	= LVTS_COEFF_B_MT7988,
-> +	.golden_temp	= LVTS_GOLDEN_TEMP_DEFAULT,
->   	.gt_calib_bit_offset = 24,
->   	.irq_enable = true, //SDK false
->   };
-> @@ -1799,6 +1803,7 @@ static const struct lvts_data mt8186_lvts_data = {
->   	.num_init_cmd	= ARRAY_SIZE(default_init_cmds),
->   	.temp_factor	= LVTS_COEFF_A_MT7988,
->   	.temp_offset	= LVTS_COEFF_B_MT7988,
-> +	.golden_temp	= LVTS_GOLDEN_TEMP_DEFAULT,
->   	.gt_calib_bit_offset = 24,
->   	.def_calibration = 19000,
->   	.irq_enable = true,
-> @@ -1813,6 +1818,7 @@ static const struct lvts_data mt8188_lvts_mcu_data = {
->   	.num_init_cmd	= ARRAY_SIZE(default_init_cmds),
->   	.temp_factor	= LVTS_COEFF_A_MT8195,
->   	.temp_offset	= LVTS_COEFF_B_MT8195,
-> +	.golden_temp	= LVTS_GOLDEN_TEMP_DEFAULT,
->   	.gt_calib_bit_offset = 20,
->   	.def_calibration = 35000,
->   	.irq_enable = true,
-> @@ -1827,6 +1833,7 @@ static const struct lvts_data mt8188_lvts_ap_data = {
->   	.num_init_cmd	= ARRAY_SIZE(default_init_cmds),
->   	.temp_factor	= LVTS_COEFF_A_MT8195,
->   	.temp_offset	= LVTS_COEFF_B_MT8195,
-> +	.golden_temp	= LVTS_GOLDEN_TEMP_DEFAULT,
->   	.gt_calib_bit_offset = 20,
->   	.def_calibration = 35000,
->   	.irq_enable = true,
-> @@ -1841,6 +1848,7 @@ static const struct lvts_data mt8192_lvts_mcu_data = {
->   	.num_init_cmd	= ARRAY_SIZE(default_init_cmds),
->   	.temp_factor	= LVTS_COEFF_A_MT8195,
->   	.temp_offset	= LVTS_COEFF_B_MT8195,
-> +	.golden_temp	= LVTS_GOLDEN_TEMP_DEFAULT,
->   	.gt_calib_bit_offset = 24,
->   	.def_calibration = 35000,
->   	.irq_enable = true,
-> @@ -1855,6 +1863,7 @@ static const struct lvts_data mt8192_lvts_ap_data = {
->   	.num_init_cmd	= ARRAY_SIZE(default_init_cmds),
->   	.temp_factor	= LVTS_COEFF_A_MT8195,
->   	.temp_offset	= LVTS_COEFF_B_MT8195,
-> +	.golden_temp	= LVTS_GOLDEN_TEMP_DEFAULT,
->   	.gt_calib_bit_offset = 24,
->   	.def_calibration = 35000,
->   	.irq_enable = true,
-> @@ -1869,6 +1878,7 @@ static const struct lvts_data mt8195_lvts_mcu_data = {
->   	.num_init_cmd	= ARRAY_SIZE(default_init_cmds),
->   	.temp_factor	= LVTS_COEFF_A_MT8195,
->   	.temp_offset	= LVTS_COEFF_B_MT8195,
-> +	.golden_temp	= LVTS_GOLDEN_TEMP_DEFAULT,
->   	.gt_calib_bit_offset = 24,
->   	.def_calibration = 35000,
->   	.irq_enable = true,
-> @@ -1883,6 +1893,7 @@ static const struct lvts_data mt8195_lvts_ap_data = {
->   	.num_init_cmd	= ARRAY_SIZE(default_init_cmds),
->   	.temp_factor	= LVTS_COEFF_A_MT8195,
->   	.temp_offset	= LVTS_COEFF_B_MT8195,
-> +	.golden_temp	= LVTS_GOLDEN_TEMP_DEFAULT,
->   	.gt_calib_bit_offset = 24,
->   	.def_calibration = 35000,
->   };
+Changes in v7:
+ - Removed unintentionally added, useless Link tags from all patches
+ - #size-cells is now required in mfd mt6363 binding
+ - Further fixes in mt6363/73 regulator bindings
+ - Mentioned weird 9-bits BE format and usage of undocumented set/clr
+   registers in commit description for the MT6316 regulator driver
+ - Refactored bindings for MT6316 PMIC (regulators):
+   - Added reg, #address-cells as required properties
+   - Added regulator-allowed-modes and its description
+   - Changed mt6316b/mt6316c to use patternProperties instead, as it
+     now makes sense to avoid duplication while keeping documentation
+     for the regulator-allowed-modes property in all vbuck entries
+   - Added decent examples that correctly describes the MT6316 PMICs
+
+Changes in v6:
+ - Added missing bitfield.h header inclusion in mt6363-regulator.c
+ - Added commit "dt-bindings: iio: adc: mt6359: Allow reg for SPMI PMICs AuxADC"
+   to fix warnings on specifying reg property in adc node
+ - Added $ref in mt6363/73 regulator bindings to reduce duplication on LDOs
+ - Moved MT6363 regulators example to MFD binding
+ - Rebased on next-20250929
+
+Changes in v5:
+ - This time the dt-bindings commits are the right ones... sorry again :-)
+ - Removed accidentally added Link: tags in all patches.
+
+Changes in v4:
+ - Rewritten all register definitions for both MT6363 and MT6373
+   regulators to be register offsets instead
+ - Added the appropriate supply_name to all vregs in 6363 and 6373
+ - Simplified the macro parameters for all vregs in 6363 and 6373
+   - Added common definitions pattern in macros to avoid plain writing
+     register definitions in every macro call
+ - Added registration of SPMI sub-device in MT6363/73 and setup of
+   regmap reg_base based on `reg` parsed from devicetree
+ - Removed interrupts parsing from devicetree
+   - Moved (pmic-internal) IRQs to macros
+ - mtk-spmi-pmic: Added parsing if irqspec with param_count=2 for
+   easier irqs registration from regulator drivers
+
+Changes in v3:
+ - Added buck and ldo supplies to mt6363 and mt6373 drivers and bindings;
+ - Removed interrupts from mt6363 and mt6373 bindings;
+ - Added registering interrupts in mt6363/73 drivers instead:
+   this avoids big arrays in the mfd driver, which will grow
+   uncontrollably (as it already happened in multiple MediaTek
+   drivers) and with each new(future) supported PMIC;
+ - Removed "ldo-" and "buck-" prefixes from mt6363 regulators
+   - Renamed "vbX" to "vbuckX", reflecting datasheet name
+ - Changed all LDOs in MT6363 and MT6373 to add VOCAL usage, both
+   increasing the number of voltage steps (2.5 or 10mV increments
+   depending on the LDO) and the accuracy of the reported voltages
+ - Tested again on MT8196 board
+
+Changes in v2:
+ - Merged MFD and regulator in one series
+ - Split mediatek,mt6316-regulator.yaml in three files as
+   suggested by krzk
+ - Added interrupt-names list in MT6363/MT6373 bindings as
+   suggested by krzk
+ - Documented regulator modes in MT6363/73 as suggested by krzk
+ - Fixed interrupt and interrupt-names maxItems in both 6363/73
+   because, well... I miscounted them in v1 :-)
+ - Removed keys from mt6363 binding: the compatible was not yet
+   added to the keys binding and doing that will take quite a
+   while, as I have to find a way to test the code before that
+   as unfortunately my HW does not provide any way to test the
+   PMIC keys (thought it did, but then turns out it doesn't...)
+ - Completed the mt6363 MFD example with ADC as suggested by Rob
+ - Avoided applying regulator schemas multiple times as pointed
+   out by Rob (in mfd binding)
+ - Fixed MT6363/73 issues pointed out by lkp (eh, sorry, that
+   happened during a last minute cleanup... ugh!).
+ - Brewed some more coffee :-)
+
+
+This series adds support for three new MediaTek PMICs: MT6316, MT6363
+and MT6373 and their variants - used in board designs featuring the
+MediaTek MT8196 Chromebook SoC, or the MT6991 Dimensity 9400 Smartphone
+SoC.
+
+In particular, MT6316 is a regulator, but the MT6363 and MT6373 PMICs
+are multi-function devices, as they have and expose multiple sub-devices;
+moreover, some of those also contain an interrupt controller, managing
+internal IPs interrupts: for those, a chained interrupt handler is
+registered, which parent is the SPMI controller itself.
+
+This series adds support for all of the MT6316 regulator variants and
+for MT6363, MT6373 SPMI PMICs and their interrupt controller.
+
+AngeloGioacchino Del Regno (9):
+  dt-bindings: regulator: Document MediaTek MT6316 PMIC Regulators
+  regulator: Add support for MediaTek MT6316 SPMI PMIC Regulators
+  dt-bindings: regulator: Document MediaTek MT6363 PMIC Regulators
+  regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators
+  dt-bindings: regulator: Document MediaTek MT6373 PMIC Regulators
+  regulator: Add support for MediaTek MT6373 SPMI PMIC Regulators
+  dt-bindings: iio: adc: mt6359: Allow reg for SPMI PMICs AuxADC
+  dt-bindings: mfd: Add binding for MediaTek MT6363 series SPMI PMIC
+  mfd: Add support for MediaTek SPMI PMICs and MT6363/73
+
+ .../iio/adc/mediatek,mt6359-auxadc.yaml       |  17 +
+ .../bindings/mfd/mediatek,mt6363.yaml         | 109 ++
+ .../regulator/mediatek,mt6316b-regulator.yaml |  76 ++
+ .../regulator/mediatek,mt6316c-regulator.yaml |  76 ++
+ .../regulator/mediatek,mt6316d-regulator.yaml |  75 ++
+ .../regulator/mediatek,mt6363-regulator.yaml  | 146 +++
+ .../regulator/mediatek,mt6373-regulator.yaml  | 137 +++
+ drivers/mfd/Kconfig                           |  16 +
+ drivers/mfd/Makefile                          |   1 +
+ drivers/mfd/mtk-spmi-pmic.c                   | 427 ++++++++
+ drivers/regulator/Kconfig                     |  30 +
+ drivers/regulator/Makefile                    |   3 +
+ drivers/regulator/mt6316-regulator.c          | 345 +++++++
+ drivers/regulator/mt6363-regulator.c          | 938 ++++++++++++++++++
+ drivers/regulator/mt6373-regulator.c          | 772 ++++++++++++++
+ include/linux/mfd/mt63x3_spmi/registers.h     |  34 +
+ include/linux/regulator/mt6363-regulator.h    | 330 ++++++
+ include/linux/regulator/mt6373-regulator.h    | 161 +++
+ 18 files changed, 3693 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mfd/mediatek,mt6363.yaml
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316b-regulator.yaml
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316c-regulator.yaml
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6316d-regulator.yaml
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6363-regulator.yaml
+ create mode 100644 Documentation/devicetree/bindings/regulator/mediatek,mt6373-regulator.yaml
+ create mode 100644 drivers/mfd/mtk-spmi-pmic.c
+ create mode 100644 drivers/regulator/mt6316-regulator.c
+ create mode 100644 drivers/regulator/mt6363-regulator.c
+ create mode 100644 drivers/regulator/mt6373-regulator.c
+ create mode 100644 include/linux/mfd/mt63x3_spmi/registers.h
+ create mode 100644 include/linux/regulator/mt6363-regulator.h
+ create mode 100644 include/linux/regulator/mt6373-regulator.h
+
+-- 
+2.51.1
 
 
