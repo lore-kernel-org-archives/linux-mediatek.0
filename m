@@ -4,61 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5199CCF9EB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 17:18:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D789CCF9EB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Oct 2025 18:57:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5v858IqBCKzHdFBFJSrUXXRl+m6ZWDsQE2+Wy791NHk=; b=pZZPEf3CC1Yd6eSZP/5umTWe/Y
-	6CSwlk25INM0w9er0NSNDatcT90qVq8y0GQtkYNGm+LLDkT/mB0/djH7wY4A9GPthqMlHUt70gZks
-	AkLEf+dXblCIBgbCbSJ+Nwv7dj/UAWHUZbmeA0eyUOX5zh9SFtziElm+snA1Uk5fFDOv6c60TC+XP
-	s4LbH4s2u3yii/voaG6L83nAZVU1bEbKEj4ZRYx4ZklBmkywk5ImaauKHAZNmxXH/hpndoscYK3Eo
-	d66blGtP8UgmPq2We7YaL+RACYx4j7QZ1GUmigGg2UcjmXYa7rlOruseR9+5yvepYipAisjmqSHWU
-	I5Bl7pEQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=duYaPG1c29V64Va3WNwQElnFu0iV8obdLawtkfDUR8Y=; b=NUbR8levDArePB
+	5cJC/PCRCJFPLmUArlG784DNQh+WXlKpmqmhqCj0z3lEe3nfLMmUnvbSPQd1vvnpPxGfaumNiI8Qv
+	pUdIl/wD7x8C5E9E81DfszvTQXCig5E/os2fK2DF+oQNTja0FncTCT60OFKUmN5vVAXaJueukNaFS
+	RDbxjxKf+4rb2UOGxxaKr6ebChR7y83vwZuST6s5ZxynCMntJlt6e4VhtacLOHwEiqzBw+Udz6eE6
+	Me243ZVs0uniwoxYbrAMDbfyYfFJggeZxrlLyd6/kE7Ic2pzVzIe1J6eFd9HCqhFPNUDdq8vNu06v
+	a11J6hZnJiWxEiffrl4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDQrR-0000000EQjE-3dDI;
-	Mon, 27 Oct 2025 17:18:25 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1vDSPU-0000000Eb3r-1QQs;
+	Mon, 27 Oct 2025 18:57:40 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDQrP-0000000EQgQ-0orX
-	for linux-mediatek@lists.infradead.org;
-	Mon, 27 Oct 2025 17:18:24 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 30E3F9550E9;
-	Mon, 27 Oct 2025 18:18:11 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1761585495; h=from:subject:date:message-id:to:cc:mime-version:
-	 content-transfer-encoding; bh=5v858IqBCKzHdFBFJSrUXXRl+m6ZWDsQE2+Wy791NHk=;
-	b=urmwCXI+p6sTAzM1plgPvyAbITmXVecUPt/MUVnrt3yVBRIzQ5O89xXzvoMReMtJ1zpFpg
-	3MatFg0stEc/zmY2tiRDvV15O0s32oEkCZokP5LsQpdKQUWHg3PRZolErNZO3j7kDHbILp
-	np45K7feborSAdT7f67w88TI3zpTuWMmB64j0wtWb29fJYPr7S2PzBcCSOf0odx0XBKREs
-	1/GSeZmiHgj1n+myAew/mamlotbALtmKZg1lAqlRTmNoVdlxzN+wHrC2k5X+7Q1zSN7ZjG
-	IhUTdGkF1nErt8tvGGeXdcmoOls+ZX7egl/qxhdpXkQlOpvpY/F63nJL6uiVXQ==
-From: Caleb James DeLisle <cjd@cjdns.fr>
-To: nbd@nbd.name,
-	lorenzo@kernel.org
-Cc: ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Caleb James DeLisle <cjd@cjdns.fr>
-Subject: [PATCH] wifi: mt76: mmio_(read|write)_copy byte swap when on Big Endian
-Date: Mon, 27 Oct 2025 17:17:59 +0000
-Message-Id: <20251027171759.1484844-1-cjd@cjdns.fr>
+	id 1vDSPS-0000000Eb3Q-3vd5;
+	Mon, 27 Oct 2025 18:57:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id E5E6861753;
+	Mon, 27 Oct 2025 18:57:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49FFFC4CEFD;
+	Mon, 27 Oct 2025 18:57:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761591457;
+	bh=FBh02DAJ7nUjsN3Y/wn69pqWdFqyYXyPMjwO6WMVnKU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=BjNllmRq+yfdJLO0cbkU7zTbCjRCyzJTlkdV6C3VsadXIFRCOhdwHqfg9aIXq65IH
+	 g4c6h4LTfpjh9el1Wvrb1Chj5xml3obGS8biIZrMa51d4QvoXIOl5Oo80FyQBMyn9D
+	 HNVEinj8wpAE/pGmCYsT/Clr86pdENNXltkQu10cmbITjQeZxzf4/4HNEy/ghjg7iq
+	 Lwo9lnjl1MsFZmTsaIsmD3Zy1d+Scw/nJJ1m/05YYn2H+9loF8WxNpA2MW++m7R1k4
+	 e0XprMCeChty8N//kNqOMtxCiecXlgGCFmbV7GJQtaF5n2ZF0HFfNpNXnR4u/eiPrK
+	 p7KnOy2H0cYUQ==
+Message-ID: <defbd8f9-15ea-4d3e-91fc-02e5ff79be82@kernel.org>
+Date: Mon, 27 Oct 2025 19:57:32 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Last-TLS-Session-Version: TLSv1.3
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251027_101823_435736_00BD30A7 
-X-CRM114-Status: UNSURE (   9.32  )
-X-CRM114-Notice: Please train this message.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 1/6] dt-bindings: pinctrl: mt7988: allow gpio-hogs
+To: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20251027132817.212534-1-linux@fw-web.de>
+ <20251027132817.212534-2-linux@fw-web.de>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20251027132817.212534-2-linux@fw-web.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,84 +112,25 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When on a Big Endian machine, PCI swaps words to/from LE when
-reading/writing them. This presents a problem when we're trying
-to copy an opaque byte array such as firmware or encryption key.
+On 27/10/2025 14:28, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Allow gpio-hogs in pinctrl node for switching pcie on Bananapi R4 Pro.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+>  .../devicetree/bindings/pinctrl/mediatek,mt7988-pinctrl.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
 
-Byte-swapping during copy results in two swaps, but solves the
-problem.
 
-Fixes:
-mt76x2e 0000:02:00.0: ROM patch build: 20141115060606a
-mt76x2e 0000:02:00.0: Firmware Version: 0.0.00
-mt76x2e 0000:02:00.0: Build: 1
-mt76x2e 0000:02:00.0: Build Time: 201607111443____
-mt76x2e 0000:02:00.0: Firmware failed to start
-mt76x2e 0000:02:00.0: probe with driver mt76x2e failed with error -145
 
-Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
----
- drivers/net/wireless/mediatek/mt76/mmio.c | 34 +++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mmio.c b/drivers/net/wireless/mediatek/mt76/mmio.c
-index cd2e9737c3bf..776dbaacc8a3 100644
---- a/drivers/net/wireless/mediatek/mt76/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mmio.c
-@@ -30,15 +30,49 @@ static u32 mt76_mmio_rmw(struct mt76_dev *dev, u32 offset, u32 mask, u32 val)
- 	return val;
- }
- 
-+static void mt76_mmio_write_copy_portable(void __iomem *dst,
-+					  const u8 *src, int len)
-+{
-+	__le32 val;
-+	int i = 0;
-+
-+	for (i = 0; i < ALIGN(len, 4); i += 4) {
-+		memcpy(&val, src + i, sizeof(val));
-+		writel(cpu_to_le32(val), dst + i);
-+	}
-+}
-+
- static void mt76_mmio_write_copy(struct mt76_dev *dev, u32 offset,
- 				 const void *data, int len)
- {
-+	if (IS_ENABLED(CONFIG_CPU_BIG_ENDIAN)) {
-+		mt76_mmio_write_copy_portable(dev->mmio.regs + offset, data,
-+					      len);
-+		return;
-+	}
- 	__iowrite32_copy(dev->mmio.regs + offset, data, DIV_ROUND_UP(len, 4));
- }
- 
-+static void mt76_mmio_read_copy_portable(u8 *dst,
-+					 const void __iomem *src, int len)
-+{
-+	u32 val;
-+	int i;
-+
-+	for (i = 0; i < ALIGN(len, 4); i += 4) {
-+		val = le32_to_cpu(readl(src + i));
-+		memcpy(dst + i, &val, sizeof(val));
-+	}
-+}
-+
- static void mt76_mmio_read_copy(struct mt76_dev *dev, u32 offset,
- 				void *data, int len)
- {
-+	if (IS_ENABLED(CONFIG_CPU_BIG_ENDIAN)) {
-+		mt76_mmio_read_copy_portable(data, dev->mmio.regs + offset,
-+					     len);
-+		return;
-+	}
- 	__ioread32_copy(data, dev->mmio.regs + offset, DIV_ROUND_UP(len, 4));
- }
- 
--- 
-2.39.5
-
+Best regards,
+Krzysztof
 
