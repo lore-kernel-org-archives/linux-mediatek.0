@@ -4,81 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E111CCF9E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Oct 2025 15:51:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5299DCCF9E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Oct 2025 17:13:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1OpSHd0mY4srZiN9qOOAXQMoU8KaidVlysU3fbxsxgs=; b=2nwYCo/BUr/xQdRemQeMop9I7L
-	uH7bzFw/bt3m4GmW+WPJC/unEz/YQdzMtuiWJhF7BfPNjkonJPYXDf5njl31sp4U6K3UxCLqCTXFh
-	tjzkIlZYxGfO3FGa9zzhOfSugj+u/03Uy7QmS6p0zAnLqgTpnfOEg6YHEltX3WzV4+j1dXCP98Zrv
-	AP7BFVZEjwkbws+FlvGreBfTkRqtl0/MXDVav+o2tD/w0FWr4PAXRQFsYe2Tob5OkuPmgzJ7olVUG
-	DXmfCi0UYAq07LNBzKN9vfV2fb/R9F8jFP08QvHO80dG4VD1XGeK0ihLxu4OTSoGDMHWOoHmR5PAI
-	J1XsTeMg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C43Q3YBXi+t2Vk4E/E5I2wTUl/T4dq5/Lacl/dvHcyE=; b=EdhEdfoJmaDoVM7KkFc8hvR63L
+	Gc5K5VFZmSjevMkYBITS2ngUjvqL3luVOVCZ4/3bL2n0v3xbDbNitUlDgdBzekq9zhB6AMwWpJAMQ
+	x6O4Y3cPDkwXgwFA7eR6ODKjyWnzBUAflp8Lpyd55sxZdlIJCKhxF68Goq4KCr53pUin516Jav71G
+	xzT97opr1DCAllJR5RFId8zN3BzcI1VKEjCTrgORxBZPTqzlF+y8YnnQr3Za9qYrOXDlLxt8qckVE
+	AIuq/OtqysoU/aj3rBecEnyoaPb9C6J4kKMKs200E5NYPU5FXIT27+SG3j0a+hzw0xoYVPmSff3kl
+	0Q0ANVGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDlyy-0000000GEuX-3Pf0;
-	Tue, 28 Oct 2025 15:51:36 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDlyu-0000000GEtP-0Ocm;
-	Tue, 28 Oct 2025 15:51:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761666689;
-	bh=MyntksnbV/kHN08UZNudeGV5Mwxd32nHSOa6iJ8X3eY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RTQKgm2Nco9XkEFOuT1WlglZrZAxc6bSIN6gitnKptdsZjIHIM8yYgBh48MBE8IGE
-	 3x9L5AJtuBSn2jz8zpRMP/FxzUXNW6FR2GQQYSP/y5CZGPdITfl5ZO4YzLJkdMXgXG
-	 uGDk2oc3MCO/Xenip1GPa48iq5xqotJ5rCj2EIygtXBAh2dFcMg+evF9T2ULchL1m5
-	 bCky+Nv+IqOygfRd2eWN3eCQ1mrxpQCHznnTrZ6F3AYYpRXsMVreIFd/j/UZqqrzNH
-	 x7SW5brtvyWeuv0zmYqMo7x7RNueCnYeXOVjIIqz//u/Sx8MHh64ZtiCFOky2CKnPO
-	 cFj2eED+Ges1Q==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7D85F17E0DF2;
-	Tue, 28 Oct 2025 16:51:28 +0100 (CET)
-Message-ID: <61291f3f-ef56-48fa-bdf1-c34d9beb910a@collabora.com>
-Date: Tue, 28 Oct 2025 16:51:28 +0100
+	id 1vDnFr-0000000GOCW-2KAw;
+	Tue, 28 Oct 2025 17:13:07 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vDnFp-0000000GOB8-2WX7
+	for linux-mediatek@lists.infradead.org;
+	Tue, 28 Oct 2025 17:13:06 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8E21C26B9
+	for <linux-mediatek@lists.infradead.org>; Tue, 28 Oct 2025 10:12:55 -0700 (PDT)
+Received: from e110455-lin.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 276C13F673
+	for <linux-mediatek@lists.infradead.org>; Tue, 28 Oct 2025 10:13:03 -0700 (PDT)
+Date: Tue, 28 Oct 2025 17:12:35 +0000
+From: Liviu Dudau <liviu.dudau@arm.com>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Boris Brezillon <boris.brezillon@collabora.com>,
+	Jassi Brar <jassisinghbrar@gmail.com>,
+	Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	Steven Price <steven.price@arm.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Kees Cook <kees@kernel.org>,
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>, kernel@collabora.com,
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-hardening@vger.kernel.org,
+	linux-pm@vger.kernel.org
+Subject: Re: [PATCH v8 1/5] dt-bindings: gpu: mali-valhall-csf: add
+ mediatek,mt8196-mali variant
+Message-ID: <aQD5gwByEmX6GQK9@e110455-lin.cambridge.arm.com>
+References: <20251017-mt8196-gpufreq-v8-0-98fc1cc566a1@collabora.com>
+ <20251017-mt8196-gpufreq-v8-1-98fc1cc566a1@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] drm/mediatek: mtk_disp_ovl: Enable/disable interrupt
- on bind/unbind
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: Alexandre Mergnat <amergnat@baylibre.com>,
- "simona@ffwll.ch" <simona@ffwll.ch>,
- "dmitry.osipenko@collabora.com" <dmitry.osipenko@collabora.com>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "djkurtz@chromium.org" <djkurtz@chromium.org>,
- "granquet@baylibre.com" <granquet@baylibre.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- =?UTF-8?B?QmliYnkgSHNpZWggKOisnea/n+mBoCk=?= <Bibby.Hsieh@mediatek.com>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "littlecvr@chromium.org" <littlecvr@chromium.org>,
- =?UTF-8?B?UmV4LUJDIENoZW4gKOmZs+afj+i+sCk=?= <Rex-BC.Chen@mediatek.com>
-References: <20250924103708.19071-1-angelogioacchino.delregno@collabora.com>
- <20250924103708.19071-3-angelogioacchino.delregno@collabora.com>
- <79e1cb6b8ddbd027096cc7f1d6a6f32ba4fbfbd9.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <79e1cb6b8ddbd027096cc7f1d6a6f32ba4fbfbd9.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20251017-mt8196-gpufreq-v8-1-98fc1cc566a1@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251028_085132_480853_EF32D2BB 
-X-CRM114-Status: GOOD (  23.86  )
+X-CRM114-CacheID: sfid-20251028_101305_763334_6182C13A 
+X-CRM114-Status: GOOD (  22.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,115 +83,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/10/25 10:55, CK Hu (胡俊光) ha scritto:
-> On Wed, 2025-09-24 at 12:37 +0200, AngeloGioacchino Del Regno wrote:
->> External email : Please do not click links or open attachments until you have verified the sender or the content.
->>
->>
->> The OVL driver is installing an ISR in the probe function but, if
->> the component is not bound yet, the interrupt handler may call the
->> vblank_cb ahead of time (while probing other drivers) or too late
->> (while removing other drivers), possibly accessing memory that it
->> should not try to access by reusing stale pointers.
->>
->> In order to fix this, add a new `irq` member to struct mtk_disp_ovl
->> and then set the NOAUTOEN flag to the irq before installing the ISR
->> to manually call enable_irq() and disable_irq() in the bind and
->> unbind callbacks respectively.
->>
->> Fixes: 119f5173628a ("drm/mediatek: Add DRM Driver for Mediatek SoC MT8173.")
->> Link: https://lore.kernel.org/r/20250402083628.20111-5-angelogioacchino.delregno@collabora.com
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 20 +++++++++++++-------
->>   1 file changed, 13 insertions(+), 7 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
->> index e0236353d499..8e20b45411fc 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
->> @@ -161,6 +161,7 @@ struct mtk_disp_ovl {
->>          struct drm_crtc                 *crtc;
->>          struct clk                      *clk;
->>          void __iomem                    *regs;
->> +       int                             irq;
->>          struct cmdq_client_reg          cmdq_reg;
->>          const struct mtk_disp_ovl_data  *data;
->>          void                            (*vblank_cb)(void *data);
->> @@ -594,12 +595,18 @@ void mtk_ovl_bgclr_in_off(struct device *dev)
->>   static int mtk_disp_ovl_bind(struct device *dev, struct device *master,
->>                               void *data)
->>   {
->> +       struct mtk_disp_ovl *priv = dev_get_drvdata(dev);
->> +
->> +       enable_irq(priv->irq);
->>          return 0;
->>   }
->>
->>   static void mtk_disp_ovl_unbind(struct device *dev, struct device *master,
->>                                  void *data)
->>   {
->> +       struct mtk_disp_ovl *priv = dev_get_drvdata(dev);
->> +
->> +       disable_irq(priv->irq);
->>   }
->>
->>   static const struct component_ops mtk_disp_ovl_component_ops = {
->> @@ -611,16 +618,15 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
->>   {
->>          struct device *dev = &pdev->dev;
->>          struct mtk_disp_ovl *priv;
->> -       int irq;
->>          int ret;
->>
->>          priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
->>          if (!priv)
->>                  return -ENOMEM;
->>
->> -       irq = platform_get_irq(pdev, 0);
->> -       if (irq < 0)
->> -               return irq;
->> +       priv->irq = platform_get_irq(pdev, 0);
->> +       if (priv->irq < 0)
->> +               return priv->irq;
->>
->>          priv->clk = devm_clk_get(dev, NULL);
->>          if (IS_ERR(priv->clk))
->> @@ -640,10 +646,10 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
->>          priv->data = of_device_get_match_data(dev);
->>          platform_set_drvdata(pdev, priv);
->>
->> -       ret = devm_request_irq(dev, irq, mtk_disp_ovl_irq_handler,
->> -                              IRQF_TRIGGER_NONE, dev_name(dev), priv);
->> +       ret = devm_request_irq(dev, priv->irq, mtk_disp_ovl_irq_handler,
->> +                              IRQF_NO_AUTOEN, dev_name(dev), priv);
+On Fri, Oct 17, 2025 at 05:31:08PM +0200, Nicolas Frattaroli wrote:
+> The Mali-based GPU on the MediaTek MT8196 SoC uses a separate MCU to
+> control the power and frequency of the GPU. This is modelled as a power
+> domain and clock provider.
 > 
-> RDMA driver would clear pending interrupt and disable interrupt before request irq.
-> I would like the hardware would be in idle state when probe.
-> So OVL should do like RDMA.
+> It lets us omit the OPP tables from the device tree, as those can now be
+> enumerated at runtime from the MCU.
 > 
-
-As I commented on RDMA - that won't work. After unbinding components, only the
-bind() op will be executed, not probe(), so the interrupt will not be reset in
-HW, and while re-binding other components, IRQs will come and produce a kernel
-panic (in the best scenario, eh!) for use-after-free.
-
-Regards,
-Angelo
-
-> Regards,
-> CK
+> Add the necessary schema logic to handle what this SoC expects in terms
+> of clocks and power-domains.
 > 
->>          if (ret < 0)
->> -               return dev_err_probe(dev, ret, "Failed to request irq %d\n", irq);
->> +               return dev_err_probe(dev, ret, "Failed to request irq %d\n", priv->irq);
->>
->>          pm_runtime_enable(dev);
->>
->> --
->> 2.51.0
->>
+> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  .../bindings/gpu/arm,mali-valhall-csf.yaml         | 37 +++++++++++++++++++++-
+>  1 file changed, 36 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+> index 613040fdb444..860691ce985e 100644
+> --- a/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
+> @@ -45,7 +45,9 @@ properties:
+>      minItems: 1
+>      items:
+>        - const: core
+> -      - const: coregroup
+> +      - enum:
+> +          - coregroup
+> +          - stacks
+>        - const: stacks
+
+I'm not sure how to parse this part of the change. We're overwriting the property
+for mt8196-mali anyway so why do we need this? And if we do, should 'stacks'
+still remain as a const?
+
+Best regards,
+Liviu
+
+>  
+>    mali-supply: true
+> @@ -110,6 +112,27 @@ allOf:
+>          power-domain-names: false
+>        required:
+>          - mali-supply
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt8196-mali
+> +    then:
+> +      properties:
+> +        mali-supply: false
+> +        sram-supply: false
+> +        operating-points-v2: false
+> +        power-domains:
+> +          maxItems: 1
+> +        power-domain-names: false
+> +        clocks:
+> +          maxItems: 2
+> +        clock-names:
+> +          items:
+> +            - const: core
+> +            - const: stacks
+> +      required:
+> +        - power-domains
+>  
+>  examples:
+>    - |
+> @@ -145,5 +168,17 @@ examples:
+>              };
+>          };
+>      };
+> +  - |
+> +    gpu@48000000 {
+> +        compatible = "mediatek,mt8196-mali", "arm,mali-valhall-csf";
+> +        reg = <0x48000000 0x480000>;
+> +        clocks = <&gpufreq 0>, <&gpufreq 1>;
+> +        clock-names = "core", "stacks";
+> +        interrupts = <GIC_SPI 606 IRQ_TYPE_LEVEL_HIGH 0>,
+> +                     <GIC_SPI 605 IRQ_TYPE_LEVEL_HIGH 0>,
+> +                     <GIC_SPI 604 IRQ_TYPE_LEVEL_HIGH 0>;
+> +        interrupt-names = "job", "mmu", "gpu";
+> +        power-domains = <&gpufreq>;
+> +    };
+>  
+>  ...
+> 
+> -- 
+> 2.51.0
 > 
 
-
+-- 
+====================
+| I would like to |
+| fix the world,  |
+| but they're not |
+| giving me the   |
+ \ source code!  /
+  ---------------
+    ¯\_(ツ)_/¯
 
