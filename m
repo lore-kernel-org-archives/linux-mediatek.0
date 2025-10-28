@@ -4,72 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB3CCCCF9E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Oct 2025 08:45:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60EAFCCF9E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Oct 2025 09:07:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OYyWLPZgUgbDlCwCcVzoM4HMRueVlb0JIketVHAX4OY=; b=xr3/DNU621qv+IkGiaTQTYpPWb
-	greRy4PhIDMRQwXDk6Jz3AUCnoXHVhflLJvsRGCZXMjcXaR3QlwdYUFtILpwtHAbDBLvcmZTNeDxt
-	HC6JKx7S3hg0iWNxAyjjd2sZNIR9oG4iLeK1exJjCPpfCOQRHNqHtLY5zXq0LibohaB2V+qI0VYHJ
-	e8CSbywx/GlhXS3fQzejD14beWqVTkwuTLGuoAP9B517XVWzKM9UVGP6ATw83yyFu0C/hOmP0kyZW
-	04L+SDjrp8NMkRCQ3DJnuwSc4E9VYT8CxnSk9dVbK4LD355AThj0qwOxOuEkfPtOWSVJfWksy50yB
-	W3km9dHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hE0Jy4PLs4ppQPPmdZeYyTiDE0WvbsyHYaFTOAMSNuA=; b=hNZn/8VvOZzQl05CEW8tWBZYBL
+	/SjKBei5+yGIWgm6ncXdvy9cvfS2cK8Z1XccjzXZFNdIKPe8w46DWM501Ol8M4JcTj5He1lffbUIt
+	Qoc6GHzH+hY+jX8iSJq/YKf5lqjNUauC1zsWpGptkH5mHXa74sBkDz1ZJO/VtUBo6D0jy5C1wG8JJ
+	OPl+psD9nRGBVvKTna9f22pDAvmnQhSUIP95Cm2/qZh64Cg6bP9ZOsu6wa84tsYEU0wwnyMHiC65F
+	0lcMK1uzODo/rNLtCCzau6AFSkjGQryljT/VoOIDcR6sSRxT6CbWa3Zc/df2BIM8yKHYLPLIpH06A
+	ObXaej6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDfKl-0000000FZPi-24Zn;
-	Tue, 28 Oct 2025 08:45:39 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vDfft-0000000Fbr2-0QWT;
+	Tue, 28 Oct 2025 09:07:29 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDfKi-0000000FZOs-2NaX;
-	Tue, 28 Oct 2025 08:45:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761641133;
-	bh=AzfMJnxDlLOurBkOwjsFhj7GPFZLhxcijnAWsYYiWpE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=X0nD8Ef80li5RM/i0fesne7rsefbId77wgY5dQqPZ/+p46Npgi57Ixd6Clyo7K2En
-	 w+WmhFsu8DfyMvJLLF0/CYBB2aHJGFT7o1tpkjytMnM+rEGd/EiS0pd7gH01iUwkjv
-	 cKAjWSdV3D7EUoM8L83giRV2z4BxkTCeCxfMGOBU7jZ6YDL4d3Vq+YSU2molrl250P
-	 Jrxgx608OPhy4RzzFhSiSQedfHWcqDSH9xkZUoxaM+DZ6GrB92cPEvvLezPZRfphOM
-	 KHdPeOmFbZflKFvYSe4CpHUzQrV26EWCq+Pw1al9OBUwAo0dU6sx14lbpD7NVdwXYa
-	 +d+5i9L2Oxwwg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F070F17E126B;
-	Tue, 28 Oct 2025 09:45:32 +0100 (CET)
-Message-ID: <39602d94-7f2e-42b1-a77e-1d5a3e032277@collabora.com>
-Date: Tue, 28 Oct 2025 09:45:32 +0100
+	id 1vDffp-0000000FbqI-2laC;
+	Tue, 28 Oct 2025 09:07:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4E59448AC3;
+	Tue, 28 Oct 2025 09:07:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90AA4C4CEE7;
+	Tue, 28 Oct 2025 09:07:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1761642444;
+	bh=WxHpl51n4EsbakrBuVvz8JyJIZAFgGu/0ttTPMvNUy0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EmOliCbjaJFIBi3/P+bJGAth59P2tigGVXrNf2RUceOZ/7LeIkWtjbse/HPE1i+pA
+	 eelsPmrxYGTM1UgelXb8fx+Nc4SbsK1UKfNku3/OjHqmXN9Rw27T9ruUu2dotDKRFB
+	 moe3tGqpqvpwIyROnOP1pOCcUsX+HXlmze8SHn9w=
+Date: Tue, 28 Oct 2025 10:07:19 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Pavel Zhigulin <Pavel.Zhigulin@kaspersky.com>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	lvc-project@linuxtesting.org
+Subject: Re: [PATCH] usb: mtu3: fix possible NULL pointer dereference in
+ ep0_rx_state()
+Message-ID: <2025102811-helium-caloric-cac5@gregkh>
+References: <20251027193152.3906497-1-Pavel.Zhigulin@kaspersky.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 3/6] arm64: dts: mediatek: mt7988a: Add label for
- ssusb0
-To: frank-w@public-files.de, Krzysztof Kozlowski <krzk@kernel.org>,
- Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20251027132817.212534-1-linux@fw-web.de>
- <20251027132817.212534-4-linux@fw-web.de>
- <35504988-448e-4a5c-8ea6-769c06117c01@kernel.org>
- <F6FAB95A-9FF2-416C-B50A-C2B1808FC5FF@public-files.de>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <F6FAB95A-9FF2-416C-B50A-C2B1808FC5FF@public-files.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251027193152.3906497-1-Pavel.Zhigulin@kaspersky.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251028_014536_770033_D756A083 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20251028_020725_743560_FC71DCB7 
+X-CRM114-Status: GOOD (  30.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,32 +70,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 27/10/25 20:04, Frank Wunderlich ha scritto:
-> Am 27. Oktober 2025 19:58:23 MEZ schrieb Krzysztof Kozlowski <krzk@kernel.org>:
->> On 27/10/2025 14:28, Frank Wunderlich wrote:
->>> From: Frank Wunderlich <frank-w@public-files.de>
->>>
->>> Add label for ssusb0 node which is used for BPI-R4-Pro.
->>
->> This makes no sense on its own. We do not add labels because they have 0
->> impact.
->>
->> Please drop or squash.
+On Mon, Oct 27, 2025 at 10:31:50PM +0300, Pavel Zhigulin wrote:
+> The function 'ep0_rx_state()' accessed 'mreq->request' before verifying
+> that mreq was valid. If 'next_ep0_request()' returned NULL, this could
+> lead to a NULL pointer dereference. The return value of
+> 'next_ep0_request()' is checked in every other code path except
+> here. It appears that the intended 'if (mreq)' check was mistakenly
+> written as 'if (req)', since the req pointer cannot be NULL when mreq
+> is not NULL.
 > 
-> Thank you for the review.
+> Initialize 'mreq' and 'req' to NULL by default, and switch 'req'
+> NULL-checking to 'mreq' non-NULL check to prevent invalid memory access.
 > 
-> I reference this label in part 4 and tried to separate
-> changes in soc dtsi and board layer.
-> But of course i can squash this to part 4.
+> Found by Linux Verification Center (linuxtesting.org) with SVACE.
 > 
->> Best regards,
->> Krzysztof
+> Fixes: df2069acb005 ("usb: Add MediaTek USB3 DRD driver")
+> Signed-off-by: Pavel Zhigulin <Pavel.Zhigulin@kaspersky.com>
+> ---
+>  drivers/usb/mtu3/mtu3_gadget_ep0.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/usb/mtu3/mtu3_gadget_ep0.c b/drivers/usb/mtu3/mtu3_gadget_ep0.c
+> index e4fd1bb14a55..ee7466ca4d99 100644
+> --- a/drivers/usb/mtu3/mtu3_gadget_ep0.c
+> +++ b/drivers/usb/mtu3/mtu3_gadget_ep0.c
+> @@ -508,8 +508,8 @@ static int handle_standard_request(struct mtu3 *mtu,
+>  /* receive an data packet (OUT) */
+>  static void ep0_rx_state(struct mtu3 *mtu)
+>  {
+> -	struct mtu3_request *mreq;
+> -	struct usb_request *req;
+> +	struct mtu3_request *mreq = NULL;
+> +	struct usb_request *req = NULL;
+>  	void __iomem *mbase = mtu->mac_base;
+>  	u32 maxp;
+>  	u32 csr;
+> @@ -519,10 +519,11 @@ static void ep0_rx_state(struct mtu3 *mtu)
+> 
+>  	csr = mtu3_readl(mbase, U3D_EP0CSR) & EP0_W1C_BITS;
+>  	mreq = next_ep0_request(mtu);
+> -	req = &mreq->request;
+> 
+>  	/* read packet and ack; or stall because of gadget driver bug */
+> -	if (req) {
+> +	if (mreq) {
+> +		req = &mreq->request;
+> +
+>  		void *buf = req->buf + req->actual;
+>  		unsigned int len = req->length - req->actual;
+> 
+> --
+> 2.43.0
 > 
 > 
-> regards Frank
 
-Yes, please squash this to the patch where you actually use the label.
+Hi,
 
-Cheers,
-Angelo
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
+
+You are receiving this message because of the following common error(s)
+as indicated below:
+
+- You have marked a patch with a "Fixes:" tag for a commit that is in an
+  older released kernel, yet you do not have a cc: stable line in the
+  signed-off-by area at all, which means that the patch will not be
+  applied to any older kernel releases.  To properly fix this, please
+  follow the documented rules in the
+  Documentation/process/stable-kernel-rules.rst file for how to resolve
+  this.
+
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
 
