@@ -4,88 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B56B3CCD1BF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Oct 2025 13:24:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02EC4CCF9F0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Oct 2025 14:58:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8/d3UUUhdWoIZXpk8NwqSpg4DExzAbF8PYQkQhgem3s=; b=FnmGV4A86oVOomXmLo8IwPgAa0
-	lIafPi+YGx+/LRwkVe7x/9j6tgoCVAEJYOKPBnn3ypV9Dkty9Yj2fTWuK+0Yn2ldY7THs3QYhpdco
-	93DFsdidf2d2L/iONncJrd0p0tKMOW55qRCDT2fOo5QiSgXpr7rOUNSKSwQo5mixhcGc2dJLlY6rq
-	IWiUxIeAbZUoDfcxVX8D2+hFDE+gWInUHU2fbjS40YNmkgDSCQTVlDnMdTZKv8QPXrauULaoV8QtK
-	7zyQ+95iHNO/p71wJJWwo0hRgrqrHej/FTGv/JqFVh3sCR/avqCLwYbd/JRkNOMtXHNQd+PStwVky
-	SRCSfffQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8IW5FCsZkz6M+s0ig87IAhPwGfqRhpZn1nQALb78KYc=; b=QspKgMs6jOTUXRgVJQEAjUgga6
+	OF2qQPi42jl0GAb9mJe/8X2wWl3PFMdEIhJfXZSZihNAPnnPGHabyo7EytfeCpmN39umLCh6QC6OP
+	h+QSDumlUwJ6RQrTixX9Abkru9yFXvnETBA+AmMoKmmpUHRtMQwiUEsc1yeWCrtHmPfXyRWHAcM69
+	Z+Iad27DrqXLoLpS/fSC6/RWGsALZ1GtoSuu3Y3enotwZ4gUb2K91oUcLICgbydjqZydG92KrpETt
+	y0xCCttWx9mmRj6ZvM8rC7Y1UIj3ofQ4mPYz6xJBNORAqkzxYr2R+izwt5mWDfFP7UrNnnLQqEJeC
+	Cy3I+aZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDjh1-0000000G02i-3vdR;
-	Tue, 28 Oct 2025 13:24:55 +0000
-Received: from sender4-op-o15.zoho.com ([136.143.188.15])
+	id 1vDl9f-0000000G8BB-3nf6;
+	Tue, 28 Oct 2025 14:58:35 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDjgx-0000000G01v-3Pvk;
-	Tue, 28 Oct 2025 13:24:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1761657869; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ZCTOLf2S+q8m7fxAVIx8Y+bCTP95emO4YmHpi3NRritxQmxe3ATRHjgeW0BrRIv/SbQdJcPkYSIUlLoL7Sl45gi2zztEIUBUCnLkgM8wr8gLtilOLj+4p0mgiYOXQchJqvmPzkbMfQ+hjVO2mN6HwX4WU2/7ifnbvDnEokHm7os=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1761657869; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=8/d3UUUhdWoIZXpk8NwqSpg4DExzAbF8PYQkQhgem3s=; 
-	b=mVNRJGLaKBa+FnpaA60HLtOXJLBTBabrws/EXB4240rOpfhff5FXpf/VNKnYWCwBu00BOQ3NWKiZVwJqhU0Q3gMtrBNyvabfFoH3VOmcPyKqHEO88TmrhOh57Z7cNaIbziW7X/3hIqvD/KY4twXCtuQs4aGT6BhvdTOPnX+n6xw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sjoerd@collabora.com;
-	dmarc=pass header.from=<sjoerd@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761657869;
-	s=zohomail; d=collabora.com; i=sjoerd@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=8/d3UUUhdWoIZXpk8NwqSpg4DExzAbF8PYQkQhgem3s=;
-	b=ZwoIEHXchlDN8s9MvkdPt0IM1C2ZQYDwtGfbijZC9gXXVKG93gOrptfLgnMCk5QN
-	KWqWvywAsKEtYwEZm6+KZfkQE2jPZsK7IM4T470U+hBGQFBMILmP97pYYcSjTIEpo1C
-	3viKQ0jStrCNXpRAwgnP937Ec/N+iwr3jwOZzaVI=
-Received: by mx.zohomail.com with SMTPS id 1761657866228953.45389749315;
-	Tue, 28 Oct 2025 06:24:26 -0700 (PDT)
-Message-ID: <408842eda1caa53247ff759cd9ea75dcab624594.camel@collabora.com>
-Subject: Re: [PATCH 12/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
- Ethernet
-From: Sjoerd Simons <sjoerd@collabora.com>
-To: Eric Woudstra <ericwouds@gmail.com>, Andrew Lunn <andrew@lunn.ch>, 
- "Lucien.Jheng" <lucienzx159@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, Ryder Lee
- <ryder.lee@mediatek.com>,  Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn
- Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi	 <lpieralisi@kernel.org>,
- Krzysztof =?UTF-8?Q?Wilczy=C5=84ski?=	 <kwilczynski@kernel.org>, Manivannan
- Sadhasivam <mani@kernel.org>, Chunfeng Yun	 <chunfeng.yun@mediatek.com>,
- Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
- Lee Jones <lee@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,  "David S.
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
-	kernel@collabora.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, 	linux-pci@vger.kernel.org,
- linux-phy@lists.infradead.org, netdev@vger.kernel.org,  Daniel Golle
- <daniel@makrotopia.org>, Bryan Hinton <bryan@bryanhinton.com>
-Date: Tue, 28 Oct 2025 14:24:19 +0100
-In-Reply-To: <05610ae5-4a8a-47e9-808b-7ff98fade78e@gmail.com>
-References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
-	 <20251016-openwrt-one-network-v1-12-de259719b6f2@collabora.com>
-	 <4f82aa17-1bf8-4d72-bc1f-b32f364e1cf6@lunn.ch>
-	 <8f5335a703905dea9d8d0c1840862a3478da1ca7.camel@collabora.com>
-	 <05610ae5-4a8a-47e9-808b-7ff98fade78e@gmail.com>
-Organization: Collabora
+	id 1vDl9e-0000000G89q-06tH
+	for linux-mediatek@lists.infradead.org;
+	Tue, 28 Oct 2025 14:58:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id D16EC48AAE
+	for <linux-mediatek@lists.infradead.org>; Tue, 28 Oct 2025 14:58:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A93AFC19425
+	for <linux-mediatek@lists.infradead.org>; Tue, 28 Oct 2025 14:58:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761663512;
+	bh=fgrnGbqm4nMPYm0YFueCTLn38xVSXMpZjjfyexFg4zU=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=fKpHJDLw+LdcON/i87zMt8WeFuLsLOkXCh8EaH+KceiRe9xB3NmNNEipNh06u89Qy
+	 AbqjbUQwBsH4cwpPlCHdRBkk9PFn/7DfhwH4wDXKj9w6C1tZEt3y3ZUiJWCH/WFiNw
+	 wuRNVHBpYpGjfgPS0713G9KL2KmLK817qGbDZUlo8sOcLtxCp2aLJQGxChIquDiQcy
+	 fj2U9lW2HSHWHA2eEH71FCQ37XgLZAwhPofn7BzXS5LFcnE+bQasacaEn/LkVXHexC
+	 GPwoVTWQz66mefaw9y9zjwlCNXEP4ixcVgZvMvMMxqtbsTY46dce7rKzABe6widukp
+	 ht3DHx+N8Nl9w==
+Received: by mail-pl1-f182.google.com with SMTP id d9443c01a7336-2947d345949so52942995ad.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 28 Oct 2025 07:58:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUlLsp47IPs8m5AK+d2VcjI6166axG+I0ymWxeqtD0wFknx7UOPeihfIqCm6uJX8pN9ENCt4pUMy9g7j+sh/w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yys0DI+qkvo7eqZBzdnfJ4Skf8u071KV5agUJECfMMFzWAUi61e
+	ePxCp5pQvD5HOq9KG6G2yPaQbtT+RNTejMQUwHQOm8xM5j0oq0+CeyDzo83hDdZGGoo/YZX1VgK
+	Tx5qjv1GsL/kWSveb+AKcoDxVgIcAwQ==
+X-Google-Smtp-Source: AGHT+IHme6RPgheMLj6a7fR8+m2u2gZ6x3MVu+ulovS2o0skDQiD/daH6FArZWmguxDIJ5KfNDpOra+vAhdzzjURlKs=
+X-Received: by 2002:a17:902:dac4:b0:294:63ea:b570 with SMTP id
+ d9443c01a7336-294cb65f622mr46857375ad.48.1761663512099; Tue, 28 Oct 2025
+ 07:58:32 -0700 (PDT)
+MIME-Version: 1.0
+References: <20251006093937.27869-1-johan@kernel.org>
+In-Reply-To: <20251006093937.27869-1-johan@kernel.org>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 28 Oct 2025 14:58:18 +0000
+X-Gmail-Original-Message-ID: <CAAOTY_9rf948byRD3_cCeXREeLt2jXHL2CZPAEUUvAVgJc3dBA@mail.gmail.com>
+X-Gm-Features: AWmQ_bnhgsaxyx7-K3gUASFOVVQcGX3sTjPCy2q_RVuuZkcZXgMfDZNuqSDRMTE
+Message-ID: <CAAOTY_9rf948byRD3_cCeXREeLt2jXHL2CZPAEUUvAVgJc3dBA@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: fix device use-after-free on unbind
+To: Johan Hovold <johan@kernel.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
+	Ma Ke <make24@iscas.ac.cn>, Sjoerd Simons <sjoerd@collabora.com>, 
+	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, stable@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2-5 
-MIME-Version: 1.0
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251028_062451_938494_CC1BC9D9 
-X-CRM114-Status: GOOD (  15.52  )
+X-CRM114-CacheID: sfid-20251028_075834_105469_FC72F623 
+X-CRM114-Status: GOOD (  21.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,41 +88,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2025-10-28 at 12:14 +0100, Eric Woudstra wrote:
->=20
->=20
-> On 10/21/25 10:21 PM, Sjoerd Simons wrote:
-> > On Fri, 2025-10-17 at 19:31 +0200, Andrew Lunn wrote:
-> > > > +&mdio_bus {
-> > > > +	phy15: ethernet-phy@f {
-> > > > +		compatible =3D "ethernet-phy-id03a2.a411";
-> > > > +		reg =3D <0xf>;
-> > > > +		interrupt-parent =3D <&pio>;
-> > > > +		interrupts =3D <38 IRQ_TYPE_EDGE_FALLING>;
-> > >=20
-> > > This is probably wrong. PHY interrupts are generally level, not edge.
-> >=20
-> > Sadly i can't find a datasheet for the PHY, so can't really validate th=
-at
-> > easily. Maybe Eric can
-> > comment here as the author of the relevant PHY driver.
-> >=20
-> > I'd note that the mt7986a-bananapi-bpi-r3-mini dts has the same setup f=
-or
-> > this PHY, however that's
-> > ofcourse not authoritative.
-> >=20
->=20
-> Lucien would have access to the correct information about the interrupt.
+Johan Hovold <johan@kernel.org> =E6=96=BC 2025=E5=B9=B410=E6=9C=886=E6=97=
+=A5 =E9=80=B1=E4=B8=80 =E4=B8=8A=E5=8D=889:48=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> A recent change fixed device reference leaks when looking up drm
+> platform device driver data during bind() but failed to remove a partial
+> fix which had been added by commit 80805b62ea5b ("drm/mediatek: Fix
+> kobject put for component sub-drivers").
+>
+> This results in a reference imbalance on component bind() failures and
+> on unbind() which could lead to a user-after-free.
+>
+> Make sure to only drop the references after retrieving the driver data
+> by effectively reverting the previous partial fix.
+>
+> Note that holding a reference to a device does not prevent its driver
+> data from going away so there is no point in keeping the reference.
 
-Thanks! For what it's worth i got around to putting a scope on the line las=
-t
-night. It looks like the interrupt line is pulled down until cleared, so it
-appears it's indeed a Level interrupt as Andrew guessed. But would be great=
- to
-have this confirmed based on the documentation :)
+Applied to mediatek-drm-fixes [1], thanks.
 
---=20
-Sjoerd Simons <sjoerd@collabora.com>
-Collabora
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-fixes
+
+Regards,
+Chun-Kuang.
+
+>
+> Fixes: 1f403699c40f ("drm/mediatek: Fix device/node reference count leaks=
+ in mtk_drm_get_all_drm_priv")
+> Reported-by: Sjoerd Simons <sjoerd@collabora.com>
+> Link: https://lore.kernel.org/r/20251003-mtk-drm-refcount-v1-1-3b3f2813b0=
+db@collabora.com
+> Cc: stable@vger.kernel.org
+> Cc: Ma Ke <make24@iscas.ac.cn>
+> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Johan Hovold <johan@kernel.org>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 10 ----------
+>  1 file changed, 10 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/med=
+iatek/mtk_drm_drv.c
+> index 384b0510272c..a94c51a83261 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -686,10 +686,6 @@ static int mtk_drm_bind(struct device *dev)
+>         for (i =3D 0; i < private->data->mmsys_dev_num; i++)
+>                 private->all_drm_private[i]->drm =3D NULL;
+>  err_put_dev:
+> -       for (i =3D 0; i < private->data->mmsys_dev_num; i++) {
+> -               /* For device_find_child in mtk_drm_get_all_priv() */
+> -               put_device(private->all_drm_private[i]->dev);
+> -       }
+>         put_device(private->mutex_dev);
+>         return ret;
+>  }
+> @@ -697,18 +693,12 @@ static int mtk_drm_bind(struct device *dev)
+>  static void mtk_drm_unbind(struct device *dev)
+>  {
+>         struct mtk_drm_private *private =3D dev_get_drvdata(dev);
+> -       int i;
+>
+>         /* for multi mmsys dev, unregister drm dev in mmsys master */
+>         if (private->drm_master) {
+>                 drm_dev_unregister(private->drm);
+>                 mtk_drm_kms_deinit(private->drm);
+>                 drm_dev_put(private->drm);
+> -
+> -               for (i =3D 0; i < private->data->mmsys_dev_num; i++) {
+> -                       /* For device_find_child in mtk_drm_get_all_priv(=
+) */
+> -                       put_device(private->all_drm_private[i]->dev);
+> -               }
+>                 put_device(private->mutex_dev);
+>         }
+>         private->mtk_drm_bound =3D false;
+> --
+> 2.49.1
+>
 
