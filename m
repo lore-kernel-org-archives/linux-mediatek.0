@@ -4,58 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60EAFCCF9E0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Oct 2025 09:07:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03F0FCCF9EE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Oct 2025 09:32:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hE0Jy4PLs4ppQPPmdZeYyTiDE0WvbsyHYaFTOAMSNuA=; b=hNZn/8VvOZzQl05CEW8tWBZYBL
-	/SjKBei5+yGIWgm6ncXdvy9cvfS2cK8Z1XccjzXZFNdIKPe8w46DWM501Ol8M4JcTj5He1lffbUIt
-	Qoc6GHzH+hY+jX8iSJq/YKf5lqjNUauC1zsWpGptkH5mHXa74sBkDz1ZJO/VtUBo6D0jy5C1wG8JJ
-	OPl+psD9nRGBVvKTna9f22pDAvmnQhSUIP95Cm2/qZh64Cg6bP9ZOsu6wa84tsYEU0wwnyMHiC65F
-	0lcMK1uzODo/rNLtCCzau6AFSkjGQryljT/VoOIDcR6sSRxT6CbWa3Zc/df2BIM8yKHYLPLIpH06A
-	ObXaej6A==;
+	bh=VGec7L1K3/ls04vGgFBjzEMz/ItTRy+/HlhRqpV5zYA=; b=dOoFqMUc1ii8ac8Coencdfda49
+	QAD17YllatdcLng6fJ5BTSry0pJRafQ/8C/DdKR2lLe9POioYi0dboZu4MzY5CFoGBAzjgHxd+aDx
+	zGKkj3IuPibyzu0VgI4GE/J5hRHoD0JIkAX5fnj7SEJV7JKNLhyEMJC5c4Rxnoxf8FjLtmFxg6Veg
+	7c8pzhmHAVXxSkRB+aV9vWzK+zlMPqwyNWB186Bz1Fb1JeXlf0C9JeW232wvkNnA87TFC6VBbXUaA
+	nLpmXnd0/IKivfq1YeqzEBhKhrPHqU6iyjkx1KV5/pYCylNcuglLh2wG8158ND4KFdhg1EJV8Ig/y
+	I7hgDhSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDfft-0000000Fbr2-0QWT;
-	Tue, 28 Oct 2025 09:07:29 +0000
+	id 1vDg3k-0000000Fe5h-3pIE;
+	Tue, 28 Oct 2025 09:32:08 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vDffp-0000000FbqI-2laC;
-	Tue, 28 Oct 2025 09:07:26 +0000
+	id 1vDg3j-0000000Fe5I-08ar
+	for linux-mediatek@lists.infradead.org;
+	Tue, 28 Oct 2025 09:32:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4E59448AC3;
-	Tue, 28 Oct 2025 09:07:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90AA4C4CEE7;
-	Tue, 28 Oct 2025 09:07:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1761642444;
-	bh=WxHpl51n4EsbakrBuVvz8JyJIZAFgGu/0ttTPMvNUy0=;
+	by sea.source.kernel.org (Postfix) with ESMTP id 013CE41A93;
+	Tue, 28 Oct 2025 09:32:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD8BBC4CEE7;
+	Tue, 28 Oct 2025 09:32:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761643925;
+	bh=VGec7L1K3/ls04vGgFBjzEMz/ItTRy+/HlhRqpV5zYA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=EmOliCbjaJFIBi3/P+bJGAth59P2tigGVXrNf2RUceOZ/7LeIkWtjbse/HPE1i+pA
-	 eelsPmrxYGTM1UgelXb8fx+Nc4SbsK1UKfNku3/OjHqmXN9Rw27T9ruUu2dotDKRFB
-	 moe3tGqpqvpwIyROnOP1pOCcUsX+HXlmze8SHn9w=
-Date: Tue, 28 Oct 2025 10:07:19 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Pavel Zhigulin <Pavel.Zhigulin@kaspersky.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-usb@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	lvc-project@linuxtesting.org
-Subject: Re: [PATCH] usb: mtu3: fix possible NULL pointer dereference in
- ep0_rx_state()
-Message-ID: <2025102811-helium-caloric-cac5@gregkh>
-References: <20251027193152.3906497-1-Pavel.Zhigulin@kaspersky.com>
+	b=A8GuF+2C0gkg1jR1+zGVr+ql1TzwWyBiUNtHdbNYldTOUsADT8IgzVDkW2AEiWPy4
+	 8i4a6idUC4IfmaWCKjCLZLDy+BO3RNCTSFJRa/q4v6Dl8gxZqQAEvE8dY2bl8mg2Hd
+	 3io+Lj8zAbN+ByG1oN5O5vBhRNvNCy2iYbX2acO6YQ6lU1NuZEg7HyNSMF8bL7bG2j
+	 pXi/jpy9BShw7NR3R5/37B5xirDasa352fRLMQMg+I1PKdppeEUcvusNApTlbBEm2F
+	 wm4+J96spMJzxz6EGipmKJUD1jDygu9URQHTzf8fXHbAQviw2Piaeyow350Q8hhL9A
+	 jA8+oPlWAOFFw==
+Received: from johan by xi.lan with local (Exim 4.98.2)
+	(envelope-from <johan@kernel.org>)
+	id 1vDg3l-000000000Rm-0xYa;
+	Tue, 28 Oct 2025 10:32:09 +0100
+Date: Tue, 28 Oct 2025 10:32:09 +0100
+From: Johan Hovold <johan@kernel.org>
+To: Nicolas Dufresne <nicolas@ndufresne.ca>
+Cc: Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hans.verkuil@cisco.com>, linux-media@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/3] media: mediatek: fix VPU device leaks on probe
+Message-ID: <aQCNmZpOquAlL49K@hovoldconsulting.com>
+References: <20250924133552.28841-1-johan@kernel.org>
+ <aP91nfnpShIhXcVQ@hovoldconsulting.com>
+ <ac27d9b1da68746c62c03047fd7896e2303ef1fd.camel@ndufresne.ca>
+ <aQB9BIjXEOHpIy3_@hovoldconsulting.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="/z9wxTx+yneLrdmE"
 Content-Disposition: inline
-In-Reply-To: <20251027193152.3906497-1-Pavel.Zhigulin@kaspersky.com>
+In-Reply-To: <aQB9BIjXEOHpIy3_@hovoldconsulting.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251028_020725_743560_FC71DCB7 
-X-CRM114-Status: GOOD (  30.26  )
+X-CRM114-CacheID: sfid-20251028_023207_112004_E56DCAC0 
+X-CRM114-Status: GOOD (  23.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,87 +87,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 27, 2025 at 10:31:50PM +0300, Pavel Zhigulin wrote:
-> The function 'ep0_rx_state()' accessed 'mreq->request' before verifying
-> that mreq was valid. If 'next_ep0_request()' returned NULL, this could
-> lead to a NULL pointer dereference. The return value of
-> 'next_ep0_request()' is checked in every other code path except
-> here. It appears that the intended 'if (mreq)' check was mistakenly
-> written as 'if (req)', since the req pointer cannot be NULL when mreq
-> is not NULL.
-> 
-> Initialize 'mreq' and 'req' to NULL by default, and switch 'req'
-> NULL-checking to 'mreq' non-NULL check to prevent invalid memory access.
-> 
-> Found by Linux Verification Center (linuxtesting.org) with SVACE.
-> 
-> Fixes: df2069acb005 ("usb: Add MediaTek USB3 DRD driver")
-> Signed-off-by: Pavel Zhigulin <Pavel.Zhigulin@kaspersky.com>
-> ---
->  drivers/usb/mtu3/mtu3_gadget_ep0.c | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/usb/mtu3/mtu3_gadget_ep0.c b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-> index e4fd1bb14a55..ee7466ca4d99 100644
-> --- a/drivers/usb/mtu3/mtu3_gadget_ep0.c
-> +++ b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-> @@ -508,8 +508,8 @@ static int handle_standard_request(struct mtu3 *mtu,
->  /* receive an data packet (OUT) */
->  static void ep0_rx_state(struct mtu3 *mtu)
->  {
-> -	struct mtu3_request *mreq;
-> -	struct usb_request *req;
-> +	struct mtu3_request *mreq = NULL;
-> +	struct usb_request *req = NULL;
->  	void __iomem *mbase = mtu->mac_base;
->  	u32 maxp;
->  	u32 csr;
-> @@ -519,10 +519,11 @@ static void ep0_rx_state(struct mtu3 *mtu)
-> 
->  	csr = mtu3_readl(mbase, U3D_EP0CSR) & EP0_W1C_BITS;
->  	mreq = next_ep0_request(mtu);
-> -	req = &mreq->request;
-> 
->  	/* read packet and ack; or stall because of gadget driver bug */
-> -	if (req) {
-> +	if (mreq) {
-> +		req = &mreq->request;
-> +
->  		void *buf = req->buf + req->actual;
->  		unsigned int len = req->length - req->actual;
-> 
-> --
-> 2.43.0
-> 
-> 
 
-Hi,
+--/z9wxTx+yneLrdmE
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+On Tue, Oct 28, 2025 at 09:21:24AM +0100, Johan Hovold wrote:
+> On Mon, Oct 27, 2025 at 07:29:39PM +0000, Nicolas Dufresne wrote:
+> > Le lundi 27 octobre 2025 =C3=A0 14:37 +0100, Johan Hovold a =C3=A9crit=
+=C2=A0:
+> > > On Wed, Sep 24, 2025 at 03:35:49PM +0200, Johan Hovold wrote:
+> > > > This series fixes VPU device leaks during probe of the mdp and two =
+codec
+> > > > drivers.
+> > > >=20
+> > > > Included is also a minor documentation update to make it clear that=
+ the
+> > > > VPU lookup helper returns the device with an incremented refcount.
+> > >=20
+> > > Can these be picked up for 6.19?
+> >=20
+> > They are picked already, please check in the tree,
+> >=20
+> > https://gitlab.freedesktop.org/linux-media/media-committers/-/commits/n=
+ext
+>=20
+> I can't seem to find them in that branch either, and they are not in
+> linux-next.=20
+>=20
+> (I seem to have trimmed my original message too much so that the patch
+> summaries were not included in my reminder. Perhaps you are thinking of
+> the related mtk-mdp3 fix?)
+>=20
+> But I do see an incomplete attempt at a fix of the reference leak in
+> that branch by someone else in commit cdd0f118ef87 ("media: mediatek:
+> vcodec: Fix a reference leak in mtk_vcodec_fw_vpu_init()")
+>=20
+> Can that commit be dropped in favour of this series or shall I rebase on
+> top of it?
 
-You are receiving this message because of the following common error(s)
-as indicated below:
+Scratch that. The merged commit is correct. I'll respin this series on
+top.
 
-- You have marked a patch with a "Fixes:" tag for a commit that is in an
-  older released kernel, yet you do not have a cc: stable line in the
-  signed-off-by area at all, which means that the patch will not be
-  applied to any older kernel releases.  To properly fix this, please
-  follow the documented rules in the
-  Documentation/process/stable-kernel-rules.rst file for how to resolve
-  this.
+Johan
 
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
+--/z9wxTx+yneLrdmE
+Content-Type: application/pgp-signature; name=signature.asc
 
-thanks,
+-----BEGIN PGP SIGNATURE-----
 
-greg k-h's patch email bot
+iHUEABYKAB0WIQQHbPq+cpGvN/peuzMLxc3C7H1lCAUCaQCNlQAKCRALxc3C7H1l
+CNI1AP4mIpY9GNfiGHVm9Z4vAFW+glStwC22iPrdWVr53rxShgD+OHcwlYKvCt+/
+P8dYWux9RIhpLNyNVx4owqhrd7Dv8go=
+=J7Jh
+-----END PGP SIGNATURE-----
+
+--/z9wxTx+yneLrdmE--
 
