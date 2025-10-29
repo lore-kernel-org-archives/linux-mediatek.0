@@ -4,46 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC77FCCF9EB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 20:40:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91C88CCF9EB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 23:06:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+kDStLF1T0fG1rK0mH3pE3M1UcqFPJrbWW0y886WCl8=; b=X7QpxocTiIQ3mcAIfcZwp+zG9u
-	lQCw8oUlhujQgAiNYXby8RZM2pc0J1/sg64pAgaTR5+Fb0Rmb0RAf6N4qxaxCwmusPsV24032wChO
-	Ycu7gMI+fgZxfjWmMFbmFDiVFlL85VnqIiO1t/QRHMB0g3ERXIh3tlgi0LQ5CzN6V/EAayxDO8kD9
-	bF7ueQbh7QiGuvS7o7J6j0UbZ60zMdD/XbGOI2mdZcorQ948uBV57S2kYY7g3BSPWLLGVyVEbxw58
-	XiFKoJdiTID8H1rNX4tr9Oyfsv1sQtdAEqwZe3Bf2Pj5+O9Mfc5IFSoa5I9lqQcUUYbNYGNUzGxJP
-	t0pX59XQ==;
+	bh=SbLoiFq6VBq33/XP4LigeDm2IzhoDT484/V3vb02oEQ=; b=j0KE5AJpJEm39RrL3VSsPG7q2N
+	J6Oq+5J01nAgBKAGcUo8tu7v6FQc6q3B/YtDccmI03VauSIq32SM0DWxxqhx9tYSCLmse0+/vDQ3e
+	GuOHAXiUHual/XRXzhAvKqOZputej1JZtiuBtx9RYUF+BKoFm55mK/39OG/wccudQbuCbsJJTu5zY
+	hAfgX/1V2zjvFQi8dHlzsJighMEDxA8O67YplqPrADr3AupWoeRqgdlv2ZE0fgpBJnAXgl9hIwywK
+	lqPFeVhI7XgVhipyRDBEBSQYWKnrc54pRYkLiBopoek9zpJvkXu/xLDUhQvVy4ulm1h8Xntz4pOW7
+	IqH6641w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vECyT-00000002pZo-0VVb;
-	Wed, 29 Oct 2025 20:40:53 +0000
+	id 1vEFFS-00000003DJe-3lhk;
+	Wed, 29 Oct 2025 23:06:34 +0000
 Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vECyQ-00000002pZ5-1YUN
+	id 1vEFFP-00000003DHS-2fmS
 	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Oct 2025 20:40:52 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 3BC8097743A;
-	Wed, 29 Oct 2025 21:40:39 +0100 (CET)
+	Wed, 29 Oct 2025 23:06:33 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 3CFD497877B;
+	Thu, 30 Oct 2025 00:06:18 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1761770447; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1761779183; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=+kDStLF1T0fG1rK0mH3pE3M1UcqFPJrbWW0y886WCl8=;
-	b=W/+YhFfUqoxRXWIQWoxS6Dmq0pM3gNodPdexHi/aIthBbKxBLFgXENcoiKuV520+RoQNqZ
-	HUszlsmSa2PGUGa4jKv6b6EId78d3kYweFsndGry7ta9ynfStdqHP5zr3PFyzYV73tMP57
-	zoDUVPCUsthIfEJqqizc0xFbCvoz6jFSuV9QVPLRSJ2+5YoKQNLEipCtjk7oLGFnRZWPFM
-	W5CObxGuh086BlA7FrvTXAUEnlITmDwzQfeNhqEMzhZYtmbkL8IaH/w3bngfmmWOKIwcgw
-	Jm0b1u6face8QBekgiKiiEcc9+GqF0ph0DmvTmnS7psH4jpu3OTmHUn8x6HR9w==
-Message-ID: <7865beac-cd03-4242-aab0-bbf05c60391a@cjdns.fr>
-Date: Wed, 29 Oct 2025 21:40:39 +0100
+	bh=SbLoiFq6VBq33/XP4LigeDm2IzhoDT484/V3vb02oEQ=;
+	b=DBrDY+0C6aocls3rQk9m1kZA+8NQH40kO5zx1H1BtK0TPJ5fbO18yiskThb92x3BKy/TdC
+	7nB8R6Hb4L5vTaSduJFr8+HaXCUL528UU3iSWH/i3pMFkcu07UWLdisG7fCTQ1CEdEkbWA
+	HYCcZS6iX5Uvit19L6tdNGzEkQrTGdtQIcvlMbeoGwHg3tx8qIUg7C3A5j27jvZn5IPL1+
+	qotE+Q0EetpAFvatgmyHWVKIBxpa5IasDrUukvz+oXeWEL6xbfXR+WZ0Zyv01b9hEV6i3u
+	ndjQ6sDqZLzQ1LWLp5eZ7cfR6yzVrfttTDr4GX0k6cP3ZjDi/kcdXJZ0jkpQfQ==
+Message-ID: <67e2aee8-1ef9-4256-94ca-dbf42f62cbf7@cjdns.fr>
+Date: Thu, 30 Oct 2025 00:06:16 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird Beta
 Subject: Re: [PATCH] wifi: mt76: mmio_(read|write)_copy byte swap when on Big
  Endian
+From: Caleb James DeLisle <cjd@cjdns.fr>
 To: Jonas Gorski <jonas.gorski@gmail.com>
 Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
  shayne.chen@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com,
@@ -56,15 +57,15 @@ References: <20251027171759.1484844-1-cjd@cjdns.fr>
  <CAOiHx=nqWEdHEMf5immXO0VwyzDakDV9AMsoDETcJ0F4FqUt=w@mail.gmail.com>
  <4d5fe35f-6841-4b73-9c8c-a1f3bce886c8@cjdns.fr>
  <CAOiHx=kfAwLzuoP2Y-AnGz4GysmszXq-f_et0rgd1j0thYv4Ew@mail.gmail.com>
+ <7865beac-cd03-4242-aab0-bbf05c60391a@cjdns.fr>
 Content-Language: en-US
-From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <CAOiHx=kfAwLzuoP2Y-AnGz4GysmszXq-f_et0rgd1j0thYv4Ew@mail.gmail.com>
+In-Reply-To: <7865beac-cd03-4242-aab0-bbf05c60391a@cjdns.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251029_134050_826499_FF84AEFB 
-X-CRM114-Status: GOOD (  52.95  )
+X-CRM114-CacheID: sfid-20251029_160632_071023_EDE51E0B 
+X-CRM114-Status: GOOD (  54.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,233 +81,279 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On 29/10/2025 21:12, Jonas Gorski wrote:
-> On Wed, Oct 29, 2025 at 4:24 PM Caleb James DeLisle <cjd@cjdns.fr> wrote:
->>
->> On 29/10/2025 10:15, Jonas Gorski wrote:
->>> On Tue, Oct 28, 2025 at 10:42 PM Caleb James DeLisle <cjd@cjdns.fr> wrote:
->>>> On 28/10/2025 21:19, Jonas Gorski wrote:
->>>>> Hi,
->>>>>
->>>>> On Mon, Oct 27, 2025 at 6:19 PM Caleb James DeLisle <cjd@cjdns.fr> wrote:
->>>>>> When on a Big Endian machine, PCI swaps words to/from LE when
->>>>>> reading/writing them. This presents a problem when we're trying
->>>>>> to copy an opaque byte array such as firmware or encryption key.
->>>>>>
->>>>>> Byte-swapping during copy results in two swaps, but solves the
->>>>>> problem.
->>>>>>
->>>>>> Fixes:
->>>>>> mt76x2e 0000:02:00.0: ROM patch build: 20141115060606a
->>>>>> mt76x2e 0000:02:00.0: Firmware Version: 0.0.00
->>>>>> mt76x2e 0000:02:00.0: Build: 1
->>>>>> mt76x2e 0000:02:00.0: Build Time: 201607111443____
->>>>>> mt76x2e 0000:02:00.0: Firmware failed to start
->>>>>> mt76x2e 0000:02:00.0: probe with driver mt76x2e failed with error -145
->>>>>>
->>>>>> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
->>>>>> ---
->>>>>>     drivers/net/wireless/mediatek/mt76/mmio.c | 34 +++++++++++++++++++++++
->>>>>>     1 file changed, 34 insertions(+)
->>>>>>
->>>>>> diff --git a/drivers/net/wireless/mediatek/mt76/mmio.c b/drivers/net/wireless/mediatek/mt76/mmio.c
->>>>>> index cd2e9737c3bf..776dbaacc8a3 100644
->>>>>> --- a/drivers/net/wireless/mediatek/mt76/mmio.c
->>>>>> +++ b/drivers/net/wireless/mediatek/mt76/mmio.c
->>>>>> @@ -30,15 +30,49 @@ static u32 mt76_mmio_rmw(struct mt76_dev *dev, u32 offset, u32 mask, u32 val)
->>>>>>            return val;
->>>>>>     }
->>>>>>
->>>>>> +static void mt76_mmio_write_copy_portable(void __iomem *dst,
->>>>>> +                                         const u8 *src, int len)
->>>>>> +{
->>>>>> +       __le32 val;
->>>>>> +       int i = 0;
->>>>>> +
->>>>>> +       for (i = 0; i < ALIGN(len, 4); i += 4) {
->>>>>> +               memcpy(&val, src + i, sizeof(val));
->>>>>> +               writel(cpu_to_le32(val), dst + i);
->>>>>> +       }
->>>>>> +}
->>>>>> +
->>>>>>     static void mt76_mmio_write_copy(struct mt76_dev *dev, u32 offset,
->>>>>>                                     const void *data, int len)
->>>>>>     {
->>>>>> +       if (IS_ENABLED(CONFIG_CPU_BIG_ENDIAN)) {
->>>>>> +               mt76_mmio_write_copy_portable(dev->mmio.regs + offset, data,
->>>>>> +                                             len);
->>>>>> +               return;
->>>>>> +       }
->>>>>>            __iowrite32_copy(dev->mmio.regs + offset, data, DIV_ROUND_UP(len, 4));
->>>>> Maybe just replace this with memcpy_toio() which does no swapping at
->>>>> all instead of double swapping on BE?
->>>> I'm not that informed about how PCI works so I had to test to confirm
->>>> my understanding, but I can confirm that memcpy_toio() does not solve
->>>> the problem.
->>> Ah, right, I misread _iowrite32_copy() to do conversion to LE, but it doesn't.
+On 29/10/2025 21:40, Caleb James DeLisle wrote:
+>
+> On 29/10/2025 21:12, Jonas Gorski wrote:
+>> On Wed, Oct 29, 2025 at 4:24 PM Caleb James DeLisle <cjd@cjdns.fr> 
+>> wrote:
 >>>
->>> What architecture is this you have? PowerPC? ARM? MIPS? 32 bit? 64 bit?
->>
->> MIPS32 (EcoNet EN751221 34Kc)
->>
->>
->>> So the differences I see are:
->>>
->>> 1. __iowrite32_copy() uses __raw_writel(), which has different memory
->>> semantics than writel()
->>> 2. __iowrite32_copy() assumed src is aligned to 32 bit, while you
->>> explicitly align it
->>> 3. memcpy_toio() will handle unaligned src properly, but does 64 bit
->>> accesses on 64 bit systems (and uses __raw* again).
->>>
->>> Is src aligned? If not, then the issue might be 2. And if your system
->>> is 64 bit, it would explain why 3 didn't help.
->>
->> I'm not a regular developer of mt76 so I wasn't sure if that was
->> guaranteed and I just wanted to code for safety.
->>
->> After reviewing the code, I see that there are a few places where
->> mt76_mmio_write_copy is being called with stack-allocated u8 arrays
->> so it's pretty clear to me that this is being treated as a memcpy-like
->> function and we should be handling unaligned inputs.
->>
->>
->>> As a first step you could try to replace the writel(cpu_to_le32(val)
->>> with a iowrite32be(val, ...) which should do the same except avoiding
->>> the doubled byte swapping. If that works, you can try to replace it
->> This works.
->>
->> These symbols are a bit of a nightmare to trace, so I ended up making
->> an .i file so I could confirm what's happening.
->>
->> iowrite32be() uses the version in iomap.c so I understand that's using
->> writel(swab32(val),port), so a writel with an unconditional byte swap.
->> writel() is more complicated, it's an inline function that is generated
->> in a rat's nest of preprocessor macros in mips/include/asm/io.h
->>
->> The preprocessed is this:
->>
->> __mem = (void *)((unsigned long)(mem)); __val = (val); if (sizeof(u32)
->> != sizeof(u64) || sizeof(u64) == sizeof(long)) { *__mem = __val;
->>
->> The source is this:
->>
->>       __mem = (void *)__swizzle_addr_##bwlq((unsigned long)(mem));    \
->>       __val = pfx##ioswab##bwlq(__mem, val);                \
->>       if (sizeof(type) != sizeof(u64) || sizeof(u64) == sizeof(long)) \
->>           *__mem = __val;                        \
->>
->> The line "pfx##ioswab##bwlq(__mem, val);" is ioswabl() and the source
->> of that explains the issue:
->>
->>    * Sane hardware offers swapping of PCI/ISA I/O space accesses in hardware;
->>    * less sane hardware forces software to fiddle with this...
->>
->> So this confirms my initial understanding, the PCI hardware is doing the
->> byte swapping unconditionally.
->>
->>
->>> with __raw_writel(), which then would make this the same as
->>> __iowrite32_copy, except making sure that src is aligned.
->>
->> This fails.
->>
->> Since I'm the maintainer of this SoC and it's still fairly new, I wrote
->> a trivial kmod to verify that unaligned access is not just silently
->> returning trash, it works as though it were aligned so alignment is
->> not the issue.
->>
->>
->>> Also you could replace your memcpy() with get_unaligned((u32 *)(src +
->>> i)); Should do the same but inline.
->> Good idea, I will do this.
->>>> The issue as I understand it is that rather than making every driver
->>>> carefully call cpu_to_le*() every MMIO write, someone decided to make
->>>> the PCI host bridge itself transparently byte-swap all MMIO on the
->>>> wire. Since most MMIO is hitting registers and most buffers are
->>>> transferred by DMA, for the most part everything works and nobody
->>>> notices.
+>>> On 29/10/2025 10:15, Jonas Gorski wrote:
+>>>> On Tue, Oct 28, 2025 at 10:42 PM Caleb James DeLisle <cjd@cjdns.fr> 
+>>>> wrote:
+>>>>> On 28/10/2025 21:19, Jonas Gorski wrote:
+>>>>>> Hi,
+>>>>>>
+>>>>>> On Mon, Oct 27, 2025 at 6:19 PM Caleb James DeLisle 
+>>>>>> <cjd@cjdns.fr> wrote:
+>>>>>>> When on a Big Endian machine, PCI swaps words to/from LE when
+>>>>>>> reading/writing them. This presents a problem when we're trying
+>>>>>>> to copy an opaque byte array such as firmware or encryption key.
+>>>>>>>
+>>>>>>> Byte-swapping during copy results in two swaps, but solves the
+>>>>>>> problem.
+>>>>>>>
+>>>>>>> Fixes:
+>>>>>>> mt76x2e 0000:02:00.0: ROM patch build: 20141115060606a
+>>>>>>> mt76x2e 0000:02:00.0: Firmware Version: 0.0.00
+>>>>>>> mt76x2e 0000:02:00.0: Build: 1
+>>>>>>> mt76x2e 0000:02:00.0: Build Time: 201607111443____
+>>>>>>> mt76x2e 0000:02:00.0: Firmware failed to start
+>>>>>>> mt76x2e 0000:02:00.0: probe with driver mt76x2e failed with 
+>>>>>>> error -145
+>>>>>>>
+>>>>>>> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+>>>>>>> ---
+>>>>>>>     drivers/net/wireless/mediatek/mt76/mmio.c | 34 
+>>>>>>> +++++++++++++++++++++++
+>>>>>>>     1 file changed, 34 insertions(+)
+>>>>>>>
+>>>>>>> diff --git a/drivers/net/wireless/mediatek/mt76/mmio.c 
+>>>>>>> b/drivers/net/wireless/mediatek/mt76/mmio.c
+>>>>>>> index cd2e9737c3bf..776dbaacc8a3 100644
+>>>>>>> --- a/drivers/net/wireless/mediatek/mt76/mmio.c
+>>>>>>> +++ b/drivers/net/wireless/mediatek/mt76/mmio.c
+>>>>>>> @@ -30,15 +30,49 @@ static u32 mt76_mmio_rmw(struct mt76_dev 
+>>>>>>> *dev, u32 offset, u32 mask, u32 val)
+>>>>>>>            return val;
+>>>>>>>     }
+>>>>>>>
+>>>>>>> +static void mt76_mmio_write_copy_portable(void __iomem *dst,
+>>>>>>> +                                         const u8 *src, int len)
+>>>>>>> +{
+>>>>>>> +       __le32 val;
+>>>>>>> +       int i = 0;
+>>>>>>> +
+>>>>>>> +       for (i = 0; i < ALIGN(len, 4); i += 4) {
+>>>>>>> +               memcpy(&val, src + i, sizeof(val));
+>>>>>>> +               writel(cpu_to_le32(val), dst + i);
+>>>>>>> +       }
+>>>>>>> +}
+>>>>>>> +
+>>>>>>>     static void mt76_mmio_write_copy(struct mt76_dev *dev, u32 
+>>>>>>> offset,
+>>>>>>>                                     const void *data, int len)
+>>>>>>>     {
+>>>>>>> +       if (IS_ENABLED(CONFIG_CPU_BIG_ENDIAN)) {
+>>>>>>> + mt76_mmio_write_copy_portable(dev->mmio.regs + offset, data,
+>>>>>>> +                                             len);
+>>>>>>> +               return;
+>>>>>>> +       }
+>>>>>>>            __iowrite32_copy(dev->mmio.regs + offset, data, 
+>>>>>>> DIV_ROUND_UP(len, 4));
+>>>>>> Maybe just replace this with memcpy_toio() which does no swapping at
+>>>>>> all instead of double swapping on BE?
+>>>>> I'm not that informed about how PCI works so I had to test to confirm
+>>>>> my understanding, but I can confirm that memcpy_toio() does not solve
+>>>>> the problem.
+>>>> Ah, right, I misread _iowrite32_copy() to do conversion to LE, but 
+>>>> it doesn't.
 >>>>
->>>> But in the rare case that we need to write a blob to MMIO, it gets
->>>> transparently swapped in hardware so you need to use cpu_to_le in that
->>>> case. Doing a search of ./drivers for write.*cpu_to_le I can see this
->>>> issue comes up a bit.
->>> Every (PCI) driver does conversion to LE implicitly by using
->>> writel/readl (or iowrite32/ioread32) etc do the conversion to/from LE.
->>> So writel(foo, dst )is a __raw_writel(cpu_to_le32(foo), dst) etc. PCI
->>> memory is assumed to be in LE. If you are on a little endian system,
->>> then no byte swapping happens, and on BE it will do byte swapping
->>> before writing the value.
->> Okay so it seems that in the case of MIPS, that's not always how it
->> works.
+>>>> What architecture is this you have? PowerPC? ARM? MIPS? 32 bit? 64 
+>>>> bit?
+>>>
+>>> MIPS32 (EcoNet EN751221 34Kc)
+>>>
+>>>
+>>>> So the differences I see are:
+>>>>
+>>>> 1. __iowrite32_copy() uses __raw_writel(), which has different memory
+>>>> semantics than writel()
+>>>> 2. __iowrite32_copy() assumed src is aligned to 32 bit, while you
+>>>> explicitly align it
+>>>> 3. memcpy_toio() will handle unaligned src properly, but does 64 bit
+>>>> accesses on 64 bit systems (and uses __raw* again).
+>>>>
+>>>> Is src aligned? If not, then the issue might be 2. And if your system
+>>>> is 64 bit, it would explain why 3 didn't help.
+>>>
+>>> I'm not a regular developer of mt76 so I wasn't sure if that was
+>>> guaranteed and I just wanted to code for safety.
+>>>
+>>> After reviewing the code, I see that there are a few places where
+>>> mt76_mmio_write_copy is being called with stack-allocated u8 arrays
+>>> so it's pretty clear to me that this is being treated as a memcpy-like
+>>> function and we should be handling unaligned inputs.
+>>>
+>>>
+>>>> As a first step you could try to replace the writel(cpu_to_le32(val)
+>>>> with a iowrite32be(val, ...) which should do the same except avoiding
+>>>> the doubled byte swapping. If that works, you can try to replace it
+>>> This works.
+>>>
+>>> These symbols are a bit of a nightmare to trace, so I ended up making
+>>> an .i file so I could confirm what's happening.
+>>>
+>>> iowrite32be() uses the version in iomap.c so I understand that's using
+>>> writel(swab32(val),port), so a writel with an unconditional byte swap.
+>>> writel() is more complicated, it's an inline function that is generated
+>>> in a rat's nest of preprocessor macros in mips/include/asm/io.h
+>>>
+>>> The preprocessed is this:
+>>>
+>>> __mem = (void *)((unsigned long)(mem)); __val = (val); if (sizeof(u32)
+>>> != sizeof(u64) || sizeof(u64) == sizeof(long)) { *__mem = __val;
+>>>
+>>> The source is this:
+>>>
+>>>       __mem = (void *)__swizzle_addr_##bwlq((unsigned long)(mem));    \
+>>>       __val = pfx##ioswab##bwlq(__mem, val);                \
+>>>       if (sizeof(type) != sizeof(u64) || sizeof(u64) == sizeof(long)) \
+>>>           *__mem = __val;                        \
+>>>
+>>> The line "pfx##ioswab##bwlq(__mem, val);" is ioswabl() and the source
+>>> of that explains the issue:
+>>>
+>>>    * Sane hardware offers swapping of PCI/ISA I/O space accesses in 
+>>> hardware;
+>>>    * less sane hardware forces software to fiddle with this...
+>>>
+>>> So this confirms my initial understanding, the PCI hardware is doing 
+>>> the
+>>> byte swapping unconditionally.
+>>>
+>>>
+>>>> with __raw_writel(), which then would make this the same as
+>>>> __iowrite32_copy, except making sure that src is aligned.
+>>>
+>>> This fails.
+>>>
+>>> Since I'm the maintainer of this SoC and it's still fairly new, I wrote
+>>> a trivial kmod to verify that unaligned access is not just silently
+>>> returning trash, it works as though it were aligned so alignment is
+>>> not the issue.
+>>>
+>>>
+>>>> Also you could replace your memcpy() with get_unaligned((u32 *)(src +
+>>>> i)); Should do the same but inline.
+>>> Good idea, I will do this.
+>>>>> The issue as I understand it is that rather than making every driver
+>>>>> carefully call cpu_to_le*() every MMIO write, someone decided to make
+>>>>> the PCI host bridge itself transparently byte-swap all MMIO on the
+>>>>> wire. Since most MMIO is hitting registers and most buffers are
+>>>>> transferred by DMA, for the most part everything works and nobody
+>>>>> notices.
+>>>>>
+>>>>> But in the rare case that we need to write a blob to MMIO, it gets
+>>>>> transparently swapped in hardware so you need to use cpu_to_le in 
+>>>>> that
+>>>>> case. Doing a search of ./drivers for write.*cpu_to_le I can see this
+>>>>> issue comes up a bit.
+>>>> Every (PCI) driver does conversion to LE implicitly by using
+>>>> writel/readl (or iowrite32/ioread32) etc do the conversion to/from LE.
+>>>> So writel(foo, dst )is a __raw_writel(cpu_to_le32(foo), dst) etc. PCI
+>>>> memory is assumed to be in LE. If you are on a little endian system,
+>>>> then no byte swapping happens, and on BE it will do byte swapping
+>>>> before writing the value.
+>>> Okay so it seems that in the case of MIPS, that's not always how it
+>>> works.
+>>>
+>>> https://github.com/torvalds/linux/blob/e53642b87a4f4b03a8d7e5f8507fc3cd0c595ea6/arch/mips/include/asm/mach-generic/mangle-port.h#L17 
+>>>
+>>>
+>>> Since we don't know if the swap will happen in hardware or software
+>>> and (AFAIK) this is not a hot enough path that double-swapping will
+>>> have a notable performance penalty, I think the most sane thing to
+>>> do is use writel(cpu_to_le32()) and not care if it's swapped back
+>>> in the kernel or hardware.
+>> Oh, I think I see what it happening here. ECONET is a Big Endian MIPS
+>> platform, but does not select SWAP_IO_SPACE (most other BE platforms
+>> do).
 >>
->> https://github.com/torvalds/linux/blob/e53642b87a4f4b03a8d7e5f8507fc3cd0c595ea6/arch/mips/include/asm/mach-generic/mangle-port.h#L17
+>> Does that mean the PCI space is swapped in hardware there?
 >>
->> Since we don't know if the swap will happen in hardware or software
->> and (AFAIK) this is not a hot enough path that double-swapping will
->> have a notable performance penalty, I think the most sane thing to
->> do is use writel(cpu_to_le32()) and not care if it's swapped back
->> in the kernel or hardware.
-> Oh, I think I see what it happening here. ECONET is a Big Endian MIPS
-> platform, but does not select SWAP_IO_SPACE (most other BE platforms
-> do).
+>> I guess that means that anything that uses __raw accessors to PCI
+>> space directly or indirectly is broken, as the raw data is now
+>> actually in the wrong order and needs to be swab'd.
+>>
+>> I don't know if it is a good idea to change this in __iowrite32_copy()
+>> / __ioread32_copy() (and other helpers), or if there are drivers that
+>> use it on non-PCI spaces and would be broken by that.
+>>
+>> If there is a way, I would suggest disabling hardware conversion and
+>> selecting SWAP_IO_SPACE, but that will affect a lot of your code that
+>> assumes that writel() etc don't convert to/from little endian.
 >
-> Does that mean the PCI space is swapped in hardware there?
 >
-> I guess that means that anything that uses __raw accessors to PCI
-> space directly or indirectly is broken, as the raw data is now
-> actually in the wrong order and needs to be swab'd.
->
-> I don't know if it is a good idea to change this in __iowrite32_copy()
-> / __ioread32_copy() (and other helpers), or if there are drivers that
-> use it on non-PCI spaces and would be broken by that.
->
-> If there is a way, I would suggest disabling hardware conversion and
-> selecting SWAP_IO_SPACE, but that will affect a lot of your code that
-> assumes that writel() etc don't convert to/from little endian.
+> I can look around in the hardware registers and see if I can shut it
+> off for EcoNet, but if you're saying MT76 should not support BE unless
+> they disable hardware swapping and use SWAP_IO_SPACE, that means the
+> majority of BE hardware on OpenWrt is not going to be supported. If
+> that's the decision then it at least warrants clear documentation.
 
 
-I can look around in the hardware registers and see if I can shut it
-off for EcoNet, but if you're saying MT76 should not support BE unless
-they disable hardware swapping and use SWAP_IO_SPACE, that means the
-majority of BE hardware on OpenWrt is not going to be supported. If
-that's the decision then it at least warrants clear documentation.
+Update: I tested an MT7921 USB and it works fine with the patched
+driver, I checked the codepath and it is never used for USB anyway,
+it's only for PCI and mt7628-wmac, a direct-wired wlan on the MT7628
+which is Little Endian.
+
+Also there's no way I can switch this to use SWAP_IO_SPACE because it
+uses mtk-xhci for USB and that expects writel() to not swap bytes.
+
+I don't see why this patch should be controversial - it fixes a bug
+that breaks 6 OpenWrt platforms and there's no evidence that it breaks
+anything. Not only that but even if these platforms are considered low
+priority because Big Endian is a historical artifact, that's all the
+more reason why nobody should mind the addition of a cpu_to_le32()
+call which on Little Endian is a no-op.
+
+In any case, I would appreciate if you could look at my v2 because
+I switched to using (get|put)_unaligned_le32() which is much nicer.
+Thank you for the advice on that point.
 
 Thanks,
+
 Caleb
 
 
-user@cjd-dev:~/en7526/openwrt$ find ./ -name 'config-6.12' | while read 
-x; do grep -q 'CPU_BIG_ENDIAN=y' "$x" && ( grep -q 'SWAP_IO_SPACE=y' 
-"$x" || echo "$x
-  does not use SWAP_IO_SPACE" ) ; done
-./target/linux/apm821xx/config-6.12 does not use SWAP_IO_SPACE
-./target/linux/realtek/rtl931x/config-6.12 does not use SWAP_IO_SPACE
-./target/linux/realtek/rtl930x_nand/config-6.12 does not use SWAP_IO_SPACE
-./target/linux/realtek/rtl839x/config-6.12 does not use SWAP_IO_SPACE
-./target/linux/realtek/rtl931x_nand/config-6.12 does not use SWAP_IO_SPACE
-./target/linux/realtek/rtl930x/config-6.12 does not use SWAP_IO_SPACE
-./target/linux/realtek/rtl838x/config-6.12 does not use SWAP_IO_SPACE
-./target/linux/ath79/config-6.12 does not use SWAP_IO_SPACE
-./target/linux/octeon/config-6.12 does not use SWAP_IO_SPACE
-./target/linux/ixp4xx/config-6.12 does not use SWAP_IO_SPACE
-./target/linux/econet/en751221/config-6.12 does not use SWAP_IO_SPACE
-user@cjd-dev:~/en7526/openwrt$ find ./ -name 'config-6.12' | while read 
-x; do grep -q 'CPU_BIG_ENDIAN=y' "$x" && ( grep -q 'SWAP_IO_SPACE=y' 
-"$x" && echo "$x
-  does use SWAP_IO_SPACE" ) ; done
-./target/linux/bmips/bcm6358/config-6.12 does use SWAP_IO_SPACE
-./target/linux/bmips/bcm6328/config-6.12 does use SWAP_IO_SPACE
-./target/linux/bmips/bcm6318/config-6.12 does use SWAP_IO_SPACE
-./target/linux/bmips/bcm6368/config-6.12 does use SWAP_IO_SPACE
-./target/linux/bmips/bcm6362/config-6.12 does use SWAP_IO_SPACE
-./target/linux/bmips/bcm63268/config-6.12 does use SWAP_IO_SPACE
-./target/linux/lantiq/config-6.12 does use SWAP_IO_SPACE
-user@cjd-dev:~/en7526/openwrt$
-
 
 >
-> Best regards,
-> Jonas
+> Thanks,
+> Caleb
 >
+>
+> user@cjd-dev:~/en7526/openwrt$ find ./ -name 'config-6.12' | while 
+> read x; do grep -q 'CPU_BIG_ENDIAN=y' "$x" && ( grep -q 
+> 'SWAP_IO_SPACE=y' "$x" || echo "$x
+>  does not use SWAP_IO_SPACE" ) ; done
+> ./target/linux/apm821xx/config-6.12 does not use SWAP_IO_SPACE
+> ./target/linux/realtek/rtl931x/config-6.12 does not use SWAP_IO_SPACE
+> ./target/linux/realtek/rtl930x_nand/config-6.12 does not use 
+> SWAP_IO_SPACE
+> ./target/linux/realtek/rtl839x/config-6.12 does not use SWAP_IO_SPACE
+> ./target/linux/realtek/rtl931x_nand/config-6.12 does not use 
+> SWAP_IO_SPACE
+> ./target/linux/realtek/rtl930x/config-6.12 does not use SWAP_IO_SPACE
+> ./target/linux/realtek/rtl838x/config-6.12 does not use SWAP_IO_SPACE
+> ./target/linux/ath79/config-6.12 does not use SWAP_IO_SPACE
+> ./target/linux/octeon/config-6.12 does not use SWAP_IO_SPACE
+> ./target/linux/ixp4xx/config-6.12 does not use SWAP_IO_SPACE
+> ./target/linux/econet/en751221/config-6.12 does not use SWAP_IO_SPACE
+> user@cjd-dev:~/en7526/openwrt$ find ./ -name 'config-6.12' | while 
+> read x; do grep -q 'CPU_BIG_ENDIAN=y' "$x" && ( grep -q 
+> 'SWAP_IO_SPACE=y' "$x" && echo "$x
+>  does use SWAP_IO_SPACE" ) ; done
+> ./target/linux/bmips/bcm6358/config-6.12 does use SWAP_IO_SPACE
+> ./target/linux/bmips/bcm6328/config-6.12 does use SWAP_IO_SPACE
+> ./target/linux/bmips/bcm6318/config-6.12 does use SWAP_IO_SPACE
+> ./target/linux/bmips/bcm6368/config-6.12 does use SWAP_IO_SPACE
+> ./target/linux/bmips/bcm6362/config-6.12 does use SWAP_IO_SPACE
+> ./target/linux/bmips/bcm63268/config-6.12 does use SWAP_IO_SPACE
+> ./target/linux/lantiq/config-6.12 does use SWAP_IO_SPACE
+> user@cjd-dev:~/en7526/openwrt$
+>
+>
+>>
+>> Best regards,
+>> Jonas
+>>
 
