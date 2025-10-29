@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D0EACCF9F6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 08:17:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82550CCF9F3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 08:17:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EV+4RoOa1iy/DqIOmsenog49vj+D7yWRn73q8Qh39gc=; b=1AMmLc59D1bbSJWuxjqOAMemqi
-	Gjnqck0qSrKBRa47vUfVbSZZaBZ0apAqoGy7nqDg+7TJ63gyBUsD5G8K4Q9EaGz/sEzUeaF+KEgn7
-	utOtx++lboBCtHyIBu9QleVz38Uxucd0XcPGv2lZ+1N7lk+A1KGJrdXGafHxNlh1Mgy8W2kL3HzSB
-	1ViW4vgu7Refa8fj42zjVedwrPRnLArCoPhxfFLx/nDOevfv5UaZrDZ41U5hoO8jJBHQ3vvlXMccM
-	EHAUAE5SIo+Rs2JFltFKGF2hAUE3R8hKHqGxbF87Pjho02zzEVOH3HUEkjb3BHmeTIIZ+v/GtHkkG
-	XqXcUXEw==;
+	bh=7kceFbRz/eZrsDpZgdVk7crwDjhF3pyhQLVPnvydN3c=; b=vEV+E/Vj4PT0WUbwBpySbRO2Oh
+	n8gdxTl+ADxzapdRtR/bhgPOBnjfds0FUtUFbnX9INZQodAQGGuQ+J7qu1oBZlse5fAzfA3x1HNXG
+	eLQ/1eixHMiUaz8OYKuqWIjjNsFTHWoTg3L4GKJkXHRjSc04xekxber7O8GRL2DJFzvkTQbMIxY73
+	CrcwJ1OJZVhAjALl6uM7brT2ig9WncRG9kVkElSyyjNPo2Srjah0AQSeDy3vYn3zPJZnK3djxxpSB
+	wysqe0drEAq8Inb3JRNQs59b0BCw3EJjIMEPQfIttxgBuveIEZ3G28j/TrxWTM28B8P81WkTFTmeg
+	wczJ1Rdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE1NA-00000000Ff3-1IV8;
-	Wed, 29 Oct 2025 08:17:36 +0000
+	id 1vE1N9-00000000Fdg-2iLS;
+	Wed, 29 Oct 2025 08:17:35 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE1N3-00000000FWn-1f8l;
-	Wed, 29 Oct 2025 08:17:30 +0000
-X-UUID: b2c9ce1eb49f11f09f706fa2197c6ceb-20251029
+	id 1vE1N2-00000000FVe-1Zxu;
+	Wed, 29 Oct 2025 08:17:29 +0000
+X-UUID: b3c87176b49f11f09f706fa2197c6ceb-20251029
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From; bh=EV+4RoOa1iy/DqIOmsenog49vj+D7yWRn73q8Qh39gc=;
-	b=Tw1GG0Fc/VAU9+G3c4tLGg7fWB4XuZ77/C6k9C9B9MiyPMjytNnGL0y6ohQ0WrdP4El0VK4TPfRf9X6o4oZyMqJ+4z69Vv6iysjfedwUp8yK+fo2ErugPeVHFci5ntybgzUc5m3GBUyePnF2K836HfjmjeTUXnJE1VufHcsn+NM=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From; bh=7kceFbRz/eZrsDpZgdVk7crwDjhF3pyhQLVPnvydN3c=;
+	b=GLcBcwbMcxuhd5D/kcII8+JyZgkYFzzlx1gYPY6K5So1N03dlqsH14mwbJW8XloKD0obGqXRqUBQ+CUegGHaOcmUDicAntMtTE2vE22SDY+FKnEu5ehBgWxOYlN3kw4OF25KHIQS8xgmPfMdyHN5tWNltTmdXYe56bjEo9B6nN0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:fd9cf6e2-5be6-47a3-b81d-741369449239,IP:0,UR
-	L:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:a9d874c,CLOUDID:486ef23a-b16f-49fc-bb37-560773c432f7,B
+X-CID-O-INFO: VERSION:1.3.6,REQID:37d25dad-93e3-4948-939f-7fc7e097f318,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-30
+X-CID-META: VersionHash:a9d874c,CLOUDID:72d06d84-4124-4606-b51d-d5c9eec0e7b9,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:2,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI
 	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,18 +42,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: b2c9ce1eb49f11f09f706fa2197c6ceb-20251029
+X-UUID: b3c87176b49f11f09f706fa2197c6ceb-20251029
 Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
 	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 158132754; Wed, 29 Oct 2025 01:17:24 -0700
+	with ESMTP id 1715560816; Wed, 29 Oct 2025 01:17:25 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Wed, 29 Oct 2025 16:17:21 +0800
+ 15.2.1748.26; Wed, 29 Oct 2025 16:17:22 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Wed, 29 Oct 2025 16:17:20 +0800
+ 15.2.1748.26 via Frontend Transport; Wed, 29 Oct 2025 16:17:21 +0800
 From: Kyrie Wu <kyrie.wu@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
@@ -63,9 +63,9 @@ To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>
-Subject: [RESEND v10 02/12] media: mediatek: jpeg: fix jpeg buffer payload setting
-Date: Wed, 29 Oct 2025 16:17:07 +0800
-Message-ID: <20251029081717.29551-3-kyrie.wu@mediatek.com>
+Subject: [RESEND v10 03/12] media: mediatek: jpeg: fix jpeg buffer layout
+Date: Wed, 29 Oct 2025 16:17:08 +0800
+Message-ID: <20251029081717.29551-4-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20251029081717.29551-1-kyrie.wu@mediatek.com>
 References: <20251029081717.29551-1-kyrie.wu@mediatek.com>
@@ -74,8 +74,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251029_011729_441739_34A9AC8C 
-X-CRM114-Status: GOOD (  16.21  )
+X-CRM114-CacheID: sfid-20251029_011728_431313_210C1140 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,60 +90,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For multi-core jpegdec, if one of hws gets the event of resolution
-changing, the payload size, representing the size of Y/C data,
-needed to change. But others hws are decoding at the same time and
-it can not be changed immediately, which results that the payload
-size is not equal to the real buffer length of the hw's, which occurred
-resolution changing and a warnning call trace will print.
-So the setting of payload size must less than the real buffer length
-to remove the warnning logs.
+For memory alloc operation of jpeg dst buffer: the mallocing
+memory function interface use vb2_buffer as the base addr.
+If structure mtk_jpeg_src_buf wants to be allocated to memory,
+it needs to be placed vb2_v4l2_buffer at the starting position,
+because structure vb2_buffer is at the starting position of
+vb2_v4l2_buffer, and the allocated size is set to the size of
+structure mtk_jpeg_src_buf, so as to ensure that structures
+mtk_jpeg_src_buf, vb2_v4l2_buffer and vb2_buffer can all be
+allocated memory.
 
-Fixes: 0fa49df4222f ("media: mtk-jpegdec: support jpegdec multi-hardware")
+Fixes: 5fb1c2361e56 ("mtk-jpegenc: add jpeg encode worker interface")
 
 Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
 ---
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 19 ++++++++++++++-----
- 1 file changed, 14 insertions(+), 5 deletions(-)
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 2 +-
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 030d2a75972a..37b0b4b0a557 100644
+index 37b0b4b0a557..b83b43141e80 100644
 --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
 +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -702,6 +702,7 @@ static int mtk_jpeg_buf_prepare(struct vb2_buffer *vb)
- 	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
- 	struct mtk_jpeg_q_data *q_data = NULL;
- 	struct v4l2_plane_pix_format plane_fmt = {};
-+	unsigned long max_size;
- 	int i;
+@@ -1092,7 +1092,7 @@ static int mtk_jpeg_queue_init(void *priv, struct vb2_queue *src_vq,
+ 	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+ 	dst_vq->io_modes = VB2_DMABUF | VB2_MMAP;
+ 	dst_vq->drv_priv = ctx;
+-	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
++	dst_vq->buf_struct_size = sizeof(struct mtk_jpeg_src_buf);
+ 	dst_vq->ops = jpeg->variant->qops;
+ 	dst_vq->mem_ops = &vb2_dma_contig_memops;
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+index 6be5cf30dea1..148fd41759b7 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+@@ -85,10 +85,10 @@ struct mtk_jpeg_variant {
+ };
  
- 	q_data = mtk_jpeg_get_q_data(ctx, vb->vb2_queue->type);
-@@ -710,12 +711,20 @@ static int mtk_jpeg_buf_prepare(struct vb2_buffer *vb)
+ struct mtk_jpeg_src_buf {
+-	u32 frame_num;
+ 	struct vb2_v4l2_buffer b;
+ 	struct list_head list;
+ 	u32 bs_size;
++	u32 frame_num;
+ 	struct mtk_jpeg_dec_param dec_param;
  
- 	for (i = 0; i < q_data->fmt->colplanes; i++) {
- 		plane_fmt = q_data->pix_mp.plane_fmt[i];
-+		max_size = plane_fmt.sizeimage;
-+
- 		if (ctx->enable_exif &&
--		    q_data->fmt->fourcc == V4L2_PIX_FMT_JPEG)
--			vb2_set_plane_payload(vb, i, plane_fmt.sizeimage +
--					      MTK_JPEG_MAX_EXIF_SIZE);
--		else
--			vb2_set_plane_payload(vb, i,  plane_fmt.sizeimage);
-+			q_data->fmt->fourcc == V4L2_PIX_FMT_JPEG) {
-+			max_size += MTK_JPEG_MAX_EXIF_SIZE;
-+
-+			vb2_set_plane_payload(vb, i,
-+					      MIN(vb->planes[i].length,
-+						  max_size));
-+		} else {
-+			vb2_set_plane_payload(vb, i,
-+					      MIN(plane_fmt.sizeimage,
-+						  vb->planes[i].length));
-+		}
- 	}
- 
- 	return 0;
+ 	struct mtk_jpeg_ctx *curr_ctx;
 -- 
 2.45.2
 
