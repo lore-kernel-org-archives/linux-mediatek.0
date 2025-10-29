@@ -4,67 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 651F1CCF9F7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 17:37:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A99C0CCF9F0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 17:38:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BZxMvMgp/oTJXG8V0pkzxp4anTh6Z7OzA6kttBVt1Tk=; b=qeMNz7eOXe8yG+Jx9rM44f7SRj
-	5Gfh4m5zFuAvoWc1Pqt3zo+49V+HvUc3AFVPIJ7xsUM47tfHkaMpBKY350acUEoBNVwEfahL3rocS
-	pMnl37SDVJ6V2pJwIb3el+MKB6LmjDdXgFx5r5pbusp+wIPrCz+Kv3EajuJsPTy/9l3wmn/1QxVXZ
-	FloplecQw/gRT5CF7Pl1sCU/gSRoQ8Niun6+bCOwXTSOuUQ/xa3bSRRuYurjWNcm18T1V2NzWRkqq
-	vBOT6b3PH3DL2HNC9Tkt109hQXZtbONMbfDNzIN2AAOv3x203b7ipAbkKfrtWUGw25sRgK3npsRrK
-	lBhWmCcA==;
+	bh=ALlT+zkeisO87P7wkYqqS/FtyMDkmsnbnHyrmAV3V14=; b=uCXISThNvQ/z2cU8jcmHS7gsmg
+	2bztLEDohE0CIsJzadaiOs5Hbiu6HkP4UWjeKyquab2RAeGUzVq4AdOvxTqRndW2GiNXEwtKfkdhD
+	OMJtsACZMn6QfUW97BiDKfwtdRgE884H4iJjrNB1hL/FhCPUj7yLg7PlGiGSToCC7IuAXl8a+fbuz
+	c7h78sCFpBMUpobQqG0GR+6FZSYb1Ai5vhB5Rztp5W/IONIpnnliLHO3ZU352ycZirS7wEGC3l8Lu
+	Kn3dPFKxJ5nGwvoKTIZtpzqs/IMZ6xywtTeny2Nsz82htX4mHkr8iGVt+5pcsb3+412xbnY+t+HPt
+	MldDQAbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEA7I-00000002EGS-2167;
-	Wed, 29 Oct 2025 17:37:48 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vEA7a-00000002ESE-3rG7;
+	Wed, 29 Oct 2025 17:38:06 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEA7A-00000002E8A-3fUm;
-	Wed, 29 Oct 2025 17:37:42 +0000
+	id 1vEA7Z-00000002EPf-16Dm;
+	Wed, 29 Oct 2025 17:38:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=ALlT+zkeisO87P7wkYqqS/FtyMDkmsnbnHyrmAV3V14=; b=hjjarXydw1Fl3C1NFVFuw/2NTs
+	ZZAmrzQqFy2wLseockel8TaFEt48QMv5zL2FmBVakbV59iNObfrcctoF78c0lyRDrBqHlDIKRxqAY
+	ADMCYpxibGMfVS3F94pFxn/FSG4GrzsyUEi3ozRwtKgFlGmzz5wTDm5pLZMx84s/wBX93cHGlWeQL
+	PMQfkIaQhiv1D95wHBaRYnDTtbccT53TPgbVpwkqGOmRjFlNkKbkgiv34Y82xmqFOj69H/tsiwUQu
+	H62msNqD8Sh6pkyXd4cb451AqYorlaDP93jX1KXvglg2vYouyYQRUOOvrW/ZE1LYu+4+jgi+KCKyL
+	RoqBX2QA==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vE9Fl-00000007TIA-1jg3;
+	Wed, 29 Oct 2025 16:42:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 314C5451FD;
-	Wed, 29 Oct 2025 17:37:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7C6D0C113D0;
-	Wed, 29 Oct 2025 17:37:37 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6D03A48BA8;
+	Wed, 29 Oct 2025 17:37:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D41D5C4CEFB;
+	Wed, 29 Oct 2025 17:37:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761759460;
-	bh=BZxMvMgp/oTJXG8V0pkzxp4anTh6Z7OzA6kttBVt1Tk=;
+	s=k20201202; t=1761759477;
+	bh=ALlT+zkeisO87P7wkYqqS/FtyMDkmsnbnHyrmAV3V14=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AUH/wVOAwFD6vnYUs4aYrhtlV71ZIBmTuztwLl1wysr5+NjY26oeRCv5SJHEZUaDr
-	 lWLio7QgKGnfPhERc2RFpRXfgvL7m0GZEfnH1D4TzMfgBfdAElVHGogJL8UuYg8b5B
-	 Ux9rJUGM2LiE/D7mmXt42wjmAyug9WHz/f0v3US4D/ONOkc7PGJdcGADSbjceRuX+K
-	 rgOskbKmgOVDoLurTn7SRrUsNQdhMeXgJ58h1/OlC/LVtOrcDmUjOsRD4G/0ydcsiF
-	 U3UGU9JbJHnf9L3AjgtyZQJOf7M1ZJ+9b4p2Y+SRnrJWnxtEJRr0rN87I2VZU3AUy8
-	 K8zbeldIj2Wdg==
-Date: Wed, 29 Oct 2025 17:37:35 +0000
+	b=CiItvCa7fo01wEAviGksvdstjyxr959lPBEhyXFtCg12lGOj1wUoZ25cEHLXqP/Dn
+	 /emFc6ELqr48kBp4UDfkZWJKJkTK238nFmOngie69TzqjJGW9jqWgd9l6hePxci+/q
+	 lX0E8qdcjwmaHXfpQUujvKvx88tnZl+TTDKGjIQUjMDXjfLYTcQG8jnjsTANF5PVk8
+	 L+zouuyIAf/lMjXkS/j7HdqGC/G3j6Wf40D3z+hIOfEEBiAocxjpALYsWsIOUaru7e
+	 35+9teWFlFkNNGKIYRCU2igsM4EUfJVyRnec8c8wq64BHJncHmwBad8p34cf5JfFpS
+	 V7GMt9ue0mDoQ==
+Date: Wed, 29 Oct 2025 17:37:52 +0000
 From: Conor Dooley <conor@kernel.org>
 To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
-	kernel@collabora.com, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Flora Fu <flora.fu@mediatek.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>, kernel@collabora.com,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: spmi: spmi-mtk-pmif: Add compatible for
+Subject: Re: [PATCH] dt-bindings: soc: mediatek: pwrap: Add compatible for
  MT8189 SoC
-Message-ID: <20251029-energize-synopses-14b86eeaaa2c@spud>
-References: <20251029-mt8189-dt-bindings-spmi-v1-1-fbea12a4ed5e@collabora.com>
+Message-ID: <20251029-change-atonable-585dd0397d42@spud>
+References: <20251029-mt8189-dt-bindings-pwrap-v1-1-d52b1aa5f5a4@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="3Q7C2oA8gPlSdO/P"
+	protocol="application/pgp-signature"; boundary="V7RkbouwCfWtfrQq"
 Content-Disposition: inline
-In-Reply-To: <20251029-mt8189-dt-bindings-spmi-v1-1-fbea12a4ed5e@collabora.com>
+In-Reply-To: <20251029-mt8189-dt-bindings-pwrap-v1-1-d52b1aa5f5a4@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251029_103740_956951_070BB558 
-X-CRM114-Status: GOOD (  10.97  )
+X-CRM114-CacheID: sfid-20251029_164229_666569_6BCABE63 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,13 +94,13 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---3Q7C2oA8gPlSdO/P
+--V7RkbouwCfWtfrQq
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Oct 29, 2025 at 02:31:16PM +0100, Louis-Alexis Eyraud wrote:
-> Add compatible string for the SPMI block on MT8189 SoC, which is
+On Wed, Oct 29, 2025 at 02:25:57PM +0100, Louis-Alexis Eyraud wrote:
+> Add compatible string for the PWRAP block on MT8189 SoC, which is
 > compatible with the one used on MT8195.
 >=20
 > Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
@@ -94,16 +108,16 @@ On Wed, Oct 29, 2025 at 02:31:16PM +0100, Louis-Alexis Eyraud wrote:
 Acked-by: Conor Dooley <conor.dooley@microchip.com>
 pw-bot: not-applicable
 
---3Q7C2oA8gPlSdO/P
+--V7RkbouwCfWtfrQq
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQJQ3wAKCRB4tDGHoIJi
-0mlQAP90Purps8XXysFdri+DkHVn5X8gpgEJrCBoYShUbvTPNAD/RDmppUCgpXif
-UI01VO/FYSNXlqL+z/TNwb0ynrPp9gM=
-=tHul
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQJQ8AAKCRB4tDGHoIJi
+0im1AQCeMlTn6wQy1Vjpm/2Ce/v2/7kzcogQnssK6Ik37VGObQD/SA8jiLZITdoo
+izfE3AwS2c3v1VeClOFMLRGxwiCy2AY=
+=Yrem
 -----END PGP SIGNATURE-----
 
---3Q7C2oA8gPlSdO/P--
+--V7RkbouwCfWtfrQq--
 
