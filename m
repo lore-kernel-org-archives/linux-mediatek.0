@@ -4,66 +4,134 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6971DCCF9E9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 11:05:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9474ACCF9EB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 11:06:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1WzEU6aEshphlmoBd7dAElld9NmvSbPlTgBjFc5ogiM=; b=O6R5J/UA/Ad0lAUbU0rDoKbGEV
-	r4YclNV6qCJi9+YOXQoQ+eDMZDoV7Tdh4CS35ETykDCY6++c44KNi6dOV0ZgC4Khu26A7rfWKnG0E
-	uGKaDu+0FyC4IT2N0A6+GEIHZuh/vvhwSqQS0sYoSYl9JDav1+NH5Xcbd68JrpO1r/XP9GzaVPYC5
-	SJ+mtrnbyUdSzfi0rScc4B6MhN1uFQcI+8DG+ZlSfrXHZo8/dglfXjKT50F1X0wyBHuwrBKmbriQH
-	YE/H2NcNoU0wzrSXr01SnuKR9WHTGtyOlxVnJZHPCfKOxQVZ1+zuqpvVQye90UxTy0r0UDq5L4Ahk
-	v8LAUdpQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:content-type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wq8ujO9Dpm/7YPTf3iw45Jy/+tYmVu6IfrY/4dh0q7w=; b=Ti1Dfyp11dFty96i+e7M3izFev
+	hbkdn5qPJHoVn7mTrME616Om8cq+t7uKF6NFmRN/UF/GAGZM3jfJw3ncbbkfR6T3WsJuvLGdxCxNA
+	PH5Di2H381ipR9IErgtnQR1U3y52rNihF+Q+rIif2o7W6U9Sc8nTwHv+RolTlYZ4YeVRrGobjYOCz
+	/r5NEUUm1dvPMfaABbyRpZ+19r9n94pgJkXHvD0Au1Ba4vVF6yp86DO9rx9+PIwVeErQyKb02tg0R
+	6UyYEVpPxxnr3sLRjRUo2mkr7MoqmX/F7gt4JR5a/blc6kKanW/Qnu9Hv/2TwxIH7rG/Qw26LA8Ey
+	FbCy+a3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE3zn-00000000t4y-2j1F;
-	Wed, 29 Oct 2025 11:05:39 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vE413-00000000tPK-1Edw;
+	Wed, 29 Oct 2025 11:06:57 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE3zk-00000000t3h-47oW;
-	Wed, 29 Oct 2025 11:05:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761735934;
-	bh=mUg1Il3vEFNsxJBIHBHWg1fUx+lCuD7mOLuml/XS/kA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eRfHB5nsrIx60bM6lSYTUZqKtS5Pa1OP6sGcYsJddJ0b05Uodu+JnvDDIS6sACk99
-	 50QDCdU8GShKx6PB8udgn8h1R5GvWHl/Mda9iQ97OTt3saA0BRGWK4Zlv5DknpJNti
-	 7DdaYDPP+5pJRotYCu9a03ChBbPmnENIsYaWfcDb+DzywBoKUYaG9YRtp/AnBPd3zG
-	 XOAC6jemBWGFUMxkXcmuOZNYu1yLpMSWMGtTmyhvX2yQy3dcaGGFKtzX/QlZVs6iJ9
-	 0pPhc7W1jsX/4H7ghLo8Wr1/+hB6RaMfTRjf0NR8n7CsExfF5IdhPYQ7yjkGp/aqc/
-	 ftDzSawq8J3lQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C0BA117E00AC;
-	Wed, 29 Oct 2025 12:05:33 +0100 (CET)
-Message-ID: <9f5a3dc5-d0f8-4172-a4b4-867919612a2d@collabora.com>
-Date: Wed, 29 Oct 2025 12:05:33 +0100
+	id 1vE412-00000000tOa-0eYr
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 29 Oct 2025 11:06:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=content-type:Content-Transfer-Encoding
+	:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=wq8ujO9Dpm/7YPTf3iw45Jy/+tYmVu6IfrY/4dh0q7w=; b=kdpZvdKHy168RFuxgkdRe5tadY
+	U2/WI+r1WwhrddylSg/fQkvmersia5eoY8YDoMdRXkOrTEBrS2h10G9QXi9JnspFcCEx/2gShMx2t
+	tn7qLmLbkxLOPX/6E+9syKyUmD++X+VnlZXxZNM2mEcnJ89C3JHDQu0XtkjRqCy602lojAhyTkRs1
+	ydH5zrrJs+qJvvWV3MyTQT5G1pIh/0XTU3iwrJWESlHkSmLrWFJXgaJVbQQuryFLntGUT/pu8R0T2
+	VzyVj5RwigbYQ0j+7OlYlhFMpi77Ir6wAp2JFzDjMQr19sDi87n5QmmnmcbouW4HY2yTmZYZM1UNI
+	SI4VMg/g==;
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vE399-00000006XS2-1Vhc
+	for linux-mediatek@lists.infradead.org;
+	Wed, 29 Oct 2025 10:11:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1761735990;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=wq8ujO9Dpm/7YPTf3iw45Jy/+tYmVu6IfrY/4dh0q7w=;
+	b=JVuaWFH9VkpA2IHJhG3/4iPhsCYCRrgaucb2b/lwliWLKAipVpioOmSbVVHyE3PWrYWnMp
+	t0FoY9uogDQw96HQr/Ye+fFiXCEXK8OLwPz+zY79AgLmxdU+Dou05KB1Tm69A/bdrMfIie
+	2cz7mIDnQlwOgElAZcZx/TrallhhirY=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1761735999;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=wq8ujO9Dpm/7YPTf3iw45Jy/+tYmVu6IfrY/4dh0q7w=;
+	b=hFLG9QslIIRN2008cs4j53aYGBmezd5T+XmdkgXVKs5cK/nQv4sGzK+UlIDML9yO52NpFP
+	HrtVaT3cHystssODTkkk0IQD8ss9FpYoGwY6c2SbRYrp4XXQoCkxsCZAjijc1lf0gUNj/Q
+	m2DmOFfcSDc+SnvQSy8IscU/Gw0WfAU=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-153-IGncwTSyOfKFDt74cAaGSA-1; Wed, 29 Oct 2025 07:06:29 -0400
+X-MC-Unique: IGncwTSyOfKFDt74cAaGSA-1
+X-Mimecast-MFC-AGG-ID: IGncwTSyOfKFDt74cAaGSA_1761735988
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-427015f62a7so3347558f8f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 29 Oct 2025 04:06:28 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1761735988; x=1762340788;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=wq8ujO9Dpm/7YPTf3iw45Jy/+tYmVu6IfrY/4dh0q7w=;
+        b=MG6XQ9K4lhBWupx1zKcVcohRFDXTVqQsGkw2a5BkzItjqN744Cp6WGLi638gCHeFYf
+         tqezGASBSTrAvnP6YNg1W0NOFXG5pjP68tRQE1qcq6NQhX43BRT1k7HjfPGt4A8XHpIP
+         4mzbqTcgf2QEn9EIsUZKBAAjPB6D5dYykK1Knsz+xC2nkw/rf2KxfC8HqVIG6Egy8/2D
+         yDk13Zhjk2X7ff+I8IxSuMnHmcmv8RESaQzrx63SLIUWDuVUZclTOBinVsEWoJmLgNqW
+         IKGjq106vOPa68PQ8z14OL4HODIhRh3cbHjUCc5WShGbCafhjwO1yEaAvUNU23DgCyCr
+         5VQw==
+X-Forwarded-Encrypted: i=1; AJvYcCW3xc/KwZ++Vz04JixSqWsOaS7YaJs4OqOORPbfpi+jHeytkfhgngH/7IdaFkpq2rAukO7JKTIk/nlUhcfH8w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwntFKcAJ7ayA/7ujQCluifWzPE/bP31xvoTQxZrU6tQ1k1IZVs
+	CTGFYQGk73fsBholWFf5FMbhciqwFR0cKL5InAi6SCn9Y+etALAImQY0okUzhyOpvN9o3CZGc9n
+	i9jVz73VA8t4gaCkxYtBbw6ZlFhRKomIH2jDSlOsamUjNnf9W+765uBWpCky7P1ZzMpbaaNnkrw
+	==
+X-Gm-Gg: ASbGncsTM3kOBOCr4rVbrHAgQ66RftZPKk2CQIgIa4IYy6iQIlncvr+v3QyltzTZi9t
+	0aGQtaibEO2yOxmGQogVUUilZ3j158hPdESITrxKgB0h00aVgLqusibfgJF+ajIqdQPH8rgC4cx
+	I8UzebNaXyjvCEFS/XDOqbzqPVFTg3wCOX96EGM4G4XV6NYPEeVFRXHpcWOc+skiBnUnLO3ZXru
+	yGwh6vCuikA7g2+1p5iuh7V3Lw3ICttFXEnE2VPzonImHTC7LYJ4LJO8UcxqiRcDcXKncJMrZ5F
+	nBpwDKGhsPuzhHC87fV9OvSuynecpLxe/aaoMnr6lgM8H6H+SnUJi8b+lT77qvCYe4/Cq+Tcvsp
+	8395/SViVdD5Nwfkk0IIA82pIR0tsqunHZjKkWUDxlhgwCE5k
+X-Received: by 2002:a05:6000:2882:b0:427:e1bf:13db with SMTP id ffacd0b85a97d-429aefd0840mr1957010f8f.54.1761735987805;
+        Wed, 29 Oct 2025 04:06:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHB8RsWZ0SjBkvUi9VbRgSefrwznyNGIlSzLxxkHxgmXUspqFq3z5NvztJjJO8HtqyDc5C8pg==
+X-Received: by 2002:a05:6000:2882:b0:427:e1bf:13db with SMTP id ffacd0b85a97d-429aefd0840mr1956977f8f.54.1761735987352;
+        Wed, 29 Oct 2025 04:06:27 -0700 (PDT)
+Received: from lbulwahn-thinkpadx1carbongen12.rmtde.csb ([2a02:810d:7e01:ef00:ff56:9b88:c93b:ed43])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-429952ca979sm26665735f8f.14.2025.10.29.04.06.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 29 Oct 2025 04:06:26 -0700 (PDT)
+From: Lukas Bulwahn <lbulwahn@redhat.com>
+X-Google-Original-From: Lukas Bulwahn <lukas.bulwahn@redhat.com>
+To: Ariel D'Alessandro <ariel.dalessandro@collabora.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-media@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Lukas Bulwahn <lukas.bulwahn@redhat.com>
+Subject: [PATCH] MAINTAINERS: adjust file entry in MEDIATEK MDP DRIVER
+Date: Wed, 29 Oct 2025 12:06:23 +0100
+Message-ID: <20251029110623.96661-1-lukas.bulwahn@redhat.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] remoteproc: mtk_scp: Construct FW path if
- firmware-name not present
-To: Chen-Yu Tsai <wenst@chromium.org>, mathieu.poirier@linaro.org
-Cc: linux-remoteproc@vger.kernel.org, arnd@arndb.de, andersson@kernel.org,
- matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20251015084103.10737-1-angelogioacchino.delregno@collabora.com>
- <CAGXv+5Gs5_j5L3+HT7K-XYwVG6S8ZGhHZkEcS0HpdkcjRQq2oQ@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAGXv+5Gs5_j5L3+HT7K-XYwVG6S8ZGhHZkEcS0HpdkcjRQq2oQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 68nOWiMDbYeu3aelHtjpJZfODmdO3eCNaxvs5aOHAhE_1761735988
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251029_040537_181895_3DF31873 
-X-CRM114-Status: GOOD (  21.57  )
+X-CRM114-CacheID: sfid-20251029_101119_493172_1203C7FA 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,69 +146,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 29/10/25 10:14, Chen-Yu Tsai ha scritto:
-> On Wed, Oct 15, 2025 at 4:41 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> After a reply on the mailing lists [1] it emerged that the DT
->> property "firmware-name" should not be relied on because of
->> possible issues with firmware versions.
->> For MediaTek SCP, there has never been any firmware version vs
->> driver version desync issue but, regardless, the firmwares are
->> always using the same name and they're always located in a path
->> with a specific pattern.
->>
->> Instead of unconditionally always relying on the firmware-name
->> devicetree property to get a path to the SCP FW file, drivers
->> should construct a name based on what firmware it knows and
->> what hardware it is running on.
->>
->> In order to do that, add a `scp_get_default_fw_path()` function
->> that constructs the path and filename based on two of the infos
->> that the driver can get:
->>   1. The compatible string with the highest priority (so, the
->>      first one at index 0); and
->>   2. The type of SCP HW - single-core or multi-core.
->>
->> This means that the default firmware path is generated as:
->>   - Single core SCP: mediatek/(soc_model)/scp.img
->>     for example:     mediatek/mt8183/scp.img;
->>
->>   - Multi core SCP:  mediatek/(soc_model)/scp_c(core_number).img
->>     for example:     mediatek/mt8188/scp_c0.img for Core 0, and
->>                      mediatek/mt8188/scp_c1.img for Core 1.
-> 
-> I know this patch has been applied, but this scheme doesn't actually
-> follow what is already in the linux-firmware repository.
-> 
-> For all the supported platforms, the first core, even for multi core SCP,
-> already have their firmware uploaded as just "scp.img". Multicore SCP
-> is seen in MT8195 and MT8188.
+From: Lukas Bulwahn <lukas.bulwahn@redhat.com>
 
-The only one that is affected is MT8188, which needs a rename or a symlink in
-linux-firmware.
+Commit 169ac4bc5bc4 ("dt-bindings: media: Convert MediaTek mt8173-mdp
+bindings to DT schema") renames mediatek-mdp.txt to
+mediatek,mt8173-mdp.yaml as part of this dt-binding conversion, but misses
+to adjust the file entry in MEDIATEK MDP DRIVER.
 
-MT8195 is not affected by this change, because the SCP is used as single-core,
-hence this code will look for scp.img and not for scp_c0.img.
+Adjust the file entry after the conversion.
 
-> 
-> I guess I can send a followup patch?
+Signed-off-by: Lukas Bulwahn <lukas.bulwahn@redhat.com>
+---
+ MAINTAINERS | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-The only followup patch that I deem to be necessary is one adding a symlink
-or renaming for MT8188's SCP and nothing else.
-
-Please remember that some of those SoCs (including MT8195) allow the SCP to be
-configured as *either* single-core *or* dual-core - and usually firmwares for
-single-core configurations are not compatible with dual-core ones, because of
-the SRAM carveout/usage.
-
-Cheers,
-Angelo
-
-> 
-> 
-> ChenYu
-
-
+diff --git a/MAINTAINERS b/MAINTAINERS
+index e428ec79dd24..c094b2fef0fc 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -15881,7 +15881,7 @@ M:	Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+ M:	Houlong Wei <houlong.wei@mediatek.com>
+ M:	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+ S:	Supported
+-F:	Documentation/devicetree/bindings/media/mediatek-mdp.txt
++F:	Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
+ F:	drivers/media/platform/mediatek/mdp/
+ F:	drivers/media/platform/mediatek/vpu/
+ 
+-- 
+2.51.0
 
 
