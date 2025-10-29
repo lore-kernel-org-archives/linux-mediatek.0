@@ -4,115 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A0E1CCF9F1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 15:41:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66132CCF9F0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 17:34:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l/v0zo/mXJp1eqDSZs81X2kYmENmq+DmgWPaQLy4E3g=; b=1+QfMvCLdJ0iubowG5nwAdXdgx
-	3KZ70qnu4Ks6vvscihdJHjFUD213vDW7sArq66l+gAjrthzsmCFCQlIsUc+DXAOO55BiCPtaSjOaP
-	LnSU6QUbUizm/mAwplXiAJFwDDcCruq3JdlpQn7nZuu5HSh2XArCd6pjpmyJ7Z/phM2333sjk07uf
-	7odPRXn1Y6TofsuwAZBV1jGbGGlDsBVIDBlpXfwO6BfxS8gK/hE+iY/xoURso6TJg8NRZ2pDs4YXD
-	Zqp/B3hiATX0PGwAsx/3FCiQqTDhSfzUpbZh1k0lNU9f4xsppY3Iqyjru5IIOvD0blxU/TyiTHlc9
-	VznsFYww==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cQ6u8qLg9RAS3sQx0DZqTPCs2pfg037ebM1hlPoMVXs=; b=dUzkkhZ95Vkq7cr4bGFmsQOrK7
+	RJw0WrROMwugGXXXoENmASlEFctiuT73MPlNAz+ikYWTsnjDakjv1OtVHkwI/xDdBR45I0WfJQzW1
+	SpTnKwj8J3i7Tz0ROkg3ujIuLUOngRXH1yL8e8Wjx0Bt4dkZbHvw0zA0qjns/qx0cmkqkYZtfZ6pw
+	LIkICKpMukQNGweJxonyHWPOlO3YPydrwNjkjEckNyv0hERe5WdXKyb94vojroOWaAjlY2gJubaVu
+	/lH+nChCQ4G7NwVd/ZI2AXuZKlXwpIuZiY37juSBpJStU6ujvZFLHSjisiSiR4WuYmysmuCtNZxVJ
+	7jtee25w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE8Ih-00000001pvG-0vSz;
-	Wed, 29 Oct 2025 15:41:27 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1vEA48-00000002DSr-401E;
+	Wed, 29 Oct 2025 17:34:32 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE8Ie-00000001pt1-2yS5
-	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Oct 2025 15:41:26 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2947d345949so65209095ad.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Oct 2025 08:41:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1761752483; x=1762357283; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=l/v0zo/mXJp1eqDSZs81X2kYmENmq+DmgWPaQLy4E3g=;
-        b=Zh9TztBQyH7q4CjO6yUPxvi9/SzjFV/GW0LYqzmQ1vaZxn74iucSm6V16K3JFeTyCv
-         JKakvSibWqyWvH+13quYH7ixetW1KowcBYm3eVD77TTfB8WKrW3rvRb7GwCPaj3+GSHM
-         de46DQWV5pbsFeuILgZt+CArsgITewfjt4/dqdvNswZV8b7usW4VGaKYkUwn/b5MUSLd
-         QKcqkU5NC5tEjUnRZb/eB+eVmPvjGvgOpCf/vLWQdgXVwn3pRn9oBDR8Ca3RHbWs4oxd
-         M/4L2u/0Jm14mD92qE/lZXsioYZaWva7xK1NKvvL0LlW+B673/fRtr0937dIezmFTl6n
-         Kndg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761752483; x=1762357283;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=l/v0zo/mXJp1eqDSZs81X2kYmENmq+DmgWPaQLy4E3g=;
-        b=cSBRUeVPJ1iC4XKP/+7WhKdUn6ehTW/Agg9ANR4pbRA6432JSkpIxEAtjfZ5/poFwo
-         hgHSSvkKyCfuHrvh1AhPhoNiKQHvThKowvyOAAWUp+J4XGt0nGGlrJc1ZnEmn666O2sg
-         wX2BYbJPjKoKov6WaOXM2nOOiifu8iiQGJ3WEMnbEwZibkbiyD0vSy2mxY1YxGSJNsAW
-         YNXEI8SVSxzhBolNlrMJ9j0Z+QSuWeAFFxkl7wlm5/Ph82BEw3xXSMToDbIy3Ghd06ul
-         H8BpDivn7I36Zto4EJxb0PtAexKaNxKeO5BQlJ+yeIO9sl8StG8nXPEl0+mi0sxBQad0
-         91Pg==
-X-Forwarded-Encrypted: i=1; AJvYcCVay+SEUSrWOsLtoTgYGQyZTL3IL7CF0w2mIqKwYQgBe/JxbmLnUdGBE4eh0s/2Y2+4wk1KvP3isAJw4gXvrg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz5M/DERFu2zYtdi3XfyYsHZuZEL+nhIp6nCiQrg/9DxGyb3oDX
-	iUYFdaHyUabQAO/kfNQBdQpO4HVsTnBWyjXAJLb+kiRjg9BgS2CC/PCZ
-X-Gm-Gg: ASbGncu/wE5NZziduUgejl/w0kUzZCuPZx8S7jpFJondZp0c3SobtxaXNfUa5gGhCgi
-	3+VDmX1AU5zY6i2+JfNQBHDychvPAPy0p1AOl7YzUa2LNHEpwB/s1JMKj/zZ1JQ08MRVdldx7Co
-	J//I+Q/0kkhd5SIFNvdi0rpEVTaGo1jLapPu9hCQg0ReROsjXloJGIXJFK+uyW8LfalkeiGZF7q
-	wXDJhVngciCTn2F4ZJVWkHFjV3bgYZTxVKyizwTBRjjUhxlN7YZsupfFCjZmSwU1jgieS2v0kxU
-	pavickN+ry8hfjfQRyTqD71u1RcT3XTiA+VGsmLXbRD197CzGk1igfCqSVWS+Li6UebB/MozrP7
-	dDfjHypS2DSI1n13FNehcJRC5zLcnOvBhKw2b4P5XA7xmraGNpE0LNKlCt2Yze6rUp3zNV37f8C
-	btdEOYh5zKSlOo2BjGfLMnrEb3jVwG2cAgBaODLEGyqPv7xLSA0j297JIQzXLS
-X-Google-Smtp-Source: AGHT+IHTX+Ow2y8Hi8c0rRLKMQlmI+u7C/NGkFheWrGjKnKPUoBmwC8nhsbP1FbgqylJ1UJ/aCLp7g==
-X-Received: by 2002:a17:903:234c:b0:28e:7841:d437 with SMTP id d9443c01a7336-294deea30e2mr37900855ad.38.1761752482989;
-        Wed, 29 Oct 2025 08:41:22 -0700 (PDT)
-Received: from [192.168.0.3] (124-218-201-66.cm.dynamic.apol.com.tw. [124.218.201.66])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-29498cf359asm153773295ad.12.2025.10.29.08.41.17
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 29 Oct 2025 08:41:22 -0700 (PDT)
-Message-ID: <d2d031ab-6a88-4c7e-bf61-29ad95d8ecaa@gmail.com>
-Date: Wed, 29 Oct 2025 23:41:14 +0800
+	id 1vEA47-00000002DSN-3zsV;
+	Wed, 29 Oct 2025 17:34:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1B6C16149D;
+	Wed, 29 Oct 2025 17:34:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1F1EC4CEF7;
+	Wed, 29 Oct 2025 17:34:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761759270;
+	bh=cQ6u8qLg9RAS3sQx0DZqTPCs2pfg037ebM1hlPoMVXs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EOYx8S1rgIjusrjqz5VxUMOjhk3aNW3LmV8MgkEo9Y9VNnbrIfBVxoYuTwPg0nHtL
+	 mcCUbVOpfKeEC1cN2axA3/YfwSHw1NIqe+l2nK9wdbUGlODAR5j0KGXqdlUsCcKo07
+	 XCEA1Sj+AH3NDzVhiD/KqQZnOFBZHietE9xwzC47GnjefybvJdeFi2qNXV2PR3moN6
+	 JuIWWbFOA95vl2vJtR9ZATQvdc/V691BkICvNgzU5sjWx/dpSRdnpb/uThT8ht6YzC
+	 tgn1SCfDnm6Inqnf3/WDDK/5H0WPp64DjCCwtyPt4eJAvSv7otHsWS2HNvgyyBd+mc
+	 zqMge5B1EBpoA==
+Date: Wed, 29 Oct 2025 17:34:25 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Zhiyong Tao <zhiyong.tao@mediatek.com>, kernel@collabora.com,
+	linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: iio: adc: Add compatible for MT8189 SoC
+Message-ID: <20251029-gamma-unmixable-05a8c5dc0960@spud>
+References: <20251029-mt8189-dt-bindings-auxadc-v1-1-cd0496527a70@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 12/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
- Ethernet
-To: Sjoerd Simons <sjoerd@collabora.com>, Eric Woudstra
- <ericwouds@gmail.com>, Andrew Lunn <andrew@lunn.ch>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
- <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>, Lee Jones <lee@kernel.org>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- kernel@collabora.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
- linux-phy@lists.infradead.org, netdev@vger.kernel.org,
- Daniel Golle <daniel@makrotopia.org>, Bryan Hinton <bryan@bryanhinton.com>,
- albert-al.lee@airoha.com
-References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
- <20251016-openwrt-one-network-v1-12-de259719b6f2@collabora.com>
- <4f82aa17-1bf8-4d72-bc1f-b32f364e1cf6@lunn.ch>
- <8f5335a703905dea9d8d0c1840862a3478da1ca7.camel@collabora.com>
- <05610ae5-4a8a-47e9-808b-7ff98fade78e@gmail.com>
- <408842eda1caa53247ff759cd9ea75dcab624594.camel@collabora.com>
-Content-Language: en-US
-From: "Lucien.Jheng" <lucienzx159@gmail.com>
-In-Reply-To: <408842eda1caa53247ff759cd9ea75dcab624594.camel@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251029_084124_797508_EB9B5DB0 
-X-CRM114-Status: GOOD (  15.55  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="kATwFr4KYeHZakeU"
+Content-Disposition: inline
+In-Reply-To: <20251029-mt8189-dt-bindings-auxadc-v1-1-cd0496527a70@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,44 +78,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
 
-Sjoerd Simons 於 2025/10/28 下午 09:24 寫道:
-> On Tue, 2025-10-28 at 12:14 +0100, Eric Woudstra wrote:
->>
->> On 10/21/25 10:21 PM, Sjoerd Simons wrote:
->>> On Fri, 2025-10-17 at 19:31 +0200, Andrew Lunn wrote:
->>>>> +&mdio_bus {
->>>>> +	phy15: ethernet-phy@f {
->>>>> +		compatible = "ethernet-phy-id03a2.a411";
->>>>> +		reg = <0xf>;
->>>>> +		interrupt-parent = <&pio>;
->>>>> +		interrupts = <38 IRQ_TYPE_EDGE_FALLING>;
->>>> This is probably wrong. PHY interrupts are generally level, not edge.
->>> Sadly i can't find a datasheet for the PHY, so can't really validate that
->>> easily. Maybe Eric can
->>> comment here as the author of the relevant PHY driver.
->>>
->>> I'd note that the mt7986a-bananapi-bpi-r3-mini dts has the same setup for
->>> this PHY, however that's
->>> ofcourse not authoritative.
->>>
->> Lucien would have access to the correct information about the interrupt.
-> Thanks! For what it's worth i got around to putting a scope on the line last
-> night. It looks like the interrupt line is pulled down until cleared, so it
-> appears it's indeed a Level interrupt as Andrew guessed. But would be great to
-> have this confirmed based on the documentation :)
+--kATwFr4KYeHZakeU
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-The Airoha EN8811H Interrupt behavior is as follows:
+On Wed, Oct 29, 2025 at 03:52:53PM +0100, Louis-Alexis Eyraud wrote:
+> Add compatible string for MT8189 SoC.
+> The AUXADC IP in this chip is fully compatible with the one found in
+> MT8173 SoC.
+>=20
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-When the line side link changes (up→ down or down → up), GPIO 8 will 
-output low.
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
 
-After you clear the interrupt, GPIO 8 will go high. Regarding the 
-documentation, let me check where I can put it.
+--kATwFr4KYeHZakeU
+Content-Type: application/pgp-signature; name="signature.asc"
 
-If you have any questions about the EN8811H, please feel free to discuss 
-with me.
+-----BEGIN PGP SIGNATURE-----
 
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQJQIQAKCRB4tDGHoIJi
+0laNAP9C38Qssv8uwb97bAU24YVQ1YwFUV2QSTpsq2dvEnILjgD/ZpYNtjV63fqu
+FACQa0/m0zVdoiWZl+u4KK02fETcsAA=
+=yxko
+-----END PGP SIGNATURE-----
 
+--kATwFr4KYeHZakeU--
 
