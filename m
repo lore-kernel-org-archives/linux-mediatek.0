@@ -4,86 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1489FCCF9E9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 09:15:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F1CDCCF9E9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 10:56:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UygssEPwtyV4QTrYeX1AiLSpA4gBFv6ObS7fU3X7V2U=; b=WBjdKsn0GdWsNHiWQlRbrCv26N
-	dKwdAwKqqCfFcfjRqdpvDm4UAytia6QCgkhbqNZ0OYIrhQn+K6xV0dUnxxhTjUH7MN7IbHV8aDkRv
-	11FKIEMMFJK5/z72XP/dVFYQdUrgxmbAQ65inXw/2z1ISoOPW8WPSJOXcIhTVMpiUifoRIBd7FgHN
-	/Kq+M5LMliezYJ5vkjXDqsbkScnzJdeApm7NYPvINaB7HEgj8tEJ6BADM18b/ag4H+ZvNLIvkIht+
-	p8yN55iYJ/lkvvl9GkZndQmI9NkksgEmrI9U6fn+uiX/fUEZTFbvgLN4PPCkgZUO1535KrlHUbXjF
-	qy+r/uKw==;
+	bh=qIdKn81zlWfA1LXvqyEi8MTV3mMbEs/lsyZYJVoVjZ0=; b=s0Z9755KjYXSlaNHZgt+g1NcXZ
+	S+NbG9QGlzn9y6Johz/xJguCG+KmmZdGVCZLrHIhaieV2F4VrwrXVCbpJmO7/M/Ur9/ipg0Kf3LbQ
+	dCdw5clnuqjoRJS+VkweDVecaRmgFABut65FNFaUAgMLvv52BulsiAhMSWvF8kieIYOH/fKoP+Xuw
+	zIr09BaYpp9DN4exPc/6Azngqtnjw6vYIjlVmnJodSaw91KcQbZh15KWpJC1l+vk5W34yXPpdkDQn
+	QX079ema9VafZn2Yady+yb/mRCv3ONw1/x9aZqYb1xHKi8s7MLzRcCtbHx8Vjdob8bpXlx9CKKcz7
+	gk7nyH1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE2HL-00000000SFK-3bW5;
-	Wed, 29 Oct 2025 09:15:39 +0000
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+	id 1vE3qt-00000000rZ5-2Oha;
+	Wed, 29 Oct 2025 10:56:27 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE2HJ-00000000SEN-2Ljd
-	for linux-mediatek@lists.infradead.org;
-	Wed, 29 Oct 2025 09:15:38 +0000
-Received: by mail-yw1-x112c.google.com with SMTP id 00721157ae682-71d71bcac45so72899217b3.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 29 Oct 2025 02:15:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1761729336; x=1762334136; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=UygssEPwtyV4QTrYeX1AiLSpA4gBFv6ObS7fU3X7V2U=;
-        b=fHlUy30SletqkYbtyuSgx9/uxXCm2TqddLZ3u5H1kvuz+nIvInut1fLmG7cYYx/dfs
-         ySdxKy6nnCOawdT03dXI5GkWc8lNwJ4wgZ1VGcwqeDsI79wlOg6spZIflZKVp18R0wwI
-         7my6UvLSRmfix4SdjDOVPDzm4mK++iCfirgDMgFNVF8iGiT17gvAI8CMIDWoTd8+qmP7
-         odBQt2RqOTam8z6VT3dbpCsUk/cbGMpYgqdEbMcQO9hygE7X8fsAbf0BEcYIKsAiIcM8
-         s6J/c3bDzuGl4ms5/009kbAxMW0WbovNxSPfBbYmL2lbzFrNj3cBdmkOIcqriiDRSgJz
-         nw1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761729336; x=1762334136;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=UygssEPwtyV4QTrYeX1AiLSpA4gBFv6ObS7fU3X7V2U=;
-        b=ZVfuEqQxkd/X+xmSgXdFTXH29pItd3VZQLJCrqT6M+Zgs4tgNewI+lPPelv85FQX76
-         gas6Th2CYIv1L9zZov2IsPrflOpv8j89tj5oHgDX1uFAyRG6NeDQPZG7WY4aXcrHSqZG
-         QtsAgNqwtQU77eek/HLJEVaYbP6VLQBSAMTEwQT1KYHO6iFylITovfNlDucIiVt2XZpi
-         PdHANrY+HshB1Lbog/x/WuxjmPXOWfSbqnhQJWpQDTeStDJioGrihovRLYZpYYFCACv3
-         orO/0M7Df+QA7uVW69Jf6zwl8LdAkZXHOwIzvDtR6zKsPMCpeR3BOf4RstBMWRgGJJ11
-         YfcA==
-X-Forwarded-Encrypted: i=1; AJvYcCXM9kv4PepMnGISWTHQxFO4cgfDMNpfV18YKqKuZgec0Cbo19RcmS+aJe8cKYzZ1Z9LVkfCLwTx946Q2u4ePg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzsNJesgZq6WNDi2I/fh1XW0A/36A9phIurLc+N9J7AzIr/Xoyt
-	5L2LQlxgh1fFr8IIpUjNtfgBCabHyr+8XHnNEGKW5NQz6QK0wEVrmZ5UM1BbeJ6rWqNoutst4I9
-	SvjZsdTXM8rzK07+s4ia76KNJOWjBFQk=
-X-Gm-Gg: ASbGncs+aBUwWFl13gUxdIvBk2XX3JPeo1MEr4YRR6BtAn8VP1J3miE3oCA1Rgg0k80
-	LLb9IGV0B3ks2wmO9qgAKhYtoedXxV4+xDaaGSym4B+fHRbRZCE3nj7FPqP8LpY+G5cyANZl0Qw
-	vpx8EDl4875ZTR3vL99J5zuiD7zdnIJ9QqYCHnxDGx6o1IPjB4sMjpYeo3li0e/dfV3kfaJ6JgF
-	OOjX2cjAWJHLpW8YSeB+iOkNRkrYthHzvD9c9icN2RFuFpKxi5nPckAcVc=
-X-Google-Smtp-Source: AGHT+IEQDyFSthCYxiKEqlJv14a8jhCmiZaL70iGNaUt1WzUGm5AZRwZxAZ/eefAJU3mVt3LlAEv2c8FlDqRddjvGN8=
-X-Received: by 2002:a05:690c:74c2:b0:781:1c9e:fc82 with SMTP id
- 00721157ae682-7862903d263mr21137247b3.48.1761729336254; Wed, 29 Oct 2025
- 02:15:36 -0700 (PDT)
+	id 1vE3qr-00000000rXd-09Yh;
+	Wed, 29 Oct 2025 10:56:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1761735382;
+	bh=OTOHySwJe6r6YYDtowd4j3NiPv+2ssam78yCEgppdVo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RwnSt7HVUCjaxf67VSYhbu/C1B86w2NwjHjei7n435b5I6NWt4mRo+aa7JhaDuXH9
+	 SyUVbxl9VqICpOUIgSwLFOhcZXdodbYJsKcpWXa4s7Ki1ukAen2Xf4cZypNXdh3C3X
+	 ixhlLCvJz53QxZELnn0343aY5Jlf1siKYnc1CMut6/dMwCSgUJkc1ONbjAGveIz57A
+	 9Yq34SBcpQmm0N3BZaA05vPcDCkTC4ReHrq9bgcqByUCTyImeQ4gqNVK2VPn1Nrp8V
+	 zF2aqn0N/sgxCrdz+6Sc4xZBsQGwxuj06BJfxcWUCW9i9SAvZbj+pR4yQfLZxcSSI2
+	 JfrjGolwiS6JA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3879D17E0FC7;
+	Wed, 29 Oct 2025 11:56:21 +0100 (CET)
+Message-ID: <21f51f37-787b-48a5-a871-d61810adff42@collabora.com>
+Date: Wed, 29 Oct 2025 11:56:20 +0100
 MIME-Version: 1.0
-References: <20251027171759.1484844-1-cjd@cjdns.fr> <CAOiHx=nSEP=4s2xZuPtLEO43YDbkNEYzw6V11JbXG0H2iPn7Ag@mail.gmail.com>
- <096509d1-4af8-4abc-8068-ca27d8ef601e@cjdns.fr>
-In-Reply-To: <096509d1-4af8-4abc-8068-ca27d8ef601e@cjdns.fr>
-From: Jonas Gorski <jonas.gorski@gmail.com>
-Date: Wed, 29 Oct 2025 10:15:24 +0100
-X-Gm-Features: AWmQ_bmyo1Vk5GBvVeX6G5wl6wdQm6iXyIxD4JsyZ1GGxh0xGeFFX2edoLr2NHM
-Message-ID: <CAOiHx=nqWEdHEMf5immXO0VwyzDakDV9AMsoDETcJ0F4FqUt=w@mail.gmail.com>
-Subject: Re: [PATCH] wifi: mt76: mmio_(read|write)_copy byte swap when on Big Endian
-To: Caleb James DeLisle <cjd@cjdns.fr>
-Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
-	shayne.chen@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, linux-wireless@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 04/10] pmdomain: mediatek: Refactor bus protection
+ regmaps retrieval
+To: =?UTF-8?B?TWFjcGF1bCBMaW4gKOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Sjoerd Simons <sjoerd@collabora.com>
+Cc: =?UTF-8?B?UGFibG8gU3VuICjlravmr5Pnv5Qp?= <pablo.sun@mediatek.com>,
+ "lihongbo22@huawei.com" <lihongbo22@huawei.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
+ =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ =?UTF-8?B?QmVhciBXYW5nICjokKnljp/mg5/lvrcp?= <bear.wang@mediatek.com>,
+ "mbrugger@suse.com" <mbrugger@suse.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ Nicolas Prado <nfraprado@collabora.com>,
+ "macpaul@gmail.com" <macpaul@gmail.com>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "y.oudjana@protonmail.com" <y.oudjana@protonmail.com>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?TWFuZHlKSCBMaXUgKOWKieS6uuWDlik=?= <MandyJH.Liu@mediatek.com>
+References: <20250805074746.29457-1-angelogioacchino.delregno@collabora.com>
+ <20250805074746.29457-5-angelogioacchino.delregno@collabora.com>
+ <a2eae87efe46ebf397bcec3580eb9bc152b80846.camel@collabora.com>
+ <be3a2d50-044b-429a-820c-5260c6ce730c@collabora.com>
+ <0d8da30aaec2a5dc4bda6d67b640081dcc320f37.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <0d8da30aaec2a5dc4bda6d67b640081dcc320f37.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251029_021537_629577_37C3E7A0 
-X-CRM114-Status: GOOD (  33.14  )
+X-CRM114-CacheID: sfid-20251029_035625_258095_5C074FFC 
+X-CRM114-Status: GOOD (  29.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,123 +100,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 28, 2025 at 10:42=E2=80=AFPM Caleb James DeLisle <cjd@cjdns.fr>=
- wrote:
->
->
-> On 28/10/2025 21:19, Jonas Gorski wrote:
-> > Hi,
-> >
-> > On Mon, Oct 27, 2025 at 6:19=E2=80=AFPM Caleb James DeLisle <cjd@cjdns.=
-fr> wrote:
-> >> When on a Big Endian machine, PCI swaps words to/from LE when
-> >> reading/writing them. This presents a problem when we're trying
-> >> to copy an opaque byte array such as firmware or encryption key.
-> >>
-> >> Byte-swapping during copy results in two swaps, but solves the
-> >> problem.
-> >>
-> >> Fixes:
-> >> mt76x2e 0000:02:00.0: ROM patch build: 20141115060606a
-> >> mt76x2e 0000:02:00.0: Firmware Version: 0.0.00
-> >> mt76x2e 0000:02:00.0: Build: 1
-> >> mt76x2e 0000:02:00.0: Build Time: 201607111443____
-> >> mt76x2e 0000:02:00.0: Firmware failed to start
-> >> mt76x2e 0000:02:00.0: probe with driver mt76x2e failed with error -145
-> >>
-> >> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
-> >> ---
-> >>   drivers/net/wireless/mediatek/mt76/mmio.c | 34 +++++++++++++++++++++=
-++
-> >>   1 file changed, 34 insertions(+)
-> >>
-> >> diff --git a/drivers/net/wireless/mediatek/mt76/mmio.c b/drivers/net/w=
-ireless/mediatek/mt76/mmio.c
-> >> index cd2e9737c3bf..776dbaacc8a3 100644
-> >> --- a/drivers/net/wireless/mediatek/mt76/mmio.c
-> >> +++ b/drivers/net/wireless/mediatek/mt76/mmio.c
-> >> @@ -30,15 +30,49 @@ static u32 mt76_mmio_rmw(struct mt76_dev *dev, u32=
- offset, u32 mask, u32 val)
-> >>          return val;
-> >>   }
-> >>
-> >> +static void mt76_mmio_write_copy_portable(void __iomem *dst,
-> >> +                                         const u8 *src, int len)
-> >> +{
-> >> +       __le32 val;
-> >> +       int i =3D 0;
-> >> +
-> >> +       for (i =3D 0; i < ALIGN(len, 4); i +=3D 4) {
-> >> +               memcpy(&val, src + i, sizeof(val));
-> >> +               writel(cpu_to_le32(val), dst + i);
-> >> +       }
-> >> +}
-> >> +
-> >>   static void mt76_mmio_write_copy(struct mt76_dev *dev, u32 offset,
-> >>                                   const void *data, int len)
-> >>   {
-> >> +       if (IS_ENABLED(CONFIG_CPU_BIG_ENDIAN)) {
-> >> +               mt76_mmio_write_copy_portable(dev->mmio.regs + offset,=
- data,
-> >> +                                             len);
-> >> +               return;
-> >> +       }
-> >>          __iowrite32_copy(dev->mmio.regs + offset, data, DIV_ROUND_UP(=
-len, 4));
-> > Maybe just replace this with memcpy_toio() which does no swapping at
-> > all instead of double swapping on BE?
->
->
-> I'm not that informed about how PCI works so I had to test to confirm
-> my understanding, but I can confirm that memcpy_toio() does not solve
-> the problem.
+Il 29/10/25 05:11, Macpaul Lin (林智斌) ha scritto:
+> On Tue, 2025-10-14 at 11:59 +0200, AngeloGioacchino Del Regno wrote:
+>>
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> Il 13/10/25 15:41, Sjoerd Simons ha scritto:
+>>> Hey,
+>>>
+>>> On Tue, 2025-08-05 at 09:47 +0200, AngeloGioacchino Del Regno
+>>> wrote:
+>>>> In preparation to add support for new generation SoCs like
+>>>> MT8196,
+>>>> MT6991 and other variants, which require to set bus protection on
+>>>> different busses than the ones found on legacy chips, and to also
+>>>> simplify and reduce memory footprint of this driver, refactor the
+>>>> mechanism to retrieve and use the bus protection regmaps.
+>>>>
+>>>> This is done by removing the three pointers to struct regmap from
+>>>> struct scpsys_domain (allocated for each power domain) and moving
+>>>> them to the main struct scpsys (allocated per driver instance) as
+>>>> an array of pointers to regmap named **bus_prot.
+>>>
+>>> Trying to boot v6.18.0-rc1 on a Genio 700 EVK using the arm64
+>>> defconfig,
+>>> ends up hanging at boot (seemingly when probing MTU3 and/or mmc,
+>>> but that
+>>> might be a red herring).
+>>>
+>>> Either reverting this patch *or* having CONFIG_MTK_MMSYS builtin
+>>> rather
+>>> then a module seems to solve that.
+>>>
+>>
+>> Thanks for the report.
+>>
+>> This is not a problem with this patch specifically, but surely some
+>> race condition
+>> that was already present before and that does get uncovered with this
+>> one in some
+>> conditions.
+>>
+>> Without the devicetree updates (which are not upstream yet) this
+>> patch is
+>> fully retaining the legacy functionality 1-to-1.
+>>
+>> I'll check what's going on ASAP.
+>>
+>> Cheers,
+>> Angelo
+>>
+> 
 
-Ah, right, I misread _iowrite32_copy() to do conversion to LE, but it doesn=
-'t.
+Hello Macpaul,
 
-What architecture is this you have? PowerPC? ARM? MIPS? 32 bit? 64 bit?
+> I did a git bisect on linux-next master branch and
+> the result shows c29345fa5f66bea0790cf2219f57b974d4fc177b is the first
+> bad commit. This change also affect MT8195.
+> 
+> This patch couldn't be simply reverted because there are some dependent
+> commits follows this change.
+> I'm not sure it this refactor causes API or flag not synced with the
+> SCP firmware.
 
-So the differences I see are:
+There's no interaction with the SCP on this patch.
 
-1. __iowrite32_copy() uses __raw_writel(), which has different memory
-semantics than writel()
-2. __iowrite32_copy() assumed src is aligned to 32 bit, while you
-explicitly align it
-3. memcpy_toio() will handle unaligned src properly, but does 64 bit
-accesses on 64 bit systems (and uses __raw* again).
+> Just a remind that it is hard for MediaTek to update scp firmware for
+> an already in mass production state chip.
+> Each scp firmware and the pm-domain interface are designed specifically
+> for 'that' chip only. So it is difficult to adopt pm-domain refactor
+> by only reviewing the patch.
 
-Is src aligned? If not, then the issue might be 2. And if your system
-is 64 bit, it would explain why 3 didn't help.
+There's no need to update the SCP firmware at all - the pmdomain driver
+does not communicate with that - infact, you can keep using all of the
+pmdomains without ever loading any SCP firmware from the kernel.
 
-As a first step you could try to replace the writel(cpu_to_le32(val)
-with a iowrite32be(val, ...) which should do the same except avoiding
-the doubled byte swapping. If that works, you can try to replace it
-with __raw_writel(), which then would make this the same as
-__iowrite32_copy, except making sure that src is aligned.
+> 
+> Here are the error logs with latest linux-next master on mt8395-genio-
+> 1200-evk. Hope this could help on futher debugging.
+> 
 
-Also you could replace your memcpy() with get_unaligned((u32 *)(src +
-i)); Should do the same but inline.
+Thanks for the logs! Getting issues on MSDC is really odd because the MSDC
+controller does *not* use nor have any power domain...
 
->
-> The issue as I understand it is that rather than making every driver
-> carefully call cpu_to_le*() every MMIO write, someone decided to make
-> the PCI host bridge itself transparently byte-swap all MMIO on the
-> wire. Since most MMIO is hitting registers and most buffers are
-> transferred by DMA, for the most part everything works and nobody
-> notices.
->
-> But in the rare case that we need to write a blob to MMIO, it gets
-> transparently swapped in hardware so you need to use cpu_to_le in that
-> case. Doing a search of ./drivers for write.*cpu_to_le I can see this
-> issue comes up a bit.
+I'll take a look at this as soon as I can, anyway.
 
-Every (PCI) driver does conversion to LE implicitly by using
-writel/readl (or iowrite32/ioread32) etc do the conversion to/from LE.
-So writel(foo, dst )is a __raw_writel(cpu_to_le32(foo), dst) etc. PCI
-memory is assumed to be in LE. If you are on a little endian system,
-then no byte swapping happens, and on BE it will do byte swapping
-before writing the value.
+Thanks again,
+Angelo
 
-Best regards,
-Jonas
+> [    1.291055] mtk-msdc 11240000.mmc: msdc_track_cmd_data: cmd=8
+> arg=000001AA; host->error=0x00000002
+> [    1.292775] mtk-msdc 11240000.mmc: msdc_track_cmd_data: cmd=55
+> arg=00000000; host->error=0x00000002
+> [    1.294539] mtk-msdc 11240000.mmc: msdc_track_cmd_data: cmd=55
+> arg=00000000; host->error=0x00000002
+> [    1.296293] mtk-msdc 11240000.mmc: msdc_track_cmd_data: cmd=55
+> arg=00000000; host->error=0x00000002
+> ...
+> [    1.430408] mtk-msdc 11240000.mmc: msdc_track_cmd_data: cmd=55
+> arg=00000000; host->error=0x00000002
+> [    1.433766] mmc0: Failed to initialize a non-removable card
+> [   22.297240] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+> [   22.298723] rcu:     6-...0: (2 ticks this GP)
+> idle=104c/1/0x4000000000000000 softirq=45/45 fqs=37
+> [   22.299827] rcu:     (detected by 2, t=5256 jiffies, g=-1051, q=200
+> ncpus=8)
+> [   22.300689] Sending NMI from CPU 2 to CPUs 6:
+> 
+> Best regards,
+> Macpaul Lin
+
+
 
