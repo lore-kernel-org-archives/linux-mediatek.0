@@ -4,69 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FAECCCF9EB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 11:00:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6971DCCF9E9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Oct 2025 11:05:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=so3Cu2YAn+/w4/K/GQ4JQ0kNpqm9PqzB8TiUPWOp7tc=; b=XhPNyiHQzBSrJi
-	EhLfDmZN8I/571pJ54aKntz7P4LZeTAmJ3Bti4pR/EsZ1nMsI0PwiyQ+B9FfzdUiwfPMN2WgR5j/0
-	zLn175UX0wBX4aeeP3VScaYqxnmJ20UhOTb2fXl/1lvCeaz+4AjEEiL0RbM7rHOBsofIW9WUev/6n
-	NudCr3l6IwqMvF6OcO2MyoOP4Qf7q+Dka79LzTI1DTl2I1pZBqjg6hlcboQx4oTiz6Xk/+e6zSEcS
-	XD9qSjlDZKmyA0HsI45e3viPCF2a70uhViQCcklfs4u9SNTyWqLu9X8LL7SoA+9NMOQBflsm++wrH
-	YzsvBvUJB4aePvPfEAMg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1WzEU6aEshphlmoBd7dAElld9NmvSbPlTgBjFc5ogiM=; b=O6R5J/UA/Ad0lAUbU0rDoKbGEV
+	r4YclNV6qCJi9+YOXQoQ+eDMZDoV7Tdh4CS35ETykDCY6++c44KNi6dOV0ZgC4Khu26A7rfWKnG0E
+	uGKaDu+0FyC4IT2N0A6+GEIHZuh/vvhwSqQS0sYoSYl9JDav1+NH5Xcbd68JrpO1r/XP9GzaVPYC5
+	SJ+mtrnbyUdSzfi0rScc4B6MhN1uFQcI+8DG+ZlSfrXHZo8/dglfXjKT50F1X0wyBHuwrBKmbriQH
+	YE/H2NcNoU0wzrSXr01SnuKR9WHTGtyOlxVnJZHPCfKOxQVZ1+zuqpvVQye90UxTy0r0UDq5L4Ahk
+	v8LAUdpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE3v6-00000000sDO-1kqO;
-	Wed, 29 Oct 2025 11:00:48 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vE3zn-00000000t4y-2j1F;
+	Wed, 29 Oct 2025 11:05:39 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vE3v3-00000000sC7-2fsY;
-	Wed, 29 Oct 2025 11:00:46 +0000
+	id 1vE3zk-00000000t3h-47oW;
+	Wed, 29 Oct 2025 11:05:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761735638;
-	bh=AUNH3u8bUF8JoMehOHg6y00+85aYv43ceW1GQNK7K5s=;
+	s=mail; t=1761735934;
+	bh=mUg1Il3vEFNsxJBIHBHWg1fUx+lCuD7mOLuml/XS/kA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=npceiVXaTi0bcWltz/elJ2izmVPaJxNQfRfpfBaK8UTFwuPZdfN3zVBRtpkCMNsv+
-	 VQv3/j0SmSX/99v/AW5H1pWEDf0vkB9r/lV0LO4QobLJRMsNRZNwS43Reo8yNycTcn
-	 WM+Q4H/vwPN9z/KMwq3zUsN1+RfSDJgcObSW3cDv7A5vUMjiSBcsMGVXRvAZkuAkOI
-	 O/ZD+mPnlwq4Lath0eWq88jkRiNiMPqjy5lm/bgw7DBt6/HwoXCllw9tKBkSYWYbfe
-	 B8WahyXgtqjdfqet3rV+cGrq7VeXN5JSJdWdZ7WW/svX6AiMCzkh6LfI/J7cQhWkJT
-	 GREuVRg4QKMig==
+	b=eRfHB5nsrIx60bM6lSYTUZqKtS5Pa1OP6sGcYsJddJ0b05Uodu+JnvDDIS6sACk99
+	 50QDCdU8GShKx6PB8udgn8h1R5GvWHl/Mda9iQ97OTt3saA0BRGWK4Zlv5DknpJNti
+	 7DdaYDPP+5pJRotYCu9a03ChBbPmnENIsYaWfcDb+DzywBoKUYaG9YRtp/AnBPd3zG
+	 XOAC6jemBWGFUMxkXcmuOZNYu1yLpMSWMGtTmyhvX2yQy3dcaGGFKtzX/QlZVs6iJ9
+	 0pPhc7W1jsX/4H7ghLo8Wr1/+hB6RaMfTRjf0NR8n7CsExfF5IdhPYQ7yjkGp/aqc/
+	 ftDzSawq8J3lQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 293B417E00A6;
-	Wed, 29 Oct 2025 12:00:37 +0100 (CET)
-Message-ID: <ef7fa25a-d8bc-4b57-8b96-c676ae7f9cb7@collabora.com>
-Date: Wed, 29 Oct 2025 12:00:36 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C0BA117E00AC;
+	Wed, 29 Oct 2025 12:05:33 +0100 (CET)
+Message-ID: <9f5a3dc5-d0f8-4172-a4b4-867919612a2d@collabora.com>
+Date: Wed, 29 Oct 2025 12:05:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 10/20] soc: mediatek: mtk-cmdq: Extend cmdq_pkt_write
- API for SoCs without subsys ID
-To: =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>, "krzk+dt@kernel.org"
- <krzk+dt@kernel.org>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "mchehab@kernel.org" <mchehab@kernel.org>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "jassisinghbrar@gmail.com" <jassisinghbrar@gmail.com>
-References: <20251017065028.1676930-1-jason-jh.lin@mediatek.com>
- <20251017065028.1676930-11-jason-jh.lin@mediatek.com>
- <24b74989-4e31-49e3-8652-c2439f368b26@collabora.com>
- <1f1377ebec26f767a4af9a0c542817be7cfaeddc.camel@mediatek.com>
+Subject: Re: [PATCH v2] remoteproc: mtk_scp: Construct FW path if
+ firmware-name not present
+To: Chen-Yu Tsai <wenst@chromium.org>, mathieu.poirier@linaro.org
+Cc: linux-remoteproc@vger.kernel.org, arnd@arndb.de, andersson@kernel.org,
+ matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20251015084103.10737-1-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5Gs5_j5L3+HT7K-XYwVG6S8ZGhHZkEcS0HpdkcjRQq2oQ@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <1f1377ebec26f767a4af9a0c542817be7cfaeddc.camel@mediatek.com>
+In-Reply-To: <CAGXv+5Gs5_j5L3+HT7K-XYwVG6S8ZGhHZkEcS0HpdkcjRQq2oQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251029_040045_879502_7276314C 
-X-CRM114-Status: GOOD (  18.15  )
+X-CRM114-CacheID: sfid-20251029_040537_181895_3DF31873 
+X-CRM114-Status: GOOD (  21.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,111 +75,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>, =?UTF-8?B?WGlhbmRvbmcgV2FuZyAo546L5YWI5YasKQ==?= <Xiandong.Wang@mediatek.com>, =?UTF-8?B?U2luZ28gQ2hhbmcgKOW8teiIiOWciyk=?= <Singo.Chang@mediatek.com>, "wenst@chromium.org" <wenst@chromium.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "nicolas@ndufresne.ca" <nicolas@ndufresne.ca>, Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>, =?UTF-8?B?UGF1bC1wbCBDaGVuICjpmbPmn4/pnJYp?= <Paul-pl.Chen@mediatek.com>, =?UTF-8?B?TmFuY3kgTGluICjmnpfmrKPonqIp?= <Nancy.Lin@mediatek.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/10/25 06:03, Jason-JH Lin (林睿祥) ha scritto:
-> On Mon, 2025-10-20 at 12:04 +0200, AngeloGioacchino Del Regno wrote:
+Il 29/10/25 10:14, Chen-Yu Tsai ha scritto:
+> On Wed, Oct 15, 2025 at 4:41 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
 >>
->> External email : Please do not click links or open attachments until
->> you have verified the sender or the content.
+>> After a reply on the mailing lists [1] it emerged that the DT
+>> property "firmware-name" should not be relied on because of
+>> possible issues with firmware versions.
+>> For MediaTek SCP, there has never been any firmware version vs
+>> driver version desync issue but, regardless, the firmwares are
+>> always using the same name and they're always located in a path
+>> with a specific pattern.
 >>
+>> Instead of unconditionally always relying on the firmware-name
+>> devicetree property to get a path to the SCP FW file, drivers
+>> should construct a name based on what firmware it knows and
+>> what hardware it is running on.
 >>
->> Il 17/10/25 08:44, Jason-JH Lin ha scritto:
->>> This patch extends the cmdq_pkt_write API to support SoCs that do
->>> not
->>> have subsys ID mapping by introducing new register write APIs:
->>> - cmdq_pkt_write_pa() and cmdq_pkt_write_subsys() replace
->>>     cmdq_pkt_write()
->>> - cmdq_pkt_write_mask_pa() and cmdq_pkt_write_mask_subsys() replace
->>>     cmdq_pkt_write_mask()
->>>
->>> To ensure consistent function pointer interfaces, both
->>> cmdq_pkt_write_pa() and cmdq_pkt_write_subsys() provide subsys and
->>> pa_base parameters. This unifies how register writes are invoked,
->>> regardless of whether subsys ID is supported by the device.
->>>
->>> All GCEs support writing registers by PA (with mask) without
->>> subsys,
->>> but this requires extra GCE instructions to convert the PA into a
->>> GCE
->>> readable format, reducing performance compared to using subsys
->>> directly.
->>> Therefore, subsys is preferred for register writes when available.
->>>
->>> API documentation and function pointer declarations in
->>> cmdq_client_reg
->>> have been updated. The original write APIs will be removed after
->>> all
->>> CMDQ users transition to the new interfaces.
->>>
->>> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
->>> ---
->>>    drivers/soc/mediatek/mtk-cmdq-helper.c | 54 +++++++++++++++++
->>>    include/linux/soc/mediatek/mtk-cmdq.h  | 83
->>> ++++++++++++++++++++++++++
->>>    2 files changed, 137 insertions(+)
->>>
+>> In order to do that, add a `scp_get_default_fw_path()` function
+>> that constructs the path and filename based on two of the infos
+>> that the driver can get:
+>>   1. The compatible string with the highest priority (so, the
+>>      first one at index 0); and
+>>   2. The type of SCP HW - single-core or multi-core.
 >>
->>> diff --git a/include/linux/soc/mediatek/mtk-cmdq.h
->>> b/include/linux/soc/mediatek/mtk-cmdq.h
->>> index 154d0511a0ad..f6dc43c036bd 100644
->>> --- a/include/linux/soc/mediatek/mtk-cmdq.h
->>> +++ b/include/linux/soc/mediatek/mtk-cmdq.h
->>> @@ -57,6 +57,10 @@ struct cmdq_client_reg {
->>>        phys_addr_t pa_base;
->>>        u16 offset;
->>>        u16 size;
->>> +     int (*reg_write)(struct cmdq_pkt *pkt, u8 subsys, u32
->>> pa_base,
->>> +                      u16 offset, u32 value);
+>> This means that the default firmware path is generated as:
+>>   - Single core SCP: mediatek/(soc_model)/scp.img
+>>     for example:     mediatek/mt8183/scp.img;
 >>
->> (*pkt_write)
->>
->>> +     int (*reg_write_mask)(struct cmdq_pkt *pkt, u8 subsys, u32
->>> pa_base,
->>> +                           u16 offset, u32 value, u32 mask);
->>
->> (*pkt_write_mask)
->>
->> those names make a lot more sense.
->>
-> Hi Angelo,
+>>   - Multi core SCP:  mediatek/(soc_model)/scp_c(core_number).img
+>>     for example:     mediatek/mt8188/scp_c0.img for Core 0, and
+>>                      mediatek/mt8188/scp_c1.img for Core 1.
 > 
-> The reason why I use reg_write/reg_write_mask is to imply these APIs
-> only provide writing HW register address function, not writing DRAM
-> address.
-> So we don't need to care about mminfra_offset in these APIs.
+> I know this patch has been applied, but this scheme doesn't actually
+> follow what is already in the linux-firmware repository.
+> 
+> For all the supported platforms, the first core, even for multi core SCP,
+> already have their firmware uploaded as just "scp.img". Multicore SCP
+> is seen in MT8195 and MT8188.
 
-Sure I understand that we don't need to care about mminfra_offset - but those
-function pointers are effectively replacing the "(xyz)pkt_write" functions.
+The only one that is affected is MT8188, which needs a rename or a symlink in
+linux-firmware.
 
-Changing the name to reg_write will create a lot of confusion.
+MT8195 is not affected by this change, because the SCP is used as single-core,
+hence this code will look for scp.img and not for scp_c0.img.
 
 > 
-> I can add comment for this.
-> 
-> What do you think?
-> Or should I change its name to pkt_write/pkt_write_amsk?
+> I guess I can send a followup patch?
 
-Please change the name to pkt_write/pkt_write_mask and if you think it's useful
-also add a comment saying that those functions are already accounting for the
-mminfra_offset internally.
+The only followup patch that I deem to be necessary is one adding a symlink
+or renaming for MT8188's SCP and nothing else.
+
+Please remember that some of those SoCs (including MT8195) allow the SCP to be
+configured as *either* single-core *or* dual-core - and usually firmwares for
+single-core configurations are not compatible with dual-core ones, because of
+the SRAM carveout/usage.
 
 Cheers,
 Angelo
 
 > 
-> Regards,
-> Jason-JH Lin
 > 
->> After applying the requested changes,
->>
->> Reviewed-by: AngeloGioacchino Del Regno
->> <angelogioacchino.delregno@collabora.com>
->>
->>>    };
-> 
+> ChenYu
+
+
 
 
