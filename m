@@ -4,68 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D37DCCF9F0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 09:25:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 046F3CCF9F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 09:29:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ReARPUNSeKIo4mFdxTXdOFWz13PTGwK87SRIQryhXfg=; b=18WHaV2KpHKLVhzTkJ7XGF1lzE
-	vvRQkwmFPCrmp710DXeanKs6xJwLvxerdasSGm4sgkly2gTWlqu0PlIoHGG53d5ghQ5k3e0DOKYiz
-	PcjjcZDOZgqlcM1JhtBd3qxhLYxoe5frfSbgVi3fgdwMoVi9vzPv4uvvhCpv2qRrshq1gIBYNLtj6
-	mr7sQYh11UbDD2bwHeQti9qcf5xFehDqCrOHdyQ2D2mxtKZZpX5ujunAZIgQCwi4LixOqcBUAwRle
-	sSznWFmCdQ6pOjYMoJOThjfXv8TLkyi2uQSETbZZwmMbTunYKyKIa0cLefP/KfApRhmwk//ekBhzW
-	CxmLSypw==;
+	bh=5JhskAMSbPVlSOTNFjzse6L3MehkffYRFL9WqDX3wYY=; b=AHHHIGzZbhlrgPA74cuvdGqotj
+	zJz6hzu9Bt6dP+4peKmqoG7yqSr9KugpwHkR46MVEoujsj10xnGiTOi+HjnVSB44ZoCF2JzM4G4gT
+	xOTgQht1mORuzYsBqcwkvDg/E4WAg/0+LS9I7dpMsgxgJHQY1S9lYDqn2L2zzBNO8BstqwVvLKTmc
+	DfPZnJcnJbgmLKADcR562qXc8w2EF5ExFX2MFILv9iWUOut1squOZezbK5lxEsXzr1JPoRJMYGbr4
+	LoApGfasTs8KO5ew9dC0BifSTlT1KhoUu7tu8cvn8xnVHeegBfxtIo2fTn80jyIxjn8Yw8IaWk2J9
+	XwskRY0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEOuN-00000003rDX-18Lj;
-	Thu, 30 Oct 2025 09:25:27 +0000
+	id 1vEOyB-00000003rtJ-0oZj;
+	Thu, 30 Oct 2025 09:29:23 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEOuK-00000003rCi-2W6s;
-	Thu, 30 Oct 2025 09:25:25 +0000
+	id 1vEOy8-00000003rsA-0BcI;
+	Thu, 30 Oct 2025 09:29:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761816321;
-	bh=oyf7HAZO8RhL2RYtja/zt16B8f/+ajKY5V1IZi5p/7c=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=mebfPC6+ymHZgokou0mpiUmD8p686JTQjEDu75rd+pL+LpKCWjd48Ch2AAA950haV
-	 TWOfzi/K4glYJ1oQ1TvxGNLUaHEOP6QeWjt9ZkB5tw2ovvaa25lx3vuqLtofUWPf3A
-	 P1t4Tbt8yFmDPyTf19i8OeMaljQJRqCYdBCvOIleSmYMCKPFpJg5oh5cSVfTmEha9Y
-	 dje1pBQkscbg8C4IyJuhU/E+jGYq0JZNNiK08nlZsYQCfi/nG4+VU3uYDmq4wq5FeK
-	 SoDpTtPyZl3MujcNxuUZyQVpyiM0U/M6vp827NqrfrawngPW++4gU8CckiSrU0gMtD
-	 7LCpu2jN9Zl+g==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1761816556;
+	bh=YyjGQwr4n5Ubu59xZkUEL74ae/TqjsZuDDm5YLuW3Q8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=h+EBRGb1uH174RYx0/bt3F70i7EFNqYF93qQh2fbnEAFwy2dpGvFYenEKMS2c7UU1
+	 ajeipmS2ovXFxr38PeuwYBCW3/8Y2ZAa5waMC+8HcTQUy6q1ThdCCuZairmfVDsPt3
+	 JN7iwVBc2TQ6+gmcscpsp1jWpg7oOMPyv/bT7NIAtELUFab65OzsjNvwfsqjMAIGvx
+	 7XDoageZ3llaz05qDybsO5Sn3wVTYn65Yx/EdCwv6Kua3IBb+mWyEIcCR+CIZE0/Z8
+	 O5Ecwjxdm9yBpI7y0I+7X10LXc22Rlf8IMz+pMgc4HiOC2t0e07Ut1lmhwWE7EuTbo
+	 ctLRWe8Ii8XDw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 148AB17E009B;
-	Thu, 30 Oct 2025 10:25:21 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Flora Fu <flora.fu@mediatek.com>, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20251029-mt8189-dt-bindings-pwrap-v1-1-d52b1aa5f5a4@collabora.com>
-References: <20251029-mt8189-dt-bindings-pwrap-v1-1-d52b1aa5f5a4@collabora.com>
-Subject: Re: [PATCH] dt-bindings: soc: mediatek: pwrap: Add compatible for
- MT8189 SoC
-Message-Id: <176181632103.13078.15754462536677524202.b4-ty@collabora.com>
-Date: Thu, 30 Oct 2025 10:25:21 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9203217E1380;
+	Thu, 30 Oct 2025 10:29:16 +0100 (CET)
+Message-ID: <141839e6-1dbe-4e98-8412-d47e853d997b@collabora.com>
+Date: Thu, 30 Oct 2025 10:29:16 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.3
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] remoteproc: mtk_scp: Construct FW path if
+ firmware-name not present
+To: Arnd Bergmann <arnd@arndb.de>, Chen-Yu Tsai <wenst@chromium.org>
+Cc: Mathieu Poirier <mathieu.poirier@linaro.org>,
+ linux-remoteproc@vger.kernel.org, Bjorn Andersson <andersson@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20251015084103.10737-1-angelogioacchino.delregno@collabora.com>
+ <CAGXv+5Gs5_j5L3+HT7K-XYwVG6S8ZGhHZkEcS0HpdkcjRQq2oQ@mail.gmail.com>
+ <9f5a3dc5-d0f8-4172-a4b4-867919612a2d@collabora.com>
+ <CAGXv+5Ge-uZHKATOvqQF25DRTcHFJkopUk-JUXDtpEen=BwCiA@mail.gmail.com>
+ <f434165f-1717-41ff-93e4-9be5b7fca929@app.fastmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <f434165f-1717-41ff-93e4-9be5b7fca929@app.fastmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_022524_809633_6BE05F5D 
-X-CRM114-Status: UNSURE (   7.11  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251030_022920_248754_350A7F12 
+X-CRM114-Status: GOOD (  18.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,19 +82,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 29 Oct 2025 14:25:57 +0100, Louis-Alexis Eyraud wrote:
-> Add compatible string for the PWRAP block on MT8189 SoC, which is
-> compatible with the one used on MT8195.
+Il 30/10/25 10:10, Arnd Bergmann ha scritto:
+> On Thu, Oct 30, 2025, at 09:21, Chen-Yu Tsai wrote:
+>> On Wed, Oct 29, 2025 at 7:05 PM AngeloGioacchino Del Regno
+>> <angelogioacchino.delregno@collabora.com> wrote:
+>>>
+>>>>
+>>>> I guess I can send a followup patch?
+>>>
+>>> The only followup patch that I deem to be necessary is one adding a symlink
+>>> or renaming for MT8188's SCP and nothing else.
+>>
+>> The firmware was uploaded in March of 2025, and is packaged in Debian
+>> Trixie, and was also backported to Bookworm. Either adding a symlink or
+>> renaming it won't trickle down to users for some time. So this seems
+>> like a possible ABI break, where the ABI is the file name.
+>>
+>> Or maybe you don't consider it as such because SCP hasn't been enabled
+>> in the kernel in any release yet?
+
+Just as a clarification:
+
+Exactly, SCP hasn't been enabled in the kernel in any release in the specific
+case of MT8188, so this is not breaking anything, and it's not creating any
+regression.
+
 > 
+> It's normally up to the kernel driver to know about the firmware
+> file names and the order of trying the possible fallbacks, which
+> is exactly why I originally asked to not rely on the property
+> from dtb.
 > 
+> If you want a symlink in linux-firmware, that would go the other
+> way, pointing the old filename to the new location.
+> 
+>      Arnd
 
-Applied to v6.18-next/soc, thanks!
-
-[1/1] dt-bindings: soc: mediatek: pwrap: Add compatible for MT8189 SoC
-      commit: 4459d667a3d7001d1c1703dc79c87db1808cdde2
-
-Cheers,
+Cheers!
 Angelo
-
-
 
