@@ -4,95 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA3F8CCF9F1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 10:35:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB79ACCF9F0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 10:38:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZsPngKrFqfEFSGok7TSQm60g/euZJ7JcyyRZuGnNgBg=; b=xTn5knFEjm/wNzI6wMBxc94HZo
-	132aamuriGYA7RoruSOcDSonMCMMQ0//42uI5bLurKr6Tv8kbWEf/Bm244KEjfeuSSVCguuKqVUKO
-	nB0hUm8fVGLpV4gRjwSFZEzV5OoeU1BEqGDvJBlquipVbNUMas4BivsH7w39zCmTF8i+ASnAWpLB8
-	LJzIqQS5Wrk4pD8pAW5gX8lFidvFvRZGZ0CInROGA5j64kK8t323VqBVOsDPaLJeLx87UJXeOWtyy
-	N84nlnpBk6s9nGeYXJuFjYlMwUfT6ldjISBkNSiD1x+ESUaBMFGZ0sRcbjYm6QT36rd4UevjXun1X
-	92ah3TTQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Message-ID:Subject:Cc:To:From:Date:MIME-Version:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=i52sX0HHotFg2XyzTxZtJ+4INSV4quoFx5kmuHs4B+4=; b=Stak86+uFrKvLMxeFzNkalSVej
+	pFAuM7+7Tu7WIrreU7UnhRnVrJ+/B/Ji9nFWQ2YFI5csUPTV5Zq9t4z/AeB/HKFKIOh0qg86M7iyl
+	mFGDq+/n6OByaBTKXO8JRMi3ziZ7NFMPkTBFZsM4OCC+RnRPKkqVy/97V6jd6xgHnoyq9qOJk8uAS
+	TnkcN8t1NJVfj5quHtIymZslRiWf2HJOhv9O9DDS+y0+G45k9EJXhjW26V1cuF0wq7xEemyABqfp6
+	Xg3mj87stmKLs3vJ7KyZfryYJZOyHVA/N+lCmE7n8FmUtFbI1hbDQkyAH67tnBr9RGHXAqmFHsHKV
+	TzHvMXqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEPzq-00000003zz5-4Aaz;
-	Thu, 30 Oct 2025 10:35:10 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1vEQ34-000000040QH-2WSN;
+	Thu, 30 Oct 2025 10:38:30 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEPzo-00000003zyM-2kAm
+	id 1vEQ31-000000040PI-2VPP
 	for linux-mediatek@lists.infradead.org;
-	Thu, 30 Oct 2025 10:35:10 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-4270a3464bcso667625f8f.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 30 Oct 2025 03:35:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1761820507; x=1762425307; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZsPngKrFqfEFSGok7TSQm60g/euZJ7JcyyRZuGnNgBg=;
-        b=eLqfI6/NejaTxmSkjks4JpqHE0xayZ+6GEWyG5OXmUEghiMnEqv/9uyzXLBX4is/ZU
-         yTKxyCWdGLxlKV8t0h2ykyDQzcwkNAGSWOBAoqBh2021MPDfqXwcC1AylaxdOSCO0H79
-         EMgoiqkC4u75r/lOZFHxOH1gMKmsrukQF9eC1H3fx4SaRy80mzW8Xtl+VybvXyiCOREF
-         KkfFZ+vrP/R+4qjmWYE6/j12Jia0BlczBy7Xyq5fQrN4JdmdCbrx9w6WrRZlxSmQNef4
-         icSV0VzvZrPP80TM0GUpIdo/bmOIV5uev7hmgrZHe/ax5PKlbpX4Rt2eV0pvARAKkdPJ
-         9LTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761820507; x=1762425307;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZsPngKrFqfEFSGok7TSQm60g/euZJ7JcyyRZuGnNgBg=;
-        b=B1Jt9gip+155Naef99RSW3P8V8f7W33okBp6cf0/8VsrDPrD8JruWx2zOv+tUzn2DZ
-         eMDWxYnDLXYO6fB8JZu7aXcyRIbdiJE7mieVmitgx+No1PjomcUzOKiY19FB5sMJSgIC
-         MSbCSgMw3aSjtD1OHZ+B3PAx5I+lJpkDZZx+hzcuMv8GcY9wC5FAy6uCEj73woJ6Hcd/
-         UIFL0CF1dS5BwK1dBuLhiKhtuQvc6nACZzEdw7wis9FOW2aBxg0nwILuFWGFLGnT3jNR
-         83IM4MXFdOwtTxUMZEqUv+w93TnwjgQ77Qdq5lQsMvyLVbOd/zwldUmbQKJAgl2shMQi
-         5v2g==
-X-Forwarded-Encrypted: i=1; AJvYcCUNdRi8N5siW7XGmmsEPcxga/DgvrnqwkC0iKgj3uN+UjZmwvenaolnVzT45CJCYEdQ9fTwuyYTYK7lCzra+A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwNzGGyBYOFA/HGcZe0rNInd030i+h51jEHbZzK2mhFRIGE2ya3
-	9p/I/WLVBwKh8NtT7BA7S2sN338Hbz6R1X0ZTBDabMBBTccXoYWQ55m90RKERQ==
-X-Gm-Gg: ASbGnctH22jiLpme5Muzrh+8OUM3Sl9pZwH0tuVBGwbpt7d/3ppp7jjtx9gtN3/2joC
-	S2/10Uh7FglAXXG7DIDGmOsi8ebNxjcVCgMO1t73ZbjOuw2P0QeWKI9MyWb9dMP172J85quz+IA
-	h/OFQihAd5z+jB+qpWgGmjU5qLXuzG0mSitH8vLnGPAlvJ8IqO2uJajINRFttruSnlh7W7KlMJG
-	6Dig5NsRobFliuvYSlMlr7admPsVkI2pvvTClljRuOD+PD2B003iPqyyY/QBcLxBf7eyP/Wbov/
-	n18mIiyf+AwruLcJpencJkKmqf0KMxfPkndoG5E73y11q5L8Be6+uk1EC6Zhp5CQKleVrKg96LH
-	1RSD0XPQ6uPUx87ztcfUT8baFn0DQxx0rz6xvsjKua+XmHrHLltro39j55B9dU4hFbkjrRMCN9G
-	vBtwAPTRz4o9t523nqb7SDrQL54UKK
-X-Google-Smtp-Source: AGHT+IESaUzzzN97jkFB4AyHPl8jIeK4DpYfr+xMeimLxz4XvTZuV9U4wyHB6rScPa52l5uDwp+EVw==
-X-Received: by 2002:a05:6000:2c05:b0:428:3e7f:88c3 with SMTP id ffacd0b85a97d-429b4c9ee77mr2317234f8f.50.1761820506460;
-        Thu, 30 Oct 2025 03:35:06 -0700 (PDT)
-Received: from Ansuel-XPS. (93-34-90-37.ip49.fastwebnet.it. [93.34.90.37])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-429952d4494sm31832354f8f.21.2025.10.30.03.35.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Oct 2025 03:35:06 -0700 (PDT)
-Message-ID: <69033f5a.df0a0220.25fede.548f@mx.google.com>
-X-Google-Original-Message-ID: <aQM_WCsuEDykB4e1@Ansuel-XPS.>
-Date: Thu, 30 Oct 2025 11:35:04 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [net-next PATCH v2 2/2] net: airoha: add phylink support for GDM1
-References: <20251023145850.28459-1-ansuelsmth@gmail.com>
- <20251023145850.28459-3-ansuelsmth@gmail.com>
- <aP00w4CQdeX9GIJA@shell.armlinux.org.uk>
+	Thu, 30 Oct 2025 10:38:29 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+	by mxout1.routing.net (Postfix) with ESMTP id A7A7D403B8;
+	Thu, 30 Oct 2025 10:38:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=routing; t=1761820702;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=i52sX0HHotFg2XyzTxZtJ+4INSV4quoFx5kmuHs4B+4=;
+	b=sE9IHtUA5USnlz0AGJrlK339KDTK/9G4jXNlYDHFZLJnef71hlOnGgcpM5WxE0gbPH9J7y
+	C3JaZWld5KxAtgUx1FXc3Y4I4wf5yqGzRtstUyY4YOApX7FWBykqH+QTt5SWwQWkN7hujI
+	pWZTCZtqQJX4b0aqkd1zoIoKNxA74WQ=
+Received: from webmail.hosting.de (unknown [134.0.26.148])
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 1CD8B100610;
+	Thu, 30 Oct 2025 10:38:22 +0000 (UTC)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aP00w4CQdeX9GIJA@shell.armlinux.org.uk>
+Date: Thu, 30 Oct 2025 11:38:22 +0100
+From: "Frank Wunderlich (linux)" <linux@fw-web.de>
+To: angelogioacchino.delregno@collabora.com, matthias.bgg@kernel.org, Andi
+ Shyti <andi.shyti@kernel.org>, Qii Wang <qii.wang@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org,
+ daniel@makrotopia.org
+Subject: i2c issues in 6.18 on R4, but not r4pro (both mt7988 with i2c-mux on
+ i2c2)
+Message-ID: <3f5ef2d1336933a87d9761b5ff510a1f@fw-web.de>
+X-Sender: linux@fw-web.de
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mail-ID: 99a49484-24ae-4c87-857a-8feba7f39e65
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_033508_724621_56577848 
-X-CRM114-Status: GOOD (  36.20  )
+X-CRM114-CacheID: sfid-20251030_033827_838827_65E7E4D9 
+X-CRM114-Status: UNSURE (   9.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,140 +75,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Oct 25, 2025 at 09:36:19PM +0100, Russell King (Oracle) wrote:
-> On Thu, Oct 23, 2025 at 04:58:49PM +0200, Christian Marangi wrote:
-> > In preparation for support of GDM2+ port, fill in phylink OPs for GDM1
-> > that is an INTERNAL port for the Embedded Switch.
-> > 
-> > Add all the phylink start/stop and fill in the MAC capabilities and the
-> > internal interface as the supported interface.
-> > 
-> > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> > ---
-> >  drivers/net/ethernet/airoha/Kconfig      |  1 +
-> >  drivers/net/ethernet/airoha/airoha_eth.c | 77 +++++++++++++++++++++++-
-> >  drivers/net/ethernet/airoha/airoha_eth.h |  3 +
-> >  3 files changed, 80 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/net/ethernet/airoha/Kconfig b/drivers/net/ethernet/airoha/Kconfig
-> > index ad3ce501e7a5..3c74438bc8a0 100644
-> > --- a/drivers/net/ethernet/airoha/Kconfig
-> > +++ b/drivers/net/ethernet/airoha/Kconfig
-> > @@ -2,6 +2,7 @@
-> >  config NET_VENDOR_AIROHA
-> >  	bool "Airoha devices"
-> >  	depends on ARCH_AIROHA || COMPILE_TEST
-> > +	select PHYLIB
-> 
-> This looks wrong if you're using phylink.
-> 
-> >  	help
-> >  	  If you have a Airoha SoC with ethernet, say Y.
-> >  
-> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-> > index ce6d13b10e27..deba909104bb 100644
-> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> > @@ -1613,6 +1613,8 @@ static int airoha_dev_open(struct net_device *dev)
-> >  	struct airoha_gdm_port *port = netdev_priv(dev);
-> >  	struct airoha_qdma *qdma = port->qdma;
-> >  
-> > +	phylink_start(port->phylink);
-> > +
-> >  	netif_tx_start_all_queues(dev);
-> >  	err = airoha_set_vip_for_gdm_port(port, true);
-> >  	if (err)
-> 
-> phylink_start() _can_ bring the carrier up immediately. Is the netdev
-> ready to start operating at the point phylink_start() has been called?
-> This error handling suggests the answer is "no", and the lack of
-> phylink_stop() in the error path is also a red flag.
->
+Hi
 
-So I guess the correct way is to move start at the very end of dev_open.
+sorry for html-mail, my main email-provider (GMX) sent it as html (have 
+enabled text-mail as default in settings) when using web-mailer.
 
-> > @@ -1665,6 +1667,8 @@ static int airoha_dev_stop(struct net_device *dev)
-> >  		}
-> >  	}
-> >  
-> > +	phylink_stop(port->phylink);
-> > +
-> >  	return 0;
-> >  }
-> >  
-> > @@ -2813,6 +2817,18 @@ static const struct ethtool_ops airoha_ethtool_ops = {
-> >  	.get_link		= ethtool_op_get_link,
-> >  };
-> >  
-> > +static struct phylink_pcs *airoha_phylink_mac_select_pcs(struct phylink_config *config,
-> > +			phy_interface_t interface)
-> 
-> I'd write this as:
-> 
-> static struct phylink_pcs *
-> airoha_phylink_mac_select_pcs(struct phylink_config *config,
-> 			      phy_interface_t interface)
-> 
-> but:
-> 
-> > +{
-> > +	return NULL;
-> > +}
-> 
-> Not sure what the point of this is, as this will be the effect if
-> this function is not provided.
-> 
+i've noticed i2c-issues (i2c2) on mt7988 BPI-R4 with 6.18. On most 
+bootups the i2c-mux is not detected.
+ 
+root@bpi-r4-v11:~
+# i2cdetect -y  2
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:                         -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+70: -- -- -- -- -- -- -- --
+ 
+i2c-probe is completed successful (no errors and debugs shown before 
+final "return 0;")
+ 
+sometimes the mux came up with same kernel-binary, and i see also other 
+devices on same i2c bus, but mostly all devices are not shown when i use 
+i2cdetect on the bus.
+ 
+root@bpi-r4-v11:~
+# i2cdetect -y  2
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:                         -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+50: -- UU -- -- -- -- -- UU -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+70: UU -- -- -- -- -- -- --                         
+root@bpi-r4-v11:~
+# [   58.594846] sfp sfp1: failed to read EEPROM: -ENXIO
+ 
+6.17 seems ok (have not seen the issue there yet).
+ 
+i looked through many commits, reverted some for clock (my own, lauras 
+clk_gate,...), pinctrl and the i2c-mux (some reset-related) itself but 
+nothing helped.
+ 
+One strange thing is that i have noticed no issues on bpi-r4pro which 
+uses same SoC, same config and should use same drivers and configuration 
+via dt.
+Only diference was the reset for the mux itself in dts as far as i 
+see....so tried to disable it to have it nearly same as on r4pro without 
+any effect.
+ 
+Maybe you have any idea how i can nail it down?
+ 
+root@bpi-r4-v11:~
+# dmesg | grep -i 'sfp\|i2c'
+[    0.000000] Machine model: Banana Pi BPI-R4 (2x SFP+)
+[    1.600387] i2c_dev: i2c /dev entries driver
+[    1.605291] /soc/i2c@11003000/rt5190a@64: Fixed dependency cycle(s) 
+with /soc/i2c@11003000/rt5190a@64/regulators/buck1 #i2c0 seems not 
+affected
+[   12.685157] platform sfp1: deferred probe pending: (reason unknown)
+[   12.691440] platform sfp2: deferred probe pending: (reason unknown)
+ 
+# dmesg | grep -i 'err\|fail\|clk'
+... #nothing related to i2c or clk
+[    1.623805] pca954x 2-0070: probe failed
+....
+ 
+wondered why i2c-clocks are always disabled when i look into the 
+clk_summary (also when i2c was working)
 
-Sorry I was confused with the other OPs that are mandatory or a kernel
-panic is triggered if not defined. (for example the MAC config)
+root@bpi-r4-v11:~
+# cat /sys/kernel/debug/clk/clk_summary | grep -i -B2 INFRA_I2C_BCK
+             infra_usb_sys           0       0        0        125000000 
+  0          0     50000      N               deviceless                
+          i2c_sel                    0       1        0        125000000 
+  0          0     50000      N            deviceless                   
+             infra_i2c_bck           0       3        0        125000000 
+  0          0     50000      N               11005000.i2c              
+root@bpi-r4-v11:~
 
-> > +
-> > +static void airoha_mac_config(struct phylink_config *config,
-> > +			      unsigned int mode,
-> > +			      const struct phylink_link_state *state)
-> > +{
-> > +}
-> > +
-> >  static int airoha_metadata_dst_alloc(struct airoha_gdm_port *port)
-> >  {
-> >  	int i;
-> > @@ -2857,6 +2873,57 @@ bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
-> >  	return false;
-> >  }
-> >  
-> > +static void airoha_mac_link_up(struct phylink_config *config,
-> > +			       struct phy_device *phy, unsigned int mode,
-> > +			       phy_interface_t interface, int speed,
-> > +			       int duplex, bool tx_pause, bool rx_pause)
-> > +{
-> > +}
-> > +
-> > +static void airoha_mac_link_down(struct phylink_config *config,
-> > +				 unsigned int mode, phy_interface_t interface)
-> > +{
-> > +}
-> > +
-> > +static const struct phylink_mac_ops airoha_phylink_ops = {
-> > +	.mac_select_pcs = airoha_phylink_mac_select_pcs,
-> > +	.mac_config = airoha_mac_config,
-> > +	.mac_link_up = airoha_mac_link_up,
-> > +	.mac_link_down = airoha_mac_link_down,
-> > +};
-> 
-> All the called methods are entirely empty, meaning that anything that
-> phylink reports may not reflect what is going on with the device.
-> 
-> Is there a plan to implement these methods?
-> 
-
-Yes. For the internal port there isn't much to configure but when the
-PCS for the other GDM port will be implemented, those will be filled in.
-This is really to implement the generic part and prevent having a
-massive series later (as it will be already quite big and if not more
-than 10-12 patch)
-
-Hope it's understandable why all these empty functions.
-
--- 
-	Ansuel
+but looking at the driver the clocks are disabled on probe which looks 
+strange to me
+ 
+https://elixir.bootlin.com/linux/v6.18-rc1/source/drivers/i2c/busses/i2c-mt65xx.c#L1477
+ 
+i guess it is some kind of timing issue where clocks are still disabled 
+but not reenabled in mtk_i2c_transfer, but
+my debug in this function shows that is called and ret=0 after the 
+bulk_enable (and of course flooding console :p ).
+maybe some speed-calculation-issue?
+ 
+what i had tried to revert (also my own non-mainline like "convert 
+invalid GATE to MUX"), so they seem not the rootcause:
+ 
+d51e7cfca3fe 2025-09-25 i2c: mt65xx: convert set_speed function to void 
+Wolfram Sang 
+b49218365280 2025-09-06 i2c: mediatek: fix potential incorrect use of 
+I2C_MASTER_WRRD Leilk.Liu 
+614b1c3cbfb0 2025-06-12 i2c: use inclusive callbacks in struct 
+i2c_algorithm Wolfram Sang
+ 
+c90fa5493f7a 2025-07-31 i2c: mux: pca9541: Use I2C adapter timeout value 
+for arbitration timeout Manikanta Guntupalli 
+94c296776403 2025-06-03 i2c: muxes: pca954x: Reset if (de)select fails 
+Wojciech Siudy 
+690de2902dca 2025-06-03 i2c: muxes: pca954x: Use reset controller only 
+Wojciech Siudy 
+ 
+e504d3bdb3d0 2025-09-15 clk: mediatek: clk-gate: Add ops for gates with 
+HW voter Laura Nao 
+8ceff24a754a 2025-09-15 clk: mediatek: clk-gate: Refactor 
+mtk_clk_register_gate to use mtk_gate struct Laura Nao
+ 
+bd6f4a91401f 2025-09-02 pinctrl: mediatek: moore: replace struct 
+function_desc with struct pinfunction Bartosz Golaszewski 
+7a24f1f5b214 2025-09-02 pinctrl: mediatek: mt7988: use 
+PINCTRL_PIN_FUNCTION() Bartosz Golaszewski
+ 
+regards Frank
 
