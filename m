@@ -4,65 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1987CCF9F8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 16:44:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51C75CCF9F8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 17:20:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UiMIADOUWl4dP+Ao9sQ6FdrfLbz6hFIXFfgN4vVMOxk=; b=dAtMJYIMW7uwlT+QHMIdrB/K1k
-	bZI5G5QAvD48vysNi1BUdDDl8bysjmTNr318lOlx7tZDJ42OSN4qPmiQmEIfD4Qwzxk6AohZFKrQj
-	EQKc2E1WDzNZKlJg1kOsJhXw0vQKt/dUjbDGNLNac8WaPMkoEENO6Nw27zS4RhYX+8oXIPixBHneE
-	KguwxXKDzNsmS8oGsRqaH5UUIVukeNs4QKdMGxE5S2GnCW5fQU0Wf3+4fxEeJ4ohLxn/IzbYbVsRb
-	OZsG5aRu7xbEvYQeLw6i99M7gLQhZ0v52xhA7QfcGHXp6eDcjT0K97pX7m1IZ2vPet6ABtxXnLPh+
-	TxxcpSEA==;
+	bh=u1y3B+8RUYFHKy7C4XHtKEXlhSgIPJIedO3quTvmsnw=; b=uy0ScZG/PIyJXXykOHZOhkWHnI
+	oM6msZUXCaw6d+IqhLhr27oJ2D6qKSb9IQHCoWQfgcZHo/z+9AEZ4OlilxOx/WX7gzRNx6lFSfbb+
+	qGQOKXHe+kj4AlII6q+W/KLx1EhIyxFdBtYfBhPlz8TvXvkz+P+up8xvipM48Fo2ba0KriBPqjrnf
+	cCPNwhmwyblOXFj8giph9GZOPva4AW9pLjBw2HzJB1vXSbC8Av3aZYpR++tEEBIRvZwRQSpXcuQ4C
+	2Hk7AxNajVSdNOxPnlL4RCv1l8+/dTM8dhbFp8HDPtIqwWU1PmgPYQxxOR3Omza44CzNaK6CcH0Nw
+	bEVUvZnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEVkk-00000004TlM-1yZS;
-	Thu, 30 Oct 2025 16:43:58 +0000
+	id 1vEWKN-00000004X0s-3hxf;
+	Thu, 30 Oct 2025 17:20:47 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEVkh-00000004Tki-3wVk;
-	Thu, 30 Oct 2025 16:43:57 +0000
+	id 1vEWKL-00000004X02-0kIV;
+	Thu, 30 Oct 2025 17:20:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5910444D21;
-	Thu, 30 Oct 2025 16:43:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E606EC4CEF1;
-	Thu, 30 Oct 2025 16:43:54 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D9594441BB;
+	Thu, 30 Oct 2025 17:20:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15760C4CEF8;
+	Thu, 30 Oct 2025 17:20:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761842635;
-	bh=ujITBpWROV8ondxiVfL/J6xD1Tt12xz/U9auSnzcR8Y=;
+	s=k20201202; t=1761844843;
+	bh=u1y3B+8RUYFHKy7C4XHtKEXlhSgIPJIedO3quTvmsnw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=W7J9+pLN4ro1WnlD5NBbTiIzH2s+io/jV/gv88R7hqwlbYeA4mPsYn7fBm30ClI/a
-	 IpvJm0zIYzgW4YiDZzkOh8/xxxvj4MfQL43SGPpjASn/ocWWpN4ZLwAFBpRkjnYIlQ
-	 NV5zkO9SkqzzkUk0EJ1kHNmUa5vPhF3nxTqJbZltUcFWGUJ+0UdYE6qhNe17po9eQ9
-	 Q+OINY1l/BDDwLKFXB9btYbK9Nt8xceUyvRb7f2zbBo+TfrvuHVyf2qZs7T4qQhnOi
-	 wOxm/7i5hUTLV2rgWn5feK172vyaRE1Cs3aLKLvhfn+hXfBT94G2eoJSWMNHJcGc2c
-	 ib7bduylhBWgQ==
-Date: Thu, 30 Oct 2025 11:43:53 -0500
-From: Rob Herring <robh@kernel.org>
-To: Zhengnan Chen <zhengnan.chen@mediatek.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	b=TkjBz/+eMf9gwnuS/btR8gNRi5Y9H5T1/MvDgOETJ01Dlf7POOO8RpU31DJXRWkz0
+	 2sg5vdBqJj8Ph6kWnzFnjJqOVHS0p9qIdVvuTwEQdEkbWnKfitwI60rwv1R0RaXOIM
+	 SllKsLbXxhoU+lYjc5zZSCwVSFAaxUBYQb1pw/L2dvWot+q9EEwCz01cn454THCbNq
+	 eW15Oz+PjCT/eyWSex7gJkIKAg9STU6JMZ93zoBM4JW6g3PVmElPdab0CgaA3lJY0S
+	 V180/yFR9pgQdRK2zMgvjebt/1nWBiFL0eYyUUTKzuqEz6PjDvxKLTfQ4gaxsmO29o
+	 dKSoOx1QelBig==
+Date: Thu, 30 Oct 2025 18:20:40 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
+To: Jack Hsu <jh.hsu@mediatek.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com, andy@kernel.org, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, srini@kernel.org, 
+	gregkh@linuxfoundation.org, jirislaby@kernel.org, daniel.lezcano@linaro.org, 
+	tglx@linutronix.de, chunfeng.yun@mediatek.com, wim@linux-watchdog.org, 
+	linux@roeck-us.net, sean.wang@mediatek.com, zhiyong.tao@mediatek.com, 
+	andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, jitao.shi@mediatek.com, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pwm@vger.kernel.org, 
+	linux-serial@vger.kernel.org, linux-usb@vger.kernel.org, linux-watchdog@vger.kernel.org, 
 	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v2 1/2] dt-bindings: memory-controllers: mtk-smi: Add
- support for mt8189
-Message-ID: <20251030164353.GA4119862-robh@kernel.org>
-References: <20251027121443.16783-1-zhengnan.chen@mediatek.com>
- <20251027121443.16783-2-zhengnan.chen@mediatek.com>
+Subject: Re: [PATCH v6 04/11] dt-bindings: pwm: Support MediaTek MT8189 evb
+ board disp-pwm
+Message-ID: <fqceagmqxbix4bnpacimf2lwpnwrw3gpwzknh3a7pt7sfmccm2@4jnh4ynkwwcg>
+References: <20251030134541.784011-1-jh.hsu@mediatek.com>
+ <20251030134541.784011-5-jh.hsu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="tnp73246a7ax7u7v"
 Content-Disposition: inline
-In-Reply-To: <20251027121443.16783-2-zhengnan.chen@mediatek.com>
+In-Reply-To: <20251030134541.784011-5-jh.hsu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_094356_020244_214E28C4 
-X-CRM114-Status: GOOD (  25.34  )
+X-CRM114-CacheID: sfid-20251030_102045_237706_2A5EBD26 
+X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,122 +83,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 27, 2025 at 08:14:27PM +0800, Zhengnan Chen wrote:
-> Add binding description for mt8189.
-> 
-> The clocks number of mt8189 smi-sub common has a bit difference.
-> Its clock count is 2, while mt8195 has 3. Therefore, the minimum
-> number of clocks is changed to 2, with the third one being optional.
-> 
-> About what smi-sub-common is, please check the below diagram,
-> we add it in mediatek,smi-common.yaml file.
-> 
-> Signed-off-by: Zhengnan Chen <zhengnan.chen@mediatek.com>
-> ---
-> Hi Angelo,
-> We add a diagram in the smi-common yaml, We are not sure if you agree
-> with this. thus I remove your R-b.
-> 
-> Thanks.
-> ---
-> ---
->  .../mediatek,smi-common.yaml                  | 25 +++++++++++++++++--
->  .../memory-controllers/mediatek,smi-larb.yaml |  3 +++
->  2 files changed, 26 insertions(+), 2 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-> index 0762e0ff66ef..454d11a83973 100644
-> --- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-> +++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-> @@ -25,6 +25,21 @@ description: |
->    SMI generation 1 to transform the smi clock into emi clock domain, but that is
->    not needed for SMI generation 2.
->  
-> +  The smi-common connects with smi-larb and IOMMU. The maximum inputs number of
-> +  a smi-common is 8. In SMI generation 2, the engines number may be over 8.
-> +  In this case, we use a smi-sub-common to merge some larbs.
-> +  The block diagram something is like:
-> +
-> +                          IOMMU
-> +                           | |
-> +                       smi-common
-> +              ---------------------------
-> +               |          |           ...
-> +              larb0   sub-common      ...  <-max number is 8
-> +                   ----------------
-> +                    |     |    ...
-> +                  larb1 larbX  ...  <-max number is 8
-> +
->  properties:
->    compatible:
->      oneOf:
-> @@ -40,6 +55,8 @@ properties:
->            - mediatek,mt8186-smi-common
->            - mediatek,mt8188-smi-common-vdo
->            - mediatek,mt8188-smi-common-vpp
-> +          - mediatek,mt8189-smi-common
-> +          - mediatek,mt8189-smi-sub-common
->            - mediatek,mt8192-smi-common
->            - mediatek,mt8195-smi-common-vdo
->            - mediatek,mt8195-smi-common-vpp
-> @@ -108,19 +125,23 @@ allOf:
->          compatible:
->            contains:
->              enum:
-> +              - mediatek,mt8189-smi-sub-common
->                - mediatek,mt8195-smi-sub-common
->      then:
->        required:
->          - mediatek,smi
->        properties:
->          clocks:
-> -          minItems: 3
-> +          minItems: 2
 
-So now 2 clocks is valid for mt8195?
+--tnp73246a7ax7u7v
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v6 04/11] dt-bindings: pwm: Support MediaTek MT8189 evb
+ board disp-pwm
+MIME-Version: 1.0
 
->            maxItems: 3
->          clock-names:
-> +          minItems: 2
-> +          maxItems: 3
->            items:
->              - const: apb
->              - const: smi
-> -            - const: gals0
-> +          additionalItems:
-> +            const: gals0
->      else:
->        properties:
->          mediatek,smi: false
-> diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-> index 2e7fac4b5094..9a5dafd7c07e 100644
-> --- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-> +++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-> @@ -27,6 +27,7 @@ properties:
->            - mediatek,mt8183-smi-larb
->            - mediatek,mt8186-smi-larb
->            - mediatek,mt8188-smi-larb
-> +          - mediatek,mt8189-smi-larb
->            - mediatek,mt8192-smi-larb
->            - mediatek,mt8195-smi-larb
->  
-> @@ -85,6 +86,7 @@ allOf:
->              - mediatek,mt8183-smi-larb
->              - mediatek,mt8186-smi-larb
->              - mediatek,mt8188-smi-larb
-> +            - mediatek,mt8189-smi-larb
->              - mediatek,mt8195-smi-larb
->  
->      then:
-> @@ -119,6 +121,7 @@ allOf:
->                - mediatek,mt6779-smi-larb
->                - mediatek,mt8186-smi-larb
->                - mediatek,mt8188-smi-larb
-> +              - mediatek,mt8189-smi-larb
->                - mediatek,mt8192-smi-larb
->                - mediatek,mt8195-smi-larb
->  
-> -- 
-> 2.46.0
-> 
+On Thu, Oct 30, 2025 at 09:44:36PM +0800, Jack Hsu wrote:
+> add compatible string for mt8189 evb board dts node of disp-pwm
+>=20
+> Signed-off-by: Jack Hsu <jh.hsu@mediatek.com>
+
+LGTM. Assuming this patch will go in together with the other patches
+=66rom this series via arm-soc:
+
+Acked-by: Uwe Kleine-K=F6nig <ukleinek@kernel.org>
+
+Best regards
+Uwe
+
+--tnp73246a7ax7u7v
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmkDnmYACgkQj4D7WH0S
+/k6ntAgAmefAEgqrCjLWiUHmGcabEITjr9SAE4YojmK2oq78HLZC4n0T3P19U5zm
+VFVFw+gARsZVw2CQ2ANeQiQBXWVDyT8BQ9Vh0PZZvVvE7fqMZM3FfIQ9bU2OgdWE
+vmSpfUBeyu1Fm95OZrMi475gX0v9ej4Tj6uLesaLywvcW0l8JZRPpRHDwpARP7rL
+fXgtxa69IAvwq1YGDcJfHXe3M+Z4t7OIJpE8qbAVkTpAqH438a26TzlQEgxHsXzi
+4C26RMlvhfSb/Ajn1ZU+y1SYyskpUOyGNUKMVYYoRUQEN9D/o3Mrx1T8BAhzpu5A
+XXCuNcZ2Tx5Mz3amOjApNarZkQVZhw==
+=Yaxj
+-----END PGP SIGNATURE-----
+
+--tnp73246a7ax7u7v--
 
