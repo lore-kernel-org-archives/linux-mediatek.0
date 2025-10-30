@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA95ECCF9F0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 13:48:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEDB1CCF9FC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 13:48:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y5xYksDJSoM3FsK+l+zIqMequ4QeSt0WoTpN/qOQ7Jk=; b=AEADCJapz9scx5a59llf/IuIqD
-	XsNOPvnTikHNfMJYVl313r1NaYcmU/ERerkBlBkc9oCuPTfF6AYm+Jtvjuku3V6S3q4MUtja1s4UT
-	RyxKsdswC2RRVZJihKLIn6H0hmUbjSCiCw5tMP/evgBwFkFOJCcHBVHTI4rrCdXY+D0qCt+Bfpmhz
-	Hzbhufxo4MOHDB5GDIqrw8IQTPW88zn6VIZsgn+4DHnc8UOv+uNhzEs2OFhhA0/DVjB8Vr0+HZilD
-	WHMs7gEd4te4Y0oAFaWEg2CJAfYdG8DrbXxfiAQDpbaKIhHPOKlOoC1+jy9gf7Lp0F6wqqc5qqldc
-	RxlQVmfw==;
+	bh=7fB1bhjwv9jcR9FstEXdoFSBJ6cJVR2X4PtC1NkZ7yg=; b=Nlzf6Vn8AUroV5Rs5lHVGIsMvj
+	GOSABTxgGqUMW06wx5R2BAGEXzeQSxoFzBzOEDxAow/kxpZ7R4/fQR1xOVWME6iK5jGaQJ7D/JB5+
+	AwuoG8Zlo6tGQUMBJ6by8an5ONKOEn6eWQFLwXOKrBoa+uBO7+pF2zyOzHrOwDqs71t7HMRYYVXAJ
+	z7hPsnAlezTa4ovjHYUaMK7MXPMHLMSYOq2eXv6ipbyZwEYzZfMN72GCNdbSZ66TEl2qEU3/KiPmZ
+	1BcbGUdwlepBXq8YKzLtEflqrVNhN4pFevmpzDIMmeeXyDy7vDT0Wmg59NNQHMmDcqBFzvT/O461Q
+	8RUWwihA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vET0S-00000004E6S-0lwm;
-	Thu, 30 Oct 2025 13:48:00 +0000
+	id 1vET0T-00000004E8n-3QFX;
+	Thu, 30 Oct 2025 13:48:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vET06-00000004DsU-3tao;
-	Thu, 30 Oct 2025 13:47:40 +0000
-X-UUID: fd7e25e8b59611f09f706fa2197c6ceb-20251030
+	id 1vET07-00000004DqF-0Xnw;
+	Thu, 30 Oct 2025 13:47:41 +0000
+X-UUID: fcefd392b59611f09f706fa2197c6ceb-20251030
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Y5xYksDJSoM3FsK+l+zIqMequ4QeSt0WoTpN/qOQ7Jk=;
-	b=c7jbqvkVOxKoOGArFramxkDhB0ox3st+ZBEt4+qahh+1pA9rGY4M6PRZUEvRKY6v14ENsAs0oeiH8o1rO1kHDM4zaeVz+huOdWkKGoXALJTigj7q5knk0B/WVifzbkOwh/+YUg4obkCwIUuMx4qWhWOcv/88Gib20+AmhC5EaY0=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=7fB1bhjwv9jcR9FstEXdoFSBJ6cJVR2X4PtC1NkZ7yg=;
+	b=fqkkoN62AQ/H11Oj7RuQ0fnUaps6gyIYPLdkvnvkDQ8hOduteGit7JsmpJve+AoAHHK4cbLYEbg4KszRrCjtFdqmIr3nzw9k0ShcgIMLbRkk+t0QWg7Oq0fLxR1SlNZf5f2+AI0V3rFui3Ha4zV5PmHV1mHqzXNx9hMOVFuYwA8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:b0231c0b-d046-4b8f-8757-619154a71eec,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:a9d874c,CLOUDID:7ac8db6a-d4bd-4ab9-8221-0049857cc502,B
+X-CID-O-INFO: VERSION:1.3.6,REQID:4ff921a7-830e-493d-9c30-bd4ed89301b7,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:04a46e26-cfd6-4a1d-a1a8-72ac3fdb69c4,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
 	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,18 +42,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: fd7e25e8b59611f09f706fa2197c6ceb-20251030
+X-UUID: fcefd392b59611f09f706fa2197c6ceb-20251030
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <jh.hsu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 299782356; Thu, 30 Oct 2025 06:47:35 -0700
+	with ESMTP id 859914837; Thu, 30 Oct 2025 06:47:34 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Thu, 30 Oct 2025 21:47:31 +0800
+ 15.2.1748.26; Thu, 30 Oct 2025 21:47:30 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Thu, 30 Oct 2025 21:47:31 +0800
+ 15.2.1748.26 via Frontend Transport; Thu, 30 Oct 2025 21:47:30 +0800
 From: Jack Hsu <jh.hsu@mediatek.com>
 To: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
 	<jic23@kernel.org>, <dlechner@baylibre.com>, <nuno.sa@analog.com>,
@@ -72,9 +72,9 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-watchdog@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jack Hsu
 	<jh.hsu@mediatek.com>
-Subject: [PATCH v6 10/11] arm64: dts: mediatek: add properties for MT6359
-Date: Thu, 30 Oct 2025 21:44:42 +0800
-Message-ID: <20251030134541.784011-11-jh.hsu@mediatek.com>
+Subject: [PATCH v6 06/11] dt-bindings: timer: Support MediaTek MT8189 evb board timer
+Date: Thu, 30 Oct 2025 21:44:38 +0800
+Message-ID: <20251030134541.784011-7-jh.hsu@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20251030134541.784011-1-jh.hsu@mediatek.com>
 References: <20251030134541.784011-1-jh.hsu@mediatek.com>
@@ -83,8 +83,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_064739_013126_7CE86DED 
-X-CRM114-Status: GOOD (  13.56  )
+X-CRM114-CacheID: sfid-20251030_064739_218818_54BFAEE6 
+X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,110 +100,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add properties of rtc fg (Fuel Gauge), external crystal
-and auxadc definition for mt6359 pmic.
+add compatible string for mt8189 evb board dts node of timer
 
 Signed-off-by: Jack Hsu <jh.hsu@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt6359.dtsi | 20 ++++++++++
- include/dt-bindings/iio/mt635x-auxadc.h  | 50 ++++++++++++++++++++++++
- 2 files changed, 70 insertions(+)
- create mode 100644 include/dt-bindings/iio/mt635x-auxadc.h
+ Documentation/devicetree/bindings/timer/mediatek,timer.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6359.dtsi b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-index 467d8a4c2aa7..cc7053bdd292 100644
---- a/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-@@ -3,6 +3,8 @@
-  * Copyright (C) 2022 MediaTek Inc.
-  */
- 
-+#include <dt-bindings/iio/mt635x-auxadc.h>
-+
- &pwrap {
- 	pmic: pmic {
- 		compatible = "mediatek,mt6359";
-@@ -302,6 +304,24 @@ mt6359_vsram_others_sshub_ldo: ldo_vsram_others_sshub {
- 
- 		mt6359rtc: rtc {
- 			compatible = "mediatek,mt6358-rtc";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+			status = "disabled";
-+
-+			fginit: fginit {
-+				reg = <0 0x1>;
-+				bits = <0 8>;
-+			};
-+
-+			fgsoc: fgsoc {
-+				reg = <1 0x1>;
-+				bits = <0 8>;
-+			};
-+
-+			ext32k: ext32k {
-+				reg = <2 0x1>;
-+				bits = <6 1>;
-+			};
- 		};
- 	};
- };
-diff --git a/include/dt-bindings/iio/mt635x-auxadc.h b/include/dt-bindings/iio/mt635x-auxadc.h
-new file mode 100644
-index 000000000000..69ba13a7b9ec
---- /dev/null
-+++ b/include/dt-bindings/iio/mt635x-auxadc.h
-@@ -0,0 +1,50 @@
-+/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
-+/*
-+ * Copyright (c) 2020 MediaTek Inc.
-+ */
-+
-+#ifndef _DT_BINDINGS_MT635X_AUXADC_H
-+#define _DT_BINDINGS_MT635X_AUXADC_H
-+
-+/* PMIC MT635x AUXADC channels */
-+#define AUXADC_BATADC				0x00
-+#define AUXADC_ISENSE				0x01
-+#define AUXADC_VCDT	    			0x02
-+#define AUXADC_BAT_TEMP				0x03
-+#define AUXADC_BATID				0x04
-+#define AUXADC_CHIP_TEMP			0x05
-+#define AUXADC_VCORE_TEMP			0x06
-+#define AUXADC_VPROC_TEMP			0x07
-+#define AUXADC_VGPU_TEMP			0x08
-+#define AUXADC_ACCDET				0x09
-+#define AUXADC_VDCXO				0x0a
-+#define AUXADC_TSX_TEMP				0x0b
-+#define AUXADC_HPOFS_CAL			0x0c
-+#define AUXADC_DCXO_TEMP			0x0d
-+#define AUXADC_VBIF		    		0x0e
-+#define AUXADC_IMP			    	0x0f
-+#define AUXADC_IMIX_R				0x10
-+#define AUXADC_VTREF				0x11
-+#define AUXADC_VSYSSNS				0x12
-+#define AUXADC_VIN1				    0x13
-+#define AUXADC_VIN2			    	0x14
-+#define AUXADC_VIN3			    	0x15
-+#define AUXADC_VIN4			    	0x16
-+#define AUXADC_VIN5			    	0x17
-+#define AUXADC_VIN6			    	0x18
-+#define AUXADC_VIN7		            0x19
-+
-+#define AUXADC_CHAN_MIN				AUXADC_BATADC
-+#define AUXADC_CHAN_MAX				AUXADC_VIN7
-+
-+#define ADC_PURES_100K				(0)
-+#define ADC_PURES_30K				(1)
-+#define ADC_PURES_400K				(2)
-+#define ADC_PURES_OPEN				(3)
-+
-+#define ADC_PURES_100K_MASK			(ADC_PURES_100K << 8)
-+#define ADC_PURES_30K_MASK			(ADC_PURES_30K << 8)
-+#define ADC_PURES_400K_MASK			(ADC_PURES_400K << 8)
-+#define ADC_PURES_OPEN_MASK			(ADC_PURES_OPEN << 8)
-+
-+#endif /* _DT_BINDINGS_MT635X_AUXADC_H */
+diff --git a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
+index 337580dc77d8..8e705fe58dc5 100644
+--- a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
++++ b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
+@@ -44,6 +44,7 @@ properties:
+               - mediatek,mt8183-timer
+               - mediatek,mt8186-timer
+               - mediatek,mt8188-timer
++              - mediatek,mt8189-timer
+               - mediatek,mt8192-timer
+               - mediatek,mt8195-timer
+               - mediatek,mt8196-timer
 -- 
 2.45.2
 
