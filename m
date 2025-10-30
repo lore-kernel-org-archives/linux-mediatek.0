@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64C59CCF9FC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 13:48:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA95ECCF9F0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 13:48:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W58v+e8siGwxrS7/1FaAvhhPBfKw7gKGeCnuKRMKrJo=; b=3WMzN0voSIGmajf92Fd63WLGz0
-	y1VFwMYRvPig44Db0vbllY+n4X80Ah8f2f+FcuFFjHzcx3ntWASXbYXKz9/gUPY/g3upBsKM4ENlT
-	AX8fE7Mhgo0kEUWetOaIsElK1buVIt96+o42dXeiMTmozJdyZNkYht3yOxAU1G8T/lf/PeT1dGToI
-	DORlt8xW7l2qzsUDMX+tizG8xENDNOgxqZ/7r6d1iSE5McYNLI56K+4f7VsT9rxaJRRySZDGc94Vd
-	cuUk2jx5Wmf76V7gUz+9k69FCt6s3DpjRFUoUcfQqK4smfTTnUcF5om6mSh14hAkSSCEIG7/mxxXN
-	FEsEFqdQ==;
+	bh=Y5xYksDJSoM3FsK+l+zIqMequ4QeSt0WoTpN/qOQ7Jk=; b=AEADCJapz9scx5a59llf/IuIqD
+	XsNOPvnTikHNfMJYVl313r1NaYcmU/ERerkBlBkc9oCuPTfF6AYm+Jtvjuku3V6S3q4MUtja1s4UT
+	RyxKsdswC2RRVZJihKLIn6H0hmUbjSCiCw5tMP/evgBwFkFOJCcHBVHTI4rrCdXY+D0qCt+Bfpmhz
+	Hzbhufxo4MOHDB5GDIqrw8IQTPW88zn6VIZsgn+4DHnc8UOv+uNhzEs2OFhhA0/DVjB8Vr0+HZilD
+	WHMs7gEd4te4Y0oAFaWEg2CJAfYdG8DrbXxfiAQDpbaKIhHPOKlOoC1+jy9gf7Lp0F6wqqc5qqldc
+	RxlQVmfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vET0R-00000004E5c-2Hqe;
-	Thu, 30 Oct 2025 13:47:59 +0000
+	id 1vET0S-00000004E6S-0lwm;
+	Thu, 30 Oct 2025 13:48:00 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vET05-00000004DrU-404W;
-	Thu, 30 Oct 2025 13:47:39 +0000
-X-UUID: fd823be2b59611f09f706fa2197c6ceb-20251030
+	id 1vET06-00000004DsU-3tao;
+	Thu, 30 Oct 2025 13:47:40 +0000
+X-UUID: fd7e25e8b59611f09f706fa2197c6ceb-20251030
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=W58v+e8siGwxrS7/1FaAvhhPBfKw7gKGeCnuKRMKrJo=;
-	b=qWSvqxXSmy8buHk5+g8hBOwQpq8yZA1b8VGQXEHMAH7v3QlwYO+ddiQgZXL/6d5dSn032gZollXgEPtVZcEaXzPpwU1XoSy9HJA3BUDrq/qqM0gRezCjNLg9BLxvEkZu0Z4LLbpIkORMLKtgm5rJYG5/KrawEzd/lLg2tRZ1rFM=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Y5xYksDJSoM3FsK+l+zIqMequ4QeSt0WoTpN/qOQ7Jk=;
+	b=c7jbqvkVOxKoOGArFramxkDhB0ox3st+ZBEt4+qahh+1pA9rGY4M6PRZUEvRKY6v14ENsAs0oeiH8o1rO1kHDM4zaeVz+huOdWkKGoXALJTigj7q5knk0B/WVifzbkOwh/+YUg4obkCwIUuMx4qWhWOcv/88Gib20+AmhC5EaY0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:4a5571cd-eaca-42eb-a395-859cf540a762,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:63f1bc18-3399-4579-97ab-008f994989ea,B
+X-CID-O-INFO: VERSION:1.3.6,REQID:b0231c0b-d046-4b8f-8757-619154a71eec,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-25
+X-CID-META: VersionHash:a9d874c,CLOUDID:7ac8db6a-d4bd-4ab9-8221-0049857cc502,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
 	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,13 +42,13 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: fd823be2b59611f09f706fa2197c6ceb-20251030
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+X-UUID: fd7e25e8b59611f09f706fa2197c6ceb-20251030
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <jh.hsu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 637346455; Thu, 30 Oct 2025 06:47:35 -0700
+	with ESMTP id 299782356; Thu, 30 Oct 2025 06:47:35 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1748.26; Thu, 30 Oct 2025 21:47:31 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
@@ -72,9 +72,9 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-watchdog@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jack Hsu
 	<jh.hsu@mediatek.com>
-Subject: [PATCH v6 09/11] arm64: dts: mediatek: Add MT6319 PMIC Support
-Date: Thu, 30 Oct 2025 21:44:41 +0800
-Message-ID: <20251030134541.784011-10-jh.hsu@mediatek.com>
+Subject: [PATCH v6 10/11] arm64: dts: mediatek: add properties for MT6359
+Date: Thu, 30 Oct 2025 21:44:42 +0800
+Message-ID: <20251030134541.784011-11-jh.hsu@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20251030134541.784011-1-jh.hsu@mediatek.com>
 References: <20251030134541.784011-1-jh.hsu@mediatek.com>
@@ -83,8 +83,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_064738_063172_7DE157DF 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20251030_064739_013126_7CE86DED 
+X-CRM114-Status: GOOD (  13.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,86 +99,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for MediaTek MT6319 PMIC IC
+Add properties of rtc fg (Fuel Gauge), external crystal
+and auxadc definition for mt6359 pmic.
 
 Signed-off-by: Jack Hsu <jh.hsu@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt6319.dtsi | 66 ++++++++++++++++++++++++
- 1 file changed, 66 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt6319.dtsi
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi | 20 ++++++++++
+ include/dt-bindings/iio/mt635x-auxadc.h  | 50 ++++++++++++++++++++++++
+ 2 files changed, 70 insertions(+)
+ create mode 100644 include/dt-bindings/iio/mt635x-auxadc.h
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6319.dtsi b/arch/arm64/boot/dts/mediatek/mt6319.dtsi
+diff --git a/arch/arm64/boot/dts/mediatek/mt6359.dtsi b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
+index 467d8a4c2aa7..cc7053bdd292 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6359.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
+@@ -3,6 +3,8 @@
+  * Copyright (C) 2022 MediaTek Inc.
+  */
+ 
++#include <dt-bindings/iio/mt635x-auxadc.h>
++
+ &pwrap {
+ 	pmic: pmic {
+ 		compatible = "mediatek,mt6359";
+@@ -302,6 +304,24 @@ mt6359_vsram_others_sshub_ldo: ldo_vsram_others_sshub {
+ 
+ 		mt6359rtc: rtc {
+ 			compatible = "mediatek,mt6358-rtc";
++			#address-cells = <1>;
++			#size-cells = <1>;
++			status = "disabled";
++
++			fginit: fginit {
++				reg = <0 0x1>;
++				bits = <0 8>;
++			};
++
++			fgsoc: fgsoc {
++				reg = <1 0x1>;
++				bits = <0 8>;
++			};
++
++			ext32k: ext32k {
++				reg = <2 0x1>;
++				bits = <6 1>;
++			};
+ 		};
+ 	};
+ };
+diff --git a/include/dt-bindings/iio/mt635x-auxadc.h b/include/dt-bindings/iio/mt635x-auxadc.h
 new file mode 100644
-index 000000000000..8b2386547508
+index 000000000000..69ba13a7b9ec
 --- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt6319.dtsi
-@@ -0,0 +1,66 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++++ b/include/dt-bindings/iio/mt635x-auxadc.h
+@@ -0,0 +1,50 @@
++/* SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause */
 +/*
-+ * Copyright (c) 2025 MediaTek Inc.
++ * Copyright (c) 2020 MediaTek Inc.
 + */
-+#include <dt-bindings/spmi/spmi.h>
 +
-+&spmi {
-+	mt6319_7: mt6319@7 {
-+		compatible = "mediatek,mt6315-regulator";
-+		buck1-modeset-mask = <0x3>;
-+		reg = <0x7 SPMI_USID>;
++#ifndef _DT_BINDINGS_MT635X_AUXADC_H
++#define _DT_BINDINGS_MT635X_AUXADC_H
 +
-+		regulators {
-+			mt6319_7_vbuck1: vbuck1 {
-+				regulator-name = "vbuck1";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+			mt6319_7_vbuck2: vbuck2 {
-+				regulator-name = "vbuck2";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+			mt6319_7_vbuck3: vbuck3 {
-+				regulator-name = "vbuck3";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+			mt6319_7_vbuck4: vbuck4 {
-+				regulator-name = "vbuck4";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+		};
-+	};
++/* PMIC MT635x AUXADC channels */
++#define AUXADC_BATADC				0x00
++#define AUXADC_ISENSE				0x01
++#define AUXADC_VCDT	    			0x02
++#define AUXADC_BAT_TEMP				0x03
++#define AUXADC_BATID				0x04
++#define AUXADC_CHIP_TEMP			0x05
++#define AUXADC_VCORE_TEMP			0x06
++#define AUXADC_VPROC_TEMP			0x07
++#define AUXADC_VGPU_TEMP			0x08
++#define AUXADC_ACCDET				0x09
++#define AUXADC_VDCXO				0x0a
++#define AUXADC_TSX_TEMP				0x0b
++#define AUXADC_HPOFS_CAL			0x0c
++#define AUXADC_DCXO_TEMP			0x0d
++#define AUXADC_VBIF		    		0x0e
++#define AUXADC_IMP			    	0x0f
++#define AUXADC_IMIX_R				0x10
++#define AUXADC_VTREF				0x11
++#define AUXADC_VSYSSNS				0x12
++#define AUXADC_VIN1				    0x13
++#define AUXADC_VIN2			    	0x14
++#define AUXADC_VIN3			    	0x15
++#define AUXADC_VIN4			    	0x16
++#define AUXADC_VIN5			    	0x17
++#define AUXADC_VIN6			    	0x18
++#define AUXADC_VIN7		            0x19
 +
-+	mt6319_8: mt6319@8 {
-+		compatible = "mediatek,mt6315-regulator";
-+		buck1-modeset-mask = <0xb>;
-+		reg = <0x8 SPMI_USID>;
++#define AUXADC_CHAN_MIN				AUXADC_BATADC
++#define AUXADC_CHAN_MAX				AUXADC_VIN7
 +
-+		regulators {
-+			mt6319_8_vbuck1: vbuck1 {
-+				regulator-name = "vbuck1";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+			mt6319_8_vbuck2: vbuck2 {
-+				regulator-name = "vbuck2";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+			mt6319_8_vbuck3: vbuck3 {
-+				regulator-name = "vbuck3";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+			mt6319_8_vbuck4: vbuck4 {
-+				regulator-name = "vbuck4";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+		};
-+	};
-+};
++#define ADC_PURES_100K				(0)
++#define ADC_PURES_30K				(1)
++#define ADC_PURES_400K				(2)
++#define ADC_PURES_OPEN				(3)
 +
++#define ADC_PURES_100K_MASK			(ADC_PURES_100K << 8)
++#define ADC_PURES_30K_MASK			(ADC_PURES_30K << 8)
++#define ADC_PURES_400K_MASK			(ADC_PURES_400K << 8)
++#define ADC_PURES_OPEN_MASK			(ADC_PURES_OPEN << 8)
++
++#endif /* _DT_BINDINGS_MT635X_AUXADC_H */
 -- 
 2.45.2
 
