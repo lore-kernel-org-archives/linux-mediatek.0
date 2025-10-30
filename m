@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58369CCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 15:17:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1987CCF9F8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 16:44:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lv9u8YotLszSFdyvgiXdimSDdGUq7SdjN5a2urUm+Ic=; b=JLmZWAyI9I6IqiEMNisUjDKkeE
-	5murBPdR8RRPwnj+9PV2aLugNpUnv+VRHxgX7VJnQ58X41jKfk/WM7S/mbhRo0Me/EcH4bWkZlsl5
-	4h7Zd2Nd/R7HEx4m52m0UiUNqVpbZK0DIlqn3g6r/9fbWx3d8X5B/xui9huXIRDLOvm4gXF3qFiXx
-	tnDNFW9MFSvEzxmPLpmhc8wtVWSYi8fIpc4g3T6Z9YE8HPdzUwsV3NV/+3yJ4BposCU5iW3cIGm6/
-	I3hRbgbPyc2fTd0xkblveHfXmqiOmmbV5oluL1YVCJUxJo7J26VZXlnp+MPpgalnSUdJXfjYqTfLL
-	yjO32w2w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UiMIADOUWl4dP+Ao9sQ6FdrfLbz6hFIXFfgN4vVMOxk=; b=dAtMJYIMW7uwlT+QHMIdrB/K1k
+	bZI5G5QAvD48vysNi1BUdDDl8bysjmTNr318lOlx7tZDJ42OSN4qPmiQmEIfD4Qwzxk6AohZFKrQj
+	EQKc2E1WDzNZKlJg1kOsJhXw0vQKt/dUjbDGNLNac8WaPMkoEENO6Nw27zS4RhYX+8oXIPixBHneE
+	KguwxXKDzNsmS8oGsRqaH5UUIVukeNs4QKdMGxE5S2GnCW5fQU0Wf3+4fxEeJ4ohLxn/IzbYbVsRb
+	OZsG5aRu7xbEvYQeLw6i99M7gLQhZ0v52xhA7QfcGHXp6eDcjT0K97pX7m1IZ2vPet6ABtxXnLPh+
+	TxxcpSEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEUPP-00000004MjK-4BEH;
-	Thu, 30 Oct 2025 15:17:51 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vEVkk-00000004TlM-1yZS;
+	Thu, 30 Oct 2025 16:43:58 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEUPL-00000004Mhq-3Yb6;
-	Thu, 30 Oct 2025 15:17:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761837464;
-	bh=OkBtFod+Tw0J/EkbQDgJVycQMKZFAL/9AmKvf27eyg8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=G0rzQevxahouYSbAnsFKcmY9qMDD2v5jiXTeXGJ9pY6DtjXeGV6itkx3RqHhVlxVT
-	 mHL5WLF18etfuWzQnk8fyECy6Gz/7zynkfXUDq1xY6DjcA6JhA/EyRGshK1GHDYmTO
-	 kxfnv/ETUwEqeJupWm9EUNdivZbM7Mc+FkpdzN+lmkyHrb+kWlrXGfjdrVXhH1lzEV
-	 MjIVEQZOVmhtMTosdJcGF/r406zB0kjN/mtxY5nzsDRR+CF2x4O/SXulXMXkP0K5Lp
-	 Ku4LKQw9oPXQ5AjMk9b2H/oQ6ypkM3U3TchHzVv9s/Rq6PFxNDy2fQuLMXWCJCM/x0
-	 ppNY+VrAHiVcg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CA7A217E1315;
-	Thu, 30 Oct 2025 16:17:43 +0100 (CET)
-Message-ID: <480e1177-1be1-44ab-b20f-a6840b6fb564@collabora.com>
-Date: Thu, 30 Oct 2025 16:17:43 +0100
+	id 1vEVkh-00000004Tki-3wVk;
+	Thu, 30 Oct 2025 16:43:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5910444D21;
+	Thu, 30 Oct 2025 16:43:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E606EC4CEF1;
+	Thu, 30 Oct 2025 16:43:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761842635;
+	bh=ujITBpWROV8ondxiVfL/J6xD1Tt12xz/U9auSnzcR8Y=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=W7J9+pLN4ro1WnlD5NBbTiIzH2s+io/jV/gv88R7hqwlbYeA4mPsYn7fBm30ClI/a
+	 IpvJm0zIYzgW4YiDZzkOh8/xxxvj4MfQL43SGPpjASn/ocWWpN4ZLwAFBpRkjnYIlQ
+	 NV5zkO9SkqzzkUk0EJ1kHNmUa5vPhF3nxTqJbZltUcFWGUJ+0UdYE6qhNe17po9eQ9
+	 Q+OINY1l/BDDwLKFXB9btYbK9Nt8xceUyvRb7f2zbBo+TfrvuHVyf2qZs7T4qQhnOi
+	 wOxm/7i5hUTLV2rgWn5feK172vyaRE1Cs3aLKLvhfn+hXfBT94G2eoJSWMNHJcGc2c
+	 ib7bduylhBWgQ==
+Date: Thu, 30 Oct 2025 11:43:53 -0500
+From: Rob Herring <robh@kernel.org>
+To: Zhengnan Chen <zhengnan.chen@mediatek.com>
+Cc: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v2 1/2] dt-bindings: memory-controllers: mtk-smi: Add
+ support for mt8189
+Message-ID: <20251030164353.GA4119862-robh@kernel.org>
+References: <20251027121443.16783-1-zhengnan.chen@mediatek.com>
+ <20251027121443.16783-2-zhengnan.chen@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] pmdomain: mediatek: mtk-mfg: select MAILBOX in Kconfig
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com, kernel test robot <lkp@intel.com>
-References: <20251030-mfg-mailbox-dep-v1-1-8a8c591aff27@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20251030-mfg-mailbox-dep-v1-1-8a8c591aff27@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251027121443.16783-2-zhengnan.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_081748_057927_1FC6BF55 
-X-CRM114-Status: GOOD (  18.05  )
+X-CRM114-CacheID: sfid-20251030_094356_020244_214E28C4 
+X-CRM114-Status: GOOD (  25.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,48 +77,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/10/25 14:17, Nicolas Frattaroli ha scritto:
-> The mtk-mfg pmdomain driver calls common mailbox framework functions. If
-> the common mailbox framework is not selected in the kernel's
-> configuration, the build runs into a linker error, as the symbols are
-> absent.
+On Mon, Oct 27, 2025 at 08:14:27PM +0800, Zhengnan Chen wrote:
+> Add binding description for mt8189.
 > 
-> The hardware mailbox Kconfig system, MAILBOX, has no dependencies of its
-> own. It's therefore safe to "select" it rather than use "depend on".
+> The clocks number of mt8189 smi-sub common has a bit difference.
+> Its clock count is 2, while mt8195 has 3. Therefore, the minimum
+> number of clocks is changed to 2, with the third one being optional.
 > 
-> Declare this "select" dependency in the Kconfig for the driver.
+> About what smi-sub-common is, please check the below diagram,
+> we add it in mediatek,smi-common.yaml file.
 > 
-> Fixes: 1ff1f0db6aec ("pmdomain: mediatek: Add support for MFlexGraphics")
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202510301311.TcOCnZ1s-lkp@intel.com/
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
+> Signed-off-by: Zhengnan Chen <zhengnan.chen@mediatek.com>
 > ---
-> I assume this can be squashed into the mtk-mfg driver addition commit of
-> the maintainer that merged it.
+> Hi Angelo,
+> We add a diagram in the smi-common yaml, We are not sure if you agree
+> with this. thus I remove your R-b.
+> 
+> Thanks.
 > ---
->   drivers/pmdomain/mediatek/Kconfig | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/pmdomain/mediatek/Kconfig b/drivers/pmdomain/mediatek/Kconfig
-> index b06aaa9690f0..8923e6516441 100644
-> --- a/drivers/pmdomain/mediatek/Kconfig
-> +++ b/drivers/pmdomain/mediatek/Kconfig
-> @@ -32,6 +32,7 @@ config MTK_MFG_PM_DOMAIN
->   	depends on PM
->   	depends on OF
->   	depends on COMMON_CLK
-> +	select MAILBOX
->   	select PM_GENERIC_DOMAINS
->   	imply MTK_GPUEB_MBOX
->   	help
-> 
 > ---
-> base-commit: d78b0fee454c25d292fb6343253eca06d7634fd9
-> change-id: 20251030-mfg-mailbox-dep-ec32ef510e6a
+>  .../mediatek,smi-common.yaml                  | 25 +++++++++++++++++--
+>  .../memory-controllers/mediatek,smi-larb.yaml |  3 +++
+>  2 files changed, 26 insertions(+), 2 deletions(-)
 > 
-> Best regards,
+> diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+> index 0762e0ff66ef..454d11a83973 100644
+> --- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+> +++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+> @@ -25,6 +25,21 @@ description: |
+>    SMI generation 1 to transform the smi clock into emi clock domain, but that is
+>    not needed for SMI generation 2.
+>  
+> +  The smi-common connects with smi-larb and IOMMU. The maximum inputs number of
+> +  a smi-common is 8. In SMI generation 2, the engines number may be over 8.
+> +  In this case, we use a smi-sub-common to merge some larbs.
+> +  The block diagram something is like:
+> +
+> +                          IOMMU
+> +                           | |
+> +                       smi-common
+> +              ---------------------------
+> +               |          |           ...
+> +              larb0   sub-common      ...  <-max number is 8
+> +                   ----------------
+> +                    |     |    ...
+> +                  larb1 larbX  ...  <-max number is 8
+> +
+>  properties:
+>    compatible:
+>      oneOf:
+> @@ -40,6 +55,8 @@ properties:
+>            - mediatek,mt8186-smi-common
+>            - mediatek,mt8188-smi-common-vdo
+>            - mediatek,mt8188-smi-common-vpp
+> +          - mediatek,mt8189-smi-common
+> +          - mediatek,mt8189-smi-sub-common
+>            - mediatek,mt8192-smi-common
+>            - mediatek,mt8195-smi-common-vdo
+>            - mediatek,mt8195-smi-common-vpp
+> @@ -108,19 +125,23 @@ allOf:
+>          compatible:
+>            contains:
+>              enum:
+> +              - mediatek,mt8189-smi-sub-common
+>                - mediatek,mt8195-smi-sub-common
+>      then:
+>        required:
+>          - mediatek,smi
+>        properties:
+>          clocks:
+> -          minItems: 3
+> +          minItems: 2
 
+So now 2 clocks is valid for mt8195?
+
+>            maxItems: 3
+>          clock-names:
+> +          minItems: 2
+> +          maxItems: 3
+>            items:
+>              - const: apb
+>              - const: smi
+> -            - const: gals0
+> +          additionalItems:
+> +            const: gals0
+>      else:
+>        properties:
+>          mediatek,smi: false
+> diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+> index 2e7fac4b5094..9a5dafd7c07e 100644
+> --- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+> +++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+> @@ -27,6 +27,7 @@ properties:
+>            - mediatek,mt8183-smi-larb
+>            - mediatek,mt8186-smi-larb
+>            - mediatek,mt8188-smi-larb
+> +          - mediatek,mt8189-smi-larb
+>            - mediatek,mt8192-smi-larb
+>            - mediatek,mt8195-smi-larb
+>  
+> @@ -85,6 +86,7 @@ allOf:
+>              - mediatek,mt8183-smi-larb
+>              - mediatek,mt8186-smi-larb
+>              - mediatek,mt8188-smi-larb
+> +            - mediatek,mt8189-smi-larb
+>              - mediatek,mt8195-smi-larb
+>  
+>      then:
+> @@ -119,6 +121,7 @@ allOf:
+>                - mediatek,mt6779-smi-larb
+>                - mediatek,mt8186-smi-larb
+>                - mediatek,mt8188-smi-larb
+> +              - mediatek,mt8189-smi-larb
+>                - mediatek,mt8192-smi-larb
+>                - mediatek,mt8195-smi-larb
+>  
+> -- 
+> 2.46.0
+> 
 
