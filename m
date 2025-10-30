@@ -4,82 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D328CCF9F0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 20:56:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47969CCF9F0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 21:26:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zu4J69TGAePcjFrrx4PLxm1uTRRgjQVU+X8GgHESzFc=; b=sY1ZCqs1HLvVLs6dpDdJvThY/9
-	FNQLUP0Kut6nrbPDMeoXXaow6X5oHqh8iFaTUpmOHHH98AqKoqjRmSu4y4X5khku1yomm+8yAbljh
-	B2wDV2mp/oXNJv+CJuZ2oXtgpv77KzLo9G/oDygrejkXC51AQoRGrlepN4Cx+x38Kpb1WNh5PsdQg
-	O/rTQrGNXRvtW/aMo/HL3uJiJBBKv7XwgiX88GYdbeijFL7le8gSnJBq08MQjFXYldwiOhkDPVJu7
-	5Gwwuj5P51kT6fdHo6CmP49l3ta9YnaRz+M6BXFAxgBq/+WQ6uOEAi7B0MA9OYuSQoVQOq9xZUNgn
-	mJYnhy9g==;
+	bh=ixRLpty5QKDOE0ulxvqD55Wb9bzwJbHlOe5KFSOLS1E=; b=Y0xdMYowMkinSFMJMQQGTbCF6T
+	bkakAPY1NEQ2pF3TCaV7RfhYbA5IpTWrmFqDnr3/wF5v7GmClaljDGe93B3Wp1bAk1ouJ7fBuokk6
+	aiMgjuyaVda+Agid4It8EEtFrCgSllqmusOU2+aakzRTPbIeWRWti1u+YVjfoIW3+kbgnrTljeii0
+	0vVDmmcM6ISTq3NlUOYuhjKk7hZgLw5KHxVTujPeWhmxleOkh4hRrPAnh4zJZlPV7lP+vxaucvEWC
+	G+SVpewVhYQBEiGSZfRLNtel/8tG99E9rJtRnyM2+HF/hnyzSXY2geyPF4ecSmzLTshR8MbVYvipJ
+	OyiWFB2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEZhD-00000004roq-2emR;
-	Thu, 30 Oct 2025 20:56:35 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1vEaAV-00000004t5a-0AqQ;
+	Thu, 30 Oct 2025 21:26:51 +0000
+Received: from sender4-op-o15.zoho.com ([136.143.188.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEZh8-00000004rla-0i1l;
-	Thu, 30 Oct 2025 20:56:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1761857790; x=1793393790;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=vThwM6bg5dh8w6h8yGfI/6gd9+bsmsZISHcjUp0Wi7E=;
-  b=bQ5yju53h1jiSVl7lYAynbp9SpIUpIx0uQGB9b6GAJCOUIPC7hI9/HBm
-   KuGGKVqeqGY99BNKj9IBmy0vYKXCS/UDwRqNQl5iHjLJZ331o65EBCP/M
-   XkxT45k8M54o0S4kKXuFGb5d3qnsqGb8ItrBvPcbGQUamgoootXXIfMtz
-   5Vjyvl5uMLRwix/BdFk/SyKdBIcUCwy5FJl90rMa+rIUULyqxMZRDR3R8
-   3VKOwKmJRpSaZsJvYWsmV366UNfVW1LZ8GrDXOCtD1EURwE16SORRssyl
-   CYOZmMKhaAtVAjEmyedVr6jifOgC4NLumKl9bWsiijHKmloH4uN6QWrsh
-   w==;
-X-CSE-ConnectionGUID: SDoYDMgfR/etcc5FSD62VA==
-X-CSE-MsgGUID: veGde9yNShGeSXsGgsyJ7A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11598"; a="86639049"
-X-IronPort-AV: E=Sophos;i="6.19,267,1754982000"; 
-   d="scan'208";a="86639049"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Oct 2025 13:56:29 -0700
-X-CSE-ConnectionGUID: wuDqC9JaQY2quEW6MtBc5g==
-X-CSE-MsgGUID: iESQHGsTTD6bVq08VVjuJA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,267,1754982000"; 
-   d="scan'208";a="185933452"
-Received: from lkp-server02.sh.intel.com (HELO 66d7546c76b2) ([10.239.97.151])
-  by fmviesa006.fm.intel.com with ESMTP; 30 Oct 2025 13:56:25 -0700
-Received: from kbuild by 66d7546c76b2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1vEZh1-000MWi-13;
-	Thu, 30 Oct 2025 20:56:23 +0000
-Date: Fri, 31 Oct 2025 04:56:07 +0800
-From: kernel test robot <lkp@intel.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	sboyd@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, mturquette@baylibre.com, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, laura.nao@collabora.com,
-	nfraprado@collabora.com, wenst@chromium.org,
-	y.oudjana@protonmail.com, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH v2 7/7] clk: mediatek: Add support for MT6685 PM/Clock IC
- Clock Controller
-Message-ID: <202510310450.vQV7FK3n-lkp@intel.com>
-References: <20251027111343.21723-8-angelogioacchino.delregno@collabora.com>
+	id 1vEaAA-00000004t4e-391E;
+	Thu, 30 Oct 2025 21:26:42 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1761859574; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=AMHNToO9uyH2UOzZxFbb68jVb8fRSxPJkx2uGcVBs/9gdG16OTxWSqbRDtjo45Z/FlXyS/FV+J25HRLJ6eE0mwzhoQpGPt8aSSAi4kt0fH/jZQCCxK7BQgcUefeohbYXnHcKtgTmArbRM/+KYIPB10Vi91lWfVPR0oE7a0Tgd88=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1761859574; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=ixRLpty5QKDOE0ulxvqD55Wb9bzwJbHlOe5KFSOLS1E=; 
+	b=C87w96dCEC6ElqmbmEvGOSTnDEU0vYB9JwkPlW+pp3+V/xALKyuPcmjyx712KT7yM4Yys2ExWU7CSClHlyTQ3hojI79O+7j1ufpxDUUgtjl8GcQp9VlndlyKTulH4INak4h+0reqYs9iVQrstaEVzyH089qEufBmTQ5g+eC7R0w=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sjoerd@collabora.com;
+	dmarc=pass header.from=<sjoerd@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761859574;
+	s=zohomail; d=collabora.com; i=sjoerd@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=ixRLpty5QKDOE0ulxvqD55Wb9bzwJbHlOe5KFSOLS1E=;
+	b=g3yElmKq8LU2i4TbafpRnAEbkB1BmNCRln05g6k8WHT1ZVYQGKWV23fb3FJSpnWi
+	9Hx5p5E79qn3bFI5Npy3N0kbsz9U6rX3ggbLg03vvs5D9YK8cdErhhhtfzjfFgkdU8r
+	9MNcrZ/v/23ECwSTe6xbuIllyt+ePSWN22sOQvNU=
+Received: by mx.zohomail.com with SMTPS id 1761859569654684.60417196483;
+	Thu, 30 Oct 2025 14:26:09 -0700 (PDT)
+Message-ID: <7d7595a0a33b4e56828beea86f6037bd9ecc8f8d.camel@collabora.com>
+Subject: Re: [PATCH 11/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
+ SPI NOR
+From: Sjoerd Simons <sjoerd@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,  Matthias Brugger
+ <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang	
+ <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>, Lorenzo
+ Pieralisi <lpieralisi@kernel.org>, Krzysztof =?UTF-8?Q?Wilczy=C5=84ski?=
+ <kwilczynski@kernel.org>,  Manivannan Sadhasivam	 <mani@kernel.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul	 <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Lee Jones	 <lee@kernel.org>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"	
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski	
+ <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi	
+ <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, 
+	linux-phy@lists.infradead.org, netdev@vger.kernel.org, Daniel Golle
+	 <daniel@makrotopia.org>, Bryan Hinton <bryan@bryanhinton.com>
+Date: Thu, 30 Oct 2025 22:26:00 +0100
+In-Reply-To: <c9865ab0-cbc2-47b5-b7cf-acb8b9c52695@collabora.com>
+References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
+	 <20251016-openwrt-one-network-v1-11-de259719b6f2@collabora.com>
+	 <c9865ab0-cbc2-47b5-b7cf-acb8b9c52695@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2-5 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251027111343.21723-8-angelogioacchino.delregno@collabora.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_135630_279461_86FCBD1B 
-X-CRM114-Status: GOOD (  15.34  )
+X-CRM114-CacheID: sfid-20251030_142630_869597_EDF1A16E 
+X-CRM114-Status: GOOD (  19.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,94 +95,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+On Thu, 2025-10-16 at 13:28 +0200, AngeloGioacchino Del Regno wrote:
+> Il 16/10/25 12:08, Sjoerd Simons ha scritto:
+> > The openwrt one has a SPI NOR flash which from factory is used for:
+> > * Recovery system
+> > * WiFi eeprom data
+> > * ethernet Mac addresses
+> >=20
+> > Describe this following the same partitions as the openwrt configuratio=
+n
+> > uses.
+> >=20
+> > Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+> > ---
+> > =C2=A0 .../boot/dts/mediatek/mt7981b-openwrt-one.dts=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 | 83 ++++++++++++++++++++++
+> > =C2=A0 1 file changed, 83 insertions(+)
+> >=20
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+> > b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+> > index b6ca628ee72fd..9878009385cc6 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+> > @@ -3,6 +3,7 @@
+> > =C2=A0 /dts-v1/;
+> > =C2=A0=20
+> > =C2=A0 #include "mt7981b.dtsi"
+> > +#include "dt-bindings/pinctrl/mt65xx.h"
+> > =C2=A0=20
+> > =C2=A0 / {
+> > =C2=A0=C2=A0	compatible =3D "openwrt,one", "mediatek,mt7981b";
+> > @@ -54,6 +55,25 @@ mux {
+> > =C2=A0=C2=A0		};
+> > =C2=A0=C2=A0	};
+> > =C2=A0=20
+> > +	spi2_flash_pins: spi2-pins {
+> > +		mux {
+> > +			function =3D "spi";
+> > +			groups =3D "spi2";
+> > +		};
+> > +
+> > +		conf-pu {
+> > +			bias-pull-up =3D <MTK_PUPD_SET_R1R0_11>;
+> > +			drive-strength =3D <MTK_DRIVE_8mA>;
+>=20
+> drive-strength =3D <8>;
+>=20
+> > +			pins =3D "SPI2_CS", "SPI2_WP";
+> > +		};
+> > +
+> > +		conf-pd {
+> > +			bias-pull-down =3D <MTK_PUPD_SET_R1R0_11>;
+> > +			drive-strength =3D <MTK_DRIVE_8mA>;
+>=20
+> ditto
+>=20
+> > +			pins =3D "SPI2_CLK", "SPI2_MOSI", "SPI2_MISO";
+> > +		};
+> > +	};
+> > +
+> > =C2=A0=C2=A0	uart0_pins: uart0-pins {
+> > =C2=A0=C2=A0		mux {
+> > =C2=A0=C2=A0			function =3D "uart";
+> > @@ -62,6 +82,69 @@ mux {
+> > =C2=A0=C2=A0	};
+> > =C2=A0 };
+> > =C2=A0=20
+> > +&spi2 {
+> > +	pinctrl-names =3D "default";
+> > +	pinctrl-0 =3D <&spi2_flash_pins>;
+> > +	status =3D "okay";
+> > +
+> > +	flash@0 {
+> > +		compatible =3D "jedec,spi-nor";
+> > +		reg =3D <0>;
+> > +		spi-max-frequency =3D <40000000>;
+> > +		#address-cells =3D <1>;
+> > +		#size-cells =3D <1>;
+> > +
+> > +		partitions {
+> > +			compatible =3D "fixed-partitions";
+> > +			#address-cells =3D <1>;
+> > +			#size-cells =3D <1>;
+> > +
+> > +			partition@0 {
+> > +				reg =3D <0x00000 0x40000>;
+> > +				label =3D "bl2-nor";
+> > +			};
+> > +
+> > +			partition@40000 {
+> > +				reg =3D <0x40000 0xc0000>;
+> > +				label =3D "factory";
+> > +				read-only;
+> > +
+> > +				nvmem-layout {
+> > +					compatible =3D "fixed-layout";
+> > +					#address-cells =3D <1>;
+> > +					#size-cells =3D <1>;
+> > +
+> > +					eeprom_factory_0: eeprom@0 {
+>=20
+> wifi_calibration:
+>=20
+> > +						reg =3D <0x0 0x1000>;
+> > +					};
+> > +
+> > +					macaddr_factory_4: macaddr@4 {
+>=20
+> macaddr_factory_gmac1?
+>=20
+> You're not using this in the later commit where you enable ethernet nodes=
+,
+> did you miss adding that to gmac1 or what is this used for?
 
-kernel test robot noticed the following build warnings:
+gmac1 gets its mac from u-boot, passed in through device-tree; Haven't chec=
+ked where u-boot gets it
+from yet. I did spot it at offset 0x2a in this factory data, so that seems =
+likely candidate.
 
-[auto build test WARNING on clk/clk-next]
-[also build test WARNING on linus/master v6.18-rc3 next-20251030]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+However this particular mac is used by the wifi phy. I discovered after sen=
+ding this patch the kernel
+driver loads it directly from the "eeprom" area, so we could potentially dr=
+op this node.=20
 
-url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/clk-mediatek-Split-out-registration-from-mtk_clk_register_gates/20251027-191633
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
-patch link:    https://lore.kernel.org/r/20251027111343.21723-8-angelogioacchino.delregno%40collabora.com
-patch subject: [PATCH v2 7/7] clk: mediatek: Add support for MT6685 PM/Clock IC Clock Controller
-config: arm64-randconfig-003-20251031 (https://download.01.org/0day-ci/archive/20251031/202510310450.vQV7FK3n-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 10.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251031/202510310450.vQV7FK3n-lkp@intel.com/reproduce)
+As mentioned in the commit message, I kept the same layouts as openwrt uses=
+. Though i'd be fine to
+minimize the nvmem cells just to what's referenced in the dtb.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202510310450.vQV7FK3n-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/clk/mediatek/clk-mtk-spmi.c: In function 'mtk_spmi_clk_simple_probe':
-   drivers/clk/mediatek/clk-mtk-spmi.c:48:13: error: implicit declaration of function 'devm_spmi_subdevice_alloc_and_add' [-Werror=implicit-function-declaration]
-      48 |  sub_sdev = devm_spmi_subdevice_alloc_and_add(&pdev->dev, sparent);
-         |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> drivers/clk/mediatek/clk-mtk-spmi.c:48:11: warning: assignment to 'struct spmi_subdevice *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
-      48 |  sub_sdev = devm_spmi_subdevice_alloc_and_add(&pdev->dev, sparent);
-         |           ^
-   In file included from drivers/clk/mediatek/clk-mtk-spmi.c:16:
-   drivers/clk/mediatek/clk-mtk-spmi.c:52:46: error: invalid use of undefined type 'struct spmi_subdevice'
-      52 |  regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mtk_spmi_clk_regmap_config);
-         |                                              ^~
-   include/linux/regmap.h:775:6: note: in definition of macro '__regmap_lockdep_wrapper'
-     775 |   fn(__VA_ARGS__, &_key,     \
-         |      ^~~~~~~~~~~
-   drivers/clk/mediatek/clk-mtk-spmi.c:52:11: note: in expansion of macro 'devm_regmap_init_spmi_ext'
-      52 |  regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mtk_spmi_clk_regmap_config);
-         |           ^~~~~~~~~~~~~~~~~~~~~~~~~
-   cc1: some warnings being treated as errors
+> > +						reg =3D <0x4 0x6>;
+> > +						compatible =3D "mac-base";
+> > +						#nvmem-cell-cells =3D <1>;
+> > +					};
+> > +
+> > +					macaddr_factory_24: macaddr@24 {
+>=20
+> macaddr_factory_gmac0 ?
 
 
-vim +48 drivers/clk/mediatek/clk-mtk-spmi.c
+That seems nicer, will add that in V2 (same for the previous naming suggest=
+ion)
 
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  21  
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  22  int mtk_spmi_clk_simple_probe(struct platform_device *pdev)
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  23  {
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  24  	struct regmap_config mtk_spmi_clk_regmap_config = {
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  25  		.reg_bits = 16,
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  26  		.val_bits = 8,
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  27  		.fast_io = true
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  28  	};
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  29  	struct device_node *node = pdev->dev.of_node;
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  30  	const struct mtk_spmi_clk_desc *mscd;
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  31  	struct spmi_subdevice *sub_sdev;
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  32  	struct spmi_device *sparent;
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  33  	struct regmap *regmap;
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  34  	int ret;
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  35  
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  36  	ret = of_property_read_u32(node, "reg", &mtk_spmi_clk_regmap_config.reg_base);
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  37  	if (ret)
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  38  		return ret;
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  39  
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  40  	/* If the max_register was not declared the pdata is not valid */
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  41  	mscd = device_get_match_data(&pdev->dev);
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  42  	if (mscd->max_register == 0)
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  43  		return -EINVAL;
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  44  
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  45  	mtk_spmi_clk_regmap_config.max_register = mscd->max_register;
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  46  
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  47  	sparent = to_spmi_device(pdev->dev.parent);
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27 @48  	sub_sdev = devm_spmi_subdevice_alloc_and_add(&pdev->dev, sparent);
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  49  	if (IS_ERR(sub_sdev))
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  50  		return PTR_ERR(sub_sdev);
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  51  
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  52  	regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mtk_spmi_clk_regmap_config);
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  53  	if (IS_ERR(regmap))
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  54  		return PTR_ERR(regmap);
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  55  
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  56  	return mtk_clk_simple_probe_internal(pdev, node, mscd->desc, regmap);
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  57  }
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  58  EXPORT_SYMBOL_GPL(mtk_spmi_clk_simple_probe);
-80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  59  
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+
+--=20
+Sjoerd Simons
+Collabora Ltd.
 
