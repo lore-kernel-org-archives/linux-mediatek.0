@@ -4,78 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87C18CCF9FA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 07:40:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD0FCCCF9F8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 07:56:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=H1e2BZL1LoCABOb0FqDiAKQLBLYoFJ1xyYOFBRbrS98=; b=WLDigL9Dw+Jos4Kttrq3M0BRxF
-	s/47Eko5BnkljtLY+ot5X7857PSUdBldc+N1XQzmUX44cFDp4WV7VsCpRaid9Z5igcwqq91bEHhIi
-	UIcXM6JNZpDSz2TpvvIovB5YhrLI5qh+mMDGh9h9VGW0QgJfHnEgpydou9MHkV6Jx3rsZB8vp5Wq2
-	iweHB8WPjGuph4PSlvSz1+r0Tdzw+ygXTmLRfGYQhHvKNmEFLvCdUwD9jd0r+8Ru1mpWuBxncvUfX
-	/iIIGmibc5c9BDcFHBj28C2E4mXM1mD8m4YkRfzzR7NF6Dno5vaqFZG7+rCtKxlfaai9JxSj3zYnN
-	m5VZ0Ykg==;
+	bh=DRSdQR7HLl7IR75mtgzcnNEBFsG59tEp36QZrxhfCFA=; b=4DTOF5hM+nuJ5ZcHsKFDZgOTjm
+	ddTNj+aWdDa2EI3bZHhKAkmMzdXaCTWgnjLkEQH0cu4RomanckJAfaIAQF4WsrKgWITWVXlJ+kiF8
+	luhIKatntk5fBaTS0BVTimq7NSySUG0btjd6ZoM5ybHGDAfhXCLbLb+YbHaUHvcY+JEB1vVqB0t/M
+	+4s49X7xLxAuaXCyqE9jzMdrC+TAPj51FSbPySRZsko3mpK5dYJ4rSJOJ7vPTDIzG1AN3O58pWB71
+	O7FkIadH5nBSGpO2LAQNIIc6Xz6xYYJcofj0IMQ0Rhb1x2mvwtedhC7zpojm7AIRP9KmvveCmRw4V
+	UwpphfVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vENGu-00000003dmd-0W30;
-	Thu, 30 Oct 2025 07:40:36 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vENWc-00000003evf-1pKz;
+	Thu, 30 Oct 2025 07:56:50 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vENGq-00000003dlp-31j8;
-	Thu, 30 Oct 2025 07:40:34 +0000
+	id 1vENWa-00000003eum-0Ykh;
+	Thu, 30 Oct 2025 07:56:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1761810029;
-	bh=zCqPLDYFSTIRnT5sZnTePsSmoKp8F3Uxev9dTCYAwN4=;
+	s=mail; t=1761811004;
+	bh=IiJIHtx4LNQ3qF/KRvZQ+MHK5HTeIwkOeW1dOjSZDFs=;
 	h=From:Date:Subject:To:Cc:From;
-	b=QiXqai0YhuS1zsntczP51FL2lAyKU+mSzKqZfJCF24pmV9eyjNKPbdY6dSXXi5sCX
-	 xxypI0eRqI5EsYdtJOW3UyEQG2oUVthHTGTar2H+01fSta0vTcFfE8Mfbb2EjtMWd3
-	 0Arc948XTbMu1DK6DwMoM+AJwMVAglltEbs0FSSyfls+MGi3DZWjI0zKolSp5SXBuh
-	 jaDV8jpIa6GCxzqlPKOU02S9wIXndsmpRDrHtxzSfzvBPPXEVkIDMxUokvE9V4b2/x
-	 LQkzyrqdbhiafbas/Vkp9CwIH33ZEHdgpGTY9kACO8GbjiGKYJXiG6SxxA4YZ+StUK
-	 f20h+BrRiuZHA==
+	b=pBsx3SMjSEC7MviEGO95wmcJHfj/QHCzMV5mPbg2jTiLtL3KTJMqot4SkEM95Nucu
+	 nzqrx6dmA10b9IV7XzYc5Z3YuRdvcOdn761vEoxBfEZ76m4XxuuOwd+qs2piGTBj+B
+	 MBcMHBUERxTAYltU/EgekrkEY/C1Tvn+daLNFvgSNhZ/nvXX1CRYWPiKamWeE3YXdk
+	 fKFAyQGquPfQEzCatN9BlBSWxVblZ6ZvdKrRa9EHkE4gprzEMBfmlj7E/wLCZeEe5t
+	 omEWFcI61+gXYPj+S2U1YKFMXmq5ipY2Q+eOVv9SvsYCBNef+NRb9V0FzmYxFWJCTf
+	 xFafOHvGCw5kg==
 Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9AAEE17E009B;
-	Thu, 30 Oct 2025 08:40:28 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 250C517E0CF8;
+	Thu, 30 Oct 2025 08:56:44 +0100 (CET)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Thu, 30 Oct 2025 08:40:07 +0100
-Subject: [PATCH] dt-bindings: watchdog: mediatek,mtk-wdt: Add compatible
- for MT8189 SoC
+Date: Thu, 30 Oct 2025 08:56:29 +0100
+Subject: [PATCH] dt-bindings: i2c: i2c-mt65xx: Add compatible for MT8189
+ SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251030-mt8189-dt-bindings-wdt-v1-1-975971ba29e5@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAFYWA2kC/yXNwQqDMBAE0F8Je+5CEqmov1I8RLPaPSS22dgK4
- r83NMc3MDMnCCUmgUGdkOjDwlssMDcF89PFlZB9MVht70bbHkPuTNejzzhx9BxXwW+Bb72zi26
- cbTWU8ivRwsd/+DFWJ3rvZT/XECYnhPMWAudBRToy1o9Gw3hdPwdI4MGZAAAA
-X-Change-ID: 20251029-mt8189-dt-bindings-wdt-d6da2f03a260
-To: Wim Van Sebroeck <wim@linux-watchdog.org>, 
- Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+Message-Id: <20251030-mt8189-dt-bindings-i2c-v1-1-5b60914c6453@collabora.com>
+X-B4-Tracking: v=1; b=H4sIACwaA2kC/yWNQQ7CIBBFr0Jm7SRAbYRexXRBYayzgCqgadL07
+ hJZvpf89w8olJkKTOKATF8uvKUG6iLAP11aCTk0Bi31qKS2GKtRxmKouHAKnNaCrD3egjFXGmw
+ YXYA2fmV68P4P3+fOmd6f1q9dwuIKod9i5DqJRHvF/jFImM/zB9YNynCZAAAA
+X-Change-ID: 20251029-mt8189-dt-bindings-i2c-7d884e39d5ad
+To: Qii Wang <qii.wang@mediatek.com>, Andi Shyti <andi.shyti@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, linux-watchdog@vger.kernel.org, 
+Cc: kernel@collabora.com, linux-i2c@vger.kernel.org, 
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1761810028; l=1181;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1761811004; l=1109;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=zCqPLDYFSTIRnT5sZnTePsSmoKp8F3Uxev9dTCYAwN4=;
- b=Z/NT/ku5a3v7+z6gX10fuY1Tr/RmBBg9g8JoOhmLn+z6ju0nEQ29d788LkwfFkB5A/uNgX3BD
- dya/nH7WNjHBzv4EOmQKpgqhWkG3puV6wox3ImpYnwwuBiJ0kgLucAJ
+ bh=IiJIHtx4LNQ3qF/KRvZQ+MHK5HTeIwkOeW1dOjSZDFs=;
+ b=XbTvX83Kx4NFoKuoYVDYvyO2jrZ+6lSryjDVRAiL9yZSEGCjOm1sh87rkoRpIj55MypbtBG07
+ wXWsB68KKBTBx2/9vta16iPk7IiYriiM8xfF5JWu81zhBvdx+jOC9xn
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_004032_922423_3F0E0A44 
-X-CRM114-Status: UNSURE (   8.94  )
+X-CRM114-CacheID: sfid-20251030_005648_345187_AC29670A 
+X-CRM114-Status: UNSURE (   8.12  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,30 +90,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible string for the watchdog block on MT8189 SoC, which is
-compatible with the one used on MT6589.
+Add compatible string for MT8189 SoC.
+Its multiple I2C controller instances are compatible with the ones
+found in the MT8188 SoC.
 
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
+ Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-index ba0bfd73ab62a86befead007d4b7d2a870b81a0c..caa1140fdf44f79f229644b54f759a93145f26d8 100644
---- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-+++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-@@ -41,6 +41,7 @@ properties:
-               - mediatek,mt7623-wdt
-               - mediatek,mt7629-wdt
-               - mediatek,mt8173-wdt
-+              - mediatek,mt8189-wdt
-               - mediatek,mt8365-wdt
-               - mediatek,mt8516-wdt
-           - const: mediatek,mt6589-wdt
+diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
+index 3562ce0c0f7e4889d34410a9d32e1c8e6ddaae0a..ecd5783f001b3e1c2a29aa6575141093ead4e6a2 100644
+--- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
++++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
+@@ -54,6 +54,7 @@ properties:
+           - enum:
+               - mediatek,mt6878-i2c
+               - mediatek,mt6991-i2c
++              - mediatek,mt8189-i2c
+               - mediatek,mt8196-i2c
+           - const: mediatek,mt8188-i2c
+       - items:
 
 ---
 base-commit: d78b0fee454c25d292fb6343253eca06d7634fd9
-change-id: 20251029-mt8189-dt-bindings-wdt-d6da2f03a260
+change-id: 20251029-mt8189-dt-bindings-i2c-7d884e39d5ad
 
 Best regards,
 -- 
