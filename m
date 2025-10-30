@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41931CCF9FF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 13:48:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03E3CCCF9FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 13:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+I5W8kSXBIH2OskTzYbpCFMTm8Tfj4NAhf2p2c9a7XQ=; b=tzKnJOjPTBQQyv8cVKSBxrjUlw
-	K4WJus25iHUP9p/jzhHNtUwiCnRRSj4ukx9a41I1swTBzNrCxx4xhJyEh3CUjozTXsIEcJVkNvAFO
-	teM1bu+z4nJO9iBRrH3Vf3JYgKuTWh32XVsko5k2bXEbcSIXW39OUx5I5bqx4X/12/BZikVpW7ir0
-	pSphor0OvnEaUXoNIFhyakOXKalqOVxmW1VXY89SK1XGcavTs7jjD929Pf8oOotPdYl7LTyW/KDG3
-	kST0VZyXwP5ABFJ2+TmlU3oONMEN5reS6tAIH4wP0BH6O0Wim9MwDnQhRk6akOvHvOhg7VGPKgRqw
-	VaniRBeg==;
+	bh=sTctCbCAKveRVNU/GGBYzcH8oR6FLlmYV4eJXyq9z8I=; b=VVz/boR2w0QtCD/IG9BhPkzZ37
+	Uj1THfNk3THggtqc4KNPCrPMxrNVyK2Dj3BCFfn14jVWMSQHCwTKl69TNsW2Hefxaxhkn20UO0epy
+	kGes3/VjA+KV8q+yVLyEr3FDaOScBfiqGj0wDaSrJ8VbnzWl8ThUt7iGYad14x7wLv3rytTRj5FR/
+	ZcfUSOO+jQ3iAQa23ud6jL0t/z/hbtVZhd9DUAI1+AhcLBndq5Qh2hnDLFYR83OGtEi9Q+cQn1T7n
+	osw+k/SUCMTD2GnXBTN5PxULqxZW80EHlTMJSvL5mzZLi5HpZ4Zn/rHHZPdQtimtKXFjd5xk+zh+W
+	UxwdI8HA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vET0U-00000004EB4-3kI1;
-	Thu, 30 Oct 2025 13:48:02 +0000
+	id 1vET0W-00000004EDF-05Po;
+	Thu, 30 Oct 2025 13:48:04 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vET07-00000004DrU-2PId;
-	Thu, 30 Oct 2025 13:47:41 +0000
-X-UUID: fc351acab59611f09f706fa2197c6ceb-20251030
+	id 1vET08-00000004DsU-1y28;
+	Thu, 30 Oct 2025 13:47:42 +0000
+X-UUID: fcd7842cb59611f09f706fa2197c6ceb-20251030
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=+I5W8kSXBIH2OskTzYbpCFMTm8Tfj4NAhf2p2c9a7XQ=;
-	b=ibZ2iwJLZrRgy3sOHfYk/fWicFSAjFeIAmC6k9QoOtTKj+vafeiFURz+fKmn1YUYczFQunT+V/dxGx3ZSYhJ0e8pMjMXg6RSuO6z6oq+usm+MBUUeKhv4I0ziaoigtAJWDYvFgpeRmzhhvlXtxhY4odztsafmtUyA42ihPW9weo=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sTctCbCAKveRVNU/GGBYzcH8oR6FLlmYV4eJXyq9z8I=;
+	b=pnSPtRSK9lHc9z5QItXzuXZ2o2JyekBJB0r3ZLyHa8a8b0LLhm2Hbd2S1EUF0qjKo0MHW10IzLhrOYK3VhUPbWJZDCVTehalGpj2VYn2RSEy++ij9Xq2KdL9LBcBfVU8yS/Y3ul4qVuvw8aF4kdHTzZxMzk0gGIuZkqUhWJpFdE=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:42447ae3-8b33-49f9-a30f-2b882b192de5,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:79c8db6a-d4bd-4ab9-8221-0049857cc502,B
+X-CID-O-INFO: VERSION:1.3.6,REQID:659e556a-a188-491b-8b48-fa89546399b7,IP:0,UR
+	L:0,TC:0,Content:44,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:44
+X-CID-META: VersionHash:a9d874c,CLOUDID:05a46e26-cfd6-4a1d-a1a8-72ac3fdb69c4,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
+	3|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
 	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: fc351acab59611f09f706fa2197c6ceb-20251030
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-UUID: fcd7842cb59611f09f706fa2197c6ceb-20251030
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <jh.hsu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 710964854; Thu, 30 Oct 2025 06:47:32 -0700
+	with ESMTP id 393069565; Thu, 30 Oct 2025 06:47:34 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1748.26; Thu, 30 Oct 2025 21:47:30 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
@@ -71,10 +71,10 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-serial@vger.kernel.org>, <linux-usb@vger.kernel.org>,
 	<linux-watchdog@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jack Hsu
-	<jh.hsu@mediatek.com>
-Subject: [PATCH v6 04/11] dt-bindings: pwm: Support MediaTek MT8189 evb board disp-pwm
-Date: Thu, 30 Oct 2025 21:44:36 +0800
-Message-ID: <20251030134541.784011-5-jh.hsu@mediatek.com>
+	<jh.hsu@mediatek.com>, Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v6 05/11] dt-bindings: serial: Support MediaTek MT8189 evb board uart
+Date: Thu, 30 Oct 2025 21:44:37 +0800
+Message-ID: <20251030134541.784011-6-jh.hsu@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20251030134541.784011-1-jh.hsu@mediatek.com>
 References: <20251030134541.784011-1-jh.hsu@mediatek.com>
@@ -83,8 +83,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_064739_648151_3B63869B 
-X-CRM114-Status: UNSURE (   8.15  )
+X-CRM114-CacheID: sfid-20251030_064740_558687_A971DBCD 
+X-CRM114-Status: UNSURE (   7.84  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,25 +100,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add compatible string for mt8189 evb board dts node of disp-pwm
+add compatible string for mt8189 evb board dts node of uart
 
 Signed-off-by: Jack Hsu <jh.hsu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
- Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml | 1 +
+ Documentation/devicetree/bindings/serial/mediatek,uart.yaml | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-index 68ef30414325..22712769518b 100644
---- a/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-+++ b/Documentation/devicetree/bindings/pwm/mediatek,pwm-disp.yaml
-@@ -30,6 +30,7 @@ properties:
-               - mediatek,mt6893-disp-pwm
-               - mediatek,mt8186-disp-pwm
-               - mediatek,mt8188-disp-pwm
-+              - mediatek,mt8189-disp-pwm
-               - mediatek,mt8192-disp-pwm
-               - mediatek,mt8195-disp-pwm
-               - mediatek,mt8365-disp-pwm
+diff --git a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
+index 5bd8a8853ae0..3f0f4aea0a4c 100644
+--- a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
++++ b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
+@@ -47,6 +47,7 @@ properties:
+               - mediatek,mt8183-uart
+               - mediatek,mt8186-uart
+               - mediatek,mt8188-uart
++              - mediatek,mt8189-uart
+               - mediatek,mt8192-uart
+               - mediatek,mt8195-uart
+               - mediatek,mt8365-uart
 -- 
 2.45.2
 
