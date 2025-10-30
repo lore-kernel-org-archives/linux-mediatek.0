@@ -4,110 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15BC0CCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 20:55:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A96FCCF9E3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 20:56:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zN4bBjWuku4YGSJ5wJV8vC52FeQTa3WBF3IWa4pnW0k=; b=wBJuUsuBCSkIXmojQQXYbYh2iw
-	v9Jn39Ct4cdvE5gbWueXZl31TdHhWc25M3cHsHqmDjS/xgFuLqvXR3jqfSiewztab7e049Jw8182E
-	gAV7sCZtavlcLNcYHVVR5ogHNUXk+BHBj49SITWp7QpsvdnTBF/hs0dBPk0qqI43RbQSq3KiP68Fg
-	5i1YnVRWzTQipgRHzJRJM1aOUm/0QLOcGPvcBFpkHwchdSjILqf+azdUzrFoP8j7gs23svjqeXmGp
-	3CcSplamSC76Q+WNriW1C+3oaCydUlRlasuf89AR+bieRrmIcjRVib+vxTSlhaiYcjBnD+bxBV8KR
-	wOfwlD+g==;
+	bh=FyyBv7XiGB0A9ajOq2ClS027aqw2mhgkT4I+6YXU7S4=; b=lUVPZWNKnS8PpfCO8CvbxNYHg8
+	sV3weUTaazl+H5MSCw39NkHmVLBqQASQNgFJCAF7rxLtPv0RnVI1YEC8TqyCZVR1MR3JLjoBsLYWX
+	IAuWGGBGpdJ/lHOhhfnaSbd2sqq0PO8qA0B1p4UdKAM0ufi0VHn3zJRYDX3W5rmFA4ltjjzTpj887
+	o0fzSATJNmb18ExdibJxtOHb6BpgiZj9RTt/rkdNXY+3yRb+UUsXwh/ap+g40tXGTji0yk3uqjj02
+	YKejUQ2ZQYTVOhQgrPdsbPFTwEcrA6iG75rQwY9B8HQ+zan/bX+SuxV6+IEQNOGfi6qvO0DhiQeaV
+	zruNOy9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEZg8-00000004re2-3oo2;
-	Thu, 30 Oct 2025 20:55:29 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vEZh6-00000004rke-0ckI;
+	Thu, 30 Oct 2025 20:56:28 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEZg7-00000004rdm-2xSd
-	for linux-mediatek@bombadil.infradead.org;
-	Thu, 30 Oct 2025 20:55:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=zN4bBjWuku4YGSJ5wJV8vC52FeQTa3WBF3IWa4pnW0k=; b=BGJFrbiO4xTz0lthO82EgzMjEp
-	9lm7Pqb0HfFSs9tjeIzNWY/F3/mRJPkTRQxPyY0bx1wDug7ft5yJHWOvzCAg56TGRtJMm31iYkHEr
-	lFLEpP6GWVZvIE7fS6gBQheAdid5OLh+cb7cALIm9USXgBocwSzZTJFjVBdL9q9ar/WqIcoIdNXvu
-	7iP34IpwroCtRibkbT+hEOPlkFfbPNoKqLhkn5GxT27D1rNoEHQEpnysaL5CVG9o9Bhg1MXkXG7Gf
-	2UpBFjOr5eSaM/9wa8S/ZQd+LmsPcIrHw/YxE1SrFWCzG23ivWEB6ZXnKB30xIUMlYDC7WVvEzVXy
-	y8ne4I5g==;
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEYoL-0000000A14C-1dgu
+	id 1vEZh2-00000004rja-1OmS
 	for linux-mediatek@lists.infradead.org;
-	Thu, 30 Oct 2025 19:59:55 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id 98e67ed59e1d1-3307de086d8so1495256a91.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 30 Oct 2025 13:55:23 -0700 (PDT)
+	Thu, 30 Oct 2025 20:56:25 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-7a4c202a30aso1740922b3a.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 30 Oct 2025 13:56:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1761857722; x=1762462522; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1761857783; x=1762462583; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
-        bh=zN4bBjWuku4YGSJ5wJV8vC52FeQTa3WBF3IWa4pnW0k=;
-        b=eYwlCFp3oSRxMvRvNEBUYZAsniMwEs3iqMnrr9mDDPQOEcckGYFjLzK6v8v2isc78G
-         Igc5j8WNOag8t5ohcgBIrVOaGVnxVmxRoNx2JpTsAkjrxZZJqqdFxi+6Sqp1FJDImbXM
-         TQjvaUuIgeoBCIrGozYuqhtFJWhH7iGYLO85Ly3iWKF7VfQQXiHi0oaf0MPpeI8JUQRZ
-         49UjvdnAykfyx3QJ1OCWIISyxsAVhZh33vnTNS8he/Gw2S+SE5GwPu8rDND0B0NCQDnZ
-         SIlxJ7PyTgo/RIgs1IZA/TeNAMUzITryfUIqXJV42mlydl2JX5krvUH8WDy4KaMLnqFc
-         h3DQ==
+        bh=FyyBv7XiGB0A9ajOq2ClS027aqw2mhgkT4I+6YXU7S4=;
+        b=AOWIIJTQ/YaGnpb2Xmi1bVd0jnV78U0oUXIxGleTqSaKeoQyY+CEsiMp+tfNyP8+wj
+         0EtEj0N4+b05vTaTPGyVPq0RcgJxjgMcZPEpFQ1/nQJoQDKeXqIqaO1WVWidHuReC99n
+         JCKoT1ZhmUywxaRxMLEXNFU2yWVazW4MFxn/cH+iTeAN7C81IAXFCcZWBNQCR+UH+8xx
+         +Ik8kh/Vhpzm8jQ8r/RzQPOgdpWE18xFB1mMRF9PzHxyQ2olZT3C6nIRVT57bNBjxuzm
+         btRBvIRhPlJfTypuBzTTTouQDZ84YK7GxKfrzkJdaJi0H9d9RvLr8KgYlaPwm9DeI6dt
+         yqnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761857722; x=1762462522;
+        d=1e100.net; s=20230601; t=1761857783; x=1762462583;
         h=content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:subject:user-agent:mime-version
          :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zN4bBjWuku4YGSJ5wJV8vC52FeQTa3WBF3IWa4pnW0k=;
-        b=nidqQ5zqwoOpRDga1LCAQ4aeh/rybTKk+8xyjDeuifeDwnJNIE5HULYrUEIwvQ605Q
-         Ob20qzq9YaNvQdDkQVfv7fU0+v9m/qqc1l+bb8vYoVb6/rf3Skof01Dj8s3pCCVE2TA3
-         S2nC+iX8uhWjoPOCH+nYPzTFfkxnTXhABwqeTiT+NtDpNU+lvLLRJJe0wt2dhpN+Saa7
-         Q2lHvnFSXTDCcJCc5NuOZ7hAPg7pEVue//3I/o9fkaDinVxYJPO/vmQn1Cwze1amfRSP
-         xVwnYtKKtrtq3op1ER8aekexKVFRn120C0ka5s1IjnZgcWShyyLGAJpYpGPeaq0fxbUj
-         4eJg==
-X-Forwarded-Encrypted: i=1; AJvYcCXSZ69oU78JREVfn1p6SmkJTfBT2mj1W3S7/ZgjohRskiOE+UT6oSRMA2sfyrERSwQzLnF2sGRg0zfuca/zEA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyglajzPveIr0AUb7ELui9ELaFBoEkHyD5fa6HZ3Gq2KU0YxGC2
-	x0mqgDapPZpPCi7RYRodVP580VZsN6W6OGp8FRTiBG69IxEDWqdGuVqJ
-X-Gm-Gg: ASbGncvee8TR6GtXvCSOXhvejEG4C/f+Wcn5R9WWkCedrdP2truSRcNXQ0UjtnCsEbb
-	ekz9J2oy/g5UG86HeSq02ElMy/jHUpFvw7wdKrPDgJt92h1L948v44qu9DQwyRRUBxrFVgOh890
-	RtEI30s08oPaaClkzrvcv9uOrtwMK8gYyiLQYKiK8NtC3tqaCaDPUKaaYD/6UPPYSjOZ9CktriG
-	/c4sLzLa/oIZ2mVIY2zOsYgeX54zUiNvboCMe6KEH3t8+TY2ttLYGWxNG2CmQPaZGQyK53T3DsI
-	gf2AvOKZ5tLI+UbKTviVxfBUaKW1MR6OeTz5b68qosn1/6oTWLsfsyn8m4/6oZT6YJryJQ7pk+b
-	DKmtptji0a36dAUgVvTT4325CPZaKXMmHLRnWmRZNg4FgOZO/RJur+tCsqrA60Di5FxMhHp9ruB
-	a/zRAAfNa+nBtu+W9INridUZBCCnRWKoWgyTIRsJwzJkcWhMor
-X-Google-Smtp-Source: AGHT+IGTTrpX5NE0hCMUgu+CiuNJR8hM9WwkQlMhpfTOtremrzl3woSoRrfo65WzogsJVDOPBg4/eg==
-X-Received: by 2002:a17:90b:4b88:b0:32e:c6b6:956b with SMTP id 98e67ed59e1d1-34082fc656amr1413168a91.4.1761857721722;
-        Thu, 30 Oct 2025 13:55:21 -0700 (PDT)
+        bh=FyyBv7XiGB0A9ajOq2ClS027aqw2mhgkT4I+6YXU7S4=;
+        b=SJksUpBuWmEYFKE92d4sMeIGGr4sxYNlok0UQevnoOca3g+EO5J15IBcU1wNTGLB+f
+         IiXr0+rD7SlLQzjygl8HJ35QiVCCXUNxe+sznKD3mHjbJQ7/VilcR3JiYCwX6T8xRQnB
+         /Ls8RfQnSmomhWCTNb5UXZoBYLHeNrShdVv+QuZWY542C6wm8lbTOJ7fsBUBO1xgArCO
+         H1EfRsmTCd6YDa0gUtSAMkVgn2C2n5hT/TLkrk0UQKSgsJirQ6ixFuTuuHGB1vX2/T1+
+         q5j+CFVmxNktv2bY89INcdaxuZIT7GJGiaSUG5tIAxg4hMyzKUAvMcl0Pq+isOdLLt69
+         onDA==
+X-Forwarded-Encrypted: i=1; AJvYcCXBi0ZjKR+kl4N4H9EW91LTgTZsPoAA5BpmrWvDGAPDNiGAnT8mUJNys48Jhi6vE9iLJjmrLFKkHTfUfs/TEg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx06dI4aLMGR7EzqyTCC970ydFhuRsBLFrZyMo8K5D8Cu7U0j4d
+	lT8yLhDukI3KQMk2l/TtOCKsXoGqzOz+RRFUGf0oLtkeFE4LWQldz1c4
+X-Gm-Gg: ASbGncvbs14PdCzygSQG4UReTpIpZHYQWCeOd5mrDhsH0sMQEVhGuCABRSqEyKfw8On
+	Q2b5x7Q2YxXBnE+C2buXePQkWOtdHzP00/qbpCprh9rc0SYsF0QeSdCshf0u1EQIgsA/YPvoy6l
+	2OU7DCucZgFg1o4dnGQyMz+kY2YKiSoWDCObV3xHU1kAG4th2I3Xg1oi3skDyoowVdI/gGoyY5L
+	OvG47X/ySYrG5zWORHJsHa3c6u5k/I3Xg9LmJ4PLqZ8Nx1Bhx2K92YC1rmCClq2UEbepBa+cZzr
+	FcEaoMZPmLV9K6yqs2BLKZo1uUJ/iOFfXfYH8kz5dfnm5gZg+u/YRrjuUDHZ6zoUkA+J2zhmQ5C
+	KI8SZ7hhmJust38k89zdXGc+aOgDnZQ2XOeJQNIcw+Va/UIDWwL1a/vtBVWgMQbZVZKZJTheLZU
+	SqUDQTRS7wX6VtBrkQ1mqLiD3k4hazsYodrSe+CPSefZUUiesc
+X-Google-Smtp-Source: AGHT+IGNmTbOXun2+o+j20VEBL3MHIqUqnzHFtK5+3NODUKJ3fvksSh61+6iQ3JoqxN1WGI28rXt1A==
+X-Received: by 2002:a05:6a21:6da6:b0:341:dbfc:c73e with SMTP id adf61e73a8af0-348cb9a0bf4mr1506363637.31.1761857783191;
+        Thu, 30 Oct 2025 13:56:23 -0700 (PDT)
 Received: from ?IPV6:2600:1700:e321:62f0:da43:aeff:fecc:bfd5? ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-34050bb4828sm3611307a91.18.2025.10.30.13.55.19
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b71268bde68sm17870156a12.1.2025.10.30.13.56.22
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Oct 2025 13:55:21 -0700 (PDT)
-Message-ID: <12e946a5-b7d1-46a6-92a2-2b4bb165f671@roeck-us.net>
-Date: Thu, 30 Oct 2025 13:55:18 -0700
+        Thu, 30 Oct 2025 13:56:22 -0700 (PDT)
+Message-ID: <df55123a-80f4-4c02-bcc0-084e01a94228@roeck-us.net>
+Date: Thu, 30 Oct 2025 13:56:21 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 08/11] dt-bindings: watchdog: Support MediaTek MT8189
- evb board wdt
-To: Jack Hsu <jh.hsu@mediatek.com>, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, jic23@kernel.org, dlechner@baylibre.com,
- nuno.sa@analog.com, andy@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, srini@kernel.org,
- ukleinek@kernel.org, gregkh@linuxfoundation.org, jirislaby@kernel.org,
- daniel.lezcano@linaro.org, tglx@linutronix.de, chunfeng.yun@mediatek.com,
- wim@linux-watchdog.org, sean.wang@mediatek.com, zhiyong.tao@mediatek.com,
- andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, jitao.shi@mediatek.com
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pwm@vger.kernel.org,
- linux-serial@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-watchdog@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20251030134541.784011-1-jh.hsu@mediatek.com>
- <20251030134541.784011-9-jh.hsu@mediatek.com>
+Subject: Re: [PATCH] dt-bindings: watchdog: mediatek,mtk-wdt: Add compatible
+ for MT8189 SoC
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, linux-watchdog@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20251030-mt8189-dt-bindings-wdt-v1-1-975971ba29e5@collabora.com>
 Content-Language: en-US
 From: Guenter Roeck <linux@roeck-us.net>
 Autocrypt: addr=linux@roeck-us.net; keydata=
@@ -153,12 +131,12 @@ Autocrypt: addr=linux@roeck-us.net; keydata=
  F0WaMvQMNrk9UAUziVcUkLU52NS9SXqpVg8vgrO0JKx97IXFPcNh0DWsSj/0Y8HO/RDkGXYn
  FDMj7fZSPKyPQPmEHg+W/KzxSSfdgWIHF2QaQ0b2q1wOSec4Rti52ohmNSY+KNIW/zODhugJ
  np3900V20aS7eD9K8GTU0TGC1pyz6IVJwIE=
-In-Reply-To: <20251030134541.784011-9-jh.hsu@mediatek.com>
+In-Reply-To: <20251030-mt8189-dt-bindings-wdt-v1-1-975971ba29e5@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_195953_523164_1090A1DE 
-X-CRM114-Status: UNSURE (   5.43  )
+X-CRM114-CacheID: sfid-20251030_135624_399975_546C42C4 
+X-CRM114-Status: UNSURE (   7.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -174,11 +152,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/30/25 06:44, Jack Hsu wrote:
-> modify dt-binding for support mt8189 evb board dts node of wdt
+On 10/30/25 00:40, Louis-Alexis Eyraud wrote:
+> Add compatible string for the watchdog block on MT8189 SoC, which is
+> compatible with the one used on MT6589.
 > 
-> Signed-off-by: Jack Hsu <jh.hsu@mediatek.com>
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-Acked-by: Guenter Roeck <linux@roeck-us.net>
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 
 
