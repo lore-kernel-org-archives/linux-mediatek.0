@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 384B5CCF9F0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 19:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9D31CCF9F0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 19:32:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mb9T7/XqnSjsJ0QZFf0vmO3IhoiW97BIVEs9q7ZQRnU=; b=lhWMWmVFAYX1plZ1NJ3/oSpTHr
-	n2i0FeCImJgligwPk1lhWySS6/Mo1vtpjFsF+ZAknkv5nh+75nx34BxUukr+AKBop/2M6D6Epuf49
-	h/qbX4zorjt8LXAavTbn4Rh7Wz/9NMfJ1xTNYZNzFKhzDmUHHIbLocKDGy8jLaQGvNBksG3wzOdyo
-	cIdgytfTOE7gd5G2/kY64m8Sh5A0Ms+1RwhTuvINRTFQ3vhpCDCjKsAIuAqLLESLKlawaO7AUUkkZ
-	jR0F14unYWDWAqFZqtpjpUBpYPADpj9Flui9IR27+H70zYE8Sc6n6RfPekfmND5FIObm+nKr5tY4r
-	/yww5mBQ==;
+	bh=4n7sme1iF4g2hhvf9X/e7qQUJ4ibim25muvzqWoOG3o=; b=dtYJc2NiEbdd10AjDCR22QQYT6
+	l++/M2ODP9ZajEW6Ojo+upjzQ1XAf5nZ52yyS8pSSnVC1Roew2Ymu2dVGkCLB/rtolA8PRv1b368T
+	bysX4UMOFnCeMpSBztJTPjhENObygineTjoBKTvavp31VenRbSxsly7292oeHK6vaY0vgckHXH2oK
+	zKU0Gf1LJdWcqleS+2HWUGVVDUmslllOYqqV6ABUyMnmRcWuudpltWEvus32MVAjsLmqSbBZbTRSB
+	f/qBiCFozM1RAEeVckZqgyLVfor/v/wZKP0+40yxCb+XUuE+vDUenZlcwz8cZAKee8iJVVMIJEoLG
+	hF1Soiyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEYNz-00000004gWM-18nT;
-	Thu, 30 Oct 2025 19:32:39 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vEYOE-00000004gZe-3abO;
+	Thu, 30 Oct 2025 19:32:54 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEYNv-00000004gVW-1j3W;
-	Thu, 30 Oct 2025 19:32:37 +0000
+	id 1vEYOD-00000004gZ6-15Sl;
+	Thu, 30 Oct 2025 19:32:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CCBBA40810;
-	Thu, 30 Oct 2025 19:32:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04E56C4CEF8;
-	Thu, 30 Oct 2025 19:32:28 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id ABED9602CB;
+	Thu, 30 Oct 2025 19:32:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5859C4CEF8;
+	Thu, 30 Oct 2025 19:32:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761852754;
-	bh=iGCxq+nOC/gm/4t2m2k1i6Pdm4+kZ75nPWFm76rh8DM=;
+	s=k20201202; t=1761852772;
+	bh=4n7sme1iF4g2hhvf9X/e7qQUJ4ibim25muvzqWoOG3o=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=u41ac5T0O6qtGzbuC88TnasgBH+1jd1AwJpS+B5g1fCypV2oXXyaCH77gKLTelu+N
-	 5x8vhVUniIxZxImSHqVhB8OyY/YQDOM/xJ94vnyeTtYWWoJLgIDAzdWWA0Mzpl+IQa
-	 yVS983TUUu50CWfnaxMN256DfoGKh41xUAar2B9Yapd7nuhBr85+o9BdDATMn/1MzK
-	 p9WbRE4NOvfa/f6A42jg0P4xXsD3dqPBU3WYbUJxNgfoOpWVut4JjF8HbDcSCHus7w
-	 HKSKKsihWTxyoHYnBTHrThyZb+xLjMSVQwt/hYDjPKtTkCbhhdBE1viFO5TnLIXkRF
-	 9CfVbXv5eqYxQ==
-Date: Thu, 30 Oct 2025 19:32:26 +0000
+	b=M4l5oyeqUD5T97Qpn1bYW3dJuG2Uici5Gl99AZwrNc0fYj6UeU3BBtxHeyn/VNgtz
+	 RbdAprQvXmULrCJZzetDZ+hLEyqCW+P2eR8seRlddYctcnrcmD7CDu5fc+XZvZMdHE
+	 a7vpwbRQXhjMTdtTdlXOQw3hPgKWjoNodB1Frsc/AJeZRhC2e1MHvuAqltTL9VCrqX
+	 XKdg+IcIKYWi09erboLp3P96eOu0plibQvbWLoJuZQeApd0YkheCdk9K2sfBYzqHhh
+	 A3CR/scgcdkJ4UjbLHuv/jLWLCQ84HjF/o17wp1MbeysgWETFoVk7QdUzQ2/S7omNl
+	 PmF0d9lvgFxLQ==
+Date: Thu, 30 Oct 2025 19:32:44 +0000
 From: Conor Dooley <conor@kernel.org>
 To: Jack Hsu <jh.hsu@mediatek.com>
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
@@ -60,19 +60,16 @@ Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
 	linux-serial@vger.kernel.org, linux-usb@vger.kernel.org,
 	linux-watchdog@vger.kernel.org,
 	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v6 07/11] dt-bindings: usb: Support MediaTek MT8189 evb
- board xhci
-Message-ID: <20251030-underwent-courier-1f4322e1cb34@spud>
+Subject: Re: [PATCH v6 08/11] dt-bindings: watchdog: Support MediaTek MT8189
+ evb board wdt
+Message-ID: <20251030-nineteen-borax-3af2d0992a6c@spud>
 References: <20251030134541.784011-1-jh.hsu@mediatek.com>
- <20251030134541.784011-8-jh.hsu@mediatek.com>
+ <20251030134541.784011-9-jh.hsu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="W0QGy4D+uQ2gIdd5"
+	protocol="application/pgp-signature"; boundary="jEAHuqhaXpLF8bhH"
 Content-Disposition: inline
-In-Reply-To: <20251030134541.784011-8-jh.hsu@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_123235_486916_3FAD1C75 
-X-CRM114-Status: GOOD (  15.66  )
+In-Reply-To: <20251030134541.784011-9-jh.hsu@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,70 +85,29 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---W0QGy4D+uQ2gIdd5
+--jEAHuqhaXpLF8bhH
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Oct 30, 2025 at 09:44:39PM +0800, Jack Hsu wrote:
-> modify dt-binding for support mt8189 evb board dts node of xhci
+On Thu, Oct 30, 2025 at 09:44:40PM +0800, Jack Hsu wrote:
+> modify dt-binding for support mt8189 evb board dts node of wdt
 >=20
 > Signed-off-by: Jack Hsu <jh.hsu@mediatek.com>
-> ---
->  .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml         | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml=
- b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> index 004d3ebec091..05cb6a219e5c 100644
-> --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> @@ -34,6 +34,7 @@ properties:
->            - mediatek,mt8183-xhci
->            - mediatek,mt8186-xhci
->            - mediatek,mt8188-xhci
-> +          - mediatek,mt8189-xhci
->            - mediatek,mt8192-xhci
->            - mediatek,mt8195-xhci
->            - mediatek,mt8365-xhci
-> @@ -119,6 +120,9 @@ properties:
->    resets:
->      maxItems: 1
-> =20
-> +  reset-names:
-> +    maxItems: 1
 
-Is this reset required on mt8189? Does it appear on other mediatek xhci
-controllers?
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
 
-> +
->    usb3-lpm-capable: true
-> =20
->    usb2-lpm-disable: true
-> @@ -168,7 +172,8 @@ properties:
->              104 - used by mt8195, IP1, specific 1.04;
->              105 - used by mt8195, IP2, specific 1.05;
->              106 - used by mt8195, IP3, specific 1.06;
-> -          enum: [1, 2, 101, 102, 103, 104, 105, 106]
-> +            110 - used by mt8189, IP4, specific 1.10;
-> +          enum: [1, 2, 101, 102, 103, 104, 105, 106, 110]
-> =20
->    mediatek,u3p-dis-msk:
->      $ref: /schemas/types.yaml#/definitions/uint32
-> --=20
-> 2.45.2
->=20
-
---W0QGy4D+uQ2gIdd5
+--jEAHuqhaXpLF8bhH
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQO9SgAKCRB4tDGHoIJi
-0soAAQDNsik8zgyDq1CJEDvhDCDIrIOJlea5QC3W8+UKQZXN9wEAy7Gh90cGt4nY
-42Kle5H3RlFGQAZQQgg/cPi5ol120wM=
-=FAxM
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQO9XAAKCRB4tDGHoIJi
+0qHRAQDCFtCgcqZHWVGl5YvVbluDGPKQ4cXF+4HIiF+utD1OYwEAw0ZIC7Gzj+SU
+4Jjl6hGbPuD3ZBPBTv1ZYvtGOUUN4go=
+=hW2I
 -----END PGP SIGNATURE-----
 
---W0QGy4D+uQ2gIdd5--
+--jEAHuqhaXpLF8bhH--
 
