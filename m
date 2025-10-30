@@ -4,140 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A96FCCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 20:56:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D328CCF9F0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 20:56:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FyyBv7XiGB0A9ajOq2ClS027aqw2mhgkT4I+6YXU7S4=; b=lUVPZWNKnS8PpfCO8CvbxNYHg8
-	sV3weUTaazl+H5MSCw39NkHmVLBqQASQNgFJCAF7rxLtPv0RnVI1YEC8TqyCZVR1MR3JLjoBsLYWX
-	IAuWGGBGpdJ/lHOhhfnaSbd2sqq0PO8qA0B1p4UdKAM0ufi0VHn3zJRYDX3W5rmFA4ltjjzTpj887
-	o0fzSATJNmb18ExdibJxtOHb6BpgiZj9RTt/rkdNXY+3yRb+UUsXwh/ap+g40tXGTji0yk3uqjj02
-	YKejUQ2ZQYTVOhQgrPdsbPFTwEcrA6iG75rQwY9B8HQ+zan/bX+SuxV6+IEQNOGfi6qvO0DhiQeaV
-	zruNOy9Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Zu4J69TGAePcjFrrx4PLxm1uTRRgjQVU+X8GgHESzFc=; b=sY1ZCqs1HLvVLs6dpDdJvThY/9
+	FNQLUP0Kut6nrbPDMeoXXaow6X5oHqh8iFaTUpmOHHH98AqKoqjRmSu4y4X5khku1yomm+8yAbljh
+	B2wDV2mp/oXNJv+CJuZ2oXtgpv77KzLo9G/oDygrejkXC51AQoRGrlepN4Cx+x38Kpb1WNh5PsdQg
+	O/rTQrGNXRvtW/aMo/HL3uJiJBBKv7XwgiX88GYdbeijFL7le8gSnJBq08MQjFXYldwiOhkDPVJu7
+	5Gwwuj5P51kT6fdHo6CmP49l3ta9YnaRz+M6BXFAxgBq/+WQ6uOEAi7B0MA9OYuSQoVQOq9xZUNgn
+	mJYnhy9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEZh6-00000004rke-0ckI;
-	Thu, 30 Oct 2025 20:56:28 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1vEZhD-00000004roq-2emR;
+	Thu, 30 Oct 2025 20:56:35 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEZh2-00000004rja-1OmS
-	for linux-mediatek@lists.infradead.org;
-	Thu, 30 Oct 2025 20:56:25 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-7a4c202a30aso1740922b3a.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 30 Oct 2025 13:56:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1761857783; x=1762462583; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
-        bh=FyyBv7XiGB0A9ajOq2ClS027aqw2mhgkT4I+6YXU7S4=;
-        b=AOWIIJTQ/YaGnpb2Xmi1bVd0jnV78U0oUXIxGleTqSaKeoQyY+CEsiMp+tfNyP8+wj
-         0EtEj0N4+b05vTaTPGyVPq0RcgJxjgMcZPEpFQ1/nQJoQDKeXqIqaO1WVWidHuReC99n
-         JCKoT1ZhmUywxaRxMLEXNFU2yWVazW4MFxn/cH+iTeAN7C81IAXFCcZWBNQCR+UH+8xx
-         +Ik8kh/Vhpzm8jQ8r/RzQPOgdpWE18xFB1mMRF9PzHxyQ2olZT3C6nIRVT57bNBjxuzm
-         btRBvIRhPlJfTypuBzTTTouQDZ84YK7GxKfrzkJdaJi0H9d9RvLr8KgYlaPwm9DeI6dt
-         yqnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1761857783; x=1762462583;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=FyyBv7XiGB0A9ajOq2ClS027aqw2mhgkT4I+6YXU7S4=;
-        b=SJksUpBuWmEYFKE92d4sMeIGGr4sxYNlok0UQevnoOca3g+EO5J15IBcU1wNTGLB+f
-         IiXr0+rD7SlLQzjygl8HJ35QiVCCXUNxe+sznKD3mHjbJQ7/VilcR3JiYCwX6T8xRQnB
-         /Ls8RfQnSmomhWCTNb5UXZoBYLHeNrShdVv+QuZWY542C6wm8lbTOJ7fsBUBO1xgArCO
-         H1EfRsmTCd6YDa0gUtSAMkVgn2C2n5hT/TLkrk0UQKSgsJirQ6ixFuTuuHGB1vX2/T1+
-         q5j+CFVmxNktv2bY89INcdaxuZIT7GJGiaSUG5tIAxg4hMyzKUAvMcl0Pq+isOdLLt69
-         onDA==
-X-Forwarded-Encrypted: i=1; AJvYcCXBi0ZjKR+kl4N4H9EW91LTgTZsPoAA5BpmrWvDGAPDNiGAnT8mUJNys48Jhi6vE9iLJjmrLFKkHTfUfs/TEg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx06dI4aLMGR7EzqyTCC970ydFhuRsBLFrZyMo8K5D8Cu7U0j4d
-	lT8yLhDukI3KQMk2l/TtOCKsXoGqzOz+RRFUGf0oLtkeFE4LWQldz1c4
-X-Gm-Gg: ASbGncvbs14PdCzygSQG4UReTpIpZHYQWCeOd5mrDhsH0sMQEVhGuCABRSqEyKfw8On
-	Q2b5x7Q2YxXBnE+C2buXePQkWOtdHzP00/qbpCprh9rc0SYsF0QeSdCshf0u1EQIgsA/YPvoy6l
-	2OU7DCucZgFg1o4dnGQyMz+kY2YKiSoWDCObV3xHU1kAG4th2I3Xg1oi3skDyoowVdI/gGoyY5L
-	OvG47X/ySYrG5zWORHJsHa3c6u5k/I3Xg9LmJ4PLqZ8Nx1Bhx2K92YC1rmCClq2UEbepBa+cZzr
-	FcEaoMZPmLV9K6yqs2BLKZo1uUJ/iOFfXfYH8kz5dfnm5gZg+u/YRrjuUDHZ6zoUkA+J2zhmQ5C
-	KI8SZ7hhmJust38k89zdXGc+aOgDnZQ2XOeJQNIcw+Va/UIDWwL1a/vtBVWgMQbZVZKZJTheLZU
-	SqUDQTRS7wX6VtBrkQ1mqLiD3k4hazsYodrSe+CPSefZUUiesc
-X-Google-Smtp-Source: AGHT+IGNmTbOXun2+o+j20VEBL3MHIqUqnzHFtK5+3NODUKJ3fvksSh61+6iQ3JoqxN1WGI28rXt1A==
-X-Received: by 2002:a05:6a21:6da6:b0:341:dbfc:c73e with SMTP id adf61e73a8af0-348cb9a0bf4mr1506363637.31.1761857783191;
-        Thu, 30 Oct 2025 13:56:23 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:da43:aeff:fecc:bfd5? ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b71268bde68sm17870156a12.1.2025.10.30.13.56.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Oct 2025 13:56:22 -0700 (PDT)
-Message-ID: <df55123a-80f4-4c02-bcc0-084e01a94228@roeck-us.net>
-Date: Thu, 30 Oct 2025 13:56:21 -0700
+	id 1vEZh8-00000004rla-0i1l;
+	Thu, 30 Oct 2025 20:56:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1761857790; x=1793393790;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=vThwM6bg5dh8w6h8yGfI/6gd9+bsmsZISHcjUp0Wi7E=;
+  b=bQ5yju53h1jiSVl7lYAynbp9SpIUpIx0uQGB9b6GAJCOUIPC7hI9/HBm
+   KuGGKVqeqGY99BNKj9IBmy0vYKXCS/UDwRqNQl5iHjLJZ331o65EBCP/M
+   XkxT45k8M54o0S4kKXuFGb5d3qnsqGb8ItrBvPcbGQUamgoootXXIfMtz
+   5Vjyvl5uMLRwix/BdFk/SyKdBIcUCwy5FJl90rMa+rIUULyqxMZRDR3R8
+   3VKOwKmJRpSaZsJvYWsmV366UNfVW1LZ8GrDXOCtD1EURwE16SORRssyl
+   CYOZmMKhaAtVAjEmyedVr6jifOgC4NLumKl9bWsiijHKmloH4uN6QWrsh
+   w==;
+X-CSE-ConnectionGUID: SDoYDMgfR/etcc5FSD62VA==
+X-CSE-MsgGUID: veGde9yNShGeSXsGgsyJ7A==
+X-IronPort-AV: E=McAfee;i="6800,10657,11598"; a="86639049"
+X-IronPort-AV: E=Sophos;i="6.19,267,1754982000"; 
+   d="scan'208";a="86639049"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Oct 2025 13:56:29 -0700
+X-CSE-ConnectionGUID: wuDqC9JaQY2quEW6MtBc5g==
+X-CSE-MsgGUID: iESQHGsTTD6bVq08VVjuJA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,267,1754982000"; 
+   d="scan'208";a="185933452"
+Received: from lkp-server02.sh.intel.com (HELO 66d7546c76b2) ([10.239.97.151])
+  by fmviesa006.fm.intel.com with ESMTP; 30 Oct 2025 13:56:25 -0700
+Received: from kbuild by 66d7546c76b2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1vEZh1-000MWi-13;
+	Thu, 30 Oct 2025 20:56:23 +0000
+Date: Fri, 31 Oct 2025 04:56:07 +0800
+From: kernel test robot <lkp@intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	sboyd@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, mturquette@baylibre.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, laura.nao@collabora.com,
+	nfraprado@collabora.com, wenst@chromium.org,
+	y.oudjana@protonmail.com, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 7/7] clk: mediatek: Add support for MT6685 PM/Clock IC
+ Clock Controller
+Message-ID: <202510310450.vQV7FK3n-lkp@intel.com>
+References: <20251027111343.21723-8-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: watchdog: mediatek,mtk-wdt: Add compatible
- for MT8189 SoC
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, linux-watchdog@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20251030-mt8189-dt-bindings-wdt-v1-1-975971ba29e5@collabora.com>
-Content-Language: en-US
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- xsFNBE6H1WcBEACu6jIcw5kZ5dGeJ7E7B2uweQR/4FGxH10/H1O1+ApmcQ9i87XdZQiB9cpN
- RYHA7RCEK2dh6dDccykQk3bC90xXMPg+O3R+C/SkwcnUak1UZaeK/SwQbq/t0tkMzYDRxfJ7
- nyFiKxUehbNF3r9qlJgPqONwX5vJy4/GvDHdddSCxV41P/ejsZ8PykxyJs98UWhF54tGRWFl
- 7i1xvaDB9lN5WTLRKSO7wICuLiSz5WZHXMkyF4d+/O5ll7yz/o/JxK5vO/sduYDIlFTvBZDh
- gzaEtNf5tQjsjG4io8E0Yq0ViobLkS2RTNZT8ICq/Jmvl0SpbHRvYwa2DhNsK0YjHFQBB0FX
- IdhdUEzNefcNcYvqigJpdICoP2e4yJSyflHFO4dr0OrdnGLe1Zi/8Xo/2+M1dSSEt196rXaC
- kwu2KgIgmkRBb3cp2vIBBIIowU8W3qC1+w+RdMUrZxKGWJ3juwcgveJlzMpMZNyM1jobSXZ0
- VHGMNJ3MwXlrEFPXaYJgibcg6brM6wGfX/LBvc/haWw4yO24lT5eitm4UBdIy9pKkKmHHh7s
- jfZJkB5fWKVdoCv/omy6UyH6ykLOPFugl+hVL2Prf8xrXuZe1CMS7ID9Lc8FaL1ROIN/W8Vk
- BIsJMaWOhks//7d92Uf3EArDlDShwR2+D+AMon8NULuLBHiEUQARAQABzTJHdWVudGVyIFJv
- ZWNrIChMaW51eCBhY2NvdW50KSA8bGludXhAcm9lY2stdXMubmV0PsLBgQQTAQIAKwIbAwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4ACGQEFAmgrMyQFCSbODQkACgkQyx8mb86fmYGcWRAA
- oRwrk7V8fULqnGGpBIjp7pvR187Yzx+lhMGUHuM5H56TFEqeVwCMLWB2x1YRolYbY4MEFlQg
- VUFcfeW0OknSr1s6wtrtQm0gdkolM8OcCL9ptTHOg1mmXa4YpW8QJiL0AVtbpE9BroeWGl9v
- 2TGILPm9mVp+GmMQgkNeCS7Jonq5f5pDUGumAMguWzMFEg+Imt9wr2YA7aGen7KPSqJeQPpj
- onPKhu7O/KJKkuC50ylxizHzmGx+IUSmOZxN950pZUFvVZH9CwhAAl+NYUtcF5ry/uSYG2U7
- DCvpzqOryJRemKN63qt1bjF6cltsXwxjKOw6CvdjJYA3n6xCWLuJ6yk6CAy1Ukh545NhgBAs
- rGGVkl6TUBi0ixL3EF3RWLa9IMDcHN32r7OBhw6vbul8HqyTFZWY2ksTvlTl+qG3zV6AJuzT
- WdXmbcKN+TdhO5XlxVlbZoCm7ViBj1+PvIFQZCnLAhqSd/DJlhaq8fFXx1dCUPgQDcD+wo65
- qulV/NijfU8bzFfEPgYP/3LP+BSAyFs33y/mdP8kbMxSCjnLEhimQMrSSo/To1Gxp5C97fw5
- 3m1CaMILGKCmfI1B8iA8zd8ib7t1Rg0qCwcAnvsM36SkrID32GfFbv873bNskJCHAISK3Xkz
- qo7IYZmjk/IJGbsiGzxUhvicwkgKE9r7a1rOwU0ETofVZwEQALlLbQeBDTDbwQYrj0gbx3bq
- 7kpKABxN2MqeuqGr02DpS9883d/t7ontxasXoEz2GTioevvRmllJlPQERVxM8gQoNg22twF7
- pB/zsrIjxkE9heE4wYfN1AyzT+AxgYN6f8hVQ7Nrc9XgZZe+8IkuW/Nf64KzNJXnSH4u6nJM
- J2+Dt274YoFcXR1nG76Q259mKwzbCukKbd6piL+VsT/qBrLhZe9Ivbjq5WMdkQKnP7gYKCAi
- pNVJC4enWfivZsYupMd9qn7Uv/oCZDYoBTdMSBUblaLMwlcjnPpOYK5rfHvC4opxl+P/Vzyz
- 6WC2TLkPtKvYvXmdsI6rnEI4Uucg0Au/Ulg7aqqKhzGPIbVaL+U0Wk82nz6hz+WP2ggTrY1w
- ZlPlRt8WM9w6WfLf2j+PuGklj37m+KvaOEfLsF1v464dSpy1tQVHhhp8LFTxh/6RWkRIR2uF
- I4v3Xu/k5D0LhaZHpQ4C+xKsQxpTGuYh2tnRaRL14YMW1dlI3HfeB2gj7Yc8XdHh9vkpPyuT
- nY/ZsFbnvBtiw7GchKKri2gDhRb2QNNDyBnQn5mRFw7CyuFclAksOdV/sdpQnYlYcRQWOUGY
- HhQ5eqTRZjm9z+qQe/T0HQpmiPTqQcIaG/edgKVTUjITfA7AJMKLQHgp04Vylb+G6jocnQQX
- JqvvP09whbqrABEBAAHCwWUEGAECAA8CGwwFAmgrMyQFCSbODQkACgkQyx8mb86fmYHlgg/9
- H5JeDmB4jsreE9Bn621wZk7NMzxy9STxiVKSh8Mq4pb+IDu1RU2iLyetCY1TiJlcxnE362kj
- njrfAdqyPteHM+LU59NtEbGwrfcXdQoh4XdMuPA5ADetPLma3YiRa3VsVkLwpnR7ilgwQw6u
- dycEaOxQ7LUXCs0JaGVVP25Z2hMkHBwx6BlW6EZLNgzGI2rswSZ7SKcsBd1IRHVf0miwIFYy
- j/UEfAFNW+tbtKPNn3xZTLs3quQN7GdYLh+J0XxITpBZaFOpwEKV+VS36pSLnNl0T5wm0E/y
- scPJ0OVY7ly5Vm1nnoH4licaU5Y1nSkFR/j2douI5P7Cj687WuNMC6CcFd6j72kRfxklOqXw
- zvy+2NEcXyziiLXp84130yxAKXfluax9sZhhrhKT6VrD45S6N3HxJpXQ/RY/EX35neH2/F7B
- RgSloce2+zWfpELyS1qRkCUTt1tlGV2p+y2BPfXzrHn2vxvbhEn1QpQ6t+85FKN8YEhJEygJ
- F0WaMvQMNrk9UAUziVcUkLU52NS9SXqpVg8vgrO0JKx97IXFPcNh0DWsSj/0Y8HO/RDkGXYn
- FDMj7fZSPKyPQPmEHg+W/KzxSSfdgWIHF2QaQ0b2q1wOSec4Rti52ohmNSY+KNIW/zODhugJ
- np3900V20aS7eD9K8GTU0TGC1pyz6IVJwIE=
-In-Reply-To: <20251030-mt8189-dt-bindings-wdt-v1-1-975971ba29e5@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251027111343.21723-8-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_135624_399975_546C42C4 
-X-CRM114-Status: UNSURE (   7.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251030_135630_279461_86FCBD1B 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,12 +94,94 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/30/25 00:40, Louis-Alexis Eyraud wrote:
-> Add compatible string for the watchdog block on MT8189 SoC, which is
-> compatible with the one used on MT6589.
-> 
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Hi AngeloGioacchino,
 
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+kernel test robot noticed the following build warnings:
 
+[auto build test WARNING on clk/clk-next]
+[also build test WARNING on linus/master v6.18-rc3 next-20251030]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/clk-mediatek-Split-out-registration-from-mtk_clk_register_gates/20251027-191633
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
+patch link:    https://lore.kernel.org/r/20251027111343.21723-8-angelogioacchino.delregno%40collabora.com
+patch subject: [PATCH v2 7/7] clk: mediatek: Add support for MT6685 PM/Clock IC Clock Controller
+config: arm64-randconfig-003-20251031 (https://download.01.org/0day-ci/archive/20251031/202510310450.vQV7FK3n-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 10.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251031/202510310450.vQV7FK3n-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202510310450.vQV7FK3n-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   drivers/clk/mediatek/clk-mtk-spmi.c: In function 'mtk_spmi_clk_simple_probe':
+   drivers/clk/mediatek/clk-mtk-spmi.c:48:13: error: implicit declaration of function 'devm_spmi_subdevice_alloc_and_add' [-Werror=implicit-function-declaration]
+      48 |  sub_sdev = devm_spmi_subdevice_alloc_and_add(&pdev->dev, sparent);
+         |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>> drivers/clk/mediatek/clk-mtk-spmi.c:48:11: warning: assignment to 'struct spmi_subdevice *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+      48 |  sub_sdev = devm_spmi_subdevice_alloc_and_add(&pdev->dev, sparent);
+         |           ^
+   In file included from drivers/clk/mediatek/clk-mtk-spmi.c:16:
+   drivers/clk/mediatek/clk-mtk-spmi.c:52:46: error: invalid use of undefined type 'struct spmi_subdevice'
+      52 |  regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mtk_spmi_clk_regmap_config);
+         |                                              ^~
+   include/linux/regmap.h:775:6: note: in definition of macro '__regmap_lockdep_wrapper'
+     775 |   fn(__VA_ARGS__, &_key,     \
+         |      ^~~~~~~~~~~
+   drivers/clk/mediatek/clk-mtk-spmi.c:52:11: note: in expansion of macro 'devm_regmap_init_spmi_ext'
+      52 |  regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mtk_spmi_clk_regmap_config);
+         |           ^~~~~~~~~~~~~~~~~~~~~~~~~
+   cc1: some warnings being treated as errors
+
+
+vim +48 drivers/clk/mediatek/clk-mtk-spmi.c
+
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  21  
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  22  int mtk_spmi_clk_simple_probe(struct platform_device *pdev)
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  23  {
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  24  	struct regmap_config mtk_spmi_clk_regmap_config = {
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  25  		.reg_bits = 16,
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  26  		.val_bits = 8,
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  27  		.fast_io = true
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  28  	};
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  29  	struct device_node *node = pdev->dev.of_node;
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  30  	const struct mtk_spmi_clk_desc *mscd;
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  31  	struct spmi_subdevice *sub_sdev;
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  32  	struct spmi_device *sparent;
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  33  	struct regmap *regmap;
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  34  	int ret;
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  35  
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  36  	ret = of_property_read_u32(node, "reg", &mtk_spmi_clk_regmap_config.reg_base);
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  37  	if (ret)
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  38  		return ret;
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  39  
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  40  	/* If the max_register was not declared the pdata is not valid */
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  41  	mscd = device_get_match_data(&pdev->dev);
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  42  	if (mscd->max_register == 0)
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  43  		return -EINVAL;
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  44  
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  45  	mtk_spmi_clk_regmap_config.max_register = mscd->max_register;
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  46  
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  47  	sparent = to_spmi_device(pdev->dev.parent);
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27 @48  	sub_sdev = devm_spmi_subdevice_alloc_and_add(&pdev->dev, sparent);
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  49  	if (IS_ERR(sub_sdev))
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  50  		return PTR_ERR(sub_sdev);
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  51  
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  52  	regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mtk_spmi_clk_regmap_config);
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  53  	if (IS_ERR(regmap))
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  54  		return PTR_ERR(regmap);
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  55  
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  56  	return mtk_clk_simple_probe_internal(pdev, node, mscd->desc, regmap);
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  57  }
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  58  EXPORT_SYMBOL_GPL(mtk_spmi_clk_simple_probe);
+80a000281742dc0 AngeloGioacchino Del Regno 2025-10-27  59  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
