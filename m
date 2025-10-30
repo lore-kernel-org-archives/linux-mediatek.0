@@ -4,73 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C09ABCCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 19:49:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B85AECCF9F0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 20:35:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JDdX5ZdoQpabqswvrnbEIPYltl7wajQZHQM9r4I5pkY=; b=vRwrr694+khJGCjhxn3nxYwomo
-	27cWRuTQjY4mbP46Yzj2sCAM3/X0fNP1XFMmz/7VnHd90wJkaO1upStdGyy0ZZiZaKtrUhFS4CSmw
-	Frmk/oegPcblMUJJ+v4EPNcOGjAy0xDJL8/ILypBoYmv2NOjxv30j7c3z5/5IhdG9x0Uuf5gjRZo6
-	BxHrNRM9Wbgplm78L7vrnsyUoratE9eV9wmiR7q5bkTNajHlLk7ViCnh3cC2k2f+jtW7Xbul6Kklg
-	S/lvlHJYAysAO4ABsiFTGDKEbTX3EpsAzPd/gls+MN3f5ciT7B3u3fXKDQcKRnVcDnHg7tznJGfPD
-	bXA21NUQ==;
+	bh=+Wkm4p/uQ+Vqh1gCohypGhEVZ1/dwpzLDQlD8Bjlil8=; b=vLeWLG4+MskIzPTfnOUrfE1s4/
+	EMkHsndaWjRFHzlVF4RrQEbwcDbdJ2+hhmdWx6rO+GCXWMPy1QPPFPQKbBcUg2JrFeNa8YykWwy/8
+	fFhouypFg+6YO+ftmBdsCRuUYXJUA459Fw0B6Xqnn+poy6A7OadXJSALcuyUQdOWA8bptXYUXd4o6
+	sNH9rSd2owSw0rLpRVr5ezTrYirh7aEtYHjD7cqrjayOhykYR/+4SdZ+LyyIZ9ZrY2zJlT+zx+9gA
+	xzDEzpCs2ka+plh19pISTSNMkVvuOX69G4Hjhz2ptU+Z3yW6lvGze0VGmR2FvXXymFIG7Oif4Eshz
+	aNQ/W79w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEYe5-00000004hxC-3b2L;
-	Thu, 30 Oct 2025 19:49:17 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vEZMW-00000004qNc-1bw3;
+	Thu, 30 Oct 2025 20:35:12 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEYe3-00000004hwM-14JI;
-	Thu, 30 Oct 2025 19:49:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CD60C43E1B;
-	Thu, 30 Oct 2025 19:49:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 084B2C4CEF8;
-	Thu, 30 Oct 2025 19:49:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761853754;
-	bh=lgyDLafQE8DiQDUiJtyJ9+bt7JmcvlRaYp0Kn6urakc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Lu/eBFP5oLDumMFhEBp06aze9McYEFE1zeHtLyHf/sA/wPzcnlWHWr09lV/qIkPX+
-	 qxMfJ+aT4WdooF22hWKVeSJDTJV6i6+YSHaGVbFY5JHMOo6NHj+iHKqq5W/iibB16l
-	 mEoKxOuSC5iS1FlIvtkIDOHLWKl7agqhk3pGa6rzO9pHeNO7cSfhkZvtjJVd1Dr4il
-	 LPLVA/244xMmWW93aRCOtXxClp2npsrzYGq1QhADfpsS1Zy60rOiWYHkHWFHOyvZZ7
-	 dHpqz/YoHkoaGWp4aMuK6O2/ahC2M4Jtd8mifw4McZg4uUv2C44rNMKg729jbC7gNq
-	 aFKX3OVv10sew==
-Date: Thu, 30 Oct 2025 19:49:07 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Jack Hsu <jh.hsu@mediatek.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com,
-	andy@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, srini@kernel.org,
-	ukleinek@kernel.org, gregkh@linuxfoundation.org,
-	jirislaby@kernel.org, daniel.lezcano@linaro.org, tglx@linutronix.de,
-	chunfeng.yun@mediatek.com, wim@linux-watchdog.org,
-	linux@roeck-us.net, sean.wang@mediatek.com,
-	zhiyong.tao@mediatek.com, andrew-ct.chen@mediatek.com,
-	lala.lin@mediatek.com, jitao.shi@mediatek.com,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pwm@vger.kernel.org,
-	linux-serial@vger.kernel.org, linux-usb@vger.kernel.org,
-	linux-watchdog@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v6 00/11] Add mt8189 dts evaluation board and Makefile
-Message-ID: <20251030-deodorant-unglazed-190cbfb4a69b@spud>
-References: <20251030134541.784011-1-jh.hsu@mediatek.com>
+	id 1vEZMS-00000004qMj-3hHD;
+	Thu, 30 Oct 2025 20:35:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1761856485; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=gkFbZ213okCftKgeKgIIwNoz8BwA4nDP6MzCr0YARnjslWbS8bf914DjEU26RKsesu0i7gZx4BTfyz1xxAgNbQMZ+hOgVrrgyBtWW8VMvkD1hskA7r5/OPkLeophqY65m9j/4O4l1Y9P6SwMdoSy8qMjWiwQU/R+tvzDuY+qM+k=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1761856485; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=+Wkm4p/uQ+Vqh1gCohypGhEVZ1/dwpzLDQlD8Bjlil8=; 
+	b=Gnr8xIhUAPzV2qfRb1oLqyxVo5sYZWiNHe+DDVUg/CHGOPZtjMxE9wPQmju6dCohAzktipJKP2YWvL5u9mW/WZSFsCaUWNk3l1EeVNWUSTxJB/E4oPJwqb0FZwBiY+h8vUyCgRnA6upcsdDuS10nEcP/oYKeYkbfFBQxcXmxQAc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sjoerd@collabora.com;
+	dmarc=pass header.from=<sjoerd@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761856485;
+	s=zohomail; d=collabora.com; i=sjoerd@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=+Wkm4p/uQ+Vqh1gCohypGhEVZ1/dwpzLDQlD8Bjlil8=;
+	b=eE9lQAyjvcD+VsAFUGr3EGVzq1lb8anctgxPOFZUE+IyjqTE06JyDOHlv1dZWFZ+
+	GJu62lcDIBD5F/Za7yXXSFfmLJl7bfrpDY2VhzDNK66M909P75cdhk3qdwz/uSfrpMY
+	nlZLfK3BN7dj33lt0OVX5CDVbVQpWIkm0m886a44=
+Received: by mx.zohomail.com with SMTPS id 1761856481126419.9479106165559;
+	Thu, 30 Oct 2025 13:34:41 -0700 (PDT)
+Message-ID: <f2c3e18fe22284c4a5ab0ce085e2d17be844a0a8.camel@collabora.com>
+Subject: Re: [PATCH 10/15] arm64: dts: mediatek: mt7981b: Add Ethernet and
+ WiFi offload support
+From: Sjoerd Simons <sjoerd@collabora.com>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Ryder Lee
+ <ryder.lee@mediatek.com>,  Jianjun Wang <jianjun.wang@mediatek.com>, Bjorn
+ Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi	 <lpieralisi@kernel.org>,
+ Krzysztof =?UTF-8?Q?Wilczy=C5=84ski?=	 <kwilczynski@kernel.org>, Manivannan
+ Sadhasivam <mani@kernel.org>, Chunfeng Yun	 <chunfeng.yun@mediatek.com>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Lee Jones <lee@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,  "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
+	kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, 	linux-pci@vger.kernel.org,
+ linux-phy@lists.infradead.org, netdev@vger.kernel.org,  Bryan Hinton
+ <bryan@bryanhinton.com>
+Date: Thu, 30 Oct 2025 21:34:28 +0100
+In-Reply-To: <aPEhiVdgkVLvF9Et@makrotopia.org>
+References: <20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com>
+	 <20251016-openwrt-one-network-v1-10-de259719b6f2@collabora.com>
+	 <aPEhiVdgkVLvF9Et@makrotopia.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2-5 
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="yaNJtXhYGM5K609h"
-Content-Disposition: inline
-In-Reply-To: <20251030134541.784011-1-jh.hsu@mediatek.com>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_124915_310955_BAA7B50E 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20251030_133508_974225_88E77D84 
+X-CRM114-Status: GOOD (  17.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,49 +96,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 2025-10-16 at 17:47 +0100, Daniel Golle wrote:
+> On Thu, Oct 16, 2025 at 12:08:46PM +0200, Sjoerd Simons wrote:
+> > Add device tree nodes for the Ethernet subsystem on MT7981B SoC,
+> > including:
+> > - Ethernet MAC controller with dual GMAC support
+> > - Wireless Ethernet Dispatch (WED)
+> > - SGMII PHY controllers for high-speed Ethernet interfaces
+> > - Reserved memory regions for WiFi offload processor
+> >=20
+> > Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+> > ---
+> > =C2=A0arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 133 +++++++++++++++++=
++++++++++++++
+> > =C2=A01 file changed, 133 insertions(+)
+> >=20
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+> > index 13950fe6e8766..c85fa0ddf2da8 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
 
---yaNJtXhYGM5K609h
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+[snip]
+> > 			mdio_bus: mdio-bus {
+> > +				#address-cells =3D <1>;
+> > +				#size-cells =3D <0>;
+> > +
+> > +				int_gbe_phy: ethernet-phy@0 {
+> > +					compatible =3D "ethernet-phy-ieee802.3-c22";
+> > +					reg =3D <0>;
+> > +					phy-mode =3D "gmii";
+> > +					phy-is-integrated;
+> > +					nvmem-cells =3D <&phy_calibration>;
+> > +					nvmem-cell-names =3D "phy-cal-data";
+>=20
+> Please also define the two LEDs here with their corresponding (only)
+> pinctrl options for each of them, with 'status =3D "disabled";'. This
+> makes it easier for boards to make use of the Ethernet PHY leds by just
+> referencing the LED and setting the status to 'okay'.
 
-On Thu, Oct 30, 2025 at 09:44:32PM +0800, Jack Hsu wrote:
-> In this patch series,=20
-> we add Mediatek MT8189 evaluation board dts, dtsi and Makefile,
-> and also related dt-binding documents.
-> Jack Hsu (11):
->   dt-bindings: arm: Add compatible for MediaTek MT8189
->   dt-bindings: iio: adc: Support MediaTek MT8189 evb board auxadc
->   dt-bindings: nvmem: Support MediaTek MT8189 evb board efuse
->   dt-bindings: pwm: Support MediaTek MT8189 evb board disp-pwm
->   dt-bindings: serial: Support MediaTek MT8189 evb board uart
->   dt-bindings: timer: Support MediaTek MT8189 evb board timer
->   dt-bindings: usb: Support MediaTek MT8189 evb board xhci
->   dt-bindings: watchdog: Support MediaTek MT8189 evb board wdt
+I left those out on purpose as i can't easily validate them. They're probab=
+ly better to be added once
+someone adds a board using the hw led control.
 
-Please drop mention of the evb from all of these commit messages. The
-compatible has nothing to do with the evb board, it's going to be common
-across all boards using an mt8189.
-
->   arm64: dts: mediatek: Add MT6319 PMIC Support
->   arm64: dts: mediatek: add properties for MT6359
-
-Wait a minute, what are these two patches even doing in this series in
-the first place, when it is otherwise about the mt8189?
-
->   arm64: dts: mediatek: Add mt8189 evaluation board dts
-
-
---yaNJtXhYGM5K609h
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQPBMgAKCRB4tDGHoIJi
-0lPkAQCRU09Z6yjkHdytWu2mAy2u6tRSvE2qwbIcuk80eZ/k7wD/UgxmnNEGR8HM
-8eS3jGJAmBHKHjZ6iiVHXynJ+4bEdwg=
-=YIMa
------END PGP SIGNATURE-----
-
---yaNJtXhYGM5K609h--
+>=20
+--=20
+Sjoerd Simons
+Collabora Ltd.
 
