@@ -4,68 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86AAFCCF9F0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 18:33:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCC70CCF9E3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 19:30:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JvqCJgn8JrvX/wqRcJdBnCeJJvGQqO6u4dEBjS3ynJU=; b=bDGKXGGloYdCOT1jCBabbj9AWm
-	/BGJgZuYQu59M6g9PAOYU+0+8QQ42PdpY9Kzf2REgmAwHPuy9QGbCBh17TBSq5cOLEwixsEXPl3Ut
-	iFCjNkoeBX87dYJlxEovOxG3FFpDIq2sm4WFIl2aBQsEN7TExbbtAaU+rw41+6/rYL04QbR+s03Xf
-	a8u1iJ2VEeJTOYhH/BN/lm1yVY72pqRdI27JDK+czmlIMp1QkSXxAlHVtqX+3tW1DH089kto0KgCy
-	oeUI/5eNTPzli1iPw5X4MspF0pgWTOtHIhEqHSuOwCPPfTcUtHIyZapePfXEvi1RX8DWDVp7TQJaP
-	gyR45Daw==;
+	bh=gpvPz8Evg1uqXZ9QqUcwXD9sbXxzCo0XoLf7Z7zGoCg=; b=4CdtmrSbwvgk0JimBT8rjkHvqj
+	5sigIew6YHykbdvSQl5U294Voqew5qrV4Mw0H1yDowSBpZ97jtIDRJg4pYxkNm4v+WGzMwkCnHv0y
+	m6PcKfsuGvVB6wVDsiyOHhRuefvBtx6mJSnuhZYnbAtNlRDEMKKQyrWG8L+lDnQM+/+5a6FIt+76O
+	hTmZ/OYYptSq1NLSJCTq5QuIX7wUyb+sfHTKuR9TDUqoQ8/JnpV/vS0T3jJ59ja8zOkHgrWnVmNvs
+	diILrjPpOh1ZhqxFoq3VLPxmRpEa7xkOpGrjITiKtBuxqqPZsM3aAA+RZsiz55OWcWHU8MyZQfp/Z
+	6iyoESBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEXSU-00000004cLr-3DpR;
-	Thu, 30 Oct 2025 18:33:14 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vEYLb-00000004g5p-15r7;
+	Thu, 30 Oct 2025 19:30:11 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEXSS-00000004cKe-1FIg;
-	Thu, 30 Oct 2025 18:33:13 +0000
+	id 1vEYLZ-00000004g5Y-30MX;
+	Thu, 30 Oct 2025 19:30:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id EF33D44070;
-	Thu, 30 Oct 2025 18:33:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5346EC4CEF1;
-	Thu, 30 Oct 2025 18:33:09 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id CE7C16033C;
+	Thu, 30 Oct 2025 19:30:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C99D8C4CEF1;
+	Thu, 30 Oct 2025 19:30:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761849191;
-	bh=JvqCJgn8JrvX/wqRcJdBnCeJJvGQqO6u4dEBjS3ynJU=;
+	s=k20201202; t=1761852608;
+	bh=gpvPz8Evg1uqXZ9QqUcwXD9sbXxzCo0XoLf7Z7zGoCg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Uc3n00xcX2apahvQe+vOAxBTIP7QlaGSOysJWttTvoz8CF5WhCm4Inx7CKbgcsyvp
-	 FMHQ8uvIu1k2j3aWsbR0vFulwKd54VbMtPwe1wc1YvMd/syHapKHw5QRy1dIE31aNP
-	 pp5PXeHLaAudnWWG59ST7SoU6KMOJYjz2DWBHaMeF2GJmfrs4K/Bmg95XX2A7kXIWw
-	 p9iirwk3LlZ+6FOQKkaLKjamzAroKf4MgfCFUR+G4gn6tfbfswOXaZxR+r8OvGdGrY
-	 v1PkUebQysUlEZcYHVXYzEX3cCErawNt1JtrqkeJ8C05e7wosQ3j19rYB74Rk8y9yp
-	 oigdXlMNfZEmg==
-Date: Thu, 30 Oct 2025 18:33:07 +0000
+	b=up8YvZK9QS2dUL4OocBLKevKS4IIseSnRAaQV3qK8jrwgpzO24eHxQdwkpF+yxAyL
+	 PQO9nzoWvAvHZ6ho/VcFj2LgQrJ14z/f40WqLMF/Pw7hbEnqwMFrX7p5SsDSD1Al8C
+	 hNltFy+QHKC24egmoXqgho9Ddq3+KypkJldzoAzOl6oJvWxYC4XY1dnEdcgiUnwqMc
+	 /GM/1e2dDzx3FgrCv6F74//wOlYBEVOsFXOeaeEHT6SkaXRKDPiAgR2SoqtgqRqLie
+	 Mkpj7G7tIxJw3hhANOcmtIn/TyJzd1hADvQV3EGklU6/nfgZkTI70rDCbMDw9vLtSV
+	 Z4lJqn6HgdWzQ==
+Date: Thu, 30 Oct 2025 19:30:00 +0000
 From: Conor Dooley <conor@kernel.org>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
-	Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	kernel@collabora.com, linux-watchdog@vger.kernel.org,
+To: Jack Hsu <jh.hsu@mediatek.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com,
+	andy@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, srini@kernel.org,
+	ukleinek@kernel.org, gregkh@linuxfoundation.org,
+	jirislaby@kernel.org, daniel.lezcano@linaro.org, tglx@linutronix.de,
+	chunfeng.yun@mediatek.com, wim@linux-watchdog.org,
+	linux@roeck-us.net, sean.wang@mediatek.com,
+	zhiyong.tao@mediatek.com, andrew-ct.chen@mediatek.com,
+	lala.lin@mediatek.com, jitao.shi@mediatek.com,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: watchdog: mediatek,mtk-wdt: Add compatible
- for MT8189 SoC
-Message-ID: <20251030-smooth-agony-bea253b919fa@spud>
-References: <20251030-mt8189-dt-bindings-wdt-v1-1-975971ba29e5@collabora.com>
+	linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pwm@vger.kernel.org,
+	linux-serial@vger.kernel.org, linux-usb@vger.kernel.org,
+	linux-watchdog@vger.kernel.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v6 01/11] dt-bindings: arm: Add compatible for MediaTek
+ MT8189
+Message-ID: <20251030-unaligned-effort-0758c4d0e42c@spud>
+References: <20251030134541.784011-1-jh.hsu@mediatek.com>
+ <20251030134541.784011-2-jh.hsu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="hd7qwYh7dn279Ibw"
+	protocol="application/pgp-signature"; boundary="G4VLCKuvwTCyd6EE"
 Content-Disposition: inline
-In-Reply-To: <20251030-mt8189-dt-bindings-wdt-v1-1-975971ba29e5@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_113312_493953_765F214F 
-X-CRM114-Status: GOOD (  10.75  )
+In-Reply-To: <20251030134541.784011-2-jh.hsu@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,30 +85,32 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---hd7qwYh7dn279Ibw
+--G4VLCKuvwTCyd6EE
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Oct 30, 2025 at 08:40:07AM +0100, Louis-Alexis Eyraud wrote:
-> Add compatible string for the watchdog block on MT8189 SoC, which is
-> compatible with the one used on MT6589.
+On Thu, Oct 30, 2025 at 09:44:33PM +0800, Jack Hsu wrote:
+> This commit adds dt-binding documentation for the MediaTek MT8189
+> reference board.
 >=20
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> Signed-off-by: Jack Hsu <jh.hsu@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
 
 Acked-by: Conor Dooley <conor.dooley@microchip.com>
 pw-bot: not-applicable
 
---hd7qwYh7dn279Ibw
+--G4VLCKuvwTCyd6EE
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQOvYgAKCRB4tDGHoIJi
-0oimAP9o2MEl59jifVvyPGLCWbSwGzDMmbIfyk1LRXRhAcGMcQD+MdAmHKkHucGO
-9XwvmdiZ/DSlgirQirhb+GL9vuMRdQY=
-=Qv/D
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQO8uAAKCRB4tDGHoIJi
+0mJiAP4j0BV9X7Mo0HwHRId91we5S3x0+Bj2sMUgTli8nbZSJwEArA5lXdfdiW2f
+FLUaAC9puo5RzUlkLzKDy/em1sA+RQM=
+=dGpl
 -----END PGP SIGNATURE-----
 
---hd7qwYh7dn279Ibw--
+--G4VLCKuvwTCyd6EE--
 
