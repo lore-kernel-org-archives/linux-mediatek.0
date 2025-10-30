@@ -4,70 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F034BCCF9FC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 13:17:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97473CCF9FC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Oct 2025 13:46:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=X8vmjhEGyAb9Q+g3zprM6UMlHqaEvwlEm446UF+Fb5E=; b=Om8WLOSazMNCPzl6jNY0DhZneU
-	P6YFcD8TOkgFKdhbJXaeuUId72nnrghU8HxZ+btR9NUogcwRXh3GvmSr95QTxhEW/7yNIDRYS06NK
-	2U0YREQr9BC/RW6A/QQsekfFG5c6K11PE8VsEAcGqAueTk6LI6qGE1+AeeHwJ8y8Z5YxJzTlhoqjk
-	9kAxQ6zjbpGuK2WGO1AYRZ5PB9eDOApdkkA1q9fZs5wokBLW2iT28mFjAlkiAeB+rT+8Ds6WUeMhX
-	OzTwTiAgZemc7E/xW6f6GLWH1cZnL3YFlQFfN5HPKr58RWpFuT2zRtvohevkNizC5G/VR78SGu55i
-	hh5Qkplg==;
+	bh=rVkGPwv3C6XlbO/gf5Nflh6DXGZXVeoBCqb2ZnxWmhE=; b=akP4iv4tgF7gCQMe9CMWu5MAWt
+	YSVwDMvmUTVZCoMQbA1uRs0UkWzhxtZH+1aVbvYribqPdRg3OFV4vXV/etDkYx42C1Arc3xUn11NN
+	828gUDXdT2+OdxRVQmqFm1H7XWLW8iBtbxU+TrbZG3xMxRC4kHg7PbYBoBLN1Q0JR4x2wNj6o2PIL
+	O6zT6EkelUAY8+tBkF5jU8HiQuhMZYa59mWMTscqysjyUaqEPKOMehBJCh4eBh6Oxn7tgJlF5tD7W
+	rgEVAUhUGfhTnN9aFDWzUOrQLZMIR306h3EV0VzUp0nQ6PdEh/SGbcuq7o5RLzenfG6LeI2lojCQ1
+	RM+bhVYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vESX6-00000004BmN-22Zp;
-	Thu, 30 Oct 2025 13:17:40 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vESyV-00000004Dgd-2Ht5;
+	Thu, 30 Oct 2025 13:45:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vESX3-00000004BlM-0rkO;
-	Thu, 30 Oct 2025 13:17:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1761830243; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=bykFlocPyOEv6VJ8hGJ+2SlM+xv5ccun8eDeb4CYDlJ4o5ga5Un/K8leZovV9noOiAjw5Uvj5SiLsrRDkQBi3iNgnn4eiiq+NzpPfPBHqfb21Z7TJmCFREStXPu87hZl0wfYt0K/xs8oeUG2So3YXKnoqyPVdnwf3Vle+uJZ74c=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1761830243; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=X8vmjhEGyAb9Q+g3zprM6UMlHqaEvwlEm446UF+Fb5E=; 
-	b=TWYhI7IamV4ShVe5DfQv8czH5tnOKVadQeBdwRkjabBS6oV7ddLysULY//VHCn9xurf7/xkOqB+7ABr42PROAjtZ5uLe9LUqvpD80fQFu1054K1+wk0yO61EaWIJBPDlKB8isOH8WQLOOAnVgYjqZ40qc8xoPpjSeAJBIV5QMvk=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1761830243;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:To:To:Cc:Cc:Reply-To;
-	bh=X8vmjhEGyAb9Q+g3zprM6UMlHqaEvwlEm446UF+Fb5E=;
-	b=HC7j2p0ATKIKWHZ46ymqF+vJrTlNWIOnCOOYqQO0MMDfr6lfyrD0Z80kqZhYZVSV
-	lWO+hfdud/gLWlY2kAE83UVYj+aKhjGkSl0yKAtdO49d2EavR4alyJvyx6l1clowSsp
-	A8gD2CwNk2qC14FSAv3NvKOgIVOHYmGIr1uEBE40=
-Received: by mx.zohomail.com with SMTPS id 1761830240160609.6007241076173;
-	Thu, 30 Oct 2025 06:17:20 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 30 Oct 2025 14:17:10 +0100
-Subject: [PATCH] pmdomain: mediatek: mtk-mfg: select MAILBOX in Kconfig
+	id 1vESyT-00000004Dfo-0a4E;
+	Thu, 30 Oct 2025 13:45:58 +0000
+X-UUID: bf234a12b59611f0a52f393f94899d25-20251030
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=rVkGPwv3C6XlbO/gf5Nflh6DXGZXVeoBCqb2ZnxWmhE=;
+	b=Z1fdwUFIEI4qxPAPp5IRK5/roTAYaNuUlTWvH6P52CTSNKiZagTWKC5kgyOF2ibqjeb4ZdjuJwtGctf+X3pdU1ZF62mOc8fwJKvkIrbJ8pd/X5gMQRiQV6KPhKe1h10NW/nfG0S91t1ZlXClxJByFJr8u5lxRwSuTR/IV/r59Vs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:8d041d93-75c0-4792-a77e-776f4802e8d0,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:a9d874c,CLOUDID:09c6db6a-d4bd-4ab9-8221-0049857cc502,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: bf234a12b59611f0a52f393f94899d25-20251030
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <jh.hsu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1100399365; Thu, 30 Oct 2025 06:45:50 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Thu, 30 Oct 2025 21:45:47 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Thu, 30 Oct 2025 21:45:47 +0800
+From: Jack Hsu <jh.hsu@mediatek.com>
+To: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
+	<jic23@kernel.org>, <dlechner@baylibre.com>, <nuno.sa@analog.com>,
+	<andy@kernel.org>, <matthias.bgg@gmail.com>,
+	<angelogioacchino.delregno@collabora.com>, <srini@kernel.org>,
+	<ukleinek@kernel.org>, <gregkh@linuxfoundation.org>, <jirislaby@kernel.org>,
+	<daniel.lezcano@linaro.org>, <tglx@linutronix.de>,
+	<chunfeng.yun@mediatek.com>, <wim@linux-watchdog.org>, <linux@roeck-us.net>,
+	<sean.wang@mediatek.com>, <zhiyong.tao@mediatek.com>,
+	<andrew-ct.chen@mediatek.com>, <lala.lin@mediatek.com>,
+	<jitao.shi@mediatek.com>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-iio@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-pwm@vger.kernel.org>,
+	<linux-serial@vger.kernel.org>, <linux-usb@vger.kernel.org>,
+	<linux-watchdog@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jack Hsu
+	<jh.hsu@mediatek.com>
+Subject: [PATCH v6 00/11] Add mt8189 dts evaluation board and Makefile
+Date: Thu, 30 Oct 2025 21:44:32 +0800
+Message-ID: <20251030134541.784011-1-jh.hsu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251030-mfg-mailbox-dep-v1-1-8a8c591aff27@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAFVlA2kC/zWMQQrDIBRErxL+uh+MoV3kKiULY8b0Q9VUbRFC7
- l5p6PLN8N5OGUmQaex2SvhIlhga9JeO7MOEFSxLY9JKX3s1KPZuZW/kOcfKCzaGHTRc+3Az1Kw
- twUn9Fe/TyQmvdwuXc6TZZLCN3ksZu4Ba+B+n6Ti+3kVVl5IAAAA=
-X-Change-ID: 20251030-mfg-mailbox-dep-ec32ef510e6a
-To: Ulf Hansson <ulf.hansson@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- kernel@collabora.com, kernel test robot <lkp@intel.com>, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-X-Mailer: b4 0.14.3
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251030_061737_532730_B1162F06 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20251030_064557_218744_0E786A87 
+X-CRM114-Status: GOOD (  12.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,46 +97,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mtk-mfg pmdomain driver calls common mailbox framework functions. If
-the common mailbox framework is not selected in the kernel's
-configuration, the build runs into a linker error, as the symbols are
-absent.
+In this patch series, 
+we add Mediatek MT8189 evaluation board dts, dtsi and Makefile,
+and also related dt-binding documents.
 
-The hardware mailbox Kconfig system, MAILBOX, has no dependencies of its
-own. It's therefore safe to "select" it rather than use "depend on".
+based on tag: next-20251029
 
-Declare this "select" dependency in the Kconfig for the driver.
+Note:
+This patch series depends on following dt-binding headers and yamls
+1.dt-binding headers
+  1. mt8189-pinfunc.h
+       https://patchwork.kernel.org/project/linux-mediatek/patch/20250919020525.7904-1-ot_cathy.xu@mediatek.com/
+  2. mt8189_gce.h 
+       https://patchwork.kernel.org/project/linux-mediatek/patch/20250820093831.23437-3-xiandong.wang@mediatek.com/ 
+  
+2.dt-binding yamls
+  1. smi-common.yaml, smi-larb.yaml
+        https://patchwork.kernel.org/project/linux-mediatek/patch/20251027121443.16783-2-zhengnan.chen@mediatek.com/
+  2. mediatek,gce-mailbox.yaml
+        https://patchwork.kernel.org/project/linux-mediatek/patch/20250820093831.23437-2-xiandong.wang@mediatek.com/
+  3. mediatek,ufs.yaml
+        https://patchwork.kernel.org/project/linux-scsi/patch/20251016-mt8196-ufs-v2-1-c373834c4e7a@collabora.com/
+  4. mediatek,iommu.yaml  
+        https://lore.kernel.org/linux-mediatek/20251018132625.14428-2-zhengnan.chen@mediatek.com/
+  5. gce-mailbox.yaml
+        https://patchwork.kernel.org/project/linux-mediatek/patch/20250820093831.23437-2-xiandong.wang@mediatek.com/
+  6. disp_isp yamls
+        https://lore.kernel.org/linux-mediatek/20251020074211.8942-1-xiandong.wang@mediatek.com/
+  7. jpeg yaml
+        https://patchwork.kernel.org/project/linux-mediatek/patch/20250528095748.17485-2-jianhua.lin@mediatek.com/  
+        https://patchwork.kernel.org/project/linux-mediatek/patch/20250528095748.17485-3-jianhua.lin@mediatek.com/   
+  8. vcodec yaml
+        https://lore.kernel.org/linux-mediatek/20251016060747.20648-2-kyrie.wu@mediatek.com/      
+        https://lore.kernel.org/linux-mediatek/20251016060747.20648-8-kyrie.wu@mediatek.com/ 
+  9. mtk-sd.yaml
+        https://patchwork.kernel.org/project/linux-mediatek/patch/20250818114855.8637-1-mengqi.zhang@mediatek.com/   
+  10. mtk,scp.yaml
+        https://patchwork.kernel.org/project/linux-mediatek/patch/20250924084422.4604-2-huayu.zong@mediatek.com/
+  11. pwrap/spmi yaml  
+        https://patchwork.kernel.org/project/linux-mediatek/patch/20250801070913.3109-2-niklaus.liu@mediatek.com/
+  12. mt8189-nau8825.yaml
+        https://lore.kernel.org/linux-mediatek/20250905071659.25805-10-Cyril.Chao@mediatek.com/
+  13. mt8189-afe-pcm.yaml           
+        https://lore.kernel.org/linux-mediatek/20250905071659.25805-8-Cyril.Chao@mediatek.com/
+  14. mediatek,ufs.yaml
+        https://patchwork.kernel.org/project/linux-scsi/patch/20251016-mt8196-ufs-v2-1-c373834c4e7a@collabora.com/
 
-Fixes: 1ff1f0db6aec ("pmdomain: mediatek: Add support for MFlexGraphics")
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202510301311.TcOCnZ1s-lkp@intel.com/
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
 ---
-I assume this can be squashed into the mtk-mfg driver addition commit of
-the maintainer that merged it.
+Changs in v6:
+ - add/fix dt-bindings for mt8189 dts node
+ - add pmic mt63xx dtsi for mt8189 evb board
+ - add complete device node of mt8189 evb board
+ - Fix previous version review comments
+ - Link to v5: https://patchwork.kernel.org/project/linux-mediatek/cover/20250718075630.644870-1-sirius.wang@mediatek.com/
+
+Changs in v5:
+ - remove unused cpu-dile-state definition.
+ - change memory size in "reg" property which if filled in by bootloader.
+
+Changs in v4:
+ - Correct cpu-idle-states.
+ - Change the "reg" property name of the "memory" node in the
+   device tree source (DTS) to lowercase.
+
+Changs in v3:
+ - Move ulposc and ulposc3 before cpu nodes.
+ - Refactor cpu-map to a single cluster0.
+ - Change cpu nodes name from medium core to big core.
+ - Move psci before timer nodes.
+
+Changs in v2:
+ - Fix warning issues for make CHECK_DTBS=y.
+ - Add mediatek,uart.yaml document.
+
 ---
- drivers/pmdomain/mediatek/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/pmdomain/mediatek/Kconfig b/drivers/pmdomain/mediatek/Kconfig
-index b06aaa9690f0..8923e6516441 100644
---- a/drivers/pmdomain/mediatek/Kconfig
-+++ b/drivers/pmdomain/mediatek/Kconfig
-@@ -32,6 +32,7 @@ config MTK_MFG_PM_DOMAIN
- 	depends on PM
- 	depends on OF
- 	depends on COMMON_CLK
-+	select MAILBOX
- 	select PM_GENERIC_DOMAINS
- 	imply MTK_GPUEB_MBOX
- 	help
+Jack Hsu (11):
+  dt-bindings: arm: Add compatible for MediaTek MT8189
+  dt-bindings: iio: adc: Support MediaTek MT8189 evb board auxadc
+  dt-bindings: nvmem: Support MediaTek MT8189 evb board efuse
+  dt-bindings: pwm: Support MediaTek MT8189 evb board disp-pwm
+  dt-bindings: serial: Support MediaTek MT8189 evb board uart
+  dt-bindings: timer: Support MediaTek MT8189 evb board timer
+  dt-bindings: usb: Support MediaTek MT8189 evb board xhci
+  dt-bindings: watchdog: Support MediaTek MT8189 evb board wdt
+  arm64: dts: mediatek: Add MT6319 PMIC Support
+  arm64: dts: mediatek: add properties for MT6359
+  arm64: dts: mediatek: Add mt8189 evaluation board dts
 
----
-base-commit: d78b0fee454c25d292fb6343253eca06d7634fd9
-change-id: 20251030-mfg-mailbox-dep-ec32ef510e6a
+ .../devicetree/bindings/arm/mediatek.yaml     |    4 +
+ .../iio/adc/mediatek,mt2701-auxadc.yaml       |    1 +
+ .../bindings/nvmem/mediatek,efuse.yaml        |    1 +
+ .../bindings/pwm/mediatek,pwm-disp.yaml       |    1 +
+ .../bindings/serial/mediatek,uart.yaml        |    1 +
+ .../bindings/timer/mediatek,timer.yaml        |    1 +
+ .../bindings/usb/mediatek,mtk-xhci.yaml       |    7 +-
+ .../bindings/watchdog/mediatek,mtk-wdt.yaml   |    1 +
+ arch/arm64/boot/dts/mediatek/Makefile         |    1 +
+ arch/arm64/boot/dts/mediatek/mt6319.dtsi      |   66 +
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi      |   20 +
+ arch/arm64/boot/dts/mediatek/mt8189-evb.dts   | 1082 ++++++
+ arch/arm64/boot/dts/mediatek/mt8189.dtsi      | 3014 +++++++++++++++++
+ include/dt-bindings/iio/mt635x-auxadc.h       |   50 +
+ 14 files changed, 4249 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6319.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8189.dtsi
+ create mode 100644 include/dt-bindings/iio/mt635x-auxadc.h
 
-Best regards,
 -- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+2.45.2
 
 
