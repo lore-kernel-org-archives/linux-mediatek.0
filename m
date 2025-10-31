@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17540CCFA00
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Oct 2025 15:59:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79BABCCF9F8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Oct 2025 15:59:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N+s08UDkslV26YtK+gc8ujVOn5d//WSt9TAVmnZFWOI=; b=xI9yXcdPcI1aeltINHXmHAuXdA
-	/g9qU6CaTM1OZ06klJ/MmWVhWzd+Wkgdtf/zWyxSdCIWVz/VMKDlQlBrPAaXk6E5VQquJfthCcdf/
-	6Rb1M90CllaG5da1sN/A/fPvLWQnHkFKC5RzbNIX+E3DRzG2Biih1VAv9qhaomBlhB3vXRXIQoi1r
-	5R9kxKSSj5wM3cPP4j/sLUmG2Pu4PI6HCR+Fh7a9psaYY9AlnmbkJHHdtcuP2OsJjxO84KI9ViLKE
-	Par1WxpE5FIRMMIo/YoQzLlMgEz/dPGQUDOZrP7vJU71VV0NNLY5AdAktlpo1qUtDTvtaw1LXV2Js
-	LnW9csyA==;
+	bh=uG7z+f3l9IzGalj//tsYz7n35IAXBErTglF9JfrED9k=; b=TFpcqkc83FKROAUpU1CeFPx5h7
+	0ux+XKRRYA+jCl3zOgljg2+2Ue8yL2r8/ZK1wfQ/2NnKEUCBlQ1+Quvqc4aI5H0gaohDmZEXE7hhl
+	lYW3biWbt5WzhrDv8bQxpFawKri3HmYQjiKVB4PwKLUAl+UKC3/aWRqAsU/AZEb3hKzoeZzmw1fHV
+	zxS4ukZcVVvR9QkbqEL7SSLn4hViJ+JejKdba98CpDkNfmGnzZB+ssRCCNyIz7866UG4NJDrb/jUz
+	rGSqMhxy98j1Vyix0mKer47x/giUe9Ru2kDHvZy2UXzy0riyrznJhXjJnQBE/UsRhT5xfeHjn6QOr
+	S/WJ7dTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vErWn-00000006L7j-47h0;
-	Fri, 31 Oct 2025 15:59:02 +0000
+	id 1vErWv-00000006LDD-3QiG;
+	Fri, 31 Oct 2025 15:59:09 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vErWa-00000006Kyc-3Qjq;
+	id 1vErWb-00000006KxX-1Mv7;
 	Fri, 31 Oct 2025 15:58:50 +0000
-X-UUID: 79b88c58b67211f0a52f393f94899d25-20251031
+X-UUID: 7a4379b2b67211f0a52f393f94899d25-20251031
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=N+s08UDkslV26YtK+gc8ujVOn5d//WSt9TAVmnZFWOI=;
-	b=BxwJrSrBZMnrt5kqq64GC6uglkURE/FzCQyO6C1UcgeHLLbQGCsoFtvw5/IYmHSfPXyU+byh1jWGyg6vM+Tfvi+2ZBTBqdaE3zIyj4G5fWUd5uT865Hur0dwsMnTB0kX+4GJ88o8XX/QkX4XWlnnOYNJuMMuHDFstJ47d4OS4yQ=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=uG7z+f3l9IzGalj//tsYz7n35IAXBErTglF9JfrED9k=;
+	b=KOgSV0gO2H6YfbKnubAvZEgYAPWC3ggZpn2onoYhCR9DEAcckqzsWMsjNeyBtnYyppFf/++TVOkuwl2RygjOVvWT9N1aaIkNdsV6v22N/NSTS6dYn5pYXQNGfbe/COZGbE0Las7JV74w5gLV/772iA8n3ILuv9iQrAuAp3nQMd8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:b81ea192-55c2-4d8e-83bc-3583b913885b,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:3840c818-3399-4579-97ab-008f994989ea,B
+X-CID-O-INFO: VERSION:1.3.6,REQID:f912f312-09a0-4ee1-9e39-d628220a53c5,IP:0,UR
+	L:0,TC:0,Content:37,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:37
+X-CID-META: VersionHash:a9d874c,CLOUDID:3940c818-3399-4579-97ab-008f994989ea,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
+	4|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
 	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 79b88c58b67211f0a52f393f94899d25-20251031
+X-UUID: 7a4379b2b67211f0a52f393f94899d25-20251031
 Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
 	(envelope-from <jason-jh.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1585677862; Fri, 31 Oct 2025 08:58:43 -0700
+	with ESMTP id 248717776; Fri, 31 Oct 2025 08:58:44 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Fri, 31 Oct 2025 23:58:39 +0800
+ 15.2.1748.26; Fri, 31 Oct 2025 23:58:40 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Fri, 31 Oct 2025 23:58:39 +0800
+ 15.2.1748.26 via Frontend Transport; Fri, 31 Oct 2025 23:58:40 +0800
 From: Jason-JH Lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>,
 	Chun-Kuang Hu <chunkuang.hu@kernel.org>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Mauro Carvalho Chehab
 	<mchehab@kernel.org>
-Subject: [PATCH 3/9] mailbox: mtk-cmdq: Add GCE hardware virtualization configuration
-Date: Fri, 31 Oct 2025 23:56:31 +0800
-Message-ID: <20251031155838.1650833-4-jason-jh.lin@mediatek.com>
+Subject: [PATCH 8/9] soc: mediatek: mtk-cmdq: Extend cmdq_pkt_write API for SoCs without subsys ID
+Date: Fri, 31 Oct 2025 23:56:36 +0800
+Message-ID: <20251031155838.1650833-9-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20251031155838.1650833-1-jason-jh.lin@mediatek.com>
 References: <20251031155838.1650833-1-jason-jh.lin@mediatek.com>
@@ -71,8 +71,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251031_085848_858762_4E54806B 
-X-CRM114-Status: GOOD (  19.85  )
+X-CRM114-CacheID: sfid-20251031_085849_405143_6A02F94D 
+X-CRM114-Status: GOOD (  18.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,118 +88,248 @@ Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang 
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The GCE hardware virtualization configuration supports the isolation of
-GCE hardware resources across different OS environments. Each OS is
-treated as a virtual machine (VM) for GCE purposes.
-There are 6 VMs and 1 host VM. The host VM has main control over the
-GCE virtualization settings for all VMs.
+This patch extends the cmdq_pkt_write API to support SoCs that do not
+have subsys ID mapping by introducing new register write APIs:
+- cmdq_pkt_write_pa() and cmdq_pkt_write_subsys() replace
+  cmdq_pkt_write()
+- cmdq_pkt_write_mask_pa() and cmdq_pkt_write_mask_subsys() replace
+  cmdq_pkt_write_mask()
 
-To properly access the GCE thread registers, it is necessary to
-configure access permissions for specific GCE threads assigned to
-different VMs.
-Currently, since only the host VM is being used, it is required to
-enable access permissions for all GCE threads for the host VM.
+To ensure consistent function pointer interfaces, both
+cmdq_pkt_write_pa() and cmdq_pkt_write_subsys() provide subsys and
+pa_base parameters. This unifies how register writes are invoked,
+regardless of whether subsys ID is supported by the device.
 
-There are 2 VM configurations:
-1. VM_ID_MAP
-There are 4 registers to allocate 32 GCE threads across different VMs:
-VM_ID_MAP0 for threads 0-9, VM_ID_MAP1 for threads 10-19,
-VM_ID_MAP2 for threads 20-29, and VM_ID_MAP3 for threads 30-31.
-Each thread has a 3-bit configuration, where setting all bits to 1
-configures the thread for the host VM.
+All GCEs support writing registers by PA (with mask) without subsys,
+but this requires extra GCE instructions to convert the PA into a GCE
+readable format, reducing performance compared to using subsys directly.
+Therefore, subsys is preferred for register writes when available.
 
-2. VM_CPR_GSIZE
-It is used to allocate the CPR SRAM size to each VM. Each VM has 4-bit
-configuration, where setting bit 0-3 to configures the size of host VM.
-This setting must be configured before the VM configuration to prevent
-resource leakage.
+API documentation and function pointer declarations in cmdq_client_reg
+have been updated. The original write APIs will be removed after all
+CMDQ users transition to the new interfaces.
 
 Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/mailbox/mtk-cmdq-mailbox.c | 48 ++++++++++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
+ drivers/soc/mediatek/mtk-cmdq-helper.c | 54 ++++++++++++++++
+ include/linux/soc/mediatek/mtk-cmdq.h  | 90 ++++++++++++++++++++++++++
+ 2 files changed, 144 insertions(+)
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 95e8a5331b7c..a544108ddae7 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -43,6 +43,13 @@
- #define GCE_CTRL_BY_SW				GENMASK(2, 0)
- #define GCE_DDR_EN				GENMASK(18, 16)
+diff --git a/drivers/soc/mediatek/mtk-cmdq-helper.c b/drivers/soc/mediatek/mtk-cmdq-helper.c
+index 80806fbeba91..b30715ef0d6f 100644
+--- a/drivers/soc/mediatek/mtk-cmdq-helper.c
++++ b/drivers/soc/mediatek/mtk-cmdq-helper.c
+@@ -85,6 +85,16 @@ int cmdq_dev_get_client_reg(struct device *dev,
+ 		/* make subsys invalid */
+ 		client_reg->subsys = CMDQ_SUBSYS_INVALID;
  
-+#define GCE_VM_ID_MAP(n)		(0x5018 + (n) / 10 * 4)
-+#define GCE_VM_ID_MAP_THR_FLD_SHIFT(n)		((n) % 10 * 3)
-+#define GCE_VM_ID_MAP_HOST_VM			GENMASK(2, 0)
-+#define GCE_VM_CPR_GSIZE		0x50c4
-+#define GCE_VM_CPR_GSIZE_FLD_SHIFT(vm_id)	((vm_id) * 4)
-+#define GCE_VM_CPR_GSIZE_MAX			GENMASK(3, 0)
++		/*
++		 * All GCEs support writing register PA with mask without subsys,
++		 * but this requires extra GCE instructions to convert the PA into
++		 * a format that GCE can handle, which is less performance than
++		 * directly using subsys. Therefore, when subsys is available,
++		 * we prefer to use subsys for writing register PA.
++		 */
++		client_reg->pkt_write = cmdq_pkt_write_pa;
++		client_reg->pkt_write_mask = cmdq_pkt_write_mask_pa;
 +
- #define CMDQ_THR_ACTIVE_SLOT_CYCLES	0x3200
- #define CMDQ_THR_ENABLED		0x1
- #define CMDQ_THR_DISABLED		0x0
-@@ -89,6 +96,7 @@ struct gce_plat {
- 	u8 shift;
- 	bool control_by_sw;
- 	bool sw_ddr_en;
-+	bool gce_vm;
- 	u32 gce_num;
+ 		return 0;
+ 	}
+ 
+@@ -93,6 +103,9 @@ int cmdq_dev_get_client_reg(struct device *dev,
+ 	client_reg->size = (u16)spec.args[2];
+ 	of_node_put(spec.np);
+ 
++	client_reg->pkt_write = cmdq_pkt_write_subsys;
++	client_reg->pkt_write_mask = cmdq_pkt_write_mask_subsys;
++
+ 	return 0;
+ }
+ EXPORT_SYMBOL(cmdq_dev_get_client_reg);
+@@ -214,6 +227,26 @@ int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value)
+ }
+ EXPORT_SYMBOL(cmdq_pkt_write);
+ 
++int cmdq_pkt_write_pa(struct cmdq_pkt *pkt, u8 subsys /*unused*/, u32 pa_base,
++		      u16 offset, u32 value)
++{
++	int err;
++
++	err = cmdq_pkt_assign(pkt, CMDQ_THR_SPR_IDX0, CMDQ_ADDR_HIGH(pa_base));
++	if (err < 0)
++		return err;
++
++	return cmdq_pkt_write_s_value(pkt, CMDQ_THR_SPR_IDX0, CMDQ_ADDR_LOW(offset), value);
++}
++EXPORT_SYMBOL(cmdq_pkt_write_pa);
++
++int cmdq_pkt_write_subsys(struct cmdq_pkt *pkt, u8 subsys, u32 pa_base /*unused*/,
++			  u16 offset, u32 value)
++{
++	return cmdq_pkt_write(pkt, subsys, offset, value);
++}
++EXPORT_SYMBOL(cmdq_pkt_write_subsys);
++
+ int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
+ 			u16 offset, u32 value, u32 mask)
+ {
+@@ -231,6 +264,27 @@ int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
+ }
+ EXPORT_SYMBOL(cmdq_pkt_write_mask);
+ 
++int cmdq_pkt_write_mask_pa(struct cmdq_pkt *pkt, u8 subsys /*unused*/, u32 pa_base,
++			   u16 offset, u32 value, u32 mask)
++{
++	int err;
++
++	err = cmdq_pkt_assign(pkt, CMDQ_THR_SPR_IDX0, CMDQ_ADDR_HIGH(pa_base));
++	if (err < 0)
++		return err;
++
++	return cmdq_pkt_write_s_mask_value(pkt, CMDQ_THR_SPR_IDX0,
++					   CMDQ_ADDR_LOW(offset), value, mask);
++}
++EXPORT_SYMBOL(cmdq_pkt_write_mask_pa);
++
++int cmdq_pkt_write_mask_subsys(struct cmdq_pkt *pkt, u8 subsys, u32 pa_base /*unused*/,
++			       u16 offset, u32 value, u32 mask)
++{
++	return cmdq_pkt_write_mask(pkt, subsys, offset, value, mask);
++}
++EXPORT_SYMBOL(cmdq_pkt_write_mask_subsys);
++
+ int cmdq_pkt_read_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx, u16 addr_low,
+ 		    u16 reg_idx)
+ {
+diff --git a/include/linux/soc/mediatek/mtk-cmdq.h b/include/linux/soc/mediatek/mtk-cmdq.h
+index 3578cc9200e9..a06b5a61f337 100644
+--- a/include/linux/soc/mediatek/mtk-cmdq.h
++++ b/include/linux/soc/mediatek/mtk-cmdq.h
+@@ -57,6 +57,17 @@ struct cmdq_client_reg {
+ 	phys_addr_t pa_base;
+ 	u16 offset;
+ 	u16 size;
++
++	/*
++	 * Client only uses these functions for MMIO access,
++	 * so doesn't need to handle the mminfra_offset.
++	 * The mminfra_offset is used for DRAM access and
++	 * is handled internally by CMDQ APIs.
++	 */
++	int (*pkt_write)(struct cmdq_pkt *pkt, u8 subsys, u32 pa_base,
++			 u16 offset, u32 value);
++	int (*pkt_write_mask)(struct cmdq_pkt *pkt, u8 subsys, u32 pa_base,
++			      u16 offset, u32 value, u32 mask);
  };
  
-@@ -120,6 +128,45 @@ u8 cmdq_get_shift_pa(struct mbox_chan *chan)
- }
- EXPORT_SYMBOL(cmdq_get_shift_pa);
+ struct cmdq_client {
+@@ -124,6 +135,32 @@ void cmdq_pkt_destroy(struct cmdq_client *client, struct cmdq_pkt *pkt);
+  */
+ int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value);
  
-+static void cmdq_vm_init(struct cmdq *cmdq)
++/**
++ * cmdq_pkt_write_pa() - append write command to the CMDQ packet with pa_base
++ * @pkt:	the CMDQ packet
++ * @subsys:	unused parameter
++ * @pa_base:	the physical address base of the hardware register
++ * @offset:	register offset from CMDQ sub system
++ * @value:	the specified target register value
++ *
++ * Return: 0 for success; else the error code is returned
++ */
++int cmdq_pkt_write_pa(struct cmdq_pkt *pkt, u8 subsys /*unused*/,
++		      u32 pa_base, u16 offset, u32 value);
++
++/**
++ * cmdq_pkt_write_subsys() - append write command to the CMDQ packet with subsys
++ * @pkt:	the CMDQ packet
++ * @subsys:	the CMDQ sub system code
++ * @pa_base:	unused parameter
++ * @offset:	register offset from CMDQ sub system
++ * @value:	the specified target register value
++ *
++ * Return: 0 for success; else the error code is returned
++ */
++int cmdq_pkt_write_subsys(struct cmdq_pkt *pkt, u8 subsys,
++			  u32 pa_base /*unused*/, u16 offset, u32 value);
++
+ /**
+  * cmdq_pkt_write_mask() - append write command with mask to the CMDQ packet
+  * @pkt:	the CMDQ packet
+@@ -137,6 +174,34 @@ int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u32 value);
+ int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
+ 			u16 offset, u32 value, u32 mask);
+ 
++/**
++ * cmdq_pkt_write_mask_pa() - append write command with mask to the CMDQ packet with pa
++ * @pkt:	the CMDQ packet
++ * @subsys:	unused parameter
++ * @pa_base:	the physical address base of the hardware register
++ * @offset:	register offset from CMDQ sub system
++ * @value:	the specified target register value
++ * @mask:	the specified target register mask
++ *
++ * Return: 0 for success; else the error code is returned
++ */
++int cmdq_pkt_write_mask_pa(struct cmdq_pkt *pkt, u8 subsys /*unused*/,
++			   u32 pa_base, u16 offset, u32 value, u32 mask);
++
++/**
++ * cmdq_pkt_write_mask_subsys() - append write command with mask to the CMDQ packet with subsys
++ * @pkt:	the CMDQ packet
++ * @subsys:	the CMDQ sub system code
++ * @pa_base:	unused parameter
++ * @offset:	register offset from CMDQ sub system
++ * @value:	the specified target register value
++ * @mask:	the specified target register mask
++ *
++ * Return: 0 for success; else the error code is returned
++ */
++int cmdq_pkt_write_mask_subsys(struct cmdq_pkt *pkt, u8 subsys,
++			       u32 pa_base /*unused*/, u16 offset, u32 value, u32 mask);
++
+ /*
+  * cmdq_pkt_read_s() - append read_s command to the CMDQ packet
+  * @pkt:	the CMDQ packet
+@@ -421,12 +486,37 @@ static inline int cmdq_pkt_write(struct cmdq_pkt *pkt, u8 subsys, u16 offset, u3
+ 	return -ENOENT;
+ }
+ 
++static inline int cmdq_pkt_write_pa(struct cmdq_pkt *pkt, u8 subsys /*unused*/,
++				    u32 pa_base, u16 offset, u32 value)
 +{
-+	int i;
-+	u32 vm_cpr_gsize = 0, vm_id_map = 0;
-+	u32 *vm_map = NULL;
-+
-+	if (!cmdq->pdata->gce_vm)
-+		return;
-+
-+	vm_map = kcalloc(cmdq->pdata->thread_nr, sizeof(*vm_map), GFP_KERNEL);
-+	if (!vm_map)
-+		return;
-+
-+	/* only configure the max CPR SRAM size to host vm (vm_id = 0) currently */
-+	vm_cpr_gsize = GCE_VM_CPR_GSIZE_MAX << GCE_VM_CPR_GSIZE_FLD_SHIFT(0);
-+
-+	/* set all thread mapping to host vm currently */
-+	for (i = 0; i < cmdq->pdata->thread_nr; i++)
-+		vm_map[i] = GCE_VM_ID_MAP_HOST_VM << GCE_VM_ID_MAP_THR_FLD_SHIFT(i);
-+
-+	/* set the amount of CPR SRAM to allocate to each VM */
-+	writel(vm_cpr_gsize, cmdq->base + GCE_VM_CPR_GSIZE);
-+
-+	/* config CPR_GSIZE before setting VM_ID_MAP to avoid data leakage */
-+	for (i = 0; i < cmdq->pdata->thread_nr; i++) {
-+		vm_id_map |= vm_map[i];
-+		/* config every 10 threads, e.g., thread id=0~9, 10~19, ..., into one register */
-+		if ((i + 1) % 10 == 0) {
-+			writel(vm_id_map, cmdq->base + GCE_VM_ID_MAP(i));
-+			vm_id_map = 0;
-+		}
-+	}
-+	/* config remaining threads settings */
-+	if (cmdq->pdata->thread_nr % 10 != 0)
-+		writel(vm_id_map, cmdq->base + GCE_VM_ID_MAP(cmdq->pdata->thread_nr - 1));
-+
-+	kfree(vm_map);
++	return -ENOENT;
 +}
 +
- static void cmdq_gctl_value_toggle(struct cmdq *cmdq, bool ddr_enable)
++static inline int cmdq_pkt_write_subsys(struct cmdq_pkt *pkt, u8 subsys,
++					u32 pa_base /*unused*/, u16 offset, u32 value)
++{
++	return -ENOENT;
++}
++
+ static inline int cmdq_pkt_write_mask(struct cmdq_pkt *pkt, u8 subsys,
+ 				      u16 offset, u32 value, u32 mask)
  {
- 	u32 val = cmdq->pdata->control_by_sw ? GCE_CTRL_BY_SW : 0;
-@@ -164,6 +211,7 @@ static void cmdq_init(struct cmdq *cmdq)
+ 	return -ENOENT;
+ }
  
- 	WARN_ON(clk_bulk_enable(cmdq->pdata->gce_num, cmdq->clocks));
- 
-+	cmdq_vm_init(cmdq);
- 	cmdq_gctl_value_toggle(cmdq, true);
- 
- 	writel(CMDQ_THR_ACTIVE_SLOT_CYCLES, cmdq->base + CMDQ_THR_SLOT_CYCLES);
++static inline int cmdq_pkt_write_mask_pa(struct cmdq_pkt *pkt, u8 subsys /*unused*/,
++					 u32 pa_base, u16 offset, u32 value, u32 mask)
++{
++	return -ENOENT;
++}
++
++static inline int cmdq_pkt_write_mask_subsys(struct cmdq_pkt *pkt, u8 subsys,
++					     u32 pa_base /*unused*/, u16 offset,
++					     u32 value, u32 mask)
++{
++	return -ENOENT;
++}
++
+ static inline int cmdq_pkt_read_s(struct cmdq_pkt *pkt, u16 high_addr_reg_idx,
+ 				  u16 addr_low, u16 reg_idx)
+ {
 -- 
 2.43.0
 
