@@ -4,77 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 542D9CCF9FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Oct 2025 10:38:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 259AECCF9FA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Oct 2025 12:08:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qbEPrVN5uf0fCmTEAFFEClipAR87NGz/18xMdKAg5s8=; b=1mlUEYb/aIUVu8GTI7Qzus7WBV
-	cf2l2zgh7lqIL644OBVFfRezNka1vN1gvZmDYAvTsVh2avi5WkzVq33v2CDw7r+7pOrJ5gP7i0YMk
-	BVb+RJCjsr9pbqNJA65TBBfm2g608ZuxyYUs1xPt7sKIumRIPb2cARg20hT07hYjCnFULrw1BxYdE
-	SruPKgKPS1NMfRmE9jG37yRknVgCGAev1tQgIJ1YWat1yocGW3Oz12xRYGHgovJuf5qoKDgvw2v0T
-	907gEuShAhl9a8tFibcMDqnzDegzgIdfUYHLSrARK6dgieJHaFj7JWFac23Dz4oU2q4In7a4r110p
-	B61S8Hkg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3wQkIqFSxm4DwztQKNF4cKRvEGSUUnW60kfr9cFIuEU=; b=z3iLgA95aRQS00F/w/tM1xhzVQ
+	HGD7s1H0iMnRs2ROIye8QyDisErHMlVzGm1TcDzd3KozM94W5Vg7AInh8bhyNClcznCqBYWoM/VRc
+	mX8muZgAGhN/bkEC6uEiL0ugjKqa3OaRbDtEgHKDyos173gEYF9uRusuZRwI5eP0G43EVkO1yzRtq
+	RkBehZ63YSSN6l5JcppR0Rht+0S3DosjQAlVvu6vTk2+XiHPjAIeHbu/XxPjrU0Id69/HFyklB4ZN
+	fqcOJPQceihNQW0qg7fGuYLb8WwQ7QEEITyG3jDST+RnP4Sin4kB7apbjDHBtSxCWFhT2BbQp3OUi
+	9MMXsu7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEmWj-00000005uxo-1BV6;
-	Fri, 31 Oct 2025 10:38:37 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vEnvC-000000063Wg-3d03;
+	Fri, 31 Oct 2025 12:07:58 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEmWg-00000005ux4-0bVu;
-	Fri, 31 Oct 2025 10:38:35 +0000
+	id 1vEnvB-000000063WA-2hxj;
+	Fri, 31 Oct 2025 12:07:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7A0B8436A8;
-	Fri, 31 Oct 2025 10:38:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 372BFC4CEF8;
-	Fri, 31 Oct 2025 10:38:27 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id AF47661254;
+	Fri, 31 Oct 2025 12:07:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82C3BC4CEE7;
+	Fri, 31 Oct 2025 12:07:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761907113;
-	bh=pCW3mqiYKpJ+hdcxPaMD/6xe2J8m7xgEe48dlvDZ3gY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JTUrI/kpTP1FK7p2e+8hPfAZy7ga0BoJ9cSl7qZorGTNxxiKLgt6MZyK57ZH1Lr07
-	 6tcdKn+x6niUhnZl8r++Hx6gZMQvGcURlMLzPbdJefISbiIGWao0PzaldpHaRet2Pi
-	 Cq4+XtreH74oI49663XJEq8RhZy81HhMOo7ZF/v+h4a6GB9KlbXGyTSpmtPy28ONnE
-	 jR8BK8GJZqikTWRoRhv8xMpUxdqL6rTxF7QAawZaDAAcj8QW+gwoolUfWPi8C5eKSL
-	 s3Cenygcd5JjViuZ8K86iaUzocAk7iBxH3mc40jbKfBca0ugRTaQX5nIvmzjKiblQq
-	 H5F94Oe9DISAw==
-Date: Fri, 31 Oct 2025 10:38:24 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Jack Hsu <jh.hsu@mediatek.com>, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, jic23@kernel.org, dlechner@baylibre.com,
-	nuno.sa@analog.com, andy@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, srini@kernel.org,
-	ukleinek@kernel.org, gregkh@linuxfoundation.org,
-	jirislaby@kernel.org, daniel.lezcano@linaro.org, tglx@linutronix.de,
-	chunfeng.yun@mediatek.com, wim@linux-watchdog.org,
-	linux@roeck-us.net, sean.wang@mediatek.com,
-	zhiyong.tao@mediatek.com, andrew-ct.chen@mediatek.com,
-	lala.lin@mediatek.com, jitao.shi@mediatek.com,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pwm@vger.kernel.org,
-	linux-serial@vger.kernel.org, linux-usb@vger.kernel.org,
-	linux-watchdog@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v6 07/11] dt-bindings: usb: Support MediaTek MT8189 evb
- board xhci
-Message-ID: <20251031-overbid-renounce-e6f3b03ee18f@spud>
-References: <20251030134541.784011-1-jh.hsu@mediatek.com>
- <20251030134541.784011-8-jh.hsu@mediatek.com>
- <20251030-underwent-courier-1f4322e1cb34@spud>
- <20251031-nifty-sticky-hoatzin-eeafeb@kuoka>
+	s=k20201202; t=1761912476;
+	bh=FdIPLrzBazADvULcobccxNMUECw5dXroZ8Nui3p0uOg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=WbVCnwqIONAJBBxEzpEBdg+UMrZQzZhvOZ4ZviB3Mu6Y4i+eQ6B9xiQe/3lSty8J4
+	 4v2tlbV0XOKc8hoUcFvRY0zH+nlhe0Gn56a3S2xJmqnZtqz3zpc3RUmzciUeO7i4ew
+	 1yhd5i8jkJy/roBbcxrL6JVwfAmAPE6Th0uAbAy3o1NCZViv7wLwYNemMurtcjP62m
+	 43Yujj07cqiPXq+VS8D53Xd8uw5farO+6ZQpKkmP2Ggy1faZ6gcSdXee3ttHqiXoP2
+	 aSvNTds4qwjaCpWNGzkIbq03wBCsnbnuatJeesPmF0dkljqLx5Ci+SRHoZsiaioDku
+	 ODDwH6TOkpm5Q==
+Message-ID: <008ce91a-9037-4f18-9639-f1ccda277624@kernel.org>
+Date: Fri, 31 Oct 2025 13:07:51 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="YeQbD5mvaLkqbUCf"
-Content-Disposition: inline
-In-Reply-To: <20251031-nifty-sticky-hoatzin-eeafeb@kuoka>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251031_033834_262634_D4DA5C84 
-X-CRM114-Status: GOOD (  18.46  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v11 1/2] dt-bindings: memory: mediatek: Add SMI reset and
+ clamp for MT8188
+To: =?UTF-8?B?RnJpZGF5IFlhbmcgKOadqOmYsyk=?= <Friday.Yang@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20250917120724.8650-1-friday.yang@mediatek.com>
+ <20250917120724.8650-2-friday.yang@mediatek.com>
+ <5e3a0317-31b2-43f1-9a4b-b66447a6044d@kernel.org>
+ <1c84112b5a7fa48d8422f531e660aa1b49ec6487.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <1c84112b5a7fa48d8422f531e660aa1b49ec6487.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,61 +127,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 31/10/2025 07:10, Friday Yang (杨阳) wrote:
+> On Sat, 2025-10-18 at 18:42 +0200, Krzysztof Kozlowski wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> On 17/09/2025 14:07, Friday Yang wrote:
+>>> Add 'resets' and 'reset-names' properties for SMI LARBs to support
+>>> SMI reset operations.
+>>
+>> Not informative...
+>>
+>>> diff --git a/Documentation/devicetree/bindings/memory-
+>>> controllers/mediatek,smi-larb.yaml
+>>> b/Documentation/devicetree/bindings/memory-
+>>> controllers/mediatek,smi-larb.yaml
+>>> index 2e7fac4b5094..fc5feb2eac1f 100644
+>>> --- a/Documentation/devicetree/bindings/memory-
+>>> controllers/mediatek,smi-larb.yaml
+>>> +++ b/Documentation/devicetree/bindings/memory-
+>>> controllers/mediatek,smi-larb.yaml
+>>> @@ -70,6 +70,12 @@ properties:
+>>>      description: the hardware id of this larb. It's only required
+>>> when this
+>>>        hardware id is not consecutive from its M4U point of view.
+>>>
+>>> +  resets:
+>>> +    maxItems: 1
+>>> +
+>>> +  reset-names:
+>>> +    const: larb
+>>
+>> Is the reset valid for all existing devices as well? Commit msg does
+>> not
+>> explain that... it is pretty useless - you say what you did. We see
+>> that
+>> from the diff. Explain something not obvious.
+>>
+> 
+> Thanks, I could add more descriptions here, like below:
+> 
+> On the MediaTek MT8188 SoC, bus glitches may occur during MTCMOS
+> on/off transitions. To prevent these glitches from causing errors,
+> SMI requires clamp and reset operations. This issue specifically
+> affects the image, camera, and IPE subsystems. 
 
---YeQbD5mvaLkqbUCf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This explains why you need it. But I asked more questions than only "whY".
 
-On Fri, Oct 31, 2025 at 09:19:26AM +0100, Krzysztof Kozlowski wrote:
-> On Thu, Oct 30, 2025 at 07:32:26PM +0000, Conor Dooley wrote:
-> > On Thu, Oct 30, 2025 at 09:44:39PM +0800, Jack Hsu wrote:
-> > > modify dt-binding for support mt8189 evb board dts node of xhci
-> > >=20
-> > > Signed-off-by: Jack Hsu <jh.hsu@mediatek.com>
-> > > ---
-> > >  .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml         | 7 +++++=
-+-
-> > >  1 file changed, 6 insertions(+), 1 deletion(-)
-> > >=20
-> > > diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.=
-yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> > > index 004d3ebec091..05cb6a219e5c 100644
-> > > --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> > > +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> > > @@ -34,6 +34,7 @@ properties:
-> > >            - mediatek,mt8183-xhci
-> > >            - mediatek,mt8186-xhci
-> > >            - mediatek,mt8188-xhci
-> > > +          - mediatek,mt8189-xhci
-> > >            - mediatek,mt8192-xhci
-> > >            - mediatek,mt8195-xhci
-> > >            - mediatek,mt8365-xhci
-> > > @@ -119,6 +120,9 @@ properties:
-> > >    resets:
-> > >      maxItems: 1
-> > > =20
-> > > +  reset-names:
-> > > +    maxItems: 1
-> >=20
-> > Is this reset required on mt8189? Does it appear on other mediatek xhci
-> > controllers?
->=20
-> reset was there, it is the name added for some unknown reason.
+Read the question:
+"Is the reset valid for all existing devices as well?"
+Where is the answer for that? I still do not know...
 
-Ah, so not helpful at all since no name is defined and therefore making
-the property unusable :)
+Do not reply to only pieces of review.
 
---YeQbD5mvaLkqbUCf
-Content-Type: application/pgp-signature; name="signature.asc"
+> This change adds the
+> 'resets' and 'reset-names' properties to the SMI LARBs within
+> these subsystems to support the necessary reset operations.
 
------BEGIN PGP SIGNATURE-----
+Read again my message:
+" it is pretty useless - you say what you did"
+That's the same, drop.
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQSRnQAKCRB4tDGHoIJi
-0kPCAP96dXVUKgWcbJl1yhQ4f4EkFhlKfrn2Z7Gj6M2yxhUAZwD/XjwGvcKdjEOk
-OaeQJhtXQLUywWYtJY6pBr35YwUCWQo=
-=AXz7
------END PGP SIGNATURE-----
+So again you just cared to implement only piece of review.
 
---YeQbD5mvaLkqbUCf--
+Best regards,
+Krzysztof
 
