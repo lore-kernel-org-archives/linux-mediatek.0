@@ -4,79 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69739CCFA00
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Oct 2025 09:04:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 542D9CCF9FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Oct 2025 10:38:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uHKm1A+bMRYvDR5HosL+njjaPpB1qTXJ15tBVQlea+4=; b=2GEaXsV/RaDICbdh8lzuAF0RAu
-	x8FSoldUIFvCKavxvZ23jm/KjkIw4l7miashbrEWKPH+6JADYLrW4E2b37Atk4xw3SWD+7iLpARFi
-	VlKphX+Z+wSxa/2/FMFo9AU35EkgfHeAe9i97nmx3OIUhDLPofHVpzVhHFsZUpRSwR58gScfuRQ18
-	QTYF1kDryK69aoJVuLE6TVGb/qB//VhsWscZstCWYJSyx3SxMbtNfzSaqy9gHnUK0wA3XI7Hgy2r0
-	rY8sAKUYWtd8oLSqqdZFxuM2f9s6ejRBV94QnocE5hKYmAEtj8wMsiswxwFWldXXlLXyFuAIw72m/
-	ekwY+lQw==;
+	bh=qbEPrVN5uf0fCmTEAFFEClipAR87NGz/18xMdKAg5s8=; b=1mlUEYb/aIUVu8GTI7Qzus7WBV
+	cf2l2zgh7lqIL644OBVFfRezNka1vN1gvZmDYAvTsVh2avi5WkzVq33v2CDw7r+7pOrJ5gP7i0YMk
+	BVb+RJCjsr9pbqNJA65TBBfm2g608ZuxyYUs1xPt7sKIumRIPb2cARg20hT07hYjCnFULrw1BxYdE
+	SruPKgKPS1NMfRmE9jG37yRknVgCGAev1tQgIJ1YWat1yocGW3Oz12xRYGHgovJuf5qoKDgvw2v0T
+	907gEuShAhl9a8tFibcMDqnzDegzgIdfUYHLSrARK6dgieJHaFj7JWFac23Dz4oU2q4In7a4r110p
+	B61S8Hkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEl3U-00000005k5I-23z8;
-	Fri, 31 Oct 2025 09:04:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1vEmWj-00000005uxo-1BV6;
+	Fri, 31 Oct 2025 10:38:37 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEl3O-00000005k0k-0i44
-	for linux-mediatek@lists.infradead.org;
-	Fri, 31 Oct 2025 09:04:15 +0000
-X-UUID: 8f025aceb63811f09f706fa2197c6ceb-20251031
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=uHKm1A+bMRYvDR5HosL+njjaPpB1qTXJ15tBVQlea+4=;
-	b=M2SLMDbOqKMjQ2ClskmNBi74yeCrcH6y4i5lWne3GBdVLkOjC8wxH4BsZJXxtpOVayvFmlxJfH28vBniQfFcKdfz/y+UCOLz35RX3srXyZZOBRvD7FGcel6yI1uQ3sp8mj/GT8U2Rt/lH+eex3TZ13hdE40PWS1dEYxSPinctgM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:c07972b2-c9a0-4827-9e56-3056906e495b,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:2482e46a-d4bd-4ab9-8221-0049857cc502,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
-	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 8f025aceb63811f09f706fa2197c6ceb-20251031
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <mingyen.hsieh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 901263668; Fri, 31 Oct 2025 02:04:08 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Fri, 31 Oct 2025 17:04:05 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Fri, 31 Oct 2025 17:04:05 +0800
-From: Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <deren.wu@mediatek.com>, <Sean.Wang@mediatek.com>,
-	<Leon.Yen@mediatek.com>, <Michael.Lo@mediatek.com>,
-	<allan.wang@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
-	<km.lin@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
-	<Shayne.Chen@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Ming Yen Hsieh
-	<mingyen.hsieh@mediatek.com>
-Subject: [PATCH 3/6] wifi: mt76: mt7925: refactor regulatory notifier flow
-Date: Fri, 31 Oct 2025 17:03:49 +0800
-Message-ID: <20251031090352.1400079-4-mingyen.hsieh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20251031090352.1400079-1-mingyen.hsieh@mediatek.com>
-References: <20251031090352.1400079-1-mingyen.hsieh@mediatek.com>
+	id 1vEmWg-00000005ux4-0bVu;
+	Fri, 31 Oct 2025 10:38:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7A0B8436A8;
+	Fri, 31 Oct 2025 10:38:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 372BFC4CEF8;
+	Fri, 31 Oct 2025 10:38:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1761907113;
+	bh=pCW3mqiYKpJ+hdcxPaMD/6xe2J8m7xgEe48dlvDZ3gY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JTUrI/kpTP1FK7p2e+8hPfAZy7ga0BoJ9cSl7qZorGTNxxiKLgt6MZyK57ZH1Lr07
+	 6tcdKn+x6niUhnZl8r++Hx6gZMQvGcURlMLzPbdJefISbiIGWao0PzaldpHaRet2Pi
+	 Cq4+XtreH74oI49663XJEq8RhZy81HhMOo7ZF/v+h4a6GB9KlbXGyTSpmtPy28ONnE
+	 jR8BK8GJZqikTWRoRhv8xMpUxdqL6rTxF7QAawZaDAAcj8QW+gwoolUfWPi8C5eKSL
+	 s3Cenygcd5JjViuZ8K86iaUzocAk7iBxH3mc40jbKfBca0ugRTaQX5nIvmzjKiblQq
+	 H5F94Oe9DISAw==
+Date: Fri, 31 Oct 2025 10:38:24 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Jack Hsu <jh.hsu@mediatek.com>, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, jic23@kernel.org, dlechner@baylibre.com,
+	nuno.sa@analog.com, andy@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, srini@kernel.org,
+	ukleinek@kernel.org, gregkh@linuxfoundation.org,
+	jirislaby@kernel.org, daniel.lezcano@linaro.org, tglx@linutronix.de,
+	chunfeng.yun@mediatek.com, wim@linux-watchdog.org,
+	linux@roeck-us.net, sean.wang@mediatek.com,
+	zhiyong.tao@mediatek.com, andrew-ct.chen@mediatek.com,
+	lala.lin@mediatek.com, jitao.shi@mediatek.com,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pwm@vger.kernel.org,
+	linux-serial@vger.kernel.org, linux-usb@vger.kernel.org,
+	linux-watchdog@vger.kernel.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v6 07/11] dt-bindings: usb: Support MediaTek MT8189 evb
+ board xhci
+Message-ID: <20251031-overbid-renounce-e6f3b03ee18f@spud>
+References: <20251030134541.784011-1-jh.hsu@mediatek.com>
+ <20251030134541.784011-8-jh.hsu@mediatek.com>
+ <20251030-underwent-courier-1f4322e1cb34@spud>
+ <20251031-nifty-sticky-hoatzin-eeafeb@kuoka>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="YeQbD5mvaLkqbUCf"
+Content-Disposition: inline
+In-Reply-To: <20251031-nifty-sticky-hoatzin-eeafeb@kuoka>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251031_020414_293220_DB6AF7DF 
-X-CRM114-Status: GOOD (  14.59  )
+X-CRM114-CacheID: sfid-20251031_033834_262634_D4DA5C84 
+X-CRM114-Status: GOOD (  18.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,140 +89,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
 
-Rename mt7925_regd_update() to mt7925_mcu_regd_update() to centralize
-regd updates with error handling.
+--YeQbD5mvaLkqbUCf
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7925/pci.c   |  3 +-
- .../net/wireless/mediatek/mt76/mt7925/regd.c  | 49 +++++++++++++------
- .../net/wireless/mediatek/mt76/mt7925/regd.h  |  4 +-
- 3 files changed, 39 insertions(+), 17 deletions(-)
+On Fri, Oct 31, 2025 at 09:19:26AM +0100, Krzysztof Kozlowski wrote:
+> On Thu, Oct 30, 2025 at 07:32:26PM +0000, Conor Dooley wrote:
+> > On Thu, Oct 30, 2025 at 09:44:39PM +0800, Jack Hsu wrote:
+> > > modify dt-binding for support mt8189 evb board dts node of xhci
+> > >=20
+> > > Signed-off-by: Jack Hsu <jh.hsu@mediatek.com>
+> > > ---
+> > >  .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml         | 7 +++++=
++-
+> > >  1 file changed, 6 insertions(+), 1 deletion(-)
+> > >=20
+> > > diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.=
+yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+> > > index 004d3ebec091..05cb6a219e5c 100644
+> > > --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+> > > +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+> > > @@ -34,6 +34,7 @@ properties:
+> > >            - mediatek,mt8183-xhci
+> > >            - mediatek,mt8186-xhci
+> > >            - mediatek,mt8188-xhci
+> > > +          - mediatek,mt8189-xhci
+> > >            - mediatek,mt8192-xhci
+> > >            - mediatek,mt8195-xhci
+> > >            - mediatek,mt8365-xhci
+> > > @@ -119,6 +120,9 @@ properties:
+> > >    resets:
+> > >      maxItems: 1
+> > > =20
+> > > +  reset-names:
+> > > +    maxItems: 1
+> >=20
+> > Is this reset required on mt8189? Does it appear on other mediatek xhci
+> > controllers?
+>=20
+> reset was there, it is the name added for some unknown reason.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index c10f14386571..96bd3eb21133 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -6,6 +6,7 @@
- #include <linux/pci.h>
- 
- #include "mt7925.h"
-+#include "regd.h"
- #include "mac.h"
- #include "mcu.h"
- #include "regd.h"
-@@ -585,7 +586,7 @@ static int _mt7925_pci_resume(struct device *device, bool restore)
- 	if (!pm->ds_enable)
- 		mt7925_mcu_set_deep_sleep(dev, false);
- 
--	mt7925_regd_update(dev);
-+	mt7925_mcu_regd_update(dev, mdev->alpha2, dev->country_ie_env);
- failed:
- 	pm->suspended = false;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/regd.c b/drivers/net/wireless/mediatek/mt76/mt7925/regd.c
-index 9e7b468a8228..b36c6a6f5da6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/regd.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/regd.c
-@@ -111,29 +111,49 @@ mt7925_regd_channel_update(struct wiphy *wiphy, struct mt792x_dev *dev)
- 	}
- }
- 
--void mt7925_regd_update(struct mt792x_dev *dev)
-+int mt7925_mcu_regd_update(struct mt792x_dev *dev, u8 *alpha2,
-+			   enum environment_cap country_ie_env)
- {
--	struct mt76_dev *mdev = &dev->mt76;
--	struct ieee80211_hw *hw = mdev->hw;
-+	struct ieee80211_hw *hw = mt76_hw(dev);
- 	struct wiphy *wiphy = hw->wiphy;
-+	int ret = 0;
-+
-+	dev->regd_in_progress = true;
- 
-+	mt792x_mutex_acquire(dev);
- 	if (!dev->regd_change)
--		return;
-+		goto err;
-+
-+	ret = mt7925_mcu_set_clc(dev, alpha2, country_ie_env);
-+	if (ret < 0)
-+		goto err;
- 
--	mt7925_mcu_set_clc(dev, mdev->alpha2, dev->country_ie_env);
- 	mt7925_regd_channel_update(wiphy, dev);
--	mt7925_mcu_set_channel_domain(hw->priv);
--	mt7925_set_tx_sar_pwr(hw, NULL);
-+
-+	ret = mt7925_mcu_set_channel_domain(hw->priv);
-+	if (ret < 0)
-+		goto err;
-+
-+	ret = mt7925_set_tx_sar_pwr(hw, NULL);
-+	if (ret < 0)
-+		goto err;
-+
-+err:
-+	mt792x_mutex_release(dev);
- 	dev->regd_change = false;
-+	dev->regd_in_progress = false;
-+	wake_up(&dev->wait);
-+
-+	return ret;
- }
--EXPORT_SYMBOL_GPL(mt7925_regd_update);
-+EXPORT_SYMBOL_GPL(mt7925_mcu_regd_update);
- 
- void mt7925_regd_notifier(struct wiphy *wiphy, struct regulatory_request *req)
- {
- 	struct ieee80211_hw *hw = wiphy_to_ieee80211_hw(wiphy);
- 	struct mt792x_dev *dev = mt792x_hw_dev(hw);
--	struct mt76_dev *mdev = &dev->mt76;
- 	struct mt76_connac_pm *pm = &dev->pm;
-+	struct mt76_dev *mdev = &dev->mt76;
- 
- 	/* allow world regdom at the first boot only */
- 	if (!memcmp(req->alpha2, "00", 2) &&
-@@ -148,15 +168,14 @@ void mt7925_regd_notifier(struct wiphy *wiphy, struct regulatory_request *req)
- 	memcpy(mdev->alpha2, req->alpha2, 2);
- 	mdev->region = req->dfs_region;
- 	dev->country_ie_env = req->country_ie_env;
-+
- 	dev->regd_change = true;
- 
- 	if (pm->suspended)
-+		/* postpone the mcu update to resume */
- 		return;
- 
--	dev->regd_in_progress = true;
--	mt792x_mutex_acquire(dev);
--	mt7925_regd_update(dev);
--	mt792x_mutex_release(dev);
--	dev->regd_in_progress = false;
--	wake_up(&dev->wait);
-+	mt7925_mcu_regd_update(dev, req->alpha2,
-+			       req->country_ie_env);
-+	return;
- }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/regd.h b/drivers/net/wireless/mediatek/mt76/mt7925/regd.h
-index 5977e068c1c6..edcda72b12b0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/regd.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/regd.h
-@@ -6,8 +6,10 @@
- 
- #include "mt7925.h"
- 
-+int mt7925_mcu_regd_update(struct mt792x_dev *dev, u8 *alpha2,
-+			   enum environment_cap country_ie_env);
-+
- void mt7925_regd_be_ctrl(struct mt792x_dev *dev, u8 *alpha2);
--void mt7925_regd_update(struct mt792x_dev *dev);
- void mt7925_regd_notifier(struct wiphy *wiphy, struct regulatory_request *req);
- bool mt7925_regd_clc_supported(struct mt792x_dev *dev);
- 
--- 
-2.34.1
+Ah, so not helpful at all since no name is defined and therefore making
+the property unusable :)
 
+--YeQbD5mvaLkqbUCf
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQSRnQAKCRB4tDGHoIJi
+0kPCAP96dXVUKgWcbJl1yhQ4f4EkFhlKfrn2Z7Gj6M2yxhUAZwD/XjwGvcKdjEOk
+OaeQJhtXQLUywWYtJY6pBr35YwUCWQo=
+=AXz7
+-----END PGP SIGNATURE-----
+
+--YeQbD5mvaLkqbUCf--
 
