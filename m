@@ -4,72 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 547DCCCFA00
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Nov 2025 14:27:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E94DDCCFA00
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Nov 2025 14:38:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/ZYpUpOAXpJ+IKkb04BaHmWYt/5ffG0uR0XEO4qo4hU=; b=1SOzKvJR6aderSEi20NWovO4PY
-	D+ZEXQC9rvDROKuaN9DNaSRFesG92ijwKMb2kkjuu/CmO7i+IQXRie0Z6G2yKimTacV8gAzLGot+d
-	eqUopnAifZTN4DWK2nvSAt2E6LA1RMsw0idkzjkl7W0zhBI7cgE09Ugu5Ml5ABPZMV5U+8YgnVtor
-	gyH8kl4OkG/8y8AOvTur64DeTRGhjjHOHwlUjamTnmiC+FBghEzNbdMCyWFt9cAhNPSOe00cmByGN
-	keOt0cnKAcmip7uYP15c7EZ8TRIX1REL2cfS2LygW52OTWSzPkYKXZZLawQWby73+9uT4nNFMblLi
-	MPY0f8Lg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HkYm+o5ZrKQsoVDIa7Xk6T9MOu2JC8WhA3qTTbVvthE=; b=yGRLTmwcCOsAcM
+	zyPkw8HTtWqmhIH9y2WvI+jjvVPwTw9YmtSQKlHEsbmxqG/BZYmfj1ExsklMBmPeJnjm2HEPlCsJE
+	IoDnIhJtJ0UuyN+Bc6fccUaCUxeC8xZl1/VLI4aSLfKtNT1rO5jC0yMzDS2fq4eTQ3qSQU0ftQqCL
+	DwA4tYNlDKh5pEh7HlbzmoxJEAKdzTm9GofugqIJQ9MQPB+TbhMqBcBHobeDk3Y+trW0XMBOylgyo
+	3e3grJ3qBiMMdyygCbhO4MMV2UvBTp3BlCZ/HRP9MXvvGUHiHZvgTW/tABfvjjyrT+L0J+ksKL7WA
+	x1xoa1PKkrI+hp5GS7Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFCa7-00000007q44-16GE;
-	Sat, 01 Nov 2025 14:27:51 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vFCk4-00000007qSI-24nm;
+	Sat, 01 Nov 2025 14:38:08 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFCa4-00000007q3X-47t6
+	id 1vFCk1-00000007qRG-2oXU
 	for linux-mediatek@lists.infradead.org;
-	Sat, 01 Nov 2025 14:27:49 +0000
+	Sat, 01 Nov 2025 14:38:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E8AA1601F6
-	for <linux-mediatek@lists.infradead.org>; Sat,  1 Nov 2025 14:27:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90011C19423
-	for <linux-mediatek@lists.infradead.org>; Sat,  1 Nov 2025 14:27:45 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 060D844259
+	for <linux-mediatek@lists.infradead.org>; Sat,  1 Nov 2025 14:38:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3BE8C116C6
+	for <linux-mediatek@lists.infradead.org>; Sat,  1 Nov 2025 14:38:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762007265;
-	bh=lV3WbcP4L63VVdKmRFHTW2IFkZA0MqVRd2TKiW7+rwE=;
+	s=k20201202; t=1762007883;
+	bh=HkYm+o5ZrKQsoVDIa7Xk6T9MOu2JC8WhA3qTTbVvthE=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=L5Yny+RqR6ejBT6dWjFU5SPnufclvSK/b4ZmkHgMH6VFD/mWp5pBe6NBwWJvKh9WQ
-	 dsgceBxVUt+AO2fGJ7F7f4vOLZIkAgGFHdATQcvg9q0kcr9iabq4uwwJWy9kUzAwa/
-	 DoFWq7t+6T2yv6Ptrc+1xMFw9+2PuFR79bBKtT5OVGW5QUlQ4CXg6r4756IW3Qb5v7
-	 7J0q4ufSMc/E670BHmPOvjV+CV0F5R1Wsu0m4YJP2ZnJbv3BDCkn6uHoqDdpjcqTGE
-	 GNEOyFEnh+Zc8PEnjyMQkOUWtgLc+S/vNujsiam8gFVG3pcxFUM8cBPBRvB7oe3FfY
-	 5Cs7n7Dvgpnyw==
-Received: by mail-pg1-f173.google.com with SMTP id 41be03b00d2f7-b67ae7e76abso2342209a12.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 01 Nov 2025 07:27:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCWigUhKKgHYLsbFBq2Z7m0PGghfk2K4SEjiZTMTGzjhPYNk3PQryvELI9aN05s70AY37g6UZSOepg3gkuv2mw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwUNbDq3WIAtj0ocDnvn4Ec99sv8zfKu7mWwTrTM5ntWmfDeIQ9
-	wsW5V+sl9GvCC+Xgd6+seqtpEvIAWSqIlYGSks1Rpep9mlnoRJMJNO4y7XKZAFvQtdYn2FiUwOY
-	b4X1v03s95cOK/vi873A9svbv6Dsaew==
-X-Google-Smtp-Source: AGHT+IGnOFjLL6wAsT9pv5cIhcF/90Mw/1kp/7g3CvXtV1RTTu/pF5hz4dyECsPv9IpJsPMLjLxpTdmcXg7a1NiMbbo=
-X-Received: by 2002:a17:903:24f:b0:295:24ab:fb06 with SMTP id
- d9443c01a7336-29524abfc57mr60471485ad.22.1762007265054; Sat, 01 Nov 2025
- 07:27:45 -0700 (PDT)
+	b=URjaxQwj38MV9iQGYaolqDOCkpTUlKnSVuIzesiOnQhIW/2s3vUvTor5VZ2NOXl3r
+	 2cOYuzMs8TvXSCJ8GkZqcH1oQUmWVTrWNSWXi5IhOXmiLHJe3uxdq0rLgVBfTJ8bJG
+	 6LeOHDmU0rtBOaVQaj1TNa2WXeEM3ho0pa/OQLjuZfsNHTCHabjju0Kyu31tPVK2+R
+	 upnREDJ2Wk7qeLcnJwWXYXB5vxHv5n6TDRSW9lWW4rBw1dSZrsjB5LHmnGCe46CWu3
+	 iOtj3nJ7kghS2LWUPH5bO8f84VUPwjXtNBOiXUg+y1giOhYJ1aa0x3sJiuPs8K9+ra
+	 C2SbXRfQTUa+Q==
+Received: by mail-pg1-f176.google.com with SMTP id 41be03b00d2f7-b98eb673297so66960a12.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 01 Nov 2025 07:38:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCXZ+a0aT217gTFMtM6i1enFfLu7IN51+AJWuaAUYU53GtEDOYKUA9S+w8HZwc9PIi+9QlciRjuDACnJNXRgig==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzBoRVdHHCcgk67JG6ioLu4H3At+2SctYZjWf7UG9YZRFFToJVg
+	fBduUSNJqd0tfgiq3+K9vTYjRy37Y8yBMdEjkE0W0oRonDgOWkKJpkyfy6tQCotDsFj1nzqLYsH
+	LfAu82Qh6l0WPBe7v+XqAxGh4ILqWjw==
+X-Google-Smtp-Source: AGHT+IGVMak7HVgm2Kw7YYyD00KFk0fyKjURT+jhVGcUMpmtFlXzH6MEO5oeGDTKYtxCg8XT42xXcp+sjl4UzEP3ki0=
+X-Received: by 2002:a17:903:1ce:b0:27e:ec72:f62 with SMTP id
+ d9443c01a7336-2951a35eb36mr108901805ad.6.1762007883402; Sat, 01 Nov 2025
+ 07:38:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <20251024202756.811425-1-ariel.dalessandro@collabora.com>
-In-Reply-To: <20251024202756.811425-1-ariel.dalessandro@collabora.com>
+References: <20250829091727.3745415-1-jason-jh.lin@mediatek.com> <20250829091727.3745415-3-jason-jh.lin@mediatek.com>
+In-Reply-To: <20250829091727.3745415-3-jason-jh.lin@mediatek.com>
 From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Sat, 1 Nov 2025 14:27:32 +0000
-X-Gmail-Original-Message-ID: <CAAOTY__Ac8S3gnbx6RbVZrNzMcqSkE70xuq5ErbzAWPUh9moAA@mail.gmail.com>
-X-Gm-Features: AWmQ_bn-FuEPLjCksrS_ODh-bQvHMz1N_UARyqPo_gbgBDuh1txOjH8bx8rhYo0
-Message-ID: <CAAOTY__Ac8S3gnbx6RbVZrNzMcqSkE70xuq5ErbzAWPUh9moAA@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Disable AFBC support on Mediatek DRM driver
-To: "Ariel D'Alessandro" <ariel.dalessandro@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, greenjustin@chromium.org, 
-	sjoerd@collabora.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Date: Sat, 1 Nov 2025 14:37:51 +0000
+X-Gmail-Original-Message-ID: <CAAOTY_8inC0s+md84zyjqyrfvsd4Aruy=oVCVsZfhqkv6WPk4g@mail.gmail.com>
+X-Gm-Features: AWmQ_bnMutOthr5nfHuj9QF2tM6tPBJ9JUU0hnLlgQDkMeGZ7OwmHz0IXIzXIxk
+Message-ID: <CAAOTY_8inC0s+md84zyjqyrfvsd4Aruy=oVCVsZfhqkv6WPk4g@mail.gmail.com>
+Subject: Re: [PATCH v2 2/3] drm/mediatek: Add pm_runtime support for GCE power control
+To: Jason-JH Lin <jason-jh.lin@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251101_073805_776932_E44B7F82 
+X-CRM114-Status: UNSURE (   7.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,60 +79,18 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Singo Chang <singo.chang@mediatek.com>, dri-devel@lists.freedesktop.org, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Xiandong Wang <xiandong.wang@mediatek.com>, Jassi Brar <jassisinghbrar@gmail.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-media@vger.kernel.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Zhenxing Qin <zhenxing.qin@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Jarried Lin <jarried.lin@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, Xavier Chang <xavier.chang@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, Sirius Wang <sirius.wang@mediatek.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Ariel D'Alessandro <ariel.dalessandro@collabora.com> =E6=96=BC 2025=E5=B9=
-=B410=E6=9C=8824=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8B=E5=8D=888:28=E5=AF=
-=AB=E9=81=93=EF=BC=9A
+Jason-JH Lin <jason-jh.lin@mediatek.com> =E6=96=BC 2025=E5=B9=B48=E6=9C=882=
+9=E6=97=A5 =E9=80=B1=E4=BA=94 =E4=B8=8A=E5=8D=889:17=E5=AF=AB=E9=81=93=EF=
+=BC=9A
 >
-> Commit c410fa9b07c32 ("drm/mediatek: Add AFBC support to Mediatek DRM
-> driver") added AFBC support to Mediatek DRM and enabled the
-> 32x8/split/sparse modifier.
->
-> However, this is currently broken on Mediatek MT8188 (Genio 700 EVK
-> platform); tested using upstream Kernel and Mesa (v25.2.1), AFBC is used =
-by
-> default since Mesa v25.0.
->
-> Kernel trace reports vblank timeouts constantly, and the render is garble=
-d:
->
-> ```
-> [CRTC:62:crtc-0] vblank wait timed out
-> WARNING: CPU: 7 PID: 70 at drivers/gpu/drm/drm_atomic_helper.c:1835 drm_a=
-tomic_helper_wait_for_vblanks.part.0+0x24c/0x27c
-> [...]
-> Hardware name: MediaTek Genio-700 EVK (DT)
-> Workqueue: events_unbound commit_work
-> pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=3D--)
-> pc : drm_atomic_helper_wait_for_vblanks.part.0+0x24c/0x27c
-> lr : drm_atomic_helper_wait_for_vblanks.part.0+0x24c/0x27c
-> sp : ffff80008337bca0
-> x29: ffff80008337bcd0 x28: 0000000000000061 x27: 0000000000000000
-> x26: 0000000000000001 x25: 0000000000000000 x24: ffff0000c9dcc000
-> x23: 0000000000000001 x22: 0000000000000000 x21: ffff0000c66f2f80
-> x20: ffff0000c0d7d880 x19: 0000000000000000 x18: 000000000000000a
-> x17: 000000040044ffff x16: 005000f2b5503510 x15: 0000000000000000
-> x14: 0000000000000000 x13: 74756f2064656d69 x12: 742074696177206b
-> x11: 0000000000000058 x10: 0000000000000018 x9 : ffff800082396a70
-> x8 : 0000000000057fa8 x7 : 0000000000000cce x6 : ffff8000823eea70
-> x5 : ffff0001fef5f408 x4 : ffff80017ccee000 x3 : ffff0000c12cb480
-> x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0000c12cb480
-> Call trace:
->  drm_atomic_helper_wait_for_vblanks.part.0+0x24c/0x27c (P)
->  drm_atomic_helper_commit_tail_rpm+0x64/0x80
->  commit_tail+0xa4/0x1a4
->  commit_work+0x14/0x20
->  process_one_work+0x150/0x290
->  worker_thread+0x2d0/0x3ec
->  kthread+0x12c/0x210
->  ret_from_fork+0x10/0x20
-> ---[ end trace 0000000000000000 ]---
-> ```
->
-> Until this gets fixed upstream, disable AFBC support on this platform, as
-> it's currently broken with upstream Mesa.
+> Call pm_runtime_resume_and_get() before accessing GCE hardware in
+> mbox_send_message(), and invoke pm_runtime_put_autosuspend() in the
+> cmdq callback to release the PM reference and start autosuspend for
+> GCE. This ensures correct power management for the GCE device.
 
 Applied to mediatek-drm-fixes [1], thanks.
 
@@ -145,6 +101,8 @@ Regards,
 Chun-Kuang.
 
 >
-> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> Fixes: 8afe816b0c99 ("mailbox: mtk-cmdq-mailbox: Implement Runtime PM wit=
+h autosuspend")
+> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
 > ---
 
