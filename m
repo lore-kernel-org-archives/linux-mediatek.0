@@ -4,64 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63781CCFA02
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Oct 2025 18:16:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63087CCF9F0
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Nov 2025 06:34:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NzbDUivdbZHMfuBc4xDzyoycsdLc4AWCQGQkE2LD/fM=; b=pUxprsUM4QgKrY+Gq2p7GOyxG8
-	akQyO5vsA9tFPE0dmNKwhwfLi7U8zXE+qHOr4AKwACDz8HEvgTDkxciUnPrWYR8ZxB+dNv4x6GYYk
-	NPfDSGGxeiColxZjdvQO/6819tBlJJftNMd8KWlvgDgGPqRYEY5urief8PzfNUG3hxVfq5dduT5tN
-	EF0uP/oqvpvhNDhE60RqqifwzXppEd+oP3pqS3W3k7CtApH7zOwnUpNyuIp9UG7LKn+dKbqI0vzzp
-	pWncelMv/uCUZYlgL2W0B3EQUyiV0lQtDcLm9i1Zyt1hv4xMcVsj9+AFJXsWZCfNPtMM7nDcX3xPL
-	swpJuuyA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=k4uMSe78x9MAKNu3qV4wxr8gxc1tiD9vwEVTvch9RIY=; b=ddhfqQmqvG4EYMDAejoZrbZ9Ba
+	s0tbT1z64bixIP5/bxD/TanaDiwlbKfjtlOJvfBUuUnSXsBvCEQfB7wnARwPkCFa9pi6DHP5NedPM
+	Vk2HSgOcuFRo+OEnaH1eNJwFu+13ASGctXbvi7tD4kfzOaqPkjz/V04cwHaJC3c8l6J5SppPBnBrk
+	8KLnR6QePy/Sxo7/pGZoqkAQxDXTfjMjbInTfLq2wAOKq8qFB5tp6zlukWgv3Xivd9oLUE8jT1+7N
+	6zQDZK5/+xOjHawjFtyvI815ni9YKGA3x53sxBDBC28PJQU5BH9jSN51pGrYMjadW77o+ueeX8wih
+	KEmOkqbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEtg8-00000006bfx-3kR3;
-	Fri, 31 Oct 2025 18:16:48 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vF5CF-000000078Ez-2S2U;
+	Sat, 01 Nov 2025 06:34:43 +0000
+Received: from mgamail.intel.com ([192.198.163.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vEtg4-00000006bfB-1S5O;
-	Fri, 31 Oct 2025 18:16:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4DB056025C;
-	Fri, 31 Oct 2025 18:16:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E322C4CEE7;
-	Fri, 31 Oct 2025 18:16:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1761934603;
-	bh=JnGr5vUYfVAVza81n1ZuarMPqOm1k7qNnjeylSO/u4k=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=JmK3nULsKWb4OBVjVEIiQPxIWECn/zWUWrH03JI1dsV8J6T8ZSr5nuNescmInN8K9
-	 HYZ319GYROw8OfkDz2RIMOzkw3A2gnGjKgJKXtTuG2RvvOI7q01uk5C86vC3qcdPnT
-	 Z2CbDx/Yy7siPbUNnEJM/SSyRNAWzcsSpIOhH6YbuAF5wFeUvU2dzoXC9xgeDj+nzE
-	 Q7HznMnBwHtZTvBwlEytqTpb76ij7EVPGxwlIFTwKG+Yb8FxST0jYignNsySn0zLCo
-	 plMd3mzLB03sIZSkDRzK7oyh8y0NsfFB3bUMxVKw5Wc45xk+qnCiRMs24BQKQ1eAWf
-	 cYWPbbEMtIU4w==
-Date: Fri, 31 Oct 2025 11:16:41 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Eric Dumazet <edumazet@google.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Paolo Abeni <pabeni@redhat.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Add TCP LRO support
-Message-ID: <20251031111641.08471c44@kernel.org>
-In-Reply-To: <aQR2Z51Q45Zl99m_@lore-desk>
-References: <20250610-airoha-eth-lro-v1-1-3b128c407fd8@kernel.org>
-	<CANn89iJsNWkWzAJbOvaBNjozuLOQBcpVo1bnvfeGq5Zm6h9e=Q@mail.gmail.com>
-	<aEg1lvstEFgiZST1@lore-rh-laptop>
-	<20250611173626.54f2cf58@kernel.org>
-	<aEtAZq8Th7nOdakk@lore-rh-laptop>
-	<20250612155721.4bb76ab1@kernel.org>
-	<aFATYATliil63D5R@lore-desk>
-	<aQR2Z51Q45Zl99m_@lore-desk>
+	id 1vF5CA-000000078EN-2aZg;
+	Sat, 01 Nov 2025 06:34:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1761978878; x=1793514878;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=svHrHLDDhTnGKlEJaxJBVr2ClX4h1Mz3MZ8oZRBL50U=;
+  b=AA/r+Gjn9Al27h8TwX0jTQxhMjCMpZYb1xbERfrVBN5ycSOLYsBOuxGf
+   ROhdnBUGJ44VDnq6wOs+8/SZ1+m20Pxy0CTPHHFiMaQWr7odZmqZvus0E
+   fJ+Rl6shilzwzi24LIUJeCYkkBs5gvYPga/dkyIGVwzCREJp/XQCcoXuR
+   q8993T9AD3RmClzp7G92iWqIEnt2Kc9SqvJtqSRaJJuC4t9ifhd517+D6
+   uza0/2cxfNV1YabAcnRq6SC5/RSWbF5HZVtCXSJLzZQKXfPFAeSCLjZSG
+   hNeItuBPOxW4P+dhRsRfpsgUtIwkiLWjL2j8UlBxedE7PhjuZNPl+QuuS
+   A==;
+X-CSE-ConnectionGUID: pgo/3akhTVqbxez3fg33uA==
+X-CSE-MsgGUID: zeNmdqpeQVOjPAgpESy4ug==
+X-IronPort-AV: E=McAfee;i="6800,10657,11599"; a="74738845"
+X-IronPort-AV: E=Sophos;i="6.19,271,1754982000"; 
+   d="scan'208";a="74738845"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2025 23:34:31 -0700
+X-CSE-ConnectionGUID: TOVc8IFERiOx9yzGOalz9w==
+X-CSE-MsgGUID: bHthRj8XTdGc0S/Gcn+6Vw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,271,1754982000"; 
+   d="scan'208";a="185632982"
+Received: from lkp-server02.sh.intel.com (HELO 66d7546c76b2) ([10.239.97.151])
+  by orviesa006.jf.intel.com with ESMTP; 31 Oct 2025 23:34:26 -0700
+Received: from kbuild by 66d7546c76b2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1vF5Bw-000Nxw-1a;
+	Sat, 01 Nov 2025 06:34:24 +0000
+Date: Sat, 1 Nov 2025 14:33:29 +0800
+From: kernel test robot <lkp@intel.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	sboyd@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, mturquette@baylibre.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, laura.nao@collabora.com,
+	nfraprado@collabora.com, wenst@chromium.org,
+	y.oudjana@protonmail.com, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 7/7] clk: mediatek: Add support for MT6685 PM/Clock IC
+ Clock Controller
+Message-ID: <202511011423.LH8doBcv-lkp@intel.com>
+References: <20251027111343.21723-8-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251027111343.21723-8-angelogioacchino.delregno@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251031_233438_974637_A2DA0B4E 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,37 +94,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 31 Oct 2025 09:42:15 +0100 Lorenzo Bianconi wrote:
-> > > Hm, truesize is the buffer size, right? If the driver allocated n bytes
-> > > of memory for packets it sent up the stack, the truesizes of the skbs
-> > > it generated must add up to approximately n bytes.  
-> > 
-> > With 'truesize' I am referring to the real data size contained in the x-order
-> > page returned by the hw. If this size is small, I was thinking to just allocate
-> > a skb for it, copy the data from the x-order page into it and re-insert the
-> > x-order page into the page_pool running page_pool_put_full_page().
-> > Let me do some tests with order-2 page to see if the GRO can compensate the
-> > reduced page size.  
-> 
-> Sorry for the late reply about this item.
-> I carried out some comparison tests between GRO-only and GRO+LRO with order-2
-> pages [0]. The system is using a 2.5Gbps link. The device is receiving a single TCP
-> stream. MTU is set to 1500B.
-> 
-> - GRO only:			~1.6Gbps
-> - GRO+LRO (order-2 pages):	~2.1Gbps
-> 
-> In both cases we can't reach the line-rate. Do you think the difference can justify
-> the hw LRO support? Thanks in advance.
->  
-> [0] the hw LRO requires contiguous memory pages to work. I reduced the size to
-> order-2 from order-5 (original implementation).
+Hi AngeloGioacchino,
 
-I think we're mostly advising about real world implications of 
-the approach rather than nacking. I can't say for sure if potentially
-terrible skb->len/skb->truesize ratio will matter for a router
-application. Maybe not.
+kernel test robot noticed the following build errors:
 
-BTW is the device doing header-data split or the LRO frame has headers
-and payload in a single buffer?
+[auto build test ERROR on clk/clk-next]
+[also build test ERROR on linus/master v6.18-rc3 next-20251031]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/AngeloGioacchino-Del-Regno/clk-mediatek-Split-out-registration-from-mtk_clk_register_gates/20251027-191633
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git clk-next
+patch link:    https://lore.kernel.org/r/20251027111343.21723-8-angelogioacchino.delregno%40collabora.com
+patch subject: [PATCH v2 7/7] clk: mediatek: Add support for MT6685 PM/Clock IC Clock Controller
+config: arm-allmodconfig (https://download.01.org/0day-ci/archive/20251101/202511011423.LH8doBcv-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 15.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251101/202511011423.LH8doBcv-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202511011423.LH8doBcv-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/clk/mediatek/clk-mtk-spmi.c: In function 'mtk_spmi_clk_simple_probe':
+>> drivers/clk/mediatek/clk-mtk-spmi.c:48:20: error: implicit declaration of function 'devm_spmi_subdevice_alloc_and_add' [-Wimplicit-function-declaration]
+      48 |         sub_sdev = devm_spmi_subdevice_alloc_and_add(&pdev->dev, sparent);
+         |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>> drivers/clk/mediatek/clk-mtk-spmi.c:48:18: error: assignment to 'struct spmi_subdevice *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+      48 |         sub_sdev = devm_spmi_subdevice_alloc_and_add(&pdev->dev, sparent);
+         |                  ^
+   In file included from drivers/clk/mediatek/clk-mtk-spmi.c:16:
+>> drivers/clk/mediatek/clk-mtk-spmi.c:52:53: error: invalid use of undefined type 'struct spmi_subdevice'
+      52 |         regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mtk_spmi_clk_regmap_config);
+         |                                                     ^~
+   include/linux/regmap.h:775:20: note: in definition of macro '__regmap_lockdep_wrapper'
+     775 |                 fn(__VA_ARGS__, &_key,                                  \
+         |                    ^~~~~~~~~~~
+   drivers/clk/mediatek/clk-mtk-spmi.c:52:18: note: in expansion of macro 'devm_regmap_init_spmi_ext'
+      52 |         regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mtk_spmi_clk_regmap_config);
+         |                  ^~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+vim +/devm_spmi_subdevice_alloc_and_add +48 drivers/clk/mediatek/clk-mtk-spmi.c
+
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  21  
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  22  int mtk_spmi_clk_simple_probe(struct platform_device *pdev)
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  23  {
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  24  	struct regmap_config mtk_spmi_clk_regmap_config = {
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  25  		.reg_bits = 16,
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  26  		.val_bits = 8,
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  27  		.fast_io = true
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  28  	};
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  29  	struct device_node *node = pdev->dev.of_node;
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  30  	const struct mtk_spmi_clk_desc *mscd;
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  31  	struct spmi_subdevice *sub_sdev;
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  32  	struct spmi_device *sparent;
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  33  	struct regmap *regmap;
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  34  	int ret;
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  35  
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  36  	ret = of_property_read_u32(node, "reg", &mtk_spmi_clk_regmap_config.reg_base);
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  37  	if (ret)
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  38  		return ret;
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  39  
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  40  	/* If the max_register was not declared the pdata is not valid */
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  41  	mscd = device_get_match_data(&pdev->dev);
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  42  	if (mscd->max_register == 0)
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  43  		return -EINVAL;
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  44  
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  45  	mtk_spmi_clk_regmap_config.max_register = mscd->max_register;
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  46  
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  47  	sparent = to_spmi_device(pdev->dev.parent);
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27 @48  	sub_sdev = devm_spmi_subdevice_alloc_and_add(&pdev->dev, sparent);
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  49  	if (IS_ERR(sub_sdev))
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  50  		return PTR_ERR(sub_sdev);
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  51  
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27 @52  	regmap = devm_regmap_init_spmi_ext(&sub_sdev->sdev, &mtk_spmi_clk_regmap_config);
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  53  	if (IS_ERR(regmap))
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  54  		return PTR_ERR(regmap);
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  55  
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  56  	return mtk_clk_simple_probe_internal(pdev, node, mscd->desc, regmap);
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  57  }
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  58  EXPORT_SYMBOL_GPL(mtk_spmi_clk_simple_probe);
+80a000281742dc AngeloGioacchino Del Regno 2025-10-27  59  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
