@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3A7CCFA05
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Nov 2025 13:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C8D3CCFA07
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Nov 2025 13:33:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j/r2anqRW+90VM9McPY+HL40VXbPRjGoaWqnMpIZ0Fs=; b=nNK38aZV2n4zgVKNgaA1rf4zQA
-	Cz9VEECPCGGi6vCQ+WZVyXXvSYudZh3siLYgm6hrpn4hPxxfl55X/e8qb3pWYBnpYMFG46C1Hbtu7
-	HJM1u98aC7YZtN9wY9uxq9d/AV/rkyQ8o0KdnIhY293iIAjO97tQqyd/i21kOXbQWwWvHjMvCZmaJ
-	m9kb5hCp4GA+HY9QSTNUR4GaHqAQ0lCo8jowV5MstOG7HgZYO4U66PKst2pXotklz8I7X3vpEeQiJ
-	suztsFUBqub2lbRd4oH0gFJKjhFRuTOQ08XEdSTh2YYlw2O0nLQ3FAl8ZspFGxtuuzCoD7pK/TBPM
-	JP2BIWug==;
+	bh=n/NH5GdU5EFEoW2ZYOfmQZ7/xs1/do+wbxx4JY97i88=; b=0H/AFIFSQvDxrnnsMIIiwzVFkI
+	+zqTrUQWHd1e2M5DzJHM8fofhKmR/09NO2WX8yF3Aj+lUSGRkrkOJANhc8UyWKOwl9WDq1WtX+lf8
+	IIig8Tu2H3ct+A1MeVD/iGOa1LdiDqmxg5GlWKwIXfKjToyLUm5IFnQ2zX/QimfOu51Tfl5xSKbtv
+	UTmsjqEsCpOdiqAGo7t2kakfwac9AGDUmQGix0rXL0fEXFghH89X3vK62jP6a07T/WmrGiaFWrfSE
+	YezDoyohGDE+v8zZW428x2eh9XibNittCjCQhOVYe5EIFpMkW45Nyeybn+N/XEvSfu4fdD1KeI6TR
+	VrAyX18w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFBjE-00000007mId-0wnS;
-	Sat, 01 Nov 2025 13:33:12 +0000
+	id 1vFBjF-00000007mM1-41AM;
+	Sat, 01 Nov 2025 13:33:13 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFBj5-00000007m6C-3c4h;
-	Sat, 01 Nov 2025 13:33:06 +0000
+	id 1vFBj9-00000007m7k-3nxH;
+	Sat, 01 Nov 2025 13:33:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1762003979;
-	bh=JdKvpThqp3TDs4o0pkrFusvXBPtE9LtpoPmwO6qXgiM=;
+	bh=Khddq10rDTNCJC+WhHqWSm+UChMJ0XNPjzUvEysQkxg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=YrQ26eQGC1YfnQMn2fi1y6A2T2OIMmb/4gp8+HRvcriEUHM7R+wmXLzv/vW951JpW
-	 2qIvKr6JUtIYxOwAjVZj+6oxSzFupq5BFPFG7WV6sBdgpTstwgTPaqbUoLDfZOSCtx
-	 K3JWI+lJaFtjXouww/eXHUwUkroSA6MxpBtynLCmt8xpg5DZSdvZ3NXLvetpZ0VEWf
-	 iJAcTJ7xMBej+LtW8EfvH27oVNHN/cm5kx1GqO+uuucmtaWNZR7dH+11QGFief5zx8
-	 8gRlbG/OedZFjpsNvWZqVmPOmk0KyXKug6qR4TUm3nEIWKS/1LzAMihODet/dpSbe7
-	 vP1zhxaVIWQYw==
-Received: from beast.luon.net (simons.connected.by.freedominter.net [45.83.240.172])
+	b=U1A0ycTnOTMFInmhlHARM/cxFDiIstBqvq2sakPc///cWFfjXxPA1tikJgWkiOhlB
+	 RNVX6BK5PfhpqFPpqz8lmtyT3gv8vtCBjJmyTKajba1RWMjL6p/bZ3Mt//xYnHh7aY
+	 T3PK7r0RcPkQUSS1pBZQXBMubn3iEKD9KNxBb5v4bn2vdtmK0gtTxMEPbCLkUl9JZw
+	 r5CQbItPouyXCXhwXPJjKf+aIM7tfr33SupCpWxJI7nMs02Bn5t6Lk75Ka+OUMmUqd
+	 2wuCZWNWYGToSFhrIq9EfIUgnKQzXxm5hwrIqzWloCysutJvyse1RrIVV/3m4qRA6X
+	 1gwrNXKrLYoGA==
+Received: from beast.luon.net (unknown [IPv6:2a10:3781:2531::8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sjoerd)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 06A5817E140C;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 566AA17E1414;
 	Sat,  1 Nov 2025 14:32:59 +0100 (CET)
 Received: by beast.luon.net (Postfix, from userid 1000)
-	id 9792510E9D030; Sat, 01 Nov 2025 14:32:58 +0100 (CET)
+	id AAB2010E9D036; Sat, 01 Nov 2025 14:32:58 +0100 (CET)
 From: Sjoerd Simons <sjoerd@collabora.com>
-Date: Sat, 01 Nov 2025 14:32:49 +0100
-Subject: [PATCH v2 04/15] dt-bindings: PCI: mediatek-gen3: Add MT7981 PCIe
- compatible
+Date: Sat, 01 Nov 2025 14:32:52 +0100
+Subject: [PATCH v2 07/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
+ PCIe and USB
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251101-openwrt-one-network-v2-4-2a162b9eea91@collabora.com>
+Message-Id: <20251101-openwrt-one-network-v2-7-2a162b9eea91@collabora.com>
 References: <20251101-openwrt-one-network-v2-0-2a162b9eea91@collabora.com>
 In-Reply-To: <20251101-openwrt-one-network-v2-0-2a162b9eea91@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -76,13 +76,11 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, 
  linux-phy@lists.infradead.org, netdev@vger.kernel.org, 
  Daniel Golle <daniel@makrotopia.org>, Bryan Hinton <bryan@bryanhinton.com>, 
- Sjoerd Simons <sjoerd@collabora.com>, 
- Conor Dooley <conor.dooley@microchip.com>
+ Sjoerd Simons <sjoerd@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251101_063304_071558_E4A1C876 
-X-CRM114-Status: UNSURE (   9.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251101_063308_565224_2E63B83C 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,31 +95,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible string for MediaTek MT7981 PCIe Gen3 controller.
-The MT7981 PCIe controller is compatible with the MT8192 PCIe
-controller.
+Enable the PCIe controller and USB3 XHCI host on the OpenWrt One
+board. The USB controller is configured for USB 2.0 only mode, as the
+shared USB3/PCIe PHY is dedicated to PCIe functionality on this board.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 ---
-V1 -> V2: Improve commit subject
----
- Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ .../boot/dts/mediatek/mt7981b-openwrt-one.dts      | 45 ++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-index 0278845701ce8..4db700fc36ba7 100644
---- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-@@ -48,6 +48,7 @@ properties:
-     oneOf:
-       - items:
-           - enum:
-+              - mediatek,mt7981-pcie
-               - mediatek,mt7986-pcie
-               - mediatek,mt8188-pcie
-               - mediatek,mt8195-pcie
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+index 968b91f55bb27..5834273839c17 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+@@ -20,8 +20,53 @@ memory@40000000 {
+ 		reg = <0 0x40000000 0 0x40000000>;
+ 		device_type = "memory";
+ 	};
++
++	reg_3p3v: regulator-3p3v {
++		compatible = "regulator-fixed";
++		regulator-name = "fixed-3.3V";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		regulator-boot-on;
++		regulator-always-on;
++	};
++
++	reg_5v: regulator-5v {
++		compatible = "regulator-fixed";
++		regulator-name = "fixed-5V";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		regulator-boot-on;
++		regulator-always-on;
++	};
++};
++
++&pcie {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie_pins>;
++	status = "okay";
++};
++
++&pio {
++	pcie_pins: pcie-pins {
++		mux {
++			function = "pcie";
++			groups = "pcie_pereset";
++		};
++	};
+ };
+ 
+ &uart0 {
+ 	status = "okay";
+ };
++
++&usb_phy {
++	status = "okay";
++};
++
++&xhci {
++	phys = <&u2port0 PHY_TYPE_USB2>;
++	vusb33-supply = <&reg_3p3v>;
++	vbus-supply = <&reg_5v>;
++	mediatek,u3p-dis-msk = <0x01>;
++	status = "okay";
++};
 
 -- 
 2.51.0
