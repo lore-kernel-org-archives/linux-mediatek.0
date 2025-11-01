@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 065A9CCFA08
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8427CCFA09
 	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Nov 2025 13:33:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,47 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+HK5aUNHJuGOqzYfYTsVDKq6LYb/5EHw2h2TCmhcXuI=; b=V4WE7Eurun3OfOMXBy0BWixofb
-	/o6dkRw8CnY92p7kLl6aNCkVQ0dIKkKoDp9PHzRWnHvsvJmV7Zk1m1+YZTNvDH/m3l/aeebodUCwk
-	QqCLZPcLQliMUKuXBclyDwRC3qLXr00weQqVoa//adHpr+xUcvkimDaGXC0IVOIlZwdiVQXtO56QQ
-	eAtGgqKSDcVyX7csH9E8sxtnb0Sipow9dogyszbWHdxbvS74PkkJ/f80akuEHOXlvimpca+E6TaqK
-	2FG1k22/ba4qfZNMx1rvJx+Pgk4XxXoT+wjRsRJVw0acYKcyfU28ZCqJeeKo6JXWjNeRaDLEYWfqk
-	iNqmrrqw==;
+	bh=YTHvtBL+VZnUTHjrz6ClSw7+XPBkv6t8SxYxsbAo8Ew=; b=fpyKOkhM451YcY9DKd3a/V7F3T
+	mopVN7y5hLj95L4CKalC6NZCSFMvAE9V+0mpxLc1TBAwqzUCTkEC3f4xgGieXc58F/tGZXQbv+DZA
+	rgA6WXwGi3rwuKPhqrIfYHBSK3wJL3Z+IGp6jmbwl5fnNg+6ItDfbbAN5xrpxEeS4RdBqCquJPK43
+	kTWuU/FGnyI8NxeboYY6zFr7e3QxzZdngzt3AfKp2IYPIELVso/zi5Ayf33XXzXKahU/6Km5h/fGU
+	dRqnPLrreqgJwKN7R6F91cM8pGu/KuGW8xiToKzJkpLiFqC2awmB72ioCYqRvkhQVQn7I5S/nVGI1
+	kN1h+ubQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFBjA-00000007mAR-0lKE;
-	Sat, 01 Nov 2025 13:33:08 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vFBjB-00000007mC5-0O11;
+	Sat, 01 Nov 2025 13:33:09 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFBj5-00000007m64-0u73;
+	id 1vFBj6-00000007m6D-2C8c;
 	Sat, 01 Nov 2025 13:33:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1762003979;
-	bh=TML+7NIpD9ku6fMMNJ4M3sDNuPNu+rMvX1U1RKvDE/Y=;
+	bh=BNloXSmxfui+A+UD0vb6639VkVLh4h7qFS1iqqJUbUo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fS5BHcvi5NKG+PayXkzDIFxY7Y8m/3TPgiARnEqyD6D3CrOj9z3utuHzrvbZXwhnJ
-	 kXnsg0GSmRMe3nTgq3T9YmN4Xo1hAHjEe5UUAFdsFnFP4MX6HY+ZRw5ZkiXuTQaprE
-	 9Bb69eiqABYmuEpO5zHfwAqhHlNAETVAF04/CkeTT3xLukM7J9Zlp/7JNMOJMMnhq6
-	 aXj72/6mY5Di7+KnE9vfg7LfwnRti9EmJ9gI6ZGWSM9rqTmLx1H6Ov7xDOccXMJJ6y
-	 zIfefG8sDXNUVjw1mA1tkGOWgfvTqpZ+ht4/Xia735EskZ6IjWT6Mo0ay6wqEJq5uy
-	 K1v6mSQQwOrsQ==
+	b=Exv0LA1+cm4tyucEYwLSVQ2e31o0Ds9n13t8MWxGhKlyq8fbibv7MZTjR5SfEjP2a
+	 yKW2bOQNgifi80y3258kT7WHFFw8nAJLOKi0l53xZMfj5fk8E/FQ2Eu7bfjvbOYjyg
+	 jjp5R8fGy8PbAVI0slWBAd94x7Jz7lodS+1i1CptPHTLm+Nh96RTxcDNEqyB5Mts6g
+	 k0C1t1uNIBP5QW5TCOiSXIXAf7IhknDpnDzEqQLro+71V4Cq+zT1yDHL4wq7RsYp64
+	 pqk/4iaiRbj5qDwU+k/ixNWluxakcscVMdZgjcnWWsBQjBQKaY1W1YVfqugnVKT14Q
+	 DLBznDNB1sFXw==
 Received: from beast.luon.net (unknown [IPv6:2a10:3781:2531::8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sjoerd)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DA4E317E1091;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E56DE17E1402;
 	Sat,  1 Nov 2025 14:32:58 +0100 (CET)
 Received: by beast.luon.net (Postfix, from userid 1000)
-	id 88F2410E9D02A; Sat, 01 Nov 2025 14:32:58 +0100 (CET)
+	id 942EC10E9D02E; Sat, 01 Nov 2025 14:32:58 +0100 (CET)
 From: Sjoerd Simons <sjoerd@collabora.com>
-Date: Sat, 01 Nov 2025 14:32:46 +0100
-Subject: [PATCH v2 01/15] arm64: dts: mediatek: mt7981b: Configure UART0
- pinmux
+Date: Sat, 01 Nov 2025 14:32:48 +0100
+Subject: [PATCH v2 03/15] dt-bindings: mfd: syscon: Add mt7981-topmisc
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251101-openwrt-one-network-v2-1-2a162b9eea91@collabora.com>
+Message-Id: <20251101-openwrt-one-network-v2-3-2a162b9eea91@collabora.com>
 References: <20251101-openwrt-one-network-v2-0-2a162b9eea91@collabora.com>
 In-Reply-To: <20251101-openwrt-one-network-v2-0-2a162b9eea91@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -76,11 +75,12 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, 
  linux-phy@lists.infradead.org, netdev@vger.kernel.org, 
  Daniel Golle <daniel@makrotopia.org>, Bryan Hinton <bryan@bryanhinton.com>, 
- Sjoerd Simons <sjoerd@collabora.com>
+ Sjoerd Simons <sjoerd@collabora.com>, 
+ Conor Dooley <conor.dooley@microchip.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251101_063303_921908_DC69E546 
-X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-CacheID: sfid-20251101_063304_760481_583C600D 
+X-CRM114-Status: UNSURE (   8.58  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,44 +96,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add explicit pinctrl configuration for UART0
+This hardware block amongst other things includes a multiplexer for a
+high-speed Combo-Phy. This binding allows exposing the multiplexer
 
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 ---
-V1 -> V2: Move pinctrl to the soc dtsi as it's the only available
-          pinmux for the uart. And very rare for the pins to be used for
-          anything else.
----
- arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ Documentation/devicetree/bindings/mfd/syscon.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-index 58c99f2a25218..4fa35bbf0a9cd 100644
---- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-@@ -102,6 +102,8 @@ uart0: serial@11002000 {
- 			clocks = <&infracfg CLK_INFRA_UART0_SEL>,
- 				 <&infracfg CLK_INFRA_UART0_CK>;
- 			clock-names = "baud", "bus";
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&uart0_pins>;
- 			status = "disabled";
- 		};
- 
-@@ -229,6 +231,13 @@ pio: pinctrl@11d00000 {
- 			gpio-controller;
- 			#gpio-cells = <2>;
- 			#interrupt-cells = <2>;
-+
-+			uart0_pins: uart0-pins {
-+				mux {
-+					function = "uart";
-+					groups = "uart0";
-+				};
-+			};
- 		};
- 
- 		efuse@11f20000 {
+diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
+index 657c38175fba2..51511078c4c3b 100644
+--- a/Documentation/devicetree/bindings/mfd/syscon.yaml
++++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+@@ -193,6 +193,7 @@ properties:
+           - mediatek,mt2701-pctl-a-syscfg
+           - mediatek,mt2712-pctl-a-syscfg
+           - mediatek,mt6397-pctl-pmic-syscfg
++          - mediatek,mt7981-topmisc
+           - mediatek,mt7988-topmisc
+           - mediatek,mt8135-pctl-a-syscfg
+           - mediatek,mt8135-pctl-b-syscfg
 
 -- 
 2.51.0
