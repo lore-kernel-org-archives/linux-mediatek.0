@@ -4,80 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F0D0CCFA02
-	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Nov 2025 16:26:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D711CCFA00
+	for <linux-mediatek@archiver.kernel.org>; Sat,  1 Nov 2025 16:29:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AuGjjjSjK8IaKx5rRtQgI8Ir6Gzcng8H/sLW7BrpgEw=; b=DgIu6hzr4ub9mWf+ki3uQZapYD
-	P/FvQfMFKa2lkaIOdhJ0xAb5GTpPdmTMUuNowyvmhW4vTg/pRid4bH2kLMxLpEUf0DVglVstGy6LU
-	FQa5Z31EQDLI/b1Fw5+EFJSr0iGH1/e6c+EgNhOmrXGEsbsJ6xArEW0CkYxSiReB8eBX7fbXwyd5+
-	PWhTe6P6zonjhK/IgSKP1tFyLUBTISH5EeywTPRXMr+WXKX2TW7Y26MPdnoDvGfUvBjD/w11iBF7A
-	xW20FpGQRgVRCSa9Ay/6wy3Ez+yzxCgzByB+F3QPEgp+DOUpvWpQ47GQ8KjiwR43Lvnr3JEYp06AJ
-	p7LQTwPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mOOA+C1R49pgXQracXNdHSHDAKyKnXuVu8Nt5iEqIfs=; b=h9+VTHSFiup8UaH47hTbl6U3sp
+	QSlh1TBScquas1o4a4kOLcQzy+mJmJEZoGFVctxTuYyA6RMOK7pyvEdLAxETI3Frtw1LKdBSott5j
+	I8sz+T0dD0bT9HC5VIKghPQxU0jiQuJqIVzQygvWxAJ1+oWA36OPvnEZgifYbhXnf4EMkov7gdpST
+	wAjbtECsh0Bw8EFcUi+KxuHfm17RqjCQG54o6zBFRl0cLMwIlMP4sspwG3UUmvbbPKIZoQjiZO5Z4
+	2jWeYwLM4cBgDvGBgTpEM02FcIa8uZ593veyrt4qfupgN9CIojiesGE2sxSEYbUDn7sIkN17xEg0x
+	Uo2+3i0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFERH-00000007vor-0CHN;
-	Sat, 01 Nov 2025 16:26:51 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1vFETa-00000007w1q-391u;
+	Sat, 01 Nov 2025 16:29:17 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFERE-00000007voR-0YtB
-	for linux-mediatek@lists.infradead.org;
-	Sat, 01 Nov 2025 16:26:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1762014408; x=1793550408;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=LbTS5vdDEMlW/mplJsre4KeS5Vs1/FS7/QL071Ph3tQ=;
-  b=P7KidnX8VlYbIGf9P7CEuFLq8lE+W2Ccm5rHGVS4BWXhMvZG10YyDtKU
-   8faeqHgdMS28Hh19I3D1yyGa2ERZJuWkXDnFuursbUHeA7cdiAHupEFBU
-   GEzj+h2ckTxVKBo4HlJIXwhulRYB8tvQU36FEbhcaJ9KbRYQAbYGnEIiJ
-   ueEdpLZJ0IqQXprLyybS9ucjIFX14f3gln6plBpmo3H6zusHc37uQtjZs
-   HtC2ygwu6Y95aFL7RPuxuNdG+9HfS4Nv99X/CpaLs+PaMwFI6IaFBJQiR
-   VBIzWq9WCroEYMKFQisDqa584fztKJzj6OAf5B4tT9A/D84TC5HxUSVzk
-   w==;
-X-CSE-ConnectionGUID: dP2f3Pm9S86R8bH4Njpo8w==
-X-CSE-MsgGUID: JTab+W3/SWOwGAOSJyXsRQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11600"; a="74757330"
-X-IronPort-AV: E=Sophos;i="6.19,272,1754982000"; 
-   d="scan'208";a="74757330"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2025 09:26:48 -0700
-X-CSE-ConnectionGUID: jgtXkozeSnyPeHK3bz/SEA==
-X-CSE-MsgGUID: chY1btWiTxGTiqzguQB6sA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,272,1754982000"; 
-   d="scan'208";a="186440363"
-Received: from lkp-server02.sh.intel.com (HELO 66d7546c76b2) ([10.239.97.151])
-  by orviesa007.jf.intel.com with ESMTP; 01 Nov 2025 09:26:45 -0700
-Received: from kbuild by 66d7546c76b2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1vFER8-000OT6-2N;
-	Sat, 01 Nov 2025 16:26:42 +0000
-Date: Sun, 2 Nov 2025 00:25:49 +0800
-From: kernel test robot <lkp@intel.com>
-To: Caleb James DeLisle <cjd@cjdns.fr>, nbd@nbd.name, lorenzo@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com, sean.wang@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Caleb James DeLisle <cjd@cjdns.fr>
-Subject: Re: [PATCH] wifi: mt76: mmio_(read|write)_copy byte swap when on Big
- Endian
-Message-ID: <202511020028.smeiQhNk-lkp@intel.com>
-References: <20251027171759.1484844-1-cjd@cjdns.fr>
+	id 1vFETY-00000007w1D-20UD;
+	Sat, 01 Nov 2025 16:29:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5A57760142;
+	Sat,  1 Nov 2025 16:29:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F9A1C4CEF1;
+	Sat,  1 Nov 2025 16:28:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1762014551;
+	bh=mOOA+C1R49pgXQracXNdHSHDAKyKnXuVu8Nt5iEqIfs=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=BQxafMp292Sny2DJvfsRfD7LhATGsqCEfaNqeuS3nkX6fiGe9K4VSs3PErA1U+Qwe
+	 bQaJjq8HoT3eYDlg9HlkLZkQGv9wFrZyIfibLEwtMMgaUXcV48dyrh0OvHFxSvx2kH
+	 3GQxMudvC85ucDa7qDMg4fz0qLmSlNvhRmZWBJ9CN7zZ82zIqQxVP3cfvzSlhaDdVs
+	 2775tQVZalnjFTHwZXq+U2k8zgSZ9D6Q6DIDIsZrrtt7zbXa9xTuYSCigvUBi0HgU2
+	 Cgyajanlb/PE/oUxRiGAzE5shY/3J4pwOd4dvL8NIYwUosAhwpGoiTrkH4FgqRygoe
+	 hM6GjFdp4rDVA==
+Date: Sat, 1 Nov 2025 16:28:55 +0000
+From: Jonathan Cameron <jic23@kernel.org>
+To: Conor Dooley <conor@kernel.org>
+Cc: Jack Hsu <jh.hsu@mediatek.com>, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com,
+ andy@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, srini@kernel.org,
+ ukleinek@kernel.org, gregkh@linuxfoundation.org, jirislaby@kernel.org,
+ daniel.lezcano@linaro.org, tglx@linutronix.de, chunfeng.yun@mediatek.com,
+ wim@linux-watchdog.org, linux@roeck-us.net, sean.wang@mediatek.com,
+ zhiyong.tao@mediatek.com, andrew-ct.chen@mediatek.com,
+ lala.lin@mediatek.com, jitao.shi@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pwm@vger.kernel.org, linux-serial@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-watchdog@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v6 02/11] dt-bindings: iio: adc: Support MediaTek MT8189
+ evb board auxadc
+Message-ID: <20251101162855.303b3e5e@jic23-huawei>
+In-Reply-To: <20251030-deftly-lent-0588c4e910b1@spud>
+References: <20251030134541.784011-1-jh.hsu@mediatek.com>
+	<20251030134541.784011-3-jh.hsu@mediatek.com>
+	<20251030-deftly-lent-0588c4e910b1@spud>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251027171759.1484844-1-cjd@cjdns.fr>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251101_092648_184332_AF7A9AA9 
-X-CRM114-Status: GOOD (  10.34  )
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,53 +83,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Caleb,
+On Thu, 30 Oct 2025 19:30:39 +0000
+Conor Dooley <conor@kernel.org> wrote:
 
-kernel test robot noticed the following build warnings:
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> pw-bot: not-applicable
 
-[auto build test WARNING on wireless-next/main]
-[also build test WARNING on wireless/main linus/master v6.18-rc3 next-20251031]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Caleb-James-DeLisle/wifi-mt76-mmio_-read-write-_copy-byte-swap-when-on-Big-Endian/20251028-012349
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-patch link:    https://lore.kernel.org/r/20251027171759.1484844-1-cjd%40cjdns.fr
-patch subject: [PATCH] wifi: mt76: mmio_(read|write)_copy byte swap when on Big Endian
-config: loongarch-randconfig-r111-20251101 (https://download.01.org/0day-ci/archive/20251102/202511020028.smeiQhNk-lkp@intel.com/config)
-compiler: loongarch64-linux-gcc (GCC) 15.1.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251102/202511020028.smeiQhNk-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202511020028.smeiQhNk-lkp@intel.com/
-
-sparse warnings: (new ones prefixed by >>)
-   drivers/net/wireless/mediatek/mt76/mmio.c:41:24: sparse: sparse: cast from restricted __le32
->> drivers/net/wireless/mediatek/mt76/mmio.c:41:24: sparse: sparse: incorrect type in argument 1 (different base types) @@     expected unsigned int [usertype] value @@     got restricted __le32 [usertype] @@
-   drivers/net/wireless/mediatek/mt76/mmio.c:41:24: sparse:     expected unsigned int [usertype] value
-   drivers/net/wireless/mediatek/mt76/mmio.c:41:24: sparse:     got restricted __le32 [usertype]
-   drivers/net/wireless/mediatek/mt76/mmio.c:63:23: sparse: sparse: cast to restricted __le32
-
-vim +41 drivers/net/wireless/mediatek/mt76/mmio.c
-
-    32	
-    33	static void mt76_mmio_write_copy_portable(void __iomem *dst,
-    34						  const u8 *src, int len)
-    35	{
-    36		__le32 val;
-    37		int i = 0;
-    38	
-    39		for (i = 0; i < ALIGN(len, 4); i += 4) {
-    40			memcpy(&val, src + i, sizeof(val));
-  > 41			writel(cpu_to_le32(val), dst + i);
-    42		}
-    43	}
-    44	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Applied.
 
