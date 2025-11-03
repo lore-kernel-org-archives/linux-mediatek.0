@@ -4,74 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E44E4CCF9FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Nov 2025 06:21:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70E7DCCF9FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Nov 2025 08:43:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6KEPQoelIaSRZixu2FcCj8GjygNUojPP6SBnzoaIaQY=; b=Z2IZY8H9ilhZQvACyXGbkRCEzI
-	Jdalszb+x5skCGS5H2TY8wJTTocGtgqkG/N4aIaRIuCR6LdT+f3B74sf4GtTzfNctqmBw0pctW2Dx
-	RhKY6tYsGuTZAaHRe9H/Vr1lI/rZaihjEtk54KGlH4Y20MS1FrFWfZbmMlK5CMmz1r7cN5HXKaTjp
-	2edK+ntpWYdacREvUDRu+Vxtb66JQ43ZDXgr+y6WnJiTM6SbtiVD6gfH3FPOHHFntV6kceIgAEkQ9
-	jH0iySR9jMAlcd8jo6EVA0t9QF9J2x6cagjEGCVCB/eZew3PkumFNHLAQ8m0yTV/5GpHZRlIu21B3
-	eI41AeBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yeEKvt5PR3N6vS9faWgOyzCqr3AmNyMgGp53vZkntJE=; b=JGi227DyWPcfFxaD02YAjSVBb1
+	H8eJe3sUBzzsyZaO0jpgGnzfXsbiA1J/FTelo8baWXHw8epDTopfkvEDrp/Yj3B67TrxwesplXRCp
+	Kd2V1Qst0Lqb6ADTTT7S8U3NAnX2nqNta74cl5JeTizrDc8xB9UTt/EJdefEPpXG6Wmn/31rDh7hw
+	b8Nxw3XTuSJyv/ubMPyc1NFmLlhPgRJzPebSGpTuvD5ucvgwskX9nbXHMo9MT0Y2swIbLHp5EoYBc
+	7G46vN+7beuaEJIMU+WpJcbZnBwIoyzTvpAp9p38o7XwKFqkh6qyZ7wO6vdMT9EeVPizM4PSI67NB
+	Z6XQR4IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFnwI-00000009HiY-1Zu5;
-	Mon, 03 Nov 2025 06:21:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1vFqAN-00000009SLA-0SB2;
+	Mon, 03 Nov 2025 08:43:55 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFnwG-00000009HiA-0xLA;
-	Mon, 03 Nov 2025 06:21:13 +0000
-X-UUID: 48b3e1a4b87d11f09f706fa2197c6ceb-20251102
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6KEPQoelIaSRZixu2FcCj8GjygNUojPP6SBnzoaIaQY=;
-	b=J9TbzQkf1RHiwoyYg21ABsKdPvvFSeDE8fysDSeEBh/wNpaZb0E8njL1q9N28N/m4RFHPNDKJYJ49yQ9FB9Dnf5y//6hgiFKO2UwXnT7aSoaR6U486oK4wphWeQ64lww3ablwnXiqqmA75Nvfyrbg3gXYnNb9xpg6808+w0zp6c=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:07505295-e663-4ecd-97e6-af9574ae6d34,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:a9d874c,CLOUDID:d271d918-3399-4579-97ab-008f994989ea,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 48b3e1a4b87d11f09f706fa2197c6ceb-20251102
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <ot_zexin.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1803432438; Sun, 02 Nov 2025 23:21:07 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Mon, 3 Nov 2025 14:20:59 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Mon, 3 Nov 2025 14:20:58 +0800
-From: Zexin Wang <ot_zexin.wang@mediatek.com>
-To: Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Zexin Wang
-	<ot_zexin.wang@mediatek.com>, Jack Hsu <jh.hsu@mediatek.com>
-Subject: [PATCH] reset-controller: ti: introduce a new reset handler
-Date: Mon, 3 Nov 2025 14:21:00 +0800
-Message-ID: <20251103062103.32697-1-ot_zexin.wang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1vFqAJ-00000009SKC-1cqp;
+	Mon, 03 Nov 2025 08:43:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1762159427;
+	bh=8tuJsROwI2VzZ5xr0xXLp3Zh781ZfsXiSloTIPD4CrM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kB+jhMCM1GHi+MeyUo5A2D2Nl2Zaj4w0rJ0MtcoWUiZRrLwlQXY18GUWmUIdC6Qtz
+	 Hm/2tah1AkhRImWrzcwBH9eWu8zkbl6eoxm70yGutoNNZlNjJCGFifITnFUw3mT2Nc
+	 wvb59Iqh937c9S4bPXnwsRXxFoFpIxLcxdkjc7b7uCuWLmtQQ69tzgsoc9IPU5ye2s
+	 XppA6l5hCm/mMApe2zwkPeLlLikVgqeG3BBy5A5U6I3IUXSSaq8es3RhhKEeGctTIM
+	 XTtMgYmMybm2OXIsUt3yIYx9aU3EgPTJ0RcA5cEgcIIKJ96gyL1PExd9QVNV+8UQzQ
+	 1z2HMVD+If0Ng==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id ECECB17E090D;
+	Mon,  3 Nov 2025 09:43:45 +0100 (CET)
+Message-ID: <75a89547-6f21-4f89-8091-375e7013c26d@collabora.com>
+Date: Mon, 3 Nov 2025 09:43:45 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 08/15] dt-bindings: net: mediatek,net: Correct bindings
+ for MT7981
+To: Sjoerd Simons <sjoerd@collabora.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Lee Jones <lee@kernel.org>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
+ linux-phy@lists.infradead.org, netdev@vger.kernel.org,
+ Daniel Golle <daniel@makrotopia.org>, Bryan Hinton <bryan@bryanhinton.com>
+References: <20251101-openwrt-one-network-v2-0-2a162b9eea91@collabora.com>
+ <20251101-openwrt-one-network-v2-8-2a162b9eea91@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20251101-openwrt-one-network-v2-8-2a162b9eea91@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251102_222112_281308_36C1689B 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20251103_004351_589102_1F38727D 
+X-CRM114-Status: UNSURE (   6.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,91 +93,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce ti_syscon_reset() to integrate assert and deassert together.
-If some modules need do serialized assert and deassert operations
-to reset itself, reset_control_reset can be called for convenience.
+Il 01/11/25 14:32, Sjoerd Simons ha scritto:
+> Different SoCs have different numbers of Wireless Ethernet
+> Dispatch (WED) units:
+> - MT7981: Has 1 WED unit
+> - MT7986: Has 2 WED units
+> - MT7988: Has 2 WED units
+> 
+> Update the binding to reflect these hardware differences. The MT7981
+> also uses infracfg for PHY switching, so allow that property.
+> 
+> Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 
-Signed-off-by: Zexin Wang <ot_zexin.wang@mediatek.com>
----
- drivers/reset/reset-ti-syscon.c | 34 +++++++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-diff --git a/drivers/reset/reset-ti-syscon.c b/drivers/reset/reset-ti-syscon.c
-index 23f86ddb8668..f37685e32b0a 100644
---- a/drivers/reset/reset-ti-syscon.c
-+++ b/drivers/reset/reset-ti-syscon.c
-@@ -7,6 +7,7 @@
-  *	Suman Anna <afd@ti.com>
-  */
- 
-+#include <linux/delay.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
-@@ -42,12 +43,14 @@ struct ti_syscon_reset_control {
-  * @regmap: regmap handle containing the memory-mapped reset registers
-  * @controls: array of reset controls
-  * @nr_controls: number of controls in control array
-+ * @reset_duration_us: time of controller assert reset
-  */
- struct ti_syscon_reset_data {
- 	struct reset_controller_dev rcdev;
- 	struct regmap *regmap;
- 	struct ti_syscon_reset_control *controls;
- 	unsigned int nr_controls;
-+	unsigned int reset_duration_us;
- };
- 
- #define to_ti_syscon_reset_data(_rcdev)	\
-@@ -150,9 +153,37 @@ static int ti_syscon_reset_status(struct reset_controller_dev *rcdev,
- 		!(control->flags & STATUS_SET);
- }
- 
-+/**
-+ * ti_syscon_reset() - perform a full reset cycle on a device
-+ * @rcdev: reset controller entity
-+ * @id: ID of the reset to be asserted and deasserted
-+ *
-+ * This function performs a full reset cycle by asserting and then
-+ * deasserting the reset signal for a device. It ensures the device
-+ * is properly reset and ready for operation.
-+ *
-+ * Return: 0 for successful request, else a corresponding error value
-+ */
-+static int ti_syscon_reset(struct reset_controller_dev *rcdev,
-+		   unsigned long id)
-+{
-+	struct ti_syscon_reset_data *data = to_ti_syscon_reset_data(rcdev);
-+	int ret;
-+
-+	ret = ti_syscon_reset_assert(rcdev, id);
-+	if (ret)
-+		return ret;
-+
-+	if (data->reset_duration_us)
-+		usleep_range(data->reset_duration_us, data->reset_duration_us * 2);
-+
-+	return ti_syscon_reset_deassert(rcdev, id);
-+}
-+
- static const struct reset_control_ops ti_syscon_reset_ops = {
- 	.assert		= ti_syscon_reset_assert,
- 	.deassert	= ti_syscon_reset_deassert,
-+	.reset		= ti_syscon_reset,
- 	.status		= ti_syscon_reset_status,
- };
- 
-@@ -196,6 +227,9 @@ static int ti_syscon_reset_probe(struct platform_device *pdev)
- 		controls[i].flags = be32_to_cpup(list++);
- 	}
- 
-+	of_property_read_u32(pdev->dev.of_node, "reset-duration-us",
-+			     &data->reset_duration_us);
-+
- 	data->rcdev.ops = &ti_syscon_reset_ops;
- 	data->rcdev.owner = THIS_MODULE;
- 	data->rcdev.of_node = np;
--- 
-2.45.2
 
 
