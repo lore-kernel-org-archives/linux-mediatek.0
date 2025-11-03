@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D02BCCFA04
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Nov 2025 09:39:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0088DCCFA04
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Nov 2025 10:28:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AzF1wv7OgUKBuoRH1tQc4XrNP7Nk1RBu9PVX/fUvc6w=; b=p4DE2D/bxfUzilC7i8LV/WIpWy
-	JFPlBwyMyd7267WuGmZDbZ4PltsZrwDcwEZgbHMtZkDrP4vcRMgsE/o1Wr2gRBfh4QYbr3d91lPDy
-	/lnZNz7WahIUnt755Tk/OfM2p7gXuKx/81n9IzTRn2gjraPOCZD07EbaArAcr8t8eo2AnJOAIfTQL
-	QeQoV2Uf/iMSKMPlZ6xXqAmdhjLXFNzQCueCY1joWi2BdR4yrsHtHH+vd1EFsz8KXeHS8pCoVRM4M
-	RIO6uY+OehgAJkFUe2e6JeFoxd5yHqDscyuEhdSrBG96RBUP/8IHtif28s6pe0SF6Pevn6ut7UkSb
-	gGZ350vQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=irnzlpr+GOroWi6mq5hj25vM9pvWUOBW8srFhikV8xA=; b=bcr+QiF1RDelfM
+	Cf+RKh3hkSPvLyMM9+bCrfkBgeDUWWXSOIJqXO42lju2YoyXGZmaBUvlwq1w07tqQ84Pe6w3Xx9a2
+	+1Eh/RMb2yA+seMzInhFoyHmHOqzdVasCACzSY9GWS+xtHsiAX89Ux9CaN5lUwValwnxoRMZGZjwT
+	0pz8iYrIf26/cXSmf0x7OwCHqzech3D+rJUB2w5zPSfLAqWc6j1upim8kMcwXSD+Yag15upMqcnvq
+	9o/76cHIL0VXaU7b7lllUlZK4OA/yQs7IF0oOt/ARPwz2haAYdXw9NxIp2wF3DCfDT+QEd555iZ4a
+	Riua1n8CcOxDeeEZpN3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFr2F-00000009Wh1-06ng;
-	Mon, 03 Nov 2025 09:39:35 +0000
+	id 1vFrnQ-00000009d0m-2LBX;
+	Mon, 03 Nov 2025 10:28:20 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFr2D-00000009Wgn-2lUq;
-	Mon, 03 Nov 2025 09:39:33 +0000
+	id 1vFrnO-00000009d0P-2RI2;
+	Mon, 03 Nov 2025 10:28:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7CC6560055;
-	Mon,  3 Nov 2025 09:39:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3542C4CEFD;
-	Mon,  3 Nov 2025 09:39:31 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A7EDF60007;
+	Mon,  3 Nov 2025 10:28:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0336FC4CEE7;
+	Mon,  3 Nov 2025 10:28:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762162772;
-	bh=74xTa1alepkXuLAJggdVWdu19FLOXxI8tg4rxRqpq10=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aWxrWply1t/qhJLrulY0PUa6pjoYucGLbqzRzXOYHGA7T2aNuhDZgBWJyTPk+KgbF
-	 YL5RaPIgr3MwZHw+7/KFDKWYNaJlnECOhrwvH5xoVIqkcXafleWxGaDAPT/E5YFUNZ
-	 DYBI4IukWOwTI+ATD91xP1V3n5IS+Vi0/K/GAjN860CoLntKpLd71X4E5Fi4G/Nqa0
-	 46wtYNsfddKPkHt8f4LCSFrucRsmOQPYgPOs0i898jRRyUIUu38ziU5v30xaVcvLyL
-	 TW8bWqQOXx78nB1+A8crUEmN2ciaXtN7MbpLzFHh43oeOlkdjb3+vRWRwqqSPGzpIi
-	 VORLel3UFeyhQ==
-Date: Mon, 3 Nov 2025 10:39:29 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Cyril Chao <Cyril.Chao@mediatek.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v3 09/10] ASoC: dt-bindings: mediatek,mt8189-nau8825: add
- mt8189-nau8825 document
-Message-ID: <20251103-handsome-fractal-stoat-8b82ca@kuoka>
-References: <20251031073216.8662-1-Cyril.Chao@mediatek.com>
- <20251031073216.8662-10-Cyril.Chao@mediatek.com>
+	s=k20201202; t=1762165697;
+	bh=NmlZXXYg+7teCHm0X3usXxWwSJfTnQa0ZnnwvQ/twLs=;
+	h=From:Subject:Date:To:Cc:From;
+	b=VHNLpDNguNBJ95eK5T0Tcs8Ir+xnuehPRBSTcWs+irj1PKmVZJD8fJaHGEzHikeOu
+	 InfRRxpGegUM1JEl3JwoTBp0FAqjc6BWJ9MLvqdmN5Bm11sTuxjHY9TSQrSHfKOYez
+	 Ri4xxbOgAgGh6rdR46QFxyGMZ+NPu3Rw4PkZtk1hgNxMLfVlaOI1vE3KjH4kPRlMB1
+	 AH6iCkNzI3Uxg1MUdNHSNYqF4kp3XAVkHjVIEK1Qu3hphyslu5GXFuLGxQCBK+5DkM
+	 8CVIIwEW7UjU7jRAQ5/oYX+4EidU7qUsVInqbIo1Jjo27LoqJiZKqaxwih+uFyoERW
+	 mOql41vAqasEA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next 0/2] net: airoha: Allow mapping out-of-order DMA
+ tx descriptors
+Date: Mon, 03 Nov 2025 11:27:54 +0100
+Message-Id: <20251103-airoha-tx-linked-list-v1-0-baa07982cc30@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20251031073216.8662-10-Cyril.Chao@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAKqDCGkC/x2MywqAIBAAfyX23IIK0eNXosOaWy6FhUYE4b8nn
+ YY5zLyQOAonGKoXIt+S5AhFdF3B7CmsjOKKg1Gm0Uq3SBIPT3g9uEvY2BWkCxU52xvbUW8clPa
+ MvMjzf8cp5w9M5Y27ZwAAAA==
+X-Change-ID: 20251017-airoha-tx-linked-list-0adb92b8a92d
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Xuegang Lu <xuegang.lu@airoha.com>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,76 +75,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 31, 2025 at 03:32:03PM +0800, Cyril Chao wrote:
-> +  mediatek,platform:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: The phandle of MT8189 ASoC platform.
-> +
-> +patternProperties:
-> +  "^dai-link-[0-9]+$":
-> +    type: object
-> +    description:
-> +      Container for dai-link level properties and CODEC sub-nodes.
+Add the capability to consume out-of-order DMA tx descriptors. This
+feature is useful when multiple flows are queued on the same hw tx queue
+since it allows to fully utilize the available tx DMA descriptors and to
+avoid the starvation of high-priority flow we have in the current
+codebase due to head-of-line blocking introduced by low-priority flows.
+Reorganize airoha_queue struct.
 
-<placeholder (see further)>
+---
+Lorenzo Bianconi (2):
+      net: airoha: Add the capability to consume out-of-order DMA tx descriptors
+      net: airoha: Reorganize airoha_queue struct
 
-> +
-> +    properties:
-> +      link-name:
-> +        description:
-> +          This property corresponds to the name of the BE dai-link to which
-> +          we are going to update parameters in this node.
-> +        enum:
-> +          - TDM_DPTX_BE
-> +          - I2SOUT0_BE
-> +          - I2SIN0_BE
-> +          - I2SOUT1_BE
-> +
-> +      codec:
-> +        description: Holds subnode which indicates codec dai.
-> +        type: object
-> +        additionalProperties: false
-> +
-> +        properties:
-> +          sound-dai:
-> +            minItems: 1
-> +            maxItems: 2
-> +        required:
-> +          - sound-dai
-> +
-> +      dai-format:
-> +        description: audio format.
-> +        enum:
-> +          - i2s
-> +          - right_j
-> +          - left_j
-> +          - dsp_a
-> +          - dsp_b
-> +
-> +      mediatek,clk-provider:
-> +        $ref: /schemas/types.yaml#/definitions/string
-> +        description: Indicates dai-link clock master.
-> +        enum:
-> +          - cpu
-> +          - codec
-> +
-> +    additionalProperties: false
-
-If there is going to be a new version please move this one above to
-earlier place - after "description:", to the placeholder place (but of
-course keep indentation level, just ordering).
-
-Also
-A nit, subject: drop second/last, redundant "document". The
-"dt-bindings" prefix is already stating that this is documentation.
-See also:
-https://elixir.bootlin.com/linux/v6.17-rc3/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
-
-No need to resend just for that.
-
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+ drivers/net/ethernet/airoha/airoha_eth.c | 87 +++++++++++++++-----------------
+ drivers/net/ethernet/airoha/airoha_eth.h | 27 +++++++---
+ 2 files changed, 61 insertions(+), 53 deletions(-)
+---
+base-commit: 01cc760632b875c4ad0d8fec0b0c01896b8a36d4
+change-id: 20251017-airoha-tx-linked-list-0adb92b8a92d
 
 Best regards,
-Krzysztof
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
