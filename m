@@ -4,67 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA7A7CCF9FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Nov 2025 09:02:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D02BCCFA04
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Nov 2025 09:39:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DR9FjUoJ17jKio0QmfF9eqS/alus4oywkIH5PZnPSyo=; b=g+oAQyp9UMo5TwBtJCPKFCGrDE
-	+v4Oul+IY4BfB/8HKYsD26yyNB+eNxdcitd77hMDGzpMHm2KGXM18MbBMN3I/Gq8PDLtJZpKP85my
-	3Sbi+E3iNYuoD3XzrRkMbbSW+qRXnjwlR0rsBhPeX8bRYia/HCWUYSeHC5ACepMyys0R0dy1OvhdH
-	E/yd3BzNHa72qz6PJidWGTPi5yrzPJ9udJ7WKwRHs1TB9HF/iv+u8O8bnF3DcNCapQANVfiwjC2gu
-	aE93BZNy4V9a4lGPV9Rng5nyFIscq2jmrlqxSsTDWYCQfB9X0c4HnqL+dJfLSzfoIrlVandwG/X3g
-	xcr3PxPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AzF1wv7OgUKBuoRH1tQc4XrNP7Nk1RBu9PVX/fUvc6w=; b=p4DE2D/bxfUzilC7i8LV/WIpWy
+	JFPlBwyMyd7267WuGmZDbZ4PltsZrwDcwEZgbHMtZkDrP4vcRMgsE/o1Wr2gRBfh4QYbr3d91lPDy
+	/lnZNz7WahIUnt755Tk/OfM2p7gXuKx/81n9IzTRn2gjraPOCZD07EbaArAcr8t8eo2AnJOAIfTQL
+	QeQoV2Uf/iMSKMPlZ6xXqAmdhjLXFNzQCueCY1joWi2BdR4yrsHtHH+vd1EFsz8KXeHS8pCoVRM4M
+	RIO6uY+OehgAJkFUe2e6JeFoxd5yHqDscyuEhdSrBG96RBUP/8IHtif28s6pe0SF6Pevn6ut7UkSb
+	gGZ350vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFqSE-00000009Ty6-0N5q;
-	Mon, 03 Nov 2025 09:02:22 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vFr2F-00000009Wh1-06ng;
+	Mon, 03 Nov 2025 09:39:35 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vFqSC-00000009Txd-1k76;
-	Mon, 03 Nov 2025 09:02:20 +0000
+	id 1vFr2D-00000009Wgn-2lUq;
+	Mon, 03 Nov 2025 09:39:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7C62060008;
-	Mon,  3 Nov 2025 09:02:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 973A9C4CEE7;
-	Mon,  3 Nov 2025 09:02:15 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 7CC6560055;
+	Mon,  3 Nov 2025 09:39:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3542C4CEFD;
+	Mon,  3 Nov 2025 09:39:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762160539;
-	bh=W8dEDPU+y16+j7p2S006IJb//u+cz581x8CUkn3B/4Q=;
-	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
-	b=fIP5eMU3/TlkV4WaIeORzkfCc09vjr7X9960r3wf5HUHS5Lmw0OveLNoK2SM4/31k
-	 sBS8fpvPaUxFHp1W4fUXl0WE+xCKjxpU9OKvGyCXXv4Ey8mJkExNzUC/7gb1UOIboL
-	 +dpZW0yBeSO+e+FvPyLnUAiGTlyWC0Kn9Pnxt3pTLm2mNsvoO756KmbZyU1ObsWSPF
-	 HzxWv0kNdtB8Y/+Xo4fS/I0I+76V7KY81jwnGORY5/cgpiWCS87Jl8L5JmHYA7GJyf
-	 vnAxwe/DMdUZx07cQS7o5Y+3kp/pM2qkQ9D15iKbqOjANIHOF9DLzZkqxivtz0vYuC
-	 xn7qdljWFJFGg==
-Message-ID: <13df4a17-93aa-41f4-bbff-d1e83993a618@kernel.org>
-Date: Mon, 3 Nov 2025 10:02:13 +0100
+	s=k20201202; t=1762162772;
+	bh=74xTa1alepkXuLAJggdVWdu19FLOXxI8tg4rxRqpq10=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=aWxrWply1t/qhJLrulY0PUa6pjoYucGLbqzRzXOYHGA7T2aNuhDZgBWJyTPk+KgbF
+	 YL5RaPIgr3MwZHw+7/KFDKWYNaJlnECOhrwvH5xoVIqkcXafleWxGaDAPT/E5YFUNZ
+	 DYBI4IukWOwTI+ATD91xP1V3n5IS+Vi0/K/GAjN860CoLntKpLd71X4E5Fi4G/Nqa0
+	 46wtYNsfddKPkHt8f4LCSFrucRsmOQPYgPOs0i898jRRyUIUu38ziU5v30xaVcvLyL
+	 TW8bWqQOXx78nB1+A8crUEmN2ciaXtN7MbpLzFHh43oeOlkdjb3+vRWRwqqSPGzpIi
+	 VORLel3UFeyhQ==
+Date: Mon, 3 Nov 2025 10:39:29 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Cyril Chao <Cyril.Chao@mediatek.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v3 09/10] ASoC: dt-bindings: mediatek,mt8189-nau8825: add
+ mt8189-nau8825 document
+Message-ID: <20251103-handsome-fractal-stoat-8b82ca@kuoka>
+References: <20251031073216.8662-1-Cyril.Chao@mediatek.com>
+ <20251031073216.8662-10-Cyril.Chao@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Hans Verkuil <hverkuil+cisco@kernel.org>
-Subject: Re: [PATCH] MAINTAINERS: adjust file entry in MEDIATEK MDP DRIVER
-To: Lukas Bulwahn <lbulwahn@redhat.com>,
- Ariel D'Alessandro <ariel.dalessandro@collabora.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- Houlong Wei <houlong.wei@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org,
- linux-kernel@vger.kernel.org, Lukas Bulwahn <lukas.bulwahn@redhat.com>
-References: <20251029110623.96661-1-lukas.bulwahn@redhat.com>
-Content-Language: en-US, nl
-In-Reply-To: <20251029110623.96661-1-lukas.bulwahn@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20251031073216.8662-10-Cyril.Chao@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,43 +74,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 29/10/2025 12:06, Lukas Bulwahn wrote:
-> From: Lukas Bulwahn <lukas.bulwahn@redhat.com>
-> 
-> Commit 169ac4bc5bc4 ("dt-bindings: media: Convert MediaTek mt8173-mdp
-> bindings to DT schema") renames mediatek-mdp.txt to
-> mediatek,mt8173-mdp.yaml as part of this dt-binding conversion, but misses
-> to adjust the file entry in MEDIATEK MDP DRIVER.
-> 
-> Adjust the file entry after the conversion.
-> 
-> Signed-off-by: Lukas Bulwahn <lukas.bulwahn@redhat.com>
+On Fri, Oct 31, 2025 at 03:32:03PM +0800, Cyril Chao wrote:
+> +  mediatek,platform:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description: The phandle of MT8189 ASoC platform.
+> +
+> +patternProperties:
+> +  "^dai-link-[0-9]+$":
+> +    type: object
+> +    description:
+> +      Container for dai-link level properties and CODEC sub-nodes.
 
-Reviewed-by: Hans Verkuil <hverkuil+cisco@kernel.org>
+<placeholder (see further)>
 
-Rob, since you picked up the patch referred to in the commit log, can you
-also take this patch? Since it relies on the yaml conversion patch?
+> +
+> +    properties:
+> +      link-name:
+> +        description:
+> +          This property corresponds to the name of the BE dai-link to which
+> +          we are going to update parameters in this node.
+> +        enum:
+> +          - TDM_DPTX_BE
+> +          - I2SOUT0_BE
+> +          - I2SIN0_BE
+> +          - I2SOUT1_BE
+> +
+> +      codec:
+> +        description: Holds subnode which indicates codec dai.
+> +        type: object
+> +        additionalProperties: false
+> +
+> +        properties:
+> +          sound-dai:
+> +            minItems: 1
+> +            maxItems: 2
+> +        required:
+> +          - sound-dai
+> +
+> +      dai-format:
+> +        description: audio format.
+> +        enum:
+> +          - i2s
+> +          - right_j
+> +          - left_j
+> +          - dsp_a
+> +          - dsp_b
+> +
+> +      mediatek,clk-provider:
+> +        $ref: /schemas/types.yaml#/definitions/string
+> +        description: Indicates dai-link clock master.
+> +        enum:
+> +          - cpu
+> +          - codec
+> +
+> +    additionalProperties: false
 
-Regards,
+If there is going to be a new version please move this one above to
+earlier place - after "description:", to the placeholder place (but of
+course keep indentation level, just ordering).
 
-	Hans
+Also
+A nit, subject: drop second/last, redundant "document". The
+"dt-bindings" prefix is already stating that this is documentation.
+See also:
+https://elixir.bootlin.com/linux/v6.17-rc3/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
 
-> ---
->  MAINTAINERS | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index e428ec79dd24..c094b2fef0fc 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -15881,7 +15881,7 @@ M:	Minghsiu Tsai <minghsiu.tsai@mediatek.com>
->  M:	Houlong Wei <houlong.wei@mediatek.com>
->  M:	Andrew-CT Chen <andrew-ct.chen@mediatek.com>
->  S:	Supported
-> -F:	Documentation/devicetree/bindings/media/mediatek-mdp.txt
-> +F:	Documentation/devicetree/bindings/media/mediatek,mt8173-mdp.yaml
->  F:	drivers/media/platform/mediatek/mdp/
->  F:	drivers/media/platform/mediatek/vpu/
->  
+No need to resend just for that.
+
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+Best regards,
+Krzysztof
 
 
