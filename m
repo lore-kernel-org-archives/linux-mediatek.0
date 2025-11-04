@@ -4,82 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB51ACCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Nov 2025 14:24:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DB41CCFA04
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Nov 2025 16:34:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZuNbVkaxj/130IIFnL3tI3auJ5i4mtBURa+VsRT6Wq4=; b=bOTFoVl/vu/K2ztEkRZ0LcQeuk
-	AzwfvUPJIB68fyER2bw0B1vUbnmAdgKFNOXBw1QSXq4xRgflI4yHBQibV3YYir6iCBefwBtmgf5GF
-	1m1R4BwiQ+J/BAaPB8ozOLiAizJvltuvmzNckVdXXcms+TsIGD6BJLMM5se93182i6tjEby7iWYeo
-	oIyo2CUXBI3WrpH4T4DJ+AOCrTjdh9E2zBShnQWjGf09WLhean2aQdR4/04j5Zx1sXvHOwGZ8B1Fb
-	IeNpIsKYrEBZDGDjUJFkpVuhXBFjEot0o01vg8kOtk6Zs3k9NkyY7/zXC3Whj8Ee8mLJfj9FjJ6fy
-	dgok+Heg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZURaLbDo3dwoVqwyM02ToCv5MutkNZmPeTZy84rbNEQ=; b=oN+ti0RpNYO90pK1sgQCMOrPN0
+	Mx+v92annhYLE0oHxYbxBCg7F+9Al6qnz4H6SgqsckFG9+F9mxLET3/HhLFTN+6RC2qo8h5BwFGWY
+	RPSCf7UzScJtjRRKRgBWj/OoeLJsIXYenejyiabtZcHmruSU89pQ2RgAcY80DF7S9wuzkV0Y9ID0p
+	68nfrY9kToMUWN/hL/TI3nCLevtEHevPT/EPjjMnrPWxAo9QEzmsyvXLYF7dVgSuK1ycC41Xkf5/e
+	4e3FDLM79T+5iXeZzOZQ5eBmg2G5NiPxxIcLz15IF24xT3tHDwSKYAus2ec08ULYVjy/Ev06Kldrn
+	u8fx80+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGHxS-0000000ByZ7-29Sz;
-	Tue, 04 Nov 2025 14:24:26 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vGJzL-0000000CCaX-1Cfi;
+	Tue, 04 Nov 2025 16:34:31 +0000
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGHxR-0000000ByYr-0X5S;
-	Tue, 04 Nov 2025 14:24:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=ZuNbVkaxj/130IIFnL3tI3auJ5i4mtBURa+VsRT6Wq4=; b=qNm5xIqR/pPGq+tYFN4SAaRElJ
-	AwZeRkoFfABhgWEwytKAvCK+LDdb35dhkxK8SDmT2SEGxKP+ptKEsEF71YxDPJapXCrPh7Q28ifjc
-	ISgwWbyrFDXGReNhq1CzPi/ilEY1S79XSdIjlWyufAwrOKsQbcWNNXYz+Wt7qHpGthq2wqWAQYoFY
-	C702o0mo5BWaJOo8Eq4+HOEaKdpeHYnzSheuNh1o9YakpCVYFdRVRFofaXNmYbX515JLwfUtCUSM8
-	McEMQs7pVAA80L0Epiye66KOyeHic9yvH4aBhlT7u3IvccZITgohsC7JhfYESlOhcuXbYFCbrcfyx
-	7wN6NkLw==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGH5g-00000000Axq-2ei8;
-	Tue, 04 Nov 2025 13:28:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762266255;
-	bh=lGfuQV2S/g+wlL+QpilQu5Ha+EG82kPQCE+jmEMzG9Q=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cg1qWtq9S+mmImzto0dgoNbpvvRgaV6OlSefpWB1OjUhv9lHNPJdDPs8WZKolG1cF
-	 UtHdKs8zAxV8LxBJ6fXecuM9rkRH/TG/LIh18OLeWvN2zxAgbyWnnUn0j+hLyb4tzJ
-	 gsD05CyQdKSCl/ygm6l0/P38uQFrPypZ3muk41IICy1Z7GaPjps7u6ufI/QDB1A1p0
-	 UfmwQrwtuoRcPl+52HWtO7RssJFNGuPg8gp4FZb19xGSJfgZsEHBtvoMcsncqoYPSV
-	 aMQGqVKIUCpLrS7oxmBzAiZz206AEUJ9F+6vZeoLL+Y2ra54hHTpcwg3PV18TWvuRt
-	 7HpiVu3Icqvqg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0C70A17E1249;
-	Tue,  4 Nov 2025 15:24:15 +0100 (CET)
-Message-ID: <542ceb46-0b57-4cd1-a679-ec55457043ae@collabora.com>
-Date: Tue, 4 Nov 2025 15:24:14 +0100
+	id 1vGJzI-0000000CCYe-1q4r
+	for linux-mediatek@lists.infradead.org;
+	Tue, 04 Nov 2025 16:34:30 +0000
+Received: by mail-yx1-xb12e.google.com with SMTP id 956f58d0204a3-63e16fbdd50so4977757d50.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Nov 2025 08:34:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1762274067; x=1762878867; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZURaLbDo3dwoVqwyM02ToCv5MutkNZmPeTZy84rbNEQ=;
+        b=khG4qCfcZ35qoWFm3qAc5vtPK6EY8+LDQWJwjZl2RTt3shiX3NtctEek+vRzrecWvA
+         ez2O1pUobBceg+1s9DP0UddGCDdX5oSLp1fk7pNV3cY/TNbJSM/FjM2JVgMxEhhkrfGX
+         BahLgDoKf8vwq1CHFiglD6nu64Nh4hvIHUa+E+4ArBgNP+xQMC4uut5yWJzjBTzW8T1T
+         SCsxRKTOY9yH/2P9ggPgy18P6Fzl6HD02gmihj2QsF/ux6iTZN9yU2sHPGue08I71+Xo
+         bI0OwKNMa74JDH16Budy4ncJyOBy/0hisZgFH0Xxb+0M/cCBR2jkGl6CMd9aS3SlqO2I
+         pEgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762274067; x=1762878867;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ZURaLbDo3dwoVqwyM02ToCv5MutkNZmPeTZy84rbNEQ=;
+        b=gDAkd+conCJYe2DlDSo56bMNE/hmiaR66ileH0GlxUTbOqRVGhYbGsOuOuy+rVPil7
+         ojOmJRCdZoJWPPEv7IAOV1u6/c3SamaPNStPzj9v/8O6KhbFKmAxpClfT+W8hm36RcF0
+         alaLEtR3RASPxpEVlulvQO0Vzr4WYL4Dp1iZq37dVgfsADtgSTU85cx7yqZzIS8oHtWq
+         EfXu/dpEAbowhrzUpEBFtVPUhDZCfRBGH4v8D+RmsMsIqRUmbxlJbHeb5gg8iwwsLwRB
+         Zsz3rau4iKIMP/CFqWR0SyWUSgv3yVPTvKd8DuR4gjM49X4sO4uSNDfGccTAuQzyWyhz
+         Sj/A==
+X-Forwarded-Encrypted: i=1; AJvYcCUloUyTEb94mKeLO5YiN2ibUrKdaFl3bax6QCDh+geZuz2AU4F1vuyYHfUjyrPj8kIY05zIBnMSUgZ6sxXFFQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx/etbU0YwRFwGYKztEwIHhoyGDHsMjlb85jF8fEk2QB7YX3/xO
+	UgFPAY0acbShe8GEBvj6pJ7Ny/5Dan/u4hG6ulwVC4AYBJk843KaPhtRloia0GJMvLvVEycrkmJ
+	WI8yL7ORYhTviKdosgKJBbIvhYdMBpgBaPcTq3/cp8Q==
+X-Gm-Gg: ASbGncuYKFYWtT2O4iQQ2xboZa5sYCrcqVdT9xsWm3HyTTwFmTuP44Hz01LSfAk4Tbf
+	8Ucd2rt4lETviZ9AP7P7rUet01P6scA4YVcwBCWa+jgD0rwZqXEbdbSgSqeKKIJ4Xj23yhhcaZK
+	ocSrF+j98wDcGYyDNKdGvAVYj3P89FG04iRsEC3m7ec0EDop+jo5oeqaIJ3P+V0CPysZVYxVMhn
+	B8eJW9NDtCLBN+zOF7RyD8i00zzKDy2DSlNhpg4Dyc8+AWdFs4tzqd2rcwlOQ==
+X-Google-Smtp-Source: AGHT+IGVTYPjRbvY2dc+1i1hVKSl6/mUpbt8rBD57n2a05T5582PeM1IiJduGFBi48QQYI8y525MVnCW3dK3LdtTGiE=
+X-Received: by 2002:a05:690e:419b:b0:63f:c10e:6401 with SMTP id
+ 956f58d0204a3-63fd358fe2bmr57363d50.59.1762274067017; Tue, 04 Nov 2025
+ 08:34:27 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V3 1/1] soc: mediatek: mtk-regulator-coupler: Add support
- for MT8189
-To: "niklaus.liu" <Niklaus.Liu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, sirius.wang@mediatek.com,
- vince-wl.liu@mediatek.com, jh.hsu@mediatek.com, zhigang.qin@mediatek.com,
- sen.chu@mediatek.com
-References: <20251104071252.12539-1-Niklaus.Liu@mediatek.com>
- <20251104071252.12539-2-Niklaus.Liu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20251104071252.12539-2-Niklaus.Liu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20251030-mfg-mailbox-dep-v1-1-8a8c591aff27@collabora.com>
+In-Reply-To: <20251030-mfg-mailbox-dep-v1-1-8a8c591aff27@collabora.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 4 Nov 2025 17:33:50 +0100
+X-Gm-Features: AWmQ_blVz8oV6Q800iTY_FXK63-gujrHnWpwcZPlwshpI-BtZsgfevwVde_Zipk
+Message-ID: <CAPDyKFrJdN_6FyyjMrfNCKwXt6kFPEPAxcuosdasoxtbJHk2GA@mail.gmail.com>
+Subject: Re: [PATCH] pmdomain: mediatek: mtk-mfg: select MAILBOX in Kconfig
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, kernel@collabora.com, 
+	kernel test robot <lkp@intel.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251104_132852_880866_1B011151 
-X-CRM114-Status: GOOD (  23.39  )
+X-CRM114-CacheID: sfid-20251104_083428_477049_6199A3D8 
+X-CRM114-Status: GOOD (  20.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,85 +96,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/11/25 08:12, niklaus.liu ha scritto:
-> From: Niklaus Liu <niklaus.liu@mediatek.com>
-> 
-> Enhance the regulator coupler driver to support GPU power control on the
-> MediaTek MT8189 platform. This update ensures proper coordination of
-> multiple regulators required for GPU operation,improving power management
-> and system stability.
-> 
-> Signed-off-by: Niklaus Liu <niklaus.liu@mediatek.com>
+On Thu, 30 Oct 2025 at 14:17, Nicolas Frattaroli
+<nicolas.frattaroli@collabora.com> wrote:
+>
+> The mtk-mfg pmdomain driver calls common mailbox framework functions. If
+> the common mailbox framework is not selected in the kernel's
+> configuration, the build runs into a linker error, as the symbols are
+> absent.
+>
+> The hardware mailbox Kconfig system, MAILBOX, has no dependencies of its
+> own. It's therefore safe to "select" it rather than use "depend on".
+>
+> Declare this "select" dependency in the Kconfig for the driver.
+>
+> Fixes: 1ff1f0db6aec ("pmdomain: mediatek: Add support for MFlexGraphics")
+> Reported-by: kernel test robot <lkp@intel.com>
+> Closes: https://lore.kernel.org/oe-kbuild-all/202510301311.TcOCnZ1s-lkp@intel.com/
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+Applied for next, thanks!
+
+Kind regards
+Uffe
+
+
 > ---
->   drivers/soc/mediatek/mtk-regulator-coupler.c | 13 +++++++++++++
->   1 file changed, 13 insertions(+)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-regulator-coupler.c b/drivers/soc/mediatek/mtk-regulator-coupler.c
-> index 0b6a2884145e..e2a1fb459e42 100644
-> --- a/drivers/soc/mediatek/mtk-regulator-coupler.c
-> +++ b/drivers/soc/mediatek/mtk-regulator-coupler.c
-> @@ -42,6 +42,18 @@ static int mediatek_regulator_balance_voltage(struct regulator_coupler *coupler,
->   	int max_uV = INT_MAX;
->   	int ret;
->   
-> +	/*
-> +	 * When vsram_gpu is enabled or disabled and the use_count of the
-> +	 * vsram_gpu regulator is zero, the regulator coupler driver will
-> +	 * execute regulator_do_balance_voltage, which adjusts the vsram_gpu
-> +	 * voltage to the minimum value. This may result in vsram_gpu being
-> +	 * lower than vgpu. Therefore, when enabling or disabling vsram_gpu,
-> +	 * the 8189 temporarily skips the regulator coupler driver's modification
-> +	 * of the vsram_gpu voltage.
-> +	 */
-
-This will break the rules of your own hardware. Seriously.
-
-The VSRAM_GPU has to be set in a specific range, where the minimum voltage has to
-guarantee that the GPU can run in the first quarter of the OPP entries (which does
-always correspond to lowest/lower/low or lowest/low) for the GPU.
-
-If you return zero here, and VSRAM_GPU was set to Vmax (scenario: GPU was at Turbo
-frequency) before shutting down completely (ex.: system suspend), at device resume
-time, the VSRAM_GPU rail will be overvolting the GPU SRAM.
-
-While that won't cause any "magic smoke" because the VSRAM is still in the maximum
-operating ranges constraint, this will leak power, hence increase the chip's heat
-output, and might as well create possible instabilities.
-
-Remember that the GPU SRAM voltage has to *always be constrained* as:
-  - VSRAM <= VGPU when VGPU must be over the VSRAM constraint
-  - VSRAM == VGPU if the voltages are in range between each other
-  - VSRAM > VGPU *only* for SLEEP (or LOWEST) freq setting
-
-As I already said in my previous review for this patch, your devicetree may be
-misconfiguring the regulators, or their hierarchy (as those are MFG0/1+Panfrost).
-
-Besides, are you testing this on Panfrost, even, or on the Mali DDK driver?
-That really doesn't look right.
-
-Also - MT8189 is not special. There's nothing different between MT8189 and the
-others in regard to how the GPU regulators should be coupled, and in regard to
-their constraints relationship.
-
-Regards,
-Angelo
-
-> +	if (of_machine_is_compatible("mediatek,mt8189") && rdev == mrc->vsram_rdev)
-> +		return 0;
-> +
->   	/*
->   	 * If the target device is on, setting the SRAM voltage directly
->   	 * is not supported as it scales through its coupled supply voltage.
-> @@ -148,6 +160,7 @@ static int mediatek_regulator_coupler_init(void)
->   	if (!of_machine_is_compatible("mediatek,mt8183") &&
->   	    !of_machine_is_compatible("mediatek,mt8186") &&
->   	    !of_machine_is_compatible("mediatek,mt8188") &&
-> +	    !of_machine_is_compatible("mediatek,mt8189") &&
-
-(but this is ok here)
-
->   	    !of_machine_is_compatible("mediatek,mt8192"))
->   		return 0;
->   
-
+> I assume this can be squashed into the mtk-mfg driver addition commit of
+> the maintainer that merged it.
+> ---
+>  drivers/pmdomain/mediatek/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/drivers/pmdomain/mediatek/Kconfig b/drivers/pmdomain/mediatek/Kconfig
+> index b06aaa9690f0..8923e6516441 100644
+> --- a/drivers/pmdomain/mediatek/Kconfig
+> +++ b/drivers/pmdomain/mediatek/Kconfig
+> @@ -32,6 +32,7 @@ config MTK_MFG_PM_DOMAIN
+>         depends on PM
+>         depends on OF
+>         depends on COMMON_CLK
+> +       select MAILBOX
+>         select PM_GENERIC_DOMAINS
+>         imply MTK_GPUEB_MBOX
+>         help
+>
+> ---
+> base-commit: d78b0fee454c25d292fb6343253eca06d7634fd9
+> change-id: 20251030-mfg-mailbox-dep-ec32ef510e6a
+>
+> Best regards,
+> --
+> Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+>
 
