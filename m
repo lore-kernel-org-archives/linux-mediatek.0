@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2BE6CCFA03
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Nov 2025 03:15:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A27C6CCFA00
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Nov 2025 07:13:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=eZ6ZtD8Gmf0w5lKM2vkfFs2CimSRsAbkAEMvQcHMakY=; b=BV0DJK+xKAsE4UWq/9b5eH75JH
-	hxYULixQnw6aRwr9L+83hvNoEHOvZw/2KIASYn/+TfDbx3js9FkkcMEYzT7YPnEyP4MmBQ1WQh7jA
-	1ZhYOPczm+LygwGkqfecIi6fE3qGkHW7q9iltRgcQRVC578Numtwk165lvP25B5+G5GW+tWLuWwoJ
-	ef+cccNesfUyxWCsqOrAkdbOwmALCjQc1cqIM54aYjxjinfTt35FmrKM8gLlrl2ev5onkuRUGoR/H
-	B9UjOGYu+TnjQ95CRCVi6rH45bwto6nHqJnBdclzer5QVm9NXZmk86JJIVN01Az4KBc87nqQuX+vT
-	P/vlnCZA==;
+	bh=CARmva9EM2/RMKOsxbDAEvge892qd5JXDQ4LT1FhjCs=; b=TBcHZGa6IvYShYcg++1Rk0HmZ3
+	mU2VKduc3USWHGvlCIoNiqnzy+kqy4PLlf8hboL6duR7F42Jplk9xxbcRrOi0H/QKjiddeBVoZSI/
+	wiOsrNM8om12R9MIh8XMQpfCAic+rFoVi06en1qbu/7EniRQv4SpLQCZit7EfvCtEOswWwFxDYCfI
+	HJdiX/kVC/6N/VI1aw3wqj9uOOdqTc+a8nsNrNdaUQjmQ1Ml3TRjINkonAn69k/z3O4nFdmRe4WYk
+	gOorxuOskf4h58PcyHKeH17NspUd3t/wHAMq8TxIpqVDBuuxrLWfiFRjgEXLQNsqzG593x4xQWIQV
+	iFwbSIAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vG7WK-0000000B2Tg-2VEo;
-	Tue, 04 Nov 2025 03:15:46 +0000
+	id 1vGBE2-0000000BInr-1O2a;
+	Tue, 04 Nov 2025 07:13:06 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vG7WH-0000000B2TI-3OOC;
-	Tue, 04 Nov 2025 03:15:43 +0000
-X-UUID: 89bb40a2b92c11f0a52f393f94899d25-20251103
+	id 1vGBDy-0000000BImn-3zXI;
+	Tue, 04 Nov 2025 07:13:04 +0000
+X-UUID: b0828c74b94d11f0a52f393f94899d25-20251104
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=eZ6ZtD8Gmf0w5lKM2vkfFs2CimSRsAbkAEMvQcHMakY=;
-	b=RFwJLlL7+MKoQLWWAzFUCRxteNhb9THukX13pl2fEFAVCLGuMPqUctUIJSxe+9y3JDJEbgOuZF50GlohbBEv8RUvjuspv97DMsC7W+Mg3yq3OvPxgWpktD7fUp3AlY2oCsP4GXKW6DsTEa8CfDzDoXAj2InOxKbi33DEhGOOYgQ=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=CARmva9EM2/RMKOsxbDAEvge892qd5JXDQ4LT1FhjCs=;
+	b=axxMKNQu3l7Ce6g/0ZArfQRghUWnKn2fZ0VLtlseDczxqkxKTIOPcUSqHnUpgh1NjtmG1zoSZCLnRUwNRqyFWMjgzqFUUaIipawJ6VhW7HNnDtvsze9YICgc7BfuuyBcLCv6QYRBYGQPxozVew7yplFBcJ6G56ZG0RAR6Tc5AUU=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:c8d94165-3f67-4005-96eb-ef17a44eacd1,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.6,REQID:635ff762-3725-49cb-8f18-400d393c8b1d,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:a292016b-d4bd-4ab9-8221-0049857cc502,B
+X-CID-META: VersionHash:a9d874c,CLOUDID:7508e37c-f9d7-466d-a1f7-15b5fcad2ce6,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:-7|-6|
 	0|15|50,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0
 	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 89bb40a2b92c11f0a52f393f94899d25-20251103
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+X-UUID: b0828c74b94d11f0a52f393f94899d25-20251104
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
 	(envelope-from <niklaus.liu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1862684247; Mon, 03 Nov 2025 20:15:38 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+	with ESMTP id 1935166498; Tue, 04 Nov 2025 00:12:57 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Tue, 4 Nov 2025 11:15:36 +0800
+ 15.2.1748.26; Tue, 4 Nov 2025 15:12:54 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Tue, 4 Nov 2025 11:15:35 +0800
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Tue, 4 Nov 2025 15:12:54 +0800
 From: niklaus.liu <Niklaus.Liu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>
@@ -65,15 +65,15 @@ CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	Niklaus Liu <niklaus.liu@mediatek.com>, niklaus.liu
 	<Niklaus.Liu@mediatek.com>
 Subject: 
-Date: Tue, 4 Nov 2025 11:15:10 +0800
-Message-ID: <20251104031533.9419-1-Niklaus.Liu@mediatek.com>
+Date: Tue, 4 Nov 2025 15:12:40 +0800
+Message-ID: <20251104071252.12539-1-Niklaus.Liu@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251103_191541_877192_E9F4EA35 
-X-CRM114-Status: GOOD (  11.37  )
+X-CRM114-CacheID: sfid-20251103_231302_996931_1661E1B0 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,7 +91,10 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 This series is based on linux-next, tag: next-20251103
 V1 patch link:https://lore.kernel.org/linux-mediatek/20251103134241.3773-2-Niklaus.Liu@mediatek.com/
 
-Subject: [PATCH 0/1] soc: mediatek: mtk-regulator-coupler: Add support for MT8189
+Subject: [V3 PATCH 0/1] soc: mediatek: mtk-regulator-coupler: Add support for MT8189
+
+changes in V3:
+ - modify for comment[add the new entry by alphabetical order] 
 
 changes in V2:
  - change title for patch
