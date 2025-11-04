@@ -4,69 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA089CCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Nov 2025 07:33:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 960D2CCFA00
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Nov 2025 08:40:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IIaNLN8Yd4Txhb9bSY+7kMvbPVgTOperEEV/7lJ/36w=; b=aRicvjU2ST04HFnwvEZ7Gx02++
-	suRmCqoCE3rlTcb5vU7xSLKolUjXpkPIhsohmb8XYYPIPxBAQpTETTxKUvLEO8hBZvbYM10CFfKSR
-	DgYQh/wfAkbVnE3jFGNOz7x9y3tB6Yy+ompB8zulenQIkaOdWxXTC/MPiwzkOv1P3edKFa4+z4Nb4
-	l/fJ3JQ61X1xDaLTdMpolRMBqrj2JO9sYVfpfncIT4HbgnNXh92A7OHVdDjij1QUq1Z0oVair4bDo
-	9U/hs0N6OvzfOh7uEnYgmL2O5ExB3f4cVA4Y2z66SGR8BfAS3Xgs1wJtii97IKVkLlC2SEPIOKRiq
-	YnvpePFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uilWK9pxP4N3+juvbcZo5GClSyfc42uLaTShdPX4r0I=; b=otUY0win6Isua5cmdGGZxTSZmk
+	PgCCZOWr3ZkHpIo4/gfsRamQRGAc5czM04a8dbxhEwJgJ0GEeQ7ccGE/94pJTYgPygVyTfwaiyWuM
+	VFv16i3W3P0O3lGmXUNBkcraJ4vYDCSXb6r+j6HejC6F85jkuddLPcSQhdTkU2is45hEFKOh6+faE
+	Zo9YATWBx866SzXUqx6nuAW8EuKCd8RGAv4c5zmLbPJ2twL+XNoLkWRbc150wI+36o2nKnfgWYUUy
+	wqkZNe0UHL7w0t6b2GG/JICL7dp3yG5rE+gXQW/tQFLGQ+01Glnmc2DIviwZKmqGu+3Ca58QD1hD9
+	YNtidr2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGBXV-0000000BKx0-3RTF;
-	Tue, 04 Nov 2025 07:33:13 +0000
-Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
+	id 1vGCaO-0000000BRhL-0voP;
+	Tue, 04 Nov 2025 08:40:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGBXR-0000000BKwC-1Gcq;
-	Tue, 04 Nov 2025 07:33:12 +0000
-Received: from localhost (unknown [124.16.138.129])
-	by APP-03 (Coremail) with SMTP id rQCowAAHhOswrAlpskJmAQ--.18495S2;
-	Tue, 04 Nov 2025 15:33:04 +0800 (CST)
-From: Chen Ni <nichen@iscas.ac.cn>
-To: ukleinek@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: linux-pwm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Chen Ni <nichen@iscas.ac.cn>
-Subject: [PATCH] pwm: mediatek: Remove unneeded semicolon
-Date: Thu,  6 Nov 2025 05:48:47 +0800
-Message-Id: <20251105214847.1279520-1-nichen@iscas.ac.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1vGCaL-0000000BRee-31Ij;
+	Tue, 04 Nov 2025 08:40:14 +0000
+X-UUID: 624f9ccab95911f09f706fa2197c6ceb-20251104
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=uilWK9pxP4N3+juvbcZo5GClSyfc42uLaTShdPX4r0I=;
+	b=oxajwmwZJi14iAdDZqFI9XRC/qfthGT1nY3eWdlx9eHU5pANcwp7t7HQERu/K7IOj4Ix3EXRY/y7fVfFcKblK/UNxnzQ8JKOI8FBYXwCve56kmG+a+DdBu+mkqDLHiKec0kbKk71gCbcRZhnlw9avusgozPuU2klS0xPA/IDU5o=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:08dea723-cb93-4bbb-8322-fa4231c39ed4,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:2e0fe47c-f9d7-466d-a1f7-15b5fcad2ce6,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
+	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 624f9ccab95911f09f706fa2197c6ceb-20251104
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <niklaus.liu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 110097527; Tue, 04 Nov 2025 01:36:40 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Tue, 4 Nov 2025 16:36:37 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Tue, 4 Nov 2025 16:36:36 +0800
+From: niklaus.liu <Niklaus.Liu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
+	<jh.hsu@mediatek.com>, <zhigang.qin@mediatek.com>, <sen.chu@mediatek.com>,
+	Niklaus Liu <niklaus.liu@mediatek.com>
+Subject: [PATCH v3 1/1] soc: mediatek: mtk-regulator-coupler: Add support for MT8189
+Date: Tue, 4 Nov 2025 16:34:13 +0800
+Message-ID: <20251104083630.13541-2-Niklaus.Liu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20251104083630.13541-1-Niklaus.Liu@mediatek.com>
+References: <20251104083630.13541-1-Niklaus.Liu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: rQCowAAHhOswrAlpskJmAQ--.18495S2
-X-Coremail-Antispam: 1UD129KBjvdXoWrZFWDuF4rXw4DWFy5Ww1Utrb_yoWfJrcE9w
-	4kWrsrXrWUGwn8KrnxJ3yxZr9FyFn5uw409FsYvr43t3sruF40vFy0vrsIgw4DA340gFWD
-	K39xWr1fZF17ZjkaLaAFLSUrUUUUbb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUIcSsGvfJTRUUUbTxFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
-	6rWj6s0DM7CIcVAFz4kK6r1j6r18M280x2IEY4vEnII2IxkI6ry26F1DM28lY4IEw2IIxx
-	k0rwA2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_JFI_Gr1l84ACjcxK
-	6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVWxJr0_GcWl84ACjc
-	xK6I8E87Iv6xkF7I0E14v26rxl6s0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVAC
-	Y4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVWUJV
-	W8JwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI2
-	0VAGYxC7MxkF7I0En4kS14v26r1q6r43MxkIecxEwVAFwVW8CwCF04k20xvY0x0EwIxGrw
-	CFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE
-	14v26r106r1rMI8E67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2
-	IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr0_Gr1lIxAIcVCF04k26cxK
-	x2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI
-	0_Jr0_GrUvcSsGvfC2KfnxnUUI43ZEXa7sR_TKZPUUUUU==
-X-Originating-IP: [124.16.138.129]
-X-CM-SenderInfo: xqlfxv3q6l2u1dvotugofq/
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251103_233310_096104_0E521EEB 
-X-CRM114-Status: UNSURE (   8.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251104_004013_761061_352B5064 
+X-CRM114-Status: GOOD (  15.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,28 +89,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove unnecessary semicolons reported by Coccinelle/coccicheck and the
-semantic patch at scripts/coccinelle/misc/semicolon.cocci.
+From: Niklaus Liu <niklaus.liu@mediatek.com>
 
-Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
+Enhance the regulator coupler driver to support GPU power control on the
+MediaTek MT8189 platform. This update ensures proper coordination of
+multiple regulators required for GPU operation,improving power management
+and system stability.
+
+Signed-off-by: Niklaus Liu <niklaus.liu@mediatek.com>
 ---
- drivers/pwm/pwm-mediatek.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/soc/mediatek/mtk-regulator-coupler.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-index f2c918c0d26a..fecc1b91e14c 100644
---- a/drivers/pwm/pwm-mediatek.c
-+++ b/drivers/pwm/pwm-mediatek.c
-@@ -266,7 +266,7 @@ static int pwm_mediatek_round_waveform_fromhw(struct pwm_chip *chip, struct pwm_
- 				DIV_ROUND_UP_ULL(NSEC_PER_SEC, clk_rate),
- 			.duty_length_ns = 0,
- 		};
--	};
-+	}
+diff --git a/drivers/soc/mediatek/mtk-regulator-coupler.c b/drivers/soc/mediatek/mtk-regulator-coupler.c
+index 0b6a2884145e..e2a1fb459e42 100644
+--- a/drivers/soc/mediatek/mtk-regulator-coupler.c
++++ b/drivers/soc/mediatek/mtk-regulator-coupler.c
+@@ -42,6 +42,18 @@ static int mediatek_regulator_balance_voltage(struct regulator_coupler *coupler,
+ 	int max_uV = INT_MAX;
+ 	int ret;
  
- 	dev_dbg(&chip->dev, "pwm#%u: ENABLE: %x, CLKDIV: %x, PERIOD: %x, DUTY: %x @%lu -> %lld/%lld\n",
- 		pwm->hwpwm, wfhw->enable, clkdiv, cnt_period, cnt_duty, clk_rate,
++	/*
++	 * When vsram_gpu is enabled or disabled and the use_count of the
++	 * vsram_gpu regulator is zero, the regulator coupler driver will
++	 * execute regulator_do_balance_voltage, which adjusts the vsram_gpu
++	 * voltage to the minimum value. This may result in vsram_gpu being
++	 * lower than vgpu. Therefore, when enabling or disabling vsram_gpu,
++	 * the 8189 temporarily skips the regulator coupler driver's modification
++	 * of the vsram_gpu voltage.
++	 */
++	if (of_machine_is_compatible("mediatek,mt8189") && rdev == mrc->vsram_rdev)
++		return 0;
++
+ 	/*
+ 	 * If the target device is on, setting the SRAM voltage directly
+ 	 * is not supported as it scales through its coupled supply voltage.
+@@ -148,6 +160,7 @@ static int mediatek_regulator_coupler_init(void)
+ 	if (!of_machine_is_compatible("mediatek,mt8183") &&
+ 	    !of_machine_is_compatible("mediatek,mt8186") &&
+ 	    !of_machine_is_compatible("mediatek,mt8188") &&
++	    !of_machine_is_compatible("mediatek,mt8189") &&
+ 	    !of_machine_is_compatible("mediatek,mt8192"))
+ 		return 0;
+ 
 -- 
-2.25.1
+2.46.0
 
 
