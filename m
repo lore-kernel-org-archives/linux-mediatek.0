@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC3F2CCF9F8
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 10:57:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30321CCFA05
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 11:25:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XjERTvaa9EEzQe9yII8+YO9vBb1Fh29QvOVPGQCTg7o=; b=0jgD6mW7HZmG196Q3s9X5LlQP+
-	xMedwpMCjgmCaWm9c/J2oeXauFLh6bu4qEP/9xf9/BK+tGdJetAqYglftIQcXPm2X8wS/CBy19b0v
-	Zr2C2Dv5q+d+XfvMivlW2MHWp7kadtHjoekPKb4jX1zfywV3hk+Mt7MYcU8Adrrlg47M2WwGit+LR
-	9gvD2Ta1l/q3OCBoWmYT+5L9mp0UrCaQlg9IVAOWD+Le33aLlsUaz5ihUGSHFUKBUb//gTS7lVChd
-	1T6+DD7m+FuJwquXiZNtD/awKVFr/KNgJKCp+z3T1yyrm96g4FupFjaxSIbICeCe5BhDipPwmsd8d
-	SbcLZMjg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WMYqgJ3CQQBxmz4N4oTNY/Jdhdz4/srToZZKedzF6PU=; b=yjixzK9Ukfg7hEjNS/MVX4fBS7
+	jCwbe0FFVIR8i3hv3Wbbn6EGrLWmsDv+avxYRBgcJr2S9tcnWYdc1o/yM4BvkIaTEM0d9Q9qTzMRi
+	tiEpzziTN3VNrjikpdE77flTCG9+jNHMbNYVT/ymJ1YNvkInm2kvZOuzwoEq1fbPhbivVgYH3q9bL
+	Adh6hqRT4WNBpZi2Z/wHrIhqUBRChgFVPHkKJg8j5XlWC2K0qEkWp/7ZOWIyJb0G3dI5RKzjhHIzQ
+	xuSyjF7ajKCXaCXyzJnt5OsKju1AzY5XxVI9A9+/KAwuFpmI5cpzdtfbTQAK4HDdNvfArv+WS+VDk
+	XhzzKdiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGbCz-0000000DVz0-0zvG;
-	Wed, 05 Nov 2025 10:57:45 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vGbdT-0000000DXbO-2yNx;
+	Wed, 05 Nov 2025 11:25:07 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGbCw-0000000DVye-3JBn
+	id 1vGbdQ-0000000DXaO-1rV5
 	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Nov 2025 10:57:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0C0D241863;
-	Wed,  5 Nov 2025 10:57:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E36AC4CEF8;
-	Wed,  5 Nov 2025 10:57:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762340261;
-	bh=3I8GbCHt5nTmU/JAMrsYsToDtzFmmsTntkvfOBdvXZw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VP7QuCamQd/tRJxLVttNOyNtOVZ8NvC2zDj9rhj1GkzET5vT4/hWC1/BbDLPr8WmU
-	 Qrt92K5Jarf2QwW23HEPNQFJ9jlxKsCguyumeqZF48q2wRpgIILuRYbyRhvi7hrMBZ
-	 jTbfTHg1/IuY2fwdgjJrRR1Csw11ZexAMypLrDZLhQappW9gwYEv1mWNk3X5aVXkmo
-	 2scjSbAqCe55130pTdTLdIn0pAjq27gfBJ5PZ+6BmgF+RMFCdqWuKHmCPWs3s8a7iL
-	 RP+hDzW/DdhznqWIvRfNwrZJNJ3zW4UXzzIdi7+AhZReq10uo4tpYPDKHGnUAQZ8G9
-	 PPsTh9zV4J5gA==
-Date: Wed, 5 Nov 2025 11:57:39 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Shayne Chen <shayne.chen@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>,
-	linux-wireless <linux-wireless@vger.kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>,
-	Rex Lu <rex.lu@mediatek.com>
-Subject: Re: [PATCH mt76 12/12] wifi: mt76: mt7996: fix EMI rings for RRO
-Message-ID: <aQstowRMsLD-6A-z@lore-desk>
-References: <20251105093100.541408-1-shayne.chen@mediatek.com>
- <20251105093100.541408-12-shayne.chen@mediatek.com>
+	Wed, 05 Nov 2025 11:25:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1762341901;
+	bh=YtgwmIuO+S6ko8HFKuMO2fihmVHu0zvVmbmvszGEA0g=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NdjqywNPzIMcJbqydpLsqu+OnpMSMuvbXYJ/ZYDU8qQbkhjb8jE/klzudDWB9QTXy
+	 5gTYFaNbjaE/AR/FwoBI2A6CCqFyzhWMuEmgUUhvtddTBDadjN6OWfy5/cGCs4q8wD
+	 3qs8NXxBmp1e1xNLl7GBMq8KbL8PUN6qXRLH+pVaIIIu5wSFEB6kp+y2OTj2CjmAiy
+	 1wTAiZ8zpauVrg+akU52PmStDo+ZeLxjbnw88IsRGe6opy02QfUl/9Tmrz13qEqM7X
+	 CdJL/sRRkj2xbg+Hs4/68zSzn8t8q+UDcEcwe2pES8y5BSZFkzBf7mdmt6qvjuKmq6
+	 k+Zzf41nwsypw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8829617E12AA;
+	Wed,  5 Nov 2025 12:25:01 +0100 (CET)
+Message-ID: <b4ffe62d-34f6-431d-87b1-55ca988b63b7@collabora.com>
+Date: Wed, 5 Nov 2025 12:25:00 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="DwZumMumnql1tOgs"
-Content-Disposition: inline
-In-Reply-To: <20251105093100.541408-12-shayne.chen@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: i2c issues in 6.18 on R4, but not r4pro (both mt7988 with i2c-mux
+ on i2c2)
+To: "Frank Wunderlich (linux)" <linux@fw-web.de>, matthias.bgg@kernel.org,
+ Andi Shyti <andi.shyti@kernel.org>, Qii Wang <qii.wang@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org,
+ daniel@makrotopia.org
+References: <3f5ef2d1336933a87d9761b5ff510a1f@fw-web.de>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <3f5ef2d1336933a87d9761b5ff510a1f@fw-web.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_025742_885500_C07934FF 
-X-CRM114-Status: GOOD (  19.38  )
+X-CRM114-CacheID: sfid-20251105_032504_650408_1EEF01C9 
+X-CRM114-Status: GOOD (  30.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,118 +77,171 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 30/10/25 11:38, Frank Wunderlich (linux) ha scritto:
+> Hi
+> 
+> sorry for html-mail, my main email-provider (GMX) sent it as html (have enabled 
+> text-mail as default in settings) when using web-mailer.
+> 
+> i've noticed i2c-issues (i2c2) on mt7988 BPI-R4 with 6.18. On most bootups the i2c- 
+> mux is not detected.
+> 
+> root@bpi-r4-v11:~
+> # i2cdetect -y  2
+>       0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+> 00:                         -- -- -- -- -- -- -- --
+> 10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 70: -- -- -- -- -- -- -- --
+> 
+> i2c-probe is completed successful (no errors and debugs shown before final "return 
+> 0;")
+> 
+> sometimes the mux came up with same kernel-binary, and i see also other devices on 
+> same i2c bus, but mostly all devices are not shown when i use i2cdetect on the bus.
+> 
+> root@bpi-r4-v11:~
+> # i2cdetect -y  2
+>       0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+> 00:                         -- -- -- -- -- -- -- --
+> 10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 50: -- UU -- -- -- -- -- UU -- -- -- -- -- -- -- --
+> 60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+> 70: UU -- -- -- -- -- -- --
+> root@bpi-r4-v11:~
+> # [   58.594846] sfp sfp1: failed to read EEPROM: -ENXIO
+> 
+> 6.17 seems ok (have not seen the issue there yet).
+> 
+> i looked through many commits, reverted some for clock (my own, lauras 
+> clk_gate,...), pinctrl and the i2c-mux (some reset-related) itself but nothing helped.
+> 
+> One strange thing is that i have noticed no issues on bpi-r4pro which uses same 
+> SoC, same config and should use same drivers and configuration via dt.
+> Only diference was the reset for the mux itself in dts as far as i see....so tried 
+> to disable it to have it nearly same as on r4pro without any effect.
+> 
+> Maybe you have any idea how i can nail it down?
+> 
 
---DwZumMumnql1tOgs
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Did you check if there's any clock, or power rail, or power domain, that you are
+missing in some node perhaps?
 
-On Nov 05, Shayne Chen wrote:
-> The RRO EMI rings only need to be allocated when WED is not active.
-> This patch fixes command timeout issue for the setting of WED off and
-> RRO on.
->=20
-> Fixes: 3a29164425e9 ("wifi: mt76: mt7996: Add SW path for HW-RRO v3.1")
-> Co-developed-by: Rex Lu <rex.lu@mediatek.com>
-> Signed-off-by: Rex Lu <rex.lu@mediatek.com>
-> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Could be that something is getting powered off temporarily and gifting you with
+this "amazing" issue...
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> root@bpi-r4-v11:~
+> # dmesg | grep -i 'sfp\|i2c'
+> [    0.000000] Machine model: Banana Pi BPI-R4 (2x SFP+)
+> [    1.600387] i2c_dev: i2c /dev entries driver
+> [    1.605291] /soc/i2c@11003000/rt5190a@64: Fixed dependency cycle(s) with /soc/ 
+> i2c@11003000/rt5190a@64/regulators/buck1 #i2c0 seems not affected
+> [   12.685157] platform sfp1: deferred probe pending: (reason unknown)
+> [   12.691440] platform sfp2: deferred probe pending: (reason unknown)
+> 
+> # dmesg | grep -i 'err\|fail\|clk'
+> ... #nothing related to i2c or clk
+> [    1.623805] pca954x 2-0070: probe failed
+> ....
+> 
+> wondered why i2c-clocks are always disabled when i look into the clk_summary (also 
+> when i2c was working)
+> 
 
-> ---
->  .../net/wireless/mediatek/mt76/mt7996/dma.c   | 15 +++++++++------
->  .../net/wireless/mediatek/mt76/mt7996/init.c  | 19 ++++++++++++++++---
->  2 files changed, 25 insertions(+), 9 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/dma.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7996/dma.c
-> index 7ac4defca29d..274b273df1ee 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
-> @@ -515,12 +515,15 @@ int mt7996_dma_rro_init(struct mt7996_dev *dev)
->  		if (ret)
->  			return ret;
-> =20
-> -		/* We need to set cpu idx pointer before resetting the EMI
-> -		 * queues.
-> -		 */
-> -		mdev->q_rx[MT_RXQ_RRO_RXDMAD_C].emi_cpu_idx =3D
-> -			&dev->wed_rro.emi_rings_cpu.ptr->ring[0].idx;
-> -		mt76_queue_reset(dev, &mdev->q_rx[MT_RXQ_RRO_RXDMAD_C], true);
-> +		if (!mtk_wed_device_active(&mdev->mmio.wed)) {
-> +			/* We need to set cpu idx pointer before resetting the
-> +			 * EMI queues.
-> +			 */
-> +			mdev->q_rx[MT_RXQ_RRO_RXDMAD_C].emi_cpu_idx =3D
-> +				&dev->wed_rro.emi_rings_cpu.ptr->ring[0].idx;
-> +			mt76_queue_reset(dev, &mdev->q_rx[MT_RXQ_RRO_RXDMAD_C],
-> +					 true);
-> +		}
->  		goto start_hw_rro;
->  	}
-> =20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/n=
-et/wireless/mediatek/mt76/mt7996/init.c
-> index bd7b720c64c5..00a8286bd136 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-> @@ -960,9 +960,10 @@ static int mt7996_wed_rro_init(struct mt7996_dev *de=
-v)
->  		       MT7996_RRO_MSDU_PG_SIZE_PER_CR);
->  	}
-> =20
-> -	if (dev->mt76.hwrro_mode =3D=3D MT76_HWRRO_V3_1) {
-> +	if (!mtk_wed_device_active(&dev->mt76.mmio.wed) &&
-> +	    dev->mt76.hwrro_mode =3D=3D MT76_HWRRO_V3_1) {
->  		ptr =3D dmam_alloc_coherent(dev->mt76.dma_dev,
-> -					  sizeof(dev->wed_rro.emi_rings_cpu.ptr),
-> +					  sizeof(*dev->wed_rro.emi_rings_cpu.ptr),
->  					  &dev->wed_rro.emi_rings_cpu.phy_addr,
->  					  GFP_KERNEL);
->  		if (!ptr)
-> @@ -971,7 +972,7 @@ static int mt7996_wed_rro_init(struct mt7996_dev *dev)
->  		dev->wed_rro.emi_rings_cpu.ptr =3D ptr;
-> =20
->  		ptr =3D dmam_alloc_coherent(dev->mt76.dma_dev,
-> -					  sizeof(dev->wed_rro.emi_rings_dma.ptr),
-> +					  sizeof(*dev->wed_rro.emi_rings_dma.ptr),
->  					  &dev->wed_rro.emi_rings_dma.phy_addr,
->  					  GFP_KERNEL);
->  		if (!ptr)
-> @@ -1037,6 +1038,18 @@ static void mt7996_wed_rro_free(struct mt7996_dev =
-*dev)
->  				   dev->wed_rro.msdu_pg[i].phy_addr);
->  	}
-> =20
-> +	if (dev->wed_rro.emi_rings_cpu.ptr)
-> +		dmam_free_coherent(dev->mt76.dma_dev,
-> +				   sizeof(*dev->wed_rro.emi_rings_cpu.ptr),
-> +				   dev->wed_rro.emi_rings_cpu.ptr,
-> +				   dev->wed_rro.emi_rings_cpu.phy_addr);
-> +
-> +	if (dev->wed_rro.emi_rings_dma.ptr)
-> +		dmam_free_coherent(dev->mt76.dma_dev,
-> +				   sizeof(*dev->wed_rro.emi_rings_dma.ptr),
-> +				   dev->wed_rro.emi_rings_dma.ptr,
-> +				   dev->wed_rro.emi_rings_dma.phy_addr);
-> +
->  	if (!dev->wed_rro.session.ptr)
->  		return;
-> =20
-> --=20
-> 2.51.0
->=20
+That is something for which I can give you a clear answer....
 
---DwZumMumnql1tOgs
-Content-Type: application/pgp-signature; name=signature.asc
+> root@bpi-r4-v11:~
+> # cat /sys/kernel/debug/clk/clk_summary | grep -i -B2 INFRA_I2C_BCK
+>               infra_usb_sys           0       0        0        125000000   0       
+>     0     50000      N               deviceless
+>            i2c_sel                    0       1        0        125000000   0       
+>     0     50000      N            deviceless
+>               infra_i2c_bck           0       3        0        125000000   0       
+>     0     50000      N               11005000.i2c
+> root@bpi-r4-v11:~
+> 
+> but looking at the driver the clocks are disabled on probe which looks strange to me
+> 
+> https://elixir.bootlin.com/linux/v6.18-rc1/source/drivers/i2c/busses/i2c- 
+> mt65xx.c#L1477
 
------BEGIN PGP SIGNATURE-----
+...Not strange at all...
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaQstowAKCRA6cBh0uS2t
-rMQnAP9Wh3rDrj6yxrdedGGUlehqj9A1BUSgXjH6lWCmX23F2AEAixqZfaNIXbCa
-UCSL3uJgQAO5MzaJyaFCn/tVm92hJgY=
-=2gfS
------END PGP SIGNATURE-----
+> 
+> i guess it is some kind of timing issue where clocks are still disabled but not 
+> reenabled in mtk_i2c_transfer, but
+> my debug in this function shows that is called and ret=0 after the bulk_enable (and 
+> of course flooding console :p ).
 
---DwZumMumnql1tOgs--
+...because on MediaTek, the I2C controllers are "kinda standalone" - meaning that
+they work as long as they're powered up, with their main clock being either some
+internal XO or the clk26m or a clock derived from that (it's bogus, as that is an
+IP implementation detail that nobody has, if not MediaTek's HW engineering dept,
+and it's not relevant anyway so we don't even need to really know if not for pure
+curiosity).
+
+The basic "unclocked" functionality of the I2C controller(s) in MediaTek SoCs is
+XFER detection (not sure if they can do buffering as well while the AP-driven
+clocks are off).
+
+As a small side note: I think MediaTek are not the only ones doing that, but this
+is an entirely different story and it's just for your own curiosity, in case.
+
+The I2C clocks therefore are only enabling the CPU to perform read/write(/modify)
+operations on the I2C Controller registers, which also include DMA transfers.
+
+Speaking of DMA, is there really no support for apdma_sync in MT7988a? ;-)
+
+> maybe some speed-calculation-issue?
+> 
+
+Could also be, but if it was that, and directly related to I2C, you'd get errors
+during communication even when your PCA954X device actually gets probed, because
+whatever calculation is ran, it's always going to be the same across reboots.
+
+All that I'm saying here, though, ignores hardware issues. So, if you're using a
+board that is not final, or a final board that has HW issues (not only as in your
+own unit, but as a design mistake of some sort) it's a different story.
+
+I am bringing up the HW question just because "better safe than sorry", but if
+using something not final.. I'm mostly sure that you would've said that already
+and tried with.. well, final hardware, before seeking for help here anyway :-)
+
+Cheers!
+Angelo
+
+> what i had tried to revert (also my own non-mainline like "convert invalid GATE to 
+> MUX"), so they seem not the rootcause:
+> 
+> d51e7cfca3fe 2025-09-25 i2c: mt65xx: convert set_speed function to void Wolfram Sang
+> b49218365280 2025-09-06 i2c: mediatek: fix potential incorrect use of 
+> I2C_MASTER_WRRD Leilk.Liu
+> 614b1c3cbfb0 2025-06-12 i2c: use inclusive callbacks in struct i2c_algorithm 
+> Wolfram Sang
+> 
+> c90fa5493f7a 2025-07-31 i2c: mux: pca9541: Use I2C adapter timeout value for 
+> arbitration timeout Manikanta Guntupalli
+> 94c296776403 2025-06-03 i2c: muxes: pca954x: Reset if (de)select fails Wojciech Siudy
+> 690de2902dca 2025-06-03 i2c: muxes: pca954x: Use reset controller only Wojciech Siudy
+> 
+> e504d3bdb3d0 2025-09-15 clk: mediatek: clk-gate: Add ops for gates with HW voter 
+> Laura Nao
+> 8ceff24a754a 2025-09-15 clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to 
+> use mtk_gate struct Laura Nao
+> 
+> bd6f4a91401f 2025-09-02 pinctrl: mediatek: moore: replace struct function_desc with 
+> struct pinfunction Bartosz Golaszewski
+> 7a24f1f5b214 2025-09-02 pinctrl: mediatek: mt7988: use PINCTRL_PIN_FUNCTION() 
+> Bartosz Golaszewski
+> 
+> regards Frank
+
+
 
