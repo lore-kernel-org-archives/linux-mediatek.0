@@ -4,77 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AB00CCFA1A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 09:31:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7C91CCF9F8
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 10:04:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j/JbcvvpXqlSsVupkccc+rlTyXgBtDi3c1/kNprVr7w=; b=v+fFyw9uDPqVMttBWnXGHeSgVJ
-	RjVPr7qudSe+wI45nNTyD3fl8smoVhV0nD2tUstAl7h3oaB1siE56L+AdDEoxeLIwSXaRpT/ac7S2
-	EZDbQYDionakdDaBXSNlsDmvytvDO1mF7ocApCqmIY3S1LRpRuwE+cCaaJpz9qmllWSEOJCYieCyl
-	l1j37khwi5HeS35csvgd32BXfTzi89orjamLqztbwZaylfaPRXb2V/+cGAqwgmRBtiCAS6sZGlAGO
-	diDQR+IQt9xjYNzYPIot5/eMo4ErBNJrj+4Sper+Xf/ZyX0wNjbF6K5FBtcQjtMLOQC9jXA4qgoqF
-	SZA0/wkA==;
+	bh=51W2CnN+Guuudae3OD1SUKvnW9S79T25TQpKrmukDus=; b=NKLQWG8t13QpjXzep9BGvC1B8S
+	HQSC0zM+bZkJJ8suAJAwJU7OGsO7IY0haXvmwtT4Ymu/JDBQs9QXssjhj0jARske/K2JIRBjiRzt6
+	Mhhp4J6mngu/+uvXToMsjdXxnQ8iuIgb8RnfL12zbNG33iHBClMHWpQGXFwJ4ofXa9WPAHlfOGhDY
+	4T/NtSIcgdRcUufhYZcHuiqWtW2aJGKKGhMA/s5ZNgPCTfvKhaOot9BcFeodvMfusySihgiyxISOB
+	gKxI5w158UQpOmZudNxFRGxVCK5lUaI51bbDM0ggSFOI/RApYLv1qLgagKisEK9LBiffWIwq5wdmc
+	eO6CLSZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGZrm-0000000DO8g-2TlZ;
-	Wed, 05 Nov 2025 09:31:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vGaNg-0000000DRZk-2xgz;
+	Wed, 05 Nov 2025 10:04:44 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGZrh-0000000DNwk-3JR6
+	id 1vGaNf-0000000DRZV-40XY
 	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Nov 2025 09:31:43 +0000
-X-UUID: 36f694d0ba2a11f0a52f393f94899d25-20251105
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=j/JbcvvpXqlSsVupkccc+rlTyXgBtDi3c1/kNprVr7w=;
-	b=ZWAVIjmziYHaJq+1btaHZJNk/z4CkX8JE23jD9wLWtK51E/KTDwdfKIAnw3LiSGzFfq+o6oI9FpO5QVCRkZHUjetjUTd/aF400yb9l18ECCru8L1JxS2N9LHSs13ebnJpNBFD1/DxUmeil0fPtYhVx3cHjxMDEmwisXk3Cg5cmk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:23dc4599-71b2-4caa-9ac4-9cd5f7205234,IP:0,UR
-	L:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:a9d874c,CLOUDID:dad7106b-d4bd-4ab9-8221-0049857cc502,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:2,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 36f694d0ba2a11f0a52f393f94899d25-20251105
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <shayne.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1032955911; Wed, 05 Nov 2025 02:31:32 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Wed, 5 Nov 2025 17:31:29 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Wed, 5 Nov 2025 17:31:29 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Howard Hsu
-	<howard-yh.hsu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH mt76 03/12] wifi: mt76: mt7996: fix implicit beamforming support for mt7992
-Date: Wed, 5 Nov 2025 17:30:51 +0800
-Message-ID: <20251105093100.541408-3-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20251105093100.541408-1-shayne.chen@mediatek.com>
+	Wed, 05 Nov 2025 10:04:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 160B960203;
+	Wed,  5 Nov 2025 10:04:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 693CBC4CEFB;
+	Wed,  5 Nov 2025 10:04:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1762337082;
+	bh=Ka8z3Hv/2rtt+qWKWxn11yRa+1TDqPq3B0nEETFhsVw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=IAU1MxdUVi00nZHBno4TzKdnVU6X0EE4ExkUMqDUj6p+UEx7YPPAM7kd3tAA6/Fyy
+	 0s3LWdVLi7mjf2X4FlISyVkAg+OzPB2YdEvSE5zqyR6LCxLHsLam9b3+bmisZSOzDo
+	 WQCIMiJUlSaPsr6WwGsnomYwd6GJ2RaY7h1AxBMM9wPHOxZw4cMROTt3RkWff8uKwB
+	 3/2YnUw1ozjbd0Gk0MCmxfLCJ9gHfsWXHpNoYFBamiEyPrOuFMW+ak+jBczTPgItnE
+	 lGyk3ONkXcQepmzCUJRWOUoWQnG9opaJ4xcBXCdWAjD+DfsdBlWaJRNxPgujYt2zZM
+	 OYzQoMmpRuVtw==
+Date: Wed, 5 Nov 2025 11:04:40 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>,
+	linux-wireless <linux-wireless@vger.kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH mt76 05/12] wifi: mt76: mt7996: fix several fields in
+ mt7996_mcu_bss_basic_tlv()
+Message-ID: <aQshODZaMJSUoWPd@lore-desk>
 References: <20251105093100.541408-1-shayne.chen@mediatek.com>
+ <20251105093100.541408-5-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_013141_856143_D9EFC79D 
-X-CRM114-Status: GOOD (  10.85  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="BZxWA+vEG1kVrO84"
+Content-Disposition: inline
+In-Reply-To: <20251105093100.541408-5-shayne.chen@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,35 +74,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Howard Hsu <howard-yh.hsu@mediatek.com>
 
-Fix the ibf_timeout field for mt7996, mt7992 and mt7990 chipsets. For
-the mt7992, this value shall be set as 0xff, while the others shall be
-set as 0x18.
+--BZxWA+vEG1kVrO84
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: ad4c9a8a9803 ("wifi: mt76: mt7996: add implicit beamforming support for mt7992")
-Signed-off-by: Howard Hsu <howard-yh.hsu@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> Fix several fields in mt7996_mcu_bss_basic_tlv() that were not obtained
+> from the correct link. Without this patch, the MLD station interface
+> does not function properly.
+>=20
+> Fixes: 34a41bfbcb71 ("wifi: mt76: mt7996: prepare mt7996_mcu_add_dev/bss_=
+info for MLO support")
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index e97984693290..82dd34a8780f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -1825,8 +1825,8 @@ mt7996_mcu_sta_bfer_tlv(struct mt7996_dev *dev, struct sk_buff *skb,
- 	bf->ibf_nrow = tx_ant;
- 
- 	if (link_sta->eht_cap.has_eht || link_sta->he_cap.has_he)
--		bf->ibf_timeout = is_mt7996(&dev->mt76) ? MT7996_IBF_TIMEOUT :
--							  MT7992_IBF_TIMEOUT;
-+		bf->ibf_timeout = is_mt7992(&dev->mt76) ? MT7992_IBF_TIMEOUT :
-+							  MT7996_IBF_TIMEOUT;
- 	else if (!ebf && link_sta->bandwidth <= IEEE80211_STA_RX_BW_40 && !bf->ncol)
- 		bf->ibf_timeout = MT7996_IBF_TIMEOUT_LEGACY;
- 	else
--- 
-2.51.0
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
+> ---
+>  .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 21 ++++++++++---------
+>  1 file changed, 11 insertions(+), 10 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7996/mcu.c
+> index 82dd34a8780f..f1892aaf6a91 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+> @@ -1037,7 +1037,6 @@ mt7996_mcu_bss_basic_tlv(struct sk_buff *skb,
+>  	struct mt76_connac_bss_basic_tlv *bss;
+>  	u32 type =3D CONNECTION_INFRA_AP;
+>  	u16 sta_wlan_idx =3D wlan_idx;
+> -	struct ieee80211_sta *sta;
+>  	struct tlv *tlv;
+>  	int idx;
+> =20
+> @@ -1048,14 +1047,18 @@ mt7996_mcu_bss_basic_tlv(struct sk_buff *skb,
+>  		break;
+>  	case NL80211_IFTYPE_STATION:
+>  		if (enable) {
+> +			struct ieee80211_sta *sta;
+> +
+>  			rcu_read_lock();
+> -			sta =3D ieee80211_find_sta(vif, vif->bss_conf.bssid);
+> -			/* TODO: enable BSS_INFO_UAPSD & BSS_INFO_PM */
+> +			sta =3D ieee80211_find_sta(vif, link_conf->bssid);
+>  			if (sta) {
+> -				struct mt76_wcid *wcid;
+> +				struct mt7996_sta *msta =3D (void *)sta->drv_priv;
+> +				struct mt7996_sta_link *msta_link;
+> +				int link_id =3D link_conf->link_id;
+> =20
+> -				wcid =3D (struct mt76_wcid *)sta->drv_priv;
+> -				sta_wlan_idx =3D wcid->idx;
+> +				msta_link =3D rcu_dereference(msta->link[link_id]);
+> +				if (msta_link)
+> +					sta_wlan_idx =3D msta_link->wcid.idx;
+>  			}
+>  			rcu_read_unlock();
+>  		}
+> @@ -1072,8 +1075,6 @@ mt7996_mcu_bss_basic_tlv(struct sk_buff *skb,
+>  	tlv =3D mt7996_mcu_add_uni_tlv(skb, UNI_BSS_INFO_BASIC, sizeof(*bss));
+> =20
+>  	bss =3D (struct mt76_connac_bss_basic_tlv *)tlv;
+> -	bss->bcn_interval =3D cpu_to_le16(link_conf->beacon_int);
+> -	bss->dtim_period =3D link_conf->dtim_period;
+>  	bss->bmc_tx_wlan_idx =3D cpu_to_le16(wlan_idx);
+>  	bss->sta_idx =3D cpu_to_le16(sta_wlan_idx);
+>  	bss->conn_type =3D cpu_to_le32(type);
+> @@ -1093,10 +1094,10 @@ mt7996_mcu_bss_basic_tlv(struct sk_buff *skb,
+> =20
+>  	memcpy(bss->bssid, link_conf->bssid, ETH_ALEN);
+>  	bss->bcn_interval =3D cpu_to_le16(link_conf->beacon_int);
+> -	bss->dtim_period =3D vif->bss_conf.dtim_period;
+> +	bss->dtim_period =3D link_conf->dtim_period;
+>  	bss->phymode =3D mt76_connac_get_phy_mode(phy, vif,
+>  						chandef->chan->band, NULL);
+> -	bss->phymode_ext =3D mt76_connac_get_phy_mode_ext(phy, &vif->bss_conf,
+> +	bss->phymode_ext =3D mt76_connac_get_phy_mode_ext(phy, link_conf,
+>  							chandef->chan->band);
+> =20
+>  	return 0;
+> --=20
+> 2.51.0
+>=20
+
+--BZxWA+vEG1kVrO84
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaQshOAAKCRA6cBh0uS2t
+rM0dAQDXpwmIF/R2OQWLsGxTyuO0LQdf0mqBlkF8/8nFgog6WwEA3JI0fxX+dabP
+sFyqJrhqUzOZjcPS9mZuEVqJri+F4AM=
+=YTxf
+-----END PGP SIGNATURE-----
+
+--BZxWA+vEG1kVrO84--
 
