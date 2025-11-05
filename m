@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF95BCCF9F8
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 12:30:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EFE6CCF9F8
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 12:31:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fMPeYJAiqG+/lWkROIRlcP5E6Gh5zcB2nm18U7Rp8rY=; b=UnSTuGN9ZnCtUl2R1bYNGF9ppg
-	ccFIe9blQkrVE1pGd4F7yi4051zGfj8Nh1zuzXLpZFmXQ/ne706R4t2FL6ncQ1SqQGccMWt2Yy3xY
-	06dkgVlFdRejKRgNqeJtNnZifuFYpor07k8gEX+jNNXoQNRUFL4kbKct2QPabNiVmTsPk2RsEOMP+
-	5nm8gI0om1zG7w6MMjFtQsFgu0sNOXLUWuNv7AHFwG6N9c/2uqyKE2K7xCzt+6Md0bvlzeaD4uQ0e
-	IWtGsk/n3qxpB6+96mA7ygG0o4uLQlFoFs2lLqDwYyApSVe9tPW7eRdqqs7sPkoKiSg0x/gQpPLJN
-	WujXZxVA==;
+	bh=TavNOPJn5l9va/tHjiXdguhPaboZMjgsQKvjVKmTNJU=; b=b5W5HbKn5gfzS0Y009cbZs+yt4
+	FmG+VzAfTYOyB8oxNT9sEO5mmBziYDm0tDty4g6zHFAFX/juHJhNt4RD55+wJIyWopLBw2w6sr2Un
+	J8EfGc5VsToyC7hwHhx/NK6GMwVLXJbmm5ve4bMtzubWoRhEplDk7IqWA2+1bkFwqxuBmFNcoBk3k
+	6P4u5fa9x+0PGPcSXybDStU+1Prg5jIyVOLIVy6Xd0eubVcoDGpIrOyVHMzkgWS1joFw8VJCD9bOz
+	wGaeQy+HczVcZqraUwcb6bly8iwBte5P4f+1c68iZz/JDSGAFmzU+4ygshJd/D4HmsuB3BIXxtjUH
+	shktdUag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGceo-0000000Db2X-3hE0;
-	Wed, 05 Nov 2025 12:30:34 +0000
+	id 1vGcfe-0000000Db8O-20ob;
+	Wed, 05 Nov 2025 12:31:26 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGcem-0000000Db2B-2NzY
+	id 1vGcfb-0000000Db7m-15M2
 	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Nov 2025 12:30:33 +0000
+	Wed, 05 Nov 2025 12:31:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762345829;
-	bh=IiK2mpEii/vR3bgxpZg9qwQ/e83frIZinAdetivBfco=;
+	s=mail; t=1762345880;
+	bh=3orZaa3BJfbbwuZiYUMX6DK1I31IvSAL999Rpt9kpxk=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=eq5hV6GaTEBxYByQcV6bfi1YRReUWlvEOraI6xXzP5Bp//C9TQ0NGKVxlX9Y5gRhU
-	 P+o61Hv+Jf434sqMiJWTj2dgzIJ1CbxWr+/9karGQz5e9Z/jg32eveIzEcZz9Qxm08
-	 AvXXwVdfXY04raDzUIqCInPfTFHlr9Ve5CY1UywxvSQqfK8AmQKLLMKZ9HF2fMusEs
-	 /3Xc2VhXzSPJTVxkYuNWgMm0b+qTcXrJOsjJU8zkDLtNBISVAmj0cg+pw6j1ivoNjj
-	 ZJMoqan3hQWz8Pm58rXlaD+eXKvy096NxEIOO4lOZTrt2WzU1i+WlHqQrz7mbHw3D+
-	 4lqEYKMJiPujQ==
+	b=Pl+bDX0bsfW2Sp34vBeeVU0amQOnBSbALUJjzViisp14VXUgd+kJ2YRyADMAXSu2k
+	 +tZQKNisJ1L5dnAApFHRQaYpIr0fRxzw8e7thjpllTZIxnYn6cMV7VBi3nhcUxriyM
+	 xYtTANz739MqPnWXBEdScSR/YYxXG7tyOukQXzaXjHACdxikSaT29xW0B4aDPt8gQG
+	 UGu/J/YKwraPp2LqhOqy320iKfH39MqvzGcPk1YFENq5a29Z7AFdcQK6ddODigVmSf
+	 5Zd7um2SPDAhjP0Kw8QabG3x9Tiw3p7FyOQH8mXK31/RMoRVmJFobQrKgGAVKXG5HQ
+	 D8LBxCHc0tM8A==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E319017E009B;
-	Wed,  5 Nov 2025 13:30:28 +0100 (CET)
-Message-ID: <2162f8a5-e4ca-46e1-baac-e7eaf3e58c11@collabora.com>
-Date: Wed, 5 Nov 2025 13:30:28 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AF9E517E009B;
+	Wed,  5 Nov 2025 13:31:19 +0100 (CET)
+Message-ID: <8bbea465-c277-499c-937d-71790a3555da@collabora.com>
+Date: Wed, 5 Nov 2025 13:31:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: i2c issues in 6.18 on R4, but not r4pro (both mt7988 with i2c-mux
- on i2c2)
-To: Frank Wunderlich <linux@fw-web.de>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>
-Cc: matthias.bgg@kernel.org, Andi Shyti <andi.shyti@kernel.org>,
- Qii Wang <qii.wang@mediatek.com>, Wojciech Siudy <wojciech.siudy@nokia.com>,
- linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org,
- daniel@makrotopia.org
-References: <3f5ef2d1336933a87d9761b5ff510a1f@fw-web.de>
- <64fb54d5f2bc929720d3313f7fa2d8cd@fw-web.de> <aQdSVcazPQl-shR6@shikoro>
- <1144f62ad9886fed60620bce0bbed7ee@fw-web.de> <aQfgEuelvU-8_2rh@shikoro>
- <aQs6O75BqOERMzPJ@ninjato> <9B073F04-0CE1-4870-88B7-9510B3EA5D6F@fw-web.de>
+Subject: Re: [PATCH v2 0/2] media: mediatek: fix VPU device leaks on probe
+To: Johan Hovold <johan@kernel.org>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Houlong Wei <houlong.wei@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Nicolas Dufresne <nicolas@ndufresne.ca>, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20251028100454.4086-1-johan@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <9B073F04-0CE1-4870-88B7-9510B3EA5D6F@fw-web.de>
+In-Reply-To: <20251028100454.4086-1-johan@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_043032_791115_2B323E51 
-X-CRM114-Status: GOOD (  11.98  )
+X-CRM114-CacheID: sfid-20251105_043123_459794_79D4D485 
+X-CRM114-Status: GOOD (  12.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,38 +82,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/11/25 13:08, Frank Wunderlich ha scritto:
-> Am 5. November 2025 12:51:23 MEZ schrieb Wolfram Sang <wsa+renesas@sang-engineering.com>:
->>
->>>> Maybe this option should be enabled by default or when the i2c-mux is
->>>> selected?
->>>
->>> That's what we were discussing. At least a warning will now get printed
->>> to the logs when booting suggesting the above solution.
->>
->> FYI, all the commits leading to this breakage are reverted now. Sorry
->> for your troubles!
+Il 28/10/25 11:04, Johan Hovold ha scritto:
+> This series fixes VPU device leaks during probe of the mdp driver.
 > 
-> Why? My issue was solved by adding GPIO_RESET... So it was fault on my side,sorry for bothering.
+> Included is also a minor documentation update to make it clear that the
+> VPU lookup helper returns the device with an incremented refcount.
 > 
-> @angelo
-> yes it is a final board BPI-R4 v1.1.
+> Johan
 > 
-> Why sometimes it works i guess it is because uboot may previously initialize the device (and without reset working it may be stuck in wrong state).
-
-Heh, this is something that happens frequently.
-
-> I'm not sure if my current flashed version had the i2c and i2cmux support,but i got it working on that board because of the connected eeprom (read mac address via tlv_eeprom as macs do not have fixed macs via efuse afaik).
 > 
-> Thanks for help so far.
+> Changes in v2
+>   - drop incorrect vcodec patch since that reference leak has already
+>     been fixed by commit bf1d556ad4e0 ("media: mtk-vcodec: abstract
+>     firmware interface") which added the codec release callback
+> 
+> 
+> Johan Hovold (2):
+>    media: mediatek: mdp: fix device leak on probe
+>    media: mediatek: amend vpu_get_plat_device() documentation
+> 
+>   drivers/media/platform/mediatek/mdp/mtk_mdp_core.c | 7 +++++--
+>   drivers/media/platform/mediatek/vpu/mtk_vpu.h      | 2 +-
+>   2 files changed, 6 insertions(+), 3 deletions(-)
 > 
 
-No worries, my pleasure (but I didn't do all that much anyway :P :P :P)
 
-Cheers,
-Angelo
+While series is
 
-> regards Frank
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 
