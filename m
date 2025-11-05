@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F5ADCCFA0D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 15:40:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 677BACCFA0D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 16:59:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wy12/dAo+31ps9A4XEhL3jHyntcIvsl/uY/5+eeyUCA=; b=dT7E5Eo4hIxjBJtMDHHE7Xg7WL
-	84MsQ8+yxneeEW6BN+nlKeFPcqBt/PYZMjegCfHmIvOq7nXbx9IYwWYmqXmr83g3Q36zboaLVYTlo
-	QXLiMwTjV77khcR1kt40G6Mh4ku471J+MCCcJ+1BF4W1nO169DvEVhQSLXXDX+MVEtn5qR8KRGiF8
-	t5sZntKB3qPncxeP6Yq1Z+5l94moVo4WLcdddhv2oyQAqVKVqdbXib5LceJff1PxYkpla5Ez4rZQh
-	TJ7Wm8pjFB3xBMQn9Xrpiw33Tv59n2AW9ziGkMTCz6S+Gw5TRLQHjzY4wM0O0XLZSnKH/ECfrTSmC
-	4qJhPdcw==;
+	bh=2ZRTyQbwGvc+R7kDpBMaVlz3uvjTnQ5CQHAjJcXrCkM=; b=uEAPHDB9FQi7PLgyG84VFdY7SH
+	cU1dFSdAhJaW2jEOKvC93VH18+CHx6ar4Yi304g8nmXvvPebF/WVSQpBD59hzcwiukricP7/bUYpy
+	u7ojvZl7WS3aRRq2z5h2jMMMVFeZfEyKadwYRyPecd9yQ+jPDAVp1Im0SZJM3CEAwcX92Pb0oKO56
+	a2WnrOWz2KAGma0CuEj/IFIoHIkmEr2L77W6H00Uqhu6wtmzIi/EuYmakZI8o1lbCqErHQoekfWOy
+	ZKO77iV/9ywr8SRlSryEIT5s1vBC/CabUFN7RD0ImowglJVoHofTuwm1Ixt2F+rkev8DTXKkgcvN4
+	EfWCMmQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGfcH-0000000DxfN-2MCj;
-	Wed, 05 Nov 2025 15:40:09 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vGgqi-0000000E7mK-0PSC;
+	Wed, 05 Nov 2025 16:59:08 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGfcE-0000000DxeJ-37SA;
-	Wed, 05 Nov 2025 15:40:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762357202;
-	bh=0AdgQPQBQ5614CjYT/8ghpUX8jPll4myC0xvjOQOOok=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ZD++iarPdfmEmGSj1omdR9WANjbaw5AzqcYKP1gVT99Qw7B/ERi9BaJj9ivLOCLiH
-	 JLTrxj8wlLOijYKCLwMjkHb95chWXF+dLFvkZZTYGYpvu3aa74O/Bo5565hwwGRWQ0
-	 XcqgU4TmipCfL3kpWPfl8Mn6E/JsyF3DGw4FDxH4HHDieKNHu+lGPnpmnDph1ZeAr2
-	 WQr+SXIqgEctCtfbbbV47mGMpk3kY5dkB0j02h4PCFRiLg2uy64+WkrZ9vfOuIWLv5
-	 QR8EnGKyugu1G2rGlbak9+E/zwb+p9MCOs1/9DqKvuOfzUvygp+qGhue6VCwu3vjQE
-	 DwofNsOWqt4Pg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4B1FA17E1091;
-	Wed,  5 Nov 2025 16:40:02 +0100 (CET)
-Message-ID: <9fbec168-295a-4278-93f4-e27a419c892f@collabora.com>
-Date: Wed, 5 Nov 2025 16:40:01 +0100
+	id 1vGgqe-0000000E7lP-3yBz;
+	Wed, 05 Nov 2025 16:59:06 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 125EA43F4A;
+	Wed,  5 Nov 2025 16:59:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BFCDCC4CEF8;
+	Wed,  5 Nov 2025 16:58:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1762361943;
+	bh=1J87xzk9VW3lpoQ+hkZnGeccC3K0L5gdz2AKUwHegLo=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=CQGTUh2juHjQ0qGUIJYSwANSA+HsCyK5E2ANQOb6XSJwLMqQtKobX/k4eSLUgrnrv
+	 cRqV/j6qaJEaBvihDxBZ9DTHbT4Xx6CIkG2i13JVfNiatzPdQu94ogqOT2c24kiwMF
+	 S7os2yloZfSuw+1CiKojJ722oHNUK+W2jpyliDw4xDcPBkjXcJ5QH5DAdU0XEPb9HL
+	 9cuSV/NzXN0RGN+z+sClJ9QkwHj6Ga0JcvLzGCoxXY752HSwBN1Du17A09MOoP8u86
+	 b0zZOGlB7UESmENdd2M67Z16PulHQrTGoNQjYqi49I1fR8g8CiOQJkN3J1AJM4yKPa
+	 Vk9T2qwFrJ+tQ==
+From: Srinivas Kandagatla <srini@kernel.org>
+To: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+ jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com, 
+ andy@kernel.org, matthias.bgg@gmail.com, 
+ angelogioacchino.delregno@collabora.com, ukleinek@kernel.org, 
+ gregkh@linuxfoundation.org, jirislaby@kernel.org, daniel.lezcano@linaro.org, 
+ tglx@linutronix.de, chunfeng.yun@mediatek.com, wim@linux-watchdog.org, 
+ linux@roeck-us.net, sean.wang@mediatek.com, zhiyong.tao@mediatek.com, 
+ andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, jitao.shi@mediatek.com, 
+ Jack Hsu <jh.hsu@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-pwm@vger.kernel.org, 
+ linux-serial@vger.kernel.org, linux-usb@vger.kernel.org, 
+ linux-watchdog@vger.kernel.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+In-Reply-To: <20251030134541.784011-1-jh.hsu@mediatek.com>
+References: <20251030134541.784011-1-jh.hsu@mediatek.com>
+Subject: Re: (subset) [PATCH v6 00/11] Add mt8189 dts evaluation board and
+ Makefile
+Message-Id: <176236193629.37589.12615931533548308117.b4-ty@kernel.org>
+Date: Wed, 05 Nov 2025 16:58:56 +0000
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] mmc: mtk-sd: replace use of system_wq with
- system_percpu_wq
-To: Marco Crivellari <marco.crivellari@suse.com>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-mmc@vger.kernel.org
-Cc: Tejun Heo <tj@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>,
- Frederic Weisbecker <frederic@kernel.org>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Michal Hocko <mhocko@suse.com>, Chaotian Jing <chaotian.jing@mediatek.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20251105145824.239054-1-marco.crivellari@suse.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20251105145824.239054-1-marco.crivellari@suse.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_074006_975853_E178C2B5 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20251105_085905_015559_2AB9BE2F 
+X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,27 +85,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 05/11/25 15:58, Marco Crivellari ha scritto:
-> Currently if a user enqueues a work item using schedule_delayed_work() the
-> used wq is "system_wq" (per-cpu wq) while queue_delayed_work() use
-> WORK_CPU_UNBOUND (used when a cpu is not specified). The same applies to
-> schedule_work() that is using system_wq and queue_work(), that makes use
-> again of WORK_CPU_UNBOUND.
-> 
-> This lack of consistency cannot be addressed without refactoring the API.
-> 
-> This patch continues the effort to refactor worqueue APIs, which has begun
-> with the change introducing new workqueues and a new alloc_workqueue flag:
-> 
-> commit 128ea9f6ccfb ("workqueue: Add system_percpu_wq and system_dfl_wq")
-> commit 930c2ea566af ("workqueue: Add new WQ_PERCPU flag")
-> 
-> Replace system_wq with system_percpu_wq, keeping the same old behavior.
-> The old wq (system_wq) will be kept for a few release cycles.
-> 
-> Suggested-by: Tejun Heo <tj@kernel.org>
-> Signed-off-by: Marco Crivellari <marco.crivellari@suse.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Thu, 30 Oct 2025 21:44:32 +0800, Jack Hsu wrote:
+> In this patch series,
+> we add Mediatek MT8189 evaluation board dts, dtsi and Makefile,
+> and also related dt-binding documents.
+> 
+> based on tag: next-20251029
+> 
+> Note:
+> This patch series depends on following dt-binding headers and yamls
+> 1.dt-binding headers
+>   1. mt8189-pinfunc.h
+>        https://patchwork.kernel.org/project/linux-mediatek/patch/20250919020525.7904-1-ot_cathy.xu@mediatek.com/
+>   2. mt8189_gce.h
+>        https://patchwork.kernel.org/project/linux-mediatek/patch/20250820093831.23437-3-xiandong.wang@mediatek.com/
+> 
+> [...]
+
+Applied, thanks!
+
+[03/11] dt-bindings: nvmem: Support MediaTek MT8189 evb board efuse
+        commit: 2150cd7ffd14a39fb56c2b3cbfcc6dbf629b7643
+
+Best regards,
+-- 
+Srinivas Kandagatla <srini@kernel.org>
 
 
