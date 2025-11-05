@@ -4,85 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AF49CCF9F8
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 09:21:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3424BCCFA07
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 09:31:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M9Cz7QFeZXHx7n2GD0Sctn9Btu8KGfjVz7K3mbh7364=; b=v+yjxLIkSVBE27KWYLokARRr/X
-	eNx0pmpC+2wfSFuIWbuqu9tbl95+0xMpXd/jsSTOijfq5JuoWm3b43nNKV+PTvA1ZwCcKJIcH8IRr
-	LCIqOY5g418hxmRXIQaxw28c3Q8yKKhzqHeJnYwqmPRoxyyv7A87kVq7DNApFTpybJjOMsNAJhCbv
-	NXClyzqf61vmIGaxuzkzKouz3Jh0vZ4EDT4exKgGMpMBqlz0b+VYFZfXLmVCabN6dy4utq8A71WNJ
-	+8H8eis85oVtOWeAxjR0LN1FBba1TreK6FmJHSnqKmwBGli96D80hYQlslTYOf6OI7ColrB5QZR09
-	TkXJqd3A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ck3pytnjEP+Z1woejd35u89syHG3XzFHnYHjnbV9wC0=; b=fCzBHywIL7O8F5tJr3XGkuonnq
+	FczYGZiZcGpIxo1RYFzEoZozq1e15tfsRV8a2gNnoo2lkcIr2yg97nf9N6mjvKiYGqqAL5Emgoqs0
+	BEkRvDPEypzWb4MPeuhJAiG7lpuiEU+IU5M/qieYRSojlsiYVY5ZrrJ4meh01Pv3/RC8ryH8euUbx
+	qO38iCKjUzwdKyUtZlJZC7rN/1nWag7JepOuuUz8SQkdxBvbrcpyhfhRWwMlOocRz2zcwt8Gf4xFs
+	JABorchKxfWTYAZH5zXXiaBUcntLqajyViucc/j2c2FY4C5SABNmTTlsOlEs/6hyvvydMvp2F7UwT
+	+oATcuFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGZhq-0000000DN6r-1mmN;
-	Wed, 05 Nov 2025 09:21:30 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1vGZrf-0000000DNyX-3HEE;
+	Wed, 05 Nov 2025 09:31:39 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGZhn-0000000DN6N-35AY
+	id 1vGZrd-0000000DNwD-0zP6
 	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Nov 2025 09:21:29 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id 38308e7fff4ca-3737d0920e6so54373971fa.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 05 Nov 2025 01:21:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1762334485; x=1762939285; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=M9Cz7QFeZXHx7n2GD0Sctn9Btu8KGfjVz7K3mbh7364=;
-        b=T3N6sNz7UiZ0w6kLC4/IvaoQ027UaOc2jqqKr5vh9/Sm6gq/V3cAcspxN7bzQ9PheT
-         DtxKcbI9RnuEen59w15PEBCwPS881lPMTFoBA1n0uelDDo2yGvsQHzk5tgOiON584tfn
-         nRLiVNr02VbYMF1x9zK36iQbSn37V9FSB3r8E=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762334485; x=1762939285;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=M9Cz7QFeZXHx7n2GD0Sctn9Btu8KGfjVz7K3mbh7364=;
-        b=FLDj1chWjj5fHd27al433fG8ge8R1/Tvu40yD8k09QasN+0l3sZdml/Mq2eymaIU8G
-         uHn5YB5iw8W/x4IOQkiU9HEtAxFnwyQpfF3fZx8e6ZLM6YNfrxEfebE7vTE5ltB3U8zC
-         6Jgfe4tnX6T0J2J6OnvoCNHpbkMobdv3iJjhLHBxUTUv3NwzlSb5WZLhpyQLPcDfmRCs
-         /rM5nm0P3vThvFxEy4a1sLfErvsGGESIr9Q/t5ydUpeDW5TV2Q5lQz2zo4ueDKvFmVJ+
-         dpakQCY1Fyc4NnKVsa9Sv4iJkhzH8E64DClhkJxfP6OJx8ZjDATU9vFfK8ij+QwHLd4U
-         0Wng==
-X-Forwarded-Encrypted: i=1; AJvYcCXHU2NN4jtB10TQx3/fCHfLpFqxnaUfWY3ORaLf+QTGY+YOJOJA/s8IAWzWsz6aMi5iR5jWorIikt2jzy0HFw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzz56PrQDw8sAObC5ppuLlNsqjs8mXolIZRj5DsVLB3GeukESi/
-	2nqT/awxuu7i6bIqr5/Rpg/0cIH+M8f2nsbf8fGkWf7QU5si4uFwLUVPj+ZbE/4Y7OJldH/tWPO
-	ahO/pMfMJbelqVBjryxp9uS+NqkjFYN8FzMzKLCA5
-X-Gm-Gg: ASbGncuDHnbfUGTb5lWtGjYaXE4SfbOu3CrcZ70ZmuY6IV64qTDt/gn59c0Tj/E0x40
-	xoSMKPaS14iGeD0Y3UD9T5IRzDQxrWovT/drjkb8hdf90maNvYYU6N47pRoZeRnMCfR4Faf1NCN
-	eNFx95z+EDucIQCZwMVU6YTNCogICT6tLsNuf0jp+7tVJ+ZktL4NwAl9s/u5m3/DXEIaqtanQUq
-	EUWGeXIsv3yjs7m9i5vDncRWH3w0hp+0E7usVDF5yShjyhZDZ+6/VMquk4ThCxozf6C/3NxXWp5
-	Sk6pGc4jLx+YovU=
-X-Google-Smtp-Source: AGHT+IGQP2VVUJ5rUmY6C9xv2Mgt2qZpBhs2wiUlca0i0M5p6PJNG/u4WXKd81FDNk50RCsLvXv5mIlfnoCqea13DHc=
-X-Received: by 2002:a05:6512:104b:b0:594:34c4:a352 with SMTP id
- 2adb3069b0e04-5943d75dd17mr829339e87.23.1762334485335; Wed, 05 Nov 2025
- 01:21:25 -0800 (PST)
+	Wed, 05 Nov 2025 09:31:38 +0000
+X-UUID: 36ebdf0eba2a11f09f706fa2197c6ceb-20251105
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Ck3pytnjEP+Z1woejd35u89syHG3XzFHnYHjnbV9wC0=;
+	b=YqJ5jL170R1UnyV7YhP3igjpsLkFx5DLOQNXoIwOtwY3FA8nJO8IvhVLjmrb+Gp60tgBDfVOQioEs2p7YoaQDmODpcmkfYqrrv6CCnAngwvgvghHEqfY+zLD/hYWgVSutaurXnU5++bB/6mvVpm+RUwCHU4oZeMYNAoajS9RbIc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:29da59a5-a1de-4d20-b95a-fe1e6c60db00,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:130bf218-3399-4579-97ab-008f994989ea,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
+	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 36ebdf0eba2a11f09f706fa2197c6ceb-20251105
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1131394914; Wed, 05 Nov 2025 02:31:32 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Wed, 5 Nov 2025 17:31:29 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Wed, 5 Nov 2025 17:31:29 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Peter Chiu
+	<chui-hao.chiu@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH mt76 02/12] wifi: mt76: mt7996: no need to wait ACK event for SDO command
+Date: Wed, 5 Nov 2025 17:30:50 +0800
+Message-ID: <20251105093100.541408-2-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20251105093100.541408-1-shayne.chen@mediatek.com>
+References: <20251105093100.541408-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-References: <20251105062815.966716-1-wenst@chromium.org> <7250ae04-866f-489c-b1b6-b8a3d8200529@collabora.com>
-In-Reply-To: <7250ae04-866f-489c-b1b6-b8a3d8200529@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 5 Nov 2025 17:21:13 +0800
-X-Gm-Features: AWmQ_bndGi-pOLYUZIEExvSxZWBBRpwVWURG5nTKgeks0Y9s12nRjMsAjohzleQ
-Message-ID: <CAGXv+5EwiL_-ozRARH2UBm5znHi1egBoCjmELN=17hvFF_oeoQ@mail.gmail.com>
-Subject: Re: [PATCH] PCI: mediatek-gen3: Ignore link up timeout
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, Manivannan Sadhasivam <mani@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Jianjun Wang <jianjun.wang@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_012127_839489_DDA079F1 
-X-CRM114-Status: GOOD (  37.13  )
+X-CRM114-CacheID: sfid-20251105_013137_287813_8825D6D5 
+X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,126 +90,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 5, 2025 at 4:45=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 05/11/25 07:28, Chen-Yu Tsai ha scritto:
-> > As mentioned in commit 886a9c134755 ("PCI: dwc: Move link handling into
-> > common code") come up later" in the code, it is possible for link up to
-> > occur later:
-> >
-> >    Let's standardize this to succeed as there are usecases where device=
-s
-> >    (and the link) appear later even without hotplug. For example, a
-> >    reconfigured FPGA device.
-> >
-> > Another case for this is the new PCIe power control stuff. The power
-> > control mechanism only gets triggered in the PCI core after the driver
-> > calls into pci_host_probe(). The power control framework then triggers
-> > a bus rescan. In most driver implementations, this sequence happens
-> > after link training. If the driver errors out when link training times
-> > out, it will never get to the point where the device gets turned on.
-> >
-> > Ignore the link up timeout, and lower the error message down to a
-> > warning.
-> >
-> > This makes PCIe devices that have not-always-on power rails work.
-> > However there may be some reversal of PCIe power sequencing, since now
-> > the PERST# and clocks are enabled in the driver, while the power is
-> > applied afterwards.
-> >
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->
-> Ok, that's sensible.
->
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
->
-> > ---
-> > The change works to get my PCIe WiFi device working, but I wonder if
-> > the driver should expose more fine grained controls for the link clock
-> > and PERST# (when it is owned by the controller and not just a GPIO) to
-> > the power control framework. This applies not just to this driver.
-> >
-> > The PCI standard says that PERST# should hold the device in reset until
-> > the power rails are valid or stable, i.e. at their designated voltages.
->
-> I completely agree with all of the above - and I can imagine multiple PCI=
--Express
-> controller drivers doing the same as what's being done in MTK Gen3.
->
-> This means that the boot process may get slowed down by the port startup =
-sequence
-> on multiple PCI-Express controllers (again not just MediaTek) and it's so=
-mething
-> that must be resolved in some way... with the fastest course of action im=
-o being
-> giving controller drivers knowledge of whether there's any device that is=
- expected
-> to be powered off at that time (in order to at least avoid all those wait=
-s that
-> are expected to fail).
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
 
-That also requires some refactoring, since all the drivers _wait_ for link
-up before going into the PCI core, which does the actual child node parsing=
-.
+For the SDO unified command, driver does not need to wait for ACK event so
+do not mark MCU_CMD_ACK in command header.
 
-I would like some input from Bartosz, who introduced the PCI power control
-framework, and Manivannan, who added slot power control.
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-> P.S.: Chen-Yu, did you check if the same applies to the MTK previous gen =
-driver?
->        Could you please check and eventually send a commit to do the same=
- there?
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index dda01fa6d7bb..e97984693290 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -318,6 +318,9 @@ mt7996_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
+ 		else
+ 			uni_txd->option = MCU_CMD_UNI_EXT_ACK;
+ 
++		if (mcu_cmd == MCU_UNI_CMD_SDO)
++			uni_txd->option &= ~MCU_CMD_ACK;
++
+ 		if ((cmd & __MCU_CMD_FIELD_WA) && (cmd & __MCU_CMD_FIELD_WM))
+ 			uni_txd->s2d_index = MCU_S2D_H2CN;
+ 		else if (cmd & __MCU_CMD_FIELD_WA)
+-- 
+2.51.0
 
-My quick survey last week indicated that all the drivers except for the
-dwc family error out if link up timed out.
-
-I don't have any hardware for the older generation though. And it looks
-like for the previous gen, the driver performs even worse, since it can
-support multiple slots, and each slot is brought up sequentially. A slot
-is discarded if link up times out. And the whole driver errors out if no
-slots are working.
-
-
-ChenYu
-
-> Cheers,
-> Angelo
->
-> > ---
-> >   drivers/pci/controller/pcie-mediatek-gen3.c | 13 +++++++++----
-> >   1 file changed, 9 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/=
-controller/pcie-mediatek-gen3.c
-> > index 75ddb8bee168..5bdb312c9f9b 100644
-> > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > @@ -504,10 +504,15 @@ static int mtk_pcie_startup_port(struct mtk_gen3_=
-pcie *pcie)
-> >               ltssm_index =3D PCIE_LTSSM_STATE(val);
-> >               ltssm_state =3D ltssm_index >=3D ARRAY_SIZE(ltssm_str) ?
-> >                             "Unknown state" : ltssm_str[ltssm_index];
-> > -             dev_err(pcie->dev,
-> > -                     "PCIe link down, current LTSSM state: %s (%#x)\n"=
-,
-> > -                     ltssm_state, val);
-> > -             return err;
-> > +             dev_warn(pcie->dev,
-> > +                      "PCIe link down, current LTSSM state: %s (%#x)\n=
-",
-> > +                      ltssm_state, val);
-> > +
-> > +             /*
-> > +              * Ignore the timeout, as the link may come up later,
-> > +              * such as when the PCI power control enables power to th=
-e
-> > +              * device, at which point it triggers a rescan.
-> > +              */
-> >       }
-> >
-> >       mtk_pcie_enable_msi(pcie);
->
->
 
