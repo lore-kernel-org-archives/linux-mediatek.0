@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96882CCFA1D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 750F7CCFA1C
 	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 21:19:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,46 +12,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YTHvtBL+VZnUTHjrz6ClSw7+XPBkv6t8SxYxsbAo8Ew=; b=HqaKb7lXfmU+r1K0zRQqpAo1TC
-	dJNXPMCIpwbBK264GNPcxjw372eoyVGs5ByAGDZn/OCM5/9QzniFovhHsv/m9OeKk462mAtHNpOQP
-	Nytx7Mj90jizLzg9FkzQUuTvBSvnz4nh+0zbAAKfC+L+iLhY34I4XMhxdIN9QeOSXLHTgZhMtnqQ4
-	mcN4czHjko6wUJIy4e2qEqDMKhZdt5qXy+4FsGOvVIMiqwiK2zguLCFc09+1ql9aGfo3SqzWMR1Ss
-	a/t8K6MhlKAAJCe1jvIoipcITv1fLOMsktu3avvVBQ3xbd1EYf4CE/rRP6046K3fseEYzAzWs2wEj
-	kqgClckA==;
+	bh=j/r2anqRW+90VM9McPY+HL40VXbPRjGoaWqnMpIZ0Fs=; b=IaKu3jz6YFxlujvK4OcXhsqFrZ
+	t+qFR7JRHh0BUB6pHb1n9aOWU4LQgNs0tnGcy3xCEy7MjpCeY8KvKVusalNzRjDFaBYnXr+VWZJJR
+	PjvC0fKtomtszWd4fzB8mCulXXJKBbWmeoxmjaEMCbGevdVSLDL1NWWbQWG2BDtoqG+E5BnpuH6SM
+	ZhOF9A6np+uAo40Vv7h/e3rcKcEVgabuWM7sABvHfbqH2pQEje931ivi3kXY7unZyHg2Ot7yMWnww
+	x7BoB1wUCYmAcaf0PGZcT5JjLu9TEnKI+8XXk+6A4vnvVsxnDdXPGXHbbG2lmTQnfgh8sGhdjG/sF
+	3f5TA0Xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGkuK-0000000EUcY-1yA8;
+	id 1vGkuK-0000000EUbg-0Ql9;
 	Wed, 05 Nov 2025 21:19:08 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGktv-0000000EU0m-0kG8;
+	id 1vGktv-0000000EU0g-1snN;
 	Wed, 05 Nov 2025 21:18:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762377520;
-	bh=BNloXSmxfui+A+UD0vb6639VkVLh4h7qFS1iqqJUbUo=;
+	s=mail; t=1762377515;
+	bh=JdKvpThqp3TDs4o0pkrFusvXBPtE9LtpoPmwO6qXgiM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=XpSLf1aGffJeN3zx8uRhcaOmvn2uTssdN8S/TbdnUE69GnvkRSpHrFeCAMfgFw6h+
-	 WBE8bR6DFUQSFUfl/t8PJarzCojzGlWEe/Bjpwy//0LUvlJ4H2KglxqzierbnbGWkJ
-	 JxcwY+/LDHd88TJx4wF2pxlYa68pFOAAGnZ+LVsowRN70g0ShSx+cKfz/MuBEEx866
-	 eY2aaiv7kk6cgbVTTgbQpofXT93rsBTiSVOz3zUbIplNpgMBhJP8HWFRc1NYQ6iiQc
-	 z6Bp9JVIF1zTXGnS32qST64tNFlO9EM6BZ3Y+WERvYeLEXmsObKq7fVOFZwuL1SDIz
-	 lkVC+aPo126sA==
+	b=ZTJBt+chv2OorZPxJOTV0pe1cpqVHLoTNLfzME7KhrNsfGLdxx4oH4GlB0XTU3ZzV
+	 Dg/1pyFg1MGW0e662nfEk1S8BJrzpfsREKZsEPGeAY2p05QsUhTegWiVIBXoO1G2nv
+	 mfEov68FCA/RIqnRgXKcmwscA6qChdT1wHsVU4wdvAWeKz6S+JOOJNWAAhNo2hDtD1
+	 t0a14zBni0iDuSr1ArRKL9Bm1jdw/nG6dqU++jjHl20Cwo/N52n0Bo9o7E+I+I6CIb
+	 5MRJJoYhfbIbU9KPj9WrxNuNRuWVAHXdyvnH5AkIoYVAjapxGp/1IYQ56If0dyk/Fw
+	 PLZas/NOkgAGA==
 Received: from beast.luon.net (unknown [IPv6:2a10:3781:2531::8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sjoerd)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EB61317E1562;
-	Wed,  5 Nov 2025 22:18:39 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 061F717E1396;
+	Wed,  5 Nov 2025 22:18:35 +0100 (CET)
 Received: by beast.luon.net (Postfix, from userid 1000)
-	id 9C16B10F352DF; Wed, 05 Nov 2025 22:18:34 +0100 (CET)
+	id 9FA6010F352E1; Wed, 05 Nov 2025 22:18:34 +0100 (CET)
 From: Sjoerd Simons <sjoerd@collabora.com>
-Date: Wed, 05 Nov 2025 22:17:58 +0100
-Subject: [PATCH v3 03/13] dt-bindings: mfd: syscon: Add mt7981-topmisc
+Date: Wed, 05 Nov 2025 22:17:59 +0100
+Subject: [PATCH v3 04/13] dt-bindings: PCI: mediatek-gen3: Add MT7981 PCIe
+ compatible
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251105-openwrt-one-network-v3-3-008e2cab38d1@collabora.com>
+Message-Id: <20251105-openwrt-one-network-v3-4-008e2cab38d1@collabora.com>
 References: <20251105-openwrt-one-network-v3-0-008e2cab38d1@collabora.com>
 In-Reply-To: <20251105-openwrt-one-network-v3-0-008e2cab38d1@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -79,8 +80,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  Conor Dooley <conor.dooley@microchip.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_131843_431301_903B5158 
-X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-CacheID: sfid-20251105_131843_768347_BD42A9AF 
+X-CRM114-Status: UNSURE (   9.72  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,28 +97,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This hardware block amongst other things includes a multiplexer for a
-high-speed Combo-Phy. This binding allows exposing the multiplexer
+Add compatible string for MediaTek MT7981 PCIe Gen3 controller.
+The MT7981 PCIe controller is compatible with the MT8192 PCIe
+controller.
 
 Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 ---
- Documentation/devicetree/bindings/mfd/syscon.yaml | 1 +
+V1 -> V2: Improve commit subject
+---
+ Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-index 657c38175fba2..51511078c4c3b 100644
---- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-+++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-@@ -193,6 +193,7 @@ properties:
-           - mediatek,mt2701-pctl-a-syscfg
-           - mediatek,mt2712-pctl-a-syscfg
-           - mediatek,mt6397-pctl-pmic-syscfg
-+          - mediatek,mt7981-topmisc
-           - mediatek,mt7988-topmisc
-           - mediatek,mt8135-pctl-a-syscfg
-           - mediatek,mt8135-pctl-b-syscfg
+diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+index 0278845701ce8..4db700fc36ba7 100644
+--- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
++++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+@@ -48,6 +48,7 @@ properties:
+     oneOf:
+       - items:
+           - enum:
++              - mediatek,mt7981-pcie
+               - mediatek,mt7986-pcie
+               - mediatek,mt8188-pcie
+               - mediatek,mt8195-pcie
 
 -- 
 2.51.0
