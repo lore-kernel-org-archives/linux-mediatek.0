@@ -4,81 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 424B0CCF9F8
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 09:03:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46CF5CCFA07
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 09:14:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HNNEAcBnlyNQFabZNmALbQLPRQCoK8Ut5Ylq5M5R9qk=; b=EUjSBzgHJkS4RI9sX1OLZ+a2AN
-	YF3RjOQRK5kOKkoCrYGC9ERm+Suf41DZdHW8PIu2P7Nrtb+a27q63WkPpgGnYnpBygDk/6uBeAAGN
-	WG5deQUsKN7Jo0He1mDJOkaKtL6KSY0vbW9ZAssDe3G1TJLZ4+DGDBea3jXGU33IqKuflDuT39AF4
-	rCFZRvOau5EkarOKEEoJwvfztwC44McqXyODH+7xLoUvBq7Hgu9uiLIyH2tJJ0CHQtXxbx41iElkM
-	MbEcdPEr+A+onqor1vu+cjXLu9NCPWR1Dn1pVRLT8dcxx6UT9gB494oQjPwsaE23KbroLWS7RonyA
-	T7UyHhsw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Zc+9+hTIs1OZSxLrflx1dy+rP5rwK/Pg8JKVK5p11BU=; b=SeGruAUfjJRims
+	+kVKcft/fjtg8YWnGo8VCyNCvC3AEhGUMqvebeIsn4Y39PyLTyIliH2x3qsVHrAJ9bHd7E98hw3+S
+	RblPSpuQ1vf8JP/awWvak9z4yxXWNVebxQY2AKIu4NVhuioxT5XqUTknSv8ulK1a4WKCpiI02l9KC
+	diqtxqnzn8Jd3nbShSAyWrcDWDg76rDGVafT51UAjq167H1Q8aaQMDgrQ7qmTQQyiZI1JXG8a/sOj
+	Jxi9ek4b+2qXECIer/g8bE+BGd1TsRmDiVnyvP98H9jTYw61Ct7SN1j4qeAz0EWZIYP5jRNHeQW2S
+	goCT0Z9/qpLaQw55b7AQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGZPv-0000000DLOB-1QSR;
-	Wed, 05 Nov 2025 09:02:59 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vGZbE-0000000DMOQ-0IM0;
+	Wed, 05 Nov 2025 09:14:40 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGZPs-0000000DLNT-4B3D;
-	Wed, 05 Nov 2025 09:02:58 +0000
+	id 1vGZbA-0000000DMNc-36cl;
+	Wed, 05 Nov 2025 09:14:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762333373;
-	bh=D1kXj4gtsjUnasLlwa3L0gfdoh8wYVSZBwRgpQpcno4=;
+	s=mail; t=1762334073;
+	bh=qWtgovMFKiTMTHDBfS7Kxt4dQ9VFI2F4oQIKhJkL1jY=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=h3zOaontMw3gV8UO0mm/nlUz+mKiMAJ99bIKofwKyKMd/ku7pb/GREpFL28XlSSRW
-	 6QabUiN3r+QP4AGsx65Op2USw/0Iov00cLyZIeMPqY59O6xhNsIj3xGobD6ai/5suM
-	 5k8uAbunwROmwGt4grXyY3HkP+gnb8Uy2xyRAl7BJZPqggeMaXfPUfk5raLjPKNSXs
-	 0KrLHyYneizQ6UDiG4QI6ENcGQhGjmoTLZtNzeZrGpchVx6h2saSzoedBzZNFncFrJ
-	 7j8NV+Ko32UNle3d/5zC03+HIDvkrQCZNGoU3DOtiRm6U9cvZMJvL7gR1rUrAEuwo9
-	 qLBNnNUOT1d/Q==
+	b=Z//sTn5cgHw750Qw6GxY5XREnvUNETEmFkS3svN8Y+59h7+pZt88kiAHz/G47pffY
+	 QWaL2k7AHtjnpXrcMuvUJqv1R2UfglFDV0dt7hIV43tH2gG/gmimBSOhOYSf1rhc4D
+	 dR065+SV4njc+oxNiFXJ8noBKGMa0MWKU/IO+E4/0VN23bslViMB7F4DT2pR7ETsyk
+	 mJOD9Tvt8Ypt4kfd1WeubJp/2wjUTpX3cq2+JFCe3yKG8JztHPrn5IOOjw0Aaq9Onb
+	 vxUjSm7DB7XyxM9sLF2A+aMrod/lsSZGURl17/u7pyApgFa9CJKTOtX5AoJPeI+1jL
+	 IZUUIETtm/gSg==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 33AF817E0CA1;
-	Wed,  5 Nov 2025 10:02:52 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C2B6A17E128C;
+	Wed,  5 Nov 2025 10:14:32 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Ryder Lee <ryder.lee@mediatek.com>, 
- Jianjun Wang <jianjun.wang@mediatek.com>, 
- Bjorn Helgaas <bhelgaas@google.com>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, 
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, Lee Jones <lee@kernel.org>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
- Sjoerd Simons <sjoerd@collabora.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, 
- linux-phy@lists.infradead.org, netdev@vger.kernel.org, 
- Daniel Golle <daniel@makrotopia.org>, Bryan Hinton <bryan@bryanhinton.com>, 
- Conor Dooley <conor.dooley@microchip.com>
-In-Reply-To: <20251101-openwrt-one-network-v2-0-2a162b9eea91@collabora.com>
-References: <20251101-openwrt-one-network-v2-0-2a162b9eea91@collabora.com>
-Subject: Re: (subset) [PATCH v2 00/15] arm64: dts: mediatek: Add Openwrt
- One AP functionality
-Message-Id: <176233337214.16133.6784720310145740675.b4-ty@collabora.com>
-Date: Wed, 05 Nov 2025 10:02:52 +0100
+ Conor Dooley <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Jason-JH Lin <jason-jh.lin@mediatek.com>
+In-Reply-To: <20251031155838.1650833-1-jason-jh.lin@mediatek.com>
+References: <20251031155838.1650833-1-jason-jh.lin@mediatek.com>
+Subject: Re: (subset) [PATCH 0/9] Add GCE support for MT8196 (series 1/4)
+Message-Id: <176233407273.17051.14832672768529226895.b4-ty@collabora.com>
+Date: Wed, 05 Nov 2025 10:14:32 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_010257_210639_9FB2562A 
-X-CRM114-Status: UNSURE (   7.48  )
+X-CRM114-CacheID: sfid-20251105_011436_963661_E3CFDEE6 
+X-CRM114-Status: UNSURE (   9.08  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,28 +73,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>, devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Nicolas Dufresne <nicolas@ndufresne.ca>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 01 Nov 2025 14:32:45 +0100, Sjoerd Simons wrote:
-> Significant changes in V2:
->   * https://lore.kernel.org/lkml/20251016-openwrt-one-network-v1-0-de259719b6f2@collabora.com/
->   * Only introduce labels in mt7981b.dtsi when required
->   * Switch Airoha EN8811H phy irq to level rather then edge triggered
->   * Move uart0 pinctrl from board dts to soc dtsi
->   * Only overwrite constraints with non-default values in MT7981 bindings
->   * Make SPI NOR nvmem cell labels more meaningfull
->   * Seperate fixing and disable-by-default for the mt7981 in seperate
->     patches
+On Fri, 31 Oct 2025 23:56:28 +0800, Jason-JH Lin wrote:
+> From: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
+> 
+> This series adds initial support for the MediaTek MT8196 GCE in the CMDQ
+> driver, including related API changes for new hardware requirements.
+> 
+> Series application order:
+>   1. [Fixes] Refine DMA address handling for the command buffer
+>   - https://lore.kernel.org/all/20251022171847.379470-1-jason-jh.lin@mediatek.com/
+>   2. [Series 1/4] Add GCE support for MT8196 and update CMDQ APIs (this series)
+>   3. [Series 2/4] Migrate subsystems to new CMDQ APIs
+>   4. [Series 3/4] Remove shift_pa from CMDQ jump functions
+>   5. [Series 4/4] Remove deprecated CMDQ APIs
 > 
 > [...]
 
 Applied to v6.18-next/dts64, thanks!
 
-[01/15] arm64: dts: mediatek: mt7981b: Configure UART0 pinmux
-        commit: 8bc650405f4476667973b10ec58152d37cd41a99
-[02/15] arm64: dts: mediatek: mt7981b: Add reserved memory for TF-A
-        commit: c6dcf3283044533ec425eb45af3627ec8834aebe
+[1/9] arm64: dts: mediatek: Add GCE header for MT8196
+      commit: 355531a5ffd9e26f4d87ab34015c679e32d60e3c
 
 Cheers,
 Angelo
