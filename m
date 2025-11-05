@@ -4,77 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1587CCF9F8
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 03:38:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27EE8CCFA04
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 04:02:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uilWK9pxP4N3+juvbcZo5GClSyfc42uLaTShdPX4r0I=; b=m1zg9aW/muMZeRfq6mfdUpIwjx
-	WNobUbki5Q6TIrNu7W5gkoZouaGNjpT7DfqNdeKo+ZAU9fZjJJhm4bWDARg+IriFxU5nBkE2PXIAT
-	LbtmmmJRs3R2tNLilw8ZW7JWPM1OoIv3lRN4YwVKq957EA0zAJZnt7irLNXFy8NA4pgYDtfLH6U9P
-	KiCGTmetbq3tcNq3VaIVfJIozrcMujaqLf/0xw31djDEdrYzG5JCNuAuxZ0tSrAg+wjCOnKyXdd4h
-	DG6IVTWWm5WTNDqBME0prI2EQas7qfBt11h/dL312bET6kkxWApJbeB1+pwqhhzhvB3PCXzYu6YND
-	FlfuD/Sw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YsH5r/6vzUJZtwJSh4laP2CRaInCJhfRCw+nEMpXmAE=; b=TCtMGIyXQ3acZvngDcLxeGRygq
+	D8gM937STvSsjfObNBY/VUyoJ0dBjwRadzk0lIMJaAcOk0Ulrk6aRRuh/rNoSBdHGdBSiLQuVLA2i
+	Bno26HffuGrp980haBtywIVInfq+GZiEuOad33oK2RwWG4zBWDvyxFMbKLDoaRdEeQ9mzwaIW/msz
+	iDHz55PAoY6uDNGmy+rLw+u+0XaceKkdqGcoRHorOnSD/x1Rx2qVaGwyIOJtKbJ7QpUrgib8WZqOC
+	FPAAN3OLuZM5hdmB3Frcg95nkXrDuII0AjkDbriXVvAAinpZjefIFPpgep2hcwa3kJso9TgHGiopY
+	cZjOkGrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGULv-0000000CxPZ-00My;
-	Wed, 05 Nov 2025 03:38:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vGUjI-0000000CzEd-2Rry;
+	Wed, 05 Nov 2025 04:02:40 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGULs-0000000CxOX-1ijl;
-	Wed, 05 Nov 2025 03:38:29 +0000
-X-UUID: e2c752aeb9f811f0a52f393f94899d25-20251104
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=uilWK9pxP4N3+juvbcZo5GClSyfc42uLaTShdPX4r0I=;
-	b=soyDW3pElaHLbCKgqx85jzG1xabJModRxN2rF4UkrRF9wFB7zssy2J7iXgRhQRIQnk9SQogKgpYJmxL4DJfzOrn3dPaunxYhYRIHxqBzgMIwXFO/US8/+SCJ7pB4f1xPHNeCPfx8Z3FY01HJUaDt3sn5Ev51tmdFmY676Kkjnuc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:7069a1eb-3dec-4b5f-9d8a-3ed8868211ca,IP:0,UR
-	L:0,TC:0,Content:0,EDM:-20,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-20
-X-CID-META: VersionHash:a9d874c,CLOUDID:2ce1eb7c-f9d7-466d-a1f7-15b5fcad2ce6,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:1,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: e2c752aeb9f811f0a52f393f94899d25-20251104
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <niklaus.liu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1351772141; Tue, 04 Nov 2025 20:38:25 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Wed, 5 Nov 2025 11:38:22 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Wed, 5 Nov 2025 11:38:22 +0800
-From: niklaus.liu <Niklaus.Liu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
-	<jh.hsu@mediatek.com>, <zhigang.qin@mediatek.com>, <sen.chu@mediatek.com>,
-	Niklaus Liu <niklaus.liu@mediatek.com>
-Subject: [PATCH v4 1/1] soc: mediatek: mtk-regulator-coupler: Add support for MT8189
-Date: Wed, 5 Nov 2025 11:38:03 +0800
-Message-ID: <20251105033817.20427-2-Niklaus.Liu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20251105033817.20427-1-Niklaus.Liu@mediatek.com>
-References: <20251105033817.20427-1-Niklaus.Liu@mediatek.com>
+	id 1vGUjF-0000000CzE3-1E70;
+	Wed, 05 Nov 2025 04:02:38 +0000
+Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5A53GHPb022581;
+	Wed, 5 Nov 2025 04:02:29 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2025-04-25; bh=YsH5r/6vzUJZtwJSh4laP2CRaInCJhfRCw+nEMpXmAE=; b=
+	eRNmz8V+0wX2p5FgaNbOxo00KhVqq1gHlRmxlqb3zqjm9QNZ4FD/U6Qesc2EaGBX
+	XtLNinPDiyA4p4a+7oSTIjhespG4pAoA6DwDlAl5frJNSxLQjnkVj3pPLq+Fs9tR
+	tuZWGKWt0rLNN2xoLrLgNj1XkXR0DpkFMYvJlO19oBKltbAQa8mWgqRkE6AC0mlT
+	ZQehWWNOMN5aVmOyiemakDaWMSljpmbYr147zPAr7jNddUm7/QS2CENI7lcXosXv
+	3T7M0lm6sdRU88oWuTvC8BJ7Y7MeuL5B3cDJ78a7KMGwyijUphEWNgrw2DLu0ilt
+	T0fsKwkMheSX0utflxaxug==
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4a7xhdg201-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 05 Nov 2025 04:02:28 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 5A524FLm024893;
+	Wed, 5 Nov 2025 04:02:28 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 4a58ne15j1-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 05 Nov 2025 04:02:28 +0000
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 5A542Pro005395;
+	Wed, 5 Nov 2025 04:02:27 GMT
+Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 4a58ne15gy-6;
+	Wed, 05 Nov 2025 04:02:27 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: linux-scsi@vger.kernel.org, peter.wang@mediatek.com
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+        alim.akhtar@samsung.com, avri.altman@wdc.com, bvanassche@acm.org,
+        robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+        conor+dt@kernel.org, jejb@linux.ibm.com, lgirdwood@gmail.com,
+        broonie@kernel.org, matthias.bgg@gmail.com,
+        angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org,
+        linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+        linux-arm-kernel@lists.infradead.org, wenst@chromium.org,
+        michael@walle.cc, conor.dooley@microchip.com, chu.stanley@gmail.com,
+        chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
+        naomi.chu@mediatek.com, ed.tsai@mediatek.com
+Subject: Re: [PATCH v1] dt-bindings: ufs: mediatek,ufs: Update maintainer information in mediatek,ufs.yaml
+Date: Tue,  4 Nov 2025 23:02:20 -0500
+Message-ID: <176231440764.2306382.16356889887368434971.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.51.1
+In-Reply-To: <20251031122008.1517549-1-peter.wang@mediatek.com>
+References: <20251031122008.1517549-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-05_02,2025-11-03_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 mlxscore=0 bulkscore=0
+ malwarescore=0 adultscore=0 spamscore=0 mlxlogscore=921 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2510240000
+ definitions=main-2511050024
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTA1MDAxOSBTYWx0ZWRfX+uE1GIt984Gq
+ 4/GHMEsw9maJTT375X+rmpBf5mLpXxua/eTTSKpNLnEGcmns2VLHp2v9fHVEKAuCzVnrZEIhCAm
+ 9erOZPx6vRi8KgbnS5iMXT7ojITDj7WqJIhCMqjRDbhxvkl48Ketl+YjXTZBbJXi1NvKBWfROxS
+ R9+x+365zLpzU0Kc9H3sN5IOs7RnKfkXkSPm8gphNh+OWhLvU8Xzi3R4WlKDRSTnpm6rXQzx/UN
+ WBNqsTx46cDHbk9eLm/CevyLK+0U696VVxkQgeaFv0RP/zgIWVtLUV5dGpyNwtBNrkAA6tYoyIK
+ 5sl+8AiW5T7FuuQEdusv+qDnDi3IxTt7kEF+yilQJt4fhSJus6YP+qnGHDLYG8UxJTHd/qVC/kL
+ 6MqSTyfIHUsbn3KOwsKN3RhLYgVVuP4P3bp8Df7TMnj4uqM9uXs=
+X-Authority-Analysis: v=2.4 cv=ZpDg6t7G c=1 sm=1 tr=0 ts=690acc54 b=1 cx=c_pps
+ a=e1sVV491RgrpLwSTMOnk8w==:117 a=e1sVV491RgrpLwSTMOnk8w==:17
+ a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=VwQbUJbxAAAA:8 a=mpaa-ttXAAAA:8 a=8d0GUG1h20LVvl_VnrYA:9 a=QEXdDO2ut3YA:10
+ cc=ntf awl=host:13657
+X-Proofpoint-ORIG-GUID: HuzLGcL3yYhgijfTvd2LcY2rHs5jwfRD
+X-Proofpoint-GUID: HuzLGcL3yYhgijfTvd2LcY2rHs5jwfRD
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251104_193828_445454_8475E113 
-X-CRM114-Status: GOOD (  15.62  )
+X-CRM114-CacheID: sfid-20251104_200237_471936_4FCE2C56 
+X-CRM114-Status: UNSURE (   8.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,50 +117,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Niklaus Liu <niklaus.liu@mediatek.com>
+On Fri, 31 Oct 2025 20:19:12 +0800, peter.wang@mediatek.com wrote:
 
-Enhance the regulator coupler driver to support GPU power control on the
-MediaTek MT8189 platform. This update ensures proper coordination of
-multiple regulators required for GPU operation,improving power management
-and system stability.
+> Replace Stanley Chu with me and Chaotian in the maintainers field,
+> since his email address is no longer active.
+> 
+> 
 
-Signed-off-by: Niklaus Liu <niklaus.liu@mediatek.com>
----
- drivers/soc/mediatek/mtk-regulator-coupler.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+Applied to 6.19/scsi-queue, thanks!
 
-diff --git a/drivers/soc/mediatek/mtk-regulator-coupler.c b/drivers/soc/mediatek/mtk-regulator-coupler.c
-index 0b6a2884145e..e2a1fb459e42 100644
---- a/drivers/soc/mediatek/mtk-regulator-coupler.c
-+++ b/drivers/soc/mediatek/mtk-regulator-coupler.c
-@@ -42,6 +42,18 @@ static int mediatek_regulator_balance_voltage(struct regulator_coupler *coupler,
- 	int max_uV = INT_MAX;
- 	int ret;
- 
-+	/*
-+	 * When vsram_gpu is enabled or disabled and the use_count of the
-+	 * vsram_gpu regulator is zero, the regulator coupler driver will
-+	 * execute regulator_do_balance_voltage, which adjusts the vsram_gpu
-+	 * voltage to the minimum value. This may result in vsram_gpu being
-+	 * lower than vgpu. Therefore, when enabling or disabling vsram_gpu,
-+	 * the 8189 temporarily skips the regulator coupler driver's modification
-+	 * of the vsram_gpu voltage.
-+	 */
-+	if (of_machine_is_compatible("mediatek,mt8189") && rdev == mrc->vsram_rdev)
-+		return 0;
-+
- 	/*
- 	 * If the target device is on, setting the SRAM voltage directly
- 	 * is not supported as it scales through its coupled supply voltage.
-@@ -148,6 +160,7 @@ static int mediatek_regulator_coupler_init(void)
- 	if (!of_machine_is_compatible("mediatek,mt8183") &&
- 	    !of_machine_is_compatible("mediatek,mt8186") &&
- 	    !of_machine_is_compatible("mediatek,mt8188") &&
-+	    !of_machine_is_compatible("mediatek,mt8189") &&
- 	    !of_machine_is_compatible("mediatek,mt8192"))
- 		return 0;
- 
+[1/1] dt-bindings: ufs: mediatek,ufs: Update maintainer information in mediatek,ufs.yaml
+      https://git.kernel.org/mkp/scsi/c/480ca7954664
+
 -- 
-2.46.0
-
+Martin K. Petersen
 
