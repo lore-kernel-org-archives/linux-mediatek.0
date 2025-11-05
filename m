@@ -4,65 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30321CCFA05
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 11:25:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2F7BCCFA05
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 11:32:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WMYqgJ3CQQBxmz4N4oTNY/Jdhdz4/srToZZKedzF6PU=; b=yjixzK9Ukfg7hEjNS/MVX4fBS7
-	jCwbe0FFVIR8i3hv3Wbbn6EGrLWmsDv+avxYRBgcJr2S9tcnWYdc1o/yM4BvkIaTEM0d9Q9qTzMRi
-	tiEpzziTN3VNrjikpdE77flTCG9+jNHMbNYVT/ymJ1YNvkInm2kvZOuzwoEq1fbPhbivVgYH3q9bL
-	Adh6hqRT4WNBpZi2Z/wHrIhqUBRChgFVPHkKJg8j5XlWC2K0qEkWp/7ZOWIyJb0G3dI5RKzjhHIzQ
-	xuSyjF7ajKCXaCXyzJnt5OsKju1AzY5XxVI9A9+/KAwuFpmI5cpzdtfbTQAK4HDdNvfArv+WS+VDk
-	XhzzKdiw==;
+	bh=ymss7jGcko1KAVoxKGtQDY4PfcRmi930HGfOqXka1ag=; b=2irRAuIoJ1v1pSmj+krxtUnb2U
+	svqeyO6N5z2DopX7EMBV8AwAURVw4axDyuqQ4SooFtAdR0gdyJ3ANL79V+w3CkwaoDryGWxitwK31
+	DLnzw1jLGRfKWoy+zjHZWVyXPzFwXvJg7XqrSiVNeZkipJPIbO0fxXYZC6vnuKNGIzLjBuWSejBY9
+	9eIpYrTdF8Y+4S0iC/gZkyoFpgolaFZlnOHlasbwXLP9LThh1tJxQna2B3cPP4SjigeDaycgf7LWk
+	ZmnEeYlL5Izvkv8IaspnNtocjaEeeEGrTtb+Od23d5NajaJz0Sq4CnYtngTNhJjrPitGRk56txw6Z
+	AMsWqJQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGbdT-0000000DXbO-2yNx;
-	Wed, 05 Nov 2025 11:25:07 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vGbkH-0000000DY10-4ASo;
+	Wed, 05 Nov 2025 11:32:09 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGbdQ-0000000DXaO-1rV5
+	id 1vGbkF-0000000DY05-3rCc
 	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Nov 2025 11:25:06 +0000
+	Wed, 05 Nov 2025 11:32:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762341901;
-	bh=YtgwmIuO+S6ko8HFKuMO2fihmVHu0zvVmbmvszGEA0g=;
+	s=mail; t=1762342325;
+	bh=qo7Q5+N4DDgqiZo8JDVIJ2IijBxpBe/S1c2lwaOZkJ0=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NdjqywNPzIMcJbqydpLsqu+OnpMSMuvbXYJ/ZYDU8qQbkhjb8jE/klzudDWB9QTXy
-	 5gTYFaNbjaE/AR/FwoBI2A6CCqFyzhWMuEmgUUhvtddTBDadjN6OWfy5/cGCs4q8wD
-	 3qs8NXxBmp1e1xNLl7GBMq8KbL8PUN6qXRLH+pVaIIIu5wSFEB6kp+y2OTj2CjmAiy
-	 1wTAiZ8zpauVrg+akU52PmStDo+ZeLxjbnw88IsRGe6opy02QfUl/9Tmrz13qEqM7X
-	 CdJL/sRRkj2xbg+Hs4/68zSzn8t8q+UDcEcwe2pES8y5BSZFkzBf7mdmt6qvjuKmq6
-	 k+Zzf41nwsypw==
+	b=XPy5obg5QNFSpQkeUn4jpYq0MZfgWvlHwvYbUuDpQu7gGnm8a6RfJqrqhAHNSZvsy
+	 Iyw9cjdtDntX58SK4J+P+S0PYTC7tdKEw13MtE5I48vTa+B7Iqx3POlBjv8Wx7v7GP
+	 UEQX3oKAFdPkpFqdyuIyKrP6vDEfPjJdj+TwnnEHC969Msqx0lkJsXHTBvuG+ZsAlU
+	 lLcLCHvBujZB3tfuh3ztWwFknm1vgjesigUI5qxnVaXkwS3yhZ83gGssirZo6WN9dy
+	 gYWT5dlE7iuapua5SgF2IQ7lPMnBs+pRcC4+wJurjfYbPebdvpx4BSU6WZ0d5fIyc9
+	 HJEWiaTaoP0bw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8829617E12AA;
-	Wed,  5 Nov 2025 12:25:01 +0100 (CET)
-Message-ID: <b4ffe62d-34f6-431d-87b1-55ca988b63b7@collabora.com>
-Date: Wed, 5 Nov 2025 12:25:00 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0389217E12AA;
+	Wed,  5 Nov 2025 12:32:04 +0100 (CET)
+Message-ID: <3e1ffe72-b6a4-45cc-a053-190077818f19@collabora.com>
+Date: Wed, 5 Nov 2025 12:32:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: i2c issues in 6.18 on R4, but not r4pro (both mt7988 with i2c-mux
- on i2c2)
-To: "Frank Wunderlich (linux)" <linux@fw-web.de>, matthias.bgg@kernel.org,
- Andi Shyti <andi.shyti@kernel.org>, Qii Wang <qii.wang@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org, linux-i2c@vger.kernel.org,
- daniel@makrotopia.org
-References: <3f5ef2d1336933a87d9761b5ff510a1f@fw-web.de>
+Subject: Re: [PATCH] PCI: mediatek-gen3: Ignore link up timeout
+To: Chen-Yu Tsai <wenst@chromium.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Manivannan Sadhasivam <mani@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20251105062815.966716-1-wenst@chromium.org>
+ <7250ae04-866f-489c-b1b6-b8a3d8200529@collabora.com>
+ <CAGXv+5EwiL_-ozRARH2UBm5znHi1egBoCjmELN=17hvFF_oeoQ@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <3f5ef2d1336933a87d9761b5ff510a1f@fw-web.de>
+In-Reply-To: <CAGXv+5EwiL_-ozRARH2UBm5znHi1egBoCjmELN=17hvFF_oeoQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_032504_650408_1EEF01C9 
-X-CRM114-Status: GOOD (  30.45  )
+X-CRM114-CacheID: sfid-20251105_033208_111512_484F631B 
+X-CRM114-Status: GOOD (  31.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,171 +83,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 30/10/25 11:38, Frank Wunderlich (linux) ha scritto:
-> Hi
+Il 05/11/25 10:21, Chen-Yu Tsai ha scritto:
+> On Wed, Nov 5, 2025 at 4:45 PM AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com> wrote:
+>>
+>> Il 05/11/25 07:28, Chen-Yu Tsai ha scritto:
+>>> As mentioned in commit 886a9c134755 ("PCI: dwc: Move link handling into
+>>> common code") come up later" in the code, it is possible for link up to
+>>> occur later:
+>>>
+>>>     Let's standardize this to succeed as there are usecases where devices
+>>>     (and the link) appear later even without hotplug. For example, a
+>>>     reconfigured FPGA device.
+>>>
+>>> Another case for this is the new PCIe power control stuff. The power
+>>> control mechanism only gets triggered in the PCI core after the driver
+>>> calls into pci_host_probe(). The power control framework then triggers
+>>> a bus rescan. In most driver implementations, this sequence happens
+>>> after link training. If the driver errors out when link training times
+>>> out, it will never get to the point where the device gets turned on.
+>>>
+>>> Ignore the link up timeout, and lower the error message down to a
+>>> warning.
+>>>
+>>> This makes PCIe devices that have not-always-on power rails work.
+>>> However there may be some reversal of PCIe power sequencing, since now
+>>> the PERST# and clocks are enabled in the driver, while the power is
+>>> applied afterwards.
+>>>
+>>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+>>
+>> Ok, that's sensible.
+>>
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>
+>>> ---
+>>> The change works to get my PCIe WiFi device working, but I wonder if
+>>> the driver should expose more fine grained controls for the link clock
+>>> and PERST# (when it is owned by the controller and not just a GPIO) to
+>>> the power control framework. This applies not just to this driver.
+>>>
+>>> The PCI standard says that PERST# should hold the device in reset until
+>>> the power rails are valid or stable, i.e. at their designated voltages.
+>>
+>> I completely agree with all of the above - and I can imagine multiple PCI-Express
+>> controller drivers doing the same as what's being done in MTK Gen3.
+>>
+>> This means that the boot process may get slowed down by the port startup sequence
+>> on multiple PCI-Express controllers (again not just MediaTek) and it's something
+>> that must be resolved in some way... with the fastest course of action imo being
+>> giving controller drivers knowledge of whether there's any device that is expected
+>> to be powered off at that time (in order to at least avoid all those waits that
+>> are expected to fail).
 > 
-> sorry for html-mail, my main email-provider (GMX) sent it as html (have enabled 
-> text-mail as default in settings) when using web-mailer.
+> That also requires some refactoring, since all the drivers _wait_ for link
+> up before going into the PCI core, which does the actual child node parsing.
 > 
-> i've noticed i2c-issues (i2c2) on mt7988 BPI-R4 with 6.18. On most bootups the i2c- 
-> mux is not detected.
+> I would like some input from Bartosz, who introduced the PCI power control
+> framework, and Manivannan, who added slot power control.
 > 
-> root@bpi-r4-v11:~
-> # i2cdetect -y  2
->       0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
-> 00:                         -- -- -- -- -- -- -- --
-> 10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-> 20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-> 30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-> 40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-> 50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-> 60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-> 70: -- -- -- -- -- -- -- --
+>> P.S.: Chen-Yu, did you check if the same applies to the MTK previous gen driver?
+>>         Could you please check and eventually send a commit to do the same there?
 > 
-> i2c-probe is completed successful (no errors and debugs shown before final "return 
-> 0;")
+> My quick survey last week indicated that all the drivers except for the
+> dwc family error out if link up timed out.
 > 
-> sometimes the mux came up with same kernel-binary, and i see also other devices on 
-> same i2c bus, but mostly all devices are not shown when i use i2cdetect on the bus.
-> 
-> root@bpi-r4-v11:~
-> # i2cdetect -y  2
->       0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
-> 00:                         -- -- -- -- -- -- -- --
-> 10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-> 20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-> 30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-> 40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-> 50: -- UU -- -- -- -- -- UU -- -- -- -- -- -- -- --
-> 60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-> 70: UU -- -- -- -- -- -- --
-> root@bpi-r4-v11:~
-> # [   58.594846] sfp sfp1: failed to read EEPROM: -ENXIO
-> 
-> 6.17 seems ok (have not seen the issue there yet).
-> 
-> i looked through many commits, reverted some for clock (my own, lauras 
-> clk_gate,...), pinctrl and the i2c-mux (some reset-related) itself but nothing helped.
-> 
-> One strange thing is that i have noticed no issues on bpi-r4pro which uses same 
-> SoC, same config and should use same drivers and configuration via dt.
-> Only diference was the reset for the mux itself in dts as far as i see....so tried 
-> to disable it to have it nearly same as on r4pro without any effect.
-> 
-> Maybe you have any idea how i can nail it down?
-> 
-
-Did you check if there's any clock, or power rail, or power domain, that you are
-missing in some node perhaps?
-
-Could be that something is getting powered off temporarily and gifting you with
-this "amazing" issue...
-
-> root@bpi-r4-v11:~
-> # dmesg | grep -i 'sfp\|i2c'
-> [    0.000000] Machine model: Banana Pi BPI-R4 (2x SFP+)
-> [    1.600387] i2c_dev: i2c /dev entries driver
-> [    1.605291] /soc/i2c@11003000/rt5190a@64: Fixed dependency cycle(s) with /soc/ 
-> i2c@11003000/rt5190a@64/regulators/buck1 #i2c0 seems not affected
-> [   12.685157] platform sfp1: deferred probe pending: (reason unknown)
-> [   12.691440] platform sfp2: deferred probe pending: (reason unknown)
-> 
-> # dmesg | grep -i 'err\|fail\|clk'
-> ... #nothing related to i2c or clk
-> [    1.623805] pca954x 2-0070: probe failed
-> ....
-> 
-> wondered why i2c-clocks are always disabled when i look into the clk_summary (also 
-> when i2c was working)
+> I don't have any hardware for the older generation though. And it looks
+> like for the previous gen, the driver performs even worse, since it can
+> support multiple slots, and each slot is brought up sequentially. A slot
+> is discarded if link up times out. And the whole driver errors out if no
+> slots are working.
 > 
 
-That is something for which I can give you a clear answer....
+Hey, that's bold.
 
-> root@bpi-r4-v11:~
-> # cat /sys/kernel/debug/clk/clk_summary | grep -i -B2 INFRA_I2C_BCK
->               infra_usb_sys           0       0        0        125000000   0       
->     0     50000      N               deviceless
->            i2c_sel                    0       1        0        125000000   0       
->     0     50000      N            deviceless
->               infra_i2c_bck           0       3        0        125000000   0       
->     0     50000      N               11005000.i2c
-> root@bpi-r4-v11:~
-> 
-> but looking at the driver the clocks are disabled on probe which looks strange to me
-> 
-> https://elixir.bootlin.com/linux/v6.18-rc1/source/drivers/i2c/busses/i2c- 
-> mt65xx.c#L1477
+If only one driver (DWC) is working okay, there's something wrong that must be
+fixed before that behavior change goes upstream (which it already did, ugh).
 
-...Not strange at all...
+This needs attention from both Bartosz and Mani really-right-now.
 
-> 
-> i guess it is some kind of timing issue where clocks are still disabled but not 
-> reenabled in mtk_i2c_transfer, but
-> my debug in this function shows that is called and ret=0 after the bulk_enable (and 
-> of course flooding console :p ).
+I'm not sure about possible good solutions, and unfortunately I don't really have
+any time to explore, so I'm not spitting any words on that - leaving this to both
+Bartosz and Mani as that's also the right thing to do anyway.
 
-...because on MediaTek, the I2C controllers are "kinda standalone" - meaning that
-they work as long as they're powered up, with their main clock being either some
-internal XO or the clk26m or a clock derived from that (it's bogus, as that is an
-IP implementation detail that nobody has, if not MediaTek's HW engineering dept,
-and it's not relevant anyway so we don't even need to really know if not for pure
-curiosity).
-
-The basic "unclocked" functionality of the I2C controller(s) in MediaTek SoCs is
-XFER detection (not sure if they can do buffering as well while the AP-driven
-clocks are off).
-
-As a small side note: I think MediaTek are not the only ones doing that, but this
-is an entirely different story and it's just for your own curiosity, in case.
-
-The I2C clocks therefore are only enabling the CPU to perform read/write(/modify)
-operations on the I2C Controller registers, which also include DMA transfers.
-
-Speaking of DMA, is there really no support for apdma_sync in MT7988a? ;-)
-
-> maybe some speed-calculation-issue?
-> 
-
-Could also be, but if it was that, and directly related to I2C, you'd get errors
-during communication even when your PCA954X device actually gets probed, because
-whatever calculation is ran, it's always going to be the same across reboots.
-
-All that I'm saying here, though, ignores hardware issues. So, if you're using a
-board that is not final, or a final board that has HW issues (not only as in your
-own unit, but as a design mistake of some sort) it's a different story.
-
-I am bringing up the HW question just because "better safe than sorry", but if
-using something not final.. I'm mostly sure that you would've said that already
-and tried with.. well, final hardware, before seeking for help here anyway :-)
-
-Cheers!
 Angelo
 
-> what i had tried to revert (also my own non-mainline like "convert invalid GATE to 
-> MUX"), so they seem not the rootcause:
 > 
-> d51e7cfca3fe 2025-09-25 i2c: mt65xx: convert set_speed function to void Wolfram Sang
-> b49218365280 2025-09-06 i2c: mediatek: fix potential incorrect use of 
-> I2C_MASTER_WRRD Leilk.Liu
-> 614b1c3cbfb0 2025-06-12 i2c: use inclusive callbacks in struct i2c_algorithm 
-> Wolfram Sang
+> ChenYu
 > 
-> c90fa5493f7a 2025-07-31 i2c: mux: pca9541: Use I2C adapter timeout value for 
-> arbitration timeout Manikanta Guntupalli
-> 94c296776403 2025-06-03 i2c: muxes: pca954x: Reset if (de)select fails Wojciech Siudy
-> 690de2902dca 2025-06-03 i2c: muxes: pca954x: Use reset controller only Wojciech Siudy
-> 
-> e504d3bdb3d0 2025-09-15 clk: mediatek: clk-gate: Add ops for gates with HW voter 
-> Laura Nao
-> 8ceff24a754a 2025-09-15 clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to 
-> use mtk_gate struct Laura Nao
-> 
-> bd6f4a91401f 2025-09-02 pinctrl: mediatek: moore: replace struct function_desc with 
-> struct pinfunction Bartosz Golaszewski
-> 7a24f1f5b214 2025-09-02 pinctrl: mediatek: mt7988: use PINCTRL_PIN_FUNCTION() 
-> Bartosz Golaszewski
-> 
-> regards Frank
-
+>> Cheers,
+>> Angelo
+>>
+>>> ---
+>>>    drivers/pci/controller/pcie-mediatek-gen3.c | 13 +++++++++----
+>>>    1 file changed, 9 insertions(+), 4 deletions(-)
+>>>
+>>> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+>>> index 75ddb8bee168..5bdb312c9f9b 100644
+>>> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+>>> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+>>> @@ -504,10 +504,15 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
+>>>                ltssm_index = PCIE_LTSSM_STATE(val);
+>>>                ltssm_state = ltssm_index >= ARRAY_SIZE(ltssm_str) ?
+>>>                              "Unknown state" : ltssm_str[ltssm_index];
+>>> -             dev_err(pcie->dev,
+>>> -                     "PCIe link down, current LTSSM state: %s (%#x)\n",
+>>> -                     ltssm_state, val);
+>>> -             return err;
+>>> +             dev_warn(pcie->dev,
+>>> +                      "PCIe link down, current LTSSM state: %s (%#x)\n",
+>>> +                      ltssm_state, val);
+>>> +
+>>> +             /*
+>>> +              * Ignore the timeout, as the link may come up later,
+>>> +              * such as when the PCI power control enables power to the
+>>> +              * device, at which point it triggers a rescan.
+>>> +              */
+>>>        }
+>>>
+>>>        mtk_pcie_enable_msi(pcie);
+>>
+>>
 
 
