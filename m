@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B140FCCFA1A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EC2DCCFA1B
 	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 21:19:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,47 +12,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nah67Wz58HCqfn8dBCUyWhoscQpKpdn3omH+G+6PS0A=; b=rwXtntNHwuvdukJCDC6Up7uSd8
-	qSMngpRBUThJUYoIU+X/SdqchVcj1mAbnCWCcsIBs3BeKRQYdDwc0OliYwD77KRZ3Lb8TTQaFxDvN
-	CMmFNeb+9fPK5KRu7XMtRilC5OQr9TJLSbEIs66DVWDo7glxNu1sJtyl5l+6sleidO24iztDkk8s3
-	5mxEOyZToooppfVbldmIKV+kHmjpzWboIl/+ANmR8vX9NPRhL3rBDQ031N5gd0qqh7hFtha5I4VS9
-	+CAOU1vvXXbkM7X8wWNv3WixPw+qMGtGKjnRqbaeIuIgIKTPYRJF2VvxhK1bGMvBC1N44KT/Q+gUe
-	RGunAF9w==;
+	bh=5LeoqZv3J6t2Lu06YdrFLcmlUA455lKj3p+A2h/ypu8=; b=PfxLR/Mh2vBYaTJCsX5x5GiFJT
+	c0XXtfD6Q7TsmIVYzLO9l2tgwYZnmIEkVuwoQmVgaUOTuLbleLuWmFzxr8IXcuR4lVScxkNwxJOJ4
+	arLlD/JihJ70w8AtqG+NlDelQAmD9eRvnysxvuQgTkrITmUAZDlfRKn6+oLfUtx4wsOrp+6lU/m0I
+	AFoY/3+mRPZVyjWrkB1aPP2LkchYiZ6ExCSaXXkYP9MoyhWinMA0n9ufduTt9gxOfaa5Z7ZEcqneh
+	O0ujcAlTyM7uqLKAMRxQpZML9inVDQvrpvFzsHSPE10NZVbkZ8vrdEyEEX7d90jfmPjBu/JMouO7L
+	EmjFICkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGkuL-0000000EUfc-2xLB;
+	id 1vGkuL-0000000EUdx-0bjn;
 	Wed, 05 Nov 2025 21:19:09 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGktx-0000000EU5D-3EZ4;
-	Wed, 05 Nov 2025 21:18:47 +0000
+	id 1vGktv-0000000EU0s-1jI7;
+	Wed, 05 Nov 2025 21:18:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762377520;
-	bh=HT2YugA6R+JpQglGJhQu+r3GtnpE3Srg2faLNwIOQZE=;
+	s=mail; t=1762377516;
+	bh=qtE8TxX+bp4mVeKXXycM622mPKaw8qoe/nGz0YEjV0g=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=pX5785XeaN9MSnSwL2CJEFah8vNhRL8O3uSgIa5IIUsi0dsVKQvFHNPboZ1/t6VGy
-	 HYMGlF/jafIWUIBCk3xUfon2NPBc/8iS7yAe6TOMu+7np1x2bdtprDcNn2WTGFcX5c
-	 t9YD1NdO/D97DTeU+AuNZeMagJIob4P/4RUTgI0pyfPYexY505AVtR4IYod4lwE/iD
-	 14zbJi4IQ7nOQq2nXVZRLfsFZOl8Se0bc8bOiGCKbU7u2hCgO/MHEZmy7Tp5lOFOO+
-	 arFcHIVGSPsrSCy0aGHPYhJxu8F2xT+eBJsfmFn39sWISuHJXg3lY64C/eh1tAKFqu
-	 /M/mfIOF6ApyQ==
+	b=IaRJcfEJJPmuVxfIA0AMonJG0NAIwG2GFs1HcbU8uvXF99pgELvzC5G7nSSRhwUVJ
+	 LuwV5lD0JO+6NbQDCg/6824/ru1L/WtPNmPZ9XIv2dmNWRPrG1D+ir8Y18q8GzoaIE
+	 qEW8KlPcmRtH5QYv8gEmfKMpqY/vnwuoHhrQxhH/YBZUJn8Mrio3T/yeFVOaa9Kfp/
+	 3bU7QVAyxxZtxGmkVSf/V0rYQ39sDr5ivWxPxN2ygRhLyKoa/vXN3Zh8b/MbgnaR53
+	 jdmgxlQ8Y7in86CB/YBRRqqqam07WivxiWw5icWmtAT4asEubhTmOpyhAMNyxRoJ/A
+	 g3EvDDnrDetBw==
 Received: from beast.luon.net (unknown [IPv6:2a10:3781:2531::8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sjoerd)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6F62117E156C;
-	Wed,  5 Nov 2025 22:18:40 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4164C17E1500;
+	Wed,  5 Nov 2025 22:18:36 +0100 (CET)
 Received: by beast.luon.net (Postfix, from userid 1000)
-	id CC1B810F352F1; Wed, 05 Nov 2025 22:18:34 +0100 (CET)
+	id B209C10F352E7; Wed, 05 Nov 2025 22:18:34 +0100 (CET)
 From: Sjoerd Simons <sjoerd@collabora.com>
-Date: Wed, 05 Nov 2025 22:18:07 +0100
-Subject: [PATCH v3 12/13] arm64: dts: mediatek: mt7981b: Add wifi memory
- region
+Date: Wed, 05 Nov 2025 22:18:02 +0100
+Subject: [PATCH v3 07/13] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
+ PCIe and USB
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251105-openwrt-one-network-v3-12-008e2cab38d1@collabora.com>
+Message-Id: <20251105-openwrt-one-network-v3-7-008e2cab38d1@collabora.com>
 References: <20251105-openwrt-one-network-v3-0-008e2cab38d1@collabora.com>
 In-Reply-To: <20251105-openwrt-one-network-v3-0-008e2cab38d1@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -79,8 +79,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  Sjoerd Simons <sjoerd@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_131846_015183_8582BEB8 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20251105_131843_751628_5822FC28 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,39 +95,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add required memory region for the builtin wifi block.
+Enable the PCIe controller and USB3 XHCI host on the OpenWrt One
+board. The USB controller is configured for USB 2.0 only mode, as the
+shared USB3/PCIe PHY is dedicated to PCIe functionality on this board.
 
 Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 ---
-V1 -> V2: Don't set status to in this patch
----
- arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ .../boot/dts/mediatek/mt7981b-openwrt-one.dts      | 43 ++++++++++++++++++++++
+ 1 file changed, 43 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-index 1f4c114354660..a7be3670e0059 100644
---- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-@@ -69,6 +69,11 @@ secmon_reserved: secmon@43000000 {
- 			no-map;
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+index 2e39e72877301..7382599cfea29 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+@@ -67,9 +67,40 @@ led-2 {
+ 			linux,default-trigger = "netdev";
  		};
- 
-+		wmcpu_emi: wmcpu-reserved@47c80000 {
-+			reg = <0 0x47c80000 0 0x100000>;
-+			no-map;
-+		};
+ 	};
 +
- 		wo_emi0: wo-emi@47d80000 {
- 			reg = <0 0x47d80000 0 0x40000>;
- 			no-map;
-@@ -497,6 +502,7 @@ wifi@18000000 {
- 			clocks = <&topckgen CLK_TOP_NETSYS_MCU_SEL>,
- 				 <&topckgen CLK_TOP_AP2CNN_HOST_SEL>;
- 			clock-names = "mcu", "ap2conn";
-+			memory-region = <&wmcpu_emi>;
- 			resets = <&watchdog MT7986_TOPRGU_CONSYS_SW_RST>;
- 			reset-names = "consys";
- 			status = "disabled";
++	reg_3p3v: regulator-3p3v {
++		compatible = "regulator-fixed";
++		regulator-name = "fixed-3.3V";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		regulator-boot-on;
++		regulator-always-on;
++	};
++
++	reg_5v: regulator-5v {
++		compatible = "regulator-fixed";
++		regulator-name = "fixed-5V";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		regulator-boot-on;
++		regulator-always-on;
++	};
++};
++
++&pcie {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie_pins>;
++	status = "okay";
+ };
+ 
+ &pio {
++	pcie_pins: pcie-pins {
++		mux {
++			function = "pcie";
++			groups = "pcie_pereset";
++		};
++	};
++
+ 	pwm_pins: pwm-pins {
+ 		mux {
+ 			function = "pwm";
+@@ -163,3 +194,15 @@ partition@180000 {
+ &uart0 {
+ 	status = "okay";
+ };
++
++&usb_phy {
++	status = "okay";
++};
++
++&xhci {
++	phys = <&u2port0 PHY_TYPE_USB2>;
++	vusb33-supply = <&reg_3p3v>;
++	vbus-supply = <&reg_5v>;
++	mediatek,u3p-dis-msk = <0x01>;
++	status = "okay";
++};
 
 -- 
 2.51.0
