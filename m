@@ -4,105 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27EE8CCFA04
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 04:02:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7A67CCFA04
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 06:28:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YsH5r/6vzUJZtwJSh4laP2CRaInCJhfRCw+nEMpXmAE=; b=TCtMGIyXQ3acZvngDcLxeGRygq
-	D8gM937STvSsjfObNBY/VUyoJ0dBjwRadzk0lIMJaAcOk0Ulrk6aRRuh/rNoSBdHGdBSiLQuVLA2i
-	Bno26HffuGrp980haBtywIVInfq+GZiEuOad33oK2RwWG4zBWDvyxFMbKLDoaRdEeQ9mzwaIW/msz
-	iDHz55PAoY6uDNGmy+rLw+u+0XaceKkdqGcoRHorOnSD/x1Rx2qVaGwyIOJtKbJ7QpUrgib8WZqOC
-	FPAAN3OLuZM5hdmB3Frcg95nkXrDuII0AjkDbriXVvAAinpZjefIFPpgep2hcwa3kJso9TgHGiopY
-	cZjOkGrg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5H6EdMxDpSqpmsIQ4cEg0ZlQTdzaOtsaMR+Q6cSWnBg=; b=AqWSrAd+hHGdkmyZhWWXJzS7dg
+	YDbaJGStYrEqzRm+VfIZTkw/ingLxrYanFk9Y9/EyA/R9IEoleN3y89I22YrlIrJmPfTTdsIrVgd+
+	ehsRzLnCDXWzrBIiWglCNiMuxnAMz4hzPvUi2Aabw78JfNq//spcQRdS1S+WAf3aOQpTB0+d0zYUx
+	VSOxGE4fpO/gJy9gqPoNRRVJ8Sg7SU0akiGNvsriEaTKkSQ0oZey2VsrPNHiBcw9/aP9dOFLi78KO
+	V9/aqOyOvcCfrm3UYcOs+e7VsDqef3i2Xa7u86LycNbV+h8SgTv5MXefjuFJED1JB9oAFw/ND7eR7
+	/yiWO0HA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGUjI-0000000CzEd-2Rry;
-	Wed, 05 Nov 2025 04:02:40 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1vGX0X-0000000D4f4-3y3r;
+	Wed, 05 Nov 2025 06:28:37 +0000
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGUjF-0000000CzE3-1E70;
-	Wed, 05 Nov 2025 04:02:38 +0000
-Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5A53GHPb022581;
-	Wed, 5 Nov 2025 04:02:29 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	corp-2025-04-25; bh=YsH5r/6vzUJZtwJSh4laP2CRaInCJhfRCw+nEMpXmAE=; b=
-	eRNmz8V+0wX2p5FgaNbOxo00KhVqq1gHlRmxlqb3zqjm9QNZ4FD/U6Qesc2EaGBX
-	XtLNinPDiyA4p4a+7oSTIjhespG4pAoA6DwDlAl5frJNSxLQjnkVj3pPLq+Fs9tR
-	tuZWGKWt0rLNN2xoLrLgNj1XkXR0DpkFMYvJlO19oBKltbAQa8mWgqRkE6AC0mlT
-	ZQehWWNOMN5aVmOyiemakDaWMSljpmbYr147zPAr7jNddUm7/QS2CENI7lcXosXv
-	3T7M0lm6sdRU88oWuTvC8BJ7Y7MeuL5B3cDJ78a7KMGwyijUphEWNgrw2DLu0ilt
-	T0fsKwkMheSX0utflxaxug==
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4a7xhdg201-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 05 Nov 2025 04:02:28 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 5A524FLm024893;
-	Wed, 5 Nov 2025 04:02:28 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 4a58ne15j1-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 05 Nov 2025 04:02:28 +0000
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 5A542Pro005395;
-	Wed, 5 Nov 2025 04:02:27 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 4a58ne15gy-6;
-	Wed, 05 Nov 2025 04:02:27 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: linux-scsi@vger.kernel.org, peter.wang@mediatek.com
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        alim.akhtar@samsung.com, avri.altman@wdc.com, bvanassche@acm.org,
-        robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-        conor+dt@kernel.org, jejb@linux.ibm.com, lgirdwood@gmail.com,
-        broonie@kernel.org, matthias.bgg@gmail.com,
-        angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org,
-        linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-        linux-arm-kernel@lists.infradead.org, wenst@chromium.org,
-        michael@walle.cc, conor.dooley@microchip.com, chu.stanley@gmail.com,
-        chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
-        naomi.chu@mediatek.com, ed.tsai@mediatek.com
-Subject: Re: [PATCH v1] dt-bindings: ufs: mediatek,ufs: Update maintainer information in mediatek,ufs.yaml
-Date: Tue,  4 Nov 2025 23:02:20 -0500
-Message-ID: <176231440764.2306382.16356889887368434971.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.51.1
-In-Reply-To: <20251031122008.1517549-1-peter.wang@mediatek.com>
-References: <20251031122008.1517549-1-peter.wang@mediatek.com>
+	id 1vGX0U-0000000D4ej-49od
+	for linux-mediatek@lists.infradead.org;
+	Wed, 05 Nov 2025 06:28:36 +0000
+Received: by mail-pj1-x1036.google.com with SMTP id 98e67ed59e1d1-33292adb180so6753021a91.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 04 Nov 2025 22:28:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1762324114; x=1762928914; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=5H6EdMxDpSqpmsIQ4cEg0ZlQTdzaOtsaMR+Q6cSWnBg=;
+        b=fjly57ClYsKbDJH0Zvj53/w4eCX1jzG2UMFW5tgQnoaLFLCrKRhzQMCoIiv7FzSMii
+         kZAS81FKR/60O+B4LSd1J+kMk3G2mtz16mUg8zIaLJ1NyPHQurGt0W1xhCsvvpTurC9/
+         ArrMUa4YYbMqPxsswt0j0qIi3eI4YFnMDeDN0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762324114; x=1762928914;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=5H6EdMxDpSqpmsIQ4cEg0ZlQTdzaOtsaMR+Q6cSWnBg=;
+        b=N/N2PtwPYI2sxgN2fAPAW4BDBTxz5z5acqTKYcpkXcExN9fuRD8BxvXTcKYaJeKwPF
+         4ejmG5JUCDlNoT33j0i3i+iC4FZYSbp/iZZM3gSc5iV6K6OVNbjEfyQSDm8afHK5Nk1x
+         Ht0oCVI1H+bzuaT4xjEVhXn8qEgM0znkA6FDfK3/MRqpBR6SsW8yBHEw3eKCT/WcxV9P
+         phAumBDtBbJLIYvDGeY9g1eZHhXNaqqc1EU10OcvpMlXFHO3NOqsf0bPlfai41XbYVyU
+         XiVbMa03uNYygUxQ0nuf70IHZmi77/5r1me4BxSSQHOyy11wmDylM7BmAoNrNG4D0aIj
+         wD4g==
+X-Forwarded-Encrypted: i=1; AJvYcCU7WTiFg/J7a72OIqaQb3hS7NgqkEuC0IQ8z+Atqm9Cofgx74exSsx7ptWngaFOIz0/hNWc67LMbzscLsuLMw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz22VHOn5SeU9jq0Kj44cdqrgmNEU5vRwadqwe4fgL5SHEkKCV+
+	KZHXMWTbeONm9LXYbdJECvL05NlLFE6dKhAEAXEqTQ6GJS3/T1y9z78/aUau/Js9LXgkbIKDZDj
+	9jPs=
+X-Gm-Gg: ASbGncsBYDkd0GsvcIipA5r9DumxzQogSzAXTzgmmW62UOo4FlVerfBVSUbZ17g6Jim
+	IzWefPJ+4bbhfDz9LkDVPbSKROUgta8oPw8BwlCoWMA6KW9qghiAGe1OBvzw6CxWzj5AGXnlqJa
+	akYhbsJCLI/3nGw/InBQ1c/Lk5uXC4lY/NaFFCjf7Bfm3fJdD98WWJnhuyrjD7uN0m4zaQt/he5
+	ffxY/BFYaD3SpKzocuAaePCCZxLlUr9Evh3rx3vey1B6JDleudStT5wT9v1yWxzdB/OmDjF4Q8M
+	3dQ5DWwAHgn0EGvu+S6BsmrUMAHpBqoXCcze583TRUU9cV0bjOc2CgDcy/sTV4o4ag46Gs6Yv4u
+	/ody6PYbiL1vcAHQy23DxHzq1Rirr8v4u6/7ttRP6+XreMz3LYeTLF5eT7X1R4tJjiB1OvgsmC9
+	gJugUpf/U0WzEMrGJliOaJrw3IOxH2pQIgdrzQrycPldG1ED0vCiP7Y2OrFB00tFjw0TGn
+X-Google-Smtp-Source: AGHT+IHcxT8eopl534bKfusC4Hown9kjuaRa6MI3B1tgGIQ3dMjZZ/a/cIEyK3gcb84dHOtYByhoug==
+X-Received: by 2002:a17:902:f542:b0:295:2d2c:1ba6 with SMTP id d9443c01a7336-2962ae10211mr34787125ad.36.1762324113674;
+        Tue, 04 Nov 2025 22:28:33 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:c3d3:7b72:a22e:7adf])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-296019bb9d3sm48438615ad.50.2025.11.04.22.28.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Nov 2025 22:28:33 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Jianjun Wang <jianjun.wang@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>,
+	linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] PCI: mediatek-gen3: Ignore link up timeout
+Date: Wed,  5 Nov 2025 14:28:14 +0800
+Message-ID: <20251105062815.966716-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.51.2.1026.g39e6a42477-goog
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
- definitions=2025-11-05_02,2025-11-03_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 mlxscore=0 bulkscore=0
- malwarescore=0 adultscore=0 spamscore=0 mlxlogscore=921 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2510240000
- definitions=main-2511050024
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTA1MDAxOSBTYWx0ZWRfX+uE1GIt984Gq
- 4/GHMEsw9maJTT375X+rmpBf5mLpXxua/eTTSKpNLnEGcmns2VLHp2v9fHVEKAuCzVnrZEIhCAm
- 9erOZPx6vRi8KgbnS5iMXT7ojITDj7WqJIhCMqjRDbhxvkl48Ketl+YjXTZBbJXi1NvKBWfROxS
- R9+x+365zLpzU0Kc9H3sN5IOs7RnKfkXkSPm8gphNh+OWhLvU8Xzi3R4WlKDRSTnpm6rXQzx/UN
- WBNqsTx46cDHbk9eLm/CevyLK+0U696VVxkQgeaFv0RP/zgIWVtLUV5dGpyNwtBNrkAA6tYoyIK
- 5sl+8AiW5T7FuuQEdusv+qDnDi3IxTt7kEF+yilQJt4fhSJus6YP+qnGHDLYG8UxJTHd/qVC/kL
- 6MqSTyfIHUsbn3KOwsKN3RhLYgVVuP4P3bp8Df7TMnj4uqM9uXs=
-X-Authority-Analysis: v=2.4 cv=ZpDg6t7G c=1 sm=1 tr=0 ts=690acc54 b=1 cx=c_pps
- a=e1sVV491RgrpLwSTMOnk8w==:117 a=e1sVV491RgrpLwSTMOnk8w==:17
- a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=VwQbUJbxAAAA:8 a=mpaa-ttXAAAA:8 a=8d0GUG1h20LVvl_VnrYA:9 a=QEXdDO2ut3YA:10
- cc=ntf awl=host:13657
-X-Proofpoint-ORIG-GUID: HuzLGcL3yYhgijfTvd2LcY2rHs5jwfRD
-X-Proofpoint-GUID: HuzLGcL3yYhgijfTvd2LcY2rHs5jwfRD
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251104_200237_471936_4FCE2C56 
-X-CRM114-Status: UNSURE (   8.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251104_222835_087696_D86DF149 
+X-CRM114-Status: GOOD (  18.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,18 +105,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 31 Oct 2025 20:19:12 +0800, peter.wang@mediatek.com wrote:
+As mentioned in commit 886a9c134755 ("PCI: dwc: Move link handling into
+common code") come up later" in the code, it is possible for link up to
+occur later:
 
-> Replace Stanley Chu with me and Chaotian in the maintainers field,
-> since his email address is no longer active.
-> 
-> 
+  Let's standardize this to succeed as there are usecases where devices
+  (and the link) appear later even without hotplug. For example, a
+  reconfigured FPGA device.
 
-Applied to 6.19/scsi-queue, thanks!
+Another case for this is the new PCIe power control stuff. The power
+control mechanism only gets triggered in the PCI core after the driver
+calls into pci_host_probe(). The power control framework then triggers
+a bus rescan. In most driver implementations, this sequence happens
+after link training. If the driver errors out when link training times
+out, it will never get to the point where the device gets turned on.
 
-[1/1] dt-bindings: ufs: mediatek,ufs: Update maintainer information in mediatek,ufs.yaml
-      https://git.kernel.org/mkp/scsi/c/480ca7954664
+Ignore the link up timeout, and lower the error message down to a
+warning.
 
+This makes PCIe devices that have not-always-on power rails work.
+However there may be some reversal of PCIe power sequencing, since now
+the PERST# and clocks are enabled in the driver, while the power is
+applied afterwards.
+
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+The change works to get my PCIe WiFi device working, but I wonder if
+the driver should expose more fine grained controls for the link clock
+and PERST# (when it is owned by the controller and not just a GPIO) to
+the power control framework. This applies not just to this driver.
+
+The PCI standard says that PERST# should hold the device in reset until
+the power rails are valid or stable, i.e. at their designated voltages.
+---
+ drivers/pci/controller/pcie-mediatek-gen3.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index 75ddb8bee168..5bdb312c9f9b 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -504,10 +504,15 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
+ 		ltssm_index = PCIE_LTSSM_STATE(val);
+ 		ltssm_state = ltssm_index >= ARRAY_SIZE(ltssm_str) ?
+ 			      "Unknown state" : ltssm_str[ltssm_index];
+-		dev_err(pcie->dev,
+-			"PCIe link down, current LTSSM state: %s (%#x)\n",
+-			ltssm_state, val);
+-		return err;
++		dev_warn(pcie->dev,
++			 "PCIe link down, current LTSSM state: %s (%#x)\n",
++			 ltssm_state, val);
++
++		/*
++		 * Ignore the timeout, as the link may come up later,
++		 * such as when the PCI power control enables power to the
++		 * device, at which point it triggers a rescan.
++		 */
+ 	}
+ 
+ 	mtk_pcie_enable_msi(pcie);
 -- 
-Martin K. Petersen
+2.51.2.1026.g39e6a42477-goog
+
 
