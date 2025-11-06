@@ -4,71 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 934E6CCFA13
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Nov 2025 13:34:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 658C8CCFA03
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Nov 2025 14:18:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sEOhzAy99ok5RAW6jieLPiegp4B3qFQ45Dzi1nI4ADE=; b=UBDJZJ2Ad4Ac9NpyktppRXys0s
-	MVxBYKia2T0PIWKzsHyQfdejTnPJ8I+Zgaf/M84Er9auboTkFNiTMV33JYoDIfgFrygN0gJY3PBPi
-	yIOPGuhqOH/O0qQ2n3LFpPhIxSzsApYNnhdLBptfZDTHoowO6NV1BPIOT/85m19Qw6wCKz0DQRU9o
-	7Zq2L6nLTWU8+WbwhpkQg6X/SscBP+aGBscaM5CNoxUrfCIGQDqx7Eg3kTTqzVzw694lBKjnifBsI
-	mglRXYqhuj0SeN+dsoSQGT6zYlyCBvxgxBWneSttd83Oo7QNyjbU0V1U7JWziwszBE95v/JBikVgz
-	Iuzk7ntg==;
+	bh=cLsFs1qD+n7FRsqjn3JQEfDSQDMCYyFfRbn3nmUxO1Q=; b=qf8xHAPB9tf/SQqw3mhP/L075I
+	VS9spJg2a6RdJiMZbEJwjs+IMZBZiRcE+n3SDERrla2YDX3HOK0gWnYCYmxuke4F9JEg4SonRV5eq
+	xQXDZ3Csa/XgBeU0p9qaeffx81f/UXK/op6RE4uBP7gPD2vdZ6VeHKSw634hBuuEa7PJy/o4SoAt4
+	junkpTQ+Zm2ze4DiWEFHn4kJ4ogDjRsVtSLQifCrIIv3lRfL1c5zNzsW9B9ZD7QTQcH2d5EZbWqlq
+	QUg8dka53e0IJLo52EQ8Icz1IYvVYWq7EO/zF/1vxDWIkLQBZab2CQe3JYyigysRF+fGmmR+cJh1P
+	THbSo/Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH08Q-0000000Fa5J-3yz7;
-	Thu, 06 Nov 2025 13:34:42 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vH0oc-0000000FgPu-30b3;
+	Thu, 06 Nov 2025 14:18:18 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH08N-0000000Fa4B-47Oc;
-	Thu, 06 Nov 2025 13:34:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0FF974020C;
-	Thu,  6 Nov 2025 13:34:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB4C6C116C6;
-	Thu,  6 Nov 2025 13:34:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762436078;
-	bh=UxsA7mpBbTvyv+g/LrSCFPsTpp7DeoIh9dJ/dkCgAxY=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=llznu7vxVvCdwnCl/IdM4fTDwJiq1ztqiQ6zJ2Ed1+c3HAjvpQk1TkOwDcnTxNJRZ
-	 wWff58/kXcPtX0BGe7JdTaR4eGFQSAUwCj2ySVW6AYwbPeVsN463BW05DfIpCWw/hl
-	 Jj06IfZCO6KqhJ0grsxnLXj72NGc6eQw5N1vyoBG8o7dBfKxaUqBZ/Bg5VwJpot8/O
-	 CvuRqY0Q0zTKdoKJinZos92gB/UOC/NIbZwxyhbXL+BeTpjbnSQOo7CUBr7c+L9Zc6
-	 P4WKltBa+np+i9Frx4hv7oveioFV9m0sYcgu5mhVs4L50JnJ7xN3RgtvTtIp0le4rg
-	 jmxcZgsRfxNtg==
-Date: Thu, 06 Nov 2025 07:34:37 -0600
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1vH0oY-0000000FgOg-2zg8;
+	Thu, 06 Nov 2025 14:18:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1762438690;
+	bh=D1YqLCZ+wLztmcGu4DKC3azE74VCT3buGcL50oC22eU=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=pHS0e98bq+XlRk1N9o9qiu5PBFQRLoK8tS0F0eg6MyGsSEDmpq5aGzsBXdGA/LFla
+	 zOay8S0aKHGlPX5dPqGUIqBCToYQjXKFXU9r6OxDTHAAW6opc7D6jLbwvNiwsTa7U6
+	 veFCOG4PgaL77nH4Vbsy+4mjMCgaYgVqeD/paKL5CCyNFwKUFFXR+UNhveCb8m66RR
+	 2jtKQNsK+nCMJHZ1UNizKFYB3aX9MyJOv2CN/PWJkEPYVq+OMgqsWu8tDw3t3mTnQT
+	 pGRh4WA6JN4FjINHYkc5/rkhH3ZDix99BreqWFTYGCvw98WzVeWxGsErhBWpQKvqQ4
+	 yvUvpGLKg3YSg==
+Received: from [IPv6:2606:6d00:11:ef24::c41] (unknown [IPv6:2606:6d00:11:ef24::c41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2A83117E0299;
+	Thu,  6 Nov 2025 15:18:08 +0100 (CET)
+Message-ID: <c49b979fd911f2587bbfed129b07065f1cd2a2db.camel@collabora.com>
+Subject: Re: [PATCH v5 0/8] Enable video decoder & encoder for MT8189
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Kyrie Wu <kyrie.wu@mediatek.com>, Tiffany Lin
+ <tiffany.lin@mediatek.com>,  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski	
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger	
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Hans Verkuil
+ <hverkuil@xs4all.nl>,  Nathan Hebert <nhebert@chromium.org>, Arnd Bergmann
+ <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>,  George Sun
+ <george.sun@mediatek.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org,
+ Yilong Zhou <yilong.zhou@mediatek.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
+	 <andrzejtp2010@gmail.com>
+Date: Thu, 06 Nov 2025 09:18:06 -0500
+In-Reply-To: <20251106061323.2193-1-kyrie.wu@mediatek.com>
+References: <20251106061323.2193-1-kyrie.wu@mediatek.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-AX19oTKFu1+mQq19n1Qb"
+User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, sirius.wang@mediatek.com, 
- Ulf Hansson <ulf.hansson@linaro.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-pm@vger.kernel.org, 
- linux-clk@vger.kernel.org, netdev@vger.kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Conor Dooley <conor+dt@kernel.org>, Stephen Boyd <sboyd@kernel.org>, 
- Richard Cochran <richardcochran@gmail.com>, jh.hsu@mediatek.com, 
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- Qiqi Wang <qiqi.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-arm-kernel@lists.infradead.org, 
- Michael Turquette <mturquette@baylibre.com>, vince-wl.liu@mediatek.com, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
-To: "irving.ch.lin" <irving-ch.lin@mediatek.com>
-In-Reply-To: <20251106124330.1145600-3-irving-ch.lin@mediatek.com>
-References: <20251106124330.1145600-1-irving-ch.lin@mediatek.com>
- <20251106124330.1145600-3-irving-ch.lin@mediatek.com>
-Message-Id: <176243607706.3652517.3944575874711134298.robh@kernel.org>
-Subject: Re: [PATCH v3 02/21] dt-bindings: power: mediatek: Add MT8189
- power domain definitions
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251106_053440_046759_EB244724 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20251106_061814_923608_8C9415BE 
+X-CRM114-Status: GOOD (  16.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,41 +100,122 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 06 Nov 2025 20:41:47 +0800, irving.ch.lin wrote:
-> From: Irving-CH Lin <irving-ch.lin@mediatek.com>
-> 
-> Add device tree bindings for the power domains of MediaTek MT8189 SoC.
-> 
-> Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
+--=-AX19oTKFu1+mQq19n1Qb
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Le jeudi 06 novembre 2025 =C3=A0 14:13 +0800, Kyrie Wu a =C3=A9crit=C2=A0:
+> This series have the follow changing:
+> Firstly add mt8189 video decoder compatible, profile and level to support
+> MT8189 kernel driver.
+> Secondly fix some bugs, including vp 4K profile2 and media device node
+> number bug.
+> Lastly, add mt8189 video encoder compatible.
+>=20
+> This series has been tested with MT8189 tast test.
+> Encoding and decoding worked for this chip.
+>=20
+> Patches 1-2 Add decoder compatible.
+> Patches 3 Add profile and level supporting.
+> Patches 4 Add core-only VP9 decoding supporting.
+> Patches 5-6 fix some bugs.
+> Patches 7-8 Adds encoder compatible.
+>=20
 > ---
->  .../power/mediatek,power-controller.yaml      |  1 +
->  .../dt-bindings/power/mediatek,mt8189-power.h | 38 +++++++++++++++++++
->  2 files changed, 39 insertions(+)
->  create mode 100644 include/dt-bindings/power/mediatek,mt8189-power.h
-> 
+> H264 test results:
+> ./fluster.py run -d GStreamer-H.264-V4L2SL-Gst1.0 -j2 -t 90
+> =C2=A0=C2=A0=C2=A0 JVT-AVC_V1	Ran 96/135 tests successfully
+>=20
+> VP9 test results:
+> ./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0 -j2 -t 90
+> 	VP9-TEST-VECTORS	Ran 276/305 tests successfully
+>=20
+> v4l2-compliance test results:
+> Compliance test for mtk-vcodec-enc device /dev/video2:
+> Total for mtk-vcodec-enc device /dev/video2: 47, Succeeded: 46, Failed: 1=
+, Warnings: 0
 
-My bot found errors running 'make dt_binding_check' on your patch:
+There is one fail, can you explain it ?
 
-yamllint warnings/errors:
-./Documentation/devicetree/bindings/clock/mediatek,mt8189-clock.yaml:25:9: [warning] wrong indentation: expected 10 but found 8 (indentation)
+Nicolas
 
-dtschema/dtc warnings/errors:
+> Compliance test for mtk-vcodec-dec device /dev/video3:
+> Total for mtk-vcodec-dec device /dev/video3: 48, Succeeded: 48, Failed: 0=
+, Warnings: 0
+>=20
+> scp upstream link:
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20250811015922.=
+32680-1-huayu.zong@mediatek.com/
+> dtsi upstream link:
+> https://lore.kernel.org/linux-mediatek/20251030134541.784011-12-jh.hsu@me=
+diatek.com/T/#m847e35de0a5b18fac0ca0624a8559d84964ad5c7
+>=20
+> Changes compared with v4:
+> --update H264 & vp9 fluster test results
+> --update vp9 single core decoder prob size setting and commit messages
+>=20
+> Changes compared with v3:
+> --add reviewer to commit messages
+> --Rebased on top of the latest media tree
+>=20
+> Changes compared with v2:
+> --add H264 fluster test results
+> --reorder compatible string for dt-bindings
+>=20
+> Changes compared with v1:
+> --add v4l2-compliance test results
+> --add scp upstream link
+> --add HW difference discriptions for dt-bindings commit messages
+>=20
+> This series patches dependent on:
+> [1]
+> https://patchwork.linuxtv.org/project/linux-media/cover/20250510075357.11=
+761-1-yunfei.dong@mediatek.com/
+> [2]
+> https://patchwork.linuxtv.org/project/linux-media/cover/20250814085642.17=
+343-1-kyrie.wu@mediatek.com/
+>=20
+> Kyrie Wu (8):
+> =C2=A0 dt-bindings: media: mediatek: decoder: Add MT8189
+> =C2=A0=C2=A0=C2=A0 mediatek,vcodec-decoder
+> =C2=A0 media: mediatek: vcodec: add decoder compatible to support MT8189
+> =C2=A0 media: mediatek: vcodec: add profile and level supporting for MT81=
+89
+> =C2=A0 media: mediatek: vcodec: Add single core VP9 decoding support for
+> =C2=A0=C2=A0=C2=A0 MT8189
+> =C2=A0 media: mediatek: vcodec: fix vp9 4096x2176 fail for profile2
+> =C2=A0 media: mediatek: vcodec: fix media device node number
+> =C2=A0 dt-bindings: media: Add MT8189 mediatek,vcodec-encoder
+> =C2=A0 media: mediatek: encoder: Add MT8189 encoder compatible data
+>=20
+> =C2=A0.../media/mediatek,vcodec-encoder.yaml=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 |=C2=A0 2 +
+> =C2=A0.../media/mediatek,vcodec-subdev-decoder.yaml |=C2=A0 5 +-
+> =C2=A0.../vcodec/decoder/mtk_vcodec_dec_drv.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |=C2=A0 9 +++-
+> =C2=A0.../vcodec/decoder/mtk_vcodec_dec_drv.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |=C2=A0 1 +
+> =C2=A0.../vcodec/decoder/mtk_vcodec_dec_stateless.c |=C2=A0 4 ++
+> =C2=A0.../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 48 ++++++++++++++--=
+---
+> =C2=A0.../vcodec/encoder/mtk_vcodec_enc_drv.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 | 14 ++++++
+> =C2=A07 files changed, 68 insertions(+), 15 deletions(-)
 
-doc reference errors (make refcheckdocs):
+--=-AX19oTKFu1+mQq19n1Qb
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20251106124330.1145600-3-irving-ch.lin@mediatek.com
+-----BEGIN PGP SIGNATURE-----
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaQyuHgAKCRDZQZRRKWBy
+9GzzAQC9JvEjAqGmbr6LW33oZiyGcWY0ryOA79ls2yujy1q7iwEA0bH9kaKtrf0m
+Qb5ZjB7rfho2ovN2pheFNN9ADJ88AQw=
+=8/5c
+-----END PGP SIGNATURE-----
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+--=-AX19oTKFu1+mQq19n1Qb--
 
