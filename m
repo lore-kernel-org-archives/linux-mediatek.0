@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27F53CCFA03
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Nov 2025 05:52:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24776CCF9F8
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Nov 2025 06:13:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t2vFD9QfkLV1VBP+0tHhWY7UETMkdp6hXOZQ1SGqke4=; b=Nuzd301x+AlWrbNtpLl0v1vDiq
-	wrGHf6iPGJeDVGxnjLtzqzbIJx/oCFECoB8kOol/pK/bsqXIFGOcMayt4yJq63lJHUJQ+xueRLpQS
-	9sheTDp2YNQ2qlcG/qoABJVQyS/Amgx4q+rLS3AkBp44wXTGgbVJCMFSqjB3rgk7U8x5W2yp/ak4/
-	k/Pod/TcT7kuRQhGTmdhyERD7NTH5RfHiE3WmO55+/0pRWFkQ/Ilfvl9WHevExeE5ccMuQ6xHYdKH
-	Jn9hxppj/WLyq06f/hF7ESQ/imKIafHDr+9Qp9tyEgzQiEZcsWSXpaFfooRkYyH5GtO6zouEKLHMQ
-	+ABAOHGQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=a5Q9hI2kKNXBqUVmtuuosCNq4MGtkh7gicigwbF8wWg=; b=uF6v/K3gu7c5gV7MaYYVW1s7q6
+	3we4mqeLvcQ5iqoVWUquQxHinSGdZA+w8/l+KVDD1YqoIBFDh197HRIe8RDx8swXFsTIOLYylaJaR
+	HDxguieKi/N93lkVhxvoXOPmx6TYpKta7rJoaT/OyA11wAjiupSsn9RzUAZEZtH0/0//K86lOZ6If
+	OBatMoPx+HSKxxJbAsGoXq5dsCnS5gEmaOS2B9v0rMQ9XXnZ9ZayY76+fY8eIQFLX5UfhGwVXYfBS
+	OlH3HdKhK/dN1bCQUINYPJeTL8w+ek07CAs3tyhlks5Eotjbq0Z9lgtYz+m0I9bBUyBvOTkE7SPYc
+	wDqp6o8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGsv5-0000000EuE1-3Mlc;
-	Thu, 06 Nov 2025 05:52:27 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1vGtFZ-0000000Ev2z-21kJ;
+	Thu, 06 Nov 2025 06:13:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGsv3-0000000EuDV-1eGS
-	for linux-mediatek@lists.infradead.org;
-	Thu, 06 Nov 2025 05:52:26 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-594516d941cso86104e87.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 05 Nov 2025 21:52:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1762408343; x=1763013143; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=t2vFD9QfkLV1VBP+0tHhWY7UETMkdp6hXOZQ1SGqke4=;
-        b=SP5bmJR+wR72luVdTfQKtKaDpjIhN6oBMKLaaWay6OfXVp2apI4xIXlIzCiQ38m0by
-         JlmTMqdbPDSJbJiEWVukqMix1jhV6kiJS54jAWLdQqidmns37tVeGMmQyDI5Aal2t7dr
-         +ovkfXKtkM3bmk5/SimPf+OK2DB/h4D/iPJ6o=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762408343; x=1763013143;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=t2vFD9QfkLV1VBP+0tHhWY7UETMkdp6hXOZQ1SGqke4=;
-        b=vozHI1BtoLn7ayav9dRlfJWl3UBzWjv859zaEUoBtYIuL/eEWa9Chgx2NRHDRC5WxR
-         rt/InUEVGwSUeRaJWYincePeRhV3mg7TDaG/Maezjlv8xh10fj+63qyNvFit5pMicTkz
-         whPafWovOVbQWXDIL9mdgt8kywMEVA4nW69VIE62LOjRtxGstmF5JpAdPuhNKEvBjW7X
-         rsJFrB8+VRnj/BQFeRTQm55Y61Y5ir/owZt90DwCYRwA6HBUdmaBHE607OPGTEON9M4K
-         1/xlk3evCi2l1hC3Lth/uoj8KZ+NbF9NLAlnHLJraJzHfh+u8iWjDsYZBxZRvEPlE+8+
-         NkrA==
-X-Forwarded-Encrypted: i=1; AJvYcCW3UZrgesPwUdL7MBZ+M0p4N48NOJl4H0fnv/PJuowPByDxMgxwni8aC6/tDcFaGUSzhn5fGaNqKCpFQ+7WLw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyO6kOs8Kh/cBW7+1BHwsZkd2irykjJLelglVg/mkjFnLyz9H/7
-	1oNzF2S9MSxggUDjpYmkhma5zreDBERO7JFoZbEYvY0+yIVFsuw9f9Z7eJ2aw0FvKGnA4WxLfsw
-	Uxsgi5x8RquBRE6/azbgF/e04NIFYOQNf0O/1mj91
-X-Gm-Gg: ASbGncvckiWaKLUihfjIo/senemwkTNxJd1MdKPzr59sQu3QiuPZiVn0m4iD9JssdHy
-	SW3rM3fRC8cRnmw4YEaFKhHs5lbdSQ3o15H+4nioOU2L/9B4oMWQ0SShQlnJb9BfxVHy2brcY2n
-	2X5tGK87onB9ostX8oVwPdSDX2k234tbF3GEis7a4T/rc5bLo91fVJPggjFxxcRD1zFEj8whgYg
-	KBsEYFxftfn8cSeqcuBHJOLpm/y2Jv1t/ISxHPa86xXfIhb7nWdfbowI6sx+7tjJgwF0edixUBe
-	zJaIMNX5Bke0MA==
-X-Google-Smtp-Source: AGHT+IHAob6MV1N00P20nCaMZ0Unl97QFU3xVJ0gGiBJjh2pPEuMa2JaMwEv5WW7Ej34ZKo8sZo0R1CpSdofm5d6p5s=
-X-Received: by 2002:a05:6512:39d3:b0:594:29c8:9ae5 with SMTP id
- 2adb3069b0e04-5943d8043damr2230852e87.53.1762408343267; Wed, 05 Nov 2025
- 21:52:23 -0800 (PST)
+	id 1vGtFX-0000000Ev1Q-2Bl7;
+	Thu, 06 Nov 2025 06:13:36 +0000
+X-UUID: b779a716bad711f09f706fa2197c6ceb-20251105
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=a5Q9hI2kKNXBqUVmtuuosCNq4MGtkh7gicigwbF8wWg=;
+	b=u1ZlJzvTSp5Tuv5g0W1fDJp9lg3v843CSj+XtNPt9fSdrAQIPbEWIP3LvIRzwF9Yc7eSW4ATV7qBpglghRkBlM5UEew+p4zuUc447LO88KGeVFpbtRwybf8W1lmU+GtBDoXo1xkKHmmV2MtaJRDcw+g3nQV42dKVjbsIrCUqc0Y=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:a84a5a5c-ff50-47e6-b1f8-7711a0f4249f,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:f66e196b-d4bd-4ab9-8221-0049857cc502,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
+	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: b779a716bad711f09f706fa2197c6ceb-20251105
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 531384252; Wed, 05 Nov 2025 23:13:30 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Thu, 6 Nov 2025 14:13:28 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Thu, 6 Nov 2025 14:13:27 +0800
+From: Kyrie Wu <kyrie.wu@mediatek.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
+	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>, Nicolas Dufresne
+	<nicolas.dufresne@collabora.com>, Nathan Hebert <nhebert@chromium.org>, "Arnd
+ Bergmann" <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>, George Sun
+	<george.sun@mediatek.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Yilong Zhou <yilong.zhou@mediatek.com>
+CC: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
+	<andrzejtp2010@gmail.com>
+Subject: [PATCH v5 2/8] media: mediatek: vcodec: add decoder compatible to support MT8189
+Date: Thu, 6 Nov 2025 14:13:17 +0800
+Message-ID: <20251106061323.2193-3-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20251106061323.2193-1-kyrie.wu@mediatek.com>
+References: <20251106061323.2193-1-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
-References: <20251105062815.966716-1-wenst@chromium.org> <7250ae04-866f-489c-b1b6-b8a3d8200529@collabora.com>
- <CAGXv+5EwiL_-ozRARH2UBm5znHi1egBoCjmELN=17hvFF_oeoQ@mail.gmail.com> <3e1ffe72-b6a4-45cc-a053-190077818f19@collabora.com>
-In-Reply-To: <3e1ffe72-b6a4-45cc-a053-190077818f19@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 6 Nov 2025 13:52:11 +0800
-X-Gm-Features: AWmQ_bmokZWwcJ_dGdsfSVTeY3Z9us2jEl3U1CaBt3RNYP_UjKHxSJPC0zLeok0
-Message-ID: <CAGXv+5GAyt6U710En_k=fq-CPrq_H6rmc=kpBNw4yXjj8qL2cw@mail.gmail.com>
-Subject: Re: [PATCH] PCI: mediatek-gen3: Ignore link up timeout
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Jianjun Wang <jianjun.wang@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_215225_497430_AEAFB5C3 
-X-CRM114-Status: GOOD (  38.01  )
+X-CRM114-CacheID: sfid-20251105_221335_585951_11CDF773 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,130 +97,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 5, 2025 at 7:32=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 05/11/25 10:21, Chen-Yu Tsai ha scritto:
-> > On Wed, Nov 5, 2025 at 4:45=E2=80=AFPM AngeloGioacchino Del Regno
-> > <angelogioacchino.delregno@collabora.com> wrote:
-> >>
-> >> Il 05/11/25 07:28, Chen-Yu Tsai ha scritto:
-> >>> As mentioned in commit 886a9c134755 ("PCI: dwc: Move link handling in=
-to
-> >>> common code") come up later" in the code, it is possible for link up =
-to
-> >>> occur later:
-> >>>
-> >>>     Let's standardize this to succeed as there are usecases where dev=
-ices
-> >>>     (and the link) appear later even without hotplug. For example, a
-> >>>     reconfigured FPGA device.
-> >>>
-> >>> Another case for this is the new PCIe power control stuff. The power
-> >>> control mechanism only gets triggered in the PCI core after the drive=
-r
-> >>> calls into pci_host_probe(). The power control framework then trigger=
-s
-> >>> a bus rescan. In most driver implementations, this sequence happens
-> >>> after link training. If the driver errors out when link training time=
-s
-> >>> out, it will never get to the point where the device gets turned on.
-> >>>
-> >>> Ignore the link up timeout, and lower the error message down to a
-> >>> warning.
-> >>>
-> >>> This makes PCIe devices that have not-always-on power rails work.
-> >>> However there may be some reversal of PCIe power sequencing, since no=
-w
-> >>> the PERST# and clocks are enabled in the driver, while the power is
-> >>> applied afterwards.
-> >>>
-> >>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> >>
-> >> Ok, that's sensible.
-> >>
-> >> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@col=
-labora.com>
-> >>
-> >>> ---
-> >>> The change works to get my PCIe WiFi device working, but I wonder if
-> >>> the driver should expose more fine grained controls for the link cloc=
-k
-> >>> and PERST# (when it is owned by the controller and not just a GPIO) t=
-o
-> >>> the power control framework. This applies not just to this driver.
-> >>>
-> >>> The PCI standard says that PERST# should hold the device in reset unt=
-il
-> >>> the power rails are valid or stable, i.e. at their designated voltage=
-s.
-> >>
-> >> I completely agree with all of the above - and I can imagine multiple =
-PCI-Express
-> >> controller drivers doing the same as what's being done in MTK Gen3.
-> >>
-> >> This means that the boot process may get slowed down by the port start=
-up sequence
-> >> on multiple PCI-Express controllers (again not just MediaTek) and it's=
- something
-> >> that must be resolved in some way... with the fastest course of action=
- imo being
-> >> giving controller drivers knowledge of whether there's any device that=
- is expected
-> >> to be powered off at that time (in order to at least avoid all those w=
-aits that
-> >> are expected to fail).
-> >
-> > That also requires some refactoring, since all the drivers _wait_ for l=
-ink
-> > up before going into the PCI core, which does the actual child node par=
-sing.
-> >
-> > I would like some input from Bartosz, who introduced the PCI power cont=
-rol
-> > framework, and Manivannan, who added slot power control.
-> >
-> >> P.S.: Chen-Yu, did you check if the same applies to the MTK previous g=
-en driver?
-> >>         Could you please check and eventually send a commit to do the =
-same there?
-> >
-> > My quick survey last week indicated that all the drivers except for the
-> > dwc family error out if link up timed out.
-> >
-> > I don't have any hardware for the older generation though. And it looks
-> > like for the previous gen, the driver performs even worse, since it can
-> > support multiple slots, and each slot is brought up sequentially. A slo=
-t
-> > is discarded if link up times out. And the whole driver errors out if n=
-o
-> > slots are working.
-> >
->
-> Hey, that's bold.
->
-> If only one driver (DWC) is working okay, there's something wrong that mu=
-st be
-> fixed before that behavior change goes upstream (which it already did, ug=
-h).
+MT8189 is pure single core architecture. Support its compatible and
+use `mtk_vdec_single_core_pdata` to initialize platform data.
 
-To be fair one only runs into it if they convert over to the PCI slot power
-description in the device tree, and their hardware isn't DWC based. This
-is pretty new.
+Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c   | 6 ++++++
+ .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h   | 1 +
+ 2 files changed, 7 insertions(+)
 
-> This needs attention from both Bartosz and Mani really-right-now.
->
-> I'm not sure about possible good solutions, and unfortunately I don't rea=
-lly have
-> any time to explore, so I'm not spitting any words on that - leaving this=
- to both
-> Bartosz and Mani as that's also the right thing to do anyway.
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+index 6fb05bb00641..fca60e81e3c7 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+@@ -347,6 +347,8 @@ static void mtk_vcodec_dec_get_chip_name(struct mtk_vcodec_dec_dev *vdec_dev)
+ 		vdec_dev->chip_name = MTK_VDEC_MT8188;
+ 	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8196-vcodec-dec"))
+ 		vdec_dev->chip_name = MTK_VDEC_MT8196;
++	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8189-vcodec-dec"))
++		vdec_dev->chip_name = MTK_VDEC_MT8189;
+ 	else
+ 		vdec_dev->chip_name = MTK_VDEC_INVAL;
+ }
+@@ -574,6 +576,10 @@ static const struct of_device_id mtk_vcodec_match[] = {
+ 		.compatible = "mediatek,mt8196-vcodec-dec",
+ 		.data = &mtk_lat_sig_core_pdata,
+ 	},
++	{
++		.compatible = "mediatek,mt8189-vcodec-dec",
++		.data = &mtk_vdec_single_core_pdata,
++	},
+ 	{},
+ };
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+index 429b32952194..9421fd4fda1d 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+@@ -25,6 +25,7 @@ enum mtk_vcodec_dec_chip_name {
+ 	MTK_VDEC_MT8183 = 8183,
+ 	MTK_VDEC_MT8186 = 8186,
+ 	MTK_VDEC_MT8188 = 8188,
++	MTK_VDEC_MT8189 = 8189,
+ 	MTK_VDEC_MT8192 = 8192,
+ 	MTK_VDEC_MT8195 = 8195,
+ 	MTK_VDEC_MT8196 = 8196,
+-- 
+2.45.2
 
-Mani mentioned [1] that work towards moving the pwrctrl stuff into drivers
-is almost complete. So I think we're covered.
-
-ChenYu
-
-[1] https://lore.kernel.org/all/rz6ajnl7l25hfl2u7lloywtw7sq7smhb63hg76wjsly=
-uwyjb7a@fhuafuino5kv/
 
