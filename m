@@ -4,61 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5423CCFA13
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Nov 2025 23:54:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B672CCFA05
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Nov 2025 23:57:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dIs/L9nMFFsSa08RdWrOq2uaV+8rOzjlesdJTXSIC7Q=; b=R/38pGlgxrCl5/dCvnIVSACzYA
-	QQvNNonBT0UaZ3NHhB1fZnvH7o7j4L2diHQSHirFZWKzkkDYXBwXJdx6LnZRw5DQtaXI/u4ahbTHH
-	ubdV1CsJOwvkjmad/vvkbQbBwV6RtrSXrGFHVnQQNa382iQSd0PFb2/2GUdgciKBkRq9tUbdpwQ32
-	JCzODwF9C0DUV1d9KXKAoZaOuc9haj0U/tlBos72OZ5Pf9keojNroAhXv5C5IlNCrV104nAIIbNTY
-	4Drpb8FN0Nai6LRbBRYZ0fC2Pkf8Sx2nIheovOUuRjiLBPCOAhsLj85JA/SlhsuRzpH/zvxShVPGU
-	X4vWLIDQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tPLPPimuMG7kUU5D7ROePR6mzkYaE95eVKvbR5javJk=; b=QEddlAR6FqVsNy/Wws3hcsrv92
+	sKjlwnyNGjatHZtENwQyHz0ZqffyfUWP+h55zg5Jhes8Q33BsKdzciPU8dbQUvJ8R5fi8mz2rbqHr
+	7KoMmO1fHPtkEA7ctJlTDrDbqSOF34LbKDkZcPtyxOJXlqwEAuizPJjqb6ptui0RKYRvdYb74/qsz
+	ZXIu8QCm5E1vtleS4bXpjXJOXe45dIuLeCOTqjA49UO1bkmVZI67C9aA2begRGg9cnIwAVesInaVv
+	erIrU116yng+8v6ULfBYnci5kYRgSKiRSY3RmO16/U7gs0CNUzkodDqQmJ50SHF+/3mK38D4y9D1F
+	xsfWPZSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH9oB-0000000GPjO-1Iif;
-	Thu, 06 Nov 2025 23:54:27 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vH9r2-0000000GQ7N-1NdX;
+	Thu, 06 Nov 2025 23:57:24 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vH9o9-0000000GPip-1Mdq;
-	Thu, 06 Nov 2025 23:54:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 792E3601A4;
-	Thu,  6 Nov 2025 23:54:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98E79C116C6;
-	Thu,  6 Nov 2025 23:54:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762473264;
-	bh=nUgrKOEntcoxnLMXZVxWwUI9CbwzMYPoAkwMzotuOOE=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=e9Cy1ioiBgg2IZziJsSnPM2e3+VSkoYpu53IVyPpk/ZevsKAMfAKMy/vnAV7iMFvq
-	 zcJDzTr2Rrwb7/f7W5S4Tzgkil55/uSPYDuUtqONeK6kI+jvBl8LLq43BFFBVHdmLL
-	 s/F1uLxE6o0gWJigWC7O0BO8o+/BDngSKtp0WI+jCozdVMlK8cJJOtk5jhmTqwt4eh
-	 8JK5XpeQPd/aVEUtOGtxvU+j/PfpoZI6FtTgs2K/HUR+vVgKxz+ykI7KTJkpxa8H9a
-	 x4VKQs0EwF0Nx/j7jnIRHbLWq682w0lLFnMKLs9CZdZbVmy79Nv12n/X59uLkJNZMs
-	 Pgh+mvfTehB8w==
-From: Mark Brown <broonie@kernel.org>
-To: linux-mediatek@lists.infradead.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: lee@kernel.org, robh@kernel.org, krzk+dt@kernel.org, 
- conor+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com, 
- wenst@chromium.org, igor.belwon@mentallysanemainliners.org
-In-Reply-To: <20251027110527.21002-1-angelogioacchino.delregno@collabora.com>
-References: <20251027110527.21002-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: (subset) [PATCH v11 0/9] Add support MT6316/6363/MT6373 PMICs
- regulators and MFD
-Message-Id: <176247325942.2483095.1363987867451171276.b4-ty@kernel.org>
-Date: Thu, 06 Nov 2025 23:54:19 +0000
+	id 1vH9qz-0000000GQ5v-2xnd
+	for linux-mediatek@lists.infradead.org;
+	Thu, 06 Nov 2025 23:57:23 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-475ca9237c2so756565e9.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 06 Nov 2025 15:57:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1762473439; x=1763078239; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=tPLPPimuMG7kUU5D7ROePR6mzkYaE95eVKvbR5javJk=;
+        b=W/fivJq6BTP0FIZLIVKPGzNFTAt2muFddhZ/SxiSv9KaBztT4JkmxMe01hnsKfsTl9
+         VcSg0Pu05Sf9LexO1XzRDEPeburvmx3HSnj9jp22PbeFq6/3kyFBb7qqIW4V5t+VexaA
+         DFeMy7idvXgpglUAdDgRalY8ZgasgyS7SZ3R5v6QQh8JxafGf3OhpmW8kaf6PLahyKdG
+         Vqn+dw2eQYeXvwUZG+B1+OC/+nmZOfTIYb8Z1XRXQh71A9nBhYYlX1ZtId5kRA+5cRSB
+         L/Q1HwLTnVjZeTLT3kXn9YnrVzAVfJtkVTKykxKRtuFfBhAk+wf2dDBTm3FISS4hCJ/K
+         qK5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762473439; x=1763078239;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tPLPPimuMG7kUU5D7ROePR6mzkYaE95eVKvbR5javJk=;
+        b=B/Zue0jPAfPxh2dA4jF4mQKnScDHkHu2bG2Jhw/gP/GzAia9tFI6NfRp5A+WghmVUy
+         95ukba4HznjXLR5JiBOLAlfoHEyFdh2r/AVLFQ0q4VgGnv/20dkt1kLzZohx19kSH+2H
+         Zre8grcLUAFLd3NBXauXWK6z4fSGdtPVtznabwSZKIFPbszCSohZXLnARKg70nPQVLwx
+         IcD0MN2rC65oPgYGP6vn/Y/KjxkqlT0/H9YO1ywILw+i+MGDr/0h0mO6zVIeAYdEx1SQ
+         mqzOhl9ZWwyW2zgYHCaV/gqHc8GQU+xDYy8ZnVv6wnt5MfeIxeZwqayhuF1X7EvClsOR
+         9NBA==
+X-Forwarded-Encrypted: i=1; AJvYcCWdm/GXkVYCCqBx0Ow3kGY0BxzQXa6bXU0sT7/4pGlftnpm7h0cM68uwllAguuk8BRxoTQFjxNEl/1kFSTVag==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxWpYulodmr/TeXYg3HVYSbU5E+NaoFaA4dgQHsFAS0tRDOKA2O
+	sCWpa6X/RBTFz8+Y5KEaY3AyLCSbmzGoLakcmDE5He/0IPgKB+HMxeAVy3nX5Q==
+X-Gm-Gg: ASbGncvchrPA5lwnGd208dCNO5vyqKNS2Zt2NX9ReadgqjfZF2MGOLNESaaIkIf6AmQ
+	bEb7nHOwaxQg8KUVPODhqE5zncj8iLLrQOGY3OTNUo+bUA8XLihH5y+G8fjLQh0MQP1ZR8G6nuI
+	m+8G+RAPYjVvwe4e4TyXIC2HVHUTiR9JebQ+BbJIA1Se3RL7fY+v+SwISUrVI2kHD7IvO1zpeni
+	kPpo1RzvLgLIXjQ8yM5bSe0s0wCt3aS1080p8tCDw0gvRp7fht7XP4I7Tiqcj1cvI/tCDCpQbuo
+	T2Yzx4K9fH+JVcRjmbmoyPwQONRGo5LU04yoqRTbsB7Cw2VWEL9da+hgSHj9fvuOTsRh325ZpxZ
+	66COS90FXU1r1V22vDHo7CMmeePaFfUG2E5w2LvIA3MiyRlcqHT+NklL3qBj6reuiPe8+4cUT0d
+	xUrM/QT3Cg2v5mJP5f6ZGZMiv+PJ/bng==
+X-Google-Smtp-Source: AGHT+IEkxef+2RXJnVv1MDtMP+PBPYplJlT6jEtLbLvDmINhz/OHYKIorQbjuGU7uu0HwrhH5KQd7w==
+X-Received: by 2002:a05:600c:1381:b0:475:dd9d:297b with SMTP id 5b1f17b1804b1-4776bcd2cd2mr7382915e9.33.1762473439445;
+        Thu, 06 Nov 2025 15:57:19 -0800 (PST)
+Received: from Ansuel-XPS24 (93-34-90-37.ip49.fastwebnet.it. [93.34.90.37])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4775cd45466sm129470525e9.0.2025.11.06.15.57.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Nov 2025 15:57:18 -0800 (PST)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Linus Walleij <linus.walleij@linaro.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-gpio@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: Christian Marangi <ansuelsmth@gmail.com>
+Subject: [PATCH v2 0/5] pinctrl: airoha: add Airoha AN7583 support
+Date: Fri,  7 Nov 2025 00:57:03 +0100
+Message-ID: <20251106235713.1794668-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-a6db3
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251106_155721_742262_8C164976 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,58 +108,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 27 Oct 2025 12:05:18 +0100, AngeloGioacchino Del Regno wrote:
-> Changes in v11:
->  - Removed unnecessary #address-cells in all mt6316 bindings
-> 
-> Changes in v10:
->  - Added "struct" prefix to structs kerneldoc
->  - Renamed struct mtk_spmi_pmic_pdata to mtk_spmi_pmic_variant
->  - Added "REG_" to MT6363/73 mfd register definitions to disambiguate
->  - Expanded MTK_SPMI_PMIC_IRQ_GROUP macro parameter names as suggested
->  - Some rewording of comments as suggested, addition of more comments
->  - Refactored IRQ domain handling due to deprecation of function
->    irq_domain_add_tree() to use the new irq_domain_create_tree()
->  - Fixed to use generic_handle_domain_irq_safe() to avoid races
->  - Added support for two interrupt cells in translation
->  - Removed .irq_lock() and .irq_unlock() in favor of lockdep classes
->  - Added support for handling PMICs without IRQ Group register for
->    upcoming MT6685 implementation
-> 
-> [...]
+This small series introduce support for Airoha AN7583 pinctrl
+support.
 
-Applied to
+Most of the changes are generalization and cleanup of the Airoha
+pinctrl driver. These are needed as all the array in the inner
+function were hardcoded to EN7581 and didn't reference stuff
+from the priv groups.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+Everything is changed to match_data and priv struct so
+adding AN7583 is just a matter of adding the structs.
 
-Thanks!
+Also the schema is generalized where needed to address
+for the small difference between AN7583 and EN7581.
 
-[1/9] dt-bindings: regulator: Document MediaTek MT6316 PMIC Regulators
-      commit: 40a7c5db9020079547358f486ef12d57c1a7aa1f
-[2/9] regulator: Add support for MediaTek MT6316 SPMI PMIC Regulators
-      commit: a87a7b3530728fb7477a74c27fc27e060bf5684f
-[3/9] dt-bindings: regulator: Document MediaTek MT6363 PMIC Regulators
-      commit: d0f9f5b7a3356b43f78b37b9cc3671ecc7469356
-[4/9] regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators
-      commit: 3c36965df80801344850388592e95033eceea05b
+Christian Marangi (5):
+  pinctrl: airoha: generalize pins/group/function/confs handling
+  pinctrl: airoha: convert PHY LED GPIO to macro
+  pinctrl: airoha: convert PWM GPIO to macro
+  dt-bindings: pinctrl: airoha: Document AN7583 Pin Controller
+  pinctrl: airoha: add support for Airoha AN7583 PINs
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+ .../pinctrl/airoha,an7583-pinctrl.yaml        |  402 +++
+ drivers/pinctrl/mediatek/pinctrl-airoha.c     | 2523 +++++++++--------
+ 2 files changed, 1706 insertions(+), 1219 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/airoha,an7583-pinctrl.yaml
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+-- 
+2.51.0
 
 
