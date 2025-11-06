@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE8B9CCFA03
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Nov 2025 06:13:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 693F4CCF9F8
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Nov 2025 06:13:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NfzLEn4Dx7zjpsyLCO2muoknZUAztMUcfKYh7NswnrQ=; b=4npbrvuic2wh9Th5eunZ8JN+vD
-	VLMaLNHuPD7M1t0og5C5DUq4A+8RMoHWP2bC5YAPKKpqMCFCLce89ESqeUvUx+WtUzi9sfMgqp9Fb
-	l6Zm4QpmgyV4cq9Bhhx8Ofzc+64b7oPQwtWynHsLeRb0G6vy8gDuiAM7XfUO4IQ6kIDi4sRtSWleL
-	jX7IaARi8BdCmXEcjBoFzv/baVlfUmCTwgnmINBAXcZiRj5WnG3QDUWRzqIsXtbv6zdOFlo0cwWFC
-	XVmMB5Ev+cc27BSVZy4FkzRTuu2I3+gIcnKsENonmKa2GBkbzmD5JcDss0zBqm5FkdxDIk3eRNKV1
-	whuQ4Afg==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1FlglX0bbXIYpQcQtkhfvvpAHMyjKlzXKhHZ5O704SA=; b=Ttxr1aa7JwA2PX4qmsagpiQatX
+	Xii88p81oMMvxb0uTylw+d5Flhbum7rVh3YkNg6jsOglh32vWtMFE4zY8yS4aQAMoElmgZ+3WgFok
+	weGC35vu3NyX91pftZFRlOkKCjLv0W85x7bYHnVyhBMmJd7K18SOo65Xzr1ZmT6bRoIKXa8dWfu4B
+	JTKB4+30tbktfEPbSQxdAHmArpIImghAgzj3SSYiuiRna2eHUO2ThcjySaFT17+6HPWAun3nIzfln
+	qeJOLYD5mw1c0nYHNW654oxvqQNSPk7dmmnYpmJ8mb2jkaUYKhWLrSOOrGFORUltP7sd0gTYIh9iN
+	pgmA+Akw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGtFb-0000000Ev4d-2jBX;
-	Thu, 06 Nov 2025 06:13:39 +0000
+	id 1vGtFc-0000000Ev65-1ZhJ;
+	Thu, 06 Nov 2025 06:13:40 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGtFX-0000000Ev1X-3Pky;
+	id 1vGtFY-0000000Ev22-2ZLf;
 	Thu, 06 Nov 2025 06:13:37 +0000
-X-UUID: b6b32f3cbad711f09f706fa2197c6ceb-20251105
+X-UUID: b8f8c9dcbad711f09f706fa2197c6ceb-20251105
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=NfzLEn4Dx7zjpsyLCO2muoknZUAztMUcfKYh7NswnrQ=;
-	b=bFjxqH2yIzqEB/WhhiL2GYO7tminlBqX5HJn01QRPWBSykCJAPh0kvrXg8g4Cq1tpCStRuOE77s1z8LrFukVmcdQXuFyJuv3VTdXCTyOtf5uGx6DtStyv+goAj9oSZo+BmJ8xVsZNyZHSFtRgTm1ORri2c7YFcBT+K4WbV1TcTE=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1FlglX0bbXIYpQcQtkhfvvpAHMyjKlzXKhHZ5O704SA=;
+	b=fpQKjlNnr6UbfRkCsY6f+kaGlkwh7+axR+E+JpUni624NzJvf1Kf24QEIucn9EFc/aQIPUYspSUtWBX4UsKz7p5N55DEDlkqJ7UsmrDG7PcaM2nDGEo6gTy/h5EHxL1JeO58ijzvywUPduxG3jocAJY57zwDYHBR3L0FNxNo7e8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:7d0c6218-9622-46f0-b847-89de78ffce3a,IP:0,UR
-	L:0,TC:0,Content:0,EDM:-20,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-20
-X-CID-META: VersionHash:a9d874c,CLOUDID:111331e0-3890-4bb9-a90e-2a6a4ecf6c66,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:1,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.6,REQID:8ac4c279-b0f0-46d5-9ab6-e3a635fc0ff5,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:1d6f196b-d4bd-4ab9-8221-0049857cc502,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
+	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: b6b32f3cbad711f09f706fa2197c6ceb-20251105
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+X-UUID: b8f8c9dcbad711f09f706fa2197c6ceb-20251105
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 903364304; Wed, 05 Nov 2025 23:13:29 -0700
+	with ESMTP id 1365303055; Wed, 05 Nov 2025 23:13:33 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Thu, 6 Nov 2025 14:13:26 +0800
+ 15.2.1748.26; Thu, 6 Nov 2025 14:13:30 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Thu, 6 Nov 2025 14:13:25 +0800
+ 15.2.1748.26 via Frontend Transport; Thu, 6 Nov 2025 14:13:28 +0800
 From: Kyrie Wu <kyrie.wu@mediatek.com>
 To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
 	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, "Mauro
@@ -70,17 +70,19 @@ To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
 	Yilong Zhou <yilong.zhou@mediatek.com>
 CC: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
 	<andrzejtp2010@gmail.com>
-Subject: [PATCH v5 0/8] Enable video decoder & encoder for MT8189
-Date: Thu, 6 Nov 2025 14:13:15 +0800
-Message-ID: <20251106061323.2193-1-kyrie.wu@mediatek.com>
+Subject: [PATCH v5 3/8] media: mediatek: vcodec: add profile and level supporting for MT8189
+Date: Thu, 6 Nov 2025 14:13:18 +0800
+Message-ID: <20251106061323.2193-4-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20251106061323.2193-1-kyrie.wu@mediatek.com>
+References: <20251106061323.2193-1-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_221335_853118_BFDD11C0 
-X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-CacheID: sfid-20251105_221336_678209_144F45C8 
+X-CRM114-Status: UNSURE (   9.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,86 +98,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series have the follow changing:
-Firstly add mt8189 video decoder compatible, profile and level to support
-MT8189 kernel driver.
-Secondly fix some bugs, including vp 4K profile2 and media device node
-number bug.
-Lastly, add mt8189 video encoder compatible.
+add profile and level supporting for H264 and vp9 of MT8189
 
-This series has been tested with MT8189 tast test.
-Encoding and decoding worked for this chip.
-
-Patches 1-2 Add decoder compatible.
-Patches 3 Add profile and level supporting.
-Patches 4 Add core-only VP9 decoding supporting.
-Patches 5-6 fix some bugs.
-Patches 7-8 Adds encoder compatible.
-
+Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-H264 test results:
-./fluster.py run -d GStreamer-H.264-V4L2SL-Gst1.0 -j2 -t 90
-    JVT-AVC_V1	Ran 96/135 tests successfully
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c        | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-VP9 test results:
-./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0 -j2 -t 90
-	VP9-TEST-VECTORS	Ran 276/305 tests successfully
-
-v4l2-compliance test results:
-Compliance test for mtk-vcodec-enc device /dev/video2:
-Total for mtk-vcodec-enc device /dev/video2: 47, Succeeded: 46, Failed: 1, Warnings: 0
-Compliance test for mtk-vcodec-dec device /dev/video3:
-Total for mtk-vcodec-dec device /dev/video3: 48, Succeeded: 48, Failed: 0, Warnings: 0
-
-scp upstream link:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20250811015922.32680-1-huayu.zong@mediatek.com/
-dtsi upstream link:
-https://lore.kernel.org/linux-mediatek/20251030134541.784011-12-jh.hsu@mediatek.com/T/#m847e35de0a5b18fac0ca0624a8559d84964ad5c7
-
-Changes compared with v4:
---update H264 & vp9 fluster test results
---update vp9 single core decoder prob size setting and commit messages
-
-Changes compared with v3:
---add reviewer to commit messages
---Rebased on top of the latest media tree
-
-Changes compared with v2:
---add H264 fluster test results
---reorder compatible string for dt-bindings
-
-Changes compared with v1:
---add v4l2-compliance test results
---add scp upstream link
---add HW difference discriptions for dt-bindings commit messages
-
-This series patches dependent on:
-[1]
-https://patchwork.linuxtv.org/project/linux-media/cover/20250510075357.11761-1-yunfei.dong@mediatek.com/
-[2]
-https://patchwork.linuxtv.org/project/linux-media/cover/20250814085642.17343-1-kyrie.wu@mediatek.com/
-
-Kyrie Wu (8):
-  dt-bindings: media: mediatek: decoder: Add MT8189
-    mediatek,vcodec-decoder
-  media: mediatek: vcodec: add decoder compatible to support MT8189
-  media: mediatek: vcodec: add profile and level supporting for MT8189
-  media: mediatek: vcodec: Add single core VP9 decoding support for
-    MT8189
-  media: mediatek: vcodec: fix vp9 4096x2176 fail for profile2
-  media: mediatek: vcodec: fix media device node number
-  dt-bindings: media: Add MT8189 mediatek,vcodec-encoder
-  media: mediatek: encoder: Add MT8189 encoder compatible data
-
- .../media/mediatek,vcodec-encoder.yaml        |  2 +
- .../media/mediatek,vcodec-subdev-decoder.yaml |  5 +-
- .../vcodec/decoder/mtk_vcodec_dec_drv.c       |  9 +++-
- .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  1 +
- .../vcodec/decoder/mtk_vcodec_dec_stateless.c |  4 ++
- .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 48 ++++++++++++++-----
- .../vcodec/encoder/mtk_vcodec_enc_drv.c       | 14 ++++++
- 7 files changed, 68 insertions(+), 15 deletions(-)
-
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+index c1cef78471a9..0a9bdc5316f9 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+@@ -552,6 +552,7 @@ static void mtk_vcodec_dec_fill_h264_level(struct v4l2_ctrl_config *cfg,
+ 	switch (ctx->dev->chip_name) {
+ 	case MTK_VDEC_MT8192:
+ 	case MTK_VDEC_MT8188:
++	case MTK_VDEC_MT8189:
+ 		cfg->max = V4L2_MPEG_VIDEO_H264_LEVEL_5_2;
+ 		break;
+ 	case MTK_VDEC_MT8195:
+@@ -573,6 +574,7 @@ static void mtk_vcodec_dec_fill_h264_profile(struct v4l2_ctrl_config *cfg,
+ {
+ 	switch (ctx->dev->chip_name) {
+ 	case MTK_VDEC_MT8188:
++	case MTK_VDEC_MT8189:
+ 	case MTK_VDEC_MT8195:
+ 	case MTK_VDEC_MT8196:
+ 		cfg->max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_10;
+@@ -623,6 +625,7 @@ static void mtk_vcodec_dec_fill_vp9_level(struct v4l2_ctrl_config *cfg,
+ 	case MTK_VDEC_MT8188:
+ 		cfg->max = V4L2_MPEG_VIDEO_VP9_LEVEL_5_1;
+ 		break;
++	case MTK_VDEC_MT8189:
+ 	case MTK_VDEC_MT8195:
+ 	case MTK_VDEC_MT8196:
+ 		cfg->max = V4L2_MPEG_VIDEO_VP9_LEVEL_5_2;
+@@ -641,6 +644,7 @@ static void mtk_vcodec_dec_fill_vp9_profile(struct v4l2_ctrl_config *cfg,
+ {
+ 	switch (ctx->dev->chip_name) {
+ 	case MTK_VDEC_MT8188:
++	case MTK_VDEC_MT8189:
+ 	case MTK_VDEC_MT8195:
+ 	case MTK_VDEC_MT8196:
+ 		cfg->max = V4L2_MPEG_VIDEO_VP9_PROFILE_2;
 -- 
 2.45.2
 
