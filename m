@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55D8ACCFA03
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Nov 2025 12:44:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CF8ECCFA05
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Nov 2025 12:44:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FWMaeNbbE38nLcmiUBrVKQp1pQS01HGcwjL1YQ2YAHw=; b=X6xN8iJCHXIvVgcVbqLKU6Z0PF
-	hgcjw0PnA9xb6ue1aO3jw8qKIH2LjEI62l/nHdsY6NTzlE9h1CYpGjAGoKG715aXVWYwnT65VGHfq
-	7+v3YJMOIGSOwY+Sw9WiSTHB2dSUSVgqdP/Wd9XryuIjMxiiYG5R8Cz/bIKeb0mPHMBrY71BrV4Xw
-	zfNY4gdEnhvoxoIRU+64PIL9DQsbbVWnXqoI0QtdGi/Vk1Xlgi3HsoROt720fJ08xeQgYH2ZDDIpy
-	yOE2E+Yu3iDJztjSLsdoIklrDv8BXuRtTFGGqCSdqBOVspf4+yYaWHrwpeS/9qp7pr7kUraLW70F2
-	bf9L6XAQ==;
+	bh=mLiD0RUH8avhai/+nOpfX3FHj+VIOyhNPMQSFNVdBCg=; b=f7CtFkHQK8HMGCuOngqI9wOVRh
+	zurs7osswGFD+mjl8VNA9TNqdhTVtNjnF79uda1CElsMYS4rvzUOngYj8sXeHlMiMcoBeAmkaHhhj
+	mMup888UtKeP7koPqY76SFT2vkeaTJoPOYaWVR7Mh1VZskpg3QNJK2Ay5vHEv7BFGWtdN357HMT4+
+	gg2FEToUVULe15ACCnlMGjJ9FYMFBjNWAePcdqYezOy5NZr/BxR3lYSJh2LqXJwX9vqg4AkxgG5E/
+	5uKPk7kqJxOS49PT+mKB6ZNQs8HI1nBph4D5v3YVSrGaAkqHaFxY+f3mKHwfgM5sBxeq6DK2UneQ8
+	MlH8JdOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGzLR-0000000FTt0-3Net;
-	Thu, 06 Nov 2025 12:44:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vGzLS-0000000FTui-3X5w;
+	Thu, 06 Nov 2025 12:44:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGzLA-0000000FTQb-2MvW;
-	Thu, 06 Nov 2025 12:43:52 +0000
-X-UUID: 38c52116bb0e11f0a52f393f94899d25-20251106
+	id 1vGzLB-0000000FTTR-1Sq6;
+	Thu, 06 Nov 2025 12:43:53 +0000
+X-UUID: 38f99928bb0e11f09f706fa2197c6ceb-20251106
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FWMaeNbbE38nLcmiUBrVKQp1pQS01HGcwjL1YQ2YAHw=;
-	b=e8fCVdzRWUi2Lq1ZIkw5VtpjFgOhmaIgmhXm4pKE6cEx9E8Kd7UMdLL7LwMyUJaZF7To9DZBhLSfQzIRg4zctIcr9SNBvRB7gBPImahZH7iGwZp9xNSB5piGEOXrcZiJHqMBD6VbYJLOVNL90cfPF+G2W48rQMK/mAv4v5sQRXs=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=mLiD0RUH8avhai/+nOpfX3FHj+VIOyhNPMQSFNVdBCg=;
+	b=OH1qyoRkQLtDh3JEe+QcHOK9Tg+W+X4cVsbWmdLHAT3V9osDtNygjYtj8hQl1hk80MPr6SYT9Scym6RIQsE09mxNmiEFp89D/OIu+o4ZJuuWKMjnxi/AF3vxQt3nrAofyORkwXsUMAwGl/Fah6udbHdJiaX2k8DmLKrMF9UsuA0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:bf92ed84-0843-46a6-a3dd-4ccae8106006,IP:0,UR
-	L:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-25
-X-CID-META: VersionHash:a9d874c,CLOUDID:e213fc7c-f9d7-466d-a1f7-15b5fcad2ce6,B
+X-CID-O-INFO: VERSION:1.3.6,REQID:85940377-0478-4696-8e50-ef87210a464d,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:-50
+X-CID-META: VersionHash:a9d874c,CLOUDID:bc351d6b-d4bd-4ab9-8221-0049857cc502,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:2,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI
 	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,18 +42,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 38c52116bb0e11f0a52f393f94899d25-20251106
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+X-UUID: 38f99928bb0e11f09f706fa2197c6ceb-20251106
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
 	(envelope-from <irving-ch.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1928879935; Thu, 06 Nov 2025 05:43:40 -0700
+	with ESMTP id 755057505; Thu, 06 Nov 2025 05:43:40 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Thu, 6 Nov 2025 20:43:37 +0800
+ 15.2.1748.26; Thu, 6 Nov 2025 20:43:38 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Thu, 6 Nov 2025 20:43:37 +0800
+ 15.2.1748.26 via Frontend Transport; Thu, 6 Nov 2025 20:43:38 +0800
 From: irving.ch.lin <irving-ch.lin@mediatek.com>
 To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
 	<sboyd@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
@@ -68,9 +68,9 @@ CC: Qiqi Wang <qiqi.wang@mediatek.com>, <linux-clk@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
 	<jh.hsu@mediatek.com>, <irving-ch.lin@mediatek.com>
-Subject: [PATCH v3 07/21] clk: mediatek: Add MT8189 vlpcfg clock support
-Date: Thu, 6 Nov 2025 20:41:52 +0800
-Message-ID: <20251106124330.1145600-8-irving-ch.lin@mediatek.com>
+Subject: [PATCH v3 10/21] clk: mediatek: Add MT8189 dbgao clock support
+Date: Thu, 6 Nov 2025 20:41:55 +0800
+Message-ID: <20251106124330.1145600-11-irving-ch.lin@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20251106124330.1145600-1-irving-ch.lin@mediatek.com>
 References: <20251106124330.1145600-1-irving-ch.lin@mediatek.com>
@@ -78,8 +78,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251106_044348_639111_F673189C 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20251106_044349_409517_CD081841 
+X-CRM114-Status: GOOD (  19.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,35 +96,56 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Irving-CH Lin <irving-ch.lin@mediatek.com>
 
-Add support for the MT8189 vlpcfg clock controller,
-which provides clock gate control for vlp domain IPs.
+Add support for the MT8189 dbgao clock controller,
+which provides clock gate control for debug-system.
 
 Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
 ---
- drivers/clk/mediatek/Makefile            |   2 +-
- drivers/clk/mediatek/clk-mt8189-vlpcfg.c | 121 +++++++++++++++++++++++
- 2 files changed, 122 insertions(+), 1 deletion(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8189-vlpcfg.c
+ drivers/clk/mediatek/Kconfig            |  10 +++
+ drivers/clk/mediatek/Makefile           |   1 +
+ drivers/clk/mediatek/clk-mt8189-dbgao.c | 115 ++++++++++++++++++++++++
+ 3 files changed, 126 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt8189-dbgao.c
 
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index 82a26d952bff..c707b224dccd 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -850,6 +850,16 @@ config COMMON_CLK_MT8189_CAM
+ 	  that relies on this SoC and you want to control its clocks, say Y or M
+ 	  to include this driver in your kernel build.
+ 
++config COMMON_CLK_MT8189_DBGAO
++	tristate "Clock driver for MediaTek MT8189 debug ao"
++	depends on COMMON_CLK_MT8189
++	default COMMON_CLK_MT8189
++	help
++	  Enable this to support the clock management for the debug function
++	  on MediaTek MT8189 SoCs. This includes enabling and disabling
++	  vcore debug system clocks. If you want to control its clocks, say Y or M
++	  to include this driver in your kernel build.
++
+ config COMMON_CLK_MT8192
+ 	tristate "Clock driver for MediaTek MT8192"
+ 	depends on ARM64 || COMPILE_TEST
 diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 3b25df9e7b50..d9279b237b7b 100644
+index 95a8f4ae05ee..eabe2cab4b8d 100644
 --- a/drivers/clk/mediatek/Makefile
 +++ b/drivers/clk/mediatek/Makefile
-@@ -124,7 +124,7 @@ obj-$(CONFIG_COMMON_CLK_MT8188_VENCSYS) += clk-mt8188-venc.o
- obj-$(CONFIG_COMMON_CLK_MT8188_VPPSYS) += clk-mt8188-vpp0.o clk-mt8188-vpp1.o
- obj-$(CONFIG_COMMON_CLK_MT8188_WPESYS) += clk-mt8188-wpe.o
- obj-$(CONFIG_COMMON_CLK_MT8189) += clk-mt8189-apmixedsys.o clk-mt8189-topckgen.o \
--				   clk-mt8189-vlpckgen.o
-+				   clk-mt8189-vlpckgen.o clk-mt8189-vlpcfg.o
+@@ -127,6 +127,7 @@ obj-$(CONFIG_COMMON_CLK_MT8189) += clk-mt8189-apmixedsys.o clk-mt8189-topckgen.o
+ 				   clk-mt8189-vlpckgen.o clk-mt8189-vlpcfg.o
+ obj-$(CONFIG_COMMON_CLK_MT8189_BUS) += clk-mt8189-bus.o
+ obj-$(CONFIG_COMMON_CLK_MT8189_CAM) += clk-mt8189-cam.o
++obj-$(CONFIG_COMMON_CLK_MT8189_DBGAO) += clk-mt8189-dbgao.o
  obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192-apmixedsys.o clk-mt8192.o
  obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
  obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-diff --git a/drivers/clk/mediatek/clk-mt8189-vlpcfg.c b/drivers/clk/mediatek/clk-mt8189-vlpcfg.c
+diff --git a/drivers/clk/mediatek/clk-mt8189-dbgao.c b/drivers/clk/mediatek/clk-mt8189-dbgao.c
 new file mode 100644
-index 000000000000..0508237a2b41
+index 000000000000..d760e2ea801a
 --- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8189-vlpcfg.c
-@@ -0,0 +1,121 @@
++++ b/drivers/clk/mediatek/clk-mt8189-dbgao.c
+@@ -0,0 +1,115 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
 + * Copyright (c) 2025 MediaTek Inc.
@@ -141,110 +162,104 @@ index 000000000000..0508237a2b41
 +
 +#include <dt-bindings/clock/mediatek,mt8189-clk.h>
 +
-+static const struct mtk_gate_regs vlpcfg_ao_reg_cg_regs = {
-+	.set_ofs = 0x0,
-+	.clr_ofs = 0x0,
-+	.sta_ofs = 0x0,
++static const struct mtk_gate_regs dbgao_cg_regs = {
++	.set_ofs = 0x70,
++	.clr_ofs = 0x70,
++	.sta_ofs = 0x70,
 +};
 +
-+#define GATE_VLPCFG_AO_REG(_id, _name, _parent, _shift) {	\
++#define GATE_DBGAO(_id, _name, _parent, _shift) {	\
 +		.id = _id,				\
 +		.name = _name,				\
 +		.parent_name = _parent,			\
-+		.regs = &vlpcfg_ao_reg_cg_regs,		\
++		.regs = &dbgao_cg_regs,			\
 +		.shift = _shift,			\
-+		.ops = &mtk_clk_gate_ops_no_setclr,	\
-+	}
-+
-+static const struct mtk_gate vlpcfg_ao_reg_clks[] = {
-+	GATE_VLPCFG_AO_REG(CLK_VLPCFG_AO_APEINT_RX, "vlpcfg_ao_apeint_rx", "clk26m", 8),
-+};
-+
-+static const struct mtk_clk_desc vlpcfg_ao_reg_mcd = {
-+	.clks = vlpcfg_ao_reg_clks,
-+	.num_clks = ARRAY_SIZE(vlpcfg_ao_reg_clks),
-+};
-+
-+static const struct mtk_gate_regs vlpcfg_reg_cg_regs = {
-+	.set_ofs = 0x4,
-+	.clr_ofs = 0x4,
-+	.sta_ofs = 0x4,
-+};
-+
-+#define GATE_VLPCFG_REG_FLAGS(_id, _name, _parent, _shift, _flags) {	\
-+		.id = _id,				\
-+		.name = _name,				\
-+		.parent_name = _parent,			\
-+		.regs = &vlpcfg_reg_cg_regs,		\
-+		.shift = _shift,			\
-+		.flags = _flags,			\
 +		.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
 +	}
 +
-+#define GATE_VLPCFG_REG(_id, _name, _parent, _shift)		\
-+	GATE_VLPCFG_REG_FLAGS(_id, _name, _parent, _shift, 0)
-+
-+static const struct mtk_gate vlpcfg_reg_clks[] = {
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_SCP, "vlpcfg_scp",
-+			      "vlp_scp_sel", 28, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_RG_R_APXGPT_26M, "vlpcfg_r_apxgpt_26m",
-+			      "clk26m", 24, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_DPMSRCK_TEST, "vlpcfg_dpmsrck_test",
-+			      "clk26m", 23, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_RG_DPMSRRTC_TEST, "vlpcfg_dpmsrrtc_test",
-+			      "clk32k", 22, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_DPMSRULP_TEST, "vlpcfg_dpmsrulp_test",
-+			      "osc_d10", 21, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_SPMI_P_MST, "vlpcfg_spmi_p",
-+			      "vlp_spmi_p_sel", 20, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_SPMI_P_MST_32K, "vlpcfg_spmi_p_32k",
-+			      "clk32k", 18, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_PMIF_SPMI_P_SYS, "vlpcfg_pmif_spmi_p_sys",
-+			      "vlp_pwrap_ulposc_sel", 13, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_PMIF_SPMI_P_TMR, "vlpcfg_pmif_spmi_p_tmr",
-+			      "vlp_pwrap_ulposc_sel", 12, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG(CLK_VLPCFG_REG_PMIF_SPMI_M_SYS, "vlpcfg_pmif_spmi_m_sys",
-+			"vlp_pwrap_ulposc_sel", 11),
-+	GATE_VLPCFG_REG(CLK_VLPCFG_REG_PMIF_SPMI_M_TMR, "vlpcfg_pmif_spmi_m_tmr",
-+			"vlp_pwrap_ulposc_sel", 10),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_DVFSRC, "vlpcfg_dvfsrc",
-+			      "vlp_dvfsrc_sel", 9, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_PWM_VLP, "vlpcfg_pwm_vlp",
-+			      "vlp_pwm_vlp_sel", 8, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_SRCK, "vlpcfg_srck",
-+			      "vlp_srck_sel", 7, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_SSPM_F26M, "vlpcfg_sspm_f26m",
-+			      "vlp_sspm_f26m_sel", 4, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_SSPM_F32K, "vlpcfg_sspm_f32k",
-+			      "clk32k", 3, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_SSPM_ULPOSC, "vlpcfg_sspm_ulposc",
-+			      "vlp_sspm_ulposc_sel", 2, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_VLP_32K_COM, "vlpcfg_vlp_32k_com",
-+			      "clk32k", 1, CLK_IS_CRITICAL),
-+	GATE_VLPCFG_REG_FLAGS(CLK_VLPCFG_REG_VLP_26M_COM, "vlpcfg_vlp_26m_com",
-+			      "clk26m", 0, CLK_IS_CRITICAL),
++static const struct mtk_gate dbgao_clks[] = {
++	GATE_DBGAO(CLK_DBGAO_ATB_EN, "dbgao_atb_en", "atb_sel", 0),
 +};
 +
-+static const struct mtk_clk_desc vlpcfg_reg_mcd = {
-+	.clks = vlpcfg_reg_clks,
-+	.num_clks = ARRAY_SIZE(vlpcfg_reg_clks),
++static const struct mtk_clk_desc dbgao_mcd = {
++	.clks = dbgao_clks,
++	.num_clks = ARRAY_SIZE(dbgao_clks),
 +};
 +
-+static const struct of_device_id of_match_clk_mt8189_vlpcfg[] = {
-+	{ .compatible = "mediatek,mt8189-vlp-ao", .data = &vlpcfg_ao_reg_mcd },
-+	{ .compatible = "mediatek,mt8189-vlpcfg-ao", .data = &vlpcfg_reg_mcd },
++static const struct mtk_gate_regs dem0_cg_regs = {
++	.set_ofs = 0x2c,
++	.clr_ofs = 0x2c,
++	.sta_ofs = 0x2c,
++};
++
++static const struct mtk_gate_regs dem1_cg_regs = {
++	.set_ofs = 0x30,
++	.clr_ofs = 0x30,
++	.sta_ofs = 0x30,
++};
++
++static const struct mtk_gate_regs dem2_cg_regs = {
++	.set_ofs = 0x70,
++	.clr_ofs = 0x70,
++	.sta_ofs = 0x70,
++};
++
++#define GATE_DEM0(_id, _name, _parent, _shift) {	\
++		.id = _id,				\
++		.name = _name,				\
++		.parent_name = _parent,			\
++		.regs = &dem0_cg_regs,			\
++		.shift = _shift,			\
++		.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
++	}
++
++#define GATE_DEM1(_id, _name, _parent, _shift) {	\
++		.id = _id,				\
++		.name = _name,				\
++		.parent_name = _parent,			\
++		.regs = &dem1_cg_regs,			\
++		.shift = _shift,			\
++		.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
++	}
++
++#define GATE_DEM2(_id, _name, _parent, _shift) {	\
++		.id = _id,				\
++		.name = _name,				\
++		.parent_name = _parent,			\
++		.regs = &dem2_cg_regs,			\
++		.shift = _shift,			\
++		.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
++	}
++
++static const struct mtk_gate dem_clks[] = {
++	/* DEM0 */
++	GATE_DEM0(CLK_DEM_BUSCLK_EN, "dem_busclk_en", "axi_sel", 0),
++	/* DEM1 */
++	GATE_DEM1(CLK_DEM_SYSCLK_EN, "dem_sysclk_en", "axi_sel", 0),
++	/* DEM2 */
++	GATE_DEM2(CLK_DEM_ATB_EN, "dem_atb_en", "atb_sel", 0),
++};
++
++static const struct mtk_clk_desc dem_mcd = {
++	.clks = dem_clks,
++	.num_clks = ARRAY_SIZE(dem_clks),
++};
++
++static const struct of_device_id of_match_clk_mt8189_dbgao[] = {
++	{ .compatible = "mediatek,mt8189-dbg-ao", .data = &dbgao_mcd },
++	{ .compatible = "mediatek,mt8189-dem", .data = &dem_mcd },
 +	{ /* sentinel */ }
 +};
 +
-+static struct platform_driver clk_mt8189_vlpcfg_drv = {
++static struct platform_driver clk_mt8189_dbgao_drv = {
 +	.probe = mtk_clk_simple_probe,
 +	.driver = {
-+		.name = "clk-mt8189-vlpcfg",
-+		.of_match_table = of_match_clk_mt8189_vlpcfg,
++		.name = "clk-mt8189-dbgao",
++		.of_match_table = of_match_clk_mt8189_dbgao,
 +	},
 +};
 +
-+module_platform_driver(clk_mt8189_vlpcfg_drv);
++module_platform_driver(clk_mt8189_dbgao_drv);
 +MODULE_LICENSE("GPL");
 -- 
 2.45.2
