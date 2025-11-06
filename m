@@ -4,72 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFEBECCFA0D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Nov 2025 23:46:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 188AACCFA0D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Nov 2025 00:28:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D0kokU5//KWLv46Qc8KmXBDCAx+wArTKEtJNhKO1Ny8=; b=Gaf4gpa1XeWM2xtfoK/9s/hEps
-	1voogHx1nJIQ4MvA7nCSiEwNTG2QdOpvMRAmCb/AdEQmVhU2JMidbgpfqhLTngsMUyXONHC/0+gDn
-	NWqQy0TS6bet1jAlXYf2hYMd3E/idfg4ABZMpMK0Xv+3STOsTZSKBzNa3Twxbt0vYhiqNEzoC3GqI
-	n1UZHsKKM/UBwrG8oGyAezQvPwduC+bFiPECEuvyKy0OMPC3JDzwahQ06X6ReQFv5uu+Br+mqkNYp
-	C+LQI5pjjUgbQZZKyMXfUPiMypHWUQ3XLGFlek5OD90H6LLiwdVR2JpVMIu5oe75lu6htQRRZfr1j
-	tSDLaKzg==;
+	bh=g2AxNOWeNfgkS7Q/q0FXt4wBjC/2CDKjdDUbU/bPedI=; b=BmEnuOwwW/6vtMBIB1XztmlKPP
+	wJn6a5GaoR1ImmlLJ5qg9GdQi19eeBRrmcop4aj+uxRAXJtUc8z0OkAXin+9ZZdRpzj6jV6Rlso/k
+	jaE9taGLzwL/oSrF/KG4cfJS1K2hgpyvJzPbqfGlCqrN9S80aVt0c9FpBjGpoNMI0kqdM5FMZafFy
+	4UrSoaQ8VqRrf2tzPLnsBURSQymyfr7OiwGuRBQ4bBmImlalAC7s46jujQGyUvfI8ymtKLbSQFKG6
+	Wf6SteizACcC7m1WAsEZaNiGAAcIjYZwihNh9TXHYRAd+JJtxX6i7PZcw+18mH0bt+lfxn6JP4R4A
+	w0Y9hVBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGnCR-0000000Eckm-14J1;
-	Wed, 05 Nov 2025 23:45:59 +0000
+	id 1vGnru-0000000EeTy-2JIi;
+	Thu, 06 Nov 2025 00:28:50 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vGnCO-0000000EckO-3aHk
-	for linux-mediatek@lists.infradead.org;
-	Wed, 05 Nov 2025 23:45:58 +0000
+	id 1vGnrr-0000000EeTI-3qng;
+	Thu, 06 Nov 2025 00:28:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 432BB40842
-	for <linux-mediatek@lists.infradead.org>; Wed,  5 Nov 2025 23:45:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 258E7C16AAE
-	for <linux-mediatek@lists.infradead.org>; Wed,  5 Nov 2025 23:45:56 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4BC5F43DC4;
+	Thu,  6 Nov 2025 00:28:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D115EC4CEF5;
+	Thu,  6 Nov 2025 00:28:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762386356;
-	bh=kmlw6NJFheSDcopMkyos4Z17yXYv5U4n7W4OWmXt4sM=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=H99/wWL4ywwfvfthpM3NszId1H2YuUeo6zvkhZOeAySAW/5NchyHwxXRqllmwqz1i
-	 cmpMNS36gxbTBAo3HiKCb0N26fMYN0atZ08VSjczy6nrxohi+obc+O3GmKqLXd2gKF
-	 dX8uCb3Is8c2q30XccOYmcLkuewxiTbWbxNa+tSHXZw4mwbqloRVNlNYrpIGNzy8yi
-	 qnIedvz019BYMe6iRxJ2uXU5W+OuwtqUze5WopHlMYgy0xhiPiypmaNCGUSFrqWt8s
-	 lgxaA3xcsFvHj+cFdGKqTdW6qk38/Lc96g56Fh3zSCORpaNY31VLUsFEuZ1xVb55OW
-	 cpkbONV1TKRsg==
-Received: by mail-pf1-f177.google.com with SMTP id d2e1a72fcca58-7a9cdf62d31so558112b3a.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 05 Nov 2025 15:45:56 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXv7wcMmaxcuXPsfM8b73/uez9ylci4at45GycBlYRWklqW7238zeIxU1Wy9C+GtCtEuSzG8R7QHVmOMB/5Xg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw2eG2gqhv3voZA0n9qlL/udMgX7B7OqGOTIPJTPoB30wl+sl8W
-	2czaxOmern1tmWgjgu0stgdFz34lS3IM7navZoq+9VQ+ckKGR64Ls1Njy+g+/E6pww3c+pfVZ2y
-	TSjfkD340MZoIKzjujrmwIEk6b9cR3Q==
-X-Google-Smtp-Source: AGHT+IE5EO4UpE8S0+YO1+WGotybDTqSJIt+1Z2T6glgMpYBqoAX7IdmXZPLPEmNGHkEgbnaXMCloII3b/yhWYPJdxU=
-X-Received: by 2002:a05:6a20:3d8e:b0:34f:28f7:ed79 with SMTP id
- adf61e73a8af0-34f83f04a23mr6525532637.19.1762386355745; Wed, 05 Nov 2025
- 15:45:55 -0800 (PST)
+	s=k20201202; t=1762388927;
+	bh=l2gVzr7ua9gwgbl7Vz7D9mJjNQJV8+w+PIZQo2MLJlM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=dfGWJ/zQYcIv6FXmMa5XHigsI6uK8RODBtIoQhgLOUqUtWAER4HVOWo57uSXVcBHg
+	 5MmsEDAkA2MZRKrlrk8ccVL7fz45uUYJ6pPExP88IjmKeVDiSDRiWMGyWUIv5F1yBb
+	 SL9Y438Jd25hEdNWz7BEie8DZmeVbwoQJ6doKrSZoDa9snu6oKU8jzY9TT0ElQg33W
+	 EzmssjwnUahwlHIsLod42JBBqPa9sjF5QJEH+J/F8xwYvSG9Y408ejYSQY9dmysohj
+	 zPXvc0Zi7XEnMCmJUXZzyKq2n2ZucHIWcbVa3AkPRkiyWL9uvfWYCfDXX4z9w242Lx
+	 fBmoRqSzzPHPw==
+Date: Wed, 5 Nov 2025 16:28:46 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next 2/2] net: airoha: Reorganize airoha_queue
+ struct
+Message-ID: <20251105162846.53acd791@kernel.org>
+In-Reply-To: <aQsCYoS-cvkUjrMv@lore-desk>
+References: <20251103-airoha-tx-linked-list-v1-0-baa07982cc30@kernel.org>
+	<20251103-airoha-tx-linked-list-v1-2-baa07982cc30@kernel.org>
+	<20251104183200.41b4b853@kernel.org>
+	<aQsCYoS-cvkUjrMv@lore-desk>
 MIME-Version: 1.0
-References: <20251105151443.3909-1-chunkuang.hu@kernel.org>
-In-Reply-To: <20251105151443.3909-1-chunkuang.hu@kernel.org>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Wed, 5 Nov 2025 23:45:43 +0000
-X-Gmail-Original-Message-ID: <CAAOTY_-=fAta1rHe=4P+vDwuG46hHJ4Fn1TR-fxT_94bw6ggLA@mail.gmail.com>
-X-Gm-Features: AWmQ_bn-Dqm0KiWoV_ruhiTNsTDA36HWqkX0RUySrxeI1IZE3ad0qjUgj-CvtTc
-Message-ID: <CAAOTY_-=fAta1rHe=4P+vDwuG46hHJ4Fn1TR-fxT_94bw6ggLA@mail.gmail.com>
-Subject: Re: [GIT PULL] mediatek drm fixes - 20251105
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Simona Vetter <simona@ffwll.ch>
-Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, 
-	"Ariel D'Alessandro" <ariel.dalessandro@collabora.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251105_154556_960407_6ED8C0C5 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20251105_162847_984411_A2582D81 
+X-CRM114-Status: GOOD (  13.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,56 +76,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Sima:
+On Wed, 5 Nov 2025 08:53:06 +0100 Lorenzo Bianconi wrote:
+> > On Mon, 03 Nov 2025 11:27:56 +0100 Lorenzo Bianconi wrote:  
+> > > Do not allocate memory for rx-only fields for hw tx queues and for tx-only
+> > > fields for hw rx queues.  
+> > 
+> > Could you share more details (pahole)
+> > Given that napi_struct is in the same struct, 20B is probably not going
+> > to make much difference?  
+> 
+> I agree the difference is not huge, I added this patch mainly for code
+> readability. If you prefer I can drop the patch, I do not have a strong
+> opinion about it. What do you think?
 
-Sorry. I don't know you have changed name.
-
-Regards,
-Chun-Kuang.
-
-Chun-Kuang Hu <chunkuang.hu@kernel.org> =E6=96=BC 2025=E5=B9=B411=E6=9C=885=
-=E6=97=A5 =E9=80=B1=E4=B8=89 =E4=B8=8B=E5=8D=883:14=E5=AF=AB=E9=81=93=EF=BC=
-=9A
->
-> Hi, Dave & Daniel:
->
-> This includes:
-> 1. Disable AFBC support on Mediatek DRM driver
-> 2. Add pm_runtime support for GCE power control
->
-> Regards,
-> Chun-Kuang.
->
-> The following changes since commit 926d002e6d7e2f1fd5c1b53cf6208153ee7d38=
-0d:
->
->   drm/mediatek: Fix device use-after-free on unbind (2025-10-28 14:56:16 =
-+0000)
->
-> are available in the Git repository at:
->
->   https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git =
-tags/mediatek-drm-fixes-20251105
->
-> for you to fetch changes up to afcfb6c8474d9e750880aaa77952cc588f859613:
->
->   drm/mediatek: Add pm_runtime support for GCE power control (2025-11-01 =
-14:14:56 +0000)
->
-> ----------------------------------------------------------------
-> Mediatek DRM Fixes - 20251105
->
-> 1. Disable AFBC support on Mediatek DRM driver
-> 2. Add pm_runtime support for GCE power control
->
-> ----------------------------------------------------------------
-> Ariel D'Alessandro (1):
->       drm/mediatek: Disable AFBC support on Mediatek DRM driver
->
-> Jason-JH Lin (1):
->       drm/mediatek: Add pm_runtime support for GCE power control
->
->  drivers/gpu/drm/mediatek/mtk_crtc.c  |  7 +++++++
->  drivers/gpu/drm/mediatek/mtk_plane.c | 24 +-----------------------
->  2 files changed, 8 insertions(+), 23 deletions(-)
+I would not do it but your call.. Perhaps staring at data structures
+in crash dumps w/ drgn made me overly cautions of unnecessary overlap.
 
