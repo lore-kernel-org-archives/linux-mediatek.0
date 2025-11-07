@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E669DCCFA18
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 14:29:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B84FCCCF9F8
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 14:29:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
 	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=85Jbq2TMyjp//ir32iMggvHsmI3Fb24s322nxxYV6Nc=; b=EtCWugqKEN2GuGMAwl2PhPP7dw
-	bqAwBD7mdsMsyHG0nL7nSCSLzVSBkQOwd70wp6iNcKKhfSZqbgd8/8n3kwiYuswDNfTzb+E/QqkLb
-	9P1Ijs4WihHIuJneAiiKvNaxdUfqU1aiNoiU7oTQuIw8/ePqKlpmY5Dp1DUON/4DxhwluGirPyP1i
-	woyKW37h6LtvY49UMps3O4hH2uBokriPo/gLzeqPN/SZ4aiV9Exv7SnzhjbZWxPk0uOc1Cws5eDnn
-	29+QdbWUgwhKhbRq1euEknfJztj/5h/i0emRt/kkY9DjUhihT0sLhXQ2LDpRNe0Hk1d5wWFNsKvxw
-	ohWiqNMA==;
+	bh=bHiUKbo/EJ0H+zKzdJO+2QHlu85wivo4qPxxyW/Gktk=; b=iA/0rGSpp167KrLSkV5XRu1+KK
+	0x2wLQiaUysOAYiXHL+tsTgeVCJDaNYJXG0GSH30uwBx40YL1nWzB+M8g+zoAlaCH7BcRwhNiYQ9K
+	4rXH5Ac3u2dt7gc5lVFM8BPsrVPTAmDG79TeEb/pxz99O0W7MBJmJRevCHLdazoO4LWPX5VttdjV8
+	QSWfi0M0HhWBvqeK9ygTmu2D0fNTFB7B1E2FYMLWCPnIOw7xzjg/MQiFV9qiQBraiZZ5+ETjL+GDi
+	2D1TTubzJAPtF8vdja1LRbegRr/DK6+Fu7FqWm0GT8D5wvB6cbYO41Ukj6gG05Ah22+puecxHttA4
+	cTy0Ve4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHNSY-0000000HUTz-0OZE;
-	Fri, 07 Nov 2025 14:29:02 +0000
+	id 1vHNSj-0000000HUfy-3ILe;
+	Fri, 07 Nov 2025 14:29:13 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHNSU-0000000HULs-1Vhl;
-	Fri, 07 Nov 2025 14:28:59 +0000
+	id 1vHNSg-0000000HUYJ-0UoO;
+	Fri, 07 Nov 2025 14:29:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
 	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=85Jbq2TMyjp//ir32iMggvHsmI3Fb24s322nxxYV6Nc=; b=endjxMR/0ZEliwKzqbqjEt/zbg
-	n1x03XPjy4JiRDb/3oFVXZn7qbqJsjLYAsgtCbOE/Ly+x2lrSsqtdodqtsgfoJvku3A7iInxUwNoF
-	y5YqbAy0jyIKL0MRkRKTK8cOhi8iJzrXks3ixAbkyWRWO1gV4WaoZsoWVjdEhEN6s+D3rMSxxeR7K
-	k7uPbW8bg5ZIw9zj7uKBjzS7nwB+pn55TTQb8tuRSt88tJLjM8tOgxxcpghSX9I7/ZCPY6XR7bKjx
-	bH57FhuEmzlM3th40BKeZMjkTiBPl3jf9wd472H1/L2ewVE1cWN7PCa1bOXS8nElQkBZg3MumyTOq
-	66OLnRtA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:56072 helo=rmk-PC.armlinux.org.uk)
+	bh=bHiUKbo/EJ0H+zKzdJO+2QHlu85wivo4qPxxyW/Gktk=; b=jUmQWNV8nGO14D/HKoZVBBBv0P
+	khGIDTO/DR4TgipSFk3KQe7jsn2VKToss/ANzual3+1WmEOOvOFzuz48yVtZ2BTUNw6OyU1eiBPbM
+	uHy4z4UdJsSjA45ErzIs+1xoqTBczY2E4AtQxQGKxBjj4a5YSAmrwwYpKJXyqZaLwVDSA6szk7/23
+	yA3wV/xc34UvVwxIGx7VP7eIMmRGFziaN7LyyK9i+RlfbzJQDRN5Ze+hQsx0nFHoTmoUwbuMgSSka
+	Mdv/uQcAcweighx62jogkWjoiOQoTybIU+yDEiuWCGmK0rQa6AYBRFhlg7FYE2GSQf7Qq3G+lN4q8
+	8/28PhtQ==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:56086 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.98.2)
 	(envelope-from <rmk@armlinux.org.uk>)
-	id 1vHNSE-000000006hF-3DEv;
-	Fri, 07 Nov 2025 14:28:43 +0000
+	id 1vHNSK-000000006hh-3oRP;
+	Fri, 07 Nov 2025 14:28:49 +0000
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.98.2)
 	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1vHNSB-0000000DkSb-3fWL;
-	Fri, 07 Nov 2025 14:28:39 +0000
+	id 1vHNSG-0000000DkSh-4BIj;
+	Fri, 07 Nov 2025 14:28:45 +0000
 In-Reply-To: <aQ4ByErmsnAPSHIL@shell.armlinux.org.uk>
 References: <aQ4ByErmsnAPSHIL@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -76,17 +76,18 @@ Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
 	netdev@vger.kernel.org,
 	Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
 	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH net-next 08/16] net: stmmac: meson8b: use phy_intf_sel
- directly
+Subject: [PATCH net-next 09/16] net: stmmac: meson8b: use
+ stmmac_get_phy_intf_sel()
 MIME-Version: 1.0
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1vHNSB-0000000DkSb-3fWL@rmk-PC.armlinux.org.uk>
-Date: Fri, 07 Nov 2025 14:28:39 +0000
+Message-Id: <E1vHNSG-0000000DkSh-4BIj@rmk-PC.armlinux.org.uk>
+Date: Fri, 07 Nov 2025 14:28:44 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251107_062858_417053_89BAB430 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20251107_062910_168193_E4396510 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,64 +102,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rearrange meson_axg_set_phy_mode() to use phy_intf_sel directly,
-converting it to the register field for meson8b_dwmac_mask_bits().
+Use stmmac_get_phy_intf_sel() to decode the PHY interface mode to the
+phy_intf_sel value, validate the result and use that to set the
+control register to select the operating mode for the DWMAC core.
 
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- .../net/ethernet/stmicro/stmmac/dwmac-meson8b.c  | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ .../ethernet/stmicro/stmmac/dwmac-meson8b.c    | 18 ++++--------------
+ 1 file changed, 4 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c
-index f485b9b858bf..865cd6166134 100644
+index 865cd6166134..e4d5c41294f4 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-meson8b.c
-@@ -26,8 +26,6 @@
- #define PRG_ETH0_RGMII_MODE		BIT(0)
- 
- #define PRG_ETH0_EXT_PHY_MODE_MASK	GENMASK(2, 0)
--#define PRG_ETH0_EXT_RGMII_MODE		PHY_INTF_SEL_RGMII
--#define PRG_ETH0_EXT_RMII_MODE		PHY_INTF_SEL_RMII
- 
- /* mux to choose between fclk_div2 (bit unset) and mpll2 (bit set) */
- #define PRG_ETH0_CLK_M250_SEL_MASK	GENMASK(4, 4)
-@@ -238,21 +236,19 @@ static int meson8b_set_phy_mode(struct meson8b_dwmac *dwmac)
- 
- static int meson_axg_set_phy_mode(struct meson8b_dwmac *dwmac)
+@@ -238,22 +238,12 @@ static int meson_axg_set_phy_mode(struct meson8b_dwmac *dwmac)
  {
-+	int phy_intf_sel;
-+
- 	switch (dwmac->phy_mode) {
- 	case PHY_INTERFACE_MODE_RGMII:
- 	case PHY_INTERFACE_MODE_RGMII_RXID:
- 	case PHY_INTERFACE_MODE_RGMII_ID:
- 	case PHY_INTERFACE_MODE_RGMII_TXID:
- 		/* enable RGMII mode */
--		meson8b_dwmac_mask_bits(dwmac, PRG_ETH0,
--					PRG_ETH0_EXT_PHY_MODE_MASK,
--					PRG_ETH0_EXT_RGMII_MODE);
-+		phy_intf_sel = PHY_INTF_SEL_RGMII;
- 		break;
- 	case PHY_INTERFACE_MODE_RMII:
- 		/* disable RGMII mode -> enables RMII mode */
--		meson8b_dwmac_mask_bits(dwmac, PRG_ETH0,
--					PRG_ETH0_EXT_PHY_MODE_MASK,
--					PRG_ETH0_EXT_RMII_MODE);
-+		phy_intf_sel = PHY_INTF_SEL_RMII;
- 		break;
- 	default:
+ 	int phy_intf_sel;
+ 
+-	switch (dwmac->phy_mode) {
+-	case PHY_INTERFACE_MODE_RGMII:
+-	case PHY_INTERFACE_MODE_RGMII_RXID:
+-	case PHY_INTERFACE_MODE_RGMII_ID:
+-	case PHY_INTERFACE_MODE_RGMII_TXID:
+-		/* enable RGMII mode */
+-		phy_intf_sel = PHY_INTF_SEL_RGMII;
+-		break;
+-	case PHY_INTERFACE_MODE_RMII:
+-		/* disable RGMII mode -> enables RMII mode */
+-		phy_intf_sel = PHY_INTF_SEL_RMII;
+-		break;
+-	default:
++	phy_intf_sel = stmmac_get_phy_intf_sel(dwmac->phy_mode);
++	if (phy_intf_sel != PHY_INTF_SEL_RGMII &&
++	    phy_intf_sel != PHY_INTF_SEL_RMII) {
  		dev_err(dwmac->dev, "fail to set phy-mode %s\n",
-@@ -260,6 +256,10 @@ static int meson_axg_set_phy_mode(struct meson8b_dwmac *dwmac)
- 		return -EINVAL;
+ 			phy_modes(dwmac->phy_mode));
+-		return -EINVAL;
++		return phy_intf_sel < 0 ? phy_intf_sel : -EINVAL;
  	}
  
-+	meson8b_dwmac_mask_bits(dwmac, PRG_ETH0, PRG_ETH0_EXT_PHY_MODE_MASK,
-+				FIELD_PREP(PRG_ETH0_EXT_PHY_MODE_MASK,
-+					   phy_intf_sel));
-+
- 	return 0;
- }
- 
+ 	meson8b_dwmac_mask_bits(dwmac, PRG_ETH0, PRG_ETH0_EXT_PHY_MODE_MASK,
 -- 
 2.47.3
 
