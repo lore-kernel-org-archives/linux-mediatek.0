@@ -4,46 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF1B7CCF9F8
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 17:24:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1774ACCFA05
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 17:49:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bl46a633tHaOF2ZnQarVYdbfa+FUQuLdrMP51j7Wxhs=; b=HQ6GLWK/o8Kej5YbJeuH+Pi4hZ
-	Swq8aWd513DXU/mzE1DJOGnqRDiEIpjSKCAhZuv0AeS6wy4wf2iloGoe6YcyR5NzzkvH0KehYe/xp
-	WzmYTEG10iR22Ah0RZW2hAMW1TaIpYYp7Y7cxjtPt5TjDykOrEaD1r5CG/0PmpXnJN7J54zMLixD7
-	KX+MGEcHvPhXtDnw2Mfzg59xV12oOOduuEeh8otchKaLlCnoksJK4sSLdbtavRsFKMyx8AmnyTmBe
-	oOnWwmKLFJanpzioMV0IW73bVNMANtQCGP7ERgXTMsE0dy6ljhqMgJD/BfGpLg6wD5dAXdrNVX1ZC
-	gtM1/8RQ==;
+	bh=cmq9pT7Misz9s4VB/B7TdNfaf15j6zAigKUGG6pS/SY=; b=e9s28+XbbiJKY8paX1qJQlmafn
+	yacOYMJHecwNmIL79TYzd5Wem3d88N4gILSzII93+uXsTlgOn1jQ6rk3Chmlwq3e2sqmekakPkuUC
+	6tgGy78WWByLAsfwBdKVr1bUZz3JfwdwAOuQdwKRiNXC2ibN3M/szFQcS9q6qQttuEoiBx/CosP/w
+	/kgTVyJ2TloT7Rs4TQqx7gn4ETSZRuxvqopVHG/7uvQlt5Lq+s5OG6ZHhI4KZqWdJQAkHfr+N5+ag
+	vp2VrsL3f4VgipakqLB9LGGVsP/jgh1LnYa/fKypJj6bTninjRjC/VUCwHNS6njqjH3gePSRtDkcq
+	InnJG15g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHQCL-00000000Fh1-1p9V;
-	Fri, 07 Nov 2025 17:24:29 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vHQaP-00000000LNX-3Yjo;
+	Fri, 07 Nov 2025 17:49:21 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHQCK-00000000FgJ-0Lm9;
-	Fri, 07 Nov 2025 17:24:28 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 35C7661921;
-	Fri,  7 Nov 2025 17:24:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5846AC4CEF5;
-	Fri,  7 Nov 2025 17:24:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762536267;
-	bh=iKWILkhz+c2dRe8cWkaxtQ3t5wgfEL4WzsX8PLBPxO8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=q5JY+NCAkOPWxby286M3HkgsYu4G15KonQq63w23Atx6Nw78U9GUMYD2eNoJqd7pu
-	 nQbCevLnAE0tJQA1si0J9mUvJ/xVu+FO+XxUDGLcAbFI72ttFugwr44zVrF0WLYUni
-	 PEdps4THg6M0PbBcvuRNVo38UFaF0msM6fcA7lCG01TrsEiBZJS/PxUPNWqfXzkSEu
-	 UFo7M5gw6+4Rj1gR83bWFSzejpfnNYBQKKJdsN+8ajDFz/6Qo9Pnk/oTw7LfhTKKHY
-	 rnlopPPCGRVlE+L20J5X/B82jECdS177dLuMUH+vhOSA8rSq5O2chyC+B2KyNhHbWh
-	 XFTTAXnzHCPXw==
-Date: Fri, 7 Nov 2025 17:24:21 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Christian Marangi <ansuelsmth@gmail.com>
+	id 1vHQaN-00000000LMV-1muE
+	for linux-mediatek@lists.infradead.org;
+	Fri, 07 Nov 2025 17:49:20 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-429c7f4f8a2so543998f8f.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Nov 2025 09:49:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1762537758; x=1763142558; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=cmq9pT7Misz9s4VB/B7TdNfaf15j6zAigKUGG6pS/SY=;
+        b=WLAJyGkFFcBAPL/5BcMcPS4vEj14BLErArahfpTfuOM3xQ1ODi0bQRuLmv7Y5CnW50
+         wjDXl3TuWC9/UDGRPi8crHnFnXksANkxXvYu7/KX4W4dINC8/hE48uQYFtM4gNTkqWf+
+         +vIsxXyWr2Uo80MGlPposh47wDw+BP1UTess8BtxgSgU4UMiQOHERPO9+gMX4viHBrVX
+         CeNpgc+wn2wf2k7Tl3BwvD1KMt5c8PrlApAyKgEsw7E+llnOGTQ/gibqNF2PaF2A87/l
+         /2FvRXs0vfltOE9eTTZtz49YLmtdlr9MBXJPO7CuSHnEjzPMghVIZuNt81in5AUGqL3E
+         OPbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762537758; x=1763142558;
+        h=in-reply-to:content-disposition:mime-version:references:subject:cc
+         :to:from:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=cmq9pT7Misz9s4VB/B7TdNfaf15j6zAigKUGG6pS/SY=;
+        b=l/K9Gme0uKvMm3y/JOseY5vog6EP4IkifRBobhC2F6M0IX+kRAkuMCEpl4csoZiaDd
+         XnZsTjacoQNyMZsqTx1xlJJ8TvTNoU3/SEs6JKBHYnltdNQO7VLjUUujpn3GJ1eNdxvq
+         6QSekzaEwugKclGsoXqp0HHQZD5eVN1zTzMRMcea9+syzaNgLBiaI6WIDoB/eurY132T
+         OdvDkxd8qPRY5CSGT6D+iozcGBwTbrPM4cNPOuTjaloQdIb1yUpG8CH5yrRhHPQ5eF6Y
+         RxtkDQyuoV9nvq+gB0E0TWBec7DNlKgu1P/w+yos5HHTjSAkWFDrmST4RjefjWXy3bOn
+         Fn6A==
+X-Forwarded-Encrypted: i=1; AJvYcCVR1+NyMvTrovzZP3keshL9takirqy7MgdHhPUtVm+r4dHZHODMIgesVnz9ciY5KUbZ5z1zztgpWzLkP+iFPQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyTZt3qQn1YowFRK9mHc6QilJU7u0T4eqwBIYBoxVwYZc3DKeWk
+	Tr4bJ/AwNP9TkhKgFnKw8hAS1qndnXl8QWJ/NDgY+FYN/GO+BVMvDriE
+X-Gm-Gg: ASbGncu/gk5TzipEVW7SzQh9+ntBLiSVlc4KAutXS+B4El7XazETv1yZ76/dh+BkL2S
+	+HFHjQkJaMQJHwvfQmftiXE1pHKjOYMpK1T2GIFozk99ks1B7g0RFNBAgz8rXD1pRseeA96JM2P
+	P8A1SSJIt2vwYBx4gP+t7Vdf2zOkWEWtVTGpykzwzgXWm0glTTSC8PGZ6Ux3MdPrSFO1MlNyUYy
+	fjYw0jz7HRYVep/50CG+wtBg7Z6wU6QYLo3bCVjyEiuNL94i+rKV7uDKUurneSpC+44a1Tt+TR5
+	49loCzjM3UbQ3+cZrwQoxoO2CcHNOy1TkeZIzbKbgnrQPuPocYl+lswVYy6Jfr5QqWNkq7Y4sPy
+	DIGjnmZkzEuqEjUXIrR+MNw4xWGBKrX3vM0v1xwWWs0yrA5hRVhCkNOqrIgXVje++2llAeJndq8
+	o8R/+1Ogv0Qh8ZrFpMXWzeuPPWQXJM
+X-Google-Smtp-Source: AGHT+IGejCZdNQWYzzYKXyulx7D4hGO+/hfj3nCbt4DKHyJm8dB3hqEzCyD5AYyGNe1UabBQmO/UtQ==
+X-Received: by 2002:a05:6000:250c:b0:429:8bb2:d0ce with SMTP id ffacd0b85a97d-42b26fb47d7mr2445454f8f.18.1762537757448;
+        Fri, 07 Nov 2025 09:49:17 -0800 (PST)
+Received: from Ansuel-XPS. (93-34-90-37.ip49.fastwebnet.it. [93.34.90.37])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42abe63e07asm6575381f8f.17.2025.11.07.09.49.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Nov 2025 09:49:17 -0800 (PST)
+Message-ID: <690e311d.5d0a0220.2f18f8.2b28@mx.google.com>
+X-Google-Original-Message-ID: <aQ4xGRCSkjsVWQRt@Ansuel-XPS.>
+Date: Fri, 7 Nov 2025 18:49:13 +0100
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Conor Dooley <conor@kernel.org>
 Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
@@ -56,14 +86,16 @@ Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh@kernel.org>,
 	linux-arm-kernel@lists.infradead.org
 Subject: Re: [PATCH v2 4/5] dt-bindings: pinctrl: airoha: Document AN7583 Pin
  Controller
-Message-ID: <20251107-washstand-motivator-c5e5e5d30dae@spud>
 References: <20251106235713.1794668-1-ansuelsmth@gmail.com>
  <20251106235713.1794668-5-ansuelsmth@gmail.com>
+ <20251107-washstand-motivator-c5e5e5d30dae@spud>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="cXGsyKspLHvZR8fa"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251106235713.1794668-5-ansuelsmth@gmail.com>
+In-Reply-To: <20251107-washstand-motivator-c5e5e5d30dae@spud>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251107_094919_504110_F509D9A5 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,41 +110,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Nov 07, 2025 at 05:24:21PM +0000, Conor Dooley wrote:
+> On Fri, Nov 07, 2025 at 12:57:07AM +0100, Christian Marangi wrote:
+> > Document Airoha AN7583 Pin Controller based on Airoha EN7581 with some
+> > minor difference on some function group (PCM and LED gpio).
+> > 
+> > To not bloat the EN7581 schema with massive if condition, use a
+> > dedicated YAML schema for Airoha AN7583.
+> 
+> You went to more effort than I would have here with that conditional!
+>
 
---cXGsyKspLHvZR8fa
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Well it was suggested by Rob and it's honestly a copy paste of en7581
+with the relevant thing changed.
 
-On Fri, Nov 07, 2025 at 12:57:07AM +0100, Christian Marangi wrote:
-> Document Airoha AN7583 Pin Controller based on Airoha EN7581 with some
-> minor difference on some function group (PCM and LED gpio).
->=20
-> To not bloat the EN7581 schema with massive if condition, use a
-> dedicated YAML schema for Airoha AN7583.
+> > +patternProperties:
+> > +  '-pins$':
+> > +    type: object
+> > +
+> > +    patternProperties:
+> > +      '^mux(-|$)':
+> > +        type: object
+> 
+> What's up with this regex? Why does it allow either - or $?
 
-You went to more effort than I would have here with that conditional!
+It's to permit either mux-* or unique node name with mux. Pattern is
+also used by mt7622 or other schema. Other use mux- to require a name
+after the mux.
 
-> +patternProperties:
-> +  '-pins$':
-> +    type: object
-> +
-> +    patternProperties:
-> +      '^mux(-|$)':
-> +        type: object
+Example
 
-What's up with this regex? Why does it allow either - or $?
+./xlnx,zynqmp-pinctrl.yaml:37:      '^mux':
+./xlnx,pinctrl-zynq.yaml:45:      '^mux':
+./xlnx,versal-pinctrl.yaml:34:      '^mux':
+./microchip,pic64gx-pinctrl-gpio2.yaml:27:  '^mux-':
+./microchip,mpfs-pinctrl-iomux0.yaml:33:  '^mux-':
+./airoha,en7581-pinctrl.yaml:51:      '^mux(-|$)':
+./mediatek,mt7622-pinctrl.yaml:72:      '^mux(-|$)':
+./nuvoton,wpcm450-pinctrl.yaml:64:  "^mux-":
 
---cXGsyKspLHvZR8fa
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaQ4rRQAKCRB4tDGHoIJi
-0m+6AP944+gmALtZGR1CkfB4zaT3eHH3sYRIpgbLLZY+u6lbaQD/ZB/xRj4VWjq4
-esQCRuxRKBz7tiNcleNfRyxChdSjJA8=
-=YhQN
------END PGP SIGNATURE-----
-
---cXGsyKspLHvZR8fa--
+-- 
+	Ansuel
 
