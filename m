@@ -4,67 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6833CCFA05
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 13:30:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6047CCCF9F8
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 14:13:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mk5OfZS4JLmgRhgsvjlhaRVTQhIGVSqHJQeTx0J3LiA=; b=wTtXkOjNv+h/46grue04rtEfbY
-	CzPMUh6aP/QkbAbp9flMzeh4MXrPhz8/zyrMtUxXAhY+8EojYhir5uob85ZPJwLmAsq8ZztWkNigv
-	UdMnqHeX326lsiKB4V2sAU3Zh2jom9Zv2YB98FBLDyHeDpkRE/kVuWqgHqHm5RwvslLDGSTTELDLn
-	80qqOAX2onzdPBceUB69XVqQ/2GJFOX2Uhs/huKwMh+XPlcr5utngRhUGJvgmFak78Ax3oNc+aHlU
-	fdPXljsbPWkesSMzXtVGRRq8s4Fz9QOMJ9isJFG4E33RKbZwIaRXp2Lmj8IGFNwYKLUGDeZy+EPxw
-	+0w+AECA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Zya9CDjAWwz/YQhtW3O1MV9PxrsdkYyA1iOu9tElgJc=; b=WwjlAOSfzmQPvz1ZQ5mXTNODXJ
+	oAhgiwhocXnkPdD7T/EqenXL5XHxrMvA1Y8tOBrcQKNWK2AuqVhy/kjAPgfT6ODr8llbEBTNT/mK9
+	V+ZAg0YrEQdw/GuaJtjmfT4xrXERY5a9ew4huAmhnBhJEmnru6ISPwUFEbxaaFnUH39k8bGBFla/w
+	C8yDz8D8i/r2p83yXKylowdLGf5eVL7UdOTBzfEt6Pts6SLX9ZaSfXUZv098Yt/00K068GbCozQ6H
+	59RkPGsyLJzkjhdDrDBJorbcxLgTKPNXJRkiuqNU4j8y6RI9kYWLfVeD0dg/Qr7xWGiPnk9PjHJDm
+	6A023wJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHMXY-0000000HPHr-2231;
-	Fri, 07 Nov 2025 13:30:08 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vHNDG-0000000HS9u-2q3s;
+	Fri, 07 Nov 2025 14:13:14 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHMXW-0000000HPGm-2d6Y;
-	Fri, 07 Nov 2025 13:30:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 483B361904;
-	Fri,  7 Nov 2025 13:30:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDBECC4CEF7;
-	Fri,  7 Nov 2025 13:30:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762522205;
-	bh=ayKu6qJSzYXCMxqqx8+O/4F+Us8bRURTI3A5cDLYypM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kcqrujjBziW2PnvjdzfKWfsqY1cKDz8qMBny0eqYuge1EUE++z4ZhTutoDCsjA94n
-	 KkiSqfoFGO4WfZXdFy8weoDhV+xXAnay9BLKUeO+7PKRwt6E8gydq6tTYoI3K3lDer
-	 9nWaOGAv/rWit2dT4Xo1tFkNRgDRAhrv4bPDhNdF8ntAK2J53etURMCQYizPMR8qT8
-	 csdH8NFU/wPa+btDAlr2avZwcem3bXmBB9emaTc3kTfl3hguiSh2sKHSwXacic7jTn
-	 bOhPZlS04R0XcFZhHDWHoCJFjWhPWZ0ZdF9RKoVtj5eXxkaiQqleEPrvT+iKR+DRfY
-	 A+Lyy9rTz1X7Q==
-Date: Fri, 7 Nov 2025 14:30:02 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Eric Dumazet <edumazet@google.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Paolo Abeni <pabeni@redhat.com>,
+	id 1vHNDE-0000000HS9C-053x
+	for linux-mediatek@lists.infradead.org;
+	Fri, 07 Nov 2025 14:13:13 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-47755de027eso5663375e9.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Nov 2025 06:13:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=suse.com; s=google; t=1762524790; x=1763129590; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Zya9CDjAWwz/YQhtW3O1MV9PxrsdkYyA1iOu9tElgJc=;
+        b=FUdnK2qY79aF2BCMPWkTDtBlkbWD5c8unKObqqJ+P1leOhPan/LzSK33+tQy5gJeHW
+         n4RmTHJwEhkNkSchVUd5ZFq9I/IEI+M/fXNkp5aTEa9+VdXJR+2KlcqDEosO8JcVpSMa
+         jvdNZBfOwU680vukM1E5K3ljOpvt/cQVeKRhvRch0BNLpLpURXDjNgbTbnXSReX2TvVL
+         T7qn/UXWOqLrXGHBuhBEvDOf8BKRUG18oq5BoC2wYYttM3Z+42UW0JTwCTj2ywxaqc+f
+         eZbD0YC18PelnkvRHvHXXRmJnxJyQBGN3Yel4Xm2UuDGUoeLnXe7ySnZIPPckC+OGH1Y
+         uo7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762524790; x=1763129590;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Zya9CDjAWwz/YQhtW3O1MV9PxrsdkYyA1iOu9tElgJc=;
+        b=Fc/nW0f5iFAbFO1/5FrILwc1gdtcA7DXqDsPcfxpYHVDODI8bCw4JZpDMYvNys1Bmh
+         YKwMIhNIn2J1tQaST0eLQIyMcVLBx7HKbevIIC2JbEZsnsBgKyyq4aEXcgLootjOu31p
+         mqmtdRCW6iwRaBNY8G8iv9pMKOM8vCNCPEv3kJWXXXMFhoaOG/anaKmfPi5NfWIoVS76
+         I4GUNPlMdca17T+mxxL9HVP8uKf/drzfIVm8wAkmrVNUwvbsTaISj2UxH23Gxo91aGxA
+         1vTFLRKAxB+1soLY4ENCb9f0yFSuc3CpACRljH1XEBiuC5ykm1jgH60WtXI255oLLAWk
+         3CrA==
+X-Forwarded-Encrypted: i=1; AJvYcCUGi2LqwH64Py1jBFnhzBDn7LbzbbBFRxYdWauHZ+PWJoqqKanpq49vR7CjKHwMWXAsYQfXRfCkBAYPfjAeNw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywnt/y4VNd0tpe2yRuD+nnDTWyZnXzTKVRS2uHeIEfEOVnfxvCz
+	VDvJ5WVMSNPKDT8OWME5ZAAQWdsVWk7xHvR3jbIXncQAKHa+Lf7yksnI6k7WHyde0xk=
+X-Gm-Gg: ASbGncskQScPEW7AifdR75psoXyGOPGqTzHomMPh9M6N7BpNfmnVgSJnfJu8R5YKMq3
+	eY1DdDMWDusULX1/S2WpmEBiZ6uuRek8rIBVmWbbaAy9/TGC0hYsBdMQyxKEE0R2YeAGrrDnBpP
+	suqKvrr4EV7VNZdsOf3CK5unQtldbQo4EHxwUp/tRFvAmgiUvboiGos1vom1DajA16YdLfFwAaP
+	4qvBcSMVvpr7YWjgfsyNs+lHNqanP6uMQm4qRXDJL9byx+U6dYsmQySOD74NrotRq7R94/ctjLn
+	zvbnvK+/pdYSMEXBZCOctUbNUD2Cx0sa3whwzAbfI5i7xL21+x06R6BMCEFS5P8HZO86hu3qhlK
+	WxfZM12/QbR3eC5BhNVsV0lVrrFmbnkEe+28etkDeP6rCu8bljvf847WQFExw804fjJFZMvqyVu
+	2R+Y0vxXQGfbQHsx65KHKld8pitJgxx1EYc6Y=
+X-Google-Smtp-Source: AGHT+IGp7Uv+Rz0H0a9Tbxc8WVcxFYh+xPnB3f9zZgNkWgNSCruoFQ5+kEx67gRvEzujnx6ZhHmG0g==
+X-Received: by 2002:a05:600c:1f10:b0:475:dbb5:23a2 with SMTP id 5b1f17b1804b1-4776bc904efmr24244345e9.16.1762524790118;
+        Fri, 07 Nov 2025 06:13:10 -0800 (PST)
+Received: from localhost.localdomain ([2a00:6d43:105:c401:e307:1a37:2e76:ce91])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-477641b622asm42998605e9.4.2025.11.07.06.13.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Nov 2025 06:13:09 -0800 (PST)
+From: Marco Crivellari <marco.crivellari@suse.com>
+To: linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Add TCP LRO support
-Message-ID: <aQ30WmbN_O60vEzl@lore-desk>
-References: <20250610-airoha-eth-lro-v1-1-3b128c407fd8@kernel.org>
- <CANn89iJsNWkWzAJbOvaBNjozuLOQBcpVo1bnvfeGq5Zm6h9e=Q@mail.gmail.com>
- <aEg1lvstEFgiZST1@lore-rh-laptop>
- <20250611173626.54f2cf58@kernel.org>
- <aEtAZq8Th7nOdakk@lore-rh-laptop>
- <20250612155721.4bb76ab1@kernel.org>
- <aFATYATliil63D5R@lore-desk>
- <aQR2Z51Q45Zl99m_@lore-desk>
- <20251031111641.08471c44@kernel.org>
+	linux-mediatek@lists.infradead.org
+Cc: Tejun Heo <tj@kernel.org>,
+	Lai Jiangshan <jiangshanlai@gmail.com>,
+	Frederic Weisbecker <frederic@kernel.org>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	Marco Crivellari <marco.crivellari@suse.com>,
+	Michal Hocko <mhocko@suse.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] media: platform: mtk-mdp3: add WQ_PERCPU to alloc_workqueue users
+Date: Fri,  7 Nov 2025 15:13:03 +0100
+Message-ID: <20251107141303.223254-1-marco.crivellari@suse.com>
+X-Mailer: git-send-email 2.51.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="IjyweC8QavTyUWhR"
-Content-Disposition: inline
-In-Reply-To: <20251031111641.08471c44@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251107_061312_097091_9A3E9365 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,81 +107,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Currently if a user enqueues a work item using schedule_delayed_work() the
+used wq is "system_wq" (per-cpu wq) while queue_delayed_work() use
+WORK_CPU_UNBOUND (used when a cpu is not specified). The same applies to
+schedule_work() that is using system_wq and queue_work(), that makes use
+again of WORK_CPU_UNBOUND.
+This lack of consistency cannot be addressed without refactoring the API.
 
---IjyweC8QavTyUWhR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+alloc_workqueue() treats all queues as per-CPU by default, while unbound
+workqueues must opt-in via WQ_UNBOUND.
 
-> On Fri, 31 Oct 2025 09:42:15 +0100 Lorenzo Bianconi wrote:
-> > > > Hm, truesize is the buffer size, right? If the driver allocated n b=
-ytes
-> > > > of memory for packets it sent up the stack, the truesizes of the sk=
-bs
-> > > > it generated must add up to approximately n bytes. =20
-> > >=20
-> > > With 'truesize' I am referring to the real data size contained in the=
- x-order
-> > > page returned by the hw. If this size is small, I was thinking to jus=
-t allocate
-> > > a skb for it, copy the data from the x-order page into it and re-inse=
-rt the
-> > > x-order page into the page_pool running page_pool_put_full_page().
-> > > Let me do some tests with order-2 page to see if the GRO can compensa=
-te the
-> > > reduced page size. =20
-> >=20
-> > Sorry for the late reply about this item.
-> > I carried out some comparison tests between GRO-only and GRO+LRO with o=
-rder-2
-> > pages [0]. The system is using a 2.5Gbps link. The device is receiving =
-a single TCP
-> > stream. MTU is set to 1500B.
-> >=20
-> > - GRO only:			~1.6Gbps
-> > - GRO+LRO (order-2 pages):	~2.1Gbps
-> >=20
-> > In both cases we can't reach the line-rate. Do you think the difference=
- can justify
-> > the hw LRO support? Thanks in advance.
-> > =20
-> > [0] the hw LRO requires contiguous memory pages to work. I reduced the =
-size to
-> > order-2 from order-5 (original implementation).
->=20
-> I think we're mostly advising about real world implications of=20
-> the approach rather than nacking. I can't say for sure if potentially
-> terrible skb->len/skb->truesize ratio will matter for a router
-> application. Maybe not.
->=20
-> BTW is the device doing header-data split or the LRO frame has headers
-> and payload in a single buffer?
+This default is suboptimal: most workloads benefit from unbound queues,
+allowing the scheduler to place worker threads where they’re needed and
+reducing noise when CPUs are isolated.
 
-According to my understanding the hw LRO is limited to a single order-x page
-containing both the headers and the payload (the hw LRO module is not capab=
-le
-of splitting the aggregated TCP segment over multiple pages).
-What we could do is disable hw LRO by default and feed hw rx queues with
-order-0 pages (current implementation). If the user enables hw LRO, we will
-free order-0 pages linked to the rx DMA descriptors and allocate order-x pa=
-ges
-(e.g. order-2) for hw LRO queues. Disabling hw LRO will switch back to orde=
-r-0
-pages.
+This continues the effort to refactor workqueue APIs, which began with
+the introduction of new workqueues and a new alloc_workqueue flag in:
 
-Regards,
-Lorenzo
+commit 128ea9f6ccfb ("workqueue: Add system_percpu_wq and system_dfl_wq")
+commit 930c2ea566af ("workqueue: Add new WQ_PERCPU flag")
 
---IjyweC8QavTyUWhR
-Content-Type: application/pgp-signature; name=signature.asc
+This change adds a new WQ_PERCPU flag to explicitly request
+alloc_workqueue() to be per-cpu when WQ_UNBOUND has not been specified.
 
------BEGIN PGP SIGNATURE-----
+With the introduction of the WQ_PERCPU flag (equivalent to !WQ_UNBOUND),
+any alloc_workqueue() caller that doesn’t explicitly specify WQ_UNBOUND
+must now use WQ_PERCPU.
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaQ30WgAKCRA6cBh0uS2t
-rGZOAP9M9uVRlJXXgPl6G+OORxGKlgdXBTOwtW4DApLOp26PCAEAl8At5F9pJxhs
-BkRGi+/l6PhGdLpVmqI64CnAKZ+btwE=
-=OyjG
------END PGP SIGNATURE-----
+Once migration is complete, WQ_UNBOUND can be removed and unbound will
+become the implicit default.
 
---IjyweC8QavTyUWhR--
+Suggested-by: Tejun Heo <tj@kernel.org>
+Signed-off-by: Marco Crivellari <marco.crivellari@suse.com>
+---
+ drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+index 6559d72d5d42..9083367ae2e4 100644
+--- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+@@ -255,14 +255,16 @@ static int mdp_probe(struct platform_device *pdev)
+ 		goto err_free_mutex;
+ 	}
+ 
+-	mdp->job_wq = alloc_workqueue(MDP_MODULE_NAME, WQ_FREEZABLE, 0);
++	mdp->job_wq = alloc_workqueue(MDP_MODULE_NAME,
++				      WQ_FREEZABLE | WQ_PERCPU, 0);
+ 	if (!mdp->job_wq) {
+ 		dev_err(dev, "Unable to create job workqueue\n");
+ 		ret = -ENOMEM;
+ 		goto err_deinit_comp;
+ 	}
+ 
+-	mdp->clock_wq = alloc_workqueue(MDP_MODULE_NAME "-clock", WQ_FREEZABLE,
++	mdp->clock_wq = alloc_workqueue(MDP_MODULE_NAME "-clock",
++					WQ_FREEZABLE | WQ_PERCPU,
+ 					0);
+ 	if (!mdp->clock_wq) {
+ 		dev_err(dev, "Unable to create clock workqueue\n");
+-- 
+2.51.1
+
 
