@@ -4,87 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10BA5CCFA05
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 16:09:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A44D2CCF9F8
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 16:16:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:References:Subject:To:From:Date:Message-ID:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fwpXxoU8iEmC+DaN7Cr9PGN8QVIi8rUJqHbS4C13YiQ=; b=c6rUkYSvvHyPa6MgFQPJZJ8x5k
-	aWHBva5QaQoo8kHsi27PEXBYa3upg4MbkaUh6bZwImw33maccH1YBwEWqNKMdyZDmuC58OHg9YLO6
-	zNp6IZlZK3bY2XG4QPJYZtds79OMXIgy34BE0n5pmqbT543W7uEGeGUPxoG+RNLrFRdmfXbMby/gh
-	VEijL6D1WIn/+Q90XU3ZNiwLEfCr6t41aEH6SsunZYJjDZcCIpW0wHY4GNDZls+xxLL7Y53GP5VOU
-	3dtKaux6MoF5Z9wtiFvHJIkgip89HIkiVE4cwCIoJ/OawWxndih5aSKw8IDG0HWBrGj6j6nVC5Wh7
-	hFvwOirA==;
+	bh=Rq+cWEKtg2ZUTyxd/Vz8Kc9fcT1gEAUEGw1yp5hm07k=; b=QWD3V2pWe5rPEnJSAqTOexJYre
+	O1fUBr6WOJpCQHvppT9eJOc7UFl6TXbTQw2ImvUWOPadPEU/MBtQZhUCV0uy0NaQsaBKEVmJVjJns
+	aNIhbBUqYrSAmIrw4Xjf8WBG64T0x0/bInXDi6gRXCgTWE8n0A4AjI4aWQur1Es+AxIUnWJdGgJp7
+	WUfvH6ywmlIz3bknMRj/+PHdfMdpRBHdYvdNVDi3DgdInRtzwfnFO+kF4xrZXGpcZ7V9npwib+1q2
+	W+qgnfkNyzpYxoKNm1wlPr/a2eHZiQyIH9kUGgounOc3bHIz6YRmPqmbRYDB2Q3fD/b1hQ7gSg+Pz
+	Cg0sg8FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHP1c-000000003vg-0nw3;
-	Fri, 07 Nov 2025 16:09:20 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vHP8y-000000004ld-1ISx;
+	Fri, 07 Nov 2025 16:16:56 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHP1Z-000000003us-1eid;
-	Fri, 07 Nov 2025 16:09:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=fwpXxoU8iEmC+DaN7Cr9PGN8QVIi8rUJqHbS4C13YiQ=; b=vn3cbOu+GFQMbus8RTESyhk+QD
-	l4MSz/4gSrLSWpMwTcHMS8POSDqXlYoqW6hd0IVlrkrHN0rw/yZ1S8tjbRotxVZckRVVD5aRb8bPB
-	u2YW04OZjQkWBC/IllYfMqxS3Dir+tyGqw82YW/NF7mlLI684toDkm0bSBsVAcqCbYiV7/jxwioKY
-	+/pe49r2zq2ujlFEiw4kOmyaMOLhRepjPkmnOJVla7Zg8W/csk11yTw9Aw59+2MoFRvcckO8KEMVM
-	IwqMBuTNFDkx39IA961qvS8bRUtzUhe9fuWfVrlXNzSefV5rCz9+Bo9Qr7u3Tve04azN7os0yDbxA
-	N0fCfdkQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:32908)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1vHP1N-000000006sy-0WaB;
-	Fri, 07 Nov 2025 16:09:05 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1vHP1F-000000007hv-1jzX;
-	Fri, 07 Nov 2025 16:08:57 +0000
-Date: Fri, 7 Nov 2025 16:08:57 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Emil Renner Berthing <kernel@esmil.dk>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	id 1vHP8w-000000004kv-0Uis
+	for linux-mediatek@lists.infradead.org;
+	Fri, 07 Nov 2025 16:16:55 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-429b72691b4so753840f8f.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 07 Nov 2025 08:16:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1762532212; x=1763137012; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:subject:to
+         :from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=Rq+cWEKtg2ZUTyxd/Vz8Kc9fcT1gEAUEGw1yp5hm07k=;
+        b=NF7vUw9/7+qfOOVFz4D5I51zAdPYDCsnOLTzzgH55Y6WcY5/z31LdIj3QtvUhaHtap
+         FCyOIqZhO72eehFV0qBMrIRVozAVsqdpyNCjyYa+H0rY7NrNxkKzCj40kSQZQUGGMuqu
+         jYOtjmJuTgTPZmocS2LtT+xNPZQN4uCuNeGE0GHqnL+F3wKIVyyls2r2x7ur4QUnDcVm
+         xd7OmvqoTuLxnY5EYiY8V1ssO522fMJ6GthKdGAkT4qWzOvL4ZxYRIDVTXy2U6UfQlBx
+         3nDLsWmeL/xme4vYoM/cBBfIO8KbJ3mL8jp/PZZcRNtnp4a/LaSCXjH0sdPlXxGR+QfU
+         OpvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762532212; x=1763137012;
+        h=in-reply-to:content-disposition:mime-version:references:subject:to
+         :from:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=Rq+cWEKtg2ZUTyxd/Vz8Kc9fcT1gEAUEGw1yp5hm07k=;
+        b=ZOczO7mACD2QJhGge4T4vS0bD9L3WzoMh7kHTGPJ2EzUkj/YDTGSes2P8umWyRR/lF
+         bmy9eH4Fz3VZhJNAiTbgQC6fNpIRERzLX1/G0XHH4BE+srnArHIWhokQx1eI5Wl0Ch4r
+         PHMKNjtMhfNkqi4MI+Xg5DFIhoBMRJAHWu8P0rFyb+QiyNGri4Iyu4NAEJRk9EBVKEmU
+         mpdyDBznp/aaWFDyGEMY5iyDmKQUUU9xxFUcMnFuOZIQt/HUCk/4EppqiwDcNXO5oHYS
+         L1SsVZLf/2arC/wwCLvwUMOmFmG3NbPV3JWfUYrqOWRzI9QxTcFCDXWdrGcEP8sFhCrg
+         z9pw==
+X-Forwarded-Encrypted: i=1; AJvYcCV4t5YpWiG+6WG+peu/ZAEPQsnO1fX2qqegUn68u78gpBImwm6u2QM+X3+/BJ4bGOEV/vqoVzuzNqFgvZF8zg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxfSRZ0bl/LnR3818+VVu4RJmsu+icBMBUyCLBHjLyOzJISCK5c
+	V2zapLWrJ5r66E6oLj4WeECxAs3Rv4StCWB2nGDb55r8A04Jffu6e2PH
+X-Gm-Gg: ASbGncvpvneiwBs+1TySHE+pHHlkpf0boE38JzfTOmDh0GmggWelzkmBsp1TLfzad1r
+	m9De1lHriYyzd3zVvFjJJr7pEkDYbQR/vPMAx2fWr/29YOP93Mkj9ZsOm2by8fsNwxuYMm7FTgJ
+	jbdOI1fOP9aEROy/8+nGfksxFgO3Mww/HbVQ4iWoIlpC1SCwKdjfqTuRcOU88pPlhawkvPgvgrt
+	79CEjuREKshaYxMb4GAf5mo6ZbeYVznrXPWufmRn579WYEjwJJS22yfopegpVgS1HszkcZR2wM7
+	1EaYYAgswsFTF7o79z5ED8Qka/yJYJP75VgziaMo1LaADWUgMAcTMbQDqEhPe2b+cg60cZM/RFu
+	xUPCRvtSMq3lOKgRiU620byNbIWtmzP7ZGJHnW9dQA5C/GnRFyTw4qWzgxEiDKA/heVge1/5i+O
+	2LpHemlkP8F6g4fza0HLofZ4D2ef27
+X-Google-Smtp-Source: AGHT+IGBls4w5DXj4dsI+iVzj/lD1T2JS8LC5CnrQ6tP++E+okDJx9McJEWsKb0hTWxZy1/eytT3yA==
+X-Received: by 2002:a05:6000:26c9:b0:429:cf03:8b1a with SMTP id ffacd0b85a97d-42ae5ae9995mr3350125f8f.45.1762532212275;
+        Fri, 07 Nov 2025 08:16:52 -0800 (PST)
+Received: from Ansuel-XPS. (93-34-90-37.ip49.fastwebnet.it. [93.34.90.37])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42abe63e131sm6344445f8f.20.2025.11.07.08.16.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Nov 2025 08:16:51 -0800 (PST)
+Message-ID: <690e1b73.df0a0220.312af7.18e3@mx.google.com>
+X-Google-Original-Message-ID: <aQ4bcJDWhgQINJry@Ansuel-XPS.>
+Date: Fri, 7 Nov 2025 17:16:48 +0100
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Herbert Xu <herbert@gondor.apana.org.au>,
 	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Minda Chen <minda.chen@starfivetech.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>, netdev@vger.kernel.org,
-	Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
-	Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH net-next 11/16] net: stmmac: starfive: use
- stmmac_get_phy_intf_sel()
-Message-ID: <aQ4ZmXB_eFjKXgIv@shell.armlinux.org.uk>
-References: <aQ4ByErmsnAPSHIL@shell.armlinux.org.uk>
- <E1vHNSR-0000000DkSt-0wDu@rmk-PC.armlinux.org.uk>
- <CANBLGczzW+kjvSqYm5YVt+2sdLtgyZfa=fhsU1Q-nUjSVvB4cw@mail.gmail.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-crypto@vger.kernel.org, linux-watchdog@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4 0/4] arm64: Add AN7583 DTSI
+References: <20250929114917.5501-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CANBLGczzW+kjvSqYm5YVt+2sdLtgyZfa=fhsU1Q-nUjSVvB4cw@mail.gmail.com>
+In-Reply-To: <20250929114917.5501-1-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251107_080917_437585_B3C27A7A 
-X-CRM114-Status: GOOD (  17.01  )
+X-CRM114-CacheID: sfid-20251107_081654_203924_89B7B6FA 
+X-CRM114-Status: GOOD (  14.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,57 +109,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 07, 2025 at 11:00:35AM -0500, Emil Renner Berthing wrote:
-> Quoting Russell King (Oracle) (2025-11-07 15:28:55)
-> > Use stmmac_get_phy_intf_sel() to decode the PHY interface mode to the
-> > phy_intf_sel value, validate the result and use that to set the
-> > control register to select the operating mode for the DWMAC core.
-> >
-> > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> > ---
-> >  .../ethernet/stmicro/stmmac/dwmac-starfive.c  | 22 +++++--------------
-> >  1 file changed, 6 insertions(+), 16 deletions(-)
-> >
-> > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
-> > index 1ef72576c6f1..00078b7a6486 100644
-> > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
-> > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
-> > @@ -35,25 +35,15 @@ static int starfive_dwmac_set_mode(struct plat_stmmacenet_data *plat_dat)
-> >         struct starfive_dwmac *dwmac = plat_dat->bsp_priv;
-> >         struct regmap *regmap;
-> >         unsigned int args[2];
-> > -       unsigned int mode;
-> > +       int phy_intf_sel;
-> >         int err;
-> >
-> > -       switch (plat_dat->phy_interface) {
-> > -       case PHY_INTERFACE_MODE_RMII:
-> > -               mode = STARFIVE_DWMAC_PHY_INFT_RMII;
-> > -               break;
-> > -
-> > -       case PHY_INTERFACE_MODE_RGMII:
-> > -       case PHY_INTERFACE_MODE_RGMII_ID:
-> > -       case PHY_INTERFACE_MODE_RGMII_RXID:
-> > -       case PHY_INTERFACE_MODE_RGMII_TXID:
-> > -               mode = STARFIVE_DWMAC_PHY_INFT_RGMII;
-> > -               break;
+On Mon, Sep 29, 2025 at 01:49:11PM +0200, Christian Marangi wrote:
+> Simple series to add initial AN7583 DTSI. More node will be
+> included as they will be supported.
 > 
-> After these two patches the STARFIVE_DWMAC_PHY_INFT_RMII and ..RGMII macros are
-> left unused.
+> Changes v4:
+> - Add review tag
+> - Fix alphabetical order in Makefile
+> - Move PSCI node after CPU node
+> Changes v3:
+> - Fix typo EN7583 -> AN7583
+> - Add specific compatible for watchdog and crypto engine
+> Changes v2:
+> - Fix DTB BOT warning (fix crypto compatible and OPP node name)
+> 
+> Christian Marangi (4):
+>   dt-bindings: crypto: Add support for Airoha AN7583 SoC
+>   dt-bindings: watchdog: airoha: Add support for Airoha AN7583 SoC
+>   dt-bindings: arm64: dts: airoha: Add AN7583 compatible
+>   arm64: dts: Add Airoha AN7583 SoC and AN7583 Evaluation Board
+> 
+>  .../devicetree/bindings/arm/airoha.yaml       |   4 +
+>  .../crypto/inside-secure,safexcel-eip93.yaml  |   4 +
+>  .../bindings/watchdog/airoha,en7581-wdt.yaml  |   6 +-
+>  arch/arm64/boot/dts/airoha/Makefile           |   1 +
+>  arch/arm64/boot/dts/airoha/an7583-evb.dts     |  22 ++
+>  arch/arm64/boot/dts/airoha/an7583.dtsi        | 283 ++++++++++++++++++
+>  6 files changed, 319 insertions(+), 1 deletion(-)
+>  create mode 100644 arch/arm64/boot/dts/airoha/an7583-evb.dts
+>  create mode 100644 arch/arm64/boot/dts/airoha/an7583.dtsi
+> 
 
-Thanks, I'll remove them in this patch.
-
-> Maybe just squash the patches and remove the definitions?
-
-It's two logical changes, thus two patches. Reviewers find that this
-makes it easier to review.
-
-Given the number of platform glues that I'm modifying, I don't want
-to change some of them using one big all encompassing patch and
-others as a set of logical changes - that would be totally insane
-to manage.
+Any chance this can be picked? All the patch got a review tag I assume.
 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+	Ansuel
 
