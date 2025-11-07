@@ -4,89 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 443F3CCF9F8
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 14:59:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59A84CCFA05
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 15:59:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nxKxjy/C3oPWob4dBvPPL6F8jhZxW9+kJIyvEtBbh7A=; b=ZugbAZf0B5MdxEhX9DcESp7oaS
-	yAxmowhvHAaw/llLVObn7bk0qh6Z1hgMhQPfRiDlk5VwN4qChMqUaOLg4nrMyRriq3D644HPP6lkx
-	zExCJ1S+M7XFnSL3Wg6/U9PeRiraXtntrl3ysXI3kY97acaX0F8WURq49BhNK16vNgytvCVQ0RCf0
-	8ALvLr4HLLCoFNb/ZeMS+tIkhk/mtiNe9/OiaZ2vt1r860G3AFGCR2lvr9rbYDSMta4MyG3EdeIuq
-	I1Bdzd9ne1ubZVeqWgvjQZhz5Jak0ozQA9ADb7m6COLrPB/AMKWHBsIOOwDLdStSSQFi93Kqg2D4z
-	V0eUDVFw==;
+	bh=XZxAc2BQsRrMH4REaWyaYT4OlgH+tMplYPSOttdPQm4=; b=DhteuD8HuhrMX1p7KiLFTe3/De
+	xJvTjuSx+9/S8NqS//ocPctm5WowWIGicuireM0dYeWE7FtuS48muFUDiOWjohT4I7D+ebuvRSn01
+	X6WSHNxA5eVwneOqGgMDVeDR7fZmvvPvahR8qrOkFH5XKZ96JD6HJM0NWU2ov8iUY/4zPbBqGrE1x
+	Wt0emMdTekcTVesy+BhTlFN2Hlj3vTqP2mbYB8Gb4v66IKykwEnuNgaLqWZSo418dgRsjxTg+1smG
+	Ri2KEdXo/37GSz9jcnxQSZkLMu0acz/hCwx0g2SVFJTquwC89XDwq7sll8S10zs8FGXGOSyobUrVs
+	7gn0JQGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHNvw-0000000HYEA-1ohk;
-	Fri, 07 Nov 2025 14:59:24 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vHOsJ-0000000029w-0cbI;
+	Fri, 07 Nov 2025 15:59:43 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHNvt-0000000HYBF-3Ojq;
-	Fri, 07 Nov 2025 14:59:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=nxKxjy/C3oPWob4dBvPPL6F8jhZxW9+kJIyvEtBbh7A=; b=CPnkQ/JKGlnhsZP7olTVHXoO56
-	ZtNRVW5PrJWImlfI+MZDhkWVn7VIaCAgmep0krm9sBkoCgWXCHbEaUaVR0MT84q98R4L/ghHWUhPs
-	FJ+Qh32UwhEcAtJVfgQeT3QJyYTrLQYKJq0lh3PGtuDxsx7qYup3jQM8NM5pnqUc3LJdk44jY4A2M
-	wd3t8p7v8gqZNGaBa7g/hSOD1KjSdsbjevxpvO/bY5pg3I4z91TbmxORLGXyJPK9xSCcxClue8hId
-	JGfee8ETjXeLLl20zbI0CNPgDMVcS516BVuGcGNn06nujeWe00Oh0hwtjxscycfUACiQFXEsf2rWP
-	ZSchN2qA==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:47708 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1vHNSg-000000006j5-2SUq;
-	Fri, 07 Nov 2025 14:29:10 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1vHNSb-0000000DkT4-1s8G;
-	Fri, 07 Nov 2025 14:29:05 +0000
-In-Reply-To: <aQ4ByErmsnAPSHIL@shell.armlinux.org.uk>
-References: <aQ4ByErmsnAPSHIL@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Emil Renner Berthing <kernel@esmil.dk>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Kevin Hilman <khilman@baylibre.com>,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-mips@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Minda Chen <minda.chen@starfivetech.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	netdev@vger.kernel.org,
-	Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
-	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH net-next 13/16] net: stmmac: stm32: use PHY_INTF_SEL_x
- directly
+	id 1vHOsG-0000000029A-2Z34;
+	Fri, 07 Nov 2025 15:59:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 082FC4010C;
+	Fri,  7 Nov 2025 15:59:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A247C16AAE;
+	Fri,  7 Nov 2025 15:59:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1762531179;
+	bh=CutddtJdxTwBMPiBCGqUeSQ/z6FRLzP4zZy5fTdyK7c=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=TLUJ/idfKTLc/iAjQNurzsGK1lWtnQlcdJbDFIX8Mk+ipdDi2vKPAdI3/v0FMg3FF
+	 W8KjmWKoEVDM3rzuX5WCkYKefvW7OOa4I7aOkojVmoMEmVQnRfDHVG3DeJ607o+o4j
+	 3UpP7Mq9PaTtn4K6xw6Kz/oJnzWeOEJpZFE+gVqrw1bTaY+eaeABGC/E559P0uzmDo
+	 QiOzwGmNakFraaQgRcXDz+X/ThnupkdgnTn2yVEWN7304gKf+w8Azj2mhDziLUzOfr
+	 yrPt2HI8rjdBGND4jh5JmqatfeRkK6xKRAH/aMffa4xZSPo3+e0TtRJMzbBRa8OeAp
+	 MU7E/TPDxP6DQ==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, matthias.bgg@gmail.com, 
+ angelogioacchino.delregno@collabora.com, Chen Ni <nichen@iscas.ac.cn>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20251107085109.2316999-1-nichen@iscas.ac.cn>
+References: <20251107085109.2316999-1-nichen@iscas.ac.cn>
+Subject: Re: [PATCH] regulator: mt6363: Remove unneeded semicolon
+Message-Id: <176253117500.2510929.10700935899599839032.b4-ty@kernel.org>
+Date: Fri, 07 Nov 2025 15:59:35 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1vHNSb-0000000DkT4-1s8G@rmk-PC.armlinux.org.uk>
-Date: Fri, 07 Nov 2025 14:29:05 +0000
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-a6db3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251107_065921_847697_CDA24020 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20251107_075940_672746_157C1C77 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,134 +72,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rather than defining separate constants for each, use the
-PHY_INTF_SEL_x definitions in the switch()es configuring the
-control register, and use one FIELD_PREP() to convert phy_intf_sel
-to the register value.
+On Fri, 07 Nov 2025 16:51:09 +0800, Chen Ni wrote:
+> Remove unnecessary semicolons reported by Coccinelle/coccicheck and the
+> semantic patch at scripts/coccinelle/misc/semicolon.cocci.
+> 
+> 
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- .../net/ethernet/stmicro/stmmac/dwmac-stm32.c | 32 ++++++++-----------
- 1 file changed, 13 insertions(+), 19 deletions(-)
+Applied to
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-stm32.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-stm32.c
-index 1545772419d5..18d26f096f5f 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-stm32.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-stm32.c
-@@ -48,30 +48,17 @@
-  */
- #define SYSCFG_PMCR_ETH_SEL_MII		BIT(20)
- #define SYSCFG_PMCR_PHY_INTF_SEL_MASK	GENMASK(23, 21)
--#define SYSCFG_PMCR_ETH_SEL_RGMII	\
--	FIELD_PREP(SYSCFG_PMCR_PHY_INTF_SEL_MASK, PHY_INTF_SEL_RGMII)
--#define SYSCFG_PMCR_ETH_SEL_RMII	\
--	FIELD_PREP(SYSCFG_PMCR_PHY_INTF_SEL_MASK, PHY_INTF_SEL_RMII)
--#define SYSCFG_PMCR_ETH_SEL_GMII	\
--	FIELD_PREP(SYSCFG_PMCR_PHY_INTF_SEL_MASK, PHY_INTF_SEL_GMII_MII)
- #define SYSCFG_MCU_ETH_SEL_MII		0
- #define SYSCFG_MCU_ETH_SEL_RMII		1
- 
- /* STM32MP2 register definitions */
- #define SYSCFG_MP2_ETH_MASK		GENMASK(31, 0)
- 
-+#define SYSCFG_ETHCR_ETH_SEL_MASK	GENMASK(6, 4)
- #define SYSCFG_ETHCR_ETH_PTP_CLK_SEL	BIT(2)
- #define SYSCFG_ETHCR_ETH_CLK_SEL	BIT(1)
- #define SYSCFG_ETHCR_ETH_REF_CLK_SEL	BIT(0)
- 
--#define SYSCFG_ETHCR_ETH_SEL_MASK	GENMASK(6, 4)
--#define SYSCFG_ETHCR_ETH_SEL_MII	FIELD_PREP(SYSCFG_ETHCR_ETH_SEL_MASK, \
--						   PHY_INTF_SEL_GMII_MII)
--#define SYSCFG_ETHCR_ETH_SEL_RGMII	FIELD_PREP(SYSCFG_ETHCR_ETH_SEL_MASK, \
--						   PHY_INTF_SEL_RGMII)
--#define SYSCFG_ETHCR_ETH_SEL_RMII	FIELD_PREP(SYSCFG_ETHCR_ETH_SEL_MASK, \
--						   PHY_INTF_SEL_RMII)
--
- /* STM32MPx register definitions
-  *
-  * Below table summarizes the clock requirement and clock sources for
-@@ -244,10 +231,12 @@ static int stm32mp1_configure_pmcr(struct plat_stmmacenet_data *plat_dat)
- {
- 	struct stm32_dwmac *dwmac = plat_dat->bsp_priv;
- 	u32 reg = dwmac->mode_reg;
-+	u8 phy_intf_sel;
- 	int val = 0;
- 
- 	switch (plat_dat->phy_interface) {
- 	case PHY_INTERFACE_MODE_MII:
-+		phy_intf_sel = PHY_INTF_SEL_GMII_MII;
- 		/*
- 		 * STM32MP15xx supports both MII and GMII, STM32MP13xx MII only.
- 		 * SYSCFG_PMCSETR ETH_SELMII is present only on STM32MP15xx and
-@@ -258,12 +247,12 @@ static int stm32mp1_configure_pmcr(struct plat_stmmacenet_data *plat_dat)
- 			val |= SYSCFG_PMCR_ETH_SEL_MII;
- 		break;
- 	case PHY_INTERFACE_MODE_GMII:
--		val = SYSCFG_PMCR_ETH_SEL_GMII;
-+		phy_intf_sel = PHY_INTF_SEL_GMII_MII;
- 		if (dwmac->enable_eth_ck)
- 			val |= SYSCFG_PMCR_ETH_CLK_SEL;
- 		break;
- 	case PHY_INTERFACE_MODE_RMII:
--		val = SYSCFG_PMCR_ETH_SEL_RMII;
-+		phy_intf_sel = PHY_INTF_SEL_RMII;
- 		if (dwmac->enable_eth_ck)
- 			val |= SYSCFG_PMCR_ETH_REF_CLK_SEL;
- 		break;
-@@ -271,7 +260,7 @@ static int stm32mp1_configure_pmcr(struct plat_stmmacenet_data *plat_dat)
- 	case PHY_INTERFACE_MODE_RGMII_ID:
- 	case PHY_INTERFACE_MODE_RGMII_RXID:
- 	case PHY_INTERFACE_MODE_RGMII_TXID:
--		val = SYSCFG_PMCR_ETH_SEL_RGMII;
-+		phy_intf_sel = PHY_INTF_SEL_RGMII;
- 		if (dwmac->enable_eth_ck)
- 			val |= SYSCFG_PMCR_ETH_CLK_SEL;
- 		break;
-@@ -284,6 +273,8 @@ static int stm32mp1_configure_pmcr(struct plat_stmmacenet_data *plat_dat)
- 
- 	dev_dbg(dwmac->dev, "Mode %s", phy_modes(plat_dat->phy_interface));
- 
-+	val |= FIELD_PREP(SYSCFG_PMCR_PHY_INTF_SEL_MASK, phy_intf_sel);
-+
- 	/* Shift value at correct ethernet MAC offset in SYSCFG_PMCSETR */
- 	val <<= ffs(dwmac->mode_mask) - ffs(SYSCFG_MP1_ETH_MASK);
- 
-@@ -299,6 +290,7 @@ static int stm32mp1_configure_pmcr(struct plat_stmmacenet_data *plat_dat)
- static int stm32mp2_configure_syscfg(struct plat_stmmacenet_data *plat_dat)
- {
- 	struct stm32_dwmac *dwmac = plat_dat->bsp_priv;
-+	u8 phy_intf_sel = PHY_INTF_SEL_GMII_MII;
- 	u32 reg = dwmac->mode_reg;
- 	int val = 0;
- 
-@@ -307,7 +299,7 @@ static int stm32mp2_configure_syscfg(struct plat_stmmacenet_data *plat_dat)
- 		/* ETH_REF_CLK_SEL bit in SYSCFG register is not applicable in MII mode */
- 		break;
- 	case PHY_INTERFACE_MODE_RMII:
--		val = SYSCFG_ETHCR_ETH_SEL_RMII;
-+		phy_intf_sel = PHY_INTF_SEL_RMII;
- 		if (dwmac->enable_eth_ck) {
- 			/* Internal clock ETH_CLK of 50MHz from RCC is used */
- 			val |= SYSCFG_ETHCR_ETH_REF_CLK_SEL;
-@@ -317,7 +309,7 @@ static int stm32mp2_configure_syscfg(struct plat_stmmacenet_data *plat_dat)
- 	case PHY_INTERFACE_MODE_RGMII_ID:
- 	case PHY_INTERFACE_MODE_RGMII_RXID:
- 	case PHY_INTERFACE_MODE_RGMII_TXID:
--		val = SYSCFG_ETHCR_ETH_SEL_RGMII;
-+		phy_intf_sel = PHY_INTF_SEL_RGMII;
- 		fallthrough;
- 	case PHY_INTERFACE_MODE_GMII:
- 		if (dwmac->enable_eth_ck) {
-@@ -334,6 +326,8 @@ static int stm32mp2_configure_syscfg(struct plat_stmmacenet_data *plat_dat)
- 
- 	dev_dbg(dwmac->dev, "Mode %s", phy_modes(plat_dat->phy_interface));
- 
-+	val |= FIELD_PREP(SYSCFG_ETHCR_ETH_SEL_MASK, phy_intf_sel);
-+
- 	/* Select PTP (IEEE1588) clock selection from RCC (ck_ker_ethxptp) */
- 	val |= SYSCFG_ETHCR_ETH_PTP_CLK_SEL;
- 
--- 
-2.47.3
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+
+Thanks!
+
+[1/1] regulator: mt6363: Remove unneeded semicolon
+      commit: 2089f086303b773e181567fd8d5df3038bd85937
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
