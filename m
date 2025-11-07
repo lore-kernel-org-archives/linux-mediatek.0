@@ -4,68 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 009F0CCF9F8
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 09:02:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97F75CCF9E3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 09:12:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/OWbRuGTNMcNDmD86tAeEHECcLnJ+86wxa52d94my2I=; b=V0erhHNge7eshjI7W529wPxnvZ
-	nuT62qcAQRSWoEBEa58ONrybxt7dotOM+/DGnK+RJr+RBuvpPzgNo9oCgN/Ddn8MT4Y7GTF7X5cqN
-	WGmfUpcKo+RF6LbHmMn46Zq4ETibb9qxcYzUarcNflgMl8I1FtimEhfxmB5wBnpasC8ym7IO0DMzS
-	8wOmjRoSLaGxOtVvFLGgc/ELalAI0runKX+gGzFLTEDepAVb/IWdkRIYQNRr/nuDMI95/IRsgg4no
-	G+vIiER4nKu2gP2pfHR8TLwzHCAyEVIR6UKa0YSj4q1T0L2nHi+QqpCuz0h92fuvzKxFNL61E3S15
-	bANBpZpQ==;
+	bh=tNFO665DUBeSWttsJFLf965I+6TtRATHadEAYUdNEaU=; b=kPXxa5z13i3PQT1S/Pij5ceNYO
+	siCvUWOynfLFYZTbpTLXmR270vVvl+Xo/IRjCy7whjL4F/rWKkvCa273Ns+cIV2YLhF2pWw6Cd63t
+	FLJ6n2MY1dYp8hIdOVIJ0hM3hbsKje9TntWCj3aFPbylPEbT+43BB3jLZMp1nY4eyuN+0x96mg/w4
+	kHXSC0rp6wYkHX6jyl1ewmVw3JdpOz52up53+IFDPrr2U3EoC5Aac87clPwXDk0g9ha6f2eQb8kQZ
+	VZaC65xbUtDW1eWbeA+AnN0THmTPkuBuQwq9exNe2xxQMU7XhJxWGkYTaTgNis1qdSQK7v7pvFyLB
+	HXMOzJMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHIM8-0000000GvSH-3Fzy;
-	Fri, 07 Nov 2025 09:02:04 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vHIW5-0000000GwTN-1hD3;
+	Fri, 07 Nov 2025 09:12:21 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHIM6-0000000GvRf-07oX;
-	Fri, 07 Nov 2025 09:02:03 +0000
+	id 1vHIW2-0000000GwRN-3Pns;
+	Fri, 07 Nov 2025 09:12:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762506118;
-	bh=wS/nXim/NyVIVfyxDtGH5DaHltReoroPyVmp5wGin44=;
+	s=mail; t=1762506735;
+	bh=i8bcLE32FSf57bRwMIQrvB0FS0CV25f/s7GHzJcLydY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kw71YCFcDM3FboAdapJIUMulgckTgvjlgS6m9B403bjyEHLIVrgdDONNohVsuDfnN
-	 1lKfOM6hqOcfoAAAAzyejkj1w5Zvev1UyMvWfe9/Fc8sWLfKy56KufeKaArh2DPm9u
-	 m27oguRnwFFKer90nU5xVG+QJ6owens5BJJpO5wctUiEfG41BItEL3AubVU/3/lK2N
-	 ZaFmDoddsAf+ENDCOYRresyBfzR0PGlePvL0M9dpF5PRNqDJRNy/Gb+Kec22+AkdA3
-	 PRxB77za/RqtaAtIV799lB5K/1tlEIVydS9xxbKe49JLu7Cjl2bElzZGe31Hyts4cK
-	 yKuVxnfN9zkUg==
+	b=ZV4g5enhu7yMNXiqcYlHi5Uh8Ct+jfotnXthdw+buHcJBzmP79S01Qv14L4479JWS
+	 chqM3FT3ErebbYQ+XTWXCIK94+/zh40V7IRctnfNG+One7TnwGU9NbOjNfFRhbKc4w
+	 bB1VEhGgtS/Iqp5ripBmfz32PRC7ggxC6ax1NQ8kk28jIi4a2+MnIcBogtW5Vverum
+	 G6HcJHqBmyati/8X3w4V6TU6i2dIm/igLgYc2LhC8bKO3rWf7oqahRte1Lpc94d1qz
+	 lhZoLf26ODR+ipMc/Xsl8yUmLmWN1N69Y//kNWC7Pk4hU+CgU9yXX18OIKyqql2lbn
+	 wTlXeJc6o9IIw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7E21617E090D;
-	Fri,  7 Nov 2025 10:01:57 +0100 (CET)
-Message-ID: <701b6abc-71e8-43fc-adfd-211a62dbec64@collabora.com>
-Date: Fri, 7 Nov 2025 10:01:56 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7211717E12D5;
+	Fri,  7 Nov 2025 10:12:14 +0100 (CET)
+Message-ID: <7642d2bb-f246-41f9-bea8-6211fc2ad176@collabora.com>
+Date: Fri, 7 Nov 2025 10:12:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 0/9] Add support MT6316/6363/MT6373 PMICs regulators
- and MFD
-To: Lee Jones <lee@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com,
- broonie@kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com, wenst@chromium.org,
- igor.belwon@mentallysanemainliners.org
-References: <20251027110527.21002-1-angelogioacchino.delregno@collabora.com>
- <20251106161149.GU8064@google.com>
+Subject: Re: [PATCH 00/13] of: Add wrappers to match root node with OF device
+ ID tables
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Yangtao Li
+ <tiny.windzz@gmail.com>, Chen-Yu Tsai <wens@kernel.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>, Thomas Gleixner
+ <tglx@linutronix.de>, Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Maximilian Luz <luzmaximilian@gmail.com>, Hans de Goede <hansg@kernel.org>,
+ =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+ Daniel Lezcano <daniel.lezcano@kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-arm-msm@vger.kernel.org, platform-driver-x86@vger.kernel.org,
+ linux-tegra@vger.kernel.org
+References: <20251106-b4-of-match-matchine-data-v1-0-d780ea1780c2@linaro.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20251106161149.GU8064@google.com>
+In-Reply-To: <20251106-b4-of-match-matchine-data-v1-0-d780ea1780c2@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251107_010202_252945_634C1077 
-X-CRM114-Status: GOOD (  13.74  )
+X-CRM114-CacheID: sfid-20251107_011219_018439_9080D4CE 
+X-CRM114-Status: GOOD (  15.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,39 +97,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/11/25 17:11, Lee Jones ha scritto:
-> On Mon, 27 Oct 2025, AngeloGioacchino Del Regno wrote:
+Il 06/11/25 20:07, Krzysztof Kozlowski ha scritto:
+> Dependency/merging
+> ==================
+> All patches depend on the first patch, thus everything could go via
+> Rob's tree with people's acks.
 > 
->> Changes in v11:
->>   - Removed unnecessary #address-cells in all mt6316 bindings
->>
->> Changes in v10:
->>   - Added "struct" prefix to structs kerneldoc
->>   - Renamed struct mtk_spmi_pmic_pdata to mtk_spmi_pmic_variant
->>   - Added "REG_" to MT6363/73 mfd register definitions to disambiguate
->>   - Expanded MTK_SPMI_PMIC_IRQ_GROUP macro parameter names as suggested
->>   - Some rewording of comments as suggested, addition of more comments
->>   - Refactored IRQ domain handling due to deprecation of function
->>     irq_domain_add_tree() to use the new irq_domain_create_tree()
->>   - Fixed to use generic_handle_domain_irq_safe() to avoid races
->>   - Added support for two interrupt cells in translation
->>   - Removed .irq_lock() and .irq_unlock() in favor of lockdep classes
->>   - Added support for handling PMICs without IRQ Group register for
->>     upcoming MT6685 implementation
+> Description
+> ===========
+> Several drivers duplicate same code for getting reference to the root
+> node, matching it against 'struct of_device_id' table and getting out
+> the match data from the table entry.
 > 
-> The MFD part looks okay.
+> There is a of_machine_compatible_match() wrapper but it takes array of
+> strings, which is not suitable for many drivers since they want the
+> driver data associated with each compatible.
 > 
-> Let me know when you have all the Acks and the set is ready to be merged.
+> Add two wrappers, similar to existing of_device_get_match_data():
+> 1. of_machine_device_match() doing only matching against 'struct
+>     of_device_id' and returning bool.
+> 2. of_machine_get_match_data() doing the matching and returning
+>     associated driver data for found compatible.
+> 
+> Best regards,
+> Krzysztof
 > 
 
+Makes sense. Whole series is
 
-Lee, the regulators part was picked by Mark, so I guess you can take the MFD part
-through your tree.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-I'm not sure if you can also take patch [7/9] (auxadc binding), but it would be
-great if you could, because there is an auxadc example in the mfd binding that
-needs that commit in order to succeed the binding check.
-
-Cheers,
+Cheers!
 Angelo
+
+> ---
+> Krzysztof Kozlowski (13):
+>        of: Add wrappers to match root node with OF device ID tables
+>        cpufreq: dt-platdev: Simplify with of_machine_get_match_data()
+>        cpufreq: mediatek: Simplify with of_machine_get_match_data()
+>        cpufreq: sun50i: Simplify with of_machine_device_match()
+>        cpufreq: ti: Simplify with of_machine_device_match()
+>        cpuidle: big_little: Simplify with of_machine_device_match()
+>        firmware: qcom: scm: Simplify with of_machine_device_match()
+>        irqchip/atmel-aic: Simplify with of_machine_get_match_data()
+>        platform: surface: Simplify with of_machine_get_match_data()
+>        powercap: dtpm: Simplify with of_machine_get_match_data()
+>        soc: qcom: Simplify with of_machine_get_match_data()
+>        soc: qcom: ubwc: Simplify with of_machine_get_match_data()
+>        soc: tegra: Simplify with of_machine_device_match()
+> 
+>   drivers/cpufreq/cpufreq-dt-platdev.c               | 15 ++-----
+>   drivers/cpufreq/mediatek-cpufreq.c                 | 12 +-----
+>   drivers/cpufreq/sun50i-cpufreq-nvmem.c             | 11 +----
+>   drivers/cpufreq/ti-cpufreq.c                       | 13 +-----
+>   drivers/cpuidle/cpuidle-big_little.c               | 11 +----
+>   drivers/firmware/qcom/qcom_scm.c                   | 17 +-------
+>   drivers/irqchip/irq-atmel-aic-common.c             | 15 ++-----
+>   drivers/of/base.c                                  | 47 ++++++++++++++++++++++
+>   .../platform/surface/surface_aggregator_registry.c | 13 +-----
+>   drivers/powercap/dtpm.c                            | 16 +-------
+>   drivers/soc/qcom/qcom_pd_mapper.c                  | 17 +-------
+>   drivers/soc/qcom/ubwc_config.c                     | 14 ++-----
+>   drivers/soc/tegra/common.c                         | 12 +-----
+>   include/linux/of.h                                 | 13 ++++++
+>   14 files changed, 82 insertions(+), 144 deletions(-)
+> ---
+> base-commit: e5efebeef746a24f45b98dbdfcf334285848b32a
+> change-id: 20251106-b4-of-match-matchine-data-4a64bf046814
+> 
+> Best regards,
+
+
 
