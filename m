@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FDF6CCFA05
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 16:00:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10BA5CCFA05
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 16:09:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:References:In-Reply-To:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wkBMuEFYniV7o/NZEZ9uUf/PpOYiog+if+0C8Zohm+8=; b=GLGnhrQRszR9IkvPudTtiJH7un
-	oiL+3lgMTZrWPV6pXAchsg3pK6U01oap3uUdqyd2YPTP+GoKHbau1bzMPrDkncNOVXxLr2Z8kMciQ
-	5+vudiXQqD32lgGvoxlYpbmxEl4Jo/zaf2WXS5e9gejcml2eL+rdtO+3d8gy+Ybqao5q5+YSGKxEL
-	CJ3zKI+SDMC5GtvfbbUr3sB3hsSJLR1MrR/v2RKuPLUIqfWYTKpcM1WuxRUMOS8ykTDRlCUYXCQkc
-	Kjeq4B+5L2EUodSYPUbmAejRktM2RPwLKN4gZXoB+J6VMhWp4b687613jViG/9/SxL+z57CNGQxrW
-	aZIfzd4w==;
+	bh=fwpXxoU8iEmC+DaN7Cr9PGN8QVIi8rUJqHbS4C13YiQ=; b=c6rUkYSvvHyPa6MgFQPJZJ8x5k
+	aWHBva5QaQoo8kHsi27PEXBYa3upg4MbkaUh6bZwImw33maccH1YBwEWqNKMdyZDmuC58OHg9YLO6
+	zNp6IZlZK3bY2XG4QPJYZtds79OMXIgy34BE0n5pmqbT543W7uEGeGUPxoG+RNLrFRdmfXbMby/gh
+	VEijL6D1WIn/+Q90XU3ZNiwLEfCr6t41aEH6SsunZYJjDZcCIpW0wHY4GNDZls+xxLL7Y53GP5VOU
+	3dtKaux6MoF5Z9wtiFvHJIkgip89HIkiVE4cwCIoJ/OawWxndih5aSKw8IDG0HWBrGj6j6nVC5Wh7
+	hFvwOirA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHOtF-000000002aq-3jGJ;
-	Fri, 07 Nov 2025 16:00:41 +0000
-Received: from mail-ej1-f42.google.com ([209.85.218.42])
+	id 1vHP1c-000000003vg-0nw3;
+	Fri, 07 Nov 2025 16:09:20 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHOtC-000000002ZK-3I6C
-	for linux-mediatek@lists.infradead.org;
-	Fri, 07 Nov 2025 16:00:40 +0000
-Received: by mail-ej1-f42.google.com with SMTP id a640c23a62f3a-b7277324204so160663966b.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 07 Nov 2025 08:00:37 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762531236; x=1763136036;
-        h=cc:to:subject:message-id:date:user-agent:from:references
-         :in-reply-to:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wkBMuEFYniV7o/NZEZ9uUf/PpOYiog+if+0C8Zohm+8=;
-        b=vhjdIzfrfcVvGc90IAkzHra3Q2It9Cd/Hj5+iwLLJe1OeR1VUnRAp6sSu6JCQHuab4
-         8IaYAsSqH7GymURQT3z6+2xA7o7VHAX0UMmXm0hKL/fJoG1myKBQGqQAfJMM0+YkIh+P
-         Uyzshhwct/DRExG7rIhNyjn+ZDdgNlnbMwQxiQD5GPqSeyAhK2RpTEtYA0XVUfngLXSP
-         /hnO1z1z3mKhhWeGqdnda6VKH04/6haF9dsHtFQfOSbNSmzW3qkRdv+ZWojSXEBTLfaf
-         MQAR9sVxmH088Z0j1mPeJVBiqJobXZgjo7eHkll7f64UI+SLXweR/JWO/r9ssF4MKdty
-         7Bkw==
-X-Forwarded-Encrypted: i=1; AJvYcCVn7dQGAdlAAWoTCLA4WaBUsOuUS3Bd7Igd/8SRjivTcIGR8rBtThDYl+tlyZGCCxgzgTaQPG0Nn2FI90pULQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy8PQGXjPnZ/zcr7dwf23OUQDXw7rhy6DUs+gOKqP9/b8MeCZRQ
-	uDQaIhl8zpGl14sWN+3xW/IQdwwTl/P4/r4x8PdU6thFf2tjiVyL/vB/4ZtopMh4mzBMAMs8QAX
-	Q3jt/dHFl7U+kFUS0Isdm4DKK5e4QU+o=
-X-Gm-Gg: ASbGncuGMInBaQBMVAuo3TJzRoPmPF7xNePdrnw2/5ulNCb72Ez10W42V+vbB5XBpJI
-	2y96K+gU36nESyO+r5cojakFAOSNwCg8/L2YRNUXOOQuQvWGQHt7Gge+Hb2facDcP/JX/VKIB2l
-	/S3mLY9pXawc2pg02h7vbTDeP2O2sqJZAKoHzeKBqz6bT53g6V9i2yHxCdvMzMy3XUsJdLjWdod
-	9H7RES8d7445yeM6Eu3ysraIf9+at4bEgg2gpafa/aCOQVe2hQcHgeYh4h1NyFYAKwkyWWEPabL
-	k8A74DSG1RIgG4EMNQ==
-X-Google-Smtp-Source: AGHT+IFOoHBXH/PzewtzvKKUtM610X3TQ1SmT9FLvQyuUDuxyBy4OLhIMpEqweiHRkcJBKlSnsBceRB/zJjkJgVr+9A=
-X-Received: by 2002:a17:906:f582:b0:b70:a9fd:1170 with SMTP id
- a640c23a62f3a-b72c0eef5bfmr340953066b.65.1762531236039; Fri, 07 Nov 2025
- 08:00:36 -0800 (PST)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Fri, 7 Nov 2025 11:00:35 -0500
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Fri, 7 Nov 2025 11:00:35 -0500
+	id 1vHP1Z-000000003us-1eid;
+	Fri, 07 Nov 2025 16:09:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=fwpXxoU8iEmC+DaN7Cr9PGN8QVIi8rUJqHbS4C13YiQ=; b=vn3cbOu+GFQMbus8RTESyhk+QD
+	l4MSz/4gSrLSWpMwTcHMS8POSDqXlYoqW6hd0IVlrkrHN0rw/yZ1S8tjbRotxVZckRVVD5aRb8bPB
+	u2YW04OZjQkWBC/IllYfMqxS3Dir+tyGqw82YW/NF7mlLI684toDkm0bSBsVAcqCbYiV7/jxwioKY
+	+/pe49r2zq2ujlFEiw4kOmyaMOLhRepjPkmnOJVla7Zg8W/csk11yTw9Aw59+2MoFRvcckO8KEMVM
+	IwqMBuTNFDkx39IA961qvS8bRUtzUhe9fuWfVrlXNzSefV5rCz9+Bo9Qr7u3Tve04azN7os0yDbxA
+	N0fCfdkQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:32908)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1vHP1N-000000006sy-0WaB;
+	Fri, 07 Nov 2025 16:09:05 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1vHP1F-000000007hv-1jzX;
+	Fri, 07 Nov 2025 16:08:57 +0000
+Date: Fri, 7 Nov 2025 16:08:57 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Emil Renner Berthing <kernel@esmil.dk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Keguang Zhang <keguang.zhang@gmail.com>,
+	Kevin Hilman <khilman@baylibre.com>,
+	linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Minda Chen <minda.chen@starfivetech.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>, netdev@vger.kernel.org,
+	Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
+	Paolo Abeni <pabeni@redhat.com>
+Subject: Re: [PATCH net-next 11/16] net: stmmac: starfive: use
+ stmmac_get_phy_intf_sel()
+Message-ID: <aQ4ZmXB_eFjKXgIv@shell.armlinux.org.uk>
+References: <aQ4ByErmsnAPSHIL@shell.armlinux.org.uk>
+ <E1vHNSR-0000000DkSt-0wDu@rmk-PC.armlinux.org.uk>
+ <CANBLGczzW+kjvSqYm5YVt+2sdLtgyZfa=fhsU1Q-nUjSVvB4cw@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <E1vHNSR-0000000DkSt-0wDu@rmk-PC.armlinux.org.uk>
-References: <aQ4ByErmsnAPSHIL@shell.armlinux.org.uk> <E1vHNSR-0000000DkSt-0wDu@rmk-PC.armlinux.org.uk>
-From: Emil Renner Berthing <kernel@esmil.dk>
-User-Agent: alot/0.0.0
-Date: Fri, 7 Nov 2025 11:00:35 -0500
-X-Gm-Features: AWmQ_bnSZQW08h0NXQTG6zSRGIlnDRSY70b9JlHXkxjmDNLgOFrMa4uAbMmEPzM
-Message-ID: <CANBLGczzW+kjvSqYm5YVt+2sdLtgyZfa=fhsU1Q-nUjSVvB4cw@mail.gmail.com>
-Subject: Re: [PATCH net-next 11/16] net: stmmac: starfive: use stmmac_get_phy_intf_sel()
-To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, 
-	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Keguang Zhang <keguang.zhang@gmail.com>, Kevin Hilman <khilman@baylibre.com>, 
-	linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Minda Chen <minda.chen@starfivetech.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	netdev@vger.kernel.org, 
-	Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>, Paolo Abeni <pabeni@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CANBLGczzW+kjvSqYm5YVt+2sdLtgyZfa=fhsU1Q-nUjSVvB4cw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251107_080038_828757_D56C85EE 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20251107_080917_437585_B3C27A7A 
+X-CRM114-Status: GOOD (  17.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,42 +99,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Russell King (Oracle) (2025-11-07 15:28:55)
-> Use stmmac_get_phy_intf_sel() to decode the PHY interface mode to the
-> phy_intf_sel value, validate the result and use that to set the
-> control register to select the operating mode for the DWMAC core.
->
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> ---
->  .../ethernet/stmicro/stmmac/dwmac-starfive.c  | 22 +++++--------------
->  1 file changed, 6 insertions(+), 16 deletions(-)
->
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
-> index 1ef72576c6f1..00078b7a6486 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
-> @@ -35,25 +35,15 @@ static int starfive_dwmac_set_mode(struct plat_stmmacenet_data *plat_dat)
->         struct starfive_dwmac *dwmac = plat_dat->bsp_priv;
->         struct regmap *regmap;
->         unsigned int args[2];
-> -       unsigned int mode;
-> +       int phy_intf_sel;
->         int err;
->
-> -       switch (plat_dat->phy_interface) {
-> -       case PHY_INTERFACE_MODE_RMII:
-> -               mode = STARFIVE_DWMAC_PHY_INFT_RMII;
-> -               break;
-> -
-> -       case PHY_INTERFACE_MODE_RGMII:
-> -       case PHY_INTERFACE_MODE_RGMII_ID:
-> -       case PHY_INTERFACE_MODE_RGMII_RXID:
-> -       case PHY_INTERFACE_MODE_RGMII_TXID:
-> -               mode = STARFIVE_DWMAC_PHY_INFT_RGMII;
-> -               break;
+On Fri, Nov 07, 2025 at 11:00:35AM -0500, Emil Renner Berthing wrote:
+> Quoting Russell King (Oracle) (2025-11-07 15:28:55)
+> > Use stmmac_get_phy_intf_sel() to decode the PHY interface mode to the
+> > phy_intf_sel value, validate the result and use that to set the
+> > control register to select the operating mode for the DWMAC core.
+> >
+> > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+> > ---
+> >  .../ethernet/stmicro/stmmac/dwmac-starfive.c  | 22 +++++--------------
+> >  1 file changed, 6 insertions(+), 16 deletions(-)
+> >
+> > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
+> > index 1ef72576c6f1..00078b7a6486 100644
+> > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
+> > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-starfive.c
+> > @@ -35,25 +35,15 @@ static int starfive_dwmac_set_mode(struct plat_stmmacenet_data *plat_dat)
+> >         struct starfive_dwmac *dwmac = plat_dat->bsp_priv;
+> >         struct regmap *regmap;
+> >         unsigned int args[2];
+> > -       unsigned int mode;
+> > +       int phy_intf_sel;
+> >         int err;
+> >
+> > -       switch (plat_dat->phy_interface) {
+> > -       case PHY_INTERFACE_MODE_RMII:
+> > -               mode = STARFIVE_DWMAC_PHY_INFT_RMII;
+> > -               break;
+> > -
+> > -       case PHY_INTERFACE_MODE_RGMII:
+> > -       case PHY_INTERFACE_MODE_RGMII_ID:
+> > -       case PHY_INTERFACE_MODE_RGMII_RXID:
+> > -       case PHY_INTERFACE_MODE_RGMII_TXID:
+> > -               mode = STARFIVE_DWMAC_PHY_INFT_RGMII;
+> > -               break;
+> 
+> After these two patches the STARFIVE_DWMAC_PHY_INFT_RMII and ..RGMII macros are
+> left unused.
 
-After these two patches the STARFIVE_DWMAC_PHY_INFT_RMII and ..RGMII macros are
-left unused. Maybe just squash the patches and remove the definitions?
+Thanks, I'll remove them in this patch.
 
-/Emil
+> Maybe just squash the patches and remove the definitions?
+
+It's two logical changes, thus two patches. Reviewers find that this
+makes it easier to review.
+
+Given the number of platform glues that I'm modifying, I don't want
+to change some of them using one big all encompassing patch and
+others as a set of logical changes - that would be totally insane
+to manage.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
