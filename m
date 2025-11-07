@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B71F6CCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 07:01:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C60FFCCFA05
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Nov 2025 07:02:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nxetypBKwrTuR491kIZvKzu2cDCmb46TXZAzXrxLyXM=; b=tkj4lZsXEutx9rpebaYTF/l4Oh
-	tlGrywWUyr4cw9r8t4fye427DQNAf81nlwtylN/5ETle750q9k3qFkJu1F+PL2vhrIB7Zgzr0/JFa
-	JVXtwrPwXQTUKN9koHox/ADVj0ViwR5vJqlsRPA4stMwM4IinGISi6XtoSCgBYYDx+ExS5XcABhBQ
-	eLLq1mO5kNeiPfVFm8IvQ0tYEjk6py8abfxw+9grM1SkIBclsM1/aHkPG/n6w0ePbTSTwcugH441t
-	+emgH+2054w1bfso6vyWcqRDabKvYmiD31NfTec6fp+FeryfNFaKBSF6jBidIOF/l9dlLizaeJtMM
-	Cx8LcQvQ==;
+	bh=cQXAvugWsd+s6nUwtsH3mf35wynFSvwt4ZYvvCmiAP8=; b=3DBa/+tTgOmCwQfT9OknLpPyWP
+	2SWvvzAQ9xST0535Dj6gWHwier8I9k7bEPrfiRQyhhlvxVyqY2atopj5a47HRyouciVVXYud4kEwI
+	zAWV6vjI/Sg/U4LrqhPxGR4EpFgkI3GBdkn5XPXja3nf2FSwzF7W5Us7MWLtUqP4RYW2kuW+3afo8
+	dC10APyvHamVDifNkRTIusiG4lpzoEAXOPAQ2g2tHONDisBY3ebfLm5735Dj2OkWfAdXGXHL4JgDl
+	r6BSucg4mon6DFpZNrj2r6fRGJO0QaAZlLp0dw3SyFG39a/Ucr03bOJ0UmwUM6cv8fAmgA6rOfasZ
+	gGdV0+zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHGT4-0000000Gl9f-1Yzw;
-	Fri, 07 Nov 2025 07:01:06 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vHGU9-0000000GlP0-3kZn;
+	Fri, 07 Nov 2025 07:02:13 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHGT2-0000000Gl9B-2ads;
-	Fri, 07 Nov 2025 07:01:04 +0000
+	id 1vHGU6-0000000GlNg-0MKL;
+	Fri, 07 Nov 2025 07:02:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 28B0E601BD;
-	Fri,  7 Nov 2025 07:01:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDAA3C4CEF5;
-	Fri,  7 Nov 2025 07:00:55 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id DE9AB433A9;
+	Fri,  7 Nov 2025 07:02:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01BBDC4CEF8;
+	Fri,  7 Nov 2025 07:02:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762498862;
-	bh=7IExaqm9kL4UB43OQoAIA4czN1YbsR6llCUuEMZN6cY=;
+	s=k20201202; t=1762498928;
+	bh=G4CqDOtfxOKTgeFOtwIs7RbRKrnzGiTvRUcznIc1IJs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=J8XoqdpLE8rp/PYaBBYd6XfMVDcLd3HU5zRoWJt3UDy4rykbxSDnbZuyEV/47Ktc3
-	 zHl2NeTYeUxyF1icSPlsq4PbitqEyfLzlBM7J7FC9AuXrx9RoE5YmlchdJfZPkpbxe
-	 917IzWD1yQlVNVbaRmd20aGiMz94MU7lPtEQ/i5ri7gtn//rNsYot0IJvw8Ntk534c
-	 0BzJryQqFbqJnAGBuSZ59Kg/5tbcSXnivWtw5W2j5tV5hWQw7ax74GYCqBCK4K+DFD
-	 tAmu/2e6Efg5v9M6xydZEMyYTfgeBWYvRnKmWQHOXHrP+mqKNKL73d9XAydqPMxQVL
-	 0zAHOfncj/gcQ==
-Message-ID: <aced7337-eabd-4b05-a0d3-eea7079d08ec@kernel.org>
-Date: Fri, 7 Nov 2025 08:00:53 +0100
+	b=binHR/LTPx71bcgUOpp3wHw9VEYHZiJIYpwcCwT+C9Pwl26sij79RYSMEv0KrWSCI
+	 lYNKwlLw9+Pf487HDvLhCAk1IRxCqPT6sNSjOgFCiGoeBk6UHtNrH7hf7UnzuXepav
+	 FovCpkbsIUh3wPcVwMKKWCT/JpTkJv/jsRC4+WThT5aV6pVvWzD9CyiSc8BEbJK0Wx
+	 kqTRtjLEcgK5RF7LMY5KTNz78b0oeXC1QIY2iBZgQlM2hqU1NIk01RvCXZbwq26yCW
+	 Z7O63MTYVs4cMR5bP712CX0TQUkDXPPXjTFGEolrgnWI3dQOQLIGpYwXa4gkXD/k+A
+	 cr3ESFyspUD0Q==
+Message-ID: <a8952b46-94b6-4fe5-a5be-d69aa41d44cd@kernel.org>
+Date: Fri, 7 Nov 2025 08:02:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/13] of: Add wrappers to match root node with OF device
- ID tables
-To: Frank Li <Frank.li@nxp.com>,
+Subject: Re: [PATCH 11/13] soc: qcom: Simplify with
+ of_machine_get_match_data()
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
  "Rafael J. Wysocki" <rafael@kernel.org>,
@@ -74,8 +74,8 @@ Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
  linux-sunxi@lists.linux.dev, linux-arm-msm@vger.kernel.org,
  platform-driver-x86@vger.kernel.org, linux-tegra@vger.kernel.org
 References: <20251106-b4-of-match-matchine-data-v1-0-d780ea1780c2@linaro.org>
- <20251106-b4-of-match-matchine-data-v1-1-d780ea1780c2@linaro.org>
- <aQz8rW9GE66xPYrL@lizhi-Precision-Tower-5810>
+ <20251106-b4-of-match-matchine-data-v1-11-d780ea1780c2@linaro.org>
+ <odmsib3dsxzzggq4gcx7gmh6vq3crlv25fz4z2l2ntezvx6gbi@uelqojwjjait>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -121,9 +121,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <aQz8rW9GE66xPYrL@lizhi-Precision-Tower-5810>
+In-Reply-To: <odmsib3dsxzzggq4gcx7gmh6vq3crlv25fz4z2l2ntezvx6gbi@uelqojwjjait>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251106_230210_173164_EFCA8A21 
+X-CRM114-Status: GOOD (  19.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,62 +141,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06/11/2025 20:53, Frank Li wrote:
-> On Thu, Nov 06, 2025 at 08:07:08PM +0100, Krzysztof Kozlowski wrote:
->> Several drivers duplicate same code for getting reference to the root
->> node, matching it against 'struct of_device_id' table and getting out
->> the match data from the table entry.
->>
->> There is a of_machine_compatible_match() wrapper but it takes array of
->> strings, which is not suitable for many drivers since they want the
->> driver data associated with each compatible.
->>
->> Add two wrappers, similar to existing of_device_get_match_data():
->> 1. of_machine_device_match() doing only matching against 'struct
->>    of_device_id' and returning bool.
->> 2. of_machine_get_match_data() doing the matching and returning
->>    associated driver data for found compatible.
+On 07/11/2025 04:19, Dmitry Baryshkov wrote:
+> On Thu, Nov 06, 2025 at 08:07:18PM +0100, Krzysztof Kozlowski wrote:
+>> Replace open-coded getting root OF node, matching against it and getting
+>> the match data with new of_machine_get_match_data() helper.
 >>
 >> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 >>
 >> ---
 >>
->> All further patches depend on this.
+>> Depends on the first OF patch.
 >> ---
-> 
-> ...
+>>  drivers/soc/qcom/qcom_pd_mapper.c | 17 ++---------------
+>>  1 file changed, 2 insertions(+), 15 deletions(-)
 >>
->> +/**
->> + * of_machine_device_match - Test root of device tree against a of_device_id array
->> + * @matches:	NULL terminated array of of_device_id match structures to search in
->> + *
->> + * Returns true if the root node has any of the given compatible values in its
->> + * compatible property.
->> + */
->> +bool of_machine_device_match(const struct of_device_id *matches)
+>> diff --git a/drivers/soc/qcom/qcom_pd_mapper.c b/drivers/soc/qcom/qcom_pd_mapper.c
+>> index 1bcbe69688d2..07198d44b559 100644
+>> --- a/drivers/soc/qcom/qcom_pd_mapper.c
+>> +++ b/drivers/soc/qcom/qcom_pd_mapper.c
+>> @@ -613,25 +613,12 @@ static void qcom_pdm_stop(struct qcom_pdm_data *data)
+>>  static struct qcom_pdm_data *qcom_pdm_start(void)
+>>  {
+>>  	const struct qcom_pdm_domain_data * const *domains;
+>> -	const struct of_device_id *match;
+>>  	struct qcom_pdm_data *data;
+>> -	struct device_node *root;
+>>  	int ret, i;
+>>  
+>> -	root = of_find_node_by_path("/");
+>> -	if (!root)
+>> -		return ERR_PTR(-ENODEV);
+>> -
+>> -	match = of_match_node(qcom_pdm_domains, root);
+>> -	of_node_put(root);
+>> -	if (!match) {
+>> -		pr_notice("PDM: no support for the platform, userspace daemon might be required.\n");
+>> -		return ERR_PTR(-ENODEV);
+>> -	}
+>> -
+>> -	domains = match->data;
+>> +	domains = of_machine_get_match_data(qcom_pdm_domains);
+>>  	if (!domains) {
+>> -		pr_debug("PDM: no domains\n");
+>> +		pr_notice("PDM: no support for the platform or no domains, userspace daemon might be required.\n");
+>>  		return ERR_PTR(-ENODEV);
+>>  	}
 > 
-> Will it be more useful if pass down path
+> Here you are mixing two cases:
+> - There is not match in the table (in which case the driver should print
+>   a notice)
+> 
+> - There is a match in the table, but the data is NULL (the platform
+>   doesn't have PDM domains). In this case there should be no notice.
 
-Path is fixed, there is no point to pass it. If you claim otherwise,
-please bring example what benefits would it bring, instead of just
-asking nitpicking questions.
 
-> 
-> of_machine_device_match(const char* path, const struct of_device_id *matches)
-> 
-> caller just pass "\", or NULL point as root
-> 
->> +{
->> +	struct device_node *root;
->> +	const struct of_device_id *match = NULL;
->> +
->> +	root = of_find_node_by_path("/");
-> 
-> Use clean up will simplify code
-> 
-> 	struct device_node *root = __free(device_node) = of_find_node_by_path("/");
-Not much difference. Look at existing code first. This should not
-introduce different style.
+Why? Existing code printed notice in both cases. Why refactoring which
+tries to keep code functionally equivalent should change it?
+
 
 Best regards,
 Krzysztof
