@@ -4,95 +4,158 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CEEACCFA18
-	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Nov 2025 12:31:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 985ECCCFA18
+	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Nov 2025 14:38:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jFqjvE99b45pu2oCz9ajTBa0meyTTID/k0aUamXBwSM=; b=a/JRXO1UMTm/26BqHM5gjmxkVH
-	KXJNTZlNF7udHiaJEX2baO2x09Q5ZCk88b7C+2iOW+QviiCQFR9WHq8t3ZJMwRrP/0rat9S3csLSE
-	1mgWWhFXEjEocew9Fr6ztQETZFPcUAh6C50O1nkPsmmE1zAmeFIJqL7VIDhlFiily1VPTln+vPjT2
-	OurT6HHjv6g/fEoaCXYxHgdzSpFldQd+b8TmcL8a7MoUg0rIE0eb5CFd0HI1FbU4nSEIXS04BGXj1
-	Bdb9xySQf4oBfz/qv+kQ+sR/TxyVKuWg0BVJrg10859jM76uVLo3nLQjuT0JS8oPCfHMUJGfHDlV8
-	K4Dskj2Q==;
+	bh=CjskvN6jH7m+Duu1eq+hr6O2GRgMWF9LB47syyf4F5w=; b=i8t/mLjmFgwRI6/CGdr2wSakAo
+	y6MI3ColxAFCbYGv+QbE/qYzIvSM/NJeWDr1laBDq0IwcMjsgPIwWhtDWnlDXU89mkdCSJE/eHoSV
+	Z18Bbw5npuL1T2S1xF+A+BDB1e0+htQO0CRQcCjPC2aLbDlJzm5RoGO8UPuPolsrycEoP+ue9qq9S
+	dt6cAFv3WGPFkpzmH0hQPkH23A9tMH8G35ZeeydsSCi4gIgECoSWKWTsqCez6gM5gDcewwjjsYgEZ
+	zAphex0OWXPPrUX8oxfIjPWVdRDk49Llg53zDvhiryU5nr9UPtWmO9jd0C1ixuny6kU1zXSxS9GrC
+	ve7aH1oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHi6J-000000037AB-2QDS;
-	Sat, 08 Nov 2025 12:31:27 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1vHk5E-00000003CDq-0NCN;
+	Sat, 08 Nov 2025 14:38:28 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHi6G-0000000377y-0zTM
+	id 1vHk5A-00000003CD1-2TGy
 	for linux-mediatek@lists.infradead.org;
-	Sat, 08 Nov 2025 12:31:25 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-3436a97f092so886257a91.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 08 Nov 2025 04:31:24 -0800 (PST)
+	Sat, 08 Nov 2025 14:38:26 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-429c84bf326so117529f8f.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 08 Nov 2025 06:38:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20230601; t=1762605083; x=1763209883; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=jFqjvE99b45pu2oCz9ajTBa0meyTTID/k0aUamXBwSM=;
-        b=fIf3w2bVAq5YPmJUA5shFinG41AWqtA8AJ+wOdu6FDdFKb4bFzCoRSv2zscTXlHI9P
-         uyA69YFj5QM78PX3FsfqYpO4eVCCzv/jBnJRPVfScrom5RNjPdjn7t7rvTTRu/23y/HP
-         UDhdReVDcHcamhCKS2saDgsyiM59bxAH1aVL2Yyh94YEqAkavPusUmK7YR/3xS6LK0Ot
-         9s1rt+1mVPIXRhMpoT2g3PPMcyauZVOIRXJb/X7luStQhiD4q057CkEp3dHZf/k0iAkn
-         3Q37nk51SLy4BXqEQ8NMO3C2wQvi2v2bz22iDsiTg+DaJimCBId47SsQb147ipow31m4
-         e+gw==
+        d=linaro.org; s=google; t=1762612702; x=1763217502; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=CjskvN6jH7m+Duu1eq+hr6O2GRgMWF9LB47syyf4F5w=;
+        b=MAQ7sYXyoYH9FrapJPCTn/q0j1M9nvoIY4q0Hc19oVdpewa7Cd+NmKA3FpC31O/PrF
+         vA1X0IK+8h6HEJg7AAFThGKLZnR1K1lADdMFuKseesb1Vi/nPsQopxJZNwnqgToWdFqV
+         iRFIdA3EWiwoGhxC1hifyqz3JHUlz1JmUZcLMWDrAWWHpHfRmq/79StT1zoQlrXDtxzU
+         eGJrzvrOsAzDkgKrD3vsTNRSuDTOwjvzymQ21ASgWboud4BattXuG2V+Z9I0HA9XVXAw
+         C7auZ14y8suE9wRU5H72tUtEukILYeXL1cw0s0d3mQP86C2WsHIsyctc3e9KU1EFcbLj
+         KBJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762605083; x=1763209883;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=jFqjvE99b45pu2oCz9ajTBa0meyTTID/k0aUamXBwSM=;
-        b=kBd7r2lt1bPeuy/GtCM129SPdBfE+gk2dR7m6wLrVRqs9nG0fQxO3KaxutTvNuU2WS
-         fOch1WzihXY092LaRiCB41wTUl0Ie4iUPOQr/+ljg12KRKGXYAqFw78V6tOFjG9y0atS
-         Kwf07CmnAbyUe8KWx0ZHXwmDGrBYJtuF4h4uf/Bjg9SUpw9SkjxpYIYcSUGVS/wprIEJ
-         j/UmrgLD6DtpjBrRPQ3kcZSUSqT05vftGM21leHD6NONPJfGHVSMCIwhmuPkVa2f9lp0
-         c7zp6vLNQDqflEjNmkK8KQLrusSQVVj0/h/qhSG65oMPGekH+iiTFS09Vmh1ZUQv+SyG
-         FRJQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXgCwBylJhWxdCY6V7tIhWtnfBR5/DuJNFiDmBeVMYg5fAbZkh3nyUzPiMdyepIW5+5bzPVTiN/tBxspHwShQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzQ8X2esmydoVQwLFm5zZkxaU/nyxJT7B0pggoMZ3Dlzf8W3hkq
-	29uttCl7ZeJ32z85K3oKvQPGIyFzSO2G7Rl4qui8vg20X2RBEmlGNNJB2xAfJZ7zHqVlu7aIWHI
-	G6e0wN0HesorB+NOhg6oldYV3DiXGDQ0=
-X-Gm-Gg: ASbGncsm9zhsTwv/BKB7qhS7TTW6YIUxPhJaLF08r/X1WYKNVxA8pw5/iI73HqCoOHc
-	oyOeaXjaxSxVLml5cCFN0MmafG1zMRQjTavxrKuIroJubBslapJSbBJ0WLvPgu6OJz9Yu4ipCLu
-	X5JAz5R8qoGD9SFbqzQj8uuItPKMDLGoxTHSlfvUj7hjU2N/I4LJnbGppiQwVHV8uP0UCErO4S/
-	y8j4O8aZvCdS9patYhegg+bvbWe6EDgLa9Yb2WWXcsu1cI5ysjXJI9ZoDXRyE/X032Bg4E/RWMj
-	fM7LrkpnI6LxZcmhahBvIIejSrrrzuaxqJRq7g==
-X-Google-Smtp-Source: AGHT+IHx494bsoHJaju4RengP4iXpGRFmMQLliiMWy2Q89R/cSWBMiB3q+hcgQyoomcv+0z0cS+rAooMlyw+VCTekJU=
-X-Received: by 2002:a17:902:f791:b0:297:dfc8:8fd with SMTP id
- d9443c01a7336-297e571236dmr29139155ad.51.1762605083407; Sat, 08 Nov 2025
- 04:31:23 -0800 (PST)
+        d=1e100.net; s=20230601; t=1762612702; x=1763217502;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=CjskvN6jH7m+Duu1eq+hr6O2GRgMWF9LB47syyf4F5w=;
+        b=apH2ej8CaUQKrsx1K8Aur9LkWuKz3q/tAryiHJmr//bOstpYylJ4w6BbiJRMouyBaB
+         IFhn+RZTzaLtvUxHQtSIdKt0pzHoRvGAj2g2TdVhlxdT4BS6OiNVaJ+vHqAgeTwD0IiU
+         cKvoOZfCpSbHqeIdQBbLpUauHF0sGp62AMN6OS5vkl2l6kT10NH9F15/AVNTWaN90FE9
+         HuGj4GcAR1vD8SebT5WMQb33k4XUQcAa4Oyxh76MKs99/PZNaPMYdsvvfe/9jzanKX1W
+         KExwoLUFoBY287WKY85DbWfDkzrFKElIvgqXxvha6Lf5gsd0zXX9ZY+R9Pl9H/k1DuOv
+         cBiQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWJMjJGyNWoGb+b9ea9TAkl1TPAGS2gnpU4IKv08sXQkwpDo4XH0NewS49k/6GCS1WFFQ64JXON9iLk2ZI3iQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyQOxhi3MbOLLOZ85fqAMWgLJvEae4u/1ifP6Oze/2a/TGUKFRj
+	wjvI/awFx6xMM0YmKr8LBeXyOqtfK+Yfqjo5dq7kbTb7znMFWHajCcjRkbKiBUt+2TI=
+X-Gm-Gg: ASbGnctvX3oJHJVLswlnkZ/kQ7X/tPRPWDvFwQ7bwplQGH69gOuv0grrWBt9kinnOQD
+	/l/BChgE+GFhIrk16jPKFp0pdmGQf0oztqkTdM518rPsQG80CFDlJMBBW8goRmWnU7V2157/lxH
+	tbduWOLozctM7Cboa5Y00XJJnxoSXP1YXVNh6lsdgH9BrlttpFTmYYUFv5zV941AeYwy+Panwtk
+	/DV862g6KJadSgJ7hQC40tzEB6SciNLrAhh487WH7ylxrC0m13jjYnmM0X1mUaz55AaS9gUN/GG
+	uUyoBaWjQMAW4YEnGe8Z7v6R6+lpoLgxQpNRDnz+ktWL9ZqbIjgOGd7ViZBJzRXyyQiiBqz29Eo
+	JtR0iDiC2YZMNOwOBX/7XGW6i9r4gDfsak3o00aNN3cRuOO09eKbxnwn3Mlth25lNchkU/LgH6T
+	RhxeA8TBAIGREPFOvktEOOtd5Qp7oGSgo=
+X-Google-Smtp-Source: AGHT+IFiBiRhpsly3YGEqjvxj+Py3Q4DK+JCa0siSF6z5aJmBhaLltU7plhNOwZpv/U5i5Vxxf3qew==
+X-Received: by 2002:a05:600c:4ed1:b0:477:bb0:5e13 with SMTP id 5b1f17b1804b1-477732aa00amr11266585e9.8.1762612701759;
+        Sat, 08 Nov 2025 06:38:21 -0800 (PST)
+Received: from [192.168.1.29] ([178.197.219.123])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4776a278a32sm56562505e9.12.2025.11.08.06.38.19
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 08 Nov 2025 06:38:20 -0800 (PST)
+Message-ID: <07cbc020-ece3-4483-b078-c265e3400d2b@linaro.org>
+Date: Sat, 8 Nov 2025 15:38:18 +0100
 MIME-Version: 1.0
-References: <aQ4ByErmsnAPSHIL@shell.armlinux.org.uk> <E1vHNSG-0000000DkSh-4BIj@rmk-PC.armlinux.org.uk>
-In-Reply-To: <E1vHNSG-0000000DkSh-4BIj@rmk-PC.armlinux.org.uk>
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Sat, 8 Nov 2025 13:31:12 +0100
-X-Gm-Features: AWmQ_bn_kIDv-pwz4dNwmzBqCanYs2atUFgMMshyNEi0RKuzPdaQ1v4towlIcoM
-Message-ID: <CAFBinCBp1x3KWe-5mWoGwFEVxEoSKhTXKYfGgNKS-eDsbW8X+A@mail.gmail.com>
-Subject: Re: [PATCH net-next 09/16] net: stmmac: meson8b: use stmmac_get_phy_intf_sel()
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"David S. Miller" <davem@davemloft.net>, Emil Renner Berthing <kernel@esmil.dk>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
-	Jerome Brunet <jbrunet@baylibre.com>, Keguang Zhang <keguang.zhang@gmail.com>, 
-	Kevin Hilman <khilman@baylibre.com>, linux-amlogic@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-mips@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Minda Chen <minda.chen@starfivetech.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	netdev@vger.kernel.org, 
-	Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>, Paolo Abeni <pabeni@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 05/13] cpufreq: ti: Simplify with
+ of_machine_device_match()
+To: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Yangtao Li <tiny.windzz@gmail.com>, Chen-Yu Tsai <wens@kernel.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>, Thomas Gleixner
+ <tglx@linutronix.de>, Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Maximilian Luz <luzmaximilian@gmail.com>, Hans de Goede <hansg@kernel.org>,
+ =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+ Daniel Lezcano <daniel.lezcano@kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-arm-msm@vger.kernel.org, platform-driver-x86@vger.kernel.org,
+ linux-tegra@vger.kernel.org
+References: <20251106-b4-of-match-matchine-data-v1-0-d780ea1780c2@linaro.org>
+ <20251106-b4-of-match-matchine-data-v1-5-d780ea1780c2@linaro.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Content-Language: en-US
+Autocrypt: addr=krzysztof.kozlowski@linaro.org; keydata=
+ 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
+ 2+47PN9NZAOyb771QoVr8A==
+In-Reply-To: <20251106-b4-of-match-matchine-data-v1-5-d780ea1780c2@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251108_043124_310966_E8ADC473 
-X-CRM114-Status: UNSURE (   7.75  )
+X-CRM114-CacheID: sfid-20251108_063824_734451_9447BB5D 
+X-CRM114-Status: UNSURE (   9.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,13 +171,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 7, 2025 at 3:29=E2=80=AFPM Russell King (Oracle)
-<rmk+kernel@armlinux.org.uk> wrote:
->
-> Use stmmac_get_phy_intf_sel() to decode the PHY interface mode to the
-> phy_intf_sel value, validate the result and use that to set the
-> control register to select the operating mode for the DWMAC core.
->
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-Reviewed-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+On 06/11/2025 20:07, Krzysztof Kozlowski wrote:
+>  static int ti_cpufreq_probe(struct platform_device *pdev)
+>  {
+>  	u32 version[VERSION_COUNT];
+> @@ -564,8 +554,7 @@ static int __init ti_cpufreq_init(void)
+>  	const struct of_device_id *match;
+>  
+>  	/* Check to ensure we are on a compatible platform */
+> -	match = ti_cpufreq_match_node();
+> -	if (match)
+> +	if (of_machine_device_match(ti_cpufreq_of_match))
+>  		platform_device_register_data(NULL, "ti-cpufreq", -1, match,
+>  					      sizeof(*match));
+
+This is obviously wrong patch... weird my W=1 builds did not flag it.
+
+Best regards,
+Krzysztof
 
