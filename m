@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44439CCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Nov 2025 01:11:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76D2DCCF9F8
+	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Nov 2025 03:01:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uw+10nODLIflAfodQe8dvj5XlG0jHvUDYnAtuW1+hpc=; b=yEaLR6USp/buvt7Ea84v8nuKbx
-	NxznqL/jldNH3RrWgrLTmYIc1HGgjUcEv5ba/rvjTkittyY/Bw+MMMqIef9Aw9IPRz+7uNCooPWtQ
-	Ru5RX8wbQ4/mDXKwUgH627PNd8jEj+A+RHUdHG44znLhQItAgHEaiCd7GjyTPFi8eWD4vV+ip5JKP
-	8Nf9iRyRruap7wnyTA/qPGRhuP047NlcjogmXQ/yFTyibBlOz5VJzkB6YeBTA8GhXNOdKiqcuIojh
-	/o3v5qulFPPsXJZXM7M3qDYD05k/IPxRX9CVw7uI5pH0CsQp9MDB0xBM4LNnbDSTK45hRyN2ehYYr
-	b8WsN0Cw==;
+	bh=sB2ioxHCNI5b6MHRv2+Us9SQhASeWWSYUz/U+g9J0Oc=; b=Ex187F+9hZMTT1hXDBbuthc23N
+	2pselnUSiSA57LRmJocagkwreb2XCMFDyGPiridaKk5Wzj3KwRjsreJ7uQVL7Bd7ufeAnngK/odXi
+	kkExUUDO55tuqgr1ENtQgJSb2U2NZQxf9KTqiohqBE1yfrGuzkRYckf6qvM8Jmpp+8o/EcYOj7mW3
+	XlKa8Gc9e+IXAehe4PPjK2iof7lLdB1UG3azY42nLqO9dte8zlEuUQPowP/C525u/o2e+5f1pOHDz
+	qJdqEMjE5dfz9T2Cszw4T6fAoYRcZWwf5dniVlAkbb1AVWgCBRfbh74NwU3kmxyt3XXZOai4iaSEp
+	Z6Bghoog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHXTy-00000001tMl-0Os9;
-	Sat, 08 Nov 2025 01:11:10 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vHZCD-00000002EMS-3RlV;
+	Sat, 08 Nov 2025 03:00:57 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHXTu-00000001tLX-1jMs;
-	Sat, 08 Nov 2025 01:11:08 +0000
+	id 1vHZCC-00000002ELZ-1gZB;
+	Sat, 08 Nov 2025 03:00:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E2DAE417ED;
-	Sat,  8 Nov 2025 01:11:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BC35C4CEF7;
-	Sat,  8 Nov 2025 01:11:04 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 894A0601CF;
+	Sat,  8 Nov 2025 03:00:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56FB7C116C6;
+	Sat,  8 Nov 2025 03:00:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762564264;
-	bh=vKvPEc0OL56xvPcMsxJFQrmcCo4e6Q05X9tUYOSx5KQ=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=owVNnjE7rpsR/fXVy5i3r/TrRDPynfRnlN1NADbVrhl52cS7clwQNTMMG1PYBZwd6
-	 zsN/QkKp8g1wByCaab8YVZtJ1w/idgxBkfjBShJJDFjUwCll9g4fMp9a7E0EI5CY9l
-	 hqx5OdAayvLn/LCYNF2xJ08qSVXJxter+bNwOI3A0h9EyQQBpILa/PhjzqBGgs7I0r
-	 jZ09zNxBF8kj4s1sBU+w64/djiAKf+YWm47XsO2LGLr7gX9WXQqHQSkVTBJpn6MLmN
-	 PuknKC7EFvyrraIzHidgPob8im5tyr7Acns0XfzuwqTYPkWuYuKC7PbX4LwwxwIcxZ
-	 0Rt7Y1X3QxvTA==
-Date: Fri, 7 Nov 2025 17:11:03 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Eric Dumazet <edumazet@google.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Paolo Abeni <pabeni@redhat.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Add TCP LRO support
-Message-ID: <20251107171103.2ecda810@kernel.org>
-In-Reply-To: <aQ30WmbN_O60vEzl@lore-desk>
-References: <20250610-airoha-eth-lro-v1-1-3b128c407fd8@kernel.org>
-	<CANn89iJsNWkWzAJbOvaBNjozuLOQBcpVo1bnvfeGq5Zm6h9e=Q@mail.gmail.com>
-	<aEg1lvstEFgiZST1@lore-rh-laptop>
-	<20250611173626.54f2cf58@kernel.org>
-	<aEtAZq8Th7nOdakk@lore-rh-laptop>
-	<20250612155721.4bb76ab1@kernel.org>
-	<aFATYATliil63D5R@lore-desk>
-	<aQR2Z51Q45Zl99m_@lore-desk>
-	<20251031111641.08471c44@kernel.org>
-	<aQ30WmbN_O60vEzl@lore-desk>
+	s=k20201202; t=1762570855;
+	bh=00lq9mTgEdaXm1TiWcCpC7BbocJlckplKnaVhHwJplM=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=WrXYuzHz+2VPuTxZOOasO4YmKvVFeGcQqABRgyeUpsFxX6T9r8WvQHxpZmMS7CyQh
+	 2TLiKu467MaK6QgEzctbpSOlWVBO6EGWdfkfFVlsBNaFACW8fbN4OlKeQi4ITKSlbn
+	 xiZCDO0urPGyDRtNhiI5xB8Q24JdTflW12qzWzFyN4kO1bevBTJnTZMweSjLDDW0yR
+	 zbpYtAyu/S3g5YteRfxNhk/dCry4xNSnJAxC1wCWzOndoo/SlaAGKESpUvKH8tdXyr
+	 2108EsZJP+FW7HfytpBtcB3avviqe085krqJ4+BiqRlSQnIp2oi6eNZ9aEnD2FpPq9
+	 6Gr7wTk2+DeJw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id ADCDC3A40FCA;
+	Sat,  8 Nov 2025 03:00:28 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251107_171106_497002_2D7A2AB7 
-X-CRM114-Status: GOOD (  21.24  )
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v2] net: airoha: Add the capability to consume
+ out-of-order DMA tx descriptors
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <176257082729.1232193.2974398557983419520.git-patchwork-notify@kernel.org>
+Date: Sat, 08 Nov 2025 03:00:27 +0000
+References: <20251106-airoha-tx-linked-list-v2-1-0706d4a322bd@kernel.org>
+In-Reply-To: <20251106-airoha-tx-linked-list-v2-1-0706d4a322bd@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ xuegang.lu@airoha.com, jacob.e.keller@intel.com
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,44 +73,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 7 Nov 2025 14:30:02 +0100 Lorenzo Bianconi wrote:
-> > On Fri, 31 Oct 2025 09:42:15 +0100 Lorenzo Bianconi wrote:  
-> > > Sorry for the late reply about this item.
-> > > I carried out some comparison tests between GRO-only and GRO+LRO with order-2
-> > > pages [0]. The system is using a 2.5Gbps link. The device is receiving a single TCP
-> > > stream. MTU is set to 1500B.
-> > > 
-> > > - GRO only:			~1.6Gbps
-> > > - GRO+LRO (order-2 pages):	~2.1Gbps
-> > > 
-> > > In both cases we can't reach the line-rate. Do you think the difference can justify
-> > > the hw LRO support? Thanks in advance.
-> > >  
-> > > [0] the hw LRO requires contiguous memory pages to work. I reduced the size to
-> > > order-2 from order-5 (original implementation).  
-> > 
-> > I think we're mostly advising about real world implications of 
-> > the approach rather than nacking. I can't say for sure if potentially
-> > terrible skb->len/skb->truesize ratio will matter for a router
-> > application. Maybe not.
-> > 
-> > BTW is the device doing header-data split or the LRO frame has headers
-> > and payload in a single buffer?  
+Hello:
+
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Thu, 06 Nov 2025 13:53:23 +0100 you wrote:
+> EN7581 and AN7583 SoCs are capable of DMA mapping non-linear tx skbs on
+> non-consecutive DMA descriptors. This feature is useful when multiple
+> flows are queued on the same hw tx queue since it allows to fully utilize
+> the available tx DMA descriptors and to avoid the starvation of
+> high-priority flow we have in the current codebase due to head-of-line
+> blocking introduced by low-priority flows.
 > 
-> According to my understanding the hw LRO is limited to a single order-x page
-> containing both the headers and the payload (the hw LRO module is not capable
-> of splitting the aggregated TCP segment over multiple pages).
-> What we could do is disable hw LRO by default and feed hw rx queues with
-> order-0 pages (current implementation). If the user enables hw LRO, we will
-> free order-0 pages linked to the rx DMA descriptors and allocate order-x pages
-> (e.g. order-2) for hw LRO queues. Disabling hw LRO will switch back to order-0
-> pages.
+> [...]
 
-Are all packets LRO-sized when it's enabled? What you describe is
-definitely good, bur I was wondering if we can also use rx-buf-len
-to let user select the size / order of the LRO buffers.
+Here is the summary with links:
+  - [net-next,v2] net: airoha: Add the capability to consume out-of-order DMA tx descriptors
+    https://git.kernel.org/netdev/net-next/c/3f47e67dff1f
 
-But the definition of rx-buf-len is that it's for _all_ rx buffers
-on given queue. We'd probably need a new param if the pages are
-just for lro
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
