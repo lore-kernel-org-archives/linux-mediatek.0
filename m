@@ -4,54 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44289CCFA13
-	for <linux-mediatek@archiver.kernel.org>; Sat,  8 Nov 2025 20:42:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F107BCCFA13
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Nov 2025 16:39:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:From:To:Date:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rvz22euyiQuemd7gE2/WyX9KUivWOzw/dV0pveuzV0I=; b=HoGwaeBh/iKqVwa+PAKqy0UF9x
-	DcMceHbf4EpMX86+BsFCEvaVx6j4X+j0IvjFQfqi6/r7eBUw12+WY8Cbmv8yGVY1z98rMkU1H55bE
-	FsGOIYPT9NIcc8MCdRAzqJz6hGkfJTUiUJT2PASUkIlSJOrr06XPNBkWDCbjakX5eaWV5zHW7N+to
-	RqZxmrP+MNjcUpKYXp1MpnUTbr0w+w+BtleDMs2FAdjASC+VEar+v/AteBaGp6LLydOLmA7huNgKi
-	UO1ClTIudr4SrfwuisJMhUCaCSK0nSSrVEdBqC2589slvT2PzNzRcOVH7JixN8XS9dtWlbtM/Qe+c
-	GKQ4/pNQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZPRMEMcp2dhUGBHSuTRmxmLz/+slEndBNL5XpFqtZ1U=; b=couQH0SJOlggg12Ck+z265QEvj
+	N1EuUz3kZUYo+1r+nxzap6dAw4Wt39ChZeVzG6BDXdp087Cc/GoUxS3Q6dMKrwtphJ3DBUuqIHWeQ
+	QtNGK6GPJFflDLQmtmpTUpFTCg42BWGXocaYZsk0QUpp5MIKxAD8xd4gupRR2kMQ8BlJAJa3tbU/g
+	+jMJSVf8hPH+n3wQ/IfBdgTSH1oPPfpFJDuEapwAJGFooN4FDOPKiWRAk9GO9O16iSaWveEZnYrxw
+	wKHR/2diU4Mh/D9bQNipNZYP35r7BgsZXZEdNIr5cnkHgrYDO5arlQfyT6IhToeeLurWLmoMl3rRC
+	Phum2EYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHpls-00000003S5H-2L9S;
-	Sat, 08 Nov 2025 20:42:52 +0000
-Received: from mail-24427.protonmail.ch ([109.224.244.27])
+	id 1vI8Ra-00000004A0A-1RYc;
+	Sun, 09 Nov 2025 16:39:10 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vHplp-00000003S4m-3bXP
-	for linux-mediatek@lists.infradead.org;
-	Sat, 08 Nov 2025 20:42:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1762634556; x=1762893756;
-	bh=rvz22euyiQuemd7gE2/WyX9KUivWOzw/dV0pveuzV0I=;
-	h=Date:To:From:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
-	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
-	b=KCCnmSDVrZiGE8SSJgvbsc7+5EIn4h8GCGTdtf0z4B1Rxnnf4vyJPLK3hvKsimtC7
-	 bQNvTy5fg2jxCPt3Re2RWJzKQDjjAS3LTkTCsAkfv35iucavrJ9r5opx7sZd4sPerH
-	 rMU9Rm/IWUGCFFdplz0D7HEUiWnWmjGaFmz1U3rrG7KgbiiSLxV8v+ZvqqAkA+gVXi
-	 JOqu+ETsFEakRBe+0v9YE2kMhLITJovktRWup3MLBtBPP03kCVRqyIkOPeEjkyEMBP
-	 SWyNkHjZnZ9RqozFoDulaS4mE/KCyx+KR0GMfR7HfLfMhWFbnQ3pOXF8Ux1owTIiD3
-	 uSQWioot5Se9g==
-Date: Sat, 08 Nov 2025 20:42:31 +0000
-To: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-From: "olivier.perardelle" <olivier.perardelle@protonmail.com>
-Subject: [DRIVER REQUEST] Status and development plan for MediaTek MT7927 chipset
-Message-ID: <HQybgWTYrvKIrFPV4I0eMUz6ppxBw5slyhVQ8KRKxEg1ZkVkQYKjP7ggfQUDQk_a5bQ_1hXkylnIdv5jq0NTEODzuNeVOiPlAvQop2AZTTE=@protonmail.com>
-Feedback-ID: 6491766:user:proton
-X-Pm-Message-ID: 468efb95342101b26cb1ef375adce661723f3c28
+	id 1vI8RW-000000049z5-1PZ0;
+	Sun, 09 Nov 2025 16:39:08 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 082504E415EB;
+	Sun,  9 Nov 2025 16:39:01 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id BCD0D606F5;
+	Sun,  9 Nov 2025 16:39:00 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 66E9011853189;
+	Sun,  9 Nov 2025 17:38:46 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1762706339; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=ZPRMEMcp2dhUGBHSuTRmxmLz/+slEndBNL5XpFqtZ1U=;
+	b=aIoKA3TZ8t6K+Vrshq3NfDorKiZuRejrlRcVM0UIqysbh10hoVWL/cFDQhnbe6lSgmOWR0
+	uarz8vGDSht8iVMcwkPYyBxJjPFdP7M6zXkR37d8DrJIdoZygxRdQq+7li1H0hHStZwqWR
+	daNbvdSgrgRc7RjtZdrQcXdI8UR0Aph/BG+sFxJJTMPqR/sWkHAj6VUwTAXQK8OSr8e/Mr
+	KGNYX84FHVQkFyJhxmFq51m5AWO/5263nSruhA8vU2zzrFNPt2eFYtVdJFTHqJkYsTJkpW
+	nyIToGDmgTbgMXEt7bAePomqHPtkWBJ+w4z9jj9+8PmpuLrHiKK2RuV0GMylRw==
+Message-ID: <e309efc0-1b03-416c-8464-af92cc428acf@bootlin.com>
+Date: Sun, 9 Nov 2025 17:38:45 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 16/16] net: stmmac: visconti: use
+ stmmac_get_phy_intf_sel()
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Emil Renner Berthing <kernel@esmil.dk>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Jerome Brunet <jbrunet@baylibre.com>,
+ Keguang Zhang <keguang.zhang@gmail.com>, Kevin Hilman
+ <khilman@baylibre.com>, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-mips@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Minda Chen <minda.chen@starfivetech.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, netdev@vger.kernel.org,
+ Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
+ Paolo Abeni <pabeni@redhat.com>
+References: <aQ4ByErmsnAPSHIL@shell.armlinux.org.uk>
+ <E1vHNSq-0000000DkTN-3RoV@rmk-PC.armlinux.org.uk>
+ <14f80863-5766-437a-8e38-8991a1a725f9@bootlin.com>
+ <aQ74G_WqoAusC2wd@shell.armlinux.org.uk>
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Content-Language: en-US
+In-Reply-To: <aQ74G_WqoAusC2wd@shell.armlinux.org.uk>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251108_124250_048017_827E06DE 
-X-CRM114-Status: UNSURE (   2.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251109_083906_916947_EC70ACC0 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,11 +95,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi developers and maintainers,
 
-I have a Wifi 7 adaptor with the MT7927 chipset I can't use it on linux sin=
-ce more than a year. Would it be possible to prioritize the delivery of thi=
-s driver?
 
-Many thanks for your help
+On 08/11/2025 08:58, Russell King (Oracle) wrote:
+> On Fri, Nov 07, 2025 at 07:23:26PM +0100, Maxime Chevallier wrote:
+>> Hi Russell,
+>>
+>> On 07/11/2025 15:29, Russell King (Oracle) wrote:
+>>> -	switch (plat_dat->phy_interface) {
+>>> -	case PHY_INTERFACE_MODE_RGMII:
+>>> -	case PHY_INTERFACE_MODE_RGMII_ID:
+>>> -	case PHY_INTERFACE_MODE_RGMII_RXID:
+>>> -	case PHY_INTERFACE_MODE_RGMII_TXID:
+>>> -		phy_intf_sel = ETHER_CONFIG_INTF_RGMII;
+>>> -		break;
+>>> -	case PHY_INTERFACE_MODE_MII:
+>>> -		phy_intf_sel = ETHER_CONFIG_INTF_MII;
+>>> -		break;
+>>> -	case PHY_INTERFACE_MODE_RMII:
+>>> -		phy_intf_sel = ETHER_CONFIG_INTF_RMII;
+>>> -		break;
+>>> -	default:
+>>> +	int phy_intf_sel;
+>>> +
+>>> +	phy_intf_sel = stmmac_get_phy_intf_sel(plat_dat->phy_interface);
+>>> +	if (phy_intf_sel != PHY_INTF_SEL_GMII_MII &&
+>>> +	    phy_intf_sel != PHY_INTF_SEL_RGMII &&
+>>> +	    phy_intf_sel != PHY_INTF_SEL_RMII) {
+>>>  		dev_err(&pdev->dev, "Unsupported phy-mode (%d)\n", plat_dat->phy_interface);
+>>>  		return -EOPNOTSUPP;
+>>>  	}
+>>
+>> Probably not too big of a deal, but don't we now incorrectly accept the
+>> "gmii" mode ?
+> 
+> We will accept GMII mode, but (a) does that matter, and (b) shouldn't
+> the DT binding be checking the phy-mode (we have some bindings that do.)
+
+Thanks for the clarification, that's fine by me then :)
+
+Maxime
+
 
