@@ -4,86 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E78D7CCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 12:23:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BB5ECCFA13
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 12:42:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DzW1Nmfxb6NiioFQyuj9BtUlANBvsFTwFmbLEk2yLZU=; b=MQKhy8BH6WEOr3hjTdPsriXTCE
-	EiIgeerZWIQ+vQnJTBnBmk5ayRZUj+CGngm9tKRhmWE/fT/kPPDHGyqrv3Wv0qb1eU2fw4GBU9PFY
-	0HFV1gvDhaEeGOEkNJgszCWqiDaH98U6E9FNYbBRDWa+ixJ9Glp0zwCWg5oCj0i5IcIbjdEyRANMQ
-	tLxOW6y+ZrwgGqVT0f6Z5X/mOY0A7CL2ISOGvHmQwlpNoBOs9LKl4nsRXy4iV9C3W5Lwlgt3OQFmL
-	5t3b6/cdDrFVEVGjT54pzgE17p6aI+c2VMuUgHjCQ1xQzl6sPMOuHM3oEhUwbrVwzUtQ+Zw9yUqQ0
-	UcxkUTJQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=q+N76mxcxihAP3O+FLFRElIM/tYwXLZuPej3Jupgfxo=; b=X3KkQtFHxGIsdh
+	dhTAtINjlDT3mjP4PXJ+7KQuOiEPdM4flC6FVFy/BkDmlB11USouNyqM+NWlAjW89vkBrghQGtXy1
+	Tt2JJoHkeYfV1ce/67H6wi2BLqVzA6L7LO3ZvaIVDnc4+P3w80Yg3uH2JnYN8wemsuNYA93opyD66
+	wa0tN+XsfAokmeEbImO9p3IxjGeRo/SlpAoYOfBiLsvKn6QRSSTYNjTB3CnRKx/PDu7w6AiJd1AKA
+	uwnDTdAQCWo6EwaoDeB4z0IVVUh0aokN+ND24e0fHPiw39AZagyHq4+iN3PBvdJ+I6/cB1kLWaRfL
+	vyUp5rYrhtzoJKsvyaEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIQvy-00000005Ovg-2dpC;
-	Mon, 10 Nov 2025 12:23:46 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1vIRDp-00000005Qcd-3aHr;
+	Mon, 10 Nov 2025 12:42:13 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIQvw-00000005Oub-1IAB
+	id 1vIRDm-00000005Qbh-3bOt
 	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Nov 2025 12:23:45 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-6408f9cb1dcso5014913a12.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Nov 2025 04:23:43 -0800 (PST)
+	Mon, 10 Nov 2025 12:42:12 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-42b32a3e78bso1097094f8f.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Nov 2025 04:42:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1762777422; x=1763382222; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=DzW1Nmfxb6NiioFQyuj9BtUlANBvsFTwFmbLEk2yLZU=;
-        b=NHCCTgLdfUEQtPcSu0r6QMmiabBaBPaYEJE+2tYVbf8FQQSHw7iKzfdgnoS/uADUJz
-         hdSPv690Foq4L1AXYAbS8lKDum5uDaWy0RtZ5WA0jerjF7HYjKWR27fq8G+T0tPM3Oue
-         5CMQ1HXZhR1hTj08U+btVZ3vAInJ40MWI3fiW8TXzT8YCYOW1DGZLxyuT2yLnyBthY+0
-         ztF5fJVBF3DqWF4tt5HVPPrReL7XVmnJxqh/xsTk1v7drqY0g8CT9vA5md5VWZulrKo8
-         HZIpCpTUZABZR9KItlifymd9k3tBCoH6b/ni+tWKOX+W3LR4mztR0wZdDOiFplTJC6A5
-         poFA==
+        d=linaro.org; s=google; t=1762778529; x=1763383329; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=q+N76mxcxihAP3O+FLFRElIM/tYwXLZuPej3Jupgfxo=;
+        b=F/Son1xS3nOevVwuzfg1/Xj2HblhHiSx5duV2f2aY47EQrnDYVZVfLhOxQWBD6Pl4X
+         diwqTKj6WxM81gP5hT7DzHNUbyvL+X7350V0w7o60oHeQgi9/6MXClssh9+nwMtXVFTL
+         /Sp82nG2QgbyaSPQ9w4byI5TtN3pjUxCLM0cubCUhMBd4F1LwfBwclMVzLyiadG68AeP
+         JfQJgbj2KbbZ1wMuD0lRvHJYHRZYO3gbOjhzsZZzwX2bjWNotoi7vrQhtkJ9XPn8hZGl
+         JLjn8yhFq8xLCEWnmkFFHknCkEXh1nt0NIWti9+ZmKWgoHRp/D2Pr2Qaq5NrsNXj7E8A
+         RNHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762777422; x=1763382222;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DzW1Nmfxb6NiioFQyuj9BtUlANBvsFTwFmbLEk2yLZU=;
-        b=nxpTeSJn2Dfam7Eru0xhVAmdiyL31WK6AIfe4Zl5a64BL/UmhsyeF7Wq15vZtS4gfS
-         lE3uTqWIElUOC1YgSy7/gCnGwoTm+h2QRpVF8CR9xPsnS7AodtMbk0ZxYJIlh7yj8Nb0
-         aAJarxm/IplalCPv9YG5fnY34/QoRxFaQTpSrjQWjKZHT5y1l2EumiKUfXpvwmupsxHa
-         kNQzaoG28zKurhypnHzqC0749ABvn+TSUC/ghclMPmXOsjkP0cCPQtjLSjJ2+zTQsT5t
-         WAN/UjCPKx4bMHj+3nVmKUaKFQDiLSfa7A3XxnRL9RG7DSIU2tcV4Vbwb66dc7A88FfM
-         vT+w==
-X-Forwarded-Encrypted: i=1; AJvYcCWmG9DZI727u6zvMKl2tVgEoBEkAInu//U1fXw/zajol+ju61iSPprlln7C4dL9ONtg1+a+sCv7bCydKiHhbw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzh+0EjmtSdYEqAZpliYRLnQ55AAKl7+iBTY0KsP62AkCE4Ys51
-	vdHvfgShJLMOshqlmQU5NKqx//s3bdiIeRy03/7oKbavgX9oM67nEjxV/EB9qAnwxJdvOqTFDBm
-	AkZYetC/EoVB05ZecWEUd5TnXvjC+lAsiW5VLIS80NQ==
-X-Gm-Gg: ASbGncuOp0A5IdjlsCgaZteP0VFf3jaGPk3yy+YT38tCPopZ1AvlxvvVn3mQWWAc1/r
-	hNR9kAUBjlIl8cLHVZ6xgEYmYySZJJ7EUsN+K/jysElkHi+5JKYtcrbQZIVdoWmOqfnzkzS2p/t
-	yL3qLiY5pNs8staNsu5TtIXllqY73uBQA9BfjsLm2LR44fzfvOreWy1CoJkl6lyIna5iKE3cR/M
-	dCt2L0nMUdZ9FAnAMa6/NP5n+KJfJsyeRQdAc5N2KD9C3LVmyIFCAha+IIb8ei7uOCQD5RDStWA
-	hPsrNak=
-X-Google-Smtp-Source: AGHT+IGm5+Uu79ujlZItIA42GflK7UfV+AyBRUd53fOR/2PdZlplGxgc5r7/bRr9gNtqR7fwtBSp/+VdEs2VA7Pi6Oc=
-X-Received: by 2002:a05:6402:305c:10b0:640:c454:e8 with SMTP id
- 4fb4d7f45d1cf-6415e7fd2c9mr4878827a12.30.1762777421528; Mon, 10 Nov 2025
- 04:23:41 -0800 (PST)
+        d=1e100.net; s=20230601; t=1762778529; x=1763383329;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=q+N76mxcxihAP3O+FLFRElIM/tYwXLZuPej3Jupgfxo=;
+        b=OtbWP3AqGkIf0iU9Xdl/htQx3V+cTIaWhGNm+Drag+hMx8wRHyaNpyMKS3R8RFNham
+         CAQ9bfpBtU1X6xEdKWCOq7XzFuMUjHO4/G6UdC178ZGLJsI80HSJPyGS7Dl6QXl5LYCG
+         o74V30ZkyQLZyp/mzZMHuJPeKn7U8XTsV1PjxCYVrHfB0lwlIK2ml+YCnBaiv4pLiKGS
+         peS6AJemmbS1ahs2NDT6hVQ9wxpSPdtK+vUH10CXaixveaC3GTMPbXBwa5n2+we/gbYR
+         5RQCcqQRkDsAFTnT31kOi3gqwNy8Wju/6lq1Flnn5H4yszcr/DVuOYS8JNcwJafbfWbd
+         h+YQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWUwpCp2pMXbd7rvXQtEfp3drm1rENNi9phtAUu2zGuho0VNUlNPISZN83DXMXWFWVmG1UZ6Uazq7q28Swy6A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyFnSzU9R27VGcop9kNsAG0kxwTVoFkTAmN9Du9co1q07NsmVby
+	cHjYMybyQV3m770PV3ImoQeDolRoUhviaaR3Yg2116B33MHRRmELsa493jzB57YSfGc=
+X-Gm-Gg: ASbGncuk99MjH7syPYytQf7mUiLoQZ6omHr7AbDOSf5PJbi92YxpOCXQfKYY8/4PgZ3
+	Fv/OT1GJguGSl/YNsz4Zt2RooCSUShF5TIkj3jopwF15W7JeiQWEsvJQsR47ARioflCqwA5KjLx
+	5uqYiEeuNYx2ehSgAXL6Y4ZJLQeb3A2zJZMcJbFP04jpjtejkPFyvL/d1QfWSCIKuP41nSw8tk9
+	N0TGlQvWvQD+aVohpKcoYjUJF6eLazg1aBM7XX18A6+x6aQvrWA6KCzGTt6zLRG8RB4IRF0kT+U
+	k4xWcQNpxHyxXKP8NXLw2YJtgjsC6uh1f4MOuWN53mWRybGBUIZ6kwtKxZlF9Zize1bEML7S70o
+	zxi9IpdiO5QN/lD4qC7iuz/GUTs0XQJHtawE/8tR6xYZU2bdsZqK/jNrXdB+9yyGuxwkFSHH7Iv
+	mRFiNo1KFs1MLyUJ/Kim/MwH2dxS4VnpYGy3FkxCYQ38GzDqaUBs7WgfHEAZ9o4S277A==
+X-Google-Smtp-Source: AGHT+IGNKo1M31mUDoARlNl8zibaXqZMwervmekEB8cz3HVAafXXSH8iFrMG/LkjJqzdboVDP9+/mg==
+X-Received: by 2002:a5d:5d81:0:b0:42b:2c54:d9ba with SMTP id ffacd0b85a97d-42b2dc1e51bmr6642107f8f.20.1762778528609;
+        Mon, 10 Nov 2025 04:42:08 -0800 (PST)
+Received: from ?IPV6:2a05:6e02:1041:c10:2b20:d700:6e9c:533c? ([2a05:6e02:1041:c10:2b20:d700:6e9c:533c])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-42b35ad7c16sm9213468f8f.15.2025.11.10.04.42.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 10 Nov 2025 04:42:07 -0800 (PST)
+Message-ID: <84b9fd00-ce75-43bf-a53b-48818628f7e2@linaro.org>
+Date: Mon, 10 Nov 2025 13:42:06 +0100
 MIME-Version: 1.0
-References: <20251106-clk-pmdomain-mediatek-round-rate-v1-1-49441ea27f84@redhat.com>
-In-Reply-To: <20251106-clk-pmdomain-mediatek-round-rate-v1-1-49441ea27f84@redhat.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 10 Nov 2025 13:23:03 +0100
-X-Gm-Features: AWmQ_bnh8tp1oLAuPElgvSFmN8WE23c2ga9LAvFWkFMPaVp1NApY8JmtQI4OamU
-Message-ID: <CAPDyKFoq=dJW_FCVykBwH85+RbeZ-SR6=vF0vKw+237TsgOfDA@mail.gmail.com>
-Subject: Re: [PATCH] pmdomain: mediatek: convert from clk round_rate() to determine_rate()
-To: Brian Masney <bmasney@redhat.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Maxime Ripard <mripard@kernel.org>, 
-	Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-pm@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RESEND v3 3/9] thermal/drivers/mediatek/lvts: Guard
+ against zero temp_factor in lvts_raw_to_temp
+To: Laura Nao <laura.nao@collabora.com>, srini@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, rafael@kernel.org,
+ rui.zhang@intel.com, lukasz.luba@arm.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com
+References: <20251016142158.740242-1-laura.nao@collabora.com>
+ <20251016142158.740242-4-laura.nao@collabora.com>
+Content-Language: en-US
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20251016142158.740242-4-laura.nao@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_042344_354210_CACD9F7F 
-X-CRM114-Status: GOOD (  20.08  )
+X-CRM114-CacheID: sfid-20251110_044210_936487_18701C2A 
+X-CRM114-Status: GOOD (  19.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,77 +102,77 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, arnd@arndb.de, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, nfraprado@collabora.com, devicetree@vger.kernel.org, u.kleine-koenig@baylibre.com, linux-arm-kernel@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>, linux-mediatek@lists.infradead.org, kernel@collabora.com, colin.i.king@gmail.com, bchihi@baylibre.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 7 Nov 2025 at 00:40, Brian Masney <bmasney@redhat.com> wrote:
->
-> The round_rate() clk ops is deprecated in the clk framework in favor
-> of the determine_rate() clk ops, so let's convert this driver so that
-> round_rate() can be removed from the clk core.
->
-> Signed-off-by: Brian Masney <bmasney@redhat.com>
+On 10/16/25 16:21, Laura Nao wrote:
+> Add a guard against zero temp_factor in lvts_raw_to_temp() to prevent
+> division by zero and ensure safe conversion.
 
-Applied for next, thanks!
+Is the temp_factor something else than a ro data statically initialized 
+by the lvts_data structure ?
 
-Kind regards
-Uffe
+It is pointless to handle the case where the temp_factor is zero. If we 
+read the temperature the kernel crashes immediately (which means it was 
+not tested).
+
+The temp_factor is an internal value of the driver. If the temp_factor 
+is zero, the driver is buggy and should be fixed.
 
 
+> Fixes: 6725a29321e4 ("thermal/drivers/mediatek/lvts_thermal: Make coeff configurable")
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> Reviewed-by: Fei Shao <fshao@chromium.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Laura Nao <laura.nao@collabora.com>
 > ---
->  drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
-> index af20111067c02a5f9a0d6d751e9e0dc32c1a4d90..9bad577b3ae4bf1b83d4f782bb52f56f779a8974 100644
-> --- a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
-> +++ b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
-> @@ -309,11 +309,11 @@ static unsigned long mtk_mfg_recalc_rate_gpu(struct clk_hw *hw,
->         return readl(mfg->shared_mem + GF_REG_FREQ_OUT_GPU) * HZ_PER_KHZ;
->  }
->
-> -static long mtk_mfg_round_rate(struct clk_hw *hw, unsigned long rate,
-> -                              unsigned long *parent_rate)
-> +static int mtk_mfg_determine_rate(struct clk_hw *hw,
-> +                                 struct clk_rate_request *req)
->  {
->         /*
-> -        * The round_rate callback needs to be implemented to avoid returning
-> +        * The determine_rate callback needs to be implemented to avoid returning
->          * the current clock frequency, rather than something even remotely
->          * close to the frequency that was asked for.
->          *
-> @@ -325,7 +325,7 @@ static long mtk_mfg_round_rate(struct clk_hw *hw, unsigned long rate,
->          * high current frequency, breaking the powersave governor in the process.
->          */
->
-> -       return rate;
-> +       return 0;
->  }
->
->  static unsigned long mtk_mfg_recalc_rate_stack(struct clk_hw *hw,
-> @@ -338,12 +338,12 @@ static unsigned long mtk_mfg_recalc_rate_stack(struct clk_hw *hw,
->
->  static const struct clk_ops mtk_mfg_clk_gpu_ops = {
->         .recalc_rate = mtk_mfg_recalc_rate_gpu,
-> -       .round_rate = mtk_mfg_round_rate,
-> +       .determine_rate = mtk_mfg_determine_rate,
->  };
->
->  static const struct clk_ops mtk_mfg_clk_stack_ops = {
->         .recalc_rate = mtk_mfg_recalc_rate_stack,
-> -       .round_rate = mtk_mfg_round_rate,
-> +       .determine_rate = mtk_mfg_determine_rate,
->  };
->
->  static const struct clk_init_data mtk_mfg_clk_gpu_init = {
->
-> ---
-> base-commit: df5d79720b152e7ff058f11ed7e88d5b5c8d2a0c
-> change-id: 20251106-clk-pmdomain-mediatek-round-rate-649a9bf7d30a
->
-> Best regards,
-> --
-> Brian Masney <bmasney@redhat.com>
->
+>   drivers/thermal/mediatek/lvts_thermal.c | 12 +++++++++---
+>   1 file changed, 9 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+> index 1c54d0b75b1a..4ef549386add 100644
+> --- a/drivers/thermal/mediatek/lvts_thermal.c
+> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> @@ -284,11 +284,14 @@ static int lvts_raw_to_temp(u32 raw_temp, int temp_factor)
+>   
+>   static u32 lvts_temp_to_raw(int temperature, int temp_factor)
+>   {
+> -	u32 raw_temp = ((s64)(golden_temp_offset - temperature)) << 14;
+> +	u32 raw_temp;
+>   
+> -	raw_temp = div_s64(raw_temp, -temp_factor);
+> +	if (temp_factor == 0)
+> +		return temperature;
+>   
+> -	return raw_temp;
+> +	raw_temp = ((s64)(golden_temp_offset - temperature)) << 14;
+> +
+> +	return div_s64(raw_temp, -temp_factor);
+>   }
+>   
+>   static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+> @@ -1346,6 +1349,9 @@ static int lvts_probe(struct platform_device *pdev)
+>   	if (irq < 0)
+>   		return irq;
+>   
+> +	if (!lvts_data->temp_factor)
+> +		dev_warn(dev, "temp_factor should never be zero; check platform data.\n");
+> +
+>   	golden_temp_offset = lvts_data->temp_offset;
+>   
+>   	ret = lvts_domain_init(dev, lvts_td, lvts_data);
+If
+
+
+
+
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
