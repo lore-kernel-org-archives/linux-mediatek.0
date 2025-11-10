@@ -4,92 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9E38CCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 11:50:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49141CCFA13
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 12:01:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:In-Reply-To:Subject:cc:To:Date:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gUP/dyn6VDZvlXP2kNtZRvGusygPar1BUVzWgetIKE4=; b=xMqjpPX9CAhKNe6A2jB9VS54lt
-	aGvt0f84yvENr9s2Eaw/U0CWMpd6RMvp+1XbWzdeq1xvyIIVHxPrIC4eyLRokWknP9WLU+J24LQM+
-	cIEw3uw00L8dFhG+AzYcw8Q9sIH5gHGQ7U3r1i/b9igs9MFpBi2r8bbEmLh94BL2HA7C5i5dS+fC8
-	xiSXjj07hOFzfLzdqXU/G/gZMRM2fMAPzcr8xw77VSFm8TzNlDJ0hvFjMt3/AW1pfWmfa1Dz71fPd
-	Qp3NuCLZ8MEPWkz5nvh1WsK5GWr5RONtPXofXJdSbIuLZ9ERpBtuPuyLzNwFa/SWnuJce/xJ+y/O7
-	Y4RwM4vQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kvtJ1fETVqmj4nudSO7ryzRgE/VjqozzSZZ/ggs2S7k=; b=BXo2QwlpUNC1iWowP6rz1zIqOY
+	9swlHaUqCMzyexuqHFml8NhX/QWTNRWtCg7dfUcbsm+b5xFQ0Duks7L0FYD6J4TV9EK2uanvkifag
+	Jf4Ymy2UbSiC7U5hU+vxITW7yYyQ2uJu2IqKDO7P0ulxuU4Y1Js1CkgXUrsPR/QN9M6yBvU0L5KHy
+	13n2saDE3LzMfJKqJ9mofE1KOrkF2skrDrn3GEbWdBYRVzxUcRBk/GN0Hs3icOOWmcSeBcdhhdaaN
+	6LjWCN+pzyOd2xr/plvyN6VPyyJYV0/fpGC66cQ6MtjRx7xaVgByHbj5Lp8C0ikFS3BjlfA9TRurg
+	BM7F/6UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIQPJ-00000005LzD-2tlT;
-	Mon, 10 Nov 2025 11:50:01 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1vIQaU-00000005MzF-0Nwy;
+	Mon, 10 Nov 2025 12:01:34 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIQPG-00000005LyE-1Osc;
-	Mon, 10 Nov 2025 11:49:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1762775398; x=1794311398;
-  h=from:date:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=kgLvGqGW6Y2MVxPS0dVKx+QUBt0U5B7prEs50cqFkU4=;
-  b=MybNDpjYgKJzlFJE1XlpRif5sw8WHu5Oa0DPp+7PPcrvsdcoEou2DCsA
-   nquc7AEVVNrIdcfV0p8X+fVSJJ2s5K6UjkbYi5X6xyb/iRbwnVjFLa2KX
-   mUbdG6XTlJgOz7H3b1N0+b1qfvHFcpVJ40pB0DS+RgzpZrYDR/A8Ui9Bi
-   E6FGEqNksD6qGPooTKNnZsSrn3UnlOn+SMCGgisksA9sl9etTKgVAbSR4
-   zEexw75QcZkFksiEb7l+GbvPSNiK2pN0yZC3uRMTGlyIGWjwacAWEoxQF
-   fuGD/FtPIFSgzt/kofTi1XRcIY+zeOz137dj9ZqKlbQTVUbDsyOVYq1z6
-   w==;
-X-CSE-ConnectionGUID: bac8SgFARaqN+WL1LI0WAg==
-X-CSE-MsgGUID: LOE//R7mSBykWTr2GmiTsA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11608"; a="75928786"
-X-IronPort-AV: E=Sophos;i="6.19,293,1754982000"; 
-   d="scan'208";a="75928786"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Nov 2025 03:49:57 -0800
-X-CSE-ConnectionGUID: Sj9MWXvmSo6S4AGtYTK6HQ==
-X-CSE-MsgGUID: q0aaSUIcTOWst/+WBvw2kg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.19,293,1754982000"; 
-   d="scan'208";a="193665319"
-Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.13])
-  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Nov 2025 03:49:46 -0800
-From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
-Date: Mon, 10 Nov 2025 13:49:42 +0200 (EET)
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
-    "Rafael J. Wysocki" <rafael@kernel.org>, 
-    Viresh Kumar <viresh.kumar@linaro.org>, 
-    Matthias Brugger <matthias.bgg@gmail.com>, 
-    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-    Yangtao Li <tiny.windzz@gmail.com>, Chen-Yu Tsai <wens@kernel.org>, 
-    Jernej Skrabec <jernej.skrabec@gmail.com>, 
-    Samuel Holland <samuel@sholland.org>, 
-    Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-    Daniel Lezcano <daniel.lezcano@linaro.org>, 
-    Bjorn Andersson <andersson@kernel.org>, 
-    Konrad Dybcio <konradybcio@kernel.org>, 
-    Thomas Gleixner <tglx@linutronix.de>, 
-    Nicolas Ferre <nicolas.ferre@microchip.com>, 
-    Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-    Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-    Maximilian Luz <luzmaximilian@gmail.com>, Hans de Goede <hansg@kernel.org>, 
-    Daniel Lezcano <daniel.lezcano@kernel.org>, 
-    Thierry Reding <thierry.reding@gmail.com>, 
-    Jonathan Hunter <jonathanh@nvidia.com>, devicetree@vger.kernel.org, 
-    LKML <linux-kernel@vger.kernel.org>, linux-pm@vger.kernel.org, 
-    linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-    linux-sunxi@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
-    platform-driver-x86@vger.kernel.org, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH 09/13] platform: surface: Simplify with
- of_machine_get_match_data()
-In-Reply-To: <20251106-b4-of-match-matchine-data-v1-9-d780ea1780c2@linaro.org>
-Message-ID: <4986f752-ba21-6a5f-641a-e0dadb4abd11@linux.intel.com>
-References: <20251106-b4-of-match-matchine-data-v1-0-d780ea1780c2@linaro.org> <20251106-b4-of-match-matchine-data-v1-9-d780ea1780c2@linaro.org>
+	id 1vIQaO-00000005Mx8-0JDA;
+	Mon, 10 Nov 2025 12:01:32 +0000
+Received: from amadeus-Vostro-3710.lan (unknown [58.61.140.134])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 290ba10ea;
+	Mon, 10 Nov 2025 20:01:14 +0800 (GMT+08:00)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: Felix Fietkau <nbd@nbd.name>
+Cc: Ryder Lee <ryder.lee@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: [PATCH 1/1] wifi: mt76: mt7996: fix mixed FEM check of mt7996 chipset
+Date: Mon, 10 Nov 2025 20:01:10 +0800
+Message-Id: <20251110120110.193562-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323328-1580227820-1762775382=:1060"
+Content-Transfer-Encoding: 8bit
+X-HM-Tid: 0a9a6da4493d03a2kunm0d50f1f77dd9f9
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaTh5NVkodT0lNHkNPSkpLTlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlOQ1VNSlVKT0tVSkhPWVdZFhoPEhUdFFlBWUtVS1VLVUtZBg++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_034958_464680_EE892137 
-X-CRM114-Status: GOOD (  14.80  )
+X-CRM114-CacheID: sfid-20251110_040128_329222_E2998980 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,74 +68,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+To support the following varaint of the mt7996 chipset:
+- tri-band: band0 iFEM and band1/band2 eFEM
 
---8323328-1580227820-1762775382=:1060
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+We should read band1 for the determination, using band0
+will incorrectly identify it as iFEM.
+This is also the judgment logic of the mt7992 chipset.
 
-On Thu, 6 Nov 2025, Krzysztof Kozlowski wrote:
+This fixes the load error on the Quantum Fiber W1701K:
+mt7996e 0000:01:00.0: eeprom load fail, use default bin
+mt7996e 0000:01:00.0: Message 0012002d (seq 5) timeout
 
-Please change the prefixes to:
+Fixes: e8cb33ad546a ("wifi: mt76: mt7996: add support for more variants")
+Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-platform/surface: aggregator_registry: ...
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index 5e95a36b42d1..143400541746 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -1137,7 +1137,7 @@ static int mt7996_variant_fem_init(struct mt7996_dev *dev)
+ 		adie_idx = (val & MT_PAD_GPIO_ADIE_SINGLE) ? 0 : 1;
+ 		adie_comb = u32_get_bits(val, MT_PAD_GPIO_ADIE_COMB_7992);
+ 	} else {
+-		adie_idx = 0;
++		adie_idx = 1;
+ 		adie_comb = u32_get_bits(val, MT_PAD_GPIO_ADIE_COMB);
+ 	}
+ 
+-- 
+2.25.1
 
-Once that is changed,
-
-Acked-by: Ilpo J=C3=A4rvinen <ilpo.jarvinen@linux.intel.com>
-
---=20
- i.
-
-> Replace open-coded getting root OF node, matching against it and getting
-> the match data with new of_machine_get_match_data() helper.
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
->=20
-> ---
->=20
-> Depends on the first OF patch.
-> ---
->  drivers/platform/surface/surface_aggregator_registry.c | 13 +-----------=
--
->  1 file changed, 1 insertion(+), 12 deletions(-)
->=20
-> diff --git a/drivers/platform/surface/surface_aggregator_registry.c b/dri=
-vers/platform/surface/surface_aggregator_registry.c
-> index a594d5fcfcfd..78ac3a8fbb73 100644
-> --- a/drivers/platform/surface/surface_aggregator_registry.c
-> +++ b/drivers/platform/surface/surface_aggregator_registry.c
-> @@ -491,24 +491,13 @@ static const struct of_device_id ssam_platform_hub_=
-of_match[] __maybe_unused =3D {
->  static int ssam_platform_hub_probe(struct platform_device *pdev)
->  {
->  =09const struct software_node **nodes;
-> -=09const struct of_device_id *match;
-> -=09struct device_node *fdt_root;
->  =09struct ssam_controller *ctrl;
->  =09struct fwnode_handle *root;
->  =09int status;
-> =20
->  =09nodes =3D (const struct software_node **)acpi_device_get_match_data(&=
-pdev->dev);
->  =09if (!nodes) {
-> -=09=09fdt_root =3D of_find_node_by_path("/");
-> -=09=09if (!fdt_root)
-> -=09=09=09return -ENODEV;
-> -
-> -=09=09match =3D of_match_node(ssam_platform_hub_of_match, fdt_root);
-> -=09=09of_node_put(fdt_root);
-> -=09=09if (!match)
-> -=09=09=09return -ENODEV;
-> -
-> -=09=09nodes =3D (const struct software_node **)match->data;
-> +=09=09nodes =3D (const struct software_node **)of_machine_get_match_data=
-(ssam_platform_hub_of_match);
->  =09=09if (!nodes)
->  =09=09=09return -ENODEV;
->  =09}
->=20
->=20
---8323328-1580227820-1762775382=:1060--
 
