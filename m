@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCEBACCFA1E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 09:54:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A977CCF9E3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 10:13:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5EfMCydae/7F+iOpCRHb8cMVqJTqdNLmoC7lMDCiTlg=; b=Q1fB37lL1+D4VPE1Uk5EugEGel
-	D7qZMDz3CraxqUvANDcAXyKgJpGgj8rgM0YBIymwEnlKdv+BE+veCU7XXHcIinJTzznssnBLwlg6x
-	YGjiaEK5hZ2+J2zs8KZnXT0kYevVCSPsiG7KRbFi9CxfssMWqVLC0x8aem/tiQuvgUOwTiZQnpMey
-	iVjnviqA3Q+8SnovFrNi48OLttybSgGVXo3WVstD7NcESDEp1SgZHrG5n7usO3BH3tiiIE8JBlVdL
-	pXFIiUZFUx9tkM7aHbTD/O5sAJCu5YVWKfhsLOaJ5ny9nH/hlsrvca8033v23t4afAjaq7S3jQ/f6
-	L0zwcLnA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EoD/aHhTgmIXFon5njzMGTKFSwgtLbPy4kqkBH4hVb4=; b=dI2s2HqrMKPiFdXF6pXZUMNZpq
+	PD0M40BF2JZ1bxI0UdP2L+stw9ySQ2QKScECBqEM8pw2O0TcXTyCwLHKyP7NcwBmIRCxDSJxurnfo
+	9BS8Me/DSLpgk/KPvgD5XiFFoo8GjXwYu4tqGIXIE2/Z/j6vOf2vIJ9eEWHgQ4ygUwzIwWXgF9qBW
+	fKdsn2JVVXx99C/EHRC6nsPr8hYB7CF7hWicJc0THzofhVURT8MdR+dzrV8G2+RQXeJvhTE3SAvCS
+	AIdRHFDU72gaprfVafI7eShKaWGCypgtyJWAM7ZSmc/4Aflim52WyMKWiF/r5kUoyGffR3Xrzpr0L
+	WLg6W1Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIObM-000000058LD-2wIf;
-	Mon, 10 Nov 2025 09:54:20 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1vIOuM-000000059ul-11fK;
+	Mon, 10 Nov 2025 10:13:58 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIObI-000000058Jh-2akV
-	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Nov 2025 09:54:18 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vIOav-0007E6-9l; Mon, 10 Nov 2025 10:53:53 +0100
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vIOas-00802Y-2g;
-	Mon, 10 Nov 2025 10:53:50 +0100
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vIOas-000000006yf-36Uu;
-	Mon, 10 Nov 2025 10:53:50 +0100
-Message-ID: <802768a286aa167f7fdc80857508180964ac7f8c.camel@pengutronix.de>
-Subject: Re: [PATCH 2/2] thermal/drivers/mediatek/lvts_thermal: Add MT8189
- support
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Hanchien Lin <hanchien.lin@mediatek.com>, "Rafael J . Wysocki"	
- <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui	
- <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Rob Herring	
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley	
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Balsam CHIHI <bchihi@baylibre.com>
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
- raymond.sun@mediatek.com, 	Irving-CH.lin@mediatek.com
-Date: Mon, 10 Nov 2025 10:53:50 +0100
-In-Reply-To: <20251110094113.3965182-3-hanchien.lin@mediatek.com>
-References: <20251110094113.3965182-1-hanchien.lin@mediatek.com>
-	 <20251110094113.3965182-3-hanchien.lin@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.1-1+deb13u1 
+	id 1vIOuK-000000059te-3bg7;
+	Mon, 10 Nov 2025 10:13:58 +0000
+X-UUID: f371c32cbe1d11f09f706fa2197c6ceb-20251110
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=EoD/aHhTgmIXFon5njzMGTKFSwgtLbPy4kqkBH4hVb4=;
+	b=pk5Rwci9z/+wDZH7jcJxxiN06ix9Q966gnCL4gWDuL56TJBlJUBtjWT/eitMpLgAMHltN98gPyRPv2mJKv3+t9vuyB4wN2Bz5VqIiPrE4PkJCydtziNiGC4j6PgBkqTeRfQQPFIvVCss4Y+bu6AtfwCkYssIhzFX13fX0LvIj7k=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:0c353724-1639-4b98-a8cc-3676eeb6e2b7,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:2b357b82-b6af-4b29-9981-6bf838f9504d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: f371c32cbe1d11f09f706fa2197c6ceb-20251110
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <huayu.zong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1523247234; Mon, 10 Nov 2025 03:13:49 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Mon, 10 Nov 2025 18:13:46 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Mon, 10 Nov 2025 18:13:45 +0800
+From: Huayu Zong <huayu.zong@mediatek.com>
+To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
+	<mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>, "Krzysztof
+ Kozlowski" <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	"Matthias Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Huayu Zong
+	<huayu.zong@mediatek.com>
+Subject: [PATCH v3 0/3] Add support for MT8189 SCP and device tree bindings
+Date: Mon, 10 Nov 2025 18:13:28 +0800
+Message-ID: <20251110101342.24261-1-huayu.zong@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_015417_925845_84F96DD5 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20251110_021356_905302_8E6139C2 
+X-CRM114-Status: UNSURE (   8.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,38 +90,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mo, 2025-11-10 at 17:40 +0800, Hanchien Lin wrote:
-> Add support for the MediaTek MT8189 SoC to the LVTS thermal driver.
->=20
-> Signed-off-by: Hanchien Lin <hanchien.lin@mediatek.com>
-> ---
->  drivers/thermal/mediatek/lvts_thermal.c | 155 ++++++++++++++++++++++--
->  1 file changed, 144 insertions(+), 11 deletions(-)
->=20
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/me=
-diatek/lvts_thermal.c
-> index ab55b20cda47..8c15fdaac48c 100644
-> --- a/drivers/thermal/mediatek/lvts_thermal.c
-> +++ b/drivers/thermal/mediatek/lvts_thermal.c
-[...]
-> @@ -1334,9 +1359,15 @@ static int lvts_probe(struct platform_device *pdev=
-)
->  	if (IS_ERR(lvts_td->base))
->  		return dev_err_probe(dev, PTR_ERR(lvts_td->base), "Failed to map io re=
-source\n");
-> =20
-> -	lvts_td->reset =3D devm_reset_control_get_by_index(dev, 0);
-> -	if (IS_ERR(lvts_td->reset))
-> -		return dev_err_probe(dev, PTR_ERR(lvts_td->reset), "Failed to get rese=
-t control\n");
-> +	if (!lvts_data->reset_no_need) {
-> +		lvts_td->reset =3D devm_reset_control_get_by_index(dev, 0);
+  This patch series adds support for the System Companion Processor (SCP)
+on MediaTek MT8189, including device tree bindings and driver support.
 
-This should be devm_reset_control_get_exclusive(dev, NULL) instead of
-devm_reset_control_get_by_index(dev, 0).
+Huayu Zong (3):
+  remoteproc: mediatek: Support platform reg offsets in mtk_scp_of_data
+  remoteproc: mediatek: Add MT8189 SCP platform data
+  dt-bindings: remoteproc: mediatek: Add MT8189 SCP binding
 
-No need to use by_index for a single reset control.
+ .../bindings/remoteproc/mtk,scp.yaml          |  2 ++
+ drivers/remoteproc/mtk_common.h               | 10 ++++++
+ drivers/remoteproc/mtk_scp.c                  | 36 +++++++++++++++++--
+ 3 files changed, 46 insertions(+), 2 deletions(-)
 
-regards
-Philipp
+-- 
+2.45.2
+
 
