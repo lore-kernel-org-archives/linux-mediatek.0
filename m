@@ -4,82 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C3DCCCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 23:35:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C1EFCCFA13
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 23:47:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yhp78e/c+JzJpivrf0ZSW9REEjpcgf8Be2/rchU61Pc=; b=WbUbj0UwK+58bY
-	3LB4ACmg7d6Ij/6thxgbGuOfMf1VNkbxZRp2z0JzLbbdlX/+3z4My99Csn0Q5HgEsO02VSW+YByrE
-	ofZnOIPM2+ekeLrebKB0UqHvVfHmG35pClA8+sYHU89B8D5VLhufFulG0XRy4nUWx0fb8mFdQztVj
-	4veWLQ2hxWDoR/a5xrojBFLnnOwYl46faSACjS2AapMP+6HLdz2/yNLHLQKiKu6efxONbpQ4QokvT
-	54qpzY8aotVW3CJNU1blfUeRRyw74VVVGGNYLdk/MJ57NGpEa/t2dyGb1kiVoVzSzoKvivuPR8SUP
-	wr9Gx0xFRH2aVfXkbTIA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EdSyniY2TEhD2jr7Knryt0myief09VrFFo+8PkG04XY=; b=VgI5WPfTJS6Un4Oo7Ut5ldkRZs
+	6yFIbmMYhor27ECVe8Acgc6qMWwd+XdgP7hQ1FBulQB/bO7KrqeSk6k+HD0+VLvyd6RvUaVLbXkkA
+	XRGPmVCZJBEPvFNYp+e/uN622C3oRl+UlXB0FjhwH8bOyv184QYlYFxXaJzlm2UdSC7icM1nR12Ef
+	aqT3Pr9B8fu3LpB9zQsOuSpKyRGR2eDXTcj0sGytZeKBUxfjhq6qMofFxUeKQNR0lSAL0rOI94gCq
+	2aaKlA3wqVFtNfWWhWoVPmOY8skKm8EwhESvYJEUrcwIvScNHLYt8LGtGlw7eKgXmrK1iz0OlNbHa
+	a1HvbErQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIbPX-00000006GHL-30JE;
-	Mon, 10 Nov 2025 23:34:59 +0000
+	id 1vIbbE-00000006Gu9-3Fhr;
+	Mon, 10 Nov 2025 23:47:04 +0000
 Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIbPV-00000006GGZ-3bMn
+	id 1vIbbC-00000006GtA-0PY2
 	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Nov 2025 23:34:59 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-594516d941cso3967949e87.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Nov 2025 15:34:57 -0800 (PST)
+	Mon, 10 Nov 2025 23:47:03 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-591c98ebe90so3764710e87.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Nov 2025 15:47:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1762817696; x=1763422496; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1762818420; x=1763423220; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=yhp78e/c+JzJpivrf0ZSW9REEjpcgf8Be2/rchU61Pc=;
-        b=pDlN6NHq7HRBAcB0ndjWg+tLZz3fWzzLnieB6APUNphblt213+EQZJQvpsGkFiU5qm
-         MkDti77xRdiJvaL/i9UAQBg6yjvNUf7uw/Hi13rWZRY3nEWgqRzH4UvtUhm1PDcjcDpo
-         vXaZaGzaz+S2sJNI37I0CFcBI3WQ713AJmWBuMbKGEROv/hhY2+FvOS1eot6K6sR8xCF
-         dKS+cDZsf6vUYOr1sDMYGH3MiGgGPwCVVrKtRPNSn7XS/n8U59kXYnW1oJ4d76Xaea8W
-         GsMFn4XutPcSG9oPBW4O4ZxM670ZQqUlEqSA6F2l7LuxLJPb5U5BVG8rnnteu8MD5uiI
-         UtQg==
+        bh=EdSyniY2TEhD2jr7Knryt0myief09VrFFo+8PkG04XY=;
+        b=DDW50PcPnT7J5/0DVPv9aj7qjt+jCwbY1BNnSVd6NshP3MuxV7Y7a9TDZ0Cs9+PJGB
+         Dr/8NGC/TOGRN7GutKkSsCtRvJrV9ucMFe9jJSkTrNDAaZ1+TULYj116jsXDF5avlb6i
+         +U0RvI+BEnH2heW9z2bhEVBftlXNCEwLM5uLnzzt0o3PhIHY6wqTKarZgRV9E+ef0cp1
+         KAyc0vEESJL4oGFS38ZX1Ar2g+wW3XO58cysIkQ71Qj+yGinbx8FIMwXQtS6CC8FUuDM
+         xAjOeSbGS402S/fNa6b1Jiv+s6TfUpDHk9OobE2wE2tqvI3k22oDYWW6Qwb0lYudUTPQ
+         PNQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762817696; x=1763422496;
+        d=1e100.net; s=20230601; t=1762818420; x=1763423220;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=yhp78e/c+JzJpivrf0ZSW9REEjpcgf8Be2/rchU61Pc=;
-        b=l4mlXRdsyWznM/EmeUFS8WfO8+LBcX1Pk2J0gFOrEnOls4IdwT4Zdg/Bib8P43nCMe
-         w1PKMMr2jYddIPeOp4FCyL2UbQPU1bB2rZ9V7X7M2s9T2Bp5NC5EMu3ztxjdcbQk3QqA
-         oiVJ8L9krXYlMKmyBFDFMBGU9KceMcZPMm9yoMIBUGjzDqNYpQYIls5LD3ZI/AamfJtc
-         iW+n7g87oY2ctBcMm3AaUjMCuoiUeOah7NnfH9U/6GJGVs6nMe6ppLocf7z/dAI1p3oT
-         va/lZJg+ZDIb/jXOdvSTJSpI/tUoCXTQH+OAv9cnA9BKyS99cRC0aE/tWyqKltPluROq
-         39kQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXX7om7h37Uw3hDL+07bJhNkzTNEjWwX6E0BhfXHMg4UncYE7onVIuw4cmTcljhkHycwzdkL1NwkmPJaz11mg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzQ8oimYneCoj1DO35NBhmZRkoyajS8mFCGsPCAysqtRYXnaR/1
-	iiIF1II9i9yaK8Qxkue2JyyI34ISD9Cwxb5JaJC7JKu6MlAoij1WvnJzUux+St2aZlGSciNUB4T
-	do0u3dxokQxgMdCqn8rSkfvVBRqT06265IXEBEILSvQ==
-X-Gm-Gg: ASbGnctLfbXvWvDap/m10ckDykHAHkoKMa80SrH+M3CHXEnHUpMHKJ5T+9ZG6TIGMwh
-	8vCNAIvZKpnfNgSJ44UoUFWxJ+trUTEY3+WeBR85gRQ7rt7iqRIjwyBeLVFj30z1Spda3g9EMC4
-	E28wtalZjJ+0AlLIhnQd6xFRq/mdbTEoqSxSMo4x8v4NWWsxFlye02Ne7TQW8X97kfo3tMNYhep
-	Rj7NYOGc4l4By06fjk9YjAhBgyRH2xENJ2Gr3UC+NejbrUv0FlsxI854XHZKejgI1pdHLw=
-X-Google-Smtp-Source: AGHT+IG82Mi1A98FfG7yJz0vIc3+2ARkilByhg2O+8Fl+qHjePdN/o/dGr8Q9VvGwKtcezeBk+2GUuqJSQeCVKslfy0=
-X-Received: by 2002:a05:6512:130b:b0:594:29c8:9ae5 with SMTP id
- 2adb3069b0e04-5945f1e54demr2482118e87.53.1762817695621; Mon, 10 Nov 2025
- 15:34:55 -0800 (PST)
+        bh=EdSyniY2TEhD2jr7Knryt0myief09VrFFo+8PkG04XY=;
+        b=Ekog71NAulwz0U7/dBcvfnlT7AiqhIh/gDGOkIGE3ZYPhi+OezNrvJAp/auEgZqppB
+         L+NXeaiYJeUbK+guxymUTISCvVa3DERn0koP5mH+1dVjROxYxGBwpyvyhPuGS2BAUEBL
+         iVGIq5ShwALRe7QbTbj4Qca9Unsxyo4LXjuwPg/ybGrz6Te1jbkEDnVj0jOH83UIDMj7
+         SbleIkd1Q1EKVrKYooOpIMa1m8TNmreXhFdl5KwFaCc9A6gr6JuB0bxrHMjnkmrS1BpA
+         UFWPknIJoFD6WZVch12T56DSjW/ZYOkVs4HoVOSZxm+hE9ltULSHTEi+jzfm5GCS7jIZ
+         4f1g==
+X-Forwarded-Encrypted: i=1; AJvYcCW3XTEFG8IU8jtIyZ+aEiYw2QM6bJRgLzSLez4IxdIH+Wi885dXUYttXKPCXxknKOwmSt9FJW7gH54BaYrg5A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxFCiHfmmESAVQgElW1erxzgQI1AAASO51z/Tjs6jAM1/M4TQFX
+	AMgS52NmJiMFdaQ8P6kSHhFwtHYBf7qSLJChKqosJ8ycYqvDtAnkbJdgyfs1zE91xPYHkacS97R
+	cHMIy1yYodyahH0hZvZcF3jjvQgoUQUJNsfJ6qSi8TQ==
+X-Gm-Gg: ASbGncsXmFJq+nNowXE6ZPfV7bNPGh3elrd4tHPY2Oa+/QZ1milpY3U3orWXvY5MTx/
+	qMb4Ad45oIzSIX1pxmcA+N9Jy2iPMlQbVHijM9Ky2keXRuWLD8mmvu/77zbu1gUJvzAnyJg7xty
+	BeysoLM0Qe10HjD+GcJNiUtZVsyTIGwluw38j/o+g5NWAcM2h1BrnKCl5lnW9HRXsuRkwaXn/HM
+	J1447LDE65rryh64ZD4RptoQykz5wTQ+g9pkieMowszrwHUFLRn/Yoz3a/jnOn+CKl4WCke5HlC
+	DUG14w==
+X-Google-Smtp-Source: AGHT+IEYlHtlcaIbYzh4uIcS3eRGPuN1bn7uG7yYIbKkIFRYhenhwAQ61nxtn9INckW1qFWU7tGOevIpEsnyQ+lU0tE=
+X-Received: by 2002:a05:6512:b96:b0:594:5545:b743 with SMTP id
+ 2adb3069b0e04-5945f1f4346mr2601951e87.27.1762818419930; Mon, 10 Nov 2025
+ 15:46:59 -0800 (PST)
 MIME-Version: 1.0
-References: <20251105195007.199229-1-linux@fw-web.de> <20251105195007.199229-2-linux@fw-web.de>
-In-Reply-To: <20251105195007.199229-2-linux@fw-web.de>
+References: <20251106235713.1794668-1-ansuelsmth@gmail.com>
+In-Reply-To: <20251106235713.1794668-1-ansuelsmth@gmail.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 11 Nov 2025 00:34:44 +0100
-X-Gm-Features: AWmQ_blvjYyNcyzASnRUO_VL5niJ7bbXr0Fy6afKuC--gzCCa6ihk2uw5R5x_5g
-Message-ID: <CACRpkdZ6wJGRhobbTxvm2ZstHA=P4gaUsqvdm3_n1tKqWJ=50Q@mail.gmail.com>
-Subject: Re: [PATCH v2 1/5] dt-bindings: pinctrl: mt7988: allow gpio-hogs
-To: Frank Wunderlich <linux@fw-web.de>
+Date: Tue, 11 Nov 2025 00:46:48 +0100
+X-Gm-Features: AWmQ_bmWEn6D47GtrYlRXbtf5iV6J32LnDgS7NEk87vjG42kQgZzdgtZdTywXVE
+Message-ID: <CACRpkdYOXSm5BaHgij_=L32kq+fkx_ggSJ7G5a=064FDvMR4EQ@mail.gmail.com>
+Subject: Re: [PATCH v2 0/5] pinctrl: airoha: add Airoha AN7583 support
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-gpio@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_153457_910512_369CC35E 
-X-CRM114-Status: UNSURE (   7.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251110_154702_175066_46B11742 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,24 +97,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, AngeloGioacchino Del Regno <angelogiocchino.delregno@collabora.com>, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 5, 2025 at 8:50=E2=80=AFPM Frank Wunderlich <linux@fw-web.de> w=
-rote:
+On Fri, Nov 7, 2025 at 12:57=E2=80=AFAM Christian Marangi <ansuelsmth@gmail=
+.com> wrote:
 
-> From: Frank Wunderlich <frank-w@public-files.de>
+> This small series introduce support for Airoha AN7583 pinctrl
+> support.
 >
-> Allow gpio-hogs in pinctrl node for switching pcie on Bananapi R4 Pro.
+> Most of the changes are generalization and cleanup of the Airoha
+> pinctrl driver. These are needed as all the array in the inner
+> function were hardcoded to EN7581 and didn't reference stuff
+> from the priv groups.
 >
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogiocchino.delregno@collabo=
-ra.com>
+> Everything is changed to match_data and priv struct so
+> adding AN7583 is just a matter of adding the structs.
+>
+> Also the schema is generalized where needed to address
+> for the small difference between AN7583 and EN7581.
 
-I already applied an earlier version but it seems identical.
-Tags were picked up.
+All looks good and bindings ACK:ed so patches applied!
+
+Suggestion: since this driver has:
+
+1. Exactly one group per pin
+2. Use some accelerated GPIO operation, .gpio_set_direction
+   in struct pinmux_ops
+
+Have you considered implementing the new .function_is_gpio()
+callback in struct pinmux_ops to tighten up the GPIO strictness?
 
 Yours,
 Linus Walleij
