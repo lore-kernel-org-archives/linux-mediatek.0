@@ -4,111 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7506CCCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 13:37:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A8F1CCFA13
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 13:57:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Z24k+LQZs05VjiiN2ltNPT89oDxAmQ/6P/qF1hm3qv4=; b=2AvdRdJQYnbkBEqDRQ0RBHWHcT
-	SErDDgYXzk0Cv3n6T7tdYDv2zEjjwqiABFkiuWFIe29+SrkLELnOD+3ZSjOAbzeH66gFNdF7gH6jA
-	BWUiAnng/0Pv86VorhCLm4YM3+QBl1LLdWvdIGkcU/CT3mo6/GNz8c9OKS+0zQLxDxigr9b2e1AsQ
-	Olnd++QJqa0GYrvx4Hl1/sNat+IaRJxb1h0deegQI5CrfZ+2E+yoZIbFxJ0bHTIWUQpyNLJStNfxY
-	NZZIhDP5uhYmz9jIy1SfAjqnCwyQxgDrPKXI2iKIxqVtRWuy2HwZBWp87MPnLZSXuHmdjgq1BBjL5
-	CUsa1o7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KcNVpM3A7bzp+CRjBcrBR89LqzMSVB8YRfjqJz4qBak=; b=rVgh1VIrCTzsOJXRqSczWyNRWz
+	2coSGb1tRS53VbiQO9ONqAkvdskl4viPCllTEPUmKgWlfTJ0YvnVP6Gikt6SYxQKJUh1vNWTDVz1e
+	IEFHuOdsRctViftoQptT1kNgzb7Y2iM9s4jfZHelV/0EFtYdHminJKvmQ3IlOrLezraRUPWH4Jtk9
+	zzhhORlzhyPhIgwREGNQIRkrTdPElHsC5BG9PXdS0RwlpasIKSGgFfDnll0HccicIrZKoGBW+C3to
+	LSn1mSmAAALPgkxqqkE4Go3/xRmxGhkXX+Vq7Af5h/vwxcFZiMf/jgfbh56SFHTM+Pau/zSLuN/7m
+	6r7k7J0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIS4v-00000005V8I-0AOB;
-	Mon, 10 Nov 2025 13:37:05 +0000
-Received: from mx13.kaspersky-labs.com ([91.103.66.164])
+	id 1vISOo-00000005XfT-36qT;
+	Mon, 10 Nov 2025 13:57:38 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIS4r-00000005V7A-0gm0;
-	Mon, 10 Nov 2025 13:37:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kaspersky.com;
-	s=mail202505; t=1762781809;
-	bh=Z24k+LQZs05VjiiN2ltNPT89oDxAmQ/6P/qF1hm3qv4=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type;
-	b=OcCweNw3vb9jy2lz7l6GQ8gmv0I+gcRQhVDkwPCpSDwr08Q3rHXVnJ7RBtgUnxbCQ
-	 O6i98Wt5XZdzXHgPmhdKwsyETn8WoruSckkFRovH7HbL1pucmgeFe6E9GTNLKf4d7c
-	 7Ls+iLFAVufN+zfDhUfdFEf5m5dNn7sFRqFSL6g3cprwx2FGOAQ4pm+vyx2D1Xrlo6
-	 ppfDT5lv7papwnVmUdLnQ8Z/MG8y9RRY/GMnX9sPOm5/pZnDhmgS1BcY6gAM4R/fTh
-	 wCIFliiGwCT2AFpzjys9p4h8/JMgZdGr10TmsJ5frMHSy41AFZ2Aibt8udJtlGleSS
-	 MfgjQJ6TaZRRg==
-Received: from relay13.kaspersky-labs.com (localhost [127.0.0.1])
-	by relay13.kaspersky-labs.com (Postfix) with ESMTP id 8C2263E24E5;
-	Mon, 10 Nov 2025 16:36:49 +0300 (MSK)
-Received: from mail-hq2.kaspersky.com (unknown [91.103.66.200])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(Client CN "mail-hq2.kaspersky.com", Issuer "Kaspersky MailRelays CA G3" (verified OK))
-	by mailhub13.kaspersky-labs.com (Postfix) with ESMTPS id 86E023E21DC;
-	Mon, 10 Nov 2025 16:36:48 +0300 (MSK)
-Received: from zhigulin-p.avp.ru (10.16.104.190) by HQMAILSRV2.avp.ru
- (10.64.57.52) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Mon, 10 Nov
- 2025 16:36:29 +0300
-From: Pavel Zhigulin <Pavel.Zhigulin@kaspersky.com>
-To: " Chunfeng Yun  " <chunfeng.yun@mediatek.com>, <linux-usb@vger.kernel.org>
-CC: Pavel Zhigulin <Pavel.Zhigulin@kaspersky.com>, Greg Kroah-Hartman
-	<gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <lvc-project@linuxtesting.org>
-Subject: [PATCH] usb: gadget: pxa27x_udc: add proper errors hanling
-Date: Mon, 10 Nov 2025 16:36:09 +0300
-Message-ID: <20251110133612.159057-1-Pavel.Zhigulin@kaspersky.com>
-X-Mailer: git-send-email 2.43.0
+	id 1vISOk-00000005Xec-2iYs;
+	Mon, 10 Nov 2025 13:57:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1762783051;
+	bh=KKRgKuFzrzMKfhZwoLlMMqh/HMidHruZpOkU87ZuQX8=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=h6DFsJ4X6waWfhY3+YKw2XbcsEITbdvCaI7t6SQyO63CqQ2v7RT+/BgjWpLXVWbbJ
+	 jOMSwFyatiq0v5ccn8vslvqnFkhtRZMeGGyLVMyBX2WWLvOFokRpOL1U/wG/Dh+j9P
+	 AnLTP414aOhJLr5WUkC8YgOpP4az7amlae1b5g59Coun08z2ypdVpQXH8o9LooTpxO
+	 1hXBlflRgOWrpHpu+bxCmMTfHrvmBvR6KI+jkul9hmJTGyY06WdGcBvUmDSQktxeO9
+	 GUssCYfEMh4Pp9WeclYedwt0Z6fGNwiNeoYJyu6Lpvgjwu0Sh6AL6dZK+DpdLjt5Pm
+	 9+ooPKi8idFxg==
+Received: from [IPv6:2606:6d00:11:ef24::c41] (unknown [IPv6:2606:6d00:11:ef24::c41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2C9FD17E110D;
+	Mon, 10 Nov 2025 14:57:29 +0100 (CET)
+Message-ID: <f4fee7587d8e3e58bab39f1b3202b67f0f5c3e04.camel@collabora.com>
+Subject: Re: [PATCH v5 0/8] Enable video decoder & encoder for MT8189
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Kyrie Wu =?UTF-8?Q?=28=E5=90=B4=E6=99=97=29?= <Kyrie.Wu@mediatek.com>, 
+ "linux-kernel@vger.kernel.org"	 <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org"	 <linux-mediatek@lists.infradead.org>,
+ George Sun =?UTF-8?Q?=28=E5=AD=99=E6=9E=97=29?=	 <George.Sun@mediatek.com>,
+ Tiffany Lin =?UTF-8?Q?=28=E6=9E=97=E6=85=A7=E7=8F=8A=29?=	
+ <tiffany.lin@mediatek.com>, "nhebert@chromium.org" <nhebert@chromium.org>, 
+ "linux-media@vger.kernel.org"	 <linux-media@vger.kernel.org>,
+ "devicetree@vger.kernel.org"	 <devicetree@vger.kernel.org>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,  "hverkuil@xs4all.nl"	
+ <hverkuil@xs4all.nl>, Yunfei Dong
+ =?UTF-8?Q?=28=E8=91=A3=E4=BA=91=E9=A3=9E=29?=	 <Yunfei.Dong@mediatek.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,  Irui Wang
+ =?UTF-8?Q?=28=E7=8E=8B=E7=91=9E=29?=	 <Irui.Wang@mediatek.com>,
+ "robh@kernel.org" <robh@kernel.org>, 
+ "linux-arm-kernel@lists.infradead.org"	
+ <linux-arm-kernel@lists.infradead.org>, Yilong Zhou
+ =?UTF-8?Q?=28=E5=91=A8=E6=98=93=E9=BE=99=29?=	 <Yilong.Zhou@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,  "krzk+dt@kernel.org"	
+ <krzk+dt@kernel.org>, "arnd@arndb.de" <arnd@arndb.de>, Andrew-CT Chen
+ =?UTF-8?Q?=28=E9=99=B3=E6=99=BA=E8=BF=AA=29?=	
+ <Andrew-CT.Chen@mediatek.com>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>
+Cc: "andrzejtp2010@gmail.com" <andrzejtp2010@gmail.com>, 
+ "neil.armstrong@linaro.org"
+	 <neil.armstrong@linaro.org>
+Date: Mon, 10 Nov 2025 08:57:26 -0500
+In-Reply-To: <09eb315e50aeaf865b093880aaaa5f2c9c0feba9.camel@mediatek.com>
+References: <20251106061323.2193-1-kyrie.wu@mediatek.com>
+		 <c49b979fd911f2587bbfed129b07065f1cd2a2db.camel@collabora.com>
+	 <09eb315e50aeaf865b093880aaaa5f2c9c0feba9.camel@mediatek.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-QUHvuhjIUwreEvkskggy"
+User-Agent: Evolution 3.58.1 (3.58.1-1.fc43) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.16.104.190]
-X-ClientProxiedBy: HQMAILSRV3.avp.ru (10.64.57.53) To HQMAILSRV2.avp.ru
- (10.64.57.52)
-X-KSE-ServerInfo: HQMAILSRV2.avp.ru, 9
-X-KSE-AntiSpam-Interceptor-Info: scan successful
-X-KSE-AntiSpam-Version: 6.1.1, Database issued on: 11/10/2025 13:26:37
-X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
-X-KSE-AntiSpam-Method: none
-X-KSE-AntiSpam-Rate: 0
-X-KSE-AntiSpam-Info: Lua profiles 197932 [Nov 10 2025]
-X-KSE-AntiSpam-Info: Version: 6.1.1.11
-X-KSE-AntiSpam-Info: Envelope from: Pavel.Zhigulin@kaspersky.com
-X-KSE-AntiSpam-Info: LuaCore: 75 0.3.75
- aab2175a55dcbd410b25b8694e49bbee3c09cdde
-X-KSE-AntiSpam-Info: {Tracking_cluster_exceptions}
-X-KSE-AntiSpam-Info: {Tracking_real_kaspersky_domains}
-X-KSE-AntiSpam-Info: {Tracking_uf_ne_domains}
-X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
-X-KSE-AntiSpam-Info: zhigulin-p.avp.ru:5.0.1,7.1.1;kaspersky.com:5.0.1,7.1.1;127.0.0.199:7.1.2;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1
-X-KSE-AntiSpam-Info: {Tracking_white_helo}
-X-KSE-AntiSpam-Info: FromAlignment: s
-X-KSE-AntiSpam-Info: Rate: 0
-X-KSE-AntiSpam-Info: Status: not_detected
-X-KSE-AntiSpam-Info: Method: none
-X-KSE-Antiphishing-Info: Clean
-X-KSE-Antiphishing-ScanningType: Deterministic
-X-KSE-Antiphishing-Method: None
-X-KSE-Antiphishing-Bases: 11/10/2025 13:28:00
-X-KSE-AttachmentFiltering-Interceptor-Info: no applicable attachment filtering
- rules found
-X-KSE-Antivirus-Interceptor-Info: scan successful
-X-KSE-Antivirus-Info: Clean, bases: 11/10/2025 12:24:00 PM
-X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
-X-KSE-AttachmentFiltering-Interceptor-Info: no applicable attachment filtering
- rules found
-X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
-X-KSMG-AntiPhishing: NotDetected
-X-KSMG-AntiSpam-Interceptor-Info: not scanned
-X-KSMG-AntiSpam-Status: not scanned, disabled by settings
-X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.1.1.8310, bases: 2025/11/10 10:58:00 #27905202
-X-KSMG-AntiVirus-Status: NotDetected, skipped
-X-KSMG-LinksScanning: NotDetected
-X-KSMG-Message-Action: skipped
-X-KSMG-Rule-ID: 52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_053702_188013_DFF4BEF1 
-X-CRM114-Status: GOOD (  16.23  )
+X-CRM114-CacheID: sfid-20251110_055734_837153_0544BD2C 
+X-CRM114-Status: GOOD (  28.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,141 +111,219 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The udc_enable() function previously returned void and ignored
-potential errors from clk_enable(). This patch changes it to return
-int and propagates clock enable errors back to the caller.
 
-pxa_udc_pullup() now handles these return values correctly.
+--=-QUHvuhjIUwreEvkskggy
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Also, both pxa27x_change_configuration() and pxa27x_change_interface()
-now check and log negative return codes from the gadget driver’s .setup()
-callback to aid debugging of failed reconfiguration events.
+Le lundi 10 novembre 2025 =C3=A0 02:32 +0000, Kyrie Wu (=E5=90=B4=E6=99=97)=
+ a =C3=A9crit=C2=A0:
+>=20
+> On Thu, 2025-11-06 at 09:18 -0500, Nicolas Dufresne wrote:
+> > Hi,
+> >=20
+> > Le jeudi 06 novembre 2025 =C3=A0 14:13 +0800, Kyrie Wu a =C3=A9crit :
+> > > This series have the follow changing:
+> > > Firstly add mt8189 video decoder compatible, profile and level to
+> > > support
+> > > MT8189 kernel driver.
+> > > Secondly fix some bugs, including vp 4K profile2 and media device
+> > > node
+> > > number bug.
+> > > Lastly, add mt8189 video encoder compatible.
+> > >=20
+> > > This series has been tested with MT8189 tast test.
+> > > Encoding and decoding worked for this chip.
+> > >=20
+> > > Patches 1-2 Add decoder compatible.
+> > > Patches 3 Add profile and level supporting.
+> > > Patches 4 Add core-only VP9 decoding supporting.
+> > > Patches 5-6 fix some bugs.
+> > > Patches 7-8 Adds encoder compatible.
+> > >=20
+> > > ---
+> > > H264 test results:
+> > > ./fluster.py run -d GStreamer-H.264-V4L2SL-Gst1.0 -j2 -t 90
+> > > =C2=A0=C2=A0=C2=A0=C2=A0JVT-AVC_V1Ran 96/135 tests successfully
+> > >=20
+> > > VP9 test results:
+> > > ./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0 -j2 -t 90
+> > > VP9-TEST-VECTORSRan 276/305 tests successfully
+> > >=20
+> > > v4l2-compliance test results:
+> > > Compliance test for mtk-vcodec-enc device /dev/video2:
+> > > Total for mtk-vcodec-enc device /dev/video2: 47, Succeeded: 46,
+> > > Failed: 1, Warnings: 0
+> >=20
+> > There is one fail, can you explain it ?
+> >=20
+> > Nicolas
+>=20
+> Dear Nicolas,
+>=20
+> The failure is caused by subscribed event/dqevent. Our encoder driver
+> didn't register those apis, which caused this failure.
+> Here is the fail log, which is samed as MT8196:
+>=20
+> https://patchwork.linuxtv.org/project/linux-media/cover/20250528063633.14=
+054-1-irui.wang@mediatek.com/
+>=20
+> Control ioctls:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0test VIDIOC_QUERY_EXT_CTR=
+L/QUERYMENU: OK
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0test VIDIOC_QUERYCTRL: OK
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0test VIDIOC_G/S_CTRL: OK
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0test VIDIOC_G/S/TRY_EXT_C=
+TRLS: OK
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0fail: v4l2-test-controls.cpp(1171): node->codec_mas=
+k &
+> STATEFUL_ENCODER
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0test VIDIOC_(UN)SUBSCRIBE=
+_EVENT/DQEVENT: FAIL
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0test VIDIOC_G/S_JPEGCOMP:=
+ OK (Not Supported)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0Standard Controls: 16 Pri=
+vate Controls: 0
 
-No functional behavior change expected under normal conditions.
 
-Found by Linux Verification Center (linuxtesting.org) with SVACE.
+The spec says:
+  =20
+  =20
+   For backwards compatibility, the encoder will signal a V4L2_EVENT_EOS ev=
+ent when
+   the last frame has been encoded and all frames are ready to be dequeued.=
+=20
 
-Fixes: eb50702539f9 ("USB: pxa27x_udc: factor pullup code to prepare otg transceiver")
-Fixes: f4fd094cdfd1 ("usb: gadget: pxa27x_udc: fix clock prepare and enable")
-Fixes: d75379a53870 ("usb: pxa27x_udc driver")
-Signed-off-by: Pavel Zhigulin <Pavel.Zhigulin@kaspersky.com>
----
- drivers/usb/gadget/udc/pxa27x_udc.c | 42 ++++++++++++++++++++++-------
- 1 file changed, 32 insertions(+), 10 deletions(-)
+In practice, we test for that on every m2m, see the test code:
 
-diff --git a/drivers/usb/gadget/udc/pxa27x_udc.c b/drivers/usb/gadget/udc/pxa27x_udc.c
-index 897f53601b5b..58b7f85667bd 100644
---- a/drivers/usb/gadget/udc/pxa27x_udc.c
-+++ b/drivers/usb/gadget/udc/pxa27x_udc.c
-@@ -1462,7 +1462,7 @@ static int pxa_udc_wakeup(struct usb_gadget *_gadget)
- 	return 0;
- }
 
--static void udc_enable(struct pxa_udc *udc);
-+static int udc_enable(struct pxa_udc *udc);
- static void udc_disable(struct pxa_udc *udc);
+	if (node->is_m2m) {
+		node_m2m_cap->g_fmt(fmt_q, m2m_q.g_type());
+		if (node_m2m_cap->buftype_pixfmts[m2m_q.g_type()][fmt_q.g_pixelformat()] =
+&
+			V4L2_FMT_FLAG_COMPRESSED)
+			valid_output_flags =3D V4L2_BUF_FLAG_TIMECODE | V4L2_BUF_FLAG_TSTAMP_SRC=
+_MASK;
 
- /**
-@@ -1519,17 +1519,21 @@ static int should_disable_udc(struct pxa_udc *udc)
- static int pxa_udc_pullup(struct usb_gadget *_gadget, int is_active)
- {
- 	struct pxa_udc *udc = to_gadget_udc(_gadget);
-+	int ret = 0;
+		struct v4l2_event_subscription sub =3D { 0 };
 
--	if (!udc->gpiod && !udc->udc_command)
--		return -EOPNOTSUPP;
-+	if (!udc->gpiod && !udc->udc_command) {
-+		ret = -EOPNOTSUPP;
-+		goto out;
-+	}
+		sub.type =3D V4L2_EVENT_EOS;
+		if (node->codec_mask & (STATEFUL_ENCODER | STATEFUL_DECODER))
+			doioctl(node, VIDIOC_SUBSCRIBE_EVENT, &sub);
+	}
 
- 	dplus_pullup(udc, is_active);
+please fix,
+Nicolas
 
- 	if (should_enable_udc(udc))
--		udc_enable(udc);
-+		ret = udc_enable(udc);
- 	if (should_disable_udc(udc))
- 		udc_disable(udc);
--	return 0;
-+out:
-+	return ret;
- }
+>=20
+> Thanks.
+>=20
+> Regards,
+> Kyrie.
+>=20
+> >=20
+> > > Compliance test for mtk-vcodec-dec device /dev/video3:
+> > > Total for mtk-vcodec-dec device /dev/video3: 48, Succeeded: 48,
+> > > Failed: 0, Warnings: 0
+> > >=20
+> > > scp upstream link:
+> > >=20
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20250811015922.=
+32680-1-huayu.zong@mediatek.com/
+> > > dtsi upstream link:
+> > >=20
+> https://lore.kernel.org/linux-mediatek/20251030134541.784011-12-jh.hsu@me=
+diatek.com/T/#m847e35de0a5b18fac0ca0624a8559d84964ad5c7
+> > >=20
+> > > Changes compared with v4:
+> > > --update H264 & vp9 fluster test results
+> > > --update vp9 single core decoder prob size setting and commit
+> > > messages
+> > >=20
+> > > Changes compared with v3:
+> > > --add reviewer to commit messages
+> > > --Rebased on top of the latest media tree
+> > >=20
+> > > Changes compared with v2:
+> > > --add H264 fluster test results
+> > > --reorder compatible string for dt-bindings
+> > >=20
+> > > Changes compared with v1:
+> > > --add v4l2-compliance test results
+> > > --add scp upstream link
+> > > --add HW difference discriptions for dt-bindings commit messages
+> > >=20
+> > > This series patches dependent on:
+> > > [1]
+> > >=20
+> https://patchwork.linuxtv.org/project/linux-media/cover/20250510075357.11=
+761-1-yunfei.dong@mediatek.com/
+> > > [2]
+> > >=20
+> https://patchwork.linuxtv.org/project/linux-media/cover/20250814085642.17=
+343-1-kyrie.wu@mediatek.com/
+> > >=20
+> > > Kyrie Wu (8):
+> > > =C2=A0=C2=A0dt-bindings: media: mediatek: decoder: Add MT8189
+> > > =C2=A0=C2=A0=C2=A0=C2=A0mediatek,vcodec-decoder
+> > > =C2=A0=C2=A0media: mediatek: vcodec: add decoder compatible to suppor=
+t MT8189
+> > > =C2=A0=C2=A0media: mediatek: vcodec: add profile and level supporting=
+ for
+> > > MT8189
+> > > =C2=A0=C2=A0media: mediatek: vcodec: Add single core VP9 decoding sup=
+port for
+> > > =C2=A0=C2=A0=C2=A0=C2=A0MT8189
+> > > =C2=A0=C2=A0media: mediatek: vcodec: fix vp9 4096x2176 fail for profi=
+le2
+> > > =C2=A0=C2=A0media: mediatek: vcodec: fix media device node number
+> > > =C2=A0=C2=A0dt-bindings: media: Add MT8189 mediatek,vcodec-encoder
+> > > =C2=A0=C2=A0media: mediatek: encoder: Add MT8189 encoder compatible d=
+ata
+> > >=20
+> > > =C2=A0.../media/mediatek,vcodec-encoder.yaml        |  2 +
+> > > =C2=A0.../media/mediatek,vcodec-subdev-decoder.yaml |  5 +-
+> > > =C2=A0.../vcodec/decoder/mtk_vcodec_dec_drv.c       |  9 +++-
+> > > =C2=A0.../vcodec/decoder/mtk_vcodec_dec_drv.h       |  1 +
+> > > =C2=A0.../vcodec/decoder/mtk_vcodec_dec_stateless.c |  4 ++
+> > > =C2=A0.../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 48 ++++++++++++=
+++-
+> > > ----
+> > > =C2=A0.../vcodec/encoder/mtk_vcodec_enc_drv.c       | 14 ++++++
+> > > =C2=A07 files changed, 68 insertions(+), 15 deletions(-)
+>=20
+> ************* MEDIATEK Confidentiality Notice
+> =C2=A0********************
+> The information contained in this e-mail message (including any=20
+> attachments) may be confidential, proprietary, privileged, or otherwise
+> exempt from disclosure under applicable laws. It is intended to be=20
+> conveyed only to the designated recipient(s). Any use, dissemination,=20
+> distribution, printing, retaining or copying of this e-mail (including it=
+s=20
+> attachments) by unintended recipient(s) is strictly prohibited and may=
+=20
+> be unlawful. If you are not an intended recipient of this e-mail, or beli=
+eve
+> =C2=A0
+> that you have received this e-mail in error, please notify the sender=20
+> immediately (by replying to this e-mail), delete any and all copies of=
+=20
+> this e-mail (including any attachments) from your system, and do not
+> disclose the content of this e-mail to any other person. Thank you!
 
- /**
-@@ -1691,12 +1695,18 @@ static void udc_init_data(struct pxa_udc *dev)
-  * Enables the udc device : enables clocks, udc interrupts, control endpoint
-  * interrupts, sets usb as UDC client and setups endpoints.
-  */
--static void udc_enable(struct pxa_udc *udc)
-+static int udc_enable(struct pxa_udc *udc)
- {
-+	int ret = 0;
-+
- 	if (udc->enabled)
--		return;
-+		goto out;
+--=-QUHvuhjIUwreEvkskggy
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
--	clk_enable(udc->clk);
-+	ret = clk_enable(udc->clk);
-+	if (ret < 0) {
-+		dev_err(udc->dev, "failed to enable clock=%d\n", ret);
-+		goto out;
-+	}
- 	udc_writel(udc, UDCICR0, 0);
- 	udc_writel(udc, UDCICR1, 0);
- 	udc_clear_mask_UDCCR(udc, UDCCR_UDE);
-@@ -1726,6 +1736,8 @@ static void udc_enable(struct pxa_udc *udc)
- 	pio_irq_enable(&udc->pxa_ep[0]);
+-----BEGIN PGP SIGNATURE-----
 
- 	udc->enabled = 1;
-+out:
-+	return ret;
- }
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaRHvRgAKCRDZQZRRKWBy
+9IodAP92sXKXxtzBgiSqcP5IWsLSfYE7FE4ekNtUGbBoWcArxAEAm5t9IiBp57Ej
+BAdduiviuXeRaE4BvqzLvLjiSOUUiAc=
+=JqZh
+-----END PGP SIGNATURE-----
 
- /**
-@@ -2078,6 +2090,7 @@ static void handle_ep(struct pxa_ep *ep)
- static void pxa27x_change_configuration(struct pxa_udc *udc, int config)
- {
- 	struct usb_ctrlrequest req ;
-+	int setup_result;
-
- 	dev_dbg(udc->dev, "config=%d\n", config);
-
-@@ -2092,7 +2105,11 @@ static void pxa27x_change_configuration(struct pxa_udc *udc, int config)
- 	req.wLength = 0;
-
- 	set_ep0state(udc, WAIT_ACK_SET_CONF_INTERF);
--	udc->driver->setup(&udc->gadget, &req);
-+
-+	setup_result = udc->driver->setup(&udc->gadget, &req);
-+	if (setup_result < 0)
-+		dev_dbg(udc->dev, "driver setup failed=%d\n", setup_result);
-+
- 	ep_write_UDCCSR(&udc->pxa_ep[0], UDCCSR0_AREN);
- }
-
-@@ -2108,6 +2125,7 @@ static void pxa27x_change_configuration(struct pxa_udc *udc, int config)
- static void pxa27x_change_interface(struct pxa_udc *udc, int iface, int alt)
- {
- 	struct usb_ctrlrequest  req;
-+	int setup_result;
-
- 	dev_dbg(udc->dev, "interface=%d, alternate setting=%d\n", iface, alt);
-
-@@ -2121,7 +2139,11 @@ static void pxa27x_change_interface(struct pxa_udc *udc, int iface, int alt)
- 	req.wLength = 0;
-
- 	set_ep0state(udc, WAIT_ACK_SET_CONF_INTERF);
--	udc->driver->setup(&udc->gadget, &req);
-+
-+	setup_result = udc->driver->setup(&udc->gadget, &req);
-+	if (setup_result < 0)
-+		dev_dbg(udc->dev, "driver setup failed=%d\n", setup_result);
-+
- 	ep_write_UDCCSR(&udc->pxa_ep[0], UDCCSR0_AREN);
- }
-
---
-2.43.0
-
+--=-QUHvuhjIUwreEvkskggy--
 
