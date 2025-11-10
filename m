@@ -4,80 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FBFDCCF9E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 10:14:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB679CCFA13
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 10:49:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ru+KiglAiw/O5uCz0AVIdoM4zOCp0MNtiP3BB2SfZEo=; b=qHZASfUUqucEZq5c1i44PRY8Ve
-	SP+yLZCJIlp7PpzDcMDQsF3b2V9ZgKyRXrN7BN50EX3xvq07RWRUN/B/1eyGk5yqZa9ofPSZD83bT
-	FPPYXoF908VbELRCjqHMxNwAwO2bS1eptQK14D9UKdEltm+iuBwqwur5qFXFDbjvVEDS7lu25KAaM
-	mQJbNVn3EZwpYdD1CFypdgvfWeof+S3NVOafEj6mOAQ9iqCZHpRSEU4roOYxo1YkGpLlQnlYvSHNs
-	rLe9IxSKzYUxAaNJCXWM6xr+AEZACYsz98cZq7wHBNvqqxm1jmRb0zxJeQ6Q+mxgIVplY6ErjuX/7
-	Ia0OfehA==;
+	bh=M3hjjQw506YKhgHdFR2a57hcN/smdx/JNOkEsmfHHZk=; b=hmSJ+oF1kZQ8HXDeTnztDGczMx
+	5Ongrma93OVSQKZLE0HzrE6OLl4JTDZ4hRnJJf13cZcy1IHpNefjxmlPiCQUsstRVaZjo+3uep6BY
+	2NpFuWWCE2Y9L284VZSFclaZ02Kx9ppFR/xe1Corq7QYLRzAIaB52nhd+3QRCLQRjaH6e/HQNil3W
+	RMz2MFLq9G7+G3O6wAz7KLsaXxdOMtBl0FXHJ20BhlmEfgFtFR41hoSeDFQO3xhYi1tmLURQQRRqg
+	ezuMoLAnjSCa75foyIFWyuVHBv8FXN9LFVT1Pw4wVC/5m7/70d+Z8BOOi86DBDCpicO3qBzF6swUZ
+	opiOL1Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIOuV-000000059yD-3QNy;
-	Mon, 10 Nov 2025 10:14:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vIPSs-00000005F33-3WtL;
+	Mon, 10 Nov 2025 10:49:38 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIOuL-000000059tf-3P5B;
-	Mon, 10 Nov 2025 10:13:59 +0000
-X-UUID: f4e7bafebe1d11f0a52f393f94899d25-20251110
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ru+KiglAiw/O5uCz0AVIdoM4zOCp0MNtiP3BB2SfZEo=;
-	b=iWCXagEdXFGNw+CmoiMY+/U5/zUzl67gQKOS9WdkQgJjoMKMPOhaLOAO5gHTD415dxGxIWL8qpIwVQDE+Q3Zt/BkKB8r5ekONLYEt/IzF24xQjYOXv+J+GSTprikG9xxgdbxmf51llOkg9YhVPlZ5zg/fZl12r18ah1aVNUiTys=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:7e1483bd-55e4-4d94-8816-9ef314a007ff,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:c9e5ba57-17e4-43d2-bf73-55337eed999a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
-	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: f4e7bafebe1d11f0a52f393f94899d25-20251110
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <huayu.zong@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 578508563; Mon, 10 Nov 2025 03:13:52 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Mon, 10 Nov 2025 18:13:49 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Mon, 10 Nov 2025 18:13:48 +0800
-From: Huayu Zong <huayu.zong@mediatek.com>
-To: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier
-	<mathieu.poirier@linaro.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Huayu Zong
-	<huayu.zong@mediatek.com>
-Subject: [PATCH v3 3/3] dt-bindings: remoteproc: mediatek: Add MT8189 SCP binding
-Date: Mon, 10 Nov 2025 18:13:31 +0800
-Message-ID: <20251110101342.24261-4-huayu.zong@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20251110101342.24261-1-huayu.zong@mediatek.com>
-References: <20251110101342.24261-1-huayu.zong@mediatek.com>
+	id 1vIPSp-00000005F1y-3X8n;
+	Mon, 10 Nov 2025 10:49:37 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1762771764; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=NxkxrJemZezmKrnWKU50oEyuQ0oCj/UUy1xO5JA0Gxn9hFcL8TKfLyZ9KjZK0Oj0JuaQfXVLrz/fLTRYpOpa1ehrccY4PZYSvu95xVpyoEGqHKNJIZKqZ7noyjFhJlISRGOCeVfVMTkvYNqRmBdvc90If/92GDVfoy+n2dsECTE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1762771764; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=M3hjjQw506YKhgHdFR2a57hcN/smdx/JNOkEsmfHHZk=; 
+	b=aCxRLagrCIk8Z4COBk6g3josoNmO+MGUHDltmbPTzTdDmTTOuLRTxMiCLvRy08HwLsFgO/iVdI8mbNOub7r8jKGDGkaiAXxIMppwWE+6LP5tU/US9jl2dpE1vhWqavByHylZXFprTtLYSFIOsvHnZ0zslYFLvQvBllhzpcZcTJw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1762771764;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=M3hjjQw506YKhgHdFR2a57hcN/smdx/JNOkEsmfHHZk=;
+	b=VBd3EL5UPfRGd3kOCmotU8adSTTmnNAgPJhL85RfMUAYwnFFqt1sQGScQeXfHtnq
+	5MtVhSlfd1As0In11QZQr2rKRZoGz7fe2XwrKIIJHeGcFyT8+8fXOywCIdVrBqO0CSh
+	qjJGAlCu1mMEDhsVV8VXSqvTB6HnfBOAwkRMWe/A=
+Received: by mx.zohomail.com with SMTPS id 1762771762436795.5055126772169;
+	Mon, 10 Nov 2025 02:49:22 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Maxime Ripard <mripard@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
+ Brian Masney <bmasney@redhat.com>, Brian Masney <bmasney@redhat.com>
+Cc: linux-clk@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] pmdomain: mediatek: convert from clk round_rate() to
+ determine_rate()
+Date: Mon, 10 Nov 2025 11:49:17 +0100
+Message-ID: <9531607.CDJkKcVGEf@workhorse>
+In-Reply-To: <20251106-clk-pmdomain-mediatek-round-rate-v1-1-49441ea27f84@redhat.com>
+References: <20251106-clk-pmdomain-mediatek-round-rate-v1-1-49441ea27f84@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_021357_980499_3483DF80 
-X-CRM114-Status: UNSURE (   8.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251110_024935_951838_292BCA43 
+X-CRM114-Status: GOOD (  21.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,36 +81,79 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a new compatible string for MT8189 SCP.
-While MT8189 SCP is partially compatible with MT8192, the register layout
-has some differences, so a separate binding is required.
+On Friday, 7 November 2025 00:40:43 Central European Standard Time Brian Masney wrote:
+> The round_rate() clk ops is deprecated in the clk framework in favor
+> of the determine_rate() clk ops, so let's convert this driver so that
+> round_rate() can be removed from the clk core.
+> 
+> Signed-off-by: Brian Masney <bmasney@redhat.com>
+> ---
+>  drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
+> index af20111067c02a5f9a0d6d751e9e0dc32c1a4d90..9bad577b3ae4bf1b83d4f782bb52f56f779a8974 100644
+> --- a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
+> +++ b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
+> @@ -309,11 +309,11 @@ static unsigned long mtk_mfg_recalc_rate_gpu(struct clk_hw *hw,
+>  	return readl(mfg->shared_mem + GF_REG_FREQ_OUT_GPU) * HZ_PER_KHZ;
+>  }
+>  
+> -static long mtk_mfg_round_rate(struct clk_hw *hw, unsigned long rate,
+> -			       unsigned long *parent_rate)
+> +static int mtk_mfg_determine_rate(struct clk_hw *hw,
+> +				  struct clk_rate_request *req)
+>  {
+>  	/*
+> -	 * The round_rate callback needs to be implemented to avoid returning
+> +	 * The determine_rate callback needs to be implemented to avoid returning
+>  	 * the current clock frequency, rather than something even remotely
+>  	 * close to the frequency that was asked for.
+>  	 *
+> @@ -325,7 +325,7 @@ static long mtk_mfg_round_rate(struct clk_hw *hw, unsigned long rate,
+>  	 * high current frequency, breaking the powersave governor in the process.
+>  	 */
+>  
+> -	return rate;
+> +	return 0;
+>  }
+>  
+>  static unsigned long mtk_mfg_recalc_rate_stack(struct clk_hw *hw,
+> @@ -338,12 +338,12 @@ static unsigned long mtk_mfg_recalc_rate_stack(struct clk_hw *hw,
+>  
+>  static const struct clk_ops mtk_mfg_clk_gpu_ops = {
+>  	.recalc_rate = mtk_mfg_recalc_rate_gpu,
+> -	.round_rate = mtk_mfg_round_rate,
+> +	.determine_rate = mtk_mfg_determine_rate,
+>  };
+>  
+>  static const struct clk_ops mtk_mfg_clk_stack_ops = {
+>  	.recalc_rate = mtk_mfg_recalc_rate_stack,
+> -	.round_rate = mtk_mfg_round_rate,
+> +	.determine_rate = mtk_mfg_determine_rate,
+>  };
+>  
+>  static const struct clk_init_data mtk_mfg_clk_gpu_init = {
+> 
+> ---
+> base-commit: df5d79720b152e7ff058f11ed7e88d5b5c8d2a0c
+> change-id: 20251106-clk-pmdomain-mediatek-round-rate-649a9bf7d30a
+> 
+> Best regards,
+> 
 
-Signed-off-by: Huayu Zong <huayu.zong@mediatek.com>
----
- Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-index 179c98b33b4d..407be544b404 100644
---- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-@@ -20,6 +20,7 @@ properties:
-       - mediatek,mt8186-scp
-       - mediatek,mt8188-scp
-       - mediatek,mt8188-scp-dual
-+      - mediatek,mt8189-scp
-       - mediatek,mt8192-scp
-       - mediatek,mt8195-scp
-       - mediatek,mt8195-scp-dual
-@@ -168,6 +169,7 @@ allOf:
-             - mediatek,mt8183-scp
-             - mediatek,mt8186-scp
-             - mediatek,mt8188-scp
-+            - mediatek,mt8189-scp
-     then:
-       properties:
-         reg:
--- 
-2.45.2
+I didn't test boot this, but it should be fine, as I've checked
+and all the places where the clk core checks for round_rate, it
+also checks for determine_rate. So this is likely correct.
+
+I've also made sure the adjusted op implementation is correct,
+in that simply returning 0 leaves the requested rate as-is and
+preserves the existing behaviour.
+
+Kind regards,
+Nicolas Frattaroli
+
 
 
