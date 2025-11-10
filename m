@@ -4,102 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2ACACCFA13
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 11:08:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9E38CCF9E3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 11:50:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:Message-ID:In-Reply-To:Subject:cc:To:Date:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1teV5v5SqS6pFrvXlRn/4yX/VJMz/VkOekGlZHXTNkk=; b=DmX30978JppeBPZWUXIWzTQCEW
-	1V8lXSu3qjLKhH0zpiDmIf7YGkgSI0bmhgjNdDRMvESqJDD1QDiWBcM7fOKcKWFxNHeOmo7JlCSk7
-	Nk44L6yjoWlseSWrB+DRBlns/BoYqZOyDCAMpiNo8Mjcc62EGbAmO4auBys8dv1F4Qy0kciWHCpHf
-	DoJkymX9U9W1kK4sqqkvXxQofzJtOwIrzyEJmUBNKInf49nv8S9lmBgzEobcbYHx7FxxEIwvmymnL
-	cOpANsnLyjXBFwx84N+0cZ/EqClNosBTFavrYKHhJYCXItWJU2iQfSlBgTb34YH++YS2shzO6lp0Q
-	y4URXjSQ==;
+	bh=gUP/dyn6VDZvlXP2kNtZRvGusygPar1BUVzWgetIKE4=; b=xMqjpPX9CAhKNe6A2jB9VS54lt
+	aGvt0f84yvENr9s2Eaw/U0CWMpd6RMvp+1XbWzdeq1xvyIIVHxPrIC4eyLRokWknP9WLU+J24LQM+
+	cIEw3uw00L8dFhG+AzYcw8Q9sIH5gHGQ7U3r1i/b9igs9MFpBi2r8bbEmLh94BL2HA7C5i5dS+fC8
+	xiSXjj07hOFzfLzdqXU/G/gZMRM2fMAPzcr8xw77VSFm8TzNlDJ0hvFjMt3/AW1pfWmfa1Dz71fPd
+	Qp3NuCLZ8MEPWkz5nvh1WsK5GWr5RONtPXofXJdSbIuLZ9ERpBtuPuyLzNwFa/SWnuJce/xJ+y/O7
+	Y4RwM4vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIPke-00000005GZY-3iir;
-	Mon, 10 Nov 2025 11:08:00 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1vIQPJ-00000005LzD-2tlT;
+	Mon, 10 Nov 2025 11:50:01 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIPkc-00000005GY1-1EpB
-	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Nov 2025 11:07:59 +0000
-Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-781997d195aso1800488b3a.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Nov 2025 03:07:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1762772877; x=1763377677; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=1teV5v5SqS6pFrvXlRn/4yX/VJMz/VkOekGlZHXTNkk=;
-        b=SH/3n36O27tBeQ7b+Y6wNUrbXqHuX+VCbf5qXGTMdBCt9j1P5OOLU5e9MLW3apLOk5
-         S+Cd2bBYqNYCUBpP8wi6Y6hGSYNyH/W1QbXZWNK+mDKihLxbE2+0CntbYGaX8znIMyv9
-         TcUVx9OV3uRdEltvX+Eh9NCma8kWyf25Q2evEnNJ0To4c4FRbwl3776L8w1Vy2NmW1sT
-         EQ9FfV0Z9WAych8uMRbxkrD3IBFUAhAKWfzIvz8VGJZDy9a2qbClVWBv3xfxsiCDlZuz
-         yZXz0AmqvoroEJcBaxnL3xA3cd0PehlCuSdSHjAQrVynYEo8Uqprhxj5HXAh95+4QIqd
-         HX6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762772877; x=1763377677;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1teV5v5SqS6pFrvXlRn/4yX/VJMz/VkOekGlZHXTNkk=;
-        b=RCK8E5w+QJxnIJ4OcmokEsxCfBI2qgKlm0GuUM+rDdrVwT27qMs5bUVxvHsiVvaN/A
-         LwSGH4cUSSM7GDVxCaXqkHHNyZReA3uFLBYDZIj++UbfvwIeJspXdmq2c5rUNahp71z0
-         7q1K+xATy83QKtoansqECrxb4K+V8yTti2KVtVsoAcyOWbKcqyV90T3ndnh7nPIAQlAu
-         gzSByyYHPpMTTctyo0eNz9hpdymqgUcxUdPCQsqDZKgA/1yCMA+G+4DtwuK48GDd0dWy
-         M7diDa42V81SkQKfvREl4QmzmiNATS+incbnF+eSbXKa7gjAT+BQQAURn/Dz8ZDeV8V6
-         468g==
-X-Forwarded-Encrypted: i=1; AJvYcCW0yMk/Hk5DFaqV6HeN2q3iF9mxXgpr7hglFNHTPhZHdBY4T4I5r4bi4iPOfH3c9m9heJtVWYfXg6k24QOBpw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzda6v2GZPbTxCMBssChp5UoscXAH4gm3XnPEBQdXfSOswxB71L
-	y3nlw4d/7cM+Wn6KeS5ww3cvUeF1zeodWFX0zEQSp61cnF1Uj9dbKx6qOCo+ZBox9CU=
-X-Gm-Gg: ASbGncu6r3T5bopEZCd9hI+Eb5GVbHG4z5U5J9PClUC0NDwAxn+83whluIz//l04CeK
-	6FtBvMsXuUgsSmESctEouWb9lvd/vIAh2VBzrTasYwGOeOkrzHwJf8LDMpV8pqSpEIefKX/wAIK
-	MqJWIL+7qmeK/8r4nlX67yoG/YUx1o/wtTpAvKyRXnXu2Na0KHhNKyv9gEUvBkC22dsv2ncqI0B
-	ya2rDNj6kZLWxwK6RyIx7ag4+dk4lyrW2pZ4sPg3LUA8KvK8I2u97o+a09C6CshPfq1edS4A/7c
-	/votbIpUA+q6AtHMUTHd+hxxrn+AKAx+Kin8DEYB68xWjmZqeacjsFX7khOECEuwtYg1D1cSJwl
-	oBojLvtVhyAxMjJbq9FePjijdWKszoXja1nhyDuLgsaQvQUmD5m/qSV9OTidi1wfGfgS7GZ3xDA
-	uWyB3e3jgAPnk=
-X-Google-Smtp-Source: AGHT+IEI5dvtjpf7UreD77ujcsma8Qc91uG0xXgrZUKvQ1Ri3S/fmPHsBQ3EzHdR5mFgTf1mYnto9Q==
-X-Received: by 2002:a05:6a00:1990:b0:7aa:2d04:ccf6 with SMTP id d2e1a72fcca58-7b2232f8c80mr9070041b3a.0.1762772877004;
-        Mon, 10 Nov 2025 03:07:57 -0800 (PST)
-Received: from localhost ([122.172.86.94])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7b0c9c09cd6sm11397368b3a.23.2025.11.10.03.07.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Nov 2025 03:07:56 -0800 (PST)
-Date: Mon, 10 Nov 2025 16:37:54 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
+	id 1vIQPG-00000005LyE-1Osc;
+	Mon, 10 Nov 2025 11:49:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1762775398; x=1794311398;
+  h=from:date:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=kgLvGqGW6Y2MVxPS0dVKx+QUBt0U5B7prEs50cqFkU4=;
+  b=MybNDpjYgKJzlFJE1XlpRif5sw8WHu5Oa0DPp+7PPcrvsdcoEou2DCsA
+   nquc7AEVVNrIdcfV0p8X+fVSJJ2s5K6UjkbYi5X6xyb/iRbwnVjFLa2KX
+   mUbdG6XTlJgOz7H3b1N0+b1qfvHFcpVJ40pB0DS+RgzpZrYDR/A8Ui9Bi
+   E6FGEqNksD6qGPooTKNnZsSrn3UnlOn+SMCGgisksA9sl9etTKgVAbSR4
+   zEexw75QcZkFksiEb7l+GbvPSNiK2pN0yZC3uRMTGlyIGWjwacAWEoxQF
+   fuGD/FtPIFSgzt/kofTi1XRcIY+zeOz137dj9ZqKlbQTVUbDsyOVYq1z6
+   w==;
+X-CSE-ConnectionGUID: bac8SgFARaqN+WL1LI0WAg==
+X-CSE-MsgGUID: LOE//R7mSBykWTr2GmiTsA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11608"; a="75928786"
+X-IronPort-AV: E=Sophos;i="6.19,293,1754982000"; 
+   d="scan'208";a="75928786"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Nov 2025 03:49:57 -0800
+X-CSE-ConnectionGUID: Sj9MWXvmSo6S4AGtYTK6HQ==
+X-CSE-MsgGUID: q0aaSUIcTOWst/+WBvw2kg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.19,293,1754982000"; 
+   d="scan'208";a="193665319"
+Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.13])
+  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Nov 2025 03:49:46 -0800
+From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
+Date: Mon, 10 Nov 2025 13:49:42 +0200 (EET)
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Yangtao Li <tiny.windzz@gmail.com>, 
-	Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Daniel Lezcano <daniel.lezcano@linaro.org>, Bjorn Andersson <andersson@kernel.org>, 
-	Konrad Dybcio <konradybcio@kernel.org>, Thomas Gleixner <tglx@linutronix.de>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>, Maximilian Luz <luzmaximilian@gmail.com>, 
-	Hans de Goede <hansg@kernel.org>, Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>, 
-	Daniel Lezcano <daniel.lezcano@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
-	platform-driver-x86@vger.kernel.org, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH 04/13] cpufreq: sun50i: Simplify with
- of_machine_device_match()
-Message-ID: <awphoxojc3benzdam47mcx7pqty26ohrwpgv46kimg7nl53rqc@szq3aqjqsbrc>
-References: <20251106-b4-of-match-matchine-data-v1-0-d780ea1780c2@linaro.org>
- <20251106-b4-of-match-matchine-data-v1-4-d780ea1780c2@linaro.org>
+cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
+    "Rafael J. Wysocki" <rafael@kernel.org>, 
+    Viresh Kumar <viresh.kumar@linaro.org>, 
+    Matthias Brugger <matthias.bgg@gmail.com>, 
+    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+    Yangtao Li <tiny.windzz@gmail.com>, Chen-Yu Tsai <wens@kernel.org>, 
+    Jernej Skrabec <jernej.skrabec@gmail.com>, 
+    Samuel Holland <samuel@sholland.org>, 
+    Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+    Daniel Lezcano <daniel.lezcano@linaro.org>, 
+    Bjorn Andersson <andersson@kernel.org>, 
+    Konrad Dybcio <konradybcio@kernel.org>, 
+    Thomas Gleixner <tglx@linutronix.de>, 
+    Nicolas Ferre <nicolas.ferre@microchip.com>, 
+    Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+    Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+    Maximilian Luz <luzmaximilian@gmail.com>, Hans de Goede <hansg@kernel.org>, 
+    Daniel Lezcano <daniel.lezcano@kernel.org>, 
+    Thierry Reding <thierry.reding@gmail.com>, 
+    Jonathan Hunter <jonathanh@nvidia.com>, devicetree@vger.kernel.org, 
+    LKML <linux-kernel@vger.kernel.org>, linux-pm@vger.kernel.org, 
+    linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+    linux-sunxi@lists.linux.dev, linux-arm-msm@vger.kernel.org, 
+    platform-driver-x86@vger.kernel.org, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH 09/13] platform: surface: Simplify with
+ of_machine_get_match_data()
+In-Reply-To: <20251106-b4-of-match-matchine-data-v1-9-d780ea1780c2@linaro.org>
+Message-ID: <4986f752-ba21-6a5f-641a-e0dadb4abd11@linux.intel.com>
+References: <20251106-b4-of-match-matchine-data-v1-0-d780ea1780c2@linaro.org> <20251106-b4-of-match-matchine-data-v1-9-d780ea1780c2@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251106-b4-of-match-matchine-data-v1-4-d780ea1780c2@linaro.org>
+Content-Type: multipart/mixed; boundary="8323328-1580227820-1762775382=:1060"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_030758_333765_60F46DB0 
-X-CRM114-Status: UNSURE (   7.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251110_034958_464680_EE892137 
+X-CRM114-Status: GOOD (  14.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,14 +104,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 06-11-25, 20:07, Krzysztof Kozlowski wrote:
-> Replace open-coded getting root OF node and matching against it with
-> new of_machine_device_match() helper.
-> 
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--8323328-1580227820-1762775382=:1060
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+
+On Thu, 6 Nov 2025, Krzysztof Kozlowski wrote:
+
+Please change the prefixes to:
+
+platform/surface: aggregator_registry: ...
+
+Once that is changed,
+
+Acked-by: Ilpo J=C3=A4rvinen <ilpo.jarvinen@linux.intel.com>
+
+--=20
+ i.
+
+> Replace open-coded getting root OF node, matching against it and getting
+> the match data with new of_machine_get_match_data() helper.
+>=20
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
-
--- 
-viresh
+>=20
+> ---
+>=20
+> Depends on the first OF patch.
+> ---
+>  drivers/platform/surface/surface_aggregator_registry.c | 13 +-----------=
+-
+>  1 file changed, 1 insertion(+), 12 deletions(-)
+>=20
+> diff --git a/drivers/platform/surface/surface_aggregator_registry.c b/dri=
+vers/platform/surface/surface_aggregator_registry.c
+> index a594d5fcfcfd..78ac3a8fbb73 100644
+> --- a/drivers/platform/surface/surface_aggregator_registry.c
+> +++ b/drivers/platform/surface/surface_aggregator_registry.c
+> @@ -491,24 +491,13 @@ static const struct of_device_id ssam_platform_hub_=
+of_match[] __maybe_unused =3D {
+>  static int ssam_platform_hub_probe(struct platform_device *pdev)
+>  {
+>  =09const struct software_node **nodes;
+> -=09const struct of_device_id *match;
+> -=09struct device_node *fdt_root;
+>  =09struct ssam_controller *ctrl;
+>  =09struct fwnode_handle *root;
+>  =09int status;
+> =20
+>  =09nodes =3D (const struct software_node **)acpi_device_get_match_data(&=
+pdev->dev);
+>  =09if (!nodes) {
+> -=09=09fdt_root =3D of_find_node_by_path("/");
+> -=09=09if (!fdt_root)
+> -=09=09=09return -ENODEV;
+> -
+> -=09=09match =3D of_match_node(ssam_platform_hub_of_match, fdt_root);
+> -=09=09of_node_put(fdt_root);
+> -=09=09if (!match)
+> -=09=09=09return -ENODEV;
+> -
+> -=09=09nodes =3D (const struct software_node **)match->data;
+> +=09=09nodes =3D (const struct software_node **)of_machine_get_match_data=
+(ssam_platform_hub_of_match);
+>  =09=09if (!nodes)
+>  =09=09=09return -ENODEV;
+>  =09}
+>=20
+>=20
+--8323328-1580227820-1762775382=:1060--
 
