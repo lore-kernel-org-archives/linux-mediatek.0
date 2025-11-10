@@ -4,56 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49141CCFA13
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 12:01:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E78D7CCF9E3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 12:23:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kvtJ1fETVqmj4nudSO7ryzRgE/VjqozzSZZ/ggs2S7k=; b=BXo2QwlpUNC1iWowP6rz1zIqOY
-	9swlHaUqCMzyexuqHFml8NhX/QWTNRWtCg7dfUcbsm+b5xFQ0Duks7L0FYD6J4TV9EK2uanvkifag
-	Jf4Ymy2UbSiC7U5hU+vxITW7yYyQ2uJu2IqKDO7P0ulxuU4Y1Js1CkgXUrsPR/QN9M6yBvU0L5KHy
-	13n2saDE3LzMfJKqJ9mofE1KOrkF2skrDrn3GEbWdBYRVzxUcRBk/GN0Hs3icOOWmcSeBcdhhdaaN
-	6LjWCN+pzyOd2xr/plvyN6VPyyJYV0/fpGC66cQ6MtjRx7xaVgByHbj5Lp8C0ikFS3BjlfA9TRurg
-	BM7F/6UQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DzW1Nmfxb6NiioFQyuj9BtUlANBvsFTwFmbLEk2yLZU=; b=MQKhy8BH6WEOr3hjTdPsriXTCE
+	EiIgeerZWIQ+vQnJTBnBmk5ayRZUj+CGngm9tKRhmWE/fT/kPPDHGyqrv3Wv0qb1eU2fw4GBU9PFY
+	0HFV1gvDhaEeGOEkNJgszCWqiDaH98U6E9FNYbBRDWa+ixJ9Glp0zwCWg5oCj0i5IcIbjdEyRANMQ
+	tLxOW6y+ZrwgGqVT0f6Z5X/mOY0A7CL2ISOGvHmQwlpNoBOs9LKl4nsRXy4iV9C3W5Lwlgt3OQFmL
+	5t3b6/cdDrFVEVGjT54pzgE17p6aI+c2VMuUgHjCQ1xQzl6sPMOuHM3oEhUwbrVwzUtQ+Zw9yUqQ0
+	UcxkUTJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIQaU-00000005MzF-0Nwy;
-	Mon, 10 Nov 2025 12:01:34 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1vIQvy-00000005Ovg-2dpC;
+	Mon, 10 Nov 2025 12:23:46 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIQaO-00000005Mx8-0JDA;
-	Mon, 10 Nov 2025 12:01:32 +0000
-Received: from amadeus-Vostro-3710.lan (unknown [58.61.140.134])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 290ba10ea;
-	Mon, 10 Nov 2025 20:01:14 +0800 (GMT+08:00)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: [PATCH 1/1] wifi: mt76: mt7996: fix mixed FEM check of mt7996 chipset
-Date: Mon, 10 Nov 2025 20:01:10 +0800
-Message-Id: <20251110120110.193562-1-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1vIQvw-00000005Oub-1IAB
+	for linux-mediatek@lists.infradead.org;
+	Mon, 10 Nov 2025 12:23:45 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-6408f9cb1dcso5014913a12.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 10 Nov 2025 04:23:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1762777422; x=1763382222; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=DzW1Nmfxb6NiioFQyuj9BtUlANBvsFTwFmbLEk2yLZU=;
+        b=NHCCTgLdfUEQtPcSu0r6QMmiabBaBPaYEJE+2tYVbf8FQQSHw7iKzfdgnoS/uADUJz
+         hdSPv690Foq4L1AXYAbS8lKDum5uDaWy0RtZ5WA0jerjF7HYjKWR27fq8G+T0tPM3Oue
+         5CMQ1HXZhR1hTj08U+btVZ3vAInJ40MWI3fiW8TXzT8YCYOW1DGZLxyuT2yLnyBthY+0
+         ztF5fJVBF3DqWF4tt5HVPPrReL7XVmnJxqh/xsTk1v7drqY0g8CT9vA5md5VWZulrKo8
+         HZIpCpTUZABZR9KItlifymd9k3tBCoH6b/ni+tWKOX+W3LR4mztR0wZdDOiFplTJC6A5
+         poFA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762777422; x=1763382222;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=DzW1Nmfxb6NiioFQyuj9BtUlANBvsFTwFmbLEk2yLZU=;
+        b=nxpTeSJn2Dfam7Eru0xhVAmdiyL31WK6AIfe4Zl5a64BL/UmhsyeF7Wq15vZtS4gfS
+         lE3uTqWIElUOC1YgSy7/gCnGwoTm+h2QRpVF8CR9xPsnS7AodtMbk0ZxYJIlh7yj8Nb0
+         aAJarxm/IplalCPv9YG5fnY34/QoRxFaQTpSrjQWjKZHT5y1l2EumiKUfXpvwmupsxHa
+         kNQzaoG28zKurhypnHzqC0749ABvn+TSUC/ghclMPmXOsjkP0cCPQtjLSjJ2+zTQsT5t
+         WAN/UjCPKx4bMHj+3nVmKUaKFQDiLSfa7A3XxnRL9RG7DSIU2tcV4Vbwb66dc7A88FfM
+         vT+w==
+X-Forwarded-Encrypted: i=1; AJvYcCWmG9DZI727u6zvMKl2tVgEoBEkAInu//U1fXw/zajol+ju61iSPprlln7C4dL9ONtg1+a+sCv7bCydKiHhbw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzh+0EjmtSdYEqAZpliYRLnQ55AAKl7+iBTY0KsP62AkCE4Ys51
+	vdHvfgShJLMOshqlmQU5NKqx//s3bdiIeRy03/7oKbavgX9oM67nEjxV/EB9qAnwxJdvOqTFDBm
+	AkZYetC/EoVB05ZecWEUd5TnXvjC+lAsiW5VLIS80NQ==
+X-Gm-Gg: ASbGncuOp0A5IdjlsCgaZteP0VFf3jaGPk3yy+YT38tCPopZ1AvlxvvVn3mQWWAc1/r
+	hNR9kAUBjlIl8cLHVZ6xgEYmYySZJJ7EUsN+K/jysElkHi+5JKYtcrbQZIVdoWmOqfnzkzS2p/t
+	yL3qLiY5pNs8staNsu5TtIXllqY73uBQA9BfjsLm2LR44fzfvOreWy1CoJkl6lyIna5iKE3cR/M
+	dCt2L0nMUdZ9FAnAMa6/NP5n+KJfJsyeRQdAc5N2KD9C3LVmyIFCAha+IIb8ei7uOCQD5RDStWA
+	hPsrNak=
+X-Google-Smtp-Source: AGHT+IGm5+Uu79ujlZItIA42GflK7UfV+AyBRUd53fOR/2PdZlplGxgc5r7/bRr9gNtqR7fwtBSp/+VdEs2VA7Pi6Oc=
+X-Received: by 2002:a05:6402:305c:10b0:640:c454:e8 with SMTP id
+ 4fb4d7f45d1cf-6415e7fd2c9mr4878827a12.30.1762777421528; Mon, 10 Nov 2025
+ 04:23:41 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-HM-Tid: 0a9a6da4493d03a2kunm0d50f1f77dd9f9
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaTh5NVkodT0lNHkNPSkpLTlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlOQ1VNSlVKT0tVSkhPWVdZFhoPEhUdFFlBWUtVS1VLVUtZBg++
+References: <20251106-clk-pmdomain-mediatek-round-rate-v1-1-49441ea27f84@redhat.com>
+In-Reply-To: <20251106-clk-pmdomain-mediatek-round-rate-v1-1-49441ea27f84@redhat.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 10 Nov 2025 13:23:03 +0100
+X-Gm-Features: AWmQ_bnh8tp1oLAuPElgvSFmN8WE23c2ga9LAvFWkFMPaVp1NApY8JmtQI4OamU
+Message-ID: <CAPDyKFoq=dJW_FCVykBwH85+RbeZ-SR6=vF0vKw+237TsgOfDA@mail.gmail.com>
+Subject: Re: [PATCH] pmdomain: mediatek: convert from clk round_rate() to determine_rate()
+To: Brian Masney <bmasney@redhat.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Maxime Ripard <mripard@kernel.org>, 
+	Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_040128_329222_E2998980 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20251110_042344_354210_CACD9F7F 
+X-CRM114-Status: GOOD (  20.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,37 +98,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To support the following varaint of the mt7996 chipset:
-- tri-band: band0 iFEM and band1/band2 eFEM
+On Fri, 7 Nov 2025 at 00:40, Brian Masney <bmasney@redhat.com> wrote:
+>
+> The round_rate() clk ops is deprecated in the clk framework in favor
+> of the determine_rate() clk ops, so let's convert this driver so that
+> round_rate() can be removed from the clk core.
+>
+> Signed-off-by: Brian Masney <bmasney@redhat.com>
 
-We should read band1 for the determination, using band0
-will incorrectly identify it as iFEM.
-This is also the judgment logic of the mt7992 chipset.
+Applied for next, thanks!
 
-This fixes the load error on the Quantum Fiber W1701K:
-mt7996e 0000:01:00.0: eeprom load fail, use default bin
-mt7996e 0000:01:00.0: Message 0012002d (seq 5) timeout
+Kind regards
+Uffe
 
-Fixes: e8cb33ad546a ("wifi: mt76: mt7996: add support for more variants")
-Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
----
- drivers/net/wireless/mediatek/mt76/mt7996/init.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 5e95a36b42d1..143400541746 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -1137,7 +1137,7 @@ static int mt7996_variant_fem_init(struct mt7996_dev *dev)
- 		adie_idx = (val & MT_PAD_GPIO_ADIE_SINGLE) ? 0 : 1;
- 		adie_comb = u32_get_bits(val, MT_PAD_GPIO_ADIE_COMB_7992);
- 	} else {
--		adie_idx = 0;
-+		adie_idx = 1;
- 		adie_comb = u32_get_bits(val, MT_PAD_GPIO_ADIE_COMB);
- 	}
- 
--- 
-2.25.1
-
+> ---
+>  drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
+> index af20111067c02a5f9a0d6d751e9e0dc32c1a4d90..9bad577b3ae4bf1b83d4f782bb52f56f779a8974 100644
+> --- a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
+> +++ b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
+> @@ -309,11 +309,11 @@ static unsigned long mtk_mfg_recalc_rate_gpu(struct clk_hw *hw,
+>         return readl(mfg->shared_mem + GF_REG_FREQ_OUT_GPU) * HZ_PER_KHZ;
+>  }
+>
+> -static long mtk_mfg_round_rate(struct clk_hw *hw, unsigned long rate,
+> -                              unsigned long *parent_rate)
+> +static int mtk_mfg_determine_rate(struct clk_hw *hw,
+> +                                 struct clk_rate_request *req)
+>  {
+>         /*
+> -        * The round_rate callback needs to be implemented to avoid returning
+> +        * The determine_rate callback needs to be implemented to avoid returning
+>          * the current clock frequency, rather than something even remotely
+>          * close to the frequency that was asked for.
+>          *
+> @@ -325,7 +325,7 @@ static long mtk_mfg_round_rate(struct clk_hw *hw, unsigned long rate,
+>          * high current frequency, breaking the powersave governor in the process.
+>          */
+>
+> -       return rate;
+> +       return 0;
+>  }
+>
+>  static unsigned long mtk_mfg_recalc_rate_stack(struct clk_hw *hw,
+> @@ -338,12 +338,12 @@ static unsigned long mtk_mfg_recalc_rate_stack(struct clk_hw *hw,
+>
+>  static const struct clk_ops mtk_mfg_clk_gpu_ops = {
+>         .recalc_rate = mtk_mfg_recalc_rate_gpu,
+> -       .round_rate = mtk_mfg_round_rate,
+> +       .determine_rate = mtk_mfg_determine_rate,
+>  };
+>
+>  static const struct clk_ops mtk_mfg_clk_stack_ops = {
+>         .recalc_rate = mtk_mfg_recalc_rate_stack,
+> -       .round_rate = mtk_mfg_round_rate,
+> +       .determine_rate = mtk_mfg_determine_rate,
+>  };
+>
+>  static const struct clk_init_data mtk_mfg_clk_gpu_init = {
+>
+> ---
+> base-commit: df5d79720b152e7ff058f11ed7e88d5b5c8d2a0c
+> change-id: 20251106-clk-pmdomain-mediatek-round-rate-649a9bf7d30a
+>
+> Best regards,
+> --
+> Brian Masney <bmasney@redhat.com>
+>
 
