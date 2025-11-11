@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99F9BCD1297
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 08:08:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E928CCFA18
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 08:11:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R4v0T/jYSK8ngu6ACLcnRSLuWsTH7J+YbIQLDPezMxs=; b=XDxfeXXTry5O91P4YIx7kweiIZ
-	Czxohp0UsVYCAJ/Rrl+DFl7xfIp7iZvbrxJnMCJXyK31k+0GKRqx+f1jo1lOsaVLhfoNEM5jPNH6D
-	DAgEBldLlatjLWGSnlWBUHHi1hevW/AEXdmD/IslJO0jsuAIVt/oNuOicgxe6K5jnKLeAYpSqraKA
-	kqhwat+/PLauYDPMWAZXZKBOhEFTqQaRg4Adggy4Y5wDG3uZyFWh29IUBT7Ro3ACUa4L5bc4tlvMP
-	OO2W2J85PJIyCWOO4QW5FMxxk37AB+kw238CQJoOcrsQpssN/rNJRWKdV7OHWxgddxfchmqxy+vbP
-	6bYUP1Dw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=R4v0T/jYSK8ngu6ACLcnRSLuWsTH7J+YbIQLDPezMxs=; b=IUL5nJNJBZ3jcm9h/9AOj8+Jgz
+	6KkoDhDbAjzHNGV4QcGa1E8TSIe/tu/gMTqKMQM1ucFumEN+f3chmWA6+bZe3ZfS8FFNhGGKNIXrh
+	FNXVobdtdD6svBZ95ZCOEqvURaxkmy+MqT2JkoaLIvPzsSH4Vyy9L86HT0D8oNiziLrfSFIlRhaNE
+	RNaw7K+rLBJVi5+VzhKkK+s2o4jlryAeCWWfMkmDWQo5pMcc5dthNSI2ppRPgrxHQeNVfqMg+7+3c
+	DE1aVm5gB2M1oIL1fP0y001DbOUuM7lay4WGvnXY0c4ufyLveKvMw2XtdyNZ27G0ml3cvJ/7q0w9q
+	ClF1DWQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIjQk-00000006kEa-18sM;
-	Tue, 11 Nov 2025 08:08:46 +0000
+	id 1vIjTU-00000006kWS-2tEY;
+	Tue, 11 Nov 2025 08:11:36 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIjQg-00000006kDq-2tgQ;
-	Tue, 11 Nov 2025 08:08:44 +0000
+	id 1vIjTR-00000006kV8-31cN;
+	Tue, 11 Nov 2025 08:11:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
 	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=R4v0T/jYSK8ngu6ACLcnRSLuWsTH7J+YbIQLDPezMxs=; b=cTiTNXOLW3RqLXigzxvsker54y
-	g9a8LCpbcringQVyc8/mHLO9Z+VijvZ62PYOuEJse/aNKrHo6DsdD2JifuRBNEHBMytboM/zxuZ8o
-	W2JevlUfztmI2Iuio2DXqM22dOh6BKWHhjoxD4eU6wSpwQ+2SKVaA+WJ59lZglIMZNQX7mmVyt+2i
-	+7skzzvbhN32GpXwbgX0bz7F2UwpvdlK3rrifLlHPydqJ70EKS4hgK0dvWDc7RcH9+aLMZsqSHA7y
-	Y+oEu6jocsY/myOZkIHq0qT4zN3pQbMjfB7rQQmnRBa46IVHomT/wYF1hQw2lqT6EQVNdbKi21SzW
-	GBKafOTw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:37306)
+	bh=R4v0T/jYSK8ngu6ACLcnRSLuWsTH7J+YbIQLDPezMxs=; b=qffcZfWRYLgsyXDoZnCmSC8DaU
+	gLwEBczqur0L6JTHiMf48sWjyW0H7eFBsRltMRz++iQ//Xdp0wUkR5VIp8x8vPvonpfTVG+eLCPMX
+	YV0C9bY3IK6t96L2RxpbtfnBOsuewGiT6Tdd0r+2waJVlr41Vi5WNh1Ui+pimwqySOoQmQK17yBsB
+	eVqyNX4p4hqKECB1FcGHpDyL58e7ROLnJV3WqwJRCS9PKX9D93ghM4lb7nAw2kftfgF3BrDYCzIOy
+	8prMLIDMiG78wImay5usyazruInKjFh1npzjmZZPzwysllPwmoUjaUdikR6Wwd9dT7hhWwVDtPtYm
+	HqhbGfUA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:41674)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.98.2)
 	(envelope-from <linux@armlinux.org.uk>)
-	id 1vIjQV-0000000028e-3t9d;
-	Tue, 11 Nov 2025 08:08:32 +0000
+	id 1vIjTL-00000000295-1GyZ;
+	Tue, 11 Nov 2025 08:11:27 +0000
 Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
 	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1vIjQM-000000002m9-2KCm;
-	Tue, 11 Nov 2025 08:08:22 +0000
-Date: Tue, 11 Nov 2025 08:08:22 +0000
+	id 1vIjTJ-000000002nI-1GLe;
+	Tue, 11 Nov 2025 08:11:25 +0000
+Date: Tue, 11 Nov 2025 08:11:25 +0000
 From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
 Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
@@ -67,17 +67,15 @@ Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
 	Minda Chen <minda.chen@starfivetech.com>, netdev@vger.kernel.org,
 	Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
 	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH net-next 00/13] net: stmmac: convert glue drivers to use
+Subject: [PATCH net-next v2 00/13] net: stmmac: convert glue drivers to use
  stmmac_get_phy_intf_sel()
-Message-ID: <aRLu9qdfUnizqJRR@shell.armlinux.org.uk>
-References: <aQ4ByErmsnAPSHIL@shell.armlinux.org.uk>
+Message-ID: <aRLvrfx6tOa-RhrY@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <aQ4ByErmsnAPSHIL@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_000842_727320_C8C59A9A 
-X-CRM114-Status: UNSURE (   9.39  )
+X-CRM114-CacheID: sfid-20251111_001133_774878_02A1B45C 
+X-CRM114-Status: UNSURE (   8.84  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
