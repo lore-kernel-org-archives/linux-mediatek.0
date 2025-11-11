@@ -4,85 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F13FCCFA1A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 14:11:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B760CCFA18
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 17:37:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=txdEdm40JEr5pC5+2I7HwpHNOaO4GAfSSqE8ztv0UX0=; b=4wweiZOZpyf5uXaB7JjlnFNc67
-	hARxJPEqXqgt3kJk5wY9jvC1F7A2nVNRq6Ow72SuqqGoqeG0/5WedskRID/6oCklsFTwwasWn8woR
-	X8jf1OG+X8mmvy376KMu6NWGK+iLKYZ9e0MGX6/BDouNVbM7P4PY9HHGg0JTnelhjsm5b7FQ+tJ6b
-	8q0JcdErxdcpQd9ATFkoU1r7qReGFGgQJ6Po0MeUmqdOTgxKu7VakFKrMBCgHLJ4MNgMGKqKwvT7q
-	8eOih4v3XWOcPq4lK0vUe4YCNQrx7pbSN5x/nNfgXr1B7uwRboVecZ1p3Mwm17uKMlIRFSN9MmpuB
-	8xzsBOPg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hVkOL9QZX3SGwC8VnESzgQr/GWl5l8+eTHtDxUY9Odg=; b=KFKLVig8MvTVtPAn6hsr/91QJv
+	yxvNn8m4mAwePbyXbRosWQ8FSLk88aDUhkX3LHKRrFbToRQalSx9FVPV6144TFgBLl/QtYluv3TsC
+	+8qMEVpbfGQUd7/D1lo1b4DbgZug8yNtvXB5A2gDZ0sGESTX6nFSjqMTP+zekpWymSoK7TldeUNmc
+	782vvgLsdqoDX9i45lz3dTcYVwJ2TfwOYvVHRi21uc88Ut18Uo18LKW769U+AjYlgshXvFtO9WLBv
+	4NWys3nRFpRXs3ka5MjAN5GepsMjKC9S0R+sF3CIyngNLxdgYm3aW+i6XYwmVchIchM0DaJXnBw/m
+	DbPGX3LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIp5N-00000007IPF-20ju;
-	Tue, 11 Nov 2025 14:11:05 +0000
-Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
+	id 1vIsIl-00000007Xn4-4BGU;
+	Tue, 11 Nov 2025 17:37:08 +0000
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIp5K-00000007IMj-2nHt
+	id 1vIsIk-00000007XlZ-01Uv
 	for linux-mediatek@lists.infradead.org;
-	Tue, 11 Nov 2025 14:11:04 +0000
-Received: by mail-oa1-x32.google.com with SMTP id 586e51a60fabf-3c96de7fe7eso2750351fac.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 11 Nov 2025 06:11:02 -0800 (PST)
+	Tue, 11 Nov 2025 17:37:06 +0000
+Received: by mail-yw1-x112b.google.com with SMTP id 00721157ae682-786943affbaso34315297b3.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Nov 2025 09:37:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1762870261; x=1763475061; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=txdEdm40JEr5pC5+2I7HwpHNOaO4GAfSSqE8ztv0UX0=;
-        b=Yp30PNMEs3s0QL0xMcqM7rUmpTGv+C8YgFITk/LiYa1XVMTAHo4I3KudvsUj9ODmxO
-         68e7dd4u+FynIbf3O2ljtaVJeMwcGITWNHEM+eTG7eObS7pTyW+mlsx7+JzzwufkAOZu
-         3ndEH+a+kMvogsuOqCMyrZUlzMicFKfkC8tWMtjTzht3kmih+IoEBZGnVyCtsDapbiJc
-         GdnpgH+RLk0gWB42znW+TDvT1DdjEzhxfjxBxvLatYOtzre0ay5ExLrgN4Z43z2lQtBS
-         ms8Zd6rGviOpnDwmjqxt0Fxw6vX45SKQ9+M1j8FW5cAqJAbUQg1S7rr0rJSYngEVgxF8
-         XB5Q==
+        d=linaro.org; s=google; t=1762882625; x=1763487425; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=hVkOL9QZX3SGwC8VnESzgQr/GWl5l8+eTHtDxUY9Odg=;
+        b=FOTeDWtUoX4QbnJgZnNB9ab9Kuf3BdPisGQCf1Y1MzyhODEdIPguKa07qbIO+AEfAx
+         IrfXBRI2LF9o4ZU1yisHkMgoHsKHtoWtuO6O0HkT8IS3WmFlSIDpHpyVS+zxsYUMqxvz
+         +dI3zAG3Gsk/JRzx3UHr8YlYOfAGa3wYSE3tZidKbpSOBE/WJGPgTf0/0p0SPf6GD83E
+         2H5oMI26PLRM99sX2gHaKG7+rrld4mGzpU2+Q4hE9o/XJrgM777nSZRbLRgiPkl6d/Dx
+         nsmPjRo6Yztj8wAITdixrMnFIipkQZxZlF8Jc6iedZE+jgLW0BgLzZg5+E8EJEjb2eGE
+         VLaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762870261; x=1763475061;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=txdEdm40JEr5pC5+2I7HwpHNOaO4GAfSSqE8ztv0UX0=;
-        b=h2mB0kVBv/D4frzzd5U2G15BScbFDR3hEDvscKhs3GN1F7Yo+rl3FQr5pvCya5WFSo
-         BUlg1YdnaBijB6M/NKBgeZ4NC3R4NY5wRpvQdVAgkC7X+eaXPTA1WBLcCVhO543a5QuC
-         XUnQXbn+zlZsaBJkdxRa6kjgjMSLbazbR6NPmZeNwzNCl4IgszsGFsWtUgrK83ajjFec
-         K5PhKbS8HdO03fxJz8+WhEhxWOgfr9zjAsjHE75MmHZuoLloSSbsGoMu8vdQuZEm+HGC
-         TnIBtITJuz004FIUVh49lShde4afpirRVFsn1ssPaHGXDxUFKewoa5JbATfSyu7VGi2l
-         TpyQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV9Sh3pJx9YTaQWz9K25J6OE7CtApiOe9yrgLtuGh+qgbnXgdWtrwo6gjz/lrDJhbow57y1dc/vrJ9r+FxVPg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxC80Ncp2nePLvz0zxmV31FXwKQ2/wlBufnWpcmnqLjNFZMf4PC
-	DcNDJi5GM9aB4wgwFkx/Byt/iuzpXTSIIb88gXNCtbq7Wtl+roq38LNVT8+uCT5X619+wURX2YZ
-	mfigosM0uZ2kIXjrv2D6KVVxCvkUYhQc=
-X-Gm-Gg: ASbGncve5DxYGaJL7st4OBmt9vjAsePETyGxDlAbGj3sIe621ZrLvjxd0wqJLaOWoD7
-	ifP59pK0pLZY0O3YKKR/L+o+Vh0To3rLnnEoghZiN7eLFMgGK5BbRAShZ/SG8VjCFAT1W5hJ7x9
-	bQcbrkKCXk4BZQJPN13wHetOQjgENA/Ep3scymQcjvmFmvwjX5xZapd5z1660p86sUsVKjuqvGu
-	1ZTyMLvLWIPALMWBm0C6wdjT1iHOURLfAOBWvXfpgJjGmAGKhw52aOmemtki33UHLpHRmNt
-X-Google-Smtp-Source: AGHT+IH9NsGeAGXbfrkGaLkI4eT/HyQdZyA7+2QW2Tz3Nh3t6elSCgFx6DzEmvDROMRAAY0dK1BfQ/UaepIHAEj/9uQ=
-X-Received: by 2002:a05:6870:899a:b0:3d4:760f:544b with SMTP id
- 586e51a60fabf-3e7c294ab31mr8000185fac.46.1762870261279; Tue, 11 Nov 2025
- 06:11:01 -0800 (PST)
+        d=1e100.net; s=20230601; t=1762882625; x=1763487425;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hVkOL9QZX3SGwC8VnESzgQr/GWl5l8+eTHtDxUY9Odg=;
+        b=JQH45WEu0fbasb6MXEXrP9npRboK/ZsjW9tQgB3xt/Gi8Le6H1ITGwtJMIO1a/TaKj
+         SvuNmqp3RGpaP+3r9H8oK3tBM2ZaeOmSsKn3SyuNqz0h9R94SWb3ki1GT6mmH5LmeL12
+         +PftNq9FoGt3T3XtOH//DY1ibv1O7aP09xZjRzWqvXWrCA2ota90BmkEdYh0RUQgS+t6
+         LKh2oQkN5TpSFBuOPO4c6jDvZU8v4NAtFxw7NrhkayPonJ7L5llp5XeqzBsRkcbMkpaJ
+         hWS2H8VMvdx98Q+AW/V/CkHR8QO7QLdo4K9ajkuElv31HP410a5nfKDRQ2sLN9zmTaHC
+         9y6Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUdshs3yOPYlSqGuSHipMoNt7niLkbWgim9EQOBE0AfDNcR3DujP1kDNsSzX+UA5eidMAGEl0ZEr/DX73RsOQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxUCouxcKaj4PZn1Tf9UsjdKIs8H3OjOldhqSc+kzgwchZbYvao
+	vtorCb+ugKBGQ38GR3nAEAsDTq/UPGewkL3PvXyzaqs6hpH+fFpjcWfVrvKzcv+it0HV6nYgx7W
+	skbK7ZBPw9PPybWZjsn2ya+5jl+2kEYaCmwFl78h5sg==
+X-Gm-Gg: ASbGncuE1gGYN5pRGd9X38lZ42b/GBUexBSqJoi1Up3j18TXPU1wOsSqHDZgW/UNMIf
+	/ZtB18flrsWOEurcIpr5djZW3DQnKi/oWIDNqsFxkheLyuGgJk5TsRAfAikHDt4v6viVHKanRjV
+	Ze2YiMh+CYEfYmomNkN98bX2DF68ZfcTk66qD2ZdBXzFW3c1I6RRItDuLpcI4n7nqKsHazTZczm
+	cNzspT1wNb/nvFe3WrBziAO3bMwEFvxP+IS7suZ5DNMxQIzSosUQyWipeb95Wo1bkZGFCOUWumK
+	xX0lwxE=
+X-Google-Smtp-Source: AGHT+IE9bOE8QuaDxevERnXGMwxyKuXPLVIGn9fuMsvYZZWVI5o61gMBE7ecmjC3IlvCAc62kGl0QOYlCbs99m4/5oE=
+X-Received: by 2002:a05:690c:2021:b0:774:cc25:7f51 with SMTP id
+ 00721157ae682-787d5400960mr102720837b3.36.1762882625058; Tue, 11 Nov 2025
+ 09:37:05 -0800 (PST)
 MIME-Version: 1.0
-References: <20251111134400.5258-1-sef1548@gmail.com> <aRNBak9Xl_wsBJ6w@lore-desk>
-In-Reply-To: <aRNBak9Xl_wsBJ6w@lore-desk>
-From: Nick Huang <sef1548@gmail.com>
-Date: Tue, 11 Nov 2025 22:10:50 +0800
-X-Gm-Features: AWmQ_bkn9vJFX_qKrlLafWMdsY1_qiyP8xv9zY7kAo8K6GWks1Gw41ZZnCWDwno
-Message-ID: <CABZAGRG-7T2mp3UYRaJ5c7eTi1B4hWybtJrfPwdo2aSEvhcMqg@mail.gmail.com>
-Subject: Re: [PATCH] mt76: connac: remove unused reserved field in gtk rekey
- TLV struct
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: nbd@nbd.name, ryder.lee@mediatek.com, shayne.chen@mediatek.com, 
-	sean.wang@mediatek.com, linux-wireless@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20251105145824.239054-1-marco.crivellari@suse.com>
+In-Reply-To: <20251105145824.239054-1-marco.crivellari@suse.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 11 Nov 2025 18:36:26 +0100
+X-Gm-Features: AWmQ_bnwqubEIg9CpgOv8nmNo9i2Cpu9HPEm5MczRr9wHyBCajECUb_uyu5SNtk
+Message-ID: <CAPDyKFpVS9Z86D_QLhjvOYFAbXaa4_Z=ZQnV+x1ZTuXG4x8oXw@mail.gmail.com>
+Subject: Re: [PATCH] mmc: mtk-sd: replace use of system_wq with system_percpu_wq
+To: Marco Crivellari <marco.crivellari@suse.com>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mmc@vger.kernel.org, 
+	Tejun Heo <tj@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>, 
+	Frederic Weisbecker <frederic@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, 
+	Michal Hocko <mhocko@suse.com>, Chaotian Jing <chaotian.jing@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_061102_704587_3BDF99C6 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20251111_093706_072589_32864DC2 
+X-CRM114-Status: GOOD (  19.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,48 +99,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Lorenzo Bianconi <lorenzo@kernel.org> =E6=96=BC 2025=E5=B9=B411=E6=9C=8811=
-=E6=97=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=8810:00=E5=AF=AB=E9=81=93=EF=
-=BC=9A
+On Wed, 5 Nov 2025 at 15:58, Marco Crivellari <marco.crivellari@suse.com> wrote:
 >
-> > The 'reserverd' field in struct mt76_connac_gtk_rekey_tlv was unused
-> > and misspelled. Removing it cleans up the structure definition and
-> > improves code readability.
-> >
-> > Signed-off-by: Nick Huang <sef1548@gmail.com>
-> > ---
-> >  drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h | 1 -
-> >  1 file changed, 1 deletion(-)
-> >
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/dri=
-vers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-> > index 27daf4195..28cf46a5f 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-> > @@ -1681,7 +1681,6 @@ struct mt76_connac_gtk_rekey_tlv {
-> >       __le32 group_cipher;
-> >       __le32 key_mgmt; /* NONE-PSK-IEEE802.1X */
-> >       __le32 mgmt_group_cipher;
-> > -     u8 reserverd[4];
+> Currently if a user enqueues a work item using schedule_delayed_work() the
+> used wq is "system_wq" (per-cpu wq) while queue_delayed_work() use
+> WORK_CPU_UNBOUND (used when a cpu is not specified). The same applies to
+> schedule_work() that is using system_wq and queue_work(), that makes use
+> again of WORK_CPU_UNBOUND.
 >
-> This field is used to keep the struct size consistent with the fw one so =
-it is
-> expected to not be used.
+> This lack of consistency cannot be addressed without refactoring the API.
 >
-> Regards,
-> Lorenzo
+> This patch continues the effort to refactor worqueue APIs, which has begun
+> with the change introducing new workqueues and a new alloc_workqueue flag:
 >
-> >  } __packed;
-> >
-> >  #define MT76_CONNAC_WOW_MASK_MAX_LEN                 16
-> > --
-> > 2.48.1
-> >
-Hi Lorenzo,
+> commit 128ea9f6ccfb ("workqueue: Add system_percpu_wq and system_dfl_wq")
+> commit 930c2ea566af ("workqueue: Add new WQ_PERCPU flag")
+>
+> Replace system_wq with system_percpu_wq, keeping the same old behavior.
+> The old wq (system_wq) will be kept for a few release cycles.
+>
+> Suggested-by: Tejun Heo <tj@kernel.org>
+> Signed-off-by: Marco Crivellari <marco.crivellari@suse.com>
 
-Got it, thanks for explaining. Makes sense that this field is just for
-size consistency.
+Applied for next, thanks!
 
-Cheers,
-Nick Huang
+Kind regards
+Uffe
+
+
+> ---
+>  drivers/mmc/host/mtk-sd.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 79074291e9d2..daed659f63f6 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -1214,7 +1214,7 @@ static void msdc_start_data(struct msdc_host *host, struct mmc_command *cmd,
+>         host->data = data;
+>         read = data->flags & MMC_DATA_READ;
+>
+> -       mod_delayed_work(system_wq, &host->req_timeout, DAT_TIMEOUT);
+> +       mod_delayed_work(system_percpu_wq, &host->req_timeout, DAT_TIMEOUT);
+>         msdc_dma_setup(host, &host->dma, data);
+>         sdr_set_bits(host->base + MSDC_INTEN, data_ints_mask);
+>         sdr_set_field(host->base + MSDC_DMA_CTRL, MSDC_DMA_CTRL_START, 1);
+> @@ -1444,7 +1444,7 @@ static void msdc_start_command(struct msdc_host *host,
+>         WARN_ON(host->cmd);
+>         host->cmd = cmd;
+>
+> -       mod_delayed_work(system_wq, &host->req_timeout, DAT_TIMEOUT);
+> +       mod_delayed_work(system_percpu_wq, &host->req_timeout, DAT_TIMEOUT);
+>         if (!msdc_cmd_is_ready(host, mrq, cmd))
+>                 return;
+>
+> --
+> 2.51.1
+>
 
