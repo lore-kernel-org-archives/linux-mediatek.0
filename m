@@ -4,88 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C1EFCCFA13
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Nov 2025 23:47:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99C11CCF9E3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 06:40:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EdSyniY2TEhD2jr7Knryt0myief09VrFFo+8PkG04XY=; b=VgI5WPfTJS6Un4Oo7Ut5ldkRZs
-	6yFIbmMYhor27ECVe8Acgc6qMWwd+XdgP7hQ1FBulQB/bO7KrqeSk6k+HD0+VLvyd6RvUaVLbXkkA
-	XRGPmVCZJBEPvFNYp+e/uN622C3oRl+UlXB0FjhwH8bOyv184QYlYFxXaJzlm2UdSC7icM1nR12Ef
-	aqT3Pr9B8fu3LpB9zQsOuSpKyRGR2eDXTcj0sGytZeKBUxfjhq6qMofFxUeKQNR0lSAL0rOI94gCq
-	2aaKlA3wqVFtNfWWhWoVPmOY8skKm8EwhESvYJEUrcwIvScNHLYt8LGtGlw7eKgXmrK1iz0OlNbHa
-	a1HvbErQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1OFq+VU1FxToUVX76H9ScimXjI7jHlUMSkM0Z9t/H80=; b=wBgJFxBbKgSaXXvEk9ZAYq2hlK
+	O2Tb+HoVDyD0OIORxd4IVd+esDBaKLiNs8SfXO5v2yPOH8Hel2RXOQyyUKUmagPbTB1Ow5/pD63cz
+	p3RNguynz3KhTSqf4yR9SfZbUIS5axN5mL7HGUZDRPX/i9NY8x+CXyeofg1bJVHHYmTkSh20/A7bM
+	3uYCB4wOFwRGH5zAMwgRxZh8SigdO61klnrfxAyDYAN7kcOeakULgejxFOfxgakyP8fbe/6SFM1vz
+	OPXLGieNVGDGhy9pRQ9ujSy+XFGf/iWuhTY1heokzR2vahg6952knQ4pOs9M+x0kuW+/9E/f40+JF
+	Vai1h5Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIbbE-00000006Gu9-3Fhr;
-	Mon, 10 Nov 2025 23:47:04 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1vIi3D-00000006c7f-3E1z;
+	Tue, 11 Nov 2025 06:40:23 +0000
+Received: from smtp84.cstnet.cn ([159.226.251.84] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIbbC-00000006GtA-0PY2
-	for linux-mediatek@lists.infradead.org;
-	Mon, 10 Nov 2025 23:47:03 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-591c98ebe90so3764710e87.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 10 Nov 2025 15:47:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1762818420; x=1763423220; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=EdSyniY2TEhD2jr7Knryt0myief09VrFFo+8PkG04XY=;
-        b=DDW50PcPnT7J5/0DVPv9aj7qjt+jCwbY1BNnSVd6NshP3MuxV7Y7a9TDZ0Cs9+PJGB
-         Dr/8NGC/TOGRN7GutKkSsCtRvJrV9ucMFe9jJSkTrNDAaZ1+TULYj116jsXDF5avlb6i
-         +U0RvI+BEnH2heW9z2bhEVBftlXNCEwLM5uLnzzt0o3PhIHY6wqTKarZgRV9E+ef0cp1
-         KAyc0vEESJL4oGFS38ZX1Ar2g+wW3XO58cysIkQ71Qj+yGinbx8FIMwXQtS6CC8FUuDM
-         xAjOeSbGS402S/fNa6b1Jiv+s6TfUpDHk9OobE2wE2tqvI3k22oDYWW6Qwb0lYudUTPQ
-         PNQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762818420; x=1763423220;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=EdSyniY2TEhD2jr7Knryt0myief09VrFFo+8PkG04XY=;
-        b=Ekog71NAulwz0U7/dBcvfnlT7AiqhIh/gDGOkIGE3ZYPhi+OezNrvJAp/auEgZqppB
-         L+NXeaiYJeUbK+guxymUTISCvVa3DERn0koP5mH+1dVjROxYxGBwpyvyhPuGS2BAUEBL
-         iVGIq5ShwALRe7QbTbj4Qca9Unsxyo4LXjuwPg/ybGrz6Te1jbkEDnVj0jOH83UIDMj7
-         SbleIkd1Q1EKVrKYooOpIMa1m8TNmreXhFdl5KwFaCc9A6gr6JuB0bxrHMjnkmrS1BpA
-         UFWPknIJoFD6WZVch12T56DSjW/ZYOkVs4HoVOSZxm+hE9ltULSHTEi+jzfm5GCS7jIZ
-         4f1g==
-X-Forwarded-Encrypted: i=1; AJvYcCW3XTEFG8IU8jtIyZ+aEiYw2QM6bJRgLzSLez4IxdIH+Wi885dXUYttXKPCXxknKOwmSt9FJW7gH54BaYrg5A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxFCiHfmmESAVQgElW1erxzgQI1AAASO51z/Tjs6jAM1/M4TQFX
-	AMgS52NmJiMFdaQ8P6kSHhFwtHYBf7qSLJChKqosJ8ycYqvDtAnkbJdgyfs1zE91xPYHkacS97R
-	cHMIy1yYodyahH0hZvZcF3jjvQgoUQUJNsfJ6qSi8TQ==
-X-Gm-Gg: ASbGncsXmFJq+nNowXE6ZPfV7bNPGh3elrd4tHPY2Oa+/QZ1milpY3U3orWXvY5MTx/
-	qMb4Ad45oIzSIX1pxmcA+N9Jy2iPMlQbVHijM9Ky2keXRuWLD8mmvu/77zbu1gUJvzAnyJg7xty
-	BeysoLM0Qe10HjD+GcJNiUtZVsyTIGwluw38j/o+g5NWAcM2h1BrnKCl5lnW9HRXsuRkwaXn/HM
-	J1447LDE65rryh64ZD4RptoQykz5wTQ+g9pkieMowszrwHUFLRn/Yoz3a/jnOn+CKl4WCke5HlC
-	DUG14w==
-X-Google-Smtp-Source: AGHT+IEYlHtlcaIbYzh4uIcS3eRGPuN1bn7uG7yYIbKkIFRYhenhwAQ61nxtn9INckW1qFWU7tGOevIpEsnyQ+lU0tE=
-X-Received: by 2002:a05:6512:b96:b0:594:5545:b743 with SMTP id
- 2adb3069b0e04-5945f1f4346mr2601951e87.27.1762818419930; Mon, 10 Nov 2025
- 15:46:59 -0800 (PST)
+	id 1vIi3A-00000006c6m-2JNN;
+	Tue, 11 Nov 2025 06:40:22 +0000
+Received: from localhost (unknown [124.16.138.129])
+	by APP-05 (Coremail) with SMTP id zQCowAD3_G1M2hJppG1TAA--.18085S2;
+	Tue, 11 Nov 2025 14:40:12 +0800 (CST)
+From: Chen Ni <nichen@iscas.ac.cn>
+To: lorenzo@kernel.org,
+	sean.wang@kernel.org,
+	linus.walleij@linaro.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Chen Ni <nichen@iscas.ac.cn>
+Subject: [PATCH] pinctrl: airoha: convert comma to semicolon
+Date: Tue, 11 Nov 2025 14:29:44 +0800
+Message-Id: <20251111062944.3820079-1-nichen@iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20251106235713.1794668-1-ansuelsmth@gmail.com>
-In-Reply-To: <20251106235713.1794668-1-ansuelsmth@gmail.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 11 Nov 2025 00:46:48 +0100
-X-Gm-Features: AWmQ_bmWEn6D47GtrYlRXbtf5iV6J32LnDgS7NEk87vjG42kQgZzdgtZdTywXVE
-Message-ID: <CACRpkdYOXSm5BaHgij_=L32kq+fkx_ggSJ7G5a=064FDvMR4EQ@mail.gmail.com>
-Subject: Re: [PATCH v2 0/5] pinctrl: airoha: add Airoha AN7583 support
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-gpio@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: zQCowAD3_G1M2hJppG1TAA--.18085S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7KF17ur4DKrWUZF4ktF1xGrg_yoW8XF1xp3
+	y3Cr4Y9F1UJFZxZa4Sya18XayfGa93J3WUK34jg348XF1fCrWDJan0ga45trWDuF4qvF45
+	tF4UJ34agFW8ArUanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUBj14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4U
+	JVWxJr1l84ACjcxK6I8E87Iv67AKxVWxJr0_GcWl84ACjcxK6I8E87Iv6xkF7I0E14v26r
+	xl6s0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj
+	6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr
+	0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E
+	8cxan2IY04v7MxkF7I0En4kS14v26r1q6r43MxkIecxEwVAFwVW8AwCF04k20xvY0x0EwI
+	xGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480
+	Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7
+	IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr0_Gr1lIxAIcVCF04k2
+	6cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxV
+	AFwI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0xZFpf9x0JU-6pPUUUUU=
+X-Originating-IP: [124.16.138.129]
+X-CM-SenderInfo: xqlfxv3q6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_154702_175066_46B11742 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20251110_224020_970034_F1501DA3 
+X-CRM114-Status: UNSURE (   8.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,34 +83,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 7, 2025 at 12:57=E2=80=AFAM Christian Marangi <ansuelsmth@gmail=
-.com> wrote:
+Replace comma between expressions with semicolons.
 
-> This small series introduce support for Airoha AN7583 pinctrl
-> support.
->
-> Most of the changes are generalization and cleanup of the Airoha
-> pinctrl driver. These are needed as all the array in the inner
-> function were hardcoded to EN7581 and didn't reference stuff
-> from the priv groups.
->
-> Everything is changed to match_data and priv struct so
-> adding AN7583 is just a matter of adding the structs.
->
-> Also the schema is generalized where needed to address
-> for the small difference between AN7583 and EN7581.
+Using a ',' in place of a ';' can have unintended side effects.
+Although that is not the case here, it is seems best to use ';'
+unless ',' is intended.
 
-All looks good and bindings ACK:ed so patches applied!
+Found by inspection.
+No functional change intended.
+Compile tested only.
 
-Suggestion: since this driver has:
+Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
+---
+ drivers/pinctrl/mediatek/pinctrl-airoha.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-1. Exactly one group per pin
-2. Use some accelerated GPIO operation, .gpio_set_direction
-   in struct pinmux_ops
+diff --git a/drivers/pinctrl/mediatek/pinctrl-airoha.c b/drivers/pinctrl/mediatek/pinctrl-airoha.c
+index bfcedc7f920b..983d96fd399a 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-airoha.c
++++ b/drivers/pinctrl/mediatek/pinctrl-airoha.c
+@@ -2892,12 +2892,12 @@ static int airoha_pinctrl_probe(struct platform_device *pdev)
+ 
+ 	/* Init pinctrl desc struct */
+ 	pinctrl->desc.name = KBUILD_MODNAME;
+-	pinctrl->desc.owner = THIS_MODULE,
+-	pinctrl->desc.pctlops = &airoha_pctlops,
+-	pinctrl->desc.pmxops = &airoha_pmxops,
+-	pinctrl->desc.confops = &airoha_confops,
+-	pinctrl->desc.pins = data->pins,
+-	pinctrl->desc.npins = data->num_pins,
++	pinctrl->desc.owner = THIS_MODULE;
++	pinctrl->desc.pctlops = &airoha_pctlops;
++	pinctrl->desc.pmxops = &airoha_pmxops;
++	pinctrl->desc.confops = &airoha_confops;
++	pinctrl->desc.pins = data->pins;
++	pinctrl->desc.npins = data->num_pins;
+ 
+ 	err = devm_pinctrl_register_and_init(dev, &pinctrl->desc,
+ 					     pinctrl, &pinctrl->ctrl);
+-- 
+2.25.1
 
-Have you considered implementing the new .function_is_gpio()
-callback in struct pinmux_ops to tighten up the GPIO strictness?
-
-Yours,
-Linus Walleij
 
