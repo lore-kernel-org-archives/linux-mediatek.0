@@ -4,72 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E913CCFA1A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 18:03:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA715CCFA18
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 21:14:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qsITilBXp19OSMLNyHWtGaOi0EfIBO4czotRu+0gH3o=; b=RNA9IJ4BnKgipjFUqdNjLJ8dxb
-	IX/7bUrGrrvwd23uKs3N4yKfunZaiulfB+ebK8y1J7u7gWuluOIvCL6EceZCzIALSZCoO+mDHViow
-	ByLtnM6qQylHynLMwZ1GTZ7PAlSAu1MH3eufxOMmszP9EpOUmmbFzcqN3Rzqz1+ZSwZTX6eUk8UVc
-	4SgOzbBGlr/O9nw5EO3tjm4sQfygPK7ww+7Pfozvy957q/2owUK1uRFFIwtkftBlXVYYsqTqzlK8f
-	TH+oSaFhCRRpO+hyjZDqSB4y/ovamJz4HeVfgK7BoeYT1iYUAuJLFRfkgoIiL33SDLsPNuq3w67gR
-	acTpTwgg==;
+	bh=FkkC1Vko+WvOxUwHMvXg7IztDR/h0HWvV2LknFPdch4=; b=oRm8cu+SBtgMeC7i/KP7zTILCU
+	uR2tNW1IMgy0ZSA9lMVi7gQ9WiBytEyWkkixNNlqGmVqN8/YdcmP16fQi5z5+Mu0e4frQElbjRfUm
+	mZe9JwQuyBs27cmtSpjQlAIaI4BJzCi5odjJ0V3AyHQcSj+cmAPjOqOvB/HCgdwaYIH1SnjzKI8GP
+	JlKuK85YERRMp0RrM9/mnCBAgAlqpgmslewvAknnqHyW2rXvsvsO6SoGoafQtxrgnJsPtvpXfsPs5
+	OflwgqxO1R1ZQu83vEr41MLX4gdP6e14PjMmYKVOeL7GusbJXi3tPXMc3WuwURugby5/CRPQJE7RH
+	+XKKTLrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIsig-00000007Zyz-3ABg;
-	Tue, 11 Nov 2025 18:03:54 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vIvgp-00000007mtC-2VbV;
+	Tue, 11 Nov 2025 21:14:11 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIsif-00000007ZyZ-2d0M;
-	Tue, 11 Nov 2025 18:03:53 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 84E73601F9;
-	Tue, 11 Nov 2025 18:03:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21B8BC4CEF5;
-	Tue, 11 Nov 2025 18:03:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762884232;
-	bh=mirE0FVC1aFCsQq2eMehFBIBONouR+WUmeEdSPLLXaU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UoxZ2qITmDCIv3Aw71Gtor6BXmxZ1wnoHiUP/IBntzbdAFxQ9XxovK8QSj2aDPfZf
-	 8IqPCAlCuq0F29Cbyszl60cwbOySqlX8Rj5fwBoLkDonymsRi7FtTTer6S+8EI4kqM
-	 /ut0BcYpYH4KdK4sZNYt0ARyTafsLbJsT2J1vKYwJE48dIlDpf49nt492SCsRajbeb
-	 N7w7bHAXlZp2gWqVuLabvi9TMqJAmHGuMrDDhb1WkFwSw2R9+XPQRX4y7EiAn/1Y0P
-	 pkrI36WZ83pDlW7P7nW0wY6+KaIUsVMglj8ztkQuZyvx7fRB8f45cARtGA3HLG7lmq
-	 XpVhTSucBjALg==
-Date: Tue, 11 Nov 2025 18:03:43 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Jack Hsu <jh.hsu@mediatek.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com,
-	andy@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, srini@kernel.org,
-	ukleinek@kernel.org, gregkh@linuxfoundation.org,
-	jirislaby@kernel.org, daniel.lezcano@linaro.org, tglx@linutronix.de,
-	chunfeng.yun@mediatek.com, wim@linux-watchdog.org,
-	linux@roeck-us.net, sean.wang@mediatek.com,
-	zhiyong.tao@mediatek.com, andrew-ct.chen@mediatek.com,
-	lala.lin@mediatek.com, jitao.shi@mediatek.com,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pwm@vger.kernel.org,
-	linux-serial@vger.kernel.org, linux-usb@vger.kernel.org,
-	linux-watchdog@vger.kernel.org,
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v7 8/9] arm64: dts: mediatek: update rtc properties for
- MT6359
-Message-ID: <20251111-heroism-greasily-fb01345ae609@spud>
-References: <20251111070031.305281-1-jh.hsu@mediatek.com>
- <20251111070031.305281-9-jh.hsu@mediatek.com>
+	id 1vIvgn-00000007msQ-0pr2;
+	Tue, 11 Nov 2025 21:14:09 +0000
+From: Thomas Gleixner <tglx@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1762895643;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FkkC1Vko+WvOxUwHMvXg7IztDR/h0HWvV2LknFPdch4=;
+	b=QCMQr7hPcgn6dCNJX98bU9IBPqeWfG3Ql1Mu6n4Y9LoOsmj13Etz6iojOHwYcweudjPD6n
+	SK/kCBfBz6KHrLyBW4voUWmuCls3bRLR2gEq423UrMYkvZdtVNxv7SvFOCAP3KCL+ZhPSo
+	Dh/VMTFWyHwCEmcQ3Z8Du+I1btcxjEpqUhRVsa7eN99ptH/HLbsRNisS0yihVrXlq0rGP8
+	hRsZYRDGXfgiJHTuKco1FN4OkNy+IONOBB7xByVDeUTKgENRw/W1pfx/4LJrIVjnP3S1Qz
+	mO56wI/bcpbDvixGbOZtVIv1bUZhfKw7uJGMp7CkplGZ5sr9XomnpaqRXhYcJA==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1762895643;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FkkC1Vko+WvOxUwHMvXg7IztDR/h0HWvV2LknFPdch4=;
+	b=NWBf5/sdMIqLgR3LBr+nNke9DKJfpj5OuIHKoW7Yv0z8dk6zF4g7KO2sAVROMns0UW7FTe
+	1xvl6jVq0thmABAw==
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, Rob Herring
+ <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, "Rafael J.
+ Wysocki" <rafael@kernel.org>, Viresh Kumar <viresh.kumar@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Yangtao Li
+ <tiny.windzz@gmail.com>, Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec
+ <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, Lorenzo
+ Pieralisi <lpieralisi@kernel.org>, Daniel Lezcano
+ <daniel.lezcano@linaro.org>, Bjorn Andersson <andersson@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Claudiu Beznea
+ <claudiu.beznea@tuxon.dev>, Maximilian Luz <luzmaximilian@gmail.com>, Hans
+ de Goede <hansg@kernel.org>, Ilpo =?utf-8?Q?J=C3=A4rvinen?=
+ <ilpo.jarvinen@linux.intel.com>, Daniel Lezcano
+ <daniel.lezcano@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-arm-msm@vger.kernel.org, platform-driver-x86@vger.kernel.org,
+ linux-tegra@vger.kernel.org, Krzysztof Kozlowski
+ <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH 08/13] irqchip/atmel-aic: Simplify with
+ of_machine_get_match_data()
+In-Reply-To: <20251106-b4-of-match-matchine-data-v1-8-d780ea1780c2@linaro.org>
+References: <20251106-b4-of-match-matchine-data-v1-0-d780ea1780c2@linaro.org>
+ <20251106-b4-of-match-matchine-data-v1-8-d780ea1780c2@linaro.org>
+Date: Tue, 11 Nov 2025 22:14:02 +0100
+Message-ID: <87cy5oxof9.ffs@tglx>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="wFCZWHo1MJf80ONG"
-Content-Disposition: inline
-In-Reply-To: <20251111070031.305281-9-jh.hsu@mediatek.com>
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251111_131409_380889_9F5E5520 
+X-CRM114-Status: UNSURE (   6.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,63 +96,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Nov 06 2025 at 20:07, Krzysztof Kozlowski wrote:
+> Replace open-coded getting root OF node, matching against it and getting
+> the match data with new of_machine_get_match_data() helper.
+>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
---wFCZWHo1MJf80ONG
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Nov 11, 2025 at 02:59:22PM +0800, Jack Hsu wrote:
-> Update properties of rtc for mt6359 PMIC
->=20
-> Signed-off-by: Jack Hsu <jh.hsu@mediatek.com>
->=20
-> ---
-> Changs in v7:
->  - remove mt635x-auadc.h
->  - remove fg nodes
->=20
-> ---
->  arch/arm64/boot/dts/mediatek/mt6359.dtsi | 3 +++
->  1 file changed, 3 insertions(+)
->=20
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6359.dtsi b/arch/arm64/boot/d=
-ts/mediatek/mt6359.dtsi
-> index 467d8a4c2aa7..fe737254c091 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
-> @@ -302,6 +302,9 @@ mt6359_vsram_others_sshub_ldo: ldo_vsram_others_sshub=
- {
-> =20
->  		mt6359rtc: rtc {
->  			compatible =3D "mediatek,mt6358-rtc";
-> +			#address-cells =3D <1>;
-> +			#size-cells =3D <1>;
-> +			status =3D "disabled";
-
-Okay, this looks a lot better now. Still missing an explanation of why
-it has been moved to disabled though, especially since you just go and
-re-enable it (without adding child devices that use the address/size
-cells).
-pw-bot: changes-requested
-
->  		};
->  	};
->  };
-> --=20
-> 2.45.2
->=20
-
---wFCZWHo1MJf80ONG
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaRN6fwAKCRB4tDGHoIJi
-0uoFAQDNm4ule8p2MhE3JjSHzEvgFm4U+PmD7w7D5a6po+6lFQD+MjosiBlNJq1z
-mhXOc0fMS+qD6LGsDwugFT6pPQ4lzwA=
-=+aBt
------END PGP SIGNATURE-----
-
---wFCZWHo1MJf80ONG--
+Acked-by: Thomas Gleixner <tglx@linutronix.de>
 
