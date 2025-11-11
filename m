@@ -4,111 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 197E2CCFA1A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 14:10:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F13FCCFA1A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 14:11:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=I77upVn73xtl2hhKLa4OtVaXf553s+NjSyLwVjwUjJw=; b=N8ac0KJaF9/e9ZPLDwnK9zh1KF
-	rOCmP9H4PHLUKfu4Jpizr+S25nIy1QP9433Tf0ZPYcsUzZGu8sDfv1ZMxYhuJ2E8D4Q2oUjpfeIW7
-	4fEBapsArVD1lLR+O4egSeLIYc5TcQ84tYH5coMTNzmEmsPhWN3lIuNJye2JoX0aXH2B9Q6BfgCmM
-	T9FvxUAyiOrc8qlJkKxDXikySiiAne8wH35vMun5FdJqVS/Je4/I209j40uc2++ideOflFR7VGEr9
-	nSVIyH3PIw/kocRHSz7uezyPrR1rkjiF98RA/iuwbv0FAqVS3rzeKol4gQUce+RngHwZY02qyRHWk
-	8h3F6BSg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=txdEdm40JEr5pC5+2I7HwpHNOaO4GAfSSqE8ztv0UX0=; b=4wweiZOZpyf5uXaB7JjlnFNc67
+	hARxJPEqXqgt3kJk5wY9jvC1F7A2nVNRq6Ow72SuqqGoqeG0/5WedskRID/6oCklsFTwwasWn8woR
+	X8jf1OG+X8mmvy376KMu6NWGK+iLKYZ9e0MGX6/BDouNVbM7P4PY9HHGg0JTnelhjsm5b7FQ+tJ6b
+	8q0JcdErxdcpQd9ATFkoU1r7qReGFGgQJ6Po0MeUmqdOTgxKu7VakFKrMBCgHLJ4MNgMGKqKwvT7q
+	8eOih4v3XWOcPq4lK0vUe4YCNQrx7pbSN5x/nNfgXr1B7uwRboVecZ1p3Mwm17uKMlIRFSN9MmpuB
+	8xzsBOPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIp58-00000007IIs-2vVl;
-	Tue, 11 Nov 2025 14:10:50 +0000
-Received: from mx12.kaspersky-labs.com ([91.103.66.155])
+	id 1vIp5N-00000007IPF-20ju;
+	Tue, 11 Nov 2025 14:11:05 +0000
+Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIp54-00000007IGl-11eq;
-	Tue, 11 Nov 2025 14:10:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kaspersky.com;
-	s=mail202505; t=1762870234;
-	bh=I77upVn73xtl2hhKLa4OtVaXf553s+NjSyLwVjwUjJw=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type;
-	b=M0BU84RWOCpgmJ590tapWIk5F9Bod6FsxhQlFSC0tnOCBTmji4/iL0LtUZN2fZ3aS
-	 h/SmCjYz+uNXmuI3xABp55QEgmPP2BEV2lX2bD29mvlvHcaRSzYiFuKzSur2yFgv1P
-	 lhjjyTDop2XHWvwmA+7v0VRc0YSior4k6Ph5Cptf8HOg1AfFiXYXk7AYFIGlPgaVeD
-	 aDsE6lH20rJJQ0rq/Y6hT6lHyJhsF94cfMIMs1l0puQm07mY+PJ5cG0Bc2vI5fCsFb
-	 OfZVGlFE3PlP4hoVXWT9WSuoUjMSvQhHHdOsnqyHdlHun4jZg5JYsMhIbHjz8yxISZ
-	 GGcvuD3ctD/Pw==
-Received: from relay12.kaspersky-labs.com (localhost [127.0.0.1])
-	by relay12.kaspersky-labs.com (Postfix) with ESMTP id 7FEA75A4A7A;
-	Tue, 11 Nov 2025 17:10:34 +0300 (MSK)
-Received: from mail-hq2.kaspersky.com (unknown [91.103.66.200])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(Client CN "mail-hq2.kaspersky.com", Issuer "Kaspersky MailRelays CA G3" (verified OK))
-	by mailhub12.kaspersky-labs.com (Postfix) with ESMTPS id 4EA0D5A15AB;
-	Tue, 11 Nov 2025 17:10:33 +0300 (MSK)
-Received: from zhigulin-p.avp.ru (10.16.104.190) by HQMAILSRV2.avp.ru
- (10.64.57.52) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Tue, 11 Nov
- 2025 17:09:58 +0300
-From: Pavel Zhigulin <Pavel.Zhigulin@kaspersky.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-CC: Pavel Zhigulin <Pavel.Zhigulin@kaspersky.com>, Chunfeng Yun
-	<chunfeng.yun@mediatek.com>, <linux-usb@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <lvc-project@linuxtesting.org>,
-	<stable@vger.kernel.org>
-Subject: [PATCH v2] usb: mtu3: fix possible NULL pointer dereference in ep0_rx_state()
-Date: Tue, 11 Nov 2025 17:09:53 +0300
-Message-ID: <20251111140956.3285945-1-Pavel.Zhigulin@kaspersky.com>
-X-Mailer: git-send-email 2.43.0
+	id 1vIp5K-00000007IMj-2nHt
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Nov 2025 14:11:04 +0000
+Received: by mail-oa1-x32.google.com with SMTP id 586e51a60fabf-3c96de7fe7eso2750351fac.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Nov 2025 06:11:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1762870261; x=1763475061; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=txdEdm40JEr5pC5+2I7HwpHNOaO4GAfSSqE8ztv0UX0=;
+        b=Yp30PNMEs3s0QL0xMcqM7rUmpTGv+C8YgFITk/LiYa1XVMTAHo4I3KudvsUj9ODmxO
+         68e7dd4u+FynIbf3O2ljtaVJeMwcGITWNHEM+eTG7eObS7pTyW+mlsx7+JzzwufkAOZu
+         3ndEH+a+kMvogsuOqCMyrZUlzMicFKfkC8tWMtjTzht3kmih+IoEBZGnVyCtsDapbiJc
+         GdnpgH+RLk0gWB42znW+TDvT1DdjEzhxfjxBxvLatYOtzre0ay5ExLrgN4Z43z2lQtBS
+         ms8Zd6rGviOpnDwmjqxt0Fxw6vX45SKQ9+M1j8FW5cAqJAbUQg1S7rr0rJSYngEVgxF8
+         XB5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762870261; x=1763475061;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=txdEdm40JEr5pC5+2I7HwpHNOaO4GAfSSqE8ztv0UX0=;
+        b=h2mB0kVBv/D4frzzd5U2G15BScbFDR3hEDvscKhs3GN1F7Yo+rl3FQr5pvCya5WFSo
+         BUlg1YdnaBijB6M/NKBgeZ4NC3R4NY5wRpvQdVAgkC7X+eaXPTA1WBLcCVhO543a5QuC
+         XUnQXbn+zlZsaBJkdxRa6kjgjMSLbazbR6NPmZeNwzNCl4IgszsGFsWtUgrK83ajjFec
+         K5PhKbS8HdO03fxJz8+WhEhxWOgfr9zjAsjHE75MmHZuoLloSSbsGoMu8vdQuZEm+HGC
+         TnIBtITJuz004FIUVh49lShde4afpirRVFsn1ssPaHGXDxUFKewoa5JbATfSyu7VGi2l
+         TpyQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV9Sh3pJx9YTaQWz9K25J6OE7CtApiOe9yrgLtuGh+qgbnXgdWtrwo6gjz/lrDJhbow57y1dc/vrJ9r+FxVPg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxC80Ncp2nePLvz0zxmV31FXwKQ2/wlBufnWpcmnqLjNFZMf4PC
+	DcNDJi5GM9aB4wgwFkx/Byt/iuzpXTSIIb88gXNCtbq7Wtl+roq38LNVT8+uCT5X619+wURX2YZ
+	mfigosM0uZ2kIXjrv2D6KVVxCvkUYhQc=
+X-Gm-Gg: ASbGncve5DxYGaJL7st4OBmt9vjAsePETyGxDlAbGj3sIe621ZrLvjxd0wqJLaOWoD7
+	ifP59pK0pLZY0O3YKKR/L+o+Vh0To3rLnnEoghZiN7eLFMgGK5BbRAShZ/SG8VjCFAT1W5hJ7x9
+	bQcbrkKCXk4BZQJPN13wHetOQjgENA/Ep3scymQcjvmFmvwjX5xZapd5z1660p86sUsVKjuqvGu
+	1ZTyMLvLWIPALMWBm0C6wdjT1iHOURLfAOBWvXfpgJjGmAGKhw52aOmemtki33UHLpHRmNt
+X-Google-Smtp-Source: AGHT+IH9NsGeAGXbfrkGaLkI4eT/HyQdZyA7+2QW2Tz3Nh3t6elSCgFx6DzEmvDROMRAAY0dK1BfQ/UaepIHAEj/9uQ=
+X-Received: by 2002:a05:6870:899a:b0:3d4:760f:544b with SMTP id
+ 586e51a60fabf-3e7c294ab31mr8000185fac.46.1762870261279; Tue, 11 Nov 2025
+ 06:11:01 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.16.104.190]
-X-ClientProxiedBy: HQMAILSRV2.avp.ru (10.64.57.52) To HQMAILSRV2.avp.ru
- (10.64.57.52)
-X-KSE-ServerInfo: HQMAILSRV2.avp.ru, 9
-X-KSE-AntiSpam-Interceptor-Info: scan successful
-X-KSE-AntiSpam-Version: 6.1.1, Database issued on: 11/11/2025 13:58:40
-X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
-X-KSE-AntiSpam-Method: none
-X-KSE-AntiSpam-Rate: 0
-X-KSE-AntiSpam-Info: Lua profiles 197969 [Nov 11 2025]
-X-KSE-AntiSpam-Info: Version: 6.1.1.11
-X-KSE-AntiSpam-Info: Envelope from: Pavel.Zhigulin@kaspersky.com
-X-KSE-AntiSpam-Info: LuaCore: 75 0.3.75
- aab2175a55dcbd410b25b8694e49bbee3c09cdde
-X-KSE-AntiSpam-Info: {Tracking_cluster_exceptions}
-X-KSE-AntiSpam-Info: {Tracking_real_kaspersky_domains}
-X-KSE-AntiSpam-Info: {Tracking_uf_ne_domains}
-X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
-X-KSE-AntiSpam-Info: zhigulin-p.avp.ru:7.1.1,5.0.1;127.0.0.199:7.1.2;d41d8cd98f00b204e9800998ecf8427e.com:7.1.1;kaspersky.com:7.1.1,5.0.1;lore.kernel.org:7.1.1
-X-KSE-AntiSpam-Info: {Tracking_white_helo}
-X-KSE-AntiSpam-Info: FromAlignment: s
-X-KSE-AntiSpam-Info: Rate: 0
-X-KSE-AntiSpam-Info: Status: not_detected
-X-KSE-AntiSpam-Info: Method: none
-X-KSE-Antiphishing-Info: Clean
-X-KSE-Antiphishing-ScanningType: Deterministic
-X-KSE-Antiphishing-Method: None
-X-KSE-Antiphishing-Bases: 11/11/2025 14:00:00
-X-KSE-AttachmentFiltering-Interceptor-Info: no applicable attachment filtering
- rules found
-X-KSE-Antivirus-Interceptor-Info: scan successful
-X-KSE-Antivirus-Info: Clean, bases: 11/11/2025 1:40:00 PM
-X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
-X-KSE-AttachmentFiltering-Interceptor-Info: no applicable attachment filtering
- rules found
-X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
-X-KSMG-AntiPhishing: NotDetected, bases: 2025/11/11 13:30:00
-X-KSMG-AntiSpam-Interceptor-Info: not scanned
-X-KSMG-AntiSpam-Status: not scanned, disabled by settings
-X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.1.1.8310, bases: 2025/11/11 12:29:00 #27910883
-X-KSMG-AntiVirus-Status: NotDetected, skipped
-X-KSMG-LinksScanning: NotDetected, bases: 2025/11/11 13:29:00
-X-KSMG-Message-Action: skipped
-X-KSMG-Rule-ID: 52
+References: <20251111134400.5258-1-sef1548@gmail.com> <aRNBak9Xl_wsBJ6w@lore-desk>
+In-Reply-To: <aRNBak9Xl_wsBJ6w@lore-desk>
+From: Nick Huang <sef1548@gmail.com>
+Date: Tue, 11 Nov 2025 22:10:50 +0800
+X-Gm-Features: AWmQ_bkn9vJFX_qKrlLafWMdsY1_qiyP8xv9zY7kAo8K6GWks1Gw41ZZnCWDwno
+Message-ID: <CABZAGRG-7T2mp3UYRaJ5c7eTi1B4hWybtJrfPwdo2aSEvhcMqg@mail.gmail.com>
+Subject: Re: [PATCH] mt76: connac: remove unused reserved field in gtk rekey
+ TLV struct
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: nbd@nbd.name, ryder.lee@mediatek.com, shayne.chen@mediatek.com, 
+	sean.wang@mediatek.com, linux-wireless@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_061046_838030_0F78CFC8 
-X-CRM114-Status: GOOD (  16.19  )
+X-CRM114-CacheID: sfid-20251111_061102_704587_3BDF99C6 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,58 +97,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The function 'ep0_rx_state()' accessed 'mreq->request' before verifying
-that mreq was valid. If 'next_ep0_request()' returned NULL, this could
-lead to a NULL pointer dereference. The return value of
-'next_ep0_request()' is checked in every other code path except
-here. It appears that the intended 'if (mreq)' check was mistakenly
-written as 'if (req)', since the req pointer cannot be NULL when mreq
-is not NULL.
+Lorenzo Bianconi <lorenzo@kernel.org> =E6=96=BC 2025=E5=B9=B411=E6=9C=8811=
+=E6=97=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=8810:00=E5=AF=AB=E9=81=93=EF=
+=BC=9A
+>
+> > The 'reserverd' field in struct mt76_connac_gtk_rekey_tlv was unused
+> > and misspelled. Removing it cleans up the structure definition and
+> > improves code readability.
+> >
+> > Signed-off-by: Nick Huang <sef1548@gmail.com>
+> > ---
+> >  drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h | 1 -
+> >  1 file changed, 1 deletion(-)
+> >
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/dri=
+vers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> > index 27daf4195..28cf46a5f 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> > @@ -1681,7 +1681,6 @@ struct mt76_connac_gtk_rekey_tlv {
+> >       __le32 group_cipher;
+> >       __le32 key_mgmt; /* NONE-PSK-IEEE802.1X */
+> >       __le32 mgmt_group_cipher;
+> > -     u8 reserverd[4];
+>
+> This field is used to keep the struct size consistent with the fw one so =
+it is
+> expected to not be used.
+>
+> Regards,
+> Lorenzo
+>
+> >  } __packed;
+> >
+> >  #define MT76_CONNAC_WOW_MASK_MAX_LEN                 16
+> > --
+> > 2.48.1
+> >
+Hi Lorenzo,
 
-Initialize 'mreq' and 'req' to NULL by default, and switch 'req'
-NULL-checking to 'mreq' non-NULL check to prevent invalid memory access.
+Got it, thanks for explaining. Makes sense that this field is just for
+size consistency.
 
-Found by Linux Verification Center (linuxtesting.org) with SVACE.
-
-Fixes: df2069acb005 ("usb: Add MediaTek USB3 DRD driver")
-Signed-off-by: Pavel Zhigulin <Pavel.Zhigulin@kaspersky.com>
----
-v2: Add <stable@vger.kernel.org> to CC list
-v1: https://lore.kernel.org/all/20251027193152.3906497-1-Pavel.Zhigulin@kaspersky.com
-
- drivers/usb/mtu3/mtu3_gadget_ep0.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/usb/mtu3/mtu3_gadget_ep0.c b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-index e4fd1bb14a55..ee7466ca4d99 100644
---- a/drivers/usb/mtu3/mtu3_gadget_ep0.c
-+++ b/drivers/usb/mtu3/mtu3_gadget_ep0.c
-@@ -508,8 +508,8 @@ static int handle_standard_request(struct mtu3 *mtu,
- /* receive an data packet (OUT) */
- static void ep0_rx_state(struct mtu3 *mtu)
- {
--	struct mtu3_request *mreq;
--	struct usb_request *req;
-+	struct mtu3_request *mreq = NULL;
-+	struct usb_request *req = NULL;
- 	void __iomem *mbase = mtu->mac_base;
- 	u32 maxp;
- 	u32 csr;
-@@ -519,10 +519,11 @@ static void ep0_rx_state(struct mtu3 *mtu)
-
- 	csr = mtu3_readl(mbase, U3D_EP0CSR) & EP0_W1C_BITS;
- 	mreq = next_ep0_request(mtu);
--	req = &mreq->request;
-
- 	/* read packet and ack; or stall because of gadget driver bug */
--	if (req) {
-+	if (mreq) {
-+		req = &mreq->request;
-+
- 		void *buf = req->buf + req->actual;
- 		unsigned int len = req->length - req->actual;
-
---
-2.43.0
-
+Cheers,
+Nick Huang
 
