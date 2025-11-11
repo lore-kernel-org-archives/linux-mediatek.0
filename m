@@ -4,63 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2664CD1297
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 09:56:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DBF1CCFA1A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 10:14:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X100/5XOY4cSNdMadcdXUD3LzvWX4DhcTTWBkZYLvOw=; b=m/lrl5xYwT2UaEEKiJp8kghPfv
-	YSZbTj4zsVLLsqM8pAx2jAs1JwZUIIyBHkPH87Iq9aaeWUGqrgg5/QO2sVFk5hGcxdeFlLs5uI9gs
-	vOqYM9MkqbxJ8vFXEMsfxJJPF7lZsqvHLLRiWnzicWuKlH40FRz8QKgDpMPHVtwFThzf0iLtdHgw4
-	nSWUBwW+Lp5YJH5xCBcbe4/ICf6m+ttjzltGjELfJfiDjKC1O/iOQ8AKGLoGkB0tcR2Lg7kgqmD6g
-	lByG/vY0he9JTcCtxiVR1LAhwePTrQPD3xsOIYu5bEjIfWbciOt/Ids9QAZhf/ODxUg1i1J38dsTe
-	kpducQDA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LeMwXNllT4LhHLeKTaFba9eFWNp9e0Refct3JU/EgW0=; b=1ccKkwsdanJ8vQ
+	+XVKX+fTVru8awgPuRg4XXLsenLWFFt3pI9AzjfudZ8DMfiei9m/tkP6qOQ2f/YXFjMjIQowMrQmq
+	ZYgg316G8aVicwg1mFl9ysdnVJdmH6qfr1HPSEdaSaw5plF+VpvR+83Gsg6rKQDngxcv7jMCzLgw4
+	pxhHoEPLj57NhbVm40rgY5k9KJl7L6S6LDzQVdup0csw/Fn+j87UdntuTXtvrLn4kghxZLrtllBT/
+	qk+oDxXRhtahVQQq8/AVHK8Xy2P8bIu+2TswolTdXa8J9VaCaXCwiYGFVZtGJtLWZwu6FMl3aEDhb
+	N20YjtYfL6p7wBIhg+pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIl6W-00000006t8w-41hk;
-	Tue, 11 Nov 2025 09:56:00 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vIlNz-00000006us9-0SPk;
+	Tue, 11 Nov 2025 10:14:03 +0000
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIl6P-00000006szw-0SPB;
-	Tue, 11 Nov 2025 09:55:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762854950;
-	bh=JCOei6q9Jk44FOZF9ApEJscOe2ntZSYA8j4Q2mT2pJM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=chtmt7slzxx6ci5rKvEpfdMFTK0184WsPqYwxu5+vPgiRde9vseveWg5nLAJ23Rbz
-	 lsl9vxgHJJvbHqA+yP8+ung/C1a++D3Nz6Mqzxcf+av06uGfgEn0xE/9QN7ujUcj4a
-	 80DhWAoMkw2pUWbdDYH9UK5BlimX84fVcLEzR+LQJZ+BMGtMOtERMc0puHzYARK83y
-	 l6KgrTbI6KPNU/bLK8rnLUdIFSei3vMFbnOyIc8TH21lc66vp3aSINzWhwAlmj25Hi
-	 Waivt+u5jFGfLITHD2ACXzyDclB2e6vc8JTbO55BKtJ0AUhF2ECVzpG2dcXw0zpXDp
-	 glJRfUQDXWRFQ==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DB77F17E13B5;
-	Tue, 11 Nov 2025 10:55:49 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: arm-soc <arm@kernel.org>,
-	soc <soc@kernel.org>
-Cc: matthias.bgg@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [GIT,PULL,3/5] MediaTek ARM64 DTS updates for v6.19
-Date: Tue, 11 Nov 2025 10:55:38 +0100
-Message-ID: <20251111095542.13958-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.51.1
-In-Reply-To: <20251111095542.13958-1-angelogioacchino.delregno@collabora.com>
-References: <20251111095542.13958-1-angelogioacchino.delregno@collabora.com>
+	id 1vIlNv-00000006uq1-21iL
+	for linux-mediatek@lists.infradead.org;
+	Tue, 11 Nov 2025 10:14:01 +0000
+Received: by mail-yw1-x112e.google.com with SMTP id 00721157ae682-787df0d729dso26516287b3.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 11 Nov 2025 02:13:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1762856038; x=1763460838; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LeMwXNllT4LhHLeKTaFba9eFWNp9e0Refct3JU/EgW0=;
+        b=F3yv+T7yM1jZv8zwmlwp9dW/Gs0nS0SLrV5ACFsEnQwjIHCLo6MvGuPW/2kFGF2KGJ
+         X/2fiA95dn9ItkheZWNYWtnrBjChl3DOf47cOnPCJyM6EuiG6X0qv1O8mjGZXjxpHSSm
+         V6DKfk1DgMpU6R8t8eptxUPh35EDiIKy507hlfhVaIvmVVkUMVGQLjbQWkmviSQaZOHm
+         B2iMpY3+DJtcrvGqcBFouKUupAKDnVoTezlkuwVjYENL3wYSYaDipUWZ8TUMvnRDAf/I
+         RWQ9f88a7zjPOsabnKHwc2GB9SL+QsGIsPXUUUVM4SBZcSEjWuWvWcmwtqrnihqSrzVd
+         2AXg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1762856038; x=1763460838;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=LeMwXNllT4LhHLeKTaFba9eFWNp9e0Refct3JU/EgW0=;
+        b=XFkH3bm7FBM0usu5xu+H99zbAnXI2oz042FMxDD0qeydJ8o6fmad3cCtgnjPuWO+es
+         7P8a/ZbaK9M0gveCN/HcTUwflJJEkyijPbNOWrggST0kfnohPKIzmOE9ZxWgBcdhrKh7
+         OuOtTzdTUvMgMVLAcvFswEwjQ3azHJptL0J1rC1W98KMgHz8qClK0/GxWJTWTDlI3Hpm
+         Oei4gEn5YB9oqCPjATJ44ugbXwtRapN0xa/lGmM10TbJ6OKPxQ4oXIH4EIl8ZkmYm/PC
+         5e/JLNdGzuM1u4OcF0HUfTL31KmYiKWnMP2IFci9KiNK03OGXdhJOlA0CUMcVIX3IGGO
+         zZmg==
+X-Forwarded-Encrypted: i=1; AJvYcCW+Zle2DU+Weaj1vDFuwU31BGt/VkWu9wYstPk/ZTOW8Tr2dK4i73vvPs2ooy955J9AIF0n6xIEVJ1XIN8DTA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxa46bWFPjIs8Rw9xUxrUraPuBw54UkXkxhUnadxh4ashmw3Dn0
+	NJ2VtFKYKwthQmYDke33rFn/91eDyuImbzM6M9rMtNhlBALoRhrJ8XXJcwYUvzohk0uFWk6h6Bk
+	UdJ6wEjvSqj1HxkjonOtPN7Y6kCn52jqscYg2k76AeQ==
+X-Gm-Gg: ASbGncuTOjlAStphfyprYl6tGlOhOUVaviLbLEo/PA5sN1Zj/oH4/xv/qg0adnyCwkN
+	+sKPWaBleIE1rQzV+IzryXnQ8Mn8Z6y4ynkBSeLw5s/9yaTR6HSO5eKYAziFOmMt1PBEJd3y9eV
+	WwOuDf7yVqrnG5KfUMpnAfxyu9tQwdfQ1XjxG0VNj2Tt4anZtVen75MB3gxPqjJFLOdn8LrPcCJ
+	0t7+skubP/Y501lIL9WZLLdF6R2v2MPLj2683G1dOJQavNmc0bFVdQhGY7mDNLNS0X+gAo=
+X-Google-Smtp-Source: AGHT+IF9Qzu6zmE2Iio8Nz23xz7uKZaMMjTrJFnhpC9W7T174pmVZm6XJJz8JqOAQn21MLhQ4SKvuQGEPKenwCujUTM=
+X-Received: by 2002:a05:690e:dc4:b0:640:db91:33d4 with SMTP id
+ 956f58d0204a3-640db915617mr7528496d50.26.1762856038239; Tue, 11 Nov 2025
+ 02:13:58 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20251105195007.199229-1-linux@fw-web.de> <20251105195007.199229-2-linux@fw-web.de>
+ <5DB7D99D-A30D-42A1-8E3E-B0204A1E6E6D@public-files.de> <1af7077b-42a3-4efe-a8cb-6117136c8f2a@collabora.com>
+ <20251106-strewn-carport-a33a8b812794@spud>
+In-Reply-To: <20251106-strewn-carport-a33a8b812794@spud>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 11 Nov 2025 11:13:43 +0100
+X-Gm-Features: AWmQ_blovY8iar-yYYC_DuviA6U5c_hbl8gXmu0oONH393Qf8f6FhAsUxk1NsNQ
+Message-ID: <CACRpkdYbcc_0=qwZgLhpTi1NNjkQ88JuOANqTqTfwMrUs_+OfQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/5] dt-bindings: pinctrl: mt7988: allow gpio-hogs
+To: Conor Dooley <conor@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_015553_299568_43844FD7 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20251111_021359_534735_DD596E40 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,155 +93,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, AngeloGioacchino Del Regno <angelogiocchino.delregno@collabora.com>, Sean Wang <sean.wang@mediatek.com>, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich <linux@fw-web.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit 3a8660878839faadb4f1a6dd72c3179c1df56787:
+On Thu, Nov 6, 2025 at 6:43=E2=80=AFPM Conor Dooley <conor@kernel.org> wrot=
+e:
 
-  Linux 6.18-rc1 (2025-10-12 13:42:36 -0700)
+> > > Got error:
+> > > said: 550 5.1.1 User does not exist -
+> > > <angelogiocchino.delregno@collabora.com> (in reply to RCPT TO command=
+)
+> > >
+> > > maybe this can be fixed while applying?
+> > >
+> > > regards Frank
+> >
+> > Eh, have I typoed my own name?
+> >
+> > So cool. Lol
+> >
+> > Just in case it's needed:
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+>
+> I have a vim macro to a) save my hands typing lots of tags b) make sure
+> I don't typo. ;)
 
-are available in the Git repository at:
+Typos happen. Also for me.
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git tags/mtk-dts64-for-v6.19
+A good idea is when you change mail address try to negotiate something
+simpler, this is one of the reasons a lot of maintainers have simple
+mail addresses such as linusw@kernel.org (which will be my next
+mail address the day it is needed).
 
-for you to fetch changes up to 9b2d2beaefcfa17259fdbce16d59d660894147cb:
-
-  arm64: dts: mediatek: mt7981b-openwrt-one: Enable software leds (2025-11-06 10:06:52 +0100)
-
-----------------------------------------------------------------
-MediaTek ARM64 Device Tree updates
-
-This adds support for new boards and variants based on different
-already supported MediaTek SoCs, and improves support for current
-boards.
-
-In particular:
- - New machines:
-    - MT7988 BananaPi R4 Pro eMMC and SD router board with support
-      for both Key-M and Key-E M.2 slots through DTB Overlays
-    - MT8370 Grinn GenioSBC-510 (GenioSOM-510 + GenioBoard Edge AI)
-    - MT8390 Grinn GenioSBC-700 (GenioSOM-700 + GenioBoard Edge AI)
- - New variant: MT8395 MediaTek Genio 1200 EVK with UFS
-
-...preparation for new SoCs (MT8196 Kompanio Ultra, a clone of the
-   MT6991 Dimensity 9400, and MT6878 Dimensity 7300) with the
-   addition of GCE/PIO definitions
-
-...improvements for already supported SoCs and machines:
- - MT7622/7981b/7986a/7988a gain support for reading SoC UUID from
-   eFuse, used to generate a persistent MAC address on boards that
-   don't have any factory-assigned addresses.
- - MT7986 BananaPi R3 gets changes to its default fan PWM speed to
-   improve compatibility with cheaper fans (usually coming with the
-   heatsink+fan combos)
- - The MT7981b OpenWRT One router sees general support improvements
-   with the enablement of its UART-0 console and correct pinmuxing
-   for the same, addition of reserved memory for Trusted Firmware A,
-   its SPI NOR Flash (for recovery system, WiFi eeprom data and ETH
-   MAC address from factory), and board LEDs.
- - MT8365 gets support for its Mali G52 MC1 GPU, which gets enabled
-   in the MediaTek Genio 350 EVK board
-
-...and a dt-bindings warning fix for MT8183 machines through trivial
-changes to rename the audiosys and afe nodes to reflect bindings.
-
-----------------------------------------------------------------
-Bartosz Bilas (1):
-      arm64: dts: mediatek: mt8370-grinn-genio-510-sbc: Add Grinn GenioSBC-510
-
-Bryan Hinton (2):
-      arm64: dts: mediatek: mt7981b: add labels for UART0/1/2 nodes
-      arm64: dts: mediatek: mt7981b: OpenWrt One: set console UART to 115200
-
-Daniel Golle (4):
-      arm64: dts: mediatek: mt7622: add 'soc-uuid' cell to efuse
-      arm64: dts: mediatek: mt7986a: add 'soc-uuid' cell to efuse
-      arm64: dts: mediatek: mt7981b: add 'soc-uuid' cell to efuse
-      arm64: dts: mediatek: mt7988a: add 'soc-uuid' cell to efuse
-
-Frank Wunderlich (5):
-      dt-bindings: arm: mediatek: add BPI-R4 Pro board
-      arm64: dts: mediatek: mt7988: Disable 2.5G phy and enable at board layer
-      arm64: dts: mediatek: mt7988: Add devicetree for BananaPi R4 Pro
-      arm64: dts: mediatek: mt7988a-bpi-r4-pro: Add PCIe overlays
-      arm64: dts: mediatek: mt7988a-bpi-r4pro: Add mmc overlays
-
-Igor Belwon (1):
-      arm64: dts: mediatek: Add MT6878 pinmux macro header file
-
-Jason-JH Lin (1):
-      arm64: dts: mediatek: Add GCE header for MT8196
-
-Julien Massot (1):
-      arm64: dts: mt8183: Rename nodes to match audiosys DT schema
-
-Louis-Alexis Eyraud (2):
-      arm64: dts: mediatek: mt8365: Add GPU support
-      arm64: dts: mediatek: mt8365-evk: Enable GPU support
-
-Macpaul Lin (3):
-      dt-bindings: arm64: mediatek: add mt8395-evk-ufs board
-      arm64: dts: mediatek: mt8395-genio-1200-evk: Move common parts to dtsi
-      arm64: dts: mediatek: add device-tree for Genio 1200 EVK UFS board
-
-Mateusz Koza (1):
-      arm64: dts: mediatek: mt8390-genio-700-evk: Add Grinn GenioSBC-700
-
-Mikhail Kshevetskiy (1):
-      arm64: dts: mediatek: mt7986-bpi-r3: Change fan PWM value for mid speed
-
-Nícolas F. R. A. Prado (1):
-      arm64: dts: mediatek: mt8395-genio-1200-evk: Describe CPU supplies
-
-Sjoerd Simons (4):
-      arm64: dts: mediatek: mt7981b: Configure UART0 pinmux
-      arm64: dts: mediatek: mt7981b: Add reserved memory for TF-A
-      arm64: dts: mediatek: mt7981b-openwrt-one: Enable SPI NOR
-      arm64: dts: mediatek: mt7981b-openwrt-one: Enable software leds
-
- Documentation/devicetree/bindings/arm/mediatek.yaml                |    7 +
- arch/arm64/boot/dts/mediatek/Makefile                              |   11 +
- arch/arm64/boot/dts/mediatek/mt6878-pinfunc.h                      | 1201 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt7622.dtsi                           |    4 +
- arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts               |  150 ++++++++
- arch/arm64/boot/dts/mediatek/mt7981b.dtsi                          |   35 +-
- arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts           |    2 +-
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi                          |    4 +
- arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-2g5.dts       |    1 +
- arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-4e.dts    |   16 +
- arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-8x.dts    |   16 +
- arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso |   20 +
- arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso |   20 +
- arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-emmc.dtso |   33 ++
- arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-sd.dtso   |   31 ++
- arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi      |  534 +++++++++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi                          |    7 +-
- arch/arm64/boot/dts/mediatek/mt8183.dtsi                           |    4 +-
- arch/arm64/boot/dts/mediatek/mt8196-gce.h                          |  612 ++++++++++++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8365-evk.dts                        |    9 +
- arch/arm64/boot/dts/mediatek/mt8365.dtsi                           |   43 ++-
- arch/arm64/boot/dts/mediatek/mt8370-grinn-genio-510-sbc.dts        |   20 +
- arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-700-sbc.dts        |   20 +
- arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi           |  538 +++++++++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-som.dtsi           |  210 +++++++++++
- arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dts         |   29 ++
- arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk.dts             | 1189 +----------------------------------------------------------
- arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi              | 1230 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 28 files changed, 4798 insertions(+), 1198 deletions(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt6878-pinfunc.h
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-4e.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-8x.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-emmc.dtso
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-sd.dtso
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8196-gce.h
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8370-grinn-genio-510-sbc.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-700-sbc.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-som.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8395-genio-1200-evk-ufs.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
-
+Yours,
+Linus Walleij
 
