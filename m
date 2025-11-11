@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAF52CCFA1A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 18:01:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E913CCFA1A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 18:03:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f1tQc9fKxPXjOAXomvZMDR+OXXQMQ2u54M9yxOwFvaQ=; b=IuCZRQ2JyUW6nTTE8H6jLVJWOH
-	1iyMQDGCKEHyMoP7VaoDouwRz9aQEHtLS2WEi/T7AX64p7ad+iq4HEHOjf5TQOnE2pCe2CsKqOpld
-	hUxLn0ckS0h0g169Ka5cUbWqwrkCABm5Plp2yomM0NRLDrTGjkZe7CSLMEdxn+FP3LxTt0phxQRJ9
-	HXl5xNIZ+65gl08J+sBuMfvYtW4BhbrPzJJQsSniTroPqwyYWiTkb2e1ylzv/IsIl0uTngPKQ5hpZ
-	PmcLYu08w55FgNTyT3xDNgRPkOCisF68tzsJreGKiXeDwoishOOsCAttRhOmnHO1Nt4e2rDzAwKj0
-	TesG59fQ==;
+	bh=qsITilBXp19OSMLNyHWtGaOi0EfIBO4czotRu+0gH3o=; b=RNA9IJ4BnKgipjFUqdNjLJ8dxb
+	IX/7bUrGrrvwd23uKs3N4yKfunZaiulfB+ebK8y1J7u7gWuluOIvCL6EceZCzIALSZCoO+mDHViow
+	ByLtnM6qQylHynLMwZ1GTZ7PAlSAu1MH3eufxOMmszP9EpOUmmbFzcqN3Rzqz1+ZSwZTX6eUk8UVc
+	4SgOzbBGlr/O9nw5EO3tjm4sQfygPK7ww+7Pfozvy957q/2owUK1uRFFIwtkftBlXVYYsqTqzlK8f
+	TH+oSaFhCRRpO+hyjZDqSB4y/ovamJz4HeVfgK7BoeYT1iYUAuJLFRfkgoIiL33SDLsPNuq3w67gR
+	acTpTwgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIsgB-00000007Zhe-1MeW;
-	Tue, 11 Nov 2025 18:01:19 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vIsig-00000007Zyz-3ABg;
+	Tue, 11 Nov 2025 18:03:54 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIsg9-00000007ZgV-0xVK;
-	Tue, 11 Nov 2025 18:01:17 +0000
+	id 1vIsif-00000007ZyZ-2d0M;
+	Tue, 11 Nov 2025 18:03:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 82A554012E;
-	Tue, 11 Nov 2025 18:01:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 609F8C113D0;
-	Tue, 11 Nov 2025 18:01:10 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 84E73601F9;
+	Tue, 11 Nov 2025 18:03:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21B8BC4CEF5;
+	Tue, 11 Nov 2025 18:03:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1762884076;
-	bh=f1tQc9fKxPXjOAXomvZMDR+OXXQMQ2u54M9yxOwFvaQ=;
+	s=k20201202; t=1762884232;
+	bh=mirE0FVC1aFCsQq2eMehFBIBONouR+WUmeEdSPLLXaU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fMnkboKgujlmFzn+1F12YPG0LrNsL91vnvn/TUaHmyNFFWL5O9ua8Vt0+9og4W4SD
-	 BBCkFndVJY/FAdIdXHQXE6w8eGcsHc2LUrZ4bFj3ascztlgJN7KftPO0B3TxD/R0mJ
-	 IYimW6mPvZwjTg+oxfVYA9OERnqCnrI6nVwyu8IibLiP6fX9/el1eW4d6S5qXDwDzK
-	 b7vto81dT3Fu1sK1LpH9Rdpxm91E2mhmKIbXEwmrhIgLPSmwkM2pxG9JMtrEql9Q11
-	 IdfxuLPKBWCFZiovJcrbeDfko2anZvHPKTe9vsZFm1ZF/YCTBHL+CZmEL55qjbdTei
-	 FY+9eoDAR1lZQ==
-Date: Tue, 11 Nov 2025 18:01:08 +0000
+	b=UoxZ2qITmDCIv3Aw71Gtor6BXmxZ1wnoHiUP/IBntzbdAFxQ9XxovK8QSj2aDPfZf
+	 8IqPCAlCuq0F29Cbyszl60cwbOySqlX8Rj5fwBoLkDonymsRi7FtTTer6S+8EI4kqM
+	 /ut0BcYpYH4KdK4sZNYt0ARyTafsLbJsT2J1vKYwJE48dIlDpf49nt492SCsRajbeb
+	 N7w7bHAXlZp2gWqVuLabvi9TMqJAmHGuMrDDhb1WkFwSw2R9+XPQRX4y7EiAn/1Y0P
+	 pkrI36WZ83pDlW7P7nW0wY6+KaIUsVMglj8ztkQuZyvx7fRB8f45cARtGA3HLG7lmq
+	 XpVhTSucBjALg==
+Date: Tue, 11 Nov 2025 18:03:43 +0000
 From: Conor Dooley <conor@kernel.org>
 To: Jack Hsu <jh.hsu@mediatek.com>
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
@@ -60,19 +60,16 @@ Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
 	linux-serial@vger.kernel.org, linux-usb@vger.kernel.org,
 	linux-watchdog@vger.kernel.org,
 	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v7 5/9] dt-bindings: usb: Support MediaTek MT8189 xhci
-Message-ID: <20251111-ocelot-ipod-4d5f902b640b@spud>
+Subject: Re: [PATCH v7 8/9] arm64: dts: mediatek: update rtc properties for
+ MT6359
+Message-ID: <20251111-heroism-greasily-fb01345ae609@spud>
 References: <20251111070031.305281-1-jh.hsu@mediatek.com>
- <20251111070031.305281-6-jh.hsu@mediatek.com>
+ <20251111070031.305281-9-jh.hsu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="mkp7Vm+0xTxl2wgI"
+	protocol="application/pgp-signature"; boundary="wFCZWHo1MJf80ONG"
 Content-Disposition: inline
-In-Reply-To: <20251111070031.305281-6-jh.hsu@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251111_100117_290486_AC5E875E 
-X-CRM114-Status: UNSURE (   7.89  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20251111070031.305281-9-jh.hsu@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,29 +85,62 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---mkp7Vm+0xTxl2wgI
+--wFCZWHo1MJf80ONG
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Nov 11, 2025 at 02:59:19PM +0800, Jack Hsu wrote:
-> modify dt-binding for support mt8189 dts node of xhci
+On Tue, Nov 11, 2025 at 02:59:22PM +0800, Jack Hsu wrote:
+> Update properties of rtc for mt6359 PMIC
 >=20
 > Signed-off-by: Jack Hsu <jh.hsu@mediatek.com>
+>=20
+> ---
+> Changs in v7:
+>  - remove mt635x-auadc.h
+>  - remove fg nodes
+>=20
+> ---
+>  arch/arm64/boot/dts/mediatek/mt6359.dtsi | 3 +++
+>  1 file changed, 3 insertions(+)
+>=20
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6359.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt6359.dtsi
+> index 467d8a4c2aa7..fe737254c091 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt6359.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
+> @@ -302,6 +302,9 @@ mt6359_vsram_others_sshub_ldo: ldo_vsram_others_sshub=
+ {
+> =20
+>  		mt6359rtc: rtc {
+>  			compatible =3D "mediatek,mt6358-rtc";
+> +			#address-cells =3D <1>;
+> +			#size-cells =3D <1>;
+> +			status =3D "disabled";
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
+Okay, this looks a lot better now. Still missing an explanation of why
+it has been moved to disabled though, especially since you just go and
+re-enable it (without adding child devices that use the address/size
+cells).
+pw-bot: changes-requested
 
---mkp7Vm+0xTxl2wgI
+>  		};
+>  	};
+>  };
+> --=20
+> 2.45.2
+>=20
+
+--wFCZWHo1MJf80ONG
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaRN55AAKCRB4tDGHoIJi
-0nZ6AP46To/9lZ7sJV4I2ivoFKzECzpBwHjBzWlqIKPxNe0XpwEAoe7F6s2tr9ca
-hGvlAGOJEUCvxWDv5C09Q2U7m+8MuwI=
-=k5Lj
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaRN6fwAKCRB4tDGHoIJi
+0uoFAQDNm4ule8p2MhE3JjSHzEvgFm4U+PmD7w7D5a6po+6lFQD+MjosiBlNJq1z
+mhXOc0fMS+qD6LGsDwugFT6pPQ4lzwA=
+=+aBt
 -----END PGP SIGNATURE-----
 
---mkp7Vm+0xTxl2wgI--
+--wFCZWHo1MJf80ONG--
 
