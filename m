@@ -4,37 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F221ECCFA1A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 07:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 549A9CCF9E3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Nov 2025 07:02:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r0WChIlV/zxiuVn/aJ6pe5m/YT9YDqgrPizzNby6LIQ=; b=N1vOwjvcMpLDYKrdqQ/v/xnnLP
-	X3HdKoD6p5rUfrrtC0j8T0KMGkCxfU0FIwI2dtEUrsC0w7vpupXvGcWUAqj5cOaZCuj1YIMbwipF5
-	Q8jF1uxQ1BOFwoe2rm5uuogmcg/DaImsp5Jc6IyY6w4jGoQX2qLtV86BfZt8IQPTUArVGTbplHxpY
-	XrwxoNN+JV1PgJ9llfFlMnZEOBtwGRD79s9Q0/EEhgoe45JXiBr1crO5PIE8hztl3rj+JN9NenfPp
-	tkzXSG0QYRRdpZJ8036roBGGFLo6mjn+Bu+ogq4gENSwXQW85a9VHrBxBaGfR9/gG1s9jcAvqcE6s
-	KEEON9Gw==;
+	bh=Z+SH4nfDD3SqIImpkWk6Lx8c6F14byP5m22pOkak3bY=; b=pphgLtIyn2XtiTvBu5FQOMcJ0n
+	M3XNv+JMxmWtBZekLlE5LZ8m6J0aMBM4MO1YdGm10PlW1dRS6jxc4wNM2n16CX1hTozqQesKeGtdN
+	9So+Sh7swcDd747OroMqX+KJ0Zv7vfP99kjo0usBM46Rj6mkJswqsO8cTebQaYg634Ga3sow2GVkL
+	ABj+m7xzWAgEE+pbZNovC8UxxDQlLtSYYdIC+QtC788CVEflTK0Izy5Z0gkYY9olyX0Iqh/s0BUOO
+	0w+KorwkDgbJW6FXNI9q3XYM6425UFJSppjYCuGb9cAENIGmumk/MAFuJv0XEElF8T2Inv9jurt9k
+	Kdj/Bpqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIiOp-00000006dYQ-0bNu;
+	id 1vIiOp-00000006dYz-1lt9;
 	Tue, 11 Nov 2025 07:02:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vIiOk-00000006dTv-2TzW;
+	id 1vIiOk-00000006dUG-3Xxo;
 	Tue, 11 Nov 2025 07:02:41 +0000
-X-UUID: 66482b58becc11f0a52f393f94899d25-20251111
+X-UUID: 65d46092becc11f09f706fa2197c6ceb-20251111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=r0WChIlV/zxiuVn/aJ6pe5m/YT9YDqgrPizzNby6LIQ=;
-	b=t9/LMxIZ1LmnF3zJzXsH91qbEBvRYWwPXvZFIQXl3aoDbX1NevYCb9Tqhb5hGVsDS9qibpS2KgH2YgQT4FQaQh5UcxCq+DB5rxbKkOPGoIloVMlwyUigI8OwkGK1OG6nx0IKvgSbK4Wa84sDkXaCgnAUrVPegfUQAj4Xofazwps=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Z+SH4nfDD3SqIImpkWk6Lx8c6F14byP5m22pOkak3bY=;
+	b=p4Liz86F3btpEkL0yLFV6riexUTTGi6wITVPiTm49qJs/4KRlgEclIbwFAgC5ED42SyjUDm9RTeeSKN8NcAQlZgTuqOhmY4Qd+GXnPtW02TAWmrInnetY62mHvzwlHgI/3IejpRJQJBgzxlJAwQvTz+Jb9D5I4Lx7e2HA6j1LB8=;
+X-CID-CACHE: Type:Local,Time:202511110002-07,HitQuantity:1
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:d4058456-618c-4f12-ae96-8b41b3b820be,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.6,REQID:3da2f649-8cda-41fd-9a90-5b79c0e8fc30,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:35e18382-b6af-4b29-9981-6bf838f9504d,B
+X-CID-META: VersionHash:a9d874c,CLOUDID:16e18382-b6af-4b29-9981-6bf838f9504d,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
 	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,13 +43,13 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 66482b58becc11f0a52f393f94899d25-20251111
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+X-UUID: 65d46092becc11f09f706fa2197c6ceb-20251111
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
 	(envelope-from <jh.hsu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 260138952; Tue, 11 Nov 2025 00:02:34 -0700
+	with ESMTP id 384034000; Tue, 11 Nov 2025 00:02:33 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.1748.26; Tue, 11 Nov 2025 15:02:30 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
@@ -71,10 +72,10 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-serial@vger.kernel.org>, <linux-usb@vger.kernel.org>,
 	<linux-watchdog@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Jack Hsu
-	<jh.hsu@mediatek.com>
-Subject: [PATCH v7 7/9] arm64: dts: mediatek: Add MT6319 PMIC Support
-Date: Tue, 11 Nov 2025 14:59:21 +0800
-Message-ID: <20251111070031.305281-8-jh.hsu@mediatek.com>
+	<jh.hsu@mediatek.com>, Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v7 6/9] dt-bindings: watchdog: Support MediaTek MT8189 wdt
+Date: Tue, 11 Nov 2025 14:59:20 +0800
+Message-ID: <20251111070031.305281-7-jh.hsu@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20251111070031.305281-1-jh.hsu@mediatek.com>
 References: <20251111070031.305281-1-jh.hsu@mediatek.com>
@@ -83,8 +84,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251110_230238_631759_D9367167 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20251110_230238_885151_B08BFCEB 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,91 +101,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for MediaTek MT6319 PMIC IC
+modify dt-binding for support mt8189 dts node of wdt
 
 Signed-off-by: Jack Hsu <jh.hsu@mediatek.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Acked-by: Guenter Roeck <linux@roeck-us.net>
 
 ---
 Changs in v7:
- - change pmic node name as "pmic@"
+ - update dt-bindings commit msg
+   (use "mt8189" instead of "mt8189 evb board")
 
 ---
- arch/arm64/boot/dts/mediatek/mt6319.dtsi | 66 ++++++++++++++++++++++++
- 1 file changed, 66 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt6319.dtsi
+ Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6319.dtsi b/arch/arm64/boot/dts/mediatek/mt6319.dtsi
-new file mode 100644
-index 000000000000..6586f0ba5b2f
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt6319.dtsi
-@@ -0,0 +1,66 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (c) 2025 MediaTek Inc.
-+ */
-+#include <dt-bindings/spmi/spmi.h>
-+
-+&spmi {
-+	mt6319_7: pmic@7 {
-+		compatible = "mediatek,mt6315-regulator";
-+		buck1-modeset-mask = <0x3>;
-+		reg = <0x7 SPMI_USID>;
-+
-+		regulators {
-+			mt6319_7_vbuck1: vbuck1 {
-+				regulator-name = "vbuck1";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+			mt6319_7_vbuck2: vbuck2 {
-+				regulator-name = "vbuck2";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+			mt6319_7_vbuck3: vbuck3 {
-+				regulator-name = "vbuck3";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+			mt6319_7_vbuck4: vbuck4 {
-+				regulator-name = "vbuck4";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+		};
-+	};
-+
-+	mt6319_8: pmic@8 {
-+		compatible = "mediatek,mt6315-regulator";
-+		buck1-modeset-mask = <0xb>;
-+		reg = <0x8 SPMI_USID>;
-+
-+		regulators {
-+			mt6319_8_vbuck1: vbuck1 {
-+				regulator-name = "vbuck1";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+			mt6319_8_vbuck2: vbuck2 {
-+				regulator-name = "vbuck2";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+			mt6319_8_vbuck3: vbuck3 {
-+				regulator-name = "vbuck3";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+			mt6319_8_vbuck4: vbuck4 {
-+				regulator-name = "vbuck4";
-+				regulator-allowed-modes = <0 1 2>;
-+				regulator-always-on;
-+			};
-+		};
-+	};
-+};
-+
+diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+index ba0bfd73ab62..a05f8155b738 100644
+--- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
++++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
+@@ -41,6 +41,7 @@ properties:
+               - mediatek,mt7623-wdt
+               - mediatek,mt7629-wdt
+               - mediatek,mt8173-wdt
++              - mediatek,mt8188-wdt
+               - mediatek,mt8365-wdt
+               - mediatek,mt8516-wdt
+           - const: mediatek,mt6589-wdt
 -- 
 2.45.2
 
