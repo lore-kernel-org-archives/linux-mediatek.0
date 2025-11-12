@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0778BCD1297
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Nov 2025 15:49:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7649FCCFA1A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Nov 2025 15:51:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BxPWeNm+YRcGsylPmhFyIf8ssMNkrL6fNFfSq61DRNY=; b=tesw9DTQB6YJ8ILAvHlge/DwP/
-	l9DzGC/zEt/xq+auDe/L8gMuqQBQU/xamW+QXXhJTd80xaioRRV2eSElo+I96btnkOS0S3hyeEzp5
-	UbPbZPZIWdOs75yZcXoUqm+aUFMQt4REtP/y4W0fAkJDiUEtHWj1FwZy5WeIjXsN+W9yzuxWYlgug
-	85W+Hao/Assicx4bUFK6MNDskDe3whmsP3PuOIOaXeeOmRIhPSacmoPUjmiQquEOGkA/JwvwkFZWp
-	46YaRo8ygz1xPyGYBusQ80u42WfobQEdh+8cCWZmrwAf8tNEQRdtj0QVuiIm+OQTSBqYSKZJ0kQNd
-	Jo5Ar1cA==;
+	bh=PE/by9xGlpliyTkU9/7ICSd2kT72lNbYlkzDGAbEjZc=; b=1sokySZ7zOxduIHXdkrzubChhf
+	Nn8OexuNbiVCM9sqorqPZZExhmMaIPhWQRQZrMk7cRO++xtMqYDx6B0zs1iUSBOK0f8BnmSWa48hx
+	317Uw0Ivszxcuo5+JJYTowyqK8+R6eZDxxsVTCM3zraT6PB4kyZz+uDSuzqCg7Yz8bdGNxgvqZEo4
+	qMs04AY20Q736qmwdsyVQwXVpMADzSxIbiyPrQOQMBUdKdpapWWq9ZTt1kqGsC4FxDRUAx7qnsw2m
+	ACghzzJfL04jLpmHT+sdi1T3IuTE80cizJzKkjbk2AmDrPNiq08YFfLjLclUVw+BcN0fReH/+N+hn
+	B6ffVYBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJD5u-000000096Un-1J36;
-	Wed, 12 Nov 2025 15:49:14 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1vJD7g-000000097hY-0yhX;
+	Wed, 12 Nov 2025 15:51:04 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJD5Y-0000000965e-0M1H;
-	Wed, 12 Nov 2025 15:48:53 +0000
+	id 1vJD7d-000000097gA-1ZmI
+	for linux-mediatek@lists.infradead.org;
+	Wed, 12 Nov 2025 15:51:02 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 864681A1A4D;
-	Wed, 12 Nov 2025 15:48:50 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id C734E4E4165B;
+	Wed, 12 Nov 2025 15:50:59 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 5A0AB6070B;
-	Wed, 12 Nov 2025 15:48:50 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 6F5A4102F192F;
-	Wed, 12 Nov 2025 16:48:45 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 89CD66070B;
+	Wed, 12 Nov 2025 15:50:59 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 36D47102F192F;
+	Wed, 12 Nov 2025 16:50:52 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1762962529; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1762962658; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=BxPWeNm+YRcGsylPmhFyIf8ssMNkrL6fNFfSq61DRNY=;
-	b=AFIU84LVCv9aPJV/SF2tYePN20e+huFLqBLkCZ+66e6kwA1D+2c2BnsoklPeHAC0VQJ9ko
-	Jt7TwxQ+npNn2lutRD3zK8ZYbXWgHWAYhpeScp8WhdWA0Yz2yXxLZoqxstpuOZAJtDSm4v
-	syciLtpAjhPCI2a6BXgejWJM24YkPPr5z95u0BXlQ1BtH9+xDFHxNAyekzrNABRoTsg5a0
-	iUz05/Qe1gycpcQVqKpsA0Ax2RE+lgvSM1PfD8jvi+ye0VjvQAlST/Xo5VlQnuw+0Jpk5s
-	tFxrS6XQXFdG+vjipIb7Is4JXA4zuHmzptCiPChilTqbIxx1CeODkYMid718TA==
-Message-ID: <4d203e8d-64ba-4b08-9152-a059426a8a79@bootlin.com>
-Date: Wed, 12 Nov 2025 16:48:45 +0100
+	bh=PE/by9xGlpliyTkU9/7ICSd2kT72lNbYlkzDGAbEjZc=;
+	b=Rf52EPAv3ODh6rEa2D+DkHboNpH9TA7v+uh/li3aVbv7fRladsDLoyJgAI6HxP3Hk6C6W5
+	IGZ+6yHtu4DrB/qEukmabXELTAlXzuXW7NIP8zBEv+3mg6jXK3TsC2OjEpapFBwbcx59wp
+	H5KNfB0Aoh+HiicSaAy45d44XDzjHuUVNMuwNKI86smm5RZdZYHRErG6gnCO+rerHPkIog
+	j/M1osJa7yPCH+GyisDOlOEHo8v5lgQVdpb6Z9MUJBQY6grbgfFIKTB4wAwSfs9tXYgXws
+	6Qucm4a2vbXwvJYZNi8zak7TKlQK8PSlvHn0POq61xAecUBw1nPWwiTJYWKI8w==
+Message-ID: <0383a8e8-1713-438e-86c6-69c8b01cfb48@bootlin.com>
+Date: Wed, 12 Nov 2025 16:50:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v2 04/13] net: stmmac: mediatek: use
- PHY_INTF_SEL_x
+Subject: Re: [PATCH net-next v2 05/13] net: stmmac: mediatek: use
+ stmmac_get_phy_intf_sel()
 To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
  Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
 Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
@@ -65,16 +66,16 @@ Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
  Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
  Paolo Abeni <pabeni@redhat.com>
 References: <aRLvrfx6tOa-RhrY@shell.armlinux.org.uk>
- <E1vIjTu-0000000DqtI-2sUB@rmk-PC.armlinux.org.uk>
+ <E1vIjTz-0000000DqtP-3N9v@rmk-PC.armlinux.org.uk>
 From: Maxime Chevallier <maxime.chevallier@bootlin.com>
 Content-Language: en-US
-In-Reply-To: <E1vIjTu-0000000DqtI-2sUB@rmk-PC.armlinux.org.uk>
+In-Reply-To: <E1vIjTz-0000000DqtP-3N9v@rmk-PC.armlinux.org.uk>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_074852_266455_F088697A 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20251112_075101_675921_AADBAE27 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,8 +93,10 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 11/11/2025 09:12, Russell King (Oracle) wrote:
-> Use PHY_INTF_SEL_x definitions for the fields that correspond to the
-> phy_intf_sel inputs to the dwmac core.
+> Use stmmac_get_phy_intf_sel() to decode the PHY interface mode to the
+> phy_intf_sel value, validate the result, and pass that into the
+> implementation specific ->dwmac_set_phy_interface() method. Use this
+> to configure the PHY interface selection field.
 > 
 > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 
@@ -102,65 +105,110 @@ Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
 Maxime
 
 > ---
->  .../ethernet/stmicro/stmmac/dwmac-mediatek.c   | 18 ++++++++----------
->  1 file changed, 8 insertions(+), 10 deletions(-)
+>  .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 43 +++++++++++--------
+>  1 file changed, 25 insertions(+), 18 deletions(-)
 > 
 > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> index f1b36f0a401d..dcdf28418fec 100644
+> index dcdf28418fec..0f32732efb75 100644
 > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
 > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> @@ -17,9 +17,6 @@
+> @@ -85,7 +85,8 @@ struct mediatek_dwmac_plat_data {
+>  };
 >  
->  /* Peri Configuration register for mt2712 */
->  #define PERI_ETH_PHY_INTF_SEL	0x418
-> -#define PHY_INTF_MII		0
-> -#define PHY_INTF_RGMII		1
-> -#define PHY_INTF_RMII		4
->  #define RMII_CLK_SRC_RXC	BIT(4)
->  #define RMII_CLK_SRC_INTERNAL	BIT(5)
+>  struct mediatek_dwmac_variant {
+> -	int (*dwmac_set_phy_interface)(struct mediatek_dwmac_plat_data *plat);
+> +	int (*dwmac_set_phy_interface)(struct mediatek_dwmac_plat_data *plat,
+> +				       u8 phy_intf_sel);
+>  	int (*dwmac_set_delay)(struct mediatek_dwmac_plat_data *plat);
 >  
-> @@ -118,16 +115,16 @@ static int mt2712_set_interface(struct mediatek_dwmac_plat_data *plat)
+>  	/* clock ids to be requested */
+> @@ -106,25 +107,25 @@ static const char * const mt8195_dwmac_clk_l[] = {
+>  	"axi", "apb", "mac_cg", "mac_main", "ptp_ref"
+>  };
+>  
+> -static int mt2712_set_interface(struct mediatek_dwmac_plat_data *plat)
+> +static int mt2712_set_interface(struct mediatek_dwmac_plat_data *plat,
+> +				u8 phy_intf_sel)
+>  {
+>  	int rmii_clk_from_mac = plat->rmii_clk_from_mac ? RMII_CLK_SRC_INTERNAL : 0;
+>  	int rmii_rxc = plat->rmii_rxc ? RMII_CLK_SRC_RXC : 0;
+> -	u32 intf_val = 0;
+> +	u32 intf_val;
+> +
+> +	intf_val = phy_intf_sel;
+>  
 >  	/* select phy interface in top control domain */
 >  	switch (plat->phy_mode) {
->  	case PHY_INTERFACE_MODE_MII:
-> -		intf_val |= PHY_INTF_MII;
-> +		intf_val |= PHY_INTF_SEL_GMII_MII;
->  		break;
+> -	case PHY_INTERFACE_MODE_MII:
+> -		intf_val |= PHY_INTF_SEL_GMII_MII;
+> -		break;
 >  	case PHY_INTERFACE_MODE_RMII:
-> -		intf_val |= (PHY_INTF_RMII | rmii_rxc | rmii_clk_from_mac);
-> +		intf_val |= PHY_INTF_SEL_RMII | rmii_rxc | rmii_clk_from_mac;
->  		break;
->  	case PHY_INTERFACE_MODE_RGMII:
->  	case PHY_INTERFACE_MODE_RGMII_TXID:
->  	case PHY_INTERFACE_MODE_RGMII_RXID:
->  	case PHY_INTERFACE_MODE_RGMII_ID:
-> -		intf_val |= PHY_INTF_RGMII;
-> +		intf_val |= PHY_INTF_SEL_RGMII;
->  		break;
->  	default:
->  		dev_err(plat->dev, "phy interface not supported\n");
-> @@ -297,17 +294,18 @@ static int mt8195_set_interface(struct mediatek_dwmac_plat_data *plat)
->  	/* select phy interface in top control domain */
->  	switch (plat->phy_mode) {
->  	case PHY_INTERFACE_MODE_MII:
-> -		intf_val |= FIELD_PREP(MT8195_ETH_INTF_SEL, PHY_INTF_MII);
-> +		intf_val |= FIELD_PREP(MT8195_ETH_INTF_SEL,
-> +				       PHY_INTF_SEL_GMII_MII);
->  		break;
->  	case PHY_INTERFACE_MODE_RMII:
-> -		intf_val |= (rmii_rxc | rmii_clk_from_mac);
-> -		intf_val |= FIELD_PREP(MT8195_ETH_INTF_SEL, PHY_INTF_RMII);
+> -		intf_val |= PHY_INTF_SEL_RMII | rmii_rxc | rmii_clk_from_mac;
 > +		intf_val |= rmii_rxc | rmii_clk_from_mac;
-> +		intf_val |= FIELD_PREP(MT8195_ETH_INTF_SEL, PHY_INTF_SEL_RMII);
 >  		break;
+> +	case PHY_INTERFACE_MODE_MII:
 >  	case PHY_INTERFACE_MODE_RGMII:
 >  	case PHY_INTERFACE_MODE_RGMII_TXID:
 >  	case PHY_INTERFACE_MODE_RGMII_RXID:
 >  	case PHY_INTERFACE_MODE_RGMII_ID:
-> -		intf_val |= FIELD_PREP(MT8195_ETH_INTF_SEL, PHY_INTF_RGMII);
-> +		intf_val |= FIELD_PREP(MT8195_ETH_INTF_SEL, PHY_INTF_SEL_RGMII);
+> -		intf_val |= PHY_INTF_SEL_RGMII;
 >  		break;
 >  	default:
 >  		dev_err(plat->dev, "phy interface not supported\n");
+> @@ -285,27 +286,25 @@ static const struct mediatek_dwmac_variant mt2712_gmac_variant = {
+>  		.tx_delay_max = 17600,
+>  };
+>  
+> -static int mt8195_set_interface(struct mediatek_dwmac_plat_data *plat)
+> +static int mt8195_set_interface(struct mediatek_dwmac_plat_data *plat,
+> +				u8 phy_intf_sel)
+>  {
+>  	int rmii_clk_from_mac = plat->rmii_clk_from_mac ? MT8195_RMII_CLK_SRC_INTERNAL : 0;
+>  	int rmii_rxc = plat->rmii_rxc ? MT8195_RMII_CLK_SRC_RXC : 0;
+> -	u32 intf_val = 0;
+> +	u32 intf_val;
+> +
+> +	intf_val = FIELD_PREP(MT8195_ETH_INTF_SEL, phy_intf_sel);
+>  
+>  	/* select phy interface in top control domain */
+>  	switch (plat->phy_mode) {
+> -	case PHY_INTERFACE_MODE_MII:
+> -		intf_val |= FIELD_PREP(MT8195_ETH_INTF_SEL,
+> -				       PHY_INTF_SEL_GMII_MII);
+> -		break;
+>  	case PHY_INTERFACE_MODE_RMII:
+>  		intf_val |= rmii_rxc | rmii_clk_from_mac;
+> -		intf_val |= FIELD_PREP(MT8195_ETH_INTF_SEL, PHY_INTF_SEL_RMII);
+>  		break;
+> +	case PHY_INTERFACE_MODE_MII:
+>  	case PHY_INTERFACE_MODE_RGMII:
+>  	case PHY_INTERFACE_MODE_RGMII_TXID:
+>  	case PHY_INTERFACE_MODE_RGMII_RXID:
+>  	case PHY_INTERFACE_MODE_RGMII_ID:
+> -		intf_val |= FIELD_PREP(MT8195_ETH_INTF_SEL, PHY_INTF_SEL_RGMII);
+>  		break;
+>  	default:
+>  		dev_err(plat->dev, "phy interface not supported\n");
+> @@ -525,10 +524,18 @@ static int mediatek_dwmac_init(struct device *dev, void *priv)
+>  {
+>  	struct mediatek_dwmac_plat_data *plat = priv;
+>  	const struct mediatek_dwmac_variant *variant = plat->variant;
+> -	int ret;
+> +	int phy_intf_sel, ret;
+>  
+>  	if (variant->dwmac_set_phy_interface) {
+> -		ret = variant->dwmac_set_phy_interface(plat);
+> +		phy_intf_sel = stmmac_get_phy_intf_sel(plat->phy_mode);
+> +		if (phy_intf_sel != PHY_INTF_SEL_GMII_MII &&
+> +		    phy_intf_sel != PHY_INTF_SEL_RGMII &&
+> +		    phy_intf_sel != PHY_INTF_SEL_RMII) {
+> +			dev_err(plat->dev, "phy interface not supported\n");
+> +			return phy_intf_sel < 0 ? phy_intf_sel : -EINVAL;
+> +		}
+> +
+> +		ret = variant->dwmac_set_phy_interface(plat, phy_intf_sel);
+>  		if (ret) {
+>  			dev_err(dev, "failed to set phy interface, err = %d\n", ret);
+>  			return ret;
 
 
