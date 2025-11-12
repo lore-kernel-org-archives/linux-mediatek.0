@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D66D7CCF9F8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Nov 2025 11:44:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF1F1CCFA1A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Nov 2025 11:44:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PqcNz4HKTk3vk79L2kJ7CqciZF1EYNpCBdO5h+BcRSQ=; b=Jja2CcAqR2tqENFZWSciMWzkJT
-	mnWJHO2ez8PfjkQKQAFePxidacQUzhGDBUs1X5YVHWotYRwM0Kvpqok38PC99ET1FQWPZ7ahTVb8f
-	FUHxiF1mlJbggLwX4AKDBx+x9sZpfmzBC2UzRvRWpMsqTIR2nqRbLvjRj8TIqBnf1kDcPBarm60QY
-	Sgkp/uByj8mwzdpoRoJ0aWsvxqHUL7IwrXV20lQKsla/6AJXyivbM0wNMpRDMbP1af4+We4AVSPM+
-	0VuQ/ISx19RCkT+EY5nFgPEzBrykPsxzgINOTvNx225Lm70bQu12kxmDOTKj4kbx3WtaQTE5Jzh2u
-	9BVg61xQ==;
+	bh=QKgaSkF+k3mY/hULbLxymRAlK/NuMjI55QLJ4A12SO8=; b=cbljuHPeEzyRs026eEB0CwhBN5
+	M1J9PyaMDYC1981BLl1+Nj0VOODeZQuYTFV4sIaz2dh07I8A+HOnQVLpkxKtDo8McfkN5VuuXpAqh
+	XdRp1dGoozlP74Ncagy9ZCyipiO5+r05s9DcVbq9Pgbi0yorJZBx4UZT1wB04wqXqq0iDOFH80c7E
+	Fse8MRGhDLHsTgJxgAUmya+VP4BYwFkxTMdccYMA96pFWKZed2TVNhlYnlk9se6GDNbEZneJLymjp
+	KIp31XS8d053vMXYhax4wWisLPKuPDnEsWUDNAkCsOshd0Rbj15wKepOmpZ5rtjpJ+R/QcxEypUTq
+	km6BdT7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ9HE-00000008hx5-0FKJ;
-	Wed, 12 Nov 2025 11:44:40 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vJ9HI-00000008i0Y-3mTQ;
+	Wed, 12 Nov 2025 11:44:44 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ9HA-00000008hub-1LCY;
-	Wed, 12 Nov 2025 11:44:38 +0000
+	id 1vJ9HC-00000008hvM-3ABv;
+	Wed, 12 Nov 2025 11:44:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762947874;
-	bh=/wmc1nvaEZ1gZ+YbHmL9cMGHJGbAlywM2NFI5baKvfM=;
+	s=mail; t=1762947875;
+	bh=7mKif5pqjxpkqnqS0LC40rG7B6pAHBIJfmIq7Th/j8w=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SDXA+L+K+W0lcl1zTrtbjIqI5psxaAo6So2ct0Hf6UqtjiOTRqdFs7PgVvXaLVIMs
-	 ffld+wqvVCa10q4EI9CeyWiGdAPFzh1XtKgedmAHIZHTZZeAAGVUeO2rNqOznW215G
-	 b3ZFb0vf3xR4l0C0zI0NAMcyxuB/2NFcp9msWoyKEek+ieOV2uGBixKlGvqQB3ftS8
-	 3YpUPnPDFeeW6Z8kIMd1KIfYvFU4yQemNsxx+Qaw44sitbdv2NoRxBNj3BRPHzqP5/
-	 aMlFB61Tat/BruSkLJEA0eti+QLV4jH+FPz0OeR83T7NnriDCPh3LHozqUw+MDLmkX
-	 xNmCYWqhAedbQ==
+	b=cf/DtaJBpL+f2ySHHd7pUhVZ74WIa3/DUsvE5BYZG+M7yYyHYdb7UGjTwJoMs8koj
+	 mWTTjlmqousUbrJsHtrwwAzTV1p2L6GnoBbUrK2iwi84zNc/+Ylva08aTFGiOz7zGO
+	 Hhy9rIa5nshA/MRVkx7MeUFVd0Q97QjxKg4WlazY9Gi9V11iFkwzVtSAI9BoW88twh
+	 rcD8iAAFgT64YAQdcnLd2kzRwZm+YC1YtOsUvCzdPUwfOpqTXON9a30XFBBWIYLBem
+	 RazY1x+l9uV4NHb7utXgQOuYBt9BnCHvPXtDWQrJAOdukvFCx62BVDTyucRz5fXmt0
+	 dcXaoBG6uuNSw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 933CE17E12E5;
-	Wed, 12 Nov 2025 12:44:32 +0100 (CET)
-Message-ID: <4cac7e07-d6a5-474b-83ef-ef4e096911d0@collabora.com>
-Date: Wed, 12 Nov 2025 12:44:32 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 26A2117E1341;
+	Wed, 12 Nov 2025 12:44:34 +0100 (CET)
+Message-ID: <4c201570-5dd3-45fd-8db7-9e03342a2a43@collabora.com>
+Date: Wed, 12 Nov 2025 12:44:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 05/11] cpuidle: big_little: Simplify with
- of_machine_device_match()
+Subject: Re: [PATCH v2 03/11] cpufreq: mediatek: Simplify with
+ of_machine_get_match_data()
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
  Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
  "Rafael J. Wysocki" <rafael@kernel.org>,
@@ -75,15 +75,15 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, platform-driver-x86@vger.kernel.org,
  linux-tegra@vger.kernel.org
 References: <20251112-b4-of-match-matchine-data-v2-0-d46b72003fd6@linaro.org>
- <20251112-b4-of-match-matchine-data-v2-5-d46b72003fd6@linaro.org>
+ <20251112-b4-of-match-matchine-data-v2-3-d46b72003fd6@linaro.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20251112-b4-of-match-matchine-data-v2-5-d46b72003fd6@linaro.org>
+In-Reply-To: <20251112-b4-of-match-matchine-data-v2-3-d46b72003fd6@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_034436_512421_38AEA5D5 
-X-CRM114-Status: UNSURE (   6.31  )
+X-CRM114-CacheID: sfid-20251112_034438_971320_C81E18D7 
+X-CRM114-Status: UNSURE (   6.84  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,12 +100,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 12/11/25 11:28, Krzysztof Kozlowski ha scritto:
-> Replace open-coded getting root OF node and matching against it with
-> new of_machine_device_match() helper.
+> Replace open-coded getting root OF node, matching against it and getting
+> the match data with new of_machine_get_match_data() helper.
 > 
+> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
 
