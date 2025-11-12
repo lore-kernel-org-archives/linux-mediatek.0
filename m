@@ -4,87 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62962CCF9F8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Nov 2025 13:06:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1013ACD1297
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Nov 2025 15:46:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KJmj5fQs6js8DPEkDWxWh0SpOhOreJFftTCYU+pcBQ8=; b=gKpMfnUSRz5Kd4baLd5M4etJbL
-	B7kL4b9AkCng+6Fwe4q8reggvf4H+ZdW8MmHP86iZMHCqGSFQbfy39BUj4GXt190qims/5OSi0hoB
-	AaSzgs4M4Bxeg4Qjv6GB9PmKtMMQudl2th9AnqmJ/wfjpKzwFidqK7aOJbSpxh+FD+5FliQfZMvbO
-	k9Sksv4kXr1gx3g6AjURpXkggX3B0ydHpOB8mjVuDdg529unzbNqfaSY001JOlOzlSvV4pn3HjFoA
-	EeZYCrUn2V9+L7dKP1cFvJlecQXsFWmJPab3eC25799hNOxKxAAyxl4ZFM4IPWfDhOeGpZwUajv/z
-	cjF5giRw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cF0rJjJI4tWYdSogXLc0tqn+luRhJBK7q0bCFBP3A48=; b=FMdAKa5lw7EHC21/0AXMNQ2iq9
+	wSVn+2VRSQ7GOmXgfGWihNJ6vtBWzH8tzdfp245gTY44zOdWM5yvC4YLedFN+af67AVQz4xEcF+jC
+	4e2F31ZZZ5iD3p3PwhtNHiRcEeT4foUPP9bBexKiw4uzCs/qCzT9xgm7juwKF0RYAHXwXtlF6X4un
+	92HEvVBwLbTfh7OXSBf1ScWAEwB9AYFWTLcmr8DVS+I3xKccwN1gPonsJXdEFOjyckJyA2kaTlMqe
+	pVa4V70We/zNozfVto7FXCGV1sp/m56JcbqRbByPJROaBW7ALvMa71H9hqI9gtB8XDHJvJ+hLekRn
+	4UqG0X4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJAYk-00000008ohU-3alW;
-	Wed, 12 Nov 2025 13:06:50 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1vJD3W-000000095Wu-2ZXT;
+	Wed, 12 Nov 2025 15:46:46 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJAYg-00000008ofq-2mmj
+	id 1vJD3T-000000095WE-1Ya1
 	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Nov 2025 13:06:49 +0000
+	Wed, 12 Nov 2025 15:46:45 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 04108C0F556;
-	Wed, 12 Nov 2025 13:06:20 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id EF7BC1A1A4B;
+	Wed, 12 Nov 2025 15:46:39 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 7DA2F6070B;
-	Wed, 12 Nov 2025 13:06:41 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id BD0FE102F16E2;
-	Wed, 12 Nov 2025 14:06:32 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id C0E456070B;
+	Wed, 12 Nov 2025 15:46:39 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 1946C102F1C26;
+	Wed, 12 Nov 2025 16:46:26 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1762952799; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 in-reply-to:references; bh=KJmj5fQs6js8DPEkDWxWh0SpOhOreJFftTCYU+pcBQ8=;
-	b=NdqYIgXdiPgo1ApRvQNGKDs2APPqWG511zKG0iqoRl1PuluJCiEjN12pdh/SawE8qhiIjt
-	YpYPEy6bGhuDeGiqOrbk4/RkY/XG7ZQzzRHK0MvRmdmCB/PCig3JXsfSOcAhbhU60ZjMPO
-	2RrW4JzhhSyi7WQoFFSCldTcnhSYwiiG3LSTGSMsqr+KSfkVc4BP/i1yr9D3WgkfBQ/50u
-	ZG9CV/QU6Ibp53/vJ8wai3bk8uFJU+WIolP3Yq1cF1TpNzZVGZDMb84yiPgBpy2n4oQj9J
-	bIvTadDnU5ynVGLKoqxRI6zxGgpelxrxkw3f4dYrdFzXkMC9HRwKPuz7fQm1Sw==
-Date: Wed, 12 Nov 2025 14:06:32 +0100
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Viresh Kumar <viresh.kumar@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Yangtao Li <tiny.windzz@gmail.com>, Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Maximilian Luz <luzmaximilian@gmail.com>,
-	Hans de Goede <hansg@kernel.org>,
-	Ilpo =?iso-8859-1?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>,
-	Daniel Lezcano <daniel.lezcano@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-arm-msm@vger.kernel.org, platform-driver-x86@vger.kernel.org,
-	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v2 07/11] irqchip/atmel-aic: Simplify with
- of_machine_get_match_data()
-Message-ID: <202511121306329b57d6ee@mail.local>
-References: <20251112-b4-of-match-matchine-data-v2-0-d46b72003fd6@linaro.org>
- <20251112-b4-of-match-matchine-data-v2-7-d46b72003fd6@linaro.org>
+	t=1762962398; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=cF0rJjJI4tWYdSogXLc0tqn+luRhJBK7q0bCFBP3A48=;
+	b=eySDEjQmTYwi4hV/GI8oe0oOfuB4w3piugQQhn9HLSJu/iIGECK1sH2BE9C3rJNffTJTkS
+	IyslYBrFKrZ80g7jNfIIaJO0QAMy7wZbxcN17QPI0An42QRnJQ39wT+DjOUqxGia03tNbh
+	VK97KbTslzXausYPB12MP7d3Z9n7UiY73Stixcd9TQrcJ0Jw/L8cNY12+gBXxNROw4hsjU
+	mZ5hkD+8XkOtqTb5FdZc0tFFxfqBR/T14zMRm5qBcMzoBNVnfuBtaxRjt/7L75gWB1nsV6
+	TZIImkkN9DcrJeV9TivVQcashNB7Foo33z33h4aShVHWH59Ef01FB8F3pLDfTg==
+Message-ID: <7243ff3e-839f-4ea4-9470-1a16f506b4bc@bootlin.com>
+Date: Wed, 12 Nov 2025 16:46:26 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251112-b4-of-match-matchine-data-v2-7-d46b72003fd6@linaro.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v2 01/13] net: stmmac: loongson1: use
+ PHY_INTF_SEL_x
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+ Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Emil Renner Berthing <kernel@esmil.dk>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Keguang Zhang <keguang.zhang@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-mips@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Minda Chen <minda.chen@starfivetech.com>, netdev@vger.kernel.org,
+ Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
+ Paolo Abeni <pabeni@redhat.com>
+References: <aRLvrfx6tOa-RhrY@shell.armlinux.org.uk>
+ <E1vIjTf-0000000Dqt0-1CZg@rmk-PC.armlinux.org.uk>
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Content-Language: en-US
+In-Reply-To: <E1vIjTf-0000000Dqt0-1CZg@rmk-PC.armlinux.org.uk>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_050646_850822_1EEF5FCF 
-X-CRM114-Status: GOOD (  17.17  )
+X-CRM114-CacheID: sfid-20251112_074643_569170_CAC28D63 
+X-CRM114-Status: UNSURE (   4.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,57 +91,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/11/2025 11:28:52+0100, Krzysztof Kozlowski wrote:
-> Replace open-coded getting root OF node, matching against it and getting
-> the match data with new of_machine_get_match_data() helper.
-> 
-> Acked-by: Nicolas Ferre <nicolas.ferre@microchip.com>
-> Acked-by: Thomas Gleixner <tglx@linutronix.de>
-Reviewed-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
-> 
-> Depends on the first OF patch.
-> ---
->  drivers/irqchip/irq-atmel-aic-common.c | 15 +++------------
->  1 file changed, 3 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/irqchip/irq-atmel-aic-common.c b/drivers/irqchip/irq-atmel-aic-common.c
-> index 3cad30a40c19..e68853815c7a 100644
-> --- a/drivers/irqchip/irq-atmel-aic-common.c
-> +++ b/drivers/irqchip/irq-atmel-aic-common.c
-> @@ -187,20 +187,11 @@ void __init aic_common_rtt_irq_fixup(void)
->  
->  static void __init aic_common_irq_fixup(const struct of_device_id *matches)
->  {
-> -	struct device_node *root = of_find_node_by_path("/");
-> -	const struct of_device_id *match;
-> +	void (*fixup)(void);
->  
-> -	if (!root)
-> -		return;
-> -
-> -	match = of_match_node(matches, root);
-> -
-> -	if (match) {
-> -		void (*fixup)(void) = match->data;
-> +	fixup = of_machine_get_match_data(matches);
-> +	if (fixup)
->  		fixup();
-> -	}
-> -
-> -	of_node_put(root);
->  }
->  
->  struct irq_domain *__init aic_common_of_init(struct device_node *node,
-> 
-> -- 
-> 2.48.1
-> 
 
--- 
-Alexandre Belloni, co-owner and COO, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+On 11/11/2025 09:11, Russell King (Oracle) wrote:
+> Use PHY_INTF_SEL_x definitions for phy_intf_sel bitfield.
+> 
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+
+Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
+
+Maxime
 
