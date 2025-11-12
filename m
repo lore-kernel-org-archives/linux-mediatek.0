@@ -4,77 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A6DFCCFA1A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Nov 2025 15:52:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69097CD3438
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Nov 2025 18:44:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r4KXq6vkaTt39JXbcQflKkjoNE2v/KM+S0WlsXZAnWY=; b=ZIShP0lEkNQ2yVD7zOWG3o5s7w
-	21BXrUonEg/YfDD7T5CiHzr72chFt65S5WwfUsI0nXEQy1PJ53+5e7pgTHfja0EgqznOLTHtxWnRG
-	GkD+F6GdBWHOGmox4DylHdh/uNF1MBcxFInWogtlo6SH9b/6FfQ9Ar3FX+aGQncoYszH0nQxZdIa1
-	Ms7c9YAa5J22E2Q3GJXBOdAqH9xQV2hc2kmMGZK6/cclgKgs1hVdXvhbd9oyJ3q7OO1qxKk2/PY0u
-	76eC1cK4ju5NZDvDcJlJ1sdmI+F7OfIDAiVkFCpkrhUhgOSVtMs/Z63meN7NufNm1ZlZyqgb4sy/x
-	Vy9phzQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TpWDz2CP+X9nGGLnLXUARBiwQAPrqWu8Jn1ZRGxzdHs=; b=LCFdZYk0/ZIzeloZf+veu2XHts
+	qaOuXTM9f/gyQ5qB4ORh4AJQmisGbg9lry/gyMXG2d3Q+GLIf/1AZvhLr3+JGrSjjjFru7IzfWKY3
+	XeTle7diRXz14k1xude3SCzi1j17MwY20e4Z2sGpD7ohOI92yhKnVCqqGBCcxXsckxnXVoVua3IhK
+	6BL/UcNoV1tZf9u1J72pSA+Txnd/YIEbF4oVhzs3OsELbAy8Itgjd79b/MPMFtM3scGhIKUMj5qDV
+	mkfdD/lG5talfA/koZ2pzqDp3gJ+EPntBgQF8zBNcPsUjbnAdKJL0z9AzBjNOgi7RlH8AO22pex50
+	uEwCGy8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJD9B-0000000981Y-3KXb;
-	Wed, 12 Nov 2025 15:52:37 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1vJFph-00000009NiU-27Ou;
+	Wed, 12 Nov 2025 18:44:41 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJD98-0000000980Q-2U39;
-	Wed, 12 Nov 2025 15:52:36 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id E69621A1A2E;
-	Wed, 12 Nov 2025 15:52:32 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id B917D6070B;
-	Wed, 12 Nov 2025 15:52:32 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 14C42102F1C6A;
-	Wed, 12 Nov 2025 16:52:23 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1762962751; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=r4KXq6vkaTt39JXbcQflKkjoNE2v/KM+S0WlsXZAnWY=;
-	b=mH4S60asMSlrYa5LEl6HMPEaLrLHp3nTRcdY789GHstthPo+1ZKZOasDuBrvb/B7xSIJEn
-	gLzFsmmQ0/YWMUZHd/Z8nE9LwO7kahUfw3IPS08jPLIbyJ1yFIKoMI2HU9OGN5Vztdt57z
-	obPJXopwHPqceIemoztIMNv9uBZZYwgqEEGBlbSxJkL78OokCAW/aHVsokKNEOg1DXfpY4
-	SqWYxCOGnZoqaZ9zVjUpQxVeBTpLPYJ0PY4dkUZ6rS3UkYEtghKVjpNqjJgew8uhSYn1Fa
-	ljP0wuCUmm4Jp1567gNaGadL5i/B1bXOwL1NTRRMtnsEKZp0j9AqTV3k5nc9cA==
-Message-ID: <a4dfe008-a7e2-4323-bed5-a444dcc6aa3d@bootlin.com>
-Date: Wed, 12 Nov 2025 16:52:23 +0100
+	id 1vJFpg-00000009NiE-101w;
+	Wed, 12 Nov 2025 18:44:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 505AC601B9;
+	Wed, 12 Nov 2025 18:44:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 961ACC4AF09;
+	Wed, 12 Nov 2025 18:44:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1762973079;
+	bh=055fA2CcwKNGCqakO62I6DCYxSUugUIeFCK4IyWOGVg=;
+	h=From:Date:Subject:To:Cc:From;
+	b=A995IPFpTapVlJqGhwaAGw7ocQ0uSewMFDBBtyk/BARi8MMR+cA6dsgCYGiNXIE92
+	 QdoFNxhg6k4otIJmkKSGNernxl7SW5/5f4/BCgg9532ZL/JaEtqWDXzwAZrS4rah8L
+	 +aJrO/gdz4vp9iKRGafW6voDJ3QD1ETuJiQG14wO43H2Dao2q9bRva+QSC4X3+rsT6
+	 ezgXhParowvCx/yKoCVXDjdfIs26fpujzTVG7+zj41pLJwPDOa5VAKH3zAEfpoQL9x
+	 2j6MrBHdg7iBpgj6BOc+gr1mZf3VLDhlHWhq7RovvvLOCSZAYFIIJe4a6aqOUdOI05
+	 UGCRHep8+/4rA==
+From: Nathan Chancellor <nathan@kernel.org>
+Date: Wed, 12 Nov 2025 11:44:30 -0700
+Subject: [PATCH] pinctrl: airoha: Fix AIROHA_PINCTRL_CONFS_DRIVE_E2 in
+ an7583_pinctrl_match_data
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v2 06/13] net: stmmac: mediatek: simplify
- set_interface() methods
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
- Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "David S. Miller" <davem@davemloft.net>,
- Emil Renner Berthing <kernel@esmil.dk>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Keguang Zhang <keguang.zhang@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-mips@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Minda Chen <minda.chen@starfivetech.com>, netdev@vger.kernel.org,
- Nobuhiro Iwamatsu <nobuhiro.iwamatsu.x90@mail.toshiba>,
- Paolo Abeni <pabeni@redhat.com>
-References: <aRLvrfx6tOa-RhrY@shell.armlinux.org.uk>
- <E1vIjU4-0000000DqtV-3qsX@rmk-PC.armlinux.org.uk>
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Content-Language: en-US
-In-Reply-To: <E1vIjU4-0000000DqtV-3qsX@rmk-PC.armlinux.org.uk>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_075234_771046_5DDFC796 
-X-CRM114-Status: GOOD (  16.96  )
+Message-Id: <20251112-pinctrl-airoha-fix-an7583-drive-e2-confg-usage-v1-1-d2550d55e988@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAI3VFGkC/x2NQQrCMBAAv1L27EKSGhS/Ih426aZdkE3ZaBFK/
+ 97gcQ4zs0NjE27wGHYw3qRJ1Q7+MkBeSGdGmTpDcCF67wOuovljbySxuhAW+SHpLd5HnEw2Rg6
+ Yq5YZv426nVK55lKCS9FBj67GXfkPn6/jOAGR+b8jgAAAAA==
+X-Change-ID: 20251112-pinctrl-airoha-fix-an7583-drive-e2-confg-usage-bbf4cff20b50
+To: Linus Walleij <linus.walleij@linaro.org>, 
+ Christian Marangi <ansuelsmth@gmail.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, llvm@lists.linux.dev, 
+ patches@lists.linux.dev, Nathan Chancellor <nathan@kernel.org>
+X-Mailer: b4 0.15-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1870; i=nathan@kernel.org;
+ h=from:subject:message-id; bh=055fA2CcwKNGCqakO62I6DCYxSUugUIeFCK4IyWOGVg=;
+ b=owGbwMvMwCUmm602sfCA1DTG02pJDJkiV6fY70/MEmkRqhM71vLBzL0kvufblMQer7viT7N6H
+ zO2xYl3lLIwiHExyIopslQ/Vj1uaDjnLOONU5Ng5rAygQxh4OIUgIn84GVkWLlfgW3R/fOeiTdq
+ 54Vzn2Wf+df0bOzvrqrujLPak2fnazMyXOJbaVHMqD7nyLf2SH/N7Nkiu00XX1khNe2n8b9dXP6
+ ybAA=
+X-Developer-Key: i=nathan@kernel.org; a=openpgp;
+ fpr=2437CB76E544CB6AB3D9DFD399739260CB6CB716
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,94 +84,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Clang warns (or errors with CONFIG_WERROR=y / W=e):
 
+  pinctrl/mediatek/pinctrl-airoha.c:2064:41: error: variable 'an7583_pinctrl_drive_e2_conf' is not needed and will not be emitted [-Werror,-Wunneeded-internal-declaration]
+   2064 | static const struct airoha_pinctrl_conf an7583_pinctrl_drive_e2_conf[] = {
+        |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-On 11/11/2025 09:12, Russell King (Oracle) wrote:
-> Use the phy_intf_sel field value when deciding what other options to
-> apply for the configuration register.
-> 
-> Note that this will allow GMII as well as MII as the phy_intf_sel
-> value is the same for both.
-> 
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Due to a typo, an7583_pinctrl_drive_e2_conf is only used within
+ARRAY_SIZE() (hence no instance of -Wunused-variable), which is
+evaluated at compile time, so it will not be needed in the final object
+file.
 
-Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Fix the .confs assignment for AIROHA_PINCTRL_CONFS_DRIVE_E2 in
+an7583_pinctrl_match_data to clear up the warning.
 
-Maxime
+Closes: https://github.com/ClangBuiltLinux/linux/issues/2142
+Fixes: 3ffeb17a9a27 ("pinctrl: airoha: add support for Airoha AN7583 PINs")
+Signed-off-by: Nathan Chancellor <nathan@kernel.org>
+---
+ drivers/pinctrl/mediatek/pinctrl-airoha.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> ---
->  .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 50 +++++--------------
->  1 file changed, 12 insertions(+), 38 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> index 0f32732efb75..1f2d7d19ca56 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> @@ -110,26 +110,13 @@ static const char * const mt8195_dwmac_clk_l[] = {
->  static int mt2712_set_interface(struct mediatek_dwmac_plat_data *plat,
->  				u8 phy_intf_sel)
->  {
-> -	int rmii_clk_from_mac = plat->rmii_clk_from_mac ? RMII_CLK_SRC_INTERNAL : 0;
-> -	int rmii_rxc = plat->rmii_rxc ? RMII_CLK_SRC_RXC : 0;
-> -	u32 intf_val;
-> +	u32 intf_val = phy_intf_sel;
->  
-> -	intf_val = phy_intf_sel;
-> -
-> -	/* select phy interface in top control domain */
-> -	switch (plat->phy_mode) {
-> -	case PHY_INTERFACE_MODE_RMII:
-> -		intf_val |= rmii_rxc | rmii_clk_from_mac;
-> -		break;
-> -	case PHY_INTERFACE_MODE_MII:
-> -	case PHY_INTERFACE_MODE_RGMII:
-> -	case PHY_INTERFACE_MODE_RGMII_TXID:
-> -	case PHY_INTERFACE_MODE_RGMII_RXID:
-> -	case PHY_INTERFACE_MODE_RGMII_ID:
-> -		break;
-> -	default:
-> -		dev_err(plat->dev, "phy interface not supported\n");
-> -		return -EINVAL;
-> +	if (phy_intf_sel == PHY_INTF_SEL_RMII) {
-> +		if (plat->rmii_clk_from_mac)
-> +			intf_val |= RMII_CLK_SRC_INTERNAL;
-> +		if (plat->rmii_rxc)
-> +			intf_val |= RMII_CLK_SRC_RXC;
->  	}
->  
->  	regmap_write(plat->peri_regmap, PERI_ETH_PHY_INTF_SEL, intf_val);
-> @@ -289,26 +276,13 @@ static const struct mediatek_dwmac_variant mt2712_gmac_variant = {
->  static int mt8195_set_interface(struct mediatek_dwmac_plat_data *plat,
->  				u8 phy_intf_sel)
->  {
-> -	int rmii_clk_from_mac = plat->rmii_clk_from_mac ? MT8195_RMII_CLK_SRC_INTERNAL : 0;
-> -	int rmii_rxc = plat->rmii_rxc ? MT8195_RMII_CLK_SRC_RXC : 0;
-> -	u32 intf_val;
-> +	u32 intf_val = FIELD_PREP(MT8195_ETH_INTF_SEL, phy_intf_sel);
->  
-> -	intf_val = FIELD_PREP(MT8195_ETH_INTF_SEL, phy_intf_sel);
-> -
-> -	/* select phy interface in top control domain */
-> -	switch (plat->phy_mode) {
-> -	case PHY_INTERFACE_MODE_RMII:
-> -		intf_val |= rmii_rxc | rmii_clk_from_mac;
-> -		break;
-> -	case PHY_INTERFACE_MODE_MII:
-> -	case PHY_INTERFACE_MODE_RGMII:
-> -	case PHY_INTERFACE_MODE_RGMII_TXID:
-> -	case PHY_INTERFACE_MODE_RGMII_RXID:
-> -	case PHY_INTERFACE_MODE_RGMII_ID:
-> -		break;
-> -	default:
-> -		dev_err(plat->dev, "phy interface not supported\n");
-> -		return -EINVAL;
-> +	if (phy_intf_sel == PHY_INTF_SEL_RMII) {
-> +		if (plat->rmii_clk_from_mac)
-> +			intf_val |= MT8195_RMII_CLK_SRC_INTERNAL;
-> +		if (plat->rmii_rxc)
-> +			intf_val |= MT8195_RMII_CLK_SRC_RXC;
->  	}
->  
->  	/* MT8195 only support external PHY */
+diff --git a/drivers/pinctrl/mediatek/pinctrl-airoha.c b/drivers/pinctrl/mediatek/pinctrl-airoha.c
+index bfcedc7f920b..706532a820b0 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-airoha.c
++++ b/drivers/pinctrl/mediatek/pinctrl-airoha.c
+@@ -2993,7 +2993,7 @@ static const struct airoha_pinctrl_match_data an7583_pinctrl_match_data = {
+ 			.num_confs = ARRAY_SIZE(an7583_pinctrl_pulldown_conf),
+ 		},
+ 		[AIROHA_PINCTRL_CONFS_DRIVE_E2] = {
+-			.confs = en7581_pinctrl_drive_e2_conf,
++			.confs = an7583_pinctrl_drive_e2_conf,
+ 			.num_confs = ARRAY_SIZE(an7583_pinctrl_drive_e2_conf),
+ 		},
+ 		[AIROHA_PINCTRL_CONFS_DRIVE_E4] = {
+
+---
+base-commit: 57916750bc0886917ea2c6209ca6a56acb7b8182
+change-id: 20251112-pinctrl-airoha-fix-an7583-drive-e2-confg-usage-bbf4cff20b50
+
+Best regards,
+--  
+Nathan Chancellor <nathan@kernel.org>
 
 
