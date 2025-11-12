@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390C3CCFA1A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D66D7CCF9F8
 	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Nov 2025 11:44:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,42 +12,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y4WHwJUmlePCiEAC3DPy3BCfyYvs2Uy1/VTEBeoDePI=; b=okXWonem9bEWhHOwoNOnPqOeq9
-	rFkO53tUMj+j0Ja/muMeL9r9kTWkMoegf5A1IdZZ+FhqubnQ02SOHA1IqSfg7RpiyBs5wcOSdB4ap
-	E/e3jWliKXtEsTVmZseWaC+k24tnzXgCiSM549l5FW5pi8apnFpXW0hn/cl+50otkjawceZCeLhiA
-	G2wMEqruUsToXCqd6BBTpljm4SVZV0GRNt7Le3WSFtD9L2KTDPq2gZqotH5Uwi87fNHZffLqDkpid
-	wScM9Kmmv7HU4lBQmiNmJQS3HeCqC6BWTRwsltUPeSAGZKSW2QcJkdjX/w01kIeP1BB7x3mk3L266
-	nL8JWMbw==;
+	bh=PqcNz4HKTk3vk79L2kJ7CqciZF1EYNpCBdO5h+BcRSQ=; b=Jja2CcAqR2tqENFZWSciMWzkJT
+	mnWJHO2ez8PfjkQKQAFePxidacQUzhGDBUs1X5YVHWotYRwM0Kvpqok38PC99ET1FQWPZ7ahTVb8f
+	FUHxiF1mlJbggLwX4AKDBx+x9sZpfmzBC2UzRvRWpMsqTIR2nqRbLvjRj8TIqBnf1kDcPBarm60QY
+	Sgkp/uByj8mwzdpoRoJ0aWsvxqHUL7IwrXV20lQKsla/6AJXyivbM0wNMpRDMbP1af4+We4AVSPM+
+	0VuQ/ISx19RCkT+EY5nFgPEzBrykPsxzgINOTvNx225Lm70bQu12kxmDOTKj4kbx3WtaQTE5Jzh2u
+	9BVg61xQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ9HD-00000008hwW-1we3;
-	Wed, 12 Nov 2025 11:44:39 +0000
+	id 1vJ9HE-00000008hx5-0FKJ;
+	Wed, 12 Nov 2025 11:44:40 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ9HA-00000008huZ-12Rp;
+	id 1vJ9HA-00000008hub-1LCY;
 	Wed, 12 Nov 2025 11:44:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1762947872;
-	bh=T/3f2aH4OlFw/lLjeQrh+LUIMpt0NqIajGPJMFGS/xM=;
+	s=mail; t=1762947874;
+	bh=/wmc1nvaEZ1gZ+YbHmL9cMGHJGbAlywM2NFI5baKvfM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HDyiKCrWYa7YuVZkprl1h9/2UwefZKbnbSHEJBtlKGb27Y/rdSpmZ1p0CaVOiGolw
-	 27G6PajNHsfMo5C1AYZxQK84XKeojTKNfkMM99dPvJYPoxcV9kvGJQCAcwQ7rDJPXE
-	 1wrXT+vq7eoRrAWQ0cIogYvPSA7dslEzJAxdc05K7agpJqAs2Qb+6tJcr6Gxym35XM
-	 KpCo51S/SUdtnMl92hmumkrC9veferld3nIwKWh9nlBrsGQ5lrWTqIs/sJh/Ha45Gt
-	 t2506BZE51fZItv4ZdghI+2+XI94Kmenq26eu3fC+ijTvwDP9Xp+/diii9JXsag0Sr
-	 nGyxCZmGHEl8g==
+	b=SDXA+L+K+W0lcl1zTrtbjIqI5psxaAo6So2ct0Hf6UqtjiOTRqdFs7PgVvXaLVIMs
+	 ffld+wqvVCa10q4EI9CeyWiGdAPFzh1XtKgedmAHIZHTZZeAAGVUeO2rNqOznW215G
+	 b3ZFb0vf3xR4l0C0zI0NAMcyxuB/2NFcp9msWoyKEek+ieOV2uGBixKlGvqQB3ftS8
+	 3YpUPnPDFeeW6Z8kIMd1KIfYvFU4yQemNsxx+Qaw44sitbdv2NoRxBNj3BRPHzqP5/
+	 aMlFB61Tat/BruSkLJEA0eti+QLV4jH+FPz0OeR83T7NnriDCPh3LHozqUw+MDLmkX
+	 xNmCYWqhAedbQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0F61117E129C;
-	Wed, 12 Nov 2025 12:44:31 +0100 (CET)
-Message-ID: <a5ebb6ac-52c8-4b48-a67b-2d1e34aa73ea@collabora.com>
-Date: Wed, 12 Nov 2025 12:44:30 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 933CE17E12E5;
+	Wed, 12 Nov 2025 12:44:32 +0100 (CET)
+Message-ID: <4cac7e07-d6a5-474b-83ef-ef4e096911d0@collabora.com>
+Date: Wed, 12 Nov 2025 12:44:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 11/11] soc: tegra: Simplify with
+Subject: Re: [PATCH v2 05/11] cpuidle: big_little: Simplify with
  of_machine_device_match()
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
  Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>,
@@ -75,15 +75,15 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, platform-driver-x86@vger.kernel.org,
  linux-tegra@vger.kernel.org
 References: <20251112-b4-of-match-matchine-data-v2-0-d46b72003fd6@linaro.org>
- <20251112-b4-of-match-matchine-data-v2-11-d46b72003fd6@linaro.org>
+ <20251112-b4-of-match-matchine-data-v2-5-d46b72003fd6@linaro.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20251112-b4-of-match-matchine-data-v2-11-d46b72003fd6@linaro.org>
+In-Reply-To: <20251112-b4-of-match-matchine-data-v2-5-d46b72003fd6@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_034436_454321_7AF93612 
-X-CRM114-Status: UNSURE (   6.40  )
+X-CRM114-CacheID: sfid-20251112_034436_512421_38AEA5D5 
+X-CRM114-Status: UNSURE (   6.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,7 +103,6 @@ Il 12/11/25 11:28, Krzysztof Kozlowski ha scritto:
 > Replace open-coded getting root OF node and matching against it with
 > new of_machine_device_match() helper.
 > 
-> Reviewed-by: Jon Hunter <jonathanh@nvidia.com>
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
