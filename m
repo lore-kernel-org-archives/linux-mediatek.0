@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E57CBCCF9F8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Nov 2025 10:29:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B93C0CCFA1A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Nov 2025 10:29:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CsvFfAvlWLWUNByqNFGDgf521DahJAyf+bE64GmioBo=; b=X32tx9RMUgatxOWo6Eu7lzejaV
-	uXrF4/W9F2v4Jjf33w9wMsZz2msumA+KNU5TcxM5sKp1W+MdSrwsgTJEDLzbt7dn9q6jWwbn9eHOk
-	x0T1RToXSBwJODVdpbrnqoKdFuXhVoN4oiLLetDTOsBaUMWj30Kwvzi9JSsYwWax4yEk4ePUgSRmV
-	Xi4YFzw/LtFpTE3llpcDfk5XKZeueeYgXF4l6VVqkNvU5hlhzopysK4WjQvuHQrMrWAzvh2EjqrYL
-	twBuWb+0EYBlBtFoHTKbzfebx5YoPQMwD+AeosBvwBL0aqpvJfY1ZHEghQ5ui5PP61RLgKPdgSDUV
-	cel3KSrQ==;
+	bh=nB+3RSbUxVhm7JIM+0TQGTITyXpP2tjxIcWVIQgzWAo=; b=3kzeIoSVq0EAQrXlJ9gTLHHrZ5
+	atjQPwDaAwqryTw1fNSQo2Y/dUfW0uC8+OxJCCm6YcfXW5mbcSrdvXJqkKl4XBJQyYEdC3d8lJ/5m
+	1HfWOgMRQ9gc+OAlMEYJdN5fTNjZRqt3Yy6zwTlIKUMUyQyM5mQ+8QtZwF4wz9bafdC6PyFqixCvw
+	78o19RQK6AjlGxsHNR8ixM8kuto494VeLBs27zJnlaohs+hTpcy1L7LofVlHz0UN3o6U2o/PuJGRg
+	PwruaYyYoa/Yf/BbWji1WUKjZXTPf8sr4ftaQbiyBuMjcUZEVHSR3lAQ7j/cavw6YNzwlpoxRn/YQ
+	u7xA/4HA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ86V-00000008ZMv-0IIf;
-	Wed, 12 Nov 2025 10:29:31 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1vJ86Y-00000008ZQt-1eEt;
+	Wed, 12 Nov 2025 10:29:34 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJ86M-00000008ZAI-2lBV
+	id 1vJ86O-00000008ZCs-3zdB
 	for linux-mediatek@lists.infradead.org;
-	Wed, 12 Nov 2025 10:29:24 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-471d83da4d1so169245e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 12 Nov 2025 02:29:22 -0800 (PST)
+	Wed, 12 Nov 2025 10:29:29 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-471d83da4d1so169305e9.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 12 Nov 2025 02:29:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1762943361; x=1763548161; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1762943363; x=1763548163; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=CsvFfAvlWLWUNByqNFGDgf521DahJAyf+bE64GmioBo=;
-        b=Na2fqi79RPOQe4Jbx4Qk2JnffZITmfvmDQyPjVxKPSdcUa7e/SR/w7+pdGzCC6HqqY
-         HhXlFIRKVaONrjm1EZrTl9uHtr21rnsj1TlheNkWkMzg5yEG3+nYoBEXR/K/gLDx8cDh
-         ch5MF5arbtM8XowhQaZKZ/y4q/vSQcZtOyiDZkT9UU2xAhYzwt/6f1xf9HtYzIuAyI5i
-         U49tdagPeWE+mzUNw/L+3n1qKBib812otC90Mpfpt1JGRvypHVNYIoJAf7Ula84TlF0d
-         0qygZh+/NS6tVqeNHiwpEDcovzgjybQmOwFK/lQl+1VhlAkjW9XiqE0VNdtx55hR3BOh
-         abgA==
+        bh=nB+3RSbUxVhm7JIM+0TQGTITyXpP2tjxIcWVIQgzWAo=;
+        b=p1ZJZpeQrHBEcTI/tiSVzXtdWZsvKEFYnrrSSTFT72B+5bzDIXzONqikjb3jgeJNdt
+         fqK2AqMm9CHs/Sfk4RhQ7JtF8pDRruHaFRjGWycW0DepY4gEr/KuYz4TPXB/UvXq+HoH
+         iivqLAC6ft7QOa/0KJwLK+ZOdYtOGNwTVR6j77C9KOC8l+5YryCipA0SFcRF+6UTxz0z
+         bTUiHV+spO6IRyO1HQ+/HvD/+r0TQAkGeNpkQ2BiEH5KAh6mcocpv4YpDSehD1XLgZXF
+         oBOKUhDI8uKDaKYVGcXxZxUaXFcmJWRyM+whLcK1ts5PV53aFRYIEq+RanIq6vYmlbyA
+         qS4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762943361; x=1763548161;
+        d=1e100.net; s=20230601; t=1762943363; x=1763548163;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=CsvFfAvlWLWUNByqNFGDgf521DahJAyf+bE64GmioBo=;
-        b=qKxh2GZOr7IeaRwDF4LIlVgc76d6k8gNIHLAelCdZWK0ggpiQUB5hkwRObATa+MydV
-         5/sqSr58nNBshkHrFoFksvxN2rCeSJX8934yDPfJ7Mg2mLa1JqUNZusFsiQX94Vq8sbO
-         jGy2jkr0OTL8DZh480WO5QhdzzZIuOmoAIl5PTrstb1LhLdT8QAarlD4ntF0bROsV/F9
-         vd0PwwMle99n52BMm1jFFC589Lf5cRHAxQ8pBvIi75gSFHUUAq6Af+LX6dYOR/d8i3yf
-         JFYHVdI9kTqk3a7c+T0xMQfOaQQvUN/FVtW9PczfiRVbsMleNOEtyDMzbgNSHH4VOote
-         T5sA==
-X-Forwarded-Encrypted: i=1; AJvYcCX5WcEgk0HSRvAUVHR7FYDAjHQaAeYtGkCo6D6vibTNwcBOaSE/Zaic5XyARkeAA4oOucRCUYVRncmpCCfN+w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwETXSuuCWefxUCUKZ8Lh3L1JNxyoT5liy7MRBNwwc5jTvwNrU3
-	REoAmkQv0s45bnt3sDFwNqCxVrlvxbnLlZColzdHms6fK1KN8sA17ePKIXlDyrXdm10=
-X-Gm-Gg: ASbGncsbweusXeB2oqA2ANkoJfP8MrcogMqezsR0LBhjkTMbCvFsDIvRifUgeXCzosS
-	BZD9recObEi33unKiaRvDbMnrarRAbV3B/9l1afF75yma7Id466txVJssQs30/KuUM6RpphPlq+
-	zHdDEkxp4vAa8YIEDCl/U2Feet8JHtbl9ac+HRX/zTXJPwNM3TesvojEzA5CDklbeuK+DaBGV2Z
-	PPpU7xrZtC4RZRd9SQ4hK84VdkE2GLyfZVc8McnctB+YK4n/+5iysurVTXBIN4bBSUuQzeleewg
-	DvtdNZo2jI556rxKlYjAH58wv6Cul51WnzrqOKlmYYkhws6oWV2caIBIt9gySFqAD0zzvpfB8ap
-	mwjj48/kSX49W9jBQldlUyR8gQuM1fQEj0g7CbQ6WtxuLmOcQj1vf8KaHDpzB5rnmuWs8Gx0b7Z
-	Ec//DQKafnjONanJBvfzJ4h2O4AFU=
-X-Google-Smtp-Source: AGHT+IHAInGs1fY6MhYk+BOaIQN6jWgnuAcNUMCj8asWuYpXZLP7gT6bSs36V8+DqD/oHKzLuMjE9A==
-X-Received: by 2002:a05:600c:458d:b0:468:7a5a:14cc with SMTP id 5b1f17b1804b1-477870a634fmr13473095e9.3.1762943360967;
-        Wed, 12 Nov 2025 02:29:20 -0800 (PST)
+        bh=nB+3RSbUxVhm7JIM+0TQGTITyXpP2tjxIcWVIQgzWAo=;
+        b=RyEqf97P32WukTsoeqqTmtZTl3dV3i8/W+u4KiaIeQgV1pcSj/HZQsM2WbeF6cgyD0
+         U1qGNBXDJRIm1oWFj0zgTT7rObQWDC0sI5/Fce6OUX5kMGw2Fb5tOwjnL+cXR2xjjw/A
+         aOJwt7rHIQsJ6ZLYolm1OfoI3FLlBe0yJpIINMD4/E5b6WzUxDcyowE7DRbPKRDA6WKR
+         +2slaLK7G/zcgq96XVkUb5ReGDnKivt959vFuKgOWfQyRgNo8Q79JjPwgQD2h+RxlEMY
+         /9h4691lrq1Q0mMPdFlDcXvNtGWtAWEfHcV96mFu8u2q5Bc2qXdfZhiksFAdzOhcMuwo
+         Ux7A==
+X-Forwarded-Encrypted: i=1; AJvYcCWk6CdXxvT/0YAjsRL29aK9MQClkjLLIcSML8MznfJpLSFUZD49org5RtXDb2peGfI10jm7O8mvpQcc1ga2rg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwBwkGYYCg1O6Ph6ToLMkcs0/QRewywt8J+g1HJMuBM62rJ//bU
+	avgLPNBB6QqgUr8usDwjrkTXJIEDDkdCUNcqyNQQrv3Fhknab9NDaGiGyYQiHtENDSU=
+X-Gm-Gg: ASbGncvOHnDzNFrgl0KmUIHwZe9k3wP6BLOGt+egpAXNaedQXiYj7iOV+OnBm3kuWbe
+	F77uZY7SdRmPBXK9LCRH0xSw0m/K8aQH9nEie3igMDhkbR0Y92JUDhs5EIcOOW9SphMBQKnwOtp
+	/m0kq5bJmXhA4vYxXY10FM1ICfv7u6/oHWiMBp2k8zNnfMo+10tvxXbVQm6XDOTpy5NKaQ24E92
+	bnvqxZAiPOUHqk3T9G5zNsUGw/nokxyAeGbSxIYuzs01hDytbKHj4roHKK/zJC7pKIQ/4eEoHOP
+	6m4ajivkYfkDTUCoIOPaTuRy/Zk45oCq+WFy42rb09gCUoMh5XOFnMbUUrdJcolSv2CfY9Mf3c7
+	51Naz1IXBxvpQkM8uLpjEHoBcsob4AaERp/LFdfeZSsW0CuH1GyKrRrEL6KAVl8OGx3c8hzaaPm
+	ab9O2VvTVnMUungMoYRqyckqCTKMU=
+X-Google-Smtp-Source: AGHT+IG4PYkMnNw0ODvtXOUL94VjBv1SVm7gv9pdwxJVf+TJ17wVy2egXepWnzI6OYpTuU2LqPLsAQ==
+X-Received: by 2002:a05:600c:3b99:b0:46f:ab96:58e9 with SMTP id 5b1f17b1804b1-47786ffa240mr13184865e9.0.1762943362906;
+        Wed, 12 Nov 2025 02:29:22 -0800 (PST)
 Received: from [127.0.1.1] ([178.197.219.123])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42b32ecf522sm22020001f8f.45.2025.11.12.02.29.19
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42b32ecf522sm22020001f8f.45.2025.11.12.02.29.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 12 Nov 2025 02:29:20 -0800 (PST)
+        Wed, 12 Nov 2025 02:29:22 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Date: Wed, 12 Nov 2025 11:28:53 +0100
-Subject: [PATCH v2 08/11] platform: surface: Simplify with
+Date: Wed, 12 Nov 2025 11:28:54 +0100
+Subject: [PATCH v2 09/11] powercap: dtpm: Simplify with
  of_machine_get_match_data()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20251112-b4-of-match-matchine-data-v2-8-d46b72003fd6@linaro.org>
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251112-b4-of-match-matchine-data-v2-9-d46b72003fd6@linaro.org>
 References: <20251112-b4-of-match-matchine-data-v2-0-d46b72003fd6@linaro.org>
 In-Reply-To: <20251112-b4-of-match-matchine-data-v2-0-d46b72003fd6@linaro.org>
 To: Rob Herring <robh@kernel.org>, Saravana Kannan <saravanak@google.com>, 
@@ -108,26 +108,26 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-tegra@vger.kernel.org, 
  Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1620;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1300;
  i=krzysztof.kozlowski@linaro.org; h=from:subject:message-id;
- bh=nbwVZd1B/0VhFu7wCpDEX+Xq7qXUW4QXmwaphM2p2IQ=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpFGFqdZoAVmnIlbNdcg1Y+7nkfxGC6i0n15Upq
- K4jKAztwCqJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaRRhagAKCRDBN2bmhouD
- 16TrD/9AMI5SrOqJWRLQ7jKUbUsOysXBLyuiMqQn38xIXkce16vSkar8aQIikXJi255w8BCbJN5
- XpoXeQslytCRS2CvSCYzSnwLKm2jyAZ/UJ1eYLlbnFgA+bS/tLQ+ZxexHjt9zLRFy5y/asoQ9P5
- T9ql1bh7o1gtWYg/4FFEWUimNr9blWrvDirnEFXFokhYDjS3gC7o+PuR2zOwO1cDK1KeZJJNkxN
- 4siZTPlGWjvimJMhb9MFFIaD1FGMjk8Oo9RuC38wtEQu+3Qnfv/pidmsMkt9EOEP0qyuk39qX97
- K0bF8PhZ0HlmSGHSqBDDnZ7h6TT47NdxsBFm6VztA4UBwafUt0laGgFVTbdjsPh9eLldIzc6gX4
- qd98n+HB0L0CRvu5lEA4fuApN250SBVNphKHTRCHH4rvm+c92d9Rviz27WVVP6aXK0lXrLRvuSQ
- a/h5NgHZvUsRgGR6F+KsWkKyMqs82BCAQMm3hAXYKGAHaMWvvL+CBlqoakEF16kOlukPZ2PeyBx
- +LBG4qy8sQRRamg1wPYLUZkGifRetG7z45hjdPYQwpEltgLy0irZZM9ct+2IGITcZjmMnULegw4
- nTMQ+fbC0RPtlIJPjVmVA3X+PhxBpo1um9dL60Lwd6bft0tS+sEppobeeBlN0d0Kr9qBJ5OTrXg
- yG81W0MnFMi2LXg==
+ bh=HOTpv8E7M3Z9++7bQRRNeja2y7FI7o/hDZwnKU6ywmQ=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpFGFr1tYOKM8LvWVApmUF795FPE3v7DdzNxeRs
+ sD8X/1CFaWJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaRRhawAKCRDBN2bmhouD
+ 17C6D/9Gk7S57LO4NXNBYYNtibDL8ljONOe8Ig0TRx0qtjvLyrRWtyTVEodm+FhIyH5crFSibku
+ khWIr85eaZnyI7DZmi9EEFVE4TwF2EuzXUHW8BfsvL7GRGYpX14S1sHSR8EleDgvDqMR9NTL6V0
+ jNIwfovhLn7VP+62qwBkcAlM/2T+zgdVrn1DzN5L7mfWJoxKIEyDNH6m/+NJZXFUpV8HAOSggLF
+ aFaSy/KjIdyDDmdGdCwFyzya7/r4WobRUj2kgaeARLZL89D8+WH9h28f/7hCc/hAfW4Ii4hbv91
+ ImiE/Pyo//QGhxgZOOxCC7SdAgA3h0gKzFE0Mgg0fENxJH3ErQLNax2+sn8jNbPg4xi/IW20mCb
+ 2t3DHlPLJLbhonIQc/3zosje4H2HU5cCZ8aqRjTNCRsbwSOVm0Szz99U91i8FgFfFR/laV42FcG
+ Nei3Qs4ZfN50R0C9Dh4TaDOeeBx8nKNoE3EzI2l5AY7zjvVe8CkMAl7LjCpfWFxFj9v9bhYmsoV
+ L/k42dG7HJvL4TkMRdbp6cOYV+0MPV7QY9nt7Fb1vu14PeCkZlFCr9Px35eZypnM018TUFkKaCU
+ 8PQcNvW9cis67Ie9IKba4R0f1wkpZVuHgWxJeR4dLwWs8Upggvlxq5bhVrL2wWCvymS1SWwmlnp
+ ZVHhvRQqrTykRYA==
 X-Developer-Key: i=krzysztof.kozlowski@linaro.org; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_022922_776025_74A13C6D 
-X-CRM114-Status: GOOD (  12.85  )
+X-CRM114-CacheID: sfid-20251112_022925_153653_C8EF715B 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,45 +145,50 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Replace open-coded getting root OF node, matching against it and getting
 the match data with new of_machine_get_match_data() helper.
 
-Acked-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
 ---
 
 Depends on the first OF patch.
 ---
- drivers/platform/surface/surface_aggregator_registry.c | 13 +------------
- 1 file changed, 1 insertion(+), 12 deletions(-)
+ drivers/powercap/dtpm.c | 16 +---------------
+ 1 file changed, 1 insertion(+), 15 deletions(-)
 
-diff --git a/drivers/platform/surface/surface_aggregator_registry.c b/drivers/platform/surface/surface_aggregator_registry.c
-index a594d5fcfcfd..78ac3a8fbb73 100644
---- a/drivers/platform/surface/surface_aggregator_registry.c
-+++ b/drivers/platform/surface/surface_aggregator_registry.c
-@@ -491,24 +491,13 @@ static const struct of_device_id ssam_platform_hub_of_match[] __maybe_unused = {
- static int ssam_platform_hub_probe(struct platform_device *pdev)
+diff --git a/drivers/powercap/dtpm.c b/drivers/powercap/dtpm.c
+index f390665743c4..129d55bc705c 100644
+--- a/drivers/powercap/dtpm.c
++++ b/drivers/powercap/dtpm.c
+@@ -548,9 +548,7 @@ static int dtpm_for_each_child(const struct dtpm_node *hierarchy,
+  */
+ int dtpm_create_hierarchy(struct of_device_id *dtpm_match_table)
  {
- 	const struct software_node **nodes;
 -	const struct of_device_id *match;
--	struct device_node *fdt_root;
- 	struct ssam_controller *ctrl;
- 	struct fwnode_handle *root;
- 	int status;
+ 	const struct dtpm_node *hierarchy;
+-	struct device_node *np;
+ 	int i, ret;
  
- 	nodes = (const struct software_node **)acpi_device_get_match_data(&pdev->dev);
- 	if (!nodes) {
--		fdt_root = of_find_node_by_path("/");
--		if (!fdt_root)
--			return -ENODEV;
--
--		match = of_match_node(ssam_platform_hub_of_match, fdt_root);
--		of_node_put(fdt_root);
--		if (!match)
--			return -ENODEV;
--
--		nodes = (const struct software_node **)match->data;
-+		nodes = (const struct software_node **)of_machine_get_match_data(ssam_platform_hub_of_match);
- 		if (!nodes)
- 			return -ENODEV;
+ 	mutex_lock(&dtpm_lock);
+@@ -567,19 +565,7 @@ int dtpm_create_hierarchy(struct of_device_id *dtpm_match_table)
+ 		goto out_pct;
  	}
+ 
+-	ret = -ENODEV;
+-	np = of_find_node_by_path("/");
+-	if (!np)
+-		goto out_err;
+-
+-	match = of_match_node(dtpm_match_table, np);
+-
+-	of_node_put(np);
+-
+-	if (!match)
+-		goto out_err;
+-
+-	hierarchy = match->data;
++	hierarchy = of_machine_get_match_data(dtpm_match_table);
+ 	if (!hierarchy) {
+ 		ret = -EFAULT;
+ 		goto out_err;
 
 -- 
 2.48.1
