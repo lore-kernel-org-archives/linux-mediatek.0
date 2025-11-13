@@ -4,76 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A617CD4F57
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 08:45:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BE82CD5BA0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 09:08:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=hu479yPj8wbBYx+WzD14ywVL3ZHRcGR0GXGR0sSeAEc=; b=g12fr6p8SxgwPnFsd0zI5Bjc3z
-	0gl9H9qZqJDWRC7iqhhZogtcabXACK8p6BL4Tgk0GuX5AuFK4JNOi/c+NvQgI9jRaLI4w9+F0CaIz
-	v/oQMPE+34Y1s2iq70ilnPA43NRMJ37Kc3CUxSiuhfCH8BMr/PLn/keEqbQ39f2I8VFVK8QfMrW1P
-	ALOV65uah+2YXahALDqHa31p1hnp8H7Vd8nRYv/mK6oLEcgYN2tShvcsZ1rgeAZj17XOCZFk+0AYA
-	QItxDVwFXfnqqwe0VoBZCbXaTBgkTzccjNz3hHOdrgjh3NixJQptQQwdm7uLMTkvmnb2tX92/q8cA
-	K+r5PTuQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Kb7u+lszG/nXqIAGpk/hByhDC/8HGhmWaIRwB9KIYkQ=; b=V1HuP/HYxKxwCdqrDoawztMwbD
+	BafbDaEAxZClEEYgqbyVvDr5t4InO1UB2C2r9B35Y4gC4tfhApSPplv18SME7udL3J+xJ7xQblIZc
+	i+Y7Pr0XbH/O1Yj1XxPT5f2xGLL3lBFIzSWdXiazCxfZOznb1Ow4KY0ru+YkD9FTg155S2yk8iW5o
+	ePFyi7LCWNgilbTkB1KsJa7RG46I7OF2JVkUwR/kFVkuCnkMPAQ7EQX7A6fiYW35eeRH9a1Jplp85
+	GxazxUDjCxcs1NJffMO7Y/o+v7T6oINqc2iZ9YWSA7DCOwsNHXF4y+eLmVs5dN7i04x/tlC5StXjJ
+	RDkeLPTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJSxR-0000000A7pX-0SL7;
-	Thu, 13 Nov 2025 08:45:33 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vJTJv-0000000AAHP-0SSD;
+	Thu, 13 Nov 2025 09:08:47 +0000
+Received: from mail.fontri.pl ([51.195.90.156])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJSxO-0000000A7p3-1rfq;
-	Thu, 13 Nov 2025 08:45:31 +0000
-X-UUID: 17300f16c06d11f0a52f393f94899d25-20251113
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hu479yPj8wbBYx+WzD14ywVL3ZHRcGR0GXGR0sSeAEc=;
-	b=no1+SRZjdc/QUFWioe22TRkQGQhriQgNN9Jl5sYCj/hq5s4ssmuqhewIVi2UZPLTO5LNlZmgZgxupT6MfArZQDiZMOyylon755lX9/DwrcuePbOAlH7p5HyRDttdxVI7BlBajI5GAfjXlWIV+aLJ68PVDW5ap3U87mKcxoyVXZo=;
-X-CID-CACHE: Type:Local,Time:202511130145-07,HitQuantity:1
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:55943e08-07dc-4e4a-937a-665cf39013b0,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:a9d874c,CLOUDID:28dd6492-7fd3-4c6a-836a-51b0a70fa8fb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 17300f16c06d11f0a52f393f94899d25-20251113
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <johnny-cc.chang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1820826874; Thu, 13 Nov 2025 01:45:22 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Thu, 13 Nov 2025 16:45:19 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Thu, 13 Nov 2025 16:45:19 +0800
-From: Johnny Chang <Johnny-CC.Chang@mediatek.com>
-To: Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-pci@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<Project_Global_Digits_Upstream_Group@mediatek.com>, Johnny-CC Chang
-	<Johnny-CC.Chang@mediatek.com>
-Subject: [PATCH] PCI: Mark Nvidia GB10 to avoid bus reset
-Date: Thu, 13 Nov 2025 16:44:06 +0800
-Message-ID: <20251113084441.2124737-1-Johnny-CC.Chang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1vJTJs-0000000AAGy-1HB4
+	for linux-mediatek@lists.infradead.org;
+	Thu, 13 Nov 2025 09:08:45 +0000
+Received: by mail.fontri.pl (Postfix, from userid 1002)
+	id 8780CA8C4C; Thu, 13 Nov 2025 10:06:53 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fontri.pl; s=mail;
+	t=1763024894; bh=Kb7u+lszG/nXqIAGpk/hByhDC/8HGhmWaIRwB9KIYkQ=;
+	h=Date:From:To:Subject:From;
+	b=VfrnL0dqSCHy1l/ZyXABQ6XHPN2zZWg7aJPZyeoHl+tCbcEzT8cNcY5NsMIks24Xq
+	 zRxUjR9DyiJpaiWL/DjpYB+inieZaL6nT/9ta5FevAjGI40k3CtMTgcjQ2VY9o1+RO
+	 6PXgf7tEUaE9BlxZ4sD2DdA0CurIkWQ8AALD9PopItXMNlwr1ooiEcOdDuf4qMidpR
+	 +ZVMX9mCHmCIU0YWMAV9s+edwxip5AgtpTEwfFJH1lXbQQRjY4uiQxMIoeqr4CqTu1
+	 o9dK4V1J8YqDURCkTHBQ7G0YJd8ol4mJADoMseJWiD/cP8NWvsgTWU/VJDDiKskLgf
+	 1AZUgXW9MqjRg==
+Received: by mail.fontri.pl for <linux-mediatek@lists.infradead.org>; Thu, 13 Nov 2025 09:06:25 GMT
+Message-ID: <20251113084500-0.1.sc.5zr67.0.dqggc3na46@fontri.pl>
+Date: Thu, 13 Nov 2025 09:06:25 GMT
+From: =?UTF-8?Q?"=C5=BBaneta_K=C4=99dzierska"?= <zaneta.kedzierska@fontri.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: =?UTF-8?Q?Odbi=C3=B3r_w_paczkomacie_?=
+X-Mailer: mail.fontri.pl
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_004530_514259_2B2811F7 
-X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-CacheID: sfid-20251113_010844_496839_1FAD313E 
+X-CRM114-Status: UNSURE (   1.03  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,54 +66,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Johnny-CC Chang <Johnny-CC.Chang@mediatek.com>
+Dzie=C5=84 dobry,
 
-Nvidia GB10 PCIe hosts will encounter problem occasionally
-after SBR(secondary bus reset) is applied.
-Enable NO_BUS_RESET quirk for Nvidia GB10 PCIe hosts.
+jako lider w us=C5=82ugach kurierskich w Polsce przygotowali=C5=9Bmy elas=
+tyczne rozwi=C4=85zanie dla przedsi=C4=99biorc=C3=B3w.
 
-Signed-off-by: Johnny-CC Chang <Johnny-CC.Chang@mediatek.com>
----
- drivers/pci/quirks.c    | 11 +++++++++++
- include/linux/pci_ids.h |  2 ++
- 2 files changed, 13 insertions(+)
+Stworzyli=C5=9Bmy abonament =C5=82=C4=85cz=C4=85cy dostawy do Paczkomat 2=
+4/7 oraz obs=C5=82ug=C4=99 kuriersk=C4=85 - jeden dostawca, jedna faktura=
+ i przewidywalne, sta=C5=82e koszty.=20
 
-diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index b94264cd3833..12a10fa84c8a 100644
---- a/drivers/pci/quirks.c
-+++ b/drivers/pci/quirks.c
-@@ -3746,6 +3746,17 @@ static void quirk_no_bus_reset(struct pci_dev *dev)
- 	dev->dev_flags |= PCI_DEV_FLAGS_NO_BUS_RESET;
- }
- 
-+/*
-+ * Nvidia GB10 PCIe hosts will encounter problem occasionally
-+ * after SBR (secondary bus reset) is applied.
-+ * SBR needs to be prevented for these PCIe hosts.
-+ */
-+DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_NVIDIA, PCI_DEVICE_ID_NVIDIA_GB10_GEN5_X4,
-+			 quirk_no_bus_reset);
-+
-+DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_NVIDIA, PCI_DEVICE_ID_NVIDIA_GB10_GEN4_X1,
-+			 quirk_no_bus_reset);
-+
- /*
-  * Some NVIDIA GPU devices do not work with bus reset, SBR needs to be
-  * prevented for those affected devices.
-diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
-index 92ffc4373f6d..661dc1594213 100644
---- a/include/linux/pci_ids.h
-+++ b/include/linux/pci_ids.h
-@@ -1382,6 +1382,8 @@
- #define PCI_DEVICE_ID_NVIDIA_GEFORCE_320M           0x08A0
- #define PCI_DEVICE_ID_NVIDIA_NFORCE_MCP79_SMBUS     0x0AA2
- #define PCI_DEVICE_ID_NVIDIA_NFORCE_MCP89_SATA	    0x0D85
-+#define PCI_DEVICE_ID_NVIDIA_GB10_GEN5_X4           0x22CE
-+#define PCI_DEVICE_ID_NVIDIA_GB10_GEN4_X1           0x22D0
- 
- #define PCI_VENDOR_ID_IMS		0x10e0
- #define PCI_DEVICE_ID_IMS_TT128		0x9128
--- 
-2.45.2
+Czy mog=C4=99 przedstawi=C4=87, co mo=C5=BCemy zaproponowa=C4=87 wzgl=C4=99=
+dem Pa=C5=84stwa potrzeb?
 
+
+Pozdrawiam
+=C5=BBaneta K=C4=99dzierska
 
