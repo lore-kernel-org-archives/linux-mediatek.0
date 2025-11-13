@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CFABCD98D3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 19:32:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D950DCD98CC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 19:32:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BdDY2Y5ow7Akz/NswUqHtwC26DuJTuA8klDFKCsu6bM=; b=qgabzYzIZC6bpKFuR+NuG3FIDt
-	xi+GFHFiueOPL/rhyC9X3fgkDiWe+ccsJPM/qEZqAWP/sFHigcFLrKWYlMKpklqSg3VmMAXbze2gx
-	D46h7NNVt0YwxP0UzDJLovZCi5gA3yTeJbsL+3RjkvVmFB4xmokGiaoYmf3uVBta0KHkPuZy1x4d8
-	Pm907hhntp/ETR1DaGUmy7ciwJipvPJIW+7Pwl4cILF0rcSPRpdddJOuo5kMgpj65ww/y2PCK/KwA
-	38VmDPSiq9t6ycf8tffrlDDH5lB6rfDacC3IbkWmeyoUWYbk8yD1jcJMx3Wf7grjHXhfewvE6zrv/
-	WPn/0yUg==;
+	bh=ISNCe7A+FUFRQrYWDzQXFgYmnv5S2HKSoaxxW+Wl/8c=; b=PrQJBew941/yGIJSmUawsNHn6s
+	i++4yrYQGtW2b54oXnQUGqxHBpywY1EjQlPuzuoZo+GtmufUZnXMqHovXFQXcTnHwzHNRlDn6ZyWZ
+	mbxkJbFuMlN2mHBAATMolaRujy7SDIg0LZTMwoG28yUrfDMVXu7zv22UjX2UZSzUhuOP4Qkt2dcYF
+	r9zgE98mm9/4ZyewRfnYX7nII7mpphayvD+/mWKGjuqdpDjbl6ChgL5EWkE7lk0uwRbabjdGY7KGh
+	1fc2d0Qnz+mJ/yfA4AkmQz+KFq0mKy26Aq2Z7jRNIODeDu80/CLPLpeUQWrULgDRdlBw2uvqtvEb6
+	0bvC5ExA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJd3C-0000000B0Qw-04wF;
-	Thu, 13 Nov 2025 19:32:10 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vJd3Z-0000000B0d0-0Wp0;
+	Thu, 13 Nov 2025 19:32:33 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJd39-0000000B0Pn-1zGR;
-	Thu, 13 Nov 2025 19:32:08 +0000
+	id 1vJd3W-0000000B0bF-3MMS;
+	Thu, 13 Nov 2025 19:32:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 13DB14379A;
-	Thu, 13 Nov 2025 19:32:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 355C7C4CEF1;
-	Thu, 13 Nov 2025 19:32:04 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id F3A6F4371B;
+	Thu, 13 Nov 2025 19:32:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33D74C4CEF8;
+	Thu, 13 Nov 2025 19:32:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763062326;
-	bh=BdDY2Y5ow7Akz/NswUqHtwC26DuJTuA8klDFKCsu6bM=;
+	s=k20201202; t=1763062349;
+	bh=ISNCe7A+FUFRQrYWDzQXFgYmnv5S2HKSoaxxW+Wl/8c=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Uy7YsIYUwbfD94LDxhC+E1AO0Jct7f/fhEglYJwYFleowCtlA/IMcDFTzDsT5mdNR
-	 90ClGTL254pzaXk5liK/9GO69m/TfSunxVbIo1dOsxIQze83+mEIUdV4saF6OP+jnF
-	 i6RDdToSEzIjIDzYQ1+NhcWHguzJWr0Mjjn3dZIV4jJ4dC2soc7dWra+H6w74dJjVn
-	 Q2+qW6xV1eU2ZdODQg42Oft52tUKba4r9YbZopZZP45URjd1LQzLxtRrxg+7I5SCNs
-	 zIn1N2a19AGm1RAyAqtnmx0hdvSHaQxnW9gIbkmKzOZcWE9VXp8LKaLLUbkAA0e2HZ
-	 fLZNJVSO/xA0Q==
-Date: Thu, 13 Nov 2025 19:32:02 +0000
+	b=bBqgS/2Cjg6RLcB6X5aXeHLFuegJpxBvVmJ/mjs14PxXHikeSW3lbQR3khWvF3EQW
+	 VNj9Xko9BqYUFse0+0HRKuSOOHL22Lr1mnDTohMn81e3sxMTpVdjBPN9S4Hhzkho4t
+	 v9OJdMDPG9xi3RDBRvnEUvo4HGRDJUZT/DtpqRjQhIIYBf9srVbb0eKe/h8rguziy1
+	 MBS27oTkCkKnL9hqU9O423zMRALevTaePYJL5DUH8DOZK89w+qZRUVeUAwW4LLQOvA
+	 2Zg+Hgc918nK+VGdnab0YPU91XUiuVDPIqYETy+FfN/EZuqRj+hFXzmWnk7kU2KYXx
+	 3SPHa01N7dBcw==
+Date: Thu, 13 Nov 2025 19:32:24 +0000
 From: Conor Dooley <conor@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: dmaengine@vger.kernel.org, sean.wang@mediatek.com, vkoul@kernel.org,
@@ -50,19 +50,19 @@ Cc: dmaengine@vger.kernel.org, sean.wang@mediatek.com, vkoul@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH 3/8] dt-bindings: dma: mediatek,uart-dma: Support all SoC
- generations
-Message-ID: <20251113-moonbeam-untold-0a2e61bcc050@spud>
+Subject: Re: [PATCH 1/8] dt-bindings: dma: mediatek,uart-dma: Allow MT6795
+ single compatible
+Message-ID: <20251113-reusable-possum-068bf281efec@spud>
 References: <20251113122229.23998-1-angelogioacchino.delregno@collabora.com>
- <20251113122229.23998-4-angelogioacchino.delregno@collabora.com>
+ <20251113122229.23998-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ZAXCNDRXne5IyPst"
+	protocol="application/pgp-signature"; boundary="ZxOFVMazaNEs56YG"
 Content-Disposition: inline
-In-Reply-To: <20251113122229.23998-4-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20251113122229.23998-2-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_113207_531758_8673FA64 
-X-CRM114-Status: UNSURE (   5.31  )
+X-CRM114-CacheID: sfid-20251113_113230_852974_66C57EDA 
+X-CRM114-Status: UNSURE (   5.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,23 +79,23 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---ZAXCNDRXne5IyPst
+--ZxOFVMazaNEs56YG
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 Acked-by: Conor Dooley <conor.dooley@microchip.com>
 pw-bot: not-applicable
 
---ZAXCNDRXne5IyPst
+--ZxOFVMazaNEs56YG
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaRYyMgAKCRB4tDGHoIJi
-0iEzAP9KgDizT2iEVi7kgYlIdMoP0pAgOj0p0a6l2gVXD5W8tgEAj8XW5x+y5BnG
-oUmwgkdJH4QQXxIvrbkB14RR2+EI7QY=
-=hw3B
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaRYySAAKCRB4tDGHoIJi
+0vA5AQDPZ8SkT+MGHGW10MCGgDFHOn76yQ+Xv1rPa5kB1xYp4AEA3wBhxsfGCMXK
+2VK9p+6Z/lt2r+6wvn7kMd8dIzOr8wE=
+=Khkl
 -----END PGP SIGNATURE-----
 
---ZAXCNDRXne5IyPst--
+--ZxOFVMazaNEs56YG--
 
