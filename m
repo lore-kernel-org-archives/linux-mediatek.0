@@ -4,66 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A77ECD5BA7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 09:41:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81594CD5BAF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 09:50:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Tz39zWUgWe6lz3NHfDSC8mIp9EXHb7gxRBAo7zC/Js4=; b=5Fygst1tRhMrnTbxxYETfK5RvP
-	Vu/dXRBDiHj/X2/MkdHH7oT1lo8YowPOyX6uJU6AZWP+u1ntGQB8aK6IBuMXBuCp2krsUDPdyHGw8
-	o5jv7rTfzoQ+LLcrQnJIbg6g/nggT8MKKRLVUz7jJJQjhueTVIdKrYUvetseJf9xuj1NZvWGFMX/Y
-	p+SPIzLuxZJpKZ/eWYOgVEfwXET65TYLf49Fq5PKl8bk+0nCJfsVGSEmIe8IZxwCse0VEyRsFxQgO
-	NwEuV6FhXvblIuCOtdiolijExgmdAA/jJMDdG/tSICqd+JiwauIOX3Mwxo0DznMS3d4v8ohLhnyO6
-	BKtBOlIg==;
+	bh=AurxHB+1uui5/KyI6RjD3+/Z2czI5L1MebXDzDX6mLY=; b=LG/g3XwBmHak51xiJpUDg40zBv
+	Sz9K//PFGL08VD5DV6dMt3Pu+ub8XgtB+RKdIA9Ywl8b5rrpjzjygIM+y8wm3qcBemFol8+yITo7m
+	VC+5HzpcJ+24eGHiS3llVrCI7SToIe5tcLXUs+KBuSAXsnyHJLWu5FsX0VFHXpXPfzk3YDWXN1QDt
+	8k1j/Xnm83MAAP6+QYsesl4BNsbVXwI+26d4n5NQyU4p9Jk//exDyttvYFR+OUcMvJ6Vh7+c97QXa
+	m4mLPPGdDemYkJoDIev4JkIX/ure9b3DqffrL65Z/FC1huw0xMstW5hqNT6kseXbzRlXiiA9+sxFJ
+	iuuMDvXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJTpr-0000000ADfT-3KCm;
-	Thu, 13 Nov 2025 09:41:47 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJTpn-0000000ADex-44kh;
-	Thu, 13 Nov 2025 09:41:45 +0000
-Received: from LAPTOP-N070L597.localdomain (unknown [221.228.238.82])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 29764e94b;
-	Thu, 13 Nov 2025 17:41:36 +0800 (GMT+08:00)
-From: Zilin Guan <zilin@seu.edu.cn>
-To: lorenzo@kernel.org
-Cc: angelogioacchino.delregno@collabora.com,
-	jianhao.xu@seu.edu.cn,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-wireless@vger.kernel.org,
-	matthias.bgg@gmail.com,
-	nbd@nbd.name,
-	ryder.lee@mediatek.com,
-	sean.wang@mediatek.com,
-	shayne.chen@mediatek.com,
-	zilin@seu.edu.cn
-Subject: Re: [PATCH net] mt76: mt7615: Fix memory leak in mt7615_mcu_wtbl_sta_add()
-Date: Thu, 13 Nov 2025 09:41:35 +0000
-Message-Id: <20251113094135.348383-1-zilin@seu.edu.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <aRWF9QJuwGaDlUvT@lore-desk>
-References: <aRWF9QJuwGaDlUvT@lore-desk>
+	id 1vJTxz-0000000AEJd-25P9;
+	Thu, 13 Nov 2025 09:50:11 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vJTxx-0000000AEIT-00iZ;
+	Thu, 13 Nov 2025 09:50:10 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E89CC12FC;
+	Thu, 13 Nov 2025 01:49:57 -0800 (PST)
+Received: from [10.57.40.163] (unknown [10.57.40.163])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E5B913F66E;
+	Thu, 13 Nov 2025 01:49:59 -0800 (PST)
+Message-ID: <953f1aaa-d8bd-4091-9bf6-9538ccdd3bfa@arm.com>
+Date: Thu, 13 Nov 2025 09:50:40 +0000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-HM-Tid: 0a9a7c97843b03a1kunmfac98f0512a188
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCS0sYVhhCT09CGEkeGEsYGlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlJSUpVSUlDVUlIQ1VDSVlXWRYaDxIVHRRZQVlPS0hVSktJQk1LSlVKS0tVS1
-	kG
-DKIM-Signature: a=rsa-sha256;
-	b=nhOVfDiJ74Sdt0UEx5n9Ip6yX8XSqzU+2fWTnIGT8VBL20byL0rS6xZPJ3l/1QuZdmq9EZLxOIibIuTUmkj/5RbIq557HJaTkbxduMlb3wNgk9noAImuQPqNi1xGQr9pyZDkcpFZ/m7pURVRnmENiuq3g29ZsmS/JWKvmjZLiJ8=; s=default; c=relaxed/relaxed; d=seu.edu.cn; v=1;
-	bh=Tz39zWUgWe6lz3NHfDSC8mIp9EXHb7gxRBAo7zC/Js4=;
-	h=date:mime-version:subject:message-id:from;
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 09/11] powercap: dtpm: Simplify with
+ of_machine_get_match_data()
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Viresh Kumar <viresh.kumar@linaro.org>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
+ Daniel Lezcano <daniel.lezcano@kernel.org>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Saravana Kannan <saravanak@google.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ Maximilian Luz <luzmaximilian@gmail.com>,
+ =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+ Konrad Dybcio <konradybcio@kernel.org>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, linux-pm@vger.kernel.org,
+ Chen-Yu Tsai <wens@kernel.org>, Yangtao Li <tiny.windzz@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-arm-msm@vger.kernel.org,
+ platform-driver-x86@vger.kernel.org, linux-tegra@vger.kernel.org,
+ Rob Herring <robh@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Hans de Goede <hansg@kernel.org>
+References: <20251112-b4-of-match-matchine-data-v2-0-d46b72003fd6@linaro.org>
+ <20251112-b4-of-match-matchine-data-v2-9-d46b72003fd6@linaro.org>
+Content-Language: en-US
+From: Lukasz Luba <lukasz.luba@arm.com>
+In-Reply-To: <20251112-b4-of-match-matchine-data-v2-9-d46b72003fd6@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_014144_629994_61998B17 
-X-CRM114-Status: GOOD (  21.84  )
+X-CRM114-CacheID: sfid-20251113_015009_175212_41A5A1B2 
+X-CRM114-Status: GOOD (  16.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,66 +88,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 13, 2025 at 08:17:09AM +0100, Lorenzo Bianconi wrote:
-> [-- Attachment #1: Type: text/plain, Size: 1475 bytes --]
+
+
+On 11/12/25 10:28, Krzysztof Kozlowski wrote:
+> Replace open-coded getting root OF node, matching against it and getting
+> the match data with new of_machine_get_match_data() helper.
 > 
-> > In mt7615_mcu_wtbl_sta_add(), an skb sskb is allocated. If the
-> > subsequent call to mt76_connac_mcu_alloc_wtbl_req() fails, the function
-> > returns an error without freeing sskb, leading to a memory leak.
-> > 
-> > Fix this by calling dev_kfree_skb() on sskb in the error handling path
-> > to ensure it is properly released.
-> > 
-> > Fixes: 99c457d902cf9 ("mt76: mt7615: move mt7615_mcu_set_bmc to mt7615_mcu_ops")
-> > Signed-off-by: Zilin Guan <zilin@seu.edu.cn>
-> > ---
-> >  drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 4 +++-
-> >  1 file changed, 3 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> > index 4064e193d4de..08ee2e861c4e 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> > @@ -874,8 +874,10 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_phy *phy, struct ieee80211_vif *vif,
-> >  	wtbl_hdr = mt76_connac_mcu_alloc_wtbl_req(&dev->mt76, &msta->wcid,
-> >  						  WTBL_RESET_AND_SET, NULL,
-> >  						  &wskb);
-> > -	if (IS_ERR(wtbl_hdr))
-> > +	if (IS_ERR(wtbl_hdr)) {
-> > +		dev_kfree_skb(sskb);
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 > 
-> Hi Zilin,
+> ---
 > 
-> I can't see how this is useful since if mt76_connac_mcu_alloc_wtbl_req returns
-> an error, wskb will not be allocated.
+> Depends on the first OF patch.
+> ---
+>   drivers/powercap/dtpm.c | 16 +---------------
+>   1 file changed, 1 insertion(+), 15 deletions(-)
 > 
-> Regards,
-> Lorenzo
+> diff --git a/drivers/powercap/dtpm.c b/drivers/powercap/dtpm.c
+> index f390665743c4..129d55bc705c 100644
+> --- a/drivers/powercap/dtpm.c
+> +++ b/drivers/powercap/dtpm.c
+> @@ -548,9 +548,7 @@ static int dtpm_for_each_child(const struct dtpm_node *hierarchy,
+>    */
+>   int dtpm_create_hierarchy(struct of_device_id *dtpm_match_table)
+>   {
+> -	const struct of_device_id *match;
+>   	const struct dtpm_node *hierarchy;
+> -	struct device_node *np;
+>   	int i, ret;
+>   
+>   	mutex_lock(&dtpm_lock);
+> @@ -567,19 +565,7 @@ int dtpm_create_hierarchy(struct of_device_id *dtpm_match_table)
+>   		goto out_pct;
+>   	}
+>   
+> -	ret = -ENODEV;
+> -	np = of_find_node_by_path("/");
+> -	if (!np)
+> -		goto out_err;
+> -
+> -	match = of_match_node(dtpm_match_table, np);
+> -
+> -	of_node_put(np);
+> -
+> -	if (!match)
+> -		goto out_err;
+> -
+> -	hierarchy = match->data;
+> +	hierarchy = of_machine_get_match_data(dtpm_match_table);
+>   	if (!hierarchy) {
+>   		ret = -EFAULT;
+>   		goto out_err;
+> 
 
-Hi Lorenzo,
+I don't know if Daniel had a chance to look at it, but I can help him.
 
-Thanks for your review.
+The patch looks OK.
 
-You are correct that 'wskb' is not allocated in this error path. 
-However, my patch is intended to free 'sskb', which was allocated 
-earlier in the function. Without this change, 'sskb' is leaked if
-mt76_connac_mcu_alloc_wtbl_req() fails.
+The extra return error value which is removed doesn't harm the client of
+this function in other subsystem.
 
-This approach is similar to the error handling logic later in the
-function, where a failure in sending one skb results in the other one
-being freed.
-
-Hope this clarifies.
-
-> >  		return PTR_ERR(wtbl_hdr);
-> > +	}
-> >  
-> >  	if (enable) {
-> >  		mt76_connac_mcu_wtbl_generic_tlv(&dev->mt76, wskb, vif, sta,
-> > -- 
-> > 2.34.1
-> > 
-
-Best Regards,
-Zilin Guan
+Reviewed-by: Lukasz Luba <lukasz.luba@arm.com>
 
