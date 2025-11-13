@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81594CD5BAF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 09:50:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8307CD5BAF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 09:54:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AurxHB+1uui5/KyI6RjD3+/Z2czI5L1MebXDzDX6mLY=; b=LG/g3XwBmHak51xiJpUDg40zBv
-	Sz9K//PFGL08VD5DV6dMt3Pu+ub8XgtB+RKdIA9Ywl8b5rrpjzjygIM+y8wm3qcBemFol8+yITo7m
-	VC+5HzpcJ+24eGHiS3llVrCI7SToIe5tcLXUs+KBuSAXsnyHJLWu5FsX0VFHXpXPfzk3YDWXN1QDt
-	8k1j/Xnm83MAAP6+QYsesl4BNsbVXwI+26d4n5NQyU4p9Jk//exDyttvYFR+OUcMvJ6Vh7+c97QXa
-	m4mLPPGdDemYkJoDIev4JkIX/ure9b3DqffrL65Z/FC1huw0xMstW5hqNT6kseXbzRlXiiA9+sxFJ
-	iuuMDvXg==;
+	bh=Nb4XXr6KkizPUPhjsN743zIm3TzJmUxq1zKhFwFcpIA=; b=zRYywPVGNoXDhqQVscWu5YLe2n
+	dKIhQI6xOeRqsDTdiFHZZHqDaCo+xYPskTxU4xQ26mZe9BwL6IhwiOoBnQAHYcATQEieqKVz6nlAo
+	iGAsNke5ZBsilfseOcwDftMPYJIGbcyvF7YuFAUMlXqTpQnggW3jYCCqxK4eZDZWLvr9i+69rsvHw
+	38iNyfIcH+P+kLBr3JKs17TsCPFh7T4Yr+17B+ukSLBp+k7xyhOA9Av4gkKzejZMPh9UGS816/c52
+	oOj6GZHIrZXrmztdRv6nL2riECEw1jtw/cglNQDXbby7JTl7wgXCwHhUdVwvwkDmrNUWvuzvC3Xqm
+	DI0Z7YFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJTxz-0000000AEJd-25P9;
-	Thu, 13 Nov 2025 09:50:11 +0000
+	id 1vJU2H-0000000AEmi-2Zlj;
+	Thu, 13 Nov 2025 09:54:37 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJTxx-0000000AEIT-00iZ;
-	Thu, 13 Nov 2025 09:50:10 +0000
+	id 1vJU2F-0000000AEmC-0Quh;
+	Thu, 13 Nov 2025 09:54:36 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E89CC12FC;
-	Thu, 13 Nov 2025 01:49:57 -0800 (PST)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B891A12FC;
+	Thu, 13 Nov 2025 01:54:25 -0800 (PST)
 Received: from [10.57.40.163] (unknown [10.57.40.163])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E5B913F66E;
-	Thu, 13 Nov 2025 01:49:59 -0800 (PST)
-Message-ID: <953f1aaa-d8bd-4091-9bf6-9538ccdd3bfa@arm.com>
-Date: Thu, 13 Nov 2025 09:50:40 +0000
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 266A73F5A1;
+	Thu, 13 Nov 2025 01:54:28 -0800 (PST)
+Message-ID: <d0238361-8953-4f08-8c04-bacaf0465366@arm.com>
+Date: Thu, 13 Nov 2025 09:55:09 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 09/11] powercap: dtpm: Simplify with
- of_machine_get_match_data()
+Subject: Re: [PATCH v2 01/11] of: Add wrappers to match root node with OF
+ device ID tables
 To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
  Samuel Holland <samuel@sholland.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Viresh Kumar <viresh.kumar@linaro.org>, "Rafael J. Wysocki"
- <rafael@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
- Daniel Lezcano <daniel.lezcano@kernel.org>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Saravana Kannan <saravanak@google.com>,
+ <rafael@kernel.org>, Saravana Kannan <saravanak@google.com>,
  Jonathan Hunter <jonathanh@nvidia.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- Maximilian Luz <luzmaximilian@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Daniel Lezcano <daniel.lezcano@kernel.org>, Hans de Goede
+ <hansg@kernel.org>, Maximilian Luz <luzmaximilian@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>, Bjorn Andersson
+ <andersson@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>,
  =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
- Konrad Dybcio <konradybcio@kernel.org>,
- Bjorn Andersson <andersson@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>, linux-pm@vger.kernel.org,
- Chen-Yu Tsai <wens@kernel.org>, Yangtao Li <tiny.windzz@gmail.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, Rob Herring <robh@kernel.org>,
+ linux-pm@vger.kernel.org, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@kernel.org>,
+ Yangtao Li <tiny.windzz@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-sunxi@lists.linux.dev, linux-arm-msm@vger.kernel.org,
  platform-driver-x86@vger.kernel.org, linux-tegra@vger.kernel.org,
- Rob Herring <robh@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Hans de Goede <hansg@kernel.org>
+ Konrad Dybcio <konradybcio@kernel.org>
 References: <20251112-b4-of-match-matchine-data-v2-0-d46b72003fd6@linaro.org>
- <20251112-b4-of-match-matchine-data-v2-9-d46b72003fd6@linaro.org>
+ <20251112-b4-of-match-matchine-data-v2-1-d46b72003fd6@linaro.org>
 Content-Language: en-US
 From: Lukasz Luba <lukasz.luba@arm.com>
-In-Reply-To: <20251112-b4-of-match-matchine-data-v2-9-d46b72003fd6@linaro.org>
+In-Reply-To: <20251112-b4-of-match-matchine-data-v2-1-d46b72003fd6@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_015009_175212_41A5A1B2 
-X-CRM114-Status: GOOD (  16.28  )
+X-CRM114-CacheID: sfid-20251113_015435_595013_6268D282 
+X-CRM114-Status: GOOD (  23.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,64 +86,131 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
+Hi Krzysztof,
 
 On 11/12/25 10:28, Krzysztof Kozlowski wrote:
-> Replace open-coded getting root OF node, matching against it and getting
-> the match data with new of_machine_get_match_data() helper.
+> Several drivers duplicate same code for getting reference to the root
+> node, matching it against 'struct of_device_id' table and getting out
+> the match data from the table entry.
 > 
+> There is a of_machine_compatible_match() wrapper but it takes array of
+> strings, which is not suitable for many drivers since they want the
+> driver data associated with each compatible.
+> 
+> Add two wrappers, similar to existing of_device_get_match_data():
+> 1. of_machine_device_match() doing only matching against 'struct
+>     of_device_id' and returning bool.
+> 2. of_machine_get_match_data() doing the matching and returning
+>     associated driver data for found compatible.
+> 
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> 
 > ---
 > 
-> Depends on the first OF patch.
+> All further patches depend on this.
 > ---
->   drivers/powercap/dtpm.c | 16 +---------------
->   1 file changed, 1 insertion(+), 15 deletions(-)
+>   drivers/of/base.c  | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+>   include/linux/of.h | 13 +++++++++++++
+>   2 files changed, 60 insertions(+)
 > 
-> diff --git a/drivers/powercap/dtpm.c b/drivers/powercap/dtpm.c
-> index f390665743c4..129d55bc705c 100644
-> --- a/drivers/powercap/dtpm.c
-> +++ b/drivers/powercap/dtpm.c
-> @@ -548,9 +548,7 @@ static int dtpm_for_each_child(const struct dtpm_node *hierarchy,
->    */
->   int dtpm_create_hierarchy(struct of_device_id *dtpm_match_table)
+> diff --git a/drivers/of/base.c b/drivers/of/base.c
+> index 7043acd971a0..0b65039ece53 100644
+> --- a/drivers/of/base.c
+> +++ b/drivers/of/base.c
+> @@ -434,6 +434,53 @@ bool of_machine_compatible_match(const char *const *compats)
+>   }
+>   EXPORT_SYMBOL(of_machine_compatible_match);
+>   
+> +/**
+> + * of_machine_device_match - Test root of device tree against a of_device_id array
+> + * @matches:	NULL terminated array of of_device_id match structures to search in
+> + *
+> + * Returns true if the root node has any of the given compatible values in its
+> + * compatible property.
+> + */
+> +bool of_machine_device_match(const struct of_device_id *matches)
+> +{
+> +	struct device_node *root;
+> +	const struct of_device_id *match = NULL;
+> +
+> +	root = of_find_node_by_path("/");
+> +	if (root) {
+> +		match = of_match_node(matches, root);
+> +		of_node_put(root);
+> +	}
+> +
+> +	return match != NULL;
+> +}
+> +EXPORT_SYMBOL(of_machine_device_match);
+> +
+> +/**
+> + * of_machine_get_match_data - Tell if root of device tree has a matching of_match structure
+> + * @matches:	NULL terminated array of of_device_id match structures to search in
+> + *
+> + * Returns data associated with matched entry or NULL
+> + */
+> +const void *of_machine_get_match_data(const struct of_device_id *matches)
+> +{
+> +	const struct of_device_id *match;
+> +	struct device_node *root;
+> +
+> +	root = of_find_node_by_path("/");
+> +	if (!root)
+> +		return NULL;
+> +
+> +	match = of_match_node(matches, root);
+> +	of_node_put(root);
+> +
+> +	if (!match)
+> +		return NULL;
+> +
+> +	return match->data;
+> +}
+> +EXPORT_SYMBOL(of_machine_get_match_data);
+> +
+>   static bool __of_device_is_status(const struct device_node *device,
+>   				  const char * const*strings)
 >   {
-> -	const struct of_device_id *match;
->   	const struct dtpm_node *hierarchy;
-> -	struct device_node *np;
->   	int i, ret;
+> diff --git a/include/linux/of.h b/include/linux/of.h
+> index 121a288ca92d..01bb3affcd49 100644
+> --- a/include/linux/of.h
+> +++ b/include/linux/of.h
+> @@ -407,6 +407,8 @@ extern int of_alias_get_id(const struct device_node *np, const char *stem);
+>   extern int of_alias_get_highest_id(const char *stem);
 >   
->   	mutex_lock(&dtpm_lock);
-> @@ -567,19 +565,7 @@ int dtpm_create_hierarchy(struct of_device_id *dtpm_match_table)
->   		goto out_pct;
->   	}
+>   bool of_machine_compatible_match(const char *const *compats);
+> +bool of_machine_device_match(const struct of_device_id *matches);
+> +const void *of_machine_get_match_data(const struct of_device_id *matches);
 >   
-> -	ret = -ENODEV;
-> -	np = of_find_node_by_path("/");
-> -	if (!np)
-> -		goto out_err;
-> -
-> -	match = of_match_node(dtpm_match_table, np);
-> -
-> -	of_node_put(np);
-> -
-> -	if (!match)
-> -		goto out_err;
-> -
-> -	hierarchy = match->data;
-> +	hierarchy = of_machine_get_match_data(dtpm_match_table);
->   	if (!hierarchy) {
->   		ret = -EFAULT;
->   		goto out_err;
+>   /**
+>    * of_machine_is_compatible - Test root of device tree for a given compatible value
+> @@ -855,6 +857,17 @@ static inline bool of_machine_compatible_match(const char *const *compats)
+>   	return false;
+>   }
+>   
+> +static inline bool of_machine_device_match(const struct of_device_id *matches)
+> +{
+> +	return false;
+> +}
+> +
+> +static inline const void *
+> +of_machine_get_match_data(const struct of_device_id *matches)
+> +{
+> +	return NULL;
+> +}
+> +
+>   static inline bool of_console_check(const struct device_node *dn, const char *name, int index)
+>   {
+>   	return false;
 > 
 
-I don't know if Daniel had a chance to look at it, but I can help him.
+Makes sense based on the clean-up in dtpm.c (since I've been there
+I looked here as well).
 
-The patch looks OK.
-
-The extra return error value which is removed doesn't harm the client of
-this function in other subsystem.
+LGTM
 
 Reviewed-by: Lukasz Luba <lukasz.luba@arm.com>
+
+Regards,
+Lukasz
 
