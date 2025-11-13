@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82A19CD6E42
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 12:23:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55E61CD6E45
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 12:23:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UI6QQAOPX7hf8H+YMkIqF24Pmi3vYW+otOr+4+OeTDU=; b=slxKDdiduxKz7Ye3/PYo89ikz8
-	b1BZXUGj1kb6aKEYnhLBx+SW6SzdA2AJJG/rqr7yeI28kIo24UJuqxaoMYgJbCZajgYRXYLSZqjjD
-	ZnZ/SL9XyZwB87fyQk7pvlVWlLuHz6GnjFQahWmW8DisEK8p18DGonJZZk/nC6myoKTxzIfaQBvma
-	EXQ+wdXELvrg/ul/ot1yKFyMJ26eKc9OYFdV608eKjtjqvdSO6tzphH4eOGM2N/IPdDHhc2nvrGko
-	NH9JJsGmPOpUEzlg3z+1+BvV2fUm711LXD/fxSH/RxydStBP+Qg0EWlaG/iisGd9qLGSlS3EcpdRV
-	VsBBD9+g==;
+	bh=pfoYzyAiHqlT95hK6Ci4cSsppvY2FcvmiRjaWC8MTUo=; b=o66di632Qdt4USQ8mxbDxhJxQ5
+	zmKdzRQdMk6geMGepBzNswUDvPMciuADDzvMmG0gvUdtWkfdVtbCqzwCu6G4fJRUbXsMeRxbvoWgG
+	1Z+u1eNEV4x4YwJy1DUT418LpeklBcGiSdMkBj5mYekUz+sPDgISxKSmczi2onfUvbg/LJwYrb0/V
+	4sPZkuKiRitHa9Kbuo0G752qxiYqqRbDieAtXh+qEAcNPbd9j/TyZkEJUI7ojTHELP66axi5N9Hdy
+	UO226D4EMXinVPuD9FoAq+G3W4kgZ2X/sWXhxT/ghfF4NypKixIA0/NH43LTIgeoUOSuRaF6ZTuof
+	scKgldIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJWLp-0000000ARn5-2v32;
-	Thu, 13 Nov 2025 12:22:59 +0000
+	id 1vJWLs-0000000ARq6-0tmR;
+	Thu, 13 Nov 2025 12:23:00 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJWLe-0000000ARbR-36Xc;
-	Thu, 13 Nov 2025 12:22:49 +0000
+	id 1vJWLf-0000000ARbS-0uZF;
+	Thu, 13 Nov 2025 12:22:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1763036562;
-	bh=DGRoafYf75LyiDgJC7aeQ1lFqtCY6dpeDmoD5LwAHNM=;
+	s=mail; t=1763036563;
+	bh=JFgZElGuW7huMLg5IeTiiaMe7V7hDDxmcenUv8VvhSo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Z5N3z00gKxPzdfpINYTnKSo4FKp3DoJEr8ZFxLiwVrTrRwB8YOV1wClPNwTJnXJzR
-	 HVTQIOPAokq+lgFhKwJxOqtYQemv6A9r2V15H1fHY2DWRLeb+SjxRdXNNO7E6iGSfk
-	 j3fRVMdZ3cTk5VF06aJEfCnlsVkCrTTTQphCHbnICa+IiEe/bFI1MsWAzjaq24deX2
-	 ZozRybKH97Culkmvt/baAsENSENu9PMOOyFuHRd7MZH3GvnrsseLachfdsNjp+ePSD
-	 zY23S/dWBLqd8A7Sx7QvR8SW42JFkAWcZSeBF9ChYSl+LlXiDvke5TPQVoexpA2OxW
-	 2hf8+ftYP+zJw==
+	b=jdaT2YM10QNyrQb4uPfRepfG9a90LnHiYl+WClEpOpiN6E9jWAfbDQDLzds2Zi17p
+	 yGHOxASDgHDbrC3kxt/4vD9Y64iTUUQIeQaWg19rUwUSob9YPgrzc+I3xYEf56lb8F
+	 FpDFx1y6A7scsOWlNlSmePFPtFPj2iWln7E/BnHX3gZZZO5pydt4zPRviDs2BzmSGa
+	 soHqTzBQ6388YsykB6RBOJND7kejaY2MLrxwoKiATdqb4bDgFNLDtc3WoCUX+K74GP
+	 XZUNnfEiIW0K2fc512pBlEFtRfnAVBa0NAdFfRNR5zgCb6hkOhDKOCkqQEihBiAqpt
+	 rqfylKbOkCWmQ==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F153D17E1401;
-	Thu, 13 Nov 2025 13:22:41 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4E40017E151F;
+	Thu, 13 Nov 2025 13:22:43 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: dmaengine@vger.kernel.org
 Cc: sean.wang@mediatek.com,
@@ -58,17 +58,18 @@ Cc: sean.wang@mediatek.com,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH 6/8] dmaengine: mediatek: mtk-uart-apdma: Rename support_33bits to support_ext_addr
-Date: Thu, 13 Nov 2025 13:22:27 +0100
-Message-ID: <20251113122229.23998-7-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 8/8] dmaengine: mediatek: mtk-uart-apdma: Add support for Dimensity 9200
+Date: Thu, 13 Nov 2025 13:22:29 +0100
+Message-ID: <20251113122229.23998-9-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.51.1
 In-Reply-To: <20251113122229.23998-1-angelogioacchino.delregno@collabora.com>
 References: <20251113122229.23998-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_042248_001161_69C98F09 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20251113_042248_021265_586957BF 
+X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,67 +84,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for adding support for SoCs with APDMA IP versions
-supporting more than 33 bits addressing, rename the support_33bits
-variable to support_ext_addr to signal support for extended, above
-4GB, addressing.
+Add a compatible string and match data for the APDMA IP version
+found in the MediaTek Dimensity 9200 MT6985 SoC; this supports
+extended addressing with up to 35 bits.
 
-This change is cosmetic only, and brings no functional differences.
+Other SoCs with this IP version also include the Dimensity 9400
+MT6991 and Kompanio Ultra MT8196 (which don't need a specific
+compatible in this driver and can reuse the mt6985 one).
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/dma/mediatek/mtk-uart-apdma.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/dma/mediatek/mtk-uart-apdma.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
-index 2398b440b12a..802a4d6c11fa 100644
+index dfcfc618bb8c..ead00636b048 100644
 --- a/drivers/dma/mediatek/mtk-uart-apdma.c
 +++ b/drivers/dma/mediatek/mtk-uart-apdma.c
-@@ -77,7 +77,7 @@
- struct mtk_uart_apdmadev {
- 	struct dma_device ddev;
- 	struct clk *clk;
--	bool support_33bits;
-+	bool support_ext_addr;
- 	unsigned int dma_requests;
+@@ -471,6 +471,7 @@ static const struct of_device_id mtk_uart_apdma_match[] = {
+ 	{ .compatible = "mediatek,mt6577-uart-dma", .data = (void *)32 },
+ 	{ .compatible = "mediatek,mt6795-uart-dma", .data = (void *)33 },
+ 	{ .compatible = "mediatek,mt6835-uart-dma", .data = (void *)34 },
++	{ .compatible = "mediatek,mt6985-uart-dma", .data = (void *)35 },
+ 	{ /* sentinel */ },
  };
- 
-@@ -148,7 +148,7 @@ static void mtk_uart_apdma_start_tx(struct mtk_chan *c)
- 		mtk_uart_apdma_write(c, VFF_WPT, 0);
- 		mtk_uart_apdma_write(c, VFF_INT_FLAG, VFF_TX_INT_CLR_B);
- 
--		if (mtkd->support_33bits)
-+		if (mtkd->support_ext_addr)
- 			mtk_uart_apdma_write(c, VFF_ADDR2, upper_32_bits(d->addr));
- 	}
- 
-@@ -191,7 +191,7 @@ static void mtk_uart_apdma_start_rx(struct mtk_chan *c)
- 		mtk_uart_apdma_write(c, VFF_RPT, 0);
- 		mtk_uart_apdma_write(c, VFF_INT_FLAG, VFF_RX_INT_CLR_B);
- 
--		if (mtkd->support_33bits)
-+		if (mtkd->support_ext_addr)
- 			mtk_uart_apdma_write(c, VFF_ADDR2, upper_32_bits(d->addr));
- 	}
- 
-@@ -297,7 +297,7 @@ static int mtk_uart_apdma_alloc_chan_resources(struct dma_chan *chan)
- 		goto err_pm;
- 	}
- 
--	if (mtkd->support_33bits)
-+	if (mtkd->support_ext_addr)
- 		mtk_uart_apdma_write(c, VFF_ADDR2, VFF_ADDR2_CLR_B);
- 
- err_pm:
-@@ -495,7 +495,7 @@ static int mtk_uart_apdma_probe(struct platform_device *pdev)
- 
- 	bit_mask = (unsigned int)(uintptr_t)of_device_get_match_data(&pdev->dev);
- 	if (bit_mask > 32)
--		mtkd->support_33bits = true;
-+		mtkd->support_ext_addr = true;
- 
- 	rc = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(bit_mask));
- 	if (rc)
+ MODULE_DEVICE_TABLE(of, mtk_uart_apdma_match);
 -- 
 2.51.1
 
