@@ -4,71 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A2B3CD6E43
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 12:23:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27F57CD8C9D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 16:19:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JSjXl1RjJvdVPz4uVuMMCqQ3OHR+lxnQpnWH/8R9xaE=; b=GxHcfJdt1HttKpT0oQSF+iEZni
-	2Ktv2YX2t+ty1be4Dt7mkfGIKH36MpJ2ebhaJnSbN1zHdoy831nWwvP/+/5gxQIl0oJ08QnZcu/EL
-	/KBezELZCdbRr5FXaE4+rci99J+e/cxG8RAESHrBVuI0F/IqxXkUY0+MpPvVb+2NU+LfEZ019jAv/
-	s2kRQ7GtWgOynlOYN20lDaxpaDuJtFQqpxO1FL2GjoFUgFDC+P3T53lbqso0eA+UpETN9xGYLnesZ
-	g3eJQle7Op6C8iqgLmxf09l1xQt5sUfkM7bqMZTIiBEr+rw1PIlVmPodSBHIYEAw6PAdDxvOCFM3K
-	cOWBViiw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=j0jrR3573DfEeE6mK2J+RTXekLmf87bfO87MMshSXLY=; b=O429G4tiB7KTKj
+	Wo3t6H5l8df8e3ekTJyWWDABuAXnzqpdHQXjwFpflRgdryjq9psreqbriw5RvCNp4Ypi3dg/xAcRg
+	6qrmFTAlpK9CI5u8XyNrxDJUBMi5ebZE17MsrUbL+CHWSqkLHT6j1wBcl4hsAw8N+kA83tWqbySGl
+	QnvNKMoKjgbGCHBDuQ+05bsNamYExGI56Eh+K+cPUNU+05S2YmEsBr3T7QwVC6Rk1+t7vIfxIHEBh
+	lZWMEzoPsupHLaSDybE/92vYGL6YlAcq98JhjNLAD1iDCvoDFqyt0QRJ4HO1/UdL3AyJP1Xt3yInx
+	3FE+xmK1BbT2Z2Sl8djw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJWLt-0000000ARrV-0lTc;
-	Thu, 13 Nov 2025 12:23:01 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vJa2V-0000000AmpI-41fc;
+	Thu, 13 Nov 2025 16:19:15 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJWLf-0000000ARbT-0Ulj;
-	Thu, 13 Nov 2025 12:22:50 +0000
+	id 1vJa2S-0000000Amnr-2eLp;
+	Thu, 13 Nov 2025 16:19:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1763036561;
-	bh=f8YYs7Jtpjk+WCoX4FIuodOSedKrGO1EncRMDJxwpIg=;
+	s=mail; t=1763050749;
+	bh=ZbbaaHUsQVLypoOUIIZkHe7iZlm+xeNap25LcZ0bsIk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EJ3jZoDq6ylhDglSq4WfGnX7ldDjDX1VjLcH77Zeh/aDi66YZZCRJhb3aRdWEoQLR
-	 teJKN5eqIeNBX1yC2pIt5PPlnQFUGiL7gxNgkXQ//Bcsp5siRdHExMlTO86yzT5+ih
-	 Nn9pAtloB3Sml3DdlNprkgYtf9aM9kdqEPkGjz40Yv9zruUZG1SAmwvDYMglxXEc7x
-	 +jh2V4K81zoYiVFPTWZUXHyAzsRarLRWuhOpJ40vLOdweVMyFH2DLboPF9EZzCIdMt
-	 sigq3NIk55kwo1bLmcwCuzSMzvxcmyVDrUzqwVGcPD86ZWD2SfnO/oeQ8fjlbbQbc6
-	 E5tILBREiZgVg==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	b=L08N9R9H05FYgeI9He5wHagRWiiNK1wBzRiAIi1E0bwjHP0B2EawoC/wrhPwCN6Y5
+	 jhuQHRwtEgVNqhy1K8RlbKaA6mevZjcmqSfVk09V1KBpkYqzapV1YnScBMrbOIYjOX
+	 VO4RxYBGG1jvY89tItdFBj+QnC0NoujI7MTpkhy770bdBzoC53sQLi2f8D6yMnAv+L
+	 XslBpTDc5Z4swz4lXyOEr3alCOFf9ZUXdjRUlAQxuWVXekfL64byL9cFcYkfNoWBly
+	 iuaXggnvrQNWwSLGZXDdPxCELz6+ayfY5Rg8wYmCTxE7/qW4zGxeSh5vSq1nYDiIdg
+	 60E/apd/bqVHA==
+Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:9cb8:f653:99e7:c419])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4C56217E13DC;
-	Thu, 13 Nov 2025 13:22:41 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: dmaengine@vger.kernel.org
-Cc: sean.wang@mediatek.com,
-	vkoul@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	long.cheng@mediatek.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: [PATCH 5/8] dmaengine: mediatek: uart-apdma: Fix above 4G addressing TX/RX
-Date: Thu, 13 Nov 2025 13:22:26 +0100
-Message-ID: <20251113122229.23998-6-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.51.1
-In-Reply-To: <20251113122229.23998-1-angelogioacchino.delregno@collabora.com>
-References: <20251113122229.23998-1-angelogioacchino.delregno@collabora.com>
+	(Authenticated sender: laura.nao)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B644117E00B0;
+	Thu, 13 Nov 2025 17:19:07 +0100 (CET)
+From: Laura Nao <laura.nao@collabora.com>
+To: daniel.lezcano@linaro.org
+Subject: Re: [PATCH RESEND v3 3/9] thermal/drivers/mediatek/lvts: Guard against zero temp_factor in lvts_raw_to_temp
+Date: Thu, 13 Nov 2025 17:18:59 +0100
+Message-Id: <20251113161859.280743-1-laura.nao@collabora.com>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <84b9fd00-ce75-43bf-a53b-48818628f7e2@linaro.org>
+References: <84b9fd00-ce75-43bf-a53b-48818628f7e2@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_042248_014086_6FFD1F95 
-X-CRM114-Status: GOOD (  14.89  )
+X-CRM114-CacheID: sfid-20251113_081912_840348_69282A67 
+X-CRM114-Status: GOOD (  20.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,78 +68,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, laura.nao@collabora.com, kernel@collabora.com, bchihi@baylibre.com, robh@kernel.org, nfraprado@collabora.com, wenst@chromium.org, rui.zhang@intel.com, colin.i.king@gmail.com, devicetree@vger.kernel.org, conor+dt@kernel.org, arnd@arndb.de, linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org, srini@kernel.org, rafael@kernel.org, u.kleine-koenig@baylibre.com, krzk+dt@kernel.org, lukasz.luba@arm.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The VFF_4G_SUPPORT register is named differently in datasheets,
-and its name is "VFF_ADDR2"; was this named correctly from the
-beginning it would've been clearer that there was a mistake in
-the programming sequence.
+Hi Daniel,
 
-This register is supposed to hold the high bits to support the
-DMA addressing above 4G (so, more than 32 bits) and not a bit
-to "enable" the support for VFF 4G.
+On 11/10/25 13:42, Daniel Lezcano wrote:
+> On 10/16/25 16:21, Laura Nao wrote:
+>> Add a guard against zero temp_factor in lvts_raw_to_temp() to prevent
+>> division by zero and ensure safe conversion. 
+>
+> Is the temp_factor something else than a ro data statically initialized by the lvts_data structure ?
+>
+> It is pointless to handle the case where the temp_factor is zero. If we read the temperature the kernel crashes immediately (which means it was not tested).
+>
+> The temp_factor is an internal value of the driver. If the temp_factor is zero, the driver is buggy and should be fixed.
+>
+>
 
-Fix the name of this register, and also fix its usage by writing
-the upper 32 bits of the dma_addr_t on it when the SoC supports
-such feature.
+That’s right - if temp_factor is zero, that indicates broken platform 
+data. I propose failing the probe instead of adding a runtime guard, 
+since this condition should never happen in a valid configuration. This 
+way, we make the developer aware of the issue early and avoid a kernel 
+crash at runtime.
 
-Fixes: 9135408c3ace ("dmaengine: mediatek: Add MediaTek UART APDMA support")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/dma/mediatek/mtk-uart-apdma.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+I'll send out a v4 to drop the "if (temp_factor == 0)" checks and 
+replace the warning with an error:
 
-diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
-index b906e59f4c6d..2398b440b12a 100644
---- a/drivers/dma/mediatek/mtk-uart-apdma.c
-+++ b/drivers/dma/mediatek/mtk-uart-apdma.c
-@@ -41,7 +41,7 @@
- #define VFF_STOP_CLR_B		0
- #define VFF_EN_CLR_B		0
- #define VFF_INT_EN_CLR_B	0
--#define VFF_4G_SUPPORT_CLR_B	0
-+#define VFF_ADDR2_CLR_B		0
- 
- /*
-  * interrupt trigger level for tx
-@@ -72,7 +72,7 @@
- /* TX: the buffer size SW can write. RX: the buffer size HW can write. */
- #define VFF_LEFT_SIZE		0x40
- #define VFF_DEBUG_STATUS	0x50
--#define VFF_4G_SUPPORT		0x54
-+#define VFF_ADDR2		0x54
- 
- struct mtk_uart_apdmadev {
- 	struct dma_device ddev;
-@@ -149,7 +149,7 @@ static void mtk_uart_apdma_start_tx(struct mtk_chan *c)
- 		mtk_uart_apdma_write(c, VFF_INT_FLAG, VFF_TX_INT_CLR_B);
- 
- 		if (mtkd->support_33bits)
--			mtk_uart_apdma_write(c, VFF_4G_SUPPORT, VFF_4G_EN_B);
-+			mtk_uart_apdma_write(c, VFF_ADDR2, upper_32_bits(d->addr));
- 	}
- 
- 	mtk_uart_apdma_write(c, VFF_EN, VFF_EN_B);
-@@ -192,7 +192,7 @@ static void mtk_uart_apdma_start_rx(struct mtk_chan *c)
- 		mtk_uart_apdma_write(c, VFF_INT_FLAG, VFF_RX_INT_CLR_B);
- 
- 		if (mtkd->support_33bits)
--			mtk_uart_apdma_write(c, VFF_4G_SUPPORT, VFF_4G_EN_B);
-+			mtk_uart_apdma_write(c, VFF_ADDR2, upper_32_bits(d->addr));
- 	}
- 
- 	mtk_uart_apdma_write(c, VFF_INT_EN, VFF_RX_INT_EN_B);
-@@ -298,7 +298,7 @@ static int mtk_uart_apdma_alloc_chan_resources(struct dma_chan *chan)
- 	}
- 
- 	if (mtkd->support_33bits)
--		mtk_uart_apdma_write(c, VFF_4G_SUPPORT, VFF_4G_SUPPORT_CLR_B);
-+		mtk_uart_apdma_write(c, VFF_ADDR2, VFF_ADDR2_CLR_B);
- 
- err_pm:
- 	pm_runtime_put_noidle(mtkd->ddev.dev);
--- 
-2.51.1
+if (!lvts_data->temp_factor)
+	return dev_err_probe(dev, -EINVAL, "temp_factor should never be zero; check platform data.\n");
+
+Best,
+
+Laura
+
+>> Fixes: 6725a29321e4 ("thermal/drivers/mediatek/lvts_thermal: Make coeff configurable")
+>> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+>> Reviewed-by: Fei Shao <fshao@chromium.org>
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> Signed-off-by: Laura Nao <laura.nao@collabora.com>
+>> ---
+>>   drivers/thermal/mediatek/lvts_thermal.c | 12 +++++++++---
+>>   1 file changed, 9 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+>> index 1c54d0b75b1a..4ef549386add 100644
+>> --- a/drivers/thermal/mediatek/lvts_thermal.c
+>> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+>> @@ -284,11 +284,14 @@ static int lvts_raw_to_temp(u32 raw_temp, int temp_factor)
+>>     static u32 lvts_temp_to_raw(int temperature, int temp_factor)
+>>   {
+>> -    u32 raw_temp = ((s64)(golden_temp_offset - temperature)) << 14;
+>> +    u32 raw_temp;
+>>   -    raw_temp = div_s64(raw_temp, -temp_factor);
+>> +    if (temp_factor == 0)
+>> +        return temperature;
+>>   -    return raw_temp;
+>> +    raw_temp = ((s64)(golden_temp_offset - temperature)) << 14;
+>> +
+>> +    return div_s64(raw_temp, -temp_factor);
+>>   }
+>>     static int lvts_get_temp(struct thermal_zone_device *tz, int *temp)
+>> @@ -1346,6 +1349,9 @@ static int lvts_probe(struct platform_device *pdev)
+>>       if (irq < 0)
+>>           return irq;
+>>   +    if (!lvts_data->temp_factor)
+>> +        dev_warn(dev, "temp_factor should never be zero; check platform data.\n");
+>> +
+>>       golden_temp_offset = lvts_data->temp_offset;
+>>         ret = lvts_domain_init(dev, lvts_td, lvts_data); 
+> If
+>
+>
+>
+>
+>
 
 
