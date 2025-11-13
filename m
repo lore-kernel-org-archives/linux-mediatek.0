@@ -4,74 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8307CD5BAF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 09:54:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14753CD5BC2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 10:58:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nb4XXr6KkizPUPhjsN743zIm3TzJmUxq1zKhFwFcpIA=; b=zRYywPVGNoXDhqQVscWu5YLe2n
-	dKIhQI6xOeRqsDTdiFHZZHqDaCo+xYPskTxU4xQ26mZe9BwL6IhwiOoBnQAHYcATQEieqKVz6nlAo
-	iGAsNke5ZBsilfseOcwDftMPYJIGbcyvF7YuFAUMlXqTpQnggW3jYCCqxK4eZDZWLvr9i+69rsvHw
-	38iNyfIcH+P+kLBr3JKs17TsCPFh7T4Yr+17B+ukSLBp+k7xyhOA9Av4gkKzejZMPh9UGS816/c52
-	oOj6GZHIrZXrmztdRv6nL2riECEw1jtw/cglNQDXbby7JTl7wgXCwHhUdVwvwkDmrNUWvuzvC3Xqm
-	DI0Z7YFg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Pux3hN3Gl7vLivHnYvNqjnFb+a2LWEYfciZAIz5y2kE=; b=qcSVOPV8yt8DT1giEddUZvMyWZ
+	0cqeB7aPyCTMfFx9DY8+1cILkBRzTbm+DoI1Yhoo9IFICgG8yqZC6u905YMTtDLaMWpNlxXTtNzVE
+	PrP4E3G4gz1sQT3LFDvjnAuutleoM33wTG6pCcghZSM9o0kAM3LdBMr+G8w+0I7B8//qqNp2ui2xJ
+	3sz0DGyZ4U+och/+P/cqOnhvqVlhvXcBBd8uZSpdBEpmo0DfitAiIkKas598FQxPGsGdOPneWWh/l
+	1UdFTKT6Kv8mokYmDOBTk3yUdiWhx/cm9FaqccZUYYDXEqXXE7VTrmhE8Bmat4kYllTnIFoAvdHz2
+	EslAbGrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJU2H-0000000AEmi-2Zlj;
-	Thu, 13 Nov 2025 09:54:37 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJU2F-0000000AEmC-0Quh;
-	Thu, 13 Nov 2025 09:54:36 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B891A12FC;
-	Thu, 13 Nov 2025 01:54:25 -0800 (PST)
-Received: from [10.57.40.163] (unknown [10.57.40.163])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 266A73F5A1;
-	Thu, 13 Nov 2025 01:54:28 -0800 (PST)
-Message-ID: <d0238361-8953-4f08-8c04-bacaf0465366@arm.com>
-Date: Thu, 13 Nov 2025 09:55:09 +0000
+	id 1vJV1b-0000000ALRy-3qaV;
+	Thu, 13 Nov 2025 10:57:59 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vJV1X-0000000ALQ8-3f5b;
+	Thu, 13 Nov 2025 10:57:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=Pux3hN3Gl7vLivHnYvNqjnFb+a2LWEYfciZAIz5y2kE=; b=lyrDlTBuN+tIi0mnoEc2sf0Xt6
+	ZIhkEwsTYMAQldfj4iH1fc6gdZnCGaiUBtaeeUHiGTNPy1SZoJxU49Lu0CnWYwJ+/8uUOCW6MKd73
+	BMEiaolNJwlmOc0NqDW1YJzF5oHFyNEpByt0cv5PrETzMpovJz2swK8gWPzR7lpo4fVm/lFujLkQ3
+	CGcTQKPPgFW4rvE0wQDZGxXdDN0ZrRiUgHHWUWfKxiJALhk0ZuL0/jknMlymDtDVtd/NC9BA7eowp
+	sCDLmaXd258ETRBpoqZ4XQMTuoTGU+z8m8UTo9UDpeF0uIVlGS91nj7psUU87x1wDzuWOv2REyXHi
+	FjyBJ37A==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vJU9o-0000000HZvz-29SI;
+	Thu, 13 Nov 2025 10:02:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id B1AAB41992;
+	Thu, 13 Nov 2025 10:57:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26E90C19422;
+	Thu, 13 Nov 2025 10:57:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763031465;
+	bh=OMfFW1nnKw5k2mezbZUycTzr4g1sGGxhFbFHTc77Xdw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=GyS+VXkBGeRBeL5aBOjs4Sn+VEaE8YGlvkKK2hPFzt7EwSjw7KcbtxQVJ3iXn4ybL
+	 wz9BbOzaNDw12FDRBwsGzz3aEM2VaycoDGFswsIVB9Qxw/CRx6NroC8NhBlKnVebQ0
+	 WeSpZqhOwDJarwAc+UEFyNGVkIck1h75Vue3D/qw8nWTBWcNoOtNzw40HLySVKuP86
+	 +my6QnYEhxrsArnkQjOOWBJaZ90wuoIypbYpfTIH9o6K/b97vTX0ujhlZtF4HnT8uf
+	 u5IXhpTj20X16k4aTVjRilFqJ6qpyh3LrRLH9AFpeK2EU0znmDMOWiph3Badx6zl+C
+	 Kjphjdzx0Bkwg==
+Date: Thu, 13 Nov 2025 11:57:42 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Zilin Guan <zilin@seu.edu.cn>
+Cc: angelogioacchino.delregno@collabora.com, jianhao.xu@seu.edu.cn,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org,
+	matthias.bgg@gmail.com, nbd@nbd.name, ryder.lee@mediatek.com,
+	sean.wang@mediatek.com, shayne.chen@mediatek.com
+Subject: Re: [PATCH net] mt76: mt7615: Fix memory leak in
+ mt7615_mcu_wtbl_sta_add()
+Message-ID: <aRW5phMmzul8wTn-@lore-desk>
+References: <aRWF9QJuwGaDlUvT@lore-desk>
+ <20251113094135.348383-1-zilin@seu.edu.cn>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 01/11] of: Add wrappers to match root node with OF
- device ID tables
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Samuel Holland <samuel@sholland.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Viresh Kumar <viresh.kumar@linaro.org>, "Rafael J. Wysocki"
- <rafael@kernel.org>, Saravana Kannan <saravanak@google.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Daniel Lezcano <daniel.lezcano@kernel.org>, Hans de Goede
- <hansg@kernel.org>, Maximilian Luz <luzmaximilian@gmail.com>,
- Thomas Gleixner <tglx@linutronix.de>, Bjorn Andersson
- <andersson@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>, Rob Herring <robh@kernel.org>,
- linux-pm@vger.kernel.org, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Chen-Yu Tsai <wens@kernel.org>,
- Yangtao Li <tiny.windzz@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-arm-msm@vger.kernel.org,
- platform-driver-x86@vger.kernel.org, linux-tegra@vger.kernel.org,
- Konrad Dybcio <konradybcio@kernel.org>
-References: <20251112-b4-of-match-matchine-data-v2-0-d46b72003fd6@linaro.org>
- <20251112-b4-of-match-matchine-data-v2-1-d46b72003fd6@linaro.org>
-Content-Language: en-US
-From: Lukasz Luba <lukasz.luba@arm.com>
-In-Reply-To: <20251112-b4-of-match-matchine-data-v2-1-d46b72003fd6@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="39OyxfwhcaPPfO4y"
+Content-Disposition: inline
+In-Reply-To: <20251113094135.348383-1-zilin@seu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_015435_595013_6268D282 
-X-CRM114-Status: GOOD (  23.82  )
+X-CRM114-CacheID: sfid-20251113_100225_014802_63A23857 
+X-CRM114-Status: GOOD (  28.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,131 +90,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
 
-On 11/12/25 10:28, Krzysztof Kozlowski wrote:
-> Several drivers duplicate same code for getting reference to the root
-> node, matching it against 'struct of_device_id' table and getting out
-> the match data from the table entry.
-> 
-> There is a of_machine_compatible_match() wrapper but it takes array of
-> strings, which is not suitable for many drivers since they want the
-> driver data associated with each compatible.
-> 
-> Add two wrappers, similar to existing of_device_get_match_data():
-> 1. of_machine_device_match() doing only matching against 'struct
->     of_device_id' and returning bool.
-> 2. of_machine_get_match_data() doing the matching and returning
->     associated driver data for found compatible.
-> 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
-> 
-> All further patches depend on this.
-> ---
->   drivers/of/base.c  | 47 +++++++++++++++++++++++++++++++++++++++++++++++
->   include/linux/of.h | 13 +++++++++++++
->   2 files changed, 60 insertions(+)
-> 
-> diff --git a/drivers/of/base.c b/drivers/of/base.c
-> index 7043acd971a0..0b65039ece53 100644
-> --- a/drivers/of/base.c
-> +++ b/drivers/of/base.c
-> @@ -434,6 +434,53 @@ bool of_machine_compatible_match(const char *const *compats)
->   }
->   EXPORT_SYMBOL(of_machine_compatible_match);
->   
-> +/**
-> + * of_machine_device_match - Test root of device tree against a of_device_id array
-> + * @matches:	NULL terminated array of of_device_id match structures to search in
-> + *
-> + * Returns true if the root node has any of the given compatible values in its
-> + * compatible property.
-> + */
-> +bool of_machine_device_match(const struct of_device_id *matches)
-> +{
-> +	struct device_node *root;
-> +	const struct of_device_id *match = NULL;
-> +
-> +	root = of_find_node_by_path("/");
-> +	if (root) {
-> +		match = of_match_node(matches, root);
-> +		of_node_put(root);
-> +	}
-> +
-> +	return match != NULL;
-> +}
-> +EXPORT_SYMBOL(of_machine_device_match);
-> +
-> +/**
-> + * of_machine_get_match_data - Tell if root of device tree has a matching of_match structure
-> + * @matches:	NULL terminated array of of_device_id match structures to search in
-> + *
-> + * Returns data associated with matched entry or NULL
-> + */
-> +const void *of_machine_get_match_data(const struct of_device_id *matches)
-> +{
-> +	const struct of_device_id *match;
-> +	struct device_node *root;
-> +
-> +	root = of_find_node_by_path("/");
-> +	if (!root)
-> +		return NULL;
-> +
-> +	match = of_match_node(matches, root);
-> +	of_node_put(root);
-> +
-> +	if (!match)
-> +		return NULL;
-> +
-> +	return match->data;
-> +}
-> +EXPORT_SYMBOL(of_machine_get_match_data);
-> +
->   static bool __of_device_is_status(const struct device_node *device,
->   				  const char * const*strings)
->   {
-> diff --git a/include/linux/of.h b/include/linux/of.h
-> index 121a288ca92d..01bb3affcd49 100644
-> --- a/include/linux/of.h
-> +++ b/include/linux/of.h
-> @@ -407,6 +407,8 @@ extern int of_alias_get_id(const struct device_node *np, const char *stem);
->   extern int of_alias_get_highest_id(const char *stem);
->   
->   bool of_machine_compatible_match(const char *const *compats);
-> +bool of_machine_device_match(const struct of_device_id *matches);
-> +const void *of_machine_get_match_data(const struct of_device_id *matches);
->   
->   /**
->    * of_machine_is_compatible - Test root of device tree for a given compatible value
-> @@ -855,6 +857,17 @@ static inline bool of_machine_compatible_match(const char *const *compats)
->   	return false;
->   }
->   
-> +static inline bool of_machine_device_match(const struct of_device_id *matches)
-> +{
-> +	return false;
-> +}
-> +
-> +static inline const void *
-> +of_machine_get_match_data(const struct of_device_id *matches)
-> +{
-> +	return NULL;
-> +}
-> +
->   static inline bool of_console_check(const struct device_node *dn, const char *name, int index)
->   {
->   	return false;
-> 
+--39OyxfwhcaPPfO4y
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Makes sense based on the clean-up in dtpm.c (since I've been there
-I looked here as well).
+> On Thu, Nov 13, 2025 at 08:17:09AM +0100, Lorenzo Bianconi wrote:
+> > [-- Attachment #1: Type: text/plain, Size: 1475 bytes --]
+> >=20
+> > > In mt7615_mcu_wtbl_sta_add(), an skb sskb is allocated. If the
+> > > subsequent call to mt76_connac_mcu_alloc_wtbl_req() fails, the functi=
+on
+> > > returns an error without freeing sskb, leading to a memory leak.
+> > >=20
+> > > Fix this by calling dev_kfree_skb() on sskb in the error handling path
+> > > to ensure it is properly released.
+> > >=20
+> > > Fixes: 99c457d902cf9 ("mt76: mt7615: move mt7615_mcu_set_bmc to mt761=
+5_mcu_ops")
+> > > Signed-off-by: Zilin Guan <zilin@seu.edu.cn>
+> > > ---
+> > >  drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 4 +++-
+> > >  1 file changed, 3 insertions(+), 1 deletion(-)
+> > >=20
+> > > diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/driver=
+s/net/wireless/mediatek/mt76/mt7615/mcu.c
+> > > index 4064e193d4de..08ee2e861c4e 100644
+> > > --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+> > > +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+> > > @@ -874,8 +874,10 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_phy *phy, =
+struct ieee80211_vif *vif,
+> > >  	wtbl_hdr =3D mt76_connac_mcu_alloc_wtbl_req(&dev->mt76, &msta->wcid,
+> > >  						  WTBL_RESET_AND_SET, NULL,
+> > >  						  &wskb);
+> > > -	if (IS_ERR(wtbl_hdr))
+> > > +	if (IS_ERR(wtbl_hdr)) {
+> > > +		dev_kfree_skb(sskb);
+> >=20
+> > Hi Zilin,
+> >=20
+> > I can't see how this is useful since if mt76_connac_mcu_alloc_wtbl_req =
+returns
+> > an error, wskb will not be allocated.
+> >=20
+> > Regards,
+> > Lorenzo
+>=20
+> Hi Lorenzo,
+>=20
+> Thanks for your review.
+>=20
+> You are correct that 'wskb' is not allocated in this error path.=20
+> However, my patch is intended to free 'sskb', which was allocated=20
+> earlier in the function. Without this change, 'sskb' is leaked if
+> mt76_connac_mcu_alloc_wtbl_req() fails.
+>=20
+> This approach is similar to the error handling logic later in the
+> function, where a failure in sending one skb results in the other one
+> being freed.
+>=20
+> Hope this clarifies.
 
-LGTM
+yes, right. I misread the code. I agree with the fix.
 
-Reviewed-by: Lukasz Luba <lukasz.luba@arm.com>
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Regards,
-Lukasz
+>=20
+> > >  		return PTR_ERR(wtbl_hdr);
+> > > +	}
+> > > =20
+> > >  	if (enable) {
+> > >  		mt76_connac_mcu_wtbl_generic_tlv(&dev->mt76, wskb, vif, sta,
+> > > --=20
+> > > 2.34.1
+> > >=20
+>=20
+> Best Regards,
+> Zilin Guan
+
+--39OyxfwhcaPPfO4y
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaRW5pgAKCRA6cBh0uS2t
+rMwDAP47wALgPmIE6tUjCgJFQCsffcrKOTD677lZaRxgFK1KiQEAgtoWFZ4Rph8X
+FRyBF15dTBXErLYgBnyapoMTJ/x/gQw=
+=IWEV
+-----END PGP SIGNATURE-----
+
+--39OyxfwhcaPPfO4y--
 
