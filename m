@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84203CD4F28
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 06:24:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D6B3CD4F28
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 07:17:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TsCv3+cJ+T1nVfr75kjuiGgZn2uIqwLNHM/E0w+NzcM=; b=WyCnkBCj1Kiam92n2TAP5eGxp1
-	dfckP0O3nqVQ1vaWTRWRWEKxfnbVlBE5wO0wWLZN6z7dcNXMyykWI96q7Evn3kR5WoI2CZsuUDyzU
-	o77ydbbdGMLAszxGdHxDLOPEOotFLpd+VFJZ5VRQwYSIJZcrT920Otw5G/vII38Q6QhbsQmi/uVXP
-	74Vb/orQqaP2UOIQkZL9CEEOeG3C5P8Tjr3Oy3hVnG34psXZYKJs5SixBL3nHc5k/Vjj3hX5yaCAu
-	Mi6xbcMnsQqkzjJCF2+48W98npLiVRwIjbucZqUpDZm0T0NM9vs9tiCk5SxCAcen22ZlsNefnkjRc
-	x6Y8W/dg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2Qg2QVHThW3X+Uk9q9cbkaKJfTzK0QTxisU1xZ/OPtw=; b=gEH0OvvafnC8ytmWr6wIMxRQ9K
+	0AjF5msYXKyVv7xd/Tq/DTCy2lnd3oWcZ9rlyy6WE75XhEEU6l6TPQF/W7Iahbp6zGwuaISXUKCf8
+	O4zeRUdxZ6ZZTi31DJ4El3QByc9AHrDaWYVsh4fwY6SUNoyAUKbB+uhgTx7+QyArTvSKyHSQC9y/i
+	Z5v1mP19xjR0AXN86tq9rX1kGRcFh8GHZ3xwMcB/j+ST6ZW1MlXxuT0tP11v2WtKTqkNvMkH2w829
+	gYY42B06xC+/neuR5PpBeX1obo2+R3/WJISmXsRNgOPuzPpJo9US5e1IkaO9XuTCMG3MTfzqUUjam
+	SuGeJhLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJQkv-00000009xBE-0YI9;
-	Thu, 13 Nov 2025 06:24:29 +0000
-Received: from mail-m49197.qiye.163.com ([45.254.49.197])
+	id 1vJRZz-00000009zCE-3qEk;
+	Thu, 13 Nov 2025 07:17:15 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJQks-00000009xAh-1I93;
-	Thu, 13 Nov 2025 06:24:28 +0000
-Received: from LAPTOP-N070L597.localdomain (unknown [58.241.16.34])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 296eb37ed;
-	Thu, 13 Nov 2025 14:24:18 +0800 (GMT+08:00)
-From: Zilin Guan <zilin@seu.edu.cn>
-To: nbd@nbd.name
-Cc: lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
+	id 1vJRZx-00000009zBa-3WzO;
+	Thu, 13 Nov 2025 07:17:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 56D2643F33;
+	Thu, 13 Nov 2025 07:17:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D55ACC4CEF5;
+	Thu, 13 Nov 2025 07:17:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763018232;
+	bh=AVBlLnGckxjKwnnOnUXaDm2zDGvoig0seanX4A70Bw4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=YUM+ik+p6IFzpN7zZLzxa9AwLB2kyODzK7ekmsbMAzKaxleQyyuFSMVBZxXQwZCZI
+	 0bj1d6pAcTkjALLuJycRZ5zkxzTOvAheE0Zdw134wk7tK5zPXv4xyDuz7GuXOTxQxP
+	 qh3HvKC3YA6tn5LQEBBHadkmBBHJWKIkl/AhstES9j3lZgUvOCFjjvbC3Kxuajbr+J
+	 ctw46CNizo0oqX/WPj+KZYouyD/R2SKrVl0Gzs5nTZkOtynOVORmaIUcddX97cEDwP
+	 rxm6+DIXuZCKMfd7NmxjvrNnEyT1Tt6ROX8VReskblxiBMy0KpOhzBmTxaM0T5ItjQ
+	 o96jkxwVdSqPA==
+Date: Thu, 13 Nov 2025 08:17:09 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Zilin Guan <zilin@seu.edu.cn>
+Cc: nbd@nbd.name, ryder.lee@mediatek.com, shayne.chen@mediatek.com,
+	sean.wang@mediatek.com, matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	jianhao.xu@seu.edu.cn,
-	Zilin Guan <zilin@seu.edu.cn>
-Subject: [PATCH net] mt76: mt7615: Fix memory leak in mt7615_mcu_wtbl_sta_add()
-Date: Thu, 13 Nov 2025 06:24:15 +0000
-Message-Id: <20251113062415.103611-1-zilin@seu.edu.cn>
-X-Mailer: git-send-email 2.34.1
+	linux-mediatek@lists.infradead.org, jianhao.xu@seu.edu.cn
+Subject: Re: [PATCH net] mt76: mt7615: Fix memory leak in
+ mt7615_mcu_wtbl_sta_add()
+Message-ID: <aRWF9QJuwGaDlUvT@lore-desk>
+References: <20251113062415.103611-1-zilin@seu.edu.cn>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-HM-Tid: 0a9a7be2e11303a1kunm4a412972110eee
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDSBhLVkwdQ00eHh1LSh8eT1YeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlOQ1VJT0pVSk1VSE9ZV1kWGg8SFR0UWUFZT0tIVUpLSUJDQ0xVSktLVUtZBg
-	++
-DKIM-Signature: a=rsa-sha256;
-	b=QHLrg1omORyQvGJuKbNRFxk3dRh3/GYzA5JngeZw/cgJz3tz9ACgBW2bd3Z6+7rYA7SajuYdGSRCfo3P1grhQ8VrnZfDX+cHJ/9pHnYzszEMp25biRgeaWIqL2ppQm2fXklqxBYJFMEIimNPxykQC0RGK2732adun6WtugWOBng=; s=default; c=relaxed/relaxed; d=seu.edu.cn; v=1;
-	bh=TsCv3+cJ+T1nVfr75kjuiGgZn2uIqwLNHM/E0w+NzcM=;
-	h=date:mime-version:subject:message-id:from;
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="aZWRFATKm1FfpMf2"
+Content-Disposition: inline
+In-Reply-To: <20251113062415.103611-1-zilin@seu.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_222426_962497_DE00FBBC 
-X-CRM114-Status: UNSURE (   8.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251112_231713_919927_9CCE6B80 
+X-CRM114-Status: GOOD (  18.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,36 +76,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mt7615_mcu_wtbl_sta_add(), an skb sskb is allocated. If the
-subsequent call to mt76_connac_mcu_alloc_wtbl_req() fails, the function
-returns an error without freeing sskb, leading to a memory leak.
 
-Fix this by calling dev_kfree_skb() on sskb in the error handling path
-to ensure it is properly released.
+--aZWRFATKm1FfpMf2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: 99c457d902cf9 ("mt76: mt7615: move mt7615_mcu_set_bmc to mt7615_mcu_ops")
-Signed-off-by: Zilin Guan <zilin@seu.edu.cn>
----
- drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+> In mt7615_mcu_wtbl_sta_add(), an skb sskb is allocated. If the
+> subsequent call to mt76_connac_mcu_alloc_wtbl_req() fails, the function
+> returns an error without freeing sskb, leading to a memory leak.
+>=20
+> Fix this by calling dev_kfree_skb() on sskb in the error handling path
+> to ensure it is properly released.
+>=20
+> Fixes: 99c457d902cf9 ("mt76: mt7615: move mt7615_mcu_set_bmc to mt7615_mc=
+u_ops")
+> Signed-off-by: Zilin Guan <zilin@seu.edu.cn>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7615/mcu.c
+> index 4064e193d4de..08ee2e861c4e 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+> @@ -874,8 +874,10 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_phy *phy, stru=
+ct ieee80211_vif *vif,
+>  	wtbl_hdr =3D mt76_connac_mcu_alloc_wtbl_req(&dev->mt76, &msta->wcid,
+>  						  WTBL_RESET_AND_SET, NULL,
+>  						  &wskb);
+> -	if (IS_ERR(wtbl_hdr))
+> +	if (IS_ERR(wtbl_hdr)) {
+> +		dev_kfree_skb(sskb);
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 4064e193d4de..08ee2e861c4e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -874,8 +874,10 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_phy *phy, struct ieee80211_vif *vif,
- 	wtbl_hdr = mt76_connac_mcu_alloc_wtbl_req(&dev->mt76, &msta->wcid,
- 						  WTBL_RESET_AND_SET, NULL,
- 						  &wskb);
--	if (IS_ERR(wtbl_hdr))
-+	if (IS_ERR(wtbl_hdr)) {
-+		dev_kfree_skb(sskb);
- 		return PTR_ERR(wtbl_hdr);
-+	}
- 
- 	if (enable) {
- 		mt76_connac_mcu_wtbl_generic_tlv(&dev->mt76, wskb, vif, sta,
--- 
-2.34.1
+Hi Zilin,
 
+I can't see how this is useful since if mt76_connac_mcu_alloc_wtbl_req retu=
+rns
+an error, wskb will not be allocated.
+
+Regards,
+Lorenzo
+
+>  		return PTR_ERR(wtbl_hdr);
+> +	}
+> =20
+>  	if (enable) {
+>  		mt76_connac_mcu_wtbl_generic_tlv(&dev->mt76, wskb, vif, sta,
+> --=20
+> 2.34.1
+>=20
+
+--aZWRFATKm1FfpMf2
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaRWF9QAKCRA6cBh0uS2t
+rCxgAQCW+qnvlH5fPUCxWkj4AlWKqGylBMeUcC1chjZl+uY/UwEAhUhsrUJk7tn7
+QaT4KvLwkDqdr6peuN/QcQvG50qs6wM=
+=uKrq
+-----END PGP SIGNATURE-----
+
+--aZWRFATKm1FfpMf2--
 
