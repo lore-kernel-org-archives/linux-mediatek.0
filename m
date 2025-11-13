@@ -4,64 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D6B3CD4F28
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 07:17:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A617CD4F57
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 08:45:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2Qg2QVHThW3X+Uk9q9cbkaKJfTzK0QTxisU1xZ/OPtw=; b=gEH0OvvafnC8ytmWr6wIMxRQ9K
-	0AjF5msYXKyVv7xd/Tq/DTCy2lnd3oWcZ9rlyy6WE75XhEEU6l6TPQF/W7Iahbp6zGwuaISXUKCf8
-	O4zeRUdxZ6ZZTi31DJ4El3QByc9AHrDaWYVsh4fwY6SUNoyAUKbB+uhgTx7+QyArTvSKyHSQC9y/i
-	Z5v1mP19xjR0AXN86tq9rX1kGRcFh8GHZ3xwMcB/j+ST6ZW1MlXxuT0tP11v2WtKTqkNvMkH2w829
-	gYY42B06xC+/neuR5PpBeX1obo2+R3/WJISmXsRNgOPuzPpJo9US5e1IkaO9XuTCMG3MTfzqUUjam
-	SuGeJhLg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hu479yPj8wbBYx+WzD14ywVL3ZHRcGR0GXGR0sSeAEc=; b=g12fr6p8SxgwPnFsd0zI5Bjc3z
+	0gl9H9qZqJDWRC7iqhhZogtcabXACK8p6BL4Tgk0GuX5AuFK4JNOi/c+NvQgI9jRaLI4w9+F0CaIz
+	v/oQMPE+34Y1s2iq70ilnPA43NRMJ37Kc3CUxSiuhfCH8BMr/PLn/keEqbQ39f2I8VFVK8QfMrW1P
+	ALOV65uah+2YXahALDqHa31p1hnp8H7Vd8nRYv/mK6oLEcgYN2tShvcsZ1rgeAZj17XOCZFk+0AYA
+	QItxDVwFXfnqqwe0VoBZCbXaTBgkTzccjNz3hHOdrgjh3NixJQptQQwdm7uLMTkvmnb2tX92/q8cA
+	K+r5PTuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJRZz-00000009zCE-3qEk;
-	Thu, 13 Nov 2025 07:17:15 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vJSxR-0000000A7pX-0SL7;
+	Thu, 13 Nov 2025 08:45:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJRZx-00000009zBa-3WzO;
-	Thu, 13 Nov 2025 07:17:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 56D2643F33;
-	Thu, 13 Nov 2025 07:17:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D55ACC4CEF5;
-	Thu, 13 Nov 2025 07:17:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763018232;
-	bh=AVBlLnGckxjKwnnOnUXaDm2zDGvoig0seanX4A70Bw4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YUM+ik+p6IFzpN7zZLzxa9AwLB2kyODzK7ekmsbMAzKaxleQyyuFSMVBZxXQwZCZI
-	 0bj1d6pAcTkjALLuJycRZ5zkxzTOvAheE0Zdw134wk7tK5zPXv4xyDuz7GuXOTxQxP
-	 qh3HvKC3YA6tn5LQEBBHadkmBBHJWKIkl/AhstES9j3lZgUvOCFjjvbC3Kxuajbr+J
-	 ctw46CNizo0oqX/WPj+KZYouyD/R2SKrVl0Gzs5nTZkOtynOVORmaIUcddX97cEDwP
-	 rxm6+DIXuZCKMfd7NmxjvrNnEyT1Tt6ROX8VReskblxiBMy0KpOhzBmTxaM0T5ItjQ
-	 o96jkxwVdSqPA==
-Date: Thu, 13 Nov 2025 08:17:09 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Zilin Guan <zilin@seu.edu.cn>
-Cc: nbd@nbd.name, ryder.lee@mediatek.com, shayne.chen@mediatek.com,
-	sean.wang@mediatek.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, jianhao.xu@seu.edu.cn
-Subject: Re: [PATCH net] mt76: mt7615: Fix memory leak in
- mt7615_mcu_wtbl_sta_add()
-Message-ID: <aRWF9QJuwGaDlUvT@lore-desk>
-References: <20251113062415.103611-1-zilin@seu.edu.cn>
+	id 1vJSxO-0000000A7p3-1rfq;
+	Thu, 13 Nov 2025 08:45:31 +0000
+X-UUID: 17300f16c06d11f0a52f393f94899d25-20251113
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hu479yPj8wbBYx+WzD14ywVL3ZHRcGR0GXGR0sSeAEc=;
+	b=no1+SRZjdc/QUFWioe22TRkQGQhriQgNN9Jl5sYCj/hq5s4ssmuqhewIVi2UZPLTO5LNlZmgZgxupT6MfArZQDiZMOyylon755lX9/DwrcuePbOAlH7p5HyRDttdxVI7BlBajI5GAfjXlWIV+aLJ68PVDW5ap3U87mKcxoyVXZo=;
+X-CID-CACHE: Type:Local,Time:202511130145-07,HitQuantity:1
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:55943e08-07dc-4e4a-937a-665cf39013b0,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:a9d874c,CLOUDID:28dd6492-7fd3-4c6a-836a-51b0a70fa8fb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 17300f16c06d11f0a52f393f94899d25-20251113
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <johnny-cc.chang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1820826874; Thu, 13 Nov 2025 01:45:22 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Thu, 13 Nov 2025 16:45:19 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Thu, 13 Nov 2025 16:45:19 +0800
+From: Johnny Chang <Johnny-CC.Chang@mediatek.com>
+To: Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-pci@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Digits_Upstream_Group@mediatek.com>, Johnny-CC Chang
+	<Johnny-CC.Chang@mediatek.com>
+Subject: [PATCH] PCI: Mark Nvidia GB10 to avoid bus reset
+Date: Thu, 13 Nov 2025 16:44:06 +0800
+Message-ID: <20251113084441.2124737-1-Johnny-CC.Chang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="aZWRFATKm1FfpMf2"
-Content-Disposition: inline
-In-Reply-To: <20251113062415.103611-1-zilin@seu.edu.cn>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_231713_919927_9CCE6B80 
-X-CRM114-Status: GOOD (  18.14  )
+X-CRM114-CacheID: sfid-20251113_004530_514259_2B2811F7 
+X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,68 +89,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Johnny-CC Chang <Johnny-CC.Chang@mediatek.com>
 
---aZWRFATKm1FfpMf2
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Nvidia GB10 PCIe hosts will encounter problem occasionally
+after SBR(secondary bus reset) is applied.
+Enable NO_BUS_RESET quirk for Nvidia GB10 PCIe hosts.
 
-> In mt7615_mcu_wtbl_sta_add(), an skb sskb is allocated. If the
-> subsequent call to mt76_connac_mcu_alloc_wtbl_req() fails, the function
-> returns an error without freeing sskb, leading to a memory leak.
->=20
-> Fix this by calling dev_kfree_skb() on sskb in the error handling path
-> to ensure it is properly released.
->=20
-> Fixes: 99c457d902cf9 ("mt76: mt7615: move mt7615_mcu_set_bmc to mt7615_mc=
-u_ops")
-> Signed-off-by: Zilin Guan <zilin@seu.edu.cn>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7615/mcu.c
-> index 4064e193d4de..08ee2e861c4e 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> @@ -874,8 +874,10 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_phy *phy, stru=
-ct ieee80211_vif *vif,
->  	wtbl_hdr =3D mt76_connac_mcu_alloc_wtbl_req(&dev->mt76, &msta->wcid,
->  						  WTBL_RESET_AND_SET, NULL,
->  						  &wskb);
-> -	if (IS_ERR(wtbl_hdr))
-> +	if (IS_ERR(wtbl_hdr)) {
-> +		dev_kfree_skb(sskb);
+Signed-off-by: Johnny-CC Chang <Johnny-CC.Chang@mediatek.com>
+---
+ drivers/pci/quirks.c    | 11 +++++++++++
+ include/linux/pci_ids.h |  2 ++
+ 2 files changed, 13 insertions(+)
 
-Hi Zilin,
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index b94264cd3833..12a10fa84c8a 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -3746,6 +3746,17 @@ static void quirk_no_bus_reset(struct pci_dev *dev)
+ 	dev->dev_flags |= PCI_DEV_FLAGS_NO_BUS_RESET;
+ }
+ 
++/*
++ * Nvidia GB10 PCIe hosts will encounter problem occasionally
++ * after SBR (secondary bus reset) is applied.
++ * SBR needs to be prevented for these PCIe hosts.
++ */
++DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_NVIDIA, PCI_DEVICE_ID_NVIDIA_GB10_GEN5_X4,
++			 quirk_no_bus_reset);
++
++DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_NVIDIA, PCI_DEVICE_ID_NVIDIA_GB10_GEN4_X1,
++			 quirk_no_bus_reset);
++
+ /*
+  * Some NVIDIA GPU devices do not work with bus reset, SBR needs to be
+  * prevented for those affected devices.
+diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+index 92ffc4373f6d..661dc1594213 100644
+--- a/include/linux/pci_ids.h
++++ b/include/linux/pci_ids.h
+@@ -1382,6 +1382,8 @@
+ #define PCI_DEVICE_ID_NVIDIA_GEFORCE_320M           0x08A0
+ #define PCI_DEVICE_ID_NVIDIA_NFORCE_MCP79_SMBUS     0x0AA2
+ #define PCI_DEVICE_ID_NVIDIA_NFORCE_MCP89_SATA	    0x0D85
++#define PCI_DEVICE_ID_NVIDIA_GB10_GEN5_X4           0x22CE
++#define PCI_DEVICE_ID_NVIDIA_GB10_GEN4_X1           0x22D0
+ 
+ #define PCI_VENDOR_ID_IMS		0x10e0
+ #define PCI_DEVICE_ID_IMS_TT128		0x9128
+-- 
+2.45.2
 
-I can't see how this is useful since if mt76_connac_mcu_alloc_wtbl_req retu=
-rns
-an error, wskb will not be allocated.
-
-Regards,
-Lorenzo
-
->  		return PTR_ERR(wtbl_hdr);
-> +	}
-> =20
->  	if (enable) {
->  		mt76_connac_mcu_wtbl_generic_tlv(&dev->mt76, wskb, vif, sta,
-> --=20
-> 2.34.1
->=20
-
---aZWRFATKm1FfpMf2
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaRWF9QAKCRA6cBh0uS2t
-rCxgAQCW+qnvlH5fPUCxWkj4AlWKqGylBMeUcC1chjZl+uY/UwEAhUhsrUJk7tn7
-QaT4KvLwkDqdr6peuN/QcQvG50qs6wM=
-=uKrq
------END PGP SIGNATURE-----
-
---aZWRFATKm1FfpMf2--
 
