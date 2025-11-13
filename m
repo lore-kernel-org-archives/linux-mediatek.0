@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFDEBCD6E45
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 12:22:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7B1CCD6E41
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 12:22:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PTo4NiLOqxrlkui47pxmWMqp2NYL5bevodQO1aurAOM=; b=SU+FvTPuo4md4wdoYXj7FFjw+l
-	DeihvRKYlU5bc4HUHbnHA9fxw7HYLbwNhO/QgN0+kiCUDF8p15SmioAWAQJfrsp9ODWVG5B/DosoV
-	DrnvSOoK+/mqnFAMpFFUVSdKeB4ZKH7eAyzde7gHlKTcDB3WisMdRPB+JYHK3CDoi+fx9USaKd75Y
-	nZc6BNUFot7TiseJW9k1YEGWOVc57UG5LkXu+raSzz1CJuoqbDROD1zgfzzTHJE1aK5NVdQvAbaC3
-	67WYXzjB3I1gw9QwglbLsuDNsqkfh3QujLwwe/vjr+YADFjYTvsUYemqOHEt1hHc93NCz6bS12agu
-	2XhuYDNQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rCs2UXJ4jd3dNAIeM69DufOO4FHbdzRsBJjIgc1DCNU=; b=WZ0kzurZAPm2j62dm9qavzQ/zi
+	7rD+6Rm3mD+WGmBDhfo9cfoOF6CUe82EyhGyNyi8Uk645spkPlOlgMPuunY980d7ohcl6sXeXryNd
+	rPmumFqZ89OfNOgfd/aX1xzLHzxMsFywqz1EHoEzfAO/OKiblLytOiCZSgl07kV9kUoHf4R0YlKH0
+	wkaufvQOfn6QX8jC+WqEqeC5I8QsmM4o6Gg9h5/fMKMh5FjcGM3tlSPucdE/VMLTkzz/ovu2sN+Cs
+	AgkWU9ogWjb12RBXlZOb6gSL+aVENgbv0YhMPiXk+kaxo3zf/6xEJWZrpEgZIrPbr/q7ObynErYLd
+	5DsWmBhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJWLe-0000000ARcC-3RoZ;
-	Thu, 13 Nov 2025 12:22:47 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vJWLj-0000000ARgE-3ieY;
+	Thu, 13 Nov 2025 12:22:51 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJWLb-0000000ARZK-1UDN;
-	Thu, 13 Nov 2025 12:22:44 +0000
+	id 1vJWLb-0000000ARZI-1XiJ;
+	Thu, 13 Nov 2025 12:22:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1763036559;
-	bh=TbcA0pAYmyWmxfp86PUKSTB7vNHLm5tB2SOEjyV+PpI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Pif3DHdGQ2W2wihUPxEsLj0clgNC5bMmqwVN6bV/BWjSkzfFpXIMCAzAycDerydIn
-	 K7DZAjROsCtR4afAGOi3gcx5EFcj81FTlqr5ZLYI5T/qoMlif6oLWaim+c8aIvpy2h
-	 tNmMwOHW6CQHyoYgOnpGI/I5NyXDjGVP3Kq720X1ufyduFU1YEkUuJj4MloAuOQbfA
-	 IXwcKwQBer8la4vAA2Uvt6y6oZ1g3sTI7nuJILIN+DSkPTH94thF4MVH/muUmyf+vG
-	 rR1Vbn5G98qhqxKtAcH1ym1NUNrGVKByw/efVgA7NxV+amFQg1GS7blFtTCOXzKz3E
-	 295yLHyRc4/2Q==
+	s=mail; t=1763036558;
+	bh=gSetVXNwTu3ErxPtff5STPeDGtcsAkwzq3hIlW9FP2g=;
+	h=From:To:Cc:Subject:Date:From;
+	b=XwrrrDvMb7wF5kwZug7cwna6/PxLeDa1QDMIKCdVXoSLNvh5LbhSVD+vUj7JdiiIN
+	 jhnJduU6liMaI23kxV8K4cThDEimm4wIQ+o6r+sSHwx/2cGcxWvjMD+ZZ7ckzj9J0C
+	 DZ1wiFVOqLjBRjAFuEy1rI6sjeWTnPNwencmE4p7+eLh3/EgRCOHYdZ71EAchK98Dk
+	 csZKS5L/PqgjpGq5+jO1tLeekwsPZ7I3JoppYbuaa3mTE1odVzOTj+i26QcUscRzq8
+	 kg8dp6wVXtaXxYNpHwk7vBIweXhgVLyroOaZZajijIjQUJeWVPpy8pfs6Ffi2XevaV
+	 CDqlQLS2Xa68g==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9AB1A17E127F;
-	Thu, 13 Nov 2025 13:22:38 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E593217E0364;
+	Thu, 13 Nov 2025 13:22:37 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: dmaengine@vger.kernel.org
 Cc: sean.wang@mediatek.com,
@@ -58,17 +58,16 @@ Cc: sean.wang@mediatek.com,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH 1/8] dt-bindings: dma: mediatek,uart-dma: Allow MT6795 single compatible
-Date: Thu, 13 Nov 2025 13:22:22 +0100
-Message-ID: <20251113122229.23998-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 0/8] MediaTek UART DMA: Fixes, improvements and new SoCs
+Date: Thu, 13 Nov 2025 13:22:21 +0100
+Message-ID: <20251113122229.23998-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.51.1
-In-Reply-To: <20251113122229.23998-1-angelogioacchino.delregno@collabora.com>
-References: <20251113122229.23998-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_042243_540949_4FBBCE64 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20251113_042243_583117_4C843FC0 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,37 +82,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-While it is true that this SoC is compatible with the MT6577 APDMA
-IP, that is valid only when the IP is used in 32-bits addressing
-mode, and, by the way there is no good reason to do so.
+This series performs fixes the MediaTek UART DMA driver to be able
+to correctly program AP_DMA controllers that support extended
+addressing, performs some cleanups to improve code readability
+and adds support for *all* of the SoCs generations that are upstream.
 
-Since the APDMA IP in MT6795 supports 33 bits addressing, this
-means that it is a newer revision compared to the one found in
-MT6577, hence only partially compatible with it.
+This includes MT6795, MT7988, MT8173, MT8183, MT8186, MT8188, MT8195,
+other than all of their Genio variants (where applicable), all of
+their Smartphone variants (where applicable), and also some newer
+generation SoCs that are in the process of being upstreamed, like
+MT8196 and MT8189.
 
-Allow nodes to specify "mediatek,mt6795-uart-dma" as their only
-compatible in the case of MT6795; this is done in lieu of the fact
-that there are other SoCs integrating the same version of this IP
-as MT6795, and those will eventually get their own compatible that
-expresses full compatibility with this SoC.
+Devicetrees are also already done, but not included here, and will be
+sent in a different series (probably after this one gets upstreamed,
+as I have to decide what to do with MT8196 - integrate it in the first
+devicetree submission/commit or add it later - depends on whether this
+one gets upstreamed first or not).
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml | 1 +
- 1 file changed, 1 insertion(+)
+AngeloGioacchino Del Regno (8):
+  dt-bindings: dma: mediatek,uart-dma: Allow MT6795 single compatible
+  dt-bindings: dma: mediatek,uart-dma: Deprecate mediatek,dma-33bits
+  dt-bindings: dma: mediatek,uart-dma: Support all SoC generations
+  dmaengine: mediatek: uart-apdma: Get addressing bits from match data
+  dmaengine: mediatek: uart-apdma: Fix above 4G addressing TX/RX
+  dmaengine: mediatek: mtk-uart-apdma: Rename support_33bits to
+    support_ext_addr
+  dmaengine: mediatek: mtk-uart-apdma: Add support for Dimensity 6300
+  dmaengine: mediatek: mtk-uart-apdma: Add support for Dimensity 9200
 
-diff --git a/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
-index dab468a88942..10fc92b60de5 100644
---- a/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
-+++ b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
-@@ -28,6 +28,7 @@ properties:
-           - const: mediatek,mt6577-uart-dma
-       - enum:
-           - mediatek,mt6577-uart-dma
-+          - mediatek,mt6795-uart-dma
- 
-   reg:
-     minItems: 1
+ .../bindings/dma/mediatek,uart-dma.yaml       | 20 +++++++++++
+ drivers/dma/mediatek/mtk-uart-apdma.c         | 35 ++++++++++---------
+ 2 files changed, 38 insertions(+), 17 deletions(-)
+
 -- 
 2.51.1
 
