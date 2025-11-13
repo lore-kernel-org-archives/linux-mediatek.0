@@ -4,105 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C94DCD4F3A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 02:47:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84203CD4F28
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 06:24:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1sHGTjdI5nQJA3D1GLCj0xQo44LivYH21QX3rDb+TUM=; b=mFT1T7mNqf5wLrUkT4dM12c0QV
-	8SeKY6DR3Aqn78bzsVHmzL3lRL/H7njyXEqu3NB8b2ELrVpF+unPygA6o2+QHIfHQxfq1+6ef8SZi
-	qkd1oXGQ+Z5pAfXxyGW191N6YTxjfJA6Xpfe+on8wVyduUmWKkqwyXodyQkxSFg6Sa4AXgit3qD11
-	Kem7MYZnHE69rZ9oWjXh7Tj+DuuR6xRmH9MJxmWTMODaq1lMTxrL8PZ1qLYAT0VtWK0Dl+I25UIoJ
-	QvIquuej1ee/fxI2yDoLSUe4wXnHum29DBKR4NfdLYgeukcFUAG8NiFd3s0N3o80o4xYajPyftezj
-	FyzlSdCw==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TsCv3+cJ+T1nVfr75kjuiGgZn2uIqwLNHM/E0w+NzcM=; b=WyCnkBCj1Kiam92n2TAP5eGxp1
+	dfckP0O3nqVQ1vaWTRWRWEKxfnbVlBE5wO0wWLZN6z7dcNXMyykWI96q7Evn3kR5WoI2CZsuUDyzU
+	o77ydbbdGMLAszxGdHxDLOPEOotFLpd+VFJZ5VRQwYSIJZcrT920Otw5G/vII38Q6QhbsQmi/uVXP
+	74Vb/orQqaP2UOIQkZL9CEEOeG3C5P8Tjr3Oy3hVnG34psXZYKJs5SixBL3nHc5k/Vjj3hX5yaCAu
+	Mi6xbcMnsQqkzjJCF2+48W98npLiVRwIjbucZqUpDZm0T0NM9vs9tiCk5SxCAcen22ZlsNefnkjRc
+	x6Y8W/dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJNMy-00000009oX0-2iWx;
-	Thu, 13 Nov 2025 02:47:32 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1vJQkv-00000009xBE-0YI9;
+	Thu, 13 Nov 2025 06:24:29 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJNMt-00000009oW5-2duj;
-	Thu, 13 Nov 2025 02:47:30 +0000
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5AD1hkxu024043;
-	Thu, 13 Nov 2025 02:47:15 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	corp-2025-04-25; bh=1sHGTjdI5nQJA3D1GLCj0xQo44LivYH21QX3rDb+TUM=; b=
-	Hzh33el4Y+nT36Z0VrbtaAD5HFlzKjd/SEGtfUnf2Rk15Z7upJSq79FIk+8OQJQr
-	g+aaSqeDRGGGyb/1ComZPolN8bbq19AcYehgnomNyH9AeXTnHaZnJX9ZuLUKaYvp
-	EGEutrLZoe8a/M9JeJUUpgTCf4XWu2F26gQWzQdoBhxAFARatzy4IhyeiLhVEOmM
-	JIGB+227d/ejhnmn3iYwwjwwFnKcE+d8bOXiMCDnfHPduXT4mvgW/T7aUQDgWd3V
-	X2GZPanY2J9CaMG/bZCfmsJ2811tiWgWSqz/9bBWCElCPCw4hK5xrs0Xea+acP1U
-	o95fdf0QI5vnESzgUSN+8w==
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4acxpngvwq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 13 Nov 2025 02:47:15 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 5AD0qNLZ032481;
-	Thu, 13 Nov 2025 02:47:14 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 4a9van9qcd-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 13 Nov 2025 02:47:14 +0000
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 5AD2lB8N038323;
-	Thu, 13 Nov 2025 02:47:13 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 4a9van9qab-6;
-	Thu, 13 Nov 2025 02:47:13 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: linux-scsi@vger.kernel.org, peter.wang@mediatek.com
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        alim.akhtar@samsung.com, avri.altman@wdc.com, bvanassche@acm.org,
-        robh@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-        conor+dt@kernel.org, jejb@linux.ibm.com, lgirdwood@gmail.com,
-        broonie@kernel.org, matthias.bgg@gmail.com,
-        angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org,
-        linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-        linux-arm-kernel@lists.infradead.org, wenst@chromium.org,
-        conor.dooley@microchip.com, chu.stanley@gmail.com,
-        chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
-        naomi.chu@mediatek.com, ed.tsai@mediatek.com,
-        chunfeng.yun@mediatek.com
-Subject: Re: [PATCH v1] dt-bindings: phy: mediatek,ufs-phy: Update maintainer information in mediatek,ufs-phy.yaml
-Date: Wed, 12 Nov 2025 21:46:55 -0500
-Message-ID: <176298170716.2933492.7751949109863545912.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.51.1
-In-Reply-To: <20251103115808.3771214-1-peter.wang@mediatek.com>
-References: <20251103115808.3771214-1-peter.wang@mediatek.com>
+	id 1vJQks-00000009xAh-1I93;
+	Thu, 13 Nov 2025 06:24:28 +0000
+Received: from LAPTOP-N070L597.localdomain (unknown [58.241.16.34])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 296eb37ed;
+	Thu, 13 Nov 2025 14:24:18 +0800 (GMT+08:00)
+From: Zilin Guan <zilin@seu.edu.cn>
+To: nbd@nbd.name
+Cc: lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	jianhao.xu@seu.edu.cn,
+	Zilin Guan <zilin@seu.edu.cn>
+Subject: [PATCH net] mt76: mt7615: Fix memory leak in mt7615_mcu_wtbl_sta_add()
+Date: Thu, 13 Nov 2025 06:24:15 +0000
+Message-Id: <20251113062415.103611-1-zilin@seu.edu.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
- definitions=2025-11-12_06,2025-11-12_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 suspectscore=0 mlxscore=0
- phishscore=0 mlxlogscore=924 spamscore=0 bulkscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2510240000
- definitions=main-2511130017
-X-Authority-Analysis: v=2.4 cv=Criys34D c=1 sm=1 tr=0 ts=691546b3 b=1 cx=c_pps
- a=qoll8+KPOyaMroiJ2sR5sw==:117 a=qoll8+KPOyaMroiJ2sR5sw==:17
- a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=VwQbUJbxAAAA:8 a=mpaa-ttXAAAA:8 a=8d0GUG1h20LVvl_VnrYA:9 a=QEXdDO2ut3YA:10
- cc=ntf awl=host:12100
-X-Proofpoint-GUID: IeOeuSWTlTrpHkCLnld7n0QRG4Xbhs5D
-X-Proofpoint-ORIG-GUID: IeOeuSWTlTrpHkCLnld7n0QRG4Xbhs5D
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTEyMDE0MSBTYWx0ZWRfX9hbFk6XYutWW
- Yw7di95yWfu4YBraVPukJnMQ3rL3LgBLjU45S3j4/On0OocZqamzibfRHrN25ewELf036lHNgZb
- ocRqjtcAmEFBstn5lkCHBt92p8nYFTiKKCu+UjganwOUDFl2rNPVr+uqMhmHgAi0rKTdS5uuucZ
- Nakmo6jG4CS72zn6vgTFbhWHuXu9rehqhT3IbiX3V09g3QZ5Mhbug5odUW/PCZTuQDk4zCIVybs
- RtL5XI13vbVCNvz+zqxVjU9lnrm7y5yq4R+DmHdrYM19V0iFjHpJ5DsS7Zgvlu282zdwdM7dIow
- vYuwk+pAfUwdZsqF62XLSQm6uKlJW5H7U7k/LDpAvpht/EaATwJQf3acFLFUHb3E0cNhRuxZzwP
- VrS0lDd+Zwu3TNzsGErQDLAcV67CglrMjT1PRHOz5TiCmo0YLFE=
+X-HM-Tid: 0a9a7be2e11303a1kunm4a412972110eee
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDSBhLVkwdQ00eHh1LSh8eT1YeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlOQ1VJT0pVSk1VSE9ZV1kWGg8SFR0UWUFZT0tIVUpLSUJDQ0xVSktLVUtZBg
+	++
+DKIM-Signature: a=rsa-sha256;
+	b=QHLrg1omORyQvGJuKbNRFxk3dRh3/GYzA5JngeZw/cgJz3tz9ACgBW2bd3Z6+7rYA7SajuYdGSRCfo3P1grhQ8VrnZfDX+cHJ/9pHnYzszEMp25biRgeaWIqL2ppQm2fXklqxBYJFMEIimNPxykQC0RGK2732adun6WtugWOBng=; s=default; c=relaxed/relaxed; d=seu.edu.cn; v=1;
+	bh=TsCv3+cJ+T1nVfr75kjuiGgZn2uIqwLNHM/E0w+NzcM=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251112_184727_787035_FB646465 
-X-CRM114-Status: UNSURE (   7.49  )
+X-CRM114-CacheID: sfid-20251112_222426_962497_DE00FBBC 
+X-CRM114-Status: UNSURE (   8.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -118,18 +77,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 03 Nov 2025 19:57:36 +0800, peter.wang@mediatek.com wrote:
+In mt7615_mcu_wtbl_sta_add(), an skb sskb is allocated. If the
+subsequent call to mt76_connac_mcu_alloc_wtbl_req() fails, the function
+returns an error without freeing sskb, leading to a memory leak.
 
-> Replace Stanley Chu with me and Chaotian in the maintainers field,
-> since his email address is no longer active.
-> 
-> 
+Fix this by calling dev_kfree_skb() on sskb in the error handling path
+to ensure it is properly released.
 
-Applied to 6.19/scsi-queue, thanks!
+Fixes: 99c457d902cf9 ("mt76: mt7615: move mt7615_mcu_set_bmc to mt7615_mcu_ops")
+Signed-off-by: Zilin Guan <zilin@seu.edu.cn>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-[1/1] dt-bindings: phy: mediatek,ufs-phy: Update maintainer information in mediatek,ufs-phy.yaml
-      https://git.kernel.org/mkp/scsi/c/ad4716ad48d4
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index 4064e193d4de..08ee2e861c4e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -874,8 +874,10 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_phy *phy, struct ieee80211_vif *vif,
+ 	wtbl_hdr = mt76_connac_mcu_alloc_wtbl_req(&dev->mt76, &msta->wcid,
+ 						  WTBL_RESET_AND_SET, NULL,
+ 						  &wskb);
+-	if (IS_ERR(wtbl_hdr))
++	if (IS_ERR(wtbl_hdr)) {
++		dev_kfree_skb(sskb);
+ 		return PTR_ERR(wtbl_hdr);
++	}
+ 
+ 	if (enable) {
+ 		mt76_connac_mcu_wtbl_generic_tlv(&dev->mt76, wskb, vif, sta,
 -- 
-Martin K. Petersen
+2.34.1
+
 
