@@ -4,54 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BE82CD5BA0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 09:08:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A77ECD5BA7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 09:41:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Kb7u+lszG/nXqIAGpk/hByhDC/8HGhmWaIRwB9KIYkQ=; b=V1HuP/HYxKxwCdqrDoawztMwbD
-	BafbDaEAxZClEEYgqbyVvDr5t4InO1UB2C2r9B35Y4gC4tfhApSPplv18SME7udL3J+xJ7xQblIZc
-	i+Y7Pr0XbH/O1Yj1XxPT5f2xGLL3lBFIzSWdXiazCxfZOznb1Ow4KY0ru+YkD9FTg155S2yk8iW5o
-	ePFyi7LCWNgilbTkB1KsJa7RG46I7OF2JVkUwR/kFVkuCnkMPAQ7EQX7A6fiYW35eeRH9a1Jplp85
-	GxazxUDjCxcs1NJffMO7Y/o+v7T6oINqc2iZ9YWSA7DCOwsNHXF4y+eLmVs5dN7i04x/tlC5StXjJ
-	RDkeLPTg==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Tz39zWUgWe6lz3NHfDSC8mIp9EXHb7gxRBAo7zC/Js4=; b=5Fygst1tRhMrnTbxxYETfK5RvP
+	Vu/dXRBDiHj/X2/MkdHH7oT1lo8YowPOyX6uJU6AZWP+u1ntGQB8aK6IBuMXBuCp2krsUDPdyHGw8
+	o5jv7rTfzoQ+LLcrQnJIbg6g/nggT8MKKRLVUz7jJJQjhueTVIdKrYUvetseJf9xuj1NZvWGFMX/Y
+	p+SPIzLuxZJpKZ/eWYOgVEfwXET65TYLf49Fq5PKl8bk+0nCJfsVGSEmIe8IZxwCse0VEyRsFxQgO
+	NwEuV6FhXvblIuCOtdiolijExgmdAA/jJMDdG/tSICqd+JiwauIOX3Mwxo0DznMS3d4v8ohLhnyO6
+	BKtBOlIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJTJv-0000000AAHP-0SSD;
-	Thu, 13 Nov 2025 09:08:47 +0000
-Received: from mail.fontri.pl ([51.195.90.156])
+	id 1vJTpr-0000000ADfT-3KCm;
+	Thu, 13 Nov 2025 09:41:47 +0000
+Received: from mail-m155101.qiye.163.com ([101.71.155.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJTJs-0000000AAGy-1HB4
-	for linux-mediatek@lists.infradead.org;
-	Thu, 13 Nov 2025 09:08:45 +0000
-Received: by mail.fontri.pl (Postfix, from userid 1002)
-	id 8780CA8C4C; Thu, 13 Nov 2025 10:06:53 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fontri.pl; s=mail;
-	t=1763024894; bh=Kb7u+lszG/nXqIAGpk/hByhDC/8HGhmWaIRwB9KIYkQ=;
-	h=Date:From:To:Subject:From;
-	b=VfrnL0dqSCHy1l/ZyXABQ6XHPN2zZWg7aJPZyeoHl+tCbcEzT8cNcY5NsMIks24Xq
-	 zRxUjR9DyiJpaiWL/DjpYB+inieZaL6nT/9ta5FevAjGI40k3CtMTgcjQ2VY9o1+RO
-	 6PXgf7tEUaE9BlxZ4sD2DdA0CurIkWQ8AALD9PopItXMNlwr1ooiEcOdDuf4qMidpR
-	 +ZVMX9mCHmCIU0YWMAV9s+edwxip5AgtpTEwfFJH1lXbQQRjY4uiQxMIoeqr4CqTu1
-	 o9dK4V1J8YqDURCkTHBQ7G0YJd8ol4mJADoMseJWiD/cP8NWvsgTWU/VJDDiKskLgf
-	 1AZUgXW9MqjRg==
-Received: by mail.fontri.pl for <linux-mediatek@lists.infradead.org>; Thu, 13 Nov 2025 09:06:25 GMT
-Message-ID: <20251113084500-0.1.sc.5zr67.0.dqggc3na46@fontri.pl>
-Date: Thu, 13 Nov 2025 09:06:25 GMT
-From: =?UTF-8?Q?"=C5=BBaneta_K=C4=99dzierska"?= <zaneta.kedzierska@fontri.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Odbi=C3=B3r_w_paczkomacie_?=
-X-Mailer: mail.fontri.pl
+	id 1vJTpn-0000000ADex-44kh;
+	Thu, 13 Nov 2025 09:41:45 +0000
+Received: from LAPTOP-N070L597.localdomain (unknown [221.228.238.82])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 29764e94b;
+	Thu, 13 Nov 2025 17:41:36 +0800 (GMT+08:00)
+From: Zilin Guan <zilin@seu.edu.cn>
+To: lorenzo@kernel.org
+Cc: angelogioacchino.delregno@collabora.com,
+	jianhao.xu@seu.edu.cn,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-wireless@vger.kernel.org,
+	matthias.bgg@gmail.com,
+	nbd@nbd.name,
+	ryder.lee@mediatek.com,
+	sean.wang@mediatek.com,
+	shayne.chen@mediatek.com,
+	zilin@seu.edu.cn
+Subject: Re: [PATCH net] mt76: mt7615: Fix memory leak in mt7615_mcu_wtbl_sta_add()
+Date: Thu, 13 Nov 2025 09:41:35 +0000
+Message-Id: <20251113094135.348383-1-zilin@seu.edu.cn>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <aRWF9QJuwGaDlUvT@lore-desk>
+References: <aRWF9QJuwGaDlUvT@lore-desk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-HM-Tid: 0a9a7c97843b03a1kunmfac98f0512a188
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCS0sYVhhCT09CGEkeGEsYGlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlJSUpVSUlDVUlIQ1VDSVlXWRYaDxIVHRRZQVlPS0hVSktJQk1LSlVKS0tVS1
+	kG
+DKIM-Signature: a=rsa-sha256;
+	b=nhOVfDiJ74Sdt0UEx5n9Ip6yX8XSqzU+2fWTnIGT8VBL20byL0rS6xZPJ3l/1QuZdmq9EZLxOIibIuTUmkj/5RbIq557HJaTkbxduMlb3wNgk9noAImuQPqNi1xGQr9pyZDkcpFZ/m7pURVRnmENiuq3g29ZsmS/JWKvmjZLiJ8=; s=default; c=relaxed/relaxed; d=seu.edu.cn; v=1;
+	bh=Tz39zWUgWe6lz3NHfDSC8mIp9EXHb7gxRBAo7zC/Js4=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_010844_496839_1FAD313E 
-X-CRM114-Status: UNSURE (   1.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251113_014144_629994_61998B17 
+X-CRM114-Status: GOOD (  21.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,19 +78,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+On Thu, Nov 13, 2025 at 08:17:09AM +0100, Lorenzo Bianconi wrote:
+> [-- Attachment #1: Type: text/plain, Size: 1475 bytes --]
+> 
+> > In mt7615_mcu_wtbl_sta_add(), an skb sskb is allocated. If the
+> > subsequent call to mt76_connac_mcu_alloc_wtbl_req() fails, the function
+> > returns an error without freeing sskb, leading to a memory leak.
+> > 
+> > Fix this by calling dev_kfree_skb() on sskb in the error handling path
+> > to ensure it is properly released.
+> > 
+> > Fixes: 99c457d902cf9 ("mt76: mt7615: move mt7615_mcu_set_bmc to mt7615_mcu_ops")
+> > Signed-off-by: Zilin Guan <zilin@seu.edu.cn>
+> > ---
+> >  drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 4 +++-
+> >  1 file changed, 3 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+> > index 4064e193d4de..08ee2e861c4e 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+> > @@ -874,8 +874,10 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_phy *phy, struct ieee80211_vif *vif,
+> >  	wtbl_hdr = mt76_connac_mcu_alloc_wtbl_req(&dev->mt76, &msta->wcid,
+> >  						  WTBL_RESET_AND_SET, NULL,
+> >  						  &wskb);
+> > -	if (IS_ERR(wtbl_hdr))
+> > +	if (IS_ERR(wtbl_hdr)) {
+> > +		dev_kfree_skb(sskb);
+> 
+> Hi Zilin,
+> 
+> I can't see how this is useful since if mt76_connac_mcu_alloc_wtbl_req returns
+> an error, wskb will not be allocated.
+> 
+> Regards,
+> Lorenzo
 
-jako lider w us=C5=82ugach kurierskich w Polsce przygotowali=C5=9Bmy elas=
-tyczne rozwi=C4=85zanie dla przedsi=C4=99biorc=C3=B3w.
+Hi Lorenzo,
 
-Stworzyli=C5=9Bmy abonament =C5=82=C4=85cz=C4=85cy dostawy do Paczkomat 2=
-4/7 oraz obs=C5=82ug=C4=99 kuriersk=C4=85 - jeden dostawca, jedna faktura=
- i przewidywalne, sta=C5=82e koszty.=20
+Thanks for your review.
 
-Czy mog=C4=99 przedstawi=C4=87, co mo=C5=BCemy zaproponowa=C4=87 wzgl=C4=99=
-dem Pa=C5=84stwa potrzeb?
+You are correct that 'wskb' is not allocated in this error path. 
+However, my patch is intended to free 'sskb', which was allocated 
+earlier in the function. Without this change, 'sskb' is leaked if
+mt76_connac_mcu_alloc_wtbl_req() fails.
 
+This approach is similar to the error handling logic later in the
+function, where a failure in sending one skb results in the other one
+being freed.
 
-Pozdrawiam
-=C5=BBaneta K=C4=99dzierska
+Hope this clarifies.
+
+> >  		return PTR_ERR(wtbl_hdr);
+> > +	}
+> >  
+> >  	if (enable) {
+> >  		mt76_connac_mcu_wtbl_generic_tlv(&dev->mt76, wskb, vif, sta,
+> > -- 
+> > 2.34.1
+> > 
+
+Best Regards,
+Zilin Guan
 
