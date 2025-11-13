@@ -4,78 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14753CD5BC2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 10:58:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C542CD6E41
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Nov 2025 12:22:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pux3hN3Gl7vLivHnYvNqjnFb+a2LWEYfciZAIz5y2kE=; b=qcSVOPV8yt8DT1giEddUZvMyWZ
-	0cqeB7aPyCTMfFx9DY8+1cILkBRzTbm+DoI1Yhoo9IFICgG8yqZC6u905YMTtDLaMWpNlxXTtNzVE
-	PrP4E3G4gz1sQT3LFDvjnAuutleoM33wTG6pCcghZSM9o0kAM3LdBMr+G8w+0I7B8//qqNp2ui2xJ
-	3sz0DGyZ4U+och/+P/cqOnhvqVlhvXcBBd8uZSpdBEpmo0DfitAiIkKas598FQxPGsGdOPneWWh/l
-	1UdFTKT6Kv8mokYmDOBTk3yUdiWhx/cm9FaqccZUYYDXEqXXE7VTrmhE8Bmat4kYllTnIFoAvdHz2
-	EslAbGrQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Mkb6jpQ1k79c2dDTp04v2qaimuM4wU2FM00XWDlPYOY=; b=X7xgzW0SGcxR6WSXqNlJQsD6Qf
+	9hFb6bc0KNNqzo7KpeDWrgrVyra7KK2lN7uClf6rZYMenhjeuqVu14uk/KdGVVMW4ueUK/G/4/b65
+	9WsW0irMyRpeQMxluxc+opDwlYj63KznsQ6sL1ExphMOFL5+WqqfRhJzW1hkVqw1d6s8xQyv6X0qH
+	W2F4R3hYa24hsC0xHrDdlktXoI2l4O4qx3pPVnfGhTh3PdzpHYJKEaJwQNxDB/iW1LBjmrBImeKPv
+	uPLxD8lFcDzDNoHXl0mk/cKwoFUKI1UgcVvWK41Q+XW+SY1i7k3vbf0q5yyMKm0bLeVqcK81Jo6d3
+	Z6ztIo/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJV1b-0000000ALRy-3qaV;
-	Thu, 13 Nov 2025 10:57:59 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vJWLg-0000000ARdo-1J1c;
+	Thu, 13 Nov 2025 12:22:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJV1X-0000000ALQ8-3f5b;
-	Thu, 13 Nov 2025 10:57:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=Pux3hN3Gl7vLivHnYvNqjnFb+a2LWEYfciZAIz5y2kE=; b=lyrDlTBuN+tIi0mnoEc2sf0Xt6
-	ZIhkEwsTYMAQldfj4iH1fc6gdZnCGaiUBtaeeUHiGTNPy1SZoJxU49Lu0CnWYwJ+/8uUOCW6MKd73
-	BMEiaolNJwlmOc0NqDW1YJzF5oHFyNEpByt0cv5PrETzMpovJz2swK8gWPzR7lpo4fVm/lFujLkQ3
-	CGcTQKPPgFW4rvE0wQDZGxXdDN0ZrRiUgHHWUWfKxiJALhk0ZuL0/jknMlymDtDVtd/NC9BA7eowp
-	sCDLmaXd258ETRBpoqZ4XQMTuoTGU+z8m8UTo9UDpeF0uIVlGS91nj7psUU87x1wDzuWOv2REyXHi
-	FjyBJ37A==;
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJU9o-0000000HZvz-29SI;
-	Thu, 13 Nov 2025 10:02:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B1AAB41992;
-	Thu, 13 Nov 2025 10:57:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26E90C19422;
-	Thu, 13 Nov 2025 10:57:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763031465;
-	bh=OMfFW1nnKw5k2mezbZUycTzr4g1sGGxhFbFHTc77Xdw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=GyS+VXkBGeRBeL5aBOjs4Sn+VEaE8YGlvkKK2hPFzt7EwSjw7KcbtxQVJ3iXn4ybL
-	 wz9BbOzaNDw12FDRBwsGzz3aEM2VaycoDGFswsIVB9Qxw/CRx6NroC8NhBlKnVebQ0
-	 WeSpZqhOwDJarwAc+UEFyNGVkIck1h75Vue3D/qw8nWTBWcNoOtNzw40HLySVKuP86
-	 +my6QnYEhxrsArnkQjOOWBJaZ90wuoIypbYpfTIH9o6K/b97vTX0ujhlZtF4HnT8uf
-	 u5IXhpTj20X16k4aTVjRilFqJ6qpyh3LrRLH9AFpeK2EU0znmDMOWiph3Badx6zl+C
-	 Kjphjdzx0Bkwg==
-Date: Thu, 13 Nov 2025 11:57:42 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Zilin Guan <zilin@seu.edu.cn>
-Cc: angelogioacchino.delregno@collabora.com, jianhao.xu@seu.edu.cn,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org,
-	matthias.bgg@gmail.com, nbd@nbd.name, ryder.lee@mediatek.com,
-	sean.wang@mediatek.com, shayne.chen@mediatek.com
-Subject: Re: [PATCH net] mt76: mt7615: Fix memory leak in
- mt7615_mcu_wtbl_sta_add()
-Message-ID: <aRW5phMmzul8wTn-@lore-desk>
-References: <aRWF9QJuwGaDlUvT@lore-desk>
- <20251113094135.348383-1-zilin@seu.edu.cn>
+	id 1vJWLb-0000000ARZJ-1Q8u;
+	Thu, 13 Nov 2025 12:22:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1763036559;
+	bh=RKcFAn+VDGMwlQVrFJj0LTHiZhkHmlIFPaKbYwlojYU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=azDRmI+R8f1SgJoLsdNywzkpwwGJ9Kbr+CrWk/huSIyHtmTjB002cpp6E6u9bIJ8d
+	 onGTt6VqOtb5n4XiYSY0AFXh2Qktduo48lG2++VHjoDE3FKyyOfbNPqhvH4JYUrCDG
+	 r4hw5C34VIKlOk8Lk/jgUeeyiknXA2jzsyHTXUXRKyIGo61mAdhR3WhVqAzx7Qj1Ax
+	 hPfa8UGk7E1rnrF2l1Z/LFXhGDWPNTqA2g4yQ1EvhmLVNQ++75IY+5TnJDPb1NAjju
+	 DUj/hSLpkiYnacOxkbkm2TZC7EI6eJI4dz5uqcKpXovvka9hJNDU/RHEuFCOAng3PO
+	 mU0LjEH93CstQ==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4B1F917E1340;
+	Thu, 13 Nov 2025 13:22:39 +0100 (CET)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: dmaengine@vger.kernel.org
+Cc: sean.wang@mediatek.com,
+	vkoul@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	long.cheng@mediatek.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com
+Subject: [PATCH 2/8] dt-bindings: dma: mediatek,uart-dma: Deprecate mediatek,dma-33bits
+Date: Thu, 13 Nov 2025 13:22:23 +0100
+Message-ID: <20251113122229.23998-3-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.51.1
+In-Reply-To: <20251113122229.23998-1-angelogioacchino.delregno@collabora.com>
+References: <20251113122229.23998-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="39OyxfwhcaPPfO4y"
-Content-Disposition: inline
-In-Reply-To: <20251113094135.348383-1-zilin@seu.edu.cn>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_100225_014802_63A23857 
-X-CRM114-Status: GOOD (  28.85  )
+X-CRM114-CacheID: sfid-20251113_042243_534907_360AE861 
+X-CRM114-Status: UNSURE (   9.07  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,95 +84,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+While this property wants to express a capability of the hardware,
+this is only used by the driver itself to vary the DMA bits during
+probe.
 
---39OyxfwhcaPPfO4y
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Different hardware shall instead have different compatible strings.
 
-> On Thu, Nov 13, 2025 at 08:17:09AM +0100, Lorenzo Bianconi wrote:
-> > [-- Attachment #1: Type: text/plain, Size: 1475 bytes --]
-> >=20
-> > > In mt7615_mcu_wtbl_sta_add(), an skb sskb is allocated. If the
-> > > subsequent call to mt76_connac_mcu_alloc_wtbl_req() fails, the functi=
-on
-> > > returns an error without freeing sskb, leading to a memory leak.
-> > >=20
-> > > Fix this by calling dev_kfree_skb() on sskb in the error handling path
-> > > to ensure it is properly released.
-> > >=20
-> > > Fixes: 99c457d902cf9 ("mt76: mt7615: move mt7615_mcu_set_bmc to mt761=
-5_mcu_ops")
-> > > Signed-off-by: Zilin Guan <zilin@seu.edu.cn>
-> > > ---
-> > >  drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 4 +++-
-> > >  1 file changed, 3 insertions(+), 1 deletion(-)
-> > >=20
-> > > diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/driver=
-s/net/wireless/mediatek/mt76/mt7615/mcu.c
-> > > index 4064e193d4de..08ee2e861c4e 100644
-> > > --- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> > > +++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-> > > @@ -874,8 +874,10 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_phy *phy, =
-struct ieee80211_vif *vif,
-> > >  	wtbl_hdr =3D mt76_connac_mcu_alloc_wtbl_req(&dev->mt76, &msta->wcid,
-> > >  						  WTBL_RESET_AND_SET, NULL,
-> > >  						  &wskb);
-> > > -	if (IS_ERR(wtbl_hdr))
-> > > +	if (IS_ERR(wtbl_hdr)) {
-> > > +		dev_kfree_skb(sskb);
-> >=20
-> > Hi Zilin,
-> >=20
-> > I can't see how this is useful since if mt76_connac_mcu_alloc_wtbl_req =
-returns
-> > an error, wskb will not be allocated.
-> >=20
-> > Regards,
-> > Lorenzo
->=20
-> Hi Lorenzo,
->=20
-> Thanks for your review.
->=20
-> You are correct that 'wskb' is not allocated in this error path.=20
-> However, my patch is intended to free 'sskb', which was allocated=20
-> earlier in the function. Without this change, 'sskb' is leaked if
-> mt76_connac_mcu_alloc_wtbl_req() fails.
->=20
-> This approach is similar to the error handling logic later in the
-> function, where a failure in sending one skb results in the other one
-> being freed.
->=20
-> Hope this clarifies.
+Following the driver cleanup and the introduction of a specific
+compatible string for the APDMA IP version found in MT6795, set
+the "mediatek,dma-33bits" vendor property as deprecated.
 
-yes, right. I misread the code. I agree with the fix.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+diff --git a/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
+index 10fc92b60de5..4d927726df93 100644
+--- a/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
++++ b/Documentation/devicetree/bindings/dma/mediatek,uart-dma.yaml
+@@ -59,6 +59,7 @@ properties:
+ 
+   mediatek,dma-33bits:
+     type: boolean
++    deprecated: true
+     description: Enable 33-bits UART APDMA support
+ 
+ required:
+-- 
+2.51.1
 
->=20
-> > >  		return PTR_ERR(wtbl_hdr);
-> > > +	}
-> > > =20
-> > >  	if (enable) {
-> > >  		mt76_connac_mcu_wtbl_generic_tlv(&dev->mt76, wskb, vif, sta,
-> > > --=20
-> > > 2.34.1
-> > >=20
->=20
-> Best Regards,
-> Zilin Guan
-
---39OyxfwhcaPPfO4y
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaRW5pgAKCRA6cBh0uS2t
-rMwDAP47wALgPmIE6tUjCgJFQCsffcrKOTD677lZaRxgFK1KiQEAgtoWFZ4Rph8X
-FRyBF15dTBXErLYgBnyapoMTJ/x/gQw=
-=IWEV
------END PGP SIGNATURE-----
-
---39OyxfwhcaPPfO4y--
 
