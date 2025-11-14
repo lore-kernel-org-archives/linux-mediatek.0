@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1A05CE8D57
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Nov 2025 16:55:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A31CCE8D5D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Nov 2025 17:02:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iI9J4tlNC+SSMmhFiTr7gPMAWNKQHr77sZKRtT+r31Q=; b=Ak4ptZgYTxSh7tdixFAPHVyKzR
-	gIQVA9QnaQujfz1cAFUWRMPUE1stbqXgLmvgocgnnXZreSRCG/2p19Wfh8A87MAll0q3HQrOsZbzZ
-	kTZ8YOA0kNSqFDYrOHYSZHzB+sgn7IZrRsAh0jG1qg3v5essCZ9Nh0Lx3m3D8VkH5XF1yAGSqNfN6
-	AvNxXdyBH620l/sg1eLKLP2T1/iCwkM4RtndfHSXid045LzmAkvAbkoCsQOup8r37O/kpieCs0c2b
-	q0N4ltFTbWTVUL+eINQdxIVhcPTTyauqPF8pfRV6zuOPraRkh1xrli6PehHtxgM4BQmi4q5cOZMS2
-	FLk6brEA==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/H7GHzQdEVJHWL6IxnBg2c0IP7Sxxl00BJqFqnDMZQs=; b=jD9P/jX5zR+Vme
+	vJO5clxuceqSPmjsiuQywDhlveeJMhjFVMpTQHbIvPksH+NRGG9Se/fgAEwOJcI+aQajoDdwhkQYy
+	zQ64tn7WhjhjGn+Ba2xWdbp+9mbOgeVqWljPwXRyHzEdzohvK0deYUXJir9oouuICOFpB7VEWbc4C
+	Ml08S9tMXAvk6msCnk520suU3y9R/qhxn61EGftDUBmKp+bRQ0R3+GpG4tdK7FW5YegOEqkwC7peI
+	qQhNFfDAexcvrUS2CRrvja5HOx/r31pPa6Ya2niA1s5ba8EbXALIDJ/oJ8vd+FW7Amz7vpWH+JPvS
+	4lySfA2JZU07M7sc38qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJx4n-0000000CmYl-1d0q;
-	Fri, 14 Nov 2025 16:55:09 +0000
+	id 1vJxBl-0000000Cnse-2GC2;
+	Fri, 14 Nov 2025 17:02:21 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJx4h-0000000CmQy-3AvK;
-	Fri, 14 Nov 2025 16:55:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1763139296; cv=none; 
+	id 1vJxBj-0000000Cnrk-09io;
+	Fri, 14 Nov 2025 17:02:20 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1763139246; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=h5OiMH7vcp26YusQN7J8hqNMoIYH9GkcIHxPj08uajIe7iiXyFTvEBXpI9H/c+/PAmVr7Zf2V/EKseEDXioL+Dd0B1omlJkC6K+0uPEm36HQl635CLahLIsMB898Vi9sPtDVDPT2N55BnEP6QlOvH/I/RWG2OGomQsGKJY2nxyY=
+	b=P1zbySLBMoTuYWFzBJXE0e3U9S9ADb62KIYeWDu/hnFXM/rhr8nqeSPeVlb4n6oD0iydHND9ZBg6Qvcy7mBNwpNIppqyBXmiRpKxcyMq2mpHIkUFhZ/mob1UwQZBhE9VTYTkEzT7EO76CMqAS59cAjG1EEj7Z+xHZ8KqsC5yUDU=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1763139296; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=iI9J4tlNC+SSMmhFiTr7gPMAWNKQHr77sZKRtT+r31Q=; 
-	b=eQ1A3H3Cp1YGfezXpOXoX2ZUYchKqJD8nj2RcKDJs4odlxjqu9oldKRkhQNT5vVWpN81zdD7aWM2gAinFhehCgHvQq0kJ1aH9fsMV0XB9dQLYmc4+yju0NZ4QsccdsX8CdpwA5Zl0Hb6InCrn3LZ61asSJ9O+yO8z4lJBMcdjkc=
+	t=1763139246; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=/H7GHzQdEVJHWL6IxnBg2c0IP7Sxxl00BJqFqnDMZQs=; 
+	b=n83DtCqhT9N/20fxJEKKf6WmBPorVU2gHXJBVnRLL1307/U0xu6Q6Kcpw7hzvbMXNGol2ZdtK8msFdmli9QPYTCqTDwBCbDMRlh7TOuhA25yREcmDeP98fl42xF+qJJwKNXHK8MkcVqUVtQlG1+Dhv3Wp0XZsv2ggh9aPV8UUpg=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763139296;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763139246;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=iI9J4tlNC+SSMmhFiTr7gPMAWNKQHr77sZKRtT+r31Q=;
-	b=FOVq4UkK7aWrgSfBx2m2IFqsM6HoW64gusj9Lfzkfc3nRxuPs96vLFSWOP8xqatS
-	VPCYwRdbzG8aN/JtJcE2KbCREX9aqK4knBNMIhYQyufyRPsL/g6M3qcPdoAUCrGt0Bz
-	ZAzOlQG4wREuMDa7aIOzLa1gx3qUf06IP91LMVsY=
-Received: by mx.zohomail.com with SMTPS id 1763139294579227.16027413825054;
-	Fri, 14 Nov 2025 08:54:54 -0800 (PST)
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=/H7GHzQdEVJHWL6IxnBg2c0IP7Sxxl00BJqFqnDMZQs=;
+	b=YWhFOohSBAKRoxsUW21p5utSu/GZuw1B/PQeLZweWzonb8DZSyqcol1yKIoqASw8
+	rq66EqlN00hohSvpAVQYg68kpoTsUYsh0CO95Xuz6o+Fg/cZ3hJsh49o0iOBlq5GzWu
+	xqS+Ip85MTQdnd+iOfq2PjkcA9yERrHw9WL7XuI4=
+Received: by mx.zohomail.com with SMTPS id 1763139243754487.4274112916788;
+	Fri, 14 Nov 2025 08:54:03 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Fri, 14 Nov 2025 17:54:07 +0100
-Subject: [PATCH 13/13] interconnect: mediatek: Aggregate bandwidth with
- saturating add
+Subject: [PATCH 00/13] MediaTek Interconnect Cleanup and MT8196 Enablement
+Date: Fri, 14 Nov 2025 17:53:54 +0100
+Message-Id: <20251114-mt8196-dvfsrc-v1-0-b956d4631468@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251114-mt8196-dvfsrc-v1-13-b956d4631468@collabora.com>
-References: <20251114-mt8196-dvfsrc-v1-0-b956d4631468@collabora.com>
-In-Reply-To: <20251114-mt8196-dvfsrc-v1-0-b956d4631468@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAKJeF2kC/zXMQQqDMBCF4auEWXfAEa3GqxQXNk7aWSS2k1QE8
+ e4NlS7/B+/bIbEKJxjMDsqrJFliCboYcM8pPhhlLg11VbdE1GDIPdkrzqtP6rC13vW2oq5rHJT
+ PS9nL9vNu49nK709h8znCfUqMbglB8mAibxn/NIzH8QURFBY6kAAAAA==
+X-Change-ID: 20251114-mt8196-dvfsrc-59fc8901774c
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -67,8 +68,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251114_085503_929293_29C6B78A 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20251114_090219_151084_5DC595A6 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,46 +84,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-By using a regular non-overflow-checking add, the MediaTek icc-emi
-driver will happy wrap at U32_MAX + 1 to 0. As it's common for the
-interconnect core to fill in INT_MAX values, this is not a hypothetical
-situation, but something that actually happens in regular use. This
-would be pretty disasterous if anything used this driver.
+This series is a combination of binding changes, driver cleanups and new
+driver code to enable the interconnect on the MediaTek MT8196 SoC.
 
-Replace the addition with an overflow-checked addition from overflow.h,
-and saturate to U32_MAX if an overflow is detected.
+This series currently does not add any users of it (i.e., no bandwidth
+requests being made in affected device drivers), as the only one I
+quickly whippd up is in the UFS driver, which is undergoing some major
+refactoring upstream in a different series of mine.
 
-Fixes: b45293799f75 ("interconnect: mediatek: Add MediaTek MT8183/8195 EMI Interconnect driver")
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/interconnect/mediatek/icc-emi.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+AngeloGioacchino Del Regno (8):
+      dt-bindings: soc: mediatek: dvfsrc: Add support for MT8196
+      dt-bindings: interconnect: mt8183-emi: Add support for MT8196 EMI
+      soc: mediatek: mtk-dvfsrc: Change error check for DVFSRCv4 START cmd
+      soc: mediatek: mtk-dvfsrc: Add and propagate DVFSRC bandwidth type
+      soc: mediatek: mtk-dvfsrc: Add a new callback for calc_dram_bw
+      soc: mediatek: mtk-dvfsrc: Write bandwidth to EMI DDR if present
+      soc: mediatek: mtk-dvfsrc: Add support for DVFSRCv4 and MT8196
+      interconnect: mediatek: Add support for MediaTek MT8196 EMI ICC
 
-diff --git a/drivers/interconnect/mediatek/icc-emi.c b/drivers/interconnect/mediatek/icc-emi.c
-index 182aa2b0623a..dfa3a9cd9399 100644
---- a/drivers/interconnect/mediatek/icc-emi.c
-+++ b/drivers/interconnect/mediatek/icc-emi.c
-@@ -12,6 +12,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_platform.h>
-+#include <linux/overflow.h>
- #include <linux/platform_device.h>
- #include <linux/soc/mediatek/dvfsrc.h>
- 
-@@ -22,7 +23,9 @@ static int mtk_emi_icc_aggregate(struct icc_node *node, u32 tag, u32 avg_bw,
- {
- 	struct mtk_icc_node *in = node->data;
- 
--	*agg_avg += avg_bw;
-+	if (check_add_overflow(*agg_avg, avg_bw, agg_avg))
-+		*agg_avg = U32_MAX;
-+
- 	*agg_peak = max_t(u32, *agg_peak, peak_bw);
- 
- 	in->sum_avg = *agg_avg;
+Nicolas Frattaroli (5):
+      dt-bindings: soc: mediatek: dvfsrc: Document clock
+      soc: mediatek: mtk-dvfsrc: Get and Enable DVFSRC clock
+      soc: mediatek: mtk-dvfsrc: Rework bandwidth calculations
+      interconnect: mediatek: Don't hijack parent device
+      interconnect: mediatek: Aggregate bandwidth with saturating add
 
+ .../bindings/interconnect/mediatek,mt8183-emi.yaml |   1 +
+ .../soc/mediatek/mediatek,mt8183-dvfsrc.yaml       |   7 +
+ drivers/interconnect/mediatek/Kconfig              |   7 +
+ drivers/interconnect/mediatek/Makefile             |   1 +
+ drivers/interconnect/mediatek/icc-emi.c            |   9 +-
+ drivers/interconnect/mediatek/mt8196.c             | 383 +++++++++++++++++++++
+ drivers/soc/mediatek/mtk-dvfsrc.c                  | 364 ++++++++++++++++++--
+ include/dt-bindings/interconnect/mediatek,mt8196.h |  48 +++
+ 8 files changed, 785 insertions(+), 35 deletions(-)
+---
+base-commit: d8a3d478ec9200b852095cb96d166ca7909f57e0
+change-id: 20251114-mt8196-dvfsrc-59fc8901774c
+
+Best regards,
 -- 
-2.51.2
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
