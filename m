@@ -4,109 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66E8BCDE019
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Nov 2025 07:21:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 007A4CE7AAB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Nov 2025 10:43:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PXqo3T1lVJl+e5mxdRguWbuhGMrr/g9DGdLCzSjUCSY=; b=lXgmKGdoadms/ui+DwfXJS9/dk
-	ip6RI69pNhC6YS4cfLxhswDRVpu8G60yXCaJcWUbZr2XJsHreVEMsoa9DE3ACcDvLEVuTqCXGohTW
-	ofSADmiQ0KRR8BRWys/Vn/YkuktNPEzYuYlOg+ReHF32Nrc4xbvmMRS/h3RYO2e/ORcN9Wmk8kH97
-	rNfbx4Up0GUBmTXWzD4otVFaRgIH2SMKJHiMPPy0GWVrkxlOAtPwvmixzgA6lJNwL0Z9Se+ZP8cM9
-	yKA/N053TxOSTUWo09P63DdCQewNiMueybUgYN2DJAD/rjrNNNrHyadykGEF49IszpYK022k0Z/rk
-	qFgkeZLw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5qnf43euh50xAz5oC9jatLweC4/+OTf4gXUuEO+dc9E=; b=RGvCwGrYsZXxLZ5X962cp8KhWx
+	5jIMgwqVcrcVFmaGLDVFAtCXp++wY//DsYQqzGOg+cOBQvri1emY6U31Qzvd/r68NglBdpP3ZeaD+
+	308xzL7xyTHmXfxmKuZbwL+nJZDYalSZRIvAcHNnbCBccl6iGPG3t9a5+0jGUQ4KNz1X87TU8OXC2
+	JEflz0tRfVkrIqXn1Mtm1vuQRKfFVOSXrjZdqwjGm+n8Kxw6vpf00Z1AMXi7JZ0yVq10FtnQ6X1mA
+	qY/epE3/6z1+TxmPYecvV6j2iNa/lkAAr10LkmNCUW+t024Y0ahVThSRPuFtyK3ZUGOWcDppXMYXB
+	ds2KR4DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJo7l-0000000Bk3t-47pj;
-	Fri, 14 Nov 2025 07:21:37 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vJrHJ-0000000C3JW-2eGZ;
+	Fri, 14 Nov 2025 10:43:41 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJo7j-0000000Bk3M-0aLu;
-	Fri, 14 Nov 2025 07:21:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A0B7244272;
-	Fri, 14 Nov 2025 07:21:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A60D0C4CEF8;
-	Fri, 14 Nov 2025 07:21:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763104893;
-	bh=is+kBi4LCVaekhw1dHrwBUKoLshkd0g+0vUTG1ENplw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AW0UdGJCY6wewnoZeHwV3h40jpEJDz2RHwM8Pv84Vjqu7ap8NOxGEqcY4YOrv7/fW
-	 vgGKbrEovo+nmY7HP2NH/GNJHV8kYeQelXk4TGeV+ZAv9ewrv+MOVtruzlIzRnT+ys
-	 xquMrMrYALbGbq9xMVTc+E82jyKg6ZqpkCaCGH9m3wo3V7f+BWUZNYqAPFMoTUj96f
-	 WRPN9eTdFJ1BQcVXYuKdps9jeFx4NHHXVbWs52OuosH63MN3mlU1qRETOJ9kOjjI9N
-	 kIphWRxHQHX1/PV4fVSeIqFc1Bq19d0I/z+lhXHNO7Xr/OhTyAd7pd2msw1YGLqXmb
-	 mPdI+ngPaHtqg==
-Message-ID: <13d96b3c-4db6-48f5-b1bb-68171ffa6bc0@kernel.org>
-Date: Fri, 14 Nov 2025 08:21:29 +0100
+	id 1vJrHG-0000000C3IY-2eK8
+	for linux-mediatek@lists.infradead.org;
+	Fri, 14 Nov 2025 10:43:40 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-b472842981fso228321466b.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 14 Nov 2025 02:43:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=suse.com; s=google; t=1763117017; x=1763721817; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=5qnf43euh50xAz5oC9jatLweC4/+OTf4gXUuEO+dc9E=;
+        b=RxGerznUieUOJcG6bTm4SqSYqdOFSz22YeIbYfxmYKYIjUgwGtYhYdFrMEO+9qeRGA
+         1fUZuXwgIJ122WB7KkAN7nVG9YXCvlL2Yr7lcglybNy7vHH5lt/ezP0KV0yN6379TiHu
+         7WmhJ0o7MGKDJtQR0/dfkh+9uV70C7UgloZaQ4aTRwet1Hhxj4yw3nnW7y1YMLhFMZZg
+         Kl54sSZgVSmZqFGwHfs9tyDdDNy99yBrmXZimEZF20biEctIbnNlmWoirxgZ7b8VY9zi
+         cmSOX018UP/XDY9a4I3P6nmB7Ce9pPZpye2rm6uV+3ufong+v347SGpYNWCvrnZ6iHcO
+         dhTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1763117017; x=1763721817;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5qnf43euh50xAz5oC9jatLweC4/+OTf4gXUuEO+dc9E=;
+        b=VxgWbbXalQReFoqb8yYogG/Q/MPtlTJ5kCr8TMjpXWdv7ilQzyVr9gJEvL9FrhI+cZ
+         SUaQDL4djg1gi44TJcbThTEQaTfHppMWmaG30iSCXxk5QIfS3AYsg6UhDxnBUOfSA1Ak
+         6cHi0u8JUEYPreBCLxbr0oDAvx9AbPyR/EpKOD+DEKqAEgqnXLrTLK7YyOPpPIszMhgH
+         G9Dv9PwmyP6l+AzNTkBSzI8mU/JgoL9VvqHYP/6DiYqAsRkNizq2+vXFqvz5YACf3AZg
+         79ItF0IXv37Dl+OWlczA/M01YSVQiTbsg1s0Br0rRRJYg0i6UbOl+ILx6xeGS9nDOiQA
+         fQZA==
+X-Forwarded-Encrypted: i=1; AJvYcCUE9FjK5NK2TIkKJ68vwqjpw2HG7w3w/+fhWEdEcDKaIKd2fFdwc+I+CYmBKTO5c2bNU0vkDxTCcnfp+w6C9g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzqYXYj0IVQhaFUU7uFzc7dfLeCgzZWU4+/AGm7cXDpp1vXw3X4
+	jd9jJWChO0yqUTm1bTVf9shsuBZiDaNyI6k/6JA21mM66DT4zTkya49/qPIreG/uKNI=
+X-Gm-Gg: ASbGncsGj5kQQaxu95IQ2bZ3jRerw4+/9v+6itcIXihoHqY6U+xuIH5xrbGcjIJzRf/
+	Hkq9bpbckRfbDwQys42ZuVEsPE+CtR5JiWys07bFDMN0gePy0yGSgp/fGW595f7B4i6ugYlnd61
+	oZfr/ZBs2qNaNljHXXlFIOuYkZSZMTHiN+C8eHAgbn2p98VGehUtgL/FGUaL5QgrR1ufPDk0wqm
+	mYf1OznsfvQCjsg68IPLU5Zkq9UVRkArsnn6gewNyMWTBTr705I2GPradzPWFz+PMRqn4Tlqrcm
+	b5HuebdvdkoP25T7A2q4hnjDceZACCBt+PPpZ6GoeVjAjslyyAAlnsJWKSGKWUPvd/FXYwzkzSy
+	le5D1w2ydx29MUNksa2DyXYCTXwBKPWhKSyrd+H5tmYo6CnXygLXt2Zg3sUvMcbP6HmAcSe51wa
+	FDW7yCRhalPHyr+Q==
+X-Google-Smtp-Source: AGHT+IHMVj7O3E/KnHZI4uDJ5+oTdAiz5D+VVC1LG6ki9E2djSVIrRZEi/GgjbF6gY3JvKH3pseNvg==
+X-Received: by 2002:a17:907:2d25:b0:b73:4b56:7a37 with SMTP id a640c23a62f3a-b73678eacabmr241701066b.30.1763117016492;
+        Fri, 14 Nov 2025 02:43:36 -0800 (PST)
+Received: from linux ([2a00:6d43:105:c401:e307:1a37:2e76:ce91])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b734fad43dfsm360561666b.20.2025.11.14.02.43.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 14 Nov 2025 02:43:36 -0800 (PST)
+From: Marco Crivellari <marco.crivellari@suse.com>
+To: linux-kernel@vger.kernel.org,
+	linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Tejun Heo <tj@kernel.org>,
+	Lai Jiangshan <jiangshanlai@gmail.com>,
+	Frederic Weisbecker <frederic@kernel.org>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	Marco Crivellari <marco.crivellari@suse.com>,
+	Michal Hocko <mhocko@suse.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2] wifi: mt76: replace use of system_wq with system_percpu_wq
+Date: Fri, 14 Nov 2025 11:43:25 +0100
+Message-ID: <20251114104325.116471-1-marco.crivellari@suse.com>
+X-Mailer: git-send-email 2.51.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] memory: mtk-smi: Fix NULL pointer dereference in
- config_port
-To: Jian Hui Lee <jianhui.lee@canonical.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Joerg Roedel <jroedel@suse.de>, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20251111124853.2916889-1-jianhui.lee@canonical.com>
- <589670a9-ac91-4fde-b595-473408b3df18@kernel.org>
- <CAGmiHmGiDngNCkfkwdoV8M0XjQVFEXTJekPAfuZfUFRui9gSbg@mail.gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <CAGmiHmGiDngNCkfkwdoV8M0XjQVFEXTJekPAfuZfUFRui9gSbg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251113_232135_221874_C03E3BEE 
-X-CRM114-Status: GOOD (  13.50  )
+X-CRM114-CacheID: sfid-20251114_024338_688033_70D1A794 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,43 +108,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/11/2025 04:03, Jian Hui Lee wrote:
-> On Wed, Nov 12, 2025 at 11:51 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
->>
->> Please trim the traces from all irrelevant information.
->>
->>>
->>> Fixes: e6dec92308628 ("iommu/mediatek: Add mt2712 IOMMU support")
->>
->> Add Cc stable.
->>
->>> Signed-off-by: Jian Hui Lee <jianhui.lee@canonical.com>
->>
->>> ---
->>>  drivers/memory/mtk-smi.c | 4 ++++
->>>  1 file changed, 4 insertions(+)
->>>
->>> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
->>> index 733e22f695ab..8eb043ff8280 100644
->>> --- a/drivers/memory/mtk-smi.c
->>> +++ b/drivers/memory/mtk-smi.c
->>> @@ -244,6 +244,10 @@ static int mtk_smi_larb_config_port_gen2_general(struct device *dev)
->>>       struct arm_smccc_res res;
->>>       int i;
->>>
->>> +     /* larb->mmu and larb->bank are set in bind(), may not be ready yet */
->>
->> And how do you synchronize this between CPUs? IOW, what certainty you
->> have that this CPU sees correct data and the checks below have any sense?
-> 
-> Thank you for the review and for pointing this out. Moving
-> pm_runtime_enable/disable to component bind/unbind should ensure that
-> the synchronization happens correctly. I will send a v2 to address
-> those you mentioned.
+Currently if a user enqueue a work item using schedule_delayed_work() the
+used wq is "system_wq" (per-cpu wq) while queue_delayed_work() use
+WORK_CPU_UNBOUND (used when a cpu is not specified). The same applies to
+schedule_work() that is using system_wq and queue_work(), that makes use
+again of WORK_CPU_UNBOUND.
 
-Runtime PM synchronizes nothing in this matter, so I don't understand
-what you want to achieve with it.
+This lack of consistentcy cannot be addressed without refactoring the API.
+For more details see the Link tag below.
 
-Best regards,
-Krzysztof
+This continues the effort to refactor workqueue APIs, which began with
+the introduction of new workqueues and a new alloc_workqueue flag in:
+
+commit 128ea9f6ccfb ("workqueue: Add system_percpu_wq and system_dfl_wq")
+commit 930c2ea566af ("workqueue: Add new WQ_PERCPU flag")
+
+Switch to using system_percpu_wq because system_wq is going away as part of
+a workqueue restructuring.
+
+Suggested-by: Tejun Heo <tj@kernel.org>
+Signed-off-by: Marco Crivellari <marco.crivellari@suse.com>
+Link: https://lore.kernel.org/all/20250221112003.1dSuoGyc@linutronix.de/
+----
+Changs in v2:
+- improved commit log
+- rebased on v6.18-rc5
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7925/init.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index b9098a7331b1..95764b82da39 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -343,7 +343,7 @@ int mt7921_register_device(struct mt792x_dev *dev)
+ 	dev->mphy.hw->wiphy->available_antennas_rx = dev->mphy.chainmask;
+ 	dev->mphy.hw->wiphy->available_antennas_tx = dev->mphy.chainmask;
+ 
+-	queue_work(system_wq, &dev->init_work);
++	queue_work(system_percpu_wq, &dev->init_work);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+index d7d5afe365ed..e33ab4849e8a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+@@ -420,7 +420,7 @@ int mt7925_register_device(struct mt792x_dev *dev)
+ 	dev->mphy.hw->wiphy->available_antennas_rx = dev->mphy.chainmask;
+ 	dev->mphy.hw->wiphy->available_antennas_tx = dev->mphy.chainmask;
+ 
+-	queue_work(system_wq, &dev->init_work);
++	queue_work(system_percpu_wq, &dev->init_work);
+ 
+ 	return 0;
+ }
+-- 
+2.51.1
+
 
