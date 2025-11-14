@@ -4,96 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 007A4CE7AAB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Nov 2025 10:43:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A645BCDE00D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Nov 2025 12:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5qnf43euh50xAz5oC9jatLweC4/+OTf4gXUuEO+dc9E=; b=RGvCwGrYsZXxLZ5X962cp8KhWx
-	5jIMgwqVcrcVFmaGLDVFAtCXp++wY//DsYQqzGOg+cOBQvri1emY6U31Qzvd/r68NglBdpP3ZeaD+
-	308xzL7xyTHmXfxmKuZbwL+nJZDYalSZRIvAcHNnbCBccl6iGPG3t9a5+0jGUQ4KNz1X87TU8OXC2
-	JEflz0tRfVkrIqXn1Mtm1vuQRKfFVOSXrjZdqwjGm+n8Kxw6vpf00Z1AMXi7JZ0yVq10FtnQ6X1mA
-	qY/epE3/6z1+TxmPYecvV6j2iNa/lkAAr10LkmNCUW+t024Y0ahVThSRPuFtyK3ZUGOWcDppXMYXB
-	ds2KR4DA==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OTWUPlyyxRRJs6HJe8sGuSoAq6EtBhc0ixMPZ20Ciag=; b=sLgjXA3a2uSXFgN1toiCHTBBIc
+	x7wSz3Opcj60jIsuhkwN++KH4XtYCyMcPYxv5ZN09aaWhXQ76VL7B4W2tBsBYe/OkmxT4scElrLqn
+	WoQthDf6AhxTnkyopWLP0VSirRrPwS2HNnfW/KLkdzEO87dnIrc7FRV/kDU7CyhJPfkL7vpWsRkPM
+	M/8ab89axMyvwsuECTtXsZMHHwLsXJ1b8EMk7T6cENcoDEYL00Tkvio/2v5Wcm/0nYCrM9V8ySKps
+	LCVW8JYyUHoqHkpzBdjzDaT9zhh8kimMHgQJGipdW+X6hXlXPIhwBR5anExFr2Tz1TnvxPGI9sklD
+	Ru5RUwSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJrHJ-0000000C3JW-2eGZ;
-	Fri, 14 Nov 2025 10:43:41 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1vJsgD-0000000CAzx-00m1;
+	Fri, 14 Nov 2025 12:13:29 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJrHG-0000000C3IY-2eK8
+	id 1vJsgB-0000000CAzO-0BIz
 	for linux-mediatek@lists.infradead.org;
-	Fri, 14 Nov 2025 10:43:40 +0000
-Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-b472842981fso228321466b.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 14 Nov 2025 02:43:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=suse.com; s=google; t=1763117017; x=1763721817; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=5qnf43euh50xAz5oC9jatLweC4/+OTf4gXUuEO+dc9E=;
-        b=RxGerznUieUOJcG6bTm4SqSYqdOFSz22YeIbYfxmYKYIjUgwGtYhYdFrMEO+9qeRGA
-         1fUZuXwgIJ122WB7KkAN7nVG9YXCvlL2Yr7lcglybNy7vHH5lt/ezP0KV0yN6379TiHu
-         7WmhJ0o7MGKDJtQR0/dfkh+9uV70C7UgloZaQ4aTRwet1Hhxj4yw3nnW7y1YMLhFMZZg
-         Kl54sSZgVSmZqFGwHfs9tyDdDNy99yBrmXZimEZF20biEctIbnNlmWoirxgZ7b8VY9zi
-         cmSOX018UP/XDY9a4I3P6nmB7Ce9pPZpye2rm6uV+3ufong+v347SGpYNWCvrnZ6iHcO
-         dhTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763117017; x=1763721817;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=5qnf43euh50xAz5oC9jatLweC4/+OTf4gXUuEO+dc9E=;
-        b=VxgWbbXalQReFoqb8yYogG/Q/MPtlTJ5kCr8TMjpXWdv7ilQzyVr9gJEvL9FrhI+cZ
-         SUaQDL4djg1gi44TJcbThTEQaTfHppMWmaG30iSCXxk5QIfS3AYsg6UhDxnBUOfSA1Ak
-         6cHi0u8JUEYPreBCLxbr0oDAvx9AbPyR/EpKOD+DEKqAEgqnXLrTLK7YyOPpPIszMhgH
-         G9Dv9PwmyP6l+AzNTkBSzI8mU/JgoL9VvqHYP/6DiYqAsRkNizq2+vXFqvz5YACf3AZg
-         79ItF0IXv37Dl+OWlczA/M01YSVQiTbsg1s0Br0rRRJYg0i6UbOl+ILx6xeGS9nDOiQA
-         fQZA==
-X-Forwarded-Encrypted: i=1; AJvYcCUE9FjK5NK2TIkKJ68vwqjpw2HG7w3w/+fhWEdEcDKaIKd2fFdwc+I+CYmBKTO5c2bNU0vkDxTCcnfp+w6C9g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzqYXYj0IVQhaFUU7uFzc7dfLeCgzZWU4+/AGm7cXDpp1vXw3X4
-	jd9jJWChO0yqUTm1bTVf9shsuBZiDaNyI6k/6JA21mM66DT4zTkya49/qPIreG/uKNI=
-X-Gm-Gg: ASbGncsGj5kQQaxu95IQ2bZ3jRerw4+/9v+6itcIXihoHqY6U+xuIH5xrbGcjIJzRf/
-	Hkq9bpbckRfbDwQys42ZuVEsPE+CtR5JiWys07bFDMN0gePy0yGSgp/fGW595f7B4i6ugYlnd61
-	oZfr/ZBs2qNaNljHXXlFIOuYkZSZMTHiN+C8eHAgbn2p98VGehUtgL/FGUaL5QgrR1ufPDk0wqm
-	mYf1OznsfvQCjsg68IPLU5Zkq9UVRkArsnn6gewNyMWTBTr705I2GPradzPWFz+PMRqn4Tlqrcm
-	b5HuebdvdkoP25T7A2q4hnjDceZACCBt+PPpZ6GoeVjAjslyyAAlnsJWKSGKWUPvd/FXYwzkzSy
-	le5D1w2ydx29MUNksa2DyXYCTXwBKPWhKSyrd+H5tmYo6CnXygLXt2Zg3sUvMcbP6HmAcSe51wa
-	FDW7yCRhalPHyr+Q==
-X-Google-Smtp-Source: AGHT+IHMVj7O3E/KnHZI4uDJ5+oTdAiz5D+VVC1LG6ki9E2djSVIrRZEi/GgjbF6gY3JvKH3pseNvg==
-X-Received: by 2002:a17:907:2d25:b0:b73:4b56:7a37 with SMTP id a640c23a62f3a-b73678eacabmr241701066b.30.1763117016492;
-        Fri, 14 Nov 2025 02:43:36 -0800 (PST)
-Received: from linux ([2a00:6d43:105:c401:e307:1a37:2e76:ce91])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b734fad43dfsm360561666b.20.2025.11.14.02.43.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Nov 2025 02:43:36 -0800 (PST)
-From: Marco Crivellari <marco.crivellari@suse.com>
-To: linux-kernel@vger.kernel.org,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Tejun Heo <tj@kernel.org>,
-	Lai Jiangshan <jiangshanlai@gmail.com>,
-	Frederic Weisbecker <frederic@kernel.org>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Marco Crivellari <marco.crivellari@suse.com>,
-	Michal Hocko <mhocko@suse.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2] wifi: mt76: replace use of system_wq with system_percpu_wq
-Date: Fri, 14 Nov 2025 11:43:25 +0100
-Message-ID: <20251114104325.116471-1-marco.crivellari@suse.com>
-X-Mailer: git-send-email 2.51.1
+	Fri, 14 Nov 2025 12:13:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7C64F60187
+	for <linux-mediatek@lists.infradead.org>; Fri, 14 Nov 2025 12:13:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 134ECC2BC9E
+	for <linux-mediatek@lists.infradead.org>; Fri, 14 Nov 2025 12:13:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763122406;
+	bh=5I0F7Lk270HlfQS3v6Sw31jwqLfCir/VQOrCBc5zdi4=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=BsWlX86ilnv+s4j4wTsSqTeDNAnnYOHyVINcw+Wvj3HVT6JuHuIMXwapCyNfmUql6
+	 US9CQzkUfqLAE4BbtJm5v3YZQr2wkup+OY5id52TMlj0plHw/jXmlJmvLrVEOioqwz
+	 hNgv8M980glqCzQD1KBPZB6yUw+FZeR6fb5ODDW/8FqmrZBPNvks30TTHR4PBa1hZ1
+	 Y2MCpPZmVqD7A09k1SMUmE/QJDoP1ykx7WHAmqOmkW2hmR6dRiWVwbE44vnjCtb4DL
+	 eUyRqN+tMHzw3mSGyz2bjhTVrntWx2rcDUwpY8X8XJBDv5k9pZ/rOvxS8FcuXgcpFE
+	 bivBIZyjejpnQ==
+Received: by mail-oa1-f47.google.com with SMTP id 586e51a60fabf-30cce892b7dso942173fac.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 14 Nov 2025 04:13:25 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUuJTGytqcPMhmRP25xyxAOvBpBCNBpnL2k9uMxoKvKuftHvMlK7wNBwjat3pOapKUhroZDFZ2r2d8qltP4hg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwAk2shHsZccQSV/RX5KSlRyGnyNxnrK0eYSRZdxYPgY9R6kYjY
+	QTGLu4Qf4oHnhWQo0RowC+6UIKdvOitEIQ6Nv1K4mM/ukcEqCRz/wNHoXr2XyrvAkUbr6iHbBW3
+	T2h05LOFX2RRuoDiXRXLt6hDcQqE4Pm4=
+X-Google-Smtp-Source: AGHT+IGrNkWHSVx3CmYADKr0S6TGq/XxOF6zay1uOoUOn8a60tpM1BgphUydUyCNyc9Vh0GmlV+21RabCzXA2tdcTXs=
+X-Received: by 2002:a05:6870:30f:b0:375:db59:20e4 with SMTP id
+ 586e51a60fabf-3e868ef8743mr1267901fac.13.1763122404195; Fri, 14 Nov 2025
+ 04:13:24 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251114_024338_688033_70D1A794 
-X-CRM114-Status: GOOD (  12.21  )
+References: <20251114-thermal-device-v1-0-d8b442aae38b@gmx.de>
+In-Reply-To: <20251114-thermal-device-v1-0-d8b442aae38b@gmx.de>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Fri, 14 Nov 2025 13:13:12 +0100
+X-Gmail-Original-Message-ID: <CAJZ5v0gZ7+i+irhaq2jQpTt++HuVRjqz8==Ov9VmQ9Q1J1TM0w@mail.gmail.com>
+X-Gm-Features: AWmQ_bm6idj_L4n1xVkRGWkVqmFdJz-PXS5UU4gyN5tQNhsjMISGTiEJyqtTR8w
+Message-ID: <CAJZ5v0gZ7+i+irhaq2jQpTt++HuVRjqz8==Ov9VmQ9Q1J1TM0w@mail.gmail.com>
+Subject: Re: [PATCH RFC 0/8] thermal: core: Allow setting the parent device of
+ thermal zone/cooling devices
+To: Armin Wolf <W_Armin@gmx.de>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, 
+	Lucas Stach <l.stach@pengutronix.de>, Russell King <linux+etnaviv@armlinux.org.uk>, 
+	Christian Gmeiner <christian.gmeiner@gmail.com>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Amit Daniel Kachhap <amit.kachhap@gmail.com>, 
+	Viresh Kumar <viresh.kumar@linaro.org>, Thierry Reding <thierry.reding@gmail.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Len Brown <lenb@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
+	Ido Schimmel <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>, 
+	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Jeff Johnson <jjohnson@kernel.org>, Miri Korenblit <miriam.rachel.korenblit@intel.com>, 
+	Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Peter Kaestle <peter@piie.net>, 
+	Hans de Goede <hansg@kernel.org>, =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>, 
+	Potnuri Bharat Teja <bharat@chelsio.com>, Sebastian Reichel <sre@kernel.org>, 
+	Miquel Raynal <miquel.raynal@bootlin.com>, 
+	Support Opensource <support.opensource@diasemi.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	etnaviv@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
+	linux-tegra@vger.kernel.org, linux-acpi@vger.kernel.org, 
+	linux-doc@vger.kernel.org, netdev@vger.kernel.org, 
+	linux-wireless@vger.kernel.org, ath10k@lists.infradead.org, 
+	ath11k@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, platform-driver-x86@vger.kernel.org, 
+	linux-pci@vger.kernel.org, imx@lists.linux.dev, 
+	linux-renesas-soc@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,63 +110,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently if a user enqueue a work item using schedule_delayed_work() the
-used wq is "system_wq" (per-cpu wq) while queue_delayed_work() use
-WORK_CPU_UNBOUND (used when a cpu is not specified). The same applies to
-schedule_work() that is using system_wq and queue_work(), that makes use
-again of WORK_CPU_UNBOUND.
+On Fri, Nov 14, 2025 at 4:24=E2=80=AFAM Armin Wolf <W_Armin@gmx.de> wrote:
+>
+> Drivers registering thermal zone/cooling devices are currently unable
+> to tell the thermal core what parent device the new thermal zone/
+> cooling device should have, potentially causing issues with suspend
+> ordering
 
-This lack of consistentcy cannot be addressed without refactoring the API.
-For more details see the Link tag below.
+Do you have any examples of this?
 
-This continues the effort to refactor workqueue APIs, which began with
-the introduction of new workqueues and a new alloc_workqueue flag in:
+> and making it impossible for user space appications to
+> associate a given thermal zone device with its parent device.
+>
+> This patch series aims to fix this issue by extending the functions
+> used to register thermal zone/cooling devices to also accept a parent
+> device pointer. The first six patches convert all functions used for
+> registering cooling devices, while the functions used for registering
+> thermal zone devices are converted by the remaining two patches.
+>
+> I tested this series on various devices containing (among others):
+> - ACPI thermal zones
+> - ACPI processor devices
+> - PCIe cooling devices
+> - Intel Wifi card
+> - Intel powerclamp
+> - Intel TCC cooling
+>
+> I also compile-tested the remaining affected drivers, however i would
+> still be happy if the relevant maintainers (especially those of the
+> mellanox ethernet switch driver) could take a quick glance at the
+> code and verify that i am using the correct device as the parent
+> device.
+>
+> This work is also necessary for extending the ACPI thermal zone driver
+> to support the _TZD ACPI object in the future.
 
-commit 128ea9f6ccfb ("workqueue: Add system_percpu_wq and system_dfl_wq")
-commit 930c2ea566af ("workqueue: Add new WQ_PERCPU flag")
+Can you please elaborate a bit here?
 
-Switch to using system_percpu_wq because system_wq is going away as part of
-a workqueue restructuring.
+_TZD is a list of devices that belong to the given thermal zone, so
+how is it connected to the thermal zone parent?
 
-Suggested-by: Tejun Heo <tj@kernel.org>
-Signed-off-by: Marco Crivellari <marco.crivellari@suse.com>
-Link: https://lore.kernel.org/all/20250221112003.1dSuoGyc@linutronix.de/
-----
-Changs in v2:
-- improved commit log
-- rebased on v6.18-rc5
----
- drivers/net/wireless/mediatek/mt76/mt7921/init.c | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7925/init.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+> Signed-off-by: Armin Wolf <W_Armin@gmx.de>
+> ---
+> Armin Wolf (8):
+>       thermal: core: Allow setting the parent device of cooling devices
+>       thermal: core: Set parent device in thermal_of_cooling_device_regis=
+ter()
+>       ACPI: processor: Stop creating "device" sysfs link
+>       ACPI: fan: Stop creating "device" sysfs link
+>       ACPI: video: Stop creating "device" sysfs link
+>       thermal: core: Set parent device in thermal_cooling_device_register=
+()
+>       ACPI: thermal: Stop creating "device" sysfs link
+>       thermal: core: Allow setting the parent device of thermal zone devi=
+ces
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index b9098a7331b1..95764b82da39 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -343,7 +343,7 @@ int mt7921_register_device(struct mt792x_dev *dev)
- 	dev->mphy.hw->wiphy->available_antennas_rx = dev->mphy.chainmask;
- 	dev->mphy.hw->wiphy->available_antennas_tx = dev->mphy.chainmask;
- 
--	queue_work(system_wq, &dev->init_work);
-+	queue_work(system_percpu_wq, &dev->init_work);
- 
- 	return 0;
- }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-index d7d5afe365ed..e33ab4849e8a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-@@ -420,7 +420,7 @@ int mt7925_register_device(struct mt792x_dev *dev)
- 	dev->mphy.hw->wiphy->available_antennas_rx = dev->mphy.chainmask;
- 	dev->mphy.hw->wiphy->available_antennas_tx = dev->mphy.chainmask;
- 
--	queue_work(system_wq, &dev->init_work);
-+	queue_work(system_percpu_wq, &dev->init_work);
- 
- 	return 0;
- }
--- 
-2.51.1
+I can only see the first three patches in the series ATM as per
 
+https://lore.kernel.org/linux-pm/20251114-thermal-device-v1-0-d8b442aae38b@=
+gmx.de/T/#r605b23f2e27e751d8406e7949dad6f5b5b112067
 
