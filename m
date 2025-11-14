@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E6EBCE7B0B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Nov 2025 13:16:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18870CE7B08
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Nov 2025 13:16:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=awIR0H2uibZo8Ue9LW7b0Y2AItuDgssJai/elZGXstE=; b=UYPK8qQb0JVTgEkPe1w6Q0VHeH
-	yhGaxXV7XDihS4BmATgnuhG8HL+xWud2eKp45rNVH2w23NFb4VZnZEnkVh1i93eKA7oefOpAaafzV
-	vC8ZtpBovc1wOpRbCc8YRWyW2aHRAFrxOWeAEI2ZznWlhDrMvjbV9PfD+Ea1oiFKpSPCa73nig1Be
-	3YTH7PskDl8DnbXi0AfdBcZCIn8czrCYJ6l+A2+n5mq6SFmjzRg4Tg4siB4hm/H3jEBaljLIDQ921
-	c2RGZgnh5P63kQ+VM6tKQdAZ/ebXhGh+OfuiXZUPewqM1kHbZtgrYvybU5AQS0/bZHv0RsNJQqjia
-	fu9iPpDQ==;
+	bh=GSkriPPnkbIMrLqR0H36CJEtq9uV/kywO6APBlVDr34=; b=J6egc2UappEfUDlWcM5b7BamtY
+	YX2xqYQ9XELIsdhMcSSEENELyigRBCmqrtjh8zXos5Kr+JdFeaIUkVm+uZtEW5o+6W34PILWDIQ5e
+	nLxvmxj/ZRCxSNXQtQ6zl5SbRUFOB6mdhLBCbC4/BTguRgJhjLpN/KQWRSKrPjph6ZmrkfcpUs+wQ
+	Ol+zq0jkX/kstYn9GlgpRRSPom8jZFK7jnnsN4WZ8fY/NHuKfKmR2h00i7LP9a+S0iWIiN6mISucy
+	BOT/FvvX3D+dMmM9p+zQ5JcE9WJqmwSuYB9GzEqTzrMnNBaGUbNK/3s+HWRy8wauv8cKHaybKHz+d
+	fGsbz6jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJtfV-0000000CF18-0avZ;
-	Fri, 14 Nov 2025 13:16:49 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vJtfY-0000000CF3d-0q1j;
+	Fri, 14 Nov 2025 13:16:52 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vJtfP-0000000CEwU-0tRt;
-	Fri, 14 Nov 2025 13:16:43 +0000
+	id 1vJtfR-0000000CEyw-3A5N;
+	Fri, 14 Nov 2025 13:16:48 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A585860121;
-	Fri, 14 Nov 2025 13:16:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF770C19421;
-	Fri, 14 Nov 2025 13:16:41 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4DF894177B;
+	Fri, 14 Nov 2025 13:16:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1D66C4CEF5;
+	Fri, 14 Nov 2025 13:16:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763126202;
-	bh=B9sQVFNQ2iult3wzpWjgBPdLQuokvzOXDSS+NbRKykU=;
+	s=k20201202; t=1763126205;
+	bh=KVj9k68RnOszWxHXFLkpcOlslWuXtZE1P1GLidHf8pk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=MFNLCcRko7ggpc2psHhcp3j4YsqbyC87QS1N/ldNIbyF3Gh+wf5yq9i8JvWGXVn/6
-	 FbKBr4vm1x+IYwjt2CB3iZlp7R8G/MguKrHsi3V+iZf5N619G0nMFEQQ9u2tp5jO/u
-	 9y9eq/fcaelyis/5g5QHYMMnG9EL6Okx4Agrl7vfA58TysvMO2aVmeazjIZcMaiyhq
-	 wQTBPImflGhVqo6ojSP/0rzhFTn6QQbMsLSjZxAsLpIehToKxA1k9ZklrGIwkew1tf
-	 uGbg2bak0vybCZ1NF9H2/KT99aoSbOTEYvnmAa33uX4DxtkL4h2jfGSso5wGXS1qRC
-	 E1r7DnKM2J3XA==
+	b=tNencgI87mkyu5kZ95NRa6CKYE9aZPGibKUdJkWRA7eia+3BRPKjd3QpRvaO8TLYA
+	 Q7sz0zXojoMsc6MjNrV+DMjqDSZdlFDPFFyJP4RoRfwgawI8QpWgs7+fx5YWji7GZn
+	 29eqvO5CDsCHRwI7qYYeKAUYFKhmCyCEr55JBQVbgAaHXbikv33R0zFSibuN6dh+Wa
+	 lhCANCPbPD5e9NsQx1nEQWqtqOKqKCzUcTS50h1Ef9EIIOV/5qxcHuMgcmJ6vEmziU
+	 0aMfsA67D8GYS0/wA5sdEPGeQiODmXouLkO78iHA9tQQ6+JRq1QBW4oFWyb2QFNdQo
+	 oRiMNCH2fdfmw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 14 Nov 2025 14:16:23 +0100
-Subject: [PATCH mt76 3/4] wifi: mt76: Move mt76_abort_scan out of
- mt76_reset_device()
+Date: Fri, 14 Nov 2025 14:16:24 +0100
+Subject: [PATCH mt76 4/4] wifi: mt76: mt7996: skip deflink accounting for
+ offchannel links
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251114-mt76-fix-missing-mtx-v1-3-259ebf11f654@kernel.org>
+Message-Id: <20251114-mt76-fix-missing-mtx-v1-4-259ebf11f654@kernel.org>
 References: <20251114-mt76-fix-missing-mtx-v1-0-259ebf11f654@kernel.org>
 In-Reply-To: <20251114-mt76-fix-missing-mtx-v1-0-259ebf11f654@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
@@ -59,6 +59,10 @@ To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
 Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
 X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251114_051647_571050_7E6364D8 
+X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,58 +77,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Move mt76_abort_scan routine out of mt76_reset_device() in order to
-avoid a possible deadlock since mt76_reset_device routine is running
-with mt76 mutex help and mt76_abort_scan_complete() can grab mt76 mutex
-in some cases.
+Do not take into account offchannel links for deflink accounting.
 
-Fixes: b36d55610215a ("wifi: mt76: abort scan/roc on hw restart")
+Fixes: a3316d2fc669f ("wifi: mt76: mt7996: set vif default link_id adding/removing vif links")
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mac80211.c   | 2 --
- drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 2 ++
- drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 2 ++
- 3 files changed, 4 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 5ceaf78c9ea064bf898c347c611a7ccdf9cb9ebc..5e75861bf6f990dc5745b81224faf705395e894d 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -847,8 +847,6 @@ void mt76_reset_device(struct mt76_dev *dev)
- 	}
- 	rcu_read_unlock();
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index ad8698cf16242489b92e23befab4d040abbdcac2..d3cd2fed31cd55f1a949ae3f2e3ed5f488514b1d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -376,7 +376,8 @@ int mt7996_vif_link_add(struct mt76_phy *mphy, struct ieee80211_vif *vif,
  
--	mt76_abort_scan(dev);
--
- 	INIT_LIST_HEAD(&dev->wcid_list);
- 	INIT_LIST_HEAD(&dev->sta_poll_list);
- 	dev->vif_mask = 0;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 1c0d310146d63bc39357d604b549c83e37c8da35..5caf818e8283438ee3c79124384636cbdd641780 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1451,6 +1451,8 @@ mt7915_mac_full_reset(struct mt7915_dev *dev)
- 	if (ext_phy)
- 		cancel_delayed_work_sync(&ext_phy->mac_work);
+ 	ieee80211_iter_keys(mphy->hw, vif, mt7996_key_iter, &it);
  
-+	mt76_abort_scan(&dev->mt76);
-+
- 	mutex_lock(&dev->mt76.mutex);
- 	for (i = 0; i < 10; i++) {
- 		if (!mt7915_mac_restart(dev))
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index 1fac3815c523c05643705b9b6b7263a7fdf2e3a4..6fd732a924ab3a4bdc9224b8fd3cc53438e1db60 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -2420,6 +2420,8 @@ mt7996_mac_full_reset(struct mt7996_dev *dev)
- 	mt7996_for_each_phy(dev, phy)
- 		cancel_delayed_work_sync(&phy->mt76->mac_work);
+-	if (mvif->mt76.deflink_id == IEEE80211_LINK_UNSPECIFIED)
++	if (!mlink->wcid->offchannel &&
++	    mvif->mt76.deflink_id == IEEE80211_LINK_UNSPECIFIED)
+ 		mvif->mt76.deflink_id = link_conf->link_id;
  
-+	mt76_abort_scan(&dev->mt76);
-+
- 	mutex_lock(&dev->mt76.mutex);
- 	for (i = 0; i < 10; i++) {
- 		if (!mt7996_mac_restart(dev))
+ 	return 0;
+@@ -407,7 +408,8 @@ void mt7996_vif_link_remove(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 
+ 	rcu_assign_pointer(dev->mt76.wcid[idx], NULL);
+ 
+-	if (mvif->mt76.deflink_id == link_conf->link_id) {
++	if (!mlink->wcid->offchannel &&
++	    mvif->mt76.deflink_id == link_conf->link_id) {
+ 		struct ieee80211_bss_conf *iter;
+ 		unsigned int link_id;
+ 
 
 -- 
 2.51.1
