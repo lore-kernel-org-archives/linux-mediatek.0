@@ -4,93 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C0C2CEBF83
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Nov 2025 19:55:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 901C9CEB2D2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Nov 2025 19:55:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SBUMvmH/FE2NkP+rH9gUjMt6Dd3cDonURWl8AiaS8Jg=; b=H7g/Ydf0M9RHbf1O2v4iQNGQX0
-	gPEs5nxbNZq3S0mXWClJsfmvoT6A4HPCbdZ8Pht9fzo731ALQTrF6s4BC4BNnBei0C+Yd6wNByY4a
-	5asjwcKO6TNoWqDK5kDp15XnPh2/7NFZJ+NrwjoUmMCJfcTR1/MuozuJPErRhQMUAQHGn6q4Ip1JN
-	8kZ5AP5iKkRiXCx/ASjkhOslYxzYt3Hkn2ufP6ZuetWx8V+il3O8TaZ5w17unKHa9eGuiAHLsdpWR
-	wMy6+dAuSaMAqIyy5f2x+R3+9AuUFKWvli0KaSiRxkH0FqUB19QXMDg6k9VCRFBZ9/gkyowR+SvDT
-	kEcchuwQ==;
+	bh=WuleB7Uof+tsaQSPA6fNwqHx1Lp/3ZhdyDUy1IclBq8=; b=nrZK3dI8xLYKKKmixRDjy/GBgx
+	1YmfEk+ZwxwoB/iHr7f1GaN/etRsEM5Urb70gQjOjU2tNpFnOaOMRB+PTgzXhI7JXRvlDHbGtE+7I
+	kJ9GLuA0US7STPMrhGXf7F2cu7fmi/HVgp50XYXQtxl+TwL+U0V/CuPMy7iv7+by17uCsJpO41OCJ
+	WZ04LjbHHhPWfcRDrBbqEZ2oUsSoS0Q1UOINymD30sb+wJx2lU92v9TCxiKEjipm2ecSBS8Q1Z5ho
+	x0WpPpqxM+38Ao3qkuzaEU7L2Sc1HfrKvd32BwzPLSDYsb7RBrp4klaocqLAHjDdaJRsxY+aEh4wb
+	DUph5CPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKMMT-0000000E2HN-3rMu;
-	Sat, 15 Nov 2025 19:55:06 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1vKMN3-0000000E2ON-38El;
+	Sat, 15 Nov 2025 19:55:41 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKMMR-0000000E2Fp-0CIL
+	id 1vKMN2-0000000E2NS-1BRc
 	for linux-mediatek@lists.infradead.org;
-	Sat, 15 Nov 2025 19:55:04 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-42b32a5494dso1802093f8f.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 15 Nov 2025 11:55:01 -0800 (PST)
+	Sat, 15 Nov 2025 19:55:41 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-42b31c610fcso2672514f8f.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 15 Nov 2025 11:55:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1763236500; x=1763841300; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1763236538; x=1763841338; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=SBUMvmH/FE2NkP+rH9gUjMt6Dd3cDonURWl8AiaS8Jg=;
-        b=d9h6sNy6won37XIqcGhE+NaezmYwO5Xkcc0sxepjaCMwZZJIkhj1d9KYZ858stGEDV
-         5g7C/kFfG0Z6QRne9ZlRQKf1Ze2VxWiPvGaghCt54yvht6hBypy7sv75zOHRSRcjzQXP
-         h8gqmDnRm8FucLHk+OorurZuVixhJlwjbCLj7o99N3fmlNN5BjAtiNemAkV+cugEAyyw
-         NE8JjLZxMXFRBPPK9VB7AIhuNCx5Zkrw9k1z0+2NP65NrvWA1q1yCCna26JDy/iDRNs9
-         vXiN56JIFLntEPGebo57dFoY38dV+LSoP7PeW7vTLLcLgzjV57F1ieoXvJ1nsZafC9+I
-         iAiw==
+        bh=WuleB7Uof+tsaQSPA6fNwqHx1Lp/3ZhdyDUy1IclBq8=;
+        b=BUkVxYsuDdBrUm70yYt5z2NduPhOlv8ZUO+nUWmq7Q5ZaVPIBnZWHtF1PD49985AfF
+         aOrXf7KWLiVVRH46icYk89UZRgd8LAWevyktRFgYBIFl14rhCPJUKYJqkrEFV++oXhXO
+         rH6H4inuz6gSTEL7J2mJ1yKfCkpAe2E5sKCMa/BKeLJBanTK+GZobLdJsrbcXs75pgSE
+         dbVwaTcFc9zyhA0WCgdG7XgU/aH5INC98jsSWjnMi4dbVAw2yyIBkYruiNvWL+RHtRqg
+         LF3f++GdaBTOo+AIduCdbJXVx4GnhSsiPYEQuEW1dpuqh9Ye/9l4m3SHotn/73P5vTsw
+         5SwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763236500; x=1763841300;
+        d=1e100.net; s=20230601; t=1763236538; x=1763841338;
         h=in-reply-to:content-disposition:mime-version:references:subject:cc
          :to:from:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=SBUMvmH/FE2NkP+rH9gUjMt6Dd3cDonURWl8AiaS8Jg=;
-        b=pLg1+h+mg9ucuLR0plhiABVnz0IkHjGoyYtq0y2MVlSnmHlDrtrCyPgGISLyWJMz3V
-         zRTOJgAlv0msxpEf2vkqHD2to/gMgt+PHupbLrHG3pV2rTTw8WV0B0zfGsr87HVgQJ5x
-         Ri0BbY0QYuwx3vXhNurQx9eYDOvicgpn6A7CSEWCC2rUPuOHei+SNbQTZRZWxdAmbaWl
-         1IVuGDg6E6y1YIbZnBJOhag7eRj79N/jpMI8uhj5mkProSXcgNZ0R0IHQRIkeIP9JrUP
-         kWOpiYv47VEJbX/SY5fMoAnmo9AswDooEgs+GOFhhT4AhOEcvCQJpB4n2dgBa6HxEygo
-         3Hzw==
-X-Forwarded-Encrypted: i=1; AJvYcCXlYa078mEsfu5Iol7fsxzt12GJUJ3HKWjnzOFp0t/nnX8aMdyYj2L6wTpG+IJmWIsMy+oD6jTU0obcTIh8Mg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyhyTcLk8IZXkLx0sJvlTUr1+k8cBZDHdYU3D11bTsGxCRJE/tN
-	ClwJoBjCpXl448qOGgT56t7KxV6RCRfmTcOTxQFZY+g8ZDUEVS0ryX54
-X-Gm-Gg: ASbGncuhbtjjVxDrTe5XUa1C741AWafF2kY5LFespg3/C3TVke9bfbkUl5xHlsiFVHJ
-	I/ZH1CA0tKtRmp7w6OFbp3sRzSYv8Eos4+cQCQXsBAV+fwsigregQWyIhPNwjwhJMF8a9upeGKC
-	B6R/bM9nGauiqWxT85HuKBlCXpywerGUcJt2Zeto2PXYE4y79+NikqDsVw2uevAEndAnXYv+kz7
-	Y1ug53aBSLSJ/tDzcN9CD7tZI6TVf/mBygYNn51vFFm+1A1cHmUgdoRfdLTFTGeiuEkcDq9t34n
-	sK4HQy7w6xJl0/3hX5eqRGaKTNXopZ3R+RczdUpjwf+0snjDFJY/YHd3AaDhUBC7644oCG6u0Za
-	T+kjGmZEko8+UhbNnQBH8/vUckheyZIZDgTK7nqA4uq4K8jIHolxqGBO/H8WDLDezhk3jMPrWi0
-	ujqOraO6BN4ZzP8dU1C6TIPL2jcz5fUw71tyl8aY+aSzVa2Q25br+v
-X-Google-Smtp-Source: AGHT+IHSPwnyZ4YZke/ZsJzOSxMHljj18mEXOamqRXYe9YIBBAmYoQ9mxQRgJ1dWDU6O1s+9DDZ4pA==
-X-Received: by 2002:a05:6000:2f83:b0:42b:3ee9:4772 with SMTP id ffacd0b85a97d-42b5937618emr6490889f8f.52.1763236499409;
-        Sat, 15 Nov 2025 11:54:59 -0800 (PST)
+        bh=WuleB7Uof+tsaQSPA6fNwqHx1Lp/3ZhdyDUy1IclBq8=;
+        b=SWYh5595rkyk7zO/lk85CcTpxZlJ+rZzawuFdvFurN1u948MMbwM6pKvXKfVmLH55p
+         +pbmvhCJwZNWIkUYbVK+0i5hsjJ0MkGlfEvTtAEn3CEop4zGsUgGkt+/n3wD83HnG1wb
+         60wGraomMyzjQmNEASaB60fB8QGc5QIXhHSF8A4EH/w6s1kW5aq5RdOk8K60WJ+jSRJO
+         bcx86SserTA4Uq+M5Xj2HUf3IYFiWztzWMqiJWMAfmux9HbXcVn0uYH+AgPC5CO8zqpt
+         ztd5KZAnFhAu9B7akVA4MiaTheXZu97+lOSGdj9zp0AtqSyhrRIEPj0V5a9pQ+lblP7V
+         i18A==
+X-Forwarded-Encrypted: i=1; AJvYcCVM1WIUIqqmIc4GuEmT7W/6pubIsR5tmLwSWNXKhu3qvZZmm8IQau9egvhw+ZDlAkGydXoIRLmvQmVYBYUysg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxYsPEp0cdir4I16Zswe8dWI+z77w8qDDGYOsGF1Cows6+EaLOw
+	vIOuuDQQiVaBgYxNuss7BgbBDknbyFlSW3OC/+Xw+B3HzCElK2gGaRI+
+X-Gm-Gg: ASbGncusMqBRmUGMv8YOXJHV9GKeZPHI5thvMeQrdaF7gZb4i79nFDwXVGbk3s5lmac
+	s49sRopb8Q4aybLtz26gvKL8nP+KHldWXEXueC/MTTOYZ6oU0hE4in0J7Wyrs4V5Zsu6anSLBtd
+	wImQKjZywMMmFSTDgM29AQqN3t4mtDmqdHJkzLs3577vt1XmJxe0waXw2M4Y+chubjWTmF+h0EZ
+	VVZe1Aw6fbQ/6gqMtjanDZNx7xfJFJrQzGvtcw9dBmMlWECN16NH21I5DhoEjriQV77dKPWoQNy
+	VwMXrfeo/7M0v6W7JlK462Ppyv8mTuwEyguJ1sWw6Zmh6UIxbUBoS3aGDdvNKZJDRbOaaqZacoU
+	Wk8eFf/QoCffySxWlYc6o26FbqY4cFB7+HfsnFpKxO+SyUoOm2H1DRN6t9oBO82t0WUCWIVWKaF
+	Yh4/47nloi4snQywpgp1y7r+QO4+fM9L13fdqI6meve4eHoJPedqTm0Z2q+fLTo04=
+X-Google-Smtp-Source: AGHT+IEf62GmYjxzwvkFlgA1Y2k3Lbqy6ScY6eZSdDpeSqLPl8AdyiMH5V2WcDmQSZsaAfQG8l5H1g==
+X-Received: by 2002:a05:6000:1447:b0:42b:3a84:1ee6 with SMTP id ffacd0b85a97d-42b5934e2d7mr6759730f8f.24.1763236538325;
+        Sat, 15 Nov 2025 11:55:38 -0800 (PST)
 Received: from Ansuel-XPS. (host-87-10-15-59.retail.telecomitalia.it. [87.10.15.59])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42b53e7ae2dsm17786147f8f.5.2025.11.15.11.54.54
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42b53e84a4fsm17126800f8f.11.2025.11.15.11.55.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 15 Nov 2025 11:54:59 -0800 (PST)
-Message-ID: <6918da93.df0a0220.10a972.69d2@mx.google.com>
-X-Google-Original-Message-ID: <aRjajP6jIi8QQfJu@Ansuel-XPS.>
-Date: Sat, 15 Nov 2025 20:54:52 +0100
+        Sat, 15 Nov 2025 11:55:37 -0800 (PST)
+Message-ID: <6918dab9.5d0a0220.170613.3fe2@mx.google.com>
+X-Google-Original-Message-ID: <aRjatPM0eXV0N5XZ@Ansuel-XPS.>
+Date: Sat, 15 Nov 2025 20:55:32 +0100
 From: Christian Marangi <ansuelsmth@gmail.com>
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	angelogioacchino.delregno@collabora.com,
+To: Nathan Chancellor <nathan@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
 	Sean Wang <sean.wang@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-gpio@vger.kernel.org
-Subject: Re: [PATCH 1/1] pinctrl: airoha: fix pinctrl function mismatch issue
-References: <20251115100000.177791-1-amadeus@jmu.edu.cn>
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, llvm@lists.linux.dev,
+	patches@lists.linux.dev
+Subject: Re: [PATCH] pinctrl: airoha: Fix AIROHA_PINCTRL_CONFS_DRIVE_E2 in
+ an7583_pinctrl_match_data
+References: <20251112-pinctrl-airoha-fix-an7583-drive-e2-confg-usage-v1-1-d2550d55e988@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251115100000.177791-1-amadeus@jmu.edu.cn>
+In-Reply-To: <20251112-pinctrl-airoha-fix-an7583-drive-e2-confg-usage-v1-1-d2550d55e988@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251115_115503_121722_89ADEE17 
-X-CRM114-Status: GOOD (  17.32  )
+X-CRM114-CacheID: sfid-20251115_115540_337524_5FBFF6F9 
+X-CRM114-Status: GOOD (  20.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,23 +106,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 15, 2025 at 06:00:00PM +0800, Chukun Pan wrote:
-> The blamed commit made the following changes:
+On Wed, Nov 12, 2025 at 11:44:30AM -0700, Nathan Chancellor wrote:
+> Clang warns (or errors with CONFIG_WERROR=y / W=e):
 > 
-> -#define PINCTRL_FUNC_DESC(id)...
-> -		.desc = PINCTRL_PINFUNCTION(#id, ...
-> +#define PINCTRL_FUNC_DESC(id, table)...
-> +		.desc = PINCTRL_PINFUNCTION(#id, ...
+>   pinctrl/mediatek/pinctrl-airoha.c:2064:41: error: variable 'an7583_pinctrl_drive_e2_conf' is not needed and will not be emitted [-Werror,-Wunneeded-internal-declaration]
+>    2064 | static const struct airoha_pinctrl_conf an7583_pinctrl_drive_e2_conf[] = {
+>         |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
 > 
-> -	PINCTRL_FUNC_DESC(pon)...
-> +	PINCTRL_FUNC_DESC("pon", pon)...
+> Due to a typo, an7583_pinctrl_drive_e2_conf is only used within
+> ARRAY_SIZE() (hence no instance of -Wunused-variable), which is
+> evaluated at compile time, so it will not be needed in the final object
+> file.
 > 
-> It's clear that the id of funcs doesn't match the definition.
-> Remove redundant #string from the definition to fix this issue:
-> pinctrl-airoha ...: invalid function mdio in map table
+> Fix the .confs assignment for AIROHA_PINCTRL_CONFS_DRIVE_E2 in
+> an7583_pinctrl_match_data to clear up the warning.
 > 
-> Fixes: 4043b0c45f85 ("pinctrl: airoha: generalize pins/group/function/confs handling")
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+> Closes: https://github.com/ClangBuiltLinux/linux/issues/2142
+> Fixes: 3ffeb17a9a27 ("pinctrl: airoha: add support for Airoha AN7583 PINs")
+> Signed-off-by: Nathan Chancellor <nathan@kernel.org>
 
 Acked-by: Christian Marangi <ansuelsmth@gmail.com>
 
@@ -130,20 +132,26 @@ Acked-by: Christian Marangi <ansuelsmth@gmail.com>
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 > diff --git a/drivers/pinctrl/mediatek/pinctrl-airoha.c b/drivers/pinctrl/mediatek/pinctrl-airoha.c
-> index bfcedc7f920b..18c952e44229 100644
+> index bfcedc7f920b..706532a820b0 100644
 > --- a/drivers/pinctrl/mediatek/pinctrl-airoha.c
 > +++ b/drivers/pinctrl/mediatek/pinctrl-airoha.c
-> @@ -35,7 +35,7 @@
->  
->  #define PINCTRL_FUNC_DESC(id, table)					\
->  	{								\
-> -		.desc = PINCTRL_PINFUNCTION(#id, table##_groups,	\
-> +		.desc = PINCTRL_PINFUNCTION(id, table##_groups,	\
->  					    ARRAY_SIZE(table##_groups)),\
->  		.groups = table##_func_group,				\
->  		.group_size = ARRAY_SIZE(table##_func_group),		\
-> -- 
-> 2.25.1
+> @@ -2993,7 +2993,7 @@ static const struct airoha_pinctrl_match_data an7583_pinctrl_match_data = {
+>  			.num_confs = ARRAY_SIZE(an7583_pinctrl_pulldown_conf),
+>  		},
+>  		[AIROHA_PINCTRL_CONFS_DRIVE_E2] = {
+> -			.confs = en7581_pinctrl_drive_e2_conf,
+> +			.confs = an7583_pinctrl_drive_e2_conf,
+>  			.num_confs = ARRAY_SIZE(an7583_pinctrl_drive_e2_conf),
+>  		},
+>  		[AIROHA_PINCTRL_CONFS_DRIVE_E4] = {
+> 
+> ---
+> base-commit: 57916750bc0886917ea2c6209ca6a56acb7b8182
+> change-id: 20251112-pinctrl-airoha-fix-an7583-drive-e2-confg-usage-bbf4cff20b50
+> 
+> Best regards,
+> --  
+> Nathan Chancellor <nathan@kernel.org>
 > 
 
 -- 
