@@ -4,63 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A0A8CEB2CB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Nov 2025 10:41:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAA73CEB2DD
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Nov 2025 16:01:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gxY8J6G7lmjdcfHur1gCZcyZXuJ9NaUx4zdI8oKmyxM=; b=fSRpm1ug80DkWWtmr73nLHFxgA
-	2U72G2JpdGVpLhplz7SzWy6DabC1dEqYEBcUTWrpm9MOrPiFWJcRqPjppCyCRv2LXMen0u2rD6UPC
-	kn6IEvqrDh1qvmsqJJ4TFU+ibJZhvev6cgHEb9JVQeNLxKkkkrIWwJmJkInxOzCrL1Utseoytn5CO
-	BIWz86Hxldwvx2TfuVpJ/U3Kzam51sBnfcTTWzxNdmnxyy787D+di/w2cH+c8xbP+hGnyNyCEF/q1
-	1UzJ+0noucLwAH9CcihgXn1wiONrWRshwpu12ozrsBnV0lJIWPoSfDJUN4UBN+NpxxHf+mlT65rMT
-	f2lwBl4Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XAznu96VRABKw0CFI7fWPxI8d/hUiFChPDfvJPT4n1s=; b=XSllf7S5Uv72bSA8SSOYrqwzbN
+	K0p4z+rifMhXtelHeGtpZNtmlJkTdVSRGvp+OKHWzTUnEKuPulvbyEcBeuM2D3Z5cfxAermT4AvQh
+	lMEi5Cir/6jGg5M0ySw7TQs6JbqkZ2BNCLljJC4au5U5yuwTBYP9vfkMg8MF1VIMYxdSGxl2HPGml
+	AlI/T8yvmQdm+iG/hdVmtw46KknnTYmhL0i4PnWasOVezF8iOJvt4ZgZ1sbp14FNlnTNjFqT4j4WN
+	caKOS6Z6kmiGyPJkGr8ZIa1o5fGRfXTo2SeS/46orLXMRlsyGILJA2ZlQfAJ+Fyf3KqmuWcOdu8pC
+	2NLxmBHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKDie-0000000Dil2-0VPB;
-	Sat, 15 Nov 2025 10:41:24 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vKIie-0000000Du7X-0QMW;
+	Sat, 15 Nov 2025 16:01:44 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKDic-0000000Diko-2Mwc;
-	Sat, 15 Nov 2025 10:41:22 +0000
+	id 1vKIiL-0000000Du6d-0qk4;
+	Sat, 15 Nov 2025 16:01:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AF7C660137;
-	Sat, 15 Nov 2025 10:41:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48C07C4CEF8;
-	Sat, 15 Nov 2025 10:41:19 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 21F6D437EE;
+	Sat, 15 Nov 2025 16:01:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83865C4CEF7;
+	Sat, 15 Nov 2025 16:01:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763203281;
-	bh=C+X3st+8UpjihqtDRvUD3bqrMNbKj7L/DBIKr77EdFw=;
-	h=From:Date:Subject:To:Cc:From;
-	b=ULlhYEKdVCEU1NuJQmExRtCxT35mtj22m9dqoYA2O5M1IjBETPa5DabjWBJgq54Ou
-	 7K95OGh9evYSt1V97uBCkS1nN3RGA4GMBJeMRQoNz6dGJutJKVpcDo1q5YyocjXfdn
-	 LwmlJtBO1NuSYhXzFQRAnLEKE7At94o4dQaJMEiHY/6ep+UtXafGEQ80JUq0dR4O2d
-	 9lm3OYheAhIU2wXqKNt5keCqMDtoi7zQQAee0wDvoCbo0m+FO3LD3HvX7ur58KPFAV
-	 ByWc9DM3D7nB0FjNZ37n1LaoSBUrXaeojJUUrKdpzYz+8VP1X/CCnnHEsZ43niiwAs
-	 s0XqxOy8ypYjw==
+	s=k20201202; t=1763222484;
+	bh=aL2drUjldjMwfOWSXiuQaZYAafjyhHSOp1Hy4vQYSSg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jM0DL6WInt/lvzvDDb/SeVzLxDQcGUoVyjrmPprDnwOJcHgUeXTQeM1DbouIs1wio
+	 hL2dng5a3gWtUklyuINPSrCuFJssjoDICPIXqncLAmA45aVRNFzkcv8pz6PsBHo5O3
+	 RTvwAg3YVypK9v9Hj6ZSeY/haCkaGo7nA936PZlZ3jn0mRKHFKgl4KU0wHao80Eyg3
+	 +vCHetJv6gQEkD+J9wH3VI/+JjpVMAVaxW/U7vrTjDIHnv11GimYMabQsuTWWIkY1o
+	 71vk2Q2808sG4g4DYyjruinMlmexgA19YoSo6rvS7JkeiGSYCnEiLLTw+PvQFAU1N3
+	 nR9+9uaucaA0w==
+Date: Sat, 15 Nov 2025 17:01:19 +0100
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sat, 15 Nov 2025 11:41:00 +0100
-Subject: [PATCH mt76] wifi: mt76: mt7996: Do not run ieee80211_iter_keys()
- for scanning links in mt7996_vif_link_remove()
+To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Cc: Ray Liu <ray.liu@airoha.com>, Mark Brown <broonie@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Andreas Gnau <andreas.gnau@iopsys.eu>
+Subject: Re: [PATCH 1/3] spi: airoha-snfi: en7523: workaround flash damaging
+ if UART_TXD was short to GND
+Message-ID: <aRijz3wMTGdmy2tq@lore-rh-laptop>
+References: <20251114233431.1920015-1-mikhail.kshevetskiy@iopsys.eu>
+ <20251114233431.1920015-2-mikhail.kshevetskiy@iopsys.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251115-mt7996-key-iter-link-remove-fix-v1-1-4f3f4e1eaa78@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2NwQqDMBAFf0X23AUTTCX9ldJDiE+7WGPZiCjiv
- xs8zhxmDspQQaZXdZBilSxzKmAeFcVvSANYusJka+uMMY6npfX+ySN2lgXKP0kjK6Z5BfeycRv
- 7pnPWRxdqKpW/ouj78P6c5wWvWat3cQAAAA==
-X-Change-ID: 20251115-mt7996-key-iter-link-remove-fix-7cf4d529c5a0
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Ben Greear <greearb@candelatech.com>, linux-wireless@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="EKzBAkeZKZ1ooe9j"
+Content-Disposition: inline
+In-Reply-To: <20251114233431.1920015-2-mikhail.kshevetskiy@iopsys.eu>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251115_080125_311152_C2A5E6E5 
+X-CRM114-Status: GOOD (  26.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,81 +81,150 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7996_vif_link_remove routine is executed by mt76_scan_complete()
-without holding the wiphy mutex triggering the following lockdep warning.
 
- WARNING: CPU: 0 PID: 72 at net/mac80211/key.c:1029 ieee80211_iter_keys+0xe4/0x1a0 [mac80211]
- CPU: 0 UID: 0 PID: 72 Comm: kworker/u32:2 Tainted: G S                  6.18.0-rc5+ #27 PREEMPT(full)
- Tainted: [S]=CPU_OUT_OF_SPEC
- Hardware name: Default string Default string/SKYBAY, BIOS 5.12 02/15/2023
- Workqueue: phy3 mt76_scan_work [mt76]
- RIP: 0010:ieee80211_iter_keys+0xe4/0x1a0 [mac80211]
- Code: 4c 48 83 c4 10 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 8b 47 48 be ff ff ff ff 48 8d 78 68 e8 b4 eb 1e e1 85 c0 0f 85 49
-ff ff ff 4c 8b ab 90 1a 00 00 48 8d 83 90
- RSP: 0018:ffffc900002f7cb0 EFLAGS: 00010246
- RAX: 0000000000000000 RBX: ffff888127e00ee0 RCX: 0000000000000000
- RDX: 0000000000000000 RSI: ffff888127e00788 RDI: ffff88811132b5c8
- RBP: ffffffffa0ddf400 R08: 0000000000000001 R09: 000000009dcc1dac
- R10: 0000000000000001 R11: ffff88811132b5a0 R12: ffffc900002f7d00
- R13: ffff8882581e6a80 R14: ffff888127e0afc8 R15: ffff888158832038
- FS:  0000000000000000(0000) GS:ffff8884da486000(0000) knlGS:0000000000000000
- CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
- CR2: 0000000030a0fd90 CR3: 0000000002c52004 CR4: 00000000003706f0
- Call Trace:
-  <TASK>
-  ? lock_acquire+0xc2/0x2c0
-  mt7996_vif_link_remove+0x64/0x2b0 [mt7996e]
-  mt76_put_vif_phy_link+0x41/0x50 [mt76]
-  mt76_scan_complete+0x77/0x100 [mt76]
-  mt76_scan_work+0x2eb/0x3f0 [mt76]
-  ? process_one_work+0x1e5/0x6d0
-  process_one_work+0x221/0x6d0
-  worker_thread+0x19a/0x340
-  ? rescuer_thread+0x450/0x450
-  kthread+0x108/0x220
-  ? kthreads_online_cpu+0x110/0x110
-  ret_from_fork+0x1c6/0x220
-  ? kthreads_online_cpu+0x110/0x110
-  ret_from_fork_asm+0x11/0x20
-  </TASK>
- irq event stamp: 45471
- hardirqs last  enabled at (45477): [<ffffffff813d446e>] __up_console_sem+0x5e/0x70
- hardirqs last disabled at (45482): [<ffffffff813d4453>] __up_console_sem+0x43/0x70
- softirqs last  enabled at (44500): [<ffffffff81f2ae0c>] napi_pp_put_page+0xac/0xd0
- softirqs last disabled at (44498): [<ffffffff81fa32a0>] page_pool_put_unrefed_netmem+0x290/0x3d0
- ---[ end trace 0000000000000000 ]---
+--EKzBAkeZKZ1ooe9j
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fix the issue skipping ieee80211_iter_keys() for scanning links in
-mt7996_vif_link_remove routine since we have not uploaded any hw keys
-for these links.
+> We found that some serial console may pull TX line to GROUND during board
+> boot time. Airoha uses TX line as one of it's BOOT pins. This will lead
+> to booting in RESERVED boot mode.
+>=20
+> It was found that some flashes operates incorrectly in RESERVED mode.
+> Micron and Skyhigh flashes are definitely affected by the issue,
+> Winbond flashes are NOT affected.
+>=20
+> Details:
+> --------
+> DMA reading of odd pages on affected flashes operates incorrectly. Page
+> reading offset (start of the page) on hardware level is replaced by 0x10.
+> Thus results in incorrect data reading. Usage of UBI make things even
+> worse. Any attempt to access UBI leads to ubi damaging. As result OS load=
+ing
+> becomes impossible.
+>=20
+> Non-DMA reading is OK.
+>=20
+> This patch detects booting in reserved mode, turn off DMA and print big
+> fat warning.
+>=20
+> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+> ---
+>  drivers/spi/spi-airoha-snfi.c | 40 ++++++++++++++++++++++++++++++-----
+>  1 file changed, 35 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/drivers/spi/spi-airoha-snfi.c b/drivers/spi/spi-airoha-snfi.c
+> index 8408aee9c06e..0e84a9addfa5 100644
+> --- a/drivers/spi/spi-airoha-snfi.c
+> +++ b/drivers/spi/spi-airoha-snfi.c
+> @@ -1013,6 +1013,11 @@ static const struct spi_controller_mem_ops airoha_=
+snand_mem_ops =3D {
+>  	.dirmap_write =3D airoha_snand_dirmap_write,
+>  };
+> =20
+> +static const struct spi_controller_mem_ops airoha_snand_nodma_mem_ops =
+=3D {
+> +	.supports_op =3D airoha_snand_supports_op,
+> +	.exec_op =3D airoha_snand_exec_op,
+> +};
+> +
+>  static int airoha_snand_setup(struct spi_device *spi)
+>  {
+>  	struct airoha_snand_ctrl *as_ctrl;
+> @@ -1058,7 +1063,8 @@ static int airoha_snand_probe(struct platform_devic=
+e *pdev)
+>  	struct device *dev =3D &pdev->dev;
+>  	struct spi_controller *ctrl;
+>  	void __iomem *base;
+> -	int err;
+> +	int err, dma_enabled;
 
-Fixes: 04414d7bba78 ("wifi: mt76: mt7996: delete vif keys when requested")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+here you can use bool for dma_enable:
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 2a45db398fd597180c0b2bfc12e019b514f24fd6..beed795edb24c67e1b7b44fe87fd5de125a21d94 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -392,7 +392,8 @@ void mt7996_vif_link_remove(struct mt76_phy *mphy, struct ieee80211_vif *vif,
- 	};
- 	int idx = msta_link->wcid.idx;
- 
--	ieee80211_iter_keys(mphy->hw, vif, mt7996_key_iter, &it);
-+	if (!mlink->wcid->offchannel)
-+		ieee80211_iter_keys(mphy->hw, vif, mt7996_key_iter, &it);
- 
- 	mt7996_mcu_add_sta(dev, link_conf, NULL, link, NULL,
- 			   CONN_STATE_DISCONNECT, false);
+	bool dma_enable =3D true;
 
----
-base-commit: 09600421ffe2acc1a00ec466b25485f11b6bb957
-change-id: 20251115-mt7996-key-iter-link-remove-fix-7cf4d529c5a0
+> +	u32 sfc_strap;
+> =20
+>  	ctrl =3D devm_spi_alloc_host(dev, sizeof(*as_ctrl));
+>  	if (!ctrl)
+> @@ -1092,12 +1098,36 @@ static int airoha_snand_probe(struct platform_dev=
+ice *pdev)
+>  		return dev_err_probe(dev, PTR_ERR(as_ctrl->spi_clk),
+>  				     "unable to get spi clk\n");
+> =20
+> -	err =3D dma_set_mask(as_ctrl->dev, DMA_BIT_MASK(32));
+> -	if (err)
+> -		return err;
+> +	dma_enabled =3D 1;
+> +	if (device_is_compatible(dev, "airoha,en7523-snand")) {
+> +		err =3D regmap_read(as_ctrl->regmap_ctrl,
+> +				  REG_SPI_CTRL_SFC_STRAP, &sfc_strap);
+> +		if (err)
+> +			return err;
+> +
+> +		if (!(sfc_strap & 0x04)) {
+> +			dma_enabled =3D 0;
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+			dma_enable =3D false;
 
+> +			dev_warn(dev,
+> +				"=3D=3D=3D WARNING =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D\n"
+
+you do not need to add "WARNING here".
+
+> +				"Detected booting in RESERVED mode (UART_TXD was short to GND).\n"
+> +				"This mode is known for incorrect DMA reading of some flashes.\n"
+> +				"Usage of DMA for flash operations will be disabled to prevent data\=
+n"
+> +				"damage. Unplug your serial console and power cycle the board\n"
+> +				"to boot with full performance.\n"
+> +				"=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D\n");
+> +		}
+> +	}
+> +
+> +	if (dma_enabled) {
+> +		err =3D dma_set_mask(as_ctrl->dev, DMA_BIT_MASK(32));
+> +		if (err)
+> +			return err;
+> +	}
+> =20
+>  	ctrl->num_chipselect =3D 2;
+> -	ctrl->mem_ops =3D &airoha_snand_mem_ops;
+> +	ctrl->mem_ops =3D dma_enabled ?
+> +				&airoha_snand_mem_ops :
+> +				&airoha_snand_nodma_mem_ops;
+
+nit: no need to add a new-line here:
+
+	ctrl->mem_ops =3D dma_enabled ? &airoha_snand_mem_ops
+				    : &airoha_snand_nodma_mem_ops;
+
+
+Regards,
+Lorenzo
+
+>  	ctrl->bits_per_word_mask =3D SPI_BPW_MASK(8);
+>  	ctrl->mode_bits =3D SPI_RX_DUAL;
+>  	ctrl->setup =3D airoha_snand_setup;
+> --=20
+> 2.51.0
+>=20
+
+--EKzBAkeZKZ1ooe9j
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaRijzAAKCRA6cBh0uS2t
+rPpqAQCeg58jE6lmb6Y9qpYRoRN3SrKAtGS9xzuVhgfpBcZdmQEAlXeQDN+GWzjQ
+94j4LASAucndNW9KD6ss5bbbiaMR6wk=
+=fAZF
+-----END PGP SIGNATURE-----
+
+--EKzBAkeZKZ1ooe9j--
 
