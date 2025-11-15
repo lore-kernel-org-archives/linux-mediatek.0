@@ -4,94 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 901C9CEB2D2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Nov 2025 19:55:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 197BFCEBF86
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Nov 2025 20:58:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WuleB7Uof+tsaQSPA6fNwqHx1Lp/3ZhdyDUy1IclBq8=; b=nrZK3dI8xLYKKKmixRDjy/GBgx
-	1YmfEk+ZwxwoB/iHr7f1GaN/etRsEM5Urb70gQjOjU2tNpFnOaOMRB+PTgzXhI7JXRvlDHbGtE+7I
-	kJ9GLuA0US7STPMrhGXf7F2cu7fmi/HVgp50XYXQtxl+TwL+U0V/CuPMy7iv7+by17uCsJpO41OCJ
-	WZ04LjbHHhPWfcRDrBbqEZ2oUsSoS0Q1UOINymD30sb+wJx2lU92v9TCxiKEjipm2ecSBS8Q1Z5ho
-	x0WpPpqxM+38Ao3qkuzaEU7L2Sc1HfrKvd32BwzPLSDYsb7RBrp4klaocqLAHjDdaJRsxY+aEh4wb
-	DUph5CPQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OewVkhzvg4trcmQP7/dgtYYz1ryrPP/rqMADz2pCeIY=; b=EvyjEIEBQKhelqkgH3LIbqPY63
+	cFIr5zcv018sfc+NcAG3NehHT6qpqmU0KSG0q+0BFq2yZn3//5IqU88heeYn3k7VS7w7Pe3cJr5Gr
+	1RIwczzUzDW44SniH3h8E73lOsLILlL0y7sh493XAroJWrv0E6M+LsrRGdAq4kPJXoHvNaoJSoREh
+	Wsp+mzEpIpi57bC5uZKp0hA18drP2nK0z8VOpJ7k63D6sUmUWVL2ck+id1nKjqaQ9VjgwKKi91GE3
+	FXAEinedGgwiEaT3FrDdCkYfVX/zjrBLLJnKf36DmMWnwXOENj65nCtMXfYHR76gy49/ECfOxrTf7
+	56/iq3IQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKMN3-0000000E2ON-38El;
-	Sat, 15 Nov 2025 19:55:41 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1vKNM0-0000000E59L-3Ntw;
+	Sat, 15 Nov 2025 20:58:40 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKMN2-0000000E2NS-1BRc
-	for linux-mediatek@lists.infradead.org;
-	Sat, 15 Nov 2025 19:55:41 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-42b31c610fcso2672514f8f.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 15 Nov 2025 11:55:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1763236538; x=1763841338; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=WuleB7Uof+tsaQSPA6fNwqHx1Lp/3ZhdyDUy1IclBq8=;
-        b=BUkVxYsuDdBrUm70yYt5z2NduPhOlv8ZUO+nUWmq7Q5ZaVPIBnZWHtF1PD49985AfF
-         aOrXf7KWLiVVRH46icYk89UZRgd8LAWevyktRFgYBIFl14rhCPJUKYJqkrEFV++oXhXO
-         rH6H4inuz6gSTEL7J2mJ1yKfCkpAe2E5sKCMa/BKeLJBanTK+GZobLdJsrbcXs75pgSE
-         dbVwaTcFc9zyhA0WCgdG7XgU/aH5INC98jsSWjnMi4dbVAw2yyIBkYruiNvWL+RHtRqg
-         LF3f++GdaBTOo+AIduCdbJXVx4GnhSsiPYEQuEW1dpuqh9Ye/9l4m3SHotn/73P5vTsw
-         5SwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763236538; x=1763841338;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=WuleB7Uof+tsaQSPA6fNwqHx1Lp/3ZhdyDUy1IclBq8=;
-        b=SWYh5595rkyk7zO/lk85CcTpxZlJ+rZzawuFdvFurN1u948MMbwM6pKvXKfVmLH55p
-         +pbmvhCJwZNWIkUYbVK+0i5hsjJ0MkGlfEvTtAEn3CEop4zGsUgGkt+/n3wD83HnG1wb
-         60wGraomMyzjQmNEASaB60fB8QGc5QIXhHSF8A4EH/w6s1kW5aq5RdOk8K60WJ+jSRJO
-         bcx86SserTA4Uq+M5Xj2HUf3IYFiWztzWMqiJWMAfmux9HbXcVn0uYH+AgPC5CO8zqpt
-         ztd5KZAnFhAu9B7akVA4MiaTheXZu97+lOSGdj9zp0AtqSyhrRIEPj0V5a9pQ+lblP7V
-         i18A==
-X-Forwarded-Encrypted: i=1; AJvYcCVM1WIUIqqmIc4GuEmT7W/6pubIsR5tmLwSWNXKhu3qvZZmm8IQau9egvhw+ZDlAkGydXoIRLmvQmVYBYUysg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxYsPEp0cdir4I16Zswe8dWI+z77w8qDDGYOsGF1Cows6+EaLOw
-	vIOuuDQQiVaBgYxNuss7BgbBDknbyFlSW3OC/+Xw+B3HzCElK2gGaRI+
-X-Gm-Gg: ASbGncusMqBRmUGMv8YOXJHV9GKeZPHI5thvMeQrdaF7gZb4i79nFDwXVGbk3s5lmac
-	s49sRopb8Q4aybLtz26gvKL8nP+KHldWXEXueC/MTTOYZ6oU0hE4in0J7Wyrs4V5Zsu6anSLBtd
-	wImQKjZywMMmFSTDgM29AQqN3t4mtDmqdHJkzLs3577vt1XmJxe0waXw2M4Y+chubjWTmF+h0EZ
-	VVZe1Aw6fbQ/6gqMtjanDZNx7xfJFJrQzGvtcw9dBmMlWECN16NH21I5DhoEjriQV77dKPWoQNy
-	VwMXrfeo/7M0v6W7JlK462Ppyv8mTuwEyguJ1sWw6Zmh6UIxbUBoS3aGDdvNKZJDRbOaaqZacoU
-	Wk8eFf/QoCffySxWlYc6o26FbqY4cFB7+HfsnFpKxO+SyUoOm2H1DRN6t9oBO82t0WUCWIVWKaF
-	Yh4/47nloi4snQywpgp1y7r+QO4+fM9L13fdqI6meve4eHoJPedqTm0Z2q+fLTo04=
-X-Google-Smtp-Source: AGHT+IEf62GmYjxzwvkFlgA1Y2k3Lbqy6ScY6eZSdDpeSqLPl8AdyiMH5V2WcDmQSZsaAfQG8l5H1g==
-X-Received: by 2002:a05:6000:1447:b0:42b:3a84:1ee6 with SMTP id ffacd0b85a97d-42b5934e2d7mr6759730f8f.24.1763236538325;
-        Sat, 15 Nov 2025 11:55:38 -0800 (PST)
-Received: from Ansuel-XPS. (host-87-10-15-59.retail.telecomitalia.it. [87.10.15.59])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42b53e84a4fsm17126800f8f.11.2025.11.15.11.55.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 15 Nov 2025 11:55:37 -0800 (PST)
-Message-ID: <6918dab9.5d0a0220.170613.3fe2@mx.google.com>
-X-Google-Original-Message-ID: <aRjatPM0eXV0N5XZ@Ansuel-XPS.>
-Date: Sat, 15 Nov 2025 20:55:32 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Nathan Chancellor <nathan@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, llvm@lists.linux.dev,
-	patches@lists.linux.dev
-Subject: Re: [PATCH] pinctrl: airoha: Fix AIROHA_PINCTRL_CONFS_DRIVE_E2 in
- an7583_pinctrl_match_data
-References: <20251112-pinctrl-airoha-fix-an7583-drive-e2-confg-usage-v1-1-d2550d55e988@kernel.org>
+	id 1vKNLw-0000000E56i-1H3s;
+	Sat, 15 Nov 2025 20:58:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1763240312;
+	bh=USBTzS5LeZooJ42tEMhi7N85ITpVvJxHo6le5MQpsP8=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=J/52ZUFHclPFqDSg6mnAkchEl1Asf4QNTWvVn9L4iss5+uSMlpHYvWIRMBd6OO+v+
+	 eotX3qF03b7wdTt0OPyHf3k98vzDyOifpXrPgXwIY50eWoaiBp5jIqvExz1z4F2ajz
+	 AiP287jfiZgBsu5wWVAVcMmmfGz3qRKZNTMLvRZGWQKDBVhw0RzCkWyQvHS/zbU/nd
+	 GENWs8LgN/0KxUvdB1I0O0RmKxfYJStgNcmG+nqUPIu5f235k5eB2O67B1ZsLd6X/E
+	 ixhYPKate1Y9TLSCSYtyc69oML0nwgJESVB+G+MNCj/IRNqcTvS+5TmoSUTfvoH/eB
+	 XZFhBNFdgJzIw==
+Received: from beast.luon.net (simons.connected.by.freedominter.net [45.83.240.172])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: sjoerd)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 82B2F17E0B46;
+	Sat, 15 Nov 2025 21:58:32 +0100 (CET)
+Received: by beast.luon.net (Postfix, from userid 1000)
+	id 239DA110527DF; Sat, 15 Nov 2025 21:58:32 +0100 (CET)
+From: Sjoerd Simons <sjoerd@collabora.com>
+Date: Sat, 15 Nov 2025 21:58:07 +0100
+Subject: [PATCH v4 04/11] arm64: dts: mediatek: mt7981b: Add PCIe and USB
+ support
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251112-pinctrl-airoha-fix-an7583-drive-e2-confg-usage-v1-1-d2550d55e988@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251115-openwrt-one-network-v4-4-48cbda2969ac@collabora.com>
+References: <20251115-openwrt-one-network-v4-0-48cbda2969ac@collabora.com>
+In-Reply-To: <20251115-openwrt-one-network-v4-0-48cbda2969ac@collabora.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Ryder Lee <ryder.lee@mediatek.com>, 
+ Jianjun Wang <jianjun.wang@mediatek.com>, 
+ Bjorn Helgaas <bhelgaas@google.com>, 
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+ =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+ Manivannan Sadhasivam <mani@kernel.org>, 
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, Lee Jones <lee@kernel.org>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org, 
+ linux-phy@lists.infradead.org, netdev@vger.kernel.org, 
+ Daniel Golle <daniel@makrotopia.org>, Bryan Hinton <bryan@bryanhinton.com>, 
+ Sjoerd Simons <sjoerd@collabora.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251115_115540_337524_5FBFF6F9 
-X-CRM114-Status: GOOD (  20.07  )
+X-CRM114-CacheID: sfid-20251115_125836_493398_5613042F 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,54 +95,132 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 12, 2025 at 11:44:30AM -0700, Nathan Chancellor wrote:
-> Clang warns (or errors with CONFIG_WERROR=y / W=e):
-> 
->   pinctrl/mediatek/pinctrl-airoha.c:2064:41: error: variable 'an7583_pinctrl_drive_e2_conf' is not needed and will not be emitted [-Werror,-Wunneeded-internal-declaration]
->    2064 | static const struct airoha_pinctrl_conf an7583_pinctrl_drive_e2_conf[] = {
->         |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> 
-> Due to a typo, an7583_pinctrl_drive_e2_conf is only used within
-> ARRAY_SIZE() (hence no instance of -Wunused-variable), which is
-> evaluated at compile time, so it will not be needed in the final object
-> file.
-> 
-> Fix the .confs assignment for AIROHA_PINCTRL_CONFS_DRIVE_E2 in
-> an7583_pinctrl_match_data to clear up the warning.
-> 
-> Closes: https://github.com/ClangBuiltLinux/linux/issues/2142
-> Fixes: 3ffeb17a9a27 ("pinctrl: airoha: add support for Airoha AN7583 PINs")
-> Signed-off-by: Nathan Chancellor <nathan@kernel.org>
+Add device tree nodes for PCIe controller and USB3 XHCI host
+controller on MT7981B SoC. Both controllers share the USB3 PHY
+which can be configured for either USB3 or PCIe operation.
 
-Acked-by: Christian Marangi <ansuelsmth@gmail.com>
+The USB3 XHCI controller supports USB 2.0 and USB 3.0 SuperSpeed
+operation. The PCIe controller is compatible with PCIe Gen2
+specifications.
 
-> ---
->  drivers/pinctrl/mediatek/pinctrl-airoha.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-airoha.c b/drivers/pinctrl/mediatek/pinctrl-airoha.c
-> index bfcedc7f920b..706532a820b0 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-airoha.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-airoha.c
-> @@ -2993,7 +2993,7 @@ static const struct airoha_pinctrl_match_data an7583_pinctrl_match_data = {
->  			.num_confs = ARRAY_SIZE(an7583_pinctrl_pulldown_conf),
->  		},
->  		[AIROHA_PINCTRL_CONFS_DRIVE_E2] = {
-> -			.confs = en7581_pinctrl_drive_e2_conf,
-> +			.confs = an7583_pinctrl_drive_e2_conf,
->  			.num_confs = ARRAY_SIZE(an7583_pinctrl_drive_e2_conf),
->  		},
->  		[AIROHA_PINCTRL_CONFS_DRIVE_E4] = {
-> 
-> ---
-> base-commit: 57916750bc0886917ea2c6209ca6a56acb7b8182
-> change-id: 20251112-pinctrl-airoha-fix-an7583-drive-e2-confg-usage-bbf4cff20b50
-> 
-> Best regards,
-> --  
-> Nathan Chancellor <nathan@kernel.org>
-> 
+Also add the topmisc syscon node required for USB/PCIe PHY
+multiplexing.
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+---
+V1 -> V2: Keep xhci reg and phys properties in single lines
+---
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 80 +++++++++++++++++++++++++++++++
+ 1 file changed, 80 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+index 416096b80770c..d3f37413413e2 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+@@ -2,6 +2,7 @@
+ 
+ #include <dt-bindings/clock/mediatek,mt7981-clk.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/phy/phy.h>
+ #include <dt-bindings/reset/mt7986-resets.h>
+ 
+ / {
+@@ -223,6 +224,55 @@ auxadc: adc@1100d000 {
+ 			status = "disabled";
+ 		};
+ 
++		xhci: usb@11200000 {
++			compatible = "mediatek,mt7986-xhci", "mediatek,mtk-xhci";
++			reg = <0 0x11200000 0 0x2e00>, <0 0x11203e00 0 0x0100>;
++			reg-names = "mac", "ippc";
++			clocks = <&infracfg CLK_INFRA_IUSB_SYS_CK>,
++				 <&infracfg CLK_INFRA_IUSB_CK>,
++				 <&infracfg CLK_INFRA_IUSB_133_CK>,
++				 <&infracfg CLK_INFRA_IUSB_66M_CK>,
++				 <&topckgen CLK_TOP_U2U3_XHCI_SEL>;
++			clock-names = "sys_ck", "ref_ck", "mcu_ck", "dma_ck", "xhci_ck";
++			interrupts = <GIC_SPI 173 IRQ_TYPE_LEVEL_HIGH>;
++			phys = <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_TYPE_USB3>;
++			status = "disabled";
++		};
++
++		pcie: pcie@11280000 {
++			compatible = "mediatek,mt7981-pcie",
++				     "mediatek,mt8192-pcie";
++			reg = <0 0x11280000 0 0x4000>;
++			reg-names = "pcie-mac";
++			ranges = <0x82000000 0 0x20000000
++				  0x0 0x20000000 0 0x10000000>;
++			bus-range = <0x00 0xff>;
++			clocks = <&infracfg CLK_INFRA_IPCIE_CK>,
++				 <&infracfg CLK_INFRA_IPCIE_PIPE_CK>,
++				 <&infracfg CLK_INFRA_IPCIER_CK>,
++				 <&infracfg CLK_INFRA_IPCIEB_CK>;
++			clock-names = "pl_250m", "tl_26m", "peri_26m", "top_133m";
++			device_type = "pci";
++			phys = <&u3port0 PHY_TYPE_PCIE>;
++			phy-names = "pcie-phy";
++			interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-map-mask = <0 0 0 7>;
++			interrupt-map = <0 0 0 1 &pcie_intc 0>,
++					<0 0 0 2 &pcie_intc 1>,
++					<0 0 0 3 &pcie_intc 2>,
++					<0 0 0 4 &pcie_intc 3>;
++			#address-cells = <3>;
++			#interrupt-cells = <1>;
++			#size-cells = <2>;
++			status = "disabled";
++
++			pcie_intc: interrupt-controller {
++				interrupt-controller;
++				#address-cells = <0>;
++				#interrupt-cells = <1>;
++			};
++		};
++
+ 		pio: pinctrl@11d00000 {
+ 			compatible = "mediatek,mt7981-pinctrl";
+ 			reg = <0 0x11d00000 0 0x1000>,
+@@ -252,6 +302,36 @@ mux {
+ 			};
+ 		};
+ 
++		topmisc: topmisc@11d10000 {
++			compatible = "mediatek,mt7981-topmisc", "syscon";
++			reg = <0 0x11d10000 0 0x10000>;
++			#clock-cells = <1>;
++		};
++
++		usb_phy: t-phy@11e10000 {
++			compatible = "mediatek,mt7981-tphy",
++				     "mediatek,generic-tphy-v2";
++			ranges = <0 0 0x11e10000 0x1700>;
++			#address-cells = <1>;
++			#size-cells = <1>;
++			status = "disabled";
++
++			u2port0: usb-phy@0 {
++				reg = <0x0 0x700>;
++				clocks = <&topckgen CLK_TOP_USB_FRMCNT_SEL>;
++				clock-names = "ref";
++				#phy-cells = <1>;
++			};
++
++			u3port0: usb-phy@700 {
++				reg = <0x700 0x900>;
++				clocks = <&topckgen CLK_TOP_USB3_PHY_SEL>;
++				clock-names = "ref";
++				#phy-cells = <1>;
++				mediatek,syscon-type = <&topmisc 0x218 0>;
++			};
++		};
++
+ 		efuse@11f20000 {
+ 			compatible = "mediatek,mt7981-efuse", "mediatek,efuse";
+ 			reg = <0 0x11f20000 0 0x1000>;
 
 -- 
-	Ansuel
+2.51.0
+
 
