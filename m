@@ -4,101 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62DC6CEBF61
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Nov 2025 13:50:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F937CEBF61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Nov 2025 14:41:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h/we2bgKwu4M3hgXNftrcLVJwfMxEZ3bC4SAiShLUbg=; b=ktMIdsETUqWML5emS3XXfSMvux
-	5kaHg6A4amYuxwl+wKDQFMfAxruHMJLYt7QijqMsWao59HYu8U3YtRGHPxS7GPPAFFTi2/vj1hRgY
-	VQ8lyRHp0XHqR8vc2OWgpYTJkprWAfchlGn25vPPtBTz8lYcmX8mWLgVGyNvU75wSfQZ5NkM0Ccem
-	HXZ8u9rqwjMAWuWWRlUa/l2mxqfJzg3wLjyLIs1dgbOVXebo1klrlKzqA+6Y/2WGANtwFVBQNhm/t
-	sc1g0UR9/BF1xLRLMmn9JCjfBzk3yNeP8EZ43+kRZZQ8VpjsKGsH1yvmeOVIILXWM5ehrKMk7GwF3
-	XkXUCurg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=paTh/uzV29JcO52gAfWUROJmLyr2vTU+CHmJgYMQkKY=; b=gutjKvrf+j8uk24w61zhA5C6q+
+	V0SOmgPmpmCzNAIK0p2bhjnOCsMeyBsQfQDcAilc5PA2rwfad0Wj+iWjw5uylwbuztsgK3TVKWiss
+	UHFOuB/kPA4ue91b3cFxc6nUFOxeecXt5bDFWIfd7vrcpE2qQ2mcVrFgs/SbIVTud+BPx6lkfSl2Q
+	zGOygp9ukHTgA/5ypnCxzJUm/oSIfXqCsgJgkFN/ZSJ5WSsTdC+qVFWCoW/41SNnPvV6Yf0wUjDgL
+	R7hKdo1617XHJCzYVZ6h2G0eUqrzjfMTXuJ5gmi0Yymx139SvzrCKtOWQsNtb3Bqj+AQz5zhGaG5L
+	uFO8H1fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKzd4-0000000GDHl-3xHH;
-	Mon, 17 Nov 2025 13:50:50 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vL0QG-0000000GGyY-3Sde;
+	Mon, 17 Nov 2025 14:41:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKzd1-0000000GDHB-1uTF;
-	Mon, 17 Nov 2025 13:50:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1763387443;
-	bh=kZPqi0k0MGFfxWKAZ65XVPpcfPk/d6isOabL0EwpwQ4=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=SbwR21QjXr8ute5gjB2cDaqhN10GkLocN2bq79QQB4J+4F7t5MZBMsla1cGbpoyFn
-	 mBm1CgzzNt9q31pO6dBSPVFqapt0WE+RORWAdXQ9jWTu/9175UIgFvjoSN6eWFCmUT
-	 yU1Iqj7YXdp7ZRbJ01NNfNHBw1wj+ReVwu70rYDqU2lcHz5ZAydXio+zZvuRQ8L5Wz
-	 zRtQyadV1BcOwEplo2DdO3ipILoGztiOtBle1sV7oGOU6Tcg2yNP0jSbZCYPdNHNMT
-	 oEGHmJCWHSGgXNUxroxZqB1UEfaugSnOM/MPE4hDzSR34YHk/oHbzZj5X+xogvengs
-	 NtwFtq5zehe4w==
-Received: from [IPv6:2606:6d00:17:7b4b::5ac] (unknown [IPv6:2606:6d00:17:7b4b::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CDE9C17E0B85;
-	Mon, 17 Nov 2025 14:50:40 +0100 (CET)
-Message-ID: <511f43bd76f48730900207403b90566d7e6c4f07.camel@collabora.com>
-Subject: Re: [PATCH v5 5/8] media: mediatek: vcodec: fix vp9 4096x2176 fail
- for profile2
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Kyrie Wu =?UTF-8?Q?=28=E5=90=B4=E6=99=97=29?= <Kyrie.Wu@mediatek.com>, 
- "linux-kernel@vger.kernel.org"	 <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org"	 <linux-mediatek@lists.infradead.org>,
- George Sun =?UTF-8?Q?=28=E5=AD=99=E6=9E=97=29?=	 <George.Sun@mediatek.com>,
- Tiffany Lin =?UTF-8?Q?=28=E6=9E=97=E6=85=A7=E7=8F=8A=29?=	
- <tiffany.lin@mediatek.com>, "nhebert@chromium.org" <nhebert@chromium.org>, 
- "linux-media@vger.kernel.org"	 <linux-media@vger.kernel.org>,
- "devicetree@vger.kernel.org"	 <devicetree@vger.kernel.org>,
- "mchehab@kernel.org" <mchehab@kernel.org>,  "hverkuil@xs4all.nl"	
- <hverkuil@xs4all.nl>, Yunfei Dong
- =?UTF-8?Q?=28=E8=91=A3=E4=BA=91=E9=A3=9E=29?=	 <Yunfei.Dong@mediatek.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,  Irui Wang
- =?UTF-8?Q?=28=E7=8E=8B=E7=91=9E=29?=	 <Irui.Wang@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>, 
- "linux-arm-kernel@lists.infradead.org"	
- <linux-arm-kernel@lists.infradead.org>, Yilong Zhou
- =?UTF-8?Q?=28=E5=91=A8=E6=98=93=E9=BE=99=29?=	 <Yilong.Zhou@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,  "krzk+dt@kernel.org"	
- <krzk+dt@kernel.org>, "arnd@arndb.de" <arnd@arndb.de>, Andrew-CT Chen
- =?UTF-8?Q?=28=E9=99=B3=E6=99=BA=E8=BF=AA=29?=	
- <Andrew-CT.Chen@mediatek.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>
-Cc: "andrzejtp2010@gmail.com" <andrzejtp2010@gmail.com>, 
- "neil.armstrong@linaro.org"
-	 <neil.armstrong@linaro.org>
-Date: Mon, 17 Nov 2025 08:50:39 -0500
-In-Reply-To: <dea9519e6b72c12ea15760fc3bd7c7746dbfd5de.camel@mediatek.com>
-References: <20251106061323.2193-1-kyrie.wu@mediatek.com>
-		 <20251106061323.2193-6-kyrie.wu@mediatek.com>
-		 <bd2f63265df829ec9bb3498c83126827415c2ebf.camel@collabora.com>
-	 <dea9519e6b72c12ea15760fc3bd7c7746dbfd5de.camel@mediatek.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-6tSADsOpIKtvYSE7Vx5O"
-User-Agent: Evolution 3.58.1 (3.58.1-1.fc43) 
+	id 1vL0QF-0000000GGyB-0bbc
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Nov 2025 14:41:40 +0000
+X-UUID: 82d830aac3c311f0a52f393f94899d25-20251117
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=paTh/uzV29JcO52gAfWUROJmLyr2vTU+CHmJgYMQkKY=;
+	b=Jvc2N0SSigmNmJ2rv9s9LKJRzAjyZMjPR1oL2tJmLfpKQW5yH9ft9hv5GyF3McKjyr2wFtWyR1pYv4x1uNZy7dy9ooykK+YGYwi7ESxBiVnZaMa9G349VnbXwwVyW3ISaNROjn0kmeQg8ZCyw2/KtGvmH+Gokm8JVLPJxDzwZh0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:9739d3b3-966f-402e-b5b1-92bb6713bef7,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:18,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:18
+X-CID-META: VersionHash:a9d874c,CLOUDID:898ebd82-b6af-4b29-9981-6bf838f9504d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 82d830aac3c311f0a52f393f94899d25-20251117
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 868751505; Mon, 17 Nov 2025 07:41:32 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Mon, 17 Nov 2025 22:41:30 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Mon, 17 Nov 2025 22:41:30 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: linux-firmware <linux-firmware@kernel.org>
+CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-wireless
+	<linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>
+Subject: pull-request: mt76 firmware 20251117
+Date: Mon, 17 Nov 2025 22:41:30 +0800
+Message-ID: <20251117144130.2214135-1-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_055047_677727_D88CFCF4 
-X-CRM114-Status: GOOD (  27.49  )
+X-CRM114-CacheID: sfid-20251117_064139_190499_433FB07B 
+X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,128 +87,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---=-6tSADsOpIKtvYSE7Vx5O
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+This contains the WiFi firmwares for MT7996, MT7992, and MT7990 chipsets.
 
+Please let me know if there's any problem.
 
-Hi Kyrie,
+Thanks,
+Shayne
+---
 
-make sure to reply in plain text, I know the mailing list may drop messaged=
- in HTML form.
+The following changes since commit fb0dbcd3011839d85920d1e4aa956f6a84700caf:
 
-Le lundi 17 novembre 2025 =C3=A0 07:36 +0000, Kyrie Wu (=E5=90=B4=E6=99=97)=
- a =C3=A9crit=C2=A0:
->=20
-> On Thu, 2025-11-06 at 10:17 -0500, Nicolas Dufresne wrote:
-> > Hi,
-> >=20
-> > Le jeudi 06 novembre 2025 =C3=A0 14:13 +0800, Kyrie Wu a =C3=A9crit :
-> > > The dram addr of vp9 decoder tile number, which use dram mode
-> > > to set tile information, may reach to 36bits for 4096x2176.
-> > > It needs to get the highest 4bit of tile buffer address to
-> > > set tile buffer address.
-> >=20
-> > An after thought, I don't see any call to
-> > vb2_dma_contig_set_max_seg_size() or
-> > dma_set_coherent_mask() with DMA_BIT_MASK(32)/DMA_BIT_MASK(36) in
-> > this driver.
-> > How do you control this ?
-> >=20
-> > Nicolas
->=20
-> Dear Nicolas,
->=20
-> The tile buffer is handled in VCP, not in kernel driver. We only
-> get the full correct address in kernel.
+  Merge branch 'amd-ucode' into 'main' (2025-11-13 22:26:11 +0000)
 
-Thank you, I could not figure-out otherwise.
+are available in the Git repository at:
 
-Nicolas
+  https://github.com/csyuanc/linux-firmware.git mt76-20251117
 
->=20
-> Thanks.
->=20
-> Regards,
-> Kyrie
-> >=20
-> > >=20
-> > > Fixes: 5d418351ca8f1 ("media: mediatek: vcodec: support stateless
-> > > VP9
-> > > decoding")
-> > >=20
-> > > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-> > > Reviewed-by: AngeloGioacchino Del Regno
-> > > <angelogioacchino.delregno@collabora.com>
-> > > ---
-> > > =C2=A0.../mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c       | =
-5
-> > > ++++-
-> > > =C2=A01 file changed, 4 insertions(+), 1 deletion(-)
-> > >=20
-> > > diff --git
-> > > a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_
-> > > lat_if.c
-> > > b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_
-> > > lat_if.c
-> > > index d966914db4b9..91c563c049bd 100644
-> > > ---
-> > > a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_
-> > > lat_if.c
-> > > +++
-> > > b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_
-> > > lat_if.c
-> > > @@ -1156,7 +1156,10 @@ static int
-> > > vdec_vp9_slice_setup_tile_buffer(struct
-> > > vdec_vp9_slice_instance *inst
-> > > =C2=A0tiles->size[i][j] =3D size;
-> > > =C2=A0if (tiles->mi_rows[i]) {
-> > > =C2=A0*tb++ =3D (size << 3) + ((offset << 3) &
-> > > 0x7f);
-> > > -*tb++ =3D pa & ~0xf;
-> > > +*tb =3D pa & ~0xf;
-> > > +if
-> > > (IS_ENABLED(CONFIG_ARCH_DMA_ADDR_T_64BIT))
-> > > +*tb |=3D (pa >> 32) & 0xf;
-> > > +tb++;
-> > > =C2=A0*tb++ =3D (pa << 3) & 0x7f;
-> > > =C2=A0mi_row =3D (tiles->mi_rows[i] - 1) &
-> > > 0x1ff;
-> > > =C2=A0mi_col =3D (tiles->mi_cols[j] - 1) &
-> > > 0x3f;
->=20
-> ************* MEDIATEK Confidentiality Notice
-> =C2=A0********************
-> The information contained in this e-mail message (including any=20
-> attachments) may be confidential, proprietary, privileged, or otherwise
-> exempt from disclosure under applicable laws. It is intended to be=20
-> conveyed only to the designated recipient(s). Any use, dissemination,=20
-> distribution, printing, retaining or copying of this e-mail (including it=
-s=20
-> attachments) by unintended recipient(s) is strictly prohibited and may=
-=20
-> be unlawful. If you are not an intended recipient of this e-mail, or beli=
-eve
-> =C2=A0
-> that you have received this e-mail in error, please notify the sender=20
-> immediately (by replying to this e-mail), delete any and all copies of=
-=20
-> this e-mail (including any attachments) from your system, and do not
-> disclose the content of this e-mail to any other person. Thank you!
+for you to fetch changes up to 05895b31008ae27cc8a8f9a44e014f09595a736c:
 
---=-6tSADsOpIKtvYSE7Vx5O
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+  mt76: add firmware for MT7990 (2025-11-17 22:08:46 +0800)
 
------BEGIN PGP SIGNATURE-----
+----------------------------------------------------------------
+Shayne Chen (3):
+      mt76: update firmware for MT7996
+      mt76: update firmware for MT7992
+      mt76: add firmware for MT7990
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaRsoLwAKCRDZQZRRKWBy
-9FEEAP0QmN9fJMwFd/HLagqwIalTR2GPmwLUWA8dX94WrKm9ewEAypyL1RO/CPwW
-/H199X9i5A2iH2yPuMNCmEkyJtON5AQ=
-=1SZz
------END PGP SIGNATURE-----
-
---=-6tSADsOpIKtvYSE7Vx5O--
+ WHENCE                                   |  41 +++++++++++++++++++------------
+ mediatek/mt7996/mt7990_eeprom.bin        | Bin 0 -> 7680 bytes
+ mediatek/mt7996/mt7990_eeprom_2i5i.bin   | Bin 0 -> 7680 bytes
+ mediatek/mt7996/mt7990_rom_patch.bin     | Bin 0 -> 12832 bytes
+ mediatek/mt7996/mt7990_wm.bin            | Bin 0 -> 1336664 bytes
+ mediatek/mt7996/mt7992_dsp.bin           | Bin 63536 -> 63572 bytes
+ mediatek/mt7996/mt7992_dsp_23.bin        | Bin 63536 -> 63536 bytes
+ mediatek/mt7996/mt7992_rom_patch.bin     | Bin 20640 -> 20896 bytes
+ mediatek/mt7996/mt7992_rom_patch_23.bin  | Bin 20640 -> 20896 bytes
+ mediatek/mt7996/mt7992_wa.bin            | Bin 536240 -> 515184 bytes
+ mediatek/mt7996/mt7992_wa_23.bin         | Bin 536240 -> 515184 bytes
+ mediatek/mt7996/mt7992_wm.bin            | Bin 1712336 -> 1742052 bytes
+ mediatek/mt7996/mt7992_wm_23.bin         | Bin 1672256 -> 1701216 bytes
+ mediatek/mt7996/mt7996_dsp.bin           | Bin 191704 -> 191728 bytes
+ mediatek/mt7996/mt7996_rom_patch.bin     | Bin 23968 -> 37216 bytes
+ mediatek/mt7996/mt7996_rom_patch_233.bin | Bin 23968 -> 37216 bytes
+ mediatek/mt7996/mt7996_wa.bin            | Bin 516272 -> 509232 bytes
+ mediatek/mt7996/mt7996_wa_233.bin        | Bin 516272 -> 509232 bytes
+ mediatek/mt7996/mt7996_wm.bin            | Bin 2622816 -> 2655416 bytes
+ mediatek/mt7996/mt7996_wm_233.bin        | Bin 2620960 -> 2681656 bytes
+ 20 files changed, 25 insertions(+), 16 deletions(-)
+ create mode 100644 mediatek/mt7996/mt7990_eeprom.bin
+ create mode 100644 mediatek/mt7996/mt7990_eeprom_2i5i.bin
+ create mode 100644 mediatek/mt7996/mt7990_rom_patch.bin
+ create mode 100644 mediatek/mt7996/mt7990_wm.bin
 
