@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5342DCEACEF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Nov 2025 12:38:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBBC5CEBF61
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Nov 2025 12:39:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=giKe3hsqYQs+P5a1qPwMOEHn/DCpeC8WJXyZSlfEoAI=; b=4DIz6uoKM8N9f+QD2NZsOIoyEd
-	GJaSblbHta+dDCMdNlvps2R7OzS0XPfpNJuRapC4n+uGaTDOiM6r3w814+KexTZBiley+xA3TPezm
-	91+/N+zXuB+z6PeDCavnSGooRzvawvKQBmh7sPaHRh08ZbMkNi+PbmlSMPONNpvhToalgaJGoTyzO
-	4v9wr6Ir43oboO/oxto1Bx7fmyNtEyOetMBk+xR4EDG7+s+PgumrdgnHvKuH3Cu3ijkGoX+W9Lh+y
-	ZZ8lxeFjO7X/y6dXz2yo+jh4t080wNE8RbBCQ5hlAoDx5ttenSVGX+7W0F933svMK3gRudzwHiptZ
-	qinGfX1w==;
+	bh=TL7p95TJ8YS7WWH1xCuEfWjQDMAtKcnZf4fd2mcQ7A4=; b=AP0ssFNDhXq5RgbI6FhCeIrKQW
+	6corpMVlX47s14FpFa6IKgExmb0s54M6XtwbqUq2Sqpzhdwb+5Q0vCzWeJcDgVAJ5/Gsr6lDvtBJr
+	ngoQjhLHojqqAP3/E2+NjcLFvmdPpWwWoVavcaIt9mTOIWaovnRLccs/M1OQujtRKEbsEUMnZ9T/0
+	JvyLI4CAKnFHW73UH/pTCHsSEroPXQguE/i0RMVhaC5rdfjHDqDJNj9vyf3Ed5914zqEuRXq7Qsdn
+	YkzgpYhe/XsdvcEo70aoE6qSNLgwq7QDeHqWsFltzicuCHgjxoBhxrpnEdqGVzGmh/9y2Uu7v0b/s
+	6izUGSQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKyVO-0000000G5ZE-0DPl;
-	Mon, 17 Nov 2025 12:38:50 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vKyVw-0000000G5xX-477r;
+	Mon, 17 Nov 2025 12:39:24 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKyVL-0000000G5Xk-0rkW;
-	Mon, 17 Nov 2025 12:38:48 +0000
+	id 1vKyVk-0000000G5jH-2tXX;
+	Mon, 17 Nov 2025 12:39:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1763383123;
-	bh=n+whlhVXGNmROQDHpFtUuk6MoZNagUCrrAscIOv6pMM=;
+	s=mail; t=1763383149;
+	bh=ierKwIIuey+KBX9hw2bltCwqXrLhrQJwTN42mjY84yI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lQ05Haa58fPVLNVCR1XlSb8ov0bHY6rJxrvBg/wn4n+wcriVuIiExdEWtT2WUG1jl
-	 dg4bug40KDpd6wp0hoFqE7d33SgxVd9GaFIxlcfIeAWmAZ5GWgmhLCVCP15NRDdtdR
-	 Hl1FVirpj8eGOk5TfWm9kvRjK1ihWmEb7c7K+TsMVI0+tKXDHTI6+Zry+cjxiOUAQQ
-	 4dguhNic9duRUhLoUtWVDWeD1uFYFn3ZpQgJSI0kiqvgBm8fhCF75SvDrxhuJNqLQn
-	 TGzvhhNrF/TLH9VkLQbUZjVZ7o5i0HnRA1DgpIHVtLy3GcjJTuxSKbzqxvYfTokLq2
-	 obgvmBaWKvUGQ==
+	b=d49lZmHlRM17eRcwy37ucduJi/6vt5S30qFVQ1rDXMn58KPiAZu+PV3X9mnSE7m2q
+	 zzhhe/mOUDd1XpBzlvkkbT5hUeiKSvNGGuSf2dkb7XNV1pc9i0yPHFjpBsd5lKj8kX
+	 /uWx3veA3PYYRhRw2qtCWLyaqy4HVh5zPYsCw+wi3POyszvaOM2Va32XYS53IOLXuF
+	 ow9K9pRbJCse9FujAdNkqAHLGqUVmrNPUjy16cwDDdj99SN+pcUL+Eeq6QV3q6nbkB
+	 eTvC45gEekK9fC4qDarD8Xs0bF0QBFK5s619StKPVkUVfAbV+al2HXmAgGB+B2z1Oz
+	 twtyJGWTWpuJg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D78FA17E1249;
-	Mon, 17 Nov 2025 13:38:42 +0100 (CET)
-Message-ID: <f63c1702-e847-4c45-bf9a-a4985baff1b7@collabora.com>
-Date: Mon, 17 Nov 2025 13:38:42 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5C23917E1249;
+	Mon, 17 Nov 2025 13:39:09 +0100 (CET)
+Message-ID: <2dd6857c-5895-4a53-8ccf-7407e454fd1d@collabora.com>
+Date: Mon, 17 Nov 2025 13:39:08 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/13] soc: mediatek: mtk-dvfsrc: Get and Enable DVFSRC
- clock
+Subject: Re: [PATCH 10/13] soc: mediatek: mtk-dvfsrc: Rework bandwidth
+ calculations
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
@@ -58,16 +58,15 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
 References: <20251114-mt8196-dvfsrc-v1-0-b956d4631468@collabora.com>
- <20251114-mt8196-dvfsrc-v1-9-b956d4631468@collabora.com>
+ <20251114-mt8196-dvfsrc-v1-10-b956d4631468@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20251114-mt8196-dvfsrc-v1-9-b956d4631468@collabora.com>
+In-Reply-To: <20251114-mt8196-dvfsrc-v1-10-b956d4631468@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_043847_399883_44958B92 
-X-CRM114-Status: UNSURE (   7.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251117_043912_895291_6054F1BD 
+X-CRM114-Status: GOOD (  15.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,13 +82,33 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 14/11/25 17:54, Nicolas Frattaroli ha scritto:
-> The DVFSRC has a clock on all platforms.
+> The code, as it is, plays fast and loose with bandwidth units. It also
+> doesn't specify its constraints in the actual maximum hardware value,
+> but as some roundabout thing that then ends up multiplied into the
+> actual hardware value constraint after some indirections. In part, this
+> is due to the use of individual members for storing each limit, instead
+> of making it possible to index them by type.
 > 
-> Get and enable it in the probe function, so that Linux's common clock
-> framework knows we're a user of it.
+> Rework all of this by adding const array members indexed by the
+> bandwidth type enum to the soc_data struct. This array expresses the
+> actual hardware value limitations, not a factor thereof.
+> 
+> Use the clamp function macro to clamp the values between the minimum and
+> maximum constraints after all the calculations, which also means the
+> code doesn't write nonsense to a hardware register when the math is
+> wrong, as it'll constrain after all the calculations.
+> 
+> Pass the type as the actual enum type as well, and not as an int. If
+> there's some type checking that can be extracted from the function
+> signature, then we may as well use it.
+> 
+> Don't needlessly explicitly cast return values to the return type
+> either; this is both unnecessary and makes it harder to spot type safety
+> issues.
 > 
 > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
