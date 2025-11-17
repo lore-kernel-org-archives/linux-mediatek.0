@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99D6ECEBF93
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Nov 2025 10:33:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5342DCEACEF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Nov 2025 12:38:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4+5/+FobfofAhXwLRikeC/5yNiO8VH/n3Kd78rrHi3k=; b=2pyXz3JrusU0z6wBjJrfcs6GOk
-	ptihqZVSvlKP1ltU4iEgVO6fkg9wZqXHwTF4Wzh5LpmxU//y8uCTAJj+F7j7opk+Tgl8nUoHYFICJ
-	YTdIAs+2SoNOgsS07z2zFag1ii2eiGksjj1uuDq2BA4hPVTxBfHR1f9updMJNlU3lnXlpCGbfsBf7
-	i+6gwwAFrQzLXHu4NxINCJI5A+q7CvWZO2ghWGdlFJxgOhC/pqNMNAKc9A/ltpEv+imBztWv+BIQV
-	ijmvwmxOEVHmrpsx56nHIFilr4iGMExv0WW1jCx9Gwm/w5hQePx2/zXNdfGHbbTl9YwtW8sE0CFrJ
-	576uAwuQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=giKe3hsqYQs+P5a1qPwMOEHn/DCpeC8WJXyZSlfEoAI=; b=4DIz6uoKM8N9f+QD2NZsOIoyEd
+	GJaSblbHta+dDCMdNlvps2R7OzS0XPfpNJuRapC4n+uGaTDOiM6r3w814+KexTZBiley+xA3TPezm
+	91+/N+zXuB+z6PeDCavnSGooRzvawvKQBmh7sPaHRh08ZbMkNi+PbmlSMPONNpvhToalgaJGoTyzO
+	4v9wr6Ir43oboO/oxto1Bx7fmyNtEyOetMBk+xR4EDG7+s+PgumrdgnHvKuH3Cu3ijkGoX+W9Lh+y
+	ZZ8lxeFjO7X/y6dXz2yo+jh4t080wNE8RbBCQ5hlAoDx5ttenSVGX+7W0F933svMK3gRudzwHiptZ
+	qinGfX1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKwYO-0000000Ft0e-295w;
-	Mon, 17 Nov 2025 10:33:48 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vKyVO-0000000G5ZE-0DPl;
+	Mon, 17 Nov 2025 12:38:50 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vKwYN-0000000Fszo-2HNX
-	for linux-mediatek@lists.infradead.org;
-	Mon, 17 Nov 2025 10:33:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A105F60143;
-	Mon, 17 Nov 2025 10:33:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52231C4CEF1;
-	Mon, 17 Nov 2025 10:33:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763375626;
-	bh=ghcnRQ+nhX7xv2Ba3ggi4m9wIFMl1M+hkyAbVP+4LTM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Zhxi6nr+jtFF9MxK+qlBz/BSYhzAFGFiT8cO/moudHfhdW742v5PHmOhqpsA2Yr1G
-	 VL8h941jkiApYZWngPIAiuYK3jkm/craj9Iy3D2fJc3Xl0YbtNcqdWeDVEESGTKqd1
-	 U2XcIPMt+WuFdnbo/Ra2TdDWLslJe4UwCsNReMMpiGMvFiN6lrGaoVQbgHp9C0JFBb
-	 PkJp9JcR1a/DtJHrZnRS5Rc+oUlF+YPi/zDnOrfQBxvjpPSx4fCfq+07TmOU56NOxY
-	 2lw5J+s9I/+NodTxe7Lb9EouI5n5U4RmxpdrlO/eCeydhkIwD2DSu/HW05jtbRJe6y
-	 3RfTI5LdJGirA==
-Received: from johan by xi.lan with local (Exim 4.98.2)
-	(envelope-from <johan@kernel.org>)
-	id 1vKwYI-0000000072Q-3Gub;
-	Mon, 17 Nov 2025 11:33:43 +0100
-Date: Mon, 17 Nov 2025 11:33:42 +0100
-From: Johan Hovold <johan@kernel.org>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 0/5] drm/mediatek: fix probe resource leaks
-Message-ID: <aRr6Bj4yrcKN-jUD@hovoldconsulting.com>
-References: <20250923152340.18234-1-johan@kernel.org>
- <aP91AfdoyESxqfPG@hovoldconsulting.com>
+	id 1vKyVL-0000000G5Xk-0rkW;
+	Mon, 17 Nov 2025 12:38:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1763383123;
+	bh=n+whlhVXGNmROQDHpFtUuk6MoZNagUCrrAscIOv6pMM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=lQ05Haa58fPVLNVCR1XlSb8ov0bHY6rJxrvBg/wn4n+wcriVuIiExdEWtT2WUG1jl
+	 dg4bug40KDpd6wp0hoFqE7d33SgxVd9GaFIxlcfIeAWmAZ5GWgmhLCVCP15NRDdtdR
+	 Hl1FVirpj8eGOk5TfWm9kvRjK1ihWmEb7c7K+TsMVI0+tKXDHTI6+Zry+cjxiOUAQQ
+	 4dguhNic9duRUhLoUtWVDWeD1uFYFn3ZpQgJSI0kiqvgBm8fhCF75SvDrxhuJNqLQn
+	 TGzvhhNrF/TLH9VkLQbUZjVZ7o5i0HnRA1DgpIHVtLy3GcjJTuxSKbzqxvYfTokLq2
+	 obgvmBaWKvUGQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D78FA17E1249;
+	Mon, 17 Nov 2025 13:38:42 +0100 (CET)
+Message-ID: <f63c1702-e847-4c45-bf9a-a4985baff1b7@collabora.com>
+Date: Mon, 17 Nov 2025 13:38:42 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aP91AfdoyESxqfPG@hovoldconsulting.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 09/13] soc: mediatek: mtk-dvfsrc: Get and Enable DVFSRC
+ clock
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Henry Chen <henryc.chen@mediatek.com>,
+ Georgi Djakov <djakov@kernel.org>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+References: <20251114-mt8196-dvfsrc-v1-0-b956d4631468@collabora.com>
+ <20251114-mt8196-dvfsrc-v1-9-b956d4631468@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20251114-mt8196-dvfsrc-v1-9-b956d4631468@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251117_043847_399883_44958B92 
+X-CRM114-Status: UNSURE (   7.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,17 +82,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chun-Kuang and Philipp,
-
-On Mon, Oct 27, 2025 at 02:34:58PM +0100, Johan Hovold wrote:
-> On Tue, Sep 23, 2025 at 05:23:35PM +0200, Johan Hovold wrote:
-> > This series fixes various probe resource leaks in the mediatek drm
-> > drivers that were found through inspection.
+Il 14/11/25 17:54, Nicolas Frattaroli ha scritto:
+> The DVFSRC has a clock on all platforms.
 > 
-> Can these be picked up (for 6.19) as well?
+> Get and enable it in the probe function, so that Linux's common clock
+> framework knows we're a user of it.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-It's been another three weeks and we're at rc6 so sending another
-reminder. Can these please be picked up for 6.19?
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Johan
 
