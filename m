@@ -4,71 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4699CEACEF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Nov 2025 16:30:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 117A3CE8D6B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Nov 2025 16:48:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MFxTAweCxI61WJUCgtNBOwStLpQz98heIEJwITIF0r4=; b=GzMPZusGNLLxS4sJJa6/97vvut
-	McUtMil8SFHnJi7/AQhGYxG/l1WlKdvcyYTSr74qigR1+OvWtTj6xdedBPmmLYvIfLS7PmOY5oC9O
-	nXNZAXGLVg3xZNToxCpQRpJBBr1dksdx+F1+VGoO1a7BjZ0tOK4TDclTLi6fB7DKEwBfj+kSz9ias
-	LKibEl6wsESIVSummnR1V3i/MuBr6aC0rdZrStnCuoRsyZK5i1cUC13X8R+4gBjAdNfu7oxpzVcDA
-	jpaskfgl81DuczqQdp0jlwiWdh9XqLHB2QBQNz4wPm7jJkwKYTKy2hHWcTnsDkl6GlLYqvQ5uzH/+
-	o0jobQzg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Tx5pCt6UywoMhHGKyGxCGcYK9d/RLDNyjfLAZJe7BNY=; b=lIrkfC1J7vLZEgAFmZVaw1S7/5
+	3mphTT2ocMlefX16vX+mNrH8wweOKmobTfEYY15y13L0oZl4XwKxWGDpgnBcyy/skrgiO2mRmImFa
+	Po4XgvwIOg5eOIUQQCepRfgvwHwFs9E+A9lcqSj+si+1QH+hdgg87BlzjP1z/SKylvvP9mx9LBhnc
+	/z06iKaZPTqi1f9F4HBtek2iTv4VPLrN5ZviK7sKS8WaTEYs4qnBjJolKuBg4XGpZ03jK1m2O9Cng
+	KsFGiyczGLIWz65judQuQXjTqzC/oXa5rvcb2EJUGtOzCI5lbKa2G2rmofQF1t9MqS4Ks0XiqN8a6
+	4T8NmqEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL277-0000000GOhA-0C0b;
-	Mon, 17 Nov 2025 16:30:01 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vL2OZ-0000000GQED-3hnk;
+	Mon, 17 Nov 2025 16:48:03 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL274-0000000GOfY-05h9;
-	Mon, 17 Nov 2025 16:29:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 60D87418E6;
-	Mon, 17 Nov 2025 16:29:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C715DC113D0;
-	Mon, 17 Nov 2025 16:29:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763396997;
-	bh=shKUSuameh3muiG58RfWSoS4te9QniHU0E6tvBpOmy4=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=n8OhFVgTQbXQGWiK/eFE+B9CIFBxX9reOAUaY4QyzmxVw6HarFqfgbcNZxIFq8sry
-	 F/bo5eJVc0/UJUI7mEMYPZgmBUs7cGh6YIsc50M8yOs/D7GB3kBozMtS6v2OQLT9J6
-	 rr/BtwMvgePFIRE4vJcNG2P17VujqLhCR6FLAiILOadUFNyhvXZ5+T57JuR1aM0s9y
-	 naWQyyYa7w9meyX2KZxbg8K58gVzuVlRGm/Fv0QUnUJ/bCeDvGXrMBmC6FS9f88kd5
-	 Sehs9Fpnu9uRiSW0gVICYfy6ZkhaV44B3JrFZTt/9xtD+Hm1PehE2a8K5Toc3faJ+j
-	 CZJvU8yjUdYsw==
-From: Conor Dooley <conor@kernel.org>
-To: linux-kernel@vger.kernel.org
-Cc: conor@kernel.org,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Lee Jones <lee@kernel.org>,
-	Rob Herring <robh@kernel.org>,
+	id 1vL2OX-0000000GQD1-09w5
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Nov 2025 16:48:02 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-298287a26c3so55717075ad.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 17 Nov 2025 08:48:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1763398080; x=1764002880; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=Tx5pCt6UywoMhHGKyGxCGcYK9d/RLDNyjfLAZJe7BNY=;
+        b=NSyeivclh/xyt7grG3M5ADWlnNbEsV+1RmSvrM4TMfAfw+PHYYg7ZFelLY0VQDNqt2
+         qVGKEApRkYJHLpJxrmeQcpCcE1dfBXLweoSBOr4lwgPDvE8+su2zfAHf69RVcbZNLtER
+         1681xMJvXyJ0S1LwA04vndgBpZQWkMOHcDkEnHaQdWJQTkjJLgP3PjCKAlbx0/5Avh2Z
+         Tzf5jRyBVUZbKUX97NHLXh++L5Mr50josiYL/yxiE1jUs7Te4Z5fxM2MjBfqoWjO8wYA
+         iPNksDi38kRgiL9UIBSJrPxlkqw5ohzdeUq2Ks2iJxIr6/Bc/GkDXdRz///wtkb0linM
+         4/4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1763398080; x=1764002880;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Tx5pCt6UywoMhHGKyGxCGcYK9d/RLDNyjfLAZJe7BNY=;
+        b=WWNLPNHmnGVE7/jgtzC/vfwtUcaGN9AW+I81yBt4b/wZPIUau9CNOPm6cPLZPS/EjJ
+         qFp+RRH8LhzMZMcLSi6XMRlJ/WcCJknBFSW7c8HNka3syIiFbJI4dxUJ2TDETd9qAHs9
+         0eRQdV8Tx1cdSDFC+GoJnifmRWw47J2MdG7XMy0S+GvasRMobSvPx31mjEhcpW7h6kqO
+         Z59KMDx/zCbE5GN/OkC7vr4MPY/mnnL91oX4rRT5+InAYBrdy1Qe2ss+mD8wwOmfle1I
+         iXipGKUgU3r/GX7EXioKRXcmYoiHYYjhhjX5xAK1pIxVRVJLUATUAPLFD5gMB8aKWcYH
+         CUhw==
+X-Forwarded-Encrypted: i=1; AJvYcCXl7H/Ck5fzHi56JilOWAP/q1bK+74P54bDzvlF0qVqFo3Qw/pk4Xnw/74+NPBZ5Zy18C57LmqadiPbc3/1dA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyKbdnZUFh1bQFXf+w5/MzHdpaGID8S6ZjcI/hviE7fgu3V2SHN
+	9GqKPfXGnK9cRj+bkf5L2it0Q6cVHyVoQqbH6PxwtCQgqNvpELMUmaIQzHmpY6Lke7I=
+X-Gm-Gg: ASbGncutUlpxjQuFuGjkbsixjK049BvQ4Xdm1h/fC3XHKtKevlxm7vRXlMJzSliMFl+
+	kVOvLEZVU+yIgI/le/UVG9iQfdogd6JehArArGKP8imSlOtNUS0BKdWU3KEauqzu1q+f8bCpfoi
+	w0rdTWRUdUoc9KV6BPGDG2q3lM801EcL4eQlqAjFuUzy+1l80O7+qyOys/iq3I0T1ncYdXKFNsm
+	VacupxuG+SK90ehGMIATf31K8ZfjtNv+DKkOgkuK9x22giT8XTJnH0XDREekh+8zNJetEsvPqaS
+	NhNV6anDIlTY3ldF57CW3bKUJVFqjDs8kUWJVP0MLJEV22QW+iNrZNxAnFuiVP8+ahO/Jh+IWIf
+	ShrYGM503fOp7SMs0Cq6U2Qtwc3ub5MIRb6RflkcnC7UCejmUyvQoeYz53y0LLkamEEMafpor4G
+	NSf/1dApSHkyiy7w==
+X-Google-Smtp-Source: AGHT+IFOJfgBMktrjQ4WzqODR90mVSuboNdF+0l09QpBE2YhVUppij7GQo1/v8CGTNYHNVGS0fdYMw==
+X-Received: by 2002:a17:903:24f:b0:290:9332:eebd with SMTP id d9443c01a7336-2986a6bc404mr159661345ad.10.1763398079908;
+        Mon, 17 Nov 2025 08:47:59 -0800 (PST)
+Received: from p14s ([2604:3d09:148c:c800:df44:9b1b:6b35:3fb0])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2985c2bed16sm144069755ad.86.2025.11.17.08.47.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Nov 2025 08:47:59 -0800 (PST)
+Date: Mon, 17 Nov 2025 09:47:56 -0700
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Huayu Zong <huayu.zong@mediatek.com>
+Cc: Bjorn Andersson <andersson@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 2/2] dt-bindings: mfd: document syscons falling back to atmel,sama5d2-sfrbu
-Date: Mon, 17 Nov 2025 16:29:31 +0000
-Message-ID: <20251117-marlin-mustang-5ffda4d211c7@spud>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251117-aeration-smock-5e7ac06e2942@spud>
-References: <20251117-aeration-smock-5e7ac06e2942@spud>
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v3 1/3] remoteproc: mediatek: Support platform reg
+ offsets in mtk_scp_of_data
+Message-ID: <aRtRvBZ1zaxW0N20@p14s>
+References: <20251110101342.24261-1-huayu.zong@mediatek.com>
+ <20251110101342.24261-2-huayu.zong@mediatek.com>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1597; i=conor.dooley@microchip.com; h=from:subject:message-id; bh=jLzb0xlUC6jw2ZwWlMmejU8czQGd9N0/QrEHHV0k8/c=; b=owGbwMvMwCVWscWwfUFT0iXG02pJDJnSvhnLTUXOhxjVq2S6rUx292j2fMCiPUe+1mEX92cdJ tmNV+Z3lLIwiHExyIopsiTe7muRWv/HZYdzz1uYOaxMIEMYuDgFYCLarIwMXTIi6dkxC2b8+N8z vZxHmF+KwyXB4TzvjIUPHAz2x306ysjwv4JxyQbG7c197Se9XvyaV3dU8suvqzPSX8+yrpgep/e KDQA=
-X-Developer-Key: i=conor.dooley@microchip.com; a=openpgp; fpr=F9ECA03CF54F12CD01F1655722E2C55B37CF380C
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251110101342.24261-2-huayu.zong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_082958_084430_BD6D3EC8 
-X-CRM114-Status: UNSURE (   8.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251117_084801_086872_CDFDD47D 
+X-CRM114-Status: GOOD (  23.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,47 +107,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Conor Dooley <conor.dooley@microchip.com>
+Good day,
 
-The sfrbu on both sama7g5 and sama6d65 both fall back to sama5d2 in
-devicetrees, but the former two compatibles were undocumented. Now that
-syscon.yaml has easy support for multiple soc-specific compatibles, add
-both of these undocumented devices.
+On Mon, Nov 10, 2025 at 06:13:29PM +0800, Huayu Zong wrote:
+> Some platforms only differ in HW register offsets, but can share
+> the same API. Refine struct mtk_scp_of_data to allow setting HW
+> register offsets via platform data, enabling better code reuse
+> and easier support for new platforms.
+> 
+> Signed-off-by: Huayu Zong <huayu.zong@mediatek.com>
+> ---
+>  drivers/remoteproc/mtk_common.h |  5 +++++
+>  drivers/remoteproc/mtk_scp.c    | 18 ++++++++++++++++--
+>  2 files changed, 21 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/remoteproc/mtk_common.h b/drivers/remoteproc/mtk_common.h
+> index fd5c539ab2ac..d45480ad332e 100644
+> --- a/drivers/remoteproc/mtk_common.h
+> +++ b/drivers/remoteproc/mtk_common.h
+> @@ -112,6 +112,11 @@ struct mtk_scp_of_data {
+>  
+>  	u32 host_to_scp_reg;
+>  	u32 host_to_scp_int_bit;
+> +	u32 scp_to_host_ipc_clr_reg;
+> +	u32 scp_to_spm_ipc_clr_reg;
+> +
+> +	u32 scp_secure_domain_reg;
+> +	u32 scp_domain_value;
+>  
+>  	size_t ipi_buf_offset;
+>  	const struct mtk_scp_sizes_data *scp_sizes;
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index 10e3f9eb8cd2..c3c37cae933a 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -236,7 +236,7 @@ static void mt8192_scp_irq_handler(struct mtk_scp *scp)
+>  		 * MT8192_SCP2APMCU_IPC.
+>  		 */
+>  		writel(MT8192_SCP_IPC_INT_BIT,
+> -		       scp->cluster->reg_base + MT8192_SCP2APMCU_IPC_CLR);
+> +		       scp->cluster->reg_base + scp->data->scp_to_host_ipc_clr_reg);
+>  	} else {
+>  		scp_wdt_handler(scp, scp_to_host);
+>  		writel(1, scp->cluster->reg_base + MT8192_CORE0_WDT_IRQ);
+> @@ -561,7 +561,7 @@ static int mt8188_scp_c1_before_load(struct mtk_scp *scp)
+>  static int mt8192_scp_before_load(struct mtk_scp *scp)
+>  {
+>  	/* clear SPM interrupt, SCP2SPM_IPC_CLR */
+> -	writel(0xff, scp->cluster->reg_base + MT8192_SCP2SPM_IPC_CLR);
+> +	writel(0xff, scp->cluster->reg_base + scp->data->scp_to_spm_ipc_clr_reg);
+>  
+>  	writel(1, scp->cluster->reg_base + MT8192_CORE0_SW_RSTN_SET);
+>  
+> @@ -575,6 +575,18 @@ static int mt8192_scp_before_load(struct mtk_scp *scp)
+>  	/* enable MPU for all memory regions */
+>  	writel(0xff, scp->cluster->reg_base + MT8192_CORE0_MEM_ATT_PREDEF);
+>  
+> +	/* Set the domain of master in SCP.
+> +	 *
+> +	 * In the SCP, cores, DMA, and SPI are masters. When these masters
+> +	 * access memory or devices, they need to carry a domain ID. This
+> +	 * domain ID is used to determine whether they have permission to
+> +	 * access the target device or memory.
+> +	 */
+> +
+> +	if (scp->data->scp_secure_domain_reg)
+> +		writel(scp->data->scp_domain_value,
+> +		       scp->cluster->reg_base + scp->data->scp_secure_domain_reg);
+> +
 
-Signed-off-by: Conor Dooley <conor.dooley@microchip.com>
----
-CC: Nicolas Ferre <nicolas.ferre@microchip.com>
-CC: Alexandre Belloni <alexandre.belloni@bootlin.com>
-CC: Claudiu Beznea <claudiu.beznea@tuxon.dev>
-CC: Lee Jones <lee@kernel.org>
-CC: Rob Herring <robh@kernel.org>
-CC: Krzysztof Kozlowski <krzk+dt@kernel.org>
-CC: Conor Dooley <conor+dt@kernel.org>
-CC: devicetree@vger.kernel.org
-CC: linux-kernel@vger.kernel.org
-CC: linux-arm-kernel@lists.infradead.org
-CC: linux-mediatek@lists.infradead.org
- Documentation/devicetree/bindings/mfd/syscon.yaml | 6 ++++++
- 1 file changed, 6 insertions(+)
+This change is not related to the description in the changelog, nor the other
+changes in this patch.  Please do another patch.
 
-diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-index 50f0012f4ebe..64829ecbb0b0 100644
---- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-+++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-@@ -239,6 +239,12 @@ properties:
-               - ti,j784s4-pcie-ctrl
-               - ti,keystone-pllctrl
-           - const: syscon
-+      - items:
-+          - enum:
-+              - microchip,sama7g5-sfrbu
-+              - microchip,sama7d65-sfrbu
-+          - const: atmel,sama5d2-sfrbu
-+          - const: syscon
-       - items:
-           - const: microchip,pic64gx-control-scb
-           - const: microchip,mpfs-control-scb
--- 
-2.51.0
-
+>  	return 0;
+>  }
+>  
+> @@ -1527,6 +1539,8 @@ static const struct mtk_scp_of_data mt8192_of_data = {
+>  	.scp_da_to_va = mt8192_scp_da_to_va,
+>  	.host_to_scp_reg = MT8192_GIPC_IN_SET,
+>  	.host_to_scp_int_bit = MT8192_HOST_IPC_INT_BIT,
+> +	.scp_to_host_ipc_clr_reg = MT8192_SCP2APMCU_IPC_CLR,
+> +	.scp_to_spm_ipc_clr_reg = MT8192_SCP2SPM_IPC_CLR,
+>  	.scp_sizes = &default_scp_sizes,
+>  };
+>  
+> -- 
+> 2.45.2
+> 
 
