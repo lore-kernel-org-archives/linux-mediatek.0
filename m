@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E7C2CE8D6B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Nov 2025 21:13:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ABC1CE8D6B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Nov 2025 22:44:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=FYOlvfZvyTWDSdBfTirP5NKSGAwDrY+MVVU/dQPCO08=; b=Fb3w9hYpkKGka9PpRE9ajoTpQW
-	3PuGDCVoKXgHwR6mYiP9idMVwIYLl0vg2M3U5MU6hMSfRAEOM+EmAdNnXuCILiBYOIFqQMl80E7NV
-	MfALulCBqxSwKMn5elX+V6Ijl+hukeGDkFaern2VeDRJLg1OvHkhNiR7j0NECQsqkwf5kcgBz4ss3
-	6SEu0fzWxfah3FhfS4Fo82u+HkDpxwnWsuXmnKhpCFqUO6WWYUl2PBlFpbWIYnZ6pY48JgjQtV7TV
-	5jy157UZEpwvmSGKMejV2WNrOxLjiI3QlI7Nzk36uLkzNUa21Jm1pmNTnBP08uuF8amD/B8gUEM3X
-	sAcR7w2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HetChZ7XkNQMqx2+PivIhHctcbtcwL1Ak2RaCxoVdfY=; b=kVz1OUslyr1KMZx+E8Vxz3S/Sj
+	nANtUYi6UzfpETdmnIAcMc0b+ETGjlZVMfqxTy+d1Y9Ea/x+wdrCatzdV7a8JdVI38CECloo/MS5y
+	YqO1Nu99HVfrCsYvrGgAdl/E4fgEew9AQLP+5uNKg/OG7Y2AsI3aQf2fxS2IN7rqyLYpsWHF1TmqQ
+	DkQ6yn9g3ZgLoYehL0uaxQN7tmBmZNu/HBPW7i0DMlCUR2+yNBAK0A3fs185sJD6NjhQOPeQ7PPdA
+	oFbnc9Hbi0n0vykbzG5Qa6P0lKQhI+8JTKItDHF2OnkbbJVEdNQqs6FDz3qoqTa7ixJn4/siIVe8r
+	3ptWXB5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL6XE-0000000GrwW-0Udq;
-	Mon, 17 Nov 2025 21:13:16 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vL7xl-0000000GxrL-1PjC;
+	Mon, 17 Nov 2025 22:44:45 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL6XB-0000000GrvX-1bqu;
-	Mon, 17 Nov 2025 21:13:14 +0000
+	id 1vL7xj-0000000Gxr6-27kX;
+	Mon, 17 Nov 2025 22:44:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C01B343C3D;
-	Mon, 17 Nov 2025 21:13:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A3FCC2BCB5;
-	Mon, 17 Nov 2025 21:13:11 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 9B0B7602DA;
+	Mon, 17 Nov 2025 22:44:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B22B9C2BCB3;
+	Mon, 17 Nov 2025 22:44:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763413992;
-	bh=TaxEPTZW9pKOCyEfKBqrhe0WhB7/O8XVURVLLMyKheE=;
-	h=From:To:Cc:Subject:Date:From;
-	b=IchTH25rN2QbyJwJ/y5i72EvOj7/VgrflArq/eATa/9ZSm1Tklan5wL8Fq3YDhp0y
-	 ahglHiTfINzQSNZ5xq2cqR2hoDHn1AP9ve5UobA1ZFomT7Jjup5InDQDwa1Ddab5K6
-	 tPanbuE2PzGbrrQistSqezEjm+DOjbEyxpDBOglL7Rs8euFx9J3p4Wq4YihI9QsSDy
-	 RJxTN/K361ytNjNmY19OpoxHZbXuZnzXKMECZfjONAE9BjmVfpktGBqLZ/53TLK648
-	 z8VXyIcoxfAkKhg/cyYe586q9W5mM49xKRzLf43axokOIY4x0uWVu/9awcghNg/bT5
-	 Mx9TScMg0cbYw==
+	s=k20201202; t=1763419482;
+	bh=I7cN+d0gaur0/SJt3Mr4dNjz/xC/5q6cHHf71yMS3IY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LAks66OLL7THCQWMljIpJ+a8VX38FA23KlL+cfdSyzabVhsI+3vp5RGUFjfOF0nBk
+	 YLnNYI7s7vyaUCf5kgNfTFQsrtkZf2DRDZ8XP6IlI49Frr8NrHC5KRvzq1/HtWpIup
+	 r8nYk4blLfA0k6qoNUMuVcINaEbjEqpLlvL5zLe0yuzj3+sS+KxFgyrXKLvy819mXW
+	 RSni2jQHoQloiCYAJzCLxBRO+8GIbVE4wgkHwEuqOYvDCGroeQyajIVZeE3oG3U0MZ
+	 WEV+h9PA3eqTcgVnXoYkJKqoYyWaxfXI51T/ewJ5dLcf7eBP3p0QLDQN4m3uxJSNjk
+	 0kbAGs6rrALdA==
+Date: Mon, 17 Nov 2025 16:44:39 -0600
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+To: Conor Dooley <conor@kernel.org>
+Cc: Nicolas Ferre <nicolas.ferre@microchip.com>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH] arm64: dts: mediatek: Apply all DT overlays at build time
-Date: Mon, 17 Nov 2025 15:13:06 -0600
-Message-ID: <20251117211306.725678-1-robh@kernel.org>
-X-Mailer: git-send-email 2.51.0
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Lee Jones <lee@kernel.org>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: mfd: document control-scb and
+ sysreg-scb on pic64gx
+Message-ID: <176341947920.855000.13401863198434967357.robh@kernel.org>
+References: <20251117-aeration-smock-5e7ac06e2942@spud>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_131313_465035_8A465E1F 
-X-CRM114-Status: UNSURE (   8.80  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251117-aeration-smock-5e7ac06e2942@spud>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,68 +75,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It's a requirement that DT overlays be applied at build time in order to
-validate them as overlays are not validated on their own.
 
-Add targets for all the Mediatek overlays.
+On Mon, 17 Nov 2025 16:29:29 +0000, Conor Dooley wrote:
+> From: Conor Dooley <conor.dooley@microchip.com>
+> 
+> On pic64gx these syscons are identical to those on mpfs, and should use
+> a fallback. Add support for multiple fallback compatibles to syscon.yaml
+> with these as the first two users.
+> 
+> Signed-off-by: Conor Dooley <conor.dooley@microchip.com>
+> ---
+> Awful diff, sorry!
+> 
+> CC: Nicolas Ferre <nicolas.ferre@microchip.com>
+> CC: Alexandre Belloni <alexandre.belloni@bootlin.com>
+> CC: Claudiu Beznea <claudiu.beznea@tuxon.dev>
+> CC: Lee Jones <lee@kernel.org>
+> CC: Rob Herring <robh@kernel.org>
+> CC: Krzysztof Kozlowski <krzk+dt@kernel.org>
+> CC: Conor Dooley <conor+dt@kernel.org>
+> CC: devicetree@vger.kernel.org
+> CC: linux-kernel@vger.kernel.org
+> CC: linux-arm-kernel@lists.infradead.org
+> CC: linux-mediatek@lists.infradead.org
+> 
+> ---
+>  .../devicetree/bindings/mfd/syscon.yaml       | 219 +++++++++---------
+>  1 file changed, 114 insertions(+), 105 deletions(-)
+> 
 
-Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
----
-This will soon be a warning[1].
-
-Note that if it is desired that the combined .dtb is not installed, then
-the combined .dtb should be added to 'dtb-' variable instead.
-
-[1] https://lore.kernel.org/all/20251114222759.4181152-1-robh@kernel.org/
----
- arch/arm64/boot/dts/mediatek/Makefile | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index a4df4c21399e..4e92bd9f0e53 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -15,16 +15,30 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-acelink-ew-7886cax.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-mini.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtbo
-+mt7986a-bananapi-bpi-r3-emmc-dtbs := mt7986a-bananapi-bpi-r3.dtb mt7986a-bananapi-bpi-r3-emmc.dtbo
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-emmc.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtbo
-+mt7986a-bananapi-bpi-r3-nand-dtbs := mt7986a-bananapi-bpi-r3.dtb mt7986a-bananapi-bpi-r3-nand.dtbo
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nand.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtbo
-+mt7986a-bananapi-bpi-r3-nor-dtbs := mt7986a-bananapi-bpi-r3.dtb mt7986a-bananapi-bpi-r3-nor.dtbo
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-nor.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sata.dtbo
-+mt7986a-bananapi-bpi-r3-sata-dtbs := mt7986a-bananapi-bpi-r3.dtb mt7986a-bananapi-bpi-r3-sata.dtbo
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sata.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtbo
-+mt7986a-bananapi-bpi-r3-sd-dtbs := mt7986a-bananapi-bpi-r3.dtb mt7986a-bananapi-bpi-r3-sd.dtbo
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-bananapi-bpi-r3-sd.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-2g5.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-emmc.dtbo
-+mt7988a-bananapi-bpi-r4-emmc-dtbs := mt7988a-bananapi-bpi-r4.dtb mt7988a-bananapi-bpi-r4-emmc.dtbo
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-emmc.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-sd.dtbo
-+mt7988a-bananapi-bpi-r4-sd-dtbs := mt7988a-bananapi-bpi-r4.dtb mt7988a-bananapi-bpi-r4-sd.dtbo
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7988a-bananapi-bpi-r4-sd.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
-@@ -104,6 +118,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8390-genio-700-evk.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-kontron-3-5-sbc-i1200.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-radxa-nio-12l.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-radxa-nio-12l-8-hd-panel.dtbo
-+mt8395-radxa-nio-12l-8-hd-panel-dtbs := mt8395-radxa-nio-12l.dtb mt8395-radxa-nio-12l-8-hd-panel.dtbo
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-radxa-nio-12l-8-hd-panel.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
- 
- # Device tree overlays support
--- 
-2.51.0
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
