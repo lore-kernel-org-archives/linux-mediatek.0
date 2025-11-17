@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A213DCEACEF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Nov 2025 17:03:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DE3DCEACEF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Nov 2025 17:41:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SbHWQL6CHG1qQSbhFwue1TRmnY1K9v+wrVZ79IKrQH4=; b=ZQ2z8o1OBMyr9LUl+FTFvfHmlx
-	N59Ifgm6q3AZtiSg2vVcqO/zwr/T/xV3urtfYGE843IPSAYgoVyAJXyqgWQESmkePSCTEvZR55tfp
-	tWnzf9aANfk/u0ypsdCoMDlIWpHJWfluKTlfcsLEyxmiYu8wwqTn6myHiAbwMB6tmYYANJn4Fn/IK
-	DGeYgQa7KGcymEKi8JudE0GGn15lsREz2gf6jXGzQr0X1LL9db3JoK2K0irJ+5tcjKMT5O9CkItok
-	yJHgYA9olw1pn3+4ZBTgIpLQkz6Jsqnc87l8XY9wa+mI3jRXtS944q5a9NiPSGj7R/12H9R2D83TZ
-	6ypMd9VA==;
+	bh=PBWQ+WFcqs8OmPy14mBlBDP+EBmR+vUtXiG0F9UXB54=; b=cJDM6Wdnl5CZMyV0uqNAaGXKSx
+	CAUJbZDgFsGRyPycMnhrHvITI55Mb1m9/wiYQeiLFX1ySVjbbBV5Z9kKAwq4YCI7OSz/fC7c5j4/9
+	CCudzVshYkxNF+0WiLoPVptxhgLC17ke0GK2ghGAIZ9UxNBnUS5wn2SroVCzGMA4jyiReH0TM+CVD
+	wnTMQOK/roiiqHg9BOvvArB2CXWVVGZnaLOb4Lf0CvgLcn2Fc++2EbG/C9/Ig5Bhkh5BGrdCcFyYs
+	KQ3j+0A+iSYgaQWWnxjJrDbaYqwcflr3QsqAH9T72+qXLfZ0l0de5d/OYM0P89WnXy+F8GjNltWKM
+	Jk0t9tOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL2dB-0000000GUH1-3O82;
-	Mon, 17 Nov 2025 17:03:09 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.49])
+	id 1vL3EE-0000000GYRk-1kUJ;
+	Mon, 17 Nov 2025 17:41:26 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL2d5-0000000GUBP-3w08;
-	Mon, 17 Nov 2025 17:03:07 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
-	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 05118C400A3;
-	Mon, 17 Nov 2025 17:02:55 +0000 (UTC)
-Received: from [172.18.0.200] (unknown [64.190.177.183])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail3.candelatech.com (Postfix) with ESMTPSA id 8702213C2B5;
-	Mon, 17 Nov 2025 09:02:22 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 8702213C2B5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
-	s=default; t=1763398959;
-	bh=GQ2l1FtCQk8a5A/D6+r+0V3xCadwcOHKmikQp/6m8Jc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=lV4klJotUTpo5zZioJImRUnz4+PgMWxD09OsZg5+JbtOusDqQ2VrYm9wfUgc3Ij1c
-	 PZ/XVJvrzAHl3AlyZ16aIdoRpHC3KtbaFsdE8YsHfcsoKnGLtiXwLvSY7wXIqL62ny
-	 5jDDkBVVsGAnftytdwSNiEUzjJ7eLDAlOPdcONag=
-Message-ID: <49fdf52b-32cb-427e-ab95-a81856840a1e@candelatech.com>
-Date: Mon, 17 Nov 2025 09:02:18 -0800
+	id 1vL3EB-0000000GYR5-3kUz
+	for linux-mediatek@lists.infradead.org;
+	Mon, 17 Nov 2025 17:41:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id D1F93418AC
+	for <linux-mediatek@lists.infradead.org>; Mon, 17 Nov 2025 17:41:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7EB4AC19421
+	for <linux-mediatek@lists.infradead.org>; Mon, 17 Nov 2025 17:41:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763401280;
+	bh=A4F5PJLasrrm16tZ8Vvy+5mmSuMc9DptCJKcLbMf4yc=;
+	h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
+	b=U9vd9/RVdErVE5Cawogz4Y68ZQY4SnczvX2LHNknQA9jtzoK3kShxJy2rl/RmPaQF
+	 O1i3fh45py7s1SSMle9/XWYDu/+714+Gn3ptp8XuUV4d0L+9s0XorLtscH7XXDrLoW
+	 c5xfCYgjntUifaUgfj18CBp90KerRZL4Aevo3vVfQb+z+iGdZwM9Et6cYcXNDhfUnN
+	 pnhQLricsDuT+6NVdvKUMjJp6UzsG7v+OlJJdmUtOYTf/zYdzHc4Db4rBFabGjqdcr
+	 +cjyVa26IUCLZXReM9oHO4UcKimQXRgT8H2cVdkKxUoN2q3Cy186Q3jdYcZ6P/pvAz
+	 Z3Vekj/FtVpBQ==
+Received: by mail-yw1-f170.google.com with SMTP id 00721157ae682-78677ff31c2so38587757b3.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 17 Nov 2025 09:41:20 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCXoczGlGzm2GeBTspPWE9uu38sCh6HAJoGCrChF0bnYH9oGydS3eAm4tVFQPPKIPSd8XZP6FqNGJtNFjIfXeg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz0Bv52OP+N7U4ipJN1yqB1e9Aza1Wh85v2T9NWv/0kPtqVjFUB
+	fiqiEMAFyH7LPuOhwLzZhLKWV5daiPTV6oSQQC8YAhoCoWHSAQyEv0fyDQTwl8qMtJ5pJW4M7Q1
+	pIg7exXeElkqzLppbjKbp3UyBoop+0JQ=
+X-Google-Smtp-Source: AGHT+IERFGmwZzvgfmQpsekA5ySepC5cWhE1RdcPAgMU6moeZ0oLlNfQdW91BxLVB/lGep7xzrsdF3YlTmu3LcwSYnc=
+X-Received: by 2002:a05:690e:23c5:b0:63d:5d72:1918 with SMTP id
+ 956f58d0204a3-641e76adb35mr8370590d50.63.1763401279225; Mon, 17 Nov 2025
+ 09:41:19 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH mt76] wifi: mt76: mt7996: Do not run ieee80211_iter_keys()
- for scanning links in mt7996_vif_link_remove()
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20251115-mt7996-key-iter-link-remove-fix-v1-1-4f3f4e1eaa78@kernel.org>
-Content-Language: en-MW
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-In-Reply-To: <20251115-mt7996-key-iter-link-remove-fix-v1-1-4f3f4e1eaa78@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-MDID: 1763398977-UsmcDBX0i5jE
-X-PPE-STACK: {"stack":"us5"}
-X-MDID-O: us5;ut7;1763398977;UsmcDBX0i5jE;<greearb@candelatech.com>;40f3b03bb24907b736a33b345f288e14
-X-PPE-TRUSTED: V=1;DIR=OUT;
+References: <20251117144130.2214135-1-shayne.chen@mediatek.com>
+In-Reply-To: <20251117144130.2214135-1-shayne.chen@mediatek.com>
+From: Josh Boyer <jwboyer@kernel.org>
+Date: Mon, 17 Nov 2025 12:41:07 -0500
+X-Gmail-Original-Message-ID: <CA+5PVA7fLSKqr4r5GC85B2oZpayTiTYu6jNpvX0zUUBT9G8wkA@mail.gmail.com>
+X-Gm-Features: AWmQ_bkl7PWjM_nLGeo0QyKIbfhI2BF4jkkjBdQ6YO7jEboEjxVYNyjE4JJh-Lw
+Message-ID: <CA+5PVA7fLSKqr4r5GC85B2oZpayTiTYu6jNpvX0zUUBT9G8wkA@mail.gmail.com>
+Subject: Re: pull-request: mt76 firmware 20251117
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: linux-firmware <linux-firmware@kernel.org>, Felix Fietkau <nbd@nbd.name>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Evelyn Tsai <evelyn.tsai@mediatek.com>, 
+	linux-wireless <linux-wireless@vger.kernel.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_090306_407007_ADDA22E9 
-X-CRM114-Status: GOOD (  19.74  )
+X-CRM114-CacheID: sfid-20251117_094123_996497_09BD472A 
+X-CRM114-Status: GOOD (  16.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,93 +85,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/15/25 2:41 AM, Lorenzo Bianconi wrote:
-> mt7996_vif_link_remove routine is executed by mt76_scan_complete()
-> without holding the wiphy mutex triggering the following lockdep warning.
-
-Hello Lorenzo,
-
-Thank you for the patch.  This appears to fix the lockdep splats I was
-seeing, and kernel is stable in at least initial testing.
-
-Thanks,
-Ben
-
-> 
->   WARNING: CPU: 0 PID: 72 at net/mac80211/key.c:1029 ieee80211_iter_keys+0xe4/0x1a0 [mac80211]
->   CPU: 0 UID: 0 PID: 72 Comm: kworker/u32:2 Tainted: G S                  6.18.0-rc5+ #27 PREEMPT(full)
->   Tainted: [S]=CPU_OUT_OF_SPEC
->   Hardware name: Default string Default string/SKYBAY, BIOS 5.12 02/15/2023
->   Workqueue: phy3 mt76_scan_work [mt76]
->   RIP: 0010:ieee80211_iter_keys+0xe4/0x1a0 [mac80211]
->   Code: 4c 48 83 c4 10 5b 5d 41 5c 41 5d 41 5e 41 5f c3 48 8b 47 48 be ff ff ff ff 48 8d 78 68 e8 b4 eb 1e e1 85 c0 0f 85 49
-> ff ff ff 4c 8b ab 90 1a 00 00 48 8d 83 90
->   RSP: 0018:ffffc900002f7cb0 EFLAGS: 00010246
->   RAX: 0000000000000000 RBX: ffff888127e00ee0 RCX: 0000000000000000
->   RDX: 0000000000000000 RSI: ffff888127e00788 RDI: ffff88811132b5c8
->   RBP: ffffffffa0ddf400 R08: 0000000000000001 R09: 000000009dcc1dac
->   R10: 0000000000000001 R11: ffff88811132b5a0 R12: ffffc900002f7d00
->   R13: ffff8882581e6a80 R14: ffff888127e0afc8 R15: ffff888158832038
->   FS:  0000000000000000(0000) GS:ffff8884da486000(0000) knlGS:0000000000000000
->   CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
->   CR2: 0000000030a0fd90 CR3: 0000000002c52004 CR4: 00000000003706f0
->   Call Trace:
->    <TASK>
->    ? lock_acquire+0xc2/0x2c0
->    mt7996_vif_link_remove+0x64/0x2b0 [mt7996e]
->    mt76_put_vif_phy_link+0x41/0x50 [mt76]
->    mt76_scan_complete+0x77/0x100 [mt76]
->    mt76_scan_work+0x2eb/0x3f0 [mt76]
->    ? process_one_work+0x1e5/0x6d0
->    process_one_work+0x221/0x6d0
->    worker_thread+0x19a/0x340
->    ? rescuer_thread+0x450/0x450
->    kthread+0x108/0x220
->    ? kthreads_online_cpu+0x110/0x110
->    ret_from_fork+0x1c6/0x220
->    ? kthreads_online_cpu+0x110/0x110
->    ret_from_fork_asm+0x11/0x20
->    </TASK>
->   irq event stamp: 45471
->   hardirqs last  enabled at (45477): [<ffffffff813d446e>] __up_console_sem+0x5e/0x70
->   hardirqs last disabled at (45482): [<ffffffff813d4453>] __up_console_sem+0x43/0x70
->   softirqs last  enabled at (44500): [<ffffffff81f2ae0c>] napi_pp_put_page+0xac/0xd0
->   softirqs last disabled at (44498): [<ffffffff81fa32a0>] page_pool_put_unrefed_netmem+0x290/0x3d0
->   ---[ end trace 0000000000000000 ]---
-> 
-> Fix the issue skipping ieee80211_iter_keys() for scanning links in
-> mt7996_vif_link_remove routine since we have not uploaded any hw keys
-> for these links.
-> 
-> Fixes: 04414d7bba78 ("wifi: mt76: mt7996: delete vif keys when requested")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+On Mon, Nov 17, 2025 at 9:41=E2=80=AFAM Shayne Chen <shayne.chen@mediatek.c=
+om> wrote:
+>
+> Hi,
+>
+> This contains the WiFi firmwares for MT7996, MT7992, and MT7990 chipsets.
+>
+> Please let me know if there's any problem.
+>
+> Thanks,
+> Shayne
 > ---
->   drivers/net/wireless/mediatek/mt76/mt7996/main.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> index 2a45db398fd597180c0b2bfc12e019b514f24fd6..beed795edb24c67e1b7b44fe87fd5de125a21d94 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-> @@ -392,7 +392,8 @@ void mt7996_vif_link_remove(struct mt76_phy *mphy, struct ieee80211_vif *vif,
->   	};
->   	int idx = msta_link->wcid.idx;
->   
-> -	ieee80211_iter_keys(mphy->hw, vif, mt7996_key_iter, &it);
-> +	if (!mlink->wcid->offchannel)
-> +		ieee80211_iter_keys(mphy->hw, vif, mt7996_key_iter, &it);
->   
->   	mt7996_mcu_add_sta(dev, link_conf, NULL, link, NULL,
->   			   CONN_STATE_DISCONNECT, false);
-> 
-> ---
-> base-commit: 09600421ffe2acc1a00ec466b25485f11b6bb957
-> change-id: 20251115-mt7996-key-iter-link-remove-fix-7cf4d529c5a0
-> 
-> Best regards,
+>
+> The following changes since commit fb0dbcd3011839d85920d1e4aa956f6a84700c=
+af:
+>
+>   Merge branch 'amd-ucode' into 'main' (2025-11-13 22:26:11 +0000)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/csyuanc/linux-firmware.git mt76-20251117
 
+Merged and pushed out.
 
--- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
+https://gitlab.com/kernel-firmware/linux-firmware/-/merge_requests/784
+
+josh
+
+>
+> for you to fetch changes up to 05895b31008ae27cc8a8f9a44e014f09595a736c:
+>
+>   mt76: add firmware for MT7990 (2025-11-17 22:08:46 +0800)
+>
+> ----------------------------------------------------------------
+> Shayne Chen (3):
+>       mt76: update firmware for MT7996
+>       mt76: update firmware for MT7992
+>       mt76: add firmware for MT7990
+>
+>  WHENCE                                   |  41 +++++++++++++++++++------=
+------
+>  mediatek/mt7996/mt7990_eeprom.bin        | Bin 0 -> 7680 bytes
+>  mediatek/mt7996/mt7990_eeprom_2i5i.bin   | Bin 0 -> 7680 bytes
+>  mediatek/mt7996/mt7990_rom_patch.bin     | Bin 0 -> 12832 bytes
+>  mediatek/mt7996/mt7990_wm.bin            | Bin 0 -> 1336664 bytes
+>  mediatek/mt7996/mt7992_dsp.bin           | Bin 63536 -> 63572 bytes
+>  mediatek/mt7996/mt7992_dsp_23.bin        | Bin 63536 -> 63536 bytes
+>  mediatek/mt7996/mt7992_rom_patch.bin     | Bin 20640 -> 20896 bytes
+>  mediatek/mt7996/mt7992_rom_patch_23.bin  | Bin 20640 -> 20896 bytes
+>  mediatek/mt7996/mt7992_wa.bin            | Bin 536240 -> 515184 bytes
+>  mediatek/mt7996/mt7992_wa_23.bin         | Bin 536240 -> 515184 bytes
+>  mediatek/mt7996/mt7992_wm.bin            | Bin 1712336 -> 1742052 bytes
+>  mediatek/mt7996/mt7992_wm_23.bin         | Bin 1672256 -> 1701216 bytes
+>  mediatek/mt7996/mt7996_dsp.bin           | Bin 191704 -> 191728 bytes
+>  mediatek/mt7996/mt7996_rom_patch.bin     | Bin 23968 -> 37216 bytes
+>  mediatek/mt7996/mt7996_rom_patch_233.bin | Bin 23968 -> 37216 bytes
+>  mediatek/mt7996/mt7996_wa.bin            | Bin 516272 -> 509232 bytes
+>  mediatek/mt7996/mt7996_wa_233.bin        | Bin 516272 -> 509232 bytes
+>  mediatek/mt7996/mt7996_wm.bin            | Bin 2622816 -> 2655416 bytes
+>  mediatek/mt7996/mt7996_wm_233.bin        | Bin 2620960 -> 2681656 bytes
+>  20 files changed, 25 insertions(+), 16 deletions(-)
+>  create mode 100644 mediatek/mt7996/mt7990_eeprom.bin
+>  create mode 100644 mediatek/mt7996/mt7990_eeprom_2i5i.bin
+>  create mode 100644 mediatek/mt7996/mt7990_rom_patch.bin
+>  create mode 100644 mediatek/mt7996/mt7990_wm.bin
 
