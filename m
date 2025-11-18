@@ -4,70 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ECE8CEBF92
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 08:45:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A85B3CEBF93
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 09:30:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b5aAqnDwEBfsUEa2nCzxbHYsEw/eHnf3iITovYt8cUU=; b=RgSz6hz5GdfdL4TqXRh5lZwew9
-	vvcoR2UNiV8tz9gj6Jy+N5Ko4mbivP9UK41LT50QsOoIkhtNyLtM+KiWnH0e678SXdo5l3ofTDdwj
-	wtulFvs1NPAGwSmtdE4a3do/tUt4170FI/gY/tjUv8+WowtgR/gpEijb/wc/iZWcE5JB16x8E7fES
-	jZwc/G+H7eZQ9jR8BAayF02tHQS3WXLXEo9+06TzoUlphVgOrNUwz909R7/eSoUidRtNRZZXmlaxe
-	bQh6dOVGGrNutgs+26gF2HJo6sKvgPUIuanem91Luke7gi6y5jyte3Hzew1nvQHdCpHu8lPcLZhBe
-	Q8YXDWvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=klXOwzVfCdFv6kE/oztVwPMZyi2Nita0y4UqhyV+Vs0=; b=DnAGHt4p5LKYozzgOeHdqywObk
+	jMOO1QNl4G6KAU7BLUiHTrzpofftbI4Oyixklygk+n6yj/VVEDwIJUoBN22hSM3ngeU6l6hlgN36J
+	ii+yA6pG5MzYwBimfe8DcmvDRg2sHR5Mg6AbE/qayU54xk4XIeF3+y/vjUUpfPa+GHzfqTiWwdgk9
+	/8fvSZmP2VP1gIQee2HIRuDQE62XXFpXbVHEWDk1wozgxPHs0M8aUhjIkNpmNxb0an3Skaw8DCBg2
+	vT4e2t4ZFZ0HIiBhWiOSlH0M+PJ5/pzQ+GVZJds52kRpktL/1gFQRriqqIz7IgiywuJpJmMDp+crF
+	I1l27tPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLHKe-000000004Zj-4Af5;
-	Tue, 18 Nov 2025 08:45:00 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vLI2t-00000000A5G-408i;
+	Tue, 18 Nov 2025 09:30:43 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLHKU-000000004WW-0UpO;
-	Tue, 18 Nov 2025 08:44:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1763455486;
-	bh=hTbUmuYiKLq322sR4T6juTDTdLLt60pQ4qpIzW07z4k=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aHHRJwHkiFdn6JxXxB5hQhpE7ppddqLDGxV1vBq6SgOjNfqxTMqwc/lnGNXvOe4WS
-	 0OW8OcNFlljUz9zfizY9w3ZekI5MU/rgcjWo6p3YzM1hgIEBtRh7K9csXEJv9idwzo
-	 brSGfdPUTj8yxMjvBLWxk73e1yGSFViasnF2RXmWGFC2TN3X7D126AB3F0iLCWYgsk
-	 ThlxvbOKIh7F1Cy91DBDUNImfBMpwomEVAj0VJFLseZ1fo2BaSxudhIzBOqSry/Xnv
-	 0pG1yUK1KNUYDtUYx7BvwNDJ8r2FHv1Rtk1Y62/cXf9imduV4t8JJWEIsyu044QFys
-	 +IJn8cnVRFBuw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 395A917E101A;
-	Tue, 18 Nov 2025 09:44:46 +0100 (CET)
-Message-ID: <67bc01ca-10a4-44c2-a588-1516df832108@collabora.com>
-Date: Tue, 18 Nov 2025 09:44:45 +0100
+	id 1vLI2r-00000000A4X-4AD4;
+	Tue, 18 Nov 2025 09:30:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2958D408DC;
+	Tue, 18 Nov 2025 09:30:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5D2CEC2BCB7;
+	Tue, 18 Nov 2025 09:30:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763458238;
+	bh=tOu+3QhGuuDUjW3b2MoMTda+xPJWsWqfa+W+4ERtsYo=;
+	h=From:Date:Subject:To:Cc:From;
+	b=Dqu85j1kAi1yXDgIocm6rrIfGa/E8aUG68YauY1J+/qeqeozh+BQ+22MOVE6xIwk8
+	 lMPYTxYUNktodSqZ2RsfqQ0JMVumXgkMGCHeY8H1ZjHJWx3IlzHd+nvgT+SSyVaICr
+	 +VQSaigDUJY3sO079M7GgWzaLG1UYA3hHcno123UucUXh69la8k89ofEWmDYYNO5lf
+	 Tb/U+2qCsW5ESS6TpSZfXP9hRa/988QxBx+zh5tQgkETBQey94Z9picqO1ZDN7fI61
+	 kmQlwxvQ5RiIEXl/w/Zyh9hY/wgd2UEicpUDLJy1suko1lMw1/Dtm4ZwR0/F9Hx/io
+	 KheBrdgYJZsuA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 18 Nov 2025 10:30:26 +0100
+Subject: [PATCH mt76] wifi: mt76: mt7996: Add missing mutex_{lock,unlock}
+ in mt7996_mac_sta_rc_work()
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] drm/mediatek: Add check framebuffer width and height
- size before config ovl
-To: Xiandong Wang <xiandong.wang@mediatek.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- sirius.wang@mediatek.com, vince-wl.liu@mediatek.com, jh.hsu@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20251118022437.1284-1-xiandong.wang@mediatek.com>
- <20251118022437.1284-2-xiandong.wang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20251118022437.1284-2-xiandong.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20251118-mt7996-rc-work-missing-mtx-v1-1-0739c493a6cb@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqDMBBA0avIrDtgxGjSqxQXMZ3YoRjLjKgg3
+ t3Q5fuLf4KSMCk8qxOENlZecoF5VBA/IU+E/C6Gpm6sMcbhvPbedygR90W+OLMq56nkA8NI0bo
+ 22S4kKIOfUOLjP38N13UDm8pZb2wAAAA=
+X-Change-ID: 20251118-mt7996-rc-work-missing-mtx-abec584f56af
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_004450_337024_D306A387 
-X-CRM114-Status: UNSURE (   9.27  )
+X-CRM114-CacheID: sfid-20251118_013042_057934_5B99F56D 
+X-CRM114-Status: UNSURE (   6.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,25 +78,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/11/25 03:22, Xiandong Wang ha scritto:
-> During the execution of the IGT test kms_cursor_edge_walk,
-> the screen experiences glitches and the hardware hangs.
-> It was discovered that the framebuffer dimensions (width and height)
-> provided by IGT to the display driver are zero, leading to
-> abnormal parameters that cause the hardware to freeze.
-> Therefore, it is necessary to verify the buffer dimensions
-> before successfully passing the IGT test.
-> 
-> Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
+Grab the mt76 mutex running mt7996_mac_sta_rc_work() since it is
+required by mt7996_mcu_add_rate_ctrl routine.
 
-Needs a Fixes tag.
+Fixes: 28d519d0d493a ("wifi: mt76: Move RCU section in mt7996_mcu_add_rate_ctrl_fixed()")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-After which:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index 8ddb6d69f0da2c49b72bd516dd380fad959eb063..2560e2f46e89a4bc46e21d796fca80b7decefa5c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -2890,6 +2890,8 @@ void mt7996_mac_sta_rc_work(struct work_struct *work)
+ 	LIST_HEAD(list);
+ 	u32 changed;
+ 
++	mutex_lock(&dev->mt76.mutex);
++
+ 	spin_lock_bh(&dev->mt76.sta_poll_lock);
+ 	list_splice_init(&dev->sta_rc_list, &list);
+ 
+@@ -2922,6 +2924,8 @@ void mt7996_mac_sta_rc_work(struct work_struct *work)
+ 	}
+ 
+ 	spin_unlock_bh(&dev->mt76.sta_poll_lock);
++
++	mutex_unlock(&dev->mt76.mutex);
+ }
+ 
+ void mt7996_mac_work(struct work_struct *work)
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+base-commit: 09600421ffe2acc1a00ec466b25485f11b6bb957
+change-id: 20251118-mt7996-rc-work-missing-mtx-abec584f56af
 
-Cheers,
-Angelo
-
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
