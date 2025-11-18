@@ -4,72 +4,160 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24391CEE340
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 17:02:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE621CED63D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 18:57:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Content-Transfer-Encoding:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ikbxpjo8LZrHbmpy/V6/tjg+g8DY5QC0BL15d4mFkik=; b=mMXw+nTFM/oq8330b3ac7xSZkk
-	A9e9UzrQcFHT5qkjsKxGZlPTuym5QiWHi1jHHXewamiNRBg8sGOyARhPeRaAt1ImVk9JryvL8d7+Y
-	zjyIoBFyTK3pI40yK+JqMWPFxeA5rQcB2Z6yV6u41/r9FRH8C4GIgED+R/Ibm4fNFlW1pQj8HuypY
-	kCpUQkNNjlxJJ4GXkoAK9YjSejTUOgvqua+Pof0fMZne6JRKP4d4sczUv6gRy3+G5y7rXfYrzELD0
-	E28Qb5rUi4ttxlFUUJLNODpLgDK4XFZfm030PJPpz8/Zb3scihdJmmEIAWoLOqX4oL3M/7Hlo9tGX
-	TkpJQLQg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HS5c4SN0qrEXKOvXjk4zEfVebhWODtCjti6INcAIBYo=; b=YrqJHlY2zazrRl0SAGrHZ/JaTV
+	4oMBDkgdzCSOhU5A9UQX6+065HfPEzRzAgLEpCFJqEd1zTwSDcccz1uS3bhhF8XODZOk/iGIr6XDu
+	q4Z9/JzU/u3bKMRTNeeEocwaUIeomlqZjkj4nEsynhiLnKt50M9/avAaAOzR30RBd4GC+B2V7fKWM
+	UqIjObhDSyWDFaFt4vAeFUh7gsfVyJd7jCM8DVDqQfXDMLyPFrvGomI+8v7XCQsN2r0etGVKQ6Fjo
+	BzzGRxf7iA2yTIcBFhwlOTl5vDBU26MI2UmadbnKDrGPdzUZk/EIY+j2gOOupXl/aHVfKTCDliimS
+	uz0xLuiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLP6Q-00000000naN-2Ig0;
-	Tue, 18 Nov 2025 17:02:50 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1vLQtC-00000000zEw-3wyJ;
+	Tue, 18 Nov 2025 18:57:18 +0000
+Received: from mail-northcentralusazon11013017.outbound.protection.outlook.com ([40.107.201.17] helo=CH4PR04CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLP6N-00000000nZD-2XK2;
-	Tue, 18 Nov 2025 17:02:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1763485361; x=1764090161; i=frank-w@public-files.de;
-	bh=Ikbxpjo8LZrHbmpy/V6/tjg+g8DY5QC0BL15d4mFkik=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:Content-Transfer-Encoding:In-Reply-To:
-	 References:cc:content-transfer-encoding:content-type:date:from:
-	 message-id:mime-version:reply-to:subject:to;
-	b=dsWkv5A9CxaTOv7R9y0hIEIvFze/tYuelAcl6Y4yJIc+Pb9VY2etBnCwnG/+2nlG
-	 cZEMAVbn2VK5EZsNbsd7QgFVB0naEt/14dpeQlmu30FVQQZ79BhrP5aZ+cE/eilBc
-	 49sAHyQo+CsOc3pSCGCCBMAN/RHphO8OhIEqRow7VL1QtQpGBUrxmRjObAKMxaomP
-	 tytBEvaMQm2puem4yuCMU1ueTCAKajLIyQnb/vUa360+7EIVNvZMZQeZE+KPxDQXt
-	 ae9HZGTvDXfIPApNBEe2POI0Lsu557SI1+iMVqsSDqeXEEF3tWYrge5I9ZlJBmM2V
-	 SUehdnu2r263l/+cKA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [194.15.86.107] ([194.15.86.107]) by
- trinity-msg-rest-gmx-gmx-live-56d984c6fb-85gcg (via HTTP); Tue, 18 Nov 2025
- 17:02:41 +0000
+	id 1vLQtA-00000000zEJ-1T1D;
+	Tue, 18 Nov 2025 18:57:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=r8eOtKLztw4CWVIRbU24dpzAqYo9prdzcRtNWw2qye6cs4dRBJ9pg5VnaDlRlkyRKckFwNpqydZT3vLhSwHfcgrNiAJVfa/R1grUf4A7tabczQ3OqcG4Qrtycyenrm5zSZPc9DjgjdDGEL3WziE8PM/dRuvL5C2ClcpKOWLswr9zfhb8iZ/V8FLGNFtjGcx0K+7IzOFE/Ce+twITeo5PVzuNrnSwRJQ+VSNIIkDPMljX8fbK/CHxwVihn1dpCSISUB9GGoDmvK6boHIXVCqh19YgJzvnx800EtpX3sPE7SoW1392v8eF/4SVkd0Gv3tDGqpN/ptif3hyohmzzymv6w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=HS5c4SN0qrEXKOvXjk4zEfVebhWODtCjti6INcAIBYo=;
+ b=RI3ZtCFcbDGZm1SR/ceHbjlrIGqp0Ezp5tivYEE9a78NRome4gcQC+qOFacIabLd1zGqI9CjKdKL+L5Ufg2a4JCoP6rxDBcve8wo0xHUSQ5L0PHdsVGB8+lDK9ZkcKCQP3Fi+jomjst+MRQfxzBLD0ezhuY3SU7KH06iuxvpAvEFluah9yyGyeGLpCMmKEW8l0cbvEtldQvMY+cGw4tqBz+bvAJ03S63kL9vNyEXYZSIWfKXT55r8v/cqBhYniBGyC5muQ+uTgIyctsO+RpQ9RiOJtaftuW0zFTIrjVdz+RFzpxHlt+WG7LvzetgoDrnZqTxGcnn5oOIbnDGBu14ow==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=HS5c4SN0qrEXKOvXjk4zEfVebhWODtCjti6INcAIBYo=;
+ b=huLBXrs63UAqvQKpljIiBvl/C69Q8pXin6Zf+9pibF+ntCX5TJpo3HfHQhERau4adcq+8I37IlM+w4vrULM4LqjfIz8thYw67rG4ipvom77rl9ZfPVeYLH2TqjNyp5A2jBzD23XCi05JvwDjT97TAt4S6fq4mDIGE5jr2rlzguhtpZuqaQ8YGR7RI6bIrE6cB7cxCbaOeIObrQ/nFlI0YD8afRiU4joLb+Z/b0ureZz6+XCbSMETwscGS0DJGw6UOQUm5VemCb9cKBTlchRiCKZ/XB0mjuM+s1eoJajkipGguPngLU7DN8cNXDk39zi/BybJpEHoEomRTKSDmfjzzA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com (2603:10b6:208:c1::17)
+ by MN0PR12MB5931.namprd12.prod.outlook.com (2603:10b6:208:37e::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9320.22; Tue, 18 Nov
+ 2025 18:57:09 +0000
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b]) by MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b%4]) with mapi id 15.20.9343.009; Tue, 18 Nov 2025
+ 18:57:09 +0000
+Date: Tue, 18 Nov 2025 14:57:07 -0400
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Vasant Hegde <vasant.hegde@amd.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Christian Benvenuti <benve@cisco.com>,
+	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Joerg Roedel <joro@8bytes.org>, Leon Romanovsky <leon@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Nelson Escobar <neescoba@cisco.com>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+	Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+	Yong Wu <yong.wu@mediatek.com>, Lu Baolu <baolu.lu@linux.intel.com>,
+	patches@lists.linux.dev
+Subject: Re: [PATCH v2 2/3] iommu/amd: Don't call report_iommu_fault()
+Message-ID: <20251118185707.GP10864@nvidia.com>
+References: <2-v2-25fc75484cab+ab-iommu_set_fault_jgg@nvidia.com>
+ <93fd05cd-b227-42ab-8d96-7873a830e6be@amd.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <93fd05cd-b227-42ab-8d96-7873a830e6be@amd.com>
+X-ClientProxiedBy: BN0PR04CA0007.namprd04.prod.outlook.com
+ (2603:10b6:408:ee::12) To MN2PR12MB3613.namprd12.prod.outlook.com
+ (2603:10b6:208:c1::17)
 MIME-Version: 1.0
-Message-ID: <trinity-dfca2931-a7e8-4b33-b722-c22105569d82-1763485361461@trinity-msg-rest-gmx-gmx-live-56d984c6fb-85gcg>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: robh@kernel.org, angelogioacchino.delregno@collabora.com
-Cc: matthias.bgg@gmail.com, krzk+dt@kernel.org, conor+dt@kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Aw: Re: [PATCH] arm64: dts: mediatek: Apply all DT overlays at
- build time
-Content-Type: text/plain; charset=UTF-8
-Date: Tue, 18 Nov 2025 17:02:41 +0000
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <CAL_JsqK4jvZQTQAXCjPgxBCUiENGKgkgaDgZ680QqL1XpS6bbw@mail.gmail.com>
-References: <20251117211306.725678-1-robh@kernel.org>
- <679c1f30-7c62-484e-b4e5-7351a23f15e5@collabora.com>
- <CAL_JsqK4jvZQTQAXCjPgxBCUiENGKgkgaDgZ680QqL1XpS6bbw@mail.gmail.com>
-X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:+NZVXvxPM7sHFnKfKMqInMumSSaXpCyIpkrfgPSpZJDAq6/hfd0ipTLFhIOBzIQSUYnUL
- NR7WDPb/NlOcAcXT/Lw5vmFwTdD07ljrc2TD0WWlNVilbTgVd8hg79IafV7iuLRKG6yv7H49KqRL
- U6WxfzvZiejuJtFsDKfXyzseFgdPahmDc2pHlW9IpSdPKOFaUx+aY5smlnC4YMvsuM8Gjn82ShQT
- 6vOUVNJn12KClhocoxezWQaM8gYGKtR2eGr1RNUhzw6zfCwy6pu3dxi5lrLZf0QMgcX/bxaOcy4S
- seEucBHcm9Gv/Q+jSrWKKdQUsvDiQRfo2np5HwfhHnUSq1H0/Nd8qs90tU3AlpnM7s=
-UI-OutboundReport: notjunk:1;M01:P0:O+byDxN+m3E=;FPg10a5UBLeIHxc671s5gwpvCNP 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
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN2PR12MB3613:EE_|MN0PR12MB5931:EE_
+X-MS-Office365-Filtering-Correlation-Id: cf88df78-6100-4ce1-7b97-08de26d4465f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|366016;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?ZMz2RHz4zuTZs5mVMwV+ZxTljninvhzddO10LUR+rEm85Qh1QaWVgMdtEYGz?=
+ =?us-ascii?Q?QBmT5AIuWT+CJQ+tyN030LzeN9EgjkO8MXY08VOIBmquMN4Je4gL5lyWgR5+?=
+ =?us-ascii?Q?Yz2N5WLNWoxVIDgosJdc4XrEnrg478LXRBDagM9trz0zxYhD951pn04N0Afl?=
+ =?us-ascii?Q?AdZhMKxOfp33YLfJjfYFKR62QgykLLvAJn8rHIW5ijWJ3xZ+g3bkBrviAaQt?=
+ =?us-ascii?Q?rfGXrNbwT/priYYTnXZpmG1x+6XiP5ns4uEqihcZ1HRDdG1infUpYGvZp0mZ?=
+ =?us-ascii?Q?6dkETs2W8qeIVhD3rvPxWp04uefp8l62FzyP/l3y+mGF+e6sAfR53emHlAFb?=
+ =?us-ascii?Q?TbsENa5TRqR7LTbTGDcg3S9etMl5XdByj0XVsF+P1jqCnxUW9aF99O06cbsx?=
+ =?us-ascii?Q?4wrBHEcaBTtR8K2sQrQPmwU/y9kndGR3nhgPvGmCoD+Xf19vzOaYGsa/M7ud?=
+ =?us-ascii?Q?vsg3yOnz95LNPufPWKKpP1h2qIP7ZbiHuZ5vVocPOCvkkuT7YrU7ERelFbi9?=
+ =?us-ascii?Q?ryhUmq6bhZdLIQa1FI6J2JyHZOBrKOCRBNqLejueRJu9OiD/k9Je1eD19mwu?=
+ =?us-ascii?Q?5w9WFfVGDlumXmtqws0Kx1PlirIPEzGFi3XXuJTi/PXXeumnt+A1l0jsJ0o5?=
+ =?us-ascii?Q?OOzvkB2lR0d33gbPfK3c2W9BXB25feg0mD0niHIlZf4fwGXbyxQ4ydXwnpue?=
+ =?us-ascii?Q?LyguSkNAgduKliYRjeL0HguJ37E9tkSWwAsfcp5fCk/xEUcmNKOjdk13b7C0?=
+ =?us-ascii?Q?GlQfLLs+jjBMsUz2v770AgnYoeShsJdGneRzw+qL28NctSVFP+XYkmPsXIWW?=
+ =?us-ascii?Q?l9B71xX8ca8A6G8HOlrqAUf8CFlt7ViPndXlsVH1Yg8Uivsfw4QRJX0HLZiu?=
+ =?us-ascii?Q?CS3CokBLmZrom29t7bW1nT63NfNEonySLHyqBi/7xj6LGQQqk1mBaZsJiEoO?=
+ =?us-ascii?Q?PvBhHNlFLyr68hgLOp3GTF62wTygxC0jgjA/tXOTZLfqoqHKXSMag6xDSmHq?=
+ =?us-ascii?Q?Tcd93q69R1PEg+LFIAVUhTk1wSxA+SbnBFhIB6iRyZL66+iFm+PUY5iVlMtd?=
+ =?us-ascii?Q?Ee1alo9uWdPDN7OtRdT1k9GRXF/A0OYxWxueq/NnRoRl1PAALg4b3fH0bVTN?=
+ =?us-ascii?Q?bOU2flsh7uRg3hOukMpG1CHGLBOetuhwIbMuybqydHJPpDM9V+JlQBN7Jj8a?=
+ =?us-ascii?Q?A+LwHJdHPhfFngzZyYNjZeVvbFUwZkQKH2EsQh3YhSA/h1CsLhCgHJdYnwVL?=
+ =?us-ascii?Q?qGmeZlywdzR5qMi95aAhthtLlowuLyqDyx44ZcTZr6STU+Caxd//x63fjl2Z?=
+ =?us-ascii?Q?/tn5YqIQm/MxUDpqjEbRBGJ+XHiVxvb+8pWLCeKG62ZV504t5ObyEvcod35v?=
+ =?us-ascii?Q?2S7bkG/TmJwCtgTnSKW76+X86T1j+aRkM4Yy5vxdmSkon4temU5R9RUwEy7x?=
+ =?us-ascii?Q?xkxcc9ElUQEg3ddDCpc0QcV2FmsDW4pA?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB3613.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(1800799024)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?HP919l8CaL4ygB3XWgozthi81rhjwaE2Zy8AYaQ/gp5s/d8ZlV/ze57E7VOU?=
+ =?us-ascii?Q?Nk2BDuV1u5AuNlyj4JwaV+KhTzx5wpmrNUAgge4aL2ppzq+72/w0kTR4vXMJ?=
+ =?us-ascii?Q?dqxSUtETULumuGAeMuHXNETLnHSulA532m4a8Uc2zjLYj4yfiRAeVoG1gRFj?=
+ =?us-ascii?Q?+n8SHoD0AVaiQLCHk6BYCf/S6RF1Z8Mw6EvAJ+K3V3s7dKRkKGopV0y80EvT?=
+ =?us-ascii?Q?Hk4T4bPbzxrCOw9fA79Xu18v7LA6Gly26gn9iSSPELzn3wsodb5wnbbC/GW2?=
+ =?us-ascii?Q?lOvlyT7emFboE1/JjbmzAGDRbfxNQ8oLhAxPJAJQGGXpv/BT+vRreQ9o5Dwq?=
+ =?us-ascii?Q?Hl2HxnKta0WLZ3DqSJzsWcaysFLp7+GJFP4CVx6jiQk/iJc34ts6hZPYev/c?=
+ =?us-ascii?Q?1z1JpBC12DxnuXD9EpOLopJ7uJpy1khqp8r+exHtgilKTqqNXHGIHYyL1Ppn?=
+ =?us-ascii?Q?DOYixF3kp8YYK3Ln0sZeg5bgHvAPc6wixicT42A0Zhyn3eg8ffdifESRr65W?=
+ =?us-ascii?Q?miwjQmMk3zcCysl4YvX93kLP6f0oARqXsEuwp509LKWI/7z2aRKkZBd8eBsj?=
+ =?us-ascii?Q?+aRlCldUSap3w+gO34AavC/U2QyiEqSDX/hZHnn846fgwkfxQ4m98CcObseZ?=
+ =?us-ascii?Q?XsTPSMqCnLu+oOl0hOW/hTH/yyFXbDOEZ8qQ9XjvWENPGi3vYPc6if18T6ij?=
+ =?us-ascii?Q?vg8/bRGbo32VBkdF6O4XIq53bVP9dFdDlFFudvjd9Bh7rXOOwhiZxBQRyG5p?=
+ =?us-ascii?Q?0NK2Uu8qpHMvobtHwZT8De26EVXwNS4ytpUB3anL9EbMu611H1cSp2KP0O5U?=
+ =?us-ascii?Q?KpfO2Xgvwb+GFtaIiC2TSk1neeTKju1a1iWJ7AA7cUJr6Hm7ccSl9fMXA9AD?=
+ =?us-ascii?Q?XtWfmnaKHn0rdFhvBdAjEY2790K9zAR2s2aElyQTGiC/kT6H1e+w4gC1BQO9?=
+ =?us-ascii?Q?O5tT11kjmvuZD5UToRsxUI3p4tqoWGjSvInUBPb20E5CRNBKxlykfi6Jioez?=
+ =?us-ascii?Q?sWRsYkANc37M2/0OD5K1ZzWbFm50YS4DJ4F7Ggh0A7qw+suh6RzUoPMFsQZr?=
+ =?us-ascii?Q?zXM0lOrYYWOqe1iGu7cVoKVFz0jhE/4vGxepUWedP8p+/Ij4yJuOTIKIoXLZ?=
+ =?us-ascii?Q?lflBBmEhEGN6OYCMd/PeN/ropBZTQXZkVezLVjf6PbAeSqGYMdHZOjQV5aBb?=
+ =?us-ascii?Q?HL2dISPzp4X8lswqqREaoTgcDsqnuGvLKiTCkH0SvZvco/pI3PNd6VVclKm0?=
+ =?us-ascii?Q?STrnc0Kb+HCtV9XHakdJz6DTycZvo849/eUXbVJYy2MXSlQ9p7wWyy+KGyXe?=
+ =?us-ascii?Q?mc9/11AvEJc6yavliMfa52RGJe2WaozbTv4krYBDixTmjwV/J8V56VyU9v13?=
+ =?us-ascii?Q?8NP78bx680aVNYGELK9Il23ay3rsiCfGjGJ4Ox1DbAUpwJaPS8oJhC4RXqRl?=
+ =?us-ascii?Q?aolHs0QudOJcpZhSXtk+2Qg7qoAK/cAgEvW7QPc/BPWaOw6Qnz1KGV/tvyCp?=
+ =?us-ascii?Q?gRMiOdVYcG4R85SPLU2+Kkw+hqlrpcK1/KYfQYkgq4rAcR5vJfavJjpkXGJJ?=
+ =?us-ascii?Q?ytPPh02zbJzw1VfoFV0=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cf88df78-6100-4ce1-7b97-08de26d4465f
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3613.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Nov 2025 18:57:08.9939
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: tBbZX6zrhRu3PoZJoJ4klcZSJy+1jEjxr4p9R+Lh5t3jHfztYBnAT+saXT7PWwvJ
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB5931
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_090248_002350_50D32259 
-X-CRM114-Status: GOOD (  22.41  )
+X-CRM114-CacheID: sfid-20251118_105716_415687_1782C974 
+X-CRM114-Status: UNSURE (   8.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,75 +172,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Sat, Nov 08, 2025 at 04:47:02PM +0530, Vasant Hegde wrote:
+> > @@ -854,13 +854,6 @@ static void amd_iommu_report_page_fault(struct amd_iommu *iommu,
+> >  						   PCI_FUNC(devid), domain_id);
+> >  				goto out;
+> >  			}
+> 
+> If you're planning to respin this series, could you please update the comment
+> above the if condition?
 
-this looks similar to my attempt i did here
+Done
 
-https://patchwork=2Ekernel=2Eorg/project/linux-mediatek/patch/202406080805=
-30=2E9436-2-linux@fw-web=2Ede/
-
-But in my case i added full dtb with 2 overlays as there can be 2 devices =
-(1 mmc + 1 spi) at one time=2E
-So usable as dtb for bootloader config without overlays, not only for vali=
-dation=2E=2E=2E
-
-regards Frank
-
-
-> Gesendet: Dienstag, 18=2E November 2025 um 13:31
-> Von: "Rob Herring" <robh@kernel=2Eorg>
-> An: "AngeloGioacchino Del Regno" <angelogioacchino=2Edelregno@collabora=
-=2Ecom>
-> CC: "Matthias Brugger" <matthias=2Ebgg@gmail=2Ecom>, "Krzysztof Kozlowsk=
-i" <krzk+dt@kernel=2Eorg>, "Conor Dooley" <conor+dt@kernel=2Eorg>, linux-ke=
-rnel@vger=2Ekernel=2Eorg, linux-arm-kernel@lists=2Einfradead=2Eorg, linux-m=
-ediatek@lists=2Einfradead=2Eorg, devicetree@vger=2Ekernel=2Eorg
-> Betreff: Re: [PATCH] arm64: dts: mediatek: Apply all DT overlays at buil=
-d time
->
-> On Tue, Nov 18, 2025 at 3:36=E2=80=AFAM AngeloGioacchino Del Regno
-> <angelogioacchino=2Edelregno@collabora=2Ecom> wrote:
-> >
-> > Il 17/11/25 22:13, Rob Herring (Arm) ha scritto:
-> > > It's a requirement that DT overlays be applied at build time in orde=
-r to
-> > > validate them as overlays are not validated on their own=2E
-> > >
-> > > Add targets for all the Mediatek overlays=2E
-> > >
-> > > Signed-off-by: Rob Herring (Arm) <robh@kernel=2Eorg>
-> > > ---
-> > > This will soon be a warning[1]=2E
-> > >
-> > > Note that if it is desired that the combined =2Edtb is not installed=
-, then
-> > > the combined =2Edtb should be added to 'dtb-' variable instead=2E
-> > >
-> >
-> > Uhm, sorry, can't we do something such that we don't generate a DTB wi=
-th a
-> > preapplied overlay?
-> >
-> > Even something like generating those and deleting before build finaliz=
-ation
-> > could work, I guess, though that'd be hacky maybe=2E
-> >
-> > I don't know if this is the case, but I'm worried that various people =
-have
-> > scripts to copy DTBs somewhere (in some partition) or embed those in i=
-mages,
-> > and if they get the preapplied overlay dtbs in the same place, havoc c=
-ould
-> > happen as the bootloaders might be selecting wrong dtbs (as a plus, th=
-ere is
-> > no dtbo that varies machine compatible strings, rightfully)=2E
->=20
-> If they aren't using dtbs_install for that, then that is their
-> problem=2E When we moved all the arm32 DTs to vendor directories,
-> dtbs_install maintained the old structure which seemed sufficient to
-> not break folks=2E The same should apply here=2E
->=20
-> Rob
->=20
->
+Thanks,
+Jason
 
