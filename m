@@ -4,77 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07148CED26B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 10:24:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6706CED626
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 11:48:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NAUSaA3KPKG9he/p30k6wBazwxquuoNqgQBZ6NGhy3w=; b=yh36BBGE+fyQhvWfi2iCZgtuMk
-	PzYCgJ3QApahvRAnZZPFU0M3AtkVnutrEDPN98B+3qI3D1S4vgN7KHPoKoC3gzgPJIwAWQVA/OWiL
-	u37hiVn1eMyJlnZ5thFHPiEKPECDy2OZ7v/lPnMKN8ONisfGOl2xAAt4OBx3IArGKS+CrfchMNOV/
-	E41Y0GTlGpKmDbhBwvcRoq1ObDEfDzzxzUtombKLADSw3CUcuTdg04O4Sy+9SfkKLvgGlWmqp4Ykw
-	ZT61N1zVnZNB9Ql9TaCA3BuyLTGB414frFe8Oz/l+mkw/yIKDVHKZL20XRJhBW66lmPClyaZoVxjZ
-	6OvsI3dQ==;
+	bh=k1ZRCn/FNci9pOqUsFHw4816pcF2u92phSwGJKthczc=; b=Op/nPGcgdg7LV8W4zDOK8Hozhv
+	XEw4C9F3V6O0i5CyXTv51nSt+WZK1H0sWDL2sxCY0Qd8SESJZaqHUrEwjDXs9f9S1YZpEJ7Pu+Z84
+	HqUSTyoql4uQ6H2V4R7nusfI+fSns50LwPkD9BWeIQkYhTIyLpmCOEUiJqcNauYUD9YIJd99vmWa9
+	ZDdgWzbY3hwZCB12Zb+pfjnAANgxgp119sU8vDC1ebTeptK6gX7nrdKTpKC8H5jjEiEpeQj4nNDWI
+	9YtoMlSiLRPfjrrnvftqh1/Jh/KAFoKSg3ZNkGV1KDle9YrFCTeqfZAw2EN4HWvQ+7saElx4zU7fd
+	hL4gMAIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLItM-00000000Er8-0sdd;
-	Tue, 18 Nov 2025 10:24:56 +0000
-Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
+	id 1vLKCP-00000000MFs-1KH5;
+	Tue, 18 Nov 2025 11:48:41 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLItJ-00000000EqM-2yiG;
-	Tue, 18 Nov 2025 10:24:55 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1763461471; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=LdMLm3RLXrPOWV71tCfHSwoPdsQ11sEkhGvdVs3OMDVUyCDvCt678axHNax319WCianL0bTs5vIPZIYcgIZ2WEMP9t/cfZGA5Ro7SGrbBcPi7Y0ZldpiiMzfoSkF6OANRKIhU6agyVpFvvJMixlBvh+9V7UJ81NGTLPz4saoW1w=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1763461471; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=NAUSaA3KPKG9he/p30k6wBazwxquuoNqgQBZ6NGhy3w=; 
-	b=Vvw3sr+sXOQGqA6b4hlh4rjQSJDT1LsDwCYm2obiu7c7oGDv22ky/BfGagYrsWeZHWCY7RXguivZWIM9gk4cw0Sv1Ap6UbW5op/+VmC4HXmrpgbMHE65uPqic+vtmPVbi9KzX3UAzUZ8W+2cXD0selsnE2rwBRmDqaCwSY8WUd4=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763461471;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=NAUSaA3KPKG9he/p30k6wBazwxquuoNqgQBZ6NGhy3w=;
-	b=NcANy9/F4oSqxya+A0wXe59480FqEHR2ERhY5Xe3Xy/Pv0IRnf2hWGuUZ/oGiemg
-	m/OfC+HWvFia3oV/Tx9vPNzVpIe2T/qx1Yry2/muFx5KqfF+vDBuV9yl1cJ3dDgGJ8P
-	ep1hVRTwDVMKNA3m+CLM06C9AQf8Wn/jVYA/KRbE=
-Received: by mx.zohomail.com with SMTPS id 1763461469257293.33494424404137;
-	Tue, 18 Nov 2025 02:24:29 -0800 (PST)
-Message-ID: <815d7300e19db00f84091f0925b2e509c4453fa0.camel@collabora.com>
-Subject: Re: [PATCH v2 RESEND 4/9] phy: mediatek: phy-mtk-hdmi-mt8195:
- convert from round_rate() to determine_rate()
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: Brian Masney <bmasney@redhat.com>, Vinod Koul <vkoul@kernel.org>, Kishon
- Vijay Abraham I <kishon@kernel.org>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Heiko Stuebner
- <heiko@sntech.de>, Stephen Boyd	 <sboyd@kernel.org>, Maxime Ripard
- <mripard@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-phy@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Date: Tue, 18 Nov 2025 11:24:22 +0100
-In-Reply-To: <20251106-phy-clk-route-rate-v2-resend-v1-4-e2058963bfb1@redhat.com>
-References: <20251106-phy-clk-route-rate-v2-resend-v1-0-e2058963bfb1@redhat.com>
-	 <20251106-phy-clk-route-rate-v2-resend-v1-4-e2058963bfb1@redhat.com>
-Organization: Collabora Ltd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
+	id 1vLKCN-00000000MFk-3QZL
+	for linux-mediatek@lists.infradead.org;
+	Tue, 18 Nov 2025 11:48:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id E76E260628;
+	Tue, 18 Nov 2025 11:48:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFEC4C2BCB1;
+	Tue, 18 Nov 2025 11:48:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763466518;
+	bh=mqdgX7lJfVqbFxnFMo4tSkPbeZ0S9+QjGLI2020JtGg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=g0uCf6H0TkgvTCbn+sCpssaxRcAwWCtWpPQvaPGG31bLussleIBhUUMrXvBHqERU+
+	 jm1WbRTZeC0qfJjrmej20BbSLTktdTk5Y3vfGtM0TKtNeiYb3tSkB48hbPeMagbKxP
+	 o2t+DUaAGHvP+gKetTjZkBVWoUt3sI1LLspD1mEWWwMVUo7gOorOgnVLdfLBoW5SLM
+	 bJetwa6EpJ/Ce/rbtoZFTVDUCYkSq63o8EKgUlyyyW7VwFBUb9qzMx4xWQUr1k4YCg
+	 ulmMtT85F6xakLnl7Dp0q365X52GxHpSSJrqrmQvYMwKRbiw4EpUimR3VUomI0WttH
+	 aIgDQW5nhkcgA==
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+To: linux-pm@vger.kernel.org, Rose Wu <ya-jou.wu@mediatek.com>
+Cc: rafael.j.wysocki@intel.com, regressions@lists.linux.dev,
+ linux-kernel@vger.kernel.org, wsd_upstream <wsd_upstream@mediatek.com>,
+ linux-mediatek@lists.infradead.org, "artis. chiu" <artis.chiu@mediatek.com>,
+ "Johnny-cc. Kao" <Johnny-cc.Kao@mediatek.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>
+Subject: [PATCH v2] PM: sleep: core: Fix runtime PM enabling in device_resume_early()
+Date: Tue, 18 Nov 2025 12:48:32 +0100
+Message-ID: <12782716.O9o76ZdvQC@rafael.j.wysocki>
+Organization: Linux Kernel Development
+In-Reply-To: <119e2410ca32a0d55fa6febf93c7a3164b391db0.camel@mediatek.com>
+References: <70b25dca6f8c2756d78f076f4a7dee7edaaffc33.camel@mediatek.com>
+ <5940388.DvuYhMxLoT@rafael.j.wysocki>
+ <119e2410ca32a0d55fa6febf93c7a3164b391db0.camel@mediatek.com>
 MIME-Version: 1.0
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_022453_834034_1A868016 
-X-CRM114-Status: GOOD (  14.44  )
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="UTF-8"
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,59 +74,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tuesday, November 18, 2025 9:31:08 AM CET Rose Wu wrote:
+> Hi,
+> 
+> On Mon, 2025-11-17 at 19:57 +0100, Rafael J. Wysocki wrote:
+> > 
+> > Make two changes to address this problem.
+> > 
+> > First, reorder device_suspend_late() to only disable runtime PM for a
+> > device if the power.is_late_suspended flag is going to be set for it.
+> > In all of the other cases, disabling runtime PM for the device is not
+> > in fact necessary.
+> > 
+> > Second, make device_resume_early() only enable runtime PM for the
+> > devices with the power.is_late_suspended flag set.
+> > 
+> 
+> My concern is with the error path in device_suspend_late().
+> If a device fails its dpm_run_callback(), it appears that its
+> power.is_late_suspended flag is not set, potentially leaving its runtime
+> PM disabled during the resume sequence.
 
-On Thu, 2025-11-06 at 18:25 -0500, Brian Masney wrote:
-> The round_rate() clk ops is deprecated, so migrate this driver from
-> round_rate() to determine_rate() using the Coccinelle semantic patch
-> on the cover letter of this series.
->=20
-> Signed-off-by: Brian Masney <bmasney@redhat.com>
-> ---
-> =C2=A0drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 10 +++++-----
-> =C2=A01 file changed, 5 insertions(+), 5 deletions(-)
->=20
-> diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-> b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-> index
-> b38f3ae26b3f3d8c9e73b43d86510acf6cedb471..1426a2db984d53b91125b18f772
-> 5738c44f19555 100644
-> --- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-> +++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-> @@ -418,13 +418,13 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw
-> *hw, unsigned long rate,
-> =C2=A0	return mtk_hdmi_pll_calc(hdmi_phy, hw, rate, parent_rate);
-> =C2=A0}
-> =C2=A0
-> -static long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long
-> rate,
-> -				=C2=A0=C2=A0=C2=A0 unsigned long *parent_rate)
-> +static int mtk_hdmi_pll_determine_rate(struct clk_hw *hw,
-> +				=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct clk_rate_request *req)
-> =C2=A0{
-> =C2=A0	struct mtk_hdmi_phy *hdmi_phy =3D to_mtk_hdmi_phy(hw);
-> =C2=A0
-> -	hdmi_phy->pll_rate =3D rate;
-> -	return rate;
-> +	hdmi_phy->pll_rate =3D req->rate;
-> +	return 0;
-> =C2=A0}
-> =C2=A0
-> =C2=A0static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
-> @@ -439,7 +439,7 @@ static const struct clk_ops mtk_hdmi_pll_ops =3D {
-> =C2=A0	.prepare =3D mtk_hdmi_pll_prepare,
-> =C2=A0	.unprepare =3D mtk_hdmi_pll_unprepare,
-> =C2=A0	.set_rate =3D mtk_hdmi_pll_set_rate,
-> -	.round_rate =3D mtk_hdmi_pll_round_rate,
-> +	.determine_rate =3D mtk_hdmi_pll_determine_rate,
-> =C2=A0	.recalc_rate =3D mtk_hdmi_pll_recalc_rate,
-> =C2=A0};
-> =C2=A0
-Tested OK on Mediatek Genio 510-EVK (MT8370) and Genio 1200-EVK
-(MT8395) boards.
+Right, pm_runtime_enable() is missing in the error path after calling
+dpm_run_callback().
 
-Tested-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+From: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
 
-Regards,
-Louis-Alexis
+Runtime PM should only be enabled in device_resume_early() if it has
+been disabled for the given device by device_suspend_late().  Otherwise,
+it may cause runtime PM callbacks to run prematurely in some cases
+which leads to further functional issues.
+
+Make two changes to address this problem.
+
+First, reorder device_suspend_late() to only disable runtime PM for a
+device when it is going to look for the device's callback.  In all of
+the other cases, disabling runtime PM for the device is not in fact
+necessary.  However, if the device's callback returns an error and the
+power.is_late_suspended flag is not going to be set, enable runtime
+PM so it only remains disabled when power.is_late_suspended is set.
+
+Second, make device_resume_early() only enable runtime PM for the
+devices with the power.is_late_suspended flag set.
+
+Fixes: 443046d1ad66 ("PM: sleep: Make suspend of devices more asynchronous")
+Reported-by: Rose Wu <ya-jou.wu@mediatek.com>
+Closes: https://lore.kernel.org/linux-pm/70b25dca6f8c2756d78f076f4a7dee7edaaffc33.camel@mediatek.com/
+Cc: 6.16+ <stable@vger.kernel.org> # 6.16+
+Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+---
+
+v1 -> v2: Add pm_runtime_enable() to device_suspend_late() error path (Rose).
+
+---
+ drivers/base/power/main.c |   15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+--- a/drivers/base/power/main.c
++++ b/drivers/base/power/main.c
+@@ -941,11 +941,11 @@ Run:
+ 
+ Skip:
+ 	dev->power.is_late_suspended = false;
++	pm_runtime_enable(dev);
+ 
+ Out:
+ 	TRACE_RESUME(error);
+ 
+-	pm_runtime_enable(dev);
+ 	complete_all(&dev->power.completion);
+ 
+ 	if (error) {
+@@ -1630,12 +1630,6 @@ static void device_suspend_late(struct d
+ 	TRACE_DEVICE(dev);
+ 	TRACE_SUSPEND(0);
+ 
+-	/*
+-	 * Disable runtime PM for the device without checking if there is a
+-	 * pending resume request for it.
+-	 */
+-	__pm_runtime_disable(dev, false);
+-
+ 	dpm_wait_for_subordinate(dev, async);
+ 
+ 	if (READ_ONCE(async_error))
+@@ -1649,6 +1643,12 @@ static void device_suspend_late(struct d
+ 	if (dev->power.syscore || dev->power.direct_complete)
+ 		goto Complete;
+ 
++	/*
++	 * Disable runtime PM for the device without checking if there is a
++	 * pending resume request for it.
++	 */
++	__pm_runtime_disable(dev, false);
++
+ 	if (dev->pm_domain) {
+ 		info = "late power domain ";
+ 		callback = pm_late_early_op(&dev->pm_domain->ops, state);
+@@ -1679,6 +1679,7 @@ Run:
+ 		WRITE_ONCE(async_error, error);
+ 		dpm_save_failed_dev(dev_name(dev));
+ 		pm_dev_err(dev, state, async ? " async late" : " late", error);
++		pm_runtime_enable(dev);
+ 		goto Complete;
+ 	}
+ 	dpm_propagate_wakeup_to_parent(dev);
+
+
+
 
