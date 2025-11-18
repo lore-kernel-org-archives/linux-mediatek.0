@@ -4,72 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52105CEBF61
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 01:30:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B029CEBF97
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 02:24:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bxEjiiQIXypnGaMm2YV0gh5gU0/Rq/qPeCgs1Qr4rXw=; b=NV50fGZQ+c+DQfS0owKyCZPCf9
-	IqtLaqZCrQK0G9G2Ju0lRrntkeT7mcmuCG0AZ+Ll4XjwnrwyRvWpy1CggQ6RkalzxwyzCmWGpYtXf
-	seGPr8SkZOGGHoVIQXEp9RnHRQPeoJiM9Jh3MJ0UnMVuBAlv26FNHBEh6bktgZU573Kwj0d2BTG9X
-	lQ24iKhypgDS5F6CrK/JYbP/qtqMku+LKGyUiBcd8eZ8wPCiOLortNbkhMxTBhTcJ5heNejAFhZ1V
-	e9M3tpUdKykPzSfoJIDXBgvsaiWx1BW09+uYddERmCYQpDEOzMwNBSPeLlJzrQrtcB8e91qB/niwL
-	/YbiIWLw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qznq9Tp5yug3mlFtC6pwpIQaHj6qctwj9jByzUyW9bM=; b=M5BhDPv4aPHteLm2DzlHV5f9rD
+	PVl8Lpd3SAA2TDY6j2uAIvVOdLQelNI6omebcMApdVDGUbOyCFTzVyEUQ0wFwlEg9uF+0kXtc6V1V
+	48YU2Ky2GJLRYbR5p93QE/hHMBeUnamB5YIANeb8JMSI2P59z1g1ZiLDMbTAUrnpII02y9Sg4ehpj
+	L54QtF/e1PXAjzZQWg2Wqs3r8VnfheQWoBcvj6LKrpBXYHclOnWzcFyjCENirc8+gTn1+YrwbeQzW
+	tKyG22rNjR9Dw4ulIVXpUGXpArY+46eYPrnueJw9o57XCEIzoMaFtJurXPYUd26Hxss/TWxG+NHoV
+	C2AQHX7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLAYN-0000000H8Lq-04Aq;
-	Tue, 18 Nov 2025 01:30:43 +0000
-Received: from mail-m3270.qiye.163.com ([220.197.32.70])
+	id 1vLBOm-0000000HDfK-1kaw;
+	Tue, 18 Nov 2025 02:24:52 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLAYI-0000000H8L5-3jhZ;
-	Tue, 18 Nov 2025 01:30:41 +0000
-Received: from [172.16.12.51] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 29e9711a9;
-	Tue, 18 Nov 2025 09:30:31 +0800 (GMT+08:00)
-Message-ID: <26019e39-d36a-4290-ac80-c8b0b09104c8@rock-chips.com>
-Date: Tue, 18 Nov 2025 09:30:29 +0800
+	id 1vLBOk-0000000HDeM-0M8C;
+	Tue, 18 Nov 2025 02:24:51 +0000
+X-UUID: bdfd4226c42511f09f706fa2197c6ceb-20251117
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=qznq9Tp5yug3mlFtC6pwpIQaHj6qctwj9jByzUyW9bM=;
+	b=gs3qQF6T0B4Y5kR9lrahtpHNq91kE/sqtfuvh65YiooAaIVQgGGJkE8oUt1DdUeaD6plkqAmExYGqsDss/HHmxzLCVq9z8odBUZGvxNkuDyilG4Ge2WwUYG5uP90rPck4cLdt2VW7L92vpkWp2ozmD2fej2KQ4XjHWk0K0ORyIU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:b568e096-0d26-42a3-95ee-b0c63bddfb47,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:ee4d8c92-7fd3-4c6a-836a-51b0a70fa8fb,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: bdfd4226c42511f09f706fa2197c6ceb-20251117
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <xiandong.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 719389030; Mon, 17 Nov 2025 19:24:42 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Tue, 18 Nov 2025 10:24:39 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Tue, 18 Nov 2025 10:24:39 +0800
+From: Xiandong Wang <xiandong.wang@mediatek.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Yongqiang Niu
+	<yongqiang.niu@mediatek.com>
+CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
+	<jh.hsu@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	Xiandong Wang <xiandong.wang@mediatek.com>
+Subject: [PATCH 0/1] update display OVL config check
+Date: Tue, 18 Nov 2025 10:22:48 +0800
+Message-ID: <20251118022437.1284-1-xiandong.wang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/3] iommu: Allow drivers to say if they use
- report_iommu_fault()
-To: Jason Gunthorpe <jgg@nvidia.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Christian Benvenuti <benve@cisco.com>, Heiko Stuebner <heiko@sntech.de>,
- iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Joerg Roedel <joro@8bytes.org>, Leon Romanovsky <leon@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Nelson Escobar <neescoba@cisco.com>, Rob Clark
- <robin.clark@oss.qualcomm.com>, Robin Murphy <robin.murphy@arm.com>,
- Samuel Holland <samuel@sholland.org>,
- Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
- Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
- Yong Wu <yong.wu@mediatek.com>
-Cc: Lu Baolu <baolu.lu@linux.intel.com>, patches@lists.linux.dev
-References: <3-v2-25fc75484cab+ab-iommu_set_fault_jgg@nvidia.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <3-v2-25fc75484cab+ab-iommu_set_fault_jgg@nvidia.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-HM-Tid: 0a9a9495ba3803abkunm15b0adc69f2477
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRkdHlYZGhhKTE4dT0kYQxhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=QRo1qMrOcfJjKh6zkNQm7Q+laoUJwAHpzYU+Kfpz2Zq1FQVguylVfS3NwtS9e2eavcEEnmDelf0Cvg+rdRCX0a5Ga6KMJ9m3Z32pyEpqYVaYKezexAoecIhCuJTveZ363vARWnJIw7yOvVgaM6baUYg4KhPn0q2mZr+M2K8HeyY=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=bxEjiiQIXypnGaMm2YV0gh5gU0/Rq/qPeCgs1Qr4rXw=;
-	h=date:mime-version:subject:message-id:from;
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_173039_808915_43E02288 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20251117_182450_132093_F45C6C02 
+X-CRM114-Status: UNSURE (   7.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,34 +90,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Jason,
+add framebuffer width and height size check
 
-On 11/7/2025 4:34 AM, Jason Gunthorpe wrote:
-> report_iommu_fault() is an older API that has been superseded by
-> iommu_report_device_fault() which is capable to support PRI.
->
-> Only two external drivers consume this, drivers/remoteproc and
-> drivers/gpu/drm/msm. Ideally they would move over to the new APIs, but for
-> now protect against accidentally mix and matching the wrong components.
->
-> The iommu drivers support either the old iommu_set_fault_handler() via the
-> driver calling report_iommu_fault(), or they are newer server focused
-> drivers that call iommu_report_device_fault().
->
-> Include a flag in the iommu_ops if the driver calls report_iommu_fault()
-> and block iommu_set_fault_handler() for domain's of iommu drivers that
-> can't support it.
->
-> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> Reviewed-by: Vasant Hegde <vasant.hegde@amd.com>
-> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
+Xiandong Wang (1):
+  drm/mediatek: Add check framebuffer width and height size before
+    config ovl
 
-Sorry for the noise. Sometimes non-IOMMU drivers, such as DRM devices, also want to handle IOMMU fault events, so they might use iommu_set_fault_handler() before. What API should they use as an alternative now? Thank you.
-
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 -- 
-Best,
-Chaoyi
+2.46.0
 
 
