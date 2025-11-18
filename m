@@ -4,78 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE748CEDD8A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 13:50:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25B6FCEDD97
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 14:16:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zvR4F7oICCpvfv+cfyWVoylAF+pTD7JBlKUOln72bos=; b=ZV7tbyoMMUf2Cu/YrP/ANw/mFk
-	OrTa8TJhHggcefwDlj8zuz/R+0/IAuYGGI8C7a84bngIqXACP/ToiinITkXAGfDDZ16y8FIbF2r09
-	A/bO7kRJKgWGh+NidRvbdXUhS21FhBCvZ79FrRF+cAK1oUKbboO9yJwEvvv74nzqauFsJzqFWHzym
-	CxqKtNpLD+2R9Szmo5Ku9gCZq6UawV9bByPQ6UoQUL5SX5BAOr0cLXrlBrHapw4DqWgJkLtqo4rD6
-	vsywFYs6uyVQpKV7RG0HFyd2lT7lH2ATBuFLNb5VOiuCrY+TAIZLIx3BqN6NwYmwArzFMkfSg5mkU
-	THYYnJeQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HDCLlzXOuV8ik/F0w8NbTrqbBkj5pVsDyQL2K1KEMlY=; b=KjUOaybMK7LrCD9E9+3iK9hhWA
+	wjU7tWwPHX74Yos9jM5bgoecA0IdeSonG+xpOv0HBAW8LSzpWJExqF7/Fxe+lBNlKrHaNwuHnKqVL
+	d6PpX7XF/9WKLQN9CRoRfrQVA1cBYJXrSk+rvB2Lc9HhL+Y3f4iZFjRzgLHdEcstHHl6bjNvufxHE
+	1vbZNy3MKCuR5szrojYk6vMsHtq6qNA/LV5UimuiQqhjJ6NCVfZz6ElTr8tbb6VBqjL3XM6rvDgIL
+	Hx6XuCJJpnlZfaU+hVEo1J23PLAIWXNKixkUuGc6GUIO+e969NV4gXtb8kKd+yOURE/USe6FHEdgi
+	ORbg+dVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLM6H-00000000ULu-1qSv;
-	Tue, 18 Nov 2025 13:50:29 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vLMVA-00000000Xxn-3R9N;
+	Tue, 18 Nov 2025 14:16:12 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLM69-00000000UIE-1b4J
+	id 1vLMV8-00000000XxK-2yoA
 	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Nov 2025 13:50:22 +0000
+	Tue, 18 Nov 2025 14:16:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0372542D77
-	for <linux-mediatek@lists.infradead.org>; Tue, 18 Nov 2025 13:50:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92212C4AF10
-	for <linux-mediatek@lists.infradead.org>; Tue, 18 Nov 2025 13:50:20 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C67FD601B9;
+	Tue, 18 Nov 2025 14:16:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF761C2BC86;
+	Tue, 18 Nov 2025 14:16:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763473820;
-	bh=rZN0IQenPgdJTxvH2ZMIbHtQc8Q8fpFwqgB1ZfTEqYk=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=H2yHbif8z+en/wea/E6biwnhVAAeLfkDqi7+9u+vSZjZtXBr+fX9yeQh6EjcDhUfq
-	 0u+oDLib5XCTHez+5KPmkmBFEOrLPNJGU5+wVHH1txakE7Gy0IWrOyHqBLpUmP3KtL
-	 PcIs4pzWC2/7pu9th9lnSHAX2zXINrH8INZDZ/LdT5XZK72LONJ9tiviHEXlYoodZK
-	 ARjUudcs8lNG1NKECutLcqkGCqI31ILnV/VPVejQie2sPx6xhtYcCgtdWOml4ldteC
-	 Qzyi8rWb4ISIy9S5GuDB7dG1JZTHysASEYcCcXiC1So55g5o1ECGTAceFUU/2VKOZP
-	 cf/j+1UBCRqNw==
-Received: by mail-pl1-f174.google.com with SMTP id d9443c01a7336-2984dfae0acso75035095ad.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 18 Nov 2025 05:50:20 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXhDrJjcaGRMrrnJRRcJHMt8NXU3cIoD2DBqxWm/fA/WzBID1utG4JuW9zfKZuGYrstoCnD0MSApzKGs6/X2Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz6dne1WVtF9qLHyvjOWs3zGzRj0vR1IvW+RIR/aXhclv8QZEdm
-	OZjV93CIaDuERAUT8mbs3e8JKSsUTNjFQvqdyjuvbRhsmqlFQeZu3TLalaETfKYgXgecggxveQI
-	ktdNRrhgUpXPab5NGJe0uS2CJFymNsw==
-X-Google-Smtp-Source: AGHT+IE5Z2MpRyC9oab0WJaiNyBW3hN6XFa3Rzhz8UyPsuoc9Pa2UFnVnNAcowlT5BeYTRlFBG3gB1aTEHHdsdqc3w8=
-X-Received: by 2002:a05:7022:3c0d:b0:11b:8278:9f3a with SMTP id
- a92af1059eb24-11b82789fd2mr4151535c88.8.1763473819071; Tue, 18 Nov 2025
- 05:50:19 -0800 (PST)
+	s=k20201202; t=1763475369;
+	bh=doH4USYe9Q+qpSG9yro8+usxqPz+JrPIod4tnHcThus=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=GdPPED9IVVCrQkvzc3jodIPXLI/7vANiYOAKITb1dQBkATo/wQYg/rz6xYnbhP6X9
+	 0tGX//40TjuYWc3y5FKKk8zIOf8jjjRgX2sQ36ERqoUpDFNzaU0OPF/Gtd5v2mm9Bc
+	 A945cr/p/j7NL/13Q6DSJ0MhbT2Dd5FBTi3lPxtxn4IPKY77ZTUTe16Y6ROrMM6Rf0
+	 EODL9Ec+5c63l6vBjm7JedVYF69aWo2uoLD3Qa2Hj18yw+y/SU7QWHpdZzw5qwpD8v
+	 HgCStIzXpoXrpKYsExBTZe93YMkxPy0Pu5Aq82Py7vbyl3hqkcZ0vjPts53jOQqhn6
+	 O7JQitX24C0xQ==
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+To: Ulf Hansson <ulf.hansson@linaro.org>, Rose Wu <ya-jou.wu@mediatek.com>,
+ linux-pm@vger.kernel.org
+Cc: rafael.j.wysocki@intel.com, regressions@lists.linux.dev,
+ linux-kernel@vger.kernel.org, wsd_upstream <wsd_upstream@mediatek.com>,
+ linux-mediatek@lists.infradead.org, "artis. chiu" <artis.chiu@mediatek.com>,
+ "Johnny-cc. Kao" <Johnny-cc.Kao@mediatek.com>
+Subject: [PATCH v4] PM: sleep: core: Fix runtime PM enabling in device_resume_early()
+Date: Tue, 18 Nov 2025 15:16:04 +0100
+Message-ID: <12784270.O9o76ZdvQC@rafael.j.wysocki>
+Organization: Linux Kernel Development
+In-Reply-To: <5941318.DvuYhMxLoT@rafael.j.wysocki>
+References: <70b25dca6f8c2756d78f076f4a7dee7edaaffc33.camel@mediatek.com>
+ <CAJZ5v0iTMhWoBfbrPabdo7TkNuOwtC=-6acSe9tbDmyzZEoXwg@mail.gmail.com>
+ <5941318.DvuYhMxLoT@rafael.j.wysocki>
 MIME-Version: 1.0
-References: <20250921055416.25588-1-jay.liu@mediatek.com> <20250921055416.25588-2-jay.liu@mediatek.com>
-In-Reply-To: <20250921055416.25588-2-jay.liu@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 18 Nov 2025 13:50:05 +0000
-X-Gmail-Original-Message-ID: <CAAOTY_8awo9B857BRdgNoh_350VHa8eTaxh0ALWbT287ZNstAw@mail.gmail.com>
-X-Gm-Features: AWmQ_blmZtT5uXUtSPveVBwvv-qvjHpM1nxw_RCICsWDHLjgGSlWLYcocIHO-_w
-Message-ID: <CAAOTY_8awo9B857BRdgNoh_350VHa8eTaxh0ALWbT287ZNstAw@mail.gmail.com>
-Subject: Re: [PATCH v1 1/1] drm/mediatek: fix CCORR mtk_ctm_s31_32_to_s1_n
- function issue
-To: Jay Liu <jay.liu@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Yongqiang Niu <yongqiang.niu@mediatek.com>, CK Hu <ck.hu@mediatek.com>, 
-	Hsin-Yi Wang <hsinyi@chromium.org>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_055021_482420_F4CB0D2F 
-X-CRM114-Status: GOOD (  19.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,95 +74,125 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Jay:
+From: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
 
-Jay Liu <jay.liu@mediatek.com> =E6=96=BC 2025=E5=B9=B49=E6=9C=8821=E6=97=A5=
- =E9=80=B1=E6=97=A5 =E4=B8=8A=E5=8D=885:55=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> if matrixbit is 11,
-> The range of color matrix is from 0 to (BIT(12) - 1).
-> Values from 0 to (BIT(11) - 1) represent positive numbers,
-> values from BIT(11) to (BIT(12) - 1) represent negative numbers.
-> For example, -1 need converted to 8191.
-> so convert S31.32 to HW Q2.11 format by drm_color_ctm_s31_32_to_qm_n,
-> and set int_bits to 2.
->
-> Fixes: 738ed4156fba ("drm/mediatek: Add matrix_bits private data for ccor=
-r")
-> Change-Id: Icb2aae1dee21d9ea34f263a54850fee26d97d455
+Runtime PM should only be enabled in device_resume_early() if it has
+been disabled for the given device by device_suspend_late().  Otherwise,
+it may cause runtime PM callbacks to run prematurely in some cases
+which leads to further functional issues.
 
-With some fixed up, applied to mediatek-drm-next [1], thanks.
+Make two changes to address this problem.
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-next
+First, reorder device_suspend_late() to only disable runtime PM for a
+device when it is going to look for the device's callback or if the
+device is a "syscore" one.  In all of the other cases, disabling runtime
+PM for the device is not in fact necessary.  However, if the device's
+callback returns an error and the power.is_late_suspended flag is not
+going to be set, enable runtime PM so it only remains disabled when
+power.is_late_suspended is set.
 
-Regards,
-Chun-Kuang.
+Second, make device_resume_early() only enable runtime PM for the
+devices with the power.is_late_suspended flag set.
 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Signed-off-by: Jay Liu <jay.liu@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 26 +++--------------------
->  1 file changed, 3 insertions(+), 23 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/=
-mediatek/mtk_disp_ccorr.c
-> index 10d60d2c2a56..634b31346921 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-> @@ -80,28 +80,7 @@ void mtk_ccorr_stop(struct device *dev)
->         writel_relaxed(0x0, ccorr->regs + DISP_CCORR_EN);
->  }
->
-> -/* Converts a DRM S31.32 value to the HW S1.n format. */
-> -static u16 mtk_ctm_s31_32_to_s1_n(u64 in, u32 n)
-> -{
-> -       u16 r;
-> -
-> -       /* Sign bit. */
-> -       r =3D in & BIT_ULL(63) ? BIT(n + 1) : 0;
-> -
-> -       if ((in & GENMASK_ULL(62, 33)) > 0) {
-> -               /* identity value 0x100000000 -> 0x400(mt8183), */
-> -               /* identity value 0x100000000 -> 0x800(mt8192), */
-> -               /* if bigger this, set it to max 0x7ff. */
-> -               r |=3D GENMASK(n, 0);
-> -       } else {
-> -               /* take the n+1 most important bits. */
-> -               r |=3D (in >> (32 - n)) & GENMASK(n, 0);
-> -       }
-> -
-> -       return r;
-> -}
-> -
-> -void mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state)
-> +bool mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state)
->  {
->         struct mtk_disp_ccorr *ccorr =3D dev_get_drvdata(dev);
->         struct drm_property_blob *blob =3D state->ctm;
-> @@ -109,6 +88,7 @@ void mtk_ccorr_ctm_set(struct device *dev, struct drm_=
-crtc_state *state)
->         const u64 *input;
->         uint16_t coeffs[9] =3D { 0 };
->         int i;
-> +       int int_bits =3D 2;
->         struct cmdq_pkt *cmdq_pkt =3D NULL;
->         u32 matrix_bits =3D ccorr->data->matrix_bits;
->
-> @@ -119,7 +99,7 @@ void mtk_ccorr_ctm_set(struct device *dev, struct drm_=
-crtc_state *state)
->         input =3D ctm->matrix;
->
->         for (i =3D 0; i < ARRAY_SIZE(coeffs); i++)
-> -               coeffs[i] =3D mtk_ctm_s31_32_to_s1_n(input[i], matrix_bit=
-s);
-> +               coeffs[i] =3D drm_color_ctm_s31_32_to_qm_n(input[i], int_=
-bits, matrix_bits);
->
->         mtk_ddp_write(cmdq_pkt, coeffs[0] << 16 | coeffs[1],
->                       &ccorr->cmdq_reg, ccorr->regs, DISP_CCORR_COEF_0);
-> --
-> 2.46.0
->
+Fixes: 443046d1ad66 ("PM: sleep: Make suspend of devices more asynchronous")
+Reported-by: Rose Wu <ya-jou.wu@mediatek.com>
+Closes: https://lore.kernel.org/linux-pm/70b25dca6f8c2756d78f076f4a7dee7edaaffc33.camel@mediatek.com/
+Cc: 6.16+ <stable@vger.kernel.org> # 6.16+
+Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+---
+
+v3 -> v4:
+   * Reorder the syscore check in device_resume_early() after the
+     is_late_suspended check (Ulf)
+   * Update the changelog to reflect the above.
+
+v2 -> v3:
+   * Also set is_late_suspended for syscore devices to avoid skipping runtime PM
+     disabling for them (Ulf).
+   * Update the changelog to reflect the above.
+
+v1 -> v2:
+   * Add pm_runtime_enable() to device_suspend_late() error path (Rose).
+   * Update the changelog to reflect the above.
+
+---
+ drivers/base/power/main.c |   25 ++++++++++++++++---------
+ 1 file changed, 16 insertions(+), 9 deletions(-)
+
+--- a/drivers/base/power/main.c
++++ b/drivers/base/power/main.c
+@@ -903,12 +903,15 @@ static void device_resume_early(struct d
+ 	TRACE_DEVICE(dev);
+ 	TRACE_RESUME(0);
+ 
+-	if (dev->power.syscore || dev->power.direct_complete)
++	if (dev->power.direct_complete)
+ 		goto Out;
+ 
+ 	if (!dev->power.is_late_suspended)
+ 		goto Out;
+ 
++	if (dev->power.syscore)
++		goto Skip;
++
+ 	if (!dpm_wait_for_superior(dev, async))
+ 		goto Out;
+ 
+@@ -941,11 +944,11 @@ Run:
+ 
+ Skip:
+ 	dev->power.is_late_suspended = false;
++	pm_runtime_enable(dev);
+ 
+ Out:
+ 	TRACE_RESUME(error);
+ 
+-	pm_runtime_enable(dev);
+ 	complete_all(&dev->power.completion);
+ 
+ 	if (error) {
+@@ -1630,12 +1633,6 @@ static void device_suspend_late(struct d
+ 	TRACE_DEVICE(dev);
+ 	TRACE_SUSPEND(0);
+ 
+-	/*
+-	 * Disable runtime PM for the device without checking if there is a
+-	 * pending resume request for it.
+-	 */
+-	__pm_runtime_disable(dev, false);
+-
+ 	dpm_wait_for_subordinate(dev, async);
+ 
+ 	if (READ_ONCE(async_error))
+@@ -1646,9 +1643,18 @@ static void device_suspend_late(struct d
+ 		goto Complete;
+ 	}
+ 
+-	if (dev->power.syscore || dev->power.direct_complete)
++	if (dev->power.direct_complete)
+ 		goto Complete;
+ 
++	/*
++	 * Disable runtime PM for the device without checking if there is a
++	 * pending resume request for it.
++	 */
++	__pm_runtime_disable(dev, false);
++
++	if (dev->power.syscore)
++		goto Skip;
++
+ 	if (dev->pm_domain) {
+ 		info = "late power domain ";
+ 		callback = pm_late_early_op(&dev->pm_domain->ops, state);
+@@ -1679,6 +1685,7 @@ Run:
+ 		WRITE_ONCE(async_error, error);
+ 		dpm_save_failed_dev(dev_name(dev));
+ 		pm_dev_err(dev, state, async ? " async late" : " late", error);
++		pm_runtime_enable(dev);
+ 		goto Complete;
+ 	}
+ 	dpm_propagate_wakeup_to_parent(dev);
+
+
+
 
