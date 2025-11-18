@@ -4,83 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6477DCED265
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 10:17:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07148CED26B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 10:24:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bMz2ZE23L8pkKEvAtibV91PPmqodgqp/GEg4FP1KnLM=; b=uM8Hjz/0iR7SZcr0lB+uNSNvSa
-	nsZB6gMK/Ir6/fvgZ5y3MtBlSoXU3uUtGPmR1IHok7heFGeoXpgkT2rfgYnA+jHGgxz4JNQ2Jx4sB
-	qiZchzcKmbRc+/J5hpCB0tv1Fz5iaDtrXdFOaMkxOwQZxyZGPZhA1NJz9wxNuMamZW8F398bpuJXa
-	/jYOKr/U1uBrA7btxmG3dxyFPL/uYpwrOEf9uzHAAVW37fjaiTCmDkQeuCWug530mX+l6W8W1+uDH
-	g8b0w4AqV3S+2tNVySkNU2z7qXtKrBh+rkjlcva3Zr2PDSnEsFxne1SxkXsZJ3RGkYh8/95djrOyn
-	RmP0CC0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NAUSaA3KPKG9he/p30k6wBazwxquuoNqgQBZ6NGhy3w=; b=yh36BBGE+fyQhvWfi2iCZgtuMk
+	PzYCgJ3QApahvRAnZZPFU0M3AtkVnutrEDPN98B+3qI3D1S4vgN7KHPoKoC3gzgPJIwAWQVA/OWiL
+	u37hiVn1eMyJlnZ5thFHPiEKPECDy2OZ7v/lPnMKN8ONisfGOl2xAAt4OBx3IArGKS+CrfchMNOV/
+	E41Y0GTlGpKmDbhBwvcRoq1ObDEfDzzxzUtombKLADSw3CUcuTdg04O4Sy+9SfkKLvgGlWmqp4Ykw
+	ZT61N1zVnZNB9Ql9TaCA3BuyLTGB414frFe8Oz/l+mkw/yIKDVHKZL20XRJhBW66lmPClyaZoVxjZ
+	6OvsI3dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLImM-00000000EJU-3YrC;
-	Tue, 18 Nov 2025 10:17:42 +0000
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
+	id 1vLItM-00000000Er8-0sdd;
+	Tue, 18 Nov 2025 10:24:56 +0000
+Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLImJ-00000000EIV-1MvI
-	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Nov 2025 10:17:41 +0000
-Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-5959b2f3fc9so228336e87.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 18 Nov 2025 02:17:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1763461057; x=1764065857; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=bMz2ZE23L8pkKEvAtibV91PPmqodgqp/GEg4FP1KnLM=;
-        b=OJeEHNT5B6/+3joWd/8gbUDTP/VxfQgw2utqwhoHC5qzAnLSxzOjfsDaTP8rjoRAvE
-         hVypbhW4FI1IWSP8qXSqxDgKEuFCrAgGNSLMzC3KHWk0tUvGf1fTcQf4OFIOQVCrO1/F
-         On+Zy54eIAYpqLWl4NF7NFjFwU2wqCINjedE4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763461057; x=1764065857;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=bMz2ZE23L8pkKEvAtibV91PPmqodgqp/GEg4FP1KnLM=;
-        b=wxJ5f6kaExi0sClfiXPrVnSJAOw5y02pel9Cdi96J+ujUrzrKqB6AOzBoKAmYs/yF/
-         T9sEr4KPDH0XyIZV+OJdEuWYNe8UtqgYGMHAeTcFLot20XL7EluyKR2KZ0jLosKQt5kX
-         JngCZhIW5A3BV5tKywUvQ46exR2GZZYsKA+tBv6GcfATGw7yPL6ULLY2jSWQoXcLChE/
-         G9yfbUKX4DQrDD2WWjlZFBp6MU4wglMKoa6bR5gqWm9bUlDCtEYBKBP+wQ5sK1mnsTOo
-         olP/zGdLECpgLKBwTimmIx4XUxpXGYuyt5BL9rfAfH/7fis5YXoyo2+r3/k2Wv3LA0zo
-         8Hvw==
-X-Forwarded-Encrypted: i=1; AJvYcCU5yfwQRXHqlT3743FIgILbgbjs9HV1dUS6KRrGmKwJfdLenCh3aUUL5JJMPc/59hJYGsJ5i2zeV2eWNwlIyQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwP27hPaKoV4llQjRMYj/p1dXK0vlp47ub+NkilC+BX4Ap3+9ue
-	p4dxExO0kygPJDLKFJl9DVO7HzPfbNfEPgItv8OXQ2VCJ4uTnOIclaNqbl6mgrbvr6LJzkGdn8P
-	jhZmzkfSH7LegzAZ9IyG0W5PUAkTjkY84nRb+EyY7
-X-Gm-Gg: ASbGncsC0yxsu/rw6t9rymwBkte+qwv+A8/ozzJCEBD6NMVxhq87d9K/pJA0B+PaySR
-	NYaKhAh0mjTdnFifQiBmMGIG3CoLSJIbMFR/pXTn92sYYj1mj3Eiqb5M9G+0itNHt+5Vn6JTvwA
-	ivRt+KzsamOkJmfjYP1yQh5yE6xexdq4ohazBxltwixYoErWb8E2fGXsnY/U9ZINLl/x+l+QWW4
-	Hch8N5kNXf/Ra8DctGDgV6bX+jp0n8WOHjZkTDMV/n/YvEbS/11dRI7gYh1bF/vTtuIIjua5tRx
-	C0N2tJRwCtz8O/Y=
-X-Google-Smtp-Source: AGHT+IEDIyDccAsQNaQoiJeQUTT4vBLg4RzkD7VakIIbkSB2sGZK1r6Tx5nUDzSggQyhw/8/mBQdIa7MJoa+YejWBHs=
-X-Received: by 2002:a05:6512:3b0d:b0:594:2f72:2f7b with SMTP id
- 2adb3069b0e04-595841a2ce6mr4735606e87.6.1763461056862; Tue, 18 Nov 2025
- 02:17:36 -0800 (PST)
-MIME-Version: 1.0
-References: <20251117211306.725678-1-robh@kernel.org> <679c1f30-7c62-484e-b4e5-7351a23f15e5@collabora.com>
-In-Reply-To: <679c1f30-7c62-484e-b4e5-7351a23f15e5@collabora.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 18 Nov 2025 18:17:25 +0800
-X-Gm-Features: AWmQ_bm304gtjUmEwlNuwAwUF0aqnogWCU3ugaXK9WBY_7txsNFFaEsy0o7zYa0
-Message-ID: <CAGXv+5H23oc_Zj3tR4uCwKpXi074ujmF7WB9g_NV-OmXnAWmmQ@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: mediatek: Apply all DT overlays at build time
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: "Rob Herring (Arm)" <robh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org
+	id 1vLItJ-00000000EqM-2yiG;
+	Tue, 18 Nov 2025 10:24:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1763461471; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=LdMLm3RLXrPOWV71tCfHSwoPdsQ11sEkhGvdVs3OMDVUyCDvCt678axHNax319WCianL0bTs5vIPZIYcgIZ2WEMP9t/cfZGA5Ro7SGrbBcPi7Y0ZldpiiMzfoSkF6OANRKIhU6agyVpFvvJMixlBvh+9V7UJ81NGTLPz4saoW1w=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1763461471; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=NAUSaA3KPKG9he/p30k6wBazwxquuoNqgQBZ6NGhy3w=; 
+	b=Vvw3sr+sXOQGqA6b4hlh4rjQSJDT1LsDwCYm2obiu7c7oGDv22ky/BfGagYrsWeZHWCY7RXguivZWIM9gk4cw0Sv1Ap6UbW5op/+VmC4HXmrpgbMHE65uPqic+vtmPVbi9KzX3UAzUZ8W+2cXD0selsnE2rwBRmDqaCwSY8WUd4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763461471;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=NAUSaA3KPKG9he/p30k6wBazwxquuoNqgQBZ6NGhy3w=;
+	b=NcANy9/F4oSqxya+A0wXe59480FqEHR2ERhY5Xe3Xy/Pv0IRnf2hWGuUZ/oGiemg
+	m/OfC+HWvFia3oV/Tx9vPNzVpIe2T/qx1Yry2/muFx5KqfF+vDBuV9yl1cJ3dDgGJ8P
+	ep1hVRTwDVMKNA3m+CLM06C9AQf8Wn/jVYA/KRbE=
+Received: by mx.zohomail.com with SMTPS id 1763461469257293.33494424404137;
+	Tue, 18 Nov 2025 02:24:29 -0800 (PST)
+Message-ID: <815d7300e19db00f84091f0925b2e509c4453fa0.camel@collabora.com>
+Subject: Re: [PATCH v2 RESEND 4/9] phy: mediatek: phy-mtk-hdmi-mt8195:
+ convert from round_rate() to determine_rate()
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: Brian Masney <bmasney@redhat.com>, Vinod Koul <vkoul@kernel.org>, Kishon
+ Vijay Abraham I <kishon@kernel.org>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Heiko Stuebner
+ <heiko@sntech.de>, Stephen Boyd	 <sboyd@kernel.org>, Maxime Ripard
+ <mripard@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-phy@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
+Date: Tue, 18 Nov 2025 11:24:22 +0100
+In-Reply-To: <20251106-phy-clk-route-rate-v2-resend-v1-4-e2058963bfb1@redhat.com>
+References: <20251106-phy-clk-route-rate-v2-resend-v1-0-e2058963bfb1@redhat.com>
+	 <20251106-phy-clk-route-rate-v2-resend-v1-4-e2058963bfb1@redhat.com>
+Organization: Collabora Ltd
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
+MIME-Version: 1.0
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_021740_598019_6EEAF435 
-X-CRM114-Status: GOOD (  24.48  )
+X-CRM114-CacheID: sfid-20251118_022453_834034_1A868016 
+X-CRM114-Status: GOOD (  14.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,120 +89,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 18, 2025 at 5:36=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 17/11/25 22:13, Rob Herring (Arm) ha scritto:
-> > It's a requirement that DT overlays be applied at build time in order t=
-o
-> > validate them as overlays are not validated on their own.
-> >
-> > Add targets for all the Mediatek overlays.
-> >
-> > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> > ---
-> > This will soon be a warning[1].
-> >
-> > Note that if it is desired that the combined .dtb is not installed, the=
-n
-> > the combined .dtb should be added to 'dtb-' variable instead.
-> >
->
-> Uhm, sorry, can't we do something such that we don't generate a DTB with =
-a
-> preapplied overlay?
->
-> Even something like generating those and deleting before build finalizati=
-on
-> could work, I guess, though that'd be hacky maybe.
->
-> I don't know if this is the case, but I'm worried that various people hav=
-e
-> scripts to copy DTBs somewhere (in some partition) or embed those in imag=
-es,
-> and if they get the preapplied overlay dtbs in the same place, havoc coul=
-d
-> happen as the bootloaders might be selecting wrong dtbs (as a plus, there=
- is
-> no dtbo that varies machine compatible strings, rightfully).
+Hi,
 
-The in-tree scripts/make_fit.py can take a list of DTBs to pack, so
-it's conceivable that someone would just use a wildcard path.
+On Thu, 2025-11-06 at 18:25 -0500, Brian Masney wrote:
+> The round_rate() clk ops is deprecated, so migrate this driver from
+> round_rate() to determine_rate() using the Coccinelle semantic patch
+> on the cover letter of this series.
+>=20
+> Signed-off-by: Brian Masney <bmasney@redhat.com>
+> ---
+> =C2=A0drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 10 +++++-----
+> =C2=A01 file changed, 5 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+> b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+> index
+> b38f3ae26b3f3d8c9e73b43d86510acf6cedb471..1426a2db984d53b91125b18f772
+> 5738c44f19555 100644
+> --- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+> +++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+> @@ -418,13 +418,13 @@ static int mtk_hdmi_pll_set_rate(struct clk_hw
+> *hw, unsigned long rate,
+> =C2=A0	return mtk_hdmi_pll_calc(hdmi_phy, hw, rate, parent_rate);
+> =C2=A0}
+> =C2=A0
+> -static long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long
+> rate,
+> -				=C2=A0=C2=A0=C2=A0 unsigned long *parent_rate)
+> +static int mtk_hdmi_pll_determine_rate(struct clk_hw *hw,
+> +				=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct clk_rate_request *req)
+> =C2=A0{
+> =C2=A0	struct mtk_hdmi_phy *hdmi_phy =3D to_mtk_hdmi_phy(hw);
+> =C2=A0
+> -	hdmi_phy->pll_rate =3D rate;
+> -	return rate;
+> +	hdmi_phy->pll_rate =3D req->rate;
+> +	return 0;
+> =C2=A0}
+> =C2=A0
+> =C2=A0static unsigned long mtk_hdmi_pll_recalc_rate(struct clk_hw *hw,
+> @@ -439,7 +439,7 @@ static const struct clk_ops mtk_hdmi_pll_ops =3D {
+> =C2=A0	.prepare =3D mtk_hdmi_pll_prepare,
+> =C2=A0	.unprepare =3D mtk_hdmi_pll_unprepare,
+> =C2=A0	.set_rate =3D mtk_hdmi_pll_set_rate,
+> -	.round_rate =3D mtk_hdmi_pll_round_rate,
+> +	.determine_rate =3D mtk_hdmi_pll_determine_rate,
+> =C2=A0	.recalc_rate =3D mtk_hdmi_pll_recalc_rate,
+> =C2=A0};
+> =C2=A0
+Tested OK on Mediatek Genio 510-EVK (MT8370) and Genio 1200-EVK
+(MT8395) boards.
 
-We do something similar downstream in ChromeOS, but we probably won't
-get this change anytime soon.
+Tested-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-OOTH the "make fit" target uses arch/arm64/boot/dts/dtbs-list , which
-it seems is also used for DTB install?
-
-
-ChenYu
-
-> Cheers,
-> Angelo
->
-> > [1] https://lore.kernel.org/all/20251114222759.4181152-1-robh@kernel.or=
-g/
-> > ---
-> >   arch/arm64/boot/dts/mediatek/Makefile | 16 ++++++++++++++++
-> >   1 file changed, 16 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dt=
-s/mediatek/Makefile
-> > index a4df4c21399e..4e92bd9f0e53 100644
-> > --- a/arch/arm64/boot/dts/mediatek/Makefile
-> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> > @@ -15,16 +15,30 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-acelink-ew=
--7886cax.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-mini.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc.dtbo
-> > +mt7986a-bananapi-bpi-r3-emmc-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb mt7=
-986a-bananapi-bpi-r3-emmc.dtbo
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-emmc.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nand.dtbo
-> > +mt7986a-bananapi-bpi-r3-nand-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb mt7=
-986a-bananapi-bpi-r3-nand.dtbo
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nand.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nor.dtbo
-> > +mt7986a-bananapi-bpi-r3-nor-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb mt79=
-86a-bananapi-bpi-r3-nor.dtbo
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-nor.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sata.dtbo
-> > +mt7986a-bananapi-bpi-r3-sata-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb mt7=
-986a-bananapi-bpi-r3-sata.dtbo
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sata.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd.dtbo
-> > +mt7986a-bananapi-bpi-r3-sd-dtbs :=3D mt7986a-bananapi-bpi-r3.dtb mt798=
-6a-bananapi-bpi-r3-sd.dtbo
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-bananapi-bpi-r3-sd.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986a-rfb.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7986b-rfb.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7988a-bananapi-bpi-r4.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7988a-bananapi-bpi-r4-2g5.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7988a-bananapi-bpi-r4-emmc.dtbo
-> > +mt7988a-bananapi-bpi-r4-emmc-dtbs :=3D mt7988a-bananapi-bpi-r4.dtb mt7=
-988a-bananapi-bpi-r4-emmc.dtbo
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7988a-bananapi-bpi-r4-emmc.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7988a-bananapi-bpi-r4-sd.dtbo
-> > +mt7988a-bananapi-bpi-r4-sd-dtbs :=3D mt7988a-bananapi-bpi-r4.dtb mt798=
-8a-bananapi-bpi-r4-sd.dtbo
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7988a-bananapi-bpi-r4-sd.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8167-pumpkin.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8173-elm.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8173-elm-hana.dtb
-> > @@ -104,6 +118,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8390-genio-700-e=
-vk.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8395-kontron-3-5-sbc-i1200.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8395-radxa-nio-12l.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8395-radxa-nio-12l-8-hd-panel.dtbo
-> > +mt8395-radxa-nio-12l-8-hd-panel-dtbs :=3D mt8395-radxa-nio-12l.dtb mt8=
-395-radxa-nio-12l-8-hd-panel.dtbo
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8395-radxa-nio-12l-8-hd-panel.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt8516-pumpkin.dtb
-> >
-> >   # Device tree overlays support
->
->
->
+Regards,
+Louis-Alexis
 
