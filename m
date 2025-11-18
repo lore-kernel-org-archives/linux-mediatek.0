@@ -4,79 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15A3BCEBF9A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 02:24:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABF50CED240
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 04:20:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h9dbBtldMrix2vmwLqkoYfOaGzIlugE4vywk09nOwwE=; b=YO7OW0de41DyUzZ0Tnu+Pc2RID
-	hNYqdKErusrOKQjKOvRAdi5lbeKnEYKDI67ZEj0u8rkwjLEC1WPSTDbxmYU39R/Vn2FRl9kpNtSbQ
-	D7tVsWt4PM45wDZ0Y112Q+OMcZ7GkCbBIA51bTQn3iLN1DP1730GGVBTqwQa/Omu9FZh9vjAx6g8t
-	XnyrZyVHZI5tcGPXt6z/66daFk+PWRL2nVmeMUfx8rtdgA8XW+kHfDfU/a/AW2DXFdt/GHQ0J2FVX
-	bThKlBzuR3Kt2FZO6Vbw3t4r1ay4Civ83ruToD42prTABEwEyx/Hs02f+Kjm+UxD8O+xz8zpSjyMk
-	xs4X79kg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bc13A2hLdbJi0LVcwXbx05TZbGdSe+0nGaTC4LFBky0=; b=PB25dNmnkS3iGHFDcXJT2P27v/
+	nQKWPnPSvrabwNBqaEUPs7sstjXkvMT/ipKYtd2POpChmcdlxeWbYnI/ka/1sT/BmJwkFm04PVvxe
+	SDIr5NQgoG60sENMKGUwKl2ol0T3blvUu/xChUc9Ti8ESSoinWDJ8wqZZxOse5EpSCjk2Q0UHzux6
+	4vbI4x8eIx+fS5oJ9meUuoy2vXONBqfaOZq57MkEszasxA03iLTPRZAVN5okBWV8wGmZBR5RmERbL
+	fgMseSzXTsPVlZJORytzbyfkKVxORuffiRR+I1C67SW3rKOuhFvNwHwD4wLh8RgobJdfNd2TC+oDv
+	3s0PK4LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLBOo-0000000HDgQ-14QR;
-	Tue, 18 Nov 2025 02:24:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vLDCt-0000000HMGG-1hy9;
+	Tue, 18 Nov 2025 04:20:43 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLBOl-0000000HDeU-3tWm;
-	Tue, 18 Nov 2025 02:24:53 +0000
-X-UUID: bf2816dac42511f0a52f393f94899d25-20251117
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=h9dbBtldMrix2vmwLqkoYfOaGzIlugE4vywk09nOwwE=;
-	b=FOpXtLMam94oszILgbhkxm3zWDEO0JMe/Cdhlq/DGwbl03nKpD8sBIhDUKvWMWQYNCWNbpmeqaeLpXbY9AFkY5Z5ZObR0HRGRveWUEWWKQP3o02pMsfgtrVljdTyuTUJudW5u0qu12BzjKfMQCiGqvLlVuxP8rjGfik/Yl9slZw=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:a456122f-f117-426f-a7a9-5b695c1b8397,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:f14d8c92-7fd3-4c6a-836a-51b0a70fa8fb,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
-	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: bf2816dac42511f0a52f393f94899d25-20251117
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <xiandong.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 236216807; Mon, 17 Nov 2025 19:24:44 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Tue, 18 Nov 2025 10:24:41 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Tue, 18 Nov 2025 10:24:41 +0800
-From: Xiandong Wang <xiandong.wang@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Yongqiang Niu
-	<yongqiang.niu@mediatek.com>
-CC: <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
-	<jh.hsu@mediatek.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	Xiandong Wang <xiandong.wang@mediatek.com>
-Subject: [PATCH 1/1] drm/mediatek: Add check framebuffer width and height size before config ovl
-Date: Tue, 18 Nov 2025 10:22:49 +0800
-Message-ID: <20251118022437.1284-2-xiandong.wang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20251118022437.1284-1-xiandong.wang@mediatek.com>
-References: <20251118022437.1284-1-xiandong.wang@mediatek.com>
+	id 1vLDCr-0000000HMFu-1uph;
+	Tue, 18 Nov 2025 04:20:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 9AD3E605FE;
+	Tue, 18 Nov 2025 04:20:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D5A9C19423;
+	Tue, 18 Nov 2025 04:20:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763439640;
+	bh=ESYCJhFz6qvRXOfOOiFBo9T3qoVii5Lf9a/4mxUB+n0=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=E36Wz/qnraHqzKHy5Ady5z9Nirm3xJKWR/ATFTzgAHLdwQ9FKcGxIWGOSXiNvSaaT
+	 NljXVLBpLDcBThuq9ZAIB8bZ2eVtHMiT4QNyVlXBBlLn2B1QZuWL8Avu+LDrI3t3/e
+	 DttRUTUCq8dp/zktvRCAHqTSH5wAqCNsQgRi5jSFrU3vMMFXyvGb/O1QgyJQRE8ny4
+	 hLXYnc/k3QgdPWFf32OWflWHLAyge/GoRCR0ziH6uQqb9s1lcSgGEwiKFjyX/gELI+
+	 taMU+y88P2n1NXz41iR/UuIH9b+MgzfRBk67F95j/vdIPL0XA0IPlxj8I4xJnGR0yi
+	 QLySqpUg8mD8A==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 70DE43809A1D;
+	Tue, 18 Nov 2025 04:20:07 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_182451_970986_ECC27D9D 
-X-CRM114-Status: GOOD (  14.97  )
+Subject: Re: [PATCH net] net: airoha: Do not loopback traffic to GDM2 if it is
+ available on the device
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <176343960603.3966336.2301891207348602792.git-patchwork-notify@kernel.org>
+Date: Tue, 18 Nov 2025 04:20:06 +0000
+References: <20251113-airoha-hw-offload-gdm2-fix-v1-1-7e4ca300872f@kernel.org>
+In-Reply-To: <20251113-airoha-hw-offload-gdm2-fix-v1-1-7e4ca300872f@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,33 +72,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-During the execution of the IGT test kms_cursor_edge_walk,
-the screen experiences glitches and the hardware hangs.
-It was discovered that the framebuffer dimensions (width and height)
-provided by IGT to the display driver are zero, leading to
-abnormal parameters that cause the hardware to freeze.
-Therefore, it is necessary to verify the buffer dimensions
-before successfully passing the IGT test.
+Hello:
 
-Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index f1fa1f1c3ff0..bb207aee91f2 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -611,7 +611,7 @@ void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
- 	unsigned int ignore_pixel_alpha = 0;
- 	unsigned int con;
- 
--	if (!pending->enable) {
-+	if (!pending->enable || !pending->height || !pending->width) {
- 		mtk_ovl_layer_off(dev, idx, cmdq_pkt);
- 		return;
- 	}
+On Thu, 13 Nov 2025 18:19:38 +0100 you wrote:
+> Airoha_eth driver forwards offloaded uplink traffic (packets received on
+> GDM1 and forwarded to GDM{3,4}) to GDM2 in order to apply hw QoS.
+> This is correct if the device does not support a dedicated GDM2 port. In
+> this case, in order to enable hw offloading for uplink traffic, the
+> packets should be sent to GDM{3,4} directly.
+> 
+> Fixes: 9cd451d414f6 ("net: airoha: Add loopback support for GDM2")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> [...]
+
+Here is the summary with links:
+  - [net] net: airoha: Do not loopback traffic to GDM2 if it is available on the device
+    https://git.kernel.org/netdev/net/c/8e0a754b0836
+
+You are awesome, thank you!
 -- 
-2.46.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
