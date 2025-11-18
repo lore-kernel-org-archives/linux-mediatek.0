@@ -4,79 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7535ECCD19A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 08:39:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ECE8CEBF92
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 08:45:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ibPe4riXg9tAu5B/aoe6KMHQkKrDT+ArV3QiVtSJ0Ik=; b=wMA3F/9pe+i/Mzbouvj+/StVQB
-	xLocrNpUk/DBvNUFNxQkb5Zj5TwJcxLzBuFE55K0EGQlAp6OBo+10NQ7HjJ+k78CkBWSDwubFSi4C
-	pe8rn5qOVH9ov6lFWzpJJvZSwpMSs98AxQGhJBoy7zNSjvIv41Nh/2UHnxyADHVIJ0c/7iHtPX+I6
-	YVRROdciif7YLpnLYXRqk1A1tmZNGqdne6cUhz3CcTy2lPKDpNOiZfWwTMzBcaoci1mFgTwhcsK+P
-	ckMbTpv0LXsDam0MLHD0f9kHRzs2vStTSpezpN1fsHMrLeNaT5F1fzSq1kYL5tQ0JAn06MGpAplR9
-	yOruAdcQ==;
+	bh=b5aAqnDwEBfsUEa2nCzxbHYsEw/eHnf3iITovYt8cUU=; b=RgSz6hz5GdfdL4TqXRh5lZwew9
+	vvcoR2UNiV8tz9gj6Jy+N5Ko4mbivP9UK41LT50QsOoIkhtNyLtM+KiWnH0e678SXdo5l3ofTDdwj
+	wtulFvs1NPAGwSmtdE4a3do/tUt4170FI/gY/tjUv8+WowtgR/gpEijb/wc/iZWcE5JB16x8E7fES
+	jZwc/G+H7eZQ9jR8BAayF02tHQS3WXLXEo9+06TzoUlphVgOrNUwz909R7/eSoUidRtNRZZXmlaxe
+	bQh6dOVGGrNutgs+26gF2HJo6sKvgPUIuanem91Luke7gi6y5jyte3Hzew1nvQHdCpHu8lPcLZhBe
+	Q8YXDWvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLHEw-00000000498-2wWO;
-	Tue, 18 Nov 2025 08:39:06 +0000
-Received: from esa.microchip.iphmx.com ([68.232.154.123])
+	id 1vLHKe-000000004Zj-4Af5;
+	Tue, 18 Nov 2025 08:45:00 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLHEs-0000000048C-29uC;
-	Tue, 18 Nov 2025 08:39:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
-  t=1763455142; x=1794991142;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=G8N7InRiz/r2N49MxkgSLlhI3kbCLucI3vlcM9g4e1w=;
-  b=M/dvTWnwQcoWCwUZNt6InqFX8SoJe9kYMfEfzoUAnHQ+/MO9IPPOqXxp
-   ZxGAJ574JdOctLwWdEQaGVeMcT/x2Ahi9dq9W8kQFo+rDjv3uvRugcHdH
-   p8gK7XClgtgSWuH2NvBEVUC5qsDtXYFwb2RmaI3yg6X7VhK96W2xSOL5p
-   vyO3YDQ9GKCfS6TaT1l6+m4gwAtW2JFHNvhHdJB9t3EcT/I9zjKM3xcha
-   jWYyQrvTi8zz2YQqr9qIeSiub1SESrFrU6Tll+HtBjNXWJQ4sgBRh8Szf
-   ItzkmhndMg/hfo0OmqsBI12e35Khms6nZfTFMxtge0e18pXhFXEJi51+t
-   w==;
-X-CSE-ConnectionGUID: 7r7bw6jDSkez8ippLPCIow==
-X-CSE-MsgGUID: x4o0IzLVSO6HQox2+ulUiA==
-X-IronPort-AV: E=Sophos;i="6.19,314,1754982000"; 
-   d="scan'208";a="48657120"
-X-Amp-Result: SKIPPED(no attachment in message)
-Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
-  by esa4.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 18 Nov 2025 01:38:59 -0700
-Received: from chn-vm-ex03.mchp-main.com (10.10.85.151) by
- chn-vm-ex02.mchp-main.com (10.10.85.144) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.58; Tue, 18 Nov 2025 01:38:19 -0700
-Received: from [10.159.245.205] (10.10.85.11) by chn-vm-ex03.mchp-main.com
- (10.10.85.151) with Microsoft SMTP Server id 15.1.2507.58 via Frontend
- Transport; Tue, 18 Nov 2025 01:38:16 -0700
-Message-ID: <e7f645da-0d77-4d7f-bcc6-c81e96589144@microchip.com>
-Date: Tue, 18 Nov 2025 09:38:16 +0100
+	id 1vLHKU-000000004WW-0UpO;
+	Tue, 18 Nov 2025 08:44:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1763455486;
+	bh=hTbUmuYiKLq322sR4T6juTDTdLLt60pQ4qpIzW07z4k=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=aHHRJwHkiFdn6JxXxB5hQhpE7ppddqLDGxV1vBq6SgOjNfqxTMqwc/lnGNXvOe4WS
+	 0OW8OcNFlljUz9zfizY9w3ZekI5MU/rgcjWo6p3YzM1hgIEBtRh7K9csXEJv9idwzo
+	 brSGfdPUTj8yxMjvBLWxk73e1yGSFViasnF2RXmWGFC2TN3X7D126AB3F0iLCWYgsk
+	 ThlxvbOKIh7F1Cy91DBDUNImfBMpwomEVAj0VJFLseZ1fo2BaSxudhIzBOqSry/Xnv
+	 0pG1yUK1KNUYDtUYx7BvwNDJ8r2FHv1Rtk1Y62/cXf9imduV4t8JJWEIsyu044QFys
+	 +IJn8cnVRFBuw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 395A917E101A;
+	Tue, 18 Nov 2025 09:44:46 +0100 (CET)
+Message-ID: <67bc01ca-10a4-44c2-a588-1516df832108@collabora.com>
+Date: Tue, 18 Nov 2025 09:44:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] dt-bindings: mfd: document syscons falling back to
- atmel,sama5d2-sfrbu
-To: Conor Dooley <conor@kernel.org>, <linux-kernel@vger.kernel.org>
-CC: Conor Dooley <conor.dooley@microchip.com>, Alexandre Belloni
-	<alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, "Krzysztof
- Kozlowski" <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-References: <20251117-aeration-smock-5e7ac06e2942@spud>
- <20251117-marlin-mustang-5ffda4d211c7@spud>
-From: Nicolas Ferre <nicolas.ferre@microchip.com>
-Content-Language: en-US, fr
-Organization: microchip
-In-Reply-To: <20251117-marlin-mustang-5ffda4d211c7@spud>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Subject: Re: [PATCH 1/1] drm/mediatek: Add check framebuffer width and height
+ size before config ovl
+To: Xiandong Wang <xiandong.wang@mediatek.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ sirius.wang@mediatek.com, vince-wl.liu@mediatek.com, jh.hsu@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20251118022437.1284-1-xiandong.wang@mediatek.com>
+ <20251118022437.1284-2-xiandong.wang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20251118022437.1284-2-xiandong.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_003902_647139_F53A2E1B 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20251118_004450_337024_D306A387 
+X-CRM114-Status: UNSURE (   9.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,55 +83,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 17/11/2025 at 17:29, Conor Dooley wrote:
-> From: Conor Dooley <conor.dooley@microchip.com>
+Il 18/11/25 03:22, Xiandong Wang ha scritto:
+> During the execution of the IGT test kms_cursor_edge_walk,
+> the screen experiences glitches and the hardware hangs.
+> It was discovered that the framebuffer dimensions (width and height)
+> provided by IGT to the display driver are zero, leading to
+> abnormal parameters that cause the hardware to freeze.
+> Therefore, it is necessary to verify the buffer dimensions
+> before successfully passing the IGT test.
 > 
-> The sfrbu on both sama7g5 and sama6d65 both fall back to sama5d2 in
-> devicetrees, but the former two compatibles were undocumented. Now that
-> syscon.yaml has easy support for multiple soc-specific compatibles, add
-> both of these undocumented devices.
-> 
-> Signed-off-by: Conor Dooley <conor.dooley@microchip.com>
-> ---
-> CC: Nicolas Ferre <nicolas.ferre@microchip.com>
+> Signed-off-by: Xiandong Wang <xiandong.wang@mediatek.com>
 
-Acked-by: Nicolas Ferre <nicolas.ferre@microchip.com>
-Thanks Conor for having added these compatibles!
-Best regards,
-   Nicolas
+Needs a Fixes tag.
 
-> CC: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> CC: Claudiu Beznea <claudiu.beznea@tuxon.dev>
-> CC: Lee Jones <lee@kernel.org>
-> CC: Rob Herring <robh@kernel.org>
-> CC: Krzysztof Kozlowski <krzk+dt@kernel.org>
-> CC: Conor Dooley <conor+dt@kernel.org>
-> CC: devicetree@vger.kernel.org
-> CC: linux-kernel@vger.kernel.org
-> CC: linux-arm-kernel@lists.infradead.org
-> CC: linux-mediatek@lists.infradead.org
->   Documentation/devicetree/bindings/mfd/syscon.yaml | 6 ++++++
->   1 file changed, 6 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-> index 50f0012f4ebe..64829ecbb0b0 100644
-> --- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-> @@ -239,6 +239,12 @@ properties:
->                 - ti,j784s4-pcie-ctrl
->                 - ti,keystone-pllctrl
->             - const: syscon
-> +      - items:
-> +          - enum:
-> +              - microchip,sama7g5-sfrbu
-> +              - microchip,sama7d65-sfrbu
-> +          - const: atmel,sama5d2-sfrbu
-> +          - const: syscon
->         - items:
->             - const: microchip,pic64gx-control-scb
->             - const: microchip,mpfs-control-scb
-> --
-> 2.51.0
-> 
+After which:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Cheers,
+Angelo
+
 
 
