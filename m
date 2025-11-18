@@ -4,86 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C7C5CEBF97
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 14:45:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24391CEE340
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 17:02:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dxv4h7ofkzean2g/SBkB1c70TV7EMeFgRSSskiCZXY8=; b=QligbwHE52pDaSdty6toOFbUqT
-	NZi2tCx0wiTvoSj5HTC7lMjJr1UWnOMdi2NNl6sbujWmreSk3N5ig2kBdzXr7m+jS2m8pEZwX21Mf
-	ki5RUj5lcKXsD0yJX0MRmDXihs/TY50b7h2vuYvJeP6H2cLh7iQP1q5V3ff8W29LGbks4GzH1xdnu
-	ibZKEZW9hFuTd8pAIq1lOEiHtu392ucnBATXo8dFgyVK2nLBJYJXDr3+1XbWWjCCSvdrVCk82fWjG
-	1qFYKoC0TR+dJuB5ZyhVoq+6fhnDY5Py0K+FAKjB8N1Ubs1zuj6pE/XkZYl1fWb4P8I/CwK/3yvsB
-	NhGyPqoQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Content-Transfer-Encoding:Date:Content-Type:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ikbxpjo8LZrHbmpy/V6/tjg+g8DY5QC0BL15d4mFkik=; b=mMXw+nTFM/oq8330b3ac7xSZkk
+	A9e9UzrQcFHT5qkjsKxGZlPTuym5QiWHi1jHHXewamiNRBg8sGOyARhPeRaAt1ImVk9JryvL8d7+Y
+	zjyIoBFyTK3pI40yK+JqMWPFxeA5rQcB2Z6yV6u41/r9FRH8C4GIgED+R/Ibm4fNFlW1pQj8HuypY
+	kCpUQkNNjlxJJ4GXkoAK9YjSejTUOgvqua+Pof0fMZne6JRKP4d4sczUv6gRy3+G5y7rXfYrzELD0
+	E28Qb5rUi4ttxlFUUJLNODpLgDK4XFZfm030PJPpz8/Zb3scihdJmmEIAWoLOqX4oL3M/7Hlo9tGX
+	TkpJQLQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLMxF-00000000ZiL-1qRI;
-	Tue, 18 Nov 2025 14:45:13 +0000
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+	id 1vLP6Q-00000000naN-2Ig0;
+	Tue, 18 Nov 2025 17:02:50 +0000
+Received: from mout.gmx.net ([212.227.17.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLMxC-00000000Zht-065w
-	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Nov 2025 14:45:11 +0000
-Received: by mail-yw1-x1131.google.com with SMTP id 00721157ae682-7895017c722so22671807b3.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 18 Nov 2025 06:45:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1763477109; x=1764081909; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=dxv4h7ofkzean2g/SBkB1c70TV7EMeFgRSSskiCZXY8=;
-        b=FGy7sWq+kcRQDqKsAS5y9UyR/bCgEcx2cquu1ZBLDj2swZVG3rYkDW3BUmZRyIoxqK
-         NjlTg3XKWYsh1CGTBYzrwzQkpUZRMZNNrYUc6W6QVy26MOuApfwZ0y2ksPWvER7AXKTt
-         eESAx8jOOTqg5URUuG9/5To0b4H4jYWUaUMenLujgpQMfQaIIylkx199mi5q4apdVbPr
-         950ujv5M7jqYSipaifNGwFn/wj/4O7Mm+i6YgQ6AI7CEuH0AkM8qiGKhePUNxSzVOWVE
-         XrHTt2EcMavDMKNtbdfkP7MJGAN9esUEELXtioxTNoW6WX0ldaZ4tnNJY2IZRfyCymF6
-         9Cpw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763477109; x=1764081909;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=dxv4h7ofkzean2g/SBkB1c70TV7EMeFgRSSskiCZXY8=;
-        b=evNB06+EMpaj0ryTeAiYrL5EcD3wf8nvMF6HOgqZVkjqnSo1kre8X37NvG/ieP5lDI
-         wz5WDRzuzByhLXNFRgpWeMraK+gm57pwcQBxQNp5wtZtoxyzDMf+a9IAU6inCHFIEupy
-         kOZtWpd6n+AbU7R4kMiTw347gyAeuj+dZgrr0rPWGjYjq+Roc2UwppcjQkse/VoO7rmI
-         1igKqcrfFwEi8SE+o9cyptgsAusKQWl5EeLXKrsARlWjrWmfDTSPMJIUsj6o9FjZGy3j
-         /yvAk7BJ2F20I8MgruMNWBDwZc4iGYCgyNiVUD6KlJ4QtzhSvzqwFc8CjUisHcBIIZaz
-         PtRw==
-X-Forwarded-Encrypted: i=1; AJvYcCVfndB8eS++xX8yVnQR7Pw9ozev9y0xCul1xQ8jIl4Qxyvvl5h057rAVZ4jki0lTzJB/x4W9ak52iLBadJrCw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxVyvLn1YnRyvb1+pb2SR1luHqnvAjdpZBxZbIPfpLZQ7jv9Q+b
-	kkKhvxUu17enXNaBo82FxJwCOiH+8p8owlm4cyIzLmhkKSzvq4VRhNy3BjP8UfwwOJyhQZ/Z9n9
-	60k6xaCD1w4Lq01fKXErgoCSztZbj5FkegJYDWVEuDkX5Mogdn4eH
-X-Gm-Gg: ASbGnct9D0Iuf0NTxbbpJwdcuHwssgfy2uMk3Ys8g0KpHkZDaA16hea9iCc8ILe45M2
-	rV/cxvcaxmRbZAN/6hqI3cb+1CYqiO9zqjKjrX+FRtI6VBxyBe/UXB5WAwDPsZCdRPGKL01n+iR
-	y9hyGjQND7wyztsz/KOObjr06x813FB8VLI2vf3kFUDVtoXVsq1Dr8jJzfBnNijVt6AIGWiLx1H
-	g2qpzSjU2aUlzR1C9blPpJ/F4YrL6LV/WhFxZP2jzxsJAKhyo1TTIlEHCFYwFjdKFLihjYn
-X-Google-Smtp-Source: AGHT+IF7dxRUgvG46HM4+Rwc//gSMA7288zU/dLypnRqJ7Ti0QMfdRIpamc5xKZmVlaZsx7Wbl3epvjvS9InQfkzXCM=
-X-Received: by 2002:a05:690c:3802:b0:787:cad1:bdbf with SMTP id
- 00721157ae682-78929eef73amr146762497b3.53.1763477108864; Tue, 18 Nov 2025
- 06:45:08 -0800 (PST)
+	id 1vLP6N-00000000nZD-2XK2;
+	Tue, 18 Nov 2025 17:02:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1763485361; x=1764090161; i=frank-w@public-files.de;
+	bh=Ikbxpjo8LZrHbmpy/V6/tjg+g8DY5QC0BL15d4mFkik=;
+	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
+	 Content-Type:Date:Content-Transfer-Encoding:In-Reply-To:
+	 References:cc:content-transfer-encoding:content-type:date:from:
+	 message-id:mime-version:reply-to:subject:to;
+	b=dsWkv5A9CxaTOv7R9y0hIEIvFze/tYuelAcl6Y4yJIc+Pb9VY2etBnCwnG/+2nlG
+	 cZEMAVbn2VK5EZsNbsd7QgFVB0naEt/14dpeQlmu30FVQQZ79BhrP5aZ+cE/eilBc
+	 49sAHyQo+CsOc3pSCGCCBMAN/RHphO8OhIEqRow7VL1QtQpGBUrxmRjObAKMxaomP
+	 tytBEvaMQm2puem4yuCMU1ueTCAKajLIyQnb/vUa360+7EIVNvZMZQeZE+KPxDQXt
+	 ae9HZGTvDXfIPApNBEe2POI0Lsu557SI1+iMVqsSDqeXEEF3tWYrge5I9ZlJBmM2V
+	 SUehdnu2r263l/+cKA==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [194.15.86.107] ([194.15.86.107]) by
+ trinity-msg-rest-gmx-gmx-live-56d984c6fb-85gcg (via HTTP); Tue, 18 Nov 2025
+ 17:02:41 +0000
 MIME-Version: 1.0
-References: <70b25dca6f8c2756d78f076f4a7dee7edaaffc33.camel@mediatek.com>
- <CAJZ5v0iTMhWoBfbrPabdo7TkNuOwtC=-6acSe9tbDmyzZEoXwg@mail.gmail.com>
- <5941318.DvuYhMxLoT@rafael.j.wysocki> <12784270.O9o76ZdvQC@rafael.j.wysocki>
-In-Reply-To: <12784270.O9o76ZdvQC@rafael.j.wysocki>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Tue, 18 Nov 2025 15:44:32 +0100
-X-Gm-Features: AWmQ_bn6eOA_VKuMFyefgoEE9Geca2TO4X2U23GfUd5Xp4xmmVMzfrrokKx24cc
-Message-ID: <CAPDyKFqByMzQruYZTBL0T47Ww2KTF1Py91K-wrQ9GuTeW3fx9A@mail.gmail.com>
-Subject: Re: [PATCH v4] PM: sleep: core: Fix runtime PM enabling in device_resume_early()
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-Cc: Rose Wu <ya-jou.wu@mediatek.com>, linux-pm@vger.kernel.org, 
-	rafael.j.wysocki@intel.com, regressions@lists.linux.dev, 
-	linux-kernel@vger.kernel.org, wsd_upstream <wsd_upstream@mediatek.com>, 
-	linux-mediatek@lists.infradead.org, "artis. chiu" <artis.chiu@mediatek.com>, 
-	"Johnny-cc. Kao" <Johnny-cc.Kao@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
+Message-ID: <trinity-dfca2931-a7e8-4b33-b722-c22105569d82-1763485361461@trinity-msg-rest-gmx-gmx-live-56d984c6fb-85gcg>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: robh@kernel.org, angelogioacchino.delregno@collabora.com
+Cc: matthias.bgg@gmail.com, krzk+dt@kernel.org, conor+dt@kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Aw: Re: [PATCH] arm64: dts: mediatek: Apply all DT overlays at
+ build time
+Content-Type: text/plain; charset=UTF-8
+Date: Tue, 18 Nov 2025 17:02:41 +0000
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <CAL_JsqK4jvZQTQAXCjPgxBCUiENGKgkgaDgZ680QqL1XpS6bbw@mail.gmail.com>
+References: <20251117211306.725678-1-robh@kernel.org>
+ <679c1f30-7c62-484e-b4e5-7351a23f15e5@collabora.com>
+ <CAL_JsqK4jvZQTQAXCjPgxBCUiENGKgkgaDgZ680QqL1XpS6bbw@mail.gmail.com>
+X-UI-CLIENT-META-MAIL-DROP: W10=
+X-Provags-ID: V03:K1:+NZVXvxPM7sHFnKfKMqInMumSSaXpCyIpkrfgPSpZJDAq6/hfd0ipTLFhIOBzIQSUYnUL
+ NR7WDPb/NlOcAcXT/Lw5vmFwTdD07ljrc2TD0WWlNVilbTgVd8hg79IafV7iuLRKG6yv7H49KqRL
+ U6WxfzvZiejuJtFsDKfXyzseFgdPahmDc2pHlW9IpSdPKOFaUx+aY5smlnC4YMvsuM8Gjn82ShQT
+ 6vOUVNJn12KClhocoxezWQaM8gYGKtR2eGr1RNUhzw6zfCwy6pu3dxi5lrLZf0QMgcX/bxaOcy4S
+ seEucBHcm9Gv/Q+jSrWKKdQUsvDiQRfo2np5HwfhHnUSq1H0/Nd8qs90tU3AlpnM7s=
+UI-OutboundReport: notjunk:1;M01:P0:O+byDxN+m3E=;FPg10a5UBLeIHxc671s5gwpvCNP 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
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_064510_509953_D54E2A5E 
-X-CRM114-Status: GOOD (  25.47  )
+X-CRM114-CacheID: sfid-20251118_090248_002350_50D32259 
+X-CRM114-Status: GOOD (  22.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,133 +84,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 18 Nov 2025 at 15:16, Rafael J. Wysocki <rafael@kernel.org> wrote:
->
-> From: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
->
-> Runtime PM should only be enabled in device_resume_early() if it has
-> been disabled for the given device by device_suspend_late().  Otherwise,
-> it may cause runtime PM callbacks to run prematurely in some cases
-> which leads to further functional issues.
->
-> Make two changes to address this problem.
->
-> First, reorder device_suspend_late() to only disable runtime PM for a
-> device when it is going to look for the device's callback or if the
-> device is a "syscore" one.  In all of the other cases, disabling runtime
-> PM for the device is not in fact necessary.  However, if the device's
-> callback returns an error and the power.is_late_suspended flag is not
-> going to be set, enable runtime PM so it only remains disabled when
-> power.is_late_suspended is set.
->
-> Second, make device_resume_early() only enable runtime PM for the
-> devices with the power.is_late_suspended flag set.
->
-> Fixes: 443046d1ad66 ("PM: sleep: Make suspend of devices more asynchronous")
-> Reported-by: Rose Wu <ya-jou.wu@mediatek.com>
-> Closes: https://lore.kernel.org/linux-pm/70b25dca6f8c2756d78f076f4a7dee7edaaffc33.camel@mediatek.com/
-> Cc: 6.16+ <stable@vger.kernel.org> # 6.16+
-> Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+Hi,
 
-Reviewed-by: Ulf Hansson <ulf.hansson@linaro.org>
+this looks similar to my attempt i did here
 
-Kind regards
-Uffe
+https://patchwork=2Ekernel=2Eorg/project/linux-mediatek/patch/202406080805=
+30=2E9436-2-linux@fw-web=2Ede/
 
-> ---
+But in my case i added full dtb with 2 overlays as there can be 2 devices =
+(1 mmc + 1 spi) at one time=2E
+So usable as dtb for bootloader config without overlays, not only for vali=
+dation=2E=2E=2E
+
+regards Frank
+
+
+> Gesendet: Dienstag, 18=2E November 2025 um 13:31
+> Von: "Rob Herring" <robh@kernel=2Eorg>
+> An: "AngeloGioacchino Del Regno" <angelogioacchino=2Edelregno@collabora=
+=2Ecom>
+> CC: "Matthias Brugger" <matthias=2Ebgg@gmail=2Ecom>, "Krzysztof Kozlowsk=
+i" <krzk+dt@kernel=2Eorg>, "Conor Dooley" <conor+dt@kernel=2Eorg>, linux-ke=
+rnel@vger=2Ekernel=2Eorg, linux-arm-kernel@lists=2Einfradead=2Eorg, linux-m=
+ediatek@lists=2Einfradead=2Eorg, devicetree@vger=2Ekernel=2Eorg
+> Betreff: Re: [PATCH] arm64: dts: mediatek: Apply all DT overlays at buil=
+d time
 >
-> v3 -> v4:
->    * Reorder the syscore check in device_resume_early() after the
->      is_late_suspended check (Ulf)
->    * Update the changelog to reflect the above.
->
-> v2 -> v3:
->    * Also set is_late_suspended for syscore devices to avoid skipping runtime PM
->      disabling for them (Ulf).
->    * Update the changelog to reflect the above.
->
-> v1 -> v2:
->    * Add pm_runtime_enable() to device_suspend_late() error path (Rose).
->    * Update the changelog to reflect the above.
->
-> ---
->  drivers/base/power/main.c |   25 ++++++++++++++++---------
->  1 file changed, 16 insertions(+), 9 deletions(-)
->
-> --- a/drivers/base/power/main.c
-> +++ b/drivers/base/power/main.c
-> @@ -903,12 +903,15 @@ static void device_resume_early(struct d
->         TRACE_DEVICE(dev);
->         TRACE_RESUME(0);
->
-> -       if (dev->power.syscore || dev->power.direct_complete)
-> +       if (dev->power.direct_complete)
->                 goto Out;
->
->         if (!dev->power.is_late_suspended)
->                 goto Out;
->
-> +       if (dev->power.syscore)
-> +               goto Skip;
-> +
->         if (!dpm_wait_for_superior(dev, async))
->                 goto Out;
->
-> @@ -941,11 +944,11 @@ Run:
->
->  Skip:
->         dev->power.is_late_suspended = false;
-> +       pm_runtime_enable(dev);
->
->  Out:
->         TRACE_RESUME(error);
->
-> -       pm_runtime_enable(dev);
->         complete_all(&dev->power.completion);
->
->         if (error) {
-> @@ -1630,12 +1633,6 @@ static void device_suspend_late(struct d
->         TRACE_DEVICE(dev);
->         TRACE_SUSPEND(0);
->
-> -       /*
-> -        * Disable runtime PM for the device without checking if there is a
-> -        * pending resume request for it.
-> -        */
-> -       __pm_runtime_disable(dev, false);
-> -
->         dpm_wait_for_subordinate(dev, async);
->
->         if (READ_ONCE(async_error))
-> @@ -1646,9 +1643,18 @@ static void device_suspend_late(struct d
->                 goto Complete;
->         }
->
-> -       if (dev->power.syscore || dev->power.direct_complete)
-> +       if (dev->power.direct_complete)
->                 goto Complete;
->
-> +       /*
-> +        * Disable runtime PM for the device without checking if there is a
-> +        * pending resume request for it.
-> +        */
-> +       __pm_runtime_disable(dev, false);
-> +
-> +       if (dev->power.syscore)
-> +               goto Skip;
-> +
->         if (dev->pm_domain) {
->                 info = "late power domain ";
->                 callback = pm_late_early_op(&dev->pm_domain->ops, state);
-> @@ -1679,6 +1685,7 @@ Run:
->                 WRITE_ONCE(async_error, error);
->                 dpm_save_failed_dev(dev_name(dev));
->                 pm_dev_err(dev, state, async ? " async late" : " late", error);
-> +               pm_runtime_enable(dev);
->                 goto Complete;
->         }
->         dpm_propagate_wakeup_to_parent(dev);
->
->
+> On Tue, Nov 18, 2025 at 3:36=E2=80=AFAM AngeloGioacchino Del Regno
+> <angelogioacchino=2Edelregno@collabora=2Ecom> wrote:
+> >
+> > Il 17/11/25 22:13, Rob Herring (Arm) ha scritto:
+> > > It's a requirement that DT overlays be applied at build time in orde=
+r to
+> > > validate them as overlays are not validated on their own=2E
+> > >
+> > > Add targets for all the Mediatek overlays=2E
+> > >
+> > > Signed-off-by: Rob Herring (Arm) <robh@kernel=2Eorg>
+> > > ---
+> > > This will soon be a warning[1]=2E
+> > >
+> > > Note that if it is desired that the combined =2Edtb is not installed=
+, then
+> > > the combined =2Edtb should be added to 'dtb-' variable instead=2E
+> > >
+> >
+> > Uhm, sorry, can't we do something such that we don't generate a DTB wi=
+th a
+> > preapplied overlay?
+> >
+> > Even something like generating those and deleting before build finaliz=
+ation
+> > could work, I guess, though that'd be hacky maybe=2E
+> >
+> > I don't know if this is the case, but I'm worried that various people =
+have
+> > scripts to copy DTBs somewhere (in some partition) or embed those in i=
+mages,
+> > and if they get the preapplied overlay dtbs in the same place, havoc c=
+ould
+> > happen as the bootloaders might be selecting wrong dtbs (as a plus, th=
+ere is
+> > no dtbo that varies machine compatible strings, rightfully)=2E
+>=20
+> If they aren't using dtbs_install for that, then that is their
+> problem=2E When we moved all the arm32 DTs to vendor directories,
+> dtbs_install maintained the old structure which seemed sufficient to
+> not break folks=2E The same should apply here=2E
+>=20
+> Rob
+>=20
 >
 
