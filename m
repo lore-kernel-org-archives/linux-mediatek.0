@@ -4,62 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6706CED626
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 11:48:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF4B5CED624
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 11:55:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k1ZRCn/FNci9pOqUsFHw4816pcF2u92phSwGJKthczc=; b=Op/nPGcgdg7LV8W4zDOK8Hozhv
-	XEw4C9F3V6O0i5CyXTv51nSt+WZK1H0sWDL2sxCY0Qd8SESJZaqHUrEwjDXs9f9S1YZpEJ7Pu+Z84
-	HqUSTyoql4uQ6H2V4R7nusfI+fSns50LwPkD9BWeIQkYhTIyLpmCOEUiJqcNauYUD9YIJd99vmWa9
-	ZDdgWzbY3hwZCB12Zb+pfjnAANgxgp119sU8vDC1ebTeptK6gX7nrdKTpKC8H5jjEiEpeQj4nNDWI
-	9YtoMlSiLRPfjrrnvftqh1/Jh/KAFoKSg3ZNkGV1KDle9YrFCTeqfZAw2EN4HWvQ+7saElx4zU7fd
-	hL4gMAIA==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jgsEvn33Uu1PnkDUHpeJtS0g8aJZZYVzC3RyBEw/MuQ=; b=ik5jGNxNZ7DHXDYmiHx0OBHJ8t
+	eDMSYUUj8fC85p9fhnlYM+eUaDYcBbSIKJDxLxW1XSazpncR1gvSWcIA10N8K99pH9Sk+HeHTXtva
+	fB6Pos8j6+vYvqhh0C3cQuRr5sO8kTTpcCvhKOQ8lcPFfSW6K3wMaa7zxuQbMu9IAtjP31XMvTd82
+	ZKGV8tfL4mBdtUKGWIPW9sfu46agRpm4S2PamM2qY6WgBeERc52zwLW7hCY7bwBdc0JCLFtzDizdo
+	Wojl4nFFhYpqURv4gFtL9y0plG+Eybz1dk5GXw3iWNGWsaqpI9nekXCiVk/HYxlYdKvi+4LN7fC0C
+	wNzVRIfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLKCP-00000000MFs-1KH5;
-	Tue, 18 Nov 2025 11:48:41 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vLKIj-00000000Mw2-3yle;
+	Tue, 18 Nov 2025 11:55:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLKCN-00000000MFk-3QZL
+	id 1vLKIh-00000000MvY-1zAV
 	for linux-mediatek@lists.infradead.org;
-	Tue, 18 Nov 2025 11:48:39 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E76E260628;
-	Tue, 18 Nov 2025 11:48:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFEC4C2BCB1;
-	Tue, 18 Nov 2025 11:48:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763466518;
-	bh=mqdgX7lJfVqbFxnFMo4tSkPbeZ0S9+QjGLI2020JtGg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=g0uCf6H0TkgvTCbn+sCpssaxRcAwWCtWpPQvaPGG31bLussleIBhUUMrXvBHqERU+
-	 jm1WbRTZeC0qfJjrmej20BbSLTktdTk5Y3vfGtM0TKtNeiYb3tSkB48hbPeMagbKxP
-	 o2t+DUaAGHvP+gKetTjZkBVWoUt3sI1LLspD1mEWWwMVUo7gOorOgnVLdfLBoW5SLM
-	 bJetwa6EpJ/Ce/rbtoZFTVDUCYkSq63o8EKgUlyyyW7VwFBUb9qzMx4xWQUr1k4YCg
-	 ulmMtT85F6xakLnl7Dp0q365X52GxHpSSJrqrmQvYMwKRbiw4EpUimR3VUomI0WttH
-	 aIgDQW5nhkcgA==
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-To: linux-pm@vger.kernel.org, Rose Wu <ya-jou.wu@mediatek.com>
-Cc: rafael.j.wysocki@intel.com, regressions@lists.linux.dev,
- linux-kernel@vger.kernel.org, wsd_upstream <wsd_upstream@mediatek.com>,
- linux-mediatek@lists.infradead.org, "artis. chiu" <artis.chiu@mediatek.com>,
- "Johnny-cc. Kao" <Johnny-cc.Kao@mediatek.com>,
- Ulf Hansson <ulf.hansson@linaro.org>
-Subject: [PATCH v2] PM: sleep: core: Fix runtime PM enabling in device_resume_early()
-Date: Tue, 18 Nov 2025 12:48:32 +0100
-Message-ID: <12782716.O9o76ZdvQC@rafael.j.wysocki>
-Organization: Linux Kernel Development
-In-Reply-To: <119e2410ca32a0d55fa6febf93c7a3164b391db0.camel@mediatek.com>
-References: <70b25dca6f8c2756d78f076f4a7dee7edaaffc33.camel@mediatek.com>
- <5940388.DvuYhMxLoT@rafael.j.wysocki>
- <119e2410ca32a0d55fa6febf93c7a3164b391db0.camel@mediatek.com>
+	Tue, 18 Nov 2025 11:55:12 +0000
+X-UUID: 6c2db458c47511f0a52f393f94899d25-20251118
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=jgsEvn33Uu1PnkDUHpeJtS0g8aJZZYVzC3RyBEw/MuQ=;
+	b=JUlaBIxRghm49wkIq48AcVOEZU20JfrDBWrr8UyUQ+rlHYydh3wYqLvo9DLqMXVi0HqQF/zso5G2VNBXWRxxA0MrpjeUxphlFcB8smHaYtIWSmdsoGUaUox/1iiOMTcvFMnYpoX4pyA6rmMLfwiF+f+V+CBGOzhmV1z9fSMLLfU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:a0cc38f5-c380-45f0-a28e-c17a0c59b20e,IP:0,UR
+	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:-5
+X-CID-META: VersionHash:a9d874c,CLOUDID:be8aeeba-0c02-41a0-92a3-94dc7dc7eeca,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 6c2db458c47511f0a52f393f94899d25-20251118
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <quan.zhou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1584989260; Tue, 18 Nov 2025 04:55:05 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Tue, 18 Nov 2025 19:55:02 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Tue, 18 Nov 2025 19:55:01 +0800
+From: Quan Zhou <quan.zhou@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	Leon Yen <Leon.Yen@mediatek.com>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>, Allan Wang <allan.wang@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Shengxi Xu
+	<shengxi.xu@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, linux-wireless
+	<linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Quan Zhou <quan.zhou@mediatek.com>
+Subject: [patch] wifi: mt76: fix wifi init fail by setting MCU_RUNNING state after CLC load
+Date: Tue, 18 Nov 2025 19:54:54 +0800
+Message-ID: <19ec8e4465142e774f17801025accd0ae2214092.1763465933.git.quan.zhou@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251118_035511_528693_76D45AC0 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,113 +91,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, November 18, 2025 9:31:08 AM CET Rose Wu wrote:
-> Hi,
-> 
-> On Mon, 2025-11-17 at 19:57 +0100, Rafael J. Wysocki wrote:
-> > 
-> > Make two changes to address this problem.
-> > 
-> > First, reorder device_suspend_late() to only disable runtime PM for a
-> > device if the power.is_late_suspended flag is going to be set for it.
-> > In all of the other cases, disabling runtime PM for the device is not
-> > in fact necessary.
-> > 
-> > Second, make device_resume_early() only enable runtime PM for the
-> > devices with the power.is_late_suspended flag set.
-> > 
-> 
-> My concern is with the error path in device_suspend_late().
-> If a device fails its dpm_run_callback(), it appears that its
-> power.is_late_suspended flag is not set, potentially leaving its runtime
-> PM disabled during the resume sequence.
+Set the MT76_STATE_MCU_RUNNING bit only after mt7921_load_clc()
+has successfully completed. Previously, the MCU_RUNNING state
+was set before loading CLC, which could cause conflict between
+chip mcu_init retry and mac_reset flow, result in chip init fail
+and chip abnormal status. By moving the state set after CLC load,
+firmware initialization becomes robust and resolves init fail issue.
 
-Right, pm_runtime_enable() is missing in the error path after calling
-dpm_run_callback().
-
+Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
 ---
-From: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+ drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Runtime PM should only be enabled in device_resume_early() if it has
-been disabled for the given device by device_suspend_late().  Otherwise,
-it may cause runtime PM callbacks to run prematurely in some cases
-which leads to further functional issues.
-
-Make two changes to address this problem.
-
-First, reorder device_suspend_late() to only disable runtime PM for a
-device when it is going to look for the device's callback.  In all of
-the other cases, disabling runtime PM for the device is not in fact
-necessary.  However, if the device's callback returns an error and the
-power.is_late_suspended flag is not going to be set, enable runtime
-PM so it only remains disabled when power.is_late_suspended is set.
-
-Second, make device_resume_early() only enable runtime PM for the
-devices with the power.is_late_suspended flag set.
-
-Fixes: 443046d1ad66 ("PM: sleep: Make suspend of devices more asynchronous")
-Reported-by: Rose Wu <ya-jou.wu@mediatek.com>
-Closes: https://lore.kernel.org/linux-pm/70b25dca6f8c2756d78f076f4a7dee7edaaffc33.camel@mediatek.com/
-Cc: 6.16+ <stable@vger.kernel.org> # 6.16+
-Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
----
-
-v1 -> v2: Add pm_runtime_enable() to device_suspend_late() error path (Rose).
-
----
- drivers/base/power/main.c |   15 ++++++++-------
- 1 file changed, 8 insertions(+), 7 deletions(-)
-
---- a/drivers/base/power/main.c
-+++ b/drivers/base/power/main.c
-@@ -941,11 +941,11 @@ Run:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index 8c5e6bdc0fc9..833d0ab64230 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -646,10 +646,10 @@ int mt7921_run_firmware(struct mt792x_dev *dev)
+ 	if (err)
+ 		return err;
  
- Skip:
- 	dev->power.is_late_suspended = false;
-+	pm_runtime_enable(dev);
+-	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
+ 	err = mt7921_load_clc(dev, mt792x_ram_name(dev));
+ 	if (err)
+ 		return err;
++	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
  
- Out:
- 	TRACE_RESUME(error);
+ 	return mt7921_mcu_fw_log_2_host(dev, 1);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index d8f5ecebf5dc..cf0fdea45cf7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -1054,10 +1054,10 @@ int mt7925_run_firmware(struct mt792x_dev *dev)
+ 	if (err)
+ 		return err;
  
--	pm_runtime_enable(dev);
- 	complete_all(&dev->power.completion);
+-	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
+ 	err = mt7925_load_clc(dev, mt792x_ram_name(dev));
+ 	if (err)
+ 		return err;
++	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
  
- 	if (error) {
-@@ -1630,12 +1630,6 @@ static void device_suspend_late(struct d
- 	TRACE_DEVICE(dev);
- 	TRACE_SUSPEND(0);
- 
--	/*
--	 * Disable runtime PM for the device without checking if there is a
--	 * pending resume request for it.
--	 */
--	__pm_runtime_disable(dev, false);
--
- 	dpm_wait_for_subordinate(dev, async);
- 
- 	if (READ_ONCE(async_error))
-@@ -1649,6 +1643,12 @@ static void device_suspend_late(struct d
- 	if (dev->power.syscore || dev->power.direct_complete)
- 		goto Complete;
- 
-+	/*
-+	 * Disable runtime PM for the device without checking if there is a
-+	 * pending resume request for it.
-+	 */
-+	__pm_runtime_disable(dev, false);
-+
- 	if (dev->pm_domain) {
- 		info = "late power domain ";
- 		callback = pm_late_early_op(&dev->pm_domain->ops, state);
-@@ -1679,6 +1679,7 @@ Run:
- 		WRITE_ONCE(async_error, error);
- 		dpm_save_failed_dev(dev_name(dev));
- 		pm_dev_err(dev, state, async ? " async late" : " late", error);
-+		pm_runtime_enable(dev);
- 		goto Complete;
- 	}
- 	dpm_propagate_wakeup_to_parent(dev);
-
-
+ 	return mt7925_mcu_fw_log_2_host(dev, 1);
+ }
+-- 
+2.45.2
 
 
