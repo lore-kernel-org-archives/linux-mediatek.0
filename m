@@ -4,67 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9FAECE8D6B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Nov 2025 22:46:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52105CEBF61
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Nov 2025 01:30:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ru0z9ROYImKtsAHGHLJCxvP3kC01q8N/ypSYeKT8uJg=; b=I4IK57e9MyDjqim7H4sLhd6otY
-	KmEEanWWH7Hjwu7yZdXtO82AWtc1u8qqEdh9aUQF+kZvY5OjohoLnHPAduRhpwydPRTucOdsjJMlU
-	9TACZeGD2/zb3X9sf5gZsy3qc1UF50Z6EcPGrXF0T5zoqi7HZeYU69QmvFWvf3P+ytPPiwzpq/814
-	s4X4DLNCM+zn41KzVjwHg8Jm3Y6WPRBas+bLPxzhUW//OpHK2w6UhVPjMtDm2VyPOzdMWSgMGlSfh
-	nDuo//7hhlXaYbrB50Q5Iy0r5bxyOV9m+13smY8YyMMi/hI6lfk9B1ijGFOXcksBamxtJvOpoy3YK
-	MdMbzcmQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bxEjiiQIXypnGaMm2YV0gh5gU0/Rq/qPeCgs1Qr4rXw=; b=NV50fGZQ+c+DQfS0owKyCZPCf9
+	IqtLaqZCrQK0G9G2Ju0lRrntkeT7mcmuCG0AZ+Ll4XjwnrwyRvWpy1CggQ6RkalzxwyzCmWGpYtXf
+	seGPr8SkZOGGHoVIQXEp9RnHRQPeoJiM9Jh3MJ0UnMVuBAlv26FNHBEh6bktgZU573Kwj0d2BTG9X
+	lQ24iKhypgDS5F6CrK/JYbP/qtqMku+LKGyUiBcd8eZ8wPCiOLortNbkhMxTBhTcJ5heNejAFhZ1V
+	e9M3tpUdKykPzSfoJIDXBgvsaiWx1BW09+uYddERmCYQpDEOzMwNBSPeLlJzrQrtcB8e91qB/niwL
+	/YbiIWLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL7z5-0000000Gy1M-43QE;
-	Mon, 17 Nov 2025 22:46:07 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vLAYN-0000000H8Lq-04Aq;
+	Tue, 18 Nov 2025 01:30:43 +0000
+Received: from mail-m3270.qiye.163.com ([220.197.32.70])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vL7z0-0000000Gy08-14f6;
-	Mon, 17 Nov 2025 22:46:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8A759417BD;
-	Mon, 17 Nov 2025 22:46:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD5ADC2BCAF;
-	Mon, 17 Nov 2025 22:46:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763419561;
-	bh=lkWDRMjVGIhRXjYODF4NGeavO5+MliWUeaJhzdHGjpE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=o8ehKzTdEOposLsvgoWshvL/XdFjL4Xkh7uAxoW3kr+1C2Uys/U6eggblcIeLjU1N
-	 AGeS7br0F8s7KGmBDqQA/VNZ0Xmn7exZmDD6Qkq/sLnY0fAja0OjHd7Hp7ObTLdfMq
-	 vMY0EV6NLm0dw32r6u84XJ/bs+9p35DZE8MkkEOcYFka7Lf+Fyza0JBWxNXUn4vH0y
-	 OE7uhfofHxQkMSWY8/DVI4lfUTF2nIK5AsDXx0n+ZEjJn2ANVMMPjm/uVbmg3v+dvH
-	 NFMi0F5Ogapns/98f51SFH2tYbq3zvBVGVNSt0lQGmUdqpjtohUVpadjzAFQtg1ZPZ
-	 8Faj19KonXhkg==
-Date: Mon, 17 Nov 2025 16:45:58 -0600
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Conor Dooley <conor@kernel.org>
-Cc: Conor Dooley <conor+dt@kernel.org>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Lee Jones <lee@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>
-Subject: Re: [PATCH 2/2] dt-bindings: mfd: document syscons falling back to
- atmel,sama5d2-sfrbu
-Message-ID: <176341955828.856915.4185012775143891739.robh@kernel.org>
-References: <20251117-aeration-smock-5e7ac06e2942@spud>
- <20251117-marlin-mustang-5ffda4d211c7@spud>
+	id 1vLAYI-0000000H8L5-3jhZ;
+	Tue, 18 Nov 2025 01:30:41 +0000
+Received: from [172.16.12.51] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 29e9711a9;
+	Tue, 18 Nov 2025 09:30:31 +0800 (GMT+08:00)
+Message-ID: <26019e39-d36a-4290-ac80-c8b0b09104c8@rock-chips.com>
+Date: Tue, 18 Nov 2025 09:30:29 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251117-marlin-mustang-5ffda4d211c7@spud>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/3] iommu: Allow drivers to say if they use
+ report_iommu_fault()
+To: Jason Gunthorpe <jgg@nvidia.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Christian Benvenuti <benve@cisco.com>, Heiko Stuebner <heiko@sntech.de>,
+ iommu@lists.linux.dev, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Joerg Roedel <joro@8bytes.org>, Leon Romanovsky <leon@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Nelson Escobar <neescoba@cisco.com>, Rob Clark
+ <robin.clark@oss.qualcomm.com>, Robin Murphy <robin.murphy@arm.com>,
+ Samuel Holland <samuel@sholland.org>,
+ Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
+ Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
+ Yong Wu <yong.wu@mediatek.com>
+Cc: Lu Baolu <baolu.lu@linux.intel.com>, patches@lists.linux.dev
+References: <3-v2-25fc75484cab+ab-iommu_set_fault_jgg@nvidia.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <3-v2-25fc75484cab+ab-iommu_set_fault_jgg@nvidia.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-HM-Tid: 0a9a9495ba3803abkunm15b0adc69f2477
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRkdHlYZGhhKTE4dT0kYQxhWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=QRo1qMrOcfJjKh6zkNQm7Q+laoUJwAHpzYU+Kfpz2Zq1FQVguylVfS3NwtS9e2eavcEEnmDelf0Cvg+rdRCX0a5Ga6KMJ9m3Z32pyEpqYVaYKezexAoecIhCuJTveZ363vARWnJIw7yOvVgaM6baUYg4KhPn0q2mZr+M2K8HeyY=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=bxEjiiQIXypnGaMm2YV0gh5gU0/Rq/qPeCgs1Qr4rXw=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251117_144602_331488_66D7DBBA 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20251117_173039_808915_43E02288 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,32 +84,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello Jason,
 
-On Mon, 17 Nov 2025 16:29:31 +0000, Conor Dooley wrote:
-> From: Conor Dooley <conor.dooley@microchip.com>
-> 
-> The sfrbu on both sama7g5 and sama6d65 both fall back to sama5d2 in
-> devicetrees, but the former two compatibles were undocumented. Now that
-> syscon.yaml has easy support for multiple soc-specific compatibles, add
-> both of these undocumented devices.
-> 
-> Signed-off-by: Conor Dooley <conor.dooley@microchip.com>
-> ---
-> CC: Nicolas Ferre <nicolas.ferre@microchip.com>
-> CC: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> CC: Claudiu Beznea <claudiu.beznea@tuxon.dev>
-> CC: Lee Jones <lee@kernel.org>
-> CC: Rob Herring <robh@kernel.org>
-> CC: Krzysztof Kozlowski <krzk+dt@kernel.org>
-> CC: Conor Dooley <conor+dt@kernel.org>
-> CC: devicetree@vger.kernel.org
-> CC: linux-kernel@vger.kernel.org
-> CC: linux-arm-kernel@lists.infradead.org
-> CC: linux-mediatek@lists.infradead.org
->  Documentation/devicetree/bindings/mfd/syscon.yaml | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
+On 11/7/2025 4:34 AM, Jason Gunthorpe wrote:
+> report_iommu_fault() is an older API that has been superseded by
+> iommu_report_device_fault() which is capable to support PRI.
+>
+> Only two external drivers consume this, drivers/remoteproc and
+> drivers/gpu/drm/msm. Ideally they would move over to the new APIs, but for
+> now protect against accidentally mix and matching the wrong components.
+>
+> The iommu drivers support either the old iommu_set_fault_handler() via the
+> driver calling report_iommu_fault(), or they are newer server focused
+> drivers that call iommu_report_device_fault().
+>
+> Include a flag in the iommu_ops if the driver calls report_iommu_fault()
+> and block iommu_set_fault_handler() for domain's of iommu drivers that
+> can't support it.
+>
+> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
+> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
+> Reviewed-by: Vasant Hegde <vasant.hegde@amd.com>
+> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Sorry for the noise. Sometimes non-IOMMU drivers, such as DRM devices, also want to handle IOMMU fault events, so they might use iommu_set_fault_handler() before. What API should they use as an alternative now? Thank you.
+
+
+-- 
+Best,
+Chaoyi
 
 
