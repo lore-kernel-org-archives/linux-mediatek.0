@@ -4,56 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDC1ECF6487
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 22:27:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E6DBCF6494
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 23:32:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:MIME-Version:Content-Transfer-Encoding:Content-Type
-	:Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zxiZ256yC1KWBY4rW2iAW+zPotMWvRus/oGs+S2yL8k=; b=Yfq0Di9U/G77BaTNQLxbxcTRIx
-	Ej93gPMsgF68jQtFKSd6vNRgZyPK4pcI12U18pUOm1vsg5DwFOKXrGg3bGf87FWwVJfnqzRIIjB7X
-	YfU/SXJBb4CkqyVovl7qevZv2W4jqL0daPcsSF0/ktF+ZXquV7NGU5g8bBZCxndWzvBN31U6ckGKA
-	Zq0labh0zD18vIxkssiMrgxIMuC8l2iDh6Ld2zJHNpSo5r+wnT7ZaKK7F1pSkYq7FsPXkk6AkXdjh
-	a+qLUDpjGCgQ0VsYqOHfb9N3a3QrZVGsBu4oBKEzx+N6MVXBcCHSSwQqRWWyHF3GojFTeUGCz7nwf
-	+2YDFoWQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kOel1Unbxxr3YDk751ysNmeBQNAgsVDZQMuGKijlvqk=; b=oo3/Np3gx0HEddMVGt+nPmMvrX
+	t4glwzpoNYd1AmooMYFO7ENS/+iSUT0uav96vtI1/2vxSIkQh0hwWoTfdFGcaOUcruu0saqOFmKSg
+	JE22zKuQFskey6h7DIdc/hRKLNh2W63SQAu8U9ShJUJHWB6ARDDFsvxzBl2jh+3OIbO85x49p8BUc
+	zIzs/+xgr/rdNIj5x2UC3U8C2iupMzRqtDfI6o31Z8h/Xn/FYP071sZOikvAjsAzbSFvlnOikjX0j
+	YSIt61MydotwUYJ4gYp3+BQ90h8KP2TPmzOvhlnR/GcY0Ls0cwM8VG/KQPh/w/g1cZrpSIhm5MZYA
+	/2zf2yVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLqeT-00000005nJj-1m2V;
-	Wed, 19 Nov 2025 22:27:49 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vLrej-00000005qFn-32pu;
+	Wed, 19 Nov 2025 23:32:09 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLqeP-00000005nHT-0X3F;
-	Wed, 19 Nov 2025 22:27:46 +0000
+	id 1vLreh-00000005qFb-2u4y
+	for linux-mediatek@lists.infradead.org;
+	Wed, 19 Nov 2025 23:32:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7333B439EE;
-	Wed, 19 Nov 2025 22:27:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F339C116B1;
-	Wed, 19 Nov 2025 22:27:44 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C42C160010;
+	Wed, 19 Nov 2025 23:32:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5FBBC4CEF5;
+	Wed, 19 Nov 2025 23:32:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763591264;
-	bh=/8R3jAWH+04a5Vi5dU1uhypE32MurQD61AqM5GlfyvE=;
-	h=From:Date:Cc:To:In-Reply-To:References:Subject:From;
-	b=imgY6TDyVrEfccxsqc/JbFsbLsaXzoHtyOOV8BlZzxLiO+SL76sJwg9Zh+ELx2/J5
-	 OgiA92KZgdudADz9TaTi1aTtC7vtO6iteU49A97EOyJaxPB25BjGev/FWSmPEPKzVV
-	 pykdbZKYcDMu6XBqFPl68iypkMuz7ufGCe91P+hSSVsjPh98sQHRwEC1MEUb1jQnJq
-	 uB8qS+0igzH1+kRpLKnpX7s9+1LG8+M6+lHnA2WM3D+l2+e8jTMtmZZDhAzlhreHyY
-	 l++gSrpKYrb06UMcMGC6iJzzLZ1FgZfHrk8QR9Pbkq+AOLQyaQ8WCHS7VxhqnjFG07
-	 cH6by7OtQwJKA==
-From: Rob Herring <robh@kernel.org>
-Date: Wed, 19 Nov 2025 16:27:42 -0600
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	s=k20201202; t=1763595126;
+	bh=laRUt/SfESbpQ9OHY7uw4QNXguFAXSsPBJi0Jw0N/Bg=;
+	h=From:To:Subject:Date:From;
+	b=Sfc1NAHlJmwQSJtzjRxtJV0xyuer9qwegg9LfjEEGlwc9Zg4bwFC5nYVmFD4JR6OW
+	 fjpCu1L5Fx5t8d/ObbEk13k4n1TIrI882d5QRHRsZ0XDaZZl5KbIU/ukTwDeySNohU
+	 T3nmXYuxdqYJLRvB/8+0C4XeHa0BzvdMz/6YRiWLjrT7kjW7dVrd5Mtwt6wUGgwl8x
+	 YAhegDs6F58nCgAyq/QKpXFJB3w4rrPCRQxJiAE6viF/cMKpWShqsaz9iTBQzXm4FI
+	 /SL+d6PJPRvLS4n0wnLGrk++x69Yp0XIDajGpYBjctAiIPaZ8GR6DnXBiOPgFiZXGY
+	 PhaOsRqHIasbg==
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: David Airlie <airlied@linux.ie>,
+	Simona Vetter <simona@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	Johan Hovold <johan@kernel.org>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sjoerd Simons <sjoerd@collabora.com>,
+	Jay Liu <jay.liu@mediatek.com>,
+	Miaoqian Lin <linmq006@gmail.com>
+Subject: [GIT PULL] mediatek drm next - 20251120
+Date: Wed, 19 Nov 2025 23:32:02 +0000
+Message-Id: <20251119233202.10034-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-To: Frank Wunderlich <linux@fw-web.de>
-In-Reply-To: <20251119175124.48947-1-linux@fw-web.de>
-References: <20251119175124.48947-1-linux@fw-web.de>
-Message-Id: <176359122549.3467832.13147318038488444877.robh@kernel.org>
-Subject: Re: [PATCH v1 0/2] build full dtbs for BananaPi R3/R4(Pro)
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_142745_183344_818815D2 
-X-CRM114-Status: GOOD (  16.44  )
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,67 +70,89 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi, Dave & Sima:
 
-On Wed, 19 Nov 2025 18:51:21 +0100, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Build devicetree binaries for testing overlays and providing users
-> full dtb without using overlays for Bananapi R4 (pro) variants.
-> 
-> It is not required to build all possible combinations, only for
-> common usecases and to test if all overlays can be applied.
-> 
-> This series is based on
-> https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/log/?h=v6.18-next/dts64
-> 
-> Frank Wunderlich (2):
->   arm64: dts: mediatek: mt7986: add dtbs with applied overlays for
->     bpi-r3
->   arm64: dts: mediatek: mt7988: add dtbs with applied overlays for
->     bpi-r4 (pro)
-> 
->  arch/arm64/boot/dts/mediatek/Makefile | 53 +++++++++++++++++++++++++++
->  1 file changed, 53 insertions(+)
-> 
-> --
-> 2.43.0
-> 
-> 
-> 
+This includes:
+1. Fix probe resource leaks
+2. Add support for MT8195/88 HDMIv2 and DDCv2
+3. Fix CCORR mtk_ctm_s31_32_to_s1_n function issue
+4. Fix device node reference leak in mtk_dp_dt_parse()
 
+Regards,
+Chun-Kuang.
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+The following changes since commit 3a8660878839faadb4f1a6dd72c3179c1df56787:
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+  Linux 6.18-rc1 (2025-10-12 13:42:36 -0700)
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+are available in the Git repository at:
 
-  pip3 install dtschema --upgrade
+  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-20251120
 
+for you to fetch changes up to a846505a193d7492ad3531e33cacfca31e4bcdd1:
 
-This patch series was applied (using b4) to base:
- Base: attempting to guess base-commit...
- Base: tags/next-20251119 (exact match)
- Base: tags/next-20251119 (use --merge-base to override)
+  drm/mediatek: Fix device node reference leak in mtk_dp_dt_parse() (2025-11-19 23:01:28 +0000)
 
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
+----------------------------------------------------------------
+Mediatek DRM Next - 20251120
 
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20251119175124.48947-1-linux@fw-web.de:
+1. Fix probe resource leaks
+2. Add support for MT8195/88 HDMIv2 and DDCv2
+3. Fix CCORR mtk_ctm_s31_32_to_s1_n function issue
+4. Fix device node reference leak in mtk_dp_dt_parse()
 
-scripts/Makefile.dtbs:20: .dtbo is not applied to any base: mt8395-radxa-nio-12l-8-hd-panel.dtbo
+----------------------------------------------------------------
+AngeloGioacchino Del Regno (9):
+      drm/mediatek: mtk_hdmi: Improve mtk_hdmi_get_all_clk() flexibility
+      drm/mediatek: mtk_hdmi: Add HDMI IP version configuration to pdata
+      drm/mediatek: mtk_hdmi: Split driver and add common probe function
+      drm/mediatek: mtk_hdmi_common: Make CEC support optional
+      drm/mediatek: mtk_hdmi_common: Assign DDC adapter pointer to bridge
+      drm/mediatek: mtk_hdmi_common: Add OP_HDMI if helper funcs assigned
+      drm/mediatek: mtk_hdmi_common: Add var to enable interlaced modes
+      drm/mediatek: Introduce HDMI/DDC v2 for MT8195/MT8188
+      drm/mediatek: mtk_hdmi_v2: Add debugfs ops and implement ABIST
 
+Jay Liu (1):
+      drm/mediatek: Fix CCORR mtk_ctm_s31_32_to_s1_n function issue
 
+Johan Hovold (5):
+      drm/mediatek: mtk_hdmi: Fix probe device leaks
+      drm/mediatek: Fix probe resource leaks
+      drm/mediatek: Fix probe memory leak
+      drm/mediatek: Fix probe device leaks
+      drm/mediatek: ovl_adaptor: Fix probe device leaks
 
+Louis-Alexis Eyraud (1):
+      drm/mediatek: mtk_hdmi: Drop redundant clock retrieval in mtk_hdmi_get_cec_dev
 
+Miaoqian Lin (1):
+      drm/mediatek: Fix device node reference leak in mtk_dp_dt_parse()
 
+Sjoerd Simons (1):
+      drm/mediatek: mtk_hdmi_common: Defer probe when ddc i2c bus isn't available yet
+
+ drivers/gpu/drm/mediatek/Kconfig                |   23 +-
+ drivers/gpu/drm/mediatek/Makefile               |    3 +
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c         |   33 +-
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h         |    2 +-
+ drivers/gpu/drm/mediatek/mtk_disp_ccorr.c       |   23 +-
+ drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c |   12 +
+ drivers/gpu/drm/mediatek/mtk_dp.c               |    1 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c          |    4 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi.c             |  539 +-------
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.c      |  456 +++++++
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.h      |  198 +++
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c      |  396 ++++++
+ drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h     |  263 ++++
+ drivers/gpu/drm/mediatek/mtk_hdmi_v2.c          | 1521 +++++++++++++++++++++++
+ 14 files changed, 2925 insertions(+), 549 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_common.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_regs_v2.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
 
