@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69B5DCF34A1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 13:07:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A318CF34A1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 13:08:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L/DuXoetl753XeoH5JBP+Wrs0bAqi1NwkMF5ggTwKPI=; b=GqazfQuY9+nzLn9DcWrsRkVn8d
-	oFXY6oewrTH14v9QB+dZhaOJpF4ifuRj1NFrtQ5hizUvUtYTaJaHA7HRtjNbfBGnsEIUiJgj0oO/2
-	PQDEMCL/R5cry2FQA+MG39rACs0sWtDEBOQZmi3hz81H8uM4q7JuqSeC3e/fQxEyvA8mCLFcw98gu
-	AVTsZgoowVwSSCInxri3nAVHTKEToIqXLDqU2FymA09wROSW7wiwdwTJMUp/YBlgbBlBus6Wd4Ivy
-	W5j7FJlwnBjyz8ia7QRZn2PnBxamBp9URi32AKFJYktLxWueOZ+6aN7hAgbmhtYNTknndhFniIX2w
-	N3sOHPRA==;
+	bh=MmpUcHVH4AV/UOJX3A0mnvWDkPDADuc2PuGmVA8vqXc=; b=Uxv5tcisYaDS2t/cTBLHBj3Rwd
+	YR/fr+RDhlv8iN5RrYIoKkSuF2SlUx3A0MoaoAnqgIzwg+iy44rRqDY1djat/cIp8de5XrjwTGV93
+	Q1KaZK2rqGQSnUyvrUiHnONFWzyFk3TYq6z98GYn7vVsLgwbm6YGR1ICfk/Gf/deNie20ah6uEDdH
+	hmnoOpGL3YYhOo8gsjCt7q5FUxYwYUvkvSmYIPUrzSZdAs+2dzLhroeuBkmSDL2PoSD1bPXiahWyQ
+	0/3uSWPWWfxggKJ+7cO5cOQyHBwdENZOl40Xki7Y5ir7UQM5SfYdhZOa3cChx7IavRIIYsX8Ra1tH
+	Kpv4s+tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLhuc-00000003EnN-1zbN;
-	Wed, 19 Nov 2025 13:07:54 +0000
+	id 1vLhul-00000003Ess-1mii;
+	Wed, 19 Nov 2025 13:08:03 +0000
 Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLhuZ-00000003Ekx-1Ayg;
-	Wed, 19 Nov 2025 13:07:52 +0000
+	id 1vLhuh-00000003EqF-2tUG;
+	Wed, 19 Nov 2025 13:08:01 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 4BE0BC1118A;
-	Wed, 19 Nov 2025 13:07:27 +0000 (UTC)
+	by smtpout-04.galae.net (Postfix) with ESMTPS id B5F44C11188;
+	Wed, 19 Nov 2025 13:07:35 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 8223660699;
-	Wed, 19 Nov 2025 13:07:49 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 6880010371A51;
-	Wed, 19 Nov 2025 14:07:39 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id EA9F660699;
+	Wed, 19 Nov 2025 13:07:57 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 05BB710371A4D;
+	Wed, 19 Nov 2025 14:07:47 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1763557667; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1763557676; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=L/DuXoetl753XeoH5JBP+Wrs0bAqi1NwkMF5ggTwKPI=;
-	b=cJJeech+j8YzxD1bMIO6H2SeggKIcT8NrESK47EY4eYT0VexKcOBmJLBu4WtHcx/wQ2NHJ
-	b/w49MB76ictNWa/evG+tVJvZj4gMXn/v0LDHtcQOn1hjOzpoguGOK6bXsQo1PE2zGhvvV
-	LOZy+PhrHWZsESe9TnbqBHqFhS6RAutEfjCbnft0/7qilzMaF6ZLhdkPKjKduQWXABowzi
-	qqTtQAmY9j6DYQ7Tc4sU0D050lBFGkRnHT9hfGRGks1IRpNhOFSBOU3f1RDzlsjSW4GwXD
-	xPKxq/rnnMx1d63ckr4JuoQiQUNB1RtFgpZyCJ75dent2JfupK8/sDB4rBdK6Q==
+	bh=MmpUcHVH4AV/UOJX3A0mnvWDkPDADuc2PuGmVA8vqXc=;
+	b=uxnBVIjB1u0Ryuyc/Y3TLB0AABl4E/d5EvaNX1Hzww2fiZj7I6R7MKAoQWss0ZsAme6oja
+	0+zU9y8nnTPbbOF9PBUCcGP1ym2Di51Lm403M3KikDnuKuGa5sDoX36PVxhACPpXQOfy32
+	CCS0r4NinwdNrP12XfUkAPDUUW+RS6AO2b3636QrCqgP9/ieItSOvVqx51dYkNQ8E32xsR
+	iO+tHilJdxfNqGm2uHv5esAb12kXHDxcpXtRVGwZAF8uMt5eSfw2tUTJTsKygOsVbS/lSR
+	Fbrhd1iJXmmNVktCWSxTdIk9MMEjfqSzjnUwvItMb7uHTtg1En6E6wzip3fACg==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Wed, 19 Nov 2025 14:05:43 +0100
-Subject: [PATCH 12/26] drm/bridge: imx8qxp-pxl2dpi: use
- devm_drm_of_find_bridge() to put the next and companion bridges
+Date: Wed, 19 Nov 2025 14:05:44 +0100
+Subject: [PATCH 13/26] drm/bridge: lt8912b: use devm_drm_of_find_bridge()
+ to put the hdmi bridge
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-12-0db98a7fe474@bootlin.com>
+Message-Id: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-13-0db98a7fe474@bootlin.com>
 References: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-0-0db98a7fe474@bootlin.com>
 In-Reply-To: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-0-0db98a7fe474@bootlin.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -94,8 +94,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>,
 X-Mailer: b4 0.14.3
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_050751_475147_77B3050B 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20251119_050759_876424_37596E58 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,31 +117,22 @@ reference on remove or on probe failure.
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/bridge/lontium-lt8912b.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c b/drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c
-index 111310acab2c..82c407525c01 100644
---- a/drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c
-+++ b/drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c
-@@ -279,7 +279,7 @@ imx8qxp_pxl2dpi_find_next_bridge(struct imx8qxp_pxl2dpi *p2d)
- 		goto out;
+diff --git a/drivers/gpu/drm/bridge/lontium-lt8912b.c b/drivers/gpu/drm/bridge/lontium-lt8912b.c
+index 342374cb8fc6..eb2b607948a7 100644
+--- a/drivers/gpu/drm/bridge/lontium-lt8912b.c
++++ b/drivers/gpu/drm/bridge/lontium-lt8912b.c
+@@ -723,7 +723,7 @@ static int lt8912_parse_dt(struct lt8912 *lt)
+ 		goto err_free_host_node;
  	}
  
--	next_bridge = of_drm_find_bridge(remote);
-+	next_bridge = devm_drm_of_find_bridge(p2d->dev, remote);
- 	if (!next_bridge) {
- 		next_bridge = ERR_PTR(-EPROBE_DEFER);
- 		goto out;
-@@ -347,7 +347,7 @@ static int imx8qxp_pxl2dpi_parse_dt_companion(struct imx8qxp_pxl2dpi *p2d)
- 		goto out;
- 	}
- 
--	p2d->companion = of_drm_find_bridge(companion);
-+	p2d->companion = devm_drm_of_find_bridge(dev, companion);
- 	if (!p2d->companion) {
+-	lt->hdmi_port = of_drm_find_bridge(port_node);
++	lt->hdmi_port = devm_drm_of_find_bridge(lt->dev, port_node);
+ 	if (!lt->hdmi_port) {
  		ret = -EPROBE_DEFER;
- 		DRM_DEV_DEBUG_DRIVER(p2d->dev,
+ 		dev_err_probe(lt->dev, ret, "%s: Failed to get hdmi port\n", __func__);
 
 -- 
 2.51.1
