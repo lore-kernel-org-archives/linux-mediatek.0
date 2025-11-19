@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 695FBCF34AB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 13:08:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94153CF34AB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 13:08:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hr5lfswJPfTid92tMzgAglYJE6XMLDQMI+0uIgfw4lc=; b=uqxIPZVXjodE2Hy8aVpmuwJCa2
-	KJ4EQKGEctTELsgGrzXLoG3U1MrSIRNq119x/KIyYezNhrUJ9MhdQbXAgnhnH8/nhTqD3FdmDi8c5
-	bogkojcgysm0kd1swHr0/CFcrwLduCyHYq0iThtgNZ/8aNhS1A+bSaK0aqUDtaf+ksw/5qU9srJBg
-	bvS5lCKxEgLgJGyKRMcsHhS2unTKKeu8ehv2Z2YqOzx+yIlf3i6BXf2h1GAacRS5zrbL3aQV9jqrN
-	y+wF1NbFWw9fXlEx5BIfpct/aEjAxzFEzGvimNgjAqE3MajL7IIh2jjznK/GJDUOkYoCWt84S5w/1
-	G7Kcvc9A==;
+	bh=UMItbV1BqSBtiyoTv8FuwBwyend0qlHR9kODuTk7EBs=; b=ZXMOGrxaW9kY+iuIp2gLJtaii4
+	t4TI+mw5Re9dFMGuvDl/4HZ6+o7Jrfd+T/o/063Sa0KfTJrS2Mvv1Hrb6q3BnuxRufUEGbtje4hBq
+	gRk03gMo8CbvIp0XXUjRuuOHm4HzVJnCiKsth3EzMF8RG0/Vhc1MLR2sI4WRlF1BkVIMcFipC3aXx
+	Te9c+jQLKm7Ljhdg3R25BPNNX2k6uLCS3QreORBFa2vjYmajZfwX+8jHFWxxdQM03nEMB+egXI9mI
+	+v73e7KuAcBumeo/4lh2oObi+yeQJkSinlnVAoWgyW6qaew7UoyYe+X+A6o46LxIP9zZR2ivz/igv
+	8w61tsog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLhuw-00000003EyN-25jq;
-	Wed, 19 Nov 2025 13:08:14 +0000
+	id 1vLhv3-00000003F2M-1DD5;
+	Wed, 19 Nov 2025 13:08:21 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLhut-00000003Ewj-0f0w;
-	Wed, 19 Nov 2025 13:08:11 +0000
+	id 1vLhv1-00000003F1N-1GsX
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 19 Nov 2025 13:08:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=hr5lfswJPfTid92tMzgAglYJE6XMLDQMI+0uIgfw4lc=; b=O35DABsgN8wogevCl7TtiEfHbW
-	v0Ya5E8PRWqrQo8g0LH07iuJDPuYkPgic+XHnXTJKT/iK6xWh3WOdcaKzbOg0ZDpxwePLDK/eCyTi
-	+tEAXmkbbBN1dY98nRaCwDuaL4xyuTo0kq4g2U6tlyEzPqL6fbXsWAwNw2gBZ5kLCtSyI8RkMjd6k
-	4ipCIqVPE1FRNn95xbT2VKk5FPsxnoJ/MNt0+Mz4dAC31Xj06Jjm1XaNR5EmbGXdHIk9iww4NlmM/
-	cT9vnFvnE7fA8TQSPFBrzQm2tFgghgME4K3App8D6nPWNSkdfnDvGspyjYUGVf45+dHqzI7Sb9wWr
-	DC24rDjw==;
+	bh=UMItbV1BqSBtiyoTv8FuwBwyend0qlHR9kODuTk7EBs=; b=IGwGNd1hdLlxk8cyltc/OjgCuU
+	pNKrh2EIlH/xG8LotZ3UMUKGV+AxTuPjYqeolFT+azFSThqmVcTOPD5ERwqNicyqzJ0m/fvcOQpe8
+	LQQYyhH3h/ua+W/95O6bFqf10K8Z6BGaofMi2eh0y61UmOZ/F6YPEY/cc5++Wf6brqy2VAYSHeCEX
+	KfX3PajARpgsM14ylhUYl/jdsiV958/k2GPspbq5o8fiRtu3GfvCZ77+tUTsYvXk/2SjHcoeW65RD
+	s41sMqw01hU+lD31odMoD9RQrBrDe6l9352jQd5PNKrXbLgZlSDPqB3J8h8HNFXUFnh8WtyvKon8R
+	wO1sY/Sg==;
 Received: from smtpout-02.galae.net ([185.246.84.56])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLh3C-0000000CAPr-2Kxb;
-	Wed, 19 Nov 2025 12:12:44 +0000
+	id 1vLh3L-0000000CASW-0o7Q
+	for linux-mediatek@lists.infradead.org;
+	Wed, 19 Nov 2025 12:12:53 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 1AFE31A1BDE;
-	Wed, 19 Nov 2025 13:08:07 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id AFCF61A1BDA;
+	Wed, 19 Nov 2025 13:08:15 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id DFE0660699;
-	Wed, 19 Nov 2025 13:08:06 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 8C1FF10371A50;
-	Wed, 19 Nov 2025 14:07:56 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 7B4F260699;
+	Wed, 19 Nov 2025 13:08:15 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 46EAE10371A4D;
+	Wed, 19 Nov 2025 14:08:05 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1763557684; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1763557693; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=hr5lfswJPfTid92tMzgAglYJE6XMLDQMI+0uIgfw4lc=;
-	b=tGpJpcoTUvqr9D4fsPjYumEWmiGn8BvrW3vO5koUuEHVzn702FHNMUW+91SkHER9ysNHNv
-	HoYtvlfRDH4dY7Hcob43N1o5PJwrnCMzqK9zOKQFgRO6vjk6ruVmT/HLN2kKchk87pZIuX
-	eSaHiwLs0L5fli02HZiWphPIGM4wbJYcqjPCk+lcB5LRQyaRs7ifhGPqsWAS+SNozGLwo3
-	RKbgkFK7HrUY31Q4E1RLY99udlJihNY6b5zww3HCIkDFcNmUbnYMR11gLrA/45gSNI1xoq
-	tS6AmGApkDgX15e54FfKINq5ZzMuVjLuYNy5NytHPaN4+MvAVRDofiH/k5GTtw==
+	bh=UMItbV1BqSBtiyoTv8FuwBwyend0qlHR9kODuTk7EBs=;
+	b=vK5hzMDLgDAe4/q6DnEnn5bfdWZLtGGnBjzWeyv25mRKYdk8F9/vdd1y3/c0LEAXFOda8W
+	7KjQq5EnhRQWpXG2A/+3op7Jin/h+zb0WySpIcsNv2IfGuen/0Rbtxw56fOU8ymy3HdgMy
+	yR3rxi2xksUUtEZU3mUUyMGsBSwFiwYF0osffDI/h20AiJZFpLqRIZ4VLDN4lx6xP51UDE
+	Rw3vzHHphsnHKyL4EjruQ+gun05NIDYtEETL6bJQg78eKuNejwynI6ELl0apl34BoKxGk4
+	m6w/np10gGRk1Mex+aghV3+5pG5ba9uB014ZFleymMw0U3XJO3p3sFoLbIK/pQ==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Wed, 19 Nov 2025 14:05:45 +0100
-Subject: [PATCH 14/26] drm/bridge: tfp410: use devm_drm_of_find_bridge() to
- put the next bridge
+Date: Wed, 19 Nov 2025 14:05:46 +0100
+Subject: [PATCH 15/26] drm/bridge: imx8qxp-ldb: use
+ devm_drm_of_find_bridge() to put the companion bridge
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-14-0db98a7fe474@bootlin.com>
+Message-Id: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-15-0db98a7fe474@bootlin.com>
 References: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-0-0db98a7fe474@bootlin.com>
 In-Reply-To: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-0-0db98a7fe474@bootlin.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -108,8 +110,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>,
 X-Mailer: b4 0.14.3
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_121242_792419_FF2872FB 
-X-CRM114-Status: GOOD (  13.19  )
+X-CRM114-CacheID: sfid-20251119_121251_542063_E80E3210 
+X-CRM114-Status: GOOD (  12.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,22 +133,22 @@ reference on remove or on probe failure.
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/bridge/ti-tfp410.c | 2 +-
+ drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/bridge/ti-tfp410.c b/drivers/gpu/drm/bridge/ti-tfp410.c
-index b80ee089f880..f6074e78a772 100644
---- a/drivers/gpu/drm/bridge/ti-tfp410.c
-+++ b/drivers/gpu/drm/bridge/ti-tfp410.c
-@@ -362,7 +362,7 @@ static int tfp410_init(struct device *dev, bool i2c)
- 	if (!node)
- 		return -ENODEV;
+diff --git a/drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c b/drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c
+index 122502968927..e0bd227fd47a 100644
+--- a/drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c
++++ b/drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c
+@@ -552,7 +552,7 @@ static int imx8qxp_ldb_parse_dt_companion(struct imx8qxp_ldb *imx8qxp_ldb)
+ 		goto out;
+ 	}
  
--	dvi->next_bridge = of_drm_find_bridge(node);
-+	dvi->next_bridge = devm_drm_of_find_bridge(dev, node);
- 	of_node_put(node);
- 
- 	if (!dvi->next_bridge)
+-	imx8qxp_ldb->companion = of_drm_find_bridge(companion_port);
++	imx8qxp_ldb->companion = devm_drm_of_find_bridge(dev, companion_port);
+ 	if (!imx8qxp_ldb->companion) {
+ 		ret = -EPROBE_DEFER;
+ 		DRM_DEV_DEBUG_DRIVER(dev,
 
 -- 
 2.51.1
