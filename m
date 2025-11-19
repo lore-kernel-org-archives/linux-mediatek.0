@@ -4,112 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18D1CCF34AB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 13:09:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9304CF34B5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 14:22:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=axXT5p39UcLgfeXlnv3r+PQb3eCsVz2C9lrKQC2f4Uk=; b=qsiXOx7aIbPYKFQH4YaIauKhjN
-	6XTCmGgWnh8PWfHX0Yq6K8SHxASOV76JL/6H9V0SBfFce3Ud0Epa+K9tRdfI8wRR56yNZiSz/G3wi
-	xL5FWxDYqsIf76z8TSh1Ipcdhq+sSN359jPs9L4vj3c6ZO571rSi6WUBAroo3cZdoNE0vdy6yOvIt
-	pAB7mTnH2rjD8LUwVmqEKq+XcZQc6Sz+Y6V+XfEvdc+GVkgk6LBtX4V1sZaiiYLw2KTiJZucyYpdY
-	0bckFHhTrx4fSVAQWG5PLwB29KX0siB5+oMXGX7pSnGMVc4Jg/e5E1+QS/OwYaLVqhh0Q5XGY9KYg
-	0gBy2CMg==;
+	bh=KHIHzROR0vP9n7dvMFHoM55Ssw0KAKH53cQfe48RG2o=; b=IghZqKY2oxqKsKi0h9ehQTseSn
+	ziiGM60n4yTZgL0q9TT72xOKxlRdbWYt19kcC94kjKLEdNn1K83uW0qW8SebwL+gj/OC/0sgFtnnK
+	ydtzc2d28evEfeyZyXWHkLPV5M8+cjd7sWast8z2FcAiSAS3FSMwPrsnOkYFdiVh29hnDZmmhTv2r
+	T7q5AhOsHYq7I2l4MEf5EkzXfGFW5xMfy1btgbHOQf7de0BsxUQxZLKleJXXDpkNrkdJ/3C3R0Yu3
+	wwkRrB/HbBrSIoMabaRbGfnfcWJXU1ofmQkBNEVJhAlbD1jdpwLqKc2EJ0JyT6cevYShUetspCEAY
+	zUmMQmig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLhwc-00000003Fqc-0oEA;
-	Wed, 19 Nov 2025 13:09:58 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vLj4x-00000003MoD-3k2N;
+	Wed, 19 Nov 2025 14:22:39 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLhwZ-00000003FpY-43Ms;
-	Wed, 19 Nov 2025 13:09:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=axXT5p39UcLgfeXlnv3r+PQb3eCsVz2C9lrKQC2f4Uk=; b=f1o7TEU5+1xe/PI08bEvroku1t
-	ZkujTNMjgbUPeIOXnS9FZXW/ntzgLk03GstDZh1ew+wGDZgv8wNyTS9b/57RdYSe6Li0rQDN78jwo
-	zbiPs+/d70Kp8spuiYz3aGh6uZufaCouF75ptcx1t5GNmTvqAtYE2BAB9fiRxi0IoZrxupRipeM6s
-	YjHQIhhTiEf6PgbPvAW9ZlM30i44Vr4KfvZtnbKFbLfMLKnXdh4UvHkAMge298l6lAb9kG6iJrgJN
-	inadWNa+WRM4vX40eOl0sQ2S6ifb11I1d8iqm7fev9O77gs8L//rY4uOYZbF2aSDoQO5iNi7Qp3kk
-	Ib7wRWdg==;
-Received: from smtpout-03.galae.net ([185.246.85.4])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLh4t-0000000CAra-3XW7;
-	Wed, 19 Nov 2025 12:14:29 +0000
+	id 1vLj4u-00000003Mmu-22h2;
+	Wed, 19 Nov 2025 14:22:38 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 5E7214E4179C;
-	Wed, 19 Nov 2025 13:09:52 +0000 (UTC)
+	by smtpout-04.galae.net (Postfix) with ESMTPS id 29AA0C11188;
+	Wed, 19 Nov 2025 14:22:09 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 2F04860699;
-	Wed, 19 Nov 2025 13:09:52 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id D2F8810371A53;
-	Wed, 19 Nov 2025 14:09:42 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 594C360699;
+	Wed, 19 Nov 2025 14:22:31 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 468BE10371A62;
+	Wed, 19 Nov 2025 15:22:17 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1763557790; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=axXT5p39UcLgfeXlnv3r+PQb3eCsVz2C9lrKQC2f4Uk=;
-	b=OlX/PF+dhNGJG27mrsK1i4MNguYEVaaiKq83NP0yOr041d9TgIxWfbA2GyldpQEAfPLd3J
-	wNbvXQz9oBqELh/fqHBdK3mPbEJ3JKZLLabdZdqhqGE7GiQMZKWviSVNIdzuN1DuSJ9D6O
-	ji63oyId+HMuMeLvrrbb9/FhGf8/Vn2JH5T3bED5Ab473KCMMc1GmDK6PMlKKy03bJn35W
-	CR9esGIgCRwjBUdDQ8G/Q3ByDThJhNj95m+NHds8C3IrJVQlptjCCcIy0X+k2qNcCYxnYs
-	7W0XT05zHAApmNT3EVv8sRDwLVGvyuBhAK9DAMINTmHuHkuNsVeo/QElxQso7A==
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Wed, 19 Nov 2025 14:05:57 +0100
-Subject: [PATCH 26/26] drm/bridge: imx8qxp-pixel-link: convert to
- drm_of_find_bridge()
+	t=1763562149; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=KHIHzROR0vP9n7dvMFHoM55Ssw0KAKH53cQfe48RG2o=;
+	b=UfR7xwnXYFcxt7dwYb9ZZ2eHN7rcQflUmmRbY6KpW0kfgQmHCUslJp41eFjRD7JVEUwKJZ
+	S0oXT5p7TaoydFUvfXkgYXy2hBwhCbLh0hTZ9oWYkqCt/tCI/K1Dik6InPGVCplhxx20wG
+	jBAFgm9Fp8hHkx89EpTboOzrEJyAyR0UxrgcfQigI3YyMTbWTXKDX9o5np5l95zrqxzp+5
+	DnhkYQIm688Fn7PEOgNjQK5V7V7kSk65KKWVjPvAcYMqGom1O1QKFrIjeFzcaazJJ/4nQY
+	BeP/9Xy2sVRjpilf746wFLr/iSKL71kXFK/see/F8PNIt2le3RaEWTWBwZD28Q==
+Message-ID: <35bda203-8c15-4219-a231-1379f909229f@bootlin.com>
+Date: Wed, 19 Nov 2025 14:22:21 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-26-0db98a7fe474@bootlin.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/26] drm/bridge: add drm_of_find_bridge()
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Jonathan Corbet <corbet@lwn.net>, Alexey Brodkin <abrodkin@synopsys.com>,
+ Phong LE <ple@baylibre.com>, Liu Ying <victor.liu@nxp.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>,
+ Adrien Grassein <adrien.grassein@gmail.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>,
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>, Kevin Hilman <khilman@baylibre.com>,
+ Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+ Edmund Dea <edmund.j.dea@intel.com>, Inki Dae <inki.dae@samsung.com>,
+ Seung-Woo Kim <sw0312.kim@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>
+Cc: Hui Pu <Hui.Pu@gehealthcare.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-doc@vger.kernel.org, imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org
 References: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-0-0db98a7fe474@bootlin.com>
-In-Reply-To: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-0-0db98a7fe474@bootlin.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Jonathan Corbet <corbet@lwn.net>, Alexey Brodkin <abrodkin@synopsys.com>, 
- Phong LE <ple@baylibre.com>, Liu Ying <victor.liu@nxp.com>, 
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, 
- Adrien Grassein <adrien.grassein@gmail.com>, 
- Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
- Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
- Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Magnus Damm <magnus.damm@gmail.com>, Kevin Hilman <khilman@baylibre.com>, 
- Jerome Brunet <jbrunet@baylibre.com>, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
- Edmund Dea <edmund.j.dea@intel.com>, Inki Dae <inki.dae@samsung.com>, 
- Seung-Woo Kim <sw0312.kim@samsung.com>, 
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- Alim Akhtar <alim.akhtar@samsung.com>
-Cc: Hui Pu <Hui.Pu@gehealthcare.com>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-doc@vger.kernel.org, imx@lists.linux.dev, 
- linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
- linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>
-X-Mailer: b4 0.14.3
+ <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-1-0db98a7fe474@bootlin.com>
+From: Louis Chauvet <louis.chauvet@bootlin.com>
+Content-Language: en-US
+In-Reply-To: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-1-0db98a7fe474@bootlin.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_121428_118644_27A9A34D 
-X-CRM114-Status: GOOD (  17.49  )
+X-CRM114-CacheID: sfid-20251119_062236_821850_1EC4BB52 
+X-CRM114-Status: GOOD (  27.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,86 +110,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-of_drm_find_bridge() is deprecated. Move to its replacement
-drm_of_find_bridge() which gets a bridge reference, and put it when done.
 
-This needs to be handled in various steps:
 
- * the bridge returned drm_of_find_bridge() is stored in next_bridge whose
-   scope is the for loop, so a cleanup action is enough
- * the value of next_bridge is copied into selected_bridge, potentially
-   more than once, so a cleanup action at function scope is useful here too
- * however on successful return selected_bridge must be returned and
-   ultimately stored, so it should not be put in that case: use
-   return_ptr() to defuse the cleanup action on successful return
- * finally, put the bridge reference on device remove
+On 11/19/25 13:05, Luca Ceresoli wrote:
+> of_drm_find_bridge() does not increment the refcount for the returned
+> bridge, but that is required now. However converting it and all its users
+> is not realistically doable at once given the large amount of (direct and
+> indirect) callers and the complexity of some. Also, "of_drm_find_bridge is
+> oddly named according to our convention and it would make more sense to be
+> called drm_of_find_bridge()" (quoted from Link: below).
+> 
+> Solve both issues by creating a new drm_of_find_bridge() that is identical
+> to of_drm_find_bridge() except it takes a reference. Then
+> of_drm_find_bridge() will be deprecated to be eventually removed.
+> 
+> Suggested-by: Maxime Ripard <mripard@kernel.org>
+> Link: https://lore.kernel.org/dri-devel/20250319-stylish-lime-mongoose-0a18ad@houat/
+> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+> 
+> ---
+> 
+> Note: a simple implementation would just be
+>    { return drm_bridge_get(of_drm_find_bridge(np)); }
+> but it would release the mutex before getting the reference, so it is
+> not safe. Make things simple by duplicating the code. A later patch will
+> make instead the (to be deprecated) of_drm_find_bridge() become a wrapper
+> of the new drm_of_find_bridge()
+> ---
+>   drivers/gpu/drm/drm_bridge.c | 29 +++++++++++++++++++++++++++++
+>   include/drm/drm_bridge.h     |  5 +++++
+>   2 files changed, 34 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+> index 8f355df883d8..d98a7b4a83c0 100644
+> --- a/drivers/gpu/drm/drm_bridge.c
+> +++ b/drivers/gpu/drm/drm_bridge.c
+> @@ -1417,6 +1417,35 @@ void drm_bridge_hpd_notify(struct drm_bridge *bridge,
+>   EXPORT_SYMBOL_GPL(drm_bridge_hpd_notify);
+>   
+>   #ifdef CONFIG_OF
+> +/**
+> + * drm_of_find_bridge - find the bridge corresponding to the device node in
+> + *			the global bridge list
+> + * @np: device node
+> + *
+> + * The refcount of the returned bridge is incremented. Use drm_bridge_put()
+> + * when done with it.
+> + *
+> + * RETURNS:
+> + * drm_bridge control struct on success, NULL on failure
+> + */
+> +struct drm_bridge *drm_of_find_bridge(struct device_node *np)
+> +{
+> +	struct drm_bridge *bridge;
+> +
+> +	mutex_lock(&bridge_lock);
+> +
+> +	list_for_each_entry(bridge, &bridge_list, list) {
+> +		if (bridge->of_node == np) {
+> +			mutex_unlock(&bridge_lock);
 
-Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+It seems a bit strange to unlock the mutex just before the 
+drm_bridge_get, is it expected?
 
----
+If no, I think you can use scoped_guard(mutex, &bridge_lock) to avoid 
+messing with mutex_unlock, IIRC, scoped_guard will unlock the mutex just 
+after the return, so in your case, just after the drm_bridge_get.
 
-Cc: Liu Ying <victor.liu@nxp.com>
----
- drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c b/drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c
-index 2ecc3c1051e5..9818239cf6e7 100644
---- a/drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c
-+++ b/drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c
-@@ -256,12 +256,13 @@ static int imx8qxp_pixel_link_disable_all_controls(struct imx8qxp_pixel_link *pl
- 	return imx8qxp_pixel_link_disable_sync(pl);
- }
- 
-+/* The returned bridge has its refcount incremented */
- static struct drm_bridge *
- imx8qxp_pixel_link_find_next_bridge(struct imx8qxp_pixel_link *pl)
- {
- 	struct device_node *np = pl->dev->of_node;
- 	struct device_node *port;
--	struct drm_bridge *selected_bridge = NULL;
-+	struct drm_bridge *selected_bridge __free(drm_bridge_put) = NULL;
- 	u32 port_id;
- 	bool found_port = false;
- 	int reg;
-@@ -298,7 +299,7 @@ imx8qxp_pixel_link_find_next_bridge(struct imx8qxp_pixel_link *pl)
- 			continue;
- 		}
- 
--		struct drm_bridge *next_bridge = of_drm_find_bridge(remote);
-+		struct drm_bridge *next_bridge __free(drm_bridge_put) = drm_of_find_bridge(remote);
- 		if (!next_bridge)
- 			return ERR_PTR(-EPROBE_DEFER);
- 
-@@ -306,13 +307,15 @@ imx8qxp_pixel_link_find_next_bridge(struct imx8qxp_pixel_link *pl)
- 		 * Select the next bridge with companion PXL2DPI if
- 		 * present, otherwise default to the first bridge
- 		 */
--		if (!selected_bridge || of_property_present(remote, "fsl,companion-pxl2dpi"))
--			selected_bridge = next_bridge;
-+		if (!selected_bridge || of_property_present(remote, "fsl,companion-pxl2dpi")) {
-+			drm_bridge_put(selected_bridge);
-+			selected_bridge = drm_bridge_get(next_bridge);
-+		}
- 	}
- 
- 	pl->mst_addr = port_id - 1;
- 
--	return selected_bridge;
-+	return_ptr(selected_bridge);
- }
- 
- static int imx8qxp_pixel_link_bridge_probe(struct platform_device *pdev)
-@@ -392,6 +395,7 @@ static void imx8qxp_pixel_link_bridge_remove(struct platform_device *pdev)
- 	struct imx8qxp_pixel_link *pl = platform_get_drvdata(pdev);
- 
- 	drm_bridge_remove(&pl->bridge);
-+	drm_bridge_put(pl->next_bridge);
- }
- 
- static const struct of_device_id imx8qxp_pixel_link_dt_ids[] = {
-
--- 
-2.51.1
+> +			return drm_bridge_get(bridge);
+> +		}
+> +	}
+> +
+> +	mutex_unlock(&bridge_lock);
+> +	return NULL;
+> +}
+> +EXPORT_SYMBOL(drm_of_find_bridge);
+> +
+>   /**
+>    * of_drm_find_bridge - find the bridge corresponding to the device node in
+>    *			the global bridge list
+> diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+> index 0ff7ab4aa868..e74e91004c48 100644
+> --- a/include/drm/drm_bridge.h
+> +++ b/include/drm/drm_bridge.h
+> @@ -1313,8 +1313,13 @@ int drm_bridge_attach(struct drm_encoder *encoder, struct drm_bridge *bridge,
+>   		      enum drm_bridge_attach_flags flags);
+>   
+>   #ifdef CONFIG_OF
+> +struct drm_bridge *drm_of_find_bridge(struct device_node *np);
+>   struct drm_bridge *of_drm_find_bridge(struct device_node *np);
+>   #else
+> +static inline struct drm_bridge *drm_of_find_bridge(struct device_node *np)
+> +{
+> +	return NULL;
+> +}
+>   static inline struct drm_bridge *of_drm_find_bridge(struct device_node *np)
+>   {
+>   	return NULL;
+> 
 
 
