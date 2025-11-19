@@ -4,71 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 655AACF31B7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 12:30:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 265D7CF31B7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 12:33:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gAYEP2r0WzK6nN8V/KKyYF/p300y06zU2QmA3CuygYs=; b=mzXjJK13Oms5iiB0D93LoQHoJ5
-	d31S5RDSbxIxCdvL0mzOHB6IzNOkdSuubSHbaG4C2WAvh1aSgxfZcctiMQCwPGl//DKxoM1xYB/i7
-	mVe5l3HadFQ2uT3s/SxOseNwjYqOicMdb/TQqBhCIX+qLNlCfnVXiJWug6xcNWc5fH+haWXmZh506
-	QMdvZPU9W1n6SCY92v3EpvUNxX3c91BI59qXzVpzCXeliF3n2AdUSCGnNrV5OwIG0chHwgTCxzTdw
-	aSctwPZQqAYz8qLID/TjO0EZvYOiUx4wEIrUidlXqZQAC2G+fGlgJmQRNczG+v+4PBOAKcKJMH8kE
-	VQOq7uSA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YDRRhMAszyiKkUhewEtaGpKlkB749ZpUxsiZFGWAvh8=; b=v7CMV3jXtEUNS7G+T0OWRiQBck
+	UP5sRBmivDWOx4YILXtUa4PqgDfWpIlZMQ6l2Zz/VVfZUcV0Dpc32pesL2xY1V0J0Z5ASiR5q7awh
+	f6NaOtm93RZaEitpWT6QFpMMMNepLfshTColYDFZ6mIsrytj3MGf/yq5NOQgir3SEySdZCgnNAi03
+	vgHVlz1iqvAuD4bgX9NMGtYNl5H2ZN21WcGZlVaxCDkvzjziGPjieZbHDqX9J9ipNAzZeJgK0KiKA
+	yNVIf/tww0QztGPNOFOpK8V9Eiuyn05k+NpdMpRk87ZGoUZh2gibe7XYuSZDHZtnHctB1tqnm47J/
+	8VQzkNWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLhKr-00000003AAc-2I8K;
-	Wed, 19 Nov 2025 12:30:57 +0000
-Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
+	id 1vLhMp-00000003ArU-1R4C;
+	Wed, 19 Nov 2025 12:32:59 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLhKn-00000003A6E-1AyX;
-	Wed, 19 Nov 2025 12:30:54 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1763555436; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=FC4abtollYWOgCHR45tp6BsnT0GYBa95NDLQTbL3rTPaBYcF7ElHnPq0/Vo7d6ZbhbfZvPN/NPCjtgTS8dp8tuil9CzT2Mh0qMtDZzNs+Tg6XmqOoMLk4d1phdEEVgmyMiPeanLMuGG72yWmxXCK8n5vM2XgaEGtCZDtOPbOOOg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1763555436; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=gAYEP2r0WzK6nN8V/KKyYF/p300y06zU2QmA3CuygYs=; 
-	b=GmuCVkRZplgBfn2RXT9Zuk3sJ1unPMzdYglgeBL4jeZ1fARwB8eJ7U+BWpuaGm3CkXQnOzYE4B/hg14r1DYsLJKDw+0ixPUQrineuzBLl4FGwMYd6qgdIkPGExNgxn6IreVDSCVyUoPM1M+5zfdwyYE8DsjdPI2SpNAptZEs1N8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763555436;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=gAYEP2r0WzK6nN8V/KKyYF/p300y06zU2QmA3CuygYs=;
-	b=f/UovCGvoeUVLBCFJ4LULHK017R9K0yHbePE4VHXb+nafPB6OGYBiG2GtyMkYelz
-	hm0rBqrAoXPAgj/cRbgjWbOlAopc43TUl9+Lu5c2DMGtKODY5BdGbCxndaLzL+Y20iu
-	IFH/KnxHkHJ1sia5DrDMdyngSTrNJ1qXpAzyNUlE=
-Received: by mx.zohomail.com with SMTPS id 1763555434772176.03240313540152;
-	Wed, 19 Nov 2025 04:30:34 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>,
+	id 1vLhMm-00000003Apz-1Wk3;
+	Wed, 19 Nov 2025 12:32:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id A3524436EF;
+	Wed, 19 Nov 2025 12:32:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A08FDC2BC87;
+	Wed, 19 Nov 2025 12:32:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763555575;
+	bh=lZSP+zcRVaFLjfEqgTEZoZrsYiM/EVvJvLitd07pV8s=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=YJnKBikT246OMurOCeSmg5h4Ur2ACxJ9q8dWZhwQuyyxT31u18VJBIEJYHAUeJhtZ
+	 qCnEndb7SIp37mxUwr/zkVjDkhTl80gJb9v9IQlxzyvWZxVefZfl8Bv8aIgLXD7mgG
+	 H3pbZ6gijuvAzf5sZfdCxjeQHT6pmgckNNvplbCTMBOdumTayxJlyL/GilIIqyTntg
+	 VOWgpJigpdfYmwLSui2scd2+X9VUkNUxMRf/61az6YOn0aI4EG5KXfpiIwfMqMrNyN
+	 F7hozughcZdxL3qy4fFDVqQ7Q8rpjqDnYqx9jYwnG7TYnAuIZuj7Z570IrgIUGso9b
+	 XfHh034JIAb2g==
+Message-ID: <bc627654-f77d-48de-956e-548f97cd19c3@kernel.org>
+Date: Wed, 19 Nov 2025 13:32:49 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/13] dt-bindings: soc: mediatek: dvfsrc: Add support for
+ MT8196
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Henry Chen <henryc.chen@mediatek.com>, Georgi Djakov <djakov@kernel.org>,
- kernel@collabora.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
-Subject: Re: [PATCH 01/13] dt-bindings: soc: mediatek: dvfsrc: Add support for MT8196
-Date: Wed, 19 Nov 2025 13:29:12 +0100
-Message-ID: <3772660.mvXUDI8C0e@workhorse>
-In-Reply-To: <39fba430-3841-4bf2-9fe7-44f372ff4a16@collabora.com>
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Henry Chen <henryc.chen@mediatek.com>,
+ Georgi Djakov <djakov@kernel.org>, kernel@collabora.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org
 References: <20251114-mt8196-dvfsrc-v1-0-b956d4631468@collabora.com>
  <20251119-alluring-jellyfish-of-chaos-4f5bd8@kuoka>
  <39fba430-3841-4bf2-9fe7-44f372ff4a16@collabora.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
+ <3772660.mvXUDI8C0e@workhorse>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <3772660.mvXUDI8C0e@workhorse>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_043053_375938_237E5805 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20251119_043256_454040_CAA73889 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,30 +125,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wednesday, 19 November 2025 09:32:46 Central European Standard Time AngeloGioacchino Del Regno wrote:
-> Il 19/11/25 08:41, Krzysztof Kozlowski ha scritto:
-> > On Fri, Nov 14, 2025 at 05:53:55PM +0100, Nicolas Frattaroli wrote:
-> >> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> >>
-> >> Add a compatible for the MediaTek MT8196 Chromebook SoC's
-> >> DVFSRC hardware, introducing capability to communicate with it.
-> >>
-> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > 
-> > Incomplete DCO chain.
-> > 
-> > Best regards,
-> > Krzysztof
-> > 
+On 19/11/2025 13:29, Nicolas Frattaroli wrote:
+> On Wednesday, 19 November 2025 09:32:46 Central European Standard Time AngeloGioacchino Del Regno wrote:
+>> Il 19/11/25 08:41, Krzysztof Kozlowski ha scritto:
+>>> On Fri, Nov 14, 2025 at 05:53:55PM +0100, Nicolas Frattaroli wrote:
+>>>> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>>
+>>>> Add a compatible for the MediaTek MT8196 Chromebook SoC's
+>>>> DVFSRC hardware, introducing capability to communicate with it.
+>>>>
+>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>
+>>> Incomplete DCO chain.
+>>>
+>>> Best regards,
+>>> Krzysztof
+>>>
+>>
+>> Eh yes, Nicolas forgot to add his SoC on all of my commits, whoops :-)
+>>
+>> Cheers,
+>> Angelo
+>>
 > 
-> Eh yes, Nicolas forgot to add his SoC on all of my commits, whoops :-)
-> 
-> Cheers,
-> Angelo
-> 
+> And here I hoped b4 would do that when sending these out, oh well.
 
-And here I hoped b4 would do that when sending these out, oh well.
+b4 cannot certify something for you. You must add it explicitly yourself
+because certification must be your intentional act (which also means you
+know what you certify).
 
-
-
+Best regards,
+Krzysztof
 
