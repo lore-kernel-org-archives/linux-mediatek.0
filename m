@@ -4,73 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89895CF2564
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 02:33:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9863CCEE356
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 02:53:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fTdrcP/57TdByoxsEhL5f46PfNIlp4n51wAibe7oYZs=; b=L51ELxB2IPSZhf78UthX+BJHXL
-	rDOSW4WKqb5QGPCG0kyLoumYZXWKxzdF+jKas9mvenEq6KVwHm4M4yZBc0083lG9VfSxyiNeUyMmP
-	tpluIT3JJoepcpYWZzADjYbiUgy7WDgUoeNo0fbwaSDVP+/iU6mxfQJ9mlDMQK7/GEwwjPfT96smV
-	7WudZ78KbQZfuCwCwbbrj2fAMxFdHl1s0rAGVYTCx2yyOensmgHlgpD/vWCg+Lpoob/cpWeLfp2+r
-	o7fzVMNOo7G642uHn7C7tOtXNGCFYPVpgm+gq6PGCc+kjeGTqIyfU5/IIoX0iJ3aN8/nDD4XDjSzx
-	ObEuV2DQ==;
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2nlSzAaeGkBXcEgWLyqVlZNXqlpEv85rVF3RbzvhFxU=; b=oDCWL/2s0WaXvjxkyPYmsREZ6p
+	ksaaEH1ob29GE7CrGMGw7gD1TdrIJ+giIjweZOPHm6+qZHz/K8PcGlwo5v0OmyByxShurxZTdEBzB
+	L75TQ0AF8qV6oUMsOsF71a1Dpd5zE5HmHOL9rMdCCNZv7z0X2JXL+bKr+2TzSNwiTrC7x5VTwKGLS
+	lxFJNdUM4kSmtQfVPgKzlCx+UpKr2mOCySjhjBgSL/9vwuRoKrhYAZDOBmm3Qna0Uzd1VVuYmnz55
+	jCRp0ouAx1rm6VlXSVxDEvOgStj7WUcUVI9yOkiyUlE4wcurg2SunGJhjJXZdMshBveolsU31sHqj
+	da3tKBiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLY0x-00000001Ojj-0MbD;
-	Wed, 19 Nov 2025 02:33:47 +0000
-Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
+	id 1vLYKH-00000001QNU-1qT0;
+	Wed, 19 Nov 2025 02:53:45 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLY0u-00000001OjO-031G
-	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Nov 2025 02:33:46 +0000
-Received: from DESKTOP-L0HPE2S (unknown [124.16.141.245])
-	by APP-03 (Coremail) with SMTP id rQCowABn99mDLB1pFLw+AQ--.115S2;
-	Wed, 19 Nov 2025 10:33:39 +0800 (CST)
-From: Haotian Zhang <vulab@iscas.ac.cn>
-To: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	kwilczynski@kernel.org,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Haotian Zhang <vulab@iscas.ac.cn>
-Subject: [PATCH] PCI: mediatek: Fix IRQ domain leak when MSI allocation fails
-Date: Wed, 19 Nov 2025 10:33:08 +0800
-Message-ID: <20251119023308.476-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.50.1.windows.1
+	id 1vLYKG-00000001QMz-13yM;
+	Wed, 19 Nov 2025 02:53:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 90204601BC;
+	Wed, 19 Nov 2025 02:53:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 677DAC2BCB6;
+	Wed, 19 Nov 2025 02:53:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763520823;
+	bh=NdiVUh5p7ZNlDtEZvNZ/+7ut2DM/ueH3ssjPZlFqdHI=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=LsSsEj0TnYRhVD0YYRFVhtF/ktiK6dd/ar2Cpen767gU9t/u9kRMUmBgy9lZj2eJ/
+	 lQo5zaz/nMhdOpHI8BEoJR2x5hEyX2t13CPfSmQJs6TQPK/e4zVLlAngGBkWdB0+Hl
+	 PdUWhlHrILrVqZyXvf3BXZFcQspkyMYtzggZNL8aNRjo+vAaLBp+Co0p/1zLTDvzTz
+	 lhHiLpgWfjyrlvBemFMfkCSVw/CtJ2p4vKOBZ/T2/RetuGI+CfTsZahqi/DUY/GVuE
+	 AVmgp/267CGfO9ieOUsCvot/EfzI7NowJVCvR6xH443SzfPiz30+gCGjz9TBnwcOAL
+	 Ynmea8veJYGCA==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Cyril Chao <Cyril.Chao@mediatek.com>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Cyril Chao <cyril.chao@mediatek.com>, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+In-Reply-To: <20251031073216.8662-1-Cyril.Chao@mediatek.com>
+References: <20251031073216.8662-1-Cyril.Chao@mediatek.com>
+Subject: Re: [PATCH v3 00/10] ASoC: mediatek: Add support for MT8189 SoC
+Message-Id: <176352081915.1803701.6390255355558786166.b4-ty@kernel.org>
+Date: Wed, 19 Nov 2025 02:53:39 +0000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: rQCowABn99mDLB1pFLw+AQ--.115S2
-X-Coremail-Antispam: 1UD129KBjvdXoW7Gw4ktFWfAryfWry7tw4ktFb_yoWktrcE9r
-	WvqFsxW34jkryakw1SyFWF9Fy29asrWw1kKFyrt3W3AFyIgrn2vr1DZr93XFsrCry8Zr17
-	Gr4DCF4fAry7ujkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUIcSsGvfJTRUUUbfxFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
-	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
-	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Xr0_Ar1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr0_
-	Gr1UM28EF7xvwVC2z280aVAFwI0_Gr1j6F4UJwA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Cr
-	1j6rxdM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj
-	6xIIjxv20xvE14v26r1q6rW5McIj6I8E87Iv67AKxVW8JVWxJwAm72CE4IkC6x0Yz7v_Jr
-	0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E
-	8cxan2IY04v7MxkF7I0En4kS14v26r1q6r43MxkIecxEwVAFwVW8JwCF04k20xvY0x0EwI
-	xGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480
-	Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7
-	IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k2
-	6cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxV
-	AFwI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0xZFpf9x0JU6c_fUUUUU=
-X-Originating-IP: [124.16.141.245]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiCRALA2kdElFuhAAAsM
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251118_183344_412152_AE56BC24 
-X-CRM114-Status: UNSURE (   9.97  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-88d78
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,37 +76,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mtk_pcie_init_irq_domain(), if mtk_pcie_allocate_msi_domains()
-fails after port->irq_domain has been successfully created via
-irq_domain_create_linear(), the function returns directly without
-cleaning up the allocated IRQ domain, resulting in a resource leak.
+On Fri, 31 Oct 2025 15:31:54 +0800, Cyril Chao wrote:
+> Based on tag: next-20251031, linux-next/master
+> 
+> This series of patches adds support for Mediatek AFE of MT8189 SoC.
+> Patches are based on broonie tree "for-next" branch.
+> 
+> Changes in v3:
+>   - Added support for CS35L codec in the machine driver.
+>   - Added I2SOUT0/I2SOUT1 MCLK configuration and enabled the clocks.
+>   - Added dpcm_merged_format flag to the dai-link to ensure codec
+>     format constraints are applied.
+>   - Added support for ES8326 codec in the machine driver.
+>   - Updated the dt-bindings description based on reviewer comments.
+> 
+> [...]
 
-Add irq_domain_remove() call in the error path to properly release the
-INTx IRQ domain before returning the error.
+Applied to
 
-Fixes: 43e6409db64d ("PCI: mediatek: Add MSI support for MT2712 and MT7622")
-Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
----
- drivers/pci/controller/pcie-mediatek.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 24cc30a2ab6c..e0bf667c2b4c 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -575,8 +575,10 @@ static int mtk_pcie_init_irq_domain(struct mtk_pcie_port *port,
- 
- 	if (IS_ENABLED(CONFIG_PCI_MSI)) {
- 		ret = mtk_pcie_allocate_msi_domains(port);
--		if (ret)
-+		if (ret) {
-+			irq_domain_remove(port->irq_domain);
- 			return ret;
-+		}
- 	}
- 
- 	return 0;
--- 
-2.50.1.windows.1
+Thanks!
+
+[01/10] ASoC: mediatek: mt8189: add common header
+        commit: 81f8f29a48defd572ec34d2b9c84374fd05158cc
+[02/10] ASoC: mediatek: mt8189: support audio clock control
+        commit: dc637ffeed6c32c951520774897601ebd9ffc3d5
+[03/10] ASoC: mediatek: mt8189: support ADDA in platform driver
+        commit: e3acef6ef89ffbd6c80950d5fa0d024a8d11c1c4
+[04/10] ASoC: mediatek: mt8189: support I2S in platform driver
+        commit: 34e437097247f92fba6fac3d6e40e33af5f32e3d
+[05/10] ASoC: mediatek: mt8189: support TDM in platform driver
+        commit: 9f202872ba04d71c96908c56abcc6e3f4a629a40
+[06/10] ASoC: mediatek: mt8189: support PCM in platform driver
+        commit: 402ff043395fd9444810c723056fe741c77dbc21
+[07/10] ASoC: dt-bindings: mediatek,mt8189-afe-pcm: add audio afe document
+        commit: 22e9bd51e518e8fcad269c0c1f4bd84467db093e
+[08/10] ASoC: mediatek: mt8189: add platform driver
+        commit: 7eb1535855983f67b95c2ba777d686cc17188285
+[09/10] ASoC: dt-bindings: mediatek,mt8189-nau8825: add mt8189-nau8825 document
+        commit: 4980df101676f598ad515725a94424d244a5c5a3
+[10/10] ASoC: mediatek: mt8189: add machine driver with nau8825
+        commit: d218ea171430e49412804efb794942dd121a8032
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
