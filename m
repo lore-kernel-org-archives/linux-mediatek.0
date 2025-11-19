@@ -4,93 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8327CF3963
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 16:54:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9370CF3979
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 17:30:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=BNHinq4/2cTHhTy5HKSefqHwCj7EyOMXN8DmFkxYCE0=; b=kAyEOeVasftTQy/1sW5xbNJU9g
-	hohqyh9gBH+mVM+coYAWJAXkmAt9VhAspTnsTJDJ4mZ517Gtc0CthHVWyMrBTc7z/5HRFwE97V8WX
-	hDNLoRMc9rKdGMU7MHisc8Bxmj4Nc6gr5MP7BhkX4vk7lP8IAkhjYE2z6rTkeP7sfEjriijpKVfq0
-	wen5ykQn79rSwuah3+m85wdq1VVWm7FUFrDwKk9IuPLOL34hkQhu+ibdIExY/vepqL7P6nD4Mbwyw
-	mN9ommHjT7aA7JIslglWFN6mrdw+7AuHi33sIPh1eowB6Q7nW5d7AoCDSxIQiOTtMRfmFx44z5e8m
-	HImW6GLA==;
+	bh=TMBoUXycCoalUx2IdYMe60O4++ie5VkCIVBelZSQqfI=; b=bZ8GV6L8gG2tNrvwVo/k/Ut6bA
+	b3S+IcEiQsNeGqvfx6ounp5Aqk302JTvrm+8dU1tNFPav7/ck7ETDAl8v6X0Zn9RPaMHe37zb4reR
+	KGo5dfpo2jTTM7PJEAYv80x4Ba3DQ5tF1XJfiS7fxtw8fDA7TM234AuZZoO3Z6i8/7kvNtF8t+osr
+	h/TwD83FwRuLJD3/Xr9iSRNqvo2QXT2zFH8qfqj8bwtlyshYaHrs+j/gnH/H0ykgqmENOY6cy80jU
+	yy7ikz31r+ASzkd4JX03xaCjfidF5M1RHoXeVzTdT6bGxnaT0i1eeyDb2enxhu/R5/cXM1ohOrw54
+	zH7XwFqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLlRp-00000003mYg-2eIl;
-	Wed, 19 Nov 2025 16:54:25 +0000
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+	id 1vLm0m-000000046zY-06oT;
+	Wed, 19 Nov 2025 17:30:32 +0000
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLlRn-00000003mY1-2fe2
+	id 1vLm0i-000000046uZ-3czG
 	for linux-mediatek@lists.infradead.org;
-	Wed, 19 Nov 2025 16:54:25 +0000
-Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-7b8bbf16b71so7893841b3a.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 19 Nov 2025 08:54:23 -0800 (PST)
+	Wed, 19 Nov 2025 17:30:30 +0000
+Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-7b8bbf16b71so7942573b3a.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Nov 2025 09:30:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1763571263; x=1764176063; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1763573428; x=1764178228; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=BNHinq4/2cTHhTy5HKSefqHwCj7EyOMXN8DmFkxYCE0=;
-        b=OsCKOIeTpANwEyH8tWoC127OSIerHIvfAxhJcFyuK6rJ4IfS1iMAETLpcZyXE21P5R
-         hJVhMvblwOxb/xsc3jAUrgr+w3A7n+5XV5zu/cViQsJypMydDRGIHRFozgVgrOCzKQ7+
-         I9Byb9mZBVOG7pDsYj4Iyulm5pFYaZRiaLuyI=
+        bh=TMBoUXycCoalUx2IdYMe60O4++ie5VkCIVBelZSQqfI=;
+        b=ULMo62wd6ey9TLBEMIMlFwpk0Dwa04bh3lNSamC6rFuRfycysdHJJ8E7v9ENwC6mMX
+         coMhZgwOWViBt2xgzbtsbOHcO16VPzEFOFQORXuTKKDCBAikIrTpwhLxeVcxwK8Z8rhI
+         RSLoCF8fp+VDGGTZYp0BjNMNgxEcGf4swMQgo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763571263; x=1764176063;
+        d=1e100.net; s=20230601; t=1763573428; x=1764178228;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=BNHinq4/2cTHhTy5HKSefqHwCj7EyOMXN8DmFkxYCE0=;
-        b=ZHC5/foFjyRLBFxuic465cnX0Ylq3kY5/9ShxT9Vb1Z8GhIoNv4HKSqSDvGZAd3i2H
-         16/Ffy8vKyh+TWdc3HoIGRO+CsE8HfliPKSxEANxrKQ66Frb8kPyjtZfergDiRyJYxjE
-         YFSrg9Jet1+gkHfhdKadb4SeDgO2M3VudzYSn4zQYtK4/D0XQuqnmw2f3lo4uvVanrkd
-         6wLlNgqgXnT64xuxaGDGiVkTTOvRfeT9fSAYquRi9l9Zly1D5e3kLcEj4E9+qc0/9qGa
-         +qIIBWEwoT2Vt2c5VVE/mZqP1F2xDVw44cQEjT27+M7dwws4mPRWeirc1ttRRZL1Wq4d
-         0Z7A==
-X-Forwarded-Encrypted: i=1; AJvYcCUW5DXI9T38ZnS3tyqKbdzJGgBEgdyO71UTfX1pvJZ4VZPZ6GyotQaFj/kkNULUM5U8EFlkM5Erg0QTHjvUOQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyFHfrsjPyGowJ+mK5Uv82hcA3X1WA8nyHiYJegRfi7Z3pb2XDx
-	7yjgAMOHTS/klSi4Rf9QKnQYj2YqqUlxH6uU/x6qHd62TJBzhnVMOfsE9FD9lg9IOw==
-X-Gm-Gg: ASbGncuakHzebFCcOYShXwI3XUe9MtLUKwsCHR9FRm4rZIY/ZZ+Y56ew8kMCTVOFzw3
-	Yg8bRXVexp4ZNiA5xPYA69eoHr2fJfWuRwhhjD19/PRJbN9zeeKrFcvB/FPagwO26ah+SvziS6C
-	mnmrFNW1hU/Jg7PjuWg4osZ3PYX4TRj8eg3PLEDqJ536Hr2Yuj73yVaPxwo44exiLAT8p/Fhqs7
-	3UPQN5lEFktvISxFislSy+4CLEDmL+/8u4NhNhNdYYQqAq8lOW9HdrhtaZurZHPpQnaKiB3GXeF
-	5t8FU8bMDpmhxLN5Ou4OaTTITZOpOt6IhJaskUVbuqjA5yyKxLf8VrHmtrUSMxjnZinA3Mv8x30
-	eT3peSrpp3nuSZqDAm95MVIx+FGHASceqp6lxQ01DS8rxIiv65Y3HepBHiA04qzXK113TeREZQd
-	Phk+g9ErHJMxDxCa1dtSKR6MrOO+dQidciLoHVAKIgyYJ12quACqQ9b3/5/RpWZXeJgG7w89b/U
-	E8tynV/Pg==
-X-Google-Smtp-Source: AGHT+IG6Mf8qsXvOK1ixMYCQNU/FYpCBumYnKBfjBKtdbVbifmpntuvtxBUSy93dyel1BQ7M/vgfNA==
-X-Received: by 2002:a05:7022:eac7:b0:11a:a20a:4413 with SMTP id a92af1059eb24-11c93887b01mr7150c88.31.1763571262673;
-        Wed, 19 Nov 2025 08:54:22 -0800 (PST)
+        bh=TMBoUXycCoalUx2IdYMe60O4++ie5VkCIVBelZSQqfI=;
+        b=gFZKPEZlb4qXO+dJRW/i3zV5jga1BSs6AqEJSxLjxAW/Q71wwazj4JWSDfJwEUMKtd
+         /JSPiIFhnzAuYCB39PNm2x7QLsyy3WaUtEHxT0LxdhELbX0Nea4kcyH9Z606mOqAHUEJ
+         +Q7Scve7XiCoV8um2t/ONxbF45KXqWrtv9wosk4lZ80B9VuJ/ROcZadK+E9JXNt2nWve
+         vXAXz4j+CVWgxB5Dp+w9xJ4W1eYvWA8JWDAtvx/nzn7ZibYl5KUjoUlZdBJdrxtaLfbQ
+         pmCk2MdKe7O+fXZzxA12VD1EOzFqo6F3ccqyu2uUJ3v43DIfvyY4VljTooYHZIE3gxdd
+         7szg==
+X-Forwarded-Encrypted: i=1; AJvYcCVGMZ2jsIz8EoNfHnxbp/ZTwJ3imrcLs/TCDEczrRkKrstF5L7WUpnI1HL4zVju9pJxVl0ZtFlhWneO7bwcqA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyOwBplB/u5qumt4VWB6KeFt2m2wkPIIb3Tx5zSS6sxuLbblGFp
+	AD8O+u4FLStmZsHggiNDS19lvpN79dqhXmvZF9ICUgQ50qWbwCJFJ1oCwpY+FOdxrg==
+X-Gm-Gg: ASbGncvkfEunFonQlS3i+SVtZTGL3PBBiIUg3sRFOykih5Tvr8b1S17jPdXG5y/MhJi
+	EHrPB9a6wuP5dr7kuSpqhQKWPpA2MREm0EZvqCdWVI1RfRQy+TkWMCYBzdENkSmITr4Pnmmx+Ra
+	lYtiO25Xp/b2Wr5J6Ut0GqeBOOBJW6AJd2gcPmCX4EUbTCjx2qxEAWoLpshML9SHU/LXSvvrZY1
+	ZoCsl31wSXsv6ea/B51iwj5E9HwlALIdJdZEq15w3+usH6OKHyoPYKlTmszb3cBz8ACsQq0VK4V
+	qPd6ZoU+2HG0h+8gtycNruVqtMYzo424vt0RVFubaIC7fvh8k8wMEcIFj7BLYtHy0NXWSojUXpy
+	S8pkwHWfZ+1AiaK33Mi30FHbVl6MBryi0g0gimyjcKMrDs9JaJRSK8XG7WN+1h/K742srOh6XBa
+	7O15w48Rg0/MzmgzC4gJ7EcfLvaXsPwjQxvrGkr12d5/TqPd/AjxCWdsPY+jvKql3QTmFjkaE=
+X-Google-Smtp-Source: AGHT+IFB2YSTkbyEbeQu8O7Mtor+aeK/rpWG1+Is+9xqP/zrbkSWBMOGAREHyl95i2ctzd/T2DJJ7Q==
+X-Received: by 2002:aa7:88c9:0:b0:7b8:d12f:90ae with SMTP id d2e1a72fcca58-7c29de3b6f2mr4341114b3a.21.1763573427806;
+        Wed, 19 Nov 2025 09:30:27 -0800 (PST)
 Received: from dianders.sjc.corp.google.com ([2a00:79e0:2e7c:8:cf0b:c8dd:8f4c:d649])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-11b0608860fsm61967659c88.5.2025.11.19.08.54.21
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7b92772e713sm19839792b3a.54.2025.11.19.09.30.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Nov 2025 08:54:21 -0800 (PST)
+        Wed, 19 Nov 2025 09:30:27 -0800 (PST)
 From: Douglas Anderson <dianders@chromium.org>
 To: Marcel Holtmann <marcel@holtmann.org>,
 	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Thorsten Leemhuis <regressions@leemhuis.info>,
-	incogcyberpunk@proton.me,
-	johan.hedberg@gmail.com,
+Cc: incogcyberpunk@proton.me,
 	regressions@lists.linux.dev,
+	Thorsten Leemhuis <regressions@leemhuis.info>,
+	johan.hedberg@gmail.com,
 	sean.wang@mediatek.com,
 	Douglas Anderson <dianders@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-bluetooth@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] Bluetooth: btusb: mediatek: Avoid btusb_mtk_claim_iso_intf() NULL deref
-Date: Wed, 19 Nov 2025 08:53:55 -0800
-Message-ID: <20251119085354.1.I1ae7aebc967e52c7c4be7aa65fbd81736649568a@changeid>
+Subject: [PATCH v2] Bluetooth: btusb: mediatek: Avoid btusb_mtk_claim_iso_intf() NULL deref
+Date: Wed, 19 Nov 2025 09:26:42 -0800
+Message-ID: <20251119092641.v2.1.I1ae7aebc967e52c7c4be7aa65fbd81736649568a@changeid>
 X-Mailer: git-send-email 2.52.0.rc1.455.g30608eb744-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_085423_709253_4D228123 
-X-CRM114-Status: GOOD (  16.38  )
+X-CRM114-CacheID: sfid-20251119_093028_927502_921319C3 
+X-CRM114-Status: GOOD (  16.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,16 +132,19 @@ I have no way to test this commit myself other than to compile it. It
 looks fairly straightforward, though, so I'm hopeful it will fix the
 problem.
 
+Changes in v2:
+- Rebase atop commit 529ac8e706c3 ("Bluetooth: ... mtk iso interface")
+
  drivers/bluetooth/btusb.c | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index a722446ec73d..1466e0f1865d 100644
+index fcc62e2fb641..683ac02e964b 100644
 --- a/drivers/bluetooth/btusb.c
 +++ b/drivers/bluetooth/btusb.c
-@@ -2714,6 +2714,11 @@ static void btusb_mtk_claim_iso_intf(struct btusb_data *data)
- 	struct btmtk_data *btmtk_data = hci_get_priv(data->hdev);
- 	int err;
+@@ -2751,6 +2751,11 @@ static void btusb_mtk_claim_iso_intf(struct btusb_data *data)
+ 	if (!btmtk_data)
+ 		return;
  
 +	if (!btmtk_data->isopkt_intf) {
 +		bt_dev_err(data->hdev, "Can't claim NULL iso interface");
