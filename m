@@ -4,83 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1D1ECF58C8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 18:42:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDC1ECF6487
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 22:27:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d+20Uj7V/wB53t3E3ACYXIU/QyzVL9+KYCOlwfL2P6s=; b=gU4odKd0LXsQ9AZHQA/wzUx1be
-	w9CSrzJk2SpOlTsW7Q4A1fzHhUwYGDk1gHzhr1w0mUfO3Fw/eouHEwylmOK791TVx/T3cqrZAEsRa
-	2/wdJBqGv36vQRgce0SZ4KvOb13Sm4zjQ4H9qt9R+y8pp9EWs/0oYrebnv+O+1DNi8A7ZHYdtS27g
-	5QPewhYEdtg4sBJGQFQDVgOo+vqU1Ajcnuhv3p7ZpYChqUelYyYlBPOGjG9whLRVY81/OY/y8Zfvu
-	ne+cy/j0qcGADT5lBYhXUF0t8/cbI4F4OkySX+6iCeNHgbzAtJ9v9wetEhCVDUKZxp8KoZgBoC5ZZ
-	+fW+WAtw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:MIME-Version:Content-Transfer-Encoding:Content-Type
+	:Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zxiZ256yC1KWBY4rW2iAW+zPotMWvRus/oGs+S2yL8k=; b=Yfq0Di9U/G77BaTNQLxbxcTRIx
+	Ej93gPMsgF68jQtFKSd6vNRgZyPK4pcI12U18pUOm1vsg5DwFOKXrGg3bGf87FWwVJfnqzRIIjB7X
+	YfU/SXJBb4CkqyVovl7qevZv2W4jqL0daPcsSF0/ktF+ZXquV7NGU5g8bBZCxndWzvBN31U6ckGKA
+	Zq0labh0zD18vIxkssiMrgxIMuC8l2iDh6Ld2zJHNpSo5r+wnT7ZaKK7F1pSkYq7FsPXkk6AkXdjh
+	a+qLUDpjGCgQ0VsYqOHfb9N3a3QrZVGsBu4oBKEzx+N6MVXBcCHSSwQqRWWyHF3GojFTeUGCz7nwf
+	+2YDFoWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLn8i-00000004hPV-1HGG;
-	Wed, 19 Nov 2025 18:42:48 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vLqeT-00000005nJj-1m2V;
+	Wed, 19 Nov 2025 22:27:49 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLn8f-00000004hNu-2oHU;
-	Wed, 19 Nov 2025 18:42:46 +0000
+	id 1vLqeP-00000005nHT-0X3F;
+	Wed, 19 Nov 2025 22:27:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0D0254360A;
-	Wed, 19 Nov 2025 18:42:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 23360C4CEF5;
-	Wed, 19 Nov 2025 18:42:38 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7333B439EE;
+	Wed, 19 Nov 2025 22:27:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F339C116B1;
+	Wed, 19 Nov 2025 22:27:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763577764;
-	bh=d+20Uj7V/wB53t3E3ACYXIU/QyzVL9+KYCOlwfL2P6s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=EdRjYlhhDT9zjqscZl9dlk/VT2v65GFWB3iqHMzaQ4z8NdllYI0b1kSjnUUz5X5As
-	 UgF/WhAJt0vsYmMaV6bLjCxpKGQwamYcp2JNPSeQSbN2UxLWnLS6JJqLX2faMrUGzf
-	 oYwOaEAMmod6faMCkejLzbEJ2C75HCLHat1HLOPlRK3zKoxUEfNwB/rTVIEkgKBF/c
-	 +4Jyd7+usTtI1J7mKfFdwJu9l8vG3vosYdvG2btZbhB3rL5twxTFCkDnirM71iUsP4
-	 NOFrrtdQbgWHEnu3hJpo/LU7j1I+c0+3ylyPLfB3tF1pNfrH5xcRU4RgwtxWMHVVPt
-	 BRNWVIKBrXAvQ==
-Date: Wed, 19 Nov 2025 18:42:37 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Sjoerd Simons <sjoerd@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Lee Jones <lee@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	kernel@collabora.com, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-phy@lists.infradead.org, netdev@vger.kernel.org,
-	Daniel Golle <daniel@makrotopia.org>,
-	Bryan Hinton <bryan@bryanhinton.com>
-Subject: Re: [PATCH v4 06/11] dt-bindings: net: mediatek,net: Correct
- bindings for MT7981
-Message-ID: <20251119-snowless-thrower-0c4743a2820c@spud>
-References: <20251115-openwrt-one-network-v4-0-48cbda2969ac@collabora.com>
- <20251115-openwrt-one-network-v4-6-48cbda2969ac@collabora.com>
+	s=k20201202; t=1763591264;
+	bh=/8R3jAWH+04a5Vi5dU1uhypE32MurQD61AqM5GlfyvE=;
+	h=From:Date:Cc:To:In-Reply-To:References:Subject:From;
+	b=imgY6TDyVrEfccxsqc/JbFsbLsaXzoHtyOOV8BlZzxLiO+SL76sJwg9Zh+ELx2/J5
+	 OgiA92KZgdudADz9TaTi1aTtC7vtO6iteU49A97EOyJaxPB25BjGev/FWSmPEPKzVV
+	 pykdbZKYcDMu6XBqFPl68iypkMuz7ufGCe91P+hSSVsjPh98sQHRwEC1MEUb1jQnJq
+	 uB8qS+0igzH1+kRpLKnpX7s9+1LG8+M6+lHnA2WM3D+l2+e8jTMtmZZDhAzlhreHyY
+	 l++gSrpKYrb06UMcMGC6iJzzLZ1FgZfHrk8QR9Pbkq+AOLQyaQ8WCHS7VxhqnjFG07
+	 cH6by7OtQwJKA==
+From: Rob Herring <robh@kernel.org>
+Date: Wed, 19 Nov 2025 16:27:42 -0600
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="OWZxw9N+U4ItickZ"
-Content-Disposition: inline
-In-Reply-To: <20251115-openwrt-one-network-v4-6-48cbda2969ac@collabora.com>
+To: Frank Wunderlich <linux@fw-web.de>
+In-Reply-To: <20251119175124.48947-1-linux@fw-web.de>
+References: <20251119175124.48947-1-linux@fw-web.de>
+Message-Id: <176359122549.3467832.13147318038488444877.robh@kernel.org>
+Subject: Re: [PATCH v1 0/2] build full dtbs for BananaPi R3/R4(Pro)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_104245_731111_A6FB264C 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20251119_142745_183344_818815D2 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,39 +65,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---OWZxw9N+U4ItickZ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Wed, 19 Nov 2025 18:51:21 +0100, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Build devicetree binaries for testing overlays and providing users
+> full dtb without using overlays for Bananapi R4 (pro) variants.
+> 
+> It is not required to build all possible combinations, only for
+> common usecases and to test if all overlays can be applied.
+> 
+> This series is based on
+> https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/log/?h=v6.18-next/dts64
+> 
+> Frank Wunderlich (2):
+>   arm64: dts: mediatek: mt7986: add dtbs with applied overlays for
+>     bpi-r3
+>   arm64: dts: mediatek: mt7988: add dtbs with applied overlays for
+>     bpi-r4 (pro)
+> 
+>  arch/arm64/boot/dts/mediatek/Makefile | 53 +++++++++++++++++++++++++++
+>  1 file changed, 53 insertions(+)
+> 
+> --
+> 2.43.0
+> 
+> 
+> 
 
-On Sat, Nov 15, 2025 at 09:58:09PM +0100, Sjoerd Simons wrote:
-> Different SoCs have different numbers of Wireless Ethernet
-> Dispatch (WED) units:
-> - MT7981: Has 1 WED unit
-> - MT7986: Has 2 WED units
-> - MT7988: Has 2 WED units
->=20
-> Update the binding to reflect these hardware differences. The MT7981
-> also uses infracfg for PHY switching, so allow that property.
->=20
-> Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+My bot found new DTB warnings on the .dts files added or changed in this
+series.
 
---OWZxw9N+U4ItickZ
-Content-Type: application/pgp-signature; name="signature.asc"
+Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
+are fixed by another series. Ultimately, it is up to the platform
+maintainer whether these warnings are acceptable or not. No need to reply
+unless the platform maintainer has comments.
 
------BEGIN PGP SIGNATURE-----
+If you already ran DT checks and didn't see these error(s), then
+make sure dt-schema is up to date:
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaR4PnAAKCRB4tDGHoIJi
-0qysAP4slbkJvvcDz+LiScI3HC4oFNoFUawshCKoNhDhEg0RZQD+JPTtXG5xiV2r
-lqSBXMrX7H73koX9k2vleiv2AUW+EAI=
-=X2CE
------END PGP SIGNATURE-----
+  pip3 install dtschema --upgrade
 
---OWZxw9N+U4ItickZ--
+
+This patch series was applied (using b4) to base:
+ Base: attempting to guess base-commit...
+ Base: tags/next-20251119 (exact match)
+ Base: tags/next-20251119 (use --merge-base to override)
+
+If this is not the correct base, please add 'base-commit' tag
+(or use b4 which does this automatically)
+
+New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/mediatek/' for 20251119175124.48947-1-linux@fw-web.de:
+
+scripts/Makefile.dtbs:20: .dtbo is not applied to any base: mt8395-radxa-nio-12l-8-hd-panel.dtbo
+
+
+
+
+
 
