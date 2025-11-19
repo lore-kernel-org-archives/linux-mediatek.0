@@ -4,66 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1C10CF31AE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 12:03:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 655AACF31B7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 12:30:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RgtXuOPj/BVj1ru98zMsaSx+e90yF9PatCQeLOQd/Ek=; b=E9p7CfP6rkjQ6pXJ6TsM4U3gx3
-	5Gb8YFguxUQGd3uRsYhFMJFo64HV4IFX5BF7KQLO8OJ9j4NpOdvTA3A4iDg3CmsBnCm/5Uq3+17Bu
-	OYtF7SDbjR12b1yBYh3aXSwyOhZwj6OKHKYxeD6G6dcJEH+6TSqrekLhHBJgxJSKL1QUeebCZJLGf
-	aaPlr7N6inzX0U4bh3+NN3MZX4pf4qloQoM7B+186+VGVnu1caMDRtEQFKyBNRF85T8XaACBXp/1Z
-	D9frsASMxUvdQEvbx99ii+gQ0Cuatg3DgqXfcvEDBSpZ83S/SdMpuoBWtZXI4ZwWYHJSZbpxS4btu
-	zovZY0Bg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gAYEP2r0WzK6nN8V/KKyYF/p300y06zU2QmA3CuygYs=; b=mzXjJK13Oms5iiB0D93LoQHoJ5
+	d31S5RDSbxIxCdvL0mzOHB6IzNOkdSuubSHbaG4C2WAvh1aSgxfZcctiMQCwPGl//DKxoM1xYB/i7
+	mVe5l3HadFQ2uT3s/SxOseNwjYqOicMdb/TQqBhCIX+qLNlCfnVXiJWug6xcNWc5fH+haWXmZh506
+	QMdvZPU9W1n6SCY92v3EpvUNxX3c91BI59qXzVpzCXeliF3n2AdUSCGnNrV5OwIG0chHwgTCxzTdw
+	aSctwPZQqAYz8qLID/TjO0EZvYOiUx4wEIrUidlXqZQAC2G+fGlgJmQRNczG+v+4PBOAKcKJMH8kE
+	VQOq7uSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLgub-000000035Fj-2DKb;
-	Wed, 19 Nov 2025 12:03:49 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vLhKr-00000003AAc-2I8K;
+	Wed, 19 Nov 2025 12:30:57 +0000
+Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLguY-000000035Ef-10N6;
-	Wed, 19 Nov 2025 12:03:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1763553823;
-	bh=LFe/fV53hF/U0wwrA49nbbcT+o1Lp7szCrj1+cFtCzw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=pFG+n4zBhHtmUZsqQr4988oxlkbkSmakBJIhdyfLkO2x7gSSqu9Wm9pJsRb24gJtI
-	 r+YyJlg0YDnETGnGy6e78L7NHJwzyGOou/t6EsM5zitkZi1+26jbq/1vfcPiakbEgp
-	 YVPFemCQPgld5J4tOqGB6+HOnWuU+SzNWkzgcJ05XAGZk1xrOzvgMkwe1SFPxykJsQ
-	 PwInoOUVwq2eyxATd3ykCQvKiCj1mGPiwB6dF2JuXY4eFc0Qy+xPhahxBiiHn+5COI
-	 m20WIBoq5iRSDPQSqPrNzUYgnXLohBJW5Jv+Q5zRj+Re8Rhsfm5AVE/fXADhPEVQ3z
-	 yNnKNnwDYmZig==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BE75017E12E5;
-	Wed, 19 Nov 2025 13:03:42 +0100 (CET)
-Message-ID: <03e32a92-ba1b-4a9e-b0a9-0e0cc0edc441@collabora.com>
-Date: Wed, 19 Nov 2025 13:03:42 +0100
+	id 1vLhKn-00000003A6E-1AyX;
+	Wed, 19 Nov 2025 12:30:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1763555436; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=FC4abtollYWOgCHR45tp6BsnT0GYBa95NDLQTbL3rTPaBYcF7ElHnPq0/Vo7d6ZbhbfZvPN/NPCjtgTS8dp8tuil9CzT2Mh0qMtDZzNs+Tg6XmqOoMLk4d1phdEEVgmyMiPeanLMuGG72yWmxXCK8n5vM2XgaEGtCZDtOPbOOOg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1763555436; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=gAYEP2r0WzK6nN8V/KKyYF/p300y06zU2QmA3CuygYs=; 
+	b=GmuCVkRZplgBfn2RXT9Zuk3sJ1unPMzdYglgeBL4jeZ1fARwB8eJ7U+BWpuaGm3CkXQnOzYE4B/hg14r1DYsLJKDw+0ixPUQrineuzBLl4FGwMYd6qgdIkPGExNgxn6IreVDSCVyUoPM1M+5zfdwyYE8DsjdPI2SpNAptZEs1N8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763555436;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=gAYEP2r0WzK6nN8V/KKyYF/p300y06zU2QmA3CuygYs=;
+	b=f/UovCGvoeUVLBCFJ4LULHK017R9K0yHbePE4VHXb+nafPB6OGYBiG2GtyMkYelz
+	hm0rBqrAoXPAgj/cRbgjWbOlAopc43TUl9+Lu5c2DMGtKODY5BdGbCxndaLzL+Y20iu
+	IFH/KnxHkHJ1sia5DrDMdyngSTrNJ1qXpAzyNUlE=
+Received: by mx.zohomail.com with SMTPS id 1763555434772176.03240313540152;
+	Wed, 19 Nov 2025 04:30:34 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Henry Chen <henryc.chen@mediatek.com>, Georgi Djakov <djakov@kernel.org>,
+ kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH 01/13] dt-bindings: soc: mediatek: dvfsrc: Add support for MT8196
+Date: Wed, 19 Nov 2025 13:29:12 +0100
+Message-ID: <3772660.mvXUDI8C0e@workhorse>
+In-Reply-To: <39fba430-3841-4bf2-9fe7-44f372ff4a16@collabora.com>
+References: <20251114-mt8196-dvfsrc-v1-0-b956d4631468@collabora.com>
+ <20251119-alluring-jellyfish-of-chaos-4f5bd8@kuoka>
+ <39fba430-3841-4bf2-9fe7-44f372ff4a16@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8188-geralt: drop firmware-name
- from first SCP core
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org
-References: <20251119070230.1716418-1-wenst@chromium.org>
- <66693e69-7ad8-4067-9bd3-ef1454e3ec18@collabora.com>
- <CAGXv+5HOrP=hj8qxZmjq+ozeppXrzFKh=kq2Cb+QqWEx9n83Bw@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAGXv+5HOrP=hj8qxZmjq+ozeppXrzFKh=kq2Cb+QqWEx9n83Bw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_040346_436842_B1781CF1 
-X-CRM114-Status: GOOD (  35.49  )
+X-CRM114-CacheID: sfid-20251119_043053_375938_237E5805 
+X-CRM114-Status: GOOD (  13.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,116 +83,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/11/25 09:41, Chen-Yu Tsai ha scritto:
-> On Wed, Nov 19, 2025 at 4:31 PM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Il 19/11/25 08:02, Chen-Yu Tsai ha scritto:
->>> Arnd pointed out that having firmware-name in the device tree is wrong.
->>> Drop it.
->>>
->>> Fixes: e36be19823f0 ("arm64: dts: mediatek: mt8188-geralt: Enable first SCP core")
->>
->> Fixes here is .. well, right, but wrong - as if you "fix" that in previous kernel
->> releases, you will create regressions :-)
+On Wednesday, 19 November 2025 09:32:46 Central European Standard Time AngeloGioacchino Del Regno wrote:
+> Il 19/11/25 08:41, Krzysztof Kozlowski ha scritto:
+> > On Fri, Nov 14, 2025 at 05:53:55PM +0100, Nicolas Frattaroli wrote:
+> >> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> >>
+> >> Add a compatible for the MediaTek MT8196 Chromebook SoC's
+> >> DVFSRC hardware, introducing capability to communicate with it.
+> >>
+> >> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > 
+> > Incomplete DCO chain.
+> > 
+> > Best regards,
+> > Krzysztof
+> > 
 > 
-> This is a fix because the commit in question was merged in v6.18-rc1
-> and v6.18 hasn't been released yet. So you should pick it now for
-> v6.18.
+> Eh yes, Nicolas forgot to add his SoC on all of my commits, whoops :-)
 > 
->> For all of the currently supported boards, I was planning to temporarily leave the
->> firmware-name properties in place for one kernel version (v6.19) and remove it from
->> all of them at once, for kernel v6.20.
-> 
-> OK. So I guess the plan is to have MT8188 SCP working in v6.18 based
-> on the current name then?
+> Cheers,
+> Angelo
 > 
 
-Any firmware in linux-firmware that needs a rename will still need to retain
-compatibility with old kernel versions: it doesn't matter if scp.img will be
-renamed because we will anyway need a symlink.
+And here I hoped b4 would do that when sending these out, oh well.
 
-This does effectively mean that, for MT8188, the current "scp.img" will be
-"reachable" as both "scp.img" and as "scp_c0.img" - so timing for removal of
-the firmware-name property in here doesn't matter at all.
 
-There's no rush.
-
->> I'd be okay if you send a commit or a series removing firmware-name from all of
->> them, without any Fixes tag and without any "fix" word (so that we avoid autosel
->> backports at all costs!), but keep in mind that I'd pick that in the next merge
->> window, and not right now.
-> 
-> We can avoid autosel with:
-> 
->       Cc: <stable+noautosel@kernel.org> # reason goes here, and must be present
-> 
-> (See stable-kernel-rules for the whole paragraph.)
-> 
-> After the blobs in the firmware repo have been renamed, we then explicitly
-> backport the change to stable. I think that works out better? And the only
-> one that needs to be timed is the MT8188 change anyway.
-> 
-> How does that sound?
-> 
-
-We can avoid autosel with that, sure - but I still don't really judge it as being
-a fix, as not specifying firmware-name is something new, even if it was technically
-wrong from the beginning.
-(Someone may or may not agree with me, but that's another story.)
-
-In the past, it wasn't a problem - it's a problem now, and a resolved one - but
-this doesn't mean that having this property was a "broken" behavior in the past.
-
-It worked. And it was fine.
-
-Even if I don't see the actual benefit, I don't mind having this backported to
-v6.18 when it'll be time to pick this commit along with the others, but again
-I don't understand why you're feeling like this is urgent.
-
-For how I see it: -> it's not urgent! <-
-
-There has to be no regression on the supported boards - with or without - this
-property being present.
-
-The only one that can be just renamed without *caring* about symlinks is MT8189,
-as it "never worked" upstream (as in, there, a rename without a symlink will not
-create any regression) simply because MT8189 never got any firmware-name property
-(actually, never got any devicetree at all, even).
-
-Again, timing is not important; the sooner the better, yes, but at the same level
-of importance as any other *functionality improvement* (not fixes), nothing more
-and nothing less.
-
-Does that clarify the course of action for you?
-
-Cheers,
-Angelo
-
-> 
-> ChenYu
-> 
->> Thanks!
->> Angelo
->>
->>> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->>> ---
->>>    arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi | 1 -
->>>    1 file changed, 1 deletion(-)
->>>
->>> diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
->>> index 7fedbacdac44..8e423504ec05 100644
->>> --- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
->>> +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
->>> @@ -1166,7 +1166,6 @@ &scp_cluster {
->>>    &scp_c0 {
->>>        pinctrl-names = "default";
->>>        pinctrl-0 = <&scp_pins>;
->>> -     firmware-name = "mediatek/mt8188/scp.img";
->>>        memory-region = <&scp_mem_reserved>;
->>>        status = "okay";
->>>    };
->>
->>
 
 
