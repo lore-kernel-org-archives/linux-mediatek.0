@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF640CF2597
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 08:32:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C621CF258C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 08:34:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1GjrMlb1Km4dyFe8xp7zVk8p4DGH804VlDa0cJcO8IA=; b=3RksKOdzQn/G/coc+D+hq3ur+5
-	9Qs9ALkqlPYVwJP7L2gEr1CL/sCTsyR5DzNTrB5TL1EySk6oCD3B0EMv7ba7zIQIHfPM43WpiDMtN
-	hVrYu2vpbHo+GzgelxrtoMw8D3SeL1URgcZuro4hKRLq3zAbSgD+A5eL8lE0eRxJmJKwYoHORWk3v
-	/RRK6Of6O2A5c2TywmPqFQIXgzo40lIHFwULzwgCImQ8ri5LeSRu8GBv1oy77EolLAUAl0P1RHAf6
-	GbDhgOSP/qB5dWMN3mA6GH8qvl/CvVVHs9Oy+4/WCf2UKZxhnJVf2+JtyAEiesjAKk3laeXKJyBR9
-	nyvY6+lw==;
+	bh=QaSmBLtj9d6N/bgXjYQJX9wEhabWlwA+rn8pvnB09C8=; b=Xg4jvFzUbvJ1fOeb2Q9gTy5WVs
+	a3QxX3BwH7t4u0ggQ3Kmh5RaHfUWPgN5pBPx3/Y/z5IQs6CQzMnr78wm0MmSafjtsMWz8fVurltaM
+	6n0Sa2bzpTeIStd3L4iO2vYE2enjVmLR0Ne8Bz9pc3/PeAg9w+NN5hGv0B512eb98HL+Dgz11Gre/
+	CLSPrqbwyF+AF9DRaUdnFVqRYoMUPa+IwB1wrUs2DgwzBsY/Y2ICaSdoCI9LTZ8J6C4gWgh9KcVwT
+	XGj6F6JG+8vxgUqLx4PtGak3uTaBQexRekVG6DDdIFSR6eThGbKdReLnL685thsL9QhICGAYYWF3U
+	VlknupDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLdcS-00000002nSH-3eTa;
-	Wed, 19 Nov 2025 08:32:52 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vLdda-00000002ncm-1GcY;
+	Wed, 19 Nov 2025 08:34:02 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLdcP-00000002nRI-44fU;
-	Wed, 19 Nov 2025 08:32:51 +0000
+	id 1vLddX-00000002nbU-2rZ8;
+	Wed, 19 Nov 2025 08:34:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1763541167;
-	bh=wBrRth6jrMBMC97BugaJ+iim5MtferOSNB82gPcG4Rc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oLA1GjWRfrf4rj0OLTrqowQHNksAh/PrM1sSJPt35wSyikgWfoRMcNxUDCDoV1hXU
-	 uftIdxdac2QC8SI82kX07cdKNhAN0eE+EcD4uNGnM4Wd0UW6C/PdqFzTPabR3RfM6m
-	 XS4GRD/422P5XHXhQxO9dbP1UGNeyjDr+HnTQ7UZm11F7j13l5g2GjG2X+hoBI6qLP
-	 l997tC0WzRCWiST4dSyYf5Cc+gjtCpwXUgDaq9++JePHAbYK4Ft7We4SGl9zSssCbx
-	 4i5u6XMtcMMSlq1ouzIPhajHhUnhxrbpaig1yC2DVPmFDSI+5umhrbzxYYe/t6kqKV
-	 4hqO8wC6d1qOg==
+	s=mail; t=1763541237;
+	bh=1Pc5fBlhsZRdTIzwz2Wk8NOr8hOO9wcu82HCeysKRwk=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=kjsTtw1PJuGX6Mv1xUUq6YRgSSs3tyKfWsV9SfMHkCQV11DsLeiF5Q1IlSWZFIOLs
+	 6YRq74PzDdJTQNwRBujSx9zKpia9dAtzWgsr7jeT2f52844SwQX/y+l1/rwijtH9Qh
+	 UvbuQN3vIe2CKVGeSlLiT5JZDz+LEFnYr3+azqh4KOE2K7gqlA1wnu+ZdaeuJ6YX0Y
+	 Zr8epnbJMh2FlqeXhTp7IvEFA4Ukg+jsPVtV9eyg0smv3Bzeg4u/r9pJW6phmOnzQ+
+	 9gJfhJB3fMF+gAPejSh8ROpDS2qSVNo/NgF96G6X8CRReXrTqxPB3xlm9JgFu/uVKV
+	 FcGonuD9BQP7A==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AA2B417E0154;
-	Wed, 19 Nov 2025 09:32:46 +0100 (CET)
-Message-ID: <39fba430-3841-4bf2-9fe7-44f372ff4a16@collabora.com>
-Date: Wed, 19 Nov 2025 09:32:46 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C2B3717E0154;
+	Wed, 19 Nov 2025 09:33:56 +0100 (CET)
+Message-ID: <bb84228f-2aab-4b82-b787-37fe631007e7@collabora.com>
+Date: Wed, 19 Nov 2025 09:33:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 01/13] dt-bindings: soc: mediatek: dvfsrc: Add support for
  MT8196
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: Krzysztof Kozlowski <krzk@kernel.org>,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -61,14 +62,14 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 References: <20251114-mt8196-dvfsrc-v1-0-b956d4631468@collabora.com>
  <20251114-mt8196-dvfsrc-v1-1-b956d4631468@collabora.com>
  <20251119-alluring-jellyfish-of-chaos-4f5bd8@kuoka>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+ <39fba430-3841-4bf2-9fe7-44f372ff4a16@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20251119-alluring-jellyfish-of-chaos-4f5bd8@kuoka>
+In-Reply-To: <39fba430-3841-4bf2-9fe7-44f372ff4a16@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_003250_176765_8A32AABF 
-X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-CacheID: sfid-20251119_003359_874249_ADE153EE 
+X-CRM114-Status: UNSURE (   9.56  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,23 +85,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/11/25 08:41, Krzysztof Kozlowski ha scritto:
-> On Fri, Nov 14, 2025 at 05:53:55PM +0100, Nicolas Frattaroli wrote:
->> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Il 19/11/25 09:32, AngeloGioacchino Del Regno ha scritto:
+> Il 19/11/25 08:41, Krzysztof Kozlowski ha scritto:
+>> On Fri, Nov 14, 2025 at 05:53:55PM +0100, Nicolas Frattaroli wrote:
+>>> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>
+>>> Add a compatible for the MediaTek MT8196 Chromebook SoC's
+>>> DVFSRC hardware, introducing capability to communicate with it.
+>>>
+>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 >>
->> Add a compatible for the MediaTek MT8196 Chromebook SoC's
->> DVFSRC hardware, introducing capability to communicate with it.
+>> Incomplete DCO chain.
 >>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> Best regards,
+>> Krzysztof
+>>
 > 
-> Incomplete DCO chain.
-> 
-> Best regards,
-> Krzysztof
-> 
+> Eh yes, Nicolas forgot to add his SoC on all of my commits, whoops :-)
 
-Eh yes, Nicolas forgot to add his SoC on all of my commits, whoops :-)
+his SoC!??!?! Ugh. I meant SoB, and I should sleep more, lol
 
-Cheers,
-Angelo
+> 
+> Cheers,
+> Angelo
+
 
