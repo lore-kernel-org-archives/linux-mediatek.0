@@ -4,53 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96E94CF34AB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 13:08:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7031DCF34A1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Nov 2025 13:08:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=adrn4RHgNjcc9+GLotdfjAlx7xMGzATdhXAL6bsPOLI=; b=FOT97NVUrtFmE2QYNT8zV4th1t
-	bc751YhiH2t4OlcsFtVB0k2UzRkIXSfcTNfm5gOxBVt1mX6e+03ho1wHfPVlevjXI75ynizv3qtBz
-	cNX+bMUuODg3jILE2vYf4ohNcJc262RKXHuv3oig00aDqlAlkD6hbPUzSTdJANhAr0G2jD0JjL3mo
-	pc7If+JtZbll2P+vPX+nr05ZivYLAhJk3fZ7Q8UEuaUfFiCqqFMPfu8Z9UWLve79MThcLUW7ABUzy
-	eppCIdYw4Cw5U3AkY+X7xWb6Zz5V2wXpvM9Z/rRQhQxmHUKke3pQiyK77d6ExO+0yfj0BrEtPqv+F
-	+iM362zA==;
+	bh=igNERjzw42v425WqlzXvdTEyLpvMyT8MhX7BK4cDcdk=; b=cAV5K+ZR+q7Y8By1OkJuTW5dJR
+	6xIlprKUI+Un97DcwdmeFQ8wOLYU/QzcUX8GlgTZIBL4eYkJWgmBN9A5M79yRf827OkdNUg+mPgDu
+	V5Lw3kSVs9XDWkZud30pOwFY5KlRcOPyS5cyQLbS819QGaPNbUErVtxl1llCpnaBM5MasWG7OtoUo
+	QRnEIEOegd++m6F6tdOnnXLk82GJcAK8b9xFT037a2H2hJ1Hn8k3SI1tifvE6HcBs9GVWjCa0l2B4
+	uoATS/VuwjeuS0WfRqrPIeCEs4ePPtT/NkzXQCiS1rMAlj0ui8Tv04wOykFvfu1TZwYze31rUfNSJ
+	m1WnrFjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLhvL-00000003FBs-2ay9;
-	Wed, 19 Nov 2025 13:08:39 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1vLhvT-00000003FGS-2j14;
+	Wed, 19 Nov 2025 13:08:47 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLhvH-00000003F9I-3gHO;
-	Wed, 19 Nov 2025 13:08:37 +0000
+	id 1vLhvR-00000003FFJ-2nel;
+	Wed, 19 Nov 2025 13:08:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=igNERjzw42v425WqlzXvdTEyLpvMyT8MhX7BK4cDcdk=; b=kw4BbYzm0LeDzTtmnFMJ+vCKZ3
+	A59UeSH2rqgoa/XlhzGcFHnsX6ne8pZyG2851LenLD+g2LuSWUamms0lR73fq/AtopAH5WLZwbrQ3
+	yw45Qm9nHNyvMXBM/J9z0RvN608wh9UFAe4RDmQZC2krSk4CJ538uxN2i4dvRocmn1Ul/4cwlJiy0
+	InTpvhHlVmdpLkOEaDaxRVdR5dVLRzuC6U6V3IQBj3LEt/ehaDSI4ximN0wLjaficNTbJJDh6G2Qr
+	LKHC1R9yMij9RNcpdxeu2dZoHDIGVJTTjBQyvUKMM1O/wSuGuC8qimSNDSj4PRRQdzNq9GAqZTxdE
+	mMslUPFw==;
+Received: from smtpout-02.galae.net ([185.246.84.56])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vLh3l-0000000CAbQ-3RNs;
+	Wed, 19 Nov 2025 12:13:19 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 23CC74E4179C;
-	Wed, 19 Nov 2025 13:08:34 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 33C041A1BDA;
+	Wed, 19 Nov 2025 13:08:42 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id E9A0B60699;
-	Wed, 19 Nov 2025 13:08:33 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 4B19E10371A53;
-	Wed, 19 Nov 2025 14:08:22 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 051B160699;
+	Wed, 19 Nov 2025 13:08:42 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 4191110371A50;
+	Wed, 19 Nov 2025 14:08:32 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1763557711; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1763557720; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=adrn4RHgNjcc9+GLotdfjAlx7xMGzATdhXAL6bsPOLI=;
-	b=P5dsdtyG75A6W8URuwcCH5mPIAbQK40c/KfangQEpNMF96AppZNaIhDTTiO6FJa2okI5Yc
-	m5vUhMcDdQ3QhzsaNv74odqc7MujC+dWT2cIaAE91jmaPE7svMI/vMNxXmUfm99YW3p7y/
-	Uk98GEjHg3TX22Mo2CBdzp9yFqJd/wd3Lc24dxeGQWaYhZXnQFdOT151DpCBX7qwwby9jC
-	6ZS7asRzI+9z6jFnvDA6UpUe89kKWud6iIO7dWfeabJVFcquiBY89tV50T842g7WCpiAD7
-	X5kZNOhRlu6Ey/EUzCNAz9pTyujTX35+MAHzbgltj/sLbGEN8Ev+npS9hsT0HQ==
+	bh=igNERjzw42v425WqlzXvdTEyLpvMyT8MhX7BK4cDcdk=;
+	b=JCYmeXmP/seI6JRcUYUke20noK7upDq8K5d4C1WYodBXggU8chHWTsFhA/DCJSOK8W8p3w
+	7mKCWFCpSBu+XKWkGgbuyvXbQaOrpkGA8RlYjt+7YO2u7tT54BfQF+OjpVUg7JpVkahT7x
+	gPRNbEEgJuIICj/Rh8Mlm3KAnGC6yxZF0LSmWyfbToHu4h2tL65ARh+xyvohUM7Dl7gqOV
+	ExpNJbaUX7ssSBXMvWo5kgqDTs89FOY2DHdLxZwzIVAw7mJHRSu1f+LtDo1wpz9klOrvLJ
+	xa4IlhFU80gqMUfrf/ZA6yHvNOfNwkJjb01HqNaO6A5/18aSMESPHEqoKB5qdg==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Wed, 19 Nov 2025 14:05:48 +0100
-Subject: [PATCH 17/26] drm/meson: encoder_*: use devm_drm_of_find_bridge()
+Date: Wed, 19 Nov 2025 14:05:49 +0100
+Subject: [PATCH 18/26] drm/bridge: sii902x: use devm_drm_of_find_bridge()
  to put the next bridge
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-17-0db98a7fe474@bootlin.com>
+Message-Id: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-18-0db98a7fe474@bootlin.com>
 References: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-0-0db98a7fe474@bootlin.com>
 In-Reply-To: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-0-0db98a7fe474@bootlin.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -94,8 +108,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>,
 X-Mailer: b4 0.14.3
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_050836_198326_A77A58E8 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20251119_121317_984410_2BC87D21 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,50 +131,22 @@ reference on remove or on probe failure.
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/meson/meson_encoder_cvbs.c | 2 +-
- drivers/gpu/drm/meson/meson_encoder_dsi.c  | 2 +-
- drivers/gpu/drm/meson/meson_encoder_hdmi.c | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/bridge/sii902x.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/meson/meson_encoder_cvbs.c b/drivers/gpu/drm/meson/meson_encoder_cvbs.c
-index dc374bfc5951..577f6b1e162f 100644
---- a/drivers/gpu/drm/meson/meson_encoder_cvbs.c
-+++ b/drivers/gpu/drm/meson/meson_encoder_cvbs.c
-@@ -241,7 +241,7 @@ int meson_encoder_cvbs_probe(struct meson_drm *priv)
- 		return 0;
- 	}
+diff --git a/drivers/gpu/drm/bridge/sii902x.c b/drivers/gpu/drm/bridge/sii902x.c
+index d537b1d036fb..ca3ef23683a3 100644
+--- a/drivers/gpu/drm/bridge/sii902x.c
++++ b/drivers/gpu/drm/bridge/sii902x.c
+@@ -1208,7 +1208,7 @@ static int sii902x_probe(struct i2c_client *client)
+ 			return -ENODEV;
+ 		}
  
--	meson_encoder_cvbs->next_bridge = of_drm_find_bridge(remote);
-+	meson_encoder_cvbs->next_bridge = devm_drm_of_find_bridge(priv->dev, remote);
- 	of_node_put(remote);
- 	if (!meson_encoder_cvbs->next_bridge)
- 		return dev_err_probe(priv->dev, -EPROBE_DEFER,
-diff --git a/drivers/gpu/drm/meson/meson_encoder_dsi.c b/drivers/gpu/drm/meson/meson_encoder_dsi.c
-index 6c6624f9ba24..dd5d6e6a7cb0 100644
---- a/drivers/gpu/drm/meson/meson_encoder_dsi.c
-+++ b/drivers/gpu/drm/meson/meson_encoder_dsi.c
-@@ -120,7 +120,7 @@ int meson_encoder_dsi_probe(struct meson_drm *priv)
- 		return 0;
- 	}
- 
--	meson_encoder_dsi->next_bridge = of_drm_find_bridge(remote);
-+	meson_encoder_dsi->next_bridge = devm_drm_of_find_bridge(priv->dev, remote);
- 	if (!meson_encoder_dsi->next_bridge)
- 		return dev_err_probe(priv->dev, -EPROBE_DEFER,
- 				     "Failed to find DSI transceiver bridge\n");
-diff --git a/drivers/gpu/drm/meson/meson_encoder_hdmi.c b/drivers/gpu/drm/meson/meson_encoder_hdmi.c
-index 8205ee56a691..e2d861239eda 100644
---- a/drivers/gpu/drm/meson/meson_encoder_hdmi.c
-+++ b/drivers/gpu/drm/meson/meson_encoder_hdmi.c
-@@ -390,7 +390,7 @@ int meson_encoder_hdmi_probe(struct meson_drm *priv)
- 		return 0;
- 	}
- 
--	meson_encoder_hdmi->next_bridge = of_drm_find_bridge(remote);
-+	meson_encoder_hdmi->next_bridge = devm_drm_of_find_bridge(priv->dev, remote);
- 	if (!meson_encoder_hdmi->next_bridge) {
- 		ret = dev_err_probe(priv->dev, -EPROBE_DEFER,
- 				    "Failed to find HDMI transceiver bridge\n");
+-		sii902x->next_bridge = of_drm_find_bridge(remote);
++		sii902x->next_bridge = devm_drm_of_find_bridge(dev, remote);
+ 		of_node_put(remote);
+ 		if (!sii902x->next_bridge)
+ 			return dev_err_probe(dev, -EPROBE_DEFER,
 
 -- 
 2.51.1
