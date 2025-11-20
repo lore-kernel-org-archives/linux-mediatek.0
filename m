@@ -4,64 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46868CF8548
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 07:12:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52913CF857B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 10:05:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fUVxtnDp0wBZw7gMGe0WzIL+BrSI1zZNHhXG5nhPpAA=; b=Rz1T5BLfl01vUumYDtlLHI4Ora
-	MY8NsdJSCcVZN1TtOHKFZHj0qcJ2O4Trt4yWURBHzgvh6pJ5irixka6cg3fv4gFwjhhOZ5eNIoUr/
-	42R94sW8YZLu30pmxzaILA2CgBLsXkQguNThIxPiQZUvu0XYURbt71LHUxmt7gOKOBVNSZWLKRXJr
-	VCSZf8FI7KJkM4uUIxQ6p4i6adHvWwTTYauT9cAUibQfi1uNR4iIWj9w6OBg8jVUc11c/lppSqNdO
-	XREvEQP8kggGTqhLNDORe0zI3x4+BcYGd9Qq7JBTtDwdwASETOon0XjsAekLwlv410YzZGdjsmQvk
-	A0Ai7tyQ==;
+	bh=RgKDOVoDH4RlbNfWg6tdHS/5Vq1G2WuzhlcLCiibols=; b=uwGFyPVDq7U0EpWmwyLsQFi7MJ
+	XHq2GKwbHV3ltU6ud2JV1Fy9pJtsAZQjBGuxpciKiP6mrImytEcMG4VGq9WPriIYaTY0YdaGXa0NM
+	/k33hwUPHgLC9f6KvEOLRNPaGQDalhs0QrOR27kNWF+PjqAwtfMTL/7RriuY5ehbDSSuamYi6ELP7
+	KDLfGNBxC0hOusbCCiA+vzev/4vEiCbWixl/G0F4wBKlG+0dPShqGRO1+m9hIJb+e/4iq0q9wSx22
+	vmZyvKMk1Cdc2PkJKFt+a4NTijzjekXqmheCeK42ukTbuIBWPvp+vmtN1SOqpXueWwztjznQwWGm+
+	1bVSwJPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLyqF-00000006HM8-3oia;
-	Thu, 20 Nov 2025 07:12:31 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vM1Y0-00000006TlR-4A1V;
+	Thu, 20 Nov 2025 10:05:53 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLyqC-00000006HKg-11CV;
-	Thu, 20 Nov 2025 07:12:29 +0000
+	id 1vM1Xz-00000006Tkc-1tb9;
+	Thu, 20 Nov 2025 10:05:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id BEF8140677;
-	Thu, 20 Nov 2025 07:12:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 124A5C4CEF1;
-	Thu, 20 Nov 2025 07:12:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1763622745;
-	bh=EQAgnumsg/0/HohGZhlQ7lZ5l81gXXG25tXu/zMDTTw=;
+	by tor.source.kernel.org (Postfix) with ESMTP id 834766014A;
+	Thu, 20 Nov 2025 10:05:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6408CC4CEF1;
+	Thu, 20 Nov 2025 10:05:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763633150;
+	bh=vMghPovkhQw6tivt57mVVvNBm3XnZqhpjKCNtHi4dyw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=btUsB5fhDPjSTktDnq3DzzZZd54B9/cGdxkWXeQFdks6o228NwGaJUnKsLivooWZo
-	 nznEHs9HKpv1QPdi7ap+eFfheA8tsBbn/BHOFILYDEz4wUcr/K4QajByN3GAUF8EUv
-	 Z0ca5yNesER+GfsIOyEUp6DVcSTQKsPIV1ObkKmM=
-Date: Thu, 20 Nov 2025 02:12:19 -0500
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Douglas Anderson <dianders@chromium.org>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Thorsten Leemhuis <regressions@leemhuis.info>,
-	incogcyberpunk@proton.me, johan.hedberg@gmail.com,
-	regressions@lists.linux.dev, sean.wang@mediatek.com,
+	b=YUw3yLVzkCnhfgea52J02hCu7VTJL/31ccP2PorEF4XhnV9QEREXEU1sqqkzAW7+G
+	 +IYERAO3tgr8qigL/3vaCPxw4puhM8WV6GyKXZPDypTh7r2UZU4+SidSI1gzlLxIAU
+	 GGI+c1TVoYJFte/uKRrzK7bLAoHCZAt8tA4OQAmq8NZ1SyT8cDn9cjlJtKLJ3trHVT
+	 JlMp4nQ87X6RzZke+TMNbpEdQiQurbZGle28lKRR8FA8xj5y/b7gzHc0HcExtunW/t
+	 kjobnWBt03UCVucq2E3TMfPPNYcgBc7Du15RgYsrJJoGC8YccL8oW2gB05sL5t8W+B
+	 DryNgppmezInA==
+Date: Thu, 20 Nov 2025 10:05:45 +0000
+From: Lee Jones <lee@kernel.org>
+To: Markus Elfring <Markus.Elfring@web.de>
+Cc: linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] Bluetooth: btusb: mediatek: Avoid
- btusb_mtk_claim_iso_intf() NULL deref
-Message-ID: <2025112007-quit-enable-3fa1@gregkh>
-References: <20251119085354.1.I1ae7aebc967e52c7c4be7aa65fbd81736649568a@changeid>
+	Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	LKML <linux-kernel@vger.kernel.org>
+Subject: Re: [RFC] mfd: mt6358: Using a single IRQ array instead of two
+ companion arrays?
+Message-ID: <20251120100545.GX1949330@google.com>
+References: <84ddee3b-df7b-4022-a864-66da95283394@web.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20251119085354.1.I1ae7aebc967e52c7c4be7aa65fbd81736649568a@changeid>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_231228_334070_5ED85EF2 
-X-CRM114-Status: GOOD (  25.58  )
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <84ddee3b-df7b-4022-a864-66da95283394@web.de>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,62 +73,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 19, 2025 at 08:53:55AM -0800, Douglas Anderson wrote:
-> In btusb_mtk_setup(), we set `btmtk_data->isopkt_intf` to:
->   usb_ifnum_to_if(data->udev, MTK_ISO_IFNUM)
+On Wed, 19 Nov 2025, Markus Elfring wrote:
+
+> Hello,
 > 
-> That function can return NULL in some cases. Even when it returns
-> NULL, though, we still go on to call btusb_mtk_claim_iso_intf().
+> I have taken another look also at the implementation of the function “mt6358_irq_init”.
+> https://elixir.bootlin.com/linux/v6.18-rc6/source/drivers/mfd/mt6358-irq.c#L227-L293
 > 
-> As of commit e9087e828827 ("Bluetooth: btusb: mediatek: Add locks for
-> usb_driver_claim_interface()"), calling btusb_mtk_claim_iso_intf()
-> when `btmtk_data->isopkt_intf` is NULL will cause a crash because
-> we'll end up passing a bad pointer to device_lock(). Prior to that
-> commit we'd pass the NULL pointer directly to
-> usb_driver_claim_interface() which would detect it and return an
-> error, which was handled.
-> 
-> Resolve the crash in btusb_mtk_claim_iso_intf() by adding a NULL check
-> at the start of the function. This makes the code handle a NULL
-> `btmtk_data->isopkt_intf` the same way it did before the problematic
-> commit (just with a slight change to the error message printed).
-> 
-> Reported-by: IncogCyberpunk <incogcyberpunk@proton.me>
-> Closes: http://lore.kernel.org/r/a380d061-479e-4713-bddd-1d6571ca7e86@leemhuis.info
-> Fixes: e9087e828827 ("Bluetooth: btusb: mediatek: Add locks for usb_driver_claim_interface()")
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-> ---
-> I have no way to test this commit myself other than to compile it. It
-> looks fairly straightforward, though, so I'm hopeful it will fix the
-> problem.
+> I see that there are two arrays allocated so far.
+> How do you think about the possibility to use a single array with the needed data instead?
 
-Hi,
+It'll be easier if you just submit the patch.
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
-
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- You have marked a patch with a "Fixes:" tag for a commit that is in an
-  older released kernel, yet you do not have a cc: stable line in the
-  signed-off-by area at all, which means that the patch will not be
-  applied to any older kernel releases.  To properly fix this, please
-  follow the documented rules in the
-  Documentation/process/stable-kernel-rules.rst file for how to resolve
-  this.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
+-- 
+Lee Jones [李琼斯]
 
