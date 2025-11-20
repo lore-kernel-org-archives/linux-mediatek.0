@@ -4,62 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53A12CF8875
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 15:58:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FA8CCF856E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 16:06:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9/+XHzU0pF7aWaFutMnb2QVUneP4Even5NnnXd+XgY8=; b=wGar2mZQ+NmGlJspjoXccLFjeW
-	PZjWamRpA/7wuGn2CU0cPeNRSNxz0eciMUbCatWjWiLT2tfbja4qsL1roRRptZgYQBMlKKvvzR0Au
-	OhlHiu8UBTj2EsyCctivapfKQj9n6afjfXWpUgHgQ+4+7/3acKi1nBZw75P0ga1jpTTpfUHCBHUjV
-	Hti9QeLYIK3Xvdo1M8Qd4ujjZ/mwoJCwikgQ/JgIeBOIUqci7MtuZqYeLTDYa7FyXAqTBccXu91F+
-	ydl1E5eRBGZ+CQdVXMM6PUOt/pytkTMHKrtT0Spw+FU9Ce4I6T5KJZUKsEj7Li5lo2nApF8YwimHL
-	QU2UPTkw==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fY5BvWFohYUsQWWAbdgvSo56iCSLE2VcTftjflKg6QE=; b=JqQyKdMxmiDKtnEsM8q77wEpFv
+	TyVMC3MeNyfdYybPQp9KZLzaDWhYanacxkpl8nlRfRnTbooAW7gCpFf2f2/6oHoKgSRsrrEEOCHey
+	GRHN1YP/GHaNpiqN/K2iiS8Y5+MNMCE8qXpqqg2jK13px1lSAc4gpanW7bMHrFRFmn49ShEFfjWlQ
+	/9E749uzx/jFpsI30tfQGVrfXGouoy05zxDSC3W+Bf+aVlaGXrHM7FYQRGCQRasY7wj27CPgTuEJU
+	3jeeGWGZCQB8kOTgfGrxLvEmBcy6x5Vz1w0bO6Bnd7MAe/N4YVDcJCuELDWYt0n/hB5NoRaSqhoBo
+	UCX29fkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM73P-00000006xZF-1oAs;
-	Thu, 20 Nov 2025 15:58:39 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vM7Ag-00000006yKm-1Htj;
+	Thu, 20 Nov 2025 16:06:10 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM73O-00000006xYG-0UJn;
-	Thu, 20 Nov 2025 15:58:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3E43C6014C;
-	Thu, 20 Nov 2025 15:58:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7E00C4AF0E;
-	Thu, 20 Nov 2025 15:58:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763654316;
-	bh=WNuap7absK6lAtucjrajzfMyXhK03+dzT1XbMmcXZ24=;
-	h=From:To:Cc:Subject:Date:From;
-	b=rHVvjXqQRwxehxusb/zaSyMFzSUvKHvQDdwb97TXCP11xcTnTywmClxRncatwCZz5
-	 IQx/dnMRZPI5oMQeFyaQKC4sErxr8F/fJJOswU7oAewjAydFZD8j+WjBZACUd48al8
-	 c9Dyp4jaVCYsF4+1Ss3j28kZ/jQFODScapoPl7czs9DwwKcrqaawYtkgv1b5NnAm5u
-	 JuoYltiN7T2pZ/0WhZA27e1xKNFd0xw+b8Kh4/ALhZln/UxagFeyzkxzPVEv8w8iel
-	 qaEw8AG8nr+KKvooZv/ip58WEY6uKFlA8gp8et+pegWcZiMa8hBtP3rT8Mjb/zl8m7
-	 H9xvZo1J5mFCw==
-From: "Mario Limonciello (AMD)" <superm1@kernel.org>
-To: mario.limonciello@amd.com,
-	nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: "Mario Limonciello (AMD)" <superm1@kernel.org>,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] wifi: mt76: Strip whitespace from build ddate
-Date: Thu, 20 Nov 2025 09:58:27 -0600
-Message-ID: <20251120155829.3494747-1-superm1@kernel.org>
-X-Mailer: git-send-email 2.43.0
+	id 1vM7AW-00000006yID-1Lp0
+	for linux-mediatek@lists.infradead.org;
+	Thu, 20 Nov 2025 16:06:01 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-644fcafdce9so1623587a12.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Nov 2025 08:05:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1763654756; x=1764259556; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fY5BvWFohYUsQWWAbdgvSo56iCSLE2VcTftjflKg6QE=;
+        b=aZMZLNLKgpEB1NUz5m9H92RB6WoTR3RkoN7UO7sEc7h/efXSKuV6mwanmyTEfmcqae
+         zxSLq4gIs2fU0y2M8/beafCVyVkTF5ZTl14NiPH8B7N8koATiC0qIjdqsLWL35YTkb0i
+         zeTIT2gG/jpmGcdT8JW7fcZin2ciNPNFWwBv0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1763654756; x=1764259556;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=fY5BvWFohYUsQWWAbdgvSo56iCSLE2VcTftjflKg6QE=;
+        b=pXsX6Wx8TJYNwsV3fCGnvtG0TaxVpBYVtQeVpj2GrAHqfWExlE1r7P8igRz1qZL6EG
+         4483GyDSgpFN4uoNhqm3WkQpISOEJ1bEwvRb2N2gGFvaaGAy85zefspqagqc08sGK9cb
+         P/GxjSYhtx2Wdixp3QwZjW1OG57VR6/e68EMBFLX+qQjvnEFCKRowPZ+1+UnYGfni6EK
+         bXpUPsd6iAQzH6crt9o/SbJ024bhsZEpqZa1yGMNjiPOacFb+KpLcUKhWCkPDbqqnxHI
+         HhRbqXchpnzQ+Q15rutx+LKLRz2/FH3ajiGEVt27ZIVwCn1q6e7f7iA+Dbc/r5/4/4Gs
+         FiEw==
+X-Forwarded-Encrypted: i=1; AJvYcCURAFN+5TZzsZrWrHnUyiGzX1Pb8LVFdznOIILkbgC0yPo59kCtbAuWje0VohnIlwYzrH6cUxjSNDbSyxP9Kw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzhZoDl7qSDmAReDMlJi/Hlba9SGPC9NqKGr+b8fNB4ncV5PV3Z
+	TiYhzIQ0gR2Ch+gJ5FUUcCuflZPFj6FPezNhrrg6jabn8ZIiTlwg1dXZwUJ2LekMIOQ+VEFiMJw
+	zwQ1/CPPQ
+X-Gm-Gg: ASbGncvAZDzZg+r0wf1orBW0Ct2CMcVwewQJJ8Uuse5WdbHZo4OwjygmEOmk9RsB0DE
+	lYKEUzyNSKZ502n0qnZgufcNYxGSEVKRvzET6KmfgNTI6no3zEFwy8zvkMs+EeeHFz0514EiIn5
+	mzEp4BtEcEw74hrDT7QtcrmmM+05fRx30OlygIojuz690zD0JVutnIdZQN4fFSGaW1P0wIl/K9V
+	vG33WAp7BorICCNLMERkz1c9RFem6BroOviGvVGSvZuAQwVCHM1zOYUETbhdS0M5Xt05M7BaIlk
+	iRVDhGV+PeUCJhnXBYbbXC/UnTg0yJitofO/MN4EDw4/rE1MhrPxaiQFsCFhigDTZmz8v1EJ2I/
+	tFneX76oBB6V0kT96WyP7Slqox3ynbrRUluW/YqPq2ySIUwcewHer+77Hu+GNm+Zeq/X/8Zh6fU
+	f8l3Ns/E7p58V2ZusSSKavKGI1WyeDHXquewKn6ob2aCXY13jM5w==
+X-Google-Smtp-Source: AGHT+IEQByXwBjUBxwzW59hYjLKthAVV6UKb1JIc5FuLxv2aO8aMYU1yaL8WtWp/4nxsxVIZT5PiUQ==
+X-Received: by 2002:a05:6402:270a:b0:641:9aac:e4a9 with SMTP id 4fb4d7f45d1cf-6453641111dmr3518915a12.15.1763654755853;
+        Thu, 20 Nov 2025 08:05:55 -0800 (PST)
+Received: from mail-ej1-f54.google.com (mail-ej1-f54.google.com. [209.85.218.54])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6453645f2easm2324841a12.33.2025.11.20.08.05.51
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 20 Nov 2025 08:05:55 -0800 (PST)
+Received: by mail-ej1-f54.google.com with SMTP id a640c23a62f3a-b72b495aa81so140118466b.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Nov 2025 08:05:51 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCU4FRISAQTwK2pR8IXodgJ+GO4wPeMZVSjocZkzDxBNaJI1NFWUtYkGS2y58+cSgpr8V6mr2d2FgmDztaxTuQ==@lists.infradead.org
+X-Received: by 2002:a17:906:dc8c:b0:b76:23b0:7d70 with SMTP id
+ a640c23a62f3a-b7654ea998amr379971766b.39.1763654751460; Thu, 20 Nov 2025
+ 08:05:51 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20251119085354.1.I1ae7aebc967e52c7c4be7aa65fbd81736649568a@changeid>
+ <2025112007-quit-enable-3fa1@gregkh>
+In-Reply-To: <2025112007-quit-enable-3fa1@gregkh>
+From: Doug Anderson <dianders@chromium.org>
+Date: Thu, 20 Nov 2025 08:05:38 -0800
+X-Gmail-Original-Message-ID: <CAD=FV=V7jja=CsA4QyrGNHPKbSb3wfbLbhET+j01cUeuZGSdsQ@mail.gmail.com>
+X-Gm-Features: AWmQ_bmHJc4rIzwwFhnOnl9hbzodCqBW9sxgLfvryl54nq-vWqoNlY_oT15PM_w
+Message-ID: <CAD=FV=V7jja=CsA4QyrGNHPKbSb3wfbLbhET+j01cUeuZGSdsQ@mail.gmail.com>
+Subject: Re: [PATCH] Bluetooth: btusb: mediatek: Avoid btusb_mtk_claim_iso_intf()
+ NULL deref
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Thorsten Leemhuis <regressions@leemhuis.info>, incogcyberpunk@proton.me, 
+	johan.hedberg@gmail.com, regressions@lists.linux.dev, sean.wang@mediatek.com, 
+	linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251120_080600_372262_0EC230E8 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,51 +113,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On systems I have with mt7925 cards I've been noticing a blank line in my
-kernel logs.  IE:
-```
-[   17.294105] mt7925e 0000:c3:00.0: HW/SW Version: 0x8a108a10, Build Time: 20250721232852a
+Hi,
 
-[   17.314233] r8169 0000:c4:00.0 enp196s0f0: Link is Down
-```
+On Wed, Nov 19, 2025 at 11:12=E2=80=AFPM Greg KH <gregkh@linuxfoundation.or=
+g> wrote:
+>
+> - You have marked a patch with a "Fixes:" tag for a commit that is in an
+>   older released kernel, yet you do not have a cc: stable line in the
+>   signed-off-by area at all, which means that the patch will not be
+>   applied to any older kernel releases.  To properly fix this, please
+>   follow the documented rules in the
+>   Documentation/process/stable-kernel-rules.rst file for how to resolve
+>   this.
 
-This is because the build_date from the header has a newline character
-as does the dev_info() print.  As the firmware isn't guaranteed to always
-have a newline but the print is, copy the firmware build date to a
-temporary variable and strip any whitespace from it before showing it in
-the logs.
+Sure. I'll send a v3 with the Cc to stable added and collect
+IncogCyberpunk's Tested-by tag that was given in response to v1.
 
-Signed-off-by: Mario Limonciello (AMD) <superm1@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index fc3e6728fcfbf..eeba6deb100c1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -3101,6 +3101,7 @@ int mt76_connac2_load_patch(struct mt76_dev *dev, const char *fw_name)
- 	int i, ret, sem, max_len = mt76_is_sdio(dev) ? 2048 : 4096;
- 	const struct mt76_connac2_patch_hdr *hdr;
- 	const struct firmware *fw = NULL;
-+	char build_date[17];
- 
- 	sem = mt76_connac_mcu_patch_sem_ctrl(dev, true);
- 	switch (sem) {
-@@ -3124,8 +3125,11 @@ int mt76_connac2_load_patch(struct mt76_dev *dev, const char *fw_name)
- 	}
- 
- 	hdr = (const void *)fw->data;
-+	strscpy(build_date, hdr->build_date, sizeof(build_date));
-+	build_date[16] = '\0';
-+	strim(build_date);
- 	dev_info(dev->dev, "HW/SW Version: 0x%x, Build Time: %.16s\n",
--		 be32_to_cpu(hdr->hw_sw_ver), hdr->build_date);
-+		 be32_to_cpu(hdr->hw_sw_ver), build_date);
- 
- 	for (i = 0; i < be32_to_cpu(hdr->desc.n_region); i++) {
- 		struct mt76_connac2_patch_sec *sec;
--- 
-2.43.0
-
+-Doug
 
