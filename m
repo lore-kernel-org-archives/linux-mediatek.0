@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A44CF857C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 10:18:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3837ACF857B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 10:51:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7b7g7jzmb3QO9iZiIJeiMx4p/PHQHaZ1A3diXPbujlY=; b=Rq6A1tHWapmozzPhghv1kSxy0I
-	qHi054WUnKh7QbzU6SB+z5n+bp+SuWlsgH4GNABI4PHe+2m8TQ7vu3Z9Suf7O4E7+I8FHw6JgUyXj
-	9Ck5h8uyDoqSS3VrYj6l9/9VwOeP3EK3Jj+xVzN/SX7aqIS8ZzAFDaKAskwxS9xW4trCWBgMzghod
-	5Am1tVlqSESb6pAJ4Ib+QBWRddWsFOIrDMmTjVhfH7rFOR3AegDydj8s8KtNlV4V1OVcouV9ZF59m
-	jx/1bRcmGfRU//pYae1OjDlGGTQErVaU855fcDC7UMGL8Yev0U11xmNZUJiOkcH9BLbfoSWm8LYCO
-	Uu8N8/AA==;
+	bh=ZcPaIUmTWhRvW3hgiFXUWZcKDOna0ZGDiy0Ou4SzaHE=; b=zIJInJ7Hs+4GABZcAyENU6kFVp
+	VjTWeroHGJ+FWfo1Lx+DcYwOVM4F7MIrecLpw8FsAANCpGgARVSN+Et1Odra1E7jw+U/GSa1Ugg+D
+	3LSIRDnt1xRC0fGGUN5H3vC6pzhob1ivJiMXpw4FVOZSml8+dX82GG/K+9V8ehPAuC5KC2cZdW3PM
+	csXytPg6oo1WhC30zfEDAIV0g5z1pGJO1EcQ6KIFqw2+ZDQ6aveT1Jg0NKk5Onh4ZZb3WZFrOlwpj
+	UkRlLS21hHbSsvLlimcheDa4Q+/XW6q7Lr22cZQdP+JJw+OUOHyDYaaVjxARuYE5CZgHk2AG+AZvC
+	5Yp0D4kQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM1k1-00000006V4C-1Xrg;
-	Thu, 20 Nov 2025 10:18:17 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vM2G2-00000006XJw-0oIn;
+	Thu, 20 Nov 2025 10:51:22 +0000
+Received: from mout.web.de ([212.227.15.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM1jy-00000006V2n-0Mc9;
-	Thu, 20 Nov 2025 10:18:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1763633891;
-	bh=N9v693C71p7JFwlB4qoGB1WvggPJvzKD5CU0K6//7i4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Gn98WaMM5MoHPf+shmYmSr8cHZgiATwbYAeZOBC3+f/lhjCCiQjtPdqiShfvUQvjy
-	 LdllZp3crc/xo+LwVTnX5mRkpRCxxAbwEoD8qbs7j78T1H7hlf5sUeL3uinfzc56L/
-	 HiYZyIkxzUSfrlb7YAPRaDYcPh1nNchBgau2PvBxmNtYChFeIthfhFtbYZEYyLo3c3
-	 X3fr4/uKTz35U+l7464qfH7Lx1SiMpLBrQmdzUYJts2VwSUCiYY8H3uDjkvjCgBEbr
-	 YThhlG/v1vnGwsUeWl+HeV/Ke1k4qaxIeDZYsMVAW5A21gxv02mVKxIxYu5kfJgM/Y
-	 0lF9pwkxNnzjA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7887C17E0CA1;
-	Thu, 20 Nov 2025 11:18:11 +0100 (CET)
-Message-ID: <15bf444c-0eff-4856-93a4-764668666c3c@collabora.com>
-Date: Thu, 20 Nov 2025 11:18:11 +0100
+	id 1vM2Fy-00000006XJ3-3bAO;
+	Thu, 20 Nov 2025 10:51:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1763635863; x=1764240663; i=markus.elfring@web.de;
+	bh=ZcPaIUmTWhRvW3hgiFXUWZcKDOna0ZGDiy0Ou4SzaHE=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
+	 References:From:In-Reply-To:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=YZV8O/wsGgv0KkV+ckz/WjLCXW7KcohJguEgoOTgqhDkcj7JVjUotcB3ia1g/DCO
+	 UbCjZNu7kfWo4UcEJHaKc3QRBXdI3loM19/MNpeEmQH5oaIvGqOiPrd9bPqS6Oj/2
+	 P16fvozH9B9Zha6pjq+4VKm7Gp+B0Qq1tzgeP5ar2FPfv/2uPPrnevucX63KgfPwy
+	 +808TSXGjtbfh+xIAQESdpoQDxCfJNq9o9ITIA3pNU7uaYUI85FfOU6D7h8XM2FvQ
+	 OdiIJgzqUSd4M4x9/hPrT8JiYwVAdNBRlIixLGXCvWrIeVgcSC5P3lfsxRG3QI9Je
+	 wzOR8L3KNGLxmjYCHw==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.29] ([94.31.69.176]) by smtp.web.de (mrweb005
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 1M8C07-1vHLHg2cV9-00HUeV; Thu, 20
+ Nov 2025 11:51:03 +0100
+Message-ID: <d9da11f6-3a4d-4aac-9d1b-eb6ac1ef3fe7@web.de>
+Date: Thu, 20 Nov 2025 11:51:01 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/3] spi: airoha-snfi: en7523: workaround flash
- damaging if UART_TXD was short to GND
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>,
- Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Cc: Andreas Gnau <andreas.gnau@iopsys.eu>
-References: <20251120042753.640492-1-mikhail.kshevetskiy@iopsys.eu>
- <20251120042753.640492-2-mikhail.kshevetskiy@iopsys.eu>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20251120042753.640492-2-mikhail.kshevetskiy@iopsys.eu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Subject: Re: [RFC] mfd: mt6358: Using a single IRQ array instead of two
+ companion arrays?
+To: Lee Jones <lee@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: LKML <linux-kernel@vger.kernel.org>
+References: <84ddee3b-df7b-4022-a864-66da95283394@web.de>
+ <20251120100545.GX1949330@google.com>
+Content-Language: en-GB, de-DE
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20251120100545.GX1949330@google.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:6X+Pxxiajbx54EOclh1Z5wi7+DSrJoP2Mc/8z3Y2xmq6Pux//35
+ bYkhF964rtPz07SpMcY/q4+8FOwjBJsnEXh/wnjzrRDzAanCEiQZyAzmX/UeXVpgbWuB1fO
+ riVr0x5EMvB9SDU213lOT5YuaiqRBCwSIJ9TI3SiO/dgaAHTZrdVJG+szEVC9o5m8MIcTCG
+ C36j3i/YQby7LcB9evgbA==
+UI-OutboundReport: notjunk:1;M01:P0:NvR5Zn8X5RQ=;4b5Dkq1uKHnkFXG8JOfTVF8PDp+ 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 HMqwYW6BWXujkYmn8QoPVMK+x6H2WoZCubhrFB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251120_021814_276719_46DD5902 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20251120_025119_188538_105AA80A 
+X-CRM114-Status: UNSURE (   7.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,35 +87,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 20/11/25 05:27, Mikhail Kshevetskiy ha scritto:
-> We found that some serial console may pull TX line to GROUND during board
-> boot time. Airoha uses TX line as one of it's BOOT pins. This will lead
-> to booting in RESERVED boot mode.
-> 
-> It was found that some flashes operates incorrectly in RESERVED mode.
-> Micron and Skyhigh flashes are definitely affected by the issue,
-> Winbond flashes are NOT affected.
-> 
-> Details:
-> --------
-> DMA reading of odd pages on affected flashes operates incorrectly. Page
-> reading offset (start of the page) on hardware level is replaced by 0x10.
-> Thus results in incorrect data reading. Usage of UBI make things even
-> worse. Any attempt to access UBI leads to ubi damaging. As result OS loading
-> becomes impossible.
-> 
-> Non-DMA reading is OK.
-> 
-> This patch detects booting in reserved mode, turn off DMA and print big
-> fat warning.
-> 
-> Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+>> I have taken another look also at the implementation of the function =
+=E2=80=9Cmt6358_irq_init=E2=80=9D.
+>> https://elixir.bootlin.com/linux/v6.18-rc6/source/drivers/mfd/mt6358-ir=
+q.c#L227-L293
+>>
+>> I see that there are two arrays allocated so far.
+>> How do you think about the possibility to use a single array with the n=
+eeded data instead?
+>=20
+> It'll be easier if you just submit the patch.
 
-This is important enough to get a Fixes tag.
+I would appreciate to clarify before if the adjustment of array usage
+can influence software run time characteristics in desirable directions he=
+re.
+https://elixir.bootlin.com/linux/v6.18-rc6/source/include/linux/mfd/mt6358=
+/core.h#L19-L26
 
-Please resend with the appropriate one, after which:
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-
+Regards,
+Markus
 
