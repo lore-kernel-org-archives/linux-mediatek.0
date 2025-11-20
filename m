@@ -4,66 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66268CF8862
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 14:18:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E419CF8862
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 14:23:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YG9htjSCPobl/COdWRekRzl35h8XjCefD/TKGqRHeOY=; b=e2FgYWVsoJ2h9fsOEl3TWdeNnx
-	a8BcI+nQBCjKKurFKhjOuEeheblmBHI0b243Hd1y08xiRdsW7hoc8afe6ja3sDu6Ic47yIDMj3uaX
-	w7HkuWOlbGSISgQhewPxNIjibHZprBoY10v8ljJe+xBcoHTiBt/p6UtXClG/yVKfFMeOUNI5AGGaq
-	+Urzp5kbkMMlcPyH2ObeH9tJFDsa6DDTHpyDv2yFVZCUE118GLVTjvEdHZKriW8T1oNE2QEKYqFG2
-	zfPENObdiNHBPON3a5RMwQJvoknP26D9oHJTCgDQbj7OokR6WFT0HoGWs6ep8DOhCTdsZYwpK3y/K
-	C5IBbdFg==;
+	bh=XNiTCEQmuFuQ64vrcS+bMvu7PnQmLVKha0uuZRECls4=; b=M4Yn+RZsvY5ILJRkA1QW1Uy3YD
+	ps/rsDTAGZk+HZfGIoyvzvZItVJNghovwSCYEYiqpnAOXmNO/pPfuwvpIzL9ojVz1PeQvE/d/bQ7E
+	zhtB3BpU1OamZN6Ux7OaIqt2yK9aqQYE2rLpipNyBSmToTZfGfIK+LaLYINgf4gKtBUuaIUonTI/z
+	eHZLWP8Ob39Sb3ku5dn0mVYLzO4gRYjA2eP2a0uKZwe8qF4RoQNWViFQuBuD58rdctyx8ZNrSMa1b
+	prkG0uBQBwbN3nWty9DWtybfYgFoYSItxyTblqsLWWQJntVjtAFMv3LEECys5KquXOCWy+7v0TzQo
+	OnYTeMAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM5UZ-00000006pIn-3aRZ;
-	Thu, 20 Nov 2025 14:18:35 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vM5Z6-00000006pwW-3GYb;
+	Thu, 20 Nov 2025 14:23:16 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM5UX-00000006pHo-0dib;
-	Thu, 20 Nov 2025 14:18:34 +0000
+	id 1vM5Z5-00000006pw0-3AU9;
+	Thu, 20 Nov 2025 14:23:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7822D4048A;
-	Thu, 20 Nov 2025 14:18:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2A1AC113D0;
-	Thu, 20 Nov 2025 14:18:29 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B45676011F;
+	Thu, 20 Nov 2025 14:23:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5C6EC4CEF1;
+	Thu, 20 Nov 2025 14:23:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763648312;
-	bh=kF9f4IYE1Y7cHiV7zpiJ1ITnZVqMqwIVtN5rP9NumFo=;
+	s=k20201202; t=1763648594;
+	bh=8ayBKTnZFAqxHMW9VO71uZ9963EOt7fbTOtBkrFddpo=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=M41DNbl9tTc1Nl3bxG+tvWu0Y7C8zaDLP+KAsjb0Ay4+X34Z/q9mBvT1A0ubMuNbl
-	 /QB/IZQp941lCD7yPVZNk9fkBfC8GzX30fxLmoe1jGTBMVJN3nhtUZmseVSEqFpc0J
-	 udfiVYW1/pd7hZeVUygNR3A/tjFHy6oGuDBhzjH3wQZk+WDYXJXoZ9fsIVAwnxZt2p
-	 U+vVnFxScU+Od2j/A0Myb4+vetDfsPmWklx3p8hn/GCSg9+F4BaunY1pShITPuoIUW
-	 q3hqtYUSxYrNrsKU3uWy/tdyH6bO68blwsKYu6e9OJqWXjl6DxD3t9iZvbKYwAWkPn
-	 y9fQY6NiauyFg==
+	b=uce+on+4GGXMCrcBkMAxpNJoz88CPK3mS5gmZ7ylxeP7rCc3vZ7WatTt+95cf96ph
+	 j7VnOnWUDKD6uoz59DDyB1x7hICeGMbvksmspMHnezPZrvdM/qBZtPH2o8CmO5yNk5
+	 DmGiUkSPX6h2dgZvFQwZy+8xEUSEtjKllBF7+GzeIDjQZX985R2gyDEa/1R/9KC+AH
+	 pP+jwtd1s1QE8k1N3+VIxRZitj76I+RC2OWR6tkx/gcgQQx6m6xbluwSzmBcXJ+pnZ
+	 tGuXogdGc001h2b3c2tcdEpe7Zws/EkCfKCDCTtowUQlrD/5VKnSKbTcbY1epllrxN
+	 42Bs/WO0dgZiA==
 From: Lee Jones <lee@kernel.org>
-To: linux-kernel@vger.kernel.org, Conor Dooley <conor@kernel.org>
-Cc: Conor Dooley <conor.dooley@microchip.com>, 
- Nicolas Ferre <nicolas.ferre@microchip.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, Lee Jones <lee@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20251117-aeration-smock-5e7ac06e2942@spud>
-References: <20251117-aeration-smock-5e7ac06e2942@spud>
-Subject: Re: [PATCH 1/2] dt-bindings: mfd: document control-scb and
- sysreg-scb on pic64gx
-Message-Id: <176364830946.726067.14196845460912590375.b4-ty@kernel.org>
-Date: Thu, 20 Nov 2025 14:18:29 +0000
+To: lee@kernel.org, matthias.bgg@gmail.com, 
+ angelogioacchino.delregno@collabora.com, Haotian Zhang <vulab@iscas.ac.cn>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20251118121500.605-1-vulab@iscas.ac.cn>
+References: <20251118121500.605-1-vulab@iscas.ac.cn>
+Subject: Re: (subset) [PATCH] mfd: mt6397-irq: Fix missing
+ irq_domain_remove() in error path
+Message-Id: <176364859266.728452.17611488618737515903.b4-ty@kernel.org>
+Date: Thu, 20 Nov 2025 14:23:12 +0000
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.15-dev-52d38
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251120_061833_209926_FDAD9403 
-X-CRM114-Status: UNSURE (   7.85  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,19 +70,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 17 Nov 2025 16:29:29 +0000, Conor Dooley wrote:
-> On pic64gx these syscons are identical to those on mpfs, and should use
-> a fallback. Add support for multiple fallback compatibles to syscon.yaml
-> with these as the first two users.
+On Tue, 18 Nov 2025 20:15:00 +0800, Haotian Zhang wrote:
+> If devm_request_threaded_irq() fails after irq_domain_create_linear()
+> succeeds in mt6397_irq_init(), the function returns without removing
+> the created IRQ domain, leading to a resource leak.
 > 
+> Call irq_domain_remove() in the error path after a successful
+> irq_domain_create_linear() to properly release the IRQ domain.
 > 
+> [...]
 
 Applied, thanks!
 
-[1/2] dt-bindings: mfd: document control-scb and sysreg-scb on pic64gx
-      commit: 1f9793a4d5188cddc0eb69d7840b7c5c57c939a6
-[2/2] dt-bindings: mfd: document syscons falling back to atmel,sama5d2-sfrbu
-      commit: 9494cb237b490cecc8c5d97824692b82097141c3
+[1/1] mfd: mt6397-irq: Fix missing irq_domain_remove() in error path
+      commit: b4b1bd1f330fdd13706382be6c90ce9f58cee3f5
 
 --
 Lee Jones [李琼斯]
