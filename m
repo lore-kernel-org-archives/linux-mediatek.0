@@ -4,93 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947C7CF887B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 16:13:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57515CF9C42
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 16:23:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yaSUH4/iI6K4vkTA9vG1I3sRuhxHn3+OXrhAbv97RTc=; b=XVGdqA5z64MSOmfQJHL4VPmyMm
-	4Zk/n+P8gixluVEIb+w9XYG6BMv9Td2VS32ZNILKgCRGfMmuJ2uyRjvPLvnjJNJafATfQT2/6mz7s
-	eAVyToQViKc7uH/lkbkVJpii16JebTLhozRpkxEd4JyjVjljf83nCZq3IfoRYzoOcUxFDz/INZZF0
-	F/PEwBulJb/oD4OgYW7f+TUjlNy0cTDY+KeokXdnGSWC4rA0ChLlrOLE2bYL4tB0gN53z866cVdh1
-	uVswxWFVZV6cuhDvpADxOgYjM7+swdCXPMpw1AZyiRMU3IjrCsBBs+TN2v2jDlj3ejmQfY6zzve8b
-	v+uHK7Hw==;
+	bh=d0tdadcaOllwZN0zF3sys/aIhLtv2I4tkzaAzDlX5eE=; b=hdZ2lhhalZ0YEMLMwPnCknFHKC
+	xRk7dJt4vNqzvXKbfQpYDVCUpya+7PxsAQ0XueqFvQRKyTqVDxD6O0MThTrWYpF0CS/0Z8XBrulnq
+	61anTwAOmpFWUXlnxU0Ord6gkaxR6IOIKYmGBrwqrA1xakmfbjqKBzWra+Zz1pJ/g9VesNpGGz52w
+	20s2n7ovlz5EWkaBkOVzpZ4f8y8kyqu+HsuobbIb+yguyAoSNrKDHL+bpTO0/5zMA9tG2C/oEW/2N
+	QFfsuXQmWxRbGsmvfqq0GvRQJwgJk7ySk3juhwvIqvMBhdIX5xLBwsZWNA/03vwXKu1MGn7c5z7Ld
+	FNQViZKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM7IB-00000006z6i-3MeL;
-	Thu, 20 Nov 2025 16:13:55 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1vM7R2-00000006zvf-3oIj;
+	Thu, 20 Nov 2025 16:23:04 +0000
+Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM7I8-00000006z5x-40sE
+	id 1vM7R1-00000006zuy-1CCL
 	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Nov 2025 16:13:54 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-298456bb53aso14175895ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Nov 2025 08:13:52 -0800 (PST)
+	Thu, 20 Nov 2025 16:23:04 +0000
+Received: by mail-oa1-x2b.google.com with SMTP id 586e51a60fabf-3e7e57450ceso295338fac.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Nov 2025 08:23:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1763655232; x=1764260032; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=yaSUH4/iI6K4vkTA9vG1I3sRuhxHn3+OXrhAbv97RTc=;
-        b=mR7y2E7z62G4i5qwUP5Noomt2yRTdE7MKpIgx6nyjhcdl2n/PCfJHGdhwYx2pmPLBT
-         KnFn2mbYZg+9NR/p9zO3l1ow2Ula4CNmGf9XICmOO8TzUbySnpNbsJeJtdjCzAvF7KCB
-         jx2QMAUYqmmki5bV106SgiAhO/hdXnovyD1K0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763655232; x=1764260032;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1763655781; x=1764260581; darn=lists.infradead.org;
+        h=message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=yaSUH4/iI6K4vkTA9vG1I3sRuhxHn3+OXrhAbv97RTc=;
-        b=kXrj1IcVh5qWqbW3AH9lBvH3x7QT3gS6MqrOQk2M1Wy/N2DxYKM+DOsvRqWmkrVm4B
-         At59AzQvT9TqKessrFgtJ5hMooh6hYOuuSRY+zk89SfUdxK7E/77PyPM0l2KE71ixz3c
-         PYNnfsQaCIuM9n9mg2a5UhqxF3X5KuPIYBSvI6i+w212DhAjRIv06A3QnSLTnTlyyktS
-         mdBQ9jdZvMywkEN82DF4hjJrtQwnO4/e32xS3ZnTSy9zyrVoKJ3ZSyVT1obtD4KZaqcV
-         4uhThQlqSG6QmSUckBWy9RtAKZLzsbIm5HKUFY1JaJ5145JJfbz2gscMlyW+RRTRvraf
-         cGUw==
-X-Forwarded-Encrypted: i=1; AJvYcCWneoAYYJxsmK0hex9MsQqQVGBxKg6h78zS1SHNGXyAK5MT1AaGYOGuyL0zpo1JWkc/+ocwzRCy01toRlX68g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx8NeGRcm6K1I9xQefaW7cQZFBHfPBtd/TMiuoAU4m0r1ycCXI5
-	kIUppLEVh+GFJUcAywan4cWam9oHWn33GuepmoKEjvfTVC4Y5L/EPFtRgFrZ5mKhuQ==
-X-Gm-Gg: ASbGncsFGUVSWPH2Up9ymzaMpAXe2Nub83wxZH2sQdSPy1TAR0G8q/6yaJ+NlHK9GxV
-	EUErzhJCQO/9nvw34o6D/qVvTu8toXufomK9fLkiHm3RJzLQFGNZehFtHXDzo/WJCSwt81fqe1U
-	807fOnr1K7gFPCylc0OcsnCi873jCCqSB0sMuBcYcLItRFyzORt1yhaTd/pqz9Chkip6s2H2RrD
-	8/Z9lbInyjxFthQ27XLbAGNwo+VBEJDR3Nva/8Fz9AZLhTJYmUs5flIkgEeb7UIMNV60msu2RJX
-	36oC517o17iuqYMzt9U/V9D4uCnoREF8shRHIQuBGzKwSDTW8CgmZ42BJFkV9I3qntv+UpFenBS
-	1aA21xqXl3c3tbrId4LEi6ghaBfyAqwUhUn8hBFftzRJW5cckxJIJrFyIAa7gtErN2xCoyDYrr5
-	gOxhey3tRkXDtmi5B0DxAi7o/KQp2G92IIHF02c3QPSDIN9a8HVRI+DTcAur01ECDHNXCT7Ws=
-X-Google-Smtp-Source: AGHT+IHXE1Lf/Npuwj0zFjBOEWKicuzA3UumJeheDegj7w9jH2aGLxpoO1AX2E47uPWOL3GSil4eRA==
-X-Received: by 2002:a05:7022:b88:b0:11b:9386:826b with SMTP id a92af1059eb24-11c938a5da8mr1482106c88.48.1763655232027;
-        Thu, 20 Nov 2025 08:13:52 -0800 (PST)
-Received: from dianders.sjc.corp.google.com ([2a00:79e0:2e7c:8:b075:e64a:7168:da0e])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2a6fc3d0bb6sm14316777eec.2.2025.11.20.08.13.50
+        bh=d0tdadcaOllwZN0zF3sys/aIhLtv2I4tkzaAzDlX5eE=;
+        b=Qk5u2PnWIQwgWUSYRpqyrALI7bkYeyH7J70Z8uNaKc4hguhDHNkIjUpdQopXBVDpUt
+         EpQ9yAJa5S2ZPd2r/6zIR8VWX/KnZ2I005armlyXHBlHu7z3sZekMD7ExqlA7pFm6RVs
+         8lk2/JewUIe9VtQSnY23NTmNwJLyB4+vVXMTjy+78fexrbW0I1/7Gw3+nuW6iBXjB44x
+         jUbXbN4SZqeV6sb0LTfiB6imNEMgqQMu8sc1CE1qjdELqUmDjvWfV8hc3ug08O2jCkmP
+         aE3ANlwShsjO03A2LrMlF9mmeUwgbVxsoxSePrKqsAMct6ecxoIS9/CwmVI5bCUnmtoa
+         fnUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1763655781; x=1764260581;
+        h=message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=d0tdadcaOllwZN0zF3sys/aIhLtv2I4tkzaAzDlX5eE=;
+        b=fYw05FBGSHuO7FhCUBuoOE1UHy2pNexCFFPCaicMCARuPU0V6Ys4sTSnORu2sDeXL9
+         X4Vm0IUzP1dhwroPMXr4r6/MC3VSBiaKYFVKpspgpGeRiMXdNGUzDNF/VaXsEfeCUB3l
+         N59IYvwDv/7tCRGmXc9xh9Vd7juECR+Oi0aDgO75RRbXD/cm3UQZ3iQiqXf/IpLhmTyM
+         OSVnFsKz7osxcsmMD5FdOO5of7wm+w2+89rySCRdx/t1W/xKgljPclAgCoqQDsejtZFu
+         GoGpHCnm4cY21JSI7VKZYnsdH3r2Yjq+9lpf9wm8j5af6JzlenSJVzjk94vfJ0x/fZob
+         wM9A==
+X-Forwarded-Encrypted: i=1; AJvYcCWHt7A9xbeQHPBXJjzoHobd27+waCLmdYq+WzrKJd8zUM0hVfORZdwwvmNFbC5u51/H2OkgSwlIzMWZzqwA2w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwZqfCNxnECuQBonaOS/+vmCYJn7eSYxHhUWIcPVmjxv6vsh3Uy
+	lo2qH5NJh9mfDu1G63AU8jLDxhTh7NwbrUUODRvZoSThRkw7s0xNLbYz
+X-Gm-Gg: ASbGncshwNfv7ACyxF5T2huCsI/SWT1jwQu+w2KmUSc2EkXzFi1Pkex0rzarwp0OZxb
+	kzF2h+560WlyHYZBqbR+yvi2DR6kDdzk+eocoiTfrF3MGpIFTWtutsGA/vOgU2ZvWvSSNAMbvRI
+	gf20gngk2XH0H5anyAV4LBsxgcVLQGRJTubgoALpGvvhdj3v/wcw8aw0cmzuT/m2sVFEos6vp3Z
+	GE+C3jb+dsrnyfm7kdHK2AKssaZwCIq0W6jYxfsyNsb3xmX/CyCWsqJKELF8vxdBd+Hkam5oWQv
+	J2MaIzvhT+r9YwTBMkM0OXx47BojatUGOSqNW8dDujCN2vUNx7tJ0rkuYzvNPMQwIU6wZjaKL0+
+	GK2aCxzhFllpTcm5Vg81dd6O2IrY0qgFgcphFQoKoIY+q7S8FSR6hqoSp82RCOa6Wln9GYm2LNr
+	MKkaiF2kZ37dtfF3Y=
+X-Google-Smtp-Source: AGHT+IF7ftfalNRw8ZNUBYR+5ucJXrX7efoW1K3ADp3krYp2GnXALht8+9gG/fjl1hp4DrgVDHKMJg==
+X-Received: by 2002:a05:6808:1b26:b0:44d:a0ec:712f with SMTP id 5614622812f47-4510ee8ea7fmr71818b6e.17.1763655781076;
+        Thu, 20 Nov 2025 08:23:01 -0800 (PST)
+Received: from SC-GAME.lan ([172.245.56.104])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-450fffbf1fbsm766947b6e.19.2025.11.20.08.22.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Nov 2025 08:13:51 -0800 (PST)
-From: Douglas Anderson <dianders@chromium.org>
-To: Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
+        Thu, 20 Nov 2025 08:23:00 -0800 (PST)
+From: Chen Minqiang <ptpt52@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Thorsten Leemhuis <regressions@leemhuis.info>,
-	regressions@lists.linux.dev,
-	incogcyberpunk@proton.me,
-	johan.hedberg@gmail.com,
-	sean.wang@mediatek.com,
-	Douglas Anderson <dianders@chromium.org>,
-	stable@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Andrew Lunn <andrew@lunn.ch>
+Cc: linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-bluetooth@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3] Bluetooth: btusb: mediatek: Avoid btusb_mtk_claim_iso_intf() NULL deref
-Date: Thu, 20 Nov 2025 08:12:28 -0800
-Message-ID: <20251120081227.v3.1.I1ae7aebc967e52c7c4be7aa65fbd81736649568a@changeid>
-X-Mailer: git-send-email 2.52.0.rc1.455.g30608eb744-goog
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org,
+	Chen Minqiang <ptpt52@gmail.com>
+Subject: [PATCH] ARM64: dts: mediatek: fix MT7531 reset polarity and reset sequence
+Date: Fri, 21 Nov 2025 00:22:24 +0800
+Message-Id: <20251120162225.13993-1-ptpt52@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251120_081353_044442_2F11285D 
-X-CRM114-Status: GOOD (  14.61  )
+X-CRM114-CacheID: sfid-20251120_082303_352616_BC371648 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,62 +105,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In btusb_mtk_setup(), we set `btmtk_data->isopkt_intf` to:
-  usb_ifnum_to_if(data->udev, MTK_ISO_IFNUM)
+The MT7531 reset pin is active-low, but multiple MediaTek boards describe
+the reset-gpios property without GPIO_ACTIVE_LOW or incorrectly mark it
+as active-high. With an active-low GPIO, gpiod_set_value(1) drives the
+line low (assert reset) and gpiod_set_value(0) drives it high (deassert).
 
-That function can return NULL in some cases. Even when it returns
-NULL, though, we still go on to call btusb_mtk_claim_iso_intf().
+Update all affected DTS files to explicitly use GPIO_ACTIVE_LOW so that
+the reset polarity matches the hardware design.
 
-As of commit e9087e828827 ("Bluetooth: btusb: mediatek: Add locks for
-usb_driver_claim_interface()"), calling btusb_mtk_claim_iso_intf()
-when `btmtk_data->isopkt_intf` is NULL will cause a crash because
-we'll end up passing a bad pointer to device_lock(). Prior to that
-commit we'd pass the NULL pointer directly to
-usb_driver_claim_interface() which would detect it and return an
-error, which was handled.
+Additionally, adjust the mt7530 driver reset sequence to correctly assert
+reset by driving the GPIO low first, wait for the reset interval, and
+then deassert reset by driving the GPIO high.
 
-Resolve the crash in btusb_mtk_claim_iso_intf() by adding a NULL check
-at the start of the function. This makes the code handle a NULL
-`btmtk_data->isopkt_intf` the same way it did before the problematic
-commit (just with a slight change to the error message printed).
+Boards fixed:
+ - mt7622-bananapi-bpi-r64
+ - mt7622-rfb1
+ - mt7986a-bananapi-bpi-r3
+ - mt7986a-rfb
+ - mt7986b-rfb
 
-Reported-by: IncogCyberpunk <incogcyberpunk@proton.me>
-Closes: http://lore.kernel.org/r/a380d061-479e-4713-bddd-1d6571ca7e86@leemhuis.info
-Fixes: e9087e828827 ("Bluetooth: btusb: mediatek: Add locks for usb_driver_claim_interface()")
-Cc: stable@vger.kernel.org
-Tested-by: IncogCyberpunk <incogcyberpunk@proton.me>
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
+This ensures the MT7531 receives a proper low-to-high active-low reset
+pulse and initializes reliably.
+
+Signed-off-by: Chen Minqiang <ptpt52@gmail.com>
 ---
+ arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts | 2 +-
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts             | 2 +-
+ arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts | 2 +-
+ arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts             | 2 +-
+ arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts             | 2 +-
+ drivers/net/dsa/mt7530.c                                 | 4 ++--
+ 6 files changed, 7 insertions(+), 7 deletions(-)
 
-Changes in v3:
-- Added Cc to stable.
-- Added IncogCyberpunk Tested-by tag.
-- v2: https://patch.msgid.link/20251119092641.v2.1.I1ae7aebc967e52c7c4be7aa65fbd81736649568a@changeid
-
-Changes in v2:
-- Rebase atop commit 529ac8e706c3 ("Bluetooth: ... mtk iso interface")
-- v1: https://patch.msgid.link/20251119085354.1.I1ae7aebc967e52c7c4be7aa65fbd81736649568a@changeid
-
- drivers/bluetooth/btusb.c | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index fcc62e2fb641..683ac02e964b 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -2751,6 +2751,11 @@ static void btusb_mtk_claim_iso_intf(struct btusb_data *data)
- 	if (!btmtk_data)
- 		return;
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+index 9f100b18a676..6f29ce828fdb 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+@@ -155,7 +155,7 @@
+ 			interrupt-controller;
+ 			#interrupt-cells = <1>;
+ 			interrupts-extended = <&pio 53 IRQ_TYPE_LEVEL_HIGH>;
+-			reset-gpios = <&pio 54 0>;
++			reset-gpios = <&pio 54 GPIO_ACTIVE_LOW>;
  
-+	if (!btmtk_data->isopkt_intf) {
-+		bt_dev_err(data->hdev, "Can't claim NULL iso interface");
-+		return;
-+	}
-+
- 	/*
- 	 * The function usb_driver_claim_interface() is documented to need
- 	 * locks held if it's not called from a probe routine. The code here
+ 			ports {
+ 				#address-cells = <1>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+index 8c3e2e2578bc..6600f06ccebf 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+@@ -137,7 +137,7 @@
+ 		switch@0 {
+ 			compatible = "mediatek,mt7531";
+ 			reg = <0>;
+-			reset-gpios = <&pio 54 0>;
++			reset-gpios = <&pio 54 GPIO_ACTIVE_LOW>;
+ 
+ 			ports {
+ 				#address-cells = <1>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+index e7654dc9a1c9..8ec2ec78ee46 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
+@@ -203,7 +203,7 @@
+ 		interrupt-parent = <&pio>;
+ 		interrupts = <66 IRQ_TYPE_LEVEL_HIGH>;
+ 		#interrupt-cells = <1>;
+-		reset-gpios = <&pio 5 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&pio 5 GPIO_ACTIVE_LOW>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+index 5d8e3d3f6c20..732dc4f5244f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+@@ -87,7 +87,7 @@
+ 	switch: switch@0 {
+ 		compatible = "mediatek,mt7531";
+ 		reg = <31>;
+-		reset-gpios = <&pio 5 0>;
++		reset-gpios = <&pio 5 GPIO_ACTIVE_LOW>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+index 58f77d932429..91809cdb4499 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+@@ -64,7 +64,7 @@
+ 		switch@0 {
+ 			compatible = "mediatek,mt7531";
+ 			reg = <31>;
+-			reset-gpios = <&pio 5 0>;
++			reset-gpios = <&pio 5 GPIO_ACTIVE_LOW>;
+ 
+ 			ports {
+ 				#address-cells = <1>;
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 548b85befbf4..e4caedc3eee5 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -2405,9 +2405,9 @@ mt7530_setup(struct dsa_switch *ds)
+ 		usleep_range(5000, 5100);
+ 		reset_control_deassert(priv->rstc);
+ 	} else {
+-		gpiod_set_value_cansleep(priv->reset, 0);
+-		usleep_range(5000, 5100);
+ 		gpiod_set_value_cansleep(priv->reset, 1);
++		usleep_range(5000, 5100);
++		gpiod_set_value_cansleep(priv->reset, 0);
+ 	}
+ 
+ 	/* Waiting for MT7530 got to stable */
 -- 
-2.52.0.rc1.455.g30608eb744-goog
+2.17.1
 
 
