@@ -4,67 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10B8ECF6497
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 00:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D89ACF58D1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 02:11:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dluZy1SniiF90BWLRvELA75/MxECMMSntjdUDuLeOp4=; b=pPW3jRIRNCeIPInP+41miR9DyN
-	6hEWES2Q2goL/I+87MscTekNJNAIpudrVrBdz7eNXmCNvNGF2Jtd2Y2BiFKbloV7vepf5D6/wGhBp
-	ylcnJkj1G5nUgSejm9U5kHvAA5wv7kXYG9AzNPNPj2q9b9Df5+dDTr1XfSjdrYQ8f4YfDN7hyMxur
-	m6FVfT2+Nk+/XuzBd2GHjwyC7wxoUnWDOrpvT9Qj4ZPqYHgf39XfPHlfVt+tq/sfoKPRMsY0j19j/
-	nRZPF+n6r8o0uDDRpW0J/kVwMK2f3oBZ5eSgThHhLS0SmYsgJmfpQEPDuTo+L7f8VFcEG7lyVkUyV
-	YkZbnZbw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pTFNVmbRzXGZbT/LGhFHixBDUze2+iDNyRytGw9mv0o=; b=kwyRHEIaHL6KUDszwlkbLST3zL
+	BryKYYtHpD6Af3DJlEjS4UOu3B5idxzPucoX2z/iLEYb5r5hZ4CouYF31mskHOYSiF3C9bHvmxEdH
+	4IpA3WKZb+KOl/4LF6U1GGs6Eg620H0lDFDOMBDZ00s+NQcekJtKS2emeO7yU8RW5dL2/J+6ZVyF5
+	6iUXjB/sMNFmQ3b7xtwp1zAlDzxcB2gT7DNKjBh+7O8fhl1x0EeGof5KKnm/lEHfcBf5OIPc+BHE7
+	TT57xfLE0kOPgjCQUJSb/3JSAlBUcJAZijBO960ILjqD8flL7teLQEW6yYNtOQ7mprE8leebBJqTk
+	pd6fFo1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLsH5-00000005s6e-18K7;
-	Thu, 20 Nov 2025 00:11:47 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vLu8k-00000005xjx-3hnD;
+	Thu, 20 Nov 2025 02:11:18 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vLsH3-00000005s5r-088i;
-	Thu, 20 Nov 2025 00:11:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B277E42A75;
-	Thu, 20 Nov 2025 00:11:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6AF39C4CEF5;
-	Thu, 20 Nov 2025 00:11:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763597504;
-	bh=BJXgWOV8ilrXkWcqiCBuYjzC9vId9KOVewUanGTI5AU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=p3kk9/Nxp/DO5l6FwrufqoasWCnTaPs+yanQIOr3qixcWop2otdgPZTMQE6f/Wrvu
-	 nnCKtR/+npDlAJBxplDQ/BcJw31Y619hrnwJ8UNh+xSbkdTuJqu0d3roN4dE2o+K4w
-	 1aXOpaHRzWI3aPJ3PjsVTow/sTS288ppZuANK1PR6TCY3I0n9/wZRrkc+nGrddYpOt
-	 PT4/T9Acq/r81e0ZmY4OuBGE4Lu5s1YeflOsIld55Dozqdsh28CMqpfeSlSYaJovPf
-	 T6mw26E9kU94Qn0KI1wh6SisdegAE6oNaEmqUCWFiIqyCLZyDK+Tj+XnQXNl/gyTMl
-	 a5zVlgv0dbzaw==
-Date: Wed, 19 Nov 2025 18:11:42 -0600
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>, kernel@collabora.com,
-	Georgi Djakov <djakov@kernel.org>,
+	id 1vLu8h-00000005xiy-2f0z
+	for linux-mediatek@lists.infradead.org;
+	Thu, 20 Nov 2025 02:11:17 +0000
+Received: by mail-pl1-x641.google.com with SMTP id d9443c01a7336-29516a36affso5629125ad.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 19 Nov 2025 18:11:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1763604674; x=1764209474; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pTFNVmbRzXGZbT/LGhFHixBDUze2+iDNyRytGw9mv0o=;
+        b=l6vI40TeFKSIPUIgMceZ+C989GNyETc05fHuNnTKAWM9+g+awsOPDcmRpdIf+DhX1/
+         k+v1UNMzAkAYI9Y1bqRQx6nbPs6CoeMZqKEOO5s9zCxsFJ6SN1SswiOgrmzXu4qAyxqF
+         scIn1nlzqUdTBP3RqtiHwV5dOpwhNN4DBfJFMVr8NVXbg9cxpoMFIX+j0wr6B5BGatmd
+         l+rcFKtzbxioRmEmvh6cZOeBZVJbpmYq458i307Hwc4sotY26lx4moc7YorZMfNYUoQc
+         Cd2iCJHV/ON3LyTOMHunI5+PmIE/yalrlVM3N73oIq8WPjk2gRxZOo2kX5S97dCzmsdk
+         CUqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1763604674; x=1764209474;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=pTFNVmbRzXGZbT/LGhFHixBDUze2+iDNyRytGw9mv0o=;
+        b=l5KNZ1NHoS6j5VGcAChHMiFFsaal/6Ed3rbGNLg9CPN8Iu+dMFe2w08Ogxa13EWbSf
+         /Aa5xiBQDDUsPIahHWckRzEW+nzqDrsTATsDm2DxVxMKmLnNEJ2SN7bF+xfV+r8er2hm
+         lrrEtdVnANyO60ES974WpqiWVF2U3tKH950cPVJMIZWBxMPL1gP9cSLx5g5c9u+eAwbe
+         uuLvDMGZ0XbsuVxoZAuX2DD4a5l/ylwFJjzDZIABvrCgjjEArST77iejrze5Lf0tHuqm
+         F+fz0JM4wmi4vo0fqNWxmqXiem9BGzTY4OFY9bLnlEZhw6SI7KwIEpge4A+UMuOX69nA
+         O4LA==
+X-Forwarded-Encrypted: i=1; AJvYcCWMDHpJuk5rw3OFIAJnME3+2LtNpt7IvVxXNiX1cYaJoZivku40sOOBoDlDGXfAFbI9VefjdRJMaKaruXTFbA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyzHovgaS3CttSEjw6/x3Ek3KgEZ+6LCX1amx+A4nA6Cd4kusbr
+	A8Ifl6EIP5kDIjuWteJUAUU40QTfNxElDWvodREbW0MnsEh+jtl9ovS8
+X-Gm-Gg: ASbGncvfmrkMN0CHVyjlfORaO/pfm/3YPqDZDw7aj7P/D04VCvV14sLsOJXg60F91Qm
+	CY3g4fXWNxlCDS/Ooaixopc2vt65BTLfbTkjD7W0xW9THyGW4i8gu4yRSu5FyzpizS+d1yQ8tyM
+	PCFnt7GeJSnvn9BfwmUG6f6P863du6CSBBlflYWp3+OjireX4CKYKpPLP1fnE7dTCwCgGlVSId+
+	i/Y93e7VmdvjlwcedJ6nYuBVF9C0cS4S+Whg//b19xYlAl4t7hDJzx7c4WrNlv5CD4meyN3xnRn
+	zAZp2zZ5KGX3ZPFgxCkuPjXMj58UIkxzxGH5m82HkfyGXrmzOeVBCljMTmAVWeU1H2YW5IloYrA
+	DaHFvHZUs2oNs+ebcqYGErpu2mqE3g+Nd0hHDALcJRI82JHCPnuIdgE+0Zi1NuC4u9XwKDHflTg
+	xC2AR39kSVTL1WBOM9A57Tow==
+X-Google-Smtp-Source: AGHT+IGJI/oKAsUQ7D64r7YwPy+QegsmPvmtzc+SJksMMBWokoHdWjKxouE6QVbTqg1qQ+RNiAulBQ==
+X-Received: by 2002:a17:902:f650:b0:295:54cb:16ac with SMTP id d9443c01a7336-29b5b088815mr20802785ad.18.1763604674349;
+        Wed, 19 Nov 2025 18:11:14 -0800 (PST)
+Received: from Incog ([2404:7c00:42:f150:fd7c:4ceb:3809:3323])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-29b5b25defasm7635325ad.49.2025.11.19.18.11.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Nov 2025 18:11:13 -0800 (PST)
+From: Incog <incogcyberpunk@gmail.com>
+To: dianders@chromium.org
+Cc: angelogioacchino.delregno@collabora.com,
+	incogcyberpunk@proton.me,
+	johan.hedberg@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Henry Chen <henryc.chen@mediatek.com>, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 03/13] dt-bindings: interconnect: mt8183-emi: Add support
- for MT8196 EMI
-Message-ID: <176359750213.3605847.582811616705438270.robh@kernel.org>
-References: <20251114-mt8196-dvfsrc-v1-0-b956d4631468@collabora.com>
- <20251114-mt8196-dvfsrc-v1-3-b956d4631468@collabora.com>
+	luiz.dentz@gmail.com,
+	marcel@holtmann.org,
+	matthias.bgg@gmail.com,
+	regressions@leemhuis.info,
+	regressions@lists.linux.dev,
+	sean.wang@mediatek.com
+Subject: Re: [PATCH] Bluetooth: btusb: mediatek: Avoid btusb_mtk_claim_iso_intf() NULL deref
+Date: Thu, 20 Nov 2025 07:57:17 +0545
+Message-ID: <20251120021217.87602-1-incogcyberpunk@gmail.com>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20251119085354.1.I1ae7aebc967e52c7c4be7aa65fbd81736649568a@changeid>
+References: <20251119085354.1.I1ae7aebc967e52c7c4be7aa65fbd81736649568a@changeid>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251114-mt8196-dvfsrc-v1-3-b956d4631468@collabora.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251119_161145_088653_0BAEC38B 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251119_181115_678823_66F6FA38 
+X-CRM114-Status: GOOD (  21.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,20 +110,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: IncogCyberpunk <incogcyberpunk@proton.me>
 
-On Fri, 14 Nov 2025 17:53:57 +0100, Nicolas Frattaroli wrote:
-> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> Add a new compatible for the External Memory Interface Interconnect
-> found on the MediaTek MT8196 Chromebook SoC.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  .../bindings/interconnect/mediatek,mt8183-emi.yaml |  1 +
->  include/dt-bindings/interconnect/mediatek,mt8196.h | 48 ++++++++++++++++++++++
->  2 files changed, 49 insertions(+)
-> 
+On  Wed, 19 Nov 2025 08:53:55 -0800 , Douglas Anderson <dianders@chromium.org> wrote:
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+> In btusb_mtk_setup(), we set `btmtk_data->isopkt_intf` to:
+>   usb_ifnum_to_if(data->udev, MTK_ISO_IFNUM)
+> 
+> That function can return NULL in some cases. Even when it returns
+> NULL, though, we still go on to call btusb_mtk_claim_iso_intf().
+> 
+> As of commit e9087e828827 ("Bluetooth: btusb: mediatek: Add locks for
+> usb_driver_claim_interface()"), calling btusb_mtk_claim_iso_intf()
+> when `btmtk_data->isopkt_intf` is NULL will cause a crash because
+> we'll end up passing a bad pointer to device_lock(). Prior to that
+> commit we'd pass the NULL pointer directly to
+> usb_driver_claim_interface() which would detect it and return an
+> error, which was handled.
+> 
+> Resolve the crash in btusb_mtk_claim_iso_intf() by adding a NULL check
+> at the start of the function. This makes the code handle a NULL
+> `btmtk_data->isopkt_intf` the same way it did before the problematic
+> commit (just with a slight change to the error message printed).
 
+
+Proposed patch:
+
+> index a722446ec73d..1466e0f1865d 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -2714,6 +2714,11 @@ static void btusb_mtk_claim_iso_intf(struct btusb_data *data)
+>  	struct btmtk_data *btmtk_data = hci_get_priv(data->hdev);
+>  	int err;
+>  
+> +	if (!btmtk_data->isopkt_intf) {
+> +		bt_dev_err(data->hdev, "Can't claim NULL iso interface");
+> +		return;
+> +	}
+> +
+>  	/*
+>  	 * The function usb_driver_claim_interface() is documented to need
+>  	 * locks held if it's not called from a probe routine. The code here
+
+
+I tested this patch by manually updating the drivers/bluetooth/btusb.c file with the proposed patches as above ; which solves a REGRESSION issue `bluetooth adapter provided by btusb not being recognized and hence bluetooth not working` since kernel version 6.13.2 .
+This REGRESSION issue has been present in both the stable and the mainline kernels since 6.13.2 release due to the below mentioned commit in v6.13.2 :
+
+Troublesome Commit Details:
+- Title: Bluetooth: btusb: mediatek: Add locks for usb_driver_claim_interface()
+- commit id: 4194766ec8756f4f654d595ae49962acbac49490
+- [ Upstream commit e9087e828827e5a5c85e124ce77503f2b81c3491 ]
+- Author: Douglas Anderson <dianders@chromium.org>
+- Date:   Wed Jan 15 19:36:36 2025 -0800
+
+Tested-by: IncogCyberpunk <incogcyberpunk@proton.me>
+
+Regards,
+IncogCyberpunk
 
