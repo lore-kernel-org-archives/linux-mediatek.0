@@ -4,62 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82CDBCF8860
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 14:24:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79537CF8861
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 14:42:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+gvAEll9gBhXwVo47o+gtCJqAPN1yNTF/Lu4NkpPhdg=; b=ZT68ZmbQWChIEbpou8WjlozYRG
-	zNjBbuO4+9xxZ6ELmrgQ7pBP9+UQbAMe906mG/ka66UjJUqKAgoAHmIMLsRkEnduftUzWPg4Q1d9A
-	veCgtegAI3QYPrrC7bJp/TwqATn8QqobJ2iNrr6LpoWz5ufJnDba9IabsOJnZyN2ZDul7BJADv41P
-	4a17i6Zb4aVeqpmwjniUP3VZ5m09KmAJlFQOwS97Imf+NvsBM+yGXS9FOaRfcFB/EtKoaDiqz0ycJ
-	qaWXNd5DpCCqhcdZCJswzTM/uD9DA0yGcg0fL5wJwZUZct5uDDw6ppnO6SeHr5yTQq5qNp0jQq0O5
-	PEYJhSUQ==;
+	bh=PvJBJ6Y+90NY1Lh2xnaN6wiWc+SpW09OQaZ6FEjdf1Q=; b=ayvsNwQ2XnsI2vx/oG43Aa8DYQ
+	QMXD0GCvIMH4MpgjI6ciqpiZwwPoC+zn0OXexM/n912r4+I75A87lIFO9+WpF8ejVEGyL/zifmq1Y
+	HBJhGw/0EHNP9387kgk6ncbJ2/+F7x31Nj8gh63StrJK6jE8YuHbEmmEYKHVBbGzD20RMfqXf9zQK
+	V8cDwZC9kxw8qlpE4JvcdraJ0dPmm9fn157+MQfzX4K43Ny1wvScRl4b0TfgZncBD5WLBy402vUqp
+	OSM0YZOtpCNluH6CVHvZAbNEllVEhQ4RNpTA1D9V1nUUDPW0qZanQrb6gJZ/u9CaaCAyjExLojdmQ
+	384ISOKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM5aF-00000006q5w-3G8B;
-	Thu, 20 Nov 2025 14:24:27 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vM5rW-00000006rTC-12FR;
+	Thu, 20 Nov 2025 14:42:18 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM5aC-00000006q5G-2X8Z;
-	Thu, 20 Nov 2025 14:24:25 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C745D42A1A;
-	Thu, 20 Nov 2025 14:24:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1FA43C4CEF1;
-	Thu, 20 Nov 2025 14:24:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763648663;
-	bh=idUoaT1Yr1mM8Z9iABa9AY6Vy23rIl0ZA0+ANq8UVpk=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=NJCEJ6VEnwFuwLqo6v6iqlblCt/rkzwdbeYcXE3G+jdXDlzFs/2Hk6YQrDhvf2Zc7
-	 QtZVVPZrJI3N5YvLNF4A78pmchqfqf23HnAPZ5JrDwXK5Uf9lPbagYAtdPCl4S/GMa
-	 egDdE8WZQ5KTDXkplxgSJ9gFELef4m5+1CBKgavh4OJkvjjRZ0tuP1p1OX8q1GeTeB
-	 gNEASZhYK88IHo6e05Ft378YDsQXyK79riZDuSClH+OXTvWKEcPlWvfml7XRwpTQ+n
-	 eZtY0kmcQV+EpLPjGqG0c1Zm4U/8yfHTLTl5cuo41C/QkCsiLlFqKyVpgRTEAXyQ2p
-	 YZU5Co4VTIn0Q==
-From: Lee Jones <lee@kernel.org>
-To: lee@kernel.org, matthias.bgg@gmail.com, 
- angelogioacchino.delregno@collabora.com, Haotian Zhang <vulab@iscas.ac.cn>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20251118121427.583-1-vulab@iscas.ac.cn>
-References: <20251118121427.583-1-vulab@iscas.ac.cn>
-Subject: Re: (subset) [PATCH] mfd: mt6358-irq: Fix missing
- irq_domain_remove() in error path
-Message-Id: <176364866187.729271.10385218837985508921.b4-ty@kernel.org>
-Date: Thu, 20 Nov 2025 14:24:21 +0000
+	id 1vM5rT-00000006rSU-25k9;
+	Thu, 20 Nov 2025 14:42:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1763649732;
+	bh=fa7WHscB8vi69zuem9la5vhtfXoFdBzZsUj1liyFTbs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=b1Jz+sDyFG1Bc+y7xNUGvb3jxkNem6/6tHWUmd+QeVRcRrUk9PcqW+JN10bFfVTee
+	 4kDTP5bMM+aQtsZjtfMK4zD/QJyxCKt5BbG/ZD2XvkExm4iGJleAD+fmAHLSEzyvTA
+	 OtlJmZ23Uwad1oQzjOMlakYZRN+Xn15Wyr6HGYRUwryE0XC0ZFqGc7ofOAmzvQryzO
+	 PyQb+vr8ARXowbxEu56nkL/yP0iisrd277b6qJQISBI8DaEgi2vOi8qQz2NQSILNyJ
+	 5qROPbTFSz0bSf1MHek738fzhR3WMr7EvuXpYb+Rgbx9sLrPGZVyyDyDUzc+Fuf6a2
+	 kQ7zbYqrGPrrA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8082417E00B0;
+	Thu, 20 Nov 2025 15:42:11 +0100 (CET)
+Message-ID: <76325c39-ea88-48fe-b32d-00c1e0d31024@collabora.com>
+Date: Thu, 20 Nov 2025 15:42:10 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.15-dev-52d38
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 4/5] rtc: mt6397: Add BBPU alarm status reset and
+ shutdown handling
+To: ot_shunxi.zhang@mediatek.com, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Eddie Huang <eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, Lee Jones
+ <lee@kernel.org>, Vince-WL.Liu@mediatek.com, sirius.wang@mediatek.com,
+ Jh.Hsu@mediatek.com
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20251120121805.6775-1-ot_shunxi.zhang@mediatek.com>
+ <20251120121805.6775-5-ot_shunxi.zhang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20251120121805.6775-5-ot_shunxi.zhang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251120_062424_885210_FC1E3AB5 
-X-CRM114-Status: UNSURE (   5.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251120_064215_728292_98C18F23 
+X-CRM114-Status: GOOD (  24.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,22 +82,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 18 Nov 2025 20:14:27 +0800, Haotian Zhang wrote:
-> If devm_request_threaded_irq() fails after irq_domain_add_linear()
-> succeeds in mt6358_irq_init(), the function returns without removing
-> the created IRQ domain, leading to a resource leak.
+Il 20/11/25 13:18, ot_shunxi.zhang@mediatek.com ha scritto:
+> From: Shunxi Zhang <ot_shunxi.zhang@mediatek.com>
 > 
-> Call irq_domain_remove() in the error path after a successful
-> irq_domain_add_linear() to properly release the IRQ domain.
+> Function "mtk_rtc_reset_bbpu_alarm_status" is added to address the
+> issue that the RTC BBPU alarm state remains after the RTC alarm
+> has occurred.
 > 
-> [...]
+> Additionally, function "mtk_rtc_shutdown" is added to address the
+> issue of the platform being powered on again after shutdown because
+> the RTC_BBPU alarm state was not cleared.
+> 
+> Signed-off-by: Shunxi Zhang <ot_shunxi.zhang@mediatek.com>
+> ---
+>   drivers/rtc/rtc-mt6397.c | 30 ++++++++++++++++++++++++++++++
+>   1 file changed, 30 insertions(+)
+> 
+> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+> index b8f44a00de5d..8bf7e0822ef0 100644
+> --- a/drivers/rtc/rtc-mt6397.c
+> +++ b/drivers/rtc/rtc-mt6397.c
+> @@ -37,6 +37,21 @@ static int mtk_rtc_write_trigger(struct mt6397_rtc *rtc)
+>   	return ret;
+>   }
+>   
+> +static void mtk_rtc_reset_bbpu_alarm_status(struct mt6397_rtc *rtc)
+> +{
+> +	u32 bbpu = RTC_BBPU_KEY | RTC_BBPU_PWREN | RTC_BBPU_RESET_AL;
+> +	int ret;
+> +
+> +	ret = regmap_write(rtc->regmap, rtc->addr_base + RTC_BBPU, bbpu);
+> +	if (ret < 0) {
+> +		dev_err(rtc->rtc_dev->dev.parent, "%s: write rtc bbpu error\n",
+> +			__func__);
+> +		return;
+> +	}
+> +
+> +	mtk_rtc_write_trigger(rtc);
+> +}
+> +
+>   static irqreturn_t mtk_rtc_irq_handler_thread(int irq, void *data)
+>   {
+>   	struct mt6397_rtc *rtc = data;
+> @@ -51,6 +66,9 @@ static irqreturn_t mtk_rtc_irq_handler_thread(int irq, void *data)
+>   		if (regmap_write(rtc->regmap, rtc->addr_base + RTC_IRQ_EN,
+>   				 irqen) == 0)
+>   			mtk_rtc_write_trigger(rtc);
+> +
+> +		if (rtc->alarm_sta_supported)
+> +			mtk_rtc_reset_bbpu_alarm_status(rtc);
+>   		mutex_unlock(&rtc->lock);
+>   
+>   		return IRQ_HANDLED;
+> @@ -249,6 +267,7 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+>   	struct resource *res;
+>   	struct mt6397_chip *mt6397_chip = dev_get_drvdata(pdev->dev.parent);
+>   	struct mt6397_rtc *rtc;
+> +	struct device_node *np = pdev->dev.of_node;
+>   	int ret;
+>   
+>   	rtc = devm_kzalloc(&pdev->dev, sizeof(struct mt6397_rtc), GFP_KERNEL);
+> @@ -275,6 +294,8 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+>   	if (IS_ERR(rtc->rtc_dev))
+>   		return PTR_ERR(rtc->rtc_dev);
+>   
+> +	rtc->alarm_sta_supported = of_property_read_bool(np, "mediatek,alarm-sta-supported");
 
-Applied, thanks!
+You don't need a DT property - the PMIC dictates support for that, not the board.
 
-[1/1] mfd: mt6358-irq: Fix missing irq_domain_remove() in error path
-      commit: 384bd58bf7095e4c4c8fcdbcede316ef342c630c
+This means that you also don't need the alarm_sta_supported variable, and you
+don't need to check for it.
 
---
-Lee Jones [李琼斯]
+Just execute the mtk_rtc_reset_bbpu_alarm_status() function when you have to,
+without any check.
+
+Cheers,
+Angelo
+
+> +
+>   	ret = devm_request_threaded_irq(&pdev->dev, rtc->irq, NULL,
+>   					mtk_rtc_irq_handler_thread,
+>   					IRQF_ONESHOT | IRQF_TRIGGER_HIGH,
+> @@ -297,6 +318,14 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+>   	return devm_rtc_register_device(rtc->rtc_dev);
+>   }
+>   
+> +static void mtk_rtc_shutdown(struct platform_device *pdev)
+> +{
+> +	struct mt6397_rtc *rtc = platform_get_drvdata(pdev);
+> +
+> +	if (rtc->alarm_sta_supported)
+> +		mtk_rtc_reset_bbpu_alarm_status(rtc);
+> +}
+> +
+>   #ifdef CONFIG_PM_SLEEP
+>   static int mt6397_rtc_suspend(struct device *dev)
+>   {
+> @@ -346,6 +375,7 @@ static struct platform_driver mtk_rtc_driver = {
+>   		.pm = &mt6397_pm_ops,
+>   	},
+>   	.probe = mtk_rtc_probe,
+> +	.shutdown = mtk_rtc_shutdown,
+>   };
+>   
+>   module_platform_driver(mtk_rtc_driver);
+
 
 
