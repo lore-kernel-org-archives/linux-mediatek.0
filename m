@@ -4,79 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85240CF884D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC5F0CF884C
 	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 12:18:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rsteaxwmn11dQnr7Va5x92id71POVjFtFsjVHcNIMtc=; b=lfseDJcWAYihjZymPGEVfKKuok
-	PRiZNTo2eNYM/JGm1A35k82wGjUQTWt4pgHldP9tFVVFNn6FsZmb2WMlJJYwocqvJw2Duz3/SVuQH
-	pblu8DFvFPjLgdZoY2R3293epCqbjPyqN6TqY5xaEgy2FWPcxfnPFRnhm41Gy79bUtGtz3Za76mTL
-	nBVINC4H4J6Y/QIqTOYcREupd0sjohamBoD7BeOCPHPk9C/7wenXeOMUw7/a86A+2H7l3Nyjm7hdA
-	X2KO7gX5+BgREDPK//p7BQaavEl0lfOoq99S5Q6tMtFCbFluLCHWFyB8QQRQ7DwkhQ8TDbwxr2gHc
-	ptQeuZgQ==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5O3QSTjG/GYo1v2aEYGeurT8OjIk96rTbcs+GIL+0MQ=; b=ikGDmpKy/NIpJ4FnV13vy6OSrD
+	BynJ1f8IE8TW09g7yJ7yArs/qU9qUoaIBquWr81CjuXKGwfaOdYu/ZCu0Cnu+sU3khrNs7yyLh8DQ
+	dQ26gkDyHM9msTZOJy6VQ1+X4vwCCB1nNrfdKzakpTxkSb3WE6iY04lL14lpbyNxUfNOR8lhMvc97
+	rSw3ZvAaZtOq2yzMUnqTL3bi9oA7Rw2q45FCDUgNc6GRNCTBuASzpNx7ggoKN7Yh61fDltutW0flm
+	kyc8uyvja+Tf2YqvYDqu8xQ8G5M8PLvBfLMoPibX7WyvAb6Y4x9cS9le4AFQYHayd2IM/PGwXkmoe
+	dbAk6hEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM3cC-00000006eOX-3PPk;
-	Thu, 20 Nov 2025 12:18:20 +0000
+	id 1vM3cB-00000006eNY-15EN;
+	Thu, 20 Nov 2025 12:18:19 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM3cB-00000006eNJ-08vq;
-	Thu, 20 Nov 2025 12:18:20 +0000
-X-UUID: fd67acb2c60a11f0a52f393f94899d25-20251120
+	id 1vM3c6-00000006eMD-3olC;
+	Thu, 20 Nov 2025 12:18:17 +0000
+X-UUID: fa8344b6c60a11f0a52f393f94899d25-20251120
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=rsteaxwmn11dQnr7Va5x92id71POVjFtFsjVHcNIMtc=;
-	b=f/2vGwdtPnxHL/y0tet5KwSBSErPEYL6ymkTfszH4iCt93R55YLaT8pHGIuteeJZpxz6sjerwop0NhxBxUt4ecehcov6BQ/qUBZkyMK4b8c2t0bYh7HPRO2iVBB6ny7Jz/VQ0vvrGDkD8HGz/GOC3vv0KIvXNGxJANgecVt/BWQ=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=5O3QSTjG/GYo1v2aEYGeurT8OjIk96rTbcs+GIL+0MQ=;
+	b=tTRTnU+fTdPzygTjmujJJcaroT1gjqb01wJfCGiNU8sC2STNDUS34XzS0hmbBvK28nLn6D11C1dTuPTN3cYiLAqv30uTIaMlAacYUuNK8Mx6cNrtrBDhOGThJi30v2N63HAjXTLNLN2oyYGqYxsS4Pjnwuz0a56cuFlYXanikhI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:2ee3c67d-5605-46bc-8e75-b5dd12a09e83,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.6,REQID:8b1086a6-5762-4268-be0e-b0a62de8b89b,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:615d1d58-17e4-43d2-bf73-55337eed999a,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|123|836|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:
-	0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:8bdab1e0-f48b-4fea-bcf0-ae56d774aa1d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|123|836|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:
+	0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: fd67acb2c60a11f0a52f393f94899d25-20251120
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-UUID: fa8344b6c60a11f0a52f393f94899d25-20251120
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
 	(envelope-from <ot_shunxi.zhang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 799945580; Thu, 20 Nov 2025 05:18:15 -0700
+	with ESMTP id 130002763; Thu, 20 Nov 2025 05:18:10 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Thu, 20 Nov 2025 20:18:12 +0800
+ 15.2.1748.26; Thu, 20 Nov 2025 20:18:07 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Thu, 20 Nov 2025 20:18:11 +0800
+ 15.2.1748.26 via Frontend Transport; Thu, 20 Nov 2025 20:18:06 +0800
 From: <ot_shunxi.zhang@mediatek.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
 	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
 	<angelogioacchino.delregno@collabora.com>, Eddie Huang
-	<eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, "Alexandre
- Belloni" <alexandre.belloni@bootlin.com>, Lee Jones <lee@kernel.org>, "Shunxi
- Zhang" <ot_shunxi.zhang@mediatek.com>, <Vince-WL.Liu@mediatek.com>,
+	<eddie.huang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Alexandre
+ Belloni <alexandre.belloni@bootlin.com>, Lee Jones <lee@kernel.org>, Shunxi
+ Zhang <ot_shunxi.zhang@mediatek.com>, <Vince-WL.Liu@mediatek.com>,
 	<sirius.wang@mediatek.com>, <Jh.Hsu@mediatek.com>
 CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 2/5] mfd: mt6397: Add bit definitions and struct members to support alarm status
-Date: Thu, 20 Nov 2025 20:17:58 +0800
-Message-ID: <20251120121805.6775-3-ot_shunxi.zhang@mediatek.com>
+Subject: [PATCH v2 0/5] rtc: Enhance RTC driver with BBPU bit definitions and shutdown handling
+Date: Thu, 20 Nov 2025 20:17:56 +0800
+Message-ID: <20251120121805.6775-1-ot_shunxi.zhang@mediatek.com>
 X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20251120121805.6775-1-ot_shunxi.zhang@mediatek.com>
-References: <20251120121805.6775-1-ot_shunxi.zhang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251120_041819_074657_8A6C8BCF 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20251120_041814_968750_BD4EE9FD 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,36 +91,34 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Shunxi Zhang <ot_shunxi.zhang@mediatek.com>
 
-This patch adds new bit definitions for the RTC_BBPU register and one
-members in the mt6397_rtc_data structure in the mt6397 RTC header file
-to support alarm status functionality in the MT6397 RTC driver.
+(1) Add new bits definitions for RTC_BBPU register.
+(2) Add new functions to reset the BBPU alarm status in mt6397 RTC driver
+(3) Add mtk_rtc_shutdown function to handle RTC shutdown events.
+(4) For the V1 version comments, the following modifications are made: 
+(4.1)the formatting changes are separated into a distinct patch. 
+(4.2)Since the rtc-mt6397.c file is a fusion of multiple RTC drivers 
+for the mt6358, mt6359, and mt6357 RTCs, the definitions of certain bits 
+in the RTC_BBPU register differ among these RTCs. The mt6359 supports 
+the alarm status bit, while both mt6358 and mt6357 do not. Therefore, 
+the alarm-sta-supported property is added in the mt6359.dtsi file to 
+differentiate between the different RTCs. 
+(4.3)Additionally, the operation to disable IRQ in the shutdown function 
+is removed.
 
-Signed-off-by: Shunxi Zhang <ot_shunxi.zhang@mediatek.com>
----
- include/linux/mfd/mt6397/rtc.h | 3 +++
- 1 file changed, 3 insertions(+)
+Shunxi Zhang (5):
+  mfd: mt6397: Fix formatting of RTC_BBPU_KEY definition
+  mfd: mt6397: Add bit definitions and struct members to support alarm
+    status
+  rtc: mt6397: Fix formatting of platform driver structure
+  rtc: mt6397: Add BBPU alarm status reset and shutdown handling
+  arm64: dts: mediatek: mt6359: Add alarm-sta-supported property to RTC
+    node
 
-diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rtc.h
-index 6d0bb1ea151b..fb320719f676 100644
---- a/include/linux/mfd/mt6397/rtc.h
-+++ b/include/linux/mfd/mt6397/rtc.h
-@@ -15,6 +15,8 @@
- #include <linux/rtc.h>
- 
- #define RTC_BBPU               0x0000
-+#define RTC_BBPU_PWREN         BIT(0)
-+#define RTC_BBPU_RESET_AL      BIT(3)
- #define RTC_BBPU_CBUSY         BIT(6)
- #define RTC_BBPU_KEY           (0x43 << 8)
- 
-@@ -76,6 +78,7 @@ struct mt6397_rtc {
- 	int                     irq;
- 	u32                     addr_base;
- 	const struct mtk_rtc_data *data;
-+	bool                    alarm_sta_supported;
- };
- 
- #endif /* _LINUX_MFD_MT6397_RTC_H_ */
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi |  1 +
+ drivers/rtc/rtc-mt6397.c                 | 32 +++++++++++++++++++++++-
+ include/linux/mfd/mt6397/rtc.h           |  5 +++-
+ 3 files changed, 36 insertions(+), 2 deletions(-)
+
 -- 
 2.45.2
 
