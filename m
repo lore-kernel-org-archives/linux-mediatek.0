@@ -4,102 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EA25CF9C72
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 17:13:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 675EECF9C7F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 Nov 2025 18:50:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=71+jWtBg7d1iYRAZRUfunCs8pFBPFzAnVW06bSqsOgk=; b=NDJ/Fh01GiSvhBvDdd0nNB2ELC
-	YxB/1LUFMRUwu6HahH+OKJxhU/7sveoEqx/Qgr2STNYpi1tEkAVBGWwx3r06GlZWBf5mSYm4hFGWy
-	j1rxZ5h1qhrVyXufnyGXW9qYQTRFFFpBFZB+lKmXgQZ5LvAad6k3ya8RgRXwpcKNf5F2DKdF0zckf
-	fwFotNoqG61QIWnd021jqnesck5i36BMXlw/QUh6a8pg98INMxwpkf4ODHSW+937cLiBuV5bjOVaD
-	XyZltntBdQU+0lI36hqTucxB9yOLYtPrjPYe4P59FYw9NeV6l0IKUaAoo4lf5f2rjC8LH9CTC07Ho
-	nBIiXMWw==;
+	bh=gwM5k5rgC0aLTOlLlaqV7CdyE7qCy37SSQ37pPp8whM=; b=xSLcnfLDmKyep28nrIsZ0ndwS1
+	IHPNinVuMwpy9Mhi++t9Sj0+g8CtbqYDuxMOw13Tm7zmrirKzBZCAihBVW9vn5NnK4rWT8K+er31M
+	+NjA0o1bBplsHRZbt4pRzEskbHw3qiONHNvGqnB5vy8DgEbdApLBxHGaJ3rEXatE5Q5gNxas94AxZ
+	MJQ+F5B//uVKikp7++7cD0uPc/lv6wI47bG0N4Nk9on7YASVV6SaDbc1/CfBUM8caZkkOsoYXdwrT
+	q3yl86kvZPtMAvVtZz1I2gFkJMMQ8LllXDqh9SmkuUGSQhGO89HkaHqh/DUPweSABRnI/wH2z3hsr
+	NihBt+ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM8Do-000000074hD-17QM;
-	Thu, 20 Nov 2025 17:13:28 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1vM9jy-00000007FSe-3lHn;
+	Thu, 20 Nov 2025 18:50:47 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vM8Dm-000000074ge-0aqB
-	for linux-mediatek@lists.infradead.org;
-	Thu, 20 Nov 2025 17:13:27 +0000
-Received: by mail-ej1-x631.google.com with SMTP id a640c23a62f3a-b73161849e1so299589666b.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Nov 2025 09:13:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1763658801; x=1764263601; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=71+jWtBg7d1iYRAZRUfunCs8pFBPFzAnVW06bSqsOgk=;
-        b=jWt6JP3IR3j1dmDI9vQZgyS4r0VG/aNhqQ37OwXmTl7uPlfWvb5y7a8VsD5q/0djK5
-         L6UpraDLoSjHnuYTUiTBQbytYmVntALXLIQVozIxxbabcHCUs6VZFFeEf5Dt3Hly4hjP
-         9It/8h5jwrVDaJJTPQd7/PY06vaqLwkKfYKC0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763658801; x=1764263601;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=71+jWtBg7d1iYRAZRUfunCs8pFBPFzAnVW06bSqsOgk=;
-        b=rwahgxmRgkXtw1jjsIaO5NR70Ggkrr7DqOVC37FZeynixyocjfccV/devkHISgVZls
-         5VAx7NJ4/PBffoWvTmQY0oIMmvzJDJTwKNrth6A6GSVP1bcOooOl7QE73WooYEVaKNR0
-         MzxHRRbOjDNkmeLYlVBCTlYJbTyKx2iB5lG7zXdgmJBv8qzcCgEpNRk4jCklQ2t+6Q8Q
-         zGLgNXLa/HfmaQfTsX83vvKOnhyzuQc/+lXEWZjsdDB31HetSux6ZpR9vjfUcH7qDXjI
-         Qys/D8QP38Oqgcarzd0B/7IgeBnZG/sDBXH31mOvnTBDbi3+l8+OQt7yk2QFgbuBEbt0
-         y1jg==
-X-Forwarded-Encrypted: i=1; AJvYcCXPN+zK9V7+ZLvSgMmAVaJYlQHB7mFPO0WuZlhPLPvXlwV8i/zgLtTiX4pzUlZbBXSRB9rdZL2gSVsbA22aLQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzrSXZW/dyMpTfq06xwYqmP67OqQj1QcN8XCqNOPaz96aUSpkE+
-	zPG4OqJSGL/LiUwQmc778EO0DX/H9hM32fh4L1uotYuEDYgDVuFkQzos2eFwTnFrkgY6bqzE14T
-	yKF7cV9zV
-X-Gm-Gg: ASbGncvxb/tXI08y1tPTNaBh0DHsAOTlBkstUCYtschCJbtjpsMbwPUgouoCK5630Ow
-	iedfRrl0I7sle5PlkCBUaT2sD7OX1+BJc049ttr10nZVwOZYp/0FvA4ifxnY8wM4c69vKUiYbHi
-	AKnbbPgCJMj5WWOBNPs4o88jK0Uj7+jclIrUHV4D2lTq4lDHOr/DoKtPmLEiGkPCO2m11sgmaCz
-	OCJr8SkCx5oNN0Uivi5XDSeOxiLSOqqDyob+7M3RTUGaPjYwN/LaJQN1GYJGCn0sFUElv/qzUWU
-	8S+bCTizISgIE4h2tZtmXuwZJHeFOWFJ9oPIMUHrQHPEB4fwsuyrxHs5KK+UY/dKqjO+GiCaOtO
-	X/PeijPysTC7pJ3VprWZUMgGlQay8AhPLYQkJ7xvjzWpzX92BStA8UZnkS04YEv6MTQ+v5teD1B
-	mgbP11mjOjXfOWAnNk5ogEsok6jsbyLbr2yHsDeyjccsjF0fUzHA==
-X-Google-Smtp-Source: AGHT+IGu8RMLKzLo8BOY170+z7iR0pY7fxNUrGGhL+R+TWqAS3vdTV4sDAKNyytwuJuzGU8ZHuK/sw==
-X-Received: by 2002:a17:907:3d87:b0:b5c:753a:e022 with SMTP id a640c23a62f3a-b76588b14b8mr335110566b.29.1763658801175;
-        Thu, 20 Nov 2025 09:13:21 -0800 (PST)
-Received: from mail-ej1-f50.google.com (mail-ej1-f50.google.com. [209.85.218.50])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b7654cefeadsm253909466b.6.2025.11.20.09.13.19
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Nov 2025 09:13:19 -0800 (PST)
-Received: by mail-ej1-f50.google.com with SMTP id a640c23a62f3a-b73161849e1so299559366b.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Nov 2025 09:13:19 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCW1iPthLLuOqUb5CS0KAn5vjXwHuPNQK/EgPs6oKsXv5QDc2pLg6/mPUn2ez7j8HKpjTHqmfYlLVygtlKmWBQ==@lists.infradead.org
-X-Received: by 2002:a17:907:84a:b0:b72:5e29:5084 with SMTP id
- a640c23a62f3a-b765869343emr280912466b.4.1763658799257; Thu, 20 Nov 2025
- 09:13:19 -0800 (PST)
+	id 1vM9jw-00000007FS9-34co;
+	Thu, 20 Nov 2025 18:50:46 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E241344154;
+	Thu, 20 Nov 2025 18:50:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF406C116C6;
+	Thu, 20 Nov 2025 18:50:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763664641;
+	bh=YWC2QaLQIZnbvvKPn+rk+SMxZpvA1t+FyR0kuqU02KA=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=lLpIh82ApTKkcPa5DAFGjUR3FHxD+gzl/2/tjY9sFKwRGaXOhouiGSEOwvENQ6ddO
+	 BC6shW7HOkL81jFMqBcTkEfUEmi36F0Lwmd1kYc8hpvbPI49PtqhIkZkVTRjtL40jR
+	 VsR8eYHqfWeWZb6B5Lzhq+BtrM+gY6Z7nn+1tt2RjsKm0p6KDOK5U6mVH1wfz8J6qv
+	 69Lva35wffUJrAcoQJEkFRdKyDnJnepkJlYhYjsK4lX33lFHbK/EY3gr3KNals1s6J
+	 2f2GK06S56j108BVMotqoybEYjmoXradFsnthBCeiBWjEN0oj7uwfY7wXMT6D8IJ6V
+	 kiT3dQrEiPi3A==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 33F663A40FE6;
+	Thu, 20 Nov 2025 18:50:08 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v3] Bluetooth: btusb: mediatek: Avoid
+ btusb_mtk_claim_iso_intf() NULL deref
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <176366460701.1748676.511972373877694762.git-patchwork-notify@kernel.org>
+Date: Thu, 20 Nov 2025 18:50:07 +0000
 References: <20251120081227.v3.1.I1ae7aebc967e52c7c4be7aa65fbd81736649568a@changeid>
- <be1cbae6-f868-4939-a1c1-fd66e2c6b23e@molgen.mpg.de>
-In-Reply-To: <be1cbae6-f868-4939-a1c1-fd66e2c6b23e@molgen.mpg.de>
-From: Doug Anderson <dianders@chromium.org>
-Date: Thu, 20 Nov 2025 09:13:07 -0800
-X-Gmail-Original-Message-ID: <CAD=FV=W1D7ksbS-q1c6cHQSxx3=Z5yfC8duiBGh8S01NhLPLUg@mail.gmail.com>
-X-Gm-Features: AWmQ_bk3aT3ZuUmLknvARxMmblGOEsNctHWpwZyyDwMRW7H291WIp2zvCdFNcjo
-Message-ID: <CAD=FV=W1D7ksbS-q1c6cHQSxx3=Z5yfC8duiBGh8S01NhLPLUg@mail.gmail.com>
-Subject: Re: [PATCH v3] Bluetooth: btusb: mediatek: Avoid btusb_mtk_claim_iso_intf()
- NULL deref
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Thorsten Leemhuis <regressions@leemhuis.info>, regressions@lists.linux.dev, 
-	incogcyberpunk@proton.me, johan.hedberg@gmail.com, sean.wang@mediatek.com, 
-	stable@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20251120081227.v3.1.I1ae7aebc967e52c7c4be7aa65fbd81736649568a@changeid>
+To: Doug Anderson <dianders@chromium.org>
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, regressions@leemhuis.info,
+ regressions@lists.linux.dev, incogcyberpunk@proton.me,
+ johan.hedberg@gmail.com, sean.wang@mediatek.com, stable@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251120_091326_244518_D5BF250B 
-X-CRM114-Status: GOOD (  19.36  )
+X-CRM114-CacheID: sfid-20251120_105044_816290_D513AB65 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,67 +78,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello:
 
-On Thu, Nov 20, 2025 at 9:04=E2=80=AFAM Paul Menzel <pmenzel@molgen.mpg.de>=
- wrote:
->
-> > diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> > index fcc62e2fb641..683ac02e964b 100644
-> > --- a/drivers/bluetooth/btusb.c
-> > +++ b/drivers/bluetooth/btusb.c
-> > @@ -2751,6 +2751,11 @@ static void btusb_mtk_claim_iso_intf(struct btus=
-b_data *data)
-> >       if (!btmtk_data)
-> >               return;
-> >
-> > +     if (!btmtk_data->isopkt_intf) {
-> > +             bt_dev_err(data->hdev, "Can't claim NULL iso interface");
->
-> As an error is printed now,
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-An error was also printed before commit e9087e828827 ("Bluetooth:
-btusb: mediatek: Add locks for usb_driver_claim_interface()") too, it
-was just a different error message. Previously the NULL would have
-been noticed by usb_driver_claim_interface(), which would have
-returned -ENODEV. That error would have been noticed and the message
-printed would have been:
+On Thu, 20 Nov 2025 08:12:28 -0800 you wrote:
+> In btusb_mtk_setup(), we set `btmtk_data->isopkt_intf` to:
+>   usb_ifnum_to_if(data->udev, MTK_ISO_IFNUM)
+> 
+> That function can return NULL in some cases. Even when it returns
+> NULL, though, we still go on to call btusb_mtk_claim_iso_intf().
+> 
+> As of commit e9087e828827 ("Bluetooth: btusb: mediatek: Add locks for
+> usb_driver_claim_interface()"), calling btusb_mtk_claim_iso_intf()
+> when `btmtk_data->isopkt_intf` is NULL will cause a crash because
+> we'll end up passing a bad pointer to device_lock(). Prior to that
+> commit we'd pass the NULL pointer directly to
+> usb_driver_claim_interface() which would detect it and return an
+> error, which was handled.
+> 
+> [...]
 
-Failed to claim iso interface: -19
+Here is the summary with links:
+  - [v3] Bluetooth: btusb: mediatek: Avoid btusb_mtk_claim_iso_intf() NULL deref
+    https://git.kernel.org/bluetooth/bluetooth-next/c/dd6dda907d09
 
-So that error is merely changed into:
-
-Can't claim NULL iso interface
-
-> what should be done about? Do drivers need
-> fixing? Is it broken hardware?
-
-Personally, I have no idea. I was mostly trying to get the regression
-fixed and, after looking at the code, I was convinced that this would
-get us back to working at least as well as we did before commit
-e9087e828827 ("Bluetooth: btusb: mediatek: Add locks for
-usb_driver_claim_interface()"), plus we'd still have the device_lock()
-in place to avoid the problems I noticed earlier. It sounds as if,
-even with the error printed, things were working well enough for
-IncogCyberpunk.
-
-If someone wants to analyze how / why `btmtk_data->isopkt_intf` would
-be NULL in this case and if we should do something better to handle
-it, I'd certainly support it!
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
-> > +             return;
-> > +     }
-> > +
-> >       /*
-> >        * The function usb_driver_claim_interface() is documented to nee=
-d
-> >        * locks held if it's not called from a probe routine. The code h=
-ere
->
-> Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-
-Thanks!
-
--Doug
 
