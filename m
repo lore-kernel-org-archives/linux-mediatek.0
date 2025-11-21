@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E250CFA473
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Nov 2025 05:45:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02126CFA475
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Nov 2025 05:45:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uJbxIqEiqm1f8qF16st2qXQheMIfNt3xVg34Igpt82U=; b=Yo+JHWvZclcl9aSC16EcxeAVd4
-	8Dz7jL+d7frtRCeQXeWZVWzmBJxV+/oCIfw9KnfUo/nOgoN3PY7HEjY+w479cuziIPIEMBGHv8zLp
-	TNFVxNucLY6BxDra8aef2myfZzyXPobyRSxI0DYDzcn/W3ToaI/atHQm/Xfr9UHs81QIdUGVllwl3
-	9VnZlhlcRf2/LgT9dTX57tc05AAkMs4kEkB67BGKXFfRlpuA1SYW9khxSxySxz+9Sq6HFjUGznoYi
-	4lKvT665PGuxRLrFluFze8o8DZOmxB4Z6TrsvOuwFhDsFpL12IF8bellphAQCPEUgjbv+e9sDhDhw
-	RW5Azr4w==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4mYsgMrDgS5hUvuSlIrRJpIGUfBKBPSurplnTSPjF4A=; b=Q4FzPA9P/NC+ULv1l0UCz5j/CW
+	Cit+4ZENcDHwkp/HrVljK5pPwwcKgKdUHf7f1bJmgiN/DkHyzFgTqG0NAGu45EKGacJWJnmzwQFk7
+	9g50Mz/mPm0StlQiB7VLITAN/YP39vou2U5JWOj7UkdASbwsIL8lcpJNBrT+OkA5OUtXtRHl+zZ+H
+	QNHSYijPFK6t/ihGfhrf0XvkU4TitFUtKT00mJXKnS3Pecn5zLPnLQtfiTNH5ayYo7V1wKpOzc0oK
+	ddLBZxZ6NH7mRxvLn2WexpLlCE5y8n+6RkXuPfMRHWrZkPx46NIpCFQDKC0JyW74Hr1r4P7cAxZvp
+	99NyIEkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMJxx-00000007rQL-2Dg3;
-	Fri, 21 Nov 2025 05:45:53 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1vMJxy-00000007rRZ-3O9c;
+	Fri, 21 Nov 2025 05:45:54 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMJxu-00000007rOw-2SRm
+	id 1vMJxw-00000007rPW-0FN6
 	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Nov 2025 05:45:52 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-477a2ab455fso17570545e9.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Nov 2025 21:45:49 -0800 (PST)
+	Fri, 21 Nov 2025 05:45:53 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-42b3d7c1321so884239f8f.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 20 Nov 2025 21:45:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1763703949; x=1764308749; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=uJbxIqEiqm1f8qF16st2qXQheMIfNt3xVg34Igpt82U=;
-        b=FCunR+Z/nUIo2bTs/Okpa0dzDI4b+rFKTth0g6trAl29JA+/IcSfdui9N5oC70O8ec
-         hgIHhq/skLjbHVl91c6NJYrWoCY+MLrJOAoo9O91/dzpT/CQX1AD9nB/CHmrZJAHrtsq
-         znZhKPUQp/ekKBRaXulDZmlsU2k+gSbcQayti5+XQuWmpLHLoiL0QosRthqb9ZqVZsqA
-         qDhap6lKBa+ReoD0K277YDFnOSssYwdiP2aZ41RKkP1DXj773izV5Zi2pkNce2+mAUR2
-         vsMQ0bgKlALXddCKlo20QK021GNfIBzn7UIDDEPbKNm6jcfizVViWh4PWxaHIepYPvKQ
-         yuwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763703949; x=1764308749;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=gmail.com; s=20230601; t=1763703950; x=1764308750; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=uJbxIqEiqm1f8qF16st2qXQheMIfNt3xVg34Igpt82U=;
-        b=pMeNmkSq+m5kvPQEqBWfyV+/5vJcYF2LcGl1iOlAGkvTgd6haIUNFzeeBqVUlJQHk2
-         4bZXt/EEGDbq2j50X5V9THyM5wV6kbYl0LA3RY74vvJ8Sesjh7rMucaX6zFqhI4MBMTR
-         HNsIVm2Y5dU8uo3k5ng5zW50a2GKEiEGLEL+pIbnqXmOHD/gcAX1KEyyPipLJWSNA0Kj
-         YIHtyxhfY87Qgt6NbKW6fM5vaYvtz4+sPBMnIIqHWVl5kafonrrzOOZxsZjNFcgAofQU
-         YMaeBOokF/cgr5zGrLi0F9t9bQsSLBtgiewL6JiZdEGpD9s7VV0wKzd3DSZehgaWPZzc
-         Zi6Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWXW82OP5mKZj3O5iqhhYVLER2bUQx0wOBSMS/LLskJP1yqbYaYnWQGJL46OB/klqudzqJEB4TNKFJnZZ7Tfw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxTtT6s5JWepkStL7xzVqKHUrKhItdxFPwY6dj4V7cbPUAwCxdN
-	Nk44z2F9aMNdp/GVgGmt1GT42aDp7geBu3a9kTmBB3hiEMk3/sWeBOf7
-X-Gm-Gg: ASbGnctQblyws2dAen9CNgWtPlXsFFbkTccoXwkEso3Oa/ocJeANhMKg3x7xLksa4A4
-	zeAiPT/2H7Qpo/KfyE7LuhORYFx+nxcuc2gSAjYfTTCIaIbrSAmsiS5+AKucMm3Q8WYeHkTjMrv
-	1TZzpw9/9gVVNJ8rMIBeqzguILutnI0gXd7SVVposfWM1n+zSdCoFmaPuy+wdBmnxZj2HO8BRMQ
-	b6Fzpb1RtLXNwxkLq2aO2s6y5ahtr43foMnhjAINlkA4rvA2ftr0Al1fV/zW/uPK7xgP0R62GCC
-	bPESP98PJRwoJlVcyxYefuZCdRsqYs0rJvuK4TlT69vquX3VxrqsWFPgVd4hoUN6IW+oTpSFIsI
-	ecV6hqYrg1hGSzzdzE0ct6SpSD3RI7vmKOhrG44w7dtVgiFYZVR393YMykyOWK9JgoK1+C+JKmZ
-	t2QE5ZBtpN3K93BHSOgd/EN87ED9QIl82EiTpE5m7v
-X-Google-Smtp-Source: AGHT+IHRFaiUyVpXiQGxAycMp6yKMdInYPmebcx1lHdJv0Jzj9BEBBTmyVen82ZvCHfumXjJ/rAv0A==
-X-Received: by 2002:a05:6000:2004:b0:42b:5406:f289 with SMTP id ffacd0b85a97d-42cc1cd8f27mr741379f8f.3.1763703948284;
-        Thu, 20 Nov 2025 21:45:48 -0800 (PST)
+        bh=4mYsgMrDgS5hUvuSlIrRJpIGUfBKBPSurplnTSPjF4A=;
+        b=Ja99Hja/RGn/VXK1d5W4aMFTGD/gY+1qFJa1CB0nwfNN88MWgy8gA7pSjt4EnS8cuy
+         Kbe7EY72lBS1qcZWSOpaB6gmESzXs7pg6aTJIsiUfYz+1AdRc/zJKR57fW6VrE/9WUHf
+         tclsC/dwZ1UxwCaL1IBcEh0C6Jb65Tf2XYF31/uVinhzhsMRjRupiVqHtv1qRtLODKFv
+         pmBroH5c/j0fyCVSvIOSk5xy2GU5KrjNiVn6j/SqBhE5Pwva1m66PDzYKIQ+xILFd0Gs
+         EZgOC2hWl7TLYbY1l17Ksv3s4AZoZmpDi5bsCfQhVFIvX8pRqDoLy+xfOMMWa/vAyX17
+         G2HQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1763703950; x=1764308750;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=4mYsgMrDgS5hUvuSlIrRJpIGUfBKBPSurplnTSPjF4A=;
+        b=CAWXNCNOHaOTc2gfM4VKSDqumFhuniX9fhz+sFabKLs/yAdHE30DBIK/4dn6nVqLhq
+         5Mf/S4YOhTblxNKOf3VaZAHAzStieXY2vIpBf4mdG1VDu2iGx9pn8VIwoPCS26yBBqyF
+         d4W18EaVl5VwwD/G71dIe/dcGMnXsemfSvj2Nlmah7QPPvT3Wk5Uikv3KH9BaENjmKwh
+         yK/pykvnJrj2cgEe6uCIthmrtYwzhUPT1JK8msucLSzmqizkBUJG+4qe2bP3Akd2ZQ5h
+         cziAMuomHCvVCZK06BtEneVTFL6usw/Zo2qfwjotQkC/Q5dG8DYbRF9D+zjsVIKl59y9
+         Z/yA==
+X-Forwarded-Encrypted: i=1; AJvYcCVbYaLdd54Q7X+WuO1BjxSVnbkzxgSAlwJH+/tMmp+rNy3qxsIbsi4d72uxPiy5cnGdh0ya02Z8b/162llXqw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyfoWsYZAUA3bE782lpYC6DZO6YuASCUdJvauUyLBna0UrqgeKZ
+	4OuWAeZC88+TRTj/avsxYfyfA6W9IDlZWxAunfUKbeIbI0dvqB8ksq0c
+X-Gm-Gg: ASbGncsEhWGod6I6YDdFR92VJp0+h4cNsqdoxEg9NINpgh+X2tCUM683JtcVZbJs6kL
+	6CED4/nNpMCccklkUs+xz0GQmDYr1URbtYsjyPGY1UQNxZdI9ucThAGCB3mAG/wt5MCr9mV4+5j
+	HPAQLDc/8neOSNve+IwD1ob+qSaQcMZiooB1/XlFHIeqJK/W6XQiVqcb/Q7DfK2YIKWR7dJJQwN
+	JUcXFagWQKCtQzhcaMwVMUw24UyN5qWvjpB8hwmzENSxmarjYZUDfI8oGzKtSUGLD4SxBCxuG7K
+	q2+KEgblIA1PRaQEGVLJnygfJF3gvTOaMMjtuAaWArqluNWUTySMV3ByGf+VIELMCErtKmltU3w
+	I/ZkUW4uwPOTioLsvlhgZifj6R3JfXB084vQzLGZwpuK2z2KM6QSc0JykrRoPowncDZRoKR5VU/
+	xEstcYmTslUKyZA6cPDRUeXaWsYYc+weIOEkPA3Cdq
+X-Google-Smtp-Source: AGHT+IFoDuD8ce0kyVu8f/bxfusUDj1z/44aLM0o3OmyBUjncNPkP8Va3UpOnWv9eDckk3QJdEc/AA==
+X-Received: by 2002:a5d:64c3:0:b0:429:ccd7:9d94 with SMTP id ffacd0b85a97d-42cc1d217demr750615f8f.51.1763703950227;
+        Thu, 20 Nov 2025 21:45:50 -0800 (PST)
 Received: from Ansuel-XPS24 (93-34-90-37.ip49.fastwebnet.it. [93.34.90.37])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-42cb7fb9190sm9239273f8f.33.2025.11.20.21.45.46
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-42cb7fb9190sm9239273f8f.33.2025.11.20.21.45.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Nov 2025 21:45:47 -0800 (PST)
+        Thu, 20 Nov 2025 21:45:49 -0800 (PST)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Christian Marangi <ansuelsmth@gmail.com>,
 	Liam Girdwood <lgirdwood@gmail.com>,
@@ -90,15 +91,17 @@ To: Christian Marangi <ansuelsmth@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	upstream@airoha.com
-Subject: [PATCH v2 0/3] ASoC: Add support for Airoha AN7581
-Date: Fri, 21 Nov 2025 06:44:58 +0100
-Message-ID: <20251121054537.25796-1-ansuelsmth@gmail.com>
+Subject: [PATCH v2 1/3] ASoC: dt-bindings: Add Airoha AN7581 with WM8960 YAML
+Date: Fri, 21 Nov 2025 06:44:59 +0100
+Message-ID: <20251121054537.25796-2-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251121054537.25796-1-ansuelsmth@gmail.com>
+References: <20251121054537.25796-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251120_214550_664782_192855B4 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20251120_214552_107727_2C8EDB04 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,42 +116,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add all the patch and documentation to support Airoha AN7581
-sound driver.
+Add documentation for Airoha AN7581 with WM8960 i2c codec YAML schema.
 
-The card follows similar implementation with Mediatek with
-the codec present on i2c but with a simplified implementation
-register wise and additional frequency supported.
-
-Changes v2:
-- Fix wrong edit in MAINTAINERS file
-
-Christian Marangi (3):
-  ASoC: dt-bindings: Add Airoha AN7581 with WM8960 YAML
-  ASoC: dt-bindings: Add Airoha AN7581 AFE YAML
-  ASoC: airoha: Add AFE and machine driver for Airoha AN7581
-
- .../bindings/sound/airoha,an7581-afe.yaml     |  41 ++
- .../bindings/sound/airoha,an7581-wm8960.yaml  |  67 +++
- MAINTAINERS                                   |   8 +
- sound/soc/mediatek/Kconfig                    |  20 +
- sound/soc/mediatek/Makefile                   |   1 +
- sound/soc/mediatek/an7581/Makefile            |   9 +
- sound/soc/mediatek/an7581/an7581-afe-common.h |  39 ++
- sound/soc/mediatek/an7581/an7581-afe-pcm.c    | 456 ++++++++++++++++++
- sound/soc/mediatek/an7581/an7581-dai-etdm.c   | 371 ++++++++++++++
- sound/soc/mediatek/an7581/an7581-reg.h        |  61 +++
- sound/soc/mediatek/an7581/an7581-wm8960.c     | 170 +++++++
- 11 files changed, 1243 insertions(+)
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ .../bindings/sound/airoha,an7581-afe.yaml     | 41 +++++++++++++++++++
+ 1 file changed, 41 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/sound/airoha,an7581-afe.yaml
- create mode 100644 Documentation/devicetree/bindings/sound/airoha,an7581-wm8960.yaml
- create mode 100644 sound/soc/mediatek/an7581/Makefile
- create mode 100644 sound/soc/mediatek/an7581/an7581-afe-common.h
- create mode 100644 sound/soc/mediatek/an7581/an7581-afe-pcm.c
- create mode 100644 sound/soc/mediatek/an7581/an7581-dai-etdm.c
- create mode 100644 sound/soc/mediatek/an7581/an7581-reg.h
- create mode 100644 sound/soc/mediatek/an7581/an7581-wm8960.c
 
+diff --git a/Documentation/devicetree/bindings/sound/airoha,an7581-afe.yaml b/Documentation/devicetree/bindings/sound/airoha,an7581-afe.yaml
+new file mode 100644
+index 000000000000..80d9e87f1470
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/airoha,an7581-afe.yaml
+@@ -0,0 +1,41 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/airoha,an7581-afe.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Airoha AFE PCM controller for AN7581
++
++maintainers:
++  - Christian Marangi <ansuelsmth@gmail.com>
++
++properties:
++  compatible:
++    const: airoha,an7581-afe
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++
++    afe@1fbe2200 {
++        compatible = "airoha,an7581-afe";
++        reg = <0x1fbe2200 0x9000>;
++
++        interrupts = <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
++    };
++
++...
 -- 
 2.51.0
 
