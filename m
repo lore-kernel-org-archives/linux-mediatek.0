@@ -4,74 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B0D0CFC26F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Nov 2025 13:03:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1DA3CFC27B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Nov 2025 13:36:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:Reply-To:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:To:From:Date:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BJKh4phwJDlLNUyXOAuI9qLp7FEWCx2chfbFZ1pXVC8=; b=RwOCSWcihQygk66w6bCL/0qUOE
-	ejIdhXsPeoz1DmUgdoh3fs9gqTJM+eSOHN97m6NIjIUR1qmdxP9+TK3eTi8g3QxqLZN9VQfV5+KHz
-	YBCc1y+gcITASeKCOEtIl4jV9IGwt0bwvKsQB2v2zOTVOhSQ80hJuWaiDnLpbGnSla9eDQFVdPi3P
-	SfEKcC2mE2XKNiDbLFFGbGoLF5odpYegoRsJXtfyXgFn8fg3vcoOd981N7TdcOkDy51pahOTb70ch
-	ajd7AkvtxJWHyz/NMxA92bRLsaIsWGfoYCfggCBrHJOoputrSK5jWzEEOUh2svHVlytbe+MsWKTHR
-	C4MPT5zA==;
+	bh=efH9Agej6Z9Q3tfyl7rJRxdmC7o9Bt18Qr1lcQtX8mc=; b=3NWrIkdQp8q+aOZ8lTbdkb6V6d
+	XsAdVfq2IIzQtR32w398toapapnbICbjQH+bPkB5Js2c5OkYHzqjr9JjlDflINEMK53EQvF+lqL4p
+	ldqDRKG8nymK6lm76fpu2yt5ePGBU9D+yf11V4mc4NNB2NAs9qjz8g67nv72s/0+8FpOEOuv5zIQ6
+	HPSGsITMVbJcZ8T0r3IR/uUYHJO0JPV26KIeSmFD80hPtQQor4e+zS/BUOFcWFygPW1quu3Cm6FKR
+	IzyYh2MV0vFbjetIWaqEtMjRJ8tBFD7oxaQ/P4dGmfHoEQRos00wwQ4RhKChm3rh3EA+pJ/nsuVWs
+	VqKR60JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMQn5-00000008O7L-3hFb;
-	Fri, 21 Nov 2025 13:03:07 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1vMRJ7-00000008Q40-0tqg;
+	Fri, 21 Nov 2025 13:36:13 +0000
+Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMQn2-00000008O6W-3U0p;
-	Fri, 21 Nov 2025 13:03:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1763730149; x=1764334949; i=frank-w@public-files.de;
-	bh=BJKh4phwJDlLNUyXOAuI9qLp7FEWCx2chfbFZ1pXVC8=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References:Message-ID:MIME-Version:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=AKTab14nS6dJcY2MrZjBYFyzqd327qVLv0eXboND1lGTw6UR2Tl3xUi8s53wBco6
-	 9r3dTjutKRYlN70tDZpDED5Xe79HaVLZOhfzpN+eeN178RW/WO/Mtp86SKlw19y99
-	 PS8GeaudaAAe519lu6i5MKqQ7isEgm661D1w7eVW5Zq/vcaD5LHl/JOYZ14NZoM58
-	 9zMOSPb1uoRpIU8IB6InMxj6Dfpon6HOSpEwUzWYdxciDzHwIzfZaRCsf634UCoCQ
-	 LdyFPrVa2VfBoIq/7Z/NqRcXKnonNJcCl4Z1vhR+Kv2brsvMTHGfcqnFOWHyg2hio
-	 7iPpN0iac1ubZOpsbg==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from ehlo.thunderbird.net ([194.15.87.255]) by mail.gmx.net
- (mrgmx004 [212.227.17.190]) with ESMTPSA (Nemesis) id
- 1MGQnP-1vLbQm2U3R-00Bi4o; Fri, 21 Nov 2025 14:02:29 +0100
-Date: Fri, 21 Nov 2025 14:02:26 +0100
-From: Frank Wunderlich <frank-w@public-files.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Laura Nao <laura.nao@collabora.com>, srini@kernel.org, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, rafael@kernel.org,
- daniel.lezcano@linaro.org, rui.zhang@intel.com, lukasz.luba@arm.com,
- matthias.bgg@gmail.com
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_4/9=5D_therma?=
- =?US-ASCII?Q?l=3A_mediatek=3A_lvts=3A_Add_pl?=
- =?US-ASCII?Q?atform_ops_to_support_alternative_conversion_logic?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <84571de3-27c4-4448-a3fc-b937d175de29@collabora.com>
-References: <20251121-mt8196-lvts-v4-v4-0-357f955a3176@collabora.com> <20251121-mt8196-lvts-v4-v4-4-357f955a3176@collabora.com> <84571de3-27c4-4448-a3fc-b937d175de29@collabora.com>
-Message-ID: <19D052E6-7E81-455B-AB31-C805AD65F96A@public-files.de>
-MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+	id 1vMRJ4-00000008Q2g-1943;
+	Fri, 21 Nov 2025 13:36:11 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1763732154; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=e74KFJ9vgz6b7ewcQ7f+S6Y5PMn78ts9kOwvCErWbdDYE4SIyWbscAAry8pkQQfrMWOIwqIcbZ9+D2Iy156DDaPIWmRX8Sj+ot0DYUzOcbyY2pFg8i4Q0PiAccmOxDpYhWHIACiiAge3sOtKsqECQOGVjFI1Qku5jESw0Tq4MWk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1763732154; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=efH9Agej6Z9Q3tfyl7rJRxdmC7o9Bt18Qr1lcQtX8mc=; 
+	b=YA1Ny9ZNwPA2FUgRm2gbSvX+4S/mTCW5tfW7gXxIOP4YdtH/V3QPTNOToRxn6kac1Hg97WDJUSJfu7blPXn5QCGQ/FdoFih5kwVn4O+SHb/h45JgG3haD3sTFuLXLFXv2OZ1Heyf4gsnD7krYPaqQ/is8fp/jX893nJpnSoD91w=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763732154;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=efH9Agej6Z9Q3tfyl7rJRxdmC7o9Bt18Qr1lcQtX8mc=;
+	b=YXfjgUMiM1VsxigPCn65uyQOmegLHes3Ns4fqUi3yiOMpA5SFVI938rbr6iDe0y7
+	L+/l3di69KmJtcCFI2+aYo8mz31rZkoUCHaykAKfh6xheIXwClq0ObTtfNzj3c/hPl1
+	IcUNkYSggpnkS5dlDSmdnqHax9h1wg7N5J3gzWhQ=
+Received: by mx.zohomail.com with SMTPS id 1763732152616682.0078621223064;
+	Fri, 21 Nov 2025 05:35:52 -0800 (PST)
+Message-ID: <07011558548dfc88fb237b7d21d43a6bc25dd0fd.camel@collabora.com>
+Subject: Re: [PATCH - URGENT] pmdomains: mtk-pm-domains: Fix spinlock
+ recursion in probe
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	ulf.hansson@linaro.org
+Cc: matthias.bgg@gmail.com, nfraprado@collabora.com,
+ irving-ch.lin@mediatek.com, 	wenst@chromium.org, linux-pm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, 	robh@kernel.org, krzk@kernel.org,
+ conor@kernel.org, kernel@collabora.com
+Date: Fri, 21 Nov 2025 14:35:47 +0100
+In-Reply-To: <20251121125212.43093-1-angelogioacchino.delregno@collabora.com>
+References: <20251121125212.43093-1-angelogioacchino.delregno@collabora.com>
+Organization: Collabora Ltd
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:RYiLAjizWkiNBNsTmLW9L4nsAeCaJJc+KyEx/1v1wMAeX6IORSP
- mHcrEp7TqOrgEMHq6YNKPYd8yrOswOWbKkgk5564SX73mkS3M5m8Jea8grnYlnbM1mRAEdB
- xbkOxyU2VvdnfPOEFxU/QXU/Inxvcv+pFQd1oFUYgqzKeCBH8UieR7PTz0XSLjsa7bSxN2q
- Eq0Oyd13oFgrvTWNUxw/g==
-UI-OutboundReport: notjunk:1;M01:P0:4msFM5iZKaA=;4FkhWXXU9iKaL0ollf9nqlEnMD6 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
+User-Agent: Evolution 3.56.2 (3.56.2-2.fc42) 
+MIME-Version: 1.0
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251121_050305_258120_7929E60C 
-X-CRM114-Status: UNSURE (   6.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251121_053610_368568_D6E9B923 
+X-CRM114-Status: GOOD (  33.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,29 +80,176 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
-Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, arnd@arndb.de, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, nfraprado@collabora.com, devicetree@vger.kernel.org, u.kleine-koenig@baylibre.com, linux-arm-kernel@lists.infradead.org, wenst@chromium.org, linux-mediatek@lists.infradead.org, kernel@collabora.com, colin.i.king@gmail.com, bchihi@baylibre.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 21=2E November 2025 14:00:29 MEZ schrieb AngeloGioacchino Del Regno <ang=
-elogioacchino=2Edelregno@collabora=2Ecom>:
->Il 21/11/25 12:16, Laura Nao ha scritto:
->> Introduce lvts_platform_ops struct to support SoC-specific versions of
->> lvts_raw_to_temp() and lvts_temp_to_raw() conversion functions=2E
->>=20
->> This is in preparation for supporting SoCs like MT8196/MT6991, which
->> require a different lvts_temp_to_raw() implementation=2E
->>=20
->> Signed-off-by: Laura Nao <laura=2Enao@collabora=2Ecom>
->
->Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino=2Edelregno@coll=
-abora=2Ecom>
->
->
+Hi Angelo,
 
-Should this patch not have same prefix like the others?
+On Fri, 2025-11-21 at 13:52 +0100, AngeloGioacchino Del Regno wrote:
+> For some reason, of_find_node_with_property() is creating a spinlock
+> recursion issue along with fwnode_count_parents(), and this issue
+> is making all MediaTek boards unbootable.
+>=20
+> As of kernel v6.18-rc6, there are only three users of this function,
+> one of which is this driver.
+>=20
+> Migrate away from of_find_node_with_property() by adding a local
+> scpsys_get_legacy_regmap_node() function, which acts similarly to
+> of_find_node_with_property(), and calling the former in place of
+> the latter.
+>=20
+> This resolves the following spinlock recursion issue:
+>=20
+> [=C2=A0=C2=A0=C2=A0 1.773979] BUG: spinlock recursion on CPU#2, kworker/u=
+24:1/60
+> [=C2=A0=C2=A0=C2=A0 1.790485]=C2=A0 lock: devtree_lock+0x0/0x40, .magic: =
+dead4ead,
+> .owner: kworker/u24:1/60, .owner_cpu: 2
+> [=C2=A0=C2=A0=C2=A0 1.791644] CPU: 2 UID: 0 PID: 60 Comm: kworker/u24:1 T=
+ainted:
+> G=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 W=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 6.18.0-rc6 #3 PREEMPT
+> [=C2=A0=C2=A0=C2=A0 1.791649] Tainted: [W]=3DWARN
+> [=C2=A0=C2=A0=C2=A0 1.791650] Hardware name: MediaTek Genio-510 EVK (DT)
+> [=C2=A0=C2=A0=C2=A0 1.791653] Workqueue: events_unbound deferred_probe_wo=
+rk_func
+> [=C2=A0=C2=A0=C2=A0 1.791658] Call trace:
+> [=C2=A0=C2=A0=C2=A0 1.791659]=C2=A0 show_stack+0x18/0x30 (C)
+> [=C2=A0=C2=A0=C2=A0 1.791664]=C2=A0 dump_stack_lvl+0x68/0x94
+> [=C2=A0=C2=A0=C2=A0 1.791668]=C2=A0 dump_stack+0x18/0x24
+> [=C2=A0=C2=A0=C2=A0 1.791672]=C2=A0 spin_dump+0x78/0x88
+> [=C2=A0=C2=A0=C2=A0 1.791678]=C2=A0 do_raw_spin_lock+0x110/0x140
+> [=C2=A0=C2=A0=C2=A0 1.791684]=C2=A0 _raw_spin_lock_irqsave+0x58/0x6c
+> [=C2=A0=C2=A0=C2=A0 1.791690]=C2=A0 of_get_parent+0x28/0x74
+> [=C2=A0=C2=A0=C2=A0 1.791694]=C2=A0 of_fwnode_get_parent+0x38/0x7c
+> [=C2=A0=C2=A0=C2=A0 1.791700]=C2=A0 fwnode_count_parents+0x34/0xf0
+> [=C2=A0=C2=A0=C2=A0 1.791705]=C2=A0 fwnode_full_name_string+0x28/0x120
+> [=C2=A0=C2=A0=C2=A0 1.791710]=C2=A0 device_node_string+0x3e4/0x50c
+> [=C2=A0=C2=A0=C2=A0 1.791715]=C2=A0 pointer+0x294/0x430
+> [=C2=A0=C2=A0=C2=A0 1.791718]=C2=A0 vsnprintf+0x21c/0x5bc
+> [=C2=A0=C2=A0=C2=A0 1.791722]=C2=A0 vprintk_store+0x108/0x47c
+> [=C2=A0=C2=A0=C2=A0 1.791728]=C2=A0 vprintk_emit+0xc4/0x350
+> [=C2=A0=C2=A0=C2=A0 1.791732]=C2=A0 vprintk_default+0x34/0x40
+> [=C2=A0=C2=A0=C2=A0 1.791736]=C2=A0 vprintk+0x24/0x30
+> [=C2=A0=C2=A0=C2=A0 1.791740]=C2=A0 _printk+0x60/0x8c
+> [=C2=A0=C2=A0=C2=A0 1.791744]=C2=A0 of_node_release+0x154/0x194
+> [=C2=A0=C2=A0=C2=A0 1.791749]=C2=A0 kobject_put+0xa0/0x120
+> [=C2=A0=C2=A0=C2=A0 1.791753]=C2=A0 of_node_put+0x18/0x28
+> [=C2=A0=C2=A0=C2=A0 1.791756]=C2=A0 of_find_node_with_property+0x74/0x100
+> [=C2=A0=C2=A0=C2=A0 1.791761]=C2=A0 scpsys_probe+0x338/0x5e0
+> [=C2=A0=C2=A0=C2=A0 1.791765]=C2=A0 platform_probe+0x5c/0xa4
+> [=C2=A0=C2=A0=C2=A0 1.791770]=C2=A0 really_probe+0xbc/0x2ac
+> [=C2=A0=C2=A0=C2=A0 1.791774]=C2=A0 __driver_probe_device+0x78/0x118
+> [=C2=A0=C2=A0=C2=A0 1.791779]=C2=A0 driver_probe_device+0x3c/0x170
+> [=C2=A0=C2=A0=C2=A0 1.791783]=C2=A0 __device_attach_driver+0xb8/0x150
+> [=C2=A0=C2=A0=C2=A0 1.791788]=C2=A0 bus_for_each_drv+0x88/0xe8
+> [=C2=A0=C2=A0=C2=A0 1.791792]=C2=A0 __device_attach+0x9c/0x1a0
+> [=C2=A0=C2=A0=C2=A0 1.791796]=C2=A0 device_initial_probe+0x14/0x20
+> [=C2=A0=C2=A0=C2=A0 1.791801]=C2=A0 bus_probe_device+0xa0/0xa4
+> [=C2=A0=C2=A0=C2=A0 1.791805]=C2=A0 deferred_probe_work_func+0x88/0xd0
+> [=C2=A0=C2=A0=C2=A0 1.791809]=C2=A0 process_one_work+0x1e8/0x448
+> [=C2=A0=C2=A0=C2=A0 1.791813]=C2=A0 worker_thread+0x1ac/0x340
+> [=C2=A0=C2=A0=C2=A0 1.791816]=C2=A0 kthread+0x138/0x220
+> [=C2=A0=C2=A0=C2=A0 1.791821]=C2=A0 ret_from_fork+0x10/0x20
+>=20
+> Fixes: c29345fa5f66 ("pmdomain: mediatek: Refactor bus protection
+> regmaps retrieval")
+> Signed-off-by: AngeloGioacchino Del Regno
+> <angelogioacchino.delregno@collabora.com>
+> ---
+>=20
+> This might not be the best fix to perform, and I have Cc'ed Rob and
+> Krzysztof for them to have a look at the spinlock recursion issue,
+> as I think it either has to be fixed, or the affected function has
+> to be removed (or both, actually - in any case, if not fixed, this
+> could backfire, and I'm not sure that the only function that shows
+> this issue is just only of_find_node_with_property() or if others
+> also do; at least, nothing else on MediaTek machines as of now).
+>=20
+> Counting that this makes *all* MediaTek machines to be unbootable,
+> I'd prefer this fix to get merged immediately - so that it lands
+> in v6.18 (which is at rc6 at the time of writing).
+>=20
+> That - because I think that resolving the source of this issue will
+> take a bit of time and research - and I really don't want the LTS
+> kernel to be broken on all MediaTek devices.
+>=20
+> Note: When I initially tested the commit pointed out in the Fixes
+> tag, it was working with no spinlock recursion - I don't clearly
+> remember what kernel version was that, but I think it was some
+> linux-next around v6.16 or v6.17.
+>=20
+> =C2=A0drivers/pmdomain/mediatek/mtk-pm-domains.c | 18 +++++++++++++++---
+> =C2=A01 file changed, 15 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> index 407b4a7aba10..721224c89865 100644
+> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> @@ -1006,6 +1006,18 @@ static void scpsys_domain_cleanup(struct
+> scpsys *scpsys)
+> =C2=A0	}
+> =C2=A0}
+> =C2=A0
+> +static struct device_node *scpsys_get_legacy_regmap(struct
+> device_node *np, const char *pn)
+> +{
+> +	struct device_node *local_node;
+> +
+> +	for_each_child_of_node(np, local_node) {
+> +		if (of_property_present(local_node, pn))
+> +			return local_node;
+> +	}
+> +
+> +	return NULL;
+> +}
+> +
+> =C2=A0static int scpsys_get_bus_protection_legacy(struct device *dev,
+> struct scpsys *scpsys)
+> =C2=A0{
+> =C2=A0	const u8 bp_blocks[3] =3D {
+> @@ -1027,7 +1039,7 @@ static int
+> scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+> =C2=A0	 * this makes it then possible to allocate the array of
+> bus_prot
+> =C2=A0	 * regmaps and convert all to the new style handling.
+> =C2=A0	 */
+> -	node =3D of_find_node_with_property(np, "mediatek,infracfg");
+> +	node =3D scpsys_get_legacy_regmap(np, "mediatek,infracfg");
+> =C2=A0	if (node) {
+> =C2=A0		regmap[0] =3D syscon_regmap_lookup_by_phandle(node,
+> "mediatek,infracfg");
+> =C2=A0		of_node_put(node);
+> @@ -1040,7 +1052,7 @@ static int
+> scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+> =C2=A0		regmap[0] =3D NULL;
+> =C2=A0	}
+> =C2=A0
+> -	node =3D of_find_node_with_property(np, "mediatek,smi");
+> +	node =3D scpsys_get_legacy_regmap(np, "mediatek,smi");
+> =C2=A0	if (node) {
+> =C2=A0		smi_np =3D of_parse_phandle(node, "mediatek,smi", 0);
+> =C2=A0		of_node_put(node);
+> @@ -1058,7 +1070,7 @@ static int
+> scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+> =C2=A0		regmap[1] =3D NULL;
+> =C2=A0	}
+> =C2=A0
+> -	node =3D of_find_node_with_property(np, "mediatek,infracfg-
+> nao");
+> +	node =3D scpsys_get_legacy_regmap(np, "mediatek,infracfg-
+> nao");
+> =C2=A0	if (node) {
+> =C2=A0		regmap[2] =3D syscon_regmap_lookup_by_phandle(node,
+> "mediatek,infracfg-nao");
+> =C2=A0		num_regmaps++;
+I've tested your patch on top of a v6.18-rc6 kernel with a default
+config. My Mediatek Genio 350-EVK (MT8365), 510-EVK (MT8370) and 1200-
+EVK (MT8395) boards are all now booting without issue.
 
+Tested-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-regards Frank
+Regards,
+Louis-Alexis
 
