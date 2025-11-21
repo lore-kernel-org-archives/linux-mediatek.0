@@ -4,91 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09118CFA476
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Nov 2025 05:55:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64DAFCFA47A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 Nov 2025 07:20:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zwvomCI1BwoaMdIOXY7Bw6epo0QG3ROLLVd2yNeflzU=; b=zOgSRBcB5ipxNX060rrUWqBzU2
-	Pf3hHn/lPk2TGz6ZJEhGgYdl6O0XJ4CD4S5qONCsRoiFxnsc6hHNI3sNjkcvJFLm+JwYwanz2UYeY
-	Xg+Kf7THCiPTTKy3+Khjsykqcw9C2HHCN+QIvW63Fk/LtvdK1tPbdVAZeTOiThlyJ8CE6gRkWTzir
-	uOISbzJlPHRa2rl/7wLzKSww+xl1yosAp6pwSzc8SRuSetg+zuZZiBG4cPMJxwM4W5F1Vcd6Wrw2w
-	4HURxvO3h7+VW6RdcBHyraXBgNSCiGrrkA4dnqtwW7v1HMtQgk6aDoEVd3whaKVTgKvddMZLZDgCe
-	ZnAhhd7w==;
+	bh=HhTe7S6VRP2G+kRp3DV9R9gjWJm0R5xvUc1kwWHsYEI=; b=cZWJLxDM6oU8FBaZwCnVmjJGiU
+	ocI1ESH7lqB73+Kxz0vf9za2gQ5sYc8fcU6jm+wmPy65o0NExq+4ZXupGVbfY2aaQshcdanKde4Hw
+	xKwplY1ePnbLkZ9C6aq6nEE/+nuMzFuRmaxN2BhD+9gXhLA5Oba22jY7wt0yhqgKlQ3A3qX0zMVb6
+	Ve/7FVKox6JAVIhlK1IFQvUpj4T6sIOqrJuGERVgqjycdSSkaygXQNJv4eH01quzGJLJ3deGU4p26
+	LUTPPg3uM0hpd3LSrlJWb2l5a3QEMjPGjrgEsNGrg0pRw6XbQ4cNi4IHjVSBXxPrXouHeg7lfjUPp
+	7tCsnUqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMK78-00000007sfg-1znw;
-	Fri, 21 Nov 2025 05:55:22 +0000
-Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
+	id 1vMLRL-00000007xZo-3w8I;
+	Fri, 21 Nov 2025 07:20:19 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMK75-00000007seV-2b1w
-	for linux-mediatek@lists.infradead.org;
-	Fri, 21 Nov 2025 05:55:21 +0000
-Received: by mail-lj1-x230.google.com with SMTP id 38308e7fff4ca-37a2dcc52aeso14848921fa.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 20 Nov 2025 21:55:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1763704517; x=1764309317; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=zwvomCI1BwoaMdIOXY7Bw6epo0QG3ROLLVd2yNeflzU=;
-        b=aA3gPZ0XwWsSDx2EbMhJ88xk20A5U8EaZDPE15Qoz0tNIaIU2LWAkp9T18gbZxGSS9
-         rY+WFmyGIfPujSXiDcren70KrD0FB1iy+72jX3whfjUeL3W9dsMrEGDc+yvScLwvMDXh
-         qjpHoRvwLyKc1K1lhtuWNkset919jWjQJ4oSc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763704517; x=1764309317;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=zwvomCI1BwoaMdIOXY7Bw6epo0QG3ROLLVd2yNeflzU=;
-        b=JXEkIGKpkq9wnVPbP4EbDbjHNLexAwrC0eH0A6oPv+M6VWq/mKU+kygvUGM/5fgWqu
-         zu1AieqOftRXyBbaGcD0pwfkz+AdgRJyuJVP2nXUcikEvvD9p68NeeMtN5PLMNsmIofv
-         gzf5n9PHTWbBFitKgazvceD+hn4c2Ito/9t+xy+nl0kAtPBT7jx6zOZxG+dgZLzz+0gT
-         rynl2bSM0M4o8vSxR1BUNkFnG6NQ7KgZrHYeRA4bqq/y2JSq0sVvo5NmSHEqvN7srjC0
-         wx8VvqA0z4O9FaEePiYrvMARYGmdvY/aB+OV9KDJh8+iIRV+3NJYO5LCJTK5Mg1wS4ok
-         SvtQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWPNsPl9HxNInmdIu/bkDqauYf/d66y5j1p/K47DMF5BejxZYyYs+yjg8EsMmv7YVgmd0yyknVijSnNXJTJUg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzCP7IfDq+cP1jrnKgl4WFvCL7ekjQzHdVD4/DWKzz5vp28zY8m
-	2Yqv3apfxXX2k7xOz3hW6Ty4KGxyYXJUcx8oEb5qS5CV9fs3F5jUUkJcGp6xK1pDZBw3VennwXw
-	YuQ+PAler2fpSf+dM8gHPA3Kf3gZiFfPw2ViaQ0v/
-X-Gm-Gg: ASbGncuDoS8uLhCyhAB1Tjciqbdl7fSeqz8KvBWoWZ3GC08SAtxmrmH5hETt5dvaxun
-	TIWDqkn1E7DWs88W/big089A4KZ6aU02LjndrOOjIQynHeasqm9lG01gH0cy69R9Bgq2Ko55XE0
-	EyAJswBmoiIkmJh2eBJRBFmdUS/l2Mfa/YFM7bTx05n7svHZsWXZ/Q2VdJDYsu2O4/Q/EL0lNmL
-	P7rmkiRgmoP+AyJvH71fZl+ectWKQklvoD9UwZNIgCM43wl/N1j4Aj0PXkjqqU6UqGJfSIsqaVu
-	PEME2YmYIbpQleEgyWIYDvntng==
-X-Google-Smtp-Source: AGHT+IEDYrCP2AUvrHoGRLMquIrh7OcHVFanViendh+zN/U9VV/Im6NFRvLgmuSn64N/ilxblNrZFfLqTBBGNdSvpjg=
-X-Received: by 2002:a05:6512:220f:b0:592:f521:188a with SMTP id
- 2adb3069b0e04-596a3ee2889mr332332e87.49.1763704516899; Thu, 20 Nov 2025
- 21:55:16 -0800 (PST)
+	id 1vMLRJ-00000007xYv-1o5b;
+	Fri, 21 Nov 2025 07:20:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id CF82C434DB;
+	Fri, 21 Nov 2025 07:20:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 27CB0C4CEF1;
+	Fri, 21 Nov 2025 07:20:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763709616;
+	bh=DsaehILub2Q2F4EUeMDc+anS5yO9bwV/ssPH4iS2BPY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=hoTJs30bswKa/MCZZCE1NOnTq7G8YrP0mbOKwsBckliAqwxwcWYYxP9vTbGWLuL+L
+	 wwE5+qF2wqQ3IHjgQgcw7jZR7Soo9oIm2axjSi6ZT0npWe8dgBXsqkCNX0P99ESscj
+	 TE4mTZtSi/wukRXvTPDQdsxT7vDfWPieuY0uWDrPRaZYUbYIfm+cklUPFfSeF/Juk3
+	 0oDXpMdr99MVABZqtL0zPRSfIWTEfEdLRC18JNMcMQ4MSo5chBZu6kN5FQvRCPMf1R
+	 4MnqX66c/QRO+he5Xr5XgjV7NdliD1sBWdc0WbS6VHZ9vGg9b4Gc0gNKTMB87SPnGa
+	 nVkYvVjNRTArg==
+Message-ID: <1c70dc3f-a994-4978-af26-0a3eb746fb5b@kernel.org>
+Date: Fri, 21 Nov 2025 08:20:11 +0100
 MIME-Version: 1.0
-References: <20251121054537.25796-1-ansuelsmth@gmail.com> <20251121054537.25796-4-ansuelsmth@gmail.com>
-In-Reply-To: <20251121054537.25796-4-ansuelsmth@gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 21 Nov 2025 13:55:05 +0800
-X-Gm-Features: AWmQ_bmSFIa1l2iBEM2F1Ns2W5B-YvvlaQwgWNVUEBTmTCIap5cAu57a2ztT9KE
-Message-ID: <CAGXv+5HZbB+CeeM7ggCRmxdiyeY-5tXYpLLTyoazEinrLe_jCw@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] ASoC: airoha: Add AFE and machine driver for
- Airoha AN7581
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Cyril Chao <Cyril.Chao@mediatek.com>, Arnd Bergmann <arnd@arndb.de>, 
-	=?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>, 
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, linux-sound@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	upstream@airoha.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/5] mfd: mt6397: Fix formatting of RTC_BBPU_KEY
+ definition
+To: =?UTF-8?B?U2h1bnhpIFpoYW5nICjnq6Dpobrllpwp?=
+ <ot_shunxi.zhang@mediatek.com>, =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?=
+ <eddie.huang@mediatek.com>,
+ "alexandre.belloni@bootlin.com" <alexandre.belloni@bootlin.com>,
+ =?UTF-8?B?VmluY2UtV0wgTGl1ICjlionmlofpvo0p?= <Vince-WL.Liu@mediatek.com>,
+ =?UTF-8?B?SmggSHN1ICjoqLHluIzlrZwp?= <Jh.Hsu@mediatek.com>,
+ Sean Wang <Sean.Wang@mediatek.com>, "conor+dt@kernel.org"
+ <conor+dt@kernel.org>, "robh@kernel.org" <robh@kernel.org>,
+ "lee@kernel.org" <lee@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?U2lyaXVzIFdhbmcgKOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
+References: <20251120121805.6775-1-ot_shunxi.zhang@mediatek.com>
+ <20251120121805.6775-2-ot_shunxi.zhang@mediatek.com>
+ <de26ada1-0d8f-4d3c-a665-091925dd44ce@kernel.org>
+ <b8c4a2420a5f57f4a646ca7abee86a203ac4bf79.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <b8c4a2420a5f57f4a646ca7abee86a203ac4bf79.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251120_215519_745845_EBC0CEB6 
-X-CRM114-Status: GOOD (  25.83  )
+X-CRM114-CacheID: sfid-20251120_232017_509836_8F11DF43 
+X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,209 +135,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 21, 2025 at 1:46=E2=80=AFPM Christian Marangi <ansuelsmth@gmail=
-.com> wrote:
->
-> Add support for the Sound system present on Airoha AN7581 SoC. This is
-> based on the mediatek AFE drivers.
->
-> Also add the machine driver to create an actual sound card for the AFE.
->
-> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> ---
+On 21/11/2025 04:07, Shunxi Zhang (章顺喜) wrote:
+> On Thu, 2025-11-20 at 14:38 +0100, Krzysztof Kozlowski wrote:
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> On 20/11/2025 13:17, ot_shunxi.zhang@mediatek.com wrote:
+>>> From: Shunxi Zhang <ot_shunxi.zhang@mediatek.com>
+>>>
+>>> Adjust the whitespace alignment for the RTC_BBPU_KEY macro
+>>> definition
+>>> in the mt6397 RTC header file. This is a cosmetic change to improve
+>>> code consistency.
+>>
+>> Please don't send such changes line by line.. You have other patches
+>> here doing the same. Organize all such trivial stuff, including for
+>> other drivers not only this one (!!),  in one patch. This is just
+>> churn.
+>>
+>>
+>>
+>> Best regards,
+>> Krzysztof
+> 
+> Dear sir,
+> Execuse me,
+> do you mean we shouldn't make the "formatting changes" a separate
+> patch? This was based on a previous comment: 
 
-[...]
-
-> diff --git a/sound/soc/mediatek/an7581/an7581-wm8960.c b/sound/soc/mediat=
-ek/an7581/an7581-wm8960.c
-> new file mode 100644
-> index 000000000000..5d6c736aa6f2
-> --- /dev/null
-> +++ b/sound/soc/mediatek/an7581/an7581-wm8960.c
-> @@ -0,0 +1,170 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Airoha ALSA SoC I2S platform driver for AN7581
-> + *
-> + */
-> +
-> +#include <linux/module.h>
-> +#include <sound/soc.h>
-> +
-> +#include "an7581-afe-common.h"
-> +
-> +static const struct snd_soc_dapm_widget an7581_wm8960_widgets[] =3D {
-> +       SND_SOC_DAPM_HP("Headphone", NULL),
-> +       SND_SOC_DAPM_MIC("AMIC", NULL),
-> +};
-> +
-> +static const struct snd_kcontrol_new an7581_wm8960_controls[] =3D {
-> +       SOC_DAPM_PIN_SWITCH("Headphone"),
-> +       SOC_DAPM_PIN_SWITCH("AMIC"),
-> +};
-> +
-> +SND_SOC_DAILINK_DEFS(playback,
-> +                    DAILINK_COMP_ARRAY(COMP_CPU("DL1")),
-> +                    DAILINK_COMP_ARRAY(COMP_DUMMY()),
-> +                    DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> +
-> +SND_SOC_DAILINK_DEFS(capture,
-> +                    DAILINK_COMP_ARRAY(COMP_CPU("UL1")),
-> +                    DAILINK_COMP_ARRAY(COMP_DUMMY()),
-> +                    DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> +
-> +SND_SOC_DAILINK_DEFS(codec,
-> +                    DAILINK_COMP_ARRAY(COMP_CPU("ETDM")),
-> +                    DAILINK_COMP_ARRAY(COMP_CODEC(NULL, "wm8960-hifi")),
-> +                    DAILINK_COMP_ARRAY(COMP_EMPTY()));
-> +
-> +static struct snd_soc_dai_link an7581_wm8960_dai_links[] =3D {
-> +       /* FE */
-> +       {
-> +               .name =3D "wm8960-playback",
-> +               .stream_name =3D "wm8960-playback",
-> +               .trigger =3D {SND_SOC_DPCM_TRIGGER_POST,
-> +                           SND_SOC_DPCM_TRIGGER_POST},
-> +               .dynamic =3D 0,
-> +               .playback_only =3D 1,
-> +               SND_SOC_DAILINK_REG(playback),
-> +       },
-> +       {
-> +               .name =3D "wm8960-capture",
-> +               .stream_name =3D "wm8960-capture",
-> +               .trigger =3D {SND_SOC_DPCM_TRIGGER_POST,
-> +                           SND_SOC_DPCM_TRIGGER_POST},
-> +               .dynamic =3D 0,
-> +               .capture_only =3D 1,
-> +               SND_SOC_DAILINK_REG(capture),
-> +       },
-> +       /* BE */
-> +       {
-> +               .name =3D "wm8960-codec",
-> +               .no_pcm =3D 1,
-> +               .dai_fmt =3D SND_SOC_DAIFMT_I2S |
-> +                       SND_SOC_DAIFMT_NB_NF |
-> +                       SND_SOC_DAIFMT_CBC_CFC |
-> +                       SND_SOC_DAIFMT_GATED,
-> +               SND_SOC_DAILINK_REG(codec),
-> +       },
-> +};
-> +
-> +static struct snd_soc_card an7581_wm8960_card =3D {
-> +       .name =3D "an7581-wm8960",
-> +       .owner =3D THIS_MODULE,
-> +       .dai_link =3D an7581_wm8960_dai_links,
-> +       .num_links =3D ARRAY_SIZE(an7581_wm8960_dai_links),
-> +       .controls =3D an7581_wm8960_controls,
-> +       .num_controls =3D ARRAY_SIZE(an7581_wm8960_controls),
-> +       .dapm_widgets =3D an7581_wm8960_widgets,
-> +       .num_dapm_widgets =3D ARRAY_SIZE(an7581_wm8960_widgets),
-> +};
-> +
-> +static int an7581_wm8960_machine_probe(struct platform_device *pdev)
-> +{
-> +       struct device_node *platform_dai_node, *codec_dai_node;
-> +       struct snd_soc_card *card =3D &an7581_wm8960_card;
-> +       struct device_node *platform, *codec;
-> +       struct snd_soc_dai_link *dai_link;
-> +       int ret, i;
-> +
-> +       card->dev =3D &pdev->dev;
-> +
-> +       platform =3D of_get_child_by_name(pdev->dev.of_node, "platform");
-> +
-> +       if (platform) {
-> +               platform_dai_node =3D of_parse_phandle(platform, "sound-d=
-ai", 0);
-> +               of_node_put(platform);
-> +
-> +               if (!platform_dai_node) {
-> +                       dev_err(&pdev->dev, "Failed to parse platform/sou=
-nd-dai property\n");
-> +                       return -EINVAL;
-> +               }
-> +       } else {
-> +               dev_err(&pdev->dev, "Property 'platform' missing or inval=
-id\n");
-> +               return -EINVAL;
-> +       }
-> +
-> +       for_each_card_prelinks(card, i, dai_link) {
-> +               if (dai_link->platforms->name)
-> +                       continue;
-> +               dai_link->platforms->of_node =3D platform_dai_node;
-> +       }
-> +
-> +       codec =3D of_get_child_by_name(pdev->dev.of_node, "codec");
-> +
-> +       if (codec) {
-> +               codec_dai_node =3D of_parse_phandle(codec, "sound-dai", 0=
-);
-> +               of_node_put(codec);
-> +
-> +               if (!codec_dai_node) {
-> +                       of_node_put(platform_dai_node);
-> +                       dev_err(&pdev->dev, "Failed to parse codec/sound-=
-dai property\n");
-> +                       return -EINVAL;
-> +               }
-> +       } else {
-> +               of_node_put(platform_dai_node);
-> +               dev_err(&pdev->dev, "Property 'codec' missing or invalid\=
-n");
-> +               return -EINVAL;
-> +       }
-> +
-> +       for_each_card_prelinks(card, i, dai_link) {
-> +               if (dai_link->codecs->name)
-> +                       continue;
-> +               dai_link->codecs->of_node =3D codec_dai_node;
-> +       }
-> +
-> +       ret =3D snd_soc_of_parse_audio_routing(card, "audio-routing");
-> +       if (ret) {
-> +               dev_err(&pdev->dev, "Failed to parse audio-routing: %d\n"=
-, ret);
-> +               goto err_of_node_put;
-> +       }
-> +
-> +       ret =3D devm_snd_soc_register_card(&pdev->dev, card);
-> +       if (ret) {
-> +               dev_err_probe(&pdev->dev, ret, "%s snd_soc_register_card =
-fail\n", __func__);
-> +               goto err_of_node_put;
-> +       }
-> +
-> +       return 0;
-> +
-> +err_of_node_put:
-> +       of_node_put(platform_dai_node);
-> +       of_node_put(codec_dai_node);
-> +       return ret;
-> +}
-> +
-> +static const struct of_device_id an7581_wm8960_machine_dt_match[] =3D {
-> +       { .compatible =3D "airoha,an7581-wm8960-sound" },
-> +       { /* sentinel */ }
-> +};
-> +MODULE_DEVICE_TABLE(of, an7581_wm8960_machine_dt_match);
-> +
-> +static struct platform_driver an7581_wm8960_driver =3D {
-> +       .driver =3D {
-> +                  .name =3D "an7581-wm8960",
-> +                  .of_match_table =3D an7581_wm8960_machine_dt_match,
-> +       },
-> +       .probe =3D an7581_wm8960_machine_probe,
-> +};
-> +module_platform_driver(an7581_wm8960_driver);
-> +
-> +MODULE_DESCRIPTION("Airoha SoC I2S platform driver for ALSA AN7581");
-> +MODULE_LICENSE("GPL");
-
-This machine driver seems very generic. Maybe you could get away with
-using the audio graph drivers instead? It avoids tying the platform with
-a specific codec just for boilerplate code.
+Fix entire subsystem or multiple drivers not only one line.
 
 
-ChenYu
+Best regards,
+Krzysztof
 
