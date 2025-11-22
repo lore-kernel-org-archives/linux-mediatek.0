@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26C3ACFD2EB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Nov 2025 19:34:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F05DCFD2EC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Nov 2025 19:34:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-Id:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aC/ZMv1bNjW/zf8GrihDCoLrK0spQbT0h6SSzN1TQog=; b=NWanDwS3cq2BuU8FwoLxR6Rnpr
-	4jutikYPki5ETLfZo5MSRp5WDh5FFDHmKiKJuhQ5st0ELvXmKyoAGACGFUOGZYJiGXsrof1E5iaNN
-	LDRTc0+UaVr4Af0PKKBKdFsMBoCFOwUu9CQ4zKxYs0RNc+hJIs7JoDd49LPeqd2H61AbqFU2fC3zZ
-	z+45lMGPodiFUFbXEBGQggab8PBvMznRyqk9wwcyu1azVlinunRI1muVH2B2S080I8TycAjZsbqIL
-	aI2uCg0q2wmuD/KWp48E7PKiON5ZJA0jfWQMuXghlKVa5+hvRNmynH1VJBJRMQKxtwdFy3p5csXm2
-	Tc+tc1Zw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jq/HeBQEdaCCuuIDgy8p2wlxviQxJ4081hF2xP4Evww=; b=OIaPwvS8on8I9qdMMrcgRYkP5n
+	NyG4aZT7ZkiUdZJKvHQz4IY29yBgFDLqP8Kbc0UO0p6BnBW3O5AUV3Yz+1lP135dbrp2yrrb4Vll6
+	u3h9f4bP/9sGjHEJVvl/xNnuTNgaMvYXlFqYcTYIdQdEGc+gOMpiA8Gs+p6yQYSPAuKYXsUqzuLMM
+	2xZ3vxiushsDmqv8L3bZ037+58Pj+j5ToqHOWw2Oto6CPP4b3F5YzKNgCjS8+cZReDyBHR1JBXxBY
+	Dr+GNIxT3jg3mNbTXmOSlwFTvjsitdRzjOz//K9hPwvuWXeUop3l+L+/9iozkBB/bS4ZVKnY0uXTY
+	0EbjexzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMtNC-00000009pQl-0UwL;
-	Sat, 22 Nov 2025 19:34:18 +0000
+	id 1vMtNE-00000009pTl-08GW;
+	Sat, 22 Nov 2025 19:34:20 +0000
 Received: from mail-northeuropeazon11010041.outbound.protection.outlook.com ([52.101.84.41] helo=DB3PR0202CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMtN5-00000009pHB-0hlB;
-	Sat, 22 Nov 2025 19:34:12 +0000
+	id 1vMtN7-00000009pHB-1Jot;
+	Sat, 22 Nov 2025 19:34:14 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=CERt2CnJEC5Ydl3k0kvB4368D1XElsIkod1+sAXGmkbIHkaNTyP3bV3tI/4sTWJVB6ae77Zx3Jyj3E4arkamWhmWPhR4vuWpyRtrc2AEez+cuzlRhxZ/Wu+7Ff5ooXoGcGK8MRc3hObieq0dM+yRkYl6ciAx99EqJU59ldubA8bNugz1uGWFE+GQzHD0pezJ6lSLNoefmsrrwkNAZa+clqT/05Z1jhNBGP5dpqTq5Qv2Bt+Ya0R4VaauqxA2MgREFiqZkcUaP2fNgSze/qbZj+zwBV3dpsMl5wQGbxcuDi0+/CDH27TRoJR91I483ShZOTklXrR3N/ZAGZ0CVvQNgg==
+ b=gu7RwojVZZBsUoT82PLCCo3UQk9QYCpB6tlB2889wS3p1ahsvLAGPAdMYYLTo4PBlu7Iz3s4c4GIgPdZcqNsupjWU0cDkmny3MSPNIpN1e6WSFWrfxfYt1iq4vE9VB2bMq246M4W8qv7Li4iFHQ1PIgUstkPKSr0l2+ja4/NZPE3CmTuACxjoal/oUsPo83/8rSRiekWHf2Dee6UNghIoTL/ZEDg/ovSVjYygp+Y6Re/WfLAVRm5f5nd0n4TvdBKRnl8TsFMWjpHcS4Ldhw9YoxXPFcaX9RkOVo/AW+2+dwITgayG7iUGXO+g1FKiZuZ6gq+E6JKO7TYuHg1iQ+Yjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=aC/ZMv1bNjW/zf8GrihDCoLrK0spQbT0h6SSzN1TQog=;
- b=vI2rOZML1y1mvfEpCcWZlQHz3eOoP2GEgPn2Bhy/fOOas2ENJgyfuX8CMuTKv/AXmI4kIHus8CS4WIfSMcqGKhMcvKKMBrwxD7k+x5h1d9hPU9YBMnbVx8oQYICG61Tqt5sHIdtAK7YV7uT8i8A0M+swi2Ex+EDwm13vy9bwZaklbotcmyId3ijLzIB8yKTyZviGnE0DY/pA4hs/PpRIuIykQDGAew0daeWoVRQ+OYQ8WYNU9RALG8BaWw37LQDTwaHIgExoAcWOt+o/xcbHpJ+9gj0MCCT+SiJAHNPnOORaJXmROckYziETzYQbdL6wQHz2ozSp8Z1s+TezPGBMDQ==
+ bh=jq/HeBQEdaCCuuIDgy8p2wlxviQxJ4081hF2xP4Evww=;
+ b=KstEjcB31/DejCcAYMXa06nWFzrqemuhCqQ82b7BNZGkSet2/hBpeNCewJTOKc4Lh0K6jGxQp+2n0l/IXjDbwf8QYRcW3gJKYnOwcHHr4q7TXlG+W6qwRIFTPTiXf6XT0o6DApaYlc9UCaYpqL03uoWeWVMoLClzcmNUCd3VpgihN8oDQT5ltNjfh1nr/fPqdkxizx5846yOzkVvZCFRzQ6EzDdMBjcWTbonGQG035dpd7/E3e9URVrhM00WaowVOLjTB/vY7TSJCoWfNCoYhy25VtFfyamWGNoyoDISA+bmA8rsfIPbBB1RjfWh8Agax9nxNcLyPgBknCrD2SkFLQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
  header.d=nxp.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=aC/ZMv1bNjW/zf8GrihDCoLrK0spQbT0h6SSzN1TQog=;
- b=cqj73uJD5XFSvSQlRwwcLfCuaKABpyteyMj9q/n04CnRMmr2W0r9P4VGYG7oOOcu8/nvFniiw5UzRQuM9HvMP5chQjLQIUaT/KQEg4iDSKhgceigtCbm8kZfrdPWUdkAVK4IkJgMhulmwpcjj41j3KOuQGFMP2K/pZoFx8eBh2LQbRD3czk9GnKNw62+L9qwpLkM+0RXiAhEPzb2q7kCQTI827F+NMJPAie3FBdThgi6EzD0E9IlxYcqvMTDFj4oKVr2LMn87Yqh03HnJXHDbq0IODfIMWAoS8sWroUkVcDyOThXmdfD6r8V9yeawRSuCViNd+lXDrKaelz27/dTxQ==
+ bh=jq/HeBQEdaCCuuIDgy8p2wlxviQxJ4081hF2xP4Evww=;
+ b=l+ZU8Vqg4Kzad+/BJU4W/MgwGaP+g5DR+19t+juKpLQbnMKh8KFPL/g8ZYGTz9KcZEKZM64eXwLGNoyuNm/cak2a8N+AWqnL+eHK3OFUV5GElQo6JhOzfA9E0T+IGJ0no1U3tuqfGkBhbzRnKL/guVeLXBFEmVw/mYrpAYdy1NkA9i7dsp0zCUkfSCZvpnAIS1DsiXgS13TYH9LT52sn1PZld0o6+8zHEnjKtd415F1T6B8Pog6YgtcEaOepsKI6l6pMi0L5KcUIt8CTJzSrdS7KiVPpqGd7weiiid1lG7I7FNkvVG9uidnU3bQkWei4/4L3MmpkJjzAywj2mu7iwg==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nxp.com;
 Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
  by AS8PR04MB9510.eurprd04.prod.outlook.com (2603:10a6:20b:44a::11) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.15; Sat, 22 Nov
- 2025 19:33:59 +0000
+ 2025 19:34:05 +0000
 Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
  ([fe80::8063:666f:9a2e:1dab]) by AM9PR04MB8585.eurprd04.prod.outlook.com
  ([fe80::8063:666f:9a2e:1dab%5]) with mapi id 15.20.9343.011; Sat, 22 Nov 2025
- 19:33:59 +0000
+ 19:34:05 +0000
 From: Vladimir Oltean <vladimir.oltean@nxp.com>
 To: netdev@vger.kernel.org,
 	devicetree@vger.kernel.org,
@@ -78,110 +78,93 @@ Cc: linux-kernel@vger.kernel.org,
 	=?UTF-8?q?Marek=20Beh=C3=BAn?= <kabel@kernel.org>,
 	Lee Jones <lee@kernel.org>,
 	Patrice Chotard <patrice.chotard@foss.st.com>
-Subject: [PATCH net-next 2/9] dt-bindings: phy-common-props: create a reusable "protocol-names" definition
-Date: Sat, 22 Nov 2025 21:33:34 +0200
-Message-Id: <20251122193341.332324-3-vladimir.oltean@nxp.com>
+Subject: [PATCH net-next 5/9] phy: add phy_get_rx_polarity() and phy_get_tx_polarity()
+Date: Sat, 22 Nov 2025 21:33:37 +0200
+Message-Id: <20251122193341.332324-6-vladimir.oltean@nxp.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251122193341.332324-1-vladimir.oltean@nxp.com>
 References: <20251122193341.332324-1-vladimir.oltean@nxp.com>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-ClientProxiedBy: AM0PR10CA0010.EURPRD10.PROD.OUTLOOK.COM
  (2603:10a6:208:17c::20) To AM9PR04MB8585.eurprd04.prod.outlook.com
  (2603:10a6:20b:438::13)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|AS8PR04MB9510:EE_
-X-MS-Office365-Filtering-Correlation-Id: 45f7c517-1761-41d8-e39a-08de29fe15cb
+X-MS-Office365-Filtering-Correlation-Id: c2f76958-61ae-405a-4128-08de29fe18e8
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|52116014|366016|10070799003|1800799024|19092799006;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?Tm8vbVdUMXkrQU1mYTM1QU5OaEt6ZTJ0Yi81SUVlTUhVUDFSTWNQWS9ObWhF?=
- =?utf-8?B?aG5ibER5TU5nakpMSE9pMjA3RW1LR1dzdm1KejY0ck0wdHh6T1dsallGTjlu?=
- =?utf-8?B?QW5tMDFOdFIrRVVVMkZuQ3ZaZWdrTERaYnhxOEQ1Vmo3NUVNQ1R0RjNNU2ZU?=
- =?utf-8?B?eDRuWCswdTBac1RFbU5tS2htVWFydTlaNmZZVGxYZjJ6NHFVeURCd0cweWg1?=
- =?utf-8?B?dWFIQmk0NGIwd1dKQW5Sa2xLdWliSWc3M2JXU2pCdkQ4VHVNTXVENHppM0Za?=
- =?utf-8?B?NzFlWVBvTlE3bzBzbzgzT3NuZDBxY1ZvVGV4SnFsYmVvNDFnM1F4clRDaGFE?=
- =?utf-8?B?Sm5sTy83MkplcXpub1Q3MnBKYno3bnVrZHdLbUpGQzNPN1VvMUVLaHY5UHE3?=
- =?utf-8?B?MnRLdndkaW1CVU1sVkl2Q3QxQ3oreEpSVXlZdElIajZpRlVKRHJ1UEF5QzFk?=
- =?utf-8?B?L2x3VTlreW5PdGh1UXcyV2pDT0JZZmlyZ1NTNkVGQTBkcHE0akZFWEovNmNZ?=
- =?utf-8?B?aGJNeDhWZ25KYzBvL0ZTN1NlS25MNEQ0bDEyNFZDTzFVR2RZU0VjZ213d2tk?=
- =?utf-8?B?alRvMXRYUGFRSFRnZkpvYkVwWEltamQ4a1lrajhrOG5PQmRmZ3lXVkRLTy9K?=
- =?utf-8?B?UUFIOTdSQTMvMkNXd2tpTlJTcDNvSGNZZkRsVzV3Z0VsWXljOHNnWEROMWg5?=
- =?utf-8?B?OTFqbDg2YkJSZnpwdUdac3dnL3dXakNSSGkrTG05eTJocDRoSm1FcnpwYVZq?=
- =?utf-8?B?NTN3UG40VlZVWFdaWW94VFl3Q1YvaXBYOC9TOXpRS1hoOUUxOWo5K1R5RjJW?=
- =?utf-8?B?VTE3QUs2RCs0YWtSNURSTUU3R2l6WkVmV29IWXJKWkFOaGFaSVY5amxUMWFQ?=
- =?utf-8?B?bk5yc2ZBY0hYc2d1aXdWay9UZnZmRkxnQ2YzRlBwUXBPT05vZVBNQ3IyMndP?=
- =?utf-8?B?NUFVRmt6UGIxMGpmK0ticFBSU2VlR2lyNUJCd0ZxN3B0WE1saExpaG9HZGxy?=
- =?utf-8?B?UzZLSHp6THlCRkpuNVZtR3JEQzdNamZ6M3FpWmRha1VMUElZSmJCTUJLaHBn?=
- =?utf-8?B?MFQvemJOY1BzOEgzZnd3L0w4bVYySWloQ09SMnRMVXkvem04bS9FSjYyT094?=
- =?utf-8?B?cXBxRHJwNHB5Q2I0MzE5dG1tYzY2RlFJZU93clZSc0JPVHQ1NkEraDZPN251?=
- =?utf-8?B?ZE9Qc21kbmUvUFVpTXBlNTkwWWxlTXlXRVV6SGl0L1l5bUZ2QW00SGdNenln?=
- =?utf-8?B?ajJwandhRXdFaTJlVGNKWnl5OEhlWlZvaXI3aUFkWCs3NEhMRUM5U1NCTExW?=
- =?utf-8?B?alErcm9LOGxZOTRnd0N2czRUS1MvWS9QSWZ1dzFpZWVOUDZySzNySU1XWm5H?=
- =?utf-8?B?QWNISm9ZWG5oaHNsbkdGeStXRytDdGFBbFVoR1J2WVZtYVVSbXpuMjJVeS9w?=
- =?utf-8?B?SFVwY0FPbTBORk1QN0I3ZXNJQmdsNkM4VHZmelZ0N3ZJRDZEZXZleXhwNDJt?=
- =?utf-8?B?ZG41U0Z4elFKbkRjYk12OUlabHN6U0ZBYWpuS1c0VDZJc2JUSUZQTnVxa1Rw?=
- =?utf-8?B?OXNYQk42QlZ0NEJtMmp1VVUxRk02SVlrbEIwalkrZUV3SEJucGtmeUVYbUJ1?=
- =?utf-8?B?VE54UEcrdnB2allWMThyMjBmU1g2aGZXcUhvQ0IwVUJwUGpEWGhXd0JYNU5x?=
- =?utf-8?B?ZXg5VGV0TTJ4eHQ5anlhUUMxREYxNlU5MVVXZzhMYnQzRVNhOFhPN0FORTRJ?=
- =?utf-8?B?dWJHbDMzMlZLSjJQYmp1OFNBcDI1c3FGNStTd3FxQTFZMVFCNFFiUURzQkxr?=
- =?utf-8?B?MmdEa3FsS2NRcGNVdUFSUGJLRmQ4YzUzMEhCdTBucEdYQUJ3S0JZOUxKME4r?=
- =?utf-8?B?WHZEVHRMR0plZSswREt3Uk4xZzNYSmx6bGJ2WHl3VklDYkJHM1N2N2VwV1lx?=
- =?utf-8?Q?WsmTHs/Pv/DstxTeP0oUIiXJqlmXen4U?=
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Mqst/QTafdhFXaNp5MGoU6QPFVFZ8wq0sri1AilnFvUFcvAL/0PTarWjksyd?=
+ =?us-ascii?Q?PS2/Pu8aiAdKYPkPIBVYwMz+7StvidSU6j+QXLqGdJq8swEOE+gbzp8xxm5b?=
+ =?us-ascii?Q?9cFzD9oYRjtAwPtuuTNy10t9G0KOjSOmWcbznGhtXeZmq2eAy0TbicYGuIWY?=
+ =?us-ascii?Q?iTeBm1iRbiQZ29K0Agt32ySwd8e5Y1sld2tozBH3/ynYg0yDnOk6J+BDsKRS?=
+ =?us-ascii?Q?TSo9T9Gkh7zVg/TpTR4xRm2Y4ICuU6I+ZFUxmkUSCFflBiBSXG6BQxrI/7Bn?=
+ =?us-ascii?Q?vmpTyyxq5nlcR8x/huz04mP1n0DlMzjw9yKw3Hd6GSwEHLS+ISt4aXOSDCxT?=
+ =?us-ascii?Q?dI9d79IWe016pg4HPRxKTcErsRqfV+f/njYvm6S2Qo9M/5kYOrS4gWKO4H2r?=
+ =?us-ascii?Q?uZZUMaByE2ClD+DTgMVHt8DucKWniMpqePqbwy8ASaFHHxRaOauD0Vvr/Bbr?=
+ =?us-ascii?Q?qwWU4ITE/ZEvG2vcEe6/7UFkGTKEiiqu98avucViN8dgsoPb9C7o7GFJOLJM?=
+ =?us-ascii?Q?QPXPob0SjxYnOksk8su1vNu7RuK7E9xuyl/FHtygrAT8Djp7017cVEyOXfuz?=
+ =?us-ascii?Q?tcUkI83zy1HBj9RDKc06bYyC0XeiJrViC4orqhWJMh0ZrcmNgwhS//mERWJW?=
+ =?us-ascii?Q?sY+JprdC6lv1k3iAvjEQ/uKMkfxoIfI3+94NSUnYFCGN7ETD2lehpe52Gs7G?=
+ =?us-ascii?Q?Z+ndozUYQLUfg4yn1dyDzwD1SMiutsfVMd4DBy6kFjYXorqU8B+dWCLsEko7?=
+ =?us-ascii?Q?nYMv4USRt0BAM+I4gWPz/UHAWIFZ9ndNT+/hOgDbF1QiHtHSs2HsveuC+hv1?=
+ =?us-ascii?Q?95HNN8KLTxOR41mBh8VsXMbnrzSEtSGQ8MrVJG3u3YpZ26G4T7wk8AU22wa1?=
+ =?us-ascii?Q?iFdGY342q3Zqsg+LhU6RTI4SG6hjC/zgi5eUKs1gs1OrIJr6UYYhb9ucR57c?=
+ =?us-ascii?Q?VhRh+y+vEXFj5DUoEZZyRKYRcCLgVWnbPCYCJ3gaFHK371W+1jpmmeVoqbEG?=
+ =?us-ascii?Q?4uiHk7BHDdV0pLLK44f0zPPvyX5k5rmvpmrcjBGPT1gnvAY/wsgLN7P0N0Lt?=
+ =?us-ascii?Q?BbatTCxlwq/HSc7+HRN5V1yK0iguCsg65syVXlD5xU3O+9ZUIk0YDNaV5cHd?=
+ =?us-ascii?Q?OhagamRVbhoP1VB3+Ie6rZfU0mYTKEyEVrUG5n6DnDYaLzCjlPQUMOnDokpb?=
+ =?us-ascii?Q?4KGYsth73ZZvoxEJoXhhxVsYZlfY8vVsW0qFmaPD75R4riItZ2L9fkW9pFJX?=
+ =?us-ascii?Q?CbcvVlqEs9BmWcb5wr6uIXPi0kgLM9ANmZMXrTLoYRNOVs0ShJWdNKQtyTXG?=
+ =?us-ascii?Q?yRz7lFEkQ0194SgEOt7QugSWZ2e8csFgf0IuV/K0v0L/+t5RqzoG6XIHnIK9?=
+ =?us-ascii?Q?ZVyAciP6X3PodKWgdkdvnQ6U5XjsK+K1qRXrhXztW7/du9yP1Du2XovIUADi?=
+ =?us-ascii?Q?2r/JK1VPMrw8rX96XMeS9zbXL956W1hm29WUVlO6XZzm7jT6V2C0bg=3D=3D?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(52116014)(366016)(10070799003)(1800799024)(19092799006);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?OWplWDFRZDEvYUg3RVJ1cWh2YmZKMmd6eVJrUzcxRDFzZjh3bGpteld1WFBl?=
- =?utf-8?B?WDJ2VkVBMW5ZTGxNTzJSWk9pZ3BWR002Zi9Kampmeks5c1Q1b1V0YUU3L1gz?=
- =?utf-8?B?UldsRWZuWmdFaUdkNy9XUnYvekFJeDU0Tyt5ei9XSnQ5WUxYVjQ0Q2tzd21F?=
- =?utf-8?B?QVIwZWtSay9meDlURTlMV2U1S2xLbnptTHFFaE16UjczYjJTVVNXclZ2ekpt?=
- =?utf-8?B?eTRZekMxc0Y4YVZoV3U2NlNIV054MHhDL0hPVFR3OENJNDFReHdDWTBvL1A1?=
- =?utf-8?B?RllBdWpSaHUvbXJaQzhkQm00NTJIWjFiUDhEdmpGckVJYzFXYkltQ1lrVUNz?=
- =?utf-8?B?UWFCQi93SjJicTdZejNLaDJ0NmdTRUlXYkpoSFk4QTEyNHVqS3RvMGhQRjY3?=
- =?utf-8?B?VVp2YXVBSTVRTlRPRjNwUVA2YWl0WDBlOTFYaW5Sem1ldHZ4WnBGVk93eEhm?=
- =?utf-8?B?cFY2L2hnTXZjUVdiUDVwbnpJZ1ZKUGpKQXF1SEk5RFZRZ0U2WEk3MUFkbXdw?=
- =?utf-8?B?Uk5BcldERlJETElpOEExOTAwa0VUSjRZTzlENnYwUUgxSjNzRWd1dnBrdE4r?=
- =?utf-8?B?dXFvcFdINnZLMDJxVDdhWDR2dXNwV3ZpTkpQVGRXdStqRTNZaVhNN0Qvb1cy?=
- =?utf-8?B?WjYyM1FVZEUvYnB2b1pCK05vWFJqem9taldaa3B0OEJhcXRWK2tZTndlZ1N5?=
- =?utf-8?B?NkZpYWswMkFkVUVKdFc2MUgzbTdUWHhtZFFjWXJoODJMNm1xSEdrRkhZa1By?=
- =?utf-8?B?R1JmWFIweFdyN0xsMGNrRURoSUthdUJMZDgyN1RQSmJrS0hvMWJIWFk0OUNl?=
- =?utf-8?B?VVhkbzZRS0psMWlqa1VtVmxBc0lWYTlBWUVhNzh4T1BkMDUyYnBCSHBaSWhr?=
- =?utf-8?B?amcycllaRElJci9SdlJPRFJyVVVlRGNRd2ZRSHBEVmZyMzMwN1lmZ1VjWGZl?=
- =?utf-8?B?aG84aFNMdHcybElhck5YMm8wNEVUYnk3ejRGYTB0NjBjNllLSFJ1WVdLWjZJ?=
- =?utf-8?B?VUY2bzRENlNBeTR1bzN6S2NjOTVUeUZGWmxsN3hLWTEyT2E3SWMrbVFPSlJ6?=
- =?utf-8?B?ZjNUUjNGZFMxQXdxLysvNGJXUjVEM01ONlhnL1V5cHk3MTJNZG1CeDdyRlpL?=
- =?utf-8?B?b3kyb3JPNS9keDNCV3c4bVlBaThBL09tZDNGT0dFWXVQSXV0VVRNOEJCYUo4?=
- =?utf-8?B?Vml1eVVBZVI1Q0U2c09UUmFKa1BjOFB0Vk9WRTZGOXRMS201d3NVUjZ1U25O?=
- =?utf-8?B?ZXcvRkhvdFRqK3RuTXNvb3JRSnk3ZXhHbVFkNlF6UHV3dkdLQk41bDNJS3hR?=
- =?utf-8?B?aVdYdjY2NWtDNlBydE82aitrcmZxZCtyN3BXS1pPbElMcC9lUHQ2U1hIMGJx?=
- =?utf-8?B?TE9heUVFMnZUNE5vNGVZaFJ2ZnBrYTJkbXV1UVgvcWs3TmlJVXA5WURBR1dU?=
- =?utf-8?B?V1BTRytEdmR0MlAvU3FQUmpzdldiOG9wRDM3R2MwY0FzUm5ubEl0MzdIa3lx?=
- =?utf-8?B?cUlpV2Vhb2htU1hreE9sM2lmekZHSnhsMThNT3o4Y1liN2cyUFNuUmZTWnc2?=
- =?utf-8?B?WDYyVXhPdVFscjBtMmtUMEpwcVl4UkMySXIwejkrTUU1WXdxdDhHTkhTa3Fz?=
- =?utf-8?B?Q1E0OTRLR1pPVE9UYWxTcTlzNzdUK3FYRWRVbVBmNExaREp5SjU5SnRkY3RT?=
- =?utf-8?B?TCtSU0FwT1NoTHU2Q3lmTmc1OUxuY2x3VDZaV1VzWnE1aEkrZTNtRld6Y1FQ?=
- =?utf-8?B?My9USDJReDN2T2JWd2RBNkRpa3NzUnBLTE1BUUF0RzlpRjZCbjdEajFwNE5r?=
- =?utf-8?B?R1NjNTdVbGx0TkI2K3Nkc09kdmxBM1ZFV1ZVZldRM1RNcWNiM3VNUENLSGRt?=
- =?utf-8?B?S2dSenhkakIxdVlDMTRlNW50QUZWRzVOZWtDZnB1c1pvRmIxQ3N3bVorUVAx?=
- =?utf-8?B?T09ZVlVmb2F0R2UxalFzNml0eFpiQit3dzZiOFZWa3JqSXVBdlp4WC82MFMx?=
- =?utf-8?B?QlRyYTRRQ0wzRUF5Q2dtemR1RG1NQUoyQUw1RzBQVkVmUTZ0cHR0U2U5MnRo?=
- =?utf-8?B?L1FSaVlEYndRam1MSmxrWjlOODgySkZqQVhneG16Q3NiSlE2NkJjdVVFUHM0?=
- =?utf-8?B?QTlLcE1VcmRlQkVsbkM3aDdkaE1ma3pLQUJ5TFlKYyt1QmJGV3lTZVErWWVs?=
- =?utf-8?Q?Ax9hRcJWtuqlCtRG7jQrB/8=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?1M9hfcc5xAoTn21Z1yK9OWqGVhq8qUUudWwivpwdzEH2lnEGoN9heNkGF5RD?=
+ =?us-ascii?Q?zKDULOFS1JBHxVqlOPUu11GpXDBLJIjIQc+jdfXGzl+8Zw3T8A2X8qvBOXVy?=
+ =?us-ascii?Q?5kqfq0MFJ40iiQlfX6HTTkSzQVLPQnznnzNhgwywelYZ4F4nlVD6d+sPrJfm?=
+ =?us-ascii?Q?F8DvP2OBZOkvN2m/gsdHl6oyLwe94NE7nTqYm6+4bL9EDMIV0dpxczoKI2pQ?=
+ =?us-ascii?Q?qsyFx9MpS0sXcKn7PVRvLC4J9TWUjLg7NZLHq6++hKDI+/g7pK/yEzz4LcAM?=
+ =?us-ascii?Q?rOnQud5S6s3tTZa4CyuFVmR9q1zoAzhDVfCB/iY5cEf5YtDyrTMVCW5nG6UG?=
+ =?us-ascii?Q?Rt9Oo7KteuvKF/YZybsniocm+lkSJjClCDvsDLGPkamMFyfwnNOGTOEazIOO?=
+ =?us-ascii?Q?AZCi9GqnEGvFvXUsQR4DtM/CvYZNxilATTEqO98jbyUXz+mtjoKKWUhVsJ7v?=
+ =?us-ascii?Q?pA0eXtP3LavbdbgCFkTeTrcoUZwKT0ziUe34+Z9WlliI+4mQYCju7QqitZNC?=
+ =?us-ascii?Q?XVd7W6t3JvBQBIZ4ipduX+68opv1GYq6ET4Al//DdEwQ332rFIEA2/WXUEQN?=
+ =?us-ascii?Q?Fg9vqjtiIPVelyd52STTKmqR2FfKp1MompQbPaVrSpdY8rtOIOgsVNIf8B3L?=
+ =?us-ascii?Q?Ee2OJDemm9lE98jb7H700suwJGSeBpaPgdnmvpMAEPBrlxvCQFf7QxrxodcN?=
+ =?us-ascii?Q?ld1LEEz1tbsogyiNZ/P57NjahsOTnSBEQQ4x19R4+wHPN2m1d2KL4UcA6qsK?=
+ =?us-ascii?Q?J7CMv0jgP1ecqRY8VLlMb70EKcOn6g0uSSDspRFfV9Nxnl17hSI17O1JACng?=
+ =?us-ascii?Q?kEplOc/WT+AVA5eYvBBZpV5HNQ616dTW7oYX9iE8VWPrP8RFqYyN8687xnTk?=
+ =?us-ascii?Q?7m1W0Pqit5zwGldU8lmuIPQKVsjPwUXL2r2cAwpPLddlqlNIgHp1TIm6CsE2?=
+ =?us-ascii?Q?XJ2JOG988UZ+uLDyKjSNpO/c91bhomQV9GCmRywUdrB/UQsUAGCaKk2i2LhU?=
+ =?us-ascii?Q?dkhush9fx1Ghovt8+jxlNR3CHcfLqQZxBll7nHQ5nMvwrLZOHAo69GwXDTo/?=
+ =?us-ascii?Q?1x+MVh8rg+gL1IswUno/u02qkqPozvgi4jnXLHNm2MnhSz9PovbAw4BJbD5j?=
+ =?us-ascii?Q?K2j0Q8SnbIuwtEI51+7bEzQu7AoSzfRlJbknPWWE2PYQNKT/DokC8TEs1KAb?=
+ =?us-ascii?Q?q04k+5Pz1x5M4EZXuuWeeEMgpcvYOs6EkFy5wYiEyUYFR0cI/vYW+IRCMqM/?=
+ =?us-ascii?Q?ezuE8vqvtxdr66uV3hCIp7GQHzdcKKMLJB27aYbc6I/0KjNg/JUH26vuP7yL?=
+ =?us-ascii?Q?iTNGnObHx2eLG/W/AKbE4+XrFDa3HzUrTJDl8dpx+Ohw6f+Y1V5GS5axGXDu?=
+ =?us-ascii?Q?4eKF/R/XOYOfzSceR9qbafzDY94MQxHeAci/s5EQJhU3doPtkq3zwYtQWBcY?=
+ =?us-ascii?Q?62eLECKmGEZlWw8o20ccolSeqN1t/o9QxIZqeGZksfWeju59qDICo5n1LUG0?=
+ =?us-ascii?Q?mcXfUKWsi8tcYsxQqhMeRQEniJWhP4NuUb/OOJrEFnBWKBmcnntAOCS8Uh4L?=
+ =?us-ascii?Q?XmyXw/vvqZXwtrMokXF6HhSqI5E76IdqI8FPShidfBjY5leBCdRYCnJGt0U2?=
+ =?us-ascii?Q?ofZ3TnnSju95JncXjbf0J04=3D?=
 X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 45f7c517-1761-41d8-e39a-08de29fe15cb
+X-MS-Exchange-CrossTenant-Network-Message-Id: c2f76958-61ae-405a-4128-08de29fe18e8
 X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Nov 2025 19:33:59.8635
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Nov 2025 19:34:05.1145
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /4ar3aX0pFz8af38iADLW5yPZ33YpWeRVO5fyZMQtiDGxuGcoLIB4RLpfNkiq1wzqf4lwdCoi9QUTHxOpnbfdw==
+X-MS-Exchange-CrossTenant-UserPrincipalName: PZEGcNHnJ1A62VNTnMLWH7tQ//41/iAqpS0WutCiOFCyKRWNx6huO+xPwoIPC9kNYXgHD0wMJIqUveKzdPqmvQ==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB9510
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251122_113411_218636_241F3BDE 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20251122_113413_370211_5F7E3B2F 
+X-CRM114-Status: GOOD (  23.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -196,68 +179,251 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Other properties also need to be defined per protocol than just
-tx-p2p-microvolt-names. Create a common definition to avoid copying a 55
-line property.
+Add helpers in the generic PHY folder which can be used using 'select
+GENERIC_PHY_COMMON_PROPS' from Kconfig, without otherwise needing to
+enable GENERIC_PHY.
+
+These helpers need to deal with the slight messiness of the fact that
+the polarity properties are arrays per protocol, and with the fact that
+there is no default value mandated by the standard properties, all
+default values depend on driver and protocol (PHY_POL_NORMAL may be a
+good default for SGMII, whereas PHY_POL_AUTO may be a good default for
+PCIe).
+
+Push the supported mask of polarities to these helpers, to simplify
+drivers such that they don't need to validate what's in the device tree
+(or other firmware description).
+
+The proposed maintainership model is joint custody between netdev and
+linux-phy, because of the fact that these properties can be applied to
+Ethernet PCS blocks just as well as Generic PHY devices. I've added as
+maintainers those from "ETHERNET PHY LIBRARY", "NETWORKING DRIVERS" and
+"GENERIC PHY FRAMEWORK".
 
 Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 ---
- .../bindings/phy/phy-common-props.yaml        | 34 +++++++++++--------
- 1 file changed, 19 insertions(+), 15 deletions(-)
+ MAINTAINERS                          |  21 +++++
+ drivers/phy/Kconfig                  |   9 +++
+ drivers/phy/Makefile                 |   1 +
+ drivers/phy/phy-common-props.c       | 117 +++++++++++++++++++++++++++
+ include/linux/phy/phy-common-props.h |  20 +++++
+ 5 files changed, 168 insertions(+)
+ create mode 100644 drivers/phy/phy-common-props.c
+ create mode 100644 include/linux/phy/phy-common-props.h
 
-diff --git a/Documentation/devicetree/bindings/phy/phy-common-props.yaml b/Documentation/devicetree/bindings/phy/phy-common-props.yaml
-index 255205ac09cd..775f4dfe3cc3 100644
---- a/Documentation/devicetree/bindings/phy/phy-common-props.yaml
-+++ b/Documentation/devicetree/bindings/phy/phy-common-props.yaml
-@@ -13,22 +13,12 @@ description:
- maintainers:
-   - Marek Behún <kabel@kernel.org>
+diff --git a/MAINTAINERS b/MAINTAINERS
+index e9a8d945632b..658feb06cc29 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -10445,6 +10445,27 @@ T:	git git://git.kernel.org/pub/scm/linux/kernel/git/arnd/asm-generic.git
+ F:	include/asm-generic/
+ F:	include/uapi/asm-generic/
  
--properties:
--  tx-p2p-microvolt:
-+$defs:
-+  protocol-names:
-     description:
--      Transmit amplitude voltages in microvolts, peak-to-peak. If this property
--      contains multiple values for various PHY modes, the
--      'tx-p2p-microvolt-names' property must be provided and contain
--      corresponding mode names.
--
--  tx-p2p-microvolt-names:
--    description: |
--      Names of the modes corresponding to voltages in the 'tx-p2p-microvolt'
--      property. Required only if multiple voltages are provided.
--
--      If a value of 'default' is provided, the system should use it for any PHY
--      mode that is otherwise not defined here. If 'default' is not provided, the
--      system should use manufacturer default value.
-+      Names of the PHY modes. If a value of 'default' is provided, the system
-+      should use it for any PHY mode that is otherwise not defined here. If
-+      'default' is not provided, the system should use manufacturer default value.
-     minItems: 1
-     maxItems: 16
-     items:
-@@ -89,6 +79,20 @@ properties:
-         - mipi-dphy-univ
-         - mipi-dphy-v2.5-univ
- 
-+properties:
-+  tx-p2p-microvolt:
-+    description:
-+      Transmit amplitude voltages in microvolts, peak-to-peak. If this property
-+      contains multiple values for various PHY modes, the
-+      'tx-p2p-microvolt-names' property must be provided and contain
-+      corresponding mode names.
++GENERIC PHY COMMON PROPERTIES
++M:	Andrew Lunn <andrew@lunn.ch>
++M:	"David S. Miller" <davem@davemloft.net>
++M:	Eric Dumazet <edumazet@google.com>
++M:	Heiner Kallweit <hkallweit1@gmail.com>
++M:	Jakub Kicinski <kuba@kernel.org>
++M:	Kishon Vijay Abraham I <kishon@kernel.org>
++M:	Paolo Abeni <pabeni@redhat.com>
++R:	Russell King <linux@armlinux.org.uk>
++M:	Vinod Koul <vkoul@kernel.org>
++L:	linux-phy@lists.infradead.org
++L:	netdev@vger.kernel.org
++S:	Maintained
++Q:	https://patchwork.kernel.org/project/linux-phy/list/
++Q:	https://patchwork.kernel.org/project/netdevbpf/list/
++T:	git git://git.kernel.org/pub/scm/linux/kernel/git/netdev/net.git
++T:	git git://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git
++T:	git git://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git
++F:	Documentation/devicetree/bindings/phy/phy-common-props.yaml
++F:	drivers/phy/phy-common-props.c
 +
-+  tx-p2p-microvolt-names:
-+    description:
-+      Names of the modes corresponding to voltages in the 'tx-p2p-microvolt'
-+      property. Required only if multiple voltages are provided.
-+    $ref: "#/$defs/protocol-names"
-+
- dependencies:
-   tx-p2p-microvolt-names: [ tx-p2p-microvolt ]
+ GENERIC PHY FRAMEWORK
+ M:	Vinod Koul <vkoul@kernel.org>
+ M:	Kishon Vijay Abraham I <kishon@kernel.org>
+diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+index 678dd0452f0a..479986434086 100644
+--- a/drivers/phy/Kconfig
++++ b/drivers/phy/Kconfig
+@@ -16,6 +16,15 @@ config GENERIC_PHY
+ 	  phy users can obtain reference to the PHY. All the users of this
+ 	  framework should select this config.
  
++config GENERIC_PHY_COMMON_PROPS
++	bool
++	help
++	  Generic PHY common property parsing.
++
++	  Select this from consumer drivers to gain access to helpers for
++	  parsing properties from the
++	  Documentation/devicetree/bindings/phy/phy-common-props.yaml schema.
++
+ config GENERIC_PHY_MIPI_DPHY
+ 	bool
+ 	select GENERIC_PHY
+diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
+index bfb27fb5a494..d07accc15086 100644
+--- a/drivers/phy/Makefile
++++ b/drivers/phy/Makefile
+@@ -4,6 +4,7 @@
+ #
+ 
+ obj-$(CONFIG_GENERIC_PHY)		+= phy-core.o
++obj-$(CONFIG_GENERIC_PHY_COMMON_PROPS)	+= phy-common-props.o
+ obj-$(CONFIG_GENERIC_PHY_MIPI_DPHY)	+= phy-core-mipi-dphy.o
+ obj-$(CONFIG_PHY_CAN_TRANSCEIVER)	+= phy-can-transceiver.o
+ obj-$(CONFIG_PHY_LPC18XX_USB_OTG)	+= phy-lpc18xx-usb-otg.o
+diff --git a/drivers/phy/phy-common-props.c b/drivers/phy/phy-common-props.c
+new file mode 100644
+index 000000000000..4c9dca98d23f
+--- /dev/null
++++ b/drivers/phy/phy-common-props.c
+@@ -0,0 +1,117 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/*
++ * phy-common-props.c  --  Common PHY properties
++ *
++ * Copyright 2025 NXP
++ */
++#include <linux/export.h>
++#include <linux/fwnode.h>
++#include <linux/phy/phy-common-props.h>
++#include <linux/printk.h>
++#include <linux/property.h>
++#include <linux/slab.h>
++
++static int phy_get_polarity_for_mode(struct fwnode_handle *fwnode,
++				     const char *mode_name,
++				     unsigned int supported,
++				     unsigned int default_val,
++				     const char *polarity_prop,
++				     const char *names_prop)
++{
++	int err, n_pols, n_names, idx = -1;
++	u32 val, *pols;
++
++	if (!fwnode)
++		return default_val;
++
++	n_pols = fwnode_property_count_u32(fwnode, polarity_prop);
++	if (n_pols <= 0)
++		return default_val;
++
++	n_names = fwnode_property_string_array_count(fwnode, names_prop);
++	if (n_names >= 0 && n_pols != n_names) {
++		pr_err("%pfw mismatch between \"%s\" and \"%s\" property count (%d vs %d)\n",
++		       fwnode, polarity_prop, names_prop, n_pols, n_names);
++		return -EINVAL;
++	}
++
++	if (mode_name)
++		idx = fwnode_property_match_string(fwnode, names_prop, mode_name);
++	if (idx < 0)
++		idx = fwnode_property_match_string(fwnode, names_prop, "default");
++	/*
++	 * If the mode name is missing, it can only mean the specified polarity
++	 * is the default one for all modes, so reject any other polarity count
++	 * than 1.
++	 */
++	if (idx < 0 && n_pols != 1) {
++		pr_err("%pfw \"%s \" property has %d elements, but cannot find \"%s\" in \"%s\" and there is no default value\n",
++		       fwnode, polarity_prop, n_pols, mode_name, names_prop);
++		return -EINVAL;
++	}
++
++	if (n_pols == 1) {
++		err = fwnode_property_read_u32(fwnode, polarity_prop, &val);
++		if (err)
++			return err;
++
++		return val;
++	}
++
++	/* We implicitly know idx >= 0 here */
++	pols = kcalloc(n_pols, sizeof(*pols), GFP_KERNEL);
++	if (!pols)
++		return -ENOMEM;
++
++	err = fwnode_property_read_u32_array(fwnode, polarity_prop, pols, n_pols);
++	if (err == 0) {
++		val = pols[idx];
++		if (!(supported & BIT(val))) {
++			pr_err("%pfw mismatch between '%s' and '%s' property count (%d vs %d)\n",
++			       fwnode, polarity_prop, names_prop, n_pols, n_names);
++			err = -EOPNOTSUPP;
++		}
++	}
++
++	kfree(pols);
++
++	return (err < 0) ? err : val;
++}
++
++/**
++ * phy_get_rx_polarity - Get RX polarity for PHY differential lane
++ * @fwnode: Pointer to the PHY's firmware node.
++ * @mode_name: The name of the PHY mode to look up.
++ * @supported: Bit mask of PHY_POL_NORMAL, PHY_POL_INVERT and PHY_POL_AUTO
++ * @default_val: Default polarity value if property is missing
++ *
++ * Return: One of PHY_POL_NORMAL, PHY_POL_INVERT or PHY_POL_AUTO on success, or
++ *	   negative error on failure.
++ */
++int phy_get_rx_polarity(struct fwnode_handle *fwnode, const char *mode_name,
++			unsigned int supported, unsigned int default_val)
++{
++	return phy_get_polarity_for_mode(fwnode, mode_name, supported,
++					 default_val, "rx-polarity",
++					 "rx-polarity-names");
++}
++EXPORT_SYMBOL_GPL(phy_get_rx_polarity);
++
++/**
++ * phy_get_tx_polarity - Get TX polarity for PHY differential lane
++ * @fwnode: Pointer to the PHY's firmware node.
++ * @mode_name: The name of the PHY mode to look up.
++ * @supported: Bit mask of PHY_POL_NORMAL and PHY_POL_INVERT
++ * @default_val: Default polarity value if property is missing
++ *
++ * Return: One of PHY_POL_NORMAL or PHY_POL_INVERT on success, or negative
++ *	   error on failure.
++ */
++int phy_get_tx_polarity(struct fwnode_handle *fwnode, const char *mode_name,
++			unsigned int supported, unsigned int default_val)
++{
++	return phy_get_polarity_for_mode(fwnode, mode_name, supported,
++					 default_val, "tx-polarity",
++					 "tx-polarity-names");
++}
++EXPORT_SYMBOL_GPL(phy_get_tx_polarity);
+diff --git a/include/linux/phy/phy-common-props.h b/include/linux/phy/phy-common-props.h
+new file mode 100644
+index 000000000000..0b8ba76e2a15
+--- /dev/null
++++ b/include/linux/phy/phy-common-props.h
+@@ -0,0 +1,20 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/*
++ * phy-common-props.h -- Common properties for generic PHYs
++ *
++ * Copyright 2025 NXP
++ */
++
++#ifndef __PHY_COMMON_PROPS_H
++#define __PHY_COMMON_PROPS_H
++
++#include <dt-bindings/phy/phy.h>
++
++struct fwnode_handle;
++
++int phy_get_rx_polarity(struct fwnode_handle *fwnode, const char *mode_name,
++			unsigned int supported, unsigned int default_val);
++int phy_get_tx_polarity(struct fwnode_handle *fwnode, const char *mode_name,
++			unsigned int supported, unsigned int default_val);
++
++#endif /* __PHY_COMMON_PROPS_H */
 -- 
 2.34.1
 
