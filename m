@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46EC3CFD2EC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Nov 2025 19:34:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 824CACFD2EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Nov 2025 19:34:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OStEHuJMYBQf/tt8dnuVJ820gtXuQtSGdNd1q0YiEho=; b=iEihBDtbtIPKdWiZdupMyIKyVv
-	5b919/Y/+vOmvqXP7dw/26LHzkiEFFMMePFbS21kNZciAIF78iQ5KY8ILYuRA4ox0bn5BROwWecG6
-	b9ou+WxJ7OlaKNJa5GC8T/MDrwVqtgSiLsG5y8eR+mtxR2n2Yukkbm/GfIBzcc21n3QCmV5szn5Ve
-	x2zrWcd12nqUrceKU3TU/dtrCtRw8Q7dDug2Yz/i2mKn9ADiEhDxEBtWXw030EsCfdVCxqQdVL09Y
-	IPOKm8rVNUqiCpTMU1ZBjPUh9cPXER/hYJ6wDd0e78I6VrObjU8Qdap1LjZo466d6lMSCaimjxyW8
-	ZVSt+OLA==;
+	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YlR2F1LELL7j3sexgwZSKeMDc4U/MCXA8ZeAhv9CrA4=; b=O0Fvd69ITEjDYoDvszod+f7am3
+	xXtN0wCBMNmHgwSsbc7esd97SPV42fM8U53xCAZDU9ibfYo6DmWbG5R3UQNoJgEjgM7G1AcqtgzM7
+	bQePviBMKDEwGUlqA3PqT3YGprKrkv/Hy6O6nnznvJh+0IBZX87FwGqJbAgKQFbYG1cb1vGtu3N5Y
+	l7JyMNxLkVhKRDWYF4kis+UrG/x65qOuFa4qtVFLEyg5uXHWfpjdueTW/jzwWrjX4Xz2bygG9G0vw
+	VSWeaaR7O3Jt4K1LK+KaMTGIpbfJj0N/31YVI6UlUIr4rM6S1LN+AkOF3V3SfsJvsZRciLF6EeDIH
+	N/2B4B4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMtN2-00000009pGi-0lfi;
-	Sat, 22 Nov 2025 19:34:08 +0000
+	id 1vMtN8-00000009pM5-1fPt;
+	Sat, 22 Nov 2025 19:34:14 +0000
 Received: from mail-francecentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20a::7] helo=PA4PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMtMz-00000009pG0-1BDT;
-	Sat, 22 Nov 2025 19:34:06 +0000
+	id 1vMtN3-00000009pG0-1TaB;
+	Sat, 22 Nov 2025 19:34:10 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=FYxKFFhEeirVXXn/Yf0m634nWFywNq8jNw2PmaRAwMsdyN7ftU+SLYftSK86KGe8+DSrf/0Aq6E9/NhPFdU8nsrCiBarbRPvDYnGWVSp5QDxFXhLC8eFKJLCXzKoLc2urzW+VXp8zDs0JF1e4UCykuZ2Bvj04QnKYdCW5N525UNXmCPZ2ufndgTpx4ORdu8U6nyrvrrKgWOBbGvvVzTYioxhONXzYuQAUVPaDholyWacZmxHeFeGXoxgCY5pgRvsDBa36s08xHYANJbd2HCpy1ffLpKz3kjg55zFsWjLMReDFmbs9vCx2mfKa0GXWtLCrEL2xxS9L6/0NPAgX1bvzA==
+ b=AsCqefdR2kur+g1MxQI9b4rshLpSTorWFqtiY1+9WXdtD3TdB2e6c2+MLlzCKWiYBv8JXGoMQwwM6Kc0FB+wbGabg0iZTrdLmpOxeb7/zWm8PsmFqITErWlAFRajIOdZjxIx3X/vf77JNAja/bt3gnU4rqZiS/xMT5qvgf53k0KMp1JH4S5R4wo5wFIj3XwLUC1VpGv2NvqyXfM253tyY1snSIkr1+j3efq1K+tdzCuscMAY/YREpuKQ2YJZeBvnmukUb9vpycA/rjtVvBMfVegTPTT/1MnkeQeaxYUeiqhGoRMzIl/lv+6bE2szXH5/PUUyeuiQBJRv6l87QGdfGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OStEHuJMYBQf/tt8dnuVJ820gtXuQtSGdNd1q0YiEho=;
- b=UQjUMME4/w8AnF8dSDMI2yZasQ7DHP78V7GvQU2vTOn+k0TYxG1HAa93JGRC2HsEZje42sjAk3lKLCzKe+mEkLHJIDhKwm2Sw4aNyB/cpnq2nXa5AfLSMcBl+svOT5X3mgFm4+i4WFy2jFguDX8/aUI3SacwpPGpR+VvVMlwN5nAJBf+Fbm1kHso3xwiPq5CtIvV+wUY8Pa/DnSYQg7UNUa/N3x9kjVIPSE2X1eTkYnFL/2UVIbJsvPoWXYJJ1hldZtmG+DJak4bCvbwdhqJvE+q9ZKruxLY5HaYpnpEOkzbcvt7OLbE9XqMPcgpywXyypCmBRnMiic02puCcpM6sQ==
+ bh=YlR2F1LELL7j3sexgwZSKeMDc4U/MCXA8ZeAhv9CrA4=;
+ b=tIFFAi18IYi2QLskawdbBYIalTjv/JdxCsfINXElJhMeAdaNOS8DcBncXbzBj9nbBT/+sMDlMzrt4CTGsubJkNlRiIDOVcJr0zzbybdIFHUDcbQ+Dci1c/pWej77Mg22/xfA5cpWpgfzVXbJgWPLlLvsT/J2eQQ+pcjYCxaHVfajRQHEa5GKZQh1yO+sBaHIpeoVsZB59O/ot5+LnNr9ckaeuwf1WrAxe9AXqH5E/mgIlBZK+5iAAr+TvTjwGPsRPA2TfRUrJ4olPjJeUnKPbiQEeQfP1bmoDuBxHvyMIWWmUAfkYkljK0s6MPfide8ryQAn7eZlSfYDBRuQpFXBYw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
  header.d=nxp.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OStEHuJMYBQf/tt8dnuVJ820gtXuQtSGdNd1q0YiEho=;
- b=fF5Fg9WrKD3fGe881yXfdaWsXhvok9x4x0twR4RDe2twj2c+0m45SylJ51YJ7IKWSz6SG3jQn6v8p5lJLA+i8boU+KSj1xogEVWyYKfuQ0IKkMhLh6Qc/rW0ZtAzIt+O0/ON/M8X+CV3tojTgx++vXrTjnmqcuAKHG4A18SY2Z7UUJYbW4rzWNU0USkAc6nKc31XY08VwXq8lEG7kn2437qf191AWcmSManMUZcsC/eiYpjognMaQRrvsM4qjy5WQjZ2eyJi705rZiBnqBjX7HkNJCE70bM41SF9ocmk83ZylS6s08mjABF0Q/3lps6xGpnPNS3KQlDEpxMEwOKkHw==
+ bh=YlR2F1LELL7j3sexgwZSKeMDc4U/MCXA8ZeAhv9CrA4=;
+ b=mpMcsdnVPMINruP03v6olDO7dD7cxE3ACkU0aWCEH5rdT895QbgeiT6FRBOjB53Tm7eDLw01L/t0if0uLHSdLlUnsyQP1AsHW7malrwlc5mWqY3oiK2p2/jhH4hGehqn+A0SLfAZC5UZ4oNwAeTloIgdnDioIrl10u4KLcjYDUnIVU4nBjpCSiuBF4fdlAB7bzZ2Oywj0k13M3pMMuk0+mcQuAiOoaYU02GjlRtX47/diFIlAuj/VflyEVNjLjNjb1IQ/65zE5Ex0toYlJY1BCUoVmofgYMU3BYGCFV114/G5Ftjd/7pw8XKTkm+K9R64x1lpZ0ca87gMfXWKPdaJw==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nxp.com;
 Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
  by AS8PR04MB9510.eurprd04.prod.outlook.com (2603:10a6:20b:44a::11) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.15; Sat, 22 Nov
- 2025 19:33:56 +0000
+ 2025 19:34:01 +0000
 Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
  ([fe80::8063:666f:9a2e:1dab]) by AM9PR04MB8585.eurprd04.prod.outlook.com
  ([fe80::8063:666f:9a2e:1dab%5]) with mapi id 15.20.9343.011; Sat, 22 Nov 2025
- 19:33:56 +0000
+ 19:34:01 +0000
 From: Vladimir Oltean <vladimir.oltean@nxp.com>
 To: netdev@vger.kernel.org,
 	devicetree@vger.kernel.org,
@@ -78,10 +78,12 @@ Cc: linux-kernel@vger.kernel.org,
 	=?UTF-8?q?Marek=20Beh=C3=BAn?= <kabel@kernel.org>,
 	Lee Jones <lee@kernel.org>,
 	Patrice Chotard <patrice.chotard@foss.st.com>
-Subject: [PATCH net-next 0/9] XPCS polarity inversion via generic device tree properties
-Date: Sat, 22 Nov 2025 21:33:32 +0200
-Message-Id: <20251122193341.332324-1-vladimir.oltean@nxp.com>
+Subject: [PATCH net-next 3/9] dt-bindings: phy-common-props: RX and TX lane polarity inversion
+Date: Sat, 22 Nov 2025 21:33:35 +0200
+Message-Id: <20251122193341.332324-4-vladimir.oltean@nxp.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20251122193341.332324-1-vladimir.oltean@nxp.com>
+References: <20251122193341.332324-1-vladimir.oltean@nxp.com>
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-ClientProxiedBy: AM0PR10CA0010.EURPRD10.PROD.OUTLOOK.COM
@@ -90,79 +92,79 @@ X-ClientProxiedBy: AM0PR10CA0010.EURPRD10.PROD.OUTLOOK.COM
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|AS8PR04MB9510:EE_
-X-MS-Office365-Filtering-Correlation-Id: a1404424-b226-4208-4388-08de29fe1375
+X-MS-Office365-Filtering-Correlation-Id: c9d7ddb0-8cb8-453b-9c96-08de29fe16d3
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|52116014|366016|10070799003|1800799024|19092799006;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?l9OSp2ClcOExMB6NU5PbJMWlEnmHY3ZY4/eXqr0wRdoaRxoYpSqPuj7yflJB?=
- =?us-ascii?Q?2gprwOmmtfx4rcHnYk2raMybU2xuvcbuIjSHWf9AzVj3ogxwMjuveRf7Fkqc?=
- =?us-ascii?Q?M0CoU70HGwvPplB6fK+GsECuirEB7IryKNVLFy4Dfl1WcKe5MImYEcN1DoRC?=
- =?us-ascii?Q?Xd5N7rol2fku2shW1Imstnceg4Jrjy5gguqUxx82zzMmRcMwYV9Qbbaoxgf2?=
- =?us-ascii?Q?1jeLuwUwmH6NjGtHJRefjFRcYVt4BRGoMSdynd/F8T/5cmPQJYWAO5179TDx?=
- =?us-ascii?Q?OpfGtdHK8uXOq8rI292cFXDs0D6oDwHbwKIRsQUfjyTsVABvnU5T2fh+uXlR?=
- =?us-ascii?Q?ToXmMmovvMF2mGxUNTWjLMsE9BygWMWJhDiaUi5gmz9+Hdr8is83RqaMI9o+?=
- =?us-ascii?Q?L/J8NuP1vejprBO/HDARKyqU5ldrGIEI5eqL2r7jJi5qDECsOD4Au65I8Awr?=
- =?us-ascii?Q?Hk3MgOB2+DIHoSv3gzGvYXw1NEXxaMc0TWrj3DOuj6wQLj5BIWvfcOaSjZlp?=
- =?us-ascii?Q?5f7jQbzcfNgBRg5OjIOgpKLg4hU9UjrAoetEHkhZ6r5Os1nfjP+GPJWN678B?=
- =?us-ascii?Q?h5aMkilU+c71X6XKwHIyLrBloI6f5NtRyp16+cR4p8dCxldHPkJ4gr/1qYRC?=
- =?us-ascii?Q?ouLuLXYtR27zbZVH743TsvtUVVzzw9yaHeN2nWCx8BXGWx0kqi9OPzoD8/qw?=
- =?us-ascii?Q?ELN2EX9qTUcWpmsTHrF0KXCafT0FpHx6Sak/WnkM17h6qTDZgnFcGhvjkTN+?=
- =?us-ascii?Q?Zxmgw4uBRT6pP+nSC6XQwpjnqXGPTe9tplTHG/nfFvz13pzUczfMdnA1XcaV?=
- =?us-ascii?Q?HIdN/L+O+PyBykgnSZcM2A5CMwETRas1ubJj58SrAFnChRdO0S4pkAT2zcdY?=
- =?us-ascii?Q?+bVbfOLf/L+pRULm6L+/nz1l81ux8OmhGpnNdnzn6bWzlt6v74qwQslt0X0p?=
- =?us-ascii?Q?JAkezaaz5MxmCLD0ovZdt2NzrFCP5Nw5r6+elzUXNAgPCBng9L3tqt0QjMw6?=
- =?us-ascii?Q?jWC4LdMyIaquOZoXrRt2+OPxJkBSDNh64fLDpWFBtNO5+KRfPwsk4mJ1qiNm?=
- =?us-ascii?Q?2D2pi75GfeWghDX2XrfA+dZPnFyoUvyCgFjTqdBqOopMQsYLguqwNPDki3ga?=
- =?us-ascii?Q?WTiULmh4OqPXVdQ/hN9yvItKmj0GoEAqhNy/suxWVN87jOM9G/2I2f0UsSZb?=
- =?us-ascii?Q?3GdtdIUAZCnazWoR33A8arN0nH2iG7bWqRMlVZDBzMZ85ZeMwii3bjSWi/Cm?=
- =?us-ascii?Q?/BSV6CeN/oQV4ELGCj3W/GTBV/cUI5zgGLUDhgdrBo8E5nVyq8X5vfnXGQtS?=
- =?us-ascii?Q?v6hLPdR4EO30zlo798D/brAw8JSARFpR/++Dl7lWr5byX5BPUr/R1tZfz5jV?=
- =?us-ascii?Q?MG8DRRVthPVkVJ6JaHyXqVeugb7SLbE0htzTBbVS5gwJ5JIZW9SWovKsyRfV?=
- =?us-ascii?Q?npwFyxedyUKDkRsOeI0icskiFh9Kfjqr?=
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?r37ldvDKZWLf0sGYNv2qoJ7hjiDUVs5oUFpIHHIxrv2zK6fn0UNHb1dBkgUT?=
+ =?us-ascii?Q?qSaz3BvvkwSvw/q2J5MJ3kuUCwM3dbMaj41p9Q9gX6gjlwsfeVlMJKBIISNw?=
+ =?us-ascii?Q?WP7j+LqUQGMc7bP0IYf+nw/H/ppTlur6qbdQe2kShC6MpULejA6AlFHf7xrt?=
+ =?us-ascii?Q?QfTu+LY4lyVjMzFl3hIysYQVTPniR9juUTcuAPN6R0jnPTMnX03B7umBR31K?=
+ =?us-ascii?Q?H6VH7+5KiXgy+K1R7U0paINwg6kkI/dj/pc2RQt849tHPfQ52Q+bXrk5URlM?=
+ =?us-ascii?Q?oXT5ZdmgV2aaX0ct4/MRx9/q6Cq/e1RCU2bHflsZm37NRmyZO34vHL0KRkWf?=
+ =?us-ascii?Q?2EON72d9F1QsfUVvUZbUJkwJA2+t/LC8cpjcmtEangwpnFhgrAfebD8zy6KA?=
+ =?us-ascii?Q?hCwzUBY+HCggO8K/w4r0WgQ6N7KORAOcS/xQirybw7pDEawMKhDskuNxlMFj?=
+ =?us-ascii?Q?y347E7+OV0E7JyAkcWQf9OGhPH8iCtfRgmF2m42GUQxV9L+De6bh3IDVzfjP?=
+ =?us-ascii?Q?kX8oTpA2wXHVZ8dsoXR0luax0qg1hkOELCQ/fpDc7R9hV73OkqlgtSIRII23?=
+ =?us-ascii?Q?o9SPsWNBF+2Y6bFfwINViEU7/T/Zd0EQomOIRaDUzI3VHWYdvMVXnqwumtHq?=
+ =?us-ascii?Q?Nd8Drh6t1VRDzFm2zCtpRff8SlHAhBL1ZA0AJBImzifac7u+g3cfGxizrmiF?=
+ =?us-ascii?Q?xLTD2WCPynKSBc6/7Eouu/tgjH42B+o4xWoxwKwmuK4WaPRwVKEqxGM6L+iW?=
+ =?us-ascii?Q?QF76ApasR6N/f+Z9NfYojfQhSJDGbj2zaO5+n/jH0IZwNVQjw8Q7RF3dj1EZ?=
+ =?us-ascii?Q?g/nvUjG6sn5OqWwPA+bk72QC6f6TfoS+Mt+RHRNaGiALTOVKL8SMaSAiUQS+?=
+ =?us-ascii?Q?xv56jn7nGgUVKL15XzZUMELjFk8iY71/MY/K0tCNoCdBtqgi4O+KM9/9D28W?=
+ =?us-ascii?Q?9zBlHM3Q8U6H05RPHaFMcqRCdG0lUzxYn6JumMitQ0gEa08ax21/PVgaG7AF?=
+ =?us-ascii?Q?dbvKd99TVqLIl+qxGEv29uEnd89xRAnIZCjmW54Vk83CeOTImEKBGFcPrAJ3?=
+ =?us-ascii?Q?nZVDAF4ob6grQMgnhGTzc/uEQsUFiwphm9qRows4YbJwldihnhGqJ8RIZB4P?=
+ =?us-ascii?Q?n+5hOvoK27cJ6DcUfr1n7/PAdoGoDPctD81ZoQsZ5FT385psKDNPWcjKcru/?=
+ =?us-ascii?Q?Zf38VrsRaw+/hw0p7V7H0t2HVvLjEaXIHcL8uYNIFf3KxQiM0EQvKxhEroaQ?=
+ =?us-ascii?Q?FebgEPFJDFAhIHXP7DhyyXIcVko1Si0TUewcs8ERlHDGLH5DwtimJxPOzj6T?=
+ =?us-ascii?Q?+x7gAMFctgkLFLvJUfl1PeExO4pUQcaEbIKZd4bVU1S/ylWzFKt4zWGchwQc?=
+ =?us-ascii?Q?YjkVCI68fb2Y5rmEt8+ucs+jdyagO32rdmcTSkUT1pROZIQmMmPi+7QpRTUT?=
+ =?us-ascii?Q?7dY6SBr5mMEfdmyUll6YSRj0G0mX84acfHRjQh8i6sc4DouDX4fnFw=3D=3D?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(52116014)(366016)(10070799003)(1800799024)(19092799006);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?LIDLdeU2CmnwHOeBxOuwJ/3RuBbJc0TofU5mZkrw3GwjYF/PbnnoW99f1b6M?=
- =?us-ascii?Q?nNBL9+hIYmGPxbDyWneG8iHsPjzFTeVHHlJV8/4NFl8Dy5Uxa8F18p2IpMrO?=
- =?us-ascii?Q?o/rvtrP4Qp2Td0WWB2mWWxL0AlKD04ST3znwJ3EsxywxdfTbIghwwucJ6b4a?=
- =?us-ascii?Q?b0hcc9SlepDcXWo/lpvEX9/B+mMPmf8CvzLo1AxGB6KJYGlEmO2mprPrWH4F?=
- =?us-ascii?Q?JPzmHd8zCM5j65DMJd5NznH0GcCD7YV0GkyukKbpkxJJ/zpGJBhRs0tbAWDO?=
- =?us-ascii?Q?Dyb0gLjTVSbp0RTU2Aoc13GlyrUU5JGxpQGP4w1UWz/leJGwzOG6sZqb6YWd?=
- =?us-ascii?Q?BWEuv+ChLrfcsl8pXtmQqHNvNroBu3uyfVQbhwbFIjlhud9O/6vRe3FldJBF?=
- =?us-ascii?Q?O2bnpYWdYZyyYZOagJwXR7nwNZkY/NdW/d+DMGjrZ6vm+Erl/s0XJebzd3Tq?=
- =?us-ascii?Q?yvDNoX0j0YZaPypwKmlxNTtPDG8WkqzbVgw37PTqlPna6SLN6tIG4YwDSC7v?=
- =?us-ascii?Q?3qKkIb/g7S4Qu6RoDsersHnYARY29PZPV5krBi3ReM8VWsRPladudrSOozqV?=
- =?us-ascii?Q?IRB4B9rC3qz5O8i3Ac8iZ6ZQSSZ3pO5VZU62q+Vk+t+tleWhWpYTTv9ltfAy?=
- =?us-ascii?Q?IcghcE3Rg7Pcnq6cY7V2Hw2ffzOMekksna6KB+AveDfSKKbqEifPTGGKve2y?=
- =?us-ascii?Q?gqoWc1w9ta0bcMQSUFqr4qF1LJzUjoYzBBBUSn3ipjAqa6M1fgZOX9qttsXP?=
- =?us-ascii?Q?pvBJUYUKzIAuGlHg0+pagAT1IeKjLigXxFOrAIbj/tbUIRVytk3XNfAfgU2u?=
- =?us-ascii?Q?oIklvpLy88u3oHuNCzuZhDe0ARjdKWnNxNwhnMfOzxyHNWH2Bvvrv0GFsIXb?=
- =?us-ascii?Q?471pmCvXSfkB6liPQfGQ0yi0FD+tyiwKDYjTnIFJqOGLyHGscP/2xK4Mw6Lk?=
- =?us-ascii?Q?Z6gOYUvmEy+VSLDb0N5KppdTgr+S3i8RReFaX+qDXpvcr11DszbVqc5+I/kf?=
- =?us-ascii?Q?YGJ6Beb2tfkJ6iNdMR8lPgVWOp2GKR3r9Saz82kjPrls+K0kmnQ1r7XOS4vN?=
- =?us-ascii?Q?Zm9MsBHNiCefgqDCoF5rP7RG11mmHjZKvczgEbUgRnk9EZv4mhhPH9Rya15n?=
- =?us-ascii?Q?qug1vwzbZqseqAliWsDW+v1XgdzHLST8gXbgSwzei+ZgV+BpF9VbMvoR2Nq2?=
- =?us-ascii?Q?+CvXnyMVr2lD4ZI43gT1sOhpKYci1/lhrVI8lUWkd9GOF0WIL7DKnZsjHG9F?=
- =?us-ascii?Q?5N6pf+HAhCjR00chWZdCVyXwQG2LytB/qx1fnjW7IRBTt1q9m9tjX38+ylKh?=
- =?us-ascii?Q?+2ycn2f6zFRAdiy8Ft8rSVHiXE+17cXal01KYLcyX/ETLKektSmbQ3DvUWac?=
- =?us-ascii?Q?c52WQXtkyq9xfXd6JpUdEviJZ6PoJKGoDy/5Ru+thdtYQ88/9sOCEe9FRsRA?=
- =?us-ascii?Q?LALfHTCJ/KUzE9cOZ5dypnX0hqo819S5/KOqRidfvyBrsiQpj8dADUq0iLls?=
- =?us-ascii?Q?Z4cF+ID4p+vfNffOT0hYBDwOVJt+/gZcp1IX48UyrkeAZh+7z286FyQnFC+J?=
- =?us-ascii?Q?qwrNChwqayfcAe6wbLgZ2GhZhxPDMnznftn0t34+AAjmP+wpSgvA5VOn8ElB?=
- =?us-ascii?Q?2/Pb7/+b1kUbXcW3kJ0rljE=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?aZtSH5lTuuY3uoynOSmVE1+zG58lb+dbYOJ5os81I2Kol6POUjnpBitAF+pa?=
+ =?us-ascii?Q?VpEhIdp2LJb+VrTL3RAqVooAO0oUDJlVbFrqI9xio6JxaKCoQ/52T5UCkMgR?=
+ =?us-ascii?Q?Sjg+eb67bGmteffHltff9IcuZ9QeOAvJgnQ5OjHeZfczGJYq/QZq50Ym442Q?=
+ =?us-ascii?Q?PMXBeJehwkSW/yw8r/dFjQHr9EcxgW1malQFjcCWqKgtkG3l40UXMihLmLFb?=
+ =?us-ascii?Q?NOpGvc8xuCVyDOOHHXQSA7Rk7jCOUtPWCyvIoREhfBUgsBj8q8cerzyNrfhD?=
+ =?us-ascii?Q?0OZX9nVF7zjI51f+5sCwg+a3HYlWhIlm7akANZzRhLehb0JI9zJXub/q+9B3?=
+ =?us-ascii?Q?2fslKoP/z0Phk1DA611NthETpPTf/q67HoiGr0udydA2I19rsl9+hNti5vpP?=
+ =?us-ascii?Q?GPA9oLwwDQ1pncyBkvVQF0f0eR5friWvLOAY7OQUWQ3PKAFDSpvwWQ9um9Y5?=
+ =?us-ascii?Q?6hDG9TnOJAF9J17ko2rx92xH8WUWD8IbLZ2gxNdDmbX4QmQYApA2g9XFQl6z?=
+ =?us-ascii?Q?ruw2UEBlY8NK4BcqcUH/wa5lKweHWK8w9yYUWnjhstze7OIpzk6nTpvtwI01?=
+ =?us-ascii?Q?eK+P1tL+Slbddi2oW+d/VsQ6oFVwtbYlOtkaRMGw7669aoukrfYXqRM6ef9G?=
+ =?us-ascii?Q?5Fxk7e27yRaBaOkxu7gPfsOH0nZ5S3Vk0Nj4STNhxqfmCTGJDmUj+Nqlj271?=
+ =?us-ascii?Q?YQco0EDTpAqN6fAvbqoCagkCD+7AKVf8ubHDtvAp7mqvhocTdpmG8zc0F86h?=
+ =?us-ascii?Q?TCJYFE5w+Dbn97Zh3S4QsVHkRXLRgrrQwbD71fqhzLfSTc4+SOhV6B7ktPUe?=
+ =?us-ascii?Q?O/TfdIFN0Xk+eqkG/xpDcjGlf19Lprg5keQrNzgNTkFidFc/6V3kNG2c4E51?=
+ =?us-ascii?Q?+/7ThZqjbxL5tkrsfWTcqtuiIj5G+YNZbxvoGLp1MV0ZsomGGfzz4DSwqCoy?=
+ =?us-ascii?Q?+E6nC/7tNw+qhFAIKZqSzBIUx4lny7VogJQKoMi3U3dHiENJw/ywM9YHSdwL?=
+ =?us-ascii?Q?3mpH1o4c9580+qG/5GHhY/5WgehR77kz2GUWbhiCYADd5hkeSLNfB5a/SrWQ?=
+ =?us-ascii?Q?sSCwQdXBXtJc6K72mmVi23eQ0s2YQ+KSBHtean0q7KoB0jpuOiC8u2UYfmVB?=
+ =?us-ascii?Q?+bnePACxsW47ksqpvH4511q/M9DDP9LG60yvovA3c5PhzxwN1dTSJY6DxtqX?=
+ =?us-ascii?Q?Ez+Jt7ZvK54GxxeKllmyAh8wtiOndkHmPz0Wzcu0L4W9PSnzbpjpAqPCOp4F?=
+ =?us-ascii?Q?Y+uQed/gNHO5QkKU8j4bcWzjAr9hZLSSbA8lUSfp4BdOJPh1AvkMYKQmHuHy?=
+ =?us-ascii?Q?r0kGc5Hjj7CB7iSvg7AzeSGohfuVyrMP+Zcxp6AO87y5BGSYgUvkm1w9jzos?=
+ =?us-ascii?Q?A0Buhi7gBHMYmM74OYkx/tbMjRiFlBh0pEswUtNtTH84ZEFyhJuORIahn+RV?=
+ =?us-ascii?Q?j2MZ9U5d8qZzd6GAIanKOD7h43v2dz/SjJB8JFooUH8puVUvEYkPgCHw/LeT?=
+ =?us-ascii?Q?+EDS3hyXhSh5XU/rt3G4ndspVYMsW+JwB1e1RYW2B1e2J2/Z8T+Y68MdjeuO?=
+ =?us-ascii?Q?aoIf4/gPVpDyLAHX35Bbr9FA826d0x3e2Y48fdlaoq6DuTocSdsg8Eou3M6u?=
+ =?us-ascii?Q?cYaaZXkpdd2xr5s7U38XTXo=3D?=
 X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a1404424-b226-4208-4388-08de29fe1375
+X-MS-Exchange-CrossTenant-Network-Message-Id: c9d7ddb0-8cb8-453b-9c96-08de29fe16d3
 X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Nov 2025 19:33:56.1380
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Nov 2025 19:34:01.5945
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: JJPVVFSqxUSRpC0Oy6aVNgrwxR2doOxGhCFDhLwDLFH5kGCaNRW9hhKS4FUzkrH3hrpz1a+Gw7ToxtPsoYIEHQ==
+X-MS-Exchange-CrossTenant-UserPrincipalName: 4VWPMIv6S8vFPqZDJzb/UTdadVuRTt5hCJwh4z0y7Fz6c1C2PgOFPT+m3oYkFE+ldakRNVuGm4uIh6NxdiB4uw==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB9510
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251122_113405_349878_EAD42A74 
-X-CRM114-Status: GOOD (  18.56  )
+X-CRM114-CacheID: sfid-20251122_113409_552472_46EE0F85 
+X-CRM114-Status: GOOD (  20.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -177,69 +179,174 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Polarity inversion (described in patch 3/6) is a feature with at least 3
-potential new users waiting for a generic description:
-- Horatiu Vultur with the lan966x SerDes
-- Daniel Golle with the MaxLinear GSW1xx switches
-- Me with a custom SJA1105 board, switch which uses the DesignWare XPCS
+Differential signaling is a technique for high-speed protocols to be
+more resilient to noise. At the transmit side we have a positive and a
+negative signal which are mirror images of each other. At the receiver,
+if we subtract the negative signal (say of amplitude -A) from the
+positive signal (say +A), we recover the original single-ended signal at
+twice its original amplitude. But any noise, like one coming from EMI
+from outside sources, is supposed to have an almost equal impact upon
+the positive (A + E, E being for "error") and negative signal (-A + E).
+So (A + E) - (-A + E) eliminates this noise, and this is what makes
+differential signaling useful.
 
-I became interested in exploring the problem space because I was averse
-to the idea of adding vendor-specific device tree properties to describe
-a common need.
+Except that in order to work, there must be strict requirements observed
+during PCB design and layout, like the signal traces needing to have the
+same length and be physically close to each other, and many others.
 
-This set contains an implementation of a generic feature that should
-cater to all known needs that were identified during my documentation
-phase. I've added a new user - the XPCS - and I've converted an existing
-user - the EN8811H Ethernet PHY.
+Sometimes it is not easy to fulfill all these requirements, a simple
+case to understand is when on chip A's pins, the positive pin is on the
+left and the negative is on the right, but on the chip B's pins (with
+which A tries to communicate), positive is on the right and negative on
+the left. The signals would need to cross, using vias and other ugly
+stuff that affects signal integrity (introduces impedance
+discontinuities which cause reflections, etc).
 
-I haven't converted the rest due to various reasons:
-- "mediatek,pnswap" is defined bidirectionally and the underlying
-  SGMII_PN_SWAP_TX_RX register field doesn't make it clear which bit is
-  RX and which is TX. Needs more work and expert knowledge from maintainer.
-- "st,px_rx_pol_inv" - its binding is a .txt file and I don't have time
-  for such a large detour to convert it to dtschema.
-- "st,pcie-tx-pol-inv" and "st,sata-tx-pol-inv" - these are defined in a
-  .txt schema but are not implemented in any driver. My verdict would be
-  "delete the properties" but again, I would prefer not introducing such
-  dependency to this series.
+So sometimes, board designers intentionally connect differential lanes
+the wrong way, and expect somebody else to invert that signal to recover
+useful data. This is where RX and TX polarity inversion comes in as a
+generic concept that applies to any high-speed serial protocol as long
+as it uses differential signaling.
 
-Vladimir Oltean (9):
-  dt-bindings: phy: rename transmit-amplitude.yaml to
-    phy-common-props.yaml
-  dt-bindings: phy-common-props: create a reusable "protocol-names"
-    definition
-  dt-bindings: phy-common-props: RX and TX lane polarity inversion
-  dt-bindings: net: xpcs: allow properties from phy-common-props.yaml
-  phy: add phy_get_rx_polarity() and phy_get_tx_polarity()
-  net: pcs: xpcs: promote SJA1105 TX polarity inversion to core
-  net: pcs: xpcs: allow lane polarity inversion
-  net: phy: air_en8811h: deprecate "airoha,pnswap-rx" and
-    "airoha,pnswap-tx"
-  dt-bindings: net: airoha,en8811h: deprecate "airoha,pnswap-rx" and
-    "airoha,pnswap-tx"
+I've stopped two attempts to introduce more vendor-specific descriptions
+of this only in the past month:
+https://lore.kernel.org/linux-phy/20251110110536.2596490-1-horatiu.vultur@microchip.com/
+https://lore.kernel.org/netdev/20251028000959.3kiac5kwo5pcl4ft@skbuf/
 
- .../bindings/net/airoha,en8811h.yaml          |  11 +-
- .../bindings/net/pcs/snps,dw-xpcs.yaml        |   5 +-
- .../bindings/phy/phy-common-props.yaml        | 152 ++++++++++++++++++
- .../bindings/phy/transmit-amplitude.yaml      | 103 ------------
- MAINTAINERS                                   |  21 +++
- drivers/net/pcs/Kconfig                       |   1 +
- drivers/net/pcs/pcs-xpcs-nxp.c                |  11 --
- drivers/net/pcs/pcs-xpcs.c                    |  58 ++++++-
- drivers/net/pcs/pcs-xpcs.h                    |   2 +-
- drivers/net/phy/Kconfig                       |   1 +
- drivers/net/phy/air_en8811h.c                 |  50 ++++--
- drivers/phy/Kconfig                           |   9 ++
- drivers/phy/Makefile                          |   1 +
- drivers/phy/phy-common-props.c                | 117 ++++++++++++++
- include/dt-bindings/phy/phy.h                 |   4 +
- include/linux/phy/phy-common-props.h          |  20 +++
- 16 files changed, 426 insertions(+), 140 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/phy/phy-common-props.yaml
- delete mode 100644 Documentation/devicetree/bindings/phy/transmit-amplitude.yaml
- create mode 100644 drivers/phy/phy-common-props.c
- create mode 100644 include/linux/phy/phy-common-props.h
+and in the kernel we already have merged:
+- "st,px_rx_pol_inv"
+- "st,pcie-tx-pol-inv"
+- "st,sata-tx-pol-inv"
+- "mediatek,pnswap"
+- "airoha,pnswap-rx"
+- "airoha,pnswap-tx"
 
+and maybe more. So it is pretty general.
+
+One additional element of complexity is introduced by the fact that for
+some protocols, receivers can automatically detect and correct for an
+inverted lane polarity (example: the PCIe LTSSM does this in the
+Polling.Configuration state; the USB 3.1 Link Layer Test Specification
+says that the detection and correction of the lane polarity inversion in
+SuperSpeed operation shall be enabled in Polling.RxEQ.). Whereas for
+other protocols (SGMII, SATA, 10GBase-R, etc etc), the polarity is all
+manual and there is no detection mechanism mandated by their respective
+standards.
+
+So why would one even describe rx-polarity and tx-polarity for protocols
+like PCIe, if it had to always be PHY_POL_AUTO?
+
+Related question: why would we define the polarity as an array per
+protocol? Isn't the physical PCB layout protocol-agnostic, and aren't we
+describing the same physical reality from the lens of different protocols?
+
+The answer to both questions is because multi-protocol PHYs exist
+(supporting e.g. USB2 and USB3, or SATA and PCIe, or PCIe and Ethernet
+over the same lane), one would need to manually set the polarity for
+SATA/Ethernet, while leaving it at auto for PCIe/USB 3.0+.
+
+I also investigated from another angle: what if polarity inversion in
+the PHY is one layer, and then the PCIe/USB3 LTSSM polarity detection is
+another layer on top? Then rx-polarity = <PHY_POL_AUTO> doesn't make
+sense, it can still be rx-polarity = <PHY_POL_NORMAL> or <PHY_POL_INVERT>,
+and the link training state machine figures things out on top of that.
+This would radically simplify the design, as the elimination of
+PHY_POL_AUTO inherently means that the need for a property array per
+protocol also goes away.
+
+I don't know how things are in the general case, but at least in the 10G
+and 28G Lynx SerDes blocks from NXP Layerscape devices, this isn't the
+case, and there's only a single level of RX polarity inversion: in the
+SerDes lane. In the case of PCIe, the controller is in charge of driving
+the RDAT_INV bit autonomously, and it is read-only to software.
+
+So the existence of this kind of SerDes lane proves the need for
+PHY_POL_AUTO to be a third state.
+
+Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+---
+ .../bindings/phy/phy-common-props.yaml        | 45 +++++++++++++++++++
+ include/dt-bindings/phy/phy.h                 |  4 ++
+ 2 files changed, 49 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/phy/phy-common-props.yaml b/Documentation/devicetree/bindings/phy/phy-common-props.yaml
+index 775f4dfe3cc3..538b85559113 100644
+--- a/Documentation/devicetree/bindings/phy/phy-common-props.yaml
++++ b/Documentation/devicetree/bindings/phy/phy-common-props.yaml
+@@ -93,15 +93,60 @@ properties:
+       property. Required only if multiple voltages are provided.
+     $ref: "#/$defs/protocol-names"
+ 
++  rx-polarity:
++    description:
++      An array of values indicating whether the differential receiver's
++      polarity is inverted. Each value can be one of
++      PHY_POL_NORMAL (0) which means the negative signal is decoded from the
++      RXN pin, and the positive signal from the the RXP pin;
++      PHY_POL_INVERT (1) which means the negative signal is decoded from the
++      RXP pin, and the positive signal from the RXN pin;
++      PHY_POL_AUTO (2) which means the receiver performs automatic polarity
++      detection and correction, which is a mandatory part of link training for
++      some protocols (PCIe, USB SS).
++
++      The values are defined in <dt-bindings/phy/phy.h>.
++
++      If this property contains multiple values for various protocols, the
++      'rx-polarity-names' property must be provided.
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++    minItems: 1
++    maxItems: 16
++    items:
++      enum: [0, 1, 2]
++
++  rx-polarity-names:
++    $ref: '#/$defs/protocol-names'
++
++  tx-polarity:
++    description:
++      Like 'rx-polarity', except it applies to differential transmitters,
++      and only the values of PHY_POL_NORMAL and PHY_POL_INVERT are possible.
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++    minItems: 1
++    maxItems: 16
++    items:
++      enum: [0, 1]
++
++  tx-polarity-names:
++    $ref: '#/$defs/protocol-names'
++
+ dependencies:
+   tx-p2p-microvolt-names: [ tx-p2p-microvolt ]
++  rx-polarity-names: [ rx-polarity ]
++  tx-polarity-names: [ tx-polarity ]
+ 
+ additionalProperties: true
+ 
+ examples:
+   - |
++    #include <dt-bindings/phy/phy.h>
++
+     phy: phy {
+       #phy-cells = <1>;
+       tx-p2p-microvolt = <915000>, <1100000>, <1200000>;
+       tx-p2p-microvolt-names = "2500base-x", "usb-hs", "usb-ss";
++      rx-polarity = <PHY_POL_AUTO>, <PHY_POL_NORMAL>;
++      rx-polarity-names = "usb-ss", "default";
++      tx-polarity = <PHY_POL_INVERT>;
+     };
+diff --git a/include/dt-bindings/phy/phy.h b/include/dt-bindings/phy/phy.h
+index 6b901b342348..f8d4094f0880 100644
+--- a/include/dt-bindings/phy/phy.h
++++ b/include/dt-bindings/phy/phy.h
+@@ -24,4 +24,8 @@
+ #define PHY_TYPE_CPHY		11
+ #define PHY_TYPE_USXGMII	12
+ 
++#define PHY_POL_NORMAL		0
++#define PHY_POL_INVERT		1
++#define PHY_POL_AUTO		2
++
+ #endif /* _DT_BINDINGS_PHY */
 -- 
 2.34.1
 
