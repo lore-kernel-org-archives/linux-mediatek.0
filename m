@@ -4,82 +4,183 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5275DCFC536
-	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Nov 2025 14:18:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EF0FCFD2E8
+	for <linux-mediatek@archiver.kernel.org>; Sat, 22 Nov 2025 19:34:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Kc4yf/ip/zYhJKQehc/v1Ono+m+rQ7sS8fbaEIg4oWE=; b=BJidHbugzrv6NPZ3YoDPR5THgm
-	LmC5YD5EFK0DiACPFJVMYBd/UN9YkShsCG/V3iebOJuSFItT9fUAUzHJE4N1iTnvuymrIUNri30le
-	J9eyYdKUuDSHfjD0tS0VL03KJN5kkJoqT8GcoTNNWthU/AliYzFY5qnn931ZnTvb8ZUDha8e9jcgD
-	PtWlHx8cpGssPGDBV2JgC7O3DJzf1CoMLYsOsf4JugdVlGdWTiSoh1IYwx1Wpol4Uxj905iUDJOKy
-	n25iuGvBB1ecpKW931DMwTyB2w45mIpYE7SyTdzuJff30p3a3KEbtSjKv9P18S8u50o+jljsBLlci
-	ECt35KRg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-Id:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/pFdE7Ni958DET8hD73qoOqlpG5Gc+gD72GrriJOiuE=; b=AJkPA4oEmZHwmYhEZbC9fOJC00
+	7KShhhMzLkGP3+iPpzu+aVdh8QTVlNN0mqavT0DZaglV6CfzNCKslNHvblA3DvzkXHCulNpvmimvB
+	9Wa4Um7G5t8TJKsJ41cTt60T/omzJJONfX+akIrDAWFgLEWy8OcnzcVd0DOK+XSSTfrmOy/1mQVSX
+	N19Kds/cq9/JXRBd/MB3gyOPO2bL7xf4B9AStg6vlijWAiDqd2RcGLl/g2YIYYYuMEzApVmEgpqES
+	oozxwcfsIyVD+k/o8X3ayv7UQlKIWZ0FwuvpzLbpr5d/72E54+UStCGmnDGDdGyaMD5XzA/V7IAVn
+	C9pL6bBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMoRY-00000009eTl-1bRk;
-	Sat, 22 Nov 2025 14:18:28 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1vMtN4-00000009pHk-07lB;
+	Sat, 22 Nov 2025 19:34:10 +0000
+Received: from mail-francecentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20a::7] helo=PA4PR04CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMoRU-00000009eT7-3HZD;
-	Sat, 22 Nov 2025 14:18:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmx.de;
-	s=s31663417; t=1763821096; x=1764425896; i=w_armin@gmx.de;
-	bh=Kc4yf/ip/zYhJKQehc/v1Ono+m+rQ7sS8fbaEIg4oWE=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
-	 References:From:In-Reply-To:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=Y1UpTHto+ZoqLH5nQvLgtnB839wOH5s3ITuS1rBa0F5opUsqMNbpc05RvhNXdN+w
-	 LbP2H+cO5IdH6PqtSNGHEF0wlSpdifa3lUKxga5MHCcYij0kd1p3i2kmcuxyr5UQ5
-	 oGe/sP7emNQKmeW/rEv8Cvq8dL5crOw9wD+533pSWpiapdYfR9/sww4wBBoWvI303
-	 ko9K5byBMbCV91+W64U/ZMJVRN4NMrQJW46iRwfz8la0g21B5gAbcg9n72nkQ6yPd
-	 djLm9H5GxLznIw/0QBpCYsDwHP3840idibV2CETRLYzHOGszREUKs3+RFrJiyDlhX
-	 j6/yZOEhEn8SEgmJTw==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [192.168.0.69] ([93.202.247.91]) by mail.gmx.net (mrgmx104
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MbAci-1vy58R25Qu-00ZeVB; Sat, 22
- Nov 2025 15:18:15 +0100
-Message-ID: <5f3ef610-4024-4ca0-a934-2649f5d25f40@gmx.de>
-Date: Sat, 22 Nov 2025 15:18:11 +0100
+	id 1vMtN1-00000009pG0-17d6;
+	Sat, 22 Nov 2025 19:34:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=UDmMvyHpeqV6zoYcGDPO2iAP1Z3OerzISu8VOQp1tczoi9Cq+vXSreOiPp4PXEvlrNqq4XRm9PaohrB7HOfgUYWwadUI2mEkCdb9C936LPOJcsEHgbZCOtAqqit/8cSub5arBEKGdSB9Q54t0FbmaqilQyw7DsJaQaKGxqUvAMf3z/nl5jjRKcDpbpP8S88fHggK5uDEQUqIAKdt8Zw5iAsIVeWTB5nzUWjI2Tybm5TVXnfiS8oo/lW+H1lRQIebhu4XmKPPKjmuLG67fWdlX5THtaZhL/a4RlgCzZrIJPZ/5z/n+Z1/HOViBMuvuVmfDDJwh/bczP4IYQpzwWb4LA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/pFdE7Ni958DET8hD73qoOqlpG5Gc+gD72GrriJOiuE=;
+ b=F7shiF1Z1aUaon6xZlZUr4Z97VzCHtTQXKclKu/8C+zKf7NHfBfhYDobYAd2OPH/lc/9ghZOzCbzo29ArUXWWpGdYcqydFgwWdMB5D5MedLzzcFEOAifG0iRzW8Io7jA6ZoZLYke4oD77Qpbb4ticRdje2myYoIRD7AyzZ1QhCnLRVWJKQG/RaRsHqYCDoWYQgF/jADdgNwwqfH+Hy2ZwNDb0ThwpBmJbMmLX+qcno5bpszZaaXo03AHMUWyPlyt4XLCa93/Adh8j2HXuaX4AeFkg/NeqlisoG1M2naNkFn+vkHsXZluZbCKTdaLKFkw2GSGlpKd9WvMmmpKQfe5HA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/pFdE7Ni958DET8hD73qoOqlpG5Gc+gD72GrriJOiuE=;
+ b=DpIY1NqKW4pULDlv+w2inRFJuM0jicqmyLz4bE0WZi2YlyKXOomq+8sLvn2A2T/FNQHKt+PzCOb7IYaihK/ll9knl3bW5TYTwvA5aK1hSvhlyvEQVpoYlVXod4PQ8c6Dco+mNKIKipW0u83134q7UQoWAlXjkImEI2VZ1drp8dtLOf4gW4V2h9lH1F5eWJMt6TA9XB4Wr+hvrp98eHJlHqMI8aE0KxQ3YmCBhePtlU0hgXlSLENvxD9IqAqdlJHrpMbX8lD8zf3vgWpZS25uFcDt9Ci18ydV2hePFVMevWweNXHkRatz4AYCyH13wwC0KdnYZmjOkLc9ONBFWOkQ5A==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
+ by AS8PR04MB9510.eurprd04.prod.outlook.com (2603:10a6:20b:44a::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.15; Sat, 22 Nov
+ 2025 19:33:58 +0000
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::8063:666f:9a2e:1dab]) by AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::8063:666f:9a2e:1dab%5]) with mapi id 15.20.9343.011; Sat, 22 Nov 2025
+ 19:33:58 +0000
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-phy@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Daniel Golle <daniel@makrotopia.org>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Eric Woudstra <ericwouds@gmail.com>,
+	=?UTF-8?q?Marek=20Beh=C3=BAn?= <kabel@kernel.org>,
+	Lee Jones <lee@kernel.org>,
+	Patrice Chotard <patrice.chotard@foss.st.com>
+Subject: [PATCH net-next 1/9] dt-bindings: phy: rename transmit-amplitude.yaml to phy-common-props.yaml
+Date: Sat, 22 Nov 2025 21:33:33 +0200
+Message-Id: <20251122193341.332324-2-vladimir.oltean@nxp.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20251122193341.332324-1-vladimir.oltean@nxp.com>
+References: <20251122193341.332324-1-vladimir.oltean@nxp.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: AM0PR10CA0010.EURPRD10.PROD.OUTLOOK.COM
+ (2603:10a6:208:17c::20) To AM9PR04MB8585.eurprd04.prod.outlook.com
+ (2603:10a6:20b:438::13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC RESEND 0/8] thermal: core: Allow setting the parent
- device of thermal zone/cooling devices
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-Cc: Daniel Lezcano <daniel.lezcano@linaro.org>,
- Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
- Len Brown <lenb@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
- Ido Schimmel <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>,
- linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- etnaviv@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-tegra@vger.kernel.org, linux-acpi@vger.kernel.org,
- linux-doc@vger.kernel.org, netdev@vger.kernel.org,
- linux-wireless@vger.kernel.org, ath10k@lists.infradead.org,
- ath11k@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, platform-driver-x86@vger.kernel.org,
- linux-pci@vger.kernel.org, imx@lists.linux.dev,
- linux-renesas-soc@vger.kernel.org
-References: <20251120-thermal-device-v1-0-bbdad594d57a@gmx.de>
- <CAJZ5v0jOPrBcozzJMsB1eE12MuZRWDAV-+=jfrhJbi=S0p5J9Q@mail.gmail.com>
-Content-Language: en-US
-From: Armin Wolf <W_Armin@gmx.de>
-In-Reply-To: <CAJZ5v0jOPrBcozzJMsB1eE12MuZRWDAV-+=jfrhJbi=S0p5J9Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:p1RNGZcFb7DMYC4pNIt+bKMVaFtCpVDJjA+b5GK6HVl6ii0Qvy6
- F02X8anlkVakkbi2OTFbnt8tYeJSvn6gGOs4ruxe4iOSm964VHeR0KGAfYYSOGHAkEHE1SL
- f+0kJN0U4H4TG67hcvhs8e2p+bBtnKPBsYGRBwzRgM45wOTh3XumwYG+ToUgVBnpYQ3YAqx
- wayKxHUnhSBUFp4PBU0OA==
-UI-OutboundReport: notjunk:1;M01:P0:vXFK1AWv0os=;NZUt21siNzvTNFU+NCb4ppbI26X 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 L4DlDx0w=
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|AS8PR04MB9510:EE_
+X-MS-Office365-Filtering-Correlation-Id: e9ab40ea-2568-46ae-4b14-08de29fe14ac
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|52116014|366016|10070799003|1800799024|19092799006;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?OXlFM3NTQ3REdlJCV3BrYnl1aVc3NUN0bExLZnkxaS91REovWGNrMlVTeHh6?=
+ =?utf-8?B?NDk4L1N5WVRPaFczMzN2S1Bsa1pkK3c3QzNTcm9tTldwU2YrNnJsSjJYK3Ey?=
+ =?utf-8?B?UGQyMGV5ZmlhaXI1SlQ5RVl3TWJ6WmZ2RUFSVUk3NFlLa1VuMFJEaEZOSlJQ?=
+ =?utf-8?B?dm92eGFMYmJ6T2N5WTB2S3d4d2MvRUlLakwwUWZVYm5odW82RHNPZkNNblJY?=
+ =?utf-8?B?V3NCUE5OV1ZTTkxKcEltb2toVWhBQURxTFlKQ01QRGFNZ1NyMGFYWEVNNXNL?=
+ =?utf-8?B?Q1ZYeEtrVWFVRDhsRnNRVU9hWkJNYjRhUnFFaGt1K0JqTm5YZ25FS1RuYTBj?=
+ =?utf-8?B?elN3a1VrM3VxU05iZlZaS01pRkxoRlk2WWlvVkVRTzJ2d2NNdDRHVVR2Tldu?=
+ =?utf-8?B?NDMxMEgrVmRsOS9ZaEtSalIycEZYRUwwRFpKM1ZIUDhDaHhPV1hMRVRBRmxL?=
+ =?utf-8?B?YUUzcTE3akRFQVZBWGFJQ2R2eGRIbFd6SlpCMDlyYzloYkVCS3RvcTdpbTdq?=
+ =?utf-8?B?MUswdWU3dmxvbHBqR0xkNVR0RERLTC9UMW9QSFBXZ1JRRHdWRlRJTktodlE1?=
+ =?utf-8?B?RnJ6Z29rYkZqclpNMzA2RktjcmV5NzZaaUtmRDh4bUZhRG5tTmVDU1dOZm53?=
+ =?utf-8?B?UHdNMWliblpEL2U2VlVhNmpNZXFOSFN2akRzb0JsbFcrTlVZa1E0aURSaWRN?=
+ =?utf-8?B?blNCaStWN1RjcnR6RW1BcDZOVWJzdVk0Z0c5UVc3TDUyTTMxMTZUeU5UT3JY?=
+ =?utf-8?B?bE5ZRXVIK2d4NVIxbW4rSHZKSTRCVmJYOGNVdGhtdW9GcUlMMEdsYTZpRmpu?=
+ =?utf-8?B?TllibnVFQnd1Yi9GT0k3NXZranRHTzk1WExFVzVHNlZ0Q0hXQldTeEp5cXB4?=
+ =?utf-8?B?aDdKUkNuTEFiV2FCQU1sdWlxS3RrZlpFcms2a3ZJN1RIajM2RXgxa1o3QjRV?=
+ =?utf-8?B?RTVtUDFiRjROeGRZS21tM0xDaHpJWFFXTk5GREF1Y2xtWDliRkhVQjlOS2hs?=
+ =?utf-8?B?S0Z0cEd1c1ZnYzhKbFdaeDdvN0VUT0lrZGlacFcxdEVWQjFxUDNkMWx5ZCs3?=
+ =?utf-8?B?V29lYTR5S0RQblBXdno5c2JaYVh2d3R6LytsYU54aDdkNmtyR1h5ZXh1S3A2?=
+ =?utf-8?B?UkpwS0thY3FsNHA4dzM4QUlnYXhsdFpSOThTOEpNWmkvR0pYakRkT1owVVpI?=
+ =?utf-8?B?dm5xR3NWci8xa0p0QllUSWxOREdHaUhmd21tYUplQ2NVUVZEc1k5OWFsZmxx?=
+ =?utf-8?B?L0xKTWs5aU1GMG1oTkpCdk5KTWl0dGYrNGlpRGw2OTJISG9NakpibnhSaENW?=
+ =?utf-8?B?S1ZRdm92SEkrS0djK256bmpMOENVOEI4QVFHak9RNlVSWWZOZmJza0VUK3lz?=
+ =?utf-8?B?a0tXdjFLWGR1d2U4aDkvYVkxS0d0cHZENjJvaEVEcjVxa0xVTHFpc3ZzSk1q?=
+ =?utf-8?B?eHBxTlhVOWsxRDJMT1g3MXVWN3hINWU2dVF3N0FiZjhpc2svaU5lSm0yWTdZ?=
+ =?utf-8?B?THRFMnl0Y0RUWjZ0cldmWDlWVWJEbU9CQTNENkRJdytVQjlPLzBsSkVuUkxC?=
+ =?utf-8?B?SUJXaS9za0tWWGdlNU8ydXorYnNoV25jNEJuaTF2M2ltcWtqTkhDaDB5bWR1?=
+ =?utf-8?B?MU9vT3diMzNhZ1NOanZxZ2kraGo4ZVlUTFR5Y05iWEVSOWx6T0FzZGdpTzd3?=
+ =?utf-8?B?ODd2OUtKbTh1M25Dck9NUWRCUFcxOXJEZlVuanFNZlA2VHZobjVWSmFiUDcv?=
+ =?utf-8?B?YUtnaDh4R3l1a2k3R3lXVDl0OS96ZzRlZWpsSW82Qy8vT2VUaXkzTTFmR1pi?=
+ =?utf-8?B?RE5QTFc3blp2bFYzeUpiUHB4S3I4Q04rbFpSRW9BU2lUN1VabzFkRlgyWTlr?=
+ =?utf-8?B?ZisyeTVDaDRjQXBOYWdldDlGUDdNOEN1YnVrUXNXS3luaEE9PQ==?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(52116014)(366016)(10070799003)(1800799024)(19092799006);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZnN2emxlU1ZqbnZtSmcyWDBZOUZTV2Y4WUs0M3E3SUR6SjVVUWpuVjhzVlU5?=
+ =?utf-8?B?NmRuR2ZCQldvQndxaXB2ZFc5T085SWg2d1FjdjhrQ0RGK1pXZXVuWnByZkw0?=
+ =?utf-8?B?UmFXUTVicmxTbFVnU0VleWwvanMxMi8wNHhZaldWNDlFTUVWWG9aVEx4MjdM?=
+ =?utf-8?B?YURKLzFXSFVCNER6aGk4SG4zNEtIdjRMY2ZZS2JkNWo2VUR1cU9EbEY0SmJJ?=
+ =?utf-8?B?a2I5L05pTmV3ck1tRkVsSytiY0I2RjlXSTVCMlJJcHZhd0gxQ2lQUStySFN6?=
+ =?utf-8?B?a3MvMk9DOWl1U2szS1czNzFQV3ZuV1dSM243a01CL2VxSFNDdnU0WDZwZkU2?=
+ =?utf-8?B?dmdaMVEraGRhVkhLbGdHdy85SFRIektWb0JyRHQ5M2x0R0J5Vmo0QWE1YS9P?=
+ =?utf-8?B?V2ZPL29xL0dhVFR0bWxUNTFldU9WYzYyZkJ2bVd6QWJnNXBMM3o2ZFJKM1Rj?=
+ =?utf-8?B?QlBCdWRPTWZhaTRYUXlKRXMwaE5XT3p5N0lTS0I0RzlETHkvVThWbmhvOUZS?=
+ =?utf-8?B?cU9KYmRmWGpLS0tsb3dneEZ5Uk5kVkswaFdleVBGV3djTFNpNlZQQ2xUTlpi?=
+ =?utf-8?B?dmw1UkRBVmxwQzVWWmVta1Z0TlZDY2ZsRDJ0RXNjUCtQNTZvSFNGZXJVY3lp?=
+ =?utf-8?B?ZFNWbnUyQlJaL1VPZWlwUkoxeTkvVSt4OHJ4Z0NFUTRqczNDbGxwbWs1QjNE?=
+ =?utf-8?B?clJ3WFpDWmN4SWZMdUNEdlhFRW1EcW1xWXpBSXlYUm5rTTFlMXNvWnF2T3hw?=
+ =?utf-8?B?d0JPbS9KUnhhQXYyeUVQdVd4ZVRmVktFS2F5b3QvWi9LdGRuVXhWT1hUUVRt?=
+ =?utf-8?B?R1NhRCtERUE4NjBEMksrcUJYdFJEOUhzOEpQMWtXWUM1YTBwdVg2dVRUbXFG?=
+ =?utf-8?B?U3dNVjlFZVdkK3NCazEzZjFUVXprU3UxbEVXWEhoMTE0K1B5OFZQYkRjUEZx?=
+ =?utf-8?B?dnVTS2RYc2ttcEd1YzJzbzVzQ3JVcmlDeG1tUTlBa1hqZk0zMXllSVg3Rm1s?=
+ =?utf-8?B?T0J1V3hOTkZUY1VoZ0ZCcjlEVGwxZ0s3bjJPdHZDSTloL3dsRjhvQjAwRGsr?=
+ =?utf-8?B?RHNhVUJUSmpqUXZjUVMxRlIzbFVXSUR4dzg0L3MzSjdJZnpIakR6eUdCVWsw?=
+ =?utf-8?B?V2diOFk2a2YvSGE5dVdSbytReWpYTmVTVk1ySmJuTTdObUc0blFSdTdVL1VF?=
+ =?utf-8?B?NnVCKzNMSSttbjVacllwZjhKQ3NSbW9LdExWM2MwVVVMd2pYZGNGUHNHUEVn?=
+ =?utf-8?B?dW1BSjBvRzNZM1lIeWRpc0loY09pSmw0MkdEOFRlQ0haZ093R0gwTjhvV24v?=
+ =?utf-8?B?dnBkQ0RJOTJia0FDUytONzNwS1liUXVncUFKbERKWFJUeTN1K3ZvaDBHT0dr?=
+ =?utf-8?B?UkVtMkQzNkFXbVpSeUVvcnhQYkFXcmxkR0pHeWVFbXJBM3ZGcnpkZjJaRTZR?=
+ =?utf-8?B?TEpiQW4rVGxyTklRL1g4bG56YWprcHZaMVl1Y1lwNHY5NkJ1amEyc1AyUGlZ?=
+ =?utf-8?B?U1gwcVZ4b29PaFloakI2Z0RBL21XNWR6cG1ZSlhSQlRTN0pCeXk0OVVmdGRN?=
+ =?utf-8?B?bHNkbUtXb3l2SDhKRkZIb2RFZHV0MTZGWjFBVGs2VGdNNDVUTEFWbWU4UUk3?=
+ =?utf-8?B?b3JnbW1LVWJVQWY3c21pK1hKQkVKcE1YNWs3eUpNVGVYVG16akhMYUZBNDJZ?=
+ =?utf-8?B?MWhETGhRMmEyRVg5RW4zS21QcHBoaHBzR01OUW9TKzVaT2twUVEwZ0V2M1Vr?=
+ =?utf-8?B?bHUwSnlLbEhiaGdZRHZkcG5HZmZ2Y3VKcW5UeFJrQ2RLdmZQQmNibDVQMXF6?=
+ =?utf-8?B?UWZIU1lZYk8rMExhVWJXbHcySTJ4M3B5ZVRWaHZ2QW16TndTOXY5TkxXVjZj?=
+ =?utf-8?B?djd1c2FUTFdsRk8zQkhlVEUxMUJOUFFsSGtSWEhyWTdwRDNIVVRGcE53elY5?=
+ =?utf-8?B?YmhHR1gwdXZZVks3d25GNzlLQm11RDNlcUg5UGxROForZisyL28vY1RTa05T?=
+ =?utf-8?B?TlI0SWgvUXZoQVdPVE53K0xPSDdjd3FHNEl1dGJucXRTN0JvR0xGZ0t2SlZw?=
+ =?utf-8?B?cHRDdHQxTzBqWFpnZThEQjYrUzZNaHB3STBveUZEc05SbDloZHBxakNZd09F?=
+ =?utf-8?B?S2g1dWZnemVKeDE5WFBmQ0xkeHN6cWJnQ0tKM3V6UzRKNy92d090c2pHUGIv?=
+ =?utf-8?Q?MhEaU9ff+9/D1556iQGFHk4=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e9ab40ea-2568-46ae-4b14-08de29fe14ac
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Nov 2025 19:33:58.0594
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: uMk5FGpSD9cU2/vB0AFW2ZLR0khdGsIr2mnqjxKtmyuumu6easMu8VKaFcwYFuRT7AtfDvetPRuw1jqBeN2ASw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB9510
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251122_061825_207147_BA2395DB 
-X-CRM114-Status: GOOD (  38.46  )
+X-CRM114-CacheID: sfid-20251122_113407_307904_FABEBE66 
+X-CRM114-Status: GOOD (  10.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,212 +195,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 21.11.25 um 21:35 schrieb Rafael J. Wysocki:
+I would like to add more properties similar to tx-p2p-microvolt, and I
+don't think it makes sense to create one schema for each such property
+(transmit-amplitude.yaml, lane-polarity.yaml, transmit-equalization.yaml
+etc).
 
-> On Thu, Nov 20, 2025 at 4:41=E2=80=AFAM Armin Wolf <W_Armin@gmx.de> wrot=
-e:
->> Drivers registering thermal zone/cooling devices are currently unable
->> to tell the thermal core what parent device the new thermal zone/
->> cooling device should have, potentially causing issues with suspend
->> ordering
-> This is one potential class of problems that may arise, but I would
-> like to see a real example of this.
->
-> As it stands today, thermal_class has no PM callbacks, so there are no
-> callback execution ordering issues with devices in that class and what
-> other suspend/resume ordering issues are there?
+Instead, let's rename to phy-common-props.yaml, which makes it a more
+adequate host schema for all the above properties.
 
-Correct, that is why i said "potentially".
+Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+---
+ .../{transmit-amplitude.yaml => phy-common-props.yaml}    | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+ rename Documentation/devicetree/bindings/phy/{transmit-amplitude.yaml => phy-common-props.yaml} (90%)
 
->
-> Also, the suspend and resume of thermal zones is handled via PM
-> notifiers.  Is there a problem with this?
-
-The problem with PM notifiers is that thermal zones stop working even befo=
-re
-user space is frozen. Freezing user space might take a lot of time, so hav=
-ing
-no thermal management during this period is less than ideal.
-
-This problem would not occur when using dev_pm_ops, as thermal zones would=
- be
-suspended after user space has been frozen successfully. Additionally, whe=
-n using
-dev_pm_ops we can get rid of thermal_pm_suspended, as the device core alre=
-ady mandates
-that no new devices (including thermal zones and cooling devices) be regis=
-tered during
-a suspend/resume cycle.
-
-Replacing the PM notifiers with dev_pm_ops would of course be a optimizati=
-on with
-its own patch series.
-
->> and making it impossible for user space applications to
->> associate a given thermal zone device with its parent device.
-> Why does user space need to know the parent of a given cooling device
-> or thermal zone?
-
-Lets say that we have two thermal zones registered by two instances of the
-Intel Wifi driver. User space is currently unable to find out which therma=
-l zone
-belongs to which Wifi adapter, as both thermal zones have the (nearly) sam=
-e type string ("iwlwifi[0-X]").
-
-This problem would be solved once we populate the parent device pointer in=
-side the thermal zone
-device, as user space can simply look at the "device" symlink to determine=
- the parent device behind
-a given thermal zone device.
-
-Additionally, being able to access the acpi_handle of the parent device wi=
-ll be necessary for the
-ACPI thermal zone driver to support cooling devices other than ACPI fans a=
-nd ACPI processors.
-
->> This patch series aims to fix this issue by extending the functions
->> used to register thermal zone/cooling devices to also accept a parent
->> device pointer. The first six patches convert all functions used for
->> registering cooling devices, while the functions used for registering
->> thermal zone devices are converted by the remaining two patches.
->>
->> I tested this series on various devices containing (among others):
->> - ACPI thermal zones
->> - ACPI processor devices
->> - PCIe cooling devices
->> - Intel Wifi card
->> - Intel powerclamp
->> - Intel TCC cooling
-> What exactly did you do to test it?
-
-I tested:
-- the thermal zone temperature readout
-- correctness of the new sysfs links
-- suspend/resume
-
-I also verified that ACPI thermal zones still bind with the ACPI fans.
-
->> I also compile-tested the remaining affected drivers, however i would
->> still be happy if the relevant maintainers (especially those of the
->> mellanox ethernet switch driver) could take a quick glance at the
->> code and verify that i am using the correct device as the parent
->> device.
-> I think that the above paragraph is not relevant any more?
-
-You are right, however i originally meant to CC the mellanox maintainers a=
-s
-i was a bit unsure about the changes i made to their driver. I will rework
-this section in the next revision and CC the mellanox maintainers.
-
->
->> This work is also necessary for extending the ACPI thermal zone driver
->> to support the _TZD ACPI object in the future.
-> I'm still unsure why _TZD support requires the ability to set a
-> thermal zone parent device.
-
-_TZD allows the ACPI thermal zone to bind to cooling devices other than AC=
-PI fans
-and ACPI processors, like ACPI batteries. This however will currently not =
-work as
-the ACPI thermal zone driver uses the private drvdata of the cooling devic=
-e to
-determine if said cooling device should bind. This only works for ACPI fan=
-s and
-processors due to the fact that those drivers store a ACPI device pointer =
-inside
-drvdata, something the ACPI thermal zone expects.
-
-As we cannot require all cooling devices to store an ACPI device pointer i=
-nside
-their drvdata field in order to support ACPI, we must use a more generic a=
-pproach.
-I was thinking about using the acpi_handle of the parent device instead of=
- messing
-with the drvdata field, but this only works if the parent device pointer o=
-f the
-cooling device is populated.
-
-(Cooling devices without a parent device would then be ignored by the ACPI=
- thermal
-zone driver, as such cooling devices cannot be linked to ACPI).
-
->
->> Signed-off-by: Armin Wolf <W_Armin@gmx.de>
->> ---
->> Armin Wolf (8):
->>        thermal: core: Allow setting the parent device of cooling device=
-s
->>        thermal: core: Set parent device in thermal_of_cooling_device_re=
-gister()
->>        ACPI: processor: Stop creating "device" sysfs link
-> That link is not to the cooling devices' parent, but to the ACPI
-> device object (a struct acpi_device) that corresponds to the parent.
-> The parent of the cooling device should be the processor device, not
-> its ACPI companion, so I'm not sure why there would be a conflict.
-
- From the perspective of the Linux device core, a parent device does not h=
-ave to be
-a "physical" device. In the case of the ACPI processor driver, the ACPI de=
-vice is used,
-so the cooling device registered by said driver belongs to the ACPI device=
-. I agree
-that using the Linux processor device would make more sense, but this will=
- require
-changes inside the ACPI processor driver.
-
-As for the "device" symlink: The conflict would be a naming conflict, as b=
-oth "device" symlinks
-(the one created by the ACPI processor driver and the one created by the d=
-evice core) will
-be created in the same directory (which is the directory of the cooling de=
-vice).
-
->>        ACPI: fan: Stop creating "device" sysfs link
->>        ACPI: video: Stop creating "device" sysfs link
-> Analogously in the above two cases AFAICS.
->
-> The parent of a cooling device should be a "physical" device object,
-> like a platform device or a PCI device or similar, not a struct
-> acpi_device (which in fact is not a device even).
-
- From the perspective of the Linux device core, a ACPI device is a perfect=
-ly valid device.
-I agree that using a platform device or PCI device is better, but this alr=
-eady happens
-inside the ACPI fan driver (platform device).
-
-Only the ACPI video driver created a "device" sysfs link that points to th=
-e ACPI device
-instead of the PCI device. I just noticed that i accidentally changed this=
- by using the
-PCI device as the parent device for the cooling device.
-
-If you want then we can keep this change.
-
->>        thermal: core: Set parent device in thermal_cooling_device_regis=
-ter()
->>        ACPI: thermal: Stop creating "device" sysfs link
-> And this link is to the struct acpi_device representing the thermal zone=
- itself.
-
-Correct, the ACPI thermal zone driver is a ACPI driver, meaning that he bi=
-nds to
-ACPI devices. Because of this all (thermal zone) devices created by an ins=
-tance of
-said driver are descendants of the ACPI device said instance is bound to.
-
-We can of course convert the ACPI thermal zone driver into a platform driv=
-er, but
-this would be a separate patch series.
-
->>        thermal: core: Allow setting the parent device of thermal zone d=
-evices
-> I'm not sure if this is a good idea, at least until it is clear what
-> the role of a thermal zone parent device should be.
-
-Take a look at my explanation with the Intel Wifi driver.
-
-Thanks,
-Armin Wolf
+diff --git a/Documentation/devicetree/bindings/phy/transmit-amplitude.yaml b/Documentation/devicetree/bindings/phy/phy-common-props.yaml
+similarity index 90%
+rename from Documentation/devicetree/bindings/phy/transmit-amplitude.yaml
+rename to Documentation/devicetree/bindings/phy/phy-common-props.yaml
+index 617f3c0b3dfb..255205ac09cd 100644
+--- a/Documentation/devicetree/bindings/phy/transmit-amplitude.yaml
++++ b/Documentation/devicetree/bindings/phy/phy-common-props.yaml
+@@ -1,14 +1,14 @@
+ # SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+ %YAML 1.2
+ ---
+-$id: http://devicetree.org/schemas/phy/transmit-amplitude.yaml#
++$id: http://devicetree.org/schemas/phy/phy-common-props.yaml#
+ $schema: http://devicetree.org/meta-schemas/core.yaml#
+ 
+-title: Common PHY and network PCS transmit amplitude property
++title: Common PHY and network PCS properties
+ 
+ description:
+-  Binding describing the peak-to-peak transmit amplitude for common PHYs
+-  and network PCSes.
++  Common PHY and network PCS properties, such as peak-to-peak transmit
++  amplitude.
+ 
+ maintainers:
+   - Marek Behún <kabel@kernel.org>
+-- 
+2.34.1
 
 
