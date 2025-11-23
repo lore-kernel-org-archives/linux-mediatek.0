@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26AAACFA46B
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Nov 2025 09:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02DC4CFA46B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Nov 2025 13:11:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dHTQhH2Ab2LSEOrh4ufzsq76d1ANSJMLO0xKlWKUO30=; b=Cn0wnCuCZPOVTU4rIMWSpM3VRD
-	ARgUsYLFCaMZLFihmKTLbQG+V0YzuI0/UIDWwwqHtP12Ch7/pakJpC37U9YftBTudcP1JdG08c7t1
-	AIF/56mEBshPdKY+Mp/l87/L8pJfb0gunKWM5tpE84rRJ5x8FZwLnX4U7YS9VKDVR2NDY85ulzyJW
-	H+ysspFw/1svI7wHoi8t75NAbcSjh1WtATgVp2S8LWdIm0yIR5tpqonrDytb+gnn9s94VM2vBf1rZ
-	ajFIDXixCtEQBmJ1KECmz1dpdvEqRwN2GAwr6Nq9uGj9xgn8eCC68a8+j6S6ht/7ANcfJfRNFZIzN
-	eCcY4yCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=JqYwVJsOmJQrYDzv7VVBTN9ed/Ah2x9hPbpQxaco2SE=; b=3luqPpgVg78IzdkdCk6ofmqPoK
+	oYcvfwJCL1cV0s83SfJKNCEnbgqENHWinOxSihd89JrWDu9Hqu146RrSJpS7Ssyd+Pt/aehjHQ9fy
+	DNNLbUex9k95na3XFzgxbxTk0QhyALCoseWMKshkZpsf5ab/MXLAjaS8Mbh/76lDs1IeEed/SOC78
+	lfC48IbyjscPjGCFbo9UMOAcxPsU26f9lnOiBwI/oPNc2tCNEVCJ4JVNQpcN/XBczsVZPYV0P6iUu
+	tdwgTW/sc0/DhvkTi4sT4Tu1/LGqKw/v8UD8gPimI+k+BftXBYW1kqVPlPHSGU85T376lkpZoWMK8
+	9Ou8RoNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vN6PO-0000000AIy7-2p84;
-	Sun, 23 Nov 2025 09:29:26 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vN9rn-0000000ARSH-04Bj;
+	Sun, 23 Nov 2025 13:10:59 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vN6PN-0000000AIxZ-2fHK;
-	Sun, 23 Nov 2025 09:29:25 +0000
+	id 1vN9rj-0000000ARR8-2fxY;
+	Sun, 23 Nov 2025 13:10:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C597860154;
-	Sun, 23 Nov 2025 09:29:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0853C113D0;
-	Sun, 23 Nov 2025 09:29:23 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 3F87E40D5A;
+	Sun, 23 Nov 2025 13:10:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32731C113D0;
+	Sun, 23 Nov 2025 13:10:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763890164;
-	bh=2I+PL6KFXMf1ExzwcEo6rxHgBhtJ6ZnSKe1DUCdju6U=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=f7jifpVGDAqPpKDkZuO/QsfToNbQDpJa2kAFJZk4yAylfgk/MeL1ezsABScoWiTZO
-	 Ku+OXoOcjccsTnJNVU1zQf9yPlmKH06vJWutPJzn1yH3BptuD9feIUO/MnErEuPISq
-	 r5y6WFdsKU3khR65MZEj5AZhn/N47JUrWgdbQB0EVoDMyAI+E3GaUQJBay4euzi31x
-	 O2AVOrQYiTC2cLaDfjgimQSwJ6eL1aMJuZUtR1ois0Q7WcCFXdl75NooHFy9CX/xz8
-	 XRwqfzPfl99hPRywUKEZspXnVUBxauU8sJxNXjtiaWVG6jVwA0A0i8bA5DudifPBwP
-	 92yJNUREfDQWA==
-Date: Sun, 23 Nov 2025 11:29:20 +0200
-From: Leon Romanovsky <leon@kernel.org>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Christian Benvenuti <benve@cisco.com>,
-	Heiko Stuebner <heiko@sntech.de>, iommu@lists.linux.dev,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Joerg Roedel <joro@8bytes.org>,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-rdma@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Nelson Escobar <neescoba@cisco.com>,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>,
-	Chen-Yu Tsai <wens@csie.org>, Will Deacon <will@kernel.org>,
-	Yong Wu <yong.wu@mediatek.com>, Lu Baolu <baolu.lu@linux.intel.com>,
-	Kevin Tian <kevin.tian@intel.com>, patches@lists.linux.dev,
-	Vasant Hegde <vasant.hegde@amd.com>
-Subject: Re: [PATCH v3 1/3] RDMA/usnic: Remove iommu_set_fault_handler()
-Message-ID: <20251123092920.GB16619@unreal>
-References: <0-v3-e5d08e2d551e+109-iommu_set_fault_jgg@nvidia.com>
- <1-v3-e5d08e2d551e+109-iommu_set_fault_jgg@nvidia.com>
+	s=k20201202; t=1763903452;
+	bh=tCzm5CbDo44gclV/TPOEMHiNBz2jMCaxD/51uIQiEW0=;
+	h=From:Date:Subject:To:Cc:From;
+	b=GLeyOcOWF0ZHq3xl+eCV/n05OIndaqtkPT2r1BcrCQO//I8pF4m9Fo1ZHXZ6XYr0i
+	 69Idg6APhyYjty9vA4G7Pi/rssut9SU7ptbCDVZkogC/yIy7UoBFQJwg6SxoogH3vN
+	 CFa59vABmbEqf3ziqH9htlJk/dt7vv/RExayhWJY+Pz4c9Bga0prrrLufEy5J5W6NM
+	 ImLznhygM1+4H1+HiLPbenkoXyzc/OpRTgz9mrUpxrekbMAN4+OaDHc1OkESjuUWw+
+	 45BGNBsrvP5akGjuZ41iTlqQP8RHwjokbSsoJoM41GKlQFF8/FhHg50u/V03M7/3Aq
+	 WlEXU6i90IrOQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Sun, 23 Nov 2025 14:10:16 +0100
+Subject: [PATCH mt76] wifi: mt76: dma: Initialize return value in Q_READ()
+ for NPU
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1-v3-e5d08e2d551e+109-iommu_set_fault_jgg@nvidia.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251123-mt76-npu-fix-warning-v1-1-455856b1e99d@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MywqAIBAAfyX23EIaKfQr0UF0qz20hfaC8N+Tj
+ sMw80KiyJSgr16IdHHiTQqougK/OJkJORQG3ehOKd3ieliDsp848YO3i8Iyo3MmBO+J7OShpHu
+ kov/tMOb8AXrg4wxmAAAA
+X-Change-ID: 20251123-mt76-npu-fix-warning-aa6ddccee7fc
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, kernel test robot <lkp@intel.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251123_051055_729509_E58F0303 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,22 +78,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 20, 2025 at 03:46:22PM -0400, Jason Gunthorpe wrote:
-> The handler in usnic just prints a fault report message, the iommu drivers
-> all do a better job of that these days. Just remove the use of this old
-> API.
-> 
-> Reviewed-by: Lu Baolu <baolu.lu@linux.intel.com>
-> Reviewed-by: Kevin Tian <kevin.tian@intel.com>
-> Acked-by: Jason Gunthorpe <jgg@nvidia.com>
-> Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-> ---
->  drivers/infiniband/hw/usnic/usnic_uiom.c | 13 -------------
->  1 file changed, 13 deletions(-)
->
+Even if this is just a theoretical issue since NPU queues are
+initialized just if npu pointer is not NULL, fix the sparse warning
+initializing return value in Q_READ macro if CONFIG_MT76_NPU is enabled.
 
-I imagine that you want to merge this patch through iommu tree.
+Fixes: 62f1347fa5bf6 ("wifi: mt76: Introduce the NPU generic layer")
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202511231550.NHSRTxxd-lkp@intel.com/
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/dma.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks,
-Reviewed-by: Leon Romanovsky <leonro@nvidia.com>
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.h b/drivers/net/wireless/mediatek/mt76/dma.h
+index 4fd779e1aa0f8f9c7a465b948e8bcce5f52711cf..4a63de6c5bf5a34cb76f10a427649bc04ebe78b2 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.h
++++ b/drivers/net/wireless/mediatek/mt76/dma.h
+@@ -74,7 +74,7 @@
+ 
+ #define Q_READ(_q, _field) ({						\
+ 	u32 _offset = offsetof(struct mt76_queue_regs, _field);		\
+-	u32 _val;							\
++	u32 _val = 0;							\
+ 	if ((_q)->flags & MT_QFLAG_NPU) {				\
+ 		struct airoha_npu *npu;					\
+ 									\
+
+---
+base-commit: e1ed98b1836e2bf0aba98f9790be4f3c6bca9d0d
+change-id: 20251123-mt76-npu-fix-warning-aa6ddccee7fc
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
