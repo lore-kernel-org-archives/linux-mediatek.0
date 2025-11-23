@@ -4,66 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02DC4CFA46B
-	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Nov 2025 13:11:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3339CFA46B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 23 Nov 2025 15:44:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JqYwVJsOmJQrYDzv7VVBTN9ed/Ah2x9hPbpQxaco2SE=; b=3luqPpgVg78IzdkdCk6ofmqPoK
-	oYcvfwJCL1cV0s83SfJKNCEnbgqENHWinOxSihd89JrWDu9Hqu146RrSJpS7Ssyd+Pt/aehjHQ9fy
-	DNNLbUex9k95na3XFzgxbxTk0QhyALCoseWMKshkZpsf5ab/MXLAjaS8Mbh/76lDs1IeEed/SOC78
-	lfC48IbyjscPjGCFbo9UMOAcxPsU26f9lnOiBwI/oPNc2tCNEVCJ4JVNQpcN/XBczsVZPYV0P6iUu
-	tdwgTW/sc0/DhvkTi4sT4Tu1/LGqKw/v8UD8gPimI+k+BftXBYW1kqVPlPHSGU85T376lkpZoWMK8
-	9Ou8RoNw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=21RvA6U03of+vOoSNEOHJ12MpJHMWvQkQrUZKv668QE=; b=dbJZyXrZUcXkEos25SsK8daeTk
+	B/PCbWdCJXwVXpj2SaD2hweGpjkGbPPWTHqfwwhuDj3m4l4gS7YmFfxSk1CKfS+yys+dRev8v+6XL
+	UTj/N6iWkcfkzH70E6TWBOfHn/47u/FduQK5eoGibVc/hqeCu77FDfPid6Q06dQwwcDJf8bktgNWQ
+	WaCNH6PWXhc6HR4n9d5xJ030sr2KE5KK9z3cPdlpsGXtNCguZOz3+uK/dR4Mhkx7476G1sCxybSDk
+	q2fC4V/wLS05LvN0Y7yXKc18B4ymPX3eHKCxoaFOgRekiF8NuYa9agbrEZNieNySSBoPPGLCB8hLb
+	H11kPqMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vN9rn-0000000ARSH-04Bj;
-	Sun, 23 Nov 2025 13:10:59 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vNCGi-0000000AWMu-3ZBc;
+	Sun, 23 Nov 2025 15:44:52 +0000
+Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vN9rj-0000000ARR8-2fxY;
-	Sun, 23 Nov 2025 13:10:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3F87E40D5A;
-	Sun, 23 Nov 2025 13:10:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32731C113D0;
-	Sun, 23 Nov 2025 13:10:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1763903452;
-	bh=tCzm5CbDo44gclV/TPOEMHiNBz2jMCaxD/51uIQiEW0=;
-	h=From:Date:Subject:To:Cc:From;
-	b=GLeyOcOWF0ZHq3xl+eCV/n05OIndaqtkPT2r1BcrCQO//I8pF4m9Fo1ZHXZ6XYr0i
-	 69Idg6APhyYjty9vA4G7Pi/rssut9SU7ptbCDVZkogC/yIy7UoBFQJwg6SxoogH3vN
-	 CFa59vABmbEqf3ziqH9htlJk/dt7vv/RExayhWJY+Pz4c9Bga0prrrLufEy5J5W6NM
-	 ImLznhygM1+4H1+HiLPbenkoXyzc/OpRTgz9mrUpxrekbMAN4+OaDHc1OkESjuUWw+
-	 45BGNBsrvP5akGjuZ41iTlqQP8RHwjokbSsoJoM41GKlQFF8/FhHg50u/V03M7/3Aq
-	 WlEXU6i90IrOQ==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 23 Nov 2025 14:10:16 +0100
-Subject: [PATCH mt76] wifi: mt76: dma: Initialize return value in Q_READ()
- for NPU
+	id 1vNCGe-0000000AWME-3gGO;
+	Sun, 23 Nov 2025 15:44:51 +0000
+Received: from DESKTOP-L0HPE2S (unknown [114.245.38.183])
+	by APP-01 (Coremail) with SMTP id qwCowACHHs7WKyNp9PPEAQ--.7449S2;
+	Sun, 23 Nov 2025 23:44:25 +0800 (CST)
+From: Haotian Zhang <vulab@iscas.ac.cn>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: nfraprado@collabora.com,
+	laura.nao@collabora.com,
+	wenst@chromium.org,
+	linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Haotian Zhang <vulab@iscas.ac.cn>
+Subject: [PATCH] clk: mediatek: Fix error handling in runtime PM setup
+Date: Sun, 23 Nov 2025 23:43:15 +0800
+Message-ID: <20251123154315.1564-1-vulab@iscas.ac.cn>
+X-Mailer: git-send-email 2.50.1.windows.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251123-mt76-npu-fix-warning-v1-1-455856b1e99d@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MywqAIBAAfyX23EIaKfQr0UF0qz20hfaC8N+Tj
- sMw80KiyJSgr16IdHHiTQqougK/OJkJORQG3ehOKd3ieliDsp848YO3i8Iyo3MmBO+J7OShpHu
- kov/tMOb8AXrg4wxmAAAA
-X-Change-ID: 20251123-mt76-npu-fix-warning-aa6ddccee7fc
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, kernel test robot <lkp@intel.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: qwCowACHHs7WKyNp9PPEAQ--.7449S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7Ww4rZFy8ZF47Gr1rGryfJFb_yoW8Ar43p3
+	yIqFy3CFW8G34qqr4kJw1DuFy5u3yxKry5Gr95uwn7Zwn3Ca1Iya4rJasFqF109rWkWFy7
+	JryDtayxCF1jvFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUU9Y14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26r1I6r4UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
+	6F4UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVWxJr
+	0_GcWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
+	2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJV
+	W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2
+	Y2ka0xkIwI1lc7CjxVAaw2AFwI0_Jw0_GFyl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x
+	0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2
+	zVAF1VAY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF
+	4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWU
+	CwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCT
+	nIWIevJa73UjIFyTuYvjfUonmRUUUUU
+X-Originating-IP: [114.245.38.183]
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiDAcPA2kjIrUBggABsY
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251123_051055_729509_E58F0303 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20251123_074449_304076_277DAA5D 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,38 +84,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Even if this is just a theoretical issue since NPU queues are
-initialized just if npu pointer is not NULL, fix the sparse warning
-initializing return value in Q_READ macro if CONFIG_MT76_NPU is enabled.
+devm_pm_runtime_enable() can fail due to memory allocation. The current
+code ignores its return value, and when pm_runtime_resume_and_get() fails,
+it returns directly without unmapping the shared_io region.
 
-Fixes: 62f1347fa5bf6 ("wifi: mt76: Introduce the NPU generic layer")
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202511231550.NHSRTxxd-lkp@intel.com/
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Add error handling for devm_pm_runtime_enable(). Reorder cleanup labels
+to properly unmap shared_io on pm_runtime_resume_and_get() failure.
+
+Fixes: 2f7b1d8b5505 ("clk: mediatek: Do a runtime PM get on controllers during probe")
+Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
 ---
- drivers/net/wireless/mediatek/mt76/dma.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/clk/mediatek/clk-mtk.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.h b/drivers/net/wireless/mediatek/mt76/dma.h
-index 4fd779e1aa0f8f9c7a465b948e8bcce5f52711cf..4a63de6c5bf5a34cb76f10a427649bc04ebe78b2 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.h
-+++ b/drivers/net/wireless/mediatek/mt76/dma.h
-@@ -74,7 +74,7 @@
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index ba1d1c495bc2..644e5a854f2b 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -497,14 +497,16 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
  
- #define Q_READ(_q, _field) ({						\
- 	u32 _offset = offsetof(struct mt76_queue_regs, _field);		\
--	u32 _val;							\
-+	u32 _val = 0;							\
- 	if ((_q)->flags & MT_QFLAG_NPU) {				\
- 		struct airoha_npu *npu;					\
- 									\
-
----
-base-commit: e1ed98b1836e2bf0aba98f9790be4f3c6bca9d0d
-change-id: 20251123-mt76-npu-fix-warning-aa6ddccee7fc
-
-Best regards,
+ 
+ 	if (mcd->need_runtime_pm) {
+-		devm_pm_runtime_enable(&pdev->dev);
++		r = devm_pm_runtime_enable(&pdev->dev);
++		if (r)
++			goto unmap_io;
+ 		/*
+ 		 * Do a pm_runtime_resume_and_get() to workaround a possible
+ 		 * deadlock between clk_register() and the genpd framework.
+ 		 */
+ 		r = pm_runtime_resume_and_get(&pdev->dev);
+ 		if (r)
+-			return r;
++			goto unmap_io;
+ 	}
+ 
+ 	/* Calculate how many clk_hw_onecell_data entries to allocate */
+@@ -618,11 +620,11 @@ static int __mtk_clk_simple_probe(struct platform_device *pdev,
+ free_data:
+ 	mtk_free_clk_data(clk_data);
+ free_base:
+-	if (mcd->shared_io && base)
+-		iounmap(base);
+-
+ 	if (mcd->need_runtime_pm)
+ 		pm_runtime_put(&pdev->dev);
++unmap_io:
++	if (mcd->shared_io && base)
++		iounmap(base);
+ 	return r;
+ }
+ 
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.50.1.windows.1
 
 
