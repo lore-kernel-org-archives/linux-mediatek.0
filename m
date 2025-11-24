@@ -4,128 +4,161 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52F7CCFA466
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 15:07:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6F4ECFD313
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 15:36:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9vNsLCBeDp0qTj47JoR93GstfPbGa8Y6IYdp85BG3Y8=; b=EYZsJbZG6tSWIDMm69JAIAFjpv
-	lATKv/4SR2px8XhbRT7nOSFAgnh/Ct/FDCGf+adtLj4ijnBkTKY7Ze2DlZkEfhsXMs3coafIjHXIx
-	zZ68K0A4MJlfrRvBcSj8IIi3ehoFbBYs8YQTQFN+txgCuswXpujEErue8psllY4Cb/J+Gaav1TnUK
-	mjHkJS75Egx6v4zsZvyq0BkEwOrPfOnzAyW/T7bQzgGnokMHiGXKhfYMTos4oswhgnjxN/s98SYvz
-	l4as75aL8XAw5rLQEHiwFcwT1EGMOCnoZuPp3uunBc3jk/bjtKIHFGBnLZMi6pXOn+hkuFqdOoy3K
-	zDR6Liqg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:
+	Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yPYGC7e0wXw9NN6inGU21PEF5T5OMUPZWftkiDy78vU=; b=BH8l5kAjzvoENDhO5AD/imwpzG
+	+rOWdjrEkKoJ4IGBlxbIJYKZt2ptbX+Lma1GC7VjiBy2IP1RytccbDndQWgKTSHKgGlHQclNecjMM
+	DcOYygyQtG8gpRMqjp45PFLYlE0fwy8Keibf0klQZMx8Bm6YBp6cpcaf0U54MGhaHXc74ZMfuSY/g
+	Jrrw2l5z1FZAleGi5cAJWCvzaGHG5PwGPDk3axFSuRCZanv4RU0dnqWcmJydyk53OR9tqIRYITo3K
+	f7TLEyyGcl0OpgF9KhZJeK/Pn0ZhnNUmfEbV80J6/WNXCinLRXx9x/fwODSfswwkf7YZkfS8Kvrg5
+	Kdh69wsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNYAU-0000000BtD2-3jMc;
-	Mon, 24 Nov 2025 15:07:54 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1vNYbx-0000000Bvu8-1hMb;
+	Mon, 24 Nov 2025 15:36:17 +0000
+Received: from mo4-p02-ob.smtp.rzone.de ([81.169.146.169])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNYAR-0000000BtC4-21In;
-	Mon, 24 Nov 2025 15:07:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1763996872; x=1795532872;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Z56v9C0Rg97jOdx0MwIq/SrG80i12igOo1dqKgEs9Ik=;
-  b=F9wAyIBLnhr4in67jjQRzpnplOacaZxsY3Aus2C43yHBexEXkt9QQK3h
-   /HLUZ6EQ/iMnOPzLi1BTF0v0hwXXwFeWHeyxVmCeUoExrSDuLG08APRVF
-   3AfTDglOX5G6C9Of/uL8EyAzS0ZAhXCZpZcfwxqkEm/3CoouS9xb61TmE
-   l6yJ2P/n5i4n1CILVXme3waBiMfRAbF9CVxH+6lrEMfsHB7xtpuTS2ee5
-   H1EtgHYwGd/ncJKiVnBg6jbO2U9BMNFVj3iiRe0EXVmtL77DSKytk6loY
-   +CgUQbyYqJysRi7rIg+GfpiKhd9lkmN5pp5N7IxI2hNnALGBbQIWCdYYt
-   Q==;
-X-CSE-ConnectionGUID: QK9ThwmCTqOD49yQVfAzlA==
-X-CSE-MsgGUID: mgb11TCyRamysXKnAWgx5g==
-X-IronPort-AV: E=McAfee;i="6800,10657,11623"; a="88647369"
-X-IronPort-AV: E=Sophos;i="6.20,223,1758610800"; 
-   d="scan'208";a="88647369"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Nov 2025 07:07:49 -0800
-X-CSE-ConnectionGUID: P/h9s0EiQjK4ZI/Rp7ebrQ==
-X-CSE-MsgGUID: gvu9jDc3QauPN63N7QPpOw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.20,223,1758610800"; 
-   d="scan'208";a="192595689"
-Received: from egrumbac-mobl6.ger.corp.intel.com (HELO localhost) ([10.245.244.5])
-  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Nov 2025 07:07:35 -0800
-Date: Mon, 24 Nov 2025 17:07:33 +0200
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: Romain Gantois <romain.gantois@bootlin.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-iio@vger.kernel.org,
-	Conor Dooley <conor.dooley@microchip.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>, Peter Rosin <peda@axentia.se>,
-	Mariel Tinaco <Mariel.Tinaco@analog.com>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Kevin Tsai <ktsai@capellamicro.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Eugen Hristev <eugen.hristev@linaro.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Sebastian Reichel <sre@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
-	Support Opensource <support.opensource@diasemi.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Iskren Chernev <me@iskren.info>,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Matheus Castello <matheus@castello.eng.br>,
-	Saravanan Sekar <sravanhome@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Casey Connolly <casey.connolly@linaro.org>,
-	Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Amit Kucheria <amitk@kernel.org>,
-	Thara Gopinath <thara.gopinath@gmail.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Olivier Moysan <olivier.moysan@foss.st.com>,
-	Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Dixit Parmar <dixitparmar19@gmail.com>, linux-hwmon@vger.kernel.org,
-	linux-input@vger.kernel.org, linux-phy@lists.infradead.org,
-	linux-pm@vger.kernel.org, linux-mips@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-sound@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com
+	id 1vNYbt-0000000Bvs3-0hyR;
+	Mon, 24 Nov 2025 15:36:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1763998549; cv=none;
+    d=strato.com; s=strato-dkim-0002;
+    b=AxXhNaq2QSyA+TQ9sGyx3P1gVziPvOzC1mocipgLLabpjohSRkDqjI1cne9HVoSeh3
+    EnrZNfSgjP1fkjDF02BI/GRQ+Dlt1UWmyCY0qQ2MyBtqFwIIJx7w8W3Hv9PI+vFItyN8
+    lQJlxl2pC+nRrzjnJisQJprAOdJymmXgqo4lZVCF56TWUG1wrdzbOcBydhf5OjtDCqCc
+    GKlA9q6otJ2L09VDsY1gMenvZ5+Z7YS++VHUZPHSwADBwX0nY6DZH1elLMkgIFSulBES
+    aYSdlKDtU7dfJjQW6amzkhmjz9NEgevJ8Paccr89T+PUxgclv5gvcqOZABUIWm+b7PTb
+    UUDA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; t=1763998549;
+    s=strato-dkim-0002; d=strato.com;
+    h=To:References:Message-Id:Cc:Date:In-Reply-To:From:Subject:Cc:Date:
+    From:Subject:Sender;
+    bh=yPYGC7e0wXw9NN6inGU21PEF5T5OMUPZWftkiDy78vU=;
+    b=RVybWi/SxEwGc/kwktk+ZNBGkZLxnSHUuQKrkvughpmcdO5PS7F0FfveC2RpmVLt8S
+    gCR0u/iCYTUC1CiggbIAS4NRyprEfO6AjwcSU1DudI8/UrEa4XLaJgCW84cWcWUNdo5J
+    cBhEiLi/W3LSA+q6vh0R+GojuDDDgivJ78pcpOtmsUjewwQsm7i72J6etvGtNQx0yJ7T
+    ufVHuqCZMuEE5Cn40YOANqv51dmGjChS+88KLUHyXziSqzSFF6hI2SjwassLh1PrAaqw
+    TPKrNSr45cm7mipuHPs4Qx4YnuOzOHK5qhXh+FGWXK/y0l3xYHF6+fYm2MGTB7mM+PuV
+    2aQg==
+ARC-Authentication-Results: i=1; strato.com;
+    arc=none;
+    dkim=none
+X-RZG-CLASS-ID: mo02
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1763998549;
+    s=strato-dkim-0002; d=goldelico.com;
+    h=To:References:Message-Id:Cc:Date:In-Reply-To:From:Subject:Cc:Date:
+    From:Subject:Sender;
+    bh=yPYGC7e0wXw9NN6inGU21PEF5T5OMUPZWftkiDy78vU=;
+    b=R6UBGPa9x9MkdRHjS/IuikyqOUXWv1KBdDySoPmgYx+4NTPgZ7/smXUpAL6Q2zb8ZY
+    jAwqnurxeH0ajazUQ9Ivv1jYO+7IwhXEsrVy27OFuOSGnCGGWS7yqizHJJKh/EfscUM7
+    5PsPhD8c361yNsXZpX1N5b1zPKrbVAyjmzoUZxzvRKdwaTCxgiwoezFo78QfANE61+W6
+    v0wWNL7t0sHGhxvAvbyYVYDuR/kGlVXFWkG+Ojo2SwJ86YKMSKCVHkueqy8hw2TbEoqg
+    omaZDp2y0x3ICYlaD+BB+gs7H7AofF9BpShEil2sYdfsWSgUy/CtaVYDhLeu0dcRHemo
+    75nw==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; t=1763998549;
+    s=strato-dkim-0003; d=goldelico.com;
+    h=To:References:Message-Id:Cc:Date:In-Reply-To:From:Subject:Cc:Date:
+    From:Subject:Sender;
+    bh=yPYGC7e0wXw9NN6inGU21PEF5T5OMUPZWftkiDy78vU=;
+    b=HQSxeqBIVWTYHstF0sD6f0h9eEWFTR1YJ5u10+ub9jcIb6fZ+1a65aG5BegC1mk/ut
+    xL4jvvIrjso43H/cy3Dg==
+X-RZG-AUTH: ":JGIXVUS7cutRB/49FwqZ7WcJeFKiMhflhwDubTJ9o12DNOsPj0lFzL1yeT0Z"
+Received: from smtpclient.apple
+    by smtp.strato.de (RZmta 54.0.0 DYNA|AUTH)
+    with ESMTPSA id Qc14a81AOFZeEjB
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (curve X9_62_prime256v1 with 256 ECDH bits, eq. 3072 bits RSA))
+	(Client did not present a certificate);
+    Mon, 24 Nov 2025 16:35:40 +0100 (CET)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81.1.3\))
 Subject: Re: [PATCH v4 0/6] Add support for the LTM8054 voltage regulator
-Message-ID: <aSR0tcV0ULNYvf7t@smile.fi.intel.com>
+From: "H. Nikolaus Schaller" <hns@goldelico.com>
+In-Reply-To: <23111366.EfDdHjke4D@fw-rgant>
+Date: Mon, 24 Nov 2025 16:35:28 +0100
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Jonathan Cameron <jic23@kernel.org>,
+ David Lechner <dlechner@baylibre.com>,
+ =?utf-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
+ Andy Shevchenko <andy@kernel.org>,
+ Guenter Roeck <linux@roeck-us.net>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org,
+ linux-iio@vger.kernel.org,
+ Conor Dooley <conor.dooley@microchip.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>,
+ Peter Rosin <peda@axentia.se>,
+ Mariel Tinaco <Mariel.Tinaco@analog.com>,
+ Lars-Peter Clausen <lars@metafoo.de>,
+ Michael Hennerich <Michael.Hennerich@analog.com>,
+ Kevin Tsai <ktsai@capellamicro.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Eugen Hristev <eugen.hristev@linaro.org>,
+ Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Sebastian Reichel <sre@kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>,
+ Support Opensource <support.opensource@diasemi.com>,
+ Paul Cercueil <paul@crapouillou.net>,
+ Iskren Chernev <me@iskren.info>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Matheus Castello <matheus@castello.eng.br>,
+ Saravanan Sekar <sravanhome@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Casey Connolly <casey.connolly@linaro.org>,
+ =?utf-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
+ Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>,
+ Amit Kucheria <amitk@kernel.org>,
+ Thara Gopinath <thara.gopinath@gmail.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>,
+ Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
+ Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Olivier Moysan <olivier.moysan@foss.st.com>,
+ Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Dixit Parmar <dixitparmar19@gmail.com>,
+ linux-hwmon@vger.kernel.org,
+ linux-input@vger.kernel.org,
+ linux-phy@lists.infradead.org,
+ linux-pm@vger.kernel.org,
+ linux-mips@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org,
+ linux-sound@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ Andy Shevchenko <andriy.shevchenko@intel.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <563331EB-2460-4CF5-87B3-5FE60B18BB70@goldelico.com>
 References: <20251124-ltm8054-driver-v4-0-107a8a814abe@bootlin.com>
  <24527d76-4f6a-4008-a369-23510d492a94@roeck-us.net>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <24527d76-4f6a-4008-a369-23510d492a94@roeck-us.net>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+ <23111366.EfDdHjke4D@fw-rgant>
+To: Romain Gantois <romain.gantois@bootlin.com>
+X-Mailer: Apple Mail (2.3826.700.81.1.3)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251124_070751_596667_886CD8FA 
-X-CRM114-Status: GOOD (  17.61  )
+X-CRM114-CacheID: sfid-20251124_073613_498930_A0A58C64 
+X-CRM114-Status: GOOD (  27.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,29 +173,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 24, 2025 at 06:57:41AM -0800, Guenter Roeck wrote:
-> On 11/24/25 06:48, Romain Gantois wrote:
-> > 
-> > This is version four of my series which adds initial support of the Linear
-> > Technology LTM8054 voltage regulator. The driver supports a fixed voltage
-> > and a tunable output current limit using a DAC-controlled pin.
-> > 
-> > I'd say that the most unusual part of this series is the usage of the IIO
-> > consumer API in a regulator driver. I think this makes sense here, since
-> > the regulator driver has to access a DAC to read/set the output current
-> > limit.
-> 
-> I don't think that is a valid reason. Literally every driver measuring voltages
-> or current uses a DAC to do it. How else would one convert an analog value
-> into a digital value ?
+Hi
 
-While I'm not objecting your vision on this, the ADC is also possible to use to
-"measure" the analog signal. DAC approach IIRC considered cheaper solution, but
-require an analogue comparator.
+> Am 24.11.2025 um 16:13 schrieb Romain Gantois =
+<romain.gantois@bootlin.com>:
+>=20
+> Hello Guenter,
+>=20
+> On Monday, 24 November 2025 15:57:41 CET Guenter Roeck wrote:
+> > On 11/24/25 06:48, Romain Gantois wrote:
+> > > Hello everyone,
+> > >=20
+> > > This is version four of my series which adds initial support of =
+the Linear
+> > > Technology LTM8054 voltage regulator. The driver supports a fixed =
+voltage
+> > > and a tunable output current limit using a DAC-controlled pin.
+> > >=20
+> > > I'd say that the most unusual part of this series is the usage of =
+the IIO
+> > > consumer API in a regulator driver. I think this makes sense here, =
+since
+> > > the regulator driver has to access a DAC to read/set the output =
+current
+> > > limit.
+> >=20
+> > I don't think that is a valid reason. Literally every driver =
+measuring
+> > voltages or current uses a DAC to do it. How else would one convert =
+an
+> > analog value into a digital value ?
+>=20
+> Sorry, I don't quite understand your remark. To integrate this voltage=20=
 
--- 
-With Best Regards,
-Andy Shevchenko
+> regulator component into the Linux regulator abstraction, I'm =
+providing a=20
+> current limit control function. To provide such a function, the =
+voltage level=20
+> on a pin has to be controlled. AFAIK, the kernel abstraction used to =
+set=20
+> precise voltages on lines is an IO channel.
 
+I was curious to learn about this topic and looked into the data sheet:
+
+=
+https://www.analog.com/media/en/technical-documentation/data-sheets/8054fa=
+.pdf
+
+As far as I see the LTM8054 does not even have a programming interface.
+So is it reasonable to provide a dedicated driver at all?
+
+The figure on page 20 seems to suggest that there is an external DAC
+which drives the regulator. And the regulator drives for example a fan.
+
+So I would think of a driver for the specific DAC and ignore the =
+specific
+LTM chip at all.
+
+What could be necessary is if you really want to be able to "regulate"
+the current going to Vout, some bridge between regulator API and some
+IIO DAC.
+
+And enabling/disabling the regulator by some GPIO can be described in
+the DT already through a "regulator-fixed".
+
+But this are just my first thoughts as I have not been following this
+topic before. Hope it helps.
+
+BR,
+Nikolaus
 
 
