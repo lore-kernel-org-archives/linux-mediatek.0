@@ -4,94 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B3BFCFD341
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 17:56:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68C6FCFD345
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 18:25:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
 	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dgj16XmQKLfzuMiMJnYwYhnRMSc7HIdJxo40jdxC8fc=; b=HcnVB2cPFdB/io
-	rkTVPU22Wu9fuHj+Bmh951M5LRuxTd7I2kkhy+J4QEYj1jsAKYlcT7PayKk2rZMXtwoDDPiTnHWF+
-	eDxkts+yUAAaMzGuyZ/9x8Z3k/IGlmZ489wbjqb178vk7DK5qAOqUQoy2F8y8HkhgYfPVvKpDM8O/
-	szNoh149qTSN65FrcR9JTkzVMi2CCw0YwidNruKEnlArbx+zJ5eWtpt5VUedr33EfSra+j6UgReT5
-	Y2tkJ/JKMpAsFVRr2tbaP5pS19UbNFMJ7B4BvhtB11JFngpDP5nfxTe5P4m2Be+oiPSlROCmwzhHB
-	7fSU6kZsHdcKedAyX1pg==;
+	List-Owner; bh=tT3hJS80cNjtdeK1a1hTCAW6GUTi3Z7+AdwEEe81LCI=; b=eVyZaPVXF2bc/1
+	vcrjExUICEhzWLct8i+lOfnqQuC+A1rKUGU8dfIoVUszZTA65Lmnbm2iVCzRrmW1ONzYu4JRFBdBN
+	NaKhnaeCMHTaS7PeTtuf3xy93jTccV1hFAjrMYmc80FKKZrEK8lc1Z5HEGWW6kg6ermtsyILE/iU+
+	JuiFOwW7LnGzvruoS9F0YG1epujxC2R4k9HOlmP9cVd2piO05bh9u4bPN/pz+nGA6RSYtARLiq+Rx
+	cN5+KuY0jElnO/aSTOQlWTJ0bklo1btqnrO2O82KF44Mjyawg5nU6eDfUkiws4fn6oaZyOpPmSWq+
+	q7g1laY7CwoBfp7qbbbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNank-0000000C8b7-2jhX;
-	Mon, 24 Nov 2025 17:56:36 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1vNbFZ-0000000CB0e-34ZI;
+	Mon, 24 Nov 2025 18:25:21 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNanh-0000000C8aF-2Se9
+	id 1vNbFW-0000000CAzf-3AHY
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Nov 2025 17:56:35 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-47755de027eso24501605e9.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Nov 2025 09:56:32 -0800 (PST)
+	Mon, 24 Nov 2025 18:25:20 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-477a2ab455fso50160385e9.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Nov 2025 10:25:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1764006991; x=1764611791; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1764008717; x=1764613517; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=dgj16XmQKLfzuMiMJnYwYhnRMSc7HIdJxo40jdxC8fc=;
-        b=A/n34a9DxVpJXi1RaTVFZj284yFUdo0wNHNJQ54to2LNre9Rn0d23Gy0hvLGa2NleQ
-         0RS+HhnhHVsPYBD+9ebSxWir4/uvzW3dotWaBZM+xUQKJJQlqU1MCmM0uW+EA5OEc7r1
-         OWJul8K5/ELRHoyOyaK2n9Dkobv9QbVdGHK+KvX0XTOOEdyjaZMG/+UTYQGO6GxSgq19
-         aI4G5jHEkiFjPDD/mOIODI4miCSWrzyUHnzEDMTICMyDN5fhVlhZwEY5JDiimeEi5p9i
-         GVgLQgBlQU4bLGvMZ9yOn/D89STKWHOmNb4s2iq1bPATKh58Sy7wrSm77htUPEs1YXUE
-         JBJg==
+        bh=tT3hJS80cNjtdeK1a1hTCAW6GUTi3Z7+AdwEEe81LCI=;
+        b=iL+j+91D/uno1IU/VD6uUb90j8JbPmw1QiYEmTpZFJ2b4zONTK4sRnQ/uk56RU4B4a
+         d/ZkdtGWWSTys6UGwu/SQKurOu4ZenSHK2dTGM30NRPBaSAgdLUpTD51xsLmS+Yw+xKI
+         mVqobcEZTdtQnVGJh46o/eOA9CY+sOc1/5/Fz29AW1ztTqrSrO1UTjnn1DyycFw8U+d6
+         d0+oojkNOFfTZc0dOuB4ejvTHhQdd1ZK6S28vNzS4KLXmwAuxnB3jtnQIH3DmgLs/cDc
+         zJ1VI5STas73axofiv78QIngwkEJNYHZgRWzGgNIvNrHR/sYJ6q16fkq/5qnY5jK5Fqe
+         zSpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764006991; x=1764611791;
+        d=1e100.net; s=20230601; t=1764008717; x=1764613517;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=dgj16XmQKLfzuMiMJnYwYhnRMSc7HIdJxo40jdxC8fc=;
-        b=ms7LurdBDh3pGXpgRZnjJh2VSpkTLK0jxsSHnUuM5U4Iv9AVFoQFy34M73JNtQLuM4
-         edmNVw8I3IltEACdAMGnJwwtILYKxmY+VQ6AvClb3x/ALAvC+lLNGp1QpbWIOhSdfVIs
-         42WbwctNxWMUEzPMks3GcPVbAdjEHlnYhBIQMOrEbRPrzPIAiyEcBW3PWzHNavumiio7
-         DP+AbjIdW/+aMj1S8PzoduznMjsO0JucVJSKGVdmcvBhI69u8ox2kFndOOBzm9q7JRfZ
-         s0U2QxBMImFc5RLKdv4X9HkM0BU1hfkowlEU3dhi8YFxx1/OYSO3FIid9ENqiMqWJkIm
-         7wkw==
-X-Forwarded-Encrypted: i=1; AJvYcCUoHSuKkClbzSMBh3TvB8wvxNIIJNdXdkxTbs1h16HBOVcdHay7DPc7dbylgLXG44N+te/O5VqWQzjmaCDv3g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwDBNUkU1M/FRxLOr4KpBxGrEqgy5KkkUX3PmJ9XYhbvJCWFsPe
-	HfigF/q3Cj2B//fHreyORpMwQbxcMbFfaBYfU5hG0YUeveRxxha05Ly6RlH2C5edXEc=
-X-Gm-Gg: ASbGncvcwFME88NnsSivEQt767EDEytWHZqwsiFIUKwtMVgc0SExzvZS9zbkLHdzg7J
-	BVefs3UQ7I4hVkIJhUoaPWTDQVu9xYYBWpzL5V+meiCMnIvB2vmVa6RCe4l6yiEjFwPctZozI7K
-	WFRuABSliUnFqetiTBMt4w8joPwKGqdqqEy57d+7PHFiO4U2Tb0Mq5a7ImC3NOOlib3opoSALzI
-	6OYMg1EhJc4I0LGossXM0Wtp2BNg8LYB6C0aUumdMJ6krU0bcHmAS1XNADdMtckZ1vK+Qn0gZIf
-	610J+zbJpBRS2exYBEYK8WrZJhae0fZmnPvOAOU85eOlnaNHFvPE3cHTE9KbHGsBuJ6PYi6zfst
-	2kWufHsrmWIuWYf5n5So62x0qhzurCreIPQ78AuYQYit1zrTN+GkHgv+tCo0l1Z0tz7wHKXR3z1
-	7i2jhnnxHg0nUGueJy7l8/Fe+ezogmNxobVhV1D7Qi/mxpZrT49EnNnzx93lwgqSSiGVhjKY3bB
-	8y4
-X-Google-Smtp-Source: AGHT+IF9jQYjGDYWRD+2xNGzxOUo7frTRxo+/YiP6cBgQWSgQQXQD/fGaLUkrkLZhoAvTfv/zaiUjQ==
-X-Received: by 2002:a05:600c:1f94:b0:477:28c1:26ce with SMTP id 5b1f17b1804b1-477c016bbd5mr123402035e9.7.1764006991417;
-        Mon, 24 Nov 2025 09:56:31 -0800 (PST)
+        bh=tT3hJS80cNjtdeK1a1hTCAW6GUTi3Z7+AdwEEe81LCI=;
+        b=A735ebb5Z+/zfUDzwrP/4IcWPlddyfAlp0t6KP/+e2E4Ph6N5ySW1sr4GsHu9yIX07
+         BMKfbtNH2n52VmHMdVM3bhBCuxV19F5zvFrIwb5q0WR9enfQH+4HsBUrGVhS8UU2q5Rj
+         D/qQGHDl6wv1riUpBz5nVSWPtz900uPoyQZNFT8F6oMNAnlzh4xSFfl8mLmotwmuR5Qs
+         KmXhZ0dZLi+JUwsWZwmojakVdjWmKeDorV6XPefU2L5tFyAnJXhhqf930B9yJRPgLdVi
+         VVHia8SLouQxRd35F3fPTesOggHv3rwIwcskc9r2iYh9GN3MDws5udjwEMnLFQIZmbcU
+         12Uw==
+X-Forwarded-Encrypted: i=1; AJvYcCVoQ5P1pL15m7JM7JPsSqCZ8mI31/ojqcJqL5O1vc2f+cHuV6gGu/akFfhiEA8U+kqJus6efiH2/iXFZx5hkQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxQUakZaEApn+fib2456CURNtYB0+IxuBoSQqxaWjG3jrUeil6j
+	CKUJwEmH9CJrk5FoUqd+WMpOy/6REGPWGST4zfpz9CmB7DVLciOuXG5rPdHt4lCHTKQ=
+X-Gm-Gg: ASbGncvGITl9Fha8+33RUl80/4/uhDkAZZDfQ68FZXMt2vCbXBCaGllgbdtpk3JY1rg
+	JB+azF10VbdUE7y4RRNuY5xymzC/efJHS9WsBI0RSBmX2PhJ85EgPjtvo6bigMnKV1znKDZoimk
+	DU1z641tXjII0Wq/obyirn016+JIULFqb2mzAtA+H1s6M0UdmkJuWXf4nwXrR5oRQcl4NSej+ej
+	t8saicMGLsIhhqZmALW51RoQ+D5RI8GXE32RmsmMosNLN4AOJWxKI1fr18j58di16pYVVNi3oBy
+	RG2xksCWLaRSPkD0Hd2UK+UilElp6Q6YaOrZcBY/Q6XoCRTlSJDNTEjhLBbhGfjDag8MEW52o9+
+	ZjXd5jsW/4xdVfPQTUyU/fWrYc530QSuyOM3m2olz1yJ2fyvj+rMdqofq1WSc7SBAJuA+F2kkZc
+	eOWZaTGFot6htdk6bVi63TxBJXym5zz1AWIoFSHfBJD5yAuE2cs5y7fYrH+SOB47yKdQ==
+X-Google-Smtp-Source: AGHT+IEp/+xfgqCCD0AdpFxMvmOtmfqswl3tOTSPHA1XXl6DHcUQiOYz7lT/1lNZ+sQorO1fAsI5XQ==
+X-Received: by 2002:a05:600c:4ec7:b0:477:9b4a:a82 with SMTP id 5b1f17b1804b1-477c1138445mr126058885e9.35.1764008716859;
+        Mon, 24 Nov 2025 10:25:16 -0800 (PST)
 Received: from ?IPV6:2a05:6e02:1041:c10:a756:bb6c:7b35:af9b? ([2a05:6e02:1041:c10:a756:bb6c:7b35:af9b])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-477bf198a67sm217894095e9.0.2025.11.24.09.56.30
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-477bf1f365fsm209857255e9.8.2025.11.24.10.25.15
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Nov 2025 09:56:30 -0800 (PST)
-Message-ID: <190003b6-2931-406a-a8f6-ec8909c65162@linaro.org>
-Date: Mon, 24 Nov 2025 18:56:29 +0100
+        Mon, 24 Nov 2025 10:25:15 -0800 (PST)
+Message-ID: <24a5bd31-a79f-4f18-a190-6a4d886a29b2@linaro.org>
+Date: Mon, 24 Nov 2025 19:25:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 3/9] thermal/drivers/mediatek/lvts: Fail probe if
- temp_factor is zero
+Subject: Re: [PATCH v4 2/9] thermal/drivers/mediatek/lvts: Make number of
+ calibration offsets configurable
 To: Laura Nao <laura.nao@collabora.com>, srini@kernel.org, robh@kernel.org,
  krzk+dt@kernel.org, conor+dt@kernel.org, rafael@kernel.org,
  rui.zhang@intel.com, lukasz.luba@arm.com, matthias.bgg@gmail.com,
  angelogioacchino.delregno@collabora.com
 References: <20251121-mt8196-lvts-v4-v4-0-357f955a3176@collabora.com>
- <20251121-mt8196-lvts-v4-v4-3-357f955a3176@collabora.com>
+ <20251121-mt8196-lvts-v4-v4-2-357f955a3176@collabora.com>
 Content-Language: en-US
 From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20251121-mt8196-lvts-v4-v4-3-357f955a3176@collabora.com>
+In-Reply-To: <20251121-mt8196-lvts-v4-v4-2-357f955a3176@collabora.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251124_095633_654349_D88ABF82 
-X-CRM114-Status: GOOD (  16.15  )
+X-CRM114-CacheID: sfid-20251124_102518_855984_5D760E44 
+X-CRM114-Status: GOOD (  19.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,36 +107,98 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 11/21/25 12:16, Laura Nao wrote:
-> temp_factor is used in lvts_temp_to_raw() and lvts_raw_to_temp(). If
-> platform data is incorrect and temp_factor is zero, it could cause a
-> division by zero. Fail the probe early to prevent a kernel crash.
+> MT8196/MT6991 use 2-byte eFuse calibration data, whereas other SoCs
+> supported by the driver rely on 3 bytes. Make the number of calibration
+> bytes per sensor configurable, enabling support for SoCs with varying
+> calibration formats.
 > 
+> Reviewed-by: Fei Shao <fshao@chromium.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Tested-by: Frank Wunderlich <frank-w@public-files.de>
 > Signed-off-by: Laura Nao <laura.nao@collabora.com>
 > ---
->   drivers/thermal/mediatek/lvts_thermal.c | 5 +++++
->   1 file changed, 5 insertions(+)
+>   drivers/thermal/mediatek/lvts_thermal.c | 32 ++++++++++++++++++++++----------
+>   1 file changed, 22 insertions(+), 10 deletions(-)
 > 
 > diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-> index 1c54d0b75b1a..b49441d82ffd 100644
+> index ab55b20cda47..1c54d0b75b1a 100644
 > --- a/drivers/thermal/mediatek/lvts_thermal.c
 > +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> @@ -1346,6 +1346,11 @@ static int lvts_probe(struct platform_device *pdev)
->   	if (irq < 0)
->   		return irq;
+> @@ -96,12 +96,14 @@
 >   
-> +	if (!lvts_data->temp_factor)
-> +		return dev_err_probe(
-> +			dev, -EINVAL,
-> +			"temp_factor should never be zero; check platform data.\n");
+>   #define LVTS_MINIMUM_THRESHOLD		20000
+>   
+> +#define LVTS_MAX_CAL_OFFSETS		3
+
+I suggest LVTS_NUM_CAL_OFFSETS then below,
+
 > +
+>   static int golden_temp = LVTS_GOLDEN_TEMP_DEFAULT;
+>   static int golden_temp_offset;
+>   
+>   struct lvts_sensor_data {
+>   	int dt_id;
+> -	u8 cal_offsets[3];
+> +	u8 cal_offsets[LVTS_MAX_CAL_OFFSETS];
+>   };
+>   
+>   struct lvts_ctrl_data {
+> @@ -127,6 +129,7 @@ struct lvts_data {
+>   	const struct lvts_ctrl_data *lvts_ctrl;
+>   	const u32 *conn_cmd;
+>   	const u32 *init_cmd;
+> +	int num_cal_offsets;
+>   	int num_lvts_ctrl;
+>   	int num_conn_cmd;
+>   	int num_init_cmd;
+> @@ -711,7 +714,7 @@ static int lvts_calibration_init(struct device *dev, struct lvts_ctrl *lvts_ctrl
+>   					u8 *efuse_calibration,
+>   					size_t calib_len)
+>   {
+> -	int i;
+> +	int i, j;
+>   	u32 gt;
+>   
+>   	/* A zero value for gt means that device has invalid efuse data */
+> @@ -720,17 +723,18 @@ static int lvts_calibration_init(struct device *dev, struct lvts_ctrl *lvts_ctrl
+>   	lvts_for_each_valid_sensor(i, lvts_ctrl_data) {
+>   		const struct lvts_sensor_data *sensor =
+>   					&lvts_ctrl_data->lvts_sensor[i];
+> +		u32 calib = 0;
+>   
+> -		if (sensor->cal_offsets[0] >= calib_len ||
+> -		    sensor->cal_offsets[1] >= calib_len ||
+> -		    sensor->cal_offsets[2] >= calib_len)
+> -			return -EINVAL;
+> +		for (j = 0; j < lvts_ctrl->lvts_data->num_cal_offsets; j++) {
+> +			u8 offset = sensor->cal_offsets[j];
+> +
+> +			if (offset >= calib_len)
+> +				return -EINVAL;
+> +			calib |= efuse_calibration[offset] << (8 * j);
 
- From my POV, this is not really useful. The temp_factor is set for each 
-version statically in the code. The scope is limited to the driver, IOW 
-it is not a parameter other subsystems passes to the driver.
+May be worth for a comment here, ideally a separate function to clarify 
+the code
 
-If it is NULL, then shame on the submitter who did not test the driver 
-before sending ;)
+> +		}
+>   
+>   		if (gt) {
+> -			lvts_ctrl->calibration[i] =
+> -				(efuse_calibration[sensor->cal_offsets[0]] << 0) +
+> -				(efuse_calibration[sensor->cal_offsets[1]] << 8) +
+> -				(efuse_calibration[sensor->cal_offsets[2]] << 16);
+> +			lvts_ctrl->calibration[i] = calib;
+>   		} else if (lvts_ctrl->lvts_data->def_calibration) {
+>   			lvts_ctrl->calibration[i] = lvts_ctrl->lvts_data->def_calibration;
+>   		} else {
+> @@ -1763,6 +1767,7 @@ static const struct lvts_data mt7988_lvts_ap_data = {
+>   	.temp_factor	= LVTS_COEFF_A_MT7988,
+>   	.temp_offset	= LVTS_COEFF_B_MT7988,
+>   	.gt_calib_bit_offset = 24,
+> +	.num_cal_offsets = 3,
 
+LVTS_NUM_CAL_OFFSETS
 
 
 -- 
