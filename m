@@ -4,93 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F6B3CFA466
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 16:03:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF93ACFA466
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 16:20:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:Cc
-	:Subject:From:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
-	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:
+	Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p+QBWKtawqpPzZu9LPDyPm5gsgmOzV7hJRZ5Ebshggc=; b=m9tOY1qVxr0LME/58Cuc0z28W5
-	SfoA1Nc7TS1nSXW2cZjrnixANnGer2xv+MbGKUdhTp8bAMckn4qibS+Q/xrAYScAgJcQ3GOF+pqVv
-	IK5/IZq/bbtRvMMfO36nEzqnAstzNPbuEiQBET4m/Y+Lh2JlFXzLiYuU3LiqkTbhdBAyyKEi8aHPG
-	g1gRKBxW4XnI1EdRKGOb+uMbtd8foYbhGOyP/I2lNXu0df+N1TzBehnqHBPEctX2x5LGJXkhoRcVN
-	P7wOg9EcdGnREmawCrzDPTctzDN3vSFtO5uE3We7go6dm66ftpIbDVuJcDjELtKdEql2qULoTx5wa
-	BM7uWzfA==;
+	bh=YAUaPVN/LGE+6Tp5hwdCL/oWm3I9gZiHnGqVnZITlYs=; b=AfP/F1ys/7UYcEupwIvHFHBKUs
+	7CtAkIUWJSqlt5Zs5JVGve2NuAv//nRIIbfB6kfnEZ2NAZWNa4d4CYSG8k5yYftXjhr2NLPo1x1Ds
+	6B2iFtKRZX7patPPZvqMUSqM0wsuC4rJVpeIYb/LlR44MWd+L9l8JjYJIsnjvGtEImfISdW1B27gG
+	rQFZiN6BMAumOHOp304WTNmztjjeyOrC0VqJW/+uEGECpEfp93JmmEj1oDiNOtfQzO1WFEAZb5zqd
+	b6ktjOWEDLw6KYgx7ewUW6U9L4/AjvSnurjJcl5kGV/kQAVdFWieuUvvuoTW9Jr1vlzHgIjpCwCtT
+	uc3A3Djw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNZ29-0000000BxqD-1wno;
-	Mon, 24 Nov 2025 16:03:21 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1vNZId-0000000BzBo-1JLv;
+	Mon, 24 Nov 2025 16:20:23 +0000
+Received: from mo4-p03-ob.smtp.rzone.de ([81.169.146.174])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNZ26-0000000BxpD-2onv
-	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Nov 2025 16:03:20 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 632914E418A2;
-	Mon, 24 Nov 2025 16:03:15 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 2CA36606FC;
-	Mon, 24 Nov 2025 16:03:15 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id B4CDF10371A40;
-	Mon, 24 Nov 2025 17:03:01 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1764000193; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=p+QBWKtawqpPzZu9LPDyPm5gsgmOzV7hJRZ5Ebshggc=;
-	b=cc20tvebhyskRFsehgbMDtN58mFWJzw3+meTYMQYXrWdpw5VV3uKvGIpPD9HS8R83EmRZH
-	qALe8e5UUI6C7MJXNERyWBLmNk5WfzKKvn8Wss/BPa1OVvmct7arm5zW27QDKgInGVcz6k
-	oi6j2QLmL3GbqobdqI1pyE5V0TLsDjFvq2MBjZC1AlbLsk1PMdr+v727PXLGHuuUayjymh
-	vV+Lgfi2eIyHigvvg8KiU75iRe8JFjVl6qwYhTFrQuO5g/Z240s/dFBsN/mdGefIWxxz3z
-	LHntkwUmsv/8hiteqTu/SKAu006LhE9TFbOO34cMGYjkq2/kVuVeteyUjoVDQw==
-Mime-Version: 1.0
+	id 1vNZIZ-0000000BzAw-3NqJ;
+	Mon, 24 Nov 2025 16:20:21 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1764001204; cv=none;
+    d=strato.com; s=strato-dkim-0002;
+    b=Mi6ffgTzeLDd6by16LVPA9WBGsA3fZVxfsWD+cc37oI6ulg6dD65T95bJgc6HltKK7
+    N4uWDZgtyOZZdYje8gbuVu9T95X4b6tGrirbXguEMFuLjxnmBeIEHwAlx2PfiDgOUf0X
+    Y5unUlSKON44f9TwafsNmg1XK3HCWLwKQQjfA0arXHoDi0VhL9qaRszysZeC26RBdtLK
+    YO6XinkyNSO/eRv4GXglIu2zaNXRdLUGDJVxoPF+Ebn7lEWzAKhSqULCVuldOiLIotTx
+    q8gu653gQC85578icQWFyQi2iHeAZ1lQr+Y9ej1sK6GmFp8zfbiANYXvd+0sRoKehivg
+    eixA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; t=1764001204;
+    s=strato-dkim-0002; d=strato.com;
+    h=To:References:Message-Id:Cc:Date:In-Reply-To:From:Subject:Cc:Date:
+    From:Subject:Sender;
+    bh=YAUaPVN/LGE+6Tp5hwdCL/oWm3I9gZiHnGqVnZITlYs=;
+    b=cUCmeEBRlYbwM5vOtKFOqHLCauD/E9W7U80NSRAFCB7CoOMD6R2e9+FINz97vTBUxa
+    EaSR9ryKUBDxRXQpAuCFmDrC0Vlz24ODRPRgx20QLtw0CMv6m9nQcIyaVoFA8Hxfe7Ns
+    oRovNaPokz6MeFJr6evXGsdP1dQAe4qrW7Rhh8UKE+mmCQQTJhJXqs0jPA9JE2TMH1EX
+    +yD6kiySzwCuyWvVMLnxzmucLJJrS/5Vb+Y87JuqTctbDFAEVk5grUxKLv8SBccG9mq+
+    b+y8Oj/N/tdmVhKCQxdC+mP4Lcd2i8XJLq1ejg/w9WMfARWVbl5i+FddPbgbqtCDfNeR
+    mgPQ==
+ARC-Authentication-Results: i=1; strato.com;
+    arc=none;
+    dkim=none
+X-RZG-CLASS-ID: mo03
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1764001204;
+    s=strato-dkim-0002; d=goldelico.com;
+    h=To:References:Message-Id:Cc:Date:In-Reply-To:From:Subject:Cc:Date:
+    From:Subject:Sender;
+    bh=YAUaPVN/LGE+6Tp5hwdCL/oWm3I9gZiHnGqVnZITlYs=;
+    b=FDRRuZGDOWIr7PVjsgzCEoc3WjvlYfn5g1ULeDbZRLMYz5CmpY7CZr3cK7UpgYkx0e
+    MJeOyEuhc+s50fia250GETWkb2KyfPR/uu4luJS0hYtGHVYWjj1C0gj4wgXUQbE8ASZY
+    8cbYgmpw+KOk576zSdy2+AnnWs2yoLYgND53GmUAS0eQCYLLfmWBhCTk49aW9cvhkbHv
+    HX6d1mkeNCVs9FwkkOx2Oz+apKUpgSQwGiZb+KHXhrCBW37hjEaBQ2sr0RL/5DH+ejQ7
+    vB8wAa9r1qfbx9RWiahdkadBDaB5zU34WX42srJQJlf0ZoT8+a2k/5Sm1R8szDOOpyRd
+    RIQw==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; t=1764001204;
+    s=strato-dkim-0003; d=goldelico.com;
+    h=To:References:Message-Id:Cc:Date:In-Reply-To:From:Subject:Cc:Date:
+    From:Subject:Sender;
+    bh=YAUaPVN/LGE+6Tp5hwdCL/oWm3I9gZiHnGqVnZITlYs=;
+    b=UpfJCvMrspS72WrTrjWL4jgwZQ8Vv8hqUUkLNHFb0/XXkbAeu7OKuXDGtFnCaVbnqc
+    2w8c+jlmQ0tQ0RvKt+AA==
+X-RZG-AUTH: ":JGIXVUS7cutRB/49FwqZ7WcJeFKiMhflhwDubTJ9o12DNOsPj0lFzL1yeT0Z"
+Received: from smtpclient.apple
+    by smtp.strato.de (RZmta 54.0.0 DYNA|AUTH)
+    with ESMTPSA id Qc14a81AOGJvF96
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (curve X9_62_prime256v1 with 256 ECDH bits, eq. 3072 bits RSA))
+	(Client did not present a certificate);
+    Mon, 24 Nov 2025 17:19:57 +0100 (CET)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3826.700.81.1.3\))
+Subject: Re: [PATCH v4 0/6] Add support for the LTM8054 voltage regulator
+From: "H. Nikolaus Schaller" <hns@goldelico.com>
+In-Reply-To: <4053840.MHq7AAxBmi@fw-rgant>
+Date: Mon, 24 Nov 2025 17:19:45 +0100
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Jonathan Cameron <jic23@kernel.org>,
+ David Lechner <dlechner@baylibre.com>,
+ =?utf-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
+ Andy Shevchenko <andy@kernel.org>,
+ Guenter Roeck <linux@roeck-us.net>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org,
+ linux-iio@vger.kernel.org,
+ Conor Dooley <conor.dooley@microchip.com>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>,
+ Peter Rosin <peda@axentia.se>,
+ Mariel Tinaco <Mariel.Tinaco@analog.com>,
+ Lars-Peter Clausen <lars@metafoo.de>,
+ Michael Hennerich <Michael.Hennerich@analog.com>,
+ Kevin Tsai <ktsai@capellamicro.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+ Eugen Hristev <eugen.hristev@linaro.org>,
+ Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Sebastian Reichel <sre@kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>,
+ Support Opensource <support.opensource@diasemi.com>,
+ Paul Cercueil <paul@crapouillou.net>,
+ Iskren Chernev <me@iskren.info>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Matheus Castello <matheus@castello.eng.br>,
+ Saravanan Sekar <sravanhome@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Casey Connolly <casey.connolly@linaro.org>,
+ =?utf-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
+ Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>,
+ Amit Kucheria <amitk@kernel.org>,
+ Thara Gopinath <thara.gopinath@gmail.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>,
+ Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
+ Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Olivier Moysan <olivier.moysan@foss.st.com>,
+ Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Dixit Parmar <dixitparmar19@gmail.com>,
+ linux-hwmon@vger.kernel.org,
+ linux-input@vger.kernel.org,
+ linux-phy@lists.infradead.org,
+ linux-pm@vger.kernel.org,
+ linux-mips@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org,
+ linux-sound@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ Andy Shevchenko <andriy.shevchenko@intel.com>
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Mon, 24 Nov 2025 17:03:00 +0100
-Message-Id: <DEH1VJUEJ8HQ.MIS45UOLCPXL@bootlin.com>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-Subject: Re: [PATCH 01/26] drm/bridge: add drm_of_find_bridge()
-Cc: "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
- <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
- Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
- <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Thomas Zimmermann"
- <tzimmermann@suse.de>, "David Airlie" <airlied@gmail.com>, "Simona Vetter"
- <simona@ffwll.ch>, "Jonathan Corbet" <corbet@lwn.net>, "Alexey Brodkin"
- <abrodkin@synopsys.com>, "Phong LE" <ple@baylibre.com>, "Liu Ying"
- <victor.liu@nxp.com>, "Shawn Guo" <shawnguo@kernel.org>, "Sascha Hauer"
- <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
- <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>, "Adrien
- Grassein" <adrien.grassein@gmail.com>, "Laurent Pinchart"
- <laurent.pinchart+renesas@ideasonboard.com>, "Tomi Valkeinen"
- <tomi.valkeinen+renesas@ideasonboard.com>, "Kieran Bingham"
- <kieran.bingham+renesas@ideasonboard.com>, "Geert Uytterhoeven"
- <geert+renesas@glider.be>, "Magnus Damm" <magnus.damm@gmail.com>, "Kevin
- Hilman" <khilman@baylibre.com>, "Jerome Brunet" <jbrunet@baylibre.com>,
- "Martin Blumenstingl" <martin.blumenstingl@googlemail.com>, "Chun-Kuang Hu"
- <chunkuang.hu@kernel.org>, "Philipp Zabel" <p.zabel@pengutronix.de>,
- "Matthias Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
- <angelogioacchino.delregno@collabora.com>, "Anitha Chrisanthus"
- <anitha.chrisanthus@intel.com>, "Edmund Dea" <edmund.j.dea@intel.com>,
- "Inki Dae" <inki.dae@samsung.com>, "Seung-Woo Kim"
- <sw0312.kim@samsung.com>, "Kyungmin Park" <kyungmin.park@samsung.com>,
- "Krzysztof Kozlowski" <krzk@kernel.org>, "Alim Akhtar"
- <alim.akhtar@samsung.com>, "Hui Pu" <Hui.Pu@gehealthcare.com>, "Thomas
- Petazzoni" <thomas.petazzoni@bootlin.com>,
- <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
- <linux-doc@vger.kernel.org>, <imx@lists.linux.dev>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-renesas-soc@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>
-To: "Maxime Ripard" <mripard@kernel.org>
-X-Mailer: aerc 0.20.1
-References: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-0-0db98a7fe474@bootlin.com> <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-1-0db98a7fe474@bootlin.com> <pv56bl4p7lfflloocozxaeufd6udkk3jhehrtne65cidrvlfwn@wvrkw6mjmhwp>
-In-Reply-To: <pv56bl4p7lfflloocozxaeufd6udkk3jhehrtne65cidrvlfwn@wvrkw6mjmhwp>
-X-Last-TLS-Session-Version: TLSv1.3
+Message-Id: <732D3F12-0361-4800-8981-EF629B4C491F@goldelico.com>
+References: <20251124-ltm8054-driver-v4-0-107a8a814abe@bootlin.com>
+ <23111366.EfDdHjke4D@fw-rgant>
+ <563331EB-2460-4CF5-87B3-5FE60B18BB70@goldelico.com>
+ <4053840.MHq7AAxBmi@fw-rgant>
+To: Romain Gantois <romain.gantois@bootlin.com>
+X-Mailer: Apple Mail (2.3826.700.81.1.3)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251124_080318_837980_2D90A780 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20251124_082020_283298_0439CFD7 
+X-CRM114-Status: GOOD (  39.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,47 +174,136 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Maxime,
+Hi,
 
-On Mon Nov 24, 2025 at 11:15 AM CET, Maxime Ripard wrote:
-> Hi,
->
-> On Wed, Nov 19, 2025 at 02:05:32PM +0100, Luca Ceresoli wrote:
->>  #ifdef CONFIG_OF
->> +/**
->> + * drm_of_find_bridge - find the bridge corresponding to the device nod=
-e in
->> + *			the global bridge list
->> + * @np: device node
->> + *
->> + * The refcount of the returned bridge is incremented. Use drm_bridge_p=
-ut()
->> + * when done with it.
->> + *
->> + * RETURNS:
->> + * drm_bridge control struct on success, NULL on failure
->> + */
->> +struct drm_bridge *drm_of_find_bridge(struct device_node *np)
->
-> So the convention we've mostly had was that the first argument would
-> define the prefix, ie. if we pass a drm_* pointer, the prefix is drm, if
-> we pass a device_node pointer, then the prefix is of.
->
-> Considering that convention, of_drm_find_bridge would be the ideal
-> candidate, but we can't use that obviously. What about
-> of_drm_find_and_get_bridge, or of_drm_get_bridge?
+> Am 24.11.2025 um 16:57 schrieb Romain Gantois =
+<romain.gantois@bootlin.com>:
+>=20
+> Hi Nikolaus,
+>=20
+> On Monday, 24 November 2025 16:35:28 CET H. Nikolaus Schaller wrote:
+> ...
+> > > Sorry, I don't quite understand your remark. To integrate this =
+voltage
+> > > regulator component into the Linux regulator abstraction, I'm =
+providing a
+> > > current limit control function. To provide such a function, the =
+voltage
+> > > level on a pin has to be controlled. AFAIK, the kernel abstraction =
+used
+> > > to set precise voltages on lines is an IO channel.
+> >=20
+> > I was curious to learn about this topic and looked into the data =
+sheet:
+> >=20
+> > =
+https://www.analog.com/media/en/technical-documentation/data-sheets/8054fa=
+.p
+> > df
+> >=20
+> > As far as I see the LTM8054 does not even have a programming =
+interface.
+> > So is it reasonable to provide a dedicated driver at all?
+> >=20
+> > The figure on page 20 seems to suggest that there is an external DAC
+> > which drives the regulator. And the regulator drives for example a =
+fan.
+> >=20
+> > So I would think of a driver for the specific DAC and ignore the =
+specific
+> > LTM chip at all.
+> >=20
+>=20
+> In my use case, the LTM8054 feeds a DC output port on which various =
+devices=20
+> may be plugged. Dynamic output current limitation and output voltage =
+level=20
+> control for these devices is a requirement, as well as stepped voltage=20=
 
-Ah, it sounded the other way around during the old discussion [0]. :-) But
-no problem in using a different name of course. of_drm_get_bridge() looks
-like the best to me, so I'll rename that way in v2.
+> transitions, thus the need for a proper regulator device.
+>=20
+> The LTM8054's feedback pin can be driven by a different DAC, which =
+allows for=20
+> dynamic output voltage control. This is a more complex upstreaming =
+topic=20
+> however, so I've left it out of this initial series. There are other =
+component=20
+> functions which fit in squarely into the regulator framework, such as=20=
 
-[0] https://lore.kernel.org/dri-devel/20250319-stylish-lime-mongoose-0a18ad=
-@houat/
+> input current limit control and soft-start. But I understand that the =
+current=20
+> driver might look a bit "bare".
 
-Luca
+So you just want to have some user-space mechanism to control voltage
+and current limits? Can't this be done by directly controlling them =
+through
+the iio API?
 
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+Is this for a device that is already in kernel or planned to be =
+supported?
+Or is it "application support" for some SBC?
+
+Are you looking for a virtual "glue" driver to logically combine several =
+low
+level functions?
+
+>=20
+> > What could be necessary is if you really want to be able to =
+"regulate"
+> > the current going to Vout, some bridge between regulator API and =
+some
+> > IIO DAC.
+> >=20
+> > And enabling/disabling the regulator by some GPIO can be described =
+in
+> > the DT already through a "regulator-fixed".
+> >=20
+>=20
+> This is a possibility, but when you bring in all of these other =
+hardware=20
+> functions that I mentionned e.g. output voltage control and stepping, =
+you'll=20
+> end up with several different devices which look unrelated from =
+userspace, but=20
+> actually control the same chip.
+
+That is quite usual... I have often heard: user space must fix this as =
+kernel
+just provides basic functions in a harmonized way and integration has to
+be tailored to the device anyways :)
+
+> Userspace will also have to know about some hardware details to =
+properly=20
+> control the DACs, such as the values of the sense and feedback =
+resistors. In=20
+> my opinion, this bypasses the kernel's abstraction of hardware.
+
+I came up with this argument several times in the part and got a lot of =
+contrary :)
+
+What I still wonder: does your hardware warrant an upstream driver for a
+non-programable chip if a different solution (with help of user-space) =
+already
+exist?
+
+Another question: is your scheme generic enough so that it can be =
+expected
+that other devices are using it in the same way?
+
+Or could the power controller framework (/sys/class/power_supply) fit =
+better?
+
+There is an API to ask chargers etc. for battery voltage and current =
+limits or
+even write them.
+
+There is also "generic-adc-battery" which allows to hook up with =
+arbitrary
+iio-adcs for measurements - although you need a DAC in your setup. Maybe =
+an
+extension here is a better strategy than a dedicated ltm8054 driver?
+
+BR,
+Nikolaus
+
 
