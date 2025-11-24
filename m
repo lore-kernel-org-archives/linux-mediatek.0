@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D15DCFA466
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88ECECFD313
 	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 11:07:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,48 +12,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XRJ33nglbvtBwNNO/vd3aaiLejhNH8NgBEXyiE+AIfw=; b=jm1Kx0JPK0zMJRpnqs9UWkiDrT
-	Mh4P5oC1BGckNaI2syeJOpeCJ607E2MgPVhvjPkw1tT+W/FvILQQ45YzrXc39ZQ3tXVedL/7tPHAF
-	DHRcmj7dafxdhI5XVXO/9lhtFR+FuI6r/vzB+8RGNjz55k5KsS7jMUF96O7A1uj2MPobMPFhKT6v1
-	oh+FeEYwLZDZLXgsJtBE2RqBv13M/PS2uDTtNw79JtSxjW/tZC8qWxYyKFkjwKpSmRPNIq/j0+EUx
-	M5+SHTc8DRw4XKVoiTsBnNGvSj1S6u7TvxVhZ2S3fOcC5OL9tqBmvzSAOVg8+nV4xWX3oFS69kSuL
-	q+5UJFMQ==;
+	bh=sDH7HsjdBxRxUiiInPpbiefmMzWljb8Ji5v3kIQhv8U=; b=3CSEeGxZGVDW/Wg1jwoqVojtpI
+	pRlC3PKsPC60+JiO1ARv9Xocw1jmB4Dnn2haPNtXMVxeB4r618zFyLQnCKSISWhAoWXa/6dgOpVIh
+	H18yZ9/Awy14JFif271PEzv5WVpZOGAn8cvIrR9UM6yYSEKaC8zXHgi5CMYMEcPBpz7AuMe83QIjx
+	Vz3iCq4gjr58NvTAI/igKCi9ekhPxPfQlfIos9rK79QEq9gb0dUFsoiMrrwqyVtGPL6yZADleT8WD
+	kbVLSS2+cqJEuUXxsWQ88I0ozAdLHvM3DCfk4JQM1PiaKWVrGmTBT4puUDcGIQmLExpXLMsWT3tGG
+	G2Z+D3tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNUPb-0000000BVAW-3jHd;
-	Mon, 24 Nov 2025 11:07:15 +0000
+	id 1vNUPc-0000000BVAw-1re8;
+	Mon, 24 Nov 2025 11:07:16 +0000
 Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNUPZ-0000000BV9h-29C9;
-	Mon, 24 Nov 2025 11:07:14 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1763982423; cv=none; 
+	id 1vNUPZ-0000000BV9k-4BAh;
+	Mon, 24 Nov 2025 11:07:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1763982425; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=i7rP5ZjLeSO6nkbgxYOUQhkXldO7qcIj8jfu4BaZygcBW2lyHvVzEGO1AAeXRVLnSzNBxjwYNDPSxi/r1Z3IadFR4HTLYMNsYMAqjXO98e5LRlrC7SCcLah/u22ret6lcPIPBLCi1+pm4PweQt8Lt2DdzHQ97GusNKpKp1LbDlg=
+	b=GIDjin3ux68yiT6EZRYQQur4rqwNVp6nrqgpkzK+fkBKr+OUxBHyE8vwCxoNL5M4VPgn+xe9PJYpWhb0rZryyIA2SE/3K3d/xbZn82OlQzk/s6EfSbDgqnKSGGA4NvG0S3yLf1WW3Yt0NpNDvuINH46Z8roO0/vHb5iDA1sskbY=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1763982423; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=XRJ33nglbvtBwNNO/vd3aaiLejhNH8NgBEXyiE+AIfw=; 
-	b=P2JZpc9IwDkX2SfKrG5C25051/c7wzpTRHzAYGPSaSThNN1CWUM5fssxaD5pRvVVeC0sM9vsJRL91DuMDRDnfaY6x2Pcn8yE6fW/ZQag6Rif3mas9QrUBPrQ/XlNG0z91sM6Kp2BliySKv6DAD2K+pZGDQiSnbq+auOB5vnPFXI=
+	t=1763982425; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=sDH7HsjdBxRxUiiInPpbiefmMzWljb8Ji5v3kIQhv8U=; 
+	b=Lp7Ky71BPDjvNXkeaDUSsxH1y5OfKIFjAUdxYuiRtRcovvfHJuQh4orsexa1Qul/Jp96lljD44uQz8PWoLS2l2Z+f90X2tVpPhKWx2bVLik3K7Zf+h/HAYUDCYkXIFxkqaey2zrjrS5+vGk5c2T8v/UTGF+71HOq/RaH1nhHhiI=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763982422;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763982424;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=XRJ33nglbvtBwNNO/vd3aaiLejhNH8NgBEXyiE+AIfw=;
-	b=GZfYb0dSk6gySdxdr2gGHFe+onQijhcbzKet3XpTZafQKzK3LN264xLd5NOWCcI/
-	9YmcWw3RMOhhnllS3DKizVJ1FueRqwiuYAbD2yuiebLgScNflG3986pLzSkMSbnTZp6
-	B0iCw3Nlpp4NhlTcaDa6cTKJBGk46qnT3pc3JLTU=
-Received: by mx.zohomail.com with SMTPS id 1763982420631856.0946779508707;
-	Mon, 24 Nov 2025 03:07:00 -0800 (PST)
+	bh=sDH7HsjdBxRxUiiInPpbiefmMzWljb8Ji5v3kIQhv8U=;
+	b=CHSDHiOXDNaqdYcV5n1kT87LkxJ54yOXkEc1brL6ngioDl7xEUX2A+jGr0FWeLBi
+	FvLhxBg+SqTTsvP9FA0YMrUwJah84b00ZtvV5KiDAHtsuyEtonPEq3GPpiqOrOKNrYh
+	Ar937mq5VNlhh1mqE7HRuzjzEpmfsqIrpDuzvf8U=
+Received: by mx.zohomail.com with SMTPS id 1763982424035518.2881808242608;
+	Mon, 24 Nov 2025 03:07:04 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 24 Nov 2025 12:06:50 +0100
-Subject: [PATCH v2 01/13] dt-bindings: soc: mediatek: dvfsrc: Add support
- for MT8196
+Date: Mon, 24 Nov 2025 12:06:51 +0100
+Subject: [PATCH v2 02/13] dt-bindings: soc: mediatek: dvfsrc: Document
+ clock
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251124-mt8196-dvfsrc-v2-1-d9c1334db9f3@collabora.com>
+Message-Id: <20251124-mt8196-dvfsrc-v2-2-d9c1334db9f3@collabora.com>
 References: <20251124-mt8196-dvfsrc-v2-0-d9c1334db9f3@collabora.com>
 In-Reply-To: <20251124-mt8196-dvfsrc-v2-0-d9c1334db9f3@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -67,9 +67,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251124_030713_646044_C1A5C9C6 
-X-CRM114-Status: UNSURE (   8.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251124_030714_117786_5FFFDD8C 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,29 +83,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+The DVFSRC hardware has a clock on all platforms.
 
-Add a compatible for the MediaTek MT8196 Chromebook SoC's
-DVFSRC hardware, introducing capability to communicate with it.
+Instead or proliferating the culture of omitting clock descriptions in
+the clock controller drivers or marking them critical instead of
+declaring these types of relationships, add this one to the binding.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Any device that wishes to use this binding should figure out their
+incomplete or incorrect clock situation first before piling more
+features on top.
+
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- .../devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml         | 1 +
- 1 file changed, 1 insertion(+)
+ .../devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml    | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
-index 4c96d4917967..5673d242afcb 100644
+index 5673d242afcb..d5c42f992a21 100644
 --- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
 +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8183-dvfsrc.yaml
-@@ -26,6 +26,7 @@ properties:
-           - mediatek,mt6893-dvfsrc
-           - mediatek,mt8183-dvfsrc
-           - mediatek,mt8195-dvfsrc
-+          - mediatek,mt8196-dvfsrc
-       - items:
-           - const: mediatek,mt8192-dvfsrc
-           - const: mediatek,mt8195-dvfsrc
+@@ -35,6 +35,10 @@ properties:
+     maxItems: 1
+     description: DVFSRC common register address and length.
+ 
++  clocks:
++    items:
++      - description: Clock that drives the DVFSRC MCU
++
+   regulators:
+     type: object
+     $ref: /schemas/regulator/mediatek,mt6873-dvfsrc-regulator.yaml#
+@@ -51,6 +55,7 @@ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/mt8195-clk.h>
+     soc {
+         #address-cells = <2>;
+         #size-cells = <2>;
+@@ -58,6 +63,7 @@ examples:
+         system-controller@10012000 {
+             compatible = "mediatek,mt8195-dvfsrc";
+             reg = <0 0x10012000 0 0x1000>;
++            clocks = <&topckgen CLK_TOP_DVFSRC>;
+ 
+             regulators {
+                 compatible = "mediatek,mt8195-dvfsrc-regulator";
 
 -- 
 2.52.0
