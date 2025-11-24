@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3D19CFD317
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 10:17:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51B34CFA466
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 10:18:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=II8YI3C/iUDdwVikJhgiudHAop3AyyPyPytzzAcj7uU=; b=TxpZvnswoJ63G22mcEdygkMy11
-	8fzqXtcqV0Qg2DwHd2/siRFIMGki6fyJ13ShPY/K3jjhm2yfFmYRkmcr1wKSI0YgKNREfkil7h4AZ
-	KDF6q+cOHlRHtRBgPAh0L5Bg6B2Em9Ar9BOjHXTnQorAtHwTVzJbU0xd6xDl6B+IAZDAqBs22zHZv
-	TIlOgsvTrjocIE1GFzsHG0o7w+m9I83v+f17APILLUwJL3FsTZriLuRIwLaglPo7T7WC+s0RBgEhi
-	tPdbJky8oLvZi/Zp+KHuwKXfVdjqRBLvHcyS6sqE2FImAaMZH3zn4KuJQBfNLAGdKQscnB0TQnWH/
-	s1KHaaiQ==;
+	bh=oARe48sOH5xOxHH9rd/j1cN4/hZIMPV2TtfMLbFOQEo=; b=ucrA5FdwK0/rqMrnTY4gyDeQto
+	0Jb8q5eNhDKPWLQ4gv+uaqa2LH8RPasVFfKFAPztD5whIONwl0DFkd1e1LYiLPMlXwP+kNtQKvla+
+	aK3KGy7vCYOQnsXQk8m10xpbVTWXGPmRiN8WLCfli+P15R1718mQBuKUmX5TZkd/M50dqnHWH4tDx
+	SfeUu18cn5dD2uzMN3uVdvxjxQCUM1VGEfhqF1hBCajnAuZztHn+IGZQnkT1ZXlvqVSLtWSMtW1Lb
+	+u87CDBitOi4Go6PHG1zbWYqCYHmwF0OKvbuRahlU7CpxXcrr9fYw8Az9i73ZIfIBccetYnEQ1biJ
+	Uh2t1aAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNTdK-0000000BPWG-3WCJ;
-	Mon, 24 Nov 2025 10:17:22 +0000
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+	id 1vNTe8-0000000BPf8-0wfE;
+	Mon, 24 Nov 2025 10:18:12 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNTdI-0000000BPV6-2dfN
-	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Nov 2025 10:17:21 +0000
-Received: by mail-yx1-xb130.google.com with SMTP id 956f58d0204a3-640d8b78608so2853752d50.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Nov 2025 02:17:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1763979438; x=1764584238; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=II8YI3C/iUDdwVikJhgiudHAop3AyyPyPytzzAcj7uU=;
-        b=w0zU+LpWpfsywPWoR7KnHFqaUKzLlrl0uDxck9UorcL5Zp/UCfHhoQZmh8/vcMwbMx
-         0Afxxcfqg5Bk9HX4bztaijFn69/MSu4TDnprFjtLkvdpyM2lHp/vd3/nVehdMyqQ+A1i
-         RdIaNOGkvoDFwn5FC+1TeR5GOyF//O8m450/C8AXRceDBb6rObzURRd7H9id/p/B/xem
-         sFeqURmLQ7vu3od6ss5z2t01g3beGJsn/sfTfLxUAHb5A1khScfnXQPwuAOFNP4IhdCN
-         nMj75erivVHiuqUBGsAuY8zXhS2VRyZrzvlWuslVwzKxP8JAe5cltZj2ZYF7XoXi4TbJ
-         W+kA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1763979438; x=1764584238;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=II8YI3C/iUDdwVikJhgiudHAop3AyyPyPytzzAcj7uU=;
-        b=BNBzH1LO2tE/O55Wn3ksPzpOAmKEr6Wsi0o3kygjRkHWzkfHie9vKl4sPo2c1g48kA
-         2fSRoQ7E5O5bz1NAwVEXRIrRgBP9jA/dNlzRcTmsIHK6WAiPMokUhzXrb2FZ05kR6g2s
-         nbIcOOis9HX+P9qWUvhJWy3I6WNhSTRTLZNztYN4T4H4UC4DmyNY4vHzq5pEgUJ0UiZs
-         4DezVO/vmU5MYsxoCNvhgA3KNx5LpBICS5Ie3bpXRWMkPibdYUoR56YA/4ezuw2ab+RK
-         uSluMdduXKs2o8P8sg0DLXrwJvQUFZiyjWdHe6l+94qfINo3rM2snR+Ur9LlTcZEJDhw
-         rjUA==
-X-Forwarded-Encrypted: i=1; AJvYcCUFbmL4uX9/rSE7kIn3DJv9YIWJiW39m8vX4wJv6gk/5YlOeUGmZ8LxH1Ydsm0wqkhv1oF5ZOEG2gGO2kh9Fw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx4NohRk1Y9usL39Ib1N5dL4dmRh5JEAt6tl6ZQUGT0sEDiT97z
-	nyS8QpaHklsMsse97w7Tdu6kBDLAPde6Xqv9ylZYE5k+8mV9C45M/NtWhhZUSBEO9RoqyVU/8Wd
-	IBOJ3h5Jeq9WatyEwvXCh997dF/73wt/E5XweLKegcg==
-X-Gm-Gg: ASbGnctdzcGDcFFFeHL/YV8J9mMNPZYfzML6xmsmLYfP9ENQkHCjBn4rfe5FeU1lgf8
-	l3M7kFjcWcWU6WCSZGOsxLfDUICNXFx3zSLed21KLRTCaP9kncfM79fw0beOAxqPbzbz9FteDwZ
-	zDG2pRINE/H+AFnPWsAsHkfonec/N2yuzRFKnBX4Y65Y5wguA3MMir8qORKNqWm9mij7uh/rGwX
-	VzpvXHjNplDjuuHK/r658+p/KfyFzJBWbLP/nL33Za6ALQ40sfjlj/45HGJNn5v19aSWUHc
-X-Google-Smtp-Source: AGHT+IHZKiPR/ZbuRZ0U59HQ+RscPzcZbVdRLvk9GoovnNcNednqmG4npANrIbRzWrLj9FeTBSnrW93KTr0acBSdJJU=
-X-Received: by 2002:a05:690e:14c:b0:640:dead:f78 with SMTP id
- 956f58d0204a3-64302acadefmr6058059d50.68.1763979437967; Mon, 24 Nov 2025
- 02:17:17 -0800 (PST)
+	id 1vNTe5-0000000BPeY-2Qzq;
+	Mon, 24 Nov 2025 10:18:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id EF3AC40A5E;
+	Mon, 24 Nov 2025 10:18:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50CB8C116D0;
+	Mon, 24 Nov 2025 10:18:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1763979487;
+	bh=ms6lyVzlvSmdq6eGFsE2aYtKvb9irgtFLrLqVW7j6N4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bsR79ZXxXeZUvNlKq6JHx3U+Az0+PUuLS//VN7blMWL3GOhStsTAv1diPyOJlPIKa
+	 cc2DnYeKOmhmMVfoifH9J4mOur+9IWQgpbXH2MSE6aD9zlLJ6IXAp4rhneny1z2Gnr
+	 LzHMNS8+yCe7JO3hF+i7Lvl4HjnP3NE9NW3krdt4azD7ZFpmTxyW7qY69pAhpCaojC
+	 KxrqQjkLOZvFVawKbi1VEYI7JbLnh6LLLRGNn2z4cQj0lhBlRjo9ROd+BBTdPxMKsj
+	 f7BDNPAstmfe1oJiu4EbJFP9ag6PxUeMTdI0+10J8IXjQacJ5E5O0cQQVNNqocQzhK
+	 +9JrLfsKHL02w==
+Date: Mon, 24 Nov 2025 11:18:05 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Louis Chauvet <louis.chauvet@bootlin.com>
+Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Jonathan Corbet <corbet@lwn.net>, Alexey Brodkin <abrodkin@synopsys.com>, 
+	Phong LE <ple@baylibre.com>, Liu Ying <victor.liu@nxp.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, Adrien Grassein <adrien.grassein@gmail.com>, 
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
+	Magnus Damm <magnus.damm@gmail.com>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
+	Edmund Dea <edmund.j.dea@intel.com>, Inki Dae <inki.dae@samsung.com>, 
+	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Hui Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org, 
+	imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-renesas-soc@vger.kernel.org, linux-amlogic@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org
+Subject: Re: [PATCH 02/26] drm/bridge: deprecate of_drm_find_bridge()
+Message-ID: <x6uch6cyjgbwnmac7fyjxdbi56gnhmilezfjdhqpakbz5hogt3@q72fex3ssh6u>
+References: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-0-0db98a7fe474@bootlin.com>
+ <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-2-0db98a7fe474@bootlin.com>
+ <66cdbe39-d065-4aa4-86e4-84a38b49c09c@bootlin.com>
 MIME-Version: 1.0
-References: <20251121125212.43093-1-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20251121125212.43093-1-angelogioacchino.delregno@collabora.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 24 Nov 2025 11:16:41 +0100
-X-Gm-Features: AWmQ_bmRF82IjFCOc91DUmABpVXVUdYe_hVuYPuZC-41JJhfg_bW2drgqfzyHeg
-Message-ID: <CAPDyKFp32GafgWBEn=PbVex1MXRo+nBFcVSgLxrqxMtLXnRFSA@mail.gmail.com>
-Subject: Re: [PATCH - URGENT] pmdomains: mtk-pm-domains: Fix spinlock
- recursion in probe
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: matthias.bgg@gmail.com, nfraprado@collabora.com, 
-	irving-ch.lin@mediatek.com, wenst@chromium.org, linux-pm@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, robh@kernel.org, krzk@kernel.org, 
-	conor@kernel.org, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="hlwwko6623byri3x"
+Content-Disposition: inline
+In-Reply-To: <66cdbe39-d065-4aa4-86e4-84a38b49c09c@bootlin.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251124_021720_699672_4BD2C1C4 
-X-CRM114-Status: GOOD (  36.69  )
+X-CRM114-CacheID: sfid-20251124_021809_680432_9C221A3C 
+X-CRM114-Status: GOOD (  25.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,157 +96,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 21 Nov 2025 at 13:52, AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> For some reason, of_find_node_with_property() is creating a spinlock
-> recursion issue along with fwnode_count_parents(), and this issue
-> is making all MediaTek boards unbootable.
->
-> As of kernel v6.18-rc6, there are only three users of this function,
-> one of which is this driver.
->
-> Migrate away from of_find_node_with_property() by adding a local
-> scpsys_get_legacy_regmap_node() function, which acts similarly to
-> of_find_node_with_property(), and calling the former in place of
-> the latter.
->
-> This resolves the following spinlock recursion issue:
->
-> [    1.773979] BUG: spinlock recursion on CPU#2, kworker/u24:1/60
-> [    1.790485]  lock: devtree_lock+0x0/0x40, .magic: dead4ead, .owner: kworker/u24:1/60, .owner_cpu: 2
-> [    1.791644] CPU: 2 UID: 0 PID: 60 Comm: kworker/u24:1 Tainted: G        W           6.18.0-rc6 #3 PREEMPT
-> [    1.791649] Tainted: [W]=WARN
-> [    1.791650] Hardware name: MediaTek Genio-510 EVK (DT)
-> [    1.791653] Workqueue: events_unbound deferred_probe_work_func
-> [    1.791658] Call trace:
-> [    1.791659]  show_stack+0x18/0x30 (C)
-> [    1.791664]  dump_stack_lvl+0x68/0x94
-> [    1.791668]  dump_stack+0x18/0x24
-> [    1.791672]  spin_dump+0x78/0x88
-> [    1.791678]  do_raw_spin_lock+0x110/0x140
-> [    1.791684]  _raw_spin_lock_irqsave+0x58/0x6c
-> [    1.791690]  of_get_parent+0x28/0x74
-> [    1.791694]  of_fwnode_get_parent+0x38/0x7c
-> [    1.791700]  fwnode_count_parents+0x34/0xf0
-> [    1.791705]  fwnode_full_name_string+0x28/0x120
-> [    1.791710]  device_node_string+0x3e4/0x50c
-> [    1.791715]  pointer+0x294/0x430
-> [    1.791718]  vsnprintf+0x21c/0x5bc
-> [    1.791722]  vprintk_store+0x108/0x47c
-> [    1.791728]  vprintk_emit+0xc4/0x350
-> [    1.791732]  vprintk_default+0x34/0x40
-> [    1.791736]  vprintk+0x24/0x30
-> [    1.791740]  _printk+0x60/0x8c
-> [    1.791744]  of_node_release+0x154/0x194
-> [    1.791749]  kobject_put+0xa0/0x120
-> [    1.791753]  of_node_put+0x18/0x28
-> [    1.791756]  of_find_node_with_property+0x74/0x100
-> [    1.791761]  scpsys_probe+0x338/0x5e0
-> [    1.791765]  platform_probe+0x5c/0xa4
-> [    1.791770]  really_probe+0xbc/0x2ac
-> [    1.791774]  __driver_probe_device+0x78/0x118
-> [    1.791779]  driver_probe_device+0x3c/0x170
-> [    1.791783]  __device_attach_driver+0xb8/0x150
-> [    1.791788]  bus_for_each_drv+0x88/0xe8
-> [    1.791792]  __device_attach+0x9c/0x1a0
-> [    1.791796]  device_initial_probe+0x14/0x20
-> [    1.791801]  bus_probe_device+0xa0/0xa4
-> [    1.791805]  deferred_probe_work_func+0x88/0xd0
-> [    1.791809]  process_one_work+0x1e8/0x448
-> [    1.791813]  worker_thread+0x1ac/0x340
-> [    1.791816]  kthread+0x138/0x220
-> [    1.791821]  ret_from_fork+0x10/0x20
->
-> Fixes: c29345fa5f66 ("pmdomain: mediatek: Refactor bus protection regmaps retrieval")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Applied this for fixes, thanks!
+--hlwwko6623byri3x
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 02/26] drm/bridge: deprecate of_drm_find_bridge()
+MIME-Version: 1.0
 
-Yes, it seems like we may need some additional analysis/fix, but let's
-look into that separately beyond this fix.
+On Wed, Nov 19, 2025 at 02:28:41PM +0000, Louis Chauvet wrote:
+> On 11/19/25 13:05, Luca Ceresoli wrote:
+> > of_drm_find_bridge() does not increment the returned bridge
+> > refcount. drm_of_find_bridge() is to be used as a replacement.
+> >=20
+> > Suggested-by: Maxime Ripard <mripard@kernel.org>
+> > Link: https://lore.kernel.org/dri-devel/20250319-stylish-lime-mongoose-=
+0a18ad@houat/
+> > Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+> > ---
+> >   drivers/gpu/drm/drm_bridge.c | 7 +++++--
+> >   1 file changed, 5 insertions(+), 2 deletions(-)
+> >=20
+> > diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+> > index d98a7b4a83c0..6debbf20aaa8 100644
+> > --- a/drivers/gpu/drm/drm_bridge.c
+> > +++ b/drivers/gpu/drm/drm_bridge.c
+> > @@ -299,7 +299,7 @@ EXPORT_SYMBOL(__devm_drm_bridge_alloc);
+> >    * @bridge: bridge control structure
+> >    *
+> >    * Add the given bridge to the global list of bridges, where they can=
+ be
+> > - * found by users via of_drm_find_bridge().
+> > + * found by users via drm_of_find_bridge().
+> >    *
+> >    * The bridge to be added must have been allocated by
+> >    * devm_drm_bridge_alloc().
+> > @@ -360,7 +360,7 @@ EXPORT_SYMBOL(devm_drm_bridge_add);
+> >    * @bridge: bridge control structure
+> >    *
+> >    * Remove the given bridge from the global list of registered bridges=
+, so
+> > - * it won't be found by users via of_drm_find_bridge(), and add it to =
+the
+> > + * it won't be found by users via drm_of_find_bridge(), and add it to =
+the
+> >    * lingering bridge list, to keep track of it until its allocated mem=
+ory is
+> >    * eventually freed.
+> >    */
+> > @@ -1452,6 +1452,9 @@ EXPORT_SYMBOL(drm_of_find_bridge);
+> >    *
+> >    * @np: device node
+> >    *
+> > + * This function is deprecated. Use drm_of_find_bridge() instead for p=
+roper
+> > + * refcounting.
+> > + *
+>=20
+> I think it should be more explicit that the refcounting is not done by th=
+is
+> function, like:
+>=20
+> 	This function is deprecated. The returned bridge is not refcounted, you
+> should not use drm_bridge_put(). Use drm_of_find_bridge() instead for pro=
+per
+> refcounting.
 
-Kind regards
-Uffe
+I'd rather say that the callers must take care of the refcounting by
+themselves but that it's racy, or at least that it *must* not use
+drm_bridge_put().
 
+Maxime
 
-> ---
->
-> This might not be the best fix to perform, and I have Cc'ed Rob and
-> Krzysztof for them to have a look at the spinlock recursion issue,
-> as I think it either has to be fixed, or the affected function has
-> to be removed (or both, actually - in any case, if not fixed, this
-> could backfire, and I'm not sure that the only function that shows
-> this issue is just only of_find_node_with_property() or if others
-> also do; at least, nothing else on MediaTek machines as of now).
->
-> Counting that this makes *all* MediaTek machines to be unbootable,
-> I'd prefer this fix to get merged immediately - so that it lands
-> in v6.18 (which is at rc6 at the time of writing).
->
-> That - because I think that resolving the source of this issue will
-> take a bit of time and research - and I really don't want the LTS
-> kernel to be broken on all MediaTek devices.
->
-> Note: When I initially tested the commit pointed out in the Fixes
-> tag, it was working with no spinlock recursion - I don't clearly
-> remember what kernel version was that, but I think it was some
-> linux-next around v6.16 or v6.17.
->
->  drivers/pmdomain/mediatek/mtk-pm-domains.c | 18 +++++++++++++++---
->  1 file changed, 15 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> index 407b4a7aba10..721224c89865 100644
-> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> @@ -1006,6 +1006,18 @@ static void scpsys_domain_cleanup(struct scpsys *scpsys)
->         }
->  }
->
-> +static struct device_node *scpsys_get_legacy_regmap(struct device_node *np, const char *pn)
-> +{
-> +       struct device_node *local_node;
-> +
-> +       for_each_child_of_node(np, local_node) {
-> +               if (of_property_present(local_node, pn))
-> +                       return local_node;
-> +       }
-> +
-> +       return NULL;
-> +}
-> +
->  static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *scpsys)
->  {
->         const u8 bp_blocks[3] = {
-> @@ -1027,7 +1039,7 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
->          * this makes it then possible to allocate the array of bus_prot
->          * regmaps and convert all to the new style handling.
->          */
-> -       node = of_find_node_with_property(np, "mediatek,infracfg");
-> +       node = scpsys_get_legacy_regmap(np, "mediatek,infracfg");
->         if (node) {
->                 regmap[0] = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg");
->                 of_node_put(node);
-> @@ -1040,7 +1052,7 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
->                 regmap[0] = NULL;
->         }
->
-> -       node = of_find_node_with_property(np, "mediatek,smi");
-> +       node = scpsys_get_legacy_regmap(np, "mediatek,smi");
->         if (node) {
->                 smi_np = of_parse_phandle(node, "mediatek,smi", 0);
->                 of_node_put(node);
-> @@ -1058,7 +1070,7 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
->                 regmap[1] = NULL;
->         }
->
-> -       node = of_find_node_with_property(np, "mediatek,infracfg-nao");
-> +       node = scpsys_get_legacy_regmap(np, "mediatek,infracfg-nao");
->         if (node) {
->                 regmap[2] = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg-nao");
->                 num_regmaps++;
-> --
-> 2.51.2
->
+--hlwwko6623byri3x
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaSQw3AAKCRAnX84Zoj2+
+dr7aAYDmcUa4xmy8KtLxfsyLA8X28V6pQaVGDFFzSmrAPgK3LZuG27zJYoDUJd3n
+lULG0bQBf3evX21S3dPs9NIlJAExmurhYA56+Qs0XQchA/WaC9CwUSx4gYiXXGL1
+bd5Dvu4ekQ==
+=T5pR
+-----END PGP SIGNATURE-----
+
+--hlwwko6623byri3x--
 
