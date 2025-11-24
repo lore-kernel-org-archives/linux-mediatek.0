@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 479FFCFD317
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 11:08:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B367CFA466
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 11:08:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Iiq+HYCmnZ7TcdzmTbexqDQH56XfdBR2ZblfoMLBIoA=; b=SBGjSt2bt4V/hQH2ZuwgUG8jER
-	nN71PA1/bJAgnRNlLiJ+id8F0v6e4rfUNifYBZ5PCesKU/54g9919kogrWqBpSeG3eZ0ySnYBSeab
-	oWvXI2BfAG33LEUBrOguD4fAUZQBMYCaMHQn9lfNFyTJRAhCgGk1OKur42RFIMRjz3AkKEgT5t8fy
-	EUkhwzOIduYW2cgoBboZkcKcxMICgjatjou6QgD3AsGV+2LEqc9SmSKhoJ8Tha+PDqIhYty+hv0AQ
-	NqYx6eCBwBXjMHyc1w37hSeY4SrOwyXt6ingjQAeV1Q1kMOokhPwzYTNocmTE0JJbKk1N/r6jquni
-	2jyAd3xw==;
+	bh=qoo4mVM5kwudM7/8ap4xpMpg2C8udD4BnzAHqgC7CL8=; b=bVl53IzhugyAj4O8jsHSYcN6iD
+	GIawUlL/rVplrk1/TYp7564H82tPFm9WytxPl+SMNFM5M8rhZ6jMlSyMaNwKeeGl/WD6FPYK7cy4W
+	QZ+sje/PJfk/rPz57hX7JHLsNTImy3M8h2LdQ8QyWRbAGocuQxKtKlK5lOtekLHkldpsneFVtQj8o
+	2WZa0UxDUuOII7bgLpf8QBFXi/v9Aw5Q/Bumk6CUbKaDUdq07JqGilEs6pv0ENbmrnmOGCjn5Ef0I
+	doGCdnKnk3lkCQ0f7+cPwxOopSMAhFIoPT2Tf5nTQX37o/bC1TC49QSK67L1etmwQAnV3hWtzcwqd
+	MkGJplcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNUQK-0000000BVno-0oRO;
-	Mon, 24 Nov 2025 11:08:00 +0000
+	id 1vNUQP-0000000BVtE-0ZV9;
+	Mon, 24 Nov 2025 11:08:05 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNUQA-0000000BVgB-2F1k;
-	Mon, 24 Nov 2025 11:07:53 +0000
+	id 1vNUQE-0000000BVhc-3MDi;
+	Mon, 24 Nov 2025 11:07:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=Iiq+HYCmnZ7TcdzmTbexqDQH56XfdBR2ZblfoMLBIoA=; b=iPjFS6dWfKA4eGzXNzXNqzanng
-	4WNjlDnK5y2E+FqmGrw8F/QIpaJDivdBZ3cdwKHkE+FcYJMGcT+N+6u5uDlCIpNGKGCeAAQ9mBetc
-	EK14XQjbc4BEzW6uLtW+ljl7RvHuGJQPdD8qxux/YzLp2IgVPYlBa0ECdExrgM2E4SBM9xJ2mQtUx
-	YNv45MO5beCgL/LczuqY/rpRiNswNFzr1GsIHppKdWtGCXS5vuKTIm7rNzziqJIMJkKXVrrzBNBfW
-	SmjgQVHYSe39frEgdR/RvJFUrskFPGCpUCsbg8mVnLD6HdW+Q3/90foJbF8nq5IOgMtNh/uYtVoSl
-	Eg7ASg+w==;
+	bh=qoo4mVM5kwudM7/8ap4xpMpg2C8udD4BnzAHqgC7CL8=; b=KqWL7tlJ41fICsH+Wiy0Uhmr2I
+	tETBc0pcRg+gULpI5BLvE+pHOoeUwTE1Q2LG4TFXgdvxMlsZS8lncus0xUxjTaplGb4dKYS8PZocs
+	sdtPWivbGjHIJ82jYTa56Si1doZ6Un+Zebr1ETlHtnVj4V7lZOFfXoTuVmyKPx+D7Il7XGLqicS0B
+	HC0pzJnvaa0cPGD/R8la1LpyGGb5F5a6SqlstKrsPglECFvpeAN2Ecy9rXlSfn48qXQ8kt+31A4zw
+	z/kPKOCNIRsg01U8897tIt+iPGPzn5hzcpayDcDVWqX+miHlXJTr04SeklSeCEsEdB+Pcd2zXzD86
+	knM7+X4w==;
 Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNTYU-00000003UMt-1ZW3;
-	Mon, 24 Nov 2025 10:12:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1763982455; cv=none; 
+	id 1vNTYZ-00000003UNv-2RuR;
+	Mon, 24 Nov 2025 10:12:29 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1763982459; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=d1oDUos2HA5s5Qbyvbb1+z4ERO4MBk+x6v7aKIX6DD3mAPj3ncG0wBMiWlBLLprVTB8WkU3i3Ol/97HpcJ+l2oNCjEwAg7OgNi/fnFmJAaAvhvgPPc5pXwL/h9ZmurM9N4587/lAxDRxq9pTlAiQtqmpcSHgG3TC/Sr8kYMIakE=
+	b=Ex3jGzV73lIUVhhi9LP/QgpWjmoa5ygJYj4xrlQrHBHS1eFv6ifCiokLOIi/jgLUBBkc9IcrG/hYOH/hGBJF0O78S88FQkaWbQ9pf5ImCF2s2FXfphHBPw4cfutnaeI7GoeUsgA6KB3+jgMgpOuLJjjet6DF6LmNaykNY5K6JrM=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1763982455; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=Iiq+HYCmnZ7TcdzmTbexqDQH56XfdBR2ZblfoMLBIoA=; 
-	b=kVQHxJpV70E+mipZYoRedcBJu3o96p6imJHncUT9bsEOczmAA4D+niucFPItw4wALF74t6EfPWYBTLzL6MHoS2O4Qp3vDmRgBSrjDioZAmdvz0felAc4TCCZjTi6v6EOMRqZRhudTi8DpYY9ohkNIMqHpMVeKNCc0jIn0b+oJJk=
+	t=1763982459; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=qoo4mVM5kwudM7/8ap4xpMpg2C8udD4BnzAHqgC7CL8=; 
+	b=Jfl9EzPGfi8WwdmKVnZzgqQtA1O96g7+H/+VoIH7/G22Yu4wvFszIY1kinnFoQnnb+XU6iPqs/qIyyBNJFkv0zgZ48FUIRqsA6AjQ3T67bN0TuMvwDVVbOyvykmYxDouh1PrJicsw5NXTjk/r3yRbr2z38nOyxdmLgpX6S16h0A=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763982455;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763982459;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=Iiq+HYCmnZ7TcdzmTbexqDQH56XfdBR2ZblfoMLBIoA=;
-	b=DlCjuok2x3mr2p2TjFTSvPF2ql7+rLYI2n0sUGdHTW2ytuFfBUaaGExuDL+0IbOU
-	MJWt5D+90yb15xkrUU18KBVss4OinmjxZPLhK9FUhZMUYT7N6+2In/2GQJhGksv2Tmv
-	nUjOEp56GLIHljWvxUaOMsP+Dzg1qB5kwyjv1aNg=
-Received: by mx.zohomail.com with SMTPS id 1763982453777661.8440242348057;
-	Mon, 24 Nov 2025 03:07:33 -0800 (PST)
+	bh=qoo4mVM5kwudM7/8ap4xpMpg2C8udD4BnzAHqgC7CL8=;
+	b=BJtohHxvDVDXP2GbJtXjc50uSSPNEYr6MkjblxkDeFJi2rqoKFS2mcGlf1AjLDa+
+	z7Id6HehKs/kHLvImNOYlhowRuF2+dzSfC2WSy4yXQEv7p70siafgbePQ4X1vRxvgLS
+	5h9LolKdHFOwhdOtboV/XsWyFKvtMG5DBt6fG77c=
+Received: by mx.zohomail.com with SMTPS id 1763982457081364.29471024039515;
+	Mon, 24 Nov 2025 03:07:37 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 24 Nov 2025 12:07:00 +0100
-Subject: [PATCH v2 11/13] interconnect: mediatek: Add support for MediaTek
- MT8196 EMI ICC
+Date: Mon, 24 Nov 2025 12:07:01 +0100
+Subject: [PATCH v2 12/13] interconnect: mediatek: Don't hijack parent
+ device
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251124-mt8196-dvfsrc-v2-11-d9c1334db9f3@collabora.com>
+Message-Id: <20251124-mt8196-dvfsrc-v2-12-d9c1334db9f3@collabora.com>
 References: <20251124-mt8196-dvfsrc-v2-0-d9c1334db9f3@collabora.com>
 In-Reply-To: <20251124-mt8196-dvfsrc-v2-0-d9c1334db9f3@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -81,8 +81,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251124_101222_872618_0DC88930 
-X-CRM114-Status: GOOD (  15.65  )
+X-CRM114-CacheID: sfid-20251124_101228_034369_2A0A7D65 
+X-CRM114-Status: GOOD (  12.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,433 +97,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+If the intention is that users of the interconnect declare their
+relationship to the child icc_emi node of the dvfsrc controller, then
+this code never worked. That's because it uses the parent dvfsrc device
+as the device it passes to the interconnect core framework, which means
+all the OF parsing is broken.
 
-Add a new driver with data to register the External Memory
-Interface (EMI) Interconnect on the MediaTek MT8196 Chromebook
-SoC.
+Use the actual device instead, and pass the dvfsrc parent into the
+dvfsrc calls.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Fixes: b45293799f75 ("interconnect: mediatek: Add MediaTek MT8183/8195 EMI Interconnect driver")
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/interconnect/mediatek/Kconfig  |   7 +
- drivers/interconnect/mediatek/Makefile |   1 +
- drivers/interconnect/mediatek/mt8196.c | 383 +++++++++++++++++++++++++++++++++
- 3 files changed, 391 insertions(+)
+ drivers/interconnect/mediatek/icc-emi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/interconnect/mediatek/Kconfig b/drivers/interconnect/mediatek/Kconfig
-index 985c849efac3..9fd3f2170443 100644
---- a/drivers/interconnect/mediatek/Kconfig
-+++ b/drivers/interconnect/mediatek/Kconfig
-@@ -27,3 +27,10 @@ config INTERCONNECT_MTK_MT8195
- 	help
- 	  This is a driver for the MediaTek bus interconnect on MT8195-based
- 	  platforms.
-+
-+config INTERCONNECT_MTK_MT8196
-+	tristate "MediaTek MT8196 interconnect driver"
-+	depends on INTERCONNECT_MTK_DVFSRC_EMI
-+	help
-+	  This is a driver for the MediaTek bus interconnect on MT8196-based
-+	  platforms.
-diff --git a/drivers/interconnect/mediatek/Makefile b/drivers/interconnect/mediatek/Makefile
-index 8e2283a9a5b5..6bd656668f5d 100644
---- a/drivers/interconnect/mediatek/Makefile
-+++ b/drivers/interconnect/mediatek/Makefile
-@@ -3,3 +3,4 @@
- obj-$(CONFIG_INTERCONNECT_MTK_DVFSRC_EMI) += icc-emi.o
- obj-$(CONFIG_INTERCONNECT_MTK_MT8183) += mt8183.o
- obj-$(CONFIG_INTERCONNECT_MTK_MT8195) += mt8195.o
-+obj-$(CONFIG_INTERCONNECT_MTK_MT8195) += mt8196.o
-diff --git a/drivers/interconnect/mediatek/mt8196.c b/drivers/interconnect/mediatek/mt8196.c
-new file mode 100644
-index 000000000000..e9af32065be1
---- /dev/null
-+++ b/drivers/interconnect/mediatek/mt8196.c
-@@ -0,0 +1,383 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2025 Collabora Ltd.
-+ *                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+ */
-+
-+#include <linux/device.h>
-+#include <linux/interconnect.h>
-+#include <linux/interconnect-provider.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <dt-bindings/interconnect/mediatek,mt8196.h>
-+
-+#include "icc-emi.h"
-+
-+static struct mtk_icc_node ddr_emi = {
-+	.name = "ddr-emi",
-+	.id = SLAVE_DDR_EMI,
-+	.ep = 1,
-+};
-+
-+static struct mtk_icc_node mcusys = {
-+	.name = "mcusys",
-+	.id = MASTER_MCUSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node mcu_port0 = {
-+	.name = "mcu-port0",
-+	.id = MASTER_MCU_0,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node mcu_port1 = {
-+	.name = "mcu-port1",
-+	.id = MASTER_MCU_1,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node mcu_port2 = {
-+	.name = "mcu-port2",
-+	.id = MASTER_MCU_2,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node mcu_port3 = {
-+	.name = "mcu-port3",
-+	.id = MASTER_MCU_3,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node mcu_port4 = {
-+	.name = "mcu-port4",
-+	.id = MASTER_MCU_4,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node gpu = {
-+	.name = "gpu",
-+	.id = MASTER_GPUSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node mmsys = {
-+	.name = "mmsys",
-+	.id = MASTER_MMSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node mm_vpu = {
-+	.name = "mm-vpu",
-+	.id = MASTER_MM_VPU,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_disp = {
-+	.name = "mm-disp",
-+	.id = MASTER_MM_DISP,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_vdec = {
-+	.name = "mm-vdec",
-+	.id = MASTER_MM_VDEC,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_venc = {
-+	.name = "mm-venc",
-+	.id = MASTER_MM_VENC,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_cam = {
-+	.name = "mm-cam",
-+	.id = MASTER_MM_CAM,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_img = {
-+	.name = "mm-img",
-+	.id = MASTER_MM_IMG,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node mm_mdp = {
-+	.name = "mm-mdp",
-+	.id = MASTER_MM_MDP,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MMSYS }
-+};
-+
-+static struct mtk_icc_node vpusys = {
-+	.name = "vpusys",
-+	.id = MASTER_VPUSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node vpu_port0 = {
-+	.name = "vpu-port0",
-+	.id = MASTER_VPU_0,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_VPUSYS }
-+};
-+
-+static struct mtk_icc_node vpu_port1 = {
-+	.name = "vpu-port1",
-+	.id = MASTER_VPU_1,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_VPUSYS }
-+};
-+
-+static struct mtk_icc_node mdlasys = {
-+	.name = "mdlasys",
-+	.id = MASTER_MDLASYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node mdla_port0 = {
-+	.name = "mdla-port0",
-+	.id = MASTER_MDLA_0,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_MDLASYS }
-+};
-+
-+static struct mtk_icc_node ufs = {
-+	.name = "ufs",
-+	.id = MASTER_UFS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node pcie = {
-+	.name = "pcie",
-+	.id = MASTER_PCIE,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node usb = {
-+	.name = "usb",
-+	.id = MASTER_USB,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node wifi = {
-+	.name = "wifi",
-+	.id = MASTER_WIFI,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node bt = {
-+	.name = "bt",
-+	.id = MASTER_BT,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node netsys = {
-+	.name = "netsys",
-+	.id = MASTER_NETSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node dbgif = {
-+	.name = "dbgif",
-+	.id = MASTER_DBGIF,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node hrt_ddr_emi = {
-+	.name = "hrt-ddr-emi",
-+	.id = SLAVE_HRT_DDR_EMI,
-+	.ep = 2,
-+};
-+
-+static struct mtk_icc_node hrt_mmsys = {
-+	.name = "hrt-mmsys",
-+	.id = MASTER_HRT_MMSYS,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_HRT_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node hrt_mm_disp = {
-+	.name = "hrt-mm-disp",
-+	.id = MASTER_HRT_MM_DISP,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_HRT_MMSYS }
-+};
-+
-+static struct mtk_icc_node hrt_mm_vdec = {
-+	.name = "hrt-mm-vdec",
-+	.id = MASTER_HRT_MM_VDEC,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_HRT_MMSYS }
-+};
-+
-+static struct mtk_icc_node hrt_mm_venc = {
-+	.name = "hrt-mm-venc",
-+	.id = MASTER_HRT_MM_VENC,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_HRT_MMSYS }
-+};
-+
-+static struct mtk_icc_node hrt_mm_cam = {
-+	.name = "hrt-mm-cam",
-+	.id = MASTER_HRT_MM_CAM,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_HRT_MMSYS }
-+};
-+
-+static struct mtk_icc_node hrt_mm_img = {
-+	.name = "hrt-mm-img",
-+	.id = MASTER_HRT_MM_IMG,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_HRT_MMSYS }
-+};
-+
-+static struct mtk_icc_node hrt_mm_mdp = {
-+	.name = "hrt-mm-mdp",
-+	.id = MASTER_HRT_MM_MDP,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { MASTER_HRT_MMSYS }
-+};
-+
-+static struct mtk_icc_node hrt_adsp = {
-+	.name = "hrt-adsp",
-+	.id = MASTER_HRT_ADSP,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_HRT_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node hrt_dbgif = {
-+	.name = "hrt-dbgif",
-+	.id = MASTER_HRT_DBGIF,
-+	.ep = 0,
-+	.num_links = 1,
-+	.links = { SLAVE_HRT_DDR_EMI }
-+};
-+
-+static struct mtk_icc_node *mt8196_emi_icc_nodes[] = {
-+	[SLAVE_DDR_EMI] = &ddr_emi,
-+	[MASTER_MCUSYS] = &mcusys,
-+	[MASTER_MCU_0] = &mcu_port0,
-+	[MASTER_MCU_1] = &mcu_port1,
-+	[MASTER_MCU_2] = &mcu_port2,
-+	[MASTER_MCU_3] = &mcu_port3,
-+	[MASTER_MCU_4] = &mcu_port4,
-+	[MASTER_GPUSYS] = &gpu,
-+	[MASTER_MMSYS] = &mmsys,
-+	[MASTER_MM_VPU] = &mm_vpu,
-+	[MASTER_MM_DISP] = &mm_disp,
-+	[MASTER_MM_VDEC] = &mm_vdec,
-+	[MASTER_MM_VENC] = &mm_venc,
-+	[MASTER_MM_CAM] = &mm_cam,
-+	[MASTER_MM_IMG] = &mm_img,
-+	[MASTER_MM_MDP] = &mm_mdp,
-+	[MASTER_VPUSYS] = &vpusys,
-+	[MASTER_VPU_0] = &vpu_port0,
-+	[MASTER_VPU_1] = &vpu_port1,
-+	[MASTER_MDLASYS] = &mdlasys,
-+	[MASTER_MDLA_0] = &mdla_port0,
-+	[MASTER_UFS] = &ufs,
-+	[MASTER_PCIE] = &pcie,
-+	[MASTER_USB] = &usb,
-+	[MASTER_WIFI] = &wifi,
-+	[MASTER_BT] = &bt,
-+	[MASTER_NETSYS] = &netsys,
-+	[MASTER_DBGIF] = &dbgif,
-+	[SLAVE_HRT_DDR_EMI] = &hrt_ddr_emi,
-+	[MASTER_HRT_MMSYS] = &hrt_mmsys,
-+	[MASTER_HRT_MM_DISP] = &hrt_mm_disp,
-+	[MASTER_HRT_MM_VDEC] = &hrt_mm_vdec,
-+	[MASTER_HRT_MM_VENC] = &hrt_mm_venc,
-+	[MASTER_HRT_MM_CAM] = &hrt_mm_cam,
-+	[MASTER_HRT_MM_IMG] = &hrt_mm_img,
-+	[MASTER_HRT_MM_MDP] = &hrt_mm_mdp,
-+	[MASTER_HRT_ADSP] = &hrt_adsp,
-+	[MASTER_HRT_DBGIF] = &hrt_dbgif
-+};
-+
-+static struct mtk_icc_desc mt8196_emi_icc = {
-+	.nodes = mt8196_emi_icc_nodes,
-+	.num_nodes = ARRAY_SIZE(mt8196_emi_icc_nodes),
-+};
-+
-+static const struct of_device_id mtk_mt8196_emi_icc_of_match[] = {
-+	{ .compatible = "mediatek,mt8196-emi", .data = &mt8196_emi_icc },
-+	{ /* sentinel */ },
-+};
-+MODULE_DEVICE_TABLE(of, mtk_mt8196_emi_icc_of_match);
-+
-+static struct platform_driver mtk_emi_icc_mt8196_driver = {
-+	.driver = {
-+		.name = "emi-icc-mt8196",
-+		.of_match_table = mtk_mt8196_emi_icc_of_match,
-+		.sync_state = icc_sync_state,
-+	},
-+	.probe = mtk_emi_icc_probe,
-+	.remove = mtk_emi_icc_remove,
-+
-+};
-+module_platform_driver(mtk_emi_icc_mt8196_driver);
-+
-+MODULE_AUTHOR("AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>");
-+MODULE_DESCRIPTION("MediaTek MT8196 EMI ICC driver");
-+MODULE_LICENSE("GPL");
+diff --git a/drivers/interconnect/mediatek/icc-emi.c b/drivers/interconnect/mediatek/icc-emi.c
+index 7da740b5fa8d..182aa2b0623a 100644
+--- a/drivers/interconnect/mediatek/icc-emi.c
++++ b/drivers/interconnect/mediatek/icc-emi.c
+@@ -40,7 +40,7 @@ static int mtk_emi_icc_set(struct icc_node *src, struct icc_node *dst)
+ 	if (unlikely(!src->provider))
+ 		return -EINVAL;
+ 
+-	dev = src->provider->dev;
++	dev = src->provider->dev->parent;
+ 
+ 	switch (node->ep) {
+ 	case 0:
+@@ -97,7 +97,7 @@ int mtk_emi_icc_probe(struct platform_device *pdev)
+ 	if (!data)
+ 		return -ENOMEM;
+ 
+-	provider->dev = pdev->dev.parent;
++	provider->dev = dev;
+ 	provider->set = mtk_emi_icc_set;
+ 	provider->aggregate = mtk_emi_icc_aggregate;
+ 	provider->xlate = of_icc_xlate_onecell;
 
 -- 
 2.52.0
