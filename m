@@ -4,94 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40156CFD313
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 16:44:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B3BFCFD341
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 17:56:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:
-	To:Cc:Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
-	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8VxkXwHyVWJtMQb4rGcL9+DawEiYCDxx29eMOS81RRA=; b=zLuk3p78Z3V1meZsnt5U1avXjG
-	th2TgWI8xw61pQlGHnf3oXzj9hgRY5khPlAQycAh4m6SgtY7PPnQxixSo3iMPosqGkJDDJl9JjwMC
-	5B67QkhNgn+B4W1EUIjplRfqjoRMs+frlyeZMLod2KF7xakk8T7OqmaObbsgtSr0kUXVJwqbiPToZ
-	nsB0WcTKi1KWqAHaxoyyRRPLInJpC6yUhkpOd2JrAAcpPlw1hQjnxs6txdfH6Hcag9QttUy8ifkIV
-	JnzfXUMtdqYoL9fwDr2bY3guLh2PO43w5SOpgml5za2V94NilgG7FCBA7gxBSNE9fwYFqes3fwFky
-	pbpOrh+g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dgj16XmQKLfzuMiMJnYwYhnRMSc7HIdJxo40jdxC8fc=; b=HcnVB2cPFdB/io
+	rkTVPU22Wu9fuHj+Bmh951M5LRuxTd7I2kkhy+J4QEYj1jsAKYlcT7PayKk2rZMXtwoDDPiTnHWF+
+	eDxkts+yUAAaMzGuyZ/9x8Z3k/IGlmZ489wbjqb178vk7DK5qAOqUQoy2F8y8HkhgYfPVvKpDM8O/
+	szNoh149qTSN65FrcR9JTkzVMi2CCw0YwidNruKEnlArbx+zJ5eWtpt5VUedr33EfSra+j6UgReT5
+	Y2tkJ/JKMpAsFVRr2tbaP5pS19UbNFMJ7B4BvhtB11JFngpDP5nfxTe5P4m2Be+oiPSlROCmwzhHB
+	7fSU6kZsHdcKedAyX1pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNZfz-0000000C0zp-2gi5;
-	Mon, 24 Nov 2025 16:44:31 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1vNank-0000000C8b7-2jhX;
+	Mon, 24 Nov 2025 17:56:36 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNZfv-0000000C0yX-3JyU;
-	Mon, 24 Nov 2025 16:44:29 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 472BEC139B2;
-	Mon, 24 Nov 2025 16:44:02 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id B7547606FC;
-	Mon, 24 Nov 2025 16:44:24 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 1410710371A8F;
-	Mon, 24 Nov 2025 17:44:09 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1764002662; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=8VxkXwHyVWJtMQb4rGcL9+DawEiYCDxx29eMOS81RRA=;
-	b=KrEWDBIww4g7nDza6Zc7hbr+ZoXaAgKnm9t/c7uQL8DjmTM4Lqn6U4mOBDG5vMoUDsvrd2
-	z/Sp/kXw6JnOSTYIFsmfxY3UrknEd6H/JIDub3AwK87pZ+UJrv5fYOmUNSbSYDq4WsP5v0
-	oneufTmETBFZmFUh0DxP15w3p8E74Qylz6WR0Fur6qK4EEAxebJte+/MSikZrha0b/9Gls
-	WRJzAXFmzZG7qJu0L63Dv+MuAQdNPhwTUxava0scvHSMJ7nqGhN0bidohpBwZuGxE/Vr0T
-	7wEt+C6kFsdbn3+p0AzKRiI549ZbqiSwVxZK8aOtKlYFNJxrJuYIWVmjCUBcsA==
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Mon, 24 Nov 2025 17:44:09 +0100
-Message-Id: <DEH2R1Q0XJJG.1NMESYMX9GMFL@bootlin.com>
-Subject: Re: [PATCH 04/26] drm/bridge: make of_drm_find_bridge() a wrapper
- of drm_of_find_bridge()
-Cc: "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
- <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
- Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
- <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Thomas Zimmermann"
- <tzimmermann@suse.de>, "David Airlie" <airlied@gmail.com>, "Simona Vetter"
- <simona@ffwll.ch>, "Jonathan Corbet" <corbet@lwn.net>, "Alexey Brodkin"
- <abrodkin@synopsys.com>, "Phong LE" <ple@baylibre.com>, "Liu Ying"
- <victor.liu@nxp.com>, "Shawn Guo" <shawnguo@kernel.org>, "Sascha Hauer"
- <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
- <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>, "Adrien
- Grassein" <adrien.grassein@gmail.com>, "Laurent Pinchart"
- <laurent.pinchart+renesas@ideasonboard.com>, "Tomi Valkeinen"
- <tomi.valkeinen+renesas@ideasonboard.com>, "Kieran Bingham"
- <kieran.bingham+renesas@ideasonboard.com>, "Geert Uytterhoeven"
- <geert+renesas@glider.be>, "Magnus Damm" <magnus.damm@gmail.com>, "Kevin
- Hilman" <khilman@baylibre.com>, "Jerome Brunet" <jbrunet@baylibre.com>,
- "Martin Blumenstingl" <martin.blumenstingl@googlemail.com>, "Chun-Kuang Hu"
- <chunkuang.hu@kernel.org>, "Philipp Zabel" <p.zabel@pengutronix.de>,
- "Matthias Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
- <angelogioacchino.delregno@collabora.com>, "Anitha Chrisanthus"
- <anitha.chrisanthus@intel.com>, "Edmund Dea" <edmund.j.dea@intel.com>,
- "Inki Dae" <inki.dae@samsung.com>, "Seung-Woo Kim"
- <sw0312.kim@samsung.com>, "Kyungmin Park" <kyungmin.park@samsung.com>,
- "Krzysztof Kozlowski" <krzk@kernel.org>, "Alim Akhtar"
- <alim.akhtar@samsung.com>, "Hui Pu" <Hui.Pu@gehealthcare.com>, "Thomas
- Petazzoni" <thomas.petazzoni@bootlin.com>,
- <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
- <linux-doc@vger.kernel.org>, <imx@lists.linux.dev>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-renesas-soc@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
- "Anusha Srivatsa" <asrivats@redhat.com>
-To: "Maxime Ripard" <mripard@kernel.org>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-X-Mailer: aerc 0.20.1
-References: <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-0-0db98a7fe474@bootlin.com> <20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-4-0db98a7fe474@bootlin.com> <wxxjp7fmsnh2k4huvg2thmfi6kcszdphrag3zosrnykn7abeua@cdlywqj32jd7>
-In-Reply-To: <wxxjp7fmsnh2k4huvg2thmfi6kcszdphrag3zosrnykn7abeua@cdlywqj32jd7>
-X-Last-TLS-Session-Version: TLSv1.3
+	id 1vNanh-0000000C8aF-2Se9
+	for linux-mediatek@lists.infradead.org;
+	Mon, 24 Nov 2025 17:56:35 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-47755de027eso24501605e9.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Nov 2025 09:56:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1764006991; x=1764611791; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dgj16XmQKLfzuMiMJnYwYhnRMSc7HIdJxo40jdxC8fc=;
+        b=A/n34a9DxVpJXi1RaTVFZj284yFUdo0wNHNJQ54to2LNre9Rn0d23Gy0hvLGa2NleQ
+         0RS+HhnhHVsPYBD+9ebSxWir4/uvzW3dotWaBZM+xUQKJJQlqU1MCmM0uW+EA5OEc7r1
+         OWJul8K5/ELRHoyOyaK2n9Dkobv9QbVdGHK+KvX0XTOOEdyjaZMG/+UTYQGO6GxSgq19
+         aI4G5jHEkiFjPDD/mOIODI4miCSWrzyUHnzEDMTICMyDN5fhVlhZwEY5JDiimeEi5p9i
+         GVgLQgBlQU4bLGvMZ9yOn/D89STKWHOmNb4s2iq1bPATKh58Sy7wrSm77htUPEs1YXUE
+         JBJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764006991; x=1764611791;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=dgj16XmQKLfzuMiMJnYwYhnRMSc7HIdJxo40jdxC8fc=;
+        b=ms7LurdBDh3pGXpgRZnjJh2VSpkTLK0jxsSHnUuM5U4Iv9AVFoQFy34M73JNtQLuM4
+         edmNVw8I3IltEACdAMGnJwwtILYKxmY+VQ6AvClb3x/ALAvC+lLNGp1QpbWIOhSdfVIs
+         42WbwctNxWMUEzPMks3GcPVbAdjEHlnYhBIQMOrEbRPrzPIAiyEcBW3PWzHNavumiio7
+         DP+AbjIdW/+aMj1S8PzoduznMjsO0JucVJSKGVdmcvBhI69u8ox2kFndOOBzm9q7JRfZ
+         s0U2QxBMImFc5RLKdv4X9HkM0BU1hfkowlEU3dhi8YFxx1/OYSO3FIid9ENqiMqWJkIm
+         7wkw==
+X-Forwarded-Encrypted: i=1; AJvYcCUoHSuKkClbzSMBh3TvB8wvxNIIJNdXdkxTbs1h16HBOVcdHay7DPc7dbylgLXG44N+te/O5VqWQzjmaCDv3g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwDBNUkU1M/FRxLOr4KpBxGrEqgy5KkkUX3PmJ9XYhbvJCWFsPe
+	HfigF/q3Cj2B//fHreyORpMwQbxcMbFfaBYfU5hG0YUeveRxxha05Ly6RlH2C5edXEc=
+X-Gm-Gg: ASbGncvcwFME88NnsSivEQt767EDEytWHZqwsiFIUKwtMVgc0SExzvZS9zbkLHdzg7J
+	BVefs3UQ7I4hVkIJhUoaPWTDQVu9xYYBWpzL5V+meiCMnIvB2vmVa6RCe4l6yiEjFwPctZozI7K
+	WFRuABSliUnFqetiTBMt4w8joPwKGqdqqEy57d+7PHFiO4U2Tb0Mq5a7ImC3NOOlib3opoSALzI
+	6OYMg1EhJc4I0LGossXM0Wtp2BNg8LYB6C0aUumdMJ6krU0bcHmAS1XNADdMtckZ1vK+Qn0gZIf
+	610J+zbJpBRS2exYBEYK8WrZJhae0fZmnPvOAOU85eOlnaNHFvPE3cHTE9KbHGsBuJ6PYi6zfst
+	2kWufHsrmWIuWYf5n5So62x0qhzurCreIPQ78AuYQYit1zrTN+GkHgv+tCo0l1Z0tz7wHKXR3z1
+	7i2jhnnxHg0nUGueJy7l8/Fe+ezogmNxobVhV1D7Qi/mxpZrT49EnNnzx93lwgqSSiGVhjKY3bB
+	8y4
+X-Google-Smtp-Source: AGHT+IF9jQYjGDYWRD+2xNGzxOUo7frTRxo+/YiP6cBgQWSgQQXQD/fGaLUkrkLZhoAvTfv/zaiUjQ==
+X-Received: by 2002:a05:600c:1f94:b0:477:28c1:26ce with SMTP id 5b1f17b1804b1-477c016bbd5mr123402035e9.7.1764006991417;
+        Mon, 24 Nov 2025 09:56:31 -0800 (PST)
+Received: from ?IPV6:2a05:6e02:1041:c10:a756:bb6c:7b35:af9b? ([2a05:6e02:1041:c10:a756:bb6c:7b35:af9b])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-477bf198a67sm217894095e9.0.2025.11.24.09.56.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 24 Nov 2025 09:56:30 -0800 (PST)
+Message-ID: <190003b6-2931-406a-a8f6-ec8909c65162@linaro.org>
+Date: Mon, 24 Nov 2025 18:56:29 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 3/9] thermal/drivers/mediatek/lvts: Fail probe if
+ temp_factor is zero
+To: Laura Nao <laura.nao@collabora.com>, srini@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, rafael@kernel.org,
+ rui.zhang@intel.com, lukasz.luba@arm.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com
+References: <20251121-mt8196-lvts-v4-v4-0-357f955a3176@collabora.com>
+ <20251121-mt8196-lvts-v4-v4-3-357f955a3176@collabora.com>
+Content-Language: en-US
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20251121-mt8196-lvts-v4-v4-3-357f955a3176@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251124_084428_122841_3C7672BB 
-X-CRM114-Status: GOOD (  21.99  )
+X-CRM114-CacheID: sfid-20251124_095633_654349_D88ABF82 
+X-CRM114-Status: GOOD (  16.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,79 +103,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, arnd@arndb.de, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, nfraprado@collabora.com, devicetree@vger.kernel.org, u.kleine-koenig@baylibre.com, linux-arm-kernel@lists.infradead.org, wenst@chromium.org, linux-mediatek@lists.infradead.org, kernel@collabora.com, colin.i.king@gmail.com, bchihi@baylibre.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 11/21/25 12:16, Laura Nao wrote:
+> temp_factor is used in lvts_temp_to_raw() and lvts_raw_to_temp(). If
+> platform data is incorrect and temp_factor is zero, it could cause a
+> division by zero. Fail the probe early to prevent a kernel crash.
+> 
+> Signed-off-by: Laura Nao <laura.nao@collabora.com>
+> ---
+>   drivers/thermal/mediatek/lvts_thermal.c | 5 +++++
+>   1 file changed, 5 insertions(+)
+> 
+> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
+> index 1c54d0b75b1a..b49441d82ffd 100644
+> --- a/drivers/thermal/mediatek/lvts_thermal.c
+> +++ b/drivers/thermal/mediatek/lvts_thermal.c
+> @@ -1346,6 +1346,11 @@ static int lvts_probe(struct platform_device *pdev)
+>   	if (irq < 0)
+>   		return irq;
+>   
+> +	if (!lvts_data->temp_factor)
+> +		return dev_err_probe(
+> +			dev, -EINVAL,
+> +			"temp_factor should never be zero; check platform data.\n");
+> +
 
-+Cc Anusha
+ From my POV, this is not really useful. The temp_factor is set for each 
+version statically in the code. The scope is limited to the driver, IOW 
+it is not a parameter other subsystems passes to the driver.
 
-On Mon Nov 24, 2025 at 11:22 AM CET, Maxime Ripard wrote:
-> Hi,
->
-> On Wed, Nov 19, 2025 at 02:05:35PM +0100, Luca Ceresoli wrote:
->> of_drm_find_bridge() is identical to drm_of_find_bridge() except it does
->> not increment the refcount. Rewrite it as a wrapper and put the bridge
->> being returned so the behaviour is still the same.
->>
->> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
->
-> Kind of the same comment than on the TODO. Is it worth doing that patch
-> when we could just remove it at the end of the series?
+If it is NULL, then shame on the submitter who did not test the driver 
+before sending ;)
 
-This series is not converting all users I'm afraid.
 
-There are still some drivers to convert, but not a big deal.
 
-The main user to be converted is drm_of_find_panel_or_bridge(), which is
-very tricky, and in turn it is used by devm_drm_of_get_bridge(). We
-discussed this in the past and the conclusion was a rework of the drm_panel
-lifetime was needed to be able to properly replace
-drm_of_find_panel_or_bridge().
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
 
-A drm_panel rework had started very well with devm_drm_panel_alloc() that
-got upstreamed by Anusha, but I'm not sure if it has made further progress
-after that. So AFAICT the plan is still "People will gradually switch to
-the new API over time", and the deprecated of_drm_find_bridge() will be
-removed after that.
-
-Does it still make sense to you?
-
-Maxime, Anusha, are you aware of any steps forward about dynamic panel
-lifetime, after devm_drm_panel_alloc()?
-
->> @@ -1460,19 +1460,11 @@ EXPORT_SYMBOL(drm_of_find_bridge);
->>   */
->>  struct drm_bridge *of_drm_find_bridge(struct device_node *np)
->>  {
->> -	struct drm_bridge *bridge;
->> -
->> -	mutex_lock(&bridge_lock);
->> +	struct drm_bridge *bridge =3D drm_of_find_bridge(np);
->>
->> -	list_for_each_entry(bridge, &bridge_list, list) {
->> -		if (bridge->of_node =3D=3D np) {
->> -			mutex_unlock(&bridge_lock);
->> -			return bridge;
->> -		}
->> -	}
->> +	drm_bridge_put(bridge);
->
-> And if it does make sense to keep that patch, we should add a comment
-> here to document why we are doing this.
-
-OK, what about:
-
-/**
- * We need to emulate the original semantice of of_drm_find_bridge(), which
- * was not getting any bridge reference. Being now based on
- * drm_of_find_bridge() which gets a reference, put it before returning.
- */
-
-Luca
-
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
 
