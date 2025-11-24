@@ -4,93 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68C6FCFD345
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 18:25:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C173CFD313
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 18:54:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tT3hJS80cNjtdeK1a1hTCAW6GUTi3Z7+AdwEEe81LCI=; b=eVyZaPVXF2bc/1
-	vcrjExUICEhzWLct8i+lOfnqQuC+A1rKUGU8dfIoVUszZTA65Lmnbm2iVCzRrmW1ONzYu4JRFBdBN
-	NaKhnaeCMHTaS7PeTtuf3xy93jTccV1hFAjrMYmc80FKKZrEK8lc1Z5HEGWW6kg6ermtsyILE/iU+
-	JuiFOwW7LnGzvruoS9F0YG1epujxC2R4k9HOlmP9cVd2piO05bh9u4bPN/pz+nGA6RSYtARLiq+Rx
-	cN5+KuY0jElnO/aSTOQlWTJ0bklo1btqnrO2O82KF44Mjyawg5nU6eDfUkiws4fn6oaZyOpPmSWq+
-	q7g1laY7CwoBfp7qbbbw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UVhQPGFGqrt1+uVUFNTc71/aYdl5cd0D4DfQVcOLfgI=; b=hYEMfxaY08CftxmJL33bZcuZnM
+	jV8tbtvpVjw5rID/tW4iTwDhqz1LWbD3GgL15Jsyhzj438HCbnvkwKlp+M/BggBva2EPQSQT3k57E
+	AAiBTQE43cQWXUncVfAeX0ItuPGnc9vCoCBwmMXfn/WAqpaLyXSJUGhR8ndQ0GplRgvamDJ7qW8mw
+	E29XlukKtbOoijCPO4Ky6d1NbsdyrKWWWxyItE6Pfffx7aOF57k72h+WlB9tU3S2NaCX+9LxJgfRE
+	L/ZYEQJ8QwAvwv04f09jLH75RxfANBIVi+e4ph5vy+9z8U7m//15tLgraRMABLL72MXg7vFRKY1mv
+	lrdaNqVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNbFZ-0000000CB0e-34ZI;
-	Mon, 24 Nov 2025 18:25:21 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1vNbhe-0000000CCeu-0vQR;
+	Mon, 24 Nov 2025 18:54:22 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNbFW-0000000CAzf-3AHY
+	id 1vNbhb-0000000CCd7-0hXh
 	for linux-mediatek@lists.infradead.org;
-	Mon, 24 Nov 2025 18:25:20 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-477a2ab455fso50160385e9.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 24 Nov 2025 10:25:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1764008717; x=1764613517; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=tT3hJS80cNjtdeK1a1hTCAW6GUTi3Z7+AdwEEe81LCI=;
-        b=iL+j+91D/uno1IU/VD6uUb90j8JbPmw1QiYEmTpZFJ2b4zONTK4sRnQ/uk56RU4B4a
-         d/ZkdtGWWSTys6UGwu/SQKurOu4ZenSHK2dTGM30NRPBaSAgdLUpTD51xsLmS+Yw+xKI
-         mVqobcEZTdtQnVGJh46o/eOA9CY+sOc1/5/Fz29AW1ztTqrSrO1UTjnn1DyycFw8U+d6
-         d0+oojkNOFfTZc0dOuB4ejvTHhQdd1ZK6S28vNzS4KLXmwAuxnB3jtnQIH3DmgLs/cDc
-         zJ1VI5STas73axofiv78QIngwkEJNYHZgRWzGgNIvNrHR/sYJ6q16fkq/5qnY5jK5Fqe
-         zSpA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764008717; x=1764613517;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=tT3hJS80cNjtdeK1a1hTCAW6GUTi3Z7+AdwEEe81LCI=;
-        b=A735ebb5Z+/zfUDzwrP/4IcWPlddyfAlp0t6KP/+e2E4Ph6N5ySW1sr4GsHu9yIX07
-         BMKfbtNH2n52VmHMdVM3bhBCuxV19F5zvFrIwb5q0WR9enfQH+4HsBUrGVhS8UU2q5Rj
-         D/qQGHDl6wv1riUpBz5nVSWPtz900uPoyQZNFT8F6oMNAnlzh4xSFfl8mLmotwmuR5Qs
-         KmXhZ0dZLi+JUwsWZwmojakVdjWmKeDorV6XPefU2L5tFyAnJXhhqf930B9yJRPgLdVi
-         VVHia8SLouQxRd35F3fPTesOggHv3rwIwcskc9r2iYh9GN3MDws5udjwEMnLFQIZmbcU
-         12Uw==
-X-Forwarded-Encrypted: i=1; AJvYcCVoQ5P1pL15m7JM7JPsSqCZ8mI31/ojqcJqL5O1vc2f+cHuV6gGu/akFfhiEA8U+kqJus6efiH2/iXFZx5hkQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxQUakZaEApn+fib2456CURNtYB0+IxuBoSQqxaWjG3jrUeil6j
-	CKUJwEmH9CJrk5FoUqd+WMpOy/6REGPWGST4zfpz9CmB7DVLciOuXG5rPdHt4lCHTKQ=
-X-Gm-Gg: ASbGncvGITl9Fha8+33RUl80/4/uhDkAZZDfQ68FZXMt2vCbXBCaGllgbdtpk3JY1rg
-	JB+azF10VbdUE7y4RRNuY5xymzC/efJHS9WsBI0RSBmX2PhJ85EgPjtvo6bigMnKV1znKDZoimk
-	DU1z641tXjII0Wq/obyirn016+JIULFqb2mzAtA+H1s6M0UdmkJuWXf4nwXrR5oRQcl4NSej+ej
-	t8saicMGLsIhhqZmALW51RoQ+D5RI8GXE32RmsmMosNLN4AOJWxKI1fr18j58di16pYVVNi3oBy
-	RG2xksCWLaRSPkD0Hd2UK+UilElp6Q6YaOrZcBY/Q6XoCRTlSJDNTEjhLBbhGfjDag8MEW52o9+
-	ZjXd5jsW/4xdVfPQTUyU/fWrYc530QSuyOM3m2olz1yJ2fyvj+rMdqofq1WSc7SBAJuA+F2kkZc
-	eOWZaTGFot6htdk6bVi63TxBJXym5zz1AWIoFSHfBJD5yAuE2cs5y7fYrH+SOB47yKdQ==
-X-Google-Smtp-Source: AGHT+IEp/+xfgqCCD0AdpFxMvmOtmfqswl3tOTSPHA1XXl6DHcUQiOYz7lT/1lNZ+sQorO1fAsI5XQ==
-X-Received: by 2002:a05:600c:4ec7:b0:477:9b4a:a82 with SMTP id 5b1f17b1804b1-477c1138445mr126058885e9.35.1764008716859;
-        Mon, 24 Nov 2025 10:25:16 -0800 (PST)
-Received: from ?IPV6:2a05:6e02:1041:c10:a756:bb6c:7b35:af9b? ([2a05:6e02:1041:c10:a756:bb6c:7b35:af9b])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-477bf1f365fsm209857255e9.8.2025.11.24.10.25.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 24 Nov 2025 10:25:15 -0800 (PST)
-Message-ID: <24a5bd31-a79f-4f18-a190-6a4d886a29b2@linaro.org>
-Date: Mon, 24 Nov 2025 19:25:14 +0100
+	Mon, 24 Nov 2025 18:54:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1EDBB4440A
+	for <linux-mediatek@lists.infradead.org>; Mon, 24 Nov 2025 18:54:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 037CCC116C6
+	for <linux-mediatek@lists.infradead.org>; Mon, 24 Nov 2025 18:54:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764010458;
+	bh=TEK7y+I345Za9ATxX+knyA/Uh489WPY9Dd1JCZP1I5g=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=jaJZZFHd9EbEwx/HXqWrnJzLLWTmDsjeCYIq0msXegrh1uOLQsYkLcGsOqDhYGYa1
+	 ulVE7WOFxgFtpE2/6TkwNTfV+9Rh0FSoTOohVIha1MYp1K5u2GOOF4aS+plyAfBAle
+	 vAZP1pWHSc2BhkypnD2nz0a3oVcYZoWGxiPrhyCwtfso6TjC0ca6YjyLVtMdloPCZj
+	 YjsoUkmPkN4DfXzzlBmRG07pBRUjbMkoJH5hAhMxXKO6mhdkj9L8ykHTsvk6JpcSId
+	 e4dHeGWi1OOrSvjb2TfH3swea0z/yg8jzYuM1iQ+XmmH3i9ds4f6wja6p20TfYTyKh
+	 Wz2iE90nWxrRA==
+Received: by mail-ed1-f47.google.com with SMTP id 4fb4d7f45d1cf-64175dfc338so7809135a12.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 24 Nov 2025 10:54:17 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCX4DPAg11LaQ9vsczv/+UJnrZFBxK/j3FxA2GClyzzuCXzEAjMXU2tw88Co8FudNZkqUhAh5nLDiWXItGsbuw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw9VM/n3jaCaI1ILU+ftjE222kVN4b6GZqx2GOwblrYr0mvAztC
+	nhoz4Xd/UTdL/ZQ4KVidLzGAm0D/neyaCAKOHFWsiySy7j5H7hXQk0TIno7RgaaQd2eBnjAOyjp
+	YTLuyZG6BTSIaPCXZ7dlrZa9zkexQmQ==
+X-Google-Smtp-Source: AGHT+IFReAtDFuSFDhp918Ohx2vHaiN5KlMAX/uodATZY6O/YB75rQVqkELqtwQbH271c/8FxbJ2Dkum3f0Uu3OWMzM=
+X-Received: by 2002:a05:6402:5252:b0:643:4e9c:d166 with SMTP id
+ 4fb4d7f45d1cf-6455443ed4cmr10891528a12.8.1764010456224; Mon, 24 Nov 2025
+ 10:54:16 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/9] thermal/drivers/mediatek/lvts: Make number of
- calibration offsets configurable
-To: Laura Nao <laura.nao@collabora.com>, srini@kernel.org, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, rafael@kernel.org,
- rui.zhang@intel.com, lukasz.luba@arm.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com
-References: <20251121-mt8196-lvts-v4-v4-0-357f955a3176@collabora.com>
- <20251121-mt8196-lvts-v4-v4-2-357f955a3176@collabora.com>
-Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <20251121-mt8196-lvts-v4-v4-2-357f955a3176@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+ <20250911151001.108744-4-ariel.dalessandro@collabora.com> <20250912140619.GA1293647-robh@kernel.org>
+ <fb20e4fe-df0a-4089-a7cf-e82bfe1f8e00@collabora.com>
+In-Reply-To: <fb20e4fe-df0a-4089-a7cf-e82bfe1f8e00@collabora.com>
+From: Rob Herring <robh@kernel.org>
+Date: Mon, 24 Nov 2025 12:54:04 -0600
+X-Gmail-Original-Message-ID: <CAL_Jsq+eeiw9oaqQPWt2=rZSX98Pak_oB=tfQFvEehwLZ=S52g@mail.gmail.com>
+X-Gm-Features: AWmQ_blUF-g1qhHGkKsa6U6HY_V7mtf4Q-WkpVuhZVm09t2HSWt6-IOrweXVTPs
+Message-ID: <CAL_Jsq+eeiw9oaqQPWt2=rZSX98Pak_oB=tfQFvEehwLZ=S52g@mail.gmail.com>
+Subject: Re: [PATCH v2 03/12] dt-bindings: net: Convert Marvell 8897/8997
+ bindings to DT schema
+To: "Ariel D'Alessandro" <ariel.dalessandro@collabora.com>
+Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch, 
+	andrew-ct.chen@mediatek.com, angelogioacchino.delregno@collabora.com, 
+	broonie@kernel.org, chunkuang.hu@kernel.org, conor+dt@kernel.org, 
+	davem@davemloft.net, dmitry.torokhov@gmail.com, edumazet@google.com, 
+	flora.fu@mediatek.com, heiko@sntech.de, houlong.wei@mediatek.com, 
+	jeesw@melfas.com, kernel@collabora.com, krzk+dt@kernel.org, kuba@kernel.org, 
+	lgirdwood@gmail.com, linus.walleij@linaro.org, 
+	louisalexis.eyraud@collabora.com, luiz.dentz@gmail.com, 
+	maarten.lankhorst@linux.intel.com, marcel@holtmann.org, 
+	matthias.bgg@gmail.com, mchehab@kernel.org, minghsiu.tsai@mediatek.com, 
+	mripard@kernel.org, p.zabel@pengutronix.de, pabeni@redhat.com, 
+	sean.wang@kernel.org, simona@ffwll.ch, support.opensource@diasemi.com, 
+	tiffany.lin@mediatek.com, tzimmermann@suse.de, yunfei.dong@mediatek.com, 
+	devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, linux-input@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-sound@vger.kernel.org, netdev@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251124_102518_855984_5D760E44 
-X-CRM114-Status: GOOD (  19.84  )
+X-CRM114-CacheID: sfid-20251124_105419_262722_F4D4D5A6 
+X-CRM114-Status: GOOD (  15.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,109 +100,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: andrew-ct.chen@mediatek.com, lala.lin@mediatek.com, arnd@arndb.de, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, nfraprado@collabora.com, devicetree@vger.kernel.org, u.kleine-koenig@baylibre.com, linux-arm-kernel@lists.infradead.org, wenst@chromium.org, linux-mediatek@lists.infradead.org, kernel@collabora.com, colin.i.king@gmail.com, bchihi@baylibre.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/21/25 12:16, Laura Nao wrote:
-> MT8196/MT6991 use 2-byte eFuse calibration data, whereas other SoCs
-> supported by the driver rely on 3 bytes. Make the number of calibration
-> bytes per sensor configurable, enabling support for SoCs with varying
-> calibration formats.
-> 
-> Reviewed-by: Fei Shao <fshao@chromium.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Tested-by: Frank Wunderlich <frank-w@public-files.de>
-> Signed-off-by: Laura Nao <laura.nao@collabora.com>
-> ---
->   drivers/thermal/mediatek/lvts_thermal.c | 32 ++++++++++++++++++++++----------
->   1 file changed, 22 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-> index ab55b20cda47..1c54d0b75b1a 100644
-> --- a/drivers/thermal/mediatek/lvts_thermal.c
-> +++ b/drivers/thermal/mediatek/lvts_thermal.c
-> @@ -96,12 +96,14 @@
->   
->   #define LVTS_MINIMUM_THRESHOLD		20000
->   
-> +#define LVTS_MAX_CAL_OFFSETS		3
+On Wed, Oct 1, 2025 at 12:28=E2=80=AFPM Ariel D'Alessandro
+<ariel.dalessandro@collabora.com> wrote:
+>
+> Rob,
+>
+> On 9/12/25 11:06 AM, Rob Herring wrote:
+> > On Thu, Sep 11, 2025 at 12:09:52PM -0300, Ariel D'Alessandro wrote:
+> >> Convert the existing text-based DT bindings for Marvell 8897/8997
+> >> (sd8897/sd8997) bluetooth devices controller to a DT schema.
+> >>
+> >> While here:
+> >>
+> >> * bindings for "usb1286,204e" (USB interface) are dropped from the DT
+> >>    schema definition as these are currently documented in file [0].
+> >> * DT binding users are updated to use bluetooth generic name
+> >>    recommendation.
+> >>
+> >> [0] Documentation/devicetree/bindings/net/btusb.txt
+> >>
+> >> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+> >> ---
+> >>   .../net/bluetooth/marvell,sd8897-bt.yaml      | 79 +++++++++++++++++=
++
+> >>   .../devicetree/bindings/net/btusb.txt         |  2 +-
+> >>   .../bindings/net/marvell-bt-8xxx.txt          | 83 -----------------=
+--
+> >
+> >>   .../dts/rockchip/rk3288-veyron-fievel.dts     |  2 +-
+> >>   .../boot/dts/rockchip/rk3288-veyron-jaq.dts   |  2 +-
+> >>   arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  |  2 +-
+> >
+> > .dts files should be separate patches. Please send the bindings patches
+> > separately per subsystem so subsystem maintainers can apply them. All
+> > the Mediatek dts changes can be 1 series.
+>
+> Ack, will fix in v3.
 
-I suggest LVTS_NUM_CAL_OFFSETS then below,
+Are you going to send v3 still?
 
-> +
->   static int golden_temp = LVTS_GOLDEN_TEMP_DEFAULT;
->   static int golden_temp_offset;
->   
->   struct lvts_sensor_data {
->   	int dt_id;
-> -	u8 cal_offsets[3];
-> +	u8 cal_offsets[LVTS_MAX_CAL_OFFSETS];
->   };
->   
->   struct lvts_ctrl_data {
-> @@ -127,6 +129,7 @@ struct lvts_data {
->   	const struct lvts_ctrl_data *lvts_ctrl;
->   	const u32 *conn_cmd;
->   	const u32 *init_cmd;
-> +	int num_cal_offsets;
->   	int num_lvts_ctrl;
->   	int num_conn_cmd;
->   	int num_init_cmd;
-> @@ -711,7 +714,7 @@ static int lvts_calibration_init(struct device *dev, struct lvts_ctrl *lvts_ctrl
->   					u8 *efuse_calibration,
->   					size_t calib_len)
->   {
-> -	int i;
-> +	int i, j;
->   	u32 gt;
->   
->   	/* A zero value for gt means that device has invalid efuse data */
-> @@ -720,17 +723,18 @@ static int lvts_calibration_init(struct device *dev, struct lvts_ctrl *lvts_ctrl
->   	lvts_for_each_valid_sensor(i, lvts_ctrl_data) {
->   		const struct lvts_sensor_data *sensor =
->   					&lvts_ctrl_data->lvts_sensor[i];
-> +		u32 calib = 0;
->   
-> -		if (sensor->cal_offsets[0] >= calib_len ||
-> -		    sensor->cal_offsets[1] >= calib_len ||
-> -		    sensor->cal_offsets[2] >= calib_len)
-> -			return -EINVAL;
-> +		for (j = 0; j < lvts_ctrl->lvts_data->num_cal_offsets; j++) {
-> +			u8 offset = sensor->cal_offsets[j];
-> +
-> +			if (offset >= calib_len)
-> +				return -EINVAL;
-> +			calib |= efuse_calibration[offset] << (8 * j);
-
-May be worth for a comment here, ideally a separate function to clarify 
-the code
-
-> +		}
->   
->   		if (gt) {
-> -			lvts_ctrl->calibration[i] =
-> -				(efuse_calibration[sensor->cal_offsets[0]] << 0) +
-> -				(efuse_calibration[sensor->cal_offsets[1]] << 8) +
-> -				(efuse_calibration[sensor->cal_offsets[2]] << 16);
-> +			lvts_ctrl->calibration[i] = calib;
->   		} else if (lvts_ctrl->lvts_data->def_calibration) {
->   			lvts_ctrl->calibration[i] = lvts_ctrl->lvts_data->def_calibration;
->   		} else {
-> @@ -1763,6 +1767,7 @@ static const struct lvts_data mt7988_lvts_ap_data = {
->   	.temp_factor	= LVTS_COEFF_A_MT7988,
->   	.temp_offset	= LVTS_COEFF_B_MT7988,
->   	.gt_calib_bit_offset = 24,
-> +	.num_cal_offsets = 3,
-
-LVTS_NUM_CAL_OFFSETS
-
-
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+Rob
 
