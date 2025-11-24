@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69599CFD313
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7379CFA466
 	for <linux-mediatek@archiver.kernel.org>; Mon, 24 Nov 2025 11:07:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,62 +12,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qSGx250uhdjdakZcPHoX8Nbq5J4cWyRmd4SLOgVrrcg=; b=Kwl44ZIu4KQ90bO7Ae1Mal8Rvq
-	yyTcYaHWmFCXftRxx704w7vmsLSN/MKeD7CyNdqXBgSuCERLGf3tVrtx6v4DZbjQ4ETL+Q9DgclmP
-	+CJwJ7mGKinHmqSkRTdp7VuPRcCnbFHf6Ak0jjS6Dq0hX/MPT9Y4Eh5F3OuKHC+eHAd+e1vNbePfv
-	lU4wccHAPI6zOTciUsrmNnbCZBQOKa4Zr0n4nTCgGr/iTaO7z3s69clkiQqSaiciMU2fvu3PVsLoF
-	riRD7jYpVxksYXSS0pC2BTqjX5CJCrhMJqtROwR/DCcGvov1rp0b88mRj8bdAq4UhY8mrl3C71fRE
-	sUP74lEA==;
+	bh=xvMrnz046uHJZXOiU4VZP36iA2AFstMOvjMGKhiRnuw=; b=40UfPwkvC330BwHrz6thv5Yv4N
+	iyJnAYkQM6G0kT/WRrYyMwjb75sPo0RkV6vBxJIv9fjWi0FzIj5NrR7VG7G6bniNDWtLHo/bGWMEZ
+	8jeq9SyCI94pyTcG5gDfFENfH0FxKIlpQ2x73nM02ulQfea1yXWRKcnjQzEiFuaKOhzLMsnCe0yka
+	TG9NCW8fYatDp/qNjAF/izROeP6jIfdOKNA7cqKLzsw6uJF4dorUOgRHtBk+iCESps3OQFdLvaIda
+	uOxbqDv51b3QJCP0h5jcaHwyGe50vaLAYc8BqKGqZMaxWwXHxBz+Vgts3d2fU5bCbpL84SJNeJzgg
+	w984353w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNUPw-0000000BVPj-1vXi;
-	Mon, 24 Nov 2025 11:07:36 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNUPq-0000000BVKc-2ZF6;
-	Mon, 24 Nov 2025 11:07:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=qSGx250uhdjdakZcPHoX8Nbq5J4cWyRmd4SLOgVrrcg=; b=CitzKFYiWYoD5I2MsGcEwRMKC5
-	uPiNMXNRhJcI0ql3q+uVqKWd6pEHtDmx7ggxNtP4YdPu540qSHMCWtLRzbvVfqau6oYP7PSnY6Lsl
-	vf+2xAVvokivCN9+K5RMxBxX1OtiJ1gcAuA/cVdbpnTGmNIwkvDaB3k9PtRQtA1xZbeqCPD862eNy
-	Sb5naYXGM+/MeSRmczZFD1VQL1yjk7qBefVj0O5uI1VwqM7vEpq7g75XcbZNFMj68UsL3ksoSTUBe
-	HimT0XSJ/kAYDkmtza1jooejja+oxEhH9xyHXMjjUsdjbFapr1l9ZO3oTe+FbT0EiyoUXFOp1a9n8
-	5oKUrL0g==;
+	id 1vNUPx-0000000BVQl-0FNz;
+	Mon, 24 Nov 2025 11:07:37 +0000
 Received: from sender3-pp-f112.zoho.com ([136.143.184.112])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNTYB-00000003UI1-0Dnu;
-	Mon, 24 Nov 2025 10:12:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1763982433; cv=none; 
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vNUPs-0000000BVM4-0QP4;
+	Mon, 24 Nov 2025 11:07:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1763982443; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=IXS8IHBlRkcxzbrqOTzjgOfUGwHgAeNekmQt1A56O8FmgN29sqvy+RBK5umlrJwt7srj03ctCnkYy6vjpLGhvMKHl25X620EkQzd0BCP9YXPQaSbKWIPTzWTJnzrchnBC1VeMPcv0vXJC22dLwVVmFiVfJwPTy8ceyYWIuMeVhs=
+	b=XDzG38gLtIld33aEjX3U7UoiNF4tEDtXnvJ5AnkLgHpTlwa+Z15UWgZOrngE4CgSJdCQ02BWgYWzvsKZSdy0GvtRas0GaEAiIZpwYjSWSAPFfB5jjebGlq2MLQkIdxJQuYyuorJo7YykC/IB2bHgAd2mP+rR/Ugq1CD/2xOPRP4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1763982433; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=qSGx250uhdjdakZcPHoX8Nbq5J4cWyRmd4SLOgVrrcg=; 
-	b=EjNhvEdyxDbs/2bwxjR2DwjWci/LOks7rzSYdsVfv/xKZrHfarjhKE4NQ6qJOWbgLkv4uMEw3WltDmWeytXs0zsaBiloWhbbij7AC91gCsfDMYkc3VqZ7jGm4F8ganM+iXLikrnbBV34/P2vgkbvK8isz5C9L3eamqdpnOqvogQ=
+	t=1763982443; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=xvMrnz046uHJZXOiU4VZP36iA2AFstMOvjMGKhiRnuw=; 
+	b=f1T1bujkNj6qyW9wVZbcwnh7HC3yOsbDkkU6eyq7+ZOrswF6g+S4/ae51aKXdfQgHH6JV2F6JnOth3lru/tXZV0p1x2ATs5J6NfmuXn5MAhtCu1dwLxGTgj78XCx2WmHMt8JLwPWGWu2lRltEgY2Bndz2aYbNv6YRCJMVkoPA8U=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763982433;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1763982443;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=qSGx250uhdjdakZcPHoX8Nbq5J4cWyRmd4SLOgVrrcg=;
-	b=KmZwvMFrlZHV0mUn6TEmW8GPNOzPiVgf1uruk15TGaZwaVIqiDuh6abQ1aihVGgF
-	ibLFU2sEz51fQy1Yxn/JAwspmO5VUb42f2yUcTl5l7uQAN5tkeLx75vbp5ygLGphK3D
-	MGC7rMq+gPdTd/mirTF7ZHZORoew461w9nxU1bsw=
-Received: by mx.zohomail.com with SMTPS id 1763982430549222.18364403003534;
-	Mon, 24 Nov 2025 03:07:10 -0800 (PST)
+	bh=xvMrnz046uHJZXOiU4VZP36iA2AFstMOvjMGKhiRnuw=;
+	b=GcDKiOKaTuZBBXVNvzksyE9C81Jfb2uT8G1obHyRPlT3907AZ4qT0/iDVQTB7XHY
+	1YHVRFU0IrlBA/xzbA0KLqf2ROgPGB/siKj5P93TKBEExPU8lZfFiA0fOMw0S61aqhh
+	d7Nf9xGmQWoRGG9i2s4obY0vlpXqEttcBYypI1F0=
+Received: by mx.zohomail.com with SMTPS id 1763982440693719.0304302956694;
+	Mon, 24 Nov 2025 03:07:20 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 24 Nov 2025 12:06:53 +0100
-Subject: [PATCH v2 04/13] soc: mediatek: mtk-dvfsrc: Change error check for
- DVFSRCv4 START cmd
+Date: Mon, 24 Nov 2025 12:06:56 +0100
+Subject: [PATCH v2 07/13] soc: mediatek: mtk-dvfsrc: Write bandwidth to EMI
+ DDR if present
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251124-mt8196-dvfsrc-v2-4-d9c1334db9f3@collabora.com>
+Message-Id: <20251124-mt8196-dvfsrc-v2-7-d9c1334db9f3@collabora.com>
 References: <20251124-mt8196-dvfsrc-v2-0-d9c1334db9f3@collabora.com>
 In-Reply-To: <20251124-mt8196-dvfsrc-v2-0-d9c1334db9f3@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -81,8 +67,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251124_101203_431444_ACE8DD3B 
-X-CRM114-Status: GOOD (  15.19  )
+X-CRM114-CacheID: sfid-20251124_030732_245434_ECC344CA 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,31 +85,50 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-In preparation for adding support for DVFSRC Version 4, change the
-error check for the MTK_SIP_DVFSRC_START command in the probe
-function to error out only if BIT(0) is set: this is still valid
-for the previous DVFSRC versions, as those always set this bit in
-a fail reply anyway.
+In preparation for adding support for DVFSRC Version 4, add a new
+`has_emi_ddr` member to struct dvfsrc_soc_data: if true, write the
+DRAM bandwidth both to the BW_AVG and to the newly defined EMI_BW
+register, present only on DVFSRC v4.
+
+Currently supported SoCs will not use this, as has_emi_ddr is left
+out from their platform data, hence reading false.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/soc/mediatek/mtk-dvfsrc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/soc/mediatek/mtk-dvfsrc.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/drivers/soc/mediatek/mtk-dvfsrc.c b/drivers/soc/mediatek/mtk-dvfsrc.c
-index 41add5636b03..7708b07ab2d6 100644
+index 3cbccbb7469a..bf0e7b01d255 100644
 --- a/drivers/soc/mediatek/mtk-dvfsrc.c
 +++ b/drivers/soc/mediatek/mtk-dvfsrc.c
-@@ -440,7 +440,7 @@ static int mtk_dvfsrc_probe(struct platform_device *pdev)
- 	/* Everything is set up - make it run! */
- 	arm_smccc_smc(MTK_SIP_DVFSRC_VCOREFS_CONTROL, MTK_SIP_DVFSRC_START,
- 		      0, 0, 0, 0, 0, 0, &ares);
--	if (ares.a0)
-+	if (ares.a0 & BIT(0))
- 		return dev_err_probe(&pdev->dev, -EINVAL, "Cannot start DVFSRC: %lu\n", ares.a0);
+@@ -72,6 +72,7 @@ struct mtk_dvfsrc {
  
- 	return 0;
+ struct dvfsrc_soc_data {
+ 	const int *regs;
++	const bool has_emi_ddr;
+ 	const struct dvfsrc_opp_desc *opps_desc;
+ 	u32 (*calc_dram_bw)(struct mtk_dvfsrc *dvfsrc, int type, u64 bw);
+ 	u32 (*get_target_level)(struct mtk_dvfsrc *dvfsrc);
+@@ -107,6 +108,7 @@ enum dvfsrc_regs {
+ 	DVFSRC_SW_BW,
+ 	DVFSRC_SW_PEAK_BW,
+ 	DVFSRC_SW_HRT_BW,
++	DVFSRC_SW_EMI_BW,
+ 	DVFSRC_VCORE,
+ 	DVFSRC_REGS_MAX,
+ };
+@@ -292,6 +294,9 @@ static void __dvfsrc_set_dram_bw_v1(struct mtk_dvfsrc *dvfsrc, u32 reg,
+ 		new_bw = max(new_bw, min_bw);
+ 
+ 	dvfsrc_writel(dvfsrc, reg, new_bw);
++
++	if (type == DVFSRC_BW_AVG && dvfsrc->dvd->has_emi_ddr)
++		dvfsrc_writel(dvfsrc, DVFSRC_SW_EMI_BW, bw);
+ }
+ 
+ static void dvfsrc_set_dram_bw_v1(struct mtk_dvfsrc *dvfsrc, u64 bw)
 
 -- 
 2.52.0
