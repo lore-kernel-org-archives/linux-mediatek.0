@@ -4,78 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17F31CFD377
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Nov 2025 10:29:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39E6CD0E6C3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Nov 2025 10:56:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Z4EFkclHnxBSnL2Rrwz4TjPZ73VeDWsjyo0Ai/6COUQ=; b=E3obZ4OeK5WQCvhgeKhBWkokbp
-	CG9HeAihHUBNJjacaEGbFkhm/tVrY1SvVRBH0vgi2aEK7w9m6DQ7o9qy2YbDZiRuinouONlBQphm5
-	PEO9+1thGv9NhrfZap+VC6w6TiGrYYMqMfFhp5eZnpQW1suaDRhLCGsGigXQBWc266cOT9n6z96Qj
-	EiZxivNgHghgwEAksQ7lWvrK3f30ODouVY3CMM4kBcfcipDHD5ZhxgxUQuEYk8xn7hBFoDMaDy30v
-	2YYH7IgXPXHYY+qELfjbXwGl8yjYX+NpG79u72F/5V/fyyztqSgtEEGs5dWKfcTNeGgK+Ep0uUBCf
-	HAR6ENuw==;
+	bh=gNOIyqsndGQOXXdpVgh65LPrGWqk+xJmkNe4l+FKetE=; b=AYThqrKrsqWPQW4oZyshRmeGL9
+	aU0noXPAVEfTx5Xj7u6sodSictv8be/Q6xYAe/kw8goTyWIc+vEWIv0lU2nBzq8ATVB77rGo0IlG4
+	JH5Qxv3rk/qV2jRsck2nPM6WXvBloXMf/4P45TPOcl/uvZHnvmNZC/TrVMHSyr/gQhRruPxqQbgcX
+	Kfn0YuuUPHbtBLwAN8DZa18WvEFd29d9Nh9x45KMFNxqExmEMCATJlCvxq/rHpjeLDjTqP+LZTLJv
+	k1LMRiX3yuQWAFaGxjEq0TkrNJ5HnlTclxLo0XnhyAUxtohNJjCakc/DPO4t2UIijjL4rm/ItAb2u
+	ljWqTrxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNqIe-0000000D8A4-0S06;
-	Tue, 25 Nov 2025 10:29:32 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vNqj7-0000000DA94-3O4r;
+	Tue, 25 Nov 2025 10:56:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNqIa-0000000D892-3tZ8;
-	Tue, 25 Nov 2025 10:29:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1764066565;
-	bh=7uW/PXDiLv9bv4bENX8rg44XZjAgahdiMX0JiQRX2I0=;
-	h=From:Date:Subject:To:Cc:From;
-	b=oIW8VZef+01U2T24JyiygW+GD4PPXZypkwTThVtJSJ/6SqqSF0PaErqhm4ZXIJjva
-	 oPNfpvmrzHkkFOopuTqz3rPiAgSpl/XkWUtNRS73oSI7CHeRlDclqzHaJOgRaXpOV0
-	 BDOYDGw7zw7iy74+kGvwhzNqlrOjSzOU/rzUdxKUtk66wuLUWfHG4UkG2SMrdyrcbn
-	 HnUI9QSbcWuTXmuqU/RX0MgoKeSx4+ULmZnHWY1sB2/7Bk3A6xbe0T3K7v7qdkRU2k
-	 G6spX8ulidlkVrxn9jCzw9S5TczAypVrs3OwEg5WPL7mQMIiMnTIbhUmetiQ1NckbD
-	 WmGppMOAhDDZA==
-Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1AD6217E10E9;
-	Tue, 25 Nov 2025 11:29:25 +0100 (CET)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Tue, 25 Nov 2025 11:28:27 +0100
-Subject: [PATCH] arm64: dts: mediatek: mt8365-evk: Fix touchscreen reset
- line polarity
+	id 1vNqiz-0000000DA4d-10Jk;
+	Tue, 25 Nov 2025 10:56:46 +0000
+X-UUID: 6b717d1ac9ed11f09f706fa2197c6ceb-20251125
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=gNOIyqsndGQOXXdpVgh65LPrGWqk+xJmkNe4l+FKetE=;
+	b=fbBITHrh7PPruvSZW+R2GOSa1nWUZDmhM9H0YXlRXxsK/B0y68vDurjFinFEf0jdcM3fIokzEFZAOkq9gJXOYJpXvIRfrYiCPx/+XJd5HfwaGisrsjAlYcqfDY13dhGHzehUQscfTYlw1GSri7yLxsbQyqm+1+eszATyKP5GkAw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:05ac54d7-4ac0-4b0b-acfb-d2d4f42aa63d,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:d4be0783-b6af-4b29-9981-6bf838f9504d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 6b717d1ac9ed11f09f706fa2197c6ceb-20251125
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 299024937; Tue, 25 Nov 2025 03:56:39 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Tue, 25 Nov 2025 18:56:36 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Tue, 25 Nov 2025 18:56:36 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Macpaul Lin <macpaul.lin@mediatek.com>, "Chen-Yu
+ Tsai" <wenst@chromium.org>, <linux-pm@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Weiyi Lu <Weiyi.Lu@mediatek.com>, Jian Hui Lee
+	<jianhui.lee@canonical.com>, Irving-CH Lin <Irving-CH.Lin@mediatek.com>,
+	<conor@kernel.org>, <krzk@kernel.org>, Louis-Alexis Eyraud
+	<louisalexis.eyraud@collabora.com>, Bear Wang <bear.wang@mediatek.com>,
+	"Pablo Sun" <pablo.sun@mediatek.com>, Ramax Lo <ramax.lo@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH] pmdomains: mtk-pm-domains: improve spinlock recursion fix in probe
+Date: Tue, 25 Nov 2025 18:56:17 +0800
+Message-ID: <20251125105617.1564725-1-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251125-mtk8365-evk-touchscreen-rst-pin-v1-1-316facb96d63@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAMuEJWkC/zXNQQqDMBCF4auEWXfAJCSIVykuNB3rIElsEkUQ7
- 95Q6fJ/i/edkCkxZejECYl2zhxDDfkQ4OYhvAn5VRtUo4yUyqAvS6utQdoXLHFzc3aJKGDKBVc
- O6OykG6ulaRVBfVkTTXz8hGd/d6LPVqFyjzAOmdBF77l0ItBR8I9Bf11f5+jMdKIAAAA=
-X-Change-ID: 20251125-mtk8365-evk-touchscreen-rst-pin-c6f30631582e
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Hans de Goede <hansg@kernel.org>, Martyn Welch <martyn.welch@collabora.com>, 
- Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1764066565; l=2133;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=7uW/PXDiLv9bv4bENX8rg44XZjAgahdiMX0JiQRX2I0=;
- b=d2MA9BX2I4lYvmutC7pNGGQXPbS/4HScsFXrKxJQPCLNAMvPk5obmdysja2thJM7k1Z+KHI+R
- +dL9j6hq2wBATRVuQttcio/vinEvWhMaa2Ob8g8DPmNe3pgGdbm8RzV
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251125_022929_135979_2253243F 
-X-CRM114-Status: GOOD (  13.79  )
+X-CRM114-CacheID: sfid-20251125_025645_333522_AD80B9F7 
+X-CRM114-Status: GOOD (  11.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,61 +95,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit 7363096a5a08 ("Input: goodix - remove setting of RST pin to input")
-modified the Goodix driver so it no longer tries to set reset pin as
-input.
+Remove scpsys_get_legacy_regmap() and update usages with
+of_find_node_with_property(). Use an explicit of_node_get(np) to ensure
+correct node referencing against of_node_put() and ensuring it is called
+in a safe context (i.e., not while holding devtree_lock).
 
-It led the driver to fail to probe during boot time on the Mediatek
-Genio 350-EVK board because the reset pin polarity is incorrectly
-declared in the board devicetree:
-```
-[    6.253819] Goodix-TS 1-005d: Error reading 1 bytes from 0x8140: -6
-[    6.277884] Goodix-TS 1-005d: Error reading 1 bytes from 0x8140: -6
-[    6.305503] Goodix-TS 1-005d: I2C communication failure: -6
-```
+If fwnode_count_parents() obtains parent nodes via
+fwnode_for_each_parent_node() and this process requires device tree
+operations, it may result in repeated acquisition of devtree_lock in
+the same thread/context, leading to spinlock recursion errors.
 
-so fix in the mt8365-evk.dts the reset-gpios property and pinctrl
-configuration of the touchscreen node to use the proper polarity value.
-
-Fixes: 7363096a5a08 ("Input: goodix - remove setting of RST pin to input")
-Fixes: b28c4af8e44b ("arm64: dts: mt8365-evk: Add goodix touchscreen support")
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
 ---
-Patch tested on Mediatek Genio 350-EVK board with kernels based on
-linux-next (tag: 20251125) and v6.18-rc7.
----
- arch/arm64/boot/dts/mediatek/mt8365-evk.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/pmdomain/mediatek/mtk-pm-domains.c | 21 ++++++---------------
+ 1 file changed, 6 insertions(+), 15 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-index b5dd5ef9fa11ae1d54aa754325bac2e184b90dd3..4aa802ba85ce541f57ffed439262c15e1d7bcfe3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8365-evk.dts
-@@ -352,7 +352,7 @@ touchscreen@5d {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&touch_pins>;
- 		irq-gpios = <&pio 78 GPIO_ACTIVE_HIGH>;
--		reset-gpios = <&pio 79 GPIO_ACTIVE_LOW>;
-+		reset-gpios = <&pio 79 GPIO_ACTIVE_HIGH>;
- 		AVDD28-supply = <&touch0_fixed_3v3>;
- 		VDDIO-supply = <&mt6357_vrf12_reg>;
- 	};
-@@ -695,7 +695,7 @@ ctp-int1-pins {
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+index 80561d27f2b2..f64f24d520dd 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+@@ -984,18 +984,6 @@ static void scpsys_domain_cleanup(struct scpsys *scpsys)
+ 	}
+ }
  
- 		rst-pins {
- 			pinmux = <MT8365_PIN_79_CMVSYNC__FUNC_GPIO79>;
--			output-low;
-+			output-high;
- 		};
- 	};
+-static struct device_node *scpsys_get_legacy_regmap(struct device_node *np, const char *pn)
+-{
+-	struct device_node *local_node;
+-
+-	for_each_child_of_node(np, local_node) {
+-		if (of_property_present(local_node, pn))
+-			return local_node;
+-	}
+-
+-	return NULL;
+-}
+-
+ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *scpsys)
+ {
+ 	const u8 bp_blocks[3] = {
+@@ -1017,7 +1005,8 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+ 	 * this makes it then possible to allocate the array of bus_prot
+ 	 * regmaps and convert all to the new style handling.
+ 	 */
+-	node = scpsys_get_legacy_regmap(np, "mediatek,infracfg");
++	of_node_get(np);
++	node = of_find_node_with_property(np, "mediatek,infracfg");
+ 	if (node) {
+ 		regmap[0] = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg");
+ 		of_node_put(node);
+@@ -1030,7 +1019,8 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+ 		regmap[0] = NULL;
+ 	}
  
-
----
-base-commit: acb2ca6959161544908b4ad1537b0b70c80f052f
-change-id: 20251125-mtk8365-evk-touchscreen-rst-pin-c6f30631582e
-
-Best regards,
+-	node = scpsys_get_legacy_regmap(np, "mediatek,smi");
++	of_node_get(np);
++	node = of_find_node_with_property(np, "mediatek,smi");
+ 	if (node) {
+ 		smi_np = of_parse_phandle(node, "mediatek,smi", 0);
+ 		of_node_put(node);
+@@ -1048,7 +1038,8 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+ 		regmap[1] = NULL;
+ 	}
+ 
+-	node = scpsys_get_legacy_regmap(np, "mediatek,infracfg-nao");
++	of_node_get(np);
++	node = of_find_node_with_property(np, "mediatek,infracfg-nao");
+ 	if (node) {
+ 		regmap[2] = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg-nao");
+ 		num_regmaps++;
 -- 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+2.45.2
 
 
