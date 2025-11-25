@@ -4,166 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8BB6D0EE00
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Nov 2025 17:03:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BABC2D0EE13
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Nov 2025 18:42:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TWY7MFugZ9CmdVxleLBxwXlELP55Zd08rQW98ZPdUto=; b=stgLK4NazkpV6aXAAInh39P9im
-	wnTbESnifvxgQOSd4pY/Gd0ZqccKKlUPdT1FrGhfvi21YayK5ij9VVbj5J55px571/svO8L90pkN4
-	ipjl8vaZrEExWEUJkcU1abcwACPRs/eys5KtIvUCmMg2gMJOc0SF2+Yg5sS2+k2D/Y7rFKfFkf0zn
-	u4kuAZzlY9Me9Zxwoog3m8V8IBTUyWhapFTN5WLlEdLZy13r8Yh2RmuYD5d1kJ7mma3oemKAmHWYG
-	Hwq7Efwmm9odN2czKuURgU7Id9cJdOuSHNwRUIaHlLZUh4DRv581AdXB2cHAaYi6Vyt4rY5USI7Mu
-	HfanVNMA==;
+	bh=pM0o1AYxzUtWqc+Ck8fcphfQUFNkt/WGLDT5cfunRqc=; b=TolDRxKbQfPRTWRC6MwC96KAyh
+	HreQV9VAvm65PHTqv84E0asfgBlcAqxc0tKMtBN1LhEIIga3YiW9uAw81jMkgxnOnJB+R2bMXIKkT
+	w76Ryz9UOLcLdu8Da0r3PdvsmjEo0LFWmCwtopTCpQS++G0lAmYdwoTYTKNM5WeygYzhZUzk6Hi76
+	OJplyjHooppOLO1DfK4nRvNPFo2PnzkiympcjT4qV3aJMUp2EotSmzD4raPASsUo0GW4VboAeyEyA
+	RzxDgu1k1NCznfPVfwRob4r3EG7ALFd4m33KNzTQFYs0LwRR4GBKzXVmnI8uKcMLlnKphfRzJmXlI
+	RrKIoRCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNwRZ-0000000Ddgn-1unx;
-	Tue, 25 Nov 2025 17:03:09 +0000
-Received: from mail-westeuropeazon11010056.outbound.protection.outlook.com ([52.101.69.56] helo=AM0PR83CU005.outbound.protection.outlook.com)
+	id 1vNxzO-0000000Dmbb-2L5q;
+	Tue, 25 Nov 2025 18:42:10 +0000
+Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNwRX-0000000DdfN-1VB5;
-	Tue, 25 Nov 2025 17:03:08 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=VyysDHgCrJs1Nkp95uOibo1v6wgOjFgw6cePwFIFDGeXc21GOUzSu8RsmeWOKJlVMhgsgb1hNjhiz+cQdPX3SGnDjPhZVekKDhyU08+yLyTIrwqA78hrrU9d3x3R4fnUDdd9Ms1cco1ZbFVG0E99XKpkaWVTKvuSecuH/MKpaijmCOkzHOqTbWF8Z9BbXlIt47RaFN6t8wVKqxpK16fZR912rb3DL5GSImLEH6/DPcBIObMigx1oyGcYLJmhHiZOzC9z0taxWXHpoS/Jqg/7vkthBXAvXg0iNc9UJNCnXAXuwypI1ENdz3GSqusam3IKCR4xyaHC78CHvU7d7uE1aQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=TWY7MFugZ9CmdVxleLBxwXlELP55Zd08rQW98ZPdUto=;
- b=cdg69Z0v5wG2/Pw0CM0emjhqmqyhGR/QgV7y8EzZXEBgF3MzOvz5X+SccggqrWK/3ViETt4R5b4+pj/AwRDQN+9eIEOLJoXZjZphoqIpkrigMVx5izxl1983/k/DT4kISaXRQbNVrPRxNnQ6nvmmxO7O+ahh87imtOw4fsKzh569+RQXmsgyPoQI9LtcrF26aNHbXmH9nGbpKUp3YwtQSwiRQVCzFpVLYisu0gcpJZp1MlZjEM8HxeqiA4km+1hb46t1Tyo26OAwHXYnrqRfXChkLXW4MIoW8C5Wzg/GXM3hYVmCwRfZhnbH+gvVRnO8w7BwFTFUZuaO/billEFfrg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TWY7MFugZ9CmdVxleLBxwXlELP55Zd08rQW98ZPdUto=;
- b=Qyb7iBNgvz8Alw5HAF2z9hiItohZKEIjWfJ622vGI2TDXuZO5FRSPwJvd3cwsGITM02+UwMGxf0HftoZkiem1KH+YiDUxcs4VhFPLuwHraPXVMvy0YWmiD7BH/MMjHpftOg8rJlhJzS0921f3eidwU/+YNUBMNxUjYMCvzWjnEpHbUZAC6uT1AO9w32deHgQqZ4sCpH/qjzV72/UAUuHKepIRdpdhKm0BOXyAggXGqW807aXpAoYXiKpSGq+SCDGhhm/AxubN2p4bK3rkrOEsu1Yw+jTXqWyCXaRcNFr77SsSvvFjPgCi3Fq2kFnAAp7ylNe/FA85lPKdLdPmgpkrw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
- by GV4PR04MB11450.eurprd04.prod.outlook.com (2603:10a6:150:296::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.17; Tue, 25 Nov
- 2025 17:03:01 +0000
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::8063:666f:9a2e:1dab]) by AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::8063:666f:9a2e:1dab%5]) with mapi id 15.20.9343.016; Tue, 25 Nov 2025
- 17:03:01 +0000
-Date: Tue, 25 Nov 2025 19:02:57 +0200
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Daniel Golle <daniel@makrotopia.org>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
+	id 1vNxzJ-0000000Dmb2-2W78;
+	Tue, 25 Nov 2025 18:42:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1764096126; x=1795632126;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=mEHY9GgoiSqhxR/W0E8OtjxK4nwc0SEgrPhZ5czKwe8=;
+  b=U8GrVZGc9vFDv/wGYb+no03OEtNeREQbCQI1bk3J53bDjgrcLxlRFWXz
+   P1T0bP6hzWhNhbjRJBz3lQ3JV5ATUsDp513LTtS+9VX1wyvFOzm/OIAUs
+   9o3tf5ZIhxqnwYenqK/cie45qrr8qbF94+Pc1bh3HR5FC6nRQtIWUw7Sc
+   jS/D9Frc4kb2abN/u72v27G4+bQrlKBm93z0hZjOn5XpOzSBCiOYjJo0M
+   7St8CRkfWSbRk1FZXDcMgITLL5nq6kvuFS5bIAsEz88wvmyhdn9bbWuD3
+   /oL5Ln6JWCKqzXEIdMIA0zS2qewi8fzBLRBZgeTPFlLjPiv1r6dAxz4Tx
+   w==;
+X-CSE-ConnectionGUID: 4twwlgyqT5iPMXoD1BqWtw==
+X-CSE-MsgGUID: wtou73DvQqGQcgklqIUtXQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11624"; a="65833574"
+X-IronPort-AV: E=Sophos;i="6.20,226,1758610800"; 
+   d="scan'208";a="65833574"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Nov 2025 10:42:03 -0800
+X-CSE-ConnectionGUID: k0Wtz+P3Spe8Tm0zUe2zGQ==
+X-CSE-MsgGUID: 7DGzM9uHRSWs90aCUXQEHQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.20,226,1758610800"; 
+   d="scan'208";a="192719812"
+Received: from ncintean-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.22])
+  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Nov 2025 10:41:59 -0800
+Date: Tue, 25 Nov 2025 20:41:57 +0200
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>,
+	Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Eric Woudstra <ericwouds@gmail.com>,
-	Marek =?utf-8?B?QmVo4oia4oirbg==?= <kabel@kernel.org>,
-	Lee Jones <lee@kernel.org>,
-	Patrice Chotard <patrice.chotard@foss.st.com>
-Subject: Re: [PATCH net-next 5/9] phy: add phy_get_rx_polarity() and
- phy_get_tx_polarity()
-Message-ID: <20251125170257.pk4cish65mcoeqhn@skbuf>
-References: <20251122193341.332324-1-vladimir.oltean@nxp.com>
- <20251122193341.332324-6-vladimir.oltean@nxp.com>
- <20251124200121.5b82f09e@kernel.org>
+	Andy Shevchenko <andy@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Andreas Gnau <andreas.gnau@iopsys.eu>
+Subject: Re: [PATCH v4 1/3] spi: airoha-snfi: en7523: workaround flash
+ damaging if UART_TXD was short to GND
+Message-ID: <aSX4dXXmlHcz0zeU@smile.fi.intel.com>
+References: <20251125021051.857159-1-mikhail.kshevetskiy@iopsys.eu>
+ <20251125021051.857159-2-mikhail.kshevetskiy@iopsys.eu>
+ <aSVYShXLirW--bYe@smile.fi.intel.com>
+ <83a15a9d-8dfa-4949-b483-020bbcf0847a@iopsys.eu>
+ <aSWBacH8N5NWO8oV@smile.fi.intel.com>
+ <13321124-6b45-479c-a73d-1d9ec9e96f05@iopsys.eu>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251124200121.5b82f09e@kernel.org>
-X-ClientProxiedBy: BE1P281CA0296.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:b10:8a::19) To AM9PR04MB8585.eurprd04.prod.outlook.com
- (2603:10a6:20b:438::13)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|GV4PR04MB11450:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9b34c9ec-75b7-4e55-ae02-08de2c447d76
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|19092799006|376014|1800799024|10070799003|7053199007;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?IwTVDKRaImw0k3GS5ZlUjyHuqrqPOcro9YFXVFPewx2Tv8SafN/NLXSZxtqE?=
- =?us-ascii?Q?qUzcY/2dsyx+oQEoB1r4+/dTjlewRaifEeEDICxgmpT1Q/lRYDEe9Cfkumv2?=
- =?us-ascii?Q?2wPIedNMqAcYjYhrexC+ydef+LHocJAeIVS4+/9q8t/l1CWweWHViQhlc11E?=
- =?us-ascii?Q?oBO7KNYFqzrOy8EUClSdP+wRlYR4h+tv/DOJxw8SGyWrcnx1+fZ5Wgd8mamy?=
- =?us-ascii?Q?CeB/wehWVarAtf61myExMOGqcLk7XW/XCX+j5AP3518N/O6HcDtVdZ+GPv2T?=
- =?us-ascii?Q?jWST0WCGgvL6Fbr6j5ReynNX7rFrD3jxzomLlPUBoCYesV3Cifls7remd0mY?=
- =?us-ascii?Q?fP4fvTXxI8MKsgx1am5+xeLugkmOqTyL7MqdhujZYHhJBKUceklBZCHizcdE?=
- =?us-ascii?Q?Yq09nqwyCQaTTpW4o2NjXgENrR9cHfhsyyu9nPmvhA6GAt10g2IX0SAP185K?=
- =?us-ascii?Q?Mz9ocSx2ZXEV8U+Rsjn6oyHsQLQyyejFWbl0XEJb+jpRbZ9G06BiYIADofza?=
- =?us-ascii?Q?hEkQJ+61OmCcfSZtXpre+LuzlATRS94ZZ3xkbJqYdB65JVXdKbJuVopen7I4?=
- =?us-ascii?Q?bit1oh3oy/8Efq0k3wjdiyZsnCl8sYnagYla88cqAxkkVTtCGUaEN434ujAl?=
- =?us-ascii?Q?lIg31tM66XerwqMp231GqG1ITm4c7RaKJoCaHbhWBSKnYTrfkvI6OpBFPAtE?=
- =?us-ascii?Q?4LqDcWMqfSznYw4k+GF3oh1/4+5wFRKu2Rk8GWrqeuTiEle55mYXNaFYt4np?=
- =?us-ascii?Q?cE/bBS5rB+l+6IX3yhCVBHPNDQaEmQqQX+y4ZAwTHdJz6lA1MSvrzisY+MQ1?=
- =?us-ascii?Q?X4RPbbXyT0iLWs4x/e/4Tc7xjmnzaC2hOp864LvFsPs/4I7ppK+g2lJshWWp?=
- =?us-ascii?Q?sL6Tk5j+o+0p9QIqzxuJUWn+2jQVLerohgccnd2us5rvj+sRUE4+3XIN68zg?=
- =?us-ascii?Q?0NtURYIXxctMtYhSNoeTN1yh9HgJS9I4QYPvgNBY2/0SdIJekp4WHcAeV9v0?=
- =?us-ascii?Q?8KnLfrcSpT6yu34wwHr3NwWF5T4KL+ucqb3NjVBJM+J8lFMDZbGSfIwq2FKu?=
- =?us-ascii?Q?JVgtf53d+x0kGTJIe87NiCvMuTBniYB+iNLGBVBOx17sygXoqVUAgjxGSONH?=
- =?us-ascii?Q?Z0lnFvvsR73bCuNHR+Ew89x70nUddJ8qh7KIgFcgWUfg9j7kr54JkcmPQnfv?=
- =?us-ascii?Q?g2CZMiyOg6Bp5youIwz8vX3T9uST6SlXlzjjlVpiU1CGSKCJNCvV+1rJIM0b?=
- =?us-ascii?Q?EwL12QXzQrci2XkNir+qF5InxnrFQ2nmHkd1tDpgEr+A+hZo+TjLBo91z/DV?=
- =?us-ascii?Q?Aw1jIcRRLylSTjJg1WDUqQFOPg3PkarffMoOfTbwYs2R0myGmokglH6XS1sT?=
- =?us-ascii?Q?hV4uSzA6lK5SYzKN3ZcIQHSKo1dSEjaOqZi3ZLyWYuUzQWGyHLu+SVJdglqG?=
- =?us-ascii?Q?9zAbGi9yXtJzZVDK69f1bj76oTSpkpJl?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(19092799006)(376014)(1800799024)(10070799003)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?daH5k/lvwMnLkYcGIDV0xO/dmTyIz61yprFBGyJaGB4IXTq8yDLTQIZXwOtc?=
- =?us-ascii?Q?pBznsTKlFtXH2gdut5YTySI3thXbLKuXnXR/EAM/i0FRsvd1lO/9AEQ+4OWz?=
- =?us-ascii?Q?S27I9t9C4MJ5enIzf8HYQUMPQFVU9v1wwshXVSgg+2f4qkEDoZtn9MKiKRjA?=
- =?us-ascii?Q?VLFV8/WDlyK9KoSinnctUyaCGYh5cMqpkaUexTQJ2yzZMkG14kptYzn4T3Ot?=
- =?us-ascii?Q?ft/rVkOp+SF1PTTYMB/sILot1G6+N5SLr1937w57Q1+CBwFNOgcTEJl5f9RJ?=
- =?us-ascii?Q?R5h/Bsu0+sEGLH2ZhINRJlyxA8rZop4+fI7py/XdmvoMpHqsWVGxtHehBJAw?=
- =?us-ascii?Q?l3MBBfz/vCmL5qDcXoDe2r2iKqoavhogyuVCVriECNv0L4Wtcv6Tj9krHrlc?=
- =?us-ascii?Q?JD6PuYruuH+SK0a7C9DE3Qw99XeXKl2q4405CQSfRYyhV79nu+Ot/yaezgd3?=
- =?us-ascii?Q?dnKt/SKDviaiB+kn8HeYNIsEEe3ZxAVNVUdUl6YXbvOvLQnCWelzCEpMzblv?=
- =?us-ascii?Q?OdvgGPjlIDstplQpWKxrv0++dwkbEYXXRWCh8ddNWR1H8nm8WXvvQJctYrDA?=
- =?us-ascii?Q?SA02oRDzkQuDoKghJTgDQ9X5tl67+WYGQxxx+H77HZgfN1qbQhfbBK2tLjyJ?=
- =?us-ascii?Q?Pjg5aoKdpsqhMlk4JuIxTP/BaVr+RUEI1YqyZLEgVL3Waz0yRLXJKegikDby?=
- =?us-ascii?Q?Q/fnC9ZM9sXFC11zhRhzv9lF9RfwcDpcycFBaztZ9K7cl7ytMVbBVVrKPOZA?=
- =?us-ascii?Q?2+QMwNoTzHfRH8fwFw+nDrV3uRS7uwhv+l2pyq9BwUQui7O74QYgXtwqQvvH?=
- =?us-ascii?Q?bkRPIO7B3+Hx8WDdcZ+RKxBZyfJKddcPiz+UF++0W2skHDEhU6tyvBgET3GA?=
- =?us-ascii?Q?yIws8H1G4BrZwrgfsfKhd9lzkuUuF7P09owTiRgvh+U1PgfAb+3mzdziNGAM?=
- =?us-ascii?Q?tpDdygWvGAi9HMz7i7ZBXMNWFWHoAgRMA+/ZfDl2KfnfNH5d5C9zWMPKz1Ql?=
- =?us-ascii?Q?rn2xFfuRYOBEFXkBNnb5v/NIrcC8b1IbeQ1mbOPxuNYo2hTNmr+qLYXrslsg?=
- =?us-ascii?Q?Q7jDOdm4Mce7qx5qu5ZJG0RRTO7x5TI0JwCBheFeYx5A8A0bZB/2cjsjvtiR?=
- =?us-ascii?Q?egDJK+j0WjUy5+KJZKEc/DmroR+61XoTX47XD0eMFjvaEkEpzXM+1MrozMap?=
- =?us-ascii?Q?olBQIusr7xZwTyHbGHFuHlgPjnlx4b8RhnaMO/egG+qXpGsDG1AdSTGgFsgS?=
- =?us-ascii?Q?tzaZIzYVwUs6H+ECuyXoljfv5U47XcYnp+KrgicaL7moCr9sH44cudbo3ybi?=
- =?us-ascii?Q?CQIO/tvRPIxhOKiQ+IcqTL05ktaXKYoO4WAm8BDNQ5B3+1CCL8OLzorcEJ61?=
- =?us-ascii?Q?rH4uan2QEINDrHOWzbo9Ow3mJ/lCiM/7lJNIhT9ZwT+8EYT0EWSPtTyQAa0z?=
- =?us-ascii?Q?Zj2d97NFjjjAASeJzu6khoLIp4hr5KrUWDIF5GYFd/F7iYXVn1RUEd+MUhhM?=
- =?us-ascii?Q?z6ou0AzFNieRPPDSCdOfojmAgz0S4ZpPzmXO5NzTZLZITHwW2F/1mmMRnOpe?=
- =?us-ascii?Q?7GYoRd74DC1lXUJ9UhveJNOacj07MpK3443Ly5Fjuuwd6IlzjYk9VS4CJbQv?=
- =?us-ascii?Q?7k/b6wS/OGJcEeKgONt/koka0x1pRrWn9QMKHFLRsXPTiogDgggggh0e3oVV?=
- =?us-ascii?Q?XSVsHQ=3D=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9b34c9ec-75b7-4e55-ae02-08de2c447d76
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Nov 2025 17:03:01.0959
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Q4RB/as5JojhWnUC0kUnmdD3sGAJtoXnSqGTfqgmR7ULoKxlOCZzYCGQ604x0Tro6asKsIUR2K4fPw82C8pnwQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV4PR04MB11450
+In-Reply-To: <13321124-6b45-479c-a73d-1d9ec9e96f05@iopsys.eu>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251125_090307_404203_3FF1BE89 
-X-CRM114-Status: GOOD (  18.41  )
+X-CRM114-CacheID: sfid-20251125_104205_685895_B0E35AE5 
+X-CRM114-Status: GOOD (  18.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -178,46 +99,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 24, 2025 at 08:01:21PM -0800, Jakub Kicinski wrote:
-> > The proposed maintainership model is joint custody between netdev and
-> > linux-phy, because of the fact that these properties can be applied to
-> > Ethernet PCS blocks just as well as Generic PHY devices. I've added as
-> > maintainers those from "ETHERNET PHY LIBRARY", "NETWORKING DRIVERS" and
-> > "GENERIC PHY FRAMEWORK".
+On Tue, Nov 25, 2025 at 05:20:44PM +0300, Mikhail Kshevetskiy wrote:
+> On 11/25/25 13:14, Andy Shevchenko wrote:
+> > On Tue, Nov 25, 2025 at 01:04:12PM +0300, Mikhail Kshevetskiy wrote:
+> >> On 11/25/25 10:18, Andy Shevchenko wrote:
+> >>> On Tue, Nov 25, 2025 at 05:10:49AM +0300, Mikhail Kshevetskiy wrote:
+
+...
+
+> could you clarify what's wrong here?
 > 
-> I dunno.. ain't no such thing as "joint custody" maintainership.
-> We have to pick one tree. Given the set of Ms here, I suspect 
-> the best course of action may be to bubble this up to its own tree.
-> Ask Konstantin for a tree in k.org, then you can "co-post" the patches
-> for review + PR link in the cover letter (e.g. how Tony from Intel
-> submits their patches). This way not networking and PHY can pull
-> the shared changes with stable commit IDs.
+> >>>> -	err = dma_set_mask(as_ctrl->dev, DMA_BIT_MASK(32));
+> >>>> -	if (err)
+> >>>> -		return err;
 
-I can see how this makes some sense. If nobody has any objection, I'll
-follow up to this by emailing Konstantin about a git tree for shared
-infrastructure between generic PHY and networking.
+Sure, just don't touch these lines. Only set the respective ops depending
+on dma_enable.
 
-> We can do out-of-sequence netdev call tomorrow if folks want to talk
-> this thru (8:30am Pacific)
+With that done the patch will look better and less confusing about affection of
+DMA mask setting on DMA operations (which are kinda orthogonal).
 
-Not sure it's that big of a discussion topic.
+> >>>> +	if (dma_enable) {
+> >>>> +		err = dma_set_mask(as_ctrl->dev, DMA_BIT_MASK(32));
+> >>>> +		if (err)
+> >>>> +			return err;
+> >>>> +	}
+> >>> Why do you need this to be conditional? The settings of DMA mask should not
+> >>> affect the (in)ability of the device to perform DMA. I.o.w. it should not
+> >>> influence PIO mode. Can you confirm this?
+> >>>
+> >> no any particular reason, just see no sense to set mask if dma will not
+> >> be used
+> > So, this is an unneeded churn in the patch. Device is [still] capable of DMA?
+> > Yes. Set the mask. The DMA/PIO choice is done on the upper layer (as you do it
+> > via ops).
 
-> > +GENERIC PHY COMMON PROPERTIES
-> > +M:	Andrew Lunn <andrew@lunn.ch>
-> > +M:	"David S. Miller" <davem@davemloft.net>
-> > +M:	Eric Dumazet <edumazet@google.com>
-> > +M:	Heiner Kallweit <hkallweit1@gmail.com>
-> > +M:	Jakub Kicinski <kuba@kernel.org>
-> > +M:	Kishon Vijay Abraham I <kishon@kernel.org>
-> > +M:	Paolo Abeni <pabeni@redhat.com>
-> > +R:	Russell King <linux@armlinux.org.uk>
-> > +M:	Vinod Koul <vkoul@kernel.org>
-> 
-> checkpatch nit: apparently it wants all Ms first, then all Rs.
+-- 
+With Best Regards,
+Andy Shevchenko
 
-Thanks for pointing this out.
 
-This will probably have to be changed quite a bit in v2 if the "separate
-git tree" idea is going to be implemented. I'll probably start with an
-empty list and request volunteers to step up.
 
