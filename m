@@ -4,69 +4,173 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAD97CFD37A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Nov 2025 09:56:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EFEACFD37A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Nov 2025 10:04:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=37C8G3XwQcoH/wKLaUO/vIZER0diiwv+cx05a6PRUf8=; b=iFYvKzYvcik/T9JT0K4S6aExlF
-	A/OHW7SXbLlwT2NLr6FsK/m/8QOb3SUhMsDuMiqGu8krAGpjY6uU7RMS/WGZUwiK2RTUUCx4T48IH
-	rxWCYk5qDE3DgK+xjb/pWev61rFPYXQ1nGHPgLs0yxiC0wA9GvnlAnn6DdG87LjLyr891ihgEDWgV
-	VghAt7mHFlvoYhq2kkPAw8YI1hOVInSil54uel8nJe7RKEXFmzannS2pG1yB739ChEqTlq+PfGNS7
-	KeYMR1GifPtDUlg/7oj50JXm/X0/sQmYN8pGfPDMU1ed+c76erq26qOH2Pk8YzFCUyL8ZHL98tfPu
-	+FIPXoLw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rI9Om9Tnouz5jqpV1cYOr5Ap6EHyoZ9rUvmc1r750ZM=; b=heyZD7u8L6s2ddj4lkO4DxelF3
+	jc1RvnjkA+PnqrAEWyzrKJ0oAzLv9ImKUSTHeaR2WrQ7GFvsigGsGwM1KWusLs6qkvBtc2nu8HCMA
+	h53odb3TQG6Hal7mj15QbhASbapqau1Hj9ZfHyBz51FzsYJ+1Zqzk/oz9MaKLPiXnQu0kxiW7p24G
+	WYrKnaylfhQQecznpLvd90jFZwivwcVw3UKQaqfGvZbf5v0om+zdv6rGqmJw9syR7mgfZbSfeXpOR
+	d27dbfmpUAh5H63UOuQjQ4glfNKAy/bcW1VR/w/5q+zj7qknWnzYWYxvY1XLc8AJPwBdISTHxM0Qb
+	R1N3k+sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNpmh-0000000D3WQ-3NkB;
-	Tue, 25 Nov 2025 09:56:31 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vNpuZ-0000000D4mS-0eqL;
+	Tue, 25 Nov 2025 10:04:39 +0000
+Received: from mail-northeuropeazon11021103.outbound.protection.outlook.com ([52.101.65.103] helo=DU2PR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNpme-0000000D3Vg-0BvW;
-	Tue, 25 Nov 2025 09:56:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1764064583;
-	bh=9jl5v4+JdDvgBkvLISMlWWBdoST2HqCbEtgiUfTgVFE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=XswQqcNNil2GnAhC8yZSG6Y5ri5h3BzvZMZUGcCflNbZsoi8zhnsw+CQfXm0gubiM
-	 iWy7M6CL3WPR4oX0z7JlMfncdSL2cpnx+fmfHIq6bIv37jzl5aU4aca/26A0wZuNgf
-	 bG5Db8M3EqlFNyzsMBRbsGpeNh+lYud6YtC8milranEqopv5vsCM38QApottFSW+oH
-	 cuYmS4a1/XWIQCHQY57yLHg8OgDGTbhzgo1TSJsfwrYztKFrNLiDUMf3SALDhPgLN8
-	 SSV5OtYeWgtkhp366Mq5sH8vumBGxsdYoMeRVpfQTkpZR7hYatYvWnG+56JXd3eWVh
-	 JWQrbk//v1w3Q==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C5D0917E0610;
-	Tue, 25 Nov 2025 10:56:22 +0100 (CET)
-Message-ID: <df11bbf1-09d1-40fc-be56-6a98d90abcb6@collabora.com>
-Date: Tue, 25 Nov 2025 10:56:22 +0100
-MIME-Version: 1.0
+	id 1vNpuW-0000000D4l8-22sR;
+	Tue, 25 Nov 2025 10:04:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=W6qAy8JPZ9A9zGviaYYu/Q6Dx2WZJGntXvNAJVl6MG0E3yfuh/YyA35MheXZP1JcTpg+6b/fL+t9tlMMHYakmg1nxZRjxn6aDGciUHfwJsDiz1Y9GO3Z+A/rEYgKcq2u7vNfhUopbyAydGG17pQE6s5OvpJVSOTi4e31zO048lH7Huashglm08W4/QTbjYqsgFYC9xG9eEz7kSkRPCONyIfUFDVCixK4gshy9FgpawmxSOaAXFctIzwc91AVLKDv+aIh2ORqFOn71alVcZo4Mlnwd6OPyL7DrbsNFuOEsAm6XbR4ymZesewzM2oFW9DW0BLoF2yOdM2elPzpKe63kw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=rI9Om9Tnouz5jqpV1cYOr5Ap6EHyoZ9rUvmc1r750ZM=;
+ b=ioGeDRg6XvkGWrxqe7Ke5o9+ROocBKxesGM+/NkmEjbGVeA21kFm4qdqk2XoE4JMxenk1oak6ENA8lo6egrO7tI7VKsr8zrUzOxcM26kbBkv3TfTVWQJDsVQiYJgN6EPvMk5F8OiJ7e5ut/+/zRz6C9J4sczu5F3lERRnRxG5qPxRbjMnHPso1g8F8ghqIxqllozFdnKH0ffGex4lAmFMHUceRXYk+VkykzKvQZPPSiUzJwUBca6PWLeHiPFielkKb7tevysem4HNFf5tBELb6KrqgypeIQYiC5Z688tOn0lPnzrW3IPoWh9fChtV8XhxFSztL7IEQj/NYZpAIIdwg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rI9Om9Tnouz5jqpV1cYOr5Ap6EHyoZ9rUvmc1r750ZM=;
+ b=Gcib1rLdQmEBJRIR745iPieXI3bdWf6nllJgJ5kvJoMgX334s0qyKyACxKJnrl7yF52VrLLHbF2yzNv5a045cZ0T9F/1eIxWy7GXnhz7O2Hsd3eMkW/zlVwhMQUKTzD8ACT3r3ZlnYrvbzTl/XiXX9ptUW1wGapwpqR1yKSo+gGpCC5FKmVZV/z2UaqAkglyvSgaUyPFeysIpbPpd/KIY4XNya82UaTsrlypuX+dGuLhigvbQYoDeJmqkhGUhGBBSWEWT8YLv8n+ahAIfLDuep/bMe6ISrJ080dlAdcy/Y+Ixg3QrVpDkCg+CWffGe/oLZ7trd/nenCXcgQVw5h60g==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com (2603:10a6:150:7d::22)
+ by DBBPR08MB6121.eurprd08.prod.outlook.com (2603:10a6:10:204::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.18; Tue, 25 Nov
+ 2025 10:04:23 +0000
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0]) by GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0%3]) with mapi id 15.20.9366.009; Tue, 25 Nov 2025
+ 10:04:22 +0000
+Message-ID: <83a15a9d-8dfa-4949-b483-020bbcf0847a@iopsys.eu>
+Date: Tue, 25 Nov 2025 13:04:12 +0300
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] pinctrl: mediatek: mt8901: Add pinctrl driver for
- MT8901
-To: Lei Xue <lei.xue@mediatek.com>, Sean Wang <sean.wang@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- yong.mao@mediatek.com, qingliang.li@mediatek.com, Fred-WY.Chen@mediatek.com,
- ot_cathy.xu@mediatek.com, ot_shunxi.zhang@mediatek.com,
- ot_yaoy.wang@mediatek.com, ot_ye.wang@mediatek.com
-References: <20251125023639.2416546-1-lei.xue@mediatek.com>
- <20251125023639.2416546-4-lei.xue@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20251125023639.2416546-4-lei.xue@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Subject: Re: [PATCH v4 1/3] spi: airoha-snfi: en7523: workaround flash
+ damaging if UART_TXD was short to GND
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>,
+ Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andy Shevchenko <andy@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Andreas Gnau <andreas.gnau@iopsys.eu>
+References: <20251125021051.857159-1-mikhail.kshevetskiy@iopsys.eu>
+ <20251125021051.857159-2-mikhail.kshevetskiy@iopsys.eu>
+ <aSVYShXLirW--bYe@smile.fi.intel.com>
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Content-Language: en-US, ru-RU
+In-Reply-To: <aSVYShXLirW--bYe@smile.fi.intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: FR2P281CA0098.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:9c::6) To GV2PR08MB8121.eurprd08.prod.outlook.com
+ (2603:10a6:150:7d::22)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR08MB8121:EE_|DBBPR08MB6121:EE_
+X-MS-Office365-Filtering-Correlation-Id: 38fcf89c-5741-4b03-d60a-08de2c0a017c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|376014|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?eUpHb3E3OGJOQlVPM3hWb0syZmNnYTFLUmNCVHEvanYyc3hIY2tPZ0dRKzFl?=
+ =?utf-8?B?THVoWEMybE5jdmRObmhHWXdEeHQxZm91NHR4M2ZnRWpSdUQxREhpQ1dKbURW?=
+ =?utf-8?B?TEZCUjFabVNqblFjZkVBWWNMT3pZUmxmemZtd24ySTE5TVpuaFBXK1F5MFZ4?=
+ =?utf-8?B?NmI4RHJBU2dDZkNzLzN1bXI4eXJjOFZtQ3N1S05wbzc0MTIyUVU2NFZ0a1pJ?=
+ =?utf-8?B?eHhlK2VlSU5RZVhXU1VYdFVTaGYya1pqd3FhVWNzRk1BcldSZEpONmM1cHl5?=
+ =?utf-8?B?d2FLMjkrWjlER1g5cURkL29jRExSQjFHREpBR1Vwb3ZNK2Q3dGFRd2lRSUor?=
+ =?utf-8?B?SHhlRWZlRFhWMTJzRlBjZ2lNbXRoUkZ0Tm5adXh3M2puR0Jaejc0Q09yeHR4?=
+ =?utf-8?B?TTBjQ1ZTTTBrT1pCa0pUd3NxMThvdXFvWWVuZE1RVFJYdzI3bk5tb1pubDho?=
+ =?utf-8?B?LzRMeFFPREltVEJHT3hvNUs3bTlPNGt1R1lOVkpoSmNZa1JXL1ZTaVY4YjVn?=
+ =?utf-8?B?U01uL1dJQk9mdzhCU3pnZWp1NWlxb2kyS1NZbm0rKzZ0MEdBeXhYWldPVUVj?=
+ =?utf-8?B?WXNvMURxQkJqN3F0WWRKbjhhNFlJNmJzSHVhWkY4UURqSHFicFlmVURVQmc2?=
+ =?utf-8?B?NHhBZVIzNFUwc3VpRld2ZHQvWUZQQnVXZEhlM2FPNUFwcFZ3RUY3cnVlaHRS?=
+ =?utf-8?B?ZWhtR1NhQWxPekV0NUNSUXpBTU03NW04UjdiekZ1emI1K2RvYUpDNzVrbE45?=
+ =?utf-8?B?aXVrbGxKaUZNUTRDMjhMa3Rpa1JScjJsWGxZMGZZREN2dFllK05rOXliZGNT?=
+ =?utf-8?B?ZzliTk1uUTkyOFBZZkhTSUxUdm9YY1g1bEF3T0dHQzd4T3VsSFNDb2ptbERE?=
+ =?utf-8?B?YWpPWnJNN0pqMXVGcktHVit6elhGZUcwVVEvelZXVEM5VHR2SUgvTXVrUCtK?=
+ =?utf-8?B?WEx4MXVVbU5LWVNPOGg4MnNCL3NMUDNURXIvMER2cmlqb0Q2eFpaN2xGeTNM?=
+ =?utf-8?B?ZTlYSlFpSjhlelFMSWtDSjNXMlBWZTJtaHVhK1NrZ2pqMVdBcjJDZHowS01I?=
+ =?utf-8?B?azhPUXdhRkl0dXpHZXdWV0NBYkZNdDZObFhIY3kvNkVkc204em56dEhBNjdQ?=
+ =?utf-8?B?a3FrN1VoaWptQnVsT3RqdWdWcDQ5ZHhrT1lKcm1ScVVEWDZSdU1uRDNPZDZa?=
+ =?utf-8?B?RU9VbCtTRllVNkg3UXJwR1d4YXN1WnU4c284NEJpSkhuZWdieG4vOTVrSkZK?=
+ =?utf-8?B?bE9kcHhFQXhuOEp4ZXpWbGpmYTZGZTR6dmNXVWxMdEsvNG5BcDRzYnZyeU5Q?=
+ =?utf-8?B?b2ErRVIzbVJobW9GZWs3RStiRWZTbHNRRGlMcG9TSXpTM2Vzd2Y1VjFpUThl?=
+ =?utf-8?B?YXRWU3pIRnVLSzdFcTA4Zy9PL0VhcTNBZU1OdTZINzJac1hhWk1RRERMN215?=
+ =?utf-8?B?RTd4VW1icnB2QVc4aUJvWm85bUI3NTlFSGJWVHVDVC9aa1BGZ1NpQlpOTFZk?=
+ =?utf-8?B?bERRVnlnQ3hsdWZ1Smk3NUtjZWkxV2Faek92MzM0K09FM1NDWHhpejBhQVI4?=
+ =?utf-8?B?NlNhZnE3cGo2eDBjYUc0QncrZFRiRUtXbDc5Z2ZXMTRlN1gxZnoxczJvQTg0?=
+ =?utf-8?B?Mm5BbUQ3aFJhYm1ZSVJIMWd1UVVvOXZIUzVVQm1kdWVlUEdoMCtkdGZyYmQ0?=
+ =?utf-8?B?dVBaNVp0bFRlRFZpZ08wVWlJY0diSGxoZ1RyWEd3c3FpaEFUeCtqVGwrWk1B?=
+ =?utf-8?B?b2NXWTBuZS8vUmpFR0dNWjdlTkFNSTdORm1FYjNaUWdDRkxZUk54T0hmNTgr?=
+ =?utf-8?B?WGRXc2FsMEYyZzFvTVpBU0JLTTY3TTgvWFc3QkpMV1JLWW43TXhoSDFXc2k5?=
+ =?utf-8?B?S3R2NHYrbXhoSFMybUZlTEN5b3ZvNVFSK2tXREF4ZDRVYW8xL3Z0L3JtN2J4?=
+ =?utf-8?Q?oIXHtCYAclVhVzsx8PEbCNriO1fOxv9f?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR08MB8121.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(376014)(1800799024);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bjJBSVlYT1VKeDcyTVU3ZzhhQmxYQjFacGNiNjNkclJVdVdqb1d6c3NxTjRJ?=
+ =?utf-8?B?RytxcWNSeU9FTEJ0Wmt0NU94d29pSXRmbDIwL2VRZVhmTzc4WXE5OGJXUWNI?=
+ =?utf-8?B?SGVieGljOTBGbjJUYjIyNEpXbEcwNTlpYUZoZGNlNWgrZzFRVCtZV0ZEOHB2?=
+ =?utf-8?B?Z1k5a0o3TlhsemRmclNBWHpOdnBnR2hJWEVCYXNlellDS2x4bU44UGdOMnc2?=
+ =?utf-8?B?by9QZTFPQmdBb01iN0h4RjNiOEhRTC9ac3VCSStEcjJFWkQ3YkxWOThOR0t3?=
+ =?utf-8?B?RzN6MHllMmhDZDVLL1N4ZCtzUmNCT1o1TGwzcWxTQjIxbFVPWXVwRlVaeGpM?=
+ =?utf-8?B?a0JBTngwajlEV0J5bjA1TVVWdUxJM29RMnlZczdkUk9ZRnhiSVRBdkhHZmUv?=
+ =?utf-8?B?N2xScDJDcmtncnhpVEpUdE12SE1xRzBEcFFHd0xZT3gxSDdoNHUwbnVydGtZ?=
+ =?utf-8?B?Y1NhUDMySVNNdkQ5cU8wV3lrelhsMHNxZ2d4allDVnd2cEFKcFhQSlUrOEJK?=
+ =?utf-8?B?WThXdWhtcDQ1Q0Y5ekVZQVNnUHhadDcxeVdjbkdZR0xNOHJXT200bDVDNEpT?=
+ =?utf-8?B?SS8yNTNpanA2aHBxZzMvYU9iYzJHaVlOMlVZVWI4TWNsUG5mZlhIdDhIRkxi?=
+ =?utf-8?B?czNsd0syUlFRZDVjaSt2NjBBZjFkdWhTRm1VQUhPUWFxUDRVL2VBQ0grZ1Mv?=
+ =?utf-8?B?cFdtSnhSek1VTFhINmRudk5ldXNzeWtpcEdtWWRDODlwNC9vR0U3ci83YkVl?=
+ =?utf-8?B?alZxN3J6SmtpTGtlNGJXdHNhZnZIRFozbXA1TlU1Y2R5RWNITWR5MEFqN0Z2?=
+ =?utf-8?B?czQ2Qk5RMUJ4c3VmOHVEbjZpMHdOUkc2K1NyN040MUh6eGxpRENteEJVcEVU?=
+ =?utf-8?B?SHJmQzBLZ3lCNWJaUWVTT2pOanN2VHlZdjNoNTkrWGJOYndjbmhWOVZ6ejdM?=
+ =?utf-8?B?K240ZTdLZDRia3ZWdnU1MVlwOG5tOVYwRng3NHJMK0t2SXp6YmRqNXBFNGlw?=
+ =?utf-8?B?Y1M4alV1WkxiUmkydVd6YjVmb2RJd3F5RmtLS3p1dmN0aWt5OEwyOVF4RElV?=
+ =?utf-8?B?ZTMxTURUV2F3S2hWTkM1S1k1TUNQL1p1Q2ozKy9SRENhS2k2djBRY2gvSHUy?=
+ =?utf-8?B?ODBLckZjWm5zWUZXdFFWNjRaTU5zOTcwZkVPazR6enJkd2w2QlpPMHJJSTg4?=
+ =?utf-8?B?eVFwcEJhd1RETWFBcG5FNXlCdGN2eHMySURTZ1kvRDlzVkU2Uko1Lzc3RnlL?=
+ =?utf-8?B?Zk45Y0pNWm40b2lCYVJ5L0FpaWVxRXBRMElVakpLQnRaVmhYWkVqc1NWeDRy?=
+ =?utf-8?B?ayttNWFxQlNIa1lKamR1eDVURXJ6bUg2WnpCYkZWMGxNZExNUkhhTlhVbXRT?=
+ =?utf-8?B?RjJxOFc0NGtQWGU4bndPUCtsVmg2NHlNV1FpZkVBR0Q1ZmRlbFQ3SEVzMkcw?=
+ =?utf-8?B?aTlRZmJTb1BKY0ErRS9meG9UR1QydjdwRDNtbEFwYWxUQTF6MnhkSVVNWkt6?=
+ =?utf-8?B?c0ZOTlkwalIzbG5tdVNuT0s4WklPczFrMStlWW9CaFpuODMrS0ZjWEcyZjlV?=
+ =?utf-8?B?VGRqSmF2cUExYWtXUG5jSWp6WUU2eXdEQ0pxbDAvVzltTzFXamZKTkk1OS9W?=
+ =?utf-8?B?aTJ6NzRhMTVmMnJhb2FkbU5zQnVEQlZaUWhOWjhtL0JEcHFXNENRemVlUjQ2?=
+ =?utf-8?B?WHpJRTJZbWUrWm0rTDllQW1QNEZXM0ZLMTFUZFBjemZvaUZoN3k1eXJhek1p?=
+ =?utf-8?B?dFJiTEJVWXV6ZEorZEtVaUc0SDE0ZUlxckh5dEpKR2NCV0JRbE9FcVdVMXoy?=
+ =?utf-8?B?bmRMWjNmUUYyeWNvUUk1SUwvTjg2TTlIbXVWMDlpOWQzeWJKQnR1OFdrWERZ?=
+ =?utf-8?B?N3lPUHZjUTFMWFdiL3JLbEgzSEdMK0pmaDlRZTJlNTdqTjFCSUFmcnFPOFZR?=
+ =?utf-8?B?TitYL1VXNTBIVjRuYjUvamsxaFpzMTNQejJWazczdTR0cnhLSzNuTkJxamdw?=
+ =?utf-8?B?eUxnWjNIVy9HNXZXaTJMdGpDNzA2cE9YVWhFZGJocVFFUWJGQUNsL0JrN0J3?=
+ =?utf-8?B?WHNYMlhkTGloYTJUek5SV3V3dDlCc2tsMlZmQmdvMFRmZUFkTmZHL2xzS0JC?=
+ =?utf-8?B?OERFNUxHZTIwejE1NGlXR2tHdUVDeWU3RS9FQ09LV093b1F5dzhPSkdzeHpl?=
+ =?utf-8?Q?C0rNVPDZ+egBQEqTJvIn3fw=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 38fcf89c-5741-4b03-d60a-08de2c0a017c
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR08MB8121.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Nov 2025 10:04:22.3748
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: o8BECgfeQwzZyxfF+ZDrCrfveC8eCi+hUGb00sL+cG4qUQCPKidQcPxwyo6MvAofTWhkMy5GVgEhtpH/qhMDb7byb2PHDJZOZ1fHZjxwi6k=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR08MB6121
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251125_015628_271025_1867A6D4 
-X-CRM114-Status: GOOD (  25.82  )
+X-CRM114-CacheID: sfid-20251125_020436_930053_6B6F4823 
+X-CRM114-Status: GOOD (  18.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,174 +185,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 25/11/25 03:36, Lei Xue ha scritto:
-> Add mt8901 pinctrl, gpio and eint driver implementation.
-> 
-> Signed-off-by: Lei Xue <lei.xue@mediatek.com>
-> ---
->   drivers/pinctrl/mediatek/Kconfig              |   12 +
->   drivers/pinctrl/mediatek/Makefile             |    1 +
->   drivers/pinctrl/mediatek/mtk-eint.c           |    4 +
->   drivers/pinctrl/mediatek/mtk-eint.h           |    1 +
->   drivers/pinctrl/mediatek/pinctrl-mt8901.c     | 1460 +++++++++++
->   drivers/pinctrl/mediatek/pinctrl-mtk-mt8901.h | 2130 +++++++++++++++++
->   6 files changed, 3608 insertions(+)
->   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8901.c
->   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt8901.h
-> 
-> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-> index 4819617d9368..4820ae5197a0 100644
-> --- a/drivers/pinctrl/mediatek/Kconfig
-> +++ b/drivers/pinctrl/mediatek/Kconfig
-> @@ -321,6 +321,18 @@ config PINCTRL_MT8516
->   	default ARM64 && ARCH_MEDIATEK
->   	select PINCTRL_MTK
->   
-> +config PINCTRL_MT8901
-> +	bool "MediaTek MT8901 pin control"
-> +	depends on ACPI
-> +	depends on ARM64 || COMPILE_TEST
-> +	default ARM64 && ARCH_MEDIATEK
-> +	select PINCTRL_MTK_PARIS
-> +	help
-> +	  Say yes here to support pin controller and gpio driver
-> +	  on MediaTek MT8901 SoC.
-> +	  In MTK platform, we support virtual gpio and use it to
-> +	  map specific eint which doesn't have real gpio pin.
-> +
->   # For PMIC
->   config PINCTRL_MT6397
->   	bool "MediaTek MT6397 pin control"
-> diff --git a/drivers/pinctrl/mediatek/Makefile b/drivers/pinctrl/mediatek/Makefile
-> index ae765bd99965..57c69b1e5c2d 100644
-> --- a/drivers/pinctrl/mediatek/Makefile
-> +++ b/drivers/pinctrl/mediatek/Makefile
-> @@ -43,3 +43,4 @@ obj-$(CONFIG_PINCTRL_MT8196)		+= pinctrl-mt8196.o
->   obj-$(CONFIG_PINCTRL_MT8365)		+= pinctrl-mt8365.o
->   obj-$(CONFIG_PINCTRL_MT8516)		+= pinctrl-mt8516.o
->   obj-$(CONFIG_PINCTRL_MT6397)		+= pinctrl-mt6397.o
-> +obj-$(CONFIG_PINCTRL_MT8901)		+= pinctrl-mt8901.o
-> diff --git a/drivers/pinctrl/mediatek/mtk-eint.c b/drivers/pinctrl/mediatek/mtk-eint.c
-> index c8c5097c11c4..b5a5beebf9cd 100644
-> --- a/drivers/pinctrl/mediatek/mtk-eint.c
-> +++ b/drivers/pinctrl/mediatek/mtk-eint.c
-> @@ -71,6 +71,10 @@ const unsigned int debounce_time_mt6878[] = {
->   };
->   EXPORT_SYMBOL_GPL(debounce_time_mt6878);
->   
-> +const unsigned int debounce_time_mt8901[] = {
-> +	156, 313, 625, 1250, 20000, 40000, 80000, 160000, 320000, 640000, 0};
-> +EXPORT_SYMBOL_GPL(debounce_time_mt8901);
-> +
->   static void __iomem *mtk_eint_get_offset(struct mtk_eint *eint,
->   					 unsigned int eint_num,
->   					 unsigned int offset)
-> diff --git a/drivers/pinctrl/mediatek/mtk-eint.h b/drivers/pinctrl/mediatek/mtk-eint.h
-> index 3cdd6f6310cd..1b185f660aff 100644
-> --- a/drivers/pinctrl/mediatek/mtk-eint.h
-> +++ b/drivers/pinctrl/mediatek/mtk-eint.h
-> @@ -53,6 +53,7 @@ extern const unsigned int debounce_time_mt2701[];
->   extern const unsigned int debounce_time_mt6765[];
->   extern const unsigned int debounce_time_mt6795[];
->   extern const unsigned int debounce_time_mt6878[];
-> +extern const unsigned int debounce_time_mt8901[];
->   
->   struct mtk_eint;
->   
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8901.c b/drivers/pinctrl/mediatek/pinctrl-mt8901.c
-> new file mode 100644
-> index 000000000000..77dec85fe29b
-> --- /dev/null
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mt8901.c
-> @@ -0,0 +1,1460 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (C) 2025 MediaTek Inc.
-> + *
-> + */
-> +
-> +#include <linux/acpi.h>
-> +#include <linux/module.h>
-> +#include "pinctrl-mtk-mt8901.h"
-> +#include "pinctrl-paris.h"
-> +
 
-..snip..
+On 11/25/25 10:18, Andy Shevchenko wrote:
+> On Tue, Nov 25, 2025 at 05:10:49AM +0300, Mikhail Kshevetskiy wrote:
+>> Airoha EN7523 specific bug
+>> --------------------------
+>> We found that some serial console may pull TX line to GROUND during board
+>> boot time. Airoha uses TX line as one of it's BOOT pins.
+> I know the term bootstrap, what does BOOT mean?
 
-> +static const char * const mt8901_pinctrl_register_base_name[] = {
-> +	"iocfg0", "iocfg_lt2", "iocfg_lt3", "iocfg_rt1", "iocfg_rt2", "iocfg_rt3",
-> +	"iocfg_tr", "iocfg_rt0", "iocfg_lt1", "iocfg_lb", "iocfg_rb",
-> +};
-> +
-> +static const struct mtk_eint_hw mt8901_eint_hw = {
-> +	.port_mask = 0xf,
-> +	.ports     = 7,
-> +	.ap_num    = 209,
-> +	.db_cnt    = 32,
-> +	.db_time   = debounce_time_mt8901,
-> +};
-> +
-> +static const struct mtk_pin_soc mt8901_data = {
-> +	.reg_cal = mt8901_reg_cals,
-> +	.pins = mtk_pins_mt8901,
-> +	.npins = ARRAY_SIZE(mtk_pins_mt8901),
-> +	.ngrps = ARRAY_SIZE(mtk_pins_mt8901),
-> +	.eint_hw = &mt8901_eint_hw,
-> +	.eint_pin = eint_pins_mt8901,
-> +	.nfuncs = 8,
-> +	.gpio_m = 0,
-> +	.base_names = mt8901_pinctrl_register_base_name,
-> +	.nbase_names = ARRAY_SIZE(mt8901_pinctrl_register_base_name),
-> +	.pull_type = mt8901_pull_type,
-> +	.pin_rsel = mt8901_pin_rsel_val_range,
-> +	.npin_rsel = ARRAY_SIZE(mt8901_pin_rsel_val_range), /*numsel*/
-> +	.bias_set_combo = mtk_pinconf_bias_set_combo,
-> +	.bias_get_combo = mtk_pinconf_bias_get_combo,
-> +	.drive_set = mtk_pinconf_drive_set_rev1,
-> +	.drive_get = mtk_pinconf_drive_get_rev1,
-> +	.adv_drive_set = mtk_pinconf_adv_drive_set_raw,
-> +	.adv_drive_get = mtk_pinconf_adv_drive_get_raw,
-> +};
-> +
-> +static const struct acpi_device_id mt8901_pinctrl_acpi_match[] = {
-> +	{"NVDA9221", (kernel_ulong_t)&mt8901_data },
-> +	{ }
-> +};
-> +MODULE_DEVICE_TABLE(acpi, mt8901_pinctrl_acpi_match);
-> +
-> +static struct platform_driver mt8901_pinctrl_driver = {
-> +	.driver = {
-> +		.name = "mt8901-pinctrl",
-> +		.acpi_match_table = ACPI_PTR(mt8901_pinctrl_acpi_match),
+yes, it's bootstrap pin
 
-Please also add support for devicetree - I have a hunch (and I'm sure that I am
-not the only one) that ACPI may give some issues at the end of the day, on ARM64.
+>
+>> On the EN7523 SoC this may lead to booting in RESERVED boot mode.
+>>
+>> It was found that some flashes operates incorrectly in RESERVED mode.
+>> Micron and Skyhigh flashes are definitely affected by the issue,
+>> Winbond flashes are NOT affected.
+> NOT --> not
+will fix
+>
+>> Details:
+>> --------
+>> DMA reading of odd pages on affected flashes operates incorrectly. Page
+>> reading offset (start of the page) on hardware level is replaced by 0x10.
+>> Thus results in incorrect data reading. As result OS loading becomes
+>> impossible.
+>>
+>> Usage of UBI make things even worse. On attaching, UBI will detects
+>> corruptions (because of wrong reading of odd pages) and will try to
+>> recover. For recovering UBI will erase and write 'damaged' blocks with
+>> a valid information. This will destroy all UBI data.
+>>
+>> Non-DMA reading is OK.
+>>
+>> This patch detects booting in reserved mode, turn off DMA and print big
+>> fat warning.
+> ...
+>
+>> -	err = dma_set_mask(as_ctrl->dev, DMA_BIT_MASK(32));
+>> -	if (err)
+>> -		return err;
+>> +	if (dma_enable) {
+>> +		err = dma_set_mask(as_ctrl->dev, DMA_BIT_MASK(32));
+>> +		if (err)
+>> +			return err;
+>> +	}
+> Why do you need this to be conditional? The settings of DMA mask should not
+> affect the (in)ability of the device to perform DMA. I.o.w. it should not
+> influence PIO mode. Can you confirm this?
+>
+no any particular reason, just see no sense to set mask if dma will not
+be used
 
-Of course, I'd hope that ACPI is all good on this platform, but still.... :-)
 
-static const struct of_device_id mt8901_pinctrl_of_match[] = {
-	{ .compatible = "mediatek,mt8901-pinctrl", .data = &mt8901_data },
-	{ /* sentinel */ }
-};
+Regards,
 
-	.of_match_table = mt8901_pinctrl_of_match,
+Mikhail Kshevetskiy 
 
-> +		.pm = pm_sleep_ptr(&mtk_paris_pinctrl_pm_ops)
-> +	},
-> +	.probe = mtk_paris_pinctrl_probe,
-> +};
-
-Cheers,
-Angelo
-
-> +
-> +static int __init mt8901_pinctrl_init(void)
-> +{
-> +	return platform_driver_register(&mt8901_pinctrl_driver);
-> +}
-> +
-> +arch_initcall(mt8901_pinctrl_init);
-> +
-> +MODULE_LICENSE("GPL");
-> +MODULE_DESCRIPTION("MediaTek MT8901 Pinctrl Driver");
 
