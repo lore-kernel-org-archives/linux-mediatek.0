@@ -4,87 +4,158 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BABC2D0EE13
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Nov 2025 18:42:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F09D0EE0F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 Nov 2025 19:16:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pM0o1AYxzUtWqc+Ck8fcphfQUFNkt/WGLDT5cfunRqc=; b=TolDRxKbQfPRTWRC6MwC96KAyh
-	HreQV9VAvm65PHTqv84E0asfgBlcAqxc0tKMtBN1LhEIIga3YiW9uAw81jMkgxnOnJB+R2bMXIKkT
-	w76Ryz9UOLcLdu8Da0r3PdvsmjEo0LFWmCwtopTCpQS++G0lAmYdwoTYTKNM5WeygYzhZUzk6Hi76
-	OJplyjHooppOLO1DfK4nRvNPFo2PnzkiympcjT4qV3aJMUp2EotSmzD4raPASsUo0GW4VboAeyEyA
-	RzxDgu1k1NCznfPVfwRob4r3EG7ALFd4m33KNzTQFYs0LwRR4GBKzXVmnI8uKcMLlnKphfRzJmXlI
-	RrKIoRCw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=9QqlxszkTg6tasUSRAg/dx2UGh+sXmH+7uo9jXtc4pI=; b=IuUEZHS1DdUSSGM40x+qdqUpKR
+	1YCfjAqHMlVZk7RT2nsaHUyP03pqsKb0liajMbeQkQso8Lx71Ywh9zKbtISxBMpt5sfJQqjNuc2IF
+	+2zxf9Jk9ZBdctMCmIgz9yN1SlZquKDHI1fn0dDESTkbX5N9IURCy7PxjPIUhhJZgz5+6KqPOUZ2O
+	r/Xu+Tg6gwzpihyoUdwZsvNv8UZN2GliZRP0tj6n4+aOmgFFrxQUO5Pt2TBNamem38ZTUpOzeevXY
+	lTZDQCvzJ4J4SioVBtRUjQtn10NJY1wkGOZu0RbNgspeFAzD1U/V2hcVcFbfuCfUfXT8KcQeXs9gT
+	bCIMcwvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNxzO-0000000Dmbb-2L5q;
-	Tue, 25 Nov 2025 18:42:10 +0000
-Received: from mgamail.intel.com ([198.175.65.20])
+	id 1vNyWy-0000000DoRb-2ua3;
+	Tue, 25 Nov 2025 19:16:52 +0000
+Received: from mail-francesouthazon11021116.outbound.protection.outlook.com ([40.107.130.116] helo=MRWPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vNxzJ-0000000Dmb2-2W78;
-	Tue, 25 Nov 2025 18:42:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1764096126; x=1795632126;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=mEHY9GgoiSqhxR/W0E8OtjxK4nwc0SEgrPhZ5czKwe8=;
-  b=U8GrVZGc9vFDv/wGYb+no03OEtNeREQbCQI1bk3J53bDjgrcLxlRFWXz
-   P1T0bP6hzWhNhbjRJBz3lQ3JV5ATUsDp513LTtS+9VX1wyvFOzm/OIAUs
-   9o3tf5ZIhxqnwYenqK/cie45qrr8qbF94+Pc1bh3HR5FC6nRQtIWUw7Sc
-   jS/D9Frc4kb2abN/u72v27G4+bQrlKBm93z0hZjOn5XpOzSBCiOYjJo0M
-   7St8CRkfWSbRk1FZXDcMgITLL5nq6kvuFS5bIAsEz88wvmyhdn9bbWuD3
-   /oL5Ln6JWCKqzXEIdMIA0zS2qewi8fzBLRBZgeTPFlLjPiv1r6dAxz4Tx
-   w==;
-X-CSE-ConnectionGUID: 4twwlgyqT5iPMXoD1BqWtw==
-X-CSE-MsgGUID: wtou73DvQqGQcgklqIUtXQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11624"; a="65833574"
-X-IronPort-AV: E=Sophos;i="6.20,226,1758610800"; 
-   d="scan'208";a="65833574"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Nov 2025 10:42:03 -0800
-X-CSE-ConnectionGUID: k0Wtz+P3Spe8Tm0zUe2zGQ==
-X-CSE-MsgGUID: 7DGzM9uHRSWs90aCUXQEHQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.20,226,1758610800"; 
-   d="scan'208";a="192719812"
-Received: from ncintean-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.22])
-  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Nov 2025 10:41:59 -0800
-Date: Tue, 25 Nov 2025 20:41:57 +0200
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>,
-	Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
+	id 1vNyWu-0000000DoQm-4BRz;
+	Tue, 25 Nov 2025 19:16:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=WZgArasKTBzhcMptQ4uRvK8ZVm75mgLnOWlQA/W2sC67y+o6HazP2NOubQKyPIpFRriII49tKwipMfwZkDfFbLhMOIhlrM3Cr+qWkfwsOO47NQ8pkVVgMrTHk9peJigCRo/XpW0rP0MSz81g0x1ele1MgN4rKaVDUhH261LI27P/43z1p/hUuNIokLBPS6oKd5fZ2JFWVOh+cn4EaOZdAAYgU8N7MGMIoq6C4X4CtcHzk3tLWe0jGSyna10CVcJUZAegniYwUk+lKr64zOZavK+mpgy7BcI9suTNNYOXkKAR83yDFIbvL4lQtTESXL5v2pL6s1xHWZFGQn2H4SU3Pw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=9QqlxszkTg6tasUSRAg/dx2UGh+sXmH+7uo9jXtc4pI=;
+ b=RkhdOpV5b6vG/1E2ZtSuj3hNfuO+ruhMuYb28d7zo3Bs9/v3rOo2haioCSjK+tbI1uzAUl33Opv9BRvLVmh0j80fSEHPpVnE0Q92n6jFg783nOpSRrSY7/R4/wEtKMtu4/AvjuaAtLxkMiufg+QGl4xgcOiLlUfkcYsd7zLneste3HKEH2R5FKRNoZqJHIXDqOpqaHnFjOaRXcAhg/yiw8A+KZGEf7Ynca7c0tDizF6jjHYGZb/lYau1f5sF5w5TnwbDTwM6oVjCbwqJFJekr4EqZ8R0oNbugMtFBg41nQFkWLsFesMY+iEbliSsOPkDI984wbE7oZAQOjV+z5NgXQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=9QqlxszkTg6tasUSRAg/dx2UGh+sXmH+7uo9jXtc4pI=;
+ b=vbkhSplB2lTlv1KB8qrrysqsrtOQa/gkCrYLw00INPuB4gNzLTBAtBQ/K+obEB9SzSaJWRKlPUMQtGfQYLOrjBAc3B1hl3/u7yQZ55RrKjCPYwQqjuWaRN8yled0c+eh3zFhlqpppJs+zHjgPUj1Ee+v9952YrwFJzvxcxZEjm995Z6Et11RPi9WNQaaNLuNXLPHNnF+dqegC8OElnkmkhatpqUb42j0R8DdWuLn7fSf4cGkGIkEJndmEUJu27PH/OF/FeXwRgynCls5ihScPRTWDIz4OSUjbHr94tmKMXA9lc+QNGiaZxWBZyM8eCzssphLjN8x+8ZPMDBrpgrrbQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com (2603:10a6:150:7d::22)
+ by DU4PR08MB10958.eurprd08.prod.outlook.com (2603:10a6:10:56e::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.18; Tue, 25 Nov
+ 2025 19:16:43 +0000
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0]) by GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0%3]) with mapi id 15.20.9366.009; Tue, 25 Nov 2025
+ 19:16:43 +0000
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ray Liu <ray.liu@airoha.com>,
+	Mark Brown <broonie@kernel.org>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Andy Shevchenko <andy@kernel.org>,
-	linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-spi@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
 	Andreas Gnau <andreas.gnau@iopsys.eu>
-Subject: Re: [PATCH v4 1/3] spi: airoha-snfi: en7523: workaround flash
- damaging if UART_TXD was short to GND
-Message-ID: <aSX4dXXmlHcz0zeU@smile.fi.intel.com>
-References: <20251125021051.857159-1-mikhail.kshevetskiy@iopsys.eu>
- <20251125021051.857159-2-mikhail.kshevetskiy@iopsys.eu>
- <aSVYShXLirW--bYe@smile.fi.intel.com>
- <83a15a9d-8dfa-4949-b483-020bbcf0847a@iopsys.eu>
- <aSWBacH8N5NWO8oV@smile.fi.intel.com>
- <13321124-6b45-479c-a73d-1d9ec9e96f05@iopsys.eu>
+Subject: [PATCH v5 0/3] spi: airoha: add support of en7523 SoC (for 6.19)
+Date: Tue, 25 Nov 2025 22:16:32 +0300
+Message-ID: <20251125191635.1075027-1-mikhail.kshevetskiy@iopsys.eu>
+X-Mailer: git-send-email 2.51.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: GV3PEPF00007A84.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:158:401::616) To GV2PR08MB8121.eurprd08.prod.outlook.com
+ (2603:10a6:150:7d::22)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <13321124-6b45-479c-a73d-1d9ec9e96f05@iopsys.eu>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR08MB8121:EE_|DU4PR08MB10958:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4a883078-279e-4bff-865a-08de2c572b1d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|52116014|366016|1800799024|38350700014|921020;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Um+mqUtYOT0pj81kYs2Bs5P7M4u0EKFd27PqZMdNAVaegXVIDKIVC1oTamAu?=
+ =?us-ascii?Q?TIk1ylc2/Qi4BYIYnvZQlQN6kCx46rgElSRKuBrG/7dzscv0fbsmEyN4CuSD?=
+ =?us-ascii?Q?N75+d0TTRE5C1n05RIR2qDUrn9zpIEv3i1sp8qpEj1lqh1CSfX9ecSrH8OIK?=
+ =?us-ascii?Q?210Rl5Ca4Nz8TB39VhmixeByj/4RjHcqWnNRXfcDD0astkkPXfbte27j6baF?=
+ =?us-ascii?Q?hqvPHelwSru93TLKzUkLJKsJrXyKu8ho0LyepwUC6Kq6B4oZ1fAXuSujmR5A?=
+ =?us-ascii?Q?0rVGZCwSSUXbst37w5cQrDYl9l2D6GHswFNX+Qj95vSo01QeUO3VdHZxqGiY?=
+ =?us-ascii?Q?igHt9UGfp82Vn5Hq2JH0Xm8ENFQxrFQEBXVeqg0ISIyjQSdQFL5uq3rNSPUy?=
+ =?us-ascii?Q?Hy6nySkfAR1qMzIKmOHkLyqac/yfdVth7+WjsKVewVwZ6HuIm7xL6jrk/oP4?=
+ =?us-ascii?Q?P2AEHE17Ay+3zVfcMPFDqv6Cxpm7GQ+61miWurl40UlNFSQ5v/Mpbn8OjPAI?=
+ =?us-ascii?Q?gYIIVBucdoM8uNu7jO/53ethi8FpoVFIuwd6lYHLTITjmijrklThxtVNkVsE?=
+ =?us-ascii?Q?mIGCYcKQ2itHUpkek8yxlMCe7zTwHmTE1ljIKrWrajeO9LpkPu9Z4pTmjtzP?=
+ =?us-ascii?Q?S+reWUw8iG46Dyao8hHZmY9IPVsbnY1bL6qWjiZaAu8WYYSaCvu0PWq54BHS?=
+ =?us-ascii?Q?T8+Z9SWTll64IoFi0ChsHZpiXqIBY45KPW6DOVzu3Q0f42vZcc8K+N6N4/tB?=
+ =?us-ascii?Q?K410mCgVVoIN1nUOYyzqubiG0Je3wZIENU1j3Q0TWQL+8dH76gQyoImuiGy+?=
+ =?us-ascii?Q?KEHlN7OtXujsrU/WwpB2JIKCxZHvw8qkEPKNnU/Zp5cyN8hGx/0T+YxuJF9v?=
+ =?us-ascii?Q?ad6uxxCLMUG3YWUcYKtWDI1WL2XKfUCSVhFNkQiZmggbAacLM68LYCr6/lv0?=
+ =?us-ascii?Q?XHCCHkVU/15vbjeeiyLJabWYUq7ODQEmMfAup0nsockOJ27ajA2UnHT2y4pG?=
+ =?us-ascii?Q?TwPnKkl28uHB0QW0hOiiw0/CTr+A7wGD1GwSN4IwRwFKqiZLIW24eALc7lAT?=
+ =?us-ascii?Q?nsK88kRsIapQ3+mhVaz/9XJRe2USn067SEThhq6lZpmHb/AQiBfD4tANySoV?=
+ =?us-ascii?Q?zNCf45Am6734rJWN3hM9B7F46DPaMExZb2uidixECfXK/O+FYdxOtwOs4ORr?=
+ =?us-ascii?Q?YaJiHSRJ9BY35sTIF5uMPjZL2vbCHwykgGfj2SyE2mmiuVVgHOT8HBtMzWHW?=
+ =?us-ascii?Q?D6P+b/pGqOe2XK03wgznq250ZL44omrYJsOKgljS4dx+AfGG9CV03ITJHjPb?=
+ =?us-ascii?Q?6KlxDVcKLawyK81MTYQMIrV03ocIiBnjeG8fIju4Wr1uYhehPW00azEOjjXc?=
+ =?us-ascii?Q?EOuf9eZAfhBRswDPllI1R01z6NQgk8QgwH4lA/ue3ZtNOcj+C3DYWRaNCOgq?=
+ =?us-ascii?Q?i2Bp70PeYPAPe4SQAYSeMTQaHrAO580V9zMFrW0u2oiM3B50q/sHmqDImZbQ?=
+ =?us-ascii?Q?0qLwpWHle5Bfvp7udTB/M1PZqcg225lPxksGqCWIYxyA67HKMdN5aW6tnw?=
+ =?us-ascii?Q?=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR08MB8121.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(52116014)(366016)(1800799024)(38350700014)(921020);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?/ICuQPCZcz1/P+WW0/5I2HIPWsUQAsggE005mh8BeTpLLTB8UsP2JPToWnrh?=
+ =?us-ascii?Q?d992peu1a0ZbEt9jjxyDMHmGZbniApp84Sazo+fnEdvElm/p+zBXnFgptQ4Y?=
+ =?us-ascii?Q?enpxy/exXof4+/axSDlwCPLjucpvRIm54q1ehE91HgtL52VJbrKZ5PzpL38O?=
+ =?us-ascii?Q?HpX3lqrUu2yr+IX1V2LSXMZ0hSqBr8Rblajp5qdBvSDe6xzU+WC4XKWPLU/v?=
+ =?us-ascii?Q?YQq/rqYmwJD3nK0XEmbcc0ggNhz9y1GwlA5MIDKV7kaDa7JuCBk1sTQ8bX1Q?=
+ =?us-ascii?Q?IiWtbQqWdQHq3jO0NqfO0L85JzKeyn32Lh6DAIpx6ws5si9Wvk16UIBMwfFs?=
+ =?us-ascii?Q?LuHN9DKaNqnk3uF8bj/8YSriYtCoqcp0yK5fLUjmInBaV+Vlbd8shL6pTl4v?=
+ =?us-ascii?Q?RGB/tgN9nOXpOdxy6Y22ungXONXMDBlGI1I4Cp0iRKEghLDPUjWoHbyCpKI4?=
+ =?us-ascii?Q?bPp9MQLd5TSoLB35waxDvXMWycTtdF5gg7aNLRMdHzdYalQTY4K3Cv71Z9vY?=
+ =?us-ascii?Q?zKpI2/5wc/sUtLHG34vU9xdvR0i+X8L0hv16E8U2CI4iKtP89YtRCfNaafHK?=
+ =?us-ascii?Q?a3bVg5JdK1m1UQPhywnO8W+fG+zHQHj+b0MljLg5nbLeF/CuuPDdiQql0Fuh?=
+ =?us-ascii?Q?2c/OtIA9TuomLcEezK5GAYIkbYd/7ZNBtgPmfnd1xYV/FW5XZ8xmCW+B23cp?=
+ =?us-ascii?Q?TeST3Qcx+03oHVYmb1yD2ytLvQCuCGQPy2betgIPeY6pJxeAN6p3rZDVqSJP?=
+ =?us-ascii?Q?ZnP4yl6rZWwAnfLmUlFevkjidTkl0/rnRl30XGIfHN0xkGav0PZX1KfcZlH8?=
+ =?us-ascii?Q?JGpGKIn3tAXrCTOn21As42NW8aTz+BlRtBtcZNDLl95SWeJDpRh1gYUfLqrt?=
+ =?us-ascii?Q?bQeUJ9TmGqpFahG18B0cwgCcoq11qj0/MatQrFpIjVdP66oFIIro/TfREV6p?=
+ =?us-ascii?Q?lio8SQhmyHhgEl2FJO52Ma/OoxVs7YdyvMgahd62Oysc3mjV6rh6cRzfB7uA?=
+ =?us-ascii?Q?CN/UwKlTqhfL/xi7vx93DJis4GN24FG8a+i7Wtocvp040oExJO2EY+5rxK6T?=
+ =?us-ascii?Q?t5q36kk5zcPvXdRcdhz4pgspii09v0Of58/XHNtkzPxlHklRLTDpzYl497CL?=
+ =?us-ascii?Q?Y300jTa0qY+hSQTvqAZB81vqHn1XOG8+lFVUmUGFGZa9Za9Bf+vJjZhHKBEx?=
+ =?us-ascii?Q?CWBdlUvIlQgORvKLmbgNSY8bM19V6TdRQQ39BRA4Ler67yhjowq1AOc1mZQI?=
+ =?us-ascii?Q?0d7vxHen13wkBC2C6DpnOTrANy4bG25L9aHXMIKZnA/NRMnNARKmHgurzk4u?=
+ =?us-ascii?Q?CdsgnsnK+r92l+uECt+NKnhhjrtVBjiVaga9c6+/UQcYfTfHOJBa6/Vpir91?=
+ =?us-ascii?Q?pifrnWJf/QDg3WuRzCVMfQLdEcDfy9T25WCwv7MSDwagFHuwe+/eV7h2yX7Y?=
+ =?us-ascii?Q?bV+xSddTZlCYGajYpjRV4q+UuhuqsyoBsdq4p+3jFV7Ke3KgzcTelBpkw//j?=
+ =?us-ascii?Q?A7vfGZcJJ3ggOjqwRfyjUoDaauXBTEwXIIHyXkCQUMFRHHdwRjRX2G+W/rIk?=
+ =?us-ascii?Q?Zf2H4ENI5aMuSPmRar6CGRCG7yA+0jm8tasflCYMgSx61IeG/RLzLllTPKzd?=
+ =?us-ascii?Q?Qvbge2Nhw8s3UWHytsPD4qA=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4a883078-279e-4bff-865a-08de2c572b1d
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR08MB8121.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Nov 2025 19:16:43.2688
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 0xQjn1ciM+MkWbt+TSdRzESoLxPTMe61Wf7GVSwuCuW0pWPGZVoDpDjMZoR3uQ33ovlw/IQIflRyfw5LU5d0ETHBkJno1JPDzPvnp0dZDhM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU4PR08MB10958
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251125_104205_685895_B0E35AE5 
-X-CRM114-Status: GOOD (  18.62  )
+X-CRM114-CacheID: sfid-20251125_111649_557131_339C5B74 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,44 +170,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 25, 2025 at 05:20:44PM +0300, Mikhail Kshevetskiy wrote:
-> On 11/25/25 13:14, Andy Shevchenko wrote:
-> > On Tue, Nov 25, 2025 at 01:04:12PM +0300, Mikhail Kshevetskiy wrote:
-> >> On 11/25/25 10:18, Andy Shevchenko wrote:
-> >>> On Tue, Nov 25, 2025 at 05:10:49AM +0300, Mikhail Kshevetskiy wrote:
+Airoha EN7523 snfi controller almost identical to AN7581 one, so the same
+driver can be used. The only known difference appears in the very specific
+boot conditions, when attached serial console force EN7523 SoC boots
+in undocumented (reserved) mode. In this mode dma reading of the flash
+works incorrectly.
 
-...
+This patch series:
+ * add support of EN7523 SoC
+ * add spinand node to en7523 dts (so spinand flash finally becomes usable)
+ * updates dt-bindings to mark driver as compatible with en7523
+ * disable dma usage to prevent possible data damage if booting in
+   reserved mode was detected.
 
-> could you clarify what's wrong here?
-> 
-> >>>> -	err = dma_set_mask(as_ctrl->dev, DMA_BIT_MASK(32));
-> >>>> -	if (err)
-> >>>> -		return err;
+This patch series was a part of a bigger series:
 
-Sure, just don't touch these lines. Only set the respective ops depending
-on dma_enable.
+  https://lore.kernel.org/lkml/20251012121707.2296160-1-mikhail.kshevetskiy@iopsys.eu/
 
-With that done the patch will look better and less confusing about affection of
-DMA mask setting on DMA operations (which are kinda orthogonal).
+All patches of the bigger series (except these patches) was already accepted
+to linux-next.
 
-> >>>> +	if (dma_enable) {
-> >>>> +		err = dma_set_mask(as_ctrl->dev, DMA_BIT_MASK(32));
-> >>>> +		if (err)
-> >>>> +			return err;
-> >>>> +	}
-> >>> Why do you need this to be conditional? The settings of DMA mask should not
-> >>> affect the (in)ability of the device to perform DMA. I.o.w. it should not
-> >>> influence PIO mode. Can you confirm this?
-> >>>
-> >> no any particular reason, just see no sense to set mask if dma will not
-> >> be used
-> > So, this is an unneeded churn in the patch. Device is [still] capable of DMA?
-> > Yes. Set the mask. The DMA/PIO choice is done on the upper layer (as you do it
-> > via ops).
+Changes v2:
+ * small improvement proposed by Lorenzo Bianconi
+
+Changes v3:
+ * split multi-line print on a series of single line prints as suggested by
+   Mark Brown
+
+Changes v4:
+ * improve description of Airoha en7523 SoC specific issue that may
+   lead to flash data damaging.
+ * add fixes tag
+
+Changes v5:
+ * replace 'boot pin' with 'bootstrap pin'
+ * do not use caps in some cases
+ * always set dma mask (even if dma will not be used et all)
+
+Mikhail Kshevetskiy (3):
+  spi: airoha-snfi: en7523: workaround flash damaging if UART_TXD was
+    short to GND
+  dt-bindings: spi: airoha: add compatible for EN7523
+  arm: dts: airoha: en7523: add SNAND node
+
+ .../bindings/spi/airoha,en7581-snand.yaml     |  7 ++++-
+ arch/arm/boot/dts/airoha/en7523.dtsi          | 20 ++++++++++++++
+ drivers/spi/spi-airoha-snfi.c                 | 26 ++++++++++++++++++-
+ 3 files changed, 51 insertions(+), 2 deletions(-)
 
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.51.0
 
 
