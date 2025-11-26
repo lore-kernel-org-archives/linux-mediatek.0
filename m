@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12263D11192
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Nov 2025 19:12:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CBF5D1119B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Nov 2025 22:05:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZCsO/Nsbka1ldntG+T+8tVsZbJQlp5WWWZK1eiUSa7U=; b=RygHZmcV+7YOxK6syevB1KfgpO
-	fZBdbAIXz4BFx5BNVcygGMVweM2Z6TGohcOqnGNigLHCnNnJG5vXpGU0tu50jS6uwjo9BGzmFVZq5
-	nWEUGSpDce0EyocKjNkwxRLd7cQh1QfrO8z/O18hV4GCKY5Sfl6S7C2QLT3erfMyO6s/86XSFx4L9
-	+Nhr+MeKZSzTgHOHOxAM+GTzuL7xKT1XidG3bE8CWIuU7moTP+wbvzkOe+HTeCWRG/XMgdPPvazQj
-	FiTh0C4G5Gv80u0k/lSesKDTc27E5U3d2OdOF0NcKAHKfBr/O+1Q2jgY6Q/9b8MIzPmmWPjOSQtDn
-	M4Q/Yyrw==;
+	bh=wvwO2B91MSoJzjUbG+aFdaY1a90YF3q4uxdd57PU4fg=; b=soePifAJUeRWmLJcytT5WqSjqK
+	0tzL7maP8SbX8XxWlW6OMEx4gLgFFENxElskmFOFECZ5KPFvrzJSTe2yNSAmm1csUbMytpVLEuHOU
+	qQlY/76h49h/KVVOmFiDAwdOqLpDFico7+2coPGf4e01BFWIYSozEE8ilW59DyjTkTJWVvQOhlBuR
+	pXMNQLNF+uBlmoK2ahSUFyTUZoi/m9ZR/wfNqCL2ROsWSCxS24DEPrOp2LeWqVJ6pT/0wRxSNGbvU
+	0nrtUAOKRYsvQCbNnVZvByqKOD1fKhcl+ms+quN4RME+8Jbi3KujCLKaP0kQmXHaUx/NTL09zwIvT
+	mtAPW6WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOKwa-0000000FXYB-1URC;
-	Wed, 26 Nov 2025 19:12:48 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vONdg-0000000FhWS-3OCk;
+	Wed, 26 Nov 2025 22:05:28 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOKwY-0000000FXXv-1w52;
-	Wed, 26 Nov 2025 19:12:46 +0000
+	id 1vONdd-0000000FhVA-2Zv8;
+	Wed, 26 Nov 2025 22:05:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 69B1B60240;
-	Wed, 26 Nov 2025 19:12:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9736C4CEF8;
-	Wed, 26 Nov 2025 19:12:42 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D77DC404B5;
+	Wed, 26 Nov 2025 22:05:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B09DBC4CEF7;
+	Wed, 26 Nov 2025 22:05:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764184365;
-	bh=sWWXp3sv6vfsWvCEZUjz8CmJ0VK8ViosU6u8p8WK57w=;
+	s=k20201202; t=1764194724;
+	bh=qjypqAhSdHEv0LGJSOTuNEGmIHFAdFLubLTiD2vfKh8=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=Ju2pT6Azp7yo6k1D5f0cG+rlRn5zuLUrevCfMZNmQuf+hzPNgPcMbQwwKwNSgiwc5
-	 UaBtW2k2+qFOkRTCxJImD00d+gDOQDBLj4pS67mxN9hNnQ2/Er1zx+dwhJfVJejMtY
-	 Q0qODMulspHUVxNjpAYZi2Dc0s91nKUxFPHO5lXbJyAyDcdty9L395tp6j6okow+Qc
-	 DBD4ox4lV9U+BMwC4nNIpuwU8Fnnap7QuG7mWXrJj2wdjYb1c8Nunlo2PcmKunIwaH
-	 jtUJVfMWIX2oqJhnYkipmt4PWd+BY5h4dFRWml/jEe/OtjlvWzqXd4BxYKCImlvJZd
-	 Zrq37EJ3X5RTA==
+	b=hQjUTUTioHpjSn3KWvOSVDRP5yBj9Ei9rzYGZ02nf0cp2wYg20DdIRCiy3j65sm7/
+	 2KcPaygyNgF50QidfArsgNDNi3xAlVju+aC9gOKirWUxzJNrslqqNrW2hz89Wyffgw
+	 Sd67zPOe+jz2lw5C4bbvgel1bVz5m15SRo7KMupDqD8g0LyWbRvJWXjmYyzt0rp+oF
+	 +pGtuuPCrukGrGXcy+h8EpLlwEYfeXocLfCtE4h949uXdYYxbljSkg6U+CaT5ItrH4
+	 DO9I5QDSRnw0EqLtAR1fzZLutAZoEjJxYNUZsUQaigCohTRNfjUawP5Uw+pNR4RIpV
+	 VjTln1jq4nbQw==
 From: Mark Brown <broonie@kernel.org>
-To: Cyril Chao <Cyril.Chao@mediatek.com>, 
- Dan Carpenter <dan.carpenter@linaro.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ Bartosz Golaszewski <brgl@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- kernel-janitors@vger.kernel.org
-In-Reply-To: <aScUKqCEhSIZoOmg@stanley.mountain>
-References: <aScUKqCEhSIZoOmg@stanley.mountain>
-Subject: Re: [PATCH] ASoC: mediatek: mt8189: remove unnecessary NULL check
-Message-Id: <176418436269.117076.14309249489407966858.b4-ty@kernel.org>
-Date: Wed, 26 Nov 2025 19:12:42 +0000
+ Samuel Kayode <samkay014@gmail.com>, 
+ Matti Vaittinen <mazziesaccount@gmail.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, imx@lists.linux.dev
+In-Reply-To: <20251126-container-of-const-regulator-v1-0-eeec378144d4@oss.qualcomm.com>
+References: <20251126-container-of-const-regulator-v1-0-eeec378144d4@oss.qualcomm.com>
+Subject: Re: [PATCH 0/8] regulator: Use container_of_const() when all types
+ are const
+Message-Id: <176419472245.151653.5849861246383246238.b4-ty@kernel.org>
+Date: Wed, 26 Nov 2025 22:05:22 +0000
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.15-dev-88d78
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251126_140525_697922_187319A3 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,22 +78,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 26 Nov 2025 17:52:26 +0300, Dan Carpenter wrote:
-> Smatch complains that the call to snd_soc_component_get_drvdata(component)
-> will dereference "component" so this NULL check is too late.  The probe()
-> function will never be called with a NULL component pointer so just
-> delete the check.
+On Wed, 26 Nov 2025 17:58:43 +0100, Krzysztof Kozlowski wrote:
+> Use container_of_const(), which is preferred over container_of(), when
+> the argument 'ptr' and returned pointer are already const, for better
+> code safety and readability.
 > 
+> Some drivers already have const everywhere, so container_of_const can be
+> directly used. In few other drivers, the final pointer can be constified
+> that way.
 > 
+> [...]
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
 
 Thanks!
 
-[1/1] ASoC: mediatek: mt8189: remove unnecessary NULL check
-      commit: 9d3fcd0ebe91c2079b4aeaffc7493a0bb2ad45f2
+[1/8] regulator: Use container_of_const() when all types are const
+      commit: ac1530cdea9846c6bff31827c0c4dffcbc186e6a
+[2/8] regulator: bd71815: Constify pointers to 'regulator_desc' wrap struct
+      commit: 788915a22bdfde0925c074056056e7d408c242d0
+[3/8] regulator: bd71828: Constify pointers to 'regulator_desc' wrap struct
+      commit: d02ea816cccae6c02c7c026b5a74bf99a784c9c8
+[4/8] regulator: bd718x7: Constify pointers to 'regulator_desc' wrap struct
+      commit: 7a7e1ed307de6cc68639f602f3fa247ec0903354
+[5/8] regulator: bd96801: Constify pointers to 'regulator_desc' wrap struct
+      commit: 50011cacaeb9556d65067ec8e757e3987ecf0f2b
+[6/8] regulator: mt6358: Constify pointers to 'regulator_desc' wrap struct
+      commit: 438e90a287c86253dbb47e7fa43c4474f91ee7eb
+[7/8] regulator: pca9450: Constify pointers to 'regulator_desc' wrap struct
+      commit: 03c3bdebaad23d6698a3cb8a11a915d8bdebf28f
+[8/8] regulator: pf9453: Constify pointers to 'regulator_desc' wrap struct
+      commit: 6341646f7225343f57c8cbcb6a4d25b3270f4111
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
