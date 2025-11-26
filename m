@@ -4,94 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10E6BD10F5F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Nov 2025 15:18:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99C73D10F28
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Nov 2025 16:53:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LbmsDT5sWfaM9kD74mgCnnztyljRQSjz1T2Ch0Nw0cc=; b=XIEt3F0UGfvuz9mTNhCv/Ty978
-	Js52BB739aKabZVadegdcIM1XXsZAxqXbE7t6ot4kU2rwlPy3gTtqBmav94EyIEpiePNFHfbo0qb3
-	h3jhV7FTEG9NttYn4p3VZX1bEiLLBEC1flbDHShwmePk2Y3ugG7oycojuqwD9IAERI+iJzaWSbtd0
-	8F2rWHc5321tpNSfx3psauR7vBcYrQH/6tqeyImjB9jZdvBaAUZ1RAFyidOwnvRe9J8ocFS/fbsOy
-	Mtrg6oNtKoMGVIHNbHX2Iaxsbi3iGMGluTUdDCuoNBYVr5ABRMqt2fEKh4vAYzHIsPjO9WslldlIW
-	NV1EhUng==;
+	bh=bbn5Y9u8Ph5GVO2b2VngmUC8e6xiu0acalV/Af8CmJA=; b=OBcQh/tK7xaISov9dSDob5fbM/
+	DA9R4bS14LkjJPS6FRdneHZjRpEobuFbfmrngg7hkrIh72UN5XvOOy7ZesvoEk+kmXCAx0fx9iZth
+	ftLzbgkAPZ3dMRuvVXkc9RO/xgaBJ5ZuBMFvd12Yw2+/bj00I5Y9peDJbn+CulnnzKDsw/E3uldrg
+	kcoVmU+rrKj0FBu+jLYnSP1UnRTKnNnfYpR/TtCq2KuVqw9gS20St2kgvm1I7+mxA0YZopINK+oA7
+	wQan29yp053dIxjJARgrC/44yy56d816mmIv9rpbzEmkhPeWe5PPfWJALqnOZ5c+IwfQy8DfNwlEf
+	7vkjfqAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOHHa-0000000FAjG-0fOS;
-	Wed, 26 Nov 2025 15:18:14 +0000
-Received: from mgamail.intel.com ([198.175.65.11])
+	id 1vOIlV-0000000FKou-3w2W;
+	Wed, 26 Nov 2025 16:53:13 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOHHV-0000000FAiC-2JAS;
-	Wed, 26 Nov 2025 15:18:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1764170289; x=1795706289;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=OAQISPswKJq25SzgGqswUw+2peV2QjQp+1X2kjl7i/E=;
-  b=oFZKGhWSgSweT/tnejrWEuCqOsmiODdukIYa1yeD0/iCI1WzXQr9cqtr
-   YBClRJ5vwuyiv4k/1CfpEz/dTxEiyofLzjGVnej/9JyY7TpP9q8FjfdDC
-   wpbj8iPF9EYGbsYVN7YPbOkuQVzCAy8kXe1mvqlp3HaI0tPqKq0W8xTk8
-   CPXgDKUW/8ELRDiUXbiS8a00ki77YS7GBGk/1v4oTY+XRc8sv0LnY76Xs
-   5WtVX1AtNYkBR6L2fHFA9KiviFJhvHzDgZhKWXtU6SBcgkkehseb0T58Q
-   KAa39G3i0l1ZnjkoCDsYfC3kE96TqTFFo/V/oHqZZXno3U9FjV4s8uIgq
-   A==;
-X-CSE-ConnectionGUID: TCtfhiIaQ2azMurQR1/U+g==
-X-CSE-MsgGUID: xzJ5Tfz9Ski7g7GAJX+GQQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11625"; a="76534667"
-X-IronPort-AV: E=Sophos;i="6.20,228,1758610800"; 
-   d="scan'208";a="76534667"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Nov 2025 07:18:09 -0800
-X-CSE-ConnectionGUID: xKcInju7QGe/+joUlWElfA==
-X-CSE-MsgGUID: S+2yY/40TsKNxFP41vkcbw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.20,228,1758610800"; 
-   d="scan'208";a="192851038"
-Received: from lkp-server01.sh.intel.com (HELO 4664bbef4914) ([10.239.97.150])
-  by fmviesa006.fm.intel.com with ESMTP; 26 Nov 2025 07:18:02 -0800
-Received: from kbuild by 4664bbef4914 with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1vOHHM-0000000032V-21UG;
-	Wed, 26 Nov 2025 15:18:00 +0000
-Date: Wed, 26 Nov 2025 23:17:29 +0800
-From: kernel test robot <lkp@intel.com>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-phy@lists.infradead.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Daniel Golle <daniel@makrotopia.org>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
+	id 1vOIlT-0000000FKoD-0ewy;
+	Wed, 26 Nov 2025 16:53:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id CCCC440991;
+	Wed, 26 Nov 2025 16:53:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1527C4CEF7;
+	Wed, 26 Nov 2025 16:53:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764175989;
+	bh=mmQKTxXmZkxtfNlrMvRnw3FG4sKObXtL7r6tazNlwdQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=IoJFaLMOjR9wr3+xuMS2vx75RuQ/Q1NPSn6yj4FJI+kL75FFDHiIZXK8+pyJbAdgM
+	 3QlknRBsMdS7KCd4bttC8IYAoBz6Q/WetOM59LMpaAPju/qaAaqQ1fnFVYVC9Vx0bZ
+	 k8h4KAaST2iyOldpemJLrgSLY+KAXM+/QsBqqnVRK4A1xCJnbtbxByPsnLbwwbS3ge
+	 hal9/R7jNFaQJw9xC+30n8oTXjQuW11QwvmAXY3TgKEjsh7ydOgwGvy5hauc9Ccj3X
+	 tlDg2+ZCt2uEVo81/XbjRjJ60ZcspbkKljDqUvDIbcL3+mFI4YgN38GWFIWV4QANIk
+	 m0FqKs+V/tOlA==
+Date: Wed, 26 Nov 2025 17:52:59 +0100
+From: Lorenzo Pieralisi <lpieralisi@kernel.org>
+To: Linus Walleij <linusw@kernel.org>
+Cc: Lei Xue <lei.xue@mediatek.com>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Hanjun Guo <guohanjun@huawei.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Eric Woudstra <ericwouds@gmail.com>,
-	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
-	Lee Jones <lee@kernel.org>,
-	Patrice Chotard <patrice.chotard@foss.st.com>
-Subject: Re: [PATCH net-next 7/9] net: pcs: xpcs: allow lane polarity
- inversion
-Message-ID: <202511262216.TzyLet3B-lkp@intel.com>
-References: <20251122193341.332324-8-vladimir.oltean@nxp.com>
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	yong.mao@mediatek.com, qingliang.li@mediatek.com,
+	Fred-WY.Chen@mediatek.com, ot_cathy.xu@mediatek.com,
+	ot_shunxi.zhang@mediatek.com, ot_yaoy.wang@mediatek.com,
+	ot_ye.wang@mediatek.com, linux-acpi@vger.kernel.org,
+	robh@kernel.org
+Subject: Re: [PATCH 2/3] pinctrl: mediatek: Add acpi support
+Message-ID: <aScwaxBG53dnZ4a4@lpieralisi>
+References: <20251125023639.2416546-1-lei.xue@mediatek.com>
+ <20251125023639.2416546-3-lei.xue@mediatek.com>
+ <CAD++jL=h4ZEgrjgGOfgFyAXBM7EL91ZD-La82UQ7GPOXv8h9WQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20251122193341.332324-8-vladimir.oltean@nxp.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAD++jL=h4ZEgrjgGOfgFyAXBM7EL91ZD-La82UQ7GPOXv8h9WQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251126_071809_759561_F5B287D4 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20251126_085311_235294_6BA5FD8C 
+X-CRM114-Status: GOOD (  19.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,36 +86,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Vladimir,
+[+cc: RobH for his information]
 
-kernel test robot noticed the following build errors:
+On Wed, Nov 26, 2025 at 10:10:15AM +0100, Linus Walleij wrote:
+> On Tue, Nov 25, 2025 at 3:36 AM Lei Xue <lei.xue@mediatek.com> wrote:
+> 
+> > Add acpi support in the common part of pinctrl driver. Parsing
+> > hardware base addresses and irq number to initialize eint
+> > accroding to the acpi table data.
+> >
+> > Signed-off-by: Lei Xue <lei.xue@mediatek.com>
+> 
+> I'd ideally like Andy and the ARM64 ACPI maintainers look on
+> this. (Added to To:) and CC linux-acpi@vger.kernel.org.
+> 
+> I'm not aware of the best way to deal with ACPI in combined drivers
+> but things like this:
+> 
+> > -               hw->base[i] = devm_platform_ioremap_resource_byname(pdev,
+> > -                                       hw->soc->base_names[i]);
+> > +               hw->base[i] = is_of_node(fwnode)
+> > +                       ? devm_platform_ioremap_resource_byname(pdev, hw->soc->base_names[i])
+> > +                       : devm_platform_get_and_ioremap_resource(pdev, i, NULL);
+> 
+> Just look really quirky, I think there are better ways to go about
+> this and sometimes the ACPI maintainers give some good
+> pushback about the firmware as well.
 
-[auto build test ERROR on net-next/main]
+How are pdev->resource initialized ? For OF I suppose the names come from
+"reg-names" (that don't exist in ACPI, yet), for ACPI I assume they come
+from a _CRS (and you can't tag them by name for the reason above) ?
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Vladimir-Oltean/dt-bindings-phy-rename-transmit-amplitude-yaml-to-phy-common-props-yaml/20251123-033900
-base:   net-next/main
-patch link:    https://lore.kernel.org/r/20251122193341.332324-8-vladimir.oltean%40nxp.com
-patch subject: [PATCH net-next 7/9] net: pcs: xpcs: allow lane polarity inversion
-config: arm-spear6xx_defconfig (https://download.01.org/0day-ci/archive/20251126/202511262216.TzyLet3B-lkp@intel.com/config)
-compiler: clang version 22.0.0git (https://github.com/llvm/llvm-project 9e9fe08b16ea2c4d9867fb4974edf2a3776d6ece)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251126/202511262216.TzyLet3B-lkp@intel.com/reproduce)
+I assume that in ACPI the _CRS resource order is foolproof against the
+variaty of SOCs this code has to deal with.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202511262216.TzyLet3B-lkp@intel.com/
+I also assume/hope that we don't want to add a "reg-names" _DSD property either
+in ACPI to deal with this seamlessly in DT/ACPI (that was done for
+"interrupt-names"):
 
-All errors (new ones prefixed by >>):
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/firmware-guide/acpi/enumeration.rst?h=v6.18-rc7#n188
 
->> ld.lld: error: undefined symbol: phy_get_rx_polarity
-   >>> referenced by pcs-xpcs.c:821 (drivers/net/pcs/pcs-xpcs.c:821)
-   >>>               drivers/net/pcs/pcs-xpcs.o:(xpcs_do_config) in archive vmlinux.a
---
->> ld.lld: error: undefined symbol: phy_get_tx_polarity
-   >>> referenced by pcs-xpcs.c:829 (drivers/net/pcs/pcs-xpcs.c:829)
-   >>>               drivers/net/pcs/pcs-xpcs.o:(xpcs_do_config) in archive vmlinux.a
+I am sorry I have got more questions than answers here - it would be good
+to understand where the line is drawn when it comes to OF/ACPI and fwnode
+heuristics compatibility.
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Thanks,
+Lorenzo
 
