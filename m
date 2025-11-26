@@ -4,81 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA6F8D10F4F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Nov 2025 14:10:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1967BD10F5A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Nov 2025 14:25:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mfg0ApTsZBuNNepuSTDvrLS0QmLBqFFmwPo/8UlDzWM=; b=XVs/bqvdq3kipoQm3t1qIlaoDv
-	nkNrlkGs+D3J8oj81j1KLs75wctDNJbW+teVMdG3GILPKVFUAdyCsvWGDz8cXWydnBDTNOzSjkc0g
-	iwOP31qlUmSuRKqIyVT+g1jwlcITMN2TQWMqN90aWDJibQJxTrK9k1O32/GNvZPC4PX0xIdBEqpp5
-	MG5Io4zpQeqiX78WPiFw4TlQ9pY5tZMwGgNrz5AtuB+KWBpstTiPlJ3P8SHV0hi6l7iSbxzBdN3M4
-	4CE+hyfaAvHys6pl55eSLGTPSIYEKzU6dxkVfX9gnhqt/Q+Vl4kLn+KxBJ/g19U4ECfCUSAcEPvio
-	v5F1dudQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Sbs0A8qAYuq+r/+1fjxriavvnUhEfhMgY7SBF5X8V08=; b=YpcyM6qMzOeRek6zBbyuYhock4
+	s7TONxh6chb3fr+aDCB5GtJvpbnyVxb4tis6QwfTRf//8/mLHcQjagPmeqQC5zXoUKUI2JEveXsq6
+	T+T+jJjWmVVrNvmmwinbaA0ROqaSJiDEPyApOEQiPFZpNQsIAL9Vzoh4t9P67cJiw0L54aipp+kQg
+	7OI0rTg9TFU5u6i3VF9NstJku5dUoavyoKZ4wQGAiDv2EfQCSntb0DAxhzu/Z2+kjZGjzHt5rgHtD
+	YZldnD0XogeF+c+cSNPpQC9Rc/ayWlKdgfMeNuAapyB+oSnBInRv7LF+rozijhJMsVQ1xUzCzHCB5
+	LbVLNFKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOGDb-0000000F5CK-0xD8;
-	Wed, 26 Nov 2025 14:10:03 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1vOGSN-0000000F6nb-3M37;
+	Wed, 26 Nov 2025 14:25:19 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOGDW-0000000F58Q-49rW;
-	Wed, 26 Nov 2025 14:10:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=mfg0ApTsZBuNNepuSTDvrLS0QmLBqFFmwPo/8UlDzWM=; b=J2sQjWS7Hax5P1/pbf0MUa1otj
-	b85hRFkepQK9OqNVx44xklhecjLP6XGrWx+eDJMoooUVohkSGS4BcWt2VeJvn4PFBgIHGgo2uPLTR
-	UODbmiGYHKLOU5oPH4FShi5BIr4kNDj0/HR+qoa+Cxa/toX/kXBhKpCdOh1jj99YemOQ=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1vOGDH-00F9qu-Hi; Wed, 26 Nov 2025 15:09:43 +0100
-Date: Wed, 26 Nov 2025 15:09:43 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Daniel Golle <daniel@makrotopia.org>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Eric Woudstra <ericwouds@gmail.com>,
-	Marek =?utf-8?B?QmVo4oia4oirbg==?= <kabel@kernel.org>,
-	Lee Jones <lee@kernel.org>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Holger Brunck <holger.brunck@hitachienergy.com>
+	id 1vOGSK-0000000F6mN-2ELA
+	for linux-mediatek@lists.infradead.org;
+	Wed, 26 Nov 2025 14:25:18 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 8725A4E418F3;
+	Wed, 26 Nov 2025 14:25:12 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 578AB60721;
+	Wed, 26 Nov 2025 14:25:12 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 64B5A102F08EF;
+	Wed, 26 Nov 2025 15:25:01 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1764167111; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=Sbs0A8qAYuq+r/+1fjxriavvnUhEfhMgY7SBF5X8V08=;
+	b=k0ooTJYIYW0FYBMVhrgVBpA7A6kXMyqERAgQSrzwOurSlWfmkbqR/cAmccU11VWLC5YJEI
+	n6WrPplsAi0/qCeWTP5rC5r6OVtJarSahnvu8/ytGNtL2IhjV2o4qcZLK1BKZ9REOhbIne
+	GpHwbaHF7/xV6QP11Em8OqvJQxr/vpKrq/B/xhMU6iRCotsKbsvezuDAlSdbcWdLA7WkHY
+	PgHtTABkVp75O1gL9djdWOv4/kvWgJGTXQQtoWevSW4VHF0gnednfaSxWzHACT5hKJnynF
+	DcFAau2f9LPmwhjE9ZTrqGuSx7982EfRtb9Sv1Y9Gy4TO0KRoTFUYh71zTNEkA==
+Message-ID: <9c2518d8-a0ea-46ba-9069-999c2574cd24@bootlin.com>
+Date: Wed, 26 Nov 2025 15:25:00 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH net-next 1/9] dt-bindings: phy: rename
  transmit-amplitude.yaml to phy-common-props.yaml
-Message-ID: <1b815a90-f50e-4bf5-8e43-2f4ac11f96bc@lunn.ch>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>, Andrew Lunn <andrew@lunn.ch>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Daniel Golle <daniel@makrotopia.org>,
+ Horatiu Vultur <horatiu.vultur@microchip.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Russell King
+ <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Eric Woudstra <ericwouds@gmail.com>, =?UTF-8?B?TWFyZWsgQmVo4oia4oirbg==?=
+ <kabel@kernel.org>, Lee Jones <lee@kernel.org>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Holger Brunck <holger.brunck@hitachienergy.com>
 References: <20251122193341.332324-1-vladimir.oltean@nxp.com>
  <20251122193341.332324-2-vladimir.oltean@nxp.com>
  <0faccdb7-0934-4543-9b7f-a655a632fa86@lunn.ch>
  <20251125214450.qeljlyt3d27zclfr@skbuf>
  <b4597333-e485-426d-975e-3082895e09f6@lunn.ch>
  <20251126072638.wqwbhhab3afxvm7x@skbuf>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Content-Language: en-US
 In-Reply-To: <20251126072638.wqwbhhab3afxvm7x@skbuf>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251126_061000_246664_F24D917C 
-X-CRM114-Status: GOOD (  17.55  )
+X-CRM114-CacheID: sfid-20251126_062516_715720_EA0B1C53 
+X-CRM114-Status: GOOD (  24.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,33 +98,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> All I'm trying to say is that we're missing an OF node to describe
-> mv88e6xxx PCS electrical properties, because otherwise, it collides with
-> case (1). My note regarding "phys" was just a guess that the "phy-handle"
-> may have been mistaken for the port's SerDes PHY. Although there is a
-> chance Holger knew what he was doing. In any case, I think we need to
-> sort this one way or another, leaving the phy-handle logic a discouraged
-> fallback path.
+Hi,
+
+On 26/11/2025 08:26, Vladimir Oltean wrote:
+> +Maxime, Holger
+> thread at https://lore.kernel.org/netdev/20251122193341.332324-2-vladimir.oltean@nxp.com/
 > 
-> That being said, I'm not exactly an expert in determining _how_ we could
-> best retrofit SerDes/PCS OF nodes on top of the mv88e6xxx bindings.
-> It depends on how many SerDes ports there are in these switches
-> architecturally, and what is their register access method, so it would
-> need to be handled on a case-by-case basis rather than one-size-fits-all.
-> PCS node in port node could be a starting point, I guess, but I don't
-> know if it would work.
+> On Tue, Nov 25, 2025 at 11:33:09PM +0100, Andrew Lunn wrote:
+>>> Yeah, although as things currently stand, I'd say that is the lesser of
+>>> problems. The only user (mv88e6xxx) does something strange: it says it
+>>> wants to configure the TX amplitude of SerDes ports, but instead follows
+>>> the phy-handle and applies the amplitude specified in that node.
+>>>
+>>> I tried to mentally follow how things would work in 2 cases:
+>>> 1. PHY referenced by phy-handle is internal, then by definition it's not
+>>>    a SerDes port.
+>>> 2. PHY referenced by phy-handle is external, then the mv88e6xxx driver
+>>>    looks at what is essentially a device tree description of the PHY's
+>>>    TX, and applies that as a mirror image to the local SerDes' TX.
+>>>
+>>> I think the logic is used in mv88e6xxx through case #2, i.e. we
+>>> externalize the mv88e6xxx SerDes electrical properties to an unrelated
+>>> OF node, the connected Ethernet PHY.
+>>
+>> My understanding of the code is the same, #2. Although i would
+>> probably not say it is an unrelated node. I expect the PHY is on the
+>> other end of the SERDES link which is having the TX amplitudes
+>> set. This clearly will not work if there is an SFP cage on the other
+>> end, but it does for an SGMII PHY.
+> 
+> It is unrelated in the sense that the SGMII PHY is a different kernel
+> object, and the mv88e6xxx is polluting its OF node with properties which
+> it then interprets as its own, when the PHY driver may have wanted to
+> configure its SGMII TX amplitude too, via those same generic properties.
+> 
+>> I guess this code is from before the time Russell converted the
+>> mv88e6xxx SERDES code into PCS drivers. The register being set is
+>> within the PCS register set.  The mv88e6xxx also does not make use of
+>> generic phys to represent the SERDES part of the PCS. So there is no
+>> phys phandle to follow since there is no phy.
+> 
+> In my view, the phy-common-props.yaml are supposed to be applicable to either:
+> (1) a network PHY with SerDes host-side connection (I suppose the media
+>     side electrical properties would be covered by Maxime's phy_port
+>     work - Maxime, please confirm).
 
-I would more likely have a PCS container node and then list each PCS
-within it, using reg as the MDIO bus address. The 6352 has one PCS,
-but depending on configuration port 5 or port 6 can make use of it. (I
-might have the numbers wrong, but the principle is correct). Some of
-the other switches have more PCSs but with a fixed mapping to
-ports. And the 6390X has 2x 10G PCS. But you can take this 10G PCS and
-split it into 2x 5G. And you can take those 5G PCS and split it into
-two to give a PCS which can do 1/2.5G.
+True, but we could definitely conceive applying phy-common-props.yaml on
+the media-side as well :) I don't have a use-case for it right now
+though, and we don't yet have detailed descriptions of the electrical
+properties.
 
-Given this flexibility, putting the PCS in the port would probably be
-a bad idea.
+Maxime
 
-	Andrew
 
