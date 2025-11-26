@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF970D1118E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A148DD1118D
 	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Nov 2025 17:41:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,92 +12,92 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X1sBMN4aYdnkQShY49zVQ/9mVbxGlJEjkTF4Hi7fNtc=; b=rxsEK38MmPN5kGiqUqBBP3NZuN
-	87boHGuYV0t3OEQJmq4zUb9HA3J3dN2RvrOkdcbpUmohKWrt2xl1fDJek+10O6UPZlb2/byZWVdb0
-	dJ5sNWot7+LyrEOVJFOkimOMjs5x74QHCw05FH0A8fUOl6FU3aHqAw5y9NGEtXxjrH2XLsk4qf2y7
-	HMWS+5Lc8sDwjW+7cRbiycmy2UDpRDCWxABM8Edecu02CFILsJFkVBQCYBe/LFPJ8hOUrJNJPGyiZ
-	oY8D9lQVcBUvakGIOdVyj4rAGcnczI+3bYsIm6d/cOgJH41q2xGY/CdKvqMpY4ubf2M+9oh7iA4c2
-	yja+fpGg==;
+	bh=JLI88Fy68vj0FHydbJ/LnweRpXCDXBC8BYlqjA1nmeY=; b=TSXE80pnEPBEslCOZxH9OvjZ6k
+	2ALfvxUGzG1tP79mbM8iUAGbyPAQUDQyFwY09JdixEyjeEQmUDkuuksD7F8UoBMITYYDW4wMmrRe3
+	1n9Wf16v3iO/Zhsa5VDC2hI9byajHQ/F1RrGVVFQzZ/O56OFW6caGTjxIU+GH/SZIG/eLY+mSOMqV
+	FJ9Oicd3QOoHAz5BgPR3qONLE+Oed4juR3Twme6Baj+Gaqhtw00yBjbbvjls93tM+c2h1iGf1x27J
+	ZC6v9EEz96FXnESrQCIcnkLHeec+mIiHDMQXFj7stiyqM4jNMbKVkmyKEtxl8CiQUpwazFX/0/L+t
+	+5Pax/Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOJVn-0000000FREo-3aTd;
+	id 1vOJVn-0000000FREI-2Jkj;
 	Wed, 26 Nov 2025 17:41:03 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOJVB-0000000FQpe-3eY4
+	id 1vOJV8-0000000FQoh-2CmU
 	for linux-mediatek@lists.infradead.org;
 	Wed, 26 Nov 2025 17:40:46 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5AQ8dbF63666318
-	for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 17:40:25 GMT
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5AQB418S1668414
+	for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 17:40:22 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	X1sBMN4aYdnkQShY49zVQ/9mVbxGlJEjkTF4Hi7fNtc=; b=ayZHyRX6tMYKRV2L
-	MG7IZwBvoGRwaxWvEabJ5AGpU46K+fHm5YslQIWa5RbaxFe6QUZvAj64cOOw3Nbd
-	5OMasmfDeWc1rr6ASY9I7C++uiFMuw+iACWPuWKSOW3YmPM5H0fRis5Xt/9ia2BL
-	BNOnYxs11roBt5SvwjXfT7VACs8Vv46mYV8XFW45Axq3OW7QwvpSCzflm8+fnWDs
-	IgfJoobJb/gQhLbaPXPxWNxXyAfV9GbfuM8tPj/Z4L9z3UDISGT8v8DafOfjIDTe
-	8dlj4BqvC5XCYEn6HFjcf6xUVoE0Z/FJffPZvkanSzxH+Q+VT4RHBfgKfYfo1kv+
-	RCwkLQ==
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4anmemu0uq-1
+	JLI88Fy68vj0FHydbJ/LnweRpXCDXBC8BYlqjA1nmeY=; b=X2hCpKOjHqvkmIyQ
+	uMGbdM+Zq5Xqds9v1bnS9koQdy81a4bAdgN8NvvPP5J/HCmK+XTBmct4P65Tnu7A
+	MQIW9dyQ3VUq1w2rSb2t5p52+5dyBx9GWl5C+l00sgvx7ZOwp7UBKxea+3NPOMCG
+	WY/rw4N8magCB4VbYTP+6Tt98itsAbM6YyfHRB+c6ph/DsNKacRtgotONcfOgwMI
+	vJOWToH3NNrJrcRJCZ8tYqSNsiwtKtfeImSvCgWLTMjl2H/8mCXu6uilBOJPv2Vc
+	hDw8UhX3AyL/8+lzgoavZPSKVV6Q/hWuTj+rChEK9j0ZIljyutimxvESTnFs0a/L
+	+zCV2w==
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ap0bms3h0-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 17:40:25 +0000 (GMT)
-Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8b244ef3ed4so445685a.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 09:40:25 -0800 (PST)
+	for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 17:40:22 +0000 (GMT)
+Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-8b286006ffaso1639451985a.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 09:40:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1764178824; x=1764783624; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1764178821; x=1764783621; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=X1sBMN4aYdnkQShY49zVQ/9mVbxGlJEjkTF4Hi7fNtc=;
-        b=fCOzdgfO0j2+nfUXstxlHkFnaZPEVDetlPbx2VnXVPwCC1rVEYaQyH4Q49FdnrjhhM
-         e0eEtyID+opLhkMFLV3+urNzLzpxC4MoakUYE0og1tyQxFy7FmQsmfBnCjQ9JoQFPlUg
-         fRCwfEBYtZ04zQPPE5J0D/yfJF3owYyedK3mQFtQBR1xFXJkfKHBF4IBrLUOGVjL08Uc
-         2LVHBDvP7TgOph4rgZ0O21ffMwBfZnBTLFToJf/mNyeRqSa5i5NyxQUcE8dj7v+V6Wnt
-         acz6A8LL5IR7lLipCYRC5kLK7XBOLYaZOaQViaHLXFkEiXomZdqkqWMOA6meEPoY8kqv
-         Kv1w==
+        bh=JLI88Fy68vj0FHydbJ/LnweRpXCDXBC8BYlqjA1nmeY=;
+        b=D5RzKYsLbz/GUmq3GMH2N89NJgtWygeoBlRIQVa6+Qcmvmg+RKTpvP1LzL7rwPuw2+
+         J6NPoxanN1XBzA3XcHmVqZbPsinso6mnnIAnoe5l/EFTMnoysmZjlSHptmJ2KMPAm+6k
+         lPjeQishwPtQSdNbXRsfNHmg/PwFTEeei8YJzSq7mkL0aGgbuowpxxp7LwvqXqAy0MXj
+         bU28LlTpD4mm6pb168OsXRxxrB2UBA9f/uv6zqZopANleJ/sVDDhwU8MzF/b5QvdvWh3
+         EXlfRPC+7VPwxygcSXBuTt+b9P/bXZKxFAT/U+MKnrCGrGPiGqCR6WbhTSPkNOoTWTsy
+         1xUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764178824; x=1764783624;
+        d=1e100.net; s=20230601; t=1764178821; x=1764783621;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=X1sBMN4aYdnkQShY49zVQ/9mVbxGlJEjkTF4Hi7fNtc=;
-        b=ZLl/iE4/KJ3o7PpOJunMb4Da2fI66qbmGVYjBpzES3f4nr0E8Bb9IVxqLbCwx7n7ys
-         IKOro56fcLkTZtfz2YtPa/4y2yrNxuh9HdBa85gTuf8muCKvjAEBiW4aD8QDj3GXXuUw
-         4sCsSYIuMxfDLVdizMDG/05OlPYpMGBGwc62c0foddrKMwm/g2KQ5HC4MUaNewG13gRv
-         yhusqgFngT4z6BU8vu0PKanj95N1nzO9xgWCWItcJy5G4fI3P6CXk/OUEdl8HVJBv7Sg
-         bxmwqcwCi2QYKXvWLtKgCSdRu5JlbAnJXk6vkmJ7wwJZTvn8nKJrwfRl2fzreiTp9HZU
-         J0fQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWEZZEu9td79XlvdT4pdSAivviifyGJy4n4fnX2lpO83q34cNB3rUdt2nGEm1jWaYfKJ+iaDW/f4uan3wxzbw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyDNEUJkPidRKO5xF3jWM1L+pJcUB1FjwzlNBYOqlGUSaTq7vNs
-	C5XV/R/Rcw1NUQt3BRVtBccrRjMLeS9f51US1+C/xnlnOTArEM3efvInxcr56oTLd8nfPoMOsOr
-	AVHIMW+XXF7XgdxKixOll4LxInzo7dmxE5KHs/VVdJQUECXFD7O9nFSr3VIEdyREPJVKDmfJcAQ
-	4=
-X-Gm-Gg: ASbGncvTd2oniKubqo5N3AJ6Q61Y+M3TOS+aYPvpM8+D/NiqSrhIPZj9N4K+mUXKbHi
-	ocJPc9DK8JtleWyf6w7EUlGBtqkQijKDXgYMkW+yIXDl9ZAzL3xPtwKDCahxVGuamCyzHIQ9uNd
-	ZwAuL07x88ZmdzvMYANhDPx4SgWFxTj4lA5LETGEUL2i2cMBpkMqXzlakCfOLCU+wpRmAqHbW2R
-	opv5mKi7ys70jjjdiqcboenUuqyUIAHketMUkywBDeZ/N6mPKUvP+SWxYLO4U9mquZ3ZNRX7ccg
-	tNugU92QQW66/Gbz/21f6LlBOfxZo6rVfjW9ECj3+fnjz74IBdvIuHsncd3HYjqs2Ql5AZbtLzl
-	8CHYuZDQ0QaX0Yf5A5NS3Wpuqxr5HuesvfQ==
-X-Received: by 2002:a05:620a:40cb:b0:8b2:e7db:253d with SMTP id af79cd13be357-8b33d210524mr2592964885a.38.1764178824432;
-        Wed, 26 Nov 2025 09:40:24 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE7nhci4TP1tVjsETA0tlWunV2qp6pDTsMykO36IvhVB1WF8317r9qgovKqAlWtXjv5oMmPIQ==
-X-Received: by 2002:a05:620a:40cb:b0:8b2:e7db:253d with SMTP id af79cd13be357-8b33d210524mr2592961085a.38.1764178824000;
-        Wed, 26 Nov 2025 09:40:24 -0800 (PST)
+        bh=JLI88Fy68vj0FHydbJ/LnweRpXCDXBC8BYlqjA1nmeY=;
+        b=IHZ/c0nTBHez2Wc9kb7wjO8z/SRuuUf4CTMIzgSBFsahjiXq5nUZw6gRek/p8Ms0ZL
+         v7J/Xi2CW8HkgNnANtyVw5NSUXTT4Vi3NmvG/r6PAwGgxYzTr+4cWB6DqUAMGi3ocxob
+         muxPh+Tm2Dg8DgnCkoCVrrd8l1Nlebk0+qq84svuUV3xmAf0UTLhOr7JdnWSojdRC5q4
+         oIWk3NyAy2akmWKunpeLDfVPZ/eQxTcm8mBdn0hkp5mEfTjMZEes+88HdZSdjB+vDcXx
+         uXIdbBN/wqOaqoSEe8JFG4RRBXIW4CPrlC0GIF1LsomyGzzv/eTlzFI57w00tnBiAM1m
+         4VrQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXOuPiv1pE8wuapTSaFt4Mu1vcjNNNKL/ySYrYnSLZXIa2Le4jaUS9tguxWtRBuW3BI+0e3Y5XBwA48RC284Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxCMDdPBjAw3yL9MoC6hcTMsi8fL92GY6evGD+JSKveRCxmksFb
+	EbtGAJ1lxf8pt7yAt62AF4662jKz4PPF42InQ8SpWJfbHvvvS2l+NNq2tSLe83KyQZ2avQgcAK0
+	Wl0ia4Bs8BD7XoQKst/RKdgbXW/QJAnSSgOmjM7wF4tDHY4PoWYHmLI4IGuza0zZ11pyXG9vAIv
+	M=
+X-Gm-Gg: ASbGnctkky41ZGmUTeV+SdmBzrl1zScLsQseSWQL5WS+JI3Ysx0gwuxZiDmjubF5IOr
+	MMgvbTzTlp9Q497uYuhOhAqsr2IgVoyOMu/r2lPDSLtdKgnXvKhJr69Qrk+SZRi1pzJZoOOudUv
+	gcKd/q2lJ1t+JPgovWW8EaXCGc8bSV4DZkifcR/8y4olMl075f28dlXOIXCCh3SbCAjVNbzHDXq
+	ZMaVvVBIiKpBH0Emz6Y/yoarN0poF6wXe+lMzI7cnfi7AupdASfBIzpvQu3wFK5IfYbS/Q7gUEs
+	Oi3aAXX6O7Hgj1PwDow47yTSLmDy8jKS9UKkvIG84DYKjLnV1fLObaJfLGPg3KbHjh2dV6q63Ge
+	rLPMuZ8BTU+i4royDEdnm+y1qbSWJ+d40cA==
+X-Received: by 2002:a05:620a:700b:b0:8b2:db27:4262 with SMTP id af79cd13be357-8b33d469984mr2447580085a.74.1764178820998;
+        Wed, 26 Nov 2025 09:40:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFgxrvUjv1L8Qqp5Ly7KuU6GITEy+qFYGTAMuG8yUfN6EMn37qZfVIiA/8CZ6KMq+7xblT3zA==
+X-Received: by 2002:a05:620a:700b:b0:8b2:db27:4262 with SMTP id af79cd13be357-8b33d469984mr2447575985a.74.1764178820475;
+        Wed, 26 Nov 2025 09:40:20 -0800 (PST)
 Received: from [127.0.1.1] ([178.197.219.123])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42cb7fd8e54sm43226430f8f.40.2025.11.26.09.40.22
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42cb7fd8e54sm43226430f8f.40.2025.11.26.09.40.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Nov 2025 09:40:23 -0800 (PST)
+        Wed, 26 Nov 2025 09:40:19 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Date: Wed, 26 Nov 2025 18:40:07 +0100
-Subject: [PATCH v2 3/8] regulator: bd71828: Constify pointers to
- 'regulator_desc' wrap struct
+Date: Wed, 26 Nov 2025 18:40:05 +0100
+Subject: [PATCH v2 1/8] regulator: Use container_of_const() when all types
+ are const
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251126-container-of-const-regulator-v2-3-7ad3408d6f29@oss.qualcomm.com>
+Message-Id: <20251126-container-of-const-regulator-v2-1-7ad3408d6f29@oss.qualcomm.com>
 References: <20251126-container-of-const-regulator-v2-0-7ad3408d6f29@oss.qualcomm.com>
 In-Reply-To: <20251126-container-of-const-regulator-v2-0-7ad3408d6f29@oss.qualcomm.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
@@ -110,48 +110,48 @@ Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
         linux-mediatek@lists.infradead.org, imx@lists.linux.dev,
         Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1097;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=8192;
  i=krzysztof.kozlowski@oss.qualcomm.com; h=from:subject:message-id;
- bh=DUpWNqruSQhmXQP3XRdoDV1aijYo/dZHk2b5HlvKVaY=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpJzt8B2DOoorWpIacFqRiKYdaRVgdvJIOyX1+J
- Z/akURM0yqJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaSc7fAAKCRDBN2bmhouD
- 160KD/4lnr6Qkpo/E3Y0Sgwj2Ollr93XBJuEN1ps3HH9wxcoQQnblBcZSKsFGRx7C1S9/eJ8A2i
- 13m0RTmbbs0eFI9KMsaVQsvkvXwSoLCj1Gq9nHlrGqFeJN2FA/h134L+cKM+3iuzBG8G7PKoYwz
- 3kfvYhIufwkCNbAR/yVzOW/K1rXiodaoCP9x81wb/5r4ifZWh0AQWTaB+5HCN7aYmEEpMOUqP6n
- PWd6U7hyaXNkiAFalQl+2GZzTVXjM8WZoIBRfMyvPNX4DK/ccf4BMmAL6GtBvxLFHkykmvE9YWV
- WmOPiddYFrVS8bqOZjHJ77yaNKPjgF7EGjqDUBfh5O78iGvB6gTiwddpvIYvFtxxBDdS6E5iB9D
- muz2wyodr8EfwWYArDy/U65P6DqOuaKjiuwKiiv9gfkKzvxHQO7sCmw/v7v97C1TLMzQ/0xSFef
- 68rPX3sHmknklQ7lGJW2obGQK3IQSBZ+GCBNcX2iC+3UOlJXrUxQqEuKd9vGAC/qbTeBwXH4ecm
- 3Bz+FxIqthvmhCBN71jhDdFKspfOHCYhZqiH5FIKPWn7XrsRaRNA3np8IpAHFaDDtP8n3d6NwLs
- XQJhF5LotKfRzuMhFVTWaFUMh4t2iGJuGo60n8Q8hVc2ilpTp8/OzvLEd1hEDbu+ho2PUy6mYYq
- 6QhNbv9iLln2yOA==
+ bh=U43YtcHpntkrCP9ocMS7I2vJE2/QxslbHKdrzw9qWsk=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpJzt68w5EN9ZnwGt1+nnfONVEK5b/pP2uSwOUj
+ +R+gfl30iOJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaSc7egAKCRDBN2bmhouD
+ 14DUD/9GDZY/BGcJN5fJwbIt8KBO50Zvvu3MGbl6ps2SMhhE4/fcSimXlgCtPW1JuNC4OZz40MQ
+ 91cKFWG4uvhsNWiI6lkxzKr/57Jg6PMtDBHOTxIhn9OLDa3hOqftufyWUAD6FOrK7npVd7Lvc2g
+ kEsw8Wtu/LCt/qUvkMSMNdzhr6OjynagBdWBjSNWv2RMgbucSHk6U8SbK5+oKXIJnnN0b3H05uM
+ E/Z67qDfAG53irxS88P3LH0RNiRUAGCKPZ/XOO8FlWjKjlBqX9SDMNCqVWH7OO8ZHyTHtgSOD8A
+ CfXoWzhYMQZvpN2Bi4pGUNqAqKZAYuALqB6TLEMmH6InA7M4moUOGcvzLoTU/egz6sBLyI3MmU8
+ Y9OBwAauqzQ7gFvZ+FfEcYbqYHClcEgEISU+cz1/ABq1Zh+PqDxl3pjZw/6YB5IZaMj9juzT/9B
+ cu9enEWaDT95j4tw41tZnPfBjcpsxQytQcSUQ67KidiCq/pvZKYR87T765Miiy50ZzORHcbMJnA
+ ylQ6VEs9i+C9qJfuyU2pArE5hx3vKZ2wpQPJbe0DPUmLGWuL0V9V5RsvZFcLhOLRwGo5GR4uuMz
+ QS3P34ZzExhBWJsA9GRwJVgTpt2xGDbSIB1fXDUOpRd1IKqeEwTyUclbct67aVIHaqpiUT966aa
+ AD2y65T2pvfNdjA==
 X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
-X-Proofpoint-ORIG-GUID: 49tXmSCo-N3Tre2cPhmTYe_MweVn1R7J
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTI2MDE0NCBTYWx0ZWRfXySg9wQQAMW6D
- 6I5C557tni5YvlMGt87XuYwAFW2w4Bbm18KW70CUlrWs/cXDF7J1/TEzmOTW6zponRmPu7Xbm/K
- ARiHDf7/tDOSBbvTHJeoNBdcyD9FyNXiibI45tOiw+t3y4iscw9+1C5XuFBB5xkrGuuEI1KGuv+
- 5ghflcEfIJaOx9Hn5BBsstB43uQlM8fFloBoTlfO2AybreSHHcXB8lsu2bLz9Cec3c47ppWhEIw
- E8/w2aw687eicZk9tcuPzqtHMgbnLln+WvcJnOpuF8ZuHoNhVPzcJgN/JGjd9JQW4h6Gc7XNuTL
- nWtzAl3DrQbG//eaFjL2cO7IfhWC2RWrxMPev0pkrMQ9VdST2jHTUEDlgt1KAsrV3suQGGUnfnb
- k8iLw0BCH6Uhj8REHCeggZqBV8uEVQ==
-X-Proofpoint-GUID: 49tXmSCo-N3Tre2cPhmTYe_MweVn1R7J
-X-Authority-Analysis: v=2.4 cv=bZBmkePB c=1 sm=1 tr=0 ts=69273b89 cx=c_pps
- a=50t2pK5VMbmlHzFWWp8p/g==:117 a=Iax6wTeSMpqzYiZSKl48GQ==:17
+X-Authority-Analysis: v=2.4 cv=AKyLkLWT c=1 sm=1 tr=0 ts=69273b86 cx=c_pps
+ a=qKBjSQ1v91RyAK45QCPf5w==:117 a=Iax6wTeSMpqzYiZSKl48GQ==:17
  a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=EUspDBNiAAAA:8 a=9MRJ1adic_HRPEocbcUA:9
- a=QEXdDO2ut3YA:10 a=IoWCM6iH3mJn3m4BftBB:22
+ a=VkNPw1HP01LnGYTKEx00:22 a=EUspDBNiAAAA:8 a=vouig9Kt115S9qvWE1EA:9
+ a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTI2MDE0NCBTYWx0ZWRfX25VlHPCYNaD4
+ dXHqtky+3kYDCH6lD5tCFZf5+owtZ6R8FPAOzgjBqBBmXZ8pkIBg33+haiqxBvDiZ0HvUKY34KT
+ BPmeqj/ewsN9yF6hgiqkAcxz0G/BmuH7BrfQ1/nrkvaWtiIIc5ZwRw5lYKKXOVCYN1yu951nAbp
+ OTPintw5wxg+dUfvs3SHHyQtinAIpqd4TnayQNhvdmsxHFh0j8V6RMNabdn0ypAxxk/k04CF5Gm
+ 2+BGEHfV6Fd9NEKhd+k2rthmiMlJrUwmFL0isHSLfj34MOX/mxJgtXPjmryC7uIPu/zgXB57/Oe
+ Q35w/otIwyNqPYAuHypxT3OHwu6VWtidVonV2qL4t9JsYPrrEukQrMbc63D9D3MlOr6CAm8OHir
+ IQbuRPpw+5cCic4orMkY+16L1iJtnw==
+X-Proofpoint-GUID: XZkW4JY-_f9KONrwQ06TFf7lZK0N98t3
+X-Proofpoint-ORIG-GUID: XZkW4JY-_f9KONrwQ06TFf7lZK0N98t3
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2025-11-25_02,2025-11-26_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 spamscore=0 clxscore=1015 priorityscore=1501 adultscore=0
- phishscore=0 lowpriorityscore=0 suspectscore=0 bulkscore=0 malwarescore=0
+ phishscore=0 bulkscore=0 clxscore=1015 spamscore=0 lowpriorityscore=0
+ priorityscore=1501 suspectscore=0 adultscore=0 malwarescore=0 impostorscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2511260144
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251126_094025_906514_E80E2316 
-X-CRM114-Status: GOOD (  15.50  )
+X-CRM114-CacheID: sfid-20251126_094022_581741_E870C341 
+X-CRM114-Status: GOOD (  16.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,31 +166,183 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Pointer to 'struct regulator_desc' is a pointer to const and the
-wrapping structure (container) is not being modified, thus entire syntax
-can be replaced to preferred and safer container_of_const().
+Use container_of_const(), which is preferred over container_of(), when
+the argument 'ptr' and returned pointer are already const, for better
+code safety and readability.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
- drivers/regulator/bd71828-regulator.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/regulator/hi6421-regulator.c     | 10 +++++-----
+ drivers/regulator/hi6421v530-regulator.c |  4 ++--
+ drivers/regulator/hi6421v600-regulator.c |  6 +++---
+ drivers/regulator/max77650-regulator.c   |  6 +++---
+ drivers/regulator/mt6315-regulator.c     |  6 +++---
+ 5 files changed, 16 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/regulator/bd71828-regulator.c b/drivers/regulator/bd71828-regulator.c
-index dd871ffe979c..87de87793fa1 100644
---- a/drivers/regulator/bd71828-regulator.c
-+++ b/drivers/regulator/bd71828-regulator.c
-@@ -95,9 +95,9 @@ static int buck_set_hw_dvs_levels(struct device_node *np,
- 				  const struct regulator_desc *desc,
- 				  struct regulator_config *cfg)
+diff --git a/drivers/regulator/hi6421-regulator.c b/drivers/regulator/hi6421-regulator.c
+index 69d24728d6a4..cd06030c3587 100644
+--- a/drivers/regulator/hi6421-regulator.c
++++ b/drivers/regulator/hi6421-regulator.c
+@@ -387,7 +387,7 @@ static unsigned int hi6421_regulator_ldo_get_mode(struct regulator_dev *rdev)
+ 	const struct hi6421_regulator_info *info;
+ 	unsigned int reg_val;
+ 
+-	info = container_of(rdev->desc, struct hi6421_regulator_info, desc);
++	info = container_of_const(rdev->desc, struct hi6421_regulator_info, desc);
+ 	regmap_read(rdev->regmap, rdev->desc->enable_reg, &reg_val);
+ 	if (reg_val & info->mode_mask)
+ 		return REGULATOR_MODE_IDLE;
+@@ -400,7 +400,7 @@ static unsigned int hi6421_regulator_buck_get_mode(struct regulator_dev *rdev)
+ 	const struct hi6421_regulator_info *info;
+ 	unsigned int reg_val;
+ 
+-	info = container_of(rdev->desc, struct hi6421_regulator_info, desc);
++	info = container_of_const(rdev->desc, struct hi6421_regulator_info, desc);
+ 	regmap_read(rdev->regmap, rdev->desc->enable_reg, &reg_val);
+ 	if (reg_val & info->mode_mask)
+ 		return REGULATOR_MODE_STANDBY;
+@@ -414,7 +414,7 @@ static int hi6421_regulator_ldo_set_mode(struct regulator_dev *rdev,
+ 	const struct hi6421_regulator_info *info;
+ 	unsigned int new_mode;
+ 
+-	info = container_of(rdev->desc, struct hi6421_regulator_info, desc);
++	info = container_of_const(rdev->desc, struct hi6421_regulator_info, desc);
+ 	switch (mode) {
+ 	case REGULATOR_MODE_NORMAL:
+ 		new_mode = 0;
+@@ -439,7 +439,7 @@ static int hi6421_regulator_buck_set_mode(struct regulator_dev *rdev,
+ 	const struct hi6421_regulator_info *info;
+ 	unsigned int new_mode;
+ 
+-	info = container_of(rdev->desc, struct hi6421_regulator_info, desc);
++	info = container_of_const(rdev->desc, struct hi6421_regulator_info, desc);
+ 	switch (mode) {
+ 	case REGULATOR_MODE_NORMAL:
+ 		new_mode = 0;
+@@ -464,7 +464,7 @@ hi6421_regulator_ldo_get_optimum_mode(struct regulator_dev *rdev,
  {
--	struct bd71828_regulator_data *data;
-+	const struct bd71828_regulator_data *data;
+ 	const struct hi6421_regulator_info *info;
  
--	data = container_of(desc, struct bd71828_regulator_data, desc);
-+	data = container_of_const(desc, struct bd71828_regulator_data, desc);
+-	info = container_of(rdev->desc, struct hi6421_regulator_info, desc);
++	info = container_of_const(rdev->desc, struct hi6421_regulator_info, desc);
  
- 	return rohm_regulator_set_dvs_levels(&data->dvs, np, desc, cfg->regmap);
- }
+ 	if (load_uA > info->eco_microamp)
+ 		return REGULATOR_MODE_NORMAL;
+diff --git a/drivers/regulator/hi6421v530-regulator.c b/drivers/regulator/hi6421v530-regulator.c
+index b3ebd1624814..1822f5daf6ce 100644
+--- a/drivers/regulator/hi6421v530-regulator.c
++++ b/drivers/regulator/hi6421v530-regulator.c
+@@ -110,7 +110,7 @@ static unsigned int hi6421v530_regulator_ldo_get_mode(
+ 	const struct hi6421v530_regulator_info *info;
+ 	unsigned int reg_val;
+ 
+-	info = container_of(rdev->desc, struct hi6421v530_regulator_info, rdesc);
++	info = container_of_const(rdev->desc, struct hi6421v530_regulator_info, rdesc);
+ 	regmap_read(rdev->regmap, rdev->desc->enable_reg, &reg_val);
+ 
+ 	if (reg_val & (info->mode_mask))
+@@ -125,7 +125,7 @@ static int hi6421v530_regulator_ldo_set_mode(struct regulator_dev *rdev,
+ 	const struct hi6421v530_regulator_info *info;
+ 	unsigned int new_mode;
+ 
+-	info = container_of(rdev->desc, struct hi6421v530_regulator_info, rdesc);
++	info = container_of_const(rdev->desc, struct hi6421v530_regulator_info, rdesc);
+ 	switch (mode) {
+ 	case REGULATOR_MODE_NORMAL:
+ 		new_mode = 0;
+diff --git a/drivers/regulator/hi6421v600-regulator.c b/drivers/regulator/hi6421v600-regulator.c
+index e5f6fbfc9016..e7c8bc10cf24 100644
+--- a/drivers/regulator/hi6421v600-regulator.c
++++ b/drivers/regulator/hi6421v600-regulator.c
+@@ -121,7 +121,7 @@ static unsigned int hi6421_spmi_regulator_get_mode(struct regulator_dev *rdev)
+ 	const struct hi6421_spmi_reg_info *sreg;
+ 	unsigned int reg_val;
+ 
+-	sreg = container_of(rdev->desc, struct hi6421_spmi_reg_info, desc);
++	sreg = container_of_const(rdev->desc, struct hi6421_spmi_reg_info, desc);
+ 	regmap_read(rdev->regmap, rdev->desc->enable_reg, &reg_val);
+ 
+ 	if (reg_val & sreg->eco_mode_mask)
+@@ -136,7 +136,7 @@ static int hi6421_spmi_regulator_set_mode(struct regulator_dev *rdev,
+ 	const struct hi6421_spmi_reg_info *sreg;
+ 	unsigned int val;
+ 
+-	sreg = container_of(rdev->desc, struct hi6421_spmi_reg_info, desc);
++	sreg = container_of_const(rdev->desc, struct hi6421_spmi_reg_info, desc);
+ 	switch (mode) {
+ 	case REGULATOR_MODE_NORMAL:
+ 		val = 0;
+@@ -162,7 +162,7 @@ hi6421_spmi_regulator_get_optimum_mode(struct regulator_dev *rdev,
+ {
+ 	const struct hi6421_spmi_reg_info *sreg;
+ 
+-	sreg = container_of(rdev->desc, struct hi6421_spmi_reg_info, desc);
++	sreg = container_of_const(rdev->desc, struct hi6421_spmi_reg_info, desc);
+ 
+ 	if (!sreg->eco_uA || ((unsigned int)load_uA > sreg->eco_uA))
+ 		return REGULATOR_MODE_NORMAL;
+diff --git a/drivers/regulator/max77650-regulator.c b/drivers/regulator/max77650-regulator.c
+index 7368f54f046d..a809264c77fc 100644
+--- a/drivers/regulator/max77650-regulator.c
++++ b/drivers/regulator/max77650-regulator.c
+@@ -68,7 +68,7 @@ static int max77650_regulator_is_enabled(struct regulator_dev *rdev)
+ 	struct regmap *map;
+ 	int val, rv, en;
+ 
+-	rdesc = container_of(rdev->desc, struct max77650_regulator_desc, desc);
++	rdesc = container_of_const(rdev->desc, struct max77650_regulator_desc, desc);
+ 	map = rdev_get_regmap(rdev);
+ 
+ 	rv = regmap_read(map, rdesc->regB, &val);
+@@ -85,7 +85,7 @@ static int max77650_regulator_enable(struct regulator_dev *rdev)
+ 	const struct max77650_regulator_desc *rdesc;
+ 	struct regmap *map;
+ 
+-	rdesc = container_of(rdev->desc, struct max77650_regulator_desc, desc);
++	rdesc = container_of_const(rdev->desc, struct max77650_regulator_desc, desc);
+ 	map = rdev_get_regmap(rdev);
+ 
+ 	return regmap_update_bits(map, rdesc->regB,
+@@ -98,7 +98,7 @@ static int max77650_regulator_disable(struct regulator_dev *rdev)
+ 	const struct max77650_regulator_desc *rdesc;
+ 	struct regmap *map;
+ 
+-	rdesc = container_of(rdev->desc, struct max77650_regulator_desc, desc);
++	rdesc = container_of_const(rdev->desc, struct max77650_regulator_desc, desc);
+ 	map = rdev_get_regmap(rdev);
+ 
+ 	return regmap_update_bits(map, rdesc->regB,
+diff --git a/drivers/regulator/mt6315-regulator.c b/drivers/regulator/mt6315-regulator.c
+index 2608a6652d77..d3f93aae0fc5 100644
+--- a/drivers/regulator/mt6315-regulator.c
++++ b/drivers/regulator/mt6315-regulator.c
+@@ -80,7 +80,7 @@ static unsigned int mt6315_regulator_get_mode(struct regulator_dev *rdev)
+ 	int ret, regval;
+ 	u32 modeset_mask;
+ 
+-	info = container_of(rdev->desc, struct mt6315_regulator_info, desc);
++	info = container_of_const(rdev->desc, struct mt6315_regulator_info, desc);
+ 	modeset_mask = init->modeset_mask[rdev_get_id(rdev)];
+ 	ret = regmap_read(rdev->regmap, MT6315_BUCK_TOP_4PHASE_ANA_CON42, &regval);
+ 	if (ret != 0) {
+@@ -111,7 +111,7 @@ static int mt6315_regulator_set_mode(struct regulator_dev *rdev,
+ 	int ret, val, curr_mode;
+ 	u32 modeset_mask;
+ 
+-	info = container_of(rdev->desc, struct mt6315_regulator_info, desc);
++	info = container_of_const(rdev->desc, struct mt6315_regulator_info, desc);
+ 	modeset_mask = init->modeset_mask[rdev_get_id(rdev)];
+ 	curr_mode = mt6315_regulator_get_mode(rdev);
+ 	switch (mode) {
+@@ -165,7 +165,7 @@ static int mt6315_get_status(struct regulator_dev *rdev)
+ 	int ret;
+ 	u32 regval;
+ 
+-	info = container_of(rdev->desc, struct mt6315_regulator_info, desc);
++	info = container_of_const(rdev->desc, struct mt6315_regulator_info, desc);
+ 	ret = regmap_read(rdev->regmap, info->status_reg, &regval);
+ 	if (ret < 0) {
+ 		dev_err(&rdev->dev, "Failed to get enable reg: %d\n", ret);
 
 -- 
 2.48.1
