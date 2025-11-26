@@ -4,86 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1967BD10F5A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Nov 2025 14:25:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F2A1D10F58
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Nov 2025 14:52:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Sbs0A8qAYuq+r/+1fjxriavvnUhEfhMgY7SBF5X8V08=; b=YpcyM6qMzOeRek6zBbyuYhock4
-	s7TONxh6chb3fr+aDCB5GtJvpbnyVxb4tis6QwfTRf//8/mLHcQjagPmeqQC5zXoUKUI2JEveXsq6
-	T+T+jJjWmVVrNvmmwinbaA0ROqaSJiDEPyApOEQiPFZpNQsIAL9Vzoh4t9P67cJiw0L54aipp+kQg
-	7OI0rTg9TFU5u6i3VF9NstJku5dUoavyoKZ4wQGAiDv2EfQCSntb0DAxhzu/Z2+kjZGjzHt5rgHtD
-	YZldnD0XogeF+c+cSNPpQC9Rc/ayWlKdgfMeNuAapyB+oSnBInRv7LF+rozijhJMsVQ1xUzCzHCB5
-	LbVLNFKQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tB73pe6/NtX8eM3PTQbggN9wppvlKOL9jZo7eXvreFA=; b=pmPCfdo3+M0rX4I5RYatAyUe4j
+	+biXlH8m4iQx6HfQ0dDiUWCzmPMV2ebbW9ymkUN8JIB3W/C8FnoyETauVPAhOLvv2qgZtEVoIN+0c
+	bDPTBhO0JHAqjTbd9AQjQcNQTuzuVbMrUSef8fZDHQUbtZxwEXX2W/AwQVoo2TvUSa2hgO+G77bi5
+	a5TzBTY1gkt0Ncq4lTttqC+BkLFF0XFdw8mpBDwR9NqcjTOGpAMykpRIRiLsJj7pkXszufrvu5+zf
+	n0ROAf80KYP/64/Lo6NWPgrxRLLpN3fQrk+1OA/RMgNFd+5OFsFLvpgXS7Xbfh8s8zlZh2V/IGCGI
+	FlgI9TYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOGSN-0000000F6nb-3M37;
-	Wed, 26 Nov 2025 14:25:19 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1vOGsl-0000000F8Wa-32eM;
+	Wed, 26 Nov 2025 14:52:35 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOGSK-0000000F6mN-2ELA
+	id 1vOGsj-0000000F8VS-2tMp
 	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Nov 2025 14:25:18 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 8725A4E418F3;
-	Wed, 26 Nov 2025 14:25:12 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 578AB60721;
-	Wed, 26 Nov 2025 14:25:12 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 64B5A102F08EF;
-	Wed, 26 Nov 2025 15:25:01 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1764167111; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=Sbs0A8qAYuq+r/+1fjxriavvnUhEfhMgY7SBF5X8V08=;
-	b=k0ooTJYIYW0FYBMVhrgVBpA7A6kXMyqERAgQSrzwOurSlWfmkbqR/cAmccU11VWLC5YJEI
-	n6WrPplsAi0/qCeWTP5rC5r6OVtJarSahnvu8/ytGNtL2IhjV2o4qcZLK1BKZ9REOhbIne
-	GpHwbaHF7/xV6QP11Em8OqvJQxr/vpKrq/B/xhMU6iRCotsKbsvezuDAlSdbcWdLA7WkHY
-	PgHtTABkVp75O1gL9djdWOv4/kvWgJGTXQQtoWevSW4VHF0gnednfaSxWzHACT5hKJnynF
-	DcFAau2f9LPmwhjE9ZTrqGuSx7982EfRtb9Sv1Y9Gy4TO0KRoTFUYh71zTNEkA==
-Message-ID: <9c2518d8-a0ea-46ba-9069-999c2574cd24@bootlin.com>
-Date: Wed, 26 Nov 2025 15:25:00 +0100
+	Wed, 26 Nov 2025 14:52:34 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-477ba2c1ca2so72107685e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 06:52:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1764168751; x=1764773551; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tB73pe6/NtX8eM3PTQbggN9wppvlKOL9jZo7eXvreFA=;
+        b=fJn2fT0sCo4uSSlYF/5HhQ2q0geZc7kxcQDKwPD8OL9CqOHvMJ5mew3suUuyVWWNIS
+         9pjMjl3+MmHzW1arMqyKnS5JQeQF4w/unPH73stsZ4FG8SztnODf7UDl1n36lWbkB7Vp
+         z8YeJx3R93g5AtP4iSLhnGA9NfIV4330WSG0MSNJZZeyKeQ9zUG6Yqnv+EVIKeEjkKBW
+         enMc5UuYsIIN/lcD8CaKF5AUpg/WQdDanbxOdsWYaymitO5BVYOBeFoBRj+/b8qwc7Zp
+         VAOIGYouuO2DUTG+AHuma47O8t8ceHmGQT+XXt065w5cZxKEaoyTMICVIq8+MVFFdfF9
+         b79A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764168751; x=1764773551;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=tB73pe6/NtX8eM3PTQbggN9wppvlKOL9jZo7eXvreFA=;
+        b=OrszsWBO9lOjT43FVQ7m67XxxqvcYD6BcZph7rU4Mty+l5UmhzWS8dyvDKQO2evcTm
+         YgVxTth3K4AURsK5o6ljqro9tLFIALgj3djgUBdOD4WAnJ2UYZ/ZukdmtgR8YkjKiW9T
+         LZo8l/Z7HL5n+jcM9HUOCPf0E++LN4++tXZ032AHOimg90Mo0YrfHZ46F61mYTk9MIRB
+         4BYVbPYXbTsQwg3xo1x6Mi1UYw+EscgpgA8NAkDqgir4l7UZlTYblFysXFBqOXP1g8Dg
+         XKjo9jqarLLJ+AjAw/11FBnH2zkcPQAFGeF9O+3r8Dw6Rx9S8WVGztuFEJDBZ9a5UOOl
+         g4Sw==
+X-Forwarded-Encrypted: i=1; AJvYcCX88fJ2sm3MYrSAMMa0cCCO+sEIvrPC7eZeJINCCdgIL6qZJTMdIcCIkqsJOGxpKpJgREovmJNShDgHF5SgFQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwjWIjSIUWcsDWq0HRlesTqrIDvoS3UVDh31kTsAY1qiUAqdZKc
+	EZSYtEYdTb1A3P0xYazhCKFAVdw5bgQkknPsEBd3IYGWVgX4g7fhjz9uctncPPNKFtk=
+X-Gm-Gg: ASbGnctoY+8gELv2QvPMSnTAl3riKUSnK0YMaGwtsCBnKXT0dQtKffxkhivo1S4Io+t
+	3c1eJUIsn4zH4d9WIj6ghO+RnbfJNqwMH0rdZxeB8MwHhhztEnjpOdqrhWaP5jrqSOzsmHDoxLz
+	sH2JpKqG/IBh7xxWuHjDPP7Ua6rYf0H734IbxHli3RO/Zf3koexC3Msv1lh+qCRu4WKgRbHyVi8
+	uorGGRbAup2yMWrebMC/B90bsKD7MlmKxsIKgHgbI/L5TSz1gmIc2zuFZfSAmhxA6kEJA+bhu1v
+	GEyKoMgqBrSqPxIMIAvOBJTk1QFo3e2zvKsjzT801oiqHmcOmxH/ivFh1sDn9NDw/yhGSIxffwp
+	BTl8fEj9AWuWjfQhx7kcApgECMhxP0D9/8Po95O8sqx6QnL27jOILkqnG0GczN5TaqPGeyXx3sK
+	Vw9VAiQKMoiSaT87E=
+X-Google-Smtp-Source: AGHT+IGCLmd8tRJyaKxnoPAOY3teB1a8/mQwQE4e51HEL7L4ZyHqrgXF4lwoEPkRwuQbHk3YrwrBYw==
+X-Received: by 2002:a05:600c:8b37:b0:477:9cc3:7971 with SMTP id 5b1f17b1804b1-47904b1ac02mr55156645e9.20.1764168751196;
+        Wed, 26 Nov 2025 06:52:31 -0800 (PST)
+Received: from localhost ([41.210.159.101])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-42cb7f2e454sm40974088f8f.2.2025.11.26.06.52.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 Nov 2025 06:52:30 -0800 (PST)
+Date: Wed, 26 Nov 2025 17:52:26 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Cyril Chao <Cyril.Chao@mediatek.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH] ASoC: mediatek: mt8189: remove unnecessary NULL check
+Message-ID: <aScUKqCEhSIZoOmg@stanley.mountain>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 1/9] dt-bindings: phy: rename
- transmit-amplitude.yaml to phy-common-props.yaml
-To: Vladimir Oltean <vladimir.oltean@nxp.com>, Andrew Lunn <andrew@lunn.ch>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Daniel Golle <daniel@makrotopia.org>,
- Horatiu Vultur <horatiu.vultur@microchip.com>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Eric Woudstra <ericwouds@gmail.com>, =?UTF-8?B?TWFyZWsgQmVo4oia4oirbg==?=
- <kabel@kernel.org>, Lee Jones <lee@kernel.org>,
- Patrice Chotard <patrice.chotard@foss.st.com>,
- Holger Brunck <holger.brunck@hitachienergy.com>
-References: <20251122193341.332324-1-vladimir.oltean@nxp.com>
- <20251122193341.332324-2-vladimir.oltean@nxp.com>
- <0faccdb7-0934-4543-9b7f-a655a632fa86@lunn.ch>
- <20251125214450.qeljlyt3d27zclfr@skbuf>
- <b4597333-e485-426d-975e-3082895e09f6@lunn.ch>
- <20251126072638.wqwbhhab3afxvm7x@skbuf>
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Content-Language: en-US
-In-Reply-To: <20251126072638.wqwbhhab3afxvm7x@skbuf>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251126_062516_715720_EA0B1C53 
-X-CRM114-Status: GOOD (  24.63  )
+X-CRM114-CacheID: sfid-20251126_065233_748004_170CA3D4 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,56 +102,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Smatch complains that the call to snd_soc_component_get_drvdata(component)
+will dereference "component" so this NULL check is too late.  The probe()
+function will never be called with a NULL component pointer so just
+delete the check.
 
-On 26/11/2025 08:26, Vladimir Oltean wrote:
-> +Maxime, Holger
-> thread at https://lore.kernel.org/netdev/20251122193341.332324-2-vladimir.oltean@nxp.com/
-> 
-> On Tue, Nov 25, 2025 at 11:33:09PM +0100, Andrew Lunn wrote:
->>> Yeah, although as things currently stand, I'd say that is the lesser of
->>> problems. The only user (mv88e6xxx) does something strange: it says it
->>> wants to configure the TX amplitude of SerDes ports, but instead follows
->>> the phy-handle and applies the amplitude specified in that node.
->>>
->>> I tried to mentally follow how things would work in 2 cases:
->>> 1. PHY referenced by phy-handle is internal, then by definition it's not
->>>    a SerDes port.
->>> 2. PHY referenced by phy-handle is external, then the mv88e6xxx driver
->>>    looks at what is essentially a device tree description of the PHY's
->>>    TX, and applies that as a mirror image to the local SerDes' TX.
->>>
->>> I think the logic is used in mv88e6xxx through case #2, i.e. we
->>> externalize the mv88e6xxx SerDes electrical properties to an unrelated
->>> OF node, the connected Ethernet PHY.
->>
->> My understanding of the code is the same, #2. Although i would
->> probably not say it is an unrelated node. I expect the PHY is on the
->> other end of the SERDES link which is having the TX amplitudes
->> set. This clearly will not work if there is an SFP cage on the other
->> end, but it does for an SGMII PHY.
-> 
-> It is unrelated in the sense that the SGMII PHY is a different kernel
-> object, and the mv88e6xxx is polluting its OF node with properties which
-> it then interprets as its own, when the PHY driver may have wanted to
-> configure its SGMII TX amplitude too, via those same generic properties.
-> 
->> I guess this code is from before the time Russell converted the
->> mv88e6xxx SERDES code into PCS drivers. The register being set is
->> within the PCS register set.  The mv88e6xxx also does not make use of
->> generic phys to represent the SERDES part of the PCS. So there is no
->> phys phandle to follow since there is no phy.
-> 
-> In my view, the phy-common-props.yaml are supposed to be applicable to either:
-> (1) a network PHY with SerDes host-side connection (I suppose the media
->     side electrical properties would be covered by Maxime's phy_port
->     work - Maxime, please confirm).
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+---
+ sound/soc/mediatek/mt8189/mt8189-afe-pcm.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
-True, but we could definitely conceive applying phy-common-props.yaml on
-the media-side as well :) I don't have a use-case for it right now
-though, and we don't yet have detailed descriptions of the electrical
-properties.
-
-Maxime
+diff --git a/sound/soc/mediatek/mt8189/mt8189-afe-pcm.c b/sound/soc/mediatek/mt8189/mt8189-afe-pcm.c
+index dcee8e11eca8..166ece74270e 100644
+--- a/sound/soc/mediatek/mt8189/mt8189-afe-pcm.c
++++ b/sound/soc/mediatek/mt8189/mt8189-afe-pcm.c
+@@ -2352,12 +2352,10 @@ static int mt8189_afe_component_probe(struct snd_soc_component *component)
+ {
+ 	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
+ 
+-	if (component) {
+-		/* enable clock for regcache get default value from hw */
+-		pm_runtime_get_sync(afe->dev);
+-		mtk_afe_add_sub_dai_control(component);
+-		pm_runtime_put_sync(afe->dev);
+-	}
++	/* enable clock for regcache get default value from hw */
++	pm_runtime_get_sync(afe->dev);
++	mtk_afe_add_sub_dai_control(component);
++	pm_runtime_put_sync(afe->dev);
+ 
+ 	return 0;
+ }
+-- 
+2.51.0
 
 
