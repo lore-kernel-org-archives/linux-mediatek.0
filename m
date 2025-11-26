@@ -4,170 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A28E7D1118F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Nov 2025 16:59:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34E37D1118A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Nov 2025 17:15:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+CNzxCmRqCkzPCZPo7wdwLbBBFP1ERFX65HRTQOL9Xw=; b=Svvg9msDZqAOQFgJW7ZEEDgVHa
-	mnGEwrOyZ3p1zMEYFOEr/tlVkLyL5CpK6/x7zzYGfZRf75GlrK+gPeC/uvPkEUsEiZMY+KE84KSpX
-	f9MD3d7SB8Ta/ULBqmagH8xYrwMIH1t02d359DgHzUvWDaTxLOtXQFp8BFO2OQ/G+kW32KN1ykZeQ
-	GZ6aq0BEYO40MTkMzGzYZ1b0YoIsXFLm94959j4y/hWcNYg0spPjDHhvZsYxI+Q0Mc0Pkn0EgWN3S
-	pwPL3s20ni4gVHIJwIdCU2Z5uKqWQyd84TPnBJA30ae1sZDQ0obefBH+DutdBrrIZHSrIaAAMpwn4
-	NLHT1kaQ==;
+	bh=/lfm4X4CU5cUE0t2Goov7FwMFpqKv5wELRxHh6zuc9s=; b=31carkDg1QPl2bj/5NuN2QjGXq
+	IngbDfvFSCA92bPc7zzSZ9yVP6UsUQUBXZinxpYgEqjp+/iZsQ7RGUuXcYNkX93Ug8zIlXXJxUHgP
+	7/S2qOy8PnO2ekfD0mPRUozA0QH7paQ5lu4tnibhWwmOClbk17SWP2hZegjoxNyTStxLUVO1T/2tP
+	5mxk0Et+Q1PBIEfEP5OngXQpgFLt0r+X2hIY4HO789QNTh+vnq1Iz5aO/zHmZ2szIlf1boIZ30Vqq
+	cCwCOGirv24pXG9xjdeKwPT43Sk4veo35B8A7AO/RMmT/6ix/cXHoAu5fzicjZA873X+VNB5lBfsd
+	0S7qaKag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOIra-0000000FLTU-0P9Y;
-	Wed, 26 Nov 2025 16:59:30 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vOJ7D-0000000FNUo-3xUp;
+	Wed, 26 Nov 2025 17:15:39 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOIrU-0000000FLL6-2Mai
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 26 Nov 2025 16:59:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=+CNzxCmRqCkzPCZPo7wdwLbBBFP1ERFX65HRTQOL9Xw=; b=EjkPr/L+SgzrPq16ZZRd7c61OI
-	N2yuwFCL16Gv1P0W7yd7+rMnaIV8SUKd4WoNdT9zkaJT/md9eD13oyZWX3pJDLUE3Ag49BXhLo/vu
-	g8ZrwsVLDM8Qejr4Mt7lYhlOv1vbxzC6yODjdKGssv9rS4g7KwElTBzlN8tjBPyhnfVIrB8CGamk1
-	xEpvJdENWysYgsw+Q7RZjyrPWo6+2iTJm4XIAnHf3WCD4BlezdE2lyvlI6VIQGqpRTVDxpPtRZf78
-	nkKyTUNEzD5wIobW9NMBJWpee5ESSdAkVBJ89Gadc7qI3kiN3tUG2h/2BIf1yqyrNP8Dd8ZrqiS2j
-	ZxXwFOKw==;
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOHzq-00000008S7d-3XKN
+	id 1vOJ7B-0000000FNTd-24y5
 	for linux-mediatek@lists.infradead.org;
-	Wed, 26 Nov 2025 16:04:00 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5AQAslDZ1700325
-	for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 16:59:19 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	+CNzxCmRqCkzPCZPo7wdwLbBBFP1ERFX65HRTQOL9Xw=; b=NiTDr1F/7VsrM3ga
-	xeDmYRK858JyNr1fY8dbQey34eJhZcxDLWjsahnqZd/ctVMO7+d2608wWkQGg0xo
-	QY8u+OO0fjhuibpI9TFV18miyoVxTjKs1KfpOBeQ4/PjAQxLnWP2u6MHHsal8Sdg
-	9lwN0R1lAqQQJIWaQwXYANN4180sa+g5w6EOUuagt8i+bSrLHU5X41kHSbd8qLrL
-	0HVrbzSGY/svR/M5GRTT4tbTxkNJ49HiOl/CGApxZbwqIl8nrMPRkdmyKao5g9ge
-	KHjzfgCEryf+ewWpGvzxWdXRxFX9pYXn166VPVjvmKlkFO6BG6IbnDspk4Gsa8nn
-	rixK5g==
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com [209.85.160.199])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ap07a0yu3-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 16:59:19 +0000 (GMT)
-Received: by mail-qt1-f199.google.com with SMTP id d75a77b69052e-4edaf9e48ecso1396331cf.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 08:59:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1764176359; x=1764781159; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+CNzxCmRqCkzPCZPo7wdwLbBBFP1ERFX65HRTQOL9Xw=;
-        b=OlQntjYR/LND1nAi9APMD/6j/OGAWgCHS/oLk7I9vGv1lh1cTl7/14LIe8+YQ71COa
-         /jl1FF/kPFTEgmY5DkhTMVvZEAvXdVyuWXQY8Wjk7fNHUN2c070b7AM6G2WDxvoWNf/9
-         o98E0bOPnmDGITISW2kVZdlUxz9+0DBzWFRTaxAR9DNCkCjci9ReGccCsblRGp42rkO+
-         G9Hc/s5/ex38n9NzHrbVeKJu2FEAktcN365mNUr9k+hM6BuhadO4dgQIy5I4rs/yirWm
-         bFbyzYxF+9iBzYrss4xEECWIMGEUpRuI+HddQjMF7x89GzWjSZ7/o60yr4RdPP1TZnB7
-         Um6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764176359; x=1764781159;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=+CNzxCmRqCkzPCZPo7wdwLbBBFP1ERFX65HRTQOL9Xw=;
-        b=HIj3MeHDvyYVjBOZ4+NsYDxJOGBameB5BIPDEOOGN1FBuQSdRdx3c5gc8d/lJKildd
-         UEcn8ndkLkNjowtA+ZngL3ABR9vT/ZF9SXObfdZqNp6J/wD5oummXcyd5FHiPEztrvDD
-         IBSxDbzqfSpuw/aEcB8GQA/28PdBHpoYWJJVRASRk4HVAG38izfLGrQPvXqkowS29fHQ
-         bqJycbLiMDfaKU2FOEcuD2SHXw0GiT/AYJ/rdSfnN+0zzgnsaPBnTRuDcHg/CxQQSwO+
-         Aj6lnLA2E/kafFV51npOtRiRM1Le4jBwk+VfJ/LPen9T+JlZvvBuWNkKDPa5uzijgs4A
-         QuTQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUvMYamhbkV2OE+AXoYZZseBwrKwyp4lOlKmnM0uSxICCkmwaCVmZ9hIQPuqIvxn6FXSCjCj5+tgB8oAfntcQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxu87yw0x+o5xun2+0injtWlcBbEiWT6H2iYLfNADJpeko0ypwo
-	7ZiNPU9mPT5losNT1qsnpZb1lvY+dd+uY/AZecMDdTgiNgk8VvxaNZrE8DH6mRpZ1F5zyu7reep
-	XbzD6ppDR5LDTvSssyMUGJt2tLBfLBzK//fyqlSP7VViaHWVa0Po8wOhHIUgxfQZLjMp2cTiuMy
-	Q=
-X-Gm-Gg: ASbGncsa84Cf0bh3BPMOb5BaBFgLYWhf9Q5AouWynv/XfXm2/Gp9tYfljbZLbBgPy7y
-	5WJwG2qb+nArgBx5xhkG5Xs0CsQc+tHHwdZmCavudf64WxB2ycSUKbjlFjUXoG1dIBXbxep4jJd
-	P10YyrRwXnqMtvpnd5z2odZlRTjz586ep02vGMDfOqAoPJnwoXFeor+OMK+GZ1jYfZnFY8Q7acf
-	/kgF2BPUXIZnArmRe8r+zWvKiDjjK+EQQjE5kTVCBBFTnT/1KL2Z+SLFEUdCbbN/qFFwFgmu9hY
-	VdSCmw5FoxvpOAi4TW9oLZX18bsBPaLNn/B+xN09QMQTnJxB0Gbp5ZZJwuQUzTxR2t+5fXVmRFn
-	5crqxpymm9su/rPmbXC2srLHqJV3oqizL/g==
-X-Received: by 2002:a05:622a:83:b0:4ed:b82b:199b with SMTP id d75a77b69052e-4ee58a7fcfdmr280745991cf.25.1764176358700;
-        Wed, 26 Nov 2025 08:59:18 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH9Nz5Yp1BIM1KY7e49OaHY0IEhF5wMZdOUEypF18c/ESGrBdCJhh92JCRgAgFt++hNUAfGrg==
-X-Received: by 2002:a05:622a:83:b0:4ed:b82b:199b with SMTP id d75a77b69052e-4ee58a7fcfdmr280745601cf.25.1764176358309;
-        Wed, 26 Nov 2025 08:59:18 -0800 (PST)
-Received: from [127.0.1.1] ([178.197.219.123])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42cb7fa3a81sm42398811f8f.26.2025.11.26.08.59.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Nov 2025 08:59:17 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Date: Wed, 26 Nov 2025 17:58:51 +0100
-Subject: [PATCH 8/8] regulator: pf9453: Constify pointers to
- 'regulator_desc' wrap struct
+	Wed, 26 Nov 2025 17:15:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 80C9444355
+	for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 17:15:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5D305C19425
+	for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 17:15:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764177336;
+	bh=6SHs66WoWGtjQH3L9Iq2Mny6L7Qlns6ivX9++VOuwbI=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=Wmoze9Mi0Vnp7inKtGSe7+8xdZVkSjmcxN7co9xZwh1frBeWLcoh5QnNVTxibFa0M
+	 lmSweWooHBs2h653K8u18HiHm49MnWwsFed/45XvHsTjbpFJpKF4vxcNhSkrIs76vS
+	 Y8PeFB44mzZP99XC5OKoF4o669mWR3ZNBs8kSeBO6S0zUh0zydJmOaMq2ONh0yyZxO
+	 dhwj1VH9wSfmpGZwP2pFGiaBjr04Hnxe88vaz0w9ZAkDWWPd0JBmeriSBKj4ug+NRG
+	 6Et/GhlVIBSrfh+iavRmNd9e4/sdh6pUFGR7H7Mkz4FnHV6cJogtsbS1dHncHFhxeE
+	 xHxBIj5UDUbtQ==
+Received: by mail-lj1-f179.google.com with SMTP id 38308e7fff4ca-378e8d10494so227401fa.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 09:15:36 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUt9H+0k7YZ+t2q+gBHDpjCkuJAZxw5t9h2fbMLR11+dNHe+owPOKc+TfnES6q/QgD4Pk6NoBcuflEU1uQ9pQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzp59kdhLQm8q4WRhjIDLsMBtG7MxG8HcWcxwlOHK2OwwNhkTfT
+	Xwb8TaxQcVBJQYkGe6ykC25A2g1922ArqOchrYQjoVyD62csj/sR5h1pfncX1tToHw6k9ornyaT
+	0jlQXOTtl864QqPajLTISUYXYpAsYpos=
+X-Google-Smtp-Source: AGHT+IHrrmzPVAFgQsvrRntuuZ9ayKDwDD7s4AL9NeupFWgcsn821aySl20O7AgRZrwewB+5f3lrU1vBbbvI8Usz7N0=
+X-Received: by 2002:a2e:9654:0:b0:37b:9b58:dcf7 with SMTP id
+ 38308e7fff4ca-37cd9202938mr51693681fa.23.1764177334607; Wed, 26 Nov 2025
+ 09:15:34 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251126-container-of-const-regulator-v1-8-eeec378144d4@oss.qualcomm.com>
-References: <20251126-container-of-const-regulator-v1-0-eeec378144d4@oss.qualcomm.com>
-In-Reply-To: <20251126-container-of-const-regulator-v1-0-eeec378144d4@oss.qualcomm.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-        Bartosz Golaszewski <brgl@kernel.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Samuel Kayode <samkay014@gmail.com>,
-        Matti Vaittinen <mazziesaccount@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org, imx@lists.linux.dev,
-        Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1202;
- i=krzysztof.kozlowski@oss.qualcomm.com; h=from:subject:message-id;
- bh=hmZwf+gqSZxGRRmKDKGj7wIJ5dnf5CYeGgO2dqTIhtc=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpJzHYXmo0mXPdOVlHCVazTBqn0/qr5MvMIY7+v
- uTv0NxK5R6JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaScx2AAKCRDBN2bmhouD
- 116PD/96Qy81QJpXLgEUygAsiYq1Y0UUEImHwCVulXcY0S2IN6/DD0T46awe8VLEeh3nEsA53Vi
- C4f00fwrMbwLzzRP7YERqcUGtgksB5Vj7wgs5LZU/6ktN8YsSwtisDnhl9nzRJkbCKsh0bc4hBT
- AomTnNlxw1HK3lhus33gTYomSuh9zHXQIJ1NKn7NQu8DXrUxReXklh7puUf5p5/f5MQ15nzX14a
- 0OjZzzfTNr74KKjeuJMwZ0L6y5XELVDhmVQQhwZKAJWMTuE5A320J39yUQuug6pplw7E+zsqM1P
- rY5fG4PX1JSsScLfpo76Ih/CuYRjzkaO/4dtNt2bReX6eDfAbsbhZk1aP4vugPf/Ug3pG3Xk9TQ
- mqAqu6oKRggIcVSHlS+qd8DoOXQduIhqtxWDcL0A+a949atcum4QUcg3uRYalbTz+JZeD9nJJI7
- 9kn1Vs6QrEDmDu+CUQxDd1hDIazOLRLeXmTYL83SLRFWGsIoL6GtFrP49pgWigVqH88Sz3sYQmL
- bkY5KUf3AehEJrUCYaRHFtNS2KkNWCHdhd4GXzCqvmob91i47C2S+rs2AfpVx/Co/9S1jy2nChJ
- Ub1MlfbhoxOeWOUgSvcY0rPkyogfegn8D148yhBPxi/TRtsTm1gdwsnVWay6+OqrP0vDscnk+h3
- 6I7ZwKcG4Lg1B+g==
-X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp;
- fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
-X-Authority-Analysis: v=2.4 cv=ZZEQ98VA c=1 sm=1 tr=0 ts=692731e7 cx=c_pps
- a=WeENfcodrlLV9YRTxbY/uA==:117 a=Iax6wTeSMpqzYiZSKl48GQ==:17
- a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=EUspDBNiAAAA:8 a=9MRJ1adic_HRPEocbcUA:9
- a=QEXdDO2ut3YA:10 a=kacYvNCVWA4VmyqE58fU:22
-X-Proofpoint-ORIG-GUID: P963mSFOFMXgvAVYVWjchqcKP2GYtGTk
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTI2MDEzOCBTYWx0ZWRfXzUZGlEZhx8a4
- 7lRzn+ZJVEP2PSPhrUHf02LArz0gdHga9QaOHW6frqL+TJPsO/aJpnhCo74lpKNCrgD6LlsCfwU
- FCIJ3B98z5IkAJf/bb7nVMR1IDhEFaWQ9IZppSTXCF2srXig2sgwWiEtg7Mbo3Ry2aIQQWMSqFZ
- 9/AsNdFYru3BwyJRON26O+MERjuz5UgIclmPaBbghV1GkPQ9PgJBW33qBHvtzh89Yjihe8INg21
- vbghqNXd4HBvkv0AuFi5cuPB7phz3naqxXiJq+NJzTnxlXH45UC/5MEZDelsUnThaqBY0itPlgw
- It9E8/Pxe43JJBDH0a413QFzy6KA8EqabFjueS3GxJrsF4L6DTilKSLz8m7ItwR56eXH8ygxaPS
- vtvO0qfkFQx7JOUmx00hevSB6yaS0g==
-X-Proofpoint-GUID: P963mSFOFMXgvAVYVWjchqcKP2GYtGTk
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
- definitions=2025-11-25_02,2025-11-26_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 impostorscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1011 adultscore=0 priorityscore=1501 lowpriorityscore=0
- suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
- definitions=main-2511260138
+References: <bf6a29cfa16e31e5c2fc2956a294dd8ed97ebd26.1764138361.git.quan.zhou@mediatek.com>
+In-Reply-To: <bf6a29cfa16e31e5c2fc2956a294dd8ed97ebd26.1764138361.git.quan.zhou@mediatek.com>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Wed, 26 Nov 2025 11:15:22 -0600
+X-Gmail-Original-Message-ID: <CAGp9LzqH+xoxF_9LxtQ5WFrqRLob7Xv=M2BmETbW0950OuJpXg@mail.gmail.com>
+X-Gm-Features: AWmQ_bmLzOYeG7nxvWUli-MEBvOI5aoCbnBKmP5FcgziO0TVq1L7Jx7AHGKwGu8
+Message-ID: <CAGp9LzqH+xoxF_9LxtQ5WFrqRLob7Xv=M2BmETbW0950OuJpXg@mail.gmail.com>
+Subject: Re: [patch] wifi: mt76: mt7925: fix AMPDU state handling in mt7925_tx_check_aggr
+To: Quan Zhou <quan.zhou@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
+	Deren Wu <Deren.Wu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, 
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Allan Wang <allan.wang@mediatek.com>, 
+	KM Lin <km.lin@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, 
+	Shengxi Xu <shengxi.xu@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, 
+	CH Yeh <ch.yeh@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, 
+	linux-wireless <linux-wireless@vger.kernel.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>, stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251126_160359_255949_A4986E27 
-X-CRM114-Status: GOOD (  15.81  )
+X-CRM114-CacheID: sfid-20251126_091537_575240_B5DB62B0 
+X-CRM114-Status: GOOD (  20.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -182,32 +90,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Pointer to 'struct regulator_desc' is a pointer to const and the
-wrapping structure (container) is not being modified, thus entire syntax
-can be replaced to preferred and safer container_of_const().
+Hi, Quan
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
----
- drivers/regulator/pf9453-regulator.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+On Wed, Nov 26, 2025 at 1:04=E2=80=AFAM Quan Zhou <quan.zhou@mediatek.com> =
+wrote:
+>
+> Previously, the AMPDU state bit for a given TID was set before attempting
+> to start a BA session, which could result in the AMPDU state being marked
+> active even if ieee80211_start_tx_ba_session() failed. This patch changes
+> the logic to only set the AMPDU state bit after successfully starting a B=
+A
+> session, ensuring proper synchronization between AMPDU state and BA sessi=
+on
+> status.
+>
+> This fixes potential issues with aggregation state tracking and improves
+> compatibility with mac80211 BA session management.
+>
+> Fixes: 44eb173bdd4f ("wifi: mt76: mt7925: add link handling in mt7925_txw=
+i_free")
+> Cc: stable@vger.kernel.org
+>
+> Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7925/mac.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7925/mac.c
+> index 871b67101976..80f1d738ec22 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+> @@ -881,8 +881,9 @@ static void mt7925_tx_check_aggr(struct ieee80211_sta=
+ *sta, struct sk_buff *skb,
+>         else
+>                 mlink =3D &msta->deflink;
+>
+> -       if (!test_and_set_bit(tid, &mlink->wcid.ampdu_state))
+> -               ieee80211_start_tx_ba_session(sta, tid, 0);
+> +       if (!test_bit(tid, &mlink->wcid.ampdu_state) &&
+> +           !ieee80211_start_tx_ba_session(sta, tid, 0))
+> +               set_bit(tid, &mlink->wcid.ampdu_state);
+>  }
 
-diff --git a/drivers/regulator/pf9453-regulator.c b/drivers/regulator/pf9453-regulator.c
-index cdb80f9d1bd7..779a6fdb0574 100644
---- a/drivers/regulator/pf9453-regulator.c
-+++ b/drivers/regulator/pf9453-regulator.c
-@@ -538,7 +538,9 @@ static int buck_set_dvs(const struct regulator_desc *desc,
- static int pf9453_set_dvs_levels(struct device_node *np, const struct regulator_desc *desc,
- 				 struct regulator_config *cfg)
- {
--	struct pf9453_regulator_desc *data = container_of(desc, struct pf9453_regulator_desc, desc);
-+	const struct pf9453_regulator_desc *data = container_of_const(desc,
-+								      struct pf9453_regulator_desc,
-+								      desc);
- 	struct pf9453 *pf9453 = dev_get_drvdata(cfg->dev);
- 	const struct pf9453_dvs_config *dvs = &data->dvs;
- 	unsigned int reg, mask;
+It is a nice catch. The change works today but switching from
+test_and_set_bit() to a separate test_bit() + set_bit() weakens the
+atomicity that this state transition was originally designed to have.
+It might not break right now, but it creates a subtle trap. Future
+code may assume the transition is atomic and accidentally reenter BA
+start path which can lead to hard to debug regression.
+To keep the logic solid and aligned with the current design, the safer
+approach is to use atomic acquire with a rollback.
 
--- 
-2.48.1
+if (!test_and_set_bit(tid, &mlink->wcid.ampdu_state)) {
+    if (ieee80211_start_tx_ba_session(sta, tid, 0))
+        clear_bit(tid, &mlink->wcid.ampdu_state);
+}
 
+This keeps semantics clear and avoids future maintenance landmines.
+
+>
+>  static bool
+> --
+> 2.45.2
+>
+>
 
