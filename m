@@ -4,64 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2F43CFD2F6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Nov 2025 17:54:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3B32D111A8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Nov 2025 18:17:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f9Xpv6HLbKfRD2AJdRu+MP/oGHQl4a0L1PL4mC2lUcI=; b=QCY19bEb8ae595o4wk1xQVa3Qb
-	HUX73TXkdg89mQK8KQ5SkKS9QiScntWR/2FB/PsALEprkbGFLl5p156/DW0H7CxQ6Y7Dbf6kAhrT1
-	o91LsD4nWzHrjYsA2PfzXoputJaIKOXWAp+IclD5339ur6dwr952/c1ZatkXCJYDfKp/bP5P6h6hf
-	fa9nkog6nTF9AEARuYMYGtKge8xddt1JZmFsP+8tbMLu3kZnkFmHcl2ifrjoy1vG8849y4UBzsW+t
-	c/d5oLozEFS5LuBE6jANDUgT7rmWgnFuCv/QO6MCL4oG8iMZSEsI/qN2n5c5PlrFaBF/RerD11mMy
-	CLi3sfPg==;
+	bh=GA9FTV2ejX5xguOwyiDUL1hpvKOTwyB0xhI2crLeIWM=; b=XNjD/s8oYpu4K2xgJxD5uDk0j5
+	+qxww7DBxgtz57BCV15qdYCx+1gi0j0xtrS4YiKywLqsVEyYlk1doL93tTvRWCJ3HhfFVHGjpV0nV
+	YN+W4VbU0OQQqapU4NeJDxheiD5AZ4LlXpppeJsULaiPNDYfhC+QhTEis/+sUQ/K53LQDQfqg9vQt
+	ekT8J/RoI2PcWgLHzTf+CAadCpkhcTlhu7Vu2HpQCXrJyTNfyQo7sfNPqvsigtoULaOq1cGJPz2DS
+	Va1SqvIiBfWdCgS+jqv1dinViTVWp5MtkLvnzPS/hWtjdQNK7W60EWYOlwYKe5q1foieSV615hcBL
+	sNh7s0gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOgCF-0000000H2Ce-1eR6;
-	Thu, 27 Nov 2025 17:54:23 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vOgYg-0000000H43I-0sE9;
+	Thu, 27 Nov 2025 18:17:34 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOgCD-0000000H2C0-1irM;
-	Thu, 27 Nov 2025 17:54:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 78FC960172;
-	Thu, 27 Nov 2025 17:54:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 962D8C4CEF8;
-	Thu, 27 Nov 2025 17:54:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764266060;
-	bh=7ymQ4nasa/Y4u+AtiT0d04YzvAbGRGb9jcNryy56N9s=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=I7YjLAkehefh6Z7MmTFOrCN6M/dHA2iqG4jnWrALU44EtNwFYRtdCDE/leBTiK5FV
-	 OdbZGdfmdqW/1fl/0MehcfizKWdQOhuUADfmz6+TcD8WNT8IseDvA25b9JkpGswDIb
-	 zdRfPXZHIrfmUuhHmCLaLIL+RE4AzglGNC0qK2h/X2Eafi7RGHUCLVFJUNurxl5jRp
-	 e8yTM6hDX2mr5CZUEtJEVXdB0nMGJa7yUU8LeqRdg0q2MuoMcIFlD96Ga6kVGNpul4
-	 mdOFuRWnsJ28X6qO28lBWjGYTyN+YBe+ydKWnBeS6JnCjzqH3RneWTishXCSsmr6/U
-	 FIcLgb8RmOEWw==
-From: Mark Brown <broonie@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Andy Shevchenko <andy@kernel.org>, linux-arm-kernel@lists.infradead.org, 
- linux-spi@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Cc: Andreas Gnau <andreas.gnau@iopsys.eu>
-In-Reply-To: <20251125234047.1101985-1-mikhail.kshevetskiy@iopsys.eu>
-References: <20251125234047.1101985-1-mikhail.kshevetskiy@iopsys.eu>
-Subject: Re: (subset) [PATCH v6 0/3] spi: airoha: add support of en7523 SoC
- (for 6.19)
-Message-Id: <176426605736.114355.13405079869808770716.b4-ty@kernel.org>
-Date: Thu, 27 Nov 2025 17:54:17 +0000
+	id 1vOgYc-0000000H42F-2xML;
+	Thu, 27 Nov 2025 18:17:32 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1764267379; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=VHNPgFqZa0o6809/T+8jHJoMCBYjd2yZiYvEH43ecdDw0RDEoZBASvS8GXIRjf443u9HWsC87weywb65C5DIBcudiiLSfw66tyl4FaLNKaejlEIJIohOY954WwUx+6cfKsQdPDjAUxOAHUCJW2JVa5BuwC53SzyModibprg79Xg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1764267379; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=GA9FTV2ejX5xguOwyiDUL1hpvKOTwyB0xhI2crLeIWM=; 
+	b=VzgCDjp9rcRegJe18G1VoZpp248pQnSYb2nnPRvNYWxHUdyyrlHItaUgv2yGSNf+L6cT0ioGjEOUEpK+K0iTAkjcNQ9RhPc7ICm06mhWm7aOWDC7aTqGKcy/QGw9e2DvPfDfeB5pm0C9OwDjdwtPltUGw2ChGO1r7cznhhdiZRQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
+	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1764267379;
+	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=GA9FTV2ejX5xguOwyiDUL1hpvKOTwyB0xhI2crLeIWM=;
+	b=MrrmR/EbOR0f5Gb5Xbhy3YhzRySSoWvRdfWRmCgcQVrMezcKplDmR9LS92M5F8YU
+	44hmR7lvwMtOD/5nw3ELxQb8PadU5cfnfMx7ngMJ02a3mou1wD1bDW4FltRjo9ZXijV
+	BVrAa/6yr4xsF2CvbF/50U6ILU5JghWfinyStD5c=
+Received: by mx.zohomail.com with SMTPS id 1764267377521567.410213066609;
+	Thu, 27 Nov 2025 10:16:17 -0800 (PST)
+Message-ID: <2dd059f5-96d4-44a1-84be-b14dce28cf06@collabora.com>
+Date: Thu, 27 Nov 2025 15:15:47 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-88d78
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 03/12] dt-bindings: net: Convert Marvell 8897/8997
+ bindings to DT schema
+To: Rob Herring <robh@kernel.org>
+Cc: airlied@gmail.com, amergnat@baylibre.com, andrew+netdev@lunn.ch,
+ andrew-ct.chen@mediatek.com, angelogioacchino.delregno@collabora.com,
+ broonie@kernel.org, chunkuang.hu@kernel.org, conor+dt@kernel.org,
+ davem@davemloft.net, dmitry.torokhov@gmail.com, edumazet@google.com,
+ flora.fu@mediatek.com, heiko@sntech.de, houlong.wei@mediatek.com,
+ jeesw@melfas.com, kernel@collabora.com, krzk+dt@kernel.org, kuba@kernel.org,
+ lgirdwood@gmail.com, linus.walleij@linaro.org,
+ louisalexis.eyraud@collabora.com, luiz.dentz@gmail.com,
+ maarten.lankhorst@linux.intel.com, marcel@holtmann.org,
+ matthias.bgg@gmail.com, mchehab@kernel.org, minghsiu.tsai@mediatek.com,
+ mripard@kernel.org, p.zabel@pengutronix.de, pabeni@redhat.com,
+ sean.wang@kernel.org, simona@ffwll.ch, support.opensource@diasemi.com,
+ tiffany.lin@mediatek.com, tzimmermann@suse.de, yunfei.dong@mediatek.com,
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-input@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-sound@vger.kernel.org, netdev@vger.kernel.org
+References: <20250911151001.108744-1-ariel.dalessandro@collabora.com>
+ <20250911151001.108744-4-ariel.dalessandro@collabora.com>
+ <20250912140619.GA1293647-robh@kernel.org>
+ <fb20e4fe-df0a-4089-a7cf-e82bfe1f8e00@collabora.com>
+ <CAL_Jsq+eeiw9oaqQPWt2=rZSX98Pak_oB=tfQFvEehwLZ=S52g@mail.gmail.com>
+Content-Language: en-US
+From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+In-Reply-To: <CAL_Jsq+eeiw9oaqQPWt2=rZSX98Pak_oB=tfQFvEehwLZ=S52g@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251127_101730_831641_1B8174AC 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,50 +100,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 26 Nov 2025 02:40:44 +0300, Mikhail Kshevetskiy wrote:
-> Airoha EN7523 snfi controller almost identical to AN7581 one, so the same
-> driver can be used. The only known difference appears in the very specific
-> boot conditions, when attached serial console force EN7523 SoC boots
-> in undocumented (reserved) mode. In this mode dma reading of the flash
-> works incorrectly.
+Hi Rob,
+
+On 11/24/25 3:54 PM, Rob Herring wrote:
+> On Wed, Oct 1, 2025 at 12:28 PM Ariel D'Alessandro
+> <ariel.dalessandro@collabora.com> wrote:
+>>
+>> Rob,
+>>
+>> On 9/12/25 11:06 AM, Rob Herring wrote:
+>>> On Thu, Sep 11, 2025 at 12:09:52PM -0300, Ariel D'Alessandro wrote:
+>>>> Convert the existing text-based DT bindings for Marvell 8897/8997
+>>>> (sd8897/sd8997) bluetooth devices controller to a DT schema.
+>>>>
+>>>> While here:
+>>>>
+>>>> * bindings for "usb1286,204e" (USB interface) are dropped from the DT
+>>>>     schema definition as these are currently documented in file [0].
+>>>> * DT binding users are updated to use bluetooth generic name
+>>>>     recommendation.
+>>>>
+>>>> [0] Documentation/devicetree/bindings/net/btusb.txt
+>>>>
+>>>> Signed-off-by: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+>>>> ---
+>>>>    .../net/bluetooth/marvell,sd8897-bt.yaml      | 79 ++++++++++++++++++
+>>>>    .../devicetree/bindings/net/btusb.txt         |  2 +-
+>>>>    .../bindings/net/marvell-bt-8xxx.txt          | 83 -------------------
+>>>
+>>>>    .../dts/rockchip/rk3288-veyron-fievel.dts     |  2 +-
+>>>>    .../boot/dts/rockchip/rk3288-veyron-jaq.dts   |  2 +-
+>>>>    arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  |  2 +-
+>>>
+>>> .dts files should be separate patches. Please send the bindings patches
+>>> separately per subsystem so subsystem maintainers can apply them. All
+>>> the Mediatek dts changes can be 1 series.
+>>
+>> Ack, will fix in v3.
 > 
-> This patch series:
->  * add support of EN7523 SoC
->  * add spinand node to en7523 dts (so spinand flash finally becomes usable)
->  * updates dt-bindings to mark driver as compatible with en7523
->  * disable dma usage to prevent possible data damage if booting in
->    reserved mode was detected.
-> 
-> [...]
+> Are you going to send v3 still?
 
-Applied to
+Yes, will be sending out v3 asap, with the remaining changes.
+Sorry for the delay.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+-- 
+Ariel D'Alessandro
+Software Engineer
 
-Thanks!
-
-[1/3] spi: airoha-snfi: en7523: workaround flash damaging if UART_TXD was short to GND
-      commit: 061795b345aff371df8f71d54ae7c7dc8ae630d0
-[2/3] dt-bindings: spi: airoha: add compatible for EN7523
-      commit: de59a8a3a1aab3a6608777f62fa098b5abb2704a
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
+Registered in England & Wales, no. 5513718
 
 
