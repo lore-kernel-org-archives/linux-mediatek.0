@@ -4,85 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBE95CFD2F6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Nov 2025 10:01:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28D99CFD2F6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Nov 2025 10:06:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lXLMTwsVE5PrrxBMxsVCoUcLv2OfpkJJM3iox2q0QmM=; b=IZtut0m81XRlQmuOIMwq6NkqeC
-	TA6cBF3g9gSwEhLc1ftlJ7jm/40qwtb1IQ01Yo1BxsoEjctjRGWcRaOVNnZqEHLEn0N7LnMl6Cr10
-	yZ6Btf+OK8SX1vVJ3rqW1vL/Z92ZUJQUi2i2Ody8RMARYkIB7CXPoIzKUxOj7/kGYrhhA3em3LQ7/
-	8bWFRNXruYr7puNG/4bkMS/FuWQjfFPNVQKYXsHwwBUJwOAXfxrL073xy7KwNYl0aGgGBjIno1kLZ
-	Az/vWaUrrHelLAIKuHL3+YZteeHMAPVG8Q9qJZ4BEpTdml6A1iO4STAUytSgOLqxUk6wBS/Xu1zMc
-	C4s8p4RA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dZke3kGkQTZYkMSsgLVRtmh9XfHGjHdJ9IQZpF7CUm4=; b=aKgo76mcCpOmGAuLj287i0Nhry
+	eS038CEEAt3AjfHVTOUpXifVJZIwNK7Hdj369o0rCt7yWb59gbHwn/Nm8q71DnzQwJE1jxWX1Ta10
+	W8qIOrAl/XbDKIrlhF0nUHLmKXuZdPC8RnGR88jH8nBnQXuo/yna8DAmgI24h+wNGLtg7VjxZH0K+
+	/rzaBwaoDuBipo47E6ZK2PjPN0c5Vj3V+vFx45WibJDJlV7o9VpXyELW1Wh84LOctyqgo32PF5Yqb
+	FbO1x2r4v/64gWgMc2ZwHI8j1a3/JJLqloxcJbBIdZ8pqX5F/p8juN+E0d6rfqHTGBp2eFdYRh+NJ
+	nnRBwSfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOYoB-0000000GKsf-3c3f;
-	Thu, 27 Nov 2025 10:01:03 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1vOYte-0000000GLLd-0Wko;
+	Thu, 27 Nov 2025 10:06:42 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOYo5-0000000GKr2-040C
-	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Nov 2025 10:00:58 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-297f35be2ffso11017355ad.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 27 Nov 2025 02:00:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1764237656; x=1764842456; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=lXLMTwsVE5PrrxBMxsVCoUcLv2OfpkJJM3iox2q0QmM=;
-        b=Rh/dn0OOSQvYi4y/qPFkmwglW56hDbzYSDbAg8FclSf+golyWthLXkI/JSfzBwmCic
-         ME7+V810Is9tKg3YXQijcz8FxnhYMlsxDn2w97mvBTGu1V5SZR432gpHJ/E0RDhC/o1g
-         6ptes7DVNb1FzUAMLvzIWOPNEr1qKQRD8jcpo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764237656; x=1764842456;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lXLMTwsVE5PrrxBMxsVCoUcLv2OfpkJJM3iox2q0QmM=;
-        b=Hg4Bz1moUym7XjTx8lEnXubPhB+tSMwdf55ghqPLxvHSR9uLKpZX4PDLehttkgVidk
-         3US0u596BaS8/6Q/zAcwNujToP/I5uy68BYkZpwemVRGwxGCKfAkFi6qVmlPb++igHIy
-         9PbTsXnX+Y9x6gnt+XAtarPXpTykPAQNUaxN3BMadMR2Kx2MmOHrWLy2ijUUj3R+yzJf
-         V7r4XWmgnjH+KeDmVQAVO6LRcL3eYJtliboyXA5Vup0eQ1S6Yd187mg0aSOz4rlhbAEK
-         ymSWOwV/O69frB8UZeFBWXYUAgT2EJy5lvVaFBdPkyacCHQAo6MDe1tT0pHhBo3dF1vX
-         hi0A==
-X-Forwarded-Encrypted: i=1; AJvYcCVjufTBbEG+vLxIKit2rxWhdMusE3ugA15WKNy3Sw0Lebk3iAcAcgpxAQmqz6ASyh5X/X+lfXhhRwPrPAn5yw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxr89KxEme7VJ83OUTTVkaUI7AJOSyQWUyUXS95U42wqMCcOseK
-	B1SDnluFSvjcQXlfV4JhDtTetUpOpELJOuouoORF5ZETil+FZkysvRLV5WGA23P+7A==
-X-Gm-Gg: ASbGncsXDa5RZGAaOstIGlZ0Mke2VRGdCHFZ6HDq16GyxxY3E9qkDoAV1VH5pSwgyUX
-	701lv0oB/A3Ppcy05uIWDRaMYAZQCr22J0f+wGdSxgKmmB5DDfOVZQwiI+paMwM1JBOXeQWnb2k
-	FKMda1AnN+VmPno6CTtN80AnLi8bwWAxCXzHDV6nbI6aNwfIrp4u4+3eQbWAqGzK0QPizHHLbyO
-	UO08RxNDWEb15iMxwoUU5Fhjpa+kMVrqvauETItmwvKHtBHhdhlUptG+1Xn/R1m6T3sEL/PysoG
-	IWQ2LYh3VKFcqz/rOW5ERdPEKBJAu9FK9i3Eb1FgkCyu8dyEU6eKMCzAiHTClVy0OoCOOs9sbgV
-	VN91mIkUIJXOThQiqYlxwDlGkn1TN+9doOcjQv6vqkjPDF+0IriLL9PdIutwXOYQhTrqzan5Np4
-	oizv/+mCgA6NIVoBKgHseZDoVmjmecWlIaVcchTnp4qnZYUW1tNII8BTWZpw8ZNNrVTCCd
-X-Google-Smtp-Source: AGHT+IHivfNnrfK3dtvJit5EMEyVA6t8fLK67j9PbneBRp9gDarid+L6oRuRF/o2DijnRZbB5oV9KA==
-X-Received: by 2002:a17:902:e551:b0:295:3eb5:6de1 with SMTP id d9443c01a7336-29b6c684abbmr298506555ad.34.1764237655717;
-        Thu, 27 Nov 2025 02:00:55 -0800 (PST)
-Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:4917:2ae3:8ebd:4ff1])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-29bceb29fbbsm12490515ad.49.2025.11.27.02.00.53
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Nov 2025 02:00:55 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	soc@kernel.org
-Subject: [PATCH] arm64: dts: mediatek: mt8195: Fix address range for JPEG decoder core 1
-Date: Thu, 27 Nov 2025 18:00:42 +0800
-Message-ID: <20251127100044.612825-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.52.0.487.g5c8c507ade-goog
+	id 1vOYtc-0000000GLLA-0R6G;
+	Thu, 27 Nov 2025 10:06:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 88F506013F;
+	Thu, 27 Nov 2025 10:06:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67AB4C4CEF8;
+	Thu, 27 Nov 2025 10:06:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764237999;
+	bh=qyB6IHXo0lkqDWnnBdQrPg7IJ3IfbM8Oc4yUhLX0Ab4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=HjFWFM0TvahrAGCiGYFsG3hXKmygUZkBeXVRRQKnNMymfJ14kg45MbPvglwQOTy6m
+	 oh6e7g2SRP/+9aV+5tz5WXbdzBT0zHBs2yJ3jB28pVUeLy7AHHdV/yTh0QOJ7VQ98U
+	 4X2oEbQSzzrPZbkinJ26irCm3HRZtta2RsURL6Y8C9kMrMIROE8a/7DQfVbEekGcY1
+	 CDvZmsIYGYY5tU8q9I+aCO15M9NaWXpdaUuI6d3CRFZncWxCpzPO6vM6yBu7yuxwT1
+	 4bYyrNwLWAXE5LQsEBeDNCGYyJobuYfGAArzGUgUr+977XW7wbefeIsx7sUeBlmjOv
+	 LpSvqAFpqWisQ==
+Date: Thu, 27 Nov 2025 11:06:29 +0100
+From: Lorenzo Pieralisi <lpieralisi@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Linus Walleij <linusw@kernel.org>, Lei Xue <lei.xue@mediatek.com>,
+	Hanjun Guo <guohanjun@huawei.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	yong.mao@mediatek.com, qingliang.li@mediatek.com,
+	Fred-WY.Chen@mediatek.com, ot_cathy.xu@mediatek.com,
+	ot_shunxi.zhang@mediatek.com, ot_yaoy.wang@mediatek.com,
+	ot_ye.wang@mediatek.com, linux-acpi@vger.kernel.org,
+	robh@kernel.org
+Subject: Re: [PATCH 2/3] pinctrl: mediatek: Add acpi support
+Message-ID: <aSgipbe75hrwhTD7@lpieralisi>
+References: <20251125023639.2416546-1-lei.xue@mediatek.com>
+ <20251125023639.2416546-3-lei.xue@mediatek.com>
+ <CAD++jL=h4ZEgrjgGOfgFyAXBM7EL91ZD-La82UQ7GPOXv8h9WQ@mail.gmail.com>
+ <aScwaxBG53dnZ4a4@lpieralisi>
+ <aSdBu-B9mwU2-1_S@smile.fi.intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251127_020057_113740_D59EF44F 
-X-CRM114-Status: GOOD (  13.05  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aSdBu-B9mwU2-1_S@smile.fi.intel.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,47 +83,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The base address of JPEG decoder core 1 should start at 0x10000, and
-have a size of 0x10000, i.e. it is right after core 0.
+On Wed, Nov 26, 2025 at 08:06:51PM +0200, Andy Shevchenko wrote:
 
-Instead the core has  the same base address as core 0, and with a crazy
-large size. This looks like a mixup of address and size cells when the
-ranges were converted.
+[...]
 
-This causes the kernel to fail to register the second core due to sysfs
-name conflicts:
+> > I also assume/hope that we don't want to add a "reg-names" _DSD property either
+> > in ACPI to deal with this seamlessly in DT/ACPI (that was done for
+> > "interrupt-names"):
+> > 
+> > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/firmware-guide/acpi/enumeration.rst?h=v6.18-rc7#n188
+> 
+> Hmm... Why not?
 
-    sysfs: cannot create duplicate filename '/devices/platform/soc/soc:jpeg-decoder@1a040000/1a040000.jpgdec'
+What's the policy there ? Half of the ACPI bindings for an interrupt
+descriptor are defined in the ACPI specs (ie _CRS) and the other half
+(ie "interrupt-names") is documented in the Linux kernel (or are we
+documenting this elsewhere ?) ?
 
-Fix up the address range.
+Or we are saying that "interrupt-names" properties are added by kernel
+code _only_ (through software nodes, to make parsing seamless between DT
+and ACPI) based on hardcoded name values in drivers ?
 
-Fixes: a9eac43d039f ("arm64: dts: mediatek: mt8195: Fix ranges for jpeg enc/decoder nodes")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-This was introduced in v6.18-rc1.
+I don't think I can grok any example of the latter in the mainline.
 
-Maybe have the soc maintainers take this directly instead of waiting?
+I am asking because I'd need to add something similar shortly to make parsing
+of platform devices created out of ACPI static tables easier (I guess we
+can postpone discussion till I post the code but I thought I'd ask).
 
-Also, I'm not sure if this error could mess up the JPEG decoder driver's
-internal tracking.
+Are we going to do the same for "reg-names" ?
 
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Most importantly, what is DT maintainers stance on the matter ?
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index ec452d657031..c7adafaa8328 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -3067,7 +3067,7 @@ jpgdec@0,0 {
- 
- 			jpgdec@0,10000 {
- 				compatible = "mediatek,mt8195-jpgdec-hw";
--				reg = <0 0 0x10000 0x10000>;/* JPGDEC_C1 */
-+				reg = <0 0x10000 0 0x10000>;/* JPGDEC_C1 */
- 				iommus = <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA0>,
- 					 <&iommu_vdo M4U_PORT_L19_JPGDEC_BSDMA0>,
- 					 <&iommu_vdo M4U_PORT_L19_JPGDEC_WDMA1>,
--- 
-2.52.0.487.g5c8c507ade-goog
+Thanks,
+Lorenzo
 
+> > I am sorry I have got more questions than answers here - it would be good
+> > to understand where the line is drawn when it comes to OF/ACPI and fwnode
+> > heuristics compatibility.
+> 
+> -- 
+> With Best Regards,
+> Andy Shevchenko
+> 
+> 
 
