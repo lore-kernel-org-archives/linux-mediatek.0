@@ -4,85 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E07AFCFD2F6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Nov 2025 07:13:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3A41CFD2F6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Nov 2025 07:49:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MQY//M0GqP2UQAmlCOJ4wuisLMBRO71rgyYj5ORvoMQ=; b=f0ReXDZj5ZHtNjoBBcD9kIC7QK
-	jGbQzHDOchh45NR6hZ2CC9VAalYjO/npXDsfCipTb1YTUT+r0TA9xsJ5nStQFtBpNf/jkvv5aXKlL
-	sXK2+QWhYwyEj0hQgrdboCQJXl40Fd5DV6S1QM+AUUj6ftGQINtdWrco69A4JknSTq2C8Gs5t7MxQ
-	btPlNLPqFnGlFcuSHDrFUkqjYx4leS9hYStxufOixKU5esyDBXephv0JNxav138qpsxTx/k99O7FB
-	i3z0aeHGz6sVgxvp07EPcFt8VeKEk0AMGGtojeW41YS+zfPDDaMi2RpO469rBMPlLQadYbW5AkzBO
-	HuhJCcdA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hgDKXubw77KdgweCTG67NGe7D1ZsFSC7veEKw8yR7o0=; b=yYxHRtWmscCGKd6nU6aTkHaSZH
+	Gwks/zBcAPbae8SgkIHPbNW3Q2Vsu5pS2LHRBTcgsmscvM8+c9pWTyPzqEq/atURocA9aJn2widpp
+	Ey1n+ldcFBunIpxhVMYsE4kFFj2ud4nCY8BTW7I840IxnqhHE/pt2OkLQm7TFk4hm6nzyYCJuHi2/
+	96zxcGpuVrdlzgMNUmnFFfDWpTdwZKFBwgYK7x/4VVfcTPPYnXdrYzBXTfE/fSz3lPmP7oHtLqW8l
+	6M9MoFarEYbugAS3qbXtQap49BRNQfmQy1dlmHk2QJrigADIDbNtBYsRmtoTKKKfykvUvn/CK0yM0
+	YRAcJMBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOWCN-0000000G6YM-21nt;
-	Thu, 27 Nov 2025 07:13:51 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1vOWkv-0000000G9mH-1V4A;
+	Thu, 27 Nov 2025 07:49:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOWCL-0000000G6Xs-0IIu
+	id 1vOWkt-0000000G9kx-0S4z
 	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Nov 2025 07:13:50 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-477a2ab455fso4505565e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 26 Nov 2025 23:13:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1764227627; x=1764832427; darn=lists.infradead.org;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=MQY//M0GqP2UQAmlCOJ4wuisLMBRO71rgyYj5ORvoMQ=;
-        b=slrdjwOtdO/N9wkkyzgoA0XpOzTNJA/RHycCwx087hqwNpR8+8VE+VrdSKjc9rGdBw
-         PNf/nlZcQY95yN5Fhs60taIx64FbZcaXRUL1cPSndSgQnUcjK+hwtMIWFOIAsU1wsdbx
-         VtbykuTOHByzwq+SyPYy6cgJH+lA/yAND3yIU6hMkhmyCCMvJjaX2IEik2VuGO9H1bzA
-         e8CROt/nXf0udjoPl4lGqrZATr+EjiT1Gd3tvDGXb2F7U7vlsw/sunLu7OGkPQLj7uR2
-         F8pCV9MTh+px/Qz9e2NoUUJQrElE6B9MMOf2CKZ+s7hTD+YRt9xi6x2ou4KiXDgAEGhH
-         kiQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764227627; x=1764832427;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=MQY//M0GqP2UQAmlCOJ4wuisLMBRO71rgyYj5ORvoMQ=;
-        b=AqMqiIJW43yB6E/wCPmvGGrWuNokMa3szO2EYqk2l6PP0HG2Bl+NlWSKSR8gbBvMwF
-         HpLQLYfr92zv6RDf4HavSLErNzWZ7UpUwuupbFb9Y+xONKIGCx07YHcWM86tW1QeUE5Q
-         TbJYQfsgS4FhxIu9wrtsAauafXJM1TjT0Hvi2V6bxGoJgRPJf3utOKq2uMVtYip76rJP
-         J65EVIlt1bFd+reOFodg0zbRmDeHRFqqj04cz7y4PUzhbAHipNTTnqLWjSvfTNq0f15R
-         vs85RYPSb81R707HtZP+eL5+fwe5/7r1uDf7fDeguUJZn01zvuItZlZZkyzjNQlG3nbC
-         zptA==
-X-Gm-Message-State: AOJu0YxCShGnlWrPW3nUy7Be0aLDJcn1FFqNX4mJj++beyNNFT3kw1oo
-	vx5q21EUbHUru3bHTYdmaHjbYzDlPZyYssXgQAPLRlPYbJusbCd4J9s0IrQh4acOhavMKiftpez
-	TQqMF
-X-Gm-Gg: ASbGncsecg1PimVsH3bxn79qgZgjRpqGY8CxZR2vTTHaP+XLmXdSAfr/rmP2wq5gI+f
-	c0JlMnttv8ds8rIUG7BAghdHeKZjjPxlShepN5DsZ1HTY1GvypAiSf6vLZODwOMHcSEqWZemPfs
-	+59fh2bjzS5T1/9MSdGa+LOoJg5D4AGqBBPwtUvJbVPkh1fDMZE7CQ943Q9NdUXGClTO9bw7pWY
-	HMtnRQwcMPs/mwC8XiEAKz+Uhj3nPS0Flw2X3pZvmCO8vcY/sUUhd0gOoEDLZtLK+T7Ii15In7q
-	MpUQn+QPJVFHjircW+8ChKAzp5J8g1Hg5CItJXm2/mXhDNcmywVthUsdNwe8UaZlQRYebERghpY
-	7QVz4A71qaQ4TKJ52W/NZU167Ozb1gLKb0STA/6JwQQ7uAZBZBjFh2kfVjC6kgY1c2E6umiJZJk
-	INCdv7GxbOdvMoeJ4d
-X-Google-Smtp-Source: AGHT+IGlyt0omxutxQSzZfKtlGF/0vfOUKKkvYCc5HfAf7Jn5JWQ4TkeXsfpiiHq08eqgfbVw7CtFg==
-X-Received: by 2002:a05:600c:1ca5:b0:475:dde5:d91b with SMTP id 5b1f17b1804b1-477c1115ff6mr256500925e9.17.1764227627158;
-        Wed, 26 Nov 2025 23:13:47 -0800 (PST)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-4790ab8bb21sm85258995e9.0.2025.11.26.23.13.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Nov 2025 23:13:45 -0800 (PST)
-Date: Thu, 27 Nov 2025 10:13:41 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Shayne Chen <shayne.chen@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org
-Subject: [bug report] wifi: mt76: mt7996: use correct link_id when filling
- TXD and TXP
-Message-ID: <aSf6JdCEnVQ6tFJa@stanley.mountain>
+	Thu, 27 Nov 2025 07:49:32 +0000
+X-UUID: 97305ea2cb6511f0a52f393f94899d25-20251127
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=hgDKXubw77KdgweCTG67NGe7D1ZsFSC7veEKw8yR7o0=;
+	b=sUPs2Au5U9mHMRX5WAAU0AlOzm/5NXxngYnt5n9fwGaUa6H4VXiQviqj85k1Q2KQeeIj+EuC2uDOvYEA9R7u2/KAMkGAMhlR921XfpQ2WtUB/fRTEaotSD7aDJEGxyvwyczxSPP4UeBDxbUtKlxtNGdtSGdN5/sEw4u8q4/o8/Q=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:93f8f5cf-13bc-429d-bd02-f6b20fdc2c10,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-25
+X-CID-META: VersionHash:a9d874c,CLOUDID:47c95a58-17e4-43d2-bf73-55337eed999a,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 97305ea2cb6511f0a52f393f94899d25-20251127
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <quan.zhou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 220620513; Thu, 27 Nov 2025 00:49:23 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Thu, 27 Nov 2025 15:49:21 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Thu, 27 Nov 2025 15:49:20 +0800
+From: Quan Zhou <quan.zhou@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	Leon Yen <Leon.Yen@mediatek.com>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>, Allan Wang <allan.wang@mediatek.com>, KM Lin
+	<km.lin@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Shengxi Xu
+	<shengxi.xu@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, CH Yeh
+	<ch.yeh@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, linux-wireless
+	<linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Quan Zhou <quan.zhou@mediatek.com>,
+	<stable@vger.kernel.org>
+Subject: [PATCH v2] wifi: mt76: mt7925: fix AMPDU state handling in mt7925_tx_check_aggr
+Date: Thu, 27 Nov 2025 15:49:11 +0800
+Message-ID: <d5960fbced0beaf33c30203f7f8fb91d0899c87b.1764228973.git.quan.zhou@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251126_231349_169345_C9A25E2A 
-X-CRM114-Status: UNSURE (   8.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251126_234931_155499_BAFA2D4D 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,108 +92,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I suspect these are false positives...  Hopefully it doesn't take too
-long to review.
+Previously, the AMPDU state bit for a given TID was set before attempting
+to start a BA session, which could result in the AMPDU state being marked
+active even if ieee80211_start_tx_ba_session() failed. This patch changes
+the logic to only set the AMPDU state bit after successfully starting a BA
+session, ensuring proper synchronization between AMPDU state and BA session
+status.
 
-Hello Shayne Chen,
+This fixes potential issues with aggregation state tracking and improves
+compatibility with mac80211 BA session management.
 
-Commit 85cd5534a3f2 ("wifi: mt76: mt7996: use correct link_id when
-filling TXD and TXP") from Nov 6, 2025 (linux-next), leads to the
-following Smatch static checker warning:
+Fixes: 44eb173bdd4f ("wifi: mt76: mt7925: add link handling in mt7925_txwi_free")
+Cc: stable@vger.kernel.org
 
-drivers/net/wireless/mediatek/mt76/mt7996/mac.c:1064 mt7996_tx_prepare_skb() error: we previously assumed 'sta' could be null (see line 1049)
-drivers/net/wireless/mediatek/mt76/mt7996/mac.c:1104 mt7996_tx_prepare_skb() error: we previously assumed 'vif' could be null (see line 1048)
+Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
+---
+v2: modify to avoid weakening atomicity
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/mac.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-    1038 int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
-    1039                           enum mt76_txq_id qid, struct mt76_wcid *wcid,
-    1040                           struct ieee80211_sta *sta,
-    1041                           struct mt76_tx_info *tx_info)
-    1042 {
-    1043         struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)tx_info->skb->data;
-    1044         struct mt7996_dev *dev = container_of(mdev, struct mt7996_dev, mt76);
-    1045         struct ieee80211_tx_info *info = IEEE80211_SKB_CB(tx_info->skb);
-    1046         struct ieee80211_key_conf *key = info->control.hw_key;
-    1047         struct ieee80211_vif *vif = info->control.vif;
-    1048         struct mt7996_vif *mvif = vif ? (struct mt7996_vif *)vif->drv_priv : NULL;
-    1049         struct mt7996_sta *msta = sta ? (struct mt7996_sta *)sta->drv_priv : NULL;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+index 871b67101976..5e5b1df78633 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+@@ -881,8 +881,10 @@ static void mt7925_tx_check_aggr(struct ieee80211_sta *sta, struct sk_buff *skb,
+ 	else
+ 		mlink = &msta->deflink;
+ 
+-	if (!test_and_set_bit(tid, &mlink->wcid.ampdu_state))
+-		ieee80211_start_tx_ba_session(sta, tid, 0);
++	if (!test_and_set_bit(tid, &mlink->wcid.ampdu_state)) {
++		if (ieee80211_start_tx_ba_session(sta, tid, 0))
++			clear_bit(tid, &mlink->wcid.ampdu_state);
++	}
+ }
+ 
+ static bool
+-- 
+2.45.2
 
-This code assumes that sta and vif can be NULL.
-
-    1050         struct mt76_vif_link *mlink = NULL;
-    1051         struct mt76_txwi_cache *t;
-    1052         int id, i, pid, nbuf = tx_info->nbuf - 1;
-    1053         bool is_8023 = info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
-    1054         __le32 *ptr = (__le32 *)txwi_ptr;
-    1055         u8 *txwi = (u8 *)txwi_ptr;
-    1056         u8 link_id;
-    1057 
-    1058         if (unlikely(tx_info->skb->len <= ETH_HLEN))
-    1059                 return -EINVAL;
-    1060 
-    1061         if (!wcid)
-    1062                 wcid = &dev->mt76.global_wcid;
-    1063 
---> 1064         if ((is_8023 || ieee80211_is_data_qos(hdr->frame_control)) && sta->mlo &&
-                                                                               ^^^^^^^^
-This dereferences it without checking.  Possibly the
-"(is_8023 || ieee80211_is_data_qos(hdr->frame_control))" condition
-means that sta is non-NULL.
-
-    1065             likely(tx_info->skb->protocol != cpu_to_be16(ETH_P_PAE))) {
-    1066                 u8 tid = tx_info->skb->priority & IEEE80211_QOS_CTL_TID_MASK;
-    1067 
-    1068                 link_id = (tid % 2) ? msta->seclink_id : msta->deflink_id;
-                                               ^^^^^^^^^^^^^^^^^^^^^^^^^
-This also is unchecked.
-
-    1069         } else {
-    1070                 link_id = u32_get_bits(info->control.flags,
-    1071                                        IEEE80211_TX_CTRL_MLO_LINK);
-    1072         }
-    1073 
-    1074         if (link_id != wcid->link_id && link_id != IEEE80211_LINK_UNSPECIFIED) {
-    1075                 if (msta) {
-    1076                         struct mt7996_sta_link *msta_link =
-    1077                                 rcu_dereference(msta->link[link_id]);
-    1078 
-    1079                         if (msta_link)
-    1080                                 wcid = &msta_link->wcid;
-    1081                 } else if (mvif) {
-    1082                         mlink = rcu_dereference(mvif->mt76.link[link_id]);
-    1083                         if (mlink && mlink->wcid)
-    1084                                 wcid = mlink->wcid;
-    1085                 }
-    1086         }
-    1087 
-    1088         t = (struct mt76_txwi_cache *)(txwi + mdev->drv->txwi_size);
-    1089         t->skb = tx_info->skb;
-    1090
-    1091         id = mt76_token_consume(mdev, &t);
-    1092         if (id < 0)
-    1093                 return id;
-    1094
-    1095         /* Since the rules of HW MLD address translation are not fully
-    1096          * compatible with 802.11 EAPOL frame, we do the translation by
-    1097          * software
-    1098          */
-    1099         if (tx_info->skb->protocol == cpu_to_be16(ETH_P_PAE) && sta->mlo) {
-                                                                         ^^^^^^^^
-    1100                 struct ieee80211_hdr *hdr = (void *)tx_info->skb->data;
-    1101                 struct ieee80211_bss_conf *link_conf;
-    1102                 struct ieee80211_link_sta *link_sta;
-    1103
---> 1104                 link_conf = rcu_dereference(vif->link_conf[wcid->link_id]);
-                                                     ^^^^^
-
-    1105                 if (!link_conf)
-    1106                         return -EINVAL;
-    1107
-    1108                 link_sta = rcu_dereference(sta->link[wcid->link_id]);
-    1109                 if (!link_sta)
-    1110                         return -EINVAL;
-    1111
-
-regards,
-dan carpenter
 
