@@ -4,66 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CBF5D1119B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 Nov 2025 22:05:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CF92D116E6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Nov 2025 01:55:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wvwO2B91MSoJzjUbG+aFdaY1a90YF3q4uxdd57PU4fg=; b=soePifAJUeRWmLJcytT5WqSjqK
-	0tzL7maP8SbX8XxWlW6OMEx4gLgFFENxElskmFOFECZ5KPFvrzJSTe2yNSAmm1csUbMytpVLEuHOU
-	qQlY/76h49h/KVVOmFiDAwdOqLpDFico7+2coPGf4e01BFWIYSozEE8ilW59DyjTkTJWVvQOhlBuR
-	pXMNQLNF+uBlmoK2ahSUFyTUZoi/m9ZR/wfNqCL2ROsWSCxS24DEPrOp2LeWqVJ6pT/0wRxSNGbvU
-	0nrtUAOKRYsvQCbNnVZvByqKOD1fKhcl+ms+quN4RME+8Jbi3KujCLKaP0kQmXHaUx/NTL09zwIvT
-	mtAPW6WA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SqD764/xYsxDahcoC1aGtQmXnKzmk/gUF12psLzzltQ=; b=4zmafVVFfs1glwD0L65NJAFdtf
+	GnQo5fF0ccmnNDkXrIg+mDRbDHfU426JlV//u26MxukM9jbkNVkXoE7taonXXPk/UwR2AoeOQ8caw
+	xqnMuUllKvpX9PkQHFa0MO6cYcCY437MJ344y3EGacGys82kXlhhO6e3ZGJNui21PwMzJ7xSXFCmI
+	F1k00lU7qfvuFaAo14p6XTGwnZzUA9C4c/0fG9emEtECNjl+iTFIAGGhN1noFudDi/uAxlxVRc61H
+	iw+cD5omLxaGlQVUmSA46gi6ahHdZs5bDHiLc6JAInmMJZFW5iWNtLHUEEQtB2i67O1igGDPBKsVq
+	LNXQe6Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vONdg-0000000FhWS-3OCk;
-	Wed, 26 Nov 2025 22:05:28 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vORDx-0000000FriE-3Udj;
+	Thu, 27 Nov 2025 01:55:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vONdd-0000000FhVA-2Zv8;
-	Wed, 26 Nov 2025 22:05:26 +0000
+	id 1vORDt-0000000Frhf-0OI9;
+	Thu, 27 Nov 2025 01:55:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D77DC404B5;
-	Wed, 26 Nov 2025 22:05:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B09DBC4CEF7;
-	Wed, 26 Nov 2025 22:05:22 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4C1B04387C;
+	Thu, 27 Nov 2025 01:55:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E68CBC4CEF7;
+	Thu, 27 Nov 2025 01:55:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764194724;
-	bh=qjypqAhSdHEv0LGJSOTuNEGmIHFAdFLubLTiD2vfKh8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=hQjUTUTioHpjSn3KWvOSVDRP5yBj9Ei9rzYGZ02nf0cp2wYg20DdIRCiy3j65sm7/
-	 2KcPaygyNgF50QidfArsgNDNi3xAlVju+aC9gOKirWUxzJNrslqqNrW2hz89Wyffgw
-	 Sd67zPOe+jz2lw5C4bbvgel1bVz5m15SRo7KMupDqD8g0LyWbRvJWXjmYyzt0rp+oF
-	 +pGtuuPCrukGrGXcy+h8EpLlwEYfeXocLfCtE4h949uXdYYxbljSkg6U+CaT5ItrH4
-	 DO9I5QDSRnw0EqLtAR1fzZLutAZoEjJxYNUZsUQaigCohTRNfjUawP5Uw+pNR4RIpV
-	 VjTln1jq4nbQw==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, 
- Bartosz Golaszewski <brgl@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Samuel Kayode <samkay014@gmail.com>, 
- Matti Vaittinen <mazziesaccount@gmail.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, imx@lists.linux.dev
-In-Reply-To: <20251126-container-of-const-regulator-v1-0-eeec378144d4@oss.qualcomm.com>
-References: <20251126-container-of-const-regulator-v1-0-eeec378144d4@oss.qualcomm.com>
-Subject: Re: [PATCH 0/8] regulator: Use container_of_const() when all types
- are const
-Message-Id: <176419472245.151653.5849861246383246238.b4-ty@kernel.org>
-Date: Wed, 26 Nov 2025 22:05:22 +0000
+	s=k20201202; t=1764208504;
+	bh=/NqG17rwpRoq7YYKDty/OdxHUk6Tf8IpKhsClBMsOkg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EzYiOJa3YR9H6eZ8HCr1KToCFxIEO+ew/BcLqhj57zGekCM/ZK/Pr/eiTyQaXGvgv
+	 T5AhkQWLJvlTEBoFbvcJIDxxsmF6ndlEpDBQa/hmxDBJwgIigrTpQ6ZUOYPPt18jo7
+	 Kvd50M/qhN6chJCvZYY53aFrtDgpreG0isN+lQBIPAgnmshLUwdbUPoYSQ1au2st5M
+	 XXwsiF2q1J6/YoAI/TVrenCyJT3o9zykMk5Ki9Xk4l7s5zZMQDnA7G66aQgLnvVp/I
+	 1Xu19QcNEw7OTPqMlsFElD0TE/oyVjCXOQkJBWKAWcEvy0dGi9DPjnF/cVS+mfBIuW
+	 9b8HslW/nh5yQ==
+Date: Wed, 26 Nov 2025 19:55:02 -0600
+From: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Saravana Kannan <saravanak@google.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Yangtao Li <tiny.windzz@gmail.com>, Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@linaro.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Maximilian Luz <luzmaximilian@gmail.com>,
+	Hans de Goede <hansg@kernel.org>,
+	Ilpo =?iso-8859-1?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-arm-msm@vger.kernel.org, platform-driver-x86@vger.kernel.org,
+	linux-tegra@vger.kernel.org,
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Subject: Re: [PATCH v2 00/11] of: Add wrappers to match root node with OF
+ device ID tables
+Message-ID: <20251127015502.GA3141507-robh@kernel.org>
+References: <20251112-b4-of-match-matchine-data-v2-0-d46b72003fd6@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-88d78
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251112-b4-of-match-matchine-data-v2-0-d46b72003fd6@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251126_140525_697922_187319A3 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20251126_175505_173936_5E51ED95 
+X-CRM114-Status: GOOD (  22.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,57 +98,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 26 Nov 2025 17:58:43 +0100, Krzysztof Kozlowski wrote:
-> Use container_of_const(), which is preferred over container_of(), when
-> the argument 'ptr' and returned pointer are already const, for better
-> code safety and readability.
+On Wed, Nov 12, 2025 at 11:28:45AM +0100, Krzysztof Kozlowski wrote:
+> Changes in v2:
+> - Drop cpufreq/ti change: not correct.
+> - Drop soc/qcom/qcom_pd_mapper.c - objections from Dmitry and I think
+>   better to drop the patch in such case.
+> - I did not implement feedback for first patch to make the
+>   of_machine_compatible_match() matching machines in arbitrary nodes,
+>   because there is no such use case possible and no arguments were provided.
+>   I also did not use cleanup.h in first patch because existing code
+>   of_device_get_match_data() does not use it and I prefer uniformity.
 > 
-> Some drivers already have const everywhere, so container_of_const can be
-> directly used. In few other drivers, the final pointer can be constified
-> that way.
+> - Add Ack/Rb tags.
+> - Link to v1: https://patch.msgid.link/20251106-b4-of-match-matchine-data-v1-0-d780ea1780c2@linaro.org
 > 
-> [...]
+> Dependency/merging
+> ==================
+> All patches depend on the first patch, thus everything could go via
+> Rob's tree with people's acks.
+> 
+> Description
+> ===========
+> Several drivers duplicate same code for getting reference to the root
+> node, matching it against 'struct of_device_id' table and getting out
+> the match data from the table entry.
+> 
+> There is a of_machine_compatible_match() wrapper but it takes array of
+> strings, which is not suitable for many drivers since they want the
+> driver data associated with each compatible.
+> 
+> Add two wrappers, similar to existing of_device_get_match_data():
+> 1. of_machine_device_match() doing only matching against 'struct
+>    of_device_id' and returning bool.
+> 2. of_machine_get_match_data() doing the matching and returning
+>    associated driver data for found compatible.
+> 
+> Best regards,
+> Krzysztof
+> 
+> ---
+> Krzysztof Kozlowski (11):
+>       of: Add wrappers to match root node with OF device ID tables
+>       cpufreq: dt-platdev: Simplify with of_machine_get_match_data()
+>       cpufreq: mediatek: Simplify with of_machine_get_match_data()
+>       cpufreq: sun50i: Simplify with of_machine_device_match()
+>       cpuidle: big_little: Simplify with of_machine_device_match()
+>       firmware: qcom: scm: Simplify with of_machine_device_match()
+>       irqchip/atmel-aic: Simplify with of_machine_get_match_data()
+>       platform: surface: Simplify with of_machine_get_match_data()
+>       powercap: dtpm: Simplify with of_machine_get_match_data()
+>       soc: qcom: ubwc: Simplify with of_machine_get_match_data()
+>       soc: tegra: Simplify with of_machine_device_match()
+> 
+>  drivers/cpufreq/cpufreq-dt-platdev.c               | 15 ++-----
+>  drivers/cpufreq/mediatek-cpufreq.c                 | 12 +-----
+>  drivers/cpufreq/sun50i-cpufreq-nvmem.c             | 11 +----
+>  drivers/cpuidle/cpuidle-big_little.c               | 11 +----
+>  drivers/firmware/qcom/qcom_scm.c                   | 17 +-------
+>  drivers/irqchip/irq-atmel-aic-common.c             | 15 ++-----
+>  drivers/of/base.c                                  | 47 ++++++++++++++++++++++
+>  .../platform/surface/surface_aggregator_registry.c | 13 +-----
+>  drivers/powercap/dtpm.c                            | 16 +-------
+>  drivers/soc/qcom/ubwc_config.c                     | 14 ++-----
+>  drivers/soc/tegra/common.c                         | 12 +-----
+>  include/linux/of.h                                 | 13 ++++++
+>  12 files changed, 79 insertions(+), 117 deletions(-)
 
-Applied to
+Applied, thanks.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
-
-Thanks!
-
-[1/8] regulator: Use container_of_const() when all types are const
-      commit: ac1530cdea9846c6bff31827c0c4dffcbc186e6a
-[2/8] regulator: bd71815: Constify pointers to 'regulator_desc' wrap struct
-      commit: 788915a22bdfde0925c074056056e7d408c242d0
-[3/8] regulator: bd71828: Constify pointers to 'regulator_desc' wrap struct
-      commit: d02ea816cccae6c02c7c026b5a74bf99a784c9c8
-[4/8] regulator: bd718x7: Constify pointers to 'regulator_desc' wrap struct
-      commit: 7a7e1ed307de6cc68639f602f3fa247ec0903354
-[5/8] regulator: bd96801: Constify pointers to 'regulator_desc' wrap struct
-      commit: 50011cacaeb9556d65067ec8e757e3987ecf0f2b
-[6/8] regulator: mt6358: Constify pointers to 'regulator_desc' wrap struct
-      commit: 438e90a287c86253dbb47e7fa43c4474f91ee7eb
-[7/8] regulator: pca9450: Constify pointers to 'regulator_desc' wrap struct
-      commit: 03c3bdebaad23d6698a3cb8a11a915d8bdebf28f
-[8/8] regulator: pf9453: Constify pointers to 'regulator_desc' wrap struct
-      commit: 6341646f7225343f57c8cbcb6a4d25b3270f4111
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Rob
 
