@@ -4,111 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A967CFD2F6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Nov 2025 15:07:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BF0ACFD2F6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 Nov 2025 15:54:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xb2gYHXIhVp2zaSFmlDMNszWhEx2yHpcG9wfBD9WQ6Q=; b=CO3tYa0gHZU3UcfdEV9+VGlCtf
-	yCXOhsA6hKom494UKWjBlMxqWdIZDbJh+AeVhWE3CQ9efbDoiZ73evE3CpuqniFSIo5jWEvKlXfM+
-	G84j0xUGQ2/vpwndEpFknbAYeH+X9PDW9lQsYS2dOSxaAc7u18UPx6+kHVN3ruwGF0UXvWRim1krH
-	nnPKHbkvo0Vo4tpiaedm+VnE1Kr9JTtN7Bxw8VQxtraD5LHb9g0LLTGq3d0QVYfcp25CX4f8W1TNE
-	LKVezWObTI3uMSejs8VT+Rt6lNQZCSWekhSj/9qvjdN6FJJItdLcmeyzTBPTGmf4ZiTyaakWtmSLX
-	PkWVzJBQ==;
+	bh=8l9LWCP9+TsEq7Plg/TVOSpIDqtezTybfhT9PqGli1g=; b=TshvR35UlwWiEe3woCq9zElovM
+	sT1Gk9vcWp0t+53b6xn1dafWCUltWv5KZHCrpd7jHxwxA/xG/O5Cglx8a+Ccu2Xuez3xb/vSmbF+T
+	xhNAuIpIBCGBm9I4BaxY3htz8xFxO4tT3wovRM1GVAqvfOyy6NsYqg3zgLFDRUa406hMMRWgWrPTJ
+	DBx59CpGzr1Ff81oLKSrm1AA0xsXE35qjLeK9Kk6QMmL9krzaBq2mJ/1tkKmi79rU6wkVtT0ZJRQu
+	/zVr/kuPypn8VZlxQ2ppofXnpreNZMGi2+M6MVSxbs0HdL0wOnXDttnpOYq5SUOCWnU5Q7fhkHALL
+	d+VgQNzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOdad-0000000Gp72-1rF3;
-	Thu, 27 Nov 2025 15:07:23 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1vOeJs-0000000GsBj-40VP;
+	Thu, 27 Nov 2025 15:54:08 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOdaa-0000000Gp4q-18Vn
-	for linux-mediatek@lists.infradead.org;
-	Thu, 27 Nov 2025 15:07:22 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 987A91A1DB0;
-	Thu, 27 Nov 2025 15:07:15 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 641AD6068C;
-	Thu, 27 Nov 2025 15:07:15 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id EE57C102F218C;
-	Thu, 27 Nov 2025 16:06:51 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1764256032; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 in-reply-to:references; bh=Xb2gYHXIhVp2zaSFmlDMNszWhEx2yHpcG9wfBD9WQ6Q=;
-	b=KsDxrTwJZ35P4V4zqNgBRz6dueQQQ479lYnTv33vH6BaAZQ6mqaBR8WEopD6/WxoiDZf3C
-	Ic4RTSKoLEfjd0/q+TBQmqIrfWBRSTeCoErZlb34wHoEcX2HAzuN2RzutFpS6+d2ln9KMJ
-	TSvAsAUfwMfwSBd4rCMr2Fdi3SKnKSNaEM9vqWiV42ClnoYd2t6PVCTiOsInGdUD2yiqj4
-	ZzTUOWwdLINFYrJ9uWeuCkQFxLH7ib2+v5JAxnvTykYWonFW1xB3OWNxxohmbmwdgPC/rA
-	Ba8/f4uTLQUuaOMbgPFSeaBwbd+ExYFXfFw+9W2+71ncOaO/+QIwmKbAGZv6Rw==
-From: Romain Gantois <romain.gantois@bootlin.com>
-To: "H. Nikolaus Schaller" <hns@goldelico.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Jonathan Cameron <jic23@kernel.org>,
- David Lechner <dlechner@baylibre.com>,
- Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>,
- Andy Shevchenko <andy@kernel.org>, Guenter Roeck <linux@roeck-us.net>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-iio@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Peter Rosin <peda@axentia.se>,
- Mariel Tinaco <Mariel.Tinaco@analog.com>,
- Lars-Peter Clausen <lars@metafoo.de>,
- Michael Hennerich <Michael.Hennerich@analog.com>,
- Kevin Tsai <ktsai@capellamicro.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Eugen Hristev <eugen.hristev@linaro.org>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>,
- Sebastian Reichel <sre@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Support Opensource <support.opensource@diasemi.com>,
- Paul Cercueil <paul@crapouillou.net>, Iskren Chernev <me@iskren.info>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Matheus Castello <matheus@castello.eng.br>,
- Saravanan Sekar <sravanhome@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Casey Connolly <casey.connolly@linaro.org>,
- Pali =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>,
- Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Amit Kucheria <amitk@kernel.org>,
- Thara Gopinath <thara.gopinath@gmail.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>,
- Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Olivier Moysan <olivier.moysan@foss.st.com>,
- Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Dixit Parmar <dixitparmar19@gmail.com>, linux-hwmon@vger.kernel.org,
- linux-input@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-pm@vger.kernel.org, linux-mips@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-sound@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com,
- Andy Shevchenko <andriy.shevchenko@intel.com>
-Subject: Re: [PATCH v4 0/6] Add support for the LTM8054 voltage regulator
-Date: Thu, 27 Nov 2025 16:06:47 +0100
-Message-ID: <8695751.T7Z3S40VBb@fw-rgant>
-In-Reply-To: <0E900830-E248-4F0F-A048-075EAF1D2440@goldelico.com>
-References: <20251124-ltm8054-driver-v4-0-107a8a814abe@bootlin.com>
- <3021060.e9J7NaK4W3@fw-rgant>
- <0E900830-E248-4F0F-A048-075EAF1D2440@goldelico.com>
+	id 1vOeJq-0000000GsBA-3v8H;
+	Thu, 27 Nov 2025 15:54:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id BCC9760224;
+	Thu, 27 Nov 2025 15:54:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 73E5FC4CEF8;
+	Thu, 27 Nov 2025 15:53:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764258845;
+	bh=XZh8Am0flcWfvfawgkFuAwpjKDq4TvWS83SNiDd6NuM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FYpXrYRbASFQ/9C7rRjqhxSeT8JnwjTbo4WJZiENuT7AhCcej8OJBAsDWtVvVmn5i
+	 +UtH1RmYTAlvNsvN6yCy0IJyC8UNmxTRoWVYCTJdUB+5v2A5idsCX2R2CE8MFBaqKR
+	 w3cF4GwCXK/hTW2vp0Fnoi29iGXNwjOjDK4KBFKiBQoNSbUAWkIYMRKHgDuN1ONAck
+	 QP8rn/5x9NVcW2CNY+Juz82e3owgEu2GOj0w/J/l60+dhxszr0VU6bwF1J1WHn6QCE
+	 2mAsHwIsZKFZiT9oDVPtPWrySL9normVU7tUlcJXeYLk+A351eDTpTLrCKX8XYTcgy
+	 b/aMZxFMxgwYg==
+Date: Thu, 27 Nov 2025 16:53:55 +0100
+From: Lorenzo Pieralisi <lpieralisi@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Linus Walleij <linusw@kernel.org>, Lei Xue <lei.xue@mediatek.com>,
+	Hanjun Guo <guohanjun@huawei.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	yong.mao@mediatek.com, qingliang.li@mediatek.com,
+	Fred-WY.Chen@mediatek.com, ot_cathy.xu@mediatek.com,
+	ot_shunxi.zhang@mediatek.com, ot_yaoy.wang@mediatek.com,
+	ot_ye.wang@mediatek.com, linux-acpi@vger.kernel.org,
+	robh@kernel.org
+Subject: Re: [PATCH 2/3] pinctrl: mediatek: Add acpi support
+Message-ID: <aSh0EyGm9ZHAc3dN@lpieralisi>
+References: <20251125023639.2416546-1-lei.xue@mediatek.com>
+ <20251125023639.2416546-3-lei.xue@mediatek.com>
+ <CAD++jL=h4ZEgrjgGOfgFyAXBM7EL91ZD-La82UQ7GPOXv8h9WQ@mail.gmail.com>
+ <aScwaxBG53dnZ4a4@lpieralisi>
+ <aSdBu-B9mwU2-1_S@smile.fi.intel.com>
+ <aSgipbe75hrwhTD7@lpieralisi>
+ <aShgYukPRfDkq_Z0@smile.fi.intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="nextPart10847283.nUPlyArG6x";
- micalg="pgp-sha512"; protocol="application/pgp-signature"
-X-Last-TLS-Session-Version: TLSv1.3
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251127_070720_452493_219D014E 
-X-CRM114-Status: GOOD (  31.95  )
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <aShgYukPRfDkq_Z0@smile.fi.intel.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,117 +86,155 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---nextPart10847283.nUPlyArG6x
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"; protected-headers="v1"
-From: Romain Gantois <romain.gantois@bootlin.com>
-To: "H. Nikolaus Schaller" <hns@goldelico.com>
-Date: Thu, 27 Nov 2025 16:06:47 +0100
-Message-ID: <8695751.T7Z3S40VBb@fw-rgant>
-In-Reply-To: <0E900830-E248-4F0F-A048-075EAF1D2440@goldelico.com>
-MIME-Version: 1.0
-
-On Tuesday, 25 November 2025 11:25:24 CET H. Nikolaus Schaller wrote:
-> Hi,
+On Thu, Nov 27, 2025 at 04:29:54PM +0200, Andy Shevchenko wrote:
+> On Thu, Nov 27, 2025 at 11:06:29AM +0100, Lorenzo Pieralisi wrote:
+> > On Wed, Nov 26, 2025 at 08:06:51PM +0200, Andy Shevchenko wrote:
 > 
-> > Am 25.11.2025 um 09:41 schrieb Romain Gantois
-> > <romain.gantois@bootlin.com>:
+> [...]
+> 
+> > > > I also assume/hope that we don't want to add a "reg-names" _DSD property either
+> > > > in ACPI to deal with this seamlessly in DT/ACPI (that was done for
+> > > > "interrupt-names"):
+> > > > 
+> > > > https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/firmware-guide/acpi/enumeration.rst?h=v6.18-rc7#n188
+> > > 
+> > > Hmm... Why not?
 > > 
+> > What's the policy there ?
+> 
+> > Half of the ACPI bindings for an interrupt
+> > descriptor are defined in the ACPI specs (ie _CRS) and the other half
+> > (ie "interrupt-names") is documented in the Linux kernel (or are we
+> > documenting this elsewhere ?) ?
+> 
+> Yeah, nobody pursued ACPI specification updates / addendum to make it fully
+> official. _De facto_ we have established practice for GPIOs enumeration
+> (as most used resources in the OSes), Linux official for PWM, I²C muxes,
+> multi-functional HW (such as Diolan DLN-2, LJCA), Microsoft defined for
+> so called "USB hardwired" devices, Linux defined for LEDs and GPIO keys,
+> sensor mount matrix as per "most used" cases + DT analogue works just
+> because we have agnostic APIs in IIO to retrieve that. There are maybe
+> more, but don't remember
+> 
+> So, I think the practical "policies" are that:
+> - if it's defined in ACPI spec, we use the spec
+> - if there is Microsoft addendum, we rely on what Windows does
+> - WMI, EFI, and other "windoze"-like vendor defined cases
+> - if it makes sense, we establish practice from Linux perspective
+> - the rest, every vendor does what it does
+> 
+> That said, for the first two we expect OEMs to follow, for the third one
+> depends, but there are established WMI calls and other more or less "standard"
+> interfaces, so like the first two.
+> 
+> For the fourth one (Linux) we do, but living in the expectation that some or
+> more vendors fall to the fifth category and we might need to support that if
+> we want their HW work in Linux.
+> 
+> > Or we are saying that "interrupt-names" properties are added by kernel
+> > code _only_ (through software nodes, to make parsing seamless between DT
+> > and ACPI) based on hardcoded name values in drivers ?
+> 
+> No, the idea behind software nodes is to "fix" the FW nodes in case the FW
+> description can not be modified (and that might well happen to even DT in some
+> cases AFAIH). So, if some driver hard codes "interrupt-names" we expect that
+> new versions of the FW that support the HW that needs the property will be
+> amended accordingly.
+> 
+> "interrupt-names" has been established for ACPI to support a separate SMB alert
+> interrupt. However, I haven't heard any development of that IRL (for real
+> devices in ACPI environment).
+> 
+> > I don't think I can grok any example of the latter in the mainline.
 > > 
-> > This is planned support for a voltage regulator chip.
+> > I am asking because I'd need to add something similar shortly to make parsing
+> > of platform devices created out of ACPI static tables easier (I guess we
+> > can postpone discussion till I post the code but I thought I'd ask).
 > 
-> Well, but one which is not by itself programmable. So IMHO, it does not
-> support that chip, but the circuit it is used in.
+> Oh, I can go ahead and tell you, try to avoid that. Why?! Whatever,
+> indeed, please Cc me to that, I will be glad to study the case and
+> try to be helpful.
 > 
+> (Have you considered DT overlays instead? There is a big pending support for
+>  that for _ACPI_ platforms.)
 
-The boundary is a bit blurry in this case, sure.
+Long story short: we do need to create platform devices out of static
+table (eg ARM64 IORT) entries. Current code parses the table entries and
+try to map the devices IRQs (ie acpi_register_gsi()) when the platform
+device is created. Now, the interrupt controller that device IRQ's is
+routed to might not have probed yet. We have to defer probing and later,
+when the platform driver probes, map the IRQ.
 
-> > > Are you looking for a virtual "glue" driver to logically combine several
-> > > low level functions?
-> > 
-> > I'm looking for a clean userspace abstraction for this component, the low-
-> > level functions in this case are those of a voltage regulator.
-> 
-> As far as I understood it has
-> - constant voltage
-> - current can be limited
-> - it can be turned on/off
-> 
-> That means it is a fixed-regulator (for constant voltage and turn on/off)
-> and a mechanism to program the current limit (iio-dac). Both have clean
-> userspace abstraction.
-> 
-> What am I missing?
-> 
+Issue is: for OF nodes and ACPI devices, behind the platform device
+firmware node there is a standard firmware object, so implementing
+fwnode_irq_get() is trivial. For the devices I am talking about,
+the data providing GSI info (hwirq, trigger/polarity) is static
+table specific, so the idea was to stash that data and embed it in
+fwnode_static along with a irq_get() fwnode_operations function
+specific to that piece of data so that device drivers can actually do:
 
-In my case, the regulator has a DAC tapping into the feedback divider with 
-allows modifying the output voltage level. This isn't specific to the LTM8054 
-though, you can theoretically do this with any regulator chip that has a 
-feedback pin.
+fwnode_irq_get()
 
-...
-> The question remains if you want to solve something for a single board which
-> happens to have an LTM8054 or if you are solving a more general design
-> pattern.
-> 
-> In summary my view is that the LTM8054 is just a "fixed-regulator" which
-> gets an additional current-limiter feature by adding a DAC chip (which needs
-> a driver of course). So software control is required not by the LTM8054 but
-> by adding a DAC chip.
-> 
-> Another suggestion: what extending the "regulator-fixed", "regulator-gpio",
-> "regulator-fixed-clock" pattern by some
-> "regulator-gpio-iio-dac-current-limiter" driver to make it independent of
-> your specific chip?
-> 
-> By the way, are you aware of this feature of the regulator-gpio driver?
-> 
-> https://elixir.bootlin.com/linux/v6.18-rc7/source/drivers/regulator/gpio-reg
-> ulator.c#L97
-> 
+on the fwnode _seamlessly_ (if you still do wonder: those platform
+devices created out of static table entries in ACPI in OF are
+of_node(s)).
 
-That could be a preferable solution given that similar current limit and 
-output voltage limit control methods could apply to other regulator chips... 
-I'll have to think about it some more.
+There is a less convoluted solution (that is what some platform
+drivers in ACPI do today), that is, we pass the static table
+data in pdev->dev.platform_data and each platform_driver parses it differently.
 
-> Just to note: I am neither maintainer nor doing any decisions on this, just
-> asking questions for curiosity and from experience and giving hints for
-> alternative approaches, where I hope they help to find the really best
-> solution.
+That works but that also means the in the respective device drivers
+OF and ACPI IRQ (and MMIO) parsing differ (which is not necessarily
+a problem I just have to rewrite them all).
 
-Sure, I appreciate that.
+Now - when it comes to "interrupt-names". Some of the device drivers
+I mention do:
+
+eg platform_get_irq_byname_optional()
+
+that expects the IRQ to be mapped and stored in a named platform device resource.
+
+That's easy in DT - for two reasons:
+
+(1) "interrupt-names"
+(2) standard properties behind the of_node
+
+how to do that for fwnodes that aren't backed by either OF nodes or ACPI
+devices (that do use "interrupt-names" _DSD property) is a question.
+
+Mind, the "interrupt-names" thing is a detail in the whole mechanism.
+
+DT overlays to represent in ACPI those static table entries ?
+
+I vividly remember the days ACPI for ARM64 was being merged - that's what
+our crystal ball predicted :)
+
+This delayed IRQ mapping notwithstanding, I read what you wrote and took
+note. The worry is, this fwnode_*() (on ACPI nodes) interface trickling
+into subsystems where it should not (ie PCI, clocks, regulators) - hopefully
+the respective maintainers are keeping an eye on it.
 
 Thanks,
+Lorenzo
 
--- 
-Romain Gantois, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
-
---nextPart10847283.nUPlyArG6x
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEIcCsAScRrtr7W0x0KCYAIARzeA4FAmkoaQcACgkQKCYAIARz
-eA4wIA//cR+gzKtW78qSkS/qn3QD4fmem8sIoJemjJ96zZS/fPrrD7BVbwlzmT8Z
-PX35PtLLxRdN0CRWsdmEqAAwFLRMn0/UBGpROLNSqKZT9c3SisrVH5XlVV0s95LB
-fS6l3xzgbIjdqhGxwXgV+43B2OuuBLE9AopgYIwRunAam9+nECFHo9hU/4glxqrS
-O54WKxLhs7/BMJdpAv4T8UYjqKiC7Lvpd4oq43g64sacplSnZNv4iwqkga0oOtd8
-2IayCT5+gRm6xd9Xt/cVkQUQAFsoiieLLt87+JZP1ECtjcfwIsDiPBf49DvppELP
-SLg8qwG44QYRhfsPvdBRLFuvkmsu1rGZaBdRQZ+npfBkkwljuh6EllMbFgUOpuCR
-aFQleHJ/6naNsAZGxp4mW6x1YPwsiYeCQuQdffSq2DrTLEAnG3EV3wIB5TbMsF72
-p6glXdEj3uYECnRJ9Lql1PWO9MHGnubF2xCDqRIn7HDxq+DLmZkkZzg4c69/V1fy
-O7go8T5OfK1233Kqb1VDvY9SDRL5+nLo1tacht8yyrhq3LEUumAf7TFLXzBmN+QQ
-5TURL5uovvulw4c6SXs9sa7yriUKuayb9s5CKLsJJI4uYBt+Csyhm/fOfpuvKVm5
-Bryk0xixSfV1ekLMojoBFaS3AFNPGNCHqSmjGOEsaK8hrJ5HgkM=
-=KPmo
------END PGP SIGNATURE-----
-
---nextPart10847283.nUPlyArG6x--
-
-
-
+> > Are we going to do the same for "reg-names" ?
+> 
+> If it makes sense and we expect some vendor to follow that _in ACPI_,
+> why not?
+> 
+> > Most importantly, what is DT maintainers stance on the matter ?
+> 
+> AFAIK They don't care as long as there is a schema provided, accepted and
+> used in DT, if it's ACPI-only thing, then it most likely should be done
+> in ACPI-like way (see above the first two / three items: spec, MS, WMI/EFI).
+> 
+> > > > I am sorry I have got more questions than answers here - it would be good
+> > > > to understand where the line is drawn when it comes to OF/ACPI and fwnode
+> > > > heuristics compatibility.
+> 
+> -- 
+> With Best Regards,
+> Andy Shevchenko
+> 
+> 
 
