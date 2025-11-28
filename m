@@ -4,57 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 883D5D116F1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Nov 2025 16:52:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BE45D116F1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Nov 2025 16:52:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4LXnxBJlqd2UazTmBhwXwFStb/3+5cf3TPNAlsU5TvA=; b=MvdUK8yxudnq0e
-	c5xKQmtzfnaePPU3IPEjQ86FnMJOYwsEmxGDFSXqVW8hrXodev/kdreRc5/XsaSO3MIHL9G1xk8WE
-	b9sjKSYkNUK/dng9joacS1LVJgRVYCGdPqWIScQObtr3OA8+BoWWcRi9w6puk5xb+Bs1OBMp+zv5E
-	fyztIabzU5UhNrvUWyQUtbWF8HG24imgN1GCtKB2K0dsCzPP56RxEGbpHH7yV2xgPCtpUnAo3rBGn
-	zd3VbJgYsyVu+2bAqZQ5f4+Q7RlLHGhzesB8TJZsDga6l4jfy7zu7cxQ2TIB8Ts86Yx7clknLl152
-	n55xE9h0p0HR1c2REVfg==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bfxIpz9K+qEowy1gWs/Avt5i+RktBHE73O5CtmVeTcQ=; b=m2LIB2BoqcQ6wVq0R+NfP7Qp+C
+	w633oHZL4DnSFqz7fDXPAixm5XlJvMIbvjXFNz2GJEg7kEdJJU1xAF8v9tsguFmOw58yD7KQoK6o3
+	FKmv+LyvH7+IwgQDvzWOBdo1Gu2lDBkyfLBYHX8gex4OgaXBmK7eB2W5fHCOXJ/Cr4K9Cp7esVVpq
+	K+5iPQBPpUHjzUpJj5X/aMqeaKRd/sR4cWY7S8Yahsg/nH6FfebkuchH7sH/3KQOAsCmnhIxjdAB9
+	Rbs7XBXhqdnmWTGSIRC2ZeJGHoeWnmsvxTMfIMJoVCmAyNhv+cinkqG7hD16kUOGD0/UNJTWVHyRD
+	b9c0Vevg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vP1hS-00000000edv-3f2J;
-	Fri, 28 Nov 2025 16:52:02 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1vP1hZ-00000000egz-0UHx;
+	Fri, 28 Nov 2025 16:52:09 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vP1hO-00000000ecm-3F9R;
-	Fri, 28 Nov 2025 16:52:01 +0000
+	id 1vP1hV-00000000eeK-2d7v;
+	Fri, 28 Nov 2025 16:52:07 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id BCB57C16A3C;
-	Fri, 28 Nov 2025 16:51:30 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id E61A24E4194F;
+	Fri, 28 Nov 2025 16:52:03 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 83CD460706;
-	Fri, 28 Nov 2025 16:51:53 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 3B46510B02155;
-	Fri, 28 Nov 2025 17:51:37 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id B7B8D60706;
+	Fri, 28 Nov 2025 16:52:03 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id F058510B02176;
+	Fri, 28 Nov 2025 17:51:51 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1764348710; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding; bh=4LXnxBJlqd2UazTmBhwXwFStb/3+5cf3TPNAlsU5TvA=;
-	b=VUX78Sy4XiyC9MPlVpttqJ9SQIQnLJGEto9dm/Wz9ym7T7bN/CgnVlY9YH1bFcC0CgzUQe
-	cZofZ4OEZUrrcGm7JEzsnL/etiRVBFwZzGGetbM0bgfGQ8fhKl1CmChVPekpLxS7jOlSK/
-	B1kea5ki5mVy1By5DwWomHJRAzf/5aB3po6F7XpWKHUzRNA/KlBEfcw2dr1S/BoUKwTmTY
-	jTevGUZnNFJkK/0JxyFshBgnAEB0h6+hbX3C2stg8aS1MNDCf/acKsU6YDTC4b6Xv/aXH9
-	y6s8LhEMqH9Ez7UYbhzo3zb3DijYvmvDN8X+0amDd5uaA6wuXX7uEGzIbnqiwg==
+	t=1764348720; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=bfxIpz9K+qEowy1gWs/Avt5i+RktBHE73O5CtmVeTcQ=;
+	b=ih3sJ1QQr8jd58rRt3K3muSKtKm0l7Jc24utlAvq+x8N8L0p3eklyeAqHH2jdPkAiHdSGn
+	0xf4rkSmj7tDAJJ1S+zWATM4xmTyRjSkArM4cjdeg84QjMKFjAQdUe3E5RRn0Mf3vDtv6K
+	vlt/SO/CsqxKtclMhdGoDOg1Pny5mn8JjbZPnk6OMW5YNU5KO652fgprJRRjvgqFiaBdmb
+	rAD+0R/E+sXveq4R7aizVpB7w+MCC1k9gDcKodQa7QS3OmvziuSjuBTh3MZkjmo/GFH3mY
+	Ib012tpfglMM+VDSOQcPghZKDpHbFcArJAfMi7qW1EYXZVnD72BIw+5DLicMFA==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Subject: [PATCH v2 00/26] drm/bridge: add drm_of_find_bridge(), deprecate
- of_drm_find_bridge()
-Date: Fri, 28 Nov 2025 17:50:10 +0100
-Message-Id: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-0-88f8a107eca2@bootlin.com>
+Date: Fri, 28 Nov 2025 17:50:11 +0100
+Subject: [PATCH v2 01/26] drm/bridge: add of_drm_get_bridge()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIAMLSKWkC/5WNQQ6DIBQFr2JYlwaQFu2q92iMUQH9ifINUNPGe
- PeiaQ/Q5cxL3qwkGA8mkFu2Em8WCIAugThlpBsa1xsKOjERTFw454pqP9HWg05LM47Y0d7E+Rl
- 3X6OtLThdf3clS5bnVyVloUk6nL2x8DpijyrxACGifx/the/2lyn/ySycMsp0WxaNskYqeW8R4
- wju3OFEqm3bPvDOx3LmAAAA
-X-Change-ID: 20251117-drm-bridge-alloc-getput-drm_of_find_bridge-74903367448d
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-1-88f8a107eca2@bootlin.com>
+References: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-0-88f8a107eca2@bootlin.com>
+In-Reply-To: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-0-88f8a107eca2@bootlin.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
  Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
  Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
@@ -95,8 +92,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>,
 X-Mailer: b4 0.14.3
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251128_085159_376045_4B034429 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20251128_085205_813252_16A361DA 
+X-CRM114-Status: GOOD (  15.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,143 +108,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series deprecated of_drm_find_bridge(), adds a replacement which
-handles bridge refcounting, and converts most of the direct users.
+of_drm_find_bridge() does not increment the refcount for the returned
+bridge, but that is required now. However converting it and all its users
+is not realistically doable at once given the large amount of (direct and
+indirect) callers and the complexity of some.
 
-This is part of the work to support hotplug of DRM bridges. The grand plan
-was discussed in [0].
+Solve this issue by creating a new of_drm_get_bridge() function that is
+identical to of_drm_find_bridge() except it takes a reference. Then
+of_drm_find_bridge() will be deprecated to be eventually removed.
 
-Here's the work breakdown (➜ marks the current series):
-
- 1. ➜ add refcounting to DRM bridges struct drm_bridge,
-      based on devm_drm_bridge_alloc()
-    A. ✔ add new alloc API and refcounting (v6.16)
-    B. ✔ convert all bridge drivers to new API (v6.17)
-    C. ✔ kunit tests (v6.17)
-    D. ✔ add get/put to drm_bridge_add/remove() + attach/detach()
-         and warn on old allocation pattern (v6.17)
-    E. ➜ add get/put on drm_bridge accessors
-       1. ✔ drm_bridge_chain_get_first_bridge(), add cleanup action (v6.18)
-       2. ✔ drm_bridge_get_prev_bridge() (v6.18)
-       3. ✔ drm_bridge_get_next_bridge() (v6.19)
-       4. ✔ drm_for_each_bridge_in_chain() (v6.19)
-       5. ✔ drm_bridge_connector_init (v6.19)
-       6. … protect encoder bridge chain with a mutex
-       7. ➜ of_drm_find_bridge()
-          a. ➜ add of_drm_get_bridge(), convert most direct users
-	  b. convert other direct users
-	  c. convert bridge-only drm_of_find_panel_or_bridge() users
-       8. drm_of_find_panel_or_bridge, *_of_get_bridge
-       9. ✔ enforce drm_bridge_add before drm_bridge_attach (v6.19)
-    F. ✔ debugfs improvements
-       1. ✔ add top-level 'bridges' file (v6.16)
-       2. ✔ show refcount and list lingering bridges (v6.19)
- 2. … handle gracefully atomic updates during bridge removal
-    A. … Add drm_dev_enter/exit() to protect device resources
-    B. … protect private_obj removal from list
- 3. … DSI host-device driver interaction
- 4. ✔ removing the need for the "always-disconnected" connector
- 5. finish the hotplug bridge work, moving code to the core and potentially
-    removing the hotplug-bridge itself (this needs to be clarified as
-    points 1-3 are developed)
-
-[0] https://lore.kernel.org/lkml/20250206-hotplug-drm-bridge-v6-0-9d6f2c9c3058@bootlin.com/#t
-
-Almost all the functions returning a struct drm_bridge pointer have been
-modified to drm_bridge_get() the returned bridge, and their users updated
-to drm_bridge_put() it. See items 1.E.{1-6} above.
-
-of_drm_find_bridge() could be modified easily in the same way, but it has a
-lot of (direct + indirect) callers, and most notably
-drm_of_find_panel_or_bridge() which is very hard to adapt without reowrking
-the panel_bridge lifetime.
-
-This has been discussed in [1] and Maxime proposed an incremental approach:
-
-> So maybe we can just create drm_of_find_bridge() that takes a reference,
-> make of_drm_find_bridge() deprecated in favour of drm_of_find_bridge(),
-> add a TODO, and call it a day. People will gradually switch to the new
-> API over time.
-
-That proposal is implemented by this series. Most of the direct callers are
-also converted: they are all trivial conversions except for one, which is
-handled by the last 3 patches.
-
-Follow-up series will:
-- convert remaining direct callers of of_drm_find_bridge()
-- convert simple cases of drm_of_find_panel_or_bridge()
-
-[1] https://lore.kernel.org/dri-devel/20250319-stylish-lime-mongoose-0a18ad@houat/
-
+Suggested-by: Maxime Ripard <mripard@kernel.org>
+Link: https://lore.kernel.org/dri-devel/20250319-stylish-lime-mongoose-0a18ad@houat/
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+
 ---
+
 Changes in v2:
-- All patches: renamed drm_of_find_bridge() -> of_drm_get_bridge()
-- Various fixes and improvements to patches 1-6, see individual patches
-  changelog
-- Removed bouncing recipient: Edmund Dea <edmund.j.dea@intel.com>
-- Link to v1: https://lore.kernel.org/r/20251119-drm-bridge-alloc-getput-drm_of_find_bridge-v1-0-0db98a7fe474@bootlin.com
+- fix "mutex_unlock() before drm_bridge_get()", and use scoped_guard() to
+  do it cleaning instead of complicating code
+- rename to of_drm_get_bridge()
 
+Note: a simple implementation would just be
+  { return drm_bridge_get(of_drm_find_bridge(np)); }
+but it would release the mutex before getting the reference, so it is
+not safe. Make things simple by duplicating the code. A later patch will
+make instead the (to be deprecated) of_drm_find_bridge() become a wrapper
+of the new of_drm_get_bridge()
 ---
-Luca Ceresoli (26):
-      drm/bridge: add of_drm_get_bridge()
-      drm/bridge: deprecate of_drm_find_bridge()
-      drm/todo: add entry about converting to of_drm_get_bridge()
-      drm/bridge: make of_drm_find_bridge() a wrapper of of_drm_get_bridge()
-      drm/arcpgu: convert to of_drm_get_bridge()
-      drm/bridge: add devm_of_drm_get_bridge
-      drm/bridge: ite-it66121: use devm_of_drm_get_bridge() to put the next bridge
-      drm/bridge: imx8qxp-pixel-combiner: use devm_of_drm_get_bridge() to put the next bridge
-      drm/bridge: simple-bridge: use devm_of_drm_get_bridge() to put the next bridge
-      drm/bridge: tpd12s015: use devm_of_drm_get_bridge() to put the next bridge
-      drm/bridge: thc63lvd1024: use devm_of_drm_get_bridge() to put the next bridge
-      drm/bridge: imx8qxp-pxl2dpi: use devm_of_drm_get_bridge() to put the next and companion bridges
-      drm/bridge: lt8912b: use devm_of_drm_get_bridge() to put the hdmi bridge
-      drm/bridge: tfp410: use devm_of_drm_get_bridge() to put the next bridge
-      drm/bridge: imx8qxp-ldb: use devm_of_drm_get_bridge() to put the companion bridge
-      drm/rcar-du: lvds: use devm_of_drm_get_bridge() to put the next bridge
-      drm/meson: encoder_*: use devm_of_drm_get_bridge() to put the next bridge
-      drm/bridge: sii902x: use devm_of_drm_get_bridge() to put the next bridge
-      drm/mediatek: use devm_of_drm_get_bridge() to put the next bridge
-      drm/kmb: dsi: use devm_of_drm_get_bridge() to put the next bridge
-      drm/imx/ipuv3: use devm_of_drm_get_bridge() to put the next bridge
-      drm/exynos: hdmi: use devm_of_drm_get_bridge() to put the next bridge
-      drm/bridge: dw-hdmi: use devm_of_drm_get_bridge() to put the next bridge
-      drm/bridge: imx8qxp-pixel-link: simplify logic to find next bridge
-      drm/bridge: imx8qxp-pixel-link: simplify freeing of the remote device_node
-      drm/bridge: imx8qxp-pixel-link: convert to of_drm_get_bridge()
+ drivers/gpu/drm/drm_bridge.c | 25 +++++++++++++++++++++++++
+ include/drm/drm_bridge.h     |  5 +++++
+ 2 files changed, 30 insertions(+)
 
- Documentation/gpu/todo.rst                         | 16 ++++
- drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c           |  2 +-
- .../gpu/drm/bridge/imx/imx8qxp-pixel-combiner.c    |  2 +-
- drivers/gpu/drm/bridge/imx/imx8qxp-pixel-link.c    | 37 +++++----
- drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c       |  4 +-
- drivers/gpu/drm/bridge/ite-it66121.c               |  2 +-
- drivers/gpu/drm/bridge/lontium-lt8912b.c           |  2 +-
- drivers/gpu/drm/bridge/sii902x.c                   |  2 +-
- drivers/gpu/drm/bridge/simple-bridge.c             |  2 +-
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          |  2 +-
- drivers/gpu/drm/bridge/thc63lvd1024.c              |  2 +-
- drivers/gpu/drm/bridge/ti-tfp410.c                 |  2 +-
- drivers/gpu/drm/bridge/ti-tpd12s015.c              |  2 +-
- drivers/gpu/drm/drm_bridge.c                       | 91 ++++++++++++++++++----
- drivers/gpu/drm/exynos/exynos_hdmi.c               |  2 +-
- drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c            |  2 +-
- drivers/gpu/drm/kmb/kmb_dsi.c                      |  2 +-
- drivers/gpu/drm/mediatek/mtk_hdmi.c                |  2 +-
- drivers/gpu/drm/meson/meson_encoder_cvbs.c         |  2 +-
- drivers/gpu/drm/meson/meson_encoder_dsi.c          |  2 +-
- drivers/gpu/drm/meson/meson_encoder_hdmi.c         |  2 +-
- drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c        |  2 +-
- drivers/gpu/drm/tiny/arcpgu.c                      |  4 +-
- include/drm/drm_bridge.h                           | 10 +++
- 24 files changed, 143 insertions(+), 55 deletions(-)
----
-base-commit: e85e9ccf3f8404007f62dff9a02273fcdeb44206
-change-id: 20251117-drm-bridge-alloc-getput-drm_of_find_bridge-74903367448d
+diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+index 8f355df883d8..367b7a3d8aa3 100644
+--- a/drivers/gpu/drm/drm_bridge.c
++++ b/drivers/gpu/drm/drm_bridge.c
+@@ -1417,6 +1417,31 @@ void drm_bridge_hpd_notify(struct drm_bridge *bridge,
+ EXPORT_SYMBOL_GPL(drm_bridge_hpd_notify);
+ 
+ #ifdef CONFIG_OF
++/**
++ * of_drm_get_bridge - find the bridge corresponding to the device node in
++ *		       the global bridge list
++ * @np: device node
++ *
++ * The refcount of the returned bridge is incremented. Use drm_bridge_put()
++ * when done with it.
++ *
++ * RETURNS:
++ * drm_bridge control struct on success, NULL on failure
++ */
++struct drm_bridge *of_drm_get_bridge(struct device_node *np)
++{
++	struct drm_bridge *bridge;
++
++	scoped_guard(mutex, &bridge_lock) {
++		list_for_each_entry(bridge, &bridge_list, list)
++			if (bridge->of_node == np)
++				return drm_bridge_get(bridge);
++	}
++
++	return NULL;
++}
++EXPORT_SYMBOL(of_drm_get_bridge);
++
+ /**
+  * of_drm_find_bridge - find the bridge corresponding to the device node in
+  *			the global bridge list
+diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+index 0ff7ab4aa868..0977eab78aac 100644
+--- a/include/drm/drm_bridge.h
++++ b/include/drm/drm_bridge.h
+@@ -1313,8 +1313,13 @@ int drm_bridge_attach(struct drm_encoder *encoder, struct drm_bridge *bridge,
+ 		      enum drm_bridge_attach_flags flags);
+ 
+ #ifdef CONFIG_OF
++struct drm_bridge *of_drm_get_bridge(struct device_node *np);
+ struct drm_bridge *of_drm_find_bridge(struct device_node *np);
+ #else
++static inline struct drm_bridge *of_drm_get_bridge(struct device_node *np)
++{
++	return NULL;
++}
+ static inline struct drm_bridge *of_drm_find_bridge(struct device_node *np)
+ {
+ 	return NULL;
 
-Best regards,
 -- 
-Luca Ceresoli <luca.ceresoli@bootlin.com>
+2.51.1
 
 
