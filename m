@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B18D116F1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Nov 2025 16:52:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 367FDD116F1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Nov 2025 16:52:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cjiitGgWBhqA9qrGAIFtS5Bxwzyv65d8uw6FNgpjS8o=; b=wFciBOsWPRcQu1YRgVMzhWpmuL
-	/v/IjnbLpQtANp6sgiYCQUsZdO/2fMJmpdO6wcpw/FK2BdIeL1kPEli+AeCGNHdn40xOb9r5fe1uc
-	A2J5/QfGc+DdRliG0KzgbatcMSUEDvOluBaxenAsia3lMFJ9AB3Lel/6ydmyVOBvA+cCvANuDR0Ys
-	pt+a4sn3mp2uQ9MIMkfyKLoihfwl0tw2gSq5nHX3TmyD28nj3a4xPU5eScEcGYu6kyK4PqGC82Zkn
-	/ZKiajzs5MFim2FDbUrXwUPX2ieH+weYqT7/M6+R0rIGwTon5Xk6h8GYPAm90RDLVWObgnbU1cHPv
-	dyZ+fWgA==;
+	bh=lnQT9hncBALxwt6zSKKBcvvRQ9xJJffpDMu16HA1ozA=; b=Pr5Z7EbhqlVBmPs4kazMpnHXpr
+	6GQXF1Qr2nJO+Hwi+hoxc87Tq7ugn1hleVWI6B1bg8wVK24C9K9+4GPhqDwYC6TxihSo4kzEcYVcc
+	VyLi9PZQ03LtCQF8ZwCRAG1ug6Eb2AMN5zfrt2eW6bgf41lvm7V4i/iPhTEflRmZfzbYMQXm4Fyha
+	OoUX+MqplWLSqkQ9b8Ospsev9I0wFmkepncgOf9sdkWKPdNX+xZUx1iLtC6h48fDIzcfTXI4Z7/SZ
+	2zKSMO3yiSJFvFOctySXAX+6iGQIacwXxNKKXJ/mlkXNPidu7Dd2YFazWRt2pzy0WJQDhjr5kyFFQ
+	NcCibOUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vP1hn-00000000eoV-2IB4;
-	Fri, 28 Nov 2025 16:52:23 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1vP1hz-00000000evs-0Z5u;
+	Fri, 28 Nov 2025 16:52:35 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vP1hl-00000000emt-1iij
-	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Nov 2025 16:52:22 +0000
+	id 1vP1hu-00000000etE-0gq7;
+	Fri, 28 Nov 2025 16:52:33 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 0BC711A1E09;
-	Fri, 28 Nov 2025 16:52:20 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 8EC254E4194E;
+	Fri, 28 Nov 2025 16:52:28 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id C76F560706;
-	Fri, 28 Nov 2025 16:52:19 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 4B67B10B02179;
-	Fri, 28 Nov 2025 17:52:10 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 5722F60706;
+	Fri, 28 Nov 2025 16:52:28 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 5953910B0217D;
+	Fri, 28 Nov 2025 17:52:18 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1764348737; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1764348746; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=cjiitGgWBhqA9qrGAIFtS5Bxwzyv65d8uw6FNgpjS8o=;
-	b=StO1YVuVc56m92BETMybzu5L+zm2HPQEO5yAh4weK4ZTZjUy5dXcnReHFlMkgI6Fjr6m0o
-	hMAhT3gczxjWN8ywtLxLqm4YLUh3YNIEclgrUd2xUY0cPrZrzVsXQgfalkfKHHgcXYW5o3
-	aRGuGlqLNrNQ0UXIBQzLdRi+06Sq7ykd6LAYTrD3r1r0C0NJUNVpQKIqFcx6DtUMHK5ldm
-	03XEN03JRGzyeUlr7VDf11f0pf1NINaqbST6qkVUH1XrakgnmLpNKxVw/Yjt+dJ+wh37Cf
-	Q9XXGi5qHtyvKRZ3Zgt+tbIt5UZl7RQgxAECREGM15YvkpCvdyE1z2RQodV4vA==
+	bh=lnQT9hncBALxwt6zSKKBcvvRQ9xJJffpDMu16HA1ozA=;
+	b=sWJlzoe1EAsLTEWkuwZbXkkcSaFEvn2LztDS1bKvTh2vPIWKsN+AnNwIg7SPbOSH3xb/i0
+	FYTGGNm219jwcPcpgwKKx8n3TQpaBcg/Sfvo7PGNWYLH40ClS/5jeXgHYZJ/4HUVBuKeC1
+	BSWuwrtd5XA5CtVh+IfFA6q6wY+Whwn0iJyCCZhgpj9oLAOSefwo9zbuSYHyr7qPyrKNQr
+	w/6rBGncKjEcX2eVjKGAL4C8epuvUEI9YeaZRjBFIfdnFrr4fmyRFdfQd9iuP8JIHAKz+x
+	k43DqkSNJlbDwg8XEimMfXd6C0vKRMPXgGpGbCG8YphoamewaTg/1yB9Fon0QA==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Fri, 28 Nov 2025 17:50:13 +0100
-Subject: [PATCH v2 03/26] drm/todo: add entry about converting to
- of_drm_get_bridge()
+Date: Fri, 28 Nov 2025 17:50:14 +0100
+Subject: [PATCH v2 04/26] drm/bridge: make of_drm_find_bridge() a wrapper
+ of of_drm_get_bridge()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-3-88f8a107eca2@bootlin.com>
+Message-Id: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-4-88f8a107eca2@bootlin.com>
 References: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-0-88f8a107eca2@bootlin.com>
 In-Reply-To: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-0-88f8a107eca2@bootlin.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -94,9 +93,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>,
 X-Mailer: b4 0.14.3
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251128_085221_590397_D141045E 
-X-CRM114-Status: UNSURE (   9.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251128_085230_345388_996162E2 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,44 +109,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-of_drm_find_bridge() is deprecated, but converting some users is very
-complex and should be reasonably doable only after the DRM panel bridge
-lifetime rework. Add a TODO to track this.
+of_drm_find_bridge() is identical to of_drm_get_bridge() except it does
+not increment the refcount. Rewrite it as a wrapper and put the bridge
+being returned so the behaviour is still the same.
 
-Suggested-by: Maxime Ripard <mripard@kernel.org>
-Link: https://lore.kernel.org/dri-devel/20250319-stylish-lime-mongoose-0a18ad@houat/
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
----
- Documentation/gpu/todo.rst | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
 
-diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
-index 9013ced318cb..6390994e559f 100644
---- a/Documentation/gpu/todo.rst
-+++ b/Documentation/gpu/todo.rst
-@@ -506,6 +506,22 @@ Contact: Maxime Ripard <mripard@kernel.org>,
+---
+
+Changed in v2:
+- Added comment to document why we put the reference
+---
+ drivers/gpu/drm/drm_bridge.c | 20 +++++++++-----------
+ 1 file changed, 9 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+index 21a84715d221..9b7e3f859973 100644
+--- a/drivers/gpu/drm/drm_bridge.c
++++ b/drivers/gpu/drm/drm_bridge.c
+@@ -1467,19 +1467,17 @@ EXPORT_SYMBOL(of_drm_get_bridge);
+  */
+ struct drm_bridge *of_drm_find_bridge(struct device_node *np)
+ {
+-	struct drm_bridge *bridge;
+-
+-	mutex_lock(&bridge_lock);
++	struct drm_bridge *bridge = of_drm_get_bridge(np);
  
- Level: Intermediate
+-	list_for_each_entry(bridge, &bridge_list, list) {
+-		if (bridge->of_node == np) {
+-			mutex_unlock(&bridge_lock);
+-			return bridge;
+-		}
+-	}
++	/**
++	 * We need to emulate the original semantics of
++	 * of_drm_find_bridge(), which was not getting any bridge
++	 * reference. Being now based on of_drm_get_bridge() which gets a
++	 * reference, put it before returning.
++	 */
++	drm_bridge_put(bridge);
  
-+Convert users of of_drm_find_bridge() to of_drm_get_bridge()
-+------------------------------------------------------------
-+
-+Taking a struct drm_bridge pointer requires getting a reference and putting
-+it after disposing of the pointer. Most functions returning a struct
-+drm_bridge pointer already call drm_bridge_get() to increment the refcount
-+and their users have been updated to call drm_bridge_put() when
-+appropriate. of_drm_find_bridge() does not get a reference and it has been
-+deprecated in favor of of_drm_get_bridge() which does, but some users
-+still need to be converted.
-+
-+Contact: Maxime Ripard <mripard@kernel.org>,
-+         Luca Ceresoli <luca.ceresoli@bootlin.com>
-+
-+Level: Intermediate
-+
- Core refactorings
- =================
- 
+-	mutex_unlock(&bridge_lock);
+-	return NULL;
++	return bridge;
+ }
+ EXPORT_SYMBOL(of_drm_find_bridge);
+ #endif
 
 -- 
 2.51.1
