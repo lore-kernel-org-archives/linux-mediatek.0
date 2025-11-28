@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DCD1D116E2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Nov 2025 16:54:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C58BFD116F1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Nov 2025 16:54:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AjHLZ/oS8bDyMocQGjl3IyCNeVOq4ZwFmOT6Ey5ZFAg=; b=JzSpy61pSvqmzuFuO8Y34V72OQ
-	RXDulX5hoMttGZ9/ton5vpcTLFXQhBtLE/W91RpaONvN30S173uDdEquwfEV7i8sRKf70x6yi+3o+
-	L1z/ivrTgOUX0Tw3jwasOcxfhmkC8IVwokh+TfsTt5U4fwmFDeKv3ESZoUsSfhm7+fXGB4886UeBS
-	vdIWSuGWmnyn6ZC3O253NsAw+TJN1Mur64zHWdjSegJxwMDK007utTX3bRXfi/qlrAthlAhktKatb
-	o57rrRcm7wjomJ5AQD/qRXkGKFR5uZuLPyS+uuYQVSeiQ3fPZpPHZbZ2U34pie48f7QWYdC6UxKu/
-	NeUGJMTQ==;
+	bh=P7PuQnrr2U0mS6+K0q3iGdpY5r4F/rhA/7tugsaTWHQ=; b=TnRBdnRbsPpEdppxo5PkR2UgVf
+	IZNiTMMv3MOxZyZcjNdCAJJ4iGmjsgjALfsD6SkaySgNMUvSRqbyCZqga0XNA05JD0bHzzhFYQLVJ
+	pX0LzhJozYn4WZlFALVP7ymdm94Jz1ST3QPJsOQTbzDHdellg/bTzRf40uxEzbNZzLWcs57Dz1IEC
+	KMV7vQfjcM9JCAEH7OIc0kVs45F8P+IRVqgFKiVSo53bRJMtycLA0bEIRcQTZi2+XZc/qykjzkMWg
+	TfnviEJ4JB1f6zUSt9Y4QhUI23J74bgYI5WKjmrxXR+DZOdZrDs4WsdLmDe3Y5bH6I6u0hDexFbB3
+	ig321ecQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vP1jT-00000000fr8-1RK3;
-	Fri, 28 Nov 2025 16:54:07 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1vP1ja-00000000fvN-3d6g;
+	Fri, 28 Nov 2025 16:54:14 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vP1jP-00000000fnv-0ssc;
-	Fri, 28 Nov 2025 16:54:05 +0000
+	id 1vP1jX-00000000ftR-3vQT;
+	Fri, 28 Nov 2025 16:54:13 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 94D341A1E09;
-	Fri, 28 Nov 2025 16:54:01 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 606C14E4194E;
+	Fri, 28 Nov 2025 16:54:10 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 67BC460706;
-	Fri, 28 Nov 2025 16:54:01 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 0F5CD10B02195;
-	Fri, 28 Nov 2025 17:53:50 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 2C14D60706;
+	Fri, 28 Nov 2025 16:54:10 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 0EEA610B02187;
+	Fri, 28 Nov 2025 17:53:59 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1764348839; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1764348848; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=AjHLZ/oS8bDyMocQGjl3IyCNeVOq4ZwFmOT6Ey5ZFAg=;
-	b=ouE32eOMmyZkNjAWkjY3zun3JUktr7gy54sR11ENbpWqISBzqMX7fHxXOLOKtZvT+W2v1I
-	kiuon0bcxIG/+yQnaVBMGD8X2/IzQpNCYWoKWPdmLiMstwIyasuu0Bp3BOi7aGsI6S1BWa
-	133tnVl8iLXT3pamUHPwhRkZHMgivBiyj9u0oAlSprphZL12FXLLCB5sXtirXSU8lrjl7f
-	0k39aIJMEzrro/sTqHbZ0uYbQxVCOBmAQhXY9N3+mO+DCV0BAnO4eqaLRPmGZRqX1SaFBf
-	DGhNgnBqJpZ1k/min4zloYLcCOBX3qNnwI0Mmj0l19ozvoYAN4I0JwBisko+sw==
+	bh=P7PuQnrr2U0mS6+K0q3iGdpY5r4F/rhA/7tugsaTWHQ=;
+	b=2skVqUO2wpq9PHtRVHRtqRhujv2FbueuNpP1H5JWR6CVK7xatL4uwySXumc3/taO9CvVMb
+	acdli3XiqiV9CdPG5t8Qh3060lAfnNWjI2VPpk8RzD30MX13YdAas9gX/xJI+V5stGJ9IF
+	QMH5qEERVOgRkIBJ381RLvqZ46+x/Sv0HHJQUeu21s2J1xRIOi9XngP+WMtr6FzDBX329V
+	U87a1CUVxVq3zlNfVkGzc1y+sh9gaBb+ChDYlklggLCAaOMizlEfNE4HN5DHjPnhCkjqDX
+	xtna16A1xSoMZcoauwJAsmEKEJxKySi463KCX3OOU9NqVtVl/UJy/drjwNFnOQ==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Fri, 28 Nov 2025 17:50:25 +0100
-Subject: [PATCH v2 15/26] drm/bridge: imx8qxp-ldb: use
- devm_of_drm_get_bridge() to put the companion bridge
+Date: Fri, 28 Nov 2025 17:50:26 +0100
+Subject: [PATCH v2 16/26] drm/rcar-du: lvds: use devm_of_drm_get_bridge()
+ to put the next bridge
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-15-88f8a107eca2@bootlin.com>
+Message-Id: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-16-88f8a107eca2@bootlin.com>
 References: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-0-88f8a107eca2@bootlin.com>
 In-Reply-To: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-0-88f8a107eca2@bootlin.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -93,8 +93,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>,
 X-Mailer: b4 0.14.3
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251128_085403_388256_6B4C3024 
-X-CRM114-Status: GOOD (  11.96  )
+X-CRM114-CacheID: sfid-20251128_085412_138261_B577DE99 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,22 +116,22 @@ reference on remove or on probe failure.
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c | 2 +-
+ drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c b/drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c
-index 122502968927..4a3741c9f319 100644
---- a/drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c
-+++ b/drivers/gpu/drm/bridge/imx/imx8qxp-ldb.c
-@@ -552,7 +552,7 @@ static int imx8qxp_ldb_parse_dt_companion(struct imx8qxp_ldb *imx8qxp_ldb)
- 		goto out;
+diff --git a/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c b/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c
+index 001b3543924a..2dd95fd52e71 100644
+--- a/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c
++++ b/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c
+@@ -740,7 +740,7 @@ static int rcar_lvds_parse_dt_companion(struct rcar_lvds *lvds)
+ 		goto done;
  	}
  
--	imx8qxp_ldb->companion = of_drm_find_bridge(companion_port);
-+	imx8qxp_ldb->companion = devm_of_drm_get_bridge(dev, companion_port);
- 	if (!imx8qxp_ldb->companion) {
+-	lvds->companion = of_drm_find_bridge(companion);
++	lvds->companion = devm_of_drm_get_bridge(dev, companion);
+ 	if (!lvds->companion) {
  		ret = -EPROBE_DEFER;
- 		DRM_DEV_DEBUG_DRIVER(dev,
+ 		goto done;
 
 -- 
 2.51.1
