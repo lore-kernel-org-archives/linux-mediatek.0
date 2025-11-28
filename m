@@ -4,85 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1DDFD111A8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Nov 2025 03:00:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE5D6D116F1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Nov 2025 04:17:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cJq+1B1sI6yzhGchPzVcdD4BSJn3WDAPIGOauWfX+bk=; b=CZM6Rn4FCzv55S5PcHFOmksTxB
-	06oxzpLAqZwZy5YbWYDIFBVDKd9v20pDEMqgbXsUiRC5A2Ly+eMBwJJASF8jchB3OcRhcMYqJTJkY
-	L8HZHAVPp82UAMCaVk2xooFUI9HNuHHVfGFnehOvOYQS76HU5AP0i+rEbkiNBoegcT0yY+mWm4vjm
-	XcL3JS3UIrDgcL81+w+mM1hvkpc7jcaW/sL9KXzTh5jGX46sxDH6g+20Ucy9WLMFxgPdzgeubMq+a
-	EGW1Yzpw1sNECgm8GDBqnyTApdSJCnj+mzsQxRyfIpVyPtICXAXCS9I8OQmZKjcqm4OqIlndt5bOI
-	UwI2VAKg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8SXboeAZgfntpAeaS84XqhIpOOcXl92xvZI5XQYTmYU=; b=xB0Em9u/t0AzOdZ6G0vkXLrQVJ
+	3c0yj2Pz3oy0fsS3fG5L2gxPGSbJETBGxk7Qr2gyfPvGXM1cK68dTCpd/vEg6T3lfamCS6GtbBDhq
+	OF8LVHHj8keUnObUI2zb+M3xEEqEB1CDGA1GgaGFDpXA5eUUD7MByCVpqbMzi+53Aujs41xqYS+n9
+	b+fcmTe0vruwB0bXFuvq9dEU+UwBz7eiSErNC2QkiH16jsimNNXfkLn6a/03/JKnuAzWJhQj2I1cZ
+	LFQIcXR/1IV5CofntoKGEg31Sm61dygvf+d9QzRCpOBlVOvCnCXr04fIdUzI6QdAzCnUGeyOpsQ0x
+	8ovTvQMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOoiN-0000000HUGs-0SXF;
-	Fri, 28 Nov 2025 03:00:07 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1vOpvV-0000000HYtB-0R2k;
+	Fri, 28 Nov 2025 04:17:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOoiK-0000000HUGU-0M2Z
-	for linux-mediatek@lists.infradead.org;
-	Fri, 28 Nov 2025 03:00:05 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-5957e017378so1576023e87.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 27 Nov 2025 19:00:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1764298801; x=1764903601; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cJq+1B1sI6yzhGchPzVcdD4BSJn3WDAPIGOauWfX+bk=;
-        b=GDIn63DqdH6+NL2QqGg0V03kSZsPCMQe+ke5Yn7VGTe2b9QM0W9CXTLyvoPq5akdRL
-         YedYvgq/lOQxpOP0TyiLAC3ayDyXLrUpWgaNC6f+Yp+48HMzFRhXqtFl50KsMp1s0BHA
-         jTir1aVxUKtkV2QhXU5bYWhcqyXKYPuChO13lytI/YjbKXE+VXZE+2E+8CASp5hzsH+x
-         tkNOFQBJA9LzkXuS4gcLSNxLjZ0gfha1h4hFWH/5vJZaXH3XVzfAhi4dcPPPTtCQFrJt
-         uHlDwvRDUkQU1HV2rKvmHEH8bJZRpyVYCYa34hYzNP9FWsXBoF7gDCwVwcc3UD1oFb9/
-         CsSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764298801; x=1764903601;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=cJq+1B1sI6yzhGchPzVcdD4BSJn3WDAPIGOauWfX+bk=;
-        b=IMPU8i12Q007ws5dYY0PzdhzZGJfx4Ra5rk+h6QSolbsXDLHs9RfmW6cxqRNOMzq8w
-         vRZ3b1BT0gkgTZXUQd3q+sbZlxhGKg8iWjxx40E0NwNXZmrpQT4sp8p3356Ads4L2WHn
-         mo+B8vyE9evyu/q9veyTIMp66cKkENy5CnNDpg0o1Qu+z9KWS9S4y+XtYDeiG5GrkLAm
-         xBaA98RN6qUzqPgv51rA5WDTdzuZPPDz/2m4KGAXp/YDRcNpH5qMvCNBPL247LQVnuge
-         64W3oAv/WK3EOY4Ielq9jQyDGUwOPtzBUvRB6bcJsa+BooFvmDnZf5Pn6VqQuUCLW+2y
-         wElg==
-X-Gm-Message-State: AOJu0YwAOB3eq+C6yXM45dliG9oGPTAFI4wYCrGNW08p7uCYDMMvTczA
-	pF3wAVoCr6yziKKuvx8Bzshaq1nai4vg5Dab8MW9i0SxzkSEkAe2+aVE6RfUCEhFxzOFnBv7IQf
-	R1DG6btPAIItDhml9UANcYkD/7+20R5E=
-X-Gm-Gg: ASbGncsblM8HuIgu40/urQCJQgmLZl/i/+bxPwfQaKYnTd514SXppKrXXIixcEkSr9X
-	vOFcJYKUYduE21t8g9Hu7mwmSxoRsODpm8yBZRuRaBKXSl96JmwevRl+lkkYDllz9GVS2QYBUBQ
-	p8egezwL0KKeXCTEmbuGRCj07+0x4af3H2rxq5PDMoUPin50gJTiEZ8crdGygUVqA+HRHxf+k62
-	japPRJpU/ZwG2d37ztxBolh8ihpNnYGXVfKUMZu2kgzRsWXX14MbPqmQMdGPslqTBfI+js=
-X-Google-Smtp-Source: AGHT+IGvOWy7yyiK7f98nc3EO/ukeFU1q3BB62MfykeDDvhHqxD5/kjVdAl0bSZqgV7901NqJCOH/MYwkjyE5oYiH3c=
-X-Received: by 2002:a05:6512:b1d:b0:595:7a6c:7db4 with SMTP id
- 2adb3069b0e04-596a3eb59afmr8509799e87.4.1764298801222; Thu, 27 Nov 2025
- 19:00:01 -0800 (PST)
+	id 1vOpvT-0000000HYsf-013b;
+	Fri, 28 Nov 2025 04:17:44 +0000
+X-UUID: 2ce123f4cc1111f0a52f393f94899d25-20251127
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=8SXboeAZgfntpAeaS84XqhIpOOcXl92xvZI5XQYTmYU=;
+	b=uAuHG3V4bO6zlP83OgKcZa/ACPD4hWfofM1uROTGq6RUhtw/ZylWO24j5kDh+IAIkezB7AtFDNSnIWYSvX6Tvjhls3D6NCssnVqGRohs0zQPBFIOvEcGaEpIXgrQKlLMiTMegbnwmsPq5dCcghYmUStga6AtEa+Ttt9y3m2ryXU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:80483558-14ad-436c-acbb-33be1a1c9d09,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:37faeb27-e3a2-4f78-a442-8c73c4eb9e9d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 2ce123f4cc1111f0a52f393f94899d25-20251127
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1975562388; Thu, 27 Nov 2025 21:17:38 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Fri, 28 Nov 2025 12:17:35 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Fri, 28 Nov 2025 12:17:35 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+	=?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Macpaul Lin <macpaul.lin@mediatek.com>, "Chen-Yu
+ Tsai" <wenst@chromium.org>, <linux-pm@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Weiyi Lu <Weiyi.Lu@mediatek.com>, Jian Hui Lee
+	<jianhui.lee@canonical.com>, Irving-CH Lin <Irving-CH.Lin@mediatek.com>,
+	<conor@kernel.org>, <krzk@kernel.org>, Louis-Alexis Eyraud
+	<louisalexis.eyraud@collabora.com>, Bear Wang <bear.wang@mediatek.com>,
+	"Pablo Sun" <pablo.sun@mediatek.com>, Ramax Lo <ramax.lo@mediatek.com>,
+	Macpaul Lin <macpaul@gmail.com>, MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <Stable@vger.kernel.org>
+Subject: [PATCH v2] pmdomain: mtk-pm-domains: improve spinlock recursion fix in probe with correcting reference count
+Date: Fri, 28 Nov 2025 12:17:22 +0800
+Message-ID: <20251128041722.3540037-1-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-References: <CAAq5pW8q6V7x6qpYnE3xB99nVwE363keGiu+Jax0_zqPjogULw@mail.gmail.com>
- <CAAq5pW_saBZ+52zz2FYTt9SuWXj2KwX2Ld7AggVKAzca2m0Oow@mail.gmail.com> <CAAq5pW9o3itC0G16LnJO7KMAQ_XoqXUpB=cuJ_7e3-H11zKd5Q@mail.gmail.com>
-In-Reply-To: <CAAq5pW9o3itC0G16LnJO7KMAQ_XoqXUpB=cuJ_7e3-H11zKd5Q@mail.gmail.com>
-From: Evans Jahja <evansjahja13@gmail.com>
-Date: Fri, 28 Nov 2025 11:59:49 +0900
-X-Gm-Features: AWmQ_bljV87U_YaWy2CItZO_-S-4IuG82a7APaAjJ3ItWl_P2M7yJwtTlwlAyac
-Message-ID: <CAAq5pW8-j6UzruT=SU05QgJ1AjLXeUwASLJ3O3SVKttaMbdTXQ@mail.gmail.com>
-Subject: [REGRESSION] mt8183-kukui: dts: changes in dts caused display to no
- longer initialize - Was: Re: mt8183-kukui: drm/mediatek: dts: Invalid display
- hw pipeline when probing mediatek-drm
-To: "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	matthias.bgg@gmail.com, regressions@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251127_190004_145220_70259563 
-X-CRM114-Status: GOOD (  23.20  )
+X-CRM114-CacheID: sfid-20251127_201743_078574_95B229AD 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,81 +95,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-#regzbot ^introduced: e72d63fa0563f8a6e98c10fed3a9ce74dc0536e6
-#regzbot monitor: https://bugzilla.kernel.org/attachment.cgi?id=3D308962
-Hi,
+Remove scpsys_get_legacy_regmap(), replacing its usage with
+of_find_node_with_property().  Explicitly call of_node_get(np) before each
+of_find_node_with_property() to maintain correct node reference counting.
 
-There has been a regression in the dts for my system
-mt8183-kukui-krane, where changes in dts/mediatek/mt8183.dtsi broke my
-machine.
+The of_find_node_with_property() function "consumes" its input by calling
+of_node_put() internally, whether or not it finds a match.
+Currently, dev->of_node (np) is passed multiple times in sequence without
+incrementing its reference count, causing it to be decremented multiple times
+and risking early memory release.
 
-The display works under v6.17.9 but is broken in v6.18-rc7. I was able
-to replicate / fix the issue just by using the dts from the other
-version.
+Adding of_node_get(np) before each call balances the reference count,
+preventing premature node release.
 
-> On Wed, Nov 26, 2025 at 3:01=E2=80=AFAM Evans Jahja <evansjahja13@gmail.c=
-om> wrote:
-> >
-> > Hi,
-> >
-> > I have a Lenovo IdeaPad Duet Chromebook CT-X636F, detected as Mediatek
-> > krane sku176 board. (mt8183-kukui-krane)
-> >
-> > The display failed to initialize on the mainline kernel (linux
-> > 6.18-rc7). Using the same config, on stable (linux 6.17.9) the display
-> > works fine.
-> >
-> > config: https://bugzilla.kernel.org/show_bug.cgi?id=3D220803
-> >
-> > With the system on mainline kernel, I was able to check the serial
-> > console, the error on dmesg looks like this:
-> >
-> > [    6.513400] mediatek-drm mediatek-drm.18.auto: Building display
-> > pipeline for MMSYS 0
-> > [    6.514983] mediatek-drm mediatek-drm.18.auto: Display HW Pipeline
-> > built with 9 components.
-> > [    6.515009] mediatek-drm mediatek-drm.18.auto: Invalid display hw
-> > pipeline. Last component: 38 (ret=3D-2)
-> > [    6.524422] mediatek-drm mediatek-drm.18.auto: probe with driver
-> > mediatek-drm failed with error -22
-> >
-> > Temporarily modifying mtk_drm_drv.c by commenting calls to
-> > mtk_drm_of_ddp_path_build_one CRTC_EXT and CRTC_THIRD allows the
-> > display to function even on mainline. I was also able to add some
-> > logging and determine that building the HW pipeline for CRTC_MAIN
-> > works, but because building CRTC_EXT fails, the entire display would
-> > not initialize.
-> >
+Fixes: c1bac49fe91f ("pmdomains: mtk-pm-domains: Fix spinlock recursion in probe")
+Cc: Stable@vger.kernel.org
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+Tested-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+ drivers/pmdomain/mediatek/mtk-pm-domains.c | 21 ++++++---------------
+ 1 file changed, 6 insertions(+), 15 deletions(-)
 
-I think this is the issue:
-https://lkml.org/lkml/2025/9/12/1242
+Changes for v2:
+ - Rewording commit message.
+ - Add Fixes: and Tested-by: tag, thanks.
 
-On Wed, Nov 26, 2025 at 2:06=E2=80=AFPM Evans Jahja <evansjahja13@gmail.com=
-> wrote:
->
-> Hi Angelo, I was able to isolate the problem further to the dts. After
-> bisecting the arch/arm64/boot/dts/mediatek/ and building the dts, it
-> seems like this is the first commit that introduced the issue on my
-> device.
->
-> commit e72d63fa0563f8a6e98c10fed3a9ce74dc0536e6 (HEAD)
-> Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.c=
-om>
-> Date:   Thu Jul 24 10:39:08 2025 +0200
->
->     arm64: dts: mediatek: mt8183: Migrate to display controller OF graph
->
-> I am linking my full bisect log here:
->
-> https://bugzilla.kernel.org/attachment.cgi?id=3D308962&action=3Dedit
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+index 80561d27f2b2..f64f24d520dd 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+@@ -984,18 +984,6 @@ static void scpsys_domain_cleanup(struct scpsys *scpsys)
+ 	}
+ }
+ 
+-static struct device_node *scpsys_get_legacy_regmap(struct device_node *np, const char *pn)
+-{
+-	struct device_node *local_node;
+-
+-	for_each_child_of_node(np, local_node) {
+-		if (of_property_present(local_node, pn))
+-			return local_node;
+-	}
+-
+-	return NULL;
+-}
+-
+ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *scpsys)
+ {
+ 	const u8 bp_blocks[3] = {
+@@ -1017,7 +1005,8 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+ 	 * this makes it then possible to allocate the array of bus_prot
+ 	 * regmaps and convert all to the new style handling.
+ 	 */
+-	node = scpsys_get_legacy_regmap(np, "mediatek,infracfg");
++	of_node_get(np);
++	node = of_find_node_with_property(np, "mediatek,infracfg");
+ 	if (node) {
+ 		regmap[0] = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg");
+ 		of_node_put(node);
+@@ -1030,7 +1019,8 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+ 		regmap[0] = NULL;
+ 	}
+ 
+-	node = scpsys_get_legacy_regmap(np, "mediatek,smi");
++	of_node_get(np);
++	node = of_find_node_with_property(np, "mediatek,smi");
+ 	if (node) {
+ 		smi_np = of_parse_phandle(node, "mediatek,smi", 0);
+ 		of_node_put(node);
+@@ -1048,7 +1038,8 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+ 		regmap[1] = NULL;
+ 	}
+ 
+-	node = scpsys_get_legacy_regmap(np, "mediatek,infracfg-nao");
++	of_node_get(np);
++	node = of_find_node_with_property(np, "mediatek,infracfg-nao");
+ 	if (node) {
+ 		regmap[2] = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg-nao");
+ 		num_regmaps++;
+-- 
+2.45.2
 
-where we're unconditionally adding mmsys_ep_ext.
-
-The issue seems to be caused by the recent addition of CRTC_EXT on the
-base mt8183
-
-Please kindly take a look. Apologies for any mistake, this is my first issu=
-e.
-
-Evans Jahja
 
