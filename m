@@ -4,193 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF1ADD116EA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Nov 2025 06:35:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EC17D116F3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 Nov 2025 11:41:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:Message-ID:Subject:CC:To:From:Date:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8ategXCkbUrxgbwC9zjZYReP3TV/rgSzFeOrlVYC6/I=; b=nmQ0RzHp1cKc8n92SyRsuC0Z5P
-	GBFQjCBkw6qXNemqVujXEHVAG28PugOII/xKCQeVeoUS6i0AaVC/UvKk60hRAKosijDulPGNKgKfV
-	VGHaturBdZ+Iosp6dRtmnaEPktzsLh2UB0gVa5yc2e37w6Diu0JnyGcXuGItkRm7fEnsA4eecEmPY
-	VKu+zMtYTzW4tGnE01CPaj6qonYOmUPI33voEaGFeMHgrxBEyqOMqBiCFp/YwtvqK/FjEpgkO7rhJ
-	zctgOIwjsJhzxdVO41mPkub6/PAaPqDH22bfGmo9FSKZwrINnwG9CzG0t4BoaPEUGiI+PWLXSD7CF
-	17iZ63qQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ctbuNKlwXXgpnlLIMI3YpvT82Gk9XSdn26B4QP0W/rU=; b=b31ylKTE2S9LXSK34dgZyZpqlh
+	wn8iRjpkd2PED4MHrTv8D2UqOrTe6ozSfCjnsgbdbmt6z/F6rg7YTuZjjaca7b3iOVn9hCCHCtaz0
+	Erm9i9HatlGfrLlMEATCJhGIg6D3XJNKNUcKzm0qNHBFglZHtGVPCfjGOWGZphBognOpiONy76jNl
+	JIBL+aQMhSYqo+llHHz0t5WQk7D0DRVdBJT1V1SefqrnfZNH0sKyB2WaHW5tzQnADeVZgHiG9WAE2
+	xGMfaMcrjg2v/twfm0QwOaIq8jFL/d+ldifIiiaR1XGFI0jGzZV3g/N6m8+DTAb/Dd8oMmHvuRNpv
+	fmK/d+Jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOs5B-000000002uA-3oYI;
-	Fri, 28 Nov 2025 06:35:55 +0000
-Received: from mgamail.intel.com ([192.198.163.9])
+	id 1vOwqT-00000000Mh8-0DwD;
+	Fri, 28 Nov 2025 11:41:01 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vOs53-000000002tL-0WKs;
-	Fri, 28 Nov 2025 06:35:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1764311745; x=1795847745;
-  h=date:from:to:cc:subject:message-id:
-   content-transfer-encoding:mime-version;
-  bh=8qZyt3CZWAQ5qPWBbL8LYbkrqhpxtmWCnfjm+sNMoFc=;
-  b=YRQbU9MetTadAmZDREpdd4EoaGFKAPat3KSggCzQeT/HOiU7G7sX5UrD
-   foMCjrud6W4Ip3D8kmt+PnbDpALdMxIADH/js8X572ZyGGNNeoKEBGjRr
-   VLJ3yCu9dznGSotCguMOe6fm2fRsGK+2V5zZD9KJZie5xnSvJoMl0l8x6
-   om0/oa5gsRsmMIqM5a9ZRqLHwnon7aL0HaPX05FCV8TXgC5G0oKP8r8Ni
-   pzRDB97YP1kXzChV6VOFiyH6JLRW3e0pnZiRFZkGsQl7liQ0S3ihQlFqw
-   ZpbvvDgny77Datw/mo05kUM+ZWE3ROmjc0Fx/HpKdp1cEXtRRqoDttm/5
-   w==;
-X-CSE-ConnectionGUID: m1u3i0kLRZuXet1T2IHKig==
-X-CSE-MsgGUID: a+QscMarSjGssyBhIkijpg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11626"; a="77032240"
-X-IronPort-AV: E=Sophos;i="6.20,232,1758610800"; 
-   d="scan'208";a="77032240"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Nov 2025 22:35:44 -0800
-X-CSE-ConnectionGUID: 55w924TbSi2xKTiwRcLXHg==
-X-CSE-MsgGUID: Y3lcWMV3Q/ifXM4paXEpOA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.20,232,1758610800"; 
-   d="scan'208";a="193397012"
-Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
-  by orviesa007.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Nov 2025 22:35:43 -0800
-Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 27 Nov 2025 22:35:43 -0800
-Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29 via Frontend Transport; Thu, 27 Nov 2025 22:35:43 -0800
-Received: from SN4PR0501CU005.outbound.protection.outlook.com (40.93.194.23)
- by edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 27 Nov 2025 22:35:43 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Ga7o5DEn7QkN1FJBdtpwk+5B1YI1EAHnKaq3yyXCc+135eKU+QDNqGUA4qCDs6VRj60QJGJJFv22/Dp19eiaQlUovIYW6KAk4U7ud7lXmkChnIauzklNK8a4eoWLI6Fg4IkZsaph8Mv6ZPbwXlwWzejryrgVPkdAvFtMNGPnOhijRPIHxGD+3ODp14cYwNIDRaHIF9C8kMBzFIRw8xiR6TQbbAtdWcR8IrFZ6+OgfMrXrEEuHeNOSVnbTTO+woD/7v0q0M7Dv+IpHXuDFr0QG3z9Sy/6g35Hn88KvefSKB2LcSZ8iEKOO4rW5X2vOB2n7E+u2R+WP7e7v5M875gZFg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=d1nsgm9Ip4cLSKTsrSxPlDpzB1LY49FqNU6arBPnfMc=;
- b=Pen/bIjPA0Bm5HWoG4aCQmKW6CtuDUxs0eDAzGh3fStFS1aDLZUzXQc6foOgABzLrWqfnvNo/KVwezUzOSTsHInfvHrDg6flQzs2f/ZfOA5gCsZYclOEH9ol332fS6EUpZM8vkSbMOKD5yJab6jzKwVrTDicbl5Oj75ibsgt4kSPUYRuaI1kpd1gsT56uI/ISOclzAIPAvVUPIgjkmjInccoLi5h4jx4ItKeNjU6pBJOQ+PkCchy3DG+tOaRDazAV6vmxiQq1Wxetvk228v6a4RXXUcd/M2jU7tb9Ig5HVz4cDKbGNHJ7JhXssTkoueCFy8OK0rtY9cF0dYtbK890A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from LV3PR11MB8603.namprd11.prod.outlook.com (2603:10b6:408:1b6::9)
- by CO1PR11MB4915.namprd11.prod.outlook.com (2603:10b6:303:93::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9366.14; Fri, 28 Nov
- 2025 06:35:40 +0000
-Received: from LV3PR11MB8603.namprd11.prod.outlook.com
- ([fe80::4622:29cf:32b:7e5c]) by LV3PR11MB8603.namprd11.prod.outlook.com
- ([fe80::4622:29cf:32b:7e5c%5]) with mapi id 15.20.9366.012; Fri, 28 Nov 2025
- 06:35:40 +0000
-Date: Fri, 28 Nov 2025 14:35:25 +0800
-From: kernel test robot <oliver.sang@intel.com>
-To: Thierry Reding <treding@nvidia.com>
-CC: <oe-lkp@lists.linux.dev>, <lkp@intel.com>, "Rafael J. Wysocki"
-	<rafael@kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-samsung-soc@vger.kernel.org>, <loongarch@lists.linux.dev>,
-	<linux-mips@vger.kernel.org>, <linuxppc-dev@lists.ozlabs.org>,
-	<linux-sh@vger.kernel.org>, <linux-perf-users@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-hyperv@vger.kernel.org>,
-	<linux-edac@vger.kernel.org>, <kvm@vger.kernel.org>,
-	<linux-pci@vger.kernel.org>, <linux-acpi@vger.kernel.org>,
-	<imx@lists.linux.dev>, <linux-rockchip@lists.infradead.org>,
-	<linux-tegra@vger.kernel.org>, <linux-pm@vger.kernel.org>,
-	<linux-gpio@vger.kernel.org>, <iommu@lists.linux.dev>,
-	<linux-mediatek@lists.infradead.org>, <linux-riscv@lists.infradead.org>,
-	<linux-sunxi@lists.linux.dev>, <linux-leds@vger.kernel.org>,
-	<xen-devel@lists.xenproject.org>, <oliver.sang@intel.com>
-Subject: [linux-next:master] [syscore]  a97fbc3ee3:
- will-it-scale.per_process_ops 3.2% regression
-Message-ID: <202511281432.47ac7e38-lkp@intel.com>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: SI2PR02CA0013.apcprd02.prod.outlook.com
- (2603:1096:4:194::21) To LV3PR11MB8603.namprd11.prod.outlook.com
- (2603:10b6:408:1b6::9)
+	id 1vOwqP-00000000MfG-2DMc
+	for linux-mediatek@lists.infradead.org;
+	Fri, 28 Nov 2025 11:40:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E076A4419B
+	for <linux-mediatek@lists.infradead.org>; Fri, 28 Nov 2025 11:40:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0B2EC2BCB1
+	for <linux-mediatek@lists.infradead.org>; Fri, 28 Nov 2025 11:40:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764330056;
+	bh=lgaSylTHzWsegHuSLFuVnn1Owfu0+yOkmtBh3Ohn2xw=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=qRg0E43DVu82UynxLI+mhYhJxvc+AgQWBVl4ySnotFktsqtXDgpYRpPd6lSsXXHH4
+	 eADX1F9SghBf7d1Fm9FG08fx0KzaFHE/dPwpHBSqtWh15IrMSJayRluNlNBsKHEu8i
+	 e49OcLsWNYpp0AAO8TX0a6J1zhUPeyaFkDU5YxFV32kqzapRDlj4bDtUxptZAwNpYQ
+	 vHrqiERQDFXlBsD4rmy+epRii+DkqEOPOEioP2fwyH3g2b7+osx+G/M39nGVtTLS2s
+	 vIvCiNuh6ER8ES0MfbaXUkSCxMCe/brSXTa2gR3UMV5oR0zNBjgvGXuDDrUaPwuZx2
+	 d4hIggfVJ5YuA==
+Received: by mail-oa1-f49.google.com with SMTP id 586e51a60fabf-3e3dac349easo719201fac.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 28 Nov 2025 03:40:56 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCV897qV82naQsrtzM6Pa1ZPaMzgf5dkDayMvmUiIrlnAxVtYS0IkAPaXYwDpyvfQuGY3/Ld2oEuqu41Pv8ylA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzDqZgF375Na52pA0hW8jzO1Sez2cqdOoXShj5RTkXmKU6Akz0P
+	MJNKo0BAU6qe30oXQqD9ezDKZcV3r9yDLHZpRGvBs2wEFJbtGzH8pOc79mqvWGWbVQYtekrQHi9
+	sNFNyQGKMtWCVxvcD1TKzpA7e8QYAUIo=
+X-Google-Smtp-Source: AGHT+IF06B5RxAzGib+l3uhOnb5//EaVjJVSxxrEW3ayzCjty5qSP3tnWb9oPdMhw3rwDXVDdk2h08Pvu7TJcaT/4Zo=
+X-Received: by 2002:a05:6808:3c48:b0:450:bbed:7a75 with SMTP id
+ 5614622812f47-451159cca74mr9317697b6e.28.1764330055398; Fri, 28 Nov 2025
+ 03:40:55 -0800 (PST)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV3PR11MB8603:EE_|CO1PR11MB4915:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2eaf8dfa-bf1b-4ec4-fcee-08de2e48594d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7416014;
-X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?EFp53KH0HxNC2xm3JlGjU28j6rFzy4Ry+EC6UFfrhsBDDeVgTLBjZv3B9/?=
- =?iso-8859-1?Q?RYDolJOFxq7oQB+gE5KrQrwHhyp35gocjEUeVFQ+ZIIRh4ye4+QTZzCo22?=
- =?iso-8859-1?Q?wQNF3diApWO3r/NDLspxg7CKp+9eGVkTNsYHRAzkIB8gH7B5uVX1yN5YWW?=
- =?iso-8859-1?Q?YAQIQeCgW4ASS0nF2hXiOsJxATWZFNWlzMpQf/sIdRbQKDKl3P6aYIJEVZ?=
- =?iso-8859-1?Q?WCZa1Mzfzub58IKEqETQevjBRWE6pjuyI2UorpsqhPW/erMtJuvmYCpxkX?=
- =?iso-8859-1?Q?D5dIuVTB0O10l6eJXWT/IzhDSofBjUTQ8UwaLRhQGzUtFdxLO9WY2tj+pr?=
- =?iso-8859-1?Q?NFASEPudecC3Sh0+gBwlnUxwagxdG9EuuwuYvV38jaTw1l/CrXt51qD+zZ?=
- =?iso-8859-1?Q?9oQVlUcWVFOTcJSVmIfDnOVeCGdEq+lKZj3FP0J8434EiQK8OY4Um8H/fs?=
- =?iso-8859-1?Q?WTfU+8XLi07Bh6Z6wClmihd02fZUc+fGK75l2Z5HDGYlLW66Scbm9ATOpN?=
- =?iso-8859-1?Q?Qr37ZcbVflNN1KgIjy/4qsjX8eEfHdtj7fXB7XAHc+4KRl6x6MWYV8u02F?=
- =?iso-8859-1?Q?neMYZfXo4PPC5oJS7R2sKMMaP2gccgIwp/2qUxc/K3cjKK/Ziu08KyBJ/x?=
- =?iso-8859-1?Q?dXkzWO1RFoZQ+kf7r9k+2IZTHBUjQEl5tNvFgcLZrqk1RGe7BANWLLmxXH?=
- =?iso-8859-1?Q?OF/sHBMUx68cTVHEA7g21Sa5pwbIdLSXLXKZF0fs6buZmj/heHDSOCcQgv?=
- =?iso-8859-1?Q?VbHW7Tg/lAiWe5f/Jx9YMXZhBiLdvgVY0YKscf0mRjX5kgjQlEOoPM7dtH?=
- =?iso-8859-1?Q?GQiXWXAQ5bGrQRoslBs8jeBJGBe/aBkwVqslvY3cy4EHEOx+E8EjShMBkz?=
- =?iso-8859-1?Q?+BcVJNQ+cp++wIFr3ywYemqh9RIVOUNBKWBJf6bh2XQ51u1eS2yOtxTsQb?=
- =?iso-8859-1?Q?SZbYRMIO9nqmrlSAi486s5X5z+AvOwYsRG7OdkkPagqfh0Q80FU+HAoC4t?=
- =?iso-8859-1?Q?d81gH5mNjX9gi8rwG/2XUpLTxw9GeY1FGAxtU0v6IKdpzPJ9zeQ9qVvvsJ?=
- =?iso-8859-1?Q?GXvEKHhJgVdIq0HGMddNgVj28sLW7aSHZ8Q2Geu8spPAJg17oV2cvc6MFZ?=
- =?iso-8859-1?Q?Y4wPWkXGoC6fyvGXsH4ZFP24bBtRNUa8WgOao2RJbBtBKMzUFwPHdwpxP8?=
- =?iso-8859-1?Q?K9zbvhKKT6vdoh4uUomuu81LBQ6L5eSp+cqApWFPo+6TCFseaI2wRnuTk9?=
- =?iso-8859-1?Q?9GaDRV9IU4OA7GwgMjdAA+s1o/j9aa8zZZS1XgIS0NEcBrMYY2uKRpCwnX?=
- =?iso-8859-1?Q?j5sGbhfe9ZRkjNthSd7jDq19D20/5cxZa7xNtqDXCsEMlsvppS2zI5bzZ/?=
- =?iso-8859-1?Q?PjeiEubQl1K6/PoGCyGZ5ZKCFky+0pX4vaK4yEgw3bDgRj60aLJ5aRUdej?=
- =?iso-8859-1?Q?fQgYdTgzBciaoGu5901GUfIL7MHf5q5eVQAtctZQZ//oX3FSvk4OpaTzvP?=
- =?iso-8859-1?Q?Dkdl1oEdRrVhL92FGucaTaLuYaTLJuR7gAZx4zZ5iOvw=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV3PR11MB8603.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7416014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?t6zuwfsmHUleIb4YtmoF7hxy3UNa5AB7p7MfI8FI/hyHjnVrrSZiQrgsQL?=
- =?iso-8859-1?Q?ZvN16y1qoJ1omfgQsPFUti+PzfrXGKX1NZBt0w/D/E9EGuJRRKP//mgr/A?=
- =?iso-8859-1?Q?YlQf6NbZKbpxwN14iEclA2HDi28ZJMQ39EaMNVBFIBya1tUfSwo0K6SBE3?=
- =?iso-8859-1?Q?x9jSkMdCz/u3C+jeRjcQ7PmvtihympDBB1ESg1qzYbeXoXnAsM2qB04+yB?=
- =?iso-8859-1?Q?K0XrmShmaIZvZflu201E16UzyjNcuXtdtF/pxJJ1dvKKV8vwTlSQKr9/u8?=
- =?iso-8859-1?Q?su5AeHDAt3cifUDc9Z0rr7roS/h4MgIhurP3BJvM/ZoLwS73h+L6015Y6Y?=
- =?iso-8859-1?Q?h+MOXwF+YB++ET25tKiFuRD7R0+tCMHgBIy+AogFZ4Xll1RqlO2DpKjKUT?=
- =?iso-8859-1?Q?3afSXNFxsbWSKboPSF77/Wr59onGY1VIyuAe2DuPWCaZkaHjVuP3MooftE?=
- =?iso-8859-1?Q?WSDNtt04Slw3QOF+YWfCEXR2q7ltjZnIEOtOGfbcIW22BARTxvJAOaOeRK?=
- =?iso-8859-1?Q?IBgTf/gbIEWDjyazrKR9TXnJCwkHuh0z9HTmUvzduxEksNM/kx9Ovb8/7E?=
- =?iso-8859-1?Q?GZAicig+JCvamUdNBWIQHPf9BZAQ5XFKvH8zlpj3pw6HYlLn7IrTV+i8X1?=
- =?iso-8859-1?Q?5Miw6NaapD8D8LlOvVrjTbRMAPZcsEJDMq6SaxTsTCJgHT6w+r2G4BvaJ+?=
- =?iso-8859-1?Q?ePgEVoAq2dOT5uYM2lgOE9qkkazAQYtgrcB/UGOQzrLl003XYHwybxZb3c?=
- =?iso-8859-1?Q?Z8Z5OhguV6TUoX2XzXQYz90suQkyALFBDvyBQlmlWWm5ZABUidvrOFU+Y7?=
- =?iso-8859-1?Q?3C+uz9KwJCJhvUt/CSag2o8G1fM/uLTCtAVpwaIMC5Is+icShWhOOmmQn0?=
- =?iso-8859-1?Q?2LUXJ9VQPfcq7xV6ZF/H4t1lqfRozlD+QyX9f3vO0pLDofW5AHUXg1wlWE?=
- =?iso-8859-1?Q?nSvKBzMzVj346se/68FIF1N5WR0cxrlOzoZZRASvzP0RiehxzFVon1aaj4?=
- =?iso-8859-1?Q?EXIke5mbC06Ls+nHsL2ftJ1azsHEvw3Y3IhkGDOR/O4ZNy+UKlpJaMV/JX?=
- =?iso-8859-1?Q?8mG3Kdq7RHURfKfEWvRczllSwj8EiuRGPah0EWk9TsrlUlZABKYU68ZIDa?=
- =?iso-8859-1?Q?SHDfN3LEF0lInz/ldbyCvuytGFk3YuGWCUou/f0wpWY9mBcN1KcTSGFbJk?=
- =?iso-8859-1?Q?O72Q4oOSRPzu4HGAJMhn3r8mUf0b7GsD7xM+7Ocqvsx6j6wK6ip2zdWBcB?=
- =?iso-8859-1?Q?H8GoJvlDDJxqEuorVS1E6QzI8T8rdjWXLOMzzSOlF2T1kJ/jz4f+PDhgrg?=
- =?iso-8859-1?Q?d17NieR+U8kb76X2Hy/ECsY/cl0CcX1rzS4DmPfjpEvI2UjRtoTXseSZt3?=
- =?iso-8859-1?Q?EHgQBh2fGSj7U+0thLy15pr9a8aS4a4PrfdDdwGoZWKgMtkr71HJEVP1Yk?=
- =?iso-8859-1?Q?BG0Aw8IqOjnes3JxFTDwnkAKyqkDUqReeuVUs+cbxCKaNJff/D262A0att?=
- =?iso-8859-1?Q?y9wxR/Mc3lcupg71Vlgu//UdePGJbMeg2SccXffSyr46MRiJ1wa8gRWna5?=
- =?iso-8859-1?Q?06Ps2FFYXsYUTZkFeMGyqbDhpPv8+aLkOIwzaePsLeNFUkHUlXpg92ntiR?=
- =?iso-8859-1?Q?QUR4IpVjc2gHF8cz2iyJMRuwqDI4adLEuykQnb+s1OwwSEAr1qhlPW1g?=
- =?iso-8859-1?Q?=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2eaf8dfa-bf1b-4ec4-fcee-08de2e48594d
-X-MS-Exchange-CrossTenant-AuthSource: LV3PR11MB8603.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Nov 2025 06:35:40.5327
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: HmfS8NaE17GcvD65qsG/EMO5v0RPd+8DXn5Q8d8/qNCwZQg4j/mUxxx28bAjHkgpTLtwYChWWgPsGf5p0HRk9g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB4915
-X-OriginatorOrg: intel.com
+References: <20251120-thermal-device-v1-0-bbdad594d57a@gmx.de>
+ <CAJZ5v0jOPrBcozzJMsB1eE12MuZRWDAV-+=jfrhJbi=S0p5J9Q@mail.gmail.com>
+ <5f3ef610-4024-4ca0-a934-2649f5d25f40@gmx.de> <CAJZ5v0iJVV=kf-aJBx8F8dtGfaZpGVyhfi6DBWEg4j3c_nH8_A@mail.gmail.com>
+ <e360b9b3-ada4-4cd1-8971-097484cf3f5f@gmx.de> <CAJZ5v0ij_Frdrya3=FaekbU2DFHUyBJnBq-oe9jRsB9eqXDisA@mail.gmail.com>
+ <ed619280-6f25-4df6-98ca-890bdc343435@gmx.de>
+In-Reply-To: <ed619280-6f25-4df6-98ca-890bdc343435@gmx.de>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Fri, 28 Nov 2025 12:40:44 +0100
+X-Gmail-Original-Message-ID: <CAJZ5v0hMPCRU_p_krX3nKzB=5TX7hGU38iyNmhSJSHO2j7K3eA@mail.gmail.com>
+X-Gm-Features: AWmQ_blsO-bjiwsq3G0QvTFpoBZAchhq9V5-3UdaeSTn0cJ4NHEETJ5wOmDSVTA
+Message-ID: <CAJZ5v0hMPCRU_p_krX3nKzB=5TX7hGU38iyNmhSJSHO2j7K3eA@mail.gmail.com>
+Subject: Re: [PATCH RFC RESEND 0/8] thermal: core: Allow setting the parent
+ device of thermal zone/cooling devices
+To: Armin Wolf <W_Armin@gmx.de>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
+	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Len Brown <lenb@kernel.org>, 
+	Jonathan Corbet <corbet@lwn.net>, Ido Schimmel <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>, 
+	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	etnaviv@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
+	linux-tegra@vger.kernel.org, linux-acpi@vger.kernel.org, 
+	linux-doc@vger.kernel.org, netdev@vger.kernel.org, 
+	linux-wireless@vger.kernel.org, ath10k@lists.infradead.org, 
+	ath11k@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, platform-driver-x86@vger.kernel.org, 
+	linux-pci@vger.kernel.org, imx@lists.linux.dev, 
+	linux-renesas-soc@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251127_223545_198726_84C23048 
-X-CRM114-Status: UNSURE (   5.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251128_034057_608084_B88C78CD 
+X-CRM114-Status: GOOD (  69.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -205,248 +98,623 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Nov 28, 2025 at 12:50=E2=80=AFAM Armin Wolf <W_Armin@gmx.de> wrote:
+>
+> Am 27.11.25 um 22:46 schrieb Rafael J. Wysocki:
+>
+> > On Thu, Nov 27, 2025 at 9:06=E2=80=AFPM Armin Wolf <W_Armin@gmx.de> wro=
+te:
+> >> Am 27.11.25 um 18:41 schrieb Rafael J. Wysocki:
+> >>
+> >>> On Sat, Nov 22, 2025 at 3:18=E2=80=AFPM Armin Wolf <W_Armin@gmx.de> w=
+rote:
+> >>>> Am 21.11.25 um 21:35 schrieb Rafael J. Wysocki:
+> >>>>
+> >>>>> On Thu, Nov 20, 2025 at 4:41=E2=80=AFAM Armin Wolf <W_Armin@gmx.de>=
+ wrote:
+> >>>>>> Drivers registering thermal zone/cooling devices are currently una=
+ble
+> >>>>>> to tell the thermal core what parent device the new thermal zone/
+> >>>>>> cooling device should have, potentially causing issues with suspen=
+d
+> >>>>>> ordering
+> >>>>> This is one potential class of problems that may arise, but I would
+> >>>>> like to see a real example of this.
+> >>>>>
+> >>>>> As it stands today, thermal_class has no PM callbacks, so there are=
+ no
+> >>>>> callback execution ordering issues with devices in that class and w=
+hat
+> >>>>> other suspend/resume ordering issues are there?
+> >>>> Correct, that is why i said "potentially".
+> >>>>
+> >>>>> Also, the suspend and resume of thermal zones is handled via PM
+> >>>>> notifiers.  Is there a problem with this?
+> >>>> The problem with PM notifiers is that thermal zones stop working eve=
+n before
+> >>>> user space is frozen. Freezing user space might take a lot of time, =
+so having
+> >>>> no thermal management during this period is less than ideal.
+> >>> This can be addressed by doing thermal zone suspend after freezing
+> >>> tasks and before starting to suspend devices.  Accordingly, thermal
+> >>> zones could be resumed after resuming devices and before thawing
+> >>> tasks.  That should not be an overly complex change to make.
+> >> AFAIK this is only possible by using dev_pm_ops,
+> > Of course it is not the case.
+> >
+> > For example, thermal_pm_notify_prepare() could be called directly from
+> > dpm_prepare() and thermal_pm_notify_complete() could be called
+> > directly from dpm_complete() (which would require switching over
+> > thermal to a non-freezable workqueue).
+> >
+> >> the PM notifier is triggered before tasks are frozen during suspend an=
+d after they are thawed during resume.
+> > I know that.
+> >
+> >> Using dev_pm_ops would also ensure that thermal zone devices are resum=
+ed after their
+> >> parent devices, so no additional changes inside the pm core would be n=
+eeded.
+> > Not really.  thermal_pm_suspended needs to be set and cleared from some=
+where.
+>
+> thermal_pm_suspended is only used for initializing the state of thermal z=
+one devices registered
+> during a suspend transition. This is currently needed because user space =
+tasks are still operational
+> when the PM notifier callback is called, so we have to be prepared for ne=
+w thermal zone devices
+> being registered in the middle of a suspend transition.
+>
+> When using dev_pm_ops, new thermal zone devices cannot appear in the midd=
+le of a suspend transition,
+> as this would violate the restraints of the device core regarding device =
+registrations. Because of
+> this thermal_pm_suspended can be removed once we use dev_pm_ops.
 
+No, we are not going to use dev_pm_ops for thermal zone suspend.  That
+would be adding complexity just for the sake of it IMV.
 
-Hello,
+> >>>> This problem would not occur when using dev_pm_ops, as thermal zones=
+ would be
+> >>>> suspended after user space has been frozen successfully. Additionall=
+y, when using
+> >>>> dev_pm_ops we can get rid of thermal_pm_suspended, as the device cor=
+e already mandates
+> >>>> that no new devices (including thermal zones and cooling devices) be=
+ registered during
+> >>>> a suspend/resume cycle.
+> >>>>
+> >>>> Replacing the PM notifiers with dev_pm_ops would of course be a opti=
+mization with
+> >>>> its own patch series.
+> >>> Honestly, I don't see much benefit from using dev_pm_ops for thermal
+> >>> zone devices and cooling devices.  Moreover, I actually think that
+> >>> they could be "no PM" devices that are not even put on the
+> >>> suspend-resume device list.  Technically, they are just interfaces on
+> >>> top of some other devices allowing the user space to interact with th=
+e
+> >>> latter and combining different pieces described by the platform
+> >>> firmware.  They by themselves have no PM capabilities.
+> >> Correct, thermal zone devices are virtual devices representing thermal=
+ management
+> >> aspects of the underlying parent device. This however does not mean th=
+at thermal zone
+> >> devices have no PM capabilities, because they contain state. Some part=
+ of this state
+> >> (namely TZ_STATE_FLAG_SUSPENDED and TZ_STATE_FLAG_RESUMING) is affecte=
+d by power management,
+> >> so we should tell the device core about this by using dev_pm_ops inste=
+ad of the PM notifier.
+> > Changing the zone state to anything different from TZ_STATE_READY
+> > causes __thermal_zone_device_update() to do nothing and this is the
+> > whole "suspend".  It does not need to be done from a PM callback and I
+> > see no reason why doing it from a PM callback would be desirable.
+> > Sorry.
+> >
+> > Apart from the above, TZ_STATE_FLAG_SUSPENDED and
+> > TZ_STATE_FLAG_RESUMING are only used for coordination between
+> > thermal_zone_pm_prepare(), thermal_zone_device_resume() and
+> > thermal_zone_pm_complete(), so this is not a state anything other then
+> > the specific thermal zone in question cares about.
+>
+> AFAIK this is not completely true, once TZ_STATE_FLAG_SUSPENDED is set,
+> __thermal_zone_device_update() will stop polling said device (as you said=
+).
+> This is not only important for the thermal zone device itself, but also f=
+or
+> the underlying device driver as he has to make sure that the thermal zone
+> callbacks do not access an already suspended hardware device.
 
-kernel test robot noticed a 3.2% regression of will-it-scale.per_process_ops on:
+Which callbacks in particular do you mean?  That would need to be
+something that is not called from either
+__thermal_zone_device_update() because it is going to bail out early
+or user space because it is frozen.  So what is left?
 
+Seriously, if the only problem with the existing thermal zone suspend
+and resume is that they are done from a PM notifier, I don't think
+addressing this requires involving dev_pm_ops and it will be very hard
+to convince me otherwise.
 
-commit: a97fbc3ee3e2a536fafaff04f21f45472db71769 ("syscore: Pass context data to callbacks")
-https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git master
+> > Moreover, resuming a thermal zone before resuming any cooling devices
+> > bound to it would almost certainly break things and I'm not sure how
+> > you would make that work with dev_pm_ops.  BTW, using device links for
+> > this is not an option as far as I'm concerned.
+>
+> We could simply resume the thermal zones inside the .complete callback.
+> The cooling devices will already be operational when said complete callba=
+ck
+> is being called by the PM core, due to the resume phase having been compl=
+eted
+> already.
 
-[still regression on linux-next/master ef68bf704646690aba5e81c2f7be8d6ef13d7ad8]
+But then it would be synchronous, wouldn't it?  Or if you want to
+start async handling from a .complete callback then I don't see a
+point.
 
-testcase: will-it-scale
-config: x86_64-rhel-9.4
-compiler: gcc-14
-test machine: 64 threads 2 sockets Intel(R) Xeon(R) Gold 6346 CPU @ 3.10GHz (Ice Lake) with 256G memory
-parameters:
+> >>>>>> and making it impossible for user space applications to
+> >>>>>> associate a given thermal zone device with its parent device.
+> >>>>> Why does user space need to know the parent of a given cooling devi=
+ce
+> >>>>> or thermal zone?
+> >>>> Lets say that we have two thermal zones registered by two instances =
+of the
+> >>>> Intel Wifi driver. User space is currently unable to find out which =
+thermal zone
+> >>>> belongs to which Wifi adapter, as both thermal zones have the (nearl=
+y) same type string ("iwlwifi[0-X]").
+> >>> But the "belong" part is not quite well defined here.  I think that
+> >>> what user space needs to know is what devices are located in a given
+> >>> thermal zone, isn't it?  Knowing the parent doesn't necessarily
+> >>> address this.
+> >> The device exposing a given thermal zone device is not always a member=
+ of the thermal zone itself.
+> >> In case of the Intel Wifi adapters, the individual Wifi adapters are i=
+ndeed members of the thermal zone
+> >> associated with their thermal zone device. But thermal zones created t=
+hru a system management controller
+> >> for example might only cover devices like the CPUs and GPUs, not the s=
+ystem management controller device itself.
+> > Well, exactly.
+> >
+> >> The parent device of a child device is the upstream device of the chil=
+d device. The connection between parent
+> >> and child can be physical (SMBus controller (parent) -> i2c device (ch=
+ild)) or purely logical
+> >> (PCI device (parent) -> thermal zone device (child)). There exists a p=
+arent-child dependency between a parent
+> >> and a child device (the child device cannot function without its paren=
+t being operational), and user space
+> >> might want to be able to discover such dependencies.
+> > But this needs to be consistent.
+> >
+> > If the parent of one thermal zone represents the device affected by it
+> > and the parent of another thermal zone represents something else, user
+> > space will need platform-specific knowledge to figure this out, which
+> > is the case today.  Without consistency, this is just not useful.
+>
+> I think there is a misunderstanding here, describing the devices affected=
+ by a given thermal zone
+> has nothing to do with the parent-child dependency between a thermal zone=
+ device and its parent device.
+> This parent-child dependency only states that:
+>
+>         "This thermal zone device is descended from this parent device. I=
+t might thus depend on
+>          said parent device to be operational."
 
-	nr_task: 100%
-	mode: process
-	test: signal1
-	cpufreq_governor: performance
+So you are postulating that the parent of a thermal zone should be the
+device providing the thermal sensor or otherwise a mechanism allowing
+temperature to be read.  That is precise enough as far as I'm
+concerned.
 
+> >>>> This problem would be solved once we populate the parent device poin=
+ter inside the thermal zone
+> >>>> device, as user space can simply look at the "device" symlink to det=
+ermine the parent device behind
+> >>>> a given thermal zone device.
+> >>> I'm not convinced about this.
+> >>>
+> >>>> Additionally, being able to access the acpi_handle of the parent dev=
+ice will be necessary for the
+> >>>> ACPI thermal zone driver to support cooling devices other than ACPI =
+fans and ACPI processors.
+> >>> I guess by the "parent" you mean the device represented in the ACPI
+> >>> namespace by a ThermalZone object, right?  But this is not the same a=
+s
+> >>> the "parent" in the Wifi driver context, is it?
+> >> In the context of a ACPI ThermalZone, the parent device of the thermal=
+ cooling device would currently
+> >> be the ACPI device bound to the "thermal" ACPI driver. In the context =
+of the Intel Wifi card, the parent
+> >> device would be PCI device bound to the corresponding Intel Wifi drive=
+r.
+> >>
+> >> I think you misunderstood what kind of parent device i was referring t=
+o. You likely though that i was referring
+> >> to the parent device of the ACPI ThermalZone, right?
+> > No.  I thought that you were referring to the ACPI ThermalZone itself.
+> > Or rather, a platform device associated with the ACPI ThermalZone
+> > (that is, the device the ACPI ThermalZone in the ACPI_COMPAION() of).
+>
+> That is correct.
+>
+> >> That however is not the case , with "parent device" i was
+> >> referring to the device responsible for creating a given struct therma=
+l_zone_device instance.
+> > So I was not confused.
+> >
+> >>>>>> This patch series aims to fix this issue by extending the function=
+s
+> >>>>>> used to register thermal zone/cooling devices to also accept a par=
+ent
+> >>>>>> device pointer. The first six patches convert all functions used f=
+or
+> >>>>>> registering cooling devices, while the functions used for register=
+ing
+> >>>>>> thermal zone devices are converted by the remaining two patches.
+> >>>>>>
+> >>>>>> I tested this series on various devices containing (among others):
+> >>>>>> - ACPI thermal zones
+> >>>>>> - ACPI processor devices
+> >>>>>> - PCIe cooling devices
+> >>>>>> - Intel Wifi card
+> >>>>>> - Intel powerclamp
+> >>>>>> - Intel TCC cooling
+> >>>>> What exactly did you do to test it?
+> >>>> I tested:
+> >>>> - the thermal zone temperature readout
+> >>>> - correctness of the new sysfs links
+> >>>> - suspend/resume
+> >>>>
+> >>>> I also verified that ACPI thermal zones still bind with the ACPI fan=
+s.
+> >>> I see, thanks.
+> >>>
+> >>>>>> I also compile-tested the remaining affected drivers, however i wo=
+uld
+> >>>>>> still be happy if the relevant maintainers (especially those of th=
+e
+> >>>>>> mellanox ethernet switch driver) could take a quick glance at the
+> >>>>>> code and verify that i am using the correct device as the parent
+> >>>>>> device.
+> >>>>> I think that the above paragraph is not relevant any more?
+> >>>> You are right, however i originally meant to CC the mellanox maintai=
+ners as
+> >>>> i was a bit unsure about the changes i made to their driver. I will =
+rework
+> >>>> this section in the next revision and CC the mellanox maintainers.
+> >>>>
+> >>>>>> This work is also necessary for extending the ACPI thermal zone dr=
+iver
+> >>>>>> to support the _TZD ACPI object in the future.
+> >>>>> I'm still unsure why _TZD support requires the ability to set a
+> >>>>> thermal zone parent device.
+> >>>> _TZD allows the ACPI thermal zone to bind to cooling devices other t=
+han ACPI fans
+> >>>> and ACPI processors, like ACPI batteries.
+> >>> No, it is not for cooling devices if my reading of the specification
+> >>> is correct.  It says:
+> >>>
+> >>> "_TZD (Thermal Zone Devices)
+> >>>
+> >>> This optional object evaluates to a package of device names. Each nam=
+e
+> >>> corresponds to a device in the ACPI namespace that is associated with
+> >>> the thermal zone. The temperature reported by the thermal zone is
+> >>> roughly correspondent to that of each of the devices."
+> >>>
+> >>> And then
+> >>>
+> >>> "The list of devices returned by the control method need not be a
+> >>> complete and absolute list of devices affected by the thermal zone.
+> >>> However, the package should at least contain the devices that would
+> >>> uniquely identify where this thermal zone is located in the machine.
+> >>> For example, a thermal zone in a docking station should include a
+> >>> device in the docking station, a thermal zone for the CD-ROM bay,
+> >>> should include the CD-ROM."
+> >>>
+> >>> So IIUC this is a list of devices allowing the location of the therma=
+l
+> >>> zone to be figured out.  There's nothing about cooling in this
+> >>> definition.
+> >> Using _TZD to figure out the location of a given thermal zone is anoth=
+er usage
+> >> of this ACPI control method, but lets take a look at section 11.6:
+> >>
+> >> - If _PSV is defined then either the _PSL or _TZD objects must exist. =
+The _PSL and _TZD objects may both exist.
+> >> - If _PSV is defined and _PSL is not defined then at least one device =
+in thermal zone, as indicated by either the
+> >>     _TZD device list or devices=E2=80=99 _TZM objects, must support de=
+vice performance states.
+> >>
+> >> So according to my understanding, _TZD can also be used to discover ad=
+ditional cooling devices used for passive cooling.
+> > But it doesn't actually say how those "device performance states" are
+> > supposed to be used for cooling, does it?
+>
+> Well, ACPI specifies how passive cooling should be done using percentage =
+values between 0% and 100%,
+> so this part is actually specified.
 
+If you refer to Section 11.1.5, this is based on _TC1 and _TC2 and has
+limitations.  So you are saying that Section 11.1.5 should be extended
+to _TZD devices.  Is this also there in the MSFT document?
 
+> >> This makes sense as _PSL is defined to only contain processor objects =
+(see section 11.4.10), so _TZD can act like an
+> >> extension of _PSL for things like ACPI control method batteries (see 1=
+0.2.2.12).
+> > But not everything in _TZD needs to be a potential "cooling device"
+> > and how you'll decide which one is?
+>
+> Devices in _TZD that have no cooling capability will simply never registe=
+r any cooling devices. This means that
+> the .should_bind callback of the ACPI thermal zone will never see those d=
+evices. Only devices in _TZD that also
+> have the ability for (passive) cooling will register a cooling device, so=
+ only those devices will end up with
+> the .should_bind callback of the ACPI thermal zone.
+>
+> The ACPI thermal zone treats _TZD as a list of ACPI handles. If some of t=
+hose handles are unused, then this is
+> totally fine.
+>
+> >> Microsoft also follows this approach (see https://learn.microsoft.com/=
+en-us/windows-hardware/design/device-experiences/design-guide
+> >> section "Thermally managed devices" paragraph "Processor aggregator").
+> > Interesting.
+> >
+> > I agree that it would make sense to follow them because there will be
+> > platform dependencies on that, if there aren't already.
+>
+> My primary goal is to improve the Linux thermal subsystem to be as powerf=
+ul as
+> the Windows thermal subsystem. This means that we must stop viewing _PSL,=
+ _ALx and _TZD
+> as something that only works with a predefined set of devices. Instead we=
+ must view
+> _PSL, _ALx and _TZD as something similar to the cooling-maps used for con=
+necting
+> thermal zones and cooling devices on OF-based systems.
+>
+> >>>> This however will currently not work as
+> >>>> the ACPI thermal zone driver uses the private drvdata of the cooling=
+ device to
+> >>>> determine if said cooling device should bind. This only works for AC=
+PI fans and
+> >>>> processors due to the fact that those drivers store a ACPI device po=
+inter inside
+> >>>> drvdata, something the ACPI thermal zone expects.
+> >>> I'm not sure I understand the above.
+> >>>
+> >>> There is a list of ACPI device handles per trip point, as returned by
+> >>> either _PSL or _ALx.  Devices whose handles are in that list will be
+> >>> bound to the thermal zone, so long as there are struct acpi_device
+> >>> objects representing them which is verified with the help of the
+> >>> devdata field in struct thermal_cooling_device.
+> >> AFAIK devdata is meant to be used by the thermal zone device callbacks=
+ to access the state
+> >> container struct of the associated device driver instance. Assuming th=
+at a given device driver
+> >> will populate devdata with a pointer to is ACPI companion device is an=
+ implementation-specific
+> >> detail that does not apply to all cooling device implementations. It j=
+ust so happens that the
+> >> ACPI processor and fan driver do this, likely because they where desig=
+ned specifically to work
+> >> with the ACPI thermal zone driver.
+> >>
+> >> The documentation of thermal_cooling_device_register() even describes =
+devdata as "device private data", so any meaning of devdata purely depends =
+on the
+> >> given device driver.
+> > Yes, and these particular drivers decide to store a pointer to struct
+> > acpi_device in it.
+> >
+> > But this is not super important, they might as well set the
+> > ACPI_COMPANION() of the cooling device to the corresponding struct
+> > acpi_device and the ACPI thermal driver might use that information.
+> >
+> > I'm not opposed to using parents for this purpose, but it doesn't
+> > change the big picture that the ACPI thermal driver will need to know
+> > the ACPI handle corresponding to each cooling device.
+> >
+> > If you want to use _TZD instead of or in addition to _PSL for this, it
+> > doesn't change much here, it's just another list of ACPI handles, so
+> > saying that parents are needed for supporting this is not exactly
+> > accurate IMV.
+>
+> My idea was something like this:
+>
+> /* Cooling devices without a parent device cannot be referenced using ACP=
+I */
+> if (!cdev->device.parent)
+>         return false;
+>
+> /* Not all devices are described inside the ACPI tables */
+> acpi_handle cdev_handle =3D ACPI_HANDLE(cdev->device.parent);
+> if (!cdev_handle)
+>         return false;
+>
+> for (i =3D 0; i < acpi_trip->devices.count; i++) {
+>         acpi_handle handle =3D acpi_trip->devices.handles[i];
+>
+>         if (handle =3D=3D cdev_handle)
+>                 return true;
+> }
+>
+> This only works if the parent device pointer of the cooling device is pop=
+ulated.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <oliver.sang@intel.com>
-| Closes: https://lore.kernel.org/oe-lkp/202511281432.47ac7e38-lkp@intel.com
+Sure, but it looks reasonable to me.
 
+> >>> IOW, cooling device drivers that create struct thermal_cooling_device
+> >>> objects representing them are expected to set devdata in those object=
+s
+> >>> to point to struct acpi_device objects corresponding to their ACPI
+> >>> handles, but in principle acpi_thermal_should_bind_cdev() might as
+> >>> well just use the handles themselves.  It just needs to know that
+> >>> there is a cooling driver on the other side of the ACPI handle.
+> >>>
+> >>> The point is that a cooling device to be bound to an ACPI thermal zon=
+e
+> >>> needs an ACPI handle in the first place to be listed in _PSL or _ALx.
+> >> Correct, i merely change the way the ACPI thermal zone driver retrieve=
+s the
+> >> ACPI handle associated with a given cooling device.
+> > Right.
+> >
+> >>>> As we cannot require all cooling devices to store an ACPI device poi=
+nter inside
+> >>>> their drvdata field in order to support ACPI,
+> >>> Cooling devices don't store ACPI device pointers in struct
+> >>> thermal_cooling_device objects, ACPI cooling drivers do, and there ar=
+e
+> >>> two reasons to do that: (1) to associate a given struct
+> >>> thermal_cooling_device with an ACPI handle and (2) to let
+> >>> acpi_thermal_should_bind_cdev() know that the cooling device is
+> >>> present and functional.
+> >>>
+> >>> This can be changed to store an ACPI handle in struct
+> >>> thermal_cooling_device and acpi_thermal_should_bind_cdev() may just
+> >>> verify that the device is there by itself.
+> >> I can of course extend thermal_cooling_device_register() to accept a f=
+wnode_handle that
+> >> can be used for both ACPI and OF based cooling device identification, =
+if this is what you
+> >> prefer.
+> > I'm not sure about this ATM and see below.
+> >
+> >> This patch series would then turn into a cleanup series, focusing on p=
+roperly adding
+> >> thermal zone devices and cooling devices into the global device hierar=
+chy.
+> > I'd prefer to do one thing at a time though.
+> >
+> > If you want cooling devices to get parents, fine.  I'm not
+> > fundamentally opposed to that idea, but let's have clear rules for
+> > device drivers on how to set those parents for the sake of
+> > consistency.
+> >
+> > As for the ACPI case, one rule that I want to be followed (as already
+> > stated multiple times) is that a struct acpi_device can only be a
+> > parent of another struct acpi_device.  This means that the parent of a
+> > cooling device needs to be a platform device or similar representing
+> > the actual device that will be used for implementing the cooling.
+>
+> OK.
+>
+> > A separate question is how acpi_thermal_should_bind_cdev() will match
+> > cooling devices with the ACPI handles coming from _PSL, _ALx, _TZD
+> > etc. and the rule can be that it will look at the ACPI_COMPANION() of
+> > the parent of the given cooling device.
+>
+> See the example code i pasted above, the whole matching is done using ACP=
+I handles,
+> so we can completely leave ACPI_COMPANION() out of this.
 
-Details are as below:
--------------------------------------------------------------------------------------------------->
+ACPI_HANDLE() is a wrapper around ACPI_COMPANION() so your code
+effectively does what I said above.
 
+> >>>> we must use a more generic approach.
+> >>> I'm not sure what use case you are talking about.
+> >>>
+> >>> Surely, devices with no representation in the ACPI namespace cannot b=
+e
+> >>> bound to ACPI thermal zones.  For devices that have a representation
+> >>> in the ACPI namespace, storing an ACPI handle in devdata should not b=
+e
+> >>> a problem.
+> >> See my above explanations for details, drvdata is defined to hold devi=
+ce private data,
+> >> nothing more.
+> > This is related to the discussion below.
+> >
+> >>>> I was thinking about using the acpi_handle of the parent device inst=
+ead of messing
+> >>>> with the drvdata field, but this only works if the parent device poi=
+nter of the
+> >>>> cooling device is populated.
+> >>>>
+> >>>> (Cooling devices without a parent device would then be ignored by th=
+e ACPI thermal
+> >>>> zone driver, as such cooling devices cannot be linked to ACPI).
+> >>> It can be arranged this way, but what's the practical difference?
+> >>> Anyone who creates a struct thermal_cooling_device and can set its
+> >>> parent pointer to a device with an ACPI companion, may as well set it=
+s
+> >>> devdata to point to that companion directly - or to its ACPI handle i=
+f
+> >>> that's preferred.
+> >> Yes, but this would require explicit support for ACPI in every driver =
+that registers cooling devices.
+> > So you want to have generic drivers that may work on ACPI platforms
+> > and on DT platforms to be able to create cooling devices for use with
+> > ACPI thermal zones.  Well, had you started the whole discussion with
+> > this statement, it would have been much easier to understand your
+> > point.
+>
+> Sorry for the messy discussion, i intended to have two separate patch ser=
+ies. This one was meant to
+> simply be a preparation, with the important changes inside the ACPI therm=
+al zone driver being implemented
+> with the second patch series.
+>
+> That was also the reason why i send this series as an RFC.
+>
+> >> Using the parent device to retrieve the acpi_handle or allowing all dr=
+ivers to just submit a fwnode_handle
+> >> of their choice when creating a cooling device will fix this.
+> > If you go the parents route, this is an important consideration for
+> > the rules on how to set those parents.  Namely, they would need to be
+> > set so that the fwnode_handle of the parent could be used for binding
+> > the cooling device to a thermal zone either on ACPI or on DT systems.
+> >
+> > Of course, there are also cooling devices whose parents will not have
+> > an fwnode_handle and they would still need to work in this brave new
+> > world.
+> >
+> True, i did not think of that. In this case extending thermal_of_cooling_=
+device_register() and friends to accept
+> a generic fwnode_handle instead of a OF-specific device_node would make m=
+ore sense. Most drivers can simply
+> pass the result of dev_fwnode() instead of dev->of_node, only those that =
+support multiple cooling device child
+> nodes would need additional work to also support ACPI.
+>
+> Basically, thermal_of_get_cooling_spec() could handle the fwnode_handle i=
+n the following manner:
+>
+> if (cooling_spec.np->fwnode !=3D cdev->fwnode)
+>         return false;
+>
+> And the ACPI thermal zone driver could then simply use ACPI_HANDLE_FWNODE=
+() to retrieve the ACPI handle from
+> the fwnode_handle (together with a NULL check of course).
+>
+> If you are OK with this approach, i will forget about the whole parent de=
+vice stuff for now and focus on extending
+> (devm_)thermal_of_cooling_device_register(). There are some additional ch=
+anges needed for reliably associating
+> cooling devices to ACPI trip points using fwnode handles, but those are n=
+ot that intrusive.
+>
+> What do you think?
 
-The kernel config and materials to reproduce are available at:
-https://download.01.org/0day-ci/archive/20251128/202511281432.47ac7e38-lkp@intel.com
+One advantage of using parents is that it will help user space to
+figure out connections between the abstract cooling devices and the
+associated hardware or firmware entities.  I think that this is an
+important one.
 
-=========================================================================================
-compiler/cpufreq_governor/kconfig/mode/nr_task/rootfs/tbox_group/test/testcase:
-  gcc-14/performance/x86_64-rhel-9.4/process/100%/debian-13-x86_64-20250902.cgz/lkp-icl-2sp7/signal1/will-it-scale
+It also doesn't prevent fwnode_handle from being used because the
+fwnode_handle may just be stored in the parent.  I like this more than
+associating fwnode_handles directly with abstract cooling devices.
 
-commit: 
-  v6.18-rc1
-  a97fbc3ee3 ("syscore: Pass context data to callbacks")
-
-       v6.18-rc1 a97fbc3ee3e2a536fafaff04f21 
----------------- --------------------------- 
-         %stddev     %change         %stddev
-             \          |                \  
-     71066 ±105%    +119.1%     155709 ± 64%  numa-meminfo.node1.AnonHugePages
-     34.80 ±105%    +118.6%      76.08 ± 64%  numa-vmstat.node1.nr_anon_transparent_hugepages
-      0.34            +0.2        0.52 ± 25%  mpstat.cpu.all.idle%
-      0.01            +0.0        0.01 ±  3%  mpstat.cpu.all.soft%
-    142.02 ±  5%     +20.2%     170.65 ±  9%  sched_debug.cfs_rq:/.runnable_avg.stddev
-      7.16 ±  5%     +52.9%      10.94 ±  8%  sched_debug.cpu.clock.stddev
-      1233 ±  4%     -22.2%     960.17 ±  8%  perf-c2c.DRAM.remote
-      2429 ±  3%     -18.0%       1993        perf-c2c.HITM.local
-      1010 ±  5%     -29.8%     709.00 ±  2%  perf-c2c.HITM.remote
-   8382642            -3.2%    8118230        will-it-scale.64.processes
-    130978            -3.2%     126846        will-it-scale.per_process_ops
-   8382642            -3.2%    8118230        will-it-scale.workload
-    285565            -1.6%     280908        proc-vmstat.nr_active_anon
-     28063            +4.4%      29306        proc-vmstat.nr_mapped
-    117169            -3.9%     112656        proc-vmstat.nr_shmem
-    285565            -1.6%     280908        proc-vmstat.nr_zone_active_anon
-     38231 ± 33%     -48.6%      19647 ± 35%  proc-vmstat.numa_hint_faults
-     19706 ± 75%     -65.5%       6790 ± 15%  proc-vmstat.numa_hint_faults_local
- 9.391e+09            -3.1%  9.102e+09        perf-stat.i.branch-instructions
-      0.48            -0.0        0.45        perf-stat.i.branch-miss-rate%
-  45545162           -10.7%   40674481        perf-stat.i.branch-misses
-     11.08 ±  8%      -2.3        8.81 ± 12%  perf-stat.i.cache-miss-rate%
-      1811            +6.2%       1922        perf-stat.i.context-switches
-      5.09            +3.2%       5.26        perf-stat.i.cpi
-    117.53            -2.1%     115.06        perf-stat.i.cpu-migrations
-    216404 ±  2%     +86.7%     404107 ±  4%  perf-stat.i.cycles-between-cache-misses
-  3.87e+10            -3.1%  3.752e+10        perf-stat.i.instructions
-      0.20            -3.1%       0.19        perf-stat.i.ipc
-      0.49            -0.0        0.45        perf-stat.overall.branch-miss-rate%
-      5.10            +3.2%       5.26        perf-stat.overall.cpi
-      0.20            -3.1%       0.19        perf-stat.overall.ipc
- 9.361e+09            -3.1%  9.068e+09        perf-stat.ps.branch-instructions
-  45428240           -10.7%   40562730        perf-stat.ps.branch-misses
-      1806            +6.2%       1917        perf-stat.ps.context-switches
-    117.13            -2.1%     114.62        perf-stat.ps.cpu-migrations
- 3.858e+10            -3.1%  3.738e+10        perf-stat.ps.instructions
- 1.166e+13            -3.0%  1.131e+13        perf-stat.total.instructions
-     32.30            -6.5       25.85        perf-profile.calltrace.cycles-pp.get_signal.arch_do_signal_or_restart.exit_to_user_mode_loop.do_syscall_64.entry_SYSCALL_64_after_hwframe
-     31.42            -6.4       25.04        perf-profile.calltrace.cycles-pp.dequeue_signal.get_signal.arch_do_signal_or_restart.exit_to_user_mode_loop.do_syscall_64
-     30.28            -6.3       23.98        perf-profile.calltrace.cycles-pp.dec_rlimit_put_ucounts.__sigqueue_free.dequeue_signal.get_signal.arch_do_signal_or_restart
-     30.32            -6.3       24.02        perf-profile.calltrace.cycles-pp.__sigqueue_free.dequeue_signal.get_signal.arch_do_signal_or_restart.exit_to_user_mode_loop
-     37.60            -6.0       31.57        perf-profile.calltrace.cycles-pp.arch_do_signal_or_restart.exit_to_user_mode_loop.do_syscall_64.entry_SYSCALL_64_after_hwframe
-     37.68            -6.0       31.66        perf-profile.calltrace.cycles-pp.exit_to_user_mode_loop.do_syscall_64.entry_SYSCALL_64_after_hwframe
-     90.92            -0.5       90.43        perf-profile.calltrace.cycles-pp.entry_SYSCALL_64_after_hwframe
-     90.63            -0.5       90.14        perf-profile.calltrace.cycles-pp.do_syscall_64.entry_SYSCALL_64_after_hwframe
-      0.62            +0.0        0.65        perf-profile.calltrace.cycles-pp.check_xstate_in_sigframe.__fpu_restore_sig.fpu__restore_sig.restore_sigcontext.__x64_sys_rt_sigreturn
-      0.72 ±  2%      +0.0        0.75        perf-profile.calltrace.cycles-pp.kmem_cache_alloc_noprof.__send_signal_locked.do_send_sig_info.do_send_specific.__x64_sys_tgkill
-      0.67            +0.0        0.70        perf-profile.calltrace.cycles-pp.__fpu_restore_sig.fpu__restore_sig.restore_sigcontext.__x64_sys_rt_sigreturn.do_syscall_64
-      2.54            +0.0        2.58        perf-profile.calltrace.cycles-pp.fpu__restore_sig.restore_sigcontext.__x64_sys_rt_sigreturn.do_syscall_64.entry_SYSCALL_64_after_hwframe
-      1.15            +0.0        1.19        perf-profile.calltrace.cycles-pp.fpu__clear_user_states.arch_do_signal_or_restart.exit_to_user_mode_loop.do_syscall_64.entry_SYSCALL_64_after_hwframe
-      1.78            +0.0        1.83        perf-profile.calltrace.cycles-pp.clear_bhb_loop
-      0.56            +0.1        0.61        perf-profile.calltrace.cycles-pp.rseq_ip_fixup.__rseq_handle_notify_resume.arch_do_signal_or_restart.exit_to_user_mode_loop.do_syscall_64
-      1.46            +0.1        1.51        perf-profile.calltrace.cycles-pp.__restore_fpregs_from_user.restore_fpregs_from_user.fpu__restore_sig.restore_sigcontext.__x64_sys_rt_sigreturn
-      1.62            +0.1        1.68        perf-profile.calltrace.cycles-pp.arch_do_signal_or_restart.exit_to_user_mode_loop.do_syscall_64.entry_SYSCALL_64_after_hwframe.handler
-      3.06            +0.1        3.11        perf-profile.calltrace.cycles-pp.restore_sigcontext.__x64_sys_rt_sigreturn.do_syscall_64.entry_SYSCALL_64_after_hwframe
-      1.69            +0.1        1.75        perf-profile.calltrace.cycles-pp.exit_to_user_mode_loop.do_syscall_64.entry_SYSCALL_64_after_hwframe.handler
-      1.91            +0.1        1.98        perf-profile.calltrace.cycles-pp.entry_SYSCALL_64_after_hwframe.handler
-      1.88            +0.1        1.96        perf-profile.calltrace.cycles-pp.do_syscall_64.entry_SYSCALL_64_after_hwframe.handler
-      0.96            +0.1        1.04        perf-profile.calltrace.cycles-pp.save_xstate_epilog.get_sigframe.x64_setup_rt_frame.arch_do_signal_or_restart.exit_to_user_mode_loop
-      0.93            +0.1        1.02        perf-profile.calltrace.cycles-pp.__rseq_handle_notify_resume.arch_do_signal_or_restart.exit_to_user_mode_loop.do_syscall_64.entry_SYSCALL_64_after_hwframe
-      4.46            +0.1        4.57        perf-profile.calltrace.cycles-pp.__x64_sys_rt_sigreturn.do_syscall_64.entry_SYSCALL_64_after_hwframe
-      2.18            +0.2        2.35        perf-profile.calltrace.cycles-pp.copy_fpstate_to_sigframe.get_sigframe.x64_setup_rt_frame.arch_do_signal_or_restart.exit_to_user_mode_loop
-      4.88            +0.3        5.14        perf-profile.calltrace.cycles-pp.handler
-      3.66            +0.3        3.95        perf-profile.calltrace.cycles-pp.get_sigframe.x64_setup_rt_frame.arch_do_signal_or_restart.exit_to_user_mode_loop.do_syscall_64
-      4.16            +0.3        4.50        perf-profile.calltrace.cycles-pp.x64_setup_rt_frame.arch_do_signal_or_restart.exit_to_user_mode_loop.do_syscall_64.entry_SYSCALL_64_after_hwframe
-      0.00            +0.5        0.51        perf-profile.calltrace.cycles-pp.restore_altstack.__x64_sys_rt_sigreturn.do_syscall_64.entry_SYSCALL_64_after_hwframe
-      0.00            +0.5        0.52        perf-profile.calltrace.cycles-pp.__get_user_nocheck_8.__x64_sys_rt_sigreturn.do_syscall_64.entry_SYSCALL_64_after_hwframe
-     45.91            +5.3       51.19        perf-profile.calltrace.cycles-pp.do_send_sig_info.do_send_specific.__x64_sys_tgkill.do_syscall_64.entry_SYSCALL_64_after_hwframe
-     46.73            +5.3       52.02        perf-profile.calltrace.cycles-pp.do_send_specific.__x64_sys_tgkill.do_syscall_64.entry_SYSCALL_64_after_hwframe
-     47.27            +5.3       52.57        perf-profile.calltrace.cycles-pp.__x64_sys_tgkill.do_syscall_64.entry_SYSCALL_64_after_hwframe
-     45.10            +5.3       50.43        perf-profile.calltrace.cycles-pp.__send_signal_locked.do_send_sig_info.do_send_specific.__x64_sys_tgkill.do_syscall_64
-     43.31            +5.3       48.65        perf-profile.calltrace.cycles-pp.inc_rlimit_get_ucounts.sig_get_ucounts.__send_signal_locked.do_send_sig_info.do_send_specific
-     43.39            +5.3       48.73        perf-profile.calltrace.cycles-pp.sig_get_ucounts.__send_signal_locked.do_send_sig_info.do_send_specific.__x64_sys_tgkill
-     32.36            -6.5       25.90        perf-profile.children.cycles-pp.get_signal
-     31.44            -6.4       25.06        perf-profile.children.cycles-pp.dequeue_signal
-     30.29            -6.3       23.99        perf-profile.children.cycles-pp.dec_rlimit_put_ucounts
-     30.33            -6.3       24.03        perf-profile.children.cycles-pp.__sigqueue_free
-     39.26            -6.0       33.30        perf-profile.children.cycles-pp.arch_do_signal_or_restart
-     39.38            -5.9       33.43        perf-profile.children.cycles-pp.exit_to_user_mode_loop
-     93.64            -0.3       93.30        perf-profile.children.cycles-pp.entry_SYSCALL_64_after_hwframe
-     93.28            -0.3       92.95        perf-profile.children.cycles-pp.do_syscall_64
-      0.36 ± 11%      -0.1        0.25        perf-profile.children.cycles-pp.recalc_sigpending
-      0.61 ± 11%      -0.1        0.50 ±  6%  perf-profile.children.cycles-pp._raw_spin_lock_irq
-      0.43            -0.1        0.38        perf-profile.children.cycles-pp.fpregs_mark_activate
-      0.44            -0.0        0.40        perf-profile.children.cycles-pp.complete_signal
-      0.27 ±  5%      -0.0        0.23 ±  3%  perf-profile.children.cycles-pp.sysvec_apic_timer_interrupt
-      0.25 ±  6%      -0.0        0.22 ±  5%  perf-profile.children.cycles-pp.__sysvec_apic_timer_interrupt
-      0.25 ±  6%      -0.0        0.22 ±  5%  perf-profile.children.cycles-pp.hrtimer_interrupt
-      0.25            -0.0        0.22 ±  5%  perf-profile.children.cycles-pp._raw_spin_lock_irqsave
-      0.29 ±  5%      -0.0        0.26 ±  3%  perf-profile.children.cycles-pp.asm_sysvec_apic_timer_interrupt
-      0.31 ±  2%      -0.0        0.28        perf-profile.children.cycles-pp.set_current_blocked
-      0.05            +0.0        0.06        perf-profile.children.cycles-pp.fpu__alloc_mathframe
-      0.06            +0.0        0.07        perf-profile.children.cycles-pp.__cond_resched
-      0.20            +0.0        0.21        perf-profile.children.cycles-pp.syscall_return_via_sysret
-      0.24            +0.0        0.25        perf-profile.children.cycles-pp.__get_user_nocheck_4
-      0.39            +0.0        0.40        perf-profile.children.cycles-pp.entry_SYSCALL_64_safe_stack
-      0.72            +0.0        0.74        perf-profile.children.cycles-pp.entry_SYSRETQ_unsafe_stack
-      0.20            +0.0        0.22        perf-profile.children.cycles-pp.__get_user_8
-      0.22 ±  2%      +0.0        0.24        perf-profile.children.cycles-pp.__put_user_8
-      0.46 ±  3%      +0.0        0.48        perf-profile.children.cycles-pp.__memcg_slab_post_alloc_hook
-      0.69            +0.0        0.71        perf-profile.children.cycles-pp.__fpu_restore_sig
-      0.27            +0.0        0.30        perf-profile.children.cycles-pp.rseq_get_rseq_cs
-      0.63            +0.0        0.66        perf-profile.children.cycles-pp.check_xstate_in_sigframe
-      0.74            +0.0        0.77        perf-profile.children.cycles-pp.kmem_cache_alloc_noprof
-      0.50            +0.0        0.53        perf-profile.children.cycles-pp.restore_altstack
-      0.32            +0.0        0.35        perf-profile.children.cycles-pp.rseq_update_cpu_node_id
-      0.36            +0.0        0.39        perf-profile.children.cycles-pp.__put_user_nocheck_4
-      0.69            +0.0        0.73        perf-profile.children.cycles-pp.arch_exit_to_user_mode_prepare
-      0.37            +0.0        0.40        perf-profile.children.cycles-pp.__put_user_nocheck_8
-      2.06            +0.0        2.10        perf-profile.children.cycles-pp.__getpid
-      0.66            +0.0        0.70        perf-profile.children.cycles-pp._copy_from_user
-      2.55            +0.0        2.59        perf-profile.children.cycles-pp.fpu__restore_sig
-      0.87            +0.0        0.91        perf-profile.children.cycles-pp.its_return_thunk
-      1.21            +0.0        1.25        perf-profile.children.cycles-pp.fpu__clear_user_states
-      1.48            +0.0        1.52        perf-profile.children.cycles-pp.__restore_fpregs_from_user
-      2.39            +0.1        2.44        perf-profile.children.cycles-pp.clear_bhb_loop
-      0.09 ±  4%      +0.1        0.14 ±  4%  perf-profile.children.cycles-pp.shmem_file_write_iter
-      0.08            +0.1        0.14 ±  5%  perf-profile.children.cycles-pp.generic_perform_write
-      0.00            +0.1        0.06 ±  8%  perf-profile.children.cycles-pp.shmem_get_folio_gfp
-      0.10 ±  3%      +0.1        0.16 ±  3%  perf-profile.children.cycles-pp.perf_mmap__push
-      0.00            +0.1        0.06 ±  6%  perf-profile.children.cycles-pp.shmem_write_begin
-      0.58            +0.1        0.64        perf-profile.children.cycles-pp.rseq_ip_fixup
-      3.08            +0.1        3.13        perf-profile.children.cycles-pp.restore_sigcontext
-      0.10 ±  3%      +0.1        0.16 ±  4%  perf-profile.children.cycles-pp.record__mmap_read_evlist
-      0.09 ±  5%      +0.1        0.15 ±  4%  perf-profile.children.cycles-pp.record__pushfn
-      0.12 ±  4%      +0.1        0.18 ±  4%  perf-profile.children.cycles-pp.handle_internal_command
-      0.12 ±  4%      +0.1        0.18 ±  4%  perf-profile.children.cycles-pp.main
-      0.12 ±  4%      +0.1        0.18 ±  4%  perf-profile.children.cycles-pp.run_builtin
-      0.11 ±  6%      +0.1        0.17 ±  5%  perf-profile.children.cycles-pp.cmd_record
-      0.98            +0.1        1.06        perf-profile.children.cycles-pp.__get_user_nocheck_8
-      1.36            +0.1        1.45        perf-profile.children.cycles-pp.native_irq_return_iret
-      1.00            +0.1        1.09        perf-profile.children.cycles-pp.save_xstate_epilog
-      0.95            +0.1        1.04        perf-profile.children.cycles-pp.__rseq_handle_notify_resume
-      4.52            +0.1        4.64        perf-profile.children.cycles-pp.__x64_sys_rt_sigreturn
-      2.27            +0.2        2.45        perf-profile.children.cycles-pp.copy_fpstate_to_sigframe
-      3.68            +0.2        3.86        perf-profile.children.cycles-pp.handler
-      3.68            +0.3        3.98        perf-profile.children.cycles-pp.get_sigframe
-      4.21            +0.3        4.55        perf-profile.children.cycles-pp.x64_setup_rt_frame
-     45.96            +5.3       51.25        perf-profile.children.cycles-pp.do_send_sig_info
-     46.77            +5.3       52.07        perf-profile.children.cycles-pp.do_send_specific
-     47.30            +5.3       52.60        perf-profile.children.cycles-pp.__x64_sys_tgkill
-     45.18            +5.3       50.51        perf-profile.children.cycles-pp.__send_signal_locked
-     43.40            +5.3       48.74        perf-profile.children.cycles-pp.sig_get_ucounts
-     43.32            +5.3       48.66        perf-profile.children.cycles-pp.inc_rlimit_get_ucounts
-     30.28            -6.3       23.98        perf-profile.self.cycles-pp.dec_rlimit_put_ucounts
-      0.34 ± 12%      -0.1        0.23 ±  2%  perf-profile.self.cycles-pp.recalc_sigpending
-      0.58 ± 12%      -0.1        0.48 ±  6%  perf-profile.self.cycles-pp._raw_spin_lock_irq
-      0.31            -0.1        0.25 ±  2%  perf-profile.self.cycles-pp.complete_signal
-      0.36            -0.1        0.31        perf-profile.self.cycles-pp.fpregs_mark_activate
-      0.23 ±  2%      -0.0        0.20 ±  3%  perf-profile.self.cycles-pp._raw_spin_lock_irqsave
-      0.20            +0.0        0.21        perf-profile.self.cycles-pp.arch_do_signal_or_restart
-      0.07            +0.0        0.08        perf-profile.self.cycles-pp.collect_signal
-      0.40            +0.0        0.41        perf-profile.self.cycles-pp.__getpid
-      0.20            +0.0        0.21        perf-profile.self.cycles-pp.syscall_return_via_sysret
-      0.23            +0.0        0.24 ±  2%  perf-profile.self.cycles-pp.__get_user_nocheck_4
-      0.15 ±  2%      +0.0        0.16 ±  2%  perf-profile.self.cycles-pp.__x64_sys_rt_sigreturn
-      0.26            +0.0        0.28        perf-profile.self.cycles-pp.kmem_cache_free
-      0.10            +0.0        0.11 ±  4%  perf-profile.self.cycles-pp.signal_setup_done
-      0.70            +0.0        0.72        perf-profile.self.cycles-pp.entry_SYSRETQ_unsafe_stack
-      0.18 ±  2%      +0.0        0.20        perf-profile.self.cycles-pp.__get_user_8
-      0.21 ±  3%      +0.0        0.23        perf-profile.self.cycles-pp.__put_user_8
-      0.25 ±  3%      +0.0        0.27 ±  2%  perf-profile.self.cycles-pp.__memcg_slab_post_alloc_hook
-      0.47            +0.0        0.49        perf-profile.self.cycles-pp.get_signal
-      0.52            +0.0        0.55        perf-profile.self.cycles-pp.its_return_thunk
-      0.37            +0.0        0.40        perf-profile.self.cycles-pp.get_sigframe
-      0.34            +0.0        0.37        perf-profile.self.cycles-pp.__put_user_nocheck_4
-      0.31            +0.0        0.34        perf-profile.self.cycles-pp.rseq_update_cpu_node_id
-      0.34            +0.0        0.38        perf-profile.self.cycles-pp.__put_user_nocheck_8
-      0.37 ±  2%      +0.0        0.41        perf-profile.self.cycles-pp.save_xstate_epilog
-      0.64            +0.0        0.68        perf-profile.self.cycles-pp.arch_exit_to_user_mode_prepare
-      0.64            +0.0        0.68        perf-profile.self.cycles-pp._copy_from_user
-      0.53            +0.0        0.57        perf-profile.self.cycles-pp.x64_setup_rt_frame
-      1.46            +0.0        1.51        perf-profile.self.cycles-pp.__restore_fpregs_from_user
-      2.36            +0.1        2.41        perf-profile.self.cycles-pp.clear_bhb_loop
-      1.00            +0.1        1.06        perf-profile.self.cycles-pp.fpu__clear_user_states
-      0.94            +0.1        1.01        perf-profile.self.cycles-pp.__get_user_nocheck_8
-      1.36            +0.1        1.45        perf-profile.self.cycles-pp.native_irq_return_iret
-      1.45            +0.1        1.55        perf-profile.self.cycles-pp.copy_fpstate_to_sigframe
-     43.32            +5.3       48.66        perf-profile.self.cycles-pp.inc_rlimit_get_ucounts
-
-
-
-
-Disclaimer:
-Results have been estimated based on internal Intel analysis and are provided
-for informational purposes only. Any difference in system hardware or software
-design or configuration may affect actual performance.
-
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-
+If the cooling device parent (that is, the provider of the cooling
+mechanism used by it) does not have an fwnode_handle, then either it
+needs to be driven directly from user space, or the driver creating a
+thermal zone device needs to provide a specific .should_bind()
+callback that will know what to look for.
 
