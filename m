@@ -4,110 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC0A8CFD376
-	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Nov 2025 13:10:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 409F2CFD376
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Nov 2025 20:17:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FNmbbxbBaoTz8DomyGsXnxRB8wBP1F/AJR530QwYnIc=; b=uIZMrIc9W7tkvxd7B63BC9eIEE
-	qpDZ69pj4w07n+JwspFj3V802lA5Kgvw2v7+elDR/kWkGB10FPxRBLVItL0woAjly5n05kZmY6WdL
-	C/WofbOix7wWBcnUMO4CwYagQJwHHR7Huoa5ZcK8DM17Tgic4cQqbLndrwrxbdZMj5TDcHm+NhEmS
-	d8VMVA1h25wpeU87Mz2iHEaCsK2i8bsM50brnmQt96X2Ic0FWSMxt9SpOyWV44beRnjyMNU6eYyqB
-	DH2PSQGudODbq/CvxOEjlaALhSmocztlaKYxqeeh2DYDJRFMVGjqH1+Onngkyjz9o/nEW8o4kUA8L
-	mBLg75nA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TMeL4JyWTglPNStJrCnRRegNxn7l/H0tOrgAzvtGHzw=; b=yAtDHibqNByoXPafXRKOgv1X4N
+	LN8Rm1cFuU3qmmril9PmLVJej3leEuURllqAtIiTy9OoDR53ONKUr6oOBXYDGyhIvDx6zB2y4pY1N
+	N5BzNaWRsQlYcnOk01THg0TR2DS8awzUbUGIEHq5HIwWxYAgaX0G+G7tkwFICrszogFTVM/ZvN7MK
+	oiQBgAVakNLeDPXsHHMQGKNQSGSGciIND7dYtPXZpjyf5OZAwc39D4Y321VMUrMSUYyLZU2pJ8h77
+	uU2A3qv8Xt8s+VcuinkCmIyBiAkZSyLSQPNTXbwbhF0dNrt/pRdmTzkVlPx+Lt+nGLJg8+hRluqk+
+	dP+DGHGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPhBi-00000002Jsw-0Hfn;
-	Sun, 30 Nov 2025 13:10:02 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1vPnrc-00000002Y30-3qdp;
+	Sun, 30 Nov 2025 20:17:44 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPhBe-00000002JrW-32jV
-	for linux-mediatek@lists.infradead.org;
-	Sun, 30 Nov 2025 13:10:00 +0000
-Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-29812589890so39031625ad.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 30 Nov 2025 05:09:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20230601; t=1764508197; x=1765112997; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=FNmbbxbBaoTz8DomyGsXnxRB8wBP1F/AJR530QwYnIc=;
-        b=MmTd9JxqKojBMLxgxWfZDhevs9d3MowK3bt69xE4RaF5GdYcYD90vgBGBaV2vt3Mib
-         jbWQ4aXz8jv1ia9GWpZ80I841QsxRQ/vfKufQo2OMkqbBwWr2zDy53Ne2la6Sj7Wr3NM
-         /xZQFAVwEOMief/r/YeK4TUyUP2PJg+HeQ8xp4+PGxonX4Grui6ydvk1rzC21jds5ZUb
-         kLL28eRaxo+W4I20Z2EUFpSzH2LtHlWScI7Ter0HDElEgsr/qq8wx1dZogSJzrpIVyeO
-         9K6YLWtc4djRsTlv25bOqwA/iPD5NPbrHn0bIqog5VORNqVTI0zUXstEFuAIgKakHeXi
-         dlIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764508197; x=1765112997;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=FNmbbxbBaoTz8DomyGsXnxRB8wBP1F/AJR530QwYnIc=;
-        b=fPSLIZAJcrehg+N96heQHmRSUCyqHUsDrfHjZWauVUUQdUKCgkgLDlz6TqhkyCP+Av
-         AHy1IhVp0oppDp1D1pVvXdLIgWCGjXEC8rcbk7MUJHIXoRp0NEXPEEcrGzYOxg/ox8Ig
-         SW/BTBq12yG7YmSoWHP7T+jRrmfLpyqsfkBKkrbyLtGZCuMxlXKEMEsFksNKlTLEylER
-         G9B1Vs60YdTsoQqLauWXWMDR3nRQH3tfawc9QxaMeD1c3ZldRbdlBDvqU7aW5j1ERv+P
-         k7qpWNNdE7val6YSszSKIAIPDjAE8RiUN69fPppTSQzstEi4E4qR8jPLfFgeF4bbZivu
-         XREA==
-X-Forwarded-Encrypted: i=1; AJvYcCWsyZLM05bYikUn1obM73uM92k+t3PzHivsdlUOtQYsNnhFXV9ObG7HPTtGFLnDLeVpFGLrt0cJ+qkrzauVmg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxa114EZ5vVK+aMNEcetiXhnRrCgwijbzghXMWEucanr6qJuH2a
-	6OT2tFQ7wyYBElgVQY05UoY7d6E1eJolGuzKBp+I62KLgme8YCF+UK+txKD/K15CDLL/wUjypsP
-	3PtOhkPvYvf5YUWBPMMfSXHh1u/68vjI=
-X-Gm-Gg: ASbGncvi72i7Wd8pB/SXcZVCitbinoPJIMeskEvpwglobKjULepMhU82muPobOTycOj
-	SrJDWBlFkgBrVPg+HX8H24Wd4UwTfEa3aedE1WEDJPdj0SqR10HeuClnmD7OaxGRQC5qO7B7IEY
-	0mUkDC8jGjpC/Kb6THk8ISFXSVRQrOAKsfbV0sgJep+hrgvsj25plJfN8JQavObvT0D2NkWJIZC
-	G5/44z46CsKYfA8llihGum7z2obaaWpqOEUgiPs9E8gqVVKnMPxAxHl7mmyitbztTcv99z3iomv
-	fBStvDe2PrRLRvQXJfBwD83hbtja
-X-Google-Smtp-Source: AGHT+IG53GhYkY/+dF5qGVT19Jadft1SJnnMvw5Wcu0qyYtU4QLG8FtzqF0lB0krYhtMk3QufvRzdFqig5aHMJFxvm0=
-X-Received: by 2002:a17:903:903:b0:295:a1a5:bae9 with SMTP id
- d9443c01a7336-29b6be86b48mr332545755ad.8.1764508197220; Sun, 30 Nov 2025
- 05:09:57 -0800 (PST)
+	id 1vPnra-00000002Y2T-29pC;
+	Sun, 30 Nov 2025 20:17:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=TMeL4JyWTglPNStJrCnRRegNxn7l/H0tOrgAzvtGHzw=; b=jTLmQRdf4HJhzV66zMbIIGcOdK
+	tId1vBslJDT5vLxueql2nfF37y4DcGRxg9XZzVq39KHCFivb6Wss3r05d3u42f6zeYCNL8m4ZdVzC
+	vnmIDC1OUSjYLAF0q0O1/cJR76fWo7sltq7jsWObxvu3GpoHrxbP9zO7Cq13IjSaF7MU=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1vPnrH-00FTH9-QN; Sun, 30 Nov 2025 21:17:23 +0100
+Date: Sun, 30 Nov 2025 21:17:23 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Chen Minqiang <ptpt52@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH v3 2/2] net: dsa: mt7530: Use GPIO polarity to generate
+ correct reset sequence
+Message-ID: <3fbc4e67-b931-421c-9d83-2214aaa2f6ed@lunn.ch>
+References: <20251129234603.2544-1-ptpt52@gmail.com>
+ <20251129234603.2544-2-ptpt52@gmail.com>
+ <0675b35f-217d-4261-9e3f-2eb24753d43c@lunn.ch>
+ <20251130080731.ty2dlxaypxvodxiw@skbuf>
 MIME-Version: 1.0
-References: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-0-88f8a107eca2@bootlin.com>
- <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-17-88f8a107eca2@bootlin.com>
-In-Reply-To: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-17-88f8a107eca2@bootlin.com>
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Sun, 30 Nov 2025 14:09:46 +0100
-X-Gm-Features: AWmQ_bkqQ0yeDiiVRXlgzLTrdqIA678_lHRrauQKV29M6KsFuJAoinD-iLMIAaM
-Message-ID: <CAFBinCCQjeUu7pgfwViH6b0-M6S_sKgfvz9VAP1hpqLRj=bL_g@mail.gmail.com>
-Subject: Re: [PATCH v2 17/26] drm/meson: encoder_*: use devm_of_drm_get_bridge()
- to put the next bridge
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Jonathan Corbet <corbet@lwn.net>, Alexey Brodkin <abrodkin@synopsys.com>, Phong LE <ple@baylibre.com>, 
-	Liu Ying <victor.liu@nxp.com>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Adrien Grassein <adrien.grassein@gmail.com>, 
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
-	Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Anitha Chrisanthus <anitha.chrisanthus@intel.com>, Inki Dae <inki.dae@samsung.com>, 
-	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Hui Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
-	Louis Chauvet <louis.chauvet@bootlin.com>, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org, imx@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
-	linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251130080731.ty2dlxaypxvodxiw@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251130_050958_822280_87FB2356 
-X-CRM114-Status: GOOD (  18.56  )
+X-CRM114-CacheID: sfid-20251130_121742_576879_4CB35FB9 
+X-CRM114-Status: GOOD (  20.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,51 +79,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Luca,
+On Sun, Nov 30, 2025 at 10:07:31AM +0200, Vladimir Oltean wrote:
+> On Sun, Nov 30, 2025 at 02:11:05AM +0100, Andrew Lunn wrote:
+> > > -		gpiod_set_value_cansleep(priv->reset, 0);
+> > > +		int is_active_low = !!gpiod_is_active_low(priv->reset);
+> > > +		gpiod_set_value_cansleep(priv->reset, is_active_low);
+> > 
+> > I think you did not correctly understand what Russell said. You pass
+> > the logical value to gpiod_set_value(). If the GPIO has been marked as
+> > active LOW, the GPIO core will invert the logical values to the raw
+> > value. You should not be using gpiod_is_active_low().
+> > 
+> > But as i said to the previous patch, i would just leave everything as
+> > it is, except document the issue.
+> > 
+> > 	Andrew
+> > 
+> 
+> It was my suggestion to do it like this (but I don't understand why I'm
+> again not in CC).
+> 
+> We _know_ that the reset pin of the switch should be active low. So by
+> using gpiod_is_active_low(), we can determine whether the device tree is
+> wrong or not, and we can work with a wrong device tree too (just invert
+> the logical values).
 
-On Fri, Nov 28, 2025 at 5:54=E2=80=AFPM Luca Ceresoli <luca.ceresoli@bootli=
-n.com> wrote:
->
-> This driver obtains a bridge pointer from of_drm_find_bridge() in the pro=
-be
-> function and stores it until driver removal. of_drm_find_bridge() is
-> deprecated. Move to devm_of_drm_get_bridge() which puts the bridge
-> reference on remove or on probe failure.
->
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-> ---
->  drivers/gpu/drm/meson/meson_encoder_cvbs.c | 2 +-
->  drivers/gpu/drm/meson/meson_encoder_dsi.c  | 2 +-
->  drivers/gpu/drm/meson/meson_encoder_hdmi.c | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/gpu/drm/meson/meson_encoder_cvbs.c b/drivers/gpu/drm=
-/meson/meson_encoder_cvbs.c
-> index dc374bfc5951..bf8588a5f6dd 100644
-> --- a/drivers/gpu/drm/meson/meson_encoder_cvbs.c
-> +++ b/drivers/gpu/drm/meson/meson_encoder_cvbs.c
-> @@ -241,7 +241,7 @@ int meson_encoder_cvbs_probe(struct meson_drm *priv)
->                 return 0;
->         }
->
-> -       meson_encoder_cvbs->next_bridge =3D of_drm_find_bridge(remote);
-> +       meson_encoder_cvbs->next_bridge =3D devm_of_drm_get_bridge(priv->=
-dev, remote);
->         of_node_put(remote);
->         if (!meson_encoder_cvbs->next_bridge)
->                 return dev_err_probe(priv->dev, -EPROBE_DEFER,
-Would you be happy with me sending a patch that replaces the whole
-logic in two meson_encoder_{cvbs,dsi,hdmi}.c with
-devm_drm_of_get_bridge()?
-I see two benefits:
-- simpler code
-- a patch less in your series (less maintenance burden for you)
+Assuming there is not a NOT gate placed between the GPIO and the reset
+pin, because the board designer decided to do that for some reason?
 
-What I'm not sure about is how this series interacts with
-devm_drm_of_get_bridge() which is why I'm asking before cooking a
-patch.
+So lets work on the commit message some more, but i'm still not
+convinced it is worth the effort, unless there is some board today
+which really is broken and cannot be fixed unless a change like this
+is made.
 
-
-Best regards,
-Martin
+	Andrew
 
