@@ -4,85 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6819CFD376
-	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Nov 2025 06:20:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28B1BCFD376
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Nov 2025 08:07:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sGhdmqu2vDJdYvpv29T3Uwo4nDJRMdKfogH8RLeMRKM=; b=LsKXwLoxrJsth2p/G1vHNlTH3n
-	utcuHpelnXBVIdMghblhBTFIuf2SgKDleDpFDpk2RzOmlOJN0T3prgdukXyFm6w9PRxrMetETbZD2
-	ZtfR1jc1/tOf/Axs66zNKsL4SmK2xw4p9Zmak3oqxCz5kjlPXnxuKvbveJnoBOn1Hm2B+0TfydFgG
-	3H5wMY+iQAcKIQWpWHm/nHEL+Uw4ZPPKRwIW+vPr3QljNx7DiffJUctpQjSCW8YvGVkxKWxKrPjom
-	Qtpu0mRuOUBeTZrdO3t5Zdf0FEOTcTztrXRk4Erl4dtMxi6ZGnY0iwFPo1A70hUMMl1reVlNT6aN1
-	mOIhA4tw==;
+	bh=xlsTM8X40xseZoss4FmEjFSiPfPo4hKAiGVqNHsXGAU=; b=ptMtcf4tZqrgRKU2dV1XjlYrOA
+	qLNgJNZRuUC2384A/ihaptW98s0g72x9nAL1J8tTrLzd7OWqrtHzifuFhSvJ1iQjqeLfpHbdbqM3p
+	i1NAwXbAX//hu+nniNIzNKgvZeViQaY/LqA30ku1NVrjB7LkZldyYQ1hjTpGSCh0zqBFYAbSB5Z/P
+	SujWOll5zO1MinVav8OZuzUoEOm562lbp0c96S5T3PD1RSiRC50g2Hb65WeH+RL9Eo666oveLc93L
+	wIMLxRtC3ioWZr2Sm8kJJlRJrKCVCXRD6vjAjqTNXutncrp31nwzvpRsFR0/WtWZ45E3HWhU+NWx1
+	PTAWIZLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPan0-000000025Zq-1g68;
-	Sun, 30 Nov 2025 06:20:06 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1vPcT8-000000028ez-397G;
+	Sun, 30 Nov 2025 08:07:42 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPamo-000000025Yl-223k
+	id 1vPcT5-000000028e9-0Pd4
 	for linux-mediatek@lists.infradead.org;
-	Sun, 30 Nov 2025 06:20:04 +0000
-Received: by mail-lf1-x136.google.com with SMTP id 2adb3069b0e04-59445ee9738so2512691e87.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 29 Nov 2025 22:19:53 -0800 (PST)
+	Sun, 30 Nov 2025 08:07:41 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4779b49d724so4489265e9.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 30 Nov 2025 00:07:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1764483592; x=1765088392; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=sGhdmqu2vDJdYvpv29T3Uwo4nDJRMdKfogH8RLeMRKM=;
-        b=Fz4rtCKnmynpu8GggizAQQrjoXDbGtYLrIISj16eevCeNBzQ+7MpJ10W8Xaf1K6uJI
-         rLzmUcvyOth610T9OCGMVYHsS62KCXYqUdK4Wel9SPtZbAeErP16q/n33W3RzCYLDENh
-         GN6Ujl8hUZ6JKrtbGXPjLVnt3LosOq0MskbjdM1hvO2MM/fKdH89J4LJOH/HE+AiPx73
-         rLC71XU2hn2LiuAqw9edFxnDRahZFSlatOdr9X+MiMBqX6PrF6dmA5/NL9SDJdFJqeRf
-         4WYzcg/S+WAi4s15sBXojhKDzhNtuvLmr+XU6K+w2SOGwuAd4UfrZ+VyVtZrTA5JqVFp
-         DFQg==
+        d=gmail.com; s=20230601; t=1764490057; x=1765094857; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=xlsTM8X40xseZoss4FmEjFSiPfPo4hKAiGVqNHsXGAU=;
+        b=V0FeOekn8Zbghw2p4U0DYr2sz7o+g80K5pJ296/r3U/GtT65gw7DP9CJlQ7aBU9F9/
+         Gmrw5HtFZRZLl5rah9/g5nd2YycARYBSk4Z0ojuzn5jYtckS9La0oLQtMfhdoTNrIZvh
+         Fu5GzwRKOhO7NaUfbTa7rMrjoO1X6/8hriiC+tabF7ovGFSeDXLAINZQPohKvodvWziv
+         l29Dk8isvITDUb65pSUiVDfB+xnWPrxeQy/5q2U0jpKINCAp9BjcMt0C+wQ/RYsNoocI
+         APC+QRnmGqXmGhdyLg7RZOt1quCFHDOOwxfei3jakjbefT+9fnrziTtCk3rqa5Wt2LkK
+         qW5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764483592; x=1765088392;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=sGhdmqu2vDJdYvpv29T3Uwo4nDJRMdKfogH8RLeMRKM=;
-        b=BCWTF1QNIhXWacrQV8RQQfVPGlZWE1HyQ7yKlDYFdL0ST/2+8j6/1hf9245cPrUt4W
-         7THiT9Arfrh9+LLTFMKHnTsP7LqWhg5hf+AHZs98VocVOHEj2IZGnSZll4PuB7yxDPTW
-         kqLwVOFAuT5zXq3S6CUAjgDmYnYwX3dV3owajd86zkAMc+VoPDFCWcl2E76tH/LBqEyV
-         3WDF3XJhG/EIvttyrIWySY3qLyj8VBrl0lkGdkg+rKGeDAtHCI/yerznUj+Lp1qgZFbu
-         geiJKaS17ZMPBJL0IM0J0OGuXEzi7eqFsGSZ3KDKds+sfA/mSFWfnPe3T5x+vGfJPJBF
-         hCMA==
-X-Gm-Message-State: AOJu0YxuY0CA3lYcvav0wxX433hKo+gPrVGeK6k43A+bqNWFMlUYKAnL
-	Vd6u3wN8KrXs6OfUx7gBv3fDhXEO4T68Rlzxe8Fcm+ZH+NThCbdnXzAS4AANR5Y+X5z7eaKjfrK
-	4dXDs/TQvwcvfoslTtHviDF+LB2VdZJ4=
-X-Gm-Gg: ASbGncuoE8ak9JGo0ilUY8hHtqNfVh/pqIXzDOAPhrlcMrtmyWnWyYx3yxrlu8lad8U
-	zxDgbOzIbrgF8Our0jSEsQU0M/+6JJpc8jOcola+7sAxrd+w+HN+T+7qKzIhUf9NaPvwdZ3xds8
-	doc5t+KEQuGz5+2TTcxk0QBZX8nOA5+4Ri4NgDb5pefbFSLI004eOQpGTlNLuB79MK0JKb768wz
-	wWF92p/z3b9gzlmFgoFc6zK9SpM70nCyHI+XmQuoGTNMLUC+yY+0l/cNlQ9BDIuA/SLkdE=
-X-Google-Smtp-Source: AGHT+IH2MO88uScxHMDf4tuCIJ0inMzI8LHCRFJ99as4ydVsVd0gxL3pNkpLASlnUmvk3UX5aKHdaBU5Ofumb8OBKCU=
-X-Received: by 2002:a05:6512:2353:b0:592:f115:292d with SMTP id
- 2adb3069b0e04-596a3e9fc81mr12809517e87.6.1764483591650; Sat, 29 Nov 2025
- 22:19:51 -0800 (PST)
+        d=1e100.net; s=20230601; t=1764490057; x=1765094857;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xlsTM8X40xseZoss4FmEjFSiPfPo4hKAiGVqNHsXGAU=;
+        b=aKt5DEnHFKg7rwHsG9QbzqBY6mMw0MO2KFL1LKO/eYxuN98f1Y0W3shWOjC7+lBcP3
+         cWW+Fx9zUMhaG7/xBc7H4XmQM7p9gjLwZB4iLKS3pwmOAtNlqSQgze9XDsuEdoM/FzNI
+         Uwv/zw8Bigmbr3CxMFydJ/ZwQ6lkrQZX2jrvREMO/xDeEC3dm+7H9cZX38cPZxgizZyG
+         /tOtHuLteHUoluIVAj/5yFyhha0GRdlDWypwcGdXIUqcsPEZabcO6IyVVuH+pFiazwLr
+         BOHwK37vVrAtPOe33/OIgszkxe1ei7skOfdqaeezAORp0epuNPIDsyJaePUFXnNNoF7B
+         zMeg==
+X-Forwarded-Encrypted: i=1; AJvYcCVsg+Fa2+Lfvypmc2jRQldJCrVxtzPQndt3HIO8R0NJUzcVeB8MCAYl0KMOyCberSqbnSsQnw6wBctOWNYpsA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwonP8TX0EyUot6lHjGsW2mR/SJOvf9GbRl6hdHutQRTG9lVo+q
+	k4B0UtXyi9eOq7dHabY/x/HO3tSguT2Fcu3uHndOvZvRVRtlVjvjoxAC
+X-Gm-Gg: ASbGnctHu+HZoXFaaIUiwsO3GRW1Nz9NlGuPorNqPX8rErPUggPvaVlK4ScTnxrIew0
+	80k+pi4NbnKCVx8Rk1fVPAocneOoe74q1TszdOpEhwwpeJcYlxeMRMbCp/nt+ESiL/4kvFBQfMa
+	p1QIrL2TPUbkNYv1muI9qJKIKI7L2Gx84udE1vFvYdjgraAmOa4xMV8AMkKaFsUNtF5RLLUbp20
+	bCJ5p31K3SGoHcW68O6+TOQ30fcaQTFcwZOxXWXAmy64fxeoGio2lT0+dcciCXwCa+OvaOc22x8
+	SH0q+QfEdORzj7A2SMq/XwX+6MJ/J112hTCxO/LFct4Gmb9EBJie8fa0zgd7BgOBmy7HkuPEgYl
+	YdCvfFLEbiK8zixRyc5mdshAJOb5yCr7/H1wMoAaV++/r+u4f92Q+8bMqHYt8C+g/8iQE7wX3wx
+	xFuw==
+X-Google-Smtp-Source: AGHT+IFlU1lz0wAxOd6SVfn1aivlWfEl/Ou+5sEfrekzWHqCsdYXRmCmN0O23F/dtfV/GF8aZsAtOg==
+X-Received: by 2002:a05:600c:628f:b0:477:9fa8:bc99 with SMTP id 5b1f17b1804b1-477c01bc376mr183264015e9.4.1764490056388;
+        Sun, 30 Nov 2025 00:07:36 -0800 (PST)
+Received: from skbuf ([2a02:2f04:d106:d600:36d7:677f:b37:8ba9])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-479040a9cf4sm134950185e9.1.2025.11.30.00.07.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 30 Nov 2025 00:07:34 -0800 (PST)
+Date: Sun, 30 Nov 2025 10:07:31 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Chen Minqiang <ptpt52@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH v3 2/2] net: dsa: mt7530: Use GPIO polarity to generate
+ correct reset sequence
+Message-ID: <20251130080731.ty2dlxaypxvodxiw@skbuf>
+References: <20251129234603.2544-1-ptpt52@gmail.com>
+ <20251129234603.2544-2-ptpt52@gmail.com>
+ <0675b35f-217d-4261-9e3f-2eb24753d43c@lunn.ch>
 MIME-Version: 1.0
-References: <CAAq5pW8q6V7x6qpYnE3xB99nVwE363keGiu+Jax0_zqPjogULw@mail.gmail.com>
- <CAAq5pW_saBZ+52zz2FYTt9SuWXj2KwX2Ld7AggVKAzca2m0Oow@mail.gmail.com>
- <CAAq5pW9o3itC0G16LnJO7KMAQ_XoqXUpB=cuJ_7e3-H11zKd5Q@mail.gmail.com> <CAAq5pW8-j6UzruT=SU05QgJ1AjLXeUwASLJ3O3SVKttaMbdTXQ@mail.gmail.com>
-In-Reply-To: <CAAq5pW8-j6UzruT=SU05QgJ1AjLXeUwASLJ3O3SVKttaMbdTXQ@mail.gmail.com>
-From: Evans Jahja <evansjahja13@gmail.com>
-Date: Sun, 30 Nov 2025 15:19:40 +0900
-X-Gm-Features: AWmQ_blI2ZZ1miUiA1xU7_l8uXC2UgmK51gDMeqlxRs8s6ycdOTn1lyROifxPJw
-Message-ID: <CAAq5pW-PLFuUVa9t_gmzhcrMsNRTruh7cD5-i5OPHp0zYfdFHw@mail.gmail.com>
-Subject: Re: [REGRESSION] mt8183-kukui: dts: changes in dts caused display to
- no longer initialize - Was: Re: mt8183-kukui: drm/mediatek: dts: Invalid
- display hw pipeline when probing mediatek-drm
-To: "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	matthias.bgg@gmail.com, regressions@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <0675b35f-217d-4261-9e3f-2eb24753d43c@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251129_221954_552303_04DD9E9C 
-X-CRM114-Status: UNSURE (   2.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251130_000739_297063_9ABF363D 
+X-CRM114-Status: GOOD (  15.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,6 +110,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-#regzbot introduced: v6.17..e72d63fa0563
-#regzbot monitor: https://bugzilla.kernel.org/attachment.cgi?id=308962
+On Sun, Nov 30, 2025 at 02:11:05AM +0100, Andrew Lunn wrote:
+> > -		gpiod_set_value_cansleep(priv->reset, 0);
+> > +		int is_active_low = !!gpiod_is_active_low(priv->reset);
+> > +		gpiod_set_value_cansleep(priv->reset, is_active_low);
+> 
+> I think you did not correctly understand what Russell said. You pass
+> the logical value to gpiod_set_value(). If the GPIO has been marked as
+> active LOW, the GPIO core will invert the logical values to the raw
+> value. You should not be using gpiod_is_active_low().
+> 
+> But as i said to the previous patch, i would just leave everything as
+> it is, except document the issue.
+> 
+> 	Andrew
+> 
+
+It was my suggestion to do it like this (but I don't understand why I'm
+again not in CC).
+
+We _know_ that the reset pin of the switch should be active low. So by
+using gpiod_is_active_low(), we can determine whether the device tree is
+wrong or not, and we can work with a wrong device tree too (just invert
+the logical values).
 
