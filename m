@@ -4,100 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB4F2D116EA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 29 Nov 2025 23:46:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 804C3D116E2
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Nov 2025 01:01:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qCXAC0GBbAxPWdhq7j/4nJ+adBCJDMjQOJVyf/bKFTU=; b=dT8Q5K7BWf8OoPvCd8bLMkSlqK
-	ZLgr6/Vl6/O7LTgr2aV6ZAcxqV0HKyP4ipZqFjqRn9vZCk0hDQ07c9+JORwZgaDfPwjOuBwyd8NVJ
-	/eawHfWJ1S096QP5ntfhMYNz5ABY4NU7ysVH15mQ3Bmr90sLBoXHhkZ0+NagihbaHguj495zU5TBz
-	km8c7E2KF0U+heDJNCQi7vE2/hjXBF3d/di1iJNT5gX45JnprHBb/xk0qvk2Mh8/VgrxYrfGjwx8j
-	qtomeRRY79zP5FgumWFk658NTa1TmHXB6E5cHO+xt+PondSg+jbIX3M5pgjV921KU6hTMLnXXetel
-	xRWeTC6w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zHwQhTg+NJLJ1+sYXBy6n63aHK8fWvhoGfYfXbbgar8=; b=EXjOTbE5ydJWE0t+YSyCbSMfjf
+	CxNCbyGHgj6qNiwjMzNfwsyK4BUG/lcXo0NUJKlQZ+NjhM9knNDEo3mohDxR3TtjCHIOsviu/j1r+
+	0GhhuiK4Wv1rJ7m+wtXC6xC3fyUliSyspFSnL5eOsKh2oxdi2x7JlueYanOvAUuMDO7mJVpR5qiB1
+	uT6E/mNSuA5xRDTWLKFetHAnLnFChsAonkwieSrdGBQKky9f0INsAVsseNL5H/K+hsCoa/qko1w93
+	DiEnLY18xeXEMiprqdkFNq/o3sR7vGZ6kw+r5arg8weFgwTxLHX39XeQmrnQ98LcCc75DjtFe/yUP
+	9MMy9GyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPUeJ-00000001sPS-3lHt;
-	Sat, 29 Nov 2025 23:46:43 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1vPVoO-00000001uuP-3tva;
+	Sun, 30 Nov 2025 01:01:12 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPUeH-00000001sOZ-1NoM
-	for linux-mediatek@lists.infradead.org;
-	Sat, 29 Nov 2025 23:46:42 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-7bf0ad0cb87so3587895b3a.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 29 Nov 2025 15:46:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1764460001; x=1765064801; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qCXAC0GBbAxPWdhq7j/4nJ+adBCJDMjQOJVyf/bKFTU=;
-        b=GWxwBEgAPZJ19rw/6yASIEq3PrcIXLkwdgztwsXoHpmJaDh7kYUuv2jJ9GeRhMuGxh
-         xAvNO6mdyzqGEKVwHZMqEeEUCSsIqHDY7Ex4d2heaUgNVe8D8WAYBJAZ3OJC/ABngNKJ
-         aSkZwCDmjfkpTywDjmLjJPndAsK6hQnyijmptoXRa5WGBRZMwJhnSay96HBjkqYfMx3n
-         aZFnna8MMhTyep+GoIJB7I8mnB+lhZ8nka+64TRvIsAIjO40Labd/21D0PnWOjVdFBQu
-         p33seuQwRm4SG5ujXzlxNU9koxti4szegM8vXvQpD4jRCU4HmPOgMw+t1uXJt6KYB3HS
-         nH9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764460001; x=1765064801;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=qCXAC0GBbAxPWdhq7j/4nJ+adBCJDMjQOJVyf/bKFTU=;
-        b=dTs4gjwmTZjneK8UbNTkEgMCj9n/eZMdn3M8PnZB2A5ES+yFR8ROluLBHi74cmLf0/
-         jO3qadg8yTwwTZ19QbarS/xx4q337p2DbdekiDuuaEc3gknAO9eG9J6S1Iu3v6GM2LBZ
-         GT36o0lenTuiw5zFtWmqO+g5fG4Lvtl5NlMq+zVtYXK4zP3J29RDZGQAwhWquvFvvf9M
-         ttrQLZLh5F2TVxAYBJvNdWZPgz+bI+aVWgAFCkIt5q7msut81HVSExcYDUXNGxD/8rX3
-         0DWsMPc8U4JpWf1BDy3qSN10t7b+5H0Nz3XJSzsLUa5mO54zTC0WTrNcJOnVqpGcVXHw
-         J9Ug==
-X-Forwarded-Encrypted: i=1; AJvYcCVfraQlJ3SJmFb1whfeihcT0Xp1oZDh4CQvCoePSpvJZVzu8xFL6Q0WWV5OEaueAi7oiUHEm5ckkwN6UJAq0g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyqkmM5WpiU3RN9BDjSwjvv/mknBJlod5f13xT94ABj4nhZpUps
-	D4Hs9XYN3RMrHhcw4BFiIgvC51hg13ZEiMdHvJOhXMoAG8ElpOCFhkmX
-X-Gm-Gg: ASbGncv4TUIdEnMsXk6k5FOAnNpbaOr4iPStMT0pje18Y3LCNwP4pVq9gtfM+N5ymxm
-	j/DCbOcH1TNTYg6xVWS2NwRgNN+cdZUzEUJFFTkhWHTW5HCxNNaeHwVgvd9igby13PAsGt8SB6o
-	PUdBGVI2bGejke/pcjVTwKutPBefXTyBT/KzKhbeJNu5p/SXZv6ktzqxKFgNZQABbumligq7kkB
-	RO1iKoJDTe2D+9hSmVjCwKge+0U780b+ox8kC6nmTQhh4Q1C8cRXxji4F1jYXwqH3mZD/5vTmdU
-	o09+2Si5fNmyVEBDHJMyn4M4qBBMf7fjsR0LK1DxOSN8th35QrwCWYLXsfh0U0FLVMRX3/IJ//7
-	3eZTiGTufWkSmiytfrWG6MmO66DkbCvTzgDZGDCG58XnJCRWny9nLRP6rrPBJV7wyOiY5KlF1hQ
-	Sf2/7z
-X-Google-Smtp-Source: AGHT+IEvcsMa5l/AhUy3wA67rw2nUoJkcI0nAX7R5RA7tZwpSoC+/PEIe8H7hubTPSio4L+mBgUalw==
-X-Received: by 2002:a05:6a20:3d1a:b0:34f:47f8:cca2 with SMTP id adf61e73a8af0-36150f424b2mr33755297637.58.1764460000749;
-        Sat, 29 Nov 2025 15:46:40 -0800 (PST)
-Received: from SC-GAME.lan ([104.28.201.78])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7d15fc08bd1sm8921049b3a.63.2025.11.29.15.46.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 29 Nov 2025 15:46:40 -0800 (PST)
-From: Chen Minqiang <ptpt52@gmail.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1vPVoI-00000001utJ-0sBf;
+	Sun, 30 Nov 2025 01:01:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=zHwQhTg+NJLJ1+sYXBy6n63aHK8fWvhoGfYfXbbgar8=; b=oTtLbLlXpRq7v516IlJUaNTd/s
+	VfZ6j+kCuEH1joUxulIPJ1FGlKFTyj9CT7KYCcepiyRtut0UwsuQXAFV8TssNHrdM202+bgM47o7/
+	vEZddvydzVkp6rCqNsRGhNF3M2wQxWMD52hMisgqLzpPurpKR8rhg2r2sxwsU48PuCZo=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1vPVnt-00FR64-Oh; Sun, 30 Nov 2025 02:00:41 +0100
+Date: Sun, 30 Nov 2025 02:00:41 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Chen Minqiang <ptpt52@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	"Chester A. Unal" <chester.a.unal@arinc9.com>,
 	Daniel Golle <daniel@makrotopia.org>,
 	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Andrew Lunn <andrew@lunn.ch>
-Cc: linux-kernel@vger.kernel.org,
+	Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org,
-	Chen Minqiang <ptpt52@gmail.com>
-Subject: [PATCH v3 2/2] net: dsa: mt7530: Use GPIO polarity to generate correct reset sequence
-Date: Sun, 30 Nov 2025 07:46:03 +0800
-Message-Id: <20251129234603.2544-2-ptpt52@gmail.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20251129234603.2544-1-ptpt52@gmail.com>
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH v3 1/2] ARM64: dts: mediatek: fix MT7531 reset GPIO
+ polarity on multiple boards
+Message-ID: <893308f9-18c0-4489-81be-e233d50d16da@lunn.ch>
 References: <20251129234603.2544-1-ptpt52@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251129234603.2544-1-ptpt52@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251129_154641_372638_C07D3C03 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20251129_170106_281823_D7655277 
+X-CRM114-Status: GOOD (  16.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,79 +75,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT7530/MT7531 reset pin is active-low in hardware, but the driver
-historically hardcoded a high-active reset sequence by toggling the GPIO
-as 0 → 1. This only worked because several DTS files incorrectly marked
-the reset GPIO as active-high, making both DTS and driver wrong in the
-same way.
+On Sun, Nov 30, 2025 at 07:46:02AM +0800, Chen Minqiang wrote:
+> The MT7531 reset pin is active-low, but several DTS files configured the
+> reset-gpios property without GPIO_ACTIVE_LOW. This causes the reset GPIO
+> to behave as active-high and prevents the switch from being properly reset.
+> 
+> Update all affected DTS files to correctly use GPIO_ACTIVE_LOW so that
+> the reset polarity matches the hardware design.
+> 
+> Boards fixed:
+>  - mt7622-bananapi-bpi-r64
+>  - mt7622-rfb1
+>  - mt7986a-bananapi-bpi-r3
+>  - mt7986a-rfb
+>  - mt7986b-rfb
+> 
+> Note: the previous DTS description used the wrong polarity but the
+> driver also assumed the opposite polarity, resulting in a matched pair
+> of bugs that worked together. Updating the DTS requires updating the
+> driver at the same time; old kernels will not reset the switch correctly
+> when used with this DTS.
+> 
+> Compatibility
+> -------------
+> 
+> Correcting the polarity creates intentional incompatibility:
+> 
+>  * New kernel + old DTS:
+>    The driver now expects active-low, but out-of-tree DTS still marks
+>    active-high, causing the reset sequence to invert.
+> 
+>  * Old kernel + new DTS:
+>    The old driver toggles reset assuming active-high, which now
+>    conflicts with the corrected active-low DTS.
+> 
+> This was unavoidable because the original DTS was factually wrong.
 
-This patch changes the driver to respect the GPIO polarity using
-gpiod_is_active_low(), and generates the reset sequence as:
+So, the real question is, are the regressions you are going to cause
+by breaking backwards compatibility worth it? 
 
-    assert   = drive logical active level
-    deassert = drive logical inactive level
+What happens if we don't fix this? Does anything break if we leave it
+as it is?
 
-As a result, both cases now correctly produce the required
-high → low → high transition on the actual reset pin.
+I personally think it be better to just document the issue in the
+device tree binding.
 
-Compatibility
--------------
-
-This change makes the driver fully backward-compatible with older,
-incorrect DTS files that marked the reset line as GPIO_ACTIVE_HIGH:
-
- * Old DTS marked active-high:
-       is_active_low = 0
-       driver drives 0 → 1
-       actual levels: high → low → high  (correct)
-
- * New DTS marked active-low:
-       is_active_low = 1
-       driver drives 1 → 0
-       actual levels: high → low → high  (correct)
-
-Therefore, regardless of whether a DTS is old or new, correct or
-incorrect, the driver now generates the correct electrical reset pulse.
-
-Going forward, DTS files should use GPIO_ACTIVE_LOW to match the
-hardware, but no regressions will occur with older DTS blobs.
-
-Signed-off-by: Chen Minqiang <ptpt52@gmail.com>
----
- drivers/net/dsa/mt7530.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 548b85befbf4..615e9a5709ca 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2405,9 +2405,10 @@ mt7530_setup(struct dsa_switch *ds)
- 		usleep_range(5000, 5100);
- 		reset_control_deassert(priv->rstc);
- 	} else {
--		gpiod_set_value_cansleep(priv->reset, 0);
-+		int is_active_low = !!gpiod_is_active_low(priv->reset);
-+		gpiod_set_value_cansleep(priv->reset, is_active_low);
- 		usleep_range(5000, 5100);
--		gpiod_set_value_cansleep(priv->reset, 1);
-+		gpiod_set_value_cansleep(priv->reset, !is_active_low);
- 	}
- 
- 	/* Waiting for MT7530 got to stable */
-@@ -2643,9 +2644,10 @@ mt7531_setup(struct dsa_switch *ds)
- 		usleep_range(5000, 5100);
- 		reset_control_deassert(priv->rstc);
- 	} else {
--		gpiod_set_value_cansleep(priv->reset, 0);
-+		int is_active_low = !!gpiod_is_active_low(priv->reset);
-+		gpiod_set_value_cansleep(priv->reset, is_active_low);
- 		usleep_range(5000, 5100);
--		gpiod_set_value_cansleep(priv->reset, 1);
-+		gpiod_set_value_cansleep(priv->reset, !is_active_low);
- 	}
- 
- 	/* Waiting for MT7530 got to stable */
--- 
-2.17.1
-
+	Andrew
 
