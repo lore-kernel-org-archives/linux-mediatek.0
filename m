@@ -4,87 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 226CCD116F6
-	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Nov 2025 12:55:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC0A8CFD376
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Nov 2025 13:10:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BweNKXTXyBjbxRpgGJRd78cP5vj9K3Mx0pI5VkyxFf8=; b=2mz8l6rQbRzdydKqYu9ybFEwwP
-	YgXpsHuM53UO8vbtgH1lFg+sQB8HYJcqxWuXGKkcz9pBKVfthrLGL8f6VpPI1ua1FJN66zYFh/h7i
-	IO534e3yQbDjTolOBx3YyhqNzMuuwg4+DD9UlagoEFr34nyQo3doCFmmob12et7Yt5pcI3RVopJIk
-	hk7hHuDSUCqCZSU7BbEjZ3BYiN06tdsaGhgh9Ai9D7A9ajsm01qtwAoiTO662W5eHTuYxatwu9Huu
-	DbVisvz8HGUA9s+Jpay+NXwtnUAp6mAPpLmgi8BD6/pg/yXczdWWgGyrO5AoTTR7FxgCwywTq43pw
-	DIeJYFrg==;
+	bh=FNmbbxbBaoTz8DomyGsXnxRB8wBP1F/AJR530QwYnIc=; b=uIZMrIc9W7tkvxd7B63BC9eIEE
+	qpDZ69pj4w07n+JwspFj3V802lA5Kgvw2v7+elDR/kWkGB10FPxRBLVItL0woAjly5n05kZmY6WdL
+	C/WofbOix7wWBcnUMO4CwYagQJwHHR7Huoa5ZcK8DM17Tgic4cQqbLndrwrxbdZMj5TDcHm+NhEmS
+	d8VMVA1h25wpeU87Mz2iHEaCsK2i8bsM50brnmQt96X2Ic0FWSMxt9SpOyWV44beRnjyMNU6eYyqB
+	DH2PSQGudODbq/CvxOEjlaALhSmocztlaKYxqeeh2DYDJRFMVGjqH1+Onngkyjz9o/nEW8o4kUA8L
+	mBLg75nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPgxs-00000002JBU-2zTX;
-	Sun, 30 Nov 2025 12:55:44 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vPhBi-00000002Jsw-0Hfn;
+	Sun, 30 Nov 2025 13:10:02 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPgxq-00000002J9n-15vp
+	id 1vPhBe-00000002JrW-32jV
 	for linux-mediatek@lists.infradead.org;
-	Sun, 30 Nov 2025 12:55:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1538E44465
-	for <linux-mediatek@lists.infradead.org>; Sun, 30 Nov 2025 12:55:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD2E0C2BCB6
-	for <linux-mediatek@lists.infradead.org>; Sun, 30 Nov 2025 12:55:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764507339;
-	bh=+CUU91VE9U+UPRFztWIsw6a0HFlxr+X7N2lteq6FDVE=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=Gww/dvdD+675GJvFeEUzoJ9+9j1fimzRlqZN4XMYb6eQ22Y67C+MtVRScVEvjgMj1
-	 ZpYvL+nwB2pztVPvokl4UbEkKUzonZlmU5BFppJ+9Lj4kIxmWwfdBjPYKKj54W7re6
-	 pCCNXn8T8DUMXZbwGdNQTa6g0p5S1DYOA0f5Hfr506b7n58qIcvUcbv8I+2GP1lQr/
-	 zN1r7Jpu0BI8REbIRc1G32Hi5dMOEcFzmasdNLVlXuv3R46/uzyCsVukiB757JeGhN
-	 2uDujYZ14AcjgVrLFPsqEQlrLMsGQFouXavU4LbUHBbzAin4+3g/0GH9NV7GhWXo1f
-	 wmvNB24EyWnFw==
-Received: by mail-ot1-f45.google.com with SMTP id 46e09a7af769-7c701097a75so1568159a34.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 30 Nov 2025 04:55:39 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXAd6u9y6I2bJXpWC0bJtw7/QkQLPyQTF+X2EEoH3rLHuoNxKylAVDZgBN4wUHCXvx/SQrdR0bVYn0YlsAMPw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxvuN5zDDgM1OpE/pok0pe3mIJUwZ79/Spw3sQNQR2mbrHUZSjX
-	gIZEKOeDfCWwCL47sS7VYPSufiEb6XxH1OfXpvcnfWQ8GFVpp4+Ym0LDjZn3VBvAu29xBhCbTO3
-	NZ1fampx8i+Rh6AAl2YqHm3T01y8FtZU=
-X-Google-Smtp-Source: AGHT+IGgWthYmyiiRHTuIz/8bWmUoFRUwbcURTcZh3qG98AznU0lJvk231Fz5Su9DD5JkuIHGit6aHtLEtrfKZseF8E=
-X-Received: by 2002:a05:6830:924:b0:7c7:dff:2ac1 with SMTP id
- 46e09a7af769-7c798b8a7dbmr18909653a34.3.1764507338846; Sun, 30 Nov 2025
- 04:55:38 -0800 (PST)
+	Sun, 30 Nov 2025 13:10:00 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-29812589890so39031625ad.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 30 Nov 2025 05:09:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlemail.com; s=20230601; t=1764508197; x=1765112997; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FNmbbxbBaoTz8DomyGsXnxRB8wBP1F/AJR530QwYnIc=;
+        b=MmTd9JxqKojBMLxgxWfZDhevs9d3MowK3bt69xE4RaF5GdYcYD90vgBGBaV2vt3Mib
+         jbWQ4aXz8jv1ia9GWpZ80I841QsxRQ/vfKufQo2OMkqbBwWr2zDy53Ne2la6Sj7Wr3NM
+         /xZQFAVwEOMief/r/YeK4TUyUP2PJg+HeQ8xp4+PGxonX4Grui6ydvk1rzC21jds5ZUb
+         kLL28eRaxo+W4I20Z2EUFpSzH2LtHlWScI7Ter0HDElEgsr/qq8wx1dZogSJzrpIVyeO
+         9K6YLWtc4djRsTlv25bOqwA/iPD5NPbrHn0bIqog5VORNqVTI0zUXstEFuAIgKakHeXi
+         dlIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764508197; x=1765112997;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=FNmbbxbBaoTz8DomyGsXnxRB8wBP1F/AJR530QwYnIc=;
+        b=fPSLIZAJcrehg+N96heQHmRSUCyqHUsDrfHjZWauVUUQdUKCgkgLDlz6TqhkyCP+Av
+         AHy1IhVp0oppDp1D1pVvXdLIgWCGjXEC8rcbk7MUJHIXoRp0NEXPEEcrGzYOxg/ox8Ig
+         SW/BTBq12yG7YmSoWHP7T+jRrmfLpyqsfkBKkrbyLtGZCuMxlXKEMEsFksNKlTLEylER
+         G9B1Vs60YdTsoQqLauWXWMDR3nRQH3tfawc9QxaMeD1c3ZldRbdlBDvqU7aW5j1ERv+P
+         k7qpWNNdE7val6YSszSKIAIPDjAE8RiUN69fPppTSQzstEi4E4qR8jPLfFgeF4bbZivu
+         XREA==
+X-Forwarded-Encrypted: i=1; AJvYcCWsyZLM05bYikUn1obM73uM92k+t3PzHivsdlUOtQYsNnhFXV9ObG7HPTtGFLnDLeVpFGLrt0cJ+qkrzauVmg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxa114EZ5vVK+aMNEcetiXhnRrCgwijbzghXMWEucanr6qJuH2a
+	6OT2tFQ7wyYBElgVQY05UoY7d6E1eJolGuzKBp+I62KLgme8YCF+UK+txKD/K15CDLL/wUjypsP
+	3PtOhkPvYvf5YUWBPMMfSXHh1u/68vjI=
+X-Gm-Gg: ASbGncvi72i7Wd8pB/SXcZVCitbinoPJIMeskEvpwglobKjULepMhU82muPobOTycOj
+	SrJDWBlFkgBrVPg+HX8H24Wd4UwTfEa3aedE1WEDJPdj0SqR10HeuClnmD7OaxGRQC5qO7B7IEY
+	0mUkDC8jGjpC/Kb6THk8ISFXSVRQrOAKsfbV0sgJep+hrgvsj25plJfN8JQavObvT0D2NkWJIZC
+	G5/44z46CsKYfA8llihGum7z2obaaWpqOEUgiPs9E8gqVVKnMPxAxHl7mmyitbztTcv99z3iomv
+	fBStvDe2PrRLRvQXJfBwD83hbtja
+X-Google-Smtp-Source: AGHT+IG53GhYkY/+dF5qGVT19Jadft1SJnnMvw5Wcu0qyYtU4QLG8FtzqF0lB0krYhtMk3QufvRzdFqig5aHMJFxvm0=
+X-Received: by 2002:a17:903:903:b0:295:a1a5:bae9 with SMTP id
+ d9443c01a7336-29b6be86b48mr332545755ad.8.1764508197220; Sun, 30 Nov 2025
+ 05:09:57 -0800 (PST)
 MIME-Version: 1.0
-References: <20251120-thermal-device-v1-0-bbdad594d57a@gmx.de>
- <CAJZ5v0jOPrBcozzJMsB1eE12MuZRWDAV-+=jfrhJbi=S0p5J9Q@mail.gmail.com>
- <5f3ef610-4024-4ca0-a934-2649f5d25f40@gmx.de> <CAJZ5v0iJVV=kf-aJBx8F8dtGfaZpGVyhfi6DBWEg4j3c_nH8_A@mail.gmail.com>
- <e360b9b3-ada4-4cd1-8971-097484cf3f5f@gmx.de> <CAJZ5v0ij_Frdrya3=FaekbU2DFHUyBJnBq-oe9jRsB9eqXDisA@mail.gmail.com>
- <ed619280-6f25-4df6-98ca-890bdc343435@gmx.de> <CAJZ5v0hMPCRU_p_krX3nKzB=5TX7hGU38iyNmhSJSHO2j7K3eA@mail.gmail.com>
- <de14f2c4-e7b3-43a1-a9ee-9caba196b0f5@gmx.de>
-In-Reply-To: <de14f2c4-e7b3-43a1-a9ee-9caba196b0f5@gmx.de>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Sun, 30 Nov 2025 13:55:24 +0100
-X-Gmail-Original-Message-ID: <CAJZ5v0h3=9V8FFehyaPiG2SreRgeyvKK+oAkR_gzKQQNDBmczQ@mail.gmail.com>
-X-Gm-Features: AWmQ_bm74BLkYigBlEZwhgK9orhm-MSGQUfAzuwxqXDI_Qt7_9TxZm-rm-hXNS4
-Message-ID: <CAJZ5v0h3=9V8FFehyaPiG2SreRgeyvKK+oAkR_gzKQQNDBmczQ@mail.gmail.com>
-Subject: Re: [PATCH RFC RESEND 0/8] thermal: core: Allow setting the parent
- device of thermal zone/cooling devices
-To: Armin Wolf <W_Armin@gmx.de>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, 
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Len Brown <lenb@kernel.org>, 
-	Jonathan Corbet <corbet@lwn.net>, Ido Schimmel <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>, 
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	etnaviv@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
-	linux-tegra@vger.kernel.org, linux-acpi@vger.kernel.org, 
-	linux-doc@vger.kernel.org, netdev@vger.kernel.org, 
-	linux-wireless@vger.kernel.org, ath10k@lists.infradead.org, 
-	ath11k@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, platform-driver-x86@vger.kernel.org, 
-	linux-pci@vger.kernel.org, imx@lists.linux.dev, 
-	linux-renesas-soc@vger.kernel.org
+References: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-0-88f8a107eca2@bootlin.com>
+ <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-17-88f8a107eca2@bootlin.com>
+In-Reply-To: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-17-88f8a107eca2@bootlin.com>
+From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Date: Sun, 30 Nov 2025 14:09:46 +0100
+X-Gm-Features: AWmQ_bkqQ0yeDiiVRXlgzLTrdqIA678_lHRrauQKV29M6KsFuJAoinD-iLMIAaM
+Message-ID: <CAFBinCCQjeUu7pgfwViH6b0-M6S_sKgfvz9VAP1hpqLRj=bL_g@mail.gmail.com>
+Subject: Re: [PATCH v2 17/26] drm/meson: encoder_*: use devm_of_drm_get_bridge()
+ to put the next bridge
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Jonathan Corbet <corbet@lwn.net>, Alexey Brodkin <abrodkin@synopsys.com>, Phong LE <ple@baylibre.com>, 
+	Liu Ying <victor.liu@nxp.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, Adrien Grassein <adrien.grassein@gmail.com>, 
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+	Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Anitha Chrisanthus <anitha.chrisanthus@intel.com>, Inki Dae <inki.dae@samsung.com>, 
+	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Hui Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+	Louis Chauvet <louis.chauvet@bootlin.com>, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org, imx@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, 
+	linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251130_045542_350315_B0C4087B 
-X-CRM114-Status: GOOD (  20.75  )
+X-CRM114-CacheID: sfid-20251130_050958_822280_87FB2356 
+X-CRM114-Status: GOOD (  18.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,39 +122,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 29, 2025 at 12:36=E2=80=AFPM Armin Wolf <W_Armin@gmx.de> wrote:
+Hi Luca,
+
+On Fri, Nov 28, 2025 at 5:54=E2=80=AFPM Luca Ceresoli <luca.ceresoli@bootli=
+n.com> wrote:
 >
-> Am 28.11.25 um 12:40 schrieb Rafael J. Wysocki:
+> This driver obtains a bridge pointer from of_drm_find_bridge() in the pro=
+be
+> function and stores it until driver removal. of_drm_find_bridge() is
+> deprecated. Move to devm_of_drm_get_bridge() which puts the bridge
+> reference on remove or on probe failure.
 >
-> > On Fri, Nov 28, 2025 at 12:50=E2=80=AFAM Armin Wolf <W_Armin@gmx.de> wr=
-ote:
-> >> Am 27.11.25 um 22:46 schrieb Rafael J. Wysocki:
+> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+> ---
+>  drivers/gpu/drm/meson/meson_encoder_cvbs.c | 2 +-
+>  drivers/gpu/drm/meson/meson_encoder_dsi.c  | 2 +-
+>  drivers/gpu/drm/meson/meson_encoder_hdmi.c | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/meson/meson_encoder_cvbs.c b/drivers/gpu/drm=
+/meson/meson_encoder_cvbs.c
+> index dc374bfc5951..bf8588a5f6dd 100644
+> --- a/drivers/gpu/drm/meson/meson_encoder_cvbs.c
+> +++ b/drivers/gpu/drm/meson/meson_encoder_cvbs.c
+> @@ -241,7 +241,7 @@ int meson_encoder_cvbs_probe(struct meson_drm *priv)
+>                 return 0;
+>         }
+>
+> -       meson_encoder_cvbs->next_bridge =3D of_drm_find_bridge(remote);
+> +       meson_encoder_cvbs->next_bridge =3D devm_of_drm_get_bridge(priv->=
+dev, remote);
+>         of_node_put(remote);
+>         if (!meson_encoder_cvbs->next_bridge)
+>                 return dev_err_probe(priv->dev, -EPROBE_DEFER,
+Would you be happy with me sending a patch that replaces the whole
+logic in two meson_encoder_{cvbs,dsi,hdmi}.c with
+devm_drm_of_get_bridge()?
+I see two benefits:
+- simpler code
+- a patch less in your series (less maintenance burden for you)
 
-[cut]
+What I'm not sure about is how this series interacts with
+devm_drm_of_get_bridge() which is why I'm asking before cooking a
+patch.
 
-> >> What do you think?
-> > One advantage of using parents is that it will help user space to
-> > figure out connections between the abstract cooling devices and the
-> > associated hardware or firmware entities.  I think that this is an
-> > important one.
-> >
-> > It also doesn't prevent fwnode_handle from being used because the
-> > fwnode_handle may just be stored in the parent.  I like this more than
-> > associating fwnode_handles directly with abstract cooling devices.
-> >
-> > If the cooling device parent (that is, the provider of the cooling
-> > mechanism used by it) does not have an fwnode_handle, then either it
-> > needs to be driven directly from user space, or the driver creating a
-> > thermal zone device needs to provide a specific .should_bind()
-> > callback that will know what to look for.
-> >
-> OK. When sending the next revision of this patch series, should i also ke=
-ep
-> the patches for the thermal zone device or should i only keep the patches
-> concerning the cooling devices?
 
-The cooling device changes are kind of unrelated to the thermal zone
-device changes, so it would be better to send them as separate series,
-but you may as well send those series at the same time as far as I'm
-concerned.
+Best regards,
+Martin
 
