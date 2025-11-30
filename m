@@ -4,100 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE579D116F6
-	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Nov 2025 12:36:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20729CFD376
+	for <linux-mediatek@archiver.kernel.org>; Sun, 30 Nov 2025 12:36:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e4n62F7hOmaFjnTCj5sDtBY7XKAle/kgKH/bYoDqk94=; b=Wn66yO3unDHS+ecDfFtXiGTsmr
-	cVns+p+Gvgq3dbojd/zcAm05jwk/Zt3Iws9+JbCfLzkrIFs4VdMaZ2j39GCsWThKSZPvI6tClwleD
-	CCEPzkCaYz9qcOHgBDFf80XiNmPRtCRqzefnd1n2bhz2BfjPj+SaSaUoJ17yz4er6i/TweSKPkg7w
-	4RIHtU7UkRZ3Mk+56SgV51Eo3dDeSaaaDVoj4n9c/GC+GkE8Y/Yz9VVakPRowp4wZZe7Iy++K9ud/
-	lFG7rBCtqn0QW/KCXS27EsvMTsUbjq4mFOlnWCu1kZtRmZ8XoIhBvne4T6zlnt1Ka3IU6ID9POm/j
-	99SU9KLw==;
+	bh=RrqtCASUZ3LLt9ul3oZvn6rRWrr2qQDEBO4OynG5zZw=; b=FVJwUeHJXhB1k41ljqvaXTKOkk
+	LVHUsPc+FZb2+pKBPjoM0Heghmpd6ZYeiw+Tq3FXAlFcOipwppdWyPBc+GB9ZsHLPRhxP6tgZF8yZ
+	/0jrS4LtqeyFNzDlvRPm5eEjjnxWo/uS78kKbYBhNvyuRhQ8qy1X4aJpiCwQWC7s9x8Csy4hPnIQT
+	vWnEoJa1EHYwTee3QUo7p2s0tkMb3PbNbj8fZOg0GzJP+fR9jzc3zyNakAyTckhSLnCH6aDUuefww
+	1Rc96bxMXog070Tafzc/DPLeheSaFjCNKk6PmCD2W6XOoy1IRMElAuWHeSwVgJQirQSPgzBxs6JG8
+	4zU4Wpqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPgf9-00000002Hx9-2wQy;
-	Sun, 30 Nov 2025 12:36:23 +0000
+	id 1vPgfH-00000002I1a-0Jr7;
+	Sun, 30 Nov 2025 12:36:31 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPgf6-00000002Hv9-3pOO
+	id 1vPgf7-00000002Hw6-37NY
 	for linux-mediatek@lists.infradead.org;
-	Sun, 30 Nov 2025 12:36:22 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5AUBg4EA717888
-	for <linux-mediatek@lists.infradead.org>; Sun, 30 Nov 2025 12:36:20 GMT
+	Sun, 30 Nov 2025 12:36:23 +0000
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5AUCAPVi1455326
+	for <linux-mediatek@lists.infradead.org>; Sun, 30 Nov 2025 12:36:21 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	e4n62F7hOmaFjnTCj5sDtBY7XKAle/kgKH/bYoDqk94=; b=TpxT7ZCnor5T2yg3
-	AKgmBbRB5Pt+U1lPauoLJS0xDRXqqO93uwhjmP1g6U+ru+mDj19cHM5kXCpC8xkb
-	/DN69xmHIx9y04/TtZbcu1pxjRkSuucpZ9iiwmkGW1hHgIi0UInB/FM5GCtajS8l
-	TanJTGLjX57AHO7tDv6nG7LBnQEh+QEQbTR1m39m8bY3G9NaHZFEgiuBVZQrnhTO
-	XwmXHfV8aZ6TyHXrKZxwkYVQb/aXqogQMz1Jv/TEApwBm3Ix/XcKOAc5eSMNmOI3
-	leAWHVHZ1o6DZK8hoTcfOOKkZqFLsquuCNVbm1E3hTiPQ0e+MFomBCu2X+R4SAbh
-	/NR0sw==
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4aqt0j22ra-1
+	RrqtCASUZ3LLt9ul3oZvn6rRWrr2qQDEBO4OynG5zZw=; b=jrxaUYnkZ48+4tXG
+	L5zTrwdQe57RIVJMUrVyOYz71g5LUm7bC38EOjg74csAk54YkXiPYWudHh7u1QEb
+	MyLSXisaFMA8mtlrqggiTnFVQ7aBe+oXlZZaqBoGPb7kXZ1G1tPwUM0U2ZFx6efh
+	a1Rb4XD58ifNmfA4N2JxTNEUNfhFrp2VFB//w2L2Y98YD5/KfKqBjf/xBJKdv9Zk
+	eRR8uczq6iy6SYB4oAyrBdgJ/Cl2T18E71sB8XKmqnQBRAiKLfMi2cpzvNHXVw8e
+	aRCDF3nRhkj0R4MUs3EQ9Dw7enofSYa6S1uatcX6Uv1kfBWVdM6yJRrD2URpl/Au
+	V12LwA==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com [209.85.222.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4aqskf2419-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Sun, 30 Nov 2025 12:36:19 +0000 (GMT)
-Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8b30b6abb7bso627117185a.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 30 Nov 2025 04:36:19 -0800 (PST)
+	for <linux-mediatek@lists.infradead.org>; Sun, 30 Nov 2025 12:36:21 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-8b2dbd36752so640480785a.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 30 Nov 2025 04:36:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1764506178; x=1765110978; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1764506180; x=1765110980; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=e4n62F7hOmaFjnTCj5sDtBY7XKAle/kgKH/bYoDqk94=;
-        b=LAcutG65fPzz0Afcw/zs83tg8tbttGKOkmRBFQvN2nmSv1t3VHE5qGhFggz48hvien
-         QGSkL+RYqtf+UxKLZQTj+WwMazBmz7lm6HazZ6WxqK9JJYRTghlXOPxK5Z+ljAEkVmfI
-         eN6x+270ULSc9vY+YL27YdOzGdGhK41knOJUI+SHMlEMmfXFrWf8BCfN7PzyYxT25X1i
-         s4kdT08NLDpNJ8g0aCd1GAgT6X4Tduc9YjNjiHKb2IMCWfEp6YsfxeraWBdZSUbYYuXP
-         IoPaqpC29OG+GdHZ/RNm5jNrWOFerICOgqC2lyzBB1Nbhsca7RF2MHnnVAHQth2gyZmX
-         t5yw==
+        bh=RrqtCASUZ3LLt9ul3oZvn6rRWrr2qQDEBO4OynG5zZw=;
+        b=i0yZX7q2Ei/RSSsMWYX0vKnkgkCXWPZuptTKi58s07pG+4bAjTQV3aK7cxHXyl3Q+3
+         PCXx628zgIVJHsgvHKvgHfiO3h8ahpglVp0OK/SROQ8oFPzk5t8OvXG06WlprY2RqGCC
+         9ACGUHkVBDdJleEsvs8vI8AQZ1KeklfstjdEQjURtSZEm12i12Ec82BnkvXzFJG+yab6
+         E5Mxr0qYr3E1UYzFN+Y71lJJLJ/tdihT7Z6iC+410gcbbGoU1+X4yepFnzfT8G2iiJP3
+         D61aLz49xXczWfPboER8w8oSQHPGHzhdirY0cleNcOlQS3BjhzQIyFVUIi39ZUPzJcHL
+         p6Xg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764506178; x=1765110978;
+        d=1e100.net; s=20230601; t=1764506180; x=1765110980;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=e4n62F7hOmaFjnTCj5sDtBY7XKAle/kgKH/bYoDqk94=;
-        b=d2x/iLmz0bHgMoibqer/63sck32r9ot/wpod/d2aA9hfo/B5ELy0Uelp1K/lgiRDuz
-         rK0ZQ487hwCAKwAa39wGIr08uJ/hGRbIMefGMW5zkmx0nc5SF7NQnyTuDbrrOZr5145l
-         Mrch/Fx8Po0HbrpokzKRQOtn5JGlNTtbw2oDQ9PpSl5EOwiYwAkcB3A4hLOcTFSUWPHF
-         JKQnsN+w7mx8nHQ9XNy2/IwfFCJUgYYIMQ1iIa+7zcZ9sNNlHH+vTPaKerSgJ7IbLeUc
-         eGg03HzcRhRtQiEXLHXc8kMt2cTSFNkxNWaOmEXUPRBdmRFSMmMm8K/y496sY1sx8i3K
-         TP8g==
-X-Forwarded-Encrypted: i=1; AJvYcCWXXJW/8noFINqDiq9gqs0QHQ/tAzI0KPsuN39ZN5YFXNBuDBMw2Nmemg1BKpAqNJjsSPmFyeZLfz/RWUhFCA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyGYsanSPHADEm/Kw3pqP0JonrYFxJ/WuZ1SxpYHLVYpy/C2IJC
-	L7aT+AP+qJ0QoewhWAG49qVCuAiRm8QZ8a/OkkryznRW/5TNVX07FQD7yA4jBzvfO5lFVTo1tiS
-	cvHt5jg+QKsmjSv2ZZqbDuDHnKYilWSRyhOWMtR5GZ7phE6xSZ4bMlMAdki8rvfdlZTiKzHL7W0
-	Q=
-X-Gm-Gg: ASbGncswi9CUtudJxaycmsRd1dzHxm9I0mjqPYeGri7YZuYSYd1/lLcexxIHO/34eav
-	ts3DYVLYnCvfcCyYLVSmmXlT/q4cO6q3DgU482bvJMbuwqHEkA2wBkqN+/3/m97Vb0ZE4yrfeNh
-	20BacnR3UuIsmAoJ7mp+T9F9Sk25zh+fdZz6Hb72NnwAYhypYn9Zk5802lgtwv9RBeJF4FMkPRX
-	+XvTs62Z7oMcWYCNwQuYywTeAQrqNvY0EoI1yP7OLk+eiLx9NGeMSxgAx9uHw5aVQbfc276G41G
-	61nhT0xYs0vGknm0tpbVZna9J6IyTf7Oiz+A+8mQeZANmuxekoe1ZYXxISitO/DCan5rqbAEoSU
-	5EdzKTNvRkHTXTRAyF3ry4pDsbFk/QwtZ1g==
-X-Received: by 2002:a05:620a:4509:b0:892:eeb9:4def with SMTP id af79cd13be357-8b33d4cf9d0mr4721867185a.49.1764506178434;
-        Sun, 30 Nov 2025 04:36:18 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEwd83+g8q92x1y4CWxFdCnR6Wp/D+6ypCjsLsXp/d0HHxg4TfXOyYZHiS3ejZPS6LsXDPMgw==
-X-Received: by 2002:a05:620a:4509:b0:892:eeb9:4def with SMTP id af79cd13be357-8b33d4cf9d0mr4721863385a.49.1764506177949;
-        Sun, 30 Nov 2025 04:36:17 -0800 (PST)
+        bh=RrqtCASUZ3LLt9ul3oZvn6rRWrr2qQDEBO4OynG5zZw=;
+        b=uVw5YgddgEuHHwXbt68U3s1CFky3Pv82tugj5IQ6sz7wgH7E6qLMBR4ESZX2Ndddf8
+         LRGIZd7PTd3W4w7BQAWczJdDV0B9UJx4upNrmeN5mg1sjrCGFUK6O7gf1SLei9t2ZFZW
+         UHUcRlPdahDQYUM6vy8uBtyvciEpqBkq92uq4mFxtdEGZKz8MkXoUbXieqM+TSkBeh2C
+         myyfmp/FC4VbhAvYJ4bx/Wu5MVChhBwSxsd76pspz5JOOejViyUolSGjyZbFUuxhH2hy
+         9AjrU4oA+EJzjXO/83XzyQ6QLaSFnSs2Z967rPdJMs+gXkxIOr+ho7S/rd2OJ1HYcwjj
+         gqaA==
+X-Forwarded-Encrypted: i=1; AJvYcCV0b+Nv2AGoanLpN5kyIMBrnvNHg3Njgl0CWqHVEtrawyCHdFcrp7La6nVCVpKgKifC9rgdTXz20gr3syhDcg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyjRdghJOqN01EDNV0z74E7OwebdMduJ/miQphRTViHaULhMHW1
+	jpytfAIW0F0ksXW2Syplcrc4VFlDamsy6zbJQ80t2PkDLNBdnZw+q6Sjs9V+IhUw23qoSyCrLvx
+	w7ve3mgbR4Gtc8JWjeDdZCpvcGSY09YJmHXYORkN0LysYZ92DBCJ3K7Wh1q3iDGNR0/xRcGCnZU
+	4=
+X-Gm-Gg: ASbGncspYR6k4+j7d/RGvGX2ed+3rZdDWjbj7NM6Q+0Y4SLt3PRqD/7P06z147TQyuX
+	HhqMmgEavjHxI231QFIjg34jrMjHBanHLdDD8tCFuEimkUwzi6jHDhLKXlJ2GHXrvJNrLHrZoi7
+	uwXVLpMrWhqdFgMt3946tMttHj7f31ineGiPhnGI7+PCQpaNFzwMtLP5HI49W0CXfQ5Bj/nUDq6
+	DuhC5c34le69Wp4rm1xPeQ9+l8g8y0x35N2uUMfakpCThra7aPn/y3Ebg/BnEZP+KIPJL2SlPzw
+	hw9h61D6pf3DuqtNVxswpA2++/4XhkTEF+WsDpggC4SMGIFt8l3PvPnIgrgmqxrLrhekhnszYNW
+	eO8IaVM7SSl+mnAO5h3/hogcY0xGz007ewA==
+X-Received: by 2002:a05:620a:4689:b0:8b2:f145:7f28 with SMTP id af79cd13be357-8b33d2681e5mr4596738685a.33.1764506180096;
+        Sun, 30 Nov 2025 04:36:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEVjFnLmAKnKsu+rROI20IfRIbSvxnxGH2GJOLhlIiUqNW2ucVuPMKhRlB1OZpEhn+d7v9Qkw==
+X-Received: by 2002:a05:620a:4689:b0:8b2:f145:7f28 with SMTP id af79cd13be357-8b33d2681e5mr4596735785a.33.1764506179712;
+        Sun, 30 Nov 2025 04:36:19 -0800 (PST)
 Received: from [127.0.1.1] ([178.197.195.159])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b76f51c6c12sm920506666b.29.2025.11.30.04.36.16
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b76f51c6c12sm920506666b.29.2025.11.30.04.36.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 30 Nov 2025 04:36:17 -0800 (PST)
+        Sun, 30 Nov 2025 04:36:19 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Date: Sun, 30 Nov 2025 13:36:08 +0100
-Subject: [PATCH 1/4] remoteproc: mtp_scp_ipi: Constify buffer passed to
- scp_ipi_send()
+Date: Sun, 30 Nov 2025 13:36:09 +0100
+Subject: [PATCH 2/4] remoteproc: mtp_scp: Constify buffer passed to
+ scp_send_ipi()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251130-rpmsg-send-const-v1-1-cb11c7e0a024@oss.qualcomm.com>
+Message-Id: <20251130-rpmsg-send-const-v1-2-cb11c7e0a024@oss.qualcomm.com>
 References: <20251130-rpmsg-send-const-v1-0-cb11c7e0a024@oss.qualcomm.com>
 In-Reply-To: <20251130-rpmsg-send-const-v1-0-cb11c7e0a024@oss.qualcomm.com>
 To: Bjorn Andersson <andersson@kernel.org>,
@@ -114,48 +114,49 @@ Cc: linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
         linux-sound@vger.kernel.org,
         Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1658;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1560;
  i=krzysztof.kozlowski@oss.qualcomm.com; h=from:subject:message-id;
- bh=pq/+nMdyC+q1ogI0/TIhIirNxNxs+pUe22DWF7lVnBo=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpLDo77EwKqXOJTM+99Uw/WZdDbkh4LZ6TE7MGd
- 58HKTs3HPSJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaSw6OwAKCRDBN2bmhouD
- 19GjD/4yqvoVdSiFtXLgPtSNjWBghlWA484iGQ/nvK11zYtmLSt73fjHu+ppUkACDE3Gzj+MQW3
- GDtp6bRzB1dZ3QT8+hLu/z1ccX0SfUdcsfvl8p/37dFdHApMe6rolFyGrlIn2G8TYijT3nYGyB0
- izR8XwMJza/i4Fmr7yUyAAbVxOeHbHI3TF5CozIZns+a8GS7giqH2FmroISq6Lq16y0TDHRwJqU
- A7ZLWYFUb2KyJTNwdjFO0sfjVkjqx8e/PKvM6Bzs8E3btdilFt/KcUIM6FXwFsUSUDpuuiRQPqt
- Qj5mdGUxGAffYx5dow27iCxx6uemvTGdgakcUyiQCaQuCytEbDlh8Ocm9SRF8XuTaldc8Wtagkh
- qNyDq8rMPwMzoHaW/BS0a54JrP8GZfP+40GvH+Z58mM7JNH6UoevmOFeyzT/u6PQ4QAA/4sskOK
- gapow81/rauguxhutkRhwgqWvj3E7v9wSscxUC06Tk4DILYqPcd4gzxySFbYZrqEgx7xXie2fDj
- r9mOc69XtfZRc9kYxDe15n5d6KEqv/5+uAg4SOlFfKoJjPjNu3LRCs1QldniZqnGgp33WEh3kbU
- gRIEMvf47RDpaZ/ky3EnM/viU+sU8FftAtiEPtskYBtbQqyRQD3BLdg0yLoExpWQ4Qro+t2IVvW
- Ps0SCz8LoJid2Gg==
+ bh=Eijw7sfo1fHO3BdYpz8WwxXJjQps55VoXt7UFlcVMeA=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpLDo72TYdt6rx2Lc07XKkIkEPHnRGPcGuTpQIs
+ bi/v4A8NCKJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaSw6OwAKCRDBN2bmhouD
+ 1xtnD/oDgg43hK+yfYRQa5/OJIA2iP269kMbsXJJ+k0xaiWZ0X23n9yIREysBpFzzROhC6nrq+7
+ RmwffS8bgzNPqAaonjTDi8g5SWVIgDLUG+jD8pKsr38ZenL58//aJwWUGK/4EvcvM3D997bpsIC
+ t8qDt+saG84vnNGAu5A6r48Zj8DWVtjW3bHAwRMgn0ZX0dBc2tdTu3wYo7NbHZPXlJds+Evp1IB
+ HWBvCGjOs63MVgvWUt+wsfNiKaT+7D8t9V0sJfTi37XMwMa+Rkp28buGEXUOnLSPHncl48ka8w7
+ 724pSPBcQvLcSicxYkCRFySGZ1xCnedG4gCn5go8HDonBdCwYrenEtYzvggjokzmR9tKVTMQBB7
+ IhC6YwQKEal/n5gPTf/igMp640L9n4brJkDQtYRPlnEGifdQ67kAU2CY5IXiAdEKiGOrfW9mfHf
+ b7dJ2gmAy19lOwvLiAUNHt5ii9QUUDwmTUPJulDGqx0IFtX8pJDh3CL7GS+NpDkCgbvUZJJLmqC
+ 1byTAKXNzxJiNrc0MlQmkLBnlINN0NGw1nC9P16GsRvoGgBvUcEjTBHMYzPcSE06HIaWHay2MU+
+ cyu6McPojeS8IGB5HvrGSpoxLGWvgAzy8AFlR647pvtUVfdKsnv5dCC8X+7GhJ7PCFRUMmkZbtb
+ fVgL16w38wuiO1A==
 X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
-X-Proofpoint-GUID: 0mntU00YT_o8kRHZlMr1cVYluX_EK7Zd
-X-Authority-Analysis: v=2.4 cv=WpYm8Nfv c=1 sm=1 tr=0 ts=692c3a43 cx=c_pps
- a=50t2pK5VMbmlHzFWWp8p/g==:117 a=FPK7cjBCgYbqzSTDLBmM0Q==:17
+X-Authority-Analysis: v=2.4 cv=X7Nf6WTe c=1 sm=1 tr=0 ts=692c3a45 cx=c_pps
+ a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=FPK7cjBCgYbqzSTDLBmM0Q==:17
  a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=s4-Qcg_JpJYA:10
  a=VkNPw1HP01LnGYTKEx00:22 a=EUspDBNiAAAA:8 a=bWW22GgIgZmb96Hp9REA:9
- a=QEXdDO2ut3YA:10 a=IoWCM6iH3mJn3m4BftBB:22
-X-Proofpoint-ORIG-GUID: 0mntU00YT_o8kRHZlMr1cVYluX_EK7Zd
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTMwMDEwOCBTYWx0ZWRfX6oaZMScjcofR
- 2kTIPKhDQVS/6AIvLZH/8nIA0fhWD60hkduk1UGk6QIdd6j+wuL3Yly/5qp6DKGhfsrzr8mtV0P
- Qow5oMX4nuAkWkYkkJPe/q7LEwqK6cLaQiY6c7b2bvebuF3dECXGuoHw+Sk5q4FvkrOutiaF3/k
- EO6PtsI9vt7gAQHZgMkSnVxaS8h1GkS0TjKabh1zyU3NlvIYAiPl2gk5HYRz601ygc/GeoG0vTp
- 7c1gqyvheJDpop/mWHdS5LAN/7bUHDWJ4pi1lbpcRwlmUMVB2gkrA6Kp75yZ6KK4ElauRZqyqkj
- pD3wEoykMBdzWV1/pDLvCgR+ViU2Aw4QD/B97QhAQGhadyNKIxl8RZOqJtveuJwA7gjvuQLzqvK
- jbq86cA09ZwnMSj/Mf0cDNWlVWF+aA==
+ a=QEXdDO2ut3YA:10 a=PEH46H7Ffwr30OY-TuGO:22
+X-Proofpoint-GUID: tIo8R9my8HtWR21-nEcYtTO1iCs1YhwL
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTMwMDEwOCBTYWx0ZWRfXyjIYtdi9Dsdw
+ A4Abo1Cc1U0/IjKZugjqn/X+nvK4ejkeJ4+K3kK6QLo8q8fybY/tdpybveOLcMlxJG6ie81WaR9
+ foCn5KrjEJ83CWou7jChyIT27TbzfuD8Zj+TojsywoUYBTOmpF2nqobcDZUH61iYwmvia+I3P57
+ oHVXoHR+M0qKeDn0w9DLjU6XYH2XI9iXhj49nwd+k2vLcIS5609nAAOedp8n9n6/+QT6rsxdDul
+ quRgFbyT0p/VYoGx1PD1pN7Y9MZN3KwBiAHODpX2cJd9U+NVP93adpIqw31+m/MuJG4QJKtL4cT
+ 1lrPCox/1wHFWTFPnXGwnPybKtPE3zRKA/U/9G8SeIwpZJMF6GbkBqGFDsW/sH4bsIhabxiIzhP
+ 947oUOf0p86JijasIVH+tYLndNOu3w==
+X-Proofpoint-ORIG-GUID: tIo8R9my8HtWR21-nEcYtTO1iCs1YhwL
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2025-11-28_08,2025-11-27_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 adultscore=0 phishscore=0 malwarescore=0 bulkscore=0
- spamscore=0 impostorscore=0 lowpriorityscore=0 suspectscore=0 clxscore=1015
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2511300108
+ spamscore=0 adultscore=0 bulkscore=0 phishscore=0 priorityscore=1501
+ malwarescore=0 lowpriorityscore=0 impostorscore=0 clxscore=1015
+ suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2511300108
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251130_043620_970329_D7957964 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20251130_043621_855764_CA1385EF 
+X-CRM114-Status: GOOD (  15.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -170,7 +171,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-scp_ipi_send() should only send the passed buffer, without modifying its
+scp_send_ipi() should only send the passed buffer, without modifying its
 contents, so mark pointer 'buf' as pointer to const.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
@@ -179,36 +180,36 @@ Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
 Patch necessary for the further patches, please keep with the rest.
 ---
- drivers/remoteproc/mtk_scp_ipi.c   | 2 +-
- include/linux/remoteproc/mtk_scp.h | 2 +-
+ drivers/remoteproc/mtk_scp.c    | 2 +-
+ include/linux/rpmsg/mtk_rpmsg.h | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/remoteproc/mtk_scp_ipi.c b/drivers/remoteproc/mtk_scp_ipi.c
-index c068227e251e..bc1ee82cff36 100644
---- a/drivers/remoteproc/mtk_scp_ipi.c
-+++ b/drivers/remoteproc/mtk_scp_ipi.c
-@@ -156,7 +156,7 @@ EXPORT_SYMBOL_GPL(scp_ipi_unlock);
-  *
-  * Return: 0 if sending data successfully, -error on error.
-  **/
--int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
-+int scp_ipi_send(struct mtk_scp *scp, u32 id, const void *buf, unsigned int len,
- 		 unsigned int wait)
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index db8fd045468d..95d5e0138a15 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -1061,7 +1061,7 @@ static void scp_unregister_ipi(struct platform_device *pdev, u32 id)
+ 	scp_ipi_unregister(scp, id);
+ }
+ 
+-static int scp_send_ipi(struct platform_device *pdev, u32 id, void *buf,
++static int scp_send_ipi(struct platform_device *pdev, u32 id, const void *buf,
+ 			unsigned int len, unsigned int wait)
  {
- 	struct mtk_share_obj __iomem *send_obj = scp->send_buf;
-diff --git a/include/linux/remoteproc/mtk_scp.h b/include/linux/remoteproc/mtk_scp.h
-index 344ff41c22c7..4070537d6542 100644
---- a/include/linux/remoteproc/mtk_scp.h
-+++ b/include/linux/remoteproc/mtk_scp.h
-@@ -58,7 +58,7 @@ int scp_ipi_register(struct mtk_scp *scp, u32 id, scp_ipi_handler_t handler,
- 		     void *priv);
- void scp_ipi_unregister(struct mtk_scp *scp, u32 id);
+ 	struct mtk_scp *scp = platform_get_drvdata(pdev);
+diff --git a/include/linux/rpmsg/mtk_rpmsg.h b/include/linux/rpmsg/mtk_rpmsg.h
+index 363b60178040..badcbc89917f 100644
+--- a/include/linux/rpmsg/mtk_rpmsg.h
++++ b/include/linux/rpmsg/mtk_rpmsg.h
+@@ -25,7 +25,7 @@ struct mtk_rpmsg_info {
+ 			    ipi_handler_t handler, void *priv);
+ 	void (*unregister_ipi)(struct platform_device *pdev, u32 id);
+ 	int (*send_ipi)(struct platform_device *pdev, u32 id,
+-			void *buf, unsigned int len, unsigned int wait);
++			const void *buf, unsigned int len, unsigned int wait);
+ 	int ns_ipi_id;
+ };
  
--int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
-+int scp_ipi_send(struct mtk_scp *scp, u32 id, const void *buf, unsigned int len,
- 		 unsigned int wait);
- 
- unsigned int scp_get_vdec_hw_capa(struct mtk_scp *scp);
 
 -- 
 2.48.1
