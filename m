@@ -4,108 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B1FD116F1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Dec 2025 08:53:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88BA8D116F1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Dec 2025 09:00:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/YPynppJGmQs80kdm2CZLjCLceWQbL2NDtwrd4N58oo=; b=jK7wcDdi+6t9+eU9kF7xeXKUB3
-	JLss61y9PhzHQOlTnNwib4LLSvV9pppLTn8aEpdc61vSJ/nTKVimx5UOzE7OMGjn7LjG7xvSRzjhW
-	e9p0DKaD2ep0KKmrtXy+n6BhNcIVyg5v6w2OgLrtho7qyzdxT8dU92pDEon1hqRCzGzIc3szhBXIQ
-	J+POkrLY3k2DmqxPs6/oN33e2vhZM3DHglYRgNk1/xMcuajq9Y+cfXkbSBidSbIzr6evyhe17pmko
-	Qs5NLrC0s5xEoz6QP0hDXf9aHsULXKRm5DCs5GKI4gw2m2Og4IKltgcB/aYb6zDZyJ85SJ08q7IDp
-	UwXAccPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0cmFzub/Ypc6pcPBJnk2rpItrwarW2n0unLQwqzI/cY=; b=TYZpIBw00dTNk/ml1JjgdFSEGF
+	6UygnVpxsHrg/g4bsV45Z6r6uBH216AMJT1KrGMlHS/Bf76NXnjXELGoh7dhcM0k612p7ExHB/2C+
+	mXzKL5ytj696Dk0J3AmQc/5CNbWLESMZlSbrwQA6bPAPlUE130VzOomog+n43mut5Ukl842G7SXte
+	+pPClecsc9AddFRVkZYE0a1ibK0L+oEG1leRvQP8SKx0RuflsBe/Lvv5seFTckR9MAvK/YtdYBGed
+	Hv0VTk/vKLqNwtNc4UIf155hw4J24TsA4+Q8fpN7+viMcGfwi8tm03Jzf59n/HxJkt+0wF4bu1+z7
+	K6MyCNZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPzeh-00000003AI4-1sRu;
-	Mon, 01 Dec 2025 08:53:11 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vPzlK-00000003Awe-1r4R;
+	Mon, 01 Dec 2025 09:00:02 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPzee-00000003AHO-2Qch;
-	Mon, 01 Dec 2025 08:53:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 36DAC42CBB;
-	Mon,  1 Dec 2025 08:53:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6A13C4CEF1;
-	Mon,  1 Dec 2025 08:53:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764579188;
-	bh=DqPfVY9n1pdKISB6lSZ6GbLpt0RQvCqoT06+QQY/tkU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=I6InpAK5qQ6BSo03NFqzSR2xiZq7nZOCR36BAXDIpCbckr4PsvahJhSHYNhrsVlLg
-	 DH/d2YGBPdkx2RPjtcMceJMRBJEGB4ex8fSeNcmpUJloKc60RDy8Ap+UJXL6Jz0Qql
-	 8QcrUuoLFkH+CAKC5TtJ2yLt6FPlj61yZXMnPQ21G6yDwkCuS+Hl2Gz59Pi4WvQMZ2
-	 qQdj/JqMXpOqocpAQpQv6T/i8S04pAk6qwrm70Eq3VbWT0vvQYyExAnknzK9NWCm47
-	 e7K7Rbv5zu3JN8KvJ21qA5k8CFbBypQxVoOB/DejQamOgV8JLlJNiPc9B6IUICBhoz
-	 am18uFu+YkUcA==
-Message-ID: <29ad8354-231d-470e-a899-cb7c42754c8c@kernel.org>
-Date: Mon, 1 Dec 2025 09:53:03 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/5] arm64: dts: mediatek: add device tree for Tungsten
- 510 board
-To: Gary Bisson <bisson.gary@gmail.com>, devicetree@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, angelogioacchino.delregno@collabora.com,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com
+	id 1vPzlH-00000003Av4-2mld
+	for linux-mediatek@lists.infradead.org;
+	Mon, 01 Dec 2025 09:00:01 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-42b3c5defb2so2780185f8f.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 01 Dec 2025 00:59:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1764579598; x=1765184398; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=0cmFzub/Ypc6pcPBJnk2rpItrwarW2n0unLQwqzI/cY=;
+        b=XlaJN3DhTzxBj2pqg3I4wXU9lFiUzKILlmV9/V/9sWxNXeJMZE5aZ6aDs1/SWQbIQY
+         PdNs4R49KvqG09LG9JxJ+unZ4jyeRKmWz+hogo/QtCclWInG9l8s15MKHrinEJCMRTh2
+         wC022XQHIu+tbkWx64o1Ve/baF/zbm8hm+K7iJ9ejHL+lMicZj6bVHXl3NgsMZNlMwDn
+         H28f6lvah3J6IV4XtT40rxBCNdPBS5iO7SvkbMAk71Sl87wWylCrG8+b4akBT3MK83aM
+         LDLxNJ5yY8k3EdDm8IetUNxp+6AMPayCdGR84GduNS8vVJgvBYmw8rf0/XVOF+NW2tvf
+         F+yQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764579598; x=1765184398;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0cmFzub/Ypc6pcPBJnk2rpItrwarW2n0unLQwqzI/cY=;
+        b=BiUGtxammCGZWobcezoTaMYcNgEoaQIImH56mucak0qP/LWVQUmM/v/Tbcxwwb+s9j
+         ILW/baaRIiZoHDwtXGORP9vFOiuggeMun+9r/bZJG2ucySUe/mIcWhlHPnDExTFMGlEk
+         z03vZIvRJbPPYdDJ1BQ4WoIl+x+y5FUCysr7OS0A5GlBMDCPzkhDiTdoOW4OqqjhE9A2
+         dFgD9aPSYLfmL2Tc/ZXd4CkEWUqqV7fP7B/0ltay7BsZ1M24lSC4dLkR5QYoqjc20k5m
+         NPnv5My7XLuGgCjnGF9FaRnPPnhmqBPMbz6Jqr4f8tlILj9H01JNbC69EjLyxKRBaS6D
+         DO8Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUXPyAGEKd/wfUTrKARMYyxV7oNBV9cZ2dn9l/cyRO9r1sQwsvX2qO7fYZ73J2XOfxELBwrnHfvqEjMP/byng==@lists.infradead.org
+X-Gm-Message-State: AOJu0YycRkU1nPUC3x9VBBplIRZI1qpI6eWsQlNfk6ONwE05YV+xuEU3
+	KI0cChKUQpIrG4HBYI8bsV73FonIGsdg/OfXnktfcdMsG9YuXWlkClzCbvSpgA==
+X-Gm-Gg: ASbGncsrrXPIthqFsdQDFTgEGsoEN/6YKJVLzJAP2RCj8j+Qy7zXXf8J8KC0KvWLxhq
+	fsWwWgGenawfsVfDnS8tpgI4zhHDaOKCOrUhLOPlAsykBLkV+56IwqMdyfrAWwwVurvK4VwJdFb
+	WY1kAW0RVGC/aPf2dQ27XTVPyRVKowk/QbD9lbaRZFI7MwbZe4lhdd2RX6iegi4DgDogmkoccw1
+	x1JBmRTDIHQei5tdrVaZS6g5rAcRONgV+bRmcewGNRd7l0QST5OJkvbGOdxFAhuqLTk61jRNn4U
+	s96bsAQevyXH+W/mq52epQfeoTfMGt08+IzECGDR1Pe++wxhOrVQ7BrPzBz3XEsUs3x+mJI3RmM
+	hxW3/eJaSh7dbdc3m7JbJMjSMzPJOrkxJZEi12ibRsCdSYaW5zT+dIs7pBihnRjRvEYUu4w9RpV
+	+fLrT6AlBlWOyu6uYDhv4+IzIx3Ks=
+X-Google-Smtp-Source: AGHT+IEOa736pXo0/WJD4acqB/BdSl155lhGxRAO7bq/cz6pjE/kshkcCp3gRvHiSfviAaM/CB44pQ==
+X-Received: by 2002:a05:6000:200c:b0:42b:4139:579e with SMTP id ffacd0b85a97d-42cc1d1983fmr38638725f8f.43.1764579597732;
+        Mon, 01 Dec 2025 00:59:57 -0800 (PST)
+Received: from owl5 ([2001:861:3201:3d10:4ab6:6efe:9b65:a6af])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42e1cab9af3sm24362786f8f.41.2025.12.01.00.59.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 01 Dec 2025 00:59:57 -0800 (PST)
+Date: Mon, 1 Dec 2025 09:59:55 +0100
+From: Gary Bisson <bisson.gary@gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, robh@kernel.org,
+	krzk+dt@kernel.org
+Subject: Re: [PATCH 1/5] dt-bindings: vendor-prefixes: Add Ezurio LLC
+Message-ID: <aS1ZCy2G03zZLH6D@owl5>
 References: <20251201084140.376058-1-bisson.gary@gmail.com>
- <20251201084140.376058-5-bisson.gary@gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20251201084140.376058-5-bisson.gary@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ <20251201084140.376058-2-bisson.gary@gmail.com>
+ <f9e30721-a636-41dc-93ab-ca960e0415ab@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <f9e30721-a636-41dc-93ab-ca960e0415ab@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251201_005308_680739_CB257A7A 
-X-CRM114-Status: UNSURE (   7.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251201_005959_725440_28403F00 
+X-CRM114-Status: GOOD (  19.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,47 +102,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01/12/2025 09:41, Gary Bisson wrote:
-> +
-> +&i2c_mux_lcd_2 {
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-> +
-> +	bridge@2c {
-> +		compatible = "ti,sn65dsi84";
-> +		reg = <0x2c>;
-> +		enable-gpios = <&pio 25 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&dsi0_sn65dsi84_pins>;
-> +		status = "okay";
+Hi,
 
-Did you disable it anywhere?
+On Mon, Dec 01, 2025 at 09:50:07AM +0100, Krzysztof Kozlowski wrote:
+> On 01/12/2025 09:41, Gary Bisson wrote:
+> > Ezurio is the new name of Laird Connectivity after it acquired Boundary
+> > Devices.
+> > 
+> > Signed-off-by: Gary Bisson <bisson.gary@gmail.com>
+> > ---
+> > Cc: robh@kernel.org
+> > Cc: krzk+dt@kernel.org
+> 
+> Why only two of us? Please don't work on old kernels, some ancient code.
+> 
+> Please use scripts/get_maintainers.pl to get a list of necessary people
+> and lists to CC (and consider --no-git-fallback argument, so you will
+> not CC people just because they made one commit years ago). It might
+> happen, that command when run on an older kernel, gives you outdated
+> entries. Therefore please be sure you base your patches on recent Linux
+> kernel.
 
+Actually I'm using master so the get_maintainer.pl output is fine, just
+wasn't using b4 and addding the CC myself, will resend with b4 and will
+update the patches per your review.
 
-...
+> Tools like b4 or scripts/get_maintainer.pl provide you proper list of
+> people, so fix your workflow. Tools might also fail if you work on some
+> ancient tree (don't, instead use mainline) or work on fork of kernel
+> (don't, instead use mainline). Just use b4 and everything should be
+> fine, although remember about `b4 prep --auto-to-cc` if you added new
+> patches to the patchset.
+> 
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
+Thanks for the quick review of the series.
 
-> +
-> +&spmi {
-> +	#address-cells = <1>;
-> +	#size-cells = <2>;
-> +
-> +	mt6315_6: mt6315@6 {
-
-Node names should be generic. See also an explanation and list of
-examples (not exhaustive) in DT specification:
-https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
-If you cannot find a name matching your device, please check in kernel
-sources for similar cases or you can grow the spec (via pull request to
-DT spec repo).
-
-e.g. pmic
-
-> +		compatible = "mediatek,mt6315-regulator";
-> +		reg = <0x6 0 0xb>;
-
-
-
-Best regards,
-Krzysztof
+Regards,
+Gary
 
