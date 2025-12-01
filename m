@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACB8CD116F1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Dec 2025 08:51:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B1FD116F1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Dec 2025 08:53:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K9Yar/fO4B4Sv3Jqoa4O2OOI/RRCTJZC1/xX8FupVtU=; b=BEosTEoj+Hftl7iNZ4aVJBKwnG
-	jHg1kswb6sviovNfuUfKfMwtvQoabl8ls6TQGlOkMr3xvBqyHYRYE7uE4gDvEU3j1l6Hsw9mTIlgt
-	UzNemUL1cU2i76LeRRUyHokBbZsUK56ZJG69hJ5+wOjh7uXkqE5xnmNm0l82J38dEjnFGbyCGkJc/
-	HV5NLv9SfiMkt+d9m64yXG6qR7gqFHKdjI7LJRM48lZR3ORVHBBkzdgbqVQiQAylaaiv0KcQvZRc7
-	kYA9VW+lO4sboDRS/xM8xbdr5MRNnMg38tp7gyX/mJapmzXxlXGy11D2HqL+mzyaLVziIp914Ijnn
-	q2B2RItA==;
+	bh=/YPynppJGmQs80kdm2CZLjCLceWQbL2NDtwrd4N58oo=; b=jK7wcDdi+6t9+eU9kF7xeXKUB3
+	JLss61y9PhzHQOlTnNwib4LLSvV9pppLTn8aEpdc61vSJ/nTKVimx5UOzE7OMGjn7LjG7xvSRzjhW
+	e9p0DKaD2ep0KKmrtXy+n6BhNcIVyg5v6w2OgLrtho7qyzdxT8dU92pDEon1hqRCzGzIc3szhBXIQ
+	J+POkrLY3k2DmqxPs6/oN33e2vhZM3DHglYRgNk1/xMcuajq9Y+cfXkbSBidSbIzr6evyhe17pmko
+	Qs5NLrC0s5xEoz6QP0hDXf9aHsULXKRm5DCs5GKI4gw2m2Og4IKltgcB/aYb6zDZyJ85SJ08q7IDp
+	UwXAccPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPzcm-000000039yk-397U;
-	Mon, 01 Dec 2025 08:51:12 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vPzeh-00000003AI4-1sRu;
+	Mon, 01 Dec 2025 08:53:11 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vPzcj-000000039x0-0IcS;
-	Mon, 01 Dec 2025 08:51:10 +0000
+	id 1vPzee-00000003AHO-2Qch;
+	Mon, 01 Dec 2025 08:53:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B76884439E;
-	Mon,  1 Dec 2025 08:51:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 574A1C113D0;
-	Mon,  1 Dec 2025 08:51:06 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 36DAC42CBB;
+	Mon,  1 Dec 2025 08:53:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6A13C4CEF1;
+	Mon,  1 Dec 2025 08:53:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764579068;
-	bh=jVHQ+e1RFD0Fe3OWakUmmDRTB8ywOT7Kf1pTfwUt8Go=;
+	s=k20201202; t=1764579188;
+	bh=DqPfVY9n1pdKISB6lSZ6GbLpt0RQvCqoT06+QQY/tkU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=i+HCEoMLPpOVqcIhz8ZkxtZqM9uNa4Tnl6SJSDeMr9FnIEVqE4wy0UxSCTwvxc0w0
-	 PmtuKTEpEp6U5fjKlwiZhFgBnKvhhSZzVz/lbU6ClXDNjQgw2Eht+DSLE7m4pOQsdv
-	 rgaAml8PsjcqrXnL+dh0QBMKjui2hiLLBOPkG8BACmMqhkedI5J/XkhxLzk015oypX
-	 KNWUf1xVYppxB1KmjB0tatQl5IBCCMSu3BnnV3mduI4j9Cjgwn9nANKnEsh1cE3jRG
-	 bym8hyTu9cLvJl44GV6lKKfHxjbTfvCvietErATjHQLg9mg/BGssZACR8+8hlvpNC7
-	 IRb7MiL0ojjcQ==
-Message-ID: <c6397239-2882-486d-a6e9-b8117a5c2fc6@kernel.org>
-Date: Mon, 1 Dec 2025 09:51:04 +0100
+	b=I6InpAK5qQ6BSo03NFqzSR2xiZq7nZOCR36BAXDIpCbckr4PsvahJhSHYNhrsVlLg
+	 DH/d2YGBPdkx2RPjtcMceJMRBJEGB4ex8fSeNcmpUJloKc60RDy8Ap+UJXL6Jz0Qql
+	 8QcrUuoLFkH+CAKC5TtJ2yLt6FPlj61yZXMnPQ21G6yDwkCuS+Hl2Gz59Pi4WvQMZ2
+	 qQdj/JqMXpOqocpAQpQv6T/i8S04pAk6qwrm70Eq3VbWT0vvQYyExAnknzK9NWCm47
+	 e7K7Rbv5zu3JN8KvJ21qA5k8CFbBypQxVoOB/DejQamOgV8JLlJNiPc9B6IUICBhoz
+	 am18uFu+YkUcA==
+Message-ID: <29ad8354-231d-470e-a899-cb7c42754c8c@kernel.org>
+Date: Mon, 1 Dec 2025 09:53:03 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] dt-bindings: arm: mediatek: Add
- ezurio,mt8370-tungsten-smarc
+Subject: Re: [PATCH 4/5] arm64: dts: mediatek: add device tree for Tungsten
+ 510 board
 To: Gary Bisson <bisson.gary@gmail.com>, devicetree@vger.kernel.org
 Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com
+ linux-mediatek@lists.infradead.org, angelogioacchino.delregno@collabora.com,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com
 References: <20251201084140.376058-1-bisson.gary@gmail.com>
- <20251201084140.376058-3-bisson.gary@gmail.com>
+ <20251201084140.376058-5-bisson.gary@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -98,12 +99,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20251201084140.376058-3-bisson.gary@gmail.com>
+In-Reply-To: <20251201084140.376058-5-bisson.gary@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251201_005109_362677_DC1C4AE6 
-X-CRM114-Status: UNSURE (   5.68  )
+X-CRM114-CacheID: sfid-20251201_005308_680739_CB257A7A 
+X-CRM114-Status: UNSURE (   7.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -120,29 +121,45 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 01/12/2025 09:41, Gary Bisson wrote:
-> Add device tree bindings support for the Ezurio Tungsten 510 (MT8370)
-> SMARC SOM [1] + Universal SMARC carrier board [2].
-> 
-> [1] https://www.ezurio.com/product/tungsten510-smarc
-> [2]
+> +
+> +&i2c_mux_lcd_2 {
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +
+> +	bridge@2c {
+> +		compatible = "ti,sn65dsi84";
+> +		reg = <0x2c>;
+> +		enable-gpios = <&pio 25 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&dsi0_sn65dsi84_pins>;
+> +		status = "okay";
 
-Don't wrap lines
-
-> https://www.ezurio.com/system-on-module/accessories/universal-smarc-carrier
-> 
-> Signed-off-by: Gary Bisson <bisson.gary@gmail.com>
-> ---
-> Cc: robh@kernel.org
-> Cc: krzk+dt@kernel.org
-> Cc: conor+dt@kernel.org
-
-And here Conor? Just use b4.
-
-Anyway, please squash this and 3/5, it's just churn if boards are
-per-commit.
+Did you disable it anywhere?
 
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+...
+
+
+> +
+> +&spmi {
+> +	#address-cells = <1>;
+> +	#size-cells = <2>;
+> +
+> +	mt6315_6: mt6315@6 {
+
+Node names should be generic. See also an explanation and list of
+examples (not exhaustive) in DT specification:
+https://devicetree-specification.readthedocs.io/en/latest/chapter2-devicetree-basics.html#generic-names-recommendation
+If you cannot find a name matching your device, please check in kernel
+sources for similar cases or you can grow the spec (via pull request to
+DT spec repo).
+
+e.g. pmic
+
+> +		compatible = "mediatek,mt6315-regulator";
+> +		reg = <0x6 0 0xb>;
+
+
 
 Best regards,
 Krzysztof
