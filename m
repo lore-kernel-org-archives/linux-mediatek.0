@@ -4,68 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D709D116F1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Dec 2025 10:39:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9B74D116F1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Dec 2025 10:45:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jdiIDMjT6U7gnpeUR5pH8VP7V3AkpC/YLt5uohRVR1g=; b=IQSzb/A/d3rKZS8IDcPx8U0lxc
-	Hwngx0KneXo0V1RtQIEjkalVosrwxrY4gNtPLl52qA7Bs//+u8yhr9tEe198bpgppf//KFHDyswN2
-	T/EYp9yccxACK7cHrrpJPBzQFrkmJitnUEu621UgqT2SFrjA4eECFZb1dFmtOlz79/XPEH3LGlKFJ
-	MxZ3EAufi96SiL2stiKEC4xqZp0qk5r2KF8hkjoiL+RzJ6E1f3N1naYbpdCFMCGolL+isHKOvJ39K
-	HEmzSvmqFIzM0/8uwdlmyLyCvZcOfSJ3FflMH5wzADhTDA5O0N+3li91m0sg+Ify9wjpfx35oo6/O
-	LO8puCuw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bCF0FSqyYlnyWEBaqmzmHC6kRsLUVYOKh7WHQQM9qF0=; b=0aFjGne/IDEWGe
+	s2jvIUNqEHvpOcV3APH66wEdheF7Dlwe7D0melwjP9JJKaxI6lWYgtyGApcjkvs8hp0tl9XB4eLrk
+	YDRqKVwsb4fa1+K2hYHo0+YwTnmNqMG+1cXYBtLQkjW2wlGXRaE7oUe3pFGxOsBhTSBYQCKTY9AqT
+	7HCP7C1S1I8RmxEiglrM3SBp9ku0m75kqlU8HbRdeyfRKR67Iyoq+3BN/J7cA/Au6kY/Uo4D+hOdc
+	gpUOmuPhBGjVQUaJDkR33hG4bWmbWnXN5EpZIXISTeWdbd4dTnN/PhOkEbYagqTY2vIic+l1FezMD
+	UBNVxU3TLmzeZzTKZSFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQ1J9-00000003Lgz-3G38;
-	Mon, 01 Dec 2025 10:39:03 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vQ1Pj-00000003MIT-2UNA;
+	Mon, 01 Dec 2025 10:45:51 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQ1J8-00000003LgL-1K6p;
-	Mon, 01 Dec 2025 10:39:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 690A760121;
-	Mon,  1 Dec 2025 10:39:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C41D4C4CEF1;
-	Mon,  1 Dec 2025 10:38:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764585541;
-	bh=7otL5ZpSjHqKVAsGUZwGGCooAKXLD8oQRR5TSq1M7g0=;
-	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
-	b=GNh+5vzg472/kaEpWox0DRBdneMiT3C2i8SgfXRGwMw3DD2KHUHEX2z8498ySfcDp
-	 W418/y6q7dHvLL5B/IlTdldGOrVCvZoNhFWGd7Y1RAo3ngAORaGqw8wVRSZu8o5bS1
-	 oPuYcK5H4mP9AZlziA+Nhd55DBHkZFx/ISJBqZcudW/ypsRUiNgRSMLIX7oCPI+qK8
-	 6ugzS31Es6VgXhhNJSKPyoBNUzYMsrELG+6KD5AYgR9PO2FBGoy9kwKmV1/11Ty3ka
-	 XMgu0sUb5R/VC2e5Qe9hGiQqkZCAgE4JJek365j8gBB7L3DbOIDO2OaOnZeNeia0k3
-	 ZenPh0/xUb0fg==
-Message-ID: <fcfe2672-b546-4f3f-8418-71ee8ce1fb5d@kernel.org>
-Date: Mon, 1 Dec 2025 11:38:56 +0100
+	id 1vQ1Pf-00000003MFX-0ofm
+	for linux-mediatek@lists.infradead.org;
+	Mon, 01 Dec 2025 10:45:49 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-42e2ddb8a13so448819f8f.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 01 Dec 2025 02:45:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1764585945; x=1765190745; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=bCF0FSqyYlnyWEBaqmzmHC6kRsLUVYOKh7WHQQM9qF0=;
+        b=FgOQ48Fv4ntRGXiuxdoB+JgFxA+d1z+JDa7+LCRYufC/xqqxjKy41HzsOQ3Vygl1p3
+         qrMZXXd13MJnpIERzoO/abxgXhrKnWluxU8pOsYdPnsOqxQPtk9k5NuztKvgmw4LkY5M
+         Oa7v5grRQXkR3gAMScdzDWWEYWlEUZWRXnU6BhjOtHqRCj0d2ZVyVqS/KJkfKMcHd6Cc
+         ZuZiKTnn/fwCt1rCNz3MAWOhaqwYv6oV2sLElNZQlSQUgi1fC2pcBOr/icF0aB1i6Bi3
+         h5Z35GYt+omkYGTnH81bJsHaQuZB2TiO1ZlBwjlkWMVy8axsprC7PgCy+JcE+zroZwaK
+         dixg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764585945; x=1765190745;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bCF0FSqyYlnyWEBaqmzmHC6kRsLUVYOKh7WHQQM9qF0=;
+        b=bdYVV1Vt1et8MZg3rlR/4h4KH546PFXb51hbqWHujAkBbd66k7bVJR83WRYFSICccZ
+         ZSnCI7Zg+v18MNXM86j3bc+C9F25ZhrxsyNIRR3HZOgFKG04mvOkXad4JT+sRDNRqQ6z
+         z/o51WebEWY2IdCVqiCquOpKzASfVfemtm92rw1pAiWiPF7+n7p9UCZbEIEF4FX0jdRU
+         ZpJfXJ6/jgddJjuOPjM+mEfeUEJzq+OpsKfto4jh1G9c2TPZJfydBU1FiH+Q6yKgo5Jb
+         WtyD0uJpK1XEWqAV/DFMEN9GkMTwS0EumXsKWZeQEQ+nfrExgUARH8uIoS8S4FKIXTSa
+         39eA==
+X-Forwarded-Encrypted: i=1; AJvYcCWRJe8WuvR8rMQF0rA8iUvLDZs2sQn9NXHbRUIKw6dAdK1FDhGeCQ1QBVLMWQxvnvUPxkSpgK7qlSjfVDO4BQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxcioaiRUR/rsq50JyHgDNQrnexmuqe0nac18YkQ7TxaVcGb5TP
+	Mwl5K99cX9DZLy3ke6pcI4mgfCtbyyveFLFi40kfE3ZmIUvR1MI55NkctVB6rdj7
+X-Gm-Gg: ASbGncu2LU/qtB1uyR9G1oEf4XOJ3rvI4VDOZkt0uqbS1KQMQjbGjdmHa3fg6OQlw9D
+	dYaXlm8o6Mo1zFI9bubxXFMlcwn8xT077RVLvg0rGp3no5WnE1xrYEK8n/C3eu3fVr6o6QRJUHh
+	DXNUVqZwFbNCuTzU/KjBSbtXNa7T3RedoTfHLEfgGhBh7vAlLoyNNOwYIFafWxDZiva9L4Cijbc
+	cdX9JdWbIf6z2O8HTcJR4w1qJK7ev9G4qSWJDE6ePlzY4awHWslXS85Qu7oFQT16epPLseSi0EY
+	LlccsKQPmsqo++NVKJhFstmJ3F9fQwZP3b3AoPUg6GiPLlYoxz6+J5Lh4VK9ILOcfJ2V10C2EsX
+	BL72FBZf1N/BKsPgHlqPK9/n170JQ1DlUinR65DPWZHniFVOPcTsBYiq8xn2Xivv0GnYKJHlelm
+	pS79ibVaBqKJSrhqIxISUjXDnBsQ==
+X-Google-Smtp-Source: AGHT+IF+saINz1aMfFQPoF21DyIcobxATSuvnAhtrL28gk23j/ZdYr9KXTQtKbBxA0p/NCWRqd312g==
+X-Received: by 2002:a05:6000:1f03:b0:42b:3867:b39c with SMTP id ffacd0b85a97d-42cc1cf452amr32151633f8f.34.1764585945022;
+        Mon, 01 Dec 2025 02:45:45 -0800 (PST)
+Received: from [127.0.1.1] ([2001:861:3201:3d10:4ab6:6efe:9b65:a6af])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42e1c5d6049sm26264262f8f.10.2025.12.01.02.45.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 01 Dec 2025 02:45:44 -0800 (PST)
+From: Gary Bisson <bisson.gary@gmail.com>
+Subject: [PATCH v3 0/4] Add support for Ezurio MediaTek platforms
+Date: Mon, 01 Dec 2025 11:45:16 +0100
+Message-Id: <20251201-review-v3-0-07f9af7341fd@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Hans Verkuil <hverkuil+cisco@kernel.org>
-Subject: Re: [PATCH v4 1/5] media: mc: add manual request completion
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel@collabora.com,
- linux-media@vger.kernel.org,
- Sebastian Fricke <sebastian.fricke@collabora.com>
-References: <20251128-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v4-0-c166bdd4625c@collabora.com>
- <20251128-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v4-1-c166bdd4625c@collabora.com>
-Content-Language: en-US, nl
-In-Reply-To: <20251128-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v4-1-c166bdd4625c@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIALxxLWkC/2WOwQ6CMBAFf4X0bMm2tBY8+R+GQy0LbCLUtAQlh
+ H+3cNJ4nGTe5K0sYiCM7JKtLOBMkfyYoDhlzPV27JBTk5hJkFpIEHyX8MWNBjBSm6qqBEvyM2B
+ L7yN0qxO3wQ986gPanzmUSijIC3MGXXLB7xSjH/POhuXaDZYeufPD3uspTj4sx69Z7tW/C7Pkw
+ Bsnm1YpRGfwq1Bv2/YBEYIT0dwAAAA=
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sean Wang <sean.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ Gary Bisson <bisson.gary@gmail.com>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1764585944; l=2679;
+ i=bisson.gary@gmail.com; s=20251201; h=from:subject:message-id;
+ bh=jNo2dVX46ep7yogASVgnWC6hbGoR5SWan4ITaGGLyNc=;
+ b=ZPpeBmyjbzBJZ6wFdMpdSHQvmIZGec77e91q9/e8Xner55jTqegx9NWGkO0rZ51b4arn7x5pL
+ jf2BEC53e2wAz/tAvu1Zx3ADXWriypUbET+29EYWFmcjB+CuoiJGAoy
+X-Developer-Key: i=bisson.gary@gmail.com; a=ed25519;
+ pk=eaOrLwovHUZBMoLbrx+L1ppj+AH+TfgxkVhIEyrhkeE=
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251201_024547_259710_76736758 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,185 +114,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
+This series adds support for Ezurio MediaTek platforms called
+"Tungsten". It includes support for MT8370-based Tungsten 510 and
+MT8390-based Tungsten 700 SOMs.
 
-On 28/11/2025 20:16, Nicolas Dufresne wrote:
-> From: Hans Verkuil <hverkuil@kernel.org>
-> 
-> By default when the last request object is completed, the whole
-> request completes as well.
-> 
-> But sometimes you want to delay this completion to an arbitrary point in
-> time so add a manual complete mode for this.
-> 
-> In req_queue the driver marks the request for manual completion by
-> calling media_request_mark_manual_completion, and when the driver
-> wants to manually complete the request it calls
-> media_request_manual_complete().
-> 
-> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Changes in v2:
+- Use b4 to cc all maintainers properly
+- Squashed patches 2/3 together
+- Updated dts node names to be generic
 
-For this patch and the other patches with this xs4all SoB, can you replace it with:
+Changes in v3:
+- Added per-commit changelog
+- Added missing Acked-by on 1st patch
+- Link to v2: https://lore.kernel.org/r/20251201-review-v2-0-dc2df44eec7e@gmail.com
 
-Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
+Regards,
 
-Much appreciated,
+Gary Bisson (4):
+  dt-bindings: vendor-prefixes: Add Ezurio LLC
+  dt-bindings: arm: mediatek: Add Ezurio Tungsten entries
+  arm64: dts: mediatek: add device tree for Tungsten 510 board
+  arm64: dts: mediatek: add device tree for Tungsten 700 board
 
-	Hans
+ .../devicetree/bindings/arm/mediatek.yaml     |    2 +
+ .../devicetree/bindings/vendor-prefixes.yaml  |    2 +
+ arch/arm64/boot/dts/mediatek/Makefile         |    2 +
+ .../dts/mediatek/mt8370-tungsten-smarc.dts    |   14 +
+ .../dts/mediatek/mt8390-tungsten-smarc.dts    |   22 +
+ .../dts/mediatek/mt83x0-tungsten-smarc.dtsi   | 1481 +++++++++++++++++
+ 6 files changed, 1523 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8370-tungsten-smarc.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt83x0-tungsten-smarc.dtsi
 
-> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> ---
->  drivers/media/mc/mc-request.c | 41 +++++++++++++++++++++++++++++++++++++++--
->  include/media/media-request.h | 38 +++++++++++++++++++++++++++++++++++++-
->  2 files changed, 76 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/media/mc/mc-request.c b/drivers/media/mc/mc-request.c
-> index f66f728b1b43dcd1cf51de46e828bf806f014f8d..512e6969152792558537dd8a0736df82847ae210 100644
-> --- a/drivers/media/mc/mc-request.c
-> +++ b/drivers/media/mc/mc-request.c
-> @@ -54,6 +54,7 @@ static void media_request_clean(struct media_request *req)
->  	req->access_count = 0;
->  	WARN_ON(req->num_incomplete_objects);
->  	req->num_incomplete_objects = 0;
-> +	req->manual_completion = false;
->  	wake_up_interruptible_all(&req->poll_wait);
->  }
->  
-> @@ -313,6 +314,7 @@ int media_request_alloc(struct media_device *mdev, int *alloc_fd)
->  	req->mdev = mdev;
->  	req->state = MEDIA_REQUEST_STATE_IDLE;
->  	req->num_incomplete_objects = 0;
-> +	req->manual_completion = false;
->  	kref_init(&req->kref);
->  	INIT_LIST_HEAD(&req->objects);
->  	spin_lock_init(&req->lock);
-> @@ -459,7 +461,7 @@ void media_request_object_unbind(struct media_request_object *obj)
->  
->  	req->num_incomplete_objects--;
->  	if (req->state == MEDIA_REQUEST_STATE_QUEUED &&
-> -	    !req->num_incomplete_objects) {
-> +	    !req->num_incomplete_objects && !req->manual_completion) {
->  		req->state = MEDIA_REQUEST_STATE_COMPLETE;
->  		completed = true;
->  		wake_up_interruptible_all(&req->poll_wait);
-> @@ -488,7 +490,7 @@ void media_request_object_complete(struct media_request_object *obj)
->  	    WARN_ON(req->state != MEDIA_REQUEST_STATE_QUEUED))
->  		goto unlock;
->  
-> -	if (!--req->num_incomplete_objects) {
-> +	if (!--req->num_incomplete_objects && !req->manual_completion) {
->  		req->state = MEDIA_REQUEST_STATE_COMPLETE;
->  		wake_up_interruptible_all(&req->poll_wait);
->  		completed = true;
-> @@ -499,3 +501,38 @@ void media_request_object_complete(struct media_request_object *obj)
->  		media_request_put(req);
->  }
->  EXPORT_SYMBOL_GPL(media_request_object_complete);
-> +
-> +void media_request_manual_complete(struct media_request *req)
-> +{
-> +	bool completed = false;
-> +	unsigned long flags;
-> +
-> +	if (WARN_ON_ONCE(!req))
-> +		return;
-> +
-> +	spin_lock_irqsave(&req->lock, flags);
-> +
-> +	if (WARN_ON_ONCE(!req->manual_completion))
-> +		goto unlock;
-> +
-> +	if (WARN_ON_ONCE(req->state != MEDIA_REQUEST_STATE_QUEUED))
-> +		goto unlock;
-> +
-> +	req->manual_completion = false;
-> +	/*
-> +	 * It is expected that all other objects in this request are
-> +	 * completed when this function is called. WARN if that is
-> +	 * not the case.
-> +	 */
-> +	if (!WARN_ON(req->num_incomplete_objects)) {
-> +		req->state = MEDIA_REQUEST_STATE_COMPLETE;
-> +		wake_up_interruptible_all(&req->poll_wait);
-> +		completed = true;
-> +	}
-> +
-> +unlock:
-> +	spin_unlock_irqrestore(&req->lock, flags);
-> +	if (completed)
-> +		media_request_put(req);
-> +}
-> +EXPORT_SYMBOL_GPL(media_request_manual_complete);
-> diff --git a/include/media/media-request.h b/include/media/media-request.h
-> index bb500b2f9da46f5a9a84272759a137720b094a80..3256fcf3709da58878a59d90722bee3224d97af6 100644
-> --- a/include/media/media-request.h
-> +++ b/include/media/media-request.h
-> @@ -56,6 +56,9 @@ struct media_request_object;
->   * @access_count: count the number of request accesses that are in progress
->   * @objects: List of @struct media_request_object request objects
->   * @num_incomplete_objects: The number of incomplete objects in the request
-> + * @manual_completion: if true, then the request won't be marked as completed
-> + * when @num_incomplete_objects reaches 0. Call media_request_manual_complete()
-> + * to complete the request after @num_incomplete_objects == 0.
->   * @poll_wait: Wait queue for poll
->   * @lock: Serializes access to this struct
->   */
-> @@ -68,6 +71,7 @@ struct media_request {
->  	unsigned int access_count;
->  	struct list_head objects;
->  	unsigned int num_incomplete_objects;
-> +	bool manual_completion;
->  	wait_queue_head_t poll_wait;
->  	spinlock_t lock;
->  };
-> @@ -218,6 +222,38 @@ media_request_get_by_fd(struct media_device *mdev, int request_fd);
->  int media_request_alloc(struct media_device *mdev,
->  			int *alloc_fd);
->  
-> +/**
-> + * media_request_mark_manual_completion - Enable manual completion
-> + *
-> + * @req: The request
-> + *
-> + * Mark that the request has to be manually completed by calling
-> + * media_request_manual_complete().
-> + *
-> + * This function shall be called in the req_queue callback.
-> + */
-> +static inline void
-> +media_request_mark_manual_completion(struct media_request *req)
-> +{
-> +	req->manual_completion = true;
-> +}
-> +
-> +/**
-> + * media_request_manual_complete - Mark the request as completed
-> + *
-> + * @req: The request
-> + *
-> + * This function completes a request that was marked for manual completion by an
-> + * earlier call to media_request_mark_manual_completion(). The request's
-> + * @manual_completion field is reset to false.
-> + *
-> + * All objects contained in the request must have been completed previously. It
-> + * is an error to call this function otherwise. If such an error occurred, the
-> + * function will WARN and the object completion will be delayed until
-> + * @num_incomplete_objects is 0.
-> + */
-> +void media_request_manual_complete(struct media_request *req);
-> +
->  #else
->  
->  static inline void media_request_get(struct media_request *req)
-> @@ -336,7 +372,7 @@ void media_request_object_init(struct media_request_object *obj);
->   * @req: The media request
->   * @ops: The object ops for this object
->   * @priv: A driver-specific priv pointer associated with this object
-> - * @is_buffer: Set to true if the object a buffer object.
-> + * @is_buffer: Set to true if the object is a buffer object.
->   * @obj: The object
->   *
->   * Bind this object to the request and set the ops and priv values of
-> 
+--
+2.43.0
+
+---
+To: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+To: Conor Dooley <conor+dt@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
+
+---
+Gary Bisson (4):
+      dt-bindings: vendor-prefixes: Add Ezurio LLC
+      dt-bindings: arm: mediatek: Add Ezurio Tungsten entries
+      arm64: dts: mediatek: add device tree for Tungsten 510 board
+      arm64: dts: mediatek: add device tree for Tungsten 700 board
+
+ .../devicetree/bindings/arm/mediatek.yaml          |    2 +
+ .../devicetree/bindings/vendor-prefixes.yaml       |    2 +
+ arch/arm64/boot/dts/mediatek/Makefile              |    2 +
+ .../boot/dts/mediatek/mt8370-tungsten-smarc.dts    |   14 +
+ .../boot/dts/mediatek/mt8390-tungsten-smarc.dts    |   22 +
+ .../boot/dts/mediatek/mt83x0-tungsten-smarc.dtsi   | 1481 ++++++++++++++++++++
+ 6 files changed, 1523 insertions(+)
+---
+base-commit: 7d0a66e4bb9081d75c82ec4957c50034cb0ea449
+change-id: 20251201-review-750072579991
+
+Best regards,
+-- 
+Gary Bisson <bisson.gary@gmail.com>
 
 
