@@ -4,108 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19886D116F1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Dec 2025 10:30:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D709D116F1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Dec 2025 10:39:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=17IqE3yDhTrw79ktiTQdXM6psdkGWe814KLyAsCCd3E=; b=q6wQtmtyiRbZ0K3NZmYuYQ30OP
-	7kGOFqQAK6yX8US99iEY3rIpv0qcpzbtvUQCA8razYa7GI+m3ndnHFP/vk+QXLCiq6uIE3LOAmz2F
-	E2WoardH4hGFco5vYOcIreIyq6j18+F19RCaL+rRCxm9ts7XFns2yaoWJ/IjGeceD6aCIY6O08vND
-	j6zguFckQLVDmb+pTopgCTPT5W9XIx5UYSl0hYFBUoe8M3zdq8XN01lg7C8WheVdI+mVGZLIs467T
-	Csx3Nwx1BQurqd9haL41ZVEgL/Uye984ZO7p930q2wgheyCJmfPpS5NaXvryTUJD4Hb2OsbZ059DU
-	/a1S1RAQ==;
+	bh=jdiIDMjT6U7gnpeUR5pH8VP7V3AkpC/YLt5uohRVR1g=; b=IQSzb/A/d3rKZS8IDcPx8U0lxc
+	Hwngx0KneXo0V1RtQIEjkalVosrwxrY4gNtPLl52qA7Bs//+u8yhr9tEe198bpgppf//KFHDyswN2
+	T/EYp9yccxACK7cHrrpJPBzQFrkmJitnUEu621UgqT2SFrjA4eECFZb1dFmtOlz79/XPEH3LGlKFJ
+	MxZ3EAufi96SiL2stiKEC4xqZp0qk5r2KF8hkjoiL+RzJ6E1f3N1naYbpdCFMCGolL+isHKOvJ39K
+	HEmzSvmqFIzM0/8uwdlmyLyCvZcOfSJ3FflMH5wzADhTDA5O0N+3li91m0sg+Ify9wjpfx35oo6/O
+	LO8puCuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQ1B6-00000003KuH-0hFj;
-	Mon, 01 Dec 2025 10:30:44 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vQ1J9-00000003Lgz-3G38;
+	Mon, 01 Dec 2025 10:39:03 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQ1B3-00000003KtH-22qV;
-	Mon, 01 Dec 2025 10:30:42 +0000
+	id 1vQ1J8-00000003LgL-1K6p;
+	Mon, 01 Dec 2025 10:39:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1DB5D409A9;
-	Mon,  1 Dec 2025 10:30:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71003C4CEF1;
-	Mon,  1 Dec 2025 10:30:38 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 690A760121;
+	Mon,  1 Dec 2025 10:39:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C41D4C4CEF1;
+	Mon,  1 Dec 2025 10:38:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764585041;
-	bh=Nn+RCECaXBJKhubR2IUUqa85eItX94hq9cM42UZzO6c=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=J1GIADgIorrNB4QKPvaKwECnRGECnFIJC4XOrSzQrSoFhMMuegXZcQ/VaDKQ+D58O
-	 7tFAi8CEVL0BGDBDMGWpfcvFgRVH706YVE2NUqh7HaGg/GFfu1WFE0VlH7p9rpD+nE
-	 WKlAtYSouVTpSRL1wj43NUPepy26gLn/ec0uEfz3ZayBS7umBh0AWjE5ge7JdGDOT4
-	 b2JaABbDf6CpJ5sXHafAsRWgnNVl4THnnFgm3Eg2gtp2XVNhb7XgkckHrJIwUfdg0y
-	 QANIkWMDbT2gzicR3XF5MDjwWVDXk9LHSHcHwn3dIfM0sUXq9Pvoiiln1j/aatGcF4
-	 qjRwhmofsQAJw==
-Message-ID: <cb79c1a0-f61f-4ab8-b5de-c81e8a61e8d1@kernel.org>
-Date: Mon, 1 Dec 2025 11:30:36 +0100
+	s=k20201202; t=1764585541;
+	bh=7otL5ZpSjHqKVAsGUZwGGCooAKXLD8oQRR5TSq1M7g0=;
+	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
+	b=GNh+5vzg472/kaEpWox0DRBdneMiT3C2i8SgfXRGwMw3DD2KHUHEX2z8498ySfcDp
+	 W418/y6q7dHvLL5B/IlTdldGOrVCvZoNhFWGd7Y1RAo3ngAORaGqw8wVRSZu8o5bS1
+	 oPuYcK5H4mP9AZlziA+Nhd55DBHkZFx/ISJBqZcudW/ypsRUiNgRSMLIX7oCPI+qK8
+	 6ugzS31Es6VgXhhNJSKPyoBNUzYMsrELG+6KD5AYgR9PO2FBGoy9kwKmV1/11Ty3ka
+	 XMgu0sUb5R/VC2e5Qe9hGiQqkZCAgE4JJek365j8gBB7L3DbOIDO2OaOnZeNeia0k3
+	 ZenPh0/xUb0fg==
+Message-ID: <fcfe2672-b546-4f3f-8418-71ee8ce1fb5d@kernel.org>
+Date: Mon, 1 Dec 2025 11:38:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/4] dt-bindings: vendor-prefixes: Add Ezurio LLC
-To: Gary Bisson <bisson.gary@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sean Wang <sean.wang@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20251201-review-v2-0-dc2df44eec7e@gmail.com>
- <20251201-review-v2-1-dc2df44eec7e@gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20251201-review-v2-1-dc2df44eec7e@gmail.com>
+From: Hans Verkuil <hverkuil+cisco@kernel.org>
+Subject: Re: [PATCH v4 1/5] media: mc: add manual request completion
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel@collabora.com,
+ linux-media@vger.kernel.org,
+ Sebastian Fricke <sebastian.fricke@collabora.com>
+References: <20251128-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v4-0-c166bdd4625c@collabora.com>
+ <20251128-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v4-1-c166bdd4625c@collabora.com>
+Content-Language: en-US, nl
+In-Reply-To: <20251128-sebastianfricke-vcodec_manual_request_completion_with_state_machine-v4-1-c166bdd4625c@collabora.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251201_023041_573485_151C0CA4 
-X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,37 +80,185 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01/12/2025 11:23, Gary Bisson wrote:
-> Ezurio is the new name of Laird Connectivity after it acquired Boundary
-> Devices.
+Hi Nicolas,
+
+On 28/11/2025 20:16, Nicolas Dufresne wrote:
+> From: Hans Verkuil <hverkuil@kernel.org>
 > 
-> Signed-off-by: Gary Bisson <bisson.gary@gmail.com>
+> By default when the last request object is completed, the whole
+> request completes as well.
+> 
+> But sometimes you want to delay this completion to an arbitrary point in
+> time so add a manual complete mode for this.
+> 
+> In req_queue the driver marks the request for manual completion by
+> calling media_request_mark_manual_completion, and when the driver
+> wants to manually complete the request it calls
+> media_request_manual_complete().
+> 
+> Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+
+For this patch and the other patches with this xs4all SoB, can you replace it with:
+
+Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
+
+Much appreciated,
+
+	Hans
+
+> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 > ---
->  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
->  1 file changed, 2 insertions(+)
+>  drivers/media/mc/mc-request.c | 41 +++++++++++++++++++++++++++++++++++++++--
+>  include/media/media-request.h | 38 +++++++++++++++++++++++++++++++++++++-
+>  2 files changed, 76 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/media/mc/mc-request.c b/drivers/media/mc/mc-request.c
+> index f66f728b1b43dcd1cf51de46e828bf806f014f8d..512e6969152792558537dd8a0736df82847ae210 100644
+> --- a/drivers/media/mc/mc-request.c
+> +++ b/drivers/media/mc/mc-request.c
+> @@ -54,6 +54,7 @@ static void media_request_clean(struct media_request *req)
+>  	req->access_count = 0;
+>  	WARN_ON(req->num_incomplete_objects);
+>  	req->num_incomplete_objects = 0;
+> +	req->manual_completion = false;
+>  	wake_up_interruptible_all(&req->poll_wait);
+>  }
+>  
+> @@ -313,6 +314,7 @@ int media_request_alloc(struct media_device *mdev, int *alloc_fd)
+>  	req->mdev = mdev;
+>  	req->state = MEDIA_REQUEST_STATE_IDLE;
+>  	req->num_incomplete_objects = 0;
+> +	req->manual_completion = false;
+>  	kref_init(&req->kref);
+>  	INIT_LIST_HEAD(&req->objects);
+>  	spin_lock_init(&req->lock);
+> @@ -459,7 +461,7 @@ void media_request_object_unbind(struct media_request_object *obj)
+>  
+>  	req->num_incomplete_objects--;
+>  	if (req->state == MEDIA_REQUEST_STATE_QUEUED &&
+> -	    !req->num_incomplete_objects) {
+> +	    !req->num_incomplete_objects && !req->manual_completion) {
+>  		req->state = MEDIA_REQUEST_STATE_COMPLETE;
+>  		completed = true;
+>  		wake_up_interruptible_all(&req->poll_wait);
+> @@ -488,7 +490,7 @@ void media_request_object_complete(struct media_request_object *obj)
+>  	    WARN_ON(req->state != MEDIA_REQUEST_STATE_QUEUED))
+>  		goto unlock;
+>  
+> -	if (!--req->num_incomplete_objects) {
+> +	if (!--req->num_incomplete_objects && !req->manual_completion) {
+>  		req->state = MEDIA_REQUEST_STATE_COMPLETE;
+>  		wake_up_interruptible_all(&req->poll_wait);
+>  		completed = true;
+> @@ -499,3 +501,38 @@ void media_request_object_complete(struct media_request_object *obj)
+>  		media_request_put(req);
+>  }
+>  EXPORT_SYMBOL_GPL(media_request_object_complete);
+> +
+> +void media_request_manual_complete(struct media_request *req)
+> +{
+> +	bool completed = false;
+> +	unsigned long flags;
+> +
+> +	if (WARN_ON_ONCE(!req))
+> +		return;
+> +
+> +	spin_lock_irqsave(&req->lock, flags);
+> +
+> +	if (WARN_ON_ONCE(!req->manual_completion))
+> +		goto unlock;
+> +
+> +	if (WARN_ON_ONCE(req->state != MEDIA_REQUEST_STATE_QUEUED))
+> +		goto unlock;
+> +
+> +	req->manual_completion = false;
+> +	/*
+> +	 * It is expected that all other objects in this request are
+> +	 * completed when this function is called. WARN if that is
+> +	 * not the case.
+> +	 */
+> +	if (!WARN_ON(req->num_incomplete_objects)) {
+> +		req->state = MEDIA_REQUEST_STATE_COMPLETE;
+> +		wake_up_interruptible_all(&req->poll_wait);
+> +		completed = true;
+> +	}
+> +
+> +unlock:
+> +	spin_unlock_irqrestore(&req->lock, flags);
+> +	if (completed)
+> +		media_request_put(req);
+> +}
+> +EXPORT_SYMBOL_GPL(media_request_manual_complete);
+> diff --git a/include/media/media-request.h b/include/media/media-request.h
+> index bb500b2f9da46f5a9a84272759a137720b094a80..3256fcf3709da58878a59d90722bee3224d97af6 100644
+> --- a/include/media/media-request.h
+> +++ b/include/media/media-request.h
+> @@ -56,6 +56,9 @@ struct media_request_object;
+>   * @access_count: count the number of request accesses that are in progress
+>   * @objects: List of @struct media_request_object request objects
+>   * @num_incomplete_objects: The number of incomplete objects in the request
+> + * @manual_completion: if true, then the request won't be marked as completed
+> + * when @num_incomplete_objects reaches 0. Call media_request_manual_complete()
+> + * to complete the request after @num_incomplete_objects == 0.
+>   * @poll_wait: Wait queue for poll
+>   * @lock: Serializes access to this struct
+>   */
+> @@ -68,6 +71,7 @@ struct media_request {
+>  	unsigned int access_count;
+>  	struct list_head objects;
+>  	unsigned int num_incomplete_objects;
+> +	bool manual_completion;
+>  	wait_queue_head_t poll_wait;
+>  	spinlock_t lock;
+>  };
+> @@ -218,6 +222,38 @@ media_request_get_by_fd(struct media_device *mdev, int request_fd);
+>  int media_request_alloc(struct media_device *mdev,
+>  			int *alloc_fd);
+>  
+> +/**
+> + * media_request_mark_manual_completion - Enable manual completion
+> + *
+> + * @req: The request
+> + *
+> + * Mark that the request has to be manually completed by calling
+> + * media_request_manual_complete().
+> + *
+> + * This function shall be called in the req_queue callback.
+> + */
+> +static inline void
+> +media_request_mark_manual_completion(struct media_request *req)
+> +{
+> +	req->manual_completion = true;
+> +}
+> +
+> +/**
+> + * media_request_manual_complete - Mark the request as completed
+> + *
+> + * @req: The request
+> + *
+> + * This function completes a request that was marked for manual completion by an
+> + * earlier call to media_request_mark_manual_completion(). The request's
+> + * @manual_completion field is reset to false.
+> + *
+> + * All objects contained in the request must have been completed previously. It
+> + * is an error to call this function otherwise. If such an error occurred, the
+> + * function will WARN and the object completion will be delayed until
+> + * @num_incomplete_objects is 0.
+> + */
+> +void media_request_manual_complete(struct media_request *req);
+> +
+>  #else
+>  
+>  static inline void media_request_get(struct media_request *req)
+> @@ -336,7 +372,7 @@ void media_request_object_init(struct media_request_object *obj);
+>   * @req: The media request
+>   * @ops: The object ops for this object
+>   * @priv: A driver-specific priv pointer associated with this object
+> - * @is_buffer: Set to true if the object a buffer object.
+> + * @is_buffer: Set to true if the object is a buffer object.
+>   * @obj: The object
+>   *
+>   * Bind this object to the request and set the ops and priv values of
+> 
 
-
-
-<form letter>
-This is a friendly reminder during the review process.
-
-It looks like you received a tag and forgot to add it.
-
-If you do not know the process, here is a short explanation:
-Please add Acked-by/Reviewed-by/Tested-by tags when posting new versions
-of patchset, under or above your Signed-off-by tag, unless patch changed
-significantly (e.g. new properties added to the DT bindings). Tag is
-"received", when provided in a message replied to you on the mailing
-list. Tools like b4 can help here. However, there's no need to repost
-patches *only* to add the tags. The upstream maintainer will do that for
-tags received on the version they apply.
-
-Please read:
-https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
-
-If a tag was not added on purpose, please state why and what changed.
-</form letter>
-
-Best regards,
-Krzysztof
 
