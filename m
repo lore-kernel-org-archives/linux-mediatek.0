@@ -4,105 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0AF8CFD376
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Dec 2025 07:31:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF8B0CFD2F6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Dec 2025 07:40:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gutkuk21iRBLBzb9hvOl6cUp6HFUU/VZ7OrEhTRZmwQ=; b=QVbKpwgiJOCQf4/J1Oy6resQmw
-	kuyxQVpSjwbl9A5NorlflTRRNgX+JwMUZCzFwQmebHE/iSx5Ty96IHDUDinIxNrLABbt8V6r6Xkwd
-	T2ir35WHj9AaL9Lo2BwiqLrVitGSv1783urvWyjuWGcvqob+dj0viZjbMhoLmFKJjD3tq0ljAOTAW
-	fYN9C3Ym37M8ycHJuDYjatMtXMWb6ewHSm+FgnPb9scSZUWK4uFSQe0mmz3C67JIPY+Kr9AxBpY1B
-	pXA1lwOLWMSac98jq0HTl9bxA2Oihl9LO4XnResWMAdPEpMrfHPJfe7WuMRgQL2215CiGgNw/404B
-	kXQ2owxA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=87i/t5++WkQKLERIC3vdsw64/vhpgoC/Dq2MOnHC/+M=; b=saJ1IaTw9dCKBuse50G8fpM5fJ
+	sdUCUcbNMs7dWdUR+fGOMcs14+CGJGAa/A8PbALU5mFvDLYarQ7XUILJE1Zoy0nLYRF3Ef4k/Ge59
+	Eo5Ep+8RtW63fQN+AOGLJzONXFTKf6jKlivgPt+hNVEJ/rWsxwA/J7qunA2l6Eh0wopoHMFJkkaPU
+	AcT+nww2bj0sIgetBGx025NsfDfZ9X5jQVzFGH9U0OPPkTwBGR/ozaj/Ff0cAYOtVAjLk+OmuIsPm
+	ndgIUXTNKozXIU3s2SrJExIjtWfpqZWOls61xjX1LaxKaZzkoGH6wanCCcmWNvm1HSRl3fIxcwJrY
+	Ii/pZFKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQKr7-00000004xN9-46OZ;
-	Tue, 02 Dec 2025 07:31:26 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1vQL0H-00000004xwZ-3Jo9;
+	Tue, 02 Dec 2025 07:40:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQKr4-00000004xMg-2Ph1;
-	Tue, 02 Dec 2025 07:31:24 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 8899EC17B6B;
-	Tue,  2 Dec 2025 07:30:56 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id A0F3E606D3;
-	Tue,  2 Dec 2025 07:31:19 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 403D9103C8F04;
-	Tue,  2 Dec 2025 08:30:59 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1764660676; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 in-reply-to:references; bh=gutkuk21iRBLBzb9hvOl6cUp6HFUU/VZ7OrEhTRZmwQ=;
-	b=bY3TTYiSLFXa5B94KQgeAayt80JXK78ig76Aq2SyfufNuWcT41c/auFS4kPqbVeYIZlJKX
-	QrXrN/qRIP4zNsj2m/7od8XOWVPza9ZQvvaa8nia4r3ByMuNdtTuF/t2v7gxBFCMMsW9RB
-	i0p/8OBYWY3+n3FRUeyswfCRhz6Fv2at184ftP1FUUlpPAnLeFkqXVNSm5O6zbN24Wre4+
-	N8LDjO5ty4mD4BpDEbuBV6eat2hrRdfThqf+Hnymm7a9OslgagnMsXhZ11fV4HVQz7RWeL
-	AMcHDMFpAB93S2dU0dURDWQPs1MVtcc1ZnrYa/w6k4129RIITI9OMaZRIN58Wg==
-From: Romain Gantois <romain.gantois@bootlin.com>
-To: MyungJoo Ham <myungjoo.ham@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Guenter Roeck <linux@roeck-us.net>,
- Peter Rosin <peda@axentia.se>, Jonathan Cameron <jic23@kernel.org>,
- Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>,
- Andy Shevchenko <andy@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>,
- Michael Hennerich <Michael.Hennerich@analog.com>,
- Mariel Tinaco <Mariel.Tinaco@analog.com>,
- Kevin Tsai <ktsai@capellamicro.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Eugen Hristev <eugen.hristev@linaro.org>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>,
- Sebastian Reichel <sre@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
- Hans de Goede <hansg@kernel.org>,
- Support Opensource <support.opensource@diasemi.com>,
- Paul Cercueil <paul@crapouillou.net>, Iskren Chernev <me@iskren.info>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Matheus Castello <matheus@castello.eng.br>,
- Saravanan Sekar <sravanhome@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Casey Connolly <casey.connolly@linaro.org>,
- Pali =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>,
- Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>, Amit Kucheria <amitk@kernel.org>,
- Thara Gopinath <thara.gopinath@gmail.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>,
- Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- Olivier Moysan <olivier.moysan@foss.st.com>,
- Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- David Lechner <dlechner@baylibre.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-input@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-pm@vger.kernel.org,
- linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-sound@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH] iio: inkern: Use namespaced exports
-Date: Tue, 02 Dec 2025 08:30:58 +0100
-Message-ID: <5948030.DvuYhMxLoT@fw-rgant>
-In-Reply-To: <78240755-44dc-4835-aca5-99540cca0304@baylibre.com>
-References: <20251201-iio-inkern-use-namespaced-exports-v1-1-da1935f70243@bootlin.com>
- <78240755-44dc-4835-aca5-99540cca0304@baylibre.com>
+	id 1vQL0E-00000004xuo-2tWB;
+	Tue, 02 Dec 2025 07:40:51 +0000
+X-UUID: 3645abe2cf5211f09f706fa2197c6ceb-20251202
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=87i/t5++WkQKLERIC3vdsw64/vhpgoC/Dq2MOnHC/+M=;
+	b=aQ3zXb1FpNrDrAMWWOJpK5txhPQcUeLSEaVZt6xmgRIXC3Qd8w+5JWDLAh+8JP6vnQZ1hYMbx81Yj5SQaewUnueXtg1Hgf6FfJqwrn6Syr2Kw80NIGhe7S/ldbHgZIbwNTfNRezVxUYGDJ7aRFQ2w3w7B34BRqNc38YsKYCJKZ8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:d43ff8a6-fe8a-4996-aa3a-e7528b45e726,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:94d30e28-e3a2-4f78-a442-8c73c4eb9e9d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 3645abe2cf5211f09f706fa2197c6ceb-20251202
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2022895466; Tue, 02 Dec 2025 00:40:45 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Tue, 2 Dec 2025 15:40:42 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Tue, 2 Dec 2025 15:40:40 +0800
+From: Kyrie Wu <kyrie.wu@mediatek.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
+	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>, Nicolas Dufresne
+	<nicolas.dufresne@collabora.com>, Nathan Hebert <nhebert@chromium.org>, "Arnd
+ Bergmann" <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>, George Sun
+	<george.sun@mediatek.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
+	<andrzejtp2010@gmail.com>, Yilong Zhou <yilong.zhou@mediatek.com>
+Subject: [PATCH v6 00/10] Enable video decoder & encoder for MT8189
+Date: Tue, 2 Dec 2025 15:40:27 +0800
+Message-ID: <20251202074038.3173-1-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="nextPart6220005.lOV4Wx5bFT";
- micalg="pgp-sha512"; protocol="application/pgp-signature"
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251201_233122_820149_A82E4693 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20251201_234050_740232_F55ABFA5 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,87 +94,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---nextPart6220005.lOV4Wx5bFT
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"; protected-headers="v1"
-From: Romain Gantois <romain.gantois@bootlin.com>
-Subject: Re: [PATCH] iio: inkern: Use namespaced exports
-Date: Tue, 02 Dec 2025 08:30:58 +0100
-Message-ID: <5948030.DvuYhMxLoT@fw-rgant>
-In-Reply-To: <78240755-44dc-4835-aca5-99540cca0304@baylibre.com>
-MIME-Version: 1.0
+This series have the follow changing:
+Firstly add mt8189 video decoder compatible, profile and level to support
+MT8189 kernel driver.
+Secondly fix some bugs, including vp 4K profile2 and media device node
+number bug.
+Lastly, add mt8189 video encoder compatible.
 
-On Monday, 1 December 2025 18:15:54 CET David Lechner wrote:
-> On 12/1/25 4:59 AM, Romain Gantois wrote:
-> > Use namespaced exports for IIO consumer API functions.
-> > 
-> > Signed-off-by: Romain Gantois <romain.gantois@bootlin.com>
-> > ---
-> 
-> ...
-> 
-> > diff --git a/drivers/iio/dac/ds4424.c b/drivers/iio/dac/ds4424.c
-> > index a8198ba4f98a..33d6692f46fe 100644
-> > --- a/drivers/iio/dac/ds4424.c
-> > +++ b/drivers/iio/dac/ds4424.c
-> > @@ -14,7 +14,6 @@
-> > 
-> >  #include <linux/iio/iio.h>
-> >  #include <linux/iio/driver.h>
-> >  #include <linux/iio/machine.h>
-> > 
-> > -#include <linux/iio/consumer.h>
-> 
-> Unrelated change?
+This series has been tested with MT8189 tast test.
+Encoding and decoding worked for this chip.
 
-Indeed, I'll leave that out in v2.
+Patches 1-2 Add decoder compatible.
+Patches 3 Add profile and level supporting.
+Patches 4 Add core-only VP9 decoding supporting.
+Patches 5-6 fix some bugs.
+Patches 7-8 Adds encoder compatible.
 
-> >  #define DS4422_MAX_DAC_CHANNELS		2
-> >  #define DS4424_MAX_DAC_CHANNELS		4
-> > 
-> > @@ -321,3 +320,4 @@ MODULE_AUTHOR("Ismail H. Kose
-> > <ismail.kose@maximintegrated.com>");> 
-> >  MODULE_AUTHOR("Vishal Sood <vishal.sood@maximintegrated.com>");
-> >  MODULE_AUTHOR("David Jung <david.jung@maximintegrated.com>");
-> >  MODULE_LICENSE("GPL v2");
-> > 
-> > +MODULE_IMPORT_NS("IIO_CONSUMER");
-> 
-> Is this actually needed if we don't use anything from consumer.h?
+---
+H264 test results:
+./fluster.py run -d GStreamer-H.264-V4L2SL-Gst1.0 -j2 -t 90
+    JVT-AVC_V1	Ran 96/135 tests successfully
 
-No, it's not.
+VP9 test results:
+./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0 -j2 -t 90
+	VP9-TEST-VECTORS	Ran 276/305 tests successfully
 
-Thanks,
+v4l2-compliance test results:
+Compliance test for mtk-vcodec-enc device /dev/video2:
+Total for mtk-vcodec-enc device /dev/video2: 47, Succeeded: 46, Failed: 1, Warnings: 0
+Compliance test for mtk-vcodec-dec device /dev/video3:
+Total for mtk-vcodec-dec device /dev/video3: 48, Succeeded: 48, Failed: 0, Warnings: 0
+
+scp upstream link:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20250811015922.32680-1-huayu.zong@mediatek.com/
+dtsi upstream link:
+https://lore.kernel.org/linux-mediatek/20251030134541.784011-12-jh.hsu@mediatek.com/T/#m847e35de0a5b18fac0ca0624a8559d84964ad5c7
+
+Changes compared with v5:
+--move default decoder parameters to compatible data structure
+--add reviewer to commit messages
+--Rebased on top of the latest media tree
+
+Changes compared with v4:
+--update H264 & vp9 fluster test results
+--update vp9 single core decoder prob size setting and commit messages
+
+Changes compared with v3:
+--add reviewer to commit messages
+--Rebased on top of the latest media tree
+
+Changes compared with v2:
+--add H264 fluster test results
+--reorder compatible string for dt-bindings
+
+Changes compared with v1:
+--add v4l2-compliance test results
+--add scp upstream link
+--add HW difference discriptions for dt-bindings commit messages
+
+This series patches dependent on:
+[1]
+https://patchwork.linuxtv.org/project/linux-media/cover/20250510075357.11761-1-yunfei.dong@mediatek.com/
+[2]
+https://patchwork.linuxtv.org/project/linux-media/cover/20250814085642.17343-1-kyrie.wu@mediatek.com/
+
+Kyrie Wu (10):
+  dt-bindings: media: mediatek: decoder: Add MT8189
+    mediatek,vcodec-decoder
+  media: mediatek: decoder: Add a new platform data member
+  media: mediatek: vcodec: add decoder compatible to support MT8189
+  media: mediatek: vcodec: add profile and level supporting for MT8189
+  media: mediatek: vcodec: refactor setup dst buffer metadata interface
+    for VP9 decoder
+  media: mediatek: vcodec: Add 4K prob size supporting for VP9 decoder
+  media: mediatek: vcodec: Fix vp9 4096x2176 fail for profile2
+  media: mediatek: vcodec: Fix media device node number
+  dt-bindings: media: Add MT8189 mediatek,vcodec-encoder
+  media: mediatek: encoder: Add MT8189 encoder compatible data
+
+ .../media/mediatek,vcodec-encoder.yaml        |   2 +
+ .../media/mediatek,vcodec-subdev-decoder.yaml |   5 +-
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.h  |   6 +
+ .../vcodec/decoder/mtk_vcodec_dec_drv.c       |  42 +--
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  33 +-
+ .../vcodec/decoder/mtk_vcodec_dec_hw.c        |   2 +-
+ .../vcodec/decoder/mtk_vcodec_dec_stateful.c  |  14 +
+ .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 293 +++++++++++++-----
+ .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |  35 ++-
+ .../vcodec/encoder/mtk_vcodec_enc_drv.c       |  14 +
+ 10 files changed, 314 insertions(+), 132 deletions(-)
 
 -- 
-Romain Gantois, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
-
---nextPart6220005.lOV4Wx5bFT
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEIcCsAScRrtr7W0x0KCYAIARzeA4FAmkulbIACgkQKCYAIARz
-eA6r+A//aMF01GyQ28Vt1qVRnR+uQNAhVi/B2aUu4XYyy1hc2lVzhHwvSjyYiXET
-h1jorSaLD9m5MsoTo9Scxhpu1d5KWIy5DaNATac1wmHh9t0IdE8gw1kNaUcNmefr
-NFOanFttvVt7e9cko6PsxmX9GOioawS3CVrJuObkGGftqR3KVD3WMOg+n551pkK4
-63Xbfe6PPADF06Lyu2kyyxUXLwIsuXQ8Z4dQ+kX4Bky34L0v4w0Yxos4Uhkwv5ur
-SOUtezyExAQTgAJi9KW5MPADpCdXfB3moTv29CdWRs1K8XLkxxLeprZnutXRFxOu
-CrmiA30lNs2pp7wut+8PfmeYX6btqOCMQ8KENXNV9StrRc9UqD6K6TbbJGE/Vbzg
-gxDVp9t0i0nxcQAwhtvnlmAjf3pxeJWXf1iII5ooXoxv2yW1G+FsL9RBztyEnTA1
-0iLFg1Yyx/28b7iZsf6oD5luqSRnQ7Qi0js5sAA3rVHfMtOlO/rGcUH1BprrpLPa
-m5jycApgp26OuCSxacOhlAZ6iXy1pyepTaDlS9wz1kbdwVJOf3IaWuRhDHrRugCd
-zya/579XFCsbobzejkSRHzgwylhuGsDMAniIn0MaeQw3E5wyBTCVJTXx9qebFj3v
-sUVcLNhFQBy/G8YWighvreSaPr43mWS4ueBmAMClqYmOzq2nF2k=
-=n+bE
------END PGP SIGNATURE-----
-
---nextPart6220005.lOV4Wx5bFT--
-
-
+2.45.2
 
 
