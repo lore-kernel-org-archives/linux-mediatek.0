@@ -4,79 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8ABCD116FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Dec 2025 09:48:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9E63D116F6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Dec 2025 11:52:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H+/Lc09J7zwoluJonSStivhvHUOtOwpKsxrD4orztn4=; b=0Gf7UYL32N5Zj4hJ71gTD5V14q
-	XYFhwRwFCLa5EqV4IeYNCaHBBD7+7bLQxxE2SbVTrqaWDOwaWq/bMjmB7UV01j8066BxHA+rX8UD+
-	sf5hqpz1c4wl2+aT4TpiPnCEGZemINVyfz7QV36Y/WNAaIehqWq6LQKfyOmF0mdvv0i4/rwsL2/OE
-	mDuiDXrz9sEIaJu5xnh5hEdJsJR9C4ulrEuCzBOVG4cWR1Ysqb1Rw4n97RLfmnhNgjB7+oKlXKbSj
-	c1RMuZrAriKWbsYiUQtORK0WFmU+pYrbHLjyezLC56kKgA+W3mn7t2QCKnWIkzUt/BykmGvkO4yaP
-	FSx2oY8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZKK8fuFr9gnz0qBnyFzmVbIPQhya3mmpV5DTDhWJQII=; b=LWIZCvqXxHOlLnJJx+TkujxIDL
+	uG21T2XF5xD0ExANntJ8Rus/OSLLW/OmFiPPLzpr2ocC72tx7JGGy8gKopj57vLaeZMMXLWZBDTID
+	ds7DMNgk1IKVh86baBKWK0lqkIvvwN5jEfGcsJbZBKwXYwfUT7vJsTjVLNu2Foj64qot+Z6HhSURA
+	vPzKjFq7pBvaW+TLIPQaOsz+c3WCmSKZz02C7I4UNF1flx7Vr/OWG19J2pqOxgIpjLCbcuQr0lsBb
+	2skaeVIBVKsUM3kJqvwEkJthHA5cdEYErjgzMI02MU2/6t3QmKpPyzQ0wV78ySHsMKMGEi/i7+RSj
+	sOd6KYfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQMzl-00000005BXb-1qXK;
-	Tue, 02 Dec 2025 09:48:29 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1vQOwB-00000005LAm-2eOQ;
+	Tue, 02 Dec 2025 11:52:55 +0000
+Received: from mout.gmx.net ([212.227.17.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQMza-00000005BEZ-3J3M;
-	Tue, 02 Dec 2025 09:48:20 +0000
-X-UUID: 029c0dd8cf6411f09f706fa2197c6ceb-20251202
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From; bh=H+/Lc09J7zwoluJonSStivhvHUOtOwpKsxrD4orztn4=;
-	b=hHAYIes4kbv4nIBLTC2IvH+rGBPQcXTCRiZGlqSWO/d6yv9VYZOVvmb089ODdLMkFcM+94T1oJBye6w0IoK091FgNnZirzW7qR8LdkhC3/1TzAg/KMVEDAdivs8wdBcuD36B4aKhcjKSryoffPywPoa+KEKlmdTjOaKGzcAbcZw=;
-X-CID-CACHE: Type:Local,Time:202512020248-07,HitQuantity:1
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:9e93ab99-326d-4b5f-979d-99857cea8831,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:-20,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:a9d874c,CLOUDID:44455002-1fa9-44eb-b231-4afc61466396,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:1,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 029c0dd8cf6411f09f706fa2197c6ceb-20251202
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1149778767; Tue, 02 Dec 2025 02:48:09 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Tue, 2 Dec 2025 17:48:06 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Tue, 2 Dec 2025 17:48:05 +0800
-From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v11 05/12] media: mediatek: jpeg: fix multi-core clk suspend and resume setting
-Date: Tue, 2 Dec 2025 17:47:53 +0800
-Message-ID: <20251202094800.6140-6-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20251202094800.6140-1-kyrie.wu@mediatek.com>
-References: <20251202094800.6140-1-kyrie.wu@mediatek.com>
+	id 1vQOw9-00000005L9m-0EZ2;
+	Tue, 02 Dec 2025 11:52:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmx.de;
+	s=s31663417; t=1764676367; x=1765281167; i=frankwu@gmx.de;
+	bh=ZKK8fuFr9gnz0qBnyFzmVbIPQhya3mmpV5DTDhWJQII=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
+	 References:From:In-Reply-To:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=IXZvYuOU9O1zKV7IBDnyb9fkJ47dsG9Kpd1LFVXV9IdO7fzCkpXNJpmofYOtXhZD
+	 Pk/NmzqXMHto/jSLjLdb7ABG6eFALptUNBJSyZuYtojMMLCWv6B0BWm1jqyFCqkJt
+	 2naxzW015Pqhz5aDwVsYtIyPh4TR6IK80UWn1ugwfNxTIIHqnIXD1i3LYi5b4KKQL
+	 6DW7es6Vj0BMNmTQtAc+pCdTdGb5ZL35YUxqvvthS+yE6PlldTKK39myvsqw2DkXY
+	 ARhUUzYzPYevNDuJTXGdhB6aQniB3ZL4mbg1FcF5VpaJ7HvetWhqOIdTx3cKMbF3B
+	 4vQoy7mM2hyoWqvp1w==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [192.168.0.21] ([217.61.154.172]) by mail.gmx.net (mrgmx104
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MmDEm-1vqhHL20Zs-00ZJ41; Tue, 02
+ Dec 2025 12:52:47 +0100
+Message-ID: <00f308a1-a4b1-4f20-8d8e-459ddf4c39b1@gmx.de>
+Date: Tue, 2 Dec 2025 12:52:44 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/2] net: dsa: mt7530: Use GPIO polarity to generate
+ correct reset sequence
+To: Krzysztof Kozlowski <krzk@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>
+Cc: Chen Minqiang <ptpt52@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "Chester A. Unal" <chester.a.unal@arinc9.com>,
+ Daniel Golle <daniel@makrotopia.org>, DENG Qingfang <dqfext@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
+References: <20251129234603.2544-1-ptpt52@gmail.com>
+ <20251129234603.2544-2-ptpt52@gmail.com>
+ <0675b35f-217d-4261-9e3f-2eb24753d43c@lunn.ch>
+ <20251130080731.ty2dlxaypxvodxiw@skbuf>
+ <3fbc4e67-b931-421c-9d83-2214aaa2f6ed@lunn.ch>
+ <0d85e1e6-ea75-4f20-aef1-90d446b4bfa1@kernel.org>
+Content-Language: en-US
+From: Frank Wunderlich <frankwu@gmx.de>
+In-Reply-To: <0d85e1e6-ea75-4f20-aef1-90d446b4bfa1@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:yhcrH/hXSf4oD3RbBC/vdPi1/zgONn9HfKrwoRg/3mSAhJ9Joch
+ 6/vgao+SgLSSOwXE3rKrZKVbyoS+Z0e0y56ZJ1rKMu7mxmkvE+XRmwD9v3pYgKe1XsiJIk5
+ lZF21C+8ny26t4hn9E9HI4WZW5c9hno9cH60GyedFHgt/oPVNpVJybWxt0cKaejGN+fxH5p
+ QYqgJfJXJ8B/jR0OuAnzg==
+UI-OutboundReport: notjunk:1;M01:P0:aBrF2WwBXlg=;/I8mK5WiGgEJNQfH3ODNFrKKvak acLUzuPbUzsmaqCj9a84HDp9ICbYK+ksuHz4uQtoSna8Zuipt33nrLHO0lUWpUBFYzLwMG2AZ jUEs4S5DoWzCiLxVZCUZgfBUz6XRRwnI+4IbNB0exY73JII0C0Krc260YmarrcSJk5oLZC2mO fwhs1DrCFZj+8aFuu+Lz2mXZbQ+XrW1ryd0KWG+XSlUS0dZphqr5mrzJxmB5UkrhhVRAPjO+4 /6uO0NFJChzUJx29WeXomRAGwHVQMN+Zd1bSNS6fL+hX/ZrU1yi/2d8vvW+2dC+Ac2zYNzSNb mN3RHY+2pqJ3/ASGaIsWcscx78dbi8cVQqwOoid6btpdLBmKagYIVfAdrtrX8Oa0dWmyfFvK9 EY/b+WAFenFMkYMMLM6c5pnEQPb7XnAa4ukRMmDUVEgqDk7/ZWVyRb8UEYpJuYkM6e61VhGGu vMPGvwMLDVwCjCJIgoitBVXGso5+POeaBaVyX78Zn2OSzEF78XxcK/EwV9glFgoAGyB20slhD TvM4mwWob5Ti/I3pCnyd38BYxX3X8tMhSFmnCDfelom5mRzpohyibMdB5OA6XnKrdhwWhILnS 5NjDQAZTqvK8eajIQkEfr6Z+OaYvNH+heSnRvr/k2Vw6UvPms7cRRGRU92KumBVDLc+1+Zgl4 xIHio6X5vHnr3JJnm7BCipxM+bqfdM9SI7nQnl4M1hy0gvomWIyTj+8Txl7YF6ieeq/tkxFZf 6E/RV80lHTbNxW42L/4L4QWO/SRH530116tUXs3UqSZI/Pxq5UTl29P4kscZAu8oM/NZPeeZk vQqaBvGdvWrfQVmlOXWC4d0XCQPlwXsJRKp4XXXoBGLESTJHOwiizjbFyV7gLNFTUJjhBR0J7 7xATkCg9fXP+969BBgLIWhJZ8LceZVB3eeRsQV9Z8stJFnkRhaaEztCtmG+AKETf/FJldEG2M uZd9WFEPENMOxWbgtIXNeaLKsP0SPXwizH3Rh/8CIvcvy1+Jtt6/ZA+7FV9s4v4h63Rn2zxcV z+IksssbXIFtapzN15H+4LduZLsoZ88g7Fyvkwxvk6mshvpbz0CbtfbyzOarQx820apgmxDPh 9tuV8Gr9CMsAo36nsdHD/eTF/BOH7FAqG/uaAOR2pnQVr+q2RT20luXeqGTJC3WTQ0AyUaixY XaLssGUvdm+Xe0bZZZet6UVlww5+mrrSHMChpOhQWt+2RMnEoEsWktm/SLuxmmlG8gw7y34Yo 13EVI8Px+tinE/T73eakZSVvVwDc9k9fs6c6I/qMIJd/87A4CxZIXbdcNSQ2O/P3XoIac3pwa WllIcrqmRqaTYXXe5Z2+r6hqIys7VUXUY9jBcyHRLWS+aymqtBLKVbblD2EoiGacbrNIu5pkH 5VOnuHvJlM7j3Men8u5u80Kx1p3hm5ZQ8GLFraEPQPJggUk9g64JNjWTXLXhVRVZjsJwebAoi +qJtu4JQ8DZdqsncbnKbpWHUeV73LSyjRspmiCa/VzyVt0YUrFKEZDqrCbZeayJgOPEfVdUTd RWgU1g8qZGhUbDeBJWsmNdHayslat1Q9zUV2Srw1afY9KeqiEjS5+Qm4wMPZM0chk7HBoq0VE uKiGSHEuY1Z25g8Dxs0MPAZATLS16nLKOcX5QD7ZfwHRfhG+a7sCqairLhO3h+Sqw6ArRZK3W bu/7rClW+Dwkmun5tsNEOJ/jrCNslB8grYhdUzjJfnAsIYJo9OwcR5obOi7btodRG8Hm8CRlQ t8VQjBBr6dXEREh+t23mK9+xwPX3Nl/mT+HG0F+dEKKsWtgPguAVYShrWZQt4BVfcbqEhn3RC 6Hk9hQqH/mcqdNzd6BGa5tKFBJ4vUqY2gGQ74gVgB6w4tHjxd4+/dGMUNfyYmHXFs+YCFw4y3 RyPF2hrpMVthOaOVj/DsSgno5PxC9bjUIZ/x5AkG8a29QLcs7qlfY85bbmRSSwSDD0L5GOSjn w2tZHGWA94s2Nd5Mawm4Nu137Zqz5caGAEAfn/rSsl70tkd4d1bxQe7M12qsRqOPqSYobR4eX +J/SZ9w7J+CJzkBtUkDq9PSh3pAtNKR9Nk0Ij6vn5gKgGJAJ7fmHqig7bl/47JXIY2huma43S 5Y4JMYnrbHEjbY2hQ++ZevXnM4hYrgL7w1ZHw4ixxz84tjTXNUtpfaF7wB7ORKjzku1cyYffo AjxChGlZVf/Jnb/P+ARrl7rCaJv19g1NRrQ3eOA5crimspD3EGUeDY19avKKtkNQENYhWw47t qfgy7pdjOPpF8U7E3FhARg/Z4g3Ok5bvrj1p/myWT9B72qrHGDoNb6Rr0G83AcOEd6asNLxNr iR9sSz2VdgLhgTxhOr20vs+KN1tY3bEUDKIsXgoSnMmxcMVNKQV8eBuStZVTSnKjiMw0flZCG MkArGOjcUbXJRa4LVnAM/DLYZjJpAZG5afp1PuWRSigxa2OKqRcFtKFmFjJ70A0SerpsdOmQ0 EPzqhXvFG8WqmlGrS7YqqYfe9qrz7QK8eERuWxn5WaT1vrkQyV8EyPqW5vh/9UCaG59bTYbk+ CYQaeANthiP7uoaL4zscoSygLvG0Un2lZdQVhYx+DfbCJSas77lvzxsbtJmNwzQSJqWypGzTW 16zo/O1xD1HUg1jqBkf7KCNz3PgIOxvs7SAKQizdEaDB7uQebxZqI73Z5jpiTbfRGhTlB77u5 rb1G1EhwOP5iYhf71wUzj/WBhGBnSdPq45jSNGJA9PFimPfVv3HZ9iYwhdfaHg82MPpj3luyG avyqUODTx3NCy/aHvngDegguy1IxyHeqw75LDJEmFPtU7EcEUmuGU0GUQ4EAJ6GHvYXprGFm5 GxqBCuyOxLmd6fp0FdtY0OwWn1btvdQmd5ZwBArNZWCnzBgQ3PfxC5nWTsmPlalrjY8AHcUud EINOwZuaRfBCTNhxkqQlpIGL4IS2XBOwmwDuuBvMHkt29itmawTV2PfQsq1f2dXU6FztZGxMa 5a1n++pAY6n3YhDCQXIevwGAdzRLIoanG5ed5XQGVVSBs9fqEIDwkunlcagbKYX8fy+0AZSf5 0CrlNykM+QPtFmGIXAHwXufsKjfRxHrG2/C+qJTtYx9txbKbj6AvXCgfo6FtFuA5SvcW8gXog ZmkiZWoeTHAXtpAT+yALzCnzCKUx2/61wuZZUJkcT7KiD7gkyBIxQ82zGfbliqiuXwL6ahshe JQwg8TKKbMFK/Ef0ayY47ORwkCJiIogK3506FzE9Prr+dL0CR29x1T8jzwrgz2dUUVYJrdz0q N77BP+P71B983C0BXNwM9UWHcJP6412cd7JOloeYOf3GeEtJhOcGBaeEgmtzL0cOfnpdN0iR+ uoWctKV071698d89+rXBwXKwwQjHX4WboWfwvBdTychLH0Jk7TZ5mVIuc+GK+jNIMpeW9MU/D GE6Ly56QS1vcSS6N4Evk12KTQHcDZj6DOOaHOjFJ+20ySmc4aA7uRBl/kICWAfX3g6ta3iDy6 0UlB6a2gZDCEiJJCt2JwOoe/CrB5Fvf7MNgMHhTQfxpbKbNcEw6o84M+jM9UFzFhvsTi55jQp cYa9aP9e5S3BB+G6qn0nrye3d2YGiax7z34yNmRn3OjK5Uo3ww6XnsR9fupIxcbahY2/T4WPr ZR7AUMWDJ/3pHpGsvR81MUhR7bxsJgbK4PwxLdM7BMQtDZj3rYBoK4vD5IGvAj1F7mbzeLIW3 fXDXDKNk9j+b8HDQLprp57DH1aFmgrV5/5Em3RJqAVg1nGZFty3OE7bK+lk7WDplsrcxnVZ2D XwsVolPz30r9oGlHWa7V3wS/qLb6O9XWFn/A79xv/f4WiA3O0IV8OFY5S2eJ/ZDBTNI80gm4F chktzHA/wSjeWEMkhFaK960AH0dw+f9B2z5DeL2Lq/iRUnNiMHaUcTKPVVFXXyFU9jFADTFUm
+ ctRCFop6T2QCJHrc0POFFL3MONi/6bZLaKAGNw+j7xk8EPxAyj3zrc/GM9aPzzmpgh3ptpKaU +sEnD8MowgbHnCr4uc0NO/sHgSdKPY09nbxXfB8+cKCBr1SbjZ6L3wD4w4YFS8fmRAdswulSo iLOSVgSMtZBanm8w1zrrD5H7ha/PFAqFEg+AeCtMNfGe8fpqiT4u9UYDy2+Td/JFNJcdHHZlM c7kymeB4L1D+frMwl+ZleHTjDFn8GhtFXG54TOJLBlf897LJ3E1Kc1qUTiPEYf5a72F8HPKIC xOl4TeCuq+jVMJ8FczsIeaYvBJVnt5gmDIi25kDl1uhLs0APCH0+CwYa/XxrtkrL5QNrkwcXN S4haxg+EwZ4mlZfLwaN852layhjX7SHFt5ccJat/P8ag+vwNTO+b6OQIdgryAmv3dbNUlNP6L qKvlebdObNgu/xr8gnmUVLjrK+L6wQnUs7VQn9Jp5SWBXnmIMX5CjxHbsVj3FThh+J8z2ORL8 dY1t1apqeUCpzGmRenmFjdOVSoCBQfps3NC4kfwmacYiVK81rKor6FJMgvLaN3YJRkv9QQcI/ OXx1tBOllDyY63JUIkplWVQNTtTcIPyEDSU84h6YOe3Wvl9ACQNbmiS7spuyRve3zSF1XgS8K VcgY6/NgjkF+1mzpZGa1xnSPeVKDBXFw7auhkYyNtjljyO5snTz+ZRSFVmHOcFUZREHwMQ7hv vKw87xHX8Z0+Xs/0jYlKCxCtZpmYN2TIvVCNcXBEClP5dKa7pEEGZITxsdHrnRHdPcvI8Mluy fmIXe0ylKRmrtPjfIRrX7EF8piYDP7v+2mqOwXtRsAgg1zOI6xP9ezwoleWlmvCqYcjU8u26P lBZDPeS9P2QWnumuVOVmHKHMuIHjQn7oKn6dvL6Hv8vwQcrnQ5zoJlEcsqXv25CXaQvERPx1L wWyOIKhQY2jIjlYdDFE/+2wFaTOdIUABC0f1ZecYswsWIir3terjbyoZjDRswagCSruaTlCRb 57egZqBPK1UO4kTqlEAqdlCDMSoRuNN5x0pWJjZrHrOG4OBhF8jCuENm+GbK84XTpY1teeY9H XCls/KBCkt4utSKBOakAEitC+DsInwQVHFINEi+NIk0D/29u4Q1iDZj/8qqaNsT6//1j/3UKb OTilI4dYZhdADB2Y7WimddEq37Ff60Kfo73cTpmDx+Mx5kYIUwx2GZJqFIlkWnOjPHa9KIiW/ oQiUXoKG5B3rx14jJd7smmomaoTGuk51dOHsqTOIlXzYs/sJajtf+MvaTlkg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251202_014818_890642_FC5A1EA6 
-X-CRM114-Status: GOOD (  19.48  )
+X-CRM114-CacheID: sfid-20251202_035253_375482_270B59D4 
+X-CRM114-Status: GOOD (  17.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,341 +95,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The suspend/resume callback function is defined in the dev_pm_ops
-structure, which is defined in platform_driver. For multiple-core
-architecture, each hardware driver will register a platform_driver
-structure, so it is necessary to add a suspend/resume callback
-function for each hardware to support this operation.
+Hi,
 
-Fixes: 934e8bccac95 ("mtk-jpegenc: support jpegenc multi-hardware")
-Fixes: 0fa49df4222f ("media: mtk-jpegdec: support jpegdec multi-hardware")
+Am 01.12.25 um 08:48 schrieb Krzysztof Kozlowski:
+> On 30/11/2025 21:17, Andrew Lunn wrote:
+>> On Sun, Nov 30, 2025 at 10:07:31AM +0200, Vladimir Oltean wrote:
+>>> On Sun, Nov 30, 2025 at 02:11:05AM +0100, Andrew Lunn wrote:
+>>>>> -		gpiod_set_value_cansleep(priv->reset, 0);
+>>>>> +		int is_active_low =3D !!gpiod_is_active_low(priv->reset);
+>>>>> +		gpiod_set_value_cansleep(priv->reset, is_active_low);
+>>>> I think you did not correctly understand what Russell said. You pass
+>>>> the logical value to gpiod_set_value(). If the GPIO has been marked a=
+s
+>>>> active LOW, the GPIO core will invert the logical values to the raw
+>>>> value. You should not be using gpiod_is_active_low().
+>>>>
+>>>> But as i said to the previous patch, i would just leave everything as
+>>>> it is, except document the issue.
+>>>>
+>>>> 	Andrew
+>>>>
+>>> It was my suggestion to do it like this (but I don't understand why I'=
+m
+>>> again not in CC).
+>>>
+>>> We _know_ that the reset pin of the switch should be active low. So by
+>>> using gpiod_is_active_low(), we can determine whether the device tree =
+is
+>>> wrong or not, and we can work with a wrong device tree too (just inver=
+t
+>>> the logical values).
+>> Assuming there is not a NOT gate placed between the GPIO and the reset
+>> pin, because the board designer decided to do that for some reason?
+jumping in because i prepare mt7987 / BPI-R4Lite dts for upstreaming=20
+when driver-changes are in.
+With current driver i need to define the reset-gpio for mt7531 again=20
+wrong to get it
+working. So to have future dts correct, imho this (or similar) change to=
+=20
+driver is needed.
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
----
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 28 +++----
- .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 75 ++++++++++++++++++-
- .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 75 ++++++++++++++++++-
- 3 files changed, 151 insertions(+), 27 deletions(-)
+Of course we cannot simply say that current value is wrong and just=20
+invert it because of
+possible "external" inversion of reset signal between SoC and switch.
+I have to look on schematics for the boards i have (BPI-R64, BPI-R3,=20
+BPI-R2Pro) if there is such circuit.
+Maybe the mt7988 (mt7530-mmio) based boards also affected?
+But not changing driver imho results in future broken devicetrees or can=
+=20
+this
+avoided somehow?
+Nethertheless the driverchange needs to be done before dts change.
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 59fd79c89f88..e45d7e82b8a0 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1122,6 +1122,9 @@ static void mtk_jpeg_clk_on(struct mtk_jpeg_dev *jpeg)
- {
- 	int ret;
- 
-+	if (jpeg->variant->multi_core)
-+		return;
-+
- 	ret = clk_bulk_prepare_enable(jpeg->variant->num_clks,
- 				      jpeg->variant->clks);
- 	if (ret)
-@@ -1130,6 +1133,9 @@ static void mtk_jpeg_clk_on(struct mtk_jpeg_dev *jpeg)
- 
- static void mtk_jpeg_clk_off(struct mtk_jpeg_dev *jpeg)
- {
-+	if (jpeg->variant->multi_core)
-+		return;
-+
- 	clk_bulk_disable_unprepare(jpeg->variant->num_clks,
- 				   jpeg->variant->clks);
- }
-@@ -1658,13 +1664,6 @@ static void mtk_jpegenc_worker(struct work_struct *work)
- 		goto enc_end;
- 	}
- 
--	ret = clk_prepare_enable(comp_jpeg[hw_id]->venc_clk.clks->clk);
--	if (ret) {
--		dev_err(jpeg->dev, "%s : %d, jpegenc clk_prepare_enable fail\n",
--			__func__, __LINE__);
--		goto enc_end;
--	}
--
- 	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
- 	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
- 
-@@ -1762,20 +1761,13 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 	jpeg_dst_buf->frame_num = ctx->total_frame_num;
- 
- 	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
--	ret = pm_runtime_get_sync(comp_jpeg[hw_id]->dev);
-+	ret = pm_runtime_resume_and_get(comp_jpeg[hw_id]->dev);
- 	if (ret < 0) {
- 		dev_err(jpeg->dev, "%s : %d, pm_runtime_get_sync fail !!!\n",
- 			__func__, __LINE__);
- 		goto dec_end;
- 	}
- 
--	ret = clk_prepare_enable(comp_jpeg[hw_id]->jdec_clk.clks->clk);
--	if (ret) {
--		dev_err(jpeg->dev, "%s : %d, jpegdec clk_prepare_enable fail\n",
--			__func__, __LINE__);
--		goto clk_end;
--	}
--
- 	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
- 	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
- 
-@@ -1785,7 +1777,7 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 				 &dst_buf->vb2_buf, &fb)) {
- 		dev_err(jpeg->dev, "%s : %d, mtk_jpeg_set_dec_dst fail\n",
- 			__func__, __LINE__);
--		goto setdst_end;
-+		goto set_dst_fail;
- 	}
- 
- 	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
-@@ -1807,9 +1799,7 @@ static void mtk_jpegdec_worker(struct work_struct *work)
- 
- 	return;
- 
--setdst_end:
--	clk_disable_unprepare(comp_jpeg[hw_id]->jdec_clk.clks->clk);
--clk_end:
-+set_dst_fail:
- 	pm_runtime_put(comp_jpeg[hw_id]->dev);
- dec_end:
- 	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-index 84d12eea35f7..5f1557dafad6 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-@@ -540,14 +540,13 @@ static void mtk_jpegdec_timeout_work(struct work_struct *work)
- 	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
- 
- 	mtk_jpeg_dec_reset(cjpeg->reg_base);
--	clk_disable_unprepare(cjpeg->jdec_clk.clks->clk);
--	pm_runtime_put(cjpeg->dev);
- 	cjpeg->hw_state = MTK_JPEG_HW_IDLE;
- 	atomic_inc(&master_jpeg->hw_rdy);
- 	wake_up(&master_jpeg->hw_wq);
- 	v4l2_m2m_buf_done(src_buf, buf_state);
- 	mtk_jpegdec_put_buf(cjpeg);
- 	jpeg_buf_queue_dec(ctx);
-+	pm_runtime_put(cjpeg->dev);
- }
- 
- static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
-@@ -589,12 +588,11 @@ static irqreturn_t mtk_jpegdec_hw_irq_handler(int irq, void *priv)
- 	v4l2_m2m_buf_done(src_buf, buf_state);
- 	mtk_jpegdec_put_buf(jpeg);
- 	jpeg_buf_queue_dec(ctx);
--	pm_runtime_put(ctx->jpeg->dev);
--	clk_disable_unprepare(jpeg->jdec_clk.clks->clk);
- 
- 	jpeg->hw_state = MTK_JPEG_HW_IDLE;
- 	wake_up(&master_jpeg->hw_wq);
- 	atomic_inc(&master_jpeg->hw_rdy);
-+	pm_runtime_put(jpeg->dev);
- 
- 	return IRQ_HANDLED;
- }
-@@ -677,15 +675,84 @@ static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, dev);
- 	pm_runtime_enable(&pdev->dev);
-+	ret = devm_clk_bulk_get(dev->dev,
-+				jpegdec_clk->clk_num,
-+				jpegdec_clk->clks);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to init clk\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static void mtk_jpeg_clk_on(struct mtk_jpegdec_comp_dev *jpeg)
-+{
-+	int ret;
-+
-+	ret = clk_bulk_prepare_enable(jpeg->jdec_clk.clk_num,
-+				      jpeg->jdec_clk.clks);
-+	if (ret)
-+		dev_err(jpeg->dev, "%s : %d, jpegdec clk_prepare_enable fail\n",
-+			__func__, __LINE__);
-+}
-+
-+static void mtk_jpeg_clk_off(struct mtk_jpegdec_comp_dev *jpeg)
-+{
-+	clk_bulk_disable_unprepare(jpeg->jdec_clk.clk_num,
-+				   jpeg->jdec_clk.clks);
-+}
-+
-+static __maybe_unused int mtk_jpegdec_pm_suspend(struct device *dev)
-+{
-+	struct mtk_jpegdec_comp_dev *jpeg = dev_get_drvdata(dev);
-+
-+	mtk_jpeg_clk_off(jpeg);
- 
- 	return 0;
- }
- 
-+static __maybe_unused int mtk_jpegdec_pm_resume(struct device *dev)
-+{
-+	struct mtk_jpegdec_comp_dev *jpeg = dev_get_drvdata(dev);
-+
-+	mtk_jpeg_clk_on(jpeg);
-+
-+	return 0;
-+}
-+
-+static __maybe_unused int mtk_jpegdec_suspend(struct device *dev)
-+{
-+	struct mtk_jpegdec_comp_dev *jpeg = dev_get_drvdata(dev);
-+
-+	v4l2_m2m_suspend(jpeg->master_dev->m2m_dev);
-+	return pm_runtime_force_suspend(dev);
-+}
-+
-+static __maybe_unused int mtk_jpegdec_resume(struct device *dev)
-+{
-+	struct mtk_jpegdec_comp_dev *jpeg = dev_get_drvdata(dev);
-+	int ret;
-+
-+	ret = pm_runtime_force_resume(dev);
-+	if (ret < 0)
-+		return ret;
-+
-+	v4l2_m2m_resume(jpeg->master_dev->m2m_dev);
-+	return ret;
-+}
-+
-+static const struct dev_pm_ops mtk_jpegdec_pm_ops = {
-+	SET_SYSTEM_SLEEP_PM_OPS(mtk_jpegdec_suspend, mtk_jpegdec_resume)
-+	SET_RUNTIME_PM_OPS(mtk_jpegdec_pm_suspend, mtk_jpegdec_pm_resume, NULL)
-+};
-+
- static struct platform_driver mtk_jpegdec_hw_driver = {
- 	.probe = mtk_jpegdec_hw_probe,
- 	.driver = {
- 		.name = "mtk-jpegdec-hw",
- 		.of_match_table = mtk_jpegdec_hw_ids,
-+		.pm             = &mtk_jpegdec_pm_ops,
- 	},
- };
- 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-index 1862444f35f5..785db5ba4770 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-@@ -271,14 +271,13 @@ static void mtk_jpegenc_timeout_work(struct work_struct *work)
- 	v4l2_m2m_buf_copy_metadata(src_buf, dst_buf, true);
- 
- 	mtk_jpeg_enc_reset(cjpeg->reg_base);
--	clk_disable_unprepare(cjpeg->venc_clk.clks->clk);
--	pm_runtime_put(cjpeg->dev);
- 	cjpeg->hw_state = MTK_JPEG_HW_IDLE;
- 	atomic_inc(&master_jpeg->hw_rdy);
- 	wake_up(&master_jpeg->hw_wq);
- 	v4l2_m2m_buf_done(src_buf, buf_state);
- 	mtk_jpegenc_put_buf(cjpeg);
- 	jpeg_buf_queue_enc(ctx);
-+	pm_runtime_put(cjpeg->dev);
- }
- 
- static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
-@@ -313,12 +312,11 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
- 	v4l2_m2m_buf_done(src_buf, buf_state);
- 	mtk_jpegenc_put_buf(jpeg);
- 	jpeg_buf_queue_enc(ctx);
--	pm_runtime_put(ctx->jpeg->dev);
--	clk_disable_unprepare(jpeg->venc_clk.clks->clk);
- 
- 	jpeg->hw_state = MTK_JPEG_HW_IDLE;
- 	wake_up(&master_jpeg->hw_wq);
- 	atomic_inc(&master_jpeg->hw_rdy);
-+	pm_runtime_put(jpeg->dev);
- 
- 	return IRQ_HANDLED;
- }
-@@ -399,15 +397,84 @@ static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, dev);
- 	pm_runtime_enable(&pdev->dev);
-+	ret = devm_clk_bulk_get(dev->dev,
-+				jpegenc_clk->clk_num,
-+				jpegenc_clk->clks);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to init clk\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static void mtk_jpeg_clk_on(struct mtk_jpegenc_comp_dev *jpeg)
-+{
-+	int ret;
-+
-+	ret = clk_bulk_prepare_enable(jpeg->venc_clk.clk_num,
-+				      jpeg->venc_clk.clks);
-+	if (ret)
-+		dev_err(jpeg->dev, "%s : %d, jpegenc clk_prepare_enable fail\n",
-+			__func__, __LINE__);
-+}
-+
-+static void mtk_jpeg_clk_off(struct mtk_jpegenc_comp_dev *jpeg)
-+{
-+	clk_bulk_disable_unprepare(jpeg->venc_clk.clk_num,
-+				   jpeg->venc_clk.clks);
-+}
-+
-+static __maybe_unused int mtk_jpegenc_pm_suspend(struct device *dev)
-+{
-+	struct mtk_jpegenc_comp_dev *jpeg = dev_get_drvdata(dev);
-+
-+	mtk_jpeg_clk_off(jpeg);
- 
- 	return 0;
- }
- 
-+static __maybe_unused int mtk_jpegenc_pm_resume(struct device *dev)
-+{
-+	struct mtk_jpegenc_comp_dev *jpeg = dev_get_drvdata(dev);
-+
-+	mtk_jpeg_clk_on(jpeg);
-+
-+	return 0;
-+}
-+
-+static __maybe_unused int mtk_jpegenc_suspend(struct device *dev)
-+{
-+	struct mtk_jpegenc_comp_dev *jpeg = dev_get_drvdata(dev);
-+
-+	v4l2_m2m_suspend(jpeg->master_dev->m2m_dev);
-+	return pm_runtime_force_suspend(dev);
-+}
-+
-+static __maybe_unused int mtk_jpegenc_resume(struct device *dev)
-+{
-+	struct mtk_jpegenc_comp_dev *jpeg = dev_get_drvdata(dev);
-+	int ret;
-+
-+	ret = pm_runtime_force_resume(dev);
-+	if (ret < 0)
-+		return ret;
-+
-+	v4l2_m2m_resume(jpeg->master_dev->m2m_dev);
-+	return ret;
-+}
-+
-+static const struct dev_pm_ops mtk_jpegenc_pm_ops = {
-+	SET_SYSTEM_SLEEP_PM_OPS(mtk_jpegenc_suspend, mtk_jpegenc_resume)
-+	SET_RUNTIME_PM_OPS(mtk_jpegenc_pm_suspend, mtk_jpegenc_pm_resume, NULL)
-+};
-+
- static struct platform_driver mtk_jpegenc_hw_driver = {
- 	.probe = mtk_jpegenc_hw_probe,
- 	.driver = {
- 		.name = "mtk-jpegenc-hw",
- 		.of_match_table = mtk_jpegenc_drv_ids,
-+		.pm = &mtk_jpegenc_pm_ops,
- 	},
- };
- 
--- 
-2.45.2
+regards Frank
+> Yeah, I cannot imagine how this could possibly support old and new DTS
+> without breaking some users, unless people over-simplified and discarded
+> some cases. But then this should clearly mark these broken cases instead
+> of falsely claim that impossible task of rewriting the flag is done
+> correctly.
+>
+> BTW, the code clearly does not handle such cases, so "we can determine
+> whether the device tree is wrong or not" statement is obviously not true=
+.
+>
+> Best regards,
+> Krzysztof
+>
 
 
