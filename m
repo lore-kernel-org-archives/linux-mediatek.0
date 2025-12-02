@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42C19D11700
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Dec 2025 09:12:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 472FBCFD376
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Dec 2025 09:48:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pP7IYHWVE6dvzwYjbJRP+A/1F44KSOHNn5TDZxRJXUs=; b=nLiFk3kdCzEIbgDYwYmZj4WYMB
-	yRBj6dSZZSE4fWT3To0MVF4KBgJYTRejWF8kYambRNppZQLp0xwPyzDVXKbX+KNlHeyMvvjKNNhQw
-	NflRgoycPXDqxQ1RaqnZDqRExuTF0C9N9JneD+Hv8FSaM4ce0Bt8LgYLGcZfvadCpfCHc6h3i92gn
-	slcfNWWlMBndWlIc7if3IAS4LPZwKDZqXNg50s1ZN/JjqKvScicY5bterheAq8S+GC7fo4Lun5z3y
-	uqrw2ms5CDMP3/IajvVO3CXHDN2O3Dkj0/D8yFXyWuFgKBai6vueo9aa/ESFNlK5lHVsbQ4YYz6ig
-	2/5wLzGQ==;
+	bh=Mo3apl8paKzVFsw9iTi7Nw8QTt9yCAGaHzSVi10w8iA=; b=MAwnqiRtjB9qX/e0QOCfqBMeyR
+	8mTOCj7yqatPdK/5adLK+VkNNipOS1tMSP+ikmJENitr/MMDk2zib5rOjIYrTAy980JB5iRiw/K/b
+	t31aGI0oPsmC+r49YDnpFFnRwOrV27IvrMpYhRm4EGpZoI4S6XR+eQxDmIdyoeMVz5xadmx4x8VBb
+	LLQ8PEle+sVKCO1hRkCwnYX42c+6dEQC7bf9YSOLNhaTItkR3S6VFbECx13FVhjm9i5Vb1Q2exPlv
+	CEZNkNGRqFErvnYHxihAKhc1SD/XUvKrlXvx2fg3fcclWQjNAHDa8J2Wxp/SuIy0W9UlNeKFLI3Ix
+	efrvno6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQMQV-000000055Rv-3m9y;
-	Tue, 02 Dec 2025 09:12:04 +0000
+	id 1vQMzT-00000005B7f-2O6V;
+	Tue, 02 Dec 2025 09:48:11 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQMQS-000000055Pd-41NH;
-	Tue, 02 Dec 2025 09:12:02 +0000
-X-UUID: f2c04ad2cf5e11f0a52f393f94899d25-20251202
+	id 1vQMzR-00000005B6s-1c0K;
+	Tue, 02 Dec 2025 09:48:10 +0000
+X-UUID: 00b3fe54cf6411f0a52f393f94899d25-20251202
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=pP7IYHWVE6dvzwYjbJRP+A/1F44KSOHNn5TDZxRJXUs=;
-	b=rSAmOIEe/kZSP/ddfEYi4aM0RkkAgOH4G9oWo5uimxjy75lIJngFiNRX6Ro2HmMwExGVTMTjElIzRDWzdi3wZ7chc0ZabitRAdT97OT30+KyHtxx7GfAHPx+0h8A0OBd/GBX9/hp/e31RUeMd1rsGZjhJAkOeYSShDfjv8A7b0o=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From; bh=Mo3apl8paKzVFsw9iTi7Nw8QTt9yCAGaHzSVi10w8iA=;
+	b=ANULLJ9aeXC/X59i5xOLeVBjxmpUBpjEDUHDLqq4+AXdayVlB4yG95DOVQLzDB0cWnKqIauriq/lzvgvqzDOPhoPDOclx6JTgGnHDzVUWHDH+TXlSyEu3wmbUT5OYj3DuoVMv4StIkgKInqEeyh4HfK+MljAJHNBugKE3qMVBDQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:c0c4b27c-aa57-4f59-8bad-cda1014643ed,IP:0,UR
-	L:0,TC:0,Content:-25,EDM:-20,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:-45
-X-CID-META: VersionHash:a9d874c,CLOUDID:1de04f02-1fa9-44eb-b231-4afc61466396,B
+X-CID-O-INFO: VERSION:1.3.6,REQID:b9987adb-a6d3-4b38-b46d-4079f6b15805,IP:0,UR
+	L:0,TC:0,Content:0,EDM:-20,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-20
+X-CID-META: VersionHash:a9d874c,CLOUDID:224bbca9-6421-45b1-b8b8-e73e3dc9a90f,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:1,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI
 	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,46 +42,40 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: f2c04ad2cf5e11f0a52f393f94899d25-20251202
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
-	(envelope-from <hanchien.lin@mediatek.com>)
+X-UUID: 00b3fe54cf6411f0a52f393f94899d25-20251202
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2001986348; Tue, 02 Dec 2025 02:11:55 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+	with ESMTP id 777695042; Tue, 02 Dec 2025 02:48:06 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Tue, 2 Dec 2025 17:11:52 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Tue, 2 Dec 2025 17:11:52 +0800
-From: Hanchien Lin <hanchien.lin@mediatek.com>
-To: "Rafael J . Wysocki" <rafael@kernel.org>, Daniel Lezcano
-	<daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba
-	<lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Philipp Zabel
-	<p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Balsam
- CHIHI" <bchihi@baylibre.com>
-CC: <Hanchien.lin@mediatek.com>, <Irving-CH.lin@mediatek.com>, Jh Hsu
-	<Jh.Hsu@mediatek.com>, WH Wu <vincent.wu@mediatek.com>, Raymond Sun
-	<Raymond.Sun@mediatek.com>, Sirius Wang <Sirius.Wang@mediatek.com>,
-	<linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ 15.2.1748.26; Tue, 2 Dec 2025 17:48:03 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Tue, 2 Dec 2025 17:48:02 +0800
+From: Kyrie Wu <kyrie.wu@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Hanchien Lin
-	<hanchien.lin@mediatek.com>
-Subject: [PATCH v3 2/2] thermal/drivers/mediatek/lvts_thermal: Add MT8189 support
-Date: Tue, 2 Dec 2025 17:10:56 +0800
-Message-ID: <20251202091056.1761229-3-hanchien.lin@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20251202091056.1761229-1-hanchien.lin@mediatek.com>
-References: <20251202091056.1761229-1-hanchien.lin@mediatek.com>
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v11 01/12] media: mediatek: jpeg: fix jpeg hw count setting
+Date: Tue, 2 Dec 2025 17:47:49 +0800
+Message-ID: <20251202094800.6140-2-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20251202094800.6140-1-kyrie.wu@mediatek.com>
+References: <20251202094800.6140-1-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251202_011201_032850_E1BEF512 
-X-CRM114-Status: GOOD (  21.62  )
+X-CRM114-CacheID: sfid-20251202_014809_430772_C5740B57 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,280 +90,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the MediaTek MT8189 SoC to the LVTS thermal driver.
+Different ICs have different amounts of hardware,
+use a variable to set the amount of hardware.
 
-Signed-off-by: Hanchien Lin <hanchien.lin@mediatek.com>
+Fixes: 934e8bccac95 ("mtk-jpegenc: support jpegenc multi-hardware")
+Fixes: 0fa49df4222f ("media: mtk-jpegdec: support jpegdec multi-hardware")
+
+Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/thermal/mediatek/lvts_thermal.c | 151 ++++++++++++++++++++++--
- 1 file changed, 140 insertions(+), 11 deletions(-)
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c   | 8 ++++----
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h   | 2 ++
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c | 1 +
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c | 1 +
+ 4 files changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index ab55b20cda47..c1eee0c2167f 100644
---- a/drivers/thermal/mediatek/lvts_thermal.c
-+++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -65,6 +65,7 @@
- #define LVTS_HW_FILTER				0x0
- #define LVTS_TSSEL_CONF				0x13121110
- #define LVTS_CALSCALE_CONF			0x300
-+#define LVTS_MONINT_CONF_STAGE3		BIT(31)
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 6268d651bdcf..6a7e01130f1c 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1467,7 +1467,7 @@ static int mtk_jpegenc_get_hw(struct mtk_jpeg_ctx *ctx)
+ 	int i;
  
- #define LVTS_MONINT_OFFSET_HIGH_INTEN_SENSOR0		BIT(3)
- #define LVTS_MONINT_OFFSET_HIGH_INTEN_SENSOR1		BIT(8)
-@@ -107,6 +108,7 @@ struct lvts_sensor_data {
- struct lvts_ctrl_data {
- 	struct lvts_sensor_data lvts_sensor[LVTS_SENSOR_MAX];
- 	u8 valid_sensor_mask;
-+	int hw_tshut_temp;
- 	int offset;
- 	int mode;
- };
-@@ -134,6 +136,9 @@ struct lvts_data {
- 	int temp_offset;
- 	int gt_calib_bit_offset;
- 	unsigned int def_calibration;
-+	bool clock_gate_no_need;
-+	bool reset_no_need;
-+	bool conf_stage3_need;
- };
+ 	spin_lock_irqsave(&jpeg->hw_lock, flags);
+-	for (i = 0; i < MTK_JPEGENC_HW_MAX; i++) {
++	for (i = 0; i < jpeg->max_hw_count; i++) {
+ 		comp_jpeg = jpeg->enc_hw_dev[i];
+ 		if (comp_jpeg->hw_state == MTK_JPEG_HW_IDLE) {
+ 			hw_id = i;
+@@ -1514,7 +1514,7 @@ static int mtk_jpegdec_get_hw(struct mtk_jpeg_ctx *ctx)
+ 	int i;
  
- struct lvts_sensor {
-@@ -150,6 +155,7 @@ struct lvts_ctrl {
- 	struct lvts_sensor sensors[LVTS_SENSOR_MAX];
- 	const struct lvts_data *lvts_data;
- 	u32 calibration[LVTS_SENSOR_MAX];
-+	u32 hw_tshut_raw_temp;
- 	u8 valid_sensor_mask;
- 	int mode;
- 	void __iomem *base;
-@@ -859,6 +865,14 @@ static int lvts_ctrl_init(struct device *dev, struct lvts_domain *lvts_td,
- 		 */
- 		lvts_ctrl[i].mode = lvts_data->lvts_ctrl[i].mode;
+ 	spin_lock_irqsave(&jpeg->hw_lock, flags);
+-	for (i = 0; i < MTK_JPEGDEC_HW_MAX; i++) {
++	for (i = 0; i < jpeg->max_hw_count; i++) {
+ 		comp_jpeg = jpeg->dec_hw_dev[i];
+ 		if (comp_jpeg->hw_state == MTK_JPEG_HW_IDLE) {
+ 			hw_id = i;
+@@ -1597,7 +1597,7 @@ static void mtk_jpegenc_worker(struct work_struct *work)
+ 		jpeg_work);
+ 	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
  
-+		/*
-+		 * The temperature to raw temperature must be done
-+		 * after initializing the calibration.
-+		 */
-+		lvts_ctrl[i].hw_tshut_raw_temp =
-+			lvts_temp_to_raw(lvts_data->lvts_ctrl[i].hw_tshut_temp,
-+					 lvts_data->temp_factor);
-+
- 		lvts_ctrl[i].low_thresh = INT_MIN;
- 		lvts_ctrl[i].high_thresh = INT_MIN;
- 	}
-@@ -919,7 +933,7 @@ static void lvts_write_config(struct lvts_ctrl *lvts_ctrl, const u32 *cmds, int
- 	}
- }
+-	for (i = 0; i < MTK_JPEGENC_HW_MAX; i++)
++	for (i = 0; i < jpeg->max_hw_count; i++)
+ 		comp_jpeg[i] = jpeg->enc_hw_dev[i];
+ 	i = 0;
  
--static int lvts_irq_init(struct lvts_ctrl *lvts_ctrl)
-+static int lvts_irq_init(struct lvts_ctrl *lvts_ctrl, const struct lvts_data *lvts_data)
- {
- 	/*
- 	 * LVTS_PROTCTL : Thermal Protection Sensor Selection
-@@ -947,6 +961,7 @@ static int lvts_irq_init(struct lvts_ctrl *lvts_ctrl)
- 	 * writel(0x0, LVTS_PROTTB(lvts_ctrl->base));
- 	 * writel(0x0, LVTS_PROTTC(lvts_ctrl->base));
- 	 */
-+	writel(lvts_ctrl->hw_tshut_raw_temp, LVTS_PROTTC(lvts_ctrl->base));
+@@ -1692,7 +1692,7 @@ static void mtk_jpegdec_worker(struct work_struct *work)
+ 	struct mtk_jpeg_fb fb;
+ 	unsigned long flags;
  
- 	/*
- 	 * LVTS_MONINT : Interrupt configuration register
-@@ -954,7 +969,10 @@ static int lvts_irq_init(struct lvts_ctrl *lvts_ctrl)
- 	 * The LVTS_MONINT register layout is the same as the LVTS_MONINTSTS
- 	 * register, except we set the bits to enable the interrupt.
- 	 */
--	writel(0, LVTS_MONINT(lvts_ctrl->base));
-+	if (lvts_data->conf_stage3_need)
-+		writel(LVTS_MONINT_CONF_STAGE3, LVTS_MONINT(lvts_ctrl->base));
-+	else
-+		writel(0, LVTS_MONINT(lvts_ctrl->base));
+-	for (i = 0; i < MTK_JPEGDEC_HW_MAX; i++)
++	for (i = 0; i < jpeg->max_hw_count; i++)
+ 		comp_jpeg[i] = jpeg->dec_hw_dev[i];
+ 	i = 0;
  
- 	return 0;
- }
-@@ -1041,7 +1059,8 @@ static int lvts_ctrl_calibrate(struct device *dev, struct lvts_ctrl *lvts_ctrl)
- 	return 0;
- }
- 
--static int lvts_ctrl_configure(struct device *dev, struct lvts_ctrl *lvts_ctrl)
-+static int lvts_ctrl_configure(struct device *dev, struct lvts_ctrl *lvts_ctrl,
-+			       const struct lvts_data *lvts_data)
- {
- 	u32 value;
- 
-@@ -1143,7 +1162,7 @@ static int lvts_ctrl_configure(struct device *dev, struct lvts_ctrl *lvts_ctrl)
- 	value = LVTS_FILTER_INTERVAL << 16 | LVTS_SENSOR_INTERVAL;
- 	writel(value, LVTS_MONCTL2(lvts_ctrl->base));
- 
--	return lvts_irq_init(lvts_ctrl);
-+	return lvts_irq_init(lvts_ctrl, lvts_data);
- }
- 
- static int lvts_ctrl_start(struct device *dev, struct lvts_ctrl *lvts_ctrl)
-@@ -1290,7 +1309,7 @@ static int lvts_domain_init(struct device *dev, struct lvts_domain *lvts_td,
- 			return ret;
- 		}
- 
--		ret = lvts_ctrl_configure(dev, lvts_ctrl);
-+		ret = lvts_ctrl_configure(dev, lvts_ctrl, lvts_data);
- 		if (ret) {
- 			dev_dbg(dev, "Failed to configure controller");
- 			return ret;
-@@ -1322,9 +1341,13 @@ static int lvts_probe(struct platform_device *pdev)
- 	if (!lvts_data)
- 		return -ENODEV;
- 
--	lvts_td->clk = devm_clk_get_enabled(dev, NULL);
--	if (IS_ERR(lvts_td->clk))
--		return dev_err_probe(dev, PTR_ERR(lvts_td->clk), "Failed to retrieve clock\n");
-+	if (!lvts_data->clock_gate_no_need) {
-+		lvts_td->clk = devm_clk_get_enabled(dev, NULL);
-+		if (IS_ERR(lvts_td->clk))
-+			return dev_err_probe(dev,
-+					     PTR_ERR(lvts_td->clk),
-+					     "Failed to retrieve clock\n");
-+	}
- 
- 	res = platform_get_mem_or_io(pdev, 0);
- 	if (!res)
-@@ -1334,9 +1357,13 @@ static int lvts_probe(struct platform_device *pdev)
- 	if (IS_ERR(lvts_td->base))
- 		return dev_err_probe(dev, PTR_ERR(lvts_td->base), "Failed to map io resource\n");
- 
--	lvts_td->reset = devm_reset_control_get_by_index(dev, 0);
--	if (IS_ERR(lvts_td->reset))
--		return dev_err_probe(dev, PTR_ERR(lvts_td->reset), "Failed to get reset control\n");
-+	if (!lvts_data->reset_no_need) {
-+		lvts_td->reset = devm_reset_control_get_exclusive(dev, NULL);
-+		if (IS_ERR(lvts_td->reset))
-+			return dev_err_probe(dev,
-+					     PTR_ERR(lvts_td->reset),
-+					     "Failed to get reset control\n");
-+	}
- 
- 	irq = platform_get_irq(pdev, 0);
- 	if (irq < 0)
-@@ -1586,6 +1613,78 @@ static const struct lvts_ctrl_data mt8188_lvts_ap_data_ctrl[] = {
- 	}
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+index 02ed0ed5b736..6be5cf30dea1 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+@@ -212,6 +212,7 @@ struct mtk_jpegdec_comp_dev {
+  * @reg_decbase:	jpg decode register base addr
+  * @dec_hw_dev:	jpg decode hardware device
+  * @hw_index:		jpg hw index
++ * @max_hw_count:	jpeg hw-core count
+  */
+ struct mtk_jpeg_dev {
+ 	struct mutex		lock;
+@@ -234,6 +235,7 @@ struct mtk_jpeg_dev {
+ 	void __iomem *reg_decbase[MTK_JPEGDEC_HW_MAX];
+ 	struct mtk_jpegdec_comp_dev *dec_hw_dev[MTK_JPEGDEC_HW_MAX];
+ 	atomic_t hw_index;
++	u32 max_hw_count;
  };
  
-+static const struct lvts_ctrl_data mt8189_lvts_mcu_data_ctrl[] = {
-+	{
-+		.lvts_sensor = {
-+			{ .dt_id = MT8189_MCU_LITTLE_CPU1,
-+			  .cal_offsets = { 4, 5, 6 } },
-+			{ .dt_id = MT8189_MCU_LITTLE_CPU2,
-+			  .cal_offsets = { 8, 9, 10 } },
-+			{ .dt_id = MT8189_MCU_LITTLE_CPU3,
-+			  .cal_offsets = { 12, 13, 14 } },
-+			{ .dt_id = MT8189_MCU_LITTLE_CPU4,
-+			  .cal_offsets = { 16, 17, 18 } }
-+		},
-+		VALID_SENSOR_MAP(1, 1, 1, 1),
-+		.offset = 0x0,
-+	},
-+	{
-+		.lvts_sensor = {
-+			{ .dt_id = MT8189_MCU_LITTLE_CPU5,
-+			  .cal_offsets = { 24, 25, 26 } },
-+			{ .dt_id = MT8189_MCU_LITTLE_CPU6,
-+			  .cal_offsets = { 28, 29, 30 } },
-+			{ .dt_id = MT8189_MCU_LITTLE_CPU7,
-+			  .cal_offsets = { 32, 33, 34 } },
-+			{ .dt_id = MT8189_MCU_LITTLE_CPU8,
-+			  .cal_offsets = { 36, 37, 38 } }
-+		},
-+		VALID_SENSOR_MAP(1, 1, 1, 1),
-+		.offset = 0x100,
-+	},
-+	{
-+		.lvts_sensor = {
-+			{ .dt_id = MT8189_MCU_BIG_CPU1,
-+			  .cal_offsets = { 44, 45, 46 } },
-+			{ .dt_id = MT8189_MCU_BIG_CPU2,
-+			  .cal_offsets = { 48, 49, 50 } },
-+			{ .dt_id = MT8189_MCU_BIG_CPU3,
-+			  .cal_offsets = { 52, 53, 54 } },
-+			{ .dt_id = MT8189_MCU_BIG_CPU4,
-+			  .cal_offsets = { 56, 57, 58 } }
-+		},
-+		VALID_SENSOR_MAP(1, 1, 1, 1),
-+		.offset = 0x200,
-+	}
-+};
-+
-+static const struct lvts_ctrl_data mt8189_lvts_ap_data_ctrl[] = {
-+	{
-+		.lvts_sensor = {
-+			{ .dt_id = MT8189_AP_SOC1,
-+			  .cal_offsets = { 64, 65, 66 } },
-+			{ .dt_id = MT8189_AP_SOC2,
-+			  .cal_offsets = { 68, 69, 70 } },
-+			{ .dt_id = MT8189_AP_SOC3,
-+			  .cal_offsets = { 72, 73, 74 } },
-+			{ .dt_id = MT8189_AP_APU,
-+			  .cal_offsets = { 76, 77, 78 } }
-+		},
-+		VALID_SENSOR_MAP(1, 1, 1, 1),
-+		.offset = 0x0,
-+	},
-+	{
-+		.lvts_sensor = {
-+			{ .dt_id = MT8189_AP_GPU1,
-+			  .cal_offsets = { 84, 85, 86 } },
-+			{ .dt_id = MT8189_AP_GPU2,
-+			  .cal_offsets = { 88, 89, 90 } }
-+		},
-+		VALID_SENSOR_MAP(1, 1, 0, 0),
-+		.offset = 0x100,
-+	}
-+};
-+
- static const struct lvts_ctrl_data mt8192_lvts_mcu_data_ctrl[] = {
- 	{
- 		.lvts_sensor = {
-@@ -1804,6 +1903,34 @@ static const struct lvts_data mt8188_lvts_ap_data = {
- 	.def_calibration = 35000,
- };
+ /**
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+index e78e1d11093c..a1e54715cb7e 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+@@ -664,6 +664,7 @@ static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
+ 	master_dev->dec_hw_dev[i] = dev;
+ 	master_dev->reg_decbase[i] = dev->reg_base;
+ 	dev->master_dev = master_dev;
++	master_dev->max_hw_count++;
  
-+static const struct lvts_data mt8189_lvts_ap_data = {
-+	.lvts_ctrl		= mt8189_lvts_ap_data_ctrl,
-+	.conn_cmd		= default_conn_cmds,
-+	.init_cmd		= default_init_cmds,
-+	.num_lvts_ctrl		= ARRAY_SIZE(mt8189_lvts_ap_data_ctrl),
-+	.num_conn_cmd		= ARRAY_SIZE(default_conn_cmds),
-+	.num_init_cmd		= ARRAY_SIZE(default_init_cmds),
-+	.temp_factor		= LVTS_COEFF_A_MT8195,
-+	.temp_offset		= LVTS_COEFF_B_MT8195,
-+	.gt_calib_bit_offset	= 0,
-+	.def_calibration	= 35000,
-+	.clock_gate_no_need	= true,
-+	.reset_no_need		= true,
-+	.conf_stage3_need	= true,
-+};
-+
-+static const struct lvts_data mt8189_lvts_mcu_data = {
-+	.lvts_ctrl		= mt8189_lvts_mcu_data_ctrl,
-+	.num_lvts_ctrl		= ARRAY_SIZE(mt8189_lvts_mcu_data_ctrl),
-+	.temp_factor		= LVTS_COEFF_A_MT8195,
-+	.temp_offset		= LVTS_COEFF_B_MT8195,
-+	.gt_calib_bit_offset	= 0,
-+	.def_calibration	= 35000,
-+	.clock_gate_no_need	= true,
-+	.reset_no_need		= true,
-+	.conf_stage3_need	= true,
-+};
-+
- static const struct lvts_data mt8192_lvts_mcu_data = {
- 	.lvts_ctrl	= mt8192_lvts_mcu_data_ctrl,
- 	.conn_cmd	= default_conn_cmds,
-@@ -1861,6 +1988,8 @@ static const struct of_device_id lvts_of_match[] = {
- 	{ .compatible = "mediatek,mt8186-lvts", .data = &mt8186_lvts_data },
- 	{ .compatible = "mediatek,mt8188-lvts-mcu", .data = &mt8188_lvts_mcu_data },
- 	{ .compatible = "mediatek,mt8188-lvts-ap", .data = &mt8188_lvts_ap_data },
-+	{ .compatible = "mediatek,mt8189-lvts-mcu", .data = &mt8189_lvts_mcu_data },
-+	{ .compatible = "mediatek,mt8189-lvts-ap", .data = &mt8189_lvts_ap_data },
- 	{ .compatible = "mediatek,mt8192-lvts-mcu", .data = &mt8192_lvts_mcu_data },
- 	{ .compatible = "mediatek,mt8192-lvts-ap", .data = &mt8192_lvts_ap_data },
- 	{ .compatible = "mediatek,mt8195-lvts-mcu", .data = &mt8195_lvts_mcu_data },
+ 	platform_set_drvdata(pdev, dev);
+ 	pm_runtime_enable(&pdev->dev);
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+index 9ab27aee302a..28d05909c96f 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+@@ -386,6 +386,7 @@ static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
+ 	master_dev->enc_hw_dev[i] = dev;
+ 	master_dev->reg_encbase[i] = dev->reg_base;
+ 	dev->master_dev = master_dev;
++	master_dev->max_hw_count++;
+ 
+ 	platform_set_drvdata(pdev, dev);
+ 	pm_runtime_enable(&pdev->dev);
 -- 
 2.45.2
 
