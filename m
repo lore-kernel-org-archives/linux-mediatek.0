@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67151D12D47
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Dec 2025 11:34:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFAC4D12D4A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Dec 2025 11:45:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0BtZSI0JUG3jZFRQAQA3W8WSSj2iYn/BEJxE7P47Si0=; b=bn4xjQbnkBGPuD2urvy959QbGg
-	vdGdaHGMn+uiAsWx/JFica9K5AePPdYQCuDjZYPyLhzFyvSE45H97UfmbJ96/EJt6XLV2Qa0OzI8W
-	gOU7QlbzTAGZ12HrDICnlzLH4CxUGTLfLlJmbJt6sCz3SRRngCyTnDlnhz2HUjRFltKBFvwaX4+WH
-	+BWTX82scYPRkfIIUddto7GyfAJaW4Zi/1VGxk1djdCDJpe7PcXWmwpvhcNEF0ZvmXGAd3LBfZeY3
-	ohrHGnZM7F8EqKNlM5i3NvHOu4pkcNXlwzhFPuzOyZT/ujnERlAlvZ/cmur/hcawUZS+aM3V/QLD/
-	TL67ViEA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ocxSVnWaB5A1nFsXhy8NXJuJz7MlPd1GFAKEa6olErY=; b=HOP8II3AN4S0Y0
+	Eh68EiEy2GSJXfTMSkZ63WZsLI8kjxj2S1J7WiHkZyK+HQD3ChqWmkmT4WdNFENIISQHFpkrHjEGQ
+	ozgtBxB+Lwm9gTpbr0E631vMCBAx2phqkRkfnJuCxX8IM2z96q2HHFHFInkmF7n1n9kc8AG2IbGP4
+	48J7JQgQd83dNglWM9ONOcCFc63YZgx9jzeKsebROzmw3Evfoamu6J/ch1Fui5tn/oMeWwO82I+w+
+	/aTaVB0F89eO5Nol6cYf8QtDDrx+1Gl8u2KQ5YHla1x7baPpxmaUdBPUARzU93o5WT0TgX/pNPH0R
+	xMsiu0aXUY3m4MGYqREQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQl7m-00000006VL0-0gQU;
-	Wed, 03 Dec 2025 11:34:30 +0000
+	id 1vQlIt-00000006W7x-1G6C;
+	Wed, 03 Dec 2025 11:45:51 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQl79-00000006VIh-3NxS;
-	Wed, 03 Dec 2025 11:33:47 +0000
+	id 1vQlIq-00000006W6M-1jQz;
+	Wed, 03 Dec 2025 11:45:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1764761619;
-	bh=9H0Lj32oVEU9hMfCGeT2VAyMxxGLg8HVaCtVRvgGbrY=;
-	h=From:Date:Subject:To:Cc:From;
-	b=Kh+JcnuOVdXsSmFt8aDzBmFIvBAwKBSeqK4k8hki9mozRpAps4Qbl5POsXIihqzAb
-	 dWfkAtNE6lJEMTi4P9es7jg7qNJ+AMpXBNEN4qrtwW58GIxopcCwLb1Zb8pCSfenUF
-	 xGfrEFMj4FtOT3z0B7Ji0vufrLc6gUdAx4P5ThSgBwbOMUKtfogFR3HnXwjYd0n9xs
-	 HZRAeMGFa3Bvb9pWTZCaJa//Vk2omBOcZgFLOWlHmIfl9MO8G0zxf3LbohMAZBvMUL
-	 bCBUiO14gimDmn3kTmSPG79XXYrl3a8YStLwWcL6fTSqFsPDYY3UqoHQSv/AwMvIX5
-	 gZMM8iW3mjxDg==
+	s=mail; t=1764762344;
+	bh=GVsvFJMJ9N1wsNH4BMhV4STieOC8bBaHmsMcDsgLe4w=;
+	h=From:Subject:Date:To:Cc:From;
+	b=ertmZ7iCiPYCTgzNdCrDhswfqUjpHR4k3lTL1s7LIWWTrYW9XbnCZEqQID0zhiJ6r
+	 Aan5ISTpWm6V7l4Hu0i55Cv8ReWTfaiwhy9Y4Vjg+uMxzp9WUiIxdNGthlol2IAuXD
+	 NXEnaZP6yGstcII9GQUa1XqFCt+nMJfj0/2WlC635F0gWeinyZvZy/71aC6zrMl7Yt
+	 wbzCW6lIHL1C/4ZkSbYKzyoPPIjX3fkZvEpWVhBijqeML3IJRhV18Q+6NDiwC+NOqD
+	 UHn3KVabohseoxj4gT9PMkiNQ1QoNb7X3jOI0xsoS9k9qrXLbmQzn2sNWR8q2TZIy5
+	 siGQOp4l4S/cg==
 Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0545A17E110C;
-	Wed,  3 Dec 2025 12:33:38 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3640717E110C;
+	Wed,  3 Dec 2025 12:45:44 +0100 (CET)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 03 Dec 2025 12:32:42 +0100
-Subject: [PATCH] pinctrl: mediatek: mt8189: restore previous register base
- name array order
+Subject: [PATCH 0/3] Add SD/MMC Card driver support for Mediatek MT8189 SoC
+Date: Wed, 03 Dec 2025 12:45:33 +0100
+Message-Id: <20251203-mt8189-add-mmc-support-v1-0-f5ce43212fe9@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251203-mt8189-pinctrl-fix-regname-order-v1-1-16c8ff5490a7@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/zWN0QrCMBAEf6XcswdNVKj9FelDTNZ6YNJ6iVIo/
- XeDxcdZlpmVMlSQqW9WUnwky5QqmEND/uHSCJZQmWxrz8a2R46lM92FZ0m+6JPvsrBiTC6CJw1
- Q7uA9THAnax1Vzayop1/iOuyseL1rqewj3VwG+ylGKX2TsBT+12jYti+LgxWnowAAAA==
-X-Change-ID: 20251203-mt8189-pinctrl-fix-regname-order-8ecce1da422a
-To: Sean Wang <sean.wang@kernel.org>, 
- Linus Walleij <linus.walleij@linaro.org>, 
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWNywrDIBBFf0Vm3YFoH5j8SsnC6tjOwkfVlEDIv
+ 1eS5Tlwz92gUmGqMIkNCv24cood5EWA/Zj4JmTXGdSg7lIqjaFpqUc0zmEIFuuScyoNvX84r70
+ e6Sahj3Mhz+sRfs4nF/ouvd9OCS9TCW0KgdskIq0Njw81XGHe9z8w9pEFmQAAAA==
+X-Change-ID: 20251128-mt8189-add-mmc-support-ff6df8f89e41
+To: Chaotian Jing <chaotian.jing@mediatek.com>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: kernel@collabora.com, linux-mediatek@lists.infradead.org, 
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Wenbin Mei <wenbin.mei@mediatek.com>
+Cc: kernel@collabora.com, linux-mmc@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1764761618; l=2265;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1764762344; l=991;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=9H0Lj32oVEU9hMfCGeT2VAyMxxGLg8HVaCtVRvgGbrY=;
- b=oDdZtMbH8bHkD0JzMY8waTUEWya8OYrMVWHwRFtHs9F3HBu+n3XgDAr0pyySPY8l+PnPQnV0A
- glEhL+EwLcQAEsDxCpf1F0WtncftcEZltprCBeAnPszEvuzbJfV981S
+ bh=GVsvFJMJ9N1wsNH4BMhV4STieOC8bBaHmsMcDsgLe4w=;
+ b=uSJLBh6B+FOH+EPSJKMaFBFDHGGU0Q1u9uG3pq7ilcrCaZzR/IRrFpLBUB4FALTltdRD7PHvo
+ JysB9LtdEwvBavezS+8USNHo/tASlNSB2b+ZSNLOl9ZyS6faqL1Be0h
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251203_033344_364009_953B79D5 
-X-CRM114-Status: GOOD (  13.85  )
+X-CRM114-CacheID: sfid-20251203_034548_632895_CDC30CC7 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,49 +91,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mt8189-pinctrl driver, a previous commit changed the register base
-name array (mt8189_pinctrl_register_base_names) entry name and order to
-align it with the same name and order as the "mediatek,mt8189-pinctrl"
-devicetree bindings. The new order (by ascending register address) now
-causes an issue with MT8189 pinctrl configuration.
+This patch series adds in the Mediatek SD/MMC Card host driver (mtk-sd)
+the support of Mediatek MT8189 SoC and its variants (MT8371 and
+MT8391).
 
-MT8189 SoC has multiple base addresses for the pin configuration
-registers. Several constant data structures, declaring each pin
-configuration, are using PIN_FIELD_BASE() macro which i_base parameter
-indicates for a given pin the lookup index in the base register address
-array of the driver internal data for the configuration register
-read/write accesses. But in practice, this parameter is given a
-hardcoded numerical value that corresponds to the expected base
-register entry index in mt8189_pinctrl_register_base_names array.
-Since this array reordering, the i_base index matching is no more
-correct.
+It has been tested with a kernel based on next-20251203 tag on the
+Mediatek Genio 720-EVK board, based on MT8391 SoC, using both onboard
+eMMC storage and a micro-SD card.
 
-So, in order to avoid modifying over a thousand of PIN_FIELD_BASE()
-calls, restore previous mt8189_pinctrl_register_base_names entry order.
-
-Fixes: 518919276c41 ("pinctrl: mediatek: mt8189: align register base names to dt-bindings ones")
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-mt8189.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Louis-Alexis Eyraud (3):
+      dt-bindings: mmc: mtk-sd: Add support for MT8189 SoC
+      mmc: mtk-sd: add support for SPM resource release control
+      mmc: mtk-sd: add support for MT8189 SoC
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8189.c b/drivers/pinctrl/mediatek/pinctrl-mt8189.c
-index f6a3e584588b0e8a1aafa9dca74c559974a57af5..cd4cdff309a12b6987362b111e0613bf29b60d84 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8189.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8189.c
-@@ -1642,7 +1642,7 @@ static const struct mtk_pin_reg_calc mt8189_reg_cals[PINCTRL_PIN_REG_MAX] = {
- };
- 
- static const char * const mt8189_pinctrl_register_base_names[] = {
--	"base", "lm", "rb0", "rb1", "bm0", "bm1", "bm2", "lt0", "lt1", "rt",
-+	"base", "bm0", "bm1", "bm2", "lm",  "lt0", "lt1", "rb0", "rb1", "rt",
- };
- 
- static const struct mtk_eint_hw mt8189_eint_hw = {
-
+ Documentation/devicetree/bindings/mmc/mtk-sd.yaml |  3 +++
+ drivers/mmc/host/mtk-sd.c                         | 32 ++++++++++++++++++++---
+ 2 files changed, 32 insertions(+), 3 deletions(-)
 ---
 base-commit: e47d97576181b31291cf58e77d737d21def0e160
-change-id: 20251203-mt8189-pinctrl-fix-regname-order-8ecce1da422a
+change-id: 20251128-mt8189-add-mmc-support-ff6df8f89e41
 
 Best regards,
 -- 
