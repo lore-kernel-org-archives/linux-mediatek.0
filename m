@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D9EED12D4E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Dec 2025 11:45:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB8A1D12D56
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Dec 2025 13:59:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QBWkDmp0ag7+CgslCW5LIViCBNAVEg0ADBw+IhLNr+o=; b=pxtWVgk3C5URwdc0jntAMk0FNv
-	YxF+3OdrslkhcrrXCNTtRvfzDBn1kALRaoyyktrwFiRnHaSjx2daWgkdpsMORFvPprQfdNnKe+2Y5
-	NQjt9HQJxtJkY70M9iH/cczhnrRBQY2bwOKFH6XWuZiK5fhnhi91MaPEHxB+SsKW6azHpYdpd/ylW
-	4JKKRH8NFwibPEYtcmarJa9UQ4stVC7+ixswge+Nae2yn6immlvZaFy5I9cJs2gplY6V6BVR1rK3R
-	l88EClNye4SJnhDUSpI/DJBeIPnpYRunrVmpUSg2YMMLA3McyS4NJxcQNLPyz8ASn3KC2MxIC6Vdu
-	IPASJI5w==;
+	bh=Y8kgZeAdTqPLLlaDoY7uENhXujHhJ3GmEgcH72lcGn8=; b=lt/aP0U8QY/1xdv1EGs8eGB9mz
+	WDhyk3icAPqFcvK2kqaJPIsk0UmfnGzlQUZ03WEPW8vmFM0eaNAE+8GzRTMYRY58uF6mQXRRksIio
+	tiSQTtNAwzNN+yDwcyD/hhk6Xjc+VC/HUQJ1g5vMHEyVBLsixg5wbufYrzpouWNhKfLL4KPcpjQQS
+	4Gh38xCAsLdzmHWwWHbxu9lQEL8QG6HIaT4MF7UqXeVCgb2jg1V8o0FIU3UKgPzr0+kLnV6Di3K56
+	NZFdaixpkuDa0KKvrkyZPiUkHR4R2b4dBN3H3waK7SCaP0pO1s28l227cCgwpLoA/Bh1JkNpsd2wb
+	5hLAZZhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQlIw-00000006WAg-0eZc;
-	Wed, 03 Dec 2025 11:45:54 +0000
+	id 1vQnOQ-00000006c2M-3UQr;
+	Wed, 03 Dec 2025 13:59:42 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQlIs-00000006W6P-009n;
-	Wed, 03 Dec 2025 11:45:51 +0000
+	id 1vQnOO-00000006c11-2WM6;
+	Wed, 03 Dec 2025 13:59:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1764762347;
-	bh=7rOHPZhf4PD5pAFldbx7LxIk29O+cfxEaxF+eBGZ1tw=;
+	s=mail; t=1764770378;
+	bh=Coa8HH2Y80U+8oDJEeTZktMM2J7wD1YAwBHcYUfHBB8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=GmhYL6v+QMpo5rIY30ipper51Gu0HdFzgGWsuDUak1EROzNGEHC9tiF7Ca4IajGDf
-	 MzytSZJTCwgTg2J4BKB7g9DR/k6qrsa3Ex2H5XhBaVNqz6tAJedY/GsTFjk60uGhLt
-	 EDaI7R325yEFT9cMqFksaRz1g5hew9T4AivNW2YvHOnn4ZHNzuU1oPoVTNtfohMEOJ
-	 k4CQ76udrfPEyUOrCC8EynbGf6WMtsKMjjgNLbDiEfH5h5hKFlcwOBOHGtM7FmZxkF
-	 RYAP2n+7F3C+mS5aBGOUqBUe8N6NULtqergAmG6/tc5+fcKs77EfPJUxeEjf1A71Yq
-	 9eLxvnHmCaLRg==
+	b=KpmnDXL7Oy0frt5g96fb4XsIU0VNv2JEJk+Mz9zETt3l5ZdyuXGAQFZ8njVdXA8Vs
+	 ABRLoMLd4bjzqrukfipOqP96qmy/PIzYJvTt9nBMxJyURTmYtRUV0HSPVgXpVs4zmE
+	 9Mcv61a+Yh0guVw/G8snxj7itv190JRVji/59Ml09pBvbxJfk/Kkz9zBeWgoKsYkzf
+	 wlv8fcxvilSF6XLVjwaSdW08H0gCYw55iLF6bsPPqNFRuiDyNHcTOECZtoGwYTrQ74
+	 NvJ6h+Ry/ivq1GvDCgcnOeK7YwTxBoeDauWNvkr88vn6KOnzNzIpFFIQOPHrf0qxGF
+	 5uwKwgFt5Iizg==
 Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 769A617E13F2;
-	Wed,  3 Dec 2025 12:45:46 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CB0E917E0330;
+	Wed,  3 Dec 2025 14:59:37 +0100 (CET)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 03 Dec 2025 12:45:36 +0100
-Subject: [PATCH 3/3] mmc: mtk-sd: add support for MT8189 SoC
+Date: Wed, 03 Dec 2025 14:59:26 +0100
+Subject: [PATCH 1/4] dt-bindings: serial: mediatek,uart: Add compatible for
+ MT8189 SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251203-mt8189-add-mmc-support-v1-3-f5ce43212fe9@collabora.com>
-References: <20251203-mt8189-add-mmc-support-v1-0-f5ce43212fe9@collabora.com>
-In-Reply-To: <20251203-mt8189-add-mmc-support-v1-0-f5ce43212fe9@collabora.com>
-To: Chaotian Jing <chaotian.jing@mediatek.com>, 
- Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, 
+Message-Id: <20251203-add-mediatek-genio-520-720-evk-v1-1-df794b2a30ae@collabora.com>
+References: <20251203-add-mediatek-genio-520-720-evk-v1-0-df794b2a30ae@collabora.com>
+In-Reply-To: <20251203-add-mediatek-genio-520-720-evk-v1-0-df794b2a30ae@collabora.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Jiri Slaby <jirislaby@kernel.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Wenbin Mei <wenbin.mei@mediatek.com>
-Cc: kernel@collabora.com, linux-mmc@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ Sean Wang <sean.wang@mediatek.com>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
+ linux-serial@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1764762344; l=1893;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1764770376; l=995;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=7rOHPZhf4PD5pAFldbx7LxIk29O+cfxEaxF+eBGZ1tw=;
- b=SLgz3INqPxcoBYI65advm9kShlkIf/WYvat1ohh0WEg1Xbz3muok1O8f7wjV0GWKXmcr+rjgw
- vpfwQNz49lGDcW3y7gPbtg+vco6PO887setn29kDXGgjrU/pYQGoN50
+ bh=Coa8HH2Y80U+8oDJEeTZktMM2J7wD1YAwBHcYUfHBB8=;
+ b=Y5mQykRO/xlACP/ELaAg9N2ySD3XHV5tyS3bTSZsebFcO5XddKxaH5zW6fA+n5tekkPqfDTaq
+ a3LpGtHPgTVAoTnSGq89TU0B58HRMoJmSfz5AhwHH01EiOHcsClyTCi
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251203_034550_256685_6B2F4DAD 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20251203_055940_792753_BDA5DD47 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,55 +90,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Even though MMC IP in MT8189 SoC is partially compatible with the one
-found in MT8196 SoC, its register layout has some slight differences
-and additional features such as the system power management release
-resource control support.
-Thus, add new compatible and platform data to support this SoC.
+Add a compatible string for the MT8189 SoC.
+The UART IPs in this chip are fully compatible with the one found in
+MT6577 SoC.
 
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/mmc/host/mtk-sd.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ Documentation/devicetree/bindings/serial/mediatek,uart.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 4ce596d616409646613748086476c58d8b7b8de9..302ac8529c4f093a541db2d37dcc8709c3775557 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -675,6 +675,25 @@ static const struct mtk_mmc_compatible mt8516_compat = {
- 	.stop_dly_sel = 3,
- };
- 
-+static const struct mtk_mmc_compatible mt8189_compat = {
-+	.clk_div_bits = 12,
-+	.recheck_sdio_irq = false,
-+	.hs400_tune = false,
-+	.needs_top_base = true,
-+	.pad_tune_reg = MSDC_PAD_TUNE0,
-+	.async_fifo = true,
-+	.data_tune = true,
-+	.busy_check = true,
-+	.stop_clk_fix = true,
-+	.stop_dly_sel = 1,
-+	.pop_en_cnt = 2,
-+	.enhance_rx = true,
-+	.support_64g = true,
-+	.support_new_tx = true,
-+	.support_new_rx = true,
-+	.support_spm_res_release = true,
-+};
-+
- static const struct mtk_mmc_compatible mt8196_compat = {
- 	.clk_div_bits = 12,
- 	.recheck_sdio_irq = false,
-@@ -705,6 +724,7 @@ static const struct of_device_id msdc_of_ids[] = {
- 	{ .compatible = "mediatek,mt8135-mmc", .data = &mt8135_compat},
- 	{ .compatible = "mediatek,mt8173-mmc", .data = &mt8173_compat},
- 	{ .compatible = "mediatek,mt8183-mmc", .data = &mt8183_compat},
-+	{ .compatible = "mediatek,mt8189-mmc", .data = &mt8189_compat},
- 	{ .compatible = "mediatek,mt8196-mmc", .data = &mt8196_compat},
- 	{ .compatible = "mediatek,mt8516-mmc", .data = &mt8516_compat},
- 
+diff --git a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
+index 5bd8a8853ae0d4ae309d28350fd54b6f9b4e731e..3f0f4aea0a4c0ef11055ddd08ba71d045e7fa519 100644
+--- a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
++++ b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
+@@ -47,6 +47,7 @@ properties:
+               - mediatek,mt8183-uart
+               - mediatek,mt8186-uart
+               - mediatek,mt8188-uart
++              - mediatek,mt8189-uart
+               - mediatek,mt8192-uart
+               - mediatek,mt8195-uart
+               - mediatek,mt8365-uart
 
 -- 
 2.52.0
