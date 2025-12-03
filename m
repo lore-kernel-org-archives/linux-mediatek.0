@@ -4,52 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5520D12694
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Dec 2025 11:45:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4491D12D4C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Dec 2025 11:45:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+/k9kNIvWcWRdGPj7CY9lHUttkgdcQL9M8tMyEK4QsM=; b=JxD4jZEv/iPh3WLhs2CdqOTC/i
-	2yp3QYS3Xq0+M4EY/ZygxzfS3uyj/zsLZ0LPDn3iVyCQ1xmE+P+g5qAitiYZ31kB7AJQ0YPIliFxX
-	gB1qvVsunLN/+Y9xgTfN8ZywuT+iWisJRGfB/LolFTMvBTWyB2ytKab/6ebvu9zLeLdaOCAtkQPYG
-	CkbzCtNw7UAYFwKNZzdV8AZOoNLKEXAWEUhl0SgwKOTctCYoX782+Vth+YFcAQ8mTn/IXhTg5nicp
-	GBBzqs11XNilGFBt2GuhpEqz//wnk3U1tBPI8bsw1f7486uDZMUtJ9sTrWyyVL5yTLWsbFlNOTvu+
-	3Uf8kmyQ==;
+	bh=rqIysmZjBG+k2kGNM9Upch7DXtuFh63VFVwieboMWD4=; b=gfH+7mzw/AIAiwGsR9SgG2/eSe
+	LBxdH9wyQLoTXTHCxmdkypP50VGhQR93P/NPmWXxb0vXLGbwSQETpKT8FmX2fF/pQj99f+gDn0zNh
+	UnE4JO8gFEb53Vs73IShp6D8ElW5CM3bQ2MlBFMNtfSiwNASCJs+u3ctvUwyxojDtNgp2JVk11C8r
+	0ETubcVWOeG/LgcBqUHDhRgUoXf7gcEMaifUHvAJh0luitLb29h64C6pahl4jMyyvtNRrHadkP8t1
+	1BmUQORvpO8n+W88ka0WtUpzbvfn0pzvrntCs/dhw7jL61eT/3P2Xred320cuRh8W+jXK0bdVCIyN
+	TPTcsDNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQlIu-00000006W8v-3fIn;
-	Wed, 03 Dec 2025 11:45:52 +0000
+	id 1vQlIv-00000006W9f-2D82;
+	Wed, 03 Dec 2025 11:45:53 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQlIq-00000006W6N-49yi;
+	id 1vQlIr-00000006W6O-1afv;
 	Wed, 03 Dec 2025 11:45:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1764762345;
-	bh=rSrS/g3GzIPfmw34zxW71s8tJc9N+7opnT4NQUPvLbs=;
+	s=mail; t=1764762346;
+	bh=ahjRyiyy4S968JVuF+EhGfPwRd1ZGT+Km4oxLletDsI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=kUIP8m03uVX3YSkENNi5EZ9TI0ShKToihyvXNkhsKuGWkf9B4oEYeHoRdyZ/irGN+
-	 KHs0/oSDbnRpTltz83vxJxrUyFofIZH72R0Ug9Kf0vv3JIiIRFMfDHpfG/xDoHq8Uz
-	 9X2BBYqi1/StLLB1Who3syAAcJoP0DB3LB0sf2AuE9b3i589Udcubh++27YErifIxi
-	 1X6vUvDxVev3gYRtPeypYtHM2P9tldNbHzKd40XuIK1moa+IjHKlVn8wbWYrHWk5ox
-	 8giMK9u6cps6JpTE1yJMPaKnuPhsmSYDZiwvYq59OXZYTlVKxlAiyJE+H416umVzTq
-	 whGHDNq75H1GA==
+	b=iJn0iSWEQmtFsbubE3gmj/Ic4HB8XEFrxrutItAOSZPJk1hxyLk8YcqaMoX4kafrK
+	 EMTV5ahylVkRhWZ15NkNCmx7rMEm224FVu5E9WmdZHym47b+7z/3CW8O9DOmX1753p
+	 ppZd62GnfzQGm7PdbED361aJ4letvhbjjiFxMrTaM84SdUQ8r9VqEbFdrB3bZnl3Hi
+	 OiJIbDk1W9ACEVfKmjC38jpKzADSbSrfiv54Qp/rOkfHVED0eiKN7Vskp7jmozjoZh
+	 ihaf46vl2biX9vUeIuLuCzTGodYN/xHSdiz+/9ADxvAr2kyTfA0O8V9RKZOLqPjBTj
+	 IhyJwe2ipYl6g==
 Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F1DBA17E1339;
-	Wed,  3 Dec 2025 12:45:44 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B54DA17E13F1;
+	Wed,  3 Dec 2025 12:45:45 +0100 (CET)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 03 Dec 2025 12:45:34 +0100
-Subject: [PATCH 1/3] dt-bindings: mmc: mtk-sd: Add support for MT8189 SoC
+Date: Wed, 03 Dec 2025 12:45:35 +0100
+Subject: [PATCH 2/3] mmc: mtk-sd: add support for SPM resource release
+ control
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251203-mt8189-add-mmc-support-v1-1-f5ce43212fe9@collabora.com>
+Message-Id: <20251203-mt8189-add-mmc-support-v1-2-f5ce43212fe9@collabora.com>
 References: <20251203-mt8189-add-mmc-support-v1-0-f5ce43212fe9@collabora.com>
 In-Reply-To: <20251203-mt8189-add-mmc-support-v1-0-f5ce43212fe9@collabora.com>
 To: Chaotian Jing <chaotian.jing@mediatek.com>, 
@@ -64,17 +65,16 @@ Cc: kernel@collabora.com, linux-mmc@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1764762344; l=1508;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1764762344; l=1669;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=rSrS/g3GzIPfmw34zxW71s8tJc9N+7opnT4NQUPvLbs=;
- b=qLmM9GZBF3m4ar3KUTOZb9GLigL1SpHLreXl0Q6p5wNsluo9feCpmh2tnL9pj5Hc2vU5b+qcK
- /V9eWbtSqbWARtj8OPkzNOQb95BKu4x7Yi34jDqPq2o5Le2P3WyCEyC
+ bh=ahjRyiyy4S968JVuF+EhGfPwRd1ZGT+Km4oxLletDsI=;
+ b=I0kjEvvw1OQmZ7oj5gQdhB1Ho/OdyfiGdvfiBs3audUDZdLcvg19Po5Bnc42qT2rlji4W25OE
+ izn4aDlrQI/AD+Tv1sC/zgZ4deRXQfM9lktB2rw/Iy/e7RJljjas8lb
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251203_034549_179276_7E63258F 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251203_034549_592920_F834BEC1 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,44 +89,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a new compatible for MMC IP in MT8189 SoC.
-Even though this is partially compatible with the one found in MT8196
-SoC, the MT8189 SoC register layout has some slight differences and
-additional features.
+The MT8189 SoC has in the status register an additional bit field to
+release all System Power management (SPM) resource requests.
+In preparation of MT8189 SoC support, add its use in suspend callback
+and a support flag in the platform data.
 
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/mmc/host/mtk-sd.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-index 6dd26ad314916a3e40cf55ff69a7d93ed63dbdd4..eb3755bdfdf7e001602c3eb870898275085df3e6 100644
---- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-+++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-@@ -25,6 +25,7 @@ properties:
-           - mediatek,mt8135-mmc
-           - mediatek,mt8173-mmc
-           - mediatek,mt8183-mmc
-+          - mediatek,mt8189-mmc
-           - mediatek,mt8196-mmc
-           - mediatek,mt8516-mmc
-       - items:
-@@ -192,6 +193,7 @@ allOf:
-             - mediatek,mt8183-mmc
-             - mediatek,mt8186-mmc
-             - mediatek,mt8188-mmc
-+            - mediatek,mt8189-mmc
-             - mediatek,mt8195-mmc
-             - mediatek,mt8196-mmc
-             - mediatek,mt8516-mmc
-@@ -240,6 +242,7 @@ allOf:
-               - mediatek,mt7986-mmc
-               - mediatek,mt7988-mmc
-               - mediatek,mt8183-mmc
-+              - mediatek,mt8189-mmc
-               - mediatek,mt8196-mmc
-     then:
-       properties:
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index daed659f63f6872423edd755478f0ec57e7742b4..4ce596d616409646613748086476c58d8b7b8de9 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -203,9 +203,10 @@
+ #define SDC_CFG_DTOC            GENMASK(31, 24)	/* RW */
+ 
+ /* SDC_STS mask */
+-#define SDC_STS_SDCBUSY         BIT(0)	/* RW */
+-#define SDC_STS_CMDBUSY         BIT(1)	/* RW */
+-#define SDC_STS_SWR_COMPL       BIT(31)	/* RW */
++#define SDC_STS_SDCBUSY			BIT(0)  /* RW */
++#define SDC_STS_CMDBUSY			BIT(1)  /* RW */
++#define SDC_STS_SPM_RESOURCE_RELEASE	BIT(3)  /* RW */
++#define SDC_STS_SWR_COMPL		BIT(31) /* RW */
+ 
+ /* SDC_ADV_CFG0 mask */
+ #define SDC_DAT1_IRQ_TRIGGER	BIT(19)	/* RW */
+@@ -448,6 +449,7 @@ struct mtk_mmc_compatible {
+ 	bool use_internal_cd;
+ 	bool support_new_tx;
+ 	bool support_new_rx;
++	bool support_spm_res_release;
+ };
+ 
+ struct msdc_tune_para {
+@@ -3296,6 +3298,10 @@ static int msdc_runtime_suspend(struct device *dev)
+ 
+ 		__msdc_enable_sdio_irq(host, 0);
+ 	}
++
++	if (host->dev_comp->support_spm_res_release)
++		sdr_set_bits(host->base + SDC_STS, SDC_STS_SPM_RESOURCE_RELEASE);
++
+ 	msdc_gate_clock(host);
+ 	return 0;
+ }
 
 -- 
 2.52.0
