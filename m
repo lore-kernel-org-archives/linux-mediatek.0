@@ -4,112 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F874D1BDD8
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Dec 2025 20:26:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CD28D1BDE3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Dec 2025 21:21:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QHhoJvXmUUdfSoud9hbXEJJ96AjgJheRg7j9O/4CTvk=; b=tUy3RFDo/idIO2krA0os1gJVfT
-	6J42bGW7taVdtnVXStmkeT5WmFQjc4FwbS/Aovyu/GURXexumk3ZsAvUKHowE8P6eYLt6zBhO1tnq
-	VWRaXeWrAxetn1/kFj8TP4hpZeqtRuGc2Tdllctlg35vZi4UnYfp7r2QF33ZDH01YamMozMM/9sWN
-	81ZrNgDRtj8Wn9T0xxZPiEj2IrlLdb/bOxMCYChuMllwNImjAFf1EbbhGl2ejYz5NgXka3IVjLOHR
-	+YhNQbO1bht2wVpnpuPeLhc4AugOiQ9OZqbEroD9RHSIvGiBW/J+MEoeddF+QcQuUO/cdjtPSurFc
-	FF8J4Ntg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mex+iFQuIV/0Ik9O+xAwix9ls6VQnAB9P3pjCjfm7do=; b=twu7VBzslgVrxz
+	52Qe9GFgofDpMfkAkJVYQf45CWioNfYFTb9NmcfZNgLgaCsl/3Sw8lsU2vThgnAq8cal9TD9fslRO
+	rvba01EBSAP2MnJjLuiWc6lfV6AKJGDTin7sQWadHBNGQTsJxe6DOakNVA/hteTMIJi1y0kdK3Obj
+	WVoCcCa4QZN1UlO3DmnApTm4PCnKtnjRdQfr9E77LywN9GlC52jCtQfdbAEOfao9wtRWi1rQbIVCl
+	Tf3gwbGXwuNEm9rjHPO65j+frEpyOf36FxLVfhQrgvUxICf6wdC6ic4nIIa7UfppgVyybQ8MnUd4o
+	xcT5U70ObqksyQexdVEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQtQH-000000072JC-04vO;
-	Wed, 03 Dec 2025 20:26:01 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vQuHj-000000077Rs-3DTa;
+	Wed, 03 Dec 2025 21:21:15 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQtQE-000000072II-2w5T;
-	Wed, 03 Dec 2025 20:26:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3A2D043A0E;
-	Wed,  3 Dec 2025 20:25:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0DAB2C4CEF5;
-	Wed,  3 Dec 2025 20:25:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764793558;
-	bh=1dHiE50PARVA55BHa12b+LSSa7hK9g+a5iEtRcxDlp0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=uqM1T9IGYpEfm3flEc6acjxt+jcMe1uCjtU7vIfGWEfzgkawFt7BTe1yGll+QeEEk
-	 W088Sxp/enJhCOfGkk+seRmTQJaOj52oYR3WCf8mJ6uZOdBMq9wASvh9VHzYrMN/FU
-	 o5IPUtvO1fkd9EqSAsTMPhDgNHQrwnNIQ9N3kmRTSWBcGU9rIZmyVXFlYqf9a89VNE
-	 +ykjhbq3EgILzXIog8n1JocFR8AmcUBNluHAPTz9bmsEcOId6H9NSw7K6bdm/sk6GY
-	 gRCJcmZ6QKJIQynMpq9rTJfqkHPusRPi0m4qaxb2xhaSHGgTUr60c6k6w4ONy8WXj2
-	 f8ovhSmPdVr7g==
-Message-ID: <87db9b43-ceae-47b9-9435-9fa297054fc2@kernel.org>
-Date: Wed, 3 Dec 2025 21:25:53 +0100
+	id 1vQuHh-000000077Q4-0m7o
+	for linux-mediatek@lists.infradead.org;
+	Wed, 03 Dec 2025 21:21:14 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-47796a837c7so1630725e9.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 03 Dec 2025 13:21:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1764796871; x=1765401671; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=mex+iFQuIV/0Ik9O+xAwix9ls6VQnAB9P3pjCjfm7do=;
+        b=Q1YEn8WKvfr4ptCjoFDp2zddigYXiMzFYIKU6WiHIgT6dUHqY31QJzBgWaSQ2XED6s
+         Rd+c3dnN/rMqgxHRrfRxmZpo/XJlZakBXYTG7JYLf1aWZwnOn51/OaSrSp9KN+YLrtDd
+         p/NvMLwKGnS+hsrmys8fsZp0ipusHkS0Cz9TelfNuprr21ZZeU2sEFBQfe3eyXde6Gpo
+         p6H+t3q6adteeSZsYWRAobkM0+11BNpEyXvLy/kjL61H7q2jHaKIsflfg0ZFbsE0DiR8
+         clknsy1fLoBJ/bDuYZOrWjJsRkcL9bqbXzdH5d3m2Q6EEfMZH9KrBAoGv1j4Ps8XVOsU
+         hmOA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764796871; x=1765401671;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mex+iFQuIV/0Ik9O+xAwix9ls6VQnAB9P3pjCjfm7do=;
+        b=bdv9aX+2FCPLXoz6I48XpP9G9C4DzPS1uZnhgx+KDQqSQ2ThH3sPinrRCZAb+3urPv
+         aMIJ8VUqI+n7Ezq82ZutxTFmHS/zJ+HtekxPR0nTk/Tijr8wRo5fKGgTb9ljNuhgF0MG
+         9yCFp5b6Ulzz3IMHlJAd3uA2TRwDOlw/GhpeAzHxLB44dZTlOhCJ27HCroSp+fwosuko
+         FXuIik8LUqo1n2FxDtT8QuNamnw9MhvZeavW0JVW5uvZHubf+gfmbry2t3GCJRr1GTCP
+         ie05+MJgKKFln3QOJLy0JmfQ/3QtgirzrWaUHS0BCj/Ac7MmR3vAXOVd8UWP+EL3dxkP
+         CDEg==
+X-Forwarded-Encrypted: i=1; AJvYcCUH2/+D0i9TqStHDH5vJVyGvtTEfRwXSzi6TY1sWnkdjUxStVsoSYkvhfiFqTYB7XUZyaNKsVEthvfM73pR1w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx7RPBcsmmy9gs9fukHSH8jPlABk7kt/IjW4pKxBoFpCNqz5iBO
+	+fdBbRwNsBh7inHzf3SFHxYPvaKvakIayBzB/ohKvVU5JN7RsIi/oLcG
+X-Gm-Gg: ASbGncv1oeFBBQnZLAFwAA+uKjV6NGqU6xJKW09PZFe1e4tNoEKjGf9fpS+Ai/hbZeN
+	/huWnsX6Sz85LBYQwBjHIcu+FwER38G0WdOsW4fvGKlGhLSEitlsKU65H03LKfot4QAQF8klXMZ
+	857wXqR+q1cKUucYuh2tStjFLSmvN/WQoUTeVvqO4Gd/p5VWilcVEnDhQfHmL42i26aUTXIt2Y+
+	AIut19JoAVBy9KRhUQvZUT3JRFKrMMlv8WEmfAo2RvoAOXnAe541okRsIulELJYoSUuzY6FC86d
+	pwQsVf3JrLPIH4xrtp24za+a62SAagd+1vYvjfxaGIT7CvRffw1e5wuJbYX40MIc7iNwZc2ag0V
+	c8Mq26XNWKDFgjQ6ci24kXG6h+t7xq5mzPAGsSpcFzecUarGdLeiYehfS373G6rthqSgw/4VC7q
+	foFI1/Qthn2D+fpQHsfDvjdE2SKXKdx9bpBfKX
+X-Google-Smtp-Source: AGHT+IFZUeelZJ5F3kqcCFdVqRaV/e//mJ7O77jwvUW4t+w4XWfk+xyTxPI1msMcQ7W3qyrTtfwgYQ==
+X-Received: by 2002:a05:600c:3b26:b0:477:7f4a:44b4 with SMTP id 5b1f17b1804b1-4792aee39c5mr37314425e9.1.1764796871145;
+        Wed, 03 Dec 2025 13:21:11 -0800 (PST)
+Received: from [127.0.1.1] ([2001:861:3201:3d10:2034:6883:1f40:e708])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42e1c5c3c81sm41648667f8f.3.2025.12.03.13.21.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 03 Dec 2025 13:21:10 -0800 (PST)
+From: Gary Bisson <bisson.gary@gmail.com>
+Subject: [PATCH v5 0/5] Add support for Ezurio MediaTek platforms
+Date: Wed, 03 Dec 2025 22:20:36 +0100
+Message-Id: <20251203-review-v5-0-b26d5512c6af@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] arm64: dts: mediatek: add device-tree for Genio
- 720-EVK board
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sean Wang <sean.wang@mediatek.com>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-serial@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20251203-add-mediatek-genio-520-720-evk-v1-0-df794b2a30ae@collabora.com>
- <20251203-add-mediatek-genio-520-720-evk-v1-3-df794b2a30ae@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
- QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
- +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
- ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
- 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
- hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
- tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
- 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
- naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
- hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
- whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
- qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
- RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
- Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
- H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
- dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
- AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
- jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
- zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
- XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20251203-add-mediatek-genio-520-720-evk-v1-3-df794b2a30ae@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAKWpMGkC/23OwW7DIBAE0F+JOBdrWaCEnPIfVQ4UFhupNhFEb
+ qLI/16cQ+S0PY40bzR3Vqkkquywu7NCc6opTy3otx3zg5t64im0zBBQCwTB1xJ9c6MBDGpjrRW
+ slc+FYro+hj5OLceSR34ZCrkXDnslFHTSvIPec8E/U6156npXbsd+dOmr83lc94ZUL7ncHr9mX
+ Ff/XJiRAw8eQ1SKyBvaLKwXZvk/k42BidZFI5WI4TdTW4ZPphqzMmof0EFQbsuWZfkBLw5LX0o
+ BAAA=
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sean Wang <sean.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ Gary Bisson <bisson.gary@gmail.com>
+X-Mailer: b4 0.13.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1764796869; l=3316;
+ i=bisson.gary@gmail.com; s=20251201; h=from:subject:message-id;
+ bh=Zk3MEDuhj8T6cNPtbw4xHlfD+QlH5E0Gxc9yD34asak=;
+ b=scneNrWemOBml+JOtmHcwc5xULmq8tCrM8Zr8z2sRVSyj2OaVoV06JTWMVP8+/0hAMYf4QNH6
+ vOT4ffGhuizB97iDscsSTIEfuEInDDuEpumHDLVykke4CDOrqGdiLss
+X-Developer-Key: i=bisson.gary@gmail.com; a=ed25519;
+ pk=eaOrLwovHUZBMoLbrx+L1ppj+AH+TfgxkVhIEyrhkeE=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251203_122558_784221_39B20422 
-X-CRM114-Status: GOOD (  22.70  )
+X-CRM114-CacheID: sfid-20251203_132113_286179_5D38C9ED 
+X-CRM114-Status: GOOD (  13.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,130 +115,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03/12/2025 14:59, Louis-Alexis Eyraud wrote:
-> Add support for MediaTek MT8189 SoC and its variants, and a device-tree
-> for the basic hardware enablement of the Genio 720-EVK board, based on
-> MT8391 SoC.
-> 
-> MT8391 SoC is a variant of MT8189 SoC with a difference for the Arm
-> Cortex-A78 CPU core maximum frequency (2.6 Ghz for MT8391, 3 Ghz for
-> MT8189). MT8391 hardware register maps are identical to MT8189.
+This series adds support for Ezurio MediaTek platforms called
+"Tungsten". It includes support for MT8370-based Tungsten 510 and
+MT8390-based Tungsten 700 SOMs.
 
-Subject: drop redundant "device-tree for" (not mentioning not correct
-name even...).
+Changes in v2:
+- Use b4 to cc all maintainers properly
+- Squashed patches 2/3 together
+- Updated dts node names to be generic
 
-> 
-> The Genio 720-EVK board has following features:
->   - MT8391 SoC
->   - MT6365 PMIC
->   - MT6319 Buck IC
->   - MT6375 Charger IC
->   - 8GB LPDDR5 RAM
->   - 64GB eMMC 5.1
->   - 128GB UFS
->   - 20V DC Jack
->   - USB Type-C Power Adapter
->   - Micro SD card slot
->   - Push Button x 4 (Power, Reset, Download and Home Key)
->   - LED x 3 (System Power, Reset, DC-IN Power)
->   - USB Type-C Connector (USB 3.2) x 2
->   - USB Type-C Connector (USB 2.0) x 1
->   - 3.5mm Earphone Jack x 1 (with Microphone Input)
->   - 3.5mm Line Out Audio Jack x 1
->   - Analog Microphone x 1
->   - Digital Microphone x 2
->   - Gigabit Ethernet with RJ45 connector
->   - DP x 1 (Mode over USB Type-C)
->   - LVDS port x 1
->   - eDP port x 1
->   - UART x2 with serial-to-usb converters and USB Type-C connectors
->   - UART Port x 2 on Pin Header
->   - M.2 Slot x 2
->   - I2C Capacitive Touch Pad
->   - 4-Lane DSI x 1
->   - 4-Data Lane CSI x 2
->   - I2S Pin header
->   - 40-Pin 2.54mm Pin Header x 1
->   - CAN Bus x 1 (RS232 Connector)
-> 
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
->  arch/arm64/boot/dts/mediatek/Makefile              |   1 +
->  arch/arm64/boot/dts/mediatek/mt8189.dtsi           | 860 +++++++++++++++++++++
->  .../boot/dts/mediatek/mt8391-genio-720-evk.dts     |  15 +
->  .../boot/dts/mediatek/mt8391-genio-common.dtsi     | 555 +++++++++++++
->  4 files changed, 1431 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index c5fd6191a925ad8fcea401712f7a686e8b0a57c8..e3b63085c0608b86dc8638c9d5e0b73441e9ed7b 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -110,6 +110,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-genio-1200-evk.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-genio-1200-evk-ufs.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8390-genio-700-evk.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8390-grinn-genio-700-sbc.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8391-genio-720-evk.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-kontron-3-5-sbc-i1200.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-radxa-nio-12l.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-radxa-nio-12l-8-hd-panel.dtbo
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8189.dtsi b/arch/arm64/boot/dts/mediatek/mt8189.dtsi
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..bf8a232bcaf10cdf4c590109aea68c9a3e82cc42
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8189.dtsi
-> @@ -0,0 +1,860 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (c) 2025 MediaTek Inc.
-> + *
-> + * Copyright (c) 2025 Collabora Ltd.
-> + * Author: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> + */
-> +
-> +#include <dt-bindings/clock/mediatek,mt8189-clk.h>
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +
-> +/ {
-> +	compatible = "mediatek,mt8189";
-> +	interrupt-parent = <&gic>;
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
-> +
-> +	aliases {
-> +		i2c0 = &i2c0;
-> +		i2c1 = &i2c1;
-> +		i2c2 = &i2c2;
-> +		i2c3 = &i2c3;
-> +		i2c4 = &i2c4;
-> +		i2c5 = &i2c5;
-> +		i2c6 = &i2c6;
-> +		i2c7 = &i2c7;
-> +		i2c8 = &i2c8;
-> +		mmc0 = &mmc0;
-> +		mmc1 = &mmc1;
-> +		serial0 = &uart0;
+Changes in v3:
+- Added per-commit changelog
+- Added missing Acked-by on 1st patch
+- Link to v2: https://lore.kernel.org/r/20251201-review-v2-0-dc2df44eec7e@gmail.com
 
-None of above are aliases of the soc. Please move them to the board,
-because these are properties of the board currently (we did not finish
-the discussion about soc-aliases, so it cannot be used as reason for above).
+Changes in v4:
+- Fixed remaining DTB warnings
+- Link to v3: https://lore.kernel.org/r/20251201-review-v3-0-07f9af7341fd@gmail.com
 
+Changes in v5:
+- Fixed DTB per Angelo's comments
+- Added a MT8188 patch for easier mmc eint interrupt change
+- Link to v4: https://lore.kernel.org/r/20251202-review-v4-0-93f5cd2a0d4a@gmail.com
 
+Regards,
 
-> +	};
-> +
-> +	clk32k: oscillator-clk32k {
+Gary Bisson (5):
+  dt-bindings: vendor-prefixes: Add Ezurio LLC
+  dt-bindings: arm: mediatek: Add Ezurio Tungsten entries
+  arm64: dts: mediatek: mt8188: switch mmc nodes to interrupts-extended
+  arm64: dts: mediatek: add device tree for Tungsten 510 board
+  arm64: dts: mediatek: add device tree for Tungsten 700 board
 
-Either oscillator or clock (clk). Not both. "clock-clk" makes no sense
-and this is implied by oscillator.
+ .../devicetree/bindings/arm/mediatek.yaml     |    2 +
+ .../devicetree/bindings/vendor-prefixes.yaml  |    2 +
+ arch/arm64/boot/dts/mediatek/Makefile         |    2 +
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi      |    6 +-
+ .../dts/mediatek/mt8370-tungsten-smarc.dts    |   14 +
+ .../dts/mediatek/mt8390-tungsten-smarc.dts    |   22 +
+ .../dts/mediatek/mt8390-tungsten-smarc.dtsi   | 1489 +++++++++++++++++
+ 7 files changed, 1534 insertions(+), 3 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8370-tungsten-smarc.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
 
-Please use name for all fixed clocks which matches current format
-recommendation: 'clock-<freq>' (see also the pattern in the binding for
-any other options).
+--
+2.43.0
 
-https://web.git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/clock/fixed-clock.yaml
+---
+To: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+To: Conor Dooley <conor+dt@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Sean Wang <sean.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-mediatek@lists.infradead.org
 
+---
+Gary Bisson (5):
+      dt-bindings: vendor-prefixes: Add Ezurio LLC
+      dt-bindings: arm: mediatek: Add Ezurio Tungsten entries
+      arm64: dts: mediatek: mt8188: switch mmc nodes to interrupts-extended
+      arm64: dts: mediatek: add device tree for Tungsten 510 board
+      arm64: dts: mediatek: add device tree for Tungsten 700 board
+
+ .../devicetree/bindings/arm/mediatek.yaml          |    2 +
+ .../devicetree/bindings/vendor-prefixes.yaml       |    2 +
+ arch/arm64/boot/dts/mediatek/Makefile              |    2 +
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi           |    6 +-
+ .../boot/dts/mediatek/mt8370-tungsten-smarc.dts    |   14 +
+ .../boot/dts/mediatek/mt8390-tungsten-smarc.dts    |   22 +
+ .../boot/dts/mediatek/mt8390-tungsten-smarc.dtsi   | 1489 ++++++++++++++++++++
+ 7 files changed, 1534 insertions(+), 3 deletions(-)
+---
+base-commit: 7d0a66e4bb9081d75c82ec4957c50034cb0ea449
+change-id: 20251201-review-750072579991
 
 Best regards,
-Krzysztof
+-- 
+Gary Bisson <bisson.gary@gmail.com>
+
 
