@@ -4,47 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7D13D116F3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Dec 2025 06:56:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55620D1266D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Dec 2025 07:50:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i20hbqvP55IyXBV4D2jMT+oxFvBKY8IKEVZOfneP6RQ=; b=W/MK+FMWHn2LbPZpB2CebbgH30
-	PN3O67TlAIY4OstSAS36SZiYIrDHj0j/YkxLLUF5jPS7Ed2rJ8GpP/yS00BIPBObwqJUSMnVihiog
-	h7V6CriOymSeOVFKrHfsWeqXnLeD26KSBMbAQS7fy8HiKILP0bRK6+rRlSVnN6Btn3QsIF3/LqDVu
-	Ok4uF4MBCBSUPBp6DM7ZyOObHWMzvy/MtYqpNB/4i7UlVgT+LFsSDfkHDWaUmxJ7yYP557zh+Bxi9
-	t7qJMPp487v/ta/W80asmjMBfzNMdcAwZjAWACt7mR1iWs0aAia8dcXCNP5AgSLwakIV9YvzffMOu
-	82RHF2ng==;
+	bh=8P/drpqdGhV2SKAE4QpyfBSXJQL9v5oL6Wt/S6WH8Qo=; b=OLY02ZK4SSi3j0iIbSXDiSbXp1
+	D8Y6zxGpXmhdm58bPp2OsEhDidPONfQW3BEoh4vxh5O1JNIX/4Yk2zpx3/TNug+Ok2gHe2GWrfpvo
+	F8WtXkmhbYjeKO1PC1qncNrO7e5vLrsHvmLmeSBBF8Htl58ryhYWAJjoS9C8xT8O5gh5x1pCb2TVY
+	y48eG/99bc5wIn+dgqY2OH3KtNNXPAAfnvLapZWxwkCVGrQfGzumjRgRCcxmqnwpkQ+07u9ENxesG
+	dz7EXwAOqOh/F00Xl9YuxhMc3i7+A0IiLnWDZaw5XBFmEO7hl7eiVjsk355VjwsrUSm8zagKoPx4I
+	WQaZxN3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQgmN-00000006DuQ-3iqo;
-	Wed, 03 Dec 2025 06:55:59 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vQhcl-00000006GjU-0h17;
+	Wed, 03 Dec 2025 07:50:07 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQgmK-00000006Ds0-0sMr;
-	Wed, 03 Dec 2025 06:55:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1764744952;
-	bh=gsFLc2zmBo4F0KsnAgDtyrBQx7AbnJC6RqAr81QjdDw=;
+	id 1vQhcj-00000006GjD-115X;
+	Wed, 03 Dec 2025 07:50:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4DB0A6013C;
+	Wed,  3 Dec 2025 07:50:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75F6CC4CEFB;
+	Wed,  3 Dec 2025 07:50:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764748203;
+	bh=bDgLpvDGasgrQ5JJNOKKs8ReGLl7AkANP5IWfAipX10=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CW3CAbAsmQxZbP/bT7Jc5sJlHtZtm1JVemPgee+ntOP9RUamxGioEn5u7EPa2V1YH
-	 +KI9gQlHIf5/OJXFDM9CwMuRdk1Tl/B6cWWaV4JJWNqLNvs4BaOIC4ZDUN3jfECtc/
-	 f/bw/7ufv+R70i2nPRrXKYPhQJVvncUpR5gYOOoChCfB8umRDluYPUI5hZls0iQBmI
-	 av3PoOycawILqjd9OAlEAje/J00g0NkVPjp4QtW2eaNGBphd5Ty+H3R3vQj/Ky56rd
-	 Ne9g/Bk9F2asktVaMieoEHGQpiu3I+6Soco22FYZKQrdGsQp8yzZYVlY4jXQrn89Fy
-	 890gylMhtHUVQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3C0E117E0330;
-	Wed,  3 Dec 2025 07:55:52 +0100 (CET)
-Message-ID: <7b09d179-be5f-4daf-bb74-c1420a3b6fa8@collabora.com>
-Date: Wed, 3 Dec 2025 07:55:51 +0100
+	b=Sqzy6/5fZLpewpasQLbrHDemmNGhQK2vu6jczqQ6AgntN+vAu1HK+wPKzhVchIFEc
+	 fL2PL4E+a853MZpj+1HhNOoKpcUDF/eDwePy9qin9uD9+m8S2uaSorjVv0XVj6tII9
+	 Ntyewvw5sbWUmlMeHvL0T7IkWoFt5X1sKTMAWp2kb9Y4tpzC3e0WhbG7pSjTHyPfVp
+	 IJAdDp7xHtscL5fWg5/7YCHEMBBDMIUr8du9ieeu2R2gsBkC15z+Bj7AS8T2UZ75i7
+	 pIoZ0dbXUB1e9GRyT2Sh3gNyi+QmizZMbnIEucPtzAw6aC6Cr0kl+2CXIrZx1cTgPE
+	 7dcNJPDhBgdZw==
+Message-ID: <1baf8704-9f56-4bb0-8118-5a0cfec92b7e@kernel.org>
+Date: Wed, 3 Dec 2025 08:49:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v4 2/4] dt-bindings: arm: mediatek: Add Ezurio Tungsten
@@ -52,20 +50,60 @@ Subject: Re: [PATCH v4 2/4] dt-bindings: arm: mediatek: Add Ezurio Tungsten
 To: Gary Bisson <bisson.gary@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Sean Wang <sean.wang@mediatek.com>
 Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 References: <20251202-review-v4-0-93f5cd2a0d4a@gmail.com>
  <20251202-review-v4-2-93f5cd2a0d4a@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
 In-Reply-To: <20251202-review-v4-2-93f5cd2a0d4a@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251202_225556_431629_F7296FBE 
-X-CRM114-Status: UNSURE (   6.29  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,7 +118,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/12/25 23:08, Gary Bisson ha scritto:
+On 02/12/2025 23:08, Gary Bisson wrote:
 > Add device tree bindings support for the Ezurio Tungsten 510 (MT8370)
 > SMARC [1] / Ezurio Tungsten 700 (MT8390) SMARC [2] + Universal SMARC
 > carrier board [3].
@@ -92,7 +130,9 @@ Il 02/12/25 23:08, Gary Bisson ha scritto:
 > Signed-off-by: Gary Bisson <bisson.gary@gmail.com>
 > 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
+Best regards,
+Krzysztof
 
