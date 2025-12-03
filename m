@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61970D1268E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Dec 2025 06:54:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AF71D1266D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Dec 2025 06:56:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+/DmfUTP8ho0dkVxciIsuajpwergE/iM3cCYedUMzmw=; b=ghfHcfP3a+3DP8zjgvKgf31UPL
-	UbU/SU+gK8GWHSqdL6YNIwdVEdKgdfnhHnn+fVZ75lJ+Uz/cft5gnPrEUQ/MEjItGv8lHgvpUI6BM
-	XcBDN+9NTdg6WZc5UFaK6vdRCxK7o1zRGq/F85Ri9/ESSXr7y12RXYA0Mxs5YPdrUjs38Pp84CpZh
-	pcnrRwl3N0UOT6eQy46kjmZeXO3RnxX8vrpj9FXJPHzaFWpMxuTH6FwT3UpbFt9AtQRF0vtsA2dvH
-	WLJGKdrQMuwKP/UAGb/luZPaE0Smbp1eKAHYzTWkazHS7iwBVNz3wPDYbTt7ltVIuwmhZPJOHvuaI
-	Sxn2YERQ==;
+	bh=9aDPLWk/OgQOeUSFQ764uKQUG6YhHel40mSErpACxzU=; b=NVpnU8N3d++yxFehFI0UXoDNR+
+	7SoUenXmT/RBJHD7GvD3Q7khSc+wEEgh01xVKyzCSZppPrAGMd5Va+FZQzBApw1lGwR5GZmrOAIDJ
+	7PuwJOnQswK+ySUkBzjeIFHsx71Dxqv+U+s7UoczVg828++hriJuDISx9HEqA3x53oAkK28VwcPcW
+	TWcpaam3OfzUFneBzJ9Uk89n0H6sjWFK+hW5m7e3hLP2Oos39Oy/nr299+6k9NgOrXNitstT/Jb9h
+	whkVAqoPagCwnyyyzLF8JmkLDNVZ3tB3ey20UIj3c5FBelh6u5kaNFC2JNf0BUhqZa7CVdiO3Fv5f
+	GUPzPqtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQglN-00000006Des-0x8g;
-	Wed, 03 Dec 2025 06:54:57 +0000
+	id 1vQgmN-00000006Dtt-1C2M;
+	Wed, 03 Dec 2025 06:55:59 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vQglJ-00000006DcN-40ff;
-	Wed, 03 Dec 2025 06:54:55 +0000
+	id 1vQgmK-00000006DsA-1U5N;
+	Wed, 03 Dec 2025 06:55:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1764744891;
-	bh=+mouYnjXndDUTYks44sCmhlZvGkCia3knwRQVZGSJYw=;
+	s=mail; t=1764744954;
+	bh=Jr3cLN07BBBACpo2PlbpyKSvyKJvAvyoTJy/BiaPrWw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=KEcg9PoZ0HDpqkejHdDP0kopyOliYmbEtizHcEdt+0CEP48ueZjW2M9YHXVZIxwsU
-	 kzt1ManaZv/ZHqyPIMvelFMWnC8lgXhmrqQDmpFX5cjOyl9PvIbM1RAMC0FiTo3wnr
-	 Zaqt7eJoU4S4f+mdfmhPs/IVu0t8ELh7cdrkRJ1nHNPwRynFRZgmLynsmXZ/pFSvT0
-	 IR+4WlP0kAOCVF34KY0PmpiD3MFUJ7uGKANMDGvl8z8481dlpAT7oPdQxDSrDthxls
-	 owdwJCxDmq+2Z/q7n+rptFBuIwzJsn1jt+6V9tv9btnolt3D/cDX1RMKJ/2+feFUUq
-	 QlBC71+kVFnNg==
+	b=NaO9rnjTYoJeEBZ+ro4jHNYOVm1U6K1E5lujJy7HHDQJk+hmfxL/wbu2J4sXNzI5M
+	 umTA8mPn91ULLAi5MhVgUY46aq8OaHMIz+51r6ImtHDAb0N54q4i03Rjc6CLrfAUy7
+	 UahC+DjeKR6ZehQlf5Ssz4IIGbsG9sKyfdJTjISqDUQ/rP+joyT7OBKaFkahr5GLwZ
+	 RxKKtQ2n8gJtYHPm/jtywhrYhqa+MJ4D9EGU16B0887Y7BaygUAQbcpNOwk9MVKiYQ
+	 /18I8NSPM6CeZ+nK5saSYYYEtpi/ROHtso+2Rhen4D5QP0KIrx0QTEpKS8WAkl3NMP
+	 keG00c9V3X7qA==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7C78A17E0610;
-	Wed,  3 Dec 2025 07:54:51 +0100 (CET)
-Message-ID: <f50544e4-1038-418a-a2bb-555865642984@collabora.com>
-Date: Wed, 3 Dec 2025 07:54:51 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C1B3717E0610;
+	Wed,  3 Dec 2025 07:55:53 +0100 (CET)
+Message-ID: <81ea7372-9172-4ee5-9a90-66cf06c40062@collabora.com>
+Date: Wed, 3 Dec 2025 07:55:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 4/4] arm64: dts: mediatek: add device tree for Tungsten
- 700 board
+Subject: Re: [PATCH v4 1/4] dt-bindings: vendor-prefixes: Add Ezurio LLC
 To: Gary Bisson <bisson.gary@gmail.com>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  Sean Wang <sean.wang@mediatek.com>
 Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 References: <20251202-review-v4-0-93f5cd2a0d4a@gmail.com>
- <20251202-review-v4-4-93f5cd2a0d4a@gmail.com>
+ <20251202-review-v4-1-93f5cd2a0d4a@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20251202-review-v4-4-93f5cd2a0d4a@gmail.com>
+In-Reply-To: <20251202-review-v4-1-93f5cd2a0d4a@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251202_225454_143978_D6D9A17D 
-X-CRM114-Status: GOOD (  18.03  )
+X-CRM114-CacheID: sfid-20251202_225556_580976_8B7A6D7A 
+X-CRM114-Status: UNSURE (   6.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,79 +81,13 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 02/12/25 23:08, Gary Bisson ha scritto:
-> Add device tree to support Ezurio Tungsten 700 (MT8390) SMARC SOM [1] +
-> Universal SMARC carrier board [2].
-> It includes support for the MIPI-DSI BD070LIC3 display which uses the
-> Tianma TM070JDHG30 panel + TI SN65DSI84 MIPI-DSI to LVDS bridge [3].
+> Ezurio is the new name of Laird Connectivity after it acquired Boundary
+> Devices.
 > 
-> [1] https://www.ezurio.com/product/tungsten700-smarc
-> [2] https://www.ezurio.com/system-on-module/accessories/universal-smarc-carrier
-> [3] https://www.ezurio.com/product/bd070lic3-7-touchscreen-display
-> 
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 > Signed-off-by: Gary Bisson <bisson.gary@gmail.com>
-> 
-> ---
-> Changes in v2:
-> - None
-> Changed in v3:
-> - None
-> Changed in v4:
-> - None
-> ---
->   arch/arm64/boot/dts/mediatek/Makefile              |  1 +
->   .../boot/dts/mediatek/mt8390-tungsten-smarc.dts    | 22 ++++++++++++++++++++++
->   2 files changed, 23 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index 30d169a31b10..85f338344dd3 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -102,6 +102,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8370-genio-510-evk.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8370-tungsten-smarc.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-genio-1200-evk.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8390-genio-700-evk.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8390-tungsten-smarc.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-kontron-3-5-sbc-i1200.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-radxa-nio-12l.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8395-radxa-nio-12l-8-hd-panel.dtbo
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dts b/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dts
-> new file mode 100644
-> index 000000000000..f1cf2821107f
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dts
-> @@ -0,0 +1,22 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (C) 2025 Ezurio LLC
-> + * Author: Gary Bisson <bisson.gary@gmail.com>
-> + */
-> +/dts-v1/;
-> +#include "mt8188.dtsi"
-> +#include "mt83x0-tungsten-smarc.dtsi"
-
-I just noticed: please, no wildcards in names - this has to be named
-mt8390-tungsten-smarc.dtsi instead.
-
-> +
-> +/ {
-> +	model = "Ezurio Tungsten700 SMARC (MT8390)";
-> +	compatible = "ezurio,mt8390-tungsten-smarc", "mediatek,mt8390",
-> +		     "mediatek,mt8188";
-> +};
-> +
-> +&cpu4 {
-> +	cpu-supply = <&mt6359_vcore_buck_reg>;
-> +};
-> +
-> +&cpu5 {
-> +	cpu-supply = <&mt6359_vcore_buck_reg>;
-> +};
-> 
-
-You could also just put the cpu4 and cpu5 supplies in the common
-mt8390-tungsten-smarc.dtsi file instead.
-
-That's based on your own preference, so..
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+
 
