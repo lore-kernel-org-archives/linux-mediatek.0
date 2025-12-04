@@ -4,55 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B69DD20682
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 13:13:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53597D20685
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 13:13:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0LHCCdnddYjx/7QEARYvl0k8iwfuy+IgXvCmYkI98VA=; b=KzSE5+WmgTNeWL
-	wWgh0CxhT0lKSfK63SumdRTbV11HkMbLwqST7Jn0y2h5w9djOBVe3ynKhp9dS9nkGPSmFmrFC/at5
-	acqCdP0cNRjKaYVV5ZBNUqQ609vGkd99xfFvweCQOYo0SIS/IVlgF5Jztkv99SrdiY7qYeat6pfYs
-	CK5dRTvsexz/WpO+5/prvj/ZSazt/cvmpGns1pXAW7HsMNRQdW7XCsS/wMmbsIbWWwEO5HKSzTEyq
-	qq0Q3WHnDpPV6IC3qVFIDTZeXBR7Br83I9vaf038WzKizyDlh9dmkPDrVr7R+JhNFcuwViZ8H8LqX
-	D62ObeoT7cbLwi3X0bDQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mvKjQKXrz9xLBMKqQldxh0N2c2JNqte9Gn9HSqWv8v4=; b=xYMaSxeXRRN1HDl0bohtJWYg3y
+	3NsGJ6aIzI8Jk8wydo7YJCPfWl98ySHU5IGGpxwJvdr3qETZeVDr5yEZp1CgAtJfWq08cj6DNoHqV
+	xd8JjYZK/SwRJqfaEwJHlbRatzPFkivYPbpekV4f14KkBbPrWVw/xZjd4j58sxG4/fDAVnnIHF20U
+	WRVPnuV5qKMEb/EXoHQ6YCTlQL99ZmAyxzRHWDyv/i3x9Fi2Giw53PbKiBQqaDxP/hLrC1kRYxilB
+	Ij1ud+X85VuofoYhIjSb+fOj3AnggQweqJ2209Eu4dV/piiapj869FVruWp3FqbIgf9rGVqyhlpnK
+	5RdTlAGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vR99b-0000000820J-0bf7;
-	Thu, 04 Dec 2025 13:13:51 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vR99g-00000008249-1Cte;
+	Thu, 04 Dec 2025 13:13:56 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vR99Y-000000081ze-0nao;
-	Thu, 04 Dec 2025 13:13:49 +0000
+	id 1vR99d-0000000821Q-1ouT;
+	Thu, 04 Dec 2025 13:13:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D17B741502;
-	Thu,  4 Dec 2025 13:13:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 30CF0C4CEFB;
-	Thu,  4 Dec 2025 13:13:47 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 23FF543DD0;
+	Thu,  4 Dec 2025 13:13:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A28BEC16AAE;
+	Thu,  4 Dec 2025 13:13:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764854027;
-	bh=LX5m6gmwF2s+hTAWnWC6SZ5hgbfLK8EmTlC3zSOFwfA=;
-	h=From:Subject:Date:To:Cc:From;
-	b=E/aDWsxu6fzANFFFSSV7NbiDgPUyieLItRp5Zo+HplFWE3rwdBZpTGZdQUoU/ftrd
-	 yGYNniyAzs1b0SCzXgPKJyECpfKy5sFMiYyE62KCbzdtQ80vszsNW3kikIyvQoQK/v
-	 dZnkExaXSThnrIkRFzT8Hv9uuxhVdCXB/G7TqSkb+/v7njZScPECqeu7liw/7J/YvR
-	 GKdTXIQkGlJ21yLQlkr0PsBlteJzupaZgnRrRyIMLbRWVcNEoYrqB+fdYh8NS5a3eU
-	 vUEK7fvZpyebiWixNJCe7QB5DQPv6KoGug9iy+gZeG48UIcP7kLt/Byf2Zr9qqPAE0
-	 AsWn91dxxhUKg==
+	s=k20201202; t=1764854033;
+	bh=j2sszEHvbo+AG1hndOWuS1qSVFTizaaquasEEngVdcE=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=Lhd29DNACs57cZtRRAVVINI7OhUHBJpQMIkfydpX5nOpuHaAgWxRRpobPMp4G+YGN
+	 TQMNvPvVubsSyvlEVrp6Fw9KUS1GBajwsub6Dk3pVtp3ofRwqd95XITFF3PPOreXAv
+	 HH4Y5cjmDVfvkgQkZKnevFjqSKocN5riF81D1juHs8mvpjchI7WQAtORUP0AZGL0+z
+	 Knz7OB6uM48Vm5upEYVIc9ig9oLzE4/83MPxG9TmR3rSIclKrOTT72uun47WZ+ujD3
+	 61pT9AhtoxdZHmwWVBhbAPGRhrkVrFs6EV5q5CatL0z9/72CpRTUH3bv62yLo4QPK7
+	 Vrou1YfI22H7w==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH mt76 0/3] wifi: mt76: mt7996: Some MLO link management
- fixes
-Date: Thu, 04 Dec 2025 14:13:27 +0100
-Message-Id: <20251204-mt76-txq-wicd-fix-v1-0-1f4b2f2b3b2c@kernel.org>
+Date: Thu, 04 Dec 2025 14:13:29 +0100
+Subject: [PATCH mt76 2/3] wifi: mt76: mt7996: Reset mtxq->idx if primary
+ link is removed in mt7996_vif_link_remove()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MQQqAIBAAvxJ7biEXM+or0SFyqz1kpVGC9Pek4
- wzMJAjshQN0RQLPtwTZXQZVFjCto1sYxWYGqqhWVGncrsbgFU98ZLI4S0QyzahbrQwRQ+4Oz1n
- /z3543w+C1aQ2YwAAAA==
-X-Change-ID: 20251204-mt76-txq-wicd-fix-267a4941622e
+Message-Id: <20251204-mt76-txq-wicd-fix-v1-2-1f4b2f2b3b2c@kernel.org>
+References: <20251204-mt76-txq-wicd-fix-v1-0-1f4b2f2b3b2c@kernel.org>
+In-Reply-To: <20251204-mt76-txq-wicd-fix-v1-0-1f4b2f2b3b2c@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
  Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -62,9 +60,8 @@ Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251204_051348_250481_84B6BA78 
-X-CRM114-Status: UNSURE (   5.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251204_051353_496020_8EB5A976 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,21 +76,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Reset WCID index in mt76_txq struct if primary link is removed in
+mt7996_vif_link_remove routine.
 
+Fixes: a3316d2fc669f ("wifi: mt76: mt7996: set vif default link_id adding/removing vif links")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Lorenzo Bianconi (3):
-      wifi: mt76: mt7996: Set mtxq->wcid just for primary link
-      wifi: mt76: mt7996: Reset mtxq->idx if primary link is removed in mt7996_vif_link_remove()
-      wifi: mt76: mt7996: Switch to the secondary link if the default one is removed
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
 
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 84 ++++++++++++++++--------
- 1 file changed, 58 insertions(+), 26 deletions(-)
----
-base-commit: 53d1548612670aa8b5d89745116cc33d9d172863
-change-id: 20251204-mt76-txq-wicd-fix-267a4941622e
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 0ad0152478a7e1b11bfe5d68d750cb8332d54290..8bf85a9beee7dc8c6741568af5b36cf89f0c1a88 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -409,12 +409,23 @@ void mt7996_vif_link_remove(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 		struct ieee80211_bss_conf *iter;
+ 		unsigned int link_id;
+ 
++		/* Primary link will be removed, look for a new one */
+ 		mvif->mt76.deflink_id = IEEE80211_LINK_UNSPECIFIED;
+ 		for_each_vif_active_link(vif, iter, link_id) {
+-			if (link_id != IEEE80211_LINK_UNSPECIFIED) {
+-				mvif->mt76.deflink_id = link_id;
+-				break;
++			struct mt7996_vif_link *link;
++
++			link = mt7996_vif_link(dev, vif, link_id);
++			if (!link)
++				continue;
++
++			if (vif->txq) {
++				struct mt76_txq *mtxq;
++
++				mtxq = (struct mt76_txq *)vif->txq->drv_priv;
++				mtxq->wcid = link->msta_link.wcid.idx;
+ 			}
++			mvif->mt76.deflink_id = link_id;
++			break;
+ 		}
+ 	}
+ 
 
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.52.0
 
 
