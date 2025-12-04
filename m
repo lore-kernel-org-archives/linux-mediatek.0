@@ -4,106 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70AE8D216AE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 16:33:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D6EFD216A4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 16:48:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c1NBivu5UEBkQBIeFnHZjPjnHfogcWbiZIn2200JwTs=; b=jEsm5numyPULSCTanWpMt9qoxi
-	tFg/AfoHWRS6tjKbXUASrUv/rNr/SR4ImWtvA92rfBSVLIRgCrfDIZbRFwnpmkp3yKKLe+wd40kk9
-	AC9K47gV4S/2mrFvaaaboIdpkXQhqM6y39FLwrOrtaAFab3ngOGGTTJNRegTn8HUgA07zndj/ib13
-	aiXIimmU47oMQhkqQpS6LBAf0JReINtYesEwvXqei3jPCNGCTepbDAcP5YRFnrQC6KcjyeTBUkSvg
-	+xqqVcUvh46+7eX47AHrefoN1AS/UidHNUnz0vQrad6DooXj/KOtTUDif10umXTeqmpCuCoM3kvGK
-	VXvLSg7g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xjinBqQteehGM6jaRBiqXNFnQoRix6VxRiUOtQ6uvBI=; b=dvKuVbaZKFt04S/LZYCIewe+nf
+	5pgvNPdXw1Y2sj6og7MSAl6lqGITXcCe+zrzfzF9UPTD6C9TvUzs8K0CLjzCewe2+oSKDw135jlHc
+	2wqdhtStFfgzLv1DBBz7slFCrNSP9V4rhywnWJu+sFHJma3PMT6B63CRgoBdO3tZyHA+AVRZSM+qw
+	H7mgF19ScZ0POPKulKlS+LKEbyvYKfZHP8DWJtS+X/+9Smm2Iw792DmFcPXww9cLovpAh64wwJfGM
+	BXrL3OVvXjx+jLk1XT4DAPoW0FaVQpXjzLe6q6duua0Jfcbi4nY2BmdkmGFrrKirYOLaFJ1XXle/e
+	K6Ag83WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRCGh-00000008IGV-3o9F;
-	Thu, 04 Dec 2025 16:33:23 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1vRCV6-00000008Jay-012a;
+	Thu, 04 Dec 2025 16:48:16 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRCGf-00000008IFX-0JTp
-	for linux-mediatek@lists.infradead.org;
-	Thu, 04 Dec 2025 16:33:22 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-42b2de74838so68830f8f.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 04 Dec 2025 08:33:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1764865999; x=1765470799; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=c1NBivu5UEBkQBIeFnHZjPjnHfogcWbiZIn2200JwTs=;
-        b=lwVTM2bIVnqnP8aDKKVDi8uAxsh0npNNJxUND8tnx/vkyCrqhgWb9TkjhhqlTqVJw+
-         zDtaA5R8Dbv2ITXUm4WVpAjjLBp62jksyUPzteWxBtsXXXMyRZNhWxtrVT9TAWGVz9ZU
-         Bqm0mbe1wivkucnUo7IBcZvxT1oDPmO48spbkgKQ+H4DBkc4jKB7X8Tw96ku+b5fkAnT
-         0nrKFv9Ftqf426ZN9Tu+Ozfoo3wGuoQy3mxJm3Ds6bbQG6jrpXnJw7KBPrS5yJM1NII9
-         F1w1QwwRUonbTVJQMH2KSNvmUkjBx1PJURvxTMnbrWRPaCydON8fTCMOCv/CGz/qPdGu
-         6xCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764865999; x=1765470799;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=c1NBivu5UEBkQBIeFnHZjPjnHfogcWbiZIn2200JwTs=;
-        b=npS5muvZUYnsv7LUcPlbjCOX+7RJhVGBarWepUm0T5GpQW3c2YURUsfHLC/qGRUf5B
-         AeyfiNSgWTjGnO5JK6AFdkzI8CBj8k79YND/jnsmu+7IVP2d0DIi98ACACGemXmflXDX
-         1TcESvo6RLL/65pEe/gxht0sgHSzNEIRaOipFrEMcGHTEdXfrVB1+jjY+V/pjNN4escL
-         gRr4xxDwfJv4TamM6GjtPPCcifywvu6dKx5K/hNI4SztJSP6uMDvira6S4WJ84pidO1K
-         YCo1r+0NkhIWQooBLwY8ajzjF/pKNJ0VolnEO2kbWB9MUgzksTfHb4nVo8qvJS3L0/Yg
-         xdKA==
-X-Forwarded-Encrypted: i=1; AJvYcCXGjQL+cmTdtrTyJ0Od5KkOvoaydXIZEVEG4emJqnZDXNS+sHxp61p1+GC6clustIq70YXKBSfNu9SR8+8ctg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyqlCCjk5084EKm3KKtx7r3j6UwkUgScdn6o6sFJdfbUdO7oUvJ
-	5fVdyus9oBqwATfo5X9fWQ1hUvQIgA5igx1q3P0sBv6JRymlY0gN5bcF
-X-Gm-Gg: ASbGncvK8Z/7r0nC0BFYebVXL94j8z9I29hCurYGm6AIQUl0yKmWj6svmINhuDczLtP
-	zahg1Pv5lv6ImuzgP0IyDMlLT5sAJoYHwkVPEt9fJU2tfXK6p//VdfwqbesJacMpHbTcPJuIsmU
-	5V6A4+Ro8PROHm7HY2AUjL0GHyKttdR+tkNg6GcDsZJg+qIUnnZGLiJqM0UBsPZZsYKrUe8MSYT
-	k5iaIziZRZkxQm2/50PB5rIsoPtVPb6YNRu5aYKn/vjr+/xA1RmUMu1eSHQdBjQtLHBgGUnu6b2
-	/vlklSnEaZGkkJR43vLJCLBYjyQjXlwTJZIwlu01hoYYICmdwh9OiX67weNLXMNm0LJWDFb7zBg
-	cq9vh6N20jDUTFnPxA68LIDVc0Uu2BHUR4KQIR6QrOSJ3rR3d9XroEWvzgbF0nAl+jq0xZq0ynQ
-	q0kks=
-X-Google-Smtp-Source: AGHT+IGi6I2IgodSmUy9udv2+I0uezI+6X0NoB7sgQPDd5BV4p/ONZs+5KGeEu5OGTX5yIqBwOwJzw==
-X-Received: by 2002:a05:6000:18a3:b0:429:c711:22b5 with SMTP id ffacd0b85a97d-42f73177864mr3997507f8f.1.1764865998607;
-        Thu, 04 Dec 2025 08:33:18 -0800 (PST)
-Received: from skbuf ([2a02:2f04:d106:d600:dbb2:245d:2cf5:21d3])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42f7d353f8bsm4099038f8f.43.2025.12.04.08.33.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 Dec 2025 08:33:17 -0800 (PST)
-Date: Thu, 4 Dec 2025 18:33:15 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Andrew Lunn <andrew@lunn.ch>, Daniel Golle <daniel@makrotopia.org>,
-	Frank Wunderlich <frankwu@gmx.de>, Chen Minqiang <ptpt52@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+	id 1vRCV4-00000008JaS-2M4j;
+	Thu, 04 Dec 2025 16:48:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id A51D960200;
+	Thu,  4 Dec 2025 16:48:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C59AEC116B1;
+	Thu,  4 Dec 2025 16:48:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764866893;
+	bh=UkC+QMQ4k9lCMANWG3quk95RKaYDeofbdrxNz9Jdz/M=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=a10rYX0xwCL5ATxmQuGOKfiv0qz690sWMLTqCrGvIcebZOvyRvBHwg2VH22vaet03
+	 QGl4P+7uvAuCbk/SI4IctgZTbmm55y2uDb+9Y8vPuOW96LDra9PB2Ml0hPDWdpqa56
+	 6Wpgu2DyYI9t5gdU/tk0QgNJKlj810pUK7Qcn4RpWs6m5UuZ786A5o26M4sph8vp7K
+	 j8Wac6zwZjPpqG0I+oTf+mZ5xXKDGUWIs6ype/4nc5vq7ghHK/hx75mzSN1XMbqOr2
+	 Vh0URcOOa9ewEbEx0r/uMU6d9lrUR7ytU+4AFNBM6KlkVHssjOAn01WtqoA3WoEbDH
+	 8Og2CEFf1Yf2w==
+Message-ID: <66d080f1-e989-451f-9d5e-34460e5eb1b0@kernel.org>
+Date: Thu, 4 Dec 2025 17:48:07 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 2/2] net: dsa: mt7530: Use GPIO polarity to generate
  correct reset sequence
-Message-ID: <20251204163315.rlc36k72cwfdyye6@skbuf>
-References: <0675b35f-217d-4261-9e3f-2eb24753d43c@lunn.ch>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Daniel Golle <daniel@makrotopia.org>, Frank Wunderlich <frankwu@gmx.de>,
+ Andrew Lunn <andrew@lunn.ch>, Chen Minqiang <ptpt52@gmail.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "Chester A. Unal" <chester.a.unal@arinc9.com>,
+ DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+References: <20251129234603.2544-1-ptpt52@gmail.com>
+ <20251129234603.2544-2-ptpt52@gmail.com>
+ <0675b35f-217d-4261-9e3f-2eb24753d43c@lunn.ch>
  <20251130080731.ty2dlxaypxvodxiw@skbuf>
  <3fbc4e67-b931-421c-9d83-2214aaa2f6ed@lunn.ch>
  <0d85e1e6-ea75-4f20-aef1-90d446b4bfa1@kernel.org>
  <00f308a1-a4b1-4f20-8d8e-459ddf4c39b1@gmx.de>
- <aS7Zj3AFsSp2CTNv@makrotopia.org>
- <20251204131626.upw77jncqfwxydww@skbuf>
- <7aacc2c2-50d0-4a08-9800-dc4a572dffcb@lunn.ch>
- <20251204153721.ubmxifrev4cre6ab@skbuf>
- <6344bdfd-c22c-45a1-854d-59091dfeda97@kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <6344bdfd-c22c-45a1-854d-59091dfeda97@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251204_083321_135628_319F613D 
-X-CRM114-Status: GOOD (  12.74  )
+ <aS7Zj3AFsSp2CTNv@makrotopia.org> <20251204131626.upw77jncqfwxydww@skbuf>
+ <4170c560-1edd-4ff8-96af-a479063be4a5@kernel.org>
+ <20251204160247.yz42mnxvzhxas5jc@skbuf>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20251204160247.yz42mnxvzhxas5jc@skbuf>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,25 +130,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 04, 2025 at 04:52:53PM +0100, Krzysztof Kozlowski wrote:
-> Yeah. BTW, you can also refer to one of my commits -
-> 738455858a2d21b769f673892546cf8300c9fd78 - but also note that similar
-> work later combined with much more useful change of gpio->gpiod API was
-> rejected by Mark Brown on basis:
+On 04/12/2025 17:02, Vladimir Oltean wrote:
+> On Thu, Dec 04, 2025 at 03:49:52PM +0100, Krzysztof Kozlowski wrote:
+>> On 04/12/2025 14:16, Vladimir Oltean wrote:
+>>> I get the feeling that we're complicating a simple solution because of a
+>>> theoretical "what if" scenario. The "NOT" gate is somewhat contrived
+>>
+>> You downplay this case and suggest (if I get it right) that NOT gate is
+>> something unusual.
+>>
+>>  I mentioned "line inverter" but it's not about NOT gate. There is no
+>> need for NOT gate at all, like some magical component which no one puts
+>> to the board. The only thing needed is just to pull the GPIO up or down,
+>> that's it. It's completely normal design thus it CAN happen.
+>>
+>> Of course "can" does not mean it actually does, because certain
+>> configurations like powerdown-fail-safe are more likely and I am not an
+>> electric circuit designer to tell which one is better, but that
+>> downplaying does not help here.
 > 
-> "No, the DT is supposed to be an ABI.  The point in having a domain
-> specific language with a compiler is to allow device trees to be
-> distributed independently of the kernel."
-> 
-> https://lore.kernel.org/all/9942c3a9-51d1-4161-8871-f6ec696cb4db@sirena.org.uk/
-> 
-> What's interesting, exactly the same commit for the same file, done by
-> different person (Peng), introducing the same issues without addressing
-> them, was then merged by Mark:
-> https://patch.msgid.link/20250324-wcd-gpiod-v2-2-773f67ce3b56@nxp.com
-> (commit c2d359b4acfbe847d3edcc25d3dc4e594daf9010)
-> 
-> so you know... it's all relative. :)
+> I don't want to dismiss this comment, but I don't really understand it.
+> What do you mean by "line inverter", is it the component inside the GPIO
+> pin which makes it active low?
 
-Yeah, IDK. May we all stand by our own past statements.
+I mentioned much earlier "line inverter" and here the "NOT gate"
+appeared and both suggest you need some dedicated component.
+
+What I want to say that it is not true. You do not need dedicated
+component to have different polarity, because it is as simple as
+connecting the wire to ground or to voltage and moving a resistor from
+one place to another.
+
+> 
+> I thought that the premise of this patch set is that old device trees
+> are all (incorrectly) defined as GPIO_ACTIVE_HIGH, but someone familiar
+> with the matter needs to fact-check this statement.
+
+Yes, that's most likely true.
+
+> 
+> Anyway, you and Andrew are talking about different things, you haven't
+> made it clear (or at least it wasn't clear to me) that the inverter you
+> are talking about isn't his NOT gate (that isn't described in the device
+> tree at all, as opposed to your inverter which would make the GPIO line
+> GPIO_ACTIVE_LOW - that's something verifiable).
+
+Both are the same - inverter or NOT gate, same stuff. It is just
+connecting wire to pull up, not actual component on the board (although
+one could make and buy such component as well...). We never describe
+these inverters in the DTS, these are just too trivial circuits, thus
+the final GPIO_ACTIVE_XXX should already include whatever is on the wire
+between SoC and device.
+
+> 
+>> Just to clarify: I expect clear communication that some users will be
+>> broken with as good as you can provide analysis of the impact (which
+>> users). I only object the clame here "no one can ever pull down a GPIO
+>> line thus I handled all possible cases and made it backward compatible".
+>>
+>> And that claim to quote was:
+>> "Therefore, regardless of whether a DTS is old or new, correct or
+>> incorrect, the driver now generates the correct electrical reset pulse."
+>>
+>> which is 100% false and I am surprised how one could claim that.
+> 
+> Agree, the communication should be better.
+
+
+Best regards,
+Krzysztof
 
