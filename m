@@ -4,54 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C524D24477
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 18:37:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 394B5D2A536
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 20:47:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZnikBdJoxxg8wHn9SWnSAU8ENnmXRyP1O/uoqrq/9Pw=; b=EcpAJjpytBV/cx
-	TpUPKebfVy7e2vOzv+wYoBnow9a1KJwLFAg0o8fil2u/V/DtRfaz5I20vQGOcIiGten2ACUXd5KOq
-	l1lqjeN2dPRcyQAqbZh8tk7N37YBqOv3GMGurSTntZr+11x/+HrDnPMrO+Nn2IEE81BB88sGPIent
-	NozUtJ+Pm1E+4ZBXNdTJkmo7EFiTQ591ZOVICj2rTDhthY94gMvxkRN7Xl5rIQpBylEQdx+VkwUAz
-	vDvdc/PPzZhKzrvJQkZyqTt/h33kiz9ftzUcwOJCmzj1EQGT82GRwl7iJAGcIBBCHnOOESWvMJGUl
-	pFBToWYy5tLs4eibA7eQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=90lPoCGIeZvibFvI+Jj7Aj4Z4grOEkzE4KDDgVz3fS8=; b=mYT8ZbUOuBNQiUUG1CkcnU1rVJ
+	anQqhKP5Ds6qeb0a2qqFZB6cZlvHLcNB/qDEifcoQ2csiV8LSPW+iNlnxIBKM4XIMnAPtOGDEIR0z
+	EJaYGAYOxRgIrcdlj3fercX2SczGYt4N4HAvzr1eZ1Ypt1J4yMmCSAJ+zYpvVg+49aPDFelKWTkIi
+	MI5hYkFeJKDRfI43QQn5fTHxiVpdiXSwKM7E6J26ue420gXHqPN58jx/IaYEZ53iQopBzSLlmJqVc
+	Nb+yc9E5+iNFmZ8rO9U05cBumGZk9qtbY2M8RbYmWh3IKMNM9y6bgFcaZLdYYZlwEeNxTm70IWPgN
+	rbFMT6Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRED2-00000008SCi-1bcu;
-	Thu, 04 Dec 2025 18:37:44 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vRGF0-00000008czf-2ZWy;
+	Thu, 04 Dec 2025 20:47:54 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRED0-00000008SCF-0eJf;
-	Thu, 04 Dec 2025 18:37:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 94314601ED;
-	Thu,  4 Dec 2025 18:37:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 640D6C116C6;
-	Thu,  4 Dec 2025 18:37:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764873461;
-	bh=bYWLSgF9p7Y5PVUDIPslbzBPgg5NlyMtulDnw+w6ZEc=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=C/TdZ+0jKLvwtqzuLmY578EyageX500aWx4B97L2AGETjMz0TJtXQNw3NqF331SYg
-	 HQvqoIsdo+CZr3PFCYlyJ5B9EmQWdx26dms+p64N7yKDON3EFAG0pK0HFLYeUZmNg5
-	 9NUNkf7CzSG2+Y5NhPqGR3USJaQ6FH90zPwG3Ois3qUAjV1Vqy+2YHm2KgUq3z+Q78
-	 QH8XEqDETRW4EAqdOcfN7O8+T8hnzi/ADTvHqBZPtfpdze5TrVACCXuZZ9vDli5zay
-	 ZYHoDohjEzZZ7aQLOJeM2Xpje6kziAgtH+cRLIhw53JRfGDYCV3h68D6YQvaOzJ9r3
-	 e0W5KIg1Vc/Zw==
-Date: Thu, 4 Dec 2025 10:37:39 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [RFC v2 2/3] net: ethernet: mtk_eth_soc: Add RSS support
-Message-ID: <20251204103739.013d053b@kernel.org>
-In-Reply-To: <20251204165849.8214-3-linux@fw-web.de>
-References: <20251204165849.8214-1-linux@fw-web.de>
-	<20251204165849.8214-3-linux@fw-web.de>
+	id 1vRGEx-00000008cyb-0Ds2;
+	Thu, 04 Dec 2025 20:47:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=90lPoCGIeZvibFvI+Jj7Aj4Z4grOEkzE4KDDgVz3fS8=; b=T/SIfiqDXVikO9O0tu4uZBNlLW
+	6PMOsEibq8S9h3DE3ovp9EN5cl/7WTTpDdxenrHdNtAeCsqlo1hH8k3dnhCJenq/VnizEzAHbCv6s
+	crE4bj22iCna436g2Iqoqwd8IKtACPqvPCtv1jAF2/vjBryDOi2SU3fbdHxccoBbjOluy3utx/Xhr
+	WLzi/hGK0ayRycPwbfh1gsKYrrfEUwJelwKQGGbKTdnPgalqsgXxV6zwFLfmnn50PPjzzzpceDqKh
+	KkZX+cS2QzNka7NhIIcEV6VS232P7EO2438bRCGz1z+PS7rKgOvELaLHLkm1INShBT18CE1oSEfdU
+	Y71n0DPQ==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56322)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1vRGEh-000000003wd-1CNC;
+	Thu, 04 Dec 2025 20:47:35 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1vRGEc-000000001L6-1Grf;
+	Thu, 04 Dec 2025 20:47:30 +0000
+Date: Thu, 4 Dec 2025 20:47:30 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Vladimir Oltean <olteanv@gmail.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Frank Wunderlich <frankwu@gmx.de>, Andrew Lunn <andrew@lunn.ch>,
+	Chen Minqiang <ptpt52@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH v3 2/2] net: dsa: mt7530: Use GPIO polarity to generate
+ correct reset sequence
+Message-ID: <aTHzYq5L7kvAPrjQ@shell.armlinux.org.uk>
+References: <0d85e1e6-ea75-4f20-aef1-90d446b4bfa1@kernel.org>
+ <00f308a1-a4b1-4f20-8d8e-459ddf4c39b1@gmx.de>
+ <aS7Zj3AFsSp2CTNv@makrotopia.org>
+ <20251204131626.upw77jncqfwxydww@skbuf>
+ <4170c560-1edd-4ff8-96af-a479063be4a5@kernel.org>
+ <20251204160247.yz42mnxvzhxas5jc@skbuf>
+ <66d080f1-e989-451f-9d5e-34460e5eb1b0@kernel.org>
+ <20251204171159.yy3nkvzttxecmhfo@skbuf>
+ <178afbeb-168f-4765-bb0b-fad0bcd29382@kernel.org>
+ <9f7da6ae-9e3e-442f-a203-28a8881dbe0f@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <9f7da6ae-9e3e-442f-a203-28a8881dbe0f@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251204_124751_090709_0408D92B 
+X-CRM114-Status: GOOD (  19.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,56 +95,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mason Chang <mason-cw.chang@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>, Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu,  4 Dec 2025 17:58:44 +0100 Frank Wunderlich wrote:
-> +static int mtk_rss_init(struct mtk_eth *eth)
-> +{
-> +	const struct mtk_soc_data *soc = eth->soc;
-> +	const struct mtk_reg_map *reg_map = eth->soc->reg_map;
-> +	struct mtk_rss_params *rss_params = &eth->rss_params;
-> +	static u8 hash_key[MTK_RSS_HASH_KEYSIZE] = {
-> +		0xfa, 0x01, 0xac, 0xbe, 0x3b, 0xb7, 0x42, 0x6a,
-> +		0x0c, 0xf2, 0x30, 0x80, 0xa3, 0x2d, 0xcb, 0x77,
-> +		0xb4, 0x30, 0x7b, 0xae, 0xcb, 0x2b, 0xca, 0xd0,
-> +		0xb0, 0x8f, 0xa3, 0x43, 0x3d, 0x25, 0x67, 0x41,
-> +		0xc2, 0x0e, 0x5b, 0x25, 0xda, 0x56, 0x5a, 0x6d};
-> +	u32 val;
-> +	int i;
-> +
-> +	memcpy(rss_params->hash_key, hash_key, MTK_RSS_HASH_KEYSIZE);
+On Thu, Dec 04, 2025 at 06:32:23PM +0100, Krzysztof Kozlowski wrote:
+> On 04/12/2025 18:23, Krzysztof Kozlowski wrote:
+> > On 04/12/2025 18:11, Vladimir Oltean wrote:
+> >> On Thu, Dec 04, 2025 at 05:48:07PM +0100, Krzysztof Kozlowski wrote:
+> >>> Both are the same - inverter or NOT gate, same stuff. It is just
+> >>> connecting wire to pull up, not actual component on the board (although
+> >>> one could make and buy such component as well...). We never describe
+> >>> these inverters in the DTS, these are just too trivial circuits, thus
+> >>> the final GPIO_ACTIVE_XXX should already include whatever is on the wire
+> >>> between SoC and device.
+> >>
+> >> Please read what Andrew said:
+> >> https://lore.kernel.org/netdev/3fbc4e67-b931-421c-9d83-2214aaa2f6ed@lunn.ch/
+> >>
+> >>   Assuming there is not a NOT gate placed between the GPIO and the reset
+> >>   pin, because the board designer decided to do that for some reason?
+> >>                    ~~~~~~~~~~~~~~
+> >>
+> >> You two are *not* talking about the same thing. I dismissed the
+> > 
+> > 
+> > It's the same thing. NOT gate is just pulling some pin down or up.
+> 
+> Although transistor would be still needed, so indeed that's still a bit
+> more than a wire and resistor as I implied.
+> 
+> It looks like:
+> https://www.electronics-tutorials.ws/wp-content/uploads/2018/05/logic-log47.gif
 
-netdev_rss_key_fill()
+A bit more than even that... I do hope folk don't use exactly that,
+that's the kind of thing that would be used in "learning about
+electronics" projects! That's a recipe to drive a transistor into
+full saturation, which makes it comparitively very slow to turn off.
 
-> +	for (i = 0; i < MTK_RSS_MAX_INDIRECTION_TABLE; i++)
-> +		rss_params->indirection_table[i] = i % eth->soc->rss_num;
-
-ethtool_rxfh_indir_default()
-
-> +static int mtk_get_rxfh(struct net_device *dev, struct ethtool_rxfh_param *rxfh)
-> +{
-> +	struct mtk_mac *mac = netdev_priv(dev);
-> +	struct mtk_eth *eth = mac->hw;
-> +	struct mtk_rss_params *rss_params = &eth->rss_params;
-> +	int i;
-> +
-> +	if (rxfh->hfunc)
-> +		rxfh->hfunc = ETH_RSS_HASH_TOP;	/* Toeplitz */
-
-hfunc is not a pointer, you should just set it?
-
-> +	if (rxfh->key) {
-> +		memcpy(rxfh->key, rss_params->hash_key,
-> +		       sizeof(rss_params->hash_key));
-> +	}
-> +
-> +	if (rxfh->indir) {
-> +		for (i = 0; i < MTK_RSS_MAX_INDIRECTION_TABLE; i++)
-> +			rxfh->indir[i] = rss_params->indirection_table[i];
-> +	}
-> +
-> +	return 0;
-> +}
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
