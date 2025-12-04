@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C32FBD1D897
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 08:11:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA4E9D1D884
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 08:11:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hG/KdOHq7SuKRVdgR08LyaVUng2vbhQkhjc2lR2Hld8=; b=PVlSEd7uBx04aJmVLbMHVVzLMk
-	Pk6BnNdjz7jtTXxckYGtFRPNLPh/luevjeNqtZEafw7OZ6zy5inAHJX46axYhqjaAbFS099QV9HkB
-	/MMzcKObJwPtPZkH095gl0yBuRy9WwMAHfyZ2g5h6fHhCzAUw1SvFetLoi2ksjTBUDhYYr7ikTJ2K
-	CI44yNBeJGWBw52QfRcDEjTBYnq9IDS+67Uzp4unY1RVdub6nP7z723h1lnvN4bAVPJonu1oIWorL
-	MAaVtWkAZiXPKlxTD5+ja8LvcQtLoUMbIESGKDVQoiaxPX4hjGnAKV1YVhkpdlIQhkzBz4a692aiF
-	G50kCuyw==;
+	bh=+irdYQ55lAjXovfmD1rXTK8/JD/sbh+KiEDf10dmDBk=; b=OFfnznmzNC1u4iJitAP360KIN5
+	eE4ypyCNVMmmZKP+t8WTII+t8zPmtrtLZ++JpjU0sPKnkBrE5Viouqi/9lhn3VIId07pVSq9hW5ZQ
+	zweC1pN1/RqJO8D1tV7me4mGh3X0DqVqASuB/Uhmqw1ui1mQFJC6Y8zWcCAbo2M7Ac1EcyMkhL44A
+	MpgL4za8DxVCaDPY/FKZCDOvr7KlpCvNN7/Mpr8nS8cTGU2NDJ+wKuTcLC+EFxoJX4pm0a2x8IP4C
+	LfpAxsZRvJSsWvjZ4L3qal3bJBrDixMwFe8/sdmvgQRtZQ8spD1nyy1SZ9RJS50RkoJCbpYEO+rjS
+	uT1tafkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vR4RA-00000007eiJ-1w0B;
-	Thu, 04 Dec 2025 08:11:40 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vR4RB-00000007ekI-2wao;
+	Thu, 04 Dec 2025 08:11:41 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vR4R7-00000007efS-3LjJ;
-	Thu, 04 Dec 2025 08:11:38 +0000
+	id 1vR4R7-00000007eev-1Anu;
+	Thu, 04 Dec 2025 08:11:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3EED660192;
-	Thu,  4 Dec 2025 08:11:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92391C4CEFB;
-	Thu,  4 Dec 2025 08:11:36 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 757B444094;
+	Thu,  4 Dec 2025 08:11:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D5104C4CEFB;
+	Thu,  4 Dec 2025 08:11:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764835896;
-	bh=jKQob5kGhPU6k1EDWVJHsm1KE/0se8/FjngsbWMsNWc=;
+	s=k20201202; t=1764835894;
+	bh=9tkiIoFRCYZoXUyUbxUPn15FtFCqvMqqWuG2MjAgwnM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=BZwzHcYqEX41azFTRd4HvbwGo/xKXk1ke2SjahvGzvsnx0BMnsBMIGOMqo1aZOV0Q
-	 U2dzV0+Hul1P4wYy09270wopWqh/KWLpUm1v7b2fgmFTaESC6VN+PaeB7AftXPgX3B
-	 GwyHCmw0AG2UCeLOn/DFYmIfp7JcAtnvDJnq3GbF1pMxnArZAhfZDk4UecQw8IYQfg
-	 X5bm5S9r/QLWrrq8n2Ycgiz7PcVGLwMYwp3Iov7900usv2CndM+dOd+R9hVONC6Yvv
-	 qpVIh41Mbe70ZWeqcX5GdAf4dneqlULcMFAoukX9i7j3ZwQ+5T0jCmpwM86zaSphc0
-	 84Tw1NSR1+f3Q==
+	b=Pi/g7otKqRIiFGvIX4xL7IEzBgfVdqdxzAC9ulp4ORE5QV4MaPUwqpocavkQ9Z2TA
+	 MACoajbNq3k9pQi0ErArJ/4f7CTveRv/NeJx7FBn//GJTWwJXUU5Z+i/zjvh9an1Td
+	 ZxUQpyJiWWNxQM73rGysOfIyAt8rjqs/G3FtS5dHZKm+kFf0J6K9UhIIFvRHV4OGg0
+	 9brZKQc4KsLTkG9Cl/RB2Jvi7BHiyBq6rzzhTpmwtz/QqQM3yhRD0tVHRd0a7LVdEu
+	 4sC7yQvEFNWRjB/H1G+UcEbxYXDSMNCtliWliBp5gOhzx3w/lmsIds+kVd068jl5WK
+	 DeX6x+2a7kl9g==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 04 Dec 2025 09:10:47 +0100
-Subject: [PATCH mt76 05/11] wifi: mt76: mt7996: Fix wdma_idx for MT7996
- device if NPU is enabled
+Date: Thu, 04 Dec 2025 09:10:46 +0100
+Subject: [PATCH mt76 04/11] wifi: mt76: mt7996: Fix BAND2 tx queues
+ initialization when NPU is enabled
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251204-mt76-npu-eagle-offload-v1-5-7819c52c0893@kernel.org>
+Message-Id: <20251204-mt76-npu-eagle-offload-v1-4-7819c52c0893@kernel.org>
 References: <20251204-mt76-npu-eagle-offload-v1-0-7819c52c0893@kernel.org>
 In-Reply-To: <20251204-mt76-npu-eagle-offload-v1-0-7819c52c0893@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
@@ -59,6 +59,9 @@ To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
 Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, Hui Ma <hui.ma@airoha.com>
 X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251204_001138_830061_E5C0E657 
+X-CRM114-Status: GOOD (  14.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,30 +76,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a preliminary patch to enable NPU offload for MT7996
+Fix BAND2 tx queues initialization for MT7996 chipset when NPU is
+enabled. This is a preliminary patch to enable NPU offload for MT7996
 (7990-Eagle) chipset.
 
 Tested-by: Hui Ma <hui.ma@airoha.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 18 ++++++++++++------
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  1 +
+ 2 files changed, 13 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index beed795edb24c67e1b7b44fe87fd5de125a21d94..d9df3a72f4ef8170722cca626538ea526c04781b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -2204,6 +2204,10 @@ mt7996_net_fill_forward_path(struct ieee80211_hw *hw,
- 		path->mtk_wdma.wdma_idx = wed->wdma_idx;
- 	else
- #endif
-+	if (is_mt7996(&dev->mt76) && mt76_npu_device_active(&dev->mt76) &&
-+	    msta_link->wcid.phy_idx == MT_BAND2)
-+		path->mtk_wdma.wdma_idx = 1;
-+	else
- 		path->mtk_wdma.wdma_idx = link->mt76.band_idx;
- 	path->mtk_wdma.bss = link->mt76.idx;
- 	path->mtk_wdma.queue = 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index 00a8286bd136862d756706d6ad8098a2ddc3ca4e..9fbe4235de0d0d42776d5661fa1c297e431b8d27 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -668,8 +668,9 @@ static int mt7996_register_phy(struct mt7996_dev *dev, enum mt76_band_id band)
+ 		return 0;
+ 
+ 	if (dev->hif2 &&
+-	    ((is_mt7996(&dev->mt76) && band == MT_BAND2) ||
+-	     (is_mt7992(&dev->mt76) && band == MT_BAND1))) {
++	    ((is_mt7992(&dev->mt76) && band == MT_BAND1) ||
++	     (is_mt7996(&dev->mt76) && band == MT_BAND2 &&
++	      !mt76_npu_device_active(&dev->mt76)))) {
+ 		hif1_ofs = MT_WFDMA0_PCIE1(0) - MT_WFDMA0(0);
+ 		wed = &dev->mt76.mmio.wed_hif2;
+ 	}
+@@ -709,14 +710,19 @@ static int mt7996_register_phy(struct mt7996_dev *dev, enum mt76_band_id band)
+ 	/* init wiphy according to mphy and phy */
+ 	mt7996_init_wiphy_band(mphy->hw, phy);
+ 
+-	if (is_mt7996(&dev->mt76) && !dev->hif2 && band == MT_BAND1) {
++	if (is_mt7996(&dev->mt76) &&
++	    ((band == MT_BAND1 && !dev->hif2) ||
++	     (band == MT_BAND2 && mt76_npu_device_active(&dev->mt76)))) {
+ 		int i;
+ 
+ 		for (i = 0; i <= MT_TXQ_PSD; i++)
+-			mphy->q_tx[i] = dev->mt76.phys[MT_BAND0]->q_tx[0];
++			mphy->q_tx[i] = dev->mt76.phys[band - 1]->q_tx[0];
+ 	} else {
+-		ret = mt7996_init_tx_queues(mphy->priv, MT_TXQ_ID(band),
+-					    MT7996_TX_RING_SIZE,
++		int size = is_mt7996(&dev->mt76) &&
++			   mt76_npu_device_active(&dev->mt76)
++			   ? MT7996_NPU_TX_RING_SIZE / 2 : MT7996_TX_RING_SIZE;
++
++		ret = mt7996_init_tx_queues(mphy->priv, MT_TXQ_ID(band), size,
+ 					    MT_TXQ_RING_BASE(band) + hif1_ofs,
+ 					    wed);
+ 		if (ret)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+index 7a884311800ea8cfc0e302b2a140a4072ce18b69..29a77d75099033727f5df5a487216c043fd04f85 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -29,6 +29,7 @@
+ #define MT7996_RX_RING_SIZE		1536
+ #define MT7996_RX_MCU_RING_SIZE		512
+ #define MT7996_RX_MCU_RING_SIZE_WA	1024
++#define MT7996_NPU_TX_RING_SIZE		1024
+ /* scatter-gather of mcu event is not supported in connac3 */
+ #define MT7996_RX_MCU_BUF_SIZE		(2048 + \
+ 					 SKB_DATA_ALIGN(sizeof(struct skb_shared_info)))
 
 -- 
 2.52.0
