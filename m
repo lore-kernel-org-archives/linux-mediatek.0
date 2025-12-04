@@ -4,74 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3784D216A6
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 16:13:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70AE8D216AE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 16:33:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MT4boO2cphmK9DGnkIdXqQBZimD7TYvesOT3TsL3NCU=; b=A7n/TKxJSsuqwcu3OfYfU48arB
-	YDNWUkabM+PbT5ODGLRMUJMmCIjsRL2LumhDQh+kiU3GH18NtFHGy4QZ2prxLuW/1LvIpZdPda+tx
-	pXyHLZBI8lx1id3zbiu0K46e+gM92FKf29Oa9b76dAfS9dvQqEbgjRFHcw2gMwioUVTUuJVPWu9cr
-	HAr/f71n+XX+giLAgFX7+U8tOg313NrSUUaYJgvOEgL725enOYW/wfbD7WBHQrxuV+giQf+eAwiuH
-	cQecfS5bxIGp6FjKuQI2Ol/sbltuyy7pK3w4AwnxiN4UTKVc8VCO1IAa1ADCoozDgLi5VwtLV2URY
-	Jg3h22zA==;
+	bh=c1NBivu5UEBkQBIeFnHZjPjnHfogcWbiZIn2200JwTs=; b=jEsm5numyPULSCTanWpMt9qoxi
+	tFg/AfoHWRS6tjKbXUASrUv/rNr/SR4ImWtvA92rfBSVLIRgCrfDIZbRFwnpmkp3yKKLe+wd40kk9
+	AC9K47gV4S/2mrFvaaaboIdpkXQhqM6y39FLwrOrtaAFab3ngOGGTTJNRegTn8HUgA07zndj/ib13
+	aiXIimmU47oMQhkqQpS6LBAf0JReINtYesEwvXqei3jPCNGCTepbDAcP5YRFnrQC6KcjyeTBUkSvg
+	+xqqVcUvh46+7eX47AHrefoN1AS/UidHNUnz0vQrad6DooXj/KOtTUDif10umXTeqmpCuCoM3kvGK
+	VXvLSg7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRBxg-00000008GYb-0LfS;
-	Thu, 04 Dec 2025 16:13:44 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vRCGh-00000008IGV-3o9F;
+	Thu, 04 Dec 2025 16:33:23 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRBxc-00000008GWj-3uAe;
-	Thu, 04 Dec 2025 16:13:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5D07760204;
-	Thu,  4 Dec 2025 16:13:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3513C116C6;
-	Thu,  4 Dec 2025 16:13:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764864820;
-	bh=G6tjXLsXI6Ra3ZBQPtPCBFR2m7OZSlhpuiykHbxlWLM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gvY5YyGLWoJ1UD14j17xypppwNb6yor4vMuIxOAnWGeYrPivqAY/q+1rXAnSiK0OI
-	 5vsF8CXo2h6aP3v7ocODRoI7oaW2IeqPFctjWr9ONiigqXTp0qzAQ22bBnaH4lHJDX
-	 aKsP0TH7bw+IJoI94hNk1N1mNZgJgdc2cKWTOMdJoDVBdm7uTZcozeGxImb1czuGHA
-	 p86Dw2VqEEU/vnD93MjmCgWQ+6gfUUjBVAZnuMw3e8JAYhV+h1JAveW2G0Wnk4Xw0P
-	 fgK6C191t/woAjv6tuHY8Nb2wKG2NVT0vFhhs9jsAa2mFeXclFKTHWUhiZgcUkibfG
-	 mPRsrko9qOuog==
-Date: Thu, 4 Dec 2025 10:13:37 -0600
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Vinod Koul <vkoul@kernel.org>, linux-kernel@vger.kernel.org,
+	id 1vRCGf-00000008IFX-0JTp
+	for linux-mediatek@lists.infradead.org;
+	Thu, 04 Dec 2025 16:33:22 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-42b2de74838so68830f8f.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 04 Dec 2025 08:33:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1764865999; x=1765470799; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=c1NBivu5UEBkQBIeFnHZjPjnHfogcWbiZIn2200JwTs=;
+        b=lwVTM2bIVnqnP8aDKKVDi8uAxsh0npNNJxUND8tnx/vkyCrqhgWb9TkjhhqlTqVJw+
+         zDtaA5R8Dbv2ITXUm4WVpAjjLBp62jksyUPzteWxBtsXXXMyRZNhWxtrVT9TAWGVz9ZU
+         Bqm0mbe1wivkucnUo7IBcZvxT1oDPmO48spbkgKQ+H4DBkc4jKB7X8Tw96ku+b5fkAnT
+         0nrKFv9Ftqf426ZN9Tu+Ozfoo3wGuoQy3mxJm3Ds6bbQG6jrpXnJw7KBPrS5yJM1NII9
+         F1w1QwwRUonbTVJQMH2KSNvmUkjBx1PJURvxTMnbrWRPaCydON8fTCMOCv/CGz/qPdGu
+         6xCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764865999; x=1765470799;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=c1NBivu5UEBkQBIeFnHZjPjnHfogcWbiZIn2200JwTs=;
+        b=npS5muvZUYnsv7LUcPlbjCOX+7RJhVGBarWepUm0T5GpQW3c2YURUsfHLC/qGRUf5B
+         AeyfiNSgWTjGnO5JK6AFdkzI8CBj8k79YND/jnsmu+7IVP2d0DIi98ACACGemXmflXDX
+         1TcESvo6RLL/65pEe/gxht0sgHSzNEIRaOipFrEMcGHTEdXfrVB1+jjY+V/pjNN4escL
+         gRr4xxDwfJv4TamM6GjtPPCcifywvu6dKx5K/hNI4SztJSP6uMDvira6S4WJ84pidO1K
+         YCo1r+0NkhIWQooBLwY8ajzjF/pKNJ0VolnEO2kbWB9MUgzksTfHb4nVo8qvJS3L0/Yg
+         xdKA==
+X-Forwarded-Encrypted: i=1; AJvYcCXGjQL+cmTdtrTyJ0Od5KkOvoaydXIZEVEG4emJqnZDXNS+sHxp61p1+GC6clustIq70YXKBSfNu9SR8+8ctg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyqlCCjk5084EKm3KKtx7r3j6UwkUgScdn6o6sFJdfbUdO7oUvJ
+	5fVdyus9oBqwATfo5X9fWQ1hUvQIgA5igx1q3P0sBv6JRymlY0gN5bcF
+X-Gm-Gg: ASbGncvK8Z/7r0nC0BFYebVXL94j8z9I29hCurYGm6AIQUl0yKmWj6svmINhuDczLtP
+	zahg1Pv5lv6ImuzgP0IyDMlLT5sAJoYHwkVPEt9fJU2tfXK6p//VdfwqbesJacMpHbTcPJuIsmU
+	5V6A4+Ro8PROHm7HY2AUjL0GHyKttdR+tkNg6GcDsZJg+qIUnnZGLiJqM0UBsPZZsYKrUe8MSYT
+	k5iaIziZRZkxQm2/50PB5rIsoPtVPb6YNRu5aYKn/vjr+/xA1RmUMu1eSHQdBjQtLHBgGUnu6b2
+	/vlklSnEaZGkkJR43vLJCLBYjyQjXlwTJZIwlu01hoYYICmdwh9OiX67weNLXMNm0LJWDFb7zBg
+	cq9vh6N20jDUTFnPxA68LIDVc0Uu2BHUR4KQIR6QrOSJ3rR3d9XroEWvzgbF0nAl+jq0xZq0ynQ
+	q0kks=
+X-Google-Smtp-Source: AGHT+IGi6I2IgodSmUy9udv2+I0uezI+6X0NoB7sgQPDd5BV4p/ONZs+5KGeEu5OGTX5yIqBwOwJzw==
+X-Received: by 2002:a05:6000:18a3:b0:429:c711:22b5 with SMTP id ffacd0b85a97d-42f73177864mr3997507f8f.1.1764865998607;
+        Thu, 04 Dec 2025 08:33:18 -0800 (PST)
+Received: from skbuf ([2a02:2f04:d106:d600:dbb2:245d:2cf5:21d3])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42f7d353f8bsm4099038f8f.43.2025.12.04.08.33.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 04 Dec 2025 08:33:17 -0800 (PST)
+Date: Thu, 4 Dec 2025 18:33:15 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Andrew Lunn <andrew@lunn.ch>, Daniel Golle <daniel@makrotopia.org>,
+	Frank Wunderlich <frankwu@gmx.de>, Chen Minqiang <ptpt52@gmail.com>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Andrew Lunn <andrew@lunn.ch>, devicetree@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Eric Woudstra <ericwouds@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Lee Jones <lee@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>,
-	Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
-	Eric Dumazet <edumazet@google.com>,
-	linux-mediatek@lists.infradead.org,
-	"David S. Miller" <davem@davemloft.net>,
-	Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	linux-phy@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>
-Subject: Re: [PATCH net-next 9/9] dt-bindings: net: airoha,en8811h: deprecate
- "airoha,pnswap-rx" and "airoha,pnswap-tx"
-Message-ID: <176486481672.1580073.2236762382059854935.robh@kernel.org>
-References: <20251122193341.332324-1-vladimir.oltean@nxp.com>
- <20251122193341.332324-10-vladimir.oltean@nxp.com>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH v3 2/2] net: dsa: mt7530: Use GPIO polarity to generate
+ correct reset sequence
+Message-ID: <20251204163315.rlc36k72cwfdyye6@skbuf>
+References: <0675b35f-217d-4261-9e3f-2eb24753d43c@lunn.ch>
+ <20251130080731.ty2dlxaypxvodxiw@skbuf>
+ <3fbc4e67-b931-421c-9d83-2214aaa2f6ed@lunn.ch>
+ <0d85e1e6-ea75-4f20-aef1-90d446b4bfa1@kernel.org>
+ <00f308a1-a4b1-4f20-8d8e-459ddf4c39b1@gmx.de>
+ <aS7Zj3AFsSp2CTNv@makrotopia.org>
+ <20251204131626.upw77jncqfwxydww@skbuf>
+ <7aacc2c2-50d0-4a08-9800-dc4a572dffcb@lunn.ch>
+ <20251204153721.ubmxifrev4cre6ab@skbuf>
+ <6344bdfd-c22c-45a1-854d-59091dfeda97@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251122193341.332324-10-vladimir.oltean@nxp.com>
+In-Reply-To: <6344bdfd-c22c-45a1-854d-59091dfeda97@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251204_083321_135628_319F613D 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,16 +118,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Sat, 22 Nov 2025 21:33:41 +0200, Vladimir Oltean wrote:
-> Reference the common PHY properties, and update the example to use them.
+On Thu, Dec 04, 2025 at 04:52:53PM +0100, Krzysztof Kozlowski wrote:
+> Yeah. BTW, you can also refer to one of my commits -
+> 738455858a2d21b769f673892546cf8300c9fd78 - but also note that similar
+> work later combined with much more useful change of gpio->gpiod API was
+> rejected by Mark Brown on basis:
 > 
-> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
-> ---
->  .../devicetree/bindings/net/airoha,en8811h.yaml       | 11 ++++++++++-
->  1 file changed, 10 insertions(+), 1 deletion(-)
+> "No, the DT is supposed to be an ABI.  The point in having a domain
+> specific language with a compiler is to allow device trees to be
+> distributed independently of the kernel."
 > 
+> https://lore.kernel.org/all/9942c3a9-51d1-4161-8871-f6ec696cb4db@sirena.org.uk/
+> 
+> What's interesting, exactly the same commit for the same file, done by
+> different person (Peng), introducing the same issues without addressing
+> them, was then merged by Mark:
+> https://patch.msgid.link/20250324-wcd-gpiod-v2-2-773f67ce3b56@nxp.com
+> (commit c2d359b4acfbe847d3edcc25d3dc4e594daf9010)
+> 
+> so you know... it's all relative. :)
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
-
+Yeah, IDK. May we all stand by our own past statements.
 
