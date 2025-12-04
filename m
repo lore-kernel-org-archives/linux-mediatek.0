@@ -4,120 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8BFFD216B4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 16:49:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FDF0D216BC
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 16:59:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kow0MV2K1CId/Eh5iohI4Av+EHQLgs1R/Ap1oddrdIU=; b=eQtgcRLjke9GMHsHnlekfSKJ3h
-	dGxkmPDV4woElN4jacRUUpHQu+tq1SFPyR3PxnY5Z/7vf2WndBxrAEYPCGBHyVLQsv2Y2A/rgWkD/
-	00SNoSoIHt2Og/ApWcv+/ycW+B+MYDB7OZZEGbRgaFbtbO3cmtjJuq7QEUqi6M7h1APtUm9j7V9jB
-	INd5+dZeHIj/KmBq3pYczSvqER00T27Sm4WCiXN7SCqwHCn/zzee/9rMF6X42gyS+F0hHTaE8MaWg
-	R7B0RWYq65rRmW7Tx8DXko4fBB6/1MKoILR6IQ+UkNRrdrG3hXoO/vQCBr5IWtvJ7QGT01MDuRbVf
-	C5yitzyA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yEf34xHass0T0b10s6FQMT0sLObUUkUTpYfcGRnwAwU=; b=PxiXwNzNsdeeO1
+	a+Yo0T9PGWPGrLN+reaye/+81SFV6WJmFj91lGHzOX/PyMRhZw+XSr4YmORW+JBDHo7xDsYJ1Y02p
+	6kF86gAx6JIxnchNkPQcTmpAe+f1tZwwfhQ0WtQW24kLdTSWEQRfpoobbKSjziPRonO/hsrYqiofs
+	OfP0SPlspKsUcw3sAicJq/88G0spx0ZN8MwETGJuIcw5RSFapZCq3BiW0ZvWXRqTssZF7PQ9cdGMf
+	a8nC8AiI5YDVUxxCjl0Au4I5j3avhB80wWMpnnMxIOog+L4lGVV0rj82FIIo0ilMn75OwCwCrSDyp
+	gmYl7t32zpAf65X0Cz7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRCVu-00000008Jhi-3gnt;
-	Thu, 04 Dec 2025 16:49:06 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vRCfd-00000008KWp-0Wg3;
+	Thu, 04 Dec 2025 16:59:09 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRCVs-00000008Jh6-3oQP;
-	Thu, 04 Dec 2025 16:49:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 56CED601FD;
-	Thu,  4 Dec 2025 16:49:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0A99C4CEFB;
-	Thu,  4 Dec 2025 16:48:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764866944;
-	bh=s/jCJ2FpUP11SPYO8fzMlmRQfnOVawPPT6/iEbGbJgI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ftGKXrNeYQ1po2piaPKUeDZLuQnVyRpTPq6K+3sZBQXbxanU6cohAuPxppl3YF6be
-	 74WjFWEFuqAf6m8ukmUuAKAUfjosXj1p/I/cL2DXvV4YpvZNnPnzoIxZMZ3F4iUpcR
-	 ZQ+w5Fc959ptz8BoYeoe7mM/t1ds4JR1/NfJhwMttDPIClXQtiAk76cr7GTn1HhZW+
-	 afDxEKUmf8Te0PUCMFK6NiIE9P9kbIYUCQZTpMbyMtlGN5muEV6SGlJ20GOnEESW2i
-	 bVtRWNuchIk6g3xwwpJ9XxoIjNEfsluUc+hk/HDi3v9GoaWCKPXyCIAmzj9bS3O843
-	 wjdy5KCVy6BEg==
-Message-ID: <c7cbdaaa-e786-4842-9346-e2fde998fde5@kernel.org>
-Date: Thu, 4 Dec 2025 17:48:57 +0100
+	id 1vRCfa-00000008KVQ-0O6S;
+	Thu, 04 Dec 2025 16:59:07 +0000
+Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
+	by mxout3.routing.net (Postfix) with ESMTP id 6EA9A604D8;
+	Thu,  4 Dec 2025 16:59:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=routing; t=1764867540;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=yEf34xHass0T0b10s6FQMT0sLObUUkUTpYfcGRnwAwU=;
+	b=Dj4w0xlX7NLM+Fzl6FHDzbPflg0O6XePe+A8UwQjldkWgAWVLnpHrtIA4xbBQOA/jtB1a9
+	prO8apLdAo099MsGpJ0xCSwmnX2EnXItE02lGa1Ij5VkQacvTk7VZnyw3FfljtNHBDUDR5
+	tAKu+iNZW5AipCHWAedSmaVmt0klx1k=
+Received: from frank-u24.. (fttx-pool-157.180.225.155.bambit.de [157.180.225.155])
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 2BA6B1226EB;
+	Thu,  4 Dec 2025 16:59:00 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>
+Subject: [RFC v2 0/3] Add RSS and LRO support
+Date: Thu,  4 Dec 2025 17:58:42 +0100
+Message-ID: <20251204165849.8214-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 5/9] phy: add phy_get_rx_polarity() and
- phy_get_tx_polarity()
-To: Vladimir Oltean <vladimir.oltean@nxp.com>, Vinod Koul <vkoul@kernel.org>,
- Jakub Kicinski <kuba@kernel.org>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Daniel Golle <daniel@makrotopia.org>,
- Horatiu Vultur <horatiu.vultur@microchip.com>, Andrew Lunn <andrew@lunn.ch>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Eric Woudstra <ericwouds@gmail.com>, =?UTF-8?B?TWFyZWsgQmVo4oia4oirbg==?=
- <kabel@kernel.org>, Lee Jones <lee@kernel.org>,
- Patrice Chotard <patrice.chotard@foss.st.com>
-References: <20251122193341.332324-1-vladimir.oltean@nxp.com>
- <20251122193341.332324-6-vladimir.oltean@nxp.com>
- <20251124200121.5b82f09e@kernel.org> <aS1T5i3pCHsNVql6@vaman>
- <69ac21ea-eed2-449a-b231-c43e3cd0bdc0@kernel.org>
- <20251204153401.tinrt57ifjthw55r@skbuf>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20251204153401.tinrt57ifjthw55r@skbuf>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251204_085906_333343_F612F18A 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,78 +74,119 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04/12/2025 16:34, Vladimir Oltean wrote:
-> On Mon, Dec 01, 2025 at 09:41:21AM +0100, Krzysztof Kozlowski wrote:
->> On 01/12/2025 09:37, Vinod Koul wrote:
->>> On 24-11-25, 20:01, Jakub Kicinski wrote:
->>>> On Sat, 22 Nov 2025 21:33:37 +0200 Vladimir Oltean wrote:
->>>>> Add helpers in the generic PHY folder which can be used using 'select
->>>>> GENERIC_PHY_COMMON_PROPS' from Kconfig, without otherwise needing to
->>>>> enable GENERIC_PHY.
->>>>>
->>>>> These helpers need to deal with the slight messiness of the fact that
->>>>> the polarity properties are arrays per protocol, and with the fact that
->>>>> there is no default value mandated by the standard properties, all
->>>>> default values depend on driver and protocol (PHY_POL_NORMAL may be a
->>>>> good default for SGMII, whereas PHY_POL_AUTO may be a good default for
->>>>> PCIe).
->>>>>
->>>>> Push the supported mask of polarities to these helpers, to simplify
->>>>> drivers such that they don't need to validate what's in the device tree
->>>>> (or other firmware description).
->>>>>
->>>>> The proposed maintainership model is joint custody between netdev and
->>>>> linux-phy, because of the fact that these properties can be applied to
->>>>> Ethernet PCS blocks just as well as Generic PHY devices. I've added as
->>>>> maintainers those from "ETHERNET PHY LIBRARY", "NETWORKING DRIVERS" and
->>>>> "GENERIC PHY FRAMEWORK".
->>>>
->>>> I dunno.. ain't no such thing as "joint custody" maintainership.
->>>> We have to pick one tree. Given the set of Ms here, I suspect 
->>>> the best course of action may be to bubble this up to its own tree.
->>>> Ask Konstantin for a tree in k.org, then you can "co-post" the patches
->>>> for review + PR link in the cover letter (e.g. how Tony from Intel
->>>> submits their patches). This way not networking and PHY can pull
->>>> the shared changes with stable commit IDs.
->>>
->>> How much is the volume of the changes that we are talking about, we can
->>> always ack and pull into each other trees..?
->>
->> That's just one C file, isn't it? Having dedicated tree for one file
->> feels like huge overhead.
-> 
-> I have to admit, no matter how we define what pertains to this presumed
-> new git tree, the fact is that the volume of patches will be quite low.
-> 
-> Since the API provider always sits in drivers/phy/ in every case that I
-> can think about, technically all situations can be resolved by linux-phy
-> providing these stable PR branches to netdev. In turn, to netdev it
-> makes no difference whether the branches are coming from linux-phy or a
-> third git tree. Whereas to linux-phy, things would even maybe a bit
-> simpler, due to already having the patches vs needing to pull them from
-> the 3rd tree.
-> 
-> From my perspective, if I'm perfectly honest, the idea was attractive
-> because of the phenomenal difference in turnaround times between netdev
-> and linux-phy review&merge processes (very fast in netdev, very slow and
-> patchy in linux-phy). If there's a set like this, where all API consumers
-> are in netdev for now but the API itself is in linux-phy, you'd have to
-> introduce 1000 NOP cycles just to wait for the PR branch.
-> 
-> In that sense, having more people into the mix would help just because
-> there's more people (i.e. fewer points of failure), even though overall
-> there's more overhead.
-> 
-> IDK, these are my 2 cents, I can resubmit this set in 2 weeks with the
-> maintainership of the PHY common properties exclusive to linux-phy.
+From: Frank Wunderlich <frank-w@public-files.de>
+
+This series is currently only for discussion to get the upported SDK driver
+changes in a good shape.
+To use it some other parts are still missing like USXGMII PCS support on
+mt7988.
+
+patches are upported from mtk SDK:
+- https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/999-eth-08-mtk_eth_soc-add-register-definitions-for-rss-lro-reg.patch
+- https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/999-eth-09-mtk_eth_soc-add-rss-support.patch
+- https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/999-eth-10-mtk_eth_soc-add-hw-lro-support.patch
+
+RSS / LRO
+
+HW-acceleration for ending traffic. For routed traffic PPE is needed and
+hw offloading in nftables.
+Bridged traffic may need additional changes (openwrt use bridger utility).
+
+RSS (Receive Side Scaling)
+
+using 4 additional IRQ for spreading load
+
+cat /proc/interrupts | grep ethernet
+
+echo 1 > /proc/irq/105/smp_affinity
+echo 2 > /proc/irq/106/smp_affinity
+echo 4 > /proc/irq/107/smp_affinity
+echo 8 > /proc/irq/108/smp_affinity
+
+moving tx frame-engine irq to different cpu (here 3rd)
+echo 4 > /proc/irq/103/smp_affinity
+
+disable RPS (Receive Packet Steering) for all macs:
+
+echo 0 > /sys/devices/platform/soc/15100000.ethernet/net/eth0/queues/rx-0/rps_cpus
+
+pay attention on iperf-version (iperf 3.17 is ok, 3.12 is not)
+
+traffic must be created using multiple streams so that it can be splitted, so use
+multithreaded iperf3
+
+on R4: bin/iperf3 -s
+on the other side: iperf3 -c 192.168.1.1 -i 1 -P 4
+
+you should reach ~9.3 GBit/s
+
+and see spreading load over CPU cores
+
+root@bpi-r4-phy-8G:~# cat /proc/interrupts | grep eth
+103: 20 198366 0 0 GICv3 229 Level 15100000.ethernet
+105: 3611 0 0 0 GICv3 221 Level 15100000.ethernet, 15100000.ethernet
+106: 2 6842 0 0 GICv3 222 Level 15100000.ethernet, 15100000.ethernet
+107: 4 0 27643 0 GICv3 223 Level 15100000.ethernet, 15100000.ethernet
+108: 3 0 0 27925 GICv3 224 Level 15100000.ethernet, 15100000.ethernet
+
+using the iperf3 from debian bookworm (3.12) results in only 6.7GBit/s, so
+newer version is needed (not tested yet in trixie).
+
+LRO(Large Receive Offload)
+
+Add HW LRO RX rule:
+
+ethtool -N [interface] flow-type tcp4 dst-ip [IP] action 0 loc [0/1]
+
+Delete HW LRO RX rule:
+
+ethtool -N [interface] delete [0/1]
+
+Enable/Disable HW LRO rule:
+
+ethtool -K [interface] lro [on | off]
+
+Show the current offload features:
+
+ethtool -k [interface]
+
+example:
+
+ethtool -N eth2 flow-type tcp4 dst-ip 192.168.1.1 action 0 loc 0
+ethtool -K eth2 lro on ethtool -k eth2
+
+using iperf(2) instead of iperf3 to reach full traffic!
+
+verify with propritary debugfs (not part of this series)
+
+Enable HW LRO rings
+echo 4 1 > /proc/mtketh/hw_lro_auto_tlb
+Enable HW LRO statistics
+echo 5 1 > /proc/mtketh/hw_lro_auto_tlb
+
+cat /proc/mtketh/hw_lro_stats
+
+changes:
+  v2:
+    - drop wrong change (MTK_CDMP_IG_CTRL is only netsys v1)
+    - Fix immutable string IRQ setup (thx to Emilia Schotte)
+    - drop links to 6.6 patches/commits in sdk in comments
 
 
-Jakub supported the idea, so I also do not oppose, and if that helps you
-folks, then go ahead.
+Mason Chang (3):
+  net: ethernet: mtk_eth_soc: Add register definitions for RSS and LRO
+  net: ethernet: mtk_eth_soc: Add RSS support
+  net: ethernet: mtk_eth_soc: Add LRO support
 
-Best regards,
-Krzysztof
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 762 ++++++++++++++++----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 171 +++--
+ 2 files changed, 753 insertions(+), 180 deletions(-)
+
+-- 
+2.43.0
+
 
