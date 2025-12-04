@@ -4,64 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B861D20682
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 13:13:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E34FD20680
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 13:16:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pjtW3xijmWQY0cu8Nfsgbpv4H+QkZRLt56au43Ou9nw=; b=HWWGwQsNJQ9eVG65OdZo8Z08Xq
-	mw1ZWhyF8DNKCmDqpeT+2wjiPyX0qptasUHTIZ/b1kFrsY4JTu4KSTl6PKKOSOjh80HEtGAUkaxBr
-	RlTkxckaOqo4SoU1tZg4lUKuDcsVqk++56z0JrM3syBnKYg9CUTJqDzr6NZ5HTope7GaXdhWJwFJu
-	fxNBwOaKmOdvvyKpuyYVcTEUfOM5hqBaFf6Jlj4EtM1aEeUZbPgtmc5mnx4PRsB+uGpCfpbfwI3oK
-	Xbtm1KfO1Czv4T2XTCQYEgQ7OoLzxF4bgqZ6uXYed4x51QpJH1KARcJibwbO4ce/LEOFqQXK/m5Bd
-	oHvIsHSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cYBPcepONpHvCLLvCGFW5DmNEw2yqgttigWufQoSyCA=; b=UA+DR+Y5GtyhPBlMtPxtb0i8lz
+	mFx29Hju9HOJuzMduTR7+vDZHv+9Mu/Maz19yo0Rq/wB3LHrwF6V7zhuRYQPRMygwxY9myGROsPEY
+	9KzhOSs5JXZgwmJYxyyh7aMYxRonGS5ePdTHH6RP6ikP+OyQbN/KK4pnp2yLGVuLiMf74nEd1IkYC
+	yD3l1KA6A+suA9PNwADh9GDHaBlCmfc8G3mPNaj4fpVYK3L8fmD4mDJmBzm42K4WaTJcehWsYioEj
+	uPGgQheTzqPFOBZeuv19TwKyi2OjkvV2WvENGe1HcM6wFP17di/+c9nFCz4f32QmsudCu95nTmkBw
+	y9lvKa7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vR99i-0000000826V-1dwa;
-	Thu, 04 Dec 2025 13:13:58 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vR9CG-000000082ZE-2reG;
+	Thu, 04 Dec 2025 13:16:36 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vR99g-0000000823O-0A2X;
-	Thu, 04 Dec 2025 13:13:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B5A9943DF5;
-	Thu,  4 Dec 2025 13:13:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 436D4C113D0;
-	Thu,  4 Dec 2025 13:13:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764854035;
-	bh=RfEto5ZhzzmOQyTL3lH3OKGraSwXsCAmzi9q4NcxOKw=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=mO4nD5tPms/n1SRcoVWXidSmJheoCCSJ1tsCACG9A/EI4l5ea0XrTQJYCdsH5ttYG
-	 GdBxptd8opD0C6A6mWbETT5G25PynSPJl+7NwRXKlE1wh1YEcrrjQuN64yseRZoSTA
-	 jE8I75h5/HVBI1AWr42+BGa3Vlw5olITa5Lw3nY8HCyZcYf7LsUtK1mGkSx6EJLXtm
-	 diUHbDj180YJ4SEZKIQ9VvrJi/pHTmTurGgDyulEaQgx5kM8EJT6tibdTOe7NVJxX8
-	 XfHjFcoSUTjvfJ0idqQzrTgYakjRfJW5whYya0/mdfXfYEfjaQO5PKJF62M26m3oHo
-	 BwmHpyCfQDM9g==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 04 Dec 2025 14:13:30 +0100
-Subject: [PATCH mt76 3/3] wifi: mt76: mt7996: Switch to the secondary link
- if the default one is removed
+	id 1vR9CD-000000082XF-3GVe
+	for linux-mediatek@lists.infradead.org;
+	Thu, 04 Dec 2025 13:16:34 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-4790f0347bfso869705e9.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 04 Dec 2025 05:16:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1764854191; x=1765458991; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=cYBPcepONpHvCLLvCGFW5DmNEw2yqgttigWufQoSyCA=;
+        b=Ukw9bCaYymfV9MynHtWxJMYAs1C4vpLkF8oR8zXEPyjC1AzrwI0BTq4eg66WiFZQ1z
+         13eRFLMGFWZYL+1WbE0K3pgcpTach9OO13a5inAieQakynOsn+NoyTjoXHplk3WONYyy
+         Y17N7pqNdTm2cmMfSnLWVRsJyzZ8Jt/5LxXICKfvDjy4NDAYOpPP/lKo6KxMBaV3MWZZ
+         qTFZ2DBLtdBjxoFE8vSpuedZ6B65fx0ABY+Vp1jvt3nJsk3WIz27Lr57Q0cGBAuAbb6Q
+         aJ/OkYT1j6VmKWZCJjQMaZhGtnP4KNJHA0p/mnYSX+ILWl7HtnVaXEcuZ29T+n19kSp+
+         9qXQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764854191; x=1765458991;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=cYBPcepONpHvCLLvCGFW5DmNEw2yqgttigWufQoSyCA=;
+        b=TZWpOar6F64tIi63ufP+ywrf9I5QC7AQhHmxJWWFpCOJDIYqgCnkP7EFAqkeB9eE5C
+         Q/hJzM2j7UTpuwOv9IFWV/Mxw+6hjD1PrA+jKZwmoHHA8pu3Y7zXD1RT94dmmj6/+WpU
+         oPb7+iAB+hfJMSOV8SV5VWP7Tw/l6lSCLS77haJOmRAd47qiyl7kvoz28L6cDLDD0rum
+         CvQ4jRFW7uZj1ozXyXnI4NTQdz9nZO28kUDhRs1eAZCJGiLuEw063nfbVfLl00Eg/7b5
+         HW7lTv4AW704VaJJcKIfDcDOkb9vdNoiO5+ge2nK05t7uJpONvGSwAyyRqExOSzHRlv+
+         zwJA==
+X-Forwarded-Encrypted: i=1; AJvYcCXYRSehJTbXkcKR1VQWfKft9Fn3bdzd3yS/6eLcY4Ch1Kr306cFU2gl5/K56hYJhkbyNkeqBx91OO3Kcq0HFA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywa7DMwNjenlvVy2HWYcYoqnkrGHCkB1j9ZjjQGt0oa9q1DwaYT
+	TaSC4lZfhg33Uz5rEyCaDtNfDH2Pefo/RWD/SfbP4c/iv6Lp/TAVeqqJ
+X-Gm-Gg: ASbGncvmZWqsBj49GYS/yqZugX13y95sQZMzgZljxsF57O+I3dglg3Sw1hWgSD9n6UK
+	aFI+0mHkiF7rVeBJswhMvtlS9bxSHZj6KsG6HYRsU05edBmetrEpB8EPHIKEbDwdCXdv5fgURJL
+	kvDm+lBIBRevNpq0b+uO+W7ZaM/TswTa62u5UzEVt/+F+EyAAv9ZTtBv25V9gaBIRaf9kwdCH/H
+	sDXb4sL0AWeBnqofEzeAKT4vfQVN3FdhO/glWv9YMPQtj1a5xHQnuJaBbt8Rx6rcFtr3x6Q6Ny9
+	lvAh2ZgqY9VvF/kO6airu8uJhoZlJ9HdRQNE+drgDDhwyBSuEvewJk3TW4jITvK8Wd1JyPQR+2g
+	yvl2+D6YGvxvAic06LQPUnLam0Bno4RD99tUHoTfilHAsb0shfUqpqu3EZpY2wkVAIRcVRd49Tz
+	AkN4c=
+X-Google-Smtp-Source: AGHT+IFuZ7+wVEvS7Cd555ZEuGrZTUFUukCrdVsUSca1c9TMkHOJ8JsWJb68xbR/p3vOu4Jb3bTkMw==
+X-Received: by 2002:a05:6000:2f86:b0:42b:3e0a:64b9 with SMTP id ffacd0b85a97d-42f756a2d9amr3255858f8f.6.1764854190568;
+        Thu, 04 Dec 2025 05:16:30 -0800 (PST)
+Received: from skbuf ([2a02:2f04:d106:d600:dbb2:245d:2cf5:21d3])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42f7cbe9032sm2926996f8f.1.2025.12.04.05.16.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 04 Dec 2025 05:16:29 -0800 (PST)
+Date: Thu, 4 Dec 2025 15:16:26 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Frank Wunderlich <frankwu@gmx.de>,
+	Krzysztof Kozlowski <krzk@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+	Chen Minqiang <ptpt52@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	DENG Qingfang <dqfext@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH v3 2/2] net: dsa: mt7530: Use GPIO polarity to generate
+ correct reset sequence
+Message-ID: <20251204131626.upw77jncqfwxydww@skbuf>
+References: <20251129234603.2544-1-ptpt52@gmail.com>
+ <20251129234603.2544-2-ptpt52@gmail.com>
+ <0675b35f-217d-4261-9e3f-2eb24753d43c@lunn.ch>
+ <20251130080731.ty2dlxaypxvodxiw@skbuf>
+ <3fbc4e67-b931-421c-9d83-2214aaa2f6ed@lunn.ch>
+ <0d85e1e6-ea75-4f20-aef1-90d446b4bfa1@kernel.org>
+ <00f308a1-a4b1-4f20-8d8e-459ddf4c39b1@gmx.de>
+ <aS7Zj3AFsSp2CTNv@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251204-mt76-txq-wicd-fix-v1-3-1f4b2f2b3b2c@kernel.org>
-References: <20251204-mt76-txq-wicd-fix-v1-0-1f4b2f2b3b2c@kernel.org>
-In-Reply-To: <20251204-mt76-txq-wicd-fix-v1-0-1f4b2f2b3b2c@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aS7Zj3AFsSp2CTNv@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251204_051356_131646_520F5C91 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20251204_051633_847071_26025C85 
+X-CRM114-Status: GOOD (  40.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,101 +116,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Switch to the secondary link if available in mt7996_mac_sta_remove_links
-routine if the primary one is removed.
-Moreover reset secondary link index for single link scenario.
+On Tue, Dec 02, 2025 at 12:20:31PM +0000, Daniel Golle wrote:
+> On Tue, Dec 02, 2025 at 12:52:44PM +0100, Frank Wunderlich wrote:
+> > Hi,
+> > 
+> > Am 01.12.25 um 08:48 schrieb Krzysztof Kozlowski:
+> > > On 30/11/2025 21:17, Andrew Lunn wrote:
+> > > > On Sun, Nov 30, 2025 at 10:07:31AM +0200, Vladimir Oltean wrote:
+> > > > > On Sun, Nov 30, 2025 at 02:11:05AM +0100, Andrew Lunn wrote:
+> > > > > > > -		gpiod_set_value_cansleep(priv->reset, 0);
+> > > > > > > +		int is_active_low = !!gpiod_is_active_low(priv->reset);
+> > > > > > > +		gpiod_set_value_cansleep(priv->reset, is_active_low);
+> > > > > > I think you did not correctly understand what Russell said. You pass
+> > > > > > the logical value to gpiod_set_value(). If the GPIO has been marked as
+> > > > > > active LOW, the GPIO core will invert the logical values to the raw
+> > > > > > value. You should not be using gpiod_is_active_low().
+> > > > > > 
+> > > > > > But as i said to the previous patch, i would just leave everything as
+> > > > > > it is, except document the issue.
+> > > > > > 
+> > > > > > 	Andrew
+> > > > > > 
+> > > > > It was my suggestion to do it like this (but I don't understand why I'm
+> > > > > again not in CC).
+> > > > > 
+> > > > > We _know_ that the reset pin of the switch should be active low. So by
+> > > > > using gpiod_is_active_low(), we can determine whether the device tree is
+> > > > > wrong or not, and we can work with a wrong device tree too (just invert
+> > > > > the logical values).
+> > > > Assuming there is not a NOT gate placed between the GPIO and the reset
+> > > > pin, because the board designer decided to do that for some reason?
+> > jumping in because i prepare mt7987 / BPI-R4Lite dts for upstreaming when
+> > driver-changes are in.
+> > With current driver i need to define the reset-gpio for mt7531 again wrong
+> > to get it
+> > working. So to have future dts correct, imho this (or similar) change to
+> > driver is needed.
+> > 
+> > Of course we cannot simply say that current value is wrong and just invert
+> > it because of
+> > possible "external" inversion of reset signal between SoC and switch.
+> > I have to look on schematics for the boards i have (BPI-R64, BPI-R3,
+> > BPI-R2Pro) if there is such circuit.
+> 
+> I'm also not aware of any board which doesn't directly connect the
+> reset of the MT7530 to a GPIO pin of the SoC. For MediaTek's designs
+> there is often even a specific pin desginated for this purpose and
+> most vendors do follow this. If they deviate at all, then it's just
+> that a different pin is used for the switch reset, but I've never
+> seen any logic between the SoC's GPIO pin and the switch reset.
+> 
+> > Maybe the mt7988 (mt7530-mmio) based boards also affected?
+> 
+> There is no GPIO reset for switches which are integrated in the SoC,
+> so this only matters for external MT7530 and MT7531 ICs for which an
+> actual GPIO line connected to the SoC is used to reset the switch.
 
-Fixes: 85cd5534a3f2e ("wifi: mt76: mt7996: use correct link_id when filling TXD and TXP")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 52 ++++++++++++++++--------
- 1 file changed, 36 insertions(+), 16 deletions(-)
+I get the feeling that we're complicating a simple solution because of a
+theoretical "what if" scenario. The "NOT" gate is somewhat contrived
+given the fact that most GPIOs can already be active high or low, but OK.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 8bf85a9beee7dc8c6741568af5b36cf89f0c1a88..1baace971ec3511dba3e8a64c236a2b55f9dbd36 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -945,6 +945,22 @@ mt7996_channel_switch_beacon(struct ieee80211_hw *hw,
- 	mutex_unlock(&dev->mt76.mutex);
- }
- 
-+static void
-+mt7996_sta_init_txq_wcid(struct ieee80211_sta *sta, int idx)
-+{
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(sta->txq); i++) {
-+		struct mt76_txq *mtxq;
-+
-+		if (!sta->txq[i])
-+			continue;
-+
-+		mtxq = (struct mt76_txq *)sta->txq[i]->drv_priv;
-+		mtxq->wcid = idx;
-+	}
-+}
-+
- static int
- mt7996_mac_sta_init_link(struct mt7996_dev *dev,
- 			 struct ieee80211_bss_conf *link_conf,
-@@ -962,21 +978,10 @@ mt7996_mac_sta_init_link(struct mt7996_dev *dev,
- 		return -ENOSPC;
- 
- 	if (msta->deflink_id == IEEE80211_LINK_UNSPECIFIED) {
--		int i;
--
- 		msta_link = &msta->deflink;
- 		msta->deflink_id = link_id;
- 		msta->seclink_id = msta->deflink_id;
--
--		for (i = 0; i < ARRAY_SIZE(sta->txq); i++) {
--			struct mt76_txq *mtxq;
--
--			if (!sta->txq[i])
--				continue;
--
--			mtxq = (struct mt76_txq *)sta->txq[i]->drv_priv;
--			mtxq->wcid = idx;
--		}
-+		mt7996_sta_init_txq_wcid(sta, idx);
- 	} else {
- 		msta_link = kzalloc(sizeof(*msta_link), GFP_KERNEL);
- 		if (!msta_link)
-@@ -1058,13 +1063,28 @@ mt7996_mac_sta_remove_links(struct mt7996_dev *dev, struct ieee80211_vif *vif,
- 
- 		mphy->num_sta--;
- 		if (msta->deflink_id == link_id) {
--			msta->deflink_id = IEEE80211_LINK_UNSPECIFIED;
--			continue;
-+			if (msta->seclink_id == msta->deflink_id) {
-+				/* no secondary link available */
-+				msta->deflink_id = IEEE80211_LINK_UNSPECIFIED;
-+				msta->seclink_id = msta->deflink_id;
-+			} else {
-+				struct mt7996_sta_link *msta_seclink;
-+
-+				/* switch to the secondary link */
-+				msta->deflink_id = msta->seclink_id;
-+				msta_seclink = mt76_dereference(
-+						msta->link[msta->seclink_id],
-+						mdev);
-+				if (msta_seclink)
-+					mt7996_sta_init_txq_wcid(sta,
-+						msta_seclink->wcid.idx);
-+			}
- 		} else if (msta->seclink_id == link_id) {
--			msta->seclink_id = IEEE80211_LINK_UNSPECIFIED;
-+			msta->seclink_id = msta->deflink_id;
- 		}
- 
--		kfree_rcu(msta_link, rcu_head);
-+		if (msta_link != &msta->deflink)
-+			kfree_rcu(msta_link, rcu_head);
- 	}
- }
- 
-
--- 
-2.52.0
-
+If this is blocking progress for new device trees, can we just construct,
+using of_machine_is_compatible(), a list of all boards where the device
+tree defines incorrect reset polarity that shouldn't be trusted by the
+driver when driving the reset GPIO? If we do this, we can also leave
+those existing device trees alone.
 
