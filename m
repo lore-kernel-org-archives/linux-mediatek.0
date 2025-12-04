@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA11D1F9BB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 11:05:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B69DD20682
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 13:13:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=1fJcygxJ8ktEMFPvVfhD1h7orWfXdouaakmxwB4pUxs=; b=PMqUcpj32bUsKBiU5RZxbBmL7Y
-	Eepybn5N2leUtJQk3Lm/mmkrwVNeX5mMlKCyfqITZemr+tOMywHndXO2tpeoeDKD9vkV5tNF4kzj7
-	21KHRqbiRlBbCaU0pjSpakv4ncIexyUHG+8foZoY6qwiQNgaVAru6FrVyegc98VzCMf9pldNVBw5h
-	Y3Im6AA5al75jCRPqhp8TqoU1UehHtpLezOcLamBMVmshQmVnZIzpeQK+aEd7cP1b8+mwLvd4rpWf
-	yrKGF0McI3TnoWkMD6DpQbVQku7P3jdMqzDug3otVVKQuPkxukb2gY2jexx7KU1A0Be1Wviv2EOVl
-	myg3ap9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0LHCCdnddYjx/7QEARYvl0k8iwfuy+IgXvCmYkI98VA=; b=KzSE5+WmgTNeWL
+	wWgh0CxhT0lKSfK63SumdRTbV11HkMbLwqST7Jn0y2h5w9djOBVe3ynKhp9dS9nkGPSmFmrFC/at5
+	acqCdP0cNRjKaYVV5ZBNUqQ609vGkd99xfFvweCQOYo0SIS/IVlgF5Jztkv99SrdiY7qYeat6pfYs
+	CK5dRTvsexz/WpO+5/prvj/ZSazt/cvmpGns1pXAW7HsMNRQdW7XCsS/wMmbsIbWWwEO5HKSzTEyq
+	qq0Q3WHnDpPV6IC3qVFIDTZeXBR7Br83I9vaf038WzKizyDlh9dmkPDrVr7R+JhNFcuwViZ8H8LqX
+	D62ObeoT7cbLwi3X0bDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vR79C-00000007tTY-2G60;
-	Thu, 04 Dec 2025 11:05:18 +0000
-Received: from m16.mail.163.com ([117.135.210.5])
+	id 1vR99b-0000000820J-0bf7;
+	Thu, 04 Dec 2025 13:13:51 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vR798-00000007tRU-0Yjk;
-	Thu, 04 Dec 2025 11:05:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=1f
-	JcygxJ8ktEMFPvVfhD1h7orWfXdouaakmxwB4pUxs=; b=OA0zEY7/4TPdJ25Cut
-	alV6aIG2a/7/USN59kLCRmdrNByPTLnLhF6VG18YOXU1pQTY/wMCdh4QhLgo6h3F
-	VQWYF1UWixF6LJmkMQI2v+Db0/TSZRDiLiKjnwXX54n6xxnqdajmGoGJm8oeZXLi
-	AIrzjpJ1/iJXJc2/FX8DnMYrs=
-Received: from localhost.localdomain (unknown [])
-	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wB36w7WajFpT_14EQ--.41851S4;
-	Thu, 04 Dec 2025 19:04:55 +0800 (CST)
-From: Haoxiang Li <haoxiang_li2024@163.com>
-To: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	khilman@baylibre.com,
-	roger.lu@mediatek.com
-Cc: linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Haoxiang Li <haoxiang_li2024@163.com>,
-	stable@vger.kernel.org
-Subject: [PATCH] soc: mediatek: SVS: Fix a reference leak bug in svs_add_device_link()
-Date: Thu,  4 Dec 2025 19:04:52 +0800
-Message-Id: <20251204110452.93867-1-haoxiang_li2024@163.com>
-X-Mailer: git-send-email 2.25.1
+	id 1vR99Y-000000081ze-0nao;
+	Thu, 04 Dec 2025 13:13:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id D17B741502;
+	Thu,  4 Dec 2025 13:13:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 30CF0C4CEFB;
+	Thu,  4 Dec 2025 13:13:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764854027;
+	bh=LX5m6gmwF2s+hTAWnWC6SZ5hgbfLK8EmTlC3zSOFwfA=;
+	h=From:Subject:Date:To:Cc:From;
+	b=E/aDWsxu6fzANFFFSSV7NbiDgPUyieLItRp5Zo+HplFWE3rwdBZpTGZdQUoU/ftrd
+	 yGYNniyAzs1b0SCzXgPKJyECpfKy5sFMiYyE62KCbzdtQ80vszsNW3kikIyvQoQK/v
+	 dZnkExaXSThnrIkRFzT8Hv9uuxhVdCXB/G7TqSkb+/v7njZScPECqeu7liw/7J/YvR
+	 GKdTXIQkGlJ21yLQlkr0PsBlteJzupaZgnRrRyIMLbRWVcNEoYrqB+fdYh8NS5a3eU
+	 vUEK7fvZpyebiWixNJCe7QB5DQPv6KoGug9iy+gZeG48UIcP7kLt/Byf2Zr9qqPAE0
+	 AsWn91dxxhUKg==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH mt76 0/3] wifi: mt76: mt7996: Some MLO link management
+ fixes
+Date: Thu, 04 Dec 2025 14:13:27 +0100
+Message-Id: <20251204-mt76-txq-wicd-fix-v1-0-1f4b2f2b3b2c@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wB36w7WajFpT_14EQ--.41851S4
-X-Coremail-Antispam: 1Uf129KBjvdXoWrZrW3GryUuFW8Wr43ur4DJwb_yoWkCrX_Gr
-	9FvFy7Xrn8Jr1fKF4xtF13AryS9Fs7t3ykGFy5t3WSqrW5WFyjqF90vrZ0qFZru3y8CFyU
-	XF1UWF4xKF4rGjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRM4E_DUUUUU==
-X-Originating-IP: [36.112.3.223]
-X-CM-SenderInfo: xkdr5xpdqjszblsqjki6rwjhhfrp/xtbCxhd25GkxatfZEgAA3t
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MQQqAIBAAvxJ7biEXM+or0SFyqz1kpVGC9Pek4
+ wzMJAjshQN0RQLPtwTZXQZVFjCto1sYxWYGqqhWVGncrsbgFU98ZLI4S0QyzahbrQwRQ+4Oz1n
+ /z3543w+C1aQ2YwAAAA==
+X-Change-ID: 20251204-mt76-txq-wicd-fix-267a4941622e
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251204_030514_566225_0EBB8762 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20251204_051348_250481_84B6BA78 
+X-CRM114-Status: UNSURE (   5.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,39 +79,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-svs_get_subsys_device() increases the reference count of the returned
-device, if error happens, put_device() is required to drop the device
-reference.
 
-Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
-Cc: stable@vger.kernel.org
-Signed-off-by: Haoxiang Li <haoxiang_li2024@163.com>
 ---
- drivers/soc/mediatek/mtk-svs.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+Lorenzo Bianconi (3):
+      wifi: mt76: mt7996: Set mtxq->wcid just for primary link
+      wifi: mt76: mt7996: Reset mtxq->idx if primary link is removed in mt7996_vif_link_remove()
+      wifi: mt76: mt7996: Switch to the secondary link if the default one is removed
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index f45537546553..c8f15bb139c6 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -2155,12 +2155,15 @@ static struct device *svs_add_device_link(struct svs_platform *svsp,
- 	sup_link = device_link_add(svsp->dev, dev,
- 				   DL_FLAG_AUTOREMOVE_CONSUMER);
- 	if (!sup_link) {
-+		put_device(dev);
- 		dev_err(svsp->dev, "sup_link is NULL\n");
- 		return ERR_PTR(-EINVAL);
- 	}
- 
--	if (sup_link->supplier->links.status != DL_DEV_DRIVER_BOUND)
-+	if (sup_link->supplier->links.status != DL_DEV_DRIVER_BOUND) {
-+		put_device(dev);
- 		return ERR_PTR(-EPROBE_DEFER);
-+	}
- 
- 	return dev;
- }
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 84 ++++++++++++++++--------
+ 1 file changed, 58 insertions(+), 26 deletions(-)
+---
+base-commit: 53d1548612670aa8b5d89745116cc33d9d172863
+change-id: 20251204-mt76-txq-wicd-fix-267a4941622e
+
+Best regards,
 -- 
-2.25.1
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
