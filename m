@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0317D24440
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 17:23:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF91AD2444B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 17:32:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7XAPGpDF6SeuuHCTwrypKrihZo7oSp+mBZnXZpxJtM0=; b=SHeRgqJOewh2tiZivQRoAXiV0B
-	kyPnuzNKTLZmF1YitCTVPcQBvOIxhaJq0SSv5Dw3TrbDL+PdyiRw2szXPrBm9L5Ppjj7FXjSioLfN
-	8NMcd2jxgiOP/HCNKDpKivQgv5bCW6RUpCqTTS3p22rNKBd5vxqdKqG1WIUSN7h47NlMZSvVqsZgQ
-	dDTBVck2jULXhTIJtZSlosuuqOlFOwUTIS+6l6Z3wgJigvR0QlqO4RYucvY/PiXEugHPKXwZdBJZg
-	2OsaBapIQcFDLYTwfnvH46nOtiMvKkSNEpxAY79GE/HEbMRLPnr85DO7ATsh9TYn3ANYMmCsd+NEF
-	iDbw0btQ==;
+	bh=yWVKxWid5L9rirXdv10wLR3V7TeVNb+lAuR+9tFQfSw=; b=L1YRVPZl7op5iWZqMwqLx/Fr3F
+	QlJjubI9hRrsn60ttLh5m++9GUl7QUhLA79w+vXvSFRsg0Tjv6bk7VY7+/DEvrrkyr061fm9ofrne
+	18VFQleq8mFprm9Ysykb2WjhffJ/jdUMgrAqJ6Z+7HA41/AHVOE/eZPJJMvX5Ew4/ENHJGhchjq8I
+	vPRF8KXTyN/qE5uA+bV39QZgKcFbZ7vinfaxUrm6XNxMFQdrCoLMkGjctc1RKfD4bWZZicFcIt6ga
+	Il+fvptE6k5JwM3xC+fB8vZ4oPrUSYsnz7d0l1yetV4pTUph+oBOAhjsndb5+rNTMVhcAdnhIP2HV
+	TP9hOraA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRD3c-00000008MxD-1Bgy;
-	Thu, 04 Dec 2025 17:23:56 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vRDBw-00000008Njc-2ORu;
+	Thu, 04 Dec 2025 17:32:32 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRD3a-00000008MwG-3Z4N;
-	Thu, 04 Dec 2025 17:23:54 +0000
+	id 1vRDBt-00000008NiR-0LGg;
+	Thu, 04 Dec 2025 17:32:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 10D08601FD;
-	Thu,  4 Dec 2025 17:23:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 542C9C4CEFB;
-	Thu,  4 Dec 2025 17:23:50 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 55B8F43EB4;
+	Thu,  4 Dec 2025 17:32:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9EC3C4CEFB;
+	Thu,  4 Dec 2025 17:32:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764869033;
-	bh=RdCPDCtGj09k6W4RZzgSRfIdQorpFJpu+oFk7ag/R0E=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PXFMZVJhPsYZ9qxtY1JYoo80yfyc40OIXO2xfqFRDuWkwv/xeRL5W0L36KwNH6B8J
-	 9q7eGzpX0N84iAbAGQu+vtMQ4HoZlanCrFnZyW9BgavsRdbAmOve5waniqID2FNLeE
-	 JGVEjhsjkrUUGYSS8czdsTs29H2fNB4S8mjGzoU7GKQMO5pUhPYHg3lBac8r8BdAJG
-	 vL+7idoIW8OVON6i04U7H8Jj3R+OAYH0eMY2ryylzzP2JP+dBuiDidyvaR9JDiQyAP
-	 GM2totZZ44wWXJxuOtD4APneSse82aNUZh/UkKv56uZeTGtJ/EESO1SX2zbaN+qGz3
-	 /VsUV1o+H8ASw==
-Message-ID: <178afbeb-168f-4765-bb0b-fad0bcd29382@kernel.org>
-Date: Thu, 4 Dec 2025 18:23:48 +0100
+	s=k20201202; t=1764869548;
+	bh=JSBp6wv2W2X2tHZsp1e5Ojo/YYlzqUJNk/mj18//10I=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=kt2d41PZMO7Ee59B3FD1SP0F+07nXeZBorvhnHTLbeD84SS2Khc0cVg+VUb7kzEmc
+	 g/PH2bzO6Zu+x4z/mgtGCxDAsBn9stBt8xd0pUFbA8YMrceGOFVidfE3o7/xuEyVI+
+	 Ifi8e4eJBpDJvHGAoQFKFWNHZPwIQfFzoSRIQaGBzQUEhMFdW+AkOgjS1edjiuW4Du
+	 yycDwQ78pWeLgpJJCSleUunGz/g8q7a4+xXohLVn4HAuSzmUx7V0lslUCqhrquiTEa
+	 PDEqLnXZar/k/PBcit04JKgnzuCfg8tS+qoNYmiHvx3D9Hr/gStRl5JLc5Q5CG9LXq
+	 Z65iEMqgoM3BQ==
+Message-ID: <9f7da6ae-9e3e-442f-a203-28a8881dbe0f@kernel.org>
+Date: Thu, 4 Dec 2025 18:32:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 2/2] net: dsa: mt7530: Use GPIO polarity to generate
  correct reset sequence
+From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Vladimir Oltean <olteanv@gmail.com>
 Cc: Daniel Golle <daniel@makrotopia.org>, Frank Wunderlich <frankwu@gmx.de>,
  Andrew Lunn <andrew@lunn.ch>, Chen Minqiang <ptpt52@gmail.com>,
@@ -68,7 +69,7 @@ References: <0675b35f-217d-4261-9e3f-2eb24753d43c@lunn.ch>
  <20251204160247.yz42mnxvzhxas5jc@skbuf>
  <66d080f1-e989-451f-9d5e-34460e5eb1b0@kernel.org>
  <20251204171159.yy3nkvzttxecmhfo@skbuf>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <178afbeb-168f-4765-bb0b-fad0bcd29382@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -113,9 +114,12 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20251204171159.yy3nkvzttxecmhfo@skbuf>
+In-Reply-To: <178afbeb-168f-4765-bb0b-fad0bcd29382@kernel.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251204_093229_167007_AFA5468F 
+X-CRM114-Status: GOOD (  16.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,39 +134,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04/12/2025 18:11, Vladimir Oltean wrote:
-> On Thu, Dec 04, 2025 at 05:48:07PM +0100, Krzysztof Kozlowski wrote:
->> Both are the same - inverter or NOT gate, same stuff. It is just
->> connecting wire to pull up, not actual component on the board (although
->> one could make and buy such component as well...). We never describe
->> these inverters in the DTS, these are just too trivial circuits, thus
->> the final GPIO_ACTIVE_XXX should already include whatever is on the wire
->> between SoC and device.
+On 04/12/2025 18:23, Krzysztof Kozlowski wrote:
+> On 04/12/2025 18:11, Vladimir Oltean wrote:
+>> On Thu, Dec 04, 2025 at 05:48:07PM +0100, Krzysztof Kozlowski wrote:
+>>> Both are the same - inverter or NOT gate, same stuff. It is just
+>>> connecting wire to pull up, not actual component on the board (although
+>>> one could make and buy such component as well...). We never describe
+>>> these inverters in the DTS, these are just too trivial circuits, thus
+>>> the final GPIO_ACTIVE_XXX should already include whatever is on the wire
+>>> between SoC and device.
+>>
+>> Please read what Andrew said:
+>> https://lore.kernel.org/netdev/3fbc4e67-b931-421c-9d83-2214aaa2f6ed@lunn.ch/
+>>
+>>   Assuming there is not a NOT gate placed between the GPIO and the reset
+>>   pin, because the board designer decided to do that for some reason?
+>>                    ~~~~~~~~~~~~~~
+>>
+>> You two are *not* talking about the same thing. I dismissed the
 > 
-> Please read what Andrew said:
-> https://lore.kernel.org/netdev/3fbc4e67-b931-421c-9d83-2214aaa2f6ed@lunn.ch/
 > 
->   Assuming there is not a NOT gate placed between the GPIO and the reset
->   pin, because the board designer decided to do that for some reason?
->                    ~~~~~~~~~~~~~~
+> It's the same thing. NOT gate is just pulling some pin down or up.
+
+Although transistor would be still needed, so indeed that's still a bit
+more than a wire and resistor as I implied.
+
+It looks like:
+https://www.electronics-tutorials.ws/wp-content/uploads/2018/05/logic-log47.gif
+
+
 > 
-> You two are *not* talking about the same thing. I dismissed the
+>> probability of there being a NOT gate in the form of a discrete chip on
+> 
+> We do not describe NOT gates as discreet chips. I don't think anyone
+> actually places something as NOT gate. It's logical NOT gate, but on
+> circuit it is just pull up/down as I said multiple times. The pull +
+> resistor is the "NOT gate".
+> 
+> It's so easy and that's why it is potentially so common design.
 
 
-It's the same thing. NOT gate is just pulling some pin down or up.
-
-> probability of there being a NOT gate in the form of a discrete chip on
-
-We do not describe NOT gates as discreet chips. I don't think anyone
-actually places something as NOT gate. It's logical NOT gate, but on
-circuit it is just pull up/down as I said multiple times. The pull +
-resistor is the "NOT gate".
-
-It's so easy and that's why it is potentially so common design.
-
-> the PCB, *exactly because* you can most likely invert the signal in the
-> GPIO pin itself.
-
+We still do not describe transistors in DTS. We do not describe NOT
+gates. The final flag should include that as I said.
 
 
 Best regards,
