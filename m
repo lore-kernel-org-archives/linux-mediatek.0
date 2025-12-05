@@ -4,110 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 549B9D2E039
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 08:24:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4E48D2E03E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 08:39:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6eB+pELnaXO/EFgvQYRmO1RVoCyEWCWMqcvN6CQY5Hw=; b=C2kd+I0/+TCle4fTalJvp0uKi2
-	kCBC6QxCFwpcPhT33DRBzWCHmjWrz/dMDvfoAKG13gxSC6akq5qDGq7WIf9RJPIs+MQaLZvYTK92h
-	IFrlrWu0AWGYSZkb9o1RS8assTYZhA9Gwfbvo5TJOVteNi5L2p/B0KuseOF1sM4AaRVt68B4dSG5r
-	oZAZWwfsLHEz/aLBbuNf+RPV/natMmcOWo0x/ysuxu4PVP8ty4UMhl+GTZ2gQRfe8zHFw4VHDHOqO
-	/lPsN5lnvJT+NGqGtWrcRVRler8TXcMfbgPmwgEB4HZSCp+2SHLHyEh2IOtTHGjUMGY0SDzqBMCRK
-	I4TQXD4Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dzLAi/vSmLpzjF8X5RTDG4A6Kgug7+6q24DNKOstvN0=; b=mq9btOyr73TVUmIBOX4sZ6NFP9
+	yTzdk7zIgHrE/V0CTb0ApBYeVtpF9U5tWl5JZ5Fm96Z/SB89wv97qaxV5BTRFXTsvyJDnvZOf8423
+	+Gy+Bov+ebka8fb978mqWuU2sGAn7LvP0ZM7dpTxYGCntEbbUp0ob1O5hYXIhp19smGw5VoAB4B5v
+	nqFrK+JbS/9XxBLMd9oSC0eUqFeDu84Ob60Phd1dUojN+OMFfEwlyp5aUVLwPwLaZuI9oFc31hlsh
+	w/gVpUrXdkHBioqa2RRyWDYoAvB0SHiwaV2oPhIMYkcQW4MQnNUatlni822n3Qswu4+u6k+QhOV7k
+	GX2G5tVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRR7S-00000009DxO-37Rs;
-	Fri, 05 Dec 2025 08:24:50 +0000
+	id 1vRRLK-00000009Ead-1UnR;
+	Fri, 05 Dec 2025 08:39:10 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRR7N-00000009Dwl-2cXE;
-	Fri, 05 Dec 2025 08:24:49 +0000
+	id 1vRRLG-00000009EZv-3oiS;
+	Fri, 05 Dec 2025 08:39:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4A2A143D8A;
-	Fri,  5 Dec 2025 08:24:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B09FC4CEF1;
-	Fri,  5 Dec 2025 08:24:42 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4214844282;
+	Fri,  5 Dec 2025 08:39:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 973CCC4CEF1;
+	Fri,  5 Dec 2025 08:39:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764923085;
-	bh=6eB+pELnaXO/EFgvQYRmO1RVoCyEWCWMqcvN6CQY5Hw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Xer64MyIVOGGi4OuAStLPFTcA6czqESMxsd7vidWUJg6l58WmADrOm3pUg6kPCUxm
-	 rgEFBOMc2x78QEkWEtDD7/4339QXlfwUJJxNl/OupMvM6Z1Y7CBroCsNHP8ayEmUXo
-	 ZxCl2JgU7Ia797yREqxX4Up0iJ5fBL85TXXeVWxOO+5uE+IDQnigFcozn1YBLov327
-	 hN4lnvmZ2yWohYnDM6X1dFOzsShjwamylJUoYELRqYhg3Y15npNDNlVhhADAdTBDlJ
-	 x58krwzHb1HMpYWtGvdfyoAy75K5MfV3zUJrXNY5eVrl7fw+j9l0uPg6X/KXkGPsy9
-	 ZplLbbQGwilEg==
-Message-ID: <ea71abc9-a661-4a78-8503-bac9d34bf8a4@kernel.org>
-Date: Fri, 5 Dec 2025 09:24:40 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8189: Add pinmux macro header
- file
-To: Cathy Xu <ot_cathy.xu@mediatek.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Yong Mao <yong.mao@mediatek.com>, Wenbin Mei <Wenbin.Mei@mediatek.com>,
- Lei Xue <Lei.Xue@mediatek.com>
-References: <20251205064357.13591-1-ot_cathy.xu@mediatek.com>
+	s=k20201202; t=1764923946;
+	bh=9HJ5sgZEsPfwomqdOTPvYrHHBOud2TBPVuz56dCYrqA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=sJ7ngaXI/A9Yxr7OMM/TK12mMBKIkr/0kbXk0ZpSmsVburcI6VuNnbvF8h2Qp8VNt
+	 QQFZ3Hbg6V2lAGnGhkf049YGjmQmReQXvRma3ret49QAbl+YQ+HJNZYhE5DnZM5xHh
+	 4aesaFfigu/DaUnFrDIK58QUWYacqIxjP2zBd0LfojkmXmXtk620DpBX0GPuW8CBap
+	 wd8szEs5t5M8LjomU+vrzCDzijDESm8FAsbOQmgejpJ3CQHO8Omxx0mOlAVi3Lttdy
+	 mL8AHgbFva9isRibOgH1vt4lPcMz6kWGq/aGY7pqdhkNpigMRWhIZIPbHYeKJ+9p8H
+	 SkesHflqNsANA==
+Date: Fri, 5 Dec 2025 09:39:03 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20251205064357.13591-1-ot_cathy.xu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: Hanchien Lin <hanchien.lin@mediatek.com>
+Cc: "Rafael J . Wysocki" <rafael@kernel.org>, 
+	Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
+	Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Balsam CHIHI <bchihi@baylibre.com>, Irving-CH.lin@mediatek.com, 
+	Jh Hsu <Jh.Hsu@mediatek.com>, WH Wu <vincent.wu@mediatek.com>, 
+	Raymond Sun <Raymond.Sun@mediatek.com>, Sirius Wang <Sirius.Wang@mediatek.com>, linux-pm@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v3 1/2] dt-bindings: thermal: mediatek: Add MT8189 LVTS
+ thermal controller bindings
+Message-ID: <20251205-nostalgic-just-mussel-5cbf89@quoll>
+References: <20251202091056.1761229-1-hanchien.lin@mediatek.com>
+ <20251202091056.1761229-2-hanchien.lin@mediatek.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20251202091056.1761229-2-hanchien.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251205_002445_724161_B673586A 
-X-CRM114-Status: UNSURE (   5.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251205_003907_046536_81AF5A64 
+X-CRM114-Status: GOOD (  16.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,11 +81,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/12/2025 07:43, Cathy Xu wrote:
-> Add the pinctrl header file on MediaTek mt8189.
+On Tue, Dec 02, 2025 at 05:10:55PM +0800, Hanchien Lin wrote:
+> Add support for the MediaTek MT8189 LVTS thermal controller to the device tree bindings.
 
-Why? There is no user of this. Why do we dead code in unused heders?
+Please wrap commit message according to Linux coding style / submission
+process (neither too early nor over the limit):
+https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/process/submitting-patches.rst#L597
+
+> This includes new compatible strings and required properties for MT8189.
+
+Drop, redundant. Don't explain the obvious. Can you document new device
+wihout "new compatible strings"?
+
+Your commit msg should explain non obvious things, e.g. why this is not
+compatible with existing devices.
+
+A nit, subject: drop second/last, redundant "bindings". The
+"dt-bindings" prefix is already stating that these are bindings.
+See also:
+https://elixir.bootlin.com/linux/v6.17-rc3/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
+
+
+> 
+> Signed-off-by: Hanchien Lin <hanchien.lin@mediatek.com>
+> ---
+>  .../thermal/mediatek,lvts-thermal.yaml        | 27 +++++++++++++++++--
+>  .../thermal/mediatek,lvts-thermal.h           | 20 ++++++++++++++
+>  2 files changed, 45 insertions(+), 2 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+> index 0259cd3ce9c5..0f7fd69f5fdf 100644
+> --- a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+> +++ b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
+> @@ -22,6 +22,8 @@ properties:
+>        - mediatek,mt8186-lvts
+>        - mediatek,mt8188-lvts-ap
+>        - mediatek,mt8188-lvts-mcu
+> +      - mediatek,mt8189-lvts-ap
+> +      - mediatek,mt8189-lvts-mcu
+>        - mediatek,mt8192-lvts-ap
+>        - mediatek,mt8192-lvts-mcu
+>        - mediatek,mt8195-lvts-ap
+> @@ -58,6 +60,21 @@ properties:
+>  allOf:
+>    - $ref: thermal-sensor.yaml#
+>  
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8189-lvts-ap
+> +              - mediatek,mt8189-lvts-mcu
+
+Why new if:then? Why cannot it be part of existing block? I don't see
+differences.
+
+> +    then:
+> +      properties:
+> +        nvmem-cells:
+> +          minItems: 2
+> +
+> +        nvmem-cell-names:
+> +          minItems: 2
+> +
+>    - if:
+>        properties:
+>          compatible:
+> @@ -75,6 +92,10 @@ allOf:
+>          nvmem-cell-names:
+>            maxItems: 1
+>  
+> +      required:
+> +        - clocks
+> +        - resets
+> +
+>    - if:
+>        properties:
+>          compatible:
+> @@ -91,12 +112,14 @@ allOf:
+>          nvmem-cell-names:
+>            minItems: 2
+>  
+> +      required:
+> +        - clocks
+> +        - resets
+> +
+>  required:
+>    - compatible
+>    - reg
+>    - interrupts
+> -  - clocks
+> -  - resets
+
+
+Maybe that's the difference, but commit msg explained nothing. Your
+commit is just redundant - tells zero, but all the unexpected things are
+totally not explained.
+
+Device cannot work without resets and clocks. If you think otherwise,
+prove your point in commit msg (in terms of datasheet, hardware, not
+drivers!).
+
+>    - nvmem-cells
+>    - nvmem-cell-names
 
 Best regards,
 Krzysztof
+
 
