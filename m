@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4E48D2E03E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 08:39:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95C59D2F7C7
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 09:04:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dzLAi/vSmLpzjF8X5RTDG4A6Kgug7+6q24DNKOstvN0=; b=mq9btOyr73TVUmIBOX4sZ6NFP9
-	yTzdk7zIgHrE/V0CTb0ApBYeVtpF9U5tWl5JZ5Fm96Z/SB89wv97qaxV5BTRFXTsvyJDnvZOf8423
-	+Gy+Bov+ebka8fb978mqWuU2sGAn7LvP0ZM7dpTxYGCntEbbUp0ob1O5hYXIhp19smGw5VoAB4B5v
-	nqFrK+JbS/9XxBLMd9oSC0eUqFeDu84Ob60Phd1dUojN+OMFfEwlyp5aUVLwPwLaZuI9oFc31hlsh
-	w/gVpUrXdkHBioqa2RRyWDYoAvB0SHiwaV2oPhIMYkcQW4MQnNUatlni822n3Qswu4+u6k+QhOV7k
-	GX2G5tVg==;
+	bh=BIBOjqLhymbGzeJmJsfulc8SQS9KP7NnWXWFVKje56k=; b=SmlvQVaG4wFI8N9F0lvJqLx+nG
+	r4kPbd4URE+sMnZFYB7gCEZrlQe3DxhgeBZoQOP5S0s+Y2fvEfzZqN14bQhUiulUkSVlX5+Q/rS1E
+	UVroPYOM5AVM+M/2YDb4ZmqegiaHJ5BgurXFcA1LPofgm/D4iYWPTQA1tvasf6aGptjYoLvKx/hZs
+	hugksIxvgXLGpbOl5LLRprxmWGcecar7RrDXTCZYgGUy5HTaO0fRRbBnI86LJPCIt+fOULl4UYSb+
+	NP9KgoftNQJWhFuadqcTrMMJ8xkwqM90r0MJXVqRxz2852+x7HushfQb8e4pVBqIRUnCQI8TyeDeS
+	1qbKu8yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRRLK-00000009Ead-1UnR;
-	Fri, 05 Dec 2025 08:39:10 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vRRkC-00000009FsU-00lS;
+	Fri, 05 Dec 2025 09:04:52 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRRLG-00000009EZv-3oiS;
-	Fri, 05 Dec 2025 08:39:08 +0000
+	id 1vRRkA-00000009Frp-3ujv;
+	Fri, 05 Dec 2025 09:04:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4214844282;
-	Fri,  5 Dec 2025 08:39:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 973CCC4CEF1;
-	Fri,  5 Dec 2025 08:39:05 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 20D5A60207;
+	Fri,  5 Dec 2025 09:04:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6CB43C4CEF1;
+	Fri,  5 Dec 2025 09:04:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764923946;
-	bh=9HJ5sgZEsPfwomqdOTPvYrHHBOud2TBPVuz56dCYrqA=;
+	s=k20201202; t=1764925489;
+	bh=J2ovb+88K42mXDaoJYvkfnX2So3Ncf927h6EI32oRIQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=sJ7ngaXI/A9Yxr7OMM/TK12mMBKIkr/0kbXk0ZpSmsVburcI6VuNnbvF8h2Qp8VNt
-	 QQFZ3Hbg6V2lAGnGhkf049YGjmQmReQXvRma3ret49QAbl+YQ+HJNZYhE5DnZM5xHh
-	 4aesaFfigu/DaUnFrDIK58QUWYacqIxjP2zBd0LfojkmXmXtk620DpBX0GPuW8CBap
-	 wd8szEs5t5M8LjomU+vrzCDzijDESm8FAsbOQmgejpJ3CQHO8Omxx0mOlAVi3Lttdy
-	 mL8AHgbFva9isRibOgH1vt4lPcMz6kWGq/aGY7pqdhkNpigMRWhIZIPbHYeKJ+9p8H
-	 SkesHflqNsANA==
-Date: Fri, 5 Dec 2025 09:39:03 +0100
+	b=jky425Lq+xqdqknZN+dBqk+kDT1IP2zLRG1WHnvVFHtQsYWzTVG7rqrx0nMG/+IjM
+	 cY4Diq4aZ3SvYp2nDTCwnHbwDh0YeWlvClkW3q7ZpoZRf8USSi2H/jaKM86uXnpe8H
+	 ayDWr7Okza/mSssjih2k+367tAEGP6AUE7/xD7nAvB0ieSdrzcQnENr3ycmI+rJkuL
+	 3eRPBZIjVZ4omPixobm0eE55Ls181cwwd5R1iHtGdvmkRre9DErDQhKl0RNhBj9AVn
+	 0c5KUpuYw049LUaHjhAOD2jDs9hDnPN/lQAtGfOZlLBEA0MVCkvYyESKNuM3RApyoX
+	 iTcPgrcMaqMvQ==
+Date: Fri, 5 Dec 2025 10:04:47 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Hanchien Lin <hanchien.lin@mediatek.com>
-Cc: "Rafael J . Wysocki" <rafael@kernel.org>, 
-	Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
-	Lukasz Luba <lukasz.luba@arm.com>, Rob Herring <robh@kernel.org>, 
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>, 
+	Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Balsam CHIHI <bchihi@baylibre.com>, Irving-CH.lin@mediatek.com, 
-	Jh Hsu <Jh.Hsu@mediatek.com>, WH Wu <vincent.wu@mediatek.com>, 
-	Raymond Sun <Raymond.Sun@mediatek.com>, Sirius Wang <Sirius.Wang@mediatek.com>, linux-pm@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v3 1/2] dt-bindings: thermal: mediatek: Add MT8189 LVTS
- thermal controller bindings
-Message-ID: <20251205-nostalgic-just-mussel-5cbf89@quoll>
-References: <20251202091056.1761229-1-hanchien.lin@mediatek.com>
- <20251202091056.1761229-2-hanchien.lin@mediatek.com>
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wenbin Mei <wenbin.mei@mediatek.com>, kernel@collabora.com, 
+	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/3] dt-bindings: mmc: mtk-sd: Add support for MT8189 SoC
+Message-ID: <20251205-funky-coucal-from-eldorado-7f8bea@quoll>
+References: <20251203-mt8189-add-mmc-support-v1-0-f5ce43212fe9@collabora.com>
+ <20251203-mt8189-add-mmc-support-v1-1-f5ce43212fe9@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20251202091056.1761229-2-hanchien.lin@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251205_003907_046536_81AF5A64 
-X-CRM114-Status: GOOD (  16.75  )
+In-Reply-To: <20251203-mt8189-add-mmc-support-v1-1-f5ce43212fe9@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,110 +73,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 02, 2025 at 05:10:55PM +0800, Hanchien Lin wrote:
-> Add support for the MediaTek MT8189 LVTS thermal controller to the device tree bindings.
-
-Please wrap commit message according to Linux coding style / submission
-process (neither too early nor over the limit):
-https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/process/submitting-patches.rst#L597
-
-> This includes new compatible strings and required properties for MT8189.
-
-Drop, redundant. Don't explain the obvious. Can you document new device
-wihout "new compatible strings"?
-
-Your commit msg should explain non obvious things, e.g. why this is not
-compatible with existing devices.
-
-A nit, subject: drop second/last, redundant "bindings". The
-"dt-bindings" prefix is already stating that these are bindings.
-See also:
-https://elixir.bootlin.com/linux/v6.17-rc3/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
-
-
+On Wed, Dec 03, 2025 at 12:45:34PM +0100, Louis-Alexis Eyraud wrote:
+> Add a new compatible for MMC IP in MT8189 SoC.
+> Even though this is partially compatible with the one found in MT8196
+> SoC, the MT8189 SoC register layout has some slight differences and
+> additional features.
 > 
-> Signed-off-by: Hanchien Lin <hanchien.lin@mediatek.com>
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 > ---
->  .../thermal/mediatek,lvts-thermal.yaml        | 27 +++++++++++++++++--
->  .../thermal/mediatek,lvts-thermal.h           | 20 ++++++++++++++
->  2 files changed, 45 insertions(+), 2 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-> index 0259cd3ce9c5..0f7fd69f5fdf 100644
-> --- a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-> +++ b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-> @@ -22,6 +22,8 @@ properties:
->        - mediatek,mt8186-lvts
->        - mediatek,mt8188-lvts-ap
->        - mediatek,mt8188-lvts-mcu
-> +      - mediatek,mt8189-lvts-ap
-> +      - mediatek,mt8189-lvts-mcu
->        - mediatek,mt8192-lvts-ap
->        - mediatek,mt8192-lvts-mcu
->        - mediatek,mt8195-lvts-ap
-> @@ -58,6 +60,21 @@ properties:
->  allOf:
->    - $ref: thermal-sensor.yaml#
->  
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt8189-lvts-ap
-> +              - mediatek,mt8189-lvts-mcu
+>  Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
 
-Why new if:then? Why cannot it be part of existing block? I don't see
-differences.
-
-> +    then:
-> +      properties:
-> +        nvmem-cells:
-> +          minItems: 2
-> +
-> +        nvmem-cell-names:
-> +          minItems: 2
-> +
->    - if:
->        properties:
->          compatible:
-> @@ -75,6 +92,10 @@ allOf:
->          nvmem-cell-names:
->            maxItems: 1
->  
-> +      required:
-> +        - clocks
-> +        - resets
-> +
->    - if:
->        properties:
->          compatible:
-> @@ -91,12 +112,14 @@ allOf:
->          nvmem-cell-names:
->            minItems: 2
->  
-> +      required:
-> +        - clocks
-> +        - resets
-> +
->  required:
->    - compatible
->    - reg
->    - interrupts
-> -  - clocks
-> -  - resets
-
-
-Maybe that's the difference, but commit msg explained nothing. Your
-commit is just redundant - tells zero, but all the unexpected things are
-totally not explained.
-
-Device cannot work without resets and clocks. If you think otherwise,
-prove your point in commit msg (in terms of datasheet, hardware, not
-drivers!).
-
->    - nvmem-cells
->    - nvmem-cell-names
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
 Best regards,
 Krzysztof
