@@ -4,86 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 394B5D2A536
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Dec 2025 20:47:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE56D116F1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 03:53:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=90lPoCGIeZvibFvI+Jj7Aj4Z4grOEkzE4KDDgVz3fS8=; b=mYT8ZbUOuBNQiUUG1CkcnU1rVJ
-	anQqhKP5Ds6qeb0a2qqFZB6cZlvHLcNB/qDEifcoQ2csiV8LSPW+iNlnxIBKM4XIMnAPtOGDEIR0z
-	EJaYGAYOxRgIrcdlj3fercX2SczGYt4N4HAvzr1eZ1Ypt1J4yMmCSAJ+zYpvVg+49aPDFelKWTkIi
-	MI5hYkFeJKDRfI43QQn5fTHxiVpdiXSwKM7E6J26ue420gXHqPN58jx/IaYEZ53iQopBzSLlmJqVc
-	Nb+yc9E5+iNFmZ8rO9U05cBumGZk9qtbY2M8RbYmWh3IKMNM9y6bgFcaZLdYYZlwEeNxTm70IWPgN
-	rbFMT6Pw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uA42B2J5fwSQfu5FlZ7N38XeuATahpsmHOfzhfbeNbE=; b=4BcCvLOcUDqdmGw3nlFgW/SkK9
+	4Qna2uXvaHeM7oM0dNNE1AvNcCpI0wX7UJTEPWRa7uz1nasKq831+A01Tm15Yra4nNkgrwdDss5M/
+	uQVNp0dHnlHKVfMNGDfI1yIpbdzMuL84CLqRyvUp1EoqQVP11U993tBG7zdpdT5nr7obeg+MDwLt1
+	fa6G/9ExH8k/4QWGiE6A++whv1uQtyxIhr0nJDOJoa27ZQUvRNV2w1Q3HQB390WNwpHt6l3wH3vN4
+	Xaq6UCaKk0JKPIoatOuwftMAGKgUE8VQLqKkrchs9I+tLoA0NE26D4+43qJLP31cw9tWkSzuxPDU6
+	JL7lU9cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRGF0-00000008czf-2ZWy;
-	Thu, 04 Dec 2025 20:47:54 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vRMsJ-00000008zJ5-433Y;
+	Fri, 05 Dec 2025 03:52:56 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRGEx-00000008cyb-0Ds2;
-	Thu, 04 Dec 2025 20:47:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=90lPoCGIeZvibFvI+Jj7Aj4Z4grOEkzE4KDDgVz3fS8=; b=T/SIfiqDXVikO9O0tu4uZBNlLW
-	6PMOsEibq8S9h3DE3ovp9EN5cl/7WTTpDdxenrHdNtAeCsqlo1hH8k3dnhCJenq/VnizEzAHbCv6s
-	crE4bj22iCna436g2Iqoqwd8IKtACPqvPCtv1jAF2/vjBryDOi2SU3fbdHxccoBbjOluy3utx/Xhr
-	WLzi/hGK0ayRycPwbfh1gsKYrrfEUwJelwKQGGbKTdnPgalqsgXxV6zwFLfmnn50PPjzzzpceDqKh
-	KkZX+cS2QzNka7NhIIcEV6VS232P7EO2438bRCGz1z+PS7rKgOvELaLHLkm1INShBT18CE1oSEfdU
-	Y71n0DPQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56322)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1vRGEh-000000003wd-1CNC;
-	Thu, 04 Dec 2025 20:47:35 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1vRGEc-000000001L6-1Grf;
-	Thu, 04 Dec 2025 20:47:30 +0000
-Date: Thu, 4 Dec 2025 20:47:30 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Vladimir Oltean <olteanv@gmail.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Frank Wunderlich <frankwu@gmx.de>, Andrew Lunn <andrew@lunn.ch>,
-	Chen Minqiang <ptpt52@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+	id 1vRMsI-00000008zI3-25lz;
+	Fri, 05 Dec 2025 03:52:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 879E760209;
+	Fri,  5 Dec 2025 03:52:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E18DCC116B1;
+	Fri,  5 Dec 2025 03:52:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1764906773;
+	bh=aCnktdb+wTVLC3gj9nec1duNC0hS3OcJnFItNItmnAQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=T2RxtvSMdslKaWhoOtZaHjmqC/MSnyHnAd9TLVevkydFuHJVs0P4nxWnDAhkzIvKl
+	 zVdbFFUVq4w5tVg3ormyLggB4Xp8OujJMTUsUcvrQgIqSTdUsPhD+pVSUxqgqoJ3b1
+	 wrp1x4EU4NiaWo6qeFVTyQWTOVH9qullRl+codpIW8Iqf1ihXhQN5iS2ndBdzSdRUS
+	 edzNBDushAKlMltIAmRH4lpJTAHMgg1OBWX9WTYlPadxktRcuSWmKofDfe3r+lNUK6
+	 r+DJWrvEP4bHqydVtgwq2vW8IxvfHqlP6UHaPSL/GIWAWTpBbx8V4hG0XYZ4KHI3WH
+	 QKKmEma42gNKA==
+From: Sasha Levin <sashal@kernel.org>
+To: patches@lists.linux.dev,
+	stable@vger.kernel.org
+Cc: Shuhao Fu <sfual@cse.ust.hk>,
+	Viresh Kumar <viresh.kumar@linaro.org>,
+	Sasha Levin <sashal@kernel.org>,
+	rafael@kernel.org,
+	krzk@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH v3 2/2] net: dsa: mt7530: Use GPIO polarity to generate
- correct reset sequence
-Message-ID: <aTHzYq5L7kvAPrjQ@shell.armlinux.org.uk>
-References: <0d85e1e6-ea75-4f20-aef1-90d446b4bfa1@kernel.org>
- <00f308a1-a4b1-4f20-8d8e-459ddf4c39b1@gmx.de>
- <aS7Zj3AFsSp2CTNv@makrotopia.org>
- <20251204131626.upw77jncqfwxydww@skbuf>
- <4170c560-1edd-4ff8-96af-a479063be4a5@kernel.org>
- <20251204160247.yz42mnxvzhxas5jc@skbuf>
- <66d080f1-e989-451f-9d5e-34460e5eb1b0@kernel.org>
- <20251204171159.yy3nkvzttxecmhfo@skbuf>
- <178afbeb-168f-4765-bb0b-fad0bcd29382@kernel.org>
- <9f7da6ae-9e3e-442f-a203-28a8881dbe0f@kernel.org>
+	linux-samsung-soc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.18-5.10] cpufreq: s5pv210: fix refcount leak
+Date: Thu,  4 Dec 2025 22:52:34 -0500
+Message-ID: <20251205035239.341989-5-sashal@kernel.org>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251205035239.341989-1-sashal@kernel.org>
+References: <20251205035239.341989-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <9f7da6ae-9e3e-442f-a203-28a8881dbe0f@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251204_124751_090709_0408D92B 
-X-CRM114-Status: GOOD (  19.74  )
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.18
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,41 +82,189 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 04, 2025 at 06:32:23PM +0100, Krzysztof Kozlowski wrote:
-> On 04/12/2025 18:23, Krzysztof Kozlowski wrote:
-> > On 04/12/2025 18:11, Vladimir Oltean wrote:
-> >> On Thu, Dec 04, 2025 at 05:48:07PM +0100, Krzysztof Kozlowski wrote:
-> >>> Both are the same - inverter or NOT gate, same stuff. It is just
-> >>> connecting wire to pull up, not actual component on the board (although
-> >>> one could make and buy such component as well...). We never describe
-> >>> these inverters in the DTS, these are just too trivial circuits, thus
-> >>> the final GPIO_ACTIVE_XXX should already include whatever is on the wire
-> >>> between SoC and device.
-> >>
-> >> Please read what Andrew said:
-> >> https://lore.kernel.org/netdev/3fbc4e67-b931-421c-9d83-2214aaa2f6ed@lunn.ch/
-> >>
-> >>   Assuming there is not a NOT gate placed between the GPIO and the reset
-> >>   pin, because the board designer decided to do that for some reason?
-> >>                    ~~~~~~~~~~~~~~
-> >>
-> >> You two are *not* talking about the same thing. I dismissed the
-> > 
-> > 
-> > It's the same thing. NOT gate is just pulling some pin down or up.
-> 
-> Although transistor would be still needed, so indeed that's still a bit
-> more than a wire and resistor as I implied.
-> 
-> It looks like:
-> https://www.electronics-tutorials.ws/wp-content/uploads/2018/05/logic-log47.gif
+From: Shuhao Fu <sfual@cse.ust.hk>
 
-A bit more than even that... I do hope folk don't use exactly that,
-that's the kind of thing that would be used in "learning about
-electronics" projects! That's a recipe to drive a transistor into
-full saturation, which makes it comparitively very slow to turn off.
+[ Upstream commit 2de5cb96060a1664880d65b120e59485a73588a8 ]
 
+In function `s5pv210_cpu_init`, a possible refcount inconsistency has
+been identified, causing a resource leak.
+
+Why it is a bug:
+1. For every clk_get, there should be a matching clk_put on every
+successive error handling path.
+2. After calling `clk_get(dmc1_clk)`, variable `dmc1_clk` will not be
+freed even if any error happens.
+
+How it is fixed: For every failed path, an extra goto label is added to
+ensure `dmc1_clk` will be freed regardlessly.
+
+Signed-off-by: Shuhao Fu <sfual@cse.ust.hk>
+Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+
+LLM Generated explanations, may be completely bogus:
+
+## Analysis
+
+### 1. COMMIT MESSAGE ANALYSIS
+
+The commit message describes a refcount leak:
+- Subject: "cpufreq: s5pv210: fix refcount leak"
+- Explains the bug: `dmc1_clk` is not freed on error paths
+- Explains the fix: adds a new `out:` label to ensure cleanup
+- Signed-off-by: Shuhao Fu and Viresh Kumar (cpufreq maintainer)
+
+Missing tags:
+- No "Cc: stable@vger.kernel.org"
+- No "Fixes:" tag pointing to the commit that introduced the bug
+  (4911ca1031c2ad from 2011)
+
+### 2. CODE CHANGE ANALYSIS
+
+The bug:
+- In `s5pv210_cpu_init()`, after `dmc1_clk = clk_get(...)` succeeds, two
+  error paths jump to `out_dmc1`:
+  1. `policy->cpu != 0` (line 521)
+  2. Unsupported memory type (line 533)
+- `out_dmc1` only frees `dmc0_clk` and `policy->clk`, not `dmc1_clk`,
+  causing a refcount leak.
+
+The fix:
+- Adds a new `out:` label that calls `clk_put(dmc1_clk)`
+- Changes the two error paths to `goto out;` instead of `goto out_dmc1;`
+- `out:` falls through to `out_dmc1` for the rest of cleanup
+
+Change size: 4 lines added, 2 lines modified (minimal change)
+
+### 3. CLASSIFICATION
+
+- Bug fix: fixes a resource leak
+- Not a feature addition
+- Not a new API
+- Standard error handling pattern
+
+### 4. SCOPE AND RISK ASSESSMENT
+
+- Scope: single function, error paths only
+- Risk: low
+  - Only affects error paths
+  - Standard cleanup pattern
+  - No logic changes beyond cleanup
+- Subsystem: cpufreq (mature)
+- Dependencies: none; self-contained
+
+### 5. USER IMPACT
+
+- Affected users: systems using the S5PV210/S5PC110 cpufreq driver
+- Severity: resource leak (not a crash, but still a bug)
+- Trigger conditions:
+  1. `policy->cpu != 0` (non-zero CPU)
+  2. Unsupported memory type (not LPDDR/LPDDR2)
+- Impact: clock reference leak on error paths
+
+Historical context:
+- Driver introduced in v2.6.37 (2010)
+- Bug introduced in commit 4911ca1031c2ad (2011-06-06)
+- Present in all stable trees since 2011
+
+### 6. STABILITY INDICATORS
+
+- Tested: no "Tested-by:" tag
+- Reviewed: signed by Viresh Kumar (maintainer)
+- Age: commit is recent (Oct 2025), but the bug is old
+
+### 7. DEPENDENCY CHECK
+
+- No dependencies
+- Code exists in stable trees (driver present since v2.6.37)
+- Fix applies cleanly to stable trees
+
+### 8. COMPARISON WITH SIMILAR FIXES
+
+Similar refcount leak fixes in cpufreq:
+- `cpufreq: nforce2: fix reference count leak` (9600156bb9985)
+- `cpufreq: mediatek: fix device leak on probe failure` (ebc4ed14a4dbf)
+- `cpufreq: qcom-nvmem: fix memory leaks in probe error paths`
+  (e3fd01a810537)
+
+These follow the same pattern and are appropriate for stable.
+
+### 9. STABLE KERNEL RULES COMPLIANCE
+
+- Obviously correct: yes — standard cleanup pattern
+- Fixes a real bug: yes — resource leak
+- Important issue: moderate — resource leak, not a crash
+- Small and contained: yes — 6 lines changed
+- No new features: yes — only fixes cleanup
+- Applies cleanly: yes — no dependencies
+
+### 10. RISK VS BENEFIT TRADE-OFF
+
+Benefits:
+- Fixes a long-standing bug (14 years)
+- Prevents resource leaks
+- Low risk, small change
+- Standard pattern
+
+Risks:
+- Minimal — only touches error paths
+- No functional changes
+
+Concerns:
+- No explicit stable request tag
+- Driver targets older ARM SoCs (may have limited current use)
+- Leak only occurs on error paths
+
+### FINAL ASSESSMENT
+
+This is a valid bug fix that meets stable criteria:
+1. Fixes a real resource leak
+2. Small, contained change
+3. Low risk
+4. No new features
+5. Standard error handling pattern
+
+The lack of a "Cc: stable" tag is not a blocker; maintainers may add it,
+or it may have been missed. The fix is appropriate for stable backport.
+
+**YES**
+
+ drivers/cpufreq/s5pv210-cpufreq.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/cpufreq/s5pv210-cpufreq.c b/drivers/cpufreq/s5pv210-cpufreq.c
+index 4215621deb3fe..ba8a1c96427a1 100644
+--- a/drivers/cpufreq/s5pv210-cpufreq.c
++++ b/drivers/cpufreq/s5pv210-cpufreq.c
+@@ -518,7 +518,7 @@ static int s5pv210_cpu_init(struct cpufreq_policy *policy)
+ 
+ 	if (policy->cpu != 0) {
+ 		ret = -EINVAL;
+-		goto out_dmc1;
++		goto out;
+ 	}
+ 
+ 	/*
+@@ -530,7 +530,7 @@ static int s5pv210_cpu_init(struct cpufreq_policy *policy)
+ 	if ((mem_type != LPDDR) && (mem_type != LPDDR2)) {
+ 		pr_err("CPUFreq doesn't support this memory type\n");
+ 		ret = -EINVAL;
+-		goto out_dmc1;
++		goto out;
+ 	}
+ 
+ 	/* Find current refresh counter and frequency each DMC */
+@@ -544,6 +544,8 @@ static int s5pv210_cpu_init(struct cpufreq_policy *policy)
+ 	cpufreq_generic_init(policy, s5pv210_freq_table, 40000);
+ 	return 0;
+ 
++out:
++	clk_put(dmc1_clk);
+ out_dmc1:
+ 	clk_put(dmc0_clk);
+ out_dmc0:
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+2.51.0
+
 
