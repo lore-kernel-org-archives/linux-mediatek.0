@@ -4,71 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1F38D2F7F2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 13:47:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E07AD2F7FF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 14:22:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nArClPgrtg5VCuCRQeCz3AURqc1MkzU/2k/kKLgwFik=; b=1ZLNSD+bj+AHwN
-	EHqSzFui1mU1z9V+fUs61noe8udOKJN92yOaXg2N8Dnn+FN4J37bqMkw8xc2xTtFIZUCqy1U11vnu
-	d5WwD+0JXYc2FE8qKT8rISKiUtmzPy5xNk1NY9U3t6N75W6b/I9WH2MUQoGden93haIrT1ZJ4f6m4
-	jCvGe97eG+Iql9Q/NOBSl4J12DXYud2gQ0j0d4llaK9juSVufeZg7JNBrQ4XeO9e7m1397vAqPbSx
-	k4dsYIZGd+rmLt5+AowAsFkNPqCqOhXiUl/msI7Wf5NRjaWwbyR5qsxSw6jC+o1ZhltspfHjLi7wv
-	hkTQVwdMcF1RpMyqa4Nw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GHOQvJwMsNaeLIrVHviQuzFqHp03oytYXhLUw8BBDac=; b=whHqzjHOWn+HXd
+	8msWmlZ+3UKHtnLPOM1PgR+hK7egaQ4rxRqm35Adxb/4/2zjkYozgfb3eJtjV+Ht+r7UI8nOygfU7
+	t5AyRLRTWRtGtdcKdP5HrpxzLJ3bRlfs9gDCt1wNZQy2Kg4cJ17ooUIIDrjfbnXkBAE3gCsIzpccb
+	7HkX+cLFW8EzIvu56xAwBiEmrQHWaTGkcxlK39h8HvKGZtmTHqsuxWrCCV7ZW3jpZw94Cj2s6peJ3
+	Kjc/+vQoWj0nS36g9ZuYw8frzbwJVQZeDTnzCXSYVj0qKuYSAdJA97xamrUczbBzDpTPf4Cuz8I/n
+	lsPBvdv4KqDjba74xyqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRW9G-00000009XcK-2INV;
-	Fri, 05 Dec 2025 13:47:02 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vRWi1-00000009Zt6-0BFr;
+	Fri, 05 Dec 2025 14:22:57 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRW9D-00000009XbW-3BYK
-	for linux-mediatek@lists.infradead.org;
-	Fri, 05 Dec 2025 13:47:01 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2CC0043B37
-	for <linux-mediatek@lists.infradead.org>; Fri,  5 Dec 2025 13:46:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0EAA9C19421
-	for <linux-mediatek@lists.infradead.org>; Fri,  5 Dec 2025 13:46:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764942419;
-	bh=G1DKwO3QOoOSXazmt1Hz6axf9JJ+8JmRfw6we/+3fMk=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=V5mZW47gQS5wF6e3EaBjNjjRUsYMKA5vtJw93WQp8Yb3ErZUowS8tGrMrJ45GQxYQ
-	 AbLPrtq+M/80a5GkVgG4trzqo4ZS06PDiyqJL10XkzmszUyl82UICaM7tlvH3l9Uyl
-	 d0xkk90igghwQVETRaYIURkSlQPvPI1ZBBWyVrvrMnOXpgRRsQrz17hR5jryW0txIR
-	 llk7JIYWKm9l8V0VbRMsqVOie6XSQfvEh0NtI8kaP6WFrPxHcPr6/ZSNoCWW9rtHVk
-	 Z+hnLUnCmtNR78D4tNQw2Qhyv51Ht5Jjta3zjv/kSaYNY13nH4ZDVMFIJ9nyjdi43F
-	 EI2rrYf74UnNg==
-Received: by mail-ed1-f41.google.com with SMTP id 4fb4d7f45d1cf-640b0639dabso3302412a12.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 05 Dec 2025 05:46:58 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXOJIMfbQS1kxKsn178qT7YTM0zUbUEUwGQOHyBsS6brDRJ8R4RD0uwnm/NywstUKckOA0K1EI1Sc+FZlT/Zg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxZV3KmOB2A7gz5A1w/l1kqpOXkBhSisX7PT8hPEAK/pdWRfmee
-	/OXHADwxWZcd/8Ekf62SGwCgcPu2Pv9IRCzs60M15zr/29ya2qnonJ/J1YVrx6ry4FpOXGaZnBz
-	zp8leUFeqoB37xcUgSQklqggK7RXBFw==
-X-Google-Smtp-Source: AGHT+IGnSnntD86eE9Z5w3JvKyrgl2TQ4p6Ck5tFuBzhXTViEp5pLzmxGFWb0Gp0bPBwpBev5udEHdS7Zgzngud/oYg=
-X-Received: by 2002:a05:6402:520a:b0:640:f2cd:831 with SMTP id
- 4fb4d7f45d1cf-6479c4076c1mr9111075a12.10.1764942417575; Fri, 05 Dec 2025
- 05:46:57 -0800 (PST)
+	id 1vRWhx-00000009ZrY-3bzo;
+	Fri, 05 Dec 2025 14:22:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1764944570;
+	bh=aJqd/x98lZolKad85hSNqu1YISc+2ZTyVQEuBz55wEk=;
+	h=From:Subject:Date:To:Cc:From;
+	b=bS6Mz7JGtLh1U7c66w0WBSTDMOpL0QvMLx7Jdyb1DcSL5KP8Ka08sr9CnlHcNW/DZ
+	 kbk2I4CTauXhCCv3rPyOf+5eTK+PFfZReSKlHNnX/rTKHMxJaZvIO/3lWm9Vt1x6L8
+	 LdJrF4nN8UD8peJtKV3nOQOw5PBaOZOzVOlDvPWNrE8Z2NNh6pE18AcZXkCpE64kXh
+	 rNk6AgHZh710GsxnTQPCvfDnxjJjGiedBPeRgGPWzhTtXyWb/e4NsB0bHCrM+atVL+
+	 USwprcwGsBDKwv7V5oPp/F6G+bLmUdcSqstg/HpJRZKa6EXcMPHYQFiDKaFZtCQDrR
+	 q6RAgPwmWGGnA==
+Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 14E6217E003B;
+	Fri,  5 Dec 2025 15:22:50 +0100 (CET)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Subject: [PATCH 0/2] drm/mediatek: HDMI DDC v2 driver fixes
+Date: Fri, 05 Dec 2025 15:22:25 +0100
+Message-Id: <20251205-mtk-hdmi-ddc-v2-fixes-v1-0-260dd0d320f4@collabora.com>
 MIME-Version: 1.0
-References: <20251119175124.48947-1-linux@fw-web.de> <20251119175124.48947-2-linux@fw-web.de>
- <fc5c9829-96fa-4028-a642-0792699e92a5@kernel.org> <ddad2f21-4853-41c9-acfb-1613f5000f0c@collabora.com>
-In-Reply-To: <ddad2f21-4853-41c9-acfb-1613f5000f0c@collabora.com>
-From: Rob Herring <robh@kernel.org>
-Date: Fri, 5 Dec 2025 07:46:45 -0600
-X-Gmail-Original-Message-ID: <CAL_Jsq+Zu14ojvNNjgOFWA40iaqYrgGQsrHNWraooOML98fXyw@mail.gmail.com>
-X-Gm-Features: AQt7F2rRik37jIlkQlnszPiS-dbpLXF7k5YqaJSivvbMgbRGbC8B4kGSUMOvhpk
-Message-ID: <CAL_Jsq+Zu14ojvNNjgOFWA40iaqYrgGQsrHNWraooOML98fXyw@mail.gmail.com>
-Subject: Re: [PATCH v1 1/2] arm64: dts: mediatek: mt7986: add dtbs with
- applied overlays for bpi-r3
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/y2NwQqDMBBEfyXsuQsmbYT6K8VDzK51KYltEkUQ/
+ 72h9vhmeDM7ZE7CGTq1Q+JVssyxgr4o8JOLT0ahymAaY7VpbhjKCycKgkQeV4OjbJxxsNTqkdi
+ 11ztU9534V1T10Z+c+LPU+XKGMLjM6OcQpHQq8lbwf2GhP44vtpegVpgAAAA=
+X-Change-ID: 20251204-mtk-hdmi-ddc-v2-fixes-b5d61fdea639
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ CK Hu <ck.hu@mediatek.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1764944570; l=1302;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=aJqd/x98lZolKad85hSNqu1YISc+2ZTyVQEuBz55wEk=;
+ b=j/SD0vU10cLK16S2S7xNM95fl54aNHJWMppvXbNpPyaXZjvkmkZud5524vKyXyxJRO+eCKtVn
+ 5sLQFVHEBwVAQPxpldufrAAspzi0eUDsTOOnLekIUrSwTiWS/pwyHzZ
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251205_054659_835519_71F8A881 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20251205_062254_178688_097895EE 
+X-CRM114-Status: UNSURE (   8.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,52 +86,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 5, 2025 at 3:05=E2=80=AFAM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Il 05/12/25 09:10, Krzysztof Kozlowski ha scritto:
-> > On 19/11/2025 18:51, Frank Wunderlich wrote:
-> >> From: Frank Wunderlich <frank-w@public-files.de>
-> >>
-> >> Build devicetree binaries for testing overlays and providing users
-> >> full dtb without using overlays.
-> >>
-> >> Suggested-by: Rob Herring <robh+dt@kernel.org>
-> >> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> >> ---
-> >> resend of
-> >> https://patchwork.kernel.org/project/linux-mediatek/patch/202406080805=
-30.9436-2-linux@fw-web.de/
-> >> due to discussions here:
-> >> https://patchwork.kernel.org/project/linux-mediatek/patch/202511172113=
-06.725678-1-robh@kernel.org/
-> >>
-> >> changes:
-> >> - updated sd-nand with sata-overlay
-> >> ---
-> >>   arch/arm64/boot/dts/mediatek/Makefile | 21 +++++++++++++++++++++
-> >>   1 file changed, 21 insertions(+)
-> >
-> >
-> > This looks like still not being applied and now it is a warning in
-> > Linus' tree.
-> >
-> > Can this be applied and sent as fixes?
+This patch series fixes two issues in the Mediatek HDMI DDC v2
+driver (mtk_hdmi_ddc_v2).
 
-There's still one warning remaining after applying this series which I repo=
-rted:
+Patch 1 fixes a potential issue on transfer timeout cases to properly
+abort read/write transfers.
+Patch 2 fixes DDC communication errors that occur when getting
+or modifying display features with ddcutil with subcommands such as
+detect, getvcp or setvcp:
+```
+$ ddcutil getvcp 10 -b 4 # read brightness
+DDC communication failed for monitor on bus /dev/i2c-4
 
-scripts/Makefile.dtbs:20: .dtbo is not applied to any base:
-mt8395-radxa-nio-12l-8-hd-panel.dtbo
+$ ddcutil setvcp 10 75 -b 4 # change brightness
+DDC communication failed for monitor on bus /dev/i2c-4
+```
 
-It's fixed in my original patch. Can you all take that and drop the bpi hun=
-ks.
+These patches were tested on Mediatek Genio 510-EVK and 1200-EVK boards
+with a kernel based on next-20251205 tag plus devicetree patches to
+enable HDMI output.
 
-FWIW:
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+Louis-Alexis Eyraud (2):
+      drm/mediatek: mtk_hdmi_ddc_v2: Add transfer abort on timeout cases
+      drm/mediatek: mtk_hdmi_ddc_v2: Fix multi-byte writes
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+ drivers/gpu/drm/mediatek/mtk_hdmi_ddc_v2.c | 58 +++++++++++++++++-------------
+ 1 file changed, 33 insertions(+), 25 deletions(-)
+---
+base-commit: 4e5a9b630580faea139e9837b4fba666db6bd728
+change-id: 20251204-mtk-hdmi-ddc-v2-fixes-b5d61fdea639
+
+Best regards,
+-- 
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+
 
