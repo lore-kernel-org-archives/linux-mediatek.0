@@ -4,70 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DE56D116F1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 03:53:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 615E3D2E008
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 06:34:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uA42B2J5fwSQfu5FlZ7N38XeuATahpsmHOfzhfbeNbE=; b=4BcCvLOcUDqdmGw3nlFgW/SkK9
-	4Qna2uXvaHeM7oM0dNNE1AvNcCpI0wX7UJTEPWRa7uz1nasKq831+A01Tm15Yra4nNkgrwdDss5M/
-	uQVNp0dHnlHKVfMNGDfI1yIpbdzMuL84CLqRyvUp1EoqQVP11U993tBG7zdpdT5nr7obeg+MDwLt1
-	fa6G/9ExH8k/4QWGiE6A++whv1uQtyxIhr0nJDOJoa27ZQUvRNV2w1Q3HQB390WNwpHt6l3wH3vN4
-	Xaq6UCaKk0JKPIoatOuwftMAGKgUE8VQLqKkrchs9I+tLoA0NE26D4+43qJLP31cw9tWkSzuxPDU6
-	JL7lU9cA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6KEPQoelIaSRZixu2FcCj8GjygNUojPP6SBnzoaIaQY=; b=H1efSqvDpVkaJJvCR6jOc1dsFg
+	vXrUvBnhPt3PAmb4hpIpJLOmCxtkJxPviiis/RUQgLfmDbtTEoqRWR3nkKkuxuxSvcPYVQHV5LnsH
+	0MQqafXBUekNtbftvYH8OkSjlS2FMsIg0+ZVlqNibr45z5tI1/YHNsggLNk0qtl+Gh8udrwkfugMl
+	tny4rCUTLhLuUIEtJS7aUAog4vIUpeBIlvrY7TMif2xvYfYGUIr9iwoxKX6a8P/T58qjzusU3G7Kl
+	t2A4RFpuDGOWcpL0oxlMgPu1+UO12kTLd8mfybp2D7SkxcvjybesT8kV0oWilc7VtOaA/V89F4RPL
+	PGBBeOaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRMsJ-00000008zJ5-433Y;
-	Fri, 05 Dec 2025 03:52:56 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vRPOd-000000096Im-2RRZ;
+	Fri, 05 Dec 2025 06:34:27 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRMsI-00000008zI3-25lz;
-	Fri, 05 Dec 2025 03:52:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 879E760209;
-	Fri,  5 Dec 2025 03:52:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E18DCC116B1;
-	Fri,  5 Dec 2025 03:52:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764906773;
-	bh=aCnktdb+wTVLC3gj9nec1duNC0hS3OcJnFItNItmnAQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=T2RxtvSMdslKaWhoOtZaHjmqC/MSnyHnAd9TLVevkydFuHJVs0P4nxWnDAhkzIvKl
-	 zVdbFFUVq4w5tVg3ormyLggB4Xp8OujJMTUsUcvrQgIqSTdUsPhD+pVSUxqgqoJ3b1
-	 wrp1x4EU4NiaWo6qeFVTyQWTOVH9qullRl+codpIW8Iqf1ihXhQN5iS2ndBdzSdRUS
-	 edzNBDushAKlMltIAmRH4lpJTAHMgg1OBWX9WTYlPadxktRcuSWmKofDfe3r+lNUK6
-	 r+DJWrvEP4bHqydVtgwq2vW8IxvfHqlP6UHaPSL/GIWAWTpBbx8V4hG0XYZ4KHI3WH
-	 QKKmEma42gNKA==
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: Shuhao Fu <sfual@cse.ust.hk>,
-	Viresh Kumar <viresh.kumar@linaro.org>,
-	Sasha Levin <sashal@kernel.org>,
-	rafael@kernel.org,
-	krzk@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.18-5.10] cpufreq: s5pv210: fix refcount leak
-Date: Thu,  4 Dec 2025 22:52:34 -0500
-Message-ID: <20251205035239.341989-5-sashal@kernel.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251205035239.341989-1-sashal@kernel.org>
-References: <20251205035239.341989-1-sashal@kernel.org>
+	id 1vRPOK-000000096Hx-0hiV;
+	Fri, 05 Dec 2025 06:34:25 +0000
+X-UUID: 6367be72d1a411f0a52f393f94899d25-20251204
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6KEPQoelIaSRZixu2FcCj8GjygNUojPP6SBnzoaIaQY=;
+	b=H3Wv+ObblLDqKZeXQixbULvCLrY4JTwiWjLZ8weIgu9Q3gZJYAQQAo3uweCUusVq2mIBVBLoeUU+5H/HSt5XNnRlFj33v/6OydGCK56YmBvkrx/w+UsmEQ7Xsk6SiOU13hLxPheCVzC9UhkDjoNZWlIlVjSoE3dYKVTpJbAG2pM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:228c84e4-6b07-4107-b38b-1a1b90cfe823,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-25
+X-CID-META: VersionHash:a9d874c,CLOUDID:bdd66e02-1fa9-44eb-b231-4afc61466396,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 6367be72d1a411f0a52f393f94899d25-20251204
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <ot_zexin.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 128554292; Thu, 04 Dec 2025 23:34:02 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1748.26; Fri, 5 Dec 2025 14:33:59 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.1748.26 via Frontend Transport; Fri, 5 Dec 2025 14:33:58 +0800
+From: Zexin Wang <ot_zexin.wang@mediatek.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Zexin Wang
+	<ot_zexin.wang@mediatek.com>, Sirius Wang <sirius.wang@mediatek.com>, Jack
+ Hsu <jh.hsu@mediatek.com>
+Subject: [PATCH] reset-controller: ti: introduce a new reset handler
+Date: Fri, 5 Dec 2025 14:33:54 +0800
+Message-ID: <20251205063356.13515-1-ot_zexin.wang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.18
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251204_223408_316934_90383596 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,189 +87,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Shuhao Fu <sfual@cse.ust.hk>
+Introduce ti_syscon_reset() to integrate assert and deassert together.
+If some modules need do serialized assert and deassert operations
+to reset itself, reset_control_reset can be called for convenience.
 
-[ Upstream commit 2de5cb96060a1664880d65b120e59485a73588a8 ]
-
-In function `s5pv210_cpu_init`, a possible refcount inconsistency has
-been identified, causing a resource leak.
-
-Why it is a bug:
-1. For every clk_get, there should be a matching clk_put on every
-successive error handling path.
-2. After calling `clk_get(dmc1_clk)`, variable `dmc1_clk` will not be
-freed even if any error happens.
-
-How it is fixed: For every failed path, an extra goto label is added to
-ensure `dmc1_clk` will be freed regardlessly.
-
-Signed-off-by: Shuhao Fu <sfual@cse.ust.hk>
-Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: Zexin Wang <ot_zexin.wang@mediatek.com>
 ---
+ drivers/reset/reset-ti-syscon.c | 34 +++++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
-LLM Generated explanations, may be completely bogus:
-
-## Analysis
-
-### 1. COMMIT MESSAGE ANALYSIS
-
-The commit message describes a refcount leak:
-- Subject: "cpufreq: s5pv210: fix refcount leak"
-- Explains the bug: `dmc1_clk` is not freed on error paths
-- Explains the fix: adds a new `out:` label to ensure cleanup
-- Signed-off-by: Shuhao Fu and Viresh Kumar (cpufreq maintainer)
-
-Missing tags:
-- No "Cc: stable@vger.kernel.org"
-- No "Fixes:" tag pointing to the commit that introduced the bug
-  (4911ca1031c2ad from 2011)
-
-### 2. CODE CHANGE ANALYSIS
-
-The bug:
-- In `s5pv210_cpu_init()`, after `dmc1_clk = clk_get(...)` succeeds, two
-  error paths jump to `out_dmc1`:
-  1. `policy->cpu != 0` (line 521)
-  2. Unsupported memory type (line 533)
-- `out_dmc1` only frees `dmc0_clk` and `policy->clk`, not `dmc1_clk`,
-  causing a refcount leak.
-
-The fix:
-- Adds a new `out:` label that calls `clk_put(dmc1_clk)`
-- Changes the two error paths to `goto out;` instead of `goto out_dmc1;`
-- `out:` falls through to `out_dmc1` for the rest of cleanup
-
-Change size: 4 lines added, 2 lines modified (minimal change)
-
-### 3. CLASSIFICATION
-
-- Bug fix: fixes a resource leak
-- Not a feature addition
-- Not a new API
-- Standard error handling pattern
-
-### 4. SCOPE AND RISK ASSESSMENT
-
-- Scope: single function, error paths only
-- Risk: low
-  - Only affects error paths
-  - Standard cleanup pattern
-  - No logic changes beyond cleanup
-- Subsystem: cpufreq (mature)
-- Dependencies: none; self-contained
-
-### 5. USER IMPACT
-
-- Affected users: systems using the S5PV210/S5PC110 cpufreq driver
-- Severity: resource leak (not a crash, but still a bug)
-- Trigger conditions:
-  1. `policy->cpu != 0` (non-zero CPU)
-  2. Unsupported memory type (not LPDDR/LPDDR2)
-- Impact: clock reference leak on error paths
-
-Historical context:
-- Driver introduced in v2.6.37 (2010)
-- Bug introduced in commit 4911ca1031c2ad (2011-06-06)
-- Present in all stable trees since 2011
-
-### 6. STABILITY INDICATORS
-
-- Tested: no "Tested-by:" tag
-- Reviewed: signed by Viresh Kumar (maintainer)
-- Age: commit is recent (Oct 2025), but the bug is old
-
-### 7. DEPENDENCY CHECK
-
-- No dependencies
-- Code exists in stable trees (driver present since v2.6.37)
-- Fix applies cleanly to stable trees
-
-### 8. COMPARISON WITH SIMILAR FIXES
-
-Similar refcount leak fixes in cpufreq:
-- `cpufreq: nforce2: fix reference count leak` (9600156bb9985)
-- `cpufreq: mediatek: fix device leak on probe failure` (ebc4ed14a4dbf)
-- `cpufreq: qcom-nvmem: fix memory leaks in probe error paths`
-  (e3fd01a810537)
-
-These follow the same pattern and are appropriate for stable.
-
-### 9. STABLE KERNEL RULES COMPLIANCE
-
-- Obviously correct: yes — standard cleanup pattern
-- Fixes a real bug: yes — resource leak
-- Important issue: moderate — resource leak, not a crash
-- Small and contained: yes — 6 lines changed
-- No new features: yes — only fixes cleanup
-- Applies cleanly: yes — no dependencies
-
-### 10. RISK VS BENEFIT TRADE-OFF
-
-Benefits:
-- Fixes a long-standing bug (14 years)
-- Prevents resource leaks
-- Low risk, small change
-- Standard pattern
-
-Risks:
-- Minimal — only touches error paths
-- No functional changes
-
-Concerns:
-- No explicit stable request tag
-- Driver targets older ARM SoCs (may have limited current use)
-- Leak only occurs on error paths
-
-### FINAL ASSESSMENT
-
-This is a valid bug fix that meets stable criteria:
-1. Fixes a real resource leak
-2. Small, contained change
-3. Low risk
-4. No new features
-5. Standard error handling pattern
-
-The lack of a "Cc: stable" tag is not a blocker; maintainers may add it,
-or it may have been missed. The fix is appropriate for stable backport.
-
-**YES**
-
- drivers/cpufreq/s5pv210-cpufreq.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/cpufreq/s5pv210-cpufreq.c b/drivers/cpufreq/s5pv210-cpufreq.c
-index 4215621deb3fe..ba8a1c96427a1 100644
---- a/drivers/cpufreq/s5pv210-cpufreq.c
-+++ b/drivers/cpufreq/s5pv210-cpufreq.c
-@@ -518,7 +518,7 @@ static int s5pv210_cpu_init(struct cpufreq_policy *policy)
+diff --git a/drivers/reset/reset-ti-syscon.c b/drivers/reset/reset-ti-syscon.c
+index 23f86ddb8668..f37685e32b0a 100644
+--- a/drivers/reset/reset-ti-syscon.c
++++ b/drivers/reset/reset-ti-syscon.c
+@@ -7,6 +7,7 @@
+  *	Suman Anna <afd@ti.com>
+  */
  
- 	if (policy->cpu != 0) {
- 		ret = -EINVAL;
--		goto out_dmc1;
-+		goto out;
++#include <linux/delay.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+@@ -42,12 +43,14 @@ struct ti_syscon_reset_control {
+  * @regmap: regmap handle containing the memory-mapped reset registers
+  * @controls: array of reset controls
+  * @nr_controls: number of controls in control array
++ * @reset_duration_us: time of controller assert reset
+  */
+ struct ti_syscon_reset_data {
+ 	struct reset_controller_dev rcdev;
+ 	struct regmap *regmap;
+ 	struct ti_syscon_reset_control *controls;
+ 	unsigned int nr_controls;
++	unsigned int reset_duration_us;
+ };
+ 
+ #define to_ti_syscon_reset_data(_rcdev)	\
+@@ -150,9 +153,37 @@ static int ti_syscon_reset_status(struct reset_controller_dev *rcdev,
+ 		!(control->flags & STATUS_SET);
+ }
+ 
++/**
++ * ti_syscon_reset() - perform a full reset cycle on a device
++ * @rcdev: reset controller entity
++ * @id: ID of the reset to be asserted and deasserted
++ *
++ * This function performs a full reset cycle by asserting and then
++ * deasserting the reset signal for a device. It ensures the device
++ * is properly reset and ready for operation.
++ *
++ * Return: 0 for successful request, else a corresponding error value
++ */
++static int ti_syscon_reset(struct reset_controller_dev *rcdev,
++		   unsigned long id)
++{
++	struct ti_syscon_reset_data *data = to_ti_syscon_reset_data(rcdev);
++	int ret;
++
++	ret = ti_syscon_reset_assert(rcdev, id);
++	if (ret)
++		return ret;
++
++	if (data->reset_duration_us)
++		usleep_range(data->reset_duration_us, data->reset_duration_us * 2);
++
++	return ti_syscon_reset_deassert(rcdev, id);
++}
++
+ static const struct reset_control_ops ti_syscon_reset_ops = {
+ 	.assert		= ti_syscon_reset_assert,
+ 	.deassert	= ti_syscon_reset_deassert,
++	.reset		= ti_syscon_reset,
+ 	.status		= ti_syscon_reset_status,
+ };
+ 
+@@ -196,6 +227,9 @@ static int ti_syscon_reset_probe(struct platform_device *pdev)
+ 		controls[i].flags = be32_to_cpup(list++);
  	}
  
- 	/*
-@@ -530,7 +530,7 @@ static int s5pv210_cpu_init(struct cpufreq_policy *policy)
- 	if ((mem_type != LPDDR) && (mem_type != LPDDR2)) {
- 		pr_err("CPUFreq doesn't support this memory type\n");
- 		ret = -EINVAL;
--		goto out_dmc1;
-+		goto out;
- 	}
- 
- 	/* Find current refresh counter and frequency each DMC */
-@@ -544,6 +544,8 @@ static int s5pv210_cpu_init(struct cpufreq_policy *policy)
- 	cpufreq_generic_init(policy, s5pv210_freq_table, 40000);
- 	return 0;
- 
-+out:
-+	clk_put(dmc1_clk);
- out_dmc1:
- 	clk_put(dmc0_clk);
- out_dmc0:
++	of_property_read_u32(pdev->dev.of_node, "reset-duration-us",
++			     &data->reset_duration_us);
++
+ 	data->rcdev.ops = &ti_syscon_reset_ops;
+ 	data->rcdev.owner = THIS_MODULE;
+ 	data->rcdev.of_node = np;
 -- 
-2.51.0
+2.45.2
 
 
