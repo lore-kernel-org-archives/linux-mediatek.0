@@ -4,66 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2858D2F7D5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 10:25:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABE94D2F7EE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 12:36:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XWofNQaDyYt398seRN716BHuIjx6Be+S6Tk80s3q5n4=; b=EUv/sCBpcO5a/StoEAKURdF3KW
-	7cMCIKHymKccMSEeADTWr0kTdcDRh1+S+QyRdSL2zh7ylBUAWL7rL3+oPEl7tDkFXddPYZm2/mrQh
-	JbkYRlzjUUM8Ptblmp4wAUxAkrXXJADVBqLiYlXa4sOQHY5VITe+fiyBL/YdAeaAaHDLyIkOlaOOX
-	+KhiFgrfbN4mx2uT14tbF+bdO365OdKDw40XzBVo7TKqz574t5eU+MvDAaO7C5s5RNEaJnnYy4fnY
-	eyqoCxAGyqiJMRts+iJnhABv/hlk22GqL73UaxtxqdHeT88U390rpzJmvDaqg2nAluh7DUJrV0hn9
-	Jxt0SPlg==;
+	bh=40WaPL3xSyqPdfQ0BAFTST386p7tT1HulIdRWXHJkKo=; b=ZaBoubHGVwQhVsnCpZcbcU0NDt
+	f9JufNiJotRbePMR+NcgH9ujnPySFrvSCcq0AGkY4Ztftbke3nyxXDrXdWmw7QuUl8ut8gxEP7qEJ
+	Q8p4rnbl2KRF4KARsvsq/e82KMa6iWw/qJSC+BK+n+bFwj7wLxLhTKFhPgxqVBpBtVii6+V05G9zi
+	tlKFZz7pOE2klMhlBASzpwdmpGIfknSBRZXIAQMj3FPZ2oGvBaQCSZeIPh1Lh2Qwji1k9EGEv0CCS
+	8BWgJKpdwdizpvnFfQ78DENYNfAa1dN+xpIkn3PTDNSG412sI3PRoXeQ12gt/Kv09ghBnJfnu4j1P
+	BzxLPOyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRSzt-00000009Np0-3DKv;
-	Fri, 05 Dec 2025 10:25:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vRV32-00000009U4J-157s;
+	Fri, 05 Dec 2025 12:36:32 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRSzq-00000009Nme-49lD;
-	Fri, 05 Dec 2025 10:25:08 +0000
+	id 1vRV2z-00000009U3L-17lx
+	for linux-mediatek@lists.infradead.org;
+	Fri, 05 Dec 2025 12:36:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9B5B9442C0;
-	Fri,  5 Dec 2025 10:25:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 274BEC113D0;
-	Fri,  5 Dec 2025 10:25:05 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 611AE444A7
+	for <linux-mediatek@lists.infradead.org>; Fri,  5 Dec 2025 12:36:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FFEAC4CEF1
+	for <linux-mediatek@lists.infradead.org>; Fri,  5 Dec 2025 12:36:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764930306;
-	bh=xVy6mYUJY3M3YBXRdoJaYabe4kSYexCVeSPnndn/gEQ=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=bmU4VHN0JTGck/+aXil0P9YXvN2aCQOOMt9WL2epaufp/OQUcWSxh3uwVcReG+OGT
-	 l6iIHJ08RPh23wfXYEggWrTWCkU73D0dHUlDwrQ1wBbw4fI7myYWjcknVIed7/h65Y
-	 m3QQObZgoRbT6QYYZQEUx72csenXHUbbB9qfvJpwNI/ts8ljuZ9yWBc0ZsYNiT7Ala
-	 bzjLqlG8Kn6o/lIGuAYXRQlgjO5Dcb2+A/C8ttLH3kHpwq2AcPpPv+hHHgLkHkkwc1
-	 tOYiusms6dVqqJ/jK42XvivjG7rtkDE0I6o0gHDlT3uOHhsZjP4Q0ac4Ja5y5c/lQq
-	 ihSdgY0MiAxWA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 05 Dec 2025 11:24:39 +0100
-Subject: [PATCH mt76 v2 4/4] wifi: mt76: mt7996: Clear wcid pointer in
- mt7996_mac_sta_deinit_link()
+	s=k20201202; t=1764938188;
+	bh=40WaPL3xSyqPdfQ0BAFTST386p7tT1HulIdRWXHJkKo=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=kA9jAiXM5XfELxuKU9/l9OpMOt7HLiUaJi/7R5aGry/eGkBeBaRtm1w9auQ3EGkDk
+	 daZ1xEFxRCUxO2MhMrxLlHdzG/9Cu39Wj9QBJ5/OF0sQfGnnx7a4bL0FWzsUaRCSxr
+	 GMcrXuuIOSvQDiqpufJzCiIGhx0LiwbHjB8F1SFsWyde9l4ZKQzGdkljBmfTpIPDTC
+	 4xkAZ58K5JMAiu3XuGb36DJ6WypdTSVnzfpxILFJJKVOd2AJZH+tgSvVDBrx/j1dAt
+	 TlNwWkvcoEH28P/xAPkWqu/tbBWQw+fvin+z6lcsIWsGHpn75h1HSrTV9aQWP99VJr
+	 5h8spjUvoS/mg==
+Received: by mail-yw1-f182.google.com with SMTP id 00721157ae682-78a6a7654a4so21446387b3.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 05 Dec 2025 04:36:28 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCVIo26HWlMrs23mlNlT2yH7S6/H1wdEHGQVAXq3J4sR/Pinf0HHkry+zm9pIXuFQ746nIlj92gRYVr2DP3DtQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw8pU4sDy1ZagT6/qkC1PSFbXml+csNKyrp3X7tONEqrGZYtq1K
+	IBS3nChWthQmWyx0PfJi9xim8GNHR2kjZ83JcKYjhI1KY4Q6dl+evYkuaS2QAzMYGBfX+USwZbC
+	w8e43zvH+5OYO+1XR0m5OE5DcVDevp4s=
+X-Google-Smtp-Source: AGHT+IFJmlLvuUNZfx9GIfUBDjC2grftRlFjbvDqqrPRzj/oZgXVOMBUT7kbSYooxA8gr0guXcBsmXxXrD2+uuIJcXg=
+X-Received: by 2002:a05:690c:6007:b0:784:883c:a88d with SMTP id
+ 00721157ae682-78c0c18ea37mr70979807b3.52.1764938187032; Fri, 05 Dec 2025
+ 04:36:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251205-mt76-txq-wicd-fix-v2-4-f19ba48af7c1@kernel.org>
-References: <20251205-mt76-txq-wicd-fix-v2-0-f19ba48af7c1@kernel.org>
-In-Reply-To: <20251205-mt76-txq-wicd-fix-v2-0-f19ba48af7c1@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>, Bo Jiao <Bo.Jiao@mediatek.com>, 
- Peter Chiu <chui-hao.chiu@mediatek.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.14.2
+References: <20251205-drm-seq-fix-v1-0-fda68fa1b3de@ideasonboard.com>
+In-Reply-To: <20251205-drm-seq-fix-v1-0-fda68fa1b3de@ideasonboard.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Fri, 5 Dec 2025 13:36:15 +0100
+X-Gmail-Original-Message-ID: <CAD++jLkpWoHe5qYSABF1GeDq-9hZh7ZdL-+8Xqu5MA_erzNqsA@mail.gmail.com>
+X-Gm-Features: AQt7F2rYtL9k7rH39ohC1dih2VUr1gAYC2XO7dYs8vpOSbzH63P91fhZJWxLMZY
+Message-ID: <CAD++jLkpWoHe5qYSABF1GeDq-9hZh7ZdL-+8Xqu5MA_erzNqsA@mail.gmail.com>
+Subject: Re: [PATCH 0/4] drm: Revert and fix enable/disable sequence
+To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	Marek Szyprowski <m.szyprowski@samsung.com>, 
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+	Aradhya Bhatia <aradhya.bhatia@linux.dev>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+	Vicente Bergas <vicencb@gmail.com>, Marek Vasut <marek.vasut+renesas@mailbox.org>, 
+	stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251205_022507_076523_AF145E7C 
-X-CRM114-Status: UNSURE (   7.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251205_043629_341858_01775C1F 
+X-CRM114-Status: GOOD (  15.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +96,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Clear WCID pointer removing the sta link in mt7996_mac_sta_deinit_link
-routine.
+On Fri, Dec 5, 2025 at 10:52=E2=80=AFAM Tomi Valkeinen
+<tomi.valkeinen@ideasonboard.com> wrote:
 
-Fixes: dd82a9e02c054 ("wifi: mt76: mt7996: Rely on mt7996_sta_link in sta_add/sta_remove callbacks")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt7996/main.c | 1 +
- 1 file changed, 1 insertion(+)
+> Changing the enable/disable sequence in commit c9b1150a68d9
+> ("drm/atomic-helper: Re-order bridge chain pre-enable and post-disable")
+> has caused regressions on multiple platforms: R-Car, MCDE, Rockchip.
+>
+> This is an alternate series to Linus' series:
+>
+> https://lore.kernel.org/all/20251202-mcde-drm-regression-thirdfix-v6-0-f1=
+bffd4ec0fa%40kernel.org/
+>
+> This series first reverts the original commit and reverts a fix for
+> mediatek which is no longer needed. It then exposes helper functions
+> from DRM core, and finally implements the new sequence only in the tidss
+> driver.
+>
+> There is one more fix in upstream for the original commit, commit
+> 5d91394f2361 ("drm/exynos: fimd: Guard display clock control with
+> runtime PM calls"), but I have not reverted that one as it looks like a
+> valid patch in its own.
+>
+> I added Cc stable v6.17+ to all patches, but I didn't add Fixes tags, as
+> I wasn't sure what should they point to. But I could perhaps add Fixes:
+> <original commit> to all of these.
+>
+> Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 1baace971ec3511dba3e8a64c236a2b55f9dbd36..78151197feccb0197e44f3f73c0f01c4589314ae 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -1027,6 +1027,7 @@ void mt7996_mac_sta_deinit_link(struct mt7996_dev *dev,
- 		list_del_init(&msta_link->rc_list);
- 	spin_unlock_bh(&dev->mt76.sta_poll_lock);
- 
-+	rcu_assign_pointer(dev->mt76.wcid[msta_link->wcid.idx], NULL);
- 	mt76_wcid_cleanup(&dev->mt76, &msta_link->wcid);
- 	mt76_wcid_mask_clear(dev->mt76.wcid_mask, msta_link->wcid.idx);
- }
+The series:
+Reviewed-by: Linus Walleij <linusw@kernel.org>
+Tested-by: Linus Walleij <linusw@kernel.org>
 
--- 
-2.52.0
+In my opinion Laurent is the more senior maintainer and my
+trust level in him is the highest of all the maintainers, so
+I think we should apply this revert series if
+Laurent ACKs that this is what he thinks is best for DRI.
 
+Yours,
+Linus Walleij
 
