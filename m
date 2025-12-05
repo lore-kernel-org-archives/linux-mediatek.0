@@ -4,75 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EA64D32D9C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 15:42:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3B3FD32D9C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 15:45:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m52HUG2ozdh/t95+oxWP0b3row4ZsNckyGzjnNOPYg4=; b=aJeEU++kOcvdg6
-	um6feSkodfPTGfyfpgzJsLSO2SdcU6N+imqNFbuMjv9NZHAQjQtZ/h6Ni71ErKGJhwHcb7O0cVRRg
-	6I1fyZbNgxIkq76k7Wi8LyseUagWnA+P1twxo32EvLX6FcyfX1PXVc6pMh9dgCVYuP15mci/ZxSZh
-	dUFFUlxmr53C10H9ERi40YyLJtmsxG3SH4MWpjlJo9WvvmY2xgV+VdfttLs202kMY/VEl/q/Lacow
-	4zE+34LrLqsw4KGXxXuIiw4XgTMM0mBy1YN/9LkD2PnIuPFe1VYNAoNsioFjiyX9vs50l99peT2bP
-	8nO0O0Fj89wQfsMOCUqA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yRu3vn/L5SRaR0SSwrxKoGLCPSzcYT0aQdaJ5FnQFyM=; b=HlG9gSh5Py7gRWgLLhgPaEEe96
+	kQTvfqwHFNBURb01YMx+sD3SqZrQr7fDd0R/eETBBzIa2HPufOPkfhZNQhXiC7IY2M3pqaRlIF4qO
+	sW0RDcihBetl89SczaIQkUfqIUhKmYJ3qZWhaufBJsyqXLiA3j8ahqJ6V3ljSNndeh3Y+lpmUR4eo
+	g7ITYNEZm5a48f7JXp4RtgceTyN7osJpHlRrhk0seSLoETBhjW6nGuaFDtgfRWSRp9udIKrKkN9K3
+	mfMWhhdgEBK3pnouNOrHL0UydxIFZe65nPDA12w0ck3TgPahsOA4IhWavh5Lmf5fAI5T0gvid66Y7
+	ujW+btmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRXx5-00000009fWz-0Lvp;
-	Fri, 05 Dec 2025 15:42:35 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1vRY05-00000009fm0-3MhV;
+	Fri, 05 Dec 2025 15:45:41 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRXx1-00000009fVX-44zb;
-	Fri, 05 Dec 2025 15:42:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1764949321; x=1765554121; i=frank-w@public-files.de;
-	bh=m52HUG2ozdh/t95+oxWP0b3row4ZsNckyGzjnNOPYg4=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References:Message-ID:MIME-Version:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=qi4aZsfz57/ZkFsIN0J5I/KnO/mQ6JNiY/XO9sbO4bS8fBPFyThQdkf4MEjwJ3Nd
-	 /RXGTwSfodU+CQzVe83WZ8lb1tUKc/1A9KmpuiIjQwZI1Z3bnooNJyxP7IGorA3cz
-	 ZpnQ9eWZ0iP+JcnpIxpNi26rjaKdoeiRkltj4XpxPs0Z/weyIBtbfB/F55657Ng5a
-	 OTBK7fFRxvLe9n8OqjjWLOdi6AV+keYvj91xHOao8v/8yRoPWI9GM0pkVGW3tPrVS
-	 bg3GP6AcZadn+2NL9qeICNKYpv6RNFyAlH2RL5tWyi1jQ1kEpYS+I7dlKVy2Fk8rT
-	 lW93PGBltg1kQqmcPA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from ehlo.thunderbird.net ([80.187.71.20]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MPGRp-1viDie2Bob-00Xd6V; Fri, 05
- Dec 2025 16:42:01 +0100
-Date: Fri, 05 Dec 2025 16:41:59 +0100
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Rob Herring <robh@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: Krzysztof Kozlowski <krzk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Frank Wunderlich <linux@fw-web.de>, Conor Dooley <conor+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v1_1/2=5D_arm64=3A_dts=3A_mediatek=3A_mt79?=
- =?US-ASCII?Q?86=3A_add_dtbs_with_applied_overlays_for_bpi-r3?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <CAL_Jsq+Zu14ojvNNjgOFWA40iaqYrgGQsrHNWraooOML98fXyw@mail.gmail.com>
-References: <20251119175124.48947-1-linux@fw-web.de> <20251119175124.48947-2-linux@fw-web.de> <fc5c9829-96fa-4028-a642-0792699e92a5@kernel.org> <ddad2f21-4853-41c9-acfb-1613f5000f0c@collabora.com> <CAL_Jsq+Zu14ojvNNjgOFWA40iaqYrgGQsrHNWraooOML98fXyw@mail.gmail.com>
-Message-ID: <9C47E860-BE37-4EDF-8C9A-613CAE509053@public-files.de>
+	id 1vRY03-00000009flY-3bsy
+	for linux-mediatek@lists.infradead.org;
+	Fri, 05 Dec 2025 15:45:41 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-59584301f0cso2502743e87.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 05 Dec 2025 07:45:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1764949537; x=1765554337; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=yRu3vn/L5SRaR0SSwrxKoGLCPSzcYT0aQdaJ5FnQFyM=;
+        b=LxiISpvJUjVKmsPE/78ZpAnDci25jQJkU6YjMho11DOXjGvjl3KHQ/VyqwYK0fOBai
+         ztrpVEPLW831b/Cgjo3PLilf1V3341UYQQsnxCmLeaI5lcHcj6Fz+BMzvMROJokZVmaA
+         gIYk5pwKumNQzE4Q2OOs5XlX6N3MtS40zQAHBj5pGMb/T5+V6C7qyx5Xh7XGuNlhXkCZ
+         C9Z/mwUchbSR2zwSUxVgcZTqEyxvhrwXySrQLrIQnabrkYmtlo/MSkdnR5NQ1jRo207q
+         57hc0wMDgYW5IeD0KX2Ep+MPowy+1zNMzq1k53OaHx8evIYU5i/qzVDTZqn+0wniHVEa
+         vHrg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764949537; x=1765554337;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=yRu3vn/L5SRaR0SSwrxKoGLCPSzcYT0aQdaJ5FnQFyM=;
+        b=ZinLbkZCbKIZ6aY+9Ac+RdAF/kGrOE2CazyABaTbQEhs7W8IPfXVhcUDhDpbKPnJUe
+         WZ2UBeR9AbYvwsvXkouICWmEtQJDPj87jfuIU46Op5EP9Tc6j2Pg8hrqB4g2LPVw5TSc
+         BSG2AkjRx7b4SoMbHT7RYzvYn5cl88zWbZzxFiHwo2znpAax/iXnuUHenujhrlaUp/23
+         hV9aG9znIeRPSct+NV0P/mpR3dd94WkbOQeYAhjVgPiMQ3cFo/XRWf4MnODOQvE3KBiM
+         eg8SKSf4qu3MXUA5Vuz9yfIsbWpw+L07uYAu5HaWnmSMh2xmQb0HCmHrWjL/NZP3FLNV
+         cPag==
+X-Forwarded-Encrypted: i=1; AJvYcCXVhaDgogOP9QZSqQQJykqUJQmVC6SKvGgwkPL+6O1VuSXwnav/v77pkN3Hu4aSdUgleiEDuEUrkxyShEM5PQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwVmMOjTmd5naF6Zt4y0QBVK2GBundA/BJsZn5BM+pv/LWNLnNA
+	L4yJbPzeyJpJhGohpwrfU89qWBt/XLKVKMm4VxW2G4lg+qe6NCascqsNoy+Bl0QHV6KLFm3J
+X-Gm-Gg: ASbGncuE+SGTmAx+OA594sRogiKwjfLXhL4sbCSRqMqNcliqFUkky4151LxxgNCLsJY
+	EA3U7+8PGLzOtuNRifuMX3zxrrMyNkmnDRo4tAIc4skO8yrTzaubTNLZA3OeW0vz7x/70GJdSbN
+	p2he5109ri5WojuuhkGnG4arFq3NWNOWJg21Ca6JMRI90IithVFWLQ1xV9qbZm+XaIDX1XqxqNb
+	3KKpClsk2yIhgVBvVbszLrp2Rfo1FRXpcWafYKRjg29FtY4TsnbTgoqqwT4RrEEjXldEqKZ4qND
+	p7tHlxlgTIHT1cvmWuLFR5kPjwVuFpKm8bPEwCuTmuho8bbfRH1ddGzZlKt804AyOIpnoK9fmSF
+	D9wO5z1CFUiCWQ+FnskCb1EQ53gTHfeX4Kwe25MTftO3LjlfLMUTlAnPSDCaGZcRLr0YevstVR3
+	ItxHctwi+vhCbyfygRKuayJQ==
+X-Google-Smtp-Source: AGHT+IEuOdjJ6eVJfcxdzeuAE6q+1nDIVgt3bm5mPBvJGVsrRtI1D3I0YRQqf1Y/gNOXYRySnPP9ng==
+X-Received: by 2002:a05:6512:3b9d:b0:594:55ab:5800 with SMTP id 2adb3069b0e04-597d66c8175mr2515414e87.30.1764949537099;
+        Fri, 05 Dec 2025 07:45:37 -0800 (PST)
+Received: from localhost ([188.234.148.119])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-597d7c2e93esm1624775e87.97.2025.12.05.07.45.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 Dec 2025 07:45:35 -0800 (PST)
+From: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
+To: Mario Limonciello <superm1@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
+Subject: [PATCH] [PATCH] wifi: mt76: Fix strscpy buffer overflow in mt76_connac2_load_patch
+Date: Fri,  5 Dec 2025 20:45:32 +0500
+Message-ID: <20251205154532.27704-1-mikhail.v.gavrilov@gmail.com>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <CABXGCsMeAZyNJ-Axt_CUCXgyieWPV3rrcLpWsveMPT8R0YPGnQ@mail.gmail.com>
+References: <CABXGCsMeAZyNJ-Axt_CUCXgyieWPV3rrcLpWsveMPT8R0YPGnQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:0RvG6joc3Y7jr8SCWNtx9fH/1gq5fy72CCgIRE7up/qQQJ9Z5sL
- ZElwrJuGZPlUDkmULsEq5bt9Nqe6+16LXDxCcx/wvJAvh7XRqQZzm9o+n2SWW7ZYWK3QxXz
- MEXAmMmpyuKSxdA/EVC2VV+XJ1Y1/b3hvBqviW8xSsIlWUJu2orw7t5+eSYlU+NIFr8Sope
- YmXwAh8O/8L/hwf4XvtJQ==
-UI-OutboundReport: notjunk:1;M01:P0:1HE+xtfe7LY=;NLlNljx21TMNixA1Y/voQxCyTwV 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
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251205_074232_396782_08AF9405 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20251205_074539_942818_8539BA50 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,60 +100,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 5=2E Dezember 2025 14:46:45 MEZ schrieb Rob Herring <robh@kernel=2Eorg>:
->On Fri, Dec 5, 2025 at 3:05=E2=80=AFAM AngeloGioacchino Del Regno
-><angelogioacchino=2Edelregno@collabora=2Ecom> wrote:
->>
->> Il 05/12/25 09:10, Krzysztof Kozlowski ha scritto:
->> > On 19/11/2025 18:51, Frank Wunderlich wrote:
->> >> From: Frank Wunderlich <frank-w@public-files=2Ede>
->> >>
->> >> Build devicetree binaries for testing overlays and providing users
->> >> full dtb without using overlays=2E
->> >>
->> >> Suggested-by: Rob Herring <robh+dt@kernel=2Eorg>
->> >> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
->> >> ---
->> >> resend of
->> >> https://patchwork=2Ekernel=2Eorg/project/linux-mediatek/patch/202406=
-08080530=2E9436-2-linux@fw-web=2Ede/
->> >> due to discussions here:
->> >> https://patchwork=2Ekernel=2Eorg/project/linux-mediatek/patch/202511=
-17211306=2E725678-1-robh@kernel=2Eorg/
->> >>
->> >> changes:
->> >> - updated sd-nand with sata-overlay
->> >> ---
->> >>   arch/arm64/boot/dts/mediatek/Makefile | 21 +++++++++++++++++++++
->> >>   1 file changed, 21 insertions(+)
->> >
->> >
->> > This looks like still not being applied and now it is a warning in
->> > Linus' tree=2E
->> >
->> > Can this be applied and sent as fixes?
->
->There's still one warning remaining after applying this series which I re=
-ported:
->
->scripts/Makefile=2Edtbs:20: =2Edtbo is not applied to any base:
->mt8395-radxa-nio-12l-8-hd-panel=2Edtbo
->
->It's fixed in my original patch=2E Can you all take that and drop the bpi=
- hunks=2E
+Commit f804a5895eba ("wifi: mt76: Strip whitespace from build ddate") introduced
+a kernel panic/WARN on systems using MediaTek MT7921e (and potentially others
+using mt76_connac_lib) due to an incorrect buffer size calculation.
 
-Sorry, missed this part and i do not have this board,so
-I'm not sure if this should be applied this way=2E
-But if it helps i can separate it from robs patch and send tomorrow=2E
+The error logged is:
+"strnlen: detected buffer overflow: 17 byte read of buffer size 16"
 
->FWIW:
->
->Acked-by: Rob Herring (Arm) <robh@kernel=2Eorg>
+This occurs because the field 'hdr->build_date' is a fixed-size array of 16 bytes.
+The patch allocated a 17-byte local buffer 'build_date' but used 'sizeof(build_date)'
+(17) as the read limit for strscpy, causing Fortify Source to correctly detect
+an attempt to read 17 bytes from the 16-byte source field.
 
+To fix this, replace strscpy with memcpy, which is appropriate for raw data
+copying, and explicitly use the size of the source field (sizeof(hdr->build_date) = 16)
+to limit the read, followed by manual null termination.
 
-regards Frank
+Fixes: f804a5895eba ("wifi: mt76: Strip whitespace from build ddate")
+Signed-off-by: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index ea99167765b0..d2c4c65ec464 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -3125,8 +3125,11 @@ int mt76_connac2_load_patch(struct mt76_dev *dev, const char *fw_name)
+ 	}
+ 
+ 	hdr = (const void *)fw->data;
+-	strscpy(build_date, hdr->build_date, sizeof(build_date));
+-	build_date[16] = '\0';
++	/* hdr->build_date is 16 bytes. Copy exactly 16 bytes to the 17-byte buffer,
++	 * and then add the null terminator at index 16.
++	 */
++	memcpy(build_date, hdr->build_date, sizeof(hdr->build_date));
++	build_date[sizeof(hdr->build_date)] = '\0';
+ 	strim(build_date);
+ 	dev_info(dev->dev, "HW/SW Version: 0x%x, Build Time: %.16s\n",
+ 		 be32_to_cpu(hdr->hw_sw_ver), build_date);
+-- 
+2.52.0
+
 
