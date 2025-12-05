@@ -4,53 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF5EBD2E035
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 08:10:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 549B9D2E039
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 08:24:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ABqyVMCkGtqy3KtRAi60mSAcpEt2Hul3Do+UkfnsTZ0=; b=Y+fx44JgcZM4Uo
-	TfM+zwGOUlVqqIdaFNm1DyidBN+EEFdeIa7eMAaxW8JMksJx2kMrDuQ4vhNWaL9rFpMMxj9p2YV27
-	LlcOx+iOXRQ+GQWKWu9eegVSCpyit4fR7YWyYf8oUdznsRw3kjQ8c2tA3Ys8pIDxHleicAOWzhcxT
-	DAvD/EiAz7TQ7PHhdMiOfrTFI+xs82Y7agqJlT5aOVkEPH99/HwUZ1Enm3n0ZlruAlt3nqwGCEc4P
-	w5LSvihq9sN1EJ/qvtmFXycRtnrQC9aR3yKarLbmOx4Qb23nShkEihIy5ZKK0maQn6UgZPu0mr+cl
-	D/oyWJCfiAtmNMlafTBA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6eB+pELnaXO/EFgvQYRmO1RVoCyEWCWMqcvN6CQY5Hw=; b=C2kd+I0/+TCle4fTalJvp0uKi2
+	kCBC6QxCFwpcPhT33DRBzWCHmjWrz/dMDvfoAKG13gxSC6akq5qDGq7WIf9RJPIs+MQaLZvYTK92h
+	IFrlrWu0AWGYSZkb9o1RS8assTYZhA9Gwfbvo5TJOVteNi5L2p/B0KuseOF1sM4AaRVt68B4dSG5r
+	oZAZWwfsLHEz/aLBbuNf+RPV/natMmcOWo0x/ysuxu4PVP8ty4UMhl+GTZ2gQRfe8zHFw4VHDHOqO
+	/lPsN5lnvJT+NGqGtWrcRVRler8TXcMfbgPmwgEB4HZSCp+2SHLHyEh2IOtTHGjUMGY0SDzqBMCRK
+	I4TQXD4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRQtS-00000009Cnr-0wyf;
-	Fri, 05 Dec 2025 08:10:22 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vRR7S-00000009DxO-37Rs;
+	Fri, 05 Dec 2025 08:24:50 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRQtN-00000009CnT-41lp;
-	Fri, 05 Dec 2025 08:10:18 +0000
+	id 1vRR7N-00000009Dwl-2cXE;
+	Fri, 05 Dec 2025 08:24:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1DC9F6000A;
-	Fri,  5 Dec 2025 08:10:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 347B4C4CEF1;
-	Fri,  5 Dec 2025 08:10:14 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4A2A143D8A;
+	Fri,  5 Dec 2025 08:24:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B09FC4CEF1;
+	Fri,  5 Dec 2025 08:24:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764922216;
-	bh=5/kdbpH28trQ2zUwCIqBZdSZ/gky+mI/MuZzjF3UA7U=;
+	s=k20201202; t=1764923085;
+	bh=6eB+pELnaXO/EFgvQYRmO1RVoCyEWCWMqcvN6CQY5Hw=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=P3SQaI3BStgrda8liumTPrjHNR/vBwSDHVxk+fPuvnid3P0hRx+3TV2TYp2fXFlSB
-	 swn+XQ01VBCw7DGErKRXEgisbF+qluLNTH7mupwCBfPBA5hv+F/gPvcxCvt9uq98AN
-	 /YaCmgrw0mP0PViyqak/avPcjoEw/8xZcqD4OOfpreOJ0pTfs3So3ruunN9nX/rH8M
-	 uwpM/PXa7JCzpLcyVLDnFDNv/Ps1wS7+N6025JIiGN5EE+XlRtzBGsDgGrJ+NNFJGx
-	 2O+5Wj25Cz+pLyz0d6VedRoyxc9UXFf6YUmapudWPkOKUTdFw2qmON1fkyQRBHFoPd
-	 RTTG8AkGdsPXg==
-Message-ID: <fc5c9829-96fa-4028-a642-0792699e92a5@kernel.org>
-Date: Fri, 5 Dec 2025 09:10:12 +0100
+	b=Xer64MyIVOGGi4OuAStLPFTcA6czqESMxsd7vidWUJg6l58WmADrOm3pUg6kPCUxm
+	 rgEFBOMc2x78QEkWEtDD7/4339QXlfwUJJxNl/OupMvM6Z1Y7CBroCsNHP8ayEmUXo
+	 ZxCl2JgU7Ia797yREqxX4Up0iJ5fBL85TXXeVWxOO+5uE+IDQnigFcozn1YBLov327
+	 hN4lnvmZ2yWohYnDM6X1dFOzsShjwamylJUoYELRqYhg3Y15npNDNlVhhADAdTBDlJ
+	 x58krwzHb1HMpYWtGvdfyoAy75K5MfV3zUJrXNY5eVrl7fw+j9l0uPg6X/KXkGPsy9
+	 ZplLbbQGwilEg==
+Message-ID: <ea71abc9-a661-4a78-8503-bac9d34bf8a4@kernel.org>
+Date: Fri, 5 Dec 2025 09:24:40 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/2] arm64: dts: mediatek: mt7986: add dtbs with
- applied overlays for bpi-r3
-To: Matthias Brugger <matthias.bgg@gmail.com>,
+Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8189: Add pinmux macro header
+ file
+To: Cathy Xu <ot_cathy.xu@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20251119175124.48947-1-linux@fw-web.de>
- <20251119175124.48947-2-linux@fw-web.de>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Yong Mao <yong.mao@mediatek.com>, Wenbin Mei <Wenbin.Mei@mediatek.com>,
+ Lei Xue <Lei.Xue@mediatek.com>
+References: <20251205064357.13591-1-ot_cathy.xu@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -96,9 +101,13 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20251119175124.48947-2-linux@fw-web.de>
+In-Reply-To: <20251205064357.13591-1-ot_cathy.xu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251205_002445_724161_B673586A 
+X-CRM114-Status: UNSURE (   5.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,35 +119,13 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 19/11/2025 18:51, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Build devicetree binaries for testing overlays and providing users
-> full dtb without using overlays.
-> 
-> Suggested-by: Rob Herring <robh+dt@kernel.org>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
-> resend of
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20240608080530.9436-2-linux@fw-web.de/
-> due to discussions here:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20251117211306.725678-1-robh@kernel.org/
-> 
-> changes:
-> - updated sd-nand with sata-overlay
-> ---
->  arch/arm64/boot/dts/mediatek/Makefile | 21 +++++++++++++++++++++
->  1 file changed, 21 insertions(+)
+On 05/12/2025 07:43, Cathy Xu wrote:
+> Add the pinctrl header file on MediaTek mt8189.
 
-
-This looks like still not being applied and now it is a warning in
-Linus' tree.
-
-Can this be applied and sent as fixes?
+Why? There is no user of this. Why do we dead code in unused heders?
 
 Best regards,
 Krzysztof
