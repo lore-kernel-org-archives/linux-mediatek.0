@@ -4,84 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABE94D2F7EE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 12:36:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1F38D2F7F2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Dec 2025 13:47:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=40WaPL3xSyqPdfQ0BAFTST386p7tT1HulIdRWXHJkKo=; b=ZaBoubHGVwQhVsnCpZcbcU0NDt
-	f9JufNiJotRbePMR+NcgH9ujnPySFrvSCcq0AGkY4Ztftbke3nyxXDrXdWmw7QuUl8ut8gxEP7qEJ
-	Q8p4rnbl2KRF4KARsvsq/e82KMa6iWw/qJSC+BK+n+bFwj7wLxLhTKFhPgxqVBpBtVii6+V05G9zi
-	tlKFZz7pOE2klMhlBASzpwdmpGIfknSBRZXIAQMj3FPZ2oGvBaQCSZeIPh1Lh2Qwji1k9EGEv0CCS
-	8BWgJKpdwdizpvnFfQ78DENYNfAa1dN+xpIkn3PTDNSG412sI3PRoXeQ12gt/Kv09ghBnJfnu4j1P
-	BzxLPOyg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nArClPgrtg5VCuCRQeCz3AURqc1MkzU/2k/kKLgwFik=; b=1ZLNSD+bj+AHwN
+	EHqSzFui1mU1z9V+fUs61noe8udOKJN92yOaXg2N8Dnn+FN4J37bqMkw8xc2xTtFIZUCqy1U11vnu
+	d5WwD+0JXYc2FE8qKT8rISKiUtmzPy5xNk1NY9U3t6N75W6b/I9WH2MUQoGden93haIrT1ZJ4f6m4
+	jCvGe97eG+Iql9Q/NOBSl4J12DXYud2gQ0j0d4llaK9juSVufeZg7JNBrQ4XeO9e7m1397vAqPbSx
+	k4dsYIZGd+rmLt5+AowAsFkNPqCqOhXiUl/msI7Wf5NRjaWwbyR5qsxSw6jC+o1ZhltspfHjLi7wv
+	hkTQVwdMcF1RpMyqa4Nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRV32-00000009U4J-157s;
-	Fri, 05 Dec 2025 12:36:32 +0000
+	id 1vRW9G-00000009XcK-2INV;
+	Fri, 05 Dec 2025 13:47:02 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRV2z-00000009U3L-17lx
+	id 1vRW9D-00000009XbW-3BYK
 	for linux-mediatek@lists.infradead.org;
-	Fri, 05 Dec 2025 12:36:30 +0000
+	Fri, 05 Dec 2025 13:47:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 611AE444A7
-	for <linux-mediatek@lists.infradead.org>; Fri,  5 Dec 2025 12:36:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FFEAC4CEF1
-	for <linux-mediatek@lists.infradead.org>; Fri,  5 Dec 2025 12:36:28 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 2CC0043B37
+	for <linux-mediatek@lists.infradead.org>; Fri,  5 Dec 2025 13:46:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0EAA9C19421
+	for <linux-mediatek@lists.infradead.org>; Fri,  5 Dec 2025 13:46:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1764938188;
-	bh=40WaPL3xSyqPdfQ0BAFTST386p7tT1HulIdRWXHJkKo=;
+	s=k20201202; t=1764942419;
+	bh=G1DKwO3QOoOSXazmt1Hz6axf9JJ+8JmRfw6we/+3fMk=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=kA9jAiXM5XfELxuKU9/l9OpMOt7HLiUaJi/7R5aGry/eGkBeBaRtm1w9auQ3EGkDk
-	 daZ1xEFxRCUxO2MhMrxLlHdzG/9Cu39Wj9QBJ5/OF0sQfGnnx7a4bL0FWzsUaRCSxr
-	 GMcrXuuIOSvQDiqpufJzCiIGhx0LiwbHjB8F1SFsWyde9l4ZKQzGdkljBmfTpIPDTC
-	 4xkAZ58K5JMAiu3XuGb36DJ6WypdTSVnzfpxILFJJKVOd2AJZH+tgSvVDBrx/j1dAt
-	 TlNwWkvcoEH28P/xAPkWqu/tbBWQw+fvin+z6lcsIWsGHpn75h1HSrTV9aQWP99VJr
-	 5h8spjUvoS/mg==
-Received: by mail-yw1-f182.google.com with SMTP id 00721157ae682-78a6a7654a4so21446387b3.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 05 Dec 2025 04:36:28 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCVIo26HWlMrs23mlNlT2yH7S6/H1wdEHGQVAXq3J4sR/Pinf0HHkry+zm9pIXuFQ746nIlj92gRYVr2DP3DtQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw8pU4sDy1ZagT6/qkC1PSFbXml+csNKyrp3X7tONEqrGZYtq1K
-	IBS3nChWthQmWyx0PfJi9xim8GNHR2kjZ83JcKYjhI1KY4Q6dl+evYkuaS2QAzMYGBfX+USwZbC
-	w8e43zvH+5OYO+1XR0m5OE5DcVDevp4s=
-X-Google-Smtp-Source: AGHT+IFJmlLvuUNZfx9GIfUBDjC2grftRlFjbvDqqrPRzj/oZgXVOMBUT7kbSYooxA8gr0guXcBsmXxXrD2+uuIJcXg=
-X-Received: by 2002:a05:690c:6007:b0:784:883c:a88d with SMTP id
- 00721157ae682-78c0c18ea37mr70979807b3.52.1764938187032; Fri, 05 Dec 2025
- 04:36:27 -0800 (PST)
+	b=V5mZW47gQS5wF6e3EaBjNjjRUsYMKA5vtJw93WQp8Yb3ErZUowS8tGrMrJ45GQxYQ
+	 AbLPrtq+M/80a5GkVgG4trzqo4ZS06PDiyqJL10XkzmszUyl82UICaM7tlvH3l9Uyl
+	 d0xkk90igghwQVETRaYIURkSlQPvPI1ZBBWyVrvrMnOXpgRRsQrz17hR5jryW0txIR
+	 llk7JIYWKm9l8V0VbRMsqVOie6XSQfvEh0NtI8kaP6WFrPxHcPr6/ZSNoCWW9rtHVk
+	 Z+hnLUnCmtNR78D4tNQw2Qhyv51Ht5Jjta3zjv/kSaYNY13nH4ZDVMFIJ9nyjdi43F
+	 EI2rrYf74UnNg==
+Received: by mail-ed1-f41.google.com with SMTP id 4fb4d7f45d1cf-640b0639dabso3302412a12.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 05 Dec 2025 05:46:58 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCXOJIMfbQS1kxKsn178qT7YTM0zUbUEUwGQOHyBsS6brDRJ8R4RD0uwnm/NywstUKckOA0K1EI1Sc+FZlT/Zg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxZV3KmOB2A7gz5A1w/l1kqpOXkBhSisX7PT8hPEAK/pdWRfmee
+	/OXHADwxWZcd/8Ekf62SGwCgcPu2Pv9IRCzs60M15zr/29ya2qnonJ/J1YVrx6ry4FpOXGaZnBz
+	zp8leUFeqoB37xcUgSQklqggK7RXBFw==
+X-Google-Smtp-Source: AGHT+IGnSnntD86eE9Z5w3JvKyrgl2TQ4p6Ck5tFuBzhXTViEp5pLzmxGFWb0Gp0bPBwpBev5udEHdS7Zgzngud/oYg=
+X-Received: by 2002:a05:6402:520a:b0:640:f2cd:831 with SMTP id
+ 4fb4d7f45d1cf-6479c4076c1mr9111075a12.10.1764942417575; Fri, 05 Dec 2025
+ 05:46:57 -0800 (PST)
 MIME-Version: 1.0
-References: <20251205-drm-seq-fix-v1-0-fda68fa1b3de@ideasonboard.com>
-In-Reply-To: <20251205-drm-seq-fix-v1-0-fda68fa1b3de@ideasonboard.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Fri, 5 Dec 2025 13:36:15 +0100
-X-Gmail-Original-Message-ID: <CAD++jLkpWoHe5qYSABF1GeDq-9hZh7ZdL-+8Xqu5MA_erzNqsA@mail.gmail.com>
-X-Gm-Features: AQt7F2rYtL9k7rH39ohC1dih2VUr1gAYC2XO7dYs8vpOSbzH63P91fhZJWxLMZY
-Message-ID: <CAD++jLkpWoHe5qYSABF1GeDq-9hZh7ZdL-+8Xqu5MA_erzNqsA@mail.gmail.com>
-Subject: Re: [PATCH 0/4] drm: Revert and fix enable/disable sequence
-To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	Marek Szyprowski <m.szyprowski@samsung.com>, 
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
-	Aradhya Bhatia <aradhya.bhatia@linux.dev>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
-	Vicente Bergas <vicencb@gmail.com>, Marek Vasut <marek.vasut+renesas@mailbox.org>, 
-	stable@vger.kernel.org
+References: <20251119175124.48947-1-linux@fw-web.de> <20251119175124.48947-2-linux@fw-web.de>
+ <fc5c9829-96fa-4028-a642-0792699e92a5@kernel.org> <ddad2f21-4853-41c9-acfb-1613f5000f0c@collabora.com>
+In-Reply-To: <ddad2f21-4853-41c9-acfb-1613f5000f0c@collabora.com>
+From: Rob Herring <robh@kernel.org>
+Date: Fri, 5 Dec 2025 07:46:45 -0600
+X-Gmail-Original-Message-ID: <CAL_Jsq+Zu14ojvNNjgOFWA40iaqYrgGQsrHNWraooOML98fXyw@mail.gmail.com>
+X-Gm-Features: AQt7F2rRik37jIlkQlnszPiS-dbpLXF7k5YqaJSivvbMgbRGbC8B4kGSUMOvhpk
+Message-ID: <CAL_Jsq+Zu14ojvNNjgOFWA40iaqYrgGQsrHNWraooOML98fXyw@mail.gmail.com>
+Subject: Re: [PATCH v1 1/2] arm64: dts: mediatek: mt7986: add dtbs with
+ applied overlays for bpi-r3
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251205_043629_341858_01775C1F 
-X-CRM114-Status: GOOD (  15.94  )
+X-CRM114-CacheID: sfid-20251205_054659_835519_71F8A881 
+X-CRM114-Status: GOOD (  14.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,46 +80,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 5, 2025 at 10:52=E2=80=AFAM Tomi Valkeinen
-<tomi.valkeinen@ideasonboard.com> wrote:
+On Fri, Dec 5, 2025 at 3:05=E2=80=AFAM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 05/12/25 09:10, Krzysztof Kozlowski ha scritto:
+> > On 19/11/2025 18:51, Frank Wunderlich wrote:
+> >> From: Frank Wunderlich <frank-w@public-files.de>
+> >>
+> >> Build devicetree binaries for testing overlays and providing users
+> >> full dtb without using overlays.
+> >>
+> >> Suggested-by: Rob Herring <robh+dt@kernel.org>
+> >> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> >> ---
+> >> resend of
+> >> https://patchwork.kernel.org/project/linux-mediatek/patch/202406080805=
+30.9436-2-linux@fw-web.de/
+> >> due to discussions here:
+> >> https://patchwork.kernel.org/project/linux-mediatek/patch/202511172113=
+06.725678-1-robh@kernel.org/
+> >>
+> >> changes:
+> >> - updated sd-nand with sata-overlay
+> >> ---
+> >>   arch/arm64/boot/dts/mediatek/Makefile | 21 +++++++++++++++++++++
+> >>   1 file changed, 21 insertions(+)
+> >
+> >
+> > This looks like still not being applied and now it is a warning in
+> > Linus' tree.
+> >
+> > Can this be applied and sent as fixes?
 
-> Changing the enable/disable sequence in commit c9b1150a68d9
-> ("drm/atomic-helper: Re-order bridge chain pre-enable and post-disable")
-> has caused regressions on multiple platforms: R-Car, MCDE, Rockchip.
->
-> This is an alternate series to Linus' series:
->
-> https://lore.kernel.org/all/20251202-mcde-drm-regression-thirdfix-v6-0-f1=
-bffd4ec0fa%40kernel.org/
->
-> This series first reverts the original commit and reverts a fix for
-> mediatek which is no longer needed. It then exposes helper functions
-> from DRM core, and finally implements the new sequence only in the tidss
-> driver.
->
-> There is one more fix in upstream for the original commit, commit
-> 5d91394f2361 ("drm/exynos: fimd: Guard display clock control with
-> runtime PM calls"), but I have not reverted that one as it looks like a
-> valid patch in its own.
->
-> I added Cc stable v6.17+ to all patches, but I didn't add Fixes tags, as
-> I wasn't sure what should they point to. But I could perhaps add Fixes:
-> <original commit> to all of these.
->
-> Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+There's still one warning remaining after applying this series which I repo=
+rted:
 
-The series:
-Reviewed-by: Linus Walleij <linusw@kernel.org>
-Tested-by: Linus Walleij <linusw@kernel.org>
+scripts/Makefile.dtbs:20: .dtbo is not applied to any base:
+mt8395-radxa-nio-12l-8-hd-panel.dtbo
 
-In my opinion Laurent is the more senior maintainer and my
-trust level in him is the highest of all the maintainers, so
-I think we should apply this revert series if
-Laurent ACKs that this is what he thinks is best for DRI.
+It's fixed in my original patch. Can you all take that and drop the bpi hun=
+ks.
 
-Yours,
-Linus Walleij
+FWIW:
+
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
