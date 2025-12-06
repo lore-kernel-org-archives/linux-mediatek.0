@@ -4,77 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD58AD3B7D1
-	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Dec 2025 14:03:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC1ADD3B7DB
+	for <linux-mediatek@archiver.kernel.org>; Sat,  6 Dec 2025 17:54:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GKSnWg6NWwEkIcNKXNbfvm4L817slsSWPnT89fyPR1g=; b=YRFNbEBRdlpWHX16LAhxBRpPXd
-	gXL9ES0utBW8cOog5F6wrvff7myR44BjOuJFCkem3IGozAyCZkKuWxoZlQcBCBTPGQ7mLb89mXW0C
-	W0yp/vOVyK6GPS3P2CfAyuxolBqgdfSRr04roC0k3oyfgZQ0qBDqrg+q9US5R/bXm6sYXnLje3JPi
-	yf+K8LA7L4HHjVmULr0hQcrKuQKuljnd9GRDtywqYC49RHcuim0DXhFv/aGw5SxCFCZHY/q/egU3C
-	CXGJzjlREFkVZp6Yh+qzBBTgMELMtJaBvkunAgZnMIYBc81Svy8re2iaPOTK5lS+F+AZZwf55hBmo
-	Ho76tJNA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=P+iuscllDb8ilfy3+mvnn24ddRVkHcFUY/gEBiJ/Ps4=; b=Ci7gD08vuHjWCGOYdysGM7w9hX
+	A+sACo0+oMJKwwImNPrScY2uZBEcxsta744/nfAJTRx2+sgy/tmxf5rETw5PY5MLhIlkCwQqwWFjQ
+	X/AZ5J4EiglMMCFI2MgYUfCDgKEO6Q+m8bBADiVnM6gsGE1ga428ho8SbT3hO0PUY59eonPUk6wjp
+	OvsdQ2qV5nB521RUuoJh/KH7L/QBIPTCrf9asr+nWjevQV53ZG47pTC/LJCVWgKUT9Rjt8Lv62Dpa
+	d+kPTaHdASV+rx3I7/s4w4RswnI0wXWBG2q5WnQy4Uur2/zAJM3BAIfUpzva1tM8RRLxcDC5dkZdT
+	C4iQItQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRst5-0000000Axsx-3Hqa;
-	Sat, 06 Dec 2025 14:03:51 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vRwUA-0000000B6WU-2nQf;
+	Sat, 06 Dec 2025 17:54:22 +0000
+Received: from abscue.de ([89.58.28.240] helo=srv01.abscue.de)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vRst3-0000000Axs5-1LOL;
-	Sat, 06 Dec 2025 14:03:50 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 033A440048;
-	Sat,  6 Dec 2025 14:03:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2150CC4CEF5;
-	Sat,  6 Dec 2025 14:03:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765029828;
-	bh=hNnKmiMyeRgIeXCMtSCwGavX0YkqanFzBfdi7Gpu9+4=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nYh6z6rpqfY2FbeUuFfjkodQ7A5pI52L49qoARyM7QmCedp4gtS+AtovDQUrtEVXu
-	 7QOPtvwxWBFKTh8Vj4sW+mt3IXqBLtv2vFrzg+TzMzaYVOIZrrGcfiPrXFgWO0EOLh
-	 t+Jv7CRsaqOUo27XxYe/4FFeA2ZTo+RNWLY+J5WsD4tgQg6nYhNrb6+RS1So25clTe
-	 6qoKSN7onIq6wOOR8Oca/IgAjEb5Cg2BkBgvc+Y5nmM0S1NKB0uG724OwKpZencAH/
-	 pyIl83ftRPUs/XX/2YFz+lci6ldms7Z/eF/cp6EGpupogKodQ8pgl8IVBZawhGcKnF
-	 LV4irtIO9EvKg==
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: Quan Zhou <quan.zhou@mediatek.com>,
-	druth@chromium.org,
-	Felix Fietkau <nbd@nbd.name>,
-	Sasha Levin <sashal@kernel.org>,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	leon.yen@mediatek.com,
-	alexandre.f.demers@gmail.com,
-	alexander.deucher@amd.com,
-	allan.wang@mediatek.com,
-	mingyen.hsieh@mediatek.com,
-	sean.wang@mediatek.com,
-	michael.lo@mediatek.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.18-6.12] wifi: mt76: mt792x: fix wifi init fail by setting MCU_RUNNING after CLC load
-Date: Sat,  6 Dec 2025 09:02:29 -0500
-Message-ID: <20251206140252.645973-24-sashal@kernel.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251206140252.645973-1-sashal@kernel.org>
-References: <20251206140252.645973-1-sashal@kernel.org>
+	id 1vRwU7-0000000B6Vo-11tI;
+	Sat, 06 Dec 2025 17:54:21 +0000
+Received: from srv01.abscue.de (localhost [127.0.0.1])
+	by spamfilter.srv.local (Postfix) with ESMTP id BEA4D1C560C;
+	Sat, 06 Dec 2025 18:53:55 +0100 (CET)
+Received: from fluffy-mammal.metal.fwg-cag.de (unknown [IPv6:2001:9e8:cdc0:3900:2bdf:1fd3:90e3:ead1])
+	by srv01.abscue.de (Postfix) with ESMTPSA id 3764F1C560B;
+	Sat, 06 Dec 2025 18:53:55 +0100 (CET)
+From: =?utf-8?q?Otto_Pfl=C3=BCger?= <otto.pflueger@abscue.de>
+Date: Sat, 06 Dec 2025 18:53:51 +0100
+Subject: [PATCH] arm64: dts: mediatek: mt8183: Add missing endpoint IDs to
+ display graph
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.18
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+Message-Id: <20251206-mt8183-display-graph-v1-1-a30e54481f28@abscue.de>
+X-B4-Tracking: v=1; b=H4sIAK5tNGkC/x2MWwqAIBAArxL73YIainSV6ENzq4UeohFFdPekz
+ xmYeSBTYsrQVg8kOjnzvhWQdQXD7LaJkENhUEJpqYTB9bDSNhg4x8XdOCUXZ9TCFDkY6xsPJY2
+ JRr7+bde/7wecG5dVZgAAAA==
+X-Change-ID: 20251206-mt8183-display-graph-506183c68b3b
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Evans Jahja <evansjahja13@gmail.com>, 
+ =?utf-8?q?Otto_Pfl=C3=BCger?= <otto.pflueger@abscue.de>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251206_060349_406418_B6EE8D01 
-X-CRM114-Status: GOOD (  18.00  )
+X-CRM114-CacheID: sfid-20251206_095419_440910_9E01B5FE 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,207 +71,323 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Quan Zhou <quan.zhou@mediatek.com>
+The endpoint IDs in the display graph are expected to match the
+associated display path number, i.e. all endpoints connected to
+mmsys_ep_main must have reg = <0> and all endpoints connected to
+mmsys_ep_ext must have reg = <1>.
 
-[ Upstream commit 066f417be5fd8c7fe581c5550206364735dad7a3 ]
+Add the missing ID to all endpoints in the display graph, based on
+mt8365.dtsi as an existing example that does this correctly.
 
-Set the MT76_STATE_MCU_RUNNING bit only after mt7921_load_clc()
-has successfully completed. Previously, the MCU_RUNNING state
-was set before loading CLC, which could cause conflict between
-chip mcu_init retry and mac_reset flow, result in chip init fail
-and chip abnormal status. By moving the state set after CLC load,
-firmware initialization becomes robust and resolves init fail issue.
-
-Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
-Reviewed-by: druth@chromium.org
-Link: https://patch.msgid.link/19ec8e4465142e774f17801025accd0ae2214092.1763465933.git.quan.zhou@mediatek.com
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Fixes: e72d63fa0563 ("arm64: dts: mediatek: mt8183: Migrate to display controller OF graph")
+Reported-by: Evans Jahja <evansjahja13@gmail.com>
+Closes: https://lore.kernel.org/linux-mediatek/CAAq5pW9o3itC0G16LnJO7KMAQ_XoqXUpB=cuJ_7e3-H11zKd5Q@mail.gmail.com/
+Signed-off-by: Otto Pflüger <otto.pflueger@abscue.de>
 ---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 122 +++++++++++++++++++++++++------
+ 1 file changed, 98 insertions(+), 24 deletions(-)
 
-LLM Generated explanations, may be completely bogus:
-
-# Commit Analysis: wifi: mt76: mt792x: fix wifi init fail by setting
-MCU_RUNNING after CLC load
-
-## 1. COMMIT MESSAGE ANALYSIS
-
-**Subject:** Clearly indicates a bug fix ("fix wifi init fail")
-
-**Problem described:** Setting `MT76_STATE_MCU_RUNNING` bit before CLC
-(Country/Legal Configuration) load completion could cause conflicts
-between MCU init retry and mac_reset flows, resulting in chip
-initialization failure and abnormal chip status.
-
-**Tags present:**
-- `Signed-off-by:` Quan Zhou (MediaTek - chip vendor) and Felix Fietkau
-  (mt76 maintainer)
-- `Reviewed-by:` druth@chromium.org (Chrome OS kernel team - indicates
-  real-world Chromebook impact)
-- No explicit `Cc: stable@vger.kernel.org` tag
-- No explicit `Fixes:` tag
-
-## 2. CODE CHANGE ANALYSIS
-
-The change is extremely simple and surgical:
-
-**Before the fix:**
-```c
-set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);  // State set here
-err = mt7921_load_clc(dev, mt792x_ram_name(dev));   // CLC load after
-```
-
-**After the fix:**
-```c
-err = mt7921_load_clc(dev, mt792x_ram_name(dev));   // CLC load first
-set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);  // State set after
-success
-```
-
-**Technical mechanism:**
-- `MT76_STATE_MCU_RUNNING` indicates the MCU is fully operational
-- Setting this flag prematurely (before CLC load) could allow other code
-  paths to think the MCU is ready when it's not
-- If something triggers MCU init retry or mac_reset during CLC load,
-  there's a race condition
-- The conflict causes complete initialization failure and abnormal chip
-  state
-
-**Why fix is correct:**
-- The state bit should only be set when initialization is truly complete
-- This ensures no code sees MCU_RUNNING during the vulnerable CLC
-  loading phase
-- Error handling remains intact (if CLC load fails, function returns
-  error)
-
-## 3. CLASSIFICATION
-
-- **Type:** Bug fix - initialization failure fix
-- **NOT** a feature addition
-- Fixes a real runtime bug affecting device usability
-
-## 4. SCOPE AND RISK ASSESSMENT
-
-| Factor | Assessment |
-|--------|------------|
-| Lines changed | ~6 lines (just moving 1 line in 2 files) |
-| Files touched | 2 (mt7921/mcu.c, mt7925/mcu.c) |
-| Complexity | Very low - simple reordering |
-| Regression risk | LOW - no logic changes, just timing |
-| Subsystem | Wireless driver (contained) |
-
-The change is almost purely a reordering operation within the same
-function. If CLC load succeeds, the state gets set (same as before, just
-later). If it fails, function returns error anyway.
-
-## 5. USER IMPACT
-
-**Affected hardware:** MediaTek mt7921 and mt7925 WiFi chips
-
-These are **extremely common** chips found in:
-- Many Chromebooks (Chrome OS review indicates this)
-- Consumer laptops (Dell, Lenovo, HP, etc.)
-- USB WiFi adapters
-- Various PC builds
-
-**Severity:** HIGH
-- WiFi initialization failure = device doesn't work at all
-- "chip abnormal status" suggests chip may be left in broken state
-- Users cannot use their WiFi until reboot or driver reload
-
-## 6. STABILITY INDICATORS
-
-- Reviewed by Chromium kernel team (indicates real-world testing on
-  Chromebooks)
-- From MediaTek engineer (hardware vendor knows their chip)
-- Accepted by mt76 maintainer Felix Fietkau
-- Clean, minimal change with clear rationale
-
-## 7. DEPENDENCY CHECK
-
-The change is self-contained. It only reorders existing function calls
-within `mt7921_run_firmware()` and `mt7925_run_firmware()`. No new
-dependencies are introduced.
-
-The mt7921 driver has been in stable kernels for some time. The mt7925
-is newer and may not exist in older stable trees, but the mt7921 portion
-would still be valuable.
-
-## STABLE KERNEL CRITERIA CHECK
-
-| Criterion | Met? | Notes |
-|-----------|------|-------|
-| Obviously correct | ✅ | Simple reordering, logic is clear |
-| Fixes real bug | ✅ | WiFi init failure - real user impact |
-| Small and contained | ✅ | 6 lines, 2 files, same subsystem |
-| No new features | ✅ | No new APIs or functionality |
-| No architectural changes | ✅ | Minimal change |
-
-## RISK vs BENEFIT
-
-**Benefit:** High - Fixes WiFi initialization failure on widely-deployed
-hardware. Without this fix, affected users may have non-functional WiFi.
-
-**Risk:** Very low - The change is a trivial reordering of two
-operations. The logic remains identical; only the timing of when the
-state bit is set changes. The fix has been reviewed by the chip vendor
-and Chrome OS team.
-
-## CONCLUSION
-
-This commit is an ideal candidate for stable backporting:
-
-1. **Fixes a real, user-visible bug** - WiFi doesn't work
-2. **Minimal change** - Just reordering one line in each of two files
-3. **Well-reviewed** - MediaTek and Chrome OS review
-4. **Low regression risk** - No logic changes, simple timing fix
-5. **High user impact** - mt7921/mt7925 are very common chips
-6. **Contained scope** - Only affects initialization path of specific
-   driver
-
-The lack of `Cc: stable` tag doesn't disqualify it - many legitimate
-fixes don't include this tag. The important factors are all positive: it
-fixes a real bug, is small, safe, and affects real users.
-
-**YES**
-
- drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 86bd33b916a9d..edc1df3c071e5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -646,10 +646,10 @@ int mt7921_run_firmware(struct mt792x_dev *dev)
- 	if (err)
- 		return err;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 4e20a8f2eb25803057955401a7737c7f029a1424..0c73043c67fd01147179e8f9b065684f67749ec2 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1754,15 +1754,21 @@ ports {
+ 				#size-cells = <0>;
  
--	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
- 	err = mt7921_load_clc(dev, mt792x_ram_name(dev));
- 	if (err)
- 		return err;
-+	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
+ 				port@0 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <0>;
+-					ovl0_in: endpoint {
++					ovl0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&mmsys_ep_main>;
+ 					};
+ 				};
  
- 	return mt7921_mcu_fw_log_2_host(dev, 1);
- }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 8eda407e4135e..c12b71b71cfc7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -1003,10 +1003,10 @@ int mt7925_run_firmware(struct mt792x_dev *dev)
- 	if (err)
- 		return err;
+ 				port@1 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <1>;
+-					ovl0_out: endpoint {
++					ovl0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&ovl_2l0_in>;
+ 					};
+ 				};
+@@ -1783,15 +1789,21 @@ ports {
+ 				#size-cells = <0>;
  
--	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
- 	err = mt7925_load_clc(dev, mt792x_ram_name(dev));
- 	if (err)
- 		return err;
-+	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
+ 				port@0 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <0>;
+-					ovl_2l0_in: endpoint {
++					ovl_2l0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&ovl0_out>;
+ 					};
+ 				};
  
- 	return mt7925_mcu_fw_log_2_host(dev, 1);
- }
+ 				port@1 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <1>;
+-					ovl_2l0_out: endpoint {
++					ovl_2l0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&rdma0_in>;
+ 					};
+ 				};
+@@ -1812,15 +1824,21 @@ ports {
+ 				#size-cells = <0>;
+ 
+ 				port@0 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <0>;
+-					ovl_2l1_in: endpoint {
++					ovl_2l1_in: endpoint@1 {
++						reg = <1>;
+ 						remote-endpoint = <&mmsys_ep_ext>;
+ 					};
+ 				};
+ 
+ 				port@1 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <1>;
+-					ovl_2l1_out: endpoint {
++					ovl_2l1_out: endpoint@1 {
++						reg = <1>;
+ 						remote-endpoint = <&rdma1_in>;
+ 					};
+ 				};
+@@ -1842,15 +1860,21 @@ ports {
+ 				#size-cells = <0>;
+ 
+ 				port@0 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <0>;
+-					rdma0_in: endpoint {
++					rdma0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&ovl_2l0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <1>;
+-					rdma0_out: endpoint {
++					rdma0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&color0_in>;
+ 					};
+ 				};
+@@ -1872,15 +1896,21 @@ ports {
+ 				#size-cells = <0>;
+ 
+ 				port@0 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <0>;
+-					rdma1_in: endpoint {
++					rdma1_in: endpoint@1 {
++						reg = <1>;
+ 						remote-endpoint = <&ovl_2l1_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <1>;
+-					rdma1_out: endpoint {
++					rdma1_out: endpoint@1 {
++						reg = <1>;
+ 						remote-endpoint = <&dpi_in>;
+ 					};
+ 				};
+@@ -1901,15 +1931,21 @@ ports {
+ 				#size-cells = <0>;
+ 
+ 				port@0 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <0>;
+-					color0_in: endpoint {
++					color0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&rdma0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <1>;
+-					color0_out: endpoint {
++					color0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&ccorr0_in>;
+ 					};
+ 				};
+@@ -1929,15 +1965,21 @@ ports {
+ 				#size-cells = <0>;
+ 
+ 				port@0 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <0>;
+-					ccorr0_in: endpoint {
++					ccorr0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&color0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <1>;
+-					ccorr0_out: endpoint {
++					ccorr0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&aal0_in>;
+ 					};
+ 				};
+@@ -1957,15 +1999,21 @@ ports {
+ 				#size-cells = <0>;
+ 
+ 				port@0 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <0>;
+-					aal0_in: endpoint {
++					aal0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&ccorr0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <1>;
+-					aal0_out: endpoint {
++					aal0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&gamma0_in>;
+ 					};
+ 				};
+@@ -1985,15 +2033,21 @@ ports {
+ 				#size-cells = <0>;
+ 
+ 				port@0 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <0>;
+-					gamma0_in: endpoint {
++					gamma0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&aal0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <1>;
+-					gamma0_out: endpoint {
++					gamma0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&dither0_in>;
+ 					};
+ 				};
+@@ -2013,15 +2067,21 @@ ports {
+ 				#size-cells = <0>;
+ 
+ 				port@0 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <0>;
+-					dither0_in: endpoint {
++					dither0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&gamma0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <1>;
+-					dither0_out: endpoint {
++					dither0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&dsi_in>;
+ 					};
+ 				};
+@@ -2047,15 +2107,22 @@ ports {
+ 				#size-cells = <0>;
+ 
+ 				port@0 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <0>;
+-					dsi_in: endpoint {
++					dsi_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&dither0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <1>;
+-					dsi_out: endpoint { };
++					dsi_out: endpoint@0 {
++						reg = <0>;
++					};
+ 				};
+ 			};
+ 		};
+@@ -2076,15 +2143,22 @@ ports {
+ 				#size-cells = <0>;
+ 
+ 				port@0 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <0>;
+-					dpi_in: endpoint {
++					dpi_in: endpoint@1 {
++						reg = <1>;
+ 						remote-endpoint = <&rdma1_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
++					#address-cells = <1>;
++					#size-cells = <0>;
+ 					reg = <1>;
+-					dpi_out: endpoint { };
++					dpi_out: endpoint@1 {
++						reg = <1>;
++					};
+ 				};
+ 			};
+ 		};
+
+---
+base-commit: 6987d58a9cbc5bd57c983baa514474a86c945d56
+change-id: 20251206-mt8183-display-graph-506183c68b3b
+
+Best regards,
 -- 
-2.51.0
+Otto Pflüger <otto.pflueger@abscue.de>
 
 
