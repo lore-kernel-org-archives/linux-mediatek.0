@@ -4,93 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD770D1CDC6
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Dec 2025 12:35:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12473D1CDC6
+	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Dec 2025 14:01:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8/EEIG21HgNJz0UJ1AA5wtG6iy/331f17scAhitLn5o=; b=yYz3n9emuOQU3kt6kPO09gEonb
-	Fz8mjGMl2JDO8Rdtpa6NUYy4ISsnCAN3sVNiJESNf1FZtRIaWkFeufwEgv058B73RfOu2tMwX9f7k
-	v1HsiSX2FWr4SPHG1LvxCk6TxWHwlDghZrZ1z6jnYr4Ew72AWRTQitorTAhr1tW7iWypugsz+7/3X
-	x1pumDxUOFmDYHQnNy1sUfqjQ1rj+iYU8+Kw5XuSBzpfRfPaMyAEpfwk/kD9qF777dlZ3m6Hf0ROm
-	cd7Mk6aoqqX1mY5cu1TlqDlG4p7NvEetld/VhtCiKCzK4lBEcimw9cDLWJVmVfvjrH4s004MePFlR
-	AzXmBQDw==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8YQ8sHlNNu/5RbON/Ec6l62YniwlAW7dxyB2Fsz3Np0=; b=1uNubPbVD1UnqFlcFoMMMGDNf+
+	XOM1AFH+zFW1uDMchH9PU8bMbNMbHtARkEv4i97NmYLcNz9ZKK/5JfZwN+OEqvWByhyV8IF6F+KKP
+	T8ZrqwKC0OdQe4gCgwTIo7tnKybbSdDmQTS9u2nzQne1EhjNqAle73IRUX0P78fkMw/pMV2H4ZQ9Q
+	ZNnMe316C1PSuAC1CLlaisF9opuUD556q3NwzR6AP6er6bqpHmkZTqMgYfWfCVPDN00AZQn24fNFp
+	cWJ0NT4YSuC4goR3XF5+4+64mtuEQfY1WIYJo4+59yxcpnMoFdy8zU3V3a2MX03x6/1aMxuU8ifgq
+	E6PLRFVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSDym-0000000BvXB-35aS;
-	Sun, 07 Dec 2025 12:35:08 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1vSFK9-0000000BzGj-2zqR;
+	Sun, 07 Dec 2025 14:01:17 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSDyh-0000000BvW7-2sZT
-	for linux-mediatek@lists.infradead.org;
-	Sun, 07 Dec 2025 12:35:07 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-3436d6bdce8so3847447a91.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 07 Dec 2025 04:35:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1765110902; x=1765715702; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=8/EEIG21HgNJz0UJ1AA5wtG6iy/331f17scAhitLn5o=;
-        b=XbqrzHRkGGCdrGKb5SKKdgxmn5bw2hGfaNfQImAjEH1JQ28/QmSpi3r+SnXF/DFJdi
-         dapfySrrIAVCLZmga5j+O9l8i1ooEgGLiJTbJm+5S85IhoFW/9BZjfw/6qSsjujRlMyA
-         TorzZlsOT5ktkON4P6H/UTD5rZ5LC0DQuNOcATO3pocovJ1J39fjCnsShaDqKizkwWr5
-         5GkW1L0uoxq3E61CeLU0r9r52F9ByMZzY3ANqWMoomPt0H1WOvBPtZANlAeZX2oqtGV1
-         qM2h8uU+WJUITQcVKkxZDpeJVuENtBKLnjkIhWp4dKeGDA8sirENJAGUqzoCOoets2Q6
-         Fy2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765110902; x=1765715702;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=8/EEIG21HgNJz0UJ1AA5wtG6iy/331f17scAhitLn5o=;
-        b=a+/hykY0t9MyzKiHbTq1vQeY9LC4413U+DLcObRy08IGk1PotHnLJDH1Fr+4lo1PX6
-         sf8CTgO6dGA6RbNw78ayqNpFVb+UtlTKUmusRyXYX19RC2MbyR/MbnCYS3nBq9kjR36S
-         0JWXsXCWA0934ClC+O+elw0HzRNVBIv/YVZel+J80W+GFnoiY+rfD+jnYaHSN7kctpSo
-         ro/xk78uDM/Z1TCFKhVM57E6liEnJ6H46e7huovpjSZo/9ce8sjSBcJ8zCJSFigm6B2/
-         3MnjCUmOHwCKUwdUE4VeUrpI7LsTaw0J2PVO44EsEbGIVEr/YIOyJ3sXVA8OaJKVspde
-         l2KQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVAbirRMhwp5CjSkGWMWkQbFJ2s/Zhm/NoZrxAIRyAWZlfYrGFCzU6UMgApH6rHkYBL6bxT0m1UE4TF0+eZBA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxFVFuCnP/28yE1tDHF86S4bz0DBWnRSViUkRYZTFuwocvG63Ju
-	rW0EgT4Fi98kIAUipp9e8ZPRDGDNjEU69LkI2nYCYz0E1dV4PPt5/doB
-X-Gm-Gg: ASbGncuF6PSd28feCJFjkdMCscrQtJQow1m1RbrzXRFyZOFJT+yh7wXj8C7tPGrHCO6
-	Qrc0ULBQJKBkHufvhHTCEb8vlaoisF1yKDSqoF8QYtWZi09SosxOKvmmeih+P6X59w3nOg4+fD/
-	Rr4KmHshrTeEnCd4ovGGRcsadN5zbku8Zg4KUGIdUBXDbCcs9GI9o95evTod42/Z25MFtdX5zh1
-	i61MVNHUOdwCQds1XgTFSlk2bK1wIkJdvTQdAOfuPRIuuAIt+LRc9OzF06IMGsYGCAJgAb+KEzM
-	Ye0nLaYDu4YtLLkHnnLeeDSrvQYDYCQ2roVkfw1JcKnqdvCbR73MGL3YW9AF1YMGPBS8CXNZQAD
-	UpHF8ZaI9A+iKcQTxTR7K8W7a3D07wyFUtCQIrrP2ZJI5IGoo9ZgAsP9D56E8ZOq2z9me2hHQB9
-	aK25Q+fASaXW2oabs0
-X-Google-Smtp-Source: AGHT+IFzu5EseF38E19GJggjBQNJ0c5DSWKeJaFT7L7ltbpOuzF8rj9ayEDgLA8p8R58T9CgSYJ4NA==
-X-Received: by 2002:a17:90b:3d92:b0:349:8184:af8b with SMTP id 98e67ed59e1d1-349a24b0974mr4020138a91.7.1765110901873;
-        Sun, 07 Dec 2025 04:35:01 -0800 (PST)
-Received: from archlinux ([205.254.184.182])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3494ea7dabcsm9090852a91.16.2025.12.07.04.34.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 07 Dec 2025 04:35:01 -0800 (PST)
-From: Madhur Kumar <madhurkumar004@gmail.com>
-To: nbd@nbd.name,
-	lorenzo@kernel.or,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.co
-Cc: matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Madhur Kumar <madhurkumar004@gmail.com>
-Subject: [PATCH] drivers: net: wireless: Replace deprecated PCI function
-Date: Sun,  7 Dec 2025 18:04:47 +0530
-Message-ID: <20251207123447.93233-1-madhurkumar004@gmail.com>
-X-Mailer: git-send-email 2.52.0
+	id 1vSFK7-0000000BzGY-0bXo;
+	Sun, 07 Dec 2025 14:01:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id C0E276001D;
+	Sun,  7 Dec 2025 14:01:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AD22C4CEFB;
+	Sun,  7 Dec 2025 14:00:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1765116073;
+	bh=XIPzPHGdu9MVAiWYzmLVkJFzpk/+VDBaaF5v6Z7S21s=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=EsCx8mM87A8HyrcrJI3CQaCEoWdzjxwjyxeqqWomtZPKX5oKnNhnVYczlV7yr+api
+	 h1nrsAZDZtwq8anuESeyBIikhqAGux8Sco7E2Rn/vfqVt3PrLc2LEXvN4NSCJv8VNd
+	 QVVaCfRbNh41EPha2La8wU9XYpzaRw5oeg/WKfl2DGoA8/1tRRDfQAYNuQDEo9c9yk
+	 dqBAsLPZNDc43gMPXaP5nnzCsVtGWyKsl2w7so4uosQ6fq9FfMfKiMuPsd2YnYkyMA
+	 RKvB9A/O4JQAg0lFIEGn3i1jJw/CzAX645QjvGuZeOKfDEgbv9poaPspTv29soMaUq
+	 UJU9YlFfffWtg==
+Date: Sun, 7 Dec 2025 14:00:46 +0000
+From: Jonathan Cameron <jic23@kernel.org>
+To: Romain Gantois <romain.gantois@bootlin.com>
+Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi
+ <cw00.choi@samsung.com>, Guenter Roeck <linux@roeck-us.net>, Peter Rosin
+ <peda@axentia.se>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy
+ Shevchenko <andy@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Michael
+ Hennerich <Michael.Hennerich@analog.com>, Mariel Tinaco
+ <Mariel.Tinaco@analog.com>, Kevin Tsai <ktsai@capellamicro.com>, Linus
+ Walleij <linus.walleij@linaro.org>, Dmitry Torokhov
+ <dmitry.torokhov@gmail.com>, Eugen Hristev <eugen.hristev@linaro.org>,
+ Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>,
+ Sebastian Reichel <sre@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Hans de
+ Goede <hansg@kernel.org>, Support Opensource
+ <support.opensource@diasemi.com>, Paul Cercueil <paul@crapouillou.net>,
+ Iskren Chernev <me@iskren.info>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>, Matheus Castello
+ <matheus@castello.eng.br>, Saravanan Sekar <sravanhome@gmail.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Casey Connolly
+ <casey.connolly@linaro.org>, Pali =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>,
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
+ <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Amit
+ Kucheria <amitk@kernel.org>, Thara Gopinath <thara.gopinath@gmail.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
+ <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba
+ <lukasz.luba@arm.com>, Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Sylwester
+ Nawrocki <s.nawrocki@samsung.com>, Olivier Moysan
+ <olivier.moysan@foss.st.com>, Arnaud Pouliquen
+ <arnaud.pouliquen@foss.st.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, David Lechner <dlechner@baylibre.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org,
+ linux-iio@vger.kernel.org, linux-input@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-pm@vger.kernel.org,
+ linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-sound@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH] iio: inkern: Use namespaced exports
+Message-ID: <20251207140046.56322d6f@jic23-huawei>
+In-Reply-To: <5948030.DvuYhMxLoT@fw-rgant>
+References: <20251201-iio-inkern-use-namespaced-exports-v1-1-da1935f70243@bootlin.com>
+	<78240755-44dc-4835-aca5-99540cca0304@baylibre.com>
+	<5948030.DvuYhMxLoT@fw-rgant>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251207_043503_816012_F3F99713 
-X-CRM114-Status: UNSURE (   8.38  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,40 +106,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-pcim_iomap_table() and pcim_iomap_regions() have been
-deprecated.
-Replace them with pcim_iomap_region().
+On Tue, 02 Dec 2025 08:30:58 +0100
+Romain Gantois <romain.gantois@bootlin.com> wrote:
 
-Signed-off-by: Madhur Kumar <madhurkumar004@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+> On Monday, 1 December 2025 18:15:54 CET David Lechner wrote:
+> > On 12/1/25 4:59 AM, Romain Gantois wrote:  
+> > > Use namespaced exports for IIO consumer API functions.
+> > > 
+> > > Signed-off-by: Romain Gantois <romain.gantois@bootlin.com>
+> > > ---  
+> > 
+> > ...
+> >   
+> > > diff --git a/drivers/iio/dac/ds4424.c b/drivers/iio/dac/ds4424.c
+> > > index a8198ba4f98a..33d6692f46fe 100644
+> > > --- a/drivers/iio/dac/ds4424.c
+> > > +++ b/drivers/iio/dac/ds4424.c
+> > > @@ -14,7 +14,6 @@
+> > > 
+> > >  #include <linux/iio/iio.h>
+> > >  #include <linux/iio/driver.h>
+> > >  #include <linux/iio/machine.h>
+> > > 
+> > > -#include <linux/iio/consumer.h>  
+> > 
+> > Unrelated change?  
+> 
+> Indeed, I'll leave that out in v2.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index ec9686183251..5a82c3bf471f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -284,10 +284,6 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 	if (ret)
- 		return ret;
- 
--	ret = pcim_iomap_regions(pdev, BIT(0), pci_name(pdev));
--	if (ret)
--		return ret;
--
- 	pci_read_config_word(pdev, PCI_COMMAND, &cmd);
- 	if (!(cmd & PCI_COMMAND_MEMORY)) {
- 		cmd |= PCI_COMMAND_MEMORY;
-@@ -325,7 +321,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 	dev->fw_features = features;
- 	dev->hif_ops = &mt7921_pcie_ops;
- 	dev->irq_map = &irq_map;
--	mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
-+	mt76_mmio_init(&dev->mt76, pcim_iomap_region(pdev, 0, pci_name(pdev)));
- 	tasklet_init(&mdev->irq_tasklet, mt792x_irq_tasklet, (unsigned long)dev);
- 
- 	dev->phy.dev = dev;
--- 
-2.52.0
+Please spin a precursor patch that makes that change.
+That way we can easily check all files either both include that header
+and have the namespace enabled, or neither.
+
+I might merge this is a slightly funny way that leave it initially
+not meeting that rule so that the precursor isn't in the immutable branch
+for other subsystems but lets keep it logical in the patch set!
+
+Jonathan
+
+> 
+> > >  #define DS4422_MAX_DAC_CHANNELS		2
+> > >  #define DS4424_MAX_DAC_CHANNELS		4
+> > > 
+> > > @@ -321,3 +320,4 @@ MODULE_AUTHOR("Ismail H. Kose
+> > > <ismail.kose@maximintegrated.com>");> 
+> > >  MODULE_AUTHOR("Vishal Sood <vishal.sood@maximintegrated.com>");
+> > >  MODULE_AUTHOR("David Jung <david.jung@maximintegrated.com>");
+> > >  MODULE_LICENSE("GPL v2");
+> > > 
+> > > +MODULE_IMPORT_NS("IIO_CONSUMER");  
+> > 
+> > Is this actually needed if we don't use anything from consumer.h?  
+> 
+> No, it's not.
+> 
+> Thanks,
+> 
 
 
