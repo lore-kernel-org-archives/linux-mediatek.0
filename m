@@ -4,61 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB957D3B7F3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Dec 2025 14:19:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEA83D3B7F3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Dec 2025 14:24:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KPhKaRJdxafq/QKZpQBH7bxbR+1uB8M9QAxtyYTbMGM=; b=LiHdklt5wmQQOA7xW1OUuXHd+Y
-	ZQF/JpjkIXbDLPbvz21hS6dxq84tgtcB83PcHLPCcjYyVJU8aDhSOmVxJUvcFJOgXrn8BijvsyfWw
-	z1soCU3ArSsftheSuzoDXP6liFp5tLLb186rERBj7YrjS4ff+WYNAPXTgVjK73z2ReSbWTyio3L/8
-	fcv7DJ7zju5T7rWw8nlzKn7lHcSZrK9Fe35srUWFz2h56RkWqCEH0RyatlsTMz1MpndxaEqyEn1Kt
-	X/+8ueKz/QFWDvl55XOHbSpJsSDRVyCOnrt0BveCgGRvMQ6jB+0lziVN8fRedOP0kmmGw1a8lYoOy
-	+E/XK2yw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7JXAaO2yrn7qeKYGN4H79yr+8ih1bG+MhPK7ncJdHWI=; b=baUvi/hsRXZKVMyH86JWf/Kkpd
+	VWG8MYo0rtTMZZJ6628yQz2rIk2PNg32KpgxVKVFImt7ijzJuLSiqzP7Zm7zveKc01vVbKjVLGiZC
+	OKbKLPMzn5V774evG5a6jUsnI5Ij49GZDWi8//Y8ROwU+ol+ENLL9zS3UVOWNs93vuOTLZ7e3ij26
+	q/HLd6RzGxyv+k+Q0qq/oD+wZMGHgs9i4zaQ5CqZ2TuREbW9tN4h72ual+bN8Wc2U/skdSis8TVLv
+	UuqWi0UVd5bFwGr12wH67beELb0Dt/F0wuXFYiaKosPbh4UG3Va1+SZE/I0uOtRjJq6MJwfBO0Viq
+	y9Bv1/Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSc5V-0000000DAty-0COX;
-	Mon, 08 Dec 2025 14:19:41 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vSc9r-0000000DBmH-3mJY;
+	Mon, 08 Dec 2025 14:24:11 +0000
+Received: from mail-24420.protonmail.ch ([109.224.244.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSc5T-0000000DAtq-2JSi
+	id 1vSc9p-0000000DBi4-028i
 	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Dec 2025 14:19:39 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E6BD460172;
-	Mon,  8 Dec 2025 14:19:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF226C4CEF1;
-	Mon,  8 Dec 2025 14:19:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765203578;
-	bh=vC4ZLDTOkG6dsh62qPT9eyeu/t9BABENkfkivMFbs88=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qgBoVz7FwY3umYMF1PV4DvUgxrFkznPJynYuzD9CLq/lJmTvCWdYdAB+WSJPoMFBf
-	 tj60zu7fkalhoeIGv/H6QRsuBkVHLV9+/jX/s2yPRUBUETtVHXAhgtnMpb/QYTJpPJ
-	 WzeEwRQHhMt7EfNjpXdIBAqomIrxUB64uMPJL5gOUnc281U2TycXr6o4U59pPv0TOi
-	 rNH6NxU/FOBFa82Qwh1iMhf70CA+4XJV9d9Ijxw7/92kyq+8iiCUEUEAgPI72ahrVf
-	 3gToh4Aj4FRKeIqnAMDVyv0ZPERsc/j175JYMcRr735PHQpKYACrxR/5UhBBoZh5Ql
-	 7bzmDmJ9PMYaQ==
-Date: Mon, 8 Dec 2025 15:19:35 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Chad Monroe <chad@monroe.io>
-Cc: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>,
-	Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>, linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] wifi: mt76: fix deadlock in remain-on-channel
-Message-ID: <aTbed-BC8vEmwpzD@lore-desk>
-References: <3fceebb12dcb672cfae11f993a373b457a35e228.1765198130.git.chad@monroe.io>
+	Mon, 08 Dec 2025 14:24:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=monroe.io;
+	s=protonmail3; t=1765203845; x=1765463045;
+	bh=7JXAaO2yrn7qeKYGN4H79yr+8ih1bG+MhPK7ncJdHWI=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=XB344MeRZM5gOQISWT53f1c4JBQ9osAoOW80l11xahnDe/ZwoCd33Iz3qE0WadkIG
+	 MqbBbSCnQ4zGGkVWYYe5p6TJ8ojOeVCmOSZHbn00xXzeqxuy7YOnUmP7wEhtpjE9Wy
+	 J88NaZKWjYa7wpF8UOCwyN6mPqcFzrlC5SZvgfAKkvBq1EuY6pna9ejxbFYCyOYOsy
+	 cNbIJxPf6tM7sZOYAHqjGKAY6v98kfcui3zrkeH5NGqYwt1mLq/9W1IArhxpz4n9IG
+	 atbnyITlEmQor4RA5SYsO0b5fNyIPoSK9SAQlTGUcSz8BtrXAnWhsxxO1M++yxbacz
+	 9x95l/R51T96w==
+Date: Mon, 08 Dec 2025 14:24:00 +0000
+To: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>
+From: Chad Monroe <chad@monroe.io>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, Chad Monroe <chad@monroe.io>
+Subject: [PATCH v2] mt76: mt7996: reset device after MCU message timeout
+Message-ID: <6e05ed063f3763ad3457633c56b60a728a49a6f0.1765203753.git.chad@monroe.io>
+Feedback-ID: 9731019:user:proton
+X-Pm-Message-ID: 80c6cf0b9126d58699fd27e33aea10b608107b02
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="7le5LWZSIXz4geqy"
-Content-Disposition: inline
-In-Reply-To: <3fceebb12dcb672cfae11f993a373b457a35e228.1765198130.git.chad@monroe.io>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251208_062409_198724_68D0F5FC 
+X-CRM114-Status: UNSURE (   4.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,89 +67,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Trigger a full reset after MCU message timeout.
 
---7le5LWZSIXz4geqy
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Chad Monroe <chad@monroe.io>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 5 +++++
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 9 +++++++++
+ 2 files changed, 14 insertions(+)
 
-> mt76_remain_on_channel() and mt76_roc_complete() call mt76_set_channel()
-> while already holding dev->mutex. Since mt76_set_channel() also acquires
-> dev->mutex, this results in a deadlock.
->=20
-> Use __mt76_set_channel() instead of mt76_set_channel().
-> Add cancel_delayed_work_sync() for mac_work before acquiring the mutex
-> in mt76_remain_on_channel() to prevent a secondary deadlock with the
-> mac_work workqueue.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/=
+wireless/mediatek/mt76/mt7996/mac.c
+index 2560e2f46e89..2e5f6a2cafe1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -2736,6 +2736,11 @@ void mt7996_reset(struct mt7996_dev *dev)
+ =09=09return;
+ =09}
+=20
++=09if (READ_ONCE(dev->recovery.state) & MT_MCU_CMD_STOP_DMA) {
++=09=09set_bit(MT76_MCU_RESET, &dev->mphy.state);
++=09=09wake_up(&dev->mt76.mcu.wait);
++=09}
++
+ =09queue_work(dev->mt76.wq, &dev->reset_work);
+ =09wake_up(&dev->reset_wait);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/=
+wireless/mediatek/mt76/mt7996/mcu.c
+index 14a88ef79b6c..40ebda9a3f12 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -209,6 +209,7 @@ static int
+ mt7996_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+ =09=09=09  struct sk_buff *skb, int seq)
+ {
++=09struct mt7996_dev *dev =3D container_of(mdev, struct mt7996_dev, mt76);
+ =09struct mt7996_mcu_rxd *rxd;
+ =09struct mt7996_mcu_uni_event *event;
+ =09int mcu_cmd =3D FIELD_GET(__MCU_CMD_FIELD_ID, cmd);
+@@ -217,6 +218,14 @@ mt7996_mcu_parse_response(struct mt76_dev *mdev, int c=
+md,
+ =09if (!skb) {
+ =09=09dev_err(mdev->dev, "Message %08x (seq %d) timeout\n",
+ =09=09=09cmd, seq);
++
++=09=09if (!test_and_set_bit(MT76_MCU_RESET, &dev->mphy.state)) {
++=09=09=09dev->recovery.restart =3D true;
++=09=09=09wake_up(&dev->mt76.mcu.wait);
++=09=09=09queue_work(dev->mt76.wq, &dev->reset_work);
++=09=09=09wake_up(&dev->reset_wait);
++=09=09}
++
+ =09=09return -ETIMEDOUT;
+ =09}
+=20
+--=20
+2.47.3
 
-I think we need a Fixes tag here.
 
-Regards,
-Lorenzo
-
->=20
-> Signed-off-by: Chad Monroe <chad@monroe.io>
-> ---
->  drivers/net/wireless/mediatek/mt76/channel.c | 13 +++++++++++--
->  1 file changed, 11 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/channel.c b/drivers/net/w=
-ireless/mediatek/mt76/channel.c
-> index 2b705bdb7993..d9f8529db7ed 100644
-> --- a/drivers/net/wireless/mediatek/mt76/channel.c
-> +++ b/drivers/net/wireless/mediatek/mt76/channel.c
-> @@ -326,7 +326,7 @@ void mt76_roc_complete(struct mt76_phy *phy)
->  		mlink->mvif->roc_phy =3D NULL;
->  	if (phy->main_chandef.chan &&
->  	    !test_bit(MT76_MCU_RESET, &dev->phy.state))
-> -		mt76_set_channel(phy, &phy->main_chandef, false);
-> +		__mt76_set_channel(phy, &phy->main_chandef, false);
->  	mt76_put_vif_phy_link(phy, phy->roc_vif, phy->roc_link);
->  	phy->roc_vif =3D NULL;
->  	phy->roc_link =3D NULL;
-> @@ -370,6 +370,8 @@ int mt76_remain_on_channel(struct ieee80211_hw *hw, s=
-truct ieee80211_vif *vif,
->  	if (!phy)
->  		return -EINVAL;
-> =20
-> +	cancel_delayed_work_sync(&phy->mac_work);
-> +
->  	mutex_lock(&dev->mutex);
-> =20
->  	if (phy->roc_vif || dev->scan.phy =3D=3D phy ||
-> @@ -388,7 +390,14 @@ int mt76_remain_on_channel(struct ieee80211_hw *hw, =
-struct ieee80211_vif *vif,
->  	phy->roc_vif =3D vif;
->  	phy->roc_link =3D mlink;
->  	cfg80211_chandef_create(&chandef, chan, NL80211_CHAN_HT20);
-> -	mt76_set_channel(phy, &chandef, true);
-> +	ret =3D __mt76_set_channel(phy, &chandef, true);
-> +	if (ret) {
-> +		mlink->mvif->roc_phy =3D NULL;
-> +		phy->roc_vif =3D NULL;
-> +		phy->roc_link =3D NULL;
-> +		mt76_put_vif_phy_link(phy, vif, mlink);
-> +		goto out;
-> +	}
->  	ieee80211_ready_on_channel(hw);
->  	ieee80211_queue_delayed_work(phy->hw, &phy->roc_work,
->  				     msecs_to_jiffies(duration));
-> --=20
-> 2.47.3
->=20
->=20
->=20
-
---7le5LWZSIXz4geqy
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaTbedwAKCRA6cBh0uS2t
-rPnbAQCQLkt1ogkYrYOvbFfy7fnwAMGuqg8FvgG+qKg9LpuSMgD/dIWDKL8FZ3tI
-ishi71jr9T+1xXEqsLCGivoIsl/zowc=
-=x/pD
------END PGP SIGNATURE-----
-
---7le5LWZSIXz4geqy--
 
