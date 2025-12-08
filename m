@@ -4,85 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DDBCD3B7F3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Dec 2025 15:07:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C74AD3B7EA
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Dec 2025 17:23:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=koYXwoTEJsoPLyEPiz9nEdjQYdWChY6O9/DUrMalYaU=; b=r9AMuBSI9h7wV61nJVxWUk86kw
-	pOPgvlFUVmopudFoCEGSmvrn09jL2ngKoGUuPQBzh0YuQX9xihUS9QziuSJ9D2+KI8dGFrX782Aca
-	OjzghWJPPO/XFlupcBJi2av0fsvG7K+w6pye+9D8/W7dQZPrR9GbC4Qo1cITGmd+VQhVj7Iyx0hYm
-	X1tkOciezXHQ9riNFCPJncLGe/5Pcn9F99IlDEXWji4aLdXHmJtkDtRFU/MU9dmSDBFRl3oB2WsPL
-	R95WwDkLsA1d5xpZ/70Wz05UGv80VFZ8clLeqcH8NLgjllU4tjtUh5AaERsiPq5HqQ+OFNizRyReF
-	9U+oPglw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0PgfWpyXRTYw7pqOmQBjZJ0wQoN6AGdnNEKUvt/DRi4=; b=mtzYXq7ozR8xYs64zPHjHeZB03
+	d00gumnmCRAE92gWGUUL3YRw+EZpLJ77nUNHfUG7JbOvOr6MIzkpzri9KIA5rf3TC+fQTdpCuDJ7l
+	KZoXawBmOT+fJlCSwTlWE2C+rHtOKXl2asTk5jTo18ZzYnpoC+GR3uqk0pVwRMSEl5GpfSxBiA7Os
+	+wC2zhLS7+ksJwhGnhLjUoi+kr3n47wbT0gJNIIu5KhMvZyHAaqi++4ta4f93Zrqy6347juqnDguP
+	u+3cTzp6qBUFcOribKGe+f6WnluweipNLMgt6A4sTtJTBLkXKCZUsmOrz9WfKzTHtP2V2AgD5Uxb6
+	dvHzXjsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vScpj-0000000DDrT-3HH4;
-	Mon, 08 Dec 2025 15:07:27 +0000
-Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
+	id 1vSexb-0000000DNhN-25p3;
+	Mon, 08 Dec 2025 17:23:43 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vScpg-0000000DDqb-3Bq3
+	id 1vSexY-0000000DNgP-1klK
 	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Dec 2025 15:07:26 +0000
-Received: by mail-yx1-xb12b.google.com with SMTP id 956f58d0204a3-642fcb9c16aso3836195d50.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 08 Dec 2025 07:07:24 -0800 (PST)
+	Mon, 08 Dec 2025 17:23:42 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-7bc0cd6a13aso2677021b3a.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 08 Dec 2025 09:23:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1765206443; x=1765811243; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=koYXwoTEJsoPLyEPiz9nEdjQYdWChY6O9/DUrMalYaU=;
-        b=aTzePrtzQqPtSNTqRBZcwpr0pXIvsKLpON+pryfpI2miTWQdz9Ib6yxY1USVSGduuf
-         ZjZFPthblEIGNPTGS+iZDoUEdxtbUN7X8/KGL8NRFdIB+OiQdAhavV2NdoRCgQWT8+nR
-         H0eIPoTWvIhParqEZF9tXSvWhx36D0AmMCrBqXqz49Oux8xOCsBv+NjD1j8i8BXbkID5
-         TNmK8x+RSmhry5YyapMCvgH52d5+2Ed2PP0VFV5Q7xBDITmPk6bwj8ZltI4DLyWWt+ql
-         T5dRbdQcS+S5o23huSNHo86bgsd2YuOkgRt9ogST2KlelAHxJ7Rt2kTSrtKEDU7dlhwH
-         tnKg==
+        d=gmail.com; s=20230601; t=1765214619; x=1765819419; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=0PgfWpyXRTYw7pqOmQBjZJ0wQoN6AGdnNEKUvt/DRi4=;
+        b=czsKyNxbDQYmEAaPffYco84ZKTkLMMXZlyQypAFkApmaLl7HIzj9KQLSuxIG3Iw8QO
+         HRWvXZeeR06i/RqDpZb3/RZrXSHmP86R75T7AZ9kypqxGZQiGq5YqlaSIrzeVsg2J2uZ
+         d0DGjISGu1SkcYMKzushDPFimz6nln/9wdA6Xly+0u4N4ZBIUtscyLiiDW2k3Q+yb+uB
+         747F4/PCEeB2NCEyEJGOV1UlEtdcmu+eds38KScsLg+POvxiePPZW497KhKvi3zOt70r
+         RI9/0o8zzkqNh2aiqYG8OhTmKSaUeT553qiR/JEFIBEmg5LCVGBWwXEhbeBhKdb0Uro5
+         ZmBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765206443; x=1765811243;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=koYXwoTEJsoPLyEPiz9nEdjQYdWChY6O9/DUrMalYaU=;
-        b=uRdjcNVxDcLl2D0hDvm8S6rnL8p4PKHSMeizthLoWIc0YfRRV7dJw9ieXKMWLg6H94
-         7Do3KvaxLxBeYOzyZiDsOlIoqFanNOqvnpUa76Jd0aBdzJ9Ga4ocoBkzfWEvi7+W2uT4
-         bDBF5jEdgcQ27kXmiK4sLOs1TIVX+ie8dllh9WDlouV8vLO/vH2a8m0fiYuD+ncAbYuu
-         kiXnwBqN7U6KX3tqrA+QuO3rfqewr8ynkf8W0ZeDQ5PYC896q5DZUCv1+VSXD9fYZxIs
-         abpq0pgCabjQ3PYlv6WOQLGEs0vW0cMEg5bxnY9eLNI/KeFgqr+/XZW4UY/TYsNEh8E6
-         RuQw==
-X-Forwarded-Encrypted: i=1; AJvYcCWfi8ID84Wjtd2DZE2XyIGWGDGDLLmLEcJVDtsr3rorhs2pp/2DO6P3N21sQGLK02Pz1o9xTyXtEJeRK28APQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwNmxw/DvEKSLKzERucKLQisg4pDmDZm6zcu5EZ/YTO7IMeiQDB
-	DOdDvXs23p3wotnfTQuIhd0yoCVModPtrijQ+iCMSVcEMgdSauvNWjPM3f2R0+TA8zB3Vc8OuHD
-	a/haLdJMOiU+EOoSsRUu5mk3RrLTAfyQ=
-X-Gm-Gg: ASbGncugQBXmbQ3QKVXpdFqPhv0fHAHaF/YW1/Q1ugSOn7JAC7Ck1ODJMYkOmJ1VoZ2
-	TacOLZHoSwjUF5OS9JAZKOZPPr/sHGgOFSfMCaj35fvKhiaM6xh0ak53tA46Trr1EvS7ZvmWlp6
-	ZiIJtBET8ZuWYcrcwh1NOepvpL73cMAtLH32Oa+FUk0A6cqlJH26Ou41quytgOhFth45T450per
-	awcxgzUGIVYoxkUPYNfM8hZ8wNlp+ljwdrkxooqbLfkbKLJcdUPuvutttKP5MA0MFICIL2xxA==
-X-Google-Smtp-Source: AGHT+IGYRXraUxNnTs25uPKI9qFKKJh9msu75YD1kNeHN+uqbvLo7zPFytcHo2xWkyYJWdyrK6Tt95u9MkZVGc/NOaA=
-X-Received: by 2002:a05:690c:46c1:b0:78c:24d2:8e46 with SMTP id
- 00721157ae682-78c33b641a6mr128823087b3.23.1765206442917; Mon, 08 Dec 2025
- 07:07:22 -0800 (PST)
+        d=1e100.net; s=20230601; t=1765214619; x=1765819419;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0PgfWpyXRTYw7pqOmQBjZJ0wQoN6AGdnNEKUvt/DRi4=;
+        b=QOMUbxv4/epX++Gc9o5RAuBgvI6vseh5vps9buzJrZGmR4VEd2v2nrl6qmlqPwDrCW
+         MLcp+/113v8hYHWMuqGYltvQv5+EnG/E7tj66EJwPqVCBkDcg4F/TAcVFEFmqO/BCgEE
+         6N33/x9m+33lTwqhEJZFHuPFHuB5AdvHqSzU4IMwlj2dPRm6kUzgErdZPiCreXe3fqHn
+         GVcheXlF73Jb+hIrH/M8r+oMgOQvbYAtXSlQdR+C8wZctvHgaHzDMN5hSn5N5RItJE2O
+         YhaxmaNdevnUxDx96LYsMVSCl6zjF2aMRvMBkJ9j3owKnjpUydTEsTqNpryL/IB56umE
+         2mBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW2BFL3QZ7NErIo0bEN0w+yXv5fcnlT8LG1OUmynGSOpnY3kCkRTqDDYH65xYyrVPZFwO2Aj3lZNr8Mj3PJbQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwtBw/HDt+bBAZHLe2DVKPF3dCrwpD1oecsjTLT81PcsACIoPnb
+	kEXDPw55K3NDGsAt5a8j3Y1D8ap/Gwsucz6OhRDMSE74QgyU0OJvGdU6
+X-Gm-Gg: ASbGncv+3cpnAD+AJU2PROcDlnp/QENMKeJMHlKSPOazmCiCQo46msXEK8lKN0Rkk1h
+	BRv9LTW/IPELon4v3p1IBtOY8iKJU52A8i3Vy2xCKOK3SFxDnI3KOrWsNQd8RlpXi6q8o/UmIA2
+	5VxOzGvpf+7bUavifCDzuO+CES2BtNLtSFgpyerz9rBQuRPvFIII9grRyUD2cJpmnw3sGbb2prw
+	pZFgwRT7gNjlbc1POdIPviptn7Co2IugqcjiLda73MigbF0ceKOfSq3p5MRMNX0oDmV+BPjyvWV
+	7b9554p7QnTUWosqRsjDGmfd/zdAASmyidzf0V0eN0Ajq12RUueu/30rJPHssLNK7AOVlDaV9KQ
+	MrT2H+v5/9gMmz96Z+U6Gu+U3Ddv0uW3h/miIkDsvNu0dceOLd8kjVEFpqjD0P23oGaE2uAvE3A
+	F3OOtIjgJb3YSF
+X-Google-Smtp-Source: AGHT+IH3U7wAIn1n8s7LBxALn5cXyfQ0bJrUjXZQ0dex2XlkC4L563Ju/0lyvT1vRLhXem3jcORmOQ==
+X-Received: by 2002:a05:6a00:181b:b0:7aa:d1d4:bb7b with SMTP id d2e1a72fcca58-7f03be92eaamr104219b3a.16.1765214619055;
+        Mon, 08 Dec 2025 09:23:39 -0800 (PST)
+Received: from archlinux ([36.255.84.56])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7e2a0533f08sm13766369b3a.23.2025.12.08.09.23.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 08 Dec 2025 09:23:38 -0800 (PST)
+From: Madhur Kumar <madhurkumar004@gmail.com>
+To: linux-wireless@vger.kernel.org
+Cc: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Madhur Kumar <madhurkumar004@gmail.com>
+Subject: [PATCH] wifi: mt76: mt7921: Replace deprecated PCI function
+Date: Mon,  8 Dec 2025 22:53:31 +0530
+Message-ID: <20251208172331.89705-1-madhurkumar004@gmail.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-References: <20251207123447.93233-1-madhurkumar004@gmail.com>
-In-Reply-To: <20251207123447.93233-1-madhurkumar004@gmail.com>
-From: Jonas Gorski <jonas.gorski@gmail.com>
-Date: Mon, 8 Dec 2025 16:07:11 +0100
-X-Gm-Features: AQt7F2pKE5CQRUA_xL32Yk7vUOwJ69Im78h8OWjd5vaMan4AvHfoEZP3-zr1coc
-Message-ID: <CAOiHx=n8osZ=b=MVNsxAKEtxDvNgt1ESohLNMWoz43c9RwNfOA@mail.gmail.com>
-Subject: Re: [PATCH] drivers: net: wireless: Replace deprecated PCI function
-To: Madhur Kumar <madhurkumar004@gmail.com>
-Cc: nbd@nbd.name, lorenzo@kernel.or, ryder.lee@mediatek.com, 
-	shayne.chen@mediatek.com, sean.wang@mediatek.co, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251208_070724_809188_80A781F7 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20251208_092340_464894_FE9AD31F 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,53 +105,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+pcim_iomap_table() and pcim_iomap_regions() have been
+deprecated.
+Replace them with pcim_iomap_region().
 
-On Sun, Dec 7, 2025 at 1:35=E2=80=AFPM Madhur Kumar <madhurkumar004@gmail.c=
-om> wrote:
->
-> pcim_iomap_table() and pcim_iomap_regions() have been
-> deprecated.
-> Replace them with pcim_iomap_region().
+Signed-off-by: Madhur Kumar <madhurkumar004@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-The patch subject is wrong, please read
-https://wireless.docs.kernel.org/en/latest/en/developers/documentation/subm=
-ittingpatches.html
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index ec9686183251..65c7fe671137 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -276,6 +276,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 	struct mt76_bus_ops *bus_ops;
+ 	struct mt792x_dev *dev;
+ 	struct mt76_dev *mdev;
++	void __iomem *regs;
+ 	u16 cmd, chipid;
+ 	u8 features;
+ 	int ret;
+@@ -284,10 +285,6 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 	if (ret)
+ 		return ret;
+ 
+-	ret = pcim_iomap_regions(pdev, BIT(0), pci_name(pdev));
+-	if (ret)
+-		return ret;
+-
+ 	pci_read_config_word(pdev, PCI_COMMAND, &cmd);
+ 	if (!(cmd & PCI_COMMAND_MEMORY)) {
+ 		cmd |= PCI_COMMAND_MEMORY;
+@@ -321,11 +318,15 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+ 
+ 	pci_set_drvdata(pdev, mdev);
+ 
++	regs =  pcim_iomap_region(pdev, 0, pci_name(pdev));
++	if (IS_ERR(regs))
++		return PTR_ERR(regs);
++
+ 	dev = container_of(mdev, struct mt792x_dev, mt76);
+ 	dev->fw_features = features;
+ 	dev->hif_ops = &mt7921_pcie_ops;
+ 	dev->irq_map = &irq_map;
+-	mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
++	mt76_mmio_init(&dev->mt76, regs);
+ 	tasklet_init(&mdev->irq_tasklet, mt792x_irq_tasklet, (unsigned long)dev);
+ 
+ 	dev->phy.dev = dev;
+-- 
+2.52.0
 
->
-> Signed-off-by: Madhur Kumar <madhurkumar004@gmail.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 6 +-----
->  1 file changed, 1 insertion(+), 5 deletions(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7921/pci.c
-> index ec9686183251..5a82c3bf471f 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> @@ -284,10 +284,6 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
->         if (ret)
->                 return ret;
->
-> -       ret =3D pcim_iomap_regions(pdev, BIT(0), pci_name(pdev));
-> -       if (ret)
-> -               return ret;
-> -
->         pci_read_config_word(pdev, PCI_COMMAND, &cmd);
->         if (!(cmd & PCI_COMMAND_MEMORY)) {
->                 cmd |=3D PCI_COMMAND_MEMORY;
-> @@ -325,7 +321,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
->         dev->fw_features =3D features;
->         dev->hif_ops =3D &mt7921_pcie_ops;
->         dev->irq_map =3D &irq_map;
-> -       mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
-> +       mt76_mmio_init(&dev->mt76, pcim_iomap_region(pdev, 0, pci_name(pd=
-ev)));
-
-You are effectively removing the error checking by directly passing
-the result of pcim_iomap_region() to mt76_mmio_init(). You need to
-first make sure that pcim_iomap_region() succeeded.
-
-Best regards,
-Jonas
 
