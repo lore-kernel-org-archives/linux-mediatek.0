@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF576D3B7E2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Dec 2025 17:36:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7108AD3B7E2
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Dec 2025 17:41:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
 	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XfhVptDWr1QW2ircHDGHYcKFnDVil044CT7xBlzhjmM=; b=tP7clUg5pshquLAuoeYEUKICtE
-	MMoUjIduqNMSaL70UmCCuthZQXHKHtl8kwHJmjWsk1ylDl00lmmFBr40ZwtSRUDwxJCWJTyC/lMqW
-	RfftSKaZmtQh8aJqwLkdhMQ7VsAIhc/K5jmMMyKE1sbDPqlH+MVZNe/GH6il9+Ay+6fi91PvRP2G4
-	EGn68P6ROyKCsOEMNyu65RMoDjGrG264tJIi+yRI/twbCjzQ01nKmzYU6Ba7npsvcgL3XdBYcn6SP
-	u3zc6gyRxwVYLdGc09rJarea0yILq4TW4FJt9zq5fSGTok5J5bT6GniypyUc4p37fhvb5S4BRJsLW
-	MVyT8wFw==;
+	bh=nAskoR/9df3vRQNCZZq1S3SyZ/pOxoExHCx2p7cwsAs=; b=WdMJXpKAIrXvain6xZ/dtPUFuv
+	DJ/R+7QsYQg5lqungGNolb6TuSlOWsB1KJem474qPz6ZemUTXYLo6k0bwHBrFeHBZFqhYarfFIZcZ
+	17HhvWvb7nfEhthCGaco8fs0JOGvU6IPCTs9v8qZYUflL11c293uMzaHRS4Zk0dpD5dltqJqb2nAP
+	JeEYTWk6RiNX+CXM2pw6rJON388zoBLctnsphk8K3uIxDoUNlk/Dff3Btw7lh9xbjGSvfLOcIn5yE
+	LNN5+9U4bmex3rEiLgos7DkKam8SqYX4pLxgy+68EUCC7agOjRaO2Q0wRl3HT+qSecmrKGP69KSC0
+	pdKijx/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSfA9-0000000DOE7-41Ta;
-	Mon, 08 Dec 2025 17:36:42 +0000
-Received: from mail-24421.protonmail.ch ([109.224.244.21])
+	id 1vSfEo-0000000DORK-1Ue4;
+	Mon, 08 Dec 2025 17:41:30 +0000
+Received: from mail-106117.protonmail.ch ([79.135.106.117])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSfA6-0000000DODa-42xk
+	id 1vSfEk-0000000DOQp-0Ngi
 	for linux-mediatek@lists.infradead.org;
-	Mon, 08 Dec 2025 17:36:40 +0000
+	Mon, 08 Dec 2025 17:41:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=monroe.io;
-	s=protonmail3; t=1765215394; x=1765474594;
-	bh=XfhVptDWr1QW2ircHDGHYcKFnDVil044CT7xBlzhjmM=;
+	s=protonmail3; t=1765215681; x=1765474881;
+	bh=nAskoR/9df3vRQNCZZq1S3SyZ/pOxoExHCx2p7cwsAs=;
 	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
 	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
 	 Message-ID:BIMI-Selector;
-	b=XpSaItvhr0l9nGt3AZ/CaglPurffUtb75I08wVN4vET9Jh3uX/9w+1Op0Dlzplstb
-	 12OkCIuihD76+Hvw2Uazt2MrQ7u9vPNNq8gMY0PY81Qt9+FKf2K7ntUziFyHiSHuPU
-	 rU0BKhTzVbM5/dfH9XE+zpOWFKKkCszjlZvB+HEXG13DndUJG2j0jYMaQYP2jNtnH2
-	 pWgVGORi9H9kH9vvaUNOqKA/sSMhwC+FO0xypeCiVQO2/7TlKcwrH6Jy+HmhyfpBR4
-	 egUN9rM1wx9SV8kVA83kz3MjbwrkabKOvnnsHaAVGt/e6uzKW3Q9jEJpniJu4fal+n
-	 nRbgCwhflGsnQ==
-Date: Mon, 08 Dec 2025 17:36:29 +0000
+	b=rGjJMjJi++4oBCWomM2YHz3jUn3mhugd1p8DU4egRHn/Jt8OuyZxOEsT4dPR973It
+	 niqOEUz7ytSMOMafiR5+Gbj/BsFzIFoKLPQhcnetFeBTBGa7+82GhOFf9ZI5jxFdYD
+	 YJqHv7e5DrcUZ02nXlLmsmfHSbsVFtUHTJbnMiINwCLZ27akGdJZd+c1/uvyMY79GI
+	 /vxE1bdbFj/CtI3AQy8+6yFYlaUo8jd0e6DnukEZZ+F5bJaMmXa7KyNp5GVbG6Rqz5
+	 5XKqh3cuAW3O84P9appXejGZBP1D3RAIWwaz5kdPNFVNhHKPgEmix3uc0sddPiEO/5
+	 qZyLhy6jTPmaw==
+Date: Mon, 08 Dec 2025 17:41:17 +0000
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 From: Chad Monroe <chad@monroe.io>
 Cc: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] mt76: mt7996: reset device after MCU message timeout
-Message-ID: <STMznQ8BXsvf185OAGs7UAEpv2RIo1G6sws27GVInBYxtAT6Er7qb48T_YNBSF_L3dM_UwaCQXU_5bZy7b5AJQ8u1e1aSlzlx4LVSR9vnxc=@monroe.io>
-In-Reply-To: <aTbeOResfSpMk6hZ@lore-desk>
-References: <27bebda195599b55d097f4586a034dddce5d2cc0.1765202889.git.chad@monroe.io> <aTbeOResfSpMk6hZ@lore-desk>
+Subject: Re: [PATCH] wifi: mt76: fix deadlock in remain-on-channel
+Message-ID: <qa3DpeAFV4STXYZKtPG6DyXOAFGaiLxTbsmc30DyPFx7fkpq_m6uhMAlyHVCCf71N4-gphwqjmw1aFR26syHQeONYSFlxUicSEctFdZdSzs=@monroe.io>
+In-Reply-To: <aTbed-BC8vEmwpzD@lore-desk>
+References: <3fceebb12dcb672cfae11f993a373b457a35e228.1765198130.git.chad@monroe.io> <aTbed-BC8vEmwpzD@lore-desk>
 Feedback-ID: 9731019:user:proton
-X-Pm-Message-ID: a4a1882d1857bea674e625d12e73c7d8c9b21116
+X-Pm-Message-ID: 830241bd499abb301524f1f45c2bdba5ff4df267
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251208_093639_612290_55EB3D9A 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20251208_094127_606045_FE69EB12 
+X-CRM114-Status: GOOD (  15.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,79 +74,80 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On Monday, December 8th, 2025 at 6:18 AM, Lorenzo Bianconi <lorenzo@kernel.=
+On Monday, December 8th, 2025 at 6:19 AM, Lorenzo Bianconi <lorenzo@kernel.=
 org> wrote:
 
 >=20
 >=20
-> > Trigger a full reset after MCU message timeout.
+> > mt76_remain_on_channel() and mt76_roc_complete() call mt76_set_channel(=
+)
 >=20
-> > Signed-off-by: Chad Monroe chad@monroe.io
-> > ---
-> > drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 5 +++++
-> > drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 9 +++++++++
-> > 2 files changed, 14 insertions(+)
+> > while already holding dev->mutex. Since mt76_set_channel() also acquire=
+s
+> > dev->mutex, this results in a deadlock.
 > >=20
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/=
-net/wireless/mediatek/mt76/mt7996/mac.c
-> > index 2560e2f46e89..07b0a694c1bb 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-> > @@ -2736,6 +2736,11 @@ void mt7996_reset(struct mt7996_dev *dev)
-> > return;
-> > }
-> >=20
-> > + if ((READ_ONCE(dev->recovery.state) & MT_MCU_CMD_STOP_DMA)) {
+> > Use __mt76_set_channel() instead of mt76_set_channel().
+> > Add cancel_delayed_work_sync() for mac_work before acquiring the mutex
+> > in mt76_remain_on_channel() to prevent a secondary deadlock with the
+> > mac_work workqueue.
 >=20
 >=20
-> nit: you do not need double brackets here.
+> I think we need a Fixes tag here.
 >=20
 > Regards,
 > Lorenzo
+>=20
 
-Thanks! I submitted a v2 patch. The logic was copied from an inverse condit=
-ion in mt7915 and I missed the extra brackets.
+Good call.. added and submitted v2. Thank you,
 
     -Chad
 
->=20
-> > + set_bit(MT76_MCU_RESET, &dev->mphy.state);
-> > + wake_up(&dev->mt76.mcu.wait);
-> > + }
-> > +
-> > queue_work(dev->mt76.wq, &dev->reset_work);
-> > wake_up(&dev->reset_wait);
-> > }
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/=
-net/wireless/mediatek/mt76/mt7996/mcu.c
-> > index 14a88ef79b6c..40ebda9a3f12 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-> > @@ -209,6 +209,7 @@ static int
-> > mt7996_mcu_parse_response(struct mt76_dev *mdev, int cmd,
-> > struct sk_buff *skb, int seq)
-> > {
-> > + struct mt7996_dev *dev =3D container_of(mdev, struct mt7996_dev, mt76=
-);
-> > struct mt7996_mcu_rxd *rxd;
-> > struct mt7996_mcu_uni_event *event;
-> > int mcu_cmd =3D FIELD_GET(__MCU_CMD_FIELD_ID, cmd);
-> > @@ -217,6 +218,14 @@ mt7996_mcu_parse_response(struct mt76_dev *mdev, i=
-nt cmd,
-> > if (!skb) {
-> > dev_err(mdev->dev, "Message %08x (seq %d) timeout\n",
-> > cmd, seq);
-> > +
-> > + if (!test_and_set_bit(MT76_MCU_RESET, &dev->mphy.state)) {
-> > + dev->recovery.restart =3D true;
-> > + wake_up(&dev->mt76.mcu.wait);
-> > + queue_work(dev->mt76.wq, &dev->reset_work);
-> > + wake_up(&dev->reset_wait);
-> > + }
-> > +
-> > return -ETIMEDOUT;
-> > }
+> > Signed-off-by: Chad Monroe chad@monroe.io
+> > ---
+> > drivers/net/wireless/mediatek/mt76/channel.c | 13 +++++++++++--
+> > 1 file changed, 11 insertions(+), 2 deletions(-)
 > >=20
+> > diff --git a/drivers/net/wireless/mediatek/mt76/channel.c b/drivers/net=
+/wireless/mediatek/mt76/channel.c
+> > index 2b705bdb7993..d9f8529db7ed 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/channel.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/channel.c
+> > @@ -326,7 +326,7 @@ void mt76_roc_complete(struct mt76_phy *phy)
+> > mlink->mvif->roc_phy =3D NULL;
+> > if (phy->main_chandef.chan &&
+> > !test_bit(MT76_MCU_RESET, &dev->phy.state))
+> > - mt76_set_channel(phy, &phy->main_chandef, false);
+> > + __mt76_set_channel(phy, &phy->main_chandef, false);
+> > mt76_put_vif_phy_link(phy, phy->roc_vif, phy->roc_link);
+> > phy->roc_vif =3D NULL;
+> > phy->roc_link =3D NULL;
+> > @@ -370,6 +370,8 @@ int mt76_remain_on_channel(struct ieee80211_hw *hw,=
+ struct ieee80211_vif *vif,
+> > if (!phy)
+> > return -EINVAL;
+> >=20
+> > + cancel_delayed_work_sync(&phy->mac_work);
+> > +
+> > mutex_lock(&dev->mutex);
+> >=20
+> > if (phy->roc_vif || dev->scan.phy =3D=3D phy ||
+> > @@ -388,7 +390,14 @@ int mt76_remain_on_channel(struct ieee80211_hw *hw=
+, struct ieee80211_vif *vif,
+> > phy->roc_vif =3D vif;
+> > phy->roc_link =3D mlink;
+> > cfg80211_chandef_create(&chandef, chan, NL80211_CHAN_HT20);
+> > - mt76_set_channel(phy, &chandef, true);
+> > + ret =3D __mt76_set_channel(phy, &chandef, true);
+> > + if (ret) {
+> > + mlink->mvif->roc_phy =3D NULL;
+> > + phy->roc_vif =3D NULL;
+> > + phy->roc_link =3D NULL;
+> > + mt76_put_vif_phy_link(phy, vif, mlink);
+> > + goto out;
+> > + }
+> > ieee80211_ready_on_channel(hw);
+> > ieee80211_queue_delayed_work(phy->hw, &phy->roc_work,
+> > msecs_to_jiffies(duration));
 > > --
 > > 2.47.3
 
