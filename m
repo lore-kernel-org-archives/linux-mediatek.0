@@ -4,100 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86390D2CE17
-	for <linux-mediatek@archiver.kernel.org>; Sun,  7 Dec 2025 18:48:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D1D7CEBF88
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Dec 2025 06:36:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rewMkEV3MgRMTeM76SiWV1E8NqJ1FoOR82emswtGFkM=; b=gM+eeuYgubfHl3JX6JVuZs0Eex
-	z488xLaumGBmYkRMlRDJOItgMVxg4zMm73HBtjpcQdg7OUZqECaULP/6UQIHoF9wG9rcR8smoam/9
-	BCJ9SDd3JH6d08+9KVVZCAMIBb8qDCGdxlfK8zEL61nCGdMC4u2acV8ui4pB+z5yYWYzeOjJK/SQS
-	fRulMqt+7scfwa12aLPYlrlmZ52g00oMSs5b3NmlxRq9N3a/G15D6uC5uGevapEGeHoo/105M5SeO
-	5hNQ1nmou8xVIIXaLOgXxkhRcP7h4p3RBz0CdASMwOnzc3D+hLB6/KkGkMhXsV0hbWehDMUo+Jrzr
-	kjGgHTTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1MCukoiss2G1dgG1qRKQtdLybvEJbz6D58WhwOw0gZI=; b=rsNcVr+5NPHHOMbglb+D05cULJ
+	LD4vkfeXCc7RGtnkdZqJPJBitgTkMKlJSBv3tlu/W5LfgShX2xn0I5fdtmVDzAQcsLH6Yz2fhkNoO
+	ZSlmv++II6ASD5xnURDvI00pKEHzpX5Luoq9PC9PWELPUgMvp6Hg5AS2F6iY6+ouSQ1u1ztydUoEb
+	aHypzxghV43cu6pAtyxHDhp426KPjUuzRIp+wWU6yallwyCim7XZaBhB3SiqHaGfJgpvX1D0T3cxa
+	tEYNL79X59iIy4XmZAqQ4Gq7KSskDL0EAv04TJZw3WRTNcLvhXEWDX/+9pYEp0mqKcIp2ruM2wdB8
+	rCbpnd4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSJoQ-0000000CARE-2Yop;
-	Sun, 07 Dec 2025 18:48:50 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vSUrg-0000000ChkL-3HzB;
+	Mon, 08 Dec 2025 06:36:56 +0000
+Received: from mail-westeuropeazon11020094.outbound.protection.outlook.com ([52.101.69.94] helo=AM0PR83CU005.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSJoP-0000000CAQz-0zs8;
-	Sun, 07 Dec 2025 18:48:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 717FD600AA;
-	Sun,  7 Dec 2025 18:48:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D25EFC4CEFB;
-	Sun,  7 Dec 2025 18:48:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765133327;
-	bh=i3PBFrjGBQBs0q3+aqCj3KcAnStBM/0oVzLp8ZbqdoA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=CD8ThFBZDwJ9StM2NbaV5N6iNe4+vc30b3pEXddJ5Oo65Cmj3O9bdmORFW1sVXtmY
-	 LC/YL4KVbdSODRsPq83UcIlFRUV8IxF24wvCw72ErJXBTWIKUELAKR6tJw5w6IEP85
-	 u3p6oLIwTosCFTBxreZudIHlbc0hdl5qjEyo/KOIM2hpuUz13Rdh8WpILW6/CZt0mV
-	 R0lUYB8JffGNoMwacw1v8aPFjO2IteAyUgyGJkJDp1ZeWQ2Qp7Ep5lfFeHVGV2rAPv
-	 lFbDuPO+C5+12PXhp6ElYyqcAL4Eikvf9mV28JoGOOAxynDEG2QMAwLtpRwxlTSlUn
-	 Rq/8Du/Y5ngFA==
-Date: Sun, 7 Dec 2025 18:48:18 +0000
-From: Jonathan Cameron <jic23@kernel.org>
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: "H. Nikolaus Schaller" <hns@goldelico.com>, Romain Gantois
- <romain.gantois@bootlin.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark
- Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, David
- Lechner <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?=
- <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Thomas Petazzoni
- <thomas.petazzoni@bootlin.com>, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-iio@vger.kernel.org, Conor Dooley
- <conor.dooley@microchip.com>, MyungJoo Ham <myungjoo.ham@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Peter Rosin <peda@axentia.se>, Mariel
- Tinaco <Mariel.Tinaco@analog.com>, Lars-Peter Clausen <lars@metafoo.de>,
- Michael Hennerich <Michael.Hennerich@analog.com>, Kevin Tsai
- <ktsai@capellamicro.com>, Linus Walleij <linus.walleij@linaro.org>, Dmitry
- Torokhov <dmitry.torokhov@gmail.com>, Eugen Hristev
- <eugen.hristev@linaro.org>, Vinod Koul <vkoul@kernel.org>, Kishon Vijay
- Abraham I <kishon@kernel.org>, Sebastian Reichel <sre@kernel.org>, Chen-Yu
- Tsai <wens@csie.org>, Support Opensource <support.opensource@diasemi.com>,
- Paul Cercueil <paul@crapouillou.net>, Iskren Chernev <me@iskren.info>,
- Marek Szyprowski <m.szyprowski@samsung.com>, Matheus Castello
- <matheus@castello.eng.br>, Saravanan Sekar <sravanhome@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Casey Connolly
- <casey.connolly@linaro.org>, Pali =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>,
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Amit
- Kucheria <amitk@kernel.org>, Thara Gopinath <thara.gopinath@gmail.com>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano
- <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba
- <lukasz.luba@arm.com>, Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Sylwester
- Nawrocki <s.nawrocki@samsung.com>, Olivier Moysan
- <olivier.moysan@foss.st.com>, Arnaud Pouliquen
- <arnaud.pouliquen@foss.st.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Dixit Parmar <dixitparmar19@gmail.com>,
- linux-hwmon@vger.kernel.org, linux-input@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-pm@vger.kernel.org,
- linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, Andy
- Shevchenko <andriy.shevchenko@intel.com>
-Subject: Re: [PATCH v4 0/6] Add support for the LTM8054 voltage regulator
-Message-ID: <20251207184818.2ad7cef7@jic23-huawei>
-In-Reply-To: <9b43da0b-61e1-49bb-acc2-392de3817db7@roeck-us.net>
-References: <20251124-ltm8054-driver-v4-0-107a8a814abe@bootlin.com>
-	<4053840.MHq7AAxBmi@fw-rgant>
-	<732D3F12-0361-4800-8981-EF629B4C491F@goldelico.com>
-	<3021060.e9J7NaK4W3@fw-rgant>
-	<0E900830-E248-4F0F-A048-075EAF1D2440@goldelico.com>
-	<9b43da0b-61e1-49bb-acc2-392de3817db7@roeck-us.net>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-pc-linux-gnu)
+	id 1vSUrd-0000000Chiv-0Gz3;
+	Mon, 08 Dec 2025 06:36:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=jyG5fckAFfDqiFQwiccx++XXU5yTexcEOi06pgB10p6BiUgMip0TI76FKoIn0mkcNFMFB3tEeQp7u9DArUhFZZQxr+Fa/cpohvn2iruOP4nKP9whkiBOnCabSbqMkRAoH3xkvc3EMZk1Yw3j2xpp3rP5jrM+eKXoQXHmAE9+P2vtmZOdYEItFHN69Rvi4LXyj02NHNPhrm1F52wmpgC0loe/Hhl5GYeaCTpTNMVqX8FOaZcH+68f3qYppEB2WbH86ABvOxhA9VXhrJ6xglyeIpJ2IfbPMq1kVG7xJeLsJfZuo92W3wI9VocmGbmC23NlYVmX1VUWme9+quuALHkmSw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=1MCukoiss2G1dgG1qRKQtdLybvEJbz6D58WhwOw0gZI=;
+ b=oz0NkSKvewsVXkJm5xcYIEvbep2CoXZof7zmfQR8HcLje1d0ZjITTQ7qenjmgW0KwpFfsX4h22ug3UJAm2anH6tquDJLkrSZedTj4fO0AFihssqWR59Jw6KQ+l62Ejii+1HrCrIduRG+m43NPhp7RYXb7uN3dYj2+O9nCyKsjXliBowAe208X5zP/ps9ai7CuNdT8oqBChW+Ej2Lh7yJQB7d9zrGVKXqMxweoz8DI/pUb+KvbAgGD94zhmXGE2kltJhck1W8lHcy8wyzY5bonzYpsDYxJ++DxF/ZOIZo//OliOZSBbMt1D+hiZg/zMbLY+b3zQqlSIYfx6RV1SiKvQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1MCukoiss2G1dgG1qRKQtdLybvEJbz6D58WhwOw0gZI=;
+ b=p7BeHNpX0P9MrXlNVVbjSvxDJ549UfyZGSBrQC+10PvTILpZOP4iSzhJAbfrS8dyo8Au+dLLOINGp1hGXWmgNwJ7kYbqyGnxB3cWrUPJMR0Kv7Ge52zrYIKD9mNeTdHzqKHK00dsbMqw0K/fRQ3LHZgo/OhJ3HFDDta52UqdoaMx/4B7umptZc9nLVxVXyQS305cWwDWBVaNgQ2DJgKtyG4Pro5MZ+HaC8IqYiR8W9sjJJ+XwDdmJELAZX5Jw3bvZD8YkJXNHVxNq8x5rjzoEDh/03h3zqN3hC3xRnjHL6rjNubgYsaDuMab1k3HXyIWbm54AScbc39srpdTEVYAdA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com (2603:10a6:150:7d::22)
+ by AM0PR08MB11704.eurprd08.prod.outlook.com (2603:10a6:20b:745::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9388.14; Mon, 8 Dec
+ 2025 06:36:47 +0000
+Received: from GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0]) by GV2PR08MB8121.eurprd08.prod.outlook.com
+ ([fe80::4cd3:da80:2532:daa0%3]) with mapi id 15.20.9388.013; Mon, 8 Dec 2025
+ 06:36:47 +0000
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+	Andreas Gnau <andreas.gnau@iopsys.eu>
+Subject: [PATCH v2 0/2] ARM: dts: airoha: en7523: update dts
+Date: Mon,  8 Dec 2025 09:36:36 +0300
+Message-ID: <20251208063638.3009460-1-mikhail.kshevetskiy@iopsys.eu>
+X-Mailer: git-send-email 2.51.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: FR4P281CA0100.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:cb::14) To GV2PR08MB8121.eurprd08.prod.outlook.com
+ (2603:10a6:150:7d::22)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR08MB8121:EE_|AM0PR08MB11704:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4ffebda8-c787-48aa-a643-08de362428ec
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|376014|366016|1800799024|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?dB0SWW9yZ9VWA4e0F/BrvLJfbJhIgUvGH45k5brXCyq68fb54jsgJXGETUkp?=
+ =?us-ascii?Q?QPqweHCWLUYXTdAZf7TSDYhNV/lowzzpTbZuTqqtgW0/aZ9GufJrEvxb3Bw0?=
+ =?us-ascii?Q?qFBJeOs+xHedGUBnaOmmtTz/YMv9fN1Q+3LWd7UQ8lWGwFQWtdxoyqy1AIGM?=
+ =?us-ascii?Q?qlA+NOg8q3vqBG3XE1vOoj4uqstAlF15VUQiMLshI6TQ4qJskz1vRmKOC/hk?=
+ =?us-ascii?Q?1vNhVkbf9vBIZYtNSkkrZdOuzRo0NWrnPANXeiL6Q5vOC82Gi4arCt+N5qoa?=
+ =?us-ascii?Q?jA0Lv3JwB7kMsEOuOvkmTJj2XNtsQl7QFHfeqnH+1WkPylb5MLrHBlAusdRV?=
+ =?us-ascii?Q?TPgxo+7B3C/K5/BWv5JTva4/4Jnc/MUkAKLirOplgaju+xO38TLytVh0+psj?=
+ =?us-ascii?Q?7lKUd53J/9hn73H9gr89+cU9e/tKYHjRjxLIWXGEqVX25CZpK7pcEhqhgLor?=
+ =?us-ascii?Q?gwlmSE70vZscOfJe8fb4hyuOEkixbB44k7FumDRETpjvkVlKKt5Rj2wa5HQM?=
+ =?us-ascii?Q?5WL+pBMRSlOJCVTI/CsMrY20+zBgLkRXGApT1F8cp8RCAZLw0v9ceHqZ9/1S?=
+ =?us-ascii?Q?pp2oUZ9LpBVqz6BQqLUmDiD5tUVSbu1hudBpknwCrcmVJOHDYteR1J/1NRO8?=
+ =?us-ascii?Q?0YhSh48mMt88styH+fjTDgyMm2NVjMzCOUC4Ca9y+iAISA5PeoBfDQeB0ezq?=
+ =?us-ascii?Q?vPTXEY30vdFIrIJ0LkuGJNeIQwwUv9eXs0XAoQ/7UxwP3Te/aP5yjwtz+M4l?=
+ =?us-ascii?Q?ctRtEk3Mqv3uATTmnVGjKK58ySS4p+BKlMPa8kfmPeOxLJuJdg9pCSNy/Jcm?=
+ =?us-ascii?Q?RbkgdrNq0OB5xo5G74PG7HX9KdBiWVHwgdIUbiO2MyXjaMWMX0S/N2/QwVRy?=
+ =?us-ascii?Q?p/EQfD0FtTQT5iFteBRvfoZS/UgbUC2L11Hw/qjNoY74X2Ons71JGdf9ikCs?=
+ =?us-ascii?Q?FrzGk5NtHq1xkcRY+aQUfPKz56Vtjd4PRakA7B3Ur0ikjGXNgxqIgmAlKk0Q?=
+ =?us-ascii?Q?3LNeuQ0tdv8OJ1GlLWS55ChlvCbktiz2tQAGr8o5M2ucJ3yrMyghFPeiLh6t?=
+ =?us-ascii?Q?fSpdLUI0TDOT39DHG14KWVcjL0J8cLV1BdzuhATwbPktQWfG5VY9x5l1c4hn?=
+ =?us-ascii?Q?9NeDot0Amccge88d72uYp4ir01IveQB35oFv7jsCstqpDq3V67u06rA2lkwL?=
+ =?us-ascii?Q?zTj9IPMHuacPifkxXb58Fan+yv7F/tcwRaopqV64q1tZWBKer5rN4di1vqxL?=
+ =?us-ascii?Q?o6DZAxTKaH3UFeZ3iZ5/ewizjBqZHfOe0HWR0wiblrSPXvPNcCqaWSHWoToD?=
+ =?us-ascii?Q?MfRxGSZJMA1fgveaWY3u9zTTDWOLEB2oanLSOjw+tA6WAxgMD5XwyX9GbCb4?=
+ =?us-ascii?Q?9chOLkbBKiUGxULHthbNSNRsh9z9a6ZuJ2OV1GX2Ytsv5RylVDrxcdvokka+?=
+ =?us-ascii?Q?89v0bmbyuQrqx+E3+GOhMaBnbVpUVhNSvUNX0IF9kLMw9OM77z3JzDqxYw2z?=
+ =?us-ascii?Q?4LKx3cKrd+bl9PShz00T+G5ZVs28s4Mg7Qz/?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR08MB8121.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(376014)(366016)(1800799024)(38350700014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?L6yWhzkO0aGdNKTn5tt+h4km3B1BZiaLct9gdHHtTFSgrX2mMt8H1Qs9CHeq?=
+ =?us-ascii?Q?SjDLdc+2zBrRg39gz685KrNm1ExiuiofaOcoivVejl/Ygy3adqMvMu472Y5a?=
+ =?us-ascii?Q?7NWeZjUx7jrpETSW2qhm8xFlIRuAOeD/nJ3BWnLdUfAK2QGNoetTg+UG+XfP?=
+ =?us-ascii?Q?XuFbj4m75I27tAC97LGq5CUneedhdSmryJ3ghMh3gLVJPo7qzAaerXEZoDmt?=
+ =?us-ascii?Q?S8H1fEpVy+eFITdUiG2lborOsju3486dHKOicBLezqVyZmS3Itkf1YFvGprh?=
+ =?us-ascii?Q?i5zxGWY9nbH95gJQBLIbcx+vTmD/X0idZxO32Nel38xG9uL/0Ldy3/C4GtIL?=
+ =?us-ascii?Q?HgUC7LGxmU14uRkrWjBKhdqv739rT6j00UOS+6kArQ4tnHVXX7TDRKqigRb2?=
+ =?us-ascii?Q?a610Z9h3CdQD4OtgmzYW/Ccxy4z2k/zCDK/MtUFEHBKDsePVKSd2dS4/o7fs?=
+ =?us-ascii?Q?LERg1dxFQZWAmaCkLV0N1aIjOMlzKPMhooCkA+fVMrmTtiWjvwIg5sop2MBK?=
+ =?us-ascii?Q?0DT+Se4Q2cUJMT+sLTMIcCbHNmvTMIQs0wvOpL933IfsRvqEQNAU4NjonOFY?=
+ =?us-ascii?Q?8UFYrf8sQFLSYA2Jli5jJ+4NF3OMFLeW4DwG8OnINe97RGHa0xpceAdtWiWO?=
+ =?us-ascii?Q?HBYy+xoyQ1B6GST6J0guCzwZVffh3gDS3MvoOkAkF7f1ssPDmbRSeL2Ik/Ty?=
+ =?us-ascii?Q?iDGHJNZFGdzpnthoEMKTIjdshJH/ja/eHdxp2jEmT0JAaEwtLqHJTwW6sV0z?=
+ =?us-ascii?Q?hHf9+HnOn50+V4q4vIwioObBvBTucEC83QQvK0tVvK6bpuRP83k9catyNhqL?=
+ =?us-ascii?Q?cgE8fP7pceadv0W2UtmsBpbS7YetHn6Rhacvhm3q7YnpMJ1eOokvpSIblTi3?=
+ =?us-ascii?Q?B1LgWov6ybLjhah3EhiHGCOQat/JoWWmkH1M34/ESXnJrzwvCHeHTZflmiSy?=
+ =?us-ascii?Q?bk1Pm5NQC9Ld75QuEjOkUjjwDl7RbXdLZhnJcjhVNwF/tejGUUPsUdW7Z4mo?=
+ =?us-ascii?Q?nTZukL8PI6jeQrMSErlSomTd5XbKGoW7ZmFS3dcG1hiZr7y+yVKm7/9gbqbA?=
+ =?us-ascii?Q?UuV0SBcrghGg114ewjyzbB/j9CIRYYOY+LpwPVLoe4zX4Hghv/j06dxOSITR?=
+ =?us-ascii?Q?PRPixhWiHJcbQ+O61SNUT6DGFExGiRSmcrprYywqfgEqweEzXy9u/2aZoUL3?=
+ =?us-ascii?Q?z4yaUCAHczdwMwMnrFA2Y96lsoGNFWr/+M9DuJJgxaZ4bPEElVAjpiS7BvF3?=
+ =?us-ascii?Q?e73YUJfUj/SUJN78pIjjecprxJGIu8irhwZObw8HqZnPca9wEhVutuYN3lkb?=
+ =?us-ascii?Q?E225ADbkJ7rBHqu3n6kxWMyHH76OpFvSRU07nyCzuId4pzhOM+Y9FhWRcDZx?=
+ =?us-ascii?Q?0ehDDB7JJ5J2tO8QVTEHWSp3JogHEb3a80JTWa633J6j0ZjNN+yhwnJsFfGq?=
+ =?us-ascii?Q?br0KZ2N9b49xPZWBG7ZhNvl4NgS1lT+WFxDYo5F3mp2PqgzYVZQAOBqrRES4?=
+ =?us-ascii?Q?j1tDKfHderBoA8kQkEDjBmnZo48FDA0Z/c4jomb5AH+kakz9wNp9cjdDvcrF?=
+ =?us-ascii?Q?iMRzDF1uQ69f4g2OMr35pYojSEzYG2TN19dt1KG1sIBoasy8XW+v8ymVTdlL?=
+ =?us-ascii?Q?qQ=3D=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4ffebda8-c787-48aa-a643-08de362428ec
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR08MB8121.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Dec 2025 06:36:47.1126
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: IfPKrEWBWsZdiRM4JM/WkmMtPT0i2XA8cUqoONXEpvAPtkWGNIFhemEKjXPu4PiTORSZZGumuawsibIw9saoPsIJeX7/4hXZ7WKJyuaxYB0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR08MB11704
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251207_223653_561162_56D60054 
+X-CRM114-Status: UNSURE (   7.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,55 +165,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 25 Nov 2025 08:37:20 -0800
-Guenter Roeck <linux@roeck-us.net> wrote:
+These two patches updates dts for en7523 SoC with the recently
+added features:
+ * reset controller support
+ * spinand flashes support
 
-> On 11/25/25 02:25, H. Nikolaus Schaller wrote:
-> ...
-> > Another suggestion: what extending the "regulator-fixed", "regulator-gpio",
-> > "regulator-fixed-clock" pattern by some "regulator-gpio-iio-dac-current-limiter"
-> > driver to make it independent of your specific chip?
-> >   
-> The name is terrible ;-), but that is what I would have suggested as well.
-> I don't see anything chip specific in this code. If there is a need for
-> a regulator driver which uses gpio to enable it and a DAC for current limiting,
-> it should be made generic.
+Initially these patches were parts of the following series:
 
-Agreed - something generic is the ideal way to go.
+  https://lore.kernel.org/lkml/20251012121707.2296160-1-mikhail.kshevetskiy@iopsys.eu/
+  https://lore.kernel.org/lkml/20251017201126.493496-1-mikhail.kshevetskiy@iopsys.eu/
 
-However, before going too far it is worth exploring what are common circuits with
-these things to identify what parameters we need to describe how the DAC channel
-is used - e.g is linear scaling enough?  You'll need to that to define a DT
-binding. If it turns out to be too complex, then fallback to specific
-compatibles in a generic driver to cover the ones that don't fit with a common
-scheme.  A similar case we already have is discrete components as analog front
-ends for ADCs - mostly they fall into a few categories and we have drivers
-covering those, but some are very odd indeed and for those ones we do have a
-driver even though they don't have anything to control as such - most extreme
-case being when it's a non linear analog sensor. 
+All other patches (except patches from this series) were already merged
+to upsrtream linux. This series just groups remaining patches together.
 
-The mention of a DAC as part of the analog feedback circuit sounds harder
-too generalise but that's specific to this particular buck-boost device,
-it's board specific so probably doesn't change the above.
+The series was resend because of no any activity for more than a week.
 
-> 
-> > By the way, are you aware of this feature of the regulator-gpio driver?
-> > 
-> > https://elixir.bootlin.com/linux/v6.18-rc7/source/drivers/regulator/gpio-regulator.c#L97
-> > 
-> > Just to note: I am neither maintainer nor doing any decisions on this, just asking
-> > questions for curiosity and from experience and giving hints for alternative approaches,
-> > where I hope they help to find the really best solution.
-> >   
-> Same here.
+Changes v2:
+ * update cover letter
+ * update patches description a bit
 
-Only covering the thing you are consuming so not my problem to maintain either ;)
+Mikhail Kshevetskiy (2):
+  ARM: dts: airoha: en7523: add node to support spinand flashes
+  ARM: dts: airoha: en7523: add reset-controller support
 
-Jonathan
+ arch/arm/boot/dts/airoha/en7523.dtsi | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-> 
-> Thanks,
-> Guenter
-> 
+-- 
+2.51.0
 
 
