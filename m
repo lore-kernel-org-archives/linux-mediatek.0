@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FBF0D3B7E2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Dec 2025 11:25:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB078D3B7E2
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Dec 2025 11:27:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7xNh2IrUQfFXer4apy1LW0wPRCYKX8Op57bOTtZRB8k=; b=ZVzsoZrLL3FzVSi1tKHcccokZQ
-	DaExsOY4bx+DjKmlB44ExpGBnidgLKGPwoCfbU1UIx96hYmHbl0TTDSr4bXTKDMfUrmSZ5ReiyQeZ
-	3iHJMcav4EnBpbQoVCQXG+R/wxeJvHM8OUyzauUAZp22NLjkmVq8Zk+NOcWnTgSMY9oVnT7iCLu3L
-	B8uNXeg+G2+ekSk11AAMq0f8QMVt55HLlRL3+Sn8jqnUfF6OnevB3LXlhLkgau8G7UaaRu0HU7wr+
-	6zU8vjmpyzAiuRXk6S8EGWOU9VoHQdfT3m6Psw1eRiCwHCtdOoiryXJZfZgXahh/XpVuKL2w6Kmdc
-	0hiyrskw==;
+	bh=KS9+fkJURzUJE1mmvUiBXK04jhbhsrgQmnTnkE10avY=; b=TN2hgJNiYh5PJRpUWrFQRF5cE9
+	UfUrGh3a+ffeuzn7BaXYkPHD2sS1eXdE3oOhClmlQkmG0Ke3kNeKbjVRyJUF+xNTnZeEccvVMiRre
+	soez4cfUPhKWn7LpuiEU2S/xAxVNql4cbwtxynFiPwxBjQyy5mNU5iAu3AIhhaUEVM4NoL20W5qfX
+	R9LLJgAemgjniU1EKuf9zB6eRjjrMiAH73GM9PdDr9i3IrZ7qd46wgF3JaA//N3qDrHt/BJhE/aaO
+	3hmW+fPOBKf4DaQWWNnJuUpRDcOtuVQ0lTas/AXnt424qpivaXq4EDaCnZcJ2Am5GclOBtVdpVfRw
+	Fnx6eLZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSZMW-0000000D0QC-27lv;
-	Mon, 08 Dec 2025 11:25:04 +0000
-Received: from out-186.mta0.migadu.com ([91.218.175.186])
+	id 1vSZOa-0000000D0eW-1xqP;
+	Mon, 08 Dec 2025 11:27:12 +0000
+Received: from out-183.mta0.migadu.com ([2001:41d0:1004:224b::b7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSZMT-0000000D0OU-0HJ3;
-	Mon, 08 Dec 2025 11:25:02 +0000
-Message-ID: <e245ff67-1d71-48a0-bec4-f30056ef2e19@linux.dev>
+	id 1vSZOW-0000000D0dE-3uDg
+	for linux-mediatek@lists.infradead.org;
+	Mon, 08 Dec 2025 11:27:10 +0000
+Message-ID: <3f2aee2b-578a-4d82-8dac-14cb9f2ada05@linux.dev>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1765193098;
+	t=1765193224;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=7xNh2IrUQfFXer4apy1LW0wPRCYKX8Op57bOTtZRB8k=;
-	b=K+3Q+f4wXwHAnSqWeD8Zht4KMjLopVIgM4PK7rSR+Hinpl7RTbJvRrBBabkCUQhDD5x4/Z
-	4pxwRlrEFBvcM1zNBGsUvfNVpd7O/Mm7AzAfbDuNH34KRj5DegQWb91SVsBmiqKd8im331
-	NeOxbkTG/SqtW2oGCbu4kfXm6n1R7Mo=
-Date: Mon, 8 Dec 2025 11:24:51 +0000
+	bh=KS9+fkJURzUJE1mmvUiBXK04jhbhsrgQmnTnkE10avY=;
+	b=RZdoCdds7YbZnHkW/nYm6bY4Esp1KjkxKwlJIihYgTfYeYRjDlUR+QMDbixZCFIL3ijkfb
+	MRc4SImvpFbKrkzgt+mxIM/1RqwJgHViy1Bvvv5PWU7XWqKJfJYPOIEoDHWSHfQFq+aJD9
+	6YpG+e5x6gt+bZ2igvQFu1iLzobsD64=
+Date: Mon, 8 Dec 2025 11:26:54 +0000
 MIME-Version: 1.0
-Subject: Re: [PATCH 3/4] drm/atomic-helper: Export and namespace some
- functions
+Subject: Re: [PATCH 4/4] drm/tidss: Fix enable/disable order
 To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
@@ -62,18 +62,17 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  Vicente Bergas <vicencb@gmail.com>,
  Marek Vasut <marek.vasut+renesas@mailbox.org>, stable@vger.kernel.org
 References: <20251205-drm-seq-fix-v1-0-fda68fa1b3de@ideasonboard.com>
- <20251205-drm-seq-fix-v1-3-fda68fa1b3de@ideasonboard.com>
+ <20251205-drm-seq-fix-v1-4-fda68fa1b3de@ideasonboard.com>
 Content-Language: en-US
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
 From: Aradhya Bhatia <aradhya.bhatia@linux.dev>
-In-Reply-To: <20251205-drm-seq-fix-v1-3-fda68fa1b3de@ideasonboard.com>
+In-Reply-To: <20251205-drm-seq-fix-v1-4-fda68fa1b3de@ideasonboard.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251208_032501_436017_8BE93249 
-X-CRM114-Status: UNSURE (   8.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251208_032709_117661_1AB8ACC3 
+X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,24 +90,27 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 05/12/2025 09:51, Tomi Valkeinen wrote:
-> From: Linus Walleij <linusw@kernel.org>
+> TI's OLDI and DSI encoders need to be set up before the crtc is enabled,
+> but the DRM helpers will enable the crtc first. This causes various
+> issues on TI platforms, like visual artifacts or crtc sync lost
+> warnings.
 > 
-> Export and namespace those not prefixed with drm_* so
-> it becomes possible to write custom commit tail functions
-> in individual drivers using the helper infrastructure.
+> Thus drm_atomic_helper_commit_modeset_enables() and
+> drm_atomic_helper_commit_modeset_disables() cannot be used, as they
+> enable the crtc before bridges' pre-enable, and disable the crtc after
+> bridges' post-disable.
 > 
-> Tested-by: Marek Vasut <marek.vasut+renesas@mailbox.org>
-> Reviewed-by: Maxime Ripard <mripard@kernel.org>
-> Signed-off-by: Linus Walleij <linusw@kernel.org>
-> [Tomi: Resolved conflicts, fixed indentation]
+> Open code the drm_atomic_helper_commit_modeset_enables() and
+> drm_atomic_helper_commit_modeset_disables(), and first call the bridges'
+> pre-enables, then crtc enable, then bridges' post-enable (and vice versa
+> for disable).
+> 
 > Signed-off-by: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
 > Cc: stable@vger.kernel.org # v6.17+
 > ---
->  drivers/gpu/drm/drm_atomic_helper.c | 122 +++++++++++++++++++++++++++++-------
->  include/drm/drm_atomic_helper.h     |  22 +++++++
->  2 files changed, 121 insertions(+), 23 deletions(-)
+>  drivers/gpu/drm/tidss/tidss_kms.c | 30 +++++++++++++++++++++++++++---
+>  1 file changed, 27 insertions(+), 3 deletions(-)
 > 
 
 Reviewed-by: Aradhya Bhatia <aradhya.bhatia@linux.dev>
-
 
