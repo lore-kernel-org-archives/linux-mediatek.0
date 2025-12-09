@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5828AD3B983
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Dec 2025 16:35:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4D02D3B981
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Dec 2025 16:35:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JE6CQqAa/1QG1ONg6wqJfkYOp/SADAkAtijORDqhKFc=; b=fr2A90B9ZkfTdtunVjilvRDFeq
-	ZzhRQktUVrlYfiftvtGXjlByVHUpZ67dzS4CxoRZ/s8ebudr4Zhs38tKXngjXZXe+CJJ6oxzaG8ae
-	9dU31gVXaSPkWIAKJT7hnZPzbUcb47ejc7+N+AbAAOm5JXovgvD5LPCdNsFNKUYXSRa0yMSACEZaV
-	plZ4iMke40jKxtyDKi9qItn5IYfdLDeY9JCEOlDNz5k5iciXn5ffVS+3lHkl1MBkjp4ASGl537qZ9
-	yT7+mUqgtG3XxYj/yUNsb3L+4krEFYgBBft0mzeTHP8CpajWqNhWannAR22vySwOtPiyCmwaOmWOS
-	2s02CjOA==;
+	bh=nCmuNRYqzxyrZnYoRdFbmkwgOStAUDsnYIq1rNUp/zM=; b=WhXxSpInVtsTNqTpyxAvFRYWXc
+	XJhq8iOxSi+waPeIv99+qAvO8QJ2lk6SHK6bmPzOgEcM4RGgPljBj2o2p1QpxQuAOTAvHtE4/sulP
+	Y5J/j5PdYqJtEbKluiPBOCalIDwUSL+9QvolFEBDveOho0OQkIQoAMW4Xpy0AesPfvDk3PZcQhHY0
+	EH5IQa+pdd986P8feJwrY78fuy+XF9rUqfzjzBA0EvugtEeydgcod/O/vA+lkklGvcQ1VO2hWKznO
+	5jZD6idezhXYhUfzaEahtuAS5obGG8ktaEaem7/4KWlYd7kR/nWHsrk8kuZQlPIKpymB10RTfcnyX
+	RmdZAGHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vT0fz-0000000EWl6-09oP;
-	Tue, 09 Dec 2025 16:34:59 +0000
+	id 1vT0g1-0000000EWol-1osi;
+	Tue, 09 Dec 2025 16:35:01 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vT0fq-0000000EWYp-32yG;
-	Tue, 09 Dec 2025 16:34:53 +0000
+	id 1vT0fs-0000000EWZp-2IiP;
+	Tue, 09 Dec 2025 16:34:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1765298088;
-	bh=31ere9wELpWiw6I9VQGyEhoKrlHRNVq0EYFHaqUGt4I=;
+	s=mail; t=1765298089;
+	bh=qX5XyIOYv+b2ax3FxX/MNYKL4WF0tdZx7pCW9mbbTu4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=UBimT1yAkXbNrIfGXVZTMJCH6YAIxgLeXAhvKefMo04Y+nJZ5pcLs5nkg1LJc/MNj
-	 p+W+2H1RBdNbvDu/07HxbO5ece0KeramlNou+jj+ypcxWvI8M3HDOyRAH9lMpDiZG2
-	 VkaP/vN3U2cmyNB6qQaTayk1orXv03rvgOrAVtfgRPQtNbS3YRR2T6XcxbZVYdrnWr
-	 uo9LzHMiP/U+IKOzA4gpmLaRDtQQDs+m07svIKCxrFMd7y3eiyNQY4ig0eJQ8Y4yS1
-	 XNhIkMYl3JV4ITGT6MhKf2NsCP49cFWRKh/zc86oSUBBL48KkarDcKe1E9YNKz4STX
-	 /jgiH1TFqS1fw==
+	b=Ousl20UD79EU7W0z7h+GsoUC9VjnAn0LYw8LT7fF9Myf5cnecp4WRXkFRV8rJOCF6
+	 8LowOd12XejKxJUi250kNd26RVUCi9hbCKEu6v1uoVEgOvpPOhe0hlr0hkUV+wET2u
+	 BDtnoFlyemMPF2tfAmwsGJ4AI+HZU8tyoCWOeI/jLKzwMRX9VwYV2bWZRT2hBHgMsl
+	 TfYZICVSFEUw/gyeY2wF/gqvmfkAHNcmgg/mzwgw4gB0xUorAEaTk+5wo8EV7AeTAN
+	 b7extGuedJwEg5LEDBHlJ5iVTORHhGtDINsm+Ck5LmZltg17GWiDuO2UnTO60BPrzF
+	 Y/JPN9jbOVgaA==
 Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8F95717E1541;
-	Tue,  9 Dec 2025 17:34:47 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7283A17E1546;
+	Tue,  9 Dec 2025 17:34:48 +0100 (CET)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Tue, 09 Dec 2025 17:34:34 +0100
-Subject: [PATCH 04/12] arm64: dts: mediatek: mt8195: Add DPI1, HDMI, HDMI
+Date: Tue, 09 Dec 2025 17:34:35 +0100
+Subject: [PATCH 05/12] arm64: dts: mediatek: mt8188: Add DPI1, HDMI, HDMI
  PHY/DDC nodes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251209-mtk-genio-evk-hdmi-support-v1-4-9a6106effba6@collabora.com>
+Message-Id: <20251209-mtk-genio-evk-hdmi-support-v1-5-9a6106effba6@collabora.com>
 References: <20251209-mtk-genio-evk-hdmi-support-v1-0-9a6106effba6@collabora.com>
 In-Reply-To: <20251209-mtk-genio-evk-hdmi-support-v1-0-9a6106effba6@collabora.com>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
@@ -68,16 +68,16 @@ Cc: kernel@collabora.com, Krzysztof Kozlowski <krzk@kernel.org>,
  linux-kernel@vger.kernel.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1765298083; l=4040;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1765298083; l=3935;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=4dEn1Ni9gYyLg8WywA5ADKYwZgpT521PZNgtKzV5dko=;
- b=H83Yq3pYYIJ3ukNm/su08Wy1tlGiyjoO1EpPiQxI4RQQcHvqM8Xal0zYRWKsFrZkstkfezToC
- W534F28HxkXAe6AjlGdjFxoRjR9oxdpWpsK+yebW3kjZitjJUfOUkU2
+ bh=kpw0b8yueUuZaNO1KJHETqOqEfGoas9Skta7fvnHXNY=;
+ b=LyRMPXwXkll1igIAjdIQpOJKgCuJzMXdlw4ULyhAxCufAYRPyP0udq3DhJJEV8lQkqrfnuUWu
+ tveqNf7T2XPAzL3r3YrewaP2twwKSQeTJtjwwJRIyp+3LLVwRHdyHEm
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_083451_111242_BF2882A8 
-X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-CacheID: sfid-20251209_083452_907255_1D31B53D 
+X-CRM114-Status: UNSURE (   9.71  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,41 +104,34 @@ All of the added nodes are disabled by default as usage is
 board dependent.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+[Louis-Alexis Eyraud: reworded subject and description]
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 86 ++++++++++++++++++++++++++++++++
- 1 file changed, 86 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8188.dtsi | 82 ++++++++++++++++++++++++++++++++
+ 1 file changed, 82 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index c7adafaa83288d2d86ddf45c97cc984344e1ff77..49e52dde247f29b57d34a25b33f2d5f36f745f30 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -26,8 +26,10 @@ / {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+index 90c388f1890f5139be6a9513c4cd9b683a501279..e2a17359e407f0bdd3ae6ef8ade668e67a9bd493 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+@@ -26,6 +26,7 @@ / {
  	aliases {
  		dp-intf0 = &dp_intf0;
  		dp-intf1 = &dp_intf1;
 +		dpi1 = &dpi1;
- 		gce0 = &gce0;
- 		gce1 = &gce1;
-+		hdmi0 = &hdmi;
+ 		dsc0 = &dsc0;
  		ethdr0 = &ethdr0;
- 		mutex0 = &mutex;
- 		mutex1 = &mutex1;
-@@ -1857,6 +1859,24 @@ imp_iic_wrap_s: clock-controller@11d03000 {
- 			#clock-cells = <1>;
+ 		gce0 = &gce0;
+@@ -2038,6 +2039,19 @@ pcieport: pcie-phy@0 {
+ 			};
  		};
  
 +		hdmi_phy: hdmi-phy@11d5f000 {
-+			compatible = "mediatek,mt8195-hdmi-phy";
++			compatible = "mediatek,mt8188-hdmi-phy", "mediatek,mt8195-hdmi-phy";
 +			reg = <0 0x11d5f000 0 0x100>;
-+			clocks = <&topckgen CLK_TOP_HDMI_XTAL>,
-+				 <&infracfg_ao CLK_INFRA_AO_HDMI_26M>,
-+				 <&apmixedsys CLK_APMIXED_HDMIPLL1>,
-+				 <&apmixedsys CLK_APMIXED_HDMIPLL2>;
-+			clock-names = "pll_ref", "hdmi_26m",
-+				      "hdmi_pll1", "hdmi_pll2";
++			clocks = <&infracfg_ao CLK_INFRA_AO_HDMI_26M>;
++			clock-names = "pll_ref";
 +			clock-output-names = "hdmi_txpll";
-+
 +			#clock-cells = <0>;
 +			#phy-cells = <0>;
 +			mediatek,ibias = <0xa>;
@@ -146,23 +139,23 @@ index c7adafaa83288d2d86ddf45c97cc984344e1ff77..49e52dde247f29b57d34a25b33f2d5f3
 +			status = "disabled";
 +		};
 +
- 		i2c0: i2c@11e00000 {
- 			compatible = "mediatek,mt8195-i2c",
- 				     "mediatek,mt8192-i2c";
-@@ -3670,6 +3690,34 @@ merge5: vpp-merge@1c110000 {
- 			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE4_DL_ASYNC>;
+ 		mipi_tx_config0: dsi-phy@11c80000 {
+ 			compatible = "mediatek,mt8188-mipi-tx", "mediatek,mt8183-mipi-tx";
+ 			reg = <0 0x11c80000 0 0x1000>;
+@@ -3406,6 +3420,34 @@ merge5: merge@1c110000 {
+ 			mediatek,merge-fifo-en;
  		};
  
 +		dpi1: dpi@1c112000 {
-+			compatible = "mediatek,mt8195-dpi";
++			compatible = "mediatek,mt8188-dpi", "mediatek,mt8195-dpi";
 +			reg = <0 0x1c112000 0 0x1000>;
 +			clocks = <&vdosys1 CLK_VDO1_DPI1>,
 +				 <&vdosys1 CLK_VDO1_DPI1_MM>,
 +				 <&vdosys1 CLK_VDO1_DPI1_HDMI>;
 +			clock-names = "pixel", "engine", "pll";
-+			interrupts = <GIC_SPI 512 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_DPI1>;
++			interrupts = <GIC_SPI 524 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8188_POWER_DOMAIN_VDOSYS1>;
++			resets = <&vdosys1 MT8188_VDO1_RST_DPI1_MM_CK>;
 +			status = "disabled";
 +
 +			ports {
@@ -182,14 +175,14 @@ index c7adafaa83288d2d86ddf45c97cc984344e1ff77..49e52dde247f29b57d34a25b33f2d5f3
 +		};
 +
  		dp_intf1: dp-intf@1c113000 {
- 			compatible = "mediatek,mt8195-dp-intf";
+ 			compatible = "mediatek,mt8188-dp-intf";
  			reg = <0 0x1c113000 0 0x1000>;
-@@ -3730,6 +3778,44 @@ ethdr0: hdr-engine@1c114000 {
- 				      "gfx_fe1_async", "vdo_be_async";
+@@ -3530,6 +3572,46 @@ padding7: padding@1c124000 {
+ 			mediatek,gce-client-reg = <&gce0 SUBSYS_1c12XXXX 0x4000 0x1000>;
  		};
  
-+		hdmi: hdmi-tx@1c300000 {
-+			compatible = "mediatek,mt8195-hdmi-tx";
++		hdmi: hdmi@1c300000 {
++			compatible = "mediatek,mt8188-hdmi-tx";
 +			#sound-dai-cells = <1>;
 +			reg = <0 0x1c300000 0 0x1000>;
 +			clocks = <&topckgen CLK_TOP_HDMI_APB>,
@@ -199,14 +192,15 @@ index c7adafaa83288d2d86ddf45c97cc984344e1ff77..49e52dde247f29b57d34a25b33f2d5f3
 +			clock-names = "bus", "hdcp", "hdcp24m", "hdmi-split";
 +			assigned-clocks = <&topckgen CLK_TOP_HDCP>;
 +			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4_D8>;
-+			interrupts = <GIC_SPI 677 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_HDMI_TX>;
++			interrupts = <GIC_SPI 686 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8188_POWER_DOMAIN_HDMI_TX>;
 +			phys = <&hdmi_phy>;
 +			phy-names = "hdmi";
 +			status = "disabled";
 +
-+			hdmitx_ddc: i2c {
-+				compatible = "mediatek,mt8195-hdmi-ddc";
++			hdmi_ddc: i2c {
++				compatible = "mediatek,mt8188-hdmi-ddc",
++					     "mediatek,mt8195-hdmi-ddc";
 +				clocks = <&clk26m>;
 +			};
 +
@@ -226,8 +220,9 @@ index c7adafaa83288d2d86ddf45c97cc984344e1ff77..49e52dde247f29b57d34a25b33f2d5f3
 +			};
 +		};
 +
++
  		edp_tx: edp-tx@1c500000 {
- 			compatible = "mediatek,mt8195-edp-tx";
+ 			compatible = "mediatek,mt8188-edp-tx";
  			reg = <0 0x1c500000 0 0x8000>;
 
 -- 
