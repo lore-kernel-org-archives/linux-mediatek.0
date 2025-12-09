@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80C17D3B7F8
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Dec 2025 16:34:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89703D3B7F8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Dec 2025 16:34:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AL+98R/PA42uBT20XzjISUWFZpcpnUEZaWpkgz2O4NU=; b=zfSas15KQRK7m25tlUrx6ja/a8
-	flJPB2pyLY/sTGzQ+Px6sgNWuAX3wUdMFmMrSq7LEj/tvX9Tr0zgczc5Fc9q+xDfAOUOnhNLoEdOR
-	ZDKm2q4ydQeFY4c3rBN2P9eYn6Ou0t4ZHwSwV48cnTUpwgsgZ73fcht4zBTo2u0E6in0QzM9ZrrzT
-	9RltfNgVKI3Ozw+bDiootTz2CzBfWi1rKXCC7oEMpqpAbi25d4OpBOQzWI9451SiRYQ85dsXG/29L
-	01GdLlJsxSzvvtOA0dWUwa38AuEGjRUQg9B08zxZX/Oq5vBiraZpO0MYvOijZyRE/SNRh0QoZwllU
-	X3HeR4gg==;
+	bh=sqdwydWeRF+ZyNYB0kGE+ADcV/Vl/LCBXqM3lPm70us=; b=hg+EyEkT8Iz9EUUoahRl0qCPNS
+	uzlbI7nvw+HRVFKz48J33Q3x/bWFkiHO/AYYTrQVW6DdqBgNSPwmWcQ+04SSXPBB2cJyTkrf5ntlV
+	kpnVNFZu4gHbVuoegiF0Gppzm6cFCgPcUZhHcn7yhcfQ9eZcyXqlnmRP4tTVbegNZWgLdW8NWkb4U
+	UGQfNKEU2FtipE7n8RP1y/OFxVa+NVyQ+haPgicBYXiWxWrQ5BU8EUdYYXFOpAYXCGysp25XfQMH6
+	6om/7Kp+Wo/5onii+d5dpVgYDWPKMYZyxekeHUx0FTrmkLH6vmuUxOsct2NpqB3nIm7mmgDWh2dBs
+	e4hRL0fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vT0fu-0000000EWdI-0sqt;
-	Tue, 09 Dec 2025 16:34:54 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vT0fw-0000000EWgJ-0S8Q;
+	Tue, 09 Dec 2025 16:34:56 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vT0fp-0000000EWYM-2QVv;
-	Tue, 09 Dec 2025 16:34:50 +0000
+	id 1vT0fp-0000000EWYO-2sTK;
+	Tue, 09 Dec 2025 16:34:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1765298086;
-	bh=gqLoSDWv4cr26CDJ+gJOR8MLYYb12/Sg3eKXidGaIU0=;
+	s=mail; t=1765298085;
+	bh=UAgQYJMonNyvABFQUCYGTv0h55DLB+kYqjP0l6avOdQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hoiYuOoyLqL6xAKb/eGloUZW0rgaXDOWn9naijZzU9wxN4zfy3TezY8kQu0GM/ZJi
-	 eCsdCpGachIr043l0y1VVY1owNPDcd3D+5IQrn6r67nLi3MRbEWWwioM6BlqkNRt6l
-	 VnLFrQWQqSWEs991rgEWHD8Yf2ov8vQMNiycPb6ZtF3L1XLmxsNODNV2GJiCzNq3wm
-	 GiZsR1JcISmCifTubXG9f/q67gUdPprDrKyO3uP/xGj9lQO7Ws9RREeym82HsVdNy+
-	 SsXKyztcWU37bwuIxkRX+Vyf376g4My4SretPVUGia11xmuzteCBsF4SXpgRH+gYxk
-	 pUZeND86TJQ7g==
+	b=JPNCr2TpBi2kaRVdpAZ/5/A0y/zmB6QfWQqtyig711HC4dgg7kgGyulVjB+Ba72Sq
+	 a3hi0bFzpe3zsXMmXoQaRBlR34J/NyrqYHSSmmz1EQ6ZDoA+bptntsVNvCfFvJpA7b
+	 wrtzsUVpweFL74f9OlqSFgxXRifTUVUVOV+PGYScAxNncl9ogkS4zmlk52qdNYvvkp
+	 sV/V0x8SYW4lyKxBVHVezVU9of77FZWo8ykEI6Dd14mxt9jGni/dxfEE4n6QcvbAct
+	 OmrEfsLyOvoThTYLmrePb8GTH7Vpd/t0Jl3yM3zo2nkgiyBCvi8TVww6EzV7KBZiik
+	 4ma6b6GWRPIoQ==
 Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C0E6317E1423;
-	Tue,  9 Dec 2025 17:34:45 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DB83A17E13CD;
+	Tue,  9 Dec 2025 17:34:44 +0100 (CET)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Tue, 09 Dec 2025 17:34:32 +0100
-Subject: [PATCH 02/12] dt-bindings: phy: mediatek,hdmi-phy: Add support for
- MT8188 SoC
+Date: Tue, 09 Dec 2025 17:34:31 +0100
+Subject: [PATCH 01/12] dt-bindings: phy: mediatek,hdmi-phy: Fix clock
+ output names for MT8195
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251209-mtk-genio-evk-hdmi-support-v1-2-9a6106effba6@collabora.com>
+Message-Id: <20251209-mtk-genio-evk-hdmi-support-v1-1-9a6106effba6@collabora.com>
 References: <20251209-mtk-genio-evk-hdmi-support-v1-0-9a6106effba6@collabora.com>
 In-Reply-To: <20251209-mtk-genio-evk-hdmi-support-v1-0-9a6106effba6@collabora.com>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
@@ -68,17 +68,16 @@ Cc: kernel@collabora.com, Krzysztof Kozlowski <krzk@kernel.org>,
  linux-kernel@vger.kernel.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1765298083; l=1077;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1765298083; l=1455;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=gqLoSDWv4cr26CDJ+gJOR8MLYYb12/Sg3eKXidGaIU0=;
- b=fer9FkO+XrowLR4YEuqt7iBG+3fk7ZyZYU96wXwqlJ2UxJvixW7A+x4m4NQpNvUegaSk+b4ou
- agp6+jrhneHCBe3tc4ViofZNjzsCpl+Dk9oa4DkUdewr27teW6cABGR
+ bh=80k4rA+yIjkX5sofkMjaL77NjvPABi7qoBPmKhwouPs=;
+ b=98URLzBi+Ca0Vc4b04hGBVXS9zCB3FEsgOuTkNSoMBlCimncBF8/pZtMFCRPQ04tSwgmicV9b
+ 2A1tPriYlmBAMxfhSIZAdcCzMa/dEyEkuvzCjD1/ABh/oQysT6fq+1R
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_083449_786372_865E5C4E 
-X-CRM114-Status: UNSURE (   8.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251209_083449_907718_42B4A499 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,29 +92,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add compatible string for the HDMI PHY IP on MT8188 SoC, that is
-compatible with the one found on MT8195 SoC.
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
+For all of the HDMI PHYs compatible with the one found on MT8195
+the output clock has a different datasheet name and specifically
+it is called "hdmi_txpll", differently from the older HDMI PHYs
+which output block is called "hdmitx_dig_cts".
+
+Replace clock output name string check by max item number one to allow
+the new name on all of the HDMI PHY IPs that are perfectly compatible
+with MT8195.
+
+Fixes: c78fe548b062 ("dt-bindings: phy: mediatek: hdmi-phy: Add mt8195 compatible")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+[Louis-Alexis Eyraud: splitted patch, addressed previous feedback from
+mailing list, and reworded description]
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml | 4 ++++
- 1 file changed, 4 insertions(+)
+ Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
-index 10f1d9326f18dba85b92b4c88f4c0f6cdddc4c25..cd4ac42ee45e4648ed512f68f6f28d1f3f2e1116 100644
+index f3a8b0b745d13ffc55d391570bff20830d925ed3..10f1d9326f18dba85b92b4c88f4c0f6cdddc4c25 100644
 --- a/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
 +++ b/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
-@@ -26,6 +26,10 @@ properties:
-           - enum:
-               - mediatek,mt7623-hdmi-phy
-           - const: mediatek,mt2701-hdmi-phy
-+      - items:
-+          - enum:
-+              - mediatek,mt8188-hdmi-phy
-+          - const: mediatek,mt8195-hdmi-phy
-       - const: mediatek,mt2701-hdmi-phy
-       - const: mediatek,mt8173-hdmi-phy
-       - const: mediatek,mt8195-hdmi-phy
+@@ -42,8 +42,7 @@ properties:
+       - const: pll_ref
+ 
+   clock-output-names:
+-    items:
+-      - const: hdmitx_dig_cts
++    maxItems: 1
+ 
+   "#phy-cells":
+     const: 0
 
 -- 
 2.52.0
