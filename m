@@ -4,75 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82C98D1CDC6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Dec 2025 12:06:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FE58D3B7ED
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Dec 2025 14:46:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=biSx7WZ/dzqIzHa74Ww6F9siP+61NLhUlnmYjDzhZbE=; b=T2YrJye6fm3QiMhBcGdoLAShzr
-	8v/WvFs2SLzIOh7BKUTAWCAg2drwPpZLg0IPPm469zrWeaXnr78MabNEKYjM5Kmc4QUTqqc4bRfmM
-	tDHb24U4pEiis25/hkiu9jXyMe6JKStTHMxBHMlG1xFoKtyzk/oF6Ni+Jcf2/Hivhu0HWtE/QMe3O
-	ZV8Bthmt48LTUhxtCu0BrlnWQVArZ681yJuuIhtfVBNZrM/oLSNXMIsBNRIkijq7ZFQj5KsXNOQzl
-	TG1BuhDZGLX5SqRlLM2/Zzh51EIFaTTinM91DVzclsa8/nEAQBxr2rMh+3GVi56QvW2f/70BTCzy0
-	CbpNJT6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4fmZfYSUNdsaSTLHpM8yeyepmqTOQi5Ko0nHpOXwYuc=; b=XP0igxqfx5bjBjbvf1s1mcy5I8
+	wwA2PSQSF9/kvzNRKoCa2bQPY9ad3V7/cMGfBMCSfDmXKAyc5M03RfvAiMlw4MgKHsovEsYYQNpsM
+	EJe2W+IuxubSpEf4/vNeabEatuUZSzfVQ2eHmGdAw2TH10dvlodc6/WLaeytgCuAWJh+xdTZSs5ff
+	AjqGbL+mUYZyAPv1yS0e/O+KhmTGiPrD3499RY9INK8nPjjlQyF7KtI0GX5zb90FGFKrrH43vT2qb
+	YmlwX38tL6DghiQ5JcpNKBtBlyRL2A/S1MKDSaa8RUXOnFS6gqXbtL3xrFi/+qltSMHjga6jrTDXm
+	q9eVkcqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSwTr-0000000EE35-3tRv;
-	Tue, 09 Dec 2025 12:06:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1vSyyi-0000000EQ8Y-0iC2;
+	Tue, 09 Dec 2025 14:46:12 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSwTp-0000000EE2J-1zbG
+	id 1vSyyf-0000000EQ7W-04mV
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Dec 2025 12:06:11 +0000
-X-UUID: 6fcf1268d4f711f09f706fa2197c6ceb-20251209
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=biSx7WZ/dzqIzHa74Ww6F9siP+61NLhUlnmYjDzhZbE=;
-	b=DGAdVkpeTpPLxliFZwMmRsNKZF0YRw3Y6g52gkDVEZtxMhpKVMRcnceuZGvuE8N/mfhGSQ9jm6ovZ+qGAYnAPeCrhVI0bb709GhZWHMsSe9ayqqwbWSUbu28oL1tQRIYmcylJHdqw3jWJgBrUdQ9JVaGuIgIQ11VBCrVHcUhTN4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:a45f7cb6-edcc-4f8b-a6a5-7bf69542cd62,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:2c635328-e3a2-4f78-a442-8c73c4eb9e9d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 6fcf1268d4f711f09f706fa2197c6ceb-20251209
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1818588769; Tue, 09 Dec 2025 05:06:04 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Tue, 9 Dec 2025 20:06:02 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Tue, 9 Dec 2025 20:06:02 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
-	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v1] Bluetooth: btmtk: Trigger reset on firmware download failure
-Date: Tue, 9 Dec 2025 20:05:59 +0800
-Message-ID: <20251209120559.2991698-1-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Tue, 09 Dec 2025 14:46:10 +0000
+Received: by mail-ej1-x636.google.com with SMTP id a640c23a62f3a-b79ea617f55so1090183366b.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Dec 2025 06:46:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1765291566; x=1765896366; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4fmZfYSUNdsaSTLHpM8yeyepmqTOQi5Ko0nHpOXwYuc=;
+        b=GCeXD6tJ7ihBJfQyRIxSh4yD/BG10w2s0O7cn6BvRZsRkan9E4CJ+HiCTXXjSoIEpd
+         rXR4wKLJaOo+WuJb9sp0d+RYTjWXVh3r3D6CtNVZGKYFb5rgvoLMAWAyNqIPYNbZmclB
+         hKah2eivo4cYWYlY1OKNoDA4402WbVhxpO9KfeCsSzWaVlSx/T1y1sUot5s/hvNcXRIg
+         oprMFjFFIUiQs5zFiIJYBZwYAxgXr8nyA6RrWF2+yJj8hAoEd8c3kMOvNqwVjFuJ/ZP2
+         Xjyw6wfVIlKh5rzsLh+9zoF+/YNRu8WTG8MGOvsz/05av/7oO3Kc/1Lx/33krbGVIB7H
+         b6dw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1765291566; x=1765896366;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=4fmZfYSUNdsaSTLHpM8yeyepmqTOQi5Ko0nHpOXwYuc=;
+        b=JAip6FUFxf9r18mN++aoueeW0r9nHyqu5gVbMPAt9gxrTVJqQ1IzvOHoAiWHf/rQU+
+         6flAqshkAKA5MhsLVrNxBREPGQm+PD51OgzIs6kq9MpxA8hahZ6wg15Zm9EMI1z4NGgb
+         RMRGL+YwHYS7WvO/eUqxP8PwQBOMkVnrZYNPevNnB7/o4+LmoR2Mgl2bZ8Ts0sAIoiXF
+         bmOkjQ/YAkaxB1lWWezW4wkIhJ7vejZrvrOobZYXZdonp8rbRclVb2riEdogNz74umJV
+         xlSswKPZ0CoxKQaHwKr2Y3tET9OagQdhJkb4zwG7eriTgW5okthU/o+b67pyVckk8bRS
+         FJhA==
+X-Forwarded-Encrypted: i=1; AJvYcCUMAbUKri1VZzsoMm2Vl+UvBP47Sv2YO2KT0wQm2AwNaq0gYEIi8TvxuFbzdw1YYx1OyBaacJMlY5m8TDwopQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxWmgbeJqBTtZ9ZkpWdDTp2QaD6dxV2Px5jmDD3k05q8drbhsiM
+	lYTSvKqCrv046bOB64jIoeMDfgPcNudQDNkVIf0KMwRtryb6lpD4U2NUtWXb7VIfUDWDpwgz+oL
+	s4QPvQEQYXuJNlxUfhQCoXlz8qky5viQ=
+X-Gm-Gg: ASbGnctsZRGw2bpXnWaCYl+yGvCQXcQD2OT3xE1JD49vQGzr7qX53Gme8E8MXPpOA3n
+	78FNy+9g3YH5fjkURvw4ZJG0JDWhOE3qbEWdBUwIXwNZdtlBZwWe6FrnRlNuFcbmC+Z28TvaTFu
+	l2a4ux0/ncdcgI83aj8NCN7H7sEX8nfonLUMU3YNkJpeo24MC7QpPz75eXgjgSj0GAuGUhqB6SP
+	a8TYIhVTETlrXhatxP4JhKxKqpyIgIBDwnZPCod4Bke9cCj6nYelZKnQB98MKQJMw1YVsi6WevZ
+	YW0L7Ea9Y8iqewJ1jxLaXLZLE4V4j045YyNaN3xCF4RpH4rk3WwSo4PqEmhcAZInukQLyCE=
+X-Google-Smtp-Source: AGHT+IGlXu3dCFc83X6xkCFhuuTuzxpgBAzwDgILyS6ZUDAbBGi1U97b1Qfz8jIne/sjhUc3CyUOVqmVWZN3jo3XIyM=
+X-Received: by 2002:a17:907:d9e:b0:b73:845f:4432 with SMTP id
+ a640c23a62f3a-b7a2455d577mr1325347966b.32.1765291566315; Tue, 09 Dec 2025
+ 06:46:06 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+References: <20251209-iio-inkern-use-namespaced-exports-v2-0-9799a33c4b7f@bootlin.com>
+ <20251209-iio-inkern-use-namespaced-exports-v2-1-9799a33c4b7f@bootlin.com>
+In-Reply-To: <20251209-iio-inkern-use-namespaced-exports-v2-1-9799a33c4b7f@bootlin.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Tue, 9 Dec 2025 16:45:29 +0200
+X-Gm-Features: AQt7F2rGwi5_TocOmRGciLvaWe8Y7Fghi7KYuOXmk6PhKTOAwIFDPQlb6Jsx554
+Message-ID: <CAHp75VcX_z6q879gmWcb76SeFHtqMvpZ=y9PwNn0=eVFb06wAw@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] iio: dac: ds4424: drop unused include IIO consumer header
+To: Romain Gantois <romain.gantois@bootlin.com>
+Cc: MyungJoo Ham <myungjoo.ham@samsung.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
+	Guenter Roeck <linux@roeck-us.net>, Peter Rosin <peda@axentia.se>, 
+	Jonathan Cameron <jic23@kernel.org>, David Lechner <dlechner@baylibre.com>, 
+	=?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, 
+	Andy Shevchenko <andy@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, 
+	Michael Hennerich <Michael.Hennerich@analog.com>, Mariel Tinaco <Mariel.Tinaco@analog.com>, 
+	Kevin Tsai <ktsai@capellamicro.com>, Linus Walleij <linus.walleij@linaro.org>, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Eugen Hristev <eugen.hristev@linaro.org>, 
+	Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, Sebastian Reichel <sre@kernel.org>, 
+	Chen-Yu Tsai <wens@csie.org>, Hans de Goede <hansg@kernel.org>, 
+	Support Opensource <support.opensource@diasemi.com>, Paul Cercueil <paul@crapouillou.net>, 
+	Iskren Chernev <me@iskren.info>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Marek Szyprowski <m.szyprowski@samsung.com>, Matheus Castello <matheus@castello.eng.br>, 
+	Saravanan Sekar <sravanhome@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Casey Connolly <casey.connolly@linaro.org>, =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Amit Kucheria <amitk@kernel.org>, 
+	Thara Gopinath <thara.gopinath@gmail.com>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>, 
+	Lukasz Luba <lukasz.luba@arm.com>, Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Sylwester Nawrocki <s.nawrocki@samsung.com>, Olivier Moysan <olivier.moysan@foss.st.com>, 
+	Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, linux-kernel@vger.kernel.org, 
+	linux-hwmon@vger.kernel.org, linux-iio@vger.kernel.org, 
+	linux-input@vger.kernel.org, linux-phy@lists.infradead.org, 
+	linux-pm@vger.kernel.org, linux-mips@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+	linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_040609_524690_71D77335 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20251209_064609_071466_901CC11F 
+X-CRM114-Status: UNSURE (   8.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,54 +128,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Initiate reset flow if MT79xx series BT failed to download firmware when
-doing setup.
-If driver is not able to get event after reset in the first section of
-btmtk_usb_setup, the protocol is deemed unuable and driver will return to
-prevent from repeatedly executing resets.
+On Tue, Dec 9, 2025 at 10:26=E2=80=AFAM Romain Gantois
+<romain.gantois@bootlin.com> wrote:
+>
+> To prepare for the introduction of namespaced exports for the IIO consume=
+r
+> API, remove this include directive which isn't actually used by the drive=
+r.
 
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
----
- drivers/bluetooth/btmtk.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+Reviewed-by: Andy Shevchenko <andy@kernel.org>
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index a8c520dc09e1..8b1443b9e9cf 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -1333,7 +1333,7 @@ int btmtk_usb_setup(struct hci_dev *hdev)
- 						btmtk_usb_hci_wmt_sync);
- 		if (err < 0) {
- 			bt_dev_err(hdev, "Failed to set up firmware (%d)", err);
--			return err;
-+			goto reset_fw;
- 		}
- 
- 		/* It's Device EndPoint Reset Option Register */
-@@ -1353,7 +1353,7 @@ int btmtk_usb_setup(struct hci_dev *hdev)
- 		err = btmtk_usb_hci_wmt_sync(hdev, &wmt_params);
- 		if (err < 0) {
- 			bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
--			return err;
-+			goto reset_fw;
- 		}
- 
- 		hci_set_msft_opcode(hdev, 0xFD30);
-@@ -1444,6 +1444,13 @@ int btmtk_usb_setup(struct hci_dev *hdev)
- 	}
- 	kfree_skb(skb);
- 
-+reset_fw:
-+	if (btmtk_data->reset_sync) {
-+		bt_dev_err(hdev, "Mediatek do firmware reset");
-+		btmtk_reset_sync(hdev);
-+		return err;
-+	}
-+
- done:
- 	rettime = ktime_get();
- 	delta = ktime_sub(rettime, calltime);
--- 
-2.45.2
-
+--=20
+With Best Regards,
+Andy Shevchenko
 
