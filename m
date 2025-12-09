@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F436D3B984
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Dec 2025 16:34:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5828AD3B983
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Dec 2025 16:35:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cBw3BmnZutI/+0YAFeSFCKYgmHl76bMDmhmBxi0sBd0=; b=yfEKmvNdKGjKm5KeXA4yMpEEh/
-	U17x62S14DgELt2+IHYjboXO8fK9pHObvUScDKBrTMzM2HBzrjs0xwMebJ4lPhA/E/jiwVB8yo0Q7
-	fv04AA6uBI5hdMDgdTPNhKVhlxf4QCCKKQxpJg/wwthiMOCef2D+QfyVkBN7Aa/B1Nf0gxo5IeqqB
-	vInE/d44b5OfqVWjCYZuFNvr22y1xvMSGsN36zr57bKBi0lIcpBe9pOxksWRmGSCKLRYSUDs1G7sS
-	a5sGpYN5VHsc5C1gF1fVP9QjIzeygr1gl+vRRlNfQW2zKs+IiuOv6tx9pr2s7oMAyJLUiLpMhEtNE
-	9gjoLCKg==;
+	bh=JE6CQqAa/1QG1ONg6wqJfkYOp/SADAkAtijORDqhKFc=; b=fr2A90B9ZkfTdtunVjilvRDFeq
+	ZzhRQktUVrlYfiftvtGXjlByVHUpZ67dzS4CxoRZ/s8ebudr4Zhs38tKXngjXZXe+CJJ6oxzaG8ae
+	9dU31gVXaSPkWIAKJT7hnZPzbUcb47ejc7+N+AbAAOm5JXovgvD5LPCdNsFNKUYXSRa0yMSACEZaV
+	plZ4iMke40jKxtyDKi9qItn5IYfdLDeY9JCEOlDNz5k5iciXn5ffVS+3lHkl1MBkjp4ASGl537qZ9
+	yT7+mUqgtG3XxYj/yUNsb3L+4krEFYgBBft0mzeTHP8CpajWqNhWannAR22vySwOtPiyCmwaOmWOS
+	2s02CjOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vT0fw-0000000EWhT-3HUw;
-	Tue, 09 Dec 2025 16:34:56 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vT0fz-0000000EWl6-09oP;
+	Tue, 09 Dec 2025 16:34:59 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vT0fp-0000000EWYP-3be7;
-	Tue, 09 Dec 2025 16:34:51 +0000
+	id 1vT0fq-0000000EWYp-32yG;
+	Tue, 09 Dec 2025 16:34:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1765298087;
-	bh=D155m0dMAjWiokZAY7tsZUWjRlmivh1T9mFpxqvCODE=;
+	s=mail; t=1765298088;
+	bh=31ere9wELpWiw6I9VQGyEhoKrlHRNVq0EYFHaqUGt4I=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=j+qrwXrNQGYEoW43YEXq6se8XNSsAjnX/kixuXIUDU74/DHpALB71ZkSB06ZZIAY9
-	 szeoeb5GGVMSFik8Zs2Sq3xGh4yBTJAoD3AdKqzjaTZvU+k1vOut0xLTMyXAQNN8fz
-	 BMRxU+zemYTlvYeUndmN3trp9Vt+kH88W3SmQ5MaDJF506lmiA5weqyBMmdTiJEmIF
-	 LYXv21ATFzyRiFHxy81WrSDcM8trrrfKvBQCeBn0z21N1fpnQ7fcJVAnMqFyOj1R5e
-	 w4UMYIBxBMvvLSo5MyPgfal1XLwkY3/HqOJZYDP5lD3RaSGvc+av9Hou7D2K5njXsV
-	 IxCY9kjfeA2sg==
+	b=UBimT1yAkXbNrIfGXVZTMJCH6YAIxgLeXAhvKefMo04Y+nJZ5pcLs5nkg1LJc/MNj
+	 p+W+2H1RBdNbvDu/07HxbO5ece0KeramlNou+jj+ypcxWvI8M3HDOyRAH9lMpDiZG2
+	 VkaP/vN3U2cmyNB6qQaTayk1orXv03rvgOrAVtfgRPQtNbS3YRR2T6XcxbZVYdrnWr
+	 uo9LzHMiP/U+IKOzA4gpmLaRDtQQDs+m07svIKCxrFMd7y3eiyNQY4ig0eJQ8Y4yS1
+	 XNhIkMYl3JV4ITGT6MhKf2NsCP49cFWRKh/zc86oSUBBL48KkarDcKe1E9YNKz4STX
+	 /jgiH1TFqS1fw==
 Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A4D2B17E153D;
-	Tue,  9 Dec 2025 17:34:46 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8F95717E1541;
+	Tue,  9 Dec 2025 17:34:47 +0100 (CET)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Tue, 09 Dec 2025 17:34:33 +0100
-Subject: [PATCH 03/12] dt-bindings: phy: mediatek,hdmi-phy: Document extra
- clocks for MT8195
+Date: Tue, 09 Dec 2025 17:34:34 +0100
+Subject: [PATCH 04/12] arm64: dts: mediatek: mt8195: Add DPI1, HDMI, HDMI
+ PHY/DDC nodes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20251209-mtk-genio-evk-hdmi-support-v1-3-9a6106effba6@collabora.com>
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251209-mtk-genio-evk-hdmi-support-v1-4-9a6106effba6@collabora.com>
 References: <20251209-mtk-genio-evk-hdmi-support-v1-0-9a6106effba6@collabora.com>
 In-Reply-To: <20251209-mtk-genio-evk-hdmi-support-v1-0-9a6106effba6@collabora.com>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
@@ -66,19 +66,18 @@ Cc: kernel@collabora.com, Krzysztof Kozlowski <krzk@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
  linux-kernel@vger.kernel.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1765298083; l=1906;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1765298083; l=4040;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=5hUKertYPrurznVcSH8uzvnKUCkTlAWRfoUyf3tOLDw=;
- b=yGTBS4qBLe2IPVOGk6LE9R661NMRTP144cZHShDIwPCuvjh95qxcTz+VZsNYzgulRenfyG7SE
- 74uO8BYyyHYAxUnZ99zDWC4K8/g/eIfRbkDcR4GcrbTI6Oe1jkPRzJK
+ bh=4dEn1Ni9gYyLg8WywA5ADKYwZgpT521PZNgtKzV5dko=;
+ b=H83Yq3pYYIJ3ukNm/su08Wy1tlGiyjoO1EpPiQxI4RQQcHvqM8Xal0zYRWKsFrZkstkfezToC
+ W534F28HxkXAe6AjlGdjFxoRjR9oxdpWpsK+yebW3kjZitjJUfOUkU2
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_083450_090352_699330BA 
-X-CRM114-Status: UNSURE (   6.84  )
+X-CRM114-CacheID: sfid-20251209_083451_111242_BF2882A8 
+X-CRM114-Status: UNSURE (   9.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,73 +93,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "Nícolas F. R. A. Prado" <nfraprado@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-MT8195's HDMI PHY block has 4 clocks instead of just a single one.
-Describe the extra clocks for it.
+Add all of the nodes that are required to enable HDMI output,
+including ones describing the HDMI PHY, Controller and DDC,
+and the Digital Parallel Interface instance that is internally
+connected to the HDMI Controller.
 
-Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+All of the added nodes are disabled by default as usage is
+board dependent.
+
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- .../devicetree/bindings/phy/mediatek,hdmi-phy.yaml | 36 +++++++++++++++++++---
- 1 file changed, 32 insertions(+), 4 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 86 ++++++++++++++++++++++++++++++++
+ 1 file changed, 86 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
-index cd4ac42ee45e4648ed512f68f6f28d1f3f2e1116..91f8118689d5e838c4d75264822bb09a00fea21b 100644
---- a/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
-+++ b/Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml
-@@ -38,12 +38,12 @@ properties:
-     maxItems: 1
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index c7adafaa83288d2d86ddf45c97cc984344e1ff77..49e52dde247f29b57d34a25b33f2d5f36f745f30 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -26,8 +26,10 @@ / {
+ 	aliases {
+ 		dp-intf0 = &dp_intf0;
+ 		dp-intf1 = &dp_intf1;
++		dpi1 = &dpi1;
+ 		gce0 = &gce0;
+ 		gce1 = &gce1;
++		hdmi0 = &hdmi;
+ 		ethdr0 = &ethdr0;
+ 		mutex0 = &mutex;
+ 		mutex1 = &mutex1;
+@@ -1857,6 +1859,24 @@ imp_iic_wrap_s: clock-controller@11d03000 {
+ 			#clock-cells = <1>;
+ 		};
  
-   clocks:
--    items:
--      - description: PLL reference clock
-+    minItems: 1
-+    maxItems: 4
- 
-   clock-names:
--    items:
--      - const: pll_ref
-+    minItems: 1
-+    maxItems: 4
- 
-   clock-output-names:
-     maxItems: 1
-@@ -79,6 +79,34 @@ required:
-   - "#phy-cells"
-   - "#clock-cells"
- 
-+allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          const: mediatek,mt8195-hdmi-phy
-+    then:
-+      properties:
-+        clocks:
-+          items:
-+            - description: PLL reference clock
-+            - description: HDMI 26MHz clock
-+            - description: HDMI PLL1 clock
-+            - description: HDMI PLL2 clock
-+        clock-names:
-+          items:
-+            - const: pll_ref
-+            - const: hdmi_26m
-+            - const: hdmi_pll1
-+            - const: hdmi_pll2
-+    else:
-+      properties:
-+        clocks:
-+          items:
-+            - description: PLL reference clock
-+        clock-names:
-+          items:
-+            - const: pll_ref
++		hdmi_phy: hdmi-phy@11d5f000 {
++			compatible = "mediatek,mt8195-hdmi-phy";
++			reg = <0 0x11d5f000 0 0x100>;
++			clocks = <&topckgen CLK_TOP_HDMI_XTAL>,
++				 <&infracfg_ao CLK_INFRA_AO_HDMI_26M>,
++				 <&apmixedsys CLK_APMIXED_HDMIPLL1>,
++				 <&apmixedsys CLK_APMIXED_HDMIPLL2>;
++			clock-names = "pll_ref", "hdmi_26m",
++				      "hdmi_pll1", "hdmi_pll2";
++			clock-output-names = "hdmi_txpll";
 +
- additionalProperties: false
++			#clock-cells = <0>;
++			#phy-cells = <0>;
++			mediatek,ibias = <0xa>;
++			mediatek,ibias_up = <0x1c>;
++			status = "disabled";
++		};
++
+ 		i2c0: i2c@11e00000 {
+ 			compatible = "mediatek,mt8195-i2c",
+ 				     "mediatek,mt8192-i2c";
+@@ -3670,6 +3690,34 @@ merge5: vpp-merge@1c110000 {
+ 			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE4_DL_ASYNC>;
+ 		};
  
- examples:
++		dpi1: dpi@1c112000 {
++			compatible = "mediatek,mt8195-dpi";
++			reg = <0 0x1c112000 0 0x1000>;
++			clocks = <&vdosys1 CLK_VDO1_DPI1>,
++				 <&vdosys1 CLK_VDO1_DPI1_MM>,
++				 <&vdosys1 CLK_VDO1_DPI1_HDMI>;
++			clock-names = "pixel", "engine", "pll";
++			interrupts = <GIC_SPI 512 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
++			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_DPI1>;
++			status = "disabled";
++
++			ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				port@0 {
++					reg = <0>;
++					dpi1_in: endpoint { };
++				};
++
++				port@1 {
++					reg = <1>;
++					dpi1_out: endpoint { };
++				};
++			};
++		};
++
+ 		dp_intf1: dp-intf@1c113000 {
+ 			compatible = "mediatek,mt8195-dp-intf";
+ 			reg = <0 0x1c113000 0 0x1000>;
+@@ -3730,6 +3778,44 @@ ethdr0: hdr-engine@1c114000 {
+ 				      "gfx_fe1_async", "vdo_be_async";
+ 		};
+ 
++		hdmi: hdmi-tx@1c300000 {
++			compatible = "mediatek,mt8195-hdmi-tx";
++			#sound-dai-cells = <1>;
++			reg = <0 0x1c300000 0 0x1000>;
++			clocks = <&topckgen CLK_TOP_HDMI_APB>,
++				 <&topckgen CLK_TOP_HDCP>,
++				 <&topckgen CLK_TOP_HDCP_24M>,
++				 <&vppsys1 CLK_VPP1_VPP_SPLIT_HDMI>;
++			clock-names = "bus", "hdcp", "hdcp24m", "hdmi-split";
++			assigned-clocks = <&topckgen CLK_TOP_HDCP>;
++			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D4_D8>;
++			interrupts = <GIC_SPI 677 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_HDMI_TX>;
++			phys = <&hdmi_phy>;
++			phy-names = "hdmi";
++			status = "disabled";
++
++			hdmitx_ddc: i2c {
++				compatible = "mediatek,mt8195-hdmi-ddc";
++				clocks = <&clk26m>;
++			};
++
++			ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				port@0 {
++					reg = <0>;
++					hdmi0_in: endpoint { };
++				};
++
++				port@1 {
++					reg = <1>;
++					hdmi0_out: endpoint { };
++				};
++			};
++		};
++
+ 		edp_tx: edp-tx@1c500000 {
+ 			compatible = "mediatek,mt8195-edp-tx";
+ 			reg = <0 0x1c500000 0 0x8000>;
 
 -- 
 2.52.0
