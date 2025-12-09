@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F65FD1CDC6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Dec 2025 08:26:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EC43D1CDC6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Dec 2025 08:26:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wcg04tlEy44VWHetyJPa6vtgrSi9hQkJ8Wr3ssO16Z0=; b=sIyJ4KcK3xq05a
-	OkoZJYMSeJtBg+ymUx7CiwoEE0PaKLg7Yj39Qvr5/uNq+D/arQ743yL4uaSylzk6jdE2UbAW8ZSYU
-	xUGmDHb+cEXCQL094ODbp4j/YkmhQYqiTe+lOkDFiVhmi3+xF1JNeeT3RIZbB1bIO//x2+DkPUjGC
-	FxGrC9ybk9vmKfHTpAcNegDwMKodEgkZNAn+2ziV6XLwKK3mu21xmDKpJiXwZBHAMRYn0S2DV6Ta5
-	VKoyQyHWiS9RwGuH+j1XdCdMzqn+JgYTDdeYHgt6IyUmAlj6fE0uYjSBEQmeLwggMozsnC3s7oJJR
-	yAcjaZeq5gu6zgTjXlpQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=m78Ml2oAhSe1A01ovJ9j5MEiBZnMD25VYhSFXxFMl0A=; b=kQ8Puy8f3rjEVAKMeiVH2SDHq8
+	+4AaLnHW3cojebn0h+liclsE8NJNfi2tCUBABNIzLzafySbsLGspBRkti13CbSuQEC684t0sfAQUJ
+	rLkyqQTbHMXjWYm4Rvqr/vLx7FT7bToEq21nkflxhvIdUOOiNOSNITOan6fr9hwi1d0zejKMrNBoU
+	kXHLd66rkWVGEYHPxEbq2Dwp8Vb8z/P5fKfStg5lzjzjemOSZL9brI3jQ8coZuXI6hgq5yUe7zPjZ
+	4Az2WqaueZT+JNYK+YGnA9mP+KNfgS116AqSH33+59AOjC8CDhZyqc2osZgoo7IlgYe/aXzTriv15
+	UwowsRZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSt3J-0000000DzYg-3ZLC;
-	Tue, 09 Dec 2025 08:26:33 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1vSt3Q-0000000DzcA-0KgA;
+	Tue, 09 Dec 2025 08:26:40 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vSt3G-0000000DzXz-0zuj;
-	Tue, 09 Dec 2025 08:26:32 +0000
+	id 1vSt3N-0000000Dza8-3Q3Y
+	for linux-mediatek@lists.infradead.org;
+	Tue, 09 Dec 2025 08:26:39 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 348EBC180DF;
-	Tue,  9 Dec 2025 08:26:02 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 3C9E11A2062;
+	Tue,  9 Dec 2025 08:26:35 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id E33E8606E2;
-	Tue,  9 Dec 2025 08:26:25 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 0CD79102F0BF6;
-	Tue,  9 Dec 2025 09:26:03 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 10B33606E2;
+	Tue,  9 Dec 2025 08:26:35 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 0DF9B11930218;
+	Tue,  9 Dec 2025 09:26:23 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1765268783; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding; bh=wcg04tlEy44VWHetyJPa6vtgrSi9hQkJ8Wr3ssO16Z0=;
-	b=fHyy3p3RXDvWm/ScQ573O19lBfA7i99dTtnNMKIgZo6j5P27qUaUjbhNTv08DA8IFMfpHy
-	AgxHwoL/NW76FusS9uDh40xSgmfteD+0AIKiUzKm6X50QBH9u+CGQe/shfCBYk6cYKg2TZ
-	8gN2cTM7D1TIOGI5CBJ9VtNcRcbmeEPaK0KH5amKURGuYmw9NosAHrgGe3H35kv5rwXRKw
-	4FLoSOslR05puLB4/PTfDmvtHxQZ+eNY+xwyZu7eIBJfZyxeM1KAbSzgzSDiYTjCGWaCLA
-	VyDhDTs5Dy0D0lluZeF/pIm4ZgCjPNF9eHgaCtNllGMYqa2jowZM4WLyZc41kQ==
+	t=1765268791; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=m78Ml2oAhSe1A01ovJ9j5MEiBZnMD25VYhSFXxFMl0A=;
+	b=Kr2rj9dt3DwTQ0zXnGEE+qsFaAgzY22oPRHZfzZBZ3E97W635VYnUkjJca17PQJdRtFE67
+	VBgYxJ5xssTJmoBCoeP2s+zIq9bSkrcln5YBJoTtsIDGhQklcD5weke9rOtBYidAzj4SYF
+	PPD5ANfHIabK+a4AWo6jZWCm0Q79+1reut4xjAlJ9njk4jiwUPj4u63TjnBhgM7mni0HDk
+	qjAposkcjYmzbXslhn9p3TfrAlTu0DDNPxKWrv00AP3M/YiXWLwkz0XKLm3jyuuYP2T9Hu
+	lZt+0ZRf5m96Nm4l9rODhUNkUILQmqRnnFBzrpf7wMWd99YRs2yqIqzHvkyDYQ==
 From: Romain Gantois <romain.gantois@bootlin.com>
-Subject: [PATCH v2 0/2] iio: inkern: Use namespaced exports
-Date: Tue, 09 Dec 2025 09:25:54 +0100
-Message-Id: <20251209-iio-inkern-use-namespaced-exports-v2-0-9799a33c4b7f@bootlin.com>
+Date: Tue, 09 Dec 2025 09:25:55 +0100
+Subject: [PATCH v2 1/2] iio: dac: ds4424: drop unused include IIO consumer
+ header
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIABLdN2kC/42NQQ6CMBAAv0J6dk13gRA8+Q/DoZRFNkpLWiQYw
- t+t+AGPM4eZTUUOwlFdsk0FXiSKdwnolCk7GHdnkC6xIk0lIlUg4kHcg4ODV2RwZuQ4Gcsd8Dr
- 5MEcosLe6JsrbklXqTIF7WY/HrUk8SJx9eB/LBb/2VyeNf9QXBITOYJ2XfaWpyK+t9/NT3Nn6U
- TX7vn8Avu6Bn9QAAAA=
-X-Change-ID: 20251127-iio-inkern-use-namespaced-exports-41fc09223b5e
+Message-Id: <20251209-iio-inkern-use-namespaced-exports-v2-1-9799a33c4b7f@bootlin.com>
+References: <20251209-iio-inkern-use-namespaced-exports-v2-0-9799a33c4b7f@bootlin.com>
+In-Reply-To: <20251209-iio-inkern-use-namespaced-exports-v2-0-9799a33c4b7f@bootlin.com>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>, 
  Chanwoo Choi <cw00.choi@samsung.com>, Guenter Roeck <linux@roeck-us.net>, 
  Peter Rosin <peda@axentia.se>, Jonathan Cameron <jic23@kernel.org>, 
@@ -101,15 +101,12 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
  linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, 
  linux-arm-msm@vger.kernel.org, linux-sound@vger.kernel.org, 
  linux-stm32@st-md-mailman.stormreply.com, 
- Romain Gantois <romain.gantois@bootlin.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Andy Shevchenko <andriy.shevchenko@intel.com>
+ Romain Gantois <romain.gantois@bootlin.com>
 X-Mailer: b4 0.14.3
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_002630_951388_16F8944C 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251209_002637_980760_D130F996 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,87 +121,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello everyone,
-
-This is version two of my series which introduces namespaced exports for
-the IIO consumer API.
-
-Best Regards,
-
-Romain
+To prepare for the introduction of namespaced exports for the IIO consumer
+API, remove this include directive which isn't actually used by the driver.
 
 Signed-off-by: Romain Gantois <romain.gantois@bootlin.com>
 ---
-Changes in v2:
-- Separated out ds4424 changes.
-- Improved commit descriptions.
-- Link to v1: https://lore.kernel.org/r/20251201-iio-inkern-use-namespaced-exports-v1-1-da1935f70243@bootlin.com
+ drivers/iio/dac/ds4424.c | 1 -
+ 1 file changed, 1 deletion(-)
 
----
-Romain Gantois (2):
-      iio: dac: ds4424: drop unused include IIO consumer header
-      iio: inkern: Use namespaced exports
+diff --git a/drivers/iio/dac/ds4424.c b/drivers/iio/dac/ds4424.c
+index a8198ba4f98a..6dda8918975a 100644
+--- a/drivers/iio/dac/ds4424.c
++++ b/drivers/iio/dac/ds4424.c
+@@ -14,7 +14,6 @@
+ #include <linux/iio/iio.h>
+ #include <linux/iio/driver.h>
+ #include <linux/iio/machine.h>
+-#include <linux/iio/consumer.h>
+ 
+ #define DS4422_MAX_DAC_CHANNELS		2
+ #define DS4424_MAX_DAC_CHANNELS		4
 
- drivers/extcon/extcon-adc-jack.c                |  1 +
- drivers/hwmon/iio_hwmon.c                       |  1 +
- drivers/hwmon/ntc_thermistor.c                  |  1 +
- drivers/iio/adc/envelope-detector.c             |  1 +
- drivers/iio/afe/iio-rescale.c                   |  1 +
- drivers/iio/buffer/industrialio-buffer-cb.c     |  1 +
- drivers/iio/buffer/industrialio-hw-consumer.c   |  1 +
- drivers/iio/dac/ad8460.c                        |  1 +
- drivers/iio/dac/dpot-dac.c                      |  1 +
- drivers/iio/dac/ds4424.c                        |  1 -
- drivers/iio/inkern.c                            | 54 ++++++++++++-------------
- drivers/iio/light/cm3605.c                      |  1 +
- drivers/iio/light/gp2ap002.c                    |  1 +
- drivers/iio/multiplexer/iio-mux.c               |  1 +
- drivers/iio/potentiostat/lmp91000.c             |  1 +
- drivers/input/joystick/adc-joystick.c           |  1 +
- drivers/input/keyboard/adc-keys.c               |  1 +
- drivers/input/touchscreen/colibri-vf50-ts.c     |  1 +
- drivers/input/touchscreen/resistive-adc-touch.c |  1 +
- drivers/phy/motorola/phy-cpcap-usb.c            |  1 +
- drivers/power/supply/ab8500_btemp.c             |  1 +
- drivers/power/supply/ab8500_charger.c           |  1 +
- drivers/power/supply/ab8500_fg.c                |  1 +
- drivers/power/supply/axp20x_ac_power.c          |  1 +
- drivers/power/supply/axp20x_battery.c           |  1 +
- drivers/power/supply/axp20x_usb_power.c         |  1 +
- drivers/power/supply/axp288_fuel_gauge.c        |  1 +
- drivers/power/supply/cpcap-battery.c            |  1 +
- drivers/power/supply/cpcap-charger.c            |  1 +
- drivers/power/supply/da9150-charger.c           |  1 +
- drivers/power/supply/generic-adc-battery.c      |  1 +
- drivers/power/supply/ingenic-battery.c          |  1 +
- drivers/power/supply/intel_dc_ti_battery.c      |  1 +
- drivers/power/supply/lego_ev3_battery.c         |  1 +
- drivers/power/supply/lp8788-charger.c           |  1 +
- drivers/power/supply/max17040_battery.c         |  1 +
- drivers/power/supply/mp2629_charger.c           |  1 +
- drivers/power/supply/mt6370-charger.c           |  1 +
- drivers/power/supply/qcom_smbx.c                |  1 +
- drivers/power/supply/rn5t618_power.c            |  1 +
- drivers/power/supply/rx51_battery.c             |  1 +
- drivers/power/supply/sc27xx_fuel_gauge.c        |  1 +
- drivers/power/supply/twl4030_charger.c          |  1 +
- drivers/power/supply/twl4030_madc_battery.c     |  1 +
- drivers/power/supply/twl6030_charger.c          |  1 +
- drivers/thermal/qcom/qcom-spmi-adc-tm5.c        |  1 +
- drivers/thermal/qcom/qcom-spmi-temp-alarm.c     |  1 +
- drivers/thermal/renesas/rzg3s_thermal.c         |  1 +
- drivers/thermal/thermal-generic-adc.c           |  1 +
- sound/soc/codecs/audio-iio-aux.c                |  1 +
- sound/soc/samsung/aries_wm8994.c                |  1 +
- sound/soc/samsung/midas_wm1811.c                |  1 +
- sound/soc/stm/stm32_adfsdm.c                    |  1 +
- 53 files changed, 78 insertions(+), 28 deletions(-)
----
-base-commit: 99fece7ab29c9654d7945312b275b527757ac4b3
-change-id: 20251127-iio-inkern-use-namespaced-exports-41fc09223b5e
-
-Best regards,
 -- 
-Romain Gantois <romain.gantois@bootlin.com>
+2.51.2
 
 
