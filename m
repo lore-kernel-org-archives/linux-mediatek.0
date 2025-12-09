@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4840AD3B7F3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Dec 2025 20:47:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDEC9D3B7F3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Dec 2025 20:57:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Type:References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c4INrajJZxer3eDvKBBVTy/6pmKf+B5vk/ryF/UUlog=; b=09LBK/egGsZ7+jRvxvj1DLtw7T
-	0SpL5vQ1yuAS/eFD26rK6ycn7IU3RDiqeA4AcRrrlxF+mv95NgT2cdq0HkiXOqkPNoif96h0eUaut
-	B/rbBVe5if+/EvG5D95Ljpj9jMPBDoiklKL/Epwj+pSpDSHkW+Dhd+ZWjmLJpaRBbkyfwn1nBLBvr
-	4pWdnMz9Dx7DKKkv2RiFixRs2uL8KAGnxS2fzZN31jVb5jB7pDJAHQ2iHh0WEsraA+yUxyQC08F4X
-	fHBACj9G/yqexAcuqNksVpHW2XRtufNaJRcXUQsGGjwKn43rk88z1Vh9lYyLqM5I3c+TGvoalxQT/
-	VRSmK36g==;
+	bh=ks4rfgwcPnh21bBJ5QetQ/t2Y7bRA0w+3d0dKO5oFWI=; b=jZ2ZfMTyBofNIemgbaMtqMEb1H
+	92IbLuP9wCtKkzUZISqz+KZgg66ZQuXYE0ai1RkN+PjyDhaFSk27lqo8gX4HQwfYsZ2AkFUiiy3H4
+	4cqAEl5AXHmNmak2QaemgSspyfd5zwFY9cgN808uExxybE00NdiFT0Z+72pt9Sf9kYjckiJrttvsI
+	wjVZMqgDhaP2QTz1vGlHJk11KTBVHaM8ubkp61AEq31ZiU5sZYxJ+EHnZ0MC8vlVeNpxfl3AMDvcw
+	0xTkr+fJt7SArapIXyveklRBki6VFSfOzUEuiSVenUwwgd4KrXU1euHueCA8lCDbo9/yKX5zqbH2V
+	7rOBuhRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vT4c8-0000000Ek9u-0e3g;
-	Tue, 09 Dec 2025 20:47:16 +0000
-Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
+	id 1vT4m9-0000000Ems8-3Y7q;
+	Tue, 09 Dec 2025 20:57:37 +0000
+Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vT4c5-0000000Ek95-2L5X
+	id 1vT4m7-0000000EmrR-1zJP
 	for linux-mediatek@lists.infradead.org;
-	Tue, 09 Dec 2025 20:47:14 +0000
-Received: by mail-qt1-x835.google.com with SMTP id d75a77b69052e-4ed66b5abf7so2174471cf.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Dec 2025 12:47:13 -0800 (PST)
+	Tue, 09 Dec 2025 20:57:36 +0000
+Received: by mail-qk1-x729.google.com with SMTP id af79cd13be357-8b28f983333so666070485a.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 09 Dec 2025 12:57:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1765313232; x=1765918032; darn=lists.infradead.org;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1765313854; x=1765918654; darn=lists.infradead.org;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
          :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=c4INrajJZxer3eDvKBBVTy/6pmKf+B5vk/ryF/UUlog=;
-        b=EgaUsGvfTqTyfb4MQ88Ki0tl8bYQFAYvqIR8Clh+G/aAmVkOb9fSyZhsbpygzvhs13
-         oNb0NBfkvWRHnVYtK/oWW76NXsJh2f3M1kH6ZOWMurhdQ7dQdocR9zvz3KaQsnecHD6s
-         6cAx5MAui9Rqd1m4HV+sqBbCj3sGuv+TqZmCrnO5Z2WH5lYhFoF/D1CY0rY60jvvU+AT
-         n+phX8U2GPAaYupVb+6akhVIFW4FRthuP+C29b2qhEtpf6WQ+ub6nW3Bk/gaVPOzxI+j
-         X/nAfHjK595j3no5o3Nprtxu1gqgSSkZgyasFVTDLN/AQCH86UkxqsjiJPLXbWPzNM5J
-         lIMQ==
+        bh=ks4rfgwcPnh21bBJ5QetQ/t2Y7bRA0w+3d0dKO5oFWI=;
+        b=dGSs5kmbuVq4519dbM6MUzRgBPN7nGV9/5MAabYuLsFhMIvECW96e0sUaCYmJGZinK
+         iYgZsvCwPV36H5Om0hWMRbCzaI6cRV9/vTKk8wdvnrX8pd0MXAm+eX+dMeSEyR4u3Iet
+         XtYLZuHkORxGeKtPlCd+AjKWpDA5w7rhiyzJIwjrBXNn/Ty/xCMglSvDjfDmAIlXIGvW
+         Xi4AAxUgs+MZz4Pf85fXAr0/hd7onCVsPbYgjm3+9sOEc6ujWRZJ0MQ/acN9Vjd1CNdu
+         N3fQpiztWDtGnluEcgr/qqR3Ot1s5fSYE2uW5VLvjSuBKIsF7mwwtElEgbrbVvBYfU2I
+         BDNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765313232; x=1765918032;
+        d=1e100.net; s=20230601; t=1765313854; x=1765918654;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
          :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=c4INrajJZxer3eDvKBBVTy/6pmKf+B5vk/ryF/UUlog=;
-        b=R9zQzn89Nke0EBUeoCFlLOztmrakoZS2UK0t84FmMi6c+e0L+jI17bwLJ4s3irzJ0R
-         LanygCXUdrfkfGFDG0kMvIe58kNumpWPs7i3bF4SV2hcHbw6btxIFS7HgznOdd9L3qer
-         378GRiLt+8P/RF3GrdhrAYCJFP1qtxnEfjU6MneOVdtjP00bm+tVQfDLroUrD2rm+eqI
-         MlrHKrB5fBypXBzNWJe/Hl2QvH6NXA6L++ZgQJupGftXgBfSl1n1YjSMOgZv7XTfkJ7e
-         Mint0aqW1cHU5qDJBvMCcrd1HQ5rdCyxi2I2BE5/RermNqtJIOZW0QmJJ0OxSknj/WW7
-         KJvw==
-X-Forwarded-Encrypted: i=1; AJvYcCXN173oo7Qvdlg52eWCCB8fDjEX8TEvK7u5FBiXhrR7Lib4Ie3sG3uuT8PDa+e77Riovvo8liCr+GVA3/4sRQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz8rjMJf+5cg81mFXIntpUuaWx4b6BBRVyIGOHd5K839fCiTu7H
-	PAv/880unJf6knuuDuw/c5vIQMpz6OcND+aMGoKqUnc1W/WiJBZM5gKJoDRlLHNhWnw=
-X-Gm-Gg: ASbGnctJcI7vkvuYbwgjnXFcqR3YtGx9KIZ9/YwoLP328VByb4mCVdkK8eTFqutlP7i
-	Q3wm5y4In8ZOv1Ir/BbNgJjawEd2K/rF9oB22zbG0QyPRd/7VOjB/P7zXB47oIr4ZN/NFXBpN+y
-	k6/nbATta0bp+hEkyZdmhaI9NmzLnm3Gsi/Bbximd37tV6LmTzqi5Ipf49tHF0tjz37wugudbmj
-	cz36JYsEMl4U0cvQ+vRhLzxGD3dlDJISS0PKnZ5fva4+MqZ27OdF83oW9Fuwevnhae9yIwhHuSX
-	2LBXmbY9UFIAZEzn2WWzNzecP4/tmqPVwF9P06p266nutYjoi1T+IkPnDq0WlBWcY/9T1+JTssM
-	CwQL7o3Qc0TUrppF5jj74Ltav/P8mzzk9iSyKTD7hndI8djvPNR5OPsnKwUAjy0kPfhiKR8A/PW
-	bHgEfPnrPa01s4vbj2
-X-Google-Smtp-Source: AGHT+IEoy3WsJss4eewDF1IObVZFsEEO8RMc62bsDTegGuaNornhGcbzFkR2E0lJrV1isVMQC9W0cQ==
-X-Received: by 2002:ac8:7d86:0:b0:4ed:b570:569 with SMTP id d75a77b69052e-4f1b17f042fmr1022671cf.27.1765313232127;
-        Tue, 09 Dec 2025 12:47:12 -0800 (PST)
+        bh=ks4rfgwcPnh21bBJ5QetQ/t2Y7bRA0w+3d0dKO5oFWI=;
+        b=IbJc/oFtBHrQS30a8wVbP8pBZcSEnZ1uKR3Aht9RLDEX05nledHOSrMFp013c0RxUq
+         nikVddAifji2fsVsZr2WOFicLD4rqmheqH45n/0FjPXi77y45TDc3Kqa7KXM9FkdTPrS
+         c7nnxmt6i4oXWJrM3eDDjI4of3W/0VBi8K1RNd0Yg5S1/KEdvsc0MF1ocTuXZNIw+1hs
+         uirJQ1RnHcFRX94rigbwJQaKlbKCtdOLTMt+Ym8rmq7Pfs3+PBQkPXVFvyorB9sekxe1
+         IXHrAGfmNoO6DVBL8VzTJQ0O9Weqn6gIeZDi0xRLxM7X+OLekS0Wbnd0XrMGWK6q37gN
+         deWA==
+X-Forwarded-Encrypted: i=1; AJvYcCWAlMiTsv2fStWC2lZeSMlf9FKIaHZ1meOOJZdN7JSs7ufTJUL4q2Swa1vJKY4F2jqKdtRaxxq+8Kl2uahFow==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwnKp4giuW2hDNfPwd8BHA6FOgCzdbutmr16LvKGe99ju1hvnqO
+	wS6KnbVB02mgpXOK3jbdNn+A9HzlRpiH0xkRqGi/cZCEteFCuEUhncmJR/aHIqFwjVk=
+X-Gm-Gg: ASbGncume5BqrqAmTz9/i75yOPtVBtRTdZagP9VTjHotmqQmudYHhhxpRKqjrikP3dm
+	SNg+8ASeZFI9Lts5QpDCIefaWQKL2OpIETe6kiusW+AwHsBaBj5KT1bZQdIV8/Erz7gbQdKd6rR
+	+Gj8WG+wJReZBqBsrauM/JEHnskJ4U1v91TQFbFaIfAS/xeSYbmfvtg3Sf4AUUlKQ/nTQt+kHXp
+	tR1B/CsAK+Rb9VjRJ7bczoE5Y8xPOyUjF1+C5BFU2liqXcnfKrFQwS0yqFpxezeD8GvBwYKLLI8
+	C3jIr87oJSzKbkQrVZZ+p+toglfkGlBy7sOMf8kYjU0Bv/hPWCQLJNLwd/hZ1cRdhWRulaN3aGk
+	oBeQzIGiXs/UOqY5okTXzLvVYEei2tF0wYBMVHaY2XHcXDydmxphd5Z8NcAenuir164w6nNF/Li
+	Vv9rGbeiS08oKPJSy/IFFaFMaCz0M=
+X-Google-Smtp-Source: AGHT+IEXuP3gduHDjZ+BJ+UcY5fM7ciYm9iPLAaAwZ5toDAd6Y+XsgFLolUEdBbI7QgsGC3wyhqL+A==
+X-Received: by 2002:ac8:7d48:0:b0:4e8:a850:e7db with SMTP id d75a77b69052e-4f1b1acb520mr453381cf.71.1765313854144;
+        Tue, 09 Dec 2025 12:57:34 -0800 (PST)
 Received: from ?IPv6:2606:6d00:17:7b4b::c41? ([2606:6d00:17:7b4b::c41])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4f027d2b3a4sm108009241cf.25.2025.12.09.12.47.10
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4f02cdaf4e6sm100873991cf.3.2025.12.09.12.57.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Dec 2025 12:47:11 -0800 (PST)
-Message-ID: <e0144120e0943b94454b1cddd5359c34b5a15412.camel@ndufresne.ca>
-Subject: Re: [PATCH 5/5] media: platform: mtk-mdp3: Change
- cmdq_pkt_jump_rel() to cmdq_pkt_jump_rel_temp()
+        Tue, 09 Dec 2025 12:57:33 -0800 (PST)
+Message-ID: <7e24110636db36e8c0a877d90d2ed9570c4aecf5.camel@ndufresne.ca>
+Subject: Re: [PATCH] media: platform: mtk-mdp3: add WQ_PERCPU to
+ alloc_workqueue users
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Jason-JH Lin <jason-jh.lin@mediatek.com>, Rob Herring <robh@kernel.org>,
-  Krzysztof Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Jassi Brar	 <jassisinghbrar@gmail.com>, Chun-Kuang
- Hu <chunkuang.hu@kernel.org>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>
-Date: Tue, 09 Dec 2025 15:47:10 -0500
-In-Reply-To: <20251031160309.1654761-6-jason-jh.lin@mediatek.com>
-References: <20251031160309.1654761-1-jason-jh.lin@mediatek.com>
-	 <20251031160309.1654761-6-jason-jh.lin@mediatek.com>
+To: Marco Crivellari <marco.crivellari@suse.com>, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: Tejun Heo <tj@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>, 
+ Frederic Weisbecker	 <frederic@kernel.org>, Sebastian Andrzej Siewior
+ <bigeasy@linutronix.de>,  Michal Hocko <mhocko@suse.com>, Mauro Carvalho
+ Chehab <mchehab@kernel.org>, Matthias Brugger	 <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>
+Date: Tue, 09 Dec 2025 15:57:32 -0500
+In-Reply-To: <20251107141303.223254-1-marco.crivellari@suse.com>
+References: <20251107141303.223254-1-marco.crivellari@suse.com>
 Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -97,12 +98,12 @@ Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-MnGLK1uGO3sHzXuy/5rZ"
+	protocol="application/pgp-signature"; boundary="=-UeS4cSZwWRtHwAn48Sle"
 User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_124713_631559_2B6666E6 
-X-CRM114-Status: GOOD (  18.78  )
+X-CRM114-CacheID: sfid-20251209_125735_544984_D9BBDE2C 
+X-CRM114-Status: GOOD (  22.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,74 +115,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---=-MnGLK1uGO3sHzXuy/5rZ
+--=-UeS4cSZwWRtHwAn48Sle
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Hi,
 
-
-Le samedi 01 novembre 2025 =C3=A0 00:02 +0800, Jason-JH Lin a =C3=A9crit=C2=
-=A0:
-> To facilitate the removal of the shift_pa parameter from
-> cmdq_pkt_jump_rel(), current users of cmdq_pkt_jump_rel() need to
-> transition to using cmdq_pkt_jump_rel_temp() before the API change
-> is implemented.
+Le vendredi 07 novembre 2025 =C3=A0 15:13 +0100, Marco Crivellari a =C3=A9c=
+rit=C2=A0:
+> Currently if a user enqueues a work item using schedule_delayed_work() th=
+e
+> used wq is "system_wq" (per-cpu wq) while queue_delayed_work() use
+> WORK_CPU_UNBOUND (used when a cpu is not specified). The same applies to
+> schedule_work() that is using system_wq and queue_work(), that makes use
+> again of WORK_CPU_UNBOUND.
+> This lack of consistency cannot be addressed without refactoring the API.
 >=20
-> Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> ---
-> =C2=A0drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c | 2 +-
-> =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
+> alloc_workqueue() treats all queues as per-CPU by default, while unbound
+> workqueues must opt-in via WQ_UNBOUND.
 >=20
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c b/drive=
-rs/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-> index d0b0b072f953..5fc9263ccb78 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-cmdq.c
-> @@ -628,7 +628,7 @@ static struct mdp_cmdq_cmd *mdp_cmdq_prepare(struct m=
-dp_dev *mdp,
-> =C2=A0		goto err_free_path;
-> =C2=A0	}
-> =C2=A0	cmdq_pkt_eoc(&cmd->pkt);
-> -	cmdq_pkt_jump_rel(&cmd->pkt, CMDQ_INST_SIZE, mdp->cmdq_shift_pa[pp_idx]=
-);
-> +	cmdq_pkt_jump_rel_temp(&cmd->pkt, CMDQ_INST_SIZE, mdp->cmdq_shift_pa[pp=
-_idx]);
+> This default is suboptimal: most workloads benefit from unbound queues,
+> allowing the scheduler to place worker threads where they=E2=80=99re need=
+ed and
+> reducing noise when CPUs are isolated.
+>=20
+> This continues the effort to refactor workqueue APIs, which began with
+> the introduction of new workqueues and a new alloc_workqueue flag in:
+>=20
+> commit 128ea9f6ccfb ("workqueue: Add system_percpu_wq and system_dfl_wq")
+> commit 930c2ea566af ("workqueue: Add new WQ_PERCPU flag")
+>=20
+> This change adds a new WQ_PERCPU flag to explicitly request
+> alloc_workqueue() to be per-cpu when WQ_UNBOUND has not been specified.
+>=20
+> With the introduction of the WQ_PERCPU flag (equivalent to !WQ_UNBOUND),
+> any alloc_workqueue() caller that doesn=E2=80=99t explicitly specify WQ_U=
+NBOUND
+> must now use WQ_PERCPU.
+>=20
+> Once migration is complete, WQ_UNBOUND can be removed and unbound will
+> become the implicit default.
 
-I cannot take that right now in the media tree, as it won't build. Can the =
-SoC
-maintainer help me know if I just leave that on hold, or perhaps you'd like=
- to
-take it ? (or its in next, and I just have to wait for next udpate?)
+I have to admit, there is likely no review here due to the lack of knowledg=
+e, so
+in order to help educate myself (hopefully its not just me), can you explai=
+n why
+the new default of WQ_UNBOUND would not be a fit for this driver ? After al=
+l,
+the author didn't care and didn't make a choice, so I feel like its worth
+asking.
 
-I also doubt patch 4/5 is make much of a difference without the soc changes=
- ?
-
-regards,
+cheers,
 Nicolas
 
+>=20
+> Suggested-by: Tejun Heo <tj@kernel.org>
+> Signed-off-by: Marco Crivellari <marco.crivellari@suse.com>
+> ---
+> =C2=A0drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 6 ++++--
+> =C2=A01 file changed, 4 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> index 6559d72d5d42..9083367ae2e4 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> @@ -255,14 +255,16 @@ static int mdp_probe(struct platform_device *pdev)
+> =C2=A0		goto err_free_mutex;
+> =C2=A0	}
 > =C2=A0
-> =C2=A0	for (i =3D 0; i < num_comp; i++) {
-> =C2=A0		s32 inner_id =3D MDP_COMP_NONE;
+> -	mdp->job_wq =3D alloc_workqueue(MDP_MODULE_NAME, WQ_FREEZABLE, 0);
+> +	mdp->job_wq =3D alloc_workqueue(MDP_MODULE_NAME,
+> +				=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 WQ_FREEZABLE | WQ_PERCPU, 0);
+> =C2=A0	if (!mdp->job_wq) {
+> =C2=A0		dev_err(dev, "Unable to create job workqueue\n");
+> =C2=A0		ret =3D -ENOMEM;
+> =C2=A0		goto err_deinit_comp;
+> =C2=A0	}
+> =C2=A0
+> -	mdp->clock_wq =3D alloc_workqueue(MDP_MODULE_NAME "-clock",
+> WQ_FREEZABLE,
+> +	mdp->clock_wq =3D alloc_workqueue(MDP_MODULE_NAME "-clock",
+> +					WQ_FREEZABLE | WQ_PERCPU,
+> =C2=A0					0);
+> =C2=A0	if (!mdp->clock_wq) {
+> =C2=A0		dev_err(dev, "Unable to create clock workqueue\n");
 
---=-MnGLK1uGO3sHzXuy/5rZ
+--=-UeS4cSZwWRtHwAn48Sle
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaTiKzgAKCRDZQZRRKWBy
-9HnQAQCvZCLQCXpFlsUfn7DWx1kuIT+I+byuKT/dhCrJ0Qly3gEAh9feswFfhKgL
-He/DKiOx62zT1aAhbBCmngiS+Tir/wg=
-=/OPV
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaTiNPAAKCRDZQZRRKWBy
+9FiwAP0fJ+8iO5Ik0RjPFylUjAq7S8bsNJJcC+1KzXvIKpRkNQEA3unsVtcMYzBe
+Tyv8O0zclWEEPN7vZaUVvfJOXbdoVwU=
+=UyuZ
 -----END PGP SIGNATURE-----
 
---=-MnGLK1uGO3sHzXuy/5rZ--
+--=-UeS4cSZwWRtHwAn48Sle--
 
