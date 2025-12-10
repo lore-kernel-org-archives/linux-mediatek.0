@@ -4,76 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EBE9D3C90D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Dec 2025 14:11:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8610D3C920
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Dec 2025 15:30:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WxYrgRVlLCNDY0uhvZ8ftFvD1WI4oAIoacSsM7/kt/o=; b=GAR899Oyqr46dSP2Su9UsrsRs2
-	HK9e/L8AyuQLRprj29ijX+V4VrQ5EHnPgViupFaqmho1qj5Hk35mDhlrY9CutDRItlN+2Jv0Tycqm
-	ZjwsIRIpqqPSqKFPMfBQaxU9ngwsf1VXIVSy111+4EmodP7v/66t4NBRzmbr7wpX64vrNelKs0HKP
-	Xjp5KegncB4kNplAOG3fmx3dYHMTp0YhX3XajCf8Z7XBz/QVHmbqAEztW2PPRlTTcZRUqPw4VwiI7
-	/j2v70gdF1xvnxdqdZBOQ9ruiYnOL1pjL1YJcdyIboM+8LCcOUKJUrNuJMhGQZQe5wC4K8UeJqzzZ
-	lFwG5woA==;
+	bh=3oM7C5JKk0bBzWgIUK1EKF/80L5/WNgj6mhCv2v/NwU=; b=US2BUyvKk6PRsIEFxNyHR60V9J
+	ua2Jff3c+gBE+dJDhYu0vH+eIVgRAoQAt4uRQYCHNvwA1QVO8DiBoSmNRipOKphg2aSyXwg368Qch
+	vp4APYFr2lUBLThbHlVIlxQsms/+A179d1ozbLFiy5ESI4cHs2o+hl/bc7hBImpLx09h3WBE+rwQv
+	fBa7g1jezH9W/XCDT1WD3BzGxn5lj05PRiMeUH6N7sTWjYCjsHldUxK8aTGvgyHvEsT2i/sRyOyUY
+	OXknNqTpH+igC1qNJJrXeCEY6WND260+RZGskyuA0DkH1E+22LJe9zrW7O32YANGWMjqpTphX6PaW
+	ewpsvIvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTKuc-0000000FVeC-00u5;
-	Wed, 10 Dec 2025 14:11:26 +0000
-Received: from mout.web.de ([212.227.15.3])
+	id 1vTM99-0000000FZPD-1KBi;
+	Wed, 10 Dec 2025 15:30:31 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTKuZ-0000000FVdf-1I6i;
-	Wed, 10 Dec 2025 14:11:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1765375866; x=1765980666; i=markus.elfring@web.de;
-	bh=WxYrgRVlLCNDY0uhvZ8ftFvD1WI4oAIoacSsM7/kt/o=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=MrCwcTk83baAgmK2abkOoUBZ6VtFKrtQKhypYmEYVRArHCd9dNItWHR34Em88y+n
-	 Pz06tzqhwiTU3v5Jh0k2rAcNTXhAnnC+4yCPRDMpIZnnnHDL55/cKxlbIHHq0nsCV
-	 Si7VE4+1N1obDlptq+kuvqsVoRvtwNni1nsCCUTJIOOfRc0z9yE3kOW8Lnfz3Ny7V
-	 aRB8jKQrCc660Kf+y5KVen1TrF8hOcsjlrJ+lIk3LTYpcn/PiNk5jwajLzlG7Whm1
-	 mV7wnJWp+ExvGqhoYUsJMpyEsP/i1aRr7GPrL9inncxk9GXzGRa4+GT28BYoaZfuf
-	 CdT1jSaHKqSzow4C7g==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.29] ([94.31.69.204]) by smtp.web.de (mrweb006
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1M604t-1vMyyg454l-00De3k; Wed, 10
- Dec 2025 15:11:06 +0100
-Message-ID: <316d6242-fbfa-4c9e-addd-e9f76facf9d7@web.de>
-Date: Wed, 10 Dec 2025 15:11:03 +0100
+	id 1vTM97-0000000FZOS-10SM
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Dec 2025 15:30:30 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-59445ee9738so5776372e87.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Dec 2025 07:30:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=suse.com; s=google; t=1765380626; x=1765985426; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3oM7C5JKk0bBzWgIUK1EKF/80L5/WNgj6mhCv2v/NwU=;
+        b=GZ4nrx37N3jwQrhIj19LtyinoqblsVOcFdjDuS5vm9i4mYvhGFJ7WTYKiPOL4LKT92
+         xhuAKskxkFcnZmX8Y/UhX0t259sDoiwJiu9DPNcGRWsoHWBoubhfpj9gggA0ylsmuoQY
+         3dYdL3TUXSPYabSJVdvuLYxSvhdy66/Nmiy6NIJv+0lcgHsKwbBYU55c59fJ6CEROSVx
+         QIPGNp4FCJlECPZdotY/9VYpu4uGGg8bl1aIeZMYEvMVgj5R87rTs2V0i8v+PlPjEri2
+         E9ga4h0p575EP307pKYRQ5o31hAM1wQKtyiFWQ6In9QzUDmqsoEjjVzV8s8SG2wQyKou
+         ZJCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1765380626; x=1765985426;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=3oM7C5JKk0bBzWgIUK1EKF/80L5/WNgj6mhCv2v/NwU=;
+        b=Qyfm49e1a967kF+DIGWdoctOIsvtGsUcLJp4kMwn+1WkQO27ZvHUkOuzJaVymSymSM
+         MB6PC0sd922a96NtRqHfrEs6+5/W0Uw515ypGuoS5RDmcxahRyqwN9DuvRkLSZW1ERJg
+         rYQQ+6D8nxuKvwAAv+rDHiVix8JzZQ+IjVrz0hddXmrLfit8CbwSFs8bcaMfOEdsJGHo
+         bIdIwJ/GKuwbdsPqIwj8N3610Yq3k2G18FPKoJLKX2Lv6/oWaAOi3QJG0/KBME/Rvs1O
+         07LE/E1nEt79Jml2fhvSxsWuSVFxPRzgjU1e3HZRCPBOpJuCs0MeukTnb/oflf0nfIG8
+         Yc1w==
+X-Forwarded-Encrypted: i=1; AJvYcCWbiScTdFeBINFtniPJimoat03SRLA4Vmx7JNGTn+i054p4gA3V4NRAM2e2iGk2lgtwGsMBxL4VVL3rK04Wxw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyD3J1tjS3Faihj4tVQesQsXsu7XUHDdQosENbqWKFkdwqQrck6
+	PqSZXXVhKxK/t0i5HGw2/kDtAkPAo5/6CXONqt9Xc1pqXcdDRK/T21nCjoHpnN6sJLuNzOx5JIA
+	sK1EzfSpM6O+/kKGCt/PwoxZHIHMggdi4jtrW8AeUxw==
+X-Gm-Gg: AY/fxX7iQQ4P44PsR4slyS+cr7A/idbEtTb9srv/lStwj9sX3FGFJNRu+IRuGPmdQib
+	rLlIYjv0omTma/dism7sxI9fOThJ2i/FpgcHqrLo5tr7I2PDbdYeVkV8VdOpH/PqMmrHpm158zV
+	YM+I2sPeXVGAUcIURnERFI2W7wjxRMRgXmYSeBW3f7eyjck3IDSVcbooSeOeHSy1xvRNatVGtya
+	287opzplpnEbtA6i27cSpAphFL2SxNnDDrG0Wu5qoRhB8qDom7UwMkGMDNBEf+OfyuPS3VaerPl
+	4kDNQSqS4UGdmWR+MX40BxzIvCe2
+X-Google-Smtp-Source: AGHT+IEYPLumSLiqv9vm35UuD54sgjwSHWM6ebmAu9tuA8+ywHCPfhWkSszStzlqK4kPNAby2b3RcjziCDgwx+M2Kvw=
+X-Received: by 2002:a05:6512:15a8:b0:595:81c2:9920 with SMTP id
+ 2adb3069b0e04-598ee4dbebdmr1141791e87.27.1765380626523; Wed, 10 Dec 2025
+ 07:30:26 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: vulab@iscas.ac.cn, linux-input@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Cc: LKML <linux-kernel@vger.kernel.org>,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Gary Bisson <bisson.gary@gmail.com>,
- Julien Massot <julien.massot@collabora.com>,
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20251210030013.913-1-vulab@iscas.ac.cn>
-Subject: Re: [PATCH] input: mtk-pmic-keys: Fix potential NULL pointer
- dereference in probe()
-Content-Language: en-GB, de-DE
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20251210030013.913-1-vulab@iscas.ac.cn>
-Content-Type: text/plain; charset=UTF-8
+References: <20251107141303.223254-1-marco.crivellari@suse.com> <7e24110636db36e8c0a877d90d2ed9570c4aecf5.camel@ndufresne.ca>
+In-Reply-To: <7e24110636db36e8c0a877d90d2ed9570c4aecf5.camel@ndufresne.ca>
+From: Marco Crivellari <marco.crivellari@suse.com>
+Date: Wed, 10 Dec 2025 16:30:15 +0100
+X-Gm-Features: AQt7F2pXItH5geVIbULqaw0IgXchV7ZnVe5Ou6Cc5C27xz9gAGtwoAoMzdHRMko
+Message-ID: <CAAofZF44pUoyDPnnv9UUuMkYvqiSWP4gELg4rutgo=3tNpBZsw@mail.gmail.com>
+Subject: Re: [PATCH] media: platform: mtk-mdp3: add WQ_PERCPU to
+ alloc_workqueue users
+To: Nicolas Dufresne <nicolas@ndufresne.ca>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Tejun Heo <tj@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>, 
+	Frederic Weisbecker <frederic@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, 
+	Michal Hocko <mhocko@suse.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:3NLIcH6EOiMkLulEs8N2HjgtCPpZ5VO8qqh+IBN9Gn8kpA2SV9n
- COgI7SFk4IrzcHRIixTvZy3jyol8RmDRKZ4fXJgSr5G7vIjAOvnUOavVORxnv7xD3WWQTzJ
- CGqez5MTufx7DEocfHnwoSdChEoyi6lKngqcTx8u1t9R365z84uKTCswY/2mkF7xKTQlhQK
- 63H3+u5O+NOdkr67ovgaQ==
-UI-OutboundReport: notjunk:1;M01:P0:pHlVGJTePEU=;mdcylC0h0yfJ/m9bNMUj8DT7CPU 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 JGGSDq7Zbn9zqoohvpPgGIIQ+0RFJ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251210_061123_725124_CD29A3DD 
-X-CRM114-Status: UNSURE (   5.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251210_073029_310220_41629BC5 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,18 +102,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> of_match_device() may return NULL when the device node
-> does not match any entry in the driver's match table.
-> The current code dereferences of_id->data unconditionally,
-> which can lead to a NULL pointer dereference.
-=E2=80=A6
+On Tue, Dec 9, 2025 at 9:57=E2=80=AFPM Nicolas Dufresne <nicolas@ndufresne.=
+ca> wrote:
+>
+> Hi,
+> I have to admit, there is likely no review here due to the lack of knowle=
+dge, so
+> in order to help educate myself (hopefully its not just me), can you expl=
+ain why
+> the new default of WQ_UNBOUND would not be a fit for this driver ? After =
+all,
+> the author didn't care and didn't make a choice, so I feel like its worth
+> asking.
 
-Under which circumstances would you get into the mood to take more desirab=
-le
-word wrap preferences better into account?
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Do=
-cumentation/process/submitting-patches.rst?h=3Dv6.18#n658
+Hi Nicolas,
 
-Regards,
-Markus
+The fact is that "alloc_workqueue()" without WQ_UNBOUND it means per-cpu.
+So what we are doing here is just make explicit that the workqueue is per-c=
+pu.
+
+Currently there are no behavioral changes in alloc_workqueue(); in a
+future release
+WQ_UNBOUND will be removed and unbound will be the default. But as for now,
+it is still per-cpu.
+
+We can of course change the current behavior and I can send the v2 with
+WQ_UNBOUND instead. Looking at the code there are not per-cpu variable and
+the workqueue does not have the WQ_BH flag, so we can convert it if it
+is better.
+
+Thanks!
+
+--
+
+Marco Crivellari
+
+L3 Support Engineer
 
