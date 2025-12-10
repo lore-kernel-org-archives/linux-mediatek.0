@@ -4,79 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8BACD3C928
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Dec 2025 16:33:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3491ED3E77A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Dec 2025 20:22:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RAVkpptHG6oJO9hSoLDzB0Os+BfA+qYSejoiWrxKU4Q=; b=TeFjmm+J6oHMQfRsqgBS2tM3M9
-	psZ59GC8lK9GP/7g+QAa1o5tM03JqUq2RJYR/fG9G9PG42XgkiAyT7rfyil60ESaA1PY/0lCvmbH3
-	Ehiq6ZD7pjz2Q2A3T/qeAfzqCbmB+3/nYseXwTViwx85Y0OUKg6KsVg2o3JkJ9fImKHDwcdaRF+sY
-	1tAc5+Uf1LX7T0GOFcTyhly5Oq9+i9dfO2zw0EXippx7CBSemnP8JFShFM2rwnGOlKFH9dpZqloGu
-	kCy9cZZNrPzoYrPoQPWBek2MX3V/Gd8YxHvtA0xiLXeSitXjIBnXfceLHu1t+BGMge77Z2NCpOc9L
-	j5VIczlQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zBOjLIA9JKddmG2WZSljIIQm1ZcLIzyp4u5OMsT9CE4=; b=TgBJDAj5wvcwMc9lGFVyNvhdZD
+	2u9hbz+PcpMhrA8QwJRhLrSJ+dvoj3s7ebsVfV3zZ1cmXGUf++5ni7UuGqf1W05LHiWNzKv/6cRCB
+	kyTYyLyt2aAYafA3nLVxlYZ/1NT4Nj+eFRrtGfdAmRHtd0VY8roEhhHdiwLd5/gGYcFNVHqaENHkQ
+	tq+Nha2AmXi8z8umducE4FjlFeQTXOtwe/Wo+rZKs6EiXSSctuL1hSRFfikBaYaM+qxPLBd+M72rc
+	AWXEZji7MseFwlrxo7UAprF0D/hViqX/5Wl9XQ5U2YkCbzINwp9KSCFKMB426vZj3SYOPEJ1g4+HS
+	6QXP22kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTN8T-0000000FePD-2Js1;
-	Wed, 10 Dec 2025 16:33:53 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vTQhh-0000000FpsX-0kqU;
+	Wed, 10 Dec 2025 20:22:29 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTN8R-0000000FeOn-2fnk;
-	Wed, 10 Dec 2025 16:33:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 720BD6016B;
-	Wed, 10 Dec 2025 16:33:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3253CC4CEF1;
-	Wed, 10 Dec 2025 16:33:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765384430;
-	bh=RAVkpptHG6oJO9hSoLDzB0Os+BfA+qYSejoiWrxKU4Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YZC5I9VHWyMXJ19/yNiYo6ezpCM8sOhmTUF41m72Jtm2iABVgaS/27p0ZTqrKHh9Z
-	 bG0D7vM+v6w9EOFpDUmmi2mR2Ji9klQGmuoEEXdKT5sH0LKV1NfwG5SyCqR+rwBf22
-	 3f+xgcZscWmZnVWb0mlWjJ+ro/SQtsRiA3jQjRDuC/qc2XyaggmxLmTS0DwfMaRSmE
-	 C5m96GavAQ+CxKaR2ahdr0K0iov94ANatToT9spS59SQ6+q9r08QSUAbHCFTuPXNdh
-	 aJhFk/5B0+DjpskV68Wmb2QqHCarNXOW4Z8+UUSbyglElBaHthmaEo+PNHTbBeOO8u
-	 U6553F6TADWJA==
-Date: Wed, 10 Dec 2025 16:33:43 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Irving-CH Lin =?utf-8?B?KOael+W7uuW8mCk=?= <Irving-CH.Lin@mediatek.com>
-Cc: "robh@kernel.org" <robh@kernel.org>,
-	"ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
-	Sirius Wang =?utf-8?B?KOeOi+eak+aYsSk=?= <Sirius.Wang@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"mturquette@baylibre.com" <mturquette@baylibre.com>,
-	"richardcochran@gmail.com" <richardcochran@gmail.com>,
-	"conor+dt@kernel.org" <conor+dt@kernel.org>,
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
-	Vince-WL Liu =?utf-8?B?KOWKieaWh+m+jSk=?= <Vince-WL.Liu@mediatek.com>,
-	"krzk+dt@kernel.org" <krzk+dt@kernel.org>,
-	Jh Hsu =?utf-8?B?KOioseW4jOWtnCk=?= <Jh.Hsu@mediatek.com>,
-	Project_Global_Chrome_Upstream_Group <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
-	"linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
-	"sboyd@kernel.org" <sboyd@kernel.org>,
-	Qiqi Wang =?utf-8?B?KOeOi+eQpueQpik=?= <Qiqi.Wang@mediatek.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>
-Subject: Re: [PATCH v3 01/21] dt-bindings: clock: mediatek: Add MT8189 clock
- definitions
-Message-ID: <20251210-progress-overdue-bded69c47048@spud>
-References: <20251106124330.1145600-1-irving-ch.lin@mediatek.com>
- <20251106124330.1145600-2-irving-ch.lin@mediatek.com>
- <20251106-hug-stingray-2d3ff42fd365@spud>
- <626b5c4b810678a7f0de1f109371a6d6694bd2a8.camel@mediatek.com>
+	id 1vTQhe-0000000Fpr2-3IEw;
+	Wed, 10 Dec 2025 20:22:27 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1765397999; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=cGQnLhHtWcqAD3Ly0pdRRQ1P6JyECzdp7zt5iroT3q1cb3/6TatBLSYLpXNJEh7P/vncD90aPjmUsMXUaPUAGPXROgrvexLEOi5Ahz+iR6RhygWdLof7oynUkerbCZryZTVtVd8IzDarEvm6n1ygHfXtn7sg4MunIVzQyGbdtN8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1765397999; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=zBOjLIA9JKddmG2WZSljIIQm1ZcLIzyp4u5OMsT9CE4=; 
+	b=kM3yi/xi3BsmH9V1WO0fA1mHqIr3wcYvHqr2V5Xk9Z+NKD4kxWlDv4AWloA/yvUF6+E3NpkheoGKd+nz8W2dXd5e/wIrLjkNX319/JE+LVcSnfLLrlAceQ6I+8Ct3Wzxq7qVHykS5fgTKmBNQ8HcUcK6jN81QCbcgX5rE+Fp8AQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
+	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765397999;
+	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=zBOjLIA9JKddmG2WZSljIIQm1ZcLIzyp4u5OMsT9CE4=;
+	b=KEf5nztRa5LmdXyPCtkQ4jqRPK48Qn+XNLZOyqYUW+VGm5MjsbKZ2BH/WVAthm5z
+	0i/czpxqcB9WH9OOsV1KCeDd6OatULjgBeYXUDxPaODoLoIyZObTsk1BdZKj50F80Ss
+	3jKJqStI16meRUOksOUghlsbV9WPruXsbo3j+G4M=
+Received: by mx.zohomail.com with SMTPS id 1765397996737389.80822384937903;
+	Wed, 10 Dec 2025 12:19:56 -0800 (PST)
+Message-ID: <052890e9-4e51-4181-9b88-ab1d4f407fb7@collabora.com>
+Date: Wed, 10 Dec 2025 17:19:37 -0300
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="6/aPeWQhkTkgoOqT"
-Content-Disposition: inline
-In-Reply-To: <626b5c4b810678a7f0de1f109371a6d6694bd2a8.camel@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFC v2 03/20] drm: Factor out common color_pipeline
+ property initialization code
+To: Harry Wentland <harry.wentland@amd.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Haneen Mohammed <hamohammed.sa@gmail.com>,
+ Melissa Wen <melissa.srw@gmail.com>
+Cc: Alex Hung <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org,
+ leo.liu@amd.com, ville.syrjala@linux.intel.com,
+ pekka.paalanen@collabora.com, contact@emersion.fr, mwen@igalia.com,
+ jadahl@redhat.com, sebastian.wick@redhat.com, shashank.sharma@amd.com,
+ agoins@nvidia.com, joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org,
+ xaver.hugl@gmail.com, victoria@system76.com, uma.shankar@intel.com,
+ quic_naseer@quicinc.com, quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com,
+ marcan@marcan.st, Liviu.Dudau@arm.com, sashamcintosh@google.com,
+ chaitanya.kumar.borah@intel.com, louis.chauvet@bootlin.com,
+ mcanal@igalia.com, kernel@collabora.com, daniels@collabora.com,
+ leandro.ribeiro@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Simona Vetter <simona.vetter@ffwll.ch>
+References: <20250917-mtk-post-blend-color-pipeline-v2-0-ac4471b44758@collabora.com>
+ <20250917-mtk-post-blend-color-pipeline-v2-3-ac4471b44758@collabora.com>
+ <3c24d55c-76d1-4ba4-9942-fd5d85f9daca@amd.com>
+Content-Language: en-US
+From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+In-Reply-To: <3c24d55c-76d1-4ba4-9942-fd5d85f9daca@amd.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
+X-ZohoMail-Owner: <052890e9-4e51-4181-9b88-ab1d4f407fb7@collabora.com>+zmo_0_ariel.dalessandro@collabora.com
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251210_122226_850947_02CF96D7 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,52 +103,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Harry,
 
---6/aPeWQhkTkgoOqT
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Following up on Nicolas' series.
 
-On Wed, Dec 10, 2025 at 10:01:24AM +0000, Irving-CH Lin (=E6=9E=97=E5=BB=BA=
-=E5=BC=98) wrote:
-> Hi Conor,
->=20
-> On Thu, 2025-11-06 at 17:19 +0000, Conor Dooley wrote:
-> > On Thu, Nov 06, 2025 at 08:41:46PM +0800, irving.ch.lin wrote:
-> > > From: Irving-CH Lin <irving-ch.lin@mediatek.com>
-> > >=20
-> > > Add device tree bindings for the clock of MediaTek MT8189 SoC.
-> > >=20
-> > > Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
-> >=20
-> > Before I approve this, can you share the dts that actually uses it?
-> > This many different syscons really does look suspect, and that not
-> > all
-> > of these should be nodes of their own. They may very well be, I would
-> > just like to see what the dts looks like. Doesn't need to be a patch,
-> > a
-> > link to your tree will suffice.
-> >=20
-> > Cheers,
-> > Conor.
-> >=20
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20251111070031.=
-305281-10-jh.hsu@mediatek.com/
-> Please refer to link for mt8189 dts.
+On 9/29/25 5:53 AM, Harry Wentland wrote:
+> 
+> 
+> On 2025-09-17 20:43, Nícolas F. R. A. Prado wrote:
+>> In preparation for sharing the initialization code for the color
+>> pipeline property between pre- and post-blend color pipelines, factor
+>> out the common initialization to a separate function.
+>>
+>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>> ---
+>>   drivers/gpu/drm/drm_crtc.c          | 44 +++++++++++++++++++++++++++ 
+>> ++++++++++
+>>   drivers/gpu/drm/drm_crtc_internal.h |  5 +++++
+>>   drivers/gpu/drm/drm_plane.c         | 36 +++++-------------------------
+>>   3 files changed, 54 insertions(+), 31 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/drm_crtc.c b/drivers/gpu/drm/drm_crtc.c
+>> index 
+>> 46655339003db2a1b43441434839e26f61d79b4e..94e60cffd29972aa979ac2f1932be7a6a97f3ada 100644
+>> --- a/drivers/gpu/drm/drm_crtc.c
+>> +++ b/drivers/gpu/drm/drm_crtc.c
+>> @@ -959,3 +959,47 @@ bool drm_crtc_in_clone_mode(struct drm_crtc_state 
+>> *crtc_state)
+>>       return hweight32(crtc_state->encoder_mask) > 1;
+>>   }
+>>   EXPORT_SYMBOL(drm_crtc_in_clone_mode);
+>> +
+>> +struct drm_property *
+>> +drm_common_create_color_pipeline_property(struct drm_device *dev, 
+>> struct drm_mode_object *obj,
+>> +                      const struct drm_prop_enum_list *pipelines,
+>> +                      int num_pipelines)
+> 
+> All other functions I see in drm_crtc seem to be quite crtc
+> specific. Would there be a better place to put this? Possibly
+> a new file if nothing else seems to fit?
+> 
+> Not a blocker in any way, though.
+Agreed. I think drivers/gpu/drm/drm_property.c would be a better place, 
+as it contains functions to create the different types of drm_property 
+already.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
+Will submit a proposal in v3.
 
---6/aPeWQhkTkgoOqT
-Content-Type: application/pgp-signature; name="signature.asc"
+Thanks,
+Ariel
 
------BEGIN PGP SIGNATURE-----
+-- 
+Ariel D'Alessandro
+Software Engineer
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaTmg5wAKCRB4tDGHoIJi
-0gQLAQDlf0YH1hYoXc9Bdh1D48xuvf9j1Xm/38X050i72dQjuAEA3Ycuor/nuZxO
-KtGQq2Rg+DlffLIgFceLi1KapRxZVQo=
-=RQBU
------END PGP SIGNATURE-----
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
+Registered in England & Wales, no. 5513718
 
---6/aPeWQhkTkgoOqT--
 
