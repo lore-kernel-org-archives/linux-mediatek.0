@@ -4,69 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DF2FD3E77D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Dec 2025 21:13:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B4B4D3E77B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Dec 2025 21:16:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jqMX/DYizvwd2K4GsER0cPhvZeFYwLoj+hNGHHSCxO8=; b=SfQqt77AUKL0gufi4uPfKD9I85
-	IrFqRqJz/GOcPIV7WfQSxy4vjF6roe02J9/7Gx7mE5+IQrUb76QWaviJSDxBukLU3E9x+79pXTKXk
-	SfCtA2tPxv3ysi+rumAi+28PojBX+yIUzOSi+GCXzhU6U34CEgQVfezy7/y2pT01RCcECnT1yH9Z2
-	f6noAj3tczZ/YidPRjnhtzgGFjqD3uAeHhqLCVN7Pb36IRWTGO1ZHoZT6b/LsAJRwbSLrUanANoLU
-	fOmqwws3Pvh4W3HmZKJhE+YVpDu6YpICKoflIVoizEwxsWvHv3p72cv/qL+R6A34oKQGK3rqaMN67
-	dRn3OaJg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IRKnvkvBvcdU44ovJMbkUCqCeq+xkG059w91E2TXUZI=; b=taslyPUk+3FcD4oP22xtlZk1KQ
+	0qwWbGI+cAyazqeA+b9yEC72uuGpRj+77YyXuZkStKsHIvc6WFeCBNkNeHJVq70SusiKAI149cu5R
+	zOJKuT20PsdU7mBHgMFRu+AIiNvNriRJx8PNoZlry3pLUV5Gw8HUGt+aG4Gh30dUB7K7r3jMVxlrf
+	u/H2o5v0e+uKKRNWfBX9FE+mG3UDp2MhijAXRV4f5dRG6MYFUUBRuPC+M0R+qv/5sro6pPqv5hGeu
+	UZSDnlIy7o5GcchgtZAvXRbggpfM1fY8Qb7fS0k99TD3lkXOo/RCRHe0/zYpXhrtVYR8HtPBjARTF
+	1MIUcpqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTRUn-0000000Ft9w-3phA;
-	Wed, 10 Dec 2025 21:13:13 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vTRXx-0000000FtRl-13DB;
+	Wed, 10 Dec 2025 21:16:29 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTRUm-0000000Ft9Y-2NEY;
-	Wed, 10 Dec 2025 21:13:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 83EB1600C4;
-	Wed, 10 Dec 2025 21:13:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01E75C4CEF1;
-	Wed, 10 Dec 2025 21:13:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765401191;
-	bh=aoyauFYLJsKITX5t2VCmjFrbwcJN4/7MVdS0dVL08zs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ogTMVIEld+8E2EIFT3MZeHr2NYaQ1fE2HrZ6Oi7xyw7qYP2t+mVVmOPSI/rGF95Hh
-	 cVVQ//NbvBMC+K6sLl8XuAZ5iPqi9ACzQ0tlsTkSlD0fIpiqkGLEC9Ma9C6b4M61jl
-	 WNivE8HWCI7LJMKwR9TJ9i5Hedu3o7b4GGOVbEf4bIJXCSVsgqTXAkusc6FXrqu4ZF
-	 GbqGIicMtSDG+llfICte7jJrUVCsLtrEdCldMLqC5mv7AAsNeFos9xUOW7qgBF4KCi
-	 TEcQ07RMrg4dFm9BgRPhVoizMCMEhKlaUGF+9zX+eKJdGm4Gksg8Cur9VtqzCvpqNy
-	 c30hNPsjGl3AA==
-Date: Wed, 10 Dec 2025 15:13:08 -0600
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-mediatek@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, kernel@collabora.com,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-phy@lists.infradead.org,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	linux-kernel@vger.kernel.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Guillaume Ranquet <granquet@baylibre.com>
-Subject: Re: [PATCH 01/12] dt-bindings: phy: mediatek,hdmi-phy: Fix clock
- output names for MT8195
-Message-ID: <176540118761.3352108.7929645042751556704.robh@kernel.org>
-References: <20251209-mtk-genio-evk-hdmi-support-v1-0-9a6106effba6@collabora.com>
- <20251209-mtk-genio-evk-hdmi-support-v1-1-9a6106effba6@collabora.com>
+	id 1vTRXu-0000000FtRG-2qIu;
+	Wed, 10 Dec 2025 21:16:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1765401339; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=MQU6KWe4NSE6DWLLEr2xEP7RPMSuj09+BrpSEQc+m8stv4G5crnD5OB3nJzoJ2tLCTWYT37xt3OUntnTCoIgS8QYuwINgBWGwN/PNXc8Icggb04jT2bbuDmxMmVsYKRIcM5sZYb7g5yzr2i8hHRF7msFOXUjC56sS5eB0smdBeY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1765401339; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=IRKnvkvBvcdU44ovJMbkUCqCeq+xkG059w91E2TXUZI=; 
+	b=aMhRQK5kasQr2cgEs5KtFrI0/6SL2UEaUZD+CKJdLcXtb08eb+Z2re8IS/blG6tBD9EgG0QgsIIuWQC3fzlRB3ny0h5l7w4nGhOqHT/osBlBfOTACIS/0IQoacbOeoAej3z9SDNm28wIdzfxB1DR+HHtptNmrU4AfAuRH27k51Q=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
+	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765401339;
+	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=IRKnvkvBvcdU44ovJMbkUCqCeq+xkG059w91E2TXUZI=;
+	b=kgC54ml0Zk9SSQ2THssIN0qentB1rMOMtI8kus2axbv2BSJ13O/4Iglv+oawxEma
+	uqZ1MhwBp2v1wLAXCHhUvlo9jrZZu7UV+kTQbPFpidGY5bLfv9ebPYqieIeA4fL5S1J
+	fMmsv0HbDlGwIMylKzfIF8LluRqqaChkLo7pLO7o=
+Received: by mx.zohomail.com with SMTPS id 176540133700515.946463429704863;
+	Wed, 10 Dec 2025 13:15:37 -0800 (PST)
+Message-ID: <4c393a1a-3ded-490c-a6f8-c120dfcf1188@collabora.com>
+Date: Wed, 10 Dec 2025 18:15:20 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251209-mtk-genio-evk-hdmi-support-v1-1-9a6106effba6@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFC v2 19/20] drm/vkms: Introduce support for post-blend
+ color pipeline
+To: Louis Chauvet <louis.chauvet@bootlin.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Haneen Mohammed <hamohammed.sa@gmail.com>,
+ Melissa Wen <melissa.srw@gmail.com>
+Cc: Alex Hung <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org,
+ harry.wentland@amd.com, leo.liu@amd.com, ville.syrjala@linux.intel.com,
+ pekka.paalanen@collabora.com, contact@emersion.fr, mwen@igalia.com,
+ jadahl@redhat.com, sebastian.wick@redhat.com, shashank.sharma@amd.com,
+ agoins@nvidia.com, joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org,
+ xaver.hugl@gmail.com, victoria@system76.com, uma.shankar@intel.com,
+ quic_naseer@quicinc.com, quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com,
+ marcan@marcan.st, Liviu.Dudau@arm.com, sashamcintosh@google.com,
+ chaitanya.kumar.borah@intel.com, mcanal@igalia.com, kernel@collabora.com,
+ daniels@collabora.com, leandro.ribeiro@collabora.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Simona Vetter <simona.vetter@ffwll.ch>
+References: <20250917-mtk-post-blend-color-pipeline-v2-0-ac4471b44758@collabora.com>
+ <20250917-mtk-post-blend-color-pipeline-v2-19-ac4471b44758@collabora.com>
+ <951318ca-f43a-48d7-a419-3bd89d135248@bootlin.com>
+Content-Language: en-US
+From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+In-Reply-To: <951318ca-f43a-48d7-a419-3bd89d135248@bootlin.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
+X-ZohoMail-Owner: <4c393a1a-3ded-490c-a6f8-c120dfcf1188@collabora.com>+zmo_0_ariel.dalessandro@collabora.com
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251210_131626_800281_EDC0906D 
+X-CRM114-Status: GOOD (  15.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,29 +103,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Louis,
 
-On Tue, 09 Dec 2025 17:34:31 +0100, Louis-Alexis Eyraud wrote:
-> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On 9/19/25 9:50 AM, Louis Chauvet wrote:
 > 
-> For all of the HDMI PHYs compatible with the one found on MT8195
-> the output clock has a different datasheet name and specifically
-> it is called "hdmi_txpll", differently from the older HDMI PHYs
-> which output block is called "hdmitx_dig_cts".
 > 
-> Replace clock output name string check by max item number one to allow
-> the new name on all of the HDMI PHY IPs that are perfectly compatible
-> with MT8195.
+> Le 18/09/2025 à 02:43, Nícolas F. R. A. Prado a écrit :
+>> Introduce a post-blend color pipeline with the same colorop blocks as
+>> the pre-blend color pipeline.
+>>
+>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>> ---
+>>   drivers/gpu/drm/vkms/vkms_colorop.c  | 98 ++++++++++++++++++++++++++ 
+>> ++++++++++
+>>   drivers/gpu/drm/vkms/vkms_composer.c |  5 +-
+>>   drivers/gpu/drm/vkms/vkms_crtc.c     |  1 +
+>>   drivers/gpu/drm/vkms/vkms_drv.h      |  1 +
+>>   4 files changed, 104 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/gpu/drm/vkms/vkms_colorop.c b/drivers/gpu/drm/ 
+>> vkms/vkms_colorop.c
+>> index 
+>> 5924ae2bd40fc904048f99bc9b96308140709e25..54c512db68eef16435d5f79453784f7784d540fb 100644
+>> --- a/drivers/gpu/drm/vkms/vkms_colorop.c
+>> +++ b/drivers/gpu/drm/vkms/vkms_colorop.c
+>> @@ -98,6 +98,86 @@ vkms_initialize_pre_blend_color_pipeline(struct 
+>> drm_plane *plane,
+>>       return ret;
+>>   }
+>> +static int
+>> +vkms_initialize_post_blend_color_pipeline(struct drm_crtc *crtc,
+>> +                      struct drm_prop_enum_list *list)
+>> +{
+>> +    struct drm_colorop *ops[MAX_COLOR_PIPELINE_OPS];
+>> +    struct drm_device *dev = crtc->dev;
+>> +    int ret;
+>> +    int i = 0;
+>> +
+>> +    memset(ops, 0, sizeof(ops));
+>> +
+>> +    /* 1st op: 1d curve */
+>> +    ops[i] = kzalloc(sizeof(*ops[i]), GFP_KERNEL);
+>> +    if (!ops[i]) {
+>> +        ret = -ENOMEM;
+>> +        goto cleanup;
+>> +    }
+>> +
+>> +    ret = drm_crtc_colorop_curve_1d_init(dev, ops[i], crtc, 
+>> supported_tfs,
+>> +                         DRM_COLOROP_FLAG_ALLOW_BYPASS);
+>> +    if (ret)
+>> +        goto cleanup;
+>> +
+>> +    list->type = ops[i]->base.id;
+>> +    list->name = kasprintf(GFP_KERNEL, "Color Pipeline %d", ops[i]- 
+>> >base.id);
+>> +
+>> +    i++;
+>> +
+>> +    /* 2nd op: 3x4 matrix */
+>> +    ops[i] = kzalloc(sizeof(*ops[i]), GFP_KERNEL);
+>> +    if (!ops[i]) {
+>> +        ret = -ENOMEM;
+>> +        goto cleanup;
+>> +    }
+>> +
+>> +    ret = drm_crtc_colorop_ctm_3x4_init(dev, ops[i], crtc, 
+>> DRM_COLOROP_FLAG_ALLOW_BYPASS);
+>> +    if (ret)
+>> +        goto cleanup;
+>> +
+>> +    drm_colorop_set_next_property(ops[i - 1], ops[i]);
+>> +
+>> +    i++;
+>> +
+>> +    /* 3rd op: 3x4 matrix */
+>> +    ops[i] = kzalloc(sizeof(*ops[i]), GFP_KERNEL);
+>> +    if (!ops[i]) {
+>> +        ret = -ENOMEM;
+>> +        goto cleanup;
+>> +    }
+>> +
+>> +    ret = drm_crtc_colorop_ctm_3x4_init(dev, ops[i], crtc, 
+>> DRM_COLOROP_FLAG_ALLOW_BYPASS);
+>> +    if (ret)
+>> +        goto cleanup;
+>> +
+>> +    drm_colorop_set_next_property(ops[i - 1], ops[i]);
+>> +
+>> +    i++;
+>> +
+>> +    /* 4th op: 1d curve */
+>> +    ops[i] = kzalloc(sizeof(*ops[i]), GFP_KERNEL);
+>> +    if (!ops[i]) {
+>> +        ret = -ENOMEM;
+>> +        goto cleanup;
+>> +    }
+>> +
+>> +    ret = drm_crtc_colorop_curve_1d_init(dev, ops[i], crtc, 
+>> supported_tfs,
+>> +                         DRM_COLOROP_FLAG_ALLOW_BYPASS);
+>> +    if (ret)
+>> +        goto cleanup;
+>> +
+>> +    drm_colorop_set_next_property(ops[i - 1], ops[i]);
+>> +
+>> +    return 0;
+>> +
+>> +cleanup:
+>> +    drm_colorop_pipeline_destroy(dev);
 > 
-> Fixes: c78fe548b062 ("dt-bindings: phy: mediatek: hdmi-phy: Add mt8195 compatible")
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> [Louis-Alexis Eyraud: splitted patch, addressed previous feedback from
-> mailing list, and reworded description]
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
->  Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+> Same comment as for pre_blend colorops, it feel strange to destroy all 
+> the pipelines here.
 > 
+> The suggestion in [1] is better (don't forget to add the kfree).
+> 
+> [1]: https://lore.kernel.org/all/73f01810-df2d-4e39-a20b- 
+> fc1cec2c5e12@amd.com/
+Ack, will be addressed in v3.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Regards,
+
+-- 
+Ariel D'Alessandro
+Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
+Registered in England & Wales, no. 5513718
 
 
