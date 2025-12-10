@@ -4,90 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2110D3E77B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Dec 2025 21:01:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1633D3E77D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Dec 2025 21:09:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2yqsrRa6qgW4Cllv3pVozc+YmnclQj30ZO3ZAu3Wr9w=; b=uIAw1ECOIfuEvrHZC7H1w0gBmW
-	ILyo2ywpPcnJXWEQ94gX3V45mc37xHJA7AodDpgj8Zy1wuVYOrXhsp1D6M06GdtwZolgtMO3laYSC
-	bLSIClHQvOrRsPaxFUp6vTuoltTnV8kUTELhJflqTVFlQKowvri8NkB+8r6XgHvnUbBt2qzv7YBWd
-	ueBPysYU6lfCBZ3OgPygZMKNMl/cMAhpk18aV6/csS72DwHe6CsN6kJkrMY17ZMXB9T/Jf8Btd0rU
-	P9PeKyQ4yuvKObGiXLLC0ehedNa48UDYPgkFkF3vwg2OmjIpxBurcmmDTB7LW1e4X3ZKoS2mU2nKd
-	Lz4+HsBA==;
+	bh=ET/9QO44rDBP9OpaiN9wAo/Ddh/RnDMf08D3p9at9V0=; b=MW78XC5tI73yH7YLn21mM8qpcB
+	mjupnEjMLJzdLzmh579UgICTJjntJ/slC5LFNWMT2uido/XBkfyt5R7k0a+uBOC/iDl787j/cayJK
+	6MiDnNyKmuCrwivbjwjKgVk18DkOD9fXdhKhpaDzzj3umISFBk6fHyPzNcMrLIM9LhE7qyptC0OOY
+	pFY/17kS7296DXeASLouljHRqbpItSKpcIbbNzGPvCf2N2+8M97sI1+moUJ8w0NRUB2HvGfjicYsR
+	QPbwZpW4QidUPBYKBag+s8RANlGnPheNZFSHSyNeoMCnzP7/w8CQf75lv7Tpbh666Bb//YpyQR1jt
+	0uPJp1hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTRJE-0000000FscD-1HFG;
-	Wed, 10 Dec 2025 21:01:16 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vTRR2-0000000Fszl-37nr;
+	Wed, 10 Dec 2025 21:09:20 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTRJC-0000000Fsbl-0Kto;
-	Wed, 10 Dec 2025 21:01:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1765400429; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Rotfge2TsMe02GB+EgEM2M+I5hZ2rpa16JI382w8qS8XRrsMXQirVUBcL9KXpQu/RlYJlOhd8SDgJyZKoJQ1UXqFLFllB4b0C436rcGLVqLM1N4fqD/KVNhVPMVKCjC2iLVBFOU680Rfd+oMFJ2OuHB+uBDMwI22WRot7hgvO9s=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1765400429; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=2yqsrRa6qgW4Cllv3pVozc+YmnclQj30ZO3ZAu3Wr9w=; 
-	b=S+NY749U4ej60VwghUVgl9gBBfzU4GEWDvNrMy9cLZRpJNitTYUf7lre/NSyVuI2T4ANqYEpwh09PW9xzjLU4A4ek+NYLzm33Hm2vaEmUTXN9tJ24Ia8t/gOHUzvWWz2YOjwzgAVw8psWGc0cqR9eXEMc/qn6nr3t6N52RS54VM=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
-	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765400429;
-	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=2yqsrRa6qgW4Cllv3pVozc+YmnclQj30ZO3ZAu3Wr9w=;
-	b=Gf3OfXi8wz1INDcmfHO0wB3nrskfeMYYmXHRgN1ab7E0OAqkm3Sj2ixXoujJXlxO
-	lOXq6mzawLH2VkpLBhWI7PvlJU4AeZX+RHYe2FsNkQv84HK6LmCnEOzSYe8RSwXf26i
-	i7XT6E+8YxoBjwRGe90RIcQiX/3HQoREQ3Rn68oQ=
-Received: by mx.zohomail.com with SMTPS id 1765400426236427.4770478258175;
-	Wed, 10 Dec 2025 13:00:26 -0800 (PST)
-Message-ID: <acd144d5-9bf7-4661-9f3a-5b55a8132b10@collabora.com>
-Date: Wed, 10 Dec 2025 18:00:10 -0300
+	id 1vTRR0-0000000FszL-1ikD
+	for linux-mediatek@lists.infradead.org;
+	Wed, 10 Dec 2025 21:09:19 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id 38308e7fff4ca-37b97e59520so1590481fa.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 10 Dec 2025 13:09:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1765400956; x=1766005756; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ET/9QO44rDBP9OpaiN9wAo/Ddh/RnDMf08D3p9at9V0=;
+        b=hBg97lIa9JlFmEuzFWwqjkSOd8OsTNf4slRrpxb9np/IMCwRxAQWMHbSOoN60lRwlc
+         Wz9TAFrKN6sWQAvx8a+T4NZo2SWFoh4N/eAS2NKH60xjLN4By3sZMEW2SatImltzlMSx
+         w9WOrVXLc5SRec1T6NuipZ7Gtkn5mhlW5o6HGgfr/0joLrlqpYKzpKRv7y44cpdFRpJW
+         EcPjr1NAG1BJLmQojOHmoIlCeuiq0WZiuse5niQZjDVIdrzptKe4yvwc/oq5BD+5sS/w
+         F0ai+ArLDA2jGyWCpPV4lVYH6QzcGfv58LXDzkLo35TNczVV14gIX5fKift547NN5hOq
+         yIIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1765400956; x=1766005756;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=ET/9QO44rDBP9OpaiN9wAo/Ddh/RnDMf08D3p9at9V0=;
+        b=AMO3aF8iaWRCmfT32/hbrtnJVMLtpMbw7QAJuKkkETo9bXqDdWY/uk+kK7aEulqhcz
+         ZuSP/eTwq1jKg/SW1vW+pljHUe2v0lP4TRVK7PrAhEW8aY/sJ/jrBO56Z0Bp/G18t1fE
+         OkLhv/jslP1QEuCgu12ZmV4iyjZ/M2XL6Q7mMDzoIF7T5OWBLb2GAVR9zlUi/OdWnDpj
+         3g5YIhviQd7TSajNFq1rshk4G5LxGIz+d1hwwFVl9e/ia9Zxy1e88KqoG12n38XHv4hj
+         1rLrBXfyPpClKUYebPi1TjRJl85gxn2Psr3FbjFw1LfWuBSeAkgAhUJQ3gF8HTIJuriS
+         u6QA==
+X-Forwarded-Encrypted: i=1; AJvYcCXvq+g89n6EV8SGm9rPGc9+4ezz41fnRj0cDYvWDC+K7CCD7ec+cJFqgyhZ2QfceHKmU13xlhPzoPbWkkgrKg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy+5CmtqnOhTu8lKBlHxrnbheSrXrkD6wHvtrWh7lTLkpsGeb0K
+	JyKO1R7RHloA/s8KO9dtn0SqEI6ojCa4WGhIlaxdWL6pM9Lr4ICvGgFCC2l9G1e6YpKuXPl/oGR
+	0XIoDdc//qqbpKHisWFzyZN6uIFOOgF8=
+X-Gm-Gg: AY/fxX7k0z9Y4XJwOvK4VbmYl+JCboegKD/6/iEbT0Uxf/ZlQswv5FB1zfc5Md3Q4jU
+	JJRivqKIkImqRGe/A63hQMwu++TzOPxpmoD1G1Qfxn/HHnIuo29jVz53l9+Dg1thSPCclF5s80M
+	FVUcxA8mFVpn969OiCZkS7btlaEIt/k1U9ojPviqOoyTJHxHJZRvdPpwxb4QObGUkscCw8HhKD+
+	Jyxv3pBUHER+7AYXP53bCa87azWqqeOYmxtNBp4+tsz/OnoOgiNg1vhpTt+cFIchWwK/Q==
+X-Google-Smtp-Source: AGHT+IHdCox96E67zeHTDjL/WO2yGbC6snv7WJvcW8t/0qFT9DOrWg8r9WPmdGrMqw4kUG3QDe03qZMxxZ+Jt9yBp50=
+X-Received: by 2002:a05:651c:1505:b0:37b:b8c0:b5d4 with SMTP id
+ 38308e7fff4ca-37fb208c3bfmr10569841fa.23.1765400955319; Wed, 10 Dec 2025
+ 13:09:15 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v2 04/20] drm/crtc: Add COLOR_PIPELINE property
-To: Louis Chauvet <louis.chauvet@bootlin.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Haneen Mohammed <hamohammed.sa@gmail.com>,
- Melissa Wen <melissa.srw@gmail.com>
-Cc: Alex Hung <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org,
- harry.wentland@amd.com, leo.liu@amd.com, ville.syrjala@linux.intel.com,
- pekka.paalanen@collabora.com, contact@emersion.fr, mwen@igalia.com,
- jadahl@redhat.com, sebastian.wick@redhat.com, shashank.sharma@amd.com,
- agoins@nvidia.com, joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org,
- xaver.hugl@gmail.com, victoria@system76.com, uma.shankar@intel.com,
- quic_naseer@quicinc.com, quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com,
- marcan@marcan.st, Liviu.Dudau@arm.com, sashamcintosh@google.com,
- chaitanya.kumar.borah@intel.com, mcanal@igalia.com, kernel@collabora.com,
- daniels@collabora.com, leandro.ribeiro@collabora.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Simona Vetter <simona.vetter@ffwll.ch>
-References: <20250917-mtk-post-blend-color-pipeline-v2-0-ac4471b44758@collabora.com>
- <20250917-mtk-post-blend-color-pipeline-v2-4-ac4471b44758@collabora.com>
- <5aaecb8b-08c6-4982-86c8-18ebb4544f4c@bootlin.com>
-Content-Language: en-US
-From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
-In-Reply-To: <5aaecb8b-08c6-4982-86c8-18ebb4544f4c@bootlin.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
-X-ZohoMail-Owner: <acd144d5-9bf7-4661-9f3a-5b55a8132b10@collabora.com>+zmo_0_ariel.dalessandro@collabora.com
+References: <20251209120559.2991698-1-chris.lu@mediatek.com>
+In-Reply-To: <20251209120559.2991698-1-chris.lu@mediatek.com>
+From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
+Date: Wed, 10 Dec 2025 16:09:03 -0500
+X-Gm-Features: AQt7F2pUKepbtCaHCSB5Wq10ueXFl0KdG1dLSST2gFITkH7g0XHmlMzylb_0RLQ
+Message-ID: <CABBYNZ+o_ewu7fwDLSW0c4BEosG-CqugK+7JgY3TBf2PcPrm8A@mail.gmail.com>
+Subject: Re: [PATCH v1] Bluetooth: btmtk: Trigger reset on firmware download failure
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>, 
+	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>, 
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
+	linux-kernel <linux-kernel@vger.kernel.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251210_130114_154698_5D75301A 
-X-CRM114-Status: GOOD (  20.92  )
+X-CRM114-CacheID: sfid-20251210_130918_471482_7902B708 
+X-CRM114-Status: GOOD (  22.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,113 +99,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Louis,
+Hi Chris,
 
-On 9/19/25 9:43 AM, Louis Chauvet wrote:
-> 
-> 
-> Le 18/09/2025 à 02:43, Nícolas F. R. A. Prado a écrit :
->> Add a COLOR_PIPELINE property to the CRTC to allow userspace to set a
->> post-blend color pipeline analogously to how pre-blend color pipelines
->> are set on planes.
->>
->> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
->> ---
->>   drivers/gpu/drm/drm_atomic_uapi.c | 49 +++++++++++++++++++++++++++++ 
->> ++++++----
->>   drivers/gpu/drm/drm_crtc.c        | 33 ++++++++++++++++++++++++++
->>   include/drm/drm_atomic_uapi.h     |  2 ++
->>   include/drm/drm_crtc.h            | 11 +++++++++
->>   4 files changed, 91 insertions(+), 4 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/drm_atomic_uapi.c b/drivers/gpu/drm/ 
->> drm_atomic_uapi.c
->> index 
->> b7cc6945864274bedd21dd5b73494f9aae216888..063c142fd9b656e228cfc660d005a3fbb4640d32 100644
->> --- a/drivers/gpu/drm/drm_atomic_uapi.c
->> +++ b/drivers/gpu/drm/drm_atomic_uapi.c
->> @@ -287,6 +287,33 @@ drm_atomic_set_colorop_for_plane(struct 
->> drm_plane_state *plane_state,
->>   }
->>   EXPORT_SYMBOL(drm_atomic_set_colorop_for_plane);
->> +/**
->> + * drm_atomic_set_colorop_for_crtc - set colorop for crtc
->> + * @crtc_state: atomic state object for the crtc
->> + * @colorop: colorop to use for the crtc
->> + *
->> + * Helper function to select the color pipeline on a crtc by setting
->> + * it to the first drm_colorop element of the pipeline.
->> + */
->> +void
->> +drm_atomic_set_colorop_for_crtc(struct drm_crtc_state *crtc_state,
->> +                 struct drm_colorop *colorop)
->> +{
->> +    struct drm_crtc *crtc = crtc_state->crtc;
->> +
->> +    if (colorop)
->> +        drm_dbg_atomic(crtc->dev,
->> +                   "Set [COLOROP:%d] for [CRTC:%d:%s] state %p\n",
->> +                   colorop->base.id, crtc->base.id, crtc->name,
->> +                   crtc_state);
->> +    else
->> +        drm_dbg_atomic(crtc->dev,
->> +                   "Set [NOCOLOROP] for [CRTC:%d:%s] state %p\n",
->> +                   crtc->base.id, crtc->name, crtc_state);
->> +
->> +    crtc_state->color_pipeline = colorop;
->> +}
->> +EXPORT_SYMBOL(drm_atomic_set_colorop_for_crtc);
->>   /**
->>    * drm_atomic_set_crtc_for_connector - set CRTC for connector
->> @@ -396,8 +423,8 @@ static s32 __user 
->> *get_out_fence_for_connector(struct drm_atomic_state *state,
->>   }
->>   static int drm_atomic_crtc_set_property(struct drm_crtc *crtc,
->> -        struct drm_crtc_state *state, struct drm_property *property,
->> -        uint64_t val)
->> +        struct drm_crtc_state *state, struct drm_file *file_priv,
->> +        struct drm_property *property, uint64_t val)
->>   {
->>       struct drm_device *dev = crtc->dev;
->>       struct drm_mode_config *config = &dev->mode_config;
->> @@ -406,7 +433,17 @@ static int drm_atomic_crtc_set_property(struct 
->> drm_crtc *crtc,
->>       if (property == config->prop_active)
->>           state->active = val;
->> -    else if (property == config->prop_mode_id) {
->> +    else if (property == crtc->color_pipeline_property) {
->> +        /* find DRM colorop object */
->> +        struct drm_colorop *colorop = NULL;
->> +
->> +        colorop = drm_colorop_find(dev, file_priv, val);
->> +
->> +        if (val && !colorop)
->> +            return -EACCES;
->> +
->> +        drm_atomic_set_colorop_for_crtc(state, colorop);
-> 
-> I don't know if this is needed, but you added a warning/early return for 
-> ctm/degamma_lut if file_priv->post_blend_color_pipeline is true.
-> 
-> Does it make sense to add this?
-> 
->      if (!file_priv->post_blend_color_pipeline) {
->              drm_dbg_atomic(dev,
->                  "Setting COLOR_PIPELINE property not permitted without 
-> DRM_CLIENT_CAP_POST_BLEND_COLOR_PIPELINE client cap\n");
->              return -EINVAL;
->          }
+On Tue, Dec 9, 2025 at 7:06=E2=80=AFAM Chris Lu <chris.lu@mediatek.com> wro=
+te:
+>
+> Initiate reset flow if MT79xx series BT failed to download firmware when
+> doing setup.
+> If driver is not able to get event after reset in the first section of
+> btmtk_usb_setup, the protocol is deemed unuable and driver will return to
+> prevent from repeatedly executing resets.
+>
+> Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+> ---
+>  drivers/bluetooth/btmtk.c | 11 +++++++++--
+>  1 file changed, 9 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> index a8c520dc09e1..8b1443b9e9cf 100644
+> --- a/drivers/bluetooth/btmtk.c
+> +++ b/drivers/bluetooth/btmtk.c
+> @@ -1333,7 +1333,7 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+>                                                 btmtk_usb_hci_wmt_sync);
+>                 if (err < 0) {
+>                         bt_dev_err(hdev, "Failed to set up firmware (%d)"=
+, err);
+> -                       return err;
+> +                       goto reset_fw;
+>                 }
+>
+>                 /* It's Device EndPoint Reset Option Register */
+> @@ -1353,7 +1353,7 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+>                 err =3D btmtk_usb_hci_wmt_sync(hdev, &wmt_params);
+>                 if (err < 0) {
+>                         bt_dev_err(hdev, "Failed to send wmt func ctrl (%=
+d)", err);
+> -                       return err;
+> +                       goto reset_fw;
+>                 }
+>
+>                 hci_set_msft_opcode(hdev, 0xFD30);
+> @@ -1444,6 +1444,13 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+>         }
+>         kfree_skb(skb);
+>
+> +reset_fw:
+> +       if (btmtk_data->reset_sync) {
+> +               bt_dev_err(hdev, "Mediatek do firmware reset");
 
-Indeed that makes sense. Will add in v3.
+This message is a bit cryptic to me, why do we need to print that you
+will be doing a reset?
 
-Thanks,
+> +               btmtk_reset_sync(hdev);
 
--- 
-Ariel D'Alessandro
-Software Engineer
+This seems to be doing a hard reset, which I assume you are doing as
+an attempt to recover by retrying to setup, but if it fails we may go
+into a loop condition trying to setup so we better limit the number of
+attempts.
 
-Collabora Ltd.
-Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
-Registered in England & Wales, no. 5513718
+> +               return err;
+> +       }
+> +
+>  done:
+>         rettime =3D ktime_get();
+>         delta =3D ktime_sub(rettime, calltime);
+> --
+> 2.45.2
+>
 
+
+--=20
+Luiz Augusto von Dentz
 
