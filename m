@@ -4,89 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1250D2CE17
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Dec 2025 04:48:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB66ED3B9BE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Dec 2025 08:10:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zMIVlrIRMHzT8RfJZ0XmrU2xGjPLrLeQG/AGz65dD1I=; b=XTleVq3BBlx3GKwCnoOXV+nrMY
-	MEVd4rnM7qm9wO1vG6A7Xvjyh07f1QaIwuOKBRnQ9HJqZhf+ZoDcGQAT6Q+ID2UfNl3LElf3BrQms
-	24qgBqxCVeEfWtetVNxCshTAuo+thEzS2VQA0cRbc4+6YHcA4Dr2rDZFrIJYqVTNMi1aTHejvHhfM
-	aLU8LhuVAjSHTev3/J0KJGaI6ND6K6b7D1lS1eIh7ttdz1AATPXc+mxIib7FlWK0UUSzQiTsNPVdu
-	aKTMawE/Q0besfF8+ErjjRPaNlGxU2/3h1l+i43CeqmcwKV5Uoi0xzCyj7VfuoEE3zSnKRlTPfVUF
-	vmj3NegQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=F/r5pmiJN3v1AskOwuE+i/A+81DVzpGB+VpOdZFvUf8=; b=MwUxUQ9ZRqs3lGp/Hp3ymPizs1
+	C8iEw6EgY4wt1uN1jXj1ec00gljeK2/qFmTsQpUtH28gF5AmxDYia/XWa+MmgwsZLX6Rf49Ec7uOh
+	ZpUVtgy5BiP2iMzsgc4usXX8U15yLBHlDGtBZpUa7YS7ywvQ1XQVLpuJxZm5SuP5BO1ShBmB9CoKu
+	IMYAP65NlIszWyBvr/kPgSyIE8JN1JIJ/tXymX0V+h4Q5tkYL6+WXsBg+DbQcSkAjrQxa8qYnLVSS
+	9GFb6KAML/aSfXr1oJdm3tMIMQfM7RBq+oPSFZceDeqyT+XhQ9ajqXAHQzhzumhun3USfiuD3hNUl
+	8boMK5FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTC7j-0000000F6U8-04Nq;
-	Wed, 10 Dec 2025 04:48:23 +0000
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+	id 1vTFHK-0000000FETp-2naS;
+	Wed, 10 Dec 2025 08:10:31 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTC7f-0000000F6TQ-2GJP
-	for linux-mediatek@lists.infradead.org;
-	Wed, 10 Dec 2025 04:48:20 +0000
-Received: by mail-pg1-x530.google.com with SMTP id 41be03b00d2f7-bd1b0e2c1eeso5019456a12.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 09 Dec 2025 20:48:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1765342096; x=1765946896; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=zMIVlrIRMHzT8RfJZ0XmrU2xGjPLrLeQG/AGz65dD1I=;
-        b=gnqPxxWGZMK1haoPkpLT11uZ6opQEoBuvugQNtLgJ/zllV9FIVrDcaGLhJD/Y3etPx
-         OhPxEsaBKfdCi6Kzrtujrdk1erDM4UZ0idh3vwi/B9md28FJPKY1h1gNnGhR+5Ojnntd
-         ewXM1rLdUauCjDpVlNMEfFWH8wcxNMim0K77X0iEwCLee+vAHrmgCtvbH6t5k8ApYYTd
-         b6tGJ/VIRSIaPdZ4xGiJo395tj8zxZsp1qWIq4qryoPaJodvfopGGFhJhi/7QTqoJfHo
-         8iuave2w0Ogh4cEAoqjFwvvuyWeaDrGj1BVE5nt5k7PODH5vg5FWOsTlAeQbQGq5tfvA
-         az9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765342096; x=1765946896;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=zMIVlrIRMHzT8RfJZ0XmrU2xGjPLrLeQG/AGz65dD1I=;
-        b=vEx8XjPNlcKRSnLZMjBNoF9zrnr/7jFPCrTv0jw9LouNzUmzh/cee+0rkANw+N7w4a
-         qhqnv1/iIRW4RWC3ErFrtfXDnMTMZjAZRBxWW74+4WuoR9GkBH2c23MaNPPrf9pY6Sgj
-         rmBD7za8Sgegeo2aBCkQPC0hqC4eFGaC16MWhpNNXeT7XhT+KL3tNyaci8lnZB4svvTa
-         PJRagGkNx3Uz73LI4ThG88wShfh84ujuNQdXtrKNeyEvLU1SVuKw6LTdmLzfgb3ZEQNS
-         r8laILwSQcBn78YiwRTl2vPQjcqgea0+ekCr9B1/Mc4wui6aYwzLi8rBaISOXE4EjE7O
-         7rmQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVgSiIUTEeXQVCWiw4WmRC0eqbiaO0rjacNX/I+jkfMNpnJv5YoEYdPojdV60gEwiJng9irF07HAe9p6KY7Ng==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyFDBHCRt3jUSw0L0UTdv8s2xXAP7WB1VrQU/r8NCOBtm36LOcC
-	D8CXdqVolgonLbMMMkdX5LcogYPOCXJqM+ovIhNtN6a/krn6BLicYAS9
-X-Gm-Gg: ASbGncv3hEg1YGUj3tUfkk5Rp9HmZHHFtdtdetxUG1uc7aesP/OZfbrEIC++9/YVGEm
-	7opoaOgIQt+CLdrFATVwLd+zi+rvLAbe3OsoMnuWe6fDC6h1OF8p73DV/cLDnFKqpzFmm8RmdX3
-	GUHAM4aipqP70bxYZ1jgUNTLCzlDZSlJ3FrEmWnGfG5hGdfBsT3F7nJedZIxaqx+o0GRZlHo1CR
-	arRNzwTkk30T4sj5n3P3uAqIs2F7VTTOTh8kTJ4a9IAJBriKTz+uE447R9oVWK+Ei7KD4zCyCCV
-	Dzu6E4Pkj5bZf2lgivaU4n8k8vMZ+uVMS5ta9cR+hTWwZXtQyGlBYtAcHJ1AKP1BIYo3fMFGaMr
-	dP0i9XXnOed9/k1D/IT222j/vfBMJJbiNZ9XlXHgye5HKpWHbTBbQe947sq4l7OYf4C8smu0kRP
-	oE+pdPr61/hE5NsMuSuo4lOMQT2IaG/fG8EDWZa6NIZdd8F0+67Kpg3orDdaHFIiU=
-X-Google-Smtp-Source: AGHT+IGwhF10o8oXBvj6kF3XVHLwewCx7u/bdxSK0ksb+PGLHRX/iWeDMbigiy2qXuWF8UnfAfUzMw==
-X-Received: by 2002:a05:7022:4299:b0:119:e569:f626 with SMTP id a92af1059eb24-11f29689922mr965432c88.31.1765342096391;
-        Tue, 09 Dec 2025 20:48:16 -0800 (PST)
-Received: from google.com ([2a00:79e0:2ebe:8:205a:5a0a:c468:f44f])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-11df76e2f3csm72522829c88.5.2025.12.09.20.48.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Dec 2025 20:48:16 -0800 (PST)
-Date: Tue, 9 Dec 2025 20:48:13 -0800
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Haotian Zhang <vulab@iscas.ac.cn>
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	louisalexis.eyraud@collabora.com, bisson.gary@gmail.com, julien.massot@collabora.com, 
-	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] input: mtk-pmic-keys: Fix potential NULL pointer
- dereference in probe()
-Message-ID: <inmlorhcpi5g7kfs45rhtpwq7aatmzxemgnulamvjqxmmmtl2j@vfcd5kndbhep>
-References: <20251210030013.913-1-vulab@iscas.ac.cn>
+	id 1vTFHG-0000000FERr-0m8p;
+	Wed, 10 Dec 2025 08:10:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1765354222;
+	bh=hAQnAi/fXsMW1KyzUEUN13mP8zTSDNw3Zz+EQGCHeQU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=g7io0WfbYA7eXtAQztLl/y1SkRerM9o+T15i4KdR9PMoPoxwUH+vKqTVTWhWN96so
+	 P6Wwb9Doam0XT6o3ft8aFw4syl0vsQrFF5QXUg0PEoizysDsYHawC/B7J3qy39J+kC
+	 3gi/B3gifC/+cF1zZz6Ouzgv1+c1jEupzMtDazFt87sZTQ7+aOxSl768943G6SJmWP
+	 n9gKrT18/rpqa4r5TtEtmU5elBpQr/wGqjmPfVTIqd4FwaFzlfPBUmHAjH2YYlE1De
+	 RaN9RSXCQt6Xa339IroW/u91wnoQLqYUvjtKRWuyLbzcFpgqQATieAujFlfc+2DRU5
+	 iJKVJctxVPyPQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 823E917E1122;
+	Wed, 10 Dec 2025 09:10:21 +0100 (CET)
+Message-ID: <17d99a64-8648-4fbc-9b7c-581f882d02a1@collabora.com>
+Date: Wed, 10 Dec 2025 09:10:20 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251210030013.913-1-vulab@iscas.ac.cn>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] media: platform: mtk-mdp3: add WQ_PERCPU to
+ alloc_workqueue users
+To: Marco Crivellari <marco.crivellari@suse.com>,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: Tejun Heo <tj@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>,
+ Frederic Weisbecker <frederic@kernel.org>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Michal Hocko <mhocko@suse.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20251107141303.223254-1-marco.crivellari@suse.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20251107141303.223254-1-marco.crivellari@suse.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251209_204819_602000_B1A8FEBC 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20251210_001027_466271_231422B3 
+X-CRM114-Status: GOOD (  22.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,24 +80,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Haotian,
+Il 07/11/25 15:13, Marco Crivellari ha scritto:
+> Currently if a user enqueues a work item using schedule_delayed_work() the
+> used wq is "system_wq" (per-cpu wq) while queue_delayed_work() use
+> WORK_CPU_UNBOUND (used when a cpu is not specified). The same applies to
+> schedule_work() that is using system_wq and queue_work(), that makes use
+> again of WORK_CPU_UNBOUND.
+> This lack of consistency cannot be addressed without refactoring the API.
+> 
+> alloc_workqueue() treats all queues as per-CPU by default, while unbound
+> workqueues must opt-in via WQ_UNBOUND.
+> 
+> This default is suboptimal: most workloads benefit from unbound queues,
+> allowing the scheduler to place worker threads where they’re needed and
+> reducing noise when CPUs are isolated.
+> 
+> This continues the effort to refactor workqueue APIs, which began with
+> the introduction of new workqueues and a new alloc_workqueue flag in:
+> 
+> commit 128ea9f6ccfb ("workqueue: Add system_percpu_wq and system_dfl_wq")
+> commit 930c2ea566af ("workqueue: Add new WQ_PERCPU flag")
+> 
+> This change adds a new WQ_PERCPU flag to explicitly request
+> alloc_workqueue() to be per-cpu when WQ_UNBOUND has not been specified.
+> 
+> With the introduction of the WQ_PERCPU flag (equivalent to !WQ_UNBOUND),
+> any alloc_workqueue() caller that doesn’t explicitly specify WQ_UNBOUND
+> must now use WQ_PERCPU.
+> 
+> Once migration is complete, WQ_UNBOUND can be removed and unbound will
+> become the implicit default.
+> 
+> Suggested-by: Tejun Heo <tj@kernel.org>
+> Signed-off-by: Marco Crivellari <marco.crivellari@suse.com>
 
-On Wed, Dec 10, 2025 at 11:00:13AM +0800, Haotian Zhang wrote:
-> of_match_device() may return NULL when the device node
-> does not match any entry in the driver's match table.
-> The current code dereferences of_id->data unconditionally,
-> which can lead to a NULL pointer dereference.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-How are we getting into probe() without matching compatible?
+> ---
+>   drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c | 6 ++++--
+>   1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> index 6559d72d5d42..9083367ae2e4 100644
+> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
+> @@ -255,14 +255,16 @@ static int mdp_probe(struct platform_device *pdev)
+>   		goto err_free_mutex;
+>   	}
+>   
+> -	mdp->job_wq = alloc_workqueue(MDP_MODULE_NAME, WQ_FREEZABLE, 0);
+> +	mdp->job_wq = alloc_workqueue(MDP_MODULE_NAME,
+> +				      WQ_FREEZABLE | WQ_PERCPU, 0);
+>   	if (!mdp->job_wq) {
+>   		dev_err(dev, "Unable to create job workqueue\n");
+>   		ret = -ENOMEM;
+>   		goto err_deinit_comp;
+>   	}
+>   
+> -	mdp->clock_wq = alloc_workqueue(MDP_MODULE_NAME "-clock", WQ_FREEZABLE,
+> +	mdp->clock_wq = alloc_workqueue(MDP_MODULE_NAME "-clock",
+> +					WQ_FREEZABLE | WQ_PERCPU,
+>   					0);
+>   	if (!mdp->clock_wq) {
+>   		dev_err(dev, "Unable to create clock workqueue\n");
 
-We already had a discussion about this in [1] and patched the MFD
-portion to not use generic driver name when instantiating the keypad
-sub-device.
 
-[1] http://lore.kernel.org/r/20250630-mtk-pmic-keys-fix-crash-v1-1-e47351fa9d1f@collabora.com
-
-Thanks.
-
--- 
-Dmitry
 
