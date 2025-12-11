@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 421E2D43361
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Dec 2025 23:17:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F2DBD43360
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Dec 2025 23:17:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:In-Reply-To:References:Message-Id:MIME-Version:Subject:
 	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CWALxHwSjMipreZEX2Qfe1SphmPwPCWuPZgQtUxY9NY=; b=X9bGH6cyMN5my3oBzuMM5QuBEa
-	1j/uaIuvIyZXIBT7PYdk+Sw5+kKwYrm7aT72WcLpEwzAlQ5N+F+YYxmnQK7CHP7qe9GUHfVnJFjt1
-	BKNjQpsKL6L9Q3cVOnEKyglg+UsEnUukBoIYnU2ervGTz5PRwtkba0cY68Il5nB0Se3X1de1/jI10
-	2RrVW6l4etJIH457Fw4gvgmzTfYEPY8rx15FwDqOHQOAsW5/TBlJmyHwYCSSPto68LIVIk1RkFeIP
-	RgPuAomutGlQRfWiRZzuIBa1OJw0lTgldSN0IhsQlcNA0ccg1lLDBnc6hCDUhivHLBmx40HZR8m8s
-	K+czNM+w==;
+	bh=nS5xyU79VC7pO9m99ZFsFBSh8nnXakLQbi3bsJkRuyw=; b=PFX2W3kvVqd74sy8odiGHU3Z8I
+	+g02wqSk43xDQlx9k2glLdkPxOH8OY8fpJLxKAWir51x+K8cBBd9SjL/YXdH4trPbN1fIrKo9oJxR
+	vaK/8IKPeYjSyEW0t+5ABDTN/86HjjSCPSu/p1DPB+s9OYBtWgkAKH8XgZT7cRj8mL3hrE7h8mxj3
+	m7lSho6ozjy6+1MoQ0JqMoe2G0xfImMPAvyTnJrXO7VpPHjY9M8Hmv57XFcaj0z4Gb1NJ/sS3R+as
+	mX3FjcSyXFd/WeP3udNo7edWHRYldD5aw2AOEcLiAtCThPjuhblq2WyNqx8/N1AlCjHSS3drDHUfX
+	dVdKT/CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTpuC-0000000HOXD-0U4R;
-	Thu, 11 Dec 2025 23:17:04 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1vTpuH-0000000HOcy-03Fr;
+	Thu, 11 Dec 2025 23:17:09 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTpu6-0000000HOSb-0mSR
+	id 1vTpuD-0000000HOYq-2RlT
 	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Dec 2025 23:17:01 +0000
+	Thu, 11 Dec 2025 23:17:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1765495017;
+	s=mimecast20190719; t=1765495024;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=CWALxHwSjMipreZEX2Qfe1SphmPwPCWuPZgQtUxY9NY=;
-	b=hx3VIWw1g/dpeYylkTZtdcxpBB0T9t2KJkyKB3m7w4UFYFIno0bS9r+LoicOIpA1FVnPtT
-	XsLPCEX5WmxnijRdh1LHTLdnODoXnGKRFz1TMmUQSS+movyuQRiU6TZ1uqF/cC/P/idIvz
-	bWjojXkEhYgKGEl+mRAfGvo+N/6paPI=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=nS5xyU79VC7pO9m99ZFsFBSh8nnXakLQbi3bsJkRuyw=;
+	b=OqgKHijKUWbjSA2kJ/9NTsnaGuHNrNVvvJBuv9LIG9zuHUP1zBmLmf0wySuGjA8dQSsHSL
+	qu0ZLT66W0xIjALVREiwfggdkHc4uE8w6f/1D0JiVslXwQMXzagahS7tYF4sWRLLsdzRgu
+	1jBIqPP/psjFn6wN5FDNP1kydSIDCu8=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-54-k2zmtQleOcGyKIC3pwfE7w-1; Thu, 11 Dec 2025 18:16:56 -0500
-X-MC-Unique: k2zmtQleOcGyKIC3pwfE7w-1
-X-Mimecast-MFC-AGG-ID: k2zmtQleOcGyKIC3pwfE7w_1765495016
-Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8b1d8f56e24so147580785a.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Dec 2025 15:16:56 -0800 (PST)
+ us-mta-311-9RGMalTzMpuUtOhwa1Pa3A-1; Thu, 11 Dec 2025 18:17:03 -0500
+X-MC-Unique: 9RGMalTzMpuUtOhwa1Pa3A-1
+X-Mimecast-MFC-AGG-ID: 9RGMalTzMpuUtOhwa1Pa3A_1765495023
+Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-88239fa9ec9so15789766d6.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Dec 2025 15:17:03 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765495016; x=1766099816;
+        d=1e100.net; s=20230601; t=1765495023; x=1766099823;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=CWALxHwSjMipreZEX2Qfe1SphmPwPCWuPZgQtUxY9NY=;
-        b=u7nUTRAnlU223P45SBYxgSIiCL6yBb2qJg9YcvUh6HnLl9lTGQ/I+2ERQFf4IJLcG3
-         8ecTp+5wZy8km4+6bkboS4VcXJ5fRSXX7WouEOO/TuHkD1t2maCZ1nZuJaWogFc83Q7C
-         bOZqLPVXe14Eo+ldS1VHlak9OYkmw+NCyM6SNB29bNhC9BM6x+TWovPCW/JoHkA0lt+5
-         957GtWSE16ZR+wWVjsuhMR7fcKha4JNrC9KiL6O7e/9T3H5PARsMRemDmu2RlHWz1oik
-         Y2Bfbb1/tClDmc30FJMT74daxZDxNroULDJ4kgq3m2HmkTV3B5rewk83fXqusFYn2mvl
-         4lfA==
-X-Forwarded-Encrypted: i=1; AJvYcCV4a+0D2y7X7sbb5J7bi7rQ7SRVIpIy/eKnrrvxYVyXCGrwnqSAA+bv7UKgim+xyfGC2YzBt6f1Z+9qR22mAw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzGfjHTsgU4dEX6VfaDzQerDqhysH43Ubmsj7l1q8RrnJAWbmtO
-	RgEuICUAXRsEgcTscAQhhPWwksJmJFH+COea10KlICn8EnHm1HgksEEaNAw4XpGW1YYINOdcB68
-	G3S2rzxZgzk1MYsrPu4HsBCAe4tiSHieHYZxh3Ymoyqnyw2MHOOwNLsVYV6xRRFfuNYPLVe6wFQ
+        bh=nS5xyU79VC7pO9m99ZFsFBSh8nnXakLQbi3bsJkRuyw=;
+        b=fSLT5TmRN+xQqrFqnNNcVo5H4SoAxYgK0NLX8+ScoIZhjy0tSqkaOBicsuaDKEnfIm
+         9xURPfZdwPJ7iGWLvB+J5aPHidDC6RJf6F/ZdGyjqvd2vn3GVqa9l61zuos0qhS4fy7b
+         gdMQOOiEejO9JkRMQ05zDsI48ip+r9EOlZZonT8KJFOt+Q1IbeZqiCc7YyGJaiT6pk6V
+         T2YvrdrpKTbK7dt4Fpbm/LT89pxax1mqciPCsDyrJ+IU5+PWdZPCsLjPF2BbsRoas3yY
+         GzQQ0pnTBr9qHwLJns8JWM5PKFTstLXkXprzQKUMu1TkGYf0dECdT5KMzNzwzZSXRNCD
+         4rJA==
+X-Forwarded-Encrypted: i=1; AJvYcCXf0RXQHBkDuwsIBgTos3jVFP0ZBqxHLD5FgP1mZfvpD1GlliUNIwRFD14KXVWzfCK7ZzNadNfTdU2D6ln3mg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwvdZAGkWCjsLfzI5i96JjMHRcXRArmrVyRf4Bz/213FDgsTXbX
+	9PGC0U3DJq74ntkU6AZTRBvH/FgFYO14gVJjQJNwS/RJ/asqQs69ofRp4xlybpS4+Y9T48WoDpX
+	bQbJ4xri4xa0A+ScO2UzD6PGa0LmIk6mcZIJtRMQNo0i8JaGnS755ojL3Qh2N6ht9xDf7Rw29HA
 	==
-X-Gm-Gg: AY/fxX7FuI3Ln2KcBVEm049e9F7RCF0fs/Wi7vjgyXxdTzz55yQdZGiltaVDcfVMKsL
-	XTiCle81iAyRhPxSErbJpC5+jC9CsZAHqQoOExpLragCJveXsKNpodbvFAikXVjex1tBsb5gtID
-	eaFMwbVXwirEeVzURvUqy9Oqh7tQCMsH8GzxJRmB6XQkb7i130FP917Us8Eouoc4FZhQX/o56No
-	TZ2caZFxabEjfqb4NBpjKQVj+5nx8LN5DleA8Y4a7XU6emA9dqzLDIBpmqZ96l7mNVD+wYhqZ4r
-	fbYkjx2zS1g79LqsTccC5HJbocg1FYEwsuwZ+ZSbcw2j9NyynTV55z6Gy2H3cCTqZ0nlDX7Z6aE
-	qI9dLOIn6UtuJ+TOt89z5qW0u/DFX8dj9OfvCJbPMy1K5mnMNB1wK/Q==
-X-Received: by 2002:a05:620a:29d2:b0:8b1:8858:6ead with SMTP id af79cd13be357-8bb399d90bamr39281185a.11.1765495015846;
-        Thu, 11 Dec 2025 15:16:55 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH2s8wwcOmxwXaF7bKZgVpwocL48364JqbwVZMFBYNgdRIsZcitJ0mH0HHmDGJg8J0urTG96Q==
-X-Received: by 2002:a05:620a:29d2:b0:8b1:8858:6ead with SMTP id af79cd13be357-8bb399d90bamr39277685a.11.1765495015467;
-        Thu, 11 Dec 2025 15:16:55 -0800 (PST)
+X-Gm-Gg: AY/fxX5vQcT6l5/8uVGnbbG+lNgx6ki+vA7FFbHyAOFl9vcBDRjfXAc9zCyAn3DhOUc
+	tCzsuY4aIiGCOhAtpfSF0qQ1ZUGB2hhjbWMYliPQ+l8U+r5CYCxV8vswA6GjYaSi5pMFC/NAj1t
+	nHorCMK0eYxQwbdvBz6XDcCn72uNDheYQTG5vn7BcatGDbZdcZ2UXGI6tIHElsk9xYATkUjtAey
+	O7Cljv7AWVTYdvNOKc42xQMPJg7hKWvRGrZaqIbdeh/4IKHN1dH9BCN8qi2jQLORmNTTtNvxeGe
+	aVHueyclRAlOuKNYzxMsnC6Kx/NOaw8RAI9w0PZrvcsl7RDv+D+uFmssk6SaaNWbnDzAqnkg50A
+	TLWhfiGPzm3eFI+p7y/u7PpxPFzRvj6Fd2gWrtZSLJCJrsl4cZ2qkhQ==
+X-Received: by 2002:a05:6214:da3:b0:87c:2bb6:741 with SMTP id 6a1803df08f44-8887e1b44f3mr5869486d6.29.1765495023038;
+        Thu, 11 Dec 2025 15:17:03 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHmZS1L2hV5aQ7zoKqGzhOlVyBusG0wgauo3NmQeNT0uE4Z7Yi8ZXh/Hs5OUyLkYfq61AO84Q==
+X-Received: by 2002:a05:6214:da3:b0:87c:2bb6:741 with SMTP id 6a1803df08f44-8887e1b44f3mr5869096d6.29.1765495022716;
+        Thu, 11 Dec 2025 15:17:02 -0800 (PST)
 Received: from [192.168.101.129] (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-8bab5d4edbasm317873585a.51.2025.12.11.15.16.49
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8bab5d4edbasm317873585a.51.2025.12.11.15.16.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Dec 2025 15:16:54 -0800 (PST)
+        Thu, 11 Dec 2025 15:17:02 -0800 (PST)
 From: Brian Masney <bmasney@redhat.com>
-Date: Fri, 12 Dec 2025 08:16:20 +0900
-Subject: [PATCH v3 2/9] phy: mediatek: phy-mtk-hdmi-mt2701: convert from
+Date: Fri, 12 Dec 2025 08:16:21 +0900
+Subject: [PATCH v3 3/9] phy: mediatek: phy-mtk-hdmi-mt8173: convert from
  round_rate() to determine_rate()
 MIME-Version: 1.0
-Message-Id: <20251212-phy-clk-round-rate-v3-2-beae3962f767@redhat.com>
+Message-Id: <20251212-phy-clk-round-rate-v3-3-beae3962f767@redhat.com>
 References: <20251212-phy-clk-round-rate-v3-0-beae3962f767@redhat.com>
 In-Reply-To: <20251212-phy-clk-round-rate-v3-0-beae3962f767@redhat.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -100,23 +100,23 @@ Cc: linux-clk@vger.kernel.org, linux-phy@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, Brian Masney <bmasney@redhat.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1429; i=bmasney@redhat.com;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1767; i=bmasney@redhat.com;
  s=20250903; h=from:subject:message-id;
- bh=b7GdsrXKjZPd7UPmB5Kvn1MxBtjV4+5gYAk+zH2wXY4=;
- b=owGbwMvMwCW2/dJd9di6A+2Mp9WSGDKtAy4eruXZckDLUdGk4NCf1DMH3S23NTlWqza05L27d
- j9Mk3l3RykLgxgXg6yYIsuSXKOCiNRVtvfuaLLAzGFlAhnCwMUpABN5vo3hv/s5eRZ5xg+sCw0l
- u954X731i2Wfsyj7rWvTHExexWhducDwP2M694nJjgtaZ3hrX35Y2b7FPuB4oXXsynttk8VNEja
- v4wYA
+ bh=dOjKoMKrjNLxDaFcShGY+TJnvlU5rN6Rp3COkTM41N0=;
+ b=owGbwMvMwCW2/dJd9di6A+2Mp9WSGDKtAy6tW+pYkrBzwUUlxS0J0x7VsluaTZ6+7OiGG/29C
+ o0TxA+mdpSyMIhxMciKKbIsyTUqiEhdZXvvjiYLzBxWJpAhDFycAjCR1qmMDNvD7Qu+nZTe//Nz
+ zwtxS0fpvY6eBWGv0n+W8BRfjc2fqcTwv2ByUtGe3QVXa0ztl0SYGceaG7w8xMv6I5Zpvld6Td8
+ bDgA=
 X-Developer-Key: i=bmasney@redhat.com; a=openpgp;
  fpr=A46D32705865AA3DDEDC2904B7D2DD275D7EC087
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: EQqXSLrrQyS-VeDZ3ZfGqIzjEo2rpQCTB6ZTrQSwNa0_1765495016
+X-Mimecast-MFC-PROC-ID: qrV8P6Wh2zCZQqZ44Of2-KAZEZJjCD38CKPnxtR-dyA_1765495023
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251211_151658_308792_B6945470 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20251211_151705_733460_313EF322 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,15 +137,15 @@ on the cover letter of this series.
 
 Signed-off-by: Brian Masney <bmasney@redhat.com>
 ---
- drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-index e51b2d13eab473dddace48c75c2a8d73c8c65635..b0b6497e7eedcb6867541b573d22156ded29a4d5 100644
---- a/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-+++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-@@ -90,10 +90,10 @@ static void mtk_hdmi_pll_unprepare(struct clk_hw *hw)
- 	usleep_range(80, 100);
+diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c
+index d04758396046363ab9edc584ae10bf31e9c5fb0f..58c6596c8c20bdacf96a97709b8f5709f447e85b 100644
+--- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c
++++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c
+@@ -118,18 +118,18 @@ static void mtk_hdmi_pll_unprepare(struct clk_hw *hw)
+ 	usleep_range(100, 150);
  }
  
 -static long mtk_hdmi_pll_round_rate(struct clk_hw *hw, unsigned long rate,
@@ -153,12 +153,24 @@ index e51b2d13eab473dddace48c75c2a8d73c8c65635..b0b6497e7eedcb6867541b573d22156d
 +static int mtk_hdmi_pll_determine_rate(struct clk_hw *hw,
 +				       struct clk_rate_request *req)
  {
+ 	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
+ 
+-	hdmi_phy->pll_rate = rate;
+-	if (rate <= 74250000)
+-		*parent_rate = rate;
++	hdmi_phy->pll_rate = req->rate;
++	if (req->rate <= 74250000)
++		req->best_parent_rate = req->rate;
+ 	else
+-		*parent_rate = rate / 2;
++		req->best_parent_rate = req->rate / 2;
+ 
 -	return rate;
 +	return 0;
  }
  
  static int mtk_hdmi_pll_set_rate(struct clk_hw *hw, unsigned long rate,
-@@ -170,7 +170,7 @@ static const struct clk_ops mtk_hdmi_phy_pll_ops = {
+@@ -223,7 +223,7 @@ static const struct clk_ops mtk_hdmi_phy_pll_ops = {
  	.prepare = mtk_hdmi_pll_prepare,
  	.unprepare = mtk_hdmi_pll_unprepare,
  	.set_rate = mtk_hdmi_pll_set_rate,
