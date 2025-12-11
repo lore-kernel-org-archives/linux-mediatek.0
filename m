@@ -4,66 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7266ED41C35
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Dec 2025 13:34:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12CF0D41D55
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Dec 2025 15:17:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=87k6ZOPMZjikEVuPQMcOElrCO2sbaSMGE+CuXeuUymE=; b=4iCsi1iP+Oenytapl8X/mQmTTg
-	HCtiYT63IU0L07JVxWRl+eFKvG9PffIOsszGe6sd7Zf5NzqThcbhl4n3VyCwX9JC+QEXakh0dzwoK
-	29+Q+U8968dFth6HqyCGkuOpgLVYGVHuYhBTmfPQM5l6k5YIg/fCS7ceZdMCBOR4yiZfCh/xiKVxT
-	MFVEUxti4vV0mzi47OX0Z/4ReXuWO5kRwJCeJ64gHHtUQhF/WEoMxXIojoY7k4qVWmofT0i16FYaQ
-	LexxEmpbVQOtGOM1NOcUORjA/lTrrSPt13s1aYb7xeTVR0VWSsrKo+BGHtOLP+eGxBf6nWa2yFf2y
-	x19PVTGQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=N/SEPPS3LkYORhwqK+Trj2yot7q9tIQx0jdFwhoKT5g=; b=waVXlqaYCyKP2WiRVh5I8Kt+yi
+	QP3fUXSKKJob+gIVqTDcgzu7ln7AbzE52ARCUa8e89oscnBSaIdBUsO1QQODKnBDGop2g4hygjsCY
+	4V4tdIUl1456pWI28eK+APDJ1xt1SVGE14jBOOrL7H8m5u4YJPIMXCA+jF0CfeuCbfTe29v+ZjQIQ
+	z0SMw0gRW/bvTp+MbPKYDgaLCQY0Lq0zNywZhFsvV/CCxqPGWltNbi1PExIBHECAnMQJczP/Vmxfy
+	zqobNMIiV2sqR9M3pXAbTqA+c58IVk+cY6FwyloWNi/Ev2xnUiFLFAhKCdjzsrCTbazVg6bkKAK6x
+	+GH+76tQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTgoi-0000000GeF2-3dl6;
-	Thu, 11 Dec 2025 13:34:48 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1vTiQ2-0000000GlDR-3DJ6;
+	Thu, 11 Dec 2025 15:17:26 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTgof-0000000GeEU-3soV;
-	Thu, 11 Dec 2025 13:34:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=87k6ZOPMZjikEVuPQMcOElrCO2sbaSMGE+CuXeuUymE=; b=Y+pMqO07thAfXDflKjPCaw9UDH
-	cefJt4/vw4yCPrfXRYr0yVTO9QDamI9Q7/ELHXhBojx8USvqA/wAKy4Wj3LWuZsrQr1kg6fVHFia+
-	Qx/kGfFBWcY26PbDF4mP6ek5z7u7h7/GSRT+h2gCgOAF5n5q+BItTusLN5f3G4ErqhV4=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1vTgoQ-00GeC8-MV; Thu, 11 Dec 2025 14:34:30 +0100
-Date: Thu, 11 Dec 2025 14:34:30 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Miaoqian Lin <linmq006@gmail.com>
-Cc: Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH] net: phy: mediatek: fix nvmem cell reference leak in
- mt798x_phy_calibration
-Message-ID: <57437939-6983-4db8-9178-dd19f1c7b971@lunn.ch>
-References: <20251211081313.2368460-1-linmq006@gmail.com>
+	id 1vTiQ0-0000000GlD0-0POc;
+	Thu, 11 Dec 2025 15:17:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1765466188; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=L9VYmwF1ZV8mBvucp3svl+n1MZEnWQ04BL2BhNVuEMK6dCSfOeQuAT97cDSJwI2UtS5eS+maNpMT36+E1J9CzLenf0SwAHPud6VltN4mVmuujvF+jwhF8COSljdNWrlZT/Y/wOvAOC01CvvYY5bjjmtQaHkZdf/a+uLsc16RwWE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1765466188; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=N/SEPPS3LkYORhwqK+Trj2yot7q9tIQx0jdFwhoKT5g=; 
+	b=Yv5af2b0YtOIVbVBwQckS9812m+mnbuhUpQ4QpChqPvKJwPrZkAnyBH0ciyo6jBkiGQTMPUGEoez+4bySY1CUTrunn3Earx6ny21zE6HODfZe6SesicfMLmZQu8RGOHO0UvdGh0TcLON91nyH2W4xLfWl4K95ch6Wn3HUu69A6U=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=ariel.dalessandro@collabora.com;
+	dmarc=pass header.from=<ariel.dalessandro@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765466188;
+	s=zohomail; d=collabora.com; i=ariel.dalessandro@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=N/SEPPS3LkYORhwqK+Trj2yot7q9tIQx0jdFwhoKT5g=;
+	b=L/jXXvCBWUVNoYDSVpKQzIj0UZfcnyE8Lh8Z2YHt8KxEHygIUMmoLAroU/yz9igs
+	IHcH9pFbI6OQw8HIoZSj+W+05VcMrgEAQmqiNCbwAlVPkFT3iJ1IBBc9QiyKK5pMI0M
+	h8uNTJ5v12VQvdswTB6xWbFG8lMowpjEs86OuFbU=
+Received: by mx.zohomail.com with SMTPS id 1765466186652613.9579128013164;
+	Thu, 11 Dec 2025 07:16:26 -0800 (PST)
+Message-ID: <68c83842-16e9-429b-96c8-50c8a15c659c@collabora.com>
+Date: Thu, 11 Dec 2025 12:16:08 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251211081313.2368460-1-linmq006@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFC v2 07/20] drm/atomic: Pass post_blend_color_pipeline
+ client cap to atomic check
+To: Harry Wentland <harry.wentland@amd.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Haneen Mohammed <hamohammed.sa@gmail.com>,
+ Melissa Wen <melissa.srw@gmail.com>
+Cc: Alex Hung <alex.hung@amd.com>, wayland-devel@lists.freedesktop.org,
+ leo.liu@amd.com, ville.syrjala@linux.intel.com,
+ pekka.paalanen@collabora.com, contact@emersion.fr, mwen@igalia.com,
+ jadahl@redhat.com, sebastian.wick@redhat.com, shashank.sharma@amd.com,
+ agoins@nvidia.com, joshua@froggi.es, mdaenzer@redhat.com, aleixpol@kde.org,
+ xaver.hugl@gmail.com, victoria@system76.com, uma.shankar@intel.com,
+ quic_naseer@quicinc.com, quic_cbraga@quicinc.com, quic_abhinavk@quicinc.com,
+ marcan@marcan.st, Liviu.Dudau@arm.com, sashamcintosh@google.com,
+ chaitanya.kumar.borah@intel.com, louis.chauvet@bootlin.com,
+ mcanal@igalia.com, kernel@collabora.com, daniels@collabora.com,
+ leandro.ribeiro@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Simona Vetter <simona.vetter@ffwll.ch>
+References: <20250917-mtk-post-blend-color-pipeline-v2-0-ac4471b44758@collabora.com>
+ <20250917-mtk-post-blend-color-pipeline-v2-7-ac4471b44758@collabora.com>
+ <93edf489-c4f6-4f0d-a0d5-673da051983d@amd.com>
+Content-Language: en-US
+From: Ariel D'Alessandro <ariel.dalessandro@collabora.com>
+In-Reply-To: <93edf489-c4f6-4f0d-a0d5-673da051983d@amd.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ZohoMailClient: External
+X-ZohoMail-Owner: <68c83842-16e9-429b-96c8-50c8a15c659c@collabora.com>+zmo_0_ariel.dalessandro@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251211_053445_963948_C7E1DCBD 
-X-CRM114-Status: UNSURE (   8.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251211_071724_246956_8EAC8E52 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,20 +103,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 11, 2025 at 12:13:13PM +0400, Miaoqian Lin wrote:
-> When nvmem_cell_read() fails in mt798x_phy_calibration(), the function
-> returns without calling nvmem_cell_put(), leaking the cell reference.
-> 
-> Move nvmem_cell_put() right after nvmem_cell_read() to ensure the cell
-> reference is always released regardless of the read result.
-> 
-> Found via static analysis and code review.
-> 
-> Fixes: 98c485eaf509 ("net: phy: add driver for MediaTek SoC built-in GE PHYs")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+Harry,
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+On 9/29/25 6:50 AM, Harry Wentland wrote:
+> 
+> 
+> On 2025-09-17 20:43, Nícolas F. R. A. Prado wrote:
+>> Pass the state of the post-blend color pipeline client cap to the atomic
+>> state so that drivers can rely on it to enable color pipeline
+>> functionality and ignore the deprecated color management CRTC
+>> properties.
+>>
+>> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+>> ---
+>>   drivers/gpu/drm/drm_atomic_uapi.c |  1 +
+>>   include/drm/drm_atomic.h          | 20 ++++++++++++++++++++
+>>   2 files changed, 21 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/drm_atomic_uapi.c b/drivers/gpu/drm/ 
+>> drm_atomic_uapi.c
+>> index 
+>> f5125fa3fa28ff2a6ff07fd7cf07d4bdf77ab738..56a440a9390c7730c4c41b491f29b933a2bbb889 100644
+>> --- a/drivers/gpu/drm/drm_atomic_uapi.c
+>> +++ b/drivers/gpu/drm/drm_atomic_uapi.c
+>> @@ -1660,6 +1660,7 @@ int drm_mode_atomic_ioctl(struct drm_device *dev,
+>>       state->acquire_ctx = &ctx;
+>>       state->allow_modeset = !!(arg->flags & 
+>> DRM_MODE_ATOMIC_ALLOW_MODESET);
+>>       state->plane_color_pipeline = file_priv->plane_color_pipeline;
+>> +    state->post_blend_color_pipeline = file_priv- 
+>> >post_blend_color_pipeline;
+>>   retry:
+>>       copied_objs = 0;
+>> diff --git a/include/drm/drm_atomic.h b/include/drm/drm_atomic.h
+>> index 
+>> 678708df9cdb90b4266127193a92183069f18688..8c42c584aefbf0034b2163d90538e80099b0dadb 100644
+>> --- a/include/drm/drm_atomic.h
+>> +++ b/include/drm/drm_atomic.h
+>> @@ -482,6 +482,26 @@ struct drm_atomic_state {
+>>        */
+>>       bool plane_color_pipeline : 1;
+>> +    /**
+>> +     * @post_blend_color_pipeline:
+>> +     *
+>> +     * Indicates whether this atomic state originated with a client that
+>> +     * set the DRM_CLIENT_CAP_POST_BLEND_COLOR_PIPELINE.
+>> +     *
+>> +     * Drivers and helper functions should use this to ignore legacy
+>> +     * properties that are incompatible with the drm_crtc COLOR_PIPELINE
+>> +     * behavior, such as:
+>> +     *
+>> +     *  - GAMMA_LUT
+>> +     *  - DEGAMMA_LUT
+>> +     *  - GAMMA_LUT_SIZE
+>> +     *  - CTM
+>> +     *
+>> +     * or any other driver-specific properties that might affect pixel
+>> +     * values.
+>> +     */
+>> +    bool post_blend_color_pipeline : 1;
+> 
+> As with the client cap name, I recommend calling this
+> crtc_color_pipeline.
 
-    Andrew
+Agreed. As per the rest of the comments, I think it's worth moving all 
+naming in this series from post_blend to crtc, matching the criteria 
+used in plane (a.k.a. pre-blend) color pipelines.
+
+Will submit the related changes in v3.
+
+Regards,
+
+-- 
+Ariel D'Alessandro
+Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK 
+Registered in England & Wales, no. 5513718
+
 
