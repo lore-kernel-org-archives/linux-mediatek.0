@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCB76D43343
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Dec 2025 20:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A37E9D43346
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Dec 2025 20:33:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CB8QSWCSwPoqbc+AWXqdpHuGqo2I7rvOZb4N4gm1d20=; b=2a0ahRjqrxP6hSeVEbXzpLwWFE
-	KgldLb/kSGqROJGNCm8VESFuHzU98hZAUfNjF1g4FrT65MFNn8tHcvhbfWntXOajp5sfqtVlEU9lA
-	erzCS6FjM2gP/FgNHXwohC1VmTtFRvETBAKK+MkeFy/JNGHmf3t5BRVeBKG7q1BJ2jxk8NuoAdMNK
-	FPIX9c2Mf/R6KxO+gsnXggPsUmGiDQuThA2OlXdK5XgIJQtIOx8CHxiJiDvVZjAWFU1Xxcq+HTBVL
-	U3ZSBuT1/lcU6yWvbPclCslXPCKIK14lXX/xTgXJ8gQTEBuHC+8HFCbZaY/YLdHQrNVK67XEGQf5Z
-	Su9C7wnw==;
+	bh=7qw2IhZlfosDTtQhR76WxRRqVpcH8s+9QhHY7zmTxpk=; b=teCl0zkM7dyyhp0Q7CmOjYIfdD
+	INFh4LjS/Cge/OTNwLPeMkpCZ++Oka5t9nVw9q9QMhYSfaPezMG2404m+u3BVZ2mRfhgW++GFJOk8
+	/kff3Gx+xk9HK0lnemylG4W1dZ7qHbwhjgN+Vnh2Rynm+nHowSLaPW0LjeXsFnzmRMh3lonnUfssh
+	0Labxu84smJCJ92MwZhYZSNYQHO0xITN+Xy2MNAigeG7MlbO13qs2QkXySP14rqpW1CER/psYSfAX
+	2cdL8DDYMybRdwwmMa/oznbH6eu6T9k0SwhjSn6X1vtc7EJd2b9/SkL/ApeRtemxfbvifbEnCupIt
+	isX4rKkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTnL5-0000000HEiR-3w48;
-	Thu, 11 Dec 2025 20:32:39 +0000
+	id 1vTnLn-0000000HEqI-3ABK;
+	Thu, 11 Dec 2025 20:33:23 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTnL2-0000000HEhN-2kRo;
-	Thu, 11 Dec 2025 20:32:37 +0000
+	id 1vTnLk-0000000HEpJ-0X5X;
+	Thu, 11 Dec 2025 20:33:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1765485154;
-	bh=G7q1JEkkHwrsqhqOlDvPl2Tn67bvGyBMMPrfM/9YkWc=;
+	s=mail; t=1765485198;
+	bh=EvpYuyMSWW3rPM+EGfSJa8//Qidk0b3Vfk2GRGHLY/8=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=hljhZx4+40EmFAPe40tkyy69L4LXOwZ8Zt+CstL7MneCO2B4OX2icxx+Afr+AFr5t
-	 HJyqOcePX/DI0GuB86JVUAmQGTQzEwoJcdQZEp30O/kG6ZxV4F/6J003FCkZfS77Uj
-	 AAkloLCfPGriaAVxR2It+UIlEOVH5tQTkxCdS6AuacdBpj605DAnUW5aGoUCn+tGqo
-	 PvMLWyNvwy6LwD8a9Nz+4pjJ2Akr+d6fGJ5/xWVAFneOhvrbxGdTHKvZshd4UNc4ai
-	 E3JVnuJhU9FvtTJna8ffAUAO54ViGtmxsBFmKWD3xS9Sml6xdbpEFr179ZSS0t0mnE
-	 xGJhUOSkEdllw==
+	b=qSgy7wK8Med80K3RHWdGGbsNc01bbVk8oyulgtDCqZ18UKke5cVBpfamdj+eL/px9
+	 232jaEUiSodL5/lityZjQPvTCUAyfASW+rB9OwCYExIaptoH8hSK1RFeZ1PGBdU4Nf
+	 QK+oMPWdEy1WiEsL3fph3YGPg6yngR1878YyBcyiv/eVf6RaImytPZwbTtifC7iMdJ
+	 xUN86NF67aCktfxkAwa3xiHwuYSS9eHRbrEd3t3gMZNjzLVPSVXhHb/ntdthXMUlx8
+	 AHnzFppiC+WsZQ35X0gwQ+eYrG7IP1QTJv3L/CKhEQC79Gakr35s2xEkL+FMHDD1mJ
+	 EIto9JjnR+Dtg==
 Received: from [IPv6:2606:6d00:17:7b4b::c41] (unknown [IPv6:2606:6d00:17:7b4b::c41])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 280F917E110C;
-	Thu, 11 Dec 2025 21:32:32 +0100 (CET)
-Message-ID: <03d3228206dbeb7f3fdb9466f84511f598ae9d65.camel@collabora.com>
-Subject: Re: [PATCH v6 07/10] media: mediatek: vcodec: Fix vp9 4096x2176
- fail for profile2
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 81F9217E00A8;
+	Thu, 11 Dec 2025 21:33:15 +0100 (CET)
+Message-ID: <66cb982fd78c85a33006647e0d2f1fe4b0c10a86.camel@collabora.com>
+Subject: Re: [PATCH v6 08/10] media: mediatek: vcodec: Fix media device node
+ number
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: Kyrie Wu <kyrie.wu@mediatek.com>, Tiffany Lin
  <tiffany.lin@mediatek.com>,  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
@@ -61,10 +61,10 @@ To: Kyrie Wu <kyrie.wu@mediatek.com>, Tiffany Lin
  linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org
 Cc: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
 	 <andrzejtp2010@gmail.com>, Yilong Zhou <yilong.zhou@mediatek.com>
-Date: Thu, 11 Dec 2025 15:32:30 -0500
-In-Reply-To: <20251202074038.3173-8-kyrie.wu@mediatek.com>
+Date: Thu, 11 Dec 2025 15:33:14 -0500
+In-Reply-To: <20251202074038.3173-9-kyrie.wu@mediatek.com>
 References: <20251202074038.3173-1-kyrie.wu@mediatek.com>
-	 <20251202074038.3173-8-kyrie.wu@mediatek.com>
+	 <20251202074038.3173-9-kyrie.wu@mediatek.com>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -80,12 +80,12 @@ Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
 Organization: Collabora Canada
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-6GO17q2aWDuQ7cn4Ze+O"
+	protocol="application/pgp-signature"; boundary="=-aFzqfli/yHis0bwpWqQX"
 User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251211_123236_846002_DA3C6C98 
-X-CRM114-Status: GOOD (  16.90  )
+X-CRM114-CacheID: sfid-20251211_123320_325423_E75ADD8D 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,72 +101,60 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---=-6GO17q2aWDuQ7cn4Ze+O
+--=-aFzqfli/yHis0bwpWqQX
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Le mardi 02 d=C3=A9cembre 2025 =C3=A0 15:40 +0800, Kyrie Wu a =C3=A9crit=C2=
 =A0:
-> The DRAM address of the VP9 decoder tile info buffers may require
-> as much as 36bits for 4096x2176 resolution. Fold the 4 most significant
-> bits into the lower (padding) four bits of address.
+> change media register device node number to a correct value.
+> The vfd minor is used to record the number of registered
+> video device nodes. The mdev_dec.devnode minor counter is
+> used to record the number of registered media device nodes.
 >=20
-> Fixes: 5d418351ca8f1 ("media: mediatek: vcodec: support stateless VP9 dec=
-oding")
+> Fixes: 41f03c673cb7b ("media: mediatek: vcodec: replace pr_* with dev_* f=
+or v4l2 debug message")
 >=20
 > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
 
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
 > ---
-> =C2=A0.../mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c | 10 +++++++=
-++-
-> =C2=A01 file changed, 9 insertions(+), 1 deletion(-)
+> =C2=A0.../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 | 3 ++-
+> =C2=A01 file changed, 2 insertions(+), 1 deletion(-)
 >=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9=
-_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp=
-9_req_lat_if.c
-> index 36a87b455d11..eca6280098be 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_la=
-t_if.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_la=
-t_if.c
-> @@ -1134,9 +1134,17 @@ static int vdec_vp9_slice_setup_tile_buffer(struct=
- vdec_vp9_slice_instance *inst
-> =C2=A0					return -EINVAL;
-> =C2=A0			}
-> =C2=A0			tiles->size[i][j] =3D size;
-> +			/*
-> +			 * If the system supports 64-bit DMA addresses, the upper 4 bits
-> +			 * of the address are also encoded into the buffer entry.
-> +			 * The buffer pointer (tb) is incremented after each entry is written=
-.
-> +			 */
-> =C2=A0			if (tiles->mi_rows[i]) {
-> =C2=A0				*tb++ =3D (size << 3) + ((offset << 3) & 0x7f);
-> -				*tb++ =3D pa & ~0xf;
-> +				*tb =3D pa & GENMASK(31, 4);
-> +				if (IS_ENABLED(CONFIG_ARCH_DMA_ADDR_T_64BIT))
-> +					*tb |=3D (pa >> 32) & GENMASK(3, 0);
-> +				tb++;
-> =C2=A0				*tb++ =3D (pa << 3) & 0x7f;
-> =C2=A0				mi_row =3D (tiles->mi_rows[i] - 1) & 0x1ff;
-> =C2=A0				mi_col =3D (tiles->mi_cols[j] - 1) & 0x3f;
+> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_de=
+c_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv=
+.c
+> index 2d1a545e727c..bf6e792283a1 100644
+> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+> @@ -493,7 +493,8 @@ static int mtk_vcodec_probe(struct platform_device *p=
+dev)
+> =C2=A0			goto err_media_reg;
+> =C2=A0		}
+> =C2=A0
+> -		dev_dbg(&pdev->dev, "media registered as /dev/media%d", vfd_dec->minor=
+);
+> +		dev_dbg(&pdev->dev, "media registered as /dev/media%d",
+> +			dev->mdev_dec.devnode->minor);
+> =C2=A0	}
+> =C2=A0
+> =C2=A0	mtk_vcodec_dbgfs_init(dev, false);
 
---=-6GO17q2aWDuQ7cn4Ze+O
+--=-aFzqfli/yHis0bwpWqQX
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaTsqXgAKCRDZQZRRKWBy
-9AHCAQCIL2oKUruDOqqd+Tp2NG/Cqh8AXUPiefAumbjS9hhj7gD/d+bv4U9ehbuM
-LT9GLyjqJT5Gx1XLLI5owiSgEEcaUAs=
-=/hjj
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaTsqigAKCRDZQZRRKWBy
+9BiiAQChjhkDmde9orwBZUQR53EQisAKugo3JziXe89mHCSXogEA3BhPJG3ZcoKW
+icu7bE/fmHm9hzaHSWtMw21RcYsPtQY=
+=cn28
 -----END PGP SIGNATURE-----
 
---=-6GO17q2aWDuQ7cn4Ze+O--
+--=-aFzqfli/yHis0bwpWqQX--
 
