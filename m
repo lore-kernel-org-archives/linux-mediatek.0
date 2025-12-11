@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14302D43361
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Dec 2025 23:34:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63F9AD4335B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Dec 2025 23:47:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Dct+rY0T9fHZuq9ATdOls+p68w568/KDj3ScHbfXOrE=; b=M9p1Wkxz2/cY6jBv8c1ccuuysL
-	AwIqXCBpsV/VR5Gbu1FgkRf8Cugi3R0FxAYm7AFyIHtqkcfQMS6Oo3N3aWSRIG12wQCIaj9K2I0fp
-	3wBzLz64Vl34fYyqBZkAF1Bpx+ezpdbhQeW4IC2yO5TJvvrSUs9oOnn3QnlcavtcZSh/kIa/UFB62
-	tDrlEtEYWwAe+1gYoewvHSF4Bj8JferU0vZWw6rk6DGNKfOOk1nq7xv8TQ9WpXXWTtN2QoUcnCG3K
-	AfrvfZHUJo6MfO4NHNoJQ8evlkV7bWMPKjwtDWYISrpagvxXd7XzfScZiJM/d93QXa2b7iPxFY6Ds
-	CRgtfvwQ==;
+	bh=XE8dB8+Bk2ztdABOLiwHRk6AqFL+/lBOFn7Oe9CFD7c=; b=LCZQ6Mu6ybvXSrb1c3aCidWrdN
+	flrAq87SLNpkEjzgAGkbCFUJIgtrwzH4zJyR7G1pmiJld1+jpb3aLUkGKuPbdiHJS3MVDU/foAr2M
+	xgAOZwnDWv8/1hzdP1I6zHV5wnWPWDQKl5Xn+kGPtEewxTzPI/mMUE33yhNZvVddupFKW35/VPqF2
+	X84QL0UXjXK1ZSRMCGVdGIBGsN1YalC55ZniUdR/CdS+JJBHNilcDDvVD87oMO0Qs3b3FwH2/YBL8
+	JfhqQVw5RxDHbkxYLkiHfQOdUtp/W5HVvvpD+hLmKCtA4IT5Zn2HPTiP2LkR2jd58p/W39XGm+xF9
+	+jKrmZDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTqB0-0000000HQTp-1q1h;
-	Thu, 11 Dec 2025 23:34:26 +0000
+	id 1vTqNj-0000000HQq5-3jpd;
+	Thu, 11 Dec 2025 23:47:35 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTqAx-0000000HQTO-3Usf
+	id 1vTqNh-0000000HQpx-3RCE
 	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Dec 2025 23:34:23 +0000
+	Thu, 11 Dec 2025 23:47:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E159460132
-	for <linux-mediatek@lists.infradead.org>; Thu, 11 Dec 2025 23:34:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81252C4AF09
-	for <linux-mediatek@lists.infradead.org>; Thu, 11 Dec 2025 23:34:22 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id F409960152
+	for <linux-mediatek@lists.infradead.org>; Thu, 11 Dec 2025 23:47:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A004FC2BC86
+	for <linux-mediatek@lists.infradead.org>; Thu, 11 Dec 2025 23:47:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765496062;
-	bh=vn95PIaMLj6upgO5jMwgVKMQ1smNCYmC4ZDr1a/82Iw=;
+	s=k20201202; t=1765496852;
+	bh=bje5S2tO81LcR3oEMnuyNXK8MCzYbRCVPpr/63ZWRy4=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=ubvIHz+F1DDKY2LB0WZyytp+iqtNs3qy1BOeOM5ioX1N5WJdTxzKTyLZuhoX0ekEr
-	 L3FnTX1iBYaZTu8uFnjJ9MqsBJzh/HqgU/m0Y3N8ZUS+9gUocvOuGaG9uGjEhJVXGQ
-	 WxwUumUMQ3vLp6008fmEGaXFmk3SbkIdY4mqrLVf/CdNHX+iNwDQGQH99wWZI27xYF
-	 ReErjsk8chIZxkpTKS/yO6CTHzj4IXLPtWwXh8lgYmv9DartuvAnOtiAkD3YyH4skn
-	 6msDcFiXPZmc68YFSRYWk3KRhpJv+j0sErAG95ZpgLwR5IBBvlnQOhCXMaGB7YIKQw
-	 Q3Udc4XdPb8MQ==
-Received: by mail-lf1-f45.google.com with SMTP id 2adb3069b0e04-5958931c9c7so812806e87.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 11 Dec 2025 15:34:22 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXDE57CLq4Xa2TrJ2H9XW3SraQK2NSmf73z+me9fJJugx+d6H69upIWAyb9ymL2uKRzufW6B+eztxAE8UyUEw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwQdkubKLy5UfjnxnXekQeZ894c8pOQD3wERi+e94NN21PgqHi1
-	FQLCzsrxmih+km9qS3+/4d8DzIEiG1DrqJDlfCGP9Fh+/WsJ1nnMhcyEyA/cxiEuYPpWh5ACtbL
-	GwJUOkIdxbW9cxaTtvikjy/VelZrNIxI=
-X-Google-Smtp-Source: AGHT+IEvQ91wmXN8XI7iCFfPklQkxRZiF0PCp/6Y8Gf/it+S6o+vKGFQFDujWCI6SAYtL+noliTTyYPhy2jqxa8s2Uk=
-X-Received: by 2002:a05:651c:a0a:b0:37a:4c29:3a90 with SMTP id
- 38308e7fff4ca-37fd05f238dmr820841fa.0.1765496060863; Thu, 11 Dec 2025
- 15:34:20 -0800 (PST)
+	b=SNkUhi0vsFDkEFIDfZxCrKAjqVeRqvOyZSo6pxD6CVg4rMq9qSAIbjSxD/ITtWyaM
+	 EnJL3KBqMXuSrWqNE0bMN9U/+DOL8qiD+UbrOQArKHhgFEtCUKkAJX3roHiqkPHEpN
+	 TEjdNMHc0bp0xqBPZuWzfYMxBeeD3UDoYcX8ZJZ0b+mfH9IKqQERdsJHLRW+XB2z+B
+	 6iQAfzob7H0O5MBgwxrH65b6FRP/vlx3DQ+2R+G2zfFhmfKMArhF8Wyr2Hdawq3mAs
+	 FSdoRFpsuyJwX4YiJQcQkdL7XAvsYra4dii4cDafnR5MpMSAnVnw+6pqQSUQUK5St4
+	 RAQ6O/vZs+/AA==
+Received: by mail-lf1-f49.google.com with SMTP id 2adb3069b0e04-5959105629bso723315e87.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Dec 2025 15:47:32 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUFDmHrKFXjI98NfrkTd8n8ydlxXuB272boo2ygP6tCDH+TWcXnr+D1XWP1aR4ktCgp3OsrtBQQA94Zjxk5Lg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxNP/7+a3fnGrGoQ09xI9d+Rrgb7JKeJW/pK5dGiLn8IrX0kegY
+	s5xvRv9LfpLAgADvo77s77lPaKEzYMdk2zwDTyal4+SkO1NjRJHlOl/VwGzuzGNAeBLTKEM37w6
+	iPlzwLRZ5nIxvkib6I4A11bUNLVPhwRE=
+X-Google-Smtp-Source: AGHT+IG+tynJrEuFVmI9CGQVNWs1wGZ9mj2gwDEXwVEvTcf/I9XnBHIRwne+P0Qk/JsMpdmNrWEUtWaXp3jTSpSY9bs=
+X-Received: by 2002:a05:6512:3da8:b0:598:853e:72fa with SMTP id
+ 2adb3069b0e04-598faa996cemr6981e87.52.1765496850964; Thu, 11 Dec 2025
+ 15:47:30 -0800 (PST)
 MIME-Version: 1.0
-References: <20251211124344.4172470-1-leon.yen@mediatek.com>
-In-Reply-To: <20251211124344.4172470-1-leon.yen@mediatek.com>
+References: <d5960fbced0beaf33c30203f7f8fb91d0899c87b.1764228973.git.quan.zhou@mediatek.com>
+In-Reply-To: <d5960fbced0beaf33c30203f7f8fb91d0899c87b.1764228973.git.quan.zhou@mediatek.com>
 From: Sean Wang <sean.wang@kernel.org>
-Date: Thu, 11 Dec 2025 17:34:09 -0600
-X-Gmail-Original-Message-ID: <CAGp9Lzo6DnBN+x-HGGDBJE2x-pqm6TPp77qch_VrFgq=cgKzQw@mail.gmail.com>
-X-Gm-Features: AQt7F2qoFrXbjs6uKgJY9lNoURXQF9CRVoAGd6ZNwW-075Q2iDyH-RPqdeD-40s
-Message-ID: <CAGp9Lzo6DnBN+x-HGGDBJE2x-pqm6TPp77qch_VrFgq=cgKzQw@mail.gmail.com>
-Subject: Re: [PATCH] wifi: mt76: mt792x: Fix a potential deadlock in high-load situations
-To: Leon Yen <leon.yen@mediatek.com>
-Cc: nbd@nbd.name, lorenzo@kernel.org, linux-wireless@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, deren.wu@mediatek.com, 
-	sean.wang@mediatek.com, mingyen.hsieh@mediatek.com, michael.lo@mediatek.com, 
-	allan.wang@mediatek.com, quan.zhou@mediatek.com, sarick.jiang@mediatek.com, 
-	ryder.lee@mediatek.com, shayne.chen@mediatek.com
+Date: Thu, 11 Dec 2025 17:47:19 -0600
+X-Gmail-Original-Message-ID: <CAGp9LzrvD+Go=StCU=iU4KERyXfK5VB_xvonHNFkGxDyy7p6mg@mail.gmail.com>
+X-Gm-Features: AQt7F2rPOclLMuFQPaVaug5PVxJnxqf4ihQeSo3tetqH5UXKLK7pgKOl-k9a8rM
+Message-ID: <CAGp9LzrvD+Go=StCU=iU4KERyXfK5VB_xvonHNFkGxDyy7p6mg@mail.gmail.com>
+Subject: Re: [PATCH v2] wifi: mt76: mt7925: fix AMPDU state handling in mt7925_tx_check_aggr
+To: Quan Zhou <quan.zhou@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Sean Wang <sean.wang@mediatek.com>, 
+	Deren Wu <Deren.Wu@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, 
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, Allan Wang <allan.wang@mediatek.com>, 
+	KM Lin <km.lin@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, 
+	Shengxi Xu <shengxi.xu@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>, 
+	CH Yeh <ch.yeh@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, 
+	linux-wireless <linux-wireless@vger.kernel.org>, 
+	linux-mediatek <linux-mediatek@lists.infradead.org>, stable@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -83,148 +87,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Leon,
-
-Nice catch! But I think this approach can still lead to deadlock.
-If both workers fire at the same time, they may both see other =3D=3D 0,
-both set their own state to 1, both start running, and then both try
-to call cancel_delayed_work_sync() on each other.
-Then since atomic_set/atomic_read are weakly ordered, we don=E2=80=99t real=
-ly
-get proper exclusivity on SMP without something stronger.
-And given that ps_work is a low-level piece used all over the place,
-blocking on it isn=E2=80=99t ideal. A non-blocking cancel avoids the "both
-wait on each other" situation.
-
-So I=E2=80=99d suggest switching to:
-
-@@ -375,7 +378,8 @@ void mt792x_pm_power_save_work(struct work_struct *work=
-)
-        }
-
-        if (!mt792x_mcu_fw_pmctrl(dev)) {
--               cancel_delayed_work_sync(&mphy->mac_work);
-+               cancel_delayed_work(&mphy->mac_work);
-                return;
-        }
-
-to break the waiting loop.
-
-This should make things safer without changing the overall flow, and
-keeps the code easier to read and maintain.
-Any pending mac work will get canceled, and if a mac work is already
-running, it will schedule another ps_work once it completes.
-
-                  Sean
-
-On Thu, Dec 11, 2025 at 6:44=E2=80=AFAM Leon Yen <leon.yen@mediatek.com> wr=
-ote:
+On Thu, Nov 27, 2025 at 1:55=E2=80=AFAM Quan Zhou <quan.zhou@mediatek.com> =
+wrote:
 >
-> A deadlock may occur between two works, ps_work and mac_work, if their wo=
-rk
-> functions run simultaneously as they attempt to cancel each other by
-> calling cancel_delayed_work_sync().
+> Previously, the AMPDU state bit for a given TID was set before attempting
+> to start a BA session, which could result in the AMPDU state being marked
+> active even if ieee80211_start_tx_ba_session() failed. This patch changes
+> the logic to only set the AMPDU state bit after successfully starting a B=
+A
+> session, ensuring proper synchronization between AMPDU state and BA sessi=
+on
+> status.
 >
-> mt792x_mac_work() ->   ...  -> cancel_delayed_work_sync(&pm->ps_work);
-> mt792x_pm_power_save_work() -> cancel_delayed_work_sync(&mphy->mac_work);
+> This fixes potential issues with aggregation state tracking and improves
+> compatibility with mac80211 BA session management.
 >
-> In high-load situations, they are queued but may not have chance to be
-> executed until the CPUs are released. Once the CPUs are available, there
-> is a high possibility that the ps_work function and mac_work function wil=
-l
-> be executed simultaneously, resulting in a deadlock.
+> Fixes: 44eb173bdd4f ("wifi: mt76: mt7925: add link handling in mt7925_txw=
+i_free")
+> Cc: stable@vger.kernel.org
 >
-> This patch ensures that the ps_work function and mac_work function can ru=
-n
-> exclusively by adding two flags to indicate their running status.The work
-> function will reschedule itself if the opposite is currently running.
->
-> Signed-off-by: Leon Yen <leon.yen@mediatek.com>
+> Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
 > ---
->  drivers/net/wireless/mediatek/mt76/mt76.h        |  1 +
->  drivers/net/wireless/mediatek/mt76/mt76_connac.h |  1 +
->  drivers/net/wireless/mediatek/mt76/mt792x_mac.c  | 13 +++++++++++++
->  3 files changed, 15 insertions(+)
+> v2: modify to avoid weakening atomicity
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7925/mac.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 >
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wire=
-less/mediatek/mt76/mt76.h
-> index d05e83ea1cac..0414a4898d80 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-> @@ -892,6 +892,7 @@ struct mt76_phy {
->  #endif
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7925/mac.c
+> index 871b67101976..5e5b1df78633 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+> @@ -881,8 +881,10 @@ static void mt7925_tx_check_aggr(struct ieee80211_st=
+a *sta, struct sk_buff *skb,
+>         else
+>                 mlink =3D &msta->deflink;
 >
->         struct delayed_work mac_work;
-> +       atomic_t mac_work_running;
->         u8 mac_work_count;
->
->         struct {
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/n=
-et/wireless/mediatek/mt76/mt76_connac.h
-> index 813d61bffc2c..eefa0147f883 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> @@ -107,6 +107,7 @@ struct mt76_connac_pm {
->         struct mutex mutex;
->
->         struct delayed_work ps_work;
-> +       atomic_t ps_work_running;
->         unsigned long last_activity;
->         unsigned long idle_timeout;
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_mac.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt792x_mac.c
-> index 71dec93094eb..22345031e262 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
-> @@ -15,6 +15,10 @@ void mt792x_mac_work(struct work_struct *work)
->                                                mac_work.work);
->         phy =3D mphy->priv;
->
-> +       if (atomic_read(&phy->dev->pm.ps_work_running))
-> +               goto out;
-> +       atomic_set(&mphy->mac_work_running, 1);
-> +
->         mt792x_mutex_acquire(phy->dev);
->
->         mt76_update_survey(mphy);
-> @@ -27,8 +31,10 @@ void mt792x_mac_work(struct work_struct *work)
->         mt792x_mutex_release(phy->dev);
->
->         mt76_tx_status_check(mphy->dev, false);
-> +out:
->         ieee80211_queue_delayed_work(phy->mt76->hw, &mphy->mac_work,
->                                      MT792x_WATCHDOG_TIME);
-> +       atomic_set(&mphy->mac_work_running, 0);
+> -       if (!test_and_set_bit(tid, &mlink->wcid.ampdu_state))
+> -               ieee80211_start_tx_ba_session(sta, tid, 0);
+> +       if (!test_and_set_bit(tid, &mlink->wcid.ampdu_state)) {
+> +               if (ieee80211_start_tx_ba_session(sta, tid, 0))
+> +                       clear_bit(tid, &mlink->wcid.ampdu_state);
+> +       }
 >  }
->  EXPORT_SYMBOL_GPL(mt792x_mac_work);
 >
-> @@ -356,6 +362,11 @@ void mt792x_pm_power_save_work(struct work_struct *w=
-ork)
->         mphy =3D dev->phy.mt76;
->
->         delta =3D dev->pm.idle_timeout;
-> +
-> +       if (atomic_read(&mphy->mac_work_running))
-> +               goto out;
-> +       atomic_set(&dev->pm.ps_work_running, 1);
-> +
->         if (test_bit(MT76_HW_SCANNING, &mphy->state) ||
->             test_bit(MT76_HW_SCHED_SCANNING, &mphy->state) ||
->             dev->fw_assert)
-> @@ -376,9 +387,11 @@ void mt792x_pm_power_save_work(struct work_struct *w=
-ork)
->
->         if (!mt792x_mcu_fw_pmctrl(dev)) {
->                 cancel_delayed_work_sync(&mphy->mac_work);
-> +               atomic_set(&dev->pm.ps_work_running, 0);
->                 return;
->         }
->  out:
->         queue_delayed_work(dev->mt76.wq, &dev->pm.ps_work, delta);
-> +       atomic_set(&dev->pm.ps_work_running, 0);
->  }
->  EXPORT_SYMBOL_GPL(mt792x_pm_power_save_work);
+
+Reviewed-by: Sean Wang <sean.wang@mediatek.com>
+
+>  static bool
 > --
 > 2.45.2
 >
