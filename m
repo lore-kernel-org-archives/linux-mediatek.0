@@ -4,75 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5596D41C31
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Dec 2025 12:44:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7266ED41C35
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Dec 2025 13:34:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NDkXuxIY36/CsPMFsGbOXVis7R+vQmC24CWTXr3hcVw=; b=uBUdBbCflMxTkXQ4O+l0Ir47bK
-	/vnG1T1IIXEoHWUUUDA1HVmEROD3iPAyzuvSKtIhAfnya+ZiVcAScJVKP9LfWzIrst1MIf15xyK2Q
-	C2fdDizVkTVsoMzRbEAkDhJfJHknWBnzdUWhxxuXAXOlX9QSHIwgShIMri4NuxRxN8tgkacil7/Gv
-	yeiYHx1XBCxe2e62XyMOiylczTC9PNGPaQEwORtTnQFxuZRcWVRLV/XOcHhgZJOyhJUs9ISFS4FLq
-	HZz9YoUZDE1ho+ZU9NKOhixQWE4hZLMd+XfS86OhwS78+UfgT34JzrAEGKQX14WksX/IVQi41QlGN
-	/JZlvs7g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=87k6ZOPMZjikEVuPQMcOElrCO2sbaSMGE+CuXeuUymE=; b=4iCsi1iP+Oenytapl8X/mQmTTg
+	HCtiYT63IU0L07JVxWRl+eFKvG9PffIOsszGe6sd7Zf5NzqThcbhl4n3VyCwX9JC+QEXakh0dzwoK
+	29+Q+U8968dFth6HqyCGkuOpgLVYGVHuYhBTmfPQM5l6k5YIg/fCS7ceZdMCBOR4yiZfCh/xiKVxT
+	MFVEUxti4vV0mzi47OX0Z/4ReXuWO5kRwJCeJ64gHHtUQhF/WEoMxXIojoY7k4qVWmofT0i16FYaQ
+	LexxEmpbVQOtGOM1NOcUORjA/lTrrSPt13s1aYb7xeTVR0VWSsrKo+BGHtOLP+eGxBf6nWa2yFf2y
+	x19PVTGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTg1Y-0000000GbNg-0pBF;
-	Thu, 11 Dec 2025 12:44:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vTgoi-0000000GeF2-3dl6;
+	Thu, 11 Dec 2025 13:34:48 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTg1W-0000000GbNI-31v2
-	for linux-mediatek@lists.infradead.org;
-	Thu, 11 Dec 2025 12:43:59 +0000
-X-UUID: 0c1be84cd68f11f0a52f393f94899d25-20251211
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=NDkXuxIY36/CsPMFsGbOXVis7R+vQmC24CWTXr3hcVw=;
-	b=fD+FcIuI35Jcbk8gThEhvllAfwwt4JoGeVq9b/wq8iMYXkd6EQMoMJplsC4iBFprvNO11mXkfNHvAUMOTDm12OAHGAJZHGjk9fuBbDEu77ilrLphufkJ1CYaKqbmdjmqzMrWXjk/aMWQFdF1xbHt4uK1WRqrzdO6M9LS+Bjpl9M=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:31312856-8b12-4fe9-97c5-dd2720c43ed4,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:a9d874c,CLOUDID:d58d15aa-6421-45b1-b8b8-e73e3dc9a90f,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 0c1be84cd68f11f0a52f393f94899d25-20251211
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <leon.yen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 424644945; Thu, 11 Dec 2025 05:43:52 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Thu, 11 Dec 2025 20:43:49 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Thu, 11 Dec 2025 20:43:49 +0800
-From: Leon Yen <leon.yen@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<deren.wu@mediatek.com>, <sean.wang@mediatek.com>,
-	<mingyen.hsieh@mediatek.com>, <michael.lo@mediatek.com>,
-	<allan.wang@mediatek.com>, <quan.zhou@mediatek.com>,
-	<sarick.jiang@mediatek.com>, <ryder.lee@mediatek.com>,
-	<shayne.chen@mediatek.com>, <leon.yen@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt792x: Fix a potential deadlock in high-load situations
-Date: Thu, 11 Dec 2025 20:43:44 +0800
-Message-ID: <20251211124344.4172470-1-leon.yen@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1vTgof-0000000GeEU-3soV;
+	Thu, 11 Dec 2025 13:34:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=87k6ZOPMZjikEVuPQMcOElrCO2sbaSMGE+CuXeuUymE=; b=Y+pMqO07thAfXDflKjPCaw9UDH
+	cefJt4/vw4yCPrfXRYr0yVTO9QDamI9Q7/ELHXhBojx8USvqA/wAKy4Wj3LWuZsrQr1kg6fVHFia+
+	Qx/kGfFBWcY26PbDF4mP6ek5z7u7h7/GSRT+h2gCgOAF5n5q+BItTusLN5f3G4ErqhV4=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1vTgoQ-00GeC8-MV; Thu, 11 Dec 2025 14:34:30 +0100
+Date: Thu, 11 Dec 2025 14:34:30 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Miaoqian Lin <linmq006@gmail.com>
+Cc: Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
+Subject: Re: [PATCH] net: phy: mediatek: fix nvmem cell reference leak in
+ mt798x_phy_calibration
+Message-ID: <57437939-6983-4db8-9178-dd19f1c7b971@lunn.ch>
+References: <20251211081313.2368460-1-linmq006@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251211081313.2368460-1-linmq006@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251211_044358_788906_B65FB03F 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20251211_053445_963948_C7E1DCBD 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,104 +78,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A deadlock may occur between two works, ps_work and mac_work, if their work
-functions run simultaneously as they attempt to cancel each other by
-calling cancel_delayed_work_sync().
+On Thu, Dec 11, 2025 at 12:13:13PM +0400, Miaoqian Lin wrote:
+> When nvmem_cell_read() fails in mt798x_phy_calibration(), the function
+> returns without calling nvmem_cell_put(), leaking the cell reference.
+> 
+> Move nvmem_cell_put() right after nvmem_cell_read() to ensure the cell
+> reference is always released regardless of the read result.
+> 
+> Found via static analysis and code review.
+> 
+> Fixes: 98c485eaf509 ("net: phy: add driver for MediaTek SoC built-in GE PHYs")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
 
-mt792x_mac_work() ->   ...  -> cancel_delayed_work_sync(&pm->ps_work);
-mt792x_pm_power_save_work() -> cancel_delayed_work_sync(&mphy->mac_work);
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-In high-load situations, they are queued but may not have chance to be
-executed until the CPUs are released. Once the CPUs are available, there
-is a high possibility that the ps_work function and mac_work function will
-be executed simultaneously, resulting in a deadlock.
-
-This patch ensures that the ps_work function and mac_work function can run
-exclusively by adding two flags to indicate their running status.The work
-function will reschedule itself if the opposite is currently running.
-
-Signed-off-by: Leon Yen <leon.yen@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt76.h        |  1 +
- drivers/net/wireless/mediatek/mt76/mt76_connac.h |  1 +
- drivers/net/wireless/mediatek/mt76/mt792x_mac.c  | 13 +++++++++++++
- 3 files changed, 15 insertions(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index d05e83ea1cac..0414a4898d80 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -892,6 +892,7 @@ struct mt76_phy {
- #endif
- 
- 	struct delayed_work mac_work;
-+	atomic_t mac_work_running;
- 	u8 mac_work_count;
- 
- 	struct {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-index 813d61bffc2c..eefa0147f883 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-@@ -107,6 +107,7 @@ struct mt76_connac_pm {
- 	struct mutex mutex;
- 
- 	struct delayed_work ps_work;
-+	atomic_t ps_work_running;
- 	unsigned long last_activity;
- 	unsigned long idle_timeout;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_mac.c b/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
-index 71dec93094eb..22345031e262 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_mac.c
-@@ -15,6 +15,10 @@ void mt792x_mac_work(struct work_struct *work)
- 					       mac_work.work);
- 	phy = mphy->priv;
- 
-+	if (atomic_read(&phy->dev->pm.ps_work_running))
-+		goto out;
-+	atomic_set(&mphy->mac_work_running, 1);
-+
- 	mt792x_mutex_acquire(phy->dev);
- 
- 	mt76_update_survey(mphy);
-@@ -27,8 +31,10 @@ void mt792x_mac_work(struct work_struct *work)
- 	mt792x_mutex_release(phy->dev);
- 
- 	mt76_tx_status_check(mphy->dev, false);
-+out:
- 	ieee80211_queue_delayed_work(phy->mt76->hw, &mphy->mac_work,
- 				     MT792x_WATCHDOG_TIME);
-+	atomic_set(&mphy->mac_work_running, 0);
- }
- EXPORT_SYMBOL_GPL(mt792x_mac_work);
- 
-@@ -356,6 +362,11 @@ void mt792x_pm_power_save_work(struct work_struct *work)
- 	mphy = dev->phy.mt76;
- 
- 	delta = dev->pm.idle_timeout;
-+
-+	if (atomic_read(&mphy->mac_work_running))
-+		goto out;
-+	atomic_set(&dev->pm.ps_work_running, 1);
-+
- 	if (test_bit(MT76_HW_SCANNING, &mphy->state) ||
- 	    test_bit(MT76_HW_SCHED_SCANNING, &mphy->state) ||
- 	    dev->fw_assert)
-@@ -376,9 +387,11 @@ void mt792x_pm_power_save_work(struct work_struct *work)
- 
- 	if (!mt792x_mcu_fw_pmctrl(dev)) {
- 		cancel_delayed_work_sync(&mphy->mac_work);
-+		atomic_set(&dev->pm.ps_work_running, 0);
- 		return;
- 	}
- out:
- 	queue_delayed_work(dev->mt76.wq, &dev->pm.ps_work, delta);
-+	atomic_set(&dev->pm.ps_work_running, 0);
- }
- EXPORT_SYMBOL_GPL(mt792x_pm_power_save_work);
--- 
-2.45.2
-
+    Andrew
 
