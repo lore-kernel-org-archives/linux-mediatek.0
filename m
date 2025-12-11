@@ -4,88 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A37E9D43346
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Dec 2025 20:33:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 711B1D43360
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Dec 2025 23:15:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7qw2IhZlfosDTtQhR76WxRRqVpcH8s+9QhHY7zmTxpk=; b=teCl0zkM7dyyhp0Q7CmOjYIfdD
-	INFh4LjS/Cge/OTNwLPeMkpCZ++Oka5t9nVw9q9QMhYSfaPezMG2404m+u3BVZ2mRfhgW++GFJOk8
-	/kff3Gx+xk9HK0lnemylG4W1dZ7qHbwhjgN+Vnh2Rynm+nHowSLaPW0LjeXsFnzmRMh3lonnUfssh
-	0Labxu84smJCJ92MwZhYZSNYQHO0xITN+Xy2MNAigeG7MlbO13qs2QkXySP14rqpW1CER/psYSfAX
-	2cdL8DDYMybRdwwmMa/oznbH6eu6T9k0SwhjSn6X1vtc7EJd2b9/SkL/ApeRtemxfbvifbEnCupIt
-	isX4rKkg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:MIME-Version:Message-Id:Date:Subject:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NbD172mHC2Ryq1GOWpDAGfx/N1dB3vFXjgBCreduXmM=; b=j2TbYaJHI1Oy3RijlX04nOoq50
+	FZ/dghQ5OdkQchBx2SCT+anjTciqa64hsfGloQ+k0xYr8a5SDb0dpIDjvG1wMHsspUmwe8CuJh6fR
+	MerwnKwSShEVaFnnqjbfFhlg4AyGRVv7FGpOuIOO4IQMj4DIK5ufWhgGLV663YFaDODhjTvuNcOww
+	fCxU21mtNTp+s6C130lfpArbGApXIZLU/NS1uwMqvD1CDFBMbVzSZZpgylwu6ZS0RGf5dqPKmSCum
+	/pEtSBSxrXRWj6ypdU149j5ET/YgMv3OiuNYJapLlUcN7+6MhIkbaJWBN6B+A2G9H8YAuRp3r4zs9
+	zYACiMSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTnLn-0000000HEqI-3ABK;
-	Thu, 11 Dec 2025 20:33:23 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vTpsU-0000000HO8f-25ni;
+	Thu, 11 Dec 2025 23:15:18 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTnLk-0000000HEpJ-0X5X;
-	Thu, 11 Dec 2025 20:33:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1765485198;
-	bh=EvpYuyMSWW3rPM+EGfSJa8//Qidk0b3Vfk2GRGHLY/8=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=qSgy7wK8Med80K3RHWdGGbsNc01bbVk8oyulgtDCqZ18UKke5cVBpfamdj+eL/px9
-	 232jaEUiSodL5/lityZjQPvTCUAyfASW+rB9OwCYExIaptoH8hSK1RFeZ1PGBdU4Nf
-	 QK+oMPWdEy1WiEsL3fph3YGPg6yngR1878YyBcyiv/eVf6RaImytPZwbTtifC7iMdJ
-	 xUN86NF67aCktfxkAwa3xiHwuYSS9eHRbrEd3t3gMZNjzLVPSVXhHb/ntdthXMUlx8
-	 AHnzFppiC+WsZQ35X0gwQ+eYrG7IP1QTJv3L/CKhEQC79Gakr35s2xEkL+FMHDD1mJ
-	 EIto9JjnR+Dtg==
-Received: from [IPv6:2606:6d00:17:7b4b::c41] (unknown [IPv6:2606:6d00:17:7b4b::c41])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 81F9217E00A8;
-	Thu, 11 Dec 2025 21:33:15 +0100 (CET)
-Message-ID: <66cb982fd78c85a33006647e0d2f1fe4b0c10a86.camel@collabora.com>
-Subject: Re: [PATCH v6 08/10] media: mediatek: vcodec: Fix media device node
- number
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Kyrie Wu <kyrie.wu@mediatek.com>, Tiffany Lin
- <tiffany.lin@mediatek.com>,  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab	
- <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski	
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger	
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, Hans Verkuil
- <hverkuil@xs4all.nl>,  Nathan Hebert <nhebert@chromium.org>, Arnd Bergmann
- <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>,  George Sun
- <george.sun@mediatek.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org
-Cc: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
-	 <andrzejtp2010@gmail.com>, Yilong Zhou <yilong.zhou@mediatek.com>
-Date: Thu, 11 Dec 2025 15:33:14 -0500
-In-Reply-To: <20251202074038.3173-9-kyrie.wu@mediatek.com>
-References: <20251202074038.3173-1-kyrie.wu@mediatek.com>
-	 <20251202074038.3173-9-kyrie.wu@mediatek.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-aFzqfli/yHis0bwpWqQX"
-User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
+	id 1vTpsS-0000000HO7S-0TPG
+	for linux-mediatek@lists.infradead.org;
+	Thu, 11 Dec 2025 23:15:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1765494914;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=NbD172mHC2Ryq1GOWpDAGfx/N1dB3vFXjgBCreduXmM=;
+	b=JdIprFWNISjT+Cn9fPkXCsqV2mYGoZEOyJL7ieX0nkENoX+fdHnwt5ltMYAnii97TiQBpO
+	kZ7LeN4yadhYQjNaQrMLUND46cAOxTGDWzRh65vE7EaS24xfLs6xw/57hfctFOtQZXhR/4
+	PfQPDHZ0s7Iabx5ZnfqRw7f9qzCdsu8=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-584-T4Cn0Tk1MNWkgJzY85xTew-1; Thu, 11 Dec 2025 18:15:12 -0500
+X-MC-Unique: T4Cn0Tk1MNWkgJzY85xTew-1
+X-Mimecast-MFC-AGG-ID: T4Cn0Tk1MNWkgJzY85xTew_1765494912
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8b9fa6f808cso167868385a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 11 Dec 2025 15:15:12 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1765494912; x=1766099712;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=NbD172mHC2Ryq1GOWpDAGfx/N1dB3vFXjgBCreduXmM=;
+        b=QKGdDe1ueamiOJGceTKLlcs9+TKvt//RHLuTv3B0vLxwYAxdVG11b8nLCAPLEYHsTG
+         eIfi8BrSNPUPlbFORqjzAFxRP12/DP+WMosCMIlmdcSw6vVSX74isRcy1wvUclBIX+46
+         xFsIiLlxvLfGPS3kpsHWtJsVH3KXZlm9Xi5XWiWbJAhFg+UD7AO1Z76yngQBKT8i/35N
+         cGKbzwKucuaitykU9UwMeLQkNcgZM/WamByG+8Iw2BRMw33IjhiyeRQM/OqE2g0q0yfS
+         z7luuJmwkYfKKXXc5H1fDvi7Oi0yM5+KJyg+dcP5y0twcqVsNP2dj7Ore8UHpVabG9JY
+         wc6A==
+X-Forwarded-Encrypted: i=1; AJvYcCXuRvqUc3hwvN/xfgbCBRGcDugBkw7TrUlnuwAk7OyHpVnqMdyowlYwsWMNE0L41gMsFVkOgJBQIKtmTsHu4w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzIeXWlq45g8KEDkuB4sTOP/25pzV4hI6Z0Yl7D0zc62FgWz1mG
+	3FTL4gg3hHT7lDZsLBwSlFDBWEufSYIqAsZQARFX6SWSA7J5ql2ocgPzVRDKsL6GkeyMjNhSSWQ
+	YpIMnalgLGaiG4SAuYsKWAOSdgEvKov5r3/ECeOSe5qGlWfwqAVPRMxNCnOxz5nhF8p5CN9Qh5g
+	==
+X-Gm-Gg: AY/fxX7a6khSIqgVBU9fBpM4gKhEe3z/6M7zcFg3Mxt5UtEFOEv9KvvYI0qHkFs6hVV
+	tUzwTfUQbAvhMG4PAOjIMxOe15qF5fQVWFiuRuLh9g1QgYceAbLtywXby5XgJ9pr0EjHtxQRL7m
+	89BSZLz0+oJyKEKIfGuJOlUKtdT8ucwdvXJmOHtSxv/rCtlmU4uvvgdR4czkHkgdPN0b4xHErD/
+	C8C2aaiehIQZ+jqaj7N2CsFD21aPr0VSiOroy16BewBWsKKmJS8PHBx78/k6WCMgJNpJzmRzvdl
+	aqqFkfAnFU0cw9gfRoUFOHJT4OVVnlY+MwR6X9WzCFZEZvv2vBmIatzdT+gaZzsTsYuoHEp1tpr
+	1zMvd7od5yZ4RLg0AcAyGwP1Xmcar3rVaji+qg/l4vBeE+2OcFJrnvg==
+X-Received: by 2002:a05:620a:4508:b0:891:bcdf:83dc with SMTP id af79cd13be357-8bb398e1c4cmr33953385a.34.1765494911923;
+        Thu, 11 Dec 2025 15:15:11 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHEhR+rl7YR1fq3Jbq9SD391TPQFkBJmfXp3Gj+BgCY0CdZmgYTQ1v2SmnRHgiTWvmPBSjsfQ==
+X-Received: by 2002:a05:620a:4508:b0:891:bcdf:83dc with SMTP id af79cd13be357-8bb398e1c4cmr33948785a.34.1765494911456;
+        Thu, 11 Dec 2025 15:15:11 -0800 (PST)
+Received: from [192.168.101.129] (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8bab5c3bd3fsm325234885a.28.2025.12.11.15.15.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 11 Dec 2025 15:15:10 -0800 (PST)
+From: Brian Masney <bmasney@redhat.com>
+Subject: [PATCH v3 0/9] phy: convert from clk round_rate() to
+ determine_rate()
+Date: Fri, 12 Dec 2025 08:14:44 +0900
+Message-Id: <20251212-phy-clk-round-rate-v3-0-4fa18b61f521@redhat.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/22NQQ6CMBBFr0Jm7ZhSEcSV9zAsSpnaRm3JFBsJ4
+ e5W3Lp8L/nvLxCJHUU4FwswJRdd8BkOuwK0Vf5G6IbMIIU8iqYUONoZ9eOOHF5+QFYTYaVUQ6a
+ shaEW8nBkMu69Ra9dZuviFHjePpL82l/u9D+XJApsy1pWjej71sgL02DVtNfhCd26rh9mQSQJt
+ QAAAA==
+X-Change-ID: 20250710-phy-clk-round-rate-4aa7ef160fe9
+To: Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Neil Armstrong <neil.armstrong@linaro.org>
+Cc: linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ Brian Masney <bmasney@redhat.com>, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6172; i=bmasney@redhat.com;
+ s=20250903; h=from:subject:message-id;
+ bh=ZY0h85yve8h09n3VMoGeby1rYSEr9a4xEaJTa8s51lM=;
+ b=owGbwMvMwCW2/dJd9di6A+2Mp9WSGDKtAypM8tRDs5f99Dnw7UrK3fyLqyJ5o95+0VNQaXf/L
+ vMt2ka+o5SFQYyLQVZMkWVJrlFBROoq23t3NFlg5rAygQxh4OIUgInM6GNkWDfVdAPLEoGHB3Wf
+ /ruVEL2MtYB33TEOs++bZKfsvnTtcw3DX4n32/fVbF4oOCf65uN1s3MuXTnI/nT7mq071x8O9ut
+ KnMMJAA==
+X-Developer-Key: i=bmasney@redhat.com; a=openpgp;
+ fpr=A46D32705865AA3DDEDC2904B7D2DD275D7EC087
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: dE67s8Muy21QO0r9hQlp_SWk1UHQd2RVezElhplksNo_1765494912
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251211_123320_325423_E75ADD8D 
-X-CRM114-Status: GOOD (  14.81  )
+X-CRM114-CacheID: sfid-20251211_151516_253049_01593D6A 
+X-CRM114-Status: GOOD (  14.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,61 +134,180 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The round_rate() clk ops is deprecated in the clk framework in favor
+of the determine_rate() clk ops, so let's go ahead and convert the
+drivers in the phy subsystem using the Coccinelle semantic patch
+posted below. I did a few minor cosmetic cleanups of the code in a
+few cases.
 
---=-aFzqfli/yHis0bwpWqQX
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Changes since v2:
+- Patch 8 (phy-rockchip-samsung-hdptx): fixed merge conflict so this now
+  applies against next-20251211. Cristian / Heiko: I kept your
+  Reviewed-by since structurally the code is still the same as before.
+- Link to v2: https://lore.kernel.org/r/20250810-phy-clk-round-rate-v2-0-9162470bb9f2@redhat.com
 
-Le mardi 02 d=C3=A9cembre 2025 =C3=A0 15:40 +0800, Kyrie Wu a =C3=A9crit=C2=
-=A0:
-> change media register device node number to a correct value.
-> The vfd minor is used to record the number of registered
-> video device nodes. The mdev_dec.devnode minor counter is
-> used to record the number of registered media device nodes.
->=20
-> Fixes: 41f03c673cb7b ("media: mediatek: vcodec: replace pr_* with dev_* f=
-or v4l2 debug message")
->=20
-> Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Changes since v1:
+- Patch 8 (phy-rockchip-samsung-hdptx): fix returning error code
+  (Cristian)
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Coccinelle semantic patch:
 
-> ---
-> =C2=A0.../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 | 3 ++-
-> =C2=A01 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_de=
-c_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv=
-.c
-> index 2d1a545e727c..bf6e792283a1 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-> @@ -493,7 +493,8 @@ static int mtk_vcodec_probe(struct platform_device *p=
-dev)
-> =C2=A0			goto err_media_reg;
-> =C2=A0		}
-> =C2=A0
-> -		dev_dbg(&pdev->dev, "media registered as /dev/media%d", vfd_dec->minor=
-);
-> +		dev_dbg(&pdev->dev, "media registered as /dev/media%d",
-> +			dev->mdev_dec.devnode->minor);
-> =C2=A0	}
-> =C2=A0
-> =C2=A0	mtk_vcodec_dbgfs_init(dev, false);
+    virtual patch
 
---=-aFzqfli/yHis0bwpWqQX
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+    // Look up the current name of the round_rate function
+    @ has_round_rate @
+    identifier round_rate_name =~ ".*_round_rate";
+    identifier hw_param, rate_param, parent_rate_param;
+    @@
 
------BEGIN PGP SIGNATURE-----
+    long round_rate_name(struct clk_hw *hw_param, unsigned long rate_param,
+                  unsigned long *parent_rate_param)
+    {
+    	...
+    }
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaTsqigAKCRDZQZRRKWBy
-9BiiAQChjhkDmde9orwBZUQR53EQisAKugo3JziXe89mHCSXogEA3BhPJG3ZcoKW
-icu7bE/fmHm9hzaHSWtMw21RcYsPtQY=
-=cn28
------END PGP SIGNATURE-----
+    // Rename the route_rate function name to determine_rate()
+    @ script:python generate_name depends on has_round_rate @
+    round_rate_name << has_round_rate.round_rate_name;
+    new_name;
+    @@
 
---=-aFzqfli/yHis0bwpWqQX--
+    coccinelle.new_name = round_rate_name.replace("_round_rate", "_determine_rate")
+
+    // Change rate to req->rate; also change occurrences of 'return XXX'.
+    @ chg_rate depends on generate_name @
+    identifier has_round_rate.round_rate_name;
+    identifier has_round_rate.hw_param;
+    identifier has_round_rate.rate_param;
+    identifier has_round_rate.parent_rate_param;
+    identifier ERR =~ "E.*";
+    expression E;
+    @@
+
+    long round_rate_name(struct clk_hw *hw_param, unsigned long rate_param,
+                  unsigned long *parent_rate_param)
+    {
+    <...
+    (
+    -return -ERR;
+    +return -ERR;
+    |
+    - return rate_param;
+    + return 0;
+    |
+    - return E;
+    + req->rate = E;
+    +
+    + return 0;
+    |
+    - rate_param
+    + req->rate
+    )
+    ...>
+    }
+
+    // Coccinelle only transforms the first occurrence of the rate parameter
+    // Run a second time. FIXME: Is there a better way to do this?
+    @ chg_rate2 depends on generate_name @
+    identifier has_round_rate.round_rate_name;
+    identifier has_round_rate.hw_param;
+    identifier has_round_rate.rate_param;
+    identifier has_round_rate.parent_rate_param;
+    @@
+
+    long round_rate_name(struct clk_hw *hw_param, unsigned long rate_param,
+                  unsigned long *parent_rate_param)
+    {
+    <...
+    - rate_param
+    + req->rate
+    ...>
+    }
+
+    // Change parent_rate to req->best_parent_rate
+    @ chg_parent_rate depends on generate_name @
+    identifier has_round_rate.round_rate_name;
+    identifier has_round_rate.hw_param;
+    identifier has_round_rate.rate_param;
+    identifier has_round_rate.parent_rate_param;
+    @@
+
+    long round_rate_name(struct clk_hw *hw_param, unsigned long rate_param,
+                  unsigned long *parent_rate_param)
+    {
+    <...
+    (
+    - *parent_rate_param
+    + req->best_parent_rate
+    |
+    - parent_rate_param
+    + &req->best_parent_rate
+    )
+    ...>
+    }
+
+    // Convert the function definition from round_rate() to determine_rate()
+    @ func_definition depends on chg_rate @
+    identifier has_round_rate.round_rate_name;
+    identifier has_round_rate.hw_param;
+    identifier has_round_rate.rate_param;
+    identifier has_round_rate.parent_rate_param;
+    identifier generate_name.new_name;
+    @@
+
+    - long round_rate_name(struct clk_hw *hw_param, unsigned long rate_param,
+    -               unsigned long *parent_rate_param)
+    + int new_name(struct clk_hw *hw, struct clk_rate_request *req)
+    {
+        ...
+    }
+
+    // Update the ops from round_rate() to determine_rate()
+    @ ops depends on func_definition @
+    identifier has_round_rate.round_rate_name;
+    identifier generate_name.new_name;
+    @@
+
+    {
+        ...,
+    -   .round_rate = round_rate_name,
+    +   .determine_rate = new_name,
+        ...,
+    }
+
+Note that I used coccinelle 1.2 instead of 1.3 since the newer version
+adds unnecessary braces as described in this post.
+https://lore.kernel.org/cocci/67642477-5f3e-4b2a-914d-579a54f48cbd@intel.com/
+
+Signed-off-by: Brian Masney <bmasney@redhat.com>
+---
+Brian Masney (9):
+      phy: freescale: phy-fsl-samsung-hdmi: convert from round_rate() to determine_rate()
+      phy: mediatek: phy-mtk-hdmi-mt2701: convert from round_rate() to determine_rate()
+      phy: mediatek: phy-mtk-hdmi-mt8173: convert from round_rate() to determine_rate()
+      phy: mediatek: phy-mtk-hdmi-mt8195: convert from round_rate() to determine_rate()
+      phy: mediatek: phy-mtk-mipi-dsi-mt8173: convert from round_rate() to determine_rate()
+      phy: mediatek: phy-mtk-mipi-dsi-mt8183: convert from round_rate() to determine_rate()
+      phy: rockchip: phy-rockchip-inno-hdmi: convert from round_rate() to determine_rate()
+      phy: rockchip: phy-rockchip-samsung-hdptx: convert from round_rate() to determine_rate()
+      phy: ti: phy-j721e-wiz: convert from round_rate() to determine_rate()
+
+ drivers/phy/freescale/phy-fsl-samsung-hdmi.c      | 13 ++++++----
+ drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c        |  8 +++---
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c        | 16 ++++++------
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c        | 10 ++++----
+ drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c    | 10 +++++---
+ drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c    | 10 +++++---
+ drivers/phy/rockchip/phy-rockchip-inno-hdmi.c     | 30 ++++++++++++-----------
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 15 +++++++-----
+ drivers/phy/ti/phy-j721e-wiz.c                    | 11 ++++++---
+ 9 files changed, 69 insertions(+), 54 deletions(-)
+---
+base-commit: 5ce74bc1b7cb2732b22f9c93082545bc655d6547
+change-id: 20250710-phy-clk-round-rate-4aa7ef160fe9
+
+Best regards,
+-- 
+Brian Masney <bmasney@redhat.com>
+
 
