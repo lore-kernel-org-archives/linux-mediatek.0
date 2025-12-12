@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F15E3D43367
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Dec 2025 01:56:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E012D43366
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Dec 2025 02:19:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sBN97zlc1zuJbM5gYgQtbCvVoaqupNsGh6L1SMzLNQ8=; b=Py3Gnd0xzWwEI2/xjNnZVLuO5u
-	QgBby/e+EfUCweErsjL9wC99RPy4tkD6IjibTIum8XdM4u2Vtok1uJcoOOb+uKnJwPH1NS0PCvELH
-	t7Oog2yD5Ovj5zzlTvWQaHa7mrfSYAt8cRlID6wRS1hCse2OFt/adGq6SGASDLhkbcpDJSHB2ZlY5
-	6llsW9C7vj1KjSoNJ8Z5SsbbXvJWCNHuTRzLlfGM+7Av8Lsw34dTZ7x+hoZmYgehp2HNgKoYrZAkm
-	Zu1GmlZlHnCFHrZWRUbCodzLubIgT6WpkCiT7peEWiND75zps/snQ57SaN0A1lMFFKW+WMIwfWACk
-	GuT+szWA==;
+	bh=PiMFkK/Hes2AYBR6C7hXhd7OwOUlmTe/EmB4bs+KvVI=; b=NJBqOCdvxtaTODY9xfKoaclZkR
+	1utW4p5h/gzonZ4aFzViWR+ndleL8tjbadT3TfVDs9PF8TbL55oKhl/EOai7NxZ1zcg2ygpovefT7
+	48Z/VxqdWllvhfHcIpXeiq55fbqeY38vFRZorjW8H0oskmPhPanogUoRS3Fcd4ecf+ODhyAPwU34Y
+	DaqEUmDxmvoowTkXdM5Mv1l1R9kDwAmdT/P8MvUPTZ3fYXlOr9pRwuFmnFvAbHPJxgEktrag7psPK
+	T0OpDzxrH96lm2vBlZA2NmZ6aPSksZ360js39dEsyJq8LYoxhmap5NUWeywryRyb4irOoYo63v+hc
+	jY8aNXUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTsOC-0000000HVWa-47Xr;
-	Fri, 12 Dec 2025 01:56:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1vTskL-0000000HXJe-2g8A;
+	Fri, 12 Dec 2025 02:19:05 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTsO1-0000000HVRr-0R8c;
-	Fri, 12 Dec 2025 01:56:02 +0000
-X-UUID: b3282a4cd6fd11f09f706fa2197c6ceb-20251211
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sBN97zlc1zuJbM5gYgQtbCvVoaqupNsGh6L1SMzLNQ8=;
-	b=GR7EyRlE8nISmr8py6N0xAJ1831LDIciJ1rCjat/BWYITJAckpe4nfSnupr+rZlH0CdMRAa8NdU0YGjcneQu6FxUAkqjzgY5VFXKtowH5zQXL3VAbwOJYXAIk1RXBzTE7g+uclWgqcKmaHnqHzAYA3AqewkHzEvYE+fIKJFtdBU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:fbd6634d-3f0b-431f-a864-c4a82bcebe27,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:b0126e28-e3a2-4f78-a442-8c73c4eb9e9d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
-	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: b3282a4cd6fd11f09f706fa2197c6ceb-20251211
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <jianhua.lin@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 207469748; Thu, 11 Dec 2025 18:55:56 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1748.26; Fri, 12 Dec 2025 09:55:54 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.1748.26 via Frontend Transport; Fri, 12 Dec 2025 09:55:53 +0800
-From: Jianhua Lin <jianhua.lin@mediatek.com>
-To: <mchehab@kernel.org>, <robh@kernel.org>, <krzk+dt@kernel.org>,
-	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
-	<angelogioacchino.delregno@collabora.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
-	<jh.hsu@mediatek.com>, Jianhua Lin <jianhua.lin@mediatek.com>
-Subject: [PATCH 4/4] media: mediatek: jpeg: add compatible for MT8189 SoC
-Date: Fri, 12 Dec 2025 09:52:18 +0800
-Message-ID: <20251212015218.4689-5-jianhua.lin@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20251212015218.4689-1-jianhua.lin@mediatek.com>
-References: <20251212015218.4689-1-jianhua.lin@mediatek.com>
+	id 1vTskJ-0000000HXJG-0kY2
+	for linux-mediatek@lists.infradead.org;
+	Fri, 12 Dec 2025 02:19:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id DB6CD439DC;
+	Fri, 12 Dec 2025 02:19:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AEB8FC4CEF7;
+	Fri, 12 Dec 2025 02:19:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1765505941;
+	bh=BgiaZ7V7m0ozSVnXi4W5objETFPBD27OWXPjCZQsXiI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=W1CdCIFy1DIdaM12ODSJg9551ugg/J3MTmBm6s+LtkGOknQmEz27CG9AALgfgrgan
+	 vP5ay3qtdd3cNbI5hOOEfZ2Wq15n6dtshAh66W6PrektoBGLJZnITSE9QwrPKY6TaJ
+	 etvshAGhoCUzYDgqJl+KPvLXgpFfYXLRsyUPkF6iha/7AM+LmMi5d8QL8fU1eIhLiS
+	 ztLtfcHFXz0G/iGHIlw1M+RtbZoKChoif7UXJB5536FyrXqWzdWBvnKiYNsMLsDsSa
+	 IkvaDembqQuBYaa6FLpR6QBYKr5ceN3/H7KAU/M8NnyvGlF3CuP0Te7wjSujU18ngH
+	 7nwAFREQsmvRw==
+Received: from johan by theta with local (Exim 4.99)
+	(envelope-from <johan@kernel.org>)
+	id 1vTsmr-000000007n6-1c7X;
+	Fri, 12 Dec 2025 11:21:41 +0900
+Date: Fri, 12 Dec 2025 11:21:41 +0900
+From: Johan Hovold <johan@kernel.org>
+To: Nicolas Dufresne <nicolas@ndufresne.ca>
+Cc: Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>, linux-media@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/2] media: mediatek: amend vpu_get_plat_device()
+ documentation
+Message-ID: <aTt8NSV4SP2ojKvi@hovoldconsulting.com>
+References: <20251028100454.4086-1-johan@kernel.org>
+ <20251028100454.4086-3-johan@kernel.org>
+ <836bcbc3e35c267abd93a4d2174a3e570ca9e181.camel@ndufresne.ca>
+ <aTjnH_i0q0xyLysD@hovoldconsulting.com>
+ <78aeb9303f3d57a28b2edc3b6b2b2f45498ee3fd.camel@ndufresne.ca>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="WxNnx0V4vXI1/jrz"
+Content-Disposition: inline
+In-Reply-To: <78aeb9303f3d57a28b2edc3b6b2b2f45498ee3fd.camel@ndufresne.ca>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251211_175601_719364_FAEB1081 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20251211_181903_260780_D8A15F56 
+X-CRM114-Status: GOOD (  29.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,83 +88,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add jpeg decoder and encoder compatible for MT8189 SoC.
 
-Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
----
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 44 +++++++++++++++++++
- 1 file changed, 44 insertions(+)
+--WxNnx0V4vXI1/jrz
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index d08fe365cbb2..9ea8d8f56e9b 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1866,6 +1866,10 @@ static struct clk_bulk_data mt8173_jpeg_dec_clocks[] = {
- 	{ .id = "jpgdec" },
- };
- 
-+static struct clk_bulk_data mtk_jpeg_dec_clocks[] = {
-+	{ .id = "jpgdec" },
-+};
-+
- static const struct mtk_jpeg_variant mt8173_jpeg_drvdata = {
- 	.clks = mt8173_jpeg_dec_clocks,
- 	.num_clks = ARRAY_SIZE(mt8173_jpeg_dec_clocks),
-@@ -1897,6 +1901,38 @@ static const struct mtk_jpeg_variant mtk_jpeg_drvdata = {
- 	.multi_core = false,
- };
- 
-+static const struct mtk_jpeg_variant mtk8189_jpegenc_drvdata = {
-+	.clks = mtk_jpeg_clocks,
-+	.num_clks = ARRAY_SIZE(mtk_jpeg_clocks),
-+	.formats = mtk_jpeg_enc_formats,
-+	.num_formats = MTK_JPEG_ENC_NUM_FORMATS,
-+	.qops = &mtk_jpeg_enc_qops,
-+	.irq_handler = mtk_jpeg_enc_irq,
-+	.hw_reset = mtk_jpeg_enc_reset,
-+	.m2m_ops = &mtk_jpeg_enc_m2m_ops,
-+	.dev_name = "mtk-jpeg-enc",
-+	.ioctl_ops = &mtk_jpeg_enc_ioctl_ops,
-+	.out_q_default_fourcc = V4L2_PIX_FMT_YUYV,
-+	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
-+	.support_34bit = true,
-+};
-+
-+static const struct mtk_jpeg_variant mtk8189_jpegdec_drvdata = {
-+	.clks = mtk_jpeg_dec_clocks,
-+	.num_clks = ARRAY_SIZE(mtk_jpeg_dec_clocks),
-+	.formats = mtk_jpeg_dec_formats,
-+	.num_formats = MTK_JPEG_DEC_NUM_FORMATS,
-+	.qops = &mtk_jpeg_dec_qops,
-+	.irq_handler = mtk_jpeg_dec_irq,
-+	.hw_reset = mtk_jpeg_dec_reset,
-+	.m2m_ops = &mtk_jpeg_dec_m2m_ops,
-+	.dev_name = "mtk-jpeg-dec",
-+	.ioctl_ops = &mtk_jpeg_dec_ioctl_ops,
-+	.out_q_default_fourcc = V4L2_PIX_FMT_JPEG,
-+	.cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
-+	.support_34bit = true,
-+};
-+
- static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
- 	.formats = mtk_jpeg_enc_formats,
- 	.num_formats = MTK_JPEG_ENC_NUM_FORMATS,
-@@ -1936,6 +1972,14 @@ static const struct of_device_id mtk_jpeg_match[] = {
- 		.compatible = "mediatek,mtk-jpgenc",
- 		.data = &mtk_jpeg_drvdata,
- 	},
-+	{
-+		.compatible = "mediatek,mt8189-jpgenc",
-+		.data = &mtk8189_jpegenc_drvdata,
-+	},
-+	{
-+		.compatible = "mediatek,mt8189-jpgdec",
-+		.data = &mtk8189_jpegdec_drvdata,
-+	},
- 	{
- 		.compatible = "mediatek,mt8195-jpgenc",
- 		.data = &mtk8195_jpegenc_drvdata,
--- 
-2.45.2
+On Wed, Dec 10, 2025 at 10:58:41AM -0500, Nicolas Dufresne wrote:
+> Le mercredi 10 d=C3=A9cembre 2025 =C3=A0 12:21 +0900, Johan Hovold a =C3=
+=A9crit=C2=A0:
+> > On Tue, Dec 09, 2025 at 03:43:30PM -0500, Nicolas Dufresne wrote:
+> > > Le mardi 28 octobre 2025 =C3=A0 11:04 +0100, Johan Hovold a =C3=A9cri=
+t=C2=A0:
 
+> > > > Add a comment to the vpu_get_plat_device() documentation to make it
+> > > > clear that the VPU platform device is returned with an incremented
+> > > > reference count (which needs to be dropped after use).
+
+> > > > @@ -120,7 +120,7 @@ int vpu_ipi_send(struct platform_device *pdev,
+> > > > =C2=A0 *		device for using VPU API.
+> > > > =C2=A0 *
+> > > > =C2=A0 * Return: Return NULL if it is failed.
+> > > > - * otherwise it is VPU's platform device
+> > > > + * otherwise it is VPU's platform device with incremented referenc=
+e count
+> > >=20
+> > > I picked this patch but rewrote with what felt like better and dense.
+> > >=20
+> > > - * Return: Return NULL if it is failed.
+> > > - * otherwise it is VPU's platform device
+> > > + * Return: a reference to the VPU's platform device, or NULL on fail=
+ure.
+> > >=20
+> > > hope its ok with you,
+> >=20
+> > Sure, my only concern is that just saying "reference" is too subtle,
+> > that's why I explicitly mentioned the refcount.
+>=20
+> For me everyone should read "a reference" as a kref based reference count=
+ed
+> structure.  A quick grep across out documentation, this is the vast major=
+ity of
+> the wording. Though, I spent limited time looking.
+
+It should be sufficient but given how many people miss this it may still
+be worth being more explicit.
+
+> > Btw, why is patch 2/2 marked obsolete? That leak is still there both on
+> > probe errors (which I saw someone else posted a fix for) and on driver
+> > unbind.
+>=20
+> I had two patches fixing the same thing, it just happen that I ended up p=
+icking
+> the other one first
+
+Ah, I had missed that and the fix is not in linux-next yet either so
+without a reply it wasn't obvious.
+
+> and liked you documentation fix, except it was replicating
+> obvious weird english such as "if it is failed", and documenting the error
+> before the expected outcome (opposite of my preference, not sure there is=
+ any
+> rules or guidelines).
+
+Yeah, I considered rewriting the whole comment too but given that the
+surrounding comments used similar language I just amended what was
+there.
+
+But I'm totally fine with the update you did.
+
+> https://lore.kernel.org/all/20251008090156.14224-1-haoxiang_li2024@163.co=
+m/
+
+Johan
+
+--WxNnx0V4vXI1/jrz
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQQHbPq+cpGvN/peuzMLxc3C7H1lCAUCaTt8LgAKCRALxc3C7H1l
+CI4zAQCm11arIiGlJXVGdACTl/5o23m/siC6R/rPSNyApJb1yAD/Xq07G/sc3JHg
+wl+RZmvhiWbaR/6a85YoWu7Px2Qhfg8=
+=4Gsc
+-----END PGP SIGNATURE-----
+
+--WxNnx0V4vXI1/jrz--
 
