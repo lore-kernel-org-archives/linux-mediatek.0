@@ -4,110 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D1D6D43367
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Dec 2025 03:18:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82155D43369
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Dec 2025 04:29:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jdgCpWWvG3mkqAlwi6Pye+G2vbeXV14W7CazYTFxXXs=; b=PqJ2JoaY+LuSfHuBs8HnD/C6Xt
-	5bwoFO7wd6Wg9+KQW0dCAquSqfQl6xJ8AHAzVJ3dVIrf8LsRPldU7ZxNeJxa9EcSS2hqyczFtZccD
-	5Als0K06nyu82+UuiAZSb71FfamUIe1fT8y/R1yx8Fycn2Bg6kvln1AZlK2heCGwBC+z1qKWjiPwa
-	Laly9csYSyHS59zSkK00hT3lTyVW7RcNljkjVX0rdM4pp81cENrDEBjguROU9a/J+tWRTu2RPna/h
-	bz59TF62Qo3Jf5WDEmd9S2AZGDRV+qKcKQNmVIAXuUYyCL4Sn6Qb0oRcJiae883m089yR+GjdPYHo
-	V1d6zVsw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0s+SNqNTn6JsMyHWbWuq3lWpcz36M9TZbWZ0BWrKnAY=; b=Ke/rOxVSgZ1KzDvOUVTO4KaVt+
+	D/I/jwOhxxaNGqX9oam0JibJV8xhOl02vDMv/uogjoLE4QkN3gqNzg7JqZSUyvp9rhbjTs7yXRH9n
+	XCTK698uvrnrtzjP18tYA+UtS1XiXcAwYmnfXs07cJVSwcOB6xBsy7NhBsn18n9b1IgVpp/NmnIiw
+	yzHFFBV21d8Vz1WNgFVGUqTNGOfoI3GoDF2FEbLHqyrNJ54JlntDO/8T7bm4XyH9vS0PLpf5MSL+N
+	KmafFclFYDlDA9Xruwrjh9qPSgOUCMMwZRkV/r/nU5XmvBmQYIhE4GnG36gK7nu7Vrf3VFrXSGzsC
+	Oy9baTTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTtfz-000000000YF-2wlF;
-	Fri, 12 Dec 2025 03:18:39 +0000
+	id 1vTumO-000000004b6-3Nl9;
+	Fri, 12 Dec 2025 04:29:20 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vTtfx-000000000XT-0jlo;
-	Fri, 12 Dec 2025 03:18:38 +0000
+	id 1vTumM-000000004aQ-1Gkk;
+	Fri, 12 Dec 2025 04:29:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 60C7B40B0E;
-	Fri, 12 Dec 2025 03:18:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1AA0C4CEF1;
-	Fri, 12 Dec 2025 03:18:32 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 43BD843218;
+	Fri, 12 Dec 2025 04:29:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C535C4CEF1;
+	Fri, 12 Dec 2025 04:29:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765509516;
-	bh=XUxxH4Vpir9HcnQx+jNzopr+EwSjZL5lv/lWqbEMxBQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=X+alLLETr0wBTEseYDUi9oCkFRc7rn5MVZ8wIsZkh/LaCFFb+vQmCrsM28yRSubwZ
-	 Hrfi16Uy/8Z6e1aeO5E3nMMW5/6IlOmlPlbPg3PeBGiciaqx+wJRmM37nMcXz4cG0q
-	 4a7I9D0zelioPR6F/6ah8WLBmM7DWLofRTtHzLeUSoNBXnKWEnXn2sY8tzZ71hnS01
-	 8MsHEkTFqiW69S96WhlbaDt1WacAiBBN0J4afpbHoJuo4YtJOAdXwTvSlT2gDCeLaH
-	 6cXmxb6eg03eaTmF762O2BPpWG5SPQJ8vpI0M3hDJICqzRoucSslclQVDN4g5jIMW6
-	 D4XaRITsEyDSQ==
-Message-ID: <9493a11e-7c4e-4c28-91c3-a896d499e151@kernel.org>
-Date: Fri, 12 Dec 2025 04:18:30 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] dt-bindings: media: mediatek-jpeg-encoder: add MT8189
- compatible string
-To: Jianhua Lin <jianhua.lin@mediatek.com>, mchehab@kernel.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, sirius.wang@mediatek.com,
- vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
-References: <20251212015218.4689-1-jianhua.lin@mediatek.com>
- <20251212015218.4689-4-jianhua.lin@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20251212015218.4689-4-jianhua.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
+	s=k20201202; t=1765513757;
+	bh=LaOkItnKNcq6MgUwAYjwgRn5Y3c91Y+l9HvH31lqiMw=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=RSAlPP7k4sSTJ8onslfWRG2uW+5erx4X0ijJtf1jPcDjusjm+RcqBtc2Xh54WnJqg
+	 BhbLjBVMVoKtqPyYY1tw8JMgAB9BsMJ/mShRB5BEkIYpFMz+7fRtxFJKCtGbIrBdJ0
+	 ge3xlGxN/VLKlGgf5MfqJobMiSTi1ZJ4GzbvYk9+3EgWBXsUrUyme1RANBOX/0JZFg
+	 ZWoW7hrL+tq8ShffSSD6odFWMsrBp8FntYl36mmGooRhrB8aI3Dbm7HLPvQ1+M3nYE
+	 uXtxPWC5HIkcHMndfXGrbcLvNRNyEJCXBoJ6cDclw0tN9bwQgTJ8w4RjBDAODmtrfc
+	 2I/aWKCLMo2dg==
+Date: Thu, 11 Dec 2025 22:29:14 -0600
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Xiaoshun Xu <xiaoshun.xu@mediatek.com>, 
+ Vince-wl Liu <vince-wl.liu@mediatek.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ linux-arm-kernel@lists.infradead.org, 
+ Sirius Wang <sirius.wang@mediatek.com>, devicetree@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-mediatek@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>, 
+ linux-kernel@vger.kernel.org
+To: Xiaoshun Xu <xiaoshun.xu@mediatek.corp-partner.google.com>
+In-Reply-To: <20251212031450.489128-2-xiaoshun.xu@mediatek.corp-partner.google.com>
+References: <20251212031450.489128-1-xiaoshun.xu@mediatek.corp-partner.google.com>
+ <20251212031450.489128-2-xiaoshun.xu@mediatek.corp-partner.google.com>
+Message-Id: <176551375433.2514847.16610029422866924600.robh@kernel.org>
+Subject: Re: [PATCH 1/4] dt-bindings: soc: devapc: Add for support MT8189
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251211_191837_257933_94C4B781 
-X-CRM114-Status: GOOD (  12.95  )
+X-CRM114-CacheID: sfid-20251211_202918_388391_3EAB6E59 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,46 +79,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/12/2025 02:52, Jianhua Lin wrote:
-> Compared to the previous generation IC, the MT8189 uses 34-bit
-> iova address-space. Therefore, add "mediatek,mt8189-jpgenc"
-> compatible to the binding document.
+
+On Fri, 12 Dec 2025 11:13:42 +0800, Xiaoshun Xu wrote:
 > 
-> Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
+> External email : Please do not click links or open attachments until you have verified the sender or the content.
+> 
+> 
+> From: "xiaoshun.xu" <xiaoshun.xu@mediatek.com>
+> 
+> Add compatible and vio-idx-num attribute of MT8189
+> 
+> Signed-off-by: xiaoshun.xu <xiaoshun.xu@mediatek.com>
 > ---
->  .../bindings/media/mediatek-jpeg-encoder.yaml | 27 ++++++++++++++-----
->  1 file changed, 20 insertions(+), 7 deletions(-)
+>  Documentation/devicetree/bindings/soc/mediatek/devapc.yaml | 6 ++++++
+>  1 file changed, 6 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-> index 5b15f8977f67..3044c7fc5c18 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-> @@ -14,13 +14,22 @@ description: |-
->  
->  properties:
->    compatible:
-> -    items:
-> -      - enum:
-> -          - mediatek,mt2701-jpgenc
-> -          - mediatek,mt8183-jpgenc
-> -          - mediatek,mt8186-jpgenc
-> -          - mediatek,mt8188-jpgenc
-> -      - const: mediatek,mtk-jpgenc
-> +    oneOf:
-> +      - items:
-> +          - enum:
-> +              - mediatek,mtk-jpgenc
 
-NAK, makes absolutely no sense. It is contradictory to the main DT
-rules, expressed in writing bindings or on numerous presentations.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-You cannot have generic front compatible because it expressed nothing.
-Plus this is really, really not properly explained in the commit msg.
+yamllint warnings/errors:
 
-Did you receive proper internal review, before posting? Considering
-absolutely poor quality patches from Mediatek, I find it as a
-requirement now.
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml: vio-idx-num: missing type definition
 
-Best regards,
-Krzysztof
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.kernel.org/project/devicetree/patch/20251212031450.489128-2-xiaoshun.xu@mediatek.corp-partner.google.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
+
 
