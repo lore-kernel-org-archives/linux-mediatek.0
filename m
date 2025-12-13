@@ -4,104 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A473D59F5C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Dec 2025 02:57:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28FC3D59F5C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Dec 2025 02:59:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fsn3yi34vFL6wAN0Oy9EVsb5SXXk0AlVm2ngOvpfyQc=; b=XVp/epBIXQovLYRFl46dJSDaKz
-	oyaE+ovlnENDBsGlE/tCPnGJ4V+wDNbZNj+FtLEGIxqo9n6kNgBG79Obsmbins+3GNA0eo8bqV6Sb
-	gftzWpGoHQK8vdd49woOPp5Cx4Xp2DtKQVvFx+CtJIYVmC02SWMWMQThdN8FA5h5Mw4cRvvr1GFE8
-	hsYARN8Zl8K7+XN//9wmFdEdl4ntIli0Z/AjpLsO3r4pfze5/pGOwIClWrNCY3or6xwwhalHiwsNO
-	pjzVfMbzXGwaYta1NcUqrtQZzUG7IhlkblmriFswyM3IVVLwGNidQEocNkEcp3E84FnnfnvivBWZf
-	gh6UnW3g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Avsz2cpuBMuIxJfDe8Exx+UdsRJos/RaUMHi5Uqgdyg=; b=Vqbn/231blL4BnKpwBOx833eDj
+	s6wFGbDX+bYbNCJyWo1ZObJ90BBy5wQIzH6raCxLbugjvLtrLut7LVL+wR+yuY+vM7kqpCQBCPT6L
+	XnRAEh6X6TPWBiCk8XO+IebBX6AUouCugtUMJjUGzWPJpQRp8GqBxlymV1eBVqpDd0AdOmBKmL7uA
+	d3bv57lWKqWd5W5mI4QF2MQHhx6tAtV5HHNn5sHEsrCfnzg87JxSgrxq5sGzlJiBLfrfKNyUH+8El
+	qKgbRX/o6Fn5w7YjNfKbOKdqJnCdx87NQxE8i0zrQvE1ytJNvlfXISymaKNVXTW9YXuzFMnmLEene
+	e6LOnJhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vUFp0-00000001K9T-0fEd;
-	Sat, 13 Dec 2025 02:57:28 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vUFqc-00000001LTB-00r4;
+	Sat, 13 Dec 2025 02:59:06 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vUFot-00000001K5e-1yEH;
-	Sat, 13 Dec 2025 02:57:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=fsn3yi34vFL6wAN0Oy9EVsb5SXXk0AlVm2ngOvpfyQc=; b=fif4OYbQrUqHpZ4FJ7vOJw5ppb
-	qzSenlT3AuzM+q32lXhgD/2ihkR2g+ZXjDd5juyhl/jjpAxXGTWKU+A2lyUTv8yyBQfUQHBhRhXfm
-	jnth6JflHHRGZVJtOVYw8wfopHt/0BvcAQBwhGBXpHgHGaggyKj45f488c9zAUEkV4lr+xTHsKX4C
-	uMabCn95zs2fmaNVRAb/RHjRHpvvQmVsHXMXTFIs1oCRj+yKKXg5F1MDDXVx7AVxfwRnZNqCJBfOV
-	eC+0zeIaJ88wDVYzveuUJ4W2hgBZAh7yrXyHOO63/4tOedf7yz5VsTC6BaLu4tQQM9qaEw9tpphYM
-	vyeBDBzg==;
-Received: from rtits2.realtek.com ([211.75.126.72] helo=rtits2.realtek.com.tw)
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vMJOV-0000000G66t-3cOC;
-	Fri, 21 Nov 2025 05:09:19 +0000
-X-SpamFilter-By: ArmorX SpamTrap 5.80 with qID 5AL61swwE3030759, This message is accepted by code: ctloc85258
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=realtek.com; s=dkim;
-	t=1763704914; bh=fsn3yi34vFL6wAN0Oy9EVsb5SXXk0AlVm2ngOvpfyQc=;
-	h=From:To:CC:Subject:Date:Message-ID:References:In-Reply-To:
-	 Content-Type:Content-Transfer-Encoding:MIME-Version;
-	b=g1ymSDUc2XnpItiFt1mLtTcVL2qynJILZyNh+cuVceFHQ5NejiT2eFGrMqVKsa7yW
-	 Y63xkKyLwo7dOOgCYQCAEmrJeSluKUd3zfuolXnDP0OCJBL3cs8YcPo3xd7NdszYqa
-	 /UjHIKXErxW50bySB/6PjSNOxfBy0UyfSLRqZwyK2aeDa/79L+uZOUonv2rJ3Olnbq
-	 OLXeTEKgec9RfTrdULOzuFPyOuXopD3BCWudYA0duLSfN3EkbUqL+oz+sCCzt7o/8A
-	 Kb2MW5U4omC7SHveGpNNBBddv5kQA7fnkAjrEwz64GW/vKWql3LaP6IRLcUm2lbhfe
-	 9/OUyDPPOMFpw==
-Received: from mail.realtek.com (rtkexhmbs04.realtek.com.tw[10.21.1.54])
-	by rtits2.realtek.com.tw (8.15.2/3.21/5.94) with ESMTPS id 5AL61swwE3030759
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 21 Nov 2025 14:01:54 +0800
-Received: from RTKEXHMBS01.realtek.com.tw (172.21.6.40) by
- RTKEXHMBS04.realtek.com.tw (10.21.1.54) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.27; Fri, 21 Nov 2025 14:01:55 +0800
-Received: from RTKEXHMBS06.realtek.com.tw (10.21.1.56) by
- RTKEXHMBS01.realtek.com.tw (172.21.6.40) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.27; Fri, 21 Nov 2025 14:01:50 +0800
-Received: from RTKEXHMBS06.realtek.com.tw ([::1]) by
- RTKEXHMBS06.realtek.com.tw ([fe80::744:4bc9:832c:9b7e%10]) with mapi id
- 15.02.1544.027; Fri, 21 Nov 2025 14:01:50 +0800
-From: Ping-Ke Shih <pkshih@realtek.com>
-To: "Mario Limonciello (AMD)" <superm1@kernel.org>,
-        "mario.limonciello@amd.com" <mario.limonciello@amd.com>,
-        "nbd@nbd.name"
-	<nbd@nbd.name>,
-        "lorenzo@kernel.org" <lorenzo@kernel.org>,
-        "ryder.lee@mediatek.com" <ryder.lee@mediatek.com>,
-        "shayne.chen@mediatek.com"
-	<shayne.chen@mediatek.com>,
-        "sean.wang@mediatek.com"
-	<sean.wang@mediatek.com>,
-        "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-        "angelogioacchino.delregno@collabora.com"
-	<angelogioacchino.delregno@collabora.com>
-CC: "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
-        "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>,
-        "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>
-Subject: RE: [PATCH] wifi: mt76: Strip whitespace from build ddate
-Thread-Topic: [PATCH] wifi: mt76: Strip whitespace from build ddate
-Thread-Index: AQHcWjgzLwwe4dMD8UutouPxvuwR37T8o4bw
-Date: Fri, 21 Nov 2025 06:01:50 +0000
-Message-ID: <a29d737be885490586c30be6262835c8@realtek.com>
-References: <20251120155829.3494747-1-superm1@kernel.org>
-In-Reply-To: <20251120155829.3494747-1-superm1@kernel.org>
-Accept-Language: en-US, zh-TW
-Content-Language: zh-TW
-x-originating-ip: [172.21.6.42]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+	id 1vUFqZ-00000001LQw-3Pgw;
+	Sat, 13 Dec 2025 02:59:03 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id DBB0C600AA;
+	Sat, 13 Dec 2025 02:59:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15F6FC4CEF1;
+	Sat, 13 Dec 2025 02:58:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1765594742;
+	bh=KNH4RZL5PUFyyCM7KZsz16mXm7HYj28WnHjsws4VIXw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=NbGcO2MIOVUn/ry7gCdKnJs3l6qlwFRxPB3pgc+cbGlDEP3T0pp7H6H7vEwIyp/Gm
+	 U7LIILqAZzdtEaconNoYl1LBBtaHqeoxuJ7ns2TVlNaHG2FdNwKKAr1pvaixwrzvmk
+	 7pIMhvloTDvZTrBLAtolu4UauWO/iW/FB4SM+X2+ufjxcFUdkGrun4NPhzPSgvJAny
+	 lNbizq4d53nCtFXyevHgT2peCHFgqKyrUS8KzbK0E58HOge8bbIQir7a9525+JXlPF
+	 Z4odhM8vaBUglqdz8m4Zg15qSDTHOV12skFGdTSgKs/Je7HKZU3m8bQAvclO+TEXp7
+	 zhT8L4w2gz/CQ==
+Message-ID: <02201ae8-d705-4896-a3ff-9b2d5cf833f8@kernel.org>
+Date: Sat, 13 Dec 2025 03:58:52 +0100
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251121_050917_209087_31C2CDB7 
-X-CRM114-Status: UNSURE (   7.90  )
-X-CRM114-Notice: Please train this message.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] dt-bindings: Remove unused includes
+To: "Rob Herring (Arm)" <robh@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Bjorn Andersson <andersson@kernel.org>,
+ Michal Simek <michal.simek@amd.com>, Vinod Koul <vkoul@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jonathan Cameron <jic23@kernel.org>, David Lechner <dlechner@baylibre.com>,
+ =?UTF-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
+ Andy Shevchenko <andy@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ Peter Rosin <peda@axentia.se>, Linus Walleij <linusw@kernel.org>,
+ Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, dmaengine@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-iio@vger.kernel.org,
+ iommu@lists.linux.dev, linux-gpio@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, imx@lists.linux.dev, linux-sound@vger.kernel.org
+References: <20251212231203.727227-1-robh@kernel.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20251212231203.727227-1-robh@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,31 +133,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Mario Limonciello (AMD) <superm1@kernel.org> wrote:
-> @@ -3124,8 +3125,11 @@ int mt76_connac2_load_patch(struct mt76_dev *dev, =
-const char *fw_name)
->         }
->=20
->         hdr =3D (const void *)fw->data;
-> +       strscpy(build_date, hdr->build_date, sizeof(build_date));
-> +       build_date[16] =3D '\0';
+On 13/12/2025 00:11, Rob Herring (Arm) wrote:
+> Remove includes which are not referenced by either DTS files or drivers.
+> 
+> There's a few more which are new, so they are excluded for now.
+> 
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 
-As comment of strscpy(), NULL terminator always presents.
 
- * Copy the source string @src, or as much of it as fits, into the
- * destination @dst buffer. The behavior is undefined if the string
- * buffers overlap. The destination @dst buffer is always NUL terminated,
- * unless it's zero-sized.
+Oh yes!
 
-> +       strim(build_date);
->         dev_info(dev->dev, "HW/SW Version: 0x%x, Build Time: %.16s\n",
-> -                be32_to_cpu(hdr->hw_sw_ver), hdr->build_date);
-> +                be32_to_cpu(hdr->hw_sw_ver), build_date);
->=20
->         for (i =3D 0; i < be32_to_cpu(hdr->desc.n_region); i++) {
->                 struct mt76_connac2_patch_sec *sec;
-> --
-> 2.43.0
->=20
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
+Best regards,
+Krzysztof
 
