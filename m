@@ -4,59 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30B97D5B16C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 14:21:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 984C0D5B16E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 14:29:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7qaxvP2WYgpi5GMaZilKu13Wv/sdWBnmAfZaJh8qJCs=; b=4AxdnxCsd3RDOkj+ogIuHmOaoX
-	5w1znZNaqDEjN+k8nuScX+pUZph9LAWxPcEqW2CY/qRESqHO4FflERmKCe6I1dG6XCpb7nFQnu0QI
-	gOCXxZ9wAvrEMYRDkOCepOTqswEJbB5aoAATakhW9SvxyHq4gfA6iUTRb2cDKkfXLiD17IVTCu3MY
-	1QcA4h4hsFVyrTORICAgjJiGqf2zRZ9KoBC2mErQWFDBG9BesT/4O911alNTCd57+YQNLNC9tSDR7
-	DLAhwl7s8DG51uhZMavS7MNzzcMdz+eQyE5M9fbRsSnArfXHEHKtzvnT0FdTQp+5ZTdxtkGGzXOq6
-	HsW15Ksg==;
+	bh=IIlQ7Jpm1J4ASKEQEKqjtVdyfOiI54c8CBKZNP/oWHI=; b=Au7N4HFvSBBPa6W8oLb1jJCN12
+	c4U9ztOYRs99+XVMMN8u+TMQFpD7HCrdo1QrQ8x1cmrBNW3Trk4rDPyTIyZYDonjm6/6l/lvYAaMY
+	3i0Xnc4UMkU3/jNTey6lj2Swz1+Bpv6XqUxWbeSePsJlkwseyYydhJqck+FkJaKBTqAXnpy6XASnK
+	x5mLmyr9voGq8tUJAg+HI0evWLprL4iDJGzfcwC878htQw/3et0PLaz5cToTcqpTO3IwbqQDCHerZ
+	WrKrE+LF7Bi5D4wKdTe7blAZUuHTCIRWJJkbNtBobHHdhQPyvhc+FFEtGhVkgv5t6zOr0s05rab7C
+	sFfy7OAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV9SG-00000003mqh-0Pao;
-	Mon, 15 Dec 2025 14:21:40 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vV9a8-00000003naP-3NRv;
+	Mon, 15 Dec 2025 14:29:48 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV9SE-00000003mpd-337x
-	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Dec 2025 14:21:38 +0000
+	id 1vV9a5-00000003nZh-1Xp5;
+	Mon, 15 Dec 2025 14:29:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C4159600AC;
-	Mon, 15 Dec 2025 14:21:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 27364C4CEF5;
-	Mon, 15 Dec 2025 14:21:36 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4F8B9407C7;
+	Mon, 15 Dec 2025 14:29:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3651BC4CEF5;
+	Mon, 15 Dec 2025 14:29:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765808497;
-	bh=MTKeMG3Bg3HAsEC7hfWzoaJNW/z6vXP7y9UpwJgb2Xs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LOUnWz8f8B28/CmY93A7rmr4wvY2vxzJ4iJruFcYfnS6A16fTe6GKcuzkZjndkfYO
-	 hxR3rFifSqdWt5sLao1yCxtMuU5yLlyangxWzGmQbSiiqA71mBwoKCjc6l8kwvON5P
-	 NcNF2Vk2667uFdvGoOQPk5yUk/HJthKAhW+suNlNhmqlMS8bbMIsLVLRWotQOd6L/n
-	 5ky7SnmylKzT9UXD6d1iyUocrJ76/5A4cdMSbkAKaoTYrnIwmRf5L+ck63XXj5Rrcq
-	 jp4CXknDK2uAa40bVmejxyFxDWkuHBVH1bLfZAspw3ZvftPNcSVfaa3HUkAYdsxpdg
-	 Y/TdBbMQPXALA==
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-To: Ed Tsai <ed.tsai@mediatek.com>, linux-pm@vger.kernel.org
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, chun-hung.wu@mediatek.com,
- freddy.shin@mediatek.com, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>
-Subject: [PATCH v1] PM: runtime: Do not clear needs_force_resume with enabled runtime
- PM
-Date: Mon, 15 Dec 2025 15:21:34 +0100
-Message-ID: <12807571.O9o76ZdvQC@rafael.j.wysocki>
-Organization: Linux Kernel Development
-In-Reply-To: <20251215122154.3180001-1-ed.tsai@mediatek.com>
-References: <20251215122154.3180001-1-ed.tsai@mediatek.com>
+	s=k20201202; t=1765808984;
+	bh=IIlQ7Jpm1J4ASKEQEKqjtVdyfOiI54c8CBKZNP/oWHI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=l4fdbQXGhu7aq4nVKW70uSZJdrfxRTKK/HurNg+8xQSMyqVXOMNaFdPMDj6p/0wge
+	 dL6Ylsn+hI1nsQ68Uykk/a3pTnGt56VVC7H9u7B+i/mqcRjnAYeNFBciU3k70OFeJV
+	 OztDw9Nnk0xFBd4DmlvtKwPSRmWl9W9HmdOOi8ywbkvkdw1DqTHb2VnQSXSW6DhSPT
+	 hE6dFUHqW+D55qc2j1QUG+oa9fz2HT71pIPf1H+gwq8hZMdvRlpig01sGEK39GaPvn
+	 MhoyfgniD3WE3qWWeZq2NsxbzLU26davCCtL+Xtoe9bMfXL4Kr21kcIiur8TbNAQbO
+	 rK0ErGqxpRGzw==
+Date: Mon, 15 Dec 2025 15:29:40 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
+	Alexey Brodkin <abrodkin@synopsys.com>, Phong LE <ple@baylibre.com>, Liu Ying <victor.liu@nxp.com>, 
+	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Adrien Grassein <adrien.grassein@gmail.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+	Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
+	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Hui Pu <Hui.Pu@gehealthcare.com>, 
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Louis Chauvet <louis.chauvet@bootlin.com>, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org, 
+	imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+	linux-renesas-soc@vger.kernel.org, linux-amlogic@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org
+Subject: Re: [PATCH v2 01/26] drm/bridge: add of_drm_get_bridge()
+Message-ID: <20251215-quirky-encouraging-waxbill-5b04e6@penduick>
+References: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-0-88f8a107eca2@bootlin.com>
+ <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-1-88f8a107eca2@bootlin.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="jpxp2yuvxjnvtegw"
+Content-Disposition: inline
+In-Reply-To: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-1-88f8a107eca2@bootlin.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251215_062945_470941_4542D6AF 
+X-CRM114-Status: GOOD (  13.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,137 +94,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Monday, December 15, 2025 1:21:42 PM CET ed.tsai@mediatek.com wrote:
-> From: Ed Tsai <ed.tsai@mediatek.com>
-> 
-> needs_force_resume is a bitfield member in struct dev_pm_info and must
-> be accessed under the same lock as its bitfield group.
-> 
-> A real concurrent write was observed between needs_force_resume and
-> idle_notification; stacks below:
-> 
-> write needs_force_resume:
->   pm_runtime_reinit+0x110/0x360
->   really_probe+0xe0/0x464
->   __driver_probe_device+0x9c/0x104
->   driver_probe_device+0x3c/0x1a8
->   __device_attach_driver+0x100/0x17c
->   bus_for_each_drv+0x10c/0x168
->   __device_attach_async_helper+0x7c/0xf4
->   async_run_entry_fn+0x4c/0x1b4
->   process_scheduled_works+0x1dc/0x498
->   worker_thread+0x220/0x320
->   kthread+0x150/0x27c
->   ret_from_fork+0x10/0x20
-> 
-> write idle_notification:
->   rpm_idle+0x464/0x5f8
->   __pm_runtime_idle+0x7c/0x170
->   scsi_autopm_put_device+0x18/0x28
->   scsi_sysfs_add_sdev+0x1a0/0x1d8
->   scsi_probe_and_add_lun+0xbd8/0xcd0
->   __scsi_add_device+0xb8/0x11c
->   ufshcd_async_scan+0xb4/0x3a4
->   async_run_entry_fn+0x4c/0x1b4
->   process_scheduled_works+0x1dc/0x498
->   worker_thread+0x220/0x320
->   kthread+0x150/0x27c
->   ret_from_fork+0x10/0x20
-> 
-> Fixes: 89d9cec3b1e9 ("PM: runtime: Clear power.needs_force_resume in pm_runtime_reinit()")
-> Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
-> ---
->  drivers/base/power/runtime.c | 11 +++++++++++
->  1 file changed, 11 insertions(+)
-> 
-> diff --git a/drivers/base/power/runtime.c b/drivers/base/power/runtime.c
-> index 84676cc24221..3328543b1ed8 100644
-> --- a/drivers/base/power/runtime.c
-> +++ b/drivers/base/power/runtime.c
-> @@ -1879,11 +1879,22 @@ void pm_runtime_reinit(struct device *dev)
->  				pm_runtime_put(dev->parent);
->  		}
->  	}
-> +
->  	/*
->  	 * Clear power.needs_force_resume in case it has been set by
->  	 * pm_runtime_force_suspend() invoked from a driver remove callback.
->  	 */
-> +	if (dev->power.irq_safe)
-> +		spin_lock(&dev->power.lock);
-> +	else
-> +		spin_lock_irq(&dev->power.lock);
-> +
->  	dev->power.needs_force_resume = false;
-> +
-> +	if (dev->power.irq_safe)
-> +		spin_unlock(&dev->power.lock);
-> +	else
-> +		spin_unlock_irq(&dev->power.lock);
->  }
->  
->  /**
-> 
 
-Thanks for the patch, but this happens because the flag is cleared when
-runtime PM is enabled which shouldn't be necessary, so I'd prefer to make
-the change below.
+--jpxp2yuvxjnvtegw
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 01/26] drm/bridge: add of_drm_get_bridge()
+MIME-Version: 1.0
 
----
-From: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-Subject: [PATCH v1] PM: runtime: Do not clear needs_force_resume with enabled runtime PM
+Hi,
 
-Commit 89d9cec3b1e9 ("PM: runtime: Clear power.needs_force_resume in
-pm_runtime_reinit()") added provisional clearing of power.needs_force_resume
-to pm_runtime_reinit(), but it is done unconditionally which is a
-mistake because pm_runtime_reinit() may race with driver probing
-and removal [1].
+On Fri, Nov 28, 2025 at 05:50:11PM +0100, Luca Ceresoli wrote:
+> of_drm_find_bridge() does not increment the refcount for the returned
+> bridge, but that is required now. However converting it and all its users
+> is not realistically doable at once given the large amount of (direct and
+> indirect) callers and the complexity of some.
+>=20
+> Solve this issue by creating a new of_drm_get_bridge() function that is
+> identical to of_drm_find_bridge() except it takes a reference. Then
+> of_drm_find_bridge() will be deprecated to be eventually removed.
+>=20
+> Suggested-by: Maxime Ripard <mripard@kernel.org>
+> Link: https://lore.kernel.org/dri-devel/20250319-stylish-lime-mongoose-0a=
+18ad@houat/
+> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
-To address this, notice that power.needs_force_resume should never
-be set when runtime PM is enabled and so it only needs to be cleared
-when runtime PM is disabled, and update pm_runtime_init() to only
-clear that flag when runtime PM is disabled.
+I don't think it's a good name still. It's way too close to
+drm_bridge_get it gets confusing. I still believe that
+of_drm_find_and_get_bridge() is a better name. If you disagree, please
+explain why.
 
-Fixes: 89d9cec3b1e9 ("PM: runtime: Clear power.needs_force_resume in pm_runtime_reinit()")
-Reported-by: Ed Tsai <ed.tsai@mediatek.com>
-Closes: https://lore.kernel.org/linux-pm/20251215122154.3180001-1-ed.tsai@mediatek.com/ [1]
-Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
----
- drivers/base/power/runtime.c |   22 ++++++++++++----------
- 1 file changed, 12 insertions(+), 10 deletions(-)
+Maxime
 
---- a/drivers/base/power/runtime.c
-+++ b/drivers/base/power/runtime.c
-@@ -1878,16 +1878,18 @@ void pm_runtime_init(struct device *dev)
-  */
- void pm_runtime_reinit(struct device *dev)
- {
--	if (!pm_runtime_enabled(dev)) {
--		if (dev->power.runtime_status == RPM_ACTIVE)
--			pm_runtime_set_suspended(dev);
--		if (dev->power.irq_safe) {
--			spin_lock_irq(&dev->power.lock);
--			dev->power.irq_safe = 0;
--			spin_unlock_irq(&dev->power.lock);
--			if (dev->parent)
--				pm_runtime_put(dev->parent);
--		}
-+	if (pm_runtime_enabled(dev))
-+		return;
-+
-+	if (dev->power.runtime_status == RPM_ACTIVE)
-+		pm_runtime_set_suspended(dev);
-+
-+	if (dev->power.irq_safe) {
-+		spin_lock_irq(&dev->power.lock);
-+		dev->power.irq_safe = 0;
-+		spin_unlock_irq(&dev->power.lock);
-+		if (dev->parent)
-+			pm_runtime_put(dev->parent);
- 	}
- 	/*
- 	 * Clear power.needs_force_resume in case it has been set by
+--jpxp2yuvxjnvtegw
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaUAbUwAKCRAnX84Zoj2+
+djcYAX0XDI3qHEaKNThqzvK+xH7wgFSb4PSqArOG86oyKIGMi8pT7b5csS5bOuV5
+2ctCO38BgN8OxOo0ee8AltSidRvxpQt71QwlpeJAk75pjrFZxR3ZmGp82TJ8I9q7
+RSr1bb4kZw==
+=txhL
+-----END PGP SIGNATURE-----
 
+--jpxp2yuvxjnvtegw--
 
