@@ -4,79 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A909D5B17B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 15:21:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B5B6D5B841
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 15:44:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7lxB9XjLaLsArqvt9nwkotGgC/X94T1Dv9Xk7KyQdv4=; b=d91I9G1GWVfrHkpDfxpf+SDKrq
-	C+c/B4x7hr0d91H6UFeQygUlyA59r3AsfTQzjQLZlLKL8XVFOiQB9jlydd1YXoFWpBznBBRw+DO7t
-	CFPiSkiJ+AaR/BfAdDMbqjrAWpO9qsKu5nA4KKqYzvqY4cYLLHUJAMn2BO17Nx3QBGgrV8Sj9/rg2
-	9maVzW6ONGD+I3gl1jQyhAJTZQ/QaYX2v+tTZP0g77bEQlPXIO3DlbexBC0tTUNt3/H8yzJBnlX0K
-	kKfEm9JFJ1B7Arst8pPrOq3pYi9yVj4qASi3evZmWWhZ7lm8k2mv/QPASOUtub52z3vGqK2KkX95x
-	BUrEchfA==;
+	bh=K3EiCf37zmh6OYCxevsK3wYl1l2l0yO8i3lRu2zzoOo=; b=ejQKyzeL2CXtCT8CkkB/q3vVKx
+	HSNT9QLchg1gYLk6QYoBYhYBoJHz52iT07tA3tr1ZizRNgDlOo1qAvFU1+XlMWU0xRk37k50Gov1t
+	lmH5vTBxnwX+R+11AhdAx/TmSpoO6JXgWbETq0dEn7D+qOvGg9s09UmMa6xSrXmwA6MHANOXTolWq
+	hKe2Ywic37BN5wtDqQTbCPrr80a2k1FBEKUE4zfyNbla6gcuWELjfAf/gFyfkpNn6JbN/7PXBSnut
+	F4P99vzO6ip5eKlpHK9oYfF9vdusDeRmP/GNTLZ4OpIasS47RuoKLsifbuNcS/qrf/PC6A0QU9mbT
+	e7XuzSyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVAO4-00000003tII-12xe;
-	Mon, 15 Dec 2025 15:21:24 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vVAkN-00000003ufY-097j;
+	Mon, 15 Dec 2025 15:44:27 +0000
+Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVAO2-00000003tHz-10ek;
-	Mon, 15 Dec 2025 15:21:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 162DE60133;
-	Mon, 15 Dec 2025 15:21:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36F5FC4CEF5;
-	Mon, 15 Dec 2025 15:21:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765812080;
-	bh=MDT80+HnOqYoPF13DdZpWx5G4AfuEz3zXo+tGv3k9kQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Mj4Td7K0i4vUtxfzfd4iz6hFgePmUEer1942TVlrOA9Rbo6KvDvecd5Lli1q1L0Ki
-	 qwX1zEN+87kYjIn6DV6wYqWZRKVMwNvpQa4jEjTL9uPBHyRmUnmY2xIAjK5iuiqLqe
-	 bjzy0N3KtEFKcXpYw1Wh2EY2Embua4NWw0NJYGmDKo1LaYMjGfA5f/yu8lYIO/U2wJ
-	 f6/WXWqXXpCwoGGuurff9s6rE7Cg5YolT6INs7hv7P89urh23hiSktIY2x4SePTR3l
-	 uJ8XJJiwQNMQeZk/C0HUNeYFUsapSWw+zpS3mE17LWGU92a0gGGB4/j5bp1IZYXceo
-	 QKJPdZygpvl5w==
-Date: Mon, 15 Dec 2025 16:21:17 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Jonathan Corbet <corbet@lwn.net>, 
-	Alexey Brodkin <abrodkin@synopsys.com>, Phong LE <ple@baylibre.com>, Liu Ying <victor.liu@nxp.com>, 
-	Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Adrien Grassein <adrien.grassein@gmail.com>, Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
-	Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
-	Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, Hui Pu <Hui.Pu@gehealthcare.com>, 
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Louis Chauvet <louis.chauvet@bootlin.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org, 
-	imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
-	linux-renesas-soc@vger.kernel.org, linux-amlogic@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org
-Subject: Re: [PATCH v2 06/26] drm/bridge: add devm_of_drm_get_bridge
-Message-ID: <20251215-amigurumi-bullmastiff-of-witchcraft-0dc22a@penduick>
-References: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-0-88f8a107eca2@bootlin.com>
- <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-6-88f8a107eca2@bootlin.com>
+	id 1vVAkK-00000003ueV-0A6E
+	for linux-mediatek@lists.infradead.org;
+	Mon, 15 Dec 2025 15:44:25 +0000
+Received: by mail-yx1-xb12c.google.com with SMTP id 956f58d0204a3-6447743ce90so3502506d50.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 15 Dec 2025 07:44:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1765813462; x=1766418262; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=K3EiCf37zmh6OYCxevsK3wYl1l2l0yO8i3lRu2zzoOo=;
+        b=k/+/MQG2NEOmvBGiCKTyLC12xcKNe0xE0MMqsiwMi86/LyOfRZtHwpykQUEBCS8Nvl
+         msg4Sb46UjwnVBx+csHQWjBTitx66mVcPLkcTeyLr1rPIKMAxBOq+SK4nuSV2/P83WBl
+         IO1v2YE7MH0kTPrwz71ixnZO6wJXEpN2Aloul1HOndNszHMz4V5uVlZ78fFFqW4Wafkv
+         9fPN72xiLKTdUgpGRbxlhtOovnJPh6Z0Z16I7g4e2wTFCzIKtppuaSrEn8EunVHyDmSU
+         LkFudDWeYTOA70rNFVXnxdCWxap7hX7F5qiqg05cstKiOd6UQCUvO3kbauCuHI9bjOlh
+         jYjA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1765813462; x=1766418262;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=K3EiCf37zmh6OYCxevsK3wYl1l2l0yO8i3lRu2zzoOo=;
+        b=bDNC5wFJWzq53LvXzin5b0vBwOZcckJYsjG3GOfB5TejgEbWSiQvvX/XLssuZB4lPD
+         vTZeT21nFmwmwMXfoosWM2arivXV1Crxqh/7gwoGzNtEHGZiap/Pw1NQqFz5x3aPwxSu
+         T0jdHWOpWITnmaohw/rFV5yhCWDhdpfbecSFWDZmMNYbscV+uA2Yfoh8k0ua+MC/J/pX
+         NzXAr2HkAx4b7dbmb47tjZALygCMmeAA5n2/RyCieVlIIOGokqAtEI6JL55za13iQbpW
+         x3KssjrNU8GCWEN+EOlk+9Bp4we2e1LhDYsyhRvrX9o4q0Aq5K5FqJJuu5ot4iLWDXeE
+         f1Qg==
+X-Forwarded-Encrypted: i=1; AJvYcCVOf8ssTyO20kcOZZ31BIOiLKThLG+J2X8iCSt1RxtM6Ti5/pgwChSJC1sW037Cb3oKkTyoqp2oPsGqn5VFZQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz0MODhpkQhbbTYlZ1kCulWvd9DYS/ovZOkcnpjM6yr9Ch61ChB
+	qCfS6gGJRnks9CevlYk93p0xqBLb46f6rAr1LriObyZfZk/UKq8C3CWGJfO8DuV9+hJo5F+tnF+
+	JswG+3J0U2owM4bwugB6VuoQSFr6mcsqCvoSzdJb7wg==
+X-Gm-Gg: AY/fxX5ldEjiYNNYDXL3urq7wFn9ih/hFWxxwTlitduoVhV5ZtJAFDAbHOSlQ17splb
+	FY7euo3Q8M5NK0K9XZ/4OBlJHk5R+oThlB4s/UfPycZMenVlrdSloRs6fFeo8r41MfdlZ+TXJzr
+	eSS417ouFak0utOKNgogVWJkroOJR/m4ir9iUmLckBVP9ABAQNUD3yC4bMqTR6NjDNBZUvQWh4X
+	U2+00dnDggxQ3YQTSoch2BSp1INLnVJtnQKpPOoVBj4mHHD8Gv3p+vNHlPbTb8Wsbgp/ws7
+X-Google-Smtp-Source: AGHT+IGoFL7q8HvVv9KIvA1/iDdDg15+gVc1fqtWPGh45LUtRp806bxzNvgl8df7HOVfQLqABF6bjGbmgvq2nhhi7vM=
+X-Received: by 2002:a05:690e:dc9:b0:645:541a:4f11 with SMTP id
+ 956f58d0204a3-6455564f24fmr8169644d50.49.1765813462393; Mon, 15 Dec 2025
+ 07:44:22 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="gsdrqopk6hwziqn7"
-Content-Disposition: inline
-In-Reply-To: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-6-88f8a107eca2@bootlin.com>
+References: <20251203-mt8189-add-mmc-support-v1-0-f5ce43212fe9@collabora.com>
+In-Reply-To: <20251203-mt8189-add-mmc-support-v1-0-f5ce43212fe9@collabora.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 15 Dec 2025 16:43:42 +0100
+X-Gm-Features: AQt7F2qLO5M-hmnWGiTMCwqz4Oz4UGYnEMVnkbdBTh1zCvxxkv8BxBAberyOD40
+Message-ID: <CAPDyKFoXoO-rpEK4Y-FZyWhpOumiwir96-XfLOOR2U1h73ADhg@mail.gmail.com>
+Subject: Re: [PATCH 0/3] Add SD/MMC Card driver support for Mediatek MT8189 SoC
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Wenbin Mei <wenbin.mei@mediatek.com>, kernel@collabora.com, linux-mmc@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251215_074424_069168_0AFE8939 
+X-CRM114-Status: GOOD (  16.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,98 +98,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---gsdrqopk6hwziqn7
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2 06/26] drm/bridge: add devm_of_drm_get_bridge
-MIME-Version: 1.0
-
-On Fri, Nov 28, 2025 at 05:50:16PM +0100, Luca Ceresoli wrote:
-> Several drivers (about 20) follow the same pattern:
->=20
->  1. get a pointer to a bridge (typically the next bridge in the chain) by
->     calling of_drm_find_bridge()
->  2. store the returned pointer in the private driver data, keep it until
->     driver .remove
->  3. dereference the pointer at attach time and possibly at other times
->=20
-> of_drm_find_bridge() is now deprecated because it does not increment the
-> refcount and should be replaced with of_drm_get_bridge() +
-> drm_bridge_put().
->=20
-> However some of those drivers have a complex code flow and adding a
-> drm_bridge_put() call in all the appropriate locations is error-prone,
-> leads to ugly and more complex code, and can lead to errors over time with
-> code flow changes.
->=20
-> To handle all those drivers in a straightforward way, add a devm variant =
-of
-> of_drm_get_bridge() that adds a devm action to invoke drm_bridge_put()
-> when the said driver is removed. This allows all those drivers to put the
-> reference automatically and safely with a one line change:
->=20
->   - priv->next_bridge =3D of_drm_find_bridge(remote_np);
->   + priv->next_bridge =3D devm_of_drm_get_bridge(dev, remote_np);
->=20
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
->=20
+On Wed, 3 Dec 2025 at 12:45, Louis-Alexis Eyraud
+<louisalexis.eyraud@collabora.com> wrote:
+>
+> This patch series adds in the Mediatek SD/MMC Card host driver (mtk-sd)
+> the support of Mediatek MT8189 SoC and its variants (MT8371 and
+> MT8391).
+>
+> It has been tested with a kernel based on next-20251203 tag on the
+> Mediatek Genio 720-EVK board, based on MT8391 SoC, using both onboard
+> eMMC storage and a micro-SD card.
+>
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 > ---
->=20
-> Changes in v2:
-> - fix return value: NULL on error, as documented, not an ERR_PTR
+> Louis-Alexis Eyraud (3):
+>       dt-bindings: mmc: mtk-sd: Add support for MT8189 SoC
+>       mmc: mtk-sd: add support for SPM resource release control
+>       mmc: mtk-sd: add support for MT8189 SoC
+>
+>  Documentation/devicetree/bindings/mmc/mtk-sd.yaml |  3 +++
+>  drivers/mmc/host/mtk-sd.c                         | 32 ++++++++++++++++++++---
+>  2 files changed, 32 insertions(+), 3 deletions(-)
 > ---
->  drivers/gpu/drm/drm_bridge.c | 28 ++++++++++++++++++++++++++++
->  include/drm/drm_bridge.h     |  5 +++++
->  2 files changed, 33 insertions(+)
->=20
-> diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
-> index 9b7e3f859973..59575a84eff6 100644
-> --- a/drivers/gpu/drm/drm_bridge.c
-> +++ b/drivers/gpu/drm/drm_bridge.c
-> @@ -1442,6 +1442,34 @@ struct drm_bridge *of_drm_get_bridge(struct device=
-_node *np)
->  }
->  EXPORT_SYMBOL(of_drm_get_bridge);
-> =20
-> +/**
-> + * devm_of_drm_get_bridge - find the bridge corresponding to the device
-> + *			    node in the global bridge list and add a devm
-> + *			    action to put it
-> + *
-> + * @dev: device requesting the bridge
-> + * @np: device node
-> + *
-> + * On success the returned bridge refcount is incremented, and a devm
-> + * action is added to call drm_bridge_put() when @dev is removed. So the
-> + * caller does not have to put the returned bridge explicitly.
-> + *
-> + * RETURNS:
-> + * drm_bridge control struct on success, NULL on failure
-> + */
+> base-commit: e47d97576181b31291cf58e77d737d21def0e160
+> change-id: 20251128-mt8189-add-mmc-support-ff6df8f89e41
+>
+> Best regards,
+> --
+> Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+>
 
-I still think that, if we want to introduce it, we need to be very clear
-that it's not safe, and we need to add a TODO to remove it later on. But
-why should we introduce a helper, and convert dozens of drivers to it,
-for something that is neutral?
+The series applied for next, thanks!
 
-If anything, I'd rather see them call of_drm_get_bridge(under the new
-name), and put back the reference in destroy.
-
-Maxime
-
---gsdrqopk6hwziqn7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaUAnbQAKCRAnX84Zoj2+
-dp5VAX9vgUBVKAQimc/xE5mx+OZGGMP2AAkyV8RQCAm07C/CeB4TANSmR+vX8fQm
-oJBQh0ABfiGrjZ9H25V8ZEx7mg3ywz982YYke557o8h2KLo5yCMDUxK0PVo9ZwYr
-bI9HAJ7y/g==
-=YBE0
------END PGP SIGNATURE-----
-
---gsdrqopk6hwziqn7--
+Kind regards
+Uffe
 
