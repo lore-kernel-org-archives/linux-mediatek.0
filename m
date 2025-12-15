@@ -4,54 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C01DDD59D99
-	for <linux-mediatek@archiver.kernel.org>; Sun, 14 Dec 2025 16:50:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05BABD41D74
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 03:50:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QwWNAca6IA5vmr33BT6LB87k+Vr0WcFKaaVLLN0k/Nc=; b=c9TRO4Xgowmx83cvnsNfomO4GC
-	GwILNlOxJn/Pjo3R0LwyMxVs3UjwCeKkvN5BXtCHMhQUPZzNC9DVqzxH19DsKUpIF1Y6QwrpXT7lI
-	ipY75/mdmIr49++2Qwyr+mEhgnRfEjJ8uNPFlUGlUfWSrKzoqCc9dCywUhbEgUm09wka7C6EwDVOM
-	LCVJ55jiycWDiO2BpGMPjtUOCD7DRZEUyG09ANJzKa6Xc/1HYPOmjR08a8j+YnU/3ZpYrdQ3EhgJO
-	wzQ0wWPvIJ/6d5nQ744z5GmYGc0X4S0/bdQBnH9kkMjEm3lBcuGiYglCjzioGLZocNCk+NEx2Gyxv
-	sKpnoOFQ==;
+	bh=BEu0cADvmhvlt4cXGyrqEIWNXYKdhwBS/LuDOiBdJdY=; b=2b4GJIrnz66ZwAMjDytQNHKB/X
+	maKXANj8angfbJ8OCWI4C/BTmamNh16ZI3DjPSO1SpiUqwM1Tu+Md/T+NFpCGOm/5wG+ZXdgdeCzr
+	sTZDcDMAGx7QNw0rrqATBO8J7fUJf1M0WtY8A9AE5Woh2u4JhJJkTBTcoOZlJbxsxaMLhXIlw/+Dc
+	6ItSRMIugcl1S53EyLUYaaP/CvenDdRLhTleQBlU3TwaOhYT+vwWu73mhsF9ixnZ7zTMJSXvFYl2Z
+	VJ560VdxaSc2aYNOt6awD7aoY1woDbY9Q3zdxJNf3j5IxKmwg0n1CqgSa68oJp83V8A9qmcHzU2b1
+	oe3cJ07A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vUpIJ-00000002bd8-2szx;
-	Sun, 14 Dec 2025 16:50:03 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1vUzb3-00000002ziC-0gnL;
+	Mon, 15 Dec 2025 03:50:05 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vUpIH-00000002bcG-0fJa;
-	Sun, 14 Dec 2025 16:50:02 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=QwWNAca6IA5vmr33BT6LB87k+Vr0WcFKaaVLLN0k/Nc=; b=K6AYswP9380Ujw+zJp4aPgckjG
-	v7RaMAYynrjPlMGXf97mGism4HRCRMAeq2v8ERlKUevs9EmXSlARn1PT/e9yZlIjZdzX77gfHfdyE
-	bxvWHLdKkTe6aDBzrRoLrUrOlt8gV1JtV5ZlsfvQ5+Ps4+N4nEttU37YS3Lx3ZzWEbUo=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1vUpHz-00Gvmp-Mz; Sun, 14 Dec 2025 17:49:43 +0100
-Date: Sun, 14 Dec 2025 17:49:43 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [RFC net-next v3 3/3] net: ethernet: mtk_eth_soc: Add LRO support
-Message-ID: <2e00738e-6d17-4ba6-8af4-7e02783b17da@lunn.ch>
-References: <20251214110310.7009-1-linux@fw-web.de>
- <20251214110310.7009-4-linux@fw-web.de>
+	id 1vUzaz-00000002zdS-1B03;
+	Mon, 15 Dec 2025 03:50:02 +0000
+X-UUID: 1efa53fed96911f0a52f393f94899d25-20251214
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=BEu0cADvmhvlt4cXGyrqEIWNXYKdhwBS/LuDOiBdJdY=;
+	b=FZSQoiPDbGRwbPDFUC1bFhCitTI86mxEUTa9UqPy7l2f9fhya9vHaqzraj4uZLleV3gTcn3/y6xOm9uaFBSzO71Ga5cFJ4nk30GF/8dE4aWMPCXyoqAjGgsDvx17fVQkvXoChLAVAh7U2F84MR6sfvlBC4yD7rrhQg1SHqR3eis=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:86964f0b-6d03-4c5a-99f9-254257bd5bd5,IP:0,UR
+	L:0,TC:0,Content:0,EDM:-20,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-20
+X-CID-META: VersionHash:a9d874c,CLOUDID:c36970c6-8a73-4871-aac2-7b886d064f36,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:1,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 1efa53fed96911f0a52f393f94899d25-20251214
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <irving-ch.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 165344859; Sun, 14 Dec 2025 20:49:56 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 15 Dec 2025 11:49:53 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 15 Dec 2025 11:49:53 +0800
+From: irving.ch.lin <irving-ch.lin@mediatek.com>
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+	<sboyd@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Ulf Hansson
+	<ulf.hansson@linaro.org>, Richard Cochran <richardcochran@gmail.com>
+CC: Qiqi Wang <qiqi.wang@mediatek.com>, <linux-clk@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-pm@vger.kernel.org>, <netdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
+	<jh.hsu@mediatek.com>, <irving-ch.lin@mediatek.com>
+Subject: [PATCH v4 14/21] clk: mediatek: Add MT8189 mdp clock support
+Date: Mon, 15 Dec 2025 11:49:23 +0800
+Message-ID: <20251215034944.2973003-15-irving-ch.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20251215034944.2973003-1-irving-ch.lin@mediatek.com>
+References: <20251215034944.2973003-1-irving-ch.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251214110310.7009-4-linux@fw-web.de>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251214_085001_199492_F83E87BE 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251214_195001_336302_F056AFDC 
+X-CRM114-Status: GOOD (  19.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,39 +91,155 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mason Chang <mason-cw.chang@mediatek.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Russell King <linux@armlinux.org.uk>, Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org, Felix Fietkau <nbd@nbd.name>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->  static int mtk_hwlro_rx_init(struct mtk_eth *eth)
->  {
->  	const struct mtk_reg_map *reg_map = eth->soc->reg_map;
-> -	int i;
-> +	const struct mtk_soc_data *soc = eth->soc;
-> +	int i, val;
->  	u32 ring_ctrl_dw1 = 0, ring_ctrl_dw2 = 0, ring_ctrl_dw3 = 0;
->  	u32 lro_ctrl_dw0 = 0, lro_ctrl_dw3 = 0;
+From: Irving-CH Lin <irving-ch.lin@mediatek.com>
 
-Reverse Christmas tree. It looks like it was already broken, but you
-should not make it worse, and i think you can even fix it here.
+Add support for the MT8189 mdp clock controller,
+which provides clock gate control for display system.
 
-> +static int mtk_hwlro_add_ipaddr_idx(struct net_device *dev, u32 ip4dst)
-> +{
-> +	struct mtk_mac *mac = netdev_priv(dev);
-> +	struct mtk_eth *eth = mac->hw;
-> +	const struct mtk_reg_map *reg_map = eth->soc->reg_map;
-> +	u32 reg_val;
-> +	int i;
+Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
+---
+ drivers/clk/mediatek/Kconfig             | 12 ++++
+ drivers/clk/mediatek/Makefile            |  1 +
+ drivers/clk/mediatek/clk-mt8189-mdpsys.c | 91 ++++++++++++++++++++++++
+ 3 files changed, 104 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt8189-mdpsys.c
 
-More Reverse Christmas tree probes. You will need to move the
-assignment to reg_map into the body of the function.
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index c0fe1aa49993..ef962f5816a8 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -894,6 +894,18 @@ config COMMON_CLK_MT8189_IMG
+ 	  are building a kernel for a device that uses the MT8189 SoC and requires
+ 	  image processing capabilities, say Y or M to include this driver.
+ 
++config COMMON_CLK_MT8189_MDPSYS
++	tristate "Clock driver for MediaTek MT8189 mdpsys"
++	depends on COMMON_CLK_MT8189
++	default COMMON_CLK_MT8189
++	help
++	  This driver supports the display system clocks on the MediaTek MT8189
++	  SoC. By enabling this option, it allows for the control of the clocks
++	  related to the display subsystem. This is crucial for the proper
++	  functionality of the display features on devices powered by the MT8189
++	  chipset, ensuring that the display system operates efficiently and
++	  effectively.
++
+ config COMMON_CLK_MT8192
+ 	tristate "Clock driver for MediaTek MT8192"
+ 	depends on ARM64 || COMPILE_TEST
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index a1eaf123f2f0..9b23e4c5e019 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -131,6 +131,7 @@ obj-$(CONFIG_COMMON_CLK_MT8189_DBGAO) += clk-mt8189-dbgao.o
+ obj-$(CONFIG_COMMON_CLK_MT8189_DVFSRC) += clk-mt8189-dvfsrc.o
+ obj-$(CONFIG_COMMON_CLK_MT8189_IIC) += clk-mt8189-iic.o
+ obj-$(CONFIG_COMMON_CLK_MT8189_IMG) += clk-mt8189-img.o
++obj-$(CONFIG_COMMON_CLK_MT8189_MDPSYS) += clk-mt8189-mdpsys.o
+ obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192-apmixedsys.o clk-mt8192.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
+diff --git a/drivers/clk/mediatek/clk-mt8189-mdpsys.c b/drivers/clk/mediatek/clk-mt8189-mdpsys.c
+new file mode 100644
+index 000000000000..282bfb77b47d
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8189-mdpsys.c
+@@ -0,0 +1,91 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2025 MediaTek Inc.
++ * Author: Qiqi Wang <qiqi.wang@mediatek.com>
++ */
++
++#include <linux/clk-provider.h>
++#include <linux/module.h>
++#include <linux/of_device.h>
++#include <linux/platform_device.h>
++
++#include "clk-mtk.h"
++#include "clk-gate.h"
++
++#include <dt-bindings/clock/mediatek,mt8189-clk.h>
++
++static const struct mtk_gate_regs mdp0_cg_regs = {
++	.set_ofs = 0x04,
++	.clr_ofs = 0x08,
++	.sta_ofs = 0x00,
++};
++
++static const struct mtk_gate_regs mdp1_cg_regs = {
++	.set_ofs = 0x14,
++	.clr_ofs = 0x18,
++	.sta_ofs = 0x10,
++};
++
++#define GATE_MDP0(_id, _name, _parent, _shift)				\
++	GATE_MTK_FLAGS(_id, _name, _parent, &mdp0_cg_regs, _shift,	\
++		       &mtk_clk_gate_ops_setclr, CLK_IGNORE_UNUSED)
++
++#define GATE_MDP1(_id, _name, _parent, _shift)				\
++	GATE_MTK_FLAGS(_id, _name, _parent, &mdp1_cg_regs, _shift,	\
++		       &mtk_clk_gate_ops_setclr, CLK_IGNORE_UNUSED)
++
++static const struct mtk_gate mdp_clks[] = {
++	/* MDP0 */
++	GATE_MDP0(CLK_MDP_MUTEX0, "mdp_mutex0", "mdp0_sel", 0),
++	GATE_MDP0(CLK_MDP_APB_BUS, "mdp_apb_bus", "mdp0_sel", 1),
++	GATE_MDP0(CLK_MDP_SMI0, "mdp_smi0", "mdp0_sel", 2),
++	GATE_MDP0(CLK_MDP_RDMA0, "mdp_rdma0", "mdp0_sel", 3),
++	GATE_MDP0(CLK_MDP_RDMA2, "mdp_rdma2", "mdp0_sel", 4),
++	GATE_MDP0(CLK_MDP_HDR0, "mdp_hdr0", "mdp0_sel", 5),
++	GATE_MDP0(CLK_MDP_AAL0, "mdp_aal0", "mdp0_sel", 6),
++	GATE_MDP0(CLK_MDP_RSZ0, "mdp_rsz0", "mdp0_sel", 7),
++	GATE_MDP0(CLK_MDP_TDSHP0, "mdp_tdshp0", "mdp0_sel", 8),
++	GATE_MDP0(CLK_MDP_COLOR0, "mdp_color0", "mdp0_sel", 9),
++	GATE_MDP0(CLK_MDP_WROT0, "mdp_wrot0", "mdp0_sel", 10),
++	GATE_MDP0(CLK_MDP_FAKE_ENG0, "mdp_fake_eng0", "mdp0_sel", 11),
++	GATE_MDP0(CLK_MDPSYS_CONFIG, "mdpsys_config", "mdp0_sel", 14),
++	GATE_MDP0(CLK_MDP_RDMA1, "mdp_rdma1", "mdp0_sel", 15),
++	GATE_MDP0(CLK_MDP_RDMA3, "mdp_rdma3", "mdp0_sel", 16),
++	GATE_MDP0(CLK_MDP_HDR1, "mdp_hdr1", "mdp0_sel", 17),
++	GATE_MDP0(CLK_MDP_AAL1, "mdp_aal1", "mdp0_sel", 18),
++	GATE_MDP0(CLK_MDP_RSZ1, "mdp_rsz1", "mdp0_sel", 19),
++	GATE_MDP0(CLK_MDP_TDSHP1, "mdp_tdshp1", "mdp0_sel", 20),
++	GATE_MDP0(CLK_MDP_COLOR1, "mdp_color1", "mdp0_sel", 21),
++	GATE_MDP0(CLK_MDP_WROT1, "mdp_wrot1", "mdp0_sel", 22),
++	GATE_MDP0(CLK_MDP_RSZ2, "mdp_rsz2", "mdp0_sel", 24),
++	GATE_MDP0(CLK_MDP_WROT2, "mdp_wrot2", "mdp0_sel", 25),
++	GATE_MDP0(CLK_MDP_RSZ3, "mdp_rsz3", "mdp0_sel", 28),
++	GATE_MDP0(CLK_MDP_WROT3, "mdp_wrot3", "mdp0_sel", 29),
++	/* MDP1 */
++	GATE_MDP1(CLK_MDP_BIRSZ0, "mdp_birsz0", "mdp0_sel", 3),
++	GATE_MDP1(CLK_MDP_BIRSZ1, "mdp_birsz1", "mdp0_sel", 4),
++};
++
++static const struct mtk_clk_desc mdp_mcd = {
++	.clks = mdp_clks,
++	.num_clks = ARRAY_SIZE(mdp_clks),
++};
++
++static const struct of_device_id of_match_clk_mt8189_mdpsys[] = {
++	{ .compatible = "mediatek,mt8189-mdpsys", .data = &mdp_mcd },
++	{ /* sentinel */ }
++};
++MODULE_DEVICE_TABLE(of, of_match_clk_mt8189_mdpsys);
++
++static struct platform_driver clk_mt8189_mdpsys_drv = {
++	.probe = mtk_clk_simple_probe,
++	.remove = mtk_clk_simple_remove,
++	.driver = {
++		.name = "clk-mt8189-mdpsys",
++		.of_match_table = of_match_clk_mt8189_mdpsys,
++	},
++};
++
++module_platform_driver(clk_mt8189_mdpsys_drv);
++MODULE_DESCRIPTION("MediaTek MT8189 mdpsys clocks driver");
++MODULE_LICENSE("GPL");
+-- 
+2.45.2
 
-> +#define MTK_PDMA_LRO_CTRL_DW0	(reg_map->pdma.lro_ctrl_dw0)
-> +#define MTK_PDMA_LRO_CTRL_DW1	(reg_map->pdma.lro_ctrl_dw0 + 0x04)
-> +#define MTK_PDMA_LRO_CTRL_DW2	(reg_map->pdma.lro_ctrl_dw0 + 0x08)
-> +#define MTK_PDMA_LRO_CTRL_DW3	(reg_map->pdma.lro_ctrl_dw0 + 0x0c)
-
-Same comment as the previous patch.
-
-	Andrew
 
