@@ -4,96 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFEA5D59D99
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 10:53:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4206FD59D99
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 11:30:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zUe+EAE2SPiv7I6VGGrHkxtD3ndMq2VfMf1iJyqGTQM=; b=yjQNMrLWbx2kNIsbxyhG+vWMwa
-	j4mTIlg8wwfNlpF41pIkk+o6Lry/F1uJeEuIulzZ+spzM8R4+jo57cmp4fdcMIPnoA4RxM9Wzxl7v
-	srp97edM+BojUxv1rVgZB3DXsi7x3iisWaiGtnNmPY5d9cSrWjyzD4TpPZyAwnEXvBDLY4/3Exm/h
-	dRJPFrLKysTHXRtkjBLkW6JZbj8D9voan6If/rp18yQI+tLx2TR/ZhT1KtILAAxsvTT74jU2RNhVS
-	Ts+ZS12pbVaywCtqf0WwDcEsbyOyUMemSr9pB5X04VblTriMyBLYRaLvb/2bzWzhnv7fY1tnqZd2C
-	Lz9L0l7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=usrboNhr07WsYh1biy8+JtVQT99Fk/4sqr0V9+UQCBw=; b=4DKFQmA/aF2Osho4KXIS5R/0T7
+	0D2iVT8Hfeq8FtJCDTeuZW+OwmaMdXyykvXdvjldtgViY3e/Fuu5Z3ukuNj++juYkbHtzXy9iPJCV
+	JMWDE79Ofij9713X51YjCG139EfwbcYp1MROxMgoIulNPQFE3hYQeEM9YHZLeZRyL7OM4XVPwwavw
+	5mlX7BAZRp0myMxPFeowf9Y33vniuv6LqC1+rBEzks8QvBuANi6ir1OdgO4uHL4c8JxB8lvfNMAis
+	chNF7M0KYjJ0MQPcRUOMYwgci5SNv54SLfZR8GB+XhBLzWrbqkZ0dON+4y1pUdWRX63qil/BOcy9g
+	nwH4XFFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV6CV-00000003U6v-1ny8;
-	Mon, 15 Dec 2025 10:53:11 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1vV6mA-00000003Wdn-2Pc2;
+	Mon, 15 Dec 2025 11:30:02 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV6CS-00000003U5i-1KFQ
-	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Dec 2025 10:53:09 +0000
-Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-644f90587e5so5571952a12.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 15 Dec 2025 02:53:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1765795985; x=1766400785; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=zUe+EAE2SPiv7I6VGGrHkxtD3ndMq2VfMf1iJyqGTQM=;
-        b=CsQlYJktAJQTiY0ut2+nB7FKpnie2ZeMXZqlrLnpwZiw897UrQfaBkOInCYhSJbpIo
-         po/fd222/0oh+E/hx/qO7iuh4c4DKX9mAnBcrETn6nohuEkQBUgUVPkifTTdGvmST6Q1
-         ghFVecs1MaAPYaXYu1NnoQQtjByieLspJSjAacHs4WrOqMr9k0ZeAyDpHx4Kp/Ul2Mmv
-         XZf7zpCa+UoGDagti+m34tqPJKcMb4QfM8DVg1CnGn8O/vLLNoKy8rrc6TWYIO3tIu2s
-         2SsuIP64GTHujmToJjCa19rVejSaKYeskCp/D8ZG/1tnFc5anr1j9nSvfL/wtPJ0+8Uh
-         g8Lg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765795985; x=1766400785;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=zUe+EAE2SPiv7I6VGGrHkxtD3ndMq2VfMf1iJyqGTQM=;
-        b=R7M0tQxDmq6pmhHRjt8t/rJ7hg/Gp/VO8djpserY4ouIYgZ14mLKrL2tgkeevAriaI
-         QTOoGAnS6z9FNoKGTzP50c+k26bXzQTaAfS3uZofszOdrA6LnLVn0xMXzNy4rqir5MPU
-         AFOtlgTnWwoyoZblC7fx5wHV5+lzLWLV+ZiCka2Mg8d3BUryp6RDU7tXWqyJkhJYcJnb
-         /lv11qSA4Lx/2X+A3549Qbr6DzkbWqj6kieoXimAdZJADCrGJ0xaWE1/O7RHKdI8wxwJ
-         8jvhu1N00zmPksheZLLrZJNAARACu14a9OiuDugEetVxrwdDAszoEy7VVPVsrhnXYXcT
-         GLvQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWNPnE2CL+N//faBWYqzIMFAa9MMLPWMDN9gZNZLn/t0ZRxKJA/Q5TLIRroQWG4/GG9O/DfvFsN9grsUku5eg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyt6E0936gmUmvnlMLFNjfdRs6WfB2we+rdB/qRJKZ3zT78pK2F
-	6dHRjEd0d8vEnpmqjD398XKpS+2XSdDwgTAezhGjj2/K5pnsopFaKxkB
-X-Gm-Gg: AY/fxX5Y6LSSiMRxIt0ee9NDunj/53Oei+I8Yj63swjPMbtSd5hztb8QYLXKzTLWHqz
-	h/v0fYWvalghgUjYio9GugtxuVaLV2XJ2Yt+xEcY+6VxnjFlG0FragRBSCbH5FhEB4Px4nVfzSp
-	KKbHqLqFrVS6ARGUK43MraUYIgaf+FvTknZXdsNmh6Yl3hBKPi/JSMTTEQiKY8XPD5KKBJDWPsp
-	AmWs9gW8214PN7xXwmL9GVqoA5EowaejlZOujgrJa/rUWVx+4wwOecIOL6uMhkuehjGnic3PFDb
-	kQA23n8+41ikBHRqfI8X4Y2urn7FbFNaDvPHF+9PupwStj/cmDtUVh6z6+UWv2mMCPRstiAkDH8
-	2cHnjBEDpP5mg19tzRuSKjaSEAC8HE2IeAcE1t2RUGXEj1uJvrFvsO7GbIW86F4Wt70QHCYR4T7
-	342b8JLtT213/TYapaLA==
-X-Google-Smtp-Source: AGHT+IHQaUbyuIBHaup4o4JPs479YX310x1U5GJT7nC5JbUCCXXFujhyKYNJmlWKJ25qA/DRS5VM+w==
-X-Received: by 2002:a17:907:9494:b0:b73:6534:5984 with SMTP id a640c23a62f3a-b7d2364c4e1mr1105313066b.16.1765795985215;
-        Mon, 15 Dec 2025 02:53:05 -0800 (PST)
-Received: from [192.168.33.7] ([89.151.31.85])
-        by smtp.googlemail.com with ESMTPSA id a640c23a62f3a-b7cfa2e70c2sm1345912866b.15.2025.12.15.02.53.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 15 Dec 2025 02:53:04 -0800 (PST)
-Message-ID: <424704d3-eb9a-4af3-828c-96645e347907@gmail.com>
-Date: Mon, 15 Dec 2025 11:53:02 +0100
+	id 1vV6m8-00000003Wd2-3VC9;
+	Mon, 15 Dec 2025 11:30:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 9940D60150;
+	Mon, 15 Dec 2025 11:29:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4B16C4CEF5;
+	Mon, 15 Dec 2025 11:29:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1765798199;
+	bh=pZvRKNQnveDpt4V3OuxBYvkE88PpxoFZHMOMx6hAFFM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QeEDjTNtlu9KzfO/VGbdPOVYs0Jkgs3j99bFjHVOla3Fki2xoaIRpy7WR7dVgo2Xb
+	 60ocg1esw6KniRVqwo7YqlpILGpw87am44mYenCzPASr2NF6hZsPzSG2eT06R3HyFH
+	 5vf9ZIMTxnJTXPsUm4xdVlMEoD5KI4VZ3wgFWGB5tsKkn++ILWshafpKbo6krVnclE
+	 wXnRTptk8iWmLfkLhonDXCT/mCs8aL7PavHSSsdy60wHAj0+EBby74pMs2SeeZyhKp
+	 yf02De/IVtYEN+h+H0HQontkvZSaMu/YTrUzgNaKgFLkhMq0j8u8kghe41YTgsscXh
+	 s82OBDHbYEh0g==
+Date: Mon, 15 Dec 2025 12:29:56 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
+To: 20190311120055 created <payne.lin@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, sirius.wang@mediatek.com, vince-wl.liu@mediatek.com, 
+	jh.hsu@mediatek.com
+Subject: Re: [PATCH] pwm: mediatek: Add error handling for zero rate in PWM
+ state
+Message-ID: <s5ieu7cciqgw3x5rnpcn43fm3nkinm4guz33nhwwi45apdz2ot@4zsbi7tckuwz>
+References: <20251215104037.3100485-1-payne.lin@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] ARM: dts: mediatek: mt7623: fix efuse fallback
- compatible
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>
-References: <20240617094634.23173-1-zajec5@gmail.com>
- <20240617094634.23173-2-zajec5@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-In-Reply-To: <20240617094634.23173-2-zajec5@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_025308_392482_AABE352F 
-X-CRM114-Status: GOOD (  14.98  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="d547b5x5tvmpvovf"
+Content-Disposition: inline
+In-Reply-To: <20251215104037.3100485-1-payne.lin@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,42 +72,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-W dniu 17.06.2024 o 11:46, Rafał Miłecki pisze:
-> From: Rafał Miłecki <rafal@milecki.pl>
-> 
-> Fix following validation error:
-> arch/arm/boot/dts/mediatek/mt7623a-rfb-emmc.dtb: efuse@10206000: compatible: 'oneOf' conditional failed, one must be fixed:
->          ['mediatek,mt7623-efuse', 'mediatek,mt8173-efuse'] is too long
->          'mediatek,mt8173-efuse' was expected
->          'mediatek,efuse' was expected
->          from schema $id: http://devicetree.org/schemas/nvmem/mediatek,efuse.yaml#
-> arch/arm/boot/dts/mediatek/mt7623a-rfb-emmc.dtb: efuse@10206000: Unevaluated properties are not allowed ('compatible' was unexpected)
->          from schema $id: http://devicetree.org/schemas/nvmem/mediatek,efuse.yaml#
-> 
-> Fixes: 43c7a91b4b3a ("arm: dts: mt7623: add efuse nodes to the mt7623.dtsi file")
-> Signed-off-by: Rafał Miłecki <rafal@milecki.pl>
 
-I noticed this patch got missed.
+--d547b5x5tvmpvovf
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] pwm: mediatek: Add error handling for zero rate in PWM
+ state
+MIME-Version: 1.0
 
-With AngeloGioacchino's review, can we have it accepted now?
+Hello,
 
+the From: line of your patch is strange.
 
+On Mon, Dec 15, 2025 at 06:40:32PM +0800, 20190311120055 created wrote:
+> From: Payne Lin <payne.lin@mediatek.com>
+>=20
+> Added a check to handle cases where the rate is zero in the
+> mtk_disp_pwm_get_state function. This prevents division by zero errors
+> when calculating the period.
+> - Added error message for zero rate scenario
+>=20
+> Signed-off-by: Payne Lin <payne.lin@mediatek.com>
 > ---
->   arch/arm/boot/dts/mediatek/mt7623.dtsi | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm/boot/dts/mediatek/mt7623.dtsi b/arch/arm/boot/dts/mediatek/mt7623.dtsi
-> index 9c5a52ce9351..748f9b366897 100644
-> --- a/arch/arm/boot/dts/mediatek/mt7623.dtsi
-> +++ b/arch/arm/boot/dts/mediatek/mt7623.dtsi
-> @@ -328,7 +328,7 @@ sysirq: interrupt-controller@10200100 {
->   
->   	efuse: efuse@10206000 {
->   		compatible = "mediatek,mt7623-efuse",
-> -			     "mediatek,mt8173-efuse";
-> +			     "mediatek,efuse";
->   		reg = <0 0x10206000 0 0x1000>;
->   		#address-cells = <1>;
->   		#size-cells = <1>;
+>  drivers/pwm/pwm-mtk-disp.c | 31 +++++++++++++++++++------------
+>  1 file changed, 19 insertions(+), 12 deletions(-)
+>=20
+> diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
+> index bafd6b6195f6..dd0ae041af70 100644
+> --- a/drivers/pwm/pwm-mtk-disp.c
+> +++ b/drivers/pwm/pwm-mtk-disp.c
+> @@ -176,19 +176,18 @@ static int mtk_disp_pwm_get_state(struct pwm_chip *=
+chip,
+>  	struct mtk_disp_pwm *mdp =3D to_mtk_disp_pwm(chip);
+>  	u64 rate, period, high_width;
+>  	u32 clk_div, pwm_en, con0, con1;
+> -	int err;
+> +	int ret;
 
+If you keep the variable name, the patch gets quite a bit more obivious.
+
+> -	err =3D clk_prepare_enable(mdp->clk_main);
+> -	if (err < 0) {
+> -		dev_err(pwmchip_parent(chip), "Can't enable mdp->clk_main: %pe\n", ERR=
+_PTR(err));
+> -		return err;
+> +	ret =3D clk_prepare_enable(mdp->clk_main);
+> +	if (ret < 0) {
+> +		dev_err(pwmchip_parent(chip), "Can't enable mdp->clk_main: %pe\n", ERR=
+_PTR(ret));
+> +		goto err_handle;
+>  	}
+
+Fixing error handling should go into a separate patch please.
+
+> -	err =3D clk_prepare_enable(mdp->clk_mm);
+> -	if (err < 0) {
+> -		dev_err(pwmchip_parent(chip), "Can't enable mdp->clk_mm: %pe\n", ERR_P=
+TR(err));
+> -		clk_disable_unprepare(mdp->clk_main);
+> -		return err;
+> +	ret =3D clk_prepare_enable(mdp->clk_mm);
+> +	if (ret < 0) {
+> +		dev_err(pwmchip_parent(chip), "Can't enable mdp->clk_mm: %pe\n", ERR_P=
+TR(ret));
+> +		goto err_disable_clk_main;
+>  	}
+> =20
+>  	/*
+> @@ -212,15 +211,23 @@ static int mtk_disp_pwm_get_state(struct pwm_chip *=
+chip,
+>  	 * period has 12 bits, clk_div 11 and NSEC_PER_SEC has 30,
+>  	 * so period * (clk_div + 1) * NSEC_PER_SEC doesn't overflow.
+>  	 */
+That comment belongs to the assignment to state->period. Don't separate
+them with your addition.
+
+> +	if (rate =3D=3D 0) {
+> +		dev_err(pwmchip_parent(chip), "rate is zero, cannot calculate period\n=
+");
+
+All the other messages (at least those in the context above) start with
+a capital letter.
+
+> +		ret =3D -EINVAL;
+> +		goto err_disable_clk_mm;
+> +	}
+>  	state->period =3D DIV64_U64_ROUND_UP(period * (clk_div + 1) * NSEC_PER_=
+SEC, rate);
+>  	high_width =3D FIELD_GET(PWM_HIGH_WIDTH_MASK, con1);
+>  	state->duty_cycle =3D DIV64_U64_ROUND_UP(high_width * (clk_div + 1) * N=
+SEC_PER_SEC,
+>  					       rate);
+>  	state->polarity =3D PWM_POLARITY_NORMAL;
+> +
+> +err_disable_clk_mm:
+>  	clk_disable_unprepare(mdp->clk_mm);
+> +err_disable_clk_main:
+>  	clk_disable_unprepare(mdp->clk_main);
+> -
+> -	return 0;
+> +err_handle:
+> +	return ret;
+>  }
+
+Best regards
+Uwe
+
+--d547b5x5tvmpvovf
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmk/8TEACgkQj4D7WH0S
+/k4RfAgAtDQpygYx//qBH7qfXb2Sege4VLwIXT72UTne+KCDGEH6C50zawka5dG2
+s6HT6h93xT9u8srTNskLw/w54rA0Sig2FhZHHE6hdxefIEUsRFAEZg1RR2opnIU5
+vzVpPb1kKdwYOn6ropXs+j5mDAY6VYsD5bGc2R54VoNek8saJdzOMfKzICTmmAYr
+3SMyBPyNIS/rUnaP8qkIKcd7i3/a0moKPqx8fhSJOL3sfE2uZkOQyDoSNlJQmqCK
+V7LrmVVCUqbhfk+fahjoLebPfwXVIiUPzqoPv+QKLo1TFirzq/9xNE20Vc4xhoax
+NCv4Gi+rGy3z3BFccks2wuQpIut1ww==
+=XB1O
+-----END PGP SIGNATURE-----
+
+--d547b5x5tvmpvovf--
 
