@@ -4,169 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A33BDD5B866
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 19:29:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54D93D5B86B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 19:58:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=orhk93tCLjEajsFgG7CualKNDc2gPSudbq9CiMr1Dv4=; b=x7TXp9nt46nYvXW44zcjXd2Jm1
-	7crCkPcIkF8ki7eIr0f/5vlq653vkN+tJMwZ2aljpNeLOCWukiz7CXpY6eOFUs8W2R8rqsTnmnaAm
-	5wTwCC2QO/xixDBXDX/G/hm7CGXhno5Qc1+2U9UPOd7v6BvSETuIal616GMrHMluROhjY/tD2cBlz
-	DkKpEjUBwSRyhASnXb/T80Yn4wEfaTU1wLzlf8GtrwAdAllDoaQWNruzDMmyPCu0ud93J0fpu8znp
-	4+c3WHPYbfILd6AXJMbpgrRSfMNUjn+wE210ng0/SrTmpx0qQ8UneVk4xvqFesUprhHQtj9iLyyfH
-	lcA1x5eQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
+	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bTlyosS7RsRPkdG1WgaA3rjvINz5FKHU/3WjkEkZApM=; b=jK/aorrih9Hoy6
+	oZwBucLjjzbWBGOGBWH1ZDT1DsKVGl2223S6BcgUAmIhmX6jFolSMHlNG0/tw1DXCyBSnLEeYzPXH
+	H7JtuF+Ui4v/ZdGfR3rt+WsFOqzLDtPGrLpY2iHTMaOWw/UkMJv1lcYL5hACfZNR5KojJm1vONtjv
+	Q5MEhHENfpknvmagnJUXKd1iIVBwCyQbc9aevbIH8B3SHFD/vreriN+vGxIkfEt8EVtSr6lHAq19P
+	51c2NANxW5P4v/zsg+JkuAW2VZVEjeFnXZBdPLFoDU84aaiQy/qYAoz3mW23DusdOgF/B1X5RbP10
+	i80v3+v3RNE1FsXvGRQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVEFZ-00000004AuM-2pkO;
-	Mon, 15 Dec 2025 19:28:53 +0000
-Received: from mail-westusazon11012044.outbound.protection.outlook.com ([52.101.43.44] helo=SJ2PR03CU001.outbound.protection.outlook.com)
+	id 1vVEi3-00000004CMz-2LjM;
+	Mon, 15 Dec 2025 19:58:19 +0000
+Received: from mout.gmx.net ([212.227.15.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVEFV-00000004Atl-1HRl;
-	Mon, 15 Dec 2025 19:28:51 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=kz1MIRfQof2JxTHdBTPDNaBqEXu/6lklMqwSAovI59BDrgkOg41cImZaOwnjpR5zOvTc3FISSHVR5S4R3y4+xtUTek3DUWWeJy/UVw5pNX4tA0BOQDuF5m9A8XN6xy5JgMgv3C/l+MA1c8WHzP6Ha6KJ/i/u9p7lS6sPGZarh4tD1KUTlS0tkIYLSedO/XRTxkyAaeRvBDOutKmUdd3SE7PzcWHtRThaWlgLWyE1DMnvcFO+PlQ0y47tiRbe5GFncCeaGkKPAb5Zim+7CgqfCt2wN4jqP/YEeaTM83wEpEuwltalF6pdFR1cDhnrJc4NT13qx9gEQYL3rSbroGkJXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=orhk93tCLjEajsFgG7CualKNDc2gPSudbq9CiMr1Dv4=;
- b=tkq62CVcaFNuz33ZCqKu07tse+UmNct37qSuvrz3KVJxYNzr7IMIsWVFG+D7T68GdOgXBjCxALQHXTH54zaUuUEaeJVXawP1pClMgORmRnJL5MgtlG/JilDhG/ikoARceljxPxIbLziYFi9KLWoPnQWc/mv9IxtMPgeg3J0ovIZJ2lcAddnZ+wY97OLRSz1Yw7JBHQh06K3PtlUIhpXIjUoKb685WJUlFBtkXutvfBjUUxmsFt4UIjN0x2RCQCZa0LtCFjR2fRkLVYTKH5rLVdg3bllILtJIxPeD/yc7ggy6+OZnBoLHVz/Q8s8UqwGc0C3DmDIMpiZkKIP8p/ULzw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=orhk93tCLjEajsFgG7CualKNDc2gPSudbq9CiMr1Dv4=;
- b=XDh1l391DPVoF27KxJJbLnzXe33Qd9URi5Ocfs1zBKzrQLXSXS14Z1oSkOV9dviGN23pcTKtT9FDrPy7X2ioxEr1YJWsUyxSem9WxqPF9U9PEh8CXxrm7SvgaESqitLP5n0x3R29vRaCgiDoPtkwsNBo2k/Kteyeu0CgRB/Pq3I=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from PH0PR12MB7982.namprd12.prod.outlook.com (2603:10b6:510:28d::5)
- by MW3PR12MB4491.namprd12.prod.outlook.com (2603:10b6:303:5c::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9412.13; Mon, 15 Dec
- 2025 19:28:40 +0000
-Received: from PH0PR12MB7982.namprd12.prod.outlook.com
- ([fe80::bfd5:ffcf:f153:636a]) by PH0PR12MB7982.namprd12.prod.outlook.com
- ([fe80::bfd5:ffcf:f153:636a%5]) with mapi id 15.20.9412.011; Mon, 15 Dec 2025
- 19:28:40 +0000
-Message-ID: <d101cf0e-bf7c-4aa7-a444-f6b61a1854ad@amd.com>
-Date: Mon, 15 Dec 2025 11:28:36 -0800
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC net-next v3 1/3] net: ethernet: mtk_eth_soc: Add register
- definitions for RSS and LRO
-To: Frank Wunderlich <linux@fw-web.de>, Felix Fietkau <nbd@nbd.name>,
- Sean Wang <sean.wang@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+	id 1vVEi0-00000004CMX-24lB;
+	Mon, 15 Dec 2025 19:58:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
+	s=s31663417; t=1765828664; x=1766433464; i=frank-w@public-files.de;
+	bh=bTlyosS7RsRPkdG1WgaA3rjvINz5FKHU/3WjkEkZApM=;
+	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
+	 References:Message-ID:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:cc:content-transfer-encoding:
+	 content-type:date:from:message-id:mime-version:reply-to:subject:
+	 to;
+	b=Ojga1g/Bry3BIm5s15Yhinm4zh5pELb9MryJV7mtt9o4ESv26gsBmWYF3ojIhJE7
+	 aWLFrGg46R8w0+fENz17siVyPt+ddQWqmtzJRMHCgNMugDqXWsgR5vqdaj4/klSbj
+	 +aB6d8dIt3PxRUd1W+jGqwlbAWh+ZtDpiCLSSoDj0WtV1nj738NNYkNykH9okfNY1
+	 hKn+Stag6JcWJ1Op2EReSWbt1mi+TiXjj4vgSSl5cR4bOarqFUCLXqrHnbwdgkW3l
+	 +Z99iJA9BfbijOg6q5B2uXKb5aeaelOoxKU6tK8+BLJJnvYTbSFL5TVXFOjVQOzt+
+	 uMbzP8cb0bIX8EgddA==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from ehlo.thunderbird.net ([217.61.145.36]) by mail.gmx.net
+ (mrgmx005 [212.227.17.190]) with ESMTPSA (Nemesis) id
+ 1MWRRZ-1vTlnX2S8h-00Ny9N; Mon, 15 Dec 2025 20:57:44 +0100
+Date: Mon, 15 Dec 2025 20:57:40 +0100
+From: Frank Wunderlich <frank-w@public-files.de>
+To: "Creeley, Brett" <bcreeley@amd.com>, Frank Wunderlich <linux@fw-web.de>,
+ Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Russell King <linux@armlinux.org.uk>
-References: <20251214110310.7009-1-linux@fw-web.de>
- <20251214110310.7009-2-linux@fw-web.de>
-Content-Language: en-US
-From: "Creeley, Brett" <bcreeley@amd.com>
-In-Reply-To: <20251214110310.7009-2-linux@fw-web.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: PH7PR10CA0017.namprd10.prod.outlook.com
- (2603:10b6:510:23d::10) To PH0PR12MB7982.namprd12.prod.outlook.com
- (2603:10b6:510:28d::5)
+CC: Daniel Golle <daniel@makrotopia.org>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Mason Chang <mason-cw.chang@mediatek.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BRFC_net-next_v3_1/3=5D_net=3A_ethernet=3A_mtk=5Fet?=
+ =?US-ASCII?Q?h=5Fsoc=3A_Add_register_definitions_for_RSS_and_LRO?=
+User-Agent: K-9 Mail for Android
+In-Reply-To: <d101cf0e-bf7c-4aa7-a444-f6b61a1854ad@amd.com>
+References: <20251214110310.7009-1-linux@fw-web.de> <20251214110310.7009-2-linux@fw-web.de> <d101cf0e-bf7c-4aa7-a444-f6b61a1854ad@amd.com>
+Message-ID: <033E8AC9-21D6-4707-AE75-37556241CC52@public-files.de>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR12MB7982:EE_|MW3PR12MB4491:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8d2a0630-7662-4474-57fb-08de3c1026d4
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|366016|376014|1800799024|921020;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?MitydENVVTcxdE1BUlhGWVZrSkxrWWg0SkNnbDR3eFl4bFFjbHIwbWE0OEVh?=
- =?utf-8?B?NUxFOWVrcjBqVXUwNXNMQ0dCeFhTczArdmh0Mmt6U0pLWDVLRi9yZys5ZnJp?=
- =?utf-8?B?Vi9xRTNwR0NkamthVXBmMGtGQnFaR0xUWDJsL2ZlTlN2clh6SnExN1kybGc2?=
- =?utf-8?B?NU1IUzRpVENMTis5NjJkSlVRTWZ4Z0FOb0NlMXpDWDVsSzlVOGwvZ0tOcDRM?=
- =?utf-8?B?YjBXUEoxNW15SnJwVWd5cVpUSXhxUWdKRlZrOXdrdEVYbjNTbDMrVlFvVFRt?=
- =?utf-8?B?MEpUTllqYklyclVTazlpNkdJSjM5aU9zdGYwTHZwbGI1dTJYTVhRTFJBbnRu?=
- =?utf-8?B?dlZpNnFnRG9WOGxCS0o0am1DdWN5Vm8yOTQyYVd0VkRuaVpUeG5MYkhRZzUy?=
- =?utf-8?B?QWNqbEFpQk84VCtDZENXVFY5V3hlUXFpNDZWZDFiRmdyR1k0eFJTMllraEZu?=
- =?utf-8?B?Nzl4c0toU3llVkNOc21YSG5NYk9Bc0ZXQ1JrWEh3QXdCQXY5WjQyZkNEazU5?=
- =?utf-8?B?TUMrSU9rMVZhRFErbmsxa1JZK05ZTXlRRjRwWkdpb3JkOXhudGJaVU9uUCtw?=
- =?utf-8?B?TUU3MzUreVNzUDJLbHF0UXJIeHBKUSs2NUNHeUVYTnFvSUxsdEZQbTliWXZD?=
- =?utf-8?B?bG5DdW1McUZOR1hvcm42dnYvR3gzTnBIbGlxdFdiaXFUOFFPRFByeFJlcDhv?=
- =?utf-8?B?aDVLUFJTOXlxanFreFlLTzhBTnhwWmV1eUVwYXg2V0g0YXh6bmJMbWttNWQ1?=
- =?utf-8?B?TzM5dzI4Y0FnSHJZQWlGZCtOMFNpU1VnZ0RFMkRVcVZ0Yjl1V0xTUlVJcW1h?=
- =?utf-8?B?NmJTS09FVU95bkwyMjRMb2hFcDlHNCtheThVWTZ3b005TTVmWTYvdVRZNTNs?=
- =?utf-8?B?RjRhMDd3cjF5SmhmbmpGVGNManNXeU9LZ0JWcE41UlVTenNzTXBsZlhwOTA4?=
- =?utf-8?B?Ym9Ta2xwVmtYOUVQNzRRYW9GenVwMnVkM2xpaWZ4UDh2R3E2cTlnUU00SkRC?=
- =?utf-8?B?eWp3d2NiOFFsbXRzdDJVcGpiT2ZRUE1idE9XSEZRMGZINUwvbFhaZmRTWGZU?=
- =?utf-8?B?aHZFMTBhNlBVbVltL0w4TE15L0ZMMXVjeDYrR1N0SlhzVmpETnNMeU1TZ0hk?=
- =?utf-8?B?ZGVDamhncXZ0MFdJbEZwZjlvaUJMQmt3WXpnN1JwbEJvcEpZZ3lHM2R6U25U?=
- =?utf-8?B?SDRLamRBaWUwK2hxc3BCd3hjTmlUNEZCejg0Nk1pVlNkRG4vRUV0UnNBTVJ3?=
- =?utf-8?B?OEZRTGZmOVR5YVNKWmtXR3ZrNmxId05VZTlYM3pmNy8xcEViNFMxcE1kSFNG?=
- =?utf-8?B?U0p5ZU9wOWlVSmwvZVZoYndTeVBMWlNtckpGWERCRXl6dTBnSjloTW9oM2FP?=
- =?utf-8?B?dHM0dG9mbXV3N1h2Vi9XOFdTM2NNWERPUkFLb0xYZXpYbnBpYXJtdloxZ1J3?=
- =?utf-8?B?emdaSlVqUjZONkI1aHdjN0hndVRtbmoydHNKUzVKci9Nc2R0UWd2RkpzZHpI?=
- =?utf-8?B?V3QxMDV0UlF6clQwMUlNTTNRUERaVTNUSTV5ZnVkQnd0eDBPa1lJWis5QkRX?=
- =?utf-8?B?ekRmTjdWU3FRdUlxNEk4V1IyQm81ZXFWcDRmMWFtUEdyMjJaYTJ3aDJGa0Z6?=
- =?utf-8?B?QitGdXNsWmxDUm5uVmhZc05JeU9BK201Q1Z3cGZMTnBKWlRWYXBEcEZkY1Fo?=
- =?utf-8?B?dTdSVkxuNkRWdmtCZUI1MjF2Tnd5VEpPeXpLK0ZKVkFucEtMaDZLVTVpYXM2?=
- =?utf-8?B?ZGFFaFJ3RUhOaVdwMEF6a1dpTkFsZVVsSlR2RnhNS1dHaGdQaUJXM2Y3alBT?=
- =?utf-8?B?NTBESER4OEdIVjlXYTc5VGl6Z2hueGVtY0tWcS80bTAyMldsOXNFOXZ4WktK?=
- =?utf-8?B?a3dXUmlNOVlFRGpFVEprVTg5bG5wSGVRcjlnZVVKelRiQ0Vjb0JMaFN1cDlz?=
- =?utf-8?B?YzRVY05qYXpDNGdDQWpwclRGOFpCbnJicEVBRWNZTU1YRXRTOW1URlYrZ1M2?=
- =?utf-8?Q?X2uVmQPOQcYatE7T2xmu0BNGhuh/9I=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH0PR12MB7982.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(366016)(376014)(1800799024)(921020);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bVRzVDRnV2JwelRuZzA4OTVpVE5rWkR4bWlIcm14M2hKdDlrQTl2UHdFNDNY?=
- =?utf-8?B?Z1U4SHlLRnZCM2ZVbWpPa2JTR3hrTkZpLzliTGczbVVFUktzOUhLckZ2TnNL?=
- =?utf-8?B?Y3pmWUJCOEkxdlJZRExOTUFJWTJwWC9pTUJFMUlZcHBqSGgzMWhSSUtXcmxV?=
- =?utf-8?B?bmswMjRwSy9iRmlsQytHMzE4SWJOckRxdCtDQzQxVW9kVDBOMmdXVXB1Ny9P?=
- =?utf-8?B?RnpaL3EzcVlzbVovOStoNUZqNTdZQTM5aTdIYlhReDU3UDZJaTBFZ3FFajNU?=
- =?utf-8?B?S0JuNkx5eDRlVHUwZzlwRXhGRFRndk52RUVCWm1HY0R2Z1ZoVWE0OGNnblFL?=
- =?utf-8?B?eUhsb0Q3ZTY2V2ZGbnRESEZQelIybkJJenFXVTdZSThCNUdON3BsZFd3cWRO?=
- =?utf-8?B?Uy9rSlplajlZNUxod2dpbldUdVRJRUQ3cGl0MFhYUlNLa0szaUpGNXpVMFpW?=
- =?utf-8?B?MGhyQlc3UTZOc05LY0F4UUlLYnRiLzdPV0d3TUtsanRyWHFwSWdNeDVsVXB0?=
- =?utf-8?B?bkE2QTJMSVB0anpTeFNmdjlzb2xaeUFqYUJUbGhxSFlVaktTeVpEMUdpSDVp?=
- =?utf-8?B?bVpWNUluamZNM3FuY2lvdmZoaGN6aFZHN0JhRVVRUmlnVE56dWEwOEVTNUlX?=
- =?utf-8?B?UU1scWxXVGovVW13T2Y4N1hla1pCKzVMaXlNN2Irai9YNTVYaURhQXZrVFJB?=
- =?utf-8?B?dGRBK29rR0pvNU0rVXNzSzJ2MGJ3MElweW1MK0dGVzNxNHNHczBiYWYvTHNF?=
- =?utf-8?B?Q1ZiVGtJL1pUU3NvYkdhRWUxN3RGeW5ROW04aVdoRERjMzdrN1lYTERyT1Ew?=
- =?utf-8?B?S3ZKZTdQbk1tSVJWSk40eUY1SUdDM0kzZUpEMWUzUmlZT3k3ZHg4NHBEUzQx?=
- =?utf-8?B?VVhLdHpaN3ZSd3pPb21JMGVwWjE2OFk4RTJyZmxpQ25BNVJLOVkvbnh0aTZI?=
- =?utf-8?B?MDF2RDRuczJqYlI3aGlrZUFXY3dxY1JBMCt1RXpQa21kRTBhbFdPUTZkTlVq?=
- =?utf-8?B?ZC84eGp5eUNDRktjS0JoY1U5bHNkejBtNlNZMjUvRERSRTdvRXZ6WStKY2Q0?=
- =?utf-8?B?cHQzamxyMzJ4ZnAxQUJCemtDT056V0s0dzNwdDNYSkNPNWxDYWFob3VyMzNO?=
- =?utf-8?B?VXBiN0xTVzhzeGd3cGsxbmJzWWxocDUrcGVnOHpWNXJFSm9sOGdwVEJzanBj?=
- =?utf-8?B?MGtQK0NxMWVvSXNTc1ZBL0d4WG5qaXM5MDlNTGVSQlhTUEoxTFJ0OVNwYjU1?=
- =?utf-8?B?MktZdzhBV0xqTU85OXJnQ3RaVXVibnVoVEVOdjJLeUt3TnI5aVR5dTBpa1Ay?=
- =?utf-8?B?TmRoczV5MXh5RDVzVWVTbHl3Y1dlM1JCVzBhMHVjcUNVUExHeUJ6dXdYN01K?=
- =?utf-8?B?Tk0yc0RVZFJFck91RVgwSDRLYlFOOUZ3WHVQeHZKQnFSekEwM29LVDhqVXQx?=
- =?utf-8?B?blBONVBvVHpzNTdZV0s5UVVzeTg0a1ZEZU80cGRFNEFMVDZtaHdURldXQ0Uw?=
- =?utf-8?B?UTk3SUhpMnBQMXZFR0Z5Qm44NDFHM2VOM2ZVTDR1MmFFLzZlMnpVSEcyUHBU?=
- =?utf-8?B?ek04QVg3WTlJemZneUJoWUlzSG5na1NWNkM3UUdHeW1TOE53YkNRVUh0MS9u?=
- =?utf-8?B?QTRUK1JoWEp1TEExcTJNRFZsWjV6Tm8rSW5TMldyUC9CWmtkVUNvR3FvdzRL?=
- =?utf-8?B?ZHZMSkRxYjRNNWRvS3ZHL0lVV1pRL214ZU93MG1WY3BNNkVBOXpYUDhkbHVm?=
- =?utf-8?B?N2V0Z1VlR1VqSytBT1hGRkZIK1dNV1NOZkNKUkdKOERqSWZXVC9tMVQ1eTZJ?=
- =?utf-8?B?RThSMjZBUHN1MGxWaklCMlQrQ00vakpZS0llQkQ3Nk81WjUvaHBOYm5XRlNC?=
- =?utf-8?B?aWhBdzZRcXg5dHlvWnc2SWEwVkJ2RzFpQXdXbkxOSXlFSVV4ZktMWjhieVVB?=
- =?utf-8?B?ckZKVVhiaUk0bXBxOS9GVzZLZUdYZnRLWWNHN3Z2U1piS213cFBLak9OOVdo?=
- =?utf-8?B?dmdKM1FJN3BlMVI4R2FXUlhzSkpZVmtINFdJVEVkRWVGWW1UNFpQN1h5dmVX?=
- =?utf-8?B?cGlTV1o1U2dGcVl4NkdWci9uUlZOczRnZWNmN2VMK2pMUjdBZVJsYUJON2hR?=
- =?utf-8?Q?bNrFjzfP1L3uVIBarCQ7gwXLz?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8d2a0630-7662-4474-57fb-08de3c1026d4
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR12MB7982.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Dec 2025 19:28:40.3218
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: fzTWbutaqlnESTrsSPGUIJ/EmdbXUPew9UJFB6K87hh/gqszGrlnKz9QM5nicPTpewD6qEVMPliSjWjhgD44pQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR12MB4491
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:udmE2bC0mtQBR55i/zb65Ddv20tP2/tgoQqzo35LqbG0fH1xgv3
+ z2vvMV6mZMtWhTDp1MubhOxKs2wF+ZPXTHO6qFzDfsvbKGoDsU3rygDCJx/eSPdh2l33hii
+ ifwc2XjrW8vrqZTVsJ1NVC00t+ivmfnVzWOdyuG0veBEAyoGv9FdSx7pf4B16rdPRp3fMWR
+ A04dCdHQbiPqmK/JEmP6w==
+UI-OutboundReport: notjunk:1;M01:P0:rhoYV6sbA4c=;1NRagGGJCC+H5lDG23hh1TfNk1f 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 9tOh7aCVHLcdG9Ywc70U
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_112849_815705_950997F9 
-X-CRM114-Status: GOOD (  15.13  )
+X-CRM114-CacheID: sfid-20251215_115816_843706_2BCDC09D 
+X-CRM114-Status: UNSURE (   7.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -178,146 +89,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Mason Chang <mason-cw.chang@mediatek.com>, netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Am 15=2E Dezember 2025 20:28:36 MEZ schrieb "Creeley, Brett" <bcreeley@amd=
+=2Ecom>:
+>
+>
+>On 12/14/2025 3:03 AM, Frank Wunderlich wrote:
+>> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc=2Eh b/drivers/ne=
+t/ethernet/mediatek/mtk_eth_soc=2Eh
+>> index 0168e2fbc619=2E=2E334625814b97 100644
+>> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc=2Eh
+>> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc=2Eh
+>> @@ -1143,16 +1143,30 @@ struct mtk_reg_map {
+>>          u32     tx_irq_mask;
+>>          u32     tx_irq_status;
+>>          struct {
+>> -               u32     rx_ptr;         /* rx base pointer */
+>> -               u32     rx_cnt_cfg;     /* rx max count configuration *=
+/
+>> -               u32     pcrx_ptr;       /* rx cpu pointer */
+>> -               u32     glo_cfg;        /* global configuration */
+>> -               u32     rst_idx;        /* reset index */
+>> -               u32     delay_irq;      /* delay interrupt */
+>> -               u32     irq_status;     /* interrupt status */
+>> -               u32     irq_mask;       /* interrupt mask */
+>> +               u32     rx_ptr;                 /* rx base pointer */
+>> +               u32     rx_cnt_cfg;             /* rx max count configu=
+ration */
+>> +               u32     pcrx_ptr;               /* rx cpu pointer */
+>> +               u32     pdrx_ptr;               /* rx dma pointer */
+>> +               u32     glo_cfg;                /* global configuration=
+ */
+>> +               u32     rst_idx;                /* reset index */
+>> +               u32     rx_cfg;                 /* rx dma configuration=
+ */
+>> +               u32     delay_irq;              /* delay interrupt */
+>> +               u32     irq_status;             /* interrupt status */
+>> +               u32     irq_mask;               /* interrupt mask */
+>
+>Small nit - is the comment alignment really necessary?
+
+I could transform it to something like this:
+
+<https://git=2Ekernel=2Eorg/pub/scm/linux/kernel/git/torvalds/linux=2Egit/=
+tree/drivers/net/ethernet/mediatek/mtk_eth_soc=2Eh#n921>
+
+>Thanks,
+>
+>Brett
 
 
-On 12/14/2025 3:03 AM, Frank Wunderlich wrote:
-> Caution: This message originated from an External Source. Use proper caution when opening attachments, clicking links, or responding.
->
->
-> From: Mason Chang <mason-cw.chang@mediatek.com>
->
-> Add definitions for Receive Side Scaling and Large Receive Offload support.
->
-> Signed-off-by: Mason Chang <mason-cw.chang@mediatek.com>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->   drivers/net/ethernet/mediatek/mtk_eth_soc.c | 23 +++++++++++++++
->   drivers/net/ethernet/mediatek/mtk_eth_soc.h | 32 +++++++++++++++------
->   2 files changed, 46 insertions(+), 9 deletions(-)
->
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index e68997a29191..243ff16fd15e 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -50,13 +50,18 @@ static const struct mtk_reg_map mtk_reg_map = {
->                  .rx_ptr         = 0x0900,
->                  .rx_cnt_cfg     = 0x0904,
->                  .pcrx_ptr       = 0x0908,
-> +               .lro_ctrl_dw0   = 0x0980,
->                  .glo_cfg        = 0x0a04,
->                  .rst_idx        = 0x0a08,
->                  .delay_irq      = 0x0a0c,
->                  .irq_status     = 0x0a20,
->                  .irq_mask       = 0x0a28,
->                  .adma_rx_dbg0   = 0x0a38,
-> +               .lro_alt_score_delta    = 0x0a4c,
->                  .int_grp        = 0x0a50,
-> +               .lro_rx1_dly_int        = 0x0a70,
-> +               .lro_ring_dip_dw0       = 0x0b04,
-> +               .lro_ring_ctrl_dw1      = 0x0b28,
->          },
->          .qdma = {
->                  .qtx_cfg        = 0x1800,
-> @@ -113,6 +118,7 @@ static const struct mtk_reg_map mt7986_reg_map = {
->          .tx_irq_mask            = 0x461c,
->          .tx_irq_status          = 0x4618,
->          .pdma = {
-> +               .rss_glo_cfg    = 0x2800,
->                  .rx_ptr         = 0x4100,
->                  .rx_cnt_cfg     = 0x4104,
->                  .pcrx_ptr       = 0x4108,
-> @@ -123,6 +129,12 @@ static const struct mtk_reg_map mt7986_reg_map = {
->                  .irq_mask       = 0x4228,
->                  .adma_rx_dbg0   = 0x4238,
->                  .int_grp        = 0x4250,
-> +               .int_grp3       = 0x422c,
-> +               .lro_ctrl_dw0   = 0x4180,
-> +               .lro_alt_score_delta    = 0x424c,
-> +               .lro_rx1_dly_int        = 0x4270,
-> +               .lro_ring_dip_dw0       = 0x4304,
-> +               .lro_ring_ctrl_dw1      = 0x4328,
->          },
->          .qdma = {
->                  .qtx_cfg        = 0x4400,
-> @@ -170,10 +182,21 @@ static const struct mtk_reg_map mt7988_reg_map = {
->                  .glo_cfg        = 0x6a04,
->                  .rst_idx        = 0x6a08,
->                  .delay_irq      = 0x6a0c,
-> +               .rx_cfg         = 0x6a10,
->                  .irq_status     = 0x6a20,
->                  .irq_mask       = 0x6a28,
->                  .adma_rx_dbg0   = 0x6a38,
->                  .int_grp        = 0x6a50,
-> +               .int_grp3       = 0x6a58,
-> +               .tx_delay_irq   = 0x6ab0,
-> +               .rx_delay_irq   = 0x6ac0,
-> +               .lro_ctrl_dw0   = 0x6c08,
-> +               .lro_alt_score_delta    = 0x6c1c,
-> +               .lro_ring_dip_dw0       = 0x6c14,
-> +               .lro_ring_ctrl_dw1      = 0x6c38,
-> +               .lro_alt_dbg    = 0x6c40,
-> +               .lro_alt_dbg_data       = 0x6c44,
-> +               .rss_glo_cfg    = 0x7000,
->          },
->          .qdma = {
->                  .qtx_cfg        = 0x4400,
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> index 0168e2fbc619..334625814b97 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-> @@ -1143,16 +1143,30 @@ struct mtk_reg_map {
->          u32     tx_irq_mask;
->          u32     tx_irq_status;
->          struct {
-> -               u32     rx_ptr;         /* rx base pointer */
-> -               u32     rx_cnt_cfg;     /* rx max count configuration */
-> -               u32     pcrx_ptr;       /* rx cpu pointer */
-> -               u32     glo_cfg;        /* global configuration */
-> -               u32     rst_idx;        /* reset index */
-> -               u32     delay_irq;      /* delay interrupt */
-> -               u32     irq_status;     /* interrupt status */
-> -               u32     irq_mask;       /* interrupt mask */
-> +               u32     rx_ptr;                 /* rx base pointer */
-> +               u32     rx_cnt_cfg;             /* rx max count configuration */
-> +               u32     pcrx_ptr;               /* rx cpu pointer */
-> +               u32     pdrx_ptr;               /* rx dma pointer */
-> +               u32     glo_cfg;                /* global configuration */
-> +               u32     rst_idx;                /* reset index */
-> +               u32     rx_cfg;                 /* rx dma configuration */
-> +               u32     delay_irq;              /* delay interrupt */
-> +               u32     irq_status;             /* interrupt status */
-> +               u32     irq_mask;               /* interrupt mask */
-
-Small nit - is the comment alignment really necessary?
-
-Thanks,
-
-Brett
->                  u32     adma_rx_dbg0;
-> -               u32     int_grp;
-> +               u32     int_grp;                /* interrupt group1 */
-> +               u32     int_grp3;               /* interrupt group3 */
-> +               u32     tx_delay_irq;           /* tx delay interrupt */
-> +               u32     rx_delay_irq;           /* rx delay interrupt */
-> +               u32     lro_ctrl_dw0;           /* lro ctrl dword0 */
-> +               u32     lro_alt_score_delta;    /* lro auto-learn score delta */
-> +               u32     lro_rx1_dly_int;        /* lro rx ring1 delay interrupt */
-> +               u32     lro_ring_dip_dw0;       /* lro ring dip dword0 */
-> +               u32     lro_ring_ctrl_dw1;      /* lro ring ctrl dword1 */
-> +               u32     lro_alt_dbg;            /* lro auto-learn debug */
-> +               u32     lro_alt_dbg_data;       /* lro auto-learn debug data */
-> +               u32     rss_glo_cfg;            /* rss global configuration */
-> +
->          } pdma;
->          struct {
->                  u32     qtx_cfg;        /* tx queue configuration */
-> --
-> 2.43.0
->
->
-
+regards Frank
 
