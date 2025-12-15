@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8511CD59D99
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0880ED41D74
 	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 06:38:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,30 +12,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e+EYT2mUwkDDgBM3uPCtiIrJtFGpEl9FNkQxtU/d7BY=; b=v4Hr51ywxggSP4JYPChIYljb6+
-	2Lvc3yvv102NNjFFmkUnPe9weWypVACgEnorsTFGKpCvAJVhMNPI1D8Pec9TLdrMQ5CzkmeG7lGX+
-	epyezczZR0KWuc0/OfzJrKSKCjdtJtd4QTmcqc2XBN44cx6g977hx+O5h14LVLDDTD+IetdjpzT+z
-	bizzcNb7O3hBkHeQzhnJrtJm4J4WpDiVN3CusG9etc+2grsf1kTRGbsvsAgjz6DBjVbrTRSZmy/QS
-	6KABZxad3k1jWF0dXjQQMnfbcxGKADoT933+N1R8mDjpzPzf9kx2RRiEKAgjN7jDVKyfY2dr9RTeq
-	rRSHVokQ==;
+	bh=/0QW/WOwixG7uNjSISZhXX/ISVNhYuKWIj8yZSaimMg=; b=pMUHgOF47I5EA+iKY+XsFovGll
+	pGjugl6brpah2gH91VGn2F2Em12uA3VQpuIVdNv0VoUdiWBW9qnEkmMqwisVcAqSgD9mn8LOanlh7
+	tB4cM1wSA0FKP2FLf4xW/vLZM6SW2/XvSYmFXpfi0qmbXEvdRpXfRtJnxaDF5Rlw94jIZoBU3Io4s
+	X3CVkOr07uGxsgCSH1+eR7aP9KNN3s2BI64a5OwJ460GgZgE44ag3AKTMsTlsmA5sD4t8ciDCNHS1
+	OlWbtpGawl9/QL8pSIwsFwRNUIKnKlng634ls/gpZuBZMjtDn7NyuBukB/yky3UbaYsjKPiN1jOTK
+	uOqmfFsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV2Dm-000000039nF-2R1f;
+	id 1vV2Dm-000000039n6-0Pz8;
 	Mon, 15 Dec 2025 06:38:14 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV2Dg-000000039ky-2JBp
+	id 1vV2Dg-000000039kv-1YMX
 	for linux-mediatek@lists.infradead.org;
 	Mon, 15 Dec 2025 06:38:10 +0000
-X-UUID: 9aaca800d98011f09f706fa2197c6ceb-20251214
+X-UUID: 9ae3ef90d98011f09f706fa2197c6ceb-20251214
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=e+EYT2mUwkDDgBM3uPCtiIrJtFGpEl9FNkQxtU/d7BY=;
-	b=fc56RGhLzFXQ1raJkA4HlAoT5gwhb2fUVA5f8IpUvXgMPtVoQjStzQMrzPDseqVQ0IgsQAuOcYK5SahCP8AgGtRtTQjk+itw6TW/euNXU6dvpRfxdyFljTonzHbe/nZ4Pa6PTcWLQ4X545ZZRfYKHbF0hSP4TLpnM8cV8W7fbew=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=/0QW/WOwixG7uNjSISZhXX/ISVNhYuKWIj8yZSaimMg=;
+	b=lYs1a5n2dd5x3LLIzGJOVR7Gu21cVrqPmhmZJmjUg/SdBABf6Lp4BNbNVJHDzHqLEubEX9C8b3xlrsnNiOiCUKE8Uh2oIAFoJJA6NpbsWPXDyNseWmzukzOH61nma5/rNDthtnRDNJ4bTP7Z8aDrdGPOPdRRuHqpMv+ALs6jVig=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:7b8dedd0-6015-45bd-ba80-33dd76e52c9b,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:c47ac602-1fa9-44eb-b231-4afc61466396,B
+X-CID-O-INFO: VERSION:1.3.6,REQID:0229b2aa-b65c-4562-8000-d01b7de15502,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-25
+X-CID-META: VersionHash:a9d874c,CLOUDID:de1672c6-8a73-4871-aac2-7b886d064f36,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
 	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -43,15 +43,15 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 9aaca800d98011f09f706fa2197c6ceb-20251214
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+X-UUID: 9ae3ef90d98011f09f706fa2197c6ceb-20251214
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 823547548; Sun, 14 Dec 2025 23:38:02 -0700
+	with ESMTP id 188690766; Sun, 14 Dec 2025 23:38:02 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 15 Dec 2025 14:37:59 +0800
+ 15.2.2562.29; Mon, 15 Dec 2025 14:38:00 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
  15.2.2562.29 via Frontend Transport; Mon, 15 Dec 2025 14:37:59 +0800
@@ -60,11 +60,10 @@ To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
 	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, StanleyYP Wang
-	<StanleyYP.Wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH mt76 v2 4/7] wifi: mt76: mt7996: abort CCA when CSA is starting
-Date: Mon, 15 Dec 2025 14:37:25 +0800
-Message-ID: <20251215063728.3013365-4-shayne.chen@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH mt76 v2 6/7] wifi: mt76: mt7996: add duplicated WTBL command
+Date: Mon, 15 Dec 2025 14:37:27 +0800
+Message-ID: <20251215063728.3013365-6-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20251215063728.3013365-1-shayne.chen@mediatek.com>
 References: <20251215063728.3013365-1-shayne.chen@mediatek.com>
@@ -73,8 +72,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251214_223808_883453_AE4A12C7 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20251214_223808_882289_73129D50 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,61 +88,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+This is a firmware mechanism to improve packet loss issues for mt7996 and
+mt7992 chipsets.
 
-When CSA countdown is going to start, carry UNI_BSS_INFO_BCN_BCC tag to
-abort any CCA countdown.
-
-Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 10 ++++++++++
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.h | 11 ++++++++++-
- 2 files changed, 20 insertions(+), 1 deletion(-)
+ .../net/wireless/mediatek/mt76/mt7996/init.c  |  3 +++
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 25 +++++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7996/mcu.h   |  5 ++++
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    |  1 +
+ 4 files changed, 32 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 0e514b818d0f..73c3741b532e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -2796,6 +2796,16 @@ mt7996_mcu_beacon_cntdwn(struct sk_buff *rskb, struct sk_buff *skb,
- 
- 	info = (struct bss_bcn_cntdwn_tlv *)tlv;
- 	info->cnt = skb->data[offs->cntdwn_counter_offs[0]];
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index 00a8286bd136..7e8bd3b142e7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -756,6 +756,9 @@ static void mt7996_init_work(struct work_struct *work)
+ 	mt7996_mcu_set_eeprom(dev);
+ 	mt7996_mac_init(dev);
+ 	mt7996_txbf_init(dev);
 +
-+	/* abort the CCA countdown when starting CSA countdown */
-+	if (csa) {
-+		struct bss_bcn_cntdwn_tlv *cca_info;
-+
-+		tlv = mt7996_mcu_add_uni_tlv(rskb, UNI_BSS_INFO_BCN_BCC,
-+					     sizeof(*cca_info));
-+		cca_info = (struct bss_bcn_cntdwn_tlv *)tlv;
-+		cca_info->cca.abort = true;
-+	}
++	if (!is_mt7990(&dev->mt76))
++		mt7996_mcu_set_dup_wtbl(dev);
  }
  
- static void
+ void mt7996_wfsys_reset(struct mt7996_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 73c3741b532e..97b8d6dfd602 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -4031,7 +4031,6 @@ int mt7996_mcu_get_eeprom_free_block(struct mt7996_dev *dev, u8 *block_num)
+ 
+ int mt7996_mcu_get_chip_config(struct mt7996_dev *dev, u32 *cap)
+ {
+-#define NIC_CAP	3
+ #define UNI_EVENT_CHIP_CONFIG_EFUSE_VERSION	0x21
+ 	struct {
+ 		u8 _rsv[4];
+@@ -4039,7 +4038,7 @@ int mt7996_mcu_get_chip_config(struct mt7996_dev *dev, u32 *cap)
+ 		__le16 tag;
+ 		__le16 len;
+ 	} __packed req = {
+-		.tag = cpu_to_le16(NIC_CAP),
++		.tag = cpu_to_le16(UNI_CHIP_CONFIG_NIC_CAPA),
+ 		.len = cpu_to_le16(sizeof(req) - 4),
+ 	};
+ 	struct sk_buff *skb;
+@@ -5046,3 +5045,25 @@ int mt7996_mcu_cp_support(struct mt7996_dev *dev, u8 mode)
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_WA_EXT_CMD(CP_SUPPORT),
+ 				 &cp_mode, sizeof(cp_mode), true);
+ }
++
++int mt7996_mcu_set_dup_wtbl(struct mt7996_dev *dev)
++{
++#define DUP_WTBL_NUM	80
++	struct {
++		u8 _rsv[4];
++
++		__le16 tag;
++		__le16 len;
++		__le16 base;
++		__le16 num;
++		u8 _rsv2[4];
++	} __packed req = {
++		.tag = cpu_to_le16(UNI_CHIP_CONFIG_DUP_WTBL),
++		.len = cpu_to_le16(sizeof(req) - 4),
++		.base = cpu_to_le16(MT7996_WTBL_STA - DUP_WTBL_NUM + 1),
++		.num = cpu_to_le16(DUP_WTBL_NUM),
++	};
++
++	return mt76_mcu_send_msg(&dev->mt76, MCU_WM_UNI_CMD(CHIP_CONFIG), &req,
++				 sizeof(req), true);
++}
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-index 5b3597ca79be..1283beb0dc19 100644
+index 1283beb0dc19..de14394bec22 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-@@ -412,7 +412,16 @@ struct bss_bcn_cntdwn_tlv {
- 	__le16 tag;
- 	__le16 len;
- 	u8 cnt;
--	u8 rsv[3];
-+	union {
-+		struct {
-+			bool static_pp;
-+			bool abort;
-+		} csa;
-+		struct {
-+			bool abort;
-+		} cca;
-+	};
-+	u8 rsv;
- } __packed;
+@@ -798,6 +798,11 @@ enum {
+ 	UNI_CHANNEL_RX_PATH,
+ };
  
- struct bss_bcn_mbss_tlv {
++enum {
++	UNI_CHIP_CONFIG_NIC_CAPA = 3,
++	UNI_CHIP_CONFIG_DUP_WTBL = 4,
++};
++
+ #define MT7996_BSS_UPDATE_MAX_SIZE	(sizeof(struct bss_req_hdr) +		\
+ 					 sizeof(struct mt76_connac_bss_basic_tlv) +	\
+ 					 sizeof(struct bss_rlm_tlv) +		\
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+index 8f1043159f58..f850be874b1b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -748,6 +748,7 @@ void mt7996_mcu_exit(struct mt7996_dev *dev);
+ int mt7996_mcu_get_all_sta_info(struct mt7996_phy *phy, u16 tag);
+ int mt7996_mcu_wed_rro_reset_sessions(struct mt7996_dev *dev, u16 id);
+ int mt7996_mcu_set_sniffer_mode(struct mt7996_phy *phy, bool enabled);
++int mt7996_mcu_set_dup_wtbl(struct mt7996_dev *dev);
+ 
+ static inline bool mt7996_has_hwrro(struct mt7996_dev *dev)
+ {
 -- 
 2.51.0
 
