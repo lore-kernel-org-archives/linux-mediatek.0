@@ -4,62 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC710D5B172
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 14:39:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67665D5B841
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 15:15:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wspWccdt9mHnVeiXHtz1BHV94m9lhbDaSny9i/kYLww=; b=VZExZmqFj4MMuqAgIm/WvtA+AN
-	5kx+Rsg/4QNODQL0JGjcj1mCZUvEMr0IJ5V4dIfEZ0Z9MUq3z8CK3m/KQTM5NcD6xUPUXMOm4scnf
-	72wxXVJCoIZoMXgnUuvJ45DaW3g/Y//9jh6XJlFRJrAKekl5hB/fc7VuRaiSjqq5DTcim15kYBunn
-	3BOH9NEpV2111PEPp298o6Xo7ovpIhC09bm2Nb0nVu4ZzTK4z64ouR6re6f/k/0LS3WHcdaJWn1Og
-	KsJhrvyiiGEg7PgjnhycqRay8Yz1OsuzbzZcqj9Yy6flTqLCYZvF+4k011t/699zchfq8aveCrjxQ
-	CYQV6F1g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:Cc
+	:References:In-Reply-To:Subject:To:From:Date:Message-ID:Reply-To:MIME-Version
+	:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=om5mM7uxoyKyU+mgWzVmY7p6fEJbFwmbQTCGVmR2FLs=; b=SlusM3i6d6uRtS3fMceGXbdgQr
+	qFmCJlRyIYk6p5yV5Kfh74NoXGQx9lSS2maOWB44KrRg3DknZAFlBg5ahCqsrBV5lr0hwdwH1fOAa
+	k2t3Ef0zlQbb8SEZ2bYxIyu6ZiYZVzLoV8qrQIb0jt8oIKH0fcjCEkY6R6T21zjjtdk/smbqxuYzN
+	QzjLbc5iJmPjkgDD+tsBR5x0Ep1j67TPA3gvLa8drHhyE6PAE4jmFc6pYZGW24mbry2U78vReKceZ
+	mKQ8biUzh17nZKFrAGE0k86U/8v2X+lZwY98ElnrxTZ49pOwsEecyo7NgMl4qZ293vQktc/gzvbZR
+	H1ZQyO9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV9jT-00000003ob9-0Awj;
-	Mon, 15 Dec 2025 14:39:27 +0000
+	id 1vVAII-00000003su3-2WXa;
+	Mon, 15 Dec 2025 15:15:26 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV9jR-00000003oag-0bZv;
-	Mon, 15 Dec 2025 14:39:25 +0000
+	id 1vVAIG-00000003stl-2RGe;
+	Mon, 15 Dec 2025 15:15:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 21A7760156;
-	Mon, 15 Dec 2025 14:39:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06D79C4CEF5;
-	Mon, 15 Dec 2025 14:39:21 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5CE5660157;
+	Mon, 15 Dec 2025 15:15:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21162C4CEF5;
+	Mon, 15 Dec 2025 15:15:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765809563;
-	bh=3NGg7h6VupPWi0xMjm0X5TrbirWmgw7NiurTa5OD018=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Ty7e65DdD+aIvHa0EOs7D5ObsOVWmvNtHKv++yGdRenVF1ytjJsXDDT7iFHZh1OZs
-	 yLsgRgF03XeRf0PSGzWXA3xWN6RDvpoOVUg7UMpixidYIsgl5InaWUi9co6xAB/DkI
-	 nFihkT7uBhu7BOBDb/ZbkHIF6LnuerWsuJiLsMDTAY6UgroUkRPYfoei2P7rSzfvM1
-	 uXEPQlIzHr3d57pg9Uo/GtrH9KqVOC4p6lqQ+cQDLiM2IW/5V0vm/Q+yua7/5Axr7J
-	 +DTS8YrSHePd6xsShd6eWZp4YAog8xPMHAtGlrJDm9Svz9V4wAlCjW/TG8Y0lB7ild
-	 J/u9f1SGi2MPQ==
-Date: Mon, 15 Dec 2025 14:39:19 +0000
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net] net: airoha: Move net_devs registration in a
- dedicated routine
-Message-ID: <aUAdlzPgf_lQKgLM@horms.kernel.org>
-References: <20251214-airoha-fix-dev-registration-v1-1-860e027ad4c6@kernel.org>
- <aUAXJ01iHnSJtItt@horms.kernel.org>
- <aUAcHVULgJTpdGzT@lore-desk>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aUAcHVULgJTpdGzT@lore-desk>
+	s=k20201202; t=1765811722;
+	bh=/hSiNj09HL1MEnGjr6tcPCIROWmHXWDplJK1S8UVBGo=;
+	h=Date:From:To:Subject:In-Reply-To:References:Cc:From;
+	b=t/uK+6r19aNRWoDv0W3wj4cnikrdzmYo8vbM43tJe4nlhKkFY+WXueNKSPhkjFzXg
+	 XD7ZGMtik2+zO2e1VASyMyaPm1gYYJuVKYNuImPfqw73mEr6o2BuOR3xEWyZZvYBz8
+	 vBUV+wiZLQoTQB1Qd+VGxJ9+3z4xSOi0rIbOWlgGMhLwRo7Z8/zBSASlirM/bqmCY5
+	 GS5Uxb4viOfBJFgYyqoLm4YMfMdbOPWL+Ope25DEHa89iPjt029geZHH1mSW+7xax5
+	 pM9RZfGgyIVUcn5ZiDiaQgGKKucqiirjJR7CqUQAciZ1OUkkHWVYa/AprakOrsCQ3B
+	 NXPFkSnXFqfdw==
+Message-ID: <7d6c96ad2922a8cc6008f27609fc055a@kernel.org>
+Date: Mon, 15 Dec 2025 15:15:19 +0000
+From: "Maxime Ripard" <mripard@kernel.org>
+To: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+Subject: Re: [PATCH v2 03/26] drm/todo: add entry about converting to
+ of_drm_get_bridge()
+In-Reply-To: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-3-88f8a107eca2@bootlin.com>
+References: <20251128-drm-bridge-alloc-getput-drm_of_find_bridge-v2-3-88f8a107eca2@bootlin.com>
+Cc: dri-devel@lists.freedesktop.org, imx@lists.linux.dev, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org, "Adrien
+ Grassein" <adrien.grassein@gmail.com>, "Alexey Brodkin" <abrodkin@synopsys.com>, "Alim
+ Akhtar" <alim.akhtar@samsung.com>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "AngeloGioacchino
+ Del Regno" <angelogioacchino.delregno@collabora.com>, "Anitha Chrisanthus" <anitha.chrisanthus@intel.com>, "Chun-Kuang
+ Hu" <chunkuang.hu@kernel.org>, "David Airlie" <airlied@gmail.com>, "Fabio
+ Estevam" <festevam@gmail.com>, "Geert Uytterhoeven" <geert+renesas@glider.be>, "Hui
+ Pu" <Hui.Pu@gehealthcare.com>, "Inki Dae" <inki.dae@samsung.com>, "Jernej
+ Skrabec" <jernej.skrabec@gmail.com>, "Jerome Brunet" <jbrunet@baylibre.com>, "Jonas
+ Karlman" <jonas@kwiboo.se>, "Jonathan Corbet" <corbet@lwn.net>, "Kevin
+ Hilman" <khilman@baylibre.com>, "Kieran Bingham" <kieran.bingham+renesas@ideasonboard.com>, "Krzysztof
+ Kozlowski" <krzk@kernel.org>, "Kyungmin Park" <kyungmin.park@samsung.com>, "Laurent
+ Pinchart" <Laurent.pinchart@ideasonboard.com>, "Laurent Pinchart" <laurent.pinchart+renesas@ideasonboard.com>, "Liu
+ Ying" <victor.liu@nxp.com>, "Louis Chauvet" <louis.chauvet@bootlin.com>, "Maarten
+ Lankhorst" <maarten.lankhorst@linux.intel.com>, "Magnus Damm" <magnus.damm@gmail.com>, "Martin
+ Blumenstingl" <martin.blumenstingl@googlemail.com>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Maxime
+ Ripard" <mripard@kernel.org>, "Neil Armstrong" <neil.armstrong@linaro.org>, "Pengutronix
+ Kernel Team" <kernel@pengutronix.de>, "Philipp Zabel" <p.zabel@pengutronix.de>, "Phong
+ LE" <ple@baylibre.com>, "Robert Foss" <rfoss@kernel.org>, "Sascha Hauer" <s.hauer@pengutronix.de>, "Seung-Woo
+ Kim" <sw0312.kim@samsung.com>, "Shawn Guo" <shawnguo@kernel.org>, "Simona
+ Vetter" <simona@ffwll.ch>, "Thomas Petazzoni" <thomas.petazzoni@bootlin.com>, "Thomas
+ Zimmermann" <tzimmermann@suse.de>, "Tomi Valkeinen" <tomi.valkeinen+renesas@ideasonboard.com>
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,48 +85,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 15, 2025 at 03:33:01PM +0100, Lorenzo Bianconi wrote:
-> > On Sun, Dec 14, 2025 at 10:30:07AM +0100, Lorenzo Bianconi wrote:
-> > > Since airoha_probe() is not executed under rtnl lock, there is small race
-> > > where a given device is configured by user-space while the remaining ones
-> > > are not completely loaded from the dts yet. This condition will allow a
-> > > hw device misconfiguration since there are some conditions (e.g. GDM2 check
-> > > in airoha_dev_init()) that require all device are properly loaded from the
-> > > device tree. Fix the issue moving net_devices registration at the end of
-> > > the airoha_probe routine.
-> > > 
-> > > Fixes: 9cd451d414f6e ("net: airoha: Add loopback support for GDM2")
-> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > 
-> > Hi Lorenzo,
-> > 
-> > As a fix this patch looks good to me.
-> > 
-> > Reviewed-by: Simon Horman <horms@kernel.org>
+On Fri, 28 Nov 2025 17:50:13 +0100, Luca Ceresoli wrote:
+> of_drm_find_bridge() is deprecated, but converting some users is very
+> complex and should be reasonably doable only after the DRM panel bridge
+> lifetime rework. Add a TODO to track this.
 > 
-> Hi Simon,
+> Suggested-by: Maxime Ripard <mripard@kernel.org>
 > 
-> thx for the review.
-> 
-> > 
-> > But I am somewhat surprised that the netdev isn't unregistered earlier
-> > both in airoha_remove() and the unwind ladder of airoha_probe().
-> 
-> do you mean moving unregister_netdev() before
-> airoha_qdma_stop_napi()/airoha_hw_cleanup()? I was thinking about it to be
-> honest :)
-> Since it is not related to this fix, I will post a patch as soon as net-next is
-> open again.
+> [ ... ]
 
-Yes, that is what I was thinking.
-And I agree that this is net-next material unrelated to this fix.
+Reviewed-by: Maxime Ripard <mripard@kernel.org>
 
-While you are there, I would look at making the unwind ladder
-in probe follow the same pattern as remove, if possible.
-I think that might mean moving airoha_ppe_deinit().
-
-But perhaps you already thought of that too.
-Or there is some good reason not to do so.
-
-
+Thanks!
+Maxime
 
