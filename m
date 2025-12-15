@@ -4,60 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4206FD59D99
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 11:30:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF603D59D99
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 12:22:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=usrboNhr07WsYh1biy8+JtVQT99Fk/4sqr0V9+UQCBw=; b=4DKFQmA/aF2Osho4KXIS5R/0T7
-	0D2iVT8Hfeq8FtJCDTeuZW+OwmaMdXyykvXdvjldtgViY3e/Fuu5Z3ukuNj++juYkbHtzXy9iPJCV
-	JMWDE79Ofij9713X51YjCG139EfwbcYp1MROxMgoIulNPQFE3hYQeEM9YHZLeZRyL7OM4XVPwwavw
-	5mlX7BAZRp0myMxPFeowf9Y33vniuv6LqC1+rBEzks8QvBuANi6ir1OdgO4uHL4c8JxB8lvfNMAis
-	chNF7M0KYjJ0MQPcRUOMYwgci5SNv54SLfZR8GB+XhBLzWrbqkZ0dON+4y1pUdWRX63qil/BOcy9g
-	nwH4XFFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qa/Vn79sYc/2vpTEh8B+lsrkZfuYz71JIBQPlwooPhc=; b=1yWuA1BrNKNRtIc8OrkHQt8LjS
+	tABU+7acGex6wl8e3MKCsx6ralQIQFT0eFcsG6OW5mnm7HtY72UT+yd04b5bPoJIXeBR8Vk79c7Ra
+	L7Gz3Q5441CP0L61Su2hyCw/YwuXUvKSgqA5QSR5hMwsocciTtsB4CtIsrd/05A6c7v/6D1IhL57r
+	bxWNDJFkn9EVR76PeKhbHHXPa5VPTxuhCH8QgimAWx+6shiK94r1gcHOSh6se7ytwwpCLIHbqdgiO
+	okuPCtaTam6+aOGMBOwA0NvT4jIBn8L1FiU6LUWpukcfwFoa8ED6JES+jzE54miTX/qXrfplwHImO
+	S+RAT83A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV6mA-00000003Wdn-2Pc2;
-	Mon, 15 Dec 2025 11:30:02 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vV7ae-00000003bTe-1oTU;
+	Mon, 15 Dec 2025 12:22:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV6m8-00000003Wd2-3VC9;
-	Mon, 15 Dec 2025 11:30:00 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9940D60150;
-	Mon, 15 Dec 2025 11:29:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4B16C4CEF5;
-	Mon, 15 Dec 2025 11:29:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765798199;
-	bh=pZvRKNQnveDpt4V3OuxBYvkE88PpxoFZHMOMx6hAFFM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QeEDjTNtlu9KzfO/VGbdPOVYs0Jkgs3j99bFjHVOla3Fki2xoaIRpy7WR7dVgo2Xb
-	 60ocg1esw6KniRVqwo7YqlpILGpw87am44mYenCzPASr2NF6hZsPzSG2eT06R3HyFH
-	 5vf9ZIMTxnJTXPsUm4xdVlMEoD5KI4VZ3wgFWGB5tsKkn++ILWshafpKbo6krVnclE
-	 wXnRTptk8iWmLfkLhonDXCT/mCs8aL7PavHSSsdy60wHAj0+EBby74pMs2SeeZyhKp
-	 yf02De/IVtYEN+h+H0HQontkvZSaMu/YTrUzgNaKgFLkhMq0j8u8kghe41YTgsscXh
-	 s82OBDHbYEh0g==
-Date: Mon, 15 Dec 2025 12:29:56 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
-To: 20190311120055 created <payne.lin@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, sirius.wang@mediatek.com, vince-wl.liu@mediatek.com, 
-	jh.hsu@mediatek.com
-Subject: Re: [PATCH] pwm: mediatek: Add error handling for zero rate in PWM
- state
-Message-ID: <s5ieu7cciqgw3x5rnpcn43fm3nkinm4guz33nhwwi45apdz2ot@4zsbi7tckuwz>
-References: <20251215104037.3100485-1-payne.lin@mediatek.com>
+	id 1vV7aa-00000003bSx-3a8W;
+	Mon, 15 Dec 2025 12:22:10 +0000
+X-UUID: a8a33f48d9b011f0a52f393f94899d25-20251215
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=qa/Vn79sYc/2vpTEh8B+lsrkZfuYz71JIBQPlwooPhc=;
+	b=XpD3toFO5bN5TlyGuWrok+W1ZUkSrP5q8DnWwmmfAgMI/CwQRiricRBjekECrs98U5HJE7oiqGN251uG9E6n2Mzf8lfmfOWqDDHv8bVyfLFEq5AGKmO0U2zrpOYCBtgvC85vs7O9TaEzAaPAgT+uHfOYLmsRxVqnzgRcmfVJtBs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.6,REQID:9013a1f1-98cf-455a-8b6c-6a6a9e8e04f6,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:7f0036aa-6421-45b1-b8b8-e73e3dc9a90f,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|123|836|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:
+	0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: a8a33f48d9b011f0a52f393f94899d25-20251215
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <ed.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 627645115; Mon, 15 Dec 2025 05:22:01 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 15 Dec 2025 20:21:58 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 15 Dec 2025 20:21:58 +0800
+From: <ed.tsai@mediatek.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <lenb@kernel.org>,
+	Pavel Machek <pavel@kernel.org>, Greg Kroah-Hartman
+	<gregkh@linuxfoundation.org>, Danilo Krummrich <dakr@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Ulf Hansson
+	<ulf.hansson@linaro.org>
+CC: <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<chun-hung.wu@mediatek.com>, <freddy.shin@mediatek.com>, Ed Tsai
+	<ed.tsai@mediatek.com>, "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+	<linux-pm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH 1/1] PM: runtime: fix bitfield race of needs_force_resume
+Date: Mon, 15 Dec 2025 20:21:42 +0800
+Message-ID: <20251215122154.3180001-1-ed.tsai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="d547b5x5tvmpvovf"
-Content-Disposition: inline
-In-Reply-To: <20251215104037.3100485-1-payne.lin@mediatek.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251215_042208_983089_019374CC 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,127 +90,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Ed Tsai <ed.tsai@mediatek.com>
 
---d547b5x5tvmpvovf
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH] pwm: mediatek: Add error handling for zero rate in PWM
- state
-MIME-Version: 1.0
+needs_force_resume is a bitfield member in struct dev_pm_info and must
+be accessed under the same lock as its bitfield group.
 
-Hello,
+A real concurrent write was observed between needs_force_resume and
+idle_notification; stacks below:
 
-the From: line of your patch is strange.
+write needs_force_resume:
+  pm_runtime_reinit+0x110/0x360
+  really_probe+0xe0/0x464
+  __driver_probe_device+0x9c/0x104
+  driver_probe_device+0x3c/0x1a8
+  __device_attach_driver+0x100/0x17c
+  bus_for_each_drv+0x10c/0x168
+  __device_attach_async_helper+0x7c/0xf4
+  async_run_entry_fn+0x4c/0x1b4
+  process_scheduled_works+0x1dc/0x498
+  worker_thread+0x220/0x320
+  kthread+0x150/0x27c
+  ret_from_fork+0x10/0x20
 
-On Mon, Dec 15, 2025 at 06:40:32PM +0800, 20190311120055 created wrote:
-> From: Payne Lin <payne.lin@mediatek.com>
->=20
-> Added a check to handle cases where the rate is zero in the
-> mtk_disp_pwm_get_state function. This prevents division by zero errors
-> when calculating the period.
-> - Added error message for zero rate scenario
->=20
-> Signed-off-by: Payne Lin <payne.lin@mediatek.com>
-> ---
->  drivers/pwm/pwm-mtk-disp.c | 31 +++++++++++++++++++------------
->  1 file changed, 19 insertions(+), 12 deletions(-)
->=20
-> diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-> index bafd6b6195f6..dd0ae041af70 100644
-> --- a/drivers/pwm/pwm-mtk-disp.c
-> +++ b/drivers/pwm/pwm-mtk-disp.c
-> @@ -176,19 +176,18 @@ static int mtk_disp_pwm_get_state(struct pwm_chip *=
-chip,
->  	struct mtk_disp_pwm *mdp =3D to_mtk_disp_pwm(chip);
->  	u64 rate, period, high_width;
->  	u32 clk_div, pwm_en, con0, con1;
-> -	int err;
-> +	int ret;
+write idle_notification:
+  rpm_idle+0x464/0x5f8
+  __pm_runtime_idle+0x7c/0x170
+  scsi_autopm_put_device+0x18/0x28
+  scsi_sysfs_add_sdev+0x1a0/0x1d8
+  scsi_probe_and_add_lun+0xbd8/0xcd0
+  __scsi_add_device+0xb8/0x11c
+  ufshcd_async_scan+0xb4/0x3a4
+  async_run_entry_fn+0x4c/0x1b4
+  process_scheduled_works+0x1dc/0x498
+  worker_thread+0x220/0x320
+  kthread+0x150/0x27c
+  ret_from_fork+0x10/0x20
 
-If you keep the variable name, the patch gets quite a bit more obivious.
+Fixes: 89d9cec3b1e9 ("PM: runtime: Clear power.needs_force_resume in pm_runtime_reinit()")
+Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
+---
+ drivers/base/power/runtime.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-> -	err =3D clk_prepare_enable(mdp->clk_main);
-> -	if (err < 0) {
-> -		dev_err(pwmchip_parent(chip), "Can't enable mdp->clk_main: %pe\n", ERR=
-_PTR(err));
-> -		return err;
-> +	ret =3D clk_prepare_enable(mdp->clk_main);
-> +	if (ret < 0) {
-> +		dev_err(pwmchip_parent(chip), "Can't enable mdp->clk_main: %pe\n", ERR=
-_PTR(ret));
-> +		goto err_handle;
->  	}
+diff --git a/drivers/base/power/runtime.c b/drivers/base/power/runtime.c
+index 84676cc24221..3328543b1ed8 100644
+--- a/drivers/base/power/runtime.c
++++ b/drivers/base/power/runtime.c
+@@ -1879,11 +1879,22 @@ void pm_runtime_reinit(struct device *dev)
+ 				pm_runtime_put(dev->parent);
+ 		}
+ 	}
++
+ 	/*
+ 	 * Clear power.needs_force_resume in case it has been set by
+ 	 * pm_runtime_force_suspend() invoked from a driver remove callback.
+ 	 */
++	if (dev->power.irq_safe)
++		spin_lock(&dev->power.lock);
++	else
++		spin_lock_irq(&dev->power.lock);
++
+ 	dev->power.needs_force_resume = false;
++
++	if (dev->power.irq_safe)
++		spin_unlock(&dev->power.lock);
++	else
++		spin_unlock_irq(&dev->power.lock);
+ }
+ 
+ /**
+-- 
+2.45.2
 
-Fixing error handling should go into a separate patch please.
-
-> -	err =3D clk_prepare_enable(mdp->clk_mm);
-> -	if (err < 0) {
-> -		dev_err(pwmchip_parent(chip), "Can't enable mdp->clk_mm: %pe\n", ERR_P=
-TR(err));
-> -		clk_disable_unprepare(mdp->clk_main);
-> -		return err;
-> +	ret =3D clk_prepare_enable(mdp->clk_mm);
-> +	if (ret < 0) {
-> +		dev_err(pwmchip_parent(chip), "Can't enable mdp->clk_mm: %pe\n", ERR_P=
-TR(ret));
-> +		goto err_disable_clk_main;
->  	}
-> =20
->  	/*
-> @@ -212,15 +211,23 @@ static int mtk_disp_pwm_get_state(struct pwm_chip *=
-chip,
->  	 * period has 12 bits, clk_div 11 and NSEC_PER_SEC has 30,
->  	 * so period * (clk_div + 1) * NSEC_PER_SEC doesn't overflow.
->  	 */
-That comment belongs to the assignment to state->period. Don't separate
-them with your addition.
-
-> +	if (rate =3D=3D 0) {
-> +		dev_err(pwmchip_parent(chip), "rate is zero, cannot calculate period\n=
-");
-
-All the other messages (at least those in the context above) start with
-a capital letter.
-
-> +		ret =3D -EINVAL;
-> +		goto err_disable_clk_mm;
-> +	}
->  	state->period =3D DIV64_U64_ROUND_UP(period * (clk_div + 1) * NSEC_PER_=
-SEC, rate);
->  	high_width =3D FIELD_GET(PWM_HIGH_WIDTH_MASK, con1);
->  	state->duty_cycle =3D DIV64_U64_ROUND_UP(high_width * (clk_div + 1) * N=
-SEC_PER_SEC,
->  					       rate);
->  	state->polarity =3D PWM_POLARITY_NORMAL;
-> +
-> +err_disable_clk_mm:
->  	clk_disable_unprepare(mdp->clk_mm);
-> +err_disable_clk_main:
->  	clk_disable_unprepare(mdp->clk_main);
-> -
-> -	return 0;
-> +err_handle:
-> +	return ret;
->  }
-
-Best regards
-Uwe
-
---d547b5x5tvmpvovf
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmk/8TEACgkQj4D7WH0S
-/k4RfAgAtDQpygYx//qBH7qfXb2Sege4VLwIXT72UTne+KCDGEH6C50zawka5dG2
-s6HT6h93xT9u8srTNskLw/w54rA0Sig2FhZHHE6hdxefIEUsRFAEZg1RR2opnIU5
-vzVpPb1kKdwYOn6ropXs+j5mDAY6VYsD5bGc2R54VoNek8saJdzOMfKzICTmmAYr
-3SMyBPyNIS/rUnaP8qkIKcd7i3/a0moKPqx8fhSJOL3sfE2uZkOQyDoSNlJQmqCK
-V7LrmVVCUqbhfk+fahjoLebPfwXVIiUPzqoPv+QKLo1TFirzq/9xNE20Vc4xhoax
-NCv4Gi+rGy3z3BFccks2wuQpIut1ww==
-=XB1O
------END PGP SIGNATURE-----
-
---d547b5x5tvmpvovf--
 
