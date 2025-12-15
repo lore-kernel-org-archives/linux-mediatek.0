@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA943D41D74
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0728D59D99
 	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Dec 2025 06:38:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T5SgYK0+rW24UTe1Vrv4M6KH0lbs8UAljb0cZks467Q=; b=kFAPV5GKXgItRlouSjiq/s2wRj
-	bDzrI0EXZ1KaP9upOcFBnGouwqSynNYwMJS77HEf+2VjW1bL1n5BkZY9IB5XaMTsUGSivtbpcfdR/
-	QkVChm8uz89bIXBGZsXJ8ktnw7HDbyrLxTzcg2DhhcrniQjFvvuqp7hkwpnfcsEsSaTnL9rI1ID1d
-	JUdc37/NeBTyu111xFgDq8IwEqLMcZ8M/p/FSxKh0T1u4SKFDvDy9wFlWz7F9VdqW9c0J8CbgY2d3
-	2X/VPpyBQwaBggSxQtk7E+/CusXxotk3+G7wGvVVXxVSvde8+PGPlBXpGXCpzqMq/7FyCRXU39Ano
-	e60NhbWA==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+efuKcWtgTDRo9XgQSpQQ2x/P7lFj6YofLZn0vxgKlk=; b=RFt6FCL82tG4ur1GsG2gzuQAOj
+	Kn9D/lVK8aub6oyVQb5j+t1jstYjVn/s9bj02s8zkJWDlfrs3AoYsY9Mbq0dRHTooKopJJxpANlZx
+	wJSrExKxpi5Rx+L7K6f8sHHz+aNyjTP0WSb1yQgjeHPyd7iCDsCFKJu+SOuLTwb5929men3iYaW8P
+	iRDmToUh+QR1VlsR+mFuCaHKHGITo5zRicBmv7fKCePGGCti/IcMZPeE1oKMtCzqohG3jFywKyoVd
+	gh0yixzQZYyrFaZZrKiMEVy/lOySPxvXVxxb7eyugTQZACIXbfHXy7d/rRGZMK+tx0fE7vqk5R+lT
+	fQlk58Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV2Dn-000000039nw-3CJ3;
-	Mon, 15 Dec 2025 06:38:15 +0000
+	id 1vV2Do-000000039oV-10VP;
+	Mon, 15 Dec 2025 06:38:16 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vV2Dg-000000039l0-2Jbe
+	id 1vV2Dh-000000039mB-3mec
 	for linux-mediatek@lists.infradead.org;
-	Mon, 15 Dec 2025 06:38:13 +0000
-X-UUID: 9aa3bd80d98011f0a52f393f94899d25-20251214
+	Mon, 15 Dec 2025 06:38:14 +0000
+X-UUID: 9a8bfd9ed98011f0a52f393f94899d25-20251214
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=T5SgYK0+rW24UTe1Vrv4M6KH0lbs8UAljb0cZks467Q=;
-	b=J+IVMas2cQV4EHhF0s78+5jyk7ZkaBHIbO4hku9ArMbPE73pEtiB7j0nWSdEnCt5YYyYg/Uj+knx/Taq15Zhy+gxKj98LulAxh1vaoPsJZfOQWp6ogE7GDu1dyo7+jLTaewWE+8pAS2yUqzqjBDAxc0yJYalDUtDPArLTwq2g3A=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+efuKcWtgTDRo9XgQSpQQ2x/P7lFj6YofLZn0vxgKlk=;
+	b=qxoneFVCGumMCUHveF9lRFPVI/ha1TxMexy4IX8uf2mjOqW8ftXoIED45Q1fLxXkrYXZAQj70WhCvHdFOrrLNn9InxrmUIpGDSvfDh/3puCtVkNrdeOWQrfLU+lmBASK/29gB22OKsdtIVhGBYODJOLIJW+A5XH35H0HTqok0nk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:9d28331d-cdda-4398-a282-204fc73a55b0,IP:0,UR
-	L:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:-5
-X-CID-META: VersionHash:a9d874c,CLOUDID:aa7ac602-1fa9-44eb-b231-4afc61466396,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
-	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.6,REQID:a5956447-f752-4d8a-a38a-d0637c123c51,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:67af8628-e3a2-4f78-a442-8c73c4eb9e9d,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 9aa3bd80d98011f0a52f393f94899d25-20251214
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-UUID: 9a8bfd9ed98011f0a52f393f94899d25-20251214
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1493315821; Sun, 14 Dec 2025 23:38:02 -0700
+	with ESMTP id 1486037647; Sun, 14 Dec 2025 23:38:02 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.2562.29; Mon, 15 Dec 2025 14:37:59 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
@@ -60,21 +60,20 @@ To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
 	<evelyn.tsai@mediatek.com>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, StanleyYP Wang
-	<StanleyYP.Wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH mt76 v2 2/7] wifi: mt76: mt7996: fix the behavior of radar detection
-Date: Mon, 15 Dec 2025 14:37:23 +0800
-Message-ID: <20251215063728.3013365-2-shayne.chen@mediatek.com>
+	<linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>, StanleyYP Wang
+	<StanleyYP.Wang@mediatek.com>
+Subject: [PATCH mt76 v2 1/7] wifi: mt76: mt7996: extend CSA and CCA support for MLO
+Date: Mon, 15 Dec 2025 14:37:22 +0800
+Message-ID: <20251215063728.3013365-1-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20251215063728.3013365-1-shayne.chen@mediatek.com>
-References: <20251215063728.3013365-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251214_223808_892122_CB95E6DE 
-X-CRM114-Status: GOOD (  17.63  )
+X-CRM114-CacheID: sfid-20251214_223809_953752_87629A4B 
+X-CRM114-Status: GOOD (  14.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,210 +88,259 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+Use correct link_id to report CSA and CCA countdown events, and also
+modify mt7996_channel_switch_beacon() to set beacon with the correct
+link_id.
 
-RDD_DET_MODE is a firmware command intended for testing and does not
-pause TX after radar detection, so remove it from the normal flow;
-instead, use the MAC_ENABLE_CTRL firmware command to resume TX after
-the radar-triggered channel switch completes.
-
-Fixes: 1529e335f93d ("wifi: mt76: mt7996: rework radar HWRDD idx")
-Co-developed-by: Shayne Chen <shayne.chen@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Co-developed-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
+Co-developed-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
-v2:
-  - check return value before setting rdd_tx_paused to false
----
- .../net/wireless/mediatek/mt76/mt7996/mac.c   |  8 +--
- .../net/wireless/mediatek/mt76/mt7996/main.c  | 20 ++++++++
- .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 49 ++++++++++++++++---
- .../net/wireless/mediatek/mt76/mt7996/mcu.h   |  1 +
- .../wireless/mediatek/mt76/mt7996/mt7996.h    |  2 +
- 5 files changed, 68 insertions(+), 12 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7996/main.c  |  23 ++-
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 159 ++++++++++++------
+ .../net/wireless/mediatek/mt76/mt7996/mcu.h   |   8 +-
+ 3 files changed, 131 insertions(+), 59 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index 2560e2f46e89..ce85d8f1bde6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -2973,7 +2973,7 @@ static void mt7996_dfs_stop_radar_detector(struct mt7996_phy *phy)
- 
- static int mt7996_dfs_start_rdd(struct mt7996_dev *dev, int rdd_idx)
- {
--	int err, region;
-+	int region;
- 
- 	switch (dev->mt76.region) {
- 	case NL80211_DFS_ETSI:
-@@ -2988,11 +2988,7 @@ static int mt7996_dfs_start_rdd(struct mt7996_dev *dev, int rdd_idx)
- 		break;
- 	}
- 
--	err = mt7996_mcu_rdd_cmd(dev, RDD_START, rdd_idx, region);
--	if (err < 0)
--		return err;
--
--	return mt7996_mcu_rdd_cmd(dev, RDD_DET_MODE, rdd_idx, 1);
-+	return mt7996_mcu_rdd_cmd(dev, RDD_START, rdd_idx, region);
- }
- 
- static int mt7996_dfs_start_radar_detector(struct mt7996_phy *phy)
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index 9b4bfb071292..18c6cdaae20b 100644
+index beed795edb24..9b4bfb071292 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -79,6 +79,7 @@ static void mt7996_stop_phy(struct mt7996_phy *phy)
+@@ -927,9 +927,30 @@ mt7996_channel_switch_beacon(struct ieee80211_hw *hw,
+ 			     struct cfg80211_chan_def *chandef)
+ {
+ 	struct mt7996_dev *dev = mt7996_hw_dev(hw);
++	struct mt7996_phy *phy = mt7996_band_phy(dev, chandef->chan->band);
++	struct ieee80211_bss_conf *link_conf;
++	unsigned int link_id;
  
  	mutex_lock(&dev->mt76.mutex);
- 
-+	mt7996_mcu_rdd_resume_tx(phy);
- 	mt7996_mcu_set_radio_en(phy, false);
- 
- 	clear_bit(MT76_STATE_RUNNING, &phy->mt76->state);
-@@ -954,6 +955,24 @@ mt7996_channel_switch_beacon(struct ieee80211_hw *hw,
+-	mt7996_mcu_add_beacon(hw, vif, &vif->bss_conf, vif->bss_conf.enable_beacon);
++
++	for_each_vif_active_link(vif, link_conf, link_id) {
++		struct mt7996_vif_link *link =
++			mt7996_vif_link(dev, vif, link_id);
++
++		if (!link || link->phy != phy)
++			continue;
++
++		/* Reset beacon when channel switch triggered during CAC to let
++		 * FW correctly perform CSA countdown
++		 */
++		if (!cfg80211_reg_can_beacon(hw->wiphy, &phy->mt76->chandef,
++					     vif->type))
++			mt7996_mcu_add_beacon(hw, vif, link_conf, false);
++
++		mt7996_mcu_add_beacon(hw, vif, link_conf, true);
++		break;
++	}
++
  	mutex_unlock(&dev->mt76.mutex);
  }
  
-+static int
-+mt7996_post_channel_switch(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+			   struct ieee80211_bss_conf *link_conf)
-+{
-+	struct cfg80211_chan_def *chandef = &link_conf->chanreq.oper;
-+	struct mt7996_dev *dev = mt7996_hw_dev(hw);
-+	struct mt7996_phy *phy = mt7996_band_phy(dev, chandef->chan->band);
-+	int ret;
-+
-+	mutex_lock(&dev->mt76.mutex);
-+
-+	ret = mt7996_mcu_rdd_resume_tx(phy);
-+
-+	mutex_unlock(&dev->mt76.mutex);
-+
-+	return ret;
-+}
-+
- static int
- mt7996_mac_sta_init_link(struct mt7996_dev *dev,
- 			 struct ieee80211_bss_conf *link_conf,
-@@ -2327,6 +2346,7 @@ const struct ieee80211_ops mt7996_ops = {
- 	.release_buffered_frames = mt76_release_buffered_frames,
- 	.get_txpower = mt7996_get_txpower,
- 	.channel_switch_beacon = mt7996_channel_switch_beacon,
-+	.post_channel_switch = mt7996_post_channel_switch,
- 	.get_stats = mt7996_get_stats,
- 	.get_et_sset_count = mt7996_get_et_sset_count,
- 	.get_et_stats = mt7996_get_et_stats,
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 7be03bbf34d4..81d09d0e924f 100644
+index 14a88ef79b6c..7be03bbf34d4 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -520,24 +520,32 @@ mt7996_mcu_rx_radar_detected(struct mt7996_dev *dev, struct sk_buff *skb)
- 		break;
- 	case MT_RDD_IDX_BACKGROUND:
- 		if (!dev->rdd2_phy)
--			return;
-+			goto err;
- 		mphy = dev->rdd2_phy->mt76;
- 		break;
- 	default:
--		dev_err(dev->mt76.dev, "Unknown RDD idx %d\n", r->rdd_idx);
--		return;
-+		goto err;
- 	}
+@@ -390,13 +390,117 @@ int mt7996_mcu_wa_cmd(struct mt7996_dev *dev, int cmd, u32 a1, u32 a2, u32 a3)
+ 				 sizeof(req), false);
+ }
  
- 	if (!mphy)
--		return;
-+		goto err;
- 
--	if (r->rdd_idx == MT_RDD_IDX_BACKGROUND)
-+	if (r->rdd_idx == MT_RDD_IDX_BACKGROUND) {
- 		cfg80211_background_radar_event(mphy->hw->wiphy,
- 						&dev->rdd2_chandef,
- 						GFP_ATOMIC);
--	else
-+	} else {
-+		struct mt7996_phy *phy = mphy->priv;
++struct mt7996_mcu_countdown_data {
++	struct mt76_phy *mphy;
++	u8 omac_idx;
++};
 +
-+		phy->rdd_tx_paused = true;
- 		ieee80211_radar_detected(mphy->hw, NULL);
+ static void
+ mt7996_mcu_csa_finish(void *priv, u8 *mac, struct ieee80211_vif *vif)
+ {
+-	if (!vif->bss_conf.csa_active || vif->type == NL80211_IFTYPE_STATION)
++	struct mt7996_mcu_countdown_data *cdata = (void *)priv;
++	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
++	struct ieee80211_bss_conf *link_conf = NULL;
++	unsigned long valid_links = vif->valid_links ?: BIT(0);
++	unsigned int link_id;
++
++	if (vif->type == NL80211_IFTYPE_STATION)
++		return;
++
++	for_each_set_bit(link_id, &valid_links, IEEE80211_MLD_MAX_NUM_LINKS) {
++		struct mt76_vif_link *mlink =
++			rcu_dereference(mvif->mt76.link[link_id]);
++
++		if (mlink && mlink->band_idx == cdata->mphy->band_idx &&
++		    mlink->omac_idx == cdata->omac_idx) {
++			link_conf = rcu_dereference(vif->link_conf[link_id]);
++			break;
++		}
 +	}
- 	dev->hw_pattern++;
 +
-+	return;
++	if (!link_conf || !link_conf->csa_active)
+ 		return;
+ 
+-	ieee80211_csa_finish(vif, 0);
++	ieee80211_csa_finish(vif, link_conf->link_id);
++}
 +
-+err:
-+	dev_err(dev->mt76.dev, "Invalid RDD idx %d\n", r->rdd_idx);
++static void
++mt7996_mcu_cca_finish(void *priv, u8 *mac, struct ieee80211_vif *vif)
++{
++	struct mt7996_mcu_countdown_data *cdata = (void *)priv;
++	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
++	struct ieee80211_bss_conf *link_conf = NULL;
++	unsigned long valid_links = vif->valid_links ?: BIT(0);
++	unsigned int link_id;
++
++	if (vif->type == NL80211_IFTYPE_STATION)
++		return;
++
++	for_each_set_bit(link_id, &valid_links, IEEE80211_MLD_MAX_NUM_LINKS) {
++		struct mt76_vif_link *mlink =
++			rcu_dereference(mvif->mt76.link[link_id]);
++
++		if (mlink && mlink->band_idx == cdata->mphy->band_idx &&
++		    mlink->omac_idx == cdata->omac_idx) {
++			link_conf = rcu_dereference(vif->link_conf[link_id]);
++			break;
++		}
++	}
++
++	if (!link_conf || !link_conf->color_change_active)
++		return;
++
++	ieee80211_color_change_finish(vif, link_conf->link_id);
++}
++
++static void
++mt7996_mcu_ie_countdown(struct mt7996_dev *dev, struct sk_buff *skb)
++{
++#define UNI_EVENT_IE_COUNTDOWN_CSA 0
++#define UNI_EVENT_IE_COUNTDOWN_BCC 1
++	struct header {
++		u8 band;
++		u8 rsv[3];
++	};
++	struct mt7996_mcu_rxd *rxd = (struct mt7996_mcu_rxd *)skb->data;
++	const char *data = (char *)&rxd[1], *tail;
++	struct header *hdr = (struct header *)data;
++	struct tlv *tlv = (struct tlv *)(data + 4);
++	struct mt7996_mcu_countdown_notify *event;
++	struct mt7996_mcu_countdown_data cdata;
++
++	if (hdr->band >= ARRAY_SIZE(dev->mt76.phys))
++		return;
++
++	cdata.mphy = dev->mt76.phys[hdr->band];
++	if (!cdata.mphy)
++		return;
++
++	tail = skb->data + skb->len;
++	data += sizeof(*hdr);
++	while (data + sizeof(*tlv) < tail && le16_to_cpu(tlv->len)) {
++		event = (struct mt7996_mcu_countdown_notify *)tlv->data;
++
++		cdata.omac_idx = event->omac_idx;
++
++		switch (le16_to_cpu(tlv->tag)) {
++		case UNI_EVENT_IE_COUNTDOWN_CSA:
++			ieee80211_iterate_active_interfaces_atomic(mt76_hw(dev),
++					IEEE80211_IFACE_ITER_RESUME_ALL,
++					mt7996_mcu_csa_finish, &cdata);
++			break;
++		case UNI_EVENT_IE_COUNTDOWN_BCC:
++			ieee80211_iterate_active_interfaces_atomic(mt76_hw(dev),
++					IEEE80211_IFACE_ITER_RESUME_ALL,
++					mt7996_mcu_cca_finish, &cdata);
++			break;
++		default:
++			break;
++		}
++
++		data += le16_to_cpu(tlv->len);
++		tlv = (struct tlv *)data;
++	}
  }
  
  static void
-@@ -4610,6 +4618,35 @@ int mt7996_mcu_set_radio_en(struct mt7996_phy *phy, bool enable)
- 				 &req, sizeof(req), true);
+@@ -476,57 +580,6 @@ mt7996_mcu_rx_log_message(struct mt7996_dev *dev, struct sk_buff *skb)
+ 	wiphy_info(mt76_hw(dev)->wiphy, "%s: %.*s", type, len, data);
  }
  
-+int mt7996_mcu_rdd_resume_tx(struct mt7996_phy *phy)
-+{
-+	struct {
-+		u8 band_idx;
-+		u8 _rsv[3];
-+
-+		__le16 tag;
-+		__le16 len;
-+		u8 mac_enable;
-+		u8 _rsv2[3];
-+	} __packed req = {
-+		.band_idx = phy->mt76->band_idx,
-+		.tag = cpu_to_le16(UNI_BAND_CONFIG_MAC_ENABLE_CTRL),
-+		.len = cpu_to_le16(sizeof(req) - 4),
-+		.mac_enable = 2,
-+	};
-+	int ret;
-+
-+	if (!phy->rdd_tx_paused)
-+		return 0;
-+
-+	ret = mt76_mcu_send_msg(&phy->dev->mt76, MCU_WM_UNI_CMD(BAND_CONFIG),
-+				&req, sizeof(req), true);
-+	if (!ret)
-+		phy->rdd_tx_paused = false;
-+
-+	return ret;
-+}
-+
- int mt7996_mcu_rdd_cmd(struct mt7996_dev *dev, int cmd, u8 rdd_idx, u8 val)
+-static void
+-mt7996_mcu_cca_finish(void *priv, u8 *mac, struct ieee80211_vif *vif)
+-{
+-	if (!vif->bss_conf.color_change_active || vif->type == NL80211_IFTYPE_STATION)
+-		return;
+-
+-	ieee80211_color_change_finish(vif, 0);
+-}
+-
+-static void
+-mt7996_mcu_ie_countdown(struct mt7996_dev *dev, struct sk_buff *skb)
+-{
+-#define UNI_EVENT_IE_COUNTDOWN_CSA 0
+-#define UNI_EVENT_IE_COUNTDOWN_BCC 1
+-	struct header {
+-		u8 band;
+-		u8 rsv[3];
+-	};
+-	struct mt76_phy *mphy = &dev->mt76.phy;
+-	struct mt7996_mcu_rxd *rxd = (struct mt7996_mcu_rxd *)skb->data;
+-	const char *data = (char *)&rxd[1], *tail;
+-	struct header *hdr = (struct header *)data;
+-	struct tlv *tlv = (struct tlv *)(data + 4);
+-
+-	if (hdr->band >= ARRAY_SIZE(dev->mt76.phys))
+-		return;
+-
+-	if (hdr->band && dev->mt76.phys[hdr->band])
+-		mphy = dev->mt76.phys[hdr->band];
+-
+-	tail = skb->data + skb->len;
+-	data += sizeof(struct header);
+-	while (data + sizeof(struct tlv) < tail && le16_to_cpu(tlv->len)) {
+-		switch (le16_to_cpu(tlv->tag)) {
+-		case UNI_EVENT_IE_COUNTDOWN_CSA:
+-			ieee80211_iterate_active_interfaces_atomic(mphy->hw,
+-					IEEE80211_IFACE_ITER_RESUME_ALL,
+-					mt7996_mcu_csa_finish, mphy->hw);
+-			break;
+-		case UNI_EVENT_IE_COUNTDOWN_BCC:
+-			ieee80211_iterate_active_interfaces_atomic(mphy->hw,
+-					IEEE80211_IFACE_ITER_RESUME_ALL,
+-					mt7996_mcu_cca_finish, mphy->hw);
+-			break;
+-		}
+-
+-		data += le16_to_cpu(tlv->len);
+-		tlv = (struct tlv *)data;
+-	}
+-}
+-
+ static int
+ mt7996_mcu_update_tx_gi(struct rate_info *rate, struct all_sta_trx_rate *mcu_rate)
  {
- 	struct {
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-index fc8b09e76f01..5b3597ca79be 100644
+index e0b83ac9f5e2..fc8b09e76f01 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-@@ -835,6 +835,7 @@ enum {
- enum {
- 	UNI_BAND_CONFIG_RADIO_ENABLE,
- 	UNI_BAND_CONFIG_RTS_THRESHOLD = 0x08,
-+	UNI_BAND_CONFIG_MAC_ENABLE_CTRL = 0x0c,
- };
+@@ -52,12 +52,10 @@ struct mt7996_mcu_thermal_enable {
+ 	u8 rsv[2];
+ } __packed;
  
- enum {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index 7a884311800e..d31864f973cc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -377,6 +377,7 @@ struct mt7996_phy {
+-struct mt7996_mcu_csa_notify {
+-	struct mt7996_mcu_rxd rxd;
+-
++struct mt7996_mcu_countdown_notify {
+ 	u8 omac_idx;
+-	u8 csa_count;
+-	u8 band_idx;
++	u8 count;
++	u8 csa_failure_reason; /* 0: success, 1: beacon disabled */
+ 	u8 rsv;
+ } __packed;
  
- 	bool has_aux_rx;
- 	bool counter_reset;
-+	bool rdd_tx_paused;
- };
- 
- struct mt7996_dev {
-@@ -726,6 +727,7 @@ int mt7996_mcu_get_temperature(struct mt7996_phy *phy);
- int mt7996_mcu_set_thermal_throttling(struct mt7996_phy *phy, u8 state);
- int mt7996_mcu_set_thermal_protect(struct mt7996_phy *phy, bool enable);
- int mt7996_mcu_set_txpower_sku(struct mt7996_phy *phy);
-+int mt7996_mcu_rdd_resume_tx(struct mt7996_phy *phy);
- int mt7996_mcu_rdd_cmd(struct mt7996_dev *dev, int cmd, u8 rdd_idx, u8 val);
- int mt7996_mcu_rdd_background_enable(struct mt7996_phy *phy,
- 				     struct cfg80211_chan_def *chandef);
 -- 
 2.51.0
 
