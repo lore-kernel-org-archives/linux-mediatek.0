@@ -4,68 +4,160 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 276E4D5B161
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Dec 2025 07:23:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C51ED5E146
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Dec 2025 12:03:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qQSdcWZiGnLdxDJNWxTQS2nftXWRg/xYrou3KzxDI4o=; b=DRdkHYuqz6GtGn0w62IFvDXMF8
-	yTNU2ApQ3nJKNonMigWovQNXf0k4/8dGaTZzm2Gt/U0RUqMDJt9QoEajnMg+zNUV0YkNe4u+sCIxF
-	Fqm3LFXROUKSqi1NJT5jyUsDk+ZYPulYfrkI5t1KZSFYc8m7HKDCnQPwaBvQP4ebyn+tT13bYo74G
-	0rKlfvHVKKhLxen+fgJtKeq+E/RWbKxwcONBrRecoIzeR0FgHd7MASfH9yo59PhGbBOE9m2z0RDS1
-	/fMXAFka5qUeEaRseMF0MyZ7jzMT3Q3yVrAMf8xSgbsQ7JWSLT1RtlBSkupCM/b/GFL1dRorqxqKF
-	tDwYpN4A==;
+	bh=S1bUZC3wQ09/vUi2Wz/LwL1M7PS4s9jI4u+ipA1NkPU=; b=foZZpE4NLzPRUbrgs+rTz6gXVw
+	YTyBVUmbRR8H42qKTOTs8sBAzhjTzwAGkjBV6IRABRCNVrALcQVPHK2ZbY4x+AWcY0g42ijGAU/dq
+	Gf1Z+WZOYr2jARLNOn7M5LdT0agbr4LxG9r+yjD9Q16R1XMkanxqIJ5s+GYvJcD+5sJHbKSRcHLpQ
+	hGFsQWchtuFRY6tRNgb2RT+UW6iErOLpSgbbECcLMnQ1KAveDl1wBufwI+2BNmR5djRcztl1UyBJ8
+	BFtQUyXnFCp2lFLuNF2UhKQVq0YuHrYX5j6SGtNaUA7GGuAywVzvfQlG0iPvpOfhb/42mNULe6TuX
+	P/xRqNNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVPOe-00000004qJ5-0hvT;
-	Tue, 16 Dec 2025 07:23:00 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vVTm2-00000005A0o-3IMT;
+	Tue, 16 Dec 2025 12:03:26 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVPOb-00000004qIa-3pQd
+	id 1vVTlz-000000059zo-2xXj
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Dec 2025 07:22:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5130F42E2C;
-	Tue, 16 Dec 2025 07:22:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F30FC113D0;
-	Tue, 16 Dec 2025 07:22:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765869777;
-	bh=vgei6H8uXbsw7gSUS2+78ZQHorMPpOcwSHomCZQqeB8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DYjlo2VPY7yPJNpgEe1T/yrVtWR+yF/jF52rm/cGv+Nl2QQBNy8z/YHlA08uld6TX
-	 rF8toFpSrybVZjiIex1UCxqszryOPQTnkKW7K4etJZbupFawAcKnoku5Hdr0FyVAuQ
-	 /xKHiRnfBm3GmL2zb5v5lLsjhmNBP31Ycm75AuHABkEefQL/8EmmwRc5KlssNsVgfH
-	 dvuYFK7+GfgAkRx/zsQ9+6Qn8ed/ATb7kLrVg8TsvV1mNgwJHzGeMmPhpybf3nXQYF
-	 Ceq4nYbKsTS0U7NXwrpajsWgfMXtZUfQQkN/wFTHNjklVowwuzcLmUvTO+XVaX1oht
-	 4qGkM6K6tgrpw==
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>,
-	Johan Hovold <johan@kernel.org>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 0/3] memory: mtk-smi: fix device leaks on probe
-Date: Tue, 16 Dec 2025 08:22:50 +0100
-Message-ID: <176586971950.24797.1201839384601647110.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251121164624.13685-1-johan@kernel.org>
-References: <20251121164624.13685-1-johan@kernel.org>
+	Tue, 16 Dec 2025 12:03:24 +0000
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5BG7kDDL1205156
+	for <linux-mediatek@lists.infradead.org>; Tue, 16 Dec 2025 12:03:23 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	S1bUZC3wQ09/vUi2Wz/LwL1M7PS4s9jI4u+ipA1NkPU=; b=WTuuKQx8zjT7yA9n
+	RcbkvqABZwczl032YJYNNIyEMQQ0tM+vIYIzu5g3Dn6Vu8y9nSVDA/pHjGy0I+DO
+	kf15TiqGU4+zNGPYK06xCKaXZJ7qclWs1jao4YkvXbKIZ+pyozusvyzYCINi6/br
+	lzPLi01djXZzGrCWTp/xAGD0biZWoAwBN3OsG6oF/2MURjRalhKBPSMz+q37jOOJ
+	ZGEoNU9XbiyPLo0IR26nMlkTduTn/0lQvy11X/NvYy+zjberHj69u4tyOk1aPwTS
+	9jI8WWAUDGCRH2jNuU0sknu4VMLaz4s2VrnNfRIrO6wuKogI4/A5TufHPHXhPrLf
+	BdTovQ==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4b2pdaks3e-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Tue, 16 Dec 2025 12:03:21 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8bbb6031cfdso67002385a.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Dec 2025 04:03:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1765886580; x=1766491380; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=S1bUZC3wQ09/vUi2Wz/LwL1M7PS4s9jI4u+ipA1NkPU=;
+        b=OXwmOqGEkE5uf0OTlUpU2LPpvd783N0vDmMZPYxPaEeIhRfd2aemMDIPwSNg4r/Tqy
+         XAmC1rh8lDTzpe/zyFJdKMYWQ0aJzdokD2G9NF3+xYxWqn//BYcf+YOdlm0X/paIYqd1
+         ThuBIUhWwB3OOBoB9HR385lLkJXnkDO+ROV1/hu7GKMt7MDLjypBTg0r/DEEuUFuSho4
+         KCDuhYTncwhSCiaDT+sJ8aBTdhFSGmpv0UINNr8e6gMvjdVeliTkKo8F55pyILUiqY53
+         HCMew6QSzmmHzV9G9SIKgRCAiA4u7vdMcEbFa4j/OYxKyBUSzZmzNwWZFkxW4C2ch9Zu
+         PKnw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1765886580; x=1766491380;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=S1bUZC3wQ09/vUi2Wz/LwL1M7PS4s9jI4u+ipA1NkPU=;
+        b=xBkQbkJJRCShbGhsb1wVsvyizSFVdN/1d5Yk7tCA6BWeJ9ct+K6fZ3KKpmbxOkNagt
+         ob3FbNiMBfPxHGs4in8SY3nt4xHCEGqxoGSBn4YcD4Im2FSkuHsUWpfiaNdqE0dw4lxw
+         U0dOGLZBGuKJXz7pSkGqhNhldImnDzWAQnC041YWjw48pdr88MuhVhjatNoP7IemdtWo
+         F6mqYeZrliQpuUitUJiAZKTN59GpVs93PXW/2CD6qlqqAQm4/+anoHiuqcPAYDTvZmfZ
+         IXI5d5J8RrIQZtqYTl33dyeEsFMtcK7FqhdD6PA33ULtt7DHPXBsPfLed3lhG1jbp8UV
+         xgQg==
+X-Forwarded-Encrypted: i=1; AJvYcCXz/HHHoYlzM7iiU9/EbSUMIsAHfpIW4DX4KTsKujO7Z0Kyw0rDgLgTs1eZLQNnlevFVHWTGk6UflPkhXfBVQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxnr5qozfUPCeU/yDangDcin/Aup+jp9m0cjfsmGjFrZqD/l8nT
+	oUclOmatxhKHpSUSzk4hNx90LIGPJQnNIWQfL0i1TTbH0XILcjCUin/DD/y7uXu5vlSx/oeX3e6
+	3g+z1ibBFssznuktKMeMPnzP0Hh/PWZpmPn+er39g7BS3Kv4nCyGRdy9ptKCahSZYu2M31ebbjm
+	Q=
+X-Gm-Gg: AY/fxX4CZTxq8E6+fE19pGa6KSyQ9TtSt7Kjce7CEyt3YBy1OEjg6qY8zJx6zNJdrXB
+	0I40lFrg/0pxGs7coNN2KrJ58q9HUX9d8s9oSTOaF2Ild8FNv5eYhy0PjY2y/b3jb9/tfaNRe6q
+	iu7LQK5igUc9/ELLt/pPOTFLi3vVcGLWHl+ItVv4lUf/EJ31JmRyR7zQ5KrGVSaIimN1BSjsG6w
+	NJHBC1NFHD3qiLMFGivU4nL/jWQIeeiNp6u1GAjAH+5hdHN/D/P7ityfYZTc4XlrXFFB76reZsp
+	E7lo83Qnp245CAmUhDpoBXpQlaneBe8kk2zv5XqhEvEKvFeCuQuwZc1kruOGurq/s+ktYyV9aj7
+	1j0EPqu2iLZK7/NqMYTq4Brryz7lMxxCvaGStpnzCV+C/8+xNS+O0K+V8bLGIleCS5w==
+X-Received: by 2002:a05:620a:468f:b0:8b1:fa2a:702f with SMTP id af79cd13be357-8bb3a0b7e5amr1437505685a.3.1765886579622;
+        Tue, 16 Dec 2025 04:02:59 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH+LwGQhgX+HV6xSu98Kp8PBKIcLhjvja7byx1nEf8nekydl7DDS37zTtoZtPzNHvCnZUEeTw==
+X-Received: by 2002:a05:620a:468f:b0:8b1:fa2a:702f with SMTP id af79cd13be357-8bb3a0b7e5amr1437499185a.3.1765886578963;
+        Tue, 16 Dec 2025 04:02:58 -0800 (PST)
+Received: from [192.168.119.72] (078088045245.garwolin.vectranet.pl. [78.88.45.245])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-649820f77e3sm16041066a12.18.2025.12.16.04.02.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 16 Dec 2025 04:02:57 -0800 (PST)
+Message-ID: <695ca5d2-b713-4838-8427-a9d31751c0cf@oss.qualcomm.com>
+Date: Tue, 16 Dec 2025 13:02:52 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-X-Developer-Signature: v=1; a=openpgp-sha256; l=903; i=krzk@kernel.org; h=from:subject:message-id; bh=lvMdiNELiS4H8mOFGrWoPrGgninHMZUuM4PBvYPE4yA=; b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpQQjLf9w9RlwFmFOV52yUKZIE6MnHl3iilzJVu pdS7zVuarWJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaUEIywAKCRDBN2bmhouD 15KIEACY9TmyXFzGZf0B/Qz+oQTdVfqx52ggZ4UJtNmk45OBFdVFBZ7msNGnttyEUMAhnbB8dC9 Y9r/PNpgWQqSc+0XgbxNXhXgx1Hlcl67aRmVXeUaaMZmvPx5vob0HNvz02epP4XU1tOuWLpeCVr MQMJuGP1cApF4qjlJBUlkKKH0m9UqH/M0ol7DawHd4d8qV5eMXxCAP55CF4llLjOigWIgYIWi4J 0fPbwaNB8tfr9GWa44toL7qnuHMCEcbtL9Hlb5YdviPKLfYqN0TPeMDrfkW9OHQICg/zWqrhPm9 j7QSghIqV7eV7pCpZr12qZZQiz6xGSDS4LDVNQkfbTTm1Lg5b/Veye6c2mJmT7hNKJN2G4b3/fb irHZgf9kZYwKQ26gJ0FjBwppA/7YypdFYx7afrvvd7mHYvpGTk8m2tzQnRvRAlusLsqFJrdjHya HEsbh1D/oL5gNwWjmF9vC975eS2sXBSuBzJ8vEv/EGZK0isPXyPcH94lmcambv9N0X2wjYaOJ6I 1vePaKNwgIGGPdqEhFWQ0ChJ7e6BIVOTrHBz20kfrl/yKvy7e4hTuDtowjohN80TvTV0k5m41QH 8li8zBVjzAd+n28f9ywI10zNcbVQWNalixN1mf+cwTV5ww9m31hRxf1tUbOrfLR7ZzkWIg4GSky jqmOucVLxfz0O9
- Q==
-X-Developer-Key: i=krzk@kernel.org; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] dt-bindings: Remove unused includes
+To: Jonathan Cameron <jic23@kernel.org>, "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+        Stephen Boyd <sboyd@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Michal Simek <michal.simek@amd.com>, Vinod Koul <vkoul@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        David Lechner <dlechner@baylibre.com>,
+        =?UTF-8?Q?Nuno_S=C3=A1?=
+ <nuno.sa@analog.com>,
+        Andy Shevchenko <andy@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+        Peter Rosin <peda@axentia.se>, Linus Walleij <linusw@kernel.org>,
+        Chen-Yu Tsai <wens@kernel.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Philipp Zabel
+ <p.zabel@pengutronix.de>,
+        Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team <kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>,
+        Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+        linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+        devicetree@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org, dmaengine@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-iio@vger.kernel.org,
+        iommu@lists.linux.dev, linux-gpio@vger.kernel.org,
+        linux-sunxi@lists.linux.dev, imx@lists.linux.dev,
+        linux-sound@vger.kernel.org
+References: <20251212231203.727227-1-robh@kernel.org>
+ <20251213165949.4b51f7cb@jic23-huawei>
+Content-Language: en-US
+From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+In-Reply-To: <20251213165949.4b51f7cb@jic23-huawei>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-GUID: P8yr1tE1hPMWWt2SzCGA6f7PLPu5cH95
+X-Proofpoint-ORIG-GUID: P8yr1tE1hPMWWt2SzCGA6f7PLPu5cH95
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjE2MDEwMiBTYWx0ZWRfXyZnXeDPeRUDm
+ u1y0PQYA1Yrza2XB74gq6Y1SzW5f9dFlK0HmrTmunAyjLAx8gCWvxmZSK/OqJrrCfIIJjjp4wbO
+ C3dk8IanRTPg4FtGgGA5Xd34xKmS4yvT3EQ2Jv6m1zSHWh6yP2123kZSUwGiW0m/FsOxvJyDJLy
+ P8p8KnVs7v98ptgAELnf6PDLC3KNxQ0lQbWQwpA/W2H7swAELdPbLalmt50RBRNCYyNwmJDtr9c
+ dszVy4vmfAee/kfJ3KG3oEAxgaMmw/2butznK6T5Kzs10eXzxYNRZzfEh0OyJ0rorldEdKCp9fF
+ 5woiIMGtIN8BaWsnPMw8714VZ9lm2D4wuxrtsao9q4CWDgK39H76temc3QSMp+Z2AUD39QsiKPK
+ tCnO4O4yD5YfDbdIgSDFOWy+y/41KA==
+X-Authority-Analysis: v=2.4 cv=JYqxbEKV c=1 sm=1 tr=0 ts=69414a89 cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=FpWmc02/iXfjRdCD7H54yg==:17
+ a=IkcTkHD0fZMA:10 a=wP3pNCr1ah4A:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=i0EeH86SAAAA:8
+ a=UbNXja__m5_aMge2JzcA:9 a=QEXdDO2ut3YA:10 a=IoWCM6iH3mJn3m4BftBB:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-12-16_02,2025-12-15_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 clxscore=1015 priorityscore=1501 impostorscore=0 spamscore=0
+ phishscore=0 bulkscore=0 lowpriorityscore=0 adultscore=0 malwarescore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2512160102
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_232257_971714_CE3438AE 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251216_040323_771751_95B562C8 
+X-CRM114-Status: GOOD (  12.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,31 +172,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 21 Nov 2025 17:46:21 +0100, Johan Hovold wrote:
-> Make sure to drop the reference taken when looking up the SMI device
-> during probe on late probe failure (e.g. probe deferral) and on driver
-> unbind.
+On 12/13/25 5:59 PM, Jonathan Cameron wrote:
+> On Fri, 12 Dec 2025 17:11:52 -0600
+> "Rob Herring (Arm)" <robh@kernel.org> wrote:
 > 
-> Included is also a related cleanup.
+>> Remove includes which are not referenced by either DTS files or drivers.
+>>
+>> There's a few more which are new, so they are excluded for now.
+>>
+>> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 > 
-> Johan
+> Acked-by: Jonathan Cameron <jonathan.cameron@huawei.com> #for-iio
 > 
-> [...]
+> Ideally we'll get a QC ack on those as well.
+> 
+> Jonathan
+>>  .../dt-bindings/iio/qcom,spmi-adc7-pmr735b.h  |  30 --
+>>  .../dt-bindings/iio/qcom,spmi-adc7-smb139x.h  |  19 --
 
-I fixed up stable-cc syntax - missing final Cc, because only prerequisite was
-mentioned.
+Those are being moved to dts/qcom:
 
-Applied, thanks!
+https://lore.kernel.org/linux-arm-msm/20251127133903.208760-1-jishnu.prakash@oss.qualcomm.com/
 
-[1/3] memory: mtk-smi: fix device leaks on common probe
-      https://git.kernel.org/krzk/linux-mem-ctrl/c/6cfa038bddd710f544076ea2ef7792fc82fbedd6
-[2/3] memory: mtk-smi: fix device leak on larb probe
-      https://git.kernel.org/krzk/linux-mem-ctrl/c/9dae65913b32d05dbc8ff4b8a6bf04a0e49a8eb6
-[3/3] memory: mtk-smi: clean up device link creation
-      https://git.kernel.org/krzk/linux-mem-ctrl/c/78da7027e2a99edea0d7e97b25d75be4698a8728
+and will hopefully be in use later in this cycle.
 
-Best regards,
--- 
-Krzysztof Kozlowski <krzk@kernel.org>
+Krzysztof and the submitter agreed on that outcome since they represent
+hw constants and aren't "real" bindings (connecting sw to sw)
+
+Konrad 
 
