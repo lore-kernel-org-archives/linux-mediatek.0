@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42C1DD637AE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Dec 2025 21:15:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56210D637AE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Dec 2025 21:22:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ebwgGAkNx1wNoLhOAOZ/UY0M0Mpf4583EjnHoCJDQNs=; b=QM65hfgy6Jtw+UakRBb+2k64zw
-	Mot2SOTee5MwC8FbxU6ddQUUmOkuh+CN5mkwMzkUajDrJ+wxr6HUvvnqh0g5pBL8YW0qabAS7dxVC
-	FZmX/XyZ4mmDrxbh6IrP3uOCYbEu2P0t+yZsIwcQpSMMoYDdHAfVHdFt/xeVp/aAwuuRljzUshSkg
-	CiFvFXAWK21VYY1nzrojcc0xcvz1Gp6Ph3NA7HWubE+BBTsPy0BKX2V/6dmvaHdsyCFMdlM+jzSLo
-	GY6Uv5xAbo5nF8W8iiGHBoVi/Sn5YmOdmwzZVOp3R6zY+8srcPnmMJ6H4AJhMJ59wSZLgT86vFVG/
-	OniwKUHQ==;
+	bh=5NXLEIY/HJo5YPCQOLY5gXfYsdslZjjo+0R5gru3yJ8=; b=eB0qZoW83/Pqpc10hSk8pKYJZE
+	3n+XmueAWbDnp4oj9CiXMX8uwMsKHfK6yw/ugVeEFMBKqMqxMXjj53Zds8i+KStY4rMfCrbiW1tyW
+	giSQJGiFnS7aL/NZk4cEhjJvjluEk+dGWbp00NEzaziaq8RIf+ZkktFXbhdKSVQdUiRMyq8zlpqrr
+	6fqrp/jzWxCs8bfCj+Vn/M/W+DrCk4xMkQQVelAgh+9fkrLvnRKX04VyjDurCieD3Acl8qBFQRiN6
+	P8/HcPNMywDZdSbUPJZvvZlFLurnYgI30dkESmhDGoA6GQKFfRruCuShDu01C5KAmziFg45IE6wKM
+	Ou5QrADA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVcOe-00000005pbo-2lUc;
-	Tue, 16 Dec 2025 21:15:52 +0000
-Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+	id 1vVcVQ-00000005pw3-0Mta;
+	Tue, 16 Dec 2025 21:22:53 +0000
+Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVcOZ-00000005paw-3v9D
+	id 1vVcVN-00000005pv6-2oLo
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Dec 2025 21:15:49 +0000
-Received: by mail-qt1-x831.google.com with SMTP id d75a77b69052e-4ee13dc0c52so43150841cf.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Dec 2025 13:15:47 -0800 (PST)
+	Tue, 16 Dec 2025 21:22:51 +0000
+Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-8ba0d6c68a8so551974785a.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Dec 2025 13:22:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1765919746; x=1766524546; darn=lists.infradead.org;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1765920168; x=1766524968; darn=lists.infradead.org;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:to
          :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=ebwgGAkNx1wNoLhOAOZ/UY0M0Mpf4583EjnHoCJDQNs=;
-        b=W/QD/aO9pxqfXj403fP4jzeI+bc9+NODn3hT1o2xYQh2TmXWPWZEqC/Pz+PJGh6sV3
-         uVACLrS8I+cQFmAxnmv9Ej/CURiH+j6+MRLYbTL29rg2A+epgiyfMCEtFtCmoIDyPWdr
-         UQ9YdkNfh8JpMJTmrs6IF90J1lBJZ1v0NRyvffyISxaJqGlVdrr+sUw4rUdmVnK+Ywat
-         V3y/WndWu8hxHXwD3zMSDjoROdCzDcaabaMJvIxAQwX5djqsg32LfOqMkwYOrsowIRqd
-         iX8TE6sduL/hWjPOKQcIzXKjuUmCs+UxB6V2c2cs+dc913hSyVKH9/tcwwMeN9HWT0wd
-         otog==
+        bh=5NXLEIY/HJo5YPCQOLY5gXfYsdslZjjo+0R5gru3yJ8=;
+        b=Y1KUElYuWBLXp6z/aPk1P40HQBQDqZbpIJzSOAhK6DGULgMLrWzUzlmEs+dLOc67Gt
+         bAcgL7QRKdzHDiRiZLa6HWdAMR9zc41aP++nJKciCAboXwN666ArUbENXBak+JW2cyUz
+         RySrB/NI+J7vzVvEXX3kCLP8Acx3+s4kXMCMJznpQagiJ0GjM675sn9NDDIOE+dW2dcq
+         Hh09PJ+DYKJGewb41YZldV+I/CWX8X1abgu3t9vtYICdf9zdII0cR6R77sZEhbbn6Epc
+         J3hANUZaxDO2C4xy6ELyDJuaneJwXbWCCBDM8e8hwJmydaJDCdZHhxVQ28QCwW6niGej
+         3x/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765919746; x=1766524546;
+        d=1e100.net; s=20230601; t=1765920168; x=1766524968;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:to
          :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ebwgGAkNx1wNoLhOAOZ/UY0M0Mpf4583EjnHoCJDQNs=;
-        b=fjt4fck+VAmUpIv0yRuABPAkKfle/2WvLJmaAkXgOb1B/Xz/aZ14hnIcSaYOWBl/AV
-         tabvCLUqE7OgymX2z0IBzGDwTIEA8mKTa0q+Z2Ykku3Za85S41FAve/Nn+pZYOCxy+BM
-         WxzvPFQJD5yjL2ja9H2qFBBLL36TQJuHAWm7r2GgB2DGK4yFpRo01vpwUHJdHzqwBcu/
-         Lkrs/AMSDkYb0GDaIwbWoK6ClcuoaxjSbD0u3ERBCSjzWwLXgbSj1NT//KQNws7PqGse
-         HsszaYCaSiNEd63LS3GLYADGyLQzoqM+59RVMl0VNX3mopalMfjPDkDqx0vb0CgkJ7L/
-         R4Eg==
-X-Forwarded-Encrypted: i=1; AJvYcCUsLQqYn8fYRY1abKx7HN0Pw0riBbntYhizrdBnfW8a+/zwWDahfXzaiehwLnsCe8L2dj3AWIIyeslPsmGsbA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwwO1Nqn3PIKrkjCCCeciR8uaEnbsCAA+zm508AlYFe50VlCUzF
-	VvInT0v+uA43UupuWhFljqoyVFCOjK9GzTpEio7Kk/qo53XbNPylc5wXVHA+e3Fst4A=
-X-Gm-Gg: AY/fxX4++I2kSurYSVnNUk7tTLQ8qKbcSeJpDg9FMMiIhrnC7vR87l7KNw52ajL3+Tv
-	rZqCcnkLNshqloDfjRSCGi4oXj37kvntSG9N2hNqNy7AhvbeD0W2VjHbxWHKR2GOnFi4rVwaGGx
-	l1VmUBHBO1e63GQd8R33aXEfTPu0bZN1YDxTbeAQsG0IgrL6FRVD1FmlbRGJ5ARy4F1e7ULrfZI
-	q3iOVDnb+Dg0UDK1io1GPmIhlm+VYwr87HVupD4YQzjtnY/wzTTnCOcpWIpBfDh/UsDInj51snj
-	ERgdFctmHVaBZplKoYPl0wCI4GjqwLm90RVD0ZDC2+XkvY9uv4umAIWouCTs7DDM6ftoyqigPIN
-	C5BYElMshRWrSUK0FrMmkP4mVHhArRZRiaASB/PwyLKJz8YYllxzTAgnJ+cFokW2c+BJXMsZhtG
-	Xv9gkkQ3Y367c3plFTQXAgG0dGj2Y=
-X-Google-Smtp-Source: AGHT+IH9ieEzITl/25GTBr1twC9xFLUuMn0MCssFBfn2TLe8Le8JQ2UJuWsc+eqTvu1swSD82saAFw==
-X-Received: by 2002:a05:622a:4ac8:b0:4ee:1ed1:43c6 with SMTP id d75a77b69052e-4f1d049f56amr195093861cf.10.1765919746405;
-        Tue, 16 Dec 2025 13:15:46 -0800 (PST)
+        bh=5NXLEIY/HJo5YPCQOLY5gXfYsdslZjjo+0R5gru3yJ8=;
+        b=SOFqgzlrdjmZP0r/VBygXAt9A746CuWIMy77L0rxIo6knuC6LtCOWc/oU9d+RXL+5F
+         Ywms28jRzn/AScVL+EfTCVkAuqsRzxGe6afTfq/R8y+JvUxM25b18bItKLyDTAt18+/6
+         YV2zEgLid3WJp2GjWblb5xb+c2+FQ/azTe8rrOhCVQqVNrW3E52phCwR2gE7niuEWuZl
+         Az2wLgLjz0HVgN9SMytx/PXbZe+riAMZLQHYlQi44tUTFXQQfICJPzTnTsupct11fSau
+         Pu+SVwNpjfDJ88Vlk6zFBRXphzjmj47C07Xuuuy2mqm9M2/qjrv02KAp6Y/bQW9KB8Vj
+         c0nw==
+X-Forwarded-Encrypted: i=1; AJvYcCV2D4Q0vbRNZNND8eQltreJVC112EtuiBPkxGNZBqH4VYLc8ugqIBrXNtzUyehpLdZ0mlEQWUkvAjCgJPAxtA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzRbjHD7hLPMzcn7gb8XGLb1F3nuWaMubXWn5bc/2yj/5GZiY6v
+	zDFGuIjkUWrjWw2rHUPbx2Wz1GQho79uoXCvBTKdSj5dSrfi3J3I1kI4ethYAfdWVFU=
+X-Gm-Gg: AY/fxX7UpcmlAL6GksxvsQGUEvIUz89GXQYwrtUO2sUUesZ7dRuQV3QoOrN4299tmMw
+	Rw6a6bnD5Y9Eb1FtsVURYg9la61n+TZMI5ls5sxAIGSTd07l/0wxOF2qBFQpltOYu/vOvsvrybj
+	CuUDxZKw3UCWgqAkghdPno/ldYHCqrJri2IXcjsihS9g1XnXXOfbG9HDVeF7pG3yNTAalIQEDAI
+	DJHSYFywFj1NBzOzdn2PFb0tYY7u1XdAfaGwYBnYxegWRPAiXjWZdgkdPxrXT+nfZiKchFb70dP
+	WR/ABrFIxnIQuoGl/CWGUGcqT7E+gGieSlZfVeNm2xM8iJ8D7iULjbvA+Z1eMxEg6Gy7zJoYnOG
+	t/Snwni/p08O/Rdn3UP1jSosiG56K5PY+3t1g6alkGi24AC0+7+xWjJwOz/gBwm51IZJ0qQk9qj
+	6kA1kbLY2+3Fm0Gnqd
+X-Google-Smtp-Source: AGHT+IGnNvmGoO8yPWVpsFsbYZAaj2DCffDyxI9Yos1OcWwvsPhTC8Cpvvm5ho/CQeeMUg7IeOVbhA==
+X-Received: by 2002:a05:620a:1aa1:b0:8b2:63ed:dd10 with SMTP id af79cd13be357-8bb3a39de7emr2290802885a.78.1765920168123;
+        Tue, 16 Dec 2025 13:22:48 -0800 (PST)
 Received: from ?IPv6:2606:6d00:17:7b4b::c41? ([2606:6d00:17:7b4b::c41])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-889a860bd0bsm86012026d6.54.2025.12.16.13.15.44
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8be31b66937sm266561085a.41.2025.12.16.13.22.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Dec 2025 13:15:45 -0800 (PST)
-Message-ID: <36268d4980a1cd6d976bdf5de148f1c2668a92e4.camel@ndufresne.ca>
-Subject: Re: [PATCH v11 02/12] media: mediatek: jpeg: fix jpeg buffer
- payload setting
+        Tue, 16 Dec 2025 13:22:47 -0800 (PST)
+Message-ID: <89f845b45405bbf985a5e92c195078074bcce0e2.camel@ndufresne.ca>
+Subject: Re: [PATCH v11 03/12] media: mediatek: jpeg: fix jpeg buffer layout
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
 To: Kyrie Wu <kyrie.wu@mediatek.com>, Hans Verkuil
  <hverkuil-cisco@xs4all.nl>,  Mauro Carvalho Chehab	 <mchehab@kernel.org>,
@@ -81,10 +80,10 @@ To: Kyrie Wu <kyrie.wu@mediatek.com>, Hans Verkuil
  <angelogioacchino.delregno@collabora.com>, linux-media@vger.kernel.org, 
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Tue, 16 Dec 2025 16:15:43 -0500
-In-Reply-To: <20251202094800.6140-3-kyrie.wu@mediatek.com>
+Date: Tue, 16 Dec 2025 16:22:46 -0500
+In-Reply-To: <20251202094800.6140-4-kyrie.wu@mediatek.com>
 References: <20251202094800.6140-1-kyrie.wu@mediatek.com>
-	 <20251202094800.6140-3-kyrie.wu@mediatek.com>
+	 <20251202094800.6140-4-kyrie.wu@mediatek.com>
 Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -99,12 +98,12 @@ Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-DXnq4KBLzU3zHo31WhpX"
+	protocol="application/pgp-signature"; boundary="=-mJv6RkBPu7sPfVj/Eoxm"
 User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251216_131548_495336_4FAEC714 
-X-CRM114-Status: GOOD (  25.84  )
+X-CRM114-CacheID: sfid-20251216_132249_771349_108D60F5 
+X-CRM114-Status: GOOD (  22.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,135 +119,97 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---=-DXnq4KBLzU3zHo31WhpX
+--=-mJv6RkBPu7sPfVj/Eoxm
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi.
+Hi,
 
 Le mardi 02 d=C3=A9cembre 2025 =C3=A0 17:47 +0800, Kyrie Wu a =C3=A9crit=C2=
 =A0:
-> For multi-core jpegdec, if one of hws gets the event of resolution
-> changing, the payload size, representing the size of Y/C data,
+> For memory alloc operation of jpeg dst buffer: the mallocing
+> memory function interface use vb2_buffer as the base addr.
+> If structure mtk_jpeg_src_buf wants to be allocated to memory,
+> it needs to be placed vb2_v4l2_buffer at the starting position,
+> because structure vb2_buffer is at the starting position of
+> vb2_v4l2_buffer, and the allocated size is set to the size of
+> structure mtk_jpeg_src_buf, so as to ensure that structures
+> mtk_jpeg_src_buf, vb2_v4l2_buffer and vb2_buffer can all be
+> allocated memory.
 
--> "gets the resolution change event, ..."
+Please correct the wording, "mallocing" is not a word, addr -> address. I t=
+end
+to do the same, but refrain from giving the code a personality, the vb2_buf=
+fer
+have no will. This is overall complicated way to simply say:
 
-> needed to change. But others hws are decoding at the same time and
+	Fix the size of the allocated mtk_jpeg_src_buf structure.
 
-needed -> needs,               hws -> cores ?
-
-It this specific to decoders or any type of cores ?
-
-> it can not be changed immediately, which results that the payload
-
-                                                    in the playload
-
-> size is not equal to the real buffer length of the hw's, which occurred
-
-size to not match the real buffer lenght for the ... hw ?
-
-> resolution changing and a warnning call trace will print.
-
-Can't parse. You can probably split that large sentence, and it needs to be
-rework.
-
-> So the setting of payload size must less than the real buffer length
-> to remove the warnning logs.
 >=20
-> Fixes: 0fa49df4222f ("media: mtk-jpegdec: support jpegdec multi-hardware"=
-)
+> Fixes: 5fb1c2361e56 ("mtk-jpegenc: add jpeg encode worker interface")
 >=20
 
-Don't add blank line in tags please.
+Drop the blank line.
 
 > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
 > ---
-> =C2=A0.../platform/mediatek/jpeg/mtk_jpeg_core.c=C2=A0=C2=A0=C2=A0 | 19 +=
-+++++++++++++-----
-> =C2=A01 file changed, 14 insertions(+), 5 deletions(-)
+> =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 2 +-
+> =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h | 2 +-
+> =C2=A02 files changed, 2 insertions(+), 2 deletions(-)
 >=20
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> index 6a7e01130f1c..0cf3dc5407e4 100644
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drive=
+rs/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 0cf3dc5407e4..bd0afc93d491 100644
 > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
 > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> @@ -709,6 +709,7 @@ static int mtk_jpeg_buf_prepare(struct vb2_buffer *vb=
-)
-> =C2=A0	struct mtk_jpeg_ctx *ctx =3D vb2_get_drv_priv(vb->vb2_queue);
-> =C2=A0	struct mtk_jpeg_q_data *q_data =3D NULL;
-> =C2=A0	struct v4l2_plane_pix_format plane_fmt =3D {};
-> +	unsigned long max_size;
-
-size_t ?
-
-> =C2=A0	int i;
+> @@ -1099,7 +1099,7 @@ static int mtk_jpeg_queue_init(void *priv, struct v=
+b2_queue *src_vq,
+> =C2=A0	dst_vq->type =3D V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+> =C2=A0	dst_vq->io_modes =3D VB2_DMABUF | VB2_MMAP;
+> =C2=A0	dst_vq->drv_priv =3D ctx;
+> -	dst_vq->buf_struct_size =3D sizeof(struct v4l2_m2m_buffer);
+> +	dst_vq->buf_struct_size =3D sizeof(struct mtk_jpeg_src_buf);
+> =C2=A0	dst_vq->ops =3D jpeg->variant->qops;
+> =C2=A0	dst_vq->mem_ops =3D &vb2_dma_contig_memops;
+> =C2=A0	dst_vq->timestamp_flags =3D V4L2_BUF_FLAG_TIMESTAMP_COPY;
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drive=
+rs/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> index 6be5cf30dea1..148fd41759b7 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> @@ -85,10 +85,10 @@ struct mtk_jpeg_variant {
+> =C2=A0};
 > =C2=A0
-> =C2=A0	q_data =3D mtk_jpeg_get_q_data(ctx, vb->vb2_queue->type);
-> @@ -717,12 +718,20 @@ static int mtk_jpeg_buf_prepare(struct vb2_buffer *=
-vb)
-> =C2=A0
-> =C2=A0	for (i =3D 0; i < q_data->fmt->colplanes; i++) {
-> =C2=A0		plane_fmt =3D q_data->pix_mp.plane_fmt[i];
-> +		max_size =3D plane_fmt.sizeimage;
-> +
-> =C2=A0		if (ctx->enable_exif &&
-> -		=C2=A0=C2=A0=C2=A0 q_data->fmt->fourcc =3D=3D V4L2_PIX_FMT_JPEG)
-> -			vb2_set_plane_payload(vb, i, plane_fmt.sizeimage +
-> -					=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 MTK_JPEG_MAX_EXIF_SIZE);
-> -		else
-> -			vb2_set_plane_payload(vb, i,=C2=A0 plane_fmt.sizeimage);
-> +			q_data->fmt->fourcc =3D=3D V4L2_PIX_FMT_JPEG) {
-> +			max_size +=3D MTK_JPEG_MAX_EXIF_SIZE;
-> +
-> +			vb2_set_plane_payload(vb, i,
-> +					=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 MIN(vb->planes[i].length,
-> +						=C2=A0 max_size));
+> =C2=A0struct mtk_jpeg_src_buf {
+> -	u32 frame_num;
+> =C2=A0	struct vb2_v4l2_buffer b;
+> =C2=A0	struct list_head list;
+> =C2=A0	u32 bs_size;
+> +	u32 frame_num;
 
-This is still not quite right. sizeimage, straight from s_fmt should alread=
-y
-account for the EXIF headers. If enable_exif is unknown at the moment, then=
- you
-should just always include that space. This way, the buffer length will onl=
-y be
-bigger if userspace asked for more at allocation time, and wil never be sma=
-ller
-then this.
-
-The point of sizeimage it to allow userspace allocate externally the right =
-size,
-this driver failed at that task it seems.
-
-Stepping back a little, I don't even understand why you set the payload siz=
-e
-like this here. Why isn't the true payload size written once, when the buff=
-er is
-encoded ? Are you using bytesused to tell the HW how much space can be writ=
-ten
-too ? Just give it the full space, wich is the allocated size (length).
+I like the change, but this shouldn't be an issue if you use container_of, =
+which
+is safer then a plain cast. Please review the code and make sure to use it.=
+ It
+may be confusing to include a cosmetic change in a fixes.
 
 Nicolas
 
-
-> +		} else {
-> +			vb2_set_plane_payload(vb, i,
-> +					=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 MIN(plane_fmt.sizeimage,
-> +						=C2=A0 vb->planes[i].length));
-> +		}
-> =C2=A0	}
+> =C2=A0	struct mtk_jpeg_dec_param dec_param;
 > =C2=A0
-> =C2=A0	return 0;
+> =C2=A0	struct mtk_jpeg_ctx *curr_ctx;
 
---=-DXnq4KBLzU3zHo31WhpX
+--=-mJv6RkBPu7sPfVj/Eoxm
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaUHMAAAKCRDZQZRRKWBy
-9LqrAQDXLmz8aa7r5neaZh7xka6kqpE8h8U1FhjrhrVnGKv4zAD+NUWeHnhgbVbv
-dhs9VoCxfbieBWTj3WDJe6eQSQhghQk=
-=UJW7
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaUHNpgAKCRDZQZRRKWBy
+9GauAQDSjSJy57f4INnhNyoTxgXltOjS3AO/O50mgH9AbrdfXQD+IMCZiJL8oDJg
+iZKHJQfhVDMZqx9S6kHFrKdYog6F1gw=
+=T/eA
 -----END PGP SIGNATURE-----
 
---=-DXnq4KBLzU3zHo31WhpX--
+--=-mJv6RkBPu7sPfVj/Eoxm--
 
