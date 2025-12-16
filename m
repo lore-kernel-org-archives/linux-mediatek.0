@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8933CD637D2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Dec 2025 21:40:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97658D637DA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Dec 2025 21:43:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O4AELFpU1THdwARc02Y1V5uIhLUDaIBDQWmAVMQD+KI=; b=plxmTMWp4g+XygVrebtvOT6CBg
-	xh12+2dfw6rKuy7Hp1pgpcFARpQKymoSNr0g8t/Nqaknn2kwy75wkfnfu0YaKoAFem8ixzruWibKx
-	1UlpDEIfS4xmlInvP3Q7E4EndAKVRgpRVEO1pxdPywT93rRhjT/ltj9I8GONSnW4fZjLguqmAXDHD
-	3kI269pA6dclen6KCV3faqMxiVzowmvrK/LgGnICu8uwEAUNIfzA4kFo+V0zVdK8CkeZ9lkl0rfQH
-	e6z+FTatUuAC0eu4cDT/2loEs0td8uk1CFDRVJry6va0PrxKMNKWqp1LZkIV7iNj/H1cIyXR4uv6R
-	QczuBC4w==;
+	bh=b1hVF7LpvbkkuKE9m+RYf2cnRUEh77RSxKXBsc+XQp8=; b=Tjkq7A4cyuS2ypPP4zBOCDeCMu
+	rhgHJtLYHEqa8Z//hKn7tbYapFtRbt3JQs768mpMf+kDb8l7H2H90nQV3iUdIRpAP/lnQm6DfBtaw
+	WdCIqygSw1u66YjIw7Kr31gFHlqI/Q6NJi0HAxo2TyAWcd/GwK75YccMAqeIslXr4xa+X2ATyn65+
+	OQyP1aorAMnp2Y5h6SsBCNGD23KQ8e9wgkMuiZVXNkRTkxtR30+FQH4Lp3Vgzxm2Q1Nvd5mOAIumb
+	wXfjzLWTvkYNPVKersKR9C6b9YxCPbOa/38FQO9gXj3/R66yBhr5EavsF+JYtcuChG07mIje2Xhd5
+	gh47qmgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVcmn-00000005qxO-1f2x;
-	Tue, 16 Dec 2025 21:40:49 +0000
-Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36])
+	id 1vVcpV-00000005r8c-27UJ;
+	Tue, 16 Dec 2025 21:43:37 +0000
+Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVcml-00000005qwh-2qBS
+	id 1vVcpS-00000005r7h-0h9b
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Dec 2025 21:40:48 +0000
-Received: by mail-qv1-xf36.google.com with SMTP id 6a1803df08f44-88a3d2f3299so29715686d6.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Dec 2025 13:40:47 -0800 (PST)
+	Tue, 16 Dec 2025 21:43:35 +0000
+Received: by mail-qk1-x736.google.com with SMTP id af79cd13be357-8b2627269d5so517560685a.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Dec 2025 13:43:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1765921246; x=1766526046; darn=lists.infradead.org;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1765921413; x=1766526213; darn=lists.infradead.org;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:to
          :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=O4AELFpU1THdwARc02Y1V5uIhLUDaIBDQWmAVMQD+KI=;
-        b=lreOUviPvD8KY5LXHg6hw+41EjZMK9g1q7+joBN4G66mXbcv6zoPB2AVLcLEM04fSE
-         FsS1z/titv9lyugINL7k4/t7AfFc4xktCcPs9LUhjw8NjL31Ltohn0yfq+9oeHR3TQCG
-         piZ68No8PwAucLxdVKFU3z6qsqLgzVwVYbz1g6DufZqYx3yHvqPxvwvzpOUbNHaObJk3
-         ZznBFDcHI0m2Vmycjb/72dU0zpGPdAxRHKZfGNI+EBCjkUqZTzK0+3tdhecSIwAWKmiC
-         5Pn8/Tx0K/DdlObCDVnxV0Bkcp/nqiqoVNUPQnUdTF2Ef4MEVxjyrqkaTt/WpAYjsIwY
-         I3SQ==
+        bh=b1hVF7LpvbkkuKE9m+RYf2cnRUEh77RSxKXBsc+XQp8=;
+        b=UeazhK3Sb5enjNWsggSPYBdHimyRjD9fj8NjBOwx1tTbdumGJ9nOqdRgA6Iu3AXDCo
+         uEl/LlZkv3z1I19KxJt1RaRmHaMGhC7DfYiqU4NQTSknVlEh93cD7IJYvOgbqYJN+P4a
+         vLar8AMy1/7IyyIWHIceAmSv0YEgbjNUnrqDaxLoKvZct5SCKQGcehn0LJICsavBlXdU
+         ZEyEZKOWD5aG4agk4K1hcgPl5jpyHPKVdLIwIsShw+/j+WkD2bdAeuUrbWtSkLJRIvLy
+         XVrfE+WRUFNtOfdHpcoQYxr6zQfHrZF7XMtEkin0ax58esl8KJnrDjPI+vpREKEs2Ztx
+         nokg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765921246; x=1766526046;
+        d=1e100.net; s=20230601; t=1765921413; x=1766526213;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:to
          :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=O4AELFpU1THdwARc02Y1V5uIhLUDaIBDQWmAVMQD+KI=;
-        b=HVpmkudtZ36kBxliV6qQy4+94JaU++MqzWfsF6MPu/+RlEWc5TiHZsA8ZrgNdTFQJE
-         qPJGSeAiDpLGURcBe4a/Vzm8ulitGYMlWU0D1riHqOstqYEN+J3nJgV6CHIu8DVtufZc
-         CBF38puhEgsfaW+OiZyXtFRVnXBV4zCxESSKVrofC4SS/nXfznd9Tx7OwTZoi9q0vCuj
-         2L6s9wV/iapfC2FD51ZP29lQg4kxWiHJdGSYgI/b+DQ+++0QviDljJx7eUnMRJ3acAps
-         5GX7kjzBKeqO0qursY1pLe/EOH2uIDAo2fJftRc7gcbXVhaJzAiQdKv7KlRVZYAmnGEt
-         CyjQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU/t9JmZ0buzq0gS9AFntBIWqynE0KEVHPs4uXp7bm6uKUc3u5pHvtWyCD/jR7BGRLVW+8Bzk//Rr9II5mecQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyaeawMILghFMpKoFtQgRN3kXpFv7GavUd8liYreK1uQEDU4IVa
-	+mfaaS1cUHkGbXBHuoWDHz31MuJpH+K4p0g0iJnVI3Xz0OnXCf3rVgl4Ui9qo6jmNUE=
-X-Gm-Gg: AY/fxX5aLMfwKK4d51ur552Q1Eyrp4idN4tWm1kwrlzsveAGmX7NtYWFtLxqtoa7CTN
-	bpcuq/E4x1jWtBvDhjkfy19cYpCBEo7om+aWr/thwuk2KKLPQfq3NaWjJTNQOOLQrrV6w90stPX
-	uPmPyv3Zf6s8e2h8x4PBSH/1pqHlRI0eEBEKfv9ovW2bm7CFs/QgJnX86zkFYQhUkpI1i87uHFX
-	BGvfgFsXaDkIw0E8Fydq/II0rUTA8Q/TkCYNtdvsaI9nO/6JwNw7j1EmlcU9QbnQsdpEa1j2kco
-	Oykff92CXCbfr5Sp9NiyfDrn7wG3EIQht8uLDUH9Ue20uUwDgSp/c0g+NXbwlBoMqu6m1WQ8gTF
-	nYiXo5fmovKLf+tIMrkMczbejM2OmIvrY1bA1/bYB5rJ5TUvKKTH+FtusmoyhFIPp3+o8rse9Oz
-	NN6obJGiC82CsDbgfm
-X-Google-Smtp-Source: AGHT+IEh3+aMTT+69SVk2qQBnQj0741wIei3uKMlKrQWP8MB9v7jQGSEyVTJ0cWhWW2Caga3ImCEOg==
-X-Received: by 2002:a0c:ed42:0:b0:888:8096:a09c with SMTP id 6a1803df08f44-8888096a4f6mr180400916d6.62.1765921246135;
-        Tue, 16 Dec 2025 13:40:46 -0800 (PST)
+        bh=b1hVF7LpvbkkuKE9m+RYf2cnRUEh77RSxKXBsc+XQp8=;
+        b=hOhR3Rm2ExKdN+h6U8l26a1CRPvdBgI2TL9soaWbd6xrpIn602CIBmxpPf6hSqh4GE
+         px0vZJr2T7fHvtm05U64qpaCVAyFrYvwCfvoviDOyxFqQxBnlLpoLu627kwA02YQH+nL
+         yOyN/xiA3cQXf9A5EzZvd7thg5rzFb8AlWiXWzfOV1iW3sxmf2XjFd5j0bSgiPweDz1+
+         0xjY+0nsbLgkqz+Ek9mJo2ha79zlFaXmXPWxRgF5eGZJ553eHaW+eQ9G9fazqmSCW+/Q
+         IgVq3dEgvIKGZnV/+hNPG8pqEenSmY2EB+gcDOaPxH9Ak1Vi/mPFNjx3bmlowmHwkKfr
+         ayvw==
+X-Forwarded-Encrypted: i=1; AJvYcCW+4FtVrU/O6TbNLc5thR/NskQh/JWmZrBzwTkOyeX+OLGVc2vOMAO37kPftu70IQH4gdQlh+Vx6iiYxko8Aw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywhkxq5qSSrSt2xCCdGsjuUqs/V+lqchWs7Ui52tsv4bblvcboI
+	TkBmMsi3WxKki+S/0jXLp8vZIe9doxD29gaNbLIzDSnGV8+QdfRMYOosfgOfn0oSjxA=
+X-Gm-Gg: AY/fxX67ssBkMZw/ky+505bUnLjvcNl9w5DxBtxWIYOWVemrfoVn/gXHF7hkWpwd/Li
+	WdzJlbH5VLadOqbok8gvBlX3nmPXJXS25GTCzG3MSUg5is2yV/Y5j6CjRJWoAN0phcwhhdw8dk5
+	xU+koPhZR49rtj+/pzsEkgIPS08mFuY1HFUp2zEYoQrl/fDTPDlqY8AbZQjFo/mba5+lLqLpkuU
+	w6szguuPAF3yFIoIUl9dZOd6DsRX6DuaJk93yi7F2UGSc4C27gRS0/XNBCOd32wpCt90X4HJglB
+	FJNri0AN1XReuf/d5ATUUca/c0Od4HLF8rk9AN7almPBW9NCAuqSgCNNXHFw7MT7AhZyQDKEH79
+	X6Mdsw2PRR5O431LkrtPZ3TdoMqxOryvmyTpZ8HeXOC9YEagxOykXZWXBAjorIRpz4OviRqCREp
+	RPH9JCrq+gKuKMrW3T
+X-Google-Smtp-Source: AGHT+IHCVAnsdhFi8VkMSKLmu7Ku3KLARd8TeNT/vK47QyRUaJG+LTfRi/IKTHyD/KvPom88nmKrrw==
+X-Received: by 2002:a05:620a:4112:b0:89f:2d97:98fd with SMTP id af79cd13be357-8bb399dc444mr2151909585a.2.1765921412932;
+        Tue, 16 Dec 2025 13:43:32 -0800 (PST)
 Received: from ?IPv6:2606:6d00:17:7b4b::c41? ([2606:6d00:17:7b4b::c41])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-88993b41845sm82007646d6.2.2025.12.16.13.40.45
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8be30d86a2dsm265456785a.15.2025.12.16.13.43.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Dec 2025 13:40:45 -0800 (PST)
-Message-ID: <41e00b0f4c667ff8e8a8f8b81f64fe1bbca7c001.camel@ndufresne.ca>
-Subject: Re: [PATCH v11 07/12] media: mediatek: jpeg: fix decoding
- resolution change operation
+        Tue, 16 Dec 2025 13:43:32 -0800 (PST)
+Message-ID: <a8376a71b87cc8944bf05be3bc45dc2e4fe2764e.camel@ndufresne.ca>
+Subject: Re: [PATCH v11 08/12] media: mediatek: jpeg: fix remove buffer
+ operation for multi-core
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
 To: Kyrie Wu <kyrie.wu@mediatek.com>, Hans Verkuil
  <hverkuil-cisco@xs4all.nl>,  Mauro Carvalho Chehab	 <mchehab@kernel.org>,
@@ -81,10 +81,10 @@ To: Kyrie Wu <kyrie.wu@mediatek.com>, Hans Verkuil
  <angelogioacchino.delregno@collabora.com>, linux-media@vger.kernel.org, 
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Tue, 16 Dec 2025 16:40:44 -0500
-In-Reply-To: <20251202094800.6140-8-kyrie.wu@mediatek.com>
+Date: Tue, 16 Dec 2025 16:43:31 -0500
+In-Reply-To: <20251202094800.6140-9-kyrie.wu@mediatek.com>
 References: <20251202094800.6140-1-kyrie.wu@mediatek.com>
-	 <20251202094800.6140-8-kyrie.wu@mediatek.com>
+	 <20251202094800.6140-9-kyrie.wu@mediatek.com>
 Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -99,12 +99,12 @@ Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-WiTrr4gl+5/mCAw/rMLC"
+	protocol="application/pgp-signature"; boundary="=-Si22i6HkJzRfHSqHC37A"
 User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251216_134047_721130_DE1FC658 
-X-CRM114-Status: GOOD (  20.07  )
+X-CRM114-CacheID: sfid-20251216_134334_207976_FD981CAD 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,7 +120,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---=-WiTrr4gl+5/mCAw/rMLC
+--=-Si22i6HkJzRfHSqHC37A
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -128,86 +128,94 @@ Hi,
 
 Le mardi 02 d=C3=A9cembre 2025 =C3=A0 17:47 +0800, Kyrie Wu a =C3=A9crit=C2=
 =A0:
-> 1.add a judgement for src buffer to avoid kernel crash
-> in the stop streaming function;
-> 2.When a resolution changing occurs, it needs to set new
-> resolution parameter immediately and then report this event.
-> Otherwise, if the original software process is maintained,
-> the resolution change event is reported firstly, the CPU is
-> dispatched to the app to process the event, and the driver
-> does not set a new resolution, which will cause parameter errors.
-> 3.After a resolution change occurred, decoding should not continue,
-> needs to wait until new buffers are ready and the state machine
-> changed.
+> move remove buffer code to spinlock protect area for multi-core
 
-I mention this in other patchset, very often, 3 bullets means 3 distinct
-changes. Don't use bullets. Reflow this text, rework this text, there is ma=
-ny
-syntax error here.
+Perhaps:
+
+Move calls to v4l2_m2m_src/dst_buf_remove() outside of the spinlock protect=
+ed
+scope.
+
+And perhaps extend in why this is needed. Deadlock, bad lock ordering?
 
 >=20
-> Fixes: dedc21500334 ("media: mtk-jpegdec: add jpeg decode worker interfac=
-e")
+> Fixes: 86379bd9d399 ("media: mtk-jpeg: Fixes jpeg enc&dec worker sw flow"=
+)
 >=20
+
+No blank.
+
 > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-> ---
-> =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 9 +++++++--
-> =C2=A01 file changed, 7 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> index 5ffaee4dcd19..9233bbfe2d97 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> @@ -887,7 +887,8 @@ static void mtk_jpeg_dec_stop_streaming(struct vb2_qu=
-eue
-> *q)
-> =C2=A0
-> =C2=A0		vb =3D v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-> =C2=A0		src_buf =3D mtk_jpeg_vb2_to_srcbuf(&vb->vb2_buf);
-> -		mtk_jpeg_set_queue_data(ctx, &src_buf->dec_param);
-> +		if (!IS_ERR_OR_NULL(src_buf))
-> +			mtk_jpeg_set_queue_data(ctx, &src_buf->dec_param);
 
-The lack of vb2_wait_for_all_buffers() might explains this better, you migh=
-t not
-need to do random null checks like this.
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
 Nicolas
 
-> =C2=A0		ctx->state =3D MTK_JPEG_RUNNING;
-> =C2=A0	} else if (V4L2_TYPE_IS_OUTPUT(q->type)) {
-> =C2=A0		ctx->state =3D MTK_JPEG_INIT;
-> @@ -1749,11 +1750,15 @@ static void mtk_jpegdec_worker(struct work_struct
-> *work)
-> =C2=A0
-> =C2=A0	if (mtk_jpeg_check_resolution_change(ctx,
-> =C2=A0					=C2=A0=C2=A0=C2=A0=C2=A0 &jpeg_src_buf->dec_param)) {
-> -		mtk_jpeg_queue_src_chg_event(ctx);
-> +		mtk_jpeg_set_queue_data(ctx, &jpeg_src_buf->dec_param);
-> =C2=A0		ctx->state =3D MTK_JPEG_SOURCE_CHANGE;
-> +		mtk_jpeg_queue_src_chg_event(ctx);
-> =C2=A0		goto getbuf_fail;
+> ---
+> =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 10 ++++-----=
+-
+> =C2=A01 file changed, 4 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 9233bbfe2d97..da1ca494ed4b 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1665,9 +1665,6 @@ static void mtk_jpegenc_worker(struct work_struct *=
+work)
+> =C2=A0		goto enc_end;
 > =C2=A0	}
 > =C2=A0
-> +	if (ctx->state =3D=3D MTK_JPEG_SOURCE_CHANGE)
-> +		goto getbuf_fail;
-> +
-> =C2=A0	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
-> =C2=A0	ret =3D pm_runtime_resume_and_get(comp_jpeg[hw_id]->dev);
-> =C2=A0	if (ret < 0) {
+> -	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> -	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> -
+> =C2=A0	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
+> =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 msecs_to_jiffies(MTK_JPEG_HW_TIME=
+OUT_MSEC));
+> =C2=A0
+> @@ -1685,6 +1682,8 @@ static void mtk_jpegenc_worker(struct work_struct *=
+work)
+> =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0 &src_buf->vb2_buf);
+> =C2=A0	mtk_jpeg_set_enc_params(ctx, comp_jpeg[hw_id]->reg_base);
+> =C2=A0	mtk_jpeg_enc_start(comp_jpeg[hw_id]->reg_base);
+> +	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> +	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> =C2=A0	jpeg_buf_queue_inc(ctx);
+> =C2=A0	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+> =C2=A0	spin_unlock_irqrestore(&comp_jpeg[hw_id]->hw_lock, flags);
+> @@ -1767,9 +1766,6 @@ static void mtk_jpegdec_worker(struct work_struct *=
+work)
+> =C2=A0		goto dec_end;
+> =C2=A0	}
+> =C2=A0
+> -	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> -	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> -
+> =C2=A0	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
+> =C2=A0	if (mtk_jpeg_set_dec_dst(ctx,
+> =C2=A0				 &jpeg_src_buf->dec_param,
+> @@ -1794,6 +1790,8 @@ static void mtk_jpegdec_worker(struct work_struct *=
+work)
+> =C2=A0				jpeg_src_buf->bs_size,
+> =C2=A0				&bs,
+> =C2=A0				&fb);
+> +	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+> +	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+> =C2=A0	mtk_jpeg_dec_start(comp_jpeg[hw_id]->reg_base);
+> =C2=A0	jpeg_buf_queue_inc(ctx);
+> =C2=A0	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
 
---=-WiTrr4gl+5/mCAw/rMLC
+--=-Si22i6HkJzRfHSqHC37A
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaUHR3AAKCRDZQZRRKWBy
-9CwsAQCyuxoAqjtYHse6WiWw9r1vAIqN8RsAZzvbh5RFyVgTgQD/XjRgo9FDnGk4
-3bziswMEpYDICcpXmalCD6/v7owEUQs=
-=aXJ6
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaUHSgwAKCRDZQZRRKWBy
+9JcnAP9X9/KPI6GsErRhlqFgw3okba30C65KuHLjIZqWoee34gD/fbQFW9sQBK3S
+ex/e1Ql3MM0wQLFqMGzHvi8lUaErCgA=
+=L24+
 -----END PGP SIGNATURE-----
 
---=-WiTrr4gl+5/mCAw/rMLC--
+--=-Si22i6HkJzRfHSqHC37A--
 
