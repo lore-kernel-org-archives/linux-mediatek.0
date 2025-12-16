@@ -4,107 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEDC1D5B87C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Dec 2025 07:16:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 276E4D5B161
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Dec 2025 07:23:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8s03Ss4uwx1XNPxyG/ytEh0XUUQbU9tRKnR1r30d4tY=; b=oU1xEcetzTjjDdAJCjUlcygRWB
-	7BO0BKW3y3A7Kqx1pOOiq7H1b1q5gxs1i5bkBIZSpw99RRw4OCR0pO488GtCCafXNFNh93XlzZ/ww
-	RN4AXvcQ2/OAghU3GQs1OO7UE1tSliLojXJTQLqeyDmuzElCNOvCMZf3KgT/p7TYtyH/3LKe0lCQo
-	IL8QBph6BQHT2lZB3AqwrLZEBWBr8UQx1LZB+bVSZiDgO7q5yfmbCGMrNiYihEiM2QzxTIeC9dN39
-	1IBTHGpsn1YNcCAwct0em7UmgUSbd/ib+4n6c6f1xWzDgb4TLYev9WGMMLEkegWXmgReBgSqVvOiM
-	HT27R6cg==;
+	bh=qQSdcWZiGnLdxDJNWxTQS2nftXWRg/xYrou3KzxDI4o=; b=DRdkHYuqz6GtGn0w62IFvDXMF8
+	yTNU2ApQ3nJKNonMigWovQNXf0k4/8dGaTZzm2Gt/U0RUqMDJt9QoEajnMg+zNUV0YkNe4u+sCIxF
+	Fqm3LFXROUKSqi1NJT5jyUsDk+ZYPulYfrkI5t1KZSFYc8m7HKDCnQPwaBvQP4ebyn+tT13bYo74G
+	0rKlfvHVKKhLxen+fgJtKeq+E/RWbKxwcONBrRecoIzeR0FgHd7MASfH9yo59PhGbBOE9m2z0RDS1
+	/fMXAFka5qUeEaRseMF0MyZ7jzMT3Q3yVrAMf8xSgbsQ7JWSLT1RtlBSkupCM/b/GFL1dRorqxqKF
+	tDwYpN4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVPI4-00000004ptq-0pOk;
-	Tue, 16 Dec 2025 07:16:12 +0000
+	id 1vVPOe-00000004qJ5-0hvT;
+	Tue, 16 Dec 2025 07:23:00 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVPI1-00000004ptX-1z2r
+	id 1vVPOb-00000004qIa-3pQd
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Dec 2025 07:16:11 +0000
+	Tue, 16 Dec 2025 07:22:59 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3F9564352C;
-	Tue, 16 Dec 2025 07:16:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55A66C4CEF1;
-	Tue, 16 Dec 2025 07:16:06 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5130F42E2C;
+	Tue, 16 Dec 2025 07:22:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F30FC113D0;
+	Tue, 16 Dec 2025 07:22:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1765869368;
-	bh=9X0orjwNvC5F4gj3bdD/fVzaHId1POg+B+aH1bygVZQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QCb235NRUOTLRjK1AztOH3hri/KL5ZVtBYXd/1f0Ko//fjy3y2htA+aanCdMtfS+x
-	 /NHnlOowY2ri/PjrebSGPsGmhDV3BpbFco5588w6SrVNQ9axyfWU55qFP6oNwbfwEp
-	 grCqbQBlfqgDv7+o7z8tO031yrf4pL/aBoUovP3rB9SmJAoaWUD27s4A+kLPHUk2bh
-	 nSZnPFBm/duNuIF9ACWotdBvQBBh2IweBau3Ge+2+EqNSO7t6ys5EPZ7QTFORKEhKg
-	 JesdteIJm/fqAKo51nQJLvGKs2rAeMoIoS14TG0v25476eZLBXUq92vnmBBxtRNTPK
-	 fdj3TEBmkUhwQ==
-Message-ID: <7eeb7209-bd73-45e1-a7b7-75b02e9cfde2@kernel.org>
-Date: Tue, 16 Dec 2025 08:16:04 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] memory: mtk-smi: fix device leaks on common probe
-To: Johan Hovold <johan@kernel.org>, Yong Wu <yong.wu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- stable@vger.kernel.org, Miaoqian Lin <linmq006@gmail.com>
-References: <20251121164624.13685-1-johan@kernel.org>
- <20251121164624.13685-2-johan@kernel.org>
+	s=k20201202; t=1765869777;
+	bh=vgei6H8uXbsw7gSUS2+78ZQHorMPpOcwSHomCZQqeB8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=DYjlo2VPY7yPJNpgEe1T/yrVtWR+yF/jF52rm/cGv+Nl2QQBNy8z/YHlA08uld6TX
+	 rF8toFpSrybVZjiIex1UCxqszryOPQTnkKW7K4etJZbupFawAcKnoku5Hdr0FyVAuQ
+	 /xKHiRnfBm3GmL2zb5v5lLsjhmNBP31Ycm75AuHABkEefQL/8EmmwRc5KlssNsVgfH
+	 dvuYFK7+GfgAkRx/zsQ9+6Qn8ed/ATb7kLrVg8TsvV1mNgwJHzGeMmPhpybf3nXQYF
+	 Ceq4nYbKsTS0U7NXwrpajsWgfMXtZUfQQkN/wFTHNjklVowwuzcLmUvTO+XVaX1oht
+	 4qGkM6K6tgrpw==
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
- QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
- +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
- ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
- 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
- hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
- tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
- 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
- naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
- hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
- whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
- qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
- RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
- Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
- H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
- dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
- AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
- jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
- zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
- XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20251121164624.13685-2-johan@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: Yong Wu <yong.wu@mediatek.com>,
+	Johan Hovold <johan@kernel.org>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/3] memory: mtk-smi: fix device leaks on probe
+Date: Tue, 16 Dec 2025 08:22:50 +0100
+Message-ID: <176586971950.24797.1201839384601647110.b4-ty@kernel.org>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251121164624.13685-1-johan@kernel.org>
+References: <20251121164624.13685-1-johan@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+X-Developer-Signature: v=1; a=openpgp-sha256; l=903; i=krzk@kernel.org; h=from:subject:message-id; bh=lvMdiNELiS4H8mOFGrWoPrGgninHMZUuM4PBvYPE4yA=; b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpQQjLf9w9RlwFmFOV52yUKZIE6MnHl3iilzJVu pdS7zVuarWJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaUEIywAKCRDBN2bmhouD 15KIEACY9TmyXFzGZf0B/Qz+oQTdVfqx52ggZ4UJtNmk45OBFdVFBZ7msNGnttyEUMAhnbB8dC9 Y9r/PNpgWQqSc+0XgbxNXhXgx1Hlcl67aRmVXeUaaMZmvPx5vob0HNvz02epP4XU1tOuWLpeCVr MQMJuGP1cApF4qjlJBUlkKKH0m9UqH/M0ol7DawHd4d8qV5eMXxCAP55CF4llLjOigWIgYIWi4J 0fPbwaNB8tfr9GWa44toL7qnuHMCEcbtL9Hlb5YdviPKLfYqN0TPeMDrfkW9OHQICg/zWqrhPm9 j7QSghIqV7eV7pCpZr12qZZQiz6xGSDS4LDVNQkfbTTm1Lg5b/Veye6c2mJmT7hNKJN2G4b3/fb irHZgf9kZYwKQ26gJ0FjBwppA/7YypdFYx7afrvvd7mHYvpGTk8m2tzQnRvRAlusLsqFJrdjHya HEsbh1D/oL5gNwWjmF9vC975eS2sXBSuBzJ8vEv/EGZK0isPXyPcH94lmcambv9N0X2wjYaOJ6I 1vePaKNwgIGGPdqEhFWQ0ChJ7e6BIVOTrHBz20kfrl/yKvy7e4hTuDtowjohN80TvTV0k5m41QH 8li8zBVjzAd+n28f9ywI10zNcbVQWNalixN1mf+cwTV5ww9m31hRxf1tUbOrfLR7ZzkWIg4GSky jqmOucVLxfz0O9
+ Q==
+X-Developer-Key: i=krzk@kernel.org; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251215_231609_566020_D0E9E361 
-X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-CacheID: sfid-20251215_232257_971714_CE3438AE 
+X-CRM114-Status: UNSURE (   8.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -120,27 +80,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 21/11/2025 17:46, Johan Hovold wrote:
+
+On Fri, 21 Nov 2025 17:46:21 +0100, Johan Hovold wrote:
 > Make sure to drop the reference taken when looking up the SMI device
-> during common probe on late probe failure (e.g. probe deferral) and on
-> driver unbind.
+> during probe on late probe failure (e.g. probe deferral) and on driver
+> unbind.
 > 
-> Fixes: 47404757702e ("memory: mtk-smi: Add device link for smi-sub-common")
-> Fixes: 038ae37c510f ("memory: mtk-smi: add missing put_device() call in mtk_smi_device_link_common")
-> Cc: stable@vger.kernel.org	# 5.16: 038ae37c510f
-> Cc: Yong Wu <yong.wu@mediatek.com>
-> Cc: Miaoqian Lin <linmq006@gmail.com>
-> Signed-off-by: Johan Hovold <johan@kernel.org>
+> Included is also a related cleanup.
+> 
+> Johan
+> 
+> [...]
 
-Thanks Johan.
+I fixed up stable-cc syntax - missing final Cc, because only prerequisite was
+mentioned.
 
-Side note:
-Three weeks and no reviews from Mediatek developers (not necessarily SoC
-maintainers, I know your queue is long). So please remember Mediatek: in
-case you ever wonder why your patches are waiting on the list for very
-long, here is your answer.
+Applied, thanks!
 
+[1/3] memory: mtk-smi: fix device leaks on common probe
+      https://git.kernel.org/krzk/linux-mem-ctrl/c/6cfa038bddd710f544076ea2ef7792fc82fbedd6
+[2/3] memory: mtk-smi: fix device leak on larb probe
+      https://git.kernel.org/krzk/linux-mem-ctrl/c/9dae65913b32d05dbc8ff4b8a6bf04a0e49a8eb6
+[3/3] memory: mtk-smi: clean up device link creation
+      https://git.kernel.org/krzk/linux-mem-ctrl/c/78da7027e2a99edea0d7e97b25d75be4698a8728
 
 Best regards,
-Krzysztof
+-- 
+Krzysztof Kozlowski <krzk@kernel.org>
 
