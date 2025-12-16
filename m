@@ -4,106 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 132B5D637DC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Dec 2025 21:49:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B788D64060
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Dec 2025 22:58:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bdCldys7nQSDy6vXu7JlMpmSPr3k8VWJix7kbyw58m8=; b=TZ/xSqt9qa/HwLBhmnRd5IgnI4
-	zMbLLdwUS0P1QwWgeX2y4fQ/Q1/OvJAppQyvDWvUS31hdoKQPiipeLH85zYqoN++msTy1IYHF9FnU
-	27jDzmcWpsrnnrCy72U9ehRdIm1lSG7agRbKxfrvIAAzHviwt32Gnpa2mxPgWXx8XnhWg+7LCese0
-	BmW8JPGuUwhXnMsF/zGFcOsnulbPkIX3mbYnaFyKRAPQhVP0RsmK9xIxSK4+2bAB+v+oIeUppKLyH
-	curAXqWp12qjmqtz5Leh03abCaWqwYnkBmDOpuJg0EmHm8Mkz7sndmx3BjzW9gsDatVlPALHqkf6M
-	fkTvqP8w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ooOYMKF+H2KmYqWB5Ili55QDSI+uZ+QcC5rU+1Qm5GE=; b=DsV3Pc2uZ83n9Ww8zadVfTvG60
+	rjeVrpHYUK6e2NCHRMmdZ4+4I0y4+DKkWUDWiK3ZB7+JZDivdK5eX0JvDnFalo2kgkozjELvi6pVj
+	kGrb4rNIzsTuJt/LTyt3crJSCxHLrlbRisPw1EH1YgAGsSzPQ6uSu82YMCU1x2Hh6h9HOed7cImxS
+	DxJzL072Mi1o4gqRmvSOzGPuVfF/5oHHz6ttDPIwLRLxAkke5+aDoaWIDThH5W+/UkwXPXLZAn/7f
+	btA0x2X6yAsknYcAASmPwkYdBavTm9P811yCMRwtYpF5kDnGlX6aQJ9gAqqHA+CVuMKXk8PySoQPd
+	Djgz+jWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVcv3-00000005rYx-3eS0;
-	Tue, 16 Dec 2025 21:49:21 +0000
-Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
+	id 1vVdzg-00000005vB6-1zEi;
+	Tue, 16 Dec 2025 22:58:12 +0000
+Received: from mail-oi1-x232.google.com ([2607:f8b0:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVcux-00000005rXt-2JXI
+	id 1vVdzd-00000005vAN-0sPn
 	for linux-mediatek@lists.infradead.org;
-	Tue, 16 Dec 2025 21:49:20 +0000
-Received: by mail-qv1-xf29.google.com with SMTP id 6a1803df08f44-88a367a1dbbso35665996d6.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 16 Dec 2025 13:49:15 -0800 (PST)
+	Tue, 16 Dec 2025 22:58:11 +0000
+Received: by mail-oi1-x232.google.com with SMTP id 5614622812f47-45391956bfcso4200850b6e.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 16 Dec 2025 14:58:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1765921754; x=1766526554; darn=lists.infradead.org;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:to
-         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=bdCldys7nQSDy6vXu7JlMpmSPr3k8VWJix7kbyw58m8=;
-        b=pE9i4ggL9W7aJUfR6S9Zhew4CYHemH2EYoLi4FWLwcZ1T6CeEwoUBXTZwc8M97Ihvc
-         OBOnKHyQRbXr7fViKzI7NOwmcqota0OhDaoKelnigTFARjL0WYxbBEBErWKQMVw/wWqa
-         VZ5yTd9n9mYp5Ulp5HOCTQRguoplIzSttk2yA25ShfYHar91AC8KBsG6JJDJKMyyiH3f
-         1qXydzc6p8+5Dk2H2uzTVw/zcSQltAvx46qabq5mjHY9OJeoHHcnz0rzk4OYgRJzC7SO
-         M6braiUCSzIALxUziGCNtFihOJu/O/WHEQwIeLemXWGqcd9Gi9xca7IAbJWyY/KME4wE
-         wvVA==
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1765925887; x=1766530687; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ooOYMKF+H2KmYqWB5Ili55QDSI+uZ+QcC5rU+1Qm5GE=;
+        b=1u21u3cyVxS4qms3CBT07jenk+J7FuBxWg9EG+kKvCx0ps2VEfQsIu60uBpHr4uQyd
+         EtzG1fNMohh2qUvNYmqkiGhDwrIobVQXkwNX2VWcYzeEGJlgFZaH/eJIInMIRwGkDtgm
+         +b3R1pzf3ppYrUnq4FBfY+5wFC1QITHvmHuqRkCKigHrSSV70rJtTithKitxx7CjmCb0
+         7/bzoeZJ1Vu/R/72+56NxY0UQofvxjzwmeDYkynawTMTuP6sRd4A7PZtZOQdCwHU4lUn
+         58KbP39Aj8fXMnqGRHZuQEMCmbixAkAdjGJdWp1Bk1yJux7G8mRs0fi7luMOFKo7ol2r
+         8zpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765921754; x=1766526554;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:to
-         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=bdCldys7nQSDy6vXu7JlMpmSPr3k8VWJix7kbyw58m8=;
-        b=uqe2ynUHlvetPUVZaOwVEIktUP96Czbrx0nIKlr5OreX2YnfBnL1wb4tgkjCG6BAAY
-         63Ks4m8DL9wp1QpJrG66JQBe+zR0ObeKG5PRDwQtoEH5JCYIauPpOyxfCQdQewBKScEf
-         fxKCiqEpTwMadNN5rj3WrwFtVoI91Icn3tTzYDI02/Pl5TpU9an4sl6jNX8KWYo44Ido
-         ws5jAe1bmqMAAvXHw0AOLCOWmT2YxHe9ogn/vnGRRjq81FgtJUpopbOXezmtPk6CY829
-         xOpWhG7xuAQIPnvpljY/KErr+QaR1RJNvvj94WCUd5SUAYHLFRYeif5WBI7D4eUEUv6c
-         m1ag==
-X-Forwarded-Encrypted: i=1; AJvYcCVl6HM3+FHSCVZtwwR9U+d2/650bxFL/QsVqMWvdg1jaSsDjoo4txj0lTFbtbZ0X5iJNWQtZjS23gC74mVdvQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxl+F4BwfrwQ3p00TvFKVIQzq6muw05TForS/sSHQriKsDEaZmn
-	l4BnRJiNqs0LFkP3ycMc8K4CSPuIRG1xXS0yO5GN8KuqmfMSzPmEyVCZEgTcHQlItzU=
-X-Gm-Gg: AY/fxX5qxiYT3BAFoRirpuOSVQ9zUJeQ9wMVjYoIIKWACUsZFpa7XKzt3iwQ6RDe6Q0
-	/UKsCb69qb2Hp/tX3LyEipr0MayQzULrGtIZ2bXU762tulUCIJK73l3J8ZbZOTB25k/w40xu1QW
-	syAC6kkVlHpzf8t7OFrOkYqD4pBAc36gEhSqZpeVnQ+cFNx1qLVxt32/SLmd0BtJWs3etT+WOXO
-	puEg/rZ3Mhz4jMl0oouxJJz9y0FusjH9SODQlBL3fDageenxWTLyFak1C5rdwnXfxa8mRKzEJG/
-	3zAy95LOgQkRnhArkcgzDrrueAawbZAxfQCEdq4H0R2xJIP4bqdBVSR2Q6n8zYhO5LGbNbXP3ln
-	fls6dFZomi6OQLZ6L7lRZmiof99iwKK/ccsQPLfj0SzXwxBEshahT3eQQLf4BKRztfWWg+TI/tL
-	psuOUWjtzsQvGYethI
-X-Google-Smtp-Source: AGHT+IH+V/Mr5+CqGLcI3EzYLOmPSV6tSlboBRvR5DbANVmIdH9NhazPVg8f1thYKYgGBLLqtCy2dA==
-X-Received: by 2002:a05:622a:1b88:b0:4ec:f073:4239 with SMTP id d75a77b69052e-4f1d04787c8mr198004211cf.6.1765921754277;
-        Tue, 16 Dec 2025 13:49:14 -0800 (PST)
-Received: from ?IPv6:2606:6d00:17:7b4b::c41? ([2606:6d00:17:7b4b::c41])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4f345c7dfbfsm21515751cf.31.2025.12.16.13.49.13
+        d=1e100.net; s=20230601; t=1765925887; x=1766530687;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ooOYMKF+H2KmYqWB5Ili55QDSI+uZ+QcC5rU+1Qm5GE=;
+        b=xMbX52n3YBVypADuHgO+COVdu0nLJXFjzCD3PlDXs0fMZklqxBTeLT2iRdBLDtpN8E
+         5K6mvjGmAIKkNlRWvuFBn89XlTbbPFyGy6Hnc+AwbR7dFF1WPNrfl5svcpeBBl3NPxsN
+         LJUKuxswQ4Ik7VzdleH343bwPU47Lvu6FSXQe78W4Y1n3CAPzN7iogZrpbfD41oEJjZ/
+         bphVTC2E+6tpPSl38flnKOsQKy8VuGvgFrQ5ARFQzcQqgNYoEaQBRsWlWB5M/qwQM67B
+         +gsj4dhtg9voCIY0+pjkAFKXFKW3Chxv3e1/SCKc7zA8xFqcT2LNUCLs7DhIX4B0TW1g
+         pGGg==
+X-Forwarded-Encrypted: i=1; AJvYcCXK8z2sDfNtuf0ZnkPJGJTrnjdEUeY5q83w0uSvA2oCEZMconfIUnMz7M5oAR8p9wTymiVtM+J9iixeA+lHaw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxq5i0H+ww2Eqc1PDiSFf8AL44VF4JbwsdK/B3bmEhObN9Yhlvw
+	o/G04Y1+HnK2Fx42DkLNFZI19zQiD7peLTu7DzGgtUvspO0FnQGdHxyBQKjoSeGJAbU=
+X-Gm-Gg: AY/fxX6H2pBbFr2auco3HiCMi5/9btY7xL84OmWFk18Uk6XLEsXeZLQz7OHc195oeXV
+	nxBUP1VOh6RHa2lvZvNLqWfgl31Ladvb5KxlpDwuBPk4Vy4TN+vpYfDt8HWm6ODJ5YAMTgKJhtU
+	wGwXXbPAI1vpUGew2UvlMqlVoRs4cvzEQUecUUCKnzRVsSMkvRNggFNcM3h4HgR3JPn39sBqbDX
+	alyXr22RBNvFJYvHeZfoDi9Abayyt/t4EKkGQR/PsXZb5+Va6UDRSPZKtyaVTvKyf3rVThjm+M8
+	1zsbKS/771v9Qcqn3oMxVV2ATEg3t/dwnLiSNpn4wf/vSbp82ENpSN8FWyBj8D7CQVPs1WD/Igh
+	V9vkl2lhEaDDeBh99f9LphYhMBcc1ZiWwiVAwxszaLO1PmRC5Mj+vJUilKfPLvBnVqmQ26/0F5x
+	8jGCt3C3bjikc2zw==
+X-Google-Smtp-Source: AGHT+IGvIl3sZdeYyABXtNkH9gms15ySp/W+3mzb7VAalGLpvvkhDucsn104GfSkCZW78M7CnCL4DA==
+X-Received: by 2002:a05:6808:4a54:10b0:455:eba2:9ede with SMTP id 5614622812f47-455eba2a67emr991795b6e.23.1765925887473;
+        Tue, 16 Dec 2025 14:58:07 -0800 (PST)
+Received: from [127.0.1.1] ([2600:8803:e7e4:500:11a:676d:852f:9349])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-45598cf191dsm8806668b6e.10.2025.12.16.14.58.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Dec 2025 13:49:13 -0800 (PST)
-Message-ID: <3dd2c364f84725a68823f13a9f2b1f0499abaed5.camel@ndufresne.ca>
-Subject: Re: [PATCH v11 11/12] media: mediatek: jpeg: add jpeg compatible
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Kyrie Wu <kyrie.wu@mediatek.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>,  Mauro Carvalho Chehab	 <mchehab@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski	 <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger	
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, linux-media@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Tue, 16 Dec 2025 16:49:12 -0500
-In-Reply-To: <20251202094800.6140-12-kyrie.wu@mediatek.com>
-References: <20251202094800.6140-1-kyrie.wu@mediatek.com>
-	 <20251202094800.6140-12-kyrie.wu@mediatek.com>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-YBjB4a/FKYc454GerwhG"
-User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
+        Tue, 16 Dec 2025 14:58:06 -0800 (PST)
+From: David Lechner <dlechner@baylibre.com>
+Date: Tue, 16 Dec 2025 16:57:53 -0600
+Subject: [PATCH] arm64: dts: mediatek: mt8365: fix infracfg_nao node
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251216-mtk-fix-infracfg_nao-compatibile-v1-1-d339b151ac81@baylibre.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2NQQqDMBAAvyJ77oKJxqJfKSKbdKNLNZFESkH8u
+ 6HHgWHmhMxJOMNQnZD4K1liKKAeFbiFwswo78Kga22UVh1uxwe9/FCCT+T8PAWK6OK20yFWVkZ
+ Lpm2eXe+N7aFk9sTF/y9e43XdpmBIOnIAAAA=
+X-Change-ID: 20251216-mtk-fix-infracfg_nao-compatibile-ba543769f5b9
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Amjad Ouled-Ameur <aouledameur@baylibre.com>, 
+ Alexandre Mergnat <amergnat@baylibre.com>, 
+ =?utf-8?q?Bernhard_Rosenkr=C3=A4nzer?= <bero@baylibre.com>
+Cc: Fabien Parent <fparent@baylibre.com>, 
+ Julien Stephan <jstephan@baylibre.com>, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, David Lechner <dlechner@baylibre.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1233; i=dlechner@baylibre.com;
+ h=from:subject:message-id; bh=3b4ENHu/9j5dLIMx7Lb7rEQYQt3l9o0AQcUszqUwcQQ=;
+ b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBpQeP20JBd34+C400NYEMIY1MHpeh3e2Evyq63J
+ dFtNazIPwqJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaUHj9gAKCRDCzCAB/wGP
+ wEWKCACNVAHidpy4BANZQcTr0S0Ws/oeGNHfWiH//n3PQZYZz7A0JeiGQEkUGjzS7EblzCkq/tg
+ 2RXNOhWTEb0b6E403ut78HghMj33dyOV+7yZU/gRKOu9Uus6VHMYkhgGV6aBNSivgdiaxF99SXW
+ uwznzsHOAGISWnQ/zFuQPPvGaD1EGUY+TM9g2S0Kh3IQ6CBHg2K6n4ANRy9BQ2Yc93XAPyaET8U
+ WqC89plhJkAlMlNaHSRhbHj2nPwuop8+6AxJoauJoqmHrXgvpKOd5CGq5fzJUEo9LJMedkz4x1l
+ izZLPPFKx8EaI0Ey31Uo94B7iiygFnM47riGfvju5inPBm5m
+X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
+ fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251216_134917_939424_62682756 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20251216_145809_534061_25207808 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,134 +120,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Use correct compatible string for the infracfg_nao: node and remove
+the #clock-cells property.
 
---=-YBjB4a/FKYc454GerwhG
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Likely this was copied from the similar infracfg: node. However,
+infracfg_nao: is just a syscon node with it's own register definitions
+and is not a clock provider.
 
-Le mardi 02 d=C3=A9cembre 2025 =C3=A0 17:47 +0800, Kyrie Wu a =C3=A9crit=C2=
-=A0:
-> Add jpeg dec and enc compatible for mt8196
->=20
-> Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Fixes: 6ff945376556 ("arm64: dts: mediatek: Initial mt8365-evk support")
+Signed-off-by: David Lechner <dlechner@baylibre.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8365.dtsi | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+index a5ca3cda6ef3..4116f96c81a9 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
+@@ -537,9 +537,8 @@ iommu: iommu@10205000 {
+ 		};
+ 
+ 		infracfg_nao: infracfg@1020e000 {
+-			compatible = "mediatek,mt8365-infracfg", "syscon";
++			compatible = "mediatek,mt8365-infracfg-nao", "syscon";
+ 			reg = <0 0x1020e000 0 0x1000>;
+-			#clock-cells = <1>;
+ 		};
+ 
+ 		rng: rng@1020f000 {
 
-> ---
-> =C2=A0.../platform/mediatek/jpeg/mtk_jpeg_core.c=C2=A0=C2=A0=C2=A0 | 34 +=
-++++++++++++++++++
-> =C2=A0.../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c=C2=A0 |=C2=A0 3 ++
-> =C2=A0.../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c=C2=A0 |=C2=A0 3 ++
-> =C2=A03 files changed, 40 insertions(+)
->=20
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> index da1ca494ed4b..10a588b92e76 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> @@ -1932,6 +1932,19 @@ static struct mtk_jpeg_variant mtk8195_jpegenc_drv=
-data
-> =3D {
-> =C2=A0	.jpeg_worker =3D mtk_jpegenc_worker,
-> =C2=A0};
-> =C2=A0
-> +static struct mtk_jpeg_variant mtk8196_jpegenc_drvdata =3D {
-> +	.formats =3D mtk_jpeg_enc_formats,
-> +	.num_formats =3D MTK_JPEG_ENC_NUM_FORMATS,
-> +	.qops =3D &mtk_jpeg_enc_qops,
-> +	.m2m_ops =3D &mtk_jpeg_multicore_enc_m2m_ops,
-> +	.dev_name =3D "mtk-jpeg-enc",
-> +	.ioctl_ops =3D &mtk_jpeg_enc_ioctl_ops,
-> +	.out_q_default_fourcc =3D V4L2_PIX_FMT_YUYV,
-> +	.cap_q_default_fourcc =3D V4L2_PIX_FMT_JPEG,
-> +	.multi_core =3D true,
-> +	.jpeg_worker =3D mtk_jpegenc_worker,
-> +};
-> +
-> =C2=A0static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata =3D {
-> =C2=A0	.formats =3D mtk_jpeg_dec_formats,
-> =C2=A0	.num_formats =3D MTK_JPEG_DEC_NUM_FORMATS,
-> @@ -1945,6 +1958,19 @@ static const struct mtk_jpeg_variant
-> mtk8195_jpegdec_drvdata =3D {
-> =C2=A0	.jpeg_worker =3D mtk_jpegdec_worker,
-> =C2=A0};
-> =C2=A0
-> +static const struct mtk_jpeg_variant mtk8196_jpegdec_drvdata =3D {
-> +	.formats =3D mtk_jpeg_dec_formats,
-> +	.num_formats =3D MTK_JPEG_DEC_NUM_FORMATS,
-> +	.qops =3D &mtk_jpeg_dec_qops,
-> +	.m2m_ops =3D &mtk_jpeg_multicore_dec_m2m_ops,
-> +	.dev_name =3D "mtk-jpeg-dec",
-> +	.ioctl_ops =3D &mtk_jpeg_dec_ioctl_ops,
-> +	.out_q_default_fourcc =3D V4L2_PIX_FMT_JPEG,
-> +	.cap_q_default_fourcc =3D V4L2_PIX_FMT_YUV420M,
-> +	.multi_core =3D true,
-> +	.jpeg_worker =3D mtk_jpegdec_worker,
-> +};
-> +
-> =C2=A0static const struct of_device_id mtk_jpeg_match[] =3D {
-> =C2=A0	{
-> =C2=A0		.compatible =3D "mediatek,mt8173-jpgdec",
-> @@ -1966,6 +1992,14 @@ static const struct of_device_id mtk_jpeg_match[] =
-=3D {
-> =C2=A0		.compatible =3D "mediatek,mt8195-jpgdec",
-> =C2=A0		.data =3D &mtk8195_jpegdec_drvdata,
-> =C2=A0	},
-> +	{
-> +		.compatible =3D "mediatek,mt8196-jpgenc",
-> +		.data =3D &mtk8196_jpegenc_drvdata,
-> +	},
-> +	{
-> +		.compatible =3D "mediatek,mt8196-jpgdec",
-> +		.data =3D &mtk8196_jpegdec_drvdata,
-> +	},
-> =C2=A0	{},
-> =C2=A0};
-> =C2=A0
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-> index b3142dc9be85..e453a1634f33 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-> @@ -45,6 +45,9 @@ static const struct of_device_id mtk_jpegdec_hw_ids[] =
-=3D {
-> =C2=A0	{
-> =C2=A0		.compatible =3D "mediatek,mt8195-jpgdec-hw",
-> =C2=A0	},
-> +	{
-> +		.compatible =3D "mediatek,mt8196-jpgdec-hw",
-> +	},
-> =C2=A0	{},
-> =C2=A0};
-> =C2=A0MODULE_DEVICE_TABLE(of, mtk_jpegdec_hw_ids);
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> index 82c971936c4d..b30c728c3712 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-> @@ -52,6 +52,9 @@ static const struct of_device_id mtk_jpegenc_drv_ids[] =
-=3D {
-> =C2=A0	{
-> =C2=A0		.compatible =3D "mediatek,mt8195-jpgenc-hw",
-> =C2=A0	},
-> +	{
-> +		.compatible =3D "mediatek,mt8196-jpgenc-hw",
-> +	},
-> =C2=A0	{},
-> =C2=A0};
-> =C2=A0MODULE_DEVICE_TABLE(of, mtk_jpegenc_drv_ids);
+---
+base-commit: 6987d58a9cbc5bd57c983baa514474a86c945d56
+change-id: 20251216-mtk-fix-infracfg_nao-compatibile-ba543769f5b9
 
---=-YBjB4a/FKYc454GerwhG
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
+Best regards,
+-- 
+David Lechner <dlechner@baylibre.com>
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaUHT2AAKCRDZQZRRKWBy
-9IZqAPkBoSLa+bFdlDtR1FQo5Uc5A2dt+rMGU51H/CGtt205EAEAqnmGw/ine3cr
-vP6MeovY8uQj7THLju96VbvCAKmDCQY=
-=jQmg
------END PGP SIGNATURE-----
-
---=-YBjB4a/FKYc454GerwhG--
 
