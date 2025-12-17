@@ -4,79 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 133F5D65531
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Dec 2025 10:20:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6464DD6552F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Dec 2025 10:27:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c+FEXwLB6//geiqjFNY1WyB2SjNLASYZoSGVYSlhPrE=; b=gFSOYbhi6D2R+XjPGHO6tKLlkA
-	4iXD3nKBuHr6tZqqUwiImPMxTPbVVaj3XDib6cik3aentCbSXX3KOcFaaD8zfibLxiqfmLqSvPA0n
-	MhF2EOd9qMXe4Ni7m7SeSSb9j95oMARfznxHHBbPs2+j0qIU5v8h5otuPok5xsHG8UKd/X7luJrbK
-	KQ4ryCT+yUJPohiz+6djKFnE1qDMPDZtQyj2d1c6c9C2hK0jEdAlD7XpT5MCu0Q7KOZSrRXczeS7r
-	BYtyjrUjCb9fxAlwpXOWItgZOvFpdsJTJgud+8ajClBU89wjS4AHZFokMti/oA8VCL6KOMaRcFKks
-	lwE8Zzvw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=J+Tdb+DQVnaI8wgW/gooNMMH6avHcs+q+RO2MST1bXQ=; b=4WQFgLxRM787at
+	qtuJHIcWQ136K1ESubNmniAEs4VhEHU8H2p52od5iG4DIRgddtatQS6IDvexLYnanGA6/J5OCEL9+
+	sdTTGwoVk2C8Gr61XVEKbVXhu7YTGaiDcHYEvTedy2nuJ1h8VovwQAUNWhq2tqioTff/iriW9CYjv
+	HQ4Y24xDKVrLE2gUFVjgORDmh4n9ktkEdZRrWkskwAD2vPztfSQstSxhths00fPitN0zNeiqhgLfw
+	zu3IIrBm4vYZQFURX2UoLtpdnPWDIW8BtAFF1wZGKMcZItHBs75/wE8CDFYu66aWdIP3SPrOGGQhK
+	8oxdhRDOtoqCW113w6aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVoe1-00000006c4p-0JZC;
-	Wed, 17 Dec 2025 10:20:33 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vVokL-00000006eHS-3KKL;
+	Wed, 17 Dec 2025 10:27:05 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVodJ-00000006bIe-2DsA;
-	Wed, 17 Dec 2025 10:19:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1765966787;
-	bh=egAszwG9tB/q++tDA1sT9mHPYlbOp6SzpoQMWzWwofQ=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hI0Okw5M8NBDptDjoVZWfelX4zUbpANDRgk5E8CtCepAf3hrvyDUMTg2MbfX9cxlL
-	 aCwmEh2AX+qWiGnu1Sl7pZjbDMgzd9o609wA0VFqv+6mf1J37aeF5Rx0GBuP6hM1dA
-	 3juuwu8NWQI/L7QmR4HrEvfA3TnUa4cHyWtid5zi/c7pK89ufSNsa9VptPvlV7vSty
-	 KHw0GjbVKIQAUzYi2IQ+ZFzi13SYZA6o2yd7ZZeOuSN3QVg0KjV3bWms8w1rMdHsFN
-	 8WdN/WnMZaWrR1tB5aPMzq5KC6k7yUbZzY4L0IRlARVr3ialCWyK1KkU5kjqaXPATV
-	 kazRVD5JAP8pw==
-Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7964117E1154;
-	Wed, 17 Dec 2025 11:19:46 +0100 (CET)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Wed, 17 Dec 2025 11:19:11 +0100
-Subject: [PATCH v2 12/12] arm64: defconfig: Enable Mediatek HDMIv2 driver
+	id 1vVokI-00000006eFW-2D7N;
+	Wed, 17 Dec 2025 10:27:04 +0000
+Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
+	by mxout1.routing.net (Postfix) with ESMTP id 91D5140805;
+	Wed, 17 Dec 2025 10:26:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=routing; t=1765967215;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=J+Tdb+DQVnaI8wgW/gooNMMH6avHcs+q+RO2MST1bXQ=;
+	b=t6N85lDfMLiKYuG9hIj9COUzeqZR3nzZAVVw+CcekH9PVsGAWj60FsyhGDBcagqKAOp4/y
+	KTFyjwxhfQe+qQSWwbLjlNZvOF2BtLmK0XdBcEG9zHyzmMgmZlaW/rtM9geQ73PqGioKOx
+	x3QPCN9ZB6qeT4qwh6uyrgSWnigqyeY=
+Received: from frank-u24.. (fttx-pool-217.61.152.85.bambit.de [217.61.152.85])
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 50B951226AF;
+	Wed, 17 Dec 2025 10:26:55 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>
+Subject: [RFC net-next v4 0/3] Add RSS and LRO support
+Date: Wed, 17 Dec 2025 11:26:41 +0100
+Message-ID: <20251217102648.47093-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20251217-mtk-genio-evk-hdmi-support-v2-12-a994976bb39a@collabora.com>
-References: <20251217-mtk-genio-evk-hdmi-support-v2-0-a994976bb39a@collabora.com>
-In-Reply-To: <20251217-mtk-genio-evk-hdmi-support-v2-0-a994976bb39a@collabora.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Guillaume Ranquet <granquet@baylibre.com>
-Cc: kernel@collabora.com, Krzysztof Kozlowski <krzk@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1765966775; l=792;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=egAszwG9tB/q++tDA1sT9mHPYlbOp6SzpoQMWzWwofQ=;
- b=7gtSv9z3v5G4gNkpdsay8zynkZN/QfDiWjrlhe9hMdCxd9fpyIgQPWM1Vwta1QWUBOilZO4oq
- jLMwG5Kbcb+BsTz9s2twbj9FZdOx4XQILA1pZLQPeVWLQXJjfOJ12Us
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251217_021949_752792_69233528 
-X-CRM114-Status: UNSURE (   7.57  )
+X-CRM114-CacheID: sfid-20251217_022703_230653_3187B206 
+X-CRM114-Status: UNSURE (   8.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,32 +74,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to enable the HDMI output support on Mediatek Genio 510-EVK,
-700-EVK, and 1200-EVK boards, enable the driver for it in the default
-configuration.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
+This series add RSS and LRO hardware acceleration for terminating
+traffic on MT798x.
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 982b894a36d29ebbdda025a3ae9713ddfd7195d8..975297e8c01a28fe4fd90185635d654e970ae83c 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -1016,6 +1016,7 @@ CONFIG_DRM_HISI_KIRIN=m
- CONFIG_DRM_MEDIATEK=m
- CONFIG_DRM_MEDIATEK_DP=m
- CONFIG_DRM_MEDIATEK_HDMI=m
-+CONFIG_DRM_MEDIATEK_HDMI_V2=m
- CONFIG_DRM_MXSFB=m
- CONFIG_DRM_IMX_LCDIF=m
- CONFIG_DRM_MESON=m
+It is currently only for discussion to get the upported SDK driver
+changes in a good shape.
+
+patches are upported from mtk SDK:
+- https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/999-eth-08-mtk_eth_soc-add-register-definitions-for-rss-lro-reg.patch
+- https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/999-eth-09-mtk_eth_soc-add-rss-support.patch
+- https://git01.mediatek.com/plugins/gitiles/openwrt/feeds/mtk-openwrt-feeds/+/refs/heads/master/master/files/target/linux/mediatek/patches-6.12/999-eth-10-mtk_eth_soc-add-hw-lro-support.patch
+with additional fixes
+
+changes:
+v4:
+- drop unrelated file
+- rss-changes suggested by andrew
+  - fix MTK_HW_LRO_RING_NUM macro (add eth)
+  - fix MTK_LRO_CTRL_DW[123]_CFG (add reg_map param)
+  - fix MTK_RX_DONE_INT (add eth param)
+- fix lro reverse christmas tree and LRO params suggested by andrew
+- drop mtk_hwlro_stats_ebl and unused IS_HW_LRO_RING (only used in
+  properitary debugfs)
+
+v3:
+- readded the change dropped in v2 because it was a fix
+  for getting RSS working on mt7986
+- changes requested by jakub
+- reworked coverletter (dropped instructions for configuration)
+- name all PDMA-IRQ the same way
+- retested on
+  - BPI-R3/mt7986 (RSS needs to be enabled)
+  - BPI-R4/mt7988
+  - BPI-R64/mt7622 and BPI-R2/mt7623 for not breaking network functionality
+
+v2:
+- drop wrong change (MTK_CDMP_IG_CTRL is only netsys v1)
+- Fix immutable string IRQ setup (thx to Emilia Schotte)
+- drop links to 6.6 patches/commits in sdk in comments
+
+Mason Chang (3):
+  net: ethernet: mtk_eth_soc: Add register definitions for RSS and LRO
+  net: ethernet: mtk_eth_soc: Add RSS support
+  net: ethernet: mtk_eth_soc: Add LRO support
+
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 809 ++++++++++++++++----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 168 ++--
+ 2 files changed, 770 insertions(+), 207 deletions(-)
 
 -- 
-2.52.0
+2.43.0
 
 
