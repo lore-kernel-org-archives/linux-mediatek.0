@@ -4,91 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3FA3D6554E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Dec 2025 11:20:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 969FED65C7C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Dec 2025 17:04:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jTcwQN3kMfRwn0MOtZPrgw4H2EwbAELatd4tH4NVBgE=; b=IBwBhydol1AlI2qaXKm40u7XbM
-	yMTSrlgpT1gitNO0Ncjsz8IPk8HdwxQun6ZFqv7as5qtdhJLs8BjmN6jyGr2v1q1pFvmugyxSDC2c
-	2IQo3Yopiiy8d0ioSrB41YmuN+aQP9hvVtUF4nzgZtKK97polX3Ma5OoVhh/5lrj7b+p0G+R/HbbG
-	4iGUw48TGzJXhOOh3glM9eZBOHf/g4sMkE7DZtyyZZJfY9MGCx/Ky5JwnNTPhzMDmlnTExJ45VjDC
-	uyf007afQAU1mxNfmE+ZplL7VgSoA1Nj8A97mCebwRArAczTV2wkhDruK4TmRPGPgxahD1+zktb32
-	J1xw87HA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gk8N5vqQY6cvukhg7xoBpaUYZclsUp62GPYaQQXQv/c=; b=NbnWRFkx+FKVKG
+	bYWaBnZexCqLxv/BY9SR/YH462KwV0qTDTkks0R9rYXlZSwJn6y655dJDybw5vQb2ixldUYx9V+qE
+	Ak0WO9fVKmXRK9611i0qdYj4U5iZG0pdnbIGrXi2YuqGxbzqRn0+4D4sj6VJyOFnFklxY+/nNmr8R
+	qLx0smlnDmJ+iR2aKhImtymDPRHOne/HUmrSzmmwnGhh1yj81KQpVRg91ogBwxQltR8kpwoOIC+s+
+	bla+hihlwaLr95hVKa2RAZ5PtrtTho/VmYPm+wjB6Kk9c/rd+vek8fG98PuILpenlqkr49oHcImP/
+	4wlDFq8cTF8RO8NwGEQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVpaS-00000006hsk-0fyn;
-	Wed, 17 Dec 2025 11:20:56 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1vVuwf-000000078sd-1rcd;
+	Wed, 17 Dec 2025 17:04:13 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVpaP-00000006hrY-3tTo
-	for linux-mediatek@lists.infradead.org;
-	Wed, 17 Dec 2025 11:20:55 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-b735487129fso976463366b.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 17 Dec 2025 03:20:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1765970452; x=1766575252; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=jTcwQN3kMfRwn0MOtZPrgw4H2EwbAELatd4tH4NVBgE=;
-        b=CtinEczlO+EUrxgDA6ELEh4/zPvkkv7rRZE0dxCv5HYoIcBwFIon+qnKW/DNDDvZHe
-         AU0g1k+YHyOqZDcyxaGxOG3M7m3eCnKvs2qKCAOG+DXYp1DBVkhOkFTupIix5kbuU91X
-         /KANWGA6QjNiwIaDBrmuGK/fSFJAfeY8D6BspaamrtfU2kzkx72lir2u8b9zmgyUNGXr
-         9bd1ijiH3VdWlsNTGxJOuSehp9YFomodlJdawwNZRUe8muPtMJDnzYCHuhK+1OeDhutN
-         y+7flIk5y6pIGSKhF84U0P+5KpN6JKLW47Kf5agaKdVeaEFiQqt5JrMSYgBdXe4yyI5B
-         KN+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1765970452; x=1766575252;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=jTcwQN3kMfRwn0MOtZPrgw4H2EwbAELatd4tH4NVBgE=;
-        b=dqKsp/YtjJ3NqJtGpe+oeulILKjl28yZxchczTemdC71mVdZ2FFMynCTbyY2++I8uR
-         z5OHimlZ9553WKcZAhlxfTvwsYLx/L5WThLYCDTyTN7Bnn8HS/WiUraveOtPlM1i23i1
-         6ByVp7HfhnsqpIjjF8CehTQp22kBBU68IgJSy9dkIW3o/wfqlxNT8/nptjjy+D8TyRq7
-         Pj9VibdEGK4/1EWduXrW1gE921SclV5bUC7ouTtP/yjRdrS/Z8kBNUA72Vh/P8OG+C1u
-         BQ8c5DmL91CRznM7HSqLpOuP7iVxB2pTqVZxI7AHcDzVnF2oC7cqkkcy7j+V/FblEdW+
-         ibSA==
-X-Forwarded-Encrypted: i=1; AJvYcCXKL0Yt3kgXyP1s8JxmZhe2+18l+t7vSzW4gLAgEAWY5f6Fh304HdR2wyIxogLxsqgIQNsg/7DYx3nTuN1DZw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywpp/Yu7Ucegki9A4SiNrLLRivRmnGxSBsY0MwaJBFXWQwtXjsl
-	G4vEsjDYx5//fUD4DaSZukwEHwY+y2mdD5Mxt3mj5xdfdtlb6PzH9LXN7mdi37EeOoA=
-X-Gm-Gg: AY/fxX5abNQAZyxPMRiOv895qarjqB1kMcuUDAypnlXn03U6NQAOuL/0PvSF+8ECmVf
-	J2ADjhpqMptUrQWlnVywJaSlFNLTbeZLFU1cyrv+TaoyP71nBz98IExkZ72OXYO5VzCjyBQpIGM
-	1LAFUhE9yDxQuFnrcZObAziA0a39PskcFRUM8cskmS86emt+FPpO8mMEO3pixmVdQ4JNMJ/rR3l
-	uepD3/WMDVboGEEJFtN02acLMyPaWqHDOMSVvmM7OheCKE9bL8/24rW/tbyRrk4pidLTTTwg12Y
-	hLM/vGiDLU5Im499d5sYT6VNqNheSRMFM5YWg+jLJMY3RzxJKZcJ1qHjUoy+1wUNoyQVT0+o6Ae
-	+Ad5oZVeDiyCM4/Dkohfm1a4ZTw4xRVBevbnWbpvNc7Wh5yZISKxQuaV+0xIVtEMo84d8Sm6z/L
-	mSZlrAEVPzXURFVUUdvKE9iu+sTds=
-X-Google-Smtp-Source: AGHT+IEagpbs4HyNCpsx7OlTFhT0q9uoh62JevUfquHGVnwzeKSmc61VVn5TagHQj0mzzpbxTuoklg==
-X-Received: by 2002:a17:907:bb49:b0:b7f:eb45:f572 with SMTP id a640c23a62f3a-b7feb45f993mr603953966b.55.1765970452008;
-        Wed, 17 Dec 2025 03:20:52 -0800 (PST)
-Received: from localhost ([2a02:8071:b783:6940:1d24:d58d:2b65:c291])
-        by smtp.gmail.com with UTF8SMTPSA id a640c23a62f3a-b7ff725efd8sm417291266b.27.2025.12.17.03.20.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Dec 2025 03:20:51 -0800 (PST)
-From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
-To: Marcel Holtmann <marcel@holtmann.org>,
-	Luiz Augusto von Dentz <luiz.dentz@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-bluetooth@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] Bluetooth: btmtksdio: Use pm_ptr instead of #ifdef CONFIG_PM
-Date: Wed, 17 Dec 2025 12:20:33 +0100
-Message-ID: <20251217112033.3309281-3-u.kleine-koenig@baylibre.com>
-X-Mailer: git-send-email 2.47.3
+	id 1vVuwd-000000078rs-1B6A;
+	Wed, 17 Dec 2025 17:04:12 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1765991040; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=QQtrRqPJfkIzhiR99d1xVv8x5pTsrIGwCZinM1rQVj8uXhEkbZDdMP2WZ+AAZu/gkZlzt8P+W74puhPA5RnVtGFACRm9lzrfiefZARyCcxeKEn2anwkGXH83vdSycpMMp4Nfdr1ZcuAc30/53XVBZm+4aO7bkkUPS8lVoOKogb4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1765991040; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=gk8N5vqQY6cvukhg7xoBpaUYZclsUp62GPYaQQXQv/c=; 
+	b=Q86VlC/LO65zATvVKUgOHaKbR+Vnifa0h/uScna5pVFDnTYZXnGd2Wf23d3znyKAibnOpkSODWQZjpFJUpz3iLW/2WKFbkymV1NQ5PKaEEVwEOviUVFDuSELtlXIkx6rgUVafyMX/3irYjIsb+nizobtFYjFHNsjhwPwbJdDmHA=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765991040;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=gk8N5vqQY6cvukhg7xoBpaUYZclsUp62GPYaQQXQv/c=;
+	b=j+BnazpPrwF27LpmCixibF9xPk1nIB9HozKnyES4WbkRZIkXYD2mB/kMFKlLf8KQ
+	dVS9JH1XsPPiqP6UG8enECMlY5iXJYUYuW2rZtJ+ozX2EvO/caFKbn82QrMhySWTjv6
+	pkGOjc5TFZX6cs29RahPde7O1U4dw9NdBCC0vL4g=
+Received: by mx.zohomail.com with SMTPS id 1765991038674334.3696027621247;
+	Wed, 17 Dec 2025 09:03:58 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Subject: [PATCH 0/4] Make MT8196 get its Mali GPU shader_present from nvmem
+Date: Wed, 17 Dec 2025 18:03:26 +0100
+Message-Id: <20251217-mt8196-shader-present-v1-0-f6f8f3aa1e93@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1398; i=u.kleine-koenig@baylibre.com; h=from:subject; bh=ip0toTFqPEpK+4s0Rx5RGWhl8GI5wCxXBuwM4DUFaEw=; b=kA0DAAoBj4D7WH0S/k4ByyZiAGlCkgGiATO5RL0sh3KYGWs49kKJWdWd4V/InvAHNjCL/KJfD okBMwQAAQoAHRYhBD+BrGk6eh5Zia3+04+A+1h9Ev5OBQJpQpIBAAoJEI+A+1h9Ev5O0cUH/Aoc wZfGf5D7k2Y3xp+Eq2OKaDjC4SdZdn1wPRyKoxuxJ6Tw777evLx2xaxOJa8gtNq3XXkl1d5ytJb wVedpUMeon8lBhvLxJIQnb5LneH9ERGhyVon+g65nMM/ncWgUyT+mQx9vl3gF/6wa1uz9rJUB8E iio65wqGEYu8Q7cWuo2o8sf62CaSimzLrnFiwIbD5k156AgQJIbnBB6+bahGKu1Cmebl6ZtC6CQ 1a3CoPsf+je0wTNPMlCc3Ze1MxMrEJ2spZdTy/SbYZQIG8OuMf/BsLcjij9wWnmYSQ8fcKxhOhU V130qUndlr9XefXvOApYyIOHzdPIUJjQkSphjic=
-X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAF7iQmkC/y2Myw7CIBBFf4XM2omCD2x/xXSBMNhZQCuDxqTpv
+ 0usq5tzknsWECpMAr1aoNCbhafcQO8U+NHlByGHxmAO5qyNtpjqVXcXlNEFKjgXEsoVyQR/jJ2
+ N3p6gfZuP/Pl1b8PGhZ6vlq+bhLsTQj+lxLVXoSSsPO//C8O6fgFNz9d3mgAAAA==
+X-Change-ID: 20251217-mt8196-shader-present-e2dc3f97fc74
+To: Boris Brezillon <boris.brezillon@collabora.com>, 
+ Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Chia-I Wu <olvaffe@gmail.com>, 
+ kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-pm@vger.kernel.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251217_032053_979630_B798D8AE 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20251217_090411_383238_DAE9F5F9 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,56 +91,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This increases build coverage and allows to drop an #ifdef.
+The MediaTek MT8196 SoC's Mali SHADER_PRESENT register does not list
+only functional shader cores, but also those that are fused off to
+improve yield.
 
-Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
+The SHADER_PRESENT bitmask with the one fused off core omitted is to be
+found in an efuse. However, the efuse address is considered
+confidential, and is not public knowledge.
+
+The MT8196 GPUEB MCU, which does the power management for the Mali GPU
+on this SoC, knows and reads the efuse however, and exposes it in the
+shared memory intended to communicate state to the application
+processor. Reading the bitmask from this shared memory area is the
+vendor's intended solution.
+
+This series models this in the binding and implements it in the
+corresponding Linux drivers:
+- the mali-valhall-csf binding gets an nvmem-cells/nvmem-cell-names
+  property to declare that shader-present is in a different castle
+- the mt8196-gpufreq binding requires nodes to expose the shader-present
+  cell
+- panthor checks for the presence of the shader-present cell and uses it
+  as the shader-present value if it's found, instead of the Mali GPU
+  register contents
+- mtk-mfg-pmdomain becomes an nvmem provider and will happily serve
+  queries for the shader-present cell
+
+While it would be preferable if we could read the efuse directly, it's
+not possible as things stand, and insisting on it will just keep this
+hardware from working in mainline. Running a GPU workload with a
+SHADER_PRESENT bitmask that includes a faulty core results in corrupt
+GPU rendering output.
+
+Modelling the mt8196-gpufreq device as a nvmem-cell provider however is
+not lying about the hardware's capabilities, as it truly does provide
+access to the nvmem-cell, even if it acts as a proxy.
+
+From a bindings and panthor perspective, this is also generic enough to
+where hypothetical other vendors doing the same thing (even with direct
+efuse access) can rely on the same cell name and implementation.
+
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
-Hello,
+Nicolas Frattaroli (4):
+      dt-bindings: gpu: mali-valhall-csf: Add shader-present nvmem cell
+      dt-bindings: power: mt8196-gpufreq: Describe nvmem provider ability
+      drm/panthor: Implement reading shader_present from nvmem
+      pmdomain: mediatek: mtk-mfg: Expose shader_present as nvmem cell
 
-I found the patch opportunity while looking in this driver for a different
-reason.
+ .../bindings/gpu/arm,mali-valhall-csf.yaml         | 14 +++++
+ .../bindings/power/mediatek,mt8196-gpufreq.yaml    | 13 +++++
+ drivers/gpu/drm/panthor/panthor_hw.c               | 63 +++++++++++++++++++---
+ drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c       | 57 ++++++++++++++++++++
+ 4 files changed, 141 insertions(+), 6 deletions(-)
+---
+base-commit: 16f014a645fb35303b8fd3305f23f8ecd3f2f2a6
+change-id: 20251217-mt8196-shader-present-e2dc3f97fc74
 
-Best regards
-Uwe
-
- drivers/bluetooth/btmtksdio.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
-
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index fba3ab6d30a5..e986e5af51ae 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -1472,7 +1472,6 @@ static void btmtksdio_remove(struct sdio_func *func)
- 	hci_free_dev(hdev);
- }
- 
--#ifdef CONFIG_PM
- static int btmtksdio_runtime_suspend(struct device *dev)
- {
- 	struct sdio_func *func = dev_to_sdio_func(dev);
-@@ -1542,18 +1541,13 @@ static const struct dev_pm_ops btmtksdio_pm_ops = {
- 	RUNTIME_PM_OPS(btmtksdio_runtime_suspend, btmtksdio_runtime_resume, NULL)
- };
- 
--#define BTMTKSDIO_PM_OPS (&btmtksdio_pm_ops)
--#else	/* CONFIG_PM */
--#define BTMTKSDIO_PM_OPS NULL
--#endif	/* CONFIG_PM */
--
- static struct sdio_driver btmtksdio_driver = {
- 	.name		= "btmtksdio",
- 	.probe		= btmtksdio_probe,
- 	.remove		= btmtksdio_remove,
- 	.id_table	= btmtksdio_table,
- 	.drv = {
--		.pm = BTMTKSDIO_PM_OPS,
-+		.pm = pm_ptr(&btmtksdio_pm_ops),
- 	}
- };
- 
-
-base-commit: 8f0b4cce4481fb22653697cced8d0d04027cb1e8
+Best regards,
 -- 
-2.47.3
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
