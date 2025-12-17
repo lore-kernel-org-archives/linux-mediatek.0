@@ -4,77 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 588ECD64071
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Dec 2025 03:56:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B7CDD64076
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Dec 2025 06:34:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=g6vBW2JewppFyaRLb6KGyeqKVlYw6haEmZpTMY8QxvI=; b=wpmbuAXYUZU1BC0VI9Zp6e1M05
-	4rl3/nQj7wIuZCzhT4LRIfFnGHMW3kmdbVQYxpy90b9MUsjpjlYe3IWc5XNryMie2Tb51zoyB5F3c
-	fJOf/Lg1aFMETA5ePpNyisCbvf0l5FCB8yHuhaxGMZaKCLtx5vh9ITSGIbHYyW2c7Jy2383LYH2rd
-	Y4qDz9kRyOatvRnsu7NKU7sibXTjPgFx/JZrpVVsLrDRgwwfQW7jc8LZG6fv8NnckZYeB9HajQRK6
-	AMcmGFjJa7JimuUPqS2HLwaSdbulp5koDFFN7XDCvWvE1xiIvNTyTadNMh4LEQBdqWsu4MLMi8Ox3
-	0CbXnqYg==;
+	bh=rtCOBMOAcLhzdU56zPzHYieYlK5X0cs0WzXrXcU35tM=; b=dxrCmxyYBaj+HMyER9ASNSBD+0
+	5Coj9DpjID4mByqYfPoe888wo7TkMqwwOar5f33/wpbgxlKd7LZfuoBIhCV+FCswMXQiLtP/etmDn
+	ByUQh7Xk7UUmP5EnvOS81IuL7QkERXTjEtg1AxVANOJITzNrGlvoB3QLAl+/Q8gWwEgi/iIq8QJEd
+	/d8KHx6xH8LXkRd4RYlswuGWQFevaVip4/7ijnXTWEveztj7dMG8yFJ/iDLYNRyemBVx8dzWS56C2
+	3V2AcaIkXGgxNLb6B4ROBOEcuGYoHXb2f3ADg5ny/dY2j7aURaFUkD9AeCalRsUFRuNiR7RxQYZRm
+	dD0+cK0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVidv-0000000689a-2pdd;
-	Wed, 17 Dec 2025 03:56:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1vVl7U-00000006F4T-3EVe;
+	Wed, 17 Dec 2025 06:34:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vVidt-0000000688w-0WXs;
-	Wed, 17 Dec 2025 03:56:02 +0000
-X-UUID: 49c3e64cdafc11f09f706fa2197c6ceb-20251216
+	id 1vVl7T-00000006F3o-05Tc;
+	Wed, 17 Dec 2025 06:34:44 +0000
+X-UUID: 74433600db1211f0a52f393f94899d25-20251216
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=g6vBW2JewppFyaRLb6KGyeqKVlYw6haEmZpTMY8QxvI=;
-	b=Tlni7/FISvDqX4RHVG3FxCMKhoNzFiQ8m8hrBTkHN/TCMoxCbPdWonNZdiwU6+wLPhQNMsjust2OZlW64AIkp8lXrpcRfMsWoSg116LddbRckcasrpP31cbAMHLc2bwDlk3PcPX28sP6D8958jocsdyZOv8IyLhWc2JedZRpFao=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=rtCOBMOAcLhzdU56zPzHYieYlK5X0cs0WzXrXcU35tM=;
+	b=nmO+CsoAOXSwNLro6QRc+xaSCeT3HTfFwMP7GqoFYcDwzpduLOhp1yr0Cp/pxSrFowRxG1ppuBTxAmgnK45q1q71QvPOFoPiYfrvPXDMwKZYtU4+WuUgQdN5TP0DFOzit1PAL8dDrlur2Pl3AzCOusLVN0NM5TrREsMtm4EvrDg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.6,REQID:44793be4-917b-4a7c-876e-0a308d9d0388,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.6,REQID:2bef9e69-3f11-4141-9131-1b4be342a543,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:a9d874c,CLOUDID:caad86c6-8a73-4871-aac2-7b886d064f36,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:a9d874c,CLOUDID:0295dc02-1fa9-44eb-b231-4afc61466396,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|888|898,TC:-5,Content:0|15|50,ED
+	M:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 49c3e64cdafc11f09f706fa2197c6ceb-20251216
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
-	(envelope-from <jibin.zhang@mediatek.com>)
+X-UUID: 74433600db1211f0a52f393f94899d25-20251216
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <xiaoshun.xu@mediatek.corp-partner.google.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 87060361; Tue, 16 Dec 2025 20:55:55 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+	with ESMTP id 1978771181; Tue, 16 Dec 2025 23:34:35 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 17 Dec 2025 11:55:52 +0800
-Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 17 Dec 2025 11:55:51 +0800
-From: Jibin Zhang <jibin.zhang@mediatek.com>
-To: Eric Dumazet <edumazet@google.com>, Neal Cardwell <ncardwell@google.com>,
-	Kuniyuki Iwashima <kuniyu@google.com>, "David S . Miller"
-	<davem@davemloft.net>, David Ahern <dsahern@kernel.org>, Jakub Kicinski
-	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Simon Horman
-	<horms@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: <wsd_upstream@mediatek.com>, <shiming.cheng@mediatek.com>,
-	<defa.li@mediatek.com>, Jibin Zhang <jibin.zhang@mediatek.com>
-Subject: [PATCH] net: fix segmentation of forwarding fraglist GRO
-Date: Wed, 17 Dec 2025 11:55:42 +0800
-Message-ID: <20251217035548.8104-1-jibin.zhang@mediatek.com>
+ 15.2.1748.26; Wed, 17 Dec 2025 14:34:32 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 17 Dec 2025 14:34:32 +0800
+From: Xiaoshun Xu <xiaoshun.xu@mediatek.corp-partner.google.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Xiaoshun Xu
+	<xiaoshun.xu@mediatek.com>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	Sirius Wang <sirius.wang@mediatek.com>, Vince-wl Liu
+	<vince-wl.liu@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v2 0/4] soc: mediatek: Add devapc support for MT8189
+Date: Wed, 17 Dec 2025 14:34:09 +0800
+Message-ID: <20251217063429.1157084-1-xiaoshun.xu@mediatek.corp-partner.google.com>
 X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251216_195601_174670_7CCDF26D 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20251216_223443_072514_4972DE3A 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,56 +90,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch enhances GSO segment checks by verifying the presence
-of frag_list and protocol consistency, addressing low throughput
-issues on IPv4 servers when used as hotspots
 
-Specifically, it fixes a bug in GSO segmentation when forwarding
-GRO packets with frag_list. The function skb_segment_list cannot
-correctly process GRO skbs converted by XLAT, because XLAT only
-converts the header of the head skb. As a result, skbs in the
-frag_list may remain unconverted, leading to protocol
-inconsistencies and reduced throughput.
+External email : Please do not click links or open attachments until you ha=
+ve verified the sender or the content.
 
-To resolve this, the patch uses skb_segment to handle forwarded
-packets converted by XLAT, ensuring that all fragments are
-properly converted and segmented.
 
-Signed-off-by: Jibin Zhang <jibin.zhang@mediatek.com>
----
- net/ipv4/tcp_offload.c | 3 ++-
- net/ipv4/udp_offload.c | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+From: Xiaoshun Xu <xiaoshun.xu@mediatek.com>
 
-diff --git a/net/ipv4/tcp_offload.c b/net/ipv4/tcp_offload.c
-index fdda18b1abda..162a384a15bb 100644
---- a/net/ipv4/tcp_offload.c
-+++ b/net/ipv4/tcp_offload.c
-@@ -104,7 +104,8 @@ static struct sk_buff *tcp4_gso_segment(struct sk_buff *skb,
- 	if (!pskb_may_pull(skb, sizeof(struct tcphdr)))
- 		return ERR_PTR(-EINVAL);
- 
--	if (skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) {
-+	if ((skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) && skb_has_frag_list(skb) &&
-+	    (skb->protocol == skb_shinfo(skb)->frag_list->protocol)) {
- 		struct tcphdr *th = tcp_hdr(skb);
- 
- 		if (skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size)
-diff --git a/net/ipv4/udp_offload.c b/net/ipv4/udp_offload.c
-index 19d0b5b09ffa..704fb32d10d7 100644
---- a/net/ipv4/udp_offload.c
-+++ b/net/ipv4/udp_offload.c
-@@ -512,7 +512,8 @@ struct sk_buff *__udp_gso_segment(struct sk_buff *gso_skb,
- 		return NULL;
- 	}
- 
--	if (skb_shinfo(gso_skb)->gso_type & SKB_GSO_FRAGLIST) {
-+	if ((skb_shinfo(gso_skb)->gso_type & SKB_GSO_FRAGLIST) && skb_has_frag_list(gso_skb) &&
-+	    (gso_skb->protocol == skb_shinfo(gso_skb)->frag_list->protocol)) {
- 		 /* Detect modified geometry and pass those to skb_segment. */
- 		if (skb_pagelen(gso_skb) - sizeof(*uh) == skb_shinfo(gso_skb)->gso_size)
- 			return __udp_gso_segment_list(gso_skb, features, is_ipv6);
--- 
+Based on tag: next-20251216, linux-next/master
+
+This series of patches add support for Mediatek devapc of MT8189 soc.
+
+Changes in v2:
+  - Updated cover letter subject
+  - Updated yaml for dt-bindings
+  - Add support for MT8189 devapc
+  - Refine devapc clock control flow
+  - Refine devapc interrupt handler
+
+Changes in v1:
+Xiaoshun Xu (4):
+  dt-bindings: soc: mediatek: devapc: Add bindings for MT8189
+  soc: mediatek: mtk-devapc: Add support for MT8189 devapc
+  soc: mediatek: mtk-devapc: refine devapc clock control
+  soc: mediatek: mtk-devapc: refine devapc interrupt handler
+
+ .../bindings/soc/mediatek/devapc.yaml         |  10 +-
+ drivers/soc/mediatek/mtk-devapc.c             | 189 ++++++++++++++----
+ 2 files changed, 159 insertions(+), 40 deletions(-)
+
+--
 2.45.2
 
 
