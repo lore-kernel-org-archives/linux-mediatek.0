@@ -4,69 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 788D8D68BF6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Dec 2025 08:52:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5FA6D6ACDE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Dec 2025 10:17:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=g+bJVIpt0gfvrKpvvpbdhzaZrLDQ51BQvCd8rNT5zDA=; b=CaHd6GjuwB2n1uddS+wY9PUwN1
-	soMOD4MuWQ85H2PQjpQariX+dhg98kH2QiXzvVG8RAW+1l71dOCKXBXidN1I990yPNd/xFuBhbWES
-	S5WEP3HXxe33MM7eTKD8TVYwNRw8kf3dk+kH5knR3y5eC4sVsGMMVLqEHQD6or3z0Nh+1cXJn6ggz
-	Ry4UWy8G71/mWQswnMCuo8WBdbQg85swQm2B0PyemVAdODIDInkvySIkZQQv+gv/FPQ4/bchcbL4J
-	jTQC/X+YgosU1F76bzCEjbynG82HKqcAAU/5OlxbCh/z/Adoe65WHj1x7CQVvv13n9CM79RF9LX9Q
-	CsIWxJkA==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3xZgigcPYCTe787T1RP1QJQQl9rmrKyQCyFERX1ZCJg=; b=rwq+DDvhu1iSNbBfb9rbcYQX1A
+	MDtfz7wuXt3Rq+7qXz0r35W9XikRn30/qiwyJ6yl+7P4BtAfcBllVgSDkpkq0vV2V+ioZ76gJtRNB
+	dKb/SKAX1wWI4BKPnedYv6a1Jos41yHCsTxfr7G48bzUr441rkTDyUSpEiBseLjc6xjMBh2Xh7klg
+	CmRDXWTzi90gsj/r5MQtK/5Q0oIGotlFGbZUw8gJCJsv8lSYFwdScewmUTWK2yfqkKxFeEuwEBr8W
+	v89SjpgHgZpvzzyF0glsuILMQM3Ngdl7o1IPhJC021FKLARWlB80rR7kdK0Rtx8dQtNGqiDYZErlz
+	6eP/nvyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vW9jt-000000086CN-0smN;
-	Thu, 18 Dec 2025 08:52:01 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vWB4D-00000008Des-0tht;
+	Thu, 18 Dec 2025 10:17:05 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vW9js-000000086CE-17dp
-	for linux-mediatek@bombadil.infradead.org;
-	Thu, 18 Dec 2025 08:52:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Subject:To:From:Date:Message-ID:Sender:Reply-To:Cc:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=g+bJVIpt0gfvrKpvvpbdhzaZrLDQ51BQvCd8rNT5zDA=; b=iTrXOdPlb8ffIjKWjIfgI/JRsT
-	QX1ee9a5c3mU/bwvWekBIjTYsOkInnXcepUa9NS+koJrrTZ5nu1a3g9PFBkxFYFYX1RRSW0JGdpIX
-	LHhJSfgXQrM1U2L/314Kykr3qVshTHtUtuvk4ylq/429XP0XrkJEVJMi8P+/r5RkOhhN5feCS2Uo9
-	H4pS2J7z3fOZ96Isuogzlcd44Y9GkN8LiXiRCdIsTG132A1DiEYdaRED86K6+dIfZBLdacqYielBB
-	PEXAVKwPldoDHwxAq6n+W11k/GmpMV4snMsWdcRBM6EbT09A0vKwK3NFdIu8nDIXOQ4d1xni9EW1N
-	uhMg4chQ==;
-Received: from mail.torqly.pl ([51.38.112.117])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vW8sD-00000008ObF-26Lp
+	id 1vWB4A-00000008De9-2Oi5
 	for linux-mediatek@lists.infradead.org;
-	Thu, 18 Dec 2025 07:56:35 +0000
-Received: by mail.torqly.pl (Postfix, from userid 1002)
-	id B2DF8ACB76; Thu, 18 Dec 2025 09:46:27 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=torqly.pl; s=mail;
-	t=1766047698; bh=g+bJVIpt0gfvrKpvvpbdhzaZrLDQ51BQvCd8rNT5zDA=;
-	h=Date:From:To:Subject:From;
-	b=IQvYyYravJ5Oq+5HEVDVeUlFI7LST/HhV+nNNyBqm7BKFRlMGuasUpjyQ7nb3lY/X
-	 vQzWL+QM6BVD4ZXVhY8UpYV6WvCdIhSRbzsk5IpreS7ejTp6rFhVRTkBC7L3J9q4IF
-	 JntEoGSUjLmCSUc6Xo1CMwXz8iWMbV9EqlkhawTQkKtX90KRJ5AKJtrmIMHjoWtCeX
-	 Fgh3aHa6tP5LyZHBwgWdASR4Qpc90CzqYi8coTBkF41eAy0OeRPChv23dHuCiCOsEW
-	 Pmcht7WMqfNSR6RFX8kfFgqOBgl+vQI+LsMiCLsNoMLs9zjo5dBkvIqkCNfzKGbEBd
-	 UYGoRJWwzq4RA==
-Received: by mail.torqly.pl for <linux-mediatek@lists.infradead.org>; Thu, 18 Dec 2025 08:46:01 GMT
-Message-ID: <20251218084500-0.1.tu.d9jjj.0.am4xl3yp5u@torqly.pl>
-Date: Thu, 18 Dec 2025 08:46:01 GMT
-From: "Tomasz Jaworski" <tomasz.jaworski@torqly.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: =?UTF-8?Q?Ulga_na_sk=C5=82adki_ZUS?=
-X-Mailer: mail.torqly.pl
+	Thu, 18 Dec 2025 10:17:04 +0000
+Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-37ba5af5951so4100991fa.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 18 Dec 2025 02:17:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1766053020; x=1766657820; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3xZgigcPYCTe787T1RP1QJQQl9rmrKyQCyFERX1ZCJg=;
+        b=JROJsTBezNI+aULa7OY2boKh7ZKQzO7iBmW2JHGCe+UqaQtOYaxE+a8rnnWm3MC0Hw
+         YHA6Le7sWg2D0bWw+eR2ZJjSLYf4gSe1TJdEBzSHQmlvtexHYxiRZgO4HBvEXSDifj1v
+         L86Cwd56R4ZWvPVjIKvhMZ1/F1XGhjd+2xbAg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1766053020; x=1766657820;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=3xZgigcPYCTe787T1RP1QJQQl9rmrKyQCyFERX1ZCJg=;
+        b=YPfHB3ZkIOkqd4z0cYX8m6qc6AbLF7ir5Az/MexRJprP+7igwGqPUEisKLtnTREWfS
+         EOPwepNjoGc2dAlIZHRnGjK7WQWWRR086OEzfnrgZENyi+22jgLLkjrtQAA9vXL9SKY0
+         PTWZLRCCtsaqNW0ehGzw3fph8FJ92NVQ+d0dOrV8HKw9T8DRSbrRz8aDryUBOisBqwsP
+         P+JyR+XfVKeeYwbQ09MExrr1sWs1nke55VDH2NyUVDEpTY1NnF30503TXoiCcALnEhbr
+         VJ7U2N57kfL9+2bJCQn0TB5mJyf0IBoj1FBuAUplM1Me6u8nNcytkPLtRg1mLhyAYPIa
+         kL1A==
+X-Forwarded-Encrypted: i=1; AJvYcCXQLtNoGd25F5UiumOofT8vJBwz5L1KbJgXSoUH/VoPK+xjqFiEXgn3rwbUkYxfcHaIJxGgJGE3kmlqvWCbAQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwV4TqHOwxG7Fgu2W9IEI1ZjfVg0caPKdrrAyIyB6su+TeHE4y2
+	fNz85kSwSxAW0UFX6Q1JsURSxFHRlF5q/96/5ikI1PwxNOB4VjnDxndYxUFmxjxy3AuKO9hRZqf
+	L5koxcvDOAP32MDv/U6PgQuqq3mIrTWIgYkMXuv/h
+X-Gm-Gg: AY/fxX73nzReBPPDMFLLltufYWXuqQWQN7n6NxEpCR/jSv4MIjJel7h7e3kHLBvQ/ad
+	eLEgn5xWRx7ASBqX1YTAdGxIWjmOMnzknVQIJP4qPvfZkx/3dt5ZOjvsthv12FArIzQ+UrEgehs
+	o/+FiaZOCGTGex7UIflhdM1GF6b/fLQnBaNkzsM6NVI+W0+9qilq4GIc44zSvBuJaXox0zRXeQt
+	4HZLXmr1X3cz0ox5EGy/BXDBT0ABsM8cDybSiQWAFFEH19m4Q0aN+5L7dd9e/bYXb8txDWUfgN2
+	QFT6PSm7M6RA+5WTGEAd0zTJ3g==
+X-Google-Smtp-Source: AGHT+IHB81Hph8P7HruRVDQAIKOQdKRNQiGl+MjA+C8Ci7aTBMAjTA2jqbR6yldsfAEZEnO2RaJwd1MZhXG0cwE2BsE=
+X-Received: by 2002:a05:651c:e17:b0:37c:cf34:536c with SMTP id
+ 38308e7fff4ca-37fd071a3bamr62956651fa.3.1766053019890; Thu, 18 Dec 2025
+ 02:16:59 -0800 (PST)
 MIME-Version: 1.0
+References: <20251105062815.966716-1-wenst@chromium.org> <2qojq77l7xeivmvt4mqjpdelj2ph2rht44qzkaf3ikq5qpq6gp@tj542kt77dkg>
+In-Reply-To: <2qojq77l7xeivmvt4mqjpdelj2ph2rht44qzkaf3ikq5qpq6gp@tj542kt77dkg>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 18 Dec 2025 18:16:48 +0800
+X-Gm-Features: AQt7F2pYozdj3ewu2whsibplWc-nkUoD49f-6hqeRMBbrfWkPAqi5mARhpOxjHs
+Message-ID: <CAGXv+5E1qc7UDUPBz9htA5RC18cPDGeRt1wW5exkoAkUuFxpSA@mail.gmail.com>
+Subject: Re: [PATCH] PCI: mediatek-gen3: Ignore link up timeout
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Bartosz Golaszewski <brgl@bgdev.pl>, linux-pci@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251218_075633_855576_D063217C 
-X-CRM114-Status: UNSURE (   0.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251218_021702_661005_0D3A72FB 
+X-CRM114-Status: GOOD (  26.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,25 +98,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,=20
+On Thu, Dec 18, 2025 at 2:11=E2=80=AFPM Manivannan Sadhasivam <mani@kernel.=
+org> wrote:
+>
+> On Wed, Nov 05, 2025 at 02:28:14PM +0800, Chen-Yu Tsai wrote:
+> > As mentioned in commit 886a9c134755 ("PCI: dwc: Move link handling into
+> > common code") come up later" in the code, it is possible for link up to
+> > occur later:
+> >
+> >   Let's standardize this to succeed as there are usecases where devices
+> >   (and the link) appear later even without hotplug. For example, a
+> >   reconfigured FPGA device.
+> >
+> > Another case for this is the new PCIe power control stuff. The power
+> > control mechanism only gets triggered in the PCI core after the driver
+> > calls into pci_host_probe(). The power control framework then triggers
+> > a bus rescan. In most driver implementations, this sequence happens
+> > after link training. If the driver errors out when link training times
+> > out, it will never get to the point where the device gets turned on.
+> >
+> > Ignore the link up timeout, and lower the error message down to a
+> > warning.
+> >
+> > This makes PCIe devices that have not-always-on power rails work.
+> > However there may be some reversal of PCIe power sequencing, since now
+> > the PERST# and clocks are enabled in the driver, while the power is
+> > applied afterwards.
+> >
+> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> > ---
+> > The change works to get my PCIe WiFi device working, but I wonder if
+> > the driver should expose more fine grained controls for the link clock
+> > and PERST# (when it is owned by the controller and not just a GPIO) to
+> > the power control framework. This applies not just to this driver.
+> >
+> > The PCI standard says that PERST# should hold the device in reset until
+> > the power rails are valid or stable, i.e. at their designated voltages.
+>
+> I believe this patch is no longer necessary once you adopt to the new pwr=
+ctrl
+> APIs proposed here: https://lore.kernel.org/linux-pci/20251216-pci-pwrctr=
+l-rework-v2-0-745a563b9be6@oss.qualcomm.com/
 
-chcia=C5=82bym wskaza=C4=87 Pa=C5=84stwu mo=C5=BCliwo=C5=9B=C4=87 zarz=C4=
-=85dzania benefitami w =C5=82atwy spos=C3=B3b, poprzez nasze intuicyjne n=
-arz=C4=99dzie, jakim jest karta lunchowa.=20
+That's right. I already have changes locally based on v1.
 
-Nasze karty oferuj=C4=85 wygod=C4=99, oszcz=C4=99dno=C5=9Bci i zdrowe wyb=
-ory =C5=BCywieniowe. Dofinansowanie posi=C5=82k=C3=B3w jest korzystne dla=
- obu stron. Karty lunch to dla pracodawcy realne oszcz=C4=99dno=C5=9Bci w=
- postaci zwolnienia z ZUS do 450 z=C5=82 miesi=C4=99cznie na pracownika.=20
+> I plan to get this series merged asap for v6.20 so that we can apply mtk =
+changes
+> on top once you send them.
 
-Kart=C4=99 mo=C5=BCna do=C5=82adowa=C4=87 dowoln=C4=85 kwot=C4=85, a niew=
-ykorzystane =C5=9Brodki nie przepadaj=C4=85, lecz przechodz=C4=85 na kole=
-jny miesi=C4=85c.=20
-
-Mog=C4=99 przedstawi=C4=87 ofert=C4=99, kt=C3=B3ra pozwoli zoptymalizowa=C4=
-=87 koszty i zapewni=C4=87 pracownikom po=C5=BC=C4=85dany benefit?
+Great news!
 
 
-Pozdrawiam
-Tomasz Jaworski
+Thanks
+ChenYu
 
