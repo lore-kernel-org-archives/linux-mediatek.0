@@ -4,75 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16164E66882
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Dec 2025 20:52:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ACF9E66891
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Dec 2025 21:45:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BTwht4KPqA3PA+spuu0+kW37JARZQYkEppQt9MxxhdQ=; b=wV8cKm3ReLwWxcTYOG5KHkKscJ
-	jyEX2TW8rK6VnYh1lIx7FRn7pAWU1B+QxOr04uZB2nIYsJiuu7NsD2eJP9ro0NtNUs1Ja9uCNpDuM
-	80SqN76pqNnU9lcwXdZCj+YbS8Wo2jruDCYr2P8TMV5m0AMe5ODA9fOH4e7N6e60anZlOOaTkj/fi
-	35pqn00GGADLu2PaoNP+dlp8+ZEtrZ17gLPRGoSZD0Os1NZfC2W9emmAjtlw36/zbpcf09WkE+yMV
-	cDVkXDvQUIvxVke6Hm0Yis6QYin8UQvJL5eIR4qQsWZhN0Pf77X8lTWaGPXtpN7txDGj9hdWsFlDy
-	yt0X+ZIw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZV5l3aK94WjBMd234KR2t67rjid2aTdUenY4d4w/l6o=; b=siHSbXnDDO2gHpiLVwWMAYnI4i
+	W67AVJEhPksCCJABxvCB2pyClqBubTxERdcF1NT0GBQozyP5UgCFGaRWJVRQYkpMf2NN1AtH6mtEe
+	KV/XwLKLywD7j8oz8BhD/wby2pxBNxCzDW4XggaLqePbAbPkVb1Zn3BTOoQzdAa7qew5+4AZp3hcD
+	nMUxwEsClcY4i0mPAKQKngAhoFtxHhTPLcLQ0wf05fiww6ASZOP4P5MAl0EJQzw0f8gg8/fZFCfoI
+	2RBY49dRJkonM8rLLckpT3Z0ev3oN56TWaJFGL0TbOZC7PUftkPt/NW7Z/yprrw6el9g15wsDh9sP
+	o14XMdoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWhSw-0000000AyU7-0RdA;
-	Fri, 19 Dec 2025 20:52:46 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vWiI2-0000000B0zC-1DwW;
+	Fri, 19 Dec 2025 21:45:34 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWhSs-0000000AyS8-1dDF;
-	Fri, 19 Dec 2025 20:52:44 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 66BC244274;
-	Fri, 19 Dec 2025 20:52:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D428C4CEF1;
-	Fri, 19 Dec 2025 20:52:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766177561;
-	bh=HyEXNSVwwJgnE6ov3GXL7SMN9dCPD1vkRVDgcRsTz6I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RIcAEJSjVpkzzY619Hqed58ruVEMCqaKwc3IBfQ9EJVEYPoBUiPM+e+8S5gccITKh
-	 rn5WIMEco3yV4E36pSScZznRkkrIBSurURccCp89Y+QNC1xKqs8+v/tmdhqW2Cj6bj
-	 MT6bdZTt/GnwLB0zy5s1CX/pnZjKhCVo2FKVrXVDtqeprDexXhzquq2sxHavRLtVBR
-	 nJCrq4aJvTbSzGfqwoDD6XYhEh4nruDeq6yfft67YHgW3W0ax7yu6slAEqD6LTXSkV
-	 6y1NrQHjzETgbPzoqFlSXIDgU/dv9JKBr+DArCYVQUt++Ke6BxA2rRYkImgryjWK8+
-	 CCdm7GLunJonw==
-Date: Fri, 19 Dec 2025 14:52:38 -0600
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: linux-mediatek@lists.infradead.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
-	linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, kernel@collabora.com,
-	Guillaume Ranquet <granquet@baylibre.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Neil Armstrong <neil.armstrong@linaro.org>,
+	id 1vWiHx-0000000B0yG-4Bx7
+	for linux-mediatek@lists.infradead.org;
+	Fri, 19 Dec 2025 21:45:32 +0000
+Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-430f5ecaa08so1075718f8f.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Dec 2025 13:45:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1766180727; x=1766785527; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZV5l3aK94WjBMd234KR2t67rjid2aTdUenY4d4w/l6o=;
+        b=KBMxzYNlyvZbsX32nCLlHOFWHo8x18C3p0ilunV0n4FWrJU0gTh5c5USS1ZDSZzXU+
+         +CxZ//w6x1+1mGfesoIlAo8a85EXIJbkpTWy4RTDicZtwPhndJbB+k1lyrU7MAGNs/mN
+         kUdwy0i36J/dMe5O2BRQ0nOLXO/6Z/4pXvmUbdzDxz4ol2qYLYgYphvhcWKXecRRu2sH
+         fXryuABWu1UloHNFI1DlBuj4QozX/yRgpWDky4wuU5jpRPd5Dm9l4AEqLlq0HRgfXSBA
+         v4+k5GF076xb3LBH4QcfCt++6eGWiW8yRZuNXwkkjlMF1vxt8HGmV3J3uH3e/VGspdj6
+         vXOw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1766180727; x=1766785527;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ZV5l3aK94WjBMd234KR2t67rjid2aTdUenY4d4w/l6o=;
+        b=FD8CMdc2O+q/RlmDLt3cpq4MHAgauOxdQ/QaJHI0axo7KxZCBfgmIAmtMN4KGLjKtI
+         Ko5GKzwD8f5Fo7TMYXscmMDRlYKQoi8hLjSEzyy/g8Z8GcXSn519tj4/NWNEMggm2upg
+         wSQFynBa/ji/Myp8skIcsMMsC+oWTtMHo033V6eGY4oMdwTYokrH6qF+8RsvBTs3zwx9
+         U2c9HNtiE+7YvWViIf0FVm6VXS4j9ZeXCTMTidHKw2oCRQzyFEvK2Uvv2QBw5ikoh6RS
+         wy6tvBU9SkKWedzEAgsZtB4kiwwwYAitTpjOjixkHrkWvksvvXfOYBXo8VmFmgrMJiBO
+         Gtbw==
+X-Forwarded-Encrypted: i=1; AJvYcCUosSQcTjJ6yPkXhJAgYLcCc18HXSz7PORay2gIJmDMYGo3SohHt1LmHMtuPan4/HV2ELBSvFW8p0MkPOE9Fw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyr9doCgbTZpvxCQ+viMEyg3izjRDo81eJwNNbsVennn9nrCxuL
+	wVjFmMQ5ZR+n1/cxvbW/yYROZLourH1MUQUQwZHy5odV6iqV7Z8BLGpf
+X-Gm-Gg: AY/fxX4pPy6id8KM2IA0wjZ6HeK7bDgRlmDyDsADJUQnIW/cKjVJehfxAICjivk6zEn
+	0ab+vlPDjHznuM3GL3YYlJx4POymD9OV5dJ85SptjaNj2h621zEm3bccWbIpxskaAbXBu+SXUsp
+	Chz2pICAiUfdQ1s0B1z2mG/KWIrPwnlZyGGmBDXtradhxy3SViSgBrlWHhAktzlZHhvglX7ctSh
+	5hBjctvQwl+6LqAgZMASR2MbddxTMq+7OFGJQ7ArCN8MxY2/osC++LoQtKnSlMzpAY/lZb7lfew
+	C/x2V224W9HqfQD9cwLHNuGcSHfSMfCwJebV7x/tFVHmdTIet3eo0B7U6cvGKiXkbMaqOzv6min
+	NKQnBpggfkafAFvfCXh+K6MFEdwlBAESy9Isut09ZPzg879y5Teoc31Hp49fsF/GFhFPrOxi4qY
+	5040mruGlvLDLrI1zr/zna
+X-Google-Smtp-Source: AGHT+IH6/ztrcn+SlJfyVJT63am/rH1xZvx6X/K4m0kF1MT0B91G4kSCAcxAARG8TFZiP/ksh381nw==
+X-Received: by 2002:a05:6000:2211:b0:42f:bbc6:edab with SMTP id ffacd0b85a97d-4324e4fb405mr5082384f8f.29.1766180727224;
+        Fri, 19 Dec 2025 13:45:27 -0800 (PST)
+Received: from localhost ([87.254.0.133])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4324e9ba877sm7013078f8f.0.2025.12.19.13.45.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Dec 2025 13:45:26 -0800 (PST)
+From: Colin Ian King <colin.i.king@gmail.com>
+To: Peter Wang <peter.wang@mediatek.com>,
+	Chaotian Jing <chaotian.jing@mediatek.com>,
+	Stanley Jhu <chu.stanley@gmail.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Vinod Koul <vkoul@kernel.org>
-Subject: Re: [PATCH v2 03/12] dt-bindings: phy: mediatek,hdmi-phy: Document
- extra clocks for MT8195
-Message-ID: <176617755777.3913354.15520009809669313727.robh@kernel.org>
-References: <20251217-mtk-genio-evk-hdmi-support-v2-0-a994976bb39a@collabora.com>
- <20251217-mtk-genio-evk-hdmi-support-v2-3-a994976bb39a@collabora.com>
+	linux-scsi@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH][next] scsi: ufs: host: mediatek: make read-only array scale_us static const
+Date: Fri, 19 Dec 2025 21:44:28 +0000
+Message-ID: <20251219214428.492744-1-colin.i.king@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20251217-mtk-genio-evk-hdmi-support-v2-3-a994976bb39a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251219_125242_444785_7BBCC1A7 
-X-CRM114-Status: UNSURE (   8.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251219_134530_035909_F98026BA 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,21 +106,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Don't populate the read-only array scale_us on the stack at run time,
+instead make it static const.
 
-On Wed, 17 Dec 2025 11:19:02 +0100, Louis-Alexis Eyraud wrote:
-> From: "Nícolas F. R. A. Prado" <nfraprado@collabora.com>
-> 
-> MT8195's HDMI PHY block has 4 clocks instead of just a single one.
-> Describe the extra clocks for it.
-> 
-> Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
-> [Louis-Alexis Eyraud: addressed feedback from mailing list]
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
->  .../devicetree/bindings/phy/mediatek,hdmi-phy.yaml | 22 ++++++++++++++++++++++
->  1 file changed, 22 insertions(+)
-> 
+Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
+---
+ drivers/ufs/host/ufs-mediatek.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index ecbbf52bf734..66b11cc0703b 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -1112,7 +1112,7 @@ static void ufs_mtk_setup_clk_gating(struct ufs_hba *hba)
+ 	unsigned long flags;
+ 	u32 ah_ms = 10;
+ 	u32 ah_scale, ah_timer;
+-	u32 scale_us[] = {1, 10, 100, 1000, 10000, 100000};
++	static const u32 scale_us[] = {1, 10, 100, 1000, 10000, 100000};
+ 
+ 	if (ufshcd_is_clkgating_allowed(hba)) {
+ 		if (ufshcd_is_auto_hibern8_supported(hba) && hba->ahit) {
+-- 
+2.51.0
 
 
