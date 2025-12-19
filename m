@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D61DD7496D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DAF2D7496E
 	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Dec 2025 09:26:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,85 +12,86 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u8ApLgs+X4uwexjDkbhSVI2nnBcgdKLGB9tRGEOIKFA=; b=synVIPRIkk8Ya9YAz4OLhg1VM3
-	b7smo2y1B2neb8dKi62sLtQ6kbOpUfAj2pH8vSNzPlZsK5hBVOQInSmp1cYAiigS9x6CgLrpWFMH9
-	ghxeyIFOYHsH2agnZD3tdNrry8lioygdzBaJS9Nh03iyiI+CsFHtkGZd0AH0iJ1uuiraWDclh9/3K
-	c7UbLKY9PBn2dzjL1d9PfNkBZksKjtPc4shqIJQpThkx4iqBLFVNNP8A1IIgcM8thX73VZHl5uabP
-	49CbbVT+lIvuOcAK57rouvQ9IMSFowiqQOFKjszKqgUjeukk/dVTmUpgnnLOcPAqNzIB7PJb483V3
-	rGjZWbpQ==;
+	bh=sMnbsBDys3Q5ALCY69G8Tp1FxSfr5hlJBitMcGmH9sY=; b=Kfb0Z148m6BM5ab3kYxTOH1cZA
+	DNiN6e8Q5IJvgTS4YZ9bl2m/UHM5FmZ9/xHIku1bJAkcIfsRgiNLVYB0G7/ddVvMlbHV6+OneKMCN
+	bKEwaS7f1Cgst82XWDuT1fPMsvP35Pc0JgUBCdci8XgQyYXKHwYPVMQPIWtXHTgXv9Vk3B1Go0lkV
+	Khwbn7rWGX2TWIgC+hs0ToW12+QxC7APmgtTcM3gcbwXzwozX/x9nSVemeDhL/DHSNnEwOMivrR6C
+	eqF8svvPzI/IKkgyQrQ3zfzzbs878Wxltf1u/QttOFmRrBdQLH0hfbF15R829DR/jEsl+PMxaPsYy
+	5eCmwD0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWWkU-00000009wFa-2kPZ;
-	Fri, 19 Dec 2025 09:26:11 +0000
+	id 1vWWkW-00000009wH3-1MAV;
+	Fri, 19 Dec 2025 09:26:12 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWWkT-00000009wDw-1qeH
+	id 1vWWkU-00000009wEV-0Tp8
 	for linux-mediatek@bombadil.infradead.org;
-	Fri, 19 Dec 2025 09:26:09 +0000
+	Fri, 19 Dec 2025 09:26:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
 	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=u8ApLgs+X4uwexjDkbhSVI2nnBcgdKLGB9tRGEOIKFA=; b=UUqk1HafX1AMM3z6K6G1bvuL2T
-	G/ysaQMDXfKr6hoR5y7jUVi2TbNzUq076E6XKFSEAQx2JTt+d85pWcJ2CtvSsg4S7C1qp014WdztX
-	uzpu2KW31aJlAyIWRBFHJjXUc5UgBQwWqXEvInkI0uemspv+tNgu4vNJEkrrd160zbnKzO5fuHzvS
-	8ShPYtqjxL1sGvEyCCKNY9hkBP+mvUQoLGKGT6fMI/HDbTZWvisIfa/MkgaeJDjkPoVEKTaeBRZON
-	jpgQPMHUPfdmL0R3GZELaqXFoZ+ghF3MgcRN2Aa4OeC1ZloIwGr7gnWkM1DA/yodYGgMUP4btUkPl
-	0fhaNSEA==;
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	bh=sMnbsBDys3Q5ALCY69G8Tp1FxSfr5hlJBitMcGmH9sY=; b=g6+3H2QzYNjayqSpfKd6rrYKGX
+	e2b+c8clyJyPhnWJ8A9NKbw2g4rVzJFKqHp2vF4VTaX1phx9HKw45VyecAZ4A5+XyU+rAqNvjNh41
+	GNo/1mq+0bgrdP6XsuAugFhmcuGXQp+jJ52GbWGpuYhGInMT42zZ0jSRZx5YcFqL2QEhT5KIuoNBD
+	+ld9RJrG9pgo4cVm3Z29lz72sWIfE1sSEL1ll5ecGwzJoNdfjmojW8QFTIuwkBGG6VxzmrGBj+HeN
+	Ej0EWLgwl1MLLWOwOIDTRogsnJX3xKqKiQuLSUDjbIytc2vWwePkPY2wBMdlyH6bYkeXGnXcK8ehv
+	QrRKaivQ==;
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWVsv-0000000ATVO-3aK2
+	id 1vWVsy-0000000ATWB-0a85
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Dec 2025 08:30:53 +0000
-Received: by mail-wr1-x441.google.com with SMTP id ffacd0b85a97d-42e2e3c0dccso919712f8f.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Dec 2025 01:26:03 -0800 (PST)
+	Fri, 19 Dec 2025 08:30:54 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-47789cd2083so8868065e9.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Dec 2025 01:26:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1766136362; x=1766741162; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1766136363; x=1766741163; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=u8ApLgs+X4uwexjDkbhSVI2nnBcgdKLGB9tRGEOIKFA=;
-        b=hiHiO8mvw1Nid60NMsLInnLBaeMb15V1r5akiLfWFO3W+UDJRGZGPyH1y0+9L7hOzT
-         lysAJkMz2i1SKmifQ5+zl9KaTCRph633wiCqRIMl6DalowbuVOzt/DCU27C4s1VElC7l
-         yRUq2AVCFv39ghQaOV5BcMx+KbwtMbQ/Smc3IuWubsPtnXJewaFstaGefX53Y8reV0il
-         bhBjqQNQ0aw6gEZt8+Yq/Djt9vvHWGwGma0nXSMGQg2DcSYEFrVij6JhUfpZI/eZhf2y
-         TKOBqeCc67f8gDoo6goDflPlpDYF1NzeQGVblkQACrfjpnSx9bgcpL7z1nzITpDdH6S0
-         8fEw==
+        bh=sMnbsBDys3Q5ALCY69G8Tp1FxSfr5hlJBitMcGmH9sY=;
+        b=shViOWkhjVuDFDXS2fSQfv5d9Xtn+NqY1tVYXorxtkAoESqv4bi8G9l5/zVR1Hv8Fj
+         GxJqqhy7FBt1rfhM16pDQzAdJ4ne23jozypxp/4WcUVo4be7J9V9zw5i1Ng70jiP6HBy
+         0rdPPrsk+bTdRmT/uFvHW0Mwcjxp8m+GGTH1Zz4/7yuUXGpgpNRRGD2Hi0N/o3Mp/24C
+         ej2AYmxvcbw40J7CfL9ztGfWyrFmUfBq2we+WD3Mnil4RgnI83ldggrbsVCgcjKcOeCj
+         jls7aCiGosOd2U60ldOQ2+kJvliwpHaoK7Qss7nGpZHiiXLn8c+NmNiitLs7SUCa6uFo
+         Sqpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1766136362; x=1766741162;
+        d=1e100.net; s=20230601; t=1766136363; x=1766741163;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=u8ApLgs+X4uwexjDkbhSVI2nnBcgdKLGB9tRGEOIKFA=;
-        b=YSAabsysz7U4Up6CUp0iGjLATrlxzfDwkPV7k4GPA3yc1BwBvJ0oKfLsw7IiHFI9Bb
-         MVBsox74gxchp9HEm7LMlTwBkfnZBCqAFl79KW9d92ID+WANkJJjqzCyjSOufQbjklM6
-         FnurAdLggEhfvEYHi7nSwBoi1ABl3x9HIKUNvA1TzBpTm+Qa/HaZ8IN/ql4HhRAy3UOe
-         ynLwCRh3T+xCAbjkGacDoqzIPie909UMZiMulLAz0lie0b1Igq1BZSOPsPkPMxIHxK8C
-         v0GoOOcmnLKNeDFJJsB7XMFK0tNCsZziITSB7UyA7LOJ01qaK+xgl/TngiiujrLVLGD2
-         QpxQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUTpUjRSacALVNrH7y7Ul08ZMte7+qKvDQThjDQLSd7j5Fcv4X3zJMtdDH+gSU/W6fryG+9SvBGkL1ZJb/bvg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxhuont8giRntI3Aqadbpz0ASjnfGVUhzVfhpRzTg8DudB8OTOH
-	lXyPmhi3sFjAByj7lhQI8zrqcJvlc0DkdILppPSiQqzcF5DAWCnN1nnbeSzyspn6pew=
-X-Gm-Gg: AY/fxX6PZ1eDPR5J5zw1N2zb2VH7ltltheEnyaVWIowDyKm4VWNvA6g6qYxV4uQqCVF
-	u8NQpxdu3XMd5wIFqlvt1Ukyz8RP5gjgsAP+cboWFXmEupwvfEgtH0LPvtTS1IcRHDZe0qKsEjw
-	x+eEVjy11Wjf9N/AwIXVFUDhBpUESNOO6Jy0sjqef89Oxbv7Os65PNB/B4afJUK+k5YhCKRtkIb
-	/UYaYZsiCedrbNR/SL5yA5suB0joIx1lI1aIjvay77fIIXA3vTXGKry0Tp6yTOfQaZVkDalZ4mo
-	kyErx+yiwtq4SoBfykMRpA4Qco/c769Vex/FpriuAFOEguSRXcpUXtCpa2DrBT37WMdR9XwOPHN
-	H7Upw3kbCOaoWYsDBmn9t+MIJsxvk9ejGOB/PHU0uG5E5fAAGB+i3WGFefKF1yWjbGcmsxO6ctG
-	qVhk/cSjWF6rWeiadaYWcy0M1Wg8d/ziQQQLvszbFej/bUERKXcQFVG9+TgAI/Jyo8Kythg3RfZ
-	IY=
-X-Google-Smtp-Source: AGHT+IFQAhNkTc5ytTmFQoCzq2kpBrhbdcL15ws/0mD1lOKgcviKWNLj2gB606Fsbvncghm2MouC2Q==
-X-Received: by 2002:a05:6000:2303:b0:431:342:ad42 with SMTP id ffacd0b85a97d-4324e50d6d7mr2259085f8f.44.1766136361832;
-        Fri, 19 Dec 2025 01:26:01 -0800 (PST)
+        bh=sMnbsBDys3Q5ALCY69G8Tp1FxSfr5hlJBitMcGmH9sY=;
+        b=BnNEqqny8ruxOsGLAA9crVrmQ3v4UYSRQazw8ZqDE7B/B0x2P15XgZcrHjW2apsOw7
+         ifx2Zu6XPST32QHGApOsL2pqQaIveE2cYhryai8hSf2Q4LyZmTp0j8x/Ibh/WGgvao9X
+         kCCdgVVj93CAHARJA1xqoqKPj0evcfMRJFzwJk4lTzsyWZ0FPL03ofghsSAkUBmuk+5q
+         2ZH1KxfjVrAqURKFp15XTsUPqkNnv/JUUimQDeCW62WMIl2a83TIGUWQ25GVM1QmIAqC
+         OtExV7g/Kv50SgYa4lr816MrhL/FjFbYJCmfNJ2R9/R842AmGrRoWzp6C2H/iwGX7c6J
+         jRiw==
+X-Forwarded-Encrypted: i=1; AJvYcCUgWmUVQzV6AhnUVKLj7xEcUCwxF7PL2Q5vC0zCwfB3ejw3HNxc+FESgOJZEpPEXidQELKt1S49IsD/1Gs8mA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxmVuqwECWJKEUv9pAf3r6XuJ3OAjYyZY8Xvz3+U9Dg1C0nHgPN
+	rCMy+4yxi1aowcBGl6oZHSnNRH7MQSaHwaAZOGCcgAedHO6wWqO/M66+8Awl1YnekGU=
+X-Gm-Gg: AY/fxX7Qo1IN5XWi/Uh8t094H2A0aFg/bH0cWf2jnNm3WjQLJ5FwyljazqTguX8XDrW
+	AlD0dkeA496Dl3ewf7ASwlPCX+QrNlhFYqHyZp3pspLmlSdB8VpPv/XbVgZGTDlCEd5bAXHcgeF
+	vQAkEOAuLeLSUuhZXCQafDb7KGuVKkHl4xVtYV5oeeWId6pjustsxyUQ4EcRc4yr4GI2DXPHlZQ
+	JD2BHD7AF5uIO8Tyw0QyX5He5lpm0Uhf78C6EnUXTZrhZ4yCjf7JS38iXGOfZr9ZLAYIPDJbX2X
+	kQszHRumWK39lh5R3/hZJcxjADiJfjGqJcgI9zyJL2bErpIidMTMgibIaqoKsl5Ct/RX47iQ6Ex
+	QwhhsI4DAeFDhpsMK565PP7LUgzp87SsfmTrK8BSq1IK55Z0j8p0rAwGZPdgWMZ6ZmHSjC8Ft25
+	d08ln54UO5WT4M4cjtXWunTIaw72Mz9NtL4c3YT737guv0N2ycyd4GDZaFHjy5jDedQ3H+IdFJy
+	Kg=
+X-Google-Smtp-Source: AGHT+IFmYQWz6L1SzUM2nXiY7KJqgf22XIvvvf4Np23ibdDNNhvtpV68GA/JG623TG5sdemIb6dcqw==
+X-Received: by 2002:a05:600c:3486:b0:477:54cd:200a with SMTP id 5b1f17b1804b1-47d19549631mr17568935e9.6.1766136363134;
+        Fri, 19 Dec 2025 01:26:03 -0800 (PST)
 Received: from localhost (p200300f65f0066087cf387e078e1a5dc.dip0.t-ipconnect.de. [2003:f6:5f00:6608:7cf3:87e0:78e1:a5dc])
-        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-4324ea1b36fsm3863039f8f.5.2025.12.19.01.26.01
+        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-47d19352306sm34503295e9.5.2025.12.19.01.26.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Dec 2025 01:26:01 -0800 (PST)
+        Fri, 19 Dec 2025 01:26:02 -0800 (PST)
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
 To: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
 	"Martin K. Petersen" <martin.petersen@oracle.com>,
 	=?utf-8?q?Kai_M=C3=A4kisara?= <Kai.Makisara@kolumbus.fi>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>,
+Cc: linux-scsi@vger.kernel.org,
+	Alim Akhtar <alim.akhtar@samsung.com>,
 	Avri Altman <avri.altman@wdc.com>,
 	Bart Van Assche <bvanassche@acm.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
@@ -99,23 +100,22 @@ Cc: Alim Akhtar <alim.akhtar@samsung.com>,
 	Bean Huo <beanhuo@micron.com>,
 	Adrian Hunter <adrian.hunter@intel.com>,
 	"Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
-	linux-scsi@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 1/8] scsi: Pass a struct scsi_driver to scsi_{,un}register_driver()
-Date: Fri, 19 Dec 2025 10:25:30 +0100
-Message-ID: <ac17fdea58e384cb514c639306d48ce0005820b0.1766133330.git.u.kleine-koenig@baylibre.com>
+Subject: [PATCH v2 2/8] scsi: Make use of bus callbacks
+Date: Fri, 19 Dec 2025 10:25:31 +0100
+Message-ID: <a54e363a3fd2054fb924afd7df44bca7f444b5f1.1766133330.git.u.kleine-koenig@baylibre.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <cover.1766133330.git.u.kleine-koenig@baylibre.com>
 References: <cover.1766133330.git.u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5857; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=xXNyc3XdzurEAz26qjxcttkpA50IJuXe67qdD2JoMBo=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBpRRoQ+rKmIl8VKZbGhEIWm8TteCPYl12ira9TX AoE/6RTArmJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCaUUaEAAKCRCPgPtYfRL+ ThtBB/9ayMulPqjTlc0DszWoahuw67pfRGpc5vOLZsOtqHOXKA+kV0Lp72EO8zO686wO6j0wWde m2bV6qMC3NOc7Jp+9CB1NP5/rHr4SVg7D7B2Noa2+iS9nfJbaGHElNzsGFYq19/MkhsPY/wYWP9 9ngozQjFmjsQ/KKoCwxUGLWfAab7akqvGq2MftWRJ7DNMtAtsXRPWqz3GM8WM7WnaTtBg9gpFxV jXRGPpKCiyIWZcon5w+6sz7ouPRfeoOi10rqvjdsMOK9Uyr6IgTaaffaJEey2STBM+L32/iOSe4 SF76ectDaaQAIkTcpXVIwhEWJCjJCllTtHLvLIO2l2xcUHC8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4030; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=AHT26kUpMF4b7G1QPxCgxDWPcHR2tE/G5ZSM+TI0a0M=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBpRRoTuOkvwoPMSOYtESOOgiv6oZfT0xdqbse/N jAOhYZgWmmJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCaUUaEwAKCRCPgPtYfRL+ TrsfCACNqbNGpjownpLGZtSSMrJmbFfGRDYqSoEmO49EXbu2sgihlNoaZAk5hoSKoiUC1r9Ch1n 3ADQ+ZxDYAl97Af3cII2dD+Z7pDDr32KbMx4btjW9SPY1Cjlptm520rdW1/dCseaJawHYvq5dAS mqRlv7yYybysepVq2up6L92cVk3BDUbbqcgmf4dvYJabdhhjQy2dDUEB3QPpSr24oG4ow7ymGRs 5i/0X5x8SkT2jbWs91x+wH9Olj0QgUATt2P/bgJDCHVhswi7HoM8zmB5JlsMCifEk3mmX1r4m5j VVfOj+epeU2jDE4CcL8/G2j7zSF70I3dNhkdE4I8g4+BROFe
 X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251219_083050_339786_70E23542 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20251219_083052_269693_B47FCEA7 
+X-CRM114-Status: GOOD (  18.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,186 +130,138 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This aligns with what other subsystems do, reduces boilerplate a bit for
-device drivers and is less error prone.
+Introduce a bus specific probe, remove and shutdown function. For now
+this only allows to get rid of a cast of the generic device to an scsi
+device in the drivers and changes the remove prototype to return
+void---a non-zero return value is ignored anyhow.
 
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+The objective is to get rid of users of struct device_driver callbacks
+.probe(), .remove() and .shutdown() to eventually remove these. Until
+all scsi drivers are converted this results in a runtime warning about
+the drivers needing an update because there is a bus probe function and
+a driver probe function. The in-tree drivers are fixed by the following
+commits.
+
 Signed-off-by: Uwe Kleine-König <u.kleine-koenig@baylibre.com>
 ---
- drivers/scsi/ch.c          | 4 ++--
- drivers/scsi/scsi_sysfs.c  | 4 +++-
- drivers/scsi/sd.c          | 4 ++--
- drivers/scsi/ses.c         | 4 ++--
- drivers/scsi/sr.c          | 4 ++--
- drivers/scsi/st.c          | 4 ++--
- drivers/ufs/core/ufshcd.c  | 4 ++--
- include/scsi/scsi_driver.h | 4 ++--
- 8 files changed, 17 insertions(+), 15 deletions(-)
+ drivers/scsi/scsi_sysfs.c  | 73 ++++++++++++++++++++++++++++++++++++--
+ include/scsi/scsi_driver.h |  3 ++
+ 2 files changed, 74 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/scsi/ch.c b/drivers/scsi/ch.c
-index fa07a6f54003..f2b63e4b9b99 100644
---- a/drivers/scsi/ch.c
-+++ b/drivers/scsi/ch.c
-@@ -1014,7 +1014,7 @@ static int __init init_ch_module(void)
- 		       SCSI_CHANGER_MAJOR);
- 		goto fail1;
- 	}
--	rc = scsi_register_driver(&ch_template.gendrv);
-+	rc = scsi_register_driver(&ch_template);
- 	if (rc < 0)
- 		goto fail2;
- 	return 0;
-@@ -1028,7 +1028,7 @@ static int __init init_ch_module(void)
- 
- static void __exit exit_ch_module(void)
- {
--	scsi_unregister_driver(&ch_template.gendrv);
-+	scsi_unregister_driver(&ch_template);
- 	unregister_chrdev(SCSI_CHANGER_MAJOR, "ch");
- 	class_unregister(&ch_sysfs_class);
- 	idr_destroy(&ch_index_idr);
 diff --git a/drivers/scsi/scsi_sysfs.c b/drivers/scsi/scsi_sysfs.c
-index 99eb0a30df61..db0ba68f2e6e 100644
+index db0ba68f2e6e..6b8c5c05f294 100644
 --- a/drivers/scsi/scsi_sysfs.c
 +++ b/drivers/scsi/scsi_sysfs.c
-@@ -1554,8 +1554,10 @@ void scsi_remove_target(struct device *dev)
+@@ -554,10 +554,48 @@ static int scsi_bus_uevent(const struct device *dev, struct kobj_uevent_env *env
+ 	return 0;
+ }
+ 
++static int scsi_bus_probe(struct device *dev)
++{
++	struct scsi_device *sdp = to_scsi_device(dev);
++	struct scsi_driver *drv = to_scsi_driver(dev->driver);
++
++	if (drv->probe)
++		return drv->probe(sdp);
++	else
++		return 0;
++}
++
++static void scsi_bus_remove(struct device *dev)
++{
++	struct scsi_device *sdp = to_scsi_device(dev);
++	struct scsi_driver *drv = to_scsi_driver(dev->driver);
++
++	if (drv->remove)
++		drv->remove(sdp);
++}
++
++static void scsi_bus_shutdown(struct device *dev)
++{
++	struct scsi_device *sdp = to_scsi_device(dev);
++	struct scsi_driver *drv;
++
++	if (!dev->driver)
++		return;
++
++	drv = to_scsi_driver(dev->driver);
++
++	if (drv->shutdown)
++		drv->shutdown(sdp);
++}
++
++
+ const struct bus_type scsi_bus_type = {
+-        .name		= "scsi",
+-        .match		= scsi_bus_match,
++	.name		= "scsi",
++	.match		= scsi_bus_match,
+ 	.uevent		= scsi_bus_uevent,
++	.probe		= scsi_bus_probe,
++	.remove		= scsi_bus_remove,
++	.shutdown	= scsi_bus_shutdown,
+ #ifdef CONFIG_PM
+ 	.pm		= &scsi_bus_pm_ops,
+ #endif
+@@ -1554,6 +1592,30 @@ void scsi_remove_target(struct device *dev)
  }
  EXPORT_SYMBOL(scsi_remove_target);
  
--int __scsi_register_driver(struct device_driver *drv, struct module *owner)
-+int __scsi_register_driver(struct scsi_driver *sdrv, struct module *owner)
- {
-+	struct device_driver *drv = &sdrv->gendrv;
++static int scsi_legacy_probe(struct scsi_device *sdp)
++{
++	struct device *dev = &sdp->sdev_gendev;
++	struct device_driver *driver = dev->driver;
 +
++	return driver->probe(dev);
++}
++
++static void scsi_legacy_remove(struct scsi_device *sdp)
++{
++	struct device *dev = &sdp->sdev_gendev;
++	struct device_driver *driver = dev->driver;
++
++	driver->remove(dev);
++}
++
++static void scsi_legacy_shutdown(struct scsi_device *sdp)
++{
++	struct device *dev = &sdp->sdev_gendev;
++	struct device_driver *driver = dev->driver;
++
++	driver->shutdown(dev);
++}
++
+ int __scsi_register_driver(struct scsi_driver *sdrv, struct module *owner)
+ {
+ 	struct device_driver *drv = &sdrv->gendrv;
+@@ -1561,6 +1623,13 @@ int __scsi_register_driver(struct scsi_driver *sdrv, struct module *owner)
  	drv->bus = &scsi_bus_type;
  	drv->owner = owner;
  
-diff --git a/drivers/scsi/sd.c b/drivers/scsi/sd.c
-index f50b92e63201..6ea6ee2830a4 100644
---- a/drivers/scsi/sd.c
-+++ b/drivers/scsi/sd.c
-@@ -4417,7 +4417,7 @@ static int __init init_sd(void)
- 		goto err_out_class;
- 	}
- 
--	err = scsi_register_driver(&sd_template.gendrv);
-+	err = scsi_register_driver(&sd_template);
- 	if (err)
- 		goto err_out_driver;
- 
-@@ -4444,7 +4444,7 @@ static void __exit exit_sd(void)
- 
- 	SCSI_LOG_HLQUEUE(3, printk("exit_sd: exiting sd driver\n"));
- 
--	scsi_unregister_driver(&sd_template.gendrv);
-+	scsi_unregister_driver(&sd_template);
- 	mempool_destroy(sd_page_pool);
- 
- 	class_unregister(&sd_disk_class);
-diff --git a/drivers/scsi/ses.c b/drivers/scsi/ses.c
-index 2c61624cb4b0..f8f5164f3de2 100644
---- a/drivers/scsi/ses.c
-+++ b/drivers/scsi/ses.c
-@@ -921,7 +921,7 @@ static int __init ses_init(void)
- 	if (err)
- 		return err;
- 
--	err = scsi_register_driver(&ses_template.gendrv);
-+	err = scsi_register_driver(&ses_template);
- 	if (err)
- 		goto out_unreg;
- 
-@@ -934,7 +934,7 @@ static int __init ses_init(void)
- 
- static void __exit ses_exit(void)
- {
--	scsi_unregister_driver(&ses_template.gendrv);
-+	scsi_unregister_driver(&ses_template);
- 	scsi_unregister_interface(&ses_interface);
++	if (!sdrv->probe && drv->probe)
++		sdrv->probe = scsi_legacy_probe;
++	if (!sdrv->remove && drv->remove)
++		sdrv->remove = scsi_legacy_remove;
++	if (!sdrv->shutdown && drv->shutdown)
++		sdrv->shutdown = scsi_legacy_shutdown;
++
+ 	return driver_register(drv);
  }
- 
-diff --git a/drivers/scsi/sr.c b/drivers/scsi/sr.c
-index add13e306898..2f6bb6355186 100644
---- a/drivers/scsi/sr.c
-+++ b/drivers/scsi/sr.c
-@@ -1001,7 +1001,7 @@ static int __init init_sr(void)
- 	rc = register_blkdev(SCSI_CDROM_MAJOR, "sr");
- 	if (rc)
- 		return rc;
--	rc = scsi_register_driver(&sr_template.gendrv);
-+	rc = scsi_register_driver(&sr_template);
- 	if (rc)
- 		unregister_blkdev(SCSI_CDROM_MAJOR, "sr");
- 
-@@ -1010,7 +1010,7 @@ static int __init init_sr(void)
- 
- static void __exit exit_sr(void)
- {
--	scsi_unregister_driver(&sr_template.gendrv);
-+	scsi_unregister_driver(&sr_template);
- 	unregister_blkdev(SCSI_CDROM_MAJOR, "sr");
- }
- 
-diff --git a/drivers/scsi/st.c b/drivers/scsi/st.c
-index 168f25e4aaa3..45622cfce926 100644
---- a/drivers/scsi/st.c
-+++ b/drivers/scsi/st.c
-@@ -4576,7 +4576,7 @@ static int __init init_st(void)
- 		goto err_class;
- 	}
- 
--	err = scsi_register_driver(&st_template.gendrv);
-+	err = scsi_register_driver(&st_template);
- 	if (err)
- 		goto err_chrdev;
- 
-@@ -4592,7 +4592,7 @@ static int __init init_st(void)
- 
- static void __exit exit_st(void)
- {
--	scsi_unregister_driver(&st_template.gendrv);
-+	scsi_unregister_driver(&st_template);
- 	unregister_chrdev_region(MKDEV(SCSI_TAPE_MAJOR, 0),
- 				 ST_MAX_TAPE_ENTRIES);
- 	class_unregister(&st_sysfs_class);
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 80c0b49f30b0..da1e89e95d07 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -11240,7 +11240,7 @@ static int __init ufshcd_core_init(void)
- 
- 	ufs_debugfs_init();
- 
--	ret = scsi_register_driver(&ufs_dev_wlun_template.gendrv);
-+	ret = scsi_register_driver(&ufs_dev_wlun_template);
- 	if (ret)
- 		ufs_debugfs_exit();
- 	return ret;
-@@ -11249,7 +11249,7 @@ static int __init ufshcd_core_init(void)
- static void __exit ufshcd_core_exit(void)
- {
- 	ufs_debugfs_exit();
--	scsi_unregister_driver(&ufs_dev_wlun_template.gendrv);
-+	scsi_unregister_driver(&ufs_dev_wlun_template);
- }
- 
- module_init(ufshcd_core_init);
+ EXPORT_SYMBOL(__scsi_register_driver);
 diff --git a/include/scsi/scsi_driver.h b/include/scsi/scsi_driver.h
-index c0e89996bdb3..40aba9a9349a 100644
+index 40aba9a9349a..249cea724abd 100644
 --- a/include/scsi/scsi_driver.h
 +++ b/include/scsi/scsi_driver.h
-@@ -25,9 +25,9 @@ struct scsi_driver {
+@@ -12,6 +12,9 @@ struct request;
+ struct scsi_driver {
+ 	struct device_driver	gendrv;
  
- #define scsi_register_driver(drv) \
- 	__scsi_register_driver(drv, THIS_MODULE)
--int __scsi_register_driver(struct device_driver *, struct module *);
-+int __scsi_register_driver(struct scsi_driver *, struct module *);
- #define scsi_unregister_driver(drv) \
--	driver_unregister(drv);
-+	driver_unregister(&(drv)->gendrv);
- 
- extern int scsi_register_interface(struct class_interface *);
- #define scsi_unregister_interface(intf) \
++	int (*probe)(struct scsi_device *);
++	void (*remove)(struct scsi_device *);
++	void (*shutdown)(struct scsi_device *);
+ 	int (*resume)(struct device *);
+ 	void (*rescan)(struct device *);
+ 	blk_status_t (*init_command)(struct scsi_cmnd *);
 -- 
 2.47.3
 
