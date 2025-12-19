@@ -4,80 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AFAFD7879F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Dec 2025 18:18:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4243AE66882
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Dec 2025 20:50:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:
+	Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6YaQsv0P6TIlgHLkXT7+RR7CiuRLzcUpctEvPAChUrU=; b=uY77k4WrVRzLt+aYN08iMIIkbs
-	dwjpOJ3XLNK2VXVYN3+hD0lO94ROUOWZpvgLE8LZ7fXk/STyssXjOIpo4vF/kmQstts5JEIRSQup7
-	aJu/6pylED2mPHdBJe5OYwJozA6VKhU/kiIH9ONrmkyCdIhF8JvEwlt0hEFYWxsJQCDcJJStJUc0A
-	RBy9sOnEpXai+ZOvjr8hESriBoVz8gw35Yih6J6rEZvMJqXO/Y8gJNlInOCoDCz6BuMnUo2+3uBtR
-	e7uzd6UYVVoP9fGbbA0H/AZSQSh3MIDkHxK2BHKaobNAAhksiHTLbmA7oOiSXlHSUcjXJ7cC5PNqA
-	Ay1YUzYg==;
+	bh=LgO+Zt6JaQWb39Yj1QsW4A1EaI3Ls/K898yAdxRAz2A=; b=e1lTPHAB/UG9cHIJT7L6hsjona
+	CIRw3VSzYwdCsQChtHPzvqIsPPEkVJT6hILWVImrLPzGmHwB+i1F82unZlPnTUe2yllf4JwS/Kk/C
+	bZFmF0pzQy6MdiCf67pUW0Smu3MCvJjpmjNlzM+DK3fkEk/0/394oaqt+fed2Bt3qzK1TtsfAAGRl
+	7AFBkStwiiX3cd4WpXb2PROisVYZDg+inGIKSfxhPTT6pmNgU7ZQawbaHAxH3k5+mnZQne3q2SEmU
+	BUChj85ugIkcRWMEGa3WC0N604B1zF+Ihgh3J1ZUvJC66evUOwJ17TZkb17hUFgIgetfnoSkw8ePc
+	E/jPjkJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWf3p-0000000Ap71-2s7A;
-	Fri, 19 Dec 2025 18:18:41 +0000
-Received: from 013.lax.mailroute.net ([199.89.1.16])
+	id 1vWhQk-0000000AyCH-2Fpx;
+	Fri, 19 Dec 2025 20:50:30 +0000
+Received: from out-177.mta0.migadu.com ([91.218.175.177])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWf3m-0000000Ap6H-2rc3;
-	Fri, 19 Dec 2025 18:18:39 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 013.lax.mailroute.net (Postfix) with ESMTP id 4dXwlJ4rLTzlwmGv;
-	Fri, 19 Dec 2025 18:18:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1766168313; x=1768760314; bh=6YaQsv0P6TIlgHLkXT7+RR7C
-	iuRLzcUpctEvPAChUrU=; b=WcPiwhcMktItuTDX1xP5CHdeKoQ3q3USFL4H49Z2
-	L2VM9oOm3EA+Dh6QJEnlJXnMrHQgr4uzApGsXMNO7a9rwr2HY9vpQp1wqSFZupll
-	B48eenX94F/KvfKxzZNOl1XuBzjEngIJ+AWjCc3lpFAyflWMmpYYB4DsqvAlfUac
-	9LrhFVMVmNz+/jWmmYwXNjXL0zp/TmKMOz44KbDQwJ++EayxKGxjRXc9wW6BK2i3
-	Q2qHZrP1Hf/WrkIrh3SvT5mG/gwRTcQ6tAgQUED6B633sTOlgrUAqVUumSR+7Q4U
-	t5f0KvE4E/A46OA0xL7Na+C24uzHpiSaTd5ne6Z7ZW/SGA==
-X-Virus-Scanned: by MailRoute
-Received: from 013.lax.mailroute.net ([127.0.0.1])
- by localhost (013.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id jpw9X9Xft50J; Fri, 19 Dec 2025 18:18:33 +0000 (UTC)
-Received: from [100.119.48.131] (unknown [104.135.180.219])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 013.lax.mailroute.net (Postfix) with ESMTPSA id 4dXwlB3qcczlwmGq;
-	Fri, 19 Dec 2025 18:18:29 +0000 (UTC)
-Message-ID: <e49c1ea8-bc13-4881-bc6b-2e1a08b1184f@acm.org>
-Date: Fri, 19 Dec 2025 10:18:29 -0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/8] scsi: Make use of bus callbacks
-To: =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- =?UTF-8?Q?Kai_M=C3=A4kisara?= <Kai.Makisara@kolumbus.fi>
-Cc: linux-scsi@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Peter Wang <peter.wang@mediatek.com>, Bean Huo <beanhuo@micron.com>,
- Adrian Hunter <adrian.hunter@intel.com>,
- "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <cover.1766133330.git.u.kleine-koenig@baylibre.com>
- <a54e363a3fd2054fb924afd7df44bca7f444b5f1.1766133330.git.u.kleine-koenig@baylibre.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <a54e363a3fd2054fb924afd7df44bca7f444b5f1.1766133330.git.u.kleine-koenig@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+	id 1vWhQg-0000000AyBD-07BW
+	for linux-mediatek@lists.infradead.org;
+	Fri, 19 Dec 2025 20:50:28 +0000
+Content-Type: text/plain;
+	charset=utf-8
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1766177416;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=LgO+Zt6JaQWb39Yj1QsW4A1EaI3Ls/K898yAdxRAz2A=;
+	b=SJ0ZO+GMFeFboBd/whRfMpOQq3lufle+NcG9y7I0VXiB5ZDNRO1qGMbcgBVoG99JAM3ECL
+	vEA2Ih8CrTNwT4RqJ0JekLOhxQPaje+ypt+yXhnI+DChKaONIm98CcnYm62wJSqXaEjaDz
+	k3iCFBuc0TVBDAc2nJpzT+v+duZGLW4=
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.11\))
+Subject: Re: [PATCH v2] wifi: mt76: Fix strscpy buffer overflow in
+ mt76_connac2_load_patch
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Matthew Schwartz <matthew.schwartz@linux.dev>
+In-Reply-To: <20251205161202.48409-1-mikhail.v.gavrilov@gmail.com>
+Date: Fri, 19 Dec 2025 12:49:50 -0800
+Cc: Mario Limonciello <superm1@kernel.org>,
+ Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
 Content-Transfer-Encoding: quoted-printable
+Message-Id: <6B33EA87-6175-472E-AFA3-88A08ADE1E27@linux.dev>
+References: <CABXGCsMeAZyNJ-Axt_CUCXgyieWPV3rrcLpWsveMPT8R0YPGnQ@mail.gmail.com>
+ <20251205161202.48409-1-mikhail.v.gavrilov@gmail.com>
+To: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251219_101838_752422_2CE25733 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20251219_125027_177595_F2C2A24C 
+X-CRM114-Status: GOOD (  15.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,23 +75,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/19/25 1:25 AM, Uwe Kleine-K=C3=B6nig wrote:
-> +static int scsi_bus_probe(struct device *dev)
-> +{
-> +	struct scsi_device *sdp =3D to_scsi_device(dev);
-> +	struct scsi_driver *drv =3D to_scsi_driver(dev->driver);
-> +
-> +	if (drv->probe)
-> +		return drv->probe(sdp);
-> +	else
-> +		return 0;
-> +}
 
-If this series has to be reposted, please leave out the "else" statement
-from the above function. It is uncommon in Linux kernel code to have an
-"else" statement after a "return" statement.
 
-Thanks,
+> On Dec 5, 2025, at 8:12=E2=80=AFAM, Mikhail Gavrilov =
+<mikhail.v.gavrilov@gmail.com> wrote:
+>=20
+> Commit f804a5895eba ("wifi: mt76: Strip whitespace from build ddate") =
+introduced
+> a kernel panic/WARN on systems using MediaTek MT7921e (and potentially =
+others
+> using mt76_connac_lib) due to an incorrect buffer size calculation.
+>=20
+> The error logged is:
+> "strnlen: detected buffer overflow: 17 byte read of buffer size 16"
+>=20
+> This occurs because the field 'hdr->build_date' is a fixed-size array =
+of 16 bytes.
+> The patch allocated a 17-byte local buffer 'build_date' but used =
+'sizeof(build_date)'
+> (17) as the read limit for strscpy, causing Fortify Source to =
+correctly detect
+> an attempt to read 17 bytes from the 16-byte source field.
+>=20
+> To fix this, replace strscpy with memcpy, which is appropriate for raw =
+data
+> copying, and explicitly use the size of the source field =
+(sizeof(hdr->build_date) =3D 16)
+> to limit the read, followed by manual null termination.
+>=20
+> Fixes: f804a5895eba ("wifi: mt76: Strip whitespace from build ddate")
+> Signed-off-by: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
 
-Bart.
+Ran into this kernel panic while booting into 6.19-rc1 on my handheld, =
+this patch fixed it.
+
+Tested-by: Matthew Schwartz <matthew.schwartz@linux.dev>
+
+> ---
+> drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 7 +++++--
+> 1 file changed, 5 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c =
+b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> index ea99167765b0..d2c4c65ec464 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> @@ -3125,8 +3125,11 @@ int mt76_connac2_load_patch(struct mt76_dev =
+*dev, const char *fw_name)
+> }
+>=20
+> hdr =3D (const void *)fw->data;
+> - strscpy(build_date, hdr->build_date, sizeof(build_date));
+> - build_date[16] =3D '\0';
+> + /* hdr->build_date is 16 bytes. Copy exactly 16 bytes to the 17-byte =
+buffer,
+> + * and then add the null terminator at index 16.
+> + */
+> + memcpy(build_date, hdr->build_date, sizeof(hdr->build_date));
+> + build_date[sizeof(hdr->build_date)] =3D '\0';
+> strim(build_date);
+> dev_info(dev->dev, "HW/SW Version: 0x%x, Build Time: %.16s\n",
+> be32_to_cpu(hdr->hw_sw_ver), build_date);
+> --=20
+> 2.52.0
+>=20
+>=20
+
 
