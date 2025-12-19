@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4243AE66882
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Dec 2025 20:50:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2508E6688C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Dec 2025 20:52:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:
-	Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LgO+Zt6JaQWb39Yj1QsW4A1EaI3Ls/K898yAdxRAz2A=; b=e1lTPHAB/UG9cHIJT7L6hsjona
-	CIRw3VSzYwdCsQChtHPzvqIsPPEkVJT6hILWVImrLPzGmHwB+i1F82unZlPnTUe2yllf4JwS/Kk/C
-	bZFmF0pzQy6MdiCf67pUW0Smu3MCvJjpmjNlzM+DK3fkEk/0/394oaqt+fed2Bt3qzK1TtsfAAGRl
-	7AFBkStwiiX3cd4WpXb2PROisVYZDg+inGIKSfxhPTT6pmNgU7ZQawbaHAxH3k5+mnZQne3q2SEmU
-	BUChj85ugIkcRWMEGa3WC0N604B1zF+Ihgh3J1ZUvJC66evUOwJ17TZkb17hUFgIgetfnoSkw8ePc
-	E/jPjkJg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YbeFMOrTNRZw+sXivUqYIrL8vhKl30EHMobzjJSF+zo=; b=CIgjQAmPbY8AbgbHYUiA3ewlzX
+	Xt0gRmn0ZuUnCbmQtzAoP6TrQMfF5tR3LOmNloqv249CCE+xe6HRrtNX9uRy8rz/x0WEa5il0hScN
+	9L6Jv2eDkmY2YetmQ231RT9qqjeiA9MFPEddVdSallCDEkq/q6K1nQDZkgD/mMukpaifrydr7baVi
+	/2Jk8jYKrwhU/H4oLKM+7xg9M6pH1t9XI4HfBZblL5dQypkEkGvdjl4jOqLSsSBq2u0rRsvFAakOL
+	JNgaqYZJMz2KA+/60O8vpcW77MkAsy7NqXfdhkUcNmZXMA4wsJpW5TbJ/spJL5DIBw8MMvUNHJKle
+	FlXzb1Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWhQk-0000000AyCH-2Fpx;
-	Fri, 19 Dec 2025 20:50:30 +0000
-Received: from out-177.mta0.migadu.com ([91.218.175.177])
+	id 1vWhSP-0000000AyK3-23dc;
+	Fri, 19 Dec 2025 20:52:13 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWhQg-0000000AyBD-07BW
-	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Dec 2025 20:50:28 +0000
-Content-Type: text/plain;
-	charset=utf-8
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1766177416;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LgO+Zt6JaQWb39Yj1QsW4A1EaI3Ls/K898yAdxRAz2A=;
-	b=SJ0ZO+GMFeFboBd/whRfMpOQq3lufle+NcG9y7I0VXiB5ZDNRO1qGMbcgBVoG99JAM3ECL
-	vEA2Ih8CrTNwT4RqJ0JekLOhxQPaje+ypt+yXhnI+DChKaONIm98CcnYm62wJSqXaEjaDz
-	k3iCFBuc0TVBDAc2nJpzT+v+duZGLW4=
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.11\))
-Subject: Re: [PATCH v2] wifi: mt76: Fix strscpy buffer overflow in
- mt76_connac2_load_patch
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Matthew Schwartz <matthew.schwartz@linux.dev>
-In-Reply-To: <20251205161202.48409-1-mikhail.v.gavrilov@gmail.com>
-Date: Fri, 19 Dec 2025 12:49:50 -0800
-Cc: Mario Limonciello <superm1@kernel.org>,
- Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>,
- linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <6B33EA87-6175-472E-AFA3-88A08ADE1E27@linux.dev>
-References: <CABXGCsMeAZyNJ-Axt_CUCXgyieWPV3rrcLpWsveMPT8R0YPGnQ@mail.gmail.com>
- <20251205161202.48409-1-mikhail.v.gavrilov@gmail.com>
-To: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
-X-Migadu-Flow: FLOW_OUT
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251219_125027_177595_F2C2A24C 
-X-CRM114-Status: GOOD (  15.65  )
+	id 1vWhSO-0000000AyJc-1wkD;
+	Fri, 19 Dec 2025 20:52:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4D45860008;
+	Fri, 19 Dec 2025 20:52:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7098C4CEF1;
+	Fri, 19 Dec 2025 20:52:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1766177531;
+	bh=IfN5Dcnu7w/fq70aai0mm7T/3vR0HXA+EKmz+kfT6XU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jq1tQtSS/JSCOocX/vIVsiOD5D9gS1yjIp+Grqn/3RTPO307bYj+41/DcUdH6/GRe
+	 YIVF7sjtezyVdaSW1ztPfWvX2kXCnfnd7QwoimHJGaZDeVUDmBvd0TE2jCCoqPY3Q0
+	 Y5GeDEipTvoQOAzB3uRM81xTft9LfvBxybKkCteBjB1woJ47kbihrI8NJ+mql6jQX0
+	 3kYNT8JCuQ0aKutiRFVaZkfXGnRMPBrwXF36aNPqxNyQZqoeEf78p0WVaK2C7YKc7f
+	 uuoa294UBUMFCp9e+GdvHgPulI5N1UmQY9BJG24oJgTMlixqXdN14Bp8KGSpd6XLLv
+	 D3vyQsVNbdGsg==
+Date: Fri, 19 Dec 2025 14:52:08 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Guillaume Ranquet <granquet@baylibre.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-mediatek@lists.infradead.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	linux-kernel@vger.kernel.org,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, kernel@collabora.com,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 02/12] dt-bindings: phy: mediatek,hdmi-phy: Add
+ support for MT8188 SoC
+Message-ID: <176617752769.3912550.11182398487708653155.robh@kernel.org>
+References: <20251217-mtk-genio-evk-hdmi-support-v2-0-a994976bb39a@collabora.com>
+ <20251217-mtk-genio-evk-hdmi-support-v2-2-a994976bb39a@collabora.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251217-mtk-genio-evk-hdmi-support-v2-2-a994976bb39a@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,69 +83,16 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-
-> On Dec 5, 2025, at 8:12=E2=80=AFAM, Mikhail Gavrilov =
-<mikhail.v.gavrilov@gmail.com> wrote:
->=20
-> Commit f804a5895eba ("wifi: mt76: Strip whitespace from build ddate") =
-introduced
-> a kernel panic/WARN on systems using MediaTek MT7921e (and potentially =
-others
-> using mt76_connac_lib) due to an incorrect buffer size calculation.
->=20
-> The error logged is:
-> "strnlen: detected buffer overflow: 17 byte read of buffer size 16"
->=20
-> This occurs because the field 'hdr->build_date' is a fixed-size array =
-of 16 bytes.
-> The patch allocated a 17-byte local buffer 'build_date' but used =
-'sizeof(build_date)'
-> (17) as the read limit for strscpy, causing Fortify Source to =
-correctly detect
-> an attempt to read 17 bytes from the 16-byte source field.
->=20
-> To fix this, replace strscpy with memcpy, which is appropriate for raw =
-data
-> copying, and explicitly use the size of the source field =
-(sizeof(hdr->build_date) =3D 16)
-> to limit the read, followed by manual null termination.
->=20
-> Fixes: f804a5895eba ("wifi: mt76: Strip whitespace from build ddate")
-> Signed-off-by: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
-
-Ran into this kernel panic while booting into 6.19-rc1 on my handheld, =
-this patch fixed it.
-
-Tested-by: Matthew Schwartz <matthew.schwartz@linux.dev>
-
+On Wed, 17 Dec 2025 11:19:01 +0100, Louis-Alexis Eyraud wrote:
+> Add compatible string for the HDMI PHY IP on MT8188 SoC, that is
+> compatible with the one found on MT8195 SoC.
+> 
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 > ---
-> drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 7 +++++--
-> 1 file changed, 5 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c =
-b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> index ea99167765b0..d2c4c65ec464 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> @@ -3125,8 +3125,11 @@ int mt76_connac2_load_patch(struct mt76_dev =
-*dev, const char *fw_name)
-> }
->=20
-> hdr =3D (const void *)fw->data;
-> - strscpy(build_date, hdr->build_date, sizeof(build_date));
-> - build_date[16] =3D '\0';
-> + /* hdr->build_date is 16 bytes. Copy exactly 16 bytes to the 17-byte =
-buffer,
-> + * and then add the null terminator at index 16.
-> + */
-> + memcpy(build_date, hdr->build_date, sizeof(hdr->build_date));
-> + build_date[sizeof(hdr->build_date)] =3D '\0';
-> strim(build_date);
-> dev_info(dev->dev, "HW/SW Version: 0x%x, Build Time: %.16s\n",
-> be32_to_cpu(hdr->hw_sw_ver), build_date);
-> --=20
-> 2.52.0
->=20
->=20
+>  Documentation/devicetree/bindings/phy/mediatek,hdmi-phy.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
