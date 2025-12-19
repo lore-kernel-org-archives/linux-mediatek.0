@@ -4,73 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DC17D74961
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Dec 2025 08:13:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43880D7496B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Dec 2025 09:26:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=it0iUHw/eEBQ637pReoeL+SRk7tdVb2PLzVbz40JGRA=; b=ma60t8e2WF3Rn3pCWj84o5NUDK
-	5rhZU5CJcDYaYQw4rbxWDsTtn8c7x7ZAsZAgT0ftvjT/YkHvXnNjN5KzkUxtgmHN6pQXmk96DEDvP
-	SWBPzIf/UUfQ/tBSRZbHmcTRrj0egVvuJVLkBDbnjYvELzdYYhntLVvWAm8EsqH1oml+rcR6M/1BC
-	eTPAeqGB1rmACeVlJieVP3qUyDLb+nplkwa/r+BbBY5rEeZ7K0xILqjw3ImwwaHzjsW4BPzXhQDNq
-	V5jHKEJ293C87qiX1itujqwd8jkqe3ucKQZrSs/Lgfcf3qiGz82VPA6BKqCTg4YwInCbhDuTkDS/s
-	kr7js+fA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mEQfLBNkig6KHxBO+ZBOPBSWtfNwl/mAz8zFq4Fdwak=; b=cym8XYkLSFDdEYmFQicXjbyix+
+	92dsB5kc/3SCDLJOUfau0g0VyObb65foks0X4NpRsHJn8Ta2p1bbwouhXeSwf7r7mzeQb87qhR8Nr
+	QUNbHPejFYpD+5D5EiCQJLvcqOuOLsb6Wggu2tMc5uLQfcqv2xuLvZLSI2xuKAqFGY9vg+odOi0Dl
+	Njeu0EDN+WOULnlFUpWM1QgjtODa25IWF6x8cODPnpsV5DeE+6H44G37Wek2nVl43rYkDEVgbpqyX
+	Uatqfsw1LmMKwbl+AVSJTeGHSoYqtu6A3xYJel+/Bk7MBkfyEYzGVyFJiQ80ocqZO6ve+uJ0ibflj
+	62nWlfAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWVc9-00000009p7W-3ppS;
-	Fri, 19 Dec 2025 08:13:29 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vWWkU-00000009wF7-1YNC;
+	Fri, 19 Dec 2025 09:26:10 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWVc2-00000009oxO-0MQ4;
-	Fri, 19 Dec 2025 08:13:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 61E2B6014A;
-	Fri, 19 Dec 2025 08:13:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12A1FC4CEF1;
-	Fri, 19 Dec 2025 08:13:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766132001;
-	bh=lvn+iw5IxWpNsx5ppx7UaT4z6tDEmv9IRQkqRmBQGQc=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=M/IUrif+d4VKn/MpBzO8oXg7fyF4udbLWjFGC+kaeTKXVdK9pnVZSk9qfn61Oncpi
-	 GhR5l8VAZ4IA86aoju4qY4COjaufMk77R9+qzFfwAZOU9Mv14DiZsPZrAzz0fP8C8O
-	 RVHu5dAXut9fzq8uA8rHcl2hgk3qtCR3o7FIhbbxw1etaHqlACnKIZpUTGy4fOBicw
-	 mUDSllG1LCmoO9eVDdYT7nQEkxN8ixdDPeXlwtWDpLBykJTtiH2K8RTzj7p3zgR18A
-	 EftOxjTcUmtQ5u7Eo9SivKx97gnYTIzCDyvlh8FtZdCb56p0NX1TrxQ6CjwLInTtmr
-	 ati6fNfjsc4FQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3BBE4380AA50;
-	Fri, 19 Dec 2025 08:10:11 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1vWWkT-00000009wDu-1eHH
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 19 Dec 2025 09:26:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=mEQfLBNkig6KHxBO+ZBOPBSWtfNwl/mAz8zFq4Fdwak=; b=ilhu46EzvIlxY7lUHHkXV+dXC9
+	CVyF4GfJxRSuVaNWbm4GdaI4Sg2nRmdxE9EvxbOoC7JKdLngp4xqYxGlVfGDWDplCjrf7OrPJ2PfQ
+	GRycdyjK4akGnrOHbfdXtSPDxTbf34B2Xm+s+hs8PnqywnUuPEMCM2UiM2FKStVxG/aP/CsB+tqja
+	6ENNOkGkqyFhKtwHZFbwpxrXnuif3u/TqoyPkGMzyhFtx/q2+0keDDEsb8Y9gSFjELzkvLhis4Tds
+	hGcLZjSYIVS3fyAQ8KktZCCqHQtcje3ttcqHueVS7U4cJ/dEhcLXBF7D5VTgvnEiyzYnLCgUBndiL
+	WeGuqfkg==;
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vWVsv-0000000ATVN-32lJ
+	for linux-mediatek@lists.infradead.org;
+	Fri, 19 Dec 2025 08:30:53 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-42fbc305882so803287f8f.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Dec 2025 01:26:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1766136361; x=1766741161; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=mEQfLBNkig6KHxBO+ZBOPBSWtfNwl/mAz8zFq4Fdwak=;
+        b=YcnNqOZDb3JJi/ttsb6H52aNceYKM/nrOkRPfVQhejPHRzVhTMcN+FTxfaEd2WcXfg
+         llPw0GnQw9JewPMZWB++q4ps+2a0gPy5ZtiyuhqgAlS2wB238lLJlBIGDsMhx74mPLHD
+         Epm8uCAskENlSO1HRzAyiCfYsSgMt+s47rlTgbVAUlXT/VQEQ5s+Gp7ft1dhJsaj0mk6
+         92gB87py06/6GBBE2MYwU+tHvN/VTa8OGqCtGmQZBr1rVhVTwljkD78ZZ6wJcLF/sBlF
+         +UkYKWOjTQaygJmS+N1dcPORCs+JBJjSfQ3btQo7IlyUMXg3F4BgRRouT40/JBDP3aHU
+         Dwew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1766136361; x=1766741161;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mEQfLBNkig6KHxBO+ZBOPBSWtfNwl/mAz8zFq4Fdwak=;
+        b=mshNmIeCg05aMOjYgiF/6fGYIuR9YquE0K7eL5DOvWlWfp8Y2nROViCWQ8jm8zbJzQ
+         +8LGdln75REn98z43IA9qhdfk1FCL4mQazfmyFICll0uReoHCfwttR7FCACYD+YbrCQU
+         bwJEROUtgVN/qlVGjXjBwQcM9BwSEx3owrGsNV6lILhRBiCu80HQLvkiJh19fKT7vXNJ
+         WUNkk2HwDRGQPuJAqDWmO5Gin1RYXtF/TC4c2jWmB0WBFG/ic/shCXdGOhCLnQmNVioB
+         +eEtcrfAfOkx7mgSEDd9cNAaSjW3kTYRYp/gLIh3MNUmWtXZpIOAJjR8ja89kkTkvBNZ
+         SUxw==
+X-Forwarded-Encrypted: i=1; AJvYcCXl3qgSWXETJ/p3B1Nx3+bIhypdxHiy+2FMRioZyEkIkNJx7BbgcjySS2hkrqvadMkgXZVLFAWwWdt6i7T/UQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzL8Wds7uR1kA4mnLl7JITdNOm4JMg7JhINX/Iosm+TAiZDAxZy
+	IeKnT+hS7HJnl2htD0RXfaQHdxNlPfOWjOUH50CMuYIHVQW6yev4TQqgokIOs0fk7NU=
+X-Gm-Gg: AY/fxX6Sb5yckaiJ2bwyQ7EWL6bMYWvf8h7nO2efdKxYhWY8kGqOHnMNBuILqYM0Q2Q
+	cwmYPmaEqRv5vQ4YgeER660zUsuVU4LjlK1datNX8pioYphlEC7v8CPdTWDHG5ixnnMvqg7QDip
+	/rj/D+lxIq8mSTBha3eKeluPN9eNylk2KKHugwXwSPu5n8wcsv4oAzxrRc/hSUew1GgKiPXdFch
+	oxMTRSpCtrQzGD736ezvrzZ7ruUmnT7DvySZLuv6tdf+kMGvR4BL3qc/gbOSI+/AeZjqHZFsKxF
+	Pw9JF6rQzr5kuOscNK4Irc43CKvlkYKZqY87o+J/udfyeDniPzzkv3fdGPfy9h0Ntdu88kN82KL
+	7SBtIx43KE8Jw+0xutaXwLe5l9/GTC9M3CXWjYKmhJQIlWbg2F/45qVwHJlLUpvWMpGVOad0l1L
+	nkiDnki7nGOpKEQawYuk8ti/MvlYN8X5igvpj/RKY2Lj7s6npVsM6jXe4g8I3GVwHOdRFvwUIkz
+	g8=
+X-Google-Smtp-Source: AGHT+IE/hZW3FJZsWVHdzVUWg5J9RwD+/ADUpNftxPBYvak62/hf0PU8XHFORkZeSi00XISdKG3jGg==
+X-Received: by 2002:a05:6000:24c7:b0:431:1d4:3a8f with SMTP id ffacd0b85a97d-4324e506840mr2543450f8f.47.1766136360735;
+        Fri, 19 Dec 2025 01:26:00 -0800 (PST)
+Received: from localhost (p200300f65f0066087cf387e078e1a5dc.dip0.t-ipconnect.de. [2003:f6:5f00:6608:7cf3:87e0:78e1:a5dc])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-4324ea82fa1sm3710071f8f.23.2025.12.19.01.26.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Dec 2025 01:26:00 -0800 (PST)
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
+	=?utf-8?q?Kai_M=C3=A4kisara?= <Kai.Makisara@kolumbus.fi>
+Cc: Alim Akhtar <alim.akhtar@samsung.com>,
+	Avri Altman <avri.altman@wdc.com>,
+	Bart Van Assche <bvanassche@acm.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Peter Wang <peter.wang@mediatek.com>,
+	Bean Huo <beanhuo@micron.com>,
+	Adrian Hunter <adrian.hunter@intel.com>,
+	Christoph Hellwig <hch@infradead.org>,
+	"Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
+	linux-scsi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2 0/8] scsi: Make use of bus callbacks
+Date: Fri, 19 Dec 2025 10:25:29 +0100
+Message-ID: <cover.1766133330.git.u.kleine-koenig@baylibre.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2378; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=IAdbxss3dLrcOoQ0t9BI37AncWy3V4wOjCAq5w1hmNA=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBpRRoN8BONrIecwy7V+dYl2JORlG8x/4WY3e7rT l5IkkNll9iJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCaUUaDQAKCRCPgPtYfRL+ Tls8B/sFjIScuB6gXphaL0wGuHgRBEXVJ3RLWVxVSsgBMOBPVODhIP3eFDGOtIXf3Iv3H15IKm2 PwNN2Idzd2SYtU2mzeB2iJHIhtBNLFmM7UZe6vx+sS0u3wOUNCg6FyRMf3mabtv16sLwI5LM1iF L682E+bV2DoaJbH7XyL1C8s3m1XQhO5nBodi/tiVcPjyWrR+88+Uc8wJG3LXdJMcxuERbyfu+uF aqn9mZeh5k/F3L/NFB0owfoemrjldR6sRk36bInjQcYm1wmDzkQ967pqh+xNj/2dwO0cKtTbUAE kWjHW9Uu6aMldNE86CYiEqUHXzT9DtSLwIY/6t/bep0YI71r
+X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2 0/6] iommu: Pass in old_domain pointer to attach_dev
-From: patchwork-bot+linux-riscv@kernel.org
-Message-Id: <176613180983.3684357.11179224135837486617.git-patchwork-notify@kernel.org>
-Date: Fri, 19 Dec 2025 08:10:09 +0000
-References: <cover.1761017765.git.nicolinc@nvidia.com>
-In-Reply-To: <cover.1761017765.git.nicolinc@nvidia.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: linux-riscv@lists.infradead.org, joro@8bytes.org, jgg@nvidia.com,
- kevin.tian@intel.com, suravee.suthikulpanit@amd.com, will@kernel.org,
- robin.murphy@arm.com, sven@kernel.org, j@jannau.net,
- robin.clark@oss.qualcomm.com, m.szyprowski@samsung.com, krzk@kernel.org,
- dwmw2@infradead.org, baolu.lu@linux.intel.com, yong.wu@mediatek.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- tjeznach@rivosinc.com, pjw@kernel.org, palmer@dabbelt.com,
- aou@eecs.berkeley.edu, heiko@sntech.de, schnelle@linux.ibm.com,
- mjrosato@linux.ibm.com, orsonzhai@gmail.com, baolin.wang@linux.alibaba.com,
- wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org,
- thierry.reding@gmail.com, jonathanh@nvidia.com, jean-philippe@linaro.org,
- iommu@lists.linux.dev, linux-kernel@vger.kernel.org, asahi@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- virtualization@lists.linux.dev, patches@lists.linux.dev
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251219_083050_428860_4AE1132D 
+X-CRM114-Status: GOOD (  14.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,41 +128,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Hello,
 
-This series was applied to riscv/linux.git (fixes)
-by Joerg Roedel <joerg.roedel@amd.com>:
+this is v2 of the series to make the scsi subsystem stop using the
+callbacks .probe(), .remove() and .shutdown() of struct device_driver.
+Instead use their designated alternatives in struct bus_type.
 
-On Wed, 22 Oct 2025 19:21:03 -0700 you wrote:
-> Tidy the release_device callbacks in the drivers and switch to the core
-> managed release_domain.
-> 
-> This allows the core further to pass in the old domain pointer into the
-> attach_dev callbacks to reduce the use of iommu_get_domain_for_dev().
-> 
-> This is a preparatory series for new iommu_dev_reset APIs:
-> https://lore.kernel.org/all/cover.1756682135.git.nicolinc@nvidia.com/
-> 
-> [...]
+The eventual goal is to drop the callbacks from struct device_driver.
 
-Here is the summary with links:
-  - [v2,1/6] iommu: Generic support for RMRs during device release
-    https://git.kernel.org/riscv/c/e94160488e65
-  - [v2,2/6] iommu/arm-smmu-v3: Set release_domain to arm_smmu_blocked_domain
-    https://git.kernel.org/riscv/c/52f77fb176ec
-  - [v2,3/6] iommu/exynos-iommu: Set release_domain to exynos_identity_domain
-    https://git.kernel.org/riscv/c/680a6a60fc08
-  - [v2,4/6] iommu/amd: Set release_domain to blocked_domain
-    https://git.kernel.org/riscv/c/c21b34762e2f
-  - [v2,5/6] iommu: Do not revert set_domain for the last gdev
-    https://git.kernel.org/riscv/c/2b33598e666d
-  - [v2,6/6] iommu: Pass in old domain to attach_dev callback functions
-    (no matching commit)
+The 2nd patch introduces some legacy handling for drivers still using
+the device_driver callbacks. This results in a runtime warning (in
+driver_register()). The following patches convert all in-tree drivers
+(and thus fix the warnings one after another).
+Conceptually this legacy handling could be dropped at the end of the
+series, but I think this is a bad idea because this silently breaks
+out-of-tree drivers (which also covers drivers that are currently
+prepared for mainline submission) and in-tree drivers I might have
+missed (though I'm convinced I catched them all). That convinces me that
+keeping the legacy handling for at least one development cycle is the
+right choice. I'll care for that at the latest when I remove the
+callbacks from struct device_driver.
 
-You are awesome, thank you!
+Changes since (implicit) v1, available at
+https://lore.kernel.org/linux-scsi/cover.1765312062.git.u.kleine-koenig@baylibre.com:
+
+ - trivially rebase to v6.19-rc1
+ - fix a kdoc warning uncovered by the intel kernel test robot
+ - rename a few variables to align with the already existing naming in
+   the individual drivers
+ - slightly reword the commit logs
+ - add the tags received in v1
+
+Best regards
+Uwe
+
+Uwe Kleine-König (8):
+  scsi: Pass a struct scsi_driver to scsi_{,un}register_driver()
+  scsi: Make use of bus callbacks
+  scsi: ch: Convert to scsi bus methods
+  scsi: sd: Convert to scsi bus methods
+  scsi: ses: Convert to scsi bus methods
+  scsi: sr: Convert to scsi bus methods
+  scsi: st: Convert to scsi bus methods
+  scsi: ufs: Convert to scsi bus methods
+
+ drivers/scsi/ch.c          | 18 ++++-----
+ drivers/scsi/scsi_sysfs.c  | 77 ++++++++++++++++++++++++++++++++++++--
+ drivers/scsi/sd.c          | 29 +++++++-------
+ drivers/scsi/ses.c         | 15 ++------
+ drivers/scsi/sr.c          | 21 +++++------
+ drivers/scsi/st.c          | 22 +++++------
+ drivers/ufs/core/ufshcd.c  | 22 +++++------
+ include/scsi/scsi_driver.h |  7 +++-
+ 8 files changed, 139 insertions(+), 72 deletions(-)
+
+
+base-commit: 8f0b4cce4481fb22653697cced8d0d04027cb1e8
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.47.3
 
 
