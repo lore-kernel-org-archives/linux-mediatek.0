@@ -4,53 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BD52D7878A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Dec 2025 15:27:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DDEFD7878F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Dec 2025 15:31:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2jTYiglxStDtXsSEnUykLvaztp4zFR1IyBOZjWnkqBQ=; b=zrZMcJADgtqxbl+36YEPpb/CGU
-	OetXLD7SfYGrrTPM1RXcH+g/DYregzJbzwK4lREFBbgLofqXiE3QTDwaB9KiS5kmrdiWQTbA3m/dY
-	L4D5aUoTISfcyEpW5CtJGvJy0l1rDR0d3uCrz1qgthbgVraNoygVIiGsRz44R91XLXgfodirPdalW
-	fCNGBoUST9QF5FUlUpX3tDEkJpRuFNkmDOlI5L+O8eAZMuBtEzajk6c30LMwmD33dkEcCnIKR7wZ6
-	2/XzRNhzteGh95+yU3FvMRPdeJVOhALmrox/KC6oumQm++q6wh9i8kxkM8VWvVxwKLZHmaNbZQWnN
-	IMrTVhAA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zCprCLPHhC3oQbGXWbj+XDvZs4yVDSzExr+Gx8wzNlg=; b=luWeVBR8cVUT+HyVcVhhBoTy62
+	wiF3y8tHcDgx/RMDK31+Sd0NiG1JLLrrXNqXMFhMDSqPRm6yd2ZJqglKgtBOwZLeGsXMIzWlh394R
+	wml5qBTKoKtCx4LiuKWjCSl/pD/23NBptTyydyXXMI8KHQADwYsXbovAeGNT+G+mp+yKIL6qqUDd7
+	N96pm6xgQXr+97bbVPxeV9LXIBCoH+zT/Y1hhknVvGpfK0IfojiKZ+9ikJMkhH66VBLjOuw+JbgIX
+	j6CSE0eyrEMUYhlZ+dZR1eW6f39L7IfZbKbrSsrYCzgNxz2pzxuIx0Pr8iiQ2wrDFctl4XiqjarEi
+	AdAREnyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWcOT-0000000AVdH-1Hc3;
-	Fri, 19 Dec 2025 15:27:49 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWcOR-0000000AVcq-1Qbl;
-	Fri, 19 Dec 2025 15:27:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7433E60177;
-	Fri, 19 Dec 2025 15:27:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 053CCC113D0;
-	Fri, 19 Dec 2025 15:27:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766158066;
-	bh=vQauREzCyjgGY9d4eFEp7tYVqXhmLb3hWwe5rJcduI4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=M+gjTr59eWJ38omM1OBz1Aw3Z7BgGjrTF7L2zoReMfykc2mprtIUIxC2MrLS59UHz
-	 BXIBUYW1nkC/gCxC1SpLaywXJqzVf7xPY1AKkZdnGfgp/SwlRdPdG+k4EfFcq3wmcP
-	 9ndPN66aiP5VhnCvhvn5le22dEfUkiTRdtlUh0eWB3s8my10jGljuPyxNlrgO7waH0
-	 GVU0D3pJAOv4bh6NccjiQAagkn9IfWygDqiWBvvuJJrFeIb9/4MhQmpgBau2/+kJ0F
-	 BKKPfpgghVFJ3AHPkneiOaWNqqPm5bcPqpc694BUuaYjkD4ZZt8MQ3J6I2/FO9Jpni
-	 ABGjKE404Gk4Q==
-Date: Fri, 19 Dec 2025 09:27:43 -0600
-From: Rob Herring <robh@kernel.org>
-To: Frank Wunderlich <linux@fw-web.de>
-Subject: Re: [PATCH v1 0/2] build full dtbs for BananaPi R3/R4(Pro)
-Message-ID: <20251219152743.GA3410594-robh@kernel.org>
-References: <20251119175124.48947-1-linux@fw-web.de>
+	id 1vWcS7-0000000AW6E-2gCJ;
+	Fri, 19 Dec 2025 15:31:35 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vWcS3-0000000AW4b-0xGd;
+	Fri, 19 Dec 2025 15:31:33 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6A9BAFEC;
+	Fri, 19 Dec 2025 07:31:20 -0800 (PST)
+Received: from [10.1.30.18] (e122027.cambridge.arm.com [10.1.30.18])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5BA613F73F;
+	Fri, 19 Dec 2025 07:31:23 -0800 (PST)
+Message-ID: <bdf5b4f9-d6f5-419d-9465-4f722bac06ef@arm.com>
+Date: Fri, 19 Dec 2025 15:31:21 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251119175124.48947-1-linux@fw-web.de>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/4] drm/panthor: Implement reading shader_present from
+ nvmem
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Chia-I Wu <olvaffe@gmail.com>,
+ kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org
+References: <20251217-mt8196-shader-present-v1-0-f6f8f3aa1e93@collabora.com>
+ <20251217-mt8196-shader-present-v1-3-f6f8f3aa1e93@collabora.com>
+From: Steven Price <steven.price@arm.com>
+Content-Language: en-GB
+In-Reply-To: <20251217-mt8196-shader-present-v1-3-f6f8f3aa1e93@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251219_073131_351832_0EA78DF4 
+X-CRM114-Status: GOOD (  25.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,30 +75,178 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 19, 2025 at 06:51:21PM +0100, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
+On 17/12/2025 17:03, Nicolas Frattaroli wrote:
+> On some platforms, notably MediaTek MT8196, the shader_present bitmask
+> in the Mali GPU register for it has cores enabled that may be faulty.
+> The true shader_present bitmask is found in an efuse instead.
 > 
-> Build devicetree binaries for testing overlays and providing users
-> full dtb without using overlays for Bananapi R4 (pro) variants.
+> Implement reading shader_present from an nvmem cell if one is present,
+> falling back to the Mali register if it's absent. The error codes are
+> trickled up through to the probe function so that probe deferral works.
 > 
-> It is not required to build all possible combinations, only for
-> common usecases and to test if all overlays can be applied.
-> 
-> This series is based on
-> https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/log/?h=v6.18-next/dts64
-> 
-> Frank Wunderlich (2):
->   arm64: dts: mediatek: mt7986: add dtbs with applied overlays for
->     bpi-r3
->   arm64: dts: mediatek: mt7988: add dtbs with applied overlays for
->     bpi-r4 (pro)
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Since there's been no movement on this, I've applied this series and the 
-other patch and will send to Linus today.
+Reviewed-by: Steven Price <steven.price@arm.com>
 
-Rob
+[Although I really hope other vendors don't do this - the hardware is
+broken!]
+
+Although one NIT below if you respin for other reasons...
+
+> ---
+>  drivers/gpu/drm/panthor/panthor_hw.c | 63 ++++++++++++++++++++++++++++++++----
+>  1 file changed, 57 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panthor/panthor_hw.c b/drivers/gpu/drm/panthor/panthor_hw.c
+> index 87ebb7ae42c4..eb44c8b108aa 100644
+> --- a/drivers/gpu/drm/panthor/panthor_hw.c
+> +++ b/drivers/gpu/drm/panthor/panthor_hw.c
+> @@ -1,6 +1,7 @@
+>  // SPDX-License-Identifier: GPL-2.0 or MIT
+>  /* Copyright 2025 ARM Limited. All rights reserved. */
+>  
+> +#include <linux/nvmem-consumer.h>
+>  #include <drm/drm_print.h>
+>  
+>  #include "panthor_device.h"
+> @@ -109,7 +110,52 @@ static char *get_gpu_model_name(struct panthor_device *ptdev)
+>  	return "(Unknown Mali GPU)";
+>  }
+>  
+> -static void panthor_gpu_info_init(struct panthor_device *ptdev)
+> +static int overload_shader_present(struct panthor_device *ptdev)
+> +{
+> +	struct device *dev = ptdev->base.dev;
+> +	struct nvmem_cell *cell = nvmem_cell_get(dev, "shader-present");
+> +	ssize_t len;
+> +	void *buf;
+> +	int ret;
+> +
+> +	if (IS_ERR(cell)) {
+> +		/* On platforms without this cell, use the Mali register */
+> +		if (PTR_ERR(cell) == -ENOENT)
+> +			return 0;
+> +
+> +		return dev_err_probe(dev, PTR_ERR(cell),
+> +				     "Failed to get shader-present nvmem cell\n");
+> +	}
+> +
+> +	buf = nvmem_cell_read(cell, &len);
+> +	if (IS_ERR(buf)) {
+> +		ret = dev_err_probe(dev, PTR_ERR(buf),
+> +				    "Failed to read shader-present nvmem cell\n");
+> +		goto err_put_cell;
+> +	}
+> +
+> +	if (!len || len > 8) {
+> +		ret = dev_err_probe(dev, -EINVAL, "shader-present cell can't be length %ld\n",
+> +				    len);
+> +		goto err_free;
+> +	}
+> +
+> +	memcpy(&ptdev->gpu_info.shader_present, buf, len);
+> +
+> +	kfree(buf);
+> +	nvmem_cell_put(cell);
+> +
+> +	return 0;
+> +
+> +err_free:
+> +	kfree(buf);
+> +err_put_cell:
+> +	nvmem_cell_put(cell);
+> +
+> +	return ret;
+> +}
+
+Rather than repeating the clean up, you can do something like:
+
+{
+	void *buf = NULL;
+	int ret = 0
+
+	if (IS_ERR(cell)) {
+		ret = dev_err_probe(...);
+		goto out;
+	}
+
+	buf = nvmem_cell_read();
+	if (IS_ERR(buf)) {
+		ret = dev_err_probe(...);
+		goto out;
+	}
+
+	if (!len || len > 8) {
+		ret = dev_err_probe(...);
+		goto out;
+	}
+
+	memcpy();
+
+out:
+	if (!IS_ERR(buf))
+		kfree(buf);
+	if (!IS_ERR(cell))
+		nvmem_cell_put(cell);
+
+	return ret;
+}
+
+That avoids mistakes when adding a new operation into the sequence. Or
+you can use the fancy new cleanup helpers, but that feels overkill here.
+But equally I'm ok if you leave the code as is - it's simple enough and
+the conversation can be done later if we need it.
+
+Thanks,
+Steve
+
+> +
+> +static int panthor_gpu_info_init(struct panthor_device *ptdev)
+>  {
+>  	unsigned int i;
+>  
+> @@ -143,13 +189,18 @@ static void panthor_gpu_info_init(struct panthor_device *ptdev)
+>  		ptdev->gpu_info.tiler_present = gpu_read64(ptdev, GPU_TILER_PRESENT);
+>  		ptdev->gpu_info.l2_present = gpu_read64(ptdev, GPU_L2_PRESENT);
+>  	}
+> +
+> +	return overload_shader_present(ptdev);
+>  }
+>  
+> -static void panthor_hw_info_init(struct panthor_device *ptdev)
+> +static int panthor_hw_info_init(struct panthor_device *ptdev)
+>  {
+>  	u32 major, minor, status;
+> +	int ret;
+>  
+> -	panthor_gpu_info_init(ptdev);
+> +	ret = panthor_gpu_info_init(ptdev);
+> +	if (ret)
+> +		return ret;
+>  
+>  	major = GPU_VER_MAJOR(ptdev->gpu_info.gpu_id);
+>  	minor = GPU_VER_MINOR(ptdev->gpu_info.gpu_id);
+> @@ -172,6 +223,8 @@ static void panthor_hw_info_init(struct panthor_device *ptdev)
+>  		 "shader_present=0x%0llx l2_present=0x%0llx tiler_present=0x%0llx",
+>  		 ptdev->gpu_info.shader_present, ptdev->gpu_info.l2_present,
+>  		 ptdev->gpu_info.tiler_present);
+> +
+> +	return 0;
+>  }
+>  
+>  static int panthor_hw_bind_device(struct panthor_device *ptdev)
+> @@ -218,7 +271,5 @@ int panthor_hw_init(struct panthor_device *ptdev)
+>  	if (ret)
+>  		return ret;
+>  
+> -	panthor_hw_info_init(ptdev);
+> -
+> -	return 0;
+> +	return panthor_hw_info_init(ptdev);
+>  }
+> 
+
 
