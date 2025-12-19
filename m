@@ -4,83 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6978D6E2CA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Dec 2025 19:38:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7979D74961
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Dec 2025 07:35:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XJjLZdefB3rFjATsz57WhyB21r3EJBYz8JYK0SddZl4=; b=HZCnoCSBqUIL54UIdG08xBrLCy
-	HL3SafLNm47KCF1AxgPlLv5YQ6Irus1b69ArNh9b++FT3Y9qfnzFCZ7lCBSvVNeY4OXh9oGai3mnf
-	YZRSWzEAUF1LiuikLgtaoFaDFaCrQMW5U8JVAI0WngRE3Ke6G68Uexy6/FuaUde5Ts1gsBieOhBnk
-	nwotNbiIoMyagEDIJ/wHFYbgpPibmufIACxmdyq7fzlOuu4ZSi9ebm1RCC2aCtpy7TAdt9xZlzEca
-	9SxtOtdePK2djln8NmS+zbKU7lmjmM4AjL7lj08Te6/nauMlAmX2r4PaXCn9OnObupTE6MigGAdvu
-	O9fYMG0w==;
+	bh=UjCyWH/Za62AxtAdaWZAqn4it1Ao4OfYF5Sw/Ds01Ss=; b=keNYO1RYCJoWjfsRGccutb0ISM
+	667zXsQv6VR3HAzIv8xXOsq21orUnZIpOYd15eM8hsNwF9Yt3gtcdJ0b8PBPo6My3c9tcKJTTypuh
+	2ekSR0ysNneJ99ANnNosj67VDYTpF0NzZVlp1SHxNNfjCpW4N01jgIkVFiyRbqCn0raoKuEaSmQnE
+	wgYMDTFcZFZl5UmTp0zMRsYkzxojREhnuQIP+DANCTCzf4/Aq75VOHB1L/8VCsR8+vnBMEpg33Ync
+	mbPweM2seBv/oygUsy1JOcMR9tkD8kkS8Jr4Tp81z9znxkeyXSPLe5dWYclmHucjPuxD8letwudU5
+	ePfqipRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWJpi-000000096VJ-1Lta;
-	Thu, 18 Dec 2025 19:38:42 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vWV15-00000009lG6-3knf;
+	Fri, 19 Dec 2025 07:35:11 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWJpf-000000096Ud-3Q61;
-	Thu, 18 Dec 2025 19:38:40 +0000
+	id 1vWV13-00000009lFn-3pHA;
+	Fri, 19 Dec 2025 07:35:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id EC8F044425;
-	Thu, 18 Dec 2025 19:38:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AEC84C116D0;
-	Thu, 18 Dec 2025 19:38:33 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B672160008;
+	Fri, 19 Dec 2025 07:35:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5800CC4CEF1;
+	Fri, 19 Dec 2025 07:35:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766086718;
-	bh=XJjLZdefB3rFjATsz57WhyB21r3EJBYz8JYK0SddZl4=;
+	s=k20201202; t=1766129708;
+	bh=UFYiLPoUdNxWhfMRrjS7vxL4zRDLpmZgX5Xj7zFgNLo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aE4uGfGSE1RZd+bmVNuLg6Qrcu3P+HfwD3boH2MpXLW/ZLWvns5bEUicKNpGgS9D/
-	 Rnh6be4JCCHnyuq6KKSyDyQIyDnW4UrxRC9fz98lUh8/2LKCPdMzOu/p29S4Cyhrke
-	 1dJGsFbYd8DE6yR9YGV/d1YIxa/fRnw4Apf7xJIo3d3wFQiqv+zem5QqChFg/0aJId
-	 64FXhXwB1WepTSTVT457ZUQfw7tQq6D3qZYJeWkqkUx0M/FE8KHD3NDovVqT+THutA
-	 2stygJ9bNzUFL5tcnPh9nm7DMmjhYlmxCfWR80/RZ7XwQN+IhuwMZ1hNRJDLq19PHN
-	 uek0BBTTyNPCg==
-Date: Thu, 18 Dec 2025 19:38:31 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Peter Wang <peter.wang@mediatek.com>,
-	Stanley Jhu <chu.stanley@gmail.com>,
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Chaotian Jing <Chaotian.Jing@mediatek.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	kernel@collabora.com, linux-scsi@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
-Subject: Re: [PATCH v4 02/25] dt-bindings: ufs: mediatek,ufs: Complete the
- binding
-Message-ID: <20251218-vineyard-exalted-08fe7d9bcb55@spud>
-References: <20251218-mt8196-ufs-v4-0-ddec7a369dd2@collabora.com>
- <20251218-mt8196-ufs-v4-2-ddec7a369dd2@collabora.com>
+	b=rGSzWIMd8xMiGfVw7DbXCqdns9/DzqDprIJx3lPoRaPgJqhu4HEoT2aucmpYhs7+b
+	 iqTj/tPAF+otAIvi6IYCynmAtqmU5VErvdG4XsHn8igDq+hNBnoqsPY7CB1yicq7fp
+	 /VEjfJIRZqTkmcycmss/3BHRCHVomYi1UCi8xgp2ZRPwTyJ89tHFJVHM256nLF/aGl
+	 Zv+n0QmpF+SUFMr0wnqZu5cqZ///KZwqYx6OV+jzxcDYZT6xYbrF+emteN5VV5ezN8
+	 wW4vQwYwZm00PzuKwM9zN76kC9r+9o/RdWgGcYKNHA4hD9YvweTojXFkoLivFxTcEI
+	 KEyVvlZiTY7gA==
+Date: Fri, 19 Dec 2025 08:35:04 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: "irving.ch.lin" <irving-ch.lin@mediatek.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, 
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Ulf Hansson <ulf.hansson@linaro.org>, 
+	Richard Cochran <richardcochran@gmail.com>, Qiqi Wang <qiqi.wang@mediatek.com>, linux-clk@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, 
+	netdev@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	sirius.wang@mediatek.com, vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
+Subject: Re: [PATCH v4 01/21] dt-bindings: clock: mediatek: Add MT8189 clock
+ definitions
+Message-ID: <20251219-venomous-ninja-uakari-bf8d1a@quoll>
+References: <20251215034944.2973003-1-irving-ch.lin@mediatek.com>
+ <20251215034944.2973003-2-irving-ch.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="e36ubsezNTceBFN4"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20251218-mt8196-ufs-v4-2-ddec7a369dd2@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251218_113839_920001_E55AF849 
-X-CRM114-Status: GOOD (  25.93  )
+In-Reply-To: <20251215034944.2973003-2-irving-ch.lin@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,71 +77,189 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Dec 15, 2025 at 11:49:10AM +0800, irving.ch.lin wrote:
+> From: Irving-CH Lin <irving-ch.lin@mediatek.com>
+> 
+> Add device tree bindings for the clock of MediaTek MT8189 SoC.
 
---e36ubsezNTceBFN4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+You in different patchset already received that comment:
 
-On Thu, Dec 18, 2025 at 01:54:52PM +0100, Nicolas Frattaroli wrote:
-> As it stands, the mediatek,ufs.yaml binding is startlingly incomplete.
-> Its one example, which is the only real "user" of this binding in
-> mainline, uses the deprecated freq-table-hz property.
->=20
-> The resets, of which there are three optional ones, are completely
-> absent.
->=20
-> The clock description for MT8195 is incomplete, as is the one for
-> MT8192. It's not known if the one clock binding for MT8183 is even
-> correct, but I do not have access to the necessary code and
-> documentation to find this out myself.
->=20
-> The power supply situation is not much better; the binding describes one
-> required power supply, but it's the UFS card supply, not any of the
-> supplies feeding the controller silicon.
->=20
-> No second example is present in the binding, making verification
-> difficult.
->=20
-> Disallow freq-table-hz and move to operating-points-v2. It's fine to
-> break compatibility here, as the binding is currently unused and would
-> be impossible to correctly use in its current state.
->=20
-> Add the three resets and the corresponding reset-names property. These
-> resets appear to be optional, i.e. not required for the functioning of
-> the device.
->=20
-> Move the list of clock names out of the if condition, and expand it for
-> the confirmed clocks I could find by cross-referencing several clock
-> drivers. For MT8195, increase the minimum number of clocks to include
-> the crypt and rx_symbol ones, as they're internal to the SoC and should
-> always be present, and should therefore not be omitted.
->=20
-> MT8192 gets to have at least 3 clocks, as these were the ones I could
-> quickly confirm from a glance at various trees. I can't say this was an
-> exhaustive search though, but it's better than the current situation.
->=20
-> Properly document all supplies, with which pin name on the SoCs they
-> supply. Complete the example with them.
->=20
-> Also add a MT8195 example to the binding, using supply labels that I am
-> pretty sure would be the right ones for e.g. the Radxa NIO 12L.
->=20
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+A nit, subject: drop second/last, redundant "bindings" or "definitions"
+or whatever you keep adding here redundantly. The
+"dt-bindings" prefix is already stating that these are bindings.
+See also:
+https://elixir.bootlin.com/linux/v6.17-rc3/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
 
-Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
+Can you finally read the docs?
 
---e36ubsezNTceBFN4
-Content-Type: application/pgp-signature; name="signature.asc"
+> 
+> Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
+> ---
+>  .../bindings/clock/mediatek,mt8189-clock.yaml |  90 +++
+>  .../clock/mediatek,mt8189-sys-clock.yaml      |  58 ++
+>  .../dt-bindings/clock/mediatek,mt8189-clk.h   | 580 ++++++++++++++++++
+>  3 files changed, 728 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8189-clock.yaml
+>  create mode 100644 Documentation/devicetree/bindings/clock/mediatek,mt8189-sys-clock.yaml
+>  create mode 100644 include/dt-bindings/clock/mediatek,mt8189-clk.h
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8189-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8189-clock.yaml
+> new file mode 100644
+> index 000000000000..d21e02df36a1
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8189-clock.yaml
+> @@ -0,0 +1,90 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/clock/mediatek,mt8189-clock.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek Functional Clock Controller for MT8189
+> +
+> +maintainers:
+> +  - Qiqi Wang <qiqi.wang@mediatek.com>
 
------BEGIN PGP SIGNATURE-----
+Why there is n ack for this? Is above person going to provide any
+reviews? Why didn't this person review this binding, already at v4.
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaURYNwAKCRB4tDGHoIJi
-0q7sAPsEFBYWe7WteUvYRPLscugO7jF/qeqwh5oNpsK5iTFYHgEA4FfIV6OJUU/h
-uy3jGyM2gNo0F1otONhbNZUky5Matgg=
-=JyRf
------END PGP SIGNATURE-----
+> +
+> +description: |
+> +  The clock architecture in MediaTek like below
+> +  PLLs -->
+> +          dividers -->
+> +                      muxes -->
+> +                               clock gate
+> +
+> +  The devices provide clock gate control in different IP blocks.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - enum:
+> +          - mediatek,mt8189-camsys-main
+> +          - mediatek,mt8189-camsys-rawa
+> +          - mediatek,mt8189-camsys-rawb
+> +          - mediatek,mt8189-dbg-ao
+> +          - mediatek,mt8189-dem
+> +          - mediatek,mt8189-dispsys
+> +          - mediatek,mt8189-dvfsrc-top
+> +          - mediatek,mt8189-gce-d
+> +          - mediatek,mt8189-gce-m
+> +          - mediatek,mt8189-iic-wrap-e
+> +          - mediatek,mt8189-iic-wrap-en
+> +          - mediatek,mt8189-iic-wrap-s
+> +          - mediatek,mt8189-iic-wrap-ws
+> +          - mediatek,mt8189-imgsys1
+> +          - mediatek,mt8189-imgsys2
+> +          - mediatek,mt8189-infra-ao
+> +          - mediatek,mt8189-ipesys
+> +          - mediatek,mt8189-mdpsys
+> +          - mediatek,mt8189-mfgcfg
+> +          - mediatek,mt8189-mm-infra
+> +          - mediatek,mt8189-peri-ao
+> +          - mediatek,mt8189-scp-clk
+> +          - mediatek,mt8189-scp-i2c-clk
+> +          - mediatek,mt8189-ufscfg-ao
+> +          - mediatek,mt8189-ufscfg-pdn
+> +          - mediatek,mt8189-vdec-core
+> +          - mediatek,mt8189-venc
+> +      - const: syscon
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  '#clock-cells':
+> +    const: 1
+> +
+> +  '#reset-cells':
+> +    const: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - '#clock-cells'
+> +
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8189-peri-ao
+> +              - mediatek,mt8189-ufscfg-ao
+> +              - mediatek,mt8189-ufscfg-pdn
+> +
+> +    then:
+> +      required:
+> +        - '#reset-cells'
 
---e36ubsezNTceBFN4--
+else:
+  properties:
+    reset-cells: false
+
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    clock-controller@11b21000 {
+> +        compatible = "mediatek,mt8189-iic-wrap-ws", "syscon";
+> +        reg = <0x11b21000 0x1000>;
+> +        #clock-cells = <1>;
+> +    };
+> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt8189-sys-clock.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt8189-sys-clock.yaml
+> new file mode 100644
+> index 000000000000..c94de207e289
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt8189-sys-clock.yaml
+> @@ -0,0 +1,58 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/clock/mediatek,mt8189-sys-clock.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek System Clock Controller for MT8189
+> +
+> +maintainers:
+> +  - Qiqi Wang <qiqi.wang@mediatek.com>
+
+Same problem. We are at v4 and maintainer did not bother to review it in
+public. What sort of maintenance is this?
+
+> +
+> +description: |
+> +  The clock architecture in MediaTek like below
+> +  PLLs -->
+> +          dividers -->
+> +                      muxes -->
+> +                               clock gate
+
+Pretty obvious, no? Is there a clock topology which is different?
+
+> +
+> +  The apmixedsys provides most of PLLs which generated from SoC 26m.
+> +  The topckgen provides dividers and muxes which provide the clock source to other IP blocks.
+> +  The infracfg_ao provides clock gate in peripheral and infrastructure IP blocks.
+> +  The mcusys provides mux control to select the clock source in AP MCU.
+> +  The device nodes also provide the system control capacity for configuration.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - enum:
+> +          - mediatek,mt8189-apmixedsys
+> +          - mediatek,mt8189-topckgen
+> +          - mediatek,mt8189-vlpckgen
+> +          - mediatek,mt8189-vlp-ao
+> +          - mediatek,mt8189-vlpcfg-ao
+> +      - const: syscon
+
+I do not understand why this is separate from the previous binding. It's
+exactly the same, even description is the same.
+
+Best regards,
+Krzysztof
+
 
