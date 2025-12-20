@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF1F3E668AC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Dec 2025 00:45:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDE02E668A7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Dec 2025 01:04:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DLPI+6y1Cd274pWyRLM4LL7VX9uNyq+alqBEtAEYrvI=; b=gRuu4QoRi03IIELxqnvfjgNAtc
-	FfzHZTkDKRbCeb21XTZDVZYAa9iPmkGTNJZy//deSrry+PJOQZJ1uk6WirSxvpFPn5aa1NYnEMa3c
-	BDo/FeJBdG+4aA6Eu1FAz8qkpRIlHiGJ4NMLBO9tNPRA5wXkrTbfSX6G8z9SWZvjksAS8s/mfQDs8
-	B9UWibfi9k59l6EEBhcALtjshtjwQ/nn2Bhu/8+haJUTU2QNj6KU031eXbY7D7uwOqjMSF/7dA5uw
-	uKRLkivHqXJUWPAHOf0hvLfkDTt8vca1Z5IaJ0EZuRrwUaeDbmmeFv4HslYGm09H5bah2ehsNdhI8
-	uvF09GVg==;
+	bh=uvfEcA4ngmwX8Z/ReyrjfSyYYOfbBzOa2QWavuhPe1g=; b=QnUx3UiS9kT86t6FI/NokXf7ML
+	4UlL7B+/X7SIe9haJYSLOhF0YgkS5XP+uc6sTrLfmHom4X5KMXwF1EOyIXFbDgeiuG1EnYW9tPoAf
+	JAuVRZNOtasb88LPdvqqMwdI+zWgckat+lYo1f4G1UItc0j/nkqkTBuNya9HFcJyMvOZbTTcxzvvU
+	CvYNANiylw/41saHQIRxL9RG0/pwFSyp3HZTIg2Fs6rqAzw705EETyPc4cVZVqHlE0boLJB34QdeZ
+	Hirlo07e81iGEBMOBI6hyXsERNsWBKPshQwtAaSIvvWd16hicJJ6IqVN/kxi0E5Mhodwivb3RlML6
+	XDWtI8lQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWl6C-0000000B8pW-1rdY;
-	Sat, 20 Dec 2025 00:45:32 +0000
-Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
+	id 1vWlOg-0000000B9Tk-1CNJ;
+	Sat, 20 Dec 2025 01:04:38 +0000
+Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWl69-0000000B8og-1IaH
+	id 1vWlOd-0000000B9T4-00P3
 	for linux-mediatek@lists.infradead.org;
-	Sat, 20 Dec 2025 00:45:30 +0000
-Received: by mail-yx1-xb12f.google.com with SMTP id 956f58d0204a3-64661975669so2384564d50.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Dec 2025 16:45:28 -0800 (PST)
+	Sat, 20 Dec 2025 01:04:36 +0000
+Received: by mail-yx1-xb135.google.com with SMTP id 956f58d0204a3-6447743ce90so2117689d50.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Dec 2025 17:04:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1766191528; x=1766796328; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1766192673; x=1766797473; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=DLPI+6y1Cd274pWyRLM4LL7VX9uNyq+alqBEtAEYrvI=;
-        b=mRlX4hsY3xENxyxgk0ZuXgmcDT196gIZPmVOPcPkIaaKVG94wHo40/tViaoF4pV/5N
-         M6sLkoQx3oYXdFMYTA//e3cWKqXFjxAR7PPU6bEsN82q29xZlASYYbx+y+m/YRKZOb/c
-         gbcnplPQ1Fqbj9PZrO3vMH86YqPgA44YLY17YdQdcSPXDdc+y92Ai1jhIyoOHvwBUsvy
-         sBbamgy0yfWi0jyP7XjNBGEUh/QCHh93wq1bNbUnAuire/QOCI2nNHcU4mexbTpm86rd
-         XGskm3kwHExZlOgpFNVcNXBbyghIbajiVG7o7upbvwdidkOKNlMz66d5JNtOY+MkNfb7
-         xAOQ==
+        bh=uvfEcA4ngmwX8Z/ReyrjfSyYYOfbBzOa2QWavuhPe1g=;
+        b=WnysS1FN0KRNayr7jH7iqY/URVydj/pNCXY3vYnErlEBNK7byhjI4QxHsh6Vkb53Mj
+         x0njkr0cM4CrogeikJLrj7COd6xDydHxU1k6X4BRaX3s12Xw++Fon10O4yMfDqmSzSyV
+         8OPd09eYkqb6b0bIPXijjnDZmmkOX+RdbwJ4gfvN05GgXOQ08modGzaqbirrFuYKdEXo
+         DwA6RahIAQDoWz2SXH/eerrKOlblwlPcYDl0LK8BqikIEdA1caQyNIJSVTBpYeB0YTY8
+         8is+nrXgpFupkjULh9EX9x4L/k4oF1wfssOFKVOkA6C857Olt+SOiYCFgE1cE52rDbhm
+         yDEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1766191528; x=1766796328;
+        d=1e100.net; s=20230601; t=1766192673; x=1766797473;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=DLPI+6y1Cd274pWyRLM4LL7VX9uNyq+alqBEtAEYrvI=;
-        b=lAWMt7mi15oD0U2IpepXih6kXyC3fw+nVD7eht0AKIfqnb55qflEvsq6m37zegYBhO
-         n/dThYJsqY+Tp1T7JAnlDiShQoPxD0ctrNmnyKRUJHcmE6+whPe63H/fiXl5xFqZs5h2
-         eF6rbVckb2MQbLrzFy+j+31fYu3boiNPFheSsstG5hibPS8URZf1It2YcsuNHshXWEiT
-         27DrOe8H0AENkbzdpXiCh+vQcX/3ocPaonh+4YI17Q1M9YPHWET3oiLR4Z8Bt0o6wM7M
-         aDs2G7RIh7maVCOfv/Pccf5lhaeVawTPIBTr2iN+khk+ojbtNHwttSRtYQ29A1GUriKU
-         ps7g==
-X-Forwarded-Encrypted: i=1; AJvYcCXMLmXN9PgkQDGt0vUQ+fYLXIzTtPk/tJMeujt0aYs0kynpeWMMTaUOwQK6pacF7F7VseXbUGxnXpD51Vi5Ng==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxv3GHLT1z11+w4VU3EhwW7Ij+Bb56dSRI9Et4IAOsitcFKI55J
-	EHEXJ8VLioK9dUMuMlFZ2PiDSfsH06FVthCkSDkdrTplVxMpmkLqJMNwbAuX8CrhApA4V8tLivR
-	Z5fq1S1UwdXKNPGOHfOKxH7t+vBdUngY=
-X-Gm-Gg: AY/fxX4tjHRP6pqLy/DBwAAWPdj/H9f1+99L+6Yyvnq2tvOZ8sOOpt554Vtk7CPGLyh
-	iTAigfKuZdbItUf7s11vc0BJv3CnJWENhtJsJHkPN8y9+hjYM4kT+aDuNa3RqDxa3tSCqF22kqI
-	/77DPf+hWvrwLoqiLMAh23qoTEW0v193WjI7rWM8KZDipiVtSeCFVu/t0nDuogcuiFngdneoQBe
-	T4kLVJMHaHflZ0bp3San0ENoMpV3RTQO17qWCU4PySiDFxmnjEghIfN1B5IUnBIE+Xhhzdr64Mg
-	o0Jy1maTh3/GN5HuuSQP9lq06VqnlcIkxaTS9Vg=
-X-Google-Smtp-Source: AGHT+IGxV5Pk9FDKr/Lj9KKxcmNH7Vilqojhd5iNKpIgV73bbfC+PbBJ47gDiQQYvtv+vvVB4r13+qOWvY++J5PPenk=
-X-Received: by 2002:a53:6912:0:b0:645:5d62:dd8 with SMTP id
- 956f58d0204a3-6466a8f31a3mr2853787d50.50.1766191527647; Fri, 19 Dec 2025
- 16:45:27 -0800 (PST)
+        bh=uvfEcA4ngmwX8Z/ReyrjfSyYYOfbBzOa2QWavuhPe1g=;
+        b=l0+maLmJDBCKddqrIrEKzjnAUkWLNRwvzKMJnTh6hqdZu7E2paGZSRNlKcPbcbOSqY
+         D7NqCS8LnqO8vwe9+xaccHq8sBvg1bVTyY+PJ87LFgjB2HhHUhs57/fz3hT4s8qo/pAo
+         ruRCufhs2QumAaNaEQirY8QIcvc/zLB09mJW4gxfTa42rK/Pg+N/inRRNlfemSvHDlg5
+         lxEQ/zlOhm2mD3zsKEOkbY/haCEyaDkL7Zh6+jlm72mcX2LKdJKAJsYe2iU1Ep0FnqiU
+         yP11Z5AJ2QSXn4dT/6O+5kIbC3CAhOKH6O4CQfjV4KgljWo5khU78TZaUQPv05Uj5cXC
+         l7hw==
+X-Forwarded-Encrypted: i=1; AJvYcCUHZz+8v6W3eV3MtnK7A/dUttu0ms3A7315gl1OHy+kvoqZCZ0YBBsks6ZV1mnSOrpQRUonQUHIym3m2tWf6g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyET79IL3aj8avSX5f4AGTa+4LJKs3s2B9HpSnbMoU9pWfofOaw
+	53PIdBFzLENkcrLu0r4+f+sjWkNkVFg2OFwDq8JUyfzsCulRHyY8+irRdN44uBs0uPTiK35BCaV
+	aay3xHF3T1eMfOb/ot9W4tg4rUgcAIQ8=
+X-Gm-Gg: AY/fxX6AfG2anTWUgYIHN8JEKFlkK7Ckvk4h3mlC5GzIA17LRLIwsENtc+RrdaQit+8
+	aFZapFlHuC+W7adzTt6kOERqfPKuGXQAJvB4clW/RGRRCPN+yPW7CkE5lLpthkkGUY/Up+N/Epc
+	xMs10fWbevEUESuq8H2GdeP5b97T4Mdxv3SswLgG5RUXSJ5UolKmUT+XwjW9eKSBdzZz8T6I0nL
+	UsBlI2bDG1v/uLtbb1a0l0MRpQwl1DsvskliXQoiVuCcVNDqerEM+2l/AisNs1XEFOUssakKzvS
+	du5cwO6Df5HIiZ5aHriRhqxQG8sC
+X-Google-Smtp-Source: AGHT+IEnRAac6u07uzA3LUk5jCrz4OGRvCsnGojqOSsZK7RLqvjo5JYP+wh5edVRUn03IOrbdzCAkAqdhNZxSYFsGbc=
+X-Received: by 2002:a05:690e:3c9:b0:645:5467:29f3 with SMTP id
+ 956f58d0204a3-6466a859780mr2828699d50.39.1766192673550; Fri, 19 Dec 2025
+ 17:04:33 -0800 (PST)
 MIME-Version: 1.0
-References: <20251217-mt8196-shader-present-v1-0-f6f8f3aa1e93@collabora.com>
- <20251217-mt8196-shader-present-v1-3-f6f8f3aa1e93@collabora.com> <bdf5b4f9-d6f5-419d-9465-4f722bac06ef@arm.com>
-In-Reply-To: <bdf5b4f9-d6f5-419d-9465-4f722bac06ef@arm.com>
+References: <20251217-mt8196-shader-present-v1-0-f6f8f3aa1e93@collabora.com> <20251217-mt8196-shader-present-v1-4-f6f8f3aa1e93@collabora.com>
+In-Reply-To: <20251217-mt8196-shader-present-v1-4-f6f8f3aa1e93@collabora.com>
 From: Chia-I Wu <olvaffe@gmail.com>
-Date: Fri, 19 Dec 2025 16:45:16 -0800
-X-Gm-Features: AQt7F2qLOWDeNcNuYDcamhHFDHG6i6Fg_mD7kZv-_AbDieajS4u9bPacZVvQHto
-Message-ID: <CAPaKu7So4BeEyUGSS3ZAHi+Z=Sh6Kpy_W8eEtX4UQs=__MpPEA@mail.gmail.com>
-Subject: Re: [PATCH 3/4] drm/panthor: Implement reading shader_present from nvmem
-To: Steven Price <steven.price@arm.com>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
-	Boris Brezillon <boris.brezillon@collabora.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+Date: Fri, 19 Dec 2025 17:04:22 -0800
+X-Gm-Features: AQt7F2pOYJ6wtBd4hNgFJlclGwmWabkkUpx6tjcAEWdTtCs7JRe062F7FH3q2go
+Message-ID: <CAPaKu7TVeaEFRWBt7rF_uVUyYO72GHqFwKi7D52juPTRAk7URw@mail.gmail.com>
+Subject: Re: [PATCH 4/4] pmdomain: mediatek: mtk-mfg: Expose shader_present as
+ nvmem cell
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Boris Brezillon <boris.brezillon@collabora.com>, Steven Price <steven.price@arm.com>, 
+	Liviu Dudau <liviu.dudau@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
 	Matthias Brugger <matthias.bgg@gmail.com>, 
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
 	Ulf Hansson <ulf.hansson@linaro.org>, Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com, 
@@ -90,8 +90,8 @@ Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251219_164529_355676_E282E9B2 
-X-CRM114-Status: GOOD (  31.18  )
+X-CRM114-CacheID: sfid-20251219_170435_145270_BC52D89B 
+X-CRM114-Status: GOOD (  21.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,198 +106,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 19, 2025 at 7:31=E2=80=AFAM Steven Price <steven.price@arm.com>=
- wrote:
+On Wed, Dec 17, 2025 at 9:04=E2=80=AFAM Nicolas Frattaroli
+<nicolas.frattaroli@collabora.com> wrote:
 >
-> On 17/12/2025 17:03, Nicolas Frattaroli wrote:
-> > On some platforms, notably MediaTek MT8196, the shader_present bitmask
-> > in the Mali GPU register for it has cores enabled that may be faulty.
-> > The true shader_present bitmask is found in an efuse instead.
-> >
-> > Implement reading shader_present from an nvmem cell if one is present,
-> > falling back to the Mali register if it's absent. The error codes are
-> > trickled up through to the probe function so that probe deferral works.
-> >
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> Implement nvmem-provider functionality in mtk-mfg-pmdomain, such that it
+> can expose its GF_REG_SHADER_PRESENT value in the shared memory as an
+> nvmem cell for panthor.
 >
-> Reviewed-by: Steven Price <steven.price@arm.com>
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c | 57 ++++++++++++++++++++++=
+++++++
+>  1 file changed, 57 insertions(+)
 >
-> [Although I really hope other vendors don't do this - the hardware is
-> broken!]
+> diff --git a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c b/drivers/pmdom=
+ain/mediatek/mtk-mfg-pmdomain.c
+> index 9bad577b3ae4..725ebc678f1b 100644
+> --- a/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
+> +++ b/drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c
+> @@ -10,6 +10,7 @@
+>  #include <linux/clk-provider.h>
+>  #include <linux/container_of.h>
+>  #include <linux/iopoll.h>
+> +#include <linux/nvmem-provider.h>
+>  #include <linux/mailbox_client.h>
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+> @@ -872,6 +873,58 @@ static int mtk_mfg_init_clk_provider(struct mtk_mfg =
+*mfg)
+>         return 0;
+>  }
 >
-> Although one NIT below if you respin for other reasons...
+> +static int mtk_mfg_read_nvmem(void *priv, unsigned int offset, void *val=
+, size_t bytes)
+> +{
+> +       struct mtk_mfg *mfg =3D priv;
+> +       u32 *buf =3D val;
+> +
+> +       if (bytes !=3D 4)
+> +               return -EINVAL;
+> +
+> +       if (!mfg->shared_mem)
+> +               return -ENODEV;
+> +
+> +       if (offset + bytes >=3D mfg->shared_mem_size)
+> +               return -EINVAL;
+> +
+> +       *buf =3D readl(mfg->shared_mem + offset);
+> +
+> +       return 0;
+> +}
+> +
+> +static int mtk_mfg_init_nvmem_provider(struct mtk_mfg *mfg)
+> +{
+> +       struct device *dev =3D &mfg->pdev->dev;
+> +       struct nvmem_cell_info cell =3D {};
+> +       struct nvmem_config config =3D {};
+> +       struct nvmem_device *nvdev;
+> +       int ret;
+> +
+> +       config.reg_read =3D mtk_mfg_read_nvmem;
+> +       config.dev =3D dev;
+> +       config.read_only =3D true;
+> +       config.priv =3D mfg;
+> +       config.size =3D 4;
+> +       config.word_size =3D 4;
+> +
+> +       nvdev =3D devm_nvmem_register(dev, &config);
+> +       of_node_put(config.of_node);
+This looks like a dead line.
+> +       if (IS_ERR(nvdev))
+> +               return dev_err_probe(dev, PTR_ERR(nvdev), "Couldn't regis=
+ter nvmem provider\n");
+> +
+> +       cell.name =3D "shader-present";
+> +       cell.offset =3D GF_REG_SHADER_PRESENT;
+> +       cell.bytes =3D 4;
+> +       cell.np =3D of_get_child_by_name(dev->of_node, cell.name);
+> +
+> +       ret =3D nvmem_add_one_cell(nvdev, &cell);
+> +       /* cell.np purposefully not put as nvmem_add_one_cell does not in=
+crease refcount */
+I think you still need to of_node_put on errors.
+> +       if (ret)
+> +               return dev_err_probe(dev, ret, "Couldn't add cell %s\n", =
+cell.name);
+> +
+> +       return 0;
+> +}
+> +
+>  static int mtk_mfg_probe(struct platform_device *pdev)
+>  {
+>         struct mtk_mfg *mfg;
+> @@ -984,6 +1037,10 @@ static int mtk_mfg_probe(struct platform_device *pd=
+ev)
+>         if (ret)
+>                 goto err_power_off;
 >
-> > ---
-> >  drivers/gpu/drm/panthor/panthor_hw.c | 63 ++++++++++++++++++++++++++++=
-++++----
-> >  1 file changed, 57 insertions(+), 6 deletions(-)
-> >
-> > diff --git a/drivers/gpu/drm/panthor/panthor_hw.c b/drivers/gpu/drm/pan=
-thor/panthor_hw.c
-> > index 87ebb7ae42c4..eb44c8b108aa 100644
-> > --- a/drivers/gpu/drm/panthor/panthor_hw.c
-> > +++ b/drivers/gpu/drm/panthor/panthor_hw.c
-> > @@ -1,6 +1,7 @@
-> >  // SPDX-License-Identifier: GPL-2.0 or MIT
-> >  /* Copyright 2025 ARM Limited. All rights reserved. */
-> >
-> > +#include <linux/nvmem-consumer.h>
-> >  #include <drm/drm_print.h>
-> >
-> >  #include "panthor_device.h"
-> > @@ -109,7 +110,52 @@ static char *get_gpu_model_name(struct panthor_dev=
-ice *ptdev)
-> >       return "(Unknown Mali GPU)";
-> >  }
-> >
-> > -static void panthor_gpu_info_init(struct panthor_device *ptdev)
-> > +static int overload_shader_present(struct panthor_device *ptdev)
-> > +{
-> > +     struct device *dev =3D ptdev->base.dev;
-> > +     struct nvmem_cell *cell =3D nvmem_cell_get(dev, "shader-present")=
-;
-> > +     ssize_t len;
-> > +     void *buf;
-> > +     int ret;
-> > +
-> > +     if (IS_ERR(cell)) {
-> > +             /* On platforms without this cell, use the Mali register =
-*/
-> > +             if (PTR_ERR(cell) =3D=3D -ENOENT)
-> > +                     return 0;
-> > +
-> > +             return dev_err_probe(dev, PTR_ERR(cell),
-> > +                                  "Failed to get shader-present nvmem =
-cell\n");
-> > +     }
-> > +
-> > +     buf =3D nvmem_cell_read(cell, &len);
-> > +     if (IS_ERR(buf)) {
-> > +             ret =3D dev_err_probe(dev, PTR_ERR(buf),
-> > +                                 "Failed to read shader-present nvmem =
-cell\n");
-> > +             goto err_put_cell;
-> > +     }
-> > +
-> > +     if (!len || len > 8) {
-> > +             ret =3D dev_err_probe(dev, -EINVAL, "shader-present cell =
-can't be length %ld\n",
-> > +                                 len);
-> > +             goto err_free;
-> > +     }
-> > +
-> > +     memcpy(&ptdev->gpu_info.shader_present, buf, len);
-When len is 4, this is neither overriding nor masking. I might suggest
-switching to nvmem_cell_read_variable_le_u64 for simplicity.
-
-Either way, Reviewed-by: Chia-I Wu <olvaffe@gmail.com>
-
-
-> > +
-> > +     kfree(buf);
-> > +     nvmem_cell_put(cell);
-> > +
-> > +     return 0;
-> > +
-> > +err_free:
-> > +     kfree(buf);
-> > +err_put_cell:
-> > +     nvmem_cell_put(cell);
-> > +
-> > +     return ret;
-> > +}
+> +       ret =3D mtk_mfg_init_nvmem_provider(mfg);
+> +       if (ret)
+> +               goto err_power_off;
+> +
+>         ret =3D of_genpd_add_provider_simple(dev->of_node, &mfg->pd);
+>         if (ret) {
+>                 dev_err_probe(dev, ret, "Failed to add pmdomain provider\=
+n");
 >
-> Rather than repeating the clean up, you can do something like:
->
-> {
->         void *buf =3D NULL;
->         int ret =3D 0
->
->         if (IS_ERR(cell)) {
->                 ret =3D dev_err_probe(...);
->                 goto out;
->         }
->
->         buf =3D nvmem_cell_read();
->         if (IS_ERR(buf)) {
->                 ret =3D dev_err_probe(...);
->                 goto out;
->         }
->
->         if (!len || len > 8) {
->                 ret =3D dev_err_probe(...);
->                 goto out;
->         }
->
->         memcpy();
->
-> out:
->         if (!IS_ERR(buf))
->                 kfree(buf);
->         if (!IS_ERR(cell))
->                 nvmem_cell_put(cell);
->
->         return ret;
-> }
->
-> That avoids mistakes when adding a new operation into the sequence. Or
-> you can use the fancy new cleanup helpers, but that feels overkill here.
-> But equally I'm ok if you leave the code as is - it's simple enough and
-> the conversation can be done later if we need it.
->
-> Thanks,
-> Steve
->
-> > +
-> > +static int panthor_gpu_info_init(struct panthor_device *ptdev)
-> >  {
-> >       unsigned int i;
-> >
-> > @@ -143,13 +189,18 @@ static void panthor_gpu_info_init(struct panthor_=
-device *ptdev)
-> >               ptdev->gpu_info.tiler_present =3D gpu_read64(ptdev, GPU_T=
-ILER_PRESENT);
-> >               ptdev->gpu_info.l2_present =3D gpu_read64(ptdev, GPU_L2_P=
-RESENT);
-> >       }
-> > +
-> > +     return overload_shader_present(ptdev);
-> >  }
-> >
-> > -static void panthor_hw_info_init(struct panthor_device *ptdev)
-> > +static int panthor_hw_info_init(struct panthor_device *ptdev)
-> >  {
-> >       u32 major, minor, status;
-> > +     int ret;
-> >
-> > -     panthor_gpu_info_init(ptdev);
-> > +     ret =3D panthor_gpu_info_init(ptdev);
-> > +     if (ret)
-> > +             return ret;
-> >
-> >       major =3D GPU_VER_MAJOR(ptdev->gpu_info.gpu_id);
-> >       minor =3D GPU_VER_MINOR(ptdev->gpu_info.gpu_id);
-> > @@ -172,6 +223,8 @@ static void panthor_hw_info_init(struct panthor_dev=
-ice *ptdev)
-> >                "shader_present=3D0x%0llx l2_present=3D0x%0llx tiler_pre=
-sent=3D0x%0llx",
-> >                ptdev->gpu_info.shader_present, ptdev->gpu_info.l2_prese=
-nt,
-> >                ptdev->gpu_info.tiler_present);
-> > +
-> > +     return 0;
-> >  }
-> >
-> >  static int panthor_hw_bind_device(struct panthor_device *ptdev)
-> > @@ -218,7 +271,5 @@ int panthor_hw_init(struct panthor_device *ptdev)
-> >       if (ret)
-> >               return ret;
-> >
-> > -     panthor_hw_info_init(ptdev);
-> > -
-> > -     return 0;
-> > +     return panthor_hw_info_init(ptdev);
-> >  }
-> >
+> --
+> 2.52.0
 >
 
