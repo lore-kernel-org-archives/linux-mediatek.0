@@ -4,94 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ACF9E66891
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Dec 2025 21:45:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF1F3E668AC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Dec 2025 00:45:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZV5l3aK94WjBMd234KR2t67rjid2aTdUenY4d4w/l6o=; b=siHSbXnDDO2gHpiLVwWMAYnI4i
-	W67AVJEhPksCCJABxvCB2pyClqBubTxERdcF1NT0GBQozyP5UgCFGaRWJVRQYkpMf2NN1AtH6mtEe
-	KV/XwLKLywD7j8oz8BhD/wby2pxBNxCzDW4XggaLqePbAbPkVb1Zn3BTOoQzdAa7qew5+4AZp3hcD
-	nMUxwEsClcY4i0mPAKQKngAhoFtxHhTPLcLQ0wf05fiww6ASZOP4P5MAl0EJQzw0f8gg8/fZFCfoI
-	2RBY49dRJkonM8rLLckpT3Z0ev3oN56TWaJFGL0TbOZC7PUftkPt/NW7Z/yprrw6el9g15wsDh9sP
-	o14XMdoA==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DLPI+6y1Cd274pWyRLM4LL7VX9uNyq+alqBEtAEYrvI=; b=gRuu4QoRi03IIELxqnvfjgNAtc
+	FfzHZTkDKRbCeb21XTZDVZYAa9iPmkGTNJZy//deSrry+PJOQZJ1uk6WirSxvpFPn5aa1NYnEMa3c
+	BDo/FeJBdG+4aA6Eu1FAz8qkpRIlHiGJ4NMLBO9tNPRA5wXkrTbfSX6G8z9SWZvjksAS8s/mfQDs8
+	B9UWibfi9k59l6EEBhcALtjshtjwQ/nn2Bhu/8+haJUTU2QNj6KU031eXbY7D7uwOqjMSF/7dA5uw
+	uKRLkivHqXJUWPAHOf0hvLfkDTt8vca1Z5IaJ0EZuRrwUaeDbmmeFv4HslYGm09H5bah2ehsNdhI8
+	uvF09GVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWiI2-0000000B0zC-1DwW;
-	Fri, 19 Dec 2025 21:45:34 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1vWl6C-0000000B8pW-1rdY;
+	Sat, 20 Dec 2025 00:45:32 +0000
+Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vWiHx-0000000B0yG-4Bx7
+	id 1vWl69-0000000B8og-1IaH
 	for linux-mediatek@lists.infradead.org;
-	Fri, 19 Dec 2025 21:45:32 +0000
-Received: by mail-wr1-x435.google.com with SMTP id ffacd0b85a97d-430f5ecaa08so1075718f8f.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 19 Dec 2025 13:45:28 -0800 (PST)
+	Sat, 20 Dec 2025 00:45:30 +0000
+Received: by mail-yx1-xb12f.google.com with SMTP id 956f58d0204a3-64661975669so2384564d50.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 19 Dec 2025 16:45:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1766180727; x=1766785527; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZV5l3aK94WjBMd234KR2t67rjid2aTdUenY4d4w/l6o=;
-        b=KBMxzYNlyvZbsX32nCLlHOFWHo8x18C3p0ilunV0n4FWrJU0gTh5c5USS1ZDSZzXU+
-         +CxZ//w6x1+1mGfesoIlAo8a85EXIJbkpTWy4RTDicZtwPhndJbB+k1lyrU7MAGNs/mN
-         kUdwy0i36J/dMe5O2BRQ0nOLXO/6Z/4pXvmUbdzDxz4ol2qYLYgYphvhcWKXecRRu2sH
-         fXryuABWu1UloHNFI1DlBuj4QozX/yRgpWDky4wuU5jpRPd5Dm9l4AEqLlq0HRgfXSBA
-         v4+k5GF076xb3LBH4QcfCt++6eGWiW8yRZuNXwkkjlMF1vxt8HGmV3J3uH3e/VGspdj6
-         vXOw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1766180727; x=1766785527;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1766191528; x=1766796328; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ZV5l3aK94WjBMd234KR2t67rjid2aTdUenY4d4w/l6o=;
-        b=FD8CMdc2O+q/RlmDLt3cpq4MHAgauOxdQ/QaJHI0axo7KxZCBfgmIAmtMN4KGLjKtI
-         Ko5GKzwD8f5Fo7TMYXscmMDRlYKQoi8hLjSEzyy/g8Z8GcXSn519tj4/NWNEMggm2upg
-         wSQFynBa/ji/Myp8skIcsMMsC+oWTtMHo033V6eGY4oMdwTYokrH6qF+8RsvBTs3zwx9
-         U2c9HNtiE+7YvWViIf0FVm6VXS4j9ZeXCTMTidHKw2oCRQzyFEvK2Uvv2QBw5ikoh6RS
-         wy6tvBU9SkKWedzEAgsZtB4kiwwwYAitTpjOjixkHrkWvksvvXfOYBXo8VmFmgrMJiBO
-         Gtbw==
-X-Forwarded-Encrypted: i=1; AJvYcCUosSQcTjJ6yPkXhJAgYLcCc18HXSz7PORay2gIJmDMYGo3SohHt1LmHMtuPan4/HV2ELBSvFW8p0MkPOE9Fw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyr9doCgbTZpvxCQ+viMEyg3izjRDo81eJwNNbsVennn9nrCxuL
-	wVjFmMQ5ZR+n1/cxvbW/yYROZLourH1MUQUQwZHy5odV6iqV7Z8BLGpf
-X-Gm-Gg: AY/fxX4pPy6id8KM2IA0wjZ6HeK7bDgRlmDyDsADJUQnIW/cKjVJehfxAICjivk6zEn
-	0ab+vlPDjHznuM3GL3YYlJx4POymD9OV5dJ85SptjaNj2h621zEm3bccWbIpxskaAbXBu+SXUsp
-	Chz2pICAiUfdQ1s0B1z2mG/KWIrPwnlZyGGmBDXtradhxy3SViSgBrlWHhAktzlZHhvglX7ctSh
-	5hBjctvQwl+6LqAgZMASR2MbddxTMq+7OFGJQ7ArCN8MxY2/osC++LoQtKnSlMzpAY/lZb7lfew
-	C/x2V224W9HqfQD9cwLHNuGcSHfSMfCwJebV7x/tFVHmdTIet3eo0B7U6cvGKiXkbMaqOzv6min
-	NKQnBpggfkafAFvfCXh+K6MFEdwlBAESy9Isut09ZPzg879y5Teoc31Hp49fsF/GFhFPrOxi4qY
-	5040mruGlvLDLrI1zr/zna
-X-Google-Smtp-Source: AGHT+IH6/ztrcn+SlJfyVJT63am/rH1xZvx6X/K4m0kF1MT0B91G4kSCAcxAARG8TFZiP/ksh381nw==
-X-Received: by 2002:a05:6000:2211:b0:42f:bbc6:edab with SMTP id ffacd0b85a97d-4324e4fb405mr5082384f8f.29.1766180727224;
-        Fri, 19 Dec 2025 13:45:27 -0800 (PST)
-Received: from localhost ([87.254.0.133])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4324e9ba877sm7013078f8f.0.2025.12.19.13.45.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Dec 2025 13:45:26 -0800 (PST)
-From: Colin Ian King <colin.i.king@gmail.com>
-To: Peter Wang <peter.wang@mediatek.com>,
-	Chaotian Jing <chaotian.jing@mediatek.com>,
-	Stanley Jhu <chu.stanley@gmail.com>,
-	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
-	"Martin K . Petersen" <martin.petersen@oracle.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-scsi@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH][next] scsi: ufs: host: mediatek: make read-only array scale_us static const
-Date: Fri, 19 Dec 2025 21:44:28 +0000
-Message-ID: <20251219214428.492744-1-colin.i.king@gmail.com>
-X-Mailer: git-send-email 2.51.0
+        bh=DLPI+6y1Cd274pWyRLM4LL7VX9uNyq+alqBEtAEYrvI=;
+        b=mRlX4hsY3xENxyxgk0ZuXgmcDT196gIZPmVOPcPkIaaKVG94wHo40/tViaoF4pV/5N
+         M6sLkoQx3oYXdFMYTA//e3cWKqXFjxAR7PPU6bEsN82q29xZlASYYbx+y+m/YRKZOb/c
+         gbcnplPQ1Fqbj9PZrO3vMH86YqPgA44YLY17YdQdcSPXDdc+y92Ai1jhIyoOHvwBUsvy
+         sBbamgy0yfWi0jyP7XjNBGEUh/QCHh93wq1bNbUnAuire/QOCI2nNHcU4mexbTpm86rd
+         XGskm3kwHExZlOgpFNVcNXBbyghIbajiVG7o7upbvwdidkOKNlMz66d5JNtOY+MkNfb7
+         xAOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1766191528; x=1766796328;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=DLPI+6y1Cd274pWyRLM4LL7VX9uNyq+alqBEtAEYrvI=;
+        b=lAWMt7mi15oD0U2IpepXih6kXyC3fw+nVD7eht0AKIfqnb55qflEvsq6m37zegYBhO
+         n/dThYJsqY+Tp1T7JAnlDiShQoPxD0ctrNmnyKRUJHcmE6+whPe63H/fiXl5xFqZs5h2
+         eF6rbVckb2MQbLrzFy+j+31fYu3boiNPFheSsstG5hibPS8URZf1It2YcsuNHshXWEiT
+         27DrOe8H0AENkbzdpXiCh+vQcX/3ocPaonh+4YI17Q1M9YPHWET3oiLR4Z8Bt0o6wM7M
+         aDs2G7RIh7maVCOfv/Pccf5lhaeVawTPIBTr2iN+khk+ojbtNHwttSRtYQ29A1GUriKU
+         ps7g==
+X-Forwarded-Encrypted: i=1; AJvYcCXMLmXN9PgkQDGt0vUQ+fYLXIzTtPk/tJMeujt0aYs0kynpeWMMTaUOwQK6pacF7F7VseXbUGxnXpD51Vi5Ng==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxv3GHLT1z11+w4VU3EhwW7Ij+Bb56dSRI9Et4IAOsitcFKI55J
+	EHEXJ8VLioK9dUMuMlFZ2PiDSfsH06FVthCkSDkdrTplVxMpmkLqJMNwbAuX8CrhApA4V8tLivR
+	Z5fq1S1UwdXKNPGOHfOKxH7t+vBdUngY=
+X-Gm-Gg: AY/fxX4tjHRP6pqLy/DBwAAWPdj/H9f1+99L+6Yyvnq2tvOZ8sOOpt554Vtk7CPGLyh
+	iTAigfKuZdbItUf7s11vc0BJv3CnJWENhtJsJHkPN8y9+hjYM4kT+aDuNa3RqDxa3tSCqF22kqI
+	/77DPf+hWvrwLoqiLMAh23qoTEW0v193WjI7rWM8KZDipiVtSeCFVu/t0nDuogcuiFngdneoQBe
+	T4kLVJMHaHflZ0bp3San0ENoMpV3RTQO17qWCU4PySiDFxmnjEghIfN1B5IUnBIE+Xhhzdr64Mg
+	o0Jy1maTh3/GN5HuuSQP9lq06VqnlcIkxaTS9Vg=
+X-Google-Smtp-Source: AGHT+IGxV5Pk9FDKr/Lj9KKxcmNH7Vilqojhd5iNKpIgV73bbfC+PbBJ47gDiQQYvtv+vvVB4r13+qOWvY++J5PPenk=
+X-Received: by 2002:a53:6912:0:b0:645:5d62:dd8 with SMTP id
+ 956f58d0204a3-6466a8f31a3mr2853787d50.50.1766191527647; Fri, 19 Dec 2025
+ 16:45:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+References: <20251217-mt8196-shader-present-v1-0-f6f8f3aa1e93@collabora.com>
+ <20251217-mt8196-shader-present-v1-3-f6f8f3aa1e93@collabora.com> <bdf5b4f9-d6f5-419d-9465-4f722bac06ef@arm.com>
+In-Reply-To: <bdf5b4f9-d6f5-419d-9465-4f722bac06ef@arm.com>
+From: Chia-I Wu <olvaffe@gmail.com>
+Date: Fri, 19 Dec 2025 16:45:16 -0800
+X-Gm-Features: AQt7F2qLOWDeNcNuYDcamhHFDHG6i6Fg_mD7kZv-_AbDieajS4u9bPacZVvQHto
+Message-ID: <CAPaKu7So4BeEyUGSS3ZAHi+Z=Sh6Kpy_W8eEtX4UQs=__MpPEA@mail.gmail.com>
+Subject: Re: [PATCH 3/4] drm/panthor: Implement reading shader_present from nvmem
+To: Steven Price <steven.price@arm.com>
+Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+	Boris Brezillon <boris.brezillon@collabora.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Ulf Hansson <ulf.hansson@linaro.org>, Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com, 
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251219_134530_035909_F98026BA 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20251219_164529_355676_E282E9B2 
+X-CRM114-Status: GOOD (  31.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,28 +106,198 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Don't populate the read-only array scale_us on the stack at run time,
-instead make it static const.
+On Fri, Dec 19, 2025 at 7:31=E2=80=AFAM Steven Price <steven.price@arm.com>=
+ wrote:
+>
+> On 17/12/2025 17:03, Nicolas Frattaroli wrote:
+> > On some platforms, notably MediaTek MT8196, the shader_present bitmask
+> > in the Mali GPU register for it has cores enabled that may be faulty.
+> > The true shader_present bitmask is found in an efuse instead.
+> >
+> > Implement reading shader_present from an nvmem cell if one is present,
+> > falling back to the Mali register if it's absent. The error codes are
+> > trickled up through to the probe function so that probe deferral works.
+> >
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+>
+> Reviewed-by: Steven Price <steven.price@arm.com>
+>
+> [Although I really hope other vendors don't do this - the hardware is
+> broken!]
+>
+> Although one NIT below if you respin for other reasons...
+>
+> > ---
+> >  drivers/gpu/drm/panthor/panthor_hw.c | 63 ++++++++++++++++++++++++++++=
+++++----
+> >  1 file changed, 57 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/panthor/panthor_hw.c b/drivers/gpu/drm/pan=
+thor/panthor_hw.c
+> > index 87ebb7ae42c4..eb44c8b108aa 100644
+> > --- a/drivers/gpu/drm/panthor/panthor_hw.c
+> > +++ b/drivers/gpu/drm/panthor/panthor_hw.c
+> > @@ -1,6 +1,7 @@
+> >  // SPDX-License-Identifier: GPL-2.0 or MIT
+> >  /* Copyright 2025 ARM Limited. All rights reserved. */
+> >
+> > +#include <linux/nvmem-consumer.h>
+> >  #include <drm/drm_print.h>
+> >
+> >  #include "panthor_device.h"
+> > @@ -109,7 +110,52 @@ static char *get_gpu_model_name(struct panthor_dev=
+ice *ptdev)
+> >       return "(Unknown Mali GPU)";
+> >  }
+> >
+> > -static void panthor_gpu_info_init(struct panthor_device *ptdev)
+> > +static int overload_shader_present(struct panthor_device *ptdev)
+> > +{
+> > +     struct device *dev =3D ptdev->base.dev;
+> > +     struct nvmem_cell *cell =3D nvmem_cell_get(dev, "shader-present")=
+;
+> > +     ssize_t len;
+> > +     void *buf;
+> > +     int ret;
+> > +
+> > +     if (IS_ERR(cell)) {
+> > +             /* On platforms without this cell, use the Mali register =
+*/
+> > +             if (PTR_ERR(cell) =3D=3D -ENOENT)
+> > +                     return 0;
+> > +
+> > +             return dev_err_probe(dev, PTR_ERR(cell),
+> > +                                  "Failed to get shader-present nvmem =
+cell\n");
+> > +     }
+> > +
+> > +     buf =3D nvmem_cell_read(cell, &len);
+> > +     if (IS_ERR(buf)) {
+> > +             ret =3D dev_err_probe(dev, PTR_ERR(buf),
+> > +                                 "Failed to read shader-present nvmem =
+cell\n");
+> > +             goto err_put_cell;
+> > +     }
+> > +
+> > +     if (!len || len > 8) {
+> > +             ret =3D dev_err_probe(dev, -EINVAL, "shader-present cell =
+can't be length %ld\n",
+> > +                                 len);
+> > +             goto err_free;
+> > +     }
+> > +
+> > +     memcpy(&ptdev->gpu_info.shader_present, buf, len);
+When len is 4, this is neither overriding nor masking. I might suggest
+switching to nvmem_cell_read_variable_le_u64 for simplicity.
 
-Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
----
- drivers/ufs/host/ufs-mediatek.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Either way, Reviewed-by: Chia-I Wu <olvaffe@gmail.com>
 
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index ecbbf52bf734..66b11cc0703b 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1112,7 +1112,7 @@ static void ufs_mtk_setup_clk_gating(struct ufs_hba *hba)
- 	unsigned long flags;
- 	u32 ah_ms = 10;
- 	u32 ah_scale, ah_timer;
--	u32 scale_us[] = {1, 10, 100, 1000, 10000, 100000};
-+	static const u32 scale_us[] = {1, 10, 100, 1000, 10000, 100000};
- 
- 	if (ufshcd_is_clkgating_allowed(hba)) {
- 		if (ufshcd_is_auto_hibern8_supported(hba) && hba->ahit) {
--- 
-2.51.0
 
+> > +
+> > +     kfree(buf);
+> > +     nvmem_cell_put(cell);
+> > +
+> > +     return 0;
+> > +
+> > +err_free:
+> > +     kfree(buf);
+> > +err_put_cell:
+> > +     nvmem_cell_put(cell);
+> > +
+> > +     return ret;
+> > +}
+>
+> Rather than repeating the clean up, you can do something like:
+>
+> {
+>         void *buf =3D NULL;
+>         int ret =3D 0
+>
+>         if (IS_ERR(cell)) {
+>                 ret =3D dev_err_probe(...);
+>                 goto out;
+>         }
+>
+>         buf =3D nvmem_cell_read();
+>         if (IS_ERR(buf)) {
+>                 ret =3D dev_err_probe(...);
+>                 goto out;
+>         }
+>
+>         if (!len || len > 8) {
+>                 ret =3D dev_err_probe(...);
+>                 goto out;
+>         }
+>
+>         memcpy();
+>
+> out:
+>         if (!IS_ERR(buf))
+>                 kfree(buf);
+>         if (!IS_ERR(cell))
+>                 nvmem_cell_put(cell);
+>
+>         return ret;
+> }
+>
+> That avoids mistakes when adding a new operation into the sequence. Or
+> you can use the fancy new cleanup helpers, but that feels overkill here.
+> But equally I'm ok if you leave the code as is - it's simple enough and
+> the conversation can be done later if we need it.
+>
+> Thanks,
+> Steve
+>
+> > +
+> > +static int panthor_gpu_info_init(struct panthor_device *ptdev)
+> >  {
+> >       unsigned int i;
+> >
+> > @@ -143,13 +189,18 @@ static void panthor_gpu_info_init(struct panthor_=
+device *ptdev)
+> >               ptdev->gpu_info.tiler_present =3D gpu_read64(ptdev, GPU_T=
+ILER_PRESENT);
+> >               ptdev->gpu_info.l2_present =3D gpu_read64(ptdev, GPU_L2_P=
+RESENT);
+> >       }
+> > +
+> > +     return overload_shader_present(ptdev);
+> >  }
+> >
+> > -static void panthor_hw_info_init(struct panthor_device *ptdev)
+> > +static int panthor_hw_info_init(struct panthor_device *ptdev)
+> >  {
+> >       u32 major, minor, status;
+> > +     int ret;
+> >
+> > -     panthor_gpu_info_init(ptdev);
+> > +     ret =3D panthor_gpu_info_init(ptdev);
+> > +     if (ret)
+> > +             return ret;
+> >
+> >       major =3D GPU_VER_MAJOR(ptdev->gpu_info.gpu_id);
+> >       minor =3D GPU_VER_MINOR(ptdev->gpu_info.gpu_id);
+> > @@ -172,6 +223,8 @@ static void panthor_hw_info_init(struct panthor_dev=
+ice *ptdev)
+> >                "shader_present=3D0x%0llx l2_present=3D0x%0llx tiler_pre=
+sent=3D0x%0llx",
+> >                ptdev->gpu_info.shader_present, ptdev->gpu_info.l2_prese=
+nt,
+> >                ptdev->gpu_info.tiler_present);
+> > +
+> > +     return 0;
+> >  }
+> >
+> >  static int panthor_hw_bind_device(struct panthor_device *ptdev)
+> > @@ -218,7 +271,5 @@ int panthor_hw_init(struct panthor_device *ptdev)
+> >       if (ret)
+> >               return ret;
+> >
+> > -     panthor_hw_info_init(ptdev);
+> > -
+> > -     return 0;
+> > +     return panthor_hw_info_init(ptdev);
+> >  }
+> >
+>
 
