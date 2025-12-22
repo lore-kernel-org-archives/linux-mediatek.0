@@ -4,68 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBD86E6ADC5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Dec 2025 20:38:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 149AEE6ADFE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Dec 2025 20:47:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7yDDh11SanuErCPDyP++RlnzB0pdnbW9EeqbEVC9sdM=; b=IQZdoUd9E8orkJAMVX2/C5DWPt
-	HEr2IrEi44rAqZ7TBSTXZ62dQflAezd+QyEV3+UvRgh3rxWsp1p2jFzDVLsqbmPquathvzccxnZAI
-	ODnHsRUmAztboTbBZBmwCd0RnVVq7yqNetbOlZ4y2c4F5jBG/HiYdk2Ou9qqVX9h0i5vO+L8mJ+/y
-	eC4WmwHMWxvUU11GjTeu/Dc0md4FoOvfvRhxrAnQvc6mX6rmm0gTu93ra7MVTUrli/XVpSdsv/+sX
-	sDb2Ul24dDGZE08A2mI+VJWflc9apc4hzMY0xbiwJVkuod4UDe181vduX1tE7tsnvZRtrx3h5kwpu
-	4VPfq6kg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rbxaNpLxFAH3dqMAl+p1IRk5i2JFW/cXOJCZG2bLHVQ=; b=zArwnXarWYmHPhkSx+KRRunpi6
+	w5PoUJOgGQ7dT6hY/QyVSIZmyKc8eRJW7CCnx65WwfSoemMbHZJzcWJCqWedsLqTKToVzTT3JZLWV
+	xjhAtg7ruXIy7eqLNdwF//TPqRWWDJJ2SCLoqtXpNsSRjH4DAaqdSLI5nYUl+ZYyRJmB4YX6jBU1r
+	gXDRIyCKT59RZP7SOjDupM9l5eWkAXaP3jzLoFUYqpO4UELtQhnlmPCorCYu6c37nTECBynpftKvD
+	Hlz+1yHSx9cItHZ6lXaxkQ3vz9C6byEk5KHFj9qBDTILoMOfHPRQlwYGK/hp/9zsRSH4lyWdEiX6f
+	s/5FnSdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXmfI-0000000E98c-2CRo;
-	Mon, 22 Dec 2025 20:38:00 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vXmov-0000000E9dp-3XsI;
+	Mon, 22 Dec 2025 20:47:57 +0000
+Received: from mail-10630.protonmail.ch ([79.135.106.30])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXmfG-0000000E98E-2vjm
+	id 1vXmot-0000000E9d5-1LzM
 	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Dec 2025 20:37:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B17DA4384A;
-	Mon, 22 Dec 2025 20:37:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 997FCC116D0;
-	Mon, 22 Dec 2025 20:37:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766435877;
-	bh=QvJ1CW2dTGSVQI9v1hkF14kO+wZVUTltwp45UZxtMDc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=X1diPkQWUD8viHi49Bj+t7AL3mo311LJJ0cqvIEZddRz7YYFXsFTenawWyC6fLyXW
-	 ViUwKvu2DMUbe+E6kt/2DYz2KZ12ieBkB8un3TqtyWegmi9ftTIvdlnvH4ixnprDKB
-	 BZK4h6lUKklET0HCNW93DYSyhN94AWwrgjDqY2AcLeDju/9kIa+BQNO8/hUMzOCrwB
-	 vo+keM3wp+mEioOmmQnsRANL66xi7zlvmh6BJ1H9kXmRbKaMuRgzLnEulsZCWQciZt
-	 j3euIabD1LY0/ylYkQHJ2Fh2QeAJR/ps2sTC7U4ouNRdqqZ6DeJJtya7BR7AWtZkNr
-	 PF/bouE5g9b8g==
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-To: Linux PM <linux-pm@vger.kernel.org>
-Cc: LKML <linux-kernel@vger.kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>,
- Brian Norris <briannorris@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v1 07/23] media: mediatek: vcodec: Discard pm_runtime_put() return
- value
-Date: Mon, 22 Dec 2025 21:06:16 +0100
-Message-ID: <3690736.iIbC2pHGDl@rafael.j.wysocki>
-Organization: Linux Kernel Development
-In-Reply-To: <6245770.lOV4Wx5bFT@rafael.j.wysocki>
-References: <6245770.lOV4Wx5bFT@rafael.j.wysocki>
+	Mon, 22 Dec 2025 20:47:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1766436472; x=1766695672;
+	bh=rbxaNpLxFAH3dqMAl+p1IRk5i2JFW/cXOJCZG2bLHVQ=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=MLK8f6kFrt4HaO27kUwVilQF/dtxIh+J/vyaqkpzIGDx9Zt6VU5EGUiBVJTkuGxmm
+	 WKAl9fPWKpZOn7aVb9GHPp8SqCHsuSI5BfevxaoHXGlJ1s1Z5hlB2kzCArnQ9Ao4PI
+	 ilYuyrKXH2s2YvfSMrVUeOtwd+MD6B0qbwrVJ/bmUcBkIjrGtytFZX1c90H3HkQCho
+	 nwu+5Hq1d8xVLnzv1jElb9z5ji2bMdRFLmZ64vzapurn4aEmNG/UvSMv0tCObMsiys
+	 y2QibfvqWHdubaTGSIYHFYZ8lXSGh9vBYHyIzGk9Mm1Iy1/yUrklUkPxWLgYT08vZr
+	 BnRkP9YawosbA==
+Date: Mon, 22 Dec 2025 20:47:44 +0000
+To: Harry Austen <hpausten@protonmail.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>
+From: Harry Austen <hpausten@protonmail.com>
+Cc: Shayne Chen <shayne.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] wifi: mt76: fix buffer overflow bug
+Message-ID: <DF51GPM5N848.3L90OHP3XRWTV@protonmail.com>
+In-Reply-To: <20251222180437.1938-1-hpausten@protonmail.com>
+References: <20251222180437.1938-1-hpausten@protonmail.com>
+Feedback-ID: 53116287:user:proton
+X-Pm-Message-ID: 7cbfe6dc198c2829d8087c095262b79223caa22b
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251222_123758_783391_17548E06 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20251222_124755_535002_30CA9C0A 
+X-CRM114-Status: UNSURE (   4.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,71 +70,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+On Mon Dec 22, 2025 at 6:05 PM GMT, Harry Austen wrote:
+> Prevents attempting to read an extra byte from the origin string.
+...
 
-Printing error messages on pm_runtime_put() returning negative values
-is not particularly useful.
+Ah, my apologies. There appear to be a bunch of emails about this bug alrea=
+dy.
+And an existing patch [1], which has already been reviewed. Please ignore m=
+y
+patch.
 
-Returning an error code from pm_runtime_put() merely means that it has
-not queued up a work item to check whether or not the device can be
-suspended and there are many perfectly valid situations in which that
-can happen, like after writing "on" to the devices' runtime PM "control"
-attribute in sysfs for one example.
+Apologies for the noise,
+Harry
 
-Accordingly, update mtk_vcodec_enc_pw_off() and mtk_vcodec_dec_pw_off()
-to simply discard the return value of pm_runtime_put().
-
-This will facilitate a planned change of the pm_runtime_put() return
-type to void in the future.
-
-Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
----
-
-This patch is part of a series, but it doesn't depend on anything else
-in that series.  The last patch in the series depends on it.
-
-It can be applied by itself and if you decide to do so, please let me
-know.
-
-Otherwise, an ACK or equivalent will be appreciated, but also the lack
-of specific criticism will be eventually regarded as consent.
-
----
- drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c |    6 +-----
- drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c |    6 +-----
- 2 files changed, 2 insertions(+), 10 deletions(-)
-
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
-@@ -67,11 +67,7 @@ static int mtk_vcodec_dec_pw_on(struct m
- 
- static void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm)
- {
--	int ret;
--
--	ret = pm_runtime_put(pm->dev);
--	if (ret && ret != -EAGAIN)
--		dev_err(pm->dev, "pm_runtime_put fail %d", ret);
-+	pm_runtime_put(pm->dev);
- }
- 
- static void mtk_vcodec_dec_clock_on(struct mtk_vcodec_pm *pm)
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c
-@@ -71,11 +71,7 @@ int mtk_vcodec_enc_pw_on(struct mtk_vcod
- 
- void mtk_vcodec_enc_pw_off(struct mtk_vcodec_pm *pm)
- {
--	int ret;
--
--	ret = pm_runtime_put(pm->dev);
--	if (ret && ret != -EAGAIN)
--		dev_err(pm->dev, "pm_runtime_put fail %d", ret);
-+	pm_runtime_put(pm->dev);
- }
- 
- void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
-
-
+[1]: https://lore.kernel.org/all/20251205161202.48409-1-mikhail.v.gavrilov@=
+gmail.com/
 
 
