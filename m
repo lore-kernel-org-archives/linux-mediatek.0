@@ -4,54 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 145B9E6748D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Dec 2025 09:03:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52B8FE6749A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Dec 2025 11:44:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rBf3jQVFnGCeJlMPbA0E+WWQIPnf9AfAJW4UEB5U3Ig=; b=dGANriZrvYaBjPdIgY138r5SaC
-	U2zcNZ9CORJRgVzNi5M1KeemaSX11fHOzFkJIN+jmlLrVS01NvVWsC19+j7Se3wyLblHkH1NeXzRQ
-	3RN+5Pq3lD2Q2tcosuSqGFPjopajNOvYPwus1EES49iTpCdOA7vfG8TWbGJcKuuxzNaQVM5HByfbT
-	V/JG5fJTYXPbAl+3/pokSt4aVRbg55+nXN3f5V/AjE+4Ufm3gp8H5nEVdythTNqJ5BYw1JDot21zs
-	ftNluHqcY+3S7mAv6ot6RyPOnTviEsK0XLJGMNhYXH2hsZMvAVwbIkYWToHGt0iXhZef260qTYEDR
-	p3LvvMGQ==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b8a+f6gl2Wz4m9MuhI4zrCSwDqPsTlNmo2n2XvDMCD0=; b=iZXqPWbl7k2y59jUQzYRvFHI4e
+	foHSSPx9TWj6zGWAPfQinI6e1q+7viDeB1PTuvCMQLSMteLkebs7rNdDA3UGD/CG02ntsiSPfoMx8
+	EPffb/2P/ij6xB+W0bDJZ4dVddbSz6PMSfntfeLeD3cEKjUUf13ZQicaXKniIlAEGYTwOcvGE1rbx
+	nE7kVXR6GPSvOtV8PnH6Jd13kmlFkEWJjI3IDv7pImt9rBhuqZBS6fhEzp5bHtRHUOqaOm9vo2ERf
+	Af8RYDLCVIU6mBmskBEfDNnntsnVv75KEx/KisFTj2QQFoZgb/ppLaGXdXQe47KCGKfXNjr7ozrrK
+	fcU72LfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXboh-0000000DUpS-2zI7;
-	Mon, 22 Dec 2025 09:02:59 +0000
-Received: from mail.vexro.pl ([141.94.250.70])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXbof-0000000DUob-2kSU
-	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Dec 2025 09:02:58 +0000
-Received: by mail.vexro.pl (Postfix, from userid 1002)
-	id E80F6A5B13; Mon, 22 Dec 2025 10:01:03 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=vexro.pl; s=mail;
-	t=1766394075; bh=rBf3jQVFnGCeJlMPbA0E+WWQIPnf9AfAJW4UEB5U3Ig=;
-	h=Date:From:To:Subject:From;
-	b=DNL3Jz5txvcx2H6EXhbZv0gnmb1eT/i9C4HDl9huRDpnpaBDmOP/f3rEBwUEcBdzT
-	 +6W6PhKSItfzkeHFKU7pHx+BRp80iLvPNYBiTQw6p1qiswimrShQUH+KSPfjzfDhqg
-	 nWxJJzc8jy6DM8r3bdy2T4V1z9VNSBg85G1i0zyqhWpe0igZ1z2FW2cqX+GUUL/0XC
-	 ITvFYsifThpSBQ2dO/7ygU6tqAqg/1l0oX/+Yrt7j2pYZp0tsgo9rvbDMQS9213N8R
-	 UNH1EsVgwYQ/gAhb4cyJLdsbMzSU9rJyD//ItTpVABZTNjntegll/bC1QPDntijiYU
-	 Hpg0LjFAqKD1Q==
-Received: by mail.vexro.pl for <linux-mediatek@lists.infradead.org>; Mon, 22 Dec 2025 09:00:58 GMT
-Message-ID: <20251222084500-0.1.pc.4sj13.0.lo3xih0rgl@vexro.pl>
-Date: Mon, 22 Dec 2025 09:00:58 GMT
-From: "Adam Drzewiecki" <adam.drzewiecki@vexro.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: W sprawie samochodu 
-X-Mailer: mail.vexro.pl
+	id 1vXeKo-0000000Dg9M-1O8O;
+	Mon, 22 Dec 2025 11:44:18 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vXeKj-0000000Dg8E-3jZC;
+	Mon, 22 Dec 2025 11:44:15 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9F56C497;
+	Mon, 22 Dec 2025 03:43:53 -0800 (PST)
+Received: from [10.1.29.18] (e122027.cambridge.arm.com [10.1.29.18])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1FD983F778;
+	Mon, 22 Dec 2025 03:43:55 -0800 (PST)
+Message-ID: <d4d35a65-6ff8-47ea-9764-f03f7bead334@arm.com>
+Date: Mon, 22 Dec 2025 11:43:53 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/4] drm/panthor: Implement reading shader_present from
+ nvmem
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Chia-I Wu <olvaffe@gmail.com>,
+ kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org
+References: <20251220-mt8196-shader-present-v2-0-45b1ff1dfab0@collabora.com>
+ <20251220-mt8196-shader-present-v2-3-45b1ff1dfab0@collabora.com>
+From: Steven Price <steven.price@arm.com>
+Content-Language: en-GB
+In-Reply-To: <20251220-mt8196-shader-present-v2-3-45b1ff1dfab0@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251222_010257_890086_6B47AE59 
-X-CRM114-Status: UNSURE (   1.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251222_034414_098643_8B341DE4 
+X-CRM114-Status: GOOD (  20.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,19 +78,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dzie=C5=84 dobry,
+On 20/12/2025 18:49, Nicolas Frattaroli wrote:
+> On some platforms, notably MediaTek MT8196, the shader_present bitmask
+> in the Mali GPU register for it has cores enabled that may be faulty.
+> The true shader_present bitmask is found in an efuse instead.
+> 
+> Implement reading shader_present from an nvmem cell if one is present,
+> falling back to the Mali register if it's absent. The error codes are
+> trickled up through to the probe function so that probe deferral works.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-czy istnieje mo=C5=BCliwo=C5=9B=C4=87 porozmawiania z Pa=C5=84stwem o wsp=
-=C3=B3=C5=82pracy?
+Reviewed-by: Steven Price <steven.price@arm.com>
 
-Dostarczamy i wdra=C5=BCamy system, kt=C3=B3rego efektem jest obni=C5=BCe=
-nie koszt=C3=B3w za paliwo, szybsze pokonywanie tras, skr=C3=B3cenie czas=
-u dostaw oraz wi=C4=99ksze bezpiecze=C5=84stwo kierowc=C3=B3w na drodze.
+> ---
+>  drivers/gpu/drm/panthor/panthor_hw.c | 36 ++++++++++++++++++++++++++++++------
+>  1 file changed, 30 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panthor/panthor_hw.c b/drivers/gpu/drm/panthor/panthor_hw.c
+> index 87ebb7ae42c4..80c521784cd3 100644
+> --- a/drivers/gpu/drm/panthor/panthor_hw.c
+> +++ b/drivers/gpu/drm/panthor/panthor_hw.c
+> @@ -1,6 +1,7 @@
+>  // SPDX-License-Identifier: GPL-2.0 or MIT
+>  /* Copyright 2025 ARM Limited. All rights reserved. */
+>  
+> +#include <linux/nvmem-consumer.h>
+>  #include <drm/drm_print.h>
+>  
+>  #include "panthor_device.h"
+> @@ -109,7 +110,25 @@ static char *get_gpu_model_name(struct panthor_device *ptdev)
+>  	return "(Unknown Mali GPU)";
+>  }
+>  
+> -static void panthor_gpu_info_init(struct panthor_device *ptdev)
+> +static int overload_shader_present(struct panthor_device *ptdev)
+> +{
+> +	u64 contents;
+> +	int ret;
+> +
+> +	ret = nvmem_cell_read_variable_le_u64(ptdev->base.dev, "shader-present",
+> +					      &contents);
+> +	if (!ret)
+> +		ptdev->gpu_info.shader_present = contents;
+> +	else if (ret == -ENOENT)
+> +		return 0;
+> +	else
+> +		return dev_err_probe(ptdev->base.dev, ret,
+> +				     "Failed to read shader-present nvmem cell\n");
+> +
+> +	return 0;
+> +}
+> +
+> +static int panthor_gpu_info_init(struct panthor_device *ptdev)
+>  {
+>  	unsigned int i;
+>  
+> @@ -143,13 +162,18 @@ static void panthor_gpu_info_init(struct panthor_device *ptdev)
+>  		ptdev->gpu_info.tiler_present = gpu_read64(ptdev, GPU_TILER_PRESENT);
+>  		ptdev->gpu_info.l2_present = gpu_read64(ptdev, GPU_L2_PRESENT);
+>  	}
+> +
+> +	return overload_shader_present(ptdev);
+>  }
+>  
+> -static void panthor_hw_info_init(struct panthor_device *ptdev)
+> +static int panthor_hw_info_init(struct panthor_device *ptdev)
+>  {
+>  	u32 major, minor, status;
+> +	int ret;
+>  
+> -	panthor_gpu_info_init(ptdev);
+> +	ret = panthor_gpu_info_init(ptdev);
+> +	if (ret)
+> +		return ret;
+>  
+>  	major = GPU_VER_MAJOR(ptdev->gpu_info.gpu_id);
+>  	minor = GPU_VER_MINOR(ptdev->gpu_info.gpu_id);
+> @@ -172,6 +196,8 @@ static void panthor_hw_info_init(struct panthor_device *ptdev)
+>  		 "shader_present=0x%0llx l2_present=0x%0llx tiler_present=0x%0llx",
+>  		 ptdev->gpu_info.shader_present, ptdev->gpu_info.l2_present,
+>  		 ptdev->gpu_info.tiler_present);
+> +
+> +	return 0;
+>  }
+>  
+>  static int panthor_hw_bind_device(struct panthor_device *ptdev)
+> @@ -218,7 +244,5 @@ int panthor_hw_init(struct panthor_device *ptdev)
+>  	if (ret)
+>  		return ret;
+>  
+> -	panthor_hw_info_init(ptdev);
+> -
+> -	return 0;
+> +	return panthor_hw_info_init(ptdev);
+>  }
+> 
 
-Prosz=C4=99 o kontakt, je=C5=9Bli interesuje Pa=C5=84stwa poznanie mo=C5=BC=
-liwo=C5=9Bci lub bezp=C5=82atny test tego typu narz=C4=99dzia.
-
-
-Pozdrawiam
-Adam Drzewiecki
 
