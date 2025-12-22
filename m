@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52B8FE6749A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Dec 2025 11:44:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0A73E674B1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Dec 2025 13:43:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b8a+f6gl2Wz4m9MuhI4zrCSwDqPsTlNmo2n2XvDMCD0=; b=iZXqPWbl7k2y59jUQzYRvFHI4e
-	foHSSPx9TWj6zGWAPfQinI6e1q+7viDeB1PTuvCMQLSMteLkebs7rNdDA3UGD/CG02ntsiSPfoMx8
-	EPffb/2P/ij6xB+W0bDJZ4dVddbSz6PMSfntfeLeD3cEKjUUf13ZQicaXKniIlAEGYTwOcvGE1rbx
-	nE7kVXR6GPSvOtV8PnH6Jd13kmlFkEWJjI3IDv7pImt9rBhuqZBS6fhEzp5bHtRHUOqaOm9vo2ERf
-	Af8RYDLCVIU6mBmskBEfDNnntsnVv75KEx/KisFTj2QQFoZgb/ppLaGXdXQe47KCGKfXNjr7ozrrK
-	fcU72LfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hkIdtbm3vg4nodeqjiJwMSQ3Vk9rASnees/QYeheYTs=; b=n66mYAsY4QwbKYwfcj7kVZI2xW
+	XnWrBUKwr6n3vzsox+5xW6Wq3CroIy5fZMzq0j9+jIa4G0FcBV9led2TQiXtYihJWMc7KtrV0t4Rr
+	FZyn8qh5ylAdHGDW6NEpVZ8vqe7iygMpvyWxOVYAyLEkXe6hOoNDyEEKbvMQmD9HLSri9W1dMrvFK
+	3FEkgOOCoWbArZM0lW4L748j6xMwR0Tsq96RcnrmosqVn3EUSm1niHZsidS98TlfF9eW2z5BQ+4NK
+	ZAIHI1zqRqBKl1lnIaehfxttzs5Oss2/oJLC5eXguaS123VitUdGr3pkBIvr4ohzm6lRjkUTilV+/
+	kUMNSfEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXeKo-0000000Dg9M-1O8O;
-	Mon, 22 Dec 2025 11:44:18 +0000
+	id 1vXgBm-0000000Dpf6-37tP;
+	Mon, 22 Dec 2025 13:43:06 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXeKj-0000000Dg8E-3jZC;
-	Mon, 22 Dec 2025 11:44:15 +0000
+	id 1vXgBj-0000000DpeS-3f4U
+	for linux-mediatek@lists.infradead.org;
+	Mon, 22 Dec 2025 13:43:05 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9F56C497;
-	Mon, 22 Dec 2025 03:43:53 -0800 (PST)
-Received: from [10.1.29.18] (e122027.cambridge.arm.com [10.1.29.18])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1FD983F778;
-	Mon, 22 Dec 2025 03:43:55 -0800 (PST)
-Message-ID: <d4d35a65-6ff8-47ea-9764-f03f7bead334@arm.com>
-Date: Mon, 22 Dec 2025 11:43:53 +0000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/4] drm/panthor: Implement reading shader_present from
- nvmem
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Chia-I Wu <olvaffe@gmail.com>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id F3784497
+	for <linux-mediatek@lists.infradead.org>; Mon, 22 Dec 2025 05:42:53 -0800 (PST)
+Received: from [169.254.77.58] (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id C93263F778
+	for <linux-mediatek@lists.infradead.org>; Mon, 22 Dec 2025 05:43:00 -0800 (PST)
+Date: Mon, 22 Dec 2025 13:41:52 +0000
+From: Liviu Dudau <liviu.dudau@arm.com>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Boris Brezillon <boris.brezillon@collabora.com>,
+	Steven Price <steven.price@arm.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ulf Hansson <ulf.hansson@linaro.org>,
+	Chen-Yu Tsai <wenst@chromium.org>, Chia-I Wu <olvaffe@gmail.com>,
+	kernel@collabora.com, dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+Subject: Re: [PATCH v2 3/4] drm/panthor: Implement reading shader_present
+ from nvmem
+Message-ID: <aUlKoHKb084vm_p-@e142607>
 References: <20251220-mt8196-shader-present-v2-0-45b1ff1dfab0@collabora.com>
  <20251220-mt8196-shader-present-v2-3-45b1ff1dfab0@collabora.com>
-From: Steven Price <steven.price@arm.com>
-Content-Language: en-GB
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 In-Reply-To: <20251220-mt8196-shader-present-v2-3-45b1ff1dfab0@collabora.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251222_034414_098643_8B341DE4 
-X-CRM114-Status: GOOD (  20.02  )
+X-CRM114-CacheID: sfid-20251222_054304_019742_B0C086F5 
+X-CRM114-Status: GOOD (  21.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,7 +79,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 20/12/2025 18:49, Nicolas Frattaroli wrote:
+On Sat, Dec 20, 2025 at 07:49:54PM +0100, Nicolas Frattaroli wrote:
 > On some platforms, notably MediaTek MT8196, the shader_present bitmask
 > in the Mali GPU register for it has cores enabled that may be faulty.
 > The true shader_present bitmask is found in an efuse instead.
@@ -89,7 +90,10 @@ On 20/12/2025 18:49, Nicolas Frattaroli wrote:
 > 
 > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Reviewed-by: Steven Price <steven.price@arm.com>
+Reviewed-by: Liviu Dudau <liviu.dudau@arm.com>
+
+Best regards,
+Liviu
 
 > ---
 >  drivers/gpu/drm/panthor/panthor_hw.c | 36 ++++++++++++++++++++++++++++++------
@@ -174,5 +178,7 @@ Reviewed-by: Steven Price <steven.price@arm.com>
 > +	return panthor_hw_info_init(ptdev);
 >  }
 > 
-
+> -- 
+> 2.52.0
+> 
 
