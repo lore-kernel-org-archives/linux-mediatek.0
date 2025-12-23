@@ -4,108 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96CE4E6FE25
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 16:24:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09DACE6F085
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 17:08:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XNc5D3tM2Ruu7jgNjJ6LlXwBLama5WaJvtYpRDNLE2s=; b=OskjQgUzgUylC6n27NakrX2O6l
-	wIPtyRLNkhvgYLc25Ww1Rc79/LmS9ldvhNHqjX5qzPvbtjj8HFM2DxpyZnpbE4JuPU523ROpUfY4C
-	2Hyky/1SQyYBJRjA2Dzv4WloeqKUVXHjSBgRXPfno+AfOIN7cY9YhJXWR/jcui25cSs9X0DxavNGX
-	V32jiyL3OINGEIOp2cUyYKet+MQe7mv5e4qy8LpdP0x8dyZXXZ29Pq0gCbYj/ycd/YpDjkzjuHfuw
-	O9syKK3X4/P1RG3rwvh+YwxgW4jqBMDHJq4ahOPjHIdjLeCfw1PdtAb7Fwb+C9Js/xNmNapKRIn0t
-	MMiwr7nA==;
+	bh=aPBInWUU+hAdbqfFG09sngcW/N7tfHu+5Smtzp1GCOg=; b=LdMiZCLOEyRkXKNtpObZLaf3ME
+	XpQvWWSv6646YNYSIgxy5oPCps4vummz4K80gjhH/O18trQkyPjPorbNCIxRr8OCk3F0ZqWg9UoUi
+	IFCJzT9FOfalMFQgOeocC7JyWuOHLqqZ3k0yoY6+RpJ92dS0Bv/ckR1kvuC/jl10X3US7iLAARe3h
+	HiwYF/eO6TV7kot65F9rfkHbiPF2ZTzgPBEXOWLYmrltsRKykmNayjQHcJ45aZBtoFVYQAZd7Kfrw
+	YbfjEUv9anIyu973iguR1txVecdV8rwARXFbyNGubN//rjExHSl9YjTR/O0JMtT9f9lUTTEGlIGzm
+	avPLE5cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY5Bh-0000000FkqV-3k5F;
-	Tue, 23 Dec 2025 16:24:41 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vY5rg-0000000FnGK-2Pw0;
+	Tue, 23 Dec 2025 17:08:04 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY5Bg-0000000FkqE-0xGv;
-	Tue, 23 Dec 2025 16:24:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id CBB0660123;
-	Tue, 23 Dec 2025 16:24:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C0240C113D0;
-	Tue, 23 Dec 2025 16:24:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766507078;
-	bh=3qVOvSQIWwScePELLmWnd91+x+FO0ghrlMNcQT2LZbk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YxocYG+qrFsexKvWp8UnmdmobfpsDyH7P1+YJTEa2MYESPoFxhafpM8gsfi6cIU1R
-	 n9Gfg1fwPKTG1mVszIKw6gD/hi1FUHPlichzp8hHC1c+ODcPI9IBtiK3ysngVX/8kW
-	 6qtUsjPhga/f+L4DCnVAi/486vh+xUTx4zZGQNwJ3DsWuw1m/H07s9A63d0isPWvAn
-	 xfv73Q5cyzS9PAQGwA0vuOAt9j1S+Rh8W8c92InWjFECnByviZpnF8o0xVzvH73G+F
-	 Ou0DXgasgqiym6+NqEvExYrZ1OZI3ZKfz52X4AGZYCiiAOFPgWM25YiaBJBeAweuxD
-	 6BLkrF9xDKKgg==
-Date: Tue, 23 Dec 2025 21:54:34 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Romain Gantois <romain.gantois@bootlin.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Guenter Roeck <linux@roeck-us.net>, Peter Rosin <peda@axentia.se>,
-	Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Mariel Tinaco <Mariel.Tinaco@analog.com>,
-	Kevin Tsai <ktsai@capellamicro.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Eugen Hristev <eugen.hristev@linaro.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Sebastian Reichel <sre@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
-	Hans de Goede <hansg@kernel.org>,
-	Support Opensource <support.opensource@diasemi.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Iskren Chernev <me@iskren.info>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Matheus Castello <matheus@castello.eng.br>,
-	Saravanan Sekar <sravanhome@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Casey Connolly <casey.connolly@linaro.org>,
-	Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Amit Kucheria <amitk@kernel.org>,
-	Thara Gopinath <thara.gopinath@gmail.com>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Daniel Lezcano <daniel.lezcano@linaro.org>,
-	Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-	Claudiu Beznea <claudiu.beznea.uj@bp.renesas.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Sylwester Nawrocki <s.nawrocki@samsung.com>,
-	Olivier Moysan <olivier.moysan@foss.st.com>,
-	Arnaud Pouliquen <arnaud.pouliquen@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	linux-kernel@vger.kernel.org, linux-hwmon@vger.kernel.org,
-	linux-iio@vger.kernel.org, linux-input@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-pm@vger.kernel.org,
-	linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-sound@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Andy Shevchenko <andriy.shevchenko@intel.com>
-Subject: Re: [PATCH v2 2/2] iio: inkern: Use namespaced exports
-Message-ID: <aUrCQu-wmQ7gOyD3@vaman>
-References: <20251209-iio-inkern-use-namespaced-exports-v2-0-9799a33c4b7f@bootlin.com>
- <20251209-iio-inkern-use-namespaced-exports-v2-2-9799a33c4b7f@bootlin.com>
+	id 1vY5rd-0000000FnFd-46Xp
+	for linux-mediatek@lists.infradead.org;
+	Tue, 23 Dec 2025 17:08:03 +0000
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5BNFr3R74134145
+	for <linux-mediatek@lists.infradead.org>; Tue, 23 Dec 2025 17:07:59 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	aPBInWUU+hAdbqfFG09sngcW/N7tfHu+5Smtzp1GCOg=; b=W0Ag5pY5jrz0kdXC
+	dq0pDLHqS1nLbZBjiuX7i9g9id0vu1GFiDPn8YermEqxiVAKJbDvfrOSadnssgLB
+	+SV+IN/abjuWFEgA/N9VZtbntZgYYh6DojbbJ7wR2xriwCwyu48J5mqGTJtPtDKL
+	6ljmhGhR662UN8wLKzmi3pa4JbEea/ppn2II8D+PgbnYjssoDoGYhnzOi/UGU6Zn
+	T0mEBjOY3JnL0o27mbkD7i9/4H7VwWiSYxksZRa71xjNhEPwSSHMbaz/hH8QMrZ0
+	GsaBEgD+pO2GCFvnWzObqQ89wnzlthNw79DmPZdRBU80nL3/5Oq5diwSE5I9EpPt
+	bJY3jQ==
+Received: from mail-vs1-f70.google.com (mail-vs1-f70.google.com [209.85.217.70])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4b7x46r880-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Tue, 23 Dec 2025 17:07:58 +0000 (GMT)
+Received: by mail-vs1-f70.google.com with SMTP id ada2fe7eead31-5e563c429c4so8452893137.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 23 Dec 2025 09:07:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1766509678; x=1767114478; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=aPBInWUU+hAdbqfFG09sngcW/N7tfHu+5Smtzp1GCOg=;
+        b=Lr8Q8s4cOBSwmwYpTQSAxVa+192iBvBwxbFgxoHnpII0PH9ZTujcoOaUr6HJHd5i7f
+         IJ6JHfjIPPDI3VT7187qnDus8CDNPUCYAFu4WxcnoEW0jdb86m9eiU+guwa11QKRwkj3
+         EL6unKKxTSDN0BXC2UMre7m37M7WveqqCJzJQMluJsU7ZiVZjUEA3Yn64I6YTvRwIhZJ
+         7fLyv75Y0UaDamVyyOCFbp3BQqrgQ96202HzAKfYzP//7QAlAKcrwSICk/DYp2QtwLdu
+         C92QzGGvae9k6AB4OOlC38c9VvVA9CL5qxC/oW4VzPJP/RAKt9DkDRcuMbCr3JRdLsux
+         xUvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1766509678; x=1767114478;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=aPBInWUU+hAdbqfFG09sngcW/N7tfHu+5Smtzp1GCOg=;
+        b=dx38S4F6phfWA0fcbhwdn4+/PyZF3y4bk31/nltvOnkya1kX0GGhzO5QfQeVUDCvRN
+         8trJkc3qIB7/mQWIxTnOV/a9lKTOfQjP1tG6BIZUYmSNQqqeAyBVTuvk6fSNiCMNHUDS
+         CfrsvaBNjhVmlBaZo5EIL+ZNeCiMGMHLRqrM/MdC+jQxpCquJzPWSbtEf+It0Njq+XNZ
+         x2kadYr0B8laxJz/HoO/9byl0gB8+0tnfiatnPhfTZpN+bhuOqFu9X7Qj/HAbZwu6uzH
+         CuQuJoIYuyt791HoEJL0GW0gJcNf15eKxL0XmK66ut9uAeHwVRJjBcP0SxSzghe7F+hU
+         B/eA==
+X-Forwarded-Encrypted: i=1; AJvYcCVr1tXxqFwrIx8Ssxd7ExOLrz8SikSvpWCSaMJvq+qmEv3F+mBqA1ZYGLubiedI7s+XnoEG95SEiBoRemQgUg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz9iYfmbRR7qOyyEzIKza+sAcOhuWYk/dWqMtwDxYpK3RI+EQGG
+	mSSF8HaSZd4SkoiE8FMRt27LBTcoEyqbhXvMt4DHQCEvPhYqHx1Gv8Ee66inQnDwlLOnyzrkPvr
+	14KEqHr5keps4raiUduscl3qhGzYBikG86EsKkvj3Se/daWkqNCEHzKabDMcfDk/RZTimA/RfTX
+	o=
+X-Gm-Gg: AY/fxX6wupqisTRm5Vuc5/iG36Q+2e4lSXY7CQQVHSweH8BwHnZxMerZEFarnmjBntc
+	epT5XxVxWqTAL6lay+zPoWrsOOG1Twx5l76Woxkp0uMWkyuxUfE+DJnWai78Q9aQymZDEwSBvaE
+	57AfQIQRypzAJIniEmFoHTm7bIABPfmTIFOumq9IHH6YjQa+PeUFRoeyYEvmktUK/vq6ZIj9Adw
+	rWJ15xoK0QtfHF73PNhBp10DeMM9O0LZMda6b4eEvDQcY2GOQ/V9FzmtTrUYPu1s9u0iP1qXZfL
+	pEdj7tW8Gh8Y0WNzGYV1UoL9EBrz7UGdHrmWZmZDSjfSh4zUtoiC1517+s5nqFeluNeinfHM9Oy
+	5ci6Gm+gFXJVyxPNVdH6Y7p64d53V0KDRW2cB5G3MVZK2Eud8O6sjWkyTYGmt0XFaqdD6koQXI6
+	EADIvD0VYVmIN3cUedHylxkrI=
+X-Received: by 2002:a05:6102:2d05:b0:5df:c1ac:8ad4 with SMTP id ada2fe7eead31-5eb1a41d4eemr5433482137.0.1766509677713;
+        Tue, 23 Dec 2025 09:07:57 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IETm5QEXWpf7BGzE7LdZDGB+prGUr+uYy/GMDUx5kG1G/sLsB+UB6U7pT6XEYtMMNKfoosnow==
+X-Received: by 2002:a05:6102:2d05:b0:5df:c1ac:8ad4 with SMTP id ada2fe7eead31-5eb1a41d4eemr5433451137.0.1766509677223;
+        Tue, 23 Dec 2025 09:07:57 -0800 (PST)
+Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-59a186287e3sm4266065e87.97.2025.12.23.09.07.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 23 Dec 2025 09:07:56 -0800 (PST)
+Date: Tue, 23 Dec 2025 19:07:53 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Lucien Jheng =?utf-8?B?KOmEreelpemInik=?= <lucien.jheng@airoha.com>
+Cc: Josh Boyer <jwboyer@kernel.org>,
+        linux-firmware <linux-firmware@kernel.org>,
+        linux-mediatek <linux-mediatek@lists.infradead.org>,
+        Albert-AL Lee =?utf-8?B?KOadjuWutuWujyk=?= <albert-al.lee@airoha.com>,
+        Joseph Lin =?utf-8?B?KOael+iUmueFjCk=?= <Joseph.Lin@airoha.com>
+Subject: Re: [PATCH] linux-firmware: Add firmware file for Airoha AN8811HB
+ 2.5G ethernet phy
+Message-ID: <szpymr4gdhfowphfg4ut7fmake6pxtsnh2wgk24fqqmmsshdwc@a6jo2zgrykxh>
+References: <KL1PR03MB7407AD36EEEDD5CD24FED069F1B5A@KL1PR03MB7407.apcprd03.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20251209-iio-inkern-use-namespaced-exports-v2-2-9799a33c4b7f@bootlin.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <KL1PR03MB7407AD36EEEDD5CD24FED069F1B5A@KL1PR03MB7407.apcprd03.prod.outlook.com>
+X-Proofpoint-ORIG-GUID: NFeCvWbTmhu0ZFgglLQol165708dc6n_
+X-Proofpoint-GUID: NFeCvWbTmhu0ZFgglLQol165708dc6n_
+X-Authority-Analysis: v=2.4 cv=aOf9aL9m c=1 sm=1 tr=0 ts=694acc6e cx=c_pps
+ a=N1BjEkVkxJi3uNfLdpvX3g==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
+ a=wP3pNCr1ah4A:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=JGXwu8-eAAAA:8 a=1Q2UqFy8AAAA:8 a=jwVX2wLjnwsJry3LTV8A:9 a=lqcHg5cX4UMA:10
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=crWF4MFLhNY0qMRaF8an:22
+ a=-p01NfQuWD51nzoNXB_L:22 a=Sfuq0_7asQmReVo7cE7s:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjIzMDE0MiBTYWx0ZWRfX8BBuS4hKdLjW
+ E9lxSTh04n+fXDAitNV1zuNuWgaeFQStBzrOCgZuKnQLUQij1FZJzUN5wbp74CoFd2+zqXb+Mox
+ ov20S6ugNIgfAAYbNZvV7PSFtRdaXhEjLuVGPu3D2tq25JerdX5LgDUWjbpbR35jZEZLUz2eh3k
+ ZWDbpWTTMbuGGCgwZvNwcaHi9zuDn8BwTggS9fpBbr3h3sS+o0oxiZUvA0vSeNWK1urh8SbBZFi
+ xnkEFeFq2KPsDtS4d+JCrUYhyRwsb3KAbhL+r41shRQfpPj732c9CllA/7PwLIbfzjgsYk9e7Vq
+ 2f/C1HRM1nXvctCgb6rNKdd7Q9GPswiSziQ9w/KDk23imOYRR3lMlsd+Sohb1R1CNzpYrgWodmp
+ 3SF45v6TddDrAtzqeuwrenbUGSlvs3rwa/R4tDdjNC+VR6Er3VVBAV/0zMLSbFpb2kox9opQIHw
+ 9DjW1p5E7Q0UsluYZ/Q==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-12-23_04,2025-12-22_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 phishscore=0 suspectscore=0 spamscore=0 bulkscore=0
+ lowpriorityscore=0 malwarescore=0 priorityscore=1501 impostorscore=0
+ adultscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2512120000
+ definitions=main-2512230142
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251223_090802_024984_0A0B9031 
+X-CRM114-Status: GOOD (  15.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,44 +150,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09-12-25, 09:25, Romain Gantois wrote:
-> Use namespaced exports for IIO consumer API functions.
+On Tue, Dec 23, 2025 at 04:28:54AM +0000, Lucien Jheng (鄭祥鈞) wrote:
+> From: "Lucien.Jheng" lucien.jheng@airoha.com<mailto:lucien.jheng@airoha.com>
 > 
-> This will make it easier to manage the IIO export surface. Consumer drivers
-> will only be provided access to a specific set of functions, thereby
-> restricting usage of internal IIO functions by other parts of the kernel.
+> File:
+> airoha/an8811hb/EthMD32_CRC.DM.bin
+> airoha/an8811hb/EthMD32_CRC.DSP.bin
 > 
-> This change cannot be split into several parts without breaking
-> bisectability, thus all of the affected drivers are modified at once.
+> Version: 25110702
 > 
-> Acked-by: Sebastian Reichel <sebastian.reichel@collabora.com> # for power-supply
-> Acked-by: Guenter Roeck <linux@roeck-us.net>
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>
-> Signed-off-by: Romain Gantois <romain.gantois@bootlin.com>
+> Signed-off-by: Lucien.Jheng lucien.jheng@airoha.com<mailto:lucien.jheng@airoha.com>
+
+Drop the mailto parts. Use a standard text form:
+
+"S-o-b: Full Name <email@address.com>"
+
 > ---
->  drivers/extcon/extcon-adc-jack.c                |  1 +
->  drivers/hwmon/iio_hwmon.c                       |  1 +
->  drivers/hwmon/ntc_thermistor.c                  |  1 +
->  drivers/iio/adc/envelope-detector.c             |  1 +
->  drivers/iio/afe/iio-rescale.c                   |  1 +
->  drivers/iio/buffer/industrialio-buffer-cb.c     |  1 +
->  drivers/iio/buffer/industrialio-hw-consumer.c   |  1 +
->  drivers/iio/dac/ad8460.c                        |  1 +
->  drivers/iio/dac/dpot-dac.c                      |  1 +
->  drivers/iio/inkern.c                            | 54 ++++++++++++-------------
->  drivers/iio/light/cm3605.c                      |  1 +
->  drivers/iio/light/gp2ap002.c                    |  1 +
->  drivers/iio/multiplexer/iio-mux.c               |  1 +
->  drivers/iio/potentiostat/lmp91000.c             |  1 +
->  drivers/input/joystick/adc-joystick.c           |  1 +
->  drivers/input/keyboard/adc-keys.c               |  1 +
->  drivers/input/touchscreen/colibri-vf50-ts.c     |  1 +
->  drivers/input/touchscreen/resistive-adc-touch.c |  1 +
->  drivers/phy/motorola/phy-cpcap-usb.c            |  1 +
+> airoha/an8811hb/EthMD32_CRC.DM.bin  | Bin 0 -> 32768 bytes
+> airoha/an8811hb/EthMD32_CRC.DSP.bin | Bin 0 -> 131072 bytes
+> 2 files changed, 0 insertions(+), 0 deletions(-)
+> 
 
-Acked-by: Vinod Koul <vkoul@kernel.org>
-
+Please also update the WHENCE file, listing your firmware and the version.
 
 -- 
-~Vinod
+With best wishes
+Dmitry
 
