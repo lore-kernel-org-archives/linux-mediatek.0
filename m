@@ -4,69 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC387E6FE51
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 21:54:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B8D8E748F7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 21:57:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0VEOOXbL8jyDokY3bB/kTEvore8ABBTAnKc6h6PdRDA=; b=vcuK+NEZF+43lPGvZzj4I53Yar
-	u3uHY5bErIIJojde9WORuGQXaMf7gIc3cOeX1dTz6SIlRwP1+BMVUpRir+z58q/qZpNdLe2xutHzh
-	tGC5+WAZum+oDJ52vNHT9uyqyOcwMuHWUlq+fJPjNtJnMJjbjjnDTFI0QgGZahser7pLQ0zMYYLDO
-	f1rnmLz5sKCSy92/1XhHGe222hjqtKcj72YiqDexAcCurG/ur9b0OcvTnofFYE6QuqVg0HXA6f9Te
-	VArU0bcvobdvXTiOetpcF9qMvLA1c/8aZGOLB5dLZw7iBntjx2v9kl2gs+t67mwjwdnR0wI53IK0q
-	q0dulQLw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=vYW293xHQuJz6+4Y84n2DviBhv8RPC2IFpqi18Lt2lE=; b=XU4Zf1AbaQTOH0zo0Eq7PcT0T/
+	nsxmrRRRZAcftIT795hfIrMy2hsaXeOebfyEgRlIyOieqaEiiwh7PaHsSNEMJDW8L15TcKU0VvtOo
+	ufXBtmI1PkjsAb6NymbaORBF/Rjno0utMX+7Z/HHmeaGh2jrcctSKYCR5eydfj4wkPlq0j1JLVCD6
+	gmYTNTQkNEdDHz76xuzadLuVTCTJzJs5o96Rku1co01faMRmWJfgIRyS0quKhOueM5ci3xv4Z0Ey3
+	W2SwwfZL8hDlkx6Cjb5XMic5i3OPqA8BwCzabxiR7X/Zd/F2AGUGJ5NN2aVWx2GWfeiuqYpOHTnnr
+	dh4vj9jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYAL3-0000000G7ip-1YZD;
-	Tue, 23 Dec 2025 21:54:41 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vYANW-0000000G7pL-1Exu;
+	Tue, 23 Dec 2025 21:57:14 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYAL0-0000000G7hn-3TZm
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Dec 2025 21:54:39 +0000
+	id 1vYANT-0000000G7ot-2zIY;
+	Tue, 23 Dec 2025 21:57:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 39EB940420;
-	Tue, 23 Dec 2025 21:54:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BEEAC113D0;
-	Tue, 23 Dec 2025 21:54:34 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7F22843E13;
+	Tue, 23 Dec 2025 21:57:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE7E2C113D0;
+	Tue, 23 Dec 2025 21:57:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766526877;
-	bh=WjBoMucTJzMCotHr+d+oZ2zQOT8QQxP/yyGSLmhTzPE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cjFbg3TxpD+h++93PzGsiIr29b5ENlY1dwH9QdhOD5X0AOUMdnpmIvAGQMG63xAG5
-	 OlSbr6fg8ToRWZZf1EU3ABM1g04Aplc/gVoqJrCSkLFvyr2/VygHU8pZdweBg8jgsw
-	 yP4KXezT1hhLdmYRYHkRcKsz2B6PG1Y0BTxn3Dv+qry5wQPHl3MtdEXBzUVrZXQWHp
-	 I2/lBdpLFkp3f5OY1VY/iL7kco4P0rEMMw9IEgpniZgFYQJNInLmHjQTHXxZmb2d+M
-	 1DQwu2kpg2Hu9afMUREFKSBEbaMGggjCRmcaiP/QEc/DzfJRdcjXq3ByKA4uy+Jk4j
-	 vc5dVk6DhJ4zw==
-Date: Tue, 23 Dec 2025 14:54:31 -0700
-From: Nathan Chancellor <nathan@kernel.org>
-To: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
-Cc: Mario Limonciello <superm1@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Johannes Berg <johannes@sipsolutions.net>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	netdev@vger.kernel.org
-Subject: Re: [PATCH v2] wifi: mt76: Fix strscpy buffer overflow in
- mt76_connac2_load_patch
-Message-ID: <20251223215431.GA3327658@ax162>
-References: <CABXGCsMeAZyNJ-Axt_CUCXgyieWPV3rrcLpWsveMPT8R0YPGnQ@mail.gmail.com>
- <20251205161202.48409-1-mikhail.v.gavrilov@gmail.com>
+	s=k20201202; t=1766527030;
+	bh=68ngR6r337s4Uq5yOPMzXnBFuiUfzKPli0oTxvM83W0=;
+	h=From:Date:Subject:To:Cc:From;
+	b=b4QZGC50KfAQ7gYvxY+MWAp22RzTzyQs67qxPcvyZINmf/y593JrBMcKIr9mwpFp4
+	 kq5jHqDCVY1ljeblsmZgMHxcaZW6qY/p/Se9ySRO4uMUB6VWwKj/yWKbhKzS+7OgPZ
+	 AzTvcFMkCoCGAMci9KltNav+y6hcOkjg/YBr9gxo8xjjV70WWSRtZb1KlK+o8qiXJD
+	 s/fLIFy5sXSiPomYSW5iWGczGPYdLGfxSzOafAQU+DxxvOGVEmsWyNMv3cHJF/mfeR
+	 YsLP7AaS3x02oqd0VT96zSTd9OR1ktQNoNpDLkhHUJwfjEnqy98b8OfadfRKbKKgxP
+	 rPf8psNWtTkWA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 23 Dec 2025 22:56:44 +0100
+Subject: [PATCH net] net: airoha: Fix schedule while atomic in
+ airoha_ppe_deinit()
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251205161202.48409-1-mikhail.v.gavrilov@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251223-airoha-fw-ethtool-v1-1-1dbd1568c585@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqAIBBA0avErBvQKaG6SrSwGnMgMjQqiO6et
+ HyL/x9IHIUTdMUDkU9JErYMXRYwebstjDJnAykymqhCKzF4i+5CPvwRwoqknalHRVPbjJC7PbK
+ T+3/2w/t+3r/+5mMAAAA=
+X-Change-ID: 20251223-airoha-fw-ethtool-21f54b02c98b
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251223_135438_918104_D37AA2A5 
-X-CRM114-Status: GOOD (  23.65  )
+X-CRM114-CacheID: sfid-20251223_135711_800172_D69FDFE9 
+X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,63 +78,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-+ netdev and wireless/networking maintainers
+Rely on rcu_replace_pointer in airoha_ppe_deinit routine in order to fix
+schedule while atomic issue.
 
-On Fri, Dec 05, 2025 at 09:12:02PM +0500, Mikhail Gavrilov wrote:
-> Commit f804a5895eba ("wifi: mt76: Strip whitespace from build ddate") introduced
-> a kernel panic/WARN on systems using MediaTek MT7921e (and potentially others
-> using mt76_connac_lib) due to an incorrect buffer size calculation.
-> 
-> The error logged is:
-> "strnlen: detected buffer overflow: 17 byte read of buffer size 16"
-> 
-> This occurs because the field 'hdr->build_date' is a fixed-size array of 16 bytes.
-> The patch allocated a 17-byte local buffer 'build_date' but used 'sizeof(build_date)'
-> (17) as the read limit for strscpy, causing Fortify Source to correctly detect
-> an attempt to read 17 bytes from the 16-byte source field.
-> 
-> To fix this, replace strscpy with memcpy, which is appropriate for raw data
-> copying, and explicitly use the size of the source field (sizeof(hdr->build_date) = 16)
-> to limit the read, followed by manual null termination.
-> 
-> Fixes: f804a5895eba ("wifi: mt76: Strip whitespace from build ddate")
-> Signed-off-by: Mikhail Gavrilov <mikhail.v.gavrilov@gmail.com>
+Fixes: 00a7678310fe3 ("net: airoha: Introduce flowtable offload support")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_ppe.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-I got bit by this regression when installing v6.19-rc2 on my new test
-machine, which has an MT7925 (RZ717) chip in it. I don't see this in
-either Felix's or the main wireless tree yet but I do understand it is
-the end of the year with breaks and such (along with Johannes not
-actually being on CC since he is not in the output of get_maintainers.pl
-for drivers/net/wireless/mediatek/mt76). If there is not going to be a
-wireless pull soon, can this be applied to net directly so that it gets
-to Linus soon? It was rather annoying to do a bisect for a regression
-that already has a pending fix.
+diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+index 0caabb0c3aa06948e46ad087c50eba5babc81994..2221bafaf7c9fed73dcf8d30ff3b1c5eecc463d4 100644
+--- a/drivers/net/ethernet/airoha/airoha_ppe.c
++++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+@@ -1547,13 +1547,16 @@ void airoha_ppe_deinit(struct airoha_eth *eth)
+ {
+ 	struct airoha_npu *npu;
+ 
+-	rcu_read_lock();
+-	npu = rcu_dereference(eth->npu);
++	mutex_lock(&flow_offload_mutex);
++
++	npu = rcu_replace_pointer(eth->npu, NULL,
++				  lockdep_is_held(&flow_offload_mutex));
+ 	if (npu) {
+ 		npu->ops.ppe_deinit(npu);
+ 		airoha_npu_put(npu);
+ 	}
+-	rcu_read_unlock();
++
++	mutex_unlock(&flow_offload_mutex);
+ 
+ 	rhashtable_destroy(&eth->ppe->l2_flows);
+ 	rhashtable_destroy(&eth->flow_table);
 
-Tested-by: Nathan Chancellor <nathan@kernel.org>
+---
+base-commit: 7b8e9264f55a9c320f398e337d215e68cca50131
+change-id: 20251223-airoha-fw-ethtool-21f54b02c98b
 
-> ---
->  drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> index ea99167765b0..d2c4c65ec464 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> @@ -3125,8 +3125,11 @@ int mt76_connac2_load_patch(struct mt76_dev *dev, const char *fw_name)
->  	}
->  
->  	hdr = (const void *)fw->data;
-> -	strscpy(build_date, hdr->build_date, sizeof(build_date));
-> -	build_date[16] = '\0';
-> +	/* hdr->build_date is 16 bytes. Copy exactly 16 bytes to the 17-byte buffer,
-> +	 * and then add the null terminator at index 16.
-> +	 */
-> +	memcpy(build_date, hdr->build_date, sizeof(hdr->build_date));
-> +	build_date[sizeof(hdr->build_date)] = '\0';
->  	strim(build_date);
->  	dev_info(dev->dev, "HW/SW Version: 0x%x, Build Time: %.16s\n",
->  		 be32_to_cpu(hdr->hw_sw_ver), build_date);
-> -- 
-> 2.52.0
-> 
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
