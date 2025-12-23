@@ -4,61 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36892E6F07F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 10:06:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6BBDE6B272
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 11:05:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JINWkNlBVA42ytHcLJmSVLg9d+5qzFZVzAsHJd+b/AE=; b=ezhCnyUDUlrahS
-	7igsfetDNxfQYe560/z4yAWxGXk3xGPYYzBEASN0pNSIhbPF4lTgjulplibtxkFRG2z+zQ2pPIGj7
-	Zf6EgpoYB+H/0oRAWM1z/u8Q8vItHdip4aEjVAx6p0YH5C+Q5/fwqHek53mja/AFH8qcdxhF1EygO
-	P8n4pYjRovo6MXpS1eicb11uFInL8JZU2RaqNE4F8a/ARjlawXjWBNyncwxqhpC9h8L3ktPOKNKgm
-	dCXEcd7oS1+v2Rfv5j5dq3xPlcWktnK+LMA2P0M2m5c50nZ9xLvx4kVN9W4uvm/RWBL5tTOhxLR3R
-	KmM5bsBawkqnXB1t3Xig==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aVeuGCEze4MP7Ykp2VlZqFOz8h8r9vX65PUGfrFSwEI=; b=WGYgoCWVFDtjJaLJMifOwMyypi
+	ZY4+YqR6RkKmeVK1KD4x9kauPp/9xC4syPkNALSmkH60H379Hu46WD64ZCbB9KcJpVwt2NHCsiofC
+	fTHTJHrnQjZpkB6+WxmNJmTub8qxT3gBvYybqa6A16NIr4AzFlY9w0Mq4H3OLJJKGPXG2obsNJ3Te
+	hKmJcCOc2m+FQhH/3+sA4sTbojX6SG+KtMQeI/PjCOn6+9I80laXNt3O2HYICgYgy1z5L4SyWUm+A
+	Wix5oLuuPAGjcuvxt5OmaC5GCGsB5TtH0/kHTWUErZeEkEpUlcrJh61VhokrFHc8CRkbIgXkG3A7g
+	rYAHHWDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXzHD-0000000Eqg5-43nC;
-	Tue, 23 Dec 2025 10:05:59 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vY0Cx-0000000EvZj-3CEV;
+	Tue, 23 Dec 2025 11:05:39 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXzGh-0000000EqAy-0pBW;
-	Tue, 23 Dec 2025 10:05:31 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 117ED42DFA;
-	Tue, 23 Dec 2025 10:05:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CEDB3C19423;
-	Tue, 23 Dec 2025 10:05:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766484322;
-	bh=/zYcG2xYSdYnuLSHKUx/IzmXhDPgwtNTHCfAvrduQQU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=fKLFqC2Uk/cCGXFRXMAn2Gzcw2zEpSryMzNseG+JvPxBF8EekqKOGdnG/KNk/s8/v
-	 HV4Y4xH1RZuMNpSqWtzbp5D1p4NZ3HMtz8kl1dGnfqkMmzAsxo8bNnfTs3Q4Kb3YuQ
-	 0fo0oiZxQGYse9MTDFSVEw6mrVUJg9J3MHYV2vOZ1Q+Ec7ixU5NGk4aJXwHAUsfOIS
-	 6z3ba3eJ5QoEmSPBLC9MnCHHm1EJ1Rj1v2tAGt/WCVSykxcD2rZRCXTdxbVOXzFVSt
-	 386BYtxKRVwG68h186xPxLf218r6+T+4G6tdkVYnTSXb9FG9Gdm4/N74J80viarGH5
-	 jxpDYjn7Vwgdg==
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 6.18-6.12] spi: mt65xx: Use IRQF_ONESHOT with threaded IRQ
-Date: Tue, 23 Dec 2025 05:05:07 -0500
-Message-ID: <20251223100518.2383364-3-sashal@kernel.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251223100518.2383364-1-sashal@kernel.org>
-References: <20251223100518.2383364-1-sashal@kernel.org>
+	id 1vY0Cu-0000000EvYB-0t7X;
+	Tue, 23 Dec 2025 11:05:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1766487931;
+	bh=O29c7ITgEJCymXV/jcddxP+gJ4NesKAR0lu9ZRXMAT4=;
+	h=From:Date:Subject:To:Cc:From;
+	b=XyNAe3EuDaHR3MOpeXryvZwDB3jjh0ofXpEMba+shFfYY3viA9XRHpYpOIKUaYol6
+	 lD3Aj8KCWWdtUwY0OKS9SbiyV9yDYdyy8YqIroI4nXGUhNUw9y+9wHYgrgp/UZBtzm
+	 Bij9IOwpXw6oNKFCykwwJmbCy9RB3uF4WJJcVBkAK5qbDq4YpbjP5QgHGD73juA8lP
+	 sdmysBReedOu3ypbtsOBP3PZInKq+e465Q71vM024nWE7kNXa1UdveWEa1tQ3jSQgs
+	 +QT8Q/JjjBJPG1ECu03kjUP02FeohtMWakHhnBszTakDzfrCLtSBbkT4qQuCrtnQSA
+	 wLSdydPPBXfOA==
+Received: from beast.luon.net (simons.connected.by.freedominter.net [45.83.240.172])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sjoerd)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 639B217E0125;
+	Tue, 23 Dec 2025 12:05:31 +0100 (CET)
+Received: by beast.luon.net (Postfix, from userid 1000)
+	id 0425A1179E810; Tue, 23 Dec 2025 12:05:30 +0100 (CET)
+From: Sjoerd Simons <sjoerd@collabora.com>
+Date: Tue, 23 Dec 2025 12:05:17 +0100
+Subject: [PATCH] clk: mediatek: Drop __initconst from gates
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.18.2
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251223-mtk-gate-v1-1-e4a489ab33de@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAGx3SmkC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDI1NDIyNj3dySbN30xJJU3URLC0Nj48QkC4NkSyWg8oKi1LTMCrBR0bG1tQB
+ +JXBwWgAAAA==
+X-Change-ID: 20251223-mtk-gate-a98133ab80c9
+To: Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Laura Nao <laura.nao@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>
+Cc: kernel@collabora.com, linux-clk@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, stable@vger.kernel.org, 
+ Sjoerd Simons <sjoerd@collabora.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251223_020527_502966_DA9BC7A3 
-X-CRM114-Status: GOOD (  17.04  )
+X-CRM114-CacheID: sfid-20251223_030536_430099_4A239605 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,118 +79,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Fei Shao <fshao@chromium.org>
+Since commit 8ceff24a754a ("clk: mediatek: clk-gate: Refactor
+mtk_clk_register_gate to use mtk_gate struct") the mtk_gate structs
+are no longer just used for initialization/registration, but also at
+runtime. So drop __initconst annotations.
 
-[ Upstream commit 8c04b77f87e6e321ae6acd28ce1de5553916153f ]
-
-This driver is migrated to use threaded IRQ since commit 5972eb05ca32
-("spi: spi-mt65xx: Use threaded interrupt for non-SPIMEM transfer"), and
-we almost always want to disable the interrupt line to avoid excess
-interrupts while the threaded handler is processing SPI transfer.
-Use IRQF_ONESHOT for that purpose.
-
-In practice, we see MediaTek devices show SPI transfer timeout errors
-when communicating with ChromeOS EC in certain scenarios, and with
-IRQF_ONESHOT, the issue goes away.
-
-Signed-off-by: Fei Shao <fshao@chromium.org>
-Link: https://patch.msgid.link/20251217101131.1975131-1-fshao@chromium.org
-Signed-off-by: Mark Brown <broonie@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Fixes: 8ceff24a754a ("clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to use mtk_gate struct")
+Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 ---
+ drivers/clk/mediatek/clk-mt7981-eth.c | 6 +++---
+ drivers/clk/mediatek/clk-mt8516.c     | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-LLM Generated explanations, may be completely bogus:
-
-### 4. SCOPE AND RISK ASSESSMENT
-
-- **Lines changed:** 1 line
-- **Files touched:** 1 file
-- **Complexity:** Trivially low - just a flag change
-- **Risk:** Very low
-
-The fix is:
-- **Obviously correct**: IRQF_ONESHOT is the documented standard for
-  threaded interrupts
-- **Small and contained**: One flag change
-- **Fixes a real bug**: Transfer timeout errors on real hardware
-
-Looking at the interrupt handler code:
-- `mtk_spi_interrupt` returns `IRQ_WAKE_THREAD` for non-SPIMEM transfers
-- Without IRQF_ONESHOT, the IRQ line stays enabled, allowing repeated
-  interrupts while the thread processes
-- This causes race conditions on `mdata->state` and transfer handling,
-  leading to timeouts
-
-### 5. USER IMPACT
-
-- **Who is affected:** Users of MediaTek SPI devices, particularly
-  ChromeOS users with embedded controllers
-- **Severity:** Medium-High - SPI transfer timeouts can cause
-  significant functionality issues
-- **Real-world impact:** Confirmed on MediaTek devices communicating
-  with ChromeOS EC
-
-### 6. DEPENDENCY CHECK
-
-The prerequisite commit `5972eb05ca32` ("spi: spi-mt65xx: Use threaded
-interrupt for non-SPIMEM transfer") was first included in **v6.12-rc1**.
-This means:
-- This fix is only applicable to 6.12.y stable trees and newer
-- Older stable trees (6.6.y, 6.1.y, 5.15.y) don't have the threaded IRQ
-  code, so this fix doesn't apply
-
-### 7. SUMMARY
-
-| Criterion | Assessment |
-|-----------|------------|
-| Fixes real bug | ✅ Yes - SPI transfer timeouts |
-| Obviously correct | ✅ Yes - standard pattern |
-| Small and contained | ✅ Yes - 1 line change |
-| Tested | ✅ Yes - real hardware testing |
-| Risk | ✅ Very low |
-| Dependencies | ✅ Clear - requires 5972eb05ca32 (v6.12+) |
-
-### Conclusion
-
-This commit is an excellent candidate for stable backporting:
-
-1. **Fixes a real, user-visible bug**: SPI transfer timeouts on MediaTek
-   hardware
-2. **Minimal change**: Single flag addition, no logic changes
-3. **Obviously correct**: IRQF_ONESHOT is the proper pattern for
-   threaded IRQs with hardirq handlers that return IRQ_WAKE_THREAD
-4. **Low risk**: Well-understood kernel mechanism with no side effects
-5. **Tested**: Confirmed to resolve the issue on real ChromeOS EC
-   hardware
-
-The only consideration is that this fix only applies to stable trees
-with kernel 6.12 or later (which contain the prerequisite threaded IRQ
-commit). For those trees, this is a straightforward, low-risk fix that
-resolves real hardware issues.
-
-**YES**
-
- drivers/spi/spi-mt65xx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 4b40985af1ea..90e5813cfdc3 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -1320,7 +1320,7 @@ static int mtk_spi_probe(struct platform_device *pdev)
+diff --git a/drivers/clk/mediatek/clk-mt7981-eth.c b/drivers/clk/mediatek/clk-mt7981-eth.c
+index 906aec9ddff5..0655ebb6c561 100644
+--- a/drivers/clk/mediatek/clk-mt7981-eth.c
++++ b/drivers/clk/mediatek/clk-mt7981-eth.c
+@@ -31,7 +31,7 @@ static const struct mtk_gate_regs sgmii0_cg_regs = {
+ 		.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
+ 	}
  
- 	ret = devm_request_threaded_irq(dev, irq, mtk_spi_interrupt,
- 					mtk_spi_interrupt_thread,
--					IRQF_TRIGGER_NONE, dev_name(dev), host);
-+					IRQF_ONESHOT, dev_name(dev), host);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "failed to register irq\n");
+-static const struct mtk_gate sgmii0_clks[] __initconst = {
++static const struct mtk_gate sgmii0_clks[] = {
+ 	GATE_SGMII0(CLK_SGM0_TX_EN, "sgm0_tx_en", "usb_tx250m", 2),
+ 	GATE_SGMII0(CLK_SGM0_RX_EN, "sgm0_rx_en", "usb_eq_rx250m", 3),
+ 	GATE_SGMII0(CLK_SGM0_CK0_EN, "sgm0_ck0_en", "usb_ln0", 4),
+@@ -53,7 +53,7 @@ static const struct mtk_gate_regs sgmii1_cg_regs = {
+ 		.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
+ 	}
  
+-static const struct mtk_gate sgmii1_clks[] __initconst = {
++static const struct mtk_gate sgmii1_clks[] = {
+ 	GATE_SGMII1(CLK_SGM1_TX_EN, "sgm1_tx_en", "usb_tx250m", 2),
+ 	GATE_SGMII1(CLK_SGM1_RX_EN, "sgm1_rx_en", "usb_eq_rx250m", 3),
+ 	GATE_SGMII1(CLK_SGM1_CK1_EN, "sgm1_ck1_en", "usb_ln0", 4),
+@@ -75,7 +75,7 @@ static const struct mtk_gate_regs eth_cg_regs = {
+ 		.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
+ 	}
+ 
+-static const struct mtk_gate eth_clks[] __initconst = {
++static const struct mtk_gate eth_clks[] = {
+ 	GATE_ETH(CLK_ETH_FE_EN, "eth_fe_en", "netsys_2x", 6),
+ 	GATE_ETH(CLK_ETH_GP2_EN, "eth_gp2_en", "sgm_325m", 7),
+ 	GATE_ETH(CLK_ETH_GP1_EN, "eth_gp1_en", "sgm_325m", 8),
+diff --git a/drivers/clk/mediatek/clk-mt8516.c b/drivers/clk/mediatek/clk-mt8516.c
+index 21eb052b0a53..342a59019fea 100644
+--- a/drivers/clk/mediatek/clk-mt8516.c
++++ b/drivers/clk/mediatek/clk-mt8516.c
+@@ -544,7 +544,7 @@ static const struct mtk_gate_regs top5_cg_regs = {
+ #define GATE_TOP5(_id, _name, _parent, _shift)				\
+ 	GATE_MTK(_id, _name, _parent, &top5_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
+ 
+-static const struct mtk_gate top_clks[] __initconst = {
++static const struct mtk_gate top_clks[] = {
+ 	/* TOP1 */
+ 	GATE_TOP1(CLK_TOP_THEM, "them", "ahb_infra_sel", 1),
+ 	GATE_TOP1(CLK_TOP_APDMA, "apdma", "ahb_infra_sel", 2),
+
+---
+base-commit: b927546677c876e26eba308550207c2ddf812a43
+change-id: 20251223-mtk-gate-a98133ab80c9
+
+Best regards,
 -- 
-2.51.0
+Sjoerd Simons <sjoerd@collabora.com>
 
 
