@@ -4,43 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2BCFE6FE24
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 17:57:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 458A1E6F086
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 17:57:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NUF+eCTLG+mmzttQnUwvPW7szQcj8nRq0nrcTr5Z0BU=; b=etrIKmyewZMUOj
-	enuv9XTjVsRv74uIsfCEFNrhgfa5WVlkiIGfSGqFW/TXL51g55gAvFI2F1PLJDbGpMyZ8VWLlGLFf
-	YtcV6ALjph9GLAsGbv4b2D6xb0jBT7dmCTdqM0mveU3m2lbB1npBapb4GzJvhiextqnjDKh3I/8Ly
-	MI0MmNiIY+s9luSf8fFbk9DG84uSi+eGGSmXDWzVzrd95nyD+reXJ+V05Z2KgAa7gCBVz2yJrU5Ya
-	RMWoVZXwPXXxkN2af/vR9Ma4+Gb5nPP3818l8bAC/5VPBmRUi5LQGA8cxyDoaz51xBSnPhhLruYo1
-	Poo5nfn3OVFUfotbdS5g==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nck6W2kcIiP++rumyNfPIr2NPQS0LMMghoE45KMIusU=; b=aqVnUyond3d3eP
+	4exVuoZ6ggyYC+YPeAYCaicMYPr2tVaYEGBzcD/vt6Xw/sKriDcjiNQmRJ7f0xUxmz1krQx0AwSsH
+	BQle/XHH7d3jbhvNOkZQaOu0cFMatBaOpe7soa6A+PHRJC31XCfgd1odxWtuv/xl/oo2BQ1D8Pj55
+	iUDgYAAoASZ2J1nTa6ZQK6PSuZ1KaWeUdpXJCFQHv01ba90ptVQVMnF5GlKl1vNAFQb/C9Zl1Z8gu
+	MhDGIGbMtOKIwaMTL81Rw7Sz0clo/vZBHJlEcAqmTDzlQ44kNxTXXDFdp0nkMrnyM7Ttv7EctVgYg
+	06IrMGSRI/p27I9rScNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY6dX-0000000FsSE-3hww;
+	id 1vY6dX-0000000FsRq-1M27;
 	Tue, 23 Dec 2025 17:57:31 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY6dT-0000000FsQW-2dDw;
+	id 1vY6dT-0000000FsQY-2ey5;
 	Tue, 23 Dec 2025 17:57:29 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout2.routing.net (Postfix) with ESMTP id B541B600EF;
+	by mxout4.routing.net (Postfix) with ESMTP id 752C9100374;
 	Tue, 23 Dec 2025 17:57:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
 	s=routing; t=1766512641;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=NUF+eCTLG+mmzttQnUwvPW7szQcj8nRq0nrcTr5Z0BU=;
-	b=hAzGLMHNGuy2VarmXTmSSkr8FUSAN5XyZswHTyFVyWaD47AZV3TK5/U4nMU4luxIzpVzbK
-	0GTaNf09WCk8dbMGfsaw8YabjvGol6RK6Zy4hPwlQTaXv/4Tt9s3xZR6mNZC3Ry/BcFk2M
-	b60XgVtVi7Nh9XvTuuKzMFLMLe+MCbo=
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=nck6W2kcIiP++rumyNfPIr2NPQS0LMMghoE45KMIusU=;
+	b=Bq02R1vb4kWrr1miBXc4PF1ul2xhuQPLLZFkF/dpoEXwAnoF3IfbNauyQtg8X/HFiXMi5H
+	K+hVXD3ajaDWCUyV5TTAmUWvw6JqTySF3vFoNvM1LWHvlL/6MJaRm86hET22nadesxpXID
+	yc2PAhL+a3WgbyorUC5bedBiN4VsIqQ=
 Received: from frank-u24.. (fttx-pool-217.61.156.193.bambit.de [217.61.156.193])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 73622122705;
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 2151D122700;
 	Tue, 23 Dec 2025 17:57:21 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: "Rafael J. Wysocki" <rafael@kernel.org>,
@@ -52,17 +51,15 @@ To: "Rafael J. Wysocki" <rafael@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 1/2] dt-bindings: thermal: mediatek: Add LVTS thermal controller definition for MT7987
-Date: Tue, 23 Dec 2025 18:56:26 +0100
-Message-ID: <20251223175710.25850-2-linux@fw-web.de>
+Subject: [PATCH v2 0/2] Add MT7987 Thermal support
+Date: Tue, 23 Dec 2025 18:56:25 +0100
+Message-ID: <20251223175710.25850-1-linux@fw-web.de>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251223175710.25850-1-linux@fw-web.de>
-References: <20251223175710.25850-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251223_095727_962177_A2F8858F 
-X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-CacheID: sfid-20251223_095727_962337_24CC5763 
+X-CRM114-Status: UNSURE (   8.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,41 +78,23 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add thermal controller definition for MT7987.
+This series adds Thermal support for MT7987.
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
----
- .../devicetree/bindings/thermal/mediatek,lvts-thermal.yaml     | 1 +
- include/dt-bindings/thermal/mediatek,lvts-thermal.h            | 3 +++
- 2 files changed, 4 insertions(+)
+v2:
+- dropped non-irq patches
+- dropped patch for golden_temp
+- moved mt7987 COEFF above mt7988
 
-diff --git a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-index 0259cd3ce9c5..a9befb523fd4 100644
---- a/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-+++ b/Documentation/devicetree/bindings/thermal/mediatek,lvts-thermal.yaml
-@@ -18,6 +18,7 @@ description: |
- properties:
-   compatible:
-     enum:
-+      - mediatek,mt7987-lvts-ap
-       - mediatek,mt7988-lvts-ap
-       - mediatek,mt8186-lvts
-       - mediatek,mt8188-lvts-ap
-diff --git a/include/dt-bindings/thermal/mediatek,lvts-thermal.h b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-index ddc7302a510a..e9780edcd26c 100644
---- a/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-+++ b/include/dt-bindings/thermal/mediatek,lvts-thermal.h
-@@ -7,6 +7,9 @@
- #ifndef __MEDIATEK_LVTS_DT_H
- #define __MEDIATEK_LVTS_DT_H
- 
-+#define MT7987_CPU		0
-+#define MT7987_ETH2P5G		1
-+
- #define MT7988_CPU_0		0
- #define MT7988_CPU_1		1
- #define MT7988_ETH2P5G_0	2
+Frank Wunderlich (2):
+  dt-bindings: thermal: mediatek: Add LVTS thermal controller definition
+    for MT7987
+  thermal/drivers/mediatek/lvts_thermal: Add mt7987 support
+
+ .../thermal/mediatek,lvts-thermal.yaml        |  1 +
+ drivers/thermal/mediatek/lvts_thermal.c       | 36 +++++++++++++++++++
+ .../thermal/mediatek,lvts-thermal.h           |  3 ++
+ 3 files changed, 40 insertions(+)
+
 -- 
 2.43.0
 
