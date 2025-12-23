@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CCF5E6F086
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 17:39:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85F1FE6F086
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 17:40:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cCEMd+08qlcTwYGsBzmPt/QJyj049nOc8KwWWiyvk7I=; b=a7cuivILTHwfZr9LEskWK3kLl7
-	CkwYQgkocSgqTJUxtd8e+VBDozTUQ559eapu+kE5g8oCdwqxHnWJU9J04pgNOfif3x7gAstByfjVf
-	8Gt74fa0P+LrBAWgwV83L6o0P2k8GTZPUcUTb14aH4FIajCGyz/gVFNQmV8U98e1w6APL1+DU/3Tn
-	xdK+xpSO2ftLZeHNkw6hshjnOwIcj4+CVx6PkGRCFqePZxYTrtqzm/vavIYXkf8DmtvdphQ8JdyVs
-	NcctNBlwIF0WXvvFYpWU3Vztm8GOAZ/K7ZSyRlDSvY2OCyxTCZC7WugcoIzpDKb2TFkDWHkcqJyea
-	KZFrS+JA==;
+	bh=YKgwtAjht++HIpBsfV4YQ7SC1JAhcOfRGl0OElK1t5w=; b=v18GFNEuTyqk3KD2OV9ETx/UX7
+	bwj+oy4fsUl6NxS2Gec696NTxFncDB2HVhKrW9bIyZMfAmrdnu4yY6nSqS64Jzjx8iKAXrvTH+ii6
+	iAgx6BGkXOlpwZOMH08yMsHK2vk1XKYFyJd//ZO7h4XKCfwNEAizTMcltjaXAnN+PfcGF4u2H/OcT
+	vq5XVde0RtenfCaJOJ6bcgjNqLV3hFBEhBxLqVMAlmYbCtQoZfK8gVo+kgYv0m/OV9bGOlB+4ISUs
+	8srulY+13ZOmPeeAwl8MPascnG1qpYypAjqZAxs+UitV7FZgpi7rD9DeE4/eWAIALgJ93y17dSxPR
+	C5abBPbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY6MP-0000000FqPG-2Si9;
-	Tue, 23 Dec 2025 17:39:49 +0000
+	id 1vY6Me-0000000FqVv-1wsu;
+	Tue, 23 Dec 2025 17:40:04 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY6MM-0000000FqNy-2uDu;
-	Tue, 23 Dec 2025 17:39:47 +0000
+	id 1vY6Mb-0000000FqUI-2TWs;
+	Tue, 23 Dec 2025 17:40:02 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3B62C42E23;
-	Tue, 23 Dec 2025 17:39:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5D560C113D0;
-	Tue, 23 Dec 2025 17:39:45 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 22F0A42E23;
+	Tue, 23 Dec 2025 17:40:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39F96C113D0;
+	Tue, 23 Dec 2025 17:40:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766511586;
-	bh=WPIIbHhicQ4q0GfMB7fVvQcBaHETS4fW+aGWxz9VUuY=;
+	s=k20201202; t=1766511601;
+	bh=mg+xr84GsG3acMHvsNiCgu+mhovC0ULkrlsg5Zc0wB4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZLoULeoDl0jWzW9UgdeJyBBc0qLT/4rRqsjFYSqDo+AfDoSREU+PQxuqcS3VE2wxN
-	 3A/pKf51i56JXCA9jt36TqfXQqcHVVpFIPZMx+Y9zPrTWxocb87FrU6/33m36VJ//7
-	 hm3x3qM7wZx5dn9KMaUArGIRyB6rMiJa9BoadNwjS8Yr+6POlFYsayswKvc/ZvymbR
-	 fbG73cVWu10I5zX+57VHql0rOSp9eFnxUzFWDCZxrkoCi3EQT6raPj5g1oKropzaOR
-	 yaXin8Lh4SqAMEV7TH/urOnyUer9RK12dO36BvdeC/7/PllKuVdwtH+l6VGnBYzwb3
-	 yoVcTBfUbFAeg==
-Date: Tue, 23 Dec 2025 23:09:42 +0530
+	b=gnjDSgeDpiEOWDb0Q/UicZgdmWitjgbpqA77fEs4NCvPTov7e9DMj7XG3yTGE/oRD
+	 CZzhhz3V2RlTMW7+G6ML23B0q0Zz4CV1MfDhzyhV8ncLMHn+ys3+V1xMjbgB6YUZvF
+	 PIHBoR9SeHN0oBp1Ej7yv9uswRlcwNWAvT/Q4M9s2axotPD5dRzW5e3bgxAQJFgYq/
+	 8OMFVId6FsiNJWamlE8wMRlnBmw0JTDQJ2Mszs4dShfOyJQr015/v/DcZemF64bwTK
+	 1AgoFL1SPYlDQ7sR62eMK0ZNoiDMuJVwSoEABjDjUXWXMVYZWO0OlQAU7BDeTtAgVk
+	 RnezgJuAWnqOQ==
+Date: Tue, 23 Dec 2025 23:09:57 +0530
 From: Vinod Koul <vkoul@kernel.org>
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Cc: Alim Akhtar <alim.akhtar@samsung.com>,
@@ -67,18 +67,17 @@ Cc: Alim Akhtar <alim.akhtar@samsung.com>,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
-Subject: Re: [PATCH v4 03/25] dt-bindings: ufs: mediatek,ufs: Add mt8196
- variant
-Message-ID: <aUrT3pd_rCp_7CQI@vaman>
+Subject: Re: [PATCH v4 05/25] phy: mediatek: ufs: Add support for resets
+Message-ID: <aUrT7R41XJk07Esf@vaman>
 References: <20251218-mt8196-ufs-v4-0-ddec7a369dd2@collabora.com>
- <20251218-mt8196-ufs-v4-3-ddec7a369dd2@collabora.com>
+ <20251218-mt8196-ufs-v4-5-ddec7a369dd2@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251218-mt8196-ufs-v4-3-ddec7a369dd2@collabora.com>
+In-Reply-To: <20251218-mt8196-ufs-v4-5-ddec7a369dd2@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251223_093946_751967_C3A3437D 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20251223_094001_658348_AEBC1BB4 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,16 +93,19 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 18-12-25, 13:54, Nicolas Frattaroli wrote:
-> The MediaTek MT8196 SoC's UFS controller uses three additional clocks
-> compared to the MT8195, and a different set of supplies. It is therefore
-> not compatible with the MT8195.
+> The MediaTek UFS PHY supports PHY resets. Until now, they've been
+> implemented in the UFS host driver. Since they were never documented in
+> the UFS HCI node's DT bindings, and no mainline DT uses it, it's fine if
+> it's moved to the correct location, which is the PHY driver.
 > 
-> While it does have a AVDD09_UFS_1 pin in addition to the AVDD09_UFS pin,
-> it appears that these two pins are commoned together, as the board
-> schematic I have access to uses the same supply for both, and the
-> downstream driver does not distinguish between the two supplies either.
+> Implement the MPHY reset logic in this driver and expose it through the
+> phy subsystem's reset op. The reset itself is optional, as judging by
+> other mainline devices that use this hardware, it's not required for the
+> device to function.
 > 
-> Add a compatible for it, and modify the binding correspondingly.
+> If no reset is present, the reset op returns -EOPNOTSUPP, which means
+> that the ufshci driver can detect it's present and not double sleep in
+> its own reset function, where it will call the phy reset.
 
 Acked-by: Vinod Koul <vkoul@kernel.org>
 
