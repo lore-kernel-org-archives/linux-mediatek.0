@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A6DE6B25B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Dec 2025 23:18:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8303E6B26E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 03:19:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1PTRj5IbPheHyKPLUeQn09lt7a0KA8xUVM3vs4ytqHE=; b=PQNRuCCrkl987uTX4C2F6HFY5z
-	T+OGqkiR1hIGFKf99NmN7y818qQvNY2RhQ+pIG0XVQhiZ5ZjaADhnh03qmUYUGyDTo++CMoiiogC0
-	8qFf9Rpk2jILyYEY1NFUNKcXfzveUaNGmJRqTnvXwxTLhC7dqri2+3NNSXqW5vVUUqq5qaOMz2BxO
-	XjqjcjlE6+lLJiDCLVlM5qonqvFTx9rjn0Jfw2ETBReXUy65vzEWokrFyMOYn4XSjHFDfwVADb6wR
-	3NRuKGA8pF+G+EcKJWCcPihCMZFrAjXgzd2foUFQxnzXfki85C/WGG7JyJtFCcF1s7jgsd1gmmVaH
-	0m+ON91A==;
+	bh=pd2hd9AEX+WskWeDqJXxKCyLLtKBcx0KAJIPRnzr5Xo=; b=RbeI9FXrvnSmtJwWz8MC+U9PUt
+	pqODAzZir6H7B7eVJpWdD+HZN/wD0FVqAq1hgA2BZt6xxWWUBn2iufEjgtuG4Z8ggLKk4vEg3JdBv
+	IYRdgjUZIDlIt5UtW8R9OZ3S+L4mukUm2cYid1fSImssY0XX8xon3jmXddTn2KdyunBpl6zuENjY2
+	siT1tDnOxSV2tpOvHRew0JJvz3VO/t9K0dUk/9huMDR2Bv6zXnpg96x1t8KprTM4FpLQwcR7xdYgP
+	my9HLF8+8S8r/p8CHzAs6n9JOyJK6dmxc4xztDN8LhUwqbz72J9OAmHwKIE9VXUp+WCJXcMnQtJZu
+	L7ZM3QjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXpB1-0000000EGCQ-34mW;
-	Mon, 22 Dec 2025 23:18:55 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vXsvv-0000000ESwI-1gcg;
+	Tue, 23 Dec 2025 03:19:35 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vXpB0-0000000EGCA-3DPt
+	id 1vXsvr-0000000ESvX-38zj
 	for linux-mediatek@lists.infradead.org;
-	Mon, 22 Dec 2025 23:18:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C920860172
-	for <linux-mediatek@lists.infradead.org>; Mon, 22 Dec 2025 23:18:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77DA1C116C6
-	for <linux-mediatek@lists.infradead.org>; Mon, 22 Dec 2025 23:18:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766445533;
-	bh=1PTRj5IbPheHyKPLUeQn09lt7a0KA8xUVM3vs4ytqHE=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=IHKlr+6Gl+QA6DaryNduIe7WNRMfP/E6B1HbR+itsvFugogI1qMmYADh8rnIcXmNK
-	 PKRGX1Eb/Hn/078PsXt6gwtRFo7Gg1sFUlfWavz7rQFCxG5psWmo49HEAKbqti2/fz
-	 A2il37qqTBEs6Cw1bCzYM6zJeOUKjulJ1zJo8luVkqsRxNWYfeB+D6XxKrCu8UW3At
-	 JNrDfJJ1XxNdiY86a6wVSUUf0yCo42r0DBj931tkjFHjJfmryQmXqOEIDoAdcEjBbH
-	 s9nXS7azO2fxm1zST5j1Ek8F2UutDiI6uNawqwZzIkim17PjDCkfsgtx5Qql5JmZlY
-	 r7c7KNDBSTy+A==
-Received: by mail-yw1-f174.google.com with SMTP id 00721157ae682-78fcb465733so19061607b3.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 22 Dec 2025 15:18:53 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCVr68HUGzTNpk+bKxc2Ibv4kuvom17o1d5VxulMU3R0U+2Y+IFaW7/UalNKmtOJ3qpBJXshH5hF3URP/hD8rQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyoyIDWEW0t2vu+qQk4pPJbOYLb99xhIQAZgVj79ewFA2wlhT1o
-	85OM8tMM4lUAIvkRmW6d9NdxxH8q5NvrL4+SbqgkmQFwoUP/orV28gv8uQ47QORaUmBA3sx4vBK
-	gsfOJOPSUucf1EtK+3/ioNTp9BnYLRiw=
-X-Google-Smtp-Source: AGHT+IFLuNG5vfFv+hvdMwlVrLtVEINXP+UqBdcB4yXJij0JrDbJSKnUkVy8zi/D+KeXicJLx2KQRsl8vzD85DfIxMQ=
-X-Received: by 2002:a05:690c:6c84:b0:786:827f:6fe8 with SMTP id
- 00721157ae682-78fb41ac9e0mr105561577b3.58.1766445532634; Mon, 22 Dec 2025
- 15:18:52 -0800 (PST)
+	Tue, 23 Dec 2025 03:19:33 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id 2adb3069b0e04-598f59996aaso5872944e87.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 22 Dec 2025 19:19:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1766459968; x=1767064768; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pd2hd9AEX+WskWeDqJXxKCyLLtKBcx0KAJIPRnzr5Xo=;
+        b=A9IC+vEhyOfYMqdG6UMXFm/tzReo+zRwY6b9JFYSmBwyQogqJMNYVXC0Sr9Pj1EJ+6
+         lZVqpIQtkLFNCkpEt/h+pB0H9XTnvATpz6z3n0Zmv3R7KLwEqCyfjhcPYMzfh60jp4+e
+         uHn9NuGPxh0aBNmzlM/rsm8U/flWb+Pfrgxh8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1766459968; x=1767064768;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=pd2hd9AEX+WskWeDqJXxKCyLLtKBcx0KAJIPRnzr5Xo=;
+        b=Uvykpo/Uq2Ll81xmuCsCeJNnBH1a/l42E2OdqjB71W8khj2Aap4yPRIsGnmqCNzYet
+         GGzIw1CYzBKPdlYXiRlmlIqY9LNatx3QPXawuFBQWFlfdel1oMfc+1tUbvfs6UkKK4Mz
+         q6WE6C7/QgFTEdYWtuMUxPQz7KpNhbVVhW9FEGqM41sKPPS0a/8MJCLMil/aWCQAufRw
+         UNoVQEgOqKh5CZq43kxwHJeaxwY3aWl8cgx6kLdv1WoN71GiSiKuAfxZeJ41xy0+XXdK
+         M3AEjlW/oq1PVjLfIjXnDT3iZaPRPiGiK1TF11hds05be12CL3bb06ZbSuj0NjTEfXKf
+         BKew==
+X-Forwarded-Encrypted: i=1; AJvYcCXDvpAiFka7s4FxjrA1Dkhrx9DlqyyPeYjJo2CYLcQA55THGH25USzkF9CW/XxzHPq2+p71ciLJGXDArW0zNw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw02Qd+2ir0RexDAlgI8i/dqHG15pudOBE0Uqhx0xouPrKC0GKE
+	VzDJX4kl5cyR3gxfWtEtxu0161/eev4h9NmfqqZTCT9HdifxN6lPxCGr1Mh7tSxap9+yW41W77Y
+	tJiQrWQCdvIjA1Vd15t8/n6pzxpNyQY6Ee1/BUvOX
+X-Gm-Gg: AY/fxX4NFQSN36Y/zy+gm7O7s3n4rLact73I0g1il7hwBdes3uathkM0bl24yWSLemR
+	kbL6kYUDW1BI9x54zg8tU9kDa4kR7Sj6G9MTNHpcsOfkvOfWFTnvkpQco2xQNhUFUUQB15dHy1F
+	YmbgLpmmHptZAnlk/xs5S5V0gTRqqghy/WtzqtDuj94utkia8C9dNDymg6pucgsM3+2s3DzkTy2
+	8KSAhv/MaOZY8WP4aALbFzEY8fINfRivYoUqIwS3VK8S27/sEeXDdvzBYLEmZ1SRN6Zo/J0vQ==
+X-Google-Smtp-Source: AGHT+IFy9AOL0XZAW314iBU7PN1wAQk22EnHMu31kd1tAVh11JfXOyXoRocWK3NJXq6iWOnv76XMMgmNoj26Q+851TM=
+X-Received: by 2002:a05:6512:4011:b0:592:f72f:c1d8 with SMTP id
+ 2adb3069b0e04-59a17d0ceffmr4689655e87.16.1766459967809; Mon, 22 Dec 2025
+ 19:19:27 -0800 (PST)
 MIME-Version: 1.0
-References: <20251205-drm-seq-fix-v1-0-fda68fa1b3de@ideasonboard.com>
- <3b13c7a2-f7e6-49fd-b3bb-3e0a1fe9acf3@ideasonboard.com> <CAD++jLk8-0Rkh16T+R1dh6=e_f9U1i=AKOk1Y8dLGV4bxzRtFg@mail.gmail.com>
- <817b2358-0920-4b7a-abb1-133103d0f9fe@ideasonboard.com>
-In-Reply-To: <817b2358-0920-4b7a-abb1-133103d0f9fe@ideasonboard.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Tue, 23 Dec 2025 00:18:39 +0100
-X-Gmail-Original-Message-ID: <CAD++jLm_0xweD4tRJ8ZfwmcOe2BBGCsUuL1UWUiNM+Gpbq3Zuw@mail.gmail.com>
-X-Gm-Features: AQt7F2qVusB26rJf3VFnv1cbbMcmw7gQTV_3PZwZEvdew2fS2i_2TmDT15TKrTs
-Message-ID: <CAD++jLm_0xweD4tRJ8ZfwmcOe2BBGCsUuL1UWUiNM+Gpbq3Zuw@mail.gmail.com>
-Subject: Re: [PATCH 0/4] drm: Revert and fix enable/disable sequence
-To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	Marek Szyprowski <m.szyprowski@samsung.com>, 
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
-	Aradhya Bhatia <aradhya.bhatia@linux.dev>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
-	Vicente Bergas <vicencb@gmail.com>, Marek Vasut <marek.vasut+renesas@mailbox.org>, 
-	stable@vger.kernel.org
+References: <20251222150235.34919-1-bartosz.golaszewski@oss.qualcomm.com>
+In-Reply-To: <20251222150235.34919-1-bartosz.golaszewski@oss.qualcomm.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 23 Dec 2025 11:19:16 +0800
+X-Gm-Features: AQt7F2oIhxgGHerdzbiWe8ZSd5-OTgGfh7cSzAPDbvOiCtJ4ezQNimNvcoit_0Q
+Message-ID: <CAGXv+5Gpf+U8ih_QvZmEwSQgkb2c0wesLNePCG=eDqy0G7F-vA@mail.gmail.com>
+Subject: Re: [PATCH] clk: mediatek: don't select clk-mt8192 for all ARM64 builds
+To: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, linux-clk@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251222_191932_070585_6CF1C1C5 
+X-CRM114-Status: UNSURE (   7.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,19 +95,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Dec 14, 2025 at 1:42=E2=80=AFPM Tomi Valkeinen
-<tomi.valkeinen@ideasonboard.com> wrote:
-
-> >> Should we merge this series as a fix for 6.18 rcs?
-> >
-> > Too late now, so let's merge it as a fix for v6.19 rcs!
+On Mon, Dec 22, 2025 at 11:02=E2=80=AFPM Bartosz Golaszewski
+<bartosz.golaszewski@oss.qualcomm.com> wrote:
 >
-> Ah, right. Indeed, I meant v6.19 rcs.
+> This option defaults to y for ARCH64 meaning it's built even if we don't
+> want anything related to mediatek. Make the default condition stricter
+> and only build it if ARCH_MEDIATEK is selected.
+>
+> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 
-Are you applying it or should I?
-Not sure if you want some special timing, like outside of
-holidays.
-
-Yours,
-Linus Walleij
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
