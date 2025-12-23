@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F6EDE6F086
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 19:46:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17B0AE6FE29
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 19:46:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EU6T+J1+Z1ABalW9OPYg5VtoP/UavCSR8CGTddbBx6w=; b=Ut4tI8SYoGGRlsAG7VxOezwIHY
-	BX0sqxWwPWLqdPnKtWQ53xeJMEcvNjOfb8nBhy96a2RPffaj0XoErAdaECYZ8zsOK89+iczGBeKIZ
-	UORPtaxQ6sOQmDiGqpLkZhi+Wuf9ggmTNOVhTKdLM0Ba74aOZ9KBlL7SODjLoekeuH1nrifHPhhb8
-	xDqW6fBBcfqWuRO6/gS9SHJobAYcIse0FIMyXwSy/Ru7+00a2hPLpRL/NW+YFJE9254W2qUfI373j
-	hJt73AEC1crShUB0uaoHuG0Sk1cFmyBEKizsj0qpbksKtEci1VXbDg/5EmZHgqsvbFvAeeeoQ+rmj
-	WZXSQPEg==;
+	bh=QGnF4tvIiZgsyxM67mH6bugdnjxLvTzAmKSx2XLMRwA=; b=RUCErRMJTmz/T3ecuj7NFQJ0tC
+	4JAysXK64zUmoqJIfqcKMblomMNXbjFGCPOm0ap4or7iv7zbxo9TwJlfAY1dN+PewElkyt9KOiVkZ
+	QGehluhrIegsFwgSYVBF+TRYDbRILKtRx0ywV4vfPFeDhYlYBsA8dd//bmIKK85VjlvPMMPeP5iTB
+	Wii5muuNm/vaZqyQKuETLJ5kJ6aaN8KqC9EBOmpnQ05K4yoR93sINV5wlKlo7GfO6HYM64kSbz0zR
+	r4mRU1moRHaeuCKGoL/4rrsqq+fHgQBmmIZcLSMdW38OfOWo7GTrDmrrU4yL4hSv9cEnIZbPMy3Yh
+	pyBwDbLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY8L8-0000000FzzP-0qEg;
-	Tue, 23 Dec 2025 19:46:38 +0000
+	id 1vY8LE-0000000G03G-0CYe;
+	Tue, 23 Dec 2025 19:46:44 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY8L5-0000000Fzwx-0mh3;
-	Tue, 23 Dec 2025 19:46:36 +0000
+	id 1vY8L9-0000000Fzzt-41Wv;
+	Tue, 23 Dec 2025 19:46:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1766519191;
-	bh=AspixI/Zehlvp8aaMQOtqUnGyuNV8eKlnuQrhHE2EB8=;
+	s=mail; t=1766519197;
+	bh=8FoqfaoY+0Hw91SrzejtYpeqb9eQRxsYLDoEUKDQmRg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=keKOzdTCO3rnHak+ZHukTtXHNIjGooF9SNvH+vphysxH+cFAIRRgGFPDj2fMJ02xO
-	 nLxB3CI7hhElaV6KQmkDwcxmBr+o+/eGRW724DXvU6SQfYOkhcy8Y9yq1u3WKy+ZBH
-	 tfzE5zUq031jwhz3x6c5YvfeuXIBwXO4Xj+R6kFY6PrartjuHm73ZFQsk166iXPPbk
-	 Q2GUoZGRXTS2w5E35HokGmxxoZQX7ezLmmST/f66P5pKE/9U2aO/c/12+anZ2TozmK
-	 cLXmhJJivqqONZc4h48QVwd4oYk62pLwJyaZyapqUqIzZeAkySH/20728xc0yntoyf
-	 lCCIjXdDBaHcQ==
+	b=CKwn8j98/eXjlM0Ifa8ou8K0lQ+DeRRMAJNQQnj6je8r9dTbq0u97I7W3mxqp3y+M
+	 zVK7oMG2LcmwDIKs/q3xadWc5f2FU53m5eilfZgdIQaHmKMgZdiYSPtuxoF2E2oBjG
+	 nbSGwJcsWlow9I/ycaxGanCQSOPMTWykXxEK/OvKr+74ZM5attCvrtm0sof8SiHCF/
+	 XIU0PeyjelILXKuTDxx9PPcl2H/7PZBqZ/rOJ3/5z1pBVmMHBtWBf1Dy1QGZ8Ujgbc
+	 N3osY6Tu5GlncJIENBAt736XKJyr6gdMTz355lSfHI0E9OoYaYGpSGK0rGfNmrZjMI
+	 PE11IV+cbA3+w==
 Received: from [127.0.1.1] (unknown [IPv6:2804:1b1:f803:74:81c8:6a7a:6e11:8f81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A304117E10DC;
-	Tue, 23 Dec 2025 20:46:26 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4AC1E17E12EB;
+	Tue, 23 Dec 2025 20:46:32 +0100 (CET)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Tue, 23 Dec 2025 16:44:42 -0300
-Subject: [PATCH 01/11] drm/mediatek: Introduce DDP plane_colorops_init()
- hook
+Date: Tue, 23 Dec 2025 16:44:43 -0300
+Subject: [PATCH 02/11] drm/mediatek: Initialize colorops when creating
+ plane
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20251223-mtk-ovl-pre-blend-colorops-v1-1-0cb99bd0ab33@collabora.com>
+Message-Id: <20251223-mtk-ovl-pre-blend-colorops-v1-2-0cb99bd0ab33@collabora.com>
 References: <20251223-mtk-ovl-pre-blend-colorops-v1-0-0cb99bd0ab33@collabora.com>
 In-Reply-To: <20251223-mtk-ovl-pre-blend-colorops-v1-0-0cb99bd0ab33@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -67,9 +67,8 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251223_114635_380037_0F8AAAD9 
-X-CRM114-Status: UNSURE (   8.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251223_114640_157130_E7F0A5FA 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,34 +83,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce a plane_colorops_init() hook to allow DDP components to define
-how to initialize the color pipeline on their planes.
+During initialization of a plane, if the DDP component supplying it
+defines a plane_colorops_init() hook, call it to initialize the color
+pipeline on the plane.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_ddp_comp.h | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_crtc.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-index 99bf1e1015da..3a7393b7f4c9 100644
---- a/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_ddp_comp.h
-@@ -13,6 +13,7 @@
- #include <linux/soc/mediatek/mtk-mutex.h>
+diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
+index 22f255c3ddd3..f7db235d986f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
+@@ -985,8 +985,10 @@ static int mtk_crtc_init_comp_planes(struct drm_device *drm_dev,
+ 	int i, ret;
  
- #include <drm/drm_modes.h>
-+#include <drm/drm_plane.h>
+ 	for (i = 0; i < num_planes; i++) {
++		struct drm_plane *plane = &mtk_crtc->planes[mtk_crtc->layer_nr];
++
+ 		ret = mtk_plane_init(drm_dev,
+-				&mtk_crtc->planes[mtk_crtc->layer_nr],
++				plane,
+ 				BIT(pipe),
+ 				mtk_crtc_plane_type(mtk_crtc->layer_nr, num_planes),
+ 				mtk_ddp_comp_supported_rotations(comp),
+@@ -997,6 +999,12 @@ static int mtk_crtc_init_comp_planes(struct drm_device *drm_dev,
+ 		if (ret)
+ 			return ret;
  
- struct device;
- struct device_node;
-@@ -86,6 +87,7 @@ struct mtk_ddp_comp_funcs {
- 	const u32 *(*get_formats)(struct device *dev);
- 	size_t (*get_num_formats)(struct device *dev);
- 	bool (*is_afbc_supported)(struct device *dev);
-+	int (*plane_colorops_init)(struct device *dev, struct drm_plane *plane);
- 	void (*connect)(struct device *dev, struct device *mmsys_dev, unsigned int next);
- 	void (*disconnect)(struct device *dev, struct device *mmsys_dev, unsigned int next);
- 	void (*add)(struct device *dev, struct mtk_mutex *mutex);
++		if (comp->funcs && comp->funcs->plane_colorops_init) {
++			ret = comp->funcs->plane_colorops_init(comp->dev, plane);
++			if (ret)
++				return ret;
++		}
++
+ 		mtk_crtc->layer_nr++;
+ 	}
+ 	return 0;
 
 -- 
 2.51.0
