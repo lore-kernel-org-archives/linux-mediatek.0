@@ -4,80 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85F1FE6F086
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 17:40:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8C31E6FE24
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 17:44:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YKgwtAjht++HIpBsfV4YQ7SC1JAhcOfRGl0OElK1t5w=; b=v18GFNEuTyqk3KD2OV9ETx/UX7
-	bwj+oy4fsUl6NxS2Gec696NTxFncDB2HVhKrW9bIyZMfAmrdnu4yY6nSqS64Jzjx8iKAXrvTH+ii6
-	iAgx6BGkXOlpwZOMH08yMsHK2vk1XKYFyJd//ZO7h4XKCfwNEAizTMcltjaXAnN+PfcGF4u2H/OcT
-	vq5XVde0RtenfCaJOJ6bcgjNqLV3hFBEhBxLqVMAlmYbCtQoZfK8gVo+kgYv0m/OV9bGOlB+4ISUs
-	8srulY+13ZOmPeeAwl8MPascnG1qpYypAjqZAxs+UitV7FZgpi7rD9DeE4/eWAIALgJ93y17dSxPR
-	C5abBPbA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Wj7GDHLzW+C414QXD/lrtEL4bgBibXRM1vZM9QNHvr0=; b=24ihQPr+YdyplVsEW5fjV6SBmC
+	dx2l8MRzj8ZmlOJZMre6efjsrqNSyN5MeAQlmTZd+dcpXbKj4bgrBBLBWOj5w8SmudgL66wp+bnlh
+	/d+Qw2mZyUHD+wv8MJEHPfiPiZ080uQkc8TJMDlgTTIFqC9qJHm7PYAcgS0zQvhZwZoKsZUi2AehQ
+	0XQm69VFBZ72P3B1UDRhG8VypUVfctY7btdL/hVW76QpMsDpI/mQhkKwAR1CRsYV0rrZBGn3xWbNu
+	cMFGdOQ3lNASYA/03+To5dYJvKTEDV/a7m/y+0oJof6I05SzY2rY2+q59PCAD8eFc82ZdZbWaIMcB
+	5ow9Giig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY6Me-0000000FqVv-1wsu;
-	Tue, 23 Dec 2025 17:40:04 +0000
+	id 1vY6RC-0000000Fqw8-39M8;
+	Tue, 23 Dec 2025 17:44:46 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY6Mb-0000000FqUI-2TWs;
-	Tue, 23 Dec 2025 17:40:02 +0000
+	id 1vY6R8-0000000FqtB-1c1o;
+	Tue, 23 Dec 2025 17:44:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 22F0A42E23;
-	Tue, 23 Dec 2025 17:40:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39F96C113D0;
-	Tue, 23 Dec 2025 17:40:00 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 0D4CB4085E;
+	Tue, 23 Dec 2025 17:44:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F482C116D0;
+	Tue, 23 Dec 2025 17:44:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766511601;
-	bh=mg+xr84GsG3acMHvsNiCgu+mhovC0ULkrlsg5Zc0wB4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gnjDSgeDpiEOWDb0Q/UicZgdmWitjgbpqA77fEs4NCvPTov7e9DMj7XG3yTGE/oRD
-	 CZzhhz3V2RlTMW7+G6ML23B0q0Zz4CV1MfDhzyhV8ncLMHn+ys3+V1xMjbgB6YUZvF
-	 PIHBoR9SeHN0oBp1Ej7yv9uswRlcwNWAvT/Q4M9s2axotPD5dRzW5e3bgxAQJFgYq/
-	 8OMFVId6FsiNJWamlE8wMRlnBmw0JTDQJ2Mszs4dShfOyJQr015/v/DcZemF64bwTK
-	 1AgoFL1SPYlDQ7sR62eMK0ZNoiDMuJVwSoEABjDjUXWXMVYZWO0OlQAU7BDeTtAgVk
-	 RnezgJuAWnqOQ==
-Date: Tue, 23 Dec 2025 23:09:57 +0530
+	s=k20201202; t=1766511881;
+	bh=PLc3ggjOm8pNxE0mUFygpy5myL/Add/ECkFcmWDsJv4=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=fTamgbyDxueAuqzoR9INSRwthaBzUMhXpEdygryva+7DYO4SeZMDwBavCCXhjiJdH
+	 hcZcpyiGn9+XeMsDkXGtt5gkMIOsgfycGsGnykYFyDdB6HsLBViAUZlaRXnYHGwv2k
+	 r7U9QTD33CDFoKVGEx0k8DHHPuUe5sS7q9FrQBIxSIFce+VlzxfcqaUYqVUZeh3+ZQ
+	 AgRrp/701JuNokeo489S5Dq7Pdqlu8Bjo9seUYBU6gEV47ORyhiUvquWz5cfDzRFhw
+	 LMKbW/UmYQkyYFs3mOdDEafdTF1BqQ+Tlf7MERjlytvEuTLM/rfYrYFsnuvg+vtBKc
+	 jVn6whfYs3j0Q==
 From: Vinod Koul <vkoul@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Peter Wang <peter.wang@mediatek.com>,
-	Stanley Jhu <chu.stanley@gmail.com>,
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Chaotian Jing <Chaotian.Jing@mediatek.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	kernel@collabora.com, linux-scsi@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org
-Subject: Re: [PATCH v4 05/25] phy: mediatek: ufs: Add support for resets
-Message-ID: <aUrT7R41XJk07Esf@vaman>
-References: <20251218-mt8196-ufs-v4-0-ddec7a369dd2@collabora.com>
- <20251218-mt8196-ufs-v4-5-ddec7a369dd2@collabora.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Guillaume Ranquet <granquet@baylibre.com>, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: kernel@collabora.com, Krzysztof Kozlowski <krzk@kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+In-Reply-To: <20251217-mtk-genio-evk-hdmi-support-v2-0-a994976bb39a@collabora.com>
+References: <20251217-mtk-genio-evk-hdmi-support-v2-0-a994976bb39a@collabora.com>
+Subject: Re: (subset) [PATCH v2 00/12] Add HDMI support for Mediatek Genio
+ 510/700/1200-EVK and Radxa NIO-12L boards
+Message-Id: <176651187669.759340.13955241073309104035.b4-ty@kernel.org>
+Date: Tue, 23 Dec 2025 23:14:36 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251218-mt8196-ufs-v4-5-ddec7a369dd2@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251223_094001_658348_AEBC1BB4 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20251223_094442_448928_8EF8CFC2 
+X-CRM114-Status: UNSURE (   7.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,24 +85,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 18-12-25, 13:54, Nicolas Frattaroli wrote:
-> The MediaTek UFS PHY supports PHY resets. Until now, they've been
-> implemented in the UFS host driver. Since they were never documented in
-> the UFS HCI node's DT bindings, and no mainline DT uses it, it's fine if
-> it's moved to the correct location, which is the PHY driver.
+
+On Wed, 17 Dec 2025 11:18:59 +0100, Louis-Alexis Eyraud wrote:
+> This patch series adds and enables the HDMI output support for the
+> following boards:
+> - Mediatek Genio 510-EVK (MT8370)
+> - Mediatek Genio 700-EVK (MT8390)
+> - Mediatek Genio 1200-EVK (MT8395)
+> - Radxa NIO-12L (MT8395)
 > 
-> Implement the MPHY reset logic in this driver and expose it through the
-> phy subsystem's reset op. The reset itself is optional, as judging by
-> other mainline devices that use this hardware, it's not required for the
-> device to function.
-> 
-> If no reset is present, the reset op returns -EOPNOTSUPP, which means
-> that the ufshci driver can detect it's present and not double sleep in
-> its own reset function, where it will call the phy reset.
+> [...]
 
-Acked-by: Vinod Koul <vkoul@kernel.org>
+Applied, thanks!
 
+[01/12] dt-bindings: phy: mediatek,hdmi-phy: Fix clock output names for MT8195
+        commit: 65790df6dcd2f41fab2288ed3d2c3bca00d8dfd4
+[02/12] dt-bindings: phy: mediatek,hdmi-phy: Add support for MT8188 SoC
+        commit: 6226f616c8e9ac30c294b86ff59e3a9566e2a8d0
+[03/12] dt-bindings: phy: mediatek,hdmi-phy: Document extra clocks for MT8195
+        commit: ff89cea2385b6236790f3be2727d9ae527daf4a0
 
+Best regards,
 -- 
 ~Vinod
+
+
 
