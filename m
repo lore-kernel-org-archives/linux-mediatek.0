@@ -4,106 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A76CCE6FE24
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 19:01:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA952E6F086
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 19:46:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vx0jOvF6tZS8pxKHJ8Mkyoco4/zguV4NZ9A2mS3WuCM=; b=GkA+FuzfPi5z4kaDOB3SlIPu9T
-	dqpGp7vKx0gnhSEV5xFJFixHsoTqBms1IiraWTAMZkVhUTcnM2bJYuS0RuNNsXu78cED/XV0iVFUd
-	yRyQdg4U9rNCg2T2GPaVIV+f/7F//CUSu2L5Mz144KudiWMEqqxD/cNHt/cuniEFvdt4R2TMOf0vG
-	w3apcVBAKEt05vQ9d8S/QH2/c59zCKBnMDUh6scdIoAc7qT2GgDe+vsqgTgTdFDjI7h+OcOHM7JT9
-	nWwjhPbFf7tqqQR1K6zZcouyUOJTzb4GQWShbhfLIGrMYVmO8fElVo+Y2pdIF0vHj4NLmhNXnvSN9
-	LrazrPhA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Mhas7AYg8Al125AIAoaWfTDzwb64rjoVqeGsBofVfR8=; b=zL3RWYi/zAhm1g
+	4M5dgcTPEEkyfbYikwdAuQJBbaITBKc03rd1pDSWy4Sr4xSsUc7NU3i86+YxAnn4+IAxtbi+IjZyl
+	5ixcoN8GOVprpM2aWQtLjrqglUYmre+yvtXJPnFFva+nCLTZGmJXBXMKytE9A8qsXG7rVbAMksgnC
+	qg1djtkpaiJ9nHTKGt10hI4ak0SupbPW2udPorK5+/69CtL74f6dAFtuhR37Hw830nNrNMABLVkqI
+	Id/XcoVt8MKeZLf8tEj+D/jAyKP8anLFunYJGBbaBi6uc2n+4Mqv5eUS0HVnfhB2GBgPhVWbuwE02
+	cHm7n2mEg/eIKC8L9a3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY7dG-0000000Fy3n-16zv;
-	Tue, 23 Dec 2025 19:01:18 +0000
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+	id 1vY8L2-0000000Fzwc-0YNG;
+	Tue, 23 Dec 2025 19:46:32 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY7dD-0000000Fy35-25et
-	for linux-mediatek@lists.infradead.org;
-	Tue, 23 Dec 2025 19:01:16 +0000
-Received: by mail-yw1-x1131.google.com with SMTP id 00721157ae682-78ac9f30833so37399697b3.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 23 Dec 2025 11:01:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1766516473; x=1767121273; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:subject:references
-         :in-reply-to:message-id:cc:to:from:date:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vx0jOvF6tZS8pxKHJ8Mkyoco4/zguV4NZ9A2mS3WuCM=;
-        b=RvBZ7urdFL+1aiXMKS8y+VDqS8NaaMPUQoUCVWW1t/3UELtAOKON+5kZGd9uKKCgaf
-         UDyq2D5F3mNdMhMp8eWVZWpuua5kS3DlyoBQxTZEKbRzcTHOgeo4PAl0/5ssaUsPeGuT
-         LJT0aLjukW7oUV1REAEWDJ9R4ypvjabUQO05QEmGs9IDqdGVRggjG9WYnEH6jBmNB/j9
-         dd58M5jZvpmkFo7qQzJNeRG5TuN/gxOFEq3QgAmIwqTKDDRDJHzqPYjZrXLPkIM6b5lf
-         SD74QF1jNG3LowvShKKlrNUD8v4+yTp9f/o6MGxtFAwadUyBPONTst37CjV+rvfRLaeQ
-         zHpw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1766516473; x=1767121273;
-        h=content-transfer-encoding:mime-version:subject:references
-         :in-reply-to:message-id:cc:to:from:date:x-gm-gg:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=vx0jOvF6tZS8pxKHJ8Mkyoco4/zguV4NZ9A2mS3WuCM=;
-        b=F+6+JWHaOYYJ/dyC0BEVT4zw97pxV64RspXcjwQ0Ed7EPM0dQvKrzCrQNrqgMS3SLm
-         K0rYHESlNgF0oUG1t5I+sQ3HuGywjd2IMohmYvdqMAryQOlhVEF7ZgeyZxwvXfStnglP
-         ULEQ1F8gqo3Y2wabD8WmpaLXxvKgns8L5igI8PbD/fM5iczfU0y03SAvI74SRQrTkpQa
-         J7r5fLhwJkN+wz+JaWA6TsEb+thEXNftovIzZMM/2zhN7S5VICrqCBuZ+7sS2LTbqyE7
-         IBOQ++hcBTgbZULQFbhlbbtkt0D7X8TJN3AUzx88YIK/q23bQSprqs/5QQMEn1r0R9Ci
-         j8RQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUzdYFeALSU4IIfoLPcYZgV9GneaBYYdXv5ULVHAEL1/IpnyJ4WSZxHZ0gapQN6SALopxHhCGvsm1xaItBewg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyIZpp9YqUVjGN95BX3EUQ8zSLgFabVEaN00aEepmGuxVSQlOvq
-	NgkN4gll2SPxxrqnKcGriiJ2mCuNdi2RlLFhKGtr5Amk2h1y7mYXrZE8
-X-Gm-Gg: AY/fxX5BrprgRj4LtJVCsMNBcHTH2tWHXdBYeKdVBLw+vWp27licyQRsdS0aBZvcRLj
-	XbKSYOUSBF+ibS2ajFlgjPrzott2GrJAKX36S8MghpOGho+nqdEs+afFMWNTdch3DsBomMSb7E8
-	8gNK2T4ZBnp8nTTamqGP3+9RuvJq1PWJ/0dO/zHrG/e8SZYXvR5viIC3/VnH4/to0Zf6rScJu9P
-	yUip7cvH3O9OSFtinhE0Lyj9q1Am9TGqQguuABqdXGZksU24Ehrh/1z/aF4M4jjc09OCYHTHs2f
-	yDKMY+alFC1ScnDeEDrviTbhyxehAf2B7BCh/n/dWjjfj0UOw1SgQ4B4a5oH39blHSIJyB69dwL
-	WCIsZRKqSGQ7JGTmK6Ux7PSPY8vcF2fjr0F4c8SfeaT6k5/zBZmwlxTQZHKIQRfNfQGd+iKsc7j
-	LrX1MKMTlKpsR+QQRtafgCxko7kzaswjNj10lp2GBUSC1ahfAFomrHePNO6kbLZ9Lsh3U+dGFqN
-	anvxg==
-X-Google-Smtp-Source: AGHT+IEWRFlbhvq7/GCqpt+unPpPjWVNkObSkmzQVDUvyG3eowHw3ouJONLooJzvYG8sKv1QFMJ/Wg==
-X-Received: by 2002:a05:690c:6a04:b0:78c:3007:dabf with SMTP id 00721157ae682-78fb3f2c893mr127569747b3.27.1766516473358;
-        Tue, 23 Dec 2025 11:01:13 -0800 (PST)
-Received: from gmail.com (141.139.145.34.bc.googleusercontent.com. [34.145.139.141])
-        by smtp.gmail.com with UTF8SMTPSA id 00721157ae682-78fb437380esm57704487b3.4.2025.12.23.11.01.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 Dec 2025 11:01:12 -0800 (PST)
-Date: Tue, 23 Dec 2025 14:01:11 -0500
-From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
-To: Paolo Abeni <pabeni@redhat.com>, 
- Jibin Zhang <jibin.zhang@mediatek.com>, 
- Eric Dumazet <edumazet@google.com>, 
- Neal Cardwell <ncardwell@google.com>, 
- Kuniyuki Iwashima <kuniyu@google.com>, 
- "David S . Miller" <davem@davemloft.net>, 
- David Ahern <dsahern@kernel.org>, 
- Jakub Kicinski <kuba@kernel.org>, 
- Simon Horman <horms@kernel.org>, 
+	id 1vY8Kz-0000000Fzw8-39aX;
+	Tue, 23 Dec 2025 19:46:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1766519186;
+	bh=DsNXs1aJQccVr90Um4OPsrkOwKn/wYgaO1rvK+xVKFM=;
+	h=From:Subject:Date:To:Cc:From;
+	b=dQ1cVjcklyhGmSVvKJWC4MbWA9eKtmcZ9C0BcFi36rR6S7n14rK7SNeTI76qwytP1
+	 +8B8iQROhFaQ8KA+NTRRLQaCGusnBm9ZDaW3odtwrYz21XKthQ0QBdl1MioJ0EWL9e
+	 0i4fysfaXrXxFe9Ni8QCEu03NAhp/JmWUwPW8gWj0X6DInbz+u5/DYWvu2pxKUCoNt
+	 8pSyK/UR37jABIAsB4WyYWX5IiMuzzCLTbu37vf3FLxL8b+/O+ZBL9W6B18Kq8mLv4
+	 RXBCjNs3oRv5TQeZoQjpxYGRxw1Z2B4wGIqRjOKBCgdKIZL3KB3NV0tO3xdQEIMs6c
+	 Y0bpbYnBi2abA==
+Received: from [127.0.1.1] (unknown [IPv6:2804:1b1:f803:74:81c8:6a7a:6e11:8f81])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9AC4D17E0C2E;
+	Tue, 23 Dec 2025 20:46:20 +0100 (CET)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Subject: [PATCH 00/11] Plane Color Pipeline support for MediaTek
+Date: Tue, 23 Dec 2025 16:44:41 -0300
+Message-Id: <20251223-mtk-ovl-pre-blend-colorops-v1-0-0cb99bd0ab33@collabora.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIACnxSmkC/x3MQQqEMAxA0atI1gZsh6L1KuLC2owGayOtiCDef
+ cosH3z+A5kSU4a+eiDRxZklFqi6gnmd4kLIvhh0o43SyuJ+bihXwCMRukDR4yxBkhwZrXGt013
+ 38dZAGZTky/d/Pozv+wPQf+wfbAAAAA==
+X-Change-ID: 20251219-mtk-ovl-pre-blend-colorops-95b7b2883d95
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- steffen.klassert@secunet.com
-Cc: wsd_upstream@mediatek.com, 
- shiming.cheng@mediatek.com, 
- defa.li@mediatek.com
-Message-ID: <willemdebruijn.kernel.2633c480125d5@gmail.com>
-In-Reply-To: <aab6c515-12e4-48ca-8220-c0797dae781f@redhat.com>
-References: <20251217035548.8104-1-jibin.zhang@mediatek.com>
- <aab6c515-12e4-48ca-8220-c0797dae781f@redhat.com>
-Subject: Re: [PATCH] net: fix segmentation of forwarding fraglist GRO
-Mime-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: 7bit
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ daniels@collabora.com, ariel.dalessandro@collabora.com, 
+ kernel@collabora.com, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251223_110115_558686_A1AD8FB5 
-X-CRM114-Status: GOOD (  27.10  )
+X-CRM114-CacheID: sfid-20251223_114629_948380_2555B22D 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,89 +84,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Paolo Abeni wrote:
-> On 12/17/25 4:55 AM, Jibin Zhang wrote:
-> > This patch enhances GSO segment checks by verifying the presence
-> > of frag_list and protocol consistency, addressing low throughput
-> > issues on IPv4 servers when used as hotspots
-> > 
-> > Specifically, it fixes a bug in GSO segmentation when forwarding
-> > GRO packets with frag_list. The function skb_segment_list cannot
-> > correctly process GRO skbs converted by XLAT, because XLAT only
-> > converts the header of the head skb. As a result, skbs in the
-> > frag_list may remain unconverted, leading to protocol
-> > inconsistencies and reduced throughput.
-> > 
-> > To resolve this, the patch uses skb_segment to handle forwarded
-> > packets converted by XLAT, ensuring that all fragments are
-> > properly converted and segmented.
-> > 
-> > Signed-off-by: Jibin Zhang <jibin.zhang@mediatek.com>
-> 
-> This looks like a fix, it should target the 'net' tree and include a
-> suitable Fixes tag.
-> 
-> > ---
-> >  net/ipv4/tcp_offload.c | 3 ++-
-> >  net/ipv4/udp_offload.c | 3 ++-
-> >  2 files changed, 4 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/net/ipv4/tcp_offload.c b/net/ipv4/tcp_offload.c
-> > index fdda18b1abda..162a384a15bb 100644
-> > --- a/net/ipv4/tcp_offload.c
-> > +++ b/net/ipv4/tcp_offload.c
-> > @@ -104,7 +104,8 @@ static struct sk_buff *tcp4_gso_segment(struct sk_buff *skb,
-> >  	if (!pskb_may_pull(skb, sizeof(struct tcphdr)))
-> >  		return ERR_PTR(-EINVAL);
-> >  
-> > -	if (skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) {
-> > +	if ((skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) && skb_has_frag_list(skb) &&
-> > +	    (skb->protocol == skb_shinfo(skb)->frag_list->protocol)) {
-> >  		struct tcphdr *th = tcp_hdr(skb);
+This series implements a plane color pipeline for MediaTek platforms,
+specifically for MT8195-compatible SoCs.
 
-Using fraglist gso on a system that modifies packet headers is a known
-bad idea. I guess this was not anticipated when the feature was added.
-But we've seen plenty of examples with BPF already before.
+The pipeline is composed of the following blocks:
 
-This skb->protocol change is only one of a variety of ways that the
-headers may end up mismatching.
+Inverse Gamma -> RGB to RGB Color Space Conversion (R2R CSC) -> Gamma
+(1D Curve)       (3x3 Matrix)                                   (1D Curve) 
 
-It's not bad to bandaid it and fall back onto regular GSO.
+The curves supported by Inverse Gamma are:
+* scRGB
+* BT.709
 
-But it seems like we'll continue to have to play whack-a-mole unless
-we find a more fundamental solution. E.g., disabling fraglist GRO when
-such a path is detected, or downgrade an skb to non-fraglist in paths
-like this XLAT.
+The curves supported by Gamma are:
+* scRGB
+* BT.709
+* BT.2020
+* HLG
 
+Given the lack of support for writeback connectors on the MediaTek KMS
+driver, combined with limited hardware documentation, I haven't been
+able to verify the correctness of each curve, only that they were
+visually sane (gamma curves made the image on the display brighter,
+while inverse gamma made it darker).
 
-> >  
-> >  		if (skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size)
-> > diff --git a/net/ipv4/udp_offload.c b/net/ipv4/udp_offload.c
-> > index 19d0b5b09ffa..704fb32d10d7 100644
-> > --- a/net/ipv4/udp_offload.c
-> > +++ b/net/ipv4/udp_offload.c
-> > @@ -512,7 +512,8 @@ struct sk_buff *__udp_gso_segment(struct sk_buff *gso_skb,
-> >  		return NULL;
-> >  	}
-> >  
-> > -	if (skb_shinfo(gso_skb)->gso_type & SKB_GSO_FRAGLIST) {
-> > +	if ((skb_shinfo(gso_skb)->gso_type & SKB_GSO_FRAGLIST) && skb_has_frag_list(gso_skb) &&
-> > +	    (gso_skb->protocol == skb_shinfo(gso_skb)->frag_list->protocol)) {
-> >  		 /* Detect modified geometry and pass those to skb_segment. */
-> >  		if (skb_pagelen(gso_skb) - sizeof(*uh) == skb_shinfo(gso_skb)->gso_size)
-> >  			return __udp_gso_segment_list(gso_skb, features, is_ipv6);
-> 
-> I guess checks should be needed for ipv6.
-> 
-> Also it looks like this skips the CSUM_PARTIAL preparation, and possibly
-> break csum offload.
-> 
-> Additionally I don't like the ever increasing stack of hacks needed to
-> let GSO_FRAGLIST operate in the most diverse setups, the simpler fix
-> would be disabling such aggregation.
-> 
-> /P
-> 
+This series depends on "drm: Color pipeline teardown and follow-up
+fixes/improvements" [1].
 
+This series was tested on the MT8195-Tomato Chromebook.
+
+Regarding the support of color operations in OVL for different SoCs:
+* it's not supported by MT8183, and presumably also not by older
+  generations
+* On MT8192 it's supported by ovl0 and ovl_2l0, but not ovl_2l2 (despite
+  the same compatible as ovl_2l0).
+
+For this series I'm only enabling it on MT8195 since that's the one
+where I can readily test.
+
+[1] https://lore.kernel.org/all/20251219065614.190834-1-chaitanya.kumar.borah@intel.com/#t
+
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+Nícolas F. R. A. Prado (11):
+      drm/mediatek: Introduce DDP plane_colorops_init() hook
+      drm/mediatek: Initialize colorops when creating plane
+      drm/mediatek: ovl: Add supports_plane_colorops flag
+      drm/mediatek: ovl: Enable per-plane color operations on MT8195
+      drm/mediatek: ovl: Implement support for Inverse Gamma
+      drm/mediatek: Add plane_colorops_init() DDP hook for OVL
+      drm/colorop: Introduce HLG EOTF
+      drm/mediatek: ovl: Implement support for Gamma
+      drm/colorop: Introduce 3x3 Matrix
+      drm/mediatek: ovl: Enable support for R2R Color Space Conversion
+      drm/mediatek: Check 3x3 Matrix colorop has DATA set
+
+ drivers/gpu/drm/drm_atomic.c            |   1 +
+ drivers/gpu/drm/drm_atomic_uapi.c       |   3 +
+ drivers/gpu/drm/drm_colorop.c           |  22 +++
+ drivers/gpu/drm/mediatek/mtk_crtc.c     |  36 +++-
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c |   1 +
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h |   2 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h |   1 +
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 287 ++++++++++++++++++++++++++++++++
+ include/drm/drm_colorop.h               |  13 ++
+ include/uapi/drm/drm_mode.h             |  16 ++
+ 10 files changed, 381 insertions(+), 1 deletion(-)
+---
+base-commit: 1783cdadb70e74a30dfee250f8c2dc13b4e61128
+change-id: 20251219-mtk-ovl-pre-blend-colorops-95b7b2883d95
+
+Best regards,
+-- 
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
 
 
