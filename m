@@ -4,70 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6BBDE6B272
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 11:05:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 303DCE6F079
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 11:28:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aVeuGCEze4MP7Ykp2VlZqFOz8h8r9vX65PUGfrFSwEI=; b=WGYgoCWVFDtjJaLJMifOwMyypi
-	ZY4+YqR6RkKmeVK1KD4x9kauPp/9xC4syPkNALSmkH60H379Hu46WD64ZCbB9KcJpVwt2NHCsiofC
-	fTHTJHrnQjZpkB6+WxmNJmTub8qxT3gBvYybqa6A16NIr4AzFlY9w0Mq4H3OLJJKGPXG2obsNJ3Te
-	hKmJcCOc2m+FQhH/3+sA4sTbojX6SG+KtMQeI/PjCOn6+9I80laXNt3O2HYICgYgy1z5L4SyWUm+A
-	Wix5oLuuPAGjcuvxt5OmaC5GCGsB5TtH0/kHTWUErZeEkEpUlcrJh61VhokrFHc8CRkbIgXkG3A7g
-	rYAHHWDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Md+l1CMe6xZwqh7Ts+gRFTVC6B+gztfBrQ1rIeGhSaE=; b=idtIvEyJnjn8tUN+eSHRXtg+g7
+	dCFEIsl+jVi+22tuGsx0RzTShUcZ4RjjsSIaQXZ0Sx4feUQm0VXyqehchCBbZq2OzJcdOFtToBxiI
+	zJApOh1SVZgMZeGRkrhLxCo/tpiKz6Q4YoSU9yx51JcBsAHUTB6ZiD6gjZRs83Q0dolgVhxWryhqH
+	kSbqpwoon5+8f3Yk/nCIZZqiMbirJqnOPryQj+2bvSEbHAHKko0qGT/tMP/qJrB1fSLfULBxHK/ii
+	f1SSfeesvwI7ccARfPNHk4ftJKdwt1deN+CuAfNRJw3hOvwdRsCdyD8YkPIX/cOq/XEDjPib2GqFg
+	sGdXlIjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY0Cx-0000000EvZj-3CEV;
-	Tue, 23 Dec 2025 11:05:39 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vY0ZD-0000000Ewo1-2FxC;
+	Tue, 23 Dec 2025 11:28:39 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY0Cu-0000000EvYB-0t7X;
-	Tue, 23 Dec 2025 11:05:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1766487931;
-	bh=O29c7ITgEJCymXV/jcddxP+gJ4NesKAR0lu9ZRXMAT4=;
-	h=From:Date:Subject:To:Cc:From;
-	b=XyNAe3EuDaHR3MOpeXryvZwDB3jjh0ofXpEMba+shFfYY3viA9XRHpYpOIKUaYol6
-	 lD3Aj8KCWWdtUwY0OKS9SbiyV9yDYdyy8YqIroI4nXGUhNUw9y+9wHYgrgp/UZBtzm
-	 Bij9IOwpXw6oNKFCykwwJmbCy9RB3uF4WJJcVBkAK5qbDq4YpbjP5QgHGD73juA8lP
-	 sdmysBReedOu3ypbtsOBP3PZInKq+e465Q71vM024nWE7kNXa1UdveWEa1tQ3jSQgs
-	 +QT8Q/JjjBJPG1ECu03kjUP02FeohtMWakHhnBszTakDzfrCLtSBbkT4qQuCrtnQSA
-	 wLSdydPPBXfOA==
-Received: from beast.luon.net (simons.connected.by.freedominter.net [45.83.240.172])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sjoerd)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 639B217E0125;
-	Tue, 23 Dec 2025 12:05:31 +0100 (CET)
-Received: by beast.luon.net (Postfix, from userid 1000)
-	id 0425A1179E810; Tue, 23 Dec 2025 12:05:30 +0100 (CET)
-From: Sjoerd Simons <sjoerd@collabora.com>
-Date: Tue, 23 Dec 2025 12:05:17 +0100
-Subject: [PATCH] clk: mediatek: Drop __initconst from gates
+	id 1vY0Z7-0000000EwkD-1BwG;
+	Tue, 23 Dec 2025 11:28:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 76D7B44404;
+	Tue, 23 Dec 2025 11:28:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 035D6C19424;
+	Tue, 23 Dec 2025 11:28:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1766489312;
+	bh=DrFdDG6IvSD40UbQviAe9Hu1ENooMM/4w95t2G/Z3ag=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=AzkSYThXqZHzQOmrf/zMBBKv4KhWOl0FiqdRWP7lPm49CsiCIK4qTWEpKmF+TBqQ3
+	 GkBpGVTce/skOn3alymq8zP7KyNT1JdBa3H9iOOppgZw4Ng/TaSLxzSXR9peqY19Xj
+	 76SFoEMldM2QxK75XRGE8EDePqmG0V7+pIHPAVKaNUy4SdYY073vQpWK3divFjojrJ
+	 0yU6TeMIxzJBs3pT7hJ65bVrQvR7XYGSKtbWlZ9yJMYWxYv/nO8FGne8Btbb3q6syI
+	 02xTZ6++14YRGtgpzB7pPWDYajptWCZ5fUFFswGTxvIFZWHGpKGFYy+F29Oo2PfZxr
+	 C4DVDowPfK8qQ==
+From: Vinod Koul <vkoul@kernel.org>
+To: dmaengine@vger.kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: sean.wang@mediatek.com, robh@kernel.org, krzk+dt@kernel.org, 
+ conor+dt@kernel.org, matthias.bgg@gmail.com, long.cheng@mediatek.com, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ kernel@collabora.com
+In-Reply-To: <20251113122229.23998-1-angelogioacchino.delregno@collabora.com>
+References: <20251113122229.23998-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH 0/8] MediaTek UART DMA: Fixes, improvements and new
+ SoCs
+Message-Id: <176648930864.697163.15382813689450810341.b4-ty@kernel.org>
+Date: Tue, 23 Dec 2025 16:58:28 +0530
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251223-mtk-gate-v1-1-e4a489ab33de@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAGx3SmkC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDI1NDIyNj3dySbN30xJJU3URLC0Nj48QkC4NkSyWg8oKi1LTMCrBR0bG1tQB
- +JXBwWgAAAA==
-X-Change-ID: 20251223-mtk-gate-a98133ab80c9
-To: Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Laura Nao <laura.nao@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: kernel@collabora.com, linux-clk@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, stable@vger.kernel.org, 
- Sjoerd Simons <sjoerd@collabora.com>
-X-Mailer: b4 0.14.3
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251223_030536_430099_4A239605 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20251223_032833_355356_2A6AECCB 
+X-CRM114-Status: UNSURE (   9.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,69 +77,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since commit 8ceff24a754a ("clk: mediatek: clk-gate: Refactor
-mtk_clk_register_gate to use mtk_gate struct") the mtk_gate structs
-are no longer just used for initialization/registration, but also at
-runtime. So drop __initconst annotations.
 
-Fixes: 8ceff24a754a ("clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to use mtk_gate struct")
-Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
----
- drivers/clk/mediatek/clk-mt7981-eth.c | 6 +++---
- drivers/clk/mediatek/clk-mt8516.c     | 2 +-
- 2 files changed, 4 insertions(+), 4 deletions(-)
+On Thu, 13 Nov 2025 13:22:21 +0100, AngeloGioacchino Del Regno wrote:
+> This series performs fixes the MediaTek UART DMA driver to be able
+> to correctly program AP_DMA controllers that support extended
+> addressing, performs some cleanups to improve code readability
+> and adds support for *all* of the SoCs generations that are upstream.
+> 
+> This includes MT6795, MT7988, MT8173, MT8183, MT8186, MT8188, MT8195,
+> other than all of their Genio variants (where applicable), all of
+> their Smartphone variants (where applicable), and also some newer
+> generation SoCs that are in the process of being upstreamed, like
+> MT8196 and MT8189.
+> 
+> [...]
 
-diff --git a/drivers/clk/mediatek/clk-mt7981-eth.c b/drivers/clk/mediatek/clk-mt7981-eth.c
-index 906aec9ddff5..0655ebb6c561 100644
---- a/drivers/clk/mediatek/clk-mt7981-eth.c
-+++ b/drivers/clk/mediatek/clk-mt7981-eth.c
-@@ -31,7 +31,7 @@ static const struct mtk_gate_regs sgmii0_cg_regs = {
- 		.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
- 	}
- 
--static const struct mtk_gate sgmii0_clks[] __initconst = {
-+static const struct mtk_gate sgmii0_clks[] = {
- 	GATE_SGMII0(CLK_SGM0_TX_EN, "sgm0_tx_en", "usb_tx250m", 2),
- 	GATE_SGMII0(CLK_SGM0_RX_EN, "sgm0_rx_en", "usb_eq_rx250m", 3),
- 	GATE_SGMII0(CLK_SGM0_CK0_EN, "sgm0_ck0_en", "usb_ln0", 4),
-@@ -53,7 +53,7 @@ static const struct mtk_gate_regs sgmii1_cg_regs = {
- 		.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
- 	}
- 
--static const struct mtk_gate sgmii1_clks[] __initconst = {
-+static const struct mtk_gate sgmii1_clks[] = {
- 	GATE_SGMII1(CLK_SGM1_TX_EN, "sgm1_tx_en", "usb_tx250m", 2),
- 	GATE_SGMII1(CLK_SGM1_RX_EN, "sgm1_rx_en", "usb_eq_rx250m", 3),
- 	GATE_SGMII1(CLK_SGM1_CK1_EN, "sgm1_ck1_en", "usb_ln0", 4),
-@@ -75,7 +75,7 @@ static const struct mtk_gate_regs eth_cg_regs = {
- 		.ops = &mtk_clk_gate_ops_no_setclr_inv,	\
- 	}
- 
--static const struct mtk_gate eth_clks[] __initconst = {
-+static const struct mtk_gate eth_clks[] = {
- 	GATE_ETH(CLK_ETH_FE_EN, "eth_fe_en", "netsys_2x", 6),
- 	GATE_ETH(CLK_ETH_GP2_EN, "eth_gp2_en", "sgm_325m", 7),
- 	GATE_ETH(CLK_ETH_GP1_EN, "eth_gp1_en", "sgm_325m", 8),
-diff --git a/drivers/clk/mediatek/clk-mt8516.c b/drivers/clk/mediatek/clk-mt8516.c
-index 21eb052b0a53..342a59019fea 100644
---- a/drivers/clk/mediatek/clk-mt8516.c
-+++ b/drivers/clk/mediatek/clk-mt8516.c
-@@ -544,7 +544,7 @@ static const struct mtk_gate_regs top5_cg_regs = {
- #define GATE_TOP5(_id, _name, _parent, _shift)				\
- 	GATE_MTK(_id, _name, _parent, &top5_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
- 
--static const struct mtk_gate top_clks[] __initconst = {
-+static const struct mtk_gate top_clks[] = {
- 	/* TOP1 */
- 	GATE_TOP1(CLK_TOP_THEM, "them", "ahb_infra_sel", 1),
- 	GATE_TOP1(CLK_TOP_APDMA, "apdma", "ahb_infra_sel", 2),
+Applied, thanks!
 
----
-base-commit: b927546677c876e26eba308550207c2ddf812a43
-change-id: 20251223-mtk-gate-a98133ab80c9
+[1/8] dt-bindings: dma: mediatek,uart-dma: Allow MT6795 single compatible
+      commit: 4b9ce35ca5924c195df1a6bbccdc9aae4f5cb422
+[2/8] dt-bindings: dma: mediatek,uart-dma: Deprecate mediatek,dma-33bits
+      commit: ebc5e9176e0f9b7effc259b58a7387019ac8811d
+[3/8] dt-bindings: dma: mediatek,uart-dma: Support all SoC generations
+      commit: fd7843f0da58b37072c1dafa779d128bb36912bf
+[4/8] dmaengine: mediatek: uart-apdma: Get addressing bits from match data
+      commit: ff81a68a87b1dbf5c1b819f240f83715c701ef0d
+[5/8] dmaengine: mediatek: uart-apdma: Fix above 4G addressing TX/RX
+      commit: 58ab9d7b6651d21e1cff1777529f2d3dd0b4e851
+[6/8] dmaengine: mediatek: mtk-uart-apdma: Rename support_33bits to support_ext_addr
+      commit: 7cb173936858f2278d9cf8b2f5d7d52fd000e54e
+[7/8] dmaengine: mediatek: mtk-uart-apdma: Add support for Dimensity 6300
+      commit: 391e20f21cfdee2f55f2274e83b37c03199062ea
+[8/8] dmaengine: mediatek: mtk-uart-apdma: Add support for Dimensity 9200
+      commit: 3587b2b6bf7681835c7c366c6083e2cd9e4b519d
 
 Best regards,
 -- 
-Sjoerd Simons <sjoerd@collabora.com>
+~Vinod
+
 
 
