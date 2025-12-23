@@ -4,52 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EC8FE6F086
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 19:46:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B0D3E6FE29
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Dec 2025 19:46:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uyoielU3zjNqonG8ClwRvy2dP0ivTU2tipbGsgeAAfw=; b=n7sDopc5+uMQXm53g3meKN+84C
-	mY2HihjH8Wh7SZxHm9WBW8uS2S8Ca+Rag0NALQ7fyC4Jji5rB5FhKPc1RS6sZsyebHHwJNImTknda
-	eLp+DYuryDDjIrSCC+Yec+9GunRnm4dbUD03YsUNwKZXMT7/p8Qsr6SKWFZGXrbfBi0rUNe4ZMmd4
-	dwDcIxXB8ieG8h3zirGUGP9VpEEumlPtMhWe0oKs7CUbQFN1wH63T04xKGvvs5z8n6V/2TFR65lPd
-	H0U5QcWTZNLweW6+mIjU4KhpDFs9MoZbARsZ6vs6/ZkeboAyxXEN1DsCih3PMgIUWSxMA+/P4+mSO
-	xVzD7A+A==;
+	bh=w4gc0MT1nGYM0hrqETi0KVfNri3Wxw/4mGQypBxz/xY=; b=ucDgnSQB4rTTMmy7/hiMnqo7MK
+	Q86bNwORdJOH6+mE2ZgZil8JYrQNLVFFWiR3JyxY16nRM57/nTnSghvdUpUNXb9rBHQgDRrv9IGiL
+	owO+ANki7FcRxGshrd2xyI2CxlDnJOf2/KE+qTQIOCj/2LjXmBiOplkQBzk+6gGbC4B8wbRddITmC
+	unwzEAAC+5N7e1zhH4SmCZwWt5+P4qELWDkN1ADMu9TQuNuHpX+Mf3wPe2Hf7G1nlfxLeEOX3EW3E
+	wh5PaqgVIOCKy0yh0NtcwsTu2UU43vLJGUuNJYZJScOzQSrq7TdbEojZb18NmPffK6MX9Tfzhv7Ty
+	/pEGKlfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY8LJ-0000000G072-2txg;
-	Tue, 23 Dec 2025 19:46:49 +0000
+	id 1vY8LO-0000000G0AG-15ak;
+	Tue, 23 Dec 2025 19:46:54 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vY8LG-0000000G048-3XBf;
-	Tue, 23 Dec 2025 19:46:48 +0000
+	id 1vY8LL-0000000G07o-3r37;
+	Tue, 23 Dec 2025 19:46:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1766519203;
-	bh=wh/khd0MG4TmlC1+SwQHtrkPFJXfgwSIZjK19Qae4No=;
+	s=mail; t=1766519209;
+	bh=gYnI8T5uMPJ/mmH4wjqwSpKH7oDdWaPT0zX051fZAyE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=It0HZ5oOwjvJfgmJntjU2VjEHR3wpqdCxoGft86uIydBrC/H+6PC18BP8ONEbcx8j
-	 e/noOhNfKee0AVTSJ/kbf9FiUPSFN0gpGdG0TwjnWt205JUmAmirAAzcKa4SQ9BCS4
-	 q7i9khvC1gtFej2twvf8dAShQSfKF2GBcVXVfTUjFE1THCLsrSK/oJn3lFXcf1P72F
-	 NoIERAaxk6kRUnIJaAcbM+TDLYajjHfN/O+pcqDVvdbFXg1qLq25gP0+cneMVqbhpb
-	 FGuc6CDglgIWalQRx4eBypZ5kGqkNXkSySNwisMk3cjdTmih/AqbM+mUpQCOIjb92l
-	 wLlXXAMpqjomw==
+	b=JoUEImJfF79JttsO7yI2ZYhVhtn8PkHgh7V3tURXYLmlRoP+O/kQld/5H0kOdcQnr
+	 IiJd2Gi1ikc9zupBn2CPlHkmeO55D3FU1QFqBhpi/KgfrwojObM28xc/JTKQ7yATGy
+	 ucDXI2I0/0DzueslRI4iRNGdxbfkGJPaxlXPokXAWhrUlpAFpyXtzaml/z5jUWXq4L
+	 EuI16PvYkWuZLju5mPPzDO8zY7OceT3Lnryoy2WQSLeA5gSD8DTWhh3ZQUc2U4X8j3
+	 BKgmEiEDSOGbs624JY/v6Gmtn4p6lGAY1Su7Wj0R2qLgtv0qExSd3BYgEMB9//39e4
+	 X/Ehsrpd4z8Nw==
 Received: from [127.0.1.1] (unknown [IPv6:2804:1b1:f803:74:81c8:6a7a:6e11:8f81])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nfraprado)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0817817E1345;
-	Tue, 23 Dec 2025 20:46:37 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id ECF2B17E150C;
+	Tue, 23 Dec 2025 20:46:43 +0100 (CET)
 From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-Date: Tue, 23 Dec 2025 16:44:44 -0300
-Subject: [PATCH 03/11] drm/mediatek: ovl: Add supports_plane_colorops flag
+Date: Tue, 23 Dec 2025 16:44:45 -0300
+Subject: [PATCH 04/11] drm/mediatek: ovl: Enable per-plane color operations
+ on MT8195
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20251223-mtk-ovl-pre-blend-colorops-v1-3-0cb99bd0ab33@collabora.com>
+Message-Id: <20251223-mtk-ovl-pre-blend-colorops-v1-4-0cb99bd0ab33@collabora.com>
 References: <20251223-mtk-ovl-pre-blend-colorops-v1-0-0cb99bd0ab33@collabora.com>
 In-Reply-To: <20251223-mtk-ovl-pre-blend-colorops-v1-0-0cb99bd0ab33@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -66,8 +67,8 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251223_114647_043164_9C7C364F 
-X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-CacheID: sfid-20251223_114652_110343_3E541E31 
+X-CRM114-Status: UNSURE (   8.10  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,9 +84,8 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a supports_plane_colorops flag to the driver data to allow SoCs that
-support per-plane color operations to enable support for it in the
-driver.
+MT8195's OVL hardware supports per-plane color operations. Enable
+support for it in the driver.
 
 Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
 ---
@@ -93,17 +93,17 @@ Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 8e20b45411fc..46238c21b0ac 100644
+index 46238c21b0ac..cfc6a3154f73 100644
 --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
 +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -150,6 +150,7 @@ struct mtk_disp_ovl_data {
- 	const u32 *formats;
- 	size_t num_formats;
- 	bool supports_clrfmt_ext;
-+	bool supports_plane_colorops;
- };
- 
- /*
+@@ -738,6 +738,7 @@ static const struct mtk_disp_ovl_data mt8195_ovl_driver_data = {
+ 	.fmt_rgb565_is_0 = true,
+ 	.smi_id_en = true,
+ 	.supports_afbc = true,
++	.supports_plane_colorops = true,
+ 	.blend_modes = BIT(DRM_MODE_BLEND_PREMULTI) |
+ 		       BIT(DRM_MODE_BLEND_COVERAGE) |
+ 		       BIT(DRM_MODE_BLEND_PIXEL_NONE),
 
 -- 
 2.51.0
