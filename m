@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1098DE74907
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94C13E74908
 	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Dec 2025 03:18:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,29 +12,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NiZxc43IjHBA+/wzLD458ncrHI4s1rgsJ+lbgDIgSAE=; b=Ni+MDoiqkjrEOrqEAN6s7M4dm1
-	COC2rK4XRNsU57UHHdzZZGOMCS8PY5oSwlWMa89f7tvFw7NoKDtNtD1ZaV0Hfk45dhc/k69+eOIOT
-	bJXzz2qLF6dKOXdrKkzbwGrLj/Z+sZe7OusUwM5ItYy0p+WoX6NnXD5dex1lfZxSIMvqLOwXE4eL4
-	a/DFhiWQvDF9BhZ5RrekXZpkQb0NGYHngQ3srJxIKgGBuOBMpfKwSjQOWMIvWWPErA5ubtCKabW0w
-	Qr4vZ0MSf+B1Cr2kqQ3DRveB5T4rnSi09OMRRldER0/RLdjibhl3x+AqTmMogO5jan1BzM76/Pssj
-	qcrU5Cyw==;
+	bh=rM+YHKGVmwJ/Pk2fHwI/gsJzacwSeKmWBO+yWoQfwt0=; b=B3EtsGYYclvUTQet46CRpCb9Bo
+	GD6chQ7jioUfWW/C72iLrfJHAj8B6o67KC7AkgI6E5fyjmIRSFRP6Z49mU8XiIuS7Z++VYkq9Z6UI
+	7gGDyD36LUPzI91fFwyCGCJNUbvAcA76Q1JikRp8Q3aDQEhFLXpUx3ybLMfRfIb5nwlkFPTtF90Zc
+	J21/X0ZcCRDjWveVwmMrXE08JDOja/XzKN8It4Ph7rH07i9qAFeT/7qMla3Y+mYk8OkKjtJYgxtV8
+	Mz6OYBr9RCtEKCW2RSaNmCvXXxv8juk+Hf50FIjePWoISc6rm+YY7ics2XGuo7mKpfrT+YVxWrAF0
+	RqaU1Vhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYFNv-0000000GLvg-0Gjc;
+	id 1vYFNv-0000000GLwJ-2bU0;
 	Wed, 24 Dec 2025 03:17:59 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYFNp-0000000GLs0-23ZT;
-	Wed, 24 Dec 2025 03:17:54 +0000
-X-UUID: 1ed72c34e07711f09f706fa2197c6ceb-20251223
+	id 1vYFNq-0000000GLrZ-0Zrc;
+	Wed, 24 Dec 2025 03:17:55 +0000
+X-UUID: 1f77e91ce07711f09f706fa2197c6ceb-20251223
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=NiZxc43IjHBA+/wzLD458ncrHI4s1rgsJ+lbgDIgSAE=;
-	b=Z5MS1C76NWCkF79p8xWHdTrknhmgBXhNSWYUxQ7SF/XywUE818p9UF+Ud8Yc7JzupX6Dpuoc9OwvdW4+zNh/IQ53sMGnGQRr0Zr4xes4zwURFCz4qiRu5CZPCAhP4XNshfwj42gaqMp/YjiKML1fmQsGjqoMbLoDNID1eMtYLow=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=rM+YHKGVmwJ/Pk2fHwI/gsJzacwSeKmWBO+yWoQfwt0=;
+	b=TTTMzjesyBvW7MrwJgss81m43HKcrP5+bg3iQ+li8v32vojoQ8dTWmg4ASlyljRRtcrfNMjwT/MI055IB+qUuwL0bgeoSMJHGYSYbjwqDdqYjI4gQ1uKRPa8JEMupeyTAYMtE2Kgaybwb41C3dVXLGWOXXSBwF3LAoLYc49UEoI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.9,REQID:ee7fe61a-2e2a-421f-9ac6-51f0f6024b0e,IP:0,UR
+X-CID-O-INFO: VERSION:1.3.9,REQID:e79f7a91-a1c5-4b32-9c17-c3185090502f,IP:0,UR
 	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
 	elease,TS:0
-X-CID-META: VersionHash:5047765,CLOUDID:bcc01b03-1fa9-44eb-b231-4afc61466396,B
+X-CID-META: VersionHash:5047765,CLOUDID:ac6dc7c6-8a73-4871-aac2-7b886d064f36,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
 	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,18 +42,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 1ed72c34e07711f09f706fa2197c6ceb-20251223
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: 1f77e91ce07711f09f706fa2197c6ceb-20251223
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <jianhua.lin@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 64247801; Tue, 23 Dec 2025 20:17:47 -0700
+	with ESMTP id 1905409086; Tue, 23 Dec 2025 20:17:48 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 24 Dec 2025 11:17:44 +0800
+ 15.2.1748.26; Wed, 24 Dec 2025 11:17:45 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 24 Dec 2025 11:17:43 +0800
+ 15.2.2562.29 via Frontend Transport; Wed, 24 Dec 2025 11:17:44 +0800
 From: Jianhua Lin <jianhua.lin@mediatek.com>
 To: <mchehab@kernel.org>, <robh@kernel.org>, <krzk+dt@kernel.org>,
 	<conor+dt@kernel.org>, <matthias.bgg@gmail.com>,
@@ -64,9 +64,9 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
 	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
 	<jh.hsu@mediatek.com>, Jianhua Lin <jianhua.lin@mediatek.com>
-Subject: [PATCH v2 1/4] arm64: dts: mt8188: update JPEG encoder/decoder compatible
-Date: Wed, 24 Dec 2025 11:17:18 +0800
-Message-ID: <20251224031721.9942-2-jianhua.lin@mediatek.com>
+Subject: [PATCH v2 2/4] dt-bindings: media: mediatek-jpeg-decoder: add MT8189 compatible string
+Date: Wed, 24 Dec 2025 11:17:19 +0800
+Message-ID: <20251224031721.9942-3-jianhua.lin@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20251224031721.9942-1-jianhua.lin@mediatek.com>
 References: <20251224031721.9942-1-jianhua.lin@mediatek.com>
@@ -74,9 +74,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251223_191753_536001_371DF1AA 
-X-CRM114-Status: UNSURE (   9.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251223_191754_180344_D38A058E 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,53 +90,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The JPEG encoder and decoder of MT8188 share the same architecture
-and features as those of MT8189, both use a 34-bit iova
-address-space (16GB) and a single clock configuration.
-
+Compared to the previous generation IC, the MT8189 uses 34-bit iova
+address-space (16GB) and requires a single clock configuration.
+Therefore, add "mediatek,mt8189-jpgdec" compatible to the binding document.
+Additionally, it corrects the inheritance for MT8188, aligning it
+with MT8189 due to their shared architecture and 34-bit iova address
+space (16GB) and singlesingle clock requirement.
 Previously, MT8188 was incorrectly defined alongside SoCs with 32-bit
-iova address-space (4GB), such as "mediatek,mt2701-jpgdec" and
-"mediatek,mtk-jpgenc". This mismatch results in an ABI break,
-as MT8188 cannot function correctly under the 32-bit iova
-address-space (4GB) configuration.
+iova address-space (4GB), such as "mediatek,mt2701-jpgdec". This mismatch
+results in an ABI break, as MT8188 cannot function correctly under
+the 32-bit iova address-space (4GB) configuration.
 
-Therefore, MT8188 needs to inherit from MT8189.
-Update "mediatek,mtk-jpgenc" to "mediatek,mt8189-jpgenc",
-update "mediatek,mt2701-jpgdec" to "mediatek,mt8189-jpgdec".
+Key changes include:
+- Introducing "mediatek,mt8189-jpgdec" as a new compatible string to
+  represent the correct architecture.
+- Updating MT8188 to inherit from MT8189, ensuring proper support for
+  34-bit iova address-space (16GB) and simplifying clock configuration.
+- Add property "mediatek,larb" for MT8189 requirements.
+- Improved formatting for better readability and consistency.
+
+These changes ensure that both MT8188 and MT8189 are correctly supported
+with the necessary 34-bit iova address-space (16GB), while maintaining
+compatibility with their shared architecture.
+
+Extensive internal review and testing have been conducted to validate
+these changes and ensure compliance with DT binding standards.
 
 Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8188.dtsi | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+ .../bindings/media/mediatek-jpeg-decoder.yaml | 50 ++++++++++++++++---
+ 1 file changed, 44 insertions(+), 6 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-index 90c388f1890f..ff9a774f5911 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-@@ -2846,7 +2846,7 @@ video_encoder: video-encoder@1a020000 {
- 		};
+diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+index a4aacd3eb189..814b53ef46e7 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+@@ -17,13 +17,19 @@ properties:
+     oneOf:
+       - items:
+           - enum:
+-              - mediatek,mt8173-jpgdec
+               - mediatek,mt2701-jpgdec
++              - mediatek,mt8173-jpgdec
++      - items:
++          - enum:
++              - mediatek,mt8189-jpgdec
+       - items:
+           - enum:
+               - mediatek,mt7623-jpgdec
+-              - mediatek,mt8188-jpgdec
+           - const: mediatek,mt2701-jpgdec
++      - items:
++          - enum:
++              - mediatek,mt8188-jpgdec
++          - const: mediatek,mt8189-jpgdec
  
- 		jpeg_encoder: jpeg-encoder@1a030000 {
--			compatible = "mediatek,mt8188-jpgenc", "mediatek,mtk-jpgenc";
-+			compatible = "mediatek,mt8188-jpgenc", "mediatek,mt8189-jpgenc";
- 			reg = <0 0x1a030000 0 0x10000>;
- 			clocks = <&vencsys CLK_VENC1_JPGENC>;
- 			clock-names = "jpgenc";
-@@ -2859,11 +2859,10 @@ jpeg_encoder: jpeg-encoder@1a030000 {
- 		};
+   reg:
+     maxItems: 1
+@@ -32,13 +38,16 @@ properties:
+     maxItems: 1
  
- 		jpeg_decoder: jpeg-decoder@1a040000 {
--			compatible = "mediatek,mt8188-jpgdec", "mediatek,mt2701-jpgdec";
-+			compatible = "mediatek,mt8188-jpgdec", "mediatek,mt8189-jpgdec";
- 			reg = <0 0x1a040000 0 0x10000>;
--			clocks = <&vencsys CLK_VENC1_LARB>,
--				 <&vencsys CLK_VENC1_JPGDEC>;
--			clock-names = "jpgdec-smi", "jpgdec";
-+			clocks = <&vencsys CLK_VENC1_JPGDEC>;
-+			clock-names = "jpgdec";
- 			interrupts = <GIC_SPI 355 IRQ_TYPE_LEVEL_HIGH 0>;
- 			iommus = <&vdo_iommu M4U_PORT_L19_JPGDEC_WDMA_0>,
- 				 <&vdo_iommu M4U_PORT_L19_JPGDEC_BSDMA_0>,
+   clocks:
++    minItems: 1
+     maxItems: 2
+-    minItems: 2
+ 
+   clock-names:
+-    items:
+-      - const: jpgdec-smi
+-      - const: jpgdec
++    minItems: 1
++    maxItems: 2
++
++  mediatek,larb:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description: a phandle to the smi_larb node.
+ 
+   power-domains:
+     maxItems: 1
+@@ -51,6 +60,35 @@ properties:
+       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+       Ports are according to the HW.
+ 
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt2701-jpgdec
++              - mediatek,mt8173-jpgdec
++
++    then:
++      properties:
++        clock-names:
++          items:
++            - const: jpgdec-smi
++            - const: jpgdec
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8189-jpgdec
++
++    then:
++      properties:
++        clock-names:
++          items:
++            - const: jpgdec
++
+ required:
+   - compatible
+   - reg
 -- 
 2.45.2
 
