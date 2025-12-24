@@ -4,88 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B633BE7545C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Dec 2025 15:25:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7A95E776F0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Dec 2025 19:34:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ub/18GJ25fDacSsVJieCeokU7It3HAFq//YyevGHRnM=; b=PA0ItOdwYEX7o8lI/rx/D4JaTv
-	uEkjm11CNx53ppG28fV4KDHf+6vbVMnzTr1AqErSST9bb65YdNdBDymlSVMG/izypys7+w+f4cpXt
-	nPvKkztWcdxKBgwF4wZ3C1EwZNiVqyHR6RZ6nvV3/FkWiHSMECL/Z4P6DY2ueH+MT1hhNvHEsFBpF
-	0pKwbEwvrT1DHTwlTfqhKgp52/ONGdVyZEhlZbUTQNjY8uMPuZ0fkjUEPoPjInpIzD333IxVnwFce
-	aIIOqwzBPCo+k7u+bN8O3q7T+GwTatTHUi4nos97WK9Muvbzzb9h4Z7cUhMjWQjNsYAv3V4F1D7Ri
-	pd1PG2Ow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x6e16gv7fkGlDB1AoJnkIFe8dWDnsL2zpf8dEOQ9gVg=; b=eM9fTIa/1/onpftbhe+j+tomIN
+	VPpdw1vT4321T6eAOIgOp58fa29iwpFbR9tRaiBkbPgK5LHCCr8TivpPsJUv//dISEHlCfvpZ2bKy
+	zhwrVb23pGrNq0/2quM+DxgllJcwzOgYegiHNmU722kWO1/Ea6m5xWs0xa2vOU3au9pWHDZW+8zZP
+	wWYevoYfMbZr7Jxj1GE8Agvnv5IGu9iNEipDhKEZ8qknwmmrDBILen2noxbG/ZR4qln2gHbfbMyZw
+	E1pMyj+QNh8sIzc3kNzjRf0Mur5JbeIKgLJmXHsyZP2GdVYd68R4Q8pS/AGG6ofUX27DgJ+RQHX8y
+	YGZ0QqsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYQjw-0000000H6Kk-07pV;
-	Wed, 24 Dec 2025 15:25:28 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1vYUcr-0000000HMRq-1f8c;
+	Wed, 24 Dec 2025 19:34:27 +0000
+Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vYQjq-0000000H6JL-0xEn
+	id 1vYUco-0000000HMR8-2dOt
 	for linux-mediatek@lists.infradead.org;
-	Wed, 24 Dec 2025 15:25:26 +0000
-Received: by mail-lj1-x231.google.com with SMTP id 38308e7fff4ca-37b9728a353so75142681fa.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 24 Dec 2025 07:25:21 -0800 (PST)
+	Wed, 24 Dec 2025 19:34:23 +0000
+Received: by mail-qv1-xf2a.google.com with SMTP id 6a1803df08f44-8888a444300so66307996d6.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 24 Dec 2025 11:34:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=suse.com; s=google; t=1766589920; x=1767194720; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Ub/18GJ25fDacSsVJieCeokU7It3HAFq//YyevGHRnM=;
-        b=Qr1VowU4g/WhHubFgNPKD52npY1Nlu4UVO2IUjKvhDrX92T72k+KapZfjSJKx2kgA7
-         1OP3alGmKPGw2ibNdN41dXs6nGDOjBSkRKIkWZCVl9bXnbpC8t/JcnYvMC9NXRINEzCT
-         hDAAgdPV1oJZeH9IjPVjrkqIwKNryStGDesjL184qIkhuC209s4YjhPnfIll9WcFHN2E
-         AUZxNVzfsBL+K3I4OhfFGYuVkGUy8wHARXm+e/F6esz0b8tLXn0xOSyawCHUXlfodaxE
-         Lo7VFJXsfxJgyUebgYZxSyxILkRGu+qKsYyw+dJSwO/5F2geBeep3IsmQkHnotRWza2n
-         G06w==
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1766604861; x=1767209661; darn=lists.infradead.org;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
+         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=x6e16gv7fkGlDB1AoJnkIFe8dWDnsL2zpf8dEOQ9gVg=;
+        b=rsCyiZk4ywSyhXX+9LGI7yCnax8q16On/VMg5tQUO7/1iQOQ5X4BOwkrYjlIgXwYhE
+         vkBDAEL5Keoz0k78mPUAHbpajty2+R6SF8uZXKvceEFZpappMtZqGUNJ4APqWsAn9Xb6
+         /k9MMycm2qkaJZQKgWvHvdYZ9fQp0ZcEZPmDzCanm/ALJVDR4LFJYoSXXPu6qTaPvnZ5
+         CB//kLJG+ZsVK4FnfvG2R7ITIrjYFDsYN0Ipjoq5D5sCR4KzO9xlzffN24/ekPVbDH0q
+         nrOlfHkTPJ5mmOebjEqH1VjlTRMJtQQGjAEswYjg9mJJAO7L0tdsMMtY5Nw19+z99w3M
+         KalQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1766589920; x=1767194720;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=Ub/18GJ25fDacSsVJieCeokU7It3HAFq//YyevGHRnM=;
-        b=dnpCQ1wliR9B2J7ygDWFG5wU8RHhDvRFzUDePfgO/txOcWJ0/AnjloJZFJYsZk3z+R
-         6bpKZqkzj+dLqrX04Br38ADK/NpV0IuehJeGiH61d2eLtiEPylhItP5TxfiGOCSh1ra+
-         zoSApY3xu8dlkTEOvr6Jda6fPnsrGJAuuw6/XQ02e7CpSUygbUPI0LDRJbyOFEBFDqyb
-         vKWgd0HAm7npRGGq4lZ2l0pb6IVGjribDUWYycw7+aJmW2FMGiOi8BfcLNq0XupnD5O+
-         SmkNPgBh9QfCEtnUUVL+Hii2eRzMNKbkrv1nDd/UCK8XgYr6BACvF+TvZWtGL4P9WFuS
-         u6/g==
-X-Forwarded-Encrypted: i=1; AJvYcCW5jAa6WYnpSkokxbQpxY2xe/iQw1Kz0RjbWollTF+fZ+OeTdXXlOjcDuAOcljsbxNwBT2tbn15UbImC50ofg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzN+aHnAKKBus1f2PpFpy5PvRPGYzfohKh0MAG54SfCHhccC1dx
-	6rzfOZQVPxGMQmkTxkTnIHU1Cbvd6uQaZvoCBhyhbi1MDXbgTHBOHn9qBlXglHKPwy0uErCL8xL
-	QjnEd7gWJdW5VG/F+uYRnJ9rbt6gGgzkYSJMZwBBHAg==
-X-Gm-Gg: AY/fxX4qhJqtMn3hQYbhOAbLOyPu3Ve/r1U9SDDX9DqYA+KD8IUZD4gVGzMbXQJMdGy
-	+nkmX2C4PqPKUhrgD2UYLbG4oxcQe9TUvP7bffC51mhXrPj7hijLnbp+nOHB5zk2CwxFKUA42u8
-	OwkvixVISGgq9u+ChHtk5X1Jtazh6lDPtBGjYEGkyO/yss8NDBDgMdR1NjBcaQmpdCliZrCvSY0
-	dsl0oMZTQ5xd2vOO5myFV72fCpJM4fm9VuPv9E6yFYu66XgoGJbimAxjq5Tfz3LzHDr3j/WTxna
-	d+D8Ql3NuTXx4OKuRJHfrC+v3G+2
-X-Google-Smtp-Source: AGHT+IE18Td0Nc/XUXi4Cl/TcjHngwFgeghpA9tqLowzRzDj1icyD8qdVib+ULxbElUN5zQM7gG2Jag6BgFnSaqID8k=
-X-Received: by 2002:a05:651c:b23:b0:37f:c5ca:b70a with SMTP id
- 38308e7fff4ca-381215671e0mr64786141fa.7.1766589920090; Wed, 24 Dec 2025
- 07:25:20 -0800 (PST)
+        d=1e100.net; s=20230601; t=1766604861; x=1767209661;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
+         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=x6e16gv7fkGlDB1AoJnkIFe8dWDnsL2zpf8dEOQ9gVg=;
+        b=JjRuyFw+gXXjvliEIXAIX8Md16B4Fqv1kIwB3UZb9SAOT58r8nudWjILUwUcM+oR9l
+         vxJ1wreOd9QxbGUnjaAi8q1qtB7Gqn7X1EZBkQ9DN7vr6L3nhqOKDKLAMqEa7D98ghTy
+         8yVLChKIaC5C99Dv9303IjaTIKyuJZb9xdoP7RTYMHopPDxzfYQ75XaqIK4JLiayboz/
+         jkpEhchMPBULpnh74tNDZdPdamBQVgaSS8pdZrufYbDexiNSlnte1j7NIOuidjHlwsQp
+         nYxWE6NTy/SF/p8Sbn52BQH6jZ5j6yEHXjKMaLAeAQoQUA+PCMEGISDQOhvyh7OLNdX2
+         OQxQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWWaK3TKs+tbZPlvlmn7Z/bZSsnt49aXp6FR08liQvIr6h78JR7y0SMcAHjzMEj8BANcQRmJuRK2mu2cgRGag==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywpxd3sXy2x/e6jpPGOWniu7IO2yZFCqUKLj32eRVy9sUM7g/rT
+	SSiOTle1umicCGZuhTgCGygKdG9tZ7xiaNLXuQ66kjqYGF2nqNka8Yuj0vQ4q8mLcHE=
+X-Gm-Gg: AY/fxX74Vw1BE9W1udlpPUKHuHSRO9hmdYj+UAwsLexyarfsyx21vUamA1l4i8jZhU7
+	ndBiP8rmhkATYrSNhwvmDofRceJ4OOTOCtQAWcd7FP68M/2kRqfdL5srkJYP+2PmpI7BTL4LeeV
+	5V3f5z9fUYwDavk1hU3NibJr0S9OGoAW7lkwStkwSDgQe69lNHSHsR7+Uv9RGXlfNLXXgtaahpg
+	1fR6ncudqGTTSmi05+OT2V8vkm9yvRvZiffB2cTei7ZY5SQbRjHPtCyp7Rj42fwmZ6Bw2wLdpec
+	IaxyB3Kx4irbDvZ/43H8fj5W2gVpqs3IEpXj15b5E07t7Jc/JGTj4CGS6FnXf1P93+5mRtTPb+k
+	Piv2buSM1/MxlE1ZxsyLKhElOjg2bjcPSBSSrChTJXu5QchRmvNA58g/CEMk/ccFEGK0tAJVG84
+	pVWFYHdTM7NgyRbUHBExhtl5JyBpg=
+X-Google-Smtp-Source: AGHT+IE5c0d9pz9gNJn0vh5jGGkS4wNXyintuchpyEm5t5iJ8jOJyL4PkY5GG2wEQBxudRt+jOfljw==
+X-Received: by 2002:a05:622a:6a8e:b0:4f4:c10e:fa3e with SMTP id d75a77b69052e-4f4c10efd3fmr133639501cf.3.1766604861041;
+        Wed, 24 Dec 2025 11:34:21 -0800 (PST)
+Received: from ?IPv6:2606:6d00:17:7b4b::c41? ([2606:6d00:17:7b4b::c41])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-88d997aedafsm132331276d6.31.2025.12.24.11.34.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 24 Dec 2025 11:34:20 -0800 (PST)
+Message-ID: <2974614b2440ed828f49ff7819ca7935d7bb8109.camel@ndufresne.ca>
+Subject: Re: [PATCH v2 4/4] media: mediatek: jpeg: add compatible for MT8189
+ SoC
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Jianhua Lin <jianhua.lin@mediatek.com>, mchehab@kernel.org,
+ robh@kernel.org, 	krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, 	angelogioacchino.delregno@collabora.com
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+ sirius.wang@mediatek.com, 	vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
+Date: Wed, 24 Dec 2025 14:34:19 -0500
+In-Reply-To: <20251224031721.9942-5-jianhua.lin@mediatek.com>
+References: <20251224031721.9942-1-jianhua.lin@mediatek.com>
+	 <20251224031721.9942-5-jianhua.lin@mediatek.com>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-qqvl0ztmS4O0H5gavPMm"
+User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
-References: <20251114104325.116471-1-marco.crivellari@suse.com>
-In-Reply-To: <20251114104325.116471-1-marco.crivellari@suse.com>
-From: Marco Crivellari <marco.crivellari@suse.com>
-Date: Wed, 24 Dec 2025 16:25:08 +0100
-X-Gm-Features: AQt7F2pdx_yqBW3dZWH9yjaq2tVaCtyoU5kwu2elkW6Y4N6ZypwXb883yj0Z2S4
-Message-ID: <CAAofZF51pkOzrg_nO0Mhx6g9b3JPtO3n+0YE=WtSgj_F6wnY4w@mail.gmail.com>
-Subject: Re: [PATCH v2] wifi: mt76: replace use of system_wq with system_percpu_wq
-To: linux-kernel@vger.kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Tejun Heo <tj@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>, 
-	Frederic Weisbecker <frederic@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, 
-	Michal Hocko <mhocko@suse.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251224_072522_843978_5FE2F36D 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20251224_113422_702980_C318361C 
+X-CRM114-Status: GOOD (  14.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,54 +119,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Nov 14, 2025 at 11:43=E2=80=AFAM Marco Crivellari
-<marco.crivellari@suse.com> wrote:
->[...]
->  drivers/net/wireless/mediatek/mt76/mt7921/init.c | 2 +-
->  drivers/net/wireless/mediatek/mt76/mt7925/init.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/n=
-et/wireless/mediatek/mt76/mt7921/init.c
-> index b9098a7331b1..95764b82da39 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> @@ -343,7 +343,7 @@ int mt7921_register_device(struct mt792x_dev *dev)
->         dev->mphy.hw->wiphy->available_antennas_rx =3D dev->mphy.chainmas=
-k;
->         dev->mphy.hw->wiphy->available_antennas_tx =3D dev->mphy.chainmas=
-k;
->
-> -       queue_work(system_wq, &dev->init_work);
-> +       queue_work(system_percpu_wq, &dev->init_work);
->
->         return 0;
->  }
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/n=
-et/wireless/mediatek/mt76/mt7925/init.c
-> index d7d5afe365ed..e33ab4849e8a 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-> @@ -420,7 +420,7 @@ int mt7925_register_device(struct mt792x_dev *dev)
->         dev->mphy.hw->wiphy->available_antennas_rx =3D dev->mphy.chainmas=
-k;
->         dev->mphy.hw->wiphy->available_antennas_tx =3D dev->mphy.chainmas=
-k;
->
-> -       queue_work(system_wq, &dev->init_work);
-> +       queue_work(system_percpu_wq, &dev->init_work);
->
->         return 0;
->  }
 
+--=-qqvl0ztmS4O0H5gavPMm
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Gentle ping.
+Le mercredi 24 d=C3=A9cembre 2025 =C3=A0 11:17 +0800, Jianhua Lin a =C3=A9c=
+rit=C2=A0:
+> Compared to the previous generation IC, the MT8189 uses 34-bit iova
+> address-space (16GB) and requires a single clock configuration.
+> Therefore, add new compatible to support the JPEG encoder and decoder
+> of MT8189 SoC.
+>=20
+> Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
 
-Thanks!
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
---=20
+I'll have to wait for some ack on the bindings, which looks otherwise fine =
+to
+me. But due to holiday, that might be delayed a little bit.
 
-Marco Crivellari
+cheers,
+Nicolas
 
-L3 Support Engineer
+> ---
+> =C2=A0.../platform/mediatek/jpeg/mtk_jpeg_core.c=C2=A0=C2=A0=C2=A0 | 44 +=
+++++++++++++++++++
+> =C2=A01 file changed, 44 insertions(+)
+>=20
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index d08fe365cbb2..9ea8d8f56e9b 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1866,6 +1866,10 @@ static struct clk_bulk_data mt8173_jpeg_dec_clocks=
+[] =3D
+> {
+> =C2=A0	{ .id =3D "jpgdec" },
+> =C2=A0};
+> =C2=A0
+> +static struct clk_bulk_data mtk_jpeg_dec_clocks[] =3D {
+> +	{ .id =3D "jpgdec" },
+> +};
+> +
+> =C2=A0static const struct mtk_jpeg_variant mt8173_jpeg_drvdata =3D {
+> =C2=A0	.clks =3D mt8173_jpeg_dec_clocks,
+> =C2=A0	.num_clks =3D ARRAY_SIZE(mt8173_jpeg_dec_clocks),
+> @@ -1897,6 +1901,38 @@ static const struct mtk_jpeg_variant mtk_jpeg_drvd=
+ata =3D
+> {
+> =C2=A0	.multi_core =3D false,
+> =C2=A0};
+> =C2=A0
+> +static const struct mtk_jpeg_variant mtk8189_jpegenc_drvdata =3D {
+> +	.clks =3D mtk_jpeg_clocks,
+> +	.num_clks =3D ARRAY_SIZE(mtk_jpeg_clocks),
+> +	.formats =3D mtk_jpeg_enc_formats,
+> +	.num_formats =3D MTK_JPEG_ENC_NUM_FORMATS,
+> +	.qops =3D &mtk_jpeg_enc_qops,
+> +	.irq_handler =3D mtk_jpeg_enc_irq,
+> +	.hw_reset =3D mtk_jpeg_enc_reset,
+> +	.m2m_ops =3D &mtk_jpeg_enc_m2m_ops,
+> +	.dev_name =3D "mtk-jpeg-enc",
+> +	.ioctl_ops =3D &mtk_jpeg_enc_ioctl_ops,
+> +	.out_q_default_fourcc =3D V4L2_PIX_FMT_YUYV,
+> +	.cap_q_default_fourcc =3D V4L2_PIX_FMT_JPEG,
+> +	.support_34bit =3D true,
+> +};
+> +
+> +static const struct mtk_jpeg_variant mtk8189_jpegdec_drvdata =3D {
+> +	.clks =3D mtk_jpeg_dec_clocks,
+> +	.num_clks =3D ARRAY_SIZE(mtk_jpeg_dec_clocks),
+> +	.formats =3D mtk_jpeg_dec_formats,
+> +	.num_formats =3D MTK_JPEG_DEC_NUM_FORMATS,
+> +	.qops =3D &mtk_jpeg_dec_qops,
+> +	.irq_handler =3D mtk_jpeg_dec_irq,
+> +	.hw_reset =3D mtk_jpeg_dec_reset,
+> +	.m2m_ops =3D &mtk_jpeg_dec_m2m_ops,
+> +	.dev_name =3D "mtk-jpeg-dec",
+> +	.ioctl_ops =3D &mtk_jpeg_dec_ioctl_ops,
+> +	.out_q_default_fourcc =3D V4L2_PIX_FMT_JPEG,
+> +	.cap_q_default_fourcc =3D V4L2_PIX_FMT_YUV420M,
+> +	.support_34bit =3D true,
+> +};
+> +
+> =C2=A0static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata =3D {
+> =C2=A0	.formats =3D mtk_jpeg_enc_formats,
+> =C2=A0	.num_formats =3D MTK_JPEG_ENC_NUM_FORMATS,
+> @@ -1936,6 +1972,14 @@ static const struct of_device_id mtk_jpeg_match[] =
+=3D {
+> =C2=A0		.compatible =3D "mediatek,mtk-jpgenc",
+> =C2=A0		.data =3D &mtk_jpeg_drvdata,
+> =C2=A0	},
+> +	{
+> +		.compatible =3D "mediatek,mt8189-jpgenc",
+> +		.data =3D &mtk8189_jpegenc_drvdata,
+> +	},
+> +	{
+> +		.compatible =3D "mediatek,mt8189-jpgdec",
+> +		.data =3D &mtk8189_jpegdec_drvdata,
+> +	},
+> =C2=A0	{
+> =C2=A0		.compatible =3D "mediatek,mt8195-jpgenc",
+> =C2=A0		.data =3D &mtk8195_jpegenc_drvdata,
+
+--=-qqvl0ztmS4O0H5gavPMm
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaUxAOwAKCRDZQZRRKWBy
+9JqBAP9i7M2YbOEYsWIhtcAH9zQcvXYutrHtuKt+PmEgNW4g5AD9ECawAwyRxWOa
+fdGbfG5KGblydDkiwIRY9o3Ya2p6XQQ=
+=ZDB6
+-----END PGP SIGNATURE-----
+
+--=-qqvl0ztmS4O0H5gavPMm--
 
