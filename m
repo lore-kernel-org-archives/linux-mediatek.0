@@ -4,89 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6320DE8FDD0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Dec 2025 11:22:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81355E9270E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Dec 2025 12:25:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=n2DCKn6B7Bg+9KQ/LRQRtOwwU8XjtNRI/VbbXHcbXNg=; b=EQ03bFxRjneG3n0XpQu9PjLFFj
-	ZNnJ42DrgCULhBsqBw/V7HlQrHuOB2+vN7JQYjnGDByxoFd95F4RlVgi3N9ePbQnbmHOx0+PKpGsH
-	AGni1jMebsw04I16wfWzKKdMv6zqxkY91OyDn8LD7Yyd/AbU2T2AlVgLs4LMcGd1bWvUDdcf3vkDl
-	fGXq090Tg4zn9WUxn4V4Q/xfrXUU+9k8MwHEHXr7tmt5bx9jVTy5s5Y+UH/IR2DoTZ1Wnpe4eEHR7
-	TK0OU7rAJjdF/hA/bs24YBd4n7yZJ+fDSPbtmIpQGeouWLicd+iEFZJr6tuhahdvd9rjwetPyBryL
-	snX/qjOw==;
+	bh=kuPI2aNgLX/9o6inXHM98ejerk3xQ9ReMe7Mbvn14gY=; b=MF+Z2qRzaTN1ihLYUKWutijt4m
+	AIvGTMBHtJjIULVZQaW9c8M7HR2gDleOf/3+UpUeJ2P8Yl9seA0iKBQgUlinR1hE0C9WKIBQS4l4U
+	xEbL+hSknOicyVx3og5PBMFYmCg8/lieNH9jSJ1StQ9ezeZl7VjEW1Fl3fcK2xZyfZE5hdgQ/4mwU
+	+djNPFkE+UQeTk8OtZGYP7iR7IBmNPd8lBULHtwpijU0tMLdNrx+B+iQhDHIkPwMU6aMYOMJOIitd
+	yovJf0N5KHcy7NHK6Ge4s/Q/YjNarNTLkb7fQFTiKOBTlInuf9okSm50nPDS/enM1lp7SiTGuEHJF
+	gGbqgubw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZSNR-00000001t9V-0Y3e;
-	Sat, 27 Dec 2025 11:22:29 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1vZTMm-00000001y5K-20Uq;
+	Sat, 27 Dec 2025 12:25:52 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZSNN-00000001t8d-47aA
+	id 1vZTMk-00000001y4n-0L7F
 	for linux-mediatek@lists.infradead.org;
-	Sat, 27 Dec 2025 11:22:27 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-47bdbc90dcaso49324705e9.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 27 Dec 2025 03:22:25 -0800 (PST)
+	Sat, 27 Dec 2025 12:25:51 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-47d3ffb0f44so13360195e9.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 27 Dec 2025 04:25:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1766834544; x=1767439344; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1766838348; x=1767443148; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=n2DCKn6B7Bg+9KQ/LRQRtOwwU8XjtNRI/VbbXHcbXNg=;
-        b=HN4HVvSxNXZqvOvGS06d/k4kbDLW0z0Kf3ZFQjnC8kY3NNOYPXHZkQf0pjdmGh3ZEK
-         +iK7VV0PCIirUX2Up09rSu3xvdzuiVV61zG26Cp0wkNFOIlDB3/MLSM/bUQIQOTwt7xz
-         oaygEYiZRJ+mI8OqFfDe0MBa2H8+NrZMszkgvGMB+yMvkZso7ToivV+DJ2iNHo/pEYTf
-         +A9mcW2LZGUiUHkHnBYxlhrKXo5mgRBr3/EikypKM4Yb3d0Y42GQAzaM/ujiAI963fhP
-         f8KjWjmvaY+3WAdzda3t9wJlONL+T/8IJZi8/5PJaOK3U8tXXlsG7QNrjNlXdQVEVc9y
-         Axvw==
+        bh=kuPI2aNgLX/9o6inXHM98ejerk3xQ9ReMe7Mbvn14gY=;
+        b=SnuYJOJKChjpZGgDgW6KjaBQJw7f5TclDlp1AnH1QV7xhv2cyLeUWNREa0JCJw2JVp
+         l6QkRxIatADBmpFyyh9EZRGJ0UXQ5/HfcJ1i+CmtjvCY8ykSJ/tBRVTsm3mJNZl7iILW
+         zHe8S3/m6jVWr7lAkMMaf2ugqpd0Xc6UxV1mV5xCSfzb/XG6mXXxDGfCABRb9yCyHX/6
+         XhPCKJ3OnsLACF3NPj1C3ASOCJ7NuzsqPUUJh2BH+ASxLov2YvXD3kdjqCFWHgTcTzC3
+         szGJxZcxl69FAziXLhIJtomTbeabBdEf0MG8Ivf+b2Wma0igkD/8QEEGwR2H0QAVP7f0
+         aE4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1766834544; x=1767439344;
+        d=1e100.net; s=20230601; t=1766838348; x=1767443148;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=n2DCKn6B7Bg+9KQ/LRQRtOwwU8XjtNRI/VbbXHcbXNg=;
-        b=bGE/bvqFpdrtaC9qJvwpbHAp2VlIb+Q5Pp5jc36gHs6W8DQCCg69r9OUu2kfwJHPv4
-         IYzNLmFKrhYog+MxhTscCBwHVpiXCvreLnIrPCAQeaXKrwLJJnSCwr9NHJZitGTmSg/d
-         irXOTOmdZyZak0bQFjf96Ek4rkf864w5wn9gFJJI9lyhZYyRvFBZmOhwIYRou6dbHZGW
-         0gd0UvHXE41/4pRuNGfij6H7FNMYIKtlWq0gm1f4eELYU0iwj6LyeytCvArlznDAVd5/
-         3S+sXzFawCsD9JPze62LHifpfnPVzNXowPpApxq6HUmwhYHa0pm7c5IqVDAK0+VCEOPe
-         kuMw==
-X-Forwarded-Encrypted: i=1; AJvYcCUUA2104SIYuVkVr1ANDDmxKcoiW+c+u0nkXAHM55D1ESnRHc/sYHbdwiey4yuY1U20FClH8RC8ZdLhK6u5aQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw8v9eZdzAuyTf+L6NYfBa6JWIXPFO9B71rwcB1AuUeV+SegxIB
-	furT4CaTxnCrHgb3oiEUoihh6vfHNud8bkYNSVlGx42WgCKcBj/xrNnD
-X-Gm-Gg: AY/fxX772nbWk5j9wyWoUpl06NOHkB63t6RwrbsHbyqEBIFrJx0ffs21fgY9TLTr3LB
-	KffRdWtkauMc7tG2j+E9a/Xgi0jAMB18PiEJLOCdo8ue2YUGHyXVcPoaFurzIiJMiPKBFR9U9KI
-	15NC0AgwnsKRx4+fge3Hp0DdhQbS8n4wgSLFeVfkxwh6Ir60HvcyM71qiOcKvgcf0VcQfhzE6Ka
-	D8cOkJ7UYuSlSwBkNlzkqKrcSvc3cGNpcrhXCzyjHkA33ZcYozw7yrnKSUqlYGVC1AspBHz6cg9
-	g+NGpdhnP8+VAHfHjPB/ePifOGcSSmuUIHClRauX0ZW+3XxzpVkzvyRGDHBnHPC103pY2K8xftc
-	VIn/qgIegO10JgpcXwXRCHCPhHU7UpY6tJfkFiKJK9ZLGEgVQrzJ29RKfALNg2lFelk7Z07K+4S
-	aLhOTXbARj4w0V+Es=
-X-Google-Smtp-Source: AGHT+IGoRHV/ozBfOoLVpES4DLCNbHxVqZI4mSyjVxLpUFm4/9hj62ouP1sKgmo+lauX8G4qDDvyKA==
-X-Received: by 2002:a05:6000:609:b0:431:342:ad41 with SMTP id ffacd0b85a97d-4324e6fa1a7mr32037027f8f.61.1766834543655;
-        Sat, 27 Dec 2025 03:22:23 -0800 (PST)
-Received: from toolbox.. ([87.200.95.144])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4324e9ba877sm49898600f8f.0.2025.12.27.03.22.21
+        bh=kuPI2aNgLX/9o6inXHM98ejerk3xQ9ReMe7Mbvn14gY=;
+        b=bNQ20A5zo6+7WRTX7On4YFL89O8f4LTFPHCZT29Q7S3LpXTMDFTZIlApdRO3tJOa+X
+         mjYB11Uz0d64rxzdcjikgi4xO/Ey6XcLP5KGg6/Ta4N75Z3c7c6CE/0mU1J42gXIYU0C
+         AqbqwBwev/p3aYACmK6WrL2VNKFghJhgXpPSfBegMmRDmDRx63tfIsKZfWDvd8XkCtaU
+         rE9qMV1CLlsyRmlzbwkI+o9VyGJ9jC6twwPPSJ9kdotiEh+GMZ6geAd9KHJnw/aePkLO
+         cBJSp7AHDlNkVowKSq7WGTRIHNYWumi7e+agVpiqzR0MTkoZSr8PFDH8JkxZfC0tIR3G
+         TEUQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUgnyRpahlJlkpKF0gZsvd6fVeg1Ur8nOXeNpr6qzMOwrebqfqM+fdHXqnyzaGdh4tnbNt/erxdp4Kziu4ifA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy5L/va3p2W01+jD+Kjbny8jIa90J6GY+bJOaLSK9YSvR4yurNr
+	DakWrA+wRWrR8M50l6ixKcGg7TiaHDmhjbiyLyATPOPmB5PJm05hylUk
+X-Gm-Gg: AY/fxX6+WMFP51jhLPL7F2CqSjl2hzKjLHJzHXEYk7i3i7gTy1zZik+vaTf39YpDQLg
+	27kNyOvsDHT7uciXllAymzsMY6AQbWodwp9nMk2vcJZ3RDi1FgeyH6n0HQYxPIIsLL9DvimKjrA
+	6jw/bYWYzEdjqMfsJiCoY/lunZAwP0i4SVKrUEejw5MkQzUXbPhumn9CvMLKko1RzdaDGUIQzaX
+	kIaCM3i6tw1srYMRLmNko3TNESRB7/zCqZs9/mb9croktvnuiqSsPeZPEDFvRRMGSFl048j5bb+
+	XLoUiKby6Czk5xvnkOw+/AtW9E9IOEAS777zTlsalDOmb2NsGXCkclindwg9HzryRlZYr0d1d1F
+	WSM8Mml6GeakeJ3yovpZo0tecWH5o0zfWktDNu9dTpd8Zib9FW4bDYhCRaeHvYQZFGlfeOQ4tNI
+	GAlZFuxYZntGePf2ore7epkzKzsu6POc+gsjr4po0T7Kt5cl4T6YLwNjY0DnE6eLkdGMKks6Xkd
+	vna8WpX8N5eEw==
+X-Google-Smtp-Source: AGHT+IEIguQB0uXGfKo4fm4DJC+yzPPu45X2Bza3OL/IGVtnEDjPWFUZwpWwFO9ZDFyXjEUZ4aLtXw==
+X-Received: by 2002:a05:600c:1d0e:b0:47d:18b0:bb9a with SMTP id 5b1f17b1804b1-47d195a87b6mr305079455e9.33.1766838347448;
+        Sat, 27 Dec 2025 04:25:47 -0800 (PST)
+Received: from ivan-laptop.. (cpc92320-cmbg19-2-0-cust3144.5-4.cable.virginm.net. [82.13.76.73])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47d19346d33sm451520315e9.3.2025.12.27.04.25.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 27 Dec 2025 03:22:23 -0800 (PST)
-From: Christian Hewitt <christianshewitt@gmail.com>
-To: Jakub Kicinski <kuba@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Sat, 27 Dec 2025 04:25:47 -0800 (PST)
+From: Ivan Orlov <ivan.orlov0322@gmail.com>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com
+Cc: Ivan Orlov <ivan.orlov0322@gmail.com>,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
 	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Cc: Daniel Golle <daniel@makrotopia.org>
-Subject: [PATCH v2] wifi: mt7601u: check multiple firmware paths
-Date: Sat, 27 Dec 2025 11:22:19 +0000
-Message-Id: <20251227112219.2768439-1-christianshewitt@gmail.com>
-X-Mailer: git-send-email 2.34.1
+Subject: [PATCH] wifi: mt76: Fix strscpy usage in mt76_connac2_load_patch
+Date: Sat, 27 Dec 2025 12:25:24 +0000
+Message-ID: <20251227122525.5474-1-ivan.orlov0322@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251227_032226_063252_F98BEC73 
-X-CRM114-Status: GOOD (  16.27  )
+X-CRM114-CacheID: sfid-20251227_042550_157488_B03F45F6 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,92 +103,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The linux-firmware repo moved mt7601u.bin from its root folder to
-the mediatek sub-folder some time ago, but the driver still tries
-to load firmware from the old location. Users might have firmware
-in either location so update the driver to check both.
+Since mt76_connac2_patch_hdr->build_date size is 16, copying at most 17
+bytes into build_date from it causes a panic when CONFIG_FORTIFY_SOURCE
+is enabled. So, make it 16 bytes instead to match the corresponding
+field of mt76_connac2_patch_hdr.
 
-Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
+Also, since strscpy always adds a null terminator, remove the line which
+adds it explicitly at the end of the buffer.
+
+Signed-off-by: Ivan Orlov <ivan.orlov0322@gmail.com>
 ---
-The firmware was moved in [0]. Changes were requested to a previous
-patch [1] to accomodate backwards compatibility but there was no
-follow-up from the original author. So here's my novice attempt at
-the requested improvement.
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Current kernel with firmware in /usr/lib/firmware/mediatek/mt7601u.bin:
-
-Nov 07 12:43:13.398922 LibreELEC kernel: mt7601u 1-1.3:1.0: ASIC revision: 76010001 MAC revision: 76010500
-Nov 07 12:43:13.402276 LibreELEC kernel: mt7601u 1-1.3:1.0: Direct firmware load for mt7601u.bin failed with error -2
-Nov 07 12:43:13.405524 LibreELEC kernel: mt7601u 1-1.3:1.0: probe with driver mt7601u failed with error -2
-
-And with the patch:
-
-Nov 07 12:43:13.274633 LibreELEC kernel: mt7601u 1-1.3:1.0: ASIC revision: 76010001 MAC revision: 76010500
-Nov 07 12:43:13.311200 LibreELEC kernel: mt7601u 1-1.3:1.0: Firmware Version: 0.1.00 Build: 7640 Build time: 201302052146____
-Nov 07 12:43:13.704693 LibreELEC kernel: mt7601u 1-1.3:1.0: EEPROM ver:0c fae:00
-
-[0] https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/commit/?id=8451c2b1d529dc1a49328ac9235d3cf5bb8a8fcb
-[1] https://patchwork.kernel.org/project/linux-wireless/patch/fefcbf36f13873ae0d97438a0156b87e7e1ae64e.1684191377.git.daniel@makrotopia.org/
-
-Changes since v1:
-- Reword patch description and comment to make the problem clearer
-- Fix checkpatch warning for static const array declaration
-
- drivers/net/wireless/mediatek/mt7601u/mcu.c | 15 ++++++++++++++-
- drivers/net/wireless/mediatek/mt7601u/usb.h |  1 +
- 2 files changed, 15 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt7601u/mcu.c b/drivers/net/wireless/mediatek/mt7601u/mcu.c
-index 1b5cc271a9e1..bad6ca821400 100644
---- a/drivers/net/wireless/mediatek/mt7601u/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/mcu.c
-@@ -403,12 +403,18 @@ mt7601u_upload_firmware(struct mt7601u_dev *dev, const struct mt76_fw *fw)
- 	return ret;
- }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index ea99167765b0..01362b097a40 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -3101,7 +3101,7 @@ int mt76_connac2_load_patch(struct mt76_dev *dev, const char *fw_name)
+ 	int i, ret, sem, max_len = mt76_is_sdio(dev) ? 2048 : 4096;
+ 	const struct mt76_connac2_patch_hdr *hdr;
+ 	const struct firmware *fw = NULL;
+-	char build_date[17];
++	char build_date[16];
  
-+static const char * const mt7601u_fw_paths[] = {
-+	"mediatek/" MT7601U_FIRMWARE,
-+	MT7601U_FIRMWARE,
-+};
-+
- static int mt7601u_load_firmware(struct mt7601u_dev *dev)
- {
- 	const struct firmware *fw;
- 	const struct mt76_fw_header *hdr;
- 	int len, ret;
- 	u32 val;
-+	int i;
+ 	sem = mt76_connac_mcu_patch_sem_ctrl(dev, true);
+ 	switch (sem) {
+@@ -3126,7 +3126,6 @@ int mt76_connac2_load_patch(struct mt76_dev *dev, const char *fw_name)
  
- 	mt7601u_wr(dev, MT_USB_DMA_CFG, (MT_USB_DMA_CFG_RX_BULK_EN |
- 					 MT_USB_DMA_CFG_TX_BULK_EN));
-@@ -416,7 +422,14 @@ static int mt7601u_load_firmware(struct mt7601u_dev *dev)
- 	if (firmware_running(dev))
- 		return firmware_request_cache(dev->dev, MT7601U_FIRMWARE);
- 
--	ret = request_firmware(&fw, MT7601U_FIRMWARE, dev->dev);
-+	/* Try loading firmware from multiple locations */
-+	fw = NULL;
-+	for (i = 0; i < MT7601U_FIRMWARE_PATHS; i++) {
-+		ret = request_firmware(&fw, mt7601u_fw_paths[i], dev->dev);
-+		if (ret == 0)
-+			break;
-+	}
-+
- 	if (ret)
- 		return ret;
- 
-diff --git a/drivers/net/wireless/mediatek/mt7601u/usb.h b/drivers/net/wireless/mediatek/mt7601u/usb.h
-index 9fdf35970339..723025f84483 100644
---- a/drivers/net/wireless/mediatek/mt7601u/usb.h
-+++ b/drivers/net/wireless/mediatek/mt7601u/usb.h
-@@ -9,6 +9,7 @@
- #include "mt7601u.h"
- 
- #define MT7601U_FIRMWARE	"mt7601u.bin"
-+#define MT7601U_FIRMWARE_PATHS	ARRAY_SIZE(mt7601u_fw_paths)
- 
- #define MT_VEND_REQ_MAX_RETRY	10
- #define MT_VEND_REQ_TOUT_MS	300
+ 	hdr = (const void *)fw->data;
+ 	strscpy(build_date, hdr->build_date, sizeof(build_date));
+-	build_date[16] = '\0';
+ 	strim(build_date);
+ 	dev_info(dev->dev, "HW/SW Version: 0x%x, Build Time: %.16s\n",
+ 		 be32_to_cpu(hdr->hw_sw_ver), build_date);
 -- 
-2.34.1
+2.43.0
+
 
