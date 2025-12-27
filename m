@@ -4,65 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A3E7E8FDD8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Dec 2025 12:34:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89CE6E92715
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Dec 2025 16:13:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LbZBJroFueUQcPOgoptvd1B4K3BU17Xda3J0of+vnLQ=; b=AEcXioQmUt5BUTJMVbp0Ffb3AD
-	fAD1HfgbqYsx1H5qz3O4eD2kgcYqpszaBIRFOKj96um0a9jfYrHx2HSFhWwZYfSGaas6kanOYPMNS
-	rmIgg1hLu7W2QQ5Q3pMXe/WkTvNWHij64Xw67Q2RSMBnHoNqQvNh+FtVPABpR26vmyWeUdFaccB7s
-	MGm3jBkAlDPp+MV/fUPRhzdoaqWdEavviLquM2wAi+ZW8C5iLTOCn4iMGihDcwtGbqkw0pGG5+P33
-	GiKQu1ly1qjs9YtU1tufH8caXbGp4WSvaikOkOg+i65Bi7YC6fSGx6ysdYuxyXIMaBmGROy1Ey5Dq
-	4LnetsWQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6xQepFKbLSgWwslvs/nMpOgMMovKMH4umS/FdNhEKCI=; b=F6WyFtdoFkHnKe69+TmZAgyox+
+	p2aWURfT2rdC5WbBaYcnIwUs3ICnL2Zx2XAHZSuWj4/Mkys6PZpDq4LTDhC3z2X9hk/pcmbElQv+3
+	U/H6RWKgWfXuzmFMHqPjn/KZ/P2YkLRvYqKA5XuewPD8jFuYJuA1yfRQSUkeiy7MF89pNVvRaSS9J
+	xPTCRspxyASenW5y1Uvgnr9LxP1Qi7NAAyhIq8E0QkH4gynxEf/EE8i1XpxeJmps7wPFsKqINGd/P
+	2SwNmLR60JXk8/b1a0I2zZB+Bk5WQunILBPWDEBGHzndrl0UfxtvWwbpN3WBqeagl9Za3mwCATRcZ
+	/EYJqiGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZTVE-00000001yXM-2JOM;
-	Sat, 27 Dec 2025 12:34:36 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vZWuu-000000024T8-2Lyb;
+	Sat, 27 Dec 2025 16:13:20 +0000
+Received: from dilbert.mork.no ([2a01:4f9:c010:a439::d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZTVB-00000001yW3-1QuK;
-	Sat, 27 Dec 2025 12:34:34 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 04E31439EE;
-	Sat, 27 Dec 2025 12:34:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5ACC0C4CEF1;
-	Sat, 27 Dec 2025 12:34:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766838872;
-	bh=6HCYp3y/LUjuszjlwAsie3ZUZ6lnUVx7wWALthdwp+E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=O46vvCR92jmq8E3o4O8MlM/MtC7tWTTqila3KaTLQCJyGNRiTX+BpXbvRjGA4kHrv
-	 mXCeaLHX0uIdESJs1qBz7uJLe+IP6qPK62v1P+8CKzaG/fVjrJsgA1CFg8CGIvEYvx
-	 AYO5monP/di7bk+oOE1MOzQLdWdzfFhbpeqNkU6qu+Npv7+zp1DCvHfcpEJ+UAZPM9
-	 7JumHN3gpyYIm23Wb275g449wOeXCfBt0gu+3SePp8vEgVs3tRCgNKSrh6lV8Auzw5
-	 o/ZhFBgy08ZbCs6YMBQMVwoRJoI7T4a25rMGaIbzwvJaGrxVemwIJfzk3NYqXAM4a/
-	 MV4S6GwCRhLKg==
-Date: Sat, 27 Dec 2025 13:34:30 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Jianhua Lin <jianhua.lin@mediatek.com>
-Cc: mchehab@kernel.org, robh@kernel.org, krzk+dt@kernel.org, 
-	conor+dt@kernel.org, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, sirius.wang@mediatek.com, vince-wl.liu@mediatek.com, 
-	jh.hsu@mediatek.com
-Subject: Re: [PATCH v2 1/4] arm64: dts: mt8188: update JPEG encoder/decoder
- compatible
-Message-ID: <20251227-overjoyed-illustrious-snail-9323e9@quoll>
-References: <20251224031721.9942-1-jianhua.lin@mediatek.com>
- <20251224031721.9942-2-jianhua.lin@mediatek.com>
+	id 1vZWup-000000024SP-2Cr0;
+	Sat, 27 Dec 2025 16:13:17 +0000
+Authentication-Results: dilbert.mork.no;
+	dkim=pass (1024-bit key; secure) header.d=mork.no header.i=@mork.no header.a=rsa-sha256 header.s=b header.b=k57w20PL;
+	dkim-atps=neutral
+Received: from canardo.dyn.mork.no ([IPv6:2a01:799:10e2:d900:0:0:0:1])
+	(authenticated bits=0)
+	by dilbert.mork.no (8.18.1/8.18.1) with ESMTPSA id 5BRGCXea1092612
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
+	Sat, 27 Dec 2025 16:12:35 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mork.no; s=b;
+	t=1766851953; bh=6xQepFKbLSgWwslvs/nMpOgMMovKMH4umS/FdNhEKCI=;
+	h=From:To:Cc:Subject:References:Date:Message-ID:From;
+	b=k57w20PLkK0NnQT97ZSgjxTiFyMawI1HfymwWSj/dmV9dfAS0qmWGBcJ1DeXhHDTB
+	 Ikjv2Rf43hQPgRm2SkAZK5mFlF3fTrfTBplyddiW09dNafUsFVtDwDIDFTy2FmJol/
+	 uX9FVRLcPgMDx6rz8X0io7qVVg3U2DMkmysnOspg=
+Received: from miraculix.mork.no ([IPv6:2a01:799:10e2:d90a:6f50:7559:681d:630c])
+	(authenticated bits=0)
+	by canardo.dyn.mork.no (8.18.1/8.18.1) with ESMTPSA id 5BRGCXAq1173802
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
+	Sat, 27 Dec 2025 17:12:33 +0100
+Received: (nullmailer pid 1325881 invoked by uid 1000);
+	Sat, 27 Dec 2025 16:12:33 -0000
+From: =?utf-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+        linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org,
+        Daniel Golle <daniel@makrotopia.org>,
+        Horatiu Vultur <horatiu.vultur@microchip.com>,
+        Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+        Russell King <linux@armlinux.org.uk>,
+        "David S. Miller" <davem@davemloft.net>,
+        Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+        Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+        Kishon Vijay Abraham I <kishon@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Eric Woudstra <ericwouds@gmail.com>,
+        Marek =?utf-8?Q?Beh=C3=BAn?= <kabel@kernel.org>,
+        Lee Jones <lee@kernel.org>,
+        Patrice Chotard <patrice.chotard@foss.st.com>
+Subject: Re: [PATCH net-next 0/9] XPCS polarity inversion via generic device
+ tree properties
+In-Reply-To: <20251122193341.332324-1-vladimir.oltean@nxp.com> (Vladimir
+	Oltean's message of "Sat, 22 Nov 2025 21:33:32 +0200")
+Organization: m
+References: <20251122193341.332324-1-vladimir.oltean@nxp.com>
+Date: Sat, 27 Dec 2025 17:12:33 +0100
+Message-ID: <87qzsfewem.fsf@miraculix.mork.no>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20251224031721.9942-2-jianhua.lin@mediatek.com>
+Content-Transfer-Encoding: quoted-printable
+X-Virus-Scanned: clamav-milter 1.4.3 at canardo.mork.no
+X-Virus-Status: Clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251227_043433_399037_E22D0BF4 
-X-CRM114-Status: UNSURE (   8.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251227_081316_226447_36252159 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,23 +100,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 24, 2025 at 11:17:18AM +0800, Jianhua Lin wrote:
-> The JPEG encoder and decoder of MT8188 share the same architecture
-> and features as those of MT8189, both use a 34-bit iova
-> address-space (16GB) and a single clock configuration.
-> 
-> Previously, MT8188 was incorrectly defined alongside SoCs with 32-bit
-> iova address-space (4GB), such as "mediatek,mt2701-jpgdec" and
-> "mediatek,mtk-jpgenc". This mismatch results in an ABI break,
+Vladimir Oltean <vladimir.oltean@nxp.com> writes:
 
-How this mismatch can result in ABI break?
+> This set contains an implementation of a generic feature that should
+> cater to all known needs that were identified during my documentation
+> phase. I've added a new user - the XPCS - and I've converted an existing
+> user - the EN8811H Ethernet PHY.
 
-> as MT8188 cannot function correctly under the 32-bit iova
-> address-space (4GB) configuration.
+Hello Vladimir!
 
-Do you understand what is an ABI break? This commit is the ABI break.
+Will there be a new version of this patch set?
 
-Best regards,
-Krzysztof
+The firmware for AN8811HB has now been submitted [1], so I plan to move
+forward with the driver. And without this series then I don't see any
+other reasonable alternative than continuing with "airoha,pnswap-rx/tx",
+like the existing EN8811H driver.
 
+
+Bj=C3=B8rn
+
+[1] https://lore.kernel.org/linux-firmware/20251225163003.4797-1-lucienzx15=
+9@gmail.com/T/#u
 
