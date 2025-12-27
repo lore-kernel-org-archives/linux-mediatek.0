@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7898AE8FDD0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Dec 2025 09:07:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6320DE8FDD0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Dec 2025 11:22:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:From:MIME-Version:Date:Message-ID:Reply-To:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ifUC8vCZeQOBq15C7xGgJzh5lsXNM+HByA9WfzvVCGY=; b=XYzpfQeez3cQ2ULt1kFXrU2cIl
-	xXD5lNUKCWcgyeC1Pri13BHokn/u4lUI3BjPVDp99YWakh6lsdfoJc1Ijdk9IcTBAoy+ScC+Nw7aI
-	EzTNPRXgNSPAcY8SVUUehQZxgFE1gmlN3c0KplF5sY0qXh4nPHyaBnMZAEYa7pItniHYnstZ/z508
-	49+eaBk7Vg0IbEtN48RYj33T3wQFiXwNNv0LDKCC86lZXPIhMjWYJRHxZpUobpvPB6MJTuPc6srEj
-	LbimayVgcOK6pnjEVJC4JIm2xKofJeqFb5uWumyojIDBwkG0dl/+XEvdMCIy+twgUMqd39w7R7Wr7
-	VYXDnszw==;
+	bh=n2DCKn6B7Bg+9KQ/LRQRtOwwU8XjtNRI/VbbXHcbXNg=; b=EQ03bFxRjneG3n0XpQu9PjLFFj
+	ZNnJ42DrgCULhBsqBw/V7HlQrHuOB2+vN7JQYjnGDByxoFd95F4RlVgi3N9ePbQnbmHOx0+PKpGsH
+	AGni1jMebsw04I16wfWzKKdMv6zqxkY91OyDn8LD7Yyd/AbU2T2AlVgLs4LMcGd1bWvUDdcf3vkDl
+	fGXq090Tg4zn9WUxn4V4Q/xfrXUU+9k8MwHEHXr7tmt5bx9jVTy5s5Y+UH/IR2DoTZ1Wnpe4eEHR7
+	TK0OU7rAJjdF/hA/bs24YBd4n7yZJ+fDSPbtmIpQGeouWLicd+iEFZJr6tuhahdvd9rjwetPyBryL
+	snX/qjOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZQGu-00000001okz-278O;
-	Sat, 27 Dec 2025 09:07:36 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1vZSNR-00000001t9V-0Y3e;
+	Sat, 27 Dec 2025 11:22:29 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZQGr-00000001okH-2IjK
+	id 1vZSNN-00000001t8d-47aA
 	for linux-mediatek@lists.infradead.org;
-	Sat, 27 Dec 2025 09:07:35 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-7f651586be1so3653646b3a.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 27 Dec 2025 01:07:32 -0800 (PST)
+	Sat, 27 Dec 2025 11:22:27 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-47bdbc90dcaso49324705e9.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 27 Dec 2025 03:22:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linuxfoundation.org; s=google; t=1766826452; x=1767431252; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:content-language:subject:from
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ifUC8vCZeQOBq15C7xGgJzh5lsXNM+HByA9WfzvVCGY=;
-        b=J42wcZjfxt1cLLPNRykgER43gCV3M7rrSnliq9fVOT724hgjoJ/4H5zp66WNPweEsI
-         kbc3S4wax1DvHx65MHM9ZgsT7FpulSqKMfmSA1Y1T518Bd7/0pUcfK5e1mPUGcGGNzws
-         bAEHaWTd1NMvyVRKgQ7csC62DvrXMOFQGusVg=
+        d=gmail.com; s=20230601; t=1766834544; x=1767439344; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=n2DCKn6B7Bg+9KQ/LRQRtOwwU8XjtNRI/VbbXHcbXNg=;
+        b=HN4HVvSxNXZqvOvGS06d/k4kbDLW0z0Kf3ZFQjnC8kY3NNOYPXHZkQf0pjdmGh3ZEK
+         +iK7VV0PCIirUX2Up09rSu3xvdzuiVV61zG26Cp0wkNFOIlDB3/MLSM/bUQIQOTwt7xz
+         oaygEYiZRJ+mI8OqFfDe0MBa2H8+NrZMszkgvGMB+yMvkZso7ToivV+DJ2iNHo/pEYTf
+         +A9mcW2LZGUiUHkHnBYxlhrKXo5mgRBr3/EikypKM4Yb3d0Y42GQAzaM/ujiAI963fhP
+         f8KjWjmvaY+3WAdzda3t9wJlONL+T/8IJZi8/5PJaOK3U8tXXlsG7QNrjNlXdQVEVc9y
+         Axvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1766826452; x=1767431252;
-        h=content-transfer-encoding:cc:to:content-language:subject:from
-         :user-agent:mime-version:date:message-id:x-gm-gg:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ifUC8vCZeQOBq15C7xGgJzh5lsXNM+HByA9WfzvVCGY=;
-        b=HK/go4rbfrRz2QwwPzG4u+0WviUN66O6wEJazmb1CCXSzWsab7PRoUkUVasOnPUM3J
-         fROJy14LAtr/4d0aaHvjG7HnDlyEAvDxK6lXU18uYaNjn33+Jd3qWZRbq5EE4lQcNoox
-         EmZM2RMuCpKMJ0tul1sAeBrGb6Bk5kLNfItPdFiEVBOiR2wjnXmoKgcsTWqDi7mOXAmm
-         wodDs7CC0R5kieAavfwSlBDAJn7hwhWwSsytQlEbIhQekGde7t5J5E3pnC2PiyG0Wuzt
-         XxRJHIJZ3WuyVzUlM80HS1+4O+x06ND26o4l5MnAAe6q09xQ97CoAEkzJQKzFT6ia8mb
-         OxFg==
-X-Forwarded-Encrypted: i=1; AJvYcCXpDX+glpHmaTGNDORr6CqJcApJ/JFQBYACTtdFYGFjthw/fBi9vPzgkK0XmhZI+QA4QJ0tGNYrejEioxp+Hg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyOYg2ZBBu7PNPcnuWSCVtNhMl3QGudj9/hWNC09tBVtIyNlDQM
-	jDxLhjPW8c5sSlIx9+dt3GQZxV3xvIm/hxkK4phgsQqQ9ljFH++R+Bii0z6V/SdceE8=
-X-Gm-Gg: AY/fxX68ssUXaMvr0ANmZmNef2gtLgdxIG3LxfBt7K3rvo1rVBU7RhaMkDNUCcjvVD7
-	V/I3ynFenobcSwbrQt6VwhPzs5841X9l3oEyK3PsE5wB6WaKJh5rRJb3EfJEkXMfIwvfD6Lsbii
-	94s4lqs0xsd0wYiXgwl9t63u76yAimpA1ZtPELG8tuPcrOPp2Ic5ITCujSHgcXg4m3anrde6rO7
-	YWshhS1/uh4SOi8USj9p5Ndfiim36+vt8ZBsjzAUek3PcSWjQpxPdidLu1eyWjxQb8C8YWYUwXZ
-	ix25OMQfriUqogqlLaTwDaiG7ihJkyctqu7Z7rL7XCMEbZcVmzevUk1aAmqZlvFe/ebL+hnYPR5
-	EJuZXw4fvxOMxksdeR/qIpNab3wjHLa7n1yay4rzZEHE9F7/RPEm4k0dbl1PGsp+aYcyjh/ZonG
-	MapoiEGwQWfXkOHQpjVqrlbYdi
-X-Google-Smtp-Source: AGHT+IHFE6P6W0KNJpo0Rcyj79nO8yWZp/ADp0FPoeOXmnhH0hpzYXHfdC+BhTP+JpyW7wtzFaLnQA==
-X-Received: by 2002:aa7:868f:0:b0:7f0:61d:d092 with SMTP id d2e1a72fcca58-7fe0d7a28a8mr22142128b3a.21.1766826451847;
-        Sat, 27 Dec 2025 01:07:31 -0800 (PST)
-Received: from [192.168.88.64] ([182.54.168.177])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7ff7a939ea2sm23811761b3a.4.2025.12.27.01.07.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 27 Dec 2025 01:07:31 -0800 (PST)
-Message-ID: <d7f3b00d-beec-41f0-b157-7cfb871f9a46@linuxfoundation.org>
-Date: Sat, 27 Dec 2025 02:07:24 -0700
+        d=1e100.net; s=20230601; t=1766834544; x=1767439344;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=n2DCKn6B7Bg+9KQ/LRQRtOwwU8XjtNRI/VbbXHcbXNg=;
+        b=bGE/bvqFpdrtaC9qJvwpbHAp2VlIb+Q5Pp5jc36gHs6W8DQCCg69r9OUu2kfwJHPv4
+         IYzNLmFKrhYog+MxhTscCBwHVpiXCvreLnIrPCAQeaXKrwLJJnSCwr9NHJZitGTmSg/d
+         irXOTOmdZyZak0bQFjf96Ek4rkf864w5wn9gFJJI9lyhZYyRvFBZmOhwIYRou6dbHZGW
+         0gd0UvHXE41/4pRuNGfij6H7FNMYIKtlWq0gm1f4eELYU0iwj6LyeytCvArlznDAVd5/
+         3S+sXzFawCsD9JPze62LHifpfnPVzNXowPpApxq6HUmwhYHa0pm7c5IqVDAK0+VCEOPe
+         kuMw==
+X-Forwarded-Encrypted: i=1; AJvYcCUUA2104SIYuVkVr1ANDDmxKcoiW+c+u0nkXAHM55D1ESnRHc/sYHbdwiey4yuY1U20FClH8RC8ZdLhK6u5aQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw8v9eZdzAuyTf+L6NYfBa6JWIXPFO9B71rwcB1AuUeV+SegxIB
+	furT4CaTxnCrHgb3oiEUoihh6vfHNud8bkYNSVlGx42WgCKcBj/xrNnD
+X-Gm-Gg: AY/fxX772nbWk5j9wyWoUpl06NOHkB63t6RwrbsHbyqEBIFrJx0ffs21fgY9TLTr3LB
+	KffRdWtkauMc7tG2j+E9a/Xgi0jAMB18PiEJLOCdo8ue2YUGHyXVcPoaFurzIiJMiPKBFR9U9KI
+	15NC0AgwnsKRx4+fge3Hp0DdhQbS8n4wgSLFeVfkxwh6Ir60HvcyM71qiOcKvgcf0VcQfhzE6Ka
+	D8cOkJ7UYuSlSwBkNlzkqKrcSvc3cGNpcrhXCzyjHkA33ZcYozw7yrnKSUqlYGVC1AspBHz6cg9
+	g+NGpdhnP8+VAHfHjPB/ePifOGcSSmuUIHClRauX0ZW+3XxzpVkzvyRGDHBnHPC103pY2K8xftc
+	VIn/qgIegO10JgpcXwXRCHCPhHU7UpY6tJfkFiKJK9ZLGEgVQrzJ29RKfALNg2lFelk7Z07K+4S
+	aLhOTXbARj4w0V+Es=
+X-Google-Smtp-Source: AGHT+IGoRHV/ozBfOoLVpES4DLCNbHxVqZI4mSyjVxLpUFm4/9hj62ouP1sKgmo+lauX8G4qDDvyKA==
+X-Received: by 2002:a05:6000:609:b0:431:342:ad41 with SMTP id ffacd0b85a97d-4324e6fa1a7mr32037027f8f.61.1766834543655;
+        Sat, 27 Dec 2025 03:22:23 -0800 (PST)
+Received: from toolbox.. ([87.200.95.144])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4324e9ba877sm49898600f8f.0.2025.12.27.03.22.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 27 Dec 2025 03:22:23 -0800 (PST)
+From: Christian Hewitt <christianshewitt@gmail.com>
+To: Jakub Kicinski <kuba@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Daniel Golle <daniel@makrotopia.org>
+Subject: [PATCH v2] wifi: mt7601u: check multiple firmware paths
+Date: Sat, 27 Dec 2025 11:22:19 +0000
+Message-Id: <20251227112219.2768439-1-christianshewitt@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Shuah Khan <skhan@linuxfoundation.org>
-Subject: Linux 6.19-rc1 mediatek mt7921e broke badly
-Content-Language: en-US
-To: quan.zhou@mediatek.com, Felix Fietkau <nbd@nbd.name>, lorenzo@kernel.org,
- ryder.lee@mediatek.com, Linus Torvalds <torvalds@linux-foundation.org>
-Cc: linux-wireless@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-mediatek@lists.infradead.org, Shuah Khan <skhan@linuxfoundation.org>,
- shuah <shuah@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251227_010733_634883_2E303D06 
-X-CRM114-Status: UNSURE (   8.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251227_032226_063252_F98BEC73 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,104 +101,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-bXQ3OTIxZSBkb2Vzbid0IGxvYWQgb24gbXkgcHJpbWFyeSBsYXB0b3BuIG9uIExpbnV4IDYu
-MTktcmMxIGFuZCBwcm9ibGVtDQpzdGlsbCB0aGVyZSBvbiA2LjE5LXJjMi4NCg0KICBGcm9t
-IHdoYXQgSSBjYW4gdGVsbCBmcm9tIGRtZXNnIGl0IGF0dGVtcHRzIHRvIGRvIGxvYWQgZmly
-bXdhcmUNCmluIG10NzkyeF9sb2FkX2Zpcm13YXJlKCkgZHVyaW5nIGFuZCB0aGVuIGdlbmVy
-YXRlcyB3YXJucyBhbmQNCmZhaWxzIHRvIGxvYWQgdGhlIG1vZHVsZS4gZG1lc2cgZXhjZXJw
-dCBiZWxvdy4NCg0KY29tbWl0IDA2NmY0MTdiZTVmZDhjN2ZlNTgxYzU1NTAyMDYzNjQ3MzVk
-YWQ3YTMNCkF1dGhvcjogUXVhbiBaaG91IDxxdWFuLnpob3VAbWVkaWF0ZWsuY29tPg0KRGF0
-ZTogICBUdWUgTm92IDE4IDE5OjU0OjU0IDIwMjUgKzA4MDANCg0KICAgICAgd2lmaTogbXQ3
-NjogbXQ3OTJ4OiBmaXggd2lmaSBpbml0IGZhaWwgYnkgc2V0dGluZyBNQ1VfUlVOTklORyBh
-ZnRlciBDTEMgbG9hZA0KDQpUaGUgYWJvdmUgY29tbWl0IGNoYW5nZXMgd2hlbiB0aGUgTUNV
-X1JVTk5JTkcgYml0IGlzIHNldCBpbiBtdDc5MjVfcnVuX2Zpcm13YXJlKCksDQpjaGFuZ2lu
-ZyBpdCB0byBzZXQgdGhpcyBiaXQgb25seSBhZnRlciBtdDc5MjFfbG9hZF9jbGMoKSBjb21w
-bGV0ZXMuDQoNCkkgZGlkbid0IGdldCBhIGNoYW5jZSB0byBiaXNlY3QgeWV0IGFuZCBhIHF1
-aWNrIHJldmVydCBvZiB0aGUgcGF0Y2ggZGlkbid0IHNvbHZlDQp0aGUgcHJvYmxlbS4gVGhp
-cyBpcyBhIHNlcmlvdXMgcHJvYmxlbSBmb3IgbWUgc2luY2UgbXkgd2lmaSBpcyBkZWFkIG9u
-IG15DQpwcmltYXJ5IGxhcHRvcC4gSG9wZSBhIGZpeCBpcyBjb21pbmcgc29vbi4NCg0KSSBh
-bSBhdmFpbGFibGUgZm9yIGRlYnVnL3Rlc3RpbmcgaGVscCBlYXJseSBuZXh0IHdlZWsuDQoN
-CnRoYW5rcywNCi0tIFNodWFoDQoNCmRtZXNnDQo9PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09DQoNCmtlcm4gIDpjcml0ICA6IGtlcm5lbCBCVUcgYXQgbGliL3N0cmluZ19oZWxw
-ZXJzLmM6MTA0MyENCmtlcm4gIDp3YXJuICA6IE9vcHM6IGludmFsaWQgb3Bjb2RlOiAwMDAw
-IFsjMV0gU01QIE5PUFRJDQprZXJuICA6d2FybiAgOiBDUFU6IDE0IFVJRDogMCBQSUQ6IDYx
-IENvbW06IGt3b3JrZXIvMTQ6MCBUYWludGVkOiBHICAgICAgICBXDQogICAgICAgICA2LjE5
-LjAtcmMxICMxIFBSRUVNUFQodm9sdW50YXJ5KQ0Ka2VybiAgOndhcm4gIDogVGFpbnRlZDog
-W1ddPVdBUk4NCmtlcm4gIDp3YXJuICA6IEhhcmR3YXJlIG5hbWU6IEZyYW1ld29yayBMYXB0
-b3AgMTMgKEFNRCBSeXplbiA3MDQwU2VyaWVzKS9GUkFOTURDUDA3LCBCSU9TIDAzLjE2IDA3
-LzI1LzIwMjUNCmtlcm4gIDp3YXJuICA6IFdvcmtxdWV1ZTogZXZlbnRzIG10NzkyMV9pbml0
-X3dvcmsgW210NzkyMV9jb21tb25dDQprZXJuICA6d2FybiAgOiBSSVA6IDAwMTA6X19mb3J0
-aWZ5X3BhbmljKzB4ZC8weGYNCmtlcm4gIDp3YXJuICA6IENvZGU6IDY2IDJlIDBmIDFmIDg0
-IDAwIDAwIDAwIDAwIDAwIDBmIDFmIDAwIDkwIDkwIDkwIDkwIDkwIDkwIDkwIDkwIDkwIDkw
-IDkwIDkwIDkwIDkwIDkwIDkwIGYzIDBmIDFlIGZhIDQwIDBmIGI2IGZmIGU4IGMzIDU1IDcx
-IDAwIDwwZj4gMGIgNDggOGIgNTQgMjQgMTAgNDggOGIgNzQgMjQgMDggNGMgODkgZTkgNDgg
-YzcgYzcgMDAgYTIgZDUgYTANCmtlcm4gIDp3YXJuICA6IFJTUDogMDAxODpmZmZmYTdhNWMw
-M2EzZDEwIEVGTEFHUzogMDAwMTAyNDYNCmtlcm4gIDp3YXJuICA6IFJBWDogZmZmZmZmZmZh
-MGQ3YWFmMiBSQlg6IDAwMDAwMDAwMDAwMDAwMDAgUkNYOiBmZmZmZmZmZmEwZDdhYWYyDQpr
-ZXJuICA6d2FybiAgOiBSRFg6IDAwMDAwMDAwMDAwMDAwMTEgUlNJOiBmZmZmZmZmZmEwZDVh
-MTcwIFJESTogZmZmZmZmZmZhMTI4ZGIxMA0Ka2VybiAgOndhcm4gIDogUkJQOiBmZmZmOTE2
-NTBhZTUyMDYwIFIwODogMDAwMDAwMDAwMDAwMDAxMCBSMDk6IGZmZmZhN2E1YzMxYjIwMDAN
-Cmtlcm4gIDp3YXJuICA6IFIxMDogZmZmZmE3YTVjMDNhM2JmMCBSMTE6IDAwMDAwMDAwZmZm
-ZmZmZmYgUjEyOiAwMDAwMDAwMDAwMDAwMDAwDQprZXJuICA6d2FybiAgOiBSMTM6IGZmZmZh
-N2E1YzMxYjIwMDAgUjE0OiAwMDAwMDAwMDAwMDAxMDAwIFIxNTogMDAwMDAwMDAwMDAwMDAw
-MA0Ka2VybiAgOndhcm4gIDogRlM6ICAwMDAwMDAwMDAwMDAwMDAwKDAwMDApIEdTOmZmZmY5
-MTc0M2U2NjQwMDAoMDAwMCkga25sR1M6MDAwMDAwMDAwMDAwMDAwMA0Ka2VybiAgOndhcm4g
-IDogQ1M6ICAwMDEwIERTOiAwMDAwIEVTOiAwMDAwIENSMDogMDAwMDAwMDA4MDA1MDAzMw0K
-a2VybiAgOndhcm4gIDogQ1IyOiAwMDAwN2YxMDc4NmMyNDFjIENSMzogMDAwMDAwMDNlY2Ey
-NDAwMCBDUjQ6IDAwMDAwMDAwMDBmNTBlZjANCmtlcm4gIDp3YXJuICA6IFBLUlU6IDU1NTU1
-NTU0DQprZXJuICA6d2FybiAgOiBDYWxsIFRyYWNlOg0Ka2VybiAgOndhcm4gIDogIDxUQVNL
-Pg0Ka2VybiAgOndhcm4gIDogIG10NzZfY29ubmFjMl9sb2FkX3BhdGNoLmNvbGQrMHgyYi8w
-eGE0MSBbbXQ3Nl9jb25uYWNfbGliXQ0Ka2VybiAgOndhcm4gIDogID8gc3Jzb19hbGlhc19y
-ZXR1cm5fdGh1bmsrMHg1LzB4ZmJlZjUNCmtlcm4gIDp3YXJuICA6ICBtdDc5MnhfbG9hZF9m
-aXJtd2FyZSsweDM2LzB4MTUwIFttdDc5MnhfbGliXQ0Ka2VybiAgOndhcm4gIDogIG10Nzky
-MV9ydW5fZmlybXdhcmUrMHgyYy8weDRhMCBbbXQ3OTIxX2NvbW1vbl0NCmtlcm4gIDp3YXJu
-ICA6ICA/IHNyc29fYWxpYXNfcmV0dXJuX3RodW5rKzB4NS8weGZiZWY1DQprZXJuICA6d2Fy
-biAgOiAgPyBtdDc5MjFfcnIrMHgxMi8weDMwIFttdDc5MjFlXQ0Ka2VybiAgOndhcm4gIDog
-ID8gc3Jzb19hbGlhc19yZXR1cm5fdGh1bmsrMHg1LzB4ZmJlZjUNCmtlcm4gIDp3YXJuICA6
-ICA/IF9fX19tdDc2X3BvbGxfbXNlYysweDc1LzB4YjAgW210NzZdDQprZXJuICA6d2FybiAg
-OiAgbXQ3OTIxZV9tY3VfaW5pdCsweDRjLzB4N2EgW210NzkyMWVdDQprZXJuICA6d2FybiAg
-OiAgbXQ3OTIxX2luaXRfd29yaysweDUxLzB4MTkwIFttdDc5MjFfY29tbW9uXQ0Ka2VybiAg
-Ondhcm4gIDogIHByb2Nlc3Nfb25lX3dvcmsrMHgxOGIvMHgzNDANCmtlcm4gIDp3YXJuICA6
-ICB3b3JrZXJfdGhyZWFkKzB4MjU2LzB4M2EwDQprZXJuICA6d2FybiAgOiAgPyBfX3BmeF93
-b3JrZXJfdGhyZWFkKzB4MTAvMHgxMA0Ka2VybiAgOndhcm4gIDogIGt0aHJlYWQrMHhmYy8w
-eDI0MA0Ka2VybiAgOndhcm4gIDogID8gX19wZnhfa3RocmVhZCsweDEwLzB4MTANCmtlcm4g
-IDp3YXJuICA6ICA/IF9fcGZ4X2t0aHJlYWQrMHgxMC8weDEwDQprZXJuICA6d2FybiAgOiAg
-cmV0X2Zyb21fZm9yaysweDI1NC8weDI5MA0Ka2VybiAgOndhcm4gIDogID8gX19wZnhfa3Ro
-cmVhZCsweDEwLzB4MTANCmtlcm4gIDp3YXJuICA6ICByZXRfZnJvbV9mb3JrX2FzbSsweDFh
-LzB4MzANCmtlcm4gIDp3YXJuICA6ICA8L1RBU0s+DQprZXJuICA6d2FybiAgOiBNb2R1bGVz
-IGxpbmtlZCBpbjogc25kX2hkYV9jb2RlY19hbGMyNjkoKykgc25kX3NvZl9hbWRfcmVtYnJh
-bmR0IG10NzkyMWUgc25kX2hkYV9zY29kZWNfY29tcG9uZW50IHNuZF9zb2ZfYW1kX2FjcCBz
-bmRfaGRhX2NvZGVjX3JlYWx0ZWtfbGliIG10NzkyMV9jb21tb24gc25kX3NvZl9wY2kgc25k
-X3NvZl94dGVuc2FfZHNwIHNuZF9oZGFfY29kZWNfZ2VuZXJpYyBidHVzYiBhbWRfYXRsIG10
-NzkyeF9saWIgdXZjdmlkZW8gc25kX2hkYV9jb2RlY19hdGloZG1pIGludGVsX3JhcGxfbXNy
-IG10NzZfY29ubmFjX2xpYiBzbmRfc29mIGJ0cnRsIGludGVsX3JhcGxfY29tbW9uIHNuZF9o
-ZGFfY29kZWNfaGRtaSBidGludGVsIHZpZGVvYnVmMl92bWFsbG9jIG10NzYgdmlkZW9idWYy
-X21lbW9wcyBidGJjbSB1dmMgc25kX3NvZl91dGlscyB2aWRlb2J1ZjJfdjRsMiBrdm1fYW1k
-IGJ0bXRrIGhpZF9zZW5zb3JfYWxzIHNuZF9oZGFfaW50ZWwgbWFjODAyMTEgaGlkX3NlbnNv
-cl90cmlnZ2VyIHNuZF9zb2NfY29yZSB2aWRlb2RldiBibHVldG9vdGggc25kX2hkYV9jb2Rl
-YyBpbmR1c3RyaWFsaW9fdHJpZ2dlcmVkX2J1ZmZlciBoaWRfc2Vuc29yX2lpb19jb21tb24g
-c25kX2NvbXByZXNzIHZpZGVvYnVmMl9jb21tb24ga3ZtIHNuZF9od2RlcCBsaWJhcmM0IGtm
-aWZvX2J1ZiBzbmRfcGNpX3BzIGluZHVzdHJpYWxpbyBzbmRfc29jX2FjcGlfYW1kX21hdGNo
-IG1jIHNuZF9oZGFfY29yZSBzbmRfcnBsX3BjaV9hY3A2eCBpcnFieXBhc3MgY2ZnODAyMTEg
-c25kX2ludGVsX2RzcGNmZyBzbmRfcGNpX2FjcDZ4IGFtZF9wbWYgcmFwbCBzbmRfcGNpX2Fj
-cDV4IHNuZF9wY20gYW1kdGVlIGxlZHNfY3Jvc19lYyBzbmRfcm5fcGNpX2FjcDN4IGhpZF9z
-ZW5zb3JfaHViIHdtaV9ibW9mIHNuZF90aW1lciBsZWRfY2xhc3NfbXVsdGljb2xvciBzbmRf
-YWNwX2NvbmZpZyBzbmRfc29jX2FjcGkgY3Jvc19lY19od21vbiBzbmQgc3BkNTExOCBjY3Ag
-c25kX3BjaV9hY3AzeCBwY3Nwa3IgcGxhdGZvcm1fcHJvZmlsZQ0Ka2VybiAgOndhcm4gIDog
-IHNvdW5kY29yZSByZmtpbGwgazEwdGVtcCBhYyBidXR0b24gYW1kX3NmaCB0ZWUgYW1kX3Bt
-YyBqb3lkZXYgZXZkZXYgbXNyIHBhcnBvcnRfcGMgcHBkZXYgbHAgcGFycG9ydCBjb25maWdm
-cyBlZmlfcHN0b3JlIG5mbmV0bGluayBlZml2YXJmcyBhdXRvZnM0IGV4dDQgbWJjYWNoZSBq
-YmQyIGRtX2NyeXB0IGRtX21vZCB1c2JoaWQgYW1kZ3B1IGFtZHhjcCBpMmNfYWxnb19iaXQg
-ZHJtX2NsaWVudF9saWIgZHJtX3R0bV9oZWxwZXIgdHRtIHVjc2lfYWNwaSB0eXBlY191Y3Np
-IGRybV9leGVjIGRybV9wYW5lbF9iYWNrbGlnaHRfcXVpcmtzIHJvbGVzIGdwdV9zY2hlZCBo
-aWRfbXVsdGl0b3VjaCB0eXBlYyBkcm1fc3ViYWxsb2NfaGVscGVyIGRybV9idWRkeSBoaWRf
-Z2VuZXJpYyB4aGNpX3BjaSBkcm1fZGlzcGxheV9oZWxwZXIgY3Jvc19lY19kZWJ1Z2ZzIGNy
-b3NfZWNfc3lzZnMgY3Jvc19jaGFyZ2VfY29udHJvbCBjcm9zX2VjX2NoYXJkZXYgY3Jvc19r
-YmRfbGVkX2JhY2tsaWdodCBpMmNfaGlkX2FjcGkgeGhjaV9oY2QgaTJjX2hpZCBoaWQgZHJt
-X2ttc19oZWxwZXIgc3A1MTAwX3RjbyB3YXRjaGRvZyBjcm9zX2VjX2RldiB0aHVuZGVyYm9s
-dCBkcm0gdXNiY29yZSBudm1lIGdoYXNoX2NsbXVsbmlfaW50ZWwgY2VjIGFlc25pX2ludGVs
-IG52bWVfY29yZSByY19jb3JlIHNlcmlvX3JhdyBpMmNfcGlpeDQgaTJjX3NtYnVzIGNyYzE2
-IHZpZGVvIHVzYl9jb21tb24gYmF0dGVyeSB3bWkgY3Jvc19lY19scGNzIGNyb3NfZWMgY3Jv
-c19lY19wcm90bw0K
+The linux-firmware repo moved mt7601u.bin from its root folder to
+the mediatek sub-folder some time ago, but the driver still tries
+to load firmware from the old location. Users might have firmware
+in either location so update the driver to check both.
+
+Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
+---
+The firmware was moved in [0]. Changes were requested to a previous
+patch [1] to accomodate backwards compatibility but there was no
+follow-up from the original author. So here's my novice attempt at
+the requested improvement.
+
+Current kernel with firmware in /usr/lib/firmware/mediatek/mt7601u.bin:
+
+Nov 07 12:43:13.398922 LibreELEC kernel: mt7601u 1-1.3:1.0: ASIC revision: 76010001 MAC revision: 76010500
+Nov 07 12:43:13.402276 LibreELEC kernel: mt7601u 1-1.3:1.0: Direct firmware load for mt7601u.bin failed with error -2
+Nov 07 12:43:13.405524 LibreELEC kernel: mt7601u 1-1.3:1.0: probe with driver mt7601u failed with error -2
+
+And with the patch:
+
+Nov 07 12:43:13.274633 LibreELEC kernel: mt7601u 1-1.3:1.0: ASIC revision: 76010001 MAC revision: 76010500
+Nov 07 12:43:13.311200 LibreELEC kernel: mt7601u 1-1.3:1.0: Firmware Version: 0.1.00 Build: 7640 Build time: 201302052146____
+Nov 07 12:43:13.704693 LibreELEC kernel: mt7601u 1-1.3:1.0: EEPROM ver:0c fae:00
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/commit/?id=8451c2b1d529dc1a49328ac9235d3cf5bb8a8fcb
+[1] https://patchwork.kernel.org/project/linux-wireless/patch/fefcbf36f13873ae0d97438a0156b87e7e1ae64e.1684191377.git.daniel@makrotopia.org/
+
+Changes since v1:
+- Reword patch description and comment to make the problem clearer
+- Fix checkpatch warning for static const array declaration
+
+ drivers/net/wireless/mediatek/mt7601u/mcu.c | 15 ++++++++++++++-
+ drivers/net/wireless/mediatek/mt7601u/usb.h |  1 +
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt7601u/mcu.c b/drivers/net/wireless/mediatek/mt7601u/mcu.c
+index 1b5cc271a9e1..bad6ca821400 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/mcu.c
++++ b/drivers/net/wireless/mediatek/mt7601u/mcu.c
+@@ -403,12 +403,18 @@ mt7601u_upload_firmware(struct mt7601u_dev *dev, const struct mt76_fw *fw)
+ 	return ret;
+ }
+ 
++static const char * const mt7601u_fw_paths[] = {
++	"mediatek/" MT7601U_FIRMWARE,
++	MT7601U_FIRMWARE,
++};
++
+ static int mt7601u_load_firmware(struct mt7601u_dev *dev)
+ {
+ 	const struct firmware *fw;
+ 	const struct mt76_fw_header *hdr;
+ 	int len, ret;
+ 	u32 val;
++	int i;
+ 
+ 	mt7601u_wr(dev, MT_USB_DMA_CFG, (MT_USB_DMA_CFG_RX_BULK_EN |
+ 					 MT_USB_DMA_CFG_TX_BULK_EN));
+@@ -416,7 +422,14 @@ static int mt7601u_load_firmware(struct mt7601u_dev *dev)
+ 	if (firmware_running(dev))
+ 		return firmware_request_cache(dev->dev, MT7601U_FIRMWARE);
+ 
+-	ret = request_firmware(&fw, MT7601U_FIRMWARE, dev->dev);
++	/* Try loading firmware from multiple locations */
++	fw = NULL;
++	for (i = 0; i < MT7601U_FIRMWARE_PATHS; i++) {
++		ret = request_firmware(&fw, mt7601u_fw_paths[i], dev->dev);
++		if (ret == 0)
++			break;
++	}
++
+ 	if (ret)
+ 		return ret;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt7601u/usb.h b/drivers/net/wireless/mediatek/mt7601u/usb.h
+index 9fdf35970339..723025f84483 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/usb.h
++++ b/drivers/net/wireless/mediatek/mt7601u/usb.h
+@@ -9,6 +9,7 @@
+ #include "mt7601u.h"
+ 
+ #define MT7601U_FIRMWARE	"mt7601u.bin"
++#define MT7601U_FIRMWARE_PATHS	ARRAY_SIZE(mt7601u_fw_paths)
+ 
+ #define MT_VEND_REQ_MAX_RETRY	10
+ #define MT_VEND_REQ_TOUT_MS	300
+-- 
+2.34.1
 
