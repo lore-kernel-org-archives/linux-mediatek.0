@@ -4,86 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0C00E784BE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Dec 2025 14:19:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95EAAE9271B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Dec 2025 15:51:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4ODT4lV6izjlSBBO0fPN83weymhthmXy2Ki51JZYY7c=; b=BQnHV/RZrPq0iZ052yeyKtZCUz
-	i1uDs/NYPzphRXj1IBfjxt1kkJd3rs2YC6WVQjObmom222QF62hBoUdSzR2aEFparjUOgz2w4x8UU
-	KJ3tanCw0cfEPHVZvQwahfvyiQ+dUlkuXRb6sRRp/XvqjwaZlonWhULW9X0Uch3Q+TLtF23o1J9Gk
-	ityLxND/E3+cGffLBiR5YEzRjDRdMKc9tQPWQmPrXoFMU1Hl7DafFyUkYheFnp/4jjMeXhAPpR2He
-	LwTtQs7flicK9n2MF+pqtls5ZQYIapebE7jaAEeLDbkRK5aMcM39d1j4t/MoszP1y789/7w18ToN3
-	jSU3XkTw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xDt2nU/HCGuLKi4YQDj2IaYM1PBWLEa/ggxeMOrlmyU=; b=RNk7fZR8Zv02ExHUatTEUptf6Q
+	5GUTfNe7ng3WT+BAbwS9g8/GvJ+mYZ2dm5xqBwrWYb0wIm/f7I/QspGqwBtL7kYnblMx5rgtM3VVd
+	62qrRA21GRmHBT1Kri+PPPkfpft90UA8Zb8uAuVmYDwFgaO1Bv3BHVkQhKBf8eGcMVLRrhtheqfry
+	s3J8emVE1pNazK97YVS4qLWDw2N6tSzHShmDVCBOh53+ta2d7GCPvFpFVXx6kl6LShKQYCM8ENBTz
+	eiCV6OsI30ai3TrogtqoWo0s3Ski+vQH+BkigeG9VTiSI1VpjiyaT0F6RJB2lAjuM+tcz2gXiLLZ+
+	XehCv0Nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZrcH-00000002nrg-3FBa;
-	Sun, 28 Dec 2025 14:19:29 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vZt3h-00000002qye-0iuE;
+	Sun, 28 Dec 2025 15:51:53 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZrcG-00000002nrR-1BEo;
-	Sun, 28 Dec 2025 14:19:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=4ODT4lV6izjlSBBO0fPN83weymhthmXy2Ki51JZYY7c=; b=GPP4rEbXT994xhR8EkeD5tFCjO
-	SKAhwoaQXhFOMtFBtdcF6xhwThjBTDTCRl89UWCe3qJTT61fXXYRfZcAueLOyw+YBPi5Cj1lHz+Gn
-	0Lk3dVHp2bwM8HFyw9V4pdp0cZGYW4mr5RlDKdhhvfhKet7/KkR07qsR4+oUOupGiY0DNTeOp+zYz
-	nxH6088Ao/Y6cNJ44LhU9sNo95c23cbkHqEBS030ga+gCl8C7vX/13coyMgm8epJ8LpZ+2tOgfOPU
-	/esGK2ZKrN38zCmM+U7FBpqK6hGl4SZ5h7I/AIZ1Y+P6Hf7EuCwqGrgfXaYAuVPYdt3q8JewKXqjP
-	9crAayvw==;
-Received: from mout.web.de ([212.227.17.11])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZrcC-0000000285I-2sAq;
-	Sun, 28 Dec 2025 14:19:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1766931542; x=1767536342; i=markus.elfring@web.de;
-	bh=4ODT4lV6izjlSBBO0fPN83weymhthmXy2Ki51JZYY7c=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=CfDv+AbubRn20xmagkA8WROO0NRzsAMz9JAn124Xh4/5EM4ubk8k3O/4uvphvMp8
-	 xJHU2XgPCtv2eG0Audqg/lM9dczqTGJ/va8ILijqejyYySYsm7OWTL1odalaiaR3i
-	 Hc8wa8x1twwtCezaSeVhRbtkKFeSOGQzPotckBTnWr3J62jHfy+ivTQTtBc/Tqx/r
-	 DM8LUUBt3yboQff3B3u24dwt3RdfCpPD4BQJG5LE0z31ICi5+7ZX9aSI05htD452G
-	 iSNj/kZeVrk+BSa3wwzEy1yEI5mRyg6RgGIUngIZWd97wrQ4m8hVVODb3fLFnyGW+
-	 IgQcGcELNAkOWOg6WA==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.29] ([94.31.69.183]) by smtp.web.de (mrweb106
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1MP3CA-1vHCf42TWu-00XvIa; Sun, 28
- Dec 2025 15:19:02 +0100
-Message-ID: <20dca540-1c20-460a-9079-718db465c518@web.de>
-Date: Sun, 28 Dec 2025 15:19:00 +0100
+	id 1vZt3d-00000002qxV-34Ac
+	for linux-mediatek@lists.infradead.org;
+	Sun, 28 Dec 2025 15:51:50 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-5943d20f352so9111716e87.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 28 Dec 2025 07:51:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1766937108; x=1767541908; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=xDt2nU/HCGuLKi4YQDj2IaYM1PBWLEa/ggxeMOrlmyU=;
+        b=mpQd7Nq5xhHJK7UHIgdzKplHphklsZut/MXZ+umW53pA64cO30K9Mj046miM+n+1Tw
+         RY5JIJNWAuJIj2CJBT8GGlAua6b2rIdTNMVbGA3LTEZetQN5hVmhHsxDdmy6GbhNbwrw
+         bBiVe4jMsaw0BLgsvuE6Y+EFJEtjJgNlhYBgruAGAMQUfS14dj/SnqeIC2lOH9iwINFj
+         Xu59eLPQXuypbEx/eLYJmkwUhXptuCsKa0Et8GxYt5aGx/IjbdljkFkHy81xxEA27VsC
+         Sbj+ixdVN1GPNO0NIq1qD0wks3pIm7z7gT1cDQwEkOzfKF9UC29kVjRz+D20C0UvN10E
+         i61Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1766937108; x=1767541908;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xDt2nU/HCGuLKi4YQDj2IaYM1PBWLEa/ggxeMOrlmyU=;
+        b=A3Y0v7JNj7yIXk0r9311WZnA/g5IXlS83VDcoDZ8xG9m/QKj9K2nclM+LX3S2GKGXx
+         aI97gYVMJSBNf0nCsyuisRaesLBeRz8oDZupGrwRS/rkpaiuTPTbN6JkBlmaMsaZMbCk
+         uivE5vsU0RaGQ+yGKKa6vgBwqg5CfGwlxahPlEi+QwnMCyOxg3m28mNI1eM61dNk+THF
+         Xudzf0uq5sYrjn/aEGwQ3a42445s1p97UHcYbxJvIlrIhOz+AZQeJ1a8ZkLiBHVYK9eu
+         tl1FsVbSuhYyDXqGbYR2kFgTueGfYFWZMDc45jQ0NJw0iEqeUPaFLYIqtCmMfs25llkQ
+         7voQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUq3mh3ZIZkd9uP1LBeYAZ2YenSWilyfqyi1JoyvjVrD6UgBF4RxjyijtwOB8+T3In2NLFmvJ/wC+JqubmPUQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzNW3mlzLgI8wHmvvZQgEbkTVNZxdxci7TTtfnmfSKBeSaChO8Q
+	TXRzTrzpoNVjoeZMPvkxZ0HpzhUZXdj+N+yJPOcHJxZYqd7GLdyX5f3ZMW5m98ACxV0vNbT0VEz
+	3XyxP19TlgUNGq3D7Z4bH2BCSwhJulfvfM8Bih/Al4w==
+X-Gm-Gg: AY/fxX49b7zM+KfVbm61xNSRpkGEfmMaKs2uLHnnUHDj+kDq0X3GTuom8DOglbi+VR0
+	hvD+IPeFjcZVEYYoNJ1hMbHkAhuUuWPPZPv23JYqQEjgfpAauQYZhcmzT0g0YDLcIYs0QKs0gVi
+	gGULcUY7hDWWSWXCIHdyiW9hRqv/hPeElc9Z1q7NYUQvx4r41usoSdTZV5dwiZIxLiXtX+aOuhq
+	n+7G2XwYvqbRlyTMjQtNVr3XgQZecQ2iCRLRyB8JZ/pKOAvsPjid4CmUR1240V2L6TLKEwm3Uyt
+	2QeL52s=
+X-Google-Smtp-Source: AGHT+IGU1N8QBbdq+8B2sBGxa7sL3yjutJLHsa+eD4d/4O/IOXbvlkTxqF+kvhbF6vdkbcVRxjuHnPzltz+HFIkKUD8=
+X-Received: by 2002:a05:6512:124f:b0:599:105a:67ce with SMTP id
+ 2adb3069b0e04-59a17d727c3mr8952951e87.9.1766937107517; Sun, 28 Dec 2025
+ 07:51:47 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jianhao Xu <jianhao.xu@seu.edu.cn>, Zilin Guan <zilin@seu.edu.cn>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: LKML <linux-kernel@vger.kernel.org>,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20251228125226.3684517-1-zilin@seu.edu.cn>
-Subject: Re: [PATCH] soc: mediatek: SVS: Fix memory leak in
- svs_enable_debug_write()
-Content-Language: en-GB, de-DE
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20251228125226.3684517-1-zilin@seu.edu.cn>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:B8e+y3STUYayueQsBYtgskDzQIWmkN7RnFHvWUCP5roxhASUpET
- xfC+E5+AwW5PJ4hFPHdhHbhVIvSFNnc4n7uhNnut5LFj0sU+ZYtBDq3nAaJY5YpVCCINNZ7
- xCRuQ9izcX58UtfG+dwlXt0+QLbuD39J7GPaZDpaMpXggwBBGDJWjL5aVLbe/Sl7rnmNBJM
- rW+gdP2GJMvlmqkjvYLLQ==
-UI-OutboundReport: notjunk:1;M01:P0:+EGHf68uqSc=;P/hS36Nxwx+s7B0jB7BVqvb0I98 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 C/P/D35+hjAKRC0g8=
+References: <20251128041722.3540037-1-macpaul.lin@mediatek.com>
+In-Reply-To: <20251128041722.3540037-1-macpaul.lin@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Sun, 28 Dec 2025 16:51:11 +0100
+X-Gm-Features: AQt7F2rKehWvSimlxiGz9Dfw_4j8BvE8_7xLSPYZyFy88f7zjPyzLM7SIUxe60A
+Message-ID: <CAPDyKFranQ=UU5waLcw27E4SG30bps80DmGs+zZs6N9=iZa_zg@mail.gmail.com>
+Subject: Re: [PATCH v2] pmdomain: mtk-pm-domains: improve spinlock recursion
+ fix in probe with correcting reference count
+To: Macpaul Lin <macpaul.lin@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	=?UTF-8?B?TsOtY29sYXMgRiAuIFIgLiBBIC4gUHJhZG8=?= <nfraprado@collabora.com>, 
+	Chen-Yu Tsai <wenst@chromium.org>, linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Weiyi Lu <Weiyi.Lu@mediatek.com>, Jian Hui Lee <jianhui.lee@canonical.com>, 
+	Irving-CH Lin <Irving-CH.Lin@mediatek.com>, conor@kernel.org, krzk@kernel.org, 
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, Bear Wang <bear.wang@mediatek.com>, 
+	Pablo Sun <pablo.sun@mediatek.com>, Ramax Lo <ramax.lo@mediatek.com>, 
+	Macpaul Lin <macpaul@gmail.com>, 
+	MediaTek Chromebook Upstream <Project_Global_Chrome_Upstream_Group@mediatek.com>, Stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251228_141924_879069_40F18A07 
-X-CRM114-Status: UNSURE (   3.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251228_075149_856140_AFA0BDE1 
+X-CRM114-Status: GOOD (  17.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,16 +104,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-=E2=80=A6
-> Fix this by freeing buf before returning the error code.
+On Fri, 28 Nov 2025 at 05:17, Macpaul Lin <macpaul.lin@mediatek.com> wrote:
+>
+> Remove scpsys_get_legacy_regmap(), replacing its usage with
+> of_find_node_with_property().  Explicitly call of_node_get(np) before each
+> of_find_node_with_property() to maintain correct node reference counting.
+>
+> The of_find_node_with_property() function "consumes" its input by calling
+> of_node_put() internally, whether or not it finds a match.
+> Currently, dev->of_node (np) is passed multiple times in sequence without
+> incrementing its reference count, causing it to be decremented multiple times
+> and risking early memory release.
+>
+> Adding of_node_get(np) before each call balances the reference count,
+> preventing premature node release.
+>
+> Fixes: c1bac49fe91f ("pmdomains: mtk-pm-domains: Fix spinlock recursion in probe")
+> Cc: Stable@vger.kernel.org
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> Tested-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-How do you think about to use the attribute =E2=80=9C__free(kfree)=E2=80=
-=9D?
-https://elixir.bootlin.com/linux/v6.19-rc2/source/include/linux/slab.h#L51=
-2
-https://elixir.bootlin.com/linux/v6.19-rc2/source/drivers/soc/mediatek/mtk=
--svs.c#L785-L813
+Applied for fixes, thanks!
 
-Regards,
-Markus
+Kind regards
+Uffe
+
+
+
+> ---
+>  drivers/pmdomain/mediatek/mtk-pm-domains.c | 21 ++++++---------------
+>  1 file changed, 6 insertions(+), 15 deletions(-)
+>
+> Changes for v2:
+>  - Rewording commit message.
+>  - Add Fixes: and Tested-by: tag, thanks.
+>
+> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> index 80561d27f2b2..f64f24d520dd 100644
+> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> @@ -984,18 +984,6 @@ static void scpsys_domain_cleanup(struct scpsys *scpsys)
+>         }
+>  }
+>
+> -static struct device_node *scpsys_get_legacy_regmap(struct device_node *np, const char *pn)
+> -{
+> -       struct device_node *local_node;
+> -
+> -       for_each_child_of_node(np, local_node) {
+> -               if (of_property_present(local_node, pn))
+> -                       return local_node;
+> -       }
+> -
+> -       return NULL;
+> -}
+> -
+>  static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *scpsys)
+>  {
+>         const u8 bp_blocks[3] = {
+> @@ -1017,7 +1005,8 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+>          * this makes it then possible to allocate the array of bus_prot
+>          * regmaps and convert all to the new style handling.
+>          */
+> -       node = scpsys_get_legacy_regmap(np, "mediatek,infracfg");
+> +       of_node_get(np);
+> +       node = of_find_node_with_property(np, "mediatek,infracfg");
+>         if (node) {
+>                 regmap[0] = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg");
+>                 of_node_put(node);
+> @@ -1030,7 +1019,8 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+>                 regmap[0] = NULL;
+>         }
+>
+> -       node = scpsys_get_legacy_regmap(np, "mediatek,smi");
+> +       of_node_get(np);
+> +       node = of_find_node_with_property(np, "mediatek,smi");
+>         if (node) {
+>                 smi_np = of_parse_phandle(node, "mediatek,smi", 0);
+>                 of_node_put(node);
+> @@ -1048,7 +1038,8 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
+>                 regmap[1] = NULL;
+>         }
+>
+> -       node = scpsys_get_legacy_regmap(np, "mediatek,infracfg-nao");
+> +       of_node_get(np);
+> +       node = of_find_node_with_property(np, "mediatek,infracfg-nao");
+>         if (node) {
+>                 regmap[2] = syscon_regmap_lookup_by_phandle(node, "mediatek,infracfg-nao");
+>                 num_regmaps++;
+> --
+> 2.45.2
+>
 
