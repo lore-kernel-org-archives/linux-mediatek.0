@@ -4,62 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA80D3B7E5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Dec 2025 16:22:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCC81D3B7E5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Dec 2025 16:26:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l98t+1M1VWTPisKtazrXq0pFOX2xbqWtZ2NXrwza3Wk=; b=DiXSgV7NsveCLEq8NOw9saMNSz
-	Z8mmWgY4pknZT4JclnknsROMKWWXVxheqf1QkOdd+ajqybu4Sg72vA6Pee5rrdX4UiPliMxYdq6/O
-	+ujdLmDc2rGfbF8wSeVoZz9QlYpJ8OJbybx7oxAc1IoMj8Fz8zs8kyoIDhRT/dWygRfFFI+N1L5De
-	ytyQw/vTJfBV1clQl8OU/MvCotlKlO2Ee0wmh8Q8tRkfNcwtVWsmsvVTzNtCrBzaDtMDtNeUn4s2B
-	/njLd8O4nFMGIVeW0esy5CSO6V9B9zRqAn7tKGbXz2MUWCSkQB2hNXR+IomtiCR8mtw4JCfJU3Myb
-	CcEGbBaQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jDJHn13oguvNY4hFfLnIJ/qXHTZIoyp6PophlUZUA4c=; b=EJlMbu7+kIH6Sqje3jDAW5mcdq
+	+g+GlWXhdnVoLW8KTyYUASrZ/BY46MwtBwjyw59E6JtCE+tyKMMBJvNfNddj4FeWvUkn1YEYL1XHs
+	ui9n8ZCphWbGzP1lXs99z5aMZ9FTuiHGNGbdlbGbIW418OvC2CyMtGAl2wSOwDsGjKSWOBYF4sTCS
+	e5FPf9cT3TEueCafeK+ZO0kpkcEfybuCG/QlKjWz86EenZX/YpWlvehZ8uxJ5Futgz0jsUc8dF+sO
+	VoQdmcWAHxe9VANgyI4jvm+1yx9MTKxz02EaGu7jqH/lFm6ybCeCbUMnSpnw9qe4GANea7vj+YlpN
+	73GTNkyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZtWv-00000002seH-0MW7;
-	Sun, 28 Dec 2025 16:22:05 +0000
-Received: from mail-m81171.netease.com ([47.88.81.171])
+	id 1vZtbT-00000002sr8-29r7;
+	Sun, 28 Dec 2025 16:26:47 +0000
+Received: from mail-m128106.netease.com ([103.209.128.106])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZtWr-00000002sdO-0her;
-	Sun, 28 Dec 2025 16:22:03 +0000
-Received: from LAPTOP-N070L597.localdomain (unknown [223.112.146.162])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2ecc4355c;
-	Mon, 29 Dec 2025 00:21:50 +0800 (GMT+08:00)
+	id 1vZtbQ-00000002sqm-1VEF;
+	Sun, 28 Dec 2025 16:26:46 +0000
+Received: from LAPTOP-N070L597.localdomain (unknown [222.191.246.242])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 2ecc43598;
+	Mon, 29 Dec 2025 00:26:39 +0800 (GMT+08:00)
 From: Zilin Guan <zilin@seu.edu.cn>
-To: markus.elfring@web.de
+To: matthias.bgg@gmail.com
 Cc: angelogioacchino.delregno@collabora.com,
-	jianhao.xu@seu.edu.cn,
-	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	zilin@seu.edu.cn
-Subject: Re: [PATCH] soc: mediatek: SVS: Fix memory leak in svs_enable_debug_write()
-Date: Sun, 28 Dec 2025 16:21:49 +0000
-Message-Id: <20251228162149.3825287-1-zilin@seu.edu.cn>
+	Zilin Guan <zilin@seu.edu.cn>,
+	Jianhao Xu <jianhao.xu@seu.edu.cn>
+Subject: [PATCH v2] soc: mediatek: svs: Fix memory leak in svs_enable_debug_write()
+Date: Sun, 28 Dec 2025 16:26:36 +0000
+Message-Id: <20251228162636.3829733-1-zilin@seu.edu.cn>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20dca540-1c20-460a-9079-718db465c518@web.de>
-References: <20dca540-1c20-460a-9079-718db465c518@web.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-HM-Tid: 0a9b65c41e9e03a1kunmc737f434adbec
+X-HM-Tid: 0a9b65c8882a03a1kunm85e1b38dade86
 X-HM-MType: 10
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZTBgdVkwdH0hKTk1NHhofTFYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlJSUhVSkpJVUpPTVVKTUlZV1kWGg8SFR0UWUFZT0tIVUpLSUJNS0pVSktLVU
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaSBhCVhoYQ00eQk4ZHUxNSlYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlJSUlVSkJKVUlPTVVJT0lZV1kWGg8SFR0UWUFZT0tIVUpLSUhOQ0NVSktLVU
 	tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=IrWp0y+HsM7/beoCKxodyzVI62saRWopFbY4hwdW/E5NQbE6Ii8BgW5s/QNFI67Ub8TDsS9XxIARMSUHXhzxCSkJ/gO6VAbaP9EgbV4qHR/KUfbeZYMJGvu29bDx6nvxgvtmtpBgnRUYfE9ojuNOXCEM4KbjNYUnuGBwSqPkJao=; s=default; c=relaxed/relaxed; d=seu.edu.cn; v=1;
-	bh=l98t+1M1VWTPisKtazrXq0pFOX2xbqWtZ2NXrwza3Wk=;
+	b=nlpwis8umtH6crvMFupAyLUqMOSBZ+AIWqxOCqcJbAJcHTX92PC7vN2w0mjWwU2Ditin9qr5zNCPTw4kdlLHxl3niwPoZch+K3etI2J9dGg5/13+SIXvEMXWKO6+O39ouBuGoTtRzCgJ2ffuKkJ47HTcwTRD/RPiDULBbiBRtE8=; s=default; c=relaxed/relaxed; d=seu.edu.cn; v=1;
+	bh=jDJHn13oguvNY4hFfLnIJ/qXHTZIoyp6PophlUZUA4c=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251228_082201_945334_AAF09A50 
-X-CRM114-Status: UNSURE (   8.32  )
+X-CRM114-CacheID: sfid-20251228_082645_542618_C2732DE6 
+X-CRM114-Status: UNSURE (   7.88  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,25 +71,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Dec 28, 2025 at 03:19:00PM+0100, Markus Elfring wrote:
-> …
-> > Fix this by freeing buf before returning the error code.
-> 
-> How do you think about to use the attribute “__free(kfree)”?
-> https://elixir.bootlin.com/linux/v6.19-rc2/source/include/linux/slab.h#L512
-> https://elixir.bootlin.com/linux/v6.19-rc2/source/drivers/soc/mediatek/mtk-svs.c#L785-L813
-> 
-> Regards,
-> Markus
+In svs_enable_debug_write(), the buf allocated by memdup_user_nul()
+is leaked if kstrtoint() fails.
 
-Hi Markus,
+Fix this by using __free(kfree) to automatically free buf, eliminating
+the need for explicit kfree() calls and preventing leaks.
 
-Thanks for the suggestion.
+Fixes: 13f1bbcfb582 ("soc: mediatek: SVS: add debug commands")
+Co-developed-by: Jianhao Xu <jianhao.xu@seu.edu.cn>
+Signed-off-by: Jianhao Xu <jianhao.xu@seu.edu.cn>
+Signed-off-by: Zilin Guan <zilin@seu.edu.cn>
+---
+Changes in v2:
+- Use __free(kfree) to simplify memory management.
+---
+ drivers/soc/mediatek/mtk-svs.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-I agree that using the "__free(kfree)" attribute is a good way to 
-simplify memory management here. I will apply this change in the 
-v2 patch.
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index f45537546553..5ede59299613 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -789,7 +789,7 @@ static ssize_t svs_enable_debug_write(struct file *filp,
+ 	struct svs_bank *svsb = file_inode(filp)->i_private;
+ 	struct svs_platform *svsp = dev_get_drvdata(svsb->dev);
+ 	int enabled, ret;
+-	char *buf = NULL;
++	char *buf __free(kfree) = NULL;
+ 
+ 	if (count >= PAGE_SIZE)
+ 		return -EINVAL;
+@@ -807,8 +807,6 @@ static ssize_t svs_enable_debug_write(struct file *filp,
+ 		svsb->mode_support = SVSB_MODE_ALL_DISABLE;
+ 	}
+ 
+-	kfree(buf);
+-
+ 	return count;
+ }
+ 
+-- 
+2.34.1
 
-Regards,
-Zilin Guan
 
