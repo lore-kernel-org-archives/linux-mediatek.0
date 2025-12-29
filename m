@@ -4,73 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39CD4E94102
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Dec 2025 23:42:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16E67E94102
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Dec 2025 23:43:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vWcfZNdGwkDeFXT0U+DkhMgrguAsOEcCdu03PYHlSyY=; b=zIwhmlL0qGQs6948q/ck9d7PZB
-	ysmMbweDsCaHQmnK41gtH9PTiUWvWr+eWUU8TFD85v42zQ/M9GV/PTahkOI0Ke5utbHujF6nKSzMN
-	HpYdGp7myY9Qq+DtQV18r1jr+mc9K5j29eF6NFuKpmxEWMKiMWFN9k5UMHC69lPtrNrdG4DbKRPnQ
-	pAxMTZkuAH3T3D7eE62YJrDIht6R2jtvUwsEnfqBJZJlBN4F1dYvP2CIG2So6xTXrThFVt6mDSe2P
-	Gjd0loIOx+NAzxFuARUDr5FOxWW6v/o5wkP2jh2YzH/jSyW0e4sGPw3EfMYdgiU9uzOZXx3/sBY5r
-	u13hYIcw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dNgYyCpMJvlkYiYRHVv/wF9yJ0tD4sV2bfJTpVnFanA=; b=33UlYH7CUw1kTkZWTz1Pyv7VQ6
+	aeNuh0KJJxjolfOk16pv5m8bMvKeuS4t6AvFRSHzqUFm3Ya7EqDE0jyLsNh1iNRra14YBvdJcMksL
+	kwQ+sGl/FqesFZPxtFmWkR7QypQRJQnGmW/geUBlWubzwd/nIShZK6Rk5UIqyuFcHN4eYv6CPP2pf
+	l/FwqJSVyK8amPcYhkGRuIbbfb1gKE0HXw6MLQib3eOs5AY3n/nHaGd49A3X1w7tZbR7eB8fx7BoS
+	KSviKLRb6X4JWpr+VEiP1DjJneGEZB4znImMZwyET+jitmXn2023r1Ss5ZkoK28BNLCWQRa6+x9U9
+	NPZMTfdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaMsJ-000000049c9-32OW;
-	Mon, 29 Dec 2025 23:42:07 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vaMtC-000000049iW-0DHW;
+	Mon, 29 Dec 2025 23:43:02 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaMsI-000000049bu-49wC
-	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Dec 2025 23:42:07 +0000
+	id 1vaMt8-000000049hr-0pTn;
+	Mon, 29 Dec 2025 23:42:58 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 58DC760017
-	for <linux-mediatek@lists.infradead.org>; Mon, 29 Dec 2025 23:42:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0CFC5C2BC86
-	for <linux-mediatek@lists.infradead.org>; Mon, 29 Dec 2025 23:42:06 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 6637160010;
+	Mon, 29 Dec 2025 23:42:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1396C4CEF7;
+	Mon, 29 Dec 2025 23:42:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767051726;
-	bh=M744/O3+s1JL5qiahLA1Uihmyo12jfWHL5kieAH92fo=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=cYWSSgMcPqcEBwcdyurlCbJKqSzS8bAjBjU+7poL8b87075tSxMpUx37FAAUb/8Gr
-	 RxHGpfjXK/K/CaB+iI14Tba2s/C0n0vtX1fsWC5xpN6yYWYNSgkIY45WHlPGr6vx+6
-	 uQV6QFpbC/5rXdgkOvnCqkzuFFeilLyMoCdXM2O0eZ8vSAzW2C8Q+TDA8E1cquzKpJ
-	 ikGJru96vxoAQT5iXp9d1ST45GoTYDlyBHDADSnJKaXbSGCuBflKdXZpVwjZsUC/fl
-	 RoW3AYKliHr/YKyjByqpTEmUft8vktEKsEYEbFu2L7cAAQvkLBDGDaWVjJiUuB8/T+
-	 VmAU923qmAt+Q==
-Received: by mail-lf1-f43.google.com with SMTP id 2adb3069b0e04-598efcf3a89so9318664e87.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 29 Dec 2025 15:42:05 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCUfxrMwFc0ekbZszVfxSzIXCPMKXiMeq9H/7nSDcqrGKJhFT7H7gxjqLA2AYRjj3bYLn6yvOV51snAOrsxiMg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy3aArJ+9RTeMR+HV+mFtnZXPtDAVsBZIX1I4u1JYkw+pz91ORD
-	5klXkHdy6A6jhQUnEA+W3vBnoaQkpXgClL8QIF9Bx+ibwSOZ+tiw00KPikNGllA1OSQyeQwY6QV
-	9Y/+tWoEPlklC8hD/SSHB/rhrgUKKZpA=
-X-Google-Smtp-Source: AGHT+IHBu7p/2mmx+FhXyVAuttPCWqOm5TyWz6tjpfh1VSCw7oFlLpS7Z57a7r/KgvwSEW2YM20kkC53mORH9TEqSQU=
-X-Received: by 2002:a05:6512:33d0:b0:594:314d:ac53 with SMTP id
- 2adb3069b0e04-59a17d9a47emr10254052e87.23.1767051724351; Mon, 29 Dec 2025
- 15:42:04 -0800 (PST)
+	s=k20201202; t=1767051777;
+	bh=TVTtzPN7iGU0L+GxB2qxYDseMAg9L/Mo6+0/69YF7QY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=oaAU3kYonyLKqBlk2yQcvrsXmXBRDXwlss3iMtl/g/bdjc2V4TprMqHIdbAf4cCnf
+	 rfDpukakTcAxhSYh8aejRjjr+tkCWIk66WYwTzXlvQDELDvKoUlzP6iFQawWIR+0fS
+	 X6urplCS5qqQegmBAwbVRSEHRiynt++7B8HFtVUd89DUMv/gpml8Ar+BI/lfoF4yi4
+	 KHLXOkPwGfDFSg16lG4pppm7t6lf0Qa8oc+Ff5FABaQOWW+UGSbLxA5Mwg4wG3T07J
+	 ZEv7Hj5PMoyqZ9LJ1a+hGu6XNBSvaqQDeyipWGQt4ozT8VZ5nq41TDKGkvI7q1nNg6
+	 /9S1jkrAMEq1A==
+Date: Mon, 29 Dec 2025 17:42:56 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>, Lee Jones <lee@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	MandyJH Liu <mandyjh.liu@mediatek.com>,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: mediatek: Drop inactive MandyJH Liu
+Message-ID: <176705177359.2804367.15136995230648619621.robh@kernel.org>
+References: <20251219074035.13001-2-krzysztof.kozlowski@oss.qualcomm.com>
 MIME-Version: 1.0
-References: <20251114104325.116471-1-marco.crivellari@suse.com> <CAAofZF51pkOzrg_nO0Mhx6g9b3JPtO3n+0YE=WtSgj_F6wnY4w@mail.gmail.com>
-In-Reply-To: <CAAofZF51pkOzrg_nO0Mhx6g9b3JPtO3n+0YE=WtSgj_F6wnY4w@mail.gmail.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Mon, 29 Dec 2025 17:41:53 -0600
-X-Gmail-Original-Message-ID: <CAGp9Lzoj2jeGF+t-UP0gAykCZ96-OkjummeJRGniYfagvY-BPA@mail.gmail.com>
-X-Gm-Features: AQt7F2r91KaVUEyIzuYeQQ_55HRYc3_5T1Vv877riVQa3S2VQymK3OUa69R78Y8
-Message-ID: <CAGp9Lzoj2jeGF+t-UP0gAykCZ96-OkjummeJRGniYfagvY-BPA@mail.gmail.com>
-Subject: Re: [PATCH v2] wifi: mt76: replace use of system_wq with system_percpu_wq
-To: Marco Crivellari <marco.crivellari@suse.com>
-Cc: linux-kernel@vger.kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Tejun Heo <tj@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>, 
-	Frederic Weisbecker <frederic@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, 
-	Michal Hocko <mhocko@suse.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251219074035.13001-2-krzysztof.kozlowski@oss.qualcomm.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,67 +72,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 24, 2025 at 9:27=E2=80=AFAM Marco Crivellari
-<marco.crivellari@suse.com> wrote:
->
-> On Fri, Nov 14, 2025 at 11:43=E2=80=AFAM Marco Crivellari
-> <marco.crivellari@suse.com> wrote:
-> >[...]
-> >  drivers/net/wireless/mediatek/mt76/mt7921/init.c | 2 +-
-> >  drivers/net/wireless/mediatek/mt76/mt7925/init.c | 2 +-
-> >  2 files changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers=
-/net/wireless/mediatek/mt76/mt7921/init.c
-> > index b9098a7331b1..95764b82da39 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> > @@ -343,7 +343,7 @@ int mt7921_register_device(struct mt792x_dev *dev)
-> >         dev->mphy.hw->wiphy->available_antennas_rx =3D dev->mphy.chainm=
-ask;
-> >         dev->mphy.hw->wiphy->available_antennas_tx =3D dev->mphy.chainm=
-ask;
-> >
-> > -       queue_work(system_wq, &dev->init_work);
-> > +       queue_work(system_percpu_wq, &dev->init_work);
-> >
-> >         return 0;
-> >  }
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers=
-/net/wireless/mediatek/mt76/mt7925/init.c
-> > index d7d5afe365ed..e33ab4849e8a 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-> > @@ -420,7 +420,7 @@ int mt7925_register_device(struct mt792x_dev *dev)
-> >         dev->mphy.hw->wiphy->available_antennas_rx =3D dev->mphy.chainm=
-ask;
-> >         dev->mphy.hw->wiphy->available_antennas_tx =3D dev->mphy.chainm=
-ask;
-> >
-> > -       queue_work(system_wq, &dev->init_work);
-> > +       queue_work(system_percpu_wq, &dev->init_work);
-> >
-> >         return 0;
-> >  }
->
->
-> Gentle ping.
->
-> Thanks!
 
-Hi Marco,
+On Fri, 19 Dec 2025 08:40:36 +0100, Krzysztof Kozlowski wrote:
+> There are no emails from MandyJH Liu, no reviews [1] of these bindings, so
+> clearly no maintenance is happening here.  Switch to Mediatek SoC
+> maintainers.
+> 
+> Cc: MandyJH Liu <mandyjh.liu@mediatek.com>
+> Link: https://lore.kernel.org/all/?q=f%3Amandyjh.liu%40mediatek.com [1]
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> ---
+>  .../devicetree/bindings/mfd/mediatek,mt8195-scpsys.yaml        | 3 ++-
+>  .../devicetree/bindings/power/mediatek,power-controller.yaml   | 2 +-
+>  2 files changed, 3 insertions(+), 2 deletions(-)
+> 
 
-The patch has been queued in the mt76 tree. Thanks for your work on this.
-https://github.com/nbd168/wireless/commit/ee518f914cd901c16fa08a6f228b26655=
-1f72a6a
+Applied, thanks!
 
-            Sean
-
->
-> --
->
-> Marco Crivellari
->
-> L3 Support Engineer
->
 
