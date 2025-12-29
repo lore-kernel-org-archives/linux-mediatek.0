@@ -4,59 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCC81D3B7E5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Dec 2025 16:26:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 326F7E8FDB1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Dec 2025 04:32:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jDJHn13oguvNY4hFfLnIJ/qXHTZIoyp6PophlUZUA4c=; b=EJlMbu7+kIH6Sqje3jDAW5mcdq
-	+g+GlWXhdnVoLW8KTyYUASrZ/BY46MwtBwjyw59E6JtCE+tyKMMBJvNfNddj4FeWvUkn1YEYL1XHs
-	ui9n8ZCphWbGzP1lXs99z5aMZ9FTuiHGNGbdlbGbIW418OvC2CyMtGAl2wSOwDsGjKSWOBYF4sTCS
-	e5FPf9cT3TEueCafeK+ZO0kpkcEfybuCG/QlKjWz86EenZX/YpWlvehZ8uxJ5Futgz0jsUc8dF+sO
-	VoQdmcWAHxe9VANgyI4jvm+1yx9MTKxz02EaGu7jqH/lFm6ybCeCbUMnSpnw9qe4GANea7vj+YlpN
-	73GTNkyA==;
+	bh=7qsA59Z6VFaS78baJa7kQDv/8RvoseWsssX5vdMZZ1o=; b=02JkCj8elsoQN3QHePDghFqw5A
+	CXTZN1bIfNdrmxrKGCVfvx6/YEFfjO1onvyWAB0SeHlS2Fb1F1YtdnFrYq6U4cxailwu3efijLJl/
+	dtOc6kx7ePhiSsvJzAe8bMO9MP3A2Re0Y5Xmu9XGHuGxKngbZcZi67typdEHPTwJkcMxZJeU+TT6X
+	7+u+fVm84E487RatKjzzOCMKwiYpy7AyL065QfgFOxjGO0pfZwxeToNDoeQTtTDJt8MXgXJEX3geL
+	ax8xIh8RpDH4XcGyRlCLSlD48UV92Wu2tbyaRw05Y6yMwWmE2MppIp6I2ezQGX3KNNCPDjCgh5awZ
+	yOER17aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZtbT-00000002sr8-29r7;
-	Sun, 28 Dec 2025 16:26:47 +0000
-Received: from mail-m128106.netease.com ([103.209.128.106])
+	id 1va4vf-00000003JtL-2JEA;
+	Mon, 29 Dec 2025 04:32:23 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vZtbQ-00000002sqm-1VEF;
-	Sun, 28 Dec 2025 16:26:46 +0000
-Received: from LAPTOP-N070L597.localdomain (unknown [222.191.246.242])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 2ecc43598;
-	Mon, 29 Dec 2025 00:26:39 +0800 (GMT+08:00)
-From: Zilin Guan <zilin@seu.edu.cn>
-To: matthias.bgg@gmail.com
-Cc: angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1va4vd-00000003Jsx-3P06
+	for linux-mediatek@lists.infradead.org;
+	Mon, 29 Dec 2025 04:32:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2B6C240DC5;
+	Mon, 29 Dec 2025 04:32:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C4716C4CEF7;
+	Mon, 29 Dec 2025 04:32:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1766982739;
+	bh=kLJp2zW30SyEirLd2hJk5YmCXnYsCmPJ8ttStB77kFw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=R17pDxF2cYQGJjr0Lui2Oskacm9bRRnadyTcMahexEeGvO8Ps+pERAKLWB9+MvSyj
+	 Gb+GMAyo0U+bGza6YOMQXCf4uBGdozhNV3kLFPUE8wrQyoLOYtH5DLxRX2y3fZpGNY
+	 sVhMUjr4bQ2eNLUhhYBJBPTuUbmhMOpeHcH2IZPSW7ZII/aftWtl55uCpX29x7G30P
+	 T92ByQqgJVMEVaEQJqVaaNlRhE6ny2NEr9DG7E5sVdbeUizVVe4iDhet4VE7ttrQiT
+	 d+kIEmC/ZCfmSBHoPuvd0OdF2GvRtAyJphGQN2s2Kd72iJvVWzKNEUVOL7O658a3Bt
+	 ABlYzJ3S4+5Wg==
+From: Tzung-Bi Shih <tzungbi@kernel.org>
+To: Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-remoteproc@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Zilin Guan <zilin@seu.edu.cn>,
-	Jianhao Xu <jianhao.xu@seu.edu.cn>
-Subject: [PATCH v2] soc: mediatek: svs: Fix memory leak in svs_enable_debug_write()
-Date: Sun, 28 Dec 2025 16:26:36 +0000
-Message-Id: <20251228162636.3829733-1-zilin@seu.edu.cn>
-X-Mailer: git-send-email 2.34.1
+	tzungbi@kernel.org
+Subject: [PATCH] remoteproc: mediatek: Break lock dependency to `prepare_lock`
+Date: Mon, 29 Dec 2025 04:31:46 +0000
+Message-ID: <20251229043146.4102967-1-tzungbi@kernel.org>
+X-Mailer: git-send-email 2.52.0.351.gbe84eed79e-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-HM-Tid: 0a9b65c8882a03a1kunm85e1b38dade86
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaSBhCVhoYQ00eQk4ZHUxNSlYeHw5VEwETFhoSFy
-	QUDg9ZV1kYEgtZQVlJSUlVSkJKVUlPTVVJT0lZV1kWGg8SFR0UWUFZT0tIVUpLSUhOQ0NVSktLVU
-	tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=nlpwis8umtH6crvMFupAyLUqMOSBZ+AIWqxOCqcJbAJcHTX92PC7vN2w0mjWwU2Ditin9qr5zNCPTw4kdlLHxl3niwPoZch+K3etI2J9dGg5/13+SIXvEMXWKO6+O39ouBuGoTtRzCgJ2ffuKkJ47HTcwTRD/RPiDULBbiBRtE8=; s=default; c=relaxed/relaxed; d=seu.edu.cn; v=1;
-	bh=jDJHn13oguvNY4hFfLnIJ/qXHTZIoyp6PophlUZUA4c=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251228_082645_542618_C2732DE6 
-X-CRM114-Status: UNSURE (   7.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251228_203221_891046_1A378D9E 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,46 +73,184 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In svs_enable_debug_write(), the buf allocated by memdup_user_nul()
-is leaked if kstrtoint() fails.
+`scp_ipi_send` acquires `prepare_lock` via `clk_prepare_enable` while
+the caller often holds `ec_dev->lock` (e.g., `cros_ec_cmd_xfer`).  The
+reverse dependency exists where `clk_prepare` can trigger operations
+that eventually take `ec_dev->lock` (e.g., via sysfs/regulator/genpd).
 
-Fix this by using __free(kfree) to automatically free buf, eliminating
-the need for explicit kfree() calls and preventing leaks.
+Move clock prepare / unprepare operations to remoteproc prepare() /
+unprepare() callbacks to break the lock dependency from `ec_dev->lock`
+to `prepare_lock`.
 
-Fixes: 13f1bbcfb582 ("soc: mediatek: SVS: add debug commands")
-Co-developed-by: Jianhao Xu <jianhao.xu@seu.edu.cn>
-Signed-off-by: Jianhao Xu <jianhao.xu@seu.edu.cn>
-Signed-off-by: Zilin Guan <zilin@seu.edu.cn>
+This breaks the dependency chain in the lockdep report:
+> WARNING: possible circular locking dependency detected
+> ...
+> the existing dependency chain (in reverse order) is:
+> ...
+> -> #0 (prepare_lock){+.+.}-{3:3}:
+>        __lock_acquire
+>        lock_acquire
+>        __mutex_lock_common
+>        mutex_lock_nested
+>        clk_prepare
+>        scp_ipi_send [mtk_scp_ipi]
+>        scp_send_ipi [mtk_scp]
+>        mtk_rpmsg_send [mtk_rpmsg]
+>        rpmsg_send [rpmsg_core]
+>        cros_ec_pkt_xfer_rpmsg [cros_ec_rpmsg]
+
+Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
 ---
-Changes in v2:
-- Use __free(kfree) to simplify memory management.
----
- drivers/soc/mediatek/mtk-svs.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/remoteproc/mtk_scp.c     | 39 +++++++++++++++++++++++---------
+ drivers/remoteproc/mtk_scp_ipi.c |  4 ++--
+ 2 files changed, 30 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index f45537546553..5ede59299613 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -789,7 +789,7 @@ static ssize_t svs_enable_debug_write(struct file *filp,
- 	struct svs_bank *svsb = file_inode(filp)->i_private;
- 	struct svs_platform *svsp = dev_get_drvdata(svsb->dev);
- 	int enabled, ret;
--	char *buf = NULL;
-+	char *buf __free(kfree) = NULL;
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index db8fd045468d..98d00bd5200c 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -283,7 +283,7 @@ static irqreturn_t scp_irq_handler(int irq, void *priv)
+ 	struct mtk_scp *scp = priv;
+ 	int ret;
  
- 	if (count >= PAGE_SIZE)
- 		return -EINVAL;
-@@ -807,8 +807,6 @@ static ssize_t svs_enable_debug_write(struct file *filp,
- 		svsb->mode_support = SVSB_MODE_ALL_DISABLE;
+-	ret = clk_prepare_enable(scp->clk);
++	ret = clk_enable(scp->clk);
+ 	if (ret) {
+ 		dev_err(scp->dev, "failed to enable clocks\n");
+ 		return IRQ_NONE;
+@@ -291,7 +291,7 @@ static irqreturn_t scp_irq_handler(int irq, void *priv)
+ 
+ 	scp->data->scp_irq_handler(scp);
+ 
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 
+ 	return IRQ_HANDLED;
+ }
+@@ -665,7 +665,7 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
+ 	struct device *dev = scp->dev;
+ 	int ret;
+ 
+-	ret = clk_prepare_enable(scp->clk);
++	ret = clk_enable(scp->clk);
+ 	if (ret) {
+ 		dev_err(dev, "failed to enable clocks\n");
+ 		return ret;
+@@ -680,7 +680,7 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
+ 
+ 	ret = scp_elf_load_segments(rproc, fw);
+ leave:
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 
+ 	return ret;
+ }
+@@ -691,14 +691,14 @@ static int scp_parse_fw(struct rproc *rproc, const struct firmware *fw)
+ 	struct device *dev = scp->dev;
+ 	int ret;
+ 
+-	ret = clk_prepare_enable(scp->clk);
++	ret = clk_enable(scp->clk);
+ 	if (ret) {
+ 		dev_err(dev, "failed to enable clocks\n");
+ 		return ret;
  	}
  
--	kfree(buf);
--
- 	return count;
+ 	ret = scp_ipi_init(scp, fw);
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 	return ret;
  }
  
+@@ -709,7 +709,7 @@ static int scp_start(struct rproc *rproc)
+ 	struct scp_run *run = &scp->run;
+ 	int ret;
+ 
+-	ret = clk_prepare_enable(scp->clk);
++	ret = clk_enable(scp->clk);
+ 	if (ret) {
+ 		dev_err(dev, "failed to enable clocks\n");
+ 		return ret;
+@@ -734,14 +734,14 @@ static int scp_start(struct rproc *rproc)
+ 		goto stop;
+ 	}
+ 
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 	dev_info(dev, "SCP is ready. FW version %s\n", run->fw_ver);
+ 
+ 	return 0;
+ 
+ stop:
+ 	scp->data->scp_reset_assert(scp);
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 	return ret;
+ }
+ 
+@@ -909,7 +909,7 @@ static int scp_stop(struct rproc *rproc)
+ 	struct mtk_scp *scp = rproc->priv;
+ 	int ret;
+ 
+-	ret = clk_prepare_enable(scp->clk);
++	ret = clk_enable(scp->clk);
+ 	if (ret) {
+ 		dev_err(scp->dev, "failed to enable clocks\n");
+ 		return ret;
+@@ -917,12 +917,29 @@ static int scp_stop(struct rproc *rproc)
+ 
+ 	scp->data->scp_reset_assert(scp);
+ 	scp->data->scp_stop(scp);
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 
+ 	return 0;
+ }
+ 
++static int scp_prepare(struct rproc *rproc)
++{
++	struct mtk_scp *scp = rproc->priv;
++
++	return clk_prepare(scp->clk);
++}
++
++static int scp_unprepare(struct rproc *rproc)
++{
++	struct mtk_scp *scp = rproc->priv;
++
++	clk_unprepare(scp->clk);
++	return 0;
++}
++
+ static const struct rproc_ops scp_ops = {
++	.prepare	= scp_prepare,
++	.unprepare	= scp_unprepare,
+ 	.start		= scp_start,
+ 	.stop		= scp_stop,
+ 	.load		= scp_load,
+diff --git a/drivers/remoteproc/mtk_scp_ipi.c b/drivers/remoteproc/mtk_scp_ipi.c
+index c068227e251e..7a37e273b3af 100644
+--- a/drivers/remoteproc/mtk_scp_ipi.c
++++ b/drivers/remoteproc/mtk_scp_ipi.c
+@@ -171,7 +171,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
+ 	    WARN_ON(len > scp_sizes->ipi_share_buffer_size) || WARN_ON(!buf))
+ 		return -EINVAL;
+ 
+-	ret = clk_prepare_enable(scp->clk);
++	ret = clk_enable(scp->clk);
+ 	if (ret) {
+ 		dev_err(scp->dev, "failed to enable clock\n");
+ 		return ret;
+@@ -211,7 +211,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
+ 
+ unlock_mutex:
+ 	mutex_unlock(&scp->send_lock);
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 
+ 	return ret;
+ }
 -- 
-2.34.1
+2.52.0.351.gbe84eed79e-goog
 
 
