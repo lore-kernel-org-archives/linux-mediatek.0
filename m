@@ -4,57 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17376E8FDB1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Dec 2025 04:33:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7544E8FDB1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Dec 2025 08:19:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DmAV12QOUGDHKZ+mhrbtrDVsaH6cDTqE6KIWyI67ydQ=; b=NAVR/ITZNWzOZgMDgVeQrUArxs
-	DIU1wO2Iz/dRA4gY2yB9efNVPsWc17Lf8Tj+CuUJY6giEr8GgiY8biz/plx87JNn3p/V+h210ZAtd
-	FWeNzcKZ9p9L1ZHCGIbBAcryKVjGYW/sAFe+9WHUkvHruxmmyZmPy7xJ8u7em7kzspQHtA6NYUfJu
-	Dc7nws0dlC4+9g8cGjKDgj2c0QjTIMvWdogu7oofqatY5XEuuCogRuGm4Z5xEQqaGzngUDqaW1Xj2
-	3vPyAsacUtyGm0bvKeIKZltuj/eri8pZy+s2HcUwfguF0oYNsy1taCVJ2uksp1iniv/dl7V7sZufX
-	RobiTDpA==;
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=j1ThLRQyHIDweVLjfaoObSeSIbqtv2WtMM+/ZLETnkM=; b=tZPj4ABgL42XB7UAWl1Od/WhOp
+	mvJ1gLPB/UM+Aw7CsMHrdAXFTxfL/n+dIlDzoQHXtdUALHPs2xjlawPPkmUye8DFAt5DzB31uIsPl
+	kFuUpgWdtjR3M0ezkeVOd4GndK1+oX7LRHDsXJizGUsdrXF4He4My7ABWydICIbpp81B3LzoMbDgM
+	o91RdT0gdiordjZOXjxChK7bV4DuhlTb+lkcYJMna0SosW8Pn0kjs9NFZor74ijco9QPnpQwjlb57
+	RhVEPp3jnZz8nWFKkmHLpiz10JsFmwkweK3sDXjXd8SeDxnR4O19w8KcG8I2oVoKvmimjrUiKl2O7
+	ZI1A7f3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1va4wN-00000003Jva-06GX;
-	Mon, 29 Dec 2025 04:33:07 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1va8Tn-00000003SwL-1TWo;
+	Mon, 29 Dec 2025 08:19:51 +0000
+Received: from mout.web.de ([212.227.15.3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1va4wK-00000003JvS-45tb
-	for linux-mediatek@lists.infradead.org;
-	Mon, 29 Dec 2025 04:33:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1E7E260010;
-	Mon, 29 Dec 2025 04:33:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD8DCC116C6;
-	Mon, 29 Dec 2025 04:33:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1766982781;
-	bh=ErKI2Z2/Kk3WiDTOjfPDUCn4imOWSzq/e3xSTJnl980=;
-	h=From:To:Cc:Subject:Date:From;
-	b=eCW0ySH+cLwedhCmTz02YCl3TIiQQzZJK5hCXDgc7jzB8gz41BP8DSM/lIa1mWvyO
-	 vDpvu0HeifngCrai+U2X1K3X2du3HXsSn/EDHUeKHVTd1pGAa6KFVe9sPlbsHNueNO
-	 5DW0WrwJKBw3nJx9l22Cwq8RWHkk/X30zw3s5DCS4S00TWUaHc2ZDgJfo5FmNSeKzZ
-	 e8nqYN7CaafOiMuOBcvWAtddxdA1iA8GYowE6lIu6KkCi+LAlQA6ow5FgxLJ5sGEb4
-	 AnHU8Ord7G+1mMyIKKKaw9u2DF7CWnYLCmthestb6JwNAkTL4J9OuXVOeDIzc9Nkej
-	 wfq4EygUlMSRA==
-From: Tzung-Bi Shih <tzungbi@kernel.org>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	tzungbi@kernel.org
-Subject: [PATCH] pmdomain: mediatek: Break lock dependency to `prepare_lock`
-Date: Mon, 29 Dec 2025 04:32:44 +0000
-Message-ID: <20251229043244.4103262-1-tzungbi@kernel.org>
-X-Mailer: git-send-email 2.52.0.351.gbe84eed79e-goog
+	id 1va8Tk-00000003Svu-3ZpX;
+	Mon, 29 Dec 2025 08:19:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1766996379; x=1767601179; i=markus.elfring@web.de;
+	bh=j1ThLRQyHIDweVLjfaoObSeSIbqtv2WtMM+/ZLETnkM=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=lLB4sm14jcy+RafUYX/8f9iZdJPD6oPCWeZ0/izkWFoIIXTzQNHOYgFUPF2Xaxai
+	 Sr3ev7Hrk9dgHMEOktdl6UG0KpUpthdJrK1H88GOSlnAPinQBe95npKWWZzRk318v
+	 x3snUapF3BhCPy4/OOoIPxqRj2K8pn8ksHkuTnWHChNHJe82+8spX0SsplPAq4mGC
+	 bNQqncAbzEOvPpyq3a7t9O/pOo1sr2iYDaInd6zQClPJ08WdpqoI8n3hdOgaoQTEa
+	 x5mnWWCr1lt0EFPVsJxZXNAfTck7yxc97+OGfsqqr2nf6GC2l26mE9rjsAVYBR/HI
+	 faBsYJXKZGoPjx9YjA==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.29] ([94.31.69.231]) by smtp.web.de (mrweb006
+ [213.165.67.108]) with ESMTPSA (Nemesis) id 1N5UkQ-1vxvrE3Img-00quKN; Mon, 29
+ Dec 2025 09:19:38 +0100
+Message-ID: <1d9b46ba-728e-459a-9d82-0f49e2fe08b9@web.de>
+Date: Mon, 29 Dec 2025 09:19:19 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+To: Jianhao Xu <jianhao.xu@seu.edu.cn>, Zilin Guan <zilin@seu.edu.cn>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: LKML <linux-kernel@vger.kernel.org>, kernel-janitors@vger.kernel.org,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20251228162636.3829733-1-zilin@seu.edu.cn>
+Subject: Re: [PATCH v2] soc: mediatek: svs: Fix memory leak in
+ svs_enable_debug_write()
+Content-Language: en-GB, de-DE
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20251228162636.3829733-1-zilin@seu.edu.cn>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:2R9t5g8+vO1RbE9qB5N19dDxuB5vRmvjLbdSqc8I0XWu0qdCIme
+ vARL+ww0knbI2Zn/XhhqaSsjSexRFnrcuT6JFcXdYd654Dxgoj09xzeJc0wi8TzK6RfAtxU
+ RWCES5d7SnWYum6UGe+odU2RW5yOgg2cwSEZcGcTcKFj7YUyJTuSVcMLGK35y0YDl8zd3Mv
+ O8gbpYcEKJX/q7QYngRPQ==
+UI-OutboundReport: notjunk:1;M01:P0:U94XEdgalC0=;N3iDBY5+lejSgasMT00dIntgiat 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 FYwlHtT9IBBWDWE/Bt5/Xbsd/5dTP+cJo9T1sI
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20251229_001949_248479_02DC52A8 
+X-CRM114-Status: UNSURE (   6.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,308 +84,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Break a circular locking dependency between the Generic Power Domain
-lock (`genpd->mlock`) and the clock framework's `prepare_lock`.  Move
-the prepare() to the domain initialization phase and the unprepare()
-to the cleanup phase.
+=E2=80=A6
+> +++ b/drivers/soc/mediatek/mtk-svs.c
+> @@ -789,7 +789,7 @@ static ssize_t svs_enable_debug_write(struct file *f=
+ilp,
+>  	struct svs_bank *svsb =3D file_inode(filp)->i_private;
+>  	struct svs_platform *svsp =3D dev_get_drvdata(svsb->dev);
+>  	int enabled, ret;
+> -	char *buf =3D NULL;
+> +	char *buf __free(kfree) =3D NULL;
+> =20
+>  	if (count >=3D PAGE_SIZE)
+>  		return -EINVAL;
+=E2=80=A6
 
-The possible deadlock occurs in the following scenario:
+You may reduce the scopes for involved local variables,
+don't you?
 
-1. `genpd_power_on` acquires `genpd->mlock` and then calls the driver's
-   `scpsys_power_on`.  The driver calls `clk_bulk_prepare_enable`,
-   which attempts to acquire `prepare_lock`.
 
-> -> #0 (prepare_lock){+.+.}-{3:3}:
->        __lock_acquire
->        lock_acquire
->        __mutex_lock_common
->        mutex_lock_nested
->        clk_prepare
->        clk_bulk_prepare
->        scpsys_power_on
->        genpd_power_on
+See also:
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Do=
+cumentation/process/submitting-patches.rst?h=3Dv6.19-rc3#n262
 
-2. A clock provider (managed by a power domain) is resumed.
-   `clk_prepare` acquires `prepare_lock` and triggers a runtime resume of
-   its power domain, which attempts to acquire `genpd->mlock`.
-
-> -> #1 (&genpd->mlock){+.+.}-{3:3}:
->        __mutex_lock_common
->        mutex_lock_nested
->        genpd_lock_mtx
->        genpd_runtime_resume
->        __rpm_callback
->        rpm_callback
->        rpm_resume
->        __pm_runtime_resume
->        clk_core_prepare
->        clk_prepare
->        clk_bulk_prepare
-
-This creates a cycle: `mlock` -> `prepare_lock` -> `mlock`.
-
-> Possible unsafe locking scenario:
->
->       CPU0                    CPU1
->       ----                    ----
->  lock(&genpd->mlock);
->                               lock(prepare_lock);
->                               lock(&genpd->mlock);
->  lock(prepare_lock);
-
-This breaks the dependency chain in #0.
-
-This is a revert of f0fce06e345d ("soc: mtk-pm-domains: Fix the clock
-prepared issue").  However, addressing the issue by moving the
-unprepare()/prepare() to PM suspend()/resume() callbacks.
-
-Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
----
- drivers/pmdomain/mediatek/mtk-pm-domains.c | 99 +++++++++++++++++-----
- 1 file changed, 79 insertions(+), 20 deletions(-)
-
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index 80561d27f2b2..2da0f62988c0 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -318,12 +318,12 @@ static int scpsys_hwv_power_on(struct generic_pm_domain *genpd)
- 	if (ret)
- 		goto err_infra;
- 
--	ret = clk_bulk_prepare_enable(pd->num_clks, pd->clks);
-+	ret = clk_bulk_enable(pd->num_clks, pd->clks);
- 	if (ret)
- 		goto err_reg;
- 
- 	/* For HWV the subsys clocks refer to the HWV low power subsystem */
--	ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
-+	ret = clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
- 	if (ret)
- 		goto err_disable_clks;
- 
-@@ -365,7 +365,7 @@ static int scpsys_hwv_power_on(struct generic_pm_domain *genpd)
- 	}
- 
- 	/* It's done! Disable the HWV low power subsystem clocks */
--	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
- 
- 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_INFRA_PWR_CTL))
- 		scpsys_sec_infra_power_on(false);
-@@ -373,9 +373,9 @@ static int scpsys_hwv_power_on(struct generic_pm_domain *genpd)
- 	return 0;
- 
- err_disable_subsys_clks:
--	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
- err_disable_clks:
--	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
-+	clk_bulk_disable(pd->num_clks, pd->clks);
- err_reg:
- 	scpsys_regulator_disable(pd->supply);
- err_infra:
-@@ -398,7 +398,7 @@ static int scpsys_hwv_power_off(struct generic_pm_domain *genpd)
- 			return ret;
- 	}
- 
--	ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
-+	ret = clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
- 	if (ret)
- 		goto err_infra;
- 
-@@ -437,8 +437,8 @@ static int scpsys_hwv_power_off(struct generic_pm_domain *genpd)
- 	if (ret)
- 		goto err_disable_subsys_clks;
- 
--	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
--	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
-+	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
-+	clk_bulk_disable(pd->num_clks, pd->clks);
- 
- 	scpsys_regulator_disable(pd->supply);
- 
-@@ -448,7 +448,7 @@ static int scpsys_hwv_power_off(struct generic_pm_domain *genpd)
- 	return 0;
- 
- err_disable_subsys_clks:
--	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
- err_infra:
- 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_INFRA_PWR_CTL))
- 		scpsys_sec_infra_power_on(false);
-@@ -616,7 +616,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	if (ret)
- 		return ret;
- 
--	ret = clk_bulk_prepare_enable(pd->num_clks, pd->clks);
-+	ret = clk_bulk_enable(pd->num_clks, pd->clks);
- 	if (ret)
- 		goto err_reg;
- 
-@@ -638,8 +638,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	 * access.
- 	 */
- 	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUS_PROTECTION)) {
--		ret = clk_bulk_prepare_enable(pd->num_subsys_clks,
--					      pd->subsys_clks);
-+		ret = clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
- 		if (ret)
- 			goto err_pwr_ack;
- 	}
-@@ -653,8 +652,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 		goto err_disable_sram;
- 
- 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUS_PROTECTION)) {
--		ret = clk_bulk_prepare_enable(pd->num_subsys_clks,
--					      pd->subsys_clks);
-+		ret = clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
- 		if (ret)
- 			goto err_enable_bus_protect;
- 	}
-@@ -667,10 +665,9 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	scpsys_sram_disable(pd);
- err_disable_subsys_clks:
- 	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUS_PROTECTION))
--		clk_bulk_disable_unprepare(pd->num_subsys_clks,
--					   pd->subsys_clks);
-+		clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
- err_pwr_ack:
--	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
-+	clk_bulk_disable(pd->num_clks, pd->clks);
- err_reg:
- 	scpsys_regulator_disable(pd->supply);
- 	return ret;
-@@ -695,7 +692,7 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 		regmap_set_bits(scpsys->base, pd->data->ext_buck_iso_offs,
- 				pd->data->ext_buck_iso_mask);
- 
--	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
- 
- 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
- 		scpsys_modem_pwrseq_off(pd);
-@@ -708,7 +705,7 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	if (ret < 0)
- 		return ret;
- 
--	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
-+	clk_bulk_disable(pd->num_clks, pd->clks);
- 
- 	scpsys_regulator_disable(pd->supply);
- 
-@@ -855,6 +852,14 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 		pd->genpd.flags |= GENPD_FLAG_IRQ_SAFE;
- 	}
- 
-+	ret = clk_bulk_prepare(pd->num_clks, pd->clks);
-+	if (ret)
-+		goto err_put_subsys_clocks;
-+
-+	ret = clk_bulk_prepare(pd->num_subsys_clks, pd->subsys_clks);
-+	if (ret)
-+		goto err_unprepare_clocks;
-+
- 	/*
- 	 * Initially turn on all domains to make the domains usable
- 	 * with !CONFIG_PM and to get the hardware in sync with the
-@@ -869,7 +874,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 		ret = pd->genpd.power_on(&pd->genpd);
- 		if (ret < 0) {
- 			dev_err(scpsys->dev, "%pOF: failed to power on domain: %d\n", node, ret);
--			goto err_put_subsys_clocks;
-+			goto err_unprepare_subsys_clocks;
- 		}
- 
- 		if (MTK_SCPD_CAPS(pd, MTK_SCPD_ALWAYS_ON))
-@@ -888,6 +893,10 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 
- 	return scpsys->pd_data.domains[id];
- 
-+err_unprepare_subsys_clocks:
-+	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+err_unprepare_clocks:
-+	clk_bulk_unprepare(pd->num_clks, pd->clks);
- err_put_subsys_clocks:
- 	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
- err_put_clocks:
-@@ -965,6 +974,8 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
- 	if (scpsys_domain_is_on(pd))
- 		scpsys_power_off(&pd->genpd);
- 
-+	clk_bulk_unprepare(pd->num_clks, pd->clks);
-+	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
- 	clk_bulk_put(pd->num_clks, pd->clks);
- 	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
- }
-@@ -1208,6 +1219,7 @@ static int scpsys_probe(struct platform_device *pdev)
- 	if (!scpsys)
- 		return -ENOMEM;
- 
-+	platform_set_drvdata(pdev, scpsys);
- 	scpsys->dev = dev;
- 	scpsys->soc_data = soc;
- 
-@@ -1270,12 +1282,59 @@ static int scpsys_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
-+static int scpsys_suspend(struct device *dev)
-+{
-+	struct scpsys *scpsys = dev_get_drvdata(dev);
-+	struct generic_pm_domain *genpd;
-+	struct scpsys_domain *pd;
-+	int i;
-+
-+	for (i = 0; i < scpsys->pd_data.num_domains; i++) {
-+		genpd = scpsys->pd_data.domains[i];
-+		if (!genpd)
-+			continue;
-+
-+		pd = to_scpsys_domain(genpd);
-+		clk_bulk_unprepare(pd->num_clks, pd->clks);
-+		clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+	}
-+	return 0;
-+}
-+
-+static int scpsys_resume(struct device *dev)
-+{
-+	struct scpsys *scpsys = dev_get_drvdata(dev);
-+	struct generic_pm_domain *genpd;
-+	struct scpsys_domain *pd;
-+	int i, ret;
-+
-+	for (i = 0; i < scpsys->pd_data.num_domains; i++) {
-+		genpd = scpsys->pd_data.domains[i];
-+		if (!genpd)
-+			continue;
-+
-+		pd = to_scpsys_domain(genpd);
-+		ret = clk_bulk_prepare(pd->num_clks, pd->clks);
-+		if (ret)
-+			return ret;
-+		ret = clk_bulk_prepare(pd->num_subsys_clks, pd->subsys_clks);
-+		if (ret)
-+			return ret;
-+	}
-+	return 0;
-+}
-+
-+static const struct dev_pm_ops scpsys_pm_ops = {
-+	SET_SYSTEM_SLEEP_PM_OPS(scpsys_suspend, scpsys_resume)
-+};
-+
- static struct platform_driver scpsys_pm_domain_driver = {
- 	.probe = scpsys_probe,
- 	.driver = {
- 		.name = "mtk-power-controller",
- 		.suppress_bind_attrs = true,
- 		.of_match_table = scpsys_of_match,
-+		.pm = &scpsys_pm_ops,
- 	},
- };
- builtin_platform_driver(scpsys_pm_domain_driver);
--- 
-2.52.0.351.gbe84eed79e-goog
-
+Regards,
+Markus
 
