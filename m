@@ -4,80 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31F85E95A8B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Dec 2025 13:36:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26374E95A91
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Dec 2025 14:03:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zWOVgOaoe/TS12ellAWxVciHVb8xnkr/zV7/gw7EqCs=; b=kC+6AGX9yUSITKm3VfBHRfE+Hr
-	Zkx82rTWOxody1im1rITgkw9v3sX10elnauhiXrTiP2MSCWL3YMjfxHjMhNimYmutHf1u5i4py25H
-	SpU3DLV8gNcF43YoUyehwRn7TQWJGZmfv7Iz8VR1gdHO8IU9S9S4utko7Xi07tNw9Vzo0pxQy4WTW
-	bUcKvPU2JLyHT7SlkRHlXXmTzs1+v57EE3+JOS+Np4O2gLgNonkDKqq7P6VeP7Pcza2c026OS8+lj
-	lrwaSTcxkb+lYcadLDW0vTAbXE3a6OmqVvUBCP3s1KD7xe98ZnG9dRfKZhTT8uKDNz/ryS5C+G8dQ
-	ad2T3VXA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8yZTuNspVskUxrDKvimuXFp++sGxgQZs425R/ZcSebQ=; b=Y8Ml/FcQwaBOp1
+	7w4/9UQSajOSrx5jSMr3ZXoEvrj1OfILfTN9+xpJlfisi1Juz6a6PH+C/6ZrTb+zcPwDh6ooW1U8K
+	HmjmDBJQjqWAlFlIpXCQEeXPaAYMQ7AcJ0Nh4Hw2Nc7SuTZg0cILnGiyePd3HUik+iodhwBN6paEw
+	tJqSt7Mg1PVet6cFVxmlNAkssF1Qo7YYgZHFHxvQmrZdE8Ah7MOyRgaD7eHL/Q+rQU+bUdJpz8kll
+	Mg+pal1bqucbF+gweS2pIOMKAhjhDlsssc+MzMSgLqqz5jlcfZKquKgFyN0zPKASGrtr8l/KfbZrB
+	7dBWD2tlkBmHQTX17lOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaZtR-00000004s4K-34Xr;
-	Tue, 30 Dec 2025 13:36:09 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1vaaK3-00000004tWt-2ZDD;
+	Tue, 30 Dec 2025 14:03:39 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaZtM-00000004s3d-2CG3
-	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Dec 2025 13:36:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1767101765; x=1798637765;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=whRaztirvx5Wyh80MSX+DutYWxXqcp9XldzpUIBN9zk=;
-  b=gcmBFvuvz+o8y1nedPXyPW5pTMMFv4jhcHU/8o66JAUd7pf2YqHCsfVu
-   CRd5vRDtF519XZ+eA/vGOoLMRZvQevqNMKb6tGrWpQa46V4APFTrZJpPv
-   ADiU5B6HcJlWy2xvkHVKWUXkAx1W6owH5CudRl2TqOtcEr5zc61WyRi39
-   /lfrbjg32/SKAByw/4n3oeS/wdjVezGsER+jOkNohf+4udH9zF8+BhP7m
-   05PbQCK117ZuE7IdW6xZio58gzZ7Sd6Lvx83xUSMI/XRrM/Kvvlbm71EU
-   Nzia8J/1XPXO62egEuMAXAhXZYSvlHa2F5OXMOr9e7s6/GDxvJ5tBvRzw
-   Q==;
-X-CSE-ConnectionGUID: YZDa3qNGSkmUq9CD1cp2bA==
-X-CSE-MsgGUID: Yo4spQeVQte9XmA7/3HLLA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11656"; a="79809534"
-X-IronPort-AV: E=Sophos;i="6.21,189,1763452800"; 
-   d="scan'208";a="79809534"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Dec 2025 05:36:01 -0800
-X-CSE-ConnectionGUID: ada3EXIlSHOIL18jvWVdKA==
-X-CSE-MsgGUID: E5snTTCFSEymNkXU32GLZQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,189,1763452800"; 
-   d="scan'208";a="205734082"
-Received: from lkp-server01.sh.intel.com (HELO c9aa31daaa89) ([10.239.97.150])
-  by orviesa004.jf.intel.com with ESMTP; 30 Dec 2025 05:35:59 -0800
-Received: from kbuild by c9aa31daaa89 with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1vaZtE-000000000P3-2Vow;
-	Tue, 30 Dec 2025 13:35:56 +0000
-Date: Tue, 30 Dec 2025 21:35:50 +0800
-From: kernel test robot <lkp@intel.com>
-To: Tzung-Bi Shih <tzungbi@kernel.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>
-Cc: oe-kbuild-all@lists.linux.dev,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	tzungbi@kernel.org
-Subject: Re: [PATCH] pmdomain: mediatek: Break lock dependency to
- `prepare_lock`
-Message-ID: <202512302129.BjTBw9E6-lkp@intel.com>
-References: <20251229043244.4103262-1-tzungbi@kernel.org>
+	id 1vaaJy-00000004tVY-33UP;
+	Tue, 30 Dec 2025 14:03:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1767103409;
+	bh=4upZlyGNOfjRwcM6TZxMkwiVrYZupHgE9fEWSopfkLI=;
+	h=From:Subject:Date:To:Cc:From;
+	b=MKWYMYlD+peIJcCgOi2z7RbSWlMPZM1F49Kmkq6/Kcj5acqm7QMtpKJSUzQgfIgNc
+	 pRG/NDxxyTEDDJ/KQ4s2W5YvIzRSh7fnRk52X9V492qGB5ue21i/sjdK71MY4BahMd
+	 XhxSvz9jwIGqmkIkw3OzXoy3/xyoXWdpo4F9B8eoQATB32Kcyc1Igy1KnrZaJG/ZrZ
+	 +RHbJcspXfvkSS8EM2yf53yG0vaFzPdgvzl5J37dEH3zkU7zA53i9LbhMCXdXrOXrH
+	 Tc4O/pYwI1G1X6CCU38ia7ugq+TCnARQbGIwUa9pxeD7XxJ6MGLLw5j7Ob1VPuDZBU
+	 BvoYkTECTXJ3w==
+Received: from [127.0.1.1] (unknown [IPv6:2804:1b1:f803:a1ec:e46f:3b67:baf0:3d70])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nfraprado)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9CE3017E0ED3;
+	Tue, 30 Dec 2025 15:03:24 +0100 (CET)
+From: =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+Subject: [PATCH RFC 0/6] AFBC fixes for MediaTek DRM
+Date: Tue, 30 Dec 2025 11:03:00 -0300
+Message-Id: <20251230-mtk-afbc-fixes-v1-0-6c0247b66e32@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251229043244.4103262-1-tzungbi@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAJTbU2kC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDI1NDIyNL3dySbN3EtKRk3bTMitRi3SQzU7M0S6OkZKPENCWgpoKiVLAEUE+
+ 0UpCbs1JsbS0AflewTWUAAAA=
+X-Change-ID: 20251229-mtk-afbc-fixes-b656f92bc2af
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Justin Green <greenjustin@chromium.org>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, ariel.dalessandro@collabora.com, 
+ daniels@collabora.com, kernel@collabora.com, Nancy.Lin@mediatek.com, 
+ Jason-JH.Lin@mediatek.com, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251230_053604_636463_9D3D72C9 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20251230_060334_930436_1A28CC2E 
+X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,87 +84,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tzung-Bi,
+This series contains a handful of fixes for AFBC support on the MediaTek
+DRM driver so that it can be re-enabled.
 
-kernel test robot noticed the following build warnings:
+This is sent as an RFC because there are still some issues to work out
+before the series can be merged:
 
-[auto build test WARNING on linus/master]
-[also build test WARNING on v6.19-rc3 next-20251219]
-[cannot apply to amd-pstate/linux-next amd-pstate/bleeding-edge]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+1. Patch 4, 'drm/mediatek: ovl: Disallow AFBC buffers with width over
+   1920' did not behave well when tested with Weston, so a better
+   solution probably needs to be implemented before this can be merged.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Tzung-Bi-Shih/pmdomain-mediatek-Break-lock-dependency-to-prepare_lock/20251229-123525
-base:   linus/master
-patch link:    https://lore.kernel.org/r/20251229043244.4103262-1-tzungbi%40kernel.org
-patch subject: [PATCH] pmdomain: mediatek: Break lock dependency to `prepare_lock`
-config: arm-randconfig-003-20251230 (https://download.01.org/0day-ci/archive/20251230/202512302129.BjTBw9E6-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 10.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251230/202512302129.BjTBw9E6-lkp@intel.com/reproduce)
+2. Remaining AFBC issues:
+   
+   a. The first 4 pixel rows are always skipped in the displayed output,
+      that is, the first displayed pixel, on the top-left corner,
+      corresponds to 4x0. And below the end of the displayed output, the
+      first 4x32 pixels are displayed.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202512302129.BjTBw9E6-lkp@intel.com/
+   b. On some resolutions, there are still artifacts that look like
+      misalignment issues, eg 1024x1080, 1080x1080.
 
-All warnings (new ones prefixed by >>):
+   c. On some resolutions, no output at all is displayed, eg 1920x1080.
 
->> drivers/pmdomain/mediatek/mtk-pm-domains.c:1304:12: warning: 'scpsys_resume' defined but not used [-Wunused-function]
-    1304 | static int scpsys_resume(struct device *dev)
-         |            ^~~~~~~~~~~~~
->> drivers/pmdomain/mediatek/mtk-pm-domains.c:1285:12: warning: 'scpsys_suspend' defined but not used [-Wunused-function]
-    1285 | static int scpsys_suspend(struct device *dev)
-         |            ^~~~~~~~~~~~~~
+Tested on the MT8195-Tomato Chromebook.
 
+Signed-off-by: Nícolas F. R. A. Prado <nfraprado@collabora.com>
+---
+Ariel D'Alessandro (1):
+      drm/mediatek: ovl: Fix misaligned layer source size on AFBC mode
 
-vim +/scpsys_resume +1304 drivers/pmdomain/mediatek/mtk-pm-domains.c
+Nícolas F. R. A. Prado (5):
+      drm/mediatek: plane: Remove extra block from AFBC data payload offset
+      drm/mediatek: plane: Correct AFBC alignment definition to 128
+      drm/mediatek: ovl: Disallow AFBC buffers with width over 1920
+      drm/mediatek: ovl: Disable AFBC on MT8188
+      drm/mediatek: Re-enable AFBC support on MediaTek DRM driver
 
-  1284	
-> 1285	static int scpsys_suspend(struct device *dev)
-  1286	{
-  1287		struct scpsys *scpsys = dev_get_drvdata(dev);
-  1288		struct generic_pm_domain *genpd;
-  1289		struct scpsys_domain *pd;
-  1290		int i;
-  1291	
-  1292		for (i = 0; i < scpsys->pd_data.num_domains; i++) {
-  1293			genpd = scpsys->pd_data.domains[i];
-  1294			if (!genpd)
-  1295				continue;
-  1296	
-  1297			pd = to_scpsys_domain(genpd);
-  1298			clk_bulk_unprepare(pd->num_clks, pd->clks);
-  1299			clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-  1300		}
-  1301		return 0;
-  1302	}
-  1303	
-> 1304	static int scpsys_resume(struct device *dev)
-  1305	{
-  1306		struct scpsys *scpsys = dev_get_drvdata(dev);
-  1307		struct generic_pm_domain *genpd;
-  1308		struct scpsys_domain *pd;
-  1309		int i, ret;
-  1310	
-  1311		for (i = 0; i < scpsys->pd_data.num_domains; i++) {
-  1312			genpd = scpsys->pd_data.domains[i];
-  1313			if (!genpd)
-  1314				continue;
-  1315	
-  1316			pd = to_scpsys_domain(genpd);
-  1317			ret = clk_bulk_prepare(pd->num_clks, pd->clks);
-  1318			if (ret)
-  1319				return ret;
-  1320			ret = clk_bulk_prepare(pd->num_subsys_clks, pd->subsys_clks);
-  1321			if (ret)
-  1322				return ret;
-  1323		}
-  1324		return 0;
-  1325	}
-  1326	
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 59 ++++++++++++++++++++++++++++++---
+ drivers/gpu/drm/mediatek/mtk_plane.c    | 48 +++++++++++++++++++++++++--
+ drivers/gpu/drm/mediatek/mtk_plane.h    |  6 +++-
+ 3 files changed, 104 insertions(+), 9 deletions(-)
+---
+base-commit: 6f47c4646bee47319cc0980c693ed695c4cfd395
+change-id: 20251229-mtk-afbc-fixes-b656f92bc2af
 
+Best regards,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Nícolas F. R. A. Prado <nfraprado@collabora.com>
+
 
