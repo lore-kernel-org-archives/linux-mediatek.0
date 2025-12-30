@@ -4,91 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5382E9413E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Dec 2025 10:00:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31F85E95A8B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Dec 2025 13:36:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1tRxRWQzRmCYnQKX7qKIJ6OMcfRXAAVN0sUWsz8Z3ZE=; b=v5NAi6q3IvLnB/iHX26prk7WS8
-	BKBfq5eaUZbKHW6mnfOJBsbjLUHA3NScqCQGgabMTNYuBAjpvL/oK1G5drhrOloedP7BBZDB1I+a3
-	Azgga0I7HGbJECh0huVz5pnUR/IPYe07wM8MKZ7WUeUdi+Jctw2DI0udKLW5tKiIF2kp2STBoRVZG
-	tm9AUi06voWdZEuhQjD4bIy/vYz8jaILmObk2Aakwvj66pDt/yMNRm9Vs5mLNFPMohOg9qEeClTOm
-	LfvhptDuHWJEioU9+Nlss9kZcwE/EJmMwEZG4MIodpDjLLIJX66dQaTd//FbQOduNU/T9xq82ECYT
-	Y1qhEuPQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zWOVgOaoe/TS12ellAWxVciHVb8xnkr/zV7/gw7EqCs=; b=kC+6AGX9yUSITKm3VfBHRfE+Hr
+	Zkx82rTWOxody1im1rITgkw9v3sX10elnauhiXrTiP2MSCWL3YMjfxHjMhNimYmutHf1u5i4py25H
+	SpU3DLV8gNcF43YoUyehwRn7TQWJGZmfv7Iz8VR1gdHO8IU9S9S4utko7Xi07tNw9Vzo0pxQy4WTW
+	bUcKvPU2JLyHT7SlkRHlXXmTzs1+v57EE3+JOS+Np4O2gLgNonkDKqq7P6VeP7Pcza2c026OS8+lj
+	lrwaSTcxkb+lYcadLDW0vTAbXE3a6OmqVvUBCP3s1KD7xe98ZnG9dRfKZhTT8uKDNz/ryS5C+G8dQ
+	ad2T3VXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaWWc-00000004gra-3qDs;
-	Tue, 30 Dec 2025 10:00:22 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1vaZtR-00000004s4K-34Xr;
+	Tue, 30 Dec 2025 13:36:09 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vaWWa-00000004gqk-0YfC
+	id 1vaZtM-00000004s3d-2CG3
 	for linux-mediatek@lists.infradead.org;
-	Tue, 30 Dec 2025 10:00:22 +0000
-Received: by mail-lf1-x135.google.com with SMTP id 2adb3069b0e04-594285c6509so10674665e87.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 30 Dec 2025 02:00:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=suse.com; s=google; t=1767088818; x=1767693618; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=1tRxRWQzRmCYnQKX7qKIJ6OMcfRXAAVN0sUWsz8Z3ZE=;
-        b=NZCjt4gG1yWby/KKKx5ZYvKh9eNDLQyx3WSO5eKtvKlgKIAzk2bpOwC6pf+0RrMaSp
-         lViCGU57bKQ7IEV2Sx/LIzUxJpe3xtaA229jng4by8QeS4qNCKeGx/5vcWKytuRf60c8
-         yOl/qohbmwoqb300N00r6+E7sEzIAKLDWEwGJt4vSak+znj/QdLb+60+MRm/q4sTneYT
-         0ifck51WWhDX0f2yol47L3B1UGif7KqC+Engnq++ISow26kSz16MTsDK1X5sq+VhOPej
-         H7FJCRm4V/C7kKgIO1S+fv6x1Ddn4WnZB0Vcf52OmgLL6IRRaRjEOfGDwh9jdQ5xIX6R
-         0YhA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767088818; x=1767693618;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=1tRxRWQzRmCYnQKX7qKIJ6OMcfRXAAVN0sUWsz8Z3ZE=;
-        b=BU3F3E1qhAcnlCTaHuxOniqoMOP7wi2kThWWDYFBYl6hBXZpHqYZ0i/YHaOLSolS0b
-         kAOQQgs46TwNokeodobNxmtGgQkpb5B1pRz8704y0iqNQOjiYPgN9j5aFlJNsJGHFk0p
-         i0oThjz4BSvZz/T1ISggUs0KFQIIB6kquWET4MfJ8NkCNIb1GKwyRn6qNBrEGXfBni/X
-         Z4b/TwbQJJVkG7Gck9XwuDEWw6rZFv2hksCwZsA2jdDISVnWjngXHZfuzX+vey9k5sfN
-         fMMcm4KH9p3fiSsBybwrrdolrvLY+hWbdub3b2aaECTUwUw4YS4L2sJyT9CbdrNwknTH
-         S8rw==
-X-Forwarded-Encrypted: i=1; AJvYcCUZTAc5uOrokmJEu3xyAUo6OvpyQAtW+PY5jf5HiRigjAniqhZThe8UHEXnNQfiwsLGBsxKG38IY2GEngy6Og==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxD8Zc21KTs4Mz7iAEg2MEEVlMow/ME9rr3wDA7FxglqNNOkyJx
-	4bU0vyIVHZUGrpn71V1P1vS4dlLrG3Umr6BOpbGyTdT31BBnuyIuMjexwH2Z73OErGkfLj3nN/K
-	/L2UbIN1D/ou1eP1Xg0B/K0NcANBoiEhetfWT+TlNEg==
-X-Gm-Gg: AY/fxX49jsyECHiWentuw4mL7YPy8Cv6tsYECSggUNMY1y+Ff9Q78eu2ZejcBwf/0L7
-	jhjPR6791n1ftzqwhJZMkzFoUVfKNe20tYvw/TpdSt36nHtivuZyd1xyfk7OcfunESWTArck1dv
-	pWv5q1QE9eYqLMed8lJXfpogWYnyyGayZ6QJqrn7OS3ehaH3fTIYbPd3z5YaqDNx6UkOCDnTUkN
-	m4YrWj75gQpRe9V1Ycj49b0z4hvBpI2cNIYs3wh7IsRcpddz99pa2OScETD0iD8ePRoU3GXNSCP
-	2RQh8UmfbGL1E80rtznD2d18FFhs
-X-Google-Smtp-Source: AGHT+IHBp58C8eJD8jHt03+ooDUgedGd0HZ0sHq7BopU+wSyE8cBf88UU/sRfBN6CkzcQxn+JuN8ykjj+lfX1LiB4HA=
-X-Received: by 2002:a05:6512:b94:b0:583:903e:b5a4 with SMTP id
- 2adb3069b0e04-59a17d61e3emr11072799e87.46.1767088818024; Tue, 30 Dec 2025
- 02:00:18 -0800 (PST)
+	Tue, 30 Dec 2025 13:36:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1767101765; x=1798637765;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=whRaztirvx5Wyh80MSX+DutYWxXqcp9XldzpUIBN9zk=;
+  b=gcmBFvuvz+o8y1nedPXyPW5pTMMFv4jhcHU/8o66JAUd7pf2YqHCsfVu
+   CRd5vRDtF519XZ+eA/vGOoLMRZvQevqNMKb6tGrWpQa46V4APFTrZJpPv
+   ADiU5B6HcJlWy2xvkHVKWUXkAx1W6owH5CudRl2TqOtcEr5zc61WyRi39
+   /lfrbjg32/SKAByw/4n3oeS/wdjVezGsER+jOkNohf+4udH9zF8+BhP7m
+   05PbQCK117ZuE7IdW6xZio58gzZ7Sd6Lvx83xUSMI/XRrM/Kvvlbm71EU
+   Nzia8J/1XPXO62egEuMAXAhXZYSvlHa2F5OXMOr9e7s6/GDxvJ5tBvRzw
+   Q==;
+X-CSE-ConnectionGUID: YZDa3qNGSkmUq9CD1cp2bA==
+X-CSE-MsgGUID: Yo4spQeVQte9XmA7/3HLLA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11656"; a="79809534"
+X-IronPort-AV: E=Sophos;i="6.21,189,1763452800"; 
+   d="scan'208";a="79809534"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Dec 2025 05:36:01 -0800
+X-CSE-ConnectionGUID: ada3EXIlSHOIL18jvWVdKA==
+X-CSE-MsgGUID: E5snTTCFSEymNkXU32GLZQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,189,1763452800"; 
+   d="scan'208";a="205734082"
+Received: from lkp-server01.sh.intel.com (HELO c9aa31daaa89) ([10.239.97.150])
+  by orviesa004.jf.intel.com with ESMTP; 30 Dec 2025 05:35:59 -0800
+Received: from kbuild by c9aa31daaa89 with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1vaZtE-000000000P3-2Vow;
+	Tue, 30 Dec 2025 13:35:56 +0000
+Date: Tue, 30 Dec 2025 21:35:50 +0800
+From: kernel test robot <lkp@intel.com>
+To: Tzung-Bi Shih <tzungbi@kernel.org>,
+	Ulf Hansson <ulf.hansson@linaro.org>
+Cc: oe-kbuild-all@lists.linux.dev,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	tzungbi@kernel.org
+Subject: Re: [PATCH] pmdomain: mediatek: Break lock dependency to
+ `prepare_lock`
+Message-ID: <202512302129.BjTBw9E6-lkp@intel.com>
+References: <20251229043244.4103262-1-tzungbi@kernel.org>
 MIME-Version: 1.0
-References: <20251114104325.116471-1-marco.crivellari@suse.com>
- <CAAofZF51pkOzrg_nO0Mhx6g9b3JPtO3n+0YE=WtSgj_F6wnY4w@mail.gmail.com> <CAGp9Lzoj2jeGF+t-UP0gAykCZ96-OkjummeJRGniYfagvY-BPA@mail.gmail.com>
-In-Reply-To: <CAGp9Lzoj2jeGF+t-UP0gAykCZ96-OkjummeJRGniYfagvY-BPA@mail.gmail.com>
-From: Marco Crivellari <marco.crivellari@suse.com>
-Date: Tue, 30 Dec 2025 11:00:07 +0100
-X-Gm-Features: AQt7F2orGzKXzw6tzrN805-5mgW6Z8EpIc6FGRlg6vkCnPmNQoxfEOSCoRxEkUQ
-Message-ID: <CAAofZF7KguhtNs_cXQdWgz8XdaChMG8G_LtEmhKfgC5_yq3iRA@mail.gmail.com>
-Subject: Re: [PATCH v2] wifi: mt76: replace use of system_wq with system_percpu_wq
-To: Sean Wang <sean.wang@kernel.org>
-Cc: linux-kernel@vger.kernel.org, linux-wireless@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Tejun Heo <tj@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>, 
-	Frederic Weisbecker <frederic@kernel.org>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, 
-	Michal Hocko <mhocko@suse.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20251229043244.4103262-1-tzungbi@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251230_020020_180018_C023C6CF 
-X-CRM114-Status: UNSURE (   7.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20251230_053604_636463_9D3D72C9 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,21 +92,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 30, 2025 at 12:42=E2=80=AFAM Sean Wang <sean.wang@kernel.org> w=
-rote:
-> Hi Marco,
->
-> The patch has been queued in the mt76 tree. Thanks for your work on this.
-> https://github.com/nbd168/wireless/commit/ee518f914cd901c16fa08a6f228b266=
-551f72a6a
->
->             Sean
+Hi Tzung-Bi,
 
-Many thanks Sean!
+kernel test robot noticed the following build warnings:
 
---=20
+[auto build test WARNING on linus/master]
+[also build test WARNING on v6.19-rc3 next-20251219]
+[cannot apply to amd-pstate/linux-next amd-pstate/bleeding-edge]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Marco Crivellari
+url:    https://github.com/intel-lab-lkp/linux/commits/Tzung-Bi-Shih/pmdomain-mediatek-Break-lock-dependency-to-prepare_lock/20251229-123525
+base:   linus/master
+patch link:    https://lore.kernel.org/r/20251229043244.4103262-1-tzungbi%40kernel.org
+patch subject: [PATCH] pmdomain: mediatek: Break lock dependency to `prepare_lock`
+config: arm-randconfig-003-20251230 (https://download.01.org/0day-ci/archive/20251230/202512302129.BjTBw9E6-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 10.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20251230/202512302129.BjTBw9E6-lkp@intel.com/reproduce)
 
-L3 Support Engineer
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202512302129.BjTBw9E6-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/pmdomain/mediatek/mtk-pm-domains.c:1304:12: warning: 'scpsys_resume' defined but not used [-Wunused-function]
+    1304 | static int scpsys_resume(struct device *dev)
+         |            ^~~~~~~~~~~~~
+>> drivers/pmdomain/mediatek/mtk-pm-domains.c:1285:12: warning: 'scpsys_suspend' defined but not used [-Wunused-function]
+    1285 | static int scpsys_suspend(struct device *dev)
+         |            ^~~~~~~~~~~~~~
+
+
+vim +/scpsys_resume +1304 drivers/pmdomain/mediatek/mtk-pm-domains.c
+
+  1284	
+> 1285	static int scpsys_suspend(struct device *dev)
+  1286	{
+  1287		struct scpsys *scpsys = dev_get_drvdata(dev);
+  1288		struct generic_pm_domain *genpd;
+  1289		struct scpsys_domain *pd;
+  1290		int i;
+  1291	
+  1292		for (i = 0; i < scpsys->pd_data.num_domains; i++) {
+  1293			genpd = scpsys->pd_data.domains[i];
+  1294			if (!genpd)
+  1295				continue;
+  1296	
+  1297			pd = to_scpsys_domain(genpd);
+  1298			clk_bulk_unprepare(pd->num_clks, pd->clks);
+  1299			clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
+  1300		}
+  1301		return 0;
+  1302	}
+  1303	
+> 1304	static int scpsys_resume(struct device *dev)
+  1305	{
+  1306		struct scpsys *scpsys = dev_get_drvdata(dev);
+  1307		struct generic_pm_domain *genpd;
+  1308		struct scpsys_domain *pd;
+  1309		int i, ret;
+  1310	
+  1311		for (i = 0; i < scpsys->pd_data.num_domains; i++) {
+  1312			genpd = scpsys->pd_data.domains[i];
+  1313			if (!genpd)
+  1314				continue;
+  1315	
+  1316			pd = to_scpsys_domain(genpd);
+  1317			ret = clk_bulk_prepare(pd->num_clks, pd->clks);
+  1318			if (ret)
+  1319				return ret;
+  1320			ret = clk_bulk_prepare(pd->num_subsys_clks, pd->subsys_clks);
+  1321			if (ret)
+  1322				return ret;
+  1323		}
+  1324		return 0;
+  1325	}
+  1326	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
