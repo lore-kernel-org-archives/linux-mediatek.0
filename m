@@ -4,60 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27D1CE9410D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Dec 2025 03:54:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 299D9E9410D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Dec 2025 03:56:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+eUstK6V0fMVkZh9mLQRDCYaFZT2N5HDsMvyrJtYTwo=; b=1GysOPXulKbon6zcv0MpDBjCOE
-	Zbs7Nk2943CGuQ/q/GrhRjB2SFwgE1OJLI4G4OpN2XBOQbt5SKK7ijJt4iUl+A+URpS/GbDnUSC/R
-	aftdKpgM4nCex4ovIjoxxQPL52AZMbg/tx2uKSKKV7sbOgoXng4DIMN9XuvwAMK31senE/QJPQ3nb
-	vUY5Nxj3l025HhrL1VTK7Mf8vqRFAb9zltFtdmqB+lWTPS51odLB82TdogcMulNkKdZRcttKdEbj3
-	JQfOLTAjbBZMX9Qha9+46d58Jao3AfCtBGiPP9gB0nw7WGQMsBZEd7xsSvuPwhFdbsoYSzBVH0BHC
-	p6ypAlUA==;
+	bh=+ml+CWfuCyt8xPYOA/5JpaBit+P1+CQ1YTe7Xd3yRLk=; b=uP+l/kEVm/HSTdgDteEsWUtwiN
+	pSLIxDucRVl7dHnJGmHMzGVAXEQdbb80lTKsScx41vP5c2Lep4kbq4ZXhq5cKa4gBRJCVcEEtei0C
+	OC1ZIt2BQFpEfu2ilL0oyUYLxZ50gfCHJa9ojfUL3lRQuV22uO++SAooEZyBEbmTEaSGm1GUYqlho
+	U9whEwadSeKQm0iwYL/zFbIvDYi6+Pg42KD0R9yc/6gT3AvArfUQkIxWAOtWGNjKU79CE3XHVdPA4
+	I0JeJLMyR5mvplbdpbMQNjl6r/HaVX5FT4MtPwLYoiKhJYwXd+2jlo/LRU6V12uchiucn9ran/Qdl
+	9DGhZTsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vanHt-00000005eya-1Y5Y;
-	Wed, 31 Dec 2025 03:54:17 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vanKO-00000005f5N-0IhQ;
+	Wed, 31 Dec 2025 03:56:52 +0000
+Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vanHq-00000005eyD-3KTm
+	id 1vanKL-00000005f4O-0vhO
 	for linux-mediatek@lists.infradead.org;
-	Wed, 31 Dec 2025 03:54:16 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9336D4059E;
-	Wed, 31 Dec 2025 03:54:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FBE4C116B1;
-	Wed, 31 Dec 2025 03:54:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767153253;
-	bh=vv5TvpKljz67G4j1CDBjncg42B3hKIrjZiA2MqUfKQM=;
-	h=From:To:Cc:Subject:Date:From;
-	b=AK09EsNBLL6jpKUoF2W5bmUlTOL2bwsJb6JGm9RlwHldcEIGApe8VqcPvBIciahwn
-	 Xyll+XGUfi9TAWHiqTz1didvdskF0WLdXgP1oFkKvy018q6KAw+l0z8huvTbF9VXdW
-	 QbT1sWlRPiXG9NYcltfLIf5ZczINvWFXVvkMgILIdX+ppqpyNGl/Z4DU3NxM2HkOO2
-	 LWxSjn8OQ6O/lT+DQyDzi1r3ZBP7ojwcBQLQpZ2+dbbWmfzKzNOrrR+94ksiEk8u3Z
-	 Y0aRq4SvEhJnoUCFt72rakZjzoGCc3t5sw1Jpwu/hv1I69jY/bsiE5FHQrOb7i9VB9
-	 EPcT0KsYbp8eQ==
-From: Tzung-Bi Shih <tzungbi@kernel.org>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	tzungbi@kernel.org
-Subject: [PATCH v2] pmdomain: mediatek: Break lock dependency to `prepare_lock`
-Date: Wed, 31 Dec 2025 03:53:57 +0000
-Message-ID: <20251231035357.1147578-1-tzungbi@kernel.org>
-X-Mailer: git-send-email 2.52.0.351.gbe84eed79e-goog
+	Wed, 31 Dec 2025 03:56:51 +0000
+Received: by mail-ot1-x336.google.com with SMTP id 46e09a7af769-7c765f41346so4564935a34.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 30 Dec 2025 19:56:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linuxfoundation.org; s=google; t=1767153408; x=1767758208; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=+ml+CWfuCyt8xPYOA/5JpaBit+P1+CQ1YTe7Xd3yRLk=;
+        b=EcfaVPK6QqhnlXrCNbMO2HGEw5sGVNe3G4q78leQ1XYiZhfPPS5wpY1WbqcPbL9fl7
+         BXbpM+68zJZ7UeVIxKDooSj4/BDsn7JOxqWw3MpGDIuN2X6kgy5p0YEHGqX+lQOOpQ4k
+         HrKgA7bTKHQOXFdDl5vOS71A9SsWZUY4zVvRU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1767153408; x=1767758208;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+ml+CWfuCyt8xPYOA/5JpaBit+P1+CQ1YTe7Xd3yRLk=;
+        b=fB03woOUgt8Km6G6bo4+q6P1iKfauuk9HSeOL4gbpLHhYUSzgTTTv0yJwcVQWvyFOx
+         uQ9B++Y5OajOy5y56sutPwz+bahJYYnnqIcQAKFfIMSCa1sJxz8V5H6DcmVSeL61mZLg
+         wJYsEXs0dJiUli/E53nGmG1pFvXI6UJ7JSEVLTv6x2UgGIDxA6G9O69S4CLv/Acw/J1z
+         fAqsEyT/HxSKc4JqDiryk9k6SqwExSwR7jO/g/W4GjkTeQGjw7ULEfB4N/qvmMW+kklo
+         ALNQkZ7WOB8vuqGVn1WZpxzYtZoLf9gmt/dXGkkUKzPy9KxzQ1+iv+pzDkkX2PLC9Ae9
+         8jMQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWBJeKJBDHxj+WOTLJhTfVstvXg+LZdIu3vWk7139hFsAt6qNrL35o0f0z6QaE9itufmS3kJ0/dyj4jeOv29w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxkEezA0P8vuApY5358pER8GuL6FDSl2PsFdF3jcBBUHu06s4DO
+	pU5WJFRZ1YnMApDnPJzQjQ5OG/hwLPl8EDduwvuKQREWzq5cVoyaqT0aR/YmN0pf95A=
+X-Gm-Gg: AY/fxX7ri6TS2cRWtFqLVSJM7yReL0jqv3hfkDGliDOtRkQ8iVFINp4IQIbFjg+z1/+
+	bff/dpSW5CQa84rTbtM6yIR/fQ6SYz51r8JsHC7LhS8Jo2G8Hkt44AChCEqEzeffpKz0U04yqB8
+	KCNFSMDAgCR3yniKKonrPeGMQl7nujdYutRFLS3Jd1vZQCGzNyPfmabxbs0Y2ns/UBCpHepKgwm
+	H7bSDpkW2r1yfjB6yW07Urdif/PLLgcfaRsk2tmAQylX/MokefB01lAGUD35wG/EOTTZcSsLurr
+	Lx9odfmFlG35KOfcurgt5+zNCTz1qh530O2q55prthSTJ+Zo3ViyuuGsJrh/0GloRifrVaqNlAc
+	Vo3m9S7M6cERkd+vS7StgOWnSFrzGLTjW+J1JtXcd7yScXTt+kG+46gXnBfrwP6tGAwluA/8WcT
+	AHvFuaXKJY8bKUI50eMZULrXGoo4KSjvY5vjF7
+X-Google-Smtp-Source: AGHT+IERNvC/8Px0V8IUK3zXSD3cLtvI8CWOvblwcgNUVpnq5u8i6LLyM/rg8Ub+tY/WiPli4ic1Sg==
+X-Received: by 2002:a05:6830:8385:b0:7c6:d0b4:c973 with SMTP id 46e09a7af769-7cc66a843c9mr16033899a34.28.1767153407908;
+        Tue, 30 Dec 2025 19:56:47 -0800 (PST)
+Received: from shuah-framework.internal ([38.175.187.108])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7cc667d7f1dsm23582518a34.15.2025.12.30.19.56.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 30 Dec 2025 19:56:47 -0800 (PST)
+From: Shuah Khan <skhan@linuxfoundation.org>
+To: nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	torvalds@linux-foundation.org,
+	ebiggers@kernel.org,
+	johannes@sipsolutions.net
+Cc: Shuah Khan <skhan@linuxfoundation.org>,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] Revert "wifi: mt76: Strip whitespace from build ddate"
+Date: Tue, 30 Dec 2025 20:56:42 -0700
+Message-ID: <20251231035645.5545-1-skhan@linuxfoundation.org>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251230_195414_885428_3FD0164E 
-X-CRM114-Status: GOOD (  19.45  )
+X-CRM114-CacheID: sfid-20251230_195649_281834_0E0284AF 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,315 +105,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Break a circular locking dependency between the Generic Power Domain
-lock (`genpd->mlock`) and the clock framework's `prepare_lock`.  Move
-the prepare() to the domain initialization phase and the unprepare()
-to the cleanup phase.
+This reverts commit f804a5895ebad2b2d4fb8a3688d2115926e993d5.
 
-The possible deadlock occurs in the following scenario:
+This change introduced the following panic, and mt792x_load_firmware()
+fails. wifi is dead on systems with mt792x wireless.
 
-1. `genpd_power_on` acquires `genpd->mlock` and then calls the driver's
-   `scpsys_power_on`.  The driver calls `clk_bulk_prepare_enable`,
-   which attempts to acquire `prepare_lock`.
-
-> -> #0 (prepare_lock){+.+.}-{3:3}:
->        __lock_acquire
->        lock_acquire
->        __mutex_lock_common
->        mutex_lock_nested
->        clk_prepare
->        clk_bulk_prepare
->        scpsys_power_on
->        genpd_power_on
-
-2. A clock provider (managed by a power domain) is resumed.
-   `clk_prepare` acquires `prepare_lock` and triggers a runtime resume of
-   its power domain, which attempts to acquire `genpd->mlock`.
-
-> -> #1 (&genpd->mlock){+.+.}-{3:3}:
->        __mutex_lock_common
->        mutex_lock_nested
->        genpd_lock_mtx
->        genpd_runtime_resume
->        __rpm_callback
->        rpm_callback
->        rpm_resume
->        __pm_runtime_resume
->        clk_core_prepare
->        clk_prepare
->        clk_bulk_prepare
-
-This creates a cycle: `mlock` -> `prepare_lock` -> `mlock`.
-
-> Possible unsafe locking scenario:
->
->       CPU0                    CPU1
->       ----                    ----
->  lock(&genpd->mlock);
->                               lock(prepare_lock);
->                               lock(&genpd->mlock);
->  lock(prepare_lock);
-
-This breaks the dependency chain in #0.
-
-This is a revert of f0fce06e345d ("soc: mtk-pm-domains: Fix the clock
-prepared issue").  However, addressing the issue by moving the
-unprepare()/prepare() to PM suspend()/resume() callbacks.
-
-Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
+kern  :crit  : kernel BUG at lib/string_helpers.c:1043!
+kern  :warn  : Oops: invalid opcode: 0000 [#1] SMP NOPTI
+kern  :warn  : CPU: 14 UID: 0 PID: 61 Comm: kworker/14:0 Tainted: G        W
+        6.19.0-rc1 #1 PREEMPT(voluntary)
+kern  :warn  : Tainted: [W]=WARN
+kern  :warn  : Hardware name: Framework Laptop 13 (AMD Ryzen 7040Series)/FRANMDCP07, BIOS 03.16 07/25/2025
+kern  :warn  : Workqueue: events mt7921_init_work [mt7921_common]
+kern  :warn  : RIP: 0010:__fortify_panic+0xd/0xf
+kern  :warn  : Code: 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 40 0f b6 ff e8 c3 55 71 00 <0f> 0b 48 8b 54 24 10 48 8b 74 24 08 4c 89 e9 48 c7 c7 00 a2 d5 a0
+kern  :warn  : RSP: 0018:ffffa7a5c03a3d10 EFLAGS: 00010246
+kern  :warn  : RAX: ffffffffa0d7aaf2 RBX: 0000000000000000 RCX: ffffffffa0d7aaf2
+kern  :warn  : RDX: 0000000000000011 RSI: ffffffffa0d5a170 RDI: ffffffffa128db10
+kern  :warn  : RBP: ffff91650ae52060 R08: 0000000000000010 R09: ffffa7a5c31b2000
+kern  :warn  : R10: ffffa7a5c03a3bf0 R11: 00000000ffffffff R12: 0000000000000000
+kern  :warn  : R13: ffffa7a5c31b2000 R14: 0000000000001000 R15: 0000000000000000
+kern  :warn  : FS:  0000000000000000(0000) GS:ffff91743e664000(0000) knlGS:0000000000000000
+kern  :warn  : CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+kern  :warn  : CR2: 00007f10786c241c CR3: 00000003eca24000 CR4: 0000000000f50ef0
+kern  :warn  : PKRU: 55555554
+kern  :warn  : Call Trace:
+kern  :warn  :  <TASK>
+kern  :warn  :  mt76_connac2_load_patch.cold+0x2b/0xa41 [mt76_connac_lib]
+kern  :warn  :  ? srso_alias_return_thunk+0x5/0xfbef5
+kern  :warn  :  mt792x_load_firmware+0x36/0x150 [mt792x_lib]
+kern  :warn  :  mt7921_run_firmware+0x2c/0x4a0 [mt7921_common]
+kern  :warn  :  ? srso_alias_return_thunk+0x5/0xfbef5
+kern  :warn  :  ? mt7921_rr+0x12/0x30 [mt7921e]
+kern  :warn  :  ? srso_alias_return_thunk+0x5/0xfbef5
+kern  :warn  :  ? ____mt76_poll_msec+0x75/0xb0 [mt76]
+kern  :warn  :  mt7921e_mcu_init+0x4c/0x7a [mt7921e]
+kern  :warn  :  mt7921_init_work+0x51/0x190 [mt7921_common]
+kern  :warn  :  process_one_work+0x18b/0x340
+kern  :warn  :  worker_thread+0x256/0x3a0
+kern  :warn  :  ? __pfx_worker_thread+0x10/0x10
+kern  :warn  :  kthread+0xfc/0x240
+kern  :warn  :  ? __pfx_kthread+0x10/0x10
+kern  :warn  :  ? __pfx_kthread+0x10/0x10
+kern  :warn  :  ret_from_fork+0x254/0x290
+kern  :warn  :  ? __pfx_kthread+0x10/0x10
+kern  :warn  :  ret_from_fork_asm+0x1a/0x30
+kern  :warn  :  </TASK>
+Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
 ---
-v2:
-- Fix build error reported by "kernel test robot <lkp@intel.com>".
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-v1: https://lore.kernel.org/all/20251229043244.4103262-1-tzungbi@kernel.org/
-
- drivers/pmdomain/mediatek/mtk-pm-domains.c | 101 +++++++++++++++++----
- 1 file changed, 81 insertions(+), 20 deletions(-)
-
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index 80561d27f2b2..c371b08c9170 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -318,12 +318,12 @@ static int scpsys_hwv_power_on(struct generic_pm_domain *genpd)
- 	if (ret)
- 		goto err_infra;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index ea99167765b0..fba7025ffd3f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -3101,7 +3101,6 @@ int mt76_connac2_load_patch(struct mt76_dev *dev, const char *fw_name)
+ 	int i, ret, sem, max_len = mt76_is_sdio(dev) ? 2048 : 4096;
+ 	const struct mt76_connac2_patch_hdr *hdr;
+ 	const struct firmware *fw = NULL;
+-	char build_date[17];
  
--	ret = clk_bulk_prepare_enable(pd->num_clks, pd->clks);
-+	ret = clk_bulk_enable(pd->num_clks, pd->clks);
- 	if (ret)
- 		goto err_reg;
- 
- 	/* For HWV the subsys clocks refer to the HWV low power subsystem */
--	ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
-+	ret = clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
- 	if (ret)
- 		goto err_disable_clks;
- 
-@@ -365,7 +365,7 @@ static int scpsys_hwv_power_on(struct generic_pm_domain *genpd)
+ 	sem = mt76_connac_mcu_patch_sem_ctrl(dev, true);
+ 	switch (sem) {
+@@ -3125,11 +3124,8 @@ int mt76_connac2_load_patch(struct mt76_dev *dev, const char *fw_name)
  	}
  
- 	/* It's done! Disable the HWV low power subsystem clocks */
--	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
+ 	hdr = (const void *)fw->data;
+-	strscpy(build_date, hdr->build_date, sizeof(build_date));
+-	build_date[16] = '\0';
+-	strim(build_date);
+ 	dev_info(dev->dev, "HW/SW Version: 0x%x, Build Time: %.16s\n",
+-		 be32_to_cpu(hdr->hw_sw_ver), build_date);
++		 be32_to_cpu(hdr->hw_sw_ver), hdr->build_date);
  
- 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_INFRA_PWR_CTL))
- 		scpsys_sec_infra_power_on(false);
-@@ -373,9 +373,9 @@ static int scpsys_hwv_power_on(struct generic_pm_domain *genpd)
- 	return 0;
- 
- err_disable_subsys_clks:
--	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
- err_disable_clks:
--	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
-+	clk_bulk_disable(pd->num_clks, pd->clks);
- err_reg:
- 	scpsys_regulator_disable(pd->supply);
- err_infra:
-@@ -398,7 +398,7 @@ static int scpsys_hwv_power_off(struct generic_pm_domain *genpd)
- 			return ret;
- 	}
- 
--	ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
-+	ret = clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
- 	if (ret)
- 		goto err_infra;
- 
-@@ -437,8 +437,8 @@ static int scpsys_hwv_power_off(struct generic_pm_domain *genpd)
- 	if (ret)
- 		goto err_disable_subsys_clks;
- 
--	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
--	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
-+	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
-+	clk_bulk_disable(pd->num_clks, pd->clks);
- 
- 	scpsys_regulator_disable(pd->supply);
- 
-@@ -448,7 +448,7 @@ static int scpsys_hwv_power_off(struct generic_pm_domain *genpd)
- 	return 0;
- 
- err_disable_subsys_clks:
--	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
- err_infra:
- 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_INFRA_PWR_CTL))
- 		scpsys_sec_infra_power_on(false);
-@@ -616,7 +616,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	if (ret)
- 		return ret;
- 
--	ret = clk_bulk_prepare_enable(pd->num_clks, pd->clks);
-+	ret = clk_bulk_enable(pd->num_clks, pd->clks);
- 	if (ret)
- 		goto err_reg;
- 
-@@ -638,8 +638,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	 * access.
- 	 */
- 	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUS_PROTECTION)) {
--		ret = clk_bulk_prepare_enable(pd->num_subsys_clks,
--					      pd->subsys_clks);
-+		ret = clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
- 		if (ret)
- 			goto err_pwr_ack;
- 	}
-@@ -653,8 +652,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 		goto err_disable_sram;
- 
- 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUS_PROTECTION)) {
--		ret = clk_bulk_prepare_enable(pd->num_subsys_clks,
--					      pd->subsys_clks);
-+		ret = clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
- 		if (ret)
- 			goto err_enable_bus_protect;
- 	}
-@@ -667,10 +665,9 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	scpsys_sram_disable(pd);
- err_disable_subsys_clks:
- 	if (!MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUS_PROTECTION))
--		clk_bulk_disable_unprepare(pd->num_subsys_clks,
--					   pd->subsys_clks);
-+		clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
- err_pwr_ack:
--	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
-+	clk_bulk_disable(pd->num_clks, pd->clks);
- err_reg:
- 	scpsys_regulator_disable(pd->supply);
- 	return ret;
-@@ -695,7 +692,7 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 		regmap_set_bits(scpsys->base, pd->data->ext_buck_iso_offs,
- 				pd->data->ext_buck_iso_mask);
- 
--	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
- 
- 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
- 		scpsys_modem_pwrseq_off(pd);
-@@ -708,7 +705,7 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	if (ret < 0)
- 		return ret;
- 
--	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
-+	clk_bulk_disable(pd->num_clks, pd->clks);
- 
- 	scpsys_regulator_disable(pd->supply);
- 
-@@ -855,6 +852,14 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 		pd->genpd.flags |= GENPD_FLAG_IRQ_SAFE;
- 	}
- 
-+	ret = clk_bulk_prepare(pd->num_clks, pd->clks);
-+	if (ret)
-+		goto err_put_subsys_clocks;
-+
-+	ret = clk_bulk_prepare(pd->num_subsys_clks, pd->subsys_clks);
-+	if (ret)
-+		goto err_unprepare_clocks;
-+
- 	/*
- 	 * Initially turn on all domains to make the domains usable
- 	 * with !CONFIG_PM and to get the hardware in sync with the
-@@ -869,7 +874,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 		ret = pd->genpd.power_on(&pd->genpd);
- 		if (ret < 0) {
- 			dev_err(scpsys->dev, "%pOF: failed to power on domain: %d\n", node, ret);
--			goto err_put_subsys_clocks;
-+			goto err_unprepare_subsys_clocks;
- 		}
- 
- 		if (MTK_SCPD_CAPS(pd, MTK_SCPD_ALWAYS_ON))
-@@ -888,6 +893,10 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 
- 	return scpsys->pd_data.domains[id];
- 
-+err_unprepare_subsys_clocks:
-+	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+err_unprepare_clocks:
-+	clk_bulk_unprepare(pd->num_clks, pd->clks);
- err_put_subsys_clocks:
- 	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
- err_put_clocks:
-@@ -965,6 +974,8 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
- 	if (scpsys_domain_is_on(pd))
- 		scpsys_power_off(&pd->genpd);
- 
-+	clk_bulk_unprepare(pd->num_clks, pd->clks);
-+	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
- 	clk_bulk_put(pd->num_clks, pd->clks);
- 	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
- }
-@@ -1208,6 +1219,7 @@ static int scpsys_probe(struct platform_device *pdev)
- 	if (!scpsys)
- 		return -ENOMEM;
- 
-+	platform_set_drvdata(pdev, scpsys);
- 	scpsys->dev = dev;
- 	scpsys->soc_data = soc;
- 
-@@ -1270,12 +1282,61 @@ static int scpsys_probe(struct platform_device *pdev)
- 	return ret;
- }
- 
-+#ifdef CONFIG_PM_SLEEP
-+static int scpsys_suspend(struct device *dev)
-+{
-+	struct scpsys *scpsys = dev_get_drvdata(dev);
-+	struct generic_pm_domain *genpd;
-+	struct scpsys_domain *pd;
-+	int i;
-+
-+	for (i = 0; i < scpsys->pd_data.num_domains; i++) {
-+		genpd = scpsys->pd_data.domains[i];
-+		if (!genpd)
-+			continue;
-+
-+		pd = to_scpsys_domain(genpd);
-+		clk_bulk_unprepare(pd->num_clks, pd->clks);
-+		clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-+	}
-+	return 0;
-+}
-+
-+static int scpsys_resume(struct device *dev)
-+{
-+	struct scpsys *scpsys = dev_get_drvdata(dev);
-+	struct generic_pm_domain *genpd;
-+	struct scpsys_domain *pd;
-+	int i, ret;
-+
-+	for (i = 0; i < scpsys->pd_data.num_domains; i++) {
-+		genpd = scpsys->pd_data.domains[i];
-+		if (!genpd)
-+			continue;
-+
-+		pd = to_scpsys_domain(genpd);
-+		ret = clk_bulk_prepare(pd->num_clks, pd->clks);
-+		if (ret)
-+			return ret;
-+		ret = clk_bulk_prepare(pd->num_subsys_clks, pd->subsys_clks);
-+		if (ret)
-+			return ret;
-+	}
-+	return 0;
-+}
-+#endif
-+
-+static const struct dev_pm_ops scpsys_pm_ops = {
-+	SET_SYSTEM_SLEEP_PM_OPS(scpsys_suspend, scpsys_resume)
-+};
-+
- static struct platform_driver scpsys_pm_domain_driver = {
- 	.probe = scpsys_probe,
- 	.driver = {
- 		.name = "mtk-power-controller",
- 		.suppress_bind_attrs = true,
- 		.of_match_table = scpsys_of_match,
-+		.pm = &scpsys_pm_ops,
- 	},
- };
- builtin_platform_driver(scpsys_pm_domain_driver);
+ 	for (i = 0; i < be32_to_cpu(hdr->desc.n_region); i++) {
+ 		struct mt76_connac2_patch_sec *sec;
 -- 
-2.52.0.351.gbe84eed79e-goog
+2.51.0
 
 
