@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29AD4EE57CE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jan 2026 06:25:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 085DBEEB56F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jan 2026 06:25:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LMNrli8fWuq22Lopa9PXMOKtBCB18Eukz20h2BFPXfY=; b=c417ALpqRmcW25EtoPYzJ17lwz
-	eb7vDv1wTA23lA5xHPiOtu+QyW3IlIZwHeMy64gqK6UnjlxHyaeoMjc083kqN8aOZv7CtM+RZPZdX
-	Xt2wW26LkFxbIwz1h1qvXtSqh2rjxsSrjLeXari7zqjUJ00ihqqaKpcYit/hsp+MbRjnwCYAi63VJ
-	r619fUntoIicwV9bt6FW8t/HCRHtRq/bfSiw0BIun50tDfjWTBmRtaabZnEZMwrZQGqdjB9XiyBF6
-	bdyMPzAxsani2xC7E9w367QHEW18fht7RpcRRIcGIgmAU7oYXBvWUy/cL7Bfk0UtPxIjH4l6N6MfJ
-	Y8SbEMvg==;
+	bh=eSmHMTLFLYMPOGJAvXcJayrP61cSU9U9a7LGizFttZk=; b=CCpGD7RaWzF7VrGgz+tKqlL2dJ
+	hyyPn9p4sTs7zP795gcxapke25EbNIVMRRyqLLg/VBl4T/BO8gdskBUtqESIzcXD50Gjn+LwLeQ1r
+	W3oPOXUM02qsXn0EYU/StorF5dcDDgB+ZLipoqH95jxYaRSdJg5HlI2rww0f13k0L/dhm/Rgudt5/
+	01CUuFsPdRKrP6wdDBcWyR9Pl4EeRuJluv4PPuAl31X1JVFNBI+5X230D2VMGz9b9YXfXbnChtzES
+	rZgACAWBKZcQwFDAuqQ7EzIJ1hr5Px1Vjeaf8smNj1nX/AGgpv6m2Cy3x+MGCayHzZZHcf6H9EZ2x
+	n/97DK7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbC7g-00000006dss-0gM2;
-	Thu, 01 Jan 2026 06:25:24 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1vbC7o-00000006dwF-0LPf;
+	Thu, 01 Jan 2026 06:25:32 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbC7b-00000006drJ-0RZ9
+	id 1vbC7k-00000006duA-3ixE
 	for linux-mediatek@lists.infradead.org;
-	Thu, 01 Jan 2026 06:25:21 +0000
-Received: by mail-pg1-x532.google.com with SMTP id 41be03b00d2f7-c3e921afad1so455857a12.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 31 Dec 2025 22:25:18 -0800 (PST)
+	Thu, 01 Jan 2026 06:25:31 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-c2dc870e194so3970811a12.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 31 Dec 2025 22:25:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1767248718; x=1767853518; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1767248728; x=1767853528; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=LMNrli8fWuq22Lopa9PXMOKtBCB18Eukz20h2BFPXfY=;
-        b=ZqpOkoscHVGlhU7TI7tdXaG5qQvgio6lGXLyEN7J5b5bJEd/dJJnREdbFV6OB1hR0F
-         Qr9ChTyXsDqK2FpbqfbrgdMJeCt+rww0aSOcYOdvqK7RoOVK0h27p04ALFivkjAU1GD8
-         w/QRfUa6W61i0BEmgc6G4DQp7GPw4h73Y0cXMEykN5L5TRZT2FMUZeqDhJEo0uBcB2wF
-         4Qhpj31R58RgJx4Om0wH9o6P+UtOlISQVVBDuSAYmi/LoDO7r96le+XR4sR+3yiCy88P
-         M2wk499v2Ntd+9BnU/tOPgZd2b84+F6scc+mYUncBX2Bw1RkbKKJRTfR9A3UH/KxZspG
-         oRag==
+        bh=eSmHMTLFLYMPOGJAvXcJayrP61cSU9U9a7LGizFttZk=;
+        b=THOtEZjKBEYhXEJVjXIYq41eSTGlkrg50El/D2m63+7/or1ty10kbQEMSWZ2gzEg5B
+         vmXGxLg9hTAQCX4+3o9b6j3XLLnSPkMEI1FQmZf1WAPQNwOXhF7FJJkVph0y3EgI+HxL
+         MPihfUi2ad+opKXExeHvitlAvEBT4UPM7NepTVhBm7CRKlwzNn2E0xNWCarJseGvSPu1
+         GoVgseqI0WoSHVrMarJML22TOuXAtwQa3BIt/swjwrxnG0uXdMLHONhI13wtLHNzNpfJ
+         Lh2ivQTLJFrYHNsamG1OawZ05oaxxAsMDaWK8lKV98PwhRzbsM+HMyMKMqifam0yn2i8
+         u8IA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767248718; x=1767853518;
+        d=1e100.net; s=20230601; t=1767248728; x=1767853528;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=LMNrli8fWuq22Lopa9PXMOKtBCB18Eukz20h2BFPXfY=;
-        b=FWB+YWmO6xM9l31FFsHXOlUOqMVJ5gG4oDYuAnJCbzdudjzJPjABL7dGrR7gvbdEdz
-         1r1KvsxYwMkW2j3FnecA/OP8C2lEsLjYxwgVvN6fFPD1gGbQikaPP9QYHnlyGhBmESPu
-         D6yaujTmysjG5JE0oEc42bXnZ+JzZmyoiZtzX9Hse5XiY/i5cFKwmW1RJkfw5Kr6pKCH
-         CQNGsH0GQs5SqsyryuVDLPJJHvIoLEg5PQl3lnIYJLkcZCSAqAYMjBhZubJ4lATsvqf8
-         tB/M8QNoad4Q1ALRKULgSoI/7B9L+wZYQ1UJf2SPF3p+mOt/4154CT/Jl4cLYzNoWlUT
-         HAEA==
-X-Gm-Message-State: AOJu0Yy4z51aVDimYtZaTcsebG+iYBc0dIO6EuCATEpaWFj4AluvTFo0
-	kAL3hNKbBauadPdHE0Lvu5xShdXzyd0518ca/JugneGsk4MG3vfX448R
-X-Gm-Gg: AY/fxX7zsCQHBSgKwURbzXPNq+iVKJGEV1u4WGHN8aLjyEKSMVrHuRiCtgVIei1x2FH
-	I/rWuzf22FUrzve3blu0tuD0HPGsGyStrxo3AjcVuEuIpa5xKwbDQG/y3N6m2B5Fx4q1NX1f8kW
-	/ezrizF/tXUXJihlmEvy+22//aeGqebB6UabWg8Kp3nIWlTtdPnLql39Mt0UGdgGtfkm9YOAc+2
-	mQ9KElVmMAm799Yw9z3DyFumI/KOx/iCyWFf3tk8ReMCoDMXS93mPDLrkj9oupoo67UK8seG5cg
-	psPayXPu+efwtXaqC+yBWDmYVasm3It4OYdVfyg7brpPzOvC0f6OaM7EkbIxDlNXrfuZibNA2If
-	fyQjrkxJY3inbYF2fZPtMBKAjVUEiE8qjEkYd2rZk7R/8vDW37gP+bmebLu1Gk7E2vAkloc1Y/4
-	tvsYqxYu6jRW8tVyUr3azIPu5KT0DMs7knJZS9lxZGF9pFpEb1uNQx+F+4wh/8zw==
-X-Google-Smtp-Source: AGHT+IF8c3kpymCYxXLtXHPXPOh7mPJtKHA7XR9XpNIl8rN7FB8iVPcgOKK7KP9TRQAMuRn8Gghr5A==
-X-Received: by 2002:a05:7022:238f:b0:11f:3483:bbb2 with SMTP id a92af1059eb24-121722aae15mr34466776c88.12.1767248718059;
-        Wed, 31 Dec 2025 22:25:18 -0800 (PST)
+        bh=eSmHMTLFLYMPOGJAvXcJayrP61cSU9U9a7LGizFttZk=;
+        b=bpJr0cdT09QhP585JR9GBrmyj23WtJO5iCgW7xOfsi2ogOHFomzBSfu8w0wf6zvMY7
+         ZxLINtcl4TMEBkGVqJ2mdU9TXMOKEP+IzzvN0EZP7ZUDgqFIO7d2FlhTw1ir78Cl7drI
+         34vAjiGK/AH8KJUAnQWcCXsoEFzPawThO/RaGQKEl57yW9XlAl05Q5jwhuM8Sxspg3dP
+         pjCou25qH2M/M5EfDDha9I8/8fB0lHPzscwLvcIknIJofZ4FdLS3Bh9ikDrcugrv7Gc2
+         GtrT3QYzTuBQQeljrV4xzEHKRdoxO4NVwR5vL3AvhTAaVd1B8OCeC/irsCvpyaH3D2/+
+         CXHw==
+X-Gm-Message-State: AOJu0YwB+m5syNUPlC3rE+eVRQxz48MW065UrpNs1M9vNPdNYTFWgHGt
+	kpD2qRg7a7QUVrUHZIe4/1Bt4xD4ECT6YSEKcW/QSmeQQELsApFD+3N+
+X-Gm-Gg: AY/fxX7C2YsznRPtYa9FIwThU0PI64biMB1E005YdgE6BUj4a58V3RCkLkG4eZ6Csez
+	l7P31JS/uvu40rra+CAmVXu5S88Obs8Tm3suC0RwdyCfDmt5S4uP3pyLzkLBaU+QUjgCIMuoNzm
+	ocp8bYVVnwwQMa4+iTcxVaILVJ0ub5butV4nH4m4BOJ6ZMEvGHJjKtbCCLbFR3j3K8tYN3vpi1e
+	YgZjQYc8bMkHUAybqXU0o0jEP2PE6FGMpVO3eo2ZrHdL5qV57KbkvngHliXPGg1szp8b90qABe/
+	GSs/oK960DPDcpXlW/+PuBzaOnnmreWRsRU0KLuj1xcQvADVWpGqX55YlHvxYJu1FmWimcpVBYp
+	092X1F/+F/NBVTrou76H5otd+XCt9J6A6LrKCA73lt0yrVBPOOWeYskXurNxoC8rLwpfJI4UoHk
+	9NeXy+2caWAGKIyH5bV0a6zO2XwUS92BZvAgS5eWhROn1jtylvrrTRYxh527dvKQ==
+X-Google-Smtp-Source: AGHT+IFh5Ad9Hf+dAEhjt2TJYJtae2RoTDAfQaXTCyF1NBh3Q++Urs2DK2jMl3q8CvHI8h3zssad6Q==
+X-Received: by 2002:a05:7023:907:b0:119:e55a:9c06 with SMTP id a92af1059eb24-121722e89ddmr39548902c88.34.1767248727941;
+        Wed, 31 Dec 2025 22:25:27 -0800 (PST)
 Received: from zubuntu.home.zacbowling.com ([2001:5a8:60d:bc9:9ebf:dff:fe00:f8f2])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-121725548b5sm147035158c88.17.2025.12.31.22.25.17
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-121724cfdd0sm144361662c88.4.2025.12.31.22.25.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 31 Dec 2025 22:25:17 -0800 (PST)
+        Wed, 31 Dec 2025 22:25:27 -0800 (PST)
 From: Zac Bowling <zbowling@gmail.com>
 To: linux-wireless@vger.kernel.org
 Cc: linux-mediatek@lists.infradead.org,
@@ -79,18 +79,18 @@ Cc: linux-mediatek@lists.infradead.org,
 	sean.wang@mediatek.com,
 	deren.wu@mediatek.com,
 	ryder.lee@mediatek.com
-Subject: [PATCH] wifi: mt76: mt7925: add NULL checks in MLO link and chanctx functions
-Date: Wed, 31 Dec 2025 22:25:14 -0800
-Message-ID: <20260101062514.186040-3-zbowling@gmail.com>
+Subject: [PATCH] wifi: mt76: mt7925: add error handling for BSS info MCU command in sta_add
+Date: Wed, 31 Dec 2025 22:25:24 -0800
+Message-ID: <20260101062525.186192-2-zbowling@gmail.com>
 X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260101062514.186040-1-zbowling@gmail.com>
+In-Reply-To: <20260101062525.186192-1-zbowling@gmail.com>
 References: <CAOFcj8Sad3pLohFfRdj5jzK3Zs3FAjFVBuzH=80i_m1YqSbpfA@mail.gmail.com>
- <20260101062514.186040-1-zbowling@gmail.com>
+ <20260101062525.186192-1-zbowling@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251231_222520_371700_93DCAD26 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20251231_222530_327380_5B53E7D9 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,110 +107,42 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Zac Bowling <zac@zacbowling.com>
 
-Add NULL pointer checks for mconf and link_conf in several functions
-that were missing validation after calling mt792x_vif_to_link() and
-mt792x_vif_to_bss_conf().
+Check return value of mt7925_mcu_add_bss_info() in mt7925_mac_link_sta_add()
+and propagate errors to the caller.
 
-Functions fixed:
-- mt7925_mac_set_links(): Check both primary and secondary link_conf
-  before dereferencing chanreq.oper for band selection
-- mt7925_link_info_changed(): Check mconf before using it to get
-  link_conf, prevents NULL dereference chain
-- mt7925_assign_vif_chanctx(): Check mconf before use, return -EINVAL
-  if NULL; check pri_link_conf before passing to MCU function
-- mt7925_unassign_vif_chanctx(): Check mconf before dereferencing,
-  return early if NULL during MLO cleanup
-
-These functions handle MLO (Multi-Link Operation) scenarios where link
-configurations may not be fully set up when called, particularly during
-rapid link state transitions or error recovery paths.
+BSS info must be set up before adding a station record. If this MCU
+command fails, continuing with station add would leave the firmware in
+an inconsistent state with a station but no BSS configuration.
 
 Reported-by: Zac Bowling <zac@zacbowling.com>
 Signed-off-by: Zac Bowling <zac@zacbowling.com>
 ---
- .../net/wireless/mediatek/mt76/mt7925/main.c  | 39 +++++++++++++++----
- 1 file changed, 32 insertions(+), 7 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 058394b2e067..852cf8ff842f 100644
+index d966e5ab50ff..a7e1e673c4bc 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -1006,18 +1006,29 @@ mt7925_mac_set_links(struct mt76_dev *mdev, struct ieee80211_vif *vif)
- {
- 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
--	struct ieee80211_bss_conf *link_conf =
--		mt792x_vif_to_bss_conf(vif, mvif->deflink_id);
--	struct cfg80211_chan_def *chandef = &link_conf->chanreq.oper;
--	enum nl80211_band band = chandef->chan->band, secondary_band;
-+	struct ieee80211_bss_conf *link_conf;
-+	struct cfg80211_chan_def *chandef;
-+	enum nl80211_band band, secondary_band;
-+	u16 sel_links;
-+	u8 secondary_link_id;
-+
-+	link_conf = mt792x_vif_to_bss_conf(vif, mvif->deflink_id);
-+	if (!link_conf)
-+		return;
+@@ -899,11 +899,14 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
+ 	/* should update bss info before STA add */
+ 	if (vif->type == NL80211_IFTYPE_STATION && !link_sta->sta->tdls) {
+ 		if (ieee80211_vif_is_mld(vif))
+-			mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx,
+-						link_conf, link_sta, link_sta != mlink->pri_link);
++			ret = mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx,
++						      link_conf, link_sta,
++						      link_sta != mlink->pri_link);
+ 		else
+-			mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx,
+-						link_conf, link_sta, false);
++			ret = mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx,
++						      link_conf, link_sta, false);
++		if (ret)
++			return ret;
+ 	}
  
--	u16 sel_links = mt76_select_links(vif, 2);
--	u8 secondary_link_id = __ffs(~BIT(mvif->deflink_id) & sel_links);
-+	chandef = &link_conf->chanreq.oper;
-+	band = chandef->chan->band;
-+
-+	sel_links = mt76_select_links(vif, 2);
-+	secondary_link_id = __ffs(~BIT(mvif->deflink_id) & sel_links);
- 
- 	if (!ieee80211_vif_is_mld(vif) || hweight16(sel_links) < 2)
- 		return;
- 
- 	link_conf = mt792x_vif_to_bss_conf(vif, secondary_link_id);
-+	if (!link_conf)
-+		return;
-+
- 	secondary_band = link_conf->chanreq.oper.chan->band;
- 
- 	if (band == NL80211_BAND_2GHZ ||
-@@ -1927,7 +1938,12 @@ static void mt7925_link_info_changed(struct ieee80211_hw *hw,
- 	struct ieee80211_bss_conf *link_conf;
- 
- 	mconf = mt792x_vif_to_link(mvif, info->link_id);
-+	if (!mconf)
-+		return;
-+
- 	link_conf = mt792x_vif_to_bss_conf(vif, mconf->link_id);
-+	if (!link_conf)
-+		return;
- 
- 	mt792x_mutex_acquire(dev);
- 
-@@ -2136,9 +2152,14 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
- 
- 	if (ieee80211_vif_is_mld(vif)) {
- 		mconf = mt792x_vif_to_link(mvif, link_conf->link_id);
-+		if (!mconf) {
-+			mutex_unlock(&dev->mt76.mutex);
-+			return -EINVAL;
-+		}
-+
- 		pri_link_conf = mt792x_vif_to_bss_conf(vif, mvif->deflink_id);
- 
--		if (vif->type == NL80211_IFTYPE_STATION &&
-+		if (pri_link_conf && vif->type == NL80211_IFTYPE_STATION &&
- 		    mconf == &mvif->bss_conf)
- 			mt7925_mcu_add_bss_info(&dev->phy, NULL, pri_link_conf,
- 						NULL, true);
-@@ -2167,6 +2188,10 @@ static void mt7925_unassign_vif_chanctx(struct ieee80211_hw *hw,
- 
- 	if (ieee80211_vif_is_mld(vif)) {
- 		mconf = mt792x_vif_to_link(mvif, link_conf->link_id);
-+		if (!mconf) {
-+			mutex_unlock(&dev->mt76.mutex);
-+			return;
-+		}
- 
- 		if (vif->type == NL80211_IFTYPE_STATION &&
- 		    mconf == &mvif->bss_conf)
+ 	if (ieee80211_vif_is_mld(vif) &&
 -- 
 2.51.0
 
