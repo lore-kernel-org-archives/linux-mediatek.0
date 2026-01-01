@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60703EED628
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67D3DEED630
 	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jan 2026 17:12:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gELqvaeQlWG+ETN/6/E6ceX26B6xTdepXFs8chq3lOw=; b=nmL29jTR4wZDLtxW3WkI9xZNCW
-	MU4zeBORvaQdEIHnYoS2WcwhCXMAZ4Qh0KuBchKg+fhfRgS8/CHrI1tvN43X7VK3H9kh1VnB2sJd8
-	USjmfbLBs8+u/maKq8PX2knk/gdD2zOtUDZAExpzDcM7q7iGCzomd1oYhlBaJA/+xh4m1LtWpJs7x
-	/v32xlJVvcvYOSZBZ0siYd4pKmUb7SsOs9hz7Rgx2veZHHCPZD2eBVL2rTaJW9ZkgRgVQMUGj+ge0
-	mcZP7NT7qdZqAJ26APkss1koGZNbyMQBlp538AERNy5SaxoAgYe37/fDNVdBDcel7y6UN17VMXjHV
-	uaYwnFbQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NZ9wR2ReHBYF/AExO/WGqvTNzHA5m3q65auZ2OTpjQM=; b=nQnEnt0o/k6KV7cRinE/KXpep2
+	yzjbAUBLCLgiU1Ko2rZWS8K5B8iVw+988cveT4plGmyPqicvE13Sd21/Tns4iBDiKpz8CUk48sV5n
+	92v1zCpTHYTSCADBTpJ8zfjRT4NzytIM2jrlCGsE/ZSmX1IOUuR99RKqBwGgDkyqjRr5CygTo5NrB
+	QjrIijS+8qH7tzhRqBVu1EbP2YfoGSFk1fW+qsCAVH+epLjYg0jtEdhzYDP1kFeEuF8R8vgThkJsQ
+	ooO4BKb0MEXJh5gVcOv7oPqmllTJ4wh7CQJjq0JbWusogGtX7DO+Xd4Udp+eRSifSkCCN6ZThmEYC
+	eK4tjIdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbMDn-00000007NNQ-1at3;
-	Thu, 01 Jan 2026 17:12:23 +0000
-Received: from mx4.wp.pl ([212.77.101.11])
+	id 1vbMDm-00000007NN0-0P0C;
+	Thu, 01 Jan 2026 17:12:22 +0000
+Received: from mx4.wp.pl ([212.77.101.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbMDk-00000007NLr-0xeP
+	id 1vbMDi-00000007NLi-3rOn
 	for linux-mediatek@lists.infradead.org;
-	Thu, 01 Jan 2026 17:12:21 +0000
-Received: (wp-smtpd smtp.wp.pl 27779 invoked from network); 1 Jan 2026 18:12:17 +0100
+	Thu, 01 Jan 2026 17:12:20 +0000
+Received: (wp-smtpd smtp.wp.pl 25178 invoked from network); 1 Jan 2026 18:12:14 +0100
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
-          t=1767287537; bh=gELqvaeQlWG+ETN/6/E6ceX26B6xTdepXFs8chq3lOw=;
+          t=1767287534; bh=NZ9wR2ReHBYF/AExO/WGqvTNzHA5m3q65auZ2OTpjQM=;
           h=From:To:Cc:Subject;
-          b=q+c+ZCfMwmoMr40O6OZZL4mlaFRc3m1X7Lpsk7bclHMpZAZemj5bK3aJhxlwWiFyF
-           fEZt4KhGEQdVyFpZjkIOVO/2sXTQmFhIgd7B2PcM+fFzVNdS91wJrvV8cm8v9zFTHy
-           zT3CpBjHjx9+PzaG2LuqzCgyQt+1ltWC69/V6Y0PXyR2ykLEkn0XvnUj3Mu4zWeQNP
-           xENaaAbQlIsjHD/4VAGcnQPIDdoCOszlrWonYi6RpEZDF7rj4n3VISq8BZKu9Z/Tkk
-           9h0Tk4VUbF6MLn+xdpx1kzMpUYgY341v6cdr8JrE7+wPRQLGBJUuH9EYBYR3XLtW/3
-           VZP76n17O0vdg==
+          b=kFW7bhvN9BxEmu+7B2mW3oWjdvnYnU+N1cWxWqg/of50k2cFP9LHWo+8rrMalhkMe
+           4g+fRhE+ypAZiJh65gQrpR09G37HoitAQDuqYu7TDW337tk6VMC2F+op4uXyxlgR9r
+           6sG7dpKJ/JeV13i03W4T8W+8OAjuqAopPYcS5aEo7+GTxFtGbtS3E7PeuheeFDqKWX
+           eYp70Ifz6bPi/JxpQ2vtWGRVu8jFP1FABtT3eJeAxT9T9RNR1SJsFQ+Jutn1Mh72gY
+           hxREG8Ry3SU0qE/tKrrKlP6S76JWbCd+tSDdLTLnKSt0+6o342U7l2SvyOPRTphh6q
+           ATf6tDaTuctOg==
 Received: from 83.5.157.18.ipv4.supernova.orange.pl (HELO laptop-olek.lan) (olek2@wp.pl@[83.5.157.18])
           (envelope-sender <olek2@wp.pl>)
           by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
-          for <ansuelsmth@gmail.com>; 1 Jan 2026 18:12:17 +0100
+          for <ansuelsmth@gmail.com>; 1 Jan 2026 18:12:14 +0100
 From: Aleksander Jan Bajkowski <olek2@wp.pl>
 To: ansuelsmth@gmail.com,
 	herbert@gondor.apana.org.au,
@@ -60,21 +60,19 @@ To: ansuelsmth@gmail.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: Aleksander Jan Bajkowski <olek2@wp.pl>
-Subject: [PATCH 2/2] mips: dts: ralink: mt7621: add crypto offload support
-Date: Thu,  1 Jan 2026 18:12:05 +0100
-Message-ID: <20260101171212.1861241-2-olek2@wp.pl>
+Subject: [PATCH 1/2] dt-bindings: crypto: Add support for Mediatek MT7621 SoC
+Date: Thu,  1 Jan 2026 18:12:04 +0100
+Message-ID: <20260101171212.1861241-1-olek2@wp.pl>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260101171212.1861241-1-olek2@wp.pl>
-References: <20260101171212.1861241-1-olek2@wp.pl>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-WP-DKIM-Status: good (id: wp.pl)                                                      
-X-WP-MailID: 7243962c3d223ce7c88e29ac0c0c40f2
+X-WP-MailID: 105dc3b8181124504b8ee5fad02c645f
 X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
-X-WP-SPAM: NO 0000009 [wSpU]                               
+X-WP-SPAM: NO 0000007 [wYQR]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260101_091220_426569_16B70AD3 
-X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-CacheID: sfid-20260101_091219_427889_390D3462 
+X-CRM114-Status: UNSURE (   7.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,35 +88,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the built-in cryptographic accelerator. This accelerator
-supports 3DES, AES (128/192/256 bit), ARC4, MD5, SHA1, SHA224, and SHA256.
-It also supports full IPSEC and TLS offload, but this feature isn't
-implemented in the driver.
+Add compatible for Airoha AN7583 SoC. The implementation is exactly the
+same os in the Airoha SoC.
 
 Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
 ---
- arch/mips/boot/dts/ralink/mt7621.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ .../bindings/crypto/inside-secure,safexcel-eip93.yaml          | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/arch/mips/boot/dts/ralink/mt7621.dtsi b/arch/mips/boot/dts/ralink/mt7621.dtsi
-index 0704eab4a80b..9ba28fa016fb 100644
---- a/arch/mips/boot/dts/ralink/mt7621.dtsi
-+++ b/arch/mips/boot/dts/ralink/mt7621.dtsi
-@@ -361,6 +361,14 @@ cdmm: cdmm@1fbf8000 {
- 		reg = <0x1fbf8000 0x8000>;
- 	};
- 
-+	crypto@1e004000 {
-+		compatible = "mediatek,mt7621-eip93", "inside-secure,safexcel-eip93ies";
-+		reg = <0x1e004000 0x1000>;
-+
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_SHARED 19 IRQ_TYPE_LEVEL_HIGH>;
-+	};
-+
- 	ethernet: ethernet@1e100000 {
- 		compatible = "mediatek,mt7621-eth";
- 		reg = <0x1e100000 0x10000>;
+diff --git a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml
+index 997bf9717f9e..8ccff64f5c1c 100644
+--- a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml
++++ b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml
+@@ -33,6 +33,9 @@ properties:
+       - items:
+           - const: airoha,en7581-eip93
+           - const: inside-secure,safexcel-eip93ies
++      - items:
++          - const: mediatek,mt7621-eip93
++          - const: inside-secure,safexcel-eip93ies
+       - items:
+           - not: {}
+             description: Need a SoC specific compatible
 -- 
 2.47.3
 
