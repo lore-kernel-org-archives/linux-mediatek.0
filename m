@@ -4,95 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49E6FEEB572
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Dec 2025 23:46:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E50BEEB575
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jan 2026 00:23:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6lECKX6HYn/UFgYHW3Lep9ULLvDa097/tngl+1jpf04=; b=RBHkaDv6NdVZWv27z5pzTbom63
-	QEklt+MAfQKQ9f2sgb0Bn4R1yiRFND1/a0MAn7xIMD7P1W0QZu0Bi6zw2rZPChRCfHDd6382rY71u
-	ScPu3amRLdj9IhGxFNKZh+PwuzXBSWGVIAZQIg2Hrv9Sjo/rNwORckq1P/q+KqQsq4D/IUdDFSgKa
-	EIQbQNC+t9mBWPB359trKBlTScq/XmV54GkT2YsxlbZJodvWEiW+c1vCKaTUPkddiDm9fiev7Dqm3
-	zl3kn4kh8V2gG5PnjMiYEpnsKWpKJGbin5LCq0np5L0o0LD4s1yekZFIZIw0uV/GLvpJb+zXBHiEz
-	rNJf+Mxg==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=C7hP4/6MzXBlCphVpjUPnbzonToHfVmgk1yWMeGEYqo=; b=yjj2jSTMazl5UOVw930ow0acDZ
+	hZnD7qNWpESEJ4ZoBg+ZXmf4NSNYwvn7rYshrl/WwZSntoJRG7RzgHLnRKrKj8dJ+gLjVxR9yaxtH
+	vGkFSdPp6s0ClG1MOO6bcUL/n5IXycnbZygFQsZqGy4AKle2mJuuribF0ucB/m+XAXPyYn6TsAgSm
+	hJGlJYvYLX9z4AeOPq6dbUU6oWp1IhFkI/yrh+69A/IpDxz+bwTIz3rFJcVNPF4rxmkz3cKX6hQ5Z
+	JIbu6ewJmzXskt97mrQEJ/Xnt/QxHQYDMUxLIl7ImvJws8DCjUgt+w7x//G1svOgoU4PKWiJkhxaw
+	jCYQcxzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vb5tp-00000006Quu-0Xfy;
-	Wed, 31 Dec 2025 23:46:41 +0000
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343])
+	id 1vb6Sy-00000006SPW-3peS;
+	Thu, 01 Jan 2026 00:23:00 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vb5tl-00000006Qtc-0BZR
+	id 1vb6Sv-00000006SP5-2TeZ
 	for linux-mediatek@lists.infradead.org;
-	Wed, 31 Dec 2025 23:46:39 +0000
-Received: by mail-ot1-x343.google.com with SMTP id 46e09a7af769-7cdd651c884so3894326a34.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 31 Dec 2025 15:46:36 -0800 (PST)
+	Thu, 01 Jan 2026 00:22:58 +0000
+Received: by mail-pf1-x430.google.com with SMTP id d2e1a72fcca58-7bc248dc16aso8881658b3a.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 31 Dec 2025 16:22:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linuxfoundation.org; s=google; t=1767224795; x=1767829595; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=6lECKX6HYn/UFgYHW3Lep9ULLvDa097/tngl+1jpf04=;
-        b=CtpRkS4TL0jP6s7QfG5dkyGSqB0tGs5Tb5VM7tLh89uACzH/CPN5dlYkigciMUvi5j
-         27lGvG88D1oc/n1qQ2OHkzJd4I5Wc+UGE+5RIUjI4LtLRWeEP+ABO3R7yTkK6vk9JVjl
-         6Q8BtG2F994Bj7ns6aC3UwD7bUFaRk76+Yblo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767224795; x=1767829595;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1767226976; x=1767831776; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=6lECKX6HYn/UFgYHW3Lep9ULLvDa097/tngl+1jpf04=;
-        b=cvTKU+prz5myqcmKE/EgTpPFxPgpIk1qeXqAIcoGO2/Vffgqlglog2Z/DJnDjv7Gk3
-         jFU0qxTiXdTWB6zHbD79/Asff6IEjJBVwUfKutYVLp1fLQEW38cuDcBhshrll1zZgbST
-         aZLxfPa2h2EToQMHb0a1m9zoMDFCMM87L8VoVsAEIeBgZraY9s5UyeBRC4U+dJSkBDlG
-         JdxVWopSPJh8wiwL+GdiNdbJW81QfMNLO9vF/33FdUVHIUydZ9echmi/M2tMiD2EzYDJ
-         JFE/zMRXrHpgNtY/mtetaVwD9qR40EDN9/VtfSksSWJEU0uXYqxTfCrq+iNbH/9G51kC
-         vavQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUVJCT9+U9sDi00V8djjKgOkJAlWRrUltgE9e6Yr2DRnKhgPkXoFYlpC0RZV3p1/SjGTRV1sIDCx/I+Gxq31g==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwgGj0lHduCzGV2Xx9/4reNTjlddxhpnwonRTPHBfGwtKsEycvG
-	hDn5uo8lxMfyIuJA25I50Ct55F2afsInJNteWSlb+zw0OzkP7MtaJMbekYWj+XbeS6I=
-X-Gm-Gg: AY/fxX5x55deJB14ghVDbC8gAMkXOwibwZ6mPzCSFJ72D2SgKNRFNqHAFBHHUa/uZ45
-	aEk1ScRKFk/pwySQarewQsJqqT8C/a4AY3xulgCfO4R2e7SIHrSMUiZ4NTS/7rw6vstU/SnikSc
-	JcZx1bPuPr5oAS1zWuJoXBaAiHG0cTxJ/ynVzVkJL0CUAQopwaJHOuip79hxKNM0S/qJbl7ufyT
-	yqJ5SaYmJR0MKzaGK+qQA9UR72zTiiTwP4D4dkGCQXiU+W6klDqhqvaDaGEEYe2CY+1wpEnlqfl
-	kWpsQbMb3FWVgX4T+pg6MTsCUP4Pdvm4kX468g3jLcvEY4U2I/Wh70j5uRNuDj28TQY9xg8cn3y
-	d3WTIf8b09Gw4JLhAO7aMX61f6pg9WonswLnt8pPGLVTbJ4eF+gCHHTA1Kw0+zcHUnnfT4nhrYa
-	tXbxgR3gFHKnk1Eq9Ts9TFZi7+9Aa9fFkws6mK
-X-Google-Smtp-Source: AGHT+IFV2BaGqD0BAddR/5VHavfl8Mnol7saz3Bsj0Em4upn6uAvpba1yOclRSKtiPCjPQk30vcWYg==
-X-Received: by 2002:a05:6830:2e06:b0:7c7:64f3:690a with SMTP id 46e09a7af769-7cc65eb8a4emr20258833a34.18.1767224795618;
-        Wed, 31 Dec 2025 15:46:35 -0800 (PST)
-Received: from shuah-framework.internal ([38.175.187.108])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7cc667ec367sm25187288a34.23.2025.12.31.15.46.34
+        bh=C7hP4/6MzXBlCphVpjUPnbzonToHfVmgk1yWMeGEYqo=;
+        b=Ar3cFj7YtMosxBjGZrGrE5UFVatyGIujQy5SmY4PVCkpoQsGWpJWj81Me54OGJVIuW
+         sNq6sRSv6PgeG9+rc+jeBKYztx77zFJdTzx3tea3zoU48n28oEvPJYAk7cXK4nKyxFUY
+         0FWIGkdGv31n2ucQEfXZ2YAYV9vVRthYverCVDJFx4X9jlvXut1+LVimF7rusFofjXD6
+         OpoNdsquunG73k4mbablXyEEK5dW/ZhasKBNhzNZMaf8ITgDgKhs5aXettWtJSTnauTe
+         sUwk0XU+LWJN6mQb26Mnp9zlCGBX5fC4Nom8h7YACXhaSk0oGwuVBhhPkQjejeu+CcGu
+         dxHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1767226976; x=1767831776;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=C7hP4/6MzXBlCphVpjUPnbzonToHfVmgk1yWMeGEYqo=;
+        b=UcPCyZbTVrsyz0Ok/DiyvixNeK993UmonAtZTjraKuR4mGAP6Wt5ZnlZIOXivTg99/
+         yeeqicuymM+ncSJEpsn6pporyUhAGBEkZTM85rv+IrgZXUF/odkqOqUkeQxGpylG6txD
+         fOhCaHse39oWqPewJNuRmkple63hhTPVRSYOHOBefTUn/icwX/rHgH03dQ+CPmVa71R3
+         YXSRjG5ZonZUvWUS00vPtH9ZK6mNJxrUzQnkn2k+6xS8PIFcRyG9wbzlRceLUg6brj5k
+         5xwSdHZaj7daJrx1J6QgNvHhwl+LicD8Wm3OPu+Bf1NCWyXfAWXsrqpE94uoyqssjT+k
+         PHzA==
+X-Forwarded-Encrypted: i=1; AJvYcCUy+VzKIBLiRCRy2D0Q31xWj0uXLjfcv5+p+o8xIocnrIEpg0wC/vT9iWN7d4Y2+SbIauHEl1+bK2QSH8vJ/w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxmoE4JpfbPHYf2C/cmttrs2CZhk5OAq2wh4xJOfTHOn82E90C8
+	s+KY9mPn9HiOuhlPHzXuiNUArAIuqa9Q6lghFV6wfws4amWKkzdIX3Qy
+X-Gm-Gg: AY/fxX5l6N4l1BYd24Q1Qipy5ihcMpHd3Uo5Srpp3wG7N4KPkyuX4I0bw6f3c3DpnUV
+	GrtPOgzFjsWKmTRjDNE6KlPee3Qkc6P4nW4s4nNttK/f507vhbosWBjd9nNU2UpyodtqTQxpwOn
+	Z3ydSjwC+ZgzVx4shYZL8q7jTQpVrrtgJBPjkYaAPUI+jaRT2jJFpHwzpGnPFJlbeIZcy2EhWsz
+	e0oX3apHwVv/8QfwuNjBuv33AqM+GY+BLwMEsY3vA6BKXvgifliL/6SHb8DGsqwlrrLHgkIOtyz
+	o4di0MMi62blxjzJzvEJzN6ee+WIty0ZRU7CGc567OPSM0M78upe6i/PjI+XJIRFQLiVyRGu0eI
+	L16LaLQAPoJHqvwVv75y5B1KIvfPckyPmGAyFjUnEQhr4dvbVjhVGI7xy7XpKVKTeHO+WtyE4+T
+	r+8+PGYb6Ixl4lz4sinijIcdaW1c13Za3cXrTe6TwK2bPODdNLnib6Gbng4y1eN5AR7ExHT1cJW
+	g==
+X-Google-Smtp-Source: AGHT+IGvR3F8ZvfS9X6tm+SOPzohfY0S2Rtcb+Z9cxmiC/usD4FDeoHXUceXcAntkCJaJbwQT2hJig==
+X-Received: by 2002:a05:7022:e24:b0:119:e56b:98ab with SMTP id a92af1059eb24-121722b7ac5mr34376559c88.18.1767226976361;
+        Wed, 31 Dec 2025 16:22:56 -0800 (PST)
+Received: from zubuntu.bengal-mercat.ts.net ([2001:5a8:60d:bc9:9ebf:dff:fe00:f8f2])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-121724de268sm110976431c88.8.2025.12.31.16.22.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 31 Dec 2025 15:46:35 -0800 (PST)
-From: Shuah Khan <skhan@linuxfoundation.org>
-To: nbd@nbd.name,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	torvalds@linux-foundation.org,
-	johannes@sipsolutions.net,
-	ebiggers@kernel.org,
-	matthew.schwartz@linux.dev,
-	linux@weissschuh.net
-Cc: Shuah Khan <skhan@linuxfoundation.org>,
-	linux-wireless@vger.kernel.org,
+        Wed, 31 Dec 2025 16:22:55 -0800 (PST)
+From: Zac Bowling <zbowling@gmail.com>
+To: zbowling@gmail.com
+Cc: deren.wu@mediatek.com,
+	kvalo@kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Mario Limonciello <superm1@gmail.com>
-Subject: [PATCH] wifi: mt76: Remove blank line after mt792x firmware version dmesg
-Date: Wed, 31 Dec 2025 16:46:26 -0700
-Message-ID: <20251231234627.11867-1-skhan@linuxfoundation.org>
+	linux-wireless@vger.kernel.org,
+	lorenzo@kernel.org,
+	nbd@nbd.name,
+	ryder.lee@mediatek.com,
+	sean.wang@mediatek.com,
+	zac@zacbowling.com
+Subject: [PATCH 2/3] wifi: mt76: mt7925: fix missing mutex protection in reset and ROC abort
+Date: Wed, 31 Dec 2025 16:22:53 -0800
+Message-ID: <20260101002253.19078-1-zbowling@gmail.com>
 X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251231223702.30957-1-zbowling@gmail.com>
+References: <20251231223702.30957-1-zbowling@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251231_154637_492227_846DFD6C 
-X-CRM114-Status: GOOD (  10.51  )
+X-CRM114-CacheID: sfid-20251231_162257_638541_4D001127 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,64 +108,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-An extra blank line gets printed after printing firmware version
-because the build date is null terminated. Remove the "\n" from
-dev_info() calls to print firmware version and build date to fix
-the problem.
+From: Zac Bowling <zac@zacbowling.com>
 
-Reported-by: Mario Limonciello <superm1@gmail.com>
-Signed-off-by: Shuah Khan <skhan@linuxfoundation.org>
+During firmware recovery and ROC (Remain On Channel) abort operations,
+the driver iterates over active interfaces and calls MCU functions that
+require the device mutex to be held, but the mutex was not acquired.
+
+This causes system-wide hangs where network commands hang indefinitely,
+processes get stuck in uninterruptible sleep (D state), and the system
+becomes completely unresponsive requiring force reboot.
+
+Add mutex protection around interface iteration in:
+- mt7925_mac_reset_work(): Called during firmware recovery after MCU
+  timeouts to reconnect all interfaces
+- mt7925_roc_abort_sync(): Called during suspend/resume and when aborting
+  Remain On Channel operations
+
+This matches the pattern used elsewhere in the driver where interface
+iteration callbacks invoke MCU functions.
+
+Reported-by: Zac Bowling <zac@zacbowling.com>
+Tested-by: Zac Bowling <zac@zacbowling.com>
+Signed-off-by: Zac Bowling <zac@zacbowling.com>
 ---
+ drivers/net/wireless/mediatek/mt76/mt7925/mac.c | 2 ++
+ drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 2 ++
+ 2 files changed, 4 insertions(+)
 
-Note: adding discussion threads about revert and simpler fix
-for this. Mario sent me email offline about being away for
-bit. Sending the patch since I have it ready before I disappear
-for New Years.
-
-Relevant threads:
-- Revert for f804a5895ebad2b2d4fb8a3688d2115926e993d5
-  https://lore.kernel.org/all/20251231035645.5545-1-skhan@linuxfoundation.org/
-
-  This patch depends on revert patch.
-- Discussion abour reverting:
-  https://lore.kernel.org/all/d7f3b00d-beec-41f0-b157-7cfb871f9a46@linuxfoundation.org/
-- Proposed fix for reverted commit
-  https://lore.kernel.org/all/CABXGCsMeAZyNJ-Axt_CUCXgyieWPV3rrcLpWsveMPT8R0YPGnQ@mail.gmail.com/
-
- drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index fba7025ffd3f..0457712286d5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -3019,7 +3019,7 @@ int mt76_connac2_load_ram(struct mt76_dev *dev, const char *fw_wm,
- 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+index 184efe8afa10..06420ac6ed55 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+@@ -1331,9 +1331,11 @@ void mt7925_mac_reset_work(struct work_struct *work)
+ 	dev->hw_full_reset = false;
+ 	pm->suspended = false;
+ 	ieee80211_wake_queues(hw);
++	mt792x_mutex_acquire(dev);
+ 	ieee80211_iterate_active_interfaces(hw,
+ 					    IEEE80211_IFACE_ITER_RESUME_ALL,
+ 					    mt7925_vif_connect_iter, NULL);
++	mt792x_mutex_release(dev);
+ 	mt76_connac_power_save_sched(&dev->mt76.phy, pm);
  
- 	hdr = (const void *)(fw->data + fw->size - sizeof(*hdr));
--	dev_info(dev->dev, "WM Firmware Version: %.10s, Build Time: %.15s\n",
-+	dev_info(dev->dev, "WM Firmware Version: %.10s, Build Time: %.15s",
- 		 hdr->fw_ver, hdr->build_date);
+ 	mt7925_regd_change(&dev->phy, "00");
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+index c4161754c01d..e9d62c6aee91 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+@@ -455,7 +455,9 @@ static int mt7925_pci_suspend(struct device *device)
+ 	cancel_delayed_work_sync(&pm->ps_work);
+ 	cancel_work_sync(&pm->wake_work);
  
- 	ret = mt76_connac_mcu_send_ram_firmware(dev, hdr, fw->data, false);
-@@ -3048,7 +3048,7 @@ int mt76_connac2_load_ram(struct mt76_dev *dev, const char *fw_wm,
- 	}
++	mt792x_mutex_acquire(dev);
+ 	mt7925_roc_abort_sync(dev);
++	mt792x_mutex_release(dev);
  
- 	hdr = (const void *)(fw->data + fw->size - sizeof(*hdr));
--	dev_info(dev->dev, "WA Firmware Version: %.10s, Build Time: %.15s\n",
-+	dev_info(dev->dev, "WA Firmware Version: %.10s, Build Time: %.15s",
- 		 hdr->fw_ver, hdr->build_date);
- 
- 	ret = mt76_connac_mcu_send_ram_firmware(dev, hdr, fw->data, true);
-@@ -3124,7 +3124,7 @@ int mt76_connac2_load_patch(struct mt76_dev *dev, const char *fw_name)
- 	}
- 
- 	hdr = (const void *)fw->data;
--	dev_info(dev->dev, "HW/SW Version: 0x%x, Build Time: %.16s\n",
-+	dev_info(dev->dev, "HW/SW Version: 0x%x, Build Time: %.16s",
- 		 be32_to_cpu(hdr->hw_sw_ver), hdr->build_date);
- 
- 	for (i = 0; i < be32_to_cpu(hdr->desc.n_region); i++) {
+ 	err = mt792x_mcu_drv_pmctrl(dev);
+ 	if (err < 0)
 -- 
 2.51.0
 
