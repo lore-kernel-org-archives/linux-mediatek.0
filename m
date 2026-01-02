@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8003FC6160
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jan 2026 20:03:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30DC6FA3758
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jan 2026 20:03:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uRB/GMkUOZQKL62/6S3QoUiStZiACBm9ZEli7ks4aAc=; b=HsSEG/pTKsfdJH33gPHdnbTtzE
-	tlp/blKrp3bDyA0e4gyRs9Vt8y9X/FunxCT23Ke/6IkM8PjZMaE70TcgpyMviB86ZBCRQRyOclNba
-	0QSF0bGSeJwgGUSn2N5fNz59X2kQauXRgSty158yRlJx2kN/XAlFKxIIbb8mSaV0XmtpViM6rt9eX
-	Pzi90qyDd/qa2Z976OS13t0QT5qfY3gHpA2vmfE5rv3Nrmt4W0ywlTsu6QP2IuRCrjROCEjtpnY29
-	H/qAPtAFJTnAD2Q1ygWOzAobVfRxOJ1bdKBZU6dsVTMzgqHKkxoPRVUsdg90KBG12y0WtDGe5wrQc
-	FzGzyZBg==;
+	bh=c7qZYSeLZChIxDrw/4tv0b/VSzAX1CnFXje+sP60SRE=; b=1tbXEVpJJrJwg+rqNCRHMTdfyt
+	yVT4PUfDcdgOg8oXxOrQEBR5YOhns67OJdKcFhGvWs8nirEm85h016Z2qzvrQQBKVMRHvQKBbjYVt
+	Lps1ij2w270fwWGOePTZ0UWJNMinK77AYXwvkj6FUXpXnf9jSqIwrhludZB4vit3eV+QcJ/DcJdYM
+	AQYY6XjHaciMGrmmUOaCCI58FTjznQh7WvRxHU8nG6NW/1JNXPu9IxAgvY7w/wEJp5fjkp3AKpw1H
+	P9es95+GVXnfuBlNFvHOnaayIvuF0S8VQH2XW8AaEuRrvW5fBUszpAQkSgrOtCmP8PqXZX9WL/1cr
+	cVq6vGBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vblMq-00000008ggq-0a5m;
-	Fri, 02 Jan 2026 20:03:24 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1vblMt-00000008gkE-32ng;
+	Fri, 02 Jan 2026 20:03:27 +0000
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vblMm-00000008gfC-2XQp
+	id 1vblMp-00000008gg5-1D5i
 	for linux-mediatek@lists.infradead.org;
-	Fri, 02 Jan 2026 20:03:22 +0000
-Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2a1022dda33so100384755ad.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 02 Jan 2026 12:03:20 -0800 (PST)
+	Fri, 02 Jan 2026 20:03:24 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-29f30233d8aso142989505ad.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 02 Jan 2026 12:03:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1767384200; x=1767989000; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1767384202; x=1767989002; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=uRB/GMkUOZQKL62/6S3QoUiStZiACBm9ZEli7ks4aAc=;
-        b=Xc5FIYSpdJxflKZi9TwanM7wXSl/3UetB9IpmizDwmRnY4uIyrIGqChtWrjQg3DmqF
-         bn17S+xMjRBUITDo582sB/TUtgZmQWKvMrIYn32l1iQVWl09uavHPFfxj6RVymvPa2e0
-         XHy4vZ73urAmueVPOtaiYAcqGgPhiPcPHYKR74TCS4Dv1JJpxj5t08/dRbjt4TrOS9wD
-         fW6cTs8PDqNHeFMJoDwuq7fWwvhs7AAOEHvENUlfTPJ9lb/JuHUghDvD7P/vRKuT+I8r
-         xk6I4lYuTjTAAHqKzYtETy2Jzwcw5IeXFznIzfmO/kooI5r0Jvuxb0f+9Q7w4zF0fhmO
-         mfNw==
+        bh=c7qZYSeLZChIxDrw/4tv0b/VSzAX1CnFXje+sP60SRE=;
+        b=SRcAQhH7vflp3zZNMrenfOtqw4d19DcWn+ZWxBZ/PN6MZLrpGGcBWM9z6NJKhNVLSU
+         eQ73+WCfAu+oLXsrsf70OiIm9YQrNglNges+cNFfCvSxriVeneu7vrJysOKscWrfAN3W
+         PVPbxbP8YLv523a7CuzmYWYRdZu5kLhzBrSo7HBOhkrcBqhg8drEEDNF8CA6SHT+z6vB
+         Y/TFuWt8Elw0hebOvyfCx7rYrTSYcmFOuouPDyRNX1nXO0+QfeBIwMYKqMhPxEj+b1Eb
+         OtYGZfxqhkwfoM9IG5jRNTbHBbP6xOsCAEXg02L54SdZ9V1wKGsbxF/IupAnK9oBMPAW
+         XxCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767384200; x=1767989000;
+        d=1e100.net; s=20230601; t=1767384202; x=1767989002;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=uRB/GMkUOZQKL62/6S3QoUiStZiACBm9ZEli7ks4aAc=;
-        b=UJHEltnSEjV8PwkVH/CWrMDLj/fUKqNJYgUiL6HHK5H5EKPRNDCcCOY+KK9Us1OnJt
-         woqXlsX4+CqXDbKf3zh+hfMc0yogZAdNnko6myWGWkp2G1Ndnfj3bnBrG3B9EZSaBHnx
-         DGBL9io2c4qcomVg0ZyovGAJ9S7wcj9q7HAB3Vy1m2b45fNslsz+72+nTHioK/PYlSmf
-         GQKwNIhYzNpi7h9uZTssw43e56eBxp7TUk47aznvJ36s4oTEuAI/pOs6P83+J3xxcbJn
-         MyDoKYRU4pqJZ9XFq/YkVJ7/deo5rm/If/c5L/y5ubPYeUtxwQxrrQNbTnHaCoHMXUwp
-         xmGQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUsqSapB7BNaHeEP9zj68nag8cgUd4bNt8Dwwsd9dM7eSLUyqmVcZGUGvK0LrKwcmevOvx1JPK21/QtzMYG4Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx/aLt8lgp8Dgj8Hbb6xwiHsKfbVBHpLNg7vvRXi9tLnucgAe7w
-	Yb+FRHe0zmiLiroI2KTyO4XjNg14xyLyX27CP1urXyFlmbbTtDEWg281
-X-Gm-Gg: AY/fxX6v28qQVSpMzysN3y7vFy7f53nri6KDu68FzXF5v23QPZ1wkWvDICRrDAC7HbT
-	WujI/R4tuuAYC8lzp1NyjoQW8IysxfZ2FcLmY1Bpi1emF+39XArXaKoMLIqDN1l+3wgVVAOA48l
-	UyBLFRlngNTcOuspQ+1P4V9t8KEbr3gVkSg48/Cs+P52TnQW1/mMWR+wWpaCk6RfnOM7BQunaLw
-	d9hBjRfWz11FkT76MDccTGlELqVgOmh4K0mG6C27BmeJ7m8TgQ/qZy2xXkeSa6BusE0FklqM9cY
-	jjimitRD4mn+VIBBbpyyaRDh2ziFlet2ECgdUK5xzCCm8mZWm31jUbn9x4K/PD3C/ORhP6Hq7ur
-	g9S4YzZA6CElOhtgINw5jdmAdQlY28e0VSNAmQKMIgtfv4QYLPK7yko6yKt9hM4d2GtR86J2cV6
-	Ele+drVhJj4PcNUG+Iz9qIezrUuYSY4sZ8vPEuPg4iSa7ekIAy3Trz7Al2bwLWzOY=
-X-Google-Smtp-Source: AGHT+IFBSUfFL7mHg821Z4iXp+NFgdGr+i44ARHcNYNV/RBJ9bl+fL+NqsT3peNN1SqyHKAuIrBvVA==
-X-Received: by 2002:a05:7022:42a7:b0:121:a060:6d80 with SMTP id a92af1059eb24-121a06075f9mr28800779c88.25.1767384199803;
-        Fri, 02 Jan 2026 12:03:19 -0800 (PST)
+        bh=c7qZYSeLZChIxDrw/4tv0b/VSzAX1CnFXje+sP60SRE=;
+        b=q9vd8ainlg+1IXdC0npXEPUmBxJ0EzYbHvISWWdOacMmTWISMxvk/hCE08fnOR3mOR
+         bXndi2lx1SF7DX3jhEk0Ox8MqkAY5a6hFJUMSY3RH2V2KZ0f65lZE4a2shHr04QAbAto
+         BpbquOXdrlqdQT0ChXFx2179ytwxnkKCT2xM2FvYRbNSmiXMItyIh+zuSMimS8kFsUHo
+         o0kiYXzKE2PGXDkQnJPmm2sQdY21LmLaYkPVtYbk7lvEbz6BFFXn0s0FSfOcvoAslK58
+         jxt1xzEhJj2v3tbkehVa51NA5dY0p/isd5KdIcyekPOBug0vcXXsJpiej0JRSesrdDBB
+         peSA==
+X-Forwarded-Encrypted: i=1; AJvYcCUYRaOmqQif3jm4xm6Ux9X1dxOibhi6ZfTfeW/mpKCBVPGCaagSCuF9BnKUKsY8RlFSe+n3hpsgsQO7EQjKIg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwkZqqe5dcwCakVnK51qWE15EYEE7OaDth8+v7o5naEe/uFsJ+I
+	K1ZFv91FHtHcv5bQjjvFclizP1ated0sr1mBRRbq/j/vabA7LyXLVj2FmZ572EST
+X-Gm-Gg: AY/fxX7mCF89/asl9G3+n1mQuYcJhNIk8nLcx0c2xbfHQxht5ALym+mpaEV6RTRbv7V
+	BisJgNRleeI1NIxJQ38IOiP5ZmZxzIXDLhrJWW8Ny0dmNU5WUjvOCcntP1f+qzyaFT5vz6V2gR2
+	5neV77FScTcTWYm9T2u4h9WUoQu4COvrvPiCOig+Bw0/v4dQFSxkuV4R+1NaHLBTJdtwYr8zsXn
+	SFZr1x/1hZUzA/pvLJ1DobfqVA0L1rlI+Q+NzreM/2IgQvAIGOkHzw2SUwPmpbAtmjQW0TFwdU+
+	Meqg4NaB3hcKzLSLP02NZx20RMN5WbPXXmw5T3aMsUkpuWaDOgz7mOF9SXiYS3aBuKaBsb6becn
+	etRNjj/bVUMuRZGhmujz77rveu7yQPFXhN/ssHwFsAo7iX9/W72EFEHRGAGHwM2H0fRfzWnkFFn
+	ydJuKbJbBDwPwzegYqMeVyDLau9EnuGMqInfOizkqnbowIoeZCCctXqdf7UAUnoVg=
+X-Google-Smtp-Source: AGHT+IGGD10yYGQ2fi7EjrvXcQ2RpewtLBipkaRDvFeki8yg8+BUwMUf7qrB19+RqRFSHDwFrqgGrg==
+X-Received: by 2002:a05:7022:6199:b0:11f:1e59:4c2d with SMTP id a92af1059eb24-121721acb6dmr36824686c88.7.1767384202231;
+        Fri, 02 Jan 2026 12:03:22 -0800 (PST)
 Received: from zubuntu.bengal-mercat.ts.net ([2001:5a8:60d:bc9:9ebf:dff:fe00:f8f2])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1217253bfe2sm120203795c88.10.2026.01.02.12.03.18
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1217253bfe2sm120203795c88.10.2026.01.02.12.03.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 02 Jan 2026 12:03:19 -0800 (PST)
+        Fri, 02 Jan 2026 12:03:21 -0800 (PST)
 From: Zac Bowling <zbowling@gmail.com>
 To: zbowling@gmail.com
 Cc: deren.wu@mediatek.com,
@@ -81,9 +81,9 @@ Cc: deren.wu@mediatek.com,
 	nbd@nbd.name,
 	ryder.lee@mediatek.com,
 	sean.wang@mediatek.com
-Subject: [PATCH] wifi: mt76: mt7925: fix kernel warning in MLO ROC setup when channel not configured
-Date: Fri,  2 Jan 2026 12:03:11 -0800
-Message-ID: <20260102200315.290015-3-zbowling@gmail.com>
+Subject: [PATCH] wifi: mt76: mt792x: fix firmware reload failure after previous load crash
+Date: Fri,  2 Jan 2026 12:03:13 -0800
+Message-ID: <20260102200315.290015-5-zbowling@gmail.com>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20260102200315.290015-1-zbowling@gmail.com>
 References: <20260101062543.186499-1-zbowling@gmail.com>
@@ -91,8 +91,8 @@ References: <20260101062543.186499-1-zbowling@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260102_120320_646925_36ABC595 
-X-CRM114-Status: GOOD (  16.51  )
+X-CRM114-CacheID: sfid-20260102_120323_336146_F2326374 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,72 +107,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7925_mcu_set_mlo_roc() uses WARN_ON_ONCE() to check if link_conf or
-channel is NULL. However, during MLO AP setup, it's normal for the
-channel to not be configured yet when this function is called. The
-WARN_ON_ONCE triggers a kernel warning/oops that makes the system
-appear to have crashed, even though it's just a timing issue.
+If the firmware loading process crashes or is interrupted after
+acquiring the patch semaphore but before releasing it, subsequent
+firmware load attempts will fail with 'Failed to get patch semaphore'
+because the semaphore is still held.
 
-Replace WARN_ON_ONCE with regular NULL checks and return -ENOLINK to
-indicate the link isn't fully configured yet. This allows the upper
-layers to retry when the link is ready, without spamming the kernel
-log with warnings.
+This issue manifests as devices becoming unusable after suspend/resume
+failures or firmware crashes, requiring a full hardware reboot to
+recover. This has been widely reported on MT7921 and MT7925 devices.
 
-Also add a check for mconf in the first loop to match the pattern
-used in the second loop, preventing potential NULL dereference.
+Apply the same fix that was applied to MT7915 in commit 79dd14f:
+1. Release the patch semaphore before starting firmware load (in case
+   it was held by a previous failed attempt)
+2. Restart MCU firmware to ensure clean state
+3. Wait briefly for MCU to be ready
 
-This fixes kernel oops reported during MLO AP setup on OpenWrt with
-MT7925E hardware.
+This fix applies to both MT7921 and MT7925 drivers which share the
+mt792x_load_firmware() function.
 
+Fixes: 'Failed to get patch semaphore' errors after firmware crash
 Signed-off-by: Zac Bowling <zac@zacbowling.com>
 ---
- mt7925/mcu.c | 20 ++++++++++++++------
- 1 file changed, 14 insertions(+), 6 deletions(-)
+ mt792x_core.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/mt7925/mcu.c b/mt7925/mcu.c
-index bd38807e..b0bbeb5a 100644
---- a/mt7925/mcu.c
-+++ b/mt7925/mcu.c
-@@ -1337,15 +1337,23 @@ int mt7925_mcu_set_mlo_roc(struct mt792x_bss_conf *mconf, u16 sel_links,
- 	for (i = 0; i < ARRAY_SIZE(links); i++) {
- 		links[i].id = i ? __ffs(~BIT(mconf->link_id) & sel_links) :
- 				 mconf->link_id;
+diff --git a/mt792x_core.c b/mt792x_core.c
+index cc488ee9..b82e4470 100644
+--- a/mt792x_core.c
++++ b/mt792x_core.c
+@@ -927,6 +927,20 @@ int mt792x_load_firmware(struct mt792x_dev *dev)
+ {
+ 	int ret;
+ 
++	/* Release semaphore if taken by previous failed load attempt.
++	 * This prevents "Failed to get patch semaphore" errors when
++	 * recovering from firmware crashes or suspend/resume failures.
++	 */
++	ret = mt76_connac_mcu_patch_sem_ctrl(&dev->mt76, false);
++	if (ret < 0)
++		dev_dbg(dev->mt76.dev, "Semaphore release returned %d (may be expected)\n", ret);
 +
- 		link_conf = mt792x_vif_to_bss_conf(vif, links[i].id);
--		if (WARN_ON_ONCE(!link_conf))
--			return -EPERM;
-+		if (!link_conf)
-+			return -ENOLINK;
- 
- 		links[i].chan = link_conf->chanreq.oper.chan;
--		if (WARN_ON_ONCE(!links[i].chan))
--			return -EPERM;
-+		if (!links[i].chan)
-+			/* Channel not configured yet - this can happen during
-+			 * MLO AP setup when links are being added sequentially.
-+			 * Return -ENOLINK to indicate link not ready.
-+			 */
-+			return -ENOLINK;
- 
- 		links[i].mconf = mt792x_vif_to_link(mvif, links[i].id);
-+		if (!links[i].mconf)
-+			return -ENOLINK;
++	/* Always restart MCU to ensure clean state before loading firmware */
++	mt76_connac_mcu_restart(&dev->mt76);
 +
- 		links[i].tag = links[i].id == mconf->link_id ?
- 			       UNI_ROC_ACQUIRE : UNI_ROC_SUB_LINK;
- 
-@@ -1359,8 +1367,8 @@ int mt7925_mcu_set_mlo_roc(struct mt792x_bss_conf *mconf, u16 sel_links,
- 		type = MT7925_ROC_REQ_JOIN;
- 
- 	for (i = 0; i < ARRAY_SIZE(links) && i < hweight16(vif->active_links); i++) {
--		if (WARN_ON_ONCE(!links[i].mconf || !links[i].chan))
--			continue;
-+		if (!links[i].mconf || !links[i].chan)
-+			return -ENOLINK;
- 
- 		chan = links[i].chan;
- 		center_ch = ieee80211_frequency_to_channel(chan->center_freq);
++	/* Wait for MCU to be ready after restart */
++	msleep(100);
++
+ 	ret = mt76_connac2_load_patch(&dev->mt76, mt792x_patch_name(dev));
+ 	if (ret)
+ 		return ret;
 -- 
 2.51.0
+
 
 
