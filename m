@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C63CEFA3755
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9D18FC6162
 	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jan 2026 20:03:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,65 +12,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JAEbXECWEgivnkQD0xtzzqIp3unNQs37uaq9tRUxuXg=; b=rPw7JwN9/ijB187QQOZY7pVJQT
-	mTdvN2+eKC6xzkTmVgP7oUMhl3iSvfqGEbAChFujsNID3iB+z+0GMC7H37U1VEQzt6WwbBfGQBsEP
-	KHM+lKGZzCUVu9qZ4Ih2ZCpTg2Zjga15y+ZewkInk62zSR9c0t/G55aVTmc6K+umLo+oNVlPoGGeD
-	GGjeWI0duXViTi16BuJkJZfw+xlhuKCvcYednGPpv9HFpOLyXc1MWkOOknHLAYEFMDvVUUem6ughE
-	BjOKRz9j22nA/6EU1uQKbHaWs22J//R42cVwLbukrAiwjtIff9j9aObBHB96hMAo8RVlH3S9WNcy8
-	gEVNjKaQ==;
+	bh=rJB8TW11tb7vqsvvuXY9YlttNtwZmLNOXyK32XgfdCE=; b=IsgRUkStXof0ssvA6+fgA4pHza
+	ItkpG+M82M1wJYitUiWg+AMXv93KfC2vzG+da5Tv4zb6ntmNWckgFfXzj6MI25yGF3vuqeHN3bMgQ
+	Xey8ijSNaiQQEQAYr2v5xIqngY+5EsbRgnSG1NE9eBnqADYojsfDBzwdJW8zKaA8TW2sP5FKx2PqX
+	MbfGg4xhDmCW84jq9RfnkUO4XA4CvW8PHzZTBAKxyoUfH8FniEJ4/6rs4oJZMwnNa3NgOfa2UAZiY
+	C+W55wXE3lfBZkXo91Efh58gOY1KEXnrxfxeHP/bC2rTs6yEtOrsZTH28dhcOq/5U5x920Y7KdPYP
+	R/AjQjwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vblMq-00000008gh2-1b1O;
-	Fri, 02 Jan 2026 20:03:24 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vblMo-00000008gfh-0ojw
-	for linux-mediatek@lists.infradead.org;
+	id 1vblMp-00000008ggc-3lcb;
 	Fri, 02 Jan 2026 20:03:23 +0000
-Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-29f1bc40b35so219094435ad.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 02 Jan 2026 12:03:21 -0800 (PST)
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vblMl-00000008geu-3KLh
+	for linux-mediatek@lists.infradead.org;
+	Fri, 02 Jan 2026 20:03:20 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2a1022dda33so100384595ad.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 02 Jan 2026 12:03:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1767384201; x=1767989001; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1767384199; x=1767988999; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=JAEbXECWEgivnkQD0xtzzqIp3unNQs37uaq9tRUxuXg=;
-        b=Km76GkxQuhtYy02MrWzeGR/Imp30tHRYlxJ/kltDw836E+Au470LXwdiQuHO36mveL
-         lj3xNFlF3S7DMIBXlPQfK1se4w7jRlEidouMvOYrB3LxhBASSTaSMWYFJxlMRbiEkSy0
-         WIWxWqcyDA2pkMPVhNOrpIRW7bYXmirNNvHlzDBFhKQGPYodIvSY3fWXRHn3GjbEiNyR
-         YWEX6UQnGmfRDh+7gzKfLVVL9rB/Wh582zIUM7Capw7xVLMNoSJwZxhu2a6HzhVfjEP9
-         KKgm3xY7VYJRQFiRmGdoZlgiA50/mDsr7c1NuV3/u0S6RFW8BI0g6V42EK3rhGfXXyA8
-         2+ag==
+        bh=rJB8TW11tb7vqsvvuXY9YlttNtwZmLNOXyK32XgfdCE=;
+        b=aLWicx2vIwnVQZFCKyhO5H1/ovmNQxQl796iqpWRhvh3fNkrnTZn5E6Cp/x91Epf/M
+         NmKpQbEK7urcFrClZlQtQ/sFTfeB9EWuiyI7qyjvtF3f317rWRJzmWRpWyWjFSP5xCAk
+         KySrnm0xfm6VBpzx1eImN5JWKnouPi5tYvZAmyH8w/At0i7PEQPiAYzftGivke6Iz/lF
+         nPBdPA3Q8Rw/V+JRFiTaDhqwSPeoT4dTDhBwNgLsk9OEk6OJZp+dKOjF36xYNfOA5EI5
+         Y/WS0vn61q0o+3rMJiea9M0hBb9jeKfVZjoBRh7r5CLcfsC/h/n+FIUFmNdCd17qiK6M
+         zmwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767384201; x=1767989001;
+        d=1e100.net; s=20230601; t=1767384199; x=1767988999;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=JAEbXECWEgivnkQD0xtzzqIp3unNQs37uaq9tRUxuXg=;
-        b=C2FJ82HE6tnM/Mn36OZgtA3glqoGbUeNwUILRT3YHIGVGo5klCPcXNFn8wBpmjscY1
-         AIfLJ+FT/nOn8Uvz5K3EwV8Cz8ZvLUu/rkOrSz1z8yACxayrjcuM7MiyIftnm2VfKCKg
-         qZmi+mdiknMRVZOWa3I/+TC85rlfRKUAdxcTm8nOYsuIOAXYt6nHldEOntbmgjdeluI5
-         TWUYwcJTtcDJaToTLgyoTe1fGTwDhIdvIcvfBf/LAOdO3FmxyrAt+QyTHGlCs/M5L9fm
-         aX+kh82mfxgZrgKquRcQIBZPoKk6GsCy6LmfCr0D19t64KxKJx+7XkubJdYd9yczbnl/
-         JXzQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWOR1Hssj59ekxo/EpUnycoRRm2cxGeokjZm0JP1phCyGJM0z9YAc+9JcuiUojB7FPY1PtIfAAZ96L2qVFokg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzYqrnftGFspI8gFL6MG/nSCbPurRuibphBtp2cL+E7YMTuGw+Z
-	AH1yJKnssqEuAi6T7m7MJeb6BPpEB2n8yWnQH2lKbFviSeMAl2q768ff
-X-Gm-Gg: AY/fxX7meyklCmWAHCyQraw8skOgrf1gqKEeE4kG5cFbvcdvkroviR2M+RBX9KVaERG
-	fNsJwaUwuXe+IPLo2WWxdWgsVYlqXxGfeWUftmlXMGsu+ppOS+3NDjmOALWHxdORP2GLXwvCSNB
-	mDAvPie+Idz1/NgHrnxXWLhGqdYU1SwW+nmS+hSECdHNXhBKt1f90m2JC5+0h9+QO92Wur4PoBe
-	LiNYKqMkamBnIYme5gCs0Fs5kgIwCiYU5MIdoaBGsymMXPkJVRg/An/GLufsNNi04x3c8G5QGf+
-	BEcqNURtt6RlyGfc8W7K6XFooI3EcNWtGx9i3aqe6pOpSkul+Ekr8+dBFf8PzEVzrdJZUVeYHbK
-	df+GIt9nMurAS5bcLt468dHLu35mT4vqaQTb5NbcfmrpcHk3qMmKka/BYTv9kJFhuLI/nNJ7a2R
-	PS4CWyNbS1DKCidiOYPt+I8pcoxAYYBtw7kTW6K53mU5ftqBqRFR/UVLSNCgb/yHYDpZRaqrYPd
-	g==
-X-Google-Smtp-Source: AGHT+IFlZFMjgiDvsStkZqvxdbjcHI5mtZO0RX7CoRLkYWt7/vu6esI08DiqdmO+npuzhi414kAkog==
-X-Received: by 2002:a05:7022:6722:b0:119:e56b:c73d with SMTP id a92af1059eb24-121722a761amr39576353c88.2.1767384201003;
-        Fri, 02 Jan 2026 12:03:21 -0800 (PST)
+        bh=rJB8TW11tb7vqsvvuXY9YlttNtwZmLNOXyK32XgfdCE=;
+        b=waBucEVUNAVFORVN3XEJIMHmce5ovTZvR/3pfLRhXssxbxawvhDq5p8QweoyeIBmE1
+         XKPhjW8D0K634+lROLKfq9kqBgZu2D65unK5RUZqc1u3goH2mAeiFqTsjaMsuDLer0nX
+         qfegxbb0RpqsRTfYmBBGXNsfL6F1yvu5j2M1A7n1W8AflLexryUE+XJ1wV+Sg6rzUOCY
+         GOtyzLhx1ewbrA2JA3GEZlN3576F4zoprO4+FOVUiP1rreHv6CRwqaqygGM9OLUNDhJl
+         UiOfLDkeTlwlifjgR/9XRVZhUbcQKZg3jN8RUiGlWe8u1KKBKrJyBVihUh4I9Z/Vyqqm
+         UqQA==
+X-Forwarded-Encrypted: i=1; AJvYcCUX006vlSUS0UStQfdvZ/R4wlollU8oSJxHREb9ukUXgyJ9OOOu7Xw7/25CgGs6X0eDXGd9EZLJRZhIScsPOA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzx/YRuiaPpnUAOaXILcHlL/imV+zaLgj26MAXOwRReJHrrtWh6
+	o2p1IkP1hbHiRRldWpT/Ay8t0IuBPq3F//KTl/jBvJXu9ma1B1RxvccG
+X-Gm-Gg: AY/fxX6d+8y7ztkkYDc8DdE3PrZhm6lJcJ+oDT0F9rdvug1KcOjI2M7t9i9rc5sLmO5
+	x8ZGtmfBphS3CLrhEL4WBzXp5X7ap3w1+mgMPF5tdyTaRQNY0N7Nbvdjj0qRz5JwUQ93Z77XYUk
+	8Yf7bn4Nl2PO+y7FFeLzjGnYysI3fizmeK55jifbrtfHPuEJh0l0+Raw2wytcXyulJQTtBc/MGN
+	dhU/lrpNEKFsaLnXX87kELAqT+kK0uFoCm/slC1KaeUFrxu3dYl8Wa/QmJjHkJ4ADkWqf86zlwU
+	g5/+Lf5k/9ELpYAaArA2iyQtW9Aw1hFWL1WqJu17Ek9SUuYLmJg3KE5Y8qkLvhnFX1IMWbgonPo
+	YLpHIzheMxyhREecS+WSBANWb3ZO8udG5EGuh2I8IfnTj5pxEXggFIdQSiMLK7HjwxEyJxs6Vgu
+	5uOklCyVCnO48ci/rWGwfEid9Fq0OawlJwKRqkD/+HtAzMNN0/uz2DTDrtj2tL/cRzpHyhjKCF0
+	w==
+X-Google-Smtp-Source: AGHT+IHLa5NwfXi5dnqqkLy7rzURooInQ8xuzAG/o59NC1Gor95N1PBHwsWeLY58bDJyMi9BmZDSsA==
+X-Received: by 2002:a05:7022:42a7:b0:121:a060:6d80 with SMTP id a92af1059eb24-121a06075f9mr28800733c88.25.1767384198678;
+        Fri, 02 Jan 2026 12:03:18 -0800 (PST)
 Received: from zubuntu.bengal-mercat.ts.net ([2001:5a8:60d:bc9:9ebf:dff:fe00:f8f2])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1217253bfe2sm120203795c88.10.2026.01.02.12.03.19
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1217253bfe2sm120203795c88.10.2026.01.02.12.03.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 02 Jan 2026 12:03:20 -0800 (PST)
+        Fri, 02 Jan 2026 12:03:17 -0800 (PST)
 From: Zac Bowling <zbowling@gmail.com>
 To: zbowling@gmail.com
 Cc: deren.wu@mediatek.com,
@@ -82,9 +82,9 @@ Cc: deren.wu@mediatek.com,
 	nbd@nbd.name,
 	ryder.lee@mediatek.com,
 	sean.wang@mediatek.com
-Subject: [PATCH] wifi: mt76: mt7925: add NULL checks for MLO link pointers in MCU functions
-Date: Fri,  2 Jan 2026 12:03:12 -0800
-Message-ID: <20260102200315.290015-4-zbowling@gmail.com>
+Subject: [PATCH] wifi: mt76: mt7925: fix key removal failure during MLO roaming
+Date: Fri,  2 Jan 2026 12:03:10 -0800
+Message-ID: <20260102200315.290015-2-zbowling@gmail.com>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20260102200315.290015-1-zbowling@gmail.com>
 References: <20260101062543.186499-1-zbowling@gmail.com>
@@ -92,8 +92,8 @@ References: <20260101062543.186499-1-zbowling@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260102_120322_238040_12DF6D7D 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20260102_120319_833704_5DA1A0E2 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,91 +108,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Several MCU functions dereference pointers returned by mt792x_sta_to_link()
-and mt792x_vif_to_link() without checking for NULL. During MLO state
-transitions, these functions can return NULL when link state is being
-set up or torn down, causing kernel NULL pointer dereferences.
+From: Zac Bowling <zac@zacbowling.com>
 
-Add NULL checks in the following functions:
+During MLO roaming, mac80211 may request key removal after the link state
+has already been torn down. The current code returns -EINVAL when
+link_conf, mconf, or mlink is NULL, causing 'failed to remove key from
+hardware (-22)' errors in the kernel log.
 
-- mt7925_mcu_sta_hdr_trans_tlv(): Check mlink before dereferencing wcid
-- mt7925_mcu_wtbl_update_hdr_trans(): Check mlink and mconf before use
-- mt7925_mcu_sta_amsdu_tlv(): Check mlink before setting amsdu flag
-- mt7925_mcu_sta_mld_tlv(): Check mconf and mlink in link iteration loop
-- mt7925_mcu_sta_update(): Initialize mlink to NULL and check both
-  link_sta and mlink in the ternary condition
+This is a race condition where:
+1. MLO link teardown begins, cleaning up driver state
+2. mac80211 requests group key removal for the old link
+3. mt792x_vif_to_bss_conf() or related functions return NULL
+4. Driver returns -EINVAL, confusing upper layers
 
-These race conditions can occur during:
-- MLO link setup/teardown
-- Station add/remove operations
-- Firmware command generation during state transitions
+The fix: When removing a key (cmd != SET_KEY), if the link state is
+already gone, return success (0) instead of error. The key is effectively
+removed when the link was torn down.
 
-The fixes follow the pattern used in mt7996 and ath12k drivers for
-similar MLO link state handling.
+This prevents the following errors during roaming:
+  wlp192s0: failed to remove key (1, ff:ff:ff:ff:ff:ff) from hardware (-22)
+  wlp192s0: failed to remove key (4, ff:ff:ff:ff:ff:ff) from hardware (-22)
 
+And the associated wpa_supplicant warnings:
+  nl80211: kernel reports: link ID must for MLO group key
+
+Reported-by: Zac Bowling <zac@zacbowling.com>
+Tested-by: Zac Bowling <zac@zacbowling.com>
 Signed-off-by: Zac Bowling <zac@zacbowling.com>
 ---
- mt7925/mcu.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/mt7925/mcu.c b/mt7925/mcu.c
-index bd38807e..b9c4b99d 100644
---- a/mt7925/mcu.c
-+++ b/mt7925/mcu.c
-@@ -1087,6 +1087,8 @@ mt7925_mcu_sta_hdr_trans_tlv(struct sk_buff *skb,
- 		struct mt792x_link_sta *mlink;
- 
- 		mlink = mt792x_sta_to_link(msta, link_sta->link_id);
-+		if (!mlink)
-+			return;
- 		wcid = &mlink->wcid;
- 	} else {
- 		wcid = &mvif->sta.deflink.wcid;
-@@ -1120,6 +1122,9 @@ int mt7925_mcu_wtbl_update_hdr_trans(struct mt792x_dev *dev,
- 	link_sta = mt792x_sta_to_link_sta(vif, sta, link_id);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 13156333431d..11c0197c7426 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -597,8 +597,15 @@ static int mt7925_set_link_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
  	mconf = mt792x_vif_to_link(mvif, link_id);
+ 	mlink = mt792x_sta_to_link(msta, link_id);
  
-+	if (!mlink || !mconf)
-+		return -EINVAL;
-+
- 	skb = __mt76_connac_mcu_alloc_sta_req(&dev->mt76, &mconf->mt76,
- 					      &mlink->wcid,
- 					      MT7925_STA_UPDATE_MAX_SIZE);
-@@ -1741,6 +1746,8 @@ mt7925_mcu_sta_amsdu_tlv(struct sk_buff *skb,
- 	amsdu->amsdu_en = true;
+-	if (!link_conf || !mconf || !mlink)
++	if (!link_conf || !mconf || !mlink) {
++		/* During MLO roaming, link state may be torn down before
++		 * mac80211 requests key removal. If removing a key and
++		 * the link is already gone, consider it successfully removed.
++		 */
++		if (cmd != SET_KEY)
++			return 0;
+ 		return -EINVAL;
++	}
  
- 	mlink = mt792x_sta_to_link(msta, link_sta->link_id);
-+	if (!mlink)
-+		return;
- 	mlink->wcid.amsdu = true;
- 
- 	switch (link_sta->agg.max_amsdu_len) {
-@@ -1935,6 +1942,9 @@ mt7925_mcu_sta_mld_tlv(struct sk_buff *skb,
- 
- 		mconf = mt792x_vif_to_link(mvif, i);
- 		mlink = mt792x_sta_to_link(msta, i);
-+		if (!mconf || !mlink)
-+			continue;
-+
- 		mld->link[cnt].wlan_id = cpu_to_le16(mlink->wcid.idx);
- 		mld->link[cnt++].bss_idx = mconf->mt76.idx;
- 
-@@ -2027,13 +2037,13 @@ int mt7925_mcu_sta_update(struct mt792x_dev *dev,
- 		.rcpi = to_rcpi(rssi),
- 	};
- 	struct mt792x_sta *msta;
--	struct mt792x_link_sta *mlink;
-+	struct mt792x_link_sta *mlink = NULL;
- 
- 	if (link_sta) {
- 		msta = (struct mt792x_sta *)link_sta->sta->drv_priv;
- 		mlink = mt792x_sta_to_link(msta, link_sta->link_id);
- 	}
--	info.wcid = link_sta ? &mlink->wcid : &mvif->sta.deflink.wcid;
-+	info.wcid = (link_sta && mlink) ? &mlink->wcid : &mvif->sta.deflink.wcid;
- 	info.newly = state != MT76_STA_INFO_STATE_ASSOC;
- 
- 	return mt7925_mcu_sta_cmd(&dev->mphy, &info);
+ 	wcid = &mlink->wcid;
+ 	wcid_keyidx = &wcid->hw_key_idx;
 -- 
 2.51.0
 
