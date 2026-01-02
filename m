@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79067FA372A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jan 2026 11:20:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4230AEEE25C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jan 2026 11:30:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GjCw3B/ZE6UsbRGFFrEOWgoAv9dKcIBGeE3THIAgxpw=; b=sj7LkqIdrKpp+H0J5ozpXNJFt8
-	acEWiLb5PTpN0gHI3E/pZ4VH2HmWQbD0znoBvHbWE226mmF2z3kTqzJ1wntGbl02MEDRKMYa9gc42
-	t51RSHOgF8en96TDqlzCGmYdBAXcVwlybtZ7gwfoIWYjzf1ZZhwFEfqyqpjgkOYy2OlXLUqDzgV7/
-	l/5AUWHqdj3C6lF4cJyqJ2+pur6UxPpBj7cPKSSvYHFv1wn6p3phoGPuFKNZ25jXKwCWfMj44d1yN
-	PKhiXbzNvqyJS5RuNRg4Z3HKyn6+hUsR07aLZ+/W4lniy8ah/R2rwFTSPK16DF+7JtJqGhalb9OW8
-	S4Dzf8cw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5eDmuxeBKqxAvpPlf54pPiQwnDHnIGjwV/ubt2AS96o=; b=ca1dPxTTwHss5/OPeHvag8CEyj
+	DQeRDr9hUAWlXcutdemePB783SFJg861hkINjgiQtWw17h94z6qE4byeomuvjRkIuOVKQFsOb8YMh
+	RefzWxpi3DCnY+I0PvDJEw5I4iPjkAf2HKoJlrEAM4HSB3Fc3ndOrSfrJnmeXYsuHLC6lgHI0rEvF
+	DsSTz9k/YChOK6wVM2ZETmiUu312eCmye8ZpJOSn76sBneSOiGn4JKS52kyvhR9/M28zEopprjY64
+	UCx2cN+QWmXT+jub+wBPCCltx7g1n+rt2Xmpq0ow3JJFUN0BQDG1cCt9XmHnv0OJvZfTzYtv49V6a
+	8jZw9I3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbdDE-000000087od-3y9D;
-	Fri, 02 Jan 2026 11:20:56 +0000
-Received: from out-178.mta1.migadu.com ([2001:41d0:203:375::b2])
+	id 1vbdMK-000000088Xb-1wVF;
+	Fri, 02 Jan 2026 11:30:20 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbdDB-000000087ne-2H6I
-	for linux-mediatek@lists.infradead.org;
-	Fri, 02 Jan 2026 11:20:56 +0000
-Message-ID: <6856f6aa-c6b8-4966-9dd2-9bf0315395c2@linux.dev>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
-	t=1767352837;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=GjCw3B/ZE6UsbRGFFrEOWgoAv9dKcIBGeE3THIAgxpw=;
-	b=lUQSooyi39lfIMRVjaV/kmKb7WdyvSWRxBnlGP3xc7CZNiG0dOFmTTzioIzLXkKrGeGHx9
-	lasbtDCBKxbzFDV+WYUYuNUwnSsnqm+3PQ9iL5AzpZ0pAi2o/XZImmck8yhSNLNwagcyb2
-	drVc+NYVSsYpBIhkYqQwHgaGHcI5Byo=
-Date: Fri, 2 Jan 2026 11:20:28 +0000
+	id 1vbdMH-000000088VZ-3Hs0;
+	Fri, 02 Jan 2026 11:30:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 715BD4026B;
+	Fri,  2 Jan 2026 11:30:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF640C116B1;
+	Fri,  2 Jan 2026 11:30:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1767353416;
+	bh=or02hWfFzsrtbur0hDbE8xSMzdZ9lK0cgMTmu6IuI1c=;
+	h=From:Date:Subject:To:Cc:From;
+	b=BNAJOBvnChOOKtFTVFL8KxwB20Vn7X0ibQxbfoB34v8eD4R5njBLnXLefMLCnsVse
+	 vFJgObKrbjpCr1+msGtAbnS7c5TYCb74cbR1vKm/VK2jflGtCQBJMd8vnasiVwmmVg
+	 i0nNXvSXDsKM4kmjSz2VyoPtmPCHryOHasoMe57Hp3TcG4HYmPcSW7L3fnTCmcBr1h
+	 dL0HrBj5bRKfNgOtfS/W7vLp4WqsrJhUJQ/6Flyti5TooJZ4YAuKTR0k8A8mAA4nPE
+	 92cVOVLBoxBegoQXpXweOf87zVGXxKeWjLDkr4pij5WLnO8r34r13kyEVs7mF+o30V
+	 GiAzpM/Hpr9EQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Fri, 02 Jan 2026 12:29:38 +0100
+Subject: [PATCH net] net: airoha: Fix npu rx DMA definitions
 MIME-Version: 1.0
-Subject: Re: [PATCH] net: mediatek: add null pointer check for hardware
- offloading
-To: Sebastian Roland Wolf <Sebastian.Wolf@pace-systems.de>,
- Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Sebastian Roland Wolf <srw@root533.premium-rootserver.net>
-References: <20251231225206.3212871-1-Sebastian.Wolf@pace-systems.de>
-Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-In-Reply-To: <20251231225206.3212871-1-Sebastian.Wolf@pace-systems.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
+Message-Id: <20260102-airoha-npu-dma-rx-def-fixes-v1-1-205fc6bf7d94@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MMQqAMAxA0auUzAbaIqJeRRxiGzWDVVIUQby7x
+ fHx4T+QWYUz9OYB5Uuy7KnAVQbCSmlhlFgM3vrGOuuRRPeVMB0nxo1Qb4w84yw3Z2xt3TruJuc
+ DQTkcyn8og2F83w/EDYPCbQAAAA==
+X-Change-ID: 20260102-airoha-npu-dma-rx-def-fixes-80481e9b12ca
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>
+Cc: netdev@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260102_032054_301066_D21F49E1 
-X-CRM114-Status: GOOD (  21.81  )
+X-CRM114-CacheID: sfid-20260102_033017_846629_071DD4C8 
+X-CRM114-Status: UNSURE (   8.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,57 +76,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 31/12/2025 22:52, Sebastian Roland Wolf wrote:
-> From: Sebastian Roland Wolf <srw@root533.premium-rootserver.net>
-> 
-> Add a null pointer check to prevent kernel crashes when hardware
-> offloading is active on MediaTek devices.
-> 
-> In some edge cases, the ethernet pointer or its associated netdev
-> element can be NULL. Checking these pointers before access is
-> mandatory to avoid segmentation faults and kernel oops.
-> 
-> This improves the robustness of the validation check for mtk_eth
-> ingress devices introduced in commit 73cfd947dbdb ("net: mediatek:
-> add support for ingress traffic offloading").
-> 
-> Fixes: 73cfd947dbdb ("net: mediatek: add support for ingress traffic offloading")
-> net: mediatek: Add null pointer check to prevent crashes with active hardware offloading.
-> 
-> Signed-off-by: Sebastian Roland Wolf <Sebastian.Wolf@pace-systems.de>
-> ---
->   drivers/net/ethernet/mediatek/mtk_ppe_offload.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-> index e9bd32741983..6900ac87e1e9 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-> @@ -270,7 +270,8 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
->   		flow_rule_match_meta(rule, &match);
->   		if (mtk_is_netsys_v2_or_greater(eth)) {
+Fix typos in npu rx DMA descriptor definitions.
 
-The code dereferences eth here ...
+Fixes: b3ef7bdec66fb ("net: airoha: Add airoha_offload.h header")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ include/linux/soc/airoha/airoha_offload.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
->   			idev = __dev_get_by_index(&init_net, match.key->ingress_ifindex);
-> -			if (idev && idev->netdev_ops == eth->netdev[0]->netdev_ops) {
-> +			if (idev && eth && eth->netdev[0] &&
+diff --git a/include/linux/soc/airoha/airoha_offload.h b/include/linux/soc/airoha/airoha_offload.h
+index 4d23cbb7d407596a6180eba7d7c8ca2b3949ed09..ab64ecdf39a06dd1ceb461fafc5e1437edb6141c 100644
+--- a/include/linux/soc/airoha/airoha_offload.h
++++ b/include/linux/soc/airoha/airoha_offload.h
+@@ -71,12 +71,12 @@ static inline void airoha_ppe_dev_check_skb(struct airoha_ppe_dev *dev,
+ #define NPU_RX1_DESC_NUM	512
+ 
+ /* CTRL */
+-#define NPU_RX_DMA_DESC_LAST_MASK	BIT(29)
+-#define NPU_RX_DMA_DESC_LEN_MASK	GENMASK(28, 15)
+-#define NPU_RX_DMA_DESC_CUR_LEN_MASK	GENMASK(14, 1)
++#define NPU_RX_DMA_DESC_LAST_MASK	BIT(27)
++#define NPU_RX_DMA_DESC_LEN_MASK	GENMASK(26, 14)
++#define NPU_RX_DMA_DESC_CUR_LEN_MASK	GENMASK(13, 1)
+ #define NPU_RX_DMA_DESC_DONE_MASK	BIT(0)
+ /* INFO */
+-#define NPU_RX_DMA_PKT_COUNT_MASK	GENMASK(31, 28)
++#define NPU_RX_DMA_PKT_COUNT_MASK	GENMASK(31, 29)
+ #define NPU_RX_DMA_PKT_ID_MASK		GENMASK(28, 26)
+ #define NPU_RX_DMA_SRC_PORT_MASK	GENMASK(25, 21)
+ #define NPU_RX_DMA_CRSN_MASK		GENMASK(20, 16)
 
-... but it is checked a couple of lines after.
+---
+base-commit: dbf8fe85a16a33d6b6bd01f2bc606fc017771465
+change-id: 20260102-airoha-npu-dma-rx-def-fixes-80481e9b12ca
 
-Even more, the function starts with providing rhahstable to lookup
-cookie. I'm really doubt eth can be NULL.
-At the same time lack of eth->netdev[0] looks like a design problem,
-because according to the code there might be up to 3 netdev devices
-registered for ppe.
-
-I'm not familiar with the code, but it would be better to have a splat
-of crash to check what was exactly missing, and drgn can help you find
-if there were other netdevs available at the moment of crash.
-
-> +			    idev->netdev_ops == eth->netdev[0]->netdev_ops) {
->   				struct mtk_mac *mac = netdev_priv(idev);
->   
->   				if (WARN_ON(mac->ppe_idx >= eth->soc->ppe_num))
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
