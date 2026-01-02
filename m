@@ -4,144 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92830FA3744
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jan 2026 12:48:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B11E4FA3741
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jan 2026 13:45:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=BUpoZ+T7vDuEG/zi9mTKqt429b9xs4793ENUoDPiZsQ=; b=XpzBWaoxt6OQouYlRHCeQ6idlx
-	VAyfz8ftEGuUhL2Q8sjss8YNBE+QEI7JZd0202vZaUTFxYD1Mh8uceUz68A3M5NX3/OofqgYDUC1w
-	SHUDb8nXWIFyfh4MvnWM8wLOCKppnw9XAc8U/jIknKQTwbeInBze5rNQzJWgceURiTFUekPDhRoV+
-	tR0WFD1QAKxOzqU2b3mWVl7YrZhFskrSYHGxF6H7orp/cnsVfkVLYnFSl8vPHrhT2LukhSbLNsPpn
-	XGq/fb5KmkAbRQMVmzY4Wsb9bQNPAtg62saqYJUFP6Zo+jnmA5fDLVflRTpJfohBbFAdamwflBLb0
-	WcHzznog==;
+	MIME-Version:Content-Type:Date:Message-ID:In-Reply-To:References:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=odpTuxH9kYZ3GnKkdybEyntftVSqh6ui7FmUigsWUfo=; b=TVfajcmPD+SQaE1/fY7wDpSmPu
+	l3FRttcI8cuPIVoMBhjxFKIOnptXYs+80bZr4QnMBA99mfdqIwOT5s6maY811OFvy2YiEAM5rnUij
+	OtV3yEg0njHV4o2PlxHOGUVN3eScz5UzoLMmOYo7u/O4PPvZrflHv63+Cm+OrV22567VMDwBRQ/Nz
+	z1HjwEVM+PIoJYeP/OqtMLuJeAeU5bdtP003PQhOcQRaXAe3E0lOLS7271XGr+X38jxLFx00W78NL
+	rKnQeqjFArde6lBbic0spdMJF1qGXKoDKQ8Ig979AvD5YGzyNAj2vVLTfSY1peDtFJmo6jw3d63hb
+	u8bXx8cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbeaF-00000008DgH-2s1A;
-	Fri, 02 Jan 2026 12:48:47 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1vbfTQ-00000008JPZ-18Oh;
+	Fri, 02 Jan 2026 13:45:48 +0000
+Received: from ms-10.1blu.de ([178.254.4.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vbeaD-00000008DeF-3BYM
-	for linux-mediatek@lists.infradead.org;
-	Fri, 02 Jan 2026 12:48:47 +0000
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 602C00cx314483
-	for <linux-mediatek@lists.infradead.org>; Fri, 2 Jan 2026 12:48:45 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:date:from:message-id:mime-version
-	:subject:to; s=qcppdkim1; bh=BUpoZ+T7vDuEG/zi9mTKqt429b9xs4793EN
-	UoDPiZsQ=; b=Gbq2/yGxcJnzNtOCF+g/chY2PsBMvMQE6iLdlI1gxLGkfXxwmhZ
-	tBGk0QHkfM9gsZ5/4cxUIeAhcLbeiSBS43V898bUs3qFg/5NvE2U3yUZeAyb7ZN7
-	MHwbLsZThpLeiW//QnaSmoQQ+gLjkQ7cfMkc6oHCpMQpL966gv2OS5ETtGYatpSP
-	FfEQS0NxzoShA9QtSdjeNLd8SvluGU+F1lqxiHzJSvV/pAKWzdnSKLcL+eXvmMeq
-	e0rXx19FLFX75Usi0dj3QHYbEG+FML7ZZfTXhEHBAJWzimgd6cInGlgOHh2hwbJ9
-	Onrp0dVUxEiz1AnqHXTp5eGvlyZcylgZYkA==
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4bedmxr2p8-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Fri, 02 Jan 2026 12:48:45 +0000 (GMT)
-Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-4edb6a94873so237460661cf.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 02 Jan 2026 04:48:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1767358124; x=1767962924; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=BUpoZ+T7vDuEG/zi9mTKqt429b9xs4793ENUoDPiZsQ=;
-        b=Zy0o4kTciAq0EKBDPomsoJW4R0X5LObc5jXLoqDihSZQs4GIbb+khv+MRYvRjmLoiQ
-         9adF3mpOwYfRP9HkKSQvRSQzf1YQM1CJ9B0Tx6Xc/uxDH2nPVc/KT8CcjXPtKavP7kF0
-         PiAdpRuvmrsjE0RIqpxJg3F0OJDe3rIeoP0e7F6TlgS1EyXOFg/7f7slSUuHiCpvcq4L
-         oDuHnuHnLpbyygItGryomWQGtNLwR7SnDqzax02+09yzR/symS44m2aBNS6r8eAgQXcE
-         27igKb//AGbmk8QeNc5z/mTNb3R4maX+c9iK8ZrJ+yH6fMwBMsr0l0ozhYLrRsvGW22m
-         SZEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767358124; x=1767962924;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BUpoZ+T7vDuEG/zi9mTKqt429b9xs4793ENUoDPiZsQ=;
-        b=GwB7yIqT5brXmeZQX5KKyYO1GX1xPFaChdT71xaYg2PbBMg3wCKgLj7jhaKYpdPWoL
-         Qe7F9XTs5wTxkm+7f4j0dsBc9Y9oN01Dbkm8vyPA7Tjirx9A5ZY6M1jhJXjKr4vwbhI4
-         +68CA6zmzPa1dJlCJMQS9kc4EHpz5jaEbJ6TruoL0NbIire9xzKLT0mWMXTqOd37YbaS
-         /roCHwx+g6lFQI+McGaCOZic4Ei+ig6Lw0Y3G022hDBl5eWEIPaKQ+dGE/pcMlasZesW
-         ZGcxcYVLpwkgPcIT+gliY1CoErGZ4TezRH66i5Ztd7d8Bo6CKi6pOjSfxXDuUBhbU1vh
-         S9jw==
-X-Forwarded-Encrypted: i=1; AJvYcCV+uWYnDgjmvcKvT339GWFON5tFey+lq91l9k/xBgwXpdoYTEoFJG0HZzwt69gw2az6c9fjWHw0iaBprbCisw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzDXqFKRdjvqAighIHvr1d8EResWvDsQRbPkX6sDvLpjDhpZmWH
-	iBpJTT67gpXaAnSpqlvTUzqxqqSvHChe2DtiktM0gMMv2Ka6Y22pSar/ogBPibZ2mk4Kr2FdCP2
-	aEOaY/+NEI7TAJm71z4N5OfnTTn1HX3piRnuceHoSZ5M+GE6Md9NQNDgdRKcZXa0QClbbmFZDCX
-	E=
-X-Gm-Gg: AY/fxX4eJMGzQY/XqFZl7Ll9OgWeT3us1JRJmSsQIddK0S1W5qdk5QAs0e4k/of1qbj
-	RuWA060vQ+W9Pm7p4pN84dnMpTEV2GH9b2iv88n5vg8Ak8cPk2g+7JWbZsAtmFHhAhVf9k7fO6M
-	ZeEoSiTaMbP66vCb8msxrS1YNGWDAUJEYKMn8VtPRIV1jTWQw0bQcURKkysq0h0pPB9RMYvJP9N
-	Fk9uM83GeKzoGCvHdlLtM7zcSaTw3lqkfunhsZ4E6wcpT8HC/Y1MuTQBxclu3t5hv3623sEkNoq
-	eA875VQ63N34T7PXSFOOwalhF3JfxT6mwjrNWqGW8u+acJvjaUu4dmNwBL9ig10DqSyBTSD2XPS
-	7bAV9YMcVD/On3JdQ5DI1aX1FAA==
-X-Received: by 2002:ac8:758f:0:b0:4f4:de66:5901 with SMTP id d75a77b69052e-4f4de665a8emr387649941cf.5.1767358124450;
-        Fri, 02 Jan 2026 04:48:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEgYCvGqiuv6UXoD9T46glKCVF4tcH0dvAXXUkL6iY+OU9BbPdW5meF8oWRi7nxOWejP/gtng==
-X-Received: by 2002:ac8:758f:0:b0:4f4:de66:5901 with SMTP id d75a77b69052e-4f4de665a8emr387649731cf.5.1767358124097;
-        Fri, 02 Jan 2026 04:48:44 -0800 (PST)
-Received: from quoll ([178.197.218.229])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47be3aac6d9sm328265755e9.4.2026.01.02.04.48.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 02 Jan 2026 04:48:43 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: [PATCH] pmdomain: mediatek: Simplify with scoped for each OF child loop
-Date: Fri,  2 Jan 2026 13:48:41 +0100
-Message-ID: <20260102124840.64424-2-krzysztof.kozlowski@oss.qualcomm.com>
-X-Mailer: git-send-email 2.51.0
+	id 1vbfTM-00000008JOY-3vV6;
+	Fri, 02 Jan 2026 13:45:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=pace-systems.de; s=blu0479712; h=Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Date:Message-ID:In-Reply-To:References:Subject:Cc:To:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=odpTuxH9kYZ3GnKkdybEyntftVSqh6ui7FmUigsWUfo=; b=XVOtwCq0iU57pqACQQxvCNHc3F
+	vfIZmPvCu3a4sbVOl7hBfqnj69w1JV7vyztxFCmB5JKDchGhH5MS30WKHPkv1ZuaCYHG9J0YB12lt
+	fULne1bjakxyZMRPzvB3dbqHk7QWROCxBIKPy0DywJXBsdqjfJkzmykC2+msMOgHM4LtVsfM9MQxl
+	84ryxhshWLanjoTA3WO0H0Dp/uW/SwT0YIuAvmHtbR8tAFvBiGJDY2b+OVZHXm0o76oEJLIq0CoAs
+	/+he+Ilp2Ec791/J+FplcKyVD5aZA2sNlFwty/H/Lihaw8PaE+Zxu40Kl5zkwoRKyRi3uyVWrAWNI
+	Ik3jbSRw==;
+Received: from [178.254.3.181] (helo=nc.pace-systems.de)
+	by ms-10.1blu.de with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <Sebastian.Wolf@pace-systems.de>)
+	id 1vbfSz-005D98-NS;
+	Fri, 02 Jan 2026 14:45:21 +0100
+From: Sebastian Wolf <Sebastian.Wolf@pace-systems.de>
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Vadim Fedorenko
+ <vadim.fedorenko@linux.dev>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Sebastian Roland Wolf
+ <srw@root533.premium-rootserver.net>
+Subject: Re: [PATCH] net: mediatek: add null pointer check for hardware
+ offloading
+References: <6856f6aa-c6b8-4966-9dd2-9bf0315395c2@linux.dev>
+In-Reply-To: <6856f6aa-c6b8-4966-9dd2-9bf0315395c2@linux.dev>
+Message-ID: <20260102134521.Horde.OJhG83vhDBgeJWzIiPESJP-@nc.pace-systems.de>
+User-Agent: Horde Application Framework 5
+Date: Fri, 02 Jan 2026 13:45:21 +0000
+Content-Type: text/plain; charset=utf-8
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1420; i=krzysztof.kozlowski@oss.qualcomm.com;
- h=from:subject; bh=OcIwlu3RbDzj4APk+zQqEeDgPBcykjsRQep6QGMTQ8Q=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpV76oDAEMOGl9Z/fKeLxpkVZ7CyPuujcbJEqlX
- ymFmzy20JqJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaVe+qAAKCRDBN2bmhouD
- 1yxyD/9wFzZRH+PYMR3wZFgaITMzhBAmjzbA/ynFwhrMvt/NU7/qwQz6iwrk+/tRwdWPtY4K3Ij
- Kgm6rBv7McPdYuZpzXmS4agwDTGSK1rMkkP7NToFQ2Noui6JMuX/rXZRgbee8YTWgbEVCQhNTDg
- bEaT5xFT16UNOuY1XVa5DcJmkfVXPcv+iuaxiSmnD7jKBeLhf6pH7tDDNoQkhmfqB+w5etusJda
- U5nlRktyIIbkT4raJpH9K0JXfdh1NHDiIhW6YvXcfzeS7v9Vsk6zPsWSlNcKKeIAs176+THWw00
- 0PdVa1vdAcT4UsIfJNCbmyhIXOQyX0lpi+8a1R8v1ZyRIQlCIbxeUv7/T5+Go8/cEvT4ejrm368
- A1V2RnEwqw+P7B4yt9CuLXT28FP+eSXY8iFE7CcBCi7FWbAvZ1hOkVi6JZTx5nlneZC2+n/g6L8
- YLTc+E/p64pnCtbJUQRzcP0n1zQ5DMBKcmk7B9ygrab4A9UnGTZ0OWlLDzFfdKoS9WDapn04tvL
- nA071AAeFHm+FlYce2Waql1OsLt4D0BcdCNxQfpxeY7YK4vWQGqY6JXvKphbylfoN6UNS9loctk
- TyW24FMX7hsA8xnsejPkYlnwywBcmlj6AYo0NYYeq3qcTw943UdsqtI3FkbY4qaZ8KzUeUc8o38 KtOFgun2wv/jFnQ==
-X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
 Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=GupPO01C c=1 sm=1 tr=0 ts=6957bead cx=c_pps
- a=JbAStetqSzwMeJznSMzCyw==:117 a=Eb9f15NH/cHKzfGOmZSO4Q==:17
- a=vUbySO9Y5rIA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=EUspDBNiAAAA:8 a=2lWiiPulESlkJRycB4IA:9 a=uxP6HrT_eTzRwkO_Te1X:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTAyMDExMyBTYWx0ZWRfX1Zeih3R2+HNt
- rk6vsJX4byVQ8nx61uugrPsc8qwFtgiZtYWPNBlNKHaTN1fKWMWwCR8haE656/aQzwNDg+KB7lS
- A5lFw3zxr1OpQgExy+vMovEKoM7/JqsEm+lYJCs/WieShMgRIwgx3iacvqeF0ctwcaGKR64kjLo
- C2ZIafGdeTbiDuA8WrG7+SKgqlp0ASutCxlNlsnCSrlRWEjN5mHkrzA/Sx36sfgryOuJePhsJal
- d8MfVDGzRwnRVOgOT9XOUrqbII1igeM6OrUcUA0qQQ2Q1PHQFZKF9icSrQf+us/mfACIr2PlBPq
- Qur/UifjyvHUF1PJgZLWFM9tisiqMpNPzyR+N8xXcQf6lHYO0qsgsngMKaV+5BkbBNXnGKfw/Tn
- MWo1LCvaqtE8iP0weB/RnMuU0aOYMmjynSroo43vFYNHo1x75o+87K+7anrlAXVi/LX3CujPqGK
- 4B8UycS+061rMO0L3nA==
-X-Proofpoint-GUID: sGwk_KvQjN7Ov5y30wTjxZ3NNmL2xnUx
-X-Proofpoint-ORIG-GUID: sGwk_KvQjN7Ov5y30wTjxZ3NNmL2xnUx
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
- definitions=2026-01-02_01,2025-12-31_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 suspectscore=0 impostorscore=0 priorityscore=1501
- lowpriorityscore=0 adultscore=0 phishscore=0 malwarescore=0 spamscore=0
- bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2512120000
- definitions=main-2601020113
+X-Con-Id: 282146
+X-Con-U: 0-sebastianwolf
+X-Originating-IP: 178.254.3.181
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260102_044845_821445_9FA41D4C 
-X-CRM114-Status: GOOD (  15.42  )
+X-CRM114-CacheID: sfid-20260102_054545_287633_7B5DC665 
+X-CRM114-Status: GOOD (  32.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,51 +82,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use scoped for-each loop when iterating over device nodes to make code a
-bit simpler.
-
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
----
- drivers/pmdomain/mediatek/mtk-pm-domains.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index 80561d27f2b2..ab2514c78c14 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -1191,7 +1191,6 @@ static int scpsys_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct device_node *np = dev->of_node;
- 	const struct scpsys_soc_data *soc;
--	struct device_node *node;
- 	struct device *parent;
- 	struct scpsys *scpsys;
- 	int num_domains, ret;
-@@ -1235,21 +1234,18 @@ static int scpsys_probe(struct platform_device *pdev)
- 		return ret;
- 
- 	ret = -ENODEV;
--	for_each_available_child_of_node(np, node) {
-+	for_each_available_child_of_node_scoped(np, node) {
- 		struct generic_pm_domain *domain;
- 
- 		domain = scpsys_add_one_domain(scpsys, node);
- 		if (IS_ERR(domain)) {
- 			ret = PTR_ERR(domain);
--			of_node_put(node);
- 			goto err_cleanup_domains;
- 		}
- 
- 		ret = scpsys_add_subdomain(scpsys, node);
--		if (ret) {
--			of_node_put(node);
-+		if (ret)
- 			goto err_cleanup_domains;
--		}
- 	}
- 
- 	if (ret) {
--- 
-2.51.0
-
+Hi Vadim,
+"Vadim Fedorenko" vadim.fedorenko@linux.dev – 2. Januar 2026 12:20
+> On 31/12/2025 22:52, Sebastian Roland Wolf wrote:
+> > From: Sebastian Roland Wolf <srw@root533.premium-rootserver.net>
+> > 
+> > Add a null pointer check to prevent kernel crashes when hardware
+> > offloading is active on MediaTek devices.
+> > 
+> > In some edge cases, the ethernet pointer or its associated netdev
+> > element can be NULL. Checking these pointers before access is
+> > mandatory to avoid segmentation faults and kernel oops.
+> > 
+> > This improves the robustness of the validation check for mtk_eth
+> > ingress devices introduced in commit 73cfd947dbdb ("net: mediatek:
+> > add support for ingress traffic offloading").
+> > 
+> > Fixes: 73cfd947dbdb ("net: mediatek: add support for ingress traffic offloading")
+> > net: mediatek: Add null pointer check to prevent crashes with active hardware offloading.
+> > 
+> > Signed-off-by: Sebastian Roland Wolf <Sebastian.Wolf@pace-systems.de>
+> > ---
+> > drivers/net/ethernet/mediatek/mtk_ppe_offload.c | 3 ++-
+> > 1 file changed, 2 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> > index e9bd32741983..6900ac87e1e9 100644
+> > --- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> > +++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> > @@ -270,7 +270,8 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
+> > flow_rule_match_meta(rule, &match);
+> > if (mtk_is_netsys_v2_or_greater(eth)) {
+> 
+> The code dereferences eth here ...
+> 
+> > idev = __dev_get_by_index(&init_net, match.key->ingress_ifindex);
+> > - if (idev && idev->netdev_ops == eth->netdev[0]->netdev_ops) {
+> > + if (idev && eth && eth->netdev[0] &&
+> 
+> ... but it is checked a couple of lines after.
+> 
+You are right that 'eth' is already dereferenced above, so checking it here is redundant. I will remove the 'eth' check in a V2 of this patch. (As this is first patch ever I hope I do it right)
+> Even more, the function starts with providing rhahstable to lookup
+> cookie. I'm really doubt eth can be NULL.
+> At the same time lack of eth->netdev[0] looks like a design problem,
+> because according to the code there might be up to 3 netdev devices
+> registered for ppe.
+While it might point to a deeper design issue, the check for 'eth->netdev[0]' is necessary to prevent the immediate kernel oops I am seeing. Forcing this check prevents the crash, which is the lesser evil compared to a complete system failure, even if hardware offloading might not function correctly in that specific state.
+> 
+> I'm not familiar with the code, but it would be better to have a splat
+> of crash to check what was exactly missing, and drgn can help you find
+> if there were other netdevs available at the moment of crash.
+Unfortunately, I am not a regular kernel developer and have no experience with drgn. Furthermore, I am testing this on a production device which limits my ability to perform deep interactive debugging or long-term crash analysis.
+> 
+> > + idev->netdev_ops == eth->netdev[0]->netdev_ops) {
+> > struct mtk_mac *mac = netdev_priv(idev);
+> > 
+> > if (WARN_ON(mac->ppe_idx >= eth->soc->ppe_num))
+> 
+>
+I will send a V2 shortly, focusing on the 'eth->netdev[0]' check while removing the redundant 'eth' check.
+Best regards,
+Sebastian
 
