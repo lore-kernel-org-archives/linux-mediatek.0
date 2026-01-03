@@ -4,94 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B49A9FA3758
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jan 2026 20:05:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1498FFC6165
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Jan 2026 00:50:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ncj038f085969Nim0LRgx0ReaJFA7+G2XHIbBniHkeA=; b=4lMZodj9APtB3825BdirVk6h31
-	3LcuCg5rTo9IN0szQMSYd/hSDp2BEtaQYCARevmx99TDbFat5eNsqixJBf2kRPDyG2lIqIJg+1anB
-	BrRxncH5jJDD5gLMVgThYvgiB1bgR3n1JOI/NlUAPCWXjzDlMaKEjXKDDTxdoDjYsBxv2aB77mlje
-	uZ9LKiSzSIAFv7KvxG8YAfGI5sC3Ua1cNIjln8HiViPba8+kxYyetcWiMSoPB86/XUxhGGaW3fYxE
-	S8FYsF50pzm0F1J42CotJsxbB9Ad7dk/lWrl/Jtf/STpzcb3RwS1+R7LScC8akmxOXw1eJJ01io8f
-	D8qkAHng==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KViZW5fwyykO6fUVHMd4MvYMBNQgS9IVd0D0l1O9UVc=; b=tA45x5VlWXXeVEKLaNHkCbmzJX
+	rQ2P8dF1XqFuibzd61Ula5McMJazJqdfg6jW7Viy2bzl80tgViKJQ+p7Vs7im6wtkN4XKTLcORgR0
+	eS9kIGervsf+0/2bE7hC9gW9hqKHS+uhIypbBO8JNd1/ePh4I/6/0lZXYz71j3RXwMU5rEGlTw8xp
+	gxJLg3VuQYqkxtuL+0pM9nsc1wWrawKxcBiWLJRNKkrQgfrN1nm9YrtP7hxUmlTnmD5VFO4bpt+KD
+	pK0CJ4gCwqppxCCBGmeGj1doHsVKSZS2KdIH3uVBZaNNsWVwAQES23Y7TiiEKywXpaYYnb+rAxLLw
+	tIy3hFwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vblOu-00000008gtz-2pfl;
-	Fri, 02 Jan 2026 20:05:32 +0000
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+	id 1vbpqt-00000008pTP-2YSI;
+	Sat, 03 Jan 2026 00:50:43 +0000
+Received: from ms-10.1blu.de ([178.254.4.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vblOo-00000008gta-3RXm
-	for linux-mediatek@lists.infradead.org;
-	Fri, 02 Jan 2026 20:05:31 +0000
-Received: by mail-pg1-x529.google.com with SMTP id 41be03b00d2f7-c06cb8004e8so9736638a12.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 02 Jan 2026 12:05:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1767384326; x=1767989126; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Ncj038f085969Nim0LRgx0ReaJFA7+G2XHIbBniHkeA=;
-        b=UtRIB7PyYvgeXnLrUSonwcO9Uq4/YGvcljKnq1HxkbDDFkPjQrSLQ2lv1ZT1Qb8KV1
-         LQho+kWh7WypjidFZOlMSRRXPq8xXulozX+AfpzaT5xJHjlI0wSQKYoW3QEknyFJfhfF
-         YblRVTThKhWd2i6u5eDrTmHM3MOCZejrv406V2uC4EkSUR5kc/nWh9Mk5HFkglC9AhYh
-         WsVe2HgBSI+Jp12h0aEDnw71lWdmTO8vtb/uLc5Eyz4HVZzshCK+4GMigfBRhTQnRQVh
-         vP0QB0lX2cKInSBufRqVtzUvMMFMo+rvidDsf2u+lwUOxO8M6jJjTRQr40sxDSHsxEwc
-         Tzwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767384326; x=1767989126;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=Ncj038f085969Nim0LRgx0ReaJFA7+G2XHIbBniHkeA=;
-        b=v8HN+HkZDsvVjH5cMwRhD0FZ9lwiiVpSEklQtHNKqVQgcYz7LVrfk15V0A/K0RjFj5
-         r9tqgIp4+cIhSChlnJwVcemxczAi9SorwCypyCBtjDPniMI4ULy1FV3gT4Mno1dfkFfd
-         JSejFddhuqQAwoLpgqwArtAmiYJ8u0YhriQk9pzZiTp0Bc35ag+r2PkHtrD7eYxqwvvl
-         qM2akj5zKemWH0X6TeT8kC73SV2mNMA5FdwMCR1RDUbpNQhGPdwyJeBJgHUnbeZesnlV
-         42ZSbVVt73/7FBdOvt7kNerPY6rXbt4YkpmOVGcDtvPFoyI8uYMCzcFjtE+ulFlpswes
-         hqzQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVdtMhLpMNpChW6RlbVi62AvBS1Gf7rG9c9p++WKRLTrGKxwqbvP1GJanQo3p1X/nMaUU3AVPvljC+9cIk74g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy+5KMw2KDRxCUtqEsQjTPUHmF4JNcjzfirCSFyD9yfOKbtN2F5
-	A2PPFP1OCAw6ESekcR1RcuuHTZxc2fIaZ0Kwg+OVm3o6079unvK7d+C2
-X-Gm-Gg: AY/fxX54h0uD9unGKN1yVWKFJyqgBPICSH0YvgJpR9U771nXgvxMfkPpdE76274xlL7
-	Dvwh4fAa2IQh+FusGxGvzgOYXf/vgJz45LIW8hMm4aAbJPCRVM+FR3k7J2tpG2XCENeGv1idIvJ
-	fn1SUhp0sxjeTCaFo1XZ/+s50pQpY66ulwLNeEoiMzWHbHeK81pVjdrxf9cIHh24+DXS0/Yk8+9
-	kiVN+dQQpapdn00nsOiBxNBltPk7sBK9IuxEt7GbSixHRYHn3o7DjObg5af6HL3Q5G+V0eunNiV
-	dCnMhMtYL9/b4zSKfYGkWCdf7WY6V7BrDoqePLHwwo6J40d8UU+cCmsyQgLhA+qMwXKX977WBpV
-	xXIb/3qtFSeSP4baoc/wDCu6lFrpRNiG+XKu+8KFj768NlAP57fKvPe+FddeCCYNqelewze05TC
-	G9NzlSpNle8z/2K755Z9jekR+hP6OsAW/BmxVGFpmtxOB1RbTDAhcDxrN/r7OUDD0=
-X-Google-Smtp-Source: AGHT+IEJMTl9orAyZvANwo9RkNPL17koGUPtHZ7Z0I9llFHsfMfuhxzZ4nXZhxh8hKJD/wdxKzAyLA==
-X-Received: by 2002:a05:7301:100f:b0:2b0:4e86:8163 with SMTP id 5a478bee46e88-2b05ec02fffmr39900309eec.13.1767384325632;
-        Fri, 02 Jan 2026 12:05:25 -0800 (PST)
-Received: from zubuntu.bengal-mercat.ts.net ([2001:5a8:60d:bc9:9ebf:dff:fe00:f8f2])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2b140c42e38sm1983337eec.34.2026.01.02.12.05.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 02 Jan 2026 12:05:25 -0800 (PST)
-From: Zac Bowling <zbowling@gmail.com>
-To: zbowling@gmail.com
-Cc: deren.wu@mediatek.com,
-	kvalo@kernel.org,
+	id 1vbpqb-00000008pSU-3UHx;
+	Sat, 03 Jan 2026 00:50:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=pace-systems.de; s=blu0479712; h=Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=KViZW5fwyykO6fUVHMd4MvYMBNQgS9IVd0D0l1O9UVc=; b=NKyTFur2+419d4urisS5kRu4Sp
+	419Ea7chY3PN0ab7HcPqpnORKAub58r9wZdS2iPgR055gGS9DvurWO4axrFG6m8/PQsThhFcTUvlx
+	2ybgGvjmt1BnCvIToJRgKQyoSFiOYqHVmstAhOa6J1KYYmdzZWpWPGUTM4Lik32MgQ4Y/ggQdJB0i
+	gBrvXLZAiP+do7WUp/aP2hPv0zjUa6Mz7U5FOshxpOpAZfBjlYUe6s+XQGRMMwWTKCfDnkPjvPLJW
+	x2WzAarSjct6JfimYR8D39ECmuKWj7kS/yc7QTdW8eIAoCFbiot/zc0FB8xeJyc/i9N771qWtDFW7
+	CyDzENBQ==;
+Received: from [178.201.20.114] (helo=sebastian-zbook)
+	by ms-10.1blu.de with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <Sebastian.Wolf@pace-systems.de>)
+	id 1vbpqO-00F1iG-OS;
+	Sat, 03 Jan 2026 01:50:12 +0100
+From: Sebastian Roland Wolf <Sebastian.Wolf@pace-systems.de>
+To: Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-wireless@vger.kernel.org,
-	lorenzo@kernel.org,
-	nbd@nbd.name,
-	ryder.lee@mediatek.com,
-	sean.wang@mediatek.com
-Subject: [PATCH] wifi: mt76: mt7925: comprehensive stability fixes
-Date: Fri,  2 Jan 2026 12:05:24 -0800
-Message-ID: <20260102200524.290779-1-zbowling@gmail.com>
+	Sebastian Roland Wolf <srw@root533.premium-rootserver.net>,
+	Sebastian Roland Wolf <Sebastian.Wolf@pace-systems.de>
+Subject: [PATCH v2] net: mediatek: add null pointer check for hardware offloading
+Date: Sat,  3 Jan 2026 01:50:08 +0100
+Message-ID: <20260103005008.438081-1-Sebastian.Wolf@pace-systems.de>
 X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260102200315.290015-1-zbowling@gmail.com>
-References: <20260102200315.290015-1-zbowling@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-Con-Id: 282146
+X-Con-U: 0-sebastianwolf
+X-Originating-IP: 178.201.20.114
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260102_120528_141280_4CEF257C 
-X-CRM114-Status: GOOD (  17.65  )
+X-CRM114-CacheID: sfid-20260102_165029_712608_B32A8840 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,512 +81,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Zac Bowling <zac@zacbowling.com>
+From: Sebastian Roland Wolf <srw@root533.premium-rootserver.net>
 
-This unified patch combines all MT7925 driver fixes for kernel stability:
+Add a null pointer check to prevent kernel crashes when hardware
+offloading is active on MediaTek devices.
 
-1. NULL pointer dereference fixes in vif iteration, TX path, and MCU functions
-2. Missing mutex protection in reset, ROC, PM, and resume paths
-3. Error handling for MCU commands (AMPDU, BSS info, key setup)
-4. lockdep assertions for debugging
-5. MLO (Multi-Link Operation) improvements for roaming and AP mode
-6. Firmware reload recovery after crashes
+In some edge cases, the ethernet pointer or its associated netdev
+element can be NULL. Checking these pointers before access is
+mandatory to avoid segmentation faults and kernel oops.
 
-These fixes address kernel panics and system hangs that occur during:
-- WiFi network switching and BSSID roaming
-- Suspend/resume cycles
-- MLO link state transitions
-- Firmware recovery after crashes
+This improves the robustness of the validation check for mtk_eth
+ingress devices introduced in commit 73cfd947dbdb ("net: mediatek:
+add support for ingress traffic offloading").
 
-Tested on Framework Desktop (AMD Ryzen AI Max 300) with MT7925 (RZ717).
+Fixes: 73cfd947dbdb ("net: mediatek: add support for ingress traffic offloading")
+net: mediatek: Add null pointer check to prevent crashes with active hardware offloading.
 
-Individual patches and detailed analysis available at:
-https://github.com/zbowling/mt7925
-
-Signed-off-by: Zac Bowling <zac@zacbowling.com>
+Signed-off-by: Sebastian Roland Wolf <Sebastian.Wolf@pace-systems.de>
 ---
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-index d7d5afe365ed..f800112ccaf7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-@@ -162,10 +162,17 @@ void mt7925_regd_update(struct mt792x_dev *dev)
- 	if (!dev->regd_change)
- 		return;
+ drivers/net/ethernet/mediatek/mtk_ppe_offload.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+index e9bd32741983..72bc4a42eac1 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+@@ -270,7 +270,8 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
+ 		flow_rule_match_meta(rule, &match);
+ 		if (mtk_is_netsys_v2_or_greater(eth)) {
+ 			idev = __dev_get_by_index(&init_net, match.key->ingress_ifindex);
+-			if (idev && idev->netdev_ops == eth->netdev[0]->netdev_ops) {
++			if (idev && eth->netdev[0] &&
++			    idev->netdev_ops == eth->netdev[0]->netdev_ops) {
+ 				struct mtk_mac *mac = netdev_priv(idev);
  
--	mt7925_mcu_set_clc(dev, mdev->alpha2, dev->country_ie_env);
-+	if (mt7925_mcu_set_clc(dev, mdev->alpha2, dev->country_ie_env) < 0)
-+		dev_warn(dev->mt76.dev, "Failed to set CLC\n");
-+
- 	mt7925_regd_channel_update(wiphy, dev);
--	mt7925_mcu_set_channel_domain(hw->priv);
--	mt7925_set_tx_sar_pwr(hw, NULL);
-+
-+	if (mt7925_mcu_set_channel_domain(hw->priv) < 0)
-+		dev_warn(dev->mt76.dev, "Failed to set channel domain\n");
-+
-+	if (mt7925_set_tx_sar_pwr(hw, NULL) < 0)
-+		dev_warn(dev->mt76.dev, "Failed to set TX SAR power\n");
-+
- 	dev->regd_change = false;
- }
- EXPORT_SYMBOL_GPL(mt7925_regd_update);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-index 1e44e96f034e..a4109dc72163 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-@@ -1270,6 +1270,12 @@ mt7925_vif_connect_iter(void *priv, u8 *mac,
- 		bss_conf = mt792x_vif_to_bss_conf(vif, i);
- 		mconf = mt792x_vif_to_link(mvif, i);
- 
-+		/* Skip links that don't have bss_conf set up yet in mac80211.
-+		 * This can happen during HW reset when link state is inconsistent.
-+		 */
-+		if (!bss_conf)
-+			continue;
-+
- 		mt76_connac_mcu_uni_add_dev(&dev->mphy, bss_conf, &mconf->mt76,
- 					    &mvif->sta.deflink.wcid, true);
- 		mt7925_mcu_set_tx(dev, bss_conf);
-@@ -1324,9 +1330,11 @@ void mt7925_mac_reset_work(struct work_struct *work)
- 	dev->hw_full_reset = false;
- 	pm->suspended = false;
- 	ieee80211_wake_queues(hw);
-+	mt792x_mutex_acquire(dev);
- 	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
- 					    mt7925_vif_connect_iter, NULL);
-+	mt792x_mutex_release(dev);
- 	mt76_connac_power_save_sched(&dev->mt76.phy, pm);
- 
- 	mt792x_mutex_acquire(dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index ac3d485a2f78..b6e3002faf41 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -596,6 +596,17 @@ static int mt7925_set_link_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
- 	link_sta = sta ? mt792x_sta_to_link_sta(vif, sta, link_id) : NULL;
- 	mconf = mt792x_vif_to_link(mvif, link_id);
- 	mlink = mt792x_sta_to_link(msta, link_id);
-+
-+	if (!link_conf || !mconf || !mlink) {
-+		/* During MLO roaming, link state may be torn down before
-+		 * mac80211 requests key removal. If removing a key and
-+		 * the link is already gone, consider it successfully removed.
-+		 */
-+		if (cmd != SET_KEY)
-+			return 0;
-+		return -EINVAL;
-+	}
-+
- 	wcid = &mlink->wcid;
- 	wcid_keyidx = &wcid->hw_key_idx;
- 
-@@ -625,8 +636,10 @@ static int mt7925_set_link_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
- 		struct mt792x_phy *phy = mt792x_hw_phy(hw);
- 
- 		mconf->mt76.cipher = mt7925_mcu_get_cipher(key->cipher);
--		mt7925_mcu_add_bss_info(phy, mconf->mt76.ctx, link_conf,
--					link_sta, true);
-+		err = mt7925_mcu_add_bss_info(phy, mconf->mt76.ctx, link_conf,
-+					      link_sta, true);
-+		if (err)
-+			goto out;
- 	}
- 
- 	if (cmd == SET_KEY)
-@@ -743,9 +756,11 @@ void mt7925_set_runtime_pm(struct mt792x_dev *dev)
- 	bool monitor = !!(hw->conf.flags & IEEE80211_CONF_MONITOR);
- 
- 	pm->enable = pm->enable_user && !monitor;
-+	mt792x_mutex_acquire(dev);
- 	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
- 					    mt7925_pm_interface_iter, dev);
-+	mt792x_mutex_release(dev);
- 	pm->ds_enable = pm->ds_enable_user && !monitor;
- 	mt7925_mcu_set_deep_sleep(dev, pm->ds_enable);
- }
-@@ -848,12 +863,17 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
- 
- 	msta = (struct mt792x_sta *)link_sta->sta->drv_priv;
- 	mlink = mt792x_sta_to_link(msta, link_id);
-+	if (!mlink)
-+		return -EINVAL;
- 
- 	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT792x_WTBL_STA - 1);
- 	if (idx < 0)
- 		return -ENOSPC;
- 
- 	mconf = mt792x_vif_to_link(mvif, link_id);
-+	if (!mconf)
-+		return -EINVAL;
-+
- 	mt76_wcid_init(&mlink->wcid, 0);
- 	mlink->wcid.sta = 1;
- 	mlink->wcid.idx = idx;
-@@ -879,15 +899,20 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
- 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
- 
- 	link_conf = mt792x_vif_to_bss_conf(vif, link_id);
-+	if (!link_conf)
-+		return -EINVAL;
- 
- 	/* should update bss info before STA add */
- 	if (vif->type == NL80211_IFTYPE_STATION && !link_sta->sta->tdls) {
- 		if (ieee80211_vif_is_mld(vif))
--			mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx,
--						link_conf, link_sta, link_sta != mlink->pri_link);
-+			ret = mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx,
-+						      link_conf, link_sta,
-+						      link_sta != mlink->pri_link);
- 		else
--			mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx,
--						link_conf, link_sta, false);
-+			ret = mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx,
-+						      link_conf, link_sta, false);
-+		if (ret)
-+			return ret;
- 	}
- 
- 	if (ieee80211_vif_is_mld(vif) &&
-@@ -985,18 +1010,29 @@ mt7925_mac_set_links(struct mt76_dev *mdev, struct ieee80211_vif *vif)
- {
- 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
--	struct ieee80211_bss_conf *link_conf =
--		mt792x_vif_to_bss_conf(vif, mvif->deflink_id);
--	struct cfg80211_chan_def *chandef = &link_conf->chanreq.oper;
--	enum nl80211_band band = chandef->chan->band, secondary_band;
-+	struct ieee80211_bss_conf *link_conf;
-+	struct cfg80211_chan_def *chandef;
-+	enum nl80211_band band, secondary_band;
-+	u16 sel_links;
-+	u8 secondary_link_id;
-+
-+	link_conf = mt792x_vif_to_bss_conf(vif, mvif->deflink_id);
-+	if (!link_conf)
-+		return;
-+
-+	chandef = &link_conf->chanreq.oper;
-+	band = chandef->chan->band;
- 
--	u16 sel_links = mt76_select_links(vif, 2);
--	u8 secondary_link_id = __ffs(~BIT(mvif->deflink_id) & sel_links);
-+	sel_links = mt76_select_links(vif, 2);
-+	secondary_link_id = __ffs(~BIT(mvif->deflink_id) & sel_links);
- 
- 	if (!ieee80211_vif_is_mld(vif) || hweight16(sel_links) < 2)
- 		return;
- 
- 	link_conf = mt792x_vif_to_bss_conf(vif, secondary_link_id);
-+	if (!link_conf)
-+		return;
-+
- 	secondary_band = link_conf->chanreq.oper.chan->band;
- 
- 	if (band == NL80211_BAND_2GHZ ||
-@@ -1024,6 +1060,8 @@ static void mt7925_mac_link_sta_assoc(struct mt76_dev *mdev,
- 
- 	msta = (struct mt792x_sta *)link_sta->sta->drv_priv;
- 	mlink = mt792x_sta_to_link(msta, link_sta->link_id);
-+	if (!mlink)
-+		return;
- 
- 	mt792x_mutex_acquire(dev);
- 
-@@ -1033,12 +1071,13 @@ static void mt7925_mac_link_sta_assoc(struct mt76_dev *mdev,
- 		link_conf = mt792x_vif_to_bss_conf(vif, vif->bss_conf.link_id);
- 	}
- 
--	if (vif->type == NL80211_IFTYPE_STATION && !link_sta->sta->tdls) {
-+	if (link_conf && vif->type == NL80211_IFTYPE_STATION && !link_sta->sta->tdls) {
- 		struct mt792x_bss_conf *mconf;
- 
- 		mconf = mt792x_link_conf_to_mconf(link_conf);
--		mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx,
--					link_conf, link_sta, true);
-+		if (mconf)
-+			mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx,
-+						link_conf, link_sta, true);
- 	}
- 
- 	ewma_avg_signal_init(&mlink->avg_ack_signal);
-@@ -1085,6 +1124,8 @@ static void mt7925_mac_link_sta_remove(struct mt76_dev *mdev,
- 
- 	msta = (struct mt792x_sta *)link_sta->sta->drv_priv;
- 	mlink = mt792x_sta_to_link(msta, link_id);
-+	if (!mlink)
-+		return;
- 
- 	mt7925_roc_abort_sync(dev);
- 
-@@ -1098,10 +1139,12 @@ static void mt7925_mac_link_sta_remove(struct mt76_dev *mdev,
- 
- 	link_conf = mt792x_vif_to_bss_conf(vif, link_id);
- 
--	if (vif->type == NL80211_IFTYPE_STATION && !link_sta->sta->tdls) {
-+	if (link_conf && vif->type == NL80211_IFTYPE_STATION && !link_sta->sta->tdls) {
- 		struct mt792x_bss_conf *mconf;
- 
- 		mconf = mt792x_link_conf_to_mconf(link_conf);
-+		if (!mconf)
-+			goto out;
- 
- 		if (ieee80211_vif_is_mld(vif))
- 			mt792x_mac_link_bss_remove(dev, mconf, mlink);
-@@ -1109,6 +1152,7 @@ static void mt7925_mac_link_sta_remove(struct mt76_dev *mdev,
- 			mt7925_mcu_add_bss_info(&dev->phy, mconf->mt76.ctx, link_conf,
- 						link_sta, false);
- 	}
-+out:
- 
- 	spin_lock_bh(&mdev->sta_poll_lock);
- 	if (!list_empty(&mlink->wcid.poll_list))
-@@ -1247,22 +1291,22 @@ mt7925_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	case IEEE80211_AMPDU_RX_START:
- 		mt76_rx_aggr_start(&dev->mt76, &msta->deflink.wcid, tid, ssn,
- 				   params->buf_size);
--		mt7925_mcu_uni_rx_ba(dev, params, true);
-+		ret = mt7925_mcu_uni_rx_ba(dev, params, true);
- 		break;
- 	case IEEE80211_AMPDU_RX_STOP:
- 		mt76_rx_aggr_stop(&dev->mt76, &msta->deflink.wcid, tid);
--		mt7925_mcu_uni_rx_ba(dev, params, false);
-+		ret = mt7925_mcu_uni_rx_ba(dev, params, false);
- 		break;
- 	case IEEE80211_AMPDU_TX_OPERATIONAL:
- 		mtxq->aggr = true;
- 		mtxq->send_bar = false;
--		mt7925_mcu_uni_tx_ba(dev, params, true);
-+		ret = mt7925_mcu_uni_tx_ba(dev, params, true);
- 		break;
- 	case IEEE80211_AMPDU_TX_STOP_FLUSH:
- 	case IEEE80211_AMPDU_TX_STOP_FLUSH_CONT:
- 		mtxq->aggr = false;
- 		clear_bit(tid, &msta->deflink.wcid.ampdu_state);
--		mt7925_mcu_uni_tx_ba(dev, params, false);
-+		ret = mt7925_mcu_uni_tx_ba(dev, params, false);
- 		break;
- 	case IEEE80211_AMPDU_TX_START:
- 		set_bit(tid, &msta->deflink.wcid.ampdu_state);
-@@ -1271,8 +1315,9 @@ mt7925_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	case IEEE80211_AMPDU_TX_STOP_CONT:
- 		mtxq->aggr = false;
- 		clear_bit(tid, &msta->deflink.wcid.ampdu_state);
--		mt7925_mcu_uni_tx_ba(dev, params, false);
--		ieee80211_stop_tx_ba_cb_irqsafe(vif, sta->addr, tid);
-+		ret = mt7925_mcu_uni_tx_ba(dev, params, false);
-+		if (!ret)
-+			ieee80211_stop_tx_ba_cb_irqsafe(vif, sta->addr, tid);
- 		break;
- 	}
- 	mt792x_mutex_release(dev);
-@@ -1293,12 +1338,12 @@ mt7925_mlo_pm_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
- 	if (mvif->mlo_pm_state != MT792x_MLO_CHANGED_PS)
- 		return;
- 
--	mt792x_mutex_acquire(dev);
- 	for_each_set_bit(i, &valid, IEEE80211_MLD_MAX_NUM_LINKS) {
- 		bss_conf = mt792x_vif_to_bss_conf(vif, i);
-+		if (!bss_conf)
-+			continue;
- 		mt7925_mcu_uni_bss_ps(dev, bss_conf);
- 	}
--	mt792x_mutex_release(dev);
- }
- 
- void mt7925_mlo_pm_work(struct work_struct *work)
-@@ -1307,9 +1352,11 @@ void mt7925_mlo_pm_work(struct work_struct *work)
- 					      mlo_pm_work.work);
- 	struct ieee80211_hw *hw = mt76_hw(dev);
- 
-+	mt792x_mutex_acquire(dev);
- 	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
- 					    mt7925_mlo_pm_iter, dev);
-+	mt792x_mutex_release(dev);
- }
- 
- static bool is_valid_alpha2(const char *alpha2)
-@@ -1645,6 +1692,8 @@ static void mt7925_ipv6_addr_change(struct ieee80211_hw *hw,
- 
- 	for_each_set_bit(i, &valid, IEEE80211_MLD_MAX_NUM_LINKS) {
- 		bss_conf = mt792x_vif_to_bss_conf(vif, i);
-+		if (!bss_conf)
-+			continue;
- 		__mt7925_ipv6_addr_change(hw, bss_conf, idev);
- 	}
- }
-@@ -1706,6 +1755,9 @@ mt7925_conf_tx(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		    [IEEE80211_AC_BK] = 1,
- 	};
- 
-+	if (!mconf)
-+		return -EINVAL;
-+
- 	/* firmware uses access class index */
- 	mconf->queue_params[mq_to_aci[queue]] = *params;
- 
-@@ -1876,6 +1928,8 @@ static void mt7925_vif_cfg_changed(struct ieee80211_hw *hw,
- 	if (changed & BSS_CHANGED_ARP_FILTER) {
- 		for_each_set_bit(i, &valid, IEEE80211_MLD_MAX_NUM_LINKS) {
- 			bss_conf = mt792x_vif_to_bss_conf(vif, i);
-+			if (!bss_conf)
-+				continue;
- 			mt7925_mcu_update_arp_filter(&dev->mt76, bss_conf);
- 		}
- 	}
-@@ -1891,6 +1945,8 @@ static void mt7925_vif_cfg_changed(struct ieee80211_hw *hw,
- 			} else if (mvif->mlo_pm_state == MT792x_MLO_CHANGED_PS) {
- 				for_each_set_bit(i, &valid, IEEE80211_MLD_MAX_NUM_LINKS) {
- 					bss_conf = mt792x_vif_to_bss_conf(vif, i);
-+					if (!bss_conf)
-+						continue;
- 					mt7925_mcu_uni_bss_ps(dev, bss_conf);
- 				}
- 			}
-@@ -1912,7 +1968,12 @@ static void mt7925_link_info_changed(struct ieee80211_hw *hw,
- 	struct ieee80211_bss_conf *link_conf;
- 
- 	mconf = mt792x_vif_to_link(mvif, info->link_id);
-+	if (!mconf)
-+		return;
-+
- 	link_conf = mt792x_vif_to_bss_conf(vif, mconf->link_id);
-+	if (!link_conf)
-+		return;
- 
- 	mt792x_mutex_acquire(dev);
- 
-@@ -2033,6 +2094,11 @@ mt7925_change_vif_links(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		mlink = mlinks[link_id];
- 		link_conf = mt792x_vif_to_bss_conf(vif, link_id);
- 
-+		if (!link_conf) {
-+			err = -EINVAL;
-+			goto free;
-+		}
-+
- 		rcu_assign_pointer(mvif->link_conf[link_id], mconf);
- 		rcu_assign_pointer(mvif->sta.link[link_id], mlink);
- 
-@@ -2113,9 +2179,14 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
- 
- 	if (ieee80211_vif_is_mld(vif)) {
- 		mconf = mt792x_vif_to_link(mvif, link_conf->link_id);
-+		if (!mconf) {
-+			mutex_unlock(&dev->mt76.mutex);
-+			return -EINVAL;
-+		}
-+
- 		pri_link_conf = mt792x_vif_to_bss_conf(vif, mvif->deflink_id);
- 
--		if (vif->type == NL80211_IFTYPE_STATION &&
-+		if (pri_link_conf && vif->type == NL80211_IFTYPE_STATION &&
- 		    mconf == &mvif->bss_conf)
- 			mt7925_mcu_add_bss_info(&dev->phy, NULL, pri_link_conf,
- 						NULL, true);
-@@ -2144,6 +2215,10 @@ static void mt7925_unassign_vif_chanctx(struct ieee80211_hw *hw,
- 
- 	if (ieee80211_vif_is_mld(vif)) {
- 		mconf = mt792x_vif_to_link(mvif, link_conf->link_id);
-+		if (!mconf) {
-+			mutex_unlock(&dev->mt76.mutex);
-+			return;
-+		}
- 
- 		if (vif->type == NL80211_IFTYPE_STATION &&
- 		    mconf == &mvif->bss_conf)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 8eda407e4135..cf38e36790e7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -1722,6 +1722,10 @@ mt7925_mcu_sta_phy_tlv(struct sk_buff *skb,
- 
- 	link_conf = mt792x_vif_to_bss_conf(vif, link_sta->link_id);
- 	mconf = mt792x_vif_to_link(mvif, link_sta->link_id);
-+
-+	if (!link_conf || !mconf)
-+		return;
-+
- 	chandef = mconf->mt76.ctx ? &mconf->mt76.ctx->def :
- 				    &link_conf->chanreq.oper;
- 
-@@ -1800,6 +1804,10 @@ mt7925_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb,
- 
- 	link_conf = mt792x_vif_to_bss_conf(vif, link_sta->link_id);
- 	mconf = mt792x_vif_to_link(mvif, link_sta->link_id);
-+
-+	if (!link_conf || !mconf)
-+		return;
-+
- 	chandef = mconf->mt76.ctx ? &mconf->mt76.ctx->def :
- 				    &link_conf->chanreq.oper;
- 	band = chandef->chan->band;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index 8eb1fe1082d1..b6c90c5f7e91 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -454,7 +454,9 @@ static int mt7925_pci_suspend(struct device *device)
- 	cancel_delayed_work_sync(&pm->ps_work);
- 	cancel_work_sync(&pm->wake_work);
- 
-+	mt792x_mutex_acquire(dev);
- 	mt7925_roc_abort_sync(dev);
-+	mt792x_mutex_release(dev);
- 
- 	err = mt792x_mcu_drv_pmctrl(dev);
- 	if (err < 0)
-@@ -581,10 +583,12 @@ static int _mt7925_pci_resume(struct device *device, bool restore)
- 	}
- 
- 	/* restore previous ds setting */
-+	mt792x_mutex_acquire(dev);
- 	if (!pm->ds_enable)
- 		mt7925_mcu_set_deep_sleep(dev, false);
- 
- 	mt7925_regd_update(dev);
-+	mt792x_mutex_release(dev);
- failed:
- 	pm->suspended = false;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-index 9cad572c34a3..0170a23b0529 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-@@ -95,6 +95,8 @@ void mt792x_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
- 				       IEEE80211_TX_CTRL_MLO_LINK);
- 		sta = (struct mt792x_sta *)control->sta->drv_priv;
- 		mlink = mt792x_sta_to_link(sta, link_id);
-+		if (!mlink)
-+			goto free_skb;
- 		wcid = &mlink->wcid;
- 	}
- 
-@@ -113,9 +115,12 @@ void mt792x_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
- 		link_id = wcid->link_id;
- 		rcu_read_lock();
- 		conf = rcu_dereference(vif->link_conf[link_id]);
--		memcpy(hdr->addr2, conf->addr, ETH_ALEN);
--
- 		link_sta = rcu_dereference(control->sta->link[link_id]);
-+		if (!conf || !link_sta) {
-+			rcu_read_unlock();
-+			goto free_skb;
-+		}
-+		memcpy(hdr->addr2, conf->addr, ETH_ALEN);
- 		memcpy(hdr->addr1, link_sta->addr, ETH_ALEN);
- 
- 		if (vif->type == NL80211_IFTYPE_STATION)
-@@ -136,6 +141,10 @@ void mt792x_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
- 	}
- 
- 	mt76_connac_pm_queue_skb(hw, &dev->pm, wcid, skb);
-+	return;
-+
-+free_skb:
-+	ieee80211_free_txskb(hw, skb);
- }
- EXPORT_SYMBOL_GPL(mt792x_tx);
- 
+ 				if (WARN_ON(mac->ppe_idx >= eth->soc->ppe_num))
+-- 
+2.51.0
+
 
