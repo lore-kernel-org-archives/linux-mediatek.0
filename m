@@ -4,86 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5716FC6182
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Jan 2026 19:12:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 312BEFC618A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Jan 2026 19:27:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T925OkrZcUDgPFL2mYysHSWwXId47m50zcvgTJvCH2c=; b=gX09yssQC2JLXJWhLSrLpSjgpT
-	fnTTquPkgjHHq7I/Z8jtdTiPfuCxkO5WwseWE2TasqG225aUyv7X6kBhjEVGVJs0WXbloEJKMHcEv
-	SPOaW2lekDHMmE9WOIb9IygcIMGiII3jZO8bYghlzYiByqejJpHdrSLy+nI61AbXTTPdx3YmxqGcZ
-	ejnLJ6elVeeoI1nha1fHDOXw84Fx9msb9LnYHchfhsmC/wGxTOndxnTVEtVxjDGk2kEnL3mZDTn/W
-	TPNTyUMj6i+Fkja1Xl64Ik8HXn5rW0breChV6R5PDwTJBWgr7qlwTmyegRXB4qrMtBFTpMjIcjjAI
-	Jb7ES6rQ==;
+	bh=2XP6qw4a7+uuVk2H+Mf5Ib+nVhrZP+yHz8tm4VwbuXM=; b=FcAg5bNuXEcTYhj9T7dKLZf5M3
+	0t4kO54MwM34QVIM3CZcTJRk1jXyjE1OepYFiIwNWpstwk+ti+rgyXUtJ4SHm8CaDducGtDXKuD6f
+	OqX4CMRNXM5Oa+epld4jchTX3qTbEC1DmFbS4p6M6QnhmSxyavHqChAlgqYTKwL8Xtt55Km9g4FSW
+	iQWLQg0f3Uk65jyytWqgNZJ+pQ3yW6AzRekuKYjpgSFaImDUkT5ygd/4VChwtEF0zY1OyOm0YPhJ/
+	iUxvnijZZFB49Zi0HlLCffnRjBYLXIrQPQ7jcQkRv+leZUh/ktZZbvY4No1fhxpZ7vDtv7/+bPszk
+	ZDShV63g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vc73M-00000009iDg-2tKR;
-	Sat, 03 Jan 2026 19:12:44 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vc7Hc-00000009ir7-2uLP;
+	Sat, 03 Jan 2026 19:27:28 +0000
+Received: from mout-p-101.mailbox.org ([2001:67c:2050:0:465::101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vc73K-00000009iCx-0Jv7
-	for linux-mediatek@lists.infradead.org;
-	Sat, 03 Jan 2026 19:12:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A3B0443BF1
-	for <linux-mediatek@lists.infradead.org>; Sat,  3 Jan 2026 19:12:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6B267C2BC87
-	for <linux-mediatek@lists.infradead.org>; Sat,  3 Jan 2026 19:12:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767467560;
-	bh=T925OkrZcUDgPFL2mYysHSWwXId47m50zcvgTJvCH2c=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=XwkdHVZV3gQnw/Squqt0WQf2kgDmWCB3uLhB4vNPfLhUYflWMvg0DlOyvLv6lOWkp
-	 GxueGN/DejHjmBa9Q90itz6LELagfJKXs/snV9U7yJC+iCD9CyzzFUj6qTUop4scjD
-	 pqQ7yjuP3byWkKSdyd0DCyYJ4TLXzhOM0IP5wXrvb8nbbq5WDjvxt5Xo9fPFPOBSOs
-	 U85EwkPdKHWSQWmnpVHVj1cmGS9TlzUxF0c0zKJuYHRGeWMrmYAUro96BVlbfXlJaH
-	 2lzbhsxLlt/0vTNe6dCS1vYhYKKknqgjcV4eVykEomW57WOKnMJ6d0FKBOmXku8BKA
-	 JIQ6TfoXrZcOA==
-Received: by mail-yw1-f179.google.com with SMTP id 00721157ae682-78c66bdf675so112660227b3.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 03 Jan 2026 11:12:40 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCUufXL9YAQO4VRV6hlnMP8SARXYEGz4Urh8AjShvrCmlVieHshdh6zT9RjSrqBL5KoJbpfDFaOkHpRir1oREg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxHWaml8KekSOHBtFS1RKCvc/sdV/7KIkZA/zKTh0dnEkbQdKo1
-	w6Xr3vGlj00XaDJsKsAawZnc2QPDavXDLopH/hsxL7+jmmgp/cdXq+pAr8LOjeDko5tpK+ZyICy
-	9xJirdh9hElepSIxa7zh8+EZswB4dNi0=
-X-Google-Smtp-Source: AGHT+IGShwlfB3khNYsriA05VuQGUjyDnWfdgI+OFTb0UW6gPumdUc17cvVkNIGVynpsd6//h1UTyWv7gZLMzA3VXbk=
-X-Received: by 2002:a53:bf8e:0:b0:643:833:bf3 with SMTP id 956f58d0204a3-6466a8598f6mr27408373d50.42.1767467559732;
- Sat, 03 Jan 2026 11:12:39 -0800 (PST)
+	id 1vc7HZ-00000009iq8-0aWz;
+	Sat, 03 Jan 2026 19:27:26 +0000
+Received: from smtp1.mailbox.org (smtp1.mailbox.org [IPv6:2001:67c:2050:b231:465::1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mout-p-101.mailbox.org (Postfix) with ESMTPS id 4dk9Yf1440z9sv3;
+	Sat,  3 Jan 2026 20:27:18 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
+	t=1767468438;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=2XP6qw4a7+uuVk2H+Mf5Ib+nVhrZP+yHz8tm4VwbuXM=;
+	b=oME+GmLIvYIV4xX9ApUXWFvxXXtrMqR7OJa0qexmleEQFn9kZhFFxDhsEh7Fx9GwC4mk3f
+	97+VR8fXV3aEfOZxqQ0iCe8dJI3Od1jdGsiEiPEj3FVGB3OT9tmHm113A67f9PJ8xajGTQ
+	lQVOQCDJ+hMdmuhi0eTV/fyUArky7L5OcBhcfdwQQPZZHF2u5/Qd0SMOpduRmEi/YOnHTf
+	Cnvp929qbvbP5ySEG/a8aGcxjPU7ZyaLV54KQHsZwkFevkfqEd26qedSSPRrjuGgXgZV6q
+	BmSmvxkR3mtQlVCjuGcl/u5rbilyBzzF2gPuGC7YsEGGa4QbJe7I6Tzp8TzXcg==
+Authentication-Results: outgoing_mbo_mout;
+	dkim=pass header.d=mailbox.org header.s=mail20150812 header.b=T1NWBlSg;
+	spf=pass (outgoing_mbo_mout: domain of marek.vasut@mailbox.org designates 2001:67c:2050:b231:465::1 as permitted sender) smtp.mailfrom=marek.vasut@mailbox.org
+Message-ID: <e92e22a5-5cb3-442d-9a91-8d66a247ba9a@mailbox.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
+	t=1767468436;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=2XP6qw4a7+uuVk2H+Mf5Ib+nVhrZP+yHz8tm4VwbuXM=;
+	b=T1NWBlSguX37B1M/jTmqq65T34vovB6Jjht0+e0NlD6hiMLfFGrjvuEOIdlLBWPbg8phtm
+	okA3CYE+z4oUi8p4B/j1+ZlEAXxJlO7sThHBfzM6nwyLW0As+MoPzF12Vx23aymIUCRank
+	Mb0517UUXQQ1vnMtdyYjbGsoq7M43nTMW3XRLQjPhifl/fOR+MXJ/f6N8qwhqwdsBK1Z5B
+	BY7IbVip7Nsy7tluxaJh2juldnyd9sL1JKLvlv2mLROOKQyOZ6DsOmejYYm7a6acwxW1u8
+	AbASBJYEa1tAO3y+ZXYXlDLs1nmgN48hFSrWbX2dptWPgZTf1Y/HySspRHY1pQ==
+Date: Sat, 3 Jan 2026 20:27:06 +0100
 MIME-Version: 1.0
-References: <20251205-drm-seq-fix-v1-0-fda68fa1b3de@ideasonboard.com>
- <3b13c7a2-f7e6-49fd-b3bb-3e0a1fe9acf3@ideasonboard.com> <CAD++jLk8-0Rkh16T+R1dh6=e_f9U1i=AKOk1Y8dLGV4bxzRtFg@mail.gmail.com>
- <817b2358-0920-4b7a-abb1-133103d0f9fe@ideasonboard.com> <CAD++jLm_0xweD4tRJ8ZfwmcOe2BBGCsUuL1UWUiNM+Gpbq3Zuw@mail.gmail.com>
- <6be8aaf6-b01d-4444-9850-967f8e316896@ideasonboard.com>
-In-Reply-To: <6be8aaf6-b01d-4444-9850-967f8e316896@ideasonboard.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Sat, 3 Jan 2026 20:12:28 +0100
-X-Gmail-Original-Message-ID: <CAD++jLkWH8xxT+bTXseuJv+pXeEGy7qqE7Z1Mid2CwRg8O5D7A@mail.gmail.com>
-X-Gm-Features: AQt7F2oqzhLbhnApuLunbol1WMXqKAfZVNbTglNtWTgf1-h4HM11uw_w8WHAIqs
-Message-ID: <CAD++jLkWH8xxT+bTXseuJv+pXeEGy7qqE7Z1Mid2CwRg8O5D7A@mail.gmail.com>
 Subject: Re: [PATCH 0/4] drm: Revert and fix enable/disable sequence
-To: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jyri Sarha <jyri.sarha@iki.fi>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	Marek Szyprowski <m.szyprowski@samsung.com>, 
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
-	Aradhya Bhatia <aradhya.bhatia@linux.dev>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
-	Vicente Bergas <vicencb@gmail.com>, Marek Vasut <marek.vasut+renesas@mailbox.org>, 
-	stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: Linus Walleij <linusw@kernel.org>,
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Dmitry Baryshkov <lumag@kernel.org>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jyri Sarha <jyri.sarha@iki.fi>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ Aradhya Bhatia <aradhya.bhatia@linux.dev>,
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>, Vicente Bergas
+ <vicencb@gmail.com>, Marek Vasut <marek.vasut+renesas@mailbox.org>,
+ stable@vger.kernel.org
+References: <20251205-drm-seq-fix-v1-0-fda68fa1b3de@ideasonboard.com>
+ <3b13c7a2-f7e6-49fd-b3bb-3e0a1fe9acf3@ideasonboard.com>
+ <CAD++jLk8-0Rkh16T+R1dh6=e_f9U1i=AKOk1Y8dLGV4bxzRtFg@mail.gmail.com>
+ <817b2358-0920-4b7a-abb1-133103d0f9fe@ideasonboard.com>
+ <CAD++jLm_0xweD4tRJ8ZfwmcOe2BBGCsUuL1UWUiNM+Gpbq3Zuw@mail.gmail.com>
+ <6be8aaf6-b01d-4444-9850-967f8e316896@ideasonboard.com>
+ <CAD++jLkWH8xxT+bTXseuJv+pXeEGy7qqE7Z1Mid2CwRg8O5D7A@mail.gmail.com>
+Content-Language: en-US
+From: Marek Vasut <marek.vasut@mailbox.org>
+In-Reply-To: <CAD++jLkWH8xxT+bTXseuJv+pXeEGy7qqE7Z1Mid2CwRg8O5D7A@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-MBO-RS-META: 77nc8ht34szpzk9sqmo8ndpt41mmhnkh
+X-MBO-RS-ID: 65adf9a1f053822655f
+X-Rspamd-Queue-Id: 4dk9Yf1440z9sv3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260103_111242_195672_D5A79A39 
-X-CRM114-Status: GOOD (  14.97  )
+X-CRM114-CacheID: sfid-20260103_112725_373929_85B942D3 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,28 +117,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 23, 2025 at 12:48=E2=80=AFPM Tomi Valkeinen
-<tomi.valkeinen@ideasonboard.com> wrote:
-> On 23/12/2025 01:18, Linus Walleij wrote:
-> > On Sun, Dec 14, 2025 at 1:42=E2=80=AFPM Tomi Valkeinen
-> > <tomi.valkeinen@ideasonboard.com> wrote:
-> >
-> >>>> Should we merge this series as a fix for 6.18 rcs?
-> >>>
-> >>> Too late now, so let's merge it as a fix for v6.19 rcs!
-> >>
-> >> Ah, right. Indeed, I meant v6.19 rcs.
-> >
-> > Are you applying it or should I?
-> > Not sure if you want some special timing, like outside of
-> > holidays.
->
-> Oh. No, I'm not a DRM maintainer, so I was waiting for someone to merge
-> this. From my point of view it's ready for merging.
-
-Aha OK, I applied and pushed it now. I added the same Fixes: tag as on
-patch 1/4 to all 4 patches in the process.
-
-Yours,
-Linus Walleij
+On 1/3/26 8:12 PM, Linus Walleij wrote:
+> On Tue, Dec 23, 2025 at 12:48 PM Tomi Valkeinen
+> <tomi.valkeinen@ideasonboard.com> wrote:
+>> On 23/12/2025 01:18, Linus Walleij wrote:
+>>> On Sun, Dec 14, 2025 at 1:42 PM Tomi Valkeinen
+>>> <tomi.valkeinen@ideasonboard.com> wrote:
+>>>
+>>>>>> Should we merge this series as a fix for 6.18 rcs?
+>>>>>
+>>>>> Too late now, so let's merge it as a fix for v6.19 rcs!
+>>>>
+>>>> Ah, right. Indeed, I meant v6.19 rcs.
+>>>
+>>> Are you applying it or should I?
+>>> Not sure if you want some special timing, like outside of
+>>> holidays.
+>>
+>> Oh. No, I'm not a DRM maintainer, so I was waiting for someone to merge
+>> this. From my point of view it's ready for merging.
+> 
+> Aha OK, I applied and pushed it now. I added the same Fixes: tag as on
+> patch 1/4 to all 4 patches in the process.
+Thank you !
 
