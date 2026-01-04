@@ -4,171 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D276FC6182
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Jan 2026 21:05:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15C07C2A06C
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jan 2026 08:19:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+Eg89aQ9YDc9eStp3LDIEe/pefNUfKptlKojX+qfGOE=; b=qYIf1Le2TAejBYtnpYREzxW33g
-	jYyj6aG86N7dUB50IX6PXbkP/LGs6dh7LE93UQRXlxnrwjTxDnYSnF1GEZ/OvEGahzaO/e72Zm7xc
-	AcNSbaxkjuzc8FeGzFyjb71uex2dNkTLIGpNcvg1B/yvkvL0O/W2SBoKbWiyAL70uVOKFgHyYDoPL
-	uDundyUqTizWOdsnqlDBuWGbDNRoW5Ca3H31ywZNPhK44/I8M0+6tlybujXa1NmSDXwfldxBBka+8
-	45yk1mUWukuyCx2MDt4dTR/kwRIInLK9HJVkO9QYMxg6AIyF06s6SzNN/gJp7L36GA1SoxJp3qHFP
-	djSYDIBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VNhnPWPphu+I4t9H5XuMrO/46QkiDHIIBXPeXwdimwk=; b=ylvhDO3ZxLXcFW+X4Hr6mfgKjS
+	1piJMrPjeZ2laOGrAWyD9vqTuv5z9vFZsiWGnR5mNa5BsOqZEUpbtbr49RwSbIGX2qSxiJ6La67eF
+	mw3XokHXGu6qHqaoHpt66DY5AS30/daTEtJT7GYDrKxrVVoveb2qM79J1oifNbcNbzGkKWf6YojrC
+	lzSVBDXNFhTrFABFxl/kpaUhxyaVFI6lG6JUeQEZtOnZm+PhnYaNAg8koXxmn98tgQyKkjkQim/Y/
+	hArgaTcQY8ZFvzw013033+zEzQVPp+BICfwHHflOzoxjXwuiY23RcK7DUYQvaMI/L4mjU/m4rMeK5
+	fF8wE3qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vc8og-00000009p7M-3A8V;
-	Sat, 03 Jan 2026 21:05:42 +0000
-Received: from mail-westeuropeazon11011036.outbound.protection.outlook.com ([52.101.70.36] helo=AS8PR04CU009.outbound.protection.outlook.com)
+	id 1vcJL1-0000000A6zx-0GDO;
+	Sun, 04 Jan 2026 08:19:47 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vc8oW-00000009oIP-1c6U;
-	Sat, 03 Jan 2026 21:05:36 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=yQ8S0UY6AJoeL1PcvC95nn+IViLdjySLux7sGnhICYRR/LtwTAVYXJG8d68N5VzCPhOHkryZJ5T35PNrF7HYTB4SZT/xTVmN89f/lFIPv57/D/qtxRWFpzLgkDb9yqskxtq/3n7NKhrsOQERc4CISV2D/j9jNEcjXwSsRjm4e9Unm+ul8s3ARYbYbV1gv5eYU+nM0u3fahdM9nzGTIxqTwNVhqDFedYngsqRmYZk215pS6PsDjcWgRwfzvyhE6h2HJnpKKtagTgqjGFtBv5Lex1G5mOHyQerC2je2IycMUzFXS0IuBv9nHm34S2QweQsxzLLyRxpg7LWbgpxIelumw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+Eg89aQ9YDc9eStp3LDIEe/pefNUfKptlKojX+qfGOE=;
- b=bafORXPYgD8E3IbT0xs2Bvd95ZrL6NqVfIXCTKbOefWUI7gEdlmNh+D0PXVlgdC2y1qQew8ScL4XQ1j6OPbEREKjn39pvUMjX52W2Ejm4wVUkCPQytTooWIZgb68xDE6QVu1/SwWgLivjbXN3AA7gq+7xdtgs27nRTXDi0dJIP2bdK8fq41KPH0zNJ1B8KzudfrscA7FK6Ablmo7ExxioL0vpDnZAk/qzWANppMtMuiMqRYAQ+ealbh7lH9gUqbsWcJGFBGGxf3fAExTWe8wnKeqv/NNpJQTxvhabKCn8qd0MP0cKqaRmS40OAUsV2EPMA3QTBn9klNDmWu5Roy/bQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+Eg89aQ9YDc9eStp3LDIEe/pefNUfKptlKojX+qfGOE=;
- b=IiXQxnAVLvCUDG/hBOKgyVr83sVJ0GojEzC1Y8F448BtSfiyjo2Z8gkemG9FoWZIhyJ9gAAKulKY9pqEYLze3qGuMWEG+qcgFDfeIr6pZ84lnTgHb145FenRKcC1yaFbmirsUr3cShg2I6wlcBv+J+A5t4kNQgSC0tmzYdOt8Wpfwr50ndFq5h3hXvnh//O9XEK+H64ppWWWfqxbeTk6pQrkfqpOqV+6YPLRZYwoMmCeq5nLiN3dvAn6Wphr60TK2bFMhRt/nzSdGrA8xrt/ePxMqqoI0SL49v+eOzLF70hKEs+yluGuS9gPBViUzdOfCiIqZr7iWhh8YfyzfahRKw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from DU2PR04MB8584.eurprd04.prod.outlook.com (2603:10a6:10:2db::24)
- by AS8PR04MB8088.eurprd04.prod.outlook.com (2603:10a6:20b:3f7::24) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9478.4; Sat, 3 Jan
- 2026 21:05:21 +0000
-Received: from DU2PR04MB8584.eurprd04.prod.outlook.com
- ([fe80::3f9d:4a01:f53c:952d]) by DU2PR04MB8584.eurprd04.prod.outlook.com
- ([fe80::3f9d:4a01:f53c:952d%3]) with mapi id 15.20.9456.013; Sat, 3 Jan 2026
- 21:05:21 +0000
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-phy@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Daniel Golle <daniel@makrotopia.org>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	=?UTF-8?q?Bj=C3=B8rn=20Mork?= <bjorn@mork.no>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Eric Woudstra <ericwouds@gmail.com>,
-	=?UTF-8?q?Marek=20Beh=C3=BAn?= <kabel@kernel.org>,
-	Lee Jones <lee@kernel.org>,
-	Patrice Chotard <patrice.chotard@foss.st.com>
-Subject: [PATCH v2 net-next 10/10] net: pcs: pcs-mtk-lynxi: deprecate "mediatek,pnswap"
-Date: Sat,  3 Jan 2026 23:04:03 +0200
-Message-Id: <20260103210403.438687-11-vladimir.oltean@nxp.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260103210403.438687-1-vladimir.oltean@nxp.com>
-References: <20260103210403.438687-1-vladimir.oltean@nxp.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: AS4P195CA0027.EURP195.PROD.OUTLOOK.COM
- (2603:10a6:20b:5d6::16) To DU2PR04MB8584.eurprd04.prod.outlook.com
- (2603:10a6:10:2db::24)
+	id 1vcJKy-0000000A6zW-1pBh
+	for linux-mediatek@lists.infradead.org;
+	Sun, 04 Jan 2026 08:19:45 +0000
+Received: by mail-wr1-x444.google.com with SMTP id ffacd0b85a97d-42b3c5defb2so7768206f8f.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 04 Jan 2026 00:19:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1767514782; x=1768119582; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=VNhnPWPphu+I4t9H5XuMrO/46QkiDHIIBXPeXwdimwk=;
+        b=OVPaC8SgeXgbDe0YJLh63U7zberVzIfMhBBCu3SSWKCNoa31uRCM6uiftTgAbgHFxu
+         vf8Pijhhu1SdvVsnhBb5oP0BCuX6TAtMjkm9QNSa1GVN33sF/dkIaNsxcjjVbXqF+bcS
+         ORyrmrbGMtU/rfZ5kDvtvPNqPOM399gEvji34iPlUxmxXpz2AyfCt8m+I3Q4viKwXku5
+         1UvoAR5vsfQKyU/y04tw8wQIBmnh1iu3u+0MwcQPcHmrmwgZ+9igNtF9LO/g7ZbJ/3Ts
+         A4/4t0yNICgfg+i6BV0GjMJFaorPGR2HByYVBwHqBp6pVy/2IzmxDQ7SdpQ0U1aeyeD9
+         NTAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1767514782; x=1768119582;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=VNhnPWPphu+I4t9H5XuMrO/46QkiDHIIBXPeXwdimwk=;
+        b=Nbe9BP3RX8kobabM5iCeHaPsDGayM0yA6/q2K4YvqI9saQQB89h7tgJ40eBa6wgo3n
+         /2VKm7x6llkKK27jEr5wUNNEdFmfn/lSS5M1sV/z+BMnegVnSrjfkSyNm+LVE7hMupM6
+         cS2ZnTpjdPw5Ew5uDsf8YvIRs9+OWU+eCQ94Yr3hQV1rj3UQQrDqzDuYqap6TA2S5pNh
+         2UNfDQr+XM+gnJRHYNZZpcM2TDgKN469CeMFdA0vOtyGeNsWBPEM0A8Sfp1TyZI0yDiJ
+         PHbb8/MaWsaKXxh1k6NYRgFQrF9dmKl1jJVNmPa17LshiSspHtDvm/ML9c1Xsfjc3GXK
+         OChw==
+X-Forwarded-Encrypted: i=1; AJvYcCVFTpxyMbt04RyZ7M7DFFO9EyQ3BYVviOSuYDKztZ9cuRievRSw4MfnGxCZ30uJ6WXrEfdhqIWcxU5VdC8Deg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw/UtNpVSqUjwv/rzXCOIeXePmHZcgvvpjkP9w8w1Xw2JJpS6wI
+	UM7R9YwKXksOgRKfG6yOyx8eC7DraQw1qpTTF6UDrF6ijjpT8H1cMG6Y
+X-Gm-Gg: AY/fxX5WN9pw5uNuXurVDt70tgXWc+XgaOq6Kju3nYsYuvMCBPT1DIWYQOD7cDj8vBv
+	VqfStKooYSfuZVcuAlBeHc7LtjmMacHbGCLM8EUlbHW9xqF1XZMZnn2Ies6eOQZIDomaqfQUvT/
+	nHKIyFyS8wujZ64D6CEEZw4nP1vpM0L9xkcPJXDYZDv2pngSCK0ck2aTa/PLjjZUJHscJYVdZKG
+	7a4C2Rjm3W4iRkWiOWeFp/cfdHDRjdWIQW7mpvajQZWBGChJ42PWXZWhJQaJD6cWETDc4X0O07N
+	jWuUNT5R2Kef9it+BeZx+J98YV66uc3LFjhiwkP4dRTz8PoipVK318AmQFiXuFnWhLUVHOZWJxG
+	yJgelgjMWd4nKZgstnVgvTW3D75SXGV6BmJ7gyB0G7HhHRnVGRxGyqPSBXlZpS1HFnGwQT7zwrY
+	6JJehaW3BhMiDkP6w438rbZXcsNVKgWod1aB8eEH5vwC7Yb0eiakp0l3F+mafZGIO2aTi9HA==
+X-Google-Smtp-Source: AGHT+IGVE35w/mIgbVKF7jo1kXk2fItEl+1AN6nAuaTpOUbgrAhK9/MHCuZ5Z8ur0F6HzR9C5wPA4w==
+X-Received: by 2002:a05:6000:2907:b0:432:8504:f67a with SMTP id ffacd0b85a97d-4328504f681mr35577584f8f.20.1767514781753;
+        Sun, 04 Jan 2026 00:19:41 -0800 (PST)
+Received: from fedora.fritz.box (dynamic-adsl-84-220-246-20.clienti.tiscali.it. [84.220.246.20])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4324ea2278dsm95843304f8f.18.2026.01.04.00.19.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 04 Jan 2026 00:19:41 -0800 (PST)
+From: moosager90 <moosager90@gmail.com>
+To: Sean Wang <sean.wang@kernel.org>
+Cc: linux-wireless@vger.kernel.org,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: mt7921e: repeated driver own failures cause hanging
+Date: Sun, 04 Jan 2026 09:19:39 +0100
+Message-ID: <2715401.vYhyI6sBWr@fedora.fritz.box>
+In-Reply-To: <CAGp9Lzp8NjVwkn2atNqT9x9-QTkWMLxK+Ntkb=3Z1fWcM6N=7A@mail.gmail.com>
+References: <4870974.vXUDI8C0e8@fedora.fritz.box>
+ <CAGp9Lzp8NjVwkn2atNqT9x9-QTkWMLxK+Ntkb=3Z1fWcM6N=7A@mail.gmail.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU2PR04MB8584:EE_|AS8PR04MB8088:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3e3f67d3-5518-455b-577e-08de4b0bcd24
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|19092799006|7416014|52116014|376014|1800799024|366016|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?VSkvHjXzV7o2JOAEpIGg70AqdYSVk5fMT6zrRDKpAuXVGGUA0mtNwS1LPGAe?=
- =?us-ascii?Q?V5fbulgwjb71wZL0eGpBj9gmr1Uxf4FF90Uf2h5CAE834+D66aSeXVxIyYHN?=
- =?us-ascii?Q?RgkywFtWmJQrVDgPQpD4FVXJgJAdaucL7N0Tv4TdZyugVtVQOg678Y7P0P+s?=
- =?us-ascii?Q?2hKAwlWFETokfVoP0TA17ejgtJhMTzEiIbPFCsnCFVzFVObbKMNN4P2jKr63?=
- =?us-ascii?Q?asHZSNq34MRV5WxyFFraqRta2rIAaOVG4x6fvfYnrZTok1Ky8jbGIJmvmrd/?=
- =?us-ascii?Q?OCqaYV7CKug7CeyBvzLOie+MdMJwVUwoqXQ2zD7akGljj4OQwZFsaURiLneD?=
- =?us-ascii?Q?NdGSPv8HR1Yk6VWh1hdPiuY5NgFe7DBs397QmwziWM+MJPAjBi333qShDGlb?=
- =?us-ascii?Q?b2kOP0hVOxXwgKKJ3dIYLS9u9pykOQWHmGVxITotGgh3tZxOk7ePOhuDN0me?=
- =?us-ascii?Q?3Csk4ePX9V8y+QpeqTLMKQSCtXmYrQTVJAtFScISja0WAqiQs00YhTOiUOrR?=
- =?us-ascii?Q?bEuQQswUek6KlmC9NI/ppV8/JfaSQuHNksQ5L9CAJAVvrgxtoX5tkUniBi6g?=
- =?us-ascii?Q?H2/XiDeqh6Mb88BTrn4nEcZZ7u0DnzgoyMKiQvpJ2yA/YE5ZhVVf5gltDU9e?=
- =?us-ascii?Q?AjlXLGLoVRWnFm8jTTWje/bsS14S63N1b5L5JcfotHAs2/Gnf5qkeO1CutLx?=
- =?us-ascii?Q?4cR6KY874U24Gf11jUfDKJMqwlUyRkxx3Rz5AIcEdOdscwD+iWqXV1nXq9W/?=
- =?us-ascii?Q?iUDmKUfzLRqRjOOFaaqfto4V4d5rBYxI04H4udmnBG0GCfd43MBBrow6s/2L?=
- =?us-ascii?Q?nOkNER09kNr0rKaq5GTc4ONhLxJz9RuDTX9iyMkx65TI5fxrnmHOMN30/6l6?=
- =?us-ascii?Q?c5IqF9LM7uovTUPLmHmiijV4UDmCmBFh1sgfDwzkgkFOrfkGMDhGcD7x0yxW?=
- =?us-ascii?Q?lIcn/RmYcZUnIF3iVPs66poxCKzcn5ND+yufBMjKnAbnktxYP2/aWgqH2ftg?=
- =?us-ascii?Q?8F83w53dahto6Qvi5hEjIDRbdGN/rGFQE+SxoP6RHP/p1ugzp5lP59Iv7XfQ?=
- =?us-ascii?Q?3wanxyHxDS8F6SgY9NCV05RhVcvxVcykYYsEw5hwdWZCSqMH8dSoDoTQORlg?=
- =?us-ascii?Q?27MZ4Qu4PRqcuBduo2jLYBIQTWGd8zDov1BHjHcOBDIAzhPLabkPzRf1XpSs?=
- =?us-ascii?Q?OSbsjLT2kND/AlIuo2sjaQL8pIoF03IwSi1Y89hx7vYLEro/lJSqSX0Wh8xd?=
- =?us-ascii?Q?tgjaTIKtCgr3gjmPhUmwrqBVe/HpKgE+x4SFRqtG3XW3BleqbDx7f0kvV4eE?=
- =?us-ascii?Q?03nFVWaP3M0qCcAhaYKYWQ+95P4+pV3MU53fFOVGAUnX73UzrnZKbIQMx881?=
- =?us-ascii?Q?cmqmQ2ffK0InPp2X+M+kyECnLy8kUvnAhpXW4diycVL64JrbBEqfRn2bZRSh?=
- =?us-ascii?Q?QPleEN265nx54dSiS6tBWfhZZEpORmFwGfG3gTiN/1l40V+dUV2jmwkYbjT+?=
- =?us-ascii?Q?MMRumKV8hJzdwAak1nbaJ1mtDqbaLa6nmwkI?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR04MB8584.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(19092799006)(7416014)(52116014)(376014)(1800799024)(366016)(38350700014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?lf+o/qfk0EWFeHX0AfhD72XvAl5HJxTJmHwWNIrNj7zqEonF83Ph4KVbJ3Ab?=
- =?us-ascii?Q?frlVo9OEfSWbGPm/MMZWMvn+qqk5szzJu6361Yfuvd7nYImMoS1GDaClHI9w?=
- =?us-ascii?Q?jYbrt7muud7jJrjeu1QE1lmELgKdqwOD7qWMq2bdH0dx5+5F6snCMWqAbsc4?=
- =?us-ascii?Q?Oed2pq/Ags298o3lA7KVz8u01YqKhv+rbJUsqif/jUd5i/AOylLCwSTEhsmT?=
- =?us-ascii?Q?63lNZJwXYBBR5+7OsoZSKx7x7qhTxJMPgtFKwY0EoSqNZ5Tqg1FgutkHhm+v?=
- =?us-ascii?Q?i23qyzz2un1Uj0i0Rp1gvU95uwRxJb8cGn3oGTriC8CuxTHFhB+o3EHqBaFZ?=
- =?us-ascii?Q?iRTYEDmHk/+BdT7TgE4HScb3/UlxiVJrGNKotJAxwuyYXHvrsndfpj1LPMj8?=
- =?us-ascii?Q?AjnZ7XinddpQ7mUdxDf5FVrTyFebAfSTsQKT0Ii1eHXh/aSx3TWwAqjj1jSK?=
- =?us-ascii?Q?P7z9zZiYl0Q1m+RHZ1TzAAbF3g7kLRZwYnzBntZZ5U0nFayV1mKz8c14MkfW?=
- =?us-ascii?Q?cqcGLPnTwyVtr/66U5G4yr364FQBmQP6OZQkXfu3yJqyOjGSXa+Gaf3A22ZA?=
- =?us-ascii?Q?UeWbpzTpa+mDP72Aku6xvaHfdXwO2iBujuCxTPhYkI/+YFVDGkdgBBTDETp7?=
- =?us-ascii?Q?eqlFlYiFL2v/wTg8SMESbrd4KcLg/V2Q/cdYQ2RPSFd0Xinq6jOPXV8WPVoE?=
- =?us-ascii?Q?Jo9HdgKlsqYVIy+XV09eDo2zIWigbiz3n9E0pGKsU6oclnauOHPWIAoCXuf2?=
- =?us-ascii?Q?6mwvt4bM6VSQvZQ8bZoKujYWp3f8MtNoxOK2rdM9YjwcfpO3xRG5YL+U9dXi?=
- =?us-ascii?Q?cShbLMypd7G9+z+Gi3BF9FhyMjRJPdg/DeIoKIBsZUe3XXT3FF6b93/aKukG?=
- =?us-ascii?Q?pJDpDYfmWeN0b/enV05QU/RSi9CgH2EczexzAlUagOPJgx73CfPv8OZ+33XA?=
- =?us-ascii?Q?zoEvB3lb4f2nqwXjUQt3j+39pKcKBFrt7dGT3+Dz5zGq1Hd9dS3t2TWxtQcS?=
- =?us-ascii?Q?5DpyiBUZqYuFMW/pR9WawLoFU1b9Vfr2AxaKu1670+sadh8SAi9+unBpQe9D?=
- =?us-ascii?Q?PP96E6cQGUCAg09cveVunsJd5I84N0F0lDQuYaMwfxZYw/t0UyKyXnrrsG4u?=
- =?us-ascii?Q?GLdKxUu78S8emv05kWyYKJuem71qCpmY+fq3qsVHSIlqMN1w33PhSrovAQ5S?=
- =?us-ascii?Q?sVBkPmpGvTXNL3n7Chryo6RXzASW8bQUsmo07O7QqfvTEZFceOsj3kGnUkIc?=
- =?us-ascii?Q?1YnXJJMcr2aahNoA1VaIAKkSZaccbTwQMNyoMmwUEtvMt87KDqz5x+pbrh+Q?=
- =?us-ascii?Q?n9S8d79ZopGBo/gT+XhPUfq6aax7nriuISpEFRUp8GGHuAVw/P5COWCBoEzb?=
- =?us-ascii?Q?y0rSmxFxBqwsRhryEN0IO7RbOWt3RqyRDVyTTTshAbi4D/CvzulqqSVIBhZb?=
- =?us-ascii?Q?2+Tp5pauoZn37KfM7eXZlaID8iSvuMIlwzoHYvC7tA0nEtTxWbdECQ/pKUDx?=
- =?us-ascii?Q?xlY7eNOgcRTAXSmHF5nP108tx4x9cIQ0pbgdIWsQ9y1xQMlNZ8MItAGodQ4H?=
- =?us-ascii?Q?BZ/qgfS9rsnytNSLZ4bpD+rCXe+iUnBG+Q1iEIwin75CppiPf2RVx2SD6W+0?=
- =?us-ascii?Q?8HNpy/j4sMYs5RVvTJWEkj86rwoTGndK8rqeJdl2+jmxfB57B/PJJR7vmD2w?=
- =?us-ascii?Q?Ls7H2p6lNLUNjitpQw/i0+Fig7sDTUV3C4r/I8bmaEgInaYxMMjcMuE3dy9l?=
- =?us-ascii?Q?j8YuYJOrKAuL9IcH4RLGw/ouyMKOkyM=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3e3f67d3-5518-455b-577e-08de4b0bcd24
-X-MS-Exchange-CrossTenant-AuthSource: DU2PR04MB8584.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Jan 2026 21:05:21.0347
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: tuRHOYFqpsbTVsTQgen5cJjRRXahlEf4RFqC1rlBLqNGsX4UPFw3vHG3++yMRzuymN0Vul3obuEPFOS3rMxdZg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8088
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260103_130532_473652_BC5DDEEC 
-X-CRM114-Status: GOOD (  17.97  )
+X-CRM114-CacheID: sfid-20260104_001944_519023_8E6F4395 
+X-CRM114-Status: GOOD (  44.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -183,129 +101,171 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prefer the new "rx-polarity" and "tx-polarity" properties, which in this
-case have the advantage that polarity inversion can be specified per
-direction (and per protocol, although this isn't useful here).
+Hi Sean,
 
-We use the vendor specific ones as fallback if the standard description
-doesn't exist.
+I'm resending this because I forgot to Cc the mailing lists.
 
-Daniel, referring to the Mediatek SDK, clarifies that the combined
-SGMII_PN_SWAP_TX_RX register field should be split like this: bit 0 is
-TX and bit 1 is RX:
-https://lore.kernel.org/linux-phy/aSW--slbJWpXK0nv@makrotopia.org/
+On Sat, Jan 3, 2026 at 7:24 PM moosager90 <moosager90@gmail.com> wrote:
+> Hi Sean,
+>
+> I have updated the firmware using the files you recommended (and I will w=
+ait
+> for the issue to occur again), but I believe my distro's (Fedora 43) pack=
+ages
+> were already up to date, as the files already present on my system had the
+> same hash as the newly downloaded ones; so the issue has been happening on
+> the latest firmware (it was also happening on earlier ones, but I don't
+> know since when).
+>
+> > Could you please share more details on how this issue can be
+> > reproduced? For example, does it occur after suspend/resume, under
+> > heavy traffic, or during normal runtime?
+>
+> There are no specific circumstances for it, it just happens during normal
+> runtime: no heavy load is required to trigger it. I haven't ever seen the=
+ issue
+> happen immediately after suspend/resume either; I don't believe that's re=
+lated.
+> I have a feeling that it has happened more often when connected to a
+> public, password-less Wi-Fi network, though I'm not sure; it also
+> happens any other network.
+>
+> > Also, please confirm which firmware version you are using.
+>
+> The dmesg output given by my distro's firmware files was:
+> [   16.313264] mt7921e 0000:62:00.0: enabling device (0000 -> 0002)
+> [   16.329376] mt7921e 0000:62:00.0: ASIC revision: 79220010
+> [   16.405931] mt7921e 0000:62:00.0: HW/SW Version: 0x8a108a10, Build Tim=
+e: 20251118163143a
+> [   16.790050] mt7921e 0000:62:00.0: WM Firmware Version: ____000000, Bui=
+ld Time: 20251118163234
+> which is identical to that given by the latest firmware files from git.
+>
+> More precisely, the firmware from my distro is that at [1]
+> (mt7xxx-firmware-20251125-1.fc43.noarch.rpm is relevant), which I believe
+> corresponds to branch [2] of linux-firmware, which is the latest one.
+>
+> > As a debugging step, could you also try disabling PCIe ASPM and check
+> > whether the issue still occurs?
+>
+> I have now added pcie_aspm=3Doff to my boot options; however, I had alrea=
+dy done
+> that in the past and the issue still happened. Here is an excerpt of the =
+log
+> from that time:
+>
+> kernel: Linux version 6.17.8-wifibuild+ ... (gcc (GCC) 15.2.1 20251022 (R=
+ed Hat 15.2.1-3), GNU ld version 2.45-1.fc43) #1 SMP > PREEMPT_DYNAMIC Fri =
+Nov 14 12:24:21 CET 2025
+> kernel: Command line: ... BOOT_IMAGE, root, ro, rootflags and rd.luks.uui=
+d options ... quiet loglevel=3D3 udev.log-priority=3D3 > pcie_aspm=3Doff
+> ... messages ...
+> kernel: mt7921e 0000:62:00.0: enabling device (0000 -> 0002)
+> kernel: mt7921e 0000:62:00.0: ASIC revision: 79220010
+> kernel: mt7921e 0000:62:00.0: HW/SW Version: 0x8a108a10, Build Time: 2025=
+0523103150a
+> kernel: mt7921e 0000:62:00.0: WM Firmware Version: ____000000, Build Time=
+: 20250523103234
+> ... messages ...
+> ... repeated sequences of driver own failures ...
+> kernel: mt7921e 0000:62:00.0: Message 00020003 (seq 6) timeout
+> kernel: mt7921e 0000:62:00.0: Message 00020003 (seq 7) timeout
+> kernel: mt7921e 0000:62:00.0: driver own failed
+> kernel: mt7921e 0000:62:00.0: Timeout for driver own
+> kernel: mt7921e 0000:62:00.0: driver own failed
+> kernel: mt7921e 0000:62:00.0: Timeout for driver own
+> kernel: mt7921e 0000:62:00.0: Message 00020003 (seq 8) timeout
+> kernel: mt7921e 0000:62:00.0: driver own failed
+>
+> I had built the vanilla kernel myself at that time, hence the tag. That w=
+as
+> before November 25, but I believe I might have been running the same firm=
+ware
+> as today as it was provided by Fedora's testing packages at that time.
+>
+> [1] https://koji.fedoraproject.org/koji/buildinfo?buildID=3D2865762
+> [2] https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmwa=
+re.git/commit/?> h=3D20251125&id=3D4ee5122b3f58e4c07951746c4425e2f4f42e860f
+>
+> On Sat, Jan 3, 2026 at 8:10 AM Sean Wang <sean.wang@kernel.org> wrote:
+> > Hi moosager90,
+> >
+> > Could you please share more details on how this issue can be
+> > reproduced? For example, does it occur after suspend/resume, under
+> > heavy traffic, or during normal runtime? Also, please confirm which
+> > firmware version you are using.
+> >
+> > It would be helpful to test with the latest linux-firmware version:
+> > https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware=
+=2Egit/commit/mediatek?> id=3D5cf85776762a544ad27c4447b61eaabb0d4716e7
+> >
+> > As a debugging step, could you also try disabling PCIe ASPM and check
+> > whether the issue still occurs?
+> >
+> >                Sean
+> >
+> > On Fri, Jan 2, 2026 at 4:35=E2=80=AFAM moosager90 <moosager90@gmail.com=
+> wrote:
+> > >
+> > > Hello,
+> > >
+> > > There is an issue with mt7921e which causes repeated failures in chip=
+ resets,
+> > > bringing the network down and causing hanging on every command or act=
+ion on the
+> > > system; the only workaround is to reboot. This is what the kernel out=
+put looks
+> > > like at those times:
+> > >
+> > > mt7921e 0000:62:00.0: driver own failed
+> > > kernel: mt7921e 0000:62:00.0: Timeout for driver own
+> > > kernel: mt7921e 0000:62:00.0: driver own failed
+> > > kernel: mt7921e 0000:62:00.0: Timeout for driver own
+> > > kernel: mt7921e 0000:62:00.0: driver own failed
+> > > kernel: mt7921e 0000:62:00.0: Timeout for driver own
+> > > kernel: mt7921e 0000:62:00.0: driver own failed
+> > > kernel: mt7921e 0000:62:00.0: chip reset failed
+> > > kernel: mt7921e 0000:62:00.0: Timeout for driver own
+> > > kernel: Console: switching to colour frame buffer device 360x112
+> > > kernel: fbcon: Taking over console
+> > > kernel: mt7921e 0000:62:00.0: Message 00020001 (seq 1) timeout
+> > >
+> > > I have observed the issue on many untainted kernels, and I have had i=
+t happen on
+> > > vanilla kernels not provided by my distro as well.
+> > >
+> > > Mine and some other people's reports are available at [1]. More logs =
+of the
+> > > issue on my system are in the attachments of my original report on th=
+e Red Hat
+> > > Bugzilla [2].
+> > >
+> > > In the past, the issue was reported at [3], which resulted in a patch=
+ [4] that
+> > > only keeps the system running instead of panicking. This means the dr=
+iver still
+> > > causes system hangs.
+> > >
+> > > I still don't know the root cause of the issue and I would like to ge=
+t to the
+> > > bottom of this; any help or guidance is appreciated. Crucially, I hav=
+e not found
+> > > a way to reproduce the issue at will.
+> > >
+> > > Best regards.
+> > >
+> > > [1] https://bugzilla.kernel.org/show_bug.cgi?id=3D220353
+> > > [2] https://bugzilla.redhat.com/show_bug.cgi?id=3D2411854
+> > > [3] https://lore.kernel.org/linux-wireless/VE1PR04MB64945C660A81D38F2=
+90E4A4BE59F9@VE1PR04MB6494.eurprd04.prod.outlook.com/> T/#u
+> > > [4] https://patchwork.kernel.org/project/linux-wireless/patch/> 727eb=
+5ffd3c7c805245e512da150ecf0a7154020.1659452909.git.deren.wu@mediatek.com/
+> > >
+> > >
+> > >
+> > >
+> >
 
-Suggested-by: Daniel Golle <daniel@makrotopia.org>
-Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
----
-v1->v2: patch is new
 
- drivers/net/pcs/Kconfig         |  1 +
- drivers/net/pcs/pcs-mtk-lynxi.c | 50 +++++++++++++++++++++++++++++----
- 2 files changed, 45 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/pcs/Kconfig b/drivers/net/pcs/Kconfig
-index ecbc3530e780..5f94a11f6332 100644
---- a/drivers/net/pcs/Kconfig
-+++ b/drivers/net/pcs/Kconfig
-@@ -20,6 +20,7 @@ config PCS_LYNX
- 
- config PCS_MTK_LYNXI
- 	tristate
-+	select GENERIC_PHY_COMMON_PROPS
- 	select REGMAP
- 	help
- 	  This module provides helpers to phylink for managing the LynxI PCS
-diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
-index 7f719da5812e..74dbce205f71 100644
---- a/drivers/net/pcs/pcs-mtk-lynxi.c
-+++ b/drivers/net/pcs/pcs-mtk-lynxi.c
-@@ -11,6 +11,7 @@
- #include <linux/mdio.h>
- #include <linux/of.h>
- #include <linux/pcs/pcs-mtk-lynxi.h>
-+#include <linux/phy/phy-common-props.h>
- #include <linux/phylink.h>
- #include <linux/regmap.h>
- 
-@@ -62,8 +63,9 @@
- 
- /* Register to QPHY wrapper control */
- #define SGMSYS_QPHY_WRAP_CTRL		0xec
--#define SGMII_PN_SWAP_MASK		GENMASK(1, 0)
--#define SGMII_PN_SWAP_TX_RX		(BIT(0) | BIT(1))
-+#define SGMII_PN_SWAP_RX		BIT(1)
-+#define SGMII_PN_SWAP_TX		BIT(0)
-+
- 
- /* struct mtk_pcs_lynxi -  This structure holds each sgmii regmap andassociated
-  *                         data
-@@ -121,6 +123,42 @@ static void mtk_pcs_lynxi_get_state(struct phylink_pcs *pcs,
- 					 FIELD_GET(SGMII_LPA, adv));
- }
- 
-+static int mtk_pcs_config_polarity(struct mtk_pcs_lynxi *mpcs,
-+				   phy_interface_t interface)
-+{
-+	struct fwnode_handle *fwnode = mpcs->fwnode, *pcs_fwnode;
-+	unsigned int pol, default_pol = PHY_POL_NORMAL;
-+	unsigned int val = 0;
-+	int ret;
-+
-+	if (fwnode_property_read_bool(fwnode, "mediatek,pnswap"))
-+		default_pol = PHY_POL_INVERT;
-+
-+	pcs_fwnode = fwnode_get_named_child_node(fwnode, "pcs");
-+
-+	ret = phy_get_rx_polarity(pcs_fwnode, phy_modes(interface),
-+				  BIT(PHY_POL_NORMAL) | BIT(PHY_POL_INVERT),
-+				  default_pol, &pol);
-+	if (ret) {
-+		fwnode_handle_put(pcs_fwnode);
-+		return ret;
-+	}
-+	if (pol == PHY_POL_INVERT)
-+		val |= SGMII_PN_SWAP_RX;
-+
-+	ret = phy_get_tx_polarity(pcs_fwnode, phy_modes(interface),
-+				  BIT(PHY_POL_NORMAL) | BIT(PHY_POL_INVERT),
-+				  default_pol, &pol);
-+	fwnode_handle_put(pcs_fwnode);
-+	if (ret)
-+		return ret;
-+	if (pol == PHY_POL_INVERT)
-+		val |= SGMII_PN_SWAP_TX;
-+
-+	return regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_WRAP_CTRL,
-+				  SGMII_PN_SWAP_RX | SGMII_PN_SWAP_TX, val);
-+}
-+
- static int mtk_pcs_lynxi_config(struct phylink_pcs *pcs, unsigned int neg_mode,
- 				phy_interface_t interface,
- 				const unsigned long *advertising,
-@@ -130,6 +168,7 @@ static int mtk_pcs_lynxi_config(struct phylink_pcs *pcs, unsigned int neg_mode,
- 	bool mode_changed = false, changed;
- 	unsigned int rgc3, sgm_mode, bmcr;
- 	int advertise, link_timer;
-+	int ret;
- 
- 	advertise = phylink_mii_c22_pcs_encode_advertisement(interface,
- 							     advertising);
-@@ -169,10 +208,9 @@ static int mtk_pcs_lynxi_config(struct phylink_pcs *pcs, unsigned int neg_mode,
- 		regmap_set_bits(mpcs->regmap, SGMSYS_RESERVED_0,
- 				SGMII_SW_RESET);
- 
--		if (fwnode_property_read_bool(mpcs->fwnode, "mediatek,pnswap"))
--			regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_WRAP_CTRL,
--					   SGMII_PN_SWAP_MASK,
--					   SGMII_PN_SWAP_TX_RX);
-+		ret = mtk_pcs_config_polarity(mpcs, interface);
-+		if (ret)
-+			return ret;
- 
- 		if (interface == PHY_INTERFACE_MODE_2500BASEX)
- 			rgc3 = SGMII_PHY_SPEED_3_125G;
--- 
-2.34.1
 
 
