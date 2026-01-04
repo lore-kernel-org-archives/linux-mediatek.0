@@ -4,58 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A846EC2A062
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jan 2026 17:57:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF7A5C2A062
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jan 2026 21:43:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QBhKTVW2A45Nv9kmZP6nueEkojROXPwgQ6nw/FmKmZw=; b=hRluGpCFghtrLxkQsiF3qzoIPL
-	ZFonG7ZHHkklucGCzyN2HGq6JWTkPcC/rhEfSD2uU7/CsxXMzrexmPTd36107GG3+oxoF0Khm4crh
-	mSPC8RQ+Fo/EgqN7uleryIvOItEQV1D1tW8veWufFIlunxgTfMZFMspfWJt7XxBa608Fs6DnoeLCz
-	59ZtUXoG+wdjx2ZBRmFl8dutSctXqIOeX5Pj4xeubG62wvdu6iVFmufptLkGWwm05dD/AgA9gFlnF
-	dSeBzSGJ4xPEjKKy7UIu37eJfGz+lkK8MZZr+ZUzGfxJk4zIEOxLfxHnr6tDeMK6JsImAapUX/sKa
-	GscTz2yA==;
+	bh=kJ9hvaIgQkb2Ldds6KzrQ1Gqe9ey1L/CjFXEAMQEWtM=; b=pfaF5cmQJ0CDrl2CIwV/3DHovG
+	Rcztas8cHiNkFXRsdFSsM/OLedH/EfS1mb8/5Ac6y8RLYuojEoAfEUKUk/iXbLPOcw4cvZHA8Pc5I
+	f9leqFu4ADOtzRTSvcSqy15+BV8qxk4u0/Q1pk3bZ0HOpBi+a7b3S+79Lc0UPTRsR+qe3gbajndrn
+	0zgyWw1Vbhl4OHOfk1yTwJxbzwL/X/VeTnIFdpcNthLiT03bd2tcdd5+RsyU+ujKoFvzznQOk34d5
+	0LdSEFdq2AxTHjLFIasJ8GkEdrV+g93Y7JezyPlHYfv+qCAAxxVO2HmvUOi/0nWk4utIUP3kCNpkK
+	vN3hNJjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcSMS-0000000AMvT-2sVy;
-	Sun, 04 Jan 2026 17:57:52 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vcVsK-0000000AUFS-3gyM;
+	Sun, 04 Jan 2026 21:43:00 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcSMR-0000000AMvG-0b5q;
-	Sun, 04 Jan 2026 17:57:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3486C6011E;
-	Sun,  4 Jan 2026 17:57:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85112C4CEF7;
-	Sun,  4 Jan 2026 17:57:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767549469;
-	bh=GogI6KoWMG7sQcRQST4tSXHnHsU61K4n/uzTVM7dT2U=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=eNlmOwGt/ErVXDeQvrb5x/qUdjhqLGFlCC5iP6wYoNNvUFVP7cv000yCvfbY9Xm+3
-	 t0bz76FZmYWEyQMjc56C/y8XInKLqwSmjpGLbondvk0JTc5JxPQgyTX8tLj4dIng8/
-	 ExnUx4fTaZhZNsOUunMIUh7D9KDaKIEjIB8ETkd7VcEuBSysYTkyEvkvIlix/9SbFw
-	 k121A6v0zYiVfiXUrRFD73zwSDF6lacJKsWuHqsCQI1b8yuw+snggzPOjY4rU++Qnf
-	 WWkxV1i/NQdTfXrtbab97ljbHLNU1R0vyrBFrPidwil+oZDy6+pLf2SpYuX7Vp9nqt
-	 2+uBB0ndeE5dg==
-Date: Sun, 4 Jan 2026 09:57:48 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net] net: airoha: Fix schedule while atomic in
- airoha_ppe_deinit()
-Message-ID: <20260104095748.70107b9b@kernel.org>
-In-Reply-To: <20251223-airoha-fw-ethtool-v1-1-1dbd1568c585@kernel.org>
-References: <20251223-airoha-fw-ethtool-v1-1-1dbd1568c585@kernel.org>
+	id 1vcVsG-0000000AUEk-3Qox;
+	Sun, 04 Jan 2026 21:42:58 +0000
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 604L3MdA4144301;
+	Sun, 4 Jan 2026 21:42:53 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2025-04-25; bh=kJ9hvaIgQkb2Ldds6KzrQ1Gqe9ey1L/CjFXEAMQEWtM=; b=
+	gKRYdO5Ei96WSxyfQ75p5+FfyGkrcQ177jtCrBpf7NZpmR7DBRtudBI6ApxHWtAK
+	2dxEwa9doM0SN28POZsv/q+PHWmZzeOwjV5wSKw8Z2bcpnxBbeZkaBOY5JIBRR79
+	QfphensM58H5pmyuUd96XVykZ1TfRdINy/Nds9KhKRddeX37c2k4nMYDLEI5eYKB
+	a86rQA1t5u3olrmuZnD1cFDcQ46vjna0xkGjMHuT+HseJciGxhLN0HYqZlunYdea
+	b/I1Gzel9ae1M66FNjkV7W2bpzd/8592RQgfwW2e+i6wio8Em5celMIzmBP3SOHF
+	qPmVI5z0Z+Zlg1uh3uywCw==
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4bev6ngxwk-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sun, 04 Jan 2026 21:42:53 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 604GXW1O030837;
+	Sun, 4 Jan 2026 21:42:52 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 4besjarf2x-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sun, 04 Jan 2026 21:42:52 +0000
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 604LgpIo034017;
+	Sun, 4 Jan 2026 21:42:52 GMT
+Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 4besjarf2n-2;
+	Sun, 04 Jan 2026 21:42:52 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: Peter Wang <peter.wang@mediatek.com>,
+        Chaotian Jing <chaotian.jing@mediatek.com>,
+        Stanley Jhu <chu.stanley@gmail.com>,
+        "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org,
+        linux-arm-kernel@lists.infradead.org,
+        Colin Ian King <colin.i.king@gmail.com>
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+        kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH][next] scsi: ufs: host: mediatek: make read-only array scale_us static const
+Date: Sun,  4 Jan 2026 16:42:42 -0500
+Message-ID: <176756271713.1812936.16233360275459977513.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.51.2
+In-Reply-To: <20251219214428.492744-1-colin.i.king@gmail.com>
+References: <20251219214428.492744-1-colin.i.king@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2026-01-04_06,2025-12-31_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 phishscore=0 adultscore=0
+ malwarescore=0 suspectscore=0 mlxscore=0 spamscore=0 mlxlogscore=999
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2512120000
+ definitions=main-2601040199
+X-Proofpoint-ORIG-GUID: rdbf5b7C6LSRjtelOVvQBuVBo-52Jzyo
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTA0MDIwMCBTYWx0ZWRfX3DMDsQH9i3eP
+ K72TDB1rXgB+fizy4hpq6EU+U3E6Hdl6X+QRag1hlF+e8+II1ZIfstSvs+4uzL1jAQXhOzn+z1v
+ wT3GZENzc4EMcb2zTmYgm0pchMQez3G/U49L16XJUI/Q8ap2CAevhXncIDQJSA5TXs2ZO1pPCHv
+ i8mxxDcvPz3Xg/NAvsM61GwHUaz+M+PnGrSovnQmr90GmScAa6TOnmQZUX/2dUYqoUWGpEnQRmS
+ uWVBUz6e2R07fJU+PyaEfgoxOT9VDTg0vr20lg1ArOhzZbpz0i+4lrA+yFcwN4ul3gtdEMrEhdr
+ DdSnmsHtR3tyNxyHFpxn8TNGwzQjQMj4HX4Dfp4IYrmIB5+HBraRlnADxDPzqC7HvU1eAVGBty8
+ bvlSZaj+BD95SgwyPHGuYn9ZJmwJtO+S7ce9cZd9PAw/M6uHIF5w444ebR5Eu89KMlbROYGRwNh
+ YY9ea6DMOYxttU3kh26Tx0X2D1ymHpuvv2AaWB9k=
+X-Proofpoint-GUID: rdbf5b7C6LSRjtelOVvQBuVBo-52Jzyo
+X-Authority-Analysis: v=2.4 cv=QtFTHFyd c=1 sm=1 tr=0 ts=695adedd b=1 cx=c_pps
+ a=e1sVV491RgrpLwSTMOnk8w==:117 a=e1sVV491RgrpLwSTMOnk8w==:17
+ a=IkcTkHD0fZMA:10 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=VwQbUJbxAAAA:8 a=ymggwW1gcb6NkITVt5gA:9 a=QEXdDO2ut3YA:10 cc=ntf
+ awl=host:13654
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260104_134256_977852_F3C20C4E 
+X-CRM114-Status: UNSURE (   8.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,21 +117,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 23 Dec 2025 22:56:44 +0100 Lorenzo Bianconi wrote:
-> Rely on rcu_replace_pointer in airoha_ppe_deinit routine in order to fix
-> schedule while atomic issue.
+On Fri, 19 Dec 2025 21:44:28 +0000, Colin Ian King wrote:
 
-The information in the commit message is not sufficient.
-What "schedule while atomic issue"?
+> Don't populate the read-only array scale_us on the stack at run time,
+> instead make it static const.
+> 
+> 
 
-> -	npu = rcu_dereference(eth->npu);
-> +	mutex_lock(&flow_offload_mutex);
-> +
-> +	npu = rcu_replace_pointer(eth->npu, NULL,
-> +				  lockdep_is_held(&flow_offload_mutex));
->  	if (npu) {
->  		npu->ops.ppe_deinit(npu);
->  		airoha_npu_put(npu);
+Applied to 6.19/scsi-fixes, thanks!
+
+[1/1] scsi: ufs: host: mediatek: make read-only array scale_us static const
+      https://git.kernel.org/mkp/scsi/c/309a29b5965a
+
 -- 
-pw-bot: cr
+Martin K. Petersen
 
