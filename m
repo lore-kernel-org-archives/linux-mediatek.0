@@ -4,55 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2201AC2A079
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 09:03:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11057C2A07A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 09:06:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=BCTvANCRPiU3AnLkxPXXg/pwM8FbUyQvzp1JSLEK3HE=; b=HiuwMTVohDuphK
-	my7tpe7sYWJ4F+4xUdu+J03ySMDVQRxEADE0qUA6qDCURmU+/L2iWZ4nUpnkHt9ss0v23UDuiDGSY
-	3SN0ZaiX6rZcXPeKo0T+A2xUaG1myXtR8S/g0ffjH2IDNGZh2mZVgtAIGvX/LoNYk4qnN6dpHUj3H
-	TszFYZhAJYFv7YgXoRb6/+QE0XGkdRGf2R/McrslQ96NfK0v2YACu/UeuOOyNc5F4kyge7MJeQAyL
-	ngPonvv+u/KxLEGlzr61r/H8BUOQ9gknCobJPLbDjwuo2uQ4A/FmF3Vv1Wxoq2GNBMY8fMkzf+mzl
-	cyKRKX5YGlkMsfg61R+Q==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=smOOJyQryUYimNpb7IbF6fU1ftUCXsLgF82NcOd66E4=; b=1icAK3cuycxJTzWfbxXXQvvWYA
+	lDYzWM18O0oJ4bps6ANaHOr1ZlHqoWAMbtIpVFgojJ2WeJzLTdwgZrbAAC2w+HjHylKi+WLg2cOvM
+	pWFbzh1KWoTZFu/AHkaPlMerd+pjm3Fi2z1tidS1sdVXIHnQH0G4BKBqxX+2W/ok4LZEDyDujICJj
+	G2zIMRWHRXTeFGrqM6TUlu9dGxxBSwBTxWyJXn6fTgZoZQZ+YAtxeECvutG+IJgC2r3kJsWXW0To0
+	KIwsbW/MzDl0wQIV4QYDJ6OFFsdJMKmvPYCJHBbeV8uOmtcLJA91uz8/gx4hZ+UIu4qQ4nMJVkeRe
+	CyrT/y2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcgUm-0000000B2AF-0q1O;
-	Mon, 05 Jan 2026 09:03:24 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vcgXS-0000000B2WX-30Ih;
+	Mon, 05 Jan 2026 09:06:10 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcgUj-0000000B27k-03s1;
-	Mon, 05 Jan 2026 09:03:22 +0000
+	id 1vcgXQ-0000000B2VN-0Clf;
+	Mon, 05 Jan 2026 09:06:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A203B434E7;
-	Mon,  5 Jan 2026 09:03:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2577BC2BD00;
-	Mon,  5 Jan 2026 09:03:19 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 992F542E10;
+	Mon,  5 Jan 2026 09:06:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9933C4E694;
+	Mon,  5 Jan 2026 09:06:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767603800;
-	bh=V+xA5EARlczpo3HEUeQMynrALtQ9E+tYDnkD4JHTyW8=;
-	h=From:Subject:Date:To:Cc:From;
-	b=U2F55jydFouj8ssrsi8tLLJro+12tJ8qOcq/0ZKUig63/+zmYLqe3HSu7vjOugnSl
-	 n5TV5uVtZnLCIU3hp7EfNuuSLPosdJMF2atLJIM6S8WA/BRnnM/Ww+O9T/o4UBLvVX
-	 a9tRXEPYGybck9uuTG7O2wECn8TJJHudLx9Q7vyEByoW3kBD9hfGN0/CMqDBZuexwf
-	 JrB634HrDGdi6nibIuTzCmBxpwg2Vn7coozx9CRylYCf2Fa0Eu+DTFMmNZuAXGKTbM
-	 xmQ3Eq1bxKhHjBdiNNp6AcvbMvSy0rQkLaH3ewU5vtda+ULEAIdCG6yq4hZC/hyFy0
-	 3JRYFdvKgevRA==
+	s=k20201202; t=1767603967;
+	bh=peEnoxldRbRzDKvGHhMCLsWPsFLvytHX9Kqdw5HT/7Y=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=GZFI05tU2fVRmDAnoA4N8wUfDYxv69/f1M+3jEu5C+ESWtRSJQ0Bb7FeNzAVizoi1
+	 xSV6hwVUddZC6mB0g8zRDG+kq06NGrlDI5e0/7gRGOlNZXhpAqByFnRdVqZkCAjQMm
+	 h8C0TGZchhhbucxSObX1mbXE5ZmxwxZPUTAj3hegvPP8kluABAKJzTzAMm8NFGqFRH
+	 s4MK1YtNbhWC2LXsOkhw8vzBTgTVOmXyFteq2vdc7x4E7vNQIrMtlgtHyLBc9eyTjl
+	 RAz6QnI02c863v4iSslTpV6suwfsfJbNwcQgk6w9M6Su5q+U2XccHStx04Oxg7Djdp
+	 6V+2/K5/U0YFw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH net-next 0/2] net: airoha: Init Block Ack memory region for
- MT7996 NPU offloading
-Date: Mon, 05 Jan 2026 10:02:55 +0100
-Message-Id: <20260105-airoha-ba-memory-region-v1-0-5b07a737c7a7@kernel.org>
+Date: Mon, 05 Jan 2026 10:02:57 +0100
+Subject: [PATCH net-next 2/2] net: airoha: npu: Init BA memory region if
+ provided via DTS
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MPQqAMAxA4atIZgNt/Pcq4lA1agatpCCKeHeL4
- xu+90BgFQ7QJg8onxLE7zFsmsC4un1hlCk2kKHSWEPoRP3qcHC48eb1RuUlGizqqaE8q2xWE0R
- 9KM9y/eeuf98PtGcaIWkAAAA=
-X-Change-ID: 20260102-airoha-ba-memory-region-58d924371382
+Message-Id: <20260105-airoha-ba-memory-region-v1-2-5b07a737c7a7@kernel.org>
+References: <20260105-airoha-ba-memory-region-v1-0-5b07a737c7a7@kernel.org>
+In-Reply-To: <20260105-airoha-ba-memory-region-v1-0-5b07a737c7a7@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
@@ -62,8 +60,8 @@ Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260105_010321_081733_76659133 
-X-CRM114-Status: UNSURE (   6.92  )
+X-CRM114-CacheID: sfid-20260105_010608_111074_AE19BF60 
+X-CRM114-Status: UNSURE (   9.65  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,23 +77,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a preliminary series in order to enable NPU offloading for
-MT7996 (Eagle) chipset.
+Initialize NPU Block Ack memory region if reserved via DTS.
+Block Ack memory region is used by NPU MT7996 (Eagle) offloading.
 
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Lorenzo Bianconi (2):
-      dt-bindings: net: airoha: npu: Add BA memory region
-      net: airoha: npu: Init BA memory region if provided via DTS
+ drivers/net/ethernet/airoha/airoha_npu.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
- Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml | 11 +++++++++--
- drivers/net/ethernet/airoha/airoha_npu.c                     |  8 ++++++++
- 2 files changed, 17 insertions(+), 2 deletions(-)
----
-base-commit: dbf8fe85a16a33d6b6bd01f2bc606fc017771465
-change-id: 20260102-airoha-ba-memory-region-58d924371382
+diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
+index 68b7f9684dc7f3912493876ae937207f55b81330..00faca2a388aa4378b58560c14d8eec0cb6b0330 100644
+--- a/drivers/net/ethernet/airoha/airoha_npu.c
++++ b/drivers/net/ethernet/airoha/airoha_npu.c
+@@ -519,6 +519,14 @@ static int airoha_npu_wlan_init_memory(struct airoha_npu *npu)
+ 	if (err)
+ 		return err;
+ 
++	if (of_property_match_string(npu->dev->of_node, "memory-region-names",
++				     "ba") >= 0) {
++		cmd = WLAN_FUNC_SET_WAIT_DRAM_BA_NODE_ADDR;
++		err = airoha_npu_wlan_set_reserved_memory(npu, 0, "ba", cmd);
++		if (err)
++			return err;
++	}
++
+ 	cmd = WLAN_FUNC_SET_WAIT_IS_FORCE_TO_CPU;
+ 	return airoha_npu_wlan_msg_send(npu, 0, cmd, &val, sizeof(val),
+ 					GFP_KERNEL);
 
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.52.0
 
 
