@@ -4,113 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D55F5C79FB3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 19:20:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9EB7CD0407
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 21:33:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:Cc:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tDDvkHfL5SsDyjmtGrwtC4U8Vp9VsmLY6KqyAaQnAtw=; b=eofcBLvqCpOdu82525S2/07ID6
-	R3v/1ZFkCXZkAgeYwIBFR5HC+YwngleHzzCc0VjMWuXEID7LAG2GgQDPLc4dBKDnAr25J8kCjk2Os
-	wuPCABIh9D5pX65PNeZGxbaLQsDv3ZPWVsyULgylsw6dS0M0ZcJOoMYduJujfLHq9XfAXNRVBVasB
-	OHaUkNFiaqDkL4cX/vZ1icgnEdgU9dRJ1lrstoPZn/uA8czCdKnCVocL0gGa1J5Gc41eRz7K8v/RR
-	2OXVHzP5UgzNcrOH6Izj8SpndQf2KdQnL6WSX+Mg9iTNthdmz3U55/GOQqcZOKyX5ZBWNgst/0qfg
-	HKMAu2BQ==;
+	bh=p8u80z+tPf43NlNwf3gyc1tmFsPKFLQnzJ5dp6IiBCs=; b=NJ2wGWs05R2yQX5AdA01iJdK/1
+	c134BozWKv6z6LkMQXU7aHQMpVTgCC30Pc5MAxt7mdpzHvW+hrjGv1X3ohNc9lloKq68dK/JmU90W
+	d+Grj8l/Z+9SvJf88ryJvpoAtiUxtm70Otvd4SrVQj++xGzdgVnlA61li4nWeSOHJ3NpgZEzCHQG8
+	2SEgi3EJOXfurIWf1NTGbauvuZ7Xegh8NjdYyv1YGxh3tmVlD5RKG8+hkgxraYHTaGV3qhLeNd0Hf
+	p9xFFvywn/ZLzl+Ah8XKlpL46Fy74d5U3t3eHXqdZ9U7e24E+LB8tgpUAHsXE6n7mefp0d7WTANFf
+	XQDuaKyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcq7h-0000000ByAf-1GZV;
-	Mon, 05 Jan 2026 19:20:13 +0000
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+	id 1vcsCO-0000000C8Ap-0Apk;
+	Mon, 05 Jan 2026 21:33:12 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcq7d-0000000By9m-1BcN
+	id 1vcsCL-0000000C8A9-35Mt
 	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Jan 2026 19:20:11 +0000
-Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-8b22b1d3e7fso23197185a.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Jan 2026 11:20:08 -0800 (PST)
+	Mon, 05 Jan 2026 21:33:10 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2a07f8dd9cdso3196915ad.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Jan 2026 13:33:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1767640808; x=1768245608; darn=lists.infradead.org;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:to
-         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=tDDvkHfL5SsDyjmtGrwtC4U8Vp9VsmLY6KqyAaQnAtw=;
-        b=pACYwJmy6s9WdIr5SOSDqqofo0ebtZP2AByvC038tahYFmbLYM7LHs/SIA159XJock
-         Q4YCfufXCsleXXkJD+J67KiSPKwcF9ebeWE9hfOWS8eDL8eNoRrKAWCph7HPa2AhQeId
-         xffQ8g2qF5j1FyXeI4yYnDkCVn6lP2q88f6NOgSJoUaxd/hd4DyN2H0hH/CEOjSFAzmm
-         RBnNY4UW7r4EATeKuIAESOGSHrjRpubQ7AtmqbVIT+A20eVEpUOrw5W1CP2oZNW7jxBD
-         unYqzFMdfzAwBh2Z+k3VSIzeuRx70puTDsTj3dPkI6FsTZL0GVCIeXy215l1v8LhbfE4
-         sAfA==
+        d=linaro.org; s=google; t=1767648789; x=1768253589; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=p8u80z+tPf43NlNwf3gyc1tmFsPKFLQnzJ5dp6IiBCs=;
+        b=zzYciquNB8WHPeXYeuiiqNzv8cfMLaThzqhT3k/LWnYo2NdmSfw2iByXYP6nfiip0H
+         2QkfcGn0YlGH8l887Sq7iITzUTdDDbNDjGjSoPIRJFF6XIlqLZvX8zy0rMrrrqzG2oqC
+         rd/Hl6QR4stMtE+oy+wrIAJqscPPEsuQnXjlMDNQLXwJ8mNNpsuBsvR0VBIiat3hz+i7
+         0hKSk0o6OAl9wh+evXlTpMRSmhxwyUOfs+/gLbDNXfpcBTUxglbZtd3/xAWipFpSYHe7
+         zrTJL225zEFwbjX35JZ6k7Ska+wtAawrUxpYR8Xv1U8/7P/bIECY5IaPc3kVexAAS0p+
+         ooNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767640808; x=1768245608;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:to
-         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1767648789; x=1768253589;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=tDDvkHfL5SsDyjmtGrwtC4U8Vp9VsmLY6KqyAaQnAtw=;
-        b=cYC0C9eJWzCWHcCEc8+h6RWXP2Y9ipkJbFUcS3lQ5xy3ASQp2gBUvmImNhEDKoTJj4
-         Mytvc2rwxh2uJ4R2jbn5oUfJ32zGFUx5HPd7R5kc8oc8qhs1KniDE2MFKHr1MTkDi3j+
-         3nk0BeDxg8RNndMIHLdI7md8O9Mqs4iX/+0UzptvbAc+8njHE1Sz3ykbworvV8MW6Cw7
-         Yvd4RaGNQeJrSWSfAoJ2Wxjo0MqZcvx04+qGkDVSEHo72cTaeE0GLkStrKfIphEZfSwv
-         +F8gbVb9JtPJIsL/RgQ2eSGHGTLorD2OLHVNiqjqH6Xpm62J4yfjFP63ao6jmRRL0nnM
-         +sPw==
-X-Forwarded-Encrypted: i=1; AJvYcCU3a4udCaQooEXuQhiw7h1RjWXSG4NgtsD6xGMMDugCuoOK+w7+6nPvtkewlWeQd+ofuOxMMqk9f7Mwrm8wJQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx39DlDKKjUJNkcObr2nrpwppFL/gc5EbNrrr0SSQ+tHrx98gDK
-	DTuUjDzZVvsMCquz4khx4AyOWen2QHRZATWt3vLCeDTRiK+7B6jdwUf00/+zdNICM74=
-X-Gm-Gg: AY/fxX5Gzz8QwR46SV03ndxEeCABbB2Nmq+nAA7891+dZKBo4YGvsiGzOoRMo4HxHq2
-	8cIBTQohIgDCD+cfO1cpphK4Zpk30l9IrZfR/ko3otnxR+ZV9u9uMNksss6PM9B4DQZXtggnre+
-	vunAjYQ7l6AYGXvHt/cq1FpC9s6oCeKxdWlRL7hHt/AF3wop5wfu+uAI2ezDXW7lY6PjnUI0nxC
-	INA+ldqTfNrpV7x+kgyPl4sSyR93L5PmynZ5yWikTdHLSySD2TLSxlG++csSyxyqcaG1gYQZDWa
-	xyqFRm+alKtZkcZ/lZZsTEfDUWCyNtCZC4scM+DzSe4NDjTbRRTk5dO2K8il8z8yeJUSzsDphs0
-	i/iPnVcVqBZ7TLs/3+DbUTOE2ZSGmoJR5IAUbZY16psYuhFvaXwxOlD9W4EzNkRL+UD/C5bReJS
-	IT53XPW9zgvrl8v1Lr
-X-Google-Smtp-Source: AGHT+IE5ziBUA1L6ZAL+rkRAZxmOcXQvbxBtmVTb5t38TGd5tiHW8FkBWpqUQMf/N8PhTT3xc9qk1w==
-X-Received: by 2002:a05:622a:250b:b0:4eb:a6c5:f6c7 with SMTP id d75a77b69052e-4ffa769a084mr8345811cf.2.1767640807852;
-        Mon, 05 Jan 2026 11:20:07 -0800 (PST)
-Received: from ?IPv6:2606:6d00:17:7b4b::5ac? ([2606:6d00:17:7b4b::5ac])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4ffa708853fsm4201461cf.9.2026.01.05.11.20.06
+        bh=p8u80z+tPf43NlNwf3gyc1tmFsPKFLQnzJ5dp6IiBCs=;
+        b=eCnGGpWj9TICl38cV7fRf7znBDkYLQ04+DkwVhQ6KJXycxlW4PQAiGwuGYg2Vhbrw7
+         orKbNo/ipMtSy02W4n7j05Xt8R7rac6GfQrZs2D89QPisWH1ThJKiwblRVjtwvfVrdRJ
+         TsbIFN8fvudxgJafDORwBMJvb5jsUPdH8I0anSLZcJealZS/0X4rp8O9bpki1xNiWp03
+         7721U+h9BrCQfvoXCLmOoIn0CcH4Lc4JjhwKFJ4o1SvXHDMITCIo05yvTBg1eW2oJf8W
+         2CtMjmlbRFkOKmM192Y6K32omJoq8kj71fQz1WJA27HDed3ZshSv5Ni0QD2MlfKE4fUC
+         Mf5Q==
+X-Forwarded-Encrypted: i=1; AJvYcCXC1qzoA6AZHC7GQrOFfMbtFkqevjcvCX7M1PtT9yJ4f0PetoG282WrSsmYpuvvYHo5NWsi4IcJpSqug7u/JA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxP+qWE7YrvbZpC06QJVc6DE6qAowXQx7C+2KJVTOfJyiPU1Rte
+	9lczix3E7iPPs1Tlh8FOeVoUYA476VFqFYkA2nV4kH1FyO6Q5/mzVirGRQ6SKy0/kySdYC2XQFe
+	i9KwLmaA=
+X-Gm-Gg: AY/fxX69wKhBxr2hLMqU6Ryqi6dbIXWFjtC23WPVPQ3tHxUAnxcsdnerSH8tBJlBC+c
+	9WfGU2PxoNJs6Wfc58k4AcI5yJiBRTVNvlYLQHxxF2IS571x7A+wWYj50j7QSZj7jkqflihhcdX
+	Ho2MWjgTVKUn3RBIiijM7Fds3d+zb7J1izn74SQ6pU4P54jd2UCD20FjKPUCXyE/qrrskKT5Gn5
+	s/01yChC9Buui6Wu+lAhpe7w9fYAcL1PO2kKeQb1Jn8XluDb7SwsrrCT9i/zddhG2hT//IuAp90
+	hlX0lIf1ad4nyoTTManoO02cbJkGo6DVEsKXXP6ypqqRrSXgoNZ/urWscI2tbt7A5xJ9IP+V7M8
+	RfCgF8ywAXRjGM+zQGDmCMsRWrAXzaGV21yEwAJB2K0bvTcJHYJ/plhsNhUCePF0VlbiOr1Aceg
+	PuNsk7bHPoz8z3Jw==
+X-Google-Smtp-Source: AGHT+IF0bVODhApERlsNCQrrCwCXh5Bc7cgqZB6OPyCG+4xaL0MSIbArxA2Sg2gVDzhacygsGqC4xA==
+X-Received: by 2002:a17:902:fe04:b0:2a1:2b5f:d16b with SMTP id d9443c01a7336-2a3e2cefe5fmr6801155ad.31.1767648788754;
+        Mon, 05 Jan 2026 13:33:08 -0800 (PST)
+Received: from p14s ([2604:3d09:148c:c800:3f6b:5551:220f:8f13])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2a3e3c3a512sm1849275ad.10.2026.01.05.13.33.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Jan 2026 11:20:07 -0800 (PST)
-Message-ID: <415509d2c4639d086614e9a473b09be16442648a.camel@ndufresne.ca>
-Subject: Re: [PATCH v11 03/12] media: mediatek: jpeg: fix jpeg buffer layout
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Kyrie Wu =?UTF-8?Q?=28=E5=90=B4=E6=99=97=29?= <Kyrie.Wu@mediatek.com>, 
- "linux-kernel@vger.kernel.org"
-	 <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	 <linux-mediatek@lists.infradead.org>, "linux-media@vger.kernel.org"
-	 <linux-media@vger.kernel.org>, "devicetree@vger.kernel.org"
-	 <devicetree@vger.kernel.org>, "mchehab@kernel.org" <mchehab@kernel.org>, 
- "conor+dt@kernel.org"
-	 <conor+dt@kernel.org>, "robh@kernel.org" <robh@kernel.org>, 
- "hverkuil-cisco@xs4all.nl"
-	 <hverkuil-cisco@xs4all.nl>, "linux-arm-kernel@lists.infradead.org"
-	 <linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
-	 <matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Date: Mon, 05 Jan 2026 14:20:05 -0500
-In-Reply-To: <714f2e57521e990d77b80d23a9eb773ca878b07a.camel@mediatek.com>
-References: <20251202094800.6140-1-kyrie.wu@mediatek.com>
-		 <20251202094800.6140-4-kyrie.wu@mediatek.com>
-		 <89f845b45405bbf985a5e92c195078074bcce0e2.camel@ndufresne.ca>
-	 <714f2e57521e990d77b80d23a9eb773ca878b07a.camel@mediatek.com>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-4+oXkLqgBdCrGoVfdxJj"
-User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
+        Mon, 05 Jan 2026 13:33:07 -0800 (PST)
+Date: Mon, 5 Jan 2026 14:33:05 -0700
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] remoteproc: mtk_scp: Simplify with scoped for each
+ OF child loop
+Message-ID: <aVwuEZCAjscaZs7m@p14s>
+References: <20260102124827.64355-3-krzysztof.kozlowski@oss.qualcomm.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260102124827.64355-3-krzysztof.kozlowski@oss.qualcomm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260105_112009_486239_B9E40642 
-X-CRM114-Status: GOOD (  35.70  )
+X-CRM114-CacheID: sfid-20260105_133309_811582_F822F10F 
+X-CRM114-Status: GOOD (  17.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,130 +104,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Fri, Jan 02, 2026 at 01:48:28PM +0100, Krzysztof Kozlowski wrote:
+> Use scoped for-each loop when iterating over device nodes to make code a
+> bit simpler.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> ---
+>  drivers/remoteproc/mtk_scp.c | 7 +------
+>  1 file changed, 1 insertion(+), 6 deletions(-)
+>
 
---=-4+oXkLqgBdCrGoVfdxJj
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+I have applied both patches.
 
-Le jeudi 25 d=C3=A9cembre 2025 =C3=A0 06:05 +0000, Kyrie Wu (=E5=90=B4=E6=
-=99=97) a =C3=A9crit=C2=A0:
-> On Tue, 2025-12-16 at 16:22 -0500, Nicolas Dufresne wrote:
-> > Hi,
-> >=20
-> > Le mardi 02 d=C3=A9cembre 2025 =C3=A0 17:47 +0800, Kyrie Wu a =C3=A9cri=
-t :
-> > > For memory alloc operation of jpeg dst buffer: the mallocing
-> > > memory function interface use vb2_buffer as the base addr.
-> > > If structure mtk_jpeg_src_buf wants to be allocated to memory,
-> > > it needs to be placed vb2_v4l2_buffer at the starting position,
-> > > because structure vb2_buffer is at the starting position of
-> > > vb2_v4l2_buffer, and the allocated size is set to the size of
-> > > structure mtk_jpeg_src_buf, so as to ensure that structures
-> > > mtk_jpeg_src_buf, vb2_v4l2_buffer and vb2_buffer can all be
-> > > allocated memory.
-> >=20
-> > Please correct the wording, "mallocing" is not a word, addr ->
-> > address. I tend
-> > to do the same, but refrain from giving the code a personality, the
-> > vb2_buffer
-> > have no will. This is overall complicated way to simply say:
-> >=20
-> > 	Fix the size of the allocated mtk_jpeg_src_buf structure.
-> >=20
-> > >=20
-> > > Fixes: 5fb1c2361e56 ("mtk-jpegenc: add jpeg encode worker
-> > > interface")
-> > >=20
-> >=20
-> > Drop the blank line.
-> >=20
-> > > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-> > > ---
-> > > =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 2 +-
-> > > =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h | 2 +-
-> > > =C2=A02 files changed, 2 insertions(+), 2 deletions(-)
-> > >=20
-> > > diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> > > index 0cf3dc5407e4..bd0afc93d491 100644
-> > > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> > > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> > > @@ -1099,7 +1099,7 @@ static int mtk_jpeg_queue_init(void *priv,
-> > > struct vb2_queue *src_vq,
-> > > =C2=A0	dst_vq->type =3D V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
-> > > =C2=A0	dst_vq->io_modes =3D VB2_DMABUF | VB2_MMAP;
-> > > =C2=A0	dst_vq->drv_priv =3D ctx;
-> > > -	dst_vq->buf_struct_size =3D sizeof(struct v4l2_m2m_buffer);
-> > > +	dst_vq->buf_struct_size =3D sizeof(struct mtk_jpeg_src_buf);
-> > > =C2=A0	dst_vq->ops =3D jpeg->variant->qops;
-> > > =C2=A0	dst_vq->mem_ops =3D &vb2_dma_contig_memops;
-> > > =C2=A0	dst_vq->timestamp_flags =3D V4L2_BUF_FLAG_TIMESTAMP_COPY;
-> > > diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> > > index 6be5cf30dea1..148fd41759b7 100644
-> > > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> > > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
-> > > @@ -85,10 +85,10 @@ struct mtk_jpeg_variant {
-> > > =C2=A0};
-> > > =C2=A0
-> > > =C2=A0struct mtk_jpeg_src_buf {
-> > > -	u32 frame_num;
-> > > =C2=A0	struct vb2_v4l2_buffer b;
-> > > =C2=A0	struct list_head list;
-> > > =C2=A0	u32 bs_size;
-> > > +	u32 frame_num;
-> >=20
-> > I like the change, but this shouldn't be an issue if you use
-> > container_of, which
-> > is safer then a plain cast. Please review the code and make sure to
-> > use it. It
-> > may be confusing to include a cosmetic change in a fixes.
-> >=20
-> > Nicolas
->=20
-> Dear Nicolas,
->=20
-> The driver requests memory space for mtk_jpeg_src_buf in the
-> function of mtk_jpeg_queue_init,
-> and it used struct vb2_v4l2_buffer b as the starting base address,
-> the parameter,frame_num, will not get a memory if we keep the old
-> structure. And a unknown memory would be get if we used container_of
-> to get the starting address of mtk_jpeg_src_buf.
-
-You are right, and the documentation says so:
-
- *              The first field of the
- *		driver-specific buffer structure must be the subsystem-specific
- *		struct (vb2_v4l2_buffer in the case of V4L2).
-
-This is inconsistent with how other objects are overloaded, notably the req=
-uest
-object, which does not have this limitation. We should probably fix that
-someday, meanwhile.
-
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
->=20
-> Thanks.
->=20
-> Regards,
-> Kyrie.
-> >=20
-> > > =C2=A0	struct mtk_jpeg_dec_param dec_param;
-> > > =C2=A0
-> > > =C2=A0	struct mtk_jpeg_ctx *curr_ctx;
-
---=-4+oXkLqgBdCrGoVfdxJj
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaVwO5QAKCRDZQZRRKWBy
-9JQpAP0dnUFHHjrwSdklIXv0iM9Mn2ffy7uO4iLtFZ1F13veZwEAxFlPuKq8bjib
-yxKl4rlCUkzH3EGoWvZd1nccuFKJ5Qw=
-=uGnL
------END PGP SIGNATURE-----
-
---=-4+oXkLqgBdCrGoVfdxJj--
+Thanks,
+Mathieu
+ 
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index db8fd045468d..328541e62158 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -1287,7 +1287,6 @@ static int scp_add_multi_core(struct platform_device *pdev,
+>  	struct device *dev = &pdev->dev;
+>  	struct device_node *np = dev_of_node(dev);
+>  	struct platform_device *cpdev;
+> -	struct device_node *child;
+>  	struct list_head *scp_list = &scp_cluster->mtk_scp_list;
+>  	const struct mtk_scp_of_data **cluster_of_data;
+>  	struct mtk_scp *scp, *temp;
+> @@ -1296,11 +1295,10 @@ static int scp_add_multi_core(struct platform_device *pdev,
+>  
+>  	cluster_of_data = (const struct mtk_scp_of_data **)of_device_get_match_data(dev);
+>  
+> -	for_each_available_child_of_node(np, child) {
+> +	for_each_available_child_of_node_scoped(np, child) {
+>  		if (!cluster_of_data[core_id]) {
+>  			ret = -EINVAL;
+>  			dev_err(dev, "Not support core %d\n", core_id);
+> -			of_node_put(child);
+>  			goto init_fail;
+>  		}
+>  
+> @@ -1308,7 +1306,6 @@ static int scp_add_multi_core(struct platform_device *pdev,
+>  		if (!cpdev) {
+>  			ret = -ENODEV;
+>  			dev_err(dev, "Not found platform device for core %d\n", core_id);
+> -			of_node_put(child);
+>  			goto init_fail;
+>  		}
+>  
+> @@ -1317,14 +1314,12 @@ static int scp_add_multi_core(struct platform_device *pdev,
+>  		if (IS_ERR(scp)) {
+>  			ret = PTR_ERR(scp);
+>  			dev_err(dev, "Failed to initialize core %d rproc\n", core_id);
+> -			of_node_put(child);
+>  			goto init_fail;
+>  		}
+>  
+>  		ret = rproc_add(scp->rproc);
+>  		if (ret) {
+>  			dev_err(dev, "Failed to add rproc of core %d\n", core_id);
+> -			of_node_put(child);
+>  			scp_free(scp);
+>  			goto init_fail;
+>  		}
+> -- 
+> 2.51.0
+> 
 
