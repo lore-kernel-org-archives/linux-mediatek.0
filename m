@@ -4,156 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4C0AC2A073
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 03:05:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A7CFC2A062
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 08:00:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ADTHSpRp+uv+dVOZtQkY5yAvdQXOfCFG4kzF4oSxP9Q=; b=KGDR7ElnO03H7HCze4ECJD1uLf
-	QcsvS17YkbquneMDzLyL5vlHbgh5BfswGEBSBbj2p4StDX3BgnmTub/3goy6k25G0ZhWDathksjPB
-	fXm1+jjyNlyXbvPZ+TQfY5uEC8Pz4gofXS2M04rChJYG232rCs/yeDibwYhfAqDOEyd4sLp3SnG2V
-	NSPUeOKwt1m6dvNIK1j8dlBJqUva19l+eT0BNQXA+mvCzjxr56I8gOD11Ufx8rD7SBOgHC/Uvp9JO
-	2MRp/Pmhz+60wP/R4/mVynBNdt0uJY1pogDLY7k+X29fb6l71iprpr2sy/OeaNGLAMUEybFo/H3dI
-	uOTmgXkg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=R/f+veUt3J3okQzihXETeLooJr7pDBz9djjxauU3Umo=; b=UJXxrA2d+IPVlMh8l++zJybgEe
+	IEJLk3JkU58Og7xX4o6s5FOA93SgfDh9i1iiURp/FD4Olw/1yaAaHum+RydjmeasW7KaFsuscUg4g
+	ULHSB/hu5wqku3zheMKWTWpI5stwrYBr67KSge5GnUq5+cTCyd5eCGsLxM4gRHku86cd47GiZBp5K
+	YtmLFFz73s8lw13wManHBp1+GzQ9nYuL5spfNdqEtBWQ0W2gKvw3abRngpzBfVu9Ydkean6ftia5C
+	Qo950JuBUnOC5Bgxwt625anUvnBJuAcS2sqZg1GYcLD2vpeq6eqEyJgoVH5PRIqOgiCGqvd/VoQHL
+	IwQaetgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcauh-0000000Af6j-2TRg;
-	Mon, 05 Jan 2026 03:05:47 +0000
-Received: from mail-swedencentralazon11023117.outbound.protection.outlook.com ([52.101.83.117] helo=GVXPR05CU001.outbound.protection.outlook.com)
+	id 1vcfW4-0000000AwZ8-3qWh;
+	Mon, 05 Jan 2026 08:00:40 +0000
+Received: from sender4-pp-e109.zoho.com ([136.143.188.109])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcauf-0000000Af2N-0BmA;
-	Mon, 05 Jan 2026 03:05:46 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=IhAhRzymibUkuv57Hejj8Mp4t1ugNmAEJ9e1v9XsGRY26idINRAy93E1qtaDaGLgHRCxdZ59D5GMv5WnxyUzJWSrHvZpLAPsnR7NaL9J8BGez5Uc6EiTmw/1MbNZ2T3NjZ+JCO+x1CSqANtpzYhd3xNmC4JntYJSz2WbET01zFNImYNJgkAkH2IkUVsmwP9wbFd0+gh6yhIyhHw5kMjsAZgK63tGmk65YOP3L68a7lHeO6N2eDeZx84VrTxjimwtyrUThEwMI8/XitssQjm1tAWnN5GtCA+51Pv5J5IIGj6DyVDCS1d744mPysfyBaYzDormuazWVgSEyaxRvdedag==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ADTHSpRp+uv+dVOZtQkY5yAvdQXOfCFG4kzF4oSxP9Q=;
- b=LZ+MFimqYbP0L766sRQGnnPDcD9VKJo6T15AqMPmSqGlhvyIuMCAA8zE7YWadTyd/6BVjvPnqMmJK/2R639fdycIrlUq/kWX7uSt8DtLkmIupEkRXObiCdyMb2kXskmtTe0mANUibgJbhDuxlzq3rq09Ux4IC1/LxwH8lKox9O+u+8f8EJZIG6Cy+M9KSA9v8nxmxgtAepRw0GZ3o//gJCfWSUX2K0pJJD/fRhwR6YamjuBNJJVLfZJlGUKK2yOe+/zWUUtOJQ6zDCp0ZkvCPOdiFK8vbQFQ2Dfrh+VSOmMA0gF7brvgE59gZPQGl2/i77wwdIJyUqWwa3GXhFdxww==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
- dkim=pass header.d=iopsys.eu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ADTHSpRp+uv+dVOZtQkY5yAvdQXOfCFG4kzF4oSxP9Q=;
- b=FAPuLBHkKj9SO9OD+8jwRNtKOCYgxCWE3LYKkdI3HqUgFCu6cQoo8tLr2aj2zoTo6hfREe39f35MBsL3J7MeDdw1GZx3FDkXM0UuNXlwTR1h5NMRbIs83MwzzmLoGGb/RzWrarAU5+GxUzQly5wvLFrPPo/aJRqQVVzDoKr2cLHRmNkVCwJKBRbvix4/ZxV9Ss5O65oorlBnzCFNUyMY0nCZVvkKfNEcR8VNdkiExIJbFXDwOYaOmmYnvR4VLjlTkZctUGmhGmSOK+KLo8lBPx/0R5pX62GEvcHfivyJrqIT+cLOIrVz6HOAH4OdtXrFvUkfQuWzjU4sM/zk1yKYqQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=iopsys.eu;
-Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
- by AS8PR08MB8492.eurprd08.prod.outlook.com (2603:10a6:20b:565::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9478.4; Mon, 5 Jan
- 2026 03:05:34 +0000
-Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
- ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
- ([fe80::3c7:6d2e:8afe:e4dc%4]) with mapi id 15.20.9478.004; Mon, 5 Jan 2026
- 03:05:34 +0000
-From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Subject: [PATCH RESEND v2 2/2] ARM: dts: airoha: en7523: add reset-controller support
-Date: Mon,  5 Jan 2026 06:05:19 +0300
-Message-ID: <20260105030519.4101456-3-mikhail.kshevetskiy@iopsys.eu>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260105030519.4101456-1-mikhail.kshevetskiy@iopsys.eu>
-References: <20260105030519.4101456-1-mikhail.kshevetskiy@iopsys.eu>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: MI0P293CA0005.ITAP293.PROD.OUTLOOK.COM
- (2603:10a6:290:44::19) To DU2PR08MB10037.eurprd08.prod.outlook.com
- (2603:10a6:10:49a::20)
+	id 1vcfW2-0000000AwYh-12Rx;
+	Mon, 05 Jan 2026 08:00:39 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1767600025; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Ibuz+XI96p0dL6YG9tCRZJijKOMJSmdrqDKmq72IPKCADR6Ia9PTAWWgGDl86nqNrVkpxxxtnvFg3pLa7mOzOv2KWdBVzSfAOolPMO9gDUuKi2FkP5FH/OnjH4XXd4WYACZPCZfLIdqBb80wepPSeSvl0oJuRC0PUVIGO9fYImA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1767600025; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=R/f+veUt3J3okQzihXETeLooJr7pDBz9djjxauU3Umo=; 
+	b=mmB9CgS4V9ulMDf9jpcLGyhqZElSBPXxCuZfLcqMho4gc/L5p/Ue6+VWgKAsn5yEXs2e0toP5+WJ214wEW3pCBuqIHlbqr8J7djxIN61mUaXg0VasKOS5+8AYxeR4pR370ziQjwmyS0SdzQ5GVvUxrd4xTWWtA2ECfL6iHXwGYY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1767600025;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=R/f+veUt3J3okQzihXETeLooJr7pDBz9djjxauU3Umo=;
+	b=GjMQkuLjb9RNIKlKPG7YjOLWe31FcLeyCP6HuzwA+sa73zyUH1dO1RnQlivxO6bq
+	adi80Bw1h0UpcFRMI/JTxvG/vC7kLwmD4lHTR9M2Z39gcp/h5ueNaipz71KzlrcC578
+	8XdmjeBK7nB5OH+69xOGibk1NTc5uNWLDT5iiXWk=
+Received: by mx.zohomail.com with SMTPS id 1767600023562551.5910287978659;
+	Mon, 5 Jan 2026 00:00:23 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Peter Wang =?UTF-8?B?KOeOi+S/oeWPiyk=?= <peter.wang@mediatek.com>,
+ Chunfeng Yun =?UTF-8?B?KOS6keaYpeWzsCk=?= <Chunfeng.Yun@mediatek.com>,
+ "kishon@kernel.org" <kishon@kernel.org>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "broonie@kernel.org" <broonie@kernel.org>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "James.Bottomley@HansenPartnership.com"
+ <James.Bottomley@hansenpartnership.com>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "vkoul@kernel.org" <vkoul@kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chaotian Jing =?UTF-8?B?KOS6leacneWkqSk=?= <Chaotian.Jing@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>
+Subject: Re: [PATCH v4 02/25] dt-bindings: ufs: mediatek,ufs: Complete the binding
+Date: Mon, 05 Jan 2026 09:00:17 +0100
+Message-ID: <5067251.31r3eYUQgx@workhorse>
+In-Reply-To: <e30abc4cbda3d655d9e0ef2beeac1456b93febb5.camel@mediatek.com>
+References: <20251218-mt8196-ufs-v4-0-ddec7a369dd2@collabora.com>
+ <20251218-mt8196-ufs-v4-2-ddec7a369dd2@collabora.com>
+ <e30abc4cbda3d655d9e0ef2beeac1456b93febb5.camel@mediatek.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|AS8PR08MB8492:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3b0738f2-3f43-416a-a442-08de4c074b17
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|52116014|1800799024|366016|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?kVXtC1UQfDg0IU9w/AM2TTWoGWJpHf78jubC9+SZIxjvSIAT3kTpW8OMQYbF?=
- =?us-ascii?Q?jhito11fWF7gaA2LmWwUAj7QywQGycEJ5GRlWxwdHbK2VloLrnmZYFkkRuzJ?=
- =?us-ascii?Q?el4GMnDub9xWRXPY45hnbnhP5W7/CL3tGbEzyGwvr2ESD6fED7msJxJaktbU?=
- =?us-ascii?Q?ZXAScCI23p7dW2WXOKDvi3QN2ZX2jXCogPMpQdjh/peUAzmX+y2UG/XMUd6k?=
- =?us-ascii?Q?bDNZ8OSi7a4PkkfPr8m/hd7OpCrmyTT/mgt1pociOxGy8ApNPCzxvC/mJR0r?=
- =?us-ascii?Q?LXYu+hTCq7wzJaVWIO+1ekXejGb1Yz5cpjEjXb8jCz0pFd+3nFS4yVmNdopv?=
- =?us-ascii?Q?3dRYy9bWkNZ1mx8mm7t8vbv/rONMGXFt4miUBQQYU5mhNsASuGZwxwtJJOIG?=
- =?us-ascii?Q?GKyYeaYrA7h6eq1oj4Cm1D5ZWTiRnp9qeOOev4ff1RkgCg3fQRrJ3GqRMkOs?=
- =?us-ascii?Q?CI3kMibQ4aqXKxv7Q1hMdQ25WDGp9BYYOSU7nqPbd0CPhtK42IAQ15ZVQnxN?=
- =?us-ascii?Q?88urtWMmyFzgoDJiL3dNTmK5ZnWf+00rk9OdrnBpksgtPpe8pTtqB7SQP8lV?=
- =?us-ascii?Q?Rex4C/xggkxVQFoGHaFKTvSo+jKZ7Ra/ql4Ow0DVSm7UgpdcnJ5S/jTYzkdW?=
- =?us-ascii?Q?0E54as+hRMsmxCIxMBDaAPzLhoDsrTchINPVB4arHBj8Ug532vhMREVQiS+Y?=
- =?us-ascii?Q?LXxSl6Nfsv9agC7zJZD6qFvrVqfqsiupomWLEvFwDVO4i+RaRiGLs4xMuaaz?=
- =?us-ascii?Q?Orw4cI+aRNgZqWa5gvlZpKQqLUuN3nUxylp8iUGnqGw7HmCOUXAFFwBt6gQq?=
- =?us-ascii?Q?9sqJH1hWTR5cDp6Rq8pqyqVtPm8nC2mC8S0OPqTwvezEScJngK03Pkr7/ULY?=
- =?us-ascii?Q?ciSWBLifT0jkbarRtOiiX0OH3+HcNGD+gzn+58UdFygrbzMfEU/j3pCfhR7Y?=
- =?us-ascii?Q?T1s0gx2bjKTmN3vkoJ5NvW9id4OWz6NW2wMfAPADGgpv1kmCdPFP7z1oMUwA?=
- =?us-ascii?Q?+82dA66ZSeDOXs4jpUepQpSwjDCg7GD3VKOCtw9L7KZ+DwHOdsu+8R5BfLZV?=
- =?us-ascii?Q?XvCEHcBGZC5IP42CyvwYz/tolun+p/2ekrg/5F2SaRq2f74A4jwBRy3NEkNC?=
- =?us-ascii?Q?bvBNxG0tZGCKDZkne62LoJk6QVubzAyA4tUtjQ+PEf3ubQbu0e3SYGJuji5l?=
- =?us-ascii?Q?QuJdyd7NXnrDbPZSxnwHXNa9WagnWzE6jddxs66tkpHZb//sF26qMZK92aO9?=
- =?us-ascii?Q?C+EasDWnLfkHBnnBMhqUOaXg3RyD32Vodpjm11rQmvpmdakeSNZmMIwTjPH4?=
- =?us-ascii?Q?8jJXbBOTL0gbMMDe7gLpgdfEAjepPlddJd8cliinpjWwUboOZsm42nFZtYZd?=
- =?us-ascii?Q?4ZIJAlXtCDfmPWqhBHVvUfV7e0aSXp2EPmjsEP9yEV+dsYeEkpFV0Rjj570l?=
- =?us-ascii?Q?S0q3Po7euWipEo4B/y7wS8b0GeCiKNRrj7vJtC/Ys5uyZGezGzYqUIRv8D9e?=
- =?us-ascii?Q?zsedApXICJ+FKt9OHr95S5fpD14AI40S8JPc?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(52116014)(1800799024)(366016)(38350700014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Itzb/ZxlFHOBY+tGvajOpLzreBk/XulJ1ovYjoMaiZjSyo9wLVkSnS83Vg8f?=
- =?us-ascii?Q?4I07O5Thbz5kTYsFJ0mBF9orxUi/yfhP6bu5qtiYyO8V7iW1MTzd4JSmfUYh?=
- =?us-ascii?Q?Q+vTxNuG0xUoNC+Z5WXyqnLHr4AbWicpQ5RaoDaM+B0Jq0VAFwXZyrQscrLp?=
- =?us-ascii?Q?h0yYJaTtIg9KibivfpqT5XYf2gLmRmsff1WfRbQpthNAKtllF2VbFUqzVHv1?=
- =?us-ascii?Q?ahOmOOWyGgtT2Hzs10yliXltoGCLiShW8wOmlyzHPDgIATtZTtJXrNpwAyA7?=
- =?us-ascii?Q?VaAahHjEY2eN5LEhu5ochzvGx2yRHESndDg5PDd5HeqTRcbDv2Fm+uXsZKl3?=
- =?us-ascii?Q?UIaA7+h8rYxUym3Luf3qjqF7zwBbmGQU4aN6ik5zfnNMwUjFAyXql1CTveG0?=
- =?us-ascii?Q?SwtMM52tHSrtu448XKLS++xuBhOvpC5yYyjl4lwVMRQ8WoExvY1B5JQkVdie?=
- =?us-ascii?Q?GK2gLtovIFUbl33H52vo+aQXPCCa2Qa4O8Bhlqg9PbERbSGRkZhaVfrqeLMs?=
- =?us-ascii?Q?OWCQlDwS3fV85t7iEwLZKkPcpXmgVZu+1d1+sHm8gIYYsSOBPx5QoR3sJD8R?=
- =?us-ascii?Q?MuVaaj3Ga6kj4oNTteeT9pC7bUOJptWEmSq0wimUp+J/kR/gaKz81keT72C3?=
- =?us-ascii?Q?X0/MzWXTHkPmsKScmW1FLGcOLY0aUevKOzMT+4EBaEDFR4VC5v27HPK51b9m?=
- =?us-ascii?Q?GzwBWEs6IwRuOHu0/+kzNwfOSjKz3btBTAk300gG5rNvLqJrNyCDiIVDrv7C?=
- =?us-ascii?Q?MdT5IwmxjAjkX8mFuSY3GY+5e1Gcn6FLm+zVr2Zz7Esq23aI2Btuqk7h1I+r?=
- =?us-ascii?Q?C/v8SXoT4bRoOuxUM6x6SskvG0DbAi+CVYFfcVYugk1RvxqgbRXS41iHjKn2?=
- =?us-ascii?Q?De9Q2My7XdJwm34scD6YSPcUwzOmKjzW0YCaXrnMtMmwUIK17Lmlvw6XPKhw?=
- =?us-ascii?Q?03B3VnglEe9jq8ZHC0yTCkpd9jE81LRfeD+9vmS998CJfyOkKuxXeZvGUQb7?=
- =?us-ascii?Q?cGb1l/eh9AksBtRie1NIYvK6OeIajEJ42IKMFrtn/Rr5ehHStrwMCVBdWtR8?=
- =?us-ascii?Q?zVZtytHALBO3Rk+UHsMcG74WaJziNGng4nFkacHHbvvyJ0eRTrL+n5gWXapz?=
- =?us-ascii?Q?rsB9AKCnIsKUQDV3aE8CgU4ILoUt3jNnC7kcCAnB9YerKtNZ8FCdofu7pmQ2?=
- =?us-ascii?Q?BM80dRzvz+PK2tM+RKU5wXYqizA+LSulAh0sk6MOtPGGAf+OC070Ki+y3tqT?=
- =?us-ascii?Q?vsgpDJ/Z9CG/7R/W0sDQNbUp7K02EGxx3aojY/haU/zx/SC9GFOjBKykNqBS?=
- =?us-ascii?Q?Ze2aSBYqtbG+1tf+lS/lBytSLvvMZnRfntbvkTob/IclFIBrGecC17PhZjAE?=
- =?us-ascii?Q?zt2aheWFFXqJrdtKBFT6+a32Yr99I4MnOgYTNMBvRC44ABNJtJM+09M3DcAn?=
- =?us-ascii?Q?ihASN5mdm3JvwCdOe6D4YrHyUV+lwWS0rKOO+jq4AhrHQFFCk5RA7S0VkUdr?=
- =?us-ascii?Q?vLQnV/BTv0hbh4LfH7j765XUWRZKiaLUh+mDjgoC/I33x46MgOrSTayu8k59?=
- =?us-ascii?Q?F1aMNxyEpX5/ZAisU87hLuVwUYs4faxskT/mo0jvV7mjQLJcTxb5yaPU2JaJ?=
- =?us-ascii?Q?8vnRilM3AGbsg0RIpBb20BZzW1fTPwWdhuLsVGAdQDw0LTY5RrsftCf/8eZQ?=
- =?us-ascii?Q?C+bF9znObfKq/Wl3ipce40mk/iJVSYEhek5qeZsFa3Uk7YJm7jq+35/qPC3S?=
- =?us-ascii?Q?BnA42Raav05pARi7jAwEksa+1r4F8gA=3D?=
-X-OriginatorOrg: iopsys.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3b0738f2-3f43-416a-a442-08de4c074b17
-X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Jan 2026 03:05:34.4096
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 1B08aaaxbJGbw1iWRT9c1EKlITc8EToocMvBP3tf7wZIWBsVnVcdeN9SptXuylP38OJcv5l1SRek0jY8DFtw64IjSpN72Ua1WvKHoXtzHjY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB8492
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260104_190545_091106_F1CA66D4 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260105_000038_427956_872CEBD7 
+X-CRM114-Status: GOOD (  39.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -168,36 +104,259 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch updates EN7523 dtsi to reflect the reset-controller
-support for EN7523 SoC.
+On Wednesday, 24 December 2025 06:33:42 Central European Standard Time Chao=
+tian Jing (=E4=BA=95=E6=9C=9D=E5=A4=A9) wrote:
+> On Thu, 2025-12-18 at 13:54 +0100, Nicolas Frattaroli wrote:
+> > External email : Please do not click links or open attachments until
+> > you have verified the sender or the content.
+> >=20
+> >=20
+> > As it stands, the mediatek,ufs.yaml binding is startlingly
+> > incomplete.
+> > Its one example, which is the only real "user" of this binding in
+> > mainline, uses the deprecated freq-table-hz property.
+> >=20
+> > The resets, of which there are three optional ones, are completely
+> > absent.
+> >=20
+> > The clock description for MT8195 is incomplete, as is the one for
+> > MT8192. It's not known if the one clock binding for MT8183 is even
+> > correct, but I do not have access to the necessary code and
+> > documentation to find this out myself.
+> >=20
+> > The power supply situation is not much better; the binding describes
+> > one
+> > required power supply, but it's the UFS card supply, not any of the
+> > supplies feeding the controller silicon.
+> >=20
+> > No second example is present in the binding, making verification
+> > difficult.
+> >=20
+> > Disallow freq-table-hz and move to operating-points-v2. It's fine to
+> > break compatibility here, as the binding is currently unused and
+> > would
+> > be impossible to correctly use in its current state.
+> >=20
+> > Add the three resets and the corresponding reset-names property.
+> > These
+> > resets appear to be optional, i.e. not required for the functioning
+> > of
+> > the device.
+> >=20
+> > Move the list of clock names out of the if condition, and expand it
+> > for
+> > the confirmed clocks I could find by cross-referencing several clock
+> > drivers. For MT8195, increase the minimum number of clocks to include
+> > the crypt and rx_symbol ones, as they're internal to the SoC and
+> > should
+> > always be present, and should therefore not be omitted.
+> >=20
+> > MT8192 gets to have at least 3 clocks, as these were the ones I could
+> > quickly confirm from a glance at various trees. I can't say this was
+> > an
+> > exhaustive search though, but it's better than the current situation.
+> >=20
+> > Properly document all supplies, with which pin name on the SoCs they
+> > supply. Complete the example with them.
+> >=20
+> > Also add a MT8195 example to the binding, using supply labels that I
+> > am
+> > pretty sure would be the right ones for e.g. the Radxa NIO 12L.
+> >=20
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  .../devicetree/bindings/ufs/mediatek,ufs.yaml      | 117
+> > ++++++++++++++++++---
+> >  1 file changed, 100 insertions(+), 17 deletions(-)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> > b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> > index 15c347f5e660..e0aef3e5f56b 100644
+> > --- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> > +++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> > @@ -19,11 +19,28 @@ properties:
+> >=20
+> >    clocks:
+> >      minItems: 1
+> > -    maxItems: 8
+> > +    maxItems: 13
+> >=20
+> >    clock-names:
+> >      minItems: 1
+> > -    maxItems: 8
+> > +    items:
+> > +      - const: ufs
+> > +      - const: ufs_aes
+> > +      - const: ufs_tick
+> > +      - const: unipro_sysclk
+> > +      - const: unipro_tick
+> > +      - const: unipro_mp_bclk
+> > +      - const: ufs_tx_symbol
+> > +      - const: ufs_mem_sub
+> > +      - const: crypt_mux
+> > +      - const: crypt_lp
+> > +      - const: crypt_perf
+> > +      - const: ufs_rx_symbol0
+> > +      - const: ufs_rx_symbol1
+> > +
+> > +  operating-points-v2: true
+> > +
+> > +  freq-table-hz: false
+> >=20
+> >    phys:
+> >      maxItems: 1
+> > @@ -31,8 +48,36 @@ properties:
+> >    reg:
+> >      maxItems: 1
+> >=20
+> > +  resets:
+> > +    items:
+> > +      - description: reset for the UniPro layer
+> > +      - description: reset for the cryptography engine
+> > +      - description: reset for the host controller
+> > +
+> > +  reset-names:
+> > +    items:
+> > +      - const: unipro
+> > +      - const: crypto
+> > +      - const: hci
+> > +
+> > +  avdd09-supply:
+> > +    description: Phandle to the 0.9V supply powering the AVDD09_UFS
+> > pin
+> > +
+> > +  avdd12-supply:
+> > +    description: Phandle to the 1.2V supply powering the AVDD12_UFS
+> > pin
+> > +
+> > +  avdd12-ckbuf-supply:
+> > +    description: Phandle to the 1.2V supply powering the
+> > AVDD12_CKBUF_UFS pin
+> > +
+> > +  avdd18-supply:
+> > +    description: Phandle to the 1.8V supply powering the AVDD18_UFS
+> > pin
+> > +
+> >    vcc-supply: true
+> >=20
+> > +  vccq-supply: true
+> > +
+> > +  vccq2-supply: true
+> > +
+> >    mediatek,ufs-disable-mcq:
+> >      $ref: /schemas/types.yaml#/definitions/flag
+> >      description: The mask to disable MCQ (Multi-Circular Queue) for
+> > UFS host.
+> > @@ -54,29 +99,41 @@ allOf:
+> >        properties:
+> >          compatible:
+> >            contains:
+> > -            enum:
+> > -              - mediatek,mt8195-ufshci
+> > +            const: mediatek,mt8183-ufshci
+> >      then:
+> >        properties:
+> >          clocks:
+> > -          minItems: 8
+> > +          maxItems: 1
+> >          clock-names:
+> >            items:
+> >              - const: ufs
+> > -            - const: ufs_aes
+> > -            - const: ufs_tick
+> > -            - const: unipro_sysclk
+> > -            - const: unipro_tick
+> > -            - const: unipro_mp_bclk
+> > -            - const: ufs_tx_symbol
+> > -            - const: ufs_mem_sub
+> > -    else:
+> > +        avdd12-ckbuf-supply: false
+> > +  - if:
+> > +      properties:
+> > +        compatible:
+> > +          contains:
+> > +            const: mediatek,mt8192-ufshci
+> > +    then:
+> >        properties:
+> >          clocks:
+> > -          maxItems: 1
+> > +          minItems: 3
+> > +          maxItems: 3
+> > +        clocks-names:
+> > +          minItems: 3
+> > +          maxItems: 3
+> > +        avdd09-supply: false
+> > +  - if:
+> > +      properties:
+> > +        compatible:
+> > +          contains:
+> > +            const: mediatek,mt8195-ufshci
+> > +    then:
+> > +      properties:
+> > +        clocks:
+> > +          minItems: 13
+> >          clock-names:
+> > -          items:
+> > -            - const: ufs
+> > +          minItems: 13
+> > +        avdd09-supply: false
+> >=20
+> >  examples:
+> >    - |
+> > @@ -95,8 +152,34 @@ examples:
+> >=20
+> >              clocks =3D <&infracfg_ao CLK_INFRA_UFS>;
+> >              clock-names =3D "ufs";
+> > -            freq-table-hz =3D <0 0>;
+> >=20
+> >              vcc-supply =3D <&mt_pmic_vemc_ldo_reg>;
+> >          };
+> >      };
+> > +  - |
+> > +    ufshci@11270000 {
+> > +        compatible =3D "mediatek,mt8195-ufshci";
+> > +        reg =3D <0x11270000 0x2300>;
+> > +        interrupts =3D <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH>;
+> > +        phys =3D <&ufsphy>;
+> > +        clocks =3D <&infracfg_ao 63>, <&infracfg_ao 64>, <&infracfg_ao
+> > 65>,
+> > +                 <&infracfg_ao 54>, <&infracfg_ao 55>,
+> > +                 <&infracfg_ao 56>, <&infracfg_ao 90>,
+> > +                 <&infracfg_ao 93>, <&topckgen 60>, <&topckgen 152>,
+> > +                 <&topckgen 125>, <&topckgen 212>, <&topckgen 215>;
+> > +        clock-names =3D "ufs", "ufs_aes", "ufs_tick",
+> > +                      "unipro_sysclk", "unipro_tick",
+> > +                      "unipro_mp_bclk", "ufs_tx_symbol",
+> > +                      "ufs_mem_sub", "crypt_mux", "crypt_lp",
+> > +                      "crypt_perf", "ufs_rx_symbol0",
+> > "ufs_rx_symbol1";
+> > +
+> > +        operating-points-v2 =3D <&ufs_opp_table>;
+> > +
+> > +        avdd12-supply =3D <&mt6359_vrf12_ldo_reg>;
+> > +        avdd12-ckbuf-supply =3D <&mt6359_vbbck_ldo_reg>;
+> > +        avdd18-supply =3D <&mt6359_vio18_ldo_reg>;
+> Do not add the avdd12/avdd12-clkbuf/avdd18! these analog power cannot
+> be power off. even that the system is in suspend state!
 
-Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm/boot/dts/airoha/en7523.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+That does not matter. If a supply cannot be powered off, it should
+have the regulator-always-on property in the DTS. The relationship
+still needs to be properly described in the binding. If you want the
+driver to not do those calls, then please comment this on the driver
+series.
 
-diff --git a/arch/arm/boot/dts/airoha/en7523.dtsi b/arch/arm/boot/dts/airoha/en7523.dtsi
-index 31191b8d1430..115cc44093ab 100644
---- a/arch/arm/boot/dts/airoha/en7523.dtsi
-+++ b/arch/arm/boot/dts/airoha/en7523.dtsi
-@@ -4,6 +4,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/clock/en7523-clk.h>
-+#include <dt-bindings/reset/airoha,en7523-reset.h>
- 
- / {
- 	interrupt-parent = <&gic>;
-@@ -91,6 +92,7 @@ scu: system-controller@1fa20000 {
- 		reg = <0x1fa20000 0x400>,
- 		      <0x1fb00000 0x1000>;
- 		#clock-cells = <1>;
-+		#reset-cells = <1>;
- 	};
- 
- 	gic: interrupt-controller@9000000 {
--- 
-2.51.0
+> > +        vcc-supply =3D <&mt6359_vemc_1_ldo_reg>;
+> > +        vccq2-supply =3D <&mt6359_vufs_ldo_reg>;
+> > +
+> > +        mediatek,ufs-disable-mcq;
+> > +    };
+> >=20
+> > --
+> > 2.52.0
+> >=20
+>=20
+
+
+
 
 
