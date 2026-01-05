@@ -4,92 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9EB7CD0407
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 21:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 536C3CD0416
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 22:16:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p8u80z+tPf43NlNwf3gyc1tmFsPKFLQnzJ5dp6IiBCs=; b=NJ2wGWs05R2yQX5AdA01iJdK/1
-	c134BozWKv6z6LkMQXU7aHQMpVTgCC30Pc5MAxt7mdpzHvW+hrjGv1X3ohNc9lloKq68dK/JmU90W
-	d+Grj8l/Z+9SvJf88ryJvpoAtiUxtm70Otvd4SrVQj++xGzdgVnlA61li4nWeSOHJ3NpgZEzCHQG8
-	2SEgi3EJOXfurIWf1NTGbauvuZ7Xegh8NjdYyv1YGxh3tmVlD5RKG8+hkgxraYHTaGV3qhLeNd0Hf
-	p9xFFvywn/ZLzl+Ah8XKlpL46Fy74d5U3t3eHXqdZ9U7e24E+LB8tgpUAHsXE6n7mefp0d7WTANFf
-	XQDuaKyg==;
+	bh=CnUVUqPqeZj3uBC9OMfEyvC2v1C7JsZ9WatRVB2qxEc=; b=K70JN4hIkc+tRzopJA/HpQEKlj
+	UosyBkdbkyh3GAkOOXETIUAtsjen0+PSWb9oJGYHsD24eU1b9vqq4wW4ntaBUP9YMwXJzTOyEOLQk
+	72tmtuX7gRq13EQ2F23bOjx8P0Uja//BxhvujiiZ6ygE318ZGXClm95/kz7wcCf05gUSFU7cJiaVU
+	9rgMAYTrWEUUQ3ooIebkL7vqCNYnMm85TUoCg56FbVbPOSOZwag43jzftOXz+Kn3YRc/w5ITXlM6h
+	phM7kLJrTceUHjDEJWgtRL8tgOfbmiJR01lHoyjSanEn3+f9m0CItY52P4BKpH2IlvejdvoBuA8O4
+	uoDU4KeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcsCO-0000000C8Ap-0Apk;
-	Mon, 05 Jan 2026 21:33:12 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1vcssR-0000000C9T0-3FlC;
+	Mon, 05 Jan 2026 22:16:39 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcsCL-0000000C8A9-35Mt
+	id 1vcssP-0000000C9Sf-21DO
 	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Jan 2026 21:33:10 +0000
-Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2a07f8dd9cdso3196915ad.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Jan 2026 13:33:09 -0800 (PST)
+	Mon, 05 Jan 2026 22:16:38 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2a0bb2f093aso3594055ad.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Jan 2026 14:16:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1767648789; x=1768253589; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1767651397; x=1768256197; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=p8u80z+tPf43NlNwf3gyc1tmFsPKFLQnzJ5dp6IiBCs=;
-        b=zzYciquNB8WHPeXYeuiiqNzv8cfMLaThzqhT3k/LWnYo2NdmSfw2iByXYP6nfiip0H
-         2QkfcGn0YlGH8l887Sq7iITzUTdDDbNDjGjSoPIRJFF6XIlqLZvX8zy0rMrrrqzG2oqC
-         rd/Hl6QR4stMtE+oy+wrIAJqscPPEsuQnXjlMDNQLXwJ8mNNpsuBsvR0VBIiat3hz+i7
-         0hKSk0o6OAl9wh+evXlTpMRSmhxwyUOfs+/gLbDNXfpcBTUxglbZtd3/xAWipFpSYHe7
-         zrTJL225zEFwbjX35JZ6k7Ska+wtAawrUxpYR8Xv1U8/7P/bIECY5IaPc3kVexAAS0p+
-         ooNw==
+        bh=CnUVUqPqeZj3uBC9OMfEyvC2v1C7JsZ9WatRVB2qxEc=;
+        b=gQVg8iLMq0gHVhLr0uvaiqBJwuLJraVfE+U+g+mBUdwS6wuysZGWiWnn3OWhpm1cdr
+         lbWYGiSngcjQDwMsUXP61p0wdPqNflvdyIGH9OMGaTr65pxfoLjNqHxNx1qyUnJ4xkLa
+         O0bFZAEJm8c7xpJc8jA8vJqkMMFE1Ufz4iyk3tZa5zn9lBmgyT6f73hu2rGuX4l6H9YK
+         NXNvKybDXV4EnogtgXZFhdqmU/FtQf8dAkUkdAtF/5b7x1j1TmJrCL6yJb8oXdWXdWcy
+         gq5WuldQkmMFLXxql3lVUZ/5UsyKI2lM0XXlFVYm41slFSWbfqG9zXvKfd9R4Cjy+wiI
+         hyKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767648789; x=1768253589;
+        d=1e100.net; s=20230601; t=1767651397; x=1768256197;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=p8u80z+tPf43NlNwf3gyc1tmFsPKFLQnzJ5dp6IiBCs=;
-        b=eCnGGpWj9TICl38cV7fRf7znBDkYLQ04+DkwVhQ6KJXycxlW4PQAiGwuGYg2Vhbrw7
-         orKbNo/ipMtSy02W4n7j05Xt8R7rac6GfQrZs2D89QPisWH1ThJKiwblRVjtwvfVrdRJ
-         TsbIFN8fvudxgJafDORwBMJvb5jsUPdH8I0anSLZcJealZS/0X4rp8O9bpki1xNiWp03
-         7721U+h9BrCQfvoXCLmOoIn0CcH4Lc4JjhwKFJ4o1SvXHDMITCIo05yvTBg1eW2oJf8W
-         2CtMjmlbRFkOKmM192Y6K32omJoq8kj71fQz1WJA27HDed3ZshSv5Ni0QD2MlfKE4fUC
-         Mf5Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXC1qzoA6AZHC7GQrOFfMbtFkqevjcvCX7M1PtT9yJ4f0PetoG282WrSsmYpuvvYHo5NWsi4IcJpSqug7u/JA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxP+qWE7YrvbZpC06QJVc6DE6qAowXQx7C+2KJVTOfJyiPU1Rte
-	9lczix3E7iPPs1Tlh8FOeVoUYA476VFqFYkA2nV4kH1FyO6Q5/mzVirGRQ6SKy0/kySdYC2XQFe
-	i9KwLmaA=
-X-Gm-Gg: AY/fxX69wKhBxr2hLMqU6Ryqi6dbIXWFjtC23WPVPQ3tHxUAnxcsdnerSH8tBJlBC+c
-	9WfGU2PxoNJs6Wfc58k4AcI5yJiBRTVNvlYLQHxxF2IS571x7A+wWYj50j7QSZj7jkqflihhcdX
-	Ho2MWjgTVKUn3RBIiijM7Fds3d+zb7J1izn74SQ6pU4P54jd2UCD20FjKPUCXyE/qrrskKT5Gn5
-	s/01yChC9Buui6Wu+lAhpe7w9fYAcL1PO2kKeQb1Jn8XluDb7SwsrrCT9i/zddhG2hT//IuAp90
-	hlX0lIf1ad4nyoTTManoO02cbJkGo6DVEsKXXP6ypqqRrSXgoNZ/urWscI2tbt7A5xJ9IP+V7M8
-	RfCgF8ywAXRjGM+zQGDmCMsRWrAXzaGV21yEwAJB2K0bvTcJHYJ/plhsNhUCePF0VlbiOr1Aceg
-	PuNsk7bHPoz8z3Jw==
-X-Google-Smtp-Source: AGHT+IF0bVODhApERlsNCQrrCwCXh5Bc7cgqZB6OPyCG+4xaL0MSIbArxA2Sg2gVDzhacygsGqC4xA==
-X-Received: by 2002:a17:902:fe04:b0:2a1:2b5f:d16b with SMTP id d9443c01a7336-2a3e2cefe5fmr6801155ad.31.1767648788754;
-        Mon, 05 Jan 2026 13:33:08 -0800 (PST)
+        bh=CnUVUqPqeZj3uBC9OMfEyvC2v1C7JsZ9WatRVB2qxEc=;
+        b=tZEb8pRo4QTtMOBsu83hWa1XfH8L+W6dWuuSKKbknp18bHO2Sul1aFXJNkgM9clpoE
+         KwPTy2dygc93D1FMwyDM0Krso1/yAbD3o5zMC3gxqnmHceyRt8iwcTP4H2fv9eYFMgDr
+         e2bF3HRmUNgRgnqYxbl+82v4S6sjv6jU5ChechTdMiP33Z8vvY9kyjxAAfCgpTKW54Ho
+         PaspHwIFXoQDpTxXrmnpWsPxKGk7ePuO4rgKQT0XDZImUHgNqLCGg2uxGaIKUYmC3CPl
+         +7fvWS68uKFYWFtlHcCq7gDaV//6mJFv776ZiUaAhtXJ0tpfFBRY+Nj0bRdIRhIWXu2o
+         tb9w==
+X-Forwarded-Encrypted: i=1; AJvYcCWK7ALxF8LEMaBADBQHHwn9w1HdmYEpKDu562PszzkzD96R4sUst0hp1adfJJFDu7xwWzzum7sYtEFht2X5Lg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzz2UEVHIJpq6u4m8gyqzOrISUMjIXPCG8lXU9eTGFj0g34Vblh
+	Ci1AKeU4/MI3EU4Jb2m5Xl+PT2OwNSZ94dSors390K2PpKvbeOUE3n51CEDO4FHR9l0=
+X-Gm-Gg: AY/fxX5q5MSv6nou129vQFwSC1TAeDSIMmETFvsGORKElYCeDXi3QquGoo9xPnJ0zAo
+	gbyjg0rmGBD4YxzBb28DDwXbJV2d0gMltCxATCwcWCyA2HRlu192uhZbwkTq/kElq3pATt3kRgq
+	f6Oa1OmUjXzUHVkJiNynuF2kajryhkB1r3NSw8JqIjxsNQlvhqcUNCb5H3kWnX1uqzbDHMzMVGx
+	FYVPM2g4p+pPKF6bC8Q+JEcVV41YLzwWDfsQ9KW4xFD4JxpDHa4quzViFkgkfZ/2GseYDtDPAwm
+	4nbNLWs7Pr6c4ErfUWuUmqLnmqt1ddzUUQk9Q+PQd4lcf9nGW5mAXT1vWGrN1bNx54Fq+6fBi5H
+	SalaHt0enf7KFw1YkK+yKfZ20eDTphztKwCfBkIxjcyZKPuMS2HFef/yu7URzWNRExVbaxg/xuN
+	tUyqaJ21NYI5hghnpTOhqf67uq
+X-Google-Smtp-Source: AGHT+IFbsf18BdWtCP1OIiQqEHJAmtLTt1hAikD6D8lF6RRDdyMObb7WGPdWGrrGijJ79i/5gVbYuA==
+X-Received: by 2002:a17:903:2c8:b0:2a0:a92c:2cb6 with SMTP id d9443c01a7336-2a3e2cfd028mr8149165ad.36.1767651396518;
+        Mon, 05 Jan 2026 14:16:36 -0800 (PST)
 Received: from p14s ([2604:3d09:148c:c800:3f6b:5551:220f:8f13])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2a3e3c3a512sm1849275ad.10.2026.01.05.13.33.07
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2a3e3c4893dsm2212295ad.28.2026.01.05.14.16.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Jan 2026 13:33:07 -0800 (PST)
-Date: Mon, 5 Jan 2026 14:33:05 -0700
+        Mon, 05 Jan 2026 14:16:36 -0800 (PST)
+Date: Mon, 5 Jan 2026 15:16:33 -0700
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+To: Tzung-Bi Shih <tzungbi@kernel.org>
 Cc: Bjorn Andersson <andersson@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	linux-remoteproc@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] remoteproc: mtk_scp: Simplify with scoped for each
- OF child loop
-Message-ID: <aVwuEZCAjscaZs7m@p14s>
-References: <20260102124827.64355-3-krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: [PATCH] remoteproc: mediatek: Break lock dependency to
+ `prepare_lock`
+Message-ID: <aVw4QUp6j4vBOrOF@p14s>
+References: <20251229043146.4102967-1-tzungbi@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260102124827.64355-3-krzysztof.kozlowski@oss.qualcomm.com>
+In-Reply-To: <20251229043146.4102967-1-tzungbi@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260105_133309_811582_F822F10F 
-X-CRM114-Status: GOOD (  17.27  )
+X-CRM114-CacheID: sfid-20260105_141637_561169_7528156B 
+X-CRM114-Status: GOOD (  22.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,70 +102,195 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 02, 2026 at 01:48:28PM +0100, Krzysztof Kozlowski wrote:
-> Use scoped for-each loop when iterating over device nodes to make code a
-> bit simpler.
-> 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-> ---
->  drivers/remoteproc/mtk_scp.c | 7 +------
->  1 file changed, 1 insertion(+), 6 deletions(-)
->
+On Mon, Dec 29, 2025 at 04:31:46AM +0000, Tzung-Bi Shih wrote:
+> `scp_ipi_send` acquires `prepare_lock` via `clk_prepare_enable` while
+> the caller often holds `ec_dev->lock` (e.g., `cros_ec_cmd_xfer`).  The
+> reverse dependency exists where `clk_prepare` can trigger operations
+> that eventually take `ec_dev->lock` (e.g., via sysfs/regulator/genpd).
 
-I have applied both patches.
+What operation would that be?  Please be specific so that I can trace the code.
+
+> 
+> Move clock prepare / unprepare operations to remoteproc prepare() /
+> unprepare() callbacks to break the lock dependency from `ec_dev->lock`
+> to `prepare_lock`.
+
+With the information presented to me, I don't see how doing that changes
+anything.  @prepare_lock is simply held for a longer period of time.  
 
 Thanks,
 Mathieu
- 
+
+> 
+> This breaks the dependency chain in the lockdep report:
+> > WARNING: possible circular locking dependency detected
+> > ...
+> > the existing dependency chain (in reverse order) is:
+> > ...
+> > -> #0 (prepare_lock){+.+.}-{3:3}:
+> >        __lock_acquire
+> >        lock_acquire
+> >        __mutex_lock_common
+> >        mutex_lock_nested
+> >        clk_prepare
+> >        scp_ipi_send [mtk_scp_ipi]
+> >        scp_send_ipi [mtk_scp]
+> >        mtk_rpmsg_send [mtk_rpmsg]
+> >        rpmsg_send [rpmsg_core]
+> >        cros_ec_pkt_xfer_rpmsg [cros_ec_rpmsg]
+> 
+> Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
+> ---
+>  drivers/remoteproc/mtk_scp.c     | 39 +++++++++++++++++++++++---------
+>  drivers/remoteproc/mtk_scp_ipi.c |  4 ++--
+>  2 files changed, 30 insertions(+), 13 deletions(-)
+> 
 > diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index db8fd045468d..328541e62158 100644
+> index db8fd045468d..98d00bd5200c 100644
 > --- a/drivers/remoteproc/mtk_scp.c
 > +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -1287,7 +1287,6 @@ static int scp_add_multi_core(struct platform_device *pdev,
->  	struct device *dev = &pdev->dev;
->  	struct device_node *np = dev_of_node(dev);
->  	struct platform_device *cpdev;
-> -	struct device_node *child;
->  	struct list_head *scp_list = &scp_cluster->mtk_scp_list;
->  	const struct mtk_scp_of_data **cluster_of_data;
->  	struct mtk_scp *scp, *temp;
-> @@ -1296,11 +1295,10 @@ static int scp_add_multi_core(struct platform_device *pdev,
+> @@ -283,7 +283,7 @@ static irqreturn_t scp_irq_handler(int irq, void *priv)
+>  	struct mtk_scp *scp = priv;
+>  	int ret;
 >  
->  	cluster_of_data = (const struct mtk_scp_of_data **)of_device_get_match_data(dev);
+> -	ret = clk_prepare_enable(scp->clk);
+> +	ret = clk_enable(scp->clk);
+>  	if (ret) {
+>  		dev_err(scp->dev, "failed to enable clocks\n");
+>  		return IRQ_NONE;
+> @@ -291,7 +291,7 @@ static irqreturn_t scp_irq_handler(int irq, void *priv)
 >  
-> -	for_each_available_child_of_node(np, child) {
-> +	for_each_available_child_of_node_scoped(np, child) {
->  		if (!cluster_of_data[core_id]) {
->  			ret = -EINVAL;
->  			dev_err(dev, "Not support core %d\n", core_id);
-> -			of_node_put(child);
->  			goto init_fail;
->  		}
+>  	scp->data->scp_irq_handler(scp);
 >  
-> @@ -1308,7 +1306,6 @@ static int scp_add_multi_core(struct platform_device *pdev,
->  		if (!cpdev) {
->  			ret = -ENODEV;
->  			dev_err(dev, "Not found platform device for core %d\n", core_id);
-> -			of_node_put(child);
->  			goto init_fail;
->  		}
+> -	clk_disable_unprepare(scp->clk);
+> +	clk_disable(scp->clk);
 >  
-> @@ -1317,14 +1314,12 @@ static int scp_add_multi_core(struct platform_device *pdev,
->  		if (IS_ERR(scp)) {
->  			ret = PTR_ERR(scp);
->  			dev_err(dev, "Failed to initialize core %d rproc\n", core_id);
-> -			of_node_put(child);
->  			goto init_fail;
->  		}
+>  	return IRQ_HANDLED;
+>  }
+> @@ -665,7 +665,7 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
+>  	struct device *dev = scp->dev;
+>  	int ret;
 >  
->  		ret = rproc_add(scp->rproc);
->  		if (ret) {
->  			dev_err(dev, "Failed to add rproc of core %d\n", core_id);
-> -			of_node_put(child);
->  			scp_free(scp);
->  			goto init_fail;
->  		}
+> -	ret = clk_prepare_enable(scp->clk);
+> +	ret = clk_enable(scp->clk);
+>  	if (ret) {
+>  		dev_err(dev, "failed to enable clocks\n");
+>  		return ret;
+> @@ -680,7 +680,7 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
+>  
+>  	ret = scp_elf_load_segments(rproc, fw);
+>  leave:
+> -	clk_disable_unprepare(scp->clk);
+> +	clk_disable(scp->clk);
+>  
+>  	return ret;
+>  }
+> @@ -691,14 +691,14 @@ static int scp_parse_fw(struct rproc *rproc, const struct firmware *fw)
+>  	struct device *dev = scp->dev;
+>  	int ret;
+>  
+> -	ret = clk_prepare_enable(scp->clk);
+> +	ret = clk_enable(scp->clk);
+>  	if (ret) {
+>  		dev_err(dev, "failed to enable clocks\n");
+>  		return ret;
+>  	}
+>  
+>  	ret = scp_ipi_init(scp, fw);
+> -	clk_disable_unprepare(scp->clk);
+> +	clk_disable(scp->clk);
+>  	return ret;
+>  }
+>  
+> @@ -709,7 +709,7 @@ static int scp_start(struct rproc *rproc)
+>  	struct scp_run *run = &scp->run;
+>  	int ret;
+>  
+> -	ret = clk_prepare_enable(scp->clk);
+> +	ret = clk_enable(scp->clk);
+>  	if (ret) {
+>  		dev_err(dev, "failed to enable clocks\n");
+>  		return ret;
+> @@ -734,14 +734,14 @@ static int scp_start(struct rproc *rproc)
+>  		goto stop;
+>  	}
+>  
+> -	clk_disable_unprepare(scp->clk);
+> +	clk_disable(scp->clk);
+>  	dev_info(dev, "SCP is ready. FW version %s\n", run->fw_ver);
+>  
+>  	return 0;
+>  
+>  stop:
+>  	scp->data->scp_reset_assert(scp);
+> -	clk_disable_unprepare(scp->clk);
+> +	clk_disable(scp->clk);
+>  	return ret;
+>  }
+>  
+> @@ -909,7 +909,7 @@ static int scp_stop(struct rproc *rproc)
+>  	struct mtk_scp *scp = rproc->priv;
+>  	int ret;
+>  
+> -	ret = clk_prepare_enable(scp->clk);
+> +	ret = clk_enable(scp->clk);
+>  	if (ret) {
+>  		dev_err(scp->dev, "failed to enable clocks\n");
+>  		return ret;
+> @@ -917,12 +917,29 @@ static int scp_stop(struct rproc *rproc)
+>  
+>  	scp->data->scp_reset_assert(scp);
+>  	scp->data->scp_stop(scp);
+> -	clk_disable_unprepare(scp->clk);
+> +	clk_disable(scp->clk);
+>  
+>  	return 0;
+>  }
+>  
+> +static int scp_prepare(struct rproc *rproc)
+> +{
+> +	struct mtk_scp *scp = rproc->priv;
+> +
+> +	return clk_prepare(scp->clk);
+> +}
+> +
+> +static int scp_unprepare(struct rproc *rproc)
+> +{
+> +	struct mtk_scp *scp = rproc->priv;
+> +
+> +	clk_unprepare(scp->clk);
+> +	return 0;
+> +}
+> +
+>  static const struct rproc_ops scp_ops = {
+> +	.prepare	= scp_prepare,
+> +	.unprepare	= scp_unprepare,
+>  	.start		= scp_start,
+>  	.stop		= scp_stop,
+>  	.load		= scp_load,
+> diff --git a/drivers/remoteproc/mtk_scp_ipi.c b/drivers/remoteproc/mtk_scp_ipi.c
+> index c068227e251e..7a37e273b3af 100644
+> --- a/drivers/remoteproc/mtk_scp_ipi.c
+> +++ b/drivers/remoteproc/mtk_scp_ipi.c
+> @@ -171,7 +171,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
+>  	    WARN_ON(len > scp_sizes->ipi_share_buffer_size) || WARN_ON(!buf))
+>  		return -EINVAL;
+>  
+> -	ret = clk_prepare_enable(scp->clk);
+> +	ret = clk_enable(scp->clk);
+>  	if (ret) {
+>  		dev_err(scp->dev, "failed to enable clock\n");
+>  		return ret;
+> @@ -211,7 +211,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
+>  
+>  unlock_mutex:
+>  	mutex_unlock(&scp->send_lock);
+> -	clk_disable_unprepare(scp->clk);
+> +	clk_disable(scp->clk);
+>  
+>  	return ret;
+>  }
 > -- 
-> 2.51.0
+> 2.52.0.351.gbe84eed79e-goog
 > 
 
