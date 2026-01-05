@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75F46C79F9D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 16:00:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A9EFC79FA7
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 17:26:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3WeX3bT5s+OT8VIdljNj7+krconZGdqv+VIUg1emz0E=; b=k+qIJOPOOED1HY
-	A4ennZISjHOjmKSSYcerfFiXuqBmp1o7+e2lINEkL4rlmPX7af/tm1TyLy+69PHpU7mDuCRwhquSv
-	vA6qpIbBZKOFKSiUkMVpQhl/3tGMHVKBUq0SIIfKHmuDiapuGmGUD7IMpIBX5GcVaEU3PoFUM/fKG
-	GHmx2kPaYLXimyJlc5TsQRwH0XuWR+gNeGxiziOkeu6ULOr7SreHvKUeZ3Lekk5Ih8g68geZhgAMD
-	bVdK8G9DqkUrf1J/CSztnX0V5LsjIKzHklJePXUxVepr+DryvZkRYru92+Q+ow7eAbCZcA2lJkghX
-	e5Kol59X2ZkGnZLL1qjw==;
+	List-Owner; bh=nU4oGOpJwp3Q/MANXI0zxfwIDFbVnVE/U6jKEshkPTQ=; b=d0tAH98fhHjnMu
+	5zNmntMwksg3HXemdpz9BIzO9yz7NsJJ15W9jKSmZw3/gPewI8Dvqvl5ODTm36YoKoo0TEyghBNCM
+	/CyVghOvi9bX7mRL04KPlD0Z0hFf3CoYlo0V9Ox/RYicAsHP2b4QQPTysuf3KHxh1IyrzuwILRcWE
+	pfhD5Xaq+ouBKrcxXQUYgnqLgNwEIlL9Ec/y5wzWplhRJamDRfc5lIOdtKvvwVplztdV8lpvDJBHw
+	IZ0IodFdZMgiL6Ty3gVjEo9J1hqCI5QvUQNLuVpiFZrr7qb/ZXkr8ifdfHFq3891LZq5BLXXLEGaZ
+	ZTBcGMK0EPFwv1QTZiWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcn0H-0000000Bh7s-3r4l;
-	Mon, 05 Jan 2026 16:00:21 +0000
-Received: from out162-62-57-64.mail.qq.com ([162.62.57.64])
+	id 1vcoLy-0000000BpYQ-2xbj;
+	Mon, 05 Jan 2026 17:26:50 +0000
+Received: from xmbghk7.mail.qq.com ([43.163.128.47])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcn03-0000000Bgwv-1CmY;
-	Mon, 05 Jan 2026 16:00:09 +0000
+	id 1vcoLs-0000000BpWN-14V3;
+	Mon, 05 Jan 2026 17:26:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1767628796; bh=3WeX3bT5s+OT8VIdljNj7+krconZGdqv+VIUg1emz0E=;
+	t=1767634000; bh=nU4oGOpJwp3Q/MANXI0zxfwIDFbVnVE/U6jKEshkPTQ=;
 	h=From:Date:Subject:To:Cc;
-	b=K/PiSX82MSFDXGbCLbe3GViDBf/6RDUpAaU4UFMdiwdA5eyUMOYK40AATjlVwCK3S
-	 30F7nv0KBMnPE81ZCw+i92mCTRjG0JWOkT/PVoHJRR4di0LwSdXsZOKScCZ0Xl+6hr
-	 TTfBGh4gu3G6Zq7rckdmDIeCef6g69n0IxX+HXBE=
+	b=FvfsHsgjjMok7g0wdaxJ9e26TZWMkZWWImjdEuONf8pMaFX2e84HddLDK7BnoV3N+
+	 oWwngTh4FHeYd3m5iHY2HCulqARfeWaTKqFlj7JM4b9kH2mL78VMIkgErVA9fXv6TC
+	 rAG4OnbrouOnQkOmkr1vCvUoaccyCO14O82C1S9s=
 Received: from junjungu-PC.localdomain ([223.167.147.103])
-	by newxmesmtplogicsvrsza53-0.qq.com (NewEsmtp) with SMTP
-	id EF627A59; Mon, 05 Jan 2026 23:59:54 +0800
-X-QQ-mid: xmsmtpt1767628794tr0jci5fx
-Message-ID: <tencent_0B346CE1589FE10E0110418896F129323709@qq.com>
-X-QQ-XMAILINFO: NFIgmBUYVYTpNalnUa9mLZPXg2XFb1ZTzEyZxEoFXqyT0NrWEKUy48GSJLDgYQ
-	 UYmFa1M0a7TTTuoWqNfIkyqlSSt6VUpBxPDRP6f9cHsHxLHveFwa6Oi2yCUCSPfB4HiIrQbnuS/+
-	 6elU3TBe+GDUvZVJRidGsIZU0jiZZ4m5faZXytDiZF2TZCVnPm02bpM3vqmoDoKfC4AQHnMzrQAg
-	 HJ0a1JlaDqsqSuAWXwiF4Vr3LMgbQvINVpZJCdE5RaxQaL0TzMYYqRMj4sIDq5UJYP1VBKLBnIV5
-	 6PheMEs8pYirzDdOXFO2kLqTMkgdc/v7FXfij5Iz0RYHciKLYDXEnSARr2Hyh6LJf0I3CYii+Qjb
-	 ppsV0nKWWW/3O+VLWtJh2/sdI8WU4sm1rtErEpXi/9bNQQuZm2dXXG98xFZHbUmkT9Ymai7dKb5p
-	 QZISQMEH9aZIIkAa41+TeTiwRIlLVsR4fvc0MnXTI/Su67f3U1d8go1NCYJ1iZ3Ldv0qH3i3fK3s
-	 I9VLBIF1FHaS4dahKHivYQmf7nUnn+z3yGg6NwA2WPTTMt5HmcN9y5/Mpc6HrT6cwM2NOuDMY0p9
-	 Wg+ih54a8z0fykRDvpA7BeG5aUuutbBgqpISJTnPP83eeJvYOq0qeQANLtb/9bK5GqMSWL0WmIMk
-	 ttp2qP4ZIKwYfZRbuwhpm7qlukykW6H4fmNrHGcjVYDxfmiVsPFPvzN/RQ50arMaTRWqv4J2qiDK
-	 tP2ziFYvKi0ScbA92waeqRcgMj1puQOZHqOZ+MWRBzzJNEvYksR+g2IRYr/3ZsEgax892UkftgJP
-	 8AVcJMRPgErMEHs9xa81WvgR5VBzQGh0+v0F9eR67rcX15/hZxr+Z7SGaWXP8BMncTEcFRz5A6pK
-	 m4/Ge4AOrVielNgCnG+I3EtbRsOeG2qCYyreZKab69jBGCraEG0LKFqPMDiAzqZgWnz+TAbJlH4i
-	 QB7wEe0BwYMR7K4iLBd1CoiqMEAT5DoOUlKUsFBV0JDgR8180FPEOCGh+87qCBp4Uwe0sSaih6yz
-	 gbSSBzp9LmtJl0Tt5V+u8/WiQF+fYUUOTy7LiX0Uo881utbOtKxi7z6laKnki64cdw+dnR5iUuIR
-	 WLSG1wAC5G+PwocXOOtsrv7jxDxGffO2n/HfIOI47G0ZtuTB/NB7QxtOP9TBEofV9uiXt4asC82T
-	 eqYFI=
-X-QQ-XMRINFO: Mp0Kj//9VHAxzExpfF+O8yhSrljjwrznVg==
+	by newxmesmtplogicsvrszc43-0.qq.com (NewEsmtp) with SMTP
+	id 6A5AA8BC; Tue, 06 Jan 2026 01:26:37 +0800
+X-QQ-mid: xmsmtpt1767633997t6s5n9yjy
+Message-ID: <tencent_68F699431A877005CF0887CF888B440BF808@qq.com>
+X-QQ-XMAILINFO: MILSKRzDrLPbipQjZXgCF41Di+higtsdGDhYaZyj9r6A76I/R9AdyJqn7gHMCN
+	 8ekuy+uDxBxCse10UPI9nekJ2iVcFfN4/h4jGxzHmo6C5QJV7xJWOzesYbC87jcQqlP4gEjxihGg
+	 A4L84Chzt+EkyrayrLmL65ELRhhZeDjM84xictkcpM7l3i7PemebMiWwf8m3JFcEVn7ZS2nS0h4p
+	 GsKxyH13tZo7N9ahN1D6B3wpnvQKfPgp+1QGfay4M0pzs/CrbpuOC0z4bqAmScw44SRj0HxWYmp0
+	 DQpkruEZY3eEq3Bb43yqbTwe3MNMhyOUbSJtoWmJyg3Mi2deB7wIDGDcNq6bYfAo+fRxrsRCQasv
+	 TnqvuPYJ+yZoTvozzQ9IqyvpvPzf6rT5ANzjdvW3O5aCSsdBKuL/PtordknM0PDKs4booaq7JUex
+	 ixNeG7B4ZP/fyNPjz3WV2o3L7TZw94SWmkZmEdn8b6+N+fEcSs3t4Wn6lf3h/0B/lahJdgLeHLYy
+	 XH8U364f9lk8Cl+S+EcftGeNx/gF3X2Rjqa8L6n+7zP5XSP2q864DaSYfIc5dLzmPucgpCeocF4a
+	 9gHtsd/plPH0zQhg1PGel6bzvMkrgg9ZChh6zFCj10CDt5k9Of1EkTtDrGJ2qic69LL2NBOCqCki
+	 Z7O1w4XzN1Aoi2Ar2IRccug/Vu8TVt1kJWn8L7rQQWhGF+mR+eaOMPzur4NgP6oMp3bv7/QX57nK
+	 2RwCm6fPbKqb583F5ZGuZynBexz8SvNe4FqjKYpufs10ib9pyRD17DDRK/RCDbw9pIQwxPF8/dHW
+	 9YBi2gmIRx5DTPgVEhGKV5le+ZJ96XwH15NyViiSAZryDLLViVIGByyvvYfX5Y2OasHdY0VvhgJK
+	 +2sEP0GDHNdoQPZw8lYteuopXHqQTIC0frXW8Jk3/ELcaLZADAz/kzGh4Fooxw/FxZ94NBVI2uhJ
+	 0DuawoCJiyp91C+cbeBVDLwkITDyALJgdWF2xVRWRjXK0hH+OglDuFUAVtM5BssKQAESpBrWoZkw
+	 vwMHRDgzKYj9IQvSXS8NdzA6e81nbwOuyLA9TMqdzzTWkmp7WXyVoOLhNQ873TR1jquXyufwgHi/
+	 OiZ1Ayb6gqZ7u7fuLyvQXr4+CLqZtT1bOdK1h8dDWRkjfFbF3a1Dgo19mVF13mOtlyzUMqF4PUYs
+	 OWlewVVOeN+9T5KQ==
+X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
 From: Felix Gu <gu_0233@qq.com>
-Date: Mon, 05 Jan 2026 23:59:40 +0800
-Subject: [PATCH] cpufreq: mediatek-hw: Fix resource leaks in init function
+Date: Tue, 06 Jan 2026 01:26:29 +0800
+Subject: [PATCH v2] cpufreq: mediatek-hw: Fix resource leaks in init
+ function
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-OQ-MSGID: <20260105-mediatek-cpufreq-hw-v1-1-69ad43d6ab1f@qq.com>
-X-B4-Tracking: v=1; b=H4sIAOvfW2kC/x3MSQqAMAxA0atI1gZqoSpeRVyEmmoQp9YJpHe3u
- HyL/18I7IUDNNkLni8Jsi4JRZ6BHWkZGKVPBq10qQplcOZe6OAJ7XY6zzuON5ImR8bWujIEqdw
- 8O3n+a9vF+AGvz+eCZQAAAA==
+X-OQ-MSGID: <20260106-mediatek-cpufreq-hw-v2-1-6d46b87ae1df@qq.com>
+X-B4-Tracking: v=1; b=H4sIAET0W2kC/32NSw7CMAwFr1J5jVESSPmsuAfqwiQOtVB/SSmgq
+ ncn9AAsZ6Q3b4bEUTjBuZgh8iRJujaD2RTgamrvjOIzg1GmVFpZbNgLjfxA1z9D5AHrF5KhQNY
+ dzcES5GUfOch7rV6rzLWksYuf9WTSP/u/N2nUWJ7I73e+pJsOl2HYuq6BalmWL0QWYFGzAAAA
+X-Change-ID: 20260105-mediatek-cpufreq-hw-a2afa5c8275a
 To: "Rafael J. Wysocki" <rafael@kernel.org>, 
  Viresh Kumar <viresh.kumar@linaro.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -72,17 +74,17 @@ To: "Rafael J. Wysocki" <rafael@kernel.org>,
 Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Felix Gu <gu_0233@qq.com>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1767628794; l=1651;
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1767633997; l=2978;
  i=gu_0233@qq.com; h=from:subject:message-id;
- bh=N1hoyS8vAEYeNcKmQMNtf0b1xMeM++/15iIyYizaztg=;
- b=m3kmr/y/heV8l/1/sXa7s6mw6GRn0lgdc5gisKmjjSANU0xwK678ZTBHg/ZwxEQTwReOy0RGB
- ptIja3YhbHGCvBVucI4f7DEqg5Vl8gUPIXlq5ditsq+bcgz3fK3aq8a
+ bh=nr1nUJZ861Pt93C2gXY/TX35ljdTJDdRAv39IBJWbTk=;
+ b=O48yMN5V+xG5FJIt6McPAIfjKwFDTCpBUZbwwXXVQijE2CcE5TBwYWlxzaS6mAav1oxBCIZJx
+ Dgo5By3I4yaBeIlz4ydYQe7CivtssBFIKElkqjreHYAW9420Vh6VRf0
 X-Developer-Key: i=gu_0233@qq.com; a=ed25519;
  pk=fjUXwmjchVN7Ja6KGP55IXOzFeCl9edaHoQIEUA+/hw=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260105_080007_911463_EBDAB114 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20260105_092646_264529_C6EA1145 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,14 +108,18 @@ to properly release resources.
 
 Signed-off-by: Felix Gu <gu_0233@qq.com>
 ---
- drivers/cpufreq/mediatek-cpufreq-hw.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+Changes in v2:
+- Move mtk_cpufreq_hw_cpu_exit() before mtk_cpufreq_hw_cpu_init() to fix compilation.
+- Link to v1: https://lore.kernel.org/lkml/tencent_0B346CE1589FE10E0110418896F129323709@qq.com/
+---
+ drivers/cpufreq/mediatek-cpufreq-hw.c | 29 +++++++++++++++++------------
+ 1 file changed, 17 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
-index ae4500ab4891..f28a3de1604f 100644
+index ae4500ab4891..3e74c32bb273 100644
 --- a/drivers/cpufreq/mediatek-cpufreq-hw.c
 +++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
-@@ -278,13 +278,15 @@ static int mtk_cpu_resources_init(struct platform_device *pdev,
+@@ -278,18 +278,32 @@ static int mtk_cpu_resources_init(struct platform_device *pdev,
  	ret = mtk_cpu_create_freq_table(pdev, data);
  	if (ret) {
  		dev_info(dev, "Domain-%d failed to create freq table\n", index);
@@ -130,7 +136,24 @@ index ae4500ab4891..f28a3de1604f 100644
  release_region:
  	release_mem_region(res->start, resource_size(res));
  	return ret;
-@@ -322,6 +324,8 @@ static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
+ }
+ 
++static void mtk_cpufreq_hw_cpu_exit(struct cpufreq_policy *policy)
++{
++	struct mtk_cpufreq_domain *data = policy->driver_data;
++	struct resource *res = data->res;
++	void __iomem *base = data->base;
++
++	/* HW should be in paused state now */
++	writel_relaxed(0x0, data->reg_bases[REG_FREQ_ENABLE]);
++	iounmap(base);
++	release_mem_region(res->start, resource_size(res));
++}
++
+ static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
+ {
+ 	struct platform_device *pdev = cpufreq_get_driver_data();
+@@ -322,6 +336,8 @@ static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
  		if (!(sig & CPUFREQ_HW_STATUS)) {
  			pr_info("cpufreq hardware of CPU%d is not enabled\n",
  				policy->cpu);
@@ -139,6 +162,24 @@ index ae4500ab4891..f28a3de1604f 100644
  			return -ENODEV;
  		}
  
+@@ -331,17 +347,6 @@ static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
+ 	return 0;
+ }
+ 
+-static void mtk_cpufreq_hw_cpu_exit(struct cpufreq_policy *policy)
+-{
+-	struct mtk_cpufreq_domain *data = policy->driver_data;
+-	struct resource *res = data->res;
+-	void __iomem *base = data->base;
+-
+-	/* HW should be in paused state now */
+-	writel_relaxed(0x0, data->reg_bases[REG_FREQ_ENABLE]);
+-	iounmap(base);
+-	release_mem_region(res->start, resource_size(res));
+-}
+ 
+ static void mtk_cpufreq_register_em(struct cpufreq_policy *policy)
+ {
 
 ---
 base-commit: 52ae6ea5bd7c7286dcba463b6323b640b22af833
