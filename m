@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC1E6C2A073
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 00:27:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 933C6C2A074
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 00:27:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Lx7Cxs6mPWElG9bplppz5XOkNbtbfz1JGfVMLJ0UqF4=; b=E6yfr6/7Zyfy5GqfYCokVNi2DV
-	CN41iuzS/5BZgnJmgRyl1O6e0AMMnjQKA7epX04sb2ECq2trurjwpBEZjgygbgdGeNMMTKKScCXGk
-	7QPDP9bf012AC5vAKB1knN1aAzRdY+kInO967ivx9wmeXo/ymEiJBf8QdVUQ1m116jGjzM5dGYoAZ
-	Twp1kkN1eD/7UuYubx6Bb0lg3b0EGiaiWxPbLRms2d8VDbJXuL/FLdOGwFPK6itCqJ8h1PQ3IOPhg
-	pRRJLixqaoa3gc+GpeyMdw/TY2POJkQPo5KDoQD6aUPkrFd8+rMxLhrMY9fiflMAdc+PFdJFJrjWf
-	mSkifg4Q==;
+	bh=RJjfGhYzMRnwgUAUKvlNtXxtk0atD56wzBEV6PIqpWc=; b=FGzt7yPz7oYE5nLrs2II6Jc+iN
+	W4xRKDUk0ObqmMC9IoP0UUQXSQkfBKLr6qtOG+URaVsy7EKcWJLwhp8vu0G1F7qTduBbh81VFeYVv
+	nnMMyEv3GClCW1j4591Pg74CHVMTdS8LSG4USnnEMCH4oMxCDvXraU7XpMU7cWry868+Fl5IHNZvA
+	iZG1h0SeJxFPeW5EmgHBo5IhVozVQPqBhWgtfLOabLzTC4SIn6Lu4wxGEFWzRmYSirsO6/gzqeHCi
+	uvhXlPch9bn+E/NGA8+E4w4kaGL/NNykz90yir5vZSDCshCWdNpEvPKZH+XVDBwss33RqORc/eYox
+	T1YWCRTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcYRF-0000000Aa9v-2M50;
-	Mon, 05 Jan 2026 00:27:13 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1vcYRG-0000000AaAo-2P26;
+	Mon, 05 Jan 2026 00:27:14 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcYRA-0000000Aa4o-3ukw
+	id 1vcYR9-0000000Aa4M-3Jt4
 	for linux-mediatek@lists.infradead.org;
 	Mon, 05 Jan 2026 00:27:10 +0000
-Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2a0fe77d141so155215405ad.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 04 Jan 2026 16:27:08 -0800 (PST)
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2a0834769f0so132187085ad.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 04 Jan 2026 16:27:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1767572828; x=1768177628; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1767572827; x=1768177627; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Lx7Cxs6mPWElG9bplppz5XOkNbtbfz1JGfVMLJ0UqF4=;
-        b=BP0tyIuqG566v7j9oUU/cnv2a/veZNWxccttDnGH0rdBhSLg0+WSTxLR8SD8k13RbP
-         0+7cM+yMm4WOYj1kibmKeknCwYzTMABB/Tn9WnOza2qoL7wUfbk+sUsfI1z2qY5ckneS
-         0i5XLAVnuiM7kP6x40SzMlCoq+ipn9nnX8dgwgE9SHNHxWbDLtUqLr7IXHRToikfDVNR
-         NGV/yfvJaNs73LWVC5fLo0X8aXkQCRplKhUGdSObZmIoOTe4P1NuE/vehJARERJ8NoK4
-         jC+Zo76lGPn5GZDApoxwUiwZq1+yLeniz/4C0qBZFHTVXXqDngfqcJRZTCgdDHkiWgQM
-         I8qw==
+        bh=RJjfGhYzMRnwgUAUKvlNtXxtk0atD56wzBEV6PIqpWc=;
+        b=mtQogsfUH4QqSRT8NjrU9TghL7jVR8Sc0MIFv3+8ELPOFRADt99SRRtCDDpdio4UfQ
+         BtKA7kBm1EB8zbQrD/27sv4REQ9D075koT+BchtwPRX3KAlrW2/RWM1GvnZzqcNo4qX/
+         s1LarvLp4MQNT5no4wXgOGwUqUkuMVMwOYM8H0ezGbUx4z5tVyIqEOzFhiEg62+FxkPC
+         JzGFzorRqsymR7C2eh4Nhh7EIIJI4MTgxnRIwfMgsZqYnat1A7fFdQ78V/eVBmKYjRCm
+         L/JF5vQNv9UGUYSWUrgn8pHhMd8iJIDlp3F6oOm+u7Q/9/1Myy0AcYIBaMlHER4swuyh
+         4tPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767572828; x=1768177628;
+        d=1e100.net; s=20230601; t=1767572827; x=1768177627;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=Lx7Cxs6mPWElG9bplppz5XOkNbtbfz1JGfVMLJ0UqF4=;
-        b=jCKXXAJmZIPRghNjAe8FsvnXKZ0uiecXt71I9jTYG7B5xS921rF+SmQADUP45eNWEp
-         +ngfeJu+/DHzmLKrcIttydCSqFVbauXzfkZ8bLg2UaA+JVpFEKzI4GaUE7mX0ZewttF+
-         xZJv+i99kk14fGaK7urV/Fz72BEz2R2FQO0E3xJRr5FbBYUhIsOUKiT/GFjaPtHkbYkX
-         JhCWhYbIdMXlrUc5WNd+kCo7Urom3QEPl7OozeWxIZ3WYTlzzaTWECEdrkEYcG9d0/CU
-         qVVNyY61roJYjjQhKHNRadDWl5Fj+ITkKF1qLssyg2WcMRB8SNR4luksgd0RhMJ+1AYF
-         dLDg==
-X-Forwarded-Encrypted: i=1; AJvYcCUrat7lX2hAXmdLMDJ9t7PX8gqiqwSOZ4UjPrIa70ZJJKOhW6Xp1YEWBjcQfvfG3Zyl2gNA9mahfc9cAN1NDg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyl4/jc5k2Px3S8zpmm1hAThWhE5mkYKPVvNidoz5TaOHQ6y+07
-	TpfJHU1CHAD2fLA0sSAAKsjcrHQS0BFdqBNRVHc8NOkJMMpU62UuMb6k
-X-Gm-Gg: AY/fxX47hhkZdZRK31Dsmqm99I9iLlsQEB3q7NgGMDU0L36S9DyMbpcfcsugnitotSF
-	3r+gVFkInbpqbJAr2T9HOC7pT4LRmGGwiFCgFbLIPKIauc26v76Lfqx7RwhfG6Y9GnvFtPWUXMT
-	0v1zCvWMQ8OUDMzjCoPMb/BWKMAk+9wUeHwGBFha55wcfQdGNfZlvZomi/yJ+9CFu0Dv5U4D2gN
-	JdJbHn8iBIr1wH0d351ThJlTVR58TyvPLs4LtWZGiH6cmY2Uw5nwg6Q/IlByPDu6qB5D/NLs+Ra
-	RmpovbRK7e5BPK8Ztj+KHbJZp+UTfJ6dyJtNj6lqtzAg6qVS3dIdQSDqwfW20e56MwlLiCRYOeL
-	gzNC/DWL2WRqDTyUYtaX/1K3NS00re9NbiKVLj+dKwqjSIr4GmYpI/r1XhdURbSa1CObMml2Vn2
-	IQayAYw2VqZdqElSoAG/eOdEN/LNEBtI6TLM99Jrl1DX4stmEpg/5PxK7i5rBiGBM=
-X-Google-Smtp-Source: AGHT+IF2dXIfKchGTeNJHu2azmCNIm50WiML6/yJZT6JBX6bohZ5k2MDH1QBCndrXw+T70AJIWjSig==
-X-Received: by 2002:a05:7022:eacd:b0:119:e569:fba6 with SMTP id a92af1059eb24-121722c348emr53252639c88.21.1767572828149;
-        Sun, 04 Jan 2026 16:27:08 -0800 (PST)
-Received: from zubuntu.bengal-mercat.ts.net ([2001:5a8:60d:bc9:9ebf:dff:fe00:f8f2])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-121724de268sm133378109c88.8.2026.01.04.16.27.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        bh=RJjfGhYzMRnwgUAUKvlNtXxtk0atD56wzBEV6PIqpWc=;
+        b=BWJ6QwU6/Ne5ZgPPbtoNTtRf+5QmzNKr+G/ak9imh4qpzp1kDMWIMCwanAvmDUaJA2
+         EzRYLYqUmAN+mF74rr7LCewbVfXr82mzQm/un/zOrkbM+ssGYK/vFZdc4Ps+Z1GOqWKp
+         AjsWv0I9WVlxI+tQIS218sygGw89pG+9e8q8ZMwhanvqwqEVusyPsr2v+5F4lpytk9Oy
+         TqmEHAgbC3VtfQEzN1WjWFSHhHH54Bq7rLPyW63bAZrC1EhPNxqAum11lAXmHqXDJqJz
+         gak8kDfnDDDG6sNN3phpU2p7JKvXPPXBSGqndYjNXQjaxPBnmQQiqG/1vbr93r094DSQ
+         AwlQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWUcLuNl6qCyQaNB1jI3zq3oxiXfiwIxLzqcjzArEeg87cT9hLkAAgjXPOT9p+gDszJmpe2Sh5eusqhSIzxrA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxYx71GrCUJloQpzubZoaoWbFLyyV3HjzFQgVy3oAtBILkO29QQ
+	QxE8PBHa92QALyT/zPwewxCbI951UAfZWUsfRlgUO8Cl0XZTYUZXEXZd
+X-Gm-Gg: AY/fxX6PBBgarHdsVzfWs62xt7HMF2nY2bHbc+n9ZKVcmM8L31/3tbLKGkrKjwE3+Ik
+	6GDbVO4HmwnJj2c6wQL59tolioZIbrwqwe/a1Wda3HpJGQd2nSrUzIrNGBEftrHyIUKyAPQSJXC
+	bElw07KZUgixHknRDbk2j6XN/uNRGy9wKDimNmzfP6EVDPHTyCB0R1arDBT92Nor49tQ5i7YnDn
+	C5ipROeiWPUK4EU/6nbOERc4fuG695Tc3kgHxASlkLLAvLlhKtEtLZ4SDl6Hu/mvIEtU3W3b2d6
+	ciwtQfdzVhDH1O5bdXJhoPgX1WD0t4if4U3Gt0c4od4k7TW672CpZIPaZmT5eFaaZ3T1bRFErpK
+	cpaFtL8F78l4A0WF2PYq6XoCrhJ2NT310ws1/Eymnrrfjvig32v2g8gm/cMQiY1OEdqYkxZLF/z
+	CTPhBi30vaf+BmvVw5xoGG0gOofB+dAEc7p8LCd14o0BJkEzIPe1o3tl4DmRqU6EU=
+X-Google-Smtp-Source: AGHT+IEgwdZc2sv9zKx5KjMOni7rSof10mVUH9VaD1BavVlI4TZ/Co6GlilKA9YVOKhSaEIPSjDGFQ==
+X-Received: by 2002:a05:701a:ca08:b0:11b:9386:825b with SMTP id a92af1059eb24-12172302a23mr38511025c88.48.1767572827042;
         Sun, 04 Jan 2026 16:27:07 -0800 (PST)
+Received: from zubuntu.bengal-mercat.ts.net ([2001:5a8:60d:bc9:9ebf:dff:fe00:f8f2])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-121724de268sm133378109c88.8.2026.01.04.16.27.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 04 Jan 2026 16:27:06 -0800 (PST)
 From: Zac Bowling <zbowling@gmail.com>
 To: zbowling@gmail.com
 Cc: deren.wu@mediatek.com,
@@ -81,9 +81,9 @@ Cc: deren.wu@mediatek.com,
 	nbd@nbd.name,
 	ryder.lee@mediatek.com,
 	sean.wang@mediatek.com
-Subject: [PATCH 16/17] wifi: mt76: mt7925: add mutex protection in resume path
-Date: Sun,  4 Jan 2026 16:26:37 -0800
-Message-ID: <20260105002638.668723-17-zbowling@gmail.com>
+Subject: [PATCH 15/17] wifi: mt76: mt792x: fix firmware reload failure after previous load crash
+Date: Sun,  4 Jan 2026 16:26:36 -0800
+Message-ID: <20260105002638.668723-16-zbowling@gmail.com>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20260105002638.668723-1-zbowling@gmail.com>
 References: <20260102200524.290779-1-zbowling@gmail.com>
@@ -91,9 +91,8 @@ References: <20260102200524.290779-1-zbowling@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260104_162709_035020_8666C797 
-X-CRM114-Status: UNSURE (   8.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260104_162708_927151_FBA178E7 
+X-CRM114-Status: GOOD (  11.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,41 +107,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mutex protection around mt7925_mcu_set_deep_sleep() and
-mt7925_mcu_regd_update() calls in the resume path to prevent
-potential race conditions during resume operations.
+If the firmware loading process crashes or is interrupted after
+acquiring the patch semaphore but before releasing it, subsequent
+firmware load attempts will fail with 'Failed to get patch semaphore'
+because the semaphore is still held.
 
-These MCU operations require serialization, and the resume
-path was the only call site missing mutex protection. Without
-this, concurrent access during resume could corrupt firmware
-state or cause race conditions with other MCU commands.
+This issue manifests as devices becoming unusable after suspend/resume
+failures or firmware crashes, requiring a full hardware reboot to
+recover. This has been widely reported on MT7921 and MT7925 devices.
 
-Found by static analysis (sparse/coccinelle) pattern matching
-for unprotected MCU function calls.
+Example error log:
+  mt7921e 0000:c2:00.0: Failed to get patch semaphore
+  mt7921e 0000:c2:00.0: probe with driver mt7921e failed with error -5
 
-Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+Apply the same fix that was applied to MT7915 in commit 79dd14f:
+1. Release the patch semaphore before starting firmware load (in case
+   it was held by a previous failed attempt)
+2. Restart MCU firmware to ensure clean state
+3. Wait briefly for MCU to be ready
+
+This fix applies to both MT7921 and MT7925 drivers which share the
+mt792x_load_firmware() function.
+
+Fixes: 583204ae70f9 ("wifi: mt76: mt792x: move mt7921_load_firmware in mt792x-lib module")
+Link: https://github.com/openwrt/mt76/commit/79dd14f2e8161b656341b6653261779199aedbe4
 Signed-off-by: Zac Bowling <zac@zacbowling.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt792x_core.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index e9d62c6aee91..3a9e32a1759d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -584,10 +584,12 @@ static int _mt7925_pci_resume(struct device *device, bool restore)
- 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+index 9dc768aa8b9c..05598202b488 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+@@ -936,6 +936,20 @@ int mt792x_load_firmware(struct mt792x_dev *dev)
+ {
+ 	int ret;
  
- 	/* restore previous ds setting */
-+	mt792x_mutex_acquire(dev);
- 	if (!pm->ds_enable)
- 		mt7925_mcu_set_deep_sleep(dev, false);
- 
- 	mt7925_mcu_regd_update(dev, mdev->alpha2, dev->country_ie_env);
-+	mt792x_mutex_release(dev);
- failed:
- 	pm->suspended = false;
- 
++	/* Release semaphore if taken by previous failed load attempt.
++	 * This prevents "Failed to get patch semaphore" errors when
++	 * recovering from firmware crashes or suspend/resume failures.
++	 */
++	ret = mt76_connac_mcu_patch_sem_ctrl(&dev->mt76, false);
++	if (ret < 0)
++		dev_dbg(dev->mt76.dev, "Semaphore release returned %d (may be expected)\n", ret);
++
++	/* Always restart MCU to ensure clean state before loading firmware */
++	mt76_connac_mcu_restart(&dev->mt76);
++
++	/* Wait for MCU to be ready after restart */
++	msleep(100);
++
+ 	ret = mt76_connac2_load_patch(&dev->mt76, mt792x_patch_name(dev));
+ 	if (ret)
+ 		return ret;
 -- 
 2.51.0
 
