@@ -4,65 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D5BEC2A077
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 08:49:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05723C2A079
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 09:03:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=WJMNPG24bL7OgNWtK9rQxRkMlEdnd9ti330EJ7N3bMQ=; b=cX1BEaED+HB2LEwVBdTsj1y/Ak
-	apDNzFiFRSbp17vuFNoeQeMOU6nRgQZmxqUIiDEDNrRJuV/oOooS1xPXZh+b4jVbwxhH+5Mc5LPtK
-	+X1+Qw8O827aP2meCAy69Pax4w3dEGIzIDv1fSuOfCj6rK1gDajH2iwCMzZFAdCI4ys/blGJnL2pk
-	lAvar8CFIHgmqDsZ7/dDJUYFLMtlA1kVhrXFEDP2wx7liU+L6s7Lv54Tw15CDw5i/bLzGTQr74fBJ
-	oj5nGhSNFeOe8GTF/IIDeSRx/IBU8tvWYMblorIrpFkTHWrNvH0qbkU/2Ncbi2acboHOafUifACTz
-	De9L8eiQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Jdr6hzYdB6yV4A5dMP40GqEQPv+MIBJRoxnrozc+EiU=; b=VDDclJVsxeWA1wiakn/zpnGM+4
+	1KLdSsUPYbU3f6Hyc3yXolAsy7FZt0vTglXBIQRbjh/ljZ8/LBFDXDFE2Png/a52HZ/bfwNmgIyCN
+	GJN3Di4PVBY5/yTl/qwf3dUSMAjJmtNB6/ylRdAhjgXpJSjB5JPGZ1S5SzaRtUXNJ/GNSrVjYSh2c
+	kKfoE1oWgnRRJDB1EmPpA+00coZJ9mvcvH8XDDo/A/ixDLSafVt6VT7R500l9TqsOHOcWwL+GybQt
+	0rSM1tvHURR6h4k9UWyjaVK544GO2+KoO22tqhn8r+xDfo3RYHYpWZ3b7oICxJzmOjwbWBCc43sTP
+	HT6b0Hcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcgHa-0000000B0iM-2AQy;
-	Mon, 05 Jan 2026 08:49:46 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vcgUh-0000000B26v-27ie;
+	Mon, 05 Jan 2026 09:03:19 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcgHY-0000000B0hZ-1aYt;
-	Mon, 05 Jan 2026 08:49:45 +0000
+	id 1vcgUf-0000000B26E-2gcC;
+	Mon, 05 Jan 2026 09:03:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 96F7A4019F;
-	Mon,  5 Jan 2026 08:49:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC4B2C116D0;
-	Mon,  5 Jan 2026 08:49:42 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id ACF4D6001D;
+	Mon,  5 Jan 2026 09:03:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3451C2BCB6;
+	Mon,  5 Jan 2026 09:03:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767602983;
-	bh=ee5soaoyKiBuasxn1iD+tDCH2itJaaLVbfJQApUgCBo=;
-	h=From:Date:Subject:To:Cc:From;
-	b=GhRVS73LqH4Ylz6MPvKYhUeLXT7nfBkPdJ3s0Ocf5uXrLiH+7CFJAluoEigDkdL5M
-	 vnTkunG8UQAvQIGXWzr7QN3bx1HMwBB4c7Q4oYaOHt/DxjI+xXgqnxXhByjZTBrZoJ
-	 6q/084ljYKHTpTcZ93jPrGxfZ64wqYPb8rISTvAFdQdw6TWH7RfTTHXF5kRnt7Ydhl
-	 6rF73wYk3RpmEO3UTx77er34OGtTx0We0w7fFthjJBCAFzkHgZIMMM1705NpwH+4VU
-	 WJvXYmQfik8OqzIbiK54qD3u+C29/+D9FYW4ZtdKfEV4+EjdpVT+TJ2Lpzrc0UcDQq
-	 ewOlp0qlUm4HQ==
+	s=k20201202; t=1767603796;
+	bh=8vXTewXSrHJNcvfU5XxxfBAvi/sv6EPaP/XXsW+cvCM=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=VQrsMO31f35whw1OvqyzyD/ru/6ixeJrxJqPSihrTCg+MHcXEHSusMQXN/hY4PGjo
+	 7KdK1HTSSTcUXldEfr4r85VXwKlKItXgxOrS90enPT9z5nLTl4qRCH9GUPl7CydNsV
+	 +tndekfEl2Y/rhVnsJQid2JcGtCFnaqcRXuxQq2RhsljeKVt+t1NbH7ggrgOb/TxYD
+	 qN81C9cFNow3uGVreDH+5EF0zCBS57S49qXkXmPt0QgW9RHGZKRhE0DWbsE/ZRrak7
+	 78U3qCwPUG6LjsYdvW5TaMjEzN0YMgLFTggPba1Yok42Pz0Ux0tVBLBx2l1ehzF9CL
+	 wt/NJnGkuNnGg==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 05 Jan 2026 09:49:16 +0100
-Subject: [PATCH net-next] net: airoha: npu: Dump fw version during probe
+Date: Mon, 05 Jan 2026 10:02:56 +0100
+Subject: [PATCH net-next 1/2] dt-bindings: net: airoha: npu: Add BA memory
+ region
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260105-airoha-npu-dump-fw-v1-1-36d8326975f8@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MPQqAMAxA4atIZgMakapXEYdWU81gLS3+QPHuF
- sdveC9B5CAcYSgSBL4kyuEy6rKAedNuZZQlG6iitiZqUEs4No3On7icu0d7Y9tbpUxH1ugGcug
- DW3n+6Ti97wf+4UJ4ZAAAAA==
-X-Change-ID: 20251223-airoha-npu-dump-fw-59f77b82fba3
+Message-Id: <20260105-airoha-ba-memory-region-v1-1-5b07a737c7a7@kernel.org>
+References: <20260105-airoha-ba-memory-region-v1-0-5b07a737c7a7@kernel.org>
+In-Reply-To: <20260105-airoha-ba-memory-region-v1-0-5b07a737c7a7@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.14.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260105_004944_449358_5E4BBE7B 
-X-CRM114-Status: UNSURE (   8.37  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,44 +73,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dump firmware version running on the npu during module probe.
+Introduce Block Ack memory region used by NPU MT7996 (Eagle) offloading.
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/airoha/airoha_npu.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
-index 68b7f9684dc7f3912493876ae937207f55b81330..22f72c146065998d5450477f664ed308b1569aa3 100644
---- a/drivers/net/ethernet/airoha/airoha_npu.c
-+++ b/drivers/net/ethernet/airoha/airoha_npu.c
-@@ -657,6 +657,7 @@ static int airoha_npu_probe(struct platform_device *pdev)
- 	struct resource res;
- 	void __iomem *base;
- 	int i, irq, err;
-+	u32 val;
+diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+index 59c57f58116b568092446e6cfb7b6bd3f4f47b82..b3a2b36f6a121f90acf88a07b0f1733fa6da08a8 100644
+--- a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
++++ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+@@ -50,6 +50,12 @@ properties:
+           - description: NPU wlan offload RX buffers region
+           - description: NPU wlan offload TX buffers region
+           - description: NPU wlan offload TX packet identifiers region
++      - items:
++          - description: NPU firmware binary region
++          - description: NPU wlan offload RX buffers region
++          - description: NPU wlan offload TX buffers region
++          - description: NPU wlan offload TX packet identifiers region
++          - description: NPU wlan Block Ack buffers region
  
- 	base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(base))
-@@ -750,6 +751,11 @@ static int airoha_npu_probe(struct platform_device *pdev)
- 	regmap_write(npu->regmap, REG_CR_BOOT_TRIGGER, 0x1);
- 	msleep(100);
+   memory-region-names:
+     items:
+@@ -57,6 +63,7 @@ properties:
+       - const: pkt
+       - const: tx-pkt
+       - const: tx-bufid
++      - const: ba
  
-+	if (!airoha_npu_wlan_msg_get(npu, 0, WLAN_FUNC_GET_WAIT_NPU_VERSION,
-+				     &val, sizeof(val), GFP_KERNEL))
-+		dev_info(dev, "NPU fw version: %0d.%d\n",
-+			 (val >> 16) & 0xffff, val & 0xffff);
-+
- 	platform_set_drvdata(pdev, npu);
- 
- 	return 0;
+ required:
+   - compatible
+@@ -93,7 +100,7 @@ examples:
+                      <GIC_SPI 122 IRQ_TYPE_LEVEL_HIGH>,
+                      <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
+         memory-region = <&npu_firmware>, <&npu_pkt>, <&npu_txpkt>,
+-                        <&npu_txbufid>;
+-        memory-region-names = "firmware", "pkt", "tx-pkt", "tx-bufid";
++                        <&npu_txbufid>, <&npu_ba>;
++        memory-region-names = "firmware", "pkt", "tx-pkt", "tx-bufid", "ba";
+       };
+     };
 
----
-base-commit: c303e8b86d9dbd6868f5216272973292f7f3b7f1
-change-id: 20251223-airoha-npu-dump-fw-59f77b82fba3
-
-Best regards,
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.52.0
 
 
