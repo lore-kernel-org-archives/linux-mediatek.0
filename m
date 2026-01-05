@@ -4,87 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A9EFC79FA7
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 17:26:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D55F5C79FB3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 19:20:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=nU4oGOpJwp3Q/MANXI0zxfwIDFbVnVE/U6jKEshkPTQ=; b=d0tAH98fhHjnMu
-	5zNmntMwksg3HXemdpz9BIzO9yz7NsJJ15W9jKSmZw3/gPewI8Dvqvl5ODTm36YoKoo0TEyghBNCM
-	/CyVghOvi9bX7mRL04KPlD0Z0hFf3CoYlo0V9Ox/RYicAsHP2b4QQPTysuf3KHxh1IyrzuwILRcWE
-	pfhD5Xaq+ouBKrcxXQUYgnqLgNwEIlL9Ec/y5wzWplhRJamDRfc5lIOdtKvvwVplztdV8lpvDJBHw
-	IZ0IodFdZMgiL6Ty3gVjEo9J1hqCI5QvUQNLuVpiFZrr7qb/ZXkr8ifdfHFq3891LZq5BLXXLEGaZ
-	ZTBcGMK0EPFwv1QTZiWw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:Cc:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tDDvkHfL5SsDyjmtGrwtC4U8Vp9VsmLY6KqyAaQnAtw=; b=eofcBLvqCpOdu82525S2/07ID6
+	R3v/1ZFkCXZkAgeYwIBFR5HC+YwngleHzzCc0VjMWuXEID7LAG2GgQDPLc4dBKDnAr25J8kCjk2Os
+	wuPCABIh9D5pX65PNeZGxbaLQsDv3ZPWVsyULgylsw6dS0M0ZcJOoMYduJujfLHq9XfAXNRVBVasB
+	OHaUkNFiaqDkL4cX/vZ1icgnEdgU9dRJ1lrstoPZn/uA8czCdKnCVocL0gGa1J5Gc41eRz7K8v/RR
+	2OXVHzP5UgzNcrOH6Izj8SpndQf2KdQnL6WSX+Mg9iTNthdmz3U55/GOQqcZOKyX5ZBWNgst/0qfg
+	HKMAu2BQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcoLy-0000000BpYQ-2xbj;
-	Mon, 05 Jan 2026 17:26:50 +0000
-Received: from xmbghk7.mail.qq.com ([43.163.128.47])
+	id 1vcq7h-0000000ByAf-1GZV;
+	Mon, 05 Jan 2026 19:20:13 +0000
+Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcoLs-0000000BpWN-14V3;
-	Mon, 05 Jan 2026 17:26:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1767634000; bh=nU4oGOpJwp3Q/MANXI0zxfwIDFbVnVE/U6jKEshkPTQ=;
-	h=From:Date:Subject:To:Cc;
-	b=FvfsHsgjjMok7g0wdaxJ9e26TZWMkZWWImjdEuONf8pMaFX2e84HddLDK7BnoV3N+
-	 oWwngTh4FHeYd3m5iHY2HCulqARfeWaTKqFlj7JM4b9kH2mL78VMIkgErVA9fXv6TC
-	 rAG4OnbrouOnQkOmkr1vCvUoaccyCO14O82C1S9s=
-Received: from junjungu-PC.localdomain ([223.167.147.103])
-	by newxmesmtplogicsvrszc43-0.qq.com (NewEsmtp) with SMTP
-	id 6A5AA8BC; Tue, 06 Jan 2026 01:26:37 +0800
-X-QQ-mid: xmsmtpt1767633997t6s5n9yjy
-Message-ID: <tencent_68F699431A877005CF0887CF888B440BF808@qq.com>
-X-QQ-XMAILINFO: MILSKRzDrLPbipQjZXgCF41Di+higtsdGDhYaZyj9r6A76I/R9AdyJqn7gHMCN
-	 8ekuy+uDxBxCse10UPI9nekJ2iVcFfN4/h4jGxzHmo6C5QJV7xJWOzesYbC87jcQqlP4gEjxihGg
-	 A4L84Chzt+EkyrayrLmL65ELRhhZeDjM84xictkcpM7l3i7PemebMiWwf8m3JFcEVn7ZS2nS0h4p
-	 GsKxyH13tZo7N9ahN1D6B3wpnvQKfPgp+1QGfay4M0pzs/CrbpuOC0z4bqAmScw44SRj0HxWYmp0
-	 DQpkruEZY3eEq3Bb43yqbTwe3MNMhyOUbSJtoWmJyg3Mi2deB7wIDGDcNq6bYfAo+fRxrsRCQasv
-	 TnqvuPYJ+yZoTvozzQ9IqyvpvPzf6rT5ANzjdvW3O5aCSsdBKuL/PtordknM0PDKs4booaq7JUex
-	 ixNeG7B4ZP/fyNPjz3WV2o3L7TZw94SWmkZmEdn8b6+N+fEcSs3t4Wn6lf3h/0B/lahJdgLeHLYy
-	 XH8U364f9lk8Cl+S+EcftGeNx/gF3X2Rjqa8L6n+7zP5XSP2q864DaSYfIc5dLzmPucgpCeocF4a
-	 9gHtsd/plPH0zQhg1PGel6bzvMkrgg9ZChh6zFCj10CDt5k9Of1EkTtDrGJ2qic69LL2NBOCqCki
-	 Z7O1w4XzN1Aoi2Ar2IRccug/Vu8TVt1kJWn8L7rQQWhGF+mR+eaOMPzur4NgP6oMp3bv7/QX57nK
-	 2RwCm6fPbKqb583F5ZGuZynBexz8SvNe4FqjKYpufs10ib9pyRD17DDRK/RCDbw9pIQwxPF8/dHW
-	 9YBi2gmIRx5DTPgVEhGKV5le+ZJ96XwH15NyViiSAZryDLLViVIGByyvvYfX5Y2OasHdY0VvhgJK
-	 +2sEP0GDHNdoQPZw8lYteuopXHqQTIC0frXW8Jk3/ELcaLZADAz/kzGh4Fooxw/FxZ94NBVI2uhJ
-	 0DuawoCJiyp91C+cbeBVDLwkITDyALJgdWF2xVRWRjXK0hH+OglDuFUAVtM5BssKQAESpBrWoZkw
-	 vwMHRDgzKYj9IQvSXS8NdzA6e81nbwOuyLA9TMqdzzTWkmp7WXyVoOLhNQ873TR1jquXyufwgHi/
-	 OiZ1Ayb6gqZ7u7fuLyvQXr4+CLqZtT1bOdK1h8dDWRkjfFbF3a1Dgo19mVF13mOtlyzUMqF4PUYs
-	 OWlewVVOeN+9T5KQ==
-X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
-From: Felix Gu <gu_0233@qq.com>
-Date: Tue, 06 Jan 2026 01:26:29 +0800
-Subject: [PATCH v2] cpufreq: mediatek-hw: Fix resource leaks in init
- function
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-OQ-MSGID: <20260106-mediatek-cpufreq-hw-v2-1-6d46b87ae1df@qq.com>
-X-B4-Tracking: v=1; b=H4sIAET0W2kC/32NSw7CMAwFr1J5jVESSPmsuAfqwiQOtVB/SSmgq
- ncn9AAsZ6Q3b4bEUTjBuZgh8iRJujaD2RTgamrvjOIzg1GmVFpZbNgLjfxA1z9D5AHrF5KhQNY
- dzcES5GUfOch7rV6rzLWksYuf9WTSP/u/N2nUWJ7I73e+pJsOl2HYuq6BalmWL0QWYFGzAAAA
-X-Change-ID: 20260105-mediatek-cpufreq-hw-a2afa5c8275a
-To: "Rafael J. Wysocki" <rafael@kernel.org>, 
- Viresh Kumar <viresh.kumar@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
+	id 1vcq7d-0000000By9m-1BcN
+	for linux-mediatek@lists.infradead.org;
+	Mon, 05 Jan 2026 19:20:11 +0000
+Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-8b22b1d3e7fso23197185a.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Jan 2026 11:20:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1767640808; x=1768245608; darn=lists.infradead.org;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:to
+         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=tDDvkHfL5SsDyjmtGrwtC4U8Vp9VsmLY6KqyAaQnAtw=;
+        b=pACYwJmy6s9WdIr5SOSDqqofo0ebtZP2AByvC038tahYFmbLYM7LHs/SIA159XJock
+         Q4YCfufXCsleXXkJD+J67KiSPKwcF9ebeWE9hfOWS8eDL8eNoRrKAWCph7HPa2AhQeId
+         xffQ8g2qF5j1FyXeI4yYnDkCVn6lP2q88f6NOgSJoUaxd/hd4DyN2H0hH/CEOjSFAzmm
+         RBnNY4UW7r4EATeKuIAESOGSHrjRpubQ7AtmqbVIT+A20eVEpUOrw5W1CP2oZNW7jxBD
+         unYqzFMdfzAwBh2Z+k3VSIzeuRx70puTDsTj3dPkI6FsTZL0GVCIeXy215l1v8LhbfE4
+         sAfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1767640808; x=1768245608;
+        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:to
+         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=tDDvkHfL5SsDyjmtGrwtC4U8Vp9VsmLY6KqyAaQnAtw=;
+        b=cYC0C9eJWzCWHcCEc8+h6RWXP2Y9ipkJbFUcS3lQ5xy3ASQp2gBUvmImNhEDKoTJj4
+         Mytvc2rwxh2uJ4R2jbn5oUfJ32zGFUx5HPd7R5kc8oc8qhs1KniDE2MFKHr1MTkDi3j+
+         3nk0BeDxg8RNndMIHLdI7md8O9Mqs4iX/+0UzptvbAc+8njHE1Sz3ykbworvV8MW6Cw7
+         Yvd4RaGNQeJrSWSfAoJ2Wxjo0MqZcvx04+qGkDVSEHo72cTaeE0GLkStrKfIphEZfSwv
+         +F8gbVb9JtPJIsL/RgQ2eSGHGTLorD2OLHVNiqjqH6Xpm62J4yfjFP63ao6jmRRL0nnM
+         +sPw==
+X-Forwarded-Encrypted: i=1; AJvYcCU3a4udCaQooEXuQhiw7h1RjWXSG4NgtsD6xGMMDugCuoOK+w7+6nPvtkewlWeQd+ofuOxMMqk9f7Mwrm8wJQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx39DlDKKjUJNkcObr2nrpwppFL/gc5EbNrrr0SSQ+tHrx98gDK
+	DTuUjDzZVvsMCquz4khx4AyOWen2QHRZATWt3vLCeDTRiK+7B6jdwUf00/+zdNICM74=
+X-Gm-Gg: AY/fxX5Gzz8QwR46SV03ndxEeCABbB2Nmq+nAA7891+dZKBo4YGvsiGzOoRMo4HxHq2
+	8cIBTQohIgDCD+cfO1cpphK4Zpk30l9IrZfR/ko3otnxR+ZV9u9uMNksss6PM9B4DQZXtggnre+
+	vunAjYQ7l6AYGXvHt/cq1FpC9s6oCeKxdWlRL7hHt/AF3wop5wfu+uAI2ezDXW7lY6PjnUI0nxC
+	INA+ldqTfNrpV7x+kgyPl4sSyR93L5PmynZ5yWikTdHLSySD2TLSxlG++csSyxyqcaG1gYQZDWa
+	xyqFRm+alKtZkcZ/lZZsTEfDUWCyNtCZC4scM+DzSe4NDjTbRRTk5dO2K8il8z8yeJUSzsDphs0
+	i/iPnVcVqBZ7TLs/3+DbUTOE2ZSGmoJR5IAUbZY16psYuhFvaXwxOlD9W4EzNkRL+UD/C5bReJS
+	IT53XPW9zgvrl8v1Lr
+X-Google-Smtp-Source: AGHT+IE5ziBUA1L6ZAL+rkRAZxmOcXQvbxBtmVTb5t38TGd5tiHW8FkBWpqUQMf/N8PhTT3xc9qk1w==
+X-Received: by 2002:a05:622a:250b:b0:4eb:a6c5:f6c7 with SMTP id d75a77b69052e-4ffa769a084mr8345811cf.2.1767640807852;
+        Mon, 05 Jan 2026 11:20:07 -0800 (PST)
+Received: from ?IPv6:2606:6d00:17:7b4b::5ac? ([2606:6d00:17:7b4b::5ac])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-4ffa708853fsm4201461cf.9.2026.01.05.11.20.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 05 Jan 2026 11:20:07 -0800 (PST)
+Message-ID: <415509d2c4639d086614e9a473b09be16442648a.camel@ndufresne.ca>
+Subject: Re: [PATCH v11 03/12] media: mediatek: jpeg: fix jpeg buffer layout
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Kyrie Wu =?UTF-8?Q?=28=E5=90=B4=E6=99=97=29?= <Kyrie.Wu@mediatek.com>, 
+ "linux-kernel@vger.kernel.org"
+	 <linux-kernel@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	 <linux-mediatek@lists.infradead.org>, "linux-media@vger.kernel.org"
+	 <linux-media@vger.kernel.org>, "devicetree@vger.kernel.org"
+	 <devicetree@vger.kernel.org>, "mchehab@kernel.org" <mchehab@kernel.org>, 
+ "conor+dt@kernel.org"
+	 <conor+dt@kernel.org>, "robh@kernel.org" <robh@kernel.org>, 
+ "hverkuil-cisco@xs4all.nl"
+	 <hverkuil-cisco@xs4all.nl>, "linux-arm-kernel@lists.infradead.org"
+	 <linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+	 <matthias.bgg@gmail.com>, "krzk+dt@kernel.org" <krzk+dt@kernel.org>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Felix Gu <gu_0233@qq.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1767633997; l=2978;
- i=gu_0233@qq.com; h=from:subject:message-id;
- bh=nr1nUJZ861Pt93C2gXY/TX35ljdTJDdRAv39IBJWbTk=;
- b=O48yMN5V+xG5FJIt6McPAIfjKwFDTCpBUZbwwXXVQijE2CcE5TBwYWlxzaS6mAav1oxBCIZJx
- Dgo5By3I4yaBeIlz4ydYQe7CivtssBFIKElkqjreHYAW9420Vh6VRf0
-X-Developer-Key: i=gu_0233@qq.com; a=ed25519;
- pk=fjUXwmjchVN7Ja6KGP55IXOzFeCl9edaHoQIEUA+/hw=
+Date: Mon, 05 Jan 2026 14:20:05 -0500
+In-Reply-To: <714f2e57521e990d77b80d23a9eb773ca878b07a.camel@mediatek.com>
+References: <20251202094800.6140-1-kyrie.wu@mediatek.com>
+		 <20251202094800.6140-4-kyrie.wu@mediatek.com>
+		 <89f845b45405bbf985a5e92c195078074bcce0e2.camel@ndufresne.ca>
+	 <714f2e57521e990d77b80d23a9eb773ca878b07a.camel@mediatek.com>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-4+oXkLqgBdCrGoVfdxJj"
+User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260105_092646_264529_C6EA1145 
-X-CRM114-Status: GOOD (  14.30  )
+X-CRM114-CacheID: sfid-20260105_112009_486239_B9E40642 
+X-CRM114-Status: GOOD (  35.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,94 +125,130 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mtk_cpu_resources_init(), if mtk_cpu_create_freq_table() fails, the
-function returns directly without releasing the resources.
 
-Similarly, in mtk_cpufreq_hw_cpu_init(), if the driver returns -ENODEV,
- it fails to clean up. Fix this by calling mtk_cpufreq_hw_cpu_exit()
-to properly release resources.
+--=-4+oXkLqgBdCrGoVfdxJj
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Felix Gu <gu_0233@qq.com>
----
-Changes in v2:
-- Move mtk_cpufreq_hw_cpu_exit() before mtk_cpufreq_hw_cpu_init() to fix compilation.
-- Link to v1: https://lore.kernel.org/lkml/tencent_0B346CE1589FE10E0110418896F129323709@qq.com/
----
- drivers/cpufreq/mediatek-cpufreq-hw.c | 29 +++++++++++++++++------------
- 1 file changed, 17 insertions(+), 12 deletions(-)
+Le jeudi 25 d=C3=A9cembre 2025 =C3=A0 06:05 +0000, Kyrie Wu (=E5=90=B4=E6=
+=99=97) a =C3=A9crit=C2=A0:
+> On Tue, 2025-12-16 at 16:22 -0500, Nicolas Dufresne wrote:
+> > Hi,
+> >=20
+> > Le mardi 02 d=C3=A9cembre 2025 =C3=A0 17:47 +0800, Kyrie Wu a =C3=A9cri=
+t :
+> > > For memory alloc operation of jpeg dst buffer: the mallocing
+> > > memory function interface use vb2_buffer as the base addr.
+> > > If structure mtk_jpeg_src_buf wants to be allocated to memory,
+> > > it needs to be placed vb2_v4l2_buffer at the starting position,
+> > > because structure vb2_buffer is at the starting position of
+> > > vb2_v4l2_buffer, and the allocated size is set to the size of
+> > > structure mtk_jpeg_src_buf, so as to ensure that structures
+> > > mtk_jpeg_src_buf, vb2_v4l2_buffer and vb2_buffer can all be
+> > > allocated memory.
+> >=20
+> > Please correct the wording, "mallocing" is not a word, addr ->
+> > address. I tend
+> > to do the same, but refrain from giving the code a personality, the
+> > vb2_buffer
+> > have no will. This is overall complicated way to simply say:
+> >=20
+> > 	Fix the size of the allocated mtk_jpeg_src_buf structure.
+> >=20
+> > >=20
+> > > Fixes: 5fb1c2361e56 ("mtk-jpegenc: add jpeg encode worker
+> > > interface")
+> > >=20
+> >=20
+> > Drop the blank line.
+> >=20
+> > > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+> > > ---
+> > > =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 2 +-
+> > > =C2=A0drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h | 2 +-
+> > > =C2=A02 files changed, 2 insertions(+), 2 deletions(-)
+> > >=20
+> > > diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> > > index 0cf3dc5407e4..bd0afc93d491 100644
+> > > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> > > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> > > @@ -1099,7 +1099,7 @@ static int mtk_jpeg_queue_init(void *priv,
+> > > struct vb2_queue *src_vq,
+> > > =C2=A0	dst_vq->type =3D V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+> > > =C2=A0	dst_vq->io_modes =3D VB2_DMABUF | VB2_MMAP;
+> > > =C2=A0	dst_vq->drv_priv =3D ctx;
+> > > -	dst_vq->buf_struct_size =3D sizeof(struct v4l2_m2m_buffer);
+> > > +	dst_vq->buf_struct_size =3D sizeof(struct mtk_jpeg_src_buf);
+> > > =C2=A0	dst_vq->ops =3D jpeg->variant->qops;
+> > > =C2=A0	dst_vq->mem_ops =3D &vb2_dma_contig_memops;
+> > > =C2=A0	dst_vq->timestamp_flags =3D V4L2_BUF_FLAG_TIMESTAMP_COPY;
+> > > diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> > > b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> > > index 6be5cf30dea1..148fd41759b7 100644
+> > > --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> > > +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+> > > @@ -85,10 +85,10 @@ struct mtk_jpeg_variant {
+> > > =C2=A0};
+> > > =C2=A0
+> > > =C2=A0struct mtk_jpeg_src_buf {
+> > > -	u32 frame_num;
+> > > =C2=A0	struct vb2_v4l2_buffer b;
+> > > =C2=A0	struct list_head list;
+> > > =C2=A0	u32 bs_size;
+> > > +	u32 frame_num;
+> >=20
+> > I like the change, but this shouldn't be an issue if you use
+> > container_of, which
+> > is safer then a plain cast. Please review the code and make sure to
+> > use it. It
+> > may be confusing to include a cosmetic change in a fixes.
+> >=20
+> > Nicolas
+>=20
+> Dear Nicolas,
+>=20
+> The driver requests memory space for mtk_jpeg_src_buf in the
+> function of mtk_jpeg_queue_init,
+> and it used struct vb2_v4l2_buffer b as the starting base address,
+> the parameter,frame_num, will not get a memory if we keep the old
+> structure. And a unknown memory would be get if we used container_of
+> to get the starting address of mtk_jpeg_src_buf.
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
-index ae4500ab4891..3e74c32bb273 100644
---- a/drivers/cpufreq/mediatek-cpufreq-hw.c
-+++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
-@@ -278,18 +278,32 @@ static int mtk_cpu_resources_init(struct platform_device *pdev,
- 	ret = mtk_cpu_create_freq_table(pdev, data);
- 	if (ret) {
- 		dev_info(dev, "Domain-%d failed to create freq table\n", index);
--		return ret;
-+		goto unmap_base;
- 	}
- 
- 	policy->freq_table = data->table;
- 	policy->driver_data = data;
- 
- 	return 0;
-+unmap_base:
-+	iounmap(base);
- release_region:
- 	release_mem_region(res->start, resource_size(res));
- 	return ret;
- }
- 
-+static void mtk_cpufreq_hw_cpu_exit(struct cpufreq_policy *policy)
-+{
-+	struct mtk_cpufreq_domain *data = policy->driver_data;
-+	struct resource *res = data->res;
-+	void __iomem *base = data->base;
-+
-+	/* HW should be in paused state now */
-+	writel_relaxed(0x0, data->reg_bases[REG_FREQ_ENABLE]);
-+	iounmap(base);
-+	release_mem_region(res->start, resource_size(res));
-+}
-+
- static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
- {
- 	struct platform_device *pdev = cpufreq_get_driver_data();
-@@ -322,6 +336,8 @@ static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
- 		if (!(sig & CPUFREQ_HW_STATUS)) {
- 			pr_info("cpufreq hardware of CPU%d is not enabled\n",
- 				policy->cpu);
-+			/* call mtk_cpufreq_hw_cpu_exit to cleanup the resource */
-+			mtk_cpufreq_hw_cpu_exit(policy);
- 			return -ENODEV;
- 		}
- 
-@@ -331,17 +347,6 @@ static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
- 	return 0;
- }
- 
--static void mtk_cpufreq_hw_cpu_exit(struct cpufreq_policy *policy)
--{
--	struct mtk_cpufreq_domain *data = policy->driver_data;
--	struct resource *res = data->res;
--	void __iomem *base = data->base;
--
--	/* HW should be in paused state now */
--	writel_relaxed(0x0, data->reg_bases[REG_FREQ_ENABLE]);
--	iounmap(base);
--	release_mem_region(res->start, resource_size(res));
--}
- 
- static void mtk_cpufreq_register_em(struct cpufreq_policy *policy)
- {
+You are right, and the documentation says so:
 
----
-base-commit: 52ae6ea5bd7c7286dcba463b6323b640b22af833
-change-id: 20260105-mediatek-cpufreq-hw-a2afa5c8275a
+ *              The first field of the
+ *		driver-specific buffer structure must be the subsystem-specific
+ *		struct (vb2_v4l2_buffer in the case of V4L2).
 
-Best regards,
--- 
-Felix Gu <gu_0233@qq.com>
+This is inconsistent with how other objects are overloaded, notably the req=
+uest
+object, which does not have this limitation. We should probably fix that
+someday, meanwhile.
 
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+>=20
+> Thanks.
+>=20
+> Regards,
+> Kyrie.
+> >=20
+> > > =C2=A0	struct mtk_jpeg_dec_param dec_param;
+> > > =C2=A0
+> > > =C2=A0	struct mtk_jpeg_ctx *curr_ctx;
+
+--=-4+oXkLqgBdCrGoVfdxJj
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaVwO5QAKCRDZQZRRKWBy
+9JQpAP0dnUFHHjrwSdklIXv0iM9Mn2ffy7uO4iLtFZ1F13veZwEAxFlPuKq8bjib
+yxKl4rlCUkzH3EGoWvZd1nccuFKJ5Qw=
+=uGnL
+-----END PGP SIGNATURE-----
+
+--=-4+oXkLqgBdCrGoVfdxJj--
 
