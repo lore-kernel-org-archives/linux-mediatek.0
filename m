@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 792E1C2A072
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 08:43:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D5BEC2A077
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 08:49:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jF+mu+wWw/O9fHqXXgiokoR8QYz8JufcfZjOKbIj9YQ=; b=lVNSZuj42etw2cdiS+RxPKl12E
-	qwkHNgtQfJu5Kpw5Wen4njopLaGhBnQ7TaafgNm2/aSG8vshDtLMjUMmfDBXlM8j0xB8SAm8f7bhr
-	7MbIb3gx3gMNTcUxkGkKcIXqNm0GhxQKEElA1FWnZFEwQkskAIFPZz2KB53pXqKsyt8oUjuwN0LeB
-	R7hrC3EHgiCKS+VouBGdTLOSv/GzA/FmPfM58HzwoK2Zqtks8sgzK6FZhsmnZarh8EKbMuU1+rs86
-	nbcqdkFTadOY8ilkBCnMR4mxvxKqpu006Fu+UtTSpizgYm2EoOpqSPvita3Ix001d27WpoXBsZlXW
-	gnQyj8oA==;
+	bh=WJMNPG24bL7OgNWtK9rQxRkMlEdnd9ti330EJ7N3bMQ=; b=cX1BEaED+HB2LEwVBdTsj1y/Ak
+	apDNzFiFRSbp17vuFNoeQeMOU6nRgQZmxqUIiDEDNrRJuV/oOooS1xPXZh+b4jVbwxhH+5Mc5LPtK
+	+X1+Qw8O827aP2meCAy69Pax4w3dEGIzIDv1fSuOfCj6rK1gDajH2iwCMzZFAdCI4ys/blGJnL2pk
+	lAvar8CFIHgmqDsZ7/dDJUYFLMtlA1kVhrXFEDP2wx7liU+L6s7Lv54Tw15CDw5i/bLzGTQr74fBJ
+	oj5nGhSNFeOe8GTF/IIDeSRx/IBU8tvWYMblorIrpFkTHWrNvH0qbkU/2Ncbi2acboHOafUifACTz
+	De9L8eiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcgBs-0000000B0MX-2xRj;
-	Mon, 05 Jan 2026 08:43:53 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vcgHa-0000000B0iM-2AQy;
+	Mon, 05 Jan 2026 08:49:46 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcgBp-0000000B0M5-3b8G;
-	Mon, 05 Jan 2026 08:43:51 +0000
+	id 1vcgHY-0000000B0hZ-1aYt;
+	Mon, 05 Jan 2026 08:49:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3B3124406B;
-	Mon,  5 Jan 2026 08:43:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64E8CC116D0;
-	Mon,  5 Jan 2026 08:43:48 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 96F7A4019F;
+	Mon,  5 Jan 2026 08:49:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC4B2C116D0;
+	Mon,  5 Jan 2026 08:49:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767602629;
-	bh=waNyVge8NYPcsyHa3vlJh2SgD9ALMl/hI611CV/VDkE=;
+	s=k20201202; t=1767602983;
+	bh=ee5soaoyKiBuasxn1iD+tDCH2itJaaLVbfJQApUgCBo=;
 	h=From:Date:Subject:To:Cc:From;
-	b=IQIVFs1rpYvr1nF3+vIATUcJMMDPKv1fgAcx5+vn6ZOt1tEkEInaT+C43KDts5ptF
-	 Wh9XHOhlH9BCij0ZMd0PXurCD7ZYw8qu0Mtw/VY56pqg/boW7ZjzDCU9wpzuTxiACm
-	 J3R7HicmNMfftwoVA1Lpd0e5bQBPsp6gbaeuqHWsan9lkCU1KH1sIF8qTgZRoe1/Ny
-	 ZMxBv/vuwuTMJ3kWwKCaZBCs010vTyL2guA8lzkKNJ0kBqR7NKs/5EDbL/v9quVdF9
-	 W3r/jhwD5UUbGOOF3kIJr9PBxuqsiQAitYSfvCXXho1SOv7LUksZYu4JbjVTnKJ8UD
-	 bDGowLfvo0e3A==
+	b=GhRVS73LqH4Ylz6MPvKYhUeLXT7nfBkPdJ3s0Ocf5uXrLiH+7CFJAluoEigDkdL5M
+	 vnTkunG8UQAvQIGXWzr7QN3bx1HMwBB4c7Q4oYaOHt/DxjI+xXgqnxXhByjZTBrZoJ
+	 6q/084ljYKHTpTcZ93jPrGxfZ64wqYPb8rISTvAFdQdw6TWH7RfTTHXF5kRnt7Ydhl
+	 6rF73wYk3RpmEO3UTx77er34OGtTx0We0w7fFthjJBCAFzkHgZIMMM1705NpwH+4VU
+	 WJvXYmQfik8OqzIbiK54qD3u+C29/+D9FYW4ZtdKfEV4+EjdpVT+TJ2Lpzrc0UcDQq
+	 ewOlp0qlUm4HQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 05 Jan 2026 09:43:31 +0100
-Subject: [PATCH net v2] net: airoha: Fix schedule while atomic in
- airoha_ppe_deinit()
+Date: Mon, 05 Jan 2026 09:49:16 +0100
+Subject: [PATCH net-next] net: airoha: npu: Dump fw version during probe
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260105-airoha-fw-ethtool-v2-1-3b32b158cc31@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/32NQQ6CMBBFr0JmbQ0drUFX3sOwKO1AJxJKpgQ1p
- He3cgDzV+8n//0NEglTglu1gdDKieNUAA8VuGCngRT7woA1Go14UpYlBqv6l6IlLDGOCnVvzl2
- N7tp0UHazUM/v3floCwdOS5TPfrHqX/vPtmpV4juvzaVxpjH3J8lE4zHKAG3O+QutZT55swAAA
- A==
-X-Change-ID: 20251223-airoha-fw-ethtool-21f54b02c98b
+Message-Id: <20260105-airoha-npu-dump-fw-v1-1-36d8326975f8@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MPQqAMAxA4atIZgMakapXEYdWU81gLS3+QPHuF
+ sdveC9B5CAcYSgSBL4kyuEy6rKAedNuZZQlG6iitiZqUEs4No3On7icu0d7Y9tbpUxH1ugGcug
+ DW3n+6Ti97wf+4UJ4ZAAAAA==
+X-Change-ID: 20251223-airoha-npu-dump-fw-59f77b82fba3
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
 Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260105_004349_927734_D59ADC3F 
-X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-CacheID: sfid-20260105_004944_449358_5E4BBE7B 
+X-CRM114-Status: UNSURE (   8.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,50 +77,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-airoha_ppe_deinit() runs airoha_npu_ppe_deinit() in atomic context.
-airoha_npu_ppe_deinit routine allocates ppe_data buffer with GFP_KERNEL
-flag. Rely on rcu_replace_pointer in airoha_ppe_deinit routine in order
-to fix schedule while atomic issue in airoha_npu_ppe_deinit() since we
-do not need atomic context there.
+Dump firmware version running on the npu during module probe.
 
-Fixes: 00a7678310fe3 ("net: airoha: Introduce flowtable offload support")
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Changes in v2:
-- Update commit log.
-- Link to v1: https://lore.kernel.org/r/20251223-airoha-fw-ethtool-v1-1-1dbd1568c585@kernel.org
----
- drivers/net/ethernet/airoha/airoha_ppe.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/airoha/airoha_npu.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 0caabb0c3aa06948e46ad087c50eba5babc81994..2221bafaf7c9fed73dcf8d30ff3b1c5eecc463d4 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -1547,13 +1547,16 @@ void airoha_ppe_deinit(struct airoha_eth *eth)
- {
- 	struct airoha_npu *npu;
+diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
+index 68b7f9684dc7f3912493876ae937207f55b81330..22f72c146065998d5450477f664ed308b1569aa3 100644
+--- a/drivers/net/ethernet/airoha/airoha_npu.c
++++ b/drivers/net/ethernet/airoha/airoha_npu.c
+@@ -657,6 +657,7 @@ static int airoha_npu_probe(struct platform_device *pdev)
+ 	struct resource res;
+ 	void __iomem *base;
+ 	int i, irq, err;
++	u32 val;
  
--	rcu_read_lock();
--	npu = rcu_dereference(eth->npu);
-+	mutex_lock(&flow_offload_mutex);
-+
-+	npu = rcu_replace_pointer(eth->npu, NULL,
-+				  lockdep_is_held(&flow_offload_mutex));
- 	if (npu) {
- 		npu->ops.ppe_deinit(npu);
- 		airoha_npu_put(npu);
- 	}
--	rcu_read_unlock();
-+
-+	mutex_unlock(&flow_offload_mutex);
+ 	base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(base))
+@@ -750,6 +751,11 @@ static int airoha_npu_probe(struct platform_device *pdev)
+ 	regmap_write(npu->regmap, REG_CR_BOOT_TRIGGER, 0x1);
+ 	msleep(100);
  
- 	rhashtable_destroy(&eth->ppe->l2_flows);
- 	rhashtable_destroy(&eth->flow_table);
++	if (!airoha_npu_wlan_msg_get(npu, 0, WLAN_FUNC_GET_WAIT_NPU_VERSION,
++				     &val, sizeof(val), GFP_KERNEL))
++		dev_info(dev, "NPU fw version: %0d.%d\n",
++			 (val >> 16) & 0xffff, val & 0xffff);
++
+ 	platform_set_drvdata(pdev, npu);
+ 
+ 	return 0;
 
 ---
 base-commit: c303e8b86d9dbd6868f5216272973292f7f3b7f1
-change-id: 20251223-airoha-fw-ethtool-21f54b02c98b
+change-id: 20251223-airoha-npu-dump-fw-59f77b82fba3
 
 Best regards,
 -- 
