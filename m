@@ -4,105 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF7A5C2A062
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jan 2026 21:43:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC48BC2A074
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jan 2026 00:26:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kJ9hvaIgQkb2Ldds6KzrQ1Gqe9ey1L/CjFXEAMQEWtM=; b=pfaF5cmQJ0CDrl2CIwV/3DHovG
-	Rcztas8cHiNkFXRsdFSsM/OLedH/EfS1mb8/5Ac6y8RLYuojEoAfEUKUk/iXbLPOcw4cvZHA8Pc5I
-	f9leqFu4ADOtzRTSvcSqy15+BV8qxk4u0/Q1pk3bZ0HOpBi+a7b3S+79Lc0UPTRsR+qe3gbajndrn
-	0zgyWw1Vbhl4OHOfk1yTwJxbzwL/X/VeTnIFdpcNthLiT03bd2tcdd5+RsyU+ujKoFvzznQOk34d5
-	0LdSEFdq2AxTHjLFIasJ8GkEdrV+g93Y7JezyPlHYfv+qCAAxxVO2HmvUOi/0nWk4utIUP3kCNpkK
-	vN3hNJjw==;
+	bh=xAgVTP0BzLqwfWTeezG65MLKR0/RKkukMTGhqy2j9so=; b=x05Dpgl4w+9dG8iDlB2EHapyyD
+	YLRVGI6XbZIatlOXO8BdnhyYyA6KY1tLJXnSUhVqUQIMVYpbIVogxRQFCLF2ReOgiFQXrhEEHFNLf
+	GWGMrkjX0fy81HFzi7VSFqFdLBjrEfKnTk6e6qgd/76/piuFnuVWYZ8MnXVJP4BuqbbTeDfsIy0HU
+	wZNDFIb/AO4Tq/e4J73dc5dUy4QDyRtnjXa29mz25jhkprmLSp5s3OtwbQ040e7j3+xKuopkdVb+A
+	phuAf7DKkeGGV09UKfFimaBV5E+e+OAG/0U7keLwEi2UTlGyYWglN/6gVEIBmasfYD8mU4U4SjVH0
+	qWkXJJHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcVsK-0000000AUFS-3gyM;
-	Sun, 04 Jan 2026 21:43:00 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1vcYQy-0000000AZqM-05qo;
+	Mon, 05 Jan 2026 00:26:56 +0000
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vcVsG-0000000AUEk-3Qox;
-	Sun, 04 Jan 2026 21:42:58 +0000
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 604L3MdA4144301;
-	Sun, 4 Jan 2026 21:42:53 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	corp-2025-04-25; bh=kJ9hvaIgQkb2Ldds6KzrQ1Gqe9ey1L/CjFXEAMQEWtM=; b=
-	gKRYdO5Ei96WSxyfQ75p5+FfyGkrcQ177jtCrBpf7NZpmR7DBRtudBI6ApxHWtAK
-	2dxEwa9doM0SN28POZsv/q+PHWmZzeOwjV5wSKw8Z2bcpnxBbeZkaBOY5JIBRR79
-	QfphensM58H5pmyuUd96XVykZ1TfRdINy/Nds9KhKRddeX37c2k4nMYDLEI5eYKB
-	a86rQA1t5u3olrmuZnD1cFDcQ46vjna0xkGjMHuT+HseJciGxhLN0HYqZlunYdea
-	b/I1Gzel9ae1M66FNjkV7W2bpzd/8592RQgfwW2e+i6wio8Em5celMIzmBP3SOHF
-	qPmVI5z0Z+Zlg1uh3uywCw==
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4bev6ngxwk-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Sun, 04 Jan 2026 21:42:53 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 604GXW1O030837;
-	Sun, 4 Jan 2026 21:42:52 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 4besjarf2x-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Sun, 04 Jan 2026 21:42:52 +0000
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 604LgpIo034017;
-	Sun, 4 Jan 2026 21:42:52 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 4besjarf2n-2;
-	Sun, 04 Jan 2026 21:42:52 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: Peter Wang <peter.wang@mediatek.com>,
-        Chaotian Jing <chaotian.jing@mediatek.com>,
-        Stanley Jhu <chu.stanley@gmail.com>,
-        "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org,
-        linux-arm-kernel@lists.infradead.org,
-        Colin Ian King <colin.i.king@gmail.com>
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH][next] scsi: ufs: host: mediatek: make read-only array scale_us static const
-Date: Sun,  4 Jan 2026 16:42:42 -0500
-Message-ID: <176756271713.1812936.16233360275459977513.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.51.2
-In-Reply-To: <20251219214428.492744-1-colin.i.king@gmail.com>
-References: <20251219214428.492744-1-colin.i.king@gmail.com>
+	id 1vcYQv-0000000AZp2-1TqY
+	for linux-mediatek@lists.infradead.org;
+	Mon, 05 Jan 2026 00:26:54 +0000
+Received: by mail-pf1-x435.google.com with SMTP id d2e1a72fcca58-7bb710d1d1dso19047803b3a.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 04 Jan 2026 16:26:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1767572812; x=1768177612; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xAgVTP0BzLqwfWTeezG65MLKR0/RKkukMTGhqy2j9so=;
+        b=K7alcCLmn+abCW0gHRD0RTdBH0NXziDHpLRX6gKKeoljzRkOGJBVaLs+rcQaDjMf2X
+         NkZcOeXTgNdO4bcTwtmygMooeVzf6ZeftRtWLa94vD5BHBL9KMfI0ZOHr1dJ+Ien8X97
+         j9oFOqQAEYAlc/WihUoSSFmgHyJj7gUpo+m2V61JzBXwR7D6WWpD5sv6333uAkMprzW6
+         7GwlC+VAAbr5QbL8NmFD0LKxHOfbrflys5dS6+fpaFsBCdhFAVnjB48E+zv3Ris0IKXw
+         G7QIqlOeoMGFG9pdPZ106uyAL0+y2h+YhpCc3tQN3b/kyFJqWT7rKinofPaFw17/Ofz2
+         1qSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1767572812; x=1768177612;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=xAgVTP0BzLqwfWTeezG65MLKR0/RKkukMTGhqy2j9so=;
+        b=Jhyv/MbheMNuwWvNZlCmq0VuqX7NyaAemUvuaLlykD7ooEYyRwV3z4hWW5KQKD3VqC
+         lO+JTsMtokfuKN+MYGlLLsqUO9uG81UB3KrrIVSMJLiIHg8qjOECm+D6/WdDOMFZ1Bo5
+         4zRjERZSXdOmdqUrTtkaz+229Expx8epZExoPJjNXHcYT9+e/Urkauopp4DyQnZyn1jy
+         wd6Up/nWHLRspQ3MP00ER7t8Bn6eZhBPYe03Mrk/AM7CyhDIAkvfhomJXI+SlBZ1U/oI
+         QTrU/BNpnsimRTaivBkzrcuGUV/hgxxN0ricGnuBX6S0H+vaSPwbUY1C/UB/LHcYTExY
+         XMBg==
+X-Forwarded-Encrypted: i=1; AJvYcCXhrgy3bn6ms/oWBJ/nbQffSrZCQVG29HleJG06iYBK+eNbLnK3gwbn//mKsWL0OeBIcRMTkYDZ7orzTC2Evg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwpwvX0TPQfRJlOCI41cWFUSvvLwQbUzIOAd2iOXwtsPSjtG/VA
+	p9ut3zWoPcCjHDAvAuXDLnbq9an3jwuf9WpF7gpGRmSFGB0h+01WD/bv
+X-Gm-Gg: AY/fxX58W8Yi/mAEBaI+d8Vj6aulbBxwbJgnKoDkGKbQzlzGb7d1iAYjIgN7hbplh9T
+	rlKXoV5a0264H6UwmGBZSYaM5rV7BfiLUWrZ9hr0XiJed2LqJ0mwe9aS8pLGyGWIu08wKxM1syV
+	CuYBX9Mx/8TzqBkT2wZlhLsSjQGSlQpzmeYAN4GsT6F5NMvUWte3XW9kcpJaLLrFeu+yXC2X1zP
+	VjHzQ24qtsmi/abbH0DtgyGnJRBKmS0kdh/vGSYHMXHMeEAeQ90TQIzt5mXuJnl3sg0fZpUBKmi
+	6r0QgA1sZQi6UWwhxj5qv4m8biTLHw9/9bsOUknVAyp8upAHfHV9g9EcTz0rsWFPPvg6j0F6epF
+	91EWsDGpbn7cxId9aTGm90+BxZlF5hbFp56m6w1WnAtam2aGQ9uj1WkCwzdUzIrBWuabCf+qREK
+	+bGYtEoe6Pp22v+s5zTKU7hMgcclRjyX2kOoShJqIHMc/Wsg8cZ4IRd3shvxYlqYc=
+X-Google-Smtp-Source: AGHT+IFKYGpXpbeOzNKq3w85a9004NHjGaMx7/DnJGknvJa/Jb0muU+WLPE3Jt6/U31pHd5HhFvK7A==
+X-Received: by 2002:a05:7022:f902:20b0:11c:b3ad:1fe1 with SMTP id a92af1059eb24-121722b1a7bmr41061173c88.11.1767572812230;
+        Sun, 04 Jan 2026 16:26:52 -0800 (PST)
+Received: from zubuntu.bengal-mercat.ts.net ([2001:5a8:60d:bc9:9ebf:dff:fe00:f8f2])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-121724de268sm133378109c88.8.2026.01.04.16.26.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 04 Jan 2026 16:26:51 -0800 (PST)
+From: Zac Bowling <zbowling@gmail.com>
+To: zbowling@gmail.com
+Cc: deren.wu@mediatek.com,
+	kvalo@kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-wireless@vger.kernel.org,
+	lorenzo@kernel.org,
+	nbd@nbd.name,
+	ryder.lee@mediatek.com,
+	sean.wang@mediatek.com
+Subject: [PATCH 02/17] wifi: mt76: mt7925: fix missing mutex protection in reset and ROC abort
+Date: Sun,  4 Jan 2026 16:26:23 -0800
+Message-ID: <20260105002638.668723-3-zbowling@gmail.com>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20260105002638.668723-1-zbowling@gmail.com>
+References: <20260102200524.290779-1-zbowling@gmail.com>
+ <20260105002638.668723-1-zbowling@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
- definitions=2026-01-04_06,2025-12-31_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 phishscore=0 adultscore=0
- malwarescore=0 suspectscore=0 mlxscore=0 spamscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2512120000
- definitions=main-2601040199
-X-Proofpoint-ORIG-GUID: rdbf5b7C6LSRjtelOVvQBuVBo-52Jzyo
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTA0MDIwMCBTYWx0ZWRfX3DMDsQH9i3eP
- K72TDB1rXgB+fizy4hpq6EU+U3E6Hdl6X+QRag1hlF+e8+II1ZIfstSvs+4uzL1jAQXhOzn+z1v
- wT3GZENzc4EMcb2zTmYgm0pchMQez3G/U49L16XJUI/Q8ap2CAevhXncIDQJSA5TXs2ZO1pPCHv
- i8mxxDcvPz3Xg/NAvsM61GwHUaz+M+PnGrSovnQmr90GmScAa6TOnmQZUX/2dUYqoUWGpEnQRmS
- uWVBUz6e2R07fJU+PyaEfgoxOT9VDTg0vr20lg1ArOhzZbpz0i+4lrA+yFcwN4ul3gtdEMrEhdr
- DdSnmsHtR3tyNxyHFpxn8TNGwzQjQMj4HX4Dfp4IYrmIB5+HBraRlnADxDPzqC7HvU1eAVGBty8
- bvlSZaj+BD95SgwyPHGuYn9ZJmwJtO+S7ce9cZd9PAw/M6uHIF5w444ebR5Eu89KMlbROYGRwNh
- YY9ea6DMOYxttU3kh26Tx0X2D1ymHpuvv2AaWB9k=
-X-Proofpoint-GUID: rdbf5b7C6LSRjtelOVvQBuVBo-52Jzyo
-X-Authority-Analysis: v=2.4 cv=QtFTHFyd c=1 sm=1 tr=0 ts=695adedd b=1 cx=c_pps
- a=e1sVV491RgrpLwSTMOnk8w==:117 a=e1sVV491RgrpLwSTMOnk8w==:17
- a=IkcTkHD0fZMA:10 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=VwQbUJbxAAAA:8 a=ymggwW1gcb6NkITVt5gA:9 a=QEXdDO2ut3YA:10 cc=ntf
- awl=host:13654
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260104_134256_977852_F3C20C4E 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260104_162653_393932_D3E40F15 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,18 +107,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 19 Dec 2025 21:44:28 +0000, Colin Ian King wrote:
+During firmware recovery and ROC (Remain On Channel) abort operations,
+the driver iterates over active interfaces and calls MCU functions that
+require the device mutex to be held, but the mutex was not acquired.
 
-> Don't populate the read-only array scale_us on the stack at run time,
-> instead make it static const.
-> 
-> 
+This causes system-wide deadlocks where the system becomes completely
+unresponsive. From logs on affected systems:
 
-Applied to 6.19/scsi-fixes, thanks!
+  INFO: task kworker/u128:0:48737 blocked for more than 122 seconds.
+  Workqueue: mt76 mt7925_mac_reset_work [mt7925_common]
+  Call Trace:
+   __schedule+0x426/0x12c0
+   schedule+0x27/0xf0
+   schedule_preempt_disabled+0x15/0x30
+   __mutex_lock.constprop.0+0x3d0/0x6d0
+   mt7925_mac_reset_work+0x85/0x170 [mt7925_common]
 
-[1/1] scsi: ufs: host: mediatek: make read-only array scale_us static const
-      https://git.kernel.org/mkp/scsi/c/309a29b5965a
+The deadlock manifests approximately every 5 minutes when the adapter
+tries to hop to a better BSSID, triggering firmware reset. Network
+commands (ip, ifconfig, etc.) hang indefinitely, processes get stuck
+in uninterruptible sleep (D state), and reboot hangs as well.
 
+Add mutex protection around interface iteration in:
+- mt7925_mac_reset_work(): Called during firmware recovery after MCU
+  timeouts to reconnect all interfaces
+- mt7925_roc_abort_sync() in suspend path: Called during suspend to
+  clean up Remain On Channel operations
+
+This matches the pattern used in mt7615 and other MediaTek drivers where
+interface iteration callbacks invoke MCU functions with mutex held:
+
+  // mt7615/main.c - roc_work has mutex protection
+  mt7615_mutex_acquire(phy->dev);
+  ieee80211_iterate_active_interfaces(...);
+  mt7615_mutex_release(phy->dev);
+
+Note: Sean Wang from MediaTek has submitted an alternative fix for the
+ROC path using cancel_delayed_work() instead of cancel_delayed_work_sync().
+Both approaches address the deadlock; this one adds explicit mutex
+protection which may be superseded by the upstream fix.
+
+Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+Link: https://community.frame.work/t/kernel-panic-from-wifi-mediatek-mt7925-nullptr-dereference/79301
+Reported-by: Zac Bowling <zac@zacbowling.com>
+Tested-by: Zac Bowling <zac@zacbowling.com>
+Signed-off-by: Zac Bowling <zac@zacbowling.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/mac.c | 2 ++
+ drivers/net/wireless/mediatek/mt76/mt7925/pci.c | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+index 184efe8afa10..06420ac6ed55 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+@@ -1331,9 +1331,11 @@ void mt7925_mac_reset_work(struct work_struct *work)
+ 	dev->hw_full_reset = false;
+ 	pm->suspended = false;
+ 	ieee80211_wake_queues(hw);
++	mt792x_mutex_acquire(dev);
+ 	ieee80211_iterate_active_interfaces(hw,
+ 					    IEEE80211_IFACE_ITER_RESUME_ALL,
+ 					    mt7925_vif_connect_iter, NULL);
++	mt792x_mutex_release(dev);
+ 	mt76_connac_power_save_sched(&dev->mt76.phy, pm);
+ 
+ 	mt7925_regd_change(&dev->phy, "00");
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+index c4161754c01d..e9d62c6aee91 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+@@ -455,7 +455,9 @@ static int mt7925_pci_suspend(struct device *device)
+ 	cancel_delayed_work_sync(&pm->ps_work);
+ 	cancel_work_sync(&pm->wake_work);
+ 
++	mt792x_mutex_acquire(dev);
+ 	mt7925_roc_abort_sync(dev);
++	mt792x_mutex_release(dev);
+ 
+ 	err = mt792x_mcu_drv_pmctrl(dev);
+ 	if (err < 0)
 -- 
-Martin K. Petersen
+2.51.0
+
 
