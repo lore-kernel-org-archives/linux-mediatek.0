@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 810F6CEFCE1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jan 2026 17:43:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AA25CEFCE8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jan 2026 18:23:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Uem1PYoLyulo/MUF23qZO/dNEnjzQ9As9kztGwIxewQ=; b=ndvPnenNN6pDtHiYvZCtjkGnix
-	ttEZEQ0yN8k3fQNk3XsD+wIPYUO3XbDa0OhZjx2Qhhfr9URRGY7ocqvekX7cymrEE3Mak4J1fd/Le
-	x7JRaUJ0fyBt04/BrWrZMbHBGmjcE2HqoZzXIoieeGyC939rNOH2Afl61Ys3Z2eKdhD8SdybdtSAS
-	aFc+My5GvcwADlGd2IB+/b812oBenPvB149QmexPK0G6patFgOmb0mMDE7PKVjx1tRaYsyEyfWM+n
-	EUpyX1jfACmYcHyHt2+6SEtx1Cd99WPS8OrtXozHNhmoGt6YQaVdNnsDgmaMncdMvgIy4AXZDVbEW
-	7+CJaMNA==;
+	bh=ddFu/kMbyT+MIg9x7LiNThzvSZy/m4CVQMOwZpgjoG4=; b=pPaShheavFhTIl4623ZKapwPi/
+	yMlKmFm4JxM9spSVWAunN52TxHBtXBegunAmnPYN3nAUaNIBp+kgwZJ1CCqA4twBf3VzXnxhRO9cr
+	7TcIkw4HB5g5k+i9d5dBSqgmADBuUf7f9p/Duo/FZmuxOZignlYF2B8sitUUmzxTKU7VCbrhBd7uw
+	UhRM4szyxNc9elpZGFQM8GoGpzK1zb39Sme2vB1525Fwsj2ErpvXNEmfY+x5F+Jr6LGGXOZAjQWSc
+	hujNdiZc1tIeuMl5/KnPDCpQJ91YofPxLlYt4Q6DXrt044Y9xglQBVVbKIEc+ZMfb5oWQpeYm+F8r
+	sBRT0Vyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdB5U-0000000Datq-2gvk;
-	Tue, 06 Jan 2026 17:43:20 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vdBhu-0000000DfKl-2Qef;
+	Tue, 06 Jan 2026 18:23:02 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdB5R-0000000DatF-2Sia;
-	Tue, 06 Jan 2026 17:43:18 +0000
+	id 1vdBhs-0000000DfKJ-3uKB;
+	Tue, 06 Jan 2026 18:23:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id DBC0E434FA;
-	Tue,  6 Jan 2026 17:43:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9FF69C116C6;
-	Tue,  6 Jan 2026 17:43:15 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 6A4F960008;
+	Tue,  6 Jan 2026 18:22:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1B6BC116C6;
+	Tue,  6 Jan 2026 18:22:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767721395;
-	bh=knYO0dVBtKILflMNQYIaYPLoiqqfWTfUH8gCTse05RE=;
-	h=From:Date:Cc:To:In-Reply-To:References:Subject:From;
-	b=Fm19qNEumPDXY1AVuxiNPc5H1ZrdFIFe8+BXOsTcO9NopdwkpsjKcrZNt+VSKzafn
-	 2IvPjQvnzJQpfvS5aTgE2Y2ckiVpWI2hRJEnQs0Pg0dhz6u8nJhNIB2jcUvOAQrTIf
-	 kH5zIH9uZYdd47qG99G6513q0kEM795b1yo3JMXldLM2GmN+6btkrOxR0EbbAZ1FCY
-	 f0cazx/FvGVgIP9L1Ct9UAVDsXLWVXPdfV6BMmFHH4ze0dX3tkPAhJbksx9Pauzf1d
-	 Xa96eiHRr/HvLuZD/onk+lo2+/E/NxA/dhg2QbJpAE8glTfO8qdt0KSV10PWE5fuZ8
-	 5r7xcMcvU0Bmg==
-From: Rob Herring <robh@kernel.org>
-Date: Tue, 06 Jan 2026 11:43:14 -0600
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	s=k20201202; t=1767723779;
+	bh=ZMHIVMxJvP0SqJXp+jI2tHR/1Nef4l7GGKt6yBgh3HY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ga0uyPT6NQN7Ta4jenmNcBrxk43grsKtrsOVSkQZFE46z5RgZcMT110WPd78kSA2s
+	 3UTnNsUnsk02AGOrUzaBDvqzb/gYzXCQZ3JmQ0v8pXnRFKQm+tHT+RSkchrCvHsW1U
+	 KfIUuCFkRnm9izYSbiWxdMnKWKPBROEWdqWgJtjN1P3ChIZQhlI79qgJg6CGrddt5Y
+	 Ntdi3+K2/axG8qaHcnbhfQ64TNPxivq5Lu8X+TzmfrcML0O8zcYeUDRCPny7nkmBLH
+	 stb+oz6/4/o8M94sZiL7w7gfy4wPVYT0cXlYSmGIi1GHl1oPUx3EVDhS2SxLcdN7b3
+	 3YO9gdj3v/Slg==
+Date: Tue, 6 Jan 2026 12:22:58 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: Conor Dooley <conor+dt@kernel.org>, Eric Dumazet <edumazet@google.com>,
+	Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+	linux-phy@lists.infradead.org, linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	linux-kernel@vger.kernel.org, Eric Woudstra <ericwouds@gmail.com>,
+	devicetree@vger.kernel.org,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Lee Jones <lee@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Jakub Kicinski <kuba@kernel.org>,
+	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
+	linux-arm-kernel@lists.infradead.org,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Andrew Lunn <andrew@lunn.ch>
+Subject: Re: [PATCH v2 net-next 03/10] dt-bindings: phy-common-props: ensure
+ protocol-names are unique
+Message-ID: <176772377743.2503618.2171230504388641306.robh@kernel.org>
+References: <20260103210403.438687-1-vladimir.oltean@nxp.com>
+ <20260103210403.438687-4-vladimir.oltean@nxp.com>
 MIME-Version: 1.0
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>, 
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>
-To: David Lechner <dlechner@baylibre.com>
-In-Reply-To: <20260106-mtk-fix-mt7623-pinctl-name-v1-0-33817c7f78ee@baylibre.com>
-References: <20260106-mtk-fix-mt7623-pinctl-name-v1-0-33817c7f78ee@baylibre.com>
-Message-Id: <176772122105.2350532.2584006959358435109.robh@kernel.org>
-Subject: Re: [PATCH 0/2] arm: dts: mediatek: fix pinctl node names
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260106_094317_672023_3FA5DC44 
-X-CRM114-Status: GOOD (  18.07  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260103210403.438687-4-vladimir.oltean@nxp.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,65 +89,33 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 06 Jan 2026 09:20:54 -0600, David Lechner wrote:
-> While passing by, I noticed that the pinctrl nodes in a couple of dtsi
-> files did not match the addresses in their reg properties. Here are some
-> patches to fix that.
+On Sat, 03 Jan 2026 23:03:56 +0200, Vladimir Oltean wrote:
+> Rob Herring points out that "The default for .*-names is the entries
+> don't have to be unique.":
+> https://lore.kernel.org/linux-phy/20251204155219.GA1533839-robh@kernel.org/
 > 
-> Signed-off-by: David Lechner <dlechner@baylibre.com>
+> Let's use uniqueItems: true to make sure the schema enforces this. It
+> doesn't make sense in this case to have duplicate properties for the
+> same SerDes protocol.
+> 
+> Note that this can only be done with the $defs + $ref pattern as
+> established by the previous commit. When the tx-p2p-microvolt-names
+> constraints were expressed directly under "properties", it would have
+> been validated by the string-array meta-schema, which does not support
+> the 'uniqueItems' keyword as can be seen below.
+> 
+> properties:tx-p2p-microvolt-names: Additional properties are not allowed ('uniqueItems' was unexpected)
+>         from schema $id: http://devicetree.org/meta-schemas/string-array.yaml
+> 
+> Suggested-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 > ---
-> David Lechner (2):
->       arm: dts: mediatek: mt7623: fix pinctrl node name
->       arm: dts: mediatek: mt8135: fix pinctrl node name
+> v1->v2: patch is new
 > 
->  arch/arm/boot/dts/mediatek/mt7623.dtsi | 2 +-
->  arch/arm/boot/dts/mediatek/mt8135.dtsi | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
-> ---
-> base-commit: 6cd6c12031130a349a098dbeb19d8c3070d2dfbe
-> change-id: 20260106-mtk-fix-mt7623-pinctl-name-f8593953bed7
-> 
-> Best regards,
-> --
-> David Lechner <dlechner@baylibre.com>
-> 
-> 
+>  Documentation/devicetree/bindings/phy/phy-common-props.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 
-
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
-
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
-
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
-
-  pip3 install dtschema --upgrade
-
-
-This patch series was applied (using b4) to base:
- Base: 6cd6c12031130a349a098dbeb19d8c3070d2dfbe (use --merge-base to override)
-
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
-
-New warnings running 'make CHECK_DTBS=y for arch/arm/boot/dts/mediatek/' for 20260106-mtk-fix-mt7623-pinctl-name-v1-0-33817c7f78ee@baylibre.com:
-
-arch/arm/boot/dts/mediatek/mt7623a-rfb-emmc.dtb: pinctrl@1000b000 (mediatek,mt7623-pinctrl): 'cir-default', 'i2c0-default', 'i2c1-alt', 'i2c1-default', 'i2c2-alt', 'i2c2-default', 'i2s0-default', 'i2s1-default', 'keys-alt', 'leds-alt', 'mmc0', 'mmc0default', 'mmc1', 'mmc1default', 'nanddefault', 'pcie_pin_default', 'pwm-default', 'spi0-default', 'spi1-default', 'spi2-default', 'uart0-default', 'uart1-default', 'uart2-alt', 'uart2-default' do not match any of the regexes: '^pinctrl-[0-9]+$', 'pins$'
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt65xx-pinctrl.yaml
-arch/arm/boot/dts/mediatek/mt7623a-rfb-nand.dtb: pinctrl@1000b000 (mediatek,mt7623-pinctrl): 'cir-default', 'i2c0-default', 'i2c1-alt', 'i2c1-default', 'i2c2-alt', 'i2c2-default', 'i2s0-default', 'i2s1-default', 'keys-alt', 'leds-alt', 'mmc0', 'mmc0default', 'mmc1', 'mmc1default', 'nanddefault', 'pcie_pin_default', 'pwm-default', 'spi0-default', 'spi1-default', 'spi2-default', 'uart0-default', 'uart1-default', 'uart2-alt', 'uart2-default' do not match any of the regexes: '^pinctrl-[0-9]+$', 'pins$'
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt65xx-pinctrl.yaml
-arch/arm/boot/dts/mediatek/mt7623n-rfb-emmc.dtb: pinctrl@1000b000 (mediatek,mt7623-pinctrl): 'cir-default', 'hdmi-default', 'hdmi_ddc-default', 'i2c0-default', 'i2c1-alt', 'i2c1-default', 'i2c2-alt', 'i2c2-default', 'i2s0-default', 'i2s1-default', 'keys-alt', 'leds-alt', 'mmc0', 'mmc0default', 'mmc1', 'mmc1default', 'nanddefault', 'pcie_pin_default', 'pwm-default', 'spi0-default', 'spi1-default', 'spi2-default', 'uart0-default', 'uart1-default', 'uart2-alt', 'uart2-default' do not match any of the regexes: '^pinctrl-[0-9]+$', 'pins$'
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt65xx-pinctrl.yaml
-arch/arm/boot/dts/mediatek/mt7623n-bananapi-bpi-r2.dtb: pinctrl@1000b000 (mediatek,mt7623-pinctrl): 'cir-default', 'hdmi-default', 'hdmi_ddc-default', 'i2c0-default', 'i2c1-alt', 'i2c1-default', 'i2c2-alt', 'i2c2-default', 'i2s0-default', 'i2s1-default', 'keys-alt', 'leds-alt', 'mmc0', 'mmc0default', 'mmc1', 'mmc1default', 'musb', 'nanddefault', 'pcie_pin_default', 'pwm-default', 'spi0-default', 'spi1-default', 'spi2-default', 'uart0-default', 'uart1-default', 'uart2-alt', 'uart2-default' do not match any of the regexes: '^pinctrl-[0-9]+$', 'pins$'
-	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt65xx-pinctrl.yaml
-
-
-
-
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
 
