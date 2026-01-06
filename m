@@ -4,103 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05E25CE9D4D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jan 2026 15:21:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39A05CEFCE3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jan 2026 17:10:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p/t/NcB51sqAFQDiderPUcJQ9/jY7pit5p9mBhEVktE=; b=Q++ZsWSXW0s7+QP9AxCu64IgLb
-	1qCrTDJtHZ0t+YkIeNw0V5yxZC1WsjU+Lh9BOrKsOvqCCtmRUxgZIYVbjPvaTD83GYidHLyEcvzBD
-	k/hcQ7uBtNZEmPu5XZha8iRpemtTv6lFQg9hzbwmKeuJCyG9CSdMn2wiHoCWMjs1WR2AkNBaXFzBH
-	AdRQfJ+aP6kW6WBKHxfo1pMq6ytmqZn+Fan94R1pUTDVW2bnJ3gPrQBKyxkp1fxMAs07kQBYPAxa2
-	J28dKLGbIRdW1T4l3kNPIbSmex+57nrY/WSpXino5PU+IdyaABiiiiU2EjdAwMnNWAcKAUzDDadCn
-	gvod22yw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zxLZ7cXYCqtefP/2kqs1Yn+FZp/lqC2bn6GLc6crZxE=; b=ggRn0qO/5ME1Hyl5v96A6+L/vr
+	49iBd/PytiQA18PSWdYdi3VdD1cLq/wQlJDwKOTLDaryF/GXD+kYm6P2ZesFU8+6wFUIoGuPCxsdB
+	nFJ6zaDQdFf8mC4Ccu+y3jvUr48Y0MdV31mnOyBbW4xINEnHctBK/YVfzGqkEnjmRpXOr6mDuDQ+Y
+	q5ZSzJFLXSruQ+YYY/He/xrmQKZzjI3oV3aFzrOJiDuHTN6uj0zTqscdBB4Q56iU/H1KNDzl3kuyr
+	SklvgGPHlfl7hjzxd1IjEdbLjWiDtbBf+sHgftl+qjEsIVz0JlpcINuR98/DAmQREYuOsNmL3Hk90
+	cLN5mrOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vd8sL-0000000DOUz-01Dj;
-	Tue, 06 Jan 2026 15:21:37 +0000
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+	id 1vdAZl-0000000DY51-31CC;
+	Tue, 06 Jan 2026 17:10:33 +0000
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vd8s9-0000000DOPe-2N4v
+	id 1vdAZj-0000000DY3p-2OTS
 	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Jan 2026 15:21:29 +0000
-Received: by mail-oi1-x22e.google.com with SMTP id 5614622812f47-4537407477aso707886b6e.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jan 2026 07:21:22 -0800 (PST)
+	Tue, 06 Jan 2026 17:10:32 +0000
+Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-7a9c64dfa8aso986213b3a.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jan 2026 09:10:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1767712882; x=1768317682; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=p/t/NcB51sqAFQDiderPUcJQ9/jY7pit5p9mBhEVktE=;
-        b=IBwcgJnL6zzTRbArAWB5u4AqbbWqKiiO2J29oN/y0j8YzNlx6Sb6i4f5wrgU5oXwww
-         woGhSv7AOg/iPIsrBK2b7u7ZdRqkCHXuagd2xHYT1ZQMu1ORNwZxsX1tg4hNxC+rx8ts
-         cZC5qrWeBNrT8jDztec8muGVuogy04FC5aJRp/hYeR+RSxtDM4B9olVUZ/7Wo4CfMKhu
-         kbu7HjMUCe4fPA/6HV6C+NGN7ikb2rAPjsXD8f1GBq+FFbdKWTAn/g+fpCFPqzcT/FyE
-         w7MqV09keuHjDE8AchunpnvYf14LJe++2It0pioVZLJsz5ZuIEqlAvHPe0CSX+h74wX8
-         NAow==
+        d=linaro.org; s=google; t=1767719431; x=1768324231; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=zxLZ7cXYCqtefP/2kqs1Yn+FZp/lqC2bn6GLc6crZxE=;
+        b=aF1ZYeEEHcw7yF5Wqzng+90ucsACuX54U2G6kiQcsl19Z9MlzA8BhOxl37pJptWwsd
+         uMYVBN1JPJjr7uQoTB33hvozdjDp5dzWXFXrcsztNdPrXtwG9R+qp4aL4ZNFHHKYXc9x
+         NkF5WqzShhqGWhx5HOywKR5vZWd+TOX0IXf6rgvCgefFWkw5j4X+ts8OWEE8xgg0S72Z
+         U7BTKrB7pDXm4tn3SpQjVTPWlGCuGedoRHDAzTsd+BzNoXv+wHVT5D+2ducQgKDeRFdd
+         Z/046HU2eiKVJQtd501PvVgjAmCtDyrUqWSnDVMlS4q0IOraKPU2LkAQ15Bjh+W8Ft5/
+         mO0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767712882; x=1768317682;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=p/t/NcB51sqAFQDiderPUcJQ9/jY7pit5p9mBhEVktE=;
-        b=NuQURKdO5cqlXT7GnD3InHu7e0EjMzfE79EFXJBTAoKOzmIx8jevDNd09hDVD2rlH3
-         IG3Awm2pYlWWLKj4z/tcTHjmF0C1km5ijW3mDCQofhh15ovEDm1TDJuObsc7MLoZno+K
-         QLoj0hao2zJKbhu7Selmw8lYo00gBRhY/tYb/YCU5Ccr0rBK6557zUXRBHxpvqv5+eVQ
-         tvYOKOYs/RF0r/ekFZuOeE7eW8yqycu10QPYrHJHnRDCVgjtq+Xuh1+CyK30VXOv3ON0
-         I/RZMDN2C4Wu8XxBYYC/qhLIu1yASyB3AWA1EjuzEKvKMzuvtW39IEVuvFnoBgStfoO8
-         ql6g==
-X-Forwarded-Encrypted: i=1; AJvYcCUA2FNytYC+Gq+nzUNhhQgVaaQCZIGzTJSYtx2fcim/HjyA0UjkidamnJmNpfx61idOcbNgafgJXPk7wLw75w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwwrwZ5l5JdBICl0rT/F1KoQqNpXJvgEU3rgWaf2v35lYhsEBSu
-	4QRe2SLOYgzlooenWqMOjgj6yLmXPDvjWDQqdeHmIgJen1tjzIoINnI4//Sb7AcftHo=
-X-Gm-Gg: AY/fxX5OPkLNMNZkxZ7yOkNQBt1LYwRQcukZqr6XM7+Fiab8BPcmNaBM9N622Qnr8hV
-	QweWRKo4Hfgjw3Mt5cDZxGqKTj65UcZ5KJxYNFpNlD/quEBF6un7WpTFcS4PJ3vxR/hh778vQeP
-	S2ufVAUGBHAt8tpgyr651f1BbhREVxc7k2r5kQcSphF0ScSu8PW0GkzmAZuTOfTbF+XIJdi+f7z
-	b+WfJ4KeLXYWPRpvqY7wo9Je5I3j2dD1oj0wv9zaxB0o4qmHz+uDIh2XpV/U+6LhafxZu85MdFB
-	gGiFGPUhjh752kW88ldWXyC3E2gfANH7wDQkIuJCnPcHNIQPRL0iNz0TkkuGT9rYQo+o7HkK/vj
-	dQpY9xntu6w9/iI8D5FjuLndNbk/JVTLe9YjV203Kvs/Jc5NG8ZGYoQiR5c6aR9EWVp0Q7d2mKd
-	xxcK+biISlM6h17p6MXt5/FADSig==
-X-Google-Smtp-Source: AGHT+IHMOQWDQWuXZsJRwpIf24l4IJ0UIs4un6Y4JFrYSz9acYwa5C8MYevbexce/tpNOsHYOYBv6g==
-X-Received: by 2002:a05:6808:2516:b0:450:7f09:69a9 with SMTP id 5614622812f47-45a5b12f56fmr2140044b6e.49.1767712882089;
-        Tue, 06 Jan 2026 07:21:22 -0800 (PST)
-Received: from [127.0.1.1] ([2600:8803:e7e4:500:7f98:2205:4ba4:3e65])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-45a5e17cd81sm1041992b6e.2.2026.01.06.07.21.21
+        d=1e100.net; s=20230601; t=1767719431; x=1768324231;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=zxLZ7cXYCqtefP/2kqs1Yn+FZp/lqC2bn6GLc6crZxE=;
+        b=dF+Qc4ERfS+8q3PpWhJ7VhLV/GNHPyxVfVtejxPeGPsV/cr0Q++xMDv08vqSct0vZC
+         MVV2SEV8y8JKxwSPem/ROmKtvbMz98FWIhANZyijadwBcYdwAC2C4QfIZIOMGJIp+M+e
+         u200G4LFngwOqZ+kz812nv5OfEtHFgWyucqRqGvH3sAejPVybrBWJsYM3ryVprxT8VWW
+         oCpmHvDB60BE0mBx+mw1JfF4HIEbNRG6EQeAnfuAjbvsxGJk/l16pFV1H2j24nkqhavG
+         7YRGt6PX7HjDOAXR138EmxzjngRMA+K1bjPOXvPJjpEmC4cYTv4sKY14KgGW4c5VPHaM
+         rPiA==
+X-Forwarded-Encrypted: i=1; AJvYcCWP6tzmxT3DsF9gl+H+nQ7OmMCZPQRxlmQDnAFt937qBBhG1Ur7DVNlhP5H6w2daxDjJntiHOqCekVZZXe2DA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwH1BBDoblspzpvsdusP6DPflzJd16YaiASaxWvWTRgBdVgDPZ2
+	y8UoZpN48lRb87p/i1PL3xJqn1RP7MSfyIw7iV8agwBSnUG70FAefkc8BTHBoPse/sS0PoH3BPP
+	QuFj25Ug=
+X-Gm-Gg: AY/fxX7iM6KgtUkABxkJpAmgVyIhAerAMbwdT1AkCWNBT/qlsNzaE6wucOS0VEUIAuc
+	9G6vo6dDjS9gPpSm/o4GJhhvGIjhoN6nJh+1cjED04LzykBNfErJ8T8nsPiFZu9qfDprzBfaQhE
+	3UHTJd63yxbToys4UL7hHlulSyjeK+U+eHb3FG1A6M2ZqqsqvyoyN1hTySK41S3QIHj3Kdp7dHY
+	VNY+GHtpJ10+d4ml2cas3iB6Cjf7S2xepZU1Roj/ObeRvj9uv1fsQWKweG24nKx8Y6fUy7aMmhT
+	OUPAe/iXcbOIFn4oz6C0Hi2SWaJI5waN/QImrQHBMZpXp7RVSlTMDAuh1USYi2/byTPLbtYf+ws
+	CELVNNDfUk8Kb0r6ndWuNAzQ916u0jfaG3k1ca+icuRihpYIRKiKEd/qeOZc/3GZHCzNHepb5eo
+	lT0aYDpbTfi5AMDw==
+X-Google-Smtp-Source: AGHT+IEdipTkUCIxnS1Bbq+IOp8ao5Nso3cbUVg9+zVhDOJBQ9Eh0Txq53A/Fg3j7H+EdDYyooTgJQ==
+X-Received: by 2002:a05:6a20:12d2:b0:366:14af:9bc8 with SMTP id adf61e73a8af0-389823f0d2cmr3089203637.62.1767719430496;
+        Tue, 06 Jan 2026 09:10:30 -0800 (PST)
+Received: from p14s ([2604:3d09:148c:c800:da23:dd36:3f11:b647])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c4cb5352268sm2839268a12.0.2026.01.06.09.10.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Jan 2026 07:21:21 -0800 (PST)
-From: David Lechner <dlechner@baylibre.com>
-Date: Tue, 06 Jan 2026 09:20:55 -0600
-Subject: [PATCH 1/2] arm: dts: mediatek: mt7623: fix pinctrl node name
+        Tue, 06 Jan 2026 09:10:30 -0800 (PST)
+Date: Tue, 6 Jan 2026 10:10:27 -0700
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Tzung-Bi Shih <tzungbi@kernel.org>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-remoteproc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] remoteproc: mediatek: Break lock dependency to
+ `prepare_lock`
+Message-ID: <aV1CA1Kf0D6HNVli@p14s>
+References: <20251229043146.4102967-1-tzungbi@kernel.org>
+ <aVw4QUp6j4vBOrOF@p14s>
+ <aVx90sSLgRzSPazF@google.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260106-mtk-fix-mt7623-pinctl-name-v1-1-33817c7f78ee@baylibre.com>
-References: <20260106-mtk-fix-mt7623-pinctl-name-v1-0-33817c7f78ee@baylibre.com>
-In-Reply-To: <20260106-mtk-fix-mt7623-pinctl-name-v1-0-33817c7f78ee@baylibre.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- David Lechner <dlechner@baylibre.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=737; i=dlechner@baylibre.com;
- h=from:subject:message-id; bh=Zz/bp8VDcWlKoSk5ViAzIDt0BEsqIbEbJ9edYSIJ1vM=;
- b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBpXShiySFBrfJH8ciCefdKbrKNaXKz+oYa+/Xc/
- 5cTjcSGGYuJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaV0oYgAKCRDCzCAB/wGP
- wA8hB/0Rk3h/CrVUNlq1EIdiwxY3C0+oKsxr397VbJBjFtcANQJ7Zclc9UqIc1yqOGZkZKDVTT7
- Jw5F1hyzZFRM3cLwCBGf7Bx7wQjvv58z+jtKowVGbowHCo6rp8ESWoeql2a5DWxItDsHskt0VqD
- RckE04g99ezVvjN9EMrlZLrCZoBLXb2oXxMtx43M590KTOARQWqWSRV8B9UqNvKR9FHy389c2bX
- GizH7nz3zAk1LXJdeUnnUwkBg/y2dZWewPd2I/6V8QOZWa5FGkJvmcfX2YfivLKIog5JMHXBi9O
- an4k1ycuIFUoDfk5TdJNra/2xkcEVyt66einevkVMY7kjHb3
-X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
- fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aVx90sSLgRzSPazF@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260106_072125_887529_2912CF5B 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20260106_091031_626447_2B52DB5A 
+X-CRM114-Status: GOOD (  16.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,29 +105,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Correct the pinctrl node name to use the same address as the reg
-property.
+On Tue, Jan 06, 2026 at 03:13:22AM +0000, Tzung-Bi Shih wrote:
+> On Mon, Jan 05, 2026 at 03:16:33PM -0700, Mathieu Poirier wrote:
+> > On Mon, Dec 29, 2025 at 04:31:46AM +0000, Tzung-Bi Shih wrote:
+> > > `scp_ipi_send` acquires `prepare_lock` via `clk_prepare_enable` while
+> > > the caller often holds `ec_dev->lock` (e.g., `cros_ec_cmd_xfer`).  The
+> > > reverse dependency exists where `clk_prepare` can trigger operations
+> > > that eventually take `ec_dev->lock` (e.g., via sysfs/regulator/genpd).
+> > 
+> > What operation would that be?  Please be specific so that I can trace the code.
+> 
+> The chain is discovered by lockdep: &ec_dev->lock -> prepare_lock ->
+> &genpd->mlock -> ... -> kn->active#2 -> &ec_dev->lock.
+> 
+> -> #6 (&ec_dev->lock){+.+.}-{3:3}:
+>        __mutex_lock_common
+>        mutex_lock_nested
+>        cros_ec_cmd_xfer
+>        cros_ec_cmd_xfer_status
+>        cros_usbpd_charger_get_port_status
+>        cros_usbpd_charger_get_prop
+>        power_supply_get_property
+>        power_supply_show_property
+>        power_supply_uevent
+>        dev_uevent
+>        uevent_show
+>        dev_attr_show
+>        sysfs_kf_seq_show
+>        kernfs_seq_show
+>        seq_read_iter
+>        kernfs_fop_read_iter
+>        vfs_read
+> -> #5 (kn->active#2){++++}-{0:0}:
+>        kernfs_drain
+>        __kernfs_remove
+>        kernfs_remove_by_name_ns
+>        sysfs_remove_file_ns
+>        device_del
+>        __device_link_del
+>        device_links_driver_bound
+>        driver_bound
+> -> #4 (device_links_lock){+.+.}-{3:3}:
+>        __mutex_lock_common
+>        mutex_lock_nested
+>        device_link_remove
+>        _regulator_put
+>        regulator_put
+>        devm_regulator_release
+> ...
+> -> #1 (&genpd->mlock){+.+.}-{3:3}:
+>        __mutex_lock_common
+>        mutex_lock_nested
+>        genpd_lock_mtx
+>        genpd_runtime_resume
+>        __rpm_callback
+>        rpm_callback
+>        rpm_resume
+>        __pm_runtime_resume
+>        clk_core_prepare
+>        clk_prepare
+> -> #0 (prepare_lock){+.+.}-{3:3}:
+>        __lock_acquire
+>        lock_acquire
+>        __mutex_lock_common
+>        mutex_lock_nested
+>        clk_prepare
+>        scp_ipi_send
+>        scp_send_ipi
+>        mtk_rpmsg_send
+>        rpmsg_send
+>        cros_ec_pkt_xfer_rpmsg
+>
 
-Signed-off-by: David Lechner <dlechner@baylibre.com>
----
- arch/arm/boot/dts/mediatek/mt7623.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm/boot/dts/mediatek/mt7623.dtsi b/arch/arm/boot/dts/mediatek/mt7623.dtsi
-index 4b1685b93989..9c54711fab18 100644
---- a/arch/arm/boot/dts/mediatek/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mediatek/mt7623.dtsi
-@@ -249,7 +249,7 @@ pericfg: syscon@10003000 {
- 		#reset-cells = <1>;
- 	};
+From what I understand, cros_ec_cmd_xfer() gets called and takes @ec_dev->lock.
+From there scp_ipi_send() and clk_prepare_enable() are eventually called.  The
+latter takes @prepare_lock and proceeds to enable the mechanic that will get the
+clock prepared.  The process to enable the clock mechanic, which may happen on
+a different CPU, involves calling cros_ec_cmd_xfer() and lockdep complains
+because @ec_dev->lock is already held. 
  
--	pio: pinctrl@10005000 {
-+	pio: pinctrl@1000b000 {
- 		compatible = "mediatek,mt7623-pinctrl";
- 		reg = <0 0x1000b000 0 0x1000>;
- 		mediatek,pctl-regmap = <&syscfg_pctl_a>;
+> > > Move clock prepare / unprepare operations to remoteproc prepare() /
+> > > unprepare() callbacks to break the lock dependency from `ec_dev->lock`
+> > > to `prepare_lock`.
+> > 
+> > With the information presented to me, I don't see how doing that changes
+> > anything.  @prepare_lock is simply held for a longer period of time.  
+> 
+> In prepare() callback, the clock becomes prepared and prepare_lock won't be
+> held after that.
 
--- 
-2.43.0
+If my theory (above) is correct, you are proposing to avoid the condition by
+preparing the clock ahead of time before any IPI can take place.  Is this
+correct?
 
 
