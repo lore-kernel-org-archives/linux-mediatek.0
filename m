@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB2F0CE9D45
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jan 2026 15:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6C8FCE9D45
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jan 2026 15:21:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9mRFZgchHX2jb8eFhmYCpM7vKuPhTwBiqRXcoqsSVBI=; b=iOyPanTLmQOczU
-	IvCWtgJdOe3XrpAa4/f9qkkuJo1PVIphH6Rzy6IRfoHrCEATs3MUTf15fqL9MAPoWMnR5pt/PdAbF
-	R2I6oAtCS8iHgLV2h+8Uw0FM4Rn6EmwJU16gKWzoLeqLmEpBst8Nz4plOAVcLl1x5bf1oysc+fxk3
-	wZnsQSG2kq8WN3AN50SFa/Uud0xIUU0HOWqjZSinx7C42OypTRDBYU69kP+Rd3dg/2ficBJWi84n4
-	QCE0tF3zxLsn+CL5Q81iM/e9kBqgdztBoTrbtuGt0mdZcGKTpHWgXmDciEM6WFty/MCOV8wFRqYId
-	xyKxD7HNL0wnZxO0y6gA==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yLUdw3G1Oa8h+gUfTU4WhFpXDYDSf42qjb0ihw6v2cM=; b=mE/+Siu8JSQvTstoTlDEuM+2wj
+	tQ7hoH8EQp7gFYoKPDQAZcgqg1C8gSW0cuVB7FjZ9d8kI5hCQf01n/75BpiNWO5Qh8d2m/C2/y5HI
+	8jX/HvB5+yzPd6AkV8pD2/PCSDhXyTmu4BqVpHDy/d+MoLpwPcnh8w5M38uFRntp+d1/0GSebps9v
+	yJVktXikBGI63uVaz9c0UgdGWN4hUVZSn6eJY3wDiyYQegsDXapOypv7694oxYdClt7pWuBa4EjBR
+	Qj/8FiicywmnUVC82KJYXPuGfnm74A26/LdiE+BXVciUriC4ko5oedeQTYbn5woNzWry2DWuMmDnS
+	RMLMTUKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vd8sB-0000000DORa-3RG7;
-	Tue, 06 Jan 2026 15:21:27 +0000
-Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
+	id 1vd8sK-0000000DOUb-36Tt;
+	Tue, 06 Jan 2026 15:21:36 +0000
+Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vd8s9-0000000DOPb-22y8
+	id 1vd8s9-0000000DOPh-3POK
 	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Jan 2026 15:21:27 +0000
-Received: by mail-oi1-x236.google.com with SMTP id 5614622812f47-457c1148a5bso414927b6e.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jan 2026 07:21:21 -0800 (PST)
+	Tue, 06 Jan 2026 15:21:29 +0000
+Received: by mail-oi1-x234.google.com with SMTP id 5614622812f47-45391956bfcso829927b6e.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jan 2026 07:21:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1767712881; x=1768317681; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=9mRFZgchHX2jb8eFhmYCpM7vKuPhTwBiqRXcoqsSVBI=;
-        b=dmdBJKeYuluzYC9wXukavI8TWmRvM6cWY4wbFWFDn5VnghCdTM0lxJ+/yoEFVKvCRS
-         QI9r1zjLJO7O0nGxzVC3HXktphfwOfrNC9LKqvCWzpdvZvKmWpdM2vqeXHCC9MZqlE8A
-         N41wrZ0WC3Pu+9UNT3v5FjofI4GDD676gi4nzf91FZ54Bjf67stRLOp/4ZBe/57E1+oN
-         XblLOP00EE/8VxONrRaON67PiJHs1qgNPU2m4fV1HZdEhrPOyzA2ZnGCCEXrjwuG6gy8
-         JvpLMhNNxCxEwwIRwuq4LoPEXWKwsi73zSrHgviGJcPTY/MayVxkEI9tzYNciFWaxib4
-         B2hw==
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1767712883; x=1768317683; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=yLUdw3G1Oa8h+gUfTU4WhFpXDYDSf42qjb0ihw6v2cM=;
+        b=gRqtxNyry1rUjBhr0NKCxJOHt3XXhtzdup5sxErIsr7iz57qA/0+ChJkAjrzOzyPMG
+         4ColKU6Q0BWoCJZVY7wvjPin8dmy353m2KM4N+ecj7AC7jJ+U5/5E49z3OqIfJyYG13J
+         VoWXQTgfRTWDjUL86jglipD6/WEPThByVWs2z5Fgm46fY2e4Zy1Bp1pjT14oNKs1cj86
+         cssDIPkbApSyP/dvVZarhpvJImAbAkJY6xV9FhTu5wA4fZMKtMiQLxwj72NIugOfVmA0
+         UG9x1HRtijXhtlIXpJGjZCeOJK5+TeJ7hPqdlkXkTXy4/pW/MsXrtfql8eX4IVYBcQwc
+         /YDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767712881; x=1768317681;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9mRFZgchHX2jb8eFhmYCpM7vKuPhTwBiqRXcoqsSVBI=;
-        b=pA+lZap5JLG3n7Bu+GOoi3+G1eP6ZxmTWdGvBWDWvhq7UUBCzXNYnrk9lYJnVZbwfz
-         Tlx8siIddzl30GehDaIDBIhlKKSTvCYDDp8Jcy2UQmp+LAxwioeffrUmjCAap7rKUAsa
-         TdyZh+AUXbG7W9uikfY1buULnTW3iHt3acVyjgTP8VnNj+ypXXtqL2WcY0+he3IXxstp
-         Wkr8JPdqkX+waOJzoM1fq2UcdKb/GHoOepywcSk14re1Uq/OCopgDwcdCsi/4hcF3dij
-         BLmfiDatPHrIChaVIbgvcz/VzCJHKMnHLkB0D09YaNH3C0PpxYOU+NP1GGpqBeXFovMu
-         CiWw==
-X-Forwarded-Encrypted: i=1; AJvYcCVeFCOfsxppSlgv7eyWPu0hI7IfhLrCMQyr1MTOWLnK8wlUG65OmWOSPMcojiYvdcKX7ySz5zRa5m8dBM1S5Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx+sXz7W+PszWy4lmPxMyCW+fMVhEh1GcUSfvTGq2O9ORGjP/gC
-	Pg47Y59kx/JB2TZWqOwNICBIUmg+pSvGtrSPHIEAm2VCrzIK/pmyaWNFc28Aslj1vIc=
-X-Gm-Gg: AY/fxX4O4aXCBE5zA1ZwTffJ0gLoLysUxAhsphmtz/DSiwSHB32todx8rMSKkCjdAQB
-	JL1l6b1XJ/d6mW+i3o+pAI0kz1dAWCb01yfB4/pQw3aO5U1Mhguo22T+96sNuysOSdq+HinlUQY
-	n+Rv4wChlDcKP2x01oSj2ATYagwFLMWm80m5Inqe3mODcCoEIGAILhjtYWrr/mG07yKvBgvrQGF
-	unBSx/zyKwSmxIc7gnGwljZ9e62KRX+eGo0CZsA4EVfKlKk9AUNnyZNbTbIiKWT6V5nFwR7YFP5
-	nh3wL04KOUs7H+oWZjSoQAkcwMldBNpr0+SraVNqsSiQNnbZX6lcIca13GiCX2PwYQw+Px9mSVR
-	D3XCY1LNQwoudhNxbfUTH7JIQiZV5QRMRqkQKTfFT8P0NrG0kVh05Nk3ia8hi5jJ+cwq5U3nPhy
-	/QBsgMO0vaE7W3a4M=
-X-Google-Smtp-Source: AGHT+IGjEHbpqU6LY4RJ8+CevaCM+RJCZaili7qB1Q46krb/sk3v4K9+clY3lM6bvdg7eEwxH/iBxQ==
-X-Received: by 2002:a05:6808:1793:b0:450:d504:9295 with SMTP id 5614622812f47-45a5b2b3b89mr2066823b6e.44.1767712881182;
-        Tue, 06 Jan 2026 07:21:21 -0800 (PST)
+        d=1e100.net; s=20230601; t=1767712883; x=1768317683;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=yLUdw3G1Oa8h+gUfTU4WhFpXDYDSf42qjb0ihw6v2cM=;
+        b=fZfi5QW/5+2DqzZ5qjIPH5Zm0VVPZunmMkkBCZ6LikW56pdziMvztpwlAyPtMj1D6X
+         +faOnjAiVuHmf7d72Rk4CQ5hD/dgg6owmwroZ7KAM+by5MLuDnQXm6UBt7MT1PKXJF/p
+         ZVhomBTIsVAUJvy5dbQLyeSFYdJ05tmfbkoo3cRQQeHH4T3G3lCnI2iWi3vQRna0MVtN
+         0qOKjFvcj0qvphVXqwZfLAE5W/X0Z9l6OiEiRKAeoGUbMNX7eH1HUEQl+IPPMlSsbCOw
+         PObM/UNTrdge/002tkRvJoq3AElgLbi4sKV4pvKTklFx1TUhQVP1DcxUhttDv9VY1n4u
+         BnXg==
+X-Forwarded-Encrypted: i=1; AJvYcCUubuwT5tMXRTobz/zWOSSS2wygUDOCjXknCxp3HVM7V41VUt5a2Ri55nnsyLFC0KVHAC2ZRE/Ax6SAzhEV5g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwARbIi7atocbZNMkk0mzuDCBXovyTRzRBmPew+HJqEMTPCgQw0
+	Bc+FdPW9RT/9ehEs0ocoxggsH6Pk63Q1SUz+r32RIgih1+wPBMgrUyDwZGk4omyJkso=
+X-Gm-Gg: AY/fxX6U8/qlz1xURc3Ne+xO5e240TQv9ysPU3lLWOQaeY9h2fD5uwZtMG3W+YscNaZ
+	B4Hylzm72tWCJ76QjnaEd+BiH0Z/5H5P43e1MFUs3PdWrZGPKsoVNHxEyrPSa2CjqnBm5QUyv0m
+	aMYNYJXSKe3Pe64qRJ3empGn3Fr4LIQlPR5ap7OG9ypmaemJhZgwuZFoMKSWPm6Pm+sA6tIorBG
+	pCd+rHaxduG5b8cckQr8uVKHV/nHXhAn5gJQxkZDVxqqd/t8PmuR7IZizySEicidd8P1jB2mwGT
+	cxBfC56hJomg0iTuvy0+YhrAL1D7F1B8qH8uvZ4RTX4r29arykS8bysL8jctJ+p0iAev4DssXiP
+	8HPKDAtjx8nQKEAOF2njLPhIT4EEl40509KUZGZtuyqaIr1mWN9Ztok0MpULuIz6Wl/58JoHJCI
+	qdKlwTKEyqqkxbkrw=
+X-Google-Smtp-Source: AGHT+IGup1AjpsgEeM6td0S+GkAIxXyYXzINH73dTVDxFtfVdWjCyqWoDbH0jNu3XakXCV9kxL+hzQ==
+X-Received: by 2002:a05:6808:2393:b0:459:9961:5114 with SMTP id 5614622812f47-45a5b0326a1mr2002013b6e.16.1767712882948;
+        Tue, 06 Jan 2026 07:21:22 -0800 (PST)
 Received: from [127.0.1.1] ([2600:8803:e7e4:500:7f98:2205:4ba4:3e65])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-45a5e17cd81sm1041992b6e.2.2026.01.06.07.21.20
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-45a5e17cd81sm1041992b6e.2.2026.01.06.07.21.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Jan 2026 07:21:20 -0800 (PST)
+        Tue, 06 Jan 2026 07:21:22 -0800 (PST)
 From: David Lechner <dlechner@baylibre.com>
-Subject: [PATCH 0/2] arm: dts: mediatek: fix pinctl node names
-Date: Tue, 06 Jan 2026 09:20:54 -0600
-Message-Id: <20260106-mtk-fix-mt7623-pinctl-name-v1-0-33817c7f78ee@baylibre.com>
+Date: Tue, 06 Jan 2026 09:20:56 -0600
+Subject: [PATCH 2/2] arm: dts: mediatek: mt8135: fix pinctrl node name
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MSQqAMAwAvyI5G6gt1uUr4sElalCrtEUE8e8GT
- 8PAMA8E8kwB6uQBTxcHPpxIliYwLJ2bCXkUB620VZmyuMcVJ76FhdUGT3ZD3NB1O+FU5pWpctP
- TWIAMTk9S/vOmfd8P6g9gGmwAAAA=
-X-Change-ID: 20260106-mtk-fix-mt7623-pinctl-name-f8593953bed7
+Message-Id: <20260106-mtk-fix-mt7623-pinctl-name-v1-2-33817c7f78ee@baylibre.com>
+References: <20260106-mtk-fix-mt7623-pinctl-name-v1-0-33817c7f78ee@baylibre.com>
+In-Reply-To: <20260106-mtk-fix-mt7623-pinctl-name-v1-0-33817c7f78ee@baylibre.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -88,20 +87,20 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  David Lechner <dlechner@baylibre.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=694; i=dlechner@baylibre.com;
- h=from:subject:message-id; bh=/TeDlw/cAEB006wcLjZMrKPIkG2WYcBLIBb1X30w/es=;
- b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBpXShbReLW6cOm6xpd2RjcDVAWadQN7gSIS90HC
- 0BDe/zrsQiJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaV0oWwAKCRDCzCAB/wGP
- wCIaB/0fD0W9zZkaM75mQbeaPzXPA0VsiPREgfVmLDS/kx2YcuNqR3QeWd3VI/OZG3lu1JhTZeu
- gr726LqIwSLRbF/uyfc4GbWrQHxRL8mj6g9g4UGuovmonCzNnzYZRoaEoiDPlkmh2lVRUfRNNlp
- YdJUAWvD3YyVz4HvnDje9jJGl9Bk7jhNTZeZCsrYH4wOaKrOFpPDbJVVysjebH2Vdq2ckXeKbPT
- rB12pXOAVZhvk1mA87CO51/5vokOEyt9rtUi7kHjJjmEIykvIhJlOyDomh0aaFVDkE3HcKkN5+c
- MUXSc5zYcmO0ypk/lNkCytfhQf+IyAAz4DVPJsqPv7Hlo3D1
+X-Developer-Signature: v=1; a=openpgp-sha256; l=853; i=dlechner@baylibre.com;
+ h=from:subject:message-id; bh=/r4SI0+l+6elgaFXyZuBmLqw3XZThStXnYZaeAp4zQ8=;
+ b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBpXShqRYtO7Y/t+spHv4BW7bgN+6A//HOuBgp4E
+ HzT+WaCxgKJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaV0oagAKCRDCzCAB/wGP
+ wMXjB/47mtvPI+cDCbmMMGZhiz/J8R7kY1W5YrlWURnb37g533eh2nPklEmdwNJ7W9bfuovn+6y
+ 8J+V+GFuA/oXsstge/NYuB4OFPzPv7VVLZK5jQvIqS7grLwTX1ghJW7L84Xv5IHPl6iWkYMMvOy
+ Om7ghHzt+7BYMfJWt/T7VqxcAqOq5W4D9hhSnIFqApiu+pCskNV6Eu4MJ/eml8y7kpB0iACoGiv
+ Z1A3bKfyjj7le0YNc5efuHLqrqpkDiRZZSU+FSWQ4LEaYZU7KCAiTlt45bq4j6IwisjvL80aU0S
+ 9FAiOQX5axA8Gb4VTM1NZVnSa7J7NwISmc15RsHIERiV0nfj
 X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
  fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260106_072125_699058_929F6CA2 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20260106_072125_899060_86DB40D9 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,25 +115,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-While passing by, I noticed that the pinctrl nodes in a couple of dtsi
-files did not match the addresses in their reg properties. Here are some
-patches to fix that.
+Correct the pinctrl node name to use the same address as the reg
+property.
 
 Signed-off-by: David Lechner <dlechner@baylibre.com>
 ---
-David Lechner (2):
-      arm: dts: mediatek: mt7623: fix pinctrl node name
-      arm: dts: mediatek: mt8135: fix pinctrl node name
-
- arch/arm/boot/dts/mediatek/mt7623.dtsi | 2 +-
  arch/arm/boot/dts/mediatek/mt8135.dtsi | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
----
-base-commit: 6cd6c12031130a349a098dbeb19d8c3070d2dfbe
-change-id: 20260106-mtk-fix-mt7623-pinctl-name-f8593953bed7
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Best regards,
+diff --git a/arch/arm/boot/dts/mediatek/mt8135.dtsi b/arch/arm/boot/dts/mediatek/mt8135.dtsi
+index 0f291ad22d3a..b03bd980ec37 100644
+--- a/arch/arm/boot/dts/mediatek/mt8135.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt8135.dtsi
+@@ -148,7 +148,7 @@ pericfg: pericfg@10003000 {
+ 		 * Pinctrl access register at 0x10005000 and 0x1020c000 through
+ 		 * regmap. Register 0x1000b000 is used by EINT.
+ 		 */
+-		pio: pinctrl@10005000 {
++		pio: pinctrl@1000b000 {
+ 			compatible = "mediatek,mt8135-pinctrl";
+ 			reg = <0 0x1000b000 0 0x1000>;
+ 			mediatek,pctl-regmap = <&syscfg_pctl_a &syscfg_pctl_b>;
+
 -- 
-David Lechner <dlechner@baylibre.com>
+2.43.0
 
 
