@@ -4,107 +4,173 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EE5BCEFD10
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jan 2026 21:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99188CEFD18
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jan 2026 22:16:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QhN1WAuMMr05B3KPSfvPQnFSaJ788oFx+QDIhlRIVYE=; b=yBUDZZVaOEWm8/r3INDr4Zeit1
-	pezPmoIfUM8sBb/RHmWKL4S3CRNzwDlUM61RphwpV0/4yDYvnpRCVKr6Ch5Hug4vEq2tk9Rhk5cko
-	jGsd+3GPtoBMfKcgE9hapJv/S7d/rV+2TMz5xp69mz7Ji0D6Na+8MULdW6mgybxOQQXJsF7hKLOO2
-	hpb6MqAgUcY2NhO3D25qSDmROtdHeqDCRVIFKfGNKsRv5woQFFCcSi3z8ulVeXoxGO+A4tCIly1wK
-	EY4OdhaazbSphoKQA8EYMpugwoHF4RcKg2EyNbyPVHmM7JFks/jp+f3XSG5HA9+UfaycMwJIN/HsE
-	F64mL1+A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:References:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1tXnpdDksXb3K3eVDdM46CPqHc4PxM5QFYjDtoaWSRI=; b=MfAuwuVjg3A8Idw9xEP4osEE6X
+	Af71wLhf8W4nH8tZie+lv8pY/pjoZ9TM6KwdwLWxrJqwsL9DAMC/NGwd4IXI9kOfQmi33XCeuBcXx
+	cyGAqfdofTn8V+FsqcM6zMI07WMRsg0KTBYT7OszSZXddHcjhAvyaJQHXOQoltZo2ZUyH+PtzkRwP
+	nS1rtb2XOodHljfJjq9tab7BMsDYUhUn2XVsvCyaE35z2V9LWXsBJQc+g2DJcN9wW57wmotTcYhda
+	iJCtm08mb9o/aWElNpQP6DV4TB7ldzw2959/sEYIi0+Y/qo41UxWrsjiukhJLwQxSuG0imf4tJVz+
+	WoIzQusA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdELB-0000000DqqK-0MOX;
-	Tue, 06 Jan 2026 21:11:45 +0000
-Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
+	id 1vdFLa-0000000Dtlx-3xHI;
+	Tue, 06 Jan 2026 22:16:14 +0000
+Received: from mail-norwayeastazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20f::7] helo=OSPPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdEL8-0000000Dqpg-2zNL
-	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Jan 2026 21:11:43 +0000
-Received: by mail-qv1-xf31.google.com with SMTP id 6a1803df08f44-8804f1bd6a7so12161286d6.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Jan 2026 13:11:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1767733901; x=1768338701; darn=lists.infradead.org;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=QhN1WAuMMr05B3KPSfvPQnFSaJ788oFx+QDIhlRIVYE=;
-        b=AYVuBmXv8swR9f7E6gxklqJm9uLW9xcY/wlai7CnG4WLG3KDnC2qPLhafqRI/zIK3r
-         mULVDeEgmT1yjV9LdHKvaoPRcUmfSuSNG6/BF7l+S1FyVml4NpufjojrbmiSBi0c+opm
-         QFrDXzhOTYWTaeTH1qNqSBSayGGKzuUV0fsfpGAIPIuADyZ+eiWVrbAeVZoOz6+dmocQ
-         6Df2gxlV0mDWKFThs3cVA7q+pK/PNItI+E2yQ332MkzvQLpJS0GpLLMspvqpBuioKr/a
-         nVjwoDKnIhhWhoM1vkD2hFQrldGWsdVeo7oEgsOO7kcAIOhfV+zXV4+3DwMZ6ue/vOby
-         PywQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767733901; x=1768338701;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=QhN1WAuMMr05B3KPSfvPQnFSaJ788oFx+QDIhlRIVYE=;
-        b=mPxux6qZdbIZ5wBuo5WGdFGW923o7xo5rqvYpyl9u6CV5fcSgn0VHtUQDEeW+pvjo/
-         ExgyJ+EBmmeM6PFJLkFjiYEAJwiOPMHVRD5BsctC/wyAthWG1rgrGL08AQkHe3csUCij
-         s/y+YaCdj+mh8J300aQVlLG6mhThfvFzCIzyAH6nPKZ2QY7XQfoR/BqEGZ24GcBF+TFi
-         yxTEF1A/q41eUg/pN2GKesmBpGNzy5QOm6Z6L4UTeTAwMa2jFYofdYOklgFhwjGEcMgq
-         ahh3WIR+OK0tHrJCH9SBIspEtL36zkRuIWp1CdR8nhsM7tD/d7tWYyNu7kXIc3HcTq8p
-         vKEA==
-X-Forwarded-Encrypted: i=1; AJvYcCXI1aF88ut/m8vztKIq0wFAV3fzY7O9N0tbUu/CWsCvREKxrQ6niEmUbzxLZd3BYo6H2e1KRAFQuajiC09N5Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx45ZJCQb1wRwqypuMvmm2J6P4Xilvg7o99TujrHDBtgoUJqn6W
-	5rjIX1+fkjXhA24Bdd87QmDaxYcfh1CYC4c83eKlulUX5ynluJwc2CeuHkGC0yAJxds=
-X-Gm-Gg: AY/fxX6rVW6ABEq6gqVgJh+PWyV5KyO73flmBwNaAQ/dbi3xUAzt4G7N9MTGvr5nOw5
-	1NEVKgzNaIlyfNPyTXfbHjy/mihO7ZysmwOtwxtvFFmvJNI9ZkG55xZE/w7XFzerX0IXEPBAL/P
-	hMrZY7QjKvozTCua4yL0C4TYH7Ss4P/GBrhdr9LHjX4U0DV2EgrwIEO3jOvKlOtw2lfoiGOLz+g
-	SSh22HJwX0zhQe6rsUDAedaLxJ4lEPuEEMDF0U2BdPG/y/JPVNcRqbbcbWulj0UFBD8on1QVOUI
-	zl0mA9BN6S0Mk3TM7BC/wFrrk8zpLm2crrow0QpkeBNpFkPoA2KPg/ZJOv/26IzwKnDzpRpr7wx
-	vArf0fgXMb5G0/7SD8Aqaj7rjM3qTdWsMlMLjZuiNqqthnyE5gwBKEg55H0L5tkUi1Ykk4BRtTp
-	egCXQvE5+xPD2VLH+0
-X-Google-Smtp-Source: AGHT+IGkuyCRu/Q0Kl0G1KNS2qkhBKE92qfOqtUSoW0GG/DuxCV7QpwSsCvsAQoK2tmgoaaLEgC0Kw==
-X-Received: by 2002:a05:6214:3c8f:b0:88a:2c78:d625 with SMTP id 6a1803df08f44-89084257197mr4038516d6.48.1767733901288;
-        Tue, 06 Jan 2026 13:11:41 -0800 (PST)
-Received: from ?IPv6:2606:6d00:17:7b4b::5ac? ([2606:6d00:17:7b4b::5ac])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-89077234c96sm20302746d6.27.2026.01.06.13.11.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Jan 2026 13:11:40 -0800 (PST)
-Message-ID: <e792da7b15eb4f58820f4c44dc695ddfe40d5007.camel@ndufresne.ca>
-Subject: Re: [PATCH v2 2/4] dt-bindings: media: mediatek-jpeg-decoder: add
- MT8189 compatible string
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Jianhua Lin <jianhua.lin@mediatek.com>, mchehab@kernel.org,
- robh@kernel.org, 	krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, 	angelogioacchino.delregno@collabora.com
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
- sirius.wang@mediatek.com, 	vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
-Date: Tue, 06 Jan 2026 16:11:38 -0500
-In-Reply-To: <20251224031721.9942-3-jianhua.lin@mediatek.com>
-References: <20251224031721.9942-1-jianhua.lin@mediatek.com>
-	 <20251224031721.9942-3-jianhua.lin@mediatek.com>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-eEh22EQQUYjPOaWs78RQ"
-User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
+	id 1vdFLY-0000000DtlJ-09TI;
+	Tue, 06 Jan 2026 22:16:13 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=XM03VyXGkP9eIA9JOrcv9oZQ0uGKEPHx2wEkRo+Bi0LhAOVPXSLImyEip+z9jqNTk5NOolR5HFAXgp1hX8eGq9Dgs4sgdfqrjF4hVBaRir/TV6VgLsqwCtBoNzlJCGaLfceKYL2qxA59lzyY1GcoIV9wJVPPP/MloWNDhNy95PAMGtAsb0W2MpvMm/MiZAGfESwlec0VoakPpHcTwUq++ZPcEAcm9mlvIBVo8ks1MO5fIceI9ZVvB9uq4GnUxfPp4ecTagW9/1E4s24wNVajgtHJw4kAJ/UAkX+y9+t8bEhqvAqv6pjlTqMpb9Gh3DUIzbke9EqXjfPiK6rb5V11Ug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bY+9fBXo60+ztgqDHBVhhSAFDFv87G2M9KmrlhV65MI=;
+ b=D4lsrxdmBeeOKCyn8sycOKfsxeni7U0sBokwG3/mlAv66fpasFpbKTmZScT80lLdwwHnqA4yYtoaxqW2VqH1owsaOrdyPAa+fPAdyS0HYS8oDMy17GlcxePhGpEcgo+133vLuU60x/ZJfQ881Am3E0BIxrTotZfnN3uGu542hlRzuxfWD9p+C9wbevxBwshFopTpcMK4Jwsq//YPAD3VK4VqZk0Tt0VHknryiY/XNHMd4FjfVzjti0V6EOrEi2hHiR1O2qF8i7FzO7tU3OhNY7dy8cU2PZPhKHmgVymrBan25++lYfMRHLa9uxkacQGXQ8Rta0Pwx6d+XXEQG12QZQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bY+9fBXo60+ztgqDHBVhhSAFDFv87G2M9KmrlhV65MI=;
+ b=Ofxb/mOkuapKEvf6s61hH5Q6CJSB9PyM8tUJBlovRKjoz5SylLcGQJ5u0eVbXgYDHNGgJ/nMqXhVD+FtsQy6+tzQLDd+ZPDCTcpuXFcebU4KyyhzUTNT0ts+oSPI1UAjHSYXKuxfp7rkAjOQqWbKFcl8xJ3N1bMzubRnjb6Z9cu12/bEXgY4CTB/gaQ0aDK4U9mvKH6AE9RuNChoTn0hvJSvNl711id2VUGSRJtPkq9N0Hf50DsrSc4Vpcc6ChyCTLow4RWv8jn1InXIbNYhfCmnDn0lyi2ihU+u9eA8aQyTMT8q7wOzQGw0SZoBRYHO3ww1FvjOzokAIJxh38Wovg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from DU2PR04MB8584.eurprd04.prod.outlook.com (2603:10a6:10:2db::24)
+ by AM7PR04MB7095.eurprd04.prod.outlook.com (2603:10a6:20b:11c::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.2; Tue, 6 Jan
+ 2026 22:16:05 +0000
+Received: from DU2PR04MB8584.eurprd04.prod.outlook.com
+ ([fe80::3f9d:4a01:f53c:952d]) by DU2PR04MB8584.eurprd04.prod.outlook.com
+ ([fe80::3f9d:4a01:f53c:952d%3]) with mapi id 15.20.9456.013; Tue, 6 Jan 2026
+ 22:16:05 +0000
+Date: Wed, 7 Jan 2026 00:16:00 +0200
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: =?utf-8?B?QmrDuHJu?= Mork <bjorn@mork.no>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Daniel Golle <daniel@makrotopia.org>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Eric Woudstra <ericwouds@gmail.com>,
+	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>,
+	Lee Jones <lee@kernel.org>,
+	Patrice Chotard <patrice.chotard@foss.st.com>
+Subject: Re: [PATCH v2 net-next 07/10] net: phy: air_en8811h: deprecate
+ "airoha,pnswap-rx" and "airoha,pnswap-tx"
+Message-ID: <20260106221600.ewx7xprbqrymzbjf@skbuf>
+References: <20260103210403.438687-1-vladimir.oltean@nxp.com>
+ <20260103210403.438687-8-vladimir.oltean@nxp.com>
+ <87qzs2a7hl.fsf@miraculix.mork.no>
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <87qzs2a7hl.fsf@miraculix.mork.no>
+X-ClientProxiedBy: VE1PR03CA0043.eurprd03.prod.outlook.com
+ (2603:10a6:803:118::32) To DU2PR04MB8584.eurprd04.prod.outlook.com
+ (2603:10a6:10:2db::24)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR04MB8584:EE_|AM7PR04MB7095:EE_
+X-MS-Office365-Filtering-Correlation-Id: daecd811-70a0-49e8-a4ee-08de4d712eeb
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|19092799006|366016|10070799003|1800799024;
+X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?Kbot1pMCXubxLDoDp2iQuYtANDiEDFWyW6tRPePqOuDOR3ixZ1XMH+9UuY?=
+ =?iso-8859-1?Q?qWBK0zTAvz1MHjwZA3c2RtDwE1+PGS1Af60AQEiQkMCXbq5Ivk1N6Wq1G5?=
+ =?iso-8859-1?Q?slRKyGN9O8pC+2VIpsFynvPU781tz8gJCwVRXWvy24mzeTJVrJnWqAE/4w?=
+ =?iso-8859-1?Q?F7zwf82LJyfENB+ZjbrCGC5PG/1fBkhCQxwa5vCOlbOTdyaI4hiValavpE?=
+ =?iso-8859-1?Q?wKGVjQAkD+w9FyGwRH1wUJZSryQPQ13d1pUFOVf8PmVk/nKTZ4Nowa4LbB?=
+ =?iso-8859-1?Q?3bUddNOtW38KyWXfB3bcqtbupGJSpn9u6x0tgyMG0ZTO11UOOfStieHInx?=
+ =?iso-8859-1?Q?HcuBT5gjmpv1li1F83jhARb5jEVPRHZzubH6337/Lq6S3bsjyXOqZD9AGV?=
+ =?iso-8859-1?Q?aA2U9f1ykmQFAr2HBTnDOjq1CWWdYmwa2uhyJv8/USJ2BthYRdS0nkIvMp?=
+ =?iso-8859-1?Q?oPhLe9A+eXgO7xbeaIVCWid6CUMi/69PAc6gUQmjfBZn8QbEtAQd5CLa+f?=
+ =?iso-8859-1?Q?DlaO7xiqmx2ngK7rBDxcDO4gbppPOzMWVzbMj9FNKgLk+PXnV7oXm7A06G?=
+ =?iso-8859-1?Q?3W132s/7E+4FM1h7yw79kw2IH/cH7QKM11Bds7o/NXba41MmLJ07XUznBm?=
+ =?iso-8859-1?Q?LVYIhlcYrnPmHFW09r1WNDgZhXpsrBy61JL/k/HFbON0M1xj8QLoOMbNeQ?=
+ =?iso-8859-1?Q?44oX9A7WdsvsKMVley64hcfPjT0k6m0JvCztxambNCwhWRzvPvEbKBMJwt?=
+ =?iso-8859-1?Q?wXZnQMDWm18QSfeUJtv6lZppiddxLgFR78ZxADTe3/JPbs+u2FydKaedLm?=
+ =?iso-8859-1?Q?qW7R/GbKwZjPEYhxsO7vnNYmyYsCpJy93NT1w4n3K3wyJeoMImM4iuKTwR?=
+ =?iso-8859-1?Q?L7m91YGr0QrScCDG3DknSfAFKufc+t7n53+m+6GxVSSEkE5zVXB9zT9mfX?=
+ =?iso-8859-1?Q?xuS2KR+SlXIreIXcnN2W7XCEfnM5AXbQ54La0t1IOTY+8b44uhAqPFkZAd?=
+ =?iso-8859-1?Q?c195vYdI5y93Eb+1+bLpg5aSCWkGkDfVfF7FSP+VtzA4R4ySGW+aqMMEq5?=
+ =?iso-8859-1?Q?wMg/ArHXNJakSfKezJANb8dU9vQWYRwYuaABwY6ljqo7msiykNMCL8yFeq?=
+ =?iso-8859-1?Q?gF6oGtAy4T3v7lU+dLbTlbRYUFN2VxVHuZxqsMi1W4G1Tove9zq3sKlziG?=
+ =?iso-8859-1?Q?efaKRc6sE2B9mVkp8lFkqwmWE8QE1dp4yAEaA8zt/FptwYyysn8R/zNw73?=
+ =?iso-8859-1?Q?HVZyZTtgUoXl5AeMFO3D88NLgyt+NmhGYG5yHnReXXaX57K12slVv9alYE?=
+ =?iso-8859-1?Q?sZdqzm7c72dVA3EAMxlXERMsybGCQyNi6ECtQi0q25l2nAZLax8AfYpVyc?=
+ =?iso-8859-1?Q?LpCloRAp9NwSJYMmAWS5co9x6zCPhNpi8O2t0QTu8/A74IYVUYMwM+zZq1?=
+ =?iso-8859-1?Q?yZUmiHervudueSPyEFKskEYH2zy79972UzCy5uEWSTkoh6+/S4d4Ogz+c+?=
+ =?iso-8859-1?Q?BoumThGoEk+TLcRVHfD33c?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR04MB8584.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(19092799006)(366016)(10070799003)(1800799024);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?EXf7TLa5ucyoUQ++sWZ3Bqb8O8aqDRLiCx0dna37lgUa2DNoNdrLy81V9K?=
+ =?iso-8859-1?Q?4jrsjUwLRxit0/htagSFTHmaCdRQnk20TwZjnaPsXk9gsB9gCY0L+0fqAa?=
+ =?iso-8859-1?Q?Gf9e1kwVUq3uJ/iuFuf/1Pl6jgcwyQoupoGFf3zvgFC7Iw8sH77CLMM98y?=
+ =?iso-8859-1?Q?ufgdGPDrqXsxwSmby72Xrdohxzz3q+WVVIV6wApWef7KyQosUZAl5IQjEb?=
+ =?iso-8859-1?Q?I780NNVtWbTlTgsKs2yzOuu3F2ZfVC8KPS6vjHdsBWRSbUSMtX2/B/Ji1M?=
+ =?iso-8859-1?Q?PYRyb3prdSD11rdG2KrppBZjSEcB0M46f/BCXkE7cpY3EyTOD68xvwlVsU?=
+ =?iso-8859-1?Q?k+1BKB7OB/rY3JaBvaomjWmBLVDq716hGKQgXTgDeanmFNV2isNkcOE+3k?=
+ =?iso-8859-1?Q?+CRNCf4xU3YB3OF/Q+zpKFkG5RI6cHcpoyIRbjOivvWxNPhhYV8pGrtxpX?=
+ =?iso-8859-1?Q?eCNNnfa5ZhPgYRaVe4znoj25p0ybFMVb1wNIuFBpZTjL7cJlS1a7KXK56Q?=
+ =?iso-8859-1?Q?PknwIAM9jPGxQ/k9gjSdO+pHucJjigs/cD9yGiHjRyTMR1asjeQHHLktmn?=
+ =?iso-8859-1?Q?CYCCPRMOKlTCacc7X5xy2YVINn46wUZWmHZq1dd4UMM2vV5vIKlirThckn?=
+ =?iso-8859-1?Q?YyKxBI3CjCQH59fVxeQWP/c+zlHppDLrTvJDQSpW0n+DTWo8SEpcnhbwB6?=
+ =?iso-8859-1?Q?V3JVNOorffJA4ykcPNc0dYnVoQVpVBxRmnFScdLu3b6vCwOAFxTlmCgy72?=
+ =?iso-8859-1?Q?wab/Yye5pFuGYD7sPNpAK7C+GZ9XkaHiEgD1habfKX24e3QuLndUIAONHU?=
+ =?iso-8859-1?Q?MJUZPHUWlarBoi/YE8xyDp5Jtf4O2C21ee8YeU6ZD0Dv9uOLviMHOcQj+j?=
+ =?iso-8859-1?Q?YN0HBa06pMijtHX/R0WziXq+LvKTH2Kv56+rA2Tce6O3ANVSuysmHvBTt5?=
+ =?iso-8859-1?Q?n/aQGEOsGrXp/oD258z8+j1q3QWCmHiTvZWXyfLqI8SLbB5YQnkiv5mcaZ?=
+ =?iso-8859-1?Q?Sx8N4iXgaNdbLwNRdCi3qYvWb5KFQk4Js2p1SgEu6Z+H0b7WmlTjfUpqob?=
+ =?iso-8859-1?Q?s5X5bAr7qxVjsuo5iorP9WnrOjyUHWxtDvxY/L2jeFyq3I2pX6RR2ZXlzs?=
+ =?iso-8859-1?Q?heUryz/9J42moipD96DC9kQ0LNhBjrn37ilZ2sCum9eTxDcFXZt2JIgm+3?=
+ =?iso-8859-1?Q?QGvASlZlgtLO4MdJN8eBS5ozxK+xp3+AUO0OU1sDGCppWR5IAOg8xPgPeF?=
+ =?iso-8859-1?Q?5/dpgqVlNwA0bhfKOfHQ+zN1qlW1+XuH117iq4wvYZNCqvIZyQ5K8IJBh0?=
+ =?iso-8859-1?Q?O6cCAPHaPyB7RfInqdsQtCFNkZuMCt7r5K4Dfc1araiNAu8B6XGXXSi0ya?=
+ =?iso-8859-1?Q?uAzblGaO0+iAaPsCeB6LNS6bPpE/dmJU1Ax2eLZ5oQvpQqfjlXzyHjBIQa?=
+ =?iso-8859-1?Q?9/F0LUyvTUWHvAmaufS6mixLklIiH5y/Z7CB+mT+5Je9o5k2FbKXlA2pYL?=
+ =?iso-8859-1?Q?nzB2Cyn0tJ5KElVHTDYSd9u+cIm2Z4Ui1yy5g7/vWDu8JXZkvKpAmZGooA?=
+ =?iso-8859-1?Q?MbEzqz7VyCeTJzn7be6ypYMkI1HRCKozWsRpUbbbo7koIl097LbjYj+7qf?=
+ =?iso-8859-1?Q?hW3yBQO02tr0NZBNBAsLMLJzFoZgM/k2x26L7C9BmWa98QUcI6+pE3XGr3?=
+ =?iso-8859-1?Q?dS5uDC3TyvJ1ykoZsV+5UWxg2FWSn6ZFsMpbP4rO8VfBCLVu29n0C37JWD?=
+ =?iso-8859-1?Q?30nd/vKmpq8xfdlUZb4As/vaCjCq6FHyT6TMPWztXY5M/XXMRolkEJqZ/k?=
+ =?iso-8859-1?Q?V5kRj4k0G7HUTkOuS5uGnZDx9tdfB5Uzw10Yyc76ebgWiYSenIe8gF+riI?=
+ =?iso-8859-1?Q?un?=
+X-MS-Exchange-AntiSpam-MessageData-1: 7mvVhxQsmZUxyQ==
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: daecd811-70a0-49e8-a4ee-08de4d712eeb
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR04MB8584.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jan 2026 22:16:04.9482
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: QN31t1VzbuZgNC5e9vKgWha9jXYlCQTTOCBU3zoF7WdK9D8pGrTeSKZa6DhXSsNezHPQg3zeJd0E50gFfFQMxA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM7PR04MB7095
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260106_131142_807586_2A824EEF 
-X-CRM114-Status: GOOD (  29.53  )
+X-CRM114-CacheID: sfid-20260106_141612_079214_FF0E62A7 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,247 +185,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jan 06, 2026 at 08:03:50PM +0100, Bjørn Mork wrote:
+> Vladimir Oltean <vladimir.oltean@nxp.com> writes:
+> 
+> > diff --git a/drivers/net/phy/Kconfig b/drivers/net/phy/Kconfig
+> > index a7ade7b95a2e..7b73332a13d9 100644
+> > --- a/drivers/net/phy/Kconfig
+> > +++ b/drivers/net/phy/Kconfig
+> > @@ -98,6 +98,7 @@ config AS21XXX_PHY
+> >  
+> >  config AIR_EN8811H_PHY
+> >  	tristate "Airoha EN8811H 2.5 Gigabit PHY"
+> > +	select PHY_COMMON_PROPS
+> 
+> GENERIC_PHY_COMMON_PROPS maybe?
 
---=-eEh22EQQUYjPOaWs78RQ
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-Le mercredi 24 d=C3=A9cembre 2025 =C3=A0 11:17 +0800, Jianhua Lin a =C3=A9c=
-rit=C2=A0:
-> Compared to the previous generation IC, the MT8189 uses 34-bit iova
-> address-space (16GB) and requires a single clock configuration.
-> Therefore, add "mediatek,mt8189-jpgdec" compatible to the binding documen=
-t.
-> Additionally, it corrects the inheritance for MT8188, aligning it
-> with MT8189 due to their shared architecture and 34-bit iova address
-> space (16GB) and singlesingle clock requirement.
-
-singlesingle -> single
-
-> Previously, MT8188 was incorrectly defined alongside SoCs with 32-bit
-> iova address-space (4GB), such as "mediatek,mt2701-jpgdec". This mismatch
-> results in an ABI break, as MT8188 cannot function correctly under
-> the 32-bit iova address-space (4GB) configuration.
-
-Was already mentioned earlier, badly introduce DT code create an ABI, and f=
-ixing
-it is the ABI break, not the other way around. The MT8188 issue should be f=
-ixed
-on its own, with proper Fixes: tag.
-
->=20
-> Key changes include:
-> - Introducing "mediatek,mt8189-jpgdec" as a new compatible string to
-> =C2=A0 represent the correct architecture.
-> - Updating MT8188 to inherit from MT8189, ensuring proper support for
-
-It is odd to have older chips inherit from newer one, should be reversed
-assuming you can fix MT8188. See more comment below.
-
-> =C2=A0 34-bit iova address-space (16GB) and simplifying clock configurati=
-on.
-> - Add property "mediatek,larb" for MT8189 requirements.
-> - Improved formatting for better readability and consistency.
-
-Do style change in it own commit, I don't mixing reformating, with fixed an=
-d new
-feature in one patch will create much interest in your set from the DT
-maintainers. So please break this into at least 3 patches.
-
-> These changes ensure that both MT8188 and MT8189 are correctly supported
-> with the necessary 34-bit iova address-space (16GB), while maintaining
-> compatibility with their shared architecture.
->=20
-> Extensive internal review and testing have been conducted to validate
-> these changes and ensure compliance with DT binding standards.
-
-This last paragraph does not seem relevant as a commit message. Consider re=
-ading
-this message in 5 years, would it be useful, and answer is not, since we ca=
-n't
-see the review and testing process.
-
->=20
-> Signed-off-by: Jianhua Lin <jianhua.lin@mediatek.com>
-> ---
-> =C2=A0.../bindings/media/mediatek-jpeg-decoder.yaml | 50 ++++++++++++++++=
----
-> =C2=A01 file changed, 44 insertions(+), 6 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-decode=
-r.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
-> index a4aacd3eb189..814b53ef46e7 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
-> @@ -17,13 +17,19 @@ properties:
-> =C2=A0=C2=A0=C2=A0=C2=A0 oneOf:
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - enum:
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 - mediatek,mt8173-jpgdec
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 - mediatek,mt2701-jpgdec
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 - mediatek,mt8173-jpgdec
-
-I guess you sorted these, this is the type of style change that makes revie=
-wer
-unhappy, do this cleanup on it own.
-
-One thing the driver implementation tells me is that mediatek,mt8173-jpgdec=
- is
-not different from mediatek,mt2701-jpgdec, so in theory, the DTS should hav=
-e
-aimed for the second item and an implementation of:
-
-  compatible =3D "mediatek,mt8173-jpgdec", "mediatek,mt2701-jpgdec";
-
-That just shows the screw-up started a while ago, I'm not saying to change =
-that
-now.
-
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - enum:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 - mediatek,mt8189-jpgdec
-
-That one make no sense, if you want to allow this compatible alone, put it =
-the
-very first item, its meant for that. Though, considering the chronology, it
-would be logical to say that MT8189 is based on MT8188. If we go that way,
-MT8188 should get added into the single item choice and the enum/const pair
-shoudl be reversed.
-
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - enum:
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 - mediatek,mt7623-jpgdec
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 - mediatek,mt8188-jpgdec
-
-This must be kept, its unfortunate, but its in the ABI.
-
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: med=
-iatek,mt2701-jpgdec
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - enum:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 - mediatek,mt8188-jpgdec
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: mediatek=
-,mt8189-jpgdec
-
-This would be reversed.
-
-On the implementation side, in code, you'd introduce a variants that matche=
-s
-mediatek,mt8188-jpgdec, this will ensure the driver now works properly with=
- past
-DTS.
-
-Then in DTS, which is not my domain here at all, what is appropriate will d=
-epend
-on what happens if you assume MT8188 is same as MT2701. In my personal opin=
-ion,
-if that is unusable or worse crash or hang the systems, I'd drop the broken
-"mediatek,mt2701-jpgdec" so it won't probe anymore on older drivers. If its
-usable / used in some ways, e.g. if it work on 4GB systems, you'll have to =
-leave
-it this way, since you'd regress some users.
-
-The rest is a bit over my head, I've a simple users of DT like you, but
-hopefully these hints are good enough to un-lock the situation. Notice the
-chronology logic needs to be applied down below too.
-
-> =C2=A0
-> =C2=A0=C2=A0 reg:
-> =C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 1
-> @@ -32,13 +38,16 @@ properties:
-> =C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 1
-> =C2=A0
-> =C2=A0=C2=A0 clocks:
-> +=C2=A0=C2=A0=C2=A0 minItems: 1
-> =C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 2
-> -=C2=A0=C2=A0=C2=A0 minItems: 2
-> =C2=A0
-> =C2=A0=C2=A0 clock-names:
-> -=C2=A0=C2=A0=C2=A0 items:
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: jpgdec-smi
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: jpgdec
-
-So what happened once the driver on MT8188 tried to enable jpgdec-smi clock=
- ?
-This is relevant to what can and cannot be changed, was it completely unusa=
-ble ?
-
-regards,
-Nicolas
-
-> +=C2=A0=C2=A0=C2=A0 minItems: 1
-> +=C2=A0=C2=A0=C2=A0 maxItems: 2
-> +
-> +=C2=A0 mediatek,larb:
-> +=C2=A0=C2=A0=C2=A0 $ref: /schemas/types.yaml#/definitions/phandle
-> +=C2=A0=C2=A0=C2=A0 description: a phandle to the smi_larb node.
-> =C2=A0
-> =C2=A0=C2=A0 power-domains:
-> =C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 1
-> @@ -51,6 +60,35 @@ properties:
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Documentation/devicetree/bindings/io=
-mmu/mediatek,iommu.yaml for details.
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Ports are according to the HW.
-> =C2=A0
-> +allOf:
-> +=C2=A0 - if:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 properties:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 compatible:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 contains:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 enum:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 - mediatek,mt2701-jpgdec
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 - mediatek,mt8173-jpgdec
-> +
-> +=C2=A0=C2=A0=C2=A0 then:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 properties:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 clock-names:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 items:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - con=
-st: jpgdec-smi
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - con=
-st: jpgdec
-> +
-> +=C2=A0 - if:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 properties:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 compatible:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 contains:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 enum:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 - mediatek,mt8189-jpgdec
-> +
-> +=C2=A0=C2=A0=C2=A0 then:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 properties:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 clock-names:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 items:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - con=
-st: jpgdec
-> +
-> =C2=A0required:
-> =C2=A0=C2=A0 - compatible
-> =C2=A0=C2=A0 - reg
-
---=-eEh22EQQUYjPOaWs78RQ
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaV16iwAKCRDZQZRRKWBy
-9IFvAP9gJU9igmAjidakuJKz0akdpOjt4yNcvs8FjB1MMY98fQEA1nsKZhTWxs1n
-ad7uFPYE7mdheCU2tU4bBl/ournlIQs=
-=cORP
------END PGP SIGNATURE-----
-
---=-eEh22EQQUYjPOaWs78RQ--
+Thanks for pointing out the inconsistency with patch 05/10.
+Yes, this should have been GENERIC_PHY_COMMON_PROPS.
 
