@@ -4,62 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B018C47BD8
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jan 2026 10:02:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CE85C47BDF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jan 2026 10:11:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nb4VHzcBBEVV/nkZ9gO8H0W8mrhm5Q0+rtZI3EvIfac=; b=MZVe4CVyaTZPqgVsvt3ruIjwqj
-	UiZ7qJvMbrpKOpyIDzJjL3hYvJoADCqiuMiYDXtHkmrXhZurRzv0wCFkmazAsRG5MfVaiIKGdrQ7I
-	rEjnVCSd3d513k/PBEvUeJVoppE98Osn3OhGXxs9DUC6AWj52p6f+6JAsZXnpldPWFDEqiAmSOVzk
-	bnGA2ERE5rwqPbX8+QaBiFJNk9C/BWrvdeZR1HtfmDgBy28g1PtaKA1gEl+AB/vHAGAKqIW5GnpkE
-	W9IE3Xxmmf9Z/0j/kg2uUyoYP9lAAYtmQ0gxlFxHbUbWlgKCokRRvt2hXrCGhXCosqZqf1zkgusC9
-	S5mDDD/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=cRpex42fGgyXVHSWOllrPxFrDLh4lSLEJKcidCW9g6k=; b=R6ucS8KPTbblYlK3ATm2cSw1cc
+	2/aXltyAvvWWlJeWFTljXCaGiQlRctOpQ4mBfZAEV+uBPSZu1aUZ5OH215r2Ij49ZLWc0xnQxhJGc
+	ClTd2A4cnOzWL8WUn/eUggaPBYTgmTdbguZw8yIyswXoVwIqdEM7fJiD/LjZGSTx79DevH+tbGnM+
+	+v3V0jHfzgbE+ZMofvO4RZ3rN4GdX0Wx2+3g3KMCFfBVSZTiC3l9ZtDkuOXYvNVVI2UEkRRCQipCV
+	WNzUu9YkjKCrwGthTY7bxHhbKcI6PG56lSghkHKoqte8+KXZgEueecwCY/6kDxEslZxlpKBzLXb4C
+	cYq49LUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vd3tE-0000000CknW-1aTE;
-	Tue, 06 Jan 2026 10:02:12 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vd42N-0000000ClJI-1Fb9;
+	Tue, 06 Jan 2026 10:11:39 +0000
+Received: from abscue.de ([89.58.28.240] helo=srv01.abscue.de)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vd3t6-0000000CklZ-41zG;
-	Tue, 06 Jan 2026 10:02:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 28B1543E36;
-	Tue,  6 Jan 2026 10:02:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B692C116C6;
-	Tue,  6 Jan 2026 10:02:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1767693724;
-	bh=j1gUdKmv3XuJj6LFBGkTEJLtEAa3uiiwtVctcrQmZ2g=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=OHg35A2cTOmiu4D+xyXdaYjYdPwenE7p5dv5Z/wEeSS5MhiimugcUswAmK5dhUeQP
-	 iaSFiG3xHl1nc6FAk2J31iBlehdnYPZPLwlbFnaCOmbnEHgEXjnQwewAgJBlII0KdO
-	 SHaaRDACENjSgKg7SNYisEtDJC+N/U6xeyQ7xhjM=
-Date: Tue, 6 Jan 2026 11:02:01 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Cc: jirislaby@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, fred2599@gmail.com,
-	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Digits_Upstream_Group@mediatek.com,
-	liguo.zhang@mediatek.com, Vasanth.Reddy@mediatek.com,
-	Yenchia Chen <yenchia.chen@mediatek.com>
-Subject: Re: [PATCH] MEDIATEK: serial: 8250_mtk: Add ACPI support
-Message-ID: <2026010643-ladybug-tiring-7f3c@gregkh>
-References: <20260105024103.2027085-1-zhiyong.tao@mediatek.com>
- <20260105024103.2027085-2-zhiyong.tao@mediatek.com>
+	id 1vd42I-0000000ClG6-2mSb;
+	Tue, 06 Jan 2026 10:11:37 +0000
+Received: from srv01.abscue.de (localhost [127.0.0.1])
+	by spamfilter.srv.local (Postfix) with ESMTP id CFC531C244E;
+	Tue, 06 Jan 2026 11:11:16 +0100 (CET)
+Received: from fluffy-mammal.metal.fwg-cag.de (unknown [IPv6:2001:9e8:cdc2:6400:a8e6:fbd5:9810:ee8b])
+	by srv01.abscue.de (Postfix) with ESMTPSA id 6E9501C244D;
+	Tue, 06 Jan 2026 11:11:16 +0100 (CET)
+From: =?utf-8?q?Otto_Pfl=C3=BCger?= <otto.pflueger@abscue.de>
+Date: Tue, 06 Jan 2026 11:11:12 +0100
+Subject: [PATCH v2] arm64: dts: mediatek: mt8183: Add missing endpoint IDs
+ to display graph
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260105024103.2027085-2-zhiyong.tao@mediatek.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20260106-mt8183-display-graph-v2-1-e7e56054eef5@abscue.de>
+X-B4-Tracking: v=1; b=H4sIAL/fXGkC/4WNTQqDMBBGryKz7pT8qISueo/iIiajDrQaEhsq4
+ t2beoEu34PvfTskikwJbtUOkTInXuYC6lKBm+w8ErIvDEqoRirR4ms10mj0nMLTbjhGGyZsRFu
+ ka02veyjTEGngz5l9dIUnTusSt/Mly5/9E8wSJVotqKlrIwdl7rZP7k1XT9Adx/EFAWJigrgAA
+ AA=
+X-Change-ID: 20251206-mt8183-display-graph-506183c68b3b
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Evans Jahja <evansjahja13@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>, 
+ =?utf-8?q?Otto_Pfl=C3=BCger?= <otto.pflueger@abscue.de>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260106_020205_157578_BA8C6BB8 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20260106_021135_877273_1D521D7A 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,22 +71,340 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 05, 2026 at 10:39:55AM +0800, Zhiyong Tao wrote:
-> From: "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
-> 
-> Add ACPI support to 8250_mtk driver. This makes it possible to
-> use UART on ARM-based desktops with EDK2 UEFI firmware.
-> 
-> Signed-off-by: Yenchia Chen <yenchia.chen@mediatek.com>
-> Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
-> ---
->  drivers/tty/serial/8250/8250_mtk.c | 23 +++++++++++++++++++----
->  1 file changed, 19 insertions(+), 4 deletions(-)
+The endpoint IDs in the display graph are expected to match the
+associated display path number, i.e. all endpoints connected to
+mmsys_ep_main must have reg = <0> and all endpoints connected to
+mmsys_ep_ext must have reg = <1>.
 
-This is a resend of the previous version, right?  Or did something
-change?
+Add the missing ID to all endpoints in the display graph, based on
+mt8365.dtsi as an existing example that does this correctly.
 
-confused,
+Fixes: e72d63fa0563 ("arm64: dts: mediatek: mt8183: Migrate to display controller OF graph")
+Reported-by: Evans Jahja <evansjahja13@gmail.com>
+Closes: https://lore.kernel.org/linux-mediatek/CAAq5pW9o3itC0G16LnJO7KMAQ_XoqXUpB=cuJ_7e3-H11zKd5Q@mail.gmail.com/
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: Otto Pflüger <otto.pflueger@abscue.de>
+---
+Changes in v2:
+- Change property order to follow device tree coding style
+- Link to v1: https://lore.kernel.org/r/20251206-mt8183-display-graph-v1-1-a30e54481f28@abscue.de
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 146 ++++++++++++++++++++++++++-----
+ 1 file changed, 122 insertions(+), 24 deletions(-)
 
-greg k-h
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 4e20a8f2eb25803057955401a7737c7f029a1424..db86e2bd0c7bd61236a9eef16e803374810d3d1a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1755,14 +1755,22 @@ ports {
+ 
+ 				port@0 {
+ 					reg = <0>;
+-					ovl0_in: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					ovl0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&mmsys_ep_main>;
+ 					};
+ 				};
+ 
+ 				port@1 {
+ 					reg = <1>;
+-					ovl0_out: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					ovl0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&ovl_2l0_in>;
+ 					};
+ 				};
+@@ -1784,14 +1792,22 @@ ports {
+ 
+ 				port@0 {
+ 					reg = <0>;
+-					ovl_2l0_in: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					ovl_2l0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&ovl0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
+ 					reg = <1>;
+-					ovl_2l0_out: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					ovl_2l0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&rdma0_in>;
+ 					};
+ 				};
+@@ -1813,14 +1829,22 @@ ports {
+ 
+ 				port@0 {
+ 					reg = <0>;
+-					ovl_2l1_in: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					ovl_2l1_in: endpoint@1 {
++						reg = <1>;
+ 						remote-endpoint = <&mmsys_ep_ext>;
+ 					};
+ 				};
+ 
+ 				port@1 {
+ 					reg = <1>;
+-					ovl_2l1_out: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					ovl_2l1_out: endpoint@1 {
++						reg = <1>;
+ 						remote-endpoint = <&rdma1_in>;
+ 					};
+ 				};
+@@ -1843,14 +1867,22 @@ ports {
+ 
+ 				port@0 {
+ 					reg = <0>;
+-					rdma0_in: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					rdma0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&ovl_2l0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
+ 					reg = <1>;
+-					rdma0_out: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					rdma0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&color0_in>;
+ 					};
+ 				};
+@@ -1873,14 +1905,22 @@ ports {
+ 
+ 				port@0 {
+ 					reg = <0>;
+-					rdma1_in: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					rdma1_in: endpoint@1 {
++						reg = <1>;
+ 						remote-endpoint = <&ovl_2l1_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
+ 					reg = <1>;
+-					rdma1_out: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					rdma1_out: endpoint@1 {
++						reg = <1>;
+ 						remote-endpoint = <&dpi_in>;
+ 					};
+ 				};
+@@ -1902,14 +1942,22 @@ ports {
+ 
+ 				port@0 {
+ 					reg = <0>;
+-					color0_in: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					color0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&rdma0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
+ 					reg = <1>;
+-					color0_out: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					color0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&ccorr0_in>;
+ 					};
+ 				};
+@@ -1930,14 +1978,22 @@ ports {
+ 
+ 				port@0 {
+ 					reg = <0>;
+-					ccorr0_in: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					ccorr0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&color0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
+ 					reg = <1>;
+-					ccorr0_out: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					ccorr0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&aal0_in>;
+ 					};
+ 				};
+@@ -1958,14 +2014,22 @@ ports {
+ 
+ 				port@0 {
+ 					reg = <0>;
+-					aal0_in: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					aal0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&ccorr0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
+ 					reg = <1>;
+-					aal0_out: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					aal0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&gamma0_in>;
+ 					};
+ 				};
+@@ -1986,14 +2050,22 @@ ports {
+ 
+ 				port@0 {
+ 					reg = <0>;
+-					gamma0_in: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					gamma0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&aal0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
+ 					reg = <1>;
+-					gamma0_out: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					gamma0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&dither0_in>;
+ 					};
+ 				};
+@@ -2014,14 +2086,22 @@ ports {
+ 
+ 				port@0 {
+ 					reg = <0>;
+-					dither0_in: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					dither0_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&gamma0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
+ 					reg = <1>;
+-					dither0_out: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					dither0_out: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&dsi_in>;
+ 					};
+ 				};
+@@ -2048,14 +2128,23 @@ ports {
+ 
+ 				port@0 {
+ 					reg = <0>;
+-					dsi_in: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					dsi_in: endpoint@0 {
++						reg = <0>;
+ 						remote-endpoint = <&dither0_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
+ 					reg = <1>;
+-					dsi_out: endpoint { };
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					dsi_out: endpoint@0 {
++						reg = <0>;
++					};
+ 				};
+ 			};
+ 		};
+@@ -2077,14 +2166,23 @@ ports {
+ 
+ 				port@0 {
+ 					reg = <0>;
+-					dpi_in: endpoint {
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					dpi_in: endpoint@1 {
++						reg = <1>;
+ 						remote-endpoint = <&rdma1_out>;
+ 					};
+ 				};
+ 
+ 				port@1 {
+ 					reg = <1>;
+-					dpi_out: endpoint { };
++					#address-cells = <1>;
++					#size-cells = <0>;
++
++					dpi_out: endpoint@1 {
++						reg = <1>;
++					};
+ 				};
+ 			};
+ 		};
+
+---
+base-commit: 6cd6c12031130a349a098dbeb19d8c3070d2dfbe
+change-id: 20251206-mt8183-display-graph-506183c68b3b
+
+Best regards,
+-- 
+Otto Pflüger <otto.pflueger@abscue.de>
+
 
