@@ -4,63 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81AB8CEFCE6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jan 2026 18:34:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65E33CEFCF2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jan 2026 19:04:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e5uMBPgWqQKYiPZcHvKgmfyzuuv8hWaEwurLE79aR40=; b=XDi6ah/T/Dk2PR08dldSHuZw12
-	+hU9PIIa47gGLYgxE9uu7DkzqEszHUWoYJ83tSpWsJ7EjrxcueBXto/fpQ7ACPxw5qnroo+9FYafc
-	rEGNZsdo9aD6hVLxWnoW5gepPHzcDTFCVwf8RQJu2P7wa0/L3r5j2B9NfMEC/24hPiDyG4wYAQWQ7
-	bBMkIMNSHubFo41E5bOi+hoVyNrE4RS51d0UDgkanHHO69WThr/S6//0KF9U3POOEpAPT3XtMmAHY
-	EULw6qdS8/c8xUdTqEw0JLnPp7iuVRJfuIOVoE9CATHQvRmhn+vXZvHitYx7aJ+aKcWR6z6eOPYlm
-	FdZSHH2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2A66euThQPenJG2KEd8CaRBqOlB3WqSPAAMrbx7aFzg=; b=CnurWf18+ZUoyCV6SwonzEPAog
+	kgyLvnONQNYyCvqh+EFns8wXrHO6lHTvJY7DFnSYH/rC4XnouGTEzCuo6lrSt9alSQzI1eP6iVHZH
+	wYCSHJ5qvNbZbQqBlCaqC1CA5W0ZXN0PQyWT/jrmRjyQ33ASPWKuuz63HvfLVgGsWWwzXB1L+DN9/
+	Js1KtrBsI6xmrlyTyfd+0RUGyaaDGWmhGz+cIIytCCoxGpY7YoRsSmm38Lu7RYOlXIhAWbd5A2FpS
+	mMc0cXZEaqAaR32p4xB8DyR3LKqYfNnICLIQ+vnKucTgpywGJ0NkBiC2lTXjly5SGznYQ8wYEigrY
+	K23LTGFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdBtF-0000000Dgqf-0XrO;
-	Tue, 06 Jan 2026 18:34:45 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vdCM9-0000000Djtt-3baq;
+	Tue, 06 Jan 2026 19:04:37 +0000
+Received: from dilbert.mork.no ([2a01:4f9:c010:a439::d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdBtD-0000000Dgps-1u3q;
-	Tue, 06 Jan 2026 18:34:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7DCCE6013D;
-	Tue,  6 Jan 2026 18:34:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 152C5C19423;
-	Tue,  6 Jan 2026 18:34:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767724482;
-	bh=H2v0nUt8N0vGGdbmlYiAAvAo4Pe4F33fRgeEAFY94/w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tvWl1oMzdgHT/lp0TV4rEcJ8KSAX5uz4aKUNJUZM/9Fw2AhxQvWxlDCsW9dkPhYuG
-	 kGtfrzLYii0Dcs1IFsDE/r35PWpspaWSHEmpmKHAfQJqfDhPXGzXN+AcQX8FhIqlLr
-	 S2GlvwkqAR3eWJn5OSXGBcUlSVjtK1ySUFYR4Kgo65YrR5qEKgsHgrkkR2f7wo7gAc
-	 NZkIgfrl/22DVK+m33EFyTZD7ElvUBBegC0B1jErirr8Pd+5OcPFoF8AW/bmY+Xn3F
-	 +Cdh7YwsMaezrL2EGPygsauQDaw4lqwaPo/WVcRONNnDOBN1dCWVBK8U4GCSoWgqiD
-	 dMz6zwvCP1HZA==
-Date: Tue, 6 Jan 2026 12:34:41 -0600
-From: Rob Herring <robh@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 1/2] dt-bindings: net: airoha: npu: Add BA
- memory region
-Message-ID: <20260106183441.GA2514063-robh@kernel.org>
-References: <20260105-airoha-ba-memory-region-v1-0-5b07a737c7a7@kernel.org>
- <20260105-airoha-ba-memory-region-v1-1-5b07a737c7a7@kernel.org>
+	id 1vdCM5-0000000DjsZ-0yDr;
+	Tue, 06 Jan 2026 19:04:35 +0000
+Authentication-Results: dilbert.mork.no;
+	dkim=pass (1024-bit key; secure) header.d=mork.no header.i=@mork.no header.a=rsa-sha256 header.s=b header.b=OaArPkna;
+	dkim-atps=neutral
+Received: from canardo.dyn.mork.no ([IPv6:2a01:799:10e2:d900:0:0:0:1])
+	(authenticated bits=0)
+	by dilbert.mork.no (8.18.1/8.18.1) with ESMTPSA id 606J3pAR245901
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
+	Tue, 6 Jan 2026 19:03:52 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mork.no; s=b;
+	t=1767726231; bh=2A66euThQPenJG2KEd8CaRBqOlB3WqSPAAMrbx7aFzg=;
+	h=From:To:Cc:Subject:References:Date:Message-ID:From;
+	b=OaArPknaMBsAYMuaq+tE2ybZt2qjucvuf7QIlgekae4B0sR6nr28biT5g1R1+uXxB
+	 MlORgrtRyQcLsXMDqpCXl4OufIxKdvhxL2ge3sW0IIol4hr8PpqY+YlUBf29+iVjig
+	 RCiJf7ehJ219xozbMNnCVYrZ7DI5HT1W5imubuF0=
+Received: from miraculix.mork.no ([IPv6:2a01:799:10e2:d90a:6f50:7559:681d:630c])
+	(authenticated bits=0)
+	by canardo.dyn.mork.no (8.18.1/8.18.1) with ESMTPSA id 606J3oDj1248715
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
+	Tue, 6 Jan 2026 20:03:50 +0100
+Received: (nullmailer pid 602062 invoked by uid 1000);
+	Tue, 06 Jan 2026 19:03:50 -0000
+From: =?utf-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+        linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org,
+        Daniel Golle <daniel@makrotopia.org>,
+        Horatiu Vultur <horatiu.vultur@microchip.com>,
+        Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+        Russell King <linux@armlinux.org.uk>,
+        "David S. Miller" <davem@davemloft.net>,
+        Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+        Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Eric Woudstra <ericwouds@gmail.com>,
+        Marek =?utf-8?Q?Beh=C3=BAn?= <kabel@kernel.org>,
+        Lee Jones <lee@kernel.org>,
+        Patrice Chotard <patrice.chotard@foss.st.com>
+Subject: Re: [PATCH v2 net-next 07/10] net: phy: air_en8811h: deprecate
+ "airoha,pnswap-rx" and "airoha,pnswap-tx"
+In-Reply-To: <20260103210403.438687-8-vladimir.oltean@nxp.com> (Vladimir
+	Oltean's message of "Sat, 3 Jan 2026 23:04:00 +0200")
+Organization: m
+References: <20260103210403.438687-1-vladimir.oltean@nxp.com>
+	<20260103210403.438687-8-vladimir.oltean@nxp.com>
+Date: Tue, 06 Jan 2026 20:03:50 +0100
+Message-ID: <87qzs2a7hl.fsf@miraculix.mork.no>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260105-airoha-ba-memory-region-v1-1-5b07a737c7a7@kernel.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Virus-Scanned: clamav-milter 1.4.3 at canardo.mork.no
+X-Virus-Status: Clean
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260106_110433_954953_70A2C707 
+X-CRM114-Status: UNSURE (   8.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,56 +102,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 05, 2026 at 10:02:56AM +0100, Lorenzo Bianconi wrote:
-> Introduce Block Ack memory region used by NPU MT7996 (Eagle) offloading.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml | 11 +++++++++--
->  1 file changed, 9 insertions(+), 2 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> index 59c57f58116b568092446e6cfb7b6bd3f4f47b82..b3a2b36f6a121f90acf88a07b0f1733fa6da08a8 100644
-> --- a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> @@ -50,6 +50,12 @@ properties:
->            - description: NPU wlan offload RX buffers region
->            - description: NPU wlan offload TX buffers region
->            - description: NPU wlan offload TX packet identifiers region
-> +      - items:
-> +          - description: NPU firmware binary region
-> +          - description: NPU wlan offload RX buffers region
-> +          - description: NPU wlan offload TX buffers region
-> +          - description: NPU wlan offload TX packet identifiers region
-> +          - description: NPU wlan Block Ack buffers region
+Vladimir Oltean <vladimir.oltean@nxp.com> writes:
 
-This oneOf can be simplified to just this last entry plus 'minItems: 1'. 
-Sure that allows 2 or 3 entries, but nothing defines when 1, 4, or 5 
-entries is valid or not.
+> diff --git a/drivers/net/phy/Kconfig b/drivers/net/phy/Kconfig
+> index a7ade7b95a2e..7b73332a13d9 100644
+> --- a/drivers/net/phy/Kconfig
+> +++ b/drivers/net/phy/Kconfig
+> @@ -98,6 +98,7 @@ config AS21XXX_PHY
+>=20=20
+>  config AIR_EN8811H_PHY
+>  	tristate "Airoha EN8811H 2.5 Gigabit PHY"
+> +	select PHY_COMMON_PROPS
 
->  
->    memory-region-names:
->      items:
-> @@ -57,6 +63,7 @@ properties:
->        - const: pkt
->        - const: tx-pkt
->        - const: tx-bufid
-> +      - const: ba
->  
->  required:
->    - compatible
-> @@ -93,7 +100,7 @@ examples:
->                       <GIC_SPI 122 IRQ_TYPE_LEVEL_HIGH>,
->                       <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
->          memory-region = <&npu_firmware>, <&npu_pkt>, <&npu_txpkt>,
-> -                        <&npu_txbufid>;
-> -        memory-region-names = "firmware", "pkt", "tx-pkt", "tx-bufid";
-> +                        <&npu_txbufid>, <&npu_ba>;
-> +        memory-region-names = "firmware", "pkt", "tx-pkt", "tx-bufid", "ba";
->        };
->      };
-> 
-> -- 
-> 2.52.0
-> 
+GENERIC_PHY_COMMON_PROPS maybe?
+
+
+Bj=C3=B8rn
 
