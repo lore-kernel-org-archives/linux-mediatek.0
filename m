@@ -4,74 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEE78CD5854
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 11:14:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8BF0CD5854
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 11:29:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DTO6KZNyXB8Rtnbw+MwcJ4rz5RTfwR2rwqN/sGZpOC4=; b=e+x2wnY9NDG99gYro0JSAsZSOG
-	0W+mjcIt5AXwrausRSpyExrehP6xnjBDGMHpKUmZyh3LDioL+3ypRJqh//Hk0NU4Ll270eK5XwJat
-	DAdezCkbIQfsFRkqtp07XgvkOUodWM2aoTgF1zqmjQ8EY2Ds2wj8dHy4gf29O5iTouxlYRbHe7giw
-	EGQohpeCWJiw60lcCywt53+wSL/G0P9CwjJ+q3ojio8zX5kTL+ah8BOzlBDx4h1QIgUJ77SBwkIhG
-	8dkZX/sxfF6qQvmToRE4s/fjtMbW1DITohk90BOjx30lwAKs6sYWJWSv4RJLPH3bnNiLZXKKcSawK
-	dkosmyBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FFpEL9NcSyNwFOdBNUyHmSYnBxBxO+PAWBfQ2Qv2ozs=; b=0lHgfIBp34JKy57jVd7h9lM3iz
+	cq7Yb4Y9i0SuaDi7kJPPxPd3xTe07lMhfrcbIXvTQO2segfiv+BGeLzSsyAl1+OMczXWNC+zJJr98
+	qSnaxcq7X3C8/pI72Ov7h2qmy826RX6Ab6FZ/jZbBLaCQrq1P7HMcGblI43E20DT9vt3SoMky0HAG
+	o/3U/cuXyFnC1FZKjiktRXAUU9JVjkn8gBox4M7v9v/q6lAunm9BLtGv7+gnm9l50jLV/5WDQBZ7y
+	cSHJnbaoM6K584AHPBcBUESYV53CFQXiRkkkvOwpzlS/KrKwg1bySL/sL+BGRNMmVoIc5h90fVLbh
+	Arj3XYXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdRUZ-0000000Eo27-0ZmP;
-	Wed, 07 Jan 2026 11:14:19 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vdRjE-0000000EpT9-0ezn;
+	Wed, 07 Jan 2026 11:29:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdRUQ-0000000Envy-2Yfw;
-	Wed, 07 Jan 2026 11:14:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1767784444;
-	bh=bYV4b7T0FejKQSm2Ka3i212N2vKUTl8BqnnpMyHRYco=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=aXSGy+XqWmFIXJ079nLZ72r8uoZg543EQKy5dd/R7opmW97D4eM+v8Xgxf0C7KltP
-	 qJvW5b1f+8TfJpvNIhJKWDTY7lg0kSvyM6VWgR/v4gDXvVV+mIQtDNI6hwEEVSiISo
-	 5WO/LQ0XNzMRkjUTstOOCdZvYcWmwClkPjhdd8FZ0MrLJoi0A3IUiE3PDr3ngYe2Sa
-	 6cfnHJWXTEDWHzc7LHa1TtHbyK4OUCQ/cmhSkqfnMiFReRay329LBBMVzzS2pbX3Wu
-	 nDoAY6DqfL8OgAiD8sNJ220sUS1nqAA8H1x82EWvYSGBnrxvCBrjBmZbhYIJg/m72s
-	 1rZ4857QRWLOw==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D7BC417E1340;
-	Wed,  7 Jan 2026 12:14:03 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Guillaume Ranquet <granquet@baylibre.com>, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: kernel@collabora.com, Krzysztof Kozlowski <krzk@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>
-In-Reply-To: <20251217-mtk-genio-evk-hdmi-support-v2-0-a994976bb39a@collabora.com>
-References: <20251217-mtk-genio-evk-hdmi-support-v2-0-a994976bb39a@collabora.com>
-Subject: Re: (subset) [PATCH v2 00/12] Add HDMI support for Mediatek Genio
- 510/700/1200-EVK and Radxa NIO-12L boards
-Message-Id: <176778444383.39787.7154377336276367704.b4-ty@collabora.com>
-Date: Wed, 07 Jan 2026 12:14:03 +0100
+	id 1vdRjB-0000000EpSk-0tnq;
+	Wed, 07 Jan 2026 11:29:26 +0000
+X-UUID: 1d284d32ebbc11f08b17dd397dc63300-20260107
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=FFpEL9NcSyNwFOdBNUyHmSYnBxBxO+PAWBfQ2Qv2ozs=;
+	b=t7B8QgSmgoAeQx87QOqBVhGzN4bRJIy88/WK/5DJA5Ydr0SFX4U/ax1U5XkQJ+bCwTkEjV1yLsWfWz7AYrvqZPxLLc22A+J4WRmGHXwagN8ZEZ6W+cU+VAVVyb+dBykVM2+QD9GHpIXObcsYxkyuTPVIbDnigbireQHci3I9ojI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.9,REQID:9cfe2047-54ee-4d25-96f7-cd0e6762618e,IP:0,UR
+	L:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-25
+X-CID-META: VersionHash:5047765,CLOUDID:d5743de8-ef90-4382-9c6f-55f2a0689a6b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 1d284d32ebbc11f08b17dd397dc63300-20260107
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+	(envelope-from <macpaul.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 577616565; Wed, 07 Jan 2026 04:29:22 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 7 Jan 2026 19:29:19 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 7 Jan 2026 19:29:19 +0800
+From: Macpaul Lin <macpaul.lin@mediatek.com>
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+	<sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Macpaul
+ Lin <macpaul.lin@mediatek.com>, "Garmin . Chang" <Garmin.Chang@mediatek.com>,
+	<linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Jian Hui Lee <jianhui.lee@canonical.com>, "Andy . Hsieh"
+	<andy.hsieh@mediatek.com>, Zoran Zhan <zoran.zhan@mediatek.com>, Cyril Chao
+	<Cyril.Chao@mediatek.com>, Chris-QJ Chen <chris-qj.chen@mediatek.com>, Ann
+ Cheng <ann.cheng@arm.com>, Bear Wang <bear.wang@mediatek.com>, Pablo Sun
+	<pablo.sun@mediatek.com>, Ramax Lo <ramax.lo@mediatek.com>, Macpaul Lin
+	<macpaul@gmail.com>, MediaTek Chromebook Upstream
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <Stable@vger.kernel.org>
+Subject: [PATCH RESEND] clk: mediatek: set CLK_IGNORE_UNUSED to clock mt8188 adsp audio26m
+Date: Wed, 7 Jan 2026 19:29:02 +0800
+Message-ID: <20260107112902.3080554-1-macpaul.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.3
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_031413_117506_EAE90780 
-X-CRM114-Status: UNSURE (   7.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260107_032925_291001_EA3A01C2 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,23 +93,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 17 Dec 2025 11:18:59 +0100, Louis-Alexis Eyraud wrote:
-> This patch series adds and enables the HDMI output support for the
-> following boards:
-> - Mediatek Genio 510-EVK (MT8370)
-> - Mediatek Genio 700-EVK (MT8390)
-> - Mediatek Genio 1200-EVK (MT8395)
-> - Radxa NIO-12L (MT8395)
-> 
-> [...]
+Set CLK_IGNORE_UNUSED flag to clock adsp audio26m to prevent disabling
+this clock during early boot, as turning it off causes other modules
+to fail probing and leads to boot failures in ARM SystemReady test cases
+and the EFI boot process (on Linux Distributions, for example, debian,
+openSuse, etc.). Without this flag, disabling unused clocks cannot
+complete properly after adsp_audio26m is turned off.
 
-Applied to v6.19-next/defconfig, thanks!
+Fixes: 0d2f2cefba64 ("clk: mediatek: Add MT8188 adsp clock support")
+Cc: Stable@vger.kernel.org
+Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+---
+ drivers/clk/mediatek/clk-mt8188-adsp_audio26m.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-[12/12] arm64: defconfig: Enable Mediatek HDMIv2 driver
-        commit: 81841b41a8bcd024f77a15d0634bc229d4d44db1
-
-Cheers,
-Angelo
-
+diff --git a/drivers/clk/mediatek/clk-mt8188-adsp_audio26m.c b/drivers/clk/mediatek/clk-mt8188-adsp_audio26m.c
+index dcde2187d24a..b9fe66ef4f2e 100644
+--- a/drivers/clk/mediatek/clk-mt8188-adsp_audio26m.c
++++ b/drivers/clk/mediatek/clk-mt8188-adsp_audio26m.c
+@@ -20,8 +20,8 @@ static const struct mtk_gate_regs adsp_audio26m_cg_regs = {
+ };
+ 
+ #define GATE_ADSP_FLAGS(_id, _name, _parent, _shift)		\
+-	GATE_MTK(_id, _name, _parent, &adsp_audio26m_cg_regs, _shift,		\
+-		&mtk_clk_gate_ops_no_setclr)
++	GATE_MTK_FLAGS(_id, _name, _parent, &adsp_audio26m_cg_regs, _shift,	\
++		&mtk_clk_gate_ops_no_setclr, CLK_IGNORE_UNUSED)
+ 
+ static const struct mtk_gate adsp_audio26m_clks[] = {
+ 	GATE_ADSP_FLAGS(CLK_AUDIODSP_AUDIO26M, "audiodsp_audio26m", "clk26m", 3),
+-- 
+2.45.2
 
 
