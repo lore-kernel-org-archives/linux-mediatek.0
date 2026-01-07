@@ -4,78 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9A0BCFD625
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 12:51:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14530CFD626
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 12:57:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Is5RjV5W1u9YGVarjcRU6ceNIN9IKqpKYrkNrDF/4MQ=; b=jJcaKi2xWeB7Corw7xfM4s2i5X
-	dsS9JMrWIKeRj86PHf0sR/8VHlAKPhgOHuocNSVOT+oLoo2z4VAJTwsasYCMJO01wsQIX9+wdqCUc
-	wc692nWiiaQaDE+P/CQTOuNaO8ezcpmp1VbQrSeKD9+Rr8q4AuGZHenUkctJPFZfr6OQkXtE9SERb
-	xRdoIGLW+dxMLmCH4hJtFaLiDASaFJkDPJ8A4WitxOCaFlU3O2LaZ5PoB1OhXnIK8HHQF5ilCtSJS
-	X3GnuddUfgv0+aWKntz4Je3oMcvGTNDuQ+30U7KtxN28jQ+AzZW93qrQtvVf9tsLHl0GmlYzvT3XT
-	Jq4+wPXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:Cc
+	:References:In-Reply-To:Subject:To:From:Date:Message-ID:Reply-To:MIME-Version
+	:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wlIAnm2uqEEWwKcuVa6V/VcQqj5KPi+OVshqPkEYtZ0=; b=yx7kIY/chQHTP+A/YUebO4OAl3
+	srBl+92zvn5kdxat2P3Y6vFAcYsNL2nTjZ307v56WwTsXVuHAdBuyJqr6sCr1T/k3HpA99CLtIFqr
+	E45SsCEZF1v4Ogak7ykfnNbWFJkq7ZwaaCRS6Y8Xh5x1dEWaNZVBTjYSnUKrK847SKYVpTjb5IYby
+	gu2X6O2bTBi8F7O35rW7YXSYEa4v3TAcKf406VwPPBCwH18S1g5EIPmdOda8o6cJIRb3NVFC1VFHm
+	s1ec3SXpGH6FfF2drY3exnma8i5a79zCtaVUfzBbNcrOx3s0BUpdMnoqnk3ETi0VKJOkiMPwU2e9y
+	cJgi0AlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdT06-0000000EvkW-0OwM;
-	Wed, 07 Jan 2026 12:50:58 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vdT6U-0000000EwSL-3g59;
+	Wed, 07 Jan 2026 12:57:34 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdT02-0000000EvjU-0T5l;
-	Wed, 07 Jan 2026 12:50:55 +0000
+	id 1vdT6T-0000000EwRs-0QWb;
+	Wed, 07 Jan 2026 12:57:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id AD70B43B87;
-	Wed,  7 Jan 2026 12:50:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F902C4CEF7;
-	Wed,  7 Jan 2026 12:50:53 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 34D036000A;
+	Wed,  7 Jan 2026 12:57:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5D685C16AAE;
+	Wed,  7 Jan 2026 12:57:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767790253;
-	bh=Is5RjV5W1u9YGVarjcRU6ceNIN9IKqpKYrkNrDF/4MQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UdtNBxpCkcQ+J4H95qIr3QfX6X38re9VsczT9QDHJOelKLRMPw0ZAybPLWkJT/BYt
-	 qBVIOG1TpBraZfpFcb9sHRYZD4hYsQX1YNB/c3DKoTsjfQ8h9gmu0pNFOsuOTp8pwd
-	 6JnV3p1TlDu+25XdF8kWiT/pWdoNfwElGtGmMU+ThGuuuS43S2YuUg/sGfkw/3Tlj3
-	 4eu40L+vU5uuxAtGViRQ5eXxP540CVDfAhCdnD5T562No2Z61O+CR4BPRaAdS0u201
-	 xMJ72P80lwivWepjJ19FrxjJLpICrKdlq/TqB4fE0LbyeL/ASQDPdHCztqVjRHN1dy
-	 YyrJCg8uezBOQ==
-Date: Wed, 7 Jan 2026 13:50:51 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
-	Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Liu Ying <victor.liu@nxp.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Rob Clark <robin.clark@oss.qualcomm.com>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>, 
-	Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>, 
-	Marijn Suijten <marijn.suijten@somainline.org>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 07/10] drm/display: hdmi_state_helper: reject Audio IF
- updates if it's not supported
-Message-ID: <20260107-fascinating-boa-of-fertility-1886a0@houat>
-References: <20251224-limit-infoframes-2-v3-0-7fd3cacfefed@oss.qualcomm.com>
- <20251224-limit-infoframes-2-v3-7-7fd3cacfefed@oss.qualcomm.com>
-MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="5jzjabvum6jmi43c"
-Content-Disposition: inline
-In-Reply-To: <20251224-limit-infoframes-2-v3-7-7fd3cacfefed@oss.qualcomm.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_045054_195079_4A133ADB 
-X-CRM114-Status: GOOD (  11.66  )
+	s=k20201202; t=1767790651;
+	bh=AZ3FTUzyEnjHa8UimWASucIjpUtAemrhK/cj4twknT8=;
+	h=Date:From:To:Subject:In-Reply-To:References:Cc:From;
+	b=QrvrUhv7AKUyuhxnfnZD8aTRrkLEqDa3FVHhBC6qxSbAoejvO1zyJrbl3ODgv5Dnm
+	 08L0MIErAX/jzBq66LOvzH4bDL4k0rOQgvNl+95WMn33WJIFTdD2C1QFOUKoADoM1B
+	 W3zJ1EnPSHcuH9ube8VJlwcD1Gsk7czmsRt3zaif5ClvKfgXa6i8sDoKcVHy0H+cX9
+	 RpVEnA2KjR6S8BMQ+ka8FOmbx7AfXEVPkA0PQtj3xwQyfOWku0YZWfEI74lRRzWrPU
+	 6GI9Nex4iLl4Dgfxu5Yb9Wns3l1FMX4xw3PAoGaLkO/FE7IYDI4v3Txku23hQ7vfKT
+	 t3AFfQhoyVrvQ==
+Message-ID: <2cc04e3f503dc7ed74d8faade50cf69c@kernel.org>
+Date: Wed, 07 Jan 2026 12:57:29 +0000
+From: "Maxime Ripard" <mripard@kernel.org>
+To: "Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>
+Subject: Re: [PATCH v3 08/10] drm/display: hdmi_state_helper: don't generate
+ unsupported InfoFrames
+In-Reply-To: <20251224-limit-infoframes-2-v3-8-7fd3cacfefed@oss.qualcomm.com>
+References: <20251224-limit-infoframes-2-v3-8-7fd3cacfefed@oss.qualcomm.com>
+Cc: dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, "Abhinav
+ Kumar" <abhinav.kumar@linux.dev>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
+ Yan" <andy.yan@rock-chips.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>, "Chen-Yu
+ Tsai" <wens@kernel.org>, "Chun-Kuang Hu" <chunkuang.hu@kernel.org>, "Dave
+ Stevenson" <dave.stevenson@raspberrypi.com>, "David Airlie" <airlied@gmail.com>, "Dmitry
+ Baryshkov" <lumag@kernel.org>, =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Jernej
+ Skrabec" <jernej.skrabec@gmail.com>, "Jessica Zhang" <jesszhan0024@gmail.com>, "Jonas
+ Karlman" <jonas@kwiboo.se>, "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Liu
+ Ying" <victor.liu@nxp.com>, "Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, "Marijn
+ Suijten" <marijn.suijten@somainline.org>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Maxime
+ Ripard" <mripard@kernel.org>, =?utf-8?b?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, "Neil
+ Armstrong" <neil.armstrong@linaro.org>, "Philipp Zabel" <p.zabel@pengutronix.de>, "Raspberry
+ Pi Kernel Maintenance" <kernel-list@raspberrypi.com>, "Rob Clark" <robin.clark@oss.qualcomm.com>, "Robert
+ Foss" <rfoss@kernel.org>, "Samuel Holland" <samuel@sholland.org>, "Sandy
+ Huang" <hjc@rock-chips.com>, "Sean Paul" <sean@poorly.run>, "Simona Vetter" <simona@ffwll.ch>, "Thomas
+ Zimmermann" <tzimmermann@suse.de>
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +80,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, 24 Dec 2025 03:02:57 +0200, Dmitry Baryshkov wrote:
+> There is little point in generating InfoFrames which are not supported
+> by the driver. Skip generating the unsupported InfoFrames, making sure
+> that the kernel never tries to write the unsupported frame. As there are
+> no remaining usecases, change write_infoframe / clear_infoframe helpers
+> return an error if the corresponding callback is NULL.
+> 
+> [ ... ]
 
---5jzjabvum6jmi43c
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3 07/10] drm/display: hdmi_state_helper: reject Audio IF
- updates if it's not supported
-MIME-Version: 1.0
+Acked-by: Maxime Ripard <mripard@kernel.org>
 
-Hi,
-
-On Wed, Dec 24, 2025 at 03:02:56AM +0200, Dmitry Baryshkov wrote:
-> Updating the InfoFrame if it can not be sent over the wire makes no
-> sense. Change drm_atomic_helper_connector_hdmi_update_audio_infoframe()
-> and drm_atomic_helper_connector_hdmi_clear_audio_infoframe() to return
-> an error if Audio InfoFrame callbacks are not implemented.
->=20
-> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-
-IIRC, audio infoframes are mandatory if you send audio over the cable,
-so maybe we should do like you did for drmm_connector_hdmi_init and
-error in drm_connector_hdmi_audio_init if we don't have the proper
-write_infoframe hook set?
-
+Thanks!
 Maxime
-
---5jzjabvum6jmi43c
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaV5WpQAKCRAnX84Zoj2+
-dvQoAX0ZrPZ4Tvz4pn+WykRaXQmRL9fYSOrsCkdNU/U/YeDmV7idPNZOoovjGxhA
-lol6AlQBgKrZOSgOR63zJZLAb5FVpUis1h8cxg8f+AZWDU9CuIucM8fJDumWT/jC
-l8IATNMIWw==
-=i55g
------END PGP SIGNATURE-----
-
---5jzjabvum6jmi43c--
 
