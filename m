@@ -4,59 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB8BBCF6BE2
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 01:13:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA370CF6BE2
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 01:23:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jzjQ71QOzFwdcKXYIUMHyHGKK62LcHqc9vxBvjOCudQ=; b=yAAxiz9TfUQ3VUgPzlqgmF2k+H
-	5us9HegNBjcXW0uF6884QsZMB2JCJaapQxd7bMQJOSPmbw3e6KjmCxTz/KGvLv8+UQ8hWdzz/w50e
-	fcnrCar528hjIS2SB0ff8PIqHnIdsx9b8WEcto7OwwcmkQN0gvAJYX03DtzKKGKCEQygvUvFRjs8Z
-	VuwitzkO0odrHjWYHs4I6IvuEekqy+tTkmQ2X4W2sZSiO6Ze+TD/GsFN2h/7q6M/1G2AxRnptzasr
-	GxKnb7UaRCWXot1rxX6WOypFCt+fRrcj/uprFiH+EIsLTWbc3QUaK4T/rXSzIhQIgWyBcZehLKikb
-	Nea0zhvA==;
+	bh=R1lMg1Iu693E0qXqx4BVGUMi6q64LXfZXFzgn7j73J4=; b=H9O/96cZ6rYs2C21V+ETFHwQa8
+	O4un65TaYGXZ3w8P8Nz3kk6UUuGuSyOcUqheMKRVSdHW10PDnEWN1vPtvR8PZ7YCcQ47HcgW2S71A
+	wEabBS+Ol6i28MXf/OH6PFFSsUD1qHIrxejqAqcu0VDxXC0864SxG7Pghxke6EUkjsMttiCMXYUqu
+	JehtGiUCBclg5rkKT2RbjKrWufMyr3GpBwqeAnCKSn/c+E4HBNX9TyEIj1tIREqAdH4zIT0iOW5+s
+	UekJrjWqBZntNtPu8IrKKKfHNO/z2z3Ltbl8xbYIyfrIhPUWA8P2uPhIk/MT41Td0JA1ROw+LXg7/
+	OYRxjV8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdI7K-0000000DzpY-2kN7;
-	Wed, 07 Jan 2026 01:13:42 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vdIGy-0000000E0Wa-3Gf7;
+	Wed, 07 Jan 2026 01:23:40 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdI7J-0000000DzpJ-0oqC;
-	Wed, 07 Jan 2026 01:13:41 +0000
+	id 1vdIGw-0000000E0Vt-29hq;
+	Wed, 07 Jan 2026 01:23:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 89A036013C;
-	Wed,  7 Jan 2026 01:13:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F0BAC19423;
-	Wed,  7 Jan 2026 01:13:39 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 3962C41983;
+	Wed,  7 Jan 2026 01:23:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16701C116C6;
+	Wed,  7 Jan 2026 01:23:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767748419;
-	bh=LSzIB7ZvHtwbKLPR0CyVa0RD/fmT9XyawYFuu4l+x2s=;
+	s=k20201202; t=1767749017;
+	bh=5cFJO5s3wQK+4Ifp8ZJthLIPbVJ6jfkCvYSf0lyofR4=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=sXVEYb0FWM4yiX9H8pkjr5yACRcxuuHJ5r2Y1O/+IeVBtsrTzPaTPtRlwhsmM+n1b
-	 JgCcsv0gDqrn92BjwnGcHmGoQ4CiXRES01yJIF72P308s3L2LZIa53sTzNEuDS1S07
-	 ZjDipzBUHmQn+d6mCx1ErVizEB+B5OLp9imDhgZOsmdeQ2MPDYnz/PuOXBwvW7TBM1
-	 4z4W7yK2VY9MyH0497cadAEpOECnLgbE0DhqC+HPIId5xkco3fH+LApXrZf2bpJuXD
-	 oQ2bsXDSKPNFNTY7XM+8kG7KQcNsysACJp5PtbxVsTvNQQd4m3YfmTUVUhQZ+CwXiI
-	 3p/4nDyHtue8g==
+	b=m2sIklyEBO/CYs87pAiZmQ0zUYGPZraIpqStPxRNwuP0iqIouTC1ySo5YrGMhJBwM
+	 sKoxSIjDrplOvYKegAUM6rD1Q+kGMb9Dc/b6+qi/TnSSJLOBQB19RtFVTOLiXQknGM
+	 BnPNgh2BRkqKoq3wzFlJS0QQi13oA7LLt3WJRP5rZL2Ws4b466LEmpfxsRZSLF0RM7
+	 s/yRLd985tmyAXW2s2hsp8kVC2/L9liGveDwtEy3+JgvLTUhs/cDWpOmJle/3RK48+
+	 Puqp/4173YlxUf6JynVZ9/Caj0l0mEURC2b+FIxoNQFSk1EXIxdYwkJB1+yBp5sTvu
+	 /kRc4Yv2cNbhQ==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id F2904380CEF5;
-	Wed,  7 Jan 2026 01:10:17 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id B5A58380CEF5;
+	Wed,  7 Jan 2026 01:20:15 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: airoha: npu: Dump fw version during probe
+Subject: Re: [PATCH net-next] net: airoha: Use gdm port enum value whenever
+ possible
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <176774821677.2186142.2029655991938895121.git-patchwork-notify@kernel.org>
-Date: Wed, 07 Jan 2026 01:10:16 +0000
-References: <20260105-airoha-npu-dump-fw-v1-1-36d8326975f8@kernel.org>
-In-Reply-To: <20260105-airoha-npu-dump-fw-v1-1-36d8326975f8@kernel.org>
+Message-Id: <176774881426.2188953.14906966324669227872.git-patchwork-notify@kernel.org>
+Date: Wed, 07 Jan 2026 01:20:14 +0000
+References: <20260105-airoha-use-port-idx-enum-v1-1-503ca5763858@kernel.org>
+In-Reply-To: <20260105-airoha-use-port-idx-enum-v1-1-503ca5763858@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
  kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260106_172338_577951_B2F9207E 
+X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,19 +81,20 @@ Hello:
 This patch was applied to netdev/net-next.git (main)
 by Jakub Kicinski <kuba@kernel.org>:
 
-On Mon, 05 Jan 2026 09:49:16 +0100 you wrote:
-> Dump firmware version running on the npu during module probe.
+On Mon, 05 Jan 2026 10:40:47 +0100 you wrote:
+> Use AIROHA_GDMx_IDX enum value whenever possible.
+> This patch is just cosmetic changes and does not introduce any logic one.
 > 
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
->  drivers/net/ethernet/airoha/airoha_npu.c | 6 ++++++
->  1 file changed, 6 insertions(+)
+>  drivers/net/ethernet/airoha/airoha_eth.c | 40 +++++++++++++++++---------------
+>  1 file changed, 21 insertions(+), 19 deletions(-)
 > 
 > [...]
 
 Here is the summary with links:
-  - [net-next] net: airoha: npu: Dump fw version during probe
-    https://git.kernel.org/netdev/net-next/c/e4bc5dd53bf5
+  - [net-next] net: airoha: Use gdm port enum value whenever possible
+    https://git.kernel.org/netdev/net-next/c/4d513329b87c
 
 You are awesome, thank you!
 -- 
