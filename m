@@ -4,109 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75F13CF6BE4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 02:57:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 911C1CF6BF4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 08:02:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wYIkvz3pRlHzabcujWopBL2r96dnBGp9F8c9D5faYQw=; b=uhY9itJcY8ODXsKKyJetPC+U3D
-	W+Y+2seZN988lLOYIukpOahcln6/JIgBZWltypWXyc3oQGFCF8CwAobFDBt4IY31jKXxPDoQiKU2y
-	niqdNJ8XwESLaNmpzAMIgSxzC3WY/j0CW7tgYs8/X2LwncIePl55uaNoY3UZFMtHAJoIL795DUBqW
-	MCpByWFfSsG4f3rJI90TrmEd5cNXLdTsBzEY1hXzcQYea25KKVs9QN+XXdmyKYW6H7JcfZuBtO860
-	35bYSzZPzlb/cP/+kiT6+jAnMY8+JU09nUYWZu6SqIQGf0zbMwPvd1kkRgUh4G1LrV2lSdNYdEgil
-	ih91PRXA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qklSymOx8b7DPZqt61Vm1wR4K2JrijRNY9E4Uen5KtY=; b=jJJUZpScgEJhwJAeNTR2i8j8sh
+	5FFhj8d6kF8EEwXCAP3b1vjspdv2vxSRbi+CrzsmiVVellW8XqZEUqyKg8DRQt45Kv9VAXiJb1e4Y
+	xD74YkphiRs6v4oiUnecSXGnnvLALiFXB1HN8BH0jeF4UiK4dFKGdZAKityPeAluM9x4tyCvrIj4r
+	cgxcJqCsXaK70/f7T9qUZNtSo9tRttrlZ1wWxR6BsZDGPcEc4nDtseb6pM2uKX5E8OrwNsfJjA3fc
+	SqtzZ5AMUaYhX3N5poO4l3uXwL7HX9hN1wCuaglTvMXvv8hw6PTxCYl1SI4acCQbMxgCnH5qE3mUn
+	nt2t/C0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdJju-0000000E6Np-2oPn;
-	Wed, 07 Jan 2026 02:57:38 +0000
-Received: from fhigh-b3-smtp.messagingengine.com ([202.12.124.154])
+	id 1vdOUo-0000000ELgl-0G8w;
+	Wed, 07 Jan 2026 08:02:22 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdJjq-0000000E6NQ-2o9q
-	for linux-mediatek@lists.infradead.org;
-	Wed, 07 Jan 2026 02:57:36 +0000
-Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
-	by mailfhigh.stl.internal (Postfix) with ESMTP id 73D657A00D0;
-	Tue,  6 Jan 2026 21:57:30 -0500 (EST)
-Received: from phl-frontend-03 ([10.202.2.162])
-  by phl-compute-01.internal (MEProxy); Tue, 06 Jan 2026 21:57:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	invisiblethingslab.com; h=cc:cc:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm2; t=1767754650;
-	 x=1767841050; bh=wYIkvz3pRlHzabcujWopBL2r96dnBGp9F8c9D5faYQw=; b=
-	klStt1cbL9GHKvu9olF/78L3svkJ/pIzkb7OCL8RTTfFynJ+K0UqKq9svbbovl35
-	uxkZCpWKJzGGLwr59KSFSEicoMhtG/jZAhB3Q540QpVmzazJ9owTvXu/Vdi/WHm6
-	4x5FjvBtljWPFKd69ia/lfxHgPsFlPhMTbMvnWhjrNf2QI1WZEvGAkAi6fAfGHGD
-	3o6dNr1cuPeCVrjl0DYbIr68Q/Em1H+oUHBKnydzzCO90m20TpXStoG2ML/FsPy2
-	J3XjeeNaUfWZjE2wgHI7Dt4/ZaZ78O/YyRGwCSwiVY0hSwiINZNlunaRJzw0Y4vI
-	pC5bFzOeLFuhfG+xi6w1zw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:content-type:date:date
-	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:subject:subject:to
-	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
-	1767754650; x=1767841050; bh=wYIkvz3pRlHzabcujWopBL2r96dnBGp9F8c
-	9D5faYQw=; b=nBKDCPsvKyPEDySV1A2QqBDwRk+dhDKGl74TXrpzpjiA1pgtJGh
-	MMM5Zjh0//v9qpPNrpqwqBuCH1OXdJ08fV635xLVZIL4M1U+zceZu1qYrqHzT5Ht
-	RaYLu5sZD9SC0PG47zZcQaXUEJmy56Tr8zpFRtgaMezPsd1MG85DdpAd263hrlww
-	6Ze1Zp6lRy+UTIbuSlqvyVdTNX75J5D3Kr61arsDSSzZvlBxa3FViylzn5HULkFU
-	+dQQ+SeZ/9Kyx6ZRLY53Jp4plAwl7fppopR0vW05VDd654ptsUzJClb5Jryfw2vA
-	JOsivpevuixEAmzjuHlBdHbAypkRa7Nl2xA==
-X-ME-Sender: <xms:mctdaQXFMVbiT2HofQVBccYhXMvJzQFbWF7p098qH1hS2wGNywbsTg>
-    <xme:mctdaVAXcXJcQ-RDkBChU7M2dMkUoE3fkXRWF5GyTSGZf9EqfG6yma9YpbaCFmkDG
-    ZPx6TjtVngiOliQDAsjKJ8DdWQwjdrz4YCvNxxIaKhTLGAY>
-X-ME-Received: <xmr:mctdaVHJ3_txXorwGkYJyb1eP372Z3vmJjfXdv3biGjsuuHg0wxdpA6JTXbtqnEqYjoJPFkrQJ3Dw0MKPQb8sT2mR7SVQCzjWuc>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgddutdduleefucetufdoteggodetrf
-    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
-    rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
-    gurhepfffhvfevuffkfhggtggujgesghdtreertddtjeenucfhrhhomhepofgrrhgvkhcu
-    ofgrrhgtiiihkhhofihskhhiqdfikphrvggtkhhiuceomhgrrhhmrghrvghksehinhhvih
-    hsihgslhgvthhhihhnghhslhgrsgdrtghomheqnecuggftrfgrthhtvghrnhepgfduleet
-    feevhfefheeiteeliefhjefhleduveetteekveettddvgeeuteefjedunecuvehluhhsth
-    gvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepmhgrrhhmrghrvghksehi
-    nhhvihhsihgslhgvthhhihhnghhslhgrsgdrtghomhdpnhgspghrtghpthhtohepledpmh
-    houggvpehsmhhtphhouhhtpdhrtghpthhtoheprhgvghhrvghsshhiohhnsheslhgvvghm
-    hhhuihhsrdhinhhfohdprhgtphhtthhopehnsggusehnsggurdhnrghmvgdprhgtphhtth
-    hopehlohhrvghniihosehkvghrnhgvlhdrohhrghdprhgtphhtthhopehrhiguvghrrdhl
-    vggvsehmvgguihgrthgvkhdrtghomhdprhgtphhtthhopehshhgrhihnvgdrtghhvghnse
-    hmvgguihgrthgvkhdrtghomhdprhgtphhtthhopehsvggrnhdrfigrnhhgsehmvgguihgr
-    thgvkhdrtghomhdprhgtphhtthhopehlihhnuhigqdifihhrvghlvghsshesvhhgvghrrd
-    hkvghrnhgvlhdrohhrghdprhgtphhtthhopehlihhnuhigqdhmvgguihgrthgvkheslhhi
-    shhtshdrihhnfhhrrgguvggrugdrohhrghdprhgtphhtthhopehrvghgrhgvshhsihhonh
-    hssehlihhsthhsrdhlihhnuhigrdguvghv
-X-ME-Proxy: <xmx:mctdaW5kn5nxiLZNMQ44XBUgfZ_TWzEr2OuFvveY1HdBJtqxiiJyjw>
-    <xmx:mctdabnPJgqiD-PWQ4BMl0vIdqzv0wJVVj3IsPzTz-fDCwDwzR66fw>
-    <xmx:mctdaR6pJ07kZ4P4adPCWqE_niV1tfkXW7Phcp21usDQChe1wN8Ctw>
-    <xmx:mctdacTNmTCaC5htjVIrE2PWw1-CwdB3CUr6VIAN5cG2IS72mOhzEg>
-    <xmx:mstdaeLInjIDnLMWkDfLU8-lPszkrmwqe9B0aXkRLPw-A8ad78YfN1CP>
-Feedback-ID: i1568416f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 6 Jan 2026 21:57:28 -0500 (EST)
-Date: Wed, 7 Jan 2026 03:57:26 +0100
-From: Marek =?utf-8?Q?Marczykowski-G=C3=B3recki?= <marmarek@invisiblethingslab.com>
-To: Thorsten Leemhuis <regressions@leemhuis.info>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	"open list:MEDIATEK MT76 WIRELESS LAN DRIVER" <linux-wireless@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	regressions@lists.linux.dev
-Subject: Re: strnlen buffer overflow in mt76_connac2_load_patch - 6.19-rc2
-Message-ID: <aV3LlrckZUqdvJMG@mail-itl>
-References: <aVBCFKub6vCFsFVB@mail-itl>
- <6beab0bb-ed51-491a-bd64-15f3455ea628@leemhuis.info>
+	id 1vdOUl-0000000ELfQ-44ed;
+	Wed, 07 Jan 2026 08:02:21 +0000
+X-UUID: 2d478fb0eb9f11f08b17dd397dc63300-20260107
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=qklSymOx8b7DPZqt61Vm1wR4K2JrijRNY9E4Uen5KtY=;
+	b=biH+tF4KtyoIuB2/hlVec7TGfpxCbLIrysSXF/x7SDK/Vra3Yta6jGudkkHQXAhpOFlzTm4RS2Xepa4w98vzI2gog2NtBxgsSnwFei/MJqsNYyNYleBWsZmM5UYrEJnVnAqesgOtgirSv5ly2Sp8/fif4UrJCLka2ROWgX+aSz0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.9,REQID:4958cc64-9d0c-4027-ba35-38c23f356a19,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:5047765,CLOUDID:e83f83a3-8254-477a-9e2b-7810cc6892cc,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 2d478fb0eb9f11f08b17dd397dc63300-20260107
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <ot_zhangchao.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 239857961; Wed, 07 Jan 2026 01:02:14 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 7 Jan 2026 16:02:11 +0800
+Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 7 Jan 2026 16:02:10 +0800
+From: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: Krzysztof Kozlowski <krzk@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
+	Deren Wu <deren.Wu@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, Hao Qin
+	<Hao.qin@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+	linux-kernel <linux-kernel@vger.kernel.org>, linux-arm-kernel
+	<linux-arm-kernel@lists.infradead.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Zhangchao Zhang
+	<ot_zhangchao.zhang@mediatek.com>
+Subject: [PATCH] Bluetooth:btusb:MT7922:Add VID/PID 0e8d/e0d8
+Date: Wed, 7 Jan 2026 16:01:54 +0800
+Message-ID: <20260107080154.2635403-1-ot_zhangchao.zhang@mediatek.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="tCMpHQ2JrlxTEmeZ"
-Content-Disposition: inline
-In-Reply-To: <6beab0bb-ed51-491a-bd64-15f3455ea628@leemhuis.info>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260106_185735_152327_CBFD99C0 
-X-CRM114-Status: GOOD (  12.38  )
+X-CRM114-CacheID: sfid-20260107_000220_018122_1C2AB8AA 
+X-CRM114-Status: GOOD (  11.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,61 +89,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+	Notice:this object is not reachable from any branch.
 
---tCMpHQ2JrlxTEmeZ
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Date: Wed, 7 Jan 2026 03:57:26 +0100
-From: Marek =?utf-8?Q?Marczykowski-G=C3=B3recki?= <marmarek@invisiblethingslab.com>
-To: Thorsten Leemhuis <regressions@leemhuis.info>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	"open list:MEDIATEK MT76 WIRELESS LAN DRIVER" <linux-wireless@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
-	regressions@lists.linux.dev
-Subject: Re: strnlen buffer overflow in mt76_connac2_load_patch - 6.19-rc2
+Add VID 0e8d & PID e0d8 for Mediatek MT7922 USB Bluetooth chip.
 
-On Mon, Jan 05, 2026 at 02:44:28PM +0100, Thorsten Leemhuis wrote:
-> On 12/27/25 21:31, Marek Marczykowski-G=C3=B3recki wrote:
-> > Hi,
-> >=20
-> > After updating to 6.19-rc2 I'm hitting the following panic on boot. It
-> > worked in 6.18.2. It is a Xen HVM domU with PCI device attached, this
-> > one specifically:
-> >=20
-> > 02:00.0 Network controller [0280]: MEDIATEK Corp. MT7921K (RZ608) Wi-Fi=
- 6E 80MHz [14c3:0608]
-> >
-> > And the crash is:
->=20
-> This looks somewhat similar to a report from Shuah Khan and likely was
-> fixed with af7809f037e6e5 ("Revert "wifi: mt76: Strip whitespace from
-> build ddate"") in v6.19-rc4. Please let us known if that is not the case.
+The information in /sys/kernel/debug/usb/devices about the Bluetooth
+device is listed as the below.
 
-Thanks, I confirm it's fixed in 6.19-rc4.
+T:  Bus=06 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=0e8d ProdID=e0d8 Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+I:  If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+I:* If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
 
---=20
-Best Regards,
-Marek Marczykowski-G=C3=B3recki
-Invisible Things Lab
+Signed-off-by: Zhangchao Zhang <ot_zhangchao.zhang@mediatek.com>
+Reviewed-by: Hao Qin <Hao.qin@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
---tCMpHQ2JrlxTEmeZ
-Content-Type: application/pgp-signature; name=signature.asc
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 646de80c7e7b..6d15d0608380 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -677,6 +677,8 @@ static const struct usb_device_id quirks_table[] = {
+ 	/* MediaTek MT7922A Bluetooth devices */
+ 	{ USB_DEVICE(0x0489, 0xe0d8), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0e8d, 0xe0d8), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x0489, 0xe0d9), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x0489, 0xe0e2), .driver_info = BTUSB_MEDIATEK |
+-- 
+2.45.2
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhrpukzGPukRmQqkK24/THMrX1ywFAmldy5YACgkQ24/THMrX
-1yy43gf+N+KfA0eFcvyuCW6TxxHbai0PBuoloCzovpmVTs2+cVf382Rxcz3alc4J
-NBZQKQYz+Vir7vg5l+lV2hjOPJ1B2JsUrMcIwg8LvBNy8NnhIEOPBJUiNxlbA3kd
-0jCSo/A8OSVkgKKLbgMl9LcLssSCAxdDhooCq/kUermusiaROIVNq68wxCEH7NUW
-Tvi2q0WXhJN8NSu/tW18kjh+O5b3U92E8SYkBP5ZJjEP7+5M1Qs+LZQ/CTnHahRK
-IakrRWZpBUmJpdglbepWVLi+6/zJDJEYTWUBUonQCiSmRDNM81iltJ0gLht+GFkI
-mG13MaqJI304QAVi76WhharbXrKEiQ==
-=UUKT
------END PGP SIGNATURE-----
-
---tCMpHQ2JrlxTEmeZ--
 
