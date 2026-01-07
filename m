@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98AAFCD5854
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 11:13:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11698CD5859
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 11:13:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=COs6X+2bm3X9FPFfA1KKzQjUTbxOVGv7Y4ik/Uliu4k=; b=JKKu5nJObpIPaE3FQLqNedOVMd
-	QSdMYNYIA1jGOW9ZKs0sucI53F+57KVJyNdC7cTAyxj9Gi3WITCzCzfqNq0f7VsifXzgHdYyY297j
-	0esFsVRaZ7UsaiUSCX/Kk/OrwmnyT7uZk3hOHJvkQuL6F0EvmpjyUaB5Jh74X0U0g/v0icBgCnE18
-	Y1Re5tTBwvXfpsZ/YIsYZ3ojGzrioQ4OPM3kIcaI6qPG0P82dhQSjhLGdFh6Zg3x8I2A4TDrMgn0d
-	q2Q6zCAZpvcP1BxyTwZ7nQqVG2+VBj5ZkgGXaPBmYHWDv4gPAYKCs8ngoW5tnhIK7wt7sdjjnCqM+
-	qB3ehbRw==;
+	bh=RzXNokDpMq9yO8xbaN+ULDk+bKhztegLiSF6Ymlxxig=; b=cPIJWIePHTNNvjxiswrJgUfwBn
+	jXiOwzM/H2QXsZyrlVKhqEPIL8TMCObMbxfMbwqbs4/bKvtFnPRdCRZ8ghF+qIM+CFRG/elo8TIqX
+	SX92jRHVMNF1HyZmh/Ax22TR0fEX1PukNlLxdkthvYiJ29HKpqw/maDpufFS428+soAekK/8AJSJo
+	Z2rHgjyjFLEUQ9CpWs+duoa/ppTsF71n4/oTG1xvZuhcRHhwghS//jSgPE9t4diwr5e4WtwIvOhpt
+	K13AL70JCQs8abyNScy5F0W/Z4mnpEwymzb7JNTrVJturuRLUUVTd3WA26XNrns/oR7fQrGtkblDB
+	DBsU1d1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdRTK-0000000En8L-1gem;
-	Wed, 07 Jan 2026 11:13:02 +0000
+	id 1vdRTO-0000000EnDg-4BB6;
+	Wed, 07 Jan 2026 11:13:06 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdRTF-0000000En3Y-1Ndg;
-	Wed, 07 Jan 2026 11:12:59 +0000
+	id 1vdRTF-0000000En3U-1QS9;
+	Wed, 07 Jan 2026 11:13:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1767784371;
-	bh=hMjy3lEeXeDO5nRVZQIN6TVF65B6g+XqBUFMamxA9q8=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=ViwEgA4nWX8LGJFqhF/l4DDs5+k5XVSUTvKyHLm8lKzbynh8mV6PSQb8nrWm+ozer
-	 W9XchbZWhbjTTdD0A5wQqHJ2IWw8f07iDGgta7Yr0q5qRPMzExUVR4PR0OiuGahz/B
-	 /Y97kTOQUG2/EHp3TlirSHMKue6JAMtCsB16wtpwBhRDZSWQKOSZ0HH5P55gBJi2HY
-	 N7+QZy5qDAMMOg7J5WNC2YvkfQjEQB1S4O4v4wBoAw0lGnvXAFPUSAdiRIxZl/kgvf
-	 d/8lIyF2p4BOyCCZS5bLPpTt2bi4jzFkH8lU/4tMoW2h20ygl/HoN1bhdaWT/Up09P
-	 dR4fOG81O5xbQ==
+	s=mail; t=1767784369;
+	bh=U0pEX+LelAq23mmJLFCvPYrRtCMIXpGEMNsR7cPAe1g=;
+	h=From:To:In-Reply-To:References:Subject:Date:From;
+	b=LZssPx5ytjvdAP1hY1asW0B/erJMT3v++ngxlrIxHAFmNzjDsh1U4tN0TfCXvlwqz
+	 dqGbWEXNH+BkTE7bBwL4EVWTaQBtvKbRQz/5XuUKx9be1hmeuFQDGkfPxhV3h/rPV4
+	 BD2Oo6AhaFelVZtR474ThdxqQYGen3+UQXVbNskvVpEBAewsug48CPzLp6DOA5rsPI
+	 2IqphSf/NhMFSxEydzcnFbyucFbObJ38yZ2iA70SVpOvysG1tHwpxI4MNzRfRT8vnV
+	 aS+04J3P0aS+6vMhcTXLJdX1sxEkWTEFKXjbWpTNuSsx1VNiz0gbrSz8e5wgqrV761
+	 uHrC8RM5NdWrA==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EE58E17E150D;
-	Wed,  7 Jan 2026 12:12:50 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 249C517E1340;
+	Wed,  7 Jan 2026 12:12:49 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- =?utf-8?q?Otto_Pfl=C3=BCger?= <otto.pflueger@abscue.de>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Evans Jahja <evansjahja13@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>
-In-Reply-To: <20260106-mt8183-display-graph-v2-1-e7e56054eef5@abscue.de>
-References: <20260106-mt8183-display-graph-v2-1-e7e56054eef5@abscue.de>
-Subject: Re: [PATCH v2] arm64: dts: mediatek: mt8183: Add missing endpoint
- IDs to display graph
-Message-Id: <176778437091.39195.13022724446632883232.b4-ty@collabora.com>
-Date: Wed, 07 Jan 2026 12:12:50 +0100
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+In-Reply-To: <20251223152523.155523-2-krzysztof.kozlowski@oss.qualcomm.com>
+References: <20251223152523.155523-2-krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: [PATCH] arm64: dts: airoha: Use hyphen in node names
+Message-Id: <176778436908.39195.12833861892642524328.b4-ty@collabora.com>
+Date: Wed, 07 Jan 2026 12:12:49 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_031257_529061_45353744 
-X-CRM114-Status: UNSURE (   8.40  )
+X-CRM114-CacheID: sfid-20260107_031257_560010_FD334CD0 
+X-CRM114-Status: UNSURE (   6.60  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,21 +77,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 06 Jan 2026 11:11:12 +0100, Otto Pflüger wrote:
-> The endpoint IDs in the display graph are expected to match the
-> associated display path number, i.e. all endpoints connected to
-> mmsys_ep_main must have reg = <0> and all endpoints connected to
-> mmsys_ep_ext must have reg = <1>.
+On Tue, 23 Dec 2025 16:25:24 +0100, Krzysztof Kozlowski wrote:
+> DTS coding style prefers hyphens instead of underscores in the node
+> names.  Change should be safe, because node names are not considered an
+> ABI.
 > 
-> Add the missing ID to all endpoints in the display graph, based on
-> mt8365.dtsi as an existing example that does this correctly.
 > 
-> [...]
 
 Applied to v6.19-next/dts64, thanks!
 
-[1/1] arm64: dts: mediatek: mt8183: Add missing endpoint IDs to display graph
-      commit: 6c9593bd4560750c7f862af5ce13b2802272c6ad
+[1/1] arm64: dts: airoha: Use hyphen in node names
+      commit: eaada4f56ab366f4c198291aa9d04b8a3348e291
 
 Cheers,
 Angelo
