@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF15BCFD62A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 13:29:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E995ECFD62A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 13:35:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:Cc
-	:References:In-Reply-To:Subject:To:From:Date:Message-ID:Reply-To:MIME-Version
-	:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pn+kqCPWueZrmt5TpLjDJUYpXBBfe00TA3BTkYqMUmM=; b=fxJGbXOeV57qr5/9fbI/yCkqux
-	mEaB5yTFxoV4GwaZdlYsp2PT3S82eIpYIA6CBMHmLfokfnxPjHT8Gtp/5l6FoU+ZiHX9OI+kgjDM2
-	nq0de1eijxDg+CzmBYbUTPM0PPEQXgNhgp1j3RNJefzIt4f3eVdV7hgcEhWiBkV/s/on2+upkW5QW
-	oEAbBPn6M044QCVUh0leqexCY5K9r3DFEMMLqmJkRl+UXrm9f6YlI7QYC+5VIiqiMK91KMcUzbWiE
-	3gksOWkKN49l2LGFdOdR78heTxPxMtgqZZWIBxWoMTkIZjBWMb7/mjZFgJyW2fEMt5rns01vv9IUS
-	OEg0P9tg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DzHNlNtdPWJmlEiDjg+ll4gR71pU+DAznDFbG/pCf/w=; b=vfHw/6eyJ+RD1qnNEcZ8zb+Kze
+	kKQdFZ+LiP7cLi4wDHdJQEbcSTz9jcUU/+9C3HE5lkXXCQ1UZgwD0rnQLS10clVM6eDwEKiqOTB1I
+	jB0GvavHIrIFoal/CT7D8z8x0sAwZq6lQpMy5iXWDMq8LX+VHoK/45YxYfEgU5NeMzH4/T+vQeGqo
+	HkhnTbrCvEPmpbiwRr6JfdLUJ4q45TLXIJLPRksUwx/hZhLyX856K0zo/Ky1WxucJGR7VY2vjNLEc
+	zN2phVMDqHy9Mq+icaEgpCEGa3OFSCp/Kp89E7dykEVlQNCsqwSzCflMQCnVOXtwo4XjUwnF9hKLl
+	jxZITGWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdTax-0000000F0c9-37Fr;
-	Wed, 07 Jan 2026 13:29:03 +0000
+	id 1vdTh2-0000000F16j-1DqK;
+	Wed, 07 Jan 2026 13:35:20 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdTav-0000000F0am-0BYA;
-	Wed, 07 Jan 2026 13:29:02 +0000
+	id 1vdTgx-0000000F15m-3zHH;
+	Wed, 07 Jan 2026 13:35:19 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5998841AC6;
-	Wed,  7 Jan 2026 13:29:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A7015C4CEF7;
-	Wed,  7 Jan 2026 13:28:59 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 693D941A85;
+	Wed,  7 Jan 2026 13:35:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45B44C4CEF7;
+	Wed,  7 Jan 2026 13:35:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767792540;
-	bh=PK1j6ce4GGTcpSge6J8AMXbZ8tvdblBxTwzpEYOUGQg=;
-	h=Date:From:To:Subject:In-Reply-To:References:Cc:From;
-	b=TwpQDEJFw9eder+ACSMDQ+hh2IXQJhWM0qJedRQIGlwhlYpFPOIDu3w6JzkhZmfY5
-	 v7cTyCpq5tlIbdCoMzYuktDk9LGEXCaxX9PvaXYDi4AcoHI5jSuVxSAO1q6Aehh2rL
-	 J0fb80OArKVpkly5vd3OjFrcmDkHa0OZlI5XLW4L6Cjutsqn3t2x5K80tG4JzT3TWD
-	 l7lIzuapfxCX7EwlxlEkujyT3ZJhmNgvCOVh0c2BeIKs1+AEVAKzR0nuF/6G+Jf3Jt
-	 ukrAVsD7OELbx2WZjiav5Qp8x4PeztEzKyp0g/WkepHIoYQuMxPA5/AJVMZvzEl/36
-	 V53gwahHgJWZA==
-Message-ID: <5418c64c7c32a5bd651b097a47d28e00@kernel.org>
-Date: Wed, 07 Jan 2026 13:28:57 +0000
-From: "Maxime Ripard" <mripard@kernel.org>
-To: "Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>
-Subject: Re: [PATCH v3 09/10] drm/display: bridge_connector: dynamically
- generate HDMI callbacks
-In-Reply-To: <20251224-limit-infoframes-2-v3-9-7fd3cacfefed@oss.qualcomm.com>
-References: <20251224-limit-infoframes-2-v3-9-7fd3cacfefed@oss.qualcomm.com>
-Cc: dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, "Abhinav
- Kumar" <abhinav.kumar@linux.dev>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
- Yan" <andy.yan@rock-chips.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>, "Chen-Yu
- Tsai" <wens@kernel.org>, "Chun-Kuang Hu" <chunkuang.hu@kernel.org>, "Dave
- Stevenson" <dave.stevenson@raspberrypi.com>, "David Airlie" <airlied@gmail.com>, "Dmitry
- Baryshkov" <lumag@kernel.org>, =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Jernej
- Skrabec" <jernej.skrabec@gmail.com>, "Jessica Zhang" <jesszhan0024@gmail.com>, "Jonas
- Karlman" <jonas@kwiboo.se>, "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Liu
- Ying" <victor.liu@nxp.com>, "Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, "Marijn
- Suijten" <marijn.suijten@somainline.org>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Maxime
- Ripard" <mripard@kernel.org>, =?utf-8?b?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, "Neil
- Armstrong" <neil.armstrong@linaro.org>, "Philipp Zabel" <p.zabel@pengutronix.de>, "Raspberry
- Pi Kernel Maintenance" <kernel-list@raspberrypi.com>, "Rob Clark" <robin.clark@oss.qualcomm.com>, "Robert
- Foss" <rfoss@kernel.org>, "Samuel Holland" <samuel@sholland.org>, "Sandy
- Huang" <hjc@rock-chips.com>, "Sean Paul" <sean@poorly.run>, "Simona Vetter" <simona@ffwll.ch>, "Thomas
- Zimmermann" <tzimmermann@suse.de>
-Content-Transfer-Encoding: 7bit
+	s=k20201202; t=1767792915;
+	bh=tuOxz+2km4OAM2kYT3YnfTTUjzyZ3rQep8bFqqLQo/A=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=p3MuUiTF4qIyHi7ref8Gsr+U3ir/y/lus8o0rUFOH0jrq1LMRtfo4VTwskoIeBjHe
+	 AZiVz9GxFH7j8jbdgoJWiRwniaguCAUdFrouwc6XHChvdsLKKB49wnnEw6fZe476Fh
+	 zFpIvNUwWcobNitNWgCskLTwnv4ldoUd0Xjszvc3s7BTLzMRb3pOTGSmxWDbcdsReJ
+	 oObiDCZnKAcHJn9Wb54Kl4d+2K/PHqE4j2U/cxqAWGqha4LXylEkrjXBdTHIscfOjP
+	 VZMNp4QCHQ5n5fQiRCGCGeHVoHIDsqHlQU3z2VVK+6apyrA7Bpm7sVdI39ANDAzFZF
+	 KvREPu8kz/KzA==
+Date: Wed, 7 Jan 2026 13:35:11 +0000
+From: Simon Horman <horms@kernel.org>
+To: Sebastian Roland Wolf <Sebastian.Wolf@pace-systems.de>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Sebastian Roland Wolf <srw@root533.premium-rootserver.net>
+Subject: Re: [PATCH v2] net: mediatek: add null pointer check for hardware
+ offloading
+Message-ID: <20260107133511.GA345651@kernel.org>
+References: <20260103005008.438081-1-Sebastian.Wolf@pace-systems.de>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260103005008.438081-1-Sebastian.Wolf@pace-systems.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_052901_108237_713A9B21 
-X-CRM114-Status: UNSURE (   6.15  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260107_053516_007938_D454DA4C 
+X-CRM114-Status: GOOD (  13.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,17 +78,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 24 Dec 2025 03:02:58 +0200, Dmitry Baryshkov wrote:
-> The rest of the DRM framework uses presence of the callbacks to check if
-> the particular infoframe is supported. Register HDMI callbacks
-> dynamically, basing on the corresponding drm_bridge ops.
+On Sat, Jan 03, 2026 at 01:50:08AM +0100, Sebastian Roland Wolf wrote:
+> From: Sebastian Roland Wolf <srw@root533.premium-rootserver.net>
 > 
-> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+> Add a null pointer check to prevent kernel crashes when hardware
+> offloading is active on MediaTek devices.
 > 
-> [ ... ]
+> In some edge cases, the ethernet pointer or its associated netdev
+> element can be NULL. Checking these pointers before access is
+> mandatory to avoid segmentation faults and kernel oops.
+> 
+> This improves the robustness of the validation check for mtk_eth
+> ingress devices introduced in commit 73cfd947dbdb ("net: mediatek:
+> add support for ingress traffic offloading").
+> 
+> Fixes: 73cfd947dbdb ("net: mediatek: add support for ingress traffic offloading")
+> net: mediatek: Add null pointer check to prevent crashes with active hardware offloading.
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
+Hi Sebastian,
 
-Thanks!
-Maxime
+I agree that the cited hash is a good commit to reference, but
+I think the Fixes line has been mangled. A correct tag for that hash is:
+
+Fixes: 73cfd947dbdb ("net: ethernet: mtk_eth_soc: ppe: prevent ppe update for non-mtk devices")
+
+Also, please no blank line here, between the Fixes line and your Signed-off by.
+
+> 
+> Signed-off-by: Sebastian Roland Wolf <Sebastian.Wolf@pace-systems.de>
+
+...
 
