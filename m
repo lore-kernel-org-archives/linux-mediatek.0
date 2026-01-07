@@ -4,90 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE4B1CF6BE1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 16:35:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63B19D0D141
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 17:03:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=A0u5SYt+BNXlIZdFfEjj61qYNlvbBJNuvhZPcQM27Gc=; b=QujhpEOfV4l9+OIm2RXWHRMxIC
-	7kpVuq1xlloysrsuaP8130nHt2fZVJbhlPm7sNAFaj7yKaUG1RESbM0YBtCKsVF6AQ4f8Ji/DIRGn
-	RcSY6aOvPEzzmklwWxxMMIpL0f2SmgOXF7hwYM/CF6cYNjWWeJkelaV34QCGFIYqQX6Z5Er1XGUud
-	UYX1mgXCBrW4udHSQ5S8mAQMKOjgLi81aXD+nBFkmVo8KRqQSBpUWOVRfKN55Z5crxJDccfWkqUL1
-	+k4Chw+7BmI4kCpVRI6gKrX0wScEI7ahWXrBgnlAUuobN5ar5DmqixwQwRuF4MgSeC1rwZkyCeFRj
-	08+Axjvg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:
+	To:Cc:Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
+	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vT259SsZbBCgS5jej5uTjBYNLE5xMiwzYalV9DvjFlw=; b=mnVWLIRf8ufxr9Lr+x/QnMLpG5
+	czXAqQzTNKgxZ/SBaxo0bFU5zWosJlI5KMrcvKllWCcfa2nWHpRwLxo5M/SOkq/VHrNr4fKBMteEW
+	OYqGT1yqPSbY56+fL1Rmc+IbgHUVNp5gVw3ndF7W08kMOEolk9zfNeCMCd/GnT1T0MfueuwQWYf14
+	rB0SziJLBg40dveUH6HWhsI3p5aVseKxiEL0eCqU9EAItPjJZ58zcgLVJQZjk5f/W6+N0jyRXVFu7
+	N+hZLex0XmcEc32a07e2jrXrxhOSrdpmMk9U4QPVdhe9BbtO9ZfmwoqLIdDyMKR4viXq72/e7qVTW
+	HcJgAtbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdWVe-0000000FJQs-2Sy7;
-	Wed, 07 Jan 2026 16:35:46 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1vdWwO-0000000FLpG-2mWO;
+	Wed, 07 Jan 2026 17:03:24 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdWVb-0000000FJPe-01nw
+	id 1vdWwL-0000000FLoS-0RX6
 	for linux-mediatek@lists.infradead.org;
-	Wed, 07 Jan 2026 16:35:45 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vdWUn-00061q-3g; Wed, 07 Jan 2026 17:34:53 +0100
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vdWUh-009XX9-1v;
-	Wed, 07 Jan 2026 17:34:47 +0100
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vdWUh-00000000FuG-1qqY;
-	Wed, 07 Jan 2026 17:34:47 +0100
-Message-ID: <3e87a26d067de694273daaf011a50f1a2e7718f1.camel@pengutronix.de>
+	Wed, 07 Jan 2026 17:03:22 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 03CC04E41FDF;
+	Wed,  7 Jan 2026 17:03:18 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id A6BA7606F8;
+	Wed,  7 Jan 2026 17:03:18 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E9A49103C821A;
+	Wed,  7 Jan 2026 18:03:06 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1767805397; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=vT259SsZbBCgS5jej5uTjBYNLE5xMiwzYalV9DvjFlw=;
+	b=qjl+IH9e6WT/WJbluQMom7WhOSZz91qsguJk+YcCF1ezNfyjR88kSE3TKuk68Dg37xmHw6
+	XCEK9Mppq0OQq3vc09h0WDsUQxgQoZKm+M/+U+3MgdY0Eb/MK9G6UG+ZlB8NXiAEBbZ6Pi
+	xP9Oxci+bX3nmJSR9oU2MukZpebnHYoGLphjaIxE7AW3mpS/83hzxfcjIax6cip9cRD7lZ
+	Uex/OGHArOy4i/tiS6i8OdbUklSoD4vZR2GIC0hRgcGA3SbizduiTm0dV2HMFCrUGQiGZt
+	cUleZVAvrJ72aqzu/SfKPKbcZV9e9srbSuH73i8GFot6Kr2H131NFf/nJYQ26g==
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Wed, 07 Jan 2026 18:03:05 +0100
+Message-Id: <DFIIPIQDRAXW.3FOJY73IY5UZ9@bootlin.com>
 Subject: Re: [PATCH 3/6] drm/imx/dw-hdmi: convert to
  of_drm_find_and_get_bridge()
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>, Andrzej Hajda	
- <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
- Robert Foss <rfoss@kernel.org>, Laurent Pinchart
- <Laurent.pinchart@ideasonboard.com>, Jonas Karlman	 <jonas@kwiboo.se>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst	
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Kevin Hilman <khilman@baylibre.com>,
- Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl	
- <martin.blumenstingl@googlemail.com>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team
- <kernel@pengutronix.de>, Fabio Estevam	 <festevam@gmail.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Matthias Brugger	 <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>, Inki
- Dae <inki.dae@samsung.com>,  Seung-Woo Kim <sw0312.kim@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski	
- <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Laurent Pinchart	
- <laurent.pinchart+renesas@ideasonboard.com>, Tomi Valkeinen	
- <tomi.valkeinen+renesas@ideasonboard.com>, Kieran Bingham	
- <kieran.bingham+renesas@ideasonboard.com>, Geert Uytterhoeven	
- <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>
-Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni
-	 <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org
-Date: Wed, 07 Jan 2026 17:34:47 +0100
-In-Reply-To: <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-3-ef48a517828e@bootlin.com>
-References: <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-0-ef48a517828e@bootlin.com>
-	 <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-3-ef48a517828e@bootlin.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2-0+deb13u1 
-MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Cc: "Hui Pu" <Hui.Pu@gehealthcare.com>, "Thomas Petazzoni"
+ <thomas.petazzoni@bootlin.com>, <dri-devel@lists.freedesktop.org>,
+ <linux-kernel@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <imx@lists.linux.dev>,
+ <linux-mediatek@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
+ <linux-renesas-soc@vger.kernel.org>
+To: "Philipp Zabel" <p.zabel@pengutronix.de>, "Andrzej Hajda"
+ <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
+ "Robert Foss" <rfoss@kernel.org>, "Laurent Pinchart"
+ <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman" <jonas@kwiboo.se>,
+ "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
+ "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
+ <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Kevin Hilman"
+ <khilman@baylibre.com>, "Jerome Brunet" <jbrunet@baylibre.com>, "Martin
+ Blumenstingl" <martin.blumenstingl@googlemail.com>, "Shawn Guo"
+ <shawnguo@kernel.org>, "Sascha Hauer" <s.hauer@pengutronix.de>,
+ "Pengutronix Kernel Team" <kernel@pengutronix.de>, "Fabio Estevam"
+ <festevam@gmail.com>, "Chun-Kuang Hu" <chunkuang.hu@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
+ <angelogioacchino.delregno@collabora.com>, "Inki Dae"
+ <inki.dae@samsung.com>, "Seung-Woo Kim" <sw0312.kim@samsung.com>, "Kyungmin
+ Park" <kyungmin.park@samsung.com>, "Krzysztof Kozlowski" <krzk@kernel.org>,
+ "Alim Akhtar" <alim.akhtar@samsung.com>, "Laurent Pinchart"
+ <laurent.pinchart+renesas@ideasonboard.com>, "Tomi Valkeinen"
+ <tomi.valkeinen+renesas@ideasonboard.com>, "Kieran Bingham"
+ <kieran.bingham+renesas@ideasonboard.com>, "Geert Uytterhoeven"
+ <geert+renesas@glider.be>, "Magnus Damm" <magnus.damm@gmail.com>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+X-Mailer: aerc 0.20.1
+References: <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-0-ef48a517828e@bootlin.com> <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-3-ef48a517828e@bootlin.com> <3e87a26d067de694273daaf011a50f1a2e7718f1.camel@pengutronix.de>
+In-Reply-To: <3e87a26d067de694273daaf011a50f1a2e7718f1.camel@pengutronix.de>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_083544_486686_5AF9490A 
-X-CRM114-Status: GOOD (  15.21  )
+X-CRM114-CacheID: sfid-20260107_090321_277477_05224675 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,35 +101,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mi, 2026-01-07 at 17:22 +0100, Luca Ceresoli wrote:
-> of_drm_find_bridge() is deprecated. Move to its replacement
-> of_drm_find_and_get_bridge() which gets a bridge reference, and ensure it
-> is put when done.
->=20
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-> ---
->  drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c b/drivers/gpu/drm/im=
-x/ipuv3/dw_hdmi-imx.c
-> index 07e5f96202d4..95f629d97bce 100644
-> --- a/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c
-> +++ b/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c
-> @@ -241,7 +241,7 @@ static int dw_hdmi_imx_probe(struct platform_device *=
-pdev)
->  	if (IS_ERR(hdmi->hdmi))
->  		return PTR_ERR(hdmi->hdmi);
-> =20
-> -	hdmi->bridge =3D of_drm_find_bridge(np);
-> +	hdmi->bridge =3D of_drm_find_and_get_bridge(np);
->  	if (!hdmi->bridge) {
->  		dev_err(hdmi->dev, "Unable to find bridge\n");
->  		dw_hdmi_remove(hdmi->hdmi);
+Hello Philipp,
 
-The component_add() error path below this is missing a
-drm_bridge_put().
+On Wed Jan 7, 2026 at 5:34 PM CET, Philipp Zabel wrote:
+> On Mi, 2026-01-07 at 17:22 +0100, Luca Ceresoli wrote:
+>> of_drm_find_bridge() is deprecated. Move to its replacement
+>> of_drm_find_and_get_bridge() which gets a bridge reference, and ensure i=
+t
+>> is put when done.
+>>
+>> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+>> ---
+>>  drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c | 3 ++-
+>>  1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c b/drivers/gpu/drm/i=
+mx/ipuv3/dw_hdmi-imx.c
+>> index 07e5f96202d4..95f629d97bce 100644
+>> --- a/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c
+>> +++ b/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c
+>> @@ -241,7 +241,7 @@ static int dw_hdmi_imx_probe(struct platform_device =
+*pdev)
+>>  	if (IS_ERR(hdmi->hdmi))
+>>  		return PTR_ERR(hdmi->hdmi);
+>>
+>> -	hdmi->bridge =3D of_drm_find_bridge(np);
+>> +	hdmi->bridge =3D of_drm_find_and_get_bridge(np);
+>>  	if (!hdmi->bridge) {
+>>  		dev_err(hdmi->dev, "Unable to find bridge\n");
+>>  		dw_hdmi_remove(hdmi->hdmi);
+>
+> The component_add() error path below this is missing a
+> drm_bridge_put().
 
-regards
-Philipp
+Right! Thanks for reviewing, fix queued for v2.
+
+Luca
+
+--
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
