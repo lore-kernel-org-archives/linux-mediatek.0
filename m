@@ -4,55 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F357CFD65E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 16:22:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 790A4CFD65D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jan 2026 16:22:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PorJeqSllb/CeY5X2ouyWtuaeRz7QMdsAMLS+BtwxPM=; b=metmi/v3fi9oIDqZM39C1kVMjy
-	r+sBLi/GPDrgBEGJYNAcKV9z/swiwfNcda3JnaqOd2pU8EKzhWwC+UOZIioDEtXiokCm71dadHmcw
-	gAykYeOF0uaNt5ADAwJ5VVqIa3zSizuTg6yDkvWL+FQ1mDEtaK6XsntccV4zbHAJO3Gzi/WipNhxT
-	IGcUfl3bHV1ToBwWMmGyVNlNOL7neKQEZf1nqtMYCTwe2drTEyuEog4cUSR2RDlfdRwMGlUp3Vl8x
-	JDXttNdq7wZgNYUgTgrWq7jHgWqK4TtpCgQgJOv5C/QLHZMrHVT5RpScPYo7Ysnf6nsDqujsC2pfI
-	xJj9fymg==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JdLe8UY54Ycj4piloj+rsekA1/AGyqvm+QpBgA+1OYI=; b=3DMB8NMAPcDwk5
+	lnem0eDoZWTD5g8/0CpxmyyqnF2UKbLx7KxF7bMEiHyUVtqSZHB91A5+U+KnHMxAtwz6nbctft3nT
+	KwrtDyLlQQQctiHyEjCw/o7mHx3IFMZsDBZJRlZLd6ZyYbj5i2W0/2ShzVlKcWlNCkmgrWosmjlnl
+	wH/hENg7ZeSj0zNDOJS7jDvLqldaOtQK17gpiHV9ovf5DUGgkQgyUH8eP1iOpirNrXE/cNJw45SRR
+	sr/brF8yhDWGd47nlLrdMPbdabRk0qux5zvRuFOw8nuKP0e3pOpQUbmjxZq0/ACzSSDI6KYD59zyC
+	ikIQBwqYdt0ENAhJwBTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdWJ6-0000000FGLH-1p4k;
-	Wed, 07 Jan 2026 16:22:48 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1vdWJB-0000000FGQN-1M0H;
+	Wed, 07 Jan 2026 16:22:53 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdWIu-0000000FGA3-2UHP;
-	Wed, 07 Jan 2026 16:22:43 +0000
+	id 1vdWIv-0000000FGAG-3Opr
+	for linux-mediatek@lists.infradead.org;
+	Wed, 07 Jan 2026 16:22:46 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 00BEE1A26E7;
-	Wed,  7 Jan 2026 16:22:35 +0000 (UTC)
+	by smtpout-04.galae.net (Postfix) with ESMTPS id A6DB5C1EC84;
+	Wed,  7 Jan 2026 16:21:53 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id C6770606F8;
-	Wed,  7 Jan 2026 16:22:34 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 8CEA7103C87C8;
-	Wed,  7 Jan 2026 17:22:28 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 96426606F8;
+	Wed,  7 Jan 2026 16:22:19 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 81AB8103C87CB;
+	Wed,  7 Jan 2026 17:22:06 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1767802953; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=PorJeqSllb/CeY5X2ouyWtuaeRz7QMdsAMLS+BtwxPM=;
-	b=Fsd7Ll44d23Z9IVJW46aIyRwPX8fnZduxoWFXuyzWXYAu0xGh2sVIzVvkwh8JS/L6EWcYs
-	4+pfVQ09Wnl+ERuF1W9Ry4kwYsLuxMf/+KOqHqdUhX28F+QWe9tRpueIJ6ApM//ZvHu+H8
-	I510fcYnG81stb3WA7EYF8Qpxypai/d6A2dAbuQnhpBvlwQKXbR/so/Q6JPemijpZuYP9m
-	fSg+sTKzBzNom+3/KWALE1klWCehOpdMjp1ofIjEJQ3YZGO/GlVgRxH8kwg2IC1wOgc2Mw
-	u7aMezTnG5ytAKy12YIxf2gJ+BxL84IxtR3nHUapnUlifn4ZfvG0P/ro4LZGvg==
+	t=1767802937; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding; bh=JdLe8UY54Ycj4piloj+rsekA1/AGyqvm+QpBgA+1OYI=;
+	b=ZJ/XqDa0OSr4NYaLF8zcX+MPxD7NKgB+Hnw1y/rmL1ezS6TIK3DjMcoiPkOfBvWHC/bUOj
+	gT7MIWvzWZ9cM3gWVjHaA2EsfQ76m7OiPjoGL3hbQVVn3NsxrMTripI10GGBdeogG9daJw
+	pjLmjhL17iBrYq1psBENAaWnS46q7xyXsOR5hhAMD1mJPtXaT6gctPkjCKmQGYW/uUEIcs
+	NiJSg1LN9O1HqzipnBoPU+bH5wfTXsoNYms2T01h4vpLHHY+ZIdJfqR9+qQaWYQy1cNghr
+	zGzKHLAYHJCK7ubwgRrghHeOBIzLRAyrTK63Zl/Wm68beHX1TYgd1NG8KQHxrw==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Wed, 07 Jan 2026 17:22:01 +0100
-Subject: [PATCH 3/6] drm/imx/dw-hdmi: convert to
- of_drm_find_and_get_bridge()
+Subject: [PATCH 0/6] drm/bridge: convert users of of_drm_find_bridge(),
+ part 3
+Date: Wed, 07 Jan 2026 17:21:58 +0100
+Message-Id: <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-0-ef48a517828e@bootlin.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-3-ef48a517828e@bootlin.com>
-References: <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-0-ef48a517828e@bootlin.com>
-In-Reply-To: <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-0-ef48a517828e@bootlin.com>
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIACeIXmkC/y2NUQrCMBAFr1L224W0iiFeRSTEZLcu1KRsWhFK7
+ 24UP+cNzNugkgpVuHQbKL2kSskN+kMH8RHySCipMQxmOJveWEz6xLtKaiZMU4k40jKvy3f3hT1
+ LTv7vj3hi5ywFG61jaMlZieX9u7ve9v0D/wtEBn4AAAA=
+X-Change-ID: 20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-4f997ea7c79f
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
  Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
  Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
@@ -87,8 +89,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>,
 X-Mailer: b4 0.14.3
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_082236_787141_51C42179 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20260107_082242_460470_D6FA4BC6 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,38 +105,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-of_drm_find_bridge() is deprecated. Move to its replacement
-of_drm_find_and_get_bridge() which gets a bridge reference, and ensure it
-is put when done.
+This series converts many DRM drivers from the now deprecated
+of_drm_find_bridge() to its replacement of_drm_find_and_get_bridge() which
+allows correct bridge refcounting. Where applicable it also converts
+per-driver "next_bridge" pointers to the unified drm_bridge::next_bridge
+which puts the reference automatically on bridge deallocation.
+
+This is part of the work to support hotplug of DRM bridges. The grand plan
+was discussed in [0].
+
+Here's the work breakdown (➜ marks the current series):
+
+ 1. ➜ add refcounting to DRM bridges struct drm_bridge,
+      based on devm_drm_bridge_alloc()
+    A. ✔ add new alloc API and refcounting (v6.16)
+    B. ✔ convert all bridge drivers to new API (v6.17)
+    C. ✔ kunit tests (v6.17)
+    D. ✔ add get/put to drm_bridge_add/remove() + attach/detach()
+         and warn on old allocation pattern (v6.17)
+    E. ➜ add get/put on drm_bridge accessors
+       1. ✔ drm_bridge_chain_get_first_bridge(), add cleanup action (v6.18)
+       2. ✔ drm_bridge_get_prev_bridge() (v6.18)
+       3. ✔ drm_bridge_get_next_bridge() (v6.19)
+       4. ✔ drm_for_each_bridge_in_chain() (v6.19)
+       5. ✔ drm_bridge_connector_init (v6.19)
+       6. … protect encoder bridge chain with a mutex
+       7. ➜ of_drm_find_bridge
+          a. ✔… add of_drm_get_bridge(), convert basic direct users
+	        (v6.20?, one driver still pending)
+	  b. … convert direct of_drm_get_bridge() users, part 2
+	  c. ➜ convert direct of_drm_get_bridge() users, part 3
+	  d.   convert direct of_drm_get_bridge() users, part 4
+	  e.   convert bridge-only drm_of_find_panel_or_bridge() users
+       8. drm_of_find_panel_or_bridge, *_of_get_bridge
+       9. ✔ enforce drm_bridge_add before drm_bridge_attach (v6.19)
+    F. ✔ debugfs improvements
+       1. ✔ add top-level 'bridges' file (v6.16)
+       2. ✔ show refcount and list lingering bridges (v6.19)
+ 2. … handle gracefully atomic updates during bridge removal
+    A. ✔ Add drm_dev_enter/exit() to protect device resources (v6.20?)
+    B. … protect private_obj removal from list
+ 3. … DSI host-device driver interaction
+ 4. ✔ removing the need for the "always-disconnected" connector
+ 5. finish the hotplug bridge work, moving code to the core and potentially
+    removing the hotplug-bridge itself (this needs to be clarified as
+    points 1-3 are developed)
+
+[0] https://lore.kernel.org/lkml/20250206-hotplug-drm-bridge-v6-0-9d6f2c9c3058@bootlin.com/#t
+
+This work is a continuation of the work to correctly handle bridge
+refcounting for existing of_drm_find_bridge(). The ground work is in:
+
+ - commit 293a8fd7721a ("drm/bridge: add of_drm_find_and_get_bridge()")
+ - commit 9da0e06abda8 ("drm/bridge: deprecate of_drm_find_bridge()")
+ - commit 3fdeae134ba9 ("drm/bridge: add next_bridge pointer to struct drm_bridge")
+
+The whole conversion is split in multiple series to make the review process
+a bit smoother:
+
+ - Part 2: mostly drivers in drivers/gpu/drm/bridge [2]
+ - Part 3: other drivers, low-medium complexity [this series]
+ - Part 4: other drivers, complex (not sent yet)
+
+[2] https://lore.kernel.org/all/20260107-drm-bridge-alloc-getput-drm_of_find_bridge-2-v1-0-283d7bba061a@bootlin.com/
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Luca Ceresoli (6):
+      drm/bridge: dw-hdmi: convert to of_drm_find_and_get_bridge()
+      drm/meson/dw-hdmi: convert to of_drm_find_and_get_bridge()
+      drm/imx/dw-hdmi: convert to of_drm_find_and_get_bridge()
+      drm/mediatek: mtk_hdmi*: convert to of_drm_find_and_get_bridge()
+      drm/exynos: hdmi: convert to of_drm_find_and_get_bridge()
+      drm: rcar-du: lvds: convert to of_drm_find_and_get_bridge()
 
-diff --git a/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c b/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c
-index 07e5f96202d4..95f629d97bce 100644
---- a/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c
-+++ b/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c
-@@ -241,7 +241,7 @@ static int dw_hdmi_imx_probe(struct platform_device *pdev)
- 	if (IS_ERR(hdmi->hdmi))
- 		return PTR_ERR(hdmi->hdmi);
- 
--	hdmi->bridge = of_drm_find_bridge(np);
-+	hdmi->bridge = of_drm_find_and_get_bridge(np);
- 	if (!hdmi->bridge) {
- 		dev_err(hdmi->dev, "Unable to find bridge\n");
- 		dw_hdmi_remove(hdmi->hdmi);
-@@ -261,6 +261,7 @@ static void dw_hdmi_imx_remove(struct platform_device *pdev)
- 
- 	component_del(&pdev->dev, &dw_hdmi_imx_ops);
- 	dw_hdmi_remove(hdmi->hdmi);
-+	drm_bridge_put(hdmi->bridge);
- }
- 
- static struct platform_driver dw_hdmi_imx_platform_driver = {
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c   |  7 +++----
+ drivers/gpu/drm/exynos/exynos_hdmi.c        |  4 +++-
+ drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c     |  3 ++-
+ drivers/gpu/drm/mediatek/mtk_hdmi.c         |  4 ++--
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.c  |  4 ++--
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.h  |  1 -
+ drivers/gpu/drm/mediatek/mtk_hdmi_v2.c      |  4 ++--
+ drivers/gpu/drm/meson/meson_dw_hdmi.c       |  6 +++++-
+ drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c | 10 +++++++++-
+ 9 files changed, 28 insertions(+), 15 deletions(-)
+---
+base-commit: faeb4ff6d6e41c42741fd1df8e1d0b80f9452403
+change-id: 20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-4f997ea7c79f
 
+Best regards,
 -- 
-2.52.0
+Luca Ceresoli <luca.ceresoli@bootlin.com>
 
 
