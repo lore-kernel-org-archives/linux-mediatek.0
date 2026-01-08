@@ -4,108 +4,217 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D962D1D478
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 19:51:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33BA9D1D48A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 20:30:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3t5MxAZO6uHQlXqGxbxcJlRM3XpAxH2j68+Yng+n1tE=; b=GBhNSh5RHAL4CPJ6vEExDB1KoD
-	+D4Y959dv1+0IDx+xzuGkD7EnW9y8Qm859AM+LhmGMKdN0ZB1IUkf7U9xNnt3BN65kF6re6dRqHck
-	z2e9e/nIyuY9ZP5a11ozcKpHDHWBHVR6+FyyE2fhIqfkivUEfvcIu07qQgP8+M/OVa/qMIxPsXel+
-	Y2xki7rGf6VDb1O4psvtg8HJhPClBjNBpuaz0ScY0cI6W8T+Ci499UvXEF1gIEl5q9G/EGmqSki4m
-	ukBpx0fe3K5mcsdMOFWZi28V4y6oLvZK90aWA+mxHsyLOKonCN6gtgmmcBURFxzyR3+8MfICEbNgJ
-	hyY196Vw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=AATFeub50M9G4kXZemGGfkqxrV195T2BcDCLlkQ2CPU=; b=Eq1EiYASjfMUoMpf/FGkU4Kf2V
+	VPLUpRlaEjEfZ/Rmb7bdVDzwYg2Q8mE/C1mGquNPjk5O8JfCO6IVNclNvSMSnjSsL15XLkMTfZSSj
+	bLHp/qCn7Ux7LiJtG/t6U2CSTphF0zj8k9mR5bYp2yXNiJDMxEjAO3cvSfyYoLWfCS17uG5TxnjJu
+	9eYt+HQgm0Zb3hcnAY+yvOQtgjvwB2xjFTf3EoE8OzNXA2V2B68V8bSJnCeBdQ6lgjnZ3r+cDcOZZ
+	s0ULvP0JCFsLzffHMHIRwYpjFyc1yFN/PvmhePFJ09mRCL+ncZp2x2DOVZsPcDuQMx0+M9lNoztEh
+	zhYS98+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdw33-00000000mh2-1qOB;
-	Thu, 08 Jan 2026 19:51:57 +0000
-Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830])
+	id 1vdweO-00000000pmx-22nq;
+	Thu, 08 Jan 2026 20:30:32 +0000
+Received: from mgamail.intel.com ([192.198.163.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdw30-00000000mgh-04jW
-	for linux-mediatek@lists.infradead.org;
-	Thu, 08 Jan 2026 19:51:55 +0000
-Received: by mail-qt1-x830.google.com with SMTP id d75a77b69052e-4ee1a3ef624so22346051cf.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 08 Jan 2026 11:51:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1767901912; x=1768506712; darn=lists.infradead.org;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=3t5MxAZO6uHQlXqGxbxcJlRM3XpAxH2j68+Yng+n1tE=;
-        b=p5EY42iT4jg37nhDQp1q4luavLGxee44B7nQvQqqj+5Fi044+OOS55l+m0yptkW/7u
-         gJJxrv1AWOchunn/OgPf4caHQ7mxHALRIgChDJSPMvJYltbPFnfvyD0G9O8V/nNsGLQg
-         Oz/gQiRuIGaEwi1T3L/+iu9iXkC0WmUo6I0rEaPaJM99F27dd9N7qjYNA4ixk9FDLFtu
-         6b+sd7nF+s2c7hudZ91h14Pf8dKUP3bFRU/90Eg7bM8Bt4iBOAHutxj8g07+5O7zi5zk
-         YotWkyUhfp01AwrcN2huEHN5j8doXBexSwkdqgZotz9tdh3MboKZlCKaMKjFQXE7N5+v
-         GwIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767901912; x=1768506712;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3t5MxAZO6uHQlXqGxbxcJlRM3XpAxH2j68+Yng+n1tE=;
-        b=ZC4HIi/7QhabmKEHogCFfp/7lT81xegQXa1oProEONyoqgE/ixLswJeBqydTs6MMAq
-         VOlxwzgzdtzZB/RAUZtrRr5eeKROMac2SBRdKzxeaFD6VYKMMU89oKoBGQeaBQUtRn1x
-         zlJDzh4b/URitpMsebVY9jz2xuEtJQnLgQ74uJmWrlRGeUA5SfLoK70XrlzczSzV5Lu2
-         CwVoyJSZtw4T5fVOhPGyhqwJ7RMvbSIyr2lUrdPKeRZ7RjoJhMoGGu7Qrg5sw1PtcbJU
-         /TOct3tECCaK54jpsyLYS9EBT/cNAVHUQzpmikuRXDl/FZwrkQmCuV8O3vGTt/hQTavl
-         m3Sw==
-X-Forwarded-Encrypted: i=1; AJvYcCVc4+BlfbKGgwb4nftXwsax4kv0X+1I/SKsWvDP3o98DRPrGiDphNGcVKcAjBZ1ECV69VDhpkogxaXpuWa7LQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YydOG30/IJ5ZedHqrr3mRM0+/0FXi8LkL4EUpt9ZDrH9VfJmeRQ
-	+Zn21iAt62AxKiYUKiAYbi5rS8zw6e6aRkXx7kG7cJqV2faozDt/Lx7yiYRcUIz2+Jw=
-X-Gm-Gg: AY/fxX5thS8OKVctH3HdazcRfxjDxlMHfr7GPbltCtRdUKnHa6CuYaoExA89ILbj4x1
-	4l9gNYk44/w1bOp//EoMTwDh9/VMubT58aIC0rgElc4UETB1VFoA+TkaFz0/7etQKJZWfDAQ96H
-	5wsT3iJKiByO4fwNKrFDrQ/9zUqN8uAZzL/UsRkUXrhirXvaJ3NH/gm/OWK4BiWDDUp+uyo/B3N
-	l6TffifUIadvbuWP7Fj6PGdOQGnpsScTD/fcrm/vTULo12HGZk2S8BSaB6DbgCzeTtbbnocH7o5
-	tzQPYOqiWUugQMNnuCjRgVbXV/5sQt5ym/b9yb3cr9hdOlSp9LKxNKUtoxVrURiiHSVe1UJ2fOI
-	vJYY9ZHZMJQ1dNnJuT07FHeIMHeLTcRzW9afi8PZiiAuyu2tL+4Na+CrR0XlwmCUl5f+JeVE+SF
-	tlVybaUhMk5J8FPrEWkIvRXgjKPheynKU=
-X-Google-Smtp-Source: AGHT+IF07vV+0WA/n4b9oP2PTX45WFaUh5y+p0py1YN4/ZlnP6MfTnWeIOiCqeBE4tQFLsfHKxwQ0g==
-X-Received: by 2002:a05:622a:11d3:b0:4f1:cd0c:80f6 with SMTP id d75a77b69052e-4ffb4a44431mr96306501cf.49.1767901911767;
-        Thu, 08 Jan 2026 11:51:51 -0800 (PST)
-Received: from [192.168.42.140] (mtl.collabora.ca. [66.171.169.34])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-890770e4262sm58884036d6.20.2026.01.08.11.51.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 08 Jan 2026 11:51:50 -0800 (PST)
-Message-ID: <aa5536613a517caf5e954e94435f1a2229bad877.camel@ndufresne.ca>
-Subject: Re: [RESEND][PATCH v1] media: mediatek: vcodec: Discard
- pm_runtime_put() return value
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: "Rafael J. Wysocki" <rafael@kernel.org>, Linux PM
- <linux-pm@vger.kernel.org>, 	linux-media@vger.kernel.org
-Cc: LKML <linux-kernel@vger.kernel.org>, Ulf Hansson
- <ulf.hansson@linaro.org>,  Brian Norris <briannorris@chromium.org>, Tiffany
- Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen	
- <andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org
-Date: Thu, 08 Jan 2026 14:51:47 -0500
-In-Reply-To: <3396476.aeNJFYEL58@rafael.j.wysocki>
-References: <3396476.aeNJFYEL58@rafael.j.wysocki>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-a3j3e/TWQhiEXlEjiWOs"
-User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
+	id 1vdweJ-00000000pln-2DMP;
+	Thu, 08 Jan 2026 20:30:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1767904228; x=1799440228;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=5FDjJzy6AOW1qFhOgfm62fFBhHaSU5fD45eqi9Wu6i4=;
+  b=VemOoXM0KfEdqOBPesDTwbpTbFFBbD9LxTOptATok/bgKHMdjz/O/XTc
+   8NKmK3tQzYZOVFe+2HNJbgyouso0KsTAYuo11f2wKLTTAKZbN80Y528QC
+   W++4RLN0+uwCEmdNZlQoVpQG9NPb0maJIK/0Wto/v6iomYp/xm3/fcBBP
+   5NNE1e7q48WY8MAB+cCyQaUYuRDOVpzeerQqDeSUIgYKy+qnIvIreIi+F
+   bzSu/QLYkZhQ0z9y+/b1AVHWAvigdCyCnofd+C0qkQsJlRNe1A32Aw4Uh
+   X3m1KibjgPm9N51+B9iX9FeAx3UfRyid19YNNmiUbxry+mkv230BlbXxC
+   Q==;
+X-CSE-ConnectionGUID: 87omg/jgSDyyd3DNuoVTzg==
+X-CSE-MsgGUID: qXmMy+0UT7a0IwgUmoV4og==
+X-IronPort-AV: E=McAfee;i="6800,10657,11665"; a="68485869"
+X-IronPort-AV: E=Sophos;i="6.21,211,1763452800"; 
+   d="scan'208";a="68485869"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Jan 2026 12:30:26 -0800
+X-CSE-ConnectionGUID: dV6UL5sSSy6kvW0TibQ/lg==
+X-CSE-MsgGUID: ssbC0vDPTbSXiI7fJK5T+Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,211,1763452800"; 
+   d="scan'208";a="226706600"
+Received: from black.igk.intel.com ([10.91.253.5])
+  by fmviesa002.fm.intel.com with ESMTP; 08 Jan 2026 12:30:16 -0800
+Received: by black.igk.intel.com (Postfix, from userid 1003)
+	id 8983166; Thu, 08 Jan 2026 21:30:15 +0100 (CET)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Mark Brown <broonie@kernel.org>,
+	Varshini Rajendran <varshini.rajendran@microchip.com>,
+	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sunny Luo <sunny.luo@amlogic.com>,
+	Janne Grunau <j@jannau.net>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
+	CL Wang <cl634@andestech.com>,
+	Manikandan Muralidharan <manikandan.m@microchip.com>,
+	David Lechner <dlechner@baylibre.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Jonas Gorski <jonas.gorski@gmail.com>,
+	Hang Zhou <929513338@qq.com>,
+	Jun Guo <jun.guo@cixtech.com>,
+	Philipp Stanner <phasta@kernel.org>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	=?UTF-8?q?Beno=C3=AEt=20Monin?= <benoit.monin@bootlin.com>,
+	Shiji Yang <yangshiji66@outlook.com>,
+	James Clark <james.clark@linaro.org>,
+	Jonathan Marek <jonathan@marek.ca>,
+	Carlos Song <carlos.song@nxp.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Xianwei Zhao <xianwei.zhao@amlogic.com>,
+	Prajna Rajendra Kumar <prajna.rajendrakumar@microchip.com>,
+	Sergio Perez Gonzalez <sperezglz@gmail.com>,
+	Miquel Raynal <miquel.raynal@bootlin.com>,
+	Qianfeng Rong <rongqianfeng@vivo.com>,
+	Haibo Chen <haibo.chen@nxp.com>,
+	Gabor Juhos <j4g8y7@gmail.com>,
+	Md Sadre Alam <quic_mdalam@quicinc.com>,
+	Rosen Penev <rosenp@gmail.com>,
+	Luis de Arquer <luis.dearquer@inertim.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Cosmin Tanislav <cosmin-gabriel.tanislav.xa@renesas.com>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Longbin Li <looong.bin@gmail.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	=?UTF-8?q?Cl=C3=A9ment=20Le=20Goffic?= <clement.legoffic@foss.st.com>,
+	Alessandro Grassi <alessandro.grassi@mailbox.org>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Darshan R <rathod.darshan.0896@gmail.com>,
+	Aaron Kling <webgeek1234@gmail.com>,
+	Vishwaroop A <va@nvidia.com>,
+	Haixu Cui <quic_haixcui@quicinc.com>,
+	Darshan Rathod <darshanrathod475@gmail.com>,
+	linux-spi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	asahi@lists.linux.dev,
+	linux-aspeed@lists.ozlabs.org,
+	openbmc@lists.ozlabs.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-sound@vger.kernel.org,
+	patches@opensource.cirrus.com,
+	imx@lists.linux.dev,
+	linux-arm-msm@vger.kernel.org,
+	linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	virtualization@lists.linux.dev
+Cc: Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ray Liu <ray.liu@airoha.com>,
+	Sven Peter <sven@kernel.org>,
+	Neal Gompa <neal@gompa.dev>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Ryan Wanner <ryan.wanner@microchip.com>,
+	Michael Hennerich <michael.hennerich@analog.com>,
+	=?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
+	Kamal Dasu <kamal.dasu@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	William Zhang <william.zhang@broadcom.com>,
+	Kursad Oney <kursad.oney@broadcom.com>,
+	Anand Gore <anand.gore@broadcom.com>,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
+	David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Jean-Marie Verdun <verdun@hpe.com>,
+	Nick Hawkins <nick.hawkins@hpe.com>,
+	Yang Shen <shenyang39@huawei.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Lixu Zhang <lixu.zhang@intel.com>,
+	Yinbo Zhu <zhuyinbo@loongson.cn>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>,
+	Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Han Xu <han.xu@nxp.com>,
+	Yogesh Gaur <yogeshgaur.83@gmail.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Daniel Mack <daniel@zonque.org>,
+	Haojian Zhuang <haojian.zhuang@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>,
+	Chris Packham <chris.packham@alliedtelesis.co.nz>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Paul Walmsley <pjw@kernel.org>,
+	Samuel Holland <samuel.holland@sifive.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Li-hao Kuo <lhjeff911@gmail.com>,
+	Masahisa Kojima <masahisa.kojima@linaro.org>,
+	Jassi Brar <jaswinder.singh@linaro.org>,
+	Laxman Dewangan <ldewangan@nvidia.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Sowjanya Komatineni <skomatineni@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
+	Michal Simek <michal.simek@amd.com>,
+	Max Filippov <jcmvbkbc@gmail.com>
+Subject: [PATCH v1 0/4] spi: Make SPI core to take care of fwnode assignment
+Date: Thu,  8 Jan 2026 21:23:37 +0100
+Message-ID: <20260108203004.3538449-1-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_115154_328294_A4C6C7A3 
-X-CRM114-Status: GOOD (  19.80  )
+X-CRM114-CacheID: sfid-20260108_123027_602726_5FE39E1B 
+X-CRM114-Status: GOOD (  14.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,101 +229,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+It seems all of the SPI drivers want to propagate fwnode (or of_node)
+of the physical device to the SPI device. Make sure we don't duplicate
+it over and over in each new driver (+2 in this cycle) by making core
+to take care of that. Note, similar is done already by IIO and
+I²C subsystems.
 
---=-a3j3e/TWQhiEXlEjiWOs
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+There is one noticeable and quite specific case that is taken care in
+the first patch and would be nice to have a confirmation from Cirrus
+that everything is okay. The rest is just a mechanical conversion.
 
-Le jeudi 08 janvier 2026 =C3=A0 16:23 +0100, Rafael J. Wysocki a =C3=A9crit=
-=C2=A0:
-> From: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
->=20
-> Printing error messages on pm_runtime_put() returning negative values
-> is not particularly useful.
->=20
-> Returning an error code from pm_runtime_put() merely means that it has
-> not queued up a work item to check whether or not the device can be
-> suspended and there are many perfectly valid situations in which that
-> can happen, like after writing "on" to the devices' runtime PM "control"
-> attribute in sysfs for one example.
->=20
-> Accordingly, update mtk_vcodec_enc_pw_off() and mtk_vcodec_dec_pw_off()
-> to simply discard the return value of pm_runtime_put().
->=20
-> This will facilitate a planned change of the pm_runtime_put() return
-> type to void in the future.
->=20
-> Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+Andy Shevchenko (4):
+  spi: Propagate default fwnode to the SPI controller device
+  spi: Drop duplicate of_node assignment
+  spi: Drop duplicate fwnode assignment
+  spi: Drop duplicate device_set_node() call
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+ drivers/spi/atmel-quadspi.c          | 1 -
+ drivers/spi/spi-airoha-snfi.c        | 1 -
+ drivers/spi/spi-altera-platform.c    | 2 --
+ drivers/spi/spi-amlogic-spifc-a1.c   | 1 -
+ drivers/spi/spi-amlogic-spisg.c      | 1 -
+ drivers/spi/spi-apple.c              | 1 -
+ drivers/spi/spi-ar934x.c             | 1 -
+ drivers/spi/spi-armada-3700.c        | 4 +---
+ drivers/spi/spi-aspeed-smc.c         | 1 -
+ drivers/spi/spi-atcspi200.c          | 1 -
+ drivers/spi/spi-ath79.c              | 1 -
+ drivers/spi/spi-atmel.c              | 1 -
+ drivers/spi/spi-axi-spi-engine.c     | 1 -
+ drivers/spi/spi-bcm-qspi.c           | 1 -
+ drivers/spi/spi-bcm2835.c            | 1 -
+ drivers/spi/spi-bcm2835aux.c         | 1 -
+ drivers/spi/spi-bcm63xx-hsspi.c      | 1 -
+ drivers/spi/spi-bcm63xx.c            | 1 -
+ drivers/spi/spi-bcmbca-hsspi.c       | 1 -
+ drivers/spi/spi-cadence-quadspi.c    | 1 -
+ drivers/spi/spi-cadence-xspi.c       | 1 -
+ drivers/spi/spi-cadence.c            | 1 -
+ drivers/spi/spi-cavium-octeon.c      | 1 -
+ drivers/spi/spi-cavium-thunderx.c    | 1 -
+ drivers/spi/spi-clps711x.c           | 1 -
+ drivers/spi/spi-cs42l43.c            | 8 ++++++++
+ drivers/spi/spi-davinci.c            | 1 -
+ drivers/spi/spi-dln2.c               | 2 --
+ drivers/spi/spi-dw-core.c            | 2 --
+ drivers/spi/spi-ep93xx.c             | 1 -
+ drivers/spi/spi-falcon.c             | 1 -
+ drivers/spi/spi-fsl-dspi.c           | 1 -
+ drivers/spi/spi-fsl-espi.c           | 1 -
+ drivers/spi/spi-fsl-lib.c            | 1 -
+ drivers/spi/spi-fsl-lpspi.c          | 1 -
+ drivers/spi/spi-geni-qcom.c          | 1 -
+ drivers/spi/spi-gpio.c               | 1 -
+ drivers/spi/spi-gxp.c                | 1 -
+ drivers/spi/spi-hisi-kunpeng.c       | 1 -
+ drivers/spi/spi-img-spfi.c           | 1 -
+ drivers/spi/spi-imx.c                | 1 -
+ drivers/spi/spi-ingenic.c            | 1 -
+ drivers/spi/spi-lantiq-ssc.c         | 1 -
+ drivers/spi/spi-ljca.c               | 1 -
+ drivers/spi/spi-loongson-core.c      | 1 -
+ drivers/spi/spi-lp8841-rtc.c         | 1 -
+ drivers/spi/spi-meson-spicc.c        | 1 -
+ drivers/spi/spi-meson-spifc.c        | 1 -
+ drivers/spi/spi-microchip-core-spi.c | 1 -
+ drivers/spi/spi-mpc512x-psc.c        | 2 --
+ drivers/spi/spi-mpc52xx-psc.c        | 2 --
+ drivers/spi/spi-mpc52xx.c            | 1 -
+ drivers/spi/spi-mpfs.c               | 1 -
+ drivers/spi/spi-mt65xx.c             | 1 -
+ drivers/spi/spi-mt7621.c             | 1 -
+ drivers/spi/spi-mtk-nor.c            | 1 -
+ drivers/spi/spi-mtk-snfi.c           | 1 -
+ drivers/spi/spi-mux.c                | 1 -
+ drivers/spi/spi-mxic.c               | 1 -
+ drivers/spi/spi-npcm-fiu.c           | 1 -
+ drivers/spi/spi-npcm-pspi.c          | 1 -
+ drivers/spi/spi-nxp-fspi.c           | 2 --
+ drivers/spi/spi-nxp-xspi.c           | 1 -
+ drivers/spi/spi-oc-tiny.c            | 1 -
+ drivers/spi/spi-orion.c              | 1 -
+ drivers/spi/spi-pl022.c              | 1 -
+ drivers/spi/spi-pxa2xx.c             | 2 --
+ drivers/spi/spi-qcom-qspi.c          | 1 -
+ drivers/spi/spi-qpic-snand.c         | 1 -
+ drivers/spi/spi-qup.c                | 1 -
+ drivers/spi/spi-rb4xx.c              | 1 -
+ drivers/spi/spi-realtek-rtl-snand.c  | 1 -
+ drivers/spi/spi-realtek-rtl.c        | 1 -
+ drivers/spi/spi-rockchip-sfc.c       | 1 -
+ drivers/spi/spi-rockchip.c           | 1 -
+ drivers/spi/spi-rspi.c               | 1 -
+ drivers/spi/spi-rzv2h-rspi.c         | 2 --
+ drivers/spi/spi-rzv2m-csi.c          | 2 --
+ drivers/spi/spi-s3c64xx.c            | 1 -
+ drivers/spi/spi-sc18is602.c          | 2 --
+ drivers/spi/spi-sg2044-nor.c         | 1 -
+ drivers/spi/spi-sh-hspi.c            | 1 -
+ drivers/spi/spi-sh-msiof.c           | 1 -
+ drivers/spi/spi-sifive.c             | 1 -
+ drivers/spi/spi-slave-mt27xx.c       | 1 -
+ drivers/spi/spi-sn-f-ospi.c          | 1 -
+ drivers/spi/spi-sprd-adi.c           | 1 -
+ drivers/spi/spi-sprd.c               | 1 -
+ drivers/spi/spi-stm32-ospi.c         | 1 -
+ drivers/spi/spi-stm32-qspi.c         | 1 -
+ drivers/spi/spi-stm32.c              | 1 -
+ drivers/spi/spi-sun4i.c              | 1 -
+ drivers/spi/spi-sun6i.c              | 1 -
+ drivers/spi/spi-sunplus-sp7021.c     | 1 -
+ drivers/spi/spi-synquacer.c          | 3 ---
+ drivers/spi/spi-tegra114.c           | 1 -
+ drivers/spi/spi-tegra20-sflash.c     | 1 -
+ drivers/spi/spi-tegra20-slink.c      | 1 -
+ drivers/spi/spi-tegra210-quad.c      | 1 -
+ drivers/spi/spi-ti-qspi.c            | 1 -
+ drivers/spi/spi-uniphier.c           | 1 -
+ drivers/spi/spi-virtio.c             | 2 --
+ drivers/spi/spi-wpcm-fiu.c           | 1 -
+ drivers/spi/spi-xcomm.c              | 1 -
+ drivers/spi/spi-xilinx.c             | 1 -
+ drivers/spi/spi-xlp.c                | 1 -
+ drivers/spi/spi-xtensa-xtfpga.c      | 1 -
+ drivers/spi/spi.c                    | 3 +++
+ 108 files changed, 12 insertions(+), 121 deletions(-)
 
-> ---
->=20
-> This is requisite for converting pm_runtime_put() into a void function.
->=20
-> If you decide to pick it up, please let me know.
->=20
-> Otherwise, an ACK or equivalent will be appreciated, but also the lack
-> of specific criticism will be eventually regarded as consent.
->=20
-> Originally posted here:
->=20
-> https://lore.kernel.org/linux-pm/3690736.iIbC2pHGDl@rafael.j.wysocki/
->=20
-> ---
-> =C2=A0drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c =
-|=C2=A0=C2=A0=C2=A0 6 +--
-> ---
-> =C2=A0drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c =
-|=C2=A0=C2=A0=C2=A0 6 +--
-> ---
-> =C2=A02 files changed, 2 insertions(+), 10 deletions(-)
->=20
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
-> @@ -67,11 +67,7 @@ static int mtk_vcodec_dec_pw_on(struct m
-> =C2=A0
-> =C2=A0static void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm)
-> =C2=A0{
-> -	int ret;
-> -
-> -	ret =3D pm_runtime_put(pm->dev);
-> -	if (ret && ret !=3D -EAGAIN)
-> -		dev_err(pm->dev, "pm_runtime_put fail %d", ret);
-> +	pm_runtime_put(pm->dev);
-> =C2=A0}
-> =C2=A0
-> =C2=A0static void mtk_vcodec_dec_clock_on(struct mtk_vcodec_pm *pm)
-> --- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c
-> +++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c
-> @@ -71,11 +71,7 @@ int mtk_vcodec_enc_pw_on(struct mtk_vcod
-> =C2=A0
-> =C2=A0void mtk_vcodec_enc_pw_off(struct mtk_vcodec_pm *pm)
-> =C2=A0{
-> -	int ret;
-> -
-> -	ret =3D pm_runtime_put(pm->dev);
-> -	if (ret && ret !=3D -EAGAIN)
-> -		dev_err(pm->dev, "pm_runtime_put fail %d", ret);
-> +	pm_runtime_put(pm->dev);
-> =C2=A0}
-> =C2=A0
-> =C2=A0void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
->=20
->=20
->=20
+-- 
+2.50.1
 
---=-a3j3e/TWQhiEXlEjiWOs
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaWAK0wAKCRDZQZRRKWBy
-9JWRAQCunAzY4/PdIocPz0mGcldjnSIJV/RkIqS9BMGGkQGOtwD+P2Z19p1bMZMu
-4dMSY/Q84vZtJ9361u3hPjMZ2jdANAo=
-=LCTp
------END PGP SIGNATURE-----
-
---=-a3j3e/TWQhiEXlEjiWOs--
 
