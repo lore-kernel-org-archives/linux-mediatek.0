@@ -4,63 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EBC1CF6AB6
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 09:37:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D878CF6ABB
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 09:51:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
-	:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1s+yIJksjav5zJSYtrSs+zDzZreI/mD0FfQTM5NpR9s=; b=JjH9Ovy8LRtFSG
-	gPuBsZkV8di7atTiotO7XTESQwMRuikYJxi+l1MpCnKmrmnWAPzIxtcJo5gCyuXyPsJ3aRCrGRrg/
-	V+FNlMUazIyKcaIZisJwhYgsWcbyv5l9v3fYI1VDF+HrJkHtBCB78OPADieneaLpE8QLUA1O3xLAf
-	p3TOORA+IvgxEd7wGMHMJPILk2aUS3XtQYCelMG/Blyhy0NKjTI5A3UIFZLv8xYWjBAEQT94N3ovh
-	n+YBrVZB3an2sQM3rgXup1eV74ciNElUKDXx/Dsu3SXVya62QWKcrDUB+GHi9HeIVbjpyhwG4Em7m
-	WNrSbbpDutxTI3YRQyCQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
+	Content-Transfer-Encoding:In-Reply-To:From:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qIhgIeQrfxHoSwY6/8Qg78ZyXWur/EQhKlbMMeWRoFE=; b=425FoCwNjDkxprwXyLxgSz/L8S
+	KoLIlW5M2g40k7tCIGUXi4FWeas+8LwXLB6WlvXOAX0pmCkF4NcieuTRCPT52JgjiIXzX4/tvUsrm
+	2UpuxYOsDutBzu7TlHuqrv34vZEwJJJpiaRcYyvQGGyUAv85f+pdRmrv2lQIE710HZORud4kjkcvi
+	lHIHFGlmEv3illr+ReBYzThbxLqk9awq8GEAjqj9GSxdqv60802ZCy7bQ+CD+wtFUWWJRIxwa5fDo
+	ZPY7a3X4nl7F56MJB/1shz9nDHH5calf9ctnX6CDZss1AM855A1ExDuz3Ec7dFk/zp+NnSrO7Vv9q
+	ORxjUM2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdmSb-0000000GUWa-32rW;
-	Thu, 08 Jan 2026 09:37:41 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vdmfx-0000000GWXh-39G3;
+	Thu, 08 Jan 2026 09:51:29 +0000
+Received: from mailout1.w1.samsung.com ([210.118.77.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdmSY-0000000GUVK-3DWL;
-	Thu, 08 Jan 2026 09:37:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1767865056;
-	bh=+QUCh+BiJaBruD2vdyKisViWbUs5fQdsky3TtckYH1s=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Fy6ON4kUwZ7sOCvN0m9+ZwtFwRLoUBghzLMyZb0KTCNefUJkRsK7HOn8Xf3WgbnAY
-	 C6FFfzKThnYDfrm4/5X8yMkPsqch0SBLOJFWEv02DmIfTFcAH5R5ay6keNlJtRjsM2
-	 q3Tb87mS6hBwW3rsM1IlSMDVJK8jRb0BQt6PgkScPQP7DUIPN5x2kSGstiJmWxz/bU
-	 zFXXp3CBjoAIeke4xIvKlGVAFsAImrQCygWhaOp2Q/fJkx78c5UnxErlkKgC/Itlu8
-	 NIo58fwbwhOxxjRh7jpPlt3PDVxK05cPDj4Z4eqwnT+8f2mACjYBSDlGvrLtpzc9s2
-	 kttCq8N/OwYfg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C4B4A17E11FB;
-	Thu,  8 Jan 2026 10:37:35 +0100 (CET)
-Message-ID: <e6c2c86d-71bd-453c-847c-1eff2be88be7@collabora.com>
-Date: Thu, 8 Jan 2026 10:37:35 +0100
+	id 1vdmfr-0000000GWVK-2zOe;
+	Thu, 08 Jan 2026 09:51:26 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260108095119euoutp012e7ad1462b8b6546e4cff164dba8ea55~IuKaJVawL1372713727euoutp01r;
+	Thu,  8 Jan 2026 09:51:19 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260108095119euoutp012e7ad1462b8b6546e4cff164dba8ea55~IuKaJVawL1372713727euoutp01r
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1767865879;
+	bh=qIhgIeQrfxHoSwY6/8Qg78ZyXWur/EQhKlbMMeWRoFE=;
+	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
+	b=UTRxRKAkfvHrYXb9uuCmebd05iS7yvKrvvnJwRrRGhnYTQOLlD9QO1+EdwnMJ+ehI
+	 u+g5bCtH0fF1cWkIawNRR2L1XBWHErXWwnjERy/ax6OfO/jSXefKZQPQG4zziy4O0D
+	 g+iU8AvXlmt/VOaAS6kHTAjcr9t0XASl+sQYc+ow=
+Received: from eusmtip2.samsung.com (unknown [203.254.199.222]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20260108095118eucas1p1a2ae95ae60fa870c35c955b087ba4649~IuKZz7bdM1725517255eucas1p1B;
+	Thu,  8 Jan 2026 09:51:18 +0000 (GMT)
+Received: from [106.210.134.192] (unknown [106.210.134.192]) by
+	eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+	20260108095116eusmtip22f2b99fa0f4ed0d118e1c4afbe18750f~IuKXrldR10240202402eusmtip2j;
+	Thu,  8 Jan 2026 09:51:16 +0000 (GMT)
+Message-ID: <af154ebb-53b9-40eb-8ff9-089ed8bc3f04@samsung.com>
+Date: Thu, 8 Jan 2026 10:51:15 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/9] Add GCE support for MT8196 (series 1/4)
-To: Jason-JH Lin <jason-jh.lin@mediatek.com>,
- Jassi Brar <jassisinghbrar@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>
-References: <20251031155838.1650833-1-jason-jh.lin@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+User-Agent: Betterbird (Windows)
+Subject: Re: [PATCH 5/6] drm/exynos: hdmi: convert to
+ of_drm_find_and_get_bridge()
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>, Andrzej Hajda
+	<andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart
+	<Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej
+	Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst
+	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>, Kevin Hilman <khilman@baylibre.com>, Jerome
+	Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
+	<martin.blumenstingl@googlemail.com>, Philipp Zabel
+	<p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
+	<s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Inki Dae <inki.dae@samsung.com>,
+	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park
+	<kyungmin.park@samsung.com>, Krzysztof Kozlowski <krzk@kernel.org>, Alim
+	Akhtar <alim.akhtar@samsung.com>, Laurent Pinchart
+	<laurent.pinchart+renesas@ideasonboard.com>, Tomi Valkeinen
+	<tomi.valkeinen+renesas@ideasonboard.com>, Kieran Bingham
+	<kieran.bingham+renesas@ideasonboard.com>, Geert Uytterhoeven
+	<geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>
+Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Thomas Petazzoni
+	<thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
+	linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org
 Content-Language: en-US
-In-Reply-To: <20251031155838.1650833-1-jason-jh.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+In-Reply-To: <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-5-ef48a517828e@bootlin.com>
 Content-Transfer-Encoding: 7bit
+X-CMS-MailID: 20260108095118eucas1p1a2ae95ae60fa870c35c955b087ba4649
+X-Msg-Generator: CA
+Content-Type: text/plain; charset="utf-8"
+X-RootMTR: 20260107164213eucas1p21ed81372d4acebdf02a825b66b0e75de
+X-EPHeader: CA
+X-CMS-RootMailID: 20260107164213eucas1p21ed81372d4acebdf02a825b66b0e75de
+References: <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-0-ef48a517828e@bootlin.com>
+	<CGME20260107164213eucas1p21ed81372d4acebdf02a825b66b0e75de@eucas1p2.samsung.com>
+	<20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-5-ef48a517828e@bootlin.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_013738_962292_39894A40 
-X-CRM114-Status: GOOD (  14.97  )
+X-CRM114-CacheID: sfid-20260108_015124_356032_5E52A67D 
+X-CRM114-Status: GOOD (  16.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,68 +106,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Nicolas Dufresne <nicolas@ndufresne.ca>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 31/10/25 16:56, Jason-JH Lin ha scritto:
-> From: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
-> 
-> This series adds initial support for the MediaTek MT8196 GCE in the CMDQ
-> driver, including related API changes for new hardware requirements.
-> 
-> Series application order:
->    1. [Fixes] Refine DMA address handling for the command buffer
->    - https://lore.kernel.org/all/20251022171847.379470-1-jason-jh.lin@mediatek.com/
->    2. [Series 1/4] Add GCE support for MT8196 and update CMDQ APIs (this series)
->    3. [Series 2/4] Migrate subsystems to new CMDQ APIs
->    4. [Series 3/4] Remove shift_pa from CMDQ jump functions
->    5. [Series 4/4] Remove deprecated CMDQ APIs
-> 
-> Please apply this series after the DMA address handling Fixes patch[1],
-> and before the following series.
-> 
-
-Jassi, since this is touching both mailbox and soc/mediatek, can we avoid to create
-immutable branches to pick this entire thing?
-
-If you wish, I'm fine with you picking the soc/mediatek commits as well as the
-mailbox ones, or I can pick the mailbox ones instead if you're okay with that.
-
-Whole series is, of course...
-
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-Cheers,
-Angelo
-
+On 07.01.2026 17:22, Luca Ceresoli wrote:
+> of_drm_find_bridge() is deprecated. Move to its replacement
+> of_drm_find_and_get_bridge() which gets a bridge reference, and ensure it
+> is put when done.
+>
+> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 > ---
-> 
-> Jason-JH Lin (9):
->    arm64: dts: mediatek: Add GCE header for MT8196
->    mailbox: mtk-cmdq: Add cmdq private data to cmdq_pkt for generating
->      instruction
->    mailbox: mtk-cmdq: Add GCE hardware virtualization configuration
->    mailbox: mtk-cmdq: Add mminfra_offset configuration for DRAM
->      transaction
->    mailbox: mtk-cmdq: Add driver data to support for MT8196
->    soc: mediatek: mtk-cmdq: Add cmdq_get_mbox_priv() in cmdq_pkt_create()
->    soc: mediatek: mtk-cmdq: Add pa_base parsing for hardware without
->      subsys ID support
->    soc: mediatek: mtk-cmdq: Extend cmdq_pkt_write API for SoCs without
->      subsys ID
->    soc: mediatek: mtk-cmdq: Add mminfra_offset adjustment for DRAM
->      addresses
-> 
->   arch/arm64/boot/dts/mediatek/mt8196-gce.h | 612 ++++++++++++++++++++++
->   drivers/mailbox/mtk-cmdq-mailbox.c        |  74 ++-
->   drivers/soc/mediatek/mtk-cmdq-helper.c    |  77 ++-
->   include/linux/mailbox/mtk-cmdq-mailbox.h  |  19 +
->   include/linux/soc/mediatek/mtk-cmdq.h     |  93 ++++
->   5 files changed, 869 insertions(+), 6 deletions(-)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8196-gce.h
-> 
+>   drivers/gpu/drm/exynos/exynos_hdmi.c | 4 +++-
 
+Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
 
+>   1 file changed, 3 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/gpu/drm/exynos/exynos_hdmi.c b/drivers/gpu/drm/exynos/exynos_hdmi.c
+> index 01813e11e6c6..bfcf2fa62fe1 100644
+> --- a/drivers/gpu/drm/exynos/exynos_hdmi.c
+> +++ b/drivers/gpu/drm/exynos/exynos_hdmi.c
+> @@ -1779,7 +1779,7 @@ static int hdmi_bridge_init(struct hdmi_context *hdata)
+>   		return -EINVAL;
+>   	}
+>   
+> -	hdata->bridge = of_drm_find_bridge(np);
+> +	hdata->bridge = of_drm_find_and_get_bridge(np);
+>   	of_node_put(np);
+>   
+>   	if (!hdata->bridge)
+> @@ -2096,6 +2096,8 @@ static void hdmi_remove(struct platform_device *pdev)
+>   
+>   	put_device(&hdata->ddc_adpt->dev);
+>   
+> +	drm_bridge_put(hdata->bridge);
+> +
+>   	mutex_destroy(&hdata->mutex);
+>   }
+>   
+>
+Best regards
+-- 
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
 
 
