@@ -4,89 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BB46CF6ABD
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 10:13:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2677ECF6ABF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 10:20:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:
-	To:Cc:Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
-	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oktYwHpBxwEHcRdG+441TRw1haM/iQZSRwVoxeIKxoE=; b=fQr/skjgz8wGY7BjCOmAZE4i/0
-	rNVSdwBwKkZQ0NlHRg3cNkppEOFK5w4slLCvRwvnhUQVvbbxWEB7YH2oL9+zwnOcJyzVwZy8XGT18
-	Xel5me3CeFDvHvpDXvWEKQqOH7CSx6y8tyjZXjB8j5J2nxBTdZqLUaoB8D18NnZ/0lgnwXy/6pQzc
-	XrvC/DKmuZFipS+zTdns0LH/5blFfXEj9frFoo0boGMYhZ1OOC51ZkV93cPqv2h5Wqo8uUCa9dmWu
-	YZm4jKCrRHh56MpfpSNzH59JK5UplzAazYvllwhtA7OmswbIclLfe85kF6GkAMbPneZPMqSb7KM5m
-	9sUOdYOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tfHVaMF03WdXmRygcwShJaZrlUkozLVUdfsaoXggej0=; b=sHY5mej7RZse61h/oL++Xtlhk6
+	kGrZmQH8IVZIpbiI+mwSN+fx0JxAnW71BDcr7+0O1r0DPVt+eZYyHn3UH3nmeAN+eyx3ypSrJE/F3
+	8DdNqDL6lEsHbExN5FTHCY825zFzpZVoVrrkRmvjKGEkOSBkaTQgGAsvw0P9IK1HMFzEOCd58nD9J
+	UPGLftF/7UW8Uqr4ffkEXG/zGXzhDJks9LF9DG4WCVjD1zQeump02lZkrQiwwMNhS8PX80u8382JO
+	g+2bjL/cLnIBlJu0d55wodBr/N9MSph9RaMeCaoz6VdmwWZVDcTuyqECwPfhJjl77Eml5pme+oqal
+	/pVI/evg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdn1h-0000000Ga9d-1N41;
-	Thu, 08 Jan 2026 10:13:57 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1vdn7r-0000000GbeN-0TYD;
+	Thu, 08 Jan 2026 10:20:19 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdn1d-0000000Ga7i-0ipl;
-	Thu, 08 Jan 2026 10:13:55 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 8C9C3C1ECB2;
-	Thu,  8 Jan 2026 10:13:21 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 67284606B6;
-	Thu,  8 Jan 2026 10:13:47 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 67281103C880E;
-	Thu,  8 Jan 2026 11:13:34 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1767867225; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=oktYwHpBxwEHcRdG+441TRw1haM/iQZSRwVoxeIKxoE=;
-	b=ZZyzgQ6MhWJyRaP/AtUlqfOLAs4SdmGpIbrTgke2e9hMzTVnklegqCUfH8QRCn5O6RABoj
-	16WnFZasjj07Z4qzlbvRLkvzc2VVEUrg/PHo/0hVGUvCveJoVMaKNXpF33qlmGO3FehhOf
-	k7pfb4T0ys97YT7G8i9diw0OFkt8LkWxEl7ROtseRInXV4+MdbzVUcQO+WCebz50Eut4hk
-	N211JQ6oSlZbRFWPNyySKeXJAaetMVLV8ifWRu/QK0qxRKoWEHucX05hpurrxyD91ZMn27
-	K3uokXirBg+StnQE60kwcRSzgmtPXJN8KxmDnZ6moWwxpHk0yjZsOiEyjdf8kA==
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Thu, 08 Jan 2026 11:13:33 +0100
-Message-Id: <DFJ4MHZJ1DTL.10AMTN5NW6VGS@bootlin.com>
-Subject: Re: [PATCH 5/6] drm/exynos: hdmi: convert to
- of_drm_find_and_get_bridge()
-Cc: "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
- <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
- Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
- <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Thomas Zimmermann"
- <tzimmermann@suse.de>, "David Airlie" <airlied@gmail.com>, "Simona Vetter"
- <simona@ffwll.ch>, "Kevin Hilman" <khilman@baylibre.com>, "Jerome Brunet"
- <jbrunet@baylibre.com>, "Martin Blumenstingl"
- <martin.blumenstingl@googlemail.com>, "Philipp Zabel"
- <p.zabel@pengutronix.de>, "Shawn Guo" <shawnguo@kernel.org>, "Sascha Hauer"
- <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
- <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>, "Chun-Kuang
- Hu" <chunkuang.hu@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- "Inki Dae" <inki.dae@samsung.com>, "Seung-Woo Kim"
- <sw0312.kim@samsung.com>, "Kyungmin Park" <kyungmin.park@samsung.com>,
- "Krzysztof Kozlowski" <krzk@kernel.org>, "Alim Akhtar"
- <alim.akhtar@samsung.com>, "Laurent Pinchart"
- <laurent.pinchart+renesas@ideasonboard.com>, "Tomi Valkeinen"
- <tomi.valkeinen+renesas@ideasonboard.com>, "Kieran Bingham"
- <kieran.bingham+renesas@ideasonboard.com>, "Geert Uytterhoeven"
- <geert+renesas@glider.be>, "Magnus Damm" <magnus.damm@gmail.com>, "Hui Pu"
- <Hui.Pu@gehealthcare.com>, "Thomas Petazzoni"
- <thomas.petazzoni@bootlin.com>, <dri-devel@lists.freedesktop.org>,
- <linux-kernel@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <imx@lists.linux.dev>,
- <linux-mediatek@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
- <linux-renesas-soc@vger.kernel.org>
-To: "Maxime Ripard" <mripard@kernel.org>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-X-Mailer: aerc 0.20.1
-References: <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-0-ef48a517828e@bootlin.com> <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-5-ef48a517828e@bootlin.com> <20260108-acoustic-groovy-shark-1c6850@houat>
-In-Reply-To: <20260108-acoustic-groovy-shark-1c6850@houat>
-X-Last-TLS-Session-Version: TLSv1.3
+	id 1vdn7o-0000000GbcU-0JnS;
+	Thu, 08 Jan 2026 10:20:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1767867612;
+	bh=YyeBDlNSLY4ru+W23YyttLQ3wHEda1dN+Y7WEoCQAts=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ZOOZJESj4giVfU+dJYjFnTOe3lg+laQO/reAJsmJjsh6SiISklOJahmN+7Wa9b3a8
+	 4j3LOIXvAw17G9kCb6Rwqbm4wP6Yo88RSdIXBMhcZQ8lduNCWWmH2nXLDEDLGMmRNh
+	 LeHJ9MDtsai+wmu0zkcBJnaXfxWs4T4pTAdUqZ2UmkYLXhYY+0OqOHD8JCpOfXucsr
+	 r4BRT3rjov2hfxc/j7H2lEbB7W7RbxqFdZutVvYEF1E+CrSFh5WvOSSUe7CzEZab2N
+	 1S3PDe2tPfWt4SdySOwQet1aOCGiUs1c9xRk5zmgSmLtW5oGMrNshY1fYCQra4lhbe
+	 /UlAyNpwKBYmg==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4BCA817E1330;
+	Thu,  8 Jan 2026 11:20:12 +0100 (CET)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	bisson.gary@gmail.com,
+	kernel@collabora.com
+Subject: [PATCH] drm/mediatek: mtk_dsi: Add support for High Speed (HS) mode
+Date: Thu,  8 Jan 2026 11:19:59 +0100
+Message-ID: <20260108101959.14872-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.52.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_021353_483983_F4280DC5 
-X-CRM114-Status: GOOD (  15.49  )
+X-CRM114-CacheID: sfid-20260108_022016_287341_5652C114 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,63 +79,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
+Up until now, the MediaTek DSI Controller has always been working
+in Low Power Mode (LPM), as this driver has always ignored the
+MIPI_DSI_MSG_USE_LPM flag hence never setting HS mode.
 
-On Thu Jan 8, 2026 at 9:14 AM CET, Maxime Ripard wrote:
-> On Wed, Jan 07, 2026 at 05:22:03PM +0100, Luca Ceresoli wrote:
->> of_drm_find_bridge() is deprecated. Move to its replacement
->> of_drm_find_and_get_bridge() which gets a bridge reference, and ensure i=
-t
->> is put when done.
->>
->> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
->
-> Why can't we use next_bridge for this one?
+In the current state of the driver the only thing that is needed
+to add support for DSI High Speed (HS) transmit is to simply set
+the "HSTX" config bit in the configuration register.
 
-Because this device is not a bridge, so we have no struct drm_bridge.
+Check if flag MIPI_DSI_MSG_USE_LPM is set and, if not, set HSTX.
 
->> ---
->>  drivers/gpu/drm/exynos/exynos_hdmi.c | 4 +++-
->>  1 file changed, 3 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/gpu/drm/exynos/exynos_hdmi.c b/drivers/gpu/drm/exyn=
-os/exynos_hdmi.c
->> index 01813e11e6c6..bfcf2fa62fe1 100644
->> --- a/drivers/gpu/drm/exynos/exynos_hdmi.c
->> +++ b/drivers/gpu/drm/exynos/exynos_hdmi.c
->> @@ -1779,7 +1779,7 @@ static int hdmi_bridge_init(struct hdmi_context *h=
-data)
->>  		return -EINVAL;
->>  	}
->>
->> -	hdata->bridge =3D of_drm_find_bridge(np);
->> +	hdata->bridge =3D of_drm_find_and_get_bridge(np);
->>  	of_node_put(np);
->>
->>  	if (!hdata->bridge)
->> @@ -2096,6 +2096,8 @@ static void hdmi_remove(struct platform_device *pd=
-ev)
->>
->>  	put_device(&hdata->ddc_adpt->dev);
->>
->> +	drm_bridge_put(hdata->bridge);
->> +
->>  	mutex_destroy(&hdata->mutex);
->>  }
->
-> Same story than in your part 2 series, it should be dropped in destroy.
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-hdata->bridge is only used for drm_bridge_attach(), it won't be referenced
-after that. So this is safe, unless I'm missing something.
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index e4953d5cb6a8..a90cae9512c5 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -155,6 +155,7 @@
+ #define SHORT_PACKET			0
+ #define LONG_PACKET			2
+ #define BTA				BIT(2)
++#define HSTX				BIT(3)
+ #define DATA_ID				GENMASK(15, 8)
+ #define DATA_0				GENMASK(23, 16)
+ #define DATA_1				GENMASK(31, 24)
+@@ -1177,6 +1178,9 @@ static void mtk_dsi_cmdq(struct mtk_dsi *dsi, const struct mipi_dsi_msg *msg)
+ 	else
+ 		config = (msg->tx_len > 2) ? LONG_PACKET : SHORT_PACKET;
+ 
++	if (!(msg->flags & MIPI_DSI_MSG_USE_LPM))
++		config |= HSTX;
++
+ 	if (msg->tx_len > 2) {
+ 		cmdq_size = 1 + (msg->tx_len + 3) / 4;
+ 		cmdq_off = 4;
+-- 
+2.52.0
 
-Also as we don't have a struct drm_bridge (as mentioned above) we have no
-bridge destroy. We have the encoder destroy, but that will never be called
-on bridge hotplug.
-
-Luca
-
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
 
