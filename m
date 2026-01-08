@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F9F1CF6A88
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 09:17:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 198F2CF6A8B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 09:22:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=y4TCcFkYFmaIFivChqdLskflRGtlFlV9wAwx0evbQiU=; b=NnlXfT4zz3GkftzUqDaaf5Yq1r
-	6VNH4Z/Yk2k/v1Jt8Gwp3S5fk3o1BQJtlxyaM/b1/MibZkOT/E+mSZsRY4OMS34ZRe5kFVTnGBTc3
-	3QM6ratXy87Bju3DjnneORbs4PHhK0KgklKPGxP8dnv5L+BFOxOfklS+2lqn6DUOR2CYDWwdIVri5
-	Jg2wkPPACI/Rkgp4q1TFsRq+BjCVJYfDnwVnRVJWLaXUmOCLmlyaAb1tbdm5jH09k+OpQK+JLNDM8
-	eZ2ysp0Tt/uGfykmVlBj049R9qiLDccmIvUnk/aJt9e3LAkRpBo9D6QXu3oo8bz44O9ipB4/PhvA4
-	6bNKOuuw==;
+	bh=TJJ+nrL2N1NJpqKAWTqW94xxzyWqJzLyWrFoyxVz8eo=; b=MUgamiUGUYHZfJznY9CbY+lfFb
+	blilyp09M3iGUtnloPYR3rEJXXZZ1GArHuLoi+nLciScWUPn7gf2uNYKEHFeBj0n62a7kD80gEXqV
+	AetkrI1UORhZfLfT3rcBvlnXxPUVDwQE0Ponc5+fYLhWKS/AI9jR5ncLWYzGH9XFQ0lK8ZERf8k7X
+	lYU0nEke0c4S+DQLgMzD2xcb9KMk9sFQrGgzbBsKjbiAT8zUTMaMngHmWw80tCevdE4+7dhiwr2jx
+	GB0V6dbNtyKfCTSCG2ighP4Mn3nvDvZhjcHBjY2jWHD7s1Qzn/87eNe9w/zJEycC/5MF/jz1PZFe9
+	kIhFvvPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdm8h-0000000GPic-2V6G;
-	Thu, 08 Jan 2026 09:17:07 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vdmDV-0000000GQnS-10k1;
+	Thu, 08 Jan 2026 09:22:05 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdm8d-0000000GPhC-10ms;
-	Thu, 08 Jan 2026 09:17:04 +0000
+	id 1vdmDS-0000000GQlr-0blY;
+	Thu, 08 Jan 2026 09:22:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1767863819;
-	bh=pf1GMbVTykZwhfXBrZExf4VWzpjh5hKk5lemY56B1oc=;
+	s=mail; t=1767864118;
+	bh=HJudoobn0KgMRtwSmg9vjOUMp+h8/0xAejDGR9eBhXg=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=IwgIcuBDhAznIucBWIlQUrV/YF0Ifsmu9P1uNUD44NDsCwNXwEhlHZfoVasE/CZBH
-	 xMyK9pkZ6KbLswJSW1F7cZUDOfkpxb3rIsavS2QiMPyKJcHkSqapge/jL8DTV/0GF5
-	 B6Ihn373AWfeq+jJmQMNVaNnv03pNt9Dp5hOVKwEfwXt7X3QhfG3uj5N4LyS33OoRR
-	 fC+gT9ujB5Urv7/m1qPZFXiVuhlafXMK4pY3bSXQdIXUglUqW0KkpFDJcJ9uW0+pzk
-	 EGRdY3qjjxqPpdKE9qSOFiHsnffdGbZkM9BuEijHKkfsoVckJDkFS2oRUpt+jGhS79
-	 5AiJcxoUNyQbg==
+	b=gEXcOA7ehA+8VeAHXaIEK8wYSwb8zYkdfoPaXkUN3VCNKy8uF4aI4NeYbH+jMPCZm
+	 N2uvIzJ6xH2gexU1FRZbD/DAt3zrqyixkluhyU4NKgnbtwG98pedCBJC0P3cKhe1gt
+	 rIymzYG9iKl/PqlXMbYxroOprLCDK2tSlTG2ajh/OACthtM1gyd0F1hOFCk5xfy0Ey
+	 nwyNDefPPEDdtrLj7KQdqMwrQC5IbKFZOz4hJrtyT+HCsD/GhFAfXIfR3lcQyPc9aP
+	 c6dDkShEgpxcfmYkGkADorGMt6t3QRQXFUnD0+5MnrtTUANzrg/slZezzrmwqW7Rcf
+	 9AKC8ADYySc7g==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5B08717E11FB;
-	Thu,  8 Jan 2026 10:16:59 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 65AEB17E0181;
+	Thu,  8 Jan 2026 10:21:58 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: matthias.bgg@gmail.com, Zilin Guan <zilin@seu.edu.cn>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Jianhao Xu <jianhao.xu@seu.edu.cn>
-In-Reply-To: <20251228162636.3829733-1-zilin@seu.edu.cn>
-References: <20251228162636.3829733-1-zilin@seu.edu.cn>
-Subject: Re: [PATCH v2] soc: mediatek: svs: Fix memory leak in
- svs_enable_debug_write()
-Message-Id: <176786381930.9526.15054540392000699829.b4-ty@collabora.com>
-Date: Thu, 08 Jan 2026 10:16:59 +0100
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20251209-mtk-socinfo-mt8371-v1-1-155a9df851d0@collabora.com>
+References: <20251209-mtk-socinfo-mt8371-v1-1-155a9df851d0@collabora.com>
+Subject: Re: [PATCH] soc: mediatek: mtk-socinfo: Add entry for MT8371AV/AZA
+ Genio 520
+Message-Id: <176786411835.10140.18238979278102973038.b4-ty@collabora.com>
+Date: Thu, 08 Jan 2026 10:21:58 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_011703_438854_21E036AD 
-X-CRM114-Status: UNSURE (   6.26  )
+X-CRM114-CacheID: sfid-20260108_012202_332143_C775C860 
+X-CRM114-Status: UNSURE (   5.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,20 +76,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 28 Dec 2025 16:26:36 +0000, Zilin Guan wrote:
-> In svs_enable_debug_write(), the buf allocated by memdup_user_nul()
-> is leaked if kstrtoint() fails.
-> 
-> Fix this by using __free(kfree) to automatically free buf, eliminating
-> the need for explicit kfree() calls and preventing leaks.
+On Tue, 09 Dec 2025 10:33:20 +0100, Louis-Alexis Eyraud wrote:
+> Add an entry for the MT8371 SoC with commercial name Genio 520.
 > 
 > 
-> [...]
 
 Applied to v6.19-next/soc, thanks!
 
-[1/1] soc: mediatek: svs: Fix memory leak in svs_enable_debug_write()
-      commit: ebede2ddeb047bdf7ee660a18403592c45d020d9
+[1/1] soc: mediatek: mtk-socinfo: Add entry for MT8371AV/AZA Genio 520
+      commit: db6dcaeeb60f97ce9765d50035be23c0901d7348
 
 Cheers,
 Angelo
