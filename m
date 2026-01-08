@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8F8FD1D46B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 15:05:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC81DD1D47A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 15:23:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tv/GGtQvePSfy8JImBO2Bqakc/7C0eBov0BukOlj/70=; b=1QaVomGj4lF1BSdrdrcaW3yUOf
-	hMWJkIXxW6P7DPQbN05UJJlj70CXEfm3upqd3E/v7FnQRSzUhIEzxpbprlKb78xb+s5v6VgaO73qp
-	qN+rVsrVbEBPITfyNc/etQo5dQmQECskPnRqXnhwwPl2pI+ewCBfDcMQ8T3kKj6zJ4Nch5HFxAvbE
-	GMHu/lr0mPjqYe9Uk6RLuzX1ShLkd8I7NJh9mLoOK4XmKZjodjyvoyWKA7Ec2tMMkYCD+1kszbLZY
-	h2dSEsoii7P8yn42Tr7DdVyqeEwbx7sta7qZYO3UzWZkw0vrKL6rniKWUn04asH2eCFFPoB3HQArX
-	hiFtUHBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=bZzS0zHELVYtXurlWpt7FUgJqesUQqjQtQOkePfmBf0=; b=aE8KD9FOWPuE9gQ3mTitgODds3
+	2eS3mt/qkc1QYabI4CfMXjS2AI8vGHdTJwKHHGqLRdmall10/RdYcajFS0mlIcn4EZ4JM1WqQko9f
+	FiJgtduewdwNSSmFYudeYbsVM0beDIcrh/+LfMD9q/wICfIlkXIcasubults3mOaZKtLkgbFjEvDU
+	OvNsMUDcw6qXn4TfBbKJQeycwbDLX7F5RKs0wti3ActRkkEI6f74EQ9x5H0ywb7JXWLtaTJk/dDCn
+	YrcM2Sb3bQK9ZYQKHxJr3hJXWpbx+6xzwQd1YRt2/lgaSIN4raTx9BTLFOBF91ZN39rTsI4yBWMoQ
+	2q0GuSbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdra6-0000000HSAi-1003;
-	Thu, 08 Jan 2026 15:05:46 +0000
+	id 1vdrrF-0000000HVfx-49ws;
+	Thu, 08 Jan 2026 15:23:29 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdra2-0000000HS5u-11Fd;
-	Thu, 08 Jan 2026 15:05:43 +0000
+	id 1vdrrD-0000000HVfJ-2syx
+	for linux-mediatek@lists.infradead.org;
+	Thu, 08 Jan 2026 15:23:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4002044365;
-	Thu,  8 Jan 2026 15:05:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A3FBC16AAE;
-	Thu,  8 Jan 2026 15:05:40 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 185E142B88;
+	Thu,  8 Jan 2026 15:23:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CC136C116C6;
+	Thu,  8 Jan 2026 15:23:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767884741;
-	bh=JhbaVv1PdLdceMg/5l3s3xkAwxQ3DqsArTD5uFDz5Zw=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=gDEZETrQ+Z9UPMytldJRovzTnLSjacFXt+Q+B+cfeE+T5YAwNxLbuBmm5nknDN4MH
-	 Rw3oTLL05HaAM2aBlgpZoz9qcS9HLs0A75NgCBSx+0qUpvbJUwQTIbpBXSSBDPsEMU
-	 tQ0eB3FB1ZVHuO3qjursuCtgYn3GGM3rcmd+JmG9xlEeElXrxRSUiiRM53XeTHhULz
-	 cEMd00ikEDxwN0+znh3T3oFeK3heIx+wK8kHlGP0goiSbzSC7Fi0VVz0WpTZCEWWng
-	 didFwhkUaSJ/RiyaKH3KXjQ9FktKJmNlSDStvejhEelIwyOblIeGa1YnR8Sh28AmlL
-	 K36vWk2VSQkBg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 08 Jan 2026 16:05:08 +0100
-Subject: [PATCH net-next v3 2/2] net: airoha: npu: Init BA memory region if
- provided via DTS
+	s=k20201202; t=1767885807;
+	bh=lKUjOpQjsrio8LVg2MdCngrlvUGtYnTK5X3c+0ZSIYo=;
+	h=From:To:Cc:Subject:Date:From;
+	b=n3Qrp9HlW1xrqaqUaRwRMbdaq/9N4aGFW+NM127LkZkMDfTYE4inb+azVV5tht7i8
+	 QsiGoMvagiPVlUKtIhp50p11MBGyT/TtnjAgAoEnjQtMXrl/15OJku0y6IHN/07uNJ
+	 QGsr1YwJnD1wFYjKKISVfoNwpJQvNUi7pJ5CziFdSl83plkXG2W5KnmhDhXHQMmOLc
+	 UcnVy8PVrDXgtNGiPfhCjTe9oQ3Z3oXNuxxV7Dg3XKXi9q1DhINovMiOPShOc9dx3E
+	 HQFrEh6/fCgDhY+qmXcUfod23YvO7XjP3Y50sqsx4wzPxHcI0DQtYmbiAP6/GuOtiV
+	 FGWJ+3+xMegew==
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+To: Linux PM <linux-pm@vger.kernel.org>, linux-media@vger.kernel.org
+Cc: LKML <linux-kernel@vger.kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Brian Norris <briannorris@chromium.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-mediatek@lists.infradead.org
+Subject: [RESEND][PATCH v1] media: mediatek: vcodec: Discard pm_runtime_put() return
+ value
+Date: Thu, 08 Jan 2026 16:23:21 +0100
+Message-ID: <3396476.aeNJFYEL58@rafael.j.wysocki>
+Organization: Linux Kernel Development
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260108-airoha-ba-memory-region-v3-2-bf1814e5dcc4@kernel.org>
-References: <20260108-airoha-ba-memory-region-v3-0-bf1814e5dcc4@kernel.org>
-In-Reply-To: <20260108-airoha-ba-memory-region-v3-0-bf1814e5dcc4@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_070542_307672_9955F43A 
-X-CRM114-Status: UNSURE (   9.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260108_072327_797678_A892A3B8 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,35 +78,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Initialize NPU Block Ack memory region if reserved via DTS.
-Block Ack memory region is used by NPU MT7996 (Eagle) offloading.
+From: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Printing error messages on pm_runtime_put() returning negative values
+is not particularly useful.
+
+Returning an error code from pm_runtime_put() merely means that it has
+not queued up a work item to check whether or not the device can be
+suspended and there are many perfectly valid situations in which that
+can happen, like after writing "on" to the devices' runtime PM "control"
+attribute in sysfs for one example.
+
+Accordingly, update mtk_vcodec_enc_pw_off() and mtk_vcodec_dec_pw_off()
+to simply discard the return value of pm_runtime_put().
+
+This will facilitate a planned change of the pm_runtime_put() return
+type to void in the future.
+
+Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
 ---
- drivers/net/ethernet/airoha/airoha_npu.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
-index 22f72c146065998d5450477f664ed308b1569aa3..a56b3780bb627cc393b94210b6b5c72cc95baea3 100644
---- a/drivers/net/ethernet/airoha/airoha_npu.c
-+++ b/drivers/net/ethernet/airoha/airoha_npu.c
-@@ -519,6 +519,14 @@ static int airoha_npu_wlan_init_memory(struct airoha_npu *npu)
- 	if (err)
- 		return err;
+This is requisite for converting pm_runtime_put() into a void function.
+
+If you decide to pick it up, please let me know.
+
+Otherwise, an ACK or equivalent will be appreciated, but also the lack
+of specific criticism will be eventually regarded as consent.
+
+Originally posted here:
+
+https://lore.kernel.org/linux-pm/3690736.iIbC2pHGDl@rafael.j.wysocki/
+
+---
+ drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c |    6 +-----
+ drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c |    6 +-----
+ 2 files changed, 2 insertions(+), 10 deletions(-)
+
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_pm.c
+@@ -67,11 +67,7 @@ static int mtk_vcodec_dec_pw_on(struct m
  
-+	if (of_property_match_string(npu->dev->of_node, "memory-region-names",
-+				     "ba") >= 0) {
-+		cmd = WLAN_FUNC_SET_WAIT_DRAM_BA_NODE_ADDR;
-+		err = airoha_npu_wlan_set_reserved_memory(npu, 0, "ba", cmd);
-+		if (err)
-+			return err;
-+	}
-+
- 	cmd = WLAN_FUNC_SET_WAIT_IS_FORCE_TO_CPU;
- 	return airoha_npu_wlan_msg_send(npu, 0, cmd, &val, sizeof(val),
- 					GFP_KERNEL);
+ static void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm)
+ {
+-	int ret;
+-
+-	ret = pm_runtime_put(pm->dev);
+-	if (ret && ret != -EAGAIN)
+-		dev_err(pm->dev, "pm_runtime_put fail %d", ret);
++	pm_runtime_put(pm->dev);
+ }
+ 
+ static void mtk_vcodec_dec_clock_on(struct mtk_vcodec_pm *pm)
+--- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_pm.c
+@@ -71,11 +71,7 @@ int mtk_vcodec_enc_pw_on(struct mtk_vcod
+ 
+ void mtk_vcodec_enc_pw_off(struct mtk_vcodec_pm *pm)
+ {
+-	int ret;
+-
+-	ret = pm_runtime_put(pm->dev);
+-	if (ret && ret != -EAGAIN)
+-		dev_err(pm->dev, "pm_runtime_put fail %d", ret);
++	pm_runtime_put(pm->dev);
+ }
+ 
+ void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
 
--- 
-2.52.0
+
 
 
