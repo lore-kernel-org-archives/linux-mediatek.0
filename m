@@ -4,56 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3AC5D1D46B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 15:05:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 405E7D1D46D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 15:05:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6TFrsxq28g+eIUA/OdkuizYSekiTlcedOcYb5i+65JA=; b=fgXPqdZnGCsbGD
-	z23vEOtc8IngmvlAsZCixIQw088xKWW0uoCyAlWl+TSm1Y8qe5ddSuqeUFveXPMnZ4/p4olZrGi/W
-	bG6H+jODgE+dpGdj/BBaha4kcgmaDNRp7nQJuk5ZeaVJlUhHlsx7l1hDITuaYsFEYMFxB50lhzuET
-	NKUA2/W29o6rnhfvxH7Xh2N+K8e2IlMBWDwT1VmYuwh3IKX86+TfHv4AAGju0EecAYmAUa/SMq3FW
-	P3lxGZiOcfpgOqXYxcsaXryX3HWYI5CFL3WcnMo9aExJy+rgp3+oCU4VsE6/SxrtHOtrfR8qyhXiI
-	zyC/2MSlEI8PnuR5KrDQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9EwXZJMksVIzhINWOp3QfJncpePrsSVbE9EKBoAo2B8=; b=rMP7gd7QtG+XilvOXzSwpli3fj
+	msR6LDxPjIvrxGNr2EROoOlEX6/uGLBoTS+AgKSPqWCVM0x8q3szLLGg8oz/4e1R3ns/HFo9Gy1xU
+	txPfhKRzQ6QwcmhFz7yoTvXXaPaB+CTUZmWYru6LUje5nv3uIL/aw2sD1yZKxkLqjzeqLFIdT9nhK
+	RIYDQlQ3h2h6+CLPUb2GkuxZe6Bp+7hJJZaWJLyxN2VdtykYNW8VlodojpF6XbehueYsvxZ3w2gd1
+	8pp5oq2NVefAuAQ0Qhm6xyIqeXQFNY09ZKjRjgrA2psw65j9SYCBf5Ma8U4oRYaOQzfBSRN43lDbZ
+	AXr9acOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdrZz-0000000HS45-0CRk;
-	Thu, 08 Jan 2026 15:05:39 +0000
+	id 1vdra0-0000000HS5R-2fJE;
+	Thu, 08 Jan 2026 15:05:40 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdrZx-0000000HS2O-0JRy;
-	Thu, 08 Jan 2026 15:05:37 +0000
+	id 1vdrZz-0000000HS42-14rX;
+	Thu, 08 Jan 2026 15:05:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2A7BC60130;
-	Thu,  8 Jan 2026 15:05:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 826B3C116D0;
-	Thu,  8 Jan 2026 15:05:35 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id AD18F60130;
+	Thu,  8 Jan 2026 15:05:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 107E7C116C6;
+	Thu,  8 Jan 2026 15:05:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767884735;
-	bh=OhlOQ7KmGY1tCliVjuLQ3JOxdM6RT+MpKjYTQNq49QU=;
-	h=From:Subject:Date:To:Cc:From;
-	b=aU0hxsE9w6KFlaqb5qfNSIS0DUG+I8lveyFHswoGwf3mTYDYF4JGhjA8Xo4I0ekOE
-	 8kTopEsog54rnEv1qIrHiBt0vuUvHR2dG+8Gk83Bh18EKcUMykBLaQz1osIyfDLngi
-	 p38i/YgRtfg+jLmOf7ND6ngyruPdVyx5pD2/wcek2KRZpVZGsd5DG4V740o32nXJAN
-	 HdInwQJlDhBAkx8NfvXocMYrbSPowlJMVmG5WWIWYyuJ2xvawU4W5EOYSj4SdBEvm2
-	 GjM+zSv5WGoIGARX9mctvsvCThR0cBtOovBQpzk4GB2YZ0ijRv/uTdtgmnjp5t+s4i
-	 d2hTYJy7un6wA==
+	s=k20201202; t=1767884738;
+	bh=DGdHkFD+3L5QgZmRMdpdwL9Bm9MC+Wi93ePEIeYNCWc=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=g2JcxrpUi7AaJtDoYHHgWuhyywj4wX46R1n4CFdMSn60n61tfDxML2xWNe/uaqIy+
+	 v+5TC+FJT4WMbPcOITX9hjemBnAWhXcZuGGxnNmGpz6Dg93FHdJKmYE9agm8E94Ybo
+	 /whcHcWTofRl2drZLs8KOYE0LtAHCduYAiEr90PApPeLu9DuajqEfQQHaIpZxZTEwO
+	 rsajtsZRLsEwmQHnaUrcIr8C23LKt+GjXSD0ueoyf527rbUnvOkv1EWQc/DHWe2LAp
+	 pHXHVUH/mVJQKFn6ytYom72q1F6PYT8KoTwACa+thpLXKyT5gNkLvE4U83noI84Y5a
+	 eg1qDLGB6p7aQ==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH net-next v3 0/2] net: airoha: Init Block Ack memory region
- for MT7996 NPU offloading
-Date: Thu, 08 Jan 2026 16:05:06 +0100
-Message-Id: <20260108-airoha-ba-memory-region-v3-0-bf1814e5dcc4@kernel.org>
+Date: Thu, 08 Jan 2026 16:05:07 +0100
+Subject: [PATCH net-next v3 1/2] dt-bindings: net: airoha: npu: Add BA
+ memory region
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3XNzw6CMAwG8FchO1uzP46BJ9/DeBhQYFGYKWbRE
- N7dQmKiBy9Nvqbfr7OYkAJO4pjNgjCFKcSRg9llou792CGEhrPQUudSSQ0+UOw9VB4GHCK9gLD
- jDtiiKfXBOGUKLbh9J2zDc5PPF859mB58vj1Kat1+TPvXTAok2Eo674yreZ6uSCPe9pE6saJJf
- 0PuP6QZagpV2rbOc2fUD7Qsyxv+n74tCAEAAA==
-X-Change-ID: 20260102-airoha-ba-memory-region-58d924371382
+Message-Id: <20260108-airoha-ba-memory-region-v3-1-bf1814e5dcc4@kernel.org>
+References: <20260108-airoha-ba-memory-region-v3-0-bf1814e5dcc4@kernel.org>
+In-Reply-To: <20260108-airoha-ba-memory-region-v3-0-bf1814e5dcc4@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
@@ -76,32 +73,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is a preliminary series in order to enable NPU offloading for
-MT7996 (Eagle) chipset.
+Introduce Block Ack memory region used by NPU MT7996 (Eagle) offloading.
 
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Changes in v3:
-- Add missing minItems for memory-region-names in airoha,en7581-npu.yaml
-- Link to v2: https://lore.kernel.org/r/20260107-airoha-ba-memory-region-v2-0-d8195fc66731@kernel.org
-
-Changes in v2:
-- Remork memory-region entry in airoha,en7581-npu.yaml
-- Link to v1: https://lore.kernel.org/r/20260105-airoha-ba-memory-region-v1-0-5b07a737c7a7@kernel.org
-
----
-Lorenzo Bianconi (2):
-      dt-bindings: net: airoha: npu: Add BA memory region
-      net: airoha: npu: Init BA memory region if provided via DTS
-
  .../devicetree/bindings/net/airoha,en7581-npu.yaml  | 21 +++++++++++----------
- drivers/net/ethernet/airoha/airoha_npu.c            |  8 ++++++++
- 2 files changed, 19 insertions(+), 10 deletions(-)
----
-base-commit: fd1de45ad24f24cf0aedee0f64e668674a9bd6c9
-change-id: 20260102-airoha-ba-memory-region-58d924371382
+ 1 file changed, 11 insertions(+), 10 deletions(-)
 
-Best regards,
+diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+index 59c57f58116b568092446e6cfb7b6bd3f4f47b82..19860b41286fd42f2a5ed15d5dc75ee0eb00a639 100644
+--- a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
++++ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+@@ -42,14 +42,13 @@ properties:
+       - description: wlan irq line5
+ 
+   memory-region:
+-    oneOf:
+-      - items:
+-          - description: NPU firmware binary region
+-      - items:
+-          - description: NPU firmware binary region
+-          - description: NPU wlan offload RX buffers region
+-          - description: NPU wlan offload TX buffers region
+-          - description: NPU wlan offload TX packet identifiers region
++    items:
++      - description: NPU firmware binary region
++      - description: NPU wlan offload RX buffers region
++      - description: NPU wlan offload TX buffers region
++      - description: NPU wlan offload TX packet identifiers region
++      - description: NPU wlan Block Ack buffers region
++    minItems: 1
+ 
+   memory-region-names:
+     items:
+@@ -57,6 +56,8 @@ properties:
+       - const: pkt
+       - const: tx-pkt
+       - const: tx-bufid
++      - const: ba
++    minItems: 1
+ 
+ required:
+   - compatible
+@@ -93,7 +94,7 @@ examples:
+                      <GIC_SPI 122 IRQ_TYPE_LEVEL_HIGH>,
+                      <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
+         memory-region = <&npu_firmware>, <&npu_pkt>, <&npu_txpkt>,
+-                        <&npu_txbufid>;
+-        memory-region-names = "firmware", "pkt", "tx-pkt", "tx-bufid";
++                        <&npu_txbufid>, <&npu_ba>;
++        memory-region-names = "firmware", "pkt", "tx-pkt", "tx-bufid", "ba";
+       };
+     };
+
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.52.0
 
 
