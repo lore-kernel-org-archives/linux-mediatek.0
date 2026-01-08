@@ -4,64 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA6F2CF6A87
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 08:53:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CCA2CF6A86
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 09:15:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gP5Y1FSRwCqzAnnLSFikm8nTdE6iNexDjFDnaqD1dbk=; b=hmyOPb8eBYZJd/YQGlAY1Gaada
-	QYGQP3D5CCJukiwjZzOPwxRPfzvMdgv0MpAKOAqbQzqcp4XxN+VyLU+r75D+xCuGBsgLEfmemB7jF
-	9n+bFl19KhdzuQCGcigi4he2et9Xf3k43K0gvrExJgkP62odOXy5goAX34UI+BHixwJcq1Cvlnsjf
-	P3qbNTZFWY98ORk4E/zcrtO7X1Id1v6tCfjc8T/nMNIyEutplI2sQBfxh7hQ0t1La5pfaY+7cR8w/
-	S9CHeU2vytD3AfIX2H/WOtT75uYEZ63OpPqkCg3Wp+ZuiUWNs44gRx3DEYGJ5bhhy4elwrRblJJMt
-	3nIb8a3g==;
+	bh=5nTYfSaDPv2GdlELTogMY93wplFSokquqpOtJ7cePW8=; b=ExHxd/OWSwkSp4tEadWzMAosaM
+	lNp7Ac55RGKU9I91MwDvpfH+NpP7c2+8WP8tv7SQ52MI1WxlzLLUxXVj5WyEa7F3wprvQGUvg+D8k
+	y2kQQ4GX4QEJ+NRUtj+cENFTDPxDVfPgOw1nBNqNgr7V7RgAq3pLpFn9CkVetppE9T+35mP5x55g6
+	tiYMpsdgYfrwjSy9a8mabnHP7ZzYhMV4hGwu1VX3znm1v5f1r2UWGUXkdAdJgSxwQJtHPkx1t9y+8
+	xrAZqT/gXdo5Wh5Rx+/JqrBVTOpZzOf4sI6bGWUy5r9DMnATXJL3DJoD3ETFMbRAr/a+pyG/JG/Y5
+	tocgId0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdlmG-0000000GM7U-1xvX;
-	Thu, 08 Jan 2026 08:53:56 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vdm6r-0000000GPO7-1Nv0;
+	Thu, 08 Jan 2026 09:15:13 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdlmD-0000000GM6G-204M;
-	Thu, 08 Jan 2026 08:53:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B842743E20;
-	Thu,  8 Jan 2026 08:53:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1858FC116C6;
-	Thu,  8 Jan 2026 08:53:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767862432;
-	bh=+Y3pmCrSWmzwJE7Z9VU/gWsBpMcei7lqxHoCxpXUJ88=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=dnbQJI6GX0z9Bph2xDSMz7Es6JYAT1Nyholi12t4kaW7FSFRxe4wFpZ7uDVhJGHnu
-	 EaC/592YAPLbcZYi1BsmhhqAD87ndt8AhRD7iDTMYp8JlRcM2lxuszvPxsCJSxaaIh
-	 03PIoWPd7SnH6vg0hrZoLTdzYhqSMruJhsgP/kKwkqe5N+DI7jvh7cuoY+kgzJM/eY
-	 46EurBV3G9UzXMpMUNQGix9UWimERDGX8WadNA+i7ay4c4kaA1QLgMyU7Y+4UW8N6H
-	 68Nu9UTA/RIJwPE7U9Jkq1zbockXKCJA5ZU/kf53U4NzgbKN8JFU+B4FqnLckh9e2z
-	 E3dhJxOd6+5Kg==
-Date: Thu, 8 Jan 2026 09:53:50 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v2 1/2] dt-bindings: net: airoha: npu: Add BA
- memory region
-Message-ID: <20260108-shaggy-smart-okapi-efd3b7@quoll>
-References: <20260107-airoha-ba-memory-region-v2-0-d8195fc66731@kernel.org>
- <20260107-airoha-ba-memory-region-v2-1-d8195fc66731@kernel.org>
+	id 1vdm6n-0000000GPMu-1ZNe;
+	Thu, 08 Jan 2026 09:15:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1767863695; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=MmE5DKfbNllkayfuVfwm9GThSMFT+PX+Q2qcU+TqNiyd2ZutQKHKl2xQoLqUG3zsymi4xcpv2W0Cu9tMDT5XksV3frCCiyx15Nl4+t2Hkxfs5hbWrkeNSx7VctY6ioYBvzrNSkdw0NzytZvIYUK3mrk4XkTPnZ2epVMByddAHis=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1767863695; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=5nTYfSaDPv2GdlELTogMY93wplFSokquqpOtJ7cePW8=; 
+	b=F3KXU6Fwpvtrnw4tK2M8uHd68QIlsZU0jzBBulY/5zbSLW8Qrf28FYA0wd2yxBcYgoOaMEeK18uCW7KdWet9I74deKSEifIWq+EUU30svBPjFGIkJVBbfw2DNZE/6NGA16Sp0jSGt9YeaJCJeBmx8TtXclw63wW0XBnRRcP+srY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1767863695;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=5nTYfSaDPv2GdlELTogMY93wplFSokquqpOtJ7cePW8=;
+	b=kTicqGgqsOzHMkeRBWfRNWGcx2mI153gK3zN0TKiLHNcsKpEIms6Z+TsAIQUolqD
+	ebLrshz40+ShAYSAlksHuN9vSpcazstbafyIfkzQAxFs9HaETySG1jl0PzLvVIvWvRP
+	btNeqbhgsP0TcoF6ytmZY/IIEnltagUCO5ehZxLs=
+Received: by mx.zohomail.com with SMTPS id 1767863693938487.4499614851069;
+	Thu, 8 Jan 2026 01:14:53 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ Chunfeng Yun =?UTF-8?B?KOS6keaYpeWzsCk=?= <Chunfeng.Yun@mediatek.com>,
+ "kishon@kernel.org" <kishon@kernel.org>,
+ "James.Bottomley@HansenPartnership.com"
+ <James.Bottomley@hansenpartnership.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ Chaotian Jing =?UTF-8?B?KOS6leacneWkqSk=?= <Chaotian.Jing@mediatek.com>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "vkoul@kernel.org" <vkoul@kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "broonie@kernel.org" <broonie@kernel.org>,
+ Peter Wang =?UTF-8?B?KOeOi+S/oeWPiyk=?= <peter.wang@mediatek.com>
+Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ "kernel@collabora.com" <kernel@collabora.com>
+Subject: Re: [PATCH v4 11/25] scsi: ufs: mediatek: Rework probe function
+Date: Thu, 08 Jan 2026 10:14:44 +0100
+Message-ID: <5992593.DvuYhMxLoT@workhorse>
+In-Reply-To: <213d3077835fc86d15579c0a0a91f64fd84b1059.camel@mediatek.com>
+References: <20251218-mt8196-ufs-v4-0-ddec7a369dd2@collabora.com>
+ <20251218-mt8196-ufs-v4-11-ddec7a369dd2@collabora.com>
+ <213d3077835fc86d15579c0a0a91f64fd84b1059.camel@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260107-airoha-ba-memory-region-v2-1-d8195fc66731@kernel.org>
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_005353_539447_F4F49263 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20260108_011509_472082_A60DF8FB 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,43 +104,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 07, 2026 at 09:29:34AM +0100, Lorenzo Bianconi wrote:
-> Introduce Block Ack memory region used by NPU MT7996 (Eagle) offloading.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  .../devicetree/bindings/net/airoha,en7581-npu.yaml   | 20 ++++++++++----------
->  1 file changed, 10 insertions(+), 10 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> index 59c57f58116b568092446e6cfb7b6bd3f4f47b82..42bc0f2a42a91236c858241ca76aa0b0ddac8d54 100644
-> --- a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> @@ -42,14 +42,13 @@ properties:
->        - description: wlan irq line5
->  
->    memory-region:
-> -    oneOf:
-> -      - items:
-> -          - description: NPU firmware binary region
-> -      - items:
-> -          - description: NPU firmware binary region
-> -          - description: NPU wlan offload RX buffers region
-> -          - description: NPU wlan offload TX buffers region
-> -          - description: NPU wlan offload TX packet identifiers region
-> +    items:
-> +      - description: NPU firmware binary region
-> +      - description: NPU wlan offload RX buffers region
-> +      - description: NPU wlan offload TX buffers region
-> +      - description: NPU wlan offload TX packet identifiers region
-> +      - description: NPU wlan Block Ack buffers region
-> +    minItems: 1
->  
->    memory-region-names:
+On Tuesday, 6 January 2026 14:23:58 Central European Standard Time Peter Wa=
+ng (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
+> On Thu, 2025-12-18 at 13:55 +0100, Nicolas Frattaroli wrote:
+> >=20
+> > Remove the ti,syscon-reset cruft.
+> >=20
+>=20
+> Hi Nicolas,
+>=20
+> Why do we need to remove the reset node? If an error occurs and the
+> host=20
+> does not perform a reset, it could lead to error recovery failure.
 
-missing minItems here.
+Because it's not described by the binding, and appears to be a
+downstream hack to work around not having the reset controller
+properly described and referred to with a `resets` property.
 
-Best regards,
-Krzysztof
+Even if you were to use `ti,syscon-reset` to describe a reset
+controller, the UFS controller driver should not be searching
+for this compatible. It should access the reset through the
+reset API. The common reset code can then take care of probe
+ordering without every driver reinventing it.
+
+>=20
+> Thanks.
+> Peter
+>=20
+
+
+
 
 
