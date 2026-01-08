@@ -4,74 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 163A4D185D7
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 11:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7833D185D5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 11:16:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=87O3JqIkZHp6I/ueZ3YnKx42k5g2M8EmXTH6VBq5jz0=; b=goQ+DiY9ytHW/50JfuXivcwqk4
-	xFzFCDk4yHYaEXkS7R0E7OOoJQMXG/+aq0M8AS61mOiTVS33WG0veryC3IkWV61/2MfsoeFJ38uH5
-	GDSbzKcbRlD1PdBaEkSjrHA3nW1GVLXZkak/PR8jz2BWoGU3+M9LxGFGGioeF+oCED4JiGeVNlxw/
-	YMoAtzk5KmDGUQHaWdFVq1ScqAllDubDZZH7naCDP44LS5DuSCkfUCMe4/JOf1c1TACab80HEKu4A
-	T2o920/LROb16t6qqoM5ULpoo0e/VImJaBhuDnT/wOkooB3dY5/0PmwgLOKJABsz0lpDA0RgfN1pq
-	Rrj0MOcg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/K/ajdPdRqkH9IPbmwsANGlkSAgoS8eVOxuBsPn+o14=; b=QIy8tFPY26PybMP8DUg8jWVA6m
+	pw0LZKNsVeSUmB5udOADR6gjvONEtDpxqI4D011OmWsOiDToD6qytpmkt9YAOnFhfQOJo/9M1Y7a+
+	4krxzPAwUl6CXytIXit6c9jhhCdhSrFYz0ATehO8S0W9C8XR5u0aHBRjVDlAQvZBij1PGDUrWcLp0
+	ssPn6T4e6PlwSlH2QzCpkDmKrEpn2phMOPIIOHOb4YcpnFfEo6NEzs31DvnIT2/giWZl5kz5Wa2DE
+	wUWDK4DlgkwMvZkLR9YDokQDfsGieYQsXuIaDQtqT1hnJGK4jF8v2G/G8SxM3sJemKq/xKwaVEMGZ
+	9nUDrtDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdnmp-0000000GmRg-0jbD;
-	Thu, 08 Jan 2026 11:02:39 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vdo0R-0000000GokC-0URX;
+	Thu, 08 Jan 2026 11:16:43 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdnmj-0000000GmLW-26Ke;
-	Thu, 08 Jan 2026 11:02:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1767870150;
-	bh=gw1VaxWzqkyKrA2KxIUxIvewB29jkb6zfBD6Cnr2AVI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ST55Cl/be8Fa/ix2tx495kwY7maMiNlOVgAfRBDwMT/EbwANxJbtE7qMSdG4JunKA
-	 vD1WBXNOVPku7kPatEmReCNA7MEM4E19JGCHGFHtR9Kn+l6FpGvIthi39x+ZcH51BU
-	 YAQt2Vvebpu3cMxTNEIT5CJ3WTcahG+JKY6s9F2lms8k65cP0D+6Ek1zIUqHkMEAvV
-	 JAtgd+uMOclMrNnPUetWYcn93kzwvb897z2ljNyJfllLvecWki7RKh2XuyyPDgrqJB
-	 yU+Zw+rWzTyVIzozFUMtZTy8/BBktKCBI5lqBVzPtCoyixLTVjoHDuJZdwWMThZNy6
-	 89ib0hnK7LKlw==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 476B217E1529;
-	Thu,  8 Jan 2026 12:02:30 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: krzk+dt@kernel.org
-Cc: herbert@gondor.apana.org.au,
-	davem@davemloft.net,
-	robh@kernel.org,
-	conor+dt@kernel.org,
-	andrew@lunn.ch,
-	gregory.clement@bootlin.com,
-	sebastian.hesselbarth@gmail.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	atenart@kernel.org,
-	linux-crypto@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1vdo0O-0000000Goil-0BLG;
+	Thu, 08 Jan 2026 11:16:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=/K/ajdPdRqkH9IPbmwsANGlkSAgoS8eVOxuBsPn+o14=; b=kH0SR/WT5ODrg0ZXozLLI40kYr
+	0Kc6eG3ON2n+nWoNhNZTVrmpCz3IpVJbASQa2Ps0/t4Pcf4/GeXj7t1EPH61YE7GnUy1UU1GVqpub
+	Sh8WdSDAnGJ0zdN8E1E2j7WgIUQY8KqniF7kdV0DJyJT52xrQkM7ru4dkHlpz3wR3qQSyulY5gbjW
+	VdIyEwpxX4tr8+RnExi3K3NT+ctrMcNydGHLnW0yyajCD1BZybKcm5ERjmp+sGbzVu8fINxPOoPKy
+	K3c5Z2hRKjhyIVts6iHKYbMPJ/OpRYpbbKrFniQy9AQ1IgAZKChUsH54ccVk1LoKDlVwMXAvUkTB/
+	eCmrfV0w==;
+Received: from 77-249-17-252.cable.dynamic.v4.ziggo.nl ([77.249.17.252] helo=noisy.programming.kicks-ass.net)
+	by casper.infradead.org with esmtpsa (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vdo0I-0000000EqjO-0lKf;
+	Thu, 08 Jan 2026 11:16:34 +0000
+Received: by noisy.programming.kicks-ass.net (Postfix, from userid 1000)
+	id 0820B300E8E; Thu, 08 Jan 2026 12:16:33 +0100 (CET)
+Date: Thu, 8 Jan 2026 12:16:32 +0100
+From: Peter Zijlstra <peterz@infradead.org>
+To: Dengjun Su <dengjun.su@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, mike.zhang@mediatek.com,
+	haiqiang.gong@mediatek.com, peijun.huang@mediatek.com,
+	Ingo Molnar <mingo@redhat.com>, Juri Lelli <juri.lelli@redhat.com>,
+	Vincent Guittot <vincent.guittot@linaro.org>,
+	Dietmar Eggemann <dietmar.eggemann@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
+	Valentin Schneider <vschneid@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH 3/4] arm64: dts: marvell: Add SoC specific compatibles to SafeXcel crypto
-Date: Thu,  8 Jan 2026 12:02:22 +0100
-Message-ID: <20260108110223.20008-4-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260108110223.20008-1-angelogioacchino.delregno@collabora.com>
-References: <20260108110223.20008-1-angelogioacchino.delregno@collabora.com>
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] sched/rt: fix incorrect schedstats for rt thread
+Message-ID: <20260108111632.GH272712@noisy.programming.kicks-ass.net>
+References: <20260108031309.2754003-1-dengjun.su@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_030233_694354_15F09C9D 
-X-CRM114-Status: GOOD (  10.15  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260108031309.2754003-1-dengjun.su@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,45 +78,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Following the changes in the binding for the SafeXcel crypto
-engine, add SoC specific compatibles to the existing nodes in
-Armada 37xx and CP11x.
+On Thu, Jan 08, 2026 at 11:13:07AM +0800, Dengjun Su wrote:
+> For RT thread, only 'set_next_task_rt' will call
+> 'update_stats_wait_end_rt' to update schedstats information.
+> However, during the RT migration process,
+> 'update_stats_wait_start_rt' will be called twice, which
+> will cause the values of wait_max and wait_sum to be incorrect.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/marvell/armada-37xx.dtsi  | 3 ++-
- arch/arm64/boot/dts/marvell/armada-cp11x.dtsi | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+Right, that looses time. Also note that I think dl has the same issue.
 
-diff --git a/arch/arm64/boot/dts/marvell/armada-37xx.dtsi b/arch/arm64/boot/dts/marvell/armada-37xx.dtsi
-index c612317043ea..87f9367aec12 100644
---- a/arch/arm64/boot/dts/marvell/armada-37xx.dtsi
-+++ b/arch/arm64/boot/dts/marvell/armada-37xx.dtsi
-@@ -427,7 +427,8 @@ xor11 {
- 			};
- 
- 			crypto: crypto@90000 {
--				compatible = "inside-secure,safexcel-eip97ies";
-+				compatible = "marvell,armada-3700-crypto",
-+					     "inside-secure,safexcel-eip97ies";
- 				reg = <0x90000 0x20000>;
- 				interrupts = <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH>,
- 					     <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH>,
-diff --git a/arch/arm64/boot/dts/marvell/armada-cp11x.dtsi b/arch/arm64/boot/dts/marvell/armada-cp11x.dtsi
-index d9d409eac259..39599171d51b 100644
---- a/arch/arm64/boot/dts/marvell/armada-cp11x.dtsi
-+++ b/arch/arm64/boot/dts/marvell/armada-cp11x.dtsi
-@@ -512,7 +512,8 @@ CP11X_LABEL(sdhci0): mmc@780000 {
- 		};
- 
- 		CP11X_LABEL(crypto): crypto@800000 {
--			compatible = "inside-secure,safexcel-eip197b";
-+			compatible = "marvell,armada-cp110-crypto",
-+				     "inside-secure,safexcel-eip197b";
- 			reg = <0x800000 0x200000>;
- 			interrupts = <88 IRQ_TYPE_LEVEL_HIGH>,
- 				<89 IRQ_TYPE_LEVEL_HIGH>,
--- 
-2.52.0
+> The specific output as follows:
+> $ cat /proc/6046/task/6046/sched | grep wait
+> wait_start                                   :             0.000000
+> wait_max                                     :        496717.080029
+> wait_sum                                     :       7921540.776553
+> 
+> Add 'update_stats_wait_end_rt' in 'update_stats_dequeue_rt' to
+> update schedstats information when dequeue_task.
+
+This needs a few more words on why this is correct -- notably it took me
+a little time to find the 'task_on_rq_migrating()' case in
+__update_stats_wait_end() which makes this not actually 'end'.
+
+But then the corresponding clause in __update_stats_wait_start() gives
+me a headache:
+
+ 'wait_start > prev_wait_start'
+
+I mean, wtf. Should that not equally be using task_on_rq_migrating() ?
+
+Can you please take a hard look at all that and fix up things all-round?
 
 
