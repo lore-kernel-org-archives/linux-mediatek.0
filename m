@@ -4,69 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAC5BD0D17D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 00:25:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB1ECD14899
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 03:13:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FNPYNYhR1kjj2zWJy9oyiLEOrXpx0LEturTm7uRBNdo=; b=MYpitHce+aEjFF
-	GzdTiWvy0uRfk8WHgCFvnhXb9WCS/gSi7817OGc+jUrpFr0bmC6Fd8p9T+Nl5m+TzeP5Dnnutx3nu
-	HGHVZx58TcWPzlxI4OIrTUGrh0nlalcFoxvYL2TCrfo7GVTyVkSHD0yAomLhgObacI2G24N4An1ph
-	uqBa6qk3yzK/0q7QlhUPqdmXK707wsuu2Tl41jf9TQecHzb66bCWFRXAySXsULWoJJWwTwQ803WCD
-	pJJslVTX6YpSailR6k7AYHherNAb3ugzjNJZ9l9G/X5/TyVrmw4jyIyEhXbFGgjF69+INkb5e5OTq
-	pQwA5EDlTNuzh6Z05SDw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6pxfiPpStKTinNfI3yLuxNFmLirLijh17vubfs0MnKI=; b=MDzPTNszIFwWbxIlEZdVrkn4ce
+	6weC2UQH3/oBP02wR7f8xIixTkrBSCcRz5+7Hu6GzimKiEUg/ld7XlzXncV9WhAiGNRxa6dev/LA5
+	iN5T5oIeDz4u4wzVzaiPzpWfAyXPcmtOFUKs1rzirNXGrA3PupYbL/7P5ppG0Qdcv80Rdi84XVirv
+	+CVWm9d0lKpwgzNp5fknhsZUZZqdbjbbTHalwpjRcRXN5sPMv808/QDoFqw392jRKTRG7JRUJQ80/
+	qnaT3HpRL+XEAY/kMFVk6PXkN9cwUBz5s8RzD5w1AbXYahPTXWzsyd/SpEAb441lPHcBiAgEavvSN
+	Fu5R2Y1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vddqR-0000000Fm7l-2C2y;
-	Thu, 08 Jan 2026 00:25:43 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vdgSl-0000000Frtm-367j;
+	Thu, 08 Jan 2026 03:13:27 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vddqO-0000000Fm7D-1Yjv
-	for linux-mediatek@lists.infradead.org;
-	Thu, 08 Jan 2026 00:25:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A7D9F442F8
-	for <linux-mediatek@lists.infradead.org>; Thu,  8 Jan 2026 00:25:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85C6BC19421
-	for <linux-mediatek@lists.infradead.org>; Thu,  8 Jan 2026 00:25:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767831937;
-	bh=dKpvfWhR+ao6SRp4kUICqTTWzO7/JiKNMNbKfPilDpc=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=o+iSKdWJNZubEaw2VairlWyVdJTSZcyFCq6bk1fo2xRjoOO5sT3i3hwWH2fmu6Rwk
-	 zijOFlsg3xed3WBwr3J33ccpgA8EnkIauMCZRzYwA7p6ESY6j2v42uUylZN7kfnRcP
-	 x7Pm0+Nq6PvglbBH2Rk4Vk5R9ssqaVpJn6x4NC9paLe6RdOoAecV6VgNO+xCrcXahN
-	 2RvoKIDI9NhhrwaN4tR3/WqqttK7IOSkF8cZ3KBIhLkhV+KdyT8v4wEA9s7YPavSoJ
-	 SNZGV4QUOgv6MINP1Ei3GgiAxpwpzZWIaBdxYW9ZdCRVSKiXvUJbWCULo8B8Ew0iW/
-	 +Ghf20BgfpCDw==
-Received: by mail-ej1-f45.google.com with SMTP id a640c23a62f3a-b7ce5d6627dso534188666b.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 07 Jan 2026 16:25:37 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCX8IlVS4l29jSnquJnQWmpDV3n4O/Al0NlnPXf3Y4Hk7vGNLudWZgQYyizSphr1TyFngNLBIkyJq1jrVBJn0w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxoHqnkSPBVQM715blnahDzuYVgj8xoJo8daR9hQjjlMe1mbnYx
-	gIN05osA8MQ1x/g0nm9EaBVXogjQve25HUCdMmEaVgh1tCNOpP9xMZekUhwbpe5xG5MyL0pwJa8
-	EBrTbjMGwuO6or2k5lNPGX1HmHvtuKQ==
-X-Google-Smtp-Source: AGHT+IHGbdOq9A7ht9GwHXUB0lkTxrQU8h32ytsd60tIWq2VQbXNaEf7DbGEZB5drNoTLCE118ndwLzIrKNWa4uD3U8=
-X-Received: by 2002:a17:907:969e:b0:b76:4426:3a3a with SMTP id
- a640c23a62f3a-b8445218177mr472166366b.58.1767831936081; Wed, 07 Jan 2026
- 16:25:36 -0800 (PST)
+	id 1vdgSi-0000000Frss-1lrR;
+	Thu, 08 Jan 2026 03:13:25 +0000
+X-UUID: fa5b0c16ec3f11f09f706fa2197c6ceb-20260107
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6pxfiPpStKTinNfI3yLuxNFmLirLijh17vubfs0MnKI=;
+	b=N7oLt+zLYi0RJ7WZB/tpdu2rN9lcziTFqMkz0jsuz1UICNQeSgrf+gIAYfvG23GqFhKtooXZbgZsqtgu6J4Xd7iWLSTRx3TPmcWs0P6Tt2TPADMI99/vRY+LolYnaEqzYXrqoCiNHAJbWYEq0rZ7JrmvTsqJU8j7M71vyNHIA5M=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.9,REQID:bc385076-fb56-4827-9cac-e3a61f0f20f6,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:1,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:1
+X-CID-META: VersionHash:5047765,CLOUDID:e1268a79-8c8a-4fc4-88c0-3556e7711556,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: fa5b0c16ec3f11f09f706fa2197c6ceb-20260107
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <dengjun.su@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 611278669; Wed, 07 Jan 2026 20:13:17 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 8 Jan 2026 11:13:14 +0800
+Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 8 Jan 2026 11:13:14 +0800
+From: Dengjun Su <dengjun.su@mediatek.com>
+To: <linux-kernel@vger.kernel.org>
+CC: <dengjun.su@mediatek.com>, <mike.zhang@mediatek.com>,
+	<haiqiang.gong@mediatek.com>, <peijun.huang@mediatek.com>, Ingo Molnar
+	<mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>, Juri Lelli
+	<juri.lelli@redhat.com>, Vincent Guittot <vincent.guittot@linaro.org>,
+	Dietmar Eggemann <dietmar.eggemann@arm.com>, Steven Rostedt
+	<rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, Mel Gorman
+	<mgorman@suse.de>, Valentin Schneider <vschneid@redhat.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] sched/rt: fix incorrect schedstats for rt thread
+Date: Thu, 8 Jan 2026 11:13:07 +0800
+Message-ID: <20260108031309.2754003-1-dengjun.su@mediatek.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20251119175124.48947-1-linux@fw-web.de> <176778436967.39195.1901837532049373497.b4-ty@collabora.com>
-In-Reply-To: <176778436967.39195.1901837532049373497.b4-ty@collabora.com>
-From: Rob Herring <robh@kernel.org>
-Date: Wed, 7 Jan 2026 18:25:24 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqLdLaS+9q7_BgtjH-ezX6Bd0r9_GaOM59CyUctCm84kZg@mail.gmail.com>
-X-Gm-Features: AQt7F2of3BOU5fJm5dFNBkUc0jh06Bp6eZBJGWiAa-ihxq2BG_e8zm-MeY4S07E
-Message-ID: <CAL_JsqLdLaS+9q7_BgtjH-ezX6Bd0r9_GaOM59CyUctCm84kZg@mail.gmail.com>
-Subject: Re: [PATCH v1 0/2] build full dtbs for BananaPi R3/R4(Pro)
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260107_162540_841497_633084A6 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20260107_191324_472430_5BE97D87 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,35 +88,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Frank Wunderlich <linux@fw-web.de>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 7, 2026 at 5:12=E2=80=AFAM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> On Wed, 19 Nov 2025 18:51:21 +0100, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >
-> > Build devicetree binaries for testing overlays and providing users
-> > full dtb without using overlays for Bananapi R4 (pro) variants.
-> >
-> > It is not required to build all possible combinations, only for
-> > common usecases and to test if all overlays can be applied.
-> >
-> > [...]
->
-> Applied to v6.19-next/dts64, thanks!
->
-> [1/2] arm64: dts: mediatek: mt7986: add dtbs with applied overlays for bp=
-i-r3
->       commit: 0516c548883bbe58a48d604e81e33b390986cdb6
-> [2/2] arm64: dts: mediatek: mt7988: add dtbs with applied overlays for bp=
-i-r4 (pro)
->       commit: d977b61d38030f50bae9f634049110af0a364d0d
+For RT thread, only 'set_next_task_rt' will call
+'update_stats_wait_end_rt' to update schedstats information.
+However, during the RT migration process,
+'update_stats_wait_start_rt' will be called twice, which
+will cause the values of wait_max and wait_sum to be incorrect.
+The specific output as follows:
+$ cat /proc/6046/task/6046/sched | grep wait
+wait_start                                   :             0.000000
+wait_max                                     :        496717.080029
+wait_sum                                     :       7921540.776553
 
-These are already in Linus' tree. I picked them up because there was
-no movement and he was complaining about the warnings.
+Add 'update_stats_wait_end_rt' in 'update_stats_dequeue_rt' to
+update schedstats information when dequeue_task.
 
-Rob
+Signed-off-by: Dengjun Su <dengjun.su@mediatek.com>
+---
+ kernel/sched/rt.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/kernel/sched/rt.c b/kernel/sched/rt.c
+index f1867fe8e5c5..12f2efddca9f 100644
+--- a/kernel/sched/rt.c
++++ b/kernel/sched/rt.c
+@@ -1302,13 +1302,18 @@ update_stats_dequeue_rt(struct rt_rq *rt_rq, struct sched_rt_entity *rt_se,
+ 			int flags)
+ {
+ 	struct task_struct *p = NULL;
++	struct rq *rq = rq_of_rt_rq(rt_rq);
+ 
+ 	if (!schedstat_enabled())
+ 		return;
+ 
+-	if (rt_entity_is_task(rt_se))
++	if (rt_entity_is_task(rt_se)) {
+ 		p = rt_task_of(rt_se);
+ 
++		if (p != rq->curr)
++			update_stats_wait_end_rt(rt_rq, rt_se);
++	}
++
+ 	if ((flags & DEQUEUE_SLEEP) && p) {
+ 		unsigned int state;
+ 
+-- 
+2.43.0
+
 
