@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4107DD1D495
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 20:30:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66F5DD1D48A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 20:30:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M44lp8gor4ui6WB++rg/BPBp+cvjzAHt0iabVKuiEbs=; b=px4r3dB7H/Ezh9nUvY7p3XPPSk
-	BbGcsWWDO6q4oAfdW+ww2Mvi5hwKEmSiVZSRy4QOFodYnxJTWNOexT/O2cabw2dJWky8RSEhb7yGe
-	oBh7Uut4aoIJF7Ip8gVMhOfZnWpNLcqd1Ay4KT1JJZcYNHZrb8I/RQrbl1EgGGXe4H34KBAIUyolX
-	9R4Uz30eBrgl/Mh5OEq5U0AWbgye4rYz6gt2A9iEQ8sCjKMtm/8sDxI+ZVO4WLLAatzjCMLaEHuCc
-	tIhXZ/1JqdZYncU7PIrFYOqYKg6qzk/rdmfjicW2tAJAt9MSkFhUNfAxrTz3BGzJP8Mnt3gGpjCpy
-	CE1TcYnA==;
+	bh=T7MPukKq2QUGycxvjKoEcD0cCyYhtwldjjcDoXHG9ek=; b=Z+epaMH2Ur48ygBMwbxdpidw4O
+	jVIXx8WvWOmjjImqHrp/zz0voKa1VzUVe7gyqCidYD56ru5BegL3uSxZmf0sd7UxaTE5noXkfEjTD
+	yymcC579SJi6/+LUzWMCnvQ4E6L4xEwaIWjiBOR9ljXWO9F8M9juzc4Zhf739ruQcowZLsDa11+Zv
+	ryiWjVGFLxKV3chGckjUPOGhKZRrIYMOyU2LmjTFX5P0NpUk97nZx8zRLXI8rLZK3I6+6sUWdbGDq
+	DimMpMe46/JPpWbx2q5j4iY7z9Xc5MBvD/SHHv5sxtUiSZhTbqbgdWXQZ/7vQjjwQpWl7wlloXA5P
+	4iFfUHgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdweP-00000000pnc-11HK;
-	Thu, 08 Jan 2026 20:30:33 +0000
+	id 1vdweb-00000000puU-47qY;
+	Thu, 08 Jan 2026 20:30:45 +0000
 Received: from mgamail.intel.com ([192.198.163.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdweL-00000000pln-2QJ9;
-	Thu, 08 Jan 2026 20:30:32 +0000
+	id 1vdweV-00000000po5-0AtB;
+	Thu, 08 Jan 2026 20:30:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1767904230; x=1799440230;
+  t=1767904239; x=1799440239;
   h=from:to:cc:subject:date:message-id:in-reply-to:
    references:mime-version:content-transfer-encoding;
-  bh=pEPhZuFQG5WHDMDYcHjF4DXWD4eYs4lWob3YuVcuX9E=;
-  b=SEVkUvkWZ6SfQnntCDAE6w++VNJdGcXg2UFqkaVMTVFBgzdWJ2Pz3fee
-   YO/wVKP34FdOeM3+ncp6gqG2mp6jRTogTe1hgotj7RV5cAj8t3Rm5pvfH
-   yG8G3VGzd2S7PSGgGX0zOan0N+nKDhNkpuKz6QghF5FhSSJ5DyR1wppIk
-   EXTSQr1q9pEOeHPYRNXc/teJUlEiZPFwbTqC7yLOnkZhG7H7c1XZEjmLh
-   ynnN+cR0PMzrC+Y+N79LQ/nqdoC5FPyh5L8UVK2u+gs+Hj2rHBAY+lm22
-   q0fvy/mE1Ah2dk+/NueuT1opahfyZt31cojPqypCvYUoE/EpwvyDHBp9E
-   w==;
-X-CSE-ConnectionGUID: DwRY10vxRSeLI+if4iTdDA==
-X-CSE-MsgGUID: 2WqwvMuORGGH8KLyMEWQDQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11665"; a="68485888"
+  bh=gweGXKEQGc4/hwMnHXoXPIZG21hxC6IQVTr9HcEdhzU=;
+  b=mDy5nqC/34+0L8e/MIhIr0DlOJ7ES3Z+xeexpU+cvhXu0J6X+RI6r/Z5
+   Ljz3DW6mxM/bR9mYuigxhr7bP6x48SE6tecjxIX686b3rNz4cRORAjU+Q
+   0POouhOrxTiPL/23hh0bmshhmWaWyYVAQz61slUKm6hqCegmvy+dwQM5Q
+   jyyQZbEZNnwNmWLCkyQ6iZzHmNATTGDPt48KfcnLKx23n3wyhHf9PUjqe
+   bb+cTHTj/kYJrJ3zOq8r/yWl1ZvcmATjXmRLOpOoKVR3sIKKIYIgUiQ0K
+   rQ9v7W2T+ynsoTJtCR0Y98b7GshJfma3gOOrBWIv45CrYTtTrY50eCWR7
+   Q==;
+X-CSE-ConnectionGUID: OPo9m5YyTnWbBao8FU7nTw==
+X-CSE-MsgGUID: Y6JEXl2jS6uMXjOd5+e3BA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11665"; a="68485981"
 X-IronPort-AV: E=Sophos;i="6.21,211,1763452800"; 
-   d="scan'208";a="68485888"
+   d="scan'208";a="68485981"
 Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Jan 2026 12:30:27 -0800
-X-CSE-ConnectionGUID: Tfj3zHaHQA6N1Nmn6xLihg==
-X-CSE-MsgGUID: AxNa2QRdR56ADK7OKSMe6w==
+  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Jan 2026 12:30:36 -0800
+X-CSE-ConnectionGUID: 2l9MyugHSY+hvi2iINWAWA==
+X-CSE-MsgGUID: x8IxwEW9QjitcU2+B5Oi0w==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.21,211,1763452800"; 
-   d="scan'208";a="226706611"
+   d="scan'208";a="226706631"
 Received: from black.igk.intel.com ([10.91.253.5])
-  by fmviesa002.fm.intel.com with ESMTP; 08 Jan 2026 12:30:17 -0800
+  by fmviesa002.fm.intel.com with ESMTP; 08 Jan 2026 12:30:26 -0800
 Received: by black.igk.intel.com (Postfix, from userid 1003)
-	id 432F498; Thu, 08 Jan 2026 21:30:17 +0100 (CET)
+	id 65F759B; Thu, 08 Jan 2026 21:30:18 +0100 (CET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Mark Brown <broonie@kernel.org>,
 	Varshini Rajendran <varshini.rajendran@microchip.com>,
@@ -205,17 +205,17 @@ Cc: Nicolas Ferre <nicolas.ferre@microchip.com>,
 	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
 	Michal Simek <michal.simek@amd.com>,
 	Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v1 1/4] spi: Propagate default fwnode to the SPI controller device
-Date: Thu,  8 Jan 2026 21:23:38 +0100
-Message-ID: <20260108203004.3538449-2-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 3/4] spi: Drop duplicate fwnode assignment
+Date: Thu,  8 Jan 2026 21:23:40 +0100
+Message-ID: <20260108203004.3538449-4-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260108203004.3538449-1-andriy.shevchenko@linux.intel.com>
 References: <20260108203004.3538449-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_123031_067529_9287E3BA 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20260108_123039_234795_EF8D96DA 
+X-CRM114-Status: GOOD (  13.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -230,51 +230,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Most of the SPI controller drivers share the parent's fwnode
-by explicit assignment. Propagate the default by SPI core,
-so they may drop that in the code. Only corner cases may require
-a special treatment and we simply (re)assign the controller's
-fwnode explicitly (as it's done right now, no changes required
-for that).
+The SPI core provides the default fwnode for the controller,
+inherited from the actual (parent) device. No need to repeat it
+in the driver.
 
 Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- drivers/spi/spi-cs42l43.c | 8 ++++++++
- drivers/spi/spi.c         | 3 +++
- 2 files changed, 11 insertions(+)
+ drivers/spi/spi-hisi-kunpeng.c | 1 -
+ drivers/spi/spi-synquacer.c    | 3 ---
+ 2 files changed, 4 deletions(-)
 
-diff --git a/drivers/spi/spi-cs42l43.c b/drivers/spi/spi-cs42l43.c
-index 4b6b65f450a8..a4a650c8d740 100644
---- a/drivers/spi/spi-cs42l43.c
-+++ b/drivers/spi/spi-cs42l43.c
-@@ -371,6 +371,14 @@ static int cs42l43_spi_probe(struct platform_device *pdev)
+diff --git a/drivers/spi/spi-hisi-kunpeng.c b/drivers/spi/spi-hisi-kunpeng.c
+index dadf558dd9c0..afe51adcc507 100644
+--- a/drivers/spi/spi-hisi-kunpeng.c
++++ b/drivers/spi/spi-hisi-kunpeng.c
+@@ -497,7 +497,6 @@ static int hisi_spi_probe(struct platform_device *pdev)
+ 	host->cleanup = hisi_spi_cleanup;
+ 	host->transfer_one = hisi_spi_transfer_one;
+ 	host->handle_err = hisi_spi_handle_err;
+-	host->dev.fwnode = dev->fwnode;
+ 	host->min_speed_hz = DIV_ROUND_UP(host->max_speed_hz, CLK_DIV_MAX);
  
- 	fwnode_property_read_u32(xu_fwnode, "01fa-sidecar-instances", &nsidecars);
+ 	hisi_spi_hw_init(hs);
+diff --git a/drivers/spi/spi-synquacer.c b/drivers/spi/spi-synquacer.c
+index eaf560487591..d0a875249910 100644
+--- a/drivers/spi/spi-synquacer.c
++++ b/drivers/spi/spi-synquacer.c
+@@ -600,7 +600,6 @@ static irqreturn_t sq_spi_tx_handler(int irq, void *priv)
  
-+	/*
-+	 * Depending on the value of nsidecars we either create a software node
-+	 * or assign an fwnode. We don't want software node to be attached to
-+	 * the default one. That's why we need to clear the SPI controller fwnode
-+	 * first.
-+	 */
-+	device_set_node(&priv->ctlr->dev, NULL);
-+
- 	if (nsidecars) {
- 		struct software_node_ref_args args[] = {
- 			SOFTWARE_NODE_REFERENCE(fwnode, 0, GPIO_ACTIVE_LOW),
-diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
-index f077ea74e299..b773c297f8b1 100644
---- a/drivers/spi/spi.c
-+++ b/drivers/spi/spi.c
-@@ -3072,6 +3072,9 @@ struct spi_controller *__spi_alloc_controller(struct device *dev,
- 	else
- 		ctlr->dev.class = &spi_controller_class;
- 	ctlr->dev.parent = dev;
-+
-+	device_set_node(&ctlr->dev, dev_fwnode(dev));
-+
- 	pm_suspend_ignore_children(&ctlr->dev, true);
- 	spi_controller_set_devdata(ctlr, (void *)ctlr + ctlr_size);
+ static int synquacer_spi_probe(struct platform_device *pdev)
+ {
+-	struct device_node *np = pdev->dev.of_node;
+ 	struct spi_controller *host;
+ 	struct synquacer_spi *sspi;
+ 	int ret;
+@@ -699,8 +698,6 @@ static int synquacer_spi_probe(struct platform_device *pdev)
+ 		goto disable_clk;
+ 	}
+ 
+-	host->dev.of_node = np;
+-	host->dev.fwnode = pdev->dev.fwnode;
+ 	host->auto_runtime_pm = true;
+ 	host->bus_num = pdev->id;
  
 -- 
 2.50.1
