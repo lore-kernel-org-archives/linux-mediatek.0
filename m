@@ -4,67 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2677ECF6ABF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 10:20:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2439D0D17B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 10:33:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tfHVaMF03WdXmRygcwShJaZrlUkozLVUdfsaoXggej0=; b=sHY5mej7RZse61h/oL++Xtlhk6
-	kGrZmQH8IVZIpbiI+mwSN+fx0JxAnW71BDcr7+0O1r0DPVt+eZYyHn3UH3nmeAN+eyx3ypSrJE/F3
-	8DdNqDL6lEsHbExN5FTHCY825zFzpZVoVrrkRmvjKGEkOSBkaTQgGAsvw0P9IK1HMFzEOCd58nD9J
-	UPGLftF/7UW8Uqr4ffkEXG/zGXzhDJks9LF9DG4WCVjD1zQeump02lZkrQiwwMNhS8PX80u8382JO
-	g+2bjL/cLnIBlJu0d55wodBr/N9MSph9RaMeCaoz6VdmwWZVDcTuyqECwPfhJjl77Eml5pme+oqal
-	/pVI/evg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ecrDo7sGH5OOitKCjgj6e4IEMBar3NGe3f5qUSGr9mQ=; b=VNeoC9g2Nd2+WVvPO0PHzp+Fcj
+	HRTA2CP20bRFicorQvGNIKzm0OxTKIu7MP5fjJrYXLo2Qz2QV92e27cEJwOZqEaTfsvkRgxgNcb89
+	TGeuo7Ib/W8U3pIAHYmDDmQCws3f+hsOSehkfsfqWdLwiNgU1RfljR/QCjr4wt5jCIGHtbRn456lL
+	CY7C1J1bX9UWQ5lm7TAGfyt7gnR+ZUjAQx5X/PUcPclX7QUUShX3+wSiJl3LMv3/zhNTLgDZuARum
+	UFh0gAHJdCABb/uvcRaDIC9EDORz/RagB4nxG2k2Gq123IP6T3MNr0sOBPMFyrhqTcyzm6SITC5bj
+	8fFJlMkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdn7r-0000000GbeN-0TYD;
-	Thu, 08 Jan 2026 10:20:19 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vdnKi-0000000GdXn-1F1D;
+	Thu, 08 Jan 2026 10:33:36 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdn7o-0000000GbcU-0JnS;
-	Thu, 08 Jan 2026 10:20:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1767867612;
-	bh=YyeBDlNSLY4ru+W23YyttLQ3wHEda1dN+Y7WEoCQAts=;
-	h=From:To:Cc:Subject:Date:From;
-	b=ZOOZJESj4giVfU+dJYjFnTOe3lg+laQO/reAJsmJjsh6SiISklOJahmN+7Wa9b3a8
-	 4j3LOIXvAw17G9kCb6Rwqbm4wP6Yo88RSdIXBMhcZQ8lduNCWWmH2nXLDEDLGMmRNh
-	 LeHJ9MDtsai+wmu0zkcBJnaXfxWs4T4pTAdUqZ2UmkYLXhYY+0OqOHD8JCpOfXucsr
-	 r4BRT3rjov2hfxc/j7H2lEbB7W7RbxqFdZutVvYEF1E+CrSFh5WvOSSUe7CzEZab2N
-	 1S3PDe2tPfWt4SdySOwQet1aOCGiUs1c9xRk5zmgSmLtW5oGMrNshY1fYCQra4lhbe
-	 /UlAyNpwKBYmg==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4BCA817E1330;
-	Thu,  8 Jan 2026 11:20:12 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	bisson.gary@gmail.com,
-	kernel@collabora.com
-Subject: [PATCH] drm/mediatek: mtk_dsi: Add support for High Speed (HS) mode
-Date: Thu,  8 Jan 2026 11:19:59 +0100
-Message-ID: <20260108101959.14872-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.52.0
+	id 1vdnKh-0000000GdXE-1hOs;
+	Thu, 08 Jan 2026 10:33:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 716DD60007;
+	Thu,  8 Jan 2026 10:33:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24BB5C116C6;
+	Thu,  8 Jan 2026 10:33:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1767868414;
+	bh=bzS/PjfPcMpnrR8b0KVdxQk9x4TACwFE5DrS+QCDpOY=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=LlJHjlTXVCw6tCautdO/Ycp25Nni4NGrkiqTbdh/AhaHQrLJLy8o5Y9hCbN6jCGWY
+	 JTf15UgnIsq3HizY1e7TU3qg0VKh2DxaMmx8Wq1wTtXxdybWojDAodU+2rgXL1kosA
+	 ZbzQEaVK+Z0AqFok805xei6hRUEiGtC0ySWNABEUn5m5jCsDhJzLCMbp+rNpRktTUV
+	 E43yp2oAAYsNX0P9k+jpwevqtLzBECulGBqnKvpcJRpW8FowE3NrlQHfMfawseeSb4
+	 /N22bcGqi0qxzjWRZxQ4R217/N3Ga/OCCyTsWZgoHLQSuGfPJ+2+eY1sbPG8EAak48
+	 3v9GWS2XDcXjg==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id F28783A78A5F;
+	Thu,  8 Jan 2026 10:30:11 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_022016_287341_5652C114 
-X-CRM114-Status: GOOD (  11.57  )
+Subject: Re: [PATCH net v2] net: airoha: Fix schedule while atomic in
+ airoha_ppe_deinit()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <176786821079.3573457.449577303139061207.git-patchwork-notify@kernel.org>
+Date: Thu, 08 Jan 2026 10:30:10 +0000
+References: <20260105-airoha-fw-ethtool-v2-1-3b32b158cc31@kernel.org>
+In-Reply-To: <20260105-airoha-fw-ethtool-v2-1-3b32b158cc31@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,44 +72,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Up until now, the MediaTek DSI Controller has always been working
-in Low Power Mode (LPM), as this driver has always ignored the
-MIPI_DSI_MSG_USE_LPM flag hence never setting HS mode.
+Hello:
 
-In the current state of the driver the only thing that is needed
-to add support for DSI High Speed (HS) transmit is to simply set
-the "HSTX" config bit in the configuration register.
+This patch was applied to netdev/net.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-Check if flag MIPI_DSI_MSG_USE_LPM is set and, if not, set HSTX.
+On Mon, 05 Jan 2026 09:43:31 +0100 you wrote:
+> airoha_ppe_deinit() runs airoha_npu_ppe_deinit() in atomic context.
+> airoha_npu_ppe_deinit routine allocates ppe_data buffer with GFP_KERNEL
+> flag. Rely on rcu_replace_pointer in airoha_ppe_deinit routine in order
+> to fix schedule while atomic issue in airoha_npu_ppe_deinit() since we
+> do not need atomic context there.
+> 
+> Fixes: 00a7678310fe3 ("net: airoha: Introduce flowtable offload support")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> [...]
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Here is the summary with links:
+  - [net,v2] net: airoha: Fix schedule while atomic in airoha_ppe_deinit()
+    https://git.kernel.org/netdev/net/c/6abcf751bc08
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index e4953d5cb6a8..a90cae9512c5 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -155,6 +155,7 @@
- #define SHORT_PACKET			0
- #define LONG_PACKET			2
- #define BTA				BIT(2)
-+#define HSTX				BIT(3)
- #define DATA_ID				GENMASK(15, 8)
- #define DATA_0				GENMASK(23, 16)
- #define DATA_1				GENMASK(31, 24)
-@@ -1177,6 +1178,9 @@ static void mtk_dsi_cmdq(struct mtk_dsi *dsi, const struct mipi_dsi_msg *msg)
- 	else
- 		config = (msg->tx_len > 2) ? LONG_PACKET : SHORT_PACKET;
- 
-+	if (!(msg->flags & MIPI_DSI_MSG_USE_LPM))
-+		config |= HSTX;
-+
- 	if (msg->tx_len > 2) {
- 		cmdq_size = 1 + (msg->tx_len + 3) / 4;
- 		cmdq_off = 4;
+You are awesome, thank you!
 -- 
-2.52.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
