@@ -4,66 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CCCBCF6ABC
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 09:58:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BB46CF6ABD
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 10:13:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:
+	To:Cc:Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
+	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Xw0NwZCrR0WSJW93hxw8/ZUBh2voqqzop5Iy/IpI4c8=; b=mRF4Y413NPxem33QVSHobVcLzW
-	BMKDVHxhObUdfVHdwvU/q5BXIit6k5W4ghs7TKLuw5CR5FpBKPtfZaJobE5TXFj0hCGUTkQOInwG/
-	5GVVEsicXhulkPFvsKvTXOH2iUio36v+HmrWZJo81XpFYpgiCjE4eh3kzk4H4WilBvSNYN3XALnYJ
-	Tk5+ll7xmzTUeSzT6s9mgZtBMDfledI3TweasrwUyjw/m4jkHlbQi8XFg4mWtk5MethUENa+dDOUx
-	s4kDp+2Diz9L6uOcn+XNo+yTRl1nmB9djbMT4eP3G1jZBLZOQVSdFPag5uoODh6SbpR3ZX/gkD5Uw
-	CJW8gZ3g==;
+	bh=oktYwHpBxwEHcRdG+441TRw1haM/iQZSRwVoxeIKxoE=; b=fQr/skjgz8wGY7BjCOmAZE4i/0
+	rNVSdwBwKkZQ0NlHRg3cNkppEOFK5w4slLCvRwvnhUQVvbbxWEB7YH2oL9+zwnOcJyzVwZy8XGT18
+	Xel5me3CeFDvHvpDXvWEKQqOH7CSx6y8tyjZXjB8j5J2nxBTdZqLUaoB8D18NnZ/0lgnwXy/6pQzc
+	XrvC/DKmuZFipS+zTdns0LH/5blFfXEj9frFoo0boGMYhZ1OOC51ZkV93cPqv2h5Wqo8uUCa9dmWu
+	YZm4jKCrRHh56MpfpSNzH59JK5UplzAazYvllwhtA7OmswbIclLfe85kF6GkAMbPneZPMqSb7KM5m
+	9sUOdYOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdmmy-0000000GXbc-1Lv8;
-	Thu, 08 Jan 2026 09:58:44 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vdn1h-0000000Ga9d-1N41;
+	Thu, 08 Jan 2026 10:13:57 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdmmu-0000000GXZs-1GkO;
-	Thu, 08 Jan 2026 09:58:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1767866316;
-	bh=1HLus0gTh6HnY5z+TPOce04w/1dZcg2TITZXXvEJlVg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=D1FXVa++Qs4BCQAij0CNaHgFbcCTZNl9Vc0FcUIJ9Nl0DLkY+LgT6We4i1cd+rVbk
-	 wKV+FLM+EWFf1h3oFDjw5Xa2wj9M7p9SphujPZ1Rc+ukrLKCwX+3n7DjblSqhkbnUk
-	 IBYbkT1ovSbsc7/CrFvpteMuw8SSmqvco0z9uFuN13qMYfBe8g8KwhJIIefwRXUYOo
-	 hidffgXI8S0IW8tn6o+sE287/vb7pMi10So8rEg+xogb8pfP4bsYxRNLRtlFDxQ/vi
-	 lDI1oyNXdLkcH+k5deXK28sTa+ScoHsiTh9/InnH1jKi8scxrZegWs8jp2HZTKKusU
-	 hhlgjxj4j+N+g==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5B95917E0181;
-	Thu,  8 Jan 2026 10:58:36 +0100 (CET)
-Message-ID: <a952746a-89f9-494e-bbb0-e4aed5c1cedc@collabora.com>
-Date: Thu, 8 Jan 2026 10:58:36 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 0/5] Add support for Ezurio MediaTek platforms
-To: Gary Bisson <bisson.gary@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-References: <20251203-review-v5-0-b26d5512c6af@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20251203-review-v5-0-b26d5512c6af@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+	id 1vdn1d-0000000Ga7i-0ipl;
+	Thu, 08 Jan 2026 10:13:55 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-04.galae.net (Postfix) with ESMTPS id 8C9C3C1ECB2;
+	Thu,  8 Jan 2026 10:13:21 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 67284606B6;
+	Thu,  8 Jan 2026 10:13:47 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 67281103C880E;
+	Thu,  8 Jan 2026 11:13:34 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1767867225; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=oktYwHpBxwEHcRdG+441TRw1haM/iQZSRwVoxeIKxoE=;
+	b=ZZyzgQ6MhWJyRaP/AtUlqfOLAs4SdmGpIbrTgke2e9hMzTVnklegqCUfH8QRCn5O6RABoj
+	16WnFZasjj07Z4qzlbvRLkvzc2VVEUrg/PHo/0hVGUvCveJoVMaKNXpF33qlmGO3FehhOf
+	k7pfb4T0ys97YT7G8i9diw0OFkt8LkWxEl7ROtseRInXV4+MdbzVUcQO+WCebz50Eut4hk
+	N211JQ6oSlZbRFWPNyySKeXJAaetMVLV8ifWRu/QK0qxRKoWEHucX05hpurrxyD91ZMn27
+	K3uokXirBg+StnQE60kwcRSzgmtPXJN8KxmDnZ6moWwxpHk0yjZsOiEyjdf8kA==
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Thu, 08 Jan 2026 11:13:33 +0100
+Message-Id: <DFJ4MHZJ1DTL.10AMTN5NW6VGS@bootlin.com>
+Subject: Re: [PATCH 5/6] drm/exynos: hdmi: convert to
+ of_drm_find_and_get_bridge()
+Cc: "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
+ <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
+ Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
+ <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten
+ Lankhorst" <maarten.lankhorst@linux.intel.com>, "Thomas Zimmermann"
+ <tzimmermann@suse.de>, "David Airlie" <airlied@gmail.com>, "Simona Vetter"
+ <simona@ffwll.ch>, "Kevin Hilman" <khilman@baylibre.com>, "Jerome Brunet"
+ <jbrunet@baylibre.com>, "Martin Blumenstingl"
+ <martin.blumenstingl@googlemail.com>, "Philipp Zabel"
+ <p.zabel@pengutronix.de>, "Shawn Guo" <shawnguo@kernel.org>, "Sascha Hauer"
+ <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
+ <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>, "Chun-Kuang
+ Hu" <chunkuang.hu@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Inki Dae" <inki.dae@samsung.com>, "Seung-Woo Kim"
+ <sw0312.kim@samsung.com>, "Kyungmin Park" <kyungmin.park@samsung.com>,
+ "Krzysztof Kozlowski" <krzk@kernel.org>, "Alim Akhtar"
+ <alim.akhtar@samsung.com>, "Laurent Pinchart"
+ <laurent.pinchart+renesas@ideasonboard.com>, "Tomi Valkeinen"
+ <tomi.valkeinen+renesas@ideasonboard.com>, "Kieran Bingham"
+ <kieran.bingham+renesas@ideasonboard.com>, "Geert Uytterhoeven"
+ <geert+renesas@glider.be>, "Magnus Damm" <magnus.damm@gmail.com>, "Hui Pu"
+ <Hui.Pu@gehealthcare.com>, "Thomas Petazzoni"
+ <thomas.petazzoni@bootlin.com>, <dri-devel@lists.freedesktop.org>,
+ <linux-kernel@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <imx@lists.linux.dev>,
+ <linux-mediatek@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
+ <linux-renesas-soc@vger.kernel.org>
+To: "Maxime Ripard" <mripard@kernel.org>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+X-Mailer: aerc 0.20.1
+References: <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-0-ef48a517828e@bootlin.com> <20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-5-ef48a517828e@bootlin.com> <20260108-acoustic-groovy-shark-1c6850@houat>
+In-Reply-To: <20260108-acoustic-groovy-shark-1c6850@houat>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_015840_503896_83CD87BE 
-X-CRM114-Status: GOOD (  16.35  )
+X-CRM114-CacheID: sfid-20260108_021353_483983_F4280DC5 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,93 +101,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/12/25 22:20, Gary Bisson ha scritto:
-> This series adds support for Ezurio MediaTek platforms called
-> "Tungsten". It includes support for MT8370-based Tungsten 510 and
-> MT8390-based Tungsten 700 SOMs.
-> 
+Hi Maxime,
 
-All patches applied to v6.19-next/dts64 after fixing a merge issue in Makefile.
+On Thu Jan 8, 2026 at 9:14 AM CET, Maxime Ripard wrote:
+> On Wed, Jan 07, 2026 at 05:22:03PM +0100, Luca Ceresoli wrote:
+>> of_drm_find_bridge() is deprecated. Move to its replacement
+>> of_drm_find_and_get_bridge() which gets a bridge reference, and ensure i=
+t
+>> is put when done.
+>>
+>> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+>
+> Why can't we use next_bridge for this one?
 
-Thanks!
+Because this device is not a bridge, so we have no struct drm_bridge.
 
+>> ---
+>>  drivers/gpu/drm/exynos/exynos_hdmi.c | 4 +++-
+>>  1 file changed, 3 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/gpu/drm/exynos/exynos_hdmi.c b/drivers/gpu/drm/exyn=
+os/exynos_hdmi.c
+>> index 01813e11e6c6..bfcf2fa62fe1 100644
+>> --- a/drivers/gpu/drm/exynos/exynos_hdmi.c
+>> +++ b/drivers/gpu/drm/exynos/exynos_hdmi.c
+>> @@ -1779,7 +1779,7 @@ static int hdmi_bridge_init(struct hdmi_context *h=
+data)
+>>  		return -EINVAL;
+>>  	}
+>>
+>> -	hdata->bridge =3D of_drm_find_bridge(np);
+>> +	hdata->bridge =3D of_drm_find_and_get_bridge(np);
+>>  	of_node_put(np);
+>>
+>>  	if (!hdata->bridge)
+>> @@ -2096,6 +2096,8 @@ static void hdmi_remove(struct platform_device *pd=
+ev)
+>>
+>>  	put_device(&hdata->ddc_adpt->dev);
+>>
+>> +	drm_bridge_put(hdata->bridge);
+>> +
+>>  	mutex_destroy(&hdata->mutex);
+>>  }
+>
+> Same story than in your part 2 series, it should be dropped in destroy.
 
-> Changes in v2:
-> - Use b4 to cc all maintainers properly
-> - Squashed patches 2/3 together
-> - Updated dts node names to be generic
-> 
-> Changes in v3:
-> - Added per-commit changelog
-> - Added missing Acked-by on 1st patch
-> - Link to v2: https://lore.kernel.org/r/20251201-review-v2-0-dc2df44eec7e@gmail.com
-> 
-> Changes in v4:
-> - Fixed remaining DTB warnings
-> - Link to v3: https://lore.kernel.org/r/20251201-review-v3-0-07f9af7341fd@gmail.com
-> 
-> Changes in v5:
-> - Fixed DTB per Angelo's comments
-> - Added a MT8188 patch for easier mmc eint interrupt change
-> - Link to v4: https://lore.kernel.org/r/20251202-review-v4-0-93f5cd2a0d4a@gmail.com
-> 
-> Regards,
-> 
-> Gary Bisson (5):
->    dt-bindings: vendor-prefixes: Add Ezurio LLC
->    dt-bindings: arm: mediatek: Add Ezurio Tungsten entries
->    arm64: dts: mediatek: mt8188: switch mmc nodes to interrupts-extended
->    arm64: dts: mediatek: add device tree for Tungsten 510 board
->    arm64: dts: mediatek: add device tree for Tungsten 700 board
-> 
->   .../devicetree/bindings/arm/mediatek.yaml     |    2 +
->   .../devicetree/bindings/vendor-prefixes.yaml  |    2 +
->   arch/arm64/boot/dts/mediatek/Makefile         |    2 +
->   arch/arm64/boot/dts/mediatek/mt8188.dtsi      |    6 +-
->   .../dts/mediatek/mt8370-tungsten-smarc.dts    |   14 +
->   .../dts/mediatek/mt8390-tungsten-smarc.dts    |   22 +
->   .../dts/mediatek/mt8390-tungsten-smarc.dtsi   | 1489 +++++++++++++++++
->   7 files changed, 1534 insertions(+), 3 deletions(-)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8370-tungsten-smarc.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
-> 
-> --
-> 2.43.0
-> 
-> ---
-> To: Rob Herring <robh@kernel.org>
-> To: Krzysztof Kozlowski <krzk+dt@kernel.org>
-> To: Conor Dooley <conor+dt@kernel.org>
-> To: Matthias Brugger <matthias.bgg@gmail.com>
-> To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> To: Sean Wang <sean.wang@mediatek.com>
-> Cc: devicetree@vger.kernel.org
-> Cc: linux-kernel@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mediatek@lists.infradead.org
-> 
-> ---
-> Gary Bisson (5):
->        dt-bindings: vendor-prefixes: Add Ezurio LLC
->        dt-bindings: arm: mediatek: Add Ezurio Tungsten entries
->        arm64: dts: mediatek: mt8188: switch mmc nodes to interrupts-extended
->        arm64: dts: mediatek: add device tree for Tungsten 510 board
->        arm64: dts: mediatek: add device tree for Tungsten 700 board
-> 
->   .../devicetree/bindings/arm/mediatek.yaml          |    2 +
->   .../devicetree/bindings/vendor-prefixes.yaml       |    2 +
->   arch/arm64/boot/dts/mediatek/Makefile              |    2 +
->   arch/arm64/boot/dts/mediatek/mt8188.dtsi           |    6 +-
->   .../boot/dts/mediatek/mt8370-tungsten-smarc.dts    |   14 +
->   .../boot/dts/mediatek/mt8390-tungsten-smarc.dts    |   22 +
->   .../boot/dts/mediatek/mt8390-tungsten-smarc.dtsi   | 1489 ++++++++++++++++++++
->   7 files changed, 1534 insertions(+), 3 deletions(-)
-> ---
-> base-commit: 7d0a66e4bb9081d75c82ec4957c50034cb0ea449
-> change-id: 20251201-review-750072579991
-> 
-> Best regards,
+hdata->bridge is only used for drm_bridge_attach(), it won't be referenced
+after that. So this is safe, unless I'm missing something.
 
+Also as we don't have a struct drm_bridge (as mentioned above) we have no
+bridge destroy. We have the encoder destroy, but that will never be called
+on bridge hotplug.
 
+Luca
+
+--
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
