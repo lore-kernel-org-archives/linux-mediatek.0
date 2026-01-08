@@ -4,64 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CE3BD185EC
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 12:40:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6A54D185F3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 13:22:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AKwnCkr1ZX0v7pILRqsV1pAJx1PdTheuXP8rVv55P5w=; b=UP6CIqprb3Qy5IBso9X5a6yQy6
-	zk0N985aL9FPFU5kUgQDmVMkFLSEynKu+oxmJpffWHG3Ot3jYlUixNehGi+tGTV6EFw9tJbpu19A8
-	X0Kl2ELp62xnHQhfZhAtSOCamFcKlP8vn7cM8oBc0Q50c1tK5ww0aYJkyqi5SIo1cyj7SEIKikNiV
-	UZji5oYCV6yIftLE/TLU+h0cQQBQ6TXg0k/3PrCXe3U/lLC7D9uvtqmYrZnnZSZyrM7AIpGd2cnm3
-	xyzgxRsmZnwE8Zfe0VGmTJyCTvo1cy7wIqVspqdaJWPLnYIVrr2UbNXsWljFSBmZgpNXkwogcN5sm
-	AE2VBjRg==;
+	bh=8nFZS1UJkLg9iLCoA6c0Xtw+m8UdCS3zUIquKWtOrOo=; b=xkI1yr458Xo7wEqMf91wqnT5Kd
+	bdMvDY099iv81SK9CTYqBCa2pdmcC7coeKBD5/TBpfd3e91yKmCDOPZmPUL+H0s24muGq5+/bv7Zl
+	5eTARqkgHCdckkCzpclKOEjFdRzjvw3xpwV0eSDgFhgPM50fnKAXPTCgwKwLwDapF93It7CsHvoWP
+	3QpWp1z84VlQhFCN67mSj3ovLmcu3jugYkF90XuCDC4F+Aa+bSdzsEI7KsrLWvZW3pobCjJYwMlId
+	AsJVlmwt8kWtG8fSxurl+D5+s8+0NcKz+tVunauq7D36IjaQ4pWoL8cpWfvcif1sNs84FHgHz61KU
+	5RUmEo3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdpJW-0000000H2MR-1fhr;
-	Thu, 08 Jan 2026 12:40:30 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vdpy5-0000000H94D-0MoH;
+	Thu, 08 Jan 2026 13:22:25 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdpJT-0000000H2LM-1isr;
-	Thu, 08 Jan 2026 12:40:29 +0000
+	id 1vdpy3-0000000H93d-47tc;
+	Thu, 08 Jan 2026 13:22:24 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9D91444262;
-	Thu,  8 Jan 2026 12:40:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55FE8C19421;
-	Thu,  8 Jan 2026 12:40:26 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5E13D60131;
+	Thu,  8 Jan 2026 13:22:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44AE2C116C6;
+	Thu,  8 Jan 2026 13:22:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767876026;
-	bh=g8rW71nJKgp3ELmmfnnyuEMXLvCZWj1pOr+SOf92ZPc=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=Hcn62jzyajIv8HuVtK5cuHKrKkmRX+9TueZ6Zzaj/42oTxVwR/kO0Yt6AdPC8fHx1
-	 4JpNYRXT8Y8SCVGq4oadCZryu51+7wr4PCgX9DBMB9j+V6DVbgwaEZfd7siscVJTvA
-	 Bo2Ys4eP//eHIQoyazz9eBi68OiGKlSNogy44CAGdfNb+Ktm7amLfSnE05tnKiby0l
-	 vdUdXk2vC7mjIiCsu2Te2Ng2GwKH0Ap6gZV6oL/QUR9GY5EWObUh6wHxesRC7SX35y
-	 efOyz7yM44k0iaD5GHvi3zNt6vpMmsNMs48dfy+KsVQf28jgOEEZ1TCwZy0eBII+WN
-	 qmWuUW5QGZR4A==
-Date: Thu, 08 Jan 2026 06:40:25 -0600
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	s=k20201202; t=1767878543;
+	bh=5VC3XO65xa/3k4GCT3RsZy0cYcsebKOEvEis61s4nuM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=IKy9C0iPwki/PsgSXscFwuR5IKQkfr5AS7wnEqKjQf6oatQuNj/YzvQ0DogAa2h5v
+	 SSL+uPUvxH7vidtqGhZoMeCOgXJVBanC6xnwcQQX1u1O12zrX2AVoH5NYqiGeiyhYr
+	 ZX0PQo+Zqou4UJxVo29C+wirnYgOIHMw6tzGBKokOZYwlNEgY/+unc7ULCkyEjdY1G
+	 f4W2VEDrB12LLx3AlcUCestFCmQJ3VEnDPHsChd5VjFzLLqhrMWDKxS8YeBNnQ2pXw
+	 meMHqTl807NSIB2iNousQNqLG5fDi81KdOP9swRmeAmG1LU+GTBWKNmqzsu4yHgBvC
+	 h594bYUdX5ZBA==
+Date: Thu, 8 Jan 2026 13:22:18 +0000
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net v2] net: airoha: Fix schedule while atomic in
+ airoha_ppe_deinit()
+Message-ID: <20260108132218.GG345651@kernel.org>
+References: <20260105-airoha-fw-ethtool-v2-1-3b32b158cc31@kernel.org>
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-crypto@vger.kernel.org, devicetree@vger.kernel.org, 
- davem@davemloft.net, krzk+dt@kernel.org, linux-kernel@vger.kernel.org, 
- herbert@gondor.apana.org.au, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, kernel@collabora.com, 
- conor+dt@kernel.org, sebastian.hesselbarth@gmail.com, atenart@kernel.org, 
- andrew@lunn.ch, matthias.bgg@gmail.com, gregory.clement@bootlin.com
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20260108110223.20008-3-angelogioacchino.delregno@collabora.com>
-References: <20260108110223.20008-1-angelogioacchino.delregno@collabora.com>
- <20260108110223.20008-3-angelogioacchino.delregno@collabora.com>
-Message-Id: <176787602550.3796160.16323970790591047960.robh@kernel.org>
-Subject: Re: [PATCH 2/4] dt-bindings: crypto: inside-secure,safexcel: Add
- SoC compatibles
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_044028_028201_F9BDA4EC 
-X-CRM114-Status: GOOD (  10.12  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260105-airoha-fw-ethtool-v2-1-3b32b158cc31@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,43 +72,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Jan 05, 2026 at 09:43:31AM +0100, Lorenzo Bianconi wrote:
+> airoha_ppe_deinit() runs airoha_npu_ppe_deinit() in atomic context.
+> airoha_npu_ppe_deinit routine allocates ppe_data buffer with GFP_KERNEL
+> flag. Rely on rcu_replace_pointer in airoha_ppe_deinit routine in order
+> to fix schedule while atomic issue in airoha_npu_ppe_deinit() since we
+> do not need atomic context there.
 
-On Thu, 08 Jan 2026 12:02:21 +0100, AngeloGioacchino Del Regno wrote:
-> Add SoC specific compatibles for the SafeXcel crypto engine,
-> including one for the EIP197B used by Marvell Armada CP110 and
-> and two for the EIP97IES used by Marvell Armada 3700 and by
-> MediaTek MT7986.
+Hi Lorenzo,
+
+If I understand things correctly the key problem here is that
+an allocation with GFP_KERNEL implies GFP_RECLAIM and thus may sleep.
+But RCU read-side critical sections are not allowed to sleep in non-RT
+kernels.
+
+If so, I think it would be clearer to describe the problem along those
+lines. But maybe it is just me.
+
 > 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Fixes: 00a7678310fe3 ("net: airoha: Introduce flowtable offload support")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > ---
->  .../bindings/crypto/inside-secure,safexcel.yaml           | 8 ++++++++
->  1 file changed, 8 insertions(+)
-> 
+> Changes in v2:
+> - Update commit log.
+> - Link to v1: https://lore.kernel.org/r/20251223-airoha-fw-ethtool-v1-1-1dbd1568c585@kernel.org
 
-My bot found errors running 'make dt_binding_check' on your patch:
-
-yamllint warnings/errors:
-./Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml:16:9: [warning] wrong indentation: expected 10 but found 8 (indentation)
-./Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml:19:9: [warning] wrong indentation: expected 10 but found 8 (indentation)
-./Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml:20:11: [warning] wrong indentation: expected 12 but found 10 (indentation)
-
-dtschema/dtc warnings/errors:
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.kernel.org/project/devicetree/patch/20260108110223.20008-3-angelogioacchino.delregno@collabora.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+...
 
