@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81232D185EA
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 12:22:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D776D185EB
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jan 2026 12:26:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZHXpG0cj9DngQOz7W98dD4H6s6j3DcreI/OczoW3DH4=; b=QYf5d2dh7PPSoop0NPWUB9iju4
-	kfQyGzjHXm/jPA2bzDNCyciP3A+dcCHlfRoanTKzlZT7sxcxZiSoYEHSFfAorbrsCQgQtRbauVIQM
-	l4wydVU1K88vw2o8aJfdwSGjtOmyB4xdeyJwWGgrW5TG22ErrDpQNssl845U5iCIY51NGg+HeK6Qi
-	XNMVRJtSbrD+450TKGKdL13F+ywiXI2w/wPGp5Te2820Tv5X2pWHbdWCU7V+z+spfXMHDziv4wh5C
-	U1z7sG7+UfdXl2kV7CN/ut9VYbVEeFsQko+Q5jsdAH6KLaRiQTueEu0bsOQiC7E/0G0DxI6bXOzdE
-	rGykC44w==;
+	bh=C1Hx9DZE+cLMPMvB83ODtiSQ434Om43RczbKH8nThXY=; b=EY/HhDqS5WcdE5gFQr6Ta5vV/e
+	QSIols2tUznkymMDcPtIFOYC358aRrlxb6EO4R8ZCkJgX4gNUjBvDIFrgo89/0nOGBa7RI76JOGre
+	FmuYXipv/pIFZb6R3PNrrGAyXzNSwaQyYRX0KhmMB+G1D06WNmTm/FR0GOK/09mZnK4HpDIvxyVBR
+	bD5qwLTKO2S+lgTX83a77APspCsYmFe9Qahg0KfWLvRfUbi0ChvurZwYuvf3MU7341TqHlOF4rYUI
+	4oR2klwE0uQExasUjoumGtFzNnSf6whaLbYOIEMEVQvwYss+s0tOZz3JoBdJu/s19gY+NV2yfd/So
+	QZYfNRVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdp1u-0000000Gyhv-44Zv;
-	Thu, 08 Jan 2026 12:22:18 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vdp5Z-0000000GzMd-1VBe;
+	Thu, 08 Jan 2026 12:26:05 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vdp1p-0000000GygW-3bkM;
-	Thu, 08 Jan 2026 12:22:14 +0000
+	id 1vdp5X-0000000GzM5-173E;
+	Thu, 08 Jan 2026 12:26:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 89647435DE;
-	Thu,  8 Jan 2026 12:22:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2856C116C6;
-	Thu,  8 Jan 2026 12:22:06 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5A88260147;
+	Thu,  8 Jan 2026 12:26:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95F90C116C6;
+	Thu,  8 Jan 2026 12:25:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767874932;
-	bh=KReDG0ObiRiuDDh5D/U3gEUgH7EEOt+MoyvPkfZEGTE=;
+	s=k20201202; t=1767875162;
+	bh=C1Hx9DZE+cLMPMvB83ODtiSQ434Om43RczbKH8nThXY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=iJ4EIuE3PGgXb4m9MMjUwF4obO8M8960KgR/Vw00s0LByGuCndpRgznyV9Upz7eca
-	 O8SnhJWlqI9Otnvrh7zYd9lDuh6CMYvCvPKd3sCn9yANbG/n1bf6Ium8Je+LqpUUno
-	 IMFYWVPCWVVrbhVXmBHB1diagUa0nnfwFL9G3jeq9roN4wLOscgYjXeLBWqcADrciw
-	 DaeSTabhqj2uxV8RIo5hdy9EOzJUHn52A6GJ8SeP5znN1LEOP5eCljYN2xCoidyxz7
-	 dVwncZT05hGTcuIpHuRfeJZJ202pnzYXlw7qxsuxZrScI3uFA9tKmGwlqxxZTP5fT6
-	 6vKGYHhPAgQqA==
-Message-ID: <f3bf5118-eb75-450f-85e2-6d3ee775c8c5@kernel.org>
-Date: Thu, 8 Jan 2026 13:22:04 +0100
+	b=Qj28Hd9VfukTH9PBfE+A/TLhre/AAPY78mHIWO6VGQb8Ryo99Buvf3a/chE8K7v9r
+	 fK5EaHqlAI6FjIKPHVQE5v4irRvkEVd6jUtgNc0baKqbZIGgoeJRpwtfgP138HgODO
+	 SMLRFE02tdJhnrGtgDr5XSuHwBk1t96mDqjOj169PCF4pgaJTSLFTmjQeNnNv4m3z2
+	 2M4hnmwS5u/cu/vYGZLcaZe5u53Z0ewaZYpUPmMDWNjwSey4DEV84pAmoDKFTfbEIw
+	 65lJAvcO1ePWu/jZY8CkyisS5jenVt5g3pwWZ0JpL6DiNn8vw3VgeijjUOsOAOSpoS
+	 6qbBh3d/3Mv2w==
+Message-ID: <81ed17eb-2170-4e97-b56d-488b5335ff5c@kernel.org>
+Date: Thu, 8 Jan 2026 13:25:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 17/24] scsi: ufs: mediatek: Add vendor prefix to
- clk-scale-up-vcore-min
+Subject: Re: [PATCH v5 11/24] scsi: ufs: mediatek: Rework probe function
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
  Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
  Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
@@ -67,7 +66,7 @@ Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-phy@lists.infradead.org
 References: <20260108-mt8196-ufs-v5-0-49215157ec41@collabora.com>
- <20260108-mt8196-ufs-v5-17-49215157ec41@collabora.com>
+ <20260108-mt8196-ufs-v5-11-49215157ec41@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -113,13 +112,9 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20260108-mt8196-ufs-v5-17-49215157ec41@collabora.com>
+In-Reply-To: <20260108-mt8196-ufs-v5-11-49215157ec41@collabora.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260108_042213_943795_6B7833FB 
-X-CRM114-Status: UNSURE (   9.06  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,19 +130,13 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 08/01/2026 11:49, Nicolas Frattaroli wrote:
-> Device Tree properties other than the standard properties must be
-> prefixed with the vendor's name. The "clk-scale-up-vcore-min" property,
-> which this driver uses, and the binding did not previously document,
-> lacked a vendor prefix.
-> 
-> Add the missing "mediatek," vendor prefix and clean up the error print.
+> Remove the ti,syscon-reset cruft.
 
-Sorry, but no, because it is still undocumented. You cannot add new
-undocumented API (at least according to git grep and first three patches
-here).
+Please provide here reason, e.g. undocumented ABI. Normally I would ask
+about ABI impact, but considering this is was just copied from some
+downstream code I would just not care.
 
-Please instead drop the property completely. Mediatek is not allowed to
-push downstream code here.
+Mediatek should really stop and rethink their upstream process.
 
 Best regards,
 Krzysztof
