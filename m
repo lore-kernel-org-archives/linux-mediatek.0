@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9625D16819
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jan 2026 11:48:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C51AD26D70
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jan 2026 16:31:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I+5Z3RVu4YBTwrBJwNY+548d/aZzqDv8ookZBb/BtEs=; b=IIFXyDC5HMSCv+SjTt8WRm9110
-	Tjjng8GI39k4RFAhmmayQj0jcF15HTstXDElBfSEo8Nvi0LAUy5ZrtEpgnPWt0EABqASzX5rPIIw9
-	UyRwMA0W59MVynI5+GuQzFE3taw3RqdC/MNHRde0H5G/vLoHmNaXMi6Jwsam73aVs35xm7S624uVm
-	vXni+7vglrvvrNNmYsuQLU4ZkZgGuTFRiOrPu5aAjpokdp/OL/T5yyLSTAm2FfD30Vb1V7PJnYxzR
-	/WWXJMSFnOXLVvDkmkAHVjyJi77E3nQBUSN9iwoy92+s7uCCzXlpcA++aGXhXLVVouapX0QpmgMnX
-	CzZuI8wQ==;
+	bh=L/RbSJSKXBhaXJeMQUoZiZUf/Lpx97n5lCjhw1lv7B8=; b=i/dpOJCsAnBvdacI0JHRkhjXTU
+	zrFi36TzYYouTFb0/uNEn4lt4O3Wo9+a/VI7t5mWbDj9iQ5x4NfJmeM0hsJ/yPg4xcFdIxw6vJHkU
+	tQxI6nODhM9ZugrNzCSq+9w/I07nDzrhc4FXg9se9SYzdzX8o8I54OQJFabG8gPQLDl0zSXLw2CyS
+	j98rDusN1/QjRQ0TLUuDSNK8YqTG1nQQ78bl1VOz/Fk+wyvIWSi4TRHBdPdDsS2RQWe+hC9LwIGpU
+	d7x2RUD+6jjYio/GPpJTZuyRgWdgV0ulJazJS/IsqAG4kKRstHvtAn7AUTC704XWHJSaLjDdG9ps7
+	vsCAZzKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veAyk-00000002FSN-1rJU;
-	Fri, 09 Jan 2026 11:48:30 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1veFO9-00000002cxk-0f9U;
+	Fri, 09 Jan 2026 16:31:01 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veAyL-00000002Ewt-1brp;
-	Fri, 09 Jan 2026 11:48:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1767959283;
-	bh=O82ASAKq/ZZiQDxIMJucuo2x/rTm+Aj4VNeXdcRjSIg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=cvmeO+w/9ehs0ZCizvmlkuhv/adQcZkrMmjuf7D50chvOCCqbNawnexaEz5C88Ftw
-	 YKRgqeJoySCEWPUw7ic8/z47eyJa6iyq+NtS+oxnQ2Qcr0oUUsKPTkc/rcJ5cAaTvD
-	 p4nesm4Nq/NqbBbwUC22BkuLi2ZVlATIZYKZPfjQFCRCd4rgiDVOxe6LrxY566EkPx
-	 nLoa0W386DkrymyVvBYshtbXKGQAZeCxqjMptzHowKvOdjwBRvao6KcLNlAdVH/Tcs
-	 4xgLb6GFHD9JzIvzbGq2QJ/0pxcP5fhh6XpV8uPrUXblx7UH51uyaLl+bzFvP9fb9l
-	 MRMqi9aHTcyvw==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C6E7017E13D3;
-	Fri,  9 Jan 2026 12:48:02 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	sjoerd@collabora.com,
-	hsinyi@chromium.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH 11/11] arm64: dts: mediatek: mt6795-xperia-m5: Add UHS pins for MMC1 and 2
-Date: Fri,  9 Jan 2026 12:47:47 +0100
-Message-ID: <20260109114747.37189-12-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260109114747.37189-1-angelogioacchino.delregno@collabora.com>
-References: <20260109114747.37189-1-angelogioacchino.delregno@collabora.com>
+	id 1veFO6-00000002cwd-0hb1;
+	Fri, 09 Jan 2026 16:30:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 0265840B92;
+	Fri,  9 Jan 2026 16:30:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41805C4CEF1;
+	Fri,  9 Jan 2026 16:30:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1767976256;
+	bh=2nnt/RAhlgbAIoBNQy+A3kflDIjfGtjH4Wnd7s6M8kw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=UyAC+vU+9kTM3F3DIAqpZNoxKIwucU61mm4w4acu6wPdZG7r3KXTf8HeOpkdj4eT8
+	 avvUauUPHyg68/2LA3Xl+TzZxH25duQUw1H63Je8lBAUqmDmHqpzt0tqgqDNWCMC1H
+	 ds/RhaB9n3WWX56kWMvXJvqBobLFe6qmJajCyT4+OjsWEavKJa8pzRfPGafbkJEkzY
+	 fm4n26h+V5sPrnpKu5jiPEjYxxBUg6xyzmFkf4W+Vis6i/rUU6u7nU7lL2GOqYAEad
+	 EBuYTTXUcrYHXFNoY4X25KQSF0bFI2xj3nmJryqjMkhB0Ten4BA+rKKakvWQa1+ouk
+	 gPv38Zj3aMlRA==
+Message-ID: <3905bda3-169f-45d8-bdec-c199f226d45f@kernel.org>
+Date: Fri, 9 Jan 2026 18:30:49 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 11/13] interconnect: mediatek: Add support for MediaTek
+ MT8196 EMI ICC
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Henry Chen <henryc.chen@mediatek.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org
+References: <20251124-mt8196-dvfsrc-v2-0-d9c1334db9f3@collabora.com>
+ <20251124-mt8196-dvfsrc-v2-11-d9c1334db9f3@collabora.com>
+From: Georgi Djakov <djakov@kernel.org>
+Content-Language: en-US
+In-Reply-To: <20251124-mt8196-dvfsrc-v2-11-d9c1334db9f3@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260109_034805_642862_C664C0B5 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20260109_083058_231584_9FA76245 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,108 +80,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the UHS state pins for the MMC1 and MMC2 controllers and,
-while at it, also add the correct drive strength parameters
-for the default pin states for those two.
+On 11/24/25 1:07 PM, Nicolas Frattaroli wrote:
+> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> Add a new driver with data to register the External Memory
+> Interface (EMI) Interconnect on the MediaTek MT8196 Chromebook
+> SoC.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../dts/mediatek/mt6795-sony-xperia-m5.dts    | 48 ++++++++++++++++++-
- 1 file changed, 46 insertions(+), 2 deletions(-)
+The interconnect patches look good to me and there is no build dependency,
+so i picked them. On a side note, we recently added support for dynamic
+node ids in the framework, so maybe switch to that in the future.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-index fccb948cfa45..ecd13d089ceb 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
-@@ -227,8 +227,9 @@ &mmc0 {
- 
- &mmc1 {
- 	/* MicroSD card slot */
--	pinctrl-names = "default";
-+	pinctrl-names = "default", "state_uhs";
- 	pinctrl-0 = <&mmc1_pins_default>;
-+	pinctrl-1 = <&mmc1_pins_uhs>;
- 	vmmc-supply = <&mt6331_vmc_reg>;
- 	vqmmc-supply = <&mt6331_vmch_reg>;
- 	status = "okay";
-@@ -236,8 +237,9 @@ &mmc1 {
- 
- &mmc2 {
- 	/* SDIO WiFi on MMC2 */
--	pinctrl-names = "default";
-+	pinctrl-names = "default", "state_uhs";
- 	pinctrl-0 = <&mmc2_pins_default>;
-+	pinctrl-1 = <&mmc2_pins_uhs>;
- 	vmmc-supply = <&mt6331_vmc_reg>;
- 	vqmmc-supply = <&mt6331_vmch_reg>;
- 	status = "okay";
-@@ -324,11 +326,32 @@ pins-cmd-dat {
- 				 <PINMUX_GPIO170__FUNC_MSDC1_CMD>;
- 			input-enable;
- 			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+			drive-strength = <4>;
- 		};
- 
- 		pins-clk {
- 			pinmux = <PINMUX_GPIO175__FUNC_MSDC1_CLK>;
- 			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+			drive-strength = <4>;
-+		};
-+	};
-+
-+	mmc1_pins_uhs: microsd-uhs-pins {
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO171__FUNC_MSDC1_DAT0>,
-+				 <PINMUX_GPIO172__FUNC_MSDC1_DAT1>,
-+				 <PINMUX_GPIO173__FUNC_MSDC1_DAT2>,
-+				 <PINMUX_GPIO174__FUNC_MSDC1_DAT3>,
-+				 <PINMUX_GPIO170__FUNC_MSDC1_CMD>;
-+			input-enable;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+			drive-strength = <6>;
-+		};
-+
-+		pins-clk {
-+			pinmux = <PINMUX_GPIO175__FUNC_MSDC1_CLK>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+			drive-strength = <8>;
- 		};
- 	};
- 
-@@ -341,11 +364,32 @@ pins-cmd-dat {
- 				 <PINMUX_GPIO105__FUNC_MSDC2_CMD>;
- 			input-enable;
- 			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+			drive-strength = <4>;
-+		};
-+
-+		pins-clk {
-+			pinmux = <PINMUX_GPIO104__FUNC_MSDC2_CLK>;
-+			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+			drive-strength = <4>;
-+		};
-+	};
-+
-+	mmc2_pins_uhs: sdio-uhs-pins {
-+		pins-cmd-dat {
-+			pinmux = <PINMUX_GPIO100__FUNC_MSDC2_DAT0>,
-+				 <PINMUX_GPIO101__FUNC_MSDC2_DAT1>,
-+				 <PINMUX_GPIO102__FUNC_MSDC2_DAT2>,
-+				 <PINMUX_GPIO103__FUNC_MSDC2_DAT3>,
-+				 <PINMUX_GPIO105__FUNC_MSDC2_CMD>;
-+			input-enable;
-+			bias-pull-up = <MTK_PUPD_SET_R1R0_01>;
-+			drive-strength = <8>;
- 		};
- 
- 		pins-clk {
- 			pinmux = <PINMUX_GPIO104__FUNC_MSDC2_CLK>;
- 			bias-pull-down = <MTK_PUPD_SET_R1R0_10>;
-+			drive-strength = <8>;
- 		};
- 	};
- 
--- 
-2.52.0
+Thanks!
+Georgi
 
+> ---
+>   drivers/interconnect/mediatek/Kconfig  |   7 +
+>   drivers/interconnect/mediatek/Makefile |   1 +
+>   drivers/interconnect/mediatek/mt8196.c | 383 +++++++++++++++++++++++++++++++++
+>   3 files changed, 391 insertions(+)
+> 
 
