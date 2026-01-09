@@ -4,65 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B56EDD167EC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jan 2026 09:34:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDFABD167F3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jan 2026 10:03:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LqMfhFsx34G5fyRzdDh6shoD9QjerKt/rKh74ytdLgw=; b=LCmFBBUfpvkpUit1+ST7O4uZat
-	nu/PE90ATi1/LqhxZq8yw/IsHhsImMa5avPaFS0l7ENyM1eMbbVwEuXiasZLIi0VAMeuOCCO6bzm5
-	ihA3bLIbHl3NGzvLdJtlObmfwa+gHcjmcb3WfnyabreydvFvxCCm8m1zVMTyM7xqrKj06fgCDcPiy
-	SN0GrQkOXGp/+wcrVWnCEGZdVSWakiDt4+ObP6NbnzWJ8XYelYc7Igoy5mNdwPEplkvYWPgppOZAJ
-	kajSwv54AeVneQSptOGFIeXsHvmRq3Dfi8rf7bg1/GSY60jcsaXl7mZ4X/j5XMt8cx66O0MptuMsV
-	gJGWbKFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8alxgy33jWjnXMagw/l/0CRaIbDfLVcYqloF5nxf24g=; b=r2dcBwLU/o8xch
+	TGjxE2kAhQ2m4Hys9e3lvLjo2xZUR+LnV0SMcZ0D4U3H1WLRjyduSgPz9BCMPKGZUFD7BWfp4+gKK
+	65f4bmQDgIGw7jfOwydPL9QntvEN/K0WzzfOr38vp5kyU0lgOCoqPgKrM/SUlXz4CNv/mTSLVqXS2
+	gAX708y3N0GBXf1KNLmTtts048W2C8kQNqmHMQ+CmbwwZTnLF9R1ygABlZNAQf6OR/uYl+WUQ/CXu
+	gBcx27oYXJs4EKP3Q4omfj8g6OMIs95LG6xfHVmFdzKp4ZAqHHOMDxLKGVON842jQRqdvSsTZ1SmN
+	qZh9T5SIwtseO8bvzP3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ve8sd-000000021iD-1zOz;
-	Fri, 09 Jan 2026 09:34:03 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1ve9Ky-000000025Fi-3W00;
+	Fri, 09 Jan 2026 10:03:20 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ve8sY-000000021hj-33VO;
-	Fri, 09 Jan 2026 09:34:01 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4D34942AB1;
-	Fri,  9 Jan 2026 09:33:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF199C4CEF1;
-	Fri,  9 Jan 2026 09:33:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1767951238;
-	bh=LqMfhFsx34G5fyRzdDh6shoD9QjerKt/rKh74ytdLgw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WE7gX+gq0wx1Wq7wrOV3RGcgOvIMiiEmJkoV65bLh1b2zfCAnZ+ToFhKyyP7yS5i3
-	 AoxZXl4g8UbrSs27/1hL3F5OawlyhdGHab7zvIW45/xn7wHtw3Za/LXQiuyKRMbxkL
-	 4pOR70OO/1JwvbkianUddqbqxYyW+v4JYdsRxsCZDGd66T9kuQVfWcfRKWndLEEt5t
-	 pyY68F0TMXRVpuV5QFTwWTaaVgUdKo1fNY0rp9VSvwgQsNDNvK6z+wu0FfHSXWmLPe
-	 Y1Q7WGzGrH3LUWtMB8kKapgrxkOayIOP57Fwq1/SFMjT6kNtG1pO0mZT2LgBujuJsX
-	 +fiTnEg+37QCQ==
-Date: Fri, 9 Jan 2026 10:33:55 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Simon Horman <horms@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net v2] net: airoha: Fix schedule while atomic in
- airoha_ppe_deinit()
-Message-ID: <aWDLg6RzI4s2VgIH@lore-desk>
-References: <20260105-airoha-fw-ethtool-v2-1-3b32b158cc31@kernel.org>
- <20260108132218.GG345651@kernel.org>
+	id 1ve9Ku-000000025Dj-1Gdt
+	for linux-mediatek@lists.infradead.org;
+	Fri, 09 Jan 2026 10:03:18 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id DEAE71A273D;
+	Fri,  9 Jan 2026 10:03:13 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 941D860734;
+	Fri,  9 Jan 2026 10:03:13 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 34B8F103C88BF;
+	Fri,  9 Jan 2026 11:02:59 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1767952990; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding; bh=8alxgy33jWjnXMagw/l/0CRaIbDfLVcYqloF5nxf24g=;
+	b=Y+viVM2eBcACHs1bFBv3S7gQrQfaczfHaNQ3EhNbsOYqV4YgrWL4CYTM+sACmVJekaTv96
+	tROuxIVWWeR7BIAmuUBhMVpRmtXG4dhprIddP+E/sXgL5YRhFzBglDCOOuelsEM04L3geh
+	vFeWDyCpX1rwMTN/uPPfHy26MVpSS9aEM98/7IOJsFdUfyVmFhf7tyHUN86+3FMSyOqiBT
+	TjHoSObyU0jGMwPtSdy5prytFkn6CmNCvtvTtdVkK0blN7rbo+GVZuhhvFHLzRR+xtoZQc
+	idY4z178sGyslRew5Iqcg9xDv9P+g0jFFo3uENvfarCn2sVTSyIgdwUuY5pH3g==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Subject: [PATCH v2 0/6] drm/bridge: convert users of of_drm_find_bridge(),
+ part 3
+Date: Fri, 09 Jan 2026 11:02:49 +0100
+Message-Id: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-0-8d7a3dbacdf4@bootlin.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qg/4Vam8mbknzqoZ"
-Content-Disposition: inline
-In-Reply-To: <20260108132218.GG345651@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAEnSYGkC/52NQQ6DIBQFr2JYlwaoLdpV79EYg/DRnygYoKaN8
+ e5F0xN0OfOSNyuJEBAiuRcrCbBgRO8yiFNB9KBcDxRNZiKYuDHOJDVhol1Akxc1jl7THtL8Srt
+ vvW0tOtP+9gstbV1LUFLL2pJ8OQew+D5yzybzgDH58DnqC9/tn6GFU0bBlpW6clmJCh6d92lEd
+ 9Z+Is22bV+aMdqI6gAAAA==
+X-Change-ID: 20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-4f997ea7c79f
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+ Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Magnus Damm <magnus.damm@gmail.com>
+Cc: Marek Szyprowski <m.szyprowski@samsung.com>, 
+ Hui Pu <Hui.Pu@gehealthcare.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ imx@lists.linux.dev, linux-mediatek@lists.infradead.org, 
+ linux-samsung-soc@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>
+X-Mailer: b4 0.14.3
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260109_013358_787559_F6E87232 
-X-CRM114-Status: GOOD (  18.84  )
+X-CRM114-CacheID: sfid-20260109_020316_600245_0EDED1B8 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,63 +107,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This series converts many DRM drivers from the now deprecated
+of_drm_find_bridge() to its replacement of_drm_find_and_get_bridge() which
+allows correct bridge refcounting. Where applicable it also converts
+per-driver "next_bridge" pointers to the unified drm_bridge::next_bridge
+which puts the reference automatically on bridge deallocation.
 
---qg/4Vam8mbknzqoZ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This is part of the work to support hotplug of DRM bridges. The grand plan
+was discussed in [0].
 
-> On Mon, Jan 05, 2026 at 09:43:31AM +0100, Lorenzo Bianconi wrote:
-> > airoha_ppe_deinit() runs airoha_npu_ppe_deinit() in atomic context.
-> > airoha_npu_ppe_deinit routine allocates ppe_data buffer with GFP_KERNEL
-> > flag. Rely on rcu_replace_pointer in airoha_ppe_deinit routine in order
-> > to fix schedule while atomic issue in airoha_npu_ppe_deinit() since we
-> > do not need atomic context there.
->=20
-> Hi Lorenzo,
+Here's the work breakdown (➜ marks the current series):
 
-Hi Simon,
+ 1. ➜ add refcounting to DRM bridges struct drm_bridge,
+      based on devm_drm_bridge_alloc()
+    A. ✔ add new alloc API and refcounting (v6.16)
+    B. ✔ convert all bridge drivers to new API (v6.17)
+    C. ✔ kunit tests (v6.17)
+    D. ✔ add get/put to drm_bridge_add/remove() + attach/detach()
+         and warn on old allocation pattern (v6.17)
+    E. ➜ add get/put on drm_bridge accessors
+       1. ✔ drm_bridge_chain_get_first_bridge(), add cleanup action (v6.18)
+       2. ✔ drm_bridge_get_prev_bridge() (v6.18)
+       3. ✔ drm_bridge_get_next_bridge() (v6.19)
+       4. ✔ drm_for_each_bridge_in_chain() (v6.19)
+       5. ✔ drm_bridge_connector_init (v6.19)
+       6. … protect encoder bridge chain with a mutex
+       7. ➜ of_drm_find_bridge
+          a. ✔… add of_drm_get_bridge(), convert basic direct users
+	        (v6.20?, one driver still pending)
+	  b. … convert direct of_drm_get_bridge() users, part 2
+	  c. ➜ convert direct of_drm_get_bridge() users, part 3
+	  d.   convert direct of_drm_get_bridge() users, part 4
+	  e.   convert bridge-only drm_of_find_panel_or_bridge() users
+       8. drm_of_find_panel_or_bridge, *_of_get_bridge
+       9. ✔ enforce drm_bridge_add before drm_bridge_attach (v6.19)
+    F. ✔ debugfs improvements
+       1. ✔ add top-level 'bridges' file (v6.16)
+       2. ✔ show refcount and list lingering bridges (v6.19)
+ 2. … handle gracefully atomic updates during bridge removal
+    A. ✔ Add drm_dev_enter/exit() to protect device resources (v6.20?)
+    B. … protect private_obj removal from list
+ 3. … DSI host-device driver interaction
+ 4. ✔ removing the need for the "always-disconnected" connector
+ 5. finish the hotplug bridge work, moving code to the core and potentially
+    removing the hotplug-bridge itself (this needs to be clarified as
+    points 1-3 are developed)
 
->=20
-> If I understand things correctly the key problem here is that
-> an allocation with GFP_KERNEL implies GFP_RECLAIM and thus may sleep.
-> But RCU read-side critical sections are not allowed to sleep in non-RT
-> kernels.
+[0] https://lore.kernel.org/lkml/20250206-hotplug-drm-bridge-v6-0-9d6f2c9c3058@bootlin.com/#t
 
-yes, right, RCU section is atomic.
+This work is a continuation of the work to correctly handle bridge
+refcounting for existing of_drm_find_bridge(). The ground work is in:
 
->=20
-> If so, I think it would be clearer to describe the problem along those
-> lines. But maybe it is just me.
+ - commit 293a8fd7721a ("drm/bridge: add of_drm_find_and_get_bridge()")
+ - commit 9da0e06abda8 ("drm/bridge: deprecate of_drm_find_bridge()")
+ - commit 3fdeae134ba9 ("drm/bridge: add next_bridge pointer to struct drm_bridge")
 
-This patch is already in Linus's tree.
+The whole conversion is split in multiple series to make the review process
+a bit smoother:
 
-Regards,
-Lorenzo
+ - Part 2: mostly drivers in drivers/gpu/drm/bridge [2]
+ - Part 3: other drivers, low-medium complexity [this series]
+ - Part 4: other drivers, complex (not sent yet)
 
->=20
-> >=20
-> > Fixes: 00a7678310fe3 ("net: airoha: Introduce flowtable offload support=
-")
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > ---
-> > Changes in v2:
-> > - Update commit log.
-> > - Link to v1: https://lore.kernel.org/r/20251223-airoha-fw-ethtool-v1-1=
--1dbd1568c585@kernel.org
->=20
-> ...
+[2] https://lore.kernel.org/all/20260107-drm-bridge-alloc-getput-drm_of_find_bridge-2-v1-0-283d7bba061a@bootlin.com/
 
---qg/4Vam8mbknzqoZ
-Content-Type: application/pgp-signature; name=signature.asc
+Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+---
+Changes in v2:
+- Patch 3: fix missing drm_bridge_put()
+- Link to v1: https://lore.kernel.org/r/20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-v1-0-ef48a517828e@bootlin.com
 
------BEGIN PGP SIGNATURE-----
+---
+Luca Ceresoli (6):
+      drm/bridge: dw-hdmi: convert to of_drm_find_and_get_bridge()
+      drm/meson/dw-hdmi: convert to of_drm_find_and_get_bridge()
+      drm/imx/dw-hdmi: convert to of_drm_find_and_get_bridge()
+      drm/mediatek: mtk_hdmi*: convert to of_drm_find_and_get_bridge()
+      drm/exynos: hdmi: convert to of_drm_find_and_get_bridge()
+      drm: rcar-du: lvds: convert to of_drm_find_and_get_bridge()
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaWDLgwAKCRA6cBh0uS2t
-rIB3AP0a1KHAx3razHj4kPIvhW1x66e1t9N5r9lmaYx8cGtOIAEAxyyu/zyv/K1O
-eZDfQKJdH04RONQj1O6W3ginvMBLPAw=
-=bX6O
------END PGP SIGNATURE-----
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c   |  7 +++----
+ drivers/gpu/drm/exynos/exynos_hdmi.c        |  4 +++-
+ drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c     |  7 +++++--
+ drivers/gpu/drm/mediatek/mtk_hdmi.c         |  4 ++--
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.c  |  4 ++--
+ drivers/gpu/drm/mediatek/mtk_hdmi_common.h  |  1 -
+ drivers/gpu/drm/mediatek/mtk_hdmi_v2.c      |  4 ++--
+ drivers/gpu/drm/meson/meson_dw_hdmi.c       |  6 +++++-
+ drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c | 10 +++++++++-
+ 9 files changed, 31 insertions(+), 16 deletions(-)
+---
+base-commit: 13450a1f72fd24c405626c881ae7c9ce5f0d2a28
+change-id: 20260107-drm-bridge-alloc-getput-drm_of_find_bridge-3-4f997ea7c79f
 
---qg/4Vam8mbknzqoZ--
+Best regards,
+-- 
+Luca Ceresoli <luca.ceresoli@bootlin.com>
+
 
