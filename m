@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA1B4D167FC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jan 2026 10:03:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5E6AD167F3
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jan 2026 10:04:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e7yKYTktaJ5QBYIv/riMau9mtMOQxGCnsiL5HskQuQs=; b=2RTCFegAMbXe3X3fqt30ahb3Us
-	vdeL4iKlPQYegqudk15Qnm+f9bfymCzN0/yDMEXYJZNeGFH8yvERCj+6BN7tcmL5bGmCtWVeKCXpb
-	ElsSnV3rqhmixvlxA9gHyh2lLZeoNKoS40d1rWC1YuGR4ZIfp1UKCjHGrNmdQ7kn0pxqDzRkwDXcp
-	Gly7Z/VK1Lq9fsq+2Ls0cNo6oJGzXsD70n9mxGZgwKC2Xq+DYgun7SCdn7R0EiP1SBAzqe/flzO24
-	vciTiVs+InCqN8Y8VUcEEdMSIamv1NQg2M0AuUZbVFDNgt7+XYbeMQjYQ2Sg1LOVp3+SEXXhA2iib
-	PSXdttmw==;
+	bh=SA0cq6vwDyGvyP6SIBlq9HJkNg1w6ZLReUneEYt+F+A=; b=ZfWG/PCA0Y6iYDyd4v4F/1FDne
+	4agWMO/Mj+m6hcC3rVeUkty+0ARDnJJDn3y0PsOjuXunNSUhVvKjnpif2Jgt/1YvqIjpiCSOKV5Ad
+	6bbp8cJga1GyIO6hDoskKbaMrVDvl7Rvdq9ZrOUUJCkv2naj54Jmglux7z9pHtBAeIfWqsmxq89eb
+	nTCxsyN/s4M6baGRign1/pt2qz8xB6poKkskpBFo4Kmm7uWuzdLcBUshG5CItoLZw0dDHipoLKSfS
+	e9BDIeh3hILEHvJu4VNSoa9BOM0KZh1fWb8hv+YJW1SbDS4uUhjA9okl24ag4UkqTO6ZAuz85/s7m
+	77cwimdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ve9LN-000000025an-3dXn;
-	Fri, 09 Jan 2026 10:03:45 +0000
+	id 1ve9Le-000000025nJ-06Yy;
+	Fri, 09 Jan 2026 10:04:02 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ve9LM-000000025XM-0Ys6
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 09 Jan 2026 10:03:44 +0000
+	id 1ve9LW-000000025i2-0pqP;
+	Fri, 09 Jan 2026 10:03:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=e7yKYTktaJ5QBYIv/riMau9mtMOQxGCnsiL5HskQuQs=; b=PyNYD3awRQ+Jss/rjMufFoChF3
-	ALDsDVdNQoTRqb05uFROLO6hh6NWi+LJdoaE8Toa8W00atkKd7UumyUx0oGnUp6z1DIuh+WikgFgI
-	2u2chP3Eb0oNYAJZ9tkrcj4PeMA5Zr/ZvrYmE/y+9Uw5MwqQq+eGmCpSP8WCpJtpeDJkgbrz90QtU
-	zeDJJOTj3zRunLL27DcogHM9h+AgiSRbTFG9S+f8IZf04jT24CkJ7jBu/mqEuwxoyiRBpYGZdRwgm
-	x7RI4JUIiaialsKYA9sE0p5aEnxdefWcwtNInGpYefU/ladUXcvVa0d/RWZWS5pfdh1bYAycCj+3u
-	jqqQkyhg==;
+	bh=SA0cq6vwDyGvyP6SIBlq9HJkNg1w6ZLReUneEYt+F+A=; b=GNQqp9bgz5H71YLwWny1BbODSI
+	BARNYr7eMSBkmvmMLoMkxBn4YdTLDFVnbrjlEAVWNVYpNxv7rTagNgBos4Z+V9br4BH+/FFfX0iG9
+	dGltZHBCAoX1K7bjgNLEqt6HFxdVoj/NXb3e9DU98muPjPpBT6o3aSl1NmBHlNjgOc0eqPNzlWkAp
+	d0/Ici4+5cwQvXV9L+Wy7jHJA7/XjIS0PzkdmhZSguXaZfpFuwp9YsBmH6RZ4S+55/aRSfPsN5rfK
+	rIPOk2pljzATXfMsOpwqDvYP6ZBj6eCBrebXwML0oNrJdZOPHtqAqMj5SlCjwyNwufgydA55qoo1a
+	SjC0USmg==;
 Received: from smtpout-03.galae.net ([185.246.85.4])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ve9LH-0000000Exhf-1ZZX
-	for linux-mediatek@lists.infradead.org;
-	Fri, 09 Jan 2026 10:03:42 +0000
+	id 1ve9LS-0000000Expm-2Xfu;
+	Fri, 09 Jan 2026 10:03:53 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 613F74E4201B;
-	Fri,  9 Jan 2026 10:03:32 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id EF4124E4201B;
+	Fri,  9 Jan 2026 10:03:49 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 33F5A60734;
-	Fri,  9 Jan 2026 10:03:32 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 32C3E103C88A8;
-	Fri,  9 Jan 2026 11:03:24 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id C397160734;
+	Fri,  9 Jan 2026 10:03:49 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A7926103C88D0;
+	Fri,  9 Jan 2026 11:03:42 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1767953009; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1767953028; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=e7yKYTktaJ5QBYIv/riMau9mtMOQxGCnsiL5HskQuQs=;
-	b=0Y4aL+WhrqX8pFZoSHXt+GHmfUVCLeSuTr+X3dQAvdxLYKoCo/T47xKtVtnl13bEHRzgER
-	OiUc1Rxr0DZAN1DpP/MZ8T9yxTDShFSiU4WPVzdnZL7JRdZMto8U/SaRiuKcT/Zm2eY9Ig
-	AYWB4UoLm+w/n+7PmJttTEbXGZmEeIN1D1WKUrOdGEXIKqgYrX/S7dIYT5PoCgKjwR24jH
-	YQEUIK0pSwHRjiqSXEg5Uc/ybUUVKGaItruo4ogLPrNsGUlN3lRyC8UhJjUQJL0KSzk6OQ
-	TJBwqIM+d/FQizQHv8ds7ex8LeiOIpHdOfpBgG1dsNQpYPq8UGexwV/I/4OC5Q==
+	bh=SA0cq6vwDyGvyP6SIBlq9HJkNg1w6ZLReUneEYt+F+A=;
+	b=KSZfI1SaMumTTlA7aUO6fknx5ClPCFywopEJddmgU9FBvO0pmHTfpu2e904RhR6gPPoMSB
+	ZPe00R76Xz/t/ZaLShL8VZs2/VQbhzctQtsji7KJ4/m4s9zXyFup7MJcoAA8x8Zv7qeSoR
+	Pq18G1V6UTxRFRfxEIHCBQkmOxiOHdSF7fb5Pzu8WyzjbAczpR7CYY5L7Jmp7bCyerI1RI
+	WRVm2ww91LMZFoNvTkNMzRhdIHSA2YI64XzE99H+xp5GGHdf1oLkQ7Pu3fXg2sjZAhss1E
+	NXN9D3QTghu/aY1qyCeS6OHAoXBaM+hwIbn+Sm4gLdBkf1Gqh+Fr9rsU3YGqyA==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Fri, 09 Jan 2026 11:02:52 +0100
-Subject: [PATCH v2 3/6] drm/imx/dw-hdmi: convert to
+Date: Fri, 09 Jan 2026 11:02:55 +0100
+Subject: [PATCH v2 6/6] drm: rcar-du: lvds: convert to
  of_drm_find_and_get_bridge()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-3-8d7a3dbacdf4@bootlin.com>
+Message-Id: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-6-8d7a3dbacdf4@bootlin.com>
 References: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-0-8d7a3dbacdf4@bootlin.com>
 In-Reply-To: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-0-8d7a3dbacdf4@bootlin.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -104,8 +102,8 @@ Cc: Marek Szyprowski <m.szyprowski@samsung.com>,
 X-Mailer: b4 0.14.3
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260109_100339_488939_8BA85529 
-X-CRM114-Status: GOOD (  13.81  )
+X-CRM114-CacheID: sfid-20260109_100350_744457_7A8389E0 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,50 +122,50 @@ of_drm_find_bridge() is deprecated. Move to its replacement
 of_drm_find_and_get_bridge() which gets a bridge reference, and ensure it
 is put when done.
 
+Since the companion bridge pointer is used by .atomic_enable, putting its
+reference in the remove function would be dangerous. Use .destroy to put it
+on final deallocation.
+
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-
 ---
+ drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-Changes  in v2:
-- add missing drm_bridge_put() on component_add() failure
-- reorder lines in dw_hdmi_imx_remove()
----
- drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c b/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c
-index 07e5f96202d4..398f3cce5532 100644
---- a/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c
-+++ b/drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c
-@@ -241,7 +241,7 @@ static int dw_hdmi_imx_probe(struct platform_device *pdev)
- 	if (IS_ERR(hdmi->hdmi))
- 		return PTR_ERR(hdmi->hdmi);
+diff --git a/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c b/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c
+index 001b3543924a..227818e37390 100644
+--- a/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c
++++ b/drivers/gpu/drm/renesas/rcar-du/rcar_lvds.c
+@@ -633,6 +633,13 @@ static bool rcar_lvds_mode_fixup(struct drm_bridge *bridge,
+ 	return true;
+ }
  
--	hdmi->bridge = of_drm_find_bridge(np);
-+	hdmi->bridge = of_drm_find_and_get_bridge(np);
- 	if (!hdmi->bridge) {
- 		dev_err(hdmi->dev, "Unable to find bridge\n");
- 		dw_hdmi_remove(hdmi->hdmi);
-@@ -249,8 +249,10 @@ static int dw_hdmi_imx_probe(struct platform_device *pdev)
++static void rcar_lvds_destroy(struct drm_bridge *bridge)
++{
++	struct rcar_lvds *lvds = bridge_to_rcar_lvds(bridge);
++
++	drm_bridge_put(lvds->companion);
++}
++
+ static int rcar_lvds_attach(struct drm_bridge *bridge,
+ 			    struct drm_encoder *encoder,
+ 			    enum drm_bridge_attach_flags flags)
+@@ -648,6 +655,7 @@ static int rcar_lvds_attach(struct drm_bridge *bridge,
+ 
+ static const struct drm_bridge_funcs rcar_lvds_bridge_ops = {
+ 	.attach = rcar_lvds_attach,
++	.destroy = rcar_lvds_destroy,
+ 	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
+ 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
+ 	.atomic_reset = drm_atomic_helper_bridge_reset,
+@@ -740,7 +748,7 @@ static int rcar_lvds_parse_dt_companion(struct rcar_lvds *lvds)
+ 		goto done;
  	}
  
- 	ret = component_add(&pdev->dev, &dw_hdmi_imx_ops);
--	if (ret)
-+	if (ret) {
-+		drm_bridge_put(hdmi->bridge);
- 		dw_hdmi_remove(hdmi->hdmi);
-+	}
- 
- 	return ret;
- }
-@@ -260,6 +262,7 @@ static void dw_hdmi_imx_remove(struct platform_device *pdev)
- 	struct imx_hdmi *hdmi = platform_get_drvdata(pdev);
- 
- 	component_del(&pdev->dev, &dw_hdmi_imx_ops);
-+	drm_bridge_put(hdmi->bridge);
- 	dw_hdmi_remove(hdmi->hdmi);
- }
- 
+-	lvds->companion = of_drm_find_bridge(companion);
++	lvds->companion = of_drm_find_and_get_bridge(companion);
+ 	if (!lvds->companion) {
+ 		ret = -EPROBE_DEFER;
+ 		goto done;
 
 -- 
 2.52.0
