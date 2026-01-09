@@ -4,119 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EE7DD16804
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jan 2026 10:34:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FD4DD16818
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jan 2026 11:44:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kCeTL5DyL4OpVceWW2dtJZK2fvnfNct2KD6UucHZ0lo=; b=LTSI9HfT5LmLrW11wzm2Dq2gFD
-	VdRH1CL/53qC7crYQKaOyzaIHiWOcKjRJt5wt0EI3vWOeTNJxUfb41C1WfHler2L/GV+Iq7UHxh//
-	MRBpMAMn1mJQFndfELBRpxpEGzl221sMZtYCQxX5QsaWwFBJEgIso3cPiLUdvkvHhdHJCRBwGNL9B
-	jUF/LlwEJ3efL0dP2ofgVFC/Rv1QxnlbWUtvNYhh7CZ+9d7I5gxsfvH05RsmyM5EDvGQ7qemz7tOe
-	R0Pr6qUn9WU+FErXQckrIrtq7xQI6Cdg5lSM1tcvSgp5PHCMuZhWuATG+vIrpbuguDOoP0+VYdWZl
-	DrH9AboQ==;
+	bh=g2F0eV3n9YsEIZ8zAY/78l+vztA5IyWH1QImA4ZCWwU=; b=rYJIOYXJ7xG3LSnOGUw0PE7LrZ
+	snLankNCyaOhUK6zipyw0QJ6CSexfPRL48SIeoZrnVnvFcq9vtKdNAglEYJKSYQgdtG56jG1vfsXO
+	AeWdgSs9LJ8pUm0dJr4ANzj6/EqbsQHs7Rp8fWzFr8k5gLvXoCoqte/WLKqUMaMsNJkM0LUTQlooc
+	3lQHXH1rmbiRjJ2E/NcSiLkcAVqDDbNJES2gQ5Uz1YVzeMOfKYFdtqjrIhSkP+ZKaGjQfr88dy+Bw
+	5HLNZklyo6EFVnh0NfajVhRzDrHjTOP1vwtqft1UBVwzAmka+mYEDwzXr1mxV+xbmYG3jtqgvPJ6q
+	pj+Edc3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ve9oo-000000028nH-2Eom;
-	Fri, 09 Jan 2026 10:34:10 +0000
-Received: from mail-ot1-x364.google.com ([2607:f8b0:4864:20::364])
+	id 1veAue-00000002EjH-30IC;
+	Fri, 09 Jan 2026 11:44:16 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1ve9om-000000028mP-0G0g
-	for linux-mediatek@lists.infradead.org;
-	Fri, 09 Jan 2026 10:34:09 +0000
-Received: by mail-ot1-x364.google.com with SMTP id 46e09a7af769-7c76f65feb5so3270778a34.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Jan 2026 02:34:07 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1767954846; x=1768559646;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kCeTL5DyL4OpVceWW2dtJZK2fvnfNct2KD6UucHZ0lo=;
-        b=jmwCksvLU9Z1wy0vyBUwFWy4KG5pp7NuAU3FYcZMO26L1tiwCTdkEZ48/piFkA1LDG
-         ELX0zI3udn6QZzO5EyzUDHoaujkfL0BoPm3X/rzLR1Qc3cXqxATMTV/4W0CwBaZOzRsB
-         C3hvZZBOlqDXfDrvShlY4GAcelvttdh5fh9Pb1I8qQ89UBFThqPG8KiMMmVlogr6YOzU
-         +1aLJYMNOXUuvbIYTaV+KB1VI54nmV6NPUQ3Qpw5mXdZpg9c+8/W2kPOmegYFShQ5sVw
-         qxpAX6gM1eVCnF74lzo9aKhx7Pvz1+WKwcE/5SCjiaSm8XyF2uVXsNoq8Z34h4QrUsQm
-         Pj1A==
-X-Forwarded-Encrypted: i=1; AJvYcCWOR9v/g84PJDYh0LlTaE0iiUCSoTLN5+c4ZsGm4m9P8FViElCMzkDm7FY0uo8z2uxsdjIdKcL/6wpzs+EKPw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw2G/MFNC5ycPfamFTSXWjapfQKC9dQ/FZDctFou+uD7TMDsCOo
-	LNu+HKTQxI02JOw42x3EMyBrjUHX4PmUX8meerIMwMr1xzXr3bW3AVOWak53MEORj8UJ8HSuIMQ
-	3LIep2v6tV2ZeVt7MT7Q4CPztdWISOVb96QCFw9AZ+bSbm/HEGcAsZcU+BpZBCMZU4G35cJ2FtW
-	VQLYyPcNC/mHbdkWMgayyrH2JlN9u6OBlAl8hrKXOlHc4QHEx9P9FxEmm2EeSEtycMujUcuPhsv
-	+jlwYdmM7aNcQdZXMVV8Oyd4k9JU00/aA==
-X-Gm-Gg: AY/fxX7itcuVC7pnmqQiNL5BppB7+jK4+qc6wCmyZXLDa103nz7P4D+pymBCD+Bq0vE
-	4SrbdemyumgP4Rp0Ll4KzcDXTsJ+YwH7elttyKcCMu5aKz4q0dqyRNSHk+qJ6h/wsTNryveLydy
-	TbA6hRTRUZ4N01RDaOEqV4wMqVizio06YmzgFZ1+oOsOTFHG86vVZFi2HINgHBhCWUtmsdDPJK+
-	/xiWFfboUqFQRijfqah+sQ+nzNW8MGsFnnhWWuLwKSihKvTL8TWuCyL6aHK8NVUFOs1uye4nVoD
-	q7SXR9FGS5sby4zacux0Fv08vR39p7DkgbwmcsrkIqFJ253lVjpM1g5u0W9Umci00sS82Zhvf9G
-	Y9hZBcPLRXs2hRWpKDd1iH87q5zYWAHJLdh6PbvmRJV9g0FTOa4TWtyIthifnfckAMdHNyy3cx/
-	WO9tsAWMDJbxV1FNwVy45uwQpCxSRETcvDEag6V38T4IZ9KclJYd0=
-X-Google-Smtp-Source: AGHT+IFB7P6M3MiwMlwDIqFdmOAlvUH++nAwsn/7g5po5JZ6GL9GoiqddpXfwE6P2lBe3Lh4n6AhRYiqmBnL
-X-Received: by 2002:a05:6830:718c:b0:7c7:2cd3:5baa with SMTP id 46e09a7af769-7ce50a706bamr6102675a34.34.1767954846337;
-        Fri, 09 Jan 2026 02:34:06 -0800 (PST)
-Received: from smtp-us-east1-p01-i01-si01.dlp.protect.broadcom.com (address-144-49-247-120.dlp.protect.broadcom.com. [144.49.247.120])
-        by smtp-relay.gmail.com with ESMTPS id 46e09a7af769-7ce4789e847sm1742665a34.6.2026.01.09.02.34.05
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Jan 2026 02:34:06 -0800 (PST)
-X-Relaying-Domain: broadcom.com
-X-CFilter-Loop: Reflected
-Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-8b259f0da04so1025983485a.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Jan 2026 02:34:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=broadcom.com; s=google; t=1767954845; x=1768559645; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=kCeTL5DyL4OpVceWW2dtJZK2fvnfNct2KD6UucHZ0lo=;
-        b=YtO8jBOv1bA34u1WS+9DVeEngZp36uKwFRG2tF1iz1kPXFWV1/jag0qhli1KnexEln
-         4F6afXtA5amBQTjFOySVfmD/wED6oNFmUmKYWvxr3cyVY13qcQsIFc8/62+uY4FEDki8
-         KeIZjeN/4XidPKsTF60fsN7UY9MoRtH9Dtd9M=
-X-Forwarded-Encrypted: i=1; AJvYcCUgIMBpIjo2SUfx9cYDFhUXY7CZr3ssAGXo90sJobBd7qsLRBrzYik62hp2m85Fs+JdbKR+Vt9SMHH0TX9Ipg==@lists.infradead.org
-X-Received: by 2002:a05:620a:7088:b0:8c3:87eb:f with SMTP id af79cd13be357-8c3893ef6d0mr1155257985a.53.1767954845216;
-        Fri, 09 Jan 2026 02:34:05 -0800 (PST)
-X-Received: by 2002:a05:620a:7088:b0:8c3:87eb:f with SMTP id af79cd13be357-8c3893ef6d0mr1155254585a.53.1767954844715;
-        Fri, 09 Jan 2026 02:34:04 -0800 (PST)
-Received: from shivania.lvn.broadcom.net ([192.19.161.250])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-890770cc73dsm73691156d6.7.2026.01.09.02.34.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Jan 2026 02:34:04 -0800 (PST)
-From: Shivani Agarwal <shivani.agarwal@broadcom.com>
-To: stable@vger.kernel.org,
-	gregkh@linuxfoundation.org
-Cc: James.Bottomley@HansenPartnership.com,
-	martin.petersen@oracle.com,
+	id 1veAub-00000002Eir-43q7;
+	Fri, 09 Jan 2026 11:44:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1767959050;
+	bh=TtLlgylOkTFKzSw6a6/2PGbha2rjuDo428nB5/mFAMQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=WNSvGJ/+rRA+IXjIOw4SPhHbcUGrASMHQvw88vQzGgH/9SLqP0zMS9uzvdoY/vZ3W
+	 s2E9BRy0XLBfwavE+whw9iGoPbR956iNJxyNGzhWhzqDVyCAbA/UngjgfEDEFqSZk8
+	 rWB1qu9Zb7e5yXpcsPE8vbRFKk38nl6EuhXamBH/RXMQLZ2ynqMVzCdB+OXHUx43ln
+	 7jhHolf6YmIx5/LS0PYAkR0k5LfFYg3GfLMhVN45DiEq/SxmEKYylbqFkRYZl88ESM
+	 mf307Qx6km0NbnAUL/VICqiCi7V7B5Vg6ICa65CA5euVuzMKj6qK4NQVCjkqLpj/KU
+	 YKdiTKImENVlQ==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 417F017E0FF0;
+	Fri,  9 Jan 2026 12:44:10 +0100 (CET)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: lee@kernel.org
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	sthumma@codeaurora.org,
-	JBottomley@Parallels.com,
-	santoshsy@gmail.com,
-	linux-scsi@vger.kernel.org,
+	sjoerd@collabora.com,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	ajay.kaher@broadcom.com,
-	alexey.makhalov@broadcom.com,
-	vamsi-krishna.brahmajosyula@broadcom.com,
-	yin.ding@broadcom.com,
-	tapas.kundu@broadcom.com,
-	Sanjeev Yadav <sanjeev.y@mediatek.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	Peter Wang <peter.wang@mediatek.com>,
-	Sasha Levin <sashal@kernel.org>,
-	Shivani Agarwal <shivani.agarwal@broadcom.com>
-Subject: [PATCH v5.10] scsi: core: ufs: Fix a hang in the error handler
-Date: Fri,  9 Jan 2026 02:13:02 -0800
-Message-Id: <20260109101302.676694-1-shivani.agarwal@broadcom.com>
-X-Mailer: git-send-email 2.25.1
+	kernel@collabora.com
+Subject: [PATCH] dt-bindings: mfd: syscon: Allow syscon compatible for mediatek,mt7981-topmisc
+Date: Fri,  9 Jan 2026 12:43:56 +0100
+Message-ID: <20260109114356.36454-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-DetectorID-Processed: b00c1d49-9d2e-4205-b15f-d015386d3d5e
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260109_023408_132684_53868F89 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20260109_034414_253035_DA07AD49 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,72 +80,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sanjeev Yadav <sanjeev.y@mediatek.com>
+Commit a95419ff9f21 ("dt-bindings: mfd: syscon: Add mt7981-topmisc")
+added the mediatek,mt7981-topmisc compatible to the `select` block
+which is used only for compatibility with older dtschema, but did
+not add it in the actual block allowing to specify the "syscon"
+fallback compatible, which is required for such node to do anything
+meaningful in the end.
 
-[ Upstream commit 8a3514d348de87a9d5e2ac00fbac4faae0b97996 ]
+Add the mediatek,mt7981-topmisc compatible in the right list to
+allow specifing compatible = "mediatek,mt7981-topmisc", "syscon"
+in the relevant devicetree node.
 
-ufshcd_err_handling_prepare() calls ufshcd_rpm_get_sync(). The latter
-function can only succeed if UFSHCD_EH_IN_PROGRESS is not set because
-resuming involves submitting a SCSI command and ufshcd_queuecommand()
-returns SCSI_MLQUEUE_HOST_BUSY if UFSHCD_EH_IN_PROGRESS is set. Fix this
-hang by setting UFSHCD_EH_IN_PROGRESS after ufshcd_rpm_get_sync() has
-been called instead of before.
-
-Backtrace:
-__switch_to+0x174/0x338
-__schedule+0x600/0x9e4
-schedule+0x7c/0xe8
-schedule_timeout+0xa4/0x1c8
-io_schedule_timeout+0x48/0x70
-wait_for_common_io+0xa8/0x160 //waiting on START_STOP
-wait_for_completion_io_timeout+0x10/0x20
-blk_execute_rq+0xe4/0x1e4
-scsi_execute_cmd+0x108/0x244
-ufshcd_set_dev_pwr_mode+0xe8/0x250
-__ufshcd_wl_resume+0x94/0x354
-ufshcd_wl_runtime_resume+0x3c/0x174
-scsi_runtime_resume+0x64/0xa4
-rpm_resume+0x15c/0xa1c
-__pm_runtime_resume+0x4c/0x90 // Runtime resume ongoing
-ufshcd_err_handler+0x1a0/0xd08
-process_one_work+0x174/0x808
-worker_thread+0x15c/0x490
-kthread+0xf4/0x1ec
-ret_from_fork+0x10/0x20
-
-Signed-off-by: Sanjeev Yadav <sanjeev.y@mediatek.com>
-[ bvanassche: rewrote patch description ]
-Fixes: 62694735ca95 ("[SCSI] ufs: Add runtime PM support for UFS host controller driver")
-Signed-off-by: Bart Van Assche <bvanassche@acm.org>
-Link: https://lore.kernel.org/r/20250523201409.1676055-1-bvanassche@acm.org
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
-Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
-[Shivani: Modified to apply on 5.10.y]
-Signed-off-by: Shivani Agarwal <shivani.agarwal@broadcom.com>
+Fixes: a95419ff9f21 ("dt-bindings: mfd: syscon: Add mt7981-topmisc")
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/scsi/ufs/ufshcd.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/mfd/syscon.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 54e7d96bf..c1f232472 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -5766,10 +5766,12 @@ static void ufshcd_err_handler(struct work_struct *work)
- 		spin_unlock_irqrestore(hba->host->host_lock, flags);
- 		return;
- 	}
--	ufshcd_set_eh_in_progress(hba);
- 	spin_unlock_irqrestore(hba->host->host_lock, flags);
-+
- 	ufshcd_err_handling_prepare(hba);
-+
- 	spin_lock_irqsave(hba->host->host_lock, flags);
-+	ufshcd_set_eh_in_progress(hba);
- 	ufshcd_scsi_block_requests(hba);
- 	/*
- 	 * A full reset and restore might have happened after preparation
+diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
+index 55efb83b1495..fa023959e791 100644
+--- a/Documentation/devicetree/bindings/mfd/syscon.yaml
++++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+@@ -195,6 +195,7 @@ properties:
+               - mediatek,mt2701-pctl-a-syscfg
+               - mediatek,mt2712-pctl-a-syscfg
+               - mediatek,mt6397-pctl-pmic-syscfg
++              - mediatek,mt7981-topmisc
+               - mediatek,mt7988-topmisc
+               - mediatek,mt8135-pctl-a-syscfg
+               - mediatek,mt8135-pctl-b-syscfg
 -- 
-2.40.4
+2.52.0
 
 
