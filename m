@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AA1AD1681D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jan 2026 11:48:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EEBED1681B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jan 2026 11:48:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uF6AIs/uH4tMjgKmO2ECJOwP/Ue0TTC6JhmwVQ0vNDo=; b=v8RUErDrGBsA/e4fzpTyTIPYnU
-	eDL42tyuA7AyEeVpLMVxOQFWS8OhsYQuwksqsvsQW43peFstnRKaquIfiVaQdonAiy/A0WJLwHU9f
-	Xp5lPrmcAY83umlRL70tIhrLrwvjMfHCYbfRFbdh7fm/nbfWpNQm8H5/2kdF+SAfzmXyPEKKfNjOA
-	vpMiYDY7zwYA14J43owtiQyyIAuyhlPwtiY4xDu/AYmgpMTa7qHhGojtRPknxFNOg3G4gu3esKtKU
-	PVIeGbWjxxLK7E8zxvC2dp197Li3ZcHx2q3Gwtx7AcM7iuO9Ghzl4Wel/gcodG4B46Gw3kiMLAK1s
-	ozu4C4jg==;
+	bh=Vy88g06uz6Ng3NPolM23Xy5/bDIBtoIQDQpYB0kANeM=; b=VLlxVaw+UBd20fUQtkP7eSjPYd
+	ZGtYnwSi7+GgjSV1semXlxEReJz0wBE91xNoNLWZv4eduHHxpZWZ/EkLy6ND2CU/3DayNGe2EeGo/
+	DEdv3e8Jkb7pm4pCHlFt5HrhstkVq25bNInxeiflkSq7RoTwEsAUcuum9tWuVw1vIuInV45b2rF0g
+	eOBnGDmYl6ogF2XADdpf/+zl3XC/8R52ToY3397oYhKpYqB0H1YRKSroxZwJEAv4tdDEGAWn/jcTu
+	FO+NGzNy8//RfBR/2QUshqMmSsHuY+Fz8YhAiNrD2ILsvkCU0Ne+p7cjNodgIb9xuvRBW6QVCn5qB
+	GeK4GZsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veAyU-00000002FC0-2tUS;
-	Fri, 09 Jan 2026 11:48:14 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1veAyZ-00000002FGX-035e;
+	Fri, 09 Jan 2026 11:48:19 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veAyJ-00000002EvF-40Vb;
-	Fri, 09 Jan 2026 11:48:05 +0000
+	id 1veAyK-00000002Evd-1meB;
+	Fri, 09 Jan 2026 11:48:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1767959281;
-	bh=OzoPO+OLSyAg1VhmUybHI1KvXEqvQKuV5ZYinEoXMrA=;
+	bh=+llngvhmnPs9HezSMeUlJSXb6LBNkWf6GCZ6nFhSGF0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=JS7uinolBEIm7Lo+Qf8egLoJljMqYqx93segk2IjQ3sI7aW9eKG8WPlxIfFMYPRaS
-	 KPj7B00H/csozTrgZt4xvL4Y/gcLsT92xDLs472Z0t0eunpe/+R97PTKvCSRXaTFhH
-	 FfzsSMlJifdsEmg0134ozgk6K0b0DrYralTjxyiFKfiSB6MYwO8aDWY/SM5qN20MeV
-	 NQWppDySceCgLd+AeP8Un49atmRbsI4XcNLYwJoyhPtxblmwTNdZ7Pj5QTYuhWwFVd
-	 WpxtpX5vQZuXIDfljdW894V6jykiUqROoQUKznKAFLSaV6vYTMcRcu86HmFI2kMNL5
-	 m2ZKoo/H8vmOA==
+	b=l6OPOkQdfD6UkhygUDWjItRGvG2RP16MQBWJEZYqct4T5QDWSGeojLxgrja/d4Hv0
+	 13TluM/AgTRxuEFjRnADzr5LuMIiwgYi3k9wd1ys1Z7q7Wrxf8gnz4DxQLOp30uDcP
+	 0qVhe8kQDeZXkJGZpoAIEbt3WrgN/yAjLX4fzLF0t/8O2DywZudLO1LQkoeT4MtOP7
+	 lF5Jpwolvd5RrgvvUaUNtqHVwu9aHXxIIQM6t7Nx2fSjCLvfKefo5AB8EcpE17gTP4
+	 XiaovES653Fd89s6rz7UZzZoyBmLavkWhGwQvodKciy3O+oDq8fv1RNILH8WmIpGBR
+	 aXShuLicltHyw==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5A5A017E1380;
-	Fri,  9 Jan 2026 12:48:01 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A1E8417E1525;
+	Fri,  9 Jan 2026 12:48:00 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org
 Cc: robh@kernel.org,
@@ -56,17 +56,17 @@ Cc: robh@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH 09/11] arm64: dts: mediatek: mt8173-elm: Remove regulators from thermal node
-Date: Fri,  9 Jan 2026 12:47:45 +0100
-Message-ID: <20260109114747.37189-10-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 08/11] arm64: dts: mediatek: mt8173-elm: Fix dsi0 ports warning
+Date: Fri,  9 Jan 2026 12:47:44 +0100
+Message-ID: <20260109114747.37189-9-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260109114747.37189-1-angelogioacchino.delregno@collabora.com>
 References: <20260109114747.37189-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260109_034804_199953_D8348C2A 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20260109_034804_647124_A116FA9A 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,38 +81,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The only reason to have a regulator in the thermal node is to keep
-the CPU cores up while reading temperatures, but this is incorrect
-because the AUXADC Thermal IP doesn't need any regulators to work,
-at all.
-
-Since the thermal node was inherited only for adding vregs, remove
-it entirely.
-This change is safe also because, among other things, the actual
-driver never used those regulators anyway.
-
-This also fixes a dtbs_check warning.
+Since only a single port is present, remove the inner `ports`
+parent node and just declare the single port as `port`.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 5 -----
- 1 file changed, 5 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index dc064cdcedb5..a0573bc359fb 100644
+index 59813fff7833..dc064cdcedb5 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -1147,11 +1147,6 @@ &ssusb {
- 	status = "okay";
- };
+@@ -206,11 +206,9 @@ target: trip-point1 {
  
--&thermal {
--	bank0-supply = <&mt6397_vpca15_reg>;
--	bank1-supply = <&da9211_vcpu_reg>;
--};
--
- &uart0 {
+ &dsi0 {
  	status = "okay";
+-	ports {
+-		port {
+-			dsi0_out: endpoint {
+-				remote-endpoint = <&ps8640_in>;
+-			};
++	port {
++		dsi0_out: endpoint {
++			remote-endpoint = <&ps8640_in>;
+ 		};
+ 	};
  };
 -- 
 2.52.0
