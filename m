@@ -4,71 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9159D25032
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Jan 2026 05:52:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78552D2502E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Jan 2026 09:28:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/CKDTUszZa8m5D5wBdv3ua92FBu1OVj+TXW3ffFaVDs=; b=tVwxj+59TKvsIl
-	TMDxqwIOkvIuUwRJ3iKoL6jxkoN+xLqnM99AnJ42mZztFUIzNJokooMXhyE4nPUA5b+UmXt6tipQE
-	uSGthy+HnbNXeZ9WFBjbkUS6SH4jtj0Xb3ruyqsu3krQJf6ex8+NKv1aZmhqrn7pFlshd28TyBZkA
-	ODzzhBPMiNQWvNxBFm6cywrsdDyB29EtbYvG3pbBVIi/Lbu5nGtRw5hakt36tyo6qHzEunTf8Lx3Y
-	pIDkdaZMpeo0Oaz3XhuwWPgDEdOJdjtk4yVISTITXJDHpa6Myydex7v8GuMSWOHv8kQegmGf8crv+
-	+RraI4J5D6gZjjJqSDPA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=eIKMKN6QFHr6EqY/ECHzWAxzBkTh2Ff/RJPfOUt5Dro=; b=wyQTIv+amlU85g/guhCWq9eOvB
+	UPSqKHhAZY5ozm6Zm3DJnVKbsg5wWSthEy4bRfXZ1Hwz4V/aLoLHD5kFQk+mWiQqse3/NIS9LRqNo
+	R6QarvTq+LWpKv03yUhGS9oZtSrpfmI8+RSq8WEDng9ixw5c0ev/CNwuRd99q1wN9q97UMY0tM19W
+	+euYzieBkTEaAk8lMiVhtVpaxEQhnulB7cBNc9UUOsded/WocCcFpeXewZfInFfqhSvxe3o0aNYq1
+	YDLZoZAnh5LVThK+KO5aVP9/evYve08rmlxVfS8jgcDASRQ2iuWFY7RU52EGmJ88JTnXmWOFTqn1m
+	PbsHTjRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veoMw-00000003tsa-14JL;
-	Sun, 11 Jan 2026 05:52:06 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1verkh-0000000440x-05L2;
+	Sun, 11 Jan 2026 09:28:51 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1veoMs-00000003tr0-3IdB
+	id 1verke-0000000440W-41CG
 	for linux-mediatek@lists.infradead.org;
-	Sun, 11 Jan 2026 05:52:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 77E0B444AE
-	for <linux-mediatek@lists.infradead.org>; Sun, 11 Jan 2026 05:52:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A977C2BCAF
-	for <linux-mediatek@lists.infradead.org>; Sun, 11 Jan 2026 05:52:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768110722;
-	bh=gFOqW5EllA9fOAMNFfoSxTnUWA45XGayQuA1pDHkobg=;
-	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc:From;
-	b=EaG/5oDAR9smlSfbzttjy3FKgAcfmuUQr5RohlvPT82k8gDogNTuPeVkhnNnUzN1Q
-	 PUOYV9pyWf373DPlkm8bWa7AsjFvsbAbUFYXOSuK0uzvYWRb876UbNBjf7MUQ5hkon
-	 bUFWMcwSnyeeICSZEdVry0FTr34MGTriVAUR5JZOHnEWo7WtKX1Zar86vjFoWEP31k
-	 gk+I+morpNnQnEeEmDnBg7M0hgwxAV8m2Ct2Z/e+uEEtP48pakFbj9avoda79dJcxD
-	 ypgQlN9Ed8KhEcF7CrAD1jQYrdgMLb/QRKIT7Zjo8LxcnbiYvQXEigeCDsGKtRwxxs
-	 vQTRaVoQZ/NFg==
-Received: by mail-lf1-f46.google.com with SMTP id 2adb3069b0e04-59b8364e4ccso2160820e87.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 10 Jan 2026 21:52:02 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCUUZVXHuKEusgr1TPiE55OeRWvgFnPeCo0EQ63Qc7VAkExUYXcBptbXEoqEFw6EGzo0H40GwQyxez2mtzDfWw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxyRXFb/LogCmWI/aEjGmTn/HcP6lMRu5SYgwoWESBROndC+Qzn
-	AixTdJCPkt5QoCVidXih0G6vpbTZQjcJoz3PpNIhmXnmr1Cg/EOegLA+XSp/3xOR9XiSTVAj/5k
-	K/zo90P0C8dL4KUCQoImtILqIh4Ht5Sg=
-X-Google-Smtp-Source: AGHT+IHdx8MpFefSjShCgzPfxBNx4mIFIm/zyAePE38bdBhjZyOXA6x69rTwWZ2pdG4l9l0f7a6WNZMxH5DhWbEqc7E=
-X-Received: by 2002:a05:6512:31cd:b0:59b:6853:f085 with SMTP id
- 2adb3069b0e04-59b6ef04985mr5236958e87.16.1768110718798; Sat, 10 Jan 2026
- 21:51:58 -0800 (PST)
+	Sun, 11 Jan 2026 09:28:50 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2a0833b5aeeso55844285ad.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 11 Jan 2026 01:28:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1768123728; x=1768728528; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=eIKMKN6QFHr6EqY/ECHzWAxzBkTh2Ff/RJPfOUt5Dro=;
+        b=BvHzOjD6fB250Tgg+HZ+ZM0Lk7I5+PqYLOGPmXVss1DKl7/UEYV2+DJc1HhK/BnrSO
+         lJt5ZIVseRMO1xSQNBGa3BNdyhk/duirpVEezW77WtsN3ILLTeVYQP5j3XfiJ2ogb8v9
+         GyNS3BaTH+wlLBcFh2BRiaI5yQJmLgdc41Z48HRq0KsjEmHLPXqHyFLeBAGTPN1sfxtS
+         vM36kGf78syaiG7KwDtej8ZWC/DNrvi6RS7ofuxy1bAHHO+jfUYsJh/Nton7Fq5MaSel
+         zB6rk+3d20JxHJpKHLWVUYOEf4nvE2FDl1poBJHp+rizRuMfE3Lk7H2AMupPRGdGJg3F
+         mjrg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768123728; x=1768728528;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=eIKMKN6QFHr6EqY/ECHzWAxzBkTh2Ff/RJPfOUt5Dro=;
+        b=Lb0J1rfcHVjg4k9ocD5YdKwDnJPoU61doqDdSMb5F6Ntok5D0y+lXax6rfbYLsz6/p
+         Wj202i7wZHIH9azj9+x4MmYZ4WtZ7L3bOetMwDSCULUeh577/FbWhgDOe1MlBDdPi+6X
+         udZr+XzY0W6UyMpAge4uyCVADxE362HVJoIbP730sFncwduUHLn6PUFMDROhPqUqJoX4
+         YKm+b//3J8mzkNmT7zmdAaos+FUnnhCx408Nfd1q9Bc5FK78AEqbi3gI8BXQxFSNksRH
+         k3J5PNUofidEP33k+yrg0fu1hjfwYd181B6jAV6OI8qQkbAb0BCqxArnHWNeMgGRs4rO
+         NzdA==
+X-Forwarded-Encrypted: i=1; AJvYcCVHzoMQwo3a/2iDU++DbA/+MNKchcHjSzzIXiQJaNGHq16YKzyRJhvcZJx22L6z3NqbeoAWjuLVtoJQladrEA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxBBw6A7PZa5oAyep/gTIWHnC+YH5FYr8dTvDWDgay+W+3pAJ55
+	tKsMhK/+wraOnm1ga9H8gifZIEH0Upga24zxDN6usgwswRlHfiIn41ca
+X-Gm-Gg: AY/fxX5XRiYDhmdhbLSAVwEkewDMxaPi2k/+W4N49S2P7Yb25meBWadSIz2pvWgJrAc
+	zIdYaJVyuTrPT8V+5OzHyZmwDBUD8HlDK08jPID7HJEks47NrijFkLby/1ic+IRT7+c1Sxwsd0t
+	d5HAAYHKkhv5D66040hAcgZB/7wyZzEwtpKd0EIkVNG9MCnemn46SnSwOWNTDiVV8c4Z/5KSsuM
+	HYYJmlggLE7u2tTJObuutflb0BBcPJgmGMHfJ0m9Eqyo8rPlY/p9FpKE577xTIz+gQ9+zmr3zWS
+	RoIofhdPjaKhBbh2K7iqugCW/vVaK5cBpadUFqlIEBB1ki4lyj5QavdOZo/IfoxBRTNPblmCvpu
+	x+7lPvKjSzrlRdtsfpAgWZFX1qjIYbeWHV/z6efgRUL+96VdUQMXTMlpRyauY90gijrX8732l5x
+	X5Z7gx5pECwm/JYwU4BNfJbruTGkRWpS6mjti+CeNJhA==
+X-Google-Smtp-Source: AGHT+IEJ/FbXXc/W91Nm3epFjERPTqN9veRIMdbS0ijFvD1zFZobV8UDkKuLZAuLycyGes9TjI0tpQ==
+X-Received: by 2002:a17:903:238a:b0:2a0:8358:88f8 with SMTP id d9443c01a7336-2a3ee444a0bmr134655055ad.22.1768123727669;
+        Sun, 11 Jan 2026 01:28:47 -0800 (PST)
+Received: from buffalo-ssd.taila54753.ts.net ([240b:253:4760:f400:1ebf:ceff:fe7f:5e0b])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2a3e3cd2b3asm143851625ad.88.2026.01.11.01.28.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 11 Jan 2026 01:28:47 -0800 (PST)
+From: Akari Tsuyukusa <akkun11.open@gmail.com>
+To: Sean Wang <sean.wang@kernel.org>,
+	Linus Walleij <linusw@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-mediatek@lists.infradead.org (moderated list:PIN CONTROLLER - MEDIATEK),
+	linux-gpio@vger.kernel.org (open list:PIN CONTROL SUBSYSTEM),
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Cc: Akari Tsuyukusa <akkun11.open@gmail.com>
+Subject: [PATCH] pinctrl: mediatek: common-v1: introduce per-function multibase control
+Date: Sun, 11 Jan 2026 18:28:31 +0900
+Message-ID: <20260111092833.466263-1-akkun11.open@gmail.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-References: <20260108203004.3538449-1-andriy.shevchenko@linux.intel.com> <20260108203004.3538449-3-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20260108203004.3538449-3-andriy.shevchenko@linux.intel.com>
-From: Chen-Yu Tsai <wens@kernel.org>
-Date: Sun, 11 Jan 2026 13:51:46 +0800
-X-Gmail-Original-Message-ID: <CAGb2v640nT=+g6bVuROizSG5Qb-upfQefs0-j9X0BnOHf9NYMg@mail.gmail.com>
-X-Gm-Features: AZwV_QjlNyXyyBCLSJ5be_kfqm-PbzUe8msaEi6oZsEaSVwRVLe_bhZOZe6iKv4
-Message-ID: <CAGb2v640nT=+g6bVuROizSG5Qb-upfQefs0-j9X0BnOHf9NYMg@mail.gmail.com>
-Subject: Re: [PATCH v1 2/4] spi: Drop duplicate of_node assignment
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Mark Brown <broonie@kernel.org>, Varshini Rajendran <varshini.rajendran@microchip.com>, Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sunny Luo <sunny.luo@amlogic.com>, Janne Grunau <j@jannau.net>, Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, CL Wang <cl634@andestech.com>, Manikandan Muralidharan <manikandan.m@microchip.com>, David Lechner <dlechner@baylibre.com>, Florian Fainelli <florian.fainelli@broadcom.com>, Jonas Gorski <jonas.gorski@gmail.com>, Hang Zhou <929513338@qq.com>, Jun Guo <jun.guo@cixtech.com>, Philipp Stanner <phasta@kernel.org>, Charles Keepax <ckeepax@opensource.cirrus.com>, Bartosz Golaszewski <brgl@kernel.org>, =?UTF-8?Q?Beno=C3=AEt_Monin?= <benoit.monin@bootlin.com>, Shiji Yang <yangshiji66@outlook.com>, James Clark <james.clark@linaro.org>, Jonathan Marek <jonathan@marek.ca>, Carlos Song <carlos.song@nxp.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Huacai Chen <chenhuacai@kernel.org>, Xianwei Zhao <xianwei.zhao@amlogic.com>, Prajna Rajendra Kumar <prajna.rajendrakumar@microchip.com>, Sergio Perez Gonzalez <sperezglz@gmail.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Qianfeng Rong <rongqianfeng@vivo.com>, Haibo Chen <haibo.chen@nxp.com>, Gabor Juhos <j4g8y7@gmail.com>, Md Sadre Alam <quic_mdalam@quicinc.com>, Rosen Penev <rosenp@gmail.com>, Luis de Arquer <luis.dearquer@inertim.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Cosmin Tanislav <cosmin-gabriel.tanislav.xa@renesas.com>, Tudor Ambarus <tudor.ambarus@linaro.org>, Krzysztof Kozlowski <krzk@kernel.org>, Longbin Li <looong.bin@gmail.com>, Patrice Chotard <patrice.chotard@foss.st.com>, =?UTF-8?Q?Cl=C3=A9ment_Le_Goffic?= <clement.legoffic@foss.st.com>, Alessandro Grassi <alessandro.grassi@mailbox.org>, Darshan R <rathod.darshan.0896@gmail.com>, Aaron Kling <webgeek1234@gmail.com>, Vishwaroop A <va@nvidia.com>, Haixu Cui <quic_haixcui@quicinc.com>, Darshan Rathod <darshanrathod475@gmail.com>, linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, asahi@lists.linux.dev, linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, linux-sound@vger.kernel.org, patches@opensource.cirrus.com, imx@lists.linux.dev, linux-arm-msm@vger.kernel.org, linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, virtualization@lists.linux.dev, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>, Sven Peter <sven@kernel.org>, Neal Gompa <neal@gompa.dev>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>, Ryan Wanner <ryan.wanner@microchip.com>, Michael Hennerich <michael.hennerich@analog.com>, =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, Kamal Dasu <kamal.dasu@broadcom.com>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, William Zhang <william.zhang@broadcom.com>, Kursad Oney <kursad.oney@broadcom.com>, Anand Gore <anand.gore@broadcom.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, David Rhodes <david.rhodes@cirrus.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, Vladimir Oltean <olteanv@gmail.com>, Frank Li <Frank.Li@nxp.com>, Jean-Marie Verdun <verdun@hpe.com>, Nick Hawkins <nick.hawkins@hpe.com>, Yang Shen <shenyang39@huawei.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Lixu Zhang <lixu.zhang@intel.com>, Yinbo Zhu <zhuyinbo@loongson.cn>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Conor Dooley <conor.dooley@microchip.com>, Daire McNamara <daire.mcnamara@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>, Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, Han Xu <han.xu@nxp.com>, Yogesh Gaur <yogeshgaur.83@gmail.com>, Linus Walleij <linusw@kernel.org>, Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Chris Packham <chris.packham@alliedtelesis.co.nz>, Heiko Stuebner <heiko@sntech.de>, Fabrizio Castro <fabrizio.castro.jz@renesas.com>, Andi Shyti <andi.shyti@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Paul Walmsley <pjw@kernel.org>, Samuel Holland <samuel.holland@sifive.com>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Alain Volmat <alain.volmat@foss.st.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Li-hao Kuo <lhjeff911@gmail.com>, Masahisa Kojima <masahisa.kojima@linaro.org>, Jassi Brar <jaswinder.singh@linaro.org>, Laxman Dewangan <ldewangan@nvidia.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Sowjanya Komatineni <skomatineni@nvidia.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Masami Hiramatsu <mhiramat@kernel.org>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, Michal Simek <michal.simek@amd.com>, Max Filippov <jcmvbkbc@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260110_215202_855362_CE7163E2 
-X-CRM114-Status: GOOD (  13.39  )
+X-CRM114-CacheID: sfid-20260111_012849_110774_C3046687 
+X-CRM114-Status: GOOD (  21.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,25 +99,374 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: wens@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 9, 2026 at 4:30=E2=80=AFAM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> The SPI core provides the default of_node for the controller,
-> inherited from the actual (parent) device. No need to repeat it
-> in the driver.
->
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
-[...]
+The current common-v1 framework implicitly assumes that certain
+register operations might span across multiple base addresses. This
+logic is currently hardcoded in mtk_get_regmap, where any pin falling
+within the [type1_start, type1_end) range is redirected to regmap2.
 
->  drivers/spi/spi-sun4i.c              | 1 -
->  drivers/spi/spi-sun6i.c              | 1 -
+This approach is suboptimal for two reasons:
+1. It forces all SoCs except MT8135 to define dummy type1_start/end values
+   (set to the last pin number + 1) to avoid unintended regmap switching,
+   which is non-intuitive and cluttering the SoC data.
+2. It assumes most register types (DRV, IES, SMT, etc.) follow the same
+   splitting rule, even though hardware design might only require it for
+   specific functional registers.
 
-Acked-by: Chen-Yu Tsai <wens@kernel.org> # sun4i, sun6i
+Refactor the framework by introducing explicit '[func]_multibase' flags
+for each register category in struct mtk_pinctrl_devdata. This allows
+each SoC to explicitly declare which operations require multiple bases.
 
-[...]
+For MT8135, which is currently the only multipre regmap user, enable
+needed multibase flags to keep existing behavior.
+
+For other SoCs, multibase flags will default to false, removing the need
+for fragile range-based workarounds and making the regmap selection logic
+more robust and explicit. Also, delete type1_start and type1_end, which
+are no longer needed by this refactor, from struct mtk_pinctrl_devdata.
+
+Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-mt2701.c     |  2 -
+ drivers/pinctrl/mediatek/pinctrl-mt2712.c     |  2 -
+ drivers/pinctrl/mediatek/pinctrl-mt6397.c     |  2 -
+ drivers/pinctrl/mediatek/pinctrl-mt8127.c     |  2 -
+ drivers/pinctrl/mediatek/pinctrl-mt8135.c     |  8 +++
+ drivers/pinctrl/mediatek/pinctrl-mt8167.c     |  2 -
+ drivers/pinctrl/mediatek/pinctrl-mt8173.c     |  2 -
+ drivers/pinctrl/mediatek/pinctrl-mt8365.c     |  2 -
+ drivers/pinctrl/mediatek/pinctrl-mt8516.c     |  2 -
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 62 ++++++++++++-------
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.h |  9 +++
+ 11 files changed, 57 insertions(+), 38 deletions(-)
+
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2701.c b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
+index 6b1c7122b0fb..30bec29de9bd 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt2701.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt2701.c
+@@ -504,8 +504,6 @@ static const struct mtk_pinctrl_devdata mt2701_pinctrl_data = {
+ 	.dout_offset = 0x0500,
+ 	.din_offset = 0x0630,
+ 	.pinmux_offset = 0x0760,
+-	.type1_start = 280,
+-	.type1_end = 280,
+ 	.port_shf = 4,
+ 	.port_mask = 0x1f,
+ 	.port_align = 4,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt2712.c b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
+index bb7394ae252b..eb6ecaa72679 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt2712.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt2712.c
+@@ -553,8 +553,6 @@ static const struct mtk_pinctrl_devdata mt2712_pinctrl_data = {
+ 	.dout_offset = 0x0300,
+ 	.din_offset = 0x0400,
+ 	.pinmux_offset = 0x0500,
+-	.type1_start = 210,
+-	.type1_end = 210,
+ 	.port_shf = 4,
+ 	.port_mask = 0xf,
+ 	.port_align = 4,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt6397.c b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
+index 03d0f65d7bcc..af5f48039895 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt6397.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt6397.c
+@@ -27,8 +27,6 @@ static const struct mtk_pinctrl_devdata mt6397_pinctrl_data = {
+ 	.dout_offset = (MT6397_PIN_REG_BASE + 0x080),
+ 	.din_offset = (MT6397_PIN_REG_BASE + 0x0a0),
+ 	.pinmux_offset = (MT6397_PIN_REG_BASE + 0x0c0),
+-	.type1_start = 41,
+-	.type1_end = 41,
+ 	.port_shf = 3,
+ 	.port_mask = 0x3,
+ 	.port_align = 2,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8127.c b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+index f5030a9ea40b..1ec1ddb317c3 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8127.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8127.c
+@@ -272,8 +272,6 @@ static const struct mtk_pinctrl_devdata mt8127_pinctrl_data = {
+ 	.dout_offset = 0x0400,
+ 	.din_offset = 0x0500,
+ 	.pinmux_offset = 0x0600,
+-	.type1_start = 143,
+-	.type1_end = 143,
+ 	.port_shf = 4,
+ 	.port_mask = 0xf,
+ 	.port_align = 4,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8135.c b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+index 77c6ac464e86..9c9689be33be 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8135.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8135.c
+@@ -292,15 +292,23 @@ static const struct mtk_pinctrl_devdata mt8135_pinctrl_data = {
+ 	.n_grp_cls = ARRAY_SIZE(mt8135_drv_grp),
+ 	.pin_drv_grp = mt8135_pin_drv,
+ 	.n_pin_drv_grps = ARRAY_SIZE(mt8135_pin_drv),
++	.drv_multibase = true,
+ 	.spec_pull_set = spec_pull_set,
+ 	.dir_offset = 0x0000,
++	.dir_multibase = true,
+ 	.ies_offset = 0x0100,
++	.ies_multibase = true,
+ 	.pullen_offset = 0x0200,
++	.pullen_multibase = true,
+ 	.smt_offset = 0x0300,
++	.smt_multibase = true,
+ 	.pullsel_offset = 0x0400,
++	.pullsel_multibase = true,
+ 	.dout_offset = 0x0800,
++	.dout_multibase = true,
+ 	.din_offset = 0x0A00,
+ 	.pinmux_offset = 0x0C00,
++	.pinmux_multibase = true,
+ 	.type1_start = 34,
+ 	.type1_end = 149,
+ 	.port_shf = 4,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8167.c b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
+index 143c26622272..27dfaabbf41e 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8167.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8167.c
+@@ -305,8 +305,6 @@ static const struct mtk_pinctrl_devdata mt8167_pinctrl_data = {
+ 	.dout_offset = 0x0100,
+ 	.din_offset = 0x0200,
+ 	.pinmux_offset = 0x0300,
+-	.type1_start = 125,
+-	.type1_end = 125,
+ 	.port_shf = 4,
+ 	.port_mask = 0xf,
+ 	.port_align = 4,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8173.c b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+index b214deeafbf1..cc1ad8963502 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8173.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8173.c
+@@ -313,8 +313,6 @@ static const struct mtk_pinctrl_devdata mt8173_pinctrl_data = {
+ 	.dout_offset = 0x0400,
+ 	.din_offset = 0x0500,
+ 	.pinmux_offset = 0x0600,
+-	.type1_start = 135,
+-	.type1_end = 135,
+ 	.port_shf = 4,
+ 	.port_mask = 0xf,
+ 	.port_align = 4,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8365.c b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
+index e3e0d66cfbbf..b793caac5773 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8365.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8365.c
+@@ -457,8 +457,6 @@ static const struct mtk_pinctrl_devdata mt8365_pinctrl_data = {
+ 	.pullen_offset = 0x0860,
+ 	.pullsel_offset = 0x0900,
+ 	.drv_offset = 0x0710,
+-	.type1_start = 145,
+-	.type1_end = 145,
+ 	.port_shf = 4,
+ 	.port_mask = 0x1f,
+ 	.port_align = 4,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8516.c b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
+index abda75d4354e..c91e5f001c10 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8516.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8516.c
+@@ -305,8 +305,6 @@ static const struct mtk_pinctrl_devdata mt8516_pinctrl_data = {
+ 	.dout_offset = 0x0100,
+ 	.din_offset = 0x0200,
+ 	.pinmux_offset = 0x0300,
+-	.type1_start = 125,
+-	.type1_end = 125,
+ 	.port_shf = 4,
+ 	.port_mask = 0xf,
+ 	.port_align = 4,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index d6a46fe0cda8..032944184a07 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -42,14 +42,15 @@ static const char * const mtk_gpio_functions[] = {
+ };
+ 
+ /*
+- * There are two base address for pull related configuration
+- * in mt8135, and different GPIO pins use different base address.
+- * When pin number greater than type1_start and less than type1_end,
+- * should use the second base address.
++ * Some chips (e.g., mt8135) have multiple base addresses for pin configuration.
++ * When multibase is true and the pin number falls within the specified range
++ * [type1_start, type1_end), the second base address should be used.
+  */
+ static struct regmap *mtk_get_regmap(struct mtk_pinctrl *pctl,
+-		unsigned long pin)
++		unsigned long pin, bool multibase)
+ {
++	if (!multibase)
++		return pctl->regmap1;
+ 	if (pin >= pctl->devdata->type1_start && pin < pctl->devdata->type1_end)
+ 		return pctl->regmap2;
+ 	return pctl->regmap1;
+@@ -82,7 +83,8 @@ static int mtk_pmx_gpio_set_direction(struct pinctrl_dev *pctldev,
+ 	else
+ 		reg_addr = SET_ADDR(reg_addr, pctl);
+ 
+-	regmap_write(mtk_get_regmap(pctl, offset), reg_addr, bit);
++	regmap_write(mtk_get_regmap(pctl, offset, pctl->devdata->dir_multibase),
++		     reg_addr, bit);
+ 	return 0;
+ }
+ 
+@@ -100,7 +102,8 @@ static int mtk_gpio_set(struct gpio_chip *chip, unsigned int offset, int value)
+ 	else
+ 		reg_addr = CLR_ADDR(reg_addr, pctl);
+ 
+-	return regmap_write(mtk_get_regmap(pctl, offset), reg_addr, bit);
++	return regmap_write(mtk_get_regmap(pctl, offset, pctl->devdata->dout_multibase),
++			    reg_addr, bit);
+ }
+ 
+ static int mtk_pconf_set_ies_smt(struct mtk_pinctrl *pctl, unsigned pin,
+@@ -108,6 +111,7 @@ static int mtk_pconf_set_ies_smt(struct mtk_pinctrl *pctl, unsigned pin,
+ {
+ 	unsigned int reg_addr, offset;
+ 	unsigned int bit;
++	bool multibase;
+ 
+ 	/**
+ 	 * Due to some soc are not support ies/smt config, add this special
+@@ -123,12 +127,18 @@ static int mtk_pconf_set_ies_smt(struct mtk_pinctrl *pctl, unsigned pin,
+ 			arg == PIN_CONFIG_INPUT_SCHMITT_ENABLE)
+ 		return -EINVAL;
+ 
++	if (arg == PIN_CONFIG_INPUT_ENABLE)
++		multibase = pctl->devdata->ies_multibase;
++	else
++		multibase = pctl->devdata->smt_multibase;
++
+ 	/*
+ 	 * Due to some pins are irregular, their input enable and smt
+ 	 * control register are discontinuous, so we need this special handle.
+ 	 */
+ 	if (pctl->devdata->spec_ies_smt_set) {
+-		return pctl->devdata->spec_ies_smt_set(mtk_get_regmap(pctl, pin),
++		return pctl->devdata->spec_ies_smt_set(
++			mtk_get_regmap(pctl, pin, multibase),
+ 			pctl->devdata, pin, value, arg);
+ 	}
+ 
+@@ -144,7 +154,7 @@ static int mtk_pconf_set_ies_smt(struct mtk_pinctrl *pctl, unsigned pin,
+ 	else
+ 		reg_addr = CLR_ADDR(mtk_get_port(pctl, pin) + offset, pctl);
+ 
+-	regmap_write(mtk_get_regmap(pctl, pin), reg_addr, bit);
++	regmap_write(mtk_get_regmap(pctl, pin, multibase), reg_addr, bit);
+ 	return 0;
+ }
+ 
+@@ -229,7 +239,8 @@ static int mtk_pconf_set_driving(struct mtk_pinctrl *pctl,
+ 		shift = pin_drv->bit + drv_grp->low_bit;
+ 		mask <<= shift;
+ 		val <<= shift;
+-		return regmap_update_bits(mtk_get_regmap(pctl, pin),
++		return regmap_update_bits(
++				mtk_get_regmap(pctl, pin, pctl->devdata->drv_multibase),
+ 				pin_drv->offset, mask, val);
+ 	}
+ 
+@@ -314,9 +325,9 @@ static int mtk_pconf_set_pull_select(struct mtk_pinctrl *pctl,
+ 		 * the parameter should be "MTK_PUPD_SET_R1R0_00".
+ 		 */
+ 		r1r0 = enable ? arg : MTK_PUPD_SET_R1R0_00;
+-		ret = pctl->devdata->spec_pull_set(mtk_get_regmap(pctl, pin),
+-						   pctl->devdata, pin, isup,
+-						   r1r0);
++		ret = pctl->devdata->spec_pull_set(
++			mtk_get_regmap(pctl, pin, pctl->devdata->pullsel_multibase),
++			pctl->devdata, pin, isup, r1r0);
+ 		if (!ret)
+ 			return 0;
+ 	}
+@@ -334,7 +345,8 @@ static int mtk_pconf_set_pull_select(struct mtk_pinctrl *pctl,
+ 			pctl->devdata->pullen_offset;
+ 		reg_pullsel = mtk_get_port(pctl, pin) +
+ 			pctl->devdata->pullsel_offset;
+-		ret = pctl->devdata->mt8365_set_clr_mode(mtk_get_regmap(pctl, pin),
++		/* MT8365 do not use multibase. */
++		ret = pctl->devdata->mt8365_set_clr_mode(pctl->regmap1,
+ 			bit, reg_pullen, reg_pullsel,
+ 			enable, isup);
+ 		if (ret)
+@@ -358,8 +370,10 @@ static int mtk_pconf_set_pull_select(struct mtk_pinctrl *pctl,
+ 		reg_pullsel = CLR_ADDR(mtk_get_port(pctl, pin) +
+ 			pctl->devdata->pullsel_offset, pctl);
+ 
+-	regmap_write(mtk_get_regmap(pctl, pin), reg_pullen, bit);
+-	regmap_write(mtk_get_regmap(pctl, pin), reg_pullsel, bit);
++	regmap_write(mtk_get_regmap(pctl, pin, pctl->devdata->pullen_multibase),
++		     reg_pullen, bit);
++	regmap_write(mtk_get_regmap(pctl, pin, pctl->devdata->pullsel_multibase),
++		     reg_pullsel, bit);
+ 	return 0;
+ }
+ 
+@@ -710,8 +724,9 @@ static int mtk_pmx_set_mode(struct pinctrl_dev *pctldev,
+ 	struct mtk_pinctrl *pctl = pinctrl_dev_get_drvdata(pctldev);
+ 
+ 	if (pctl->devdata->spec_pinmux_set)
+-		pctl->devdata->spec_pinmux_set(mtk_get_regmap(pctl, pin),
+-					pin, mode);
++		pctl->devdata->spec_pinmux_set(
++			mtk_get_regmap(pctl, pin, pctl->devdata->pinmux_multibase),
++			pin, mode);
+ 
+ 	reg_addr = ((pin / pctl->devdata->mode_per_reg) << pctl->devdata->port_shf)
+ 			+ pctl->devdata->pinmux_offset;
+@@ -720,8 +735,9 @@ static int mtk_pmx_set_mode(struct pinctrl_dev *pctldev,
+ 	bit = pin % pctl->devdata->mode_per_reg;
+ 	mask <<= (GPIO_MODE_BITS * bit);
+ 	val = (mode << (GPIO_MODE_BITS * bit));
+-	return regmap_update_bits(mtk_get_regmap(pctl, pin),
+-			reg_addr, mask, val);
++	return regmap_update_bits(
++		mtk_get_regmap(pctl, pin, pctl->devdata->pinmux_multibase),
++		reg_addr, mask, val);
+ }
+ 
+ static const struct mtk_desc_pin *
+@@ -832,7 +848,8 @@ static int mtk_gpio_get_direction(struct gpio_chip *chip, unsigned offset)
+ 	if (pctl->devdata->spec_dir_set)
+ 		pctl->devdata->spec_dir_set(&reg_addr, offset);
+ 
+-	regmap_read(pctl->regmap1, reg_addr, &read_val);
++	regmap_read(mtk_get_regmap(pctl, offset, pctl->devdata->dir_multibase),
++		    reg_addr, &read_val);
+ 	if (read_val & bit)
+ 		return GPIO_LINE_DIRECTION_OUT;
+ 
+@@ -850,7 +867,8 @@ static int mtk_gpio_get(struct gpio_chip *chip, unsigned offset)
+ 		pctl->devdata->din_offset;
+ 
+ 	bit = BIT(offset & pctl->devdata->mode_mask);
+-	regmap_read(pctl->regmap1, reg_addr, &read_val);
++	regmap_read(mtk_get_regmap(pctl, offset, pctl->devdata->din_multibase),
++		    reg_addr, &read_val);
+ 	return !!(read_val & bit);
+ }
+ 
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+index 11afa12a96cb..1c5c956ff33b 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.h
+@@ -277,6 +277,15 @@ struct mtk_pinctrl_devdata {
+ 	unsigned int mode_mask;
+ 	unsigned int mode_per_reg;
+ 	unsigned int mode_shf;
++	bool dir_multibase;
++	bool ies_multibase;
++	bool smt_multibase;
++	bool pullen_multibase;
++	bool pullsel_multibase;
++	bool drv_multibase;
++	bool dout_multibase;
++	bool din_multibase;
++	bool pinmux_multibase;
+ };
+ 
+ struct mtk_pinctrl {
+-- 
+2.52.0
+
 
