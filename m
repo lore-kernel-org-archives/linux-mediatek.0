@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78D72C9EC91
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 13:49:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD457C9EC90
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 13:49:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SkX5yDTjRJ611tuHkq5WRCO3e4WcJthRvyDmZex1GBo=; b=3kOzJgFPRRNxTwPa1yObv6LgWa
-	r8GUi/C6ILcYxTIFoO9JymkHkYfN3N4DemHTCwCqqvFhKTZzzZ1MdQXXtk7FamsJ9ebRnNkBW/Wj8
-	lw6FyMWJ6S9OwTg2tMal2lNO/eEeIgqfJcu55aFOefe1Axusn0PfKhWd0z3fiPqVjiItnz6zVWSS9
-	8W9lE96Wb/4mbw6qoQ4qBc67WML3lmQ8icz/zr45bGJMWr50zhXg08xNpIxHJcyXIDbQJzFqu7QJJ
-	cVC00fOhWFAyk+dZHeo3p45XHY3Wnf5x9COZIyBaM67OXPd9LwKgbNP2ytAsIUPZW/vRf3X3ZhgE3
-	mOsYAg+w==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pap1OJWQGM8TY1SgybjWHV9rK3+HZYlfSxqT5mail6k=; b=hMXaag1bRdAbv1a3T094s+KynD
+	PlkFBDtlPokjpCimj4aR4jvjcE+nCBMwh/pNHP5dkc8PBQkkeQWjUw21Oj8FhxJtEEXQGsLEKjsJ2
+	5BbXOqGdeM2nVr/xXdruf63AJ1eXuErqX+47n+jKfZ8mVbhQRj5EK6loEyijTBToBR7ELPW/ZCi3E
+	Ul4lcTO+yu8MdB8VxVFtEbR3BjJ2x9b4XsZ1P6hMsSn+7wJFSsmXTD2V2Yh580utcTv/yt4Eenshl
+	pKvScCi1T0A5ARd4vfVYqV8wTTxapO0YBB5xgMZebi+55ithb2WzxXXEDG9t4R65DekddZPCIMtWM
+	YbptquMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfIIG-00000005RVW-1g02;
-	Mon, 12 Jan 2026 13:49:16 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1vfIIJ-00000005RYw-1e7L;
+	Mon, 12 Jan 2026 13:49:19 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfIIC-00000005RSK-2Dvd;
+	id 1vfIID-00000005RSM-3WUR;
 	Mon, 12 Jan 2026 13:49:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1768225753; x=1799761753;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=qCWXBi+aTKd9zaGMwJOJjmzr111g+vvf73F56N3N8yM=;
-  b=TExuWMYfNPDuaSBWoCTZeJ9/SkESuKjEECH9XtUj/RumcB7Uc7uSR+mC
-   jcDwm8lH8b6lKkolAHAdb/kKoErCAtJSVKLZ7a/+d4uFYL6DmHSe8MNYL
-   GnMPFcfTVaht4a6QMj6Rx9UDi3Joq0n37aXpPmqQsAcSXDydOfmfNnwoZ
-   Psw6OQg2gI9NBSem+ZReV9XfIm+6fFZ5fkQf9hTwNmNw1TZmiZRhnwwwg
-   gVoDfEBGoaUzy+5BnXHaKxNfxwolUykxL1psddOruZ6Z0ad8EDzKyauRA
-   vZu8KtQrsHQwiPPEUcuM7XygUXY9Wzp9g41XYU/A8iaHAmsr8pLDxHiV2
-   A==;
-X-CSE-ConnectionGUID: JMRysPTVTkGWT7Pgdtn++w==
-X-CSE-MsgGUID: OAqzPklYRZ6zO/kJqTMh1w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11669"; a="80604512"
+  t=1768225754; x=1799761754;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=stoeaFvLKGGn0uhn85r/nzgAeuADmULIQT05Vn4VYoE=;
+  b=guLjQhOU5dKu5hsPlXtmc+uWQ0vXhsnF8XGUa5khIKK0bE+je+hBN2z2
+   D7m+OV7Rj33FYk0ravHfKF1ePQ2OoHLhfk5bXsOC+jT0HOt5ji10Bv6ad
+   P7K4sUETgqmapHMdQVJLlYk1F0X9b7ffy+16L2PGv0c5stQLTi8pUV60t
+   T24UEYRP7iTXQBZsPreLvTC1GrKJyWaUbnLmsxDquYX2/pT3F8uVDuARY
+   OEgL2O+duelWOCgixikQ8D31SzfFz39Mj976xlEGfOenwyfMKy5WcPzP2
+   +GewUwm+PnlpUmRdrUKE30CmHj18fOcKVX7Fo9YqrSqFp/uMu3kGZcljs
+   g==;
+X-CSE-ConnectionGUID: 2B06Ky5aTsO9vj/0RcDRRA==
+X-CSE-MsgGUID: KeHKX5K7S0KTttlv1DESGQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11669"; a="57048281"
 X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; 
-   d="scan'208";a="80604512"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jan 2026 05:49:12 -0800
-X-CSE-ConnectionGUID: /tOT5H3WTR6cNGHY74iXbA==
-X-CSE-MsgGUID: ZOLMNcZMSb+jYMwZW8Iclw==
+   d="scan'208";a="57048281"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jan 2026 05:49:12 -0800
+X-CSE-ConnectionGUID: 3psanrVbTtGgoavkyMUQUw==
+X-CSE-MsgGUID: g0E+JuNQRYarjdD7ueGt/Q==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; 
-   d="scan'208";a="208568090"
+   d="scan'208";a="208618611"
 Received: from black.igk.intel.com ([10.91.253.5])
-  by fmviesa005.fm.intel.com with ESMTP; 12 Jan 2026 05:49:08 -0800
+  by orviesa004.jf.intel.com with ESMTP; 12 Jan 2026 05:49:08 -0800
 Received: by black.igk.intel.com (Postfix, from userid 1003)
-	id B394599; Mon, 12 Jan 2026 14:49:06 +0100 (CET)
+	id B08B598; Mon, 12 Jan 2026 14:49:06 +0100 (CET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Andi Shyti <andi@smida.it>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
@@ -75,17 +75,16 @@ Cc: Khalil Blaiech <kblaiech@nvidia.com>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Patrice Chotard <patrice.chotard@foss.st.com>,
 	Ard Biesheuvel <ardb@kernel.org>
-Subject: [PATCH v1 1/7] units: Add HZ_PER_GHZ
-Date: Mon, 12 Jan 2026 14:46:09 +0100
-Message-ID: <20260112134900.4142954-2-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 0/7] i2c: busses: Introduce and use HZ_PER_GHZ
+Date: Mon, 12 Jan 2026 14:46:08 +0100
+Message-ID: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
-References: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_054912_627478_C3B0DD49 
-X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-CacheID: sfid-20260112_054913_891574_089FDF8C 
+X-CRM114-Status: UNSURE (   8.42  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,34 +100,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The is going to be a new user of the HZ_PER_GHZ definition besides
-possibly existing ones. Add that one to the header.
+A few drivers for I²C host controllers use HZ_PER_GHZ in numeric form.
+This is less readable and prone to subtle mistakes. Instead, introduce
+a well defined constant and use it in the drivers. No functional change
+implied except one case where 64-bit division replaced with 32-bit one.
 
-While at it, split Hz and kHz groups of the multipliers for better
-maintenance and readability.
+Andy Shevchenko (7):
+  units: Add HZ_PER_GHZ
+  i2c: mlxbf: Use HZ_PER_GHZ constant instead of custom one
+  i2c: mt65xx: Use HZ_PER_GHZ constant instead of plain number
+  i2c: nomadik: Use HZ_PER_GHZ constant instead of plain number
+  i2c: rk3x: Use HZ_PER_GHZ constant instead of plain number
+  i2c: st: Use HZ_PER_GHZ constant instead of plain number
+  i2c: synquacer: Use HZ_PER_GHZ constant instead of plain number
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- include/linux/units.h | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/i2c/busses/i2c-mlxbf.c     |  5 ++---
+ drivers/i2c/busses/i2c-mt65xx.c    | 11 ++++++-----
+ drivers/i2c/busses/i2c-nomadik.c   |  7 ++++---
+ drivers/i2c/busses/i2c-rk3x.c      | 12 ++++++------
+ drivers/i2c/busses/i2c-st.c        |  3 ++-
+ drivers/i2c/busses/i2c-synquacer.c |  3 ++-
+ include/linux/units.h              |  3 +++
+ 7 files changed, 25 insertions(+), 19 deletions(-)
 
-diff --git a/include/linux/units.h b/include/linux/units.h
-index 00e15de33eca..0c296a004e89 100644
---- a/include/linux/units.h
-+++ b/include/linux/units.h
-@@ -25,9 +25,12 @@
- #define MICROHZ_PER_HZ		1000000UL
- #define MILLIHZ_PER_HZ		1000UL
- 
-+/* Hz based multipliers */
- #define HZ_PER_KHZ		1000UL
- #define HZ_PER_MHZ		1000000UL
-+#define HZ_PER_GHZ		1000000000UL
- 
-+/* kHz based multipliers */
- #define KHZ_PER_MHZ		1000UL
- #define KHZ_PER_GHZ		1000000UL
- 
 -- 
 2.50.1
 
