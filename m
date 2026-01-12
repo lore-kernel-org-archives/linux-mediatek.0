@@ -4,83 +4,220 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 190B6CF45AE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 17:14:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21A02CF45C8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 20:35:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LaqVKjn3HybXAaQGlHj3Cj3gxHUmIRrjkoaUVWLdE+o=; b=p3mb0zUXr3K3+V32+b276HlDTC
-	cS06TD4KoSpvAViJApdGMznCAPl9og1G/vlE/gM+tcgROEo1cJDbxAbgtWn3njj6z1XxjMjyU9Fwb
-	jxxQ8/nPQq8vnzWHGCU04uTkRe0/UfJ8MaRAx61YlSRe1PMGmXHDLHWXaGaomW82bjG6bLdsX9Qni
-	ULVONMHZ+dCt5uhTkcwQqOlvTBRSfJQLCI0U7v1rAq0Ovjt1xDGg+BjJTk5+chYgNc4ARicQZOdaF
-	fe+IHi+/2xOlMJ3Ui9l2pdE11kdQ7uLq4aXhZopBuIuRBCiYIM+VEbxlTBUtmHGmPtkujzpSb5hUc
-	me7sPtTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=00R2igio6P+jh+vcf3sk1ZVoHu5ik6TDusL7U/wd1cI=; b=Wci772A6Cb2fwPFU5N4bNpwnVX
+	8m00w1CQafvJZ5duVR5tg6frmpeOUu1PXKoq2qJDyCPaIg7HwJ2d9N/ke6I7DEgiLK2uwt5KDjkqj
+	DIAXq3CE4zXOn9tSTmuJTn5MYKAsbEDRNtOCRuUKGaG8NKOcri7FW8DKkxuOsTlrjlPHoxSSKNnZ8
+	Ghjtf0Lh9jgPanF9BvEw2RrEkS2CGbnwJcfWWyspleoNrG6+bHRACjgeyogMsv9L21HAmvpvn/gD+
+	y8gk9psINwO0JQxo+RYPsot2XEwBYtKN53E7cPiztZ0cwYgxeITCZHle4OEbojJbQV5Z+35oxdOO7
+	/pZp3ltg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfLUk-00000005pwM-2X8q;
-	Mon, 12 Jan 2026 17:14:22 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1vfOdm-00000006B39-2ciJ;
+	Mon, 12 Jan 2026 20:35:54 +0000
+Received: from mgamail.intel.com ([192.198.163.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfLUi-00000005pvE-2UwY
-	for linux-mediatek@lists.infradead.org;
-	Mon, 12 Jan 2026 17:14:21 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-b83122f9d78so1063463566b.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 12 Jan 2026 09:14:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1768238057; x=1768842857; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=LaqVKjn3HybXAaQGlHj3Cj3gxHUmIRrjkoaUVWLdE+o=;
-        b=Vy/2J8ye7Zgzhi09a+HlshsgSn0EeFkwJoqd5Cl8S7a4t1vB7iKgTk8M94eHNRr6mz
-         gwAPPLG8SDn8/DdPJnTB7ipDHGQGhmOZlh/qnULU1OVF23eKSELY2y7Pn1RQwqk4yew/
-         ic4dJq7i7wXwEq8vdgWVXI/ASFXM5agsenNHPM/U978tDLbAHASHARe3slOUwLiOIEO0
-         cGsdbeS5yT6IsjZKVcDpOIECGU4MWf4nD0Qi8pFVOPrKlDKOBZj2KtBOvvTKn5c8ivSn
-         DaEz3zFSkMLwWUUBKtlBECGr95gLVS/Bo8fFi9+GovnuzT6auk2IZSeYOp/ItRh/Pbah
-         zW1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768238057; x=1768842857;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=LaqVKjn3HybXAaQGlHj3Cj3gxHUmIRrjkoaUVWLdE+o=;
-        b=r+PJ7yVWHf2E8AeYEzcnfXLs3k3uWVQM2CK0yfZMJNdB/5cYBU/WB53dzIbdlthCEF
-         FlXjTIyiLp/m1mPKxZiec+aVD2KzRmoL7gqKd0N/3zSV3Drs8Seu7tSrI7T0igSvRALd
-         j9h3XWQFCPRQUzjGDseJUQaxxFKJSArVVruc/rs5aAGYCYo1TC7J0qssYKCmmPJ30P2i
-         AMD5Q10TKqpqvLKGyWDpzZH6cXjRWSC6vqEFLlHErAk0/K3sTjJaH5HTRJvDYO11DqmX
-         4K+A21rA0JD+iLriAFrfhd1PyPszp9lRRgvTw61MDTjUjPHUviQ17id0r2YOppSmHDat
-         b86Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXpk5ARZxrjrDiOdV3GiNilYlGj5DjUeEcMsah5XlwwOn+RtDiIjyLdTjQPvmb2nsA9z0oApm71f8TKJPTp7A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwioW8cO2mmLEKmnJSKHGEawc+EyNhUY26LplYylcmcU8Gsgvfl
-	MVM3HCNvefJNXflbVUeEJ3IKNY4p4feXjE1GSJml7LUX1QaUSGtoOnwsQu2nRQ/zlD673+FrT3/
-	KBj5QJO0veiqafgHmMVUb1Qzh0Ngzhvlp6JPKNbjgdQ==
-X-Gm-Gg: AY/fxX7IFaQfZTsUHk2wZPuxxh2u1Try6fIOrmR8d/Cx2tgQbUljmt3XQA+0l3nnOBQ
-	3GlpekjcwXNCNFEjBTsPi3ItRXEGBAlLJbjv1mmnKE/9KB+J/hqYuVzhijZvQ98muD7LgPtXECV
-	rBuv9CLWRAXswRBd8ocj19VijNkhGzhkhjRjkDJsxQRh3bmuM0K4wMs4v8yjlTkOrvz2XXNQob1
-	4O/aouSgxgEPuPv+2aXY114K85cpWDcSvIc0sOIswjXBhX+irrTx0MYIpkpoj0ygtKk7tDPTXC9
-	Ny1wHHZ7FQRjyetrY3qOIXR2wz0U+A==
-X-Google-Smtp-Source: AGHT+IF5+xfVIsZA2wr8JPc/95fH1etbn20R3Fu8kJxC0WL69/X8MM6hCVu3p0Vm0yktQncN5rrF9RQBGHp7Wczm3Z4=
-X-Received: by 2002:a17:907:2d2c:b0:b87:29a3:27f9 with SMTP id
- a640c23a62f3a-b8729a3328bmr215457466b.18.1768238057187; Mon, 12 Jan 2026
- 09:14:17 -0800 (PST)
+	id 1vfOdk-00000006B1g-15BL;
+	Mon, 12 Jan 2026 20:35:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1768250152; x=1799786152;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=dzIlNxBLNcrWr8IC/y57DQTFAbop0n5nPnrevzaacBI=;
+  b=gmravCvTC655f7/ahzTciVqTmC22AdfVg1t5NW6PQDJEoADGLijozJv8
+   Gd8NIAoqLVPkXyO+6W5b7MHNlHBVoXMt2D2TDruWWQzyLVSPuF3iHVQQs
+   A2uhdy+aQvyYi06iPx7ErhiufRNjVWfGSsjt8n3hWMmkc+Dhaz3Ht6Ift
+   UMhHQ87mqNw/mLpJC7ZjYTPNSu8algfwdshpcV3LrSaAzdVU7mRz2TWMo
+   JOuMqI3F9/VP/APw+iAeiroaUUImnxcFR4XqntQDYI7pC8io6TP6kOA4G
+   7N1J4f16oVF19B4GLTSpN8UagCSgKMjTGrRf4UL73PShvZfP1SkRgjem3
+   w==;
+X-CSE-ConnectionGUID: If5GL/lLRPS4+MyM36j7uw==
+X-CSE-MsgGUID: ZSKc/MbvTLqqsFS8a9bgDA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11669"; a="80173684"
+X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; 
+   d="scan'208";a="80173684"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jan 2026 12:35:50 -0800
+X-CSE-ConnectionGUID: E/LQL6K5QymJF/QzO07yGg==
+X-CSE-MsgGUID: MqibUuv6RpGTjNFTgn3d9A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; 
+   d="scan'208";a="208707613"
+Received: from black.igk.intel.com ([10.91.253.5])
+  by orviesa004.jf.intel.com with ESMTP; 12 Jan 2026 12:35:40 -0800
+Received: by black.igk.intel.com (Postfix, from userid 1003)
+	id 6FF4698; Mon, 12 Jan 2026 21:35:37 +0100 (CET)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Mark Brown <broonie@kernel.org>,
+	Varshini Rajendran <varshini.rajendran@microchip.com>,
+	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Haotian Zhang <vulab@iscas.ac.cn>,
+	Sunny Luo <sunny.luo@amlogic.com>,
+	Janne Grunau <j@jannau.net>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Amelie Delaunay <amelie.delaunay@foss.st.com>,
+	Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
+	CL Wang <cl634@andestech.com>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	William Zhang <william.zhang@broadcom.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Manikandan Muralidharan <manikandan.m@microchip.com>,
+	David Lechner <dlechner@baylibre.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Jonas Gorski <jonas.gorski@gmail.com>,
+	Hang Zhou <929513338@qq.com>,
+	Jun Guo <jun.guo@cixtech.com>,
+	Philipp Stanner <phasta@kernel.org>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	=?UTF-8?q?Beno=C3=AEt=20Monin?= <benoit.monin@bootlin.com>,
+	Shiji Yang <yangshiji66@outlook.com>,
+	James Clark <james.clark@linaro.org>,
+	Jonathan Marek <jonathan@marek.ca>,
+	Carlos Song <carlos.song@nxp.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Huacai Chen <chenhuacai@kernel.org>,
+	Xianwei Zhao <xianwei.zhao@amlogic.com>,
+	Prajna Rajendra Kumar <prajna.rajendrakumar@microchip.com>,
+	Sergio Perez Gonzalez <sperezglz@gmail.com>,
+	Qianfeng Rong <rongqianfeng@vivo.com>,
+	Haibo Chen <haibo.chen@nxp.com>,
+	Gabor Juhos <j4g8y7@gmail.com>,
+	Md Sadre Alam <quic_mdalam@quicinc.com>,
+	Rosen Penev <rosenp@gmail.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Luis de Arquer <luis.dearquer@inertim.com>,
+	Cosmin Tanislav <cosmin-gabriel.tanislav.xa@renesas.com>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Longbin Li <looong.bin@gmail.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	=?UTF-8?q?Cl=C3=A9ment=20Le=20Goffic?= <clement.legoffic@foss.st.com>,
+	Alessandro Grassi <alessandro.grassi@mailbox.org>,
+	Darshan R <rathod.darshan.0896@gmail.com>,
+	Aaron Kling <webgeek1234@gmail.com>,
+	Vishwaroop A <va@nvidia.com>,
+	Haixu Cui <quic_haixcui@quicinc.com>,
+	Darshan Rathod <darshanrathod475@gmail.com>,
+	linux-spi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	asahi@lists.linux.dev,
+	linux-aspeed@lists.ozlabs.org,
+	openbmc@lists.ozlabs.org,
+	linux-rpi-kernel@lists.infradead.org,
+	linux-sound@vger.kernel.org,
+	patches@opensource.cirrus.com,
+	imx@lists.linux.dev,
+	linux-arm-msm@vger.kernel.org,
+	linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	virtualization@lists.linux.dev
+Cc: Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ray Liu <ray.liu@airoha.com>,
+	Sven Peter <sven@kernel.org>,
+	Neal Gompa <neal@gompa.dev>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Ryan Wanner <ryan.wanner@microchip.com>,
+	Michael Hennerich <michael.hennerich@analog.com>,
+	=?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
+	Kamal Dasu <kamal.dasu@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Kursad Oney <kursad.oney@broadcom.com>,
+	Anand Gore <anand.gore@broadcom.com>,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
+	David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Jean-Marie Verdun <verdun@hpe.com>,
+	Nick Hawkins <nick.hawkins@hpe.com>,
+	Yang Shen <shenyang39@huawei.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Lixu Zhang <lixu.zhang@intel.com>,
+	Yinbo Zhu <zhuyinbo@loongson.cn>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Avi Fishman <avifishman70@gmail.com>,
+	Tomer Maimon <tmaimon77@gmail.com>,
+	Tali Perry <tali.perry1@gmail.com>,
+	Patrick Venture <venture@google.com>,
+	Nancy Yuen <yuenn@google.com>,
+	Benjamin Fair <benjaminfair@google.com>,
+	Han Xu <han.xu@nxp.com>,
+	Yogesh Gaur <yogeshgaur.83@gmail.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Daniel Mack <daniel@zonque.org>,
+	Haojian Zhuang <haojian.zhuang@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>,
+	Chris Packham <chris.packham@alliedtelesis.co.nz>,
+	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Paul Walmsley <pjw@kernel.org>,
+	Samuel Holland <samuel.holland@sifive.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Li-hao Kuo <lhjeff911@gmail.com>,
+	Masahisa Kojima <masahisa.kojima@linaro.org>,
+	Jassi Brar <jaswinder.singh@linaro.org>,
+	Laxman Dewangan <ldewangan@nvidia.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Sowjanya Komatineni <skomatineni@nvidia.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
+	Michal Simek <michal.simek@amd.com>,
+	Max Filippov <jcmvbkbc@gmail.com>
+Subject: [PATCH v2 1/4] spi: Propagate default fwnode to the SPI controller device
+Date: Mon, 12 Jan 2026 21:21:23 +0100
+Message-ID: <20260112203534.4186261-2-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260112203534.4186261-1-andriy.shevchenko@linux.intel.com>
+References: <20260112203534.4186261-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-References: <20260112110755.2435899-1-tzungbi@kernel.org>
-In-Reply-To: <20260112110755.2435899-1-tzungbi@kernel.org>
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-Date: Mon, 12 Jan 2026 10:14:06 -0700
-X-Gm-Features: AZwV_QhFTOKB8Mb4toZTdxIgZzuORUy3V9mQRfv_0RLRLo19pmsGVWf9Wr41giU
-Message-ID: <CANLsYkxuh6duedGuzR7We4T1KSXA613SXg+HWL=TONdhtP4XMQ@mail.gmail.com>
-Subject: Re: [PATCH v2] remoteproc: mediatek: Break lock dependency to `prepare_lock`
-To: Tzung-Bi Shih <tzungbi@kernel.org>
-Cc: Bjorn Andersson <andersson@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-remoteproc@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_091420_685932_0DDCCF26 
-X-CRM114-Status: GOOD (  30.12  )
+X-CRM114-CacheID: sfid-20260112_123552_350401_451AC8C2 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,265 +232,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 12 Jan 2026 at 04:08, Tzung-Bi Shih <tzungbi@kernel.org> wrote:
->
-> A potential circular locking dependency (ABBA deadlock) exists between
-> `ec_dev->lock` and the clock framework's `prepare_lock`.
->
-> The first order (A -> B) occurs when scp_ipi_send() is called while
-> `ec_dev->lock` is held (e.g., within cros_ec_cmd_xfer()):
-> 1. cros_ec_cmd_xfer() acquires `ec_dev->lock` and calls scp_ipi_send().
-> 2. scp_ipi_send() calls clk_prepare_enable(), which acquires
->    `prepare_lock`.
-> See #0 in the following example calling trace.
-> (Lock Order: `ec_dev->lock` -> `prepare_lock`)
->
-> The reverse order (B -> A) is more complex and has been observed
-> (learned) by lockdep.  It involves the clock prepare operation
-> triggering power domain changes, which then propagates through sysfs
-> and power supply uevents, eventually calling back into the ChromeOS EC
-> driver and attempting to acquire `ec_dev->lock`:
-> 1. Something calls clk_prepare(), which acquires `prepare_lock`.  It
->    then triggers genpd operations like genpd_runtime_resume(), which
->    takes `&genpd->mlock`.
-> 2. Power domain changes can trigger regulator changes; regulator
->    changes can then trigger device link changes; device link changes
->    can then trigger sysfs changes.  Eventually, power_supply_uevent()
->    is called.
-> 3. This leads to calls like cros_usbpd_charger_get_prop(), which calls
->    cros_ec_cmd_xfer_status(), which then attempts to acquire
->    `ec_dev->lock`.
-> See #1 ~ #6 in the following example calling trace.
-> (Lock Order: `prepare_lock` -> `&genpd->mlock` -> ... -> `&ec_dev->lock`)
->
-> Move the clk_prepare()/clk_unprepare() operations for `scp->clk` to the
-> remoteproc prepare()/unprepare() callbacks.  This ensures `prepare_lock`
-> is only acquired in prepare()/unprepare() callbacks.  Since
-> `ec_dev->lock` is not involved in the callbacks, the dependency loop is
-> broken.
->
-> This means the clock is always "prepared" when the SCP is running.  The
-> prolonged "prepared time" for the clock should be acceptable as SCP is
-> designed to be a very power efficient processor.  The power consumption
-> impact can be negligible.
->
+Most of the SPI controller drivers share the parent's fwnode
+by explicit assignment. Propagate the default by SPI core,
+so they may drop that in the code. Only corner cases may require
+a special treatment and we simply (re)assign the controller's
+fwnode explicitly (as it's done right now, no changes required
+for that).
 
-I certainly would have appreciated this kind of information upon first
-looking at this patch.  It would have saved me valuable time, time
-that could have been spent on reviewing other people's work.
+Reviewed-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+Tested-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/spi/spi-cs42l43.c | 8 ++++++++
+ drivers/spi/spi.c         | 3 +++
+ 2 files changed, 11 insertions(+)
 
-> A simplified calling trace reported by lockdep:
-> > -> #6 (&ec_dev->lock)
-> >        cros_ec_cmd_xfer
-> >        cros_ec_cmd_xfer_status
-> >        cros_usbpd_charger_get_port_status
-> >        cros_usbpd_charger_get_prop
-> >        power_supply_get_property
-> >        power_supply_show_property
-> >        power_supply_uevent
-> >        dev_uevent
-> >        uevent_show
-> >        dev_attr_show
-> >        sysfs_kf_seq_show
-> >        kernfs_seq_show
-> > -> #5 (kn->active#2)
-> >        kernfs_drain
-> >        __kernfs_remove
-> >        kernfs_remove_by_name_ns
-> >        sysfs_remove_file_ns
-> >        device_del
-> >        __device_link_del
-> >        device_links_driver_bound
-> > -> #4 (device_links_lock)
-> >        device_link_remove
-> >        _regulator_put
-> >        regulator_put
-> > -> #3 (regulator_list_mutex)
-> >        regulator_lock_dependent
-> >        regulator_disable
-> >        scpsys_power_off
-> >        _genpd_power_off
-> >        genpd_power_off
-> > -> #2 (&genpd->mlock/1)
-> >        genpd_add_subdomain
-> >        pm_genpd_add_subdomain
-> >        scpsys_add_subdomain
-> >        scpsys_probe
-> > -> #1 (&genpd->mlock)
-> >        genpd_runtime_resume
-> >        __rpm_callback
-> >        rpm_callback
-> >        rpm_resume
-> >        __pm_runtime_resume
-> >        clk_core_prepare
-> >        clk_prepare
-> > -> #0 (prepare_lock)
-> >        clk_prepare
-> >        scp_ipi_send
-> >        scp_send_ipi
-> >        mtk_rpmsg_send
-> >        rpmsg_send
-> >        cros_ec_pkt_xfer_rpmsg
->
-> Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
-> ---
-> v2:
-> - Re-organized commit message.
-> - Rebased to next-20260109.
->
-> v1: https://lore.kernel.org/r/20251229043146.4102967-1-tzungbi@kernel.org
->
->  drivers/remoteproc/mtk_scp.c     | 39 +++++++++++++++++++++++---------
->  drivers/remoteproc/mtk_scp_ipi.c |  4 ++--
->  2 files changed, 30 insertions(+), 13 deletions(-)
->
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index 328541e62158..4651311aeb07 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -283,7 +283,7 @@ static irqreturn_t scp_irq_handler(int irq, void *priv)
->         struct mtk_scp *scp = priv;
->         int ret;
->
-> -       ret = clk_prepare_enable(scp->clk);
-> +       ret = clk_enable(scp->clk);
->         if (ret) {
->                 dev_err(scp->dev, "failed to enable clocks\n");
->                 return IRQ_NONE;
-> @@ -291,7 +291,7 @@ static irqreturn_t scp_irq_handler(int irq, void *priv)
->
->         scp->data->scp_irq_handler(scp);
->
-> -       clk_disable_unprepare(scp->clk);
-> +       clk_disable(scp->clk);
->
->         return IRQ_HANDLED;
->  }
-> @@ -665,7 +665,7 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
->         struct device *dev = scp->dev;
->         int ret;
->
-> -       ret = clk_prepare_enable(scp->clk);
-> +       ret = clk_enable(scp->clk);
->         if (ret) {
->                 dev_err(dev, "failed to enable clocks\n");
->                 return ret;
-> @@ -680,7 +680,7 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
->
->         ret = scp_elf_load_segments(rproc, fw);
->  leave:
-> -       clk_disable_unprepare(scp->clk);
-> +       clk_disable(scp->clk);
->
->         return ret;
->  }
-> @@ -691,14 +691,14 @@ static int scp_parse_fw(struct rproc *rproc, const struct firmware *fw)
->         struct device *dev = scp->dev;
->         int ret;
->
-> -       ret = clk_prepare_enable(scp->clk);
-> +       ret = clk_enable(scp->clk);
->         if (ret) {
->                 dev_err(dev, "failed to enable clocks\n");
->                 return ret;
->         }
->
->         ret = scp_ipi_init(scp, fw);
-> -       clk_disable_unprepare(scp->clk);
-> +       clk_disable(scp->clk);
->         return ret;
->  }
->
-> @@ -709,7 +709,7 @@ static int scp_start(struct rproc *rproc)
->         struct scp_run *run = &scp->run;
->         int ret;
->
-> -       ret = clk_prepare_enable(scp->clk);
-> +       ret = clk_enable(scp->clk);
->         if (ret) {
->                 dev_err(dev, "failed to enable clocks\n");
->                 return ret;
-> @@ -734,14 +734,14 @@ static int scp_start(struct rproc *rproc)
->                 goto stop;
->         }
->
-> -       clk_disable_unprepare(scp->clk);
-> +       clk_disable(scp->clk);
->         dev_info(dev, "SCP is ready. FW version %s\n", run->fw_ver);
->
->         return 0;
->
->  stop:
->         scp->data->scp_reset_assert(scp);
-> -       clk_disable_unprepare(scp->clk);
-> +       clk_disable(scp->clk);
->         return ret;
->  }
->
-> @@ -909,7 +909,7 @@ static int scp_stop(struct rproc *rproc)
->         struct mtk_scp *scp = rproc->priv;
->         int ret;
->
-> -       ret = clk_prepare_enable(scp->clk);
-> +       ret = clk_enable(scp->clk);
->         if (ret) {
->                 dev_err(scp->dev, "failed to enable clocks\n");
->                 return ret;
-> @@ -917,12 +917,29 @@ static int scp_stop(struct rproc *rproc)
->
->         scp->data->scp_reset_assert(scp);
->         scp->data->scp_stop(scp);
-> -       clk_disable_unprepare(scp->clk);
-> +       clk_disable(scp->clk);
->
->         return 0;
->  }
->
-> +static int scp_prepare(struct rproc *rproc)
-> +{
-> +       struct mtk_scp *scp = rproc->priv;
-> +
-> +       return clk_prepare(scp->clk);
-> +}
-> +
-> +static int scp_unprepare(struct rproc *rproc)
-> +{
-> +       struct mtk_scp *scp = rproc->priv;
-> +
-> +       clk_unprepare(scp->clk);
-> +       return 0;
-> +}
-> +
->  static const struct rproc_ops scp_ops = {
-> +       .prepare        = scp_prepare,
-> +       .unprepare      = scp_unprepare,
->         .start          = scp_start,
->         .stop           = scp_stop,
->         .load           = scp_load,
-> diff --git a/drivers/remoteproc/mtk_scp_ipi.c b/drivers/remoteproc/mtk_scp_ipi.c
-> index c068227e251e..7a37e273b3af 100644
-> --- a/drivers/remoteproc/mtk_scp_ipi.c
-> +++ b/drivers/remoteproc/mtk_scp_ipi.c
-> @@ -171,7 +171,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
->             WARN_ON(len > scp_sizes->ipi_share_buffer_size) || WARN_ON(!buf))
->                 return -EINVAL;
->
-> -       ret = clk_prepare_enable(scp->clk);
-> +       ret = clk_enable(scp->clk);
->         if (ret) {
->                 dev_err(scp->dev, "failed to enable clock\n");
->                 return ret;
-> @@ -211,7 +211,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
->
->  unlock_mutex:
->         mutex_unlock(&scp->send_lock);
-> -       clk_disable_unprepare(scp->clk);
-> +       clk_disable(scp->clk);
->
->         return ret;
->  }
-> --
-> 2.52.0.457.g6b5491de43-goog
->
->
+diff --git a/drivers/spi/spi-cs42l43.c b/drivers/spi/spi-cs42l43.c
+index 4b6b65f450a8..a4a650c8d740 100644
+--- a/drivers/spi/spi-cs42l43.c
++++ b/drivers/spi/spi-cs42l43.c
+@@ -371,6 +371,14 @@ static int cs42l43_spi_probe(struct platform_device *pdev)
+ 
+ 	fwnode_property_read_u32(xu_fwnode, "01fa-sidecar-instances", &nsidecars);
+ 
++	/*
++	 * Depending on the value of nsidecars we either create a software node
++	 * or assign an fwnode. We don't want software node to be attached to
++	 * the default one. That's why we need to clear the SPI controller fwnode
++	 * first.
++	 */
++	device_set_node(&priv->ctlr->dev, NULL);
++
+ 	if (nsidecars) {
+ 		struct software_node_ref_args args[] = {
+ 			SOFTWARE_NODE_REFERENCE(fwnode, 0, GPIO_ACTIVE_LOW),
+diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
+index f077ea74e299..b773c297f8b1 100644
+--- a/drivers/spi/spi.c
++++ b/drivers/spi/spi.c
+@@ -3072,6 +3072,9 @@ struct spi_controller *__spi_alloc_controller(struct device *dev,
+ 	else
+ 		ctlr->dev.class = &spi_controller_class;
+ 	ctlr->dev.parent = dev;
++
++	device_set_node(&ctlr->dev, dev_fwnode(dev));
++
+ 	pm_suspend_ignore_children(&ctlr->dev, true);
+ 	spi_controller_set_devdata(ctlr, (void *)ctlr + ctlr_size);
+ 
+-- 
+2.50.1
+
 
