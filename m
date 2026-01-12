@@ -4,97 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E6BDC9EC8D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 15:03:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C1BAC9EC97
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 15:49:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1laLqgjUnaUcnFjk9BLHpqbDdGmR3XvSwWmqyqO21wM=; b=bzt1tXukf0+wSUOgcJDzH4SclR
-	pdz2vcUJtnnQ/DVjLaa+aElPFvtJyqDq3u7t6zbkVJWwT3txRWceKCNW0LGsTL9yF1LIsWbMWOMSy
-	RnLotnfZ4H9F6ZEzSg4fyNHXbmA9fKdrDtIxX/bKwWr/39JCbbgFTYR9vSTXccEjAJgjHQ/fHEPCD
-	SW4q6n60aCOe0Fw38fNZCYULn4nmi3pPO2MoESUYP8rO3AV4a7XuP/4I2xVYwlzKPBuWtlBdQM+nV
-	jeTRmUG+4ojGZPnhpEr52CSw9IR/EH7XKOEVUTFw0qT5vCx7GwlFi10gj31Hi9B/e3Zn/c1KVdiJY
-	Gj6lLh2w==;
+	bh=g3qVMOf4h7r5oPNNYlK3bIOu73r1qNBGBIVfGAnDN44=; b=3928m8OPvXCqOpDX/C/o/J2GhA
+	ExF7pMNQDeKAh6PEuwACristL+I4XAlgUouKA4rrinOLXYEVkntsPg1eXB51i7kP119vl1YSof5RP
+	B5euEepxxcqqWx0f+d1MRU/d3Ng7sT1SVr300RWLx8VGShw5dmByM9vPPwWpGj3bv64etmVJnEkMP
+	vC/s6GS9ao3rC3dWq3y2X+KtP7L0b0Km1S0RNi8wBw8KtfqGvZ9TCp+P3440voyVznIjd209guiyO
+	nrZuSAHql9hahm6quIPaxaGKOIgN+q1LS8+uZXg2RskxhbuI4SdMw0YPG8pn7Mwe2ysTH0Ay16pHh
+	rfFu8Eeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfJRh-00000005bQw-1CRR;
-	Mon, 12 Jan 2026 15:03:05 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vfKAL-00000005fCL-47ON;
+	Mon, 12 Jan 2026 15:49:14 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfJRd-00000005bQE-3Pkd;
-	Mon, 12 Jan 2026 15:03:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768230178;
-	bh=L8or3v6iZqrpLG7v8P5SZLYbYdbPGHmvZtbWstQCXis=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oFuM3PXQ6KC4yt+dpdSV2jD9qpBTJQN12cbkZTyofIHJdFu9irgkEQSzuepDTp0Nz
-	 0xiVCTtGtze+t+mMgNP/5st2JUv49OKCvT262OVD9VW9/0MI+slisJ3rLKCt5lHz9h
-	 eN3PsNhsKw1Opd9tANFEcqIR9TYM/cOUz4ZY0tPlULcjDTGGEQLnY3ikCV/SSElYs3
-	 d+NqlbjVFzZJo/IN7bGWmE7Okj5upYx9tEjamPNv60ZWu121Vi5Z1wxlgkKmCH+T2U
-	 7vSwxZn6HnR55FYLoCZORcxBQmcsEU8Eu/nm1wjdFDZstYMPbFESsCgU83Um6MJ9OA
-	 DGRQ62xDTZ+LQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9529717E138B;
-	Mon, 12 Jan 2026 16:02:57 +0100 (CET)
-Message-ID: <26c68bb1-1e63-4b47-babc-21ae27e3205e@collabora.com>
-Date: Mon, 12 Jan 2026 16:02:56 +0100
+	id 1vfKAL-00000005fBu-0cG9
+	for linux-mediatek@lists.infradead.org;
+	Mon, 12 Jan 2026 15:49:13 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 967696001D
+	for <linux-mediatek@lists.infradead.org>; Mon, 12 Jan 2026 15:49:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B93DC2BC87
+	for <linux-mediatek@lists.infradead.org>; Mon, 12 Jan 2026 15:49:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768232952;
+	bh=g3qVMOf4h7r5oPNNYlK3bIOu73r1qNBGBIVfGAnDN44=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=DundEaS1NAS3+LPc/kxdJ2yGGomCc9xbKC9k1YG6fs0A1ILvlzTAtzITL4qvI3l7f
+	 p9JgbJHFAiC26fKfk22rPFMWLzp9CQxUPcJZIBpXL7U4pvINJfJX/NHfcOsaf9yX6T
+	 y1Un4vS/kayDeU4qkHi2UwVzBuNtTfOaFmilKeHzR7DY0ihKWyt3hwY8VZwrq2wW5o
+	 GA+VJ1nDezZ9AoHIP8+sdbfpsgSYX4asdKCLOXj7F0WfKpESQGJ6nslcTlu63g7mko
+	 bUa7JW1pwUW74dbDbb6TJErhuDbrjFrex4rdk38C8JNZmDbNarsi0ruW4erNk0EU3t
+	 0wgDmSevaugEQ==
+Received: by mail-lf1-f51.google.com with SMTP id 2adb3069b0e04-59b6c89d302so5398044e87.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 12 Jan 2026 07:49:12 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCWs2XKJrQR6nj1kx16RpvEru/9QIEgMhkOQBWvfdeqx4ncW4GV3JTfzdoTrdm+Or7GF6SOnbBFY0Ea7vVtS6Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy5Gfjkn9oDvsthPGwUI5P1KS+MAdcYFE7/oliNd7A7mO/zcYZP
+	kXxN8FjUMAOJokRQKcT79ZD1LVQabzVwtfyI9SrUBIydkO8c/ClOf41h2ieXio9tzqQhEfKO1UC
+	VvI6Rk/OcckMlFXcw5kYWOPaAJregajE=
+X-Google-Smtp-Source: AGHT+IGrmhpZ8nXRdgojkHsyjUv61lqeNWnDH4LALSgozKK/V99agmF5Af5tLfoDGn/rKgr4N6cPGy0VL/XBPqOTq/E=
+X-Received: by 2002:a05:6512:2312:b0:59b:67b9:3989 with SMTP id
+ 2adb3069b0e04-59b6f01c67emr6662469e87.16.1768232950905; Mon, 12 Jan 2026
+ 07:49:10 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 11/24] scsi: ufs: mediatek: Rework probe function
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
- "robh@kernel.org" <robh@kernel.org>,
- =?UTF-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>,
- "kishon@kernel.org" <kishon@kernel.org>,
- "James.Bottomley@HansenPartnership.com"
- <James.Bottomley@HansenPartnership.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
- <Chaotian.Jing@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
- "nicolas.frattaroli@collabora.com" <nicolas.frattaroli@collabora.com>,
- "vkoul@kernel.org" <vkoul@kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "krzk@kernel.org" <krzk@kernel.org>,
- "neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "broonie@kernel.org" <broonie@kernel.org>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>
-Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- "kernel@collabora.com" <kernel@collabora.com>
-References: <20260108-mt8196-ufs-v5-0-49215157ec41@collabora.com>
- <20260108-mt8196-ufs-v5-11-49215157ec41@collabora.com>
- <81ed17eb-2170-4e97-b56d-488b5335ff5c@kernel.org>
- <dd2eba99adaddf7517f06acf7805d32e261fafa4.camel@mediatek.com>
- <87887adf-2c94-48c2-8f83-4e772ab50f60@kernel.org>
- <e9a6da3998195b9dbda5abd26bc6dd5d3aca07ff.camel@mediatek.com>
- <66ca211a-c909-4d0c-a22c-9cbd3489d372@kernel.org>
- <46cb450f92887ceba07614dc85ed495f6af7f602.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <46cb450f92887ceba07614dc85ed495f6af7f602.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_070302_039764_E027927C 
-X-CRM114-Status: GOOD (  13.01  )
+References: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com> <20260112134900.4142954-2-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20260112134900.4142954-2-andriy.shevchenko@linux.intel.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Mon, 12 Jan 2026 16:48:58 +0100
+X-Gmail-Original-Message-ID: <CAD++jLkQo_1HM2=FM8uw5FLdGo_dyNi7mq55O+Ea62am8nk-uw@mail.gmail.com>
+X-Gm-Features: AZwV_QiRK9ToY_JI65YTXBjF0MrmuQc7bAxxJwuy2RaXI4VD3YSpEG_xcWGIoX0
+Message-ID: <CAD++jLkQo_1HM2=FM8uw5FLdGo_dyNi7mq55O+Ea62am8nk-uw@mail.gmail.com>
+Subject: Re: [PATCH v1 1/7] units: Add HZ_PER_GHZ
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Andi Shyti <andi@smida.it>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
+	Qianfeng Rong <rongqianfeng@vivo.com>, linux-i2c@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	Khalil Blaiech <kblaiech@nvidia.com>, Asmaa Mnebhi <asmaa@nvidia.com>, 
+	Andi Shyti <andi.shyti@kernel.org>, Qii Wang <qii.wang@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Patrice Chotard <patrice.chotard@foss.st.com>, Ard Biesheuvel <ardb@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,66 +87,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/01/26 10:16, Peter Wang (王信友) ha scritto:
-> On Fri, 2026-01-09 at 09:43 +0100, Krzysztof Kozlowski wrote:
->> On 09/01/2026 09:38, Peter Wang (王信友) wrote:
->>> On Fri, 2026-01-09 at 08:24 +0100, Krzysztof Kozlowski wrote:
->>>> On 09/01/2026 07:22, Peter Wang (王信友) wrote:
->>>>>
->>>>>
->>>>> Is it sufficient for us to supplement the ABI document?
->>>>> This ABI might affect the ability to reset and recover after
->>>>> an UFS error in upstream world.
->>>>
->>>>
->>>> In normal case yes, but I cannot imagine arguments justifying
->>>> your
->>>> usage
->>>> of TI properties. Basically it would not pass review.
->>>>
->>>> Best regards,
->>>> Krzysztof
->>>
->>>
->>> Yes, this part is indeed because MediaTek’s reset hardware
->>> implementation is the same as TI’s.
+On Mon, Jan 12, 2026 at 2:49=E2=80=AFPM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
 
-No, MediaTek's reset hardware implementation is not the same as Texas Instruments.
-It was *very similar* to TI in the past (years ago, around the MT6795 Helio
-generation times).
+> The is going to be a new user of the HZ_PER_GHZ definition besides
+> possibly existing ones. Add that one to the header.
+>
+> While at it, split Hz and kHz groups of the multipliers for better
+> maintenance and readability.
+>
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-MediaTek's reset controller - by hardware - is definitely different from the one
-found in TI SoCs.
+This looks right to me:
+Reviewed-by: Linus Walleij <linusw@kernel.org>
 
-Regards,
-Angelo
-
->>> That’s why we used “compatible”
->>> instead of actually implementing MediaTek’s own reset controller.
->>
->> So that's another purely downstream code. Additionally very poor
->> quality
->> downstream code.
->>
->>> So, are you suggesting that we upstream a MediaTek reset
->>> controller,
->>> even though the code is almost identical to TI’s?
->>
->> If you ask about DT, this is already answered in writing bindings
->> document. You cannot use someone else's compatible. Was also re-
->> iterated
->> on mailing list bazillions of times.
->>
->> Best regards,
->> Krzysztof
-> 
-> Okay, we will correct these incorrect usages.
-> 
-> Thanks
-> Peter
-> 
-> 
-> 
-
-
+Yours,
+Linus Walleij
 
