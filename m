@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD457C9EC90
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 13:49:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64D93C9EC91
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 13:49:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pap1OJWQGM8TY1SgybjWHV9rK3+HZYlfSxqT5mail6k=; b=hMXaag1bRdAbv1a3T094s+KynD
-	PlkFBDtlPokjpCimj4aR4jvjcE+nCBMwh/pNHP5dkc8PBQkkeQWjUw21Oj8FhxJtEEXQGsLEKjsJ2
-	5BbXOqGdeM2nVr/xXdruf63AJ1eXuErqX+47n+jKfZ8mVbhQRj5EK6loEyijTBToBR7ELPW/ZCi3E
-	Ul4lcTO+yu8MdB8VxVFtEbR3BjJ2x9b4XsZ1P6hMsSn+7wJFSsmXTD2V2Yh580utcTv/yt4Eenshl
-	pKvScCi1T0A5ARd4vfVYqV8wTTxapO0YBB5xgMZebi+55ithb2WzxXXEDG9t4R65DekddZPCIMtWM
-	YbptquMA==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TX2J8YYBdlEdPvmwWWqCg70CNGlWkbtViC4+wM130ig=; b=mFJhbw6FLxzaAH0wirMwQg8tyJ
+	aUPqpqiA7ReJbNR2ur8+OSZP0bGHmYR1R1/2Q3oel519aDoc8yozSNMG3nX/gNibb899f9NpHPhPi
+	McMjh/vY2x4dncL59UYnIcjLHadVyuqJHoO7KF1oObIdgAMputR39leI4OSKfQHpBs1xQ6AC3Eoqf
+	dfYEV7apTAnGGhouIlJi0o0xDaQxge/n3enNZGG38U/Wmu2yUwhAd+/HRu/7tWY7w7+a9piUweuKZ
+	1HBbrKc5z4VxV7rAh+o+UhDSmuf7jebHWnrem38X2ZLTWsS5ENtM3/S9NTY9DVPRIZmP2UFRJeMyK
+	u7JMT2SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfIIJ-00000005RYw-1e7L;
-	Mon, 12 Jan 2026 13:49:19 +0000
+	id 1vfIIN-00000005Rdr-1JCM;
+	Mon, 12 Jan 2026 13:49:23 +0000
 Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfIID-00000005RSM-3WUR;
-	Mon, 12 Jan 2026 13:49:14 +0000
+	id 1vfIID-00000005RSu-3kYz;
+	Mon, 12 Jan 2026 13:49:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
   t=1768225754; x=1799761754;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=stoeaFvLKGGn0uhn85r/nzgAeuADmULIQT05Vn4VYoE=;
-  b=guLjQhOU5dKu5hsPlXtmc+uWQ0vXhsnF8XGUa5khIKK0bE+je+hBN2z2
-   D7m+OV7Rj33FYk0ravHfKF1ePQ2OoHLhfk5bXsOC+jT0HOt5ji10Bv6ad
-   P7K4sUETgqmapHMdQVJLlYk1F0X9b7ffy+16L2PGv0c5stQLTi8pUV60t
-   T24UEYRP7iTXQBZsPreLvTC1GrKJyWaUbnLmsxDquYX2/pT3F8uVDuARY
-   OEgL2O+duelWOCgixikQ8D31SzfFz39Mj976xlEGfOenwyfMKy5WcPzP2
-   +GewUwm+PnlpUmRdrUKE30CmHj18fOcKVX7Fo9YqrSqFp/uMu3kGZcljs
-   g==;
-X-CSE-ConnectionGUID: 2B06Ky5aTsO9vj/0RcDRRA==
-X-CSE-MsgGUID: KeHKX5K7S0KTttlv1DESGQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11669"; a="57048281"
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=QQ0qqH3VNmZu+wMQEzW+Nf85tDjOXZ++eEjaIO+FgcA=;
+  b=kzK6gpft/gJqPCMc+m/q4Epj05AZPepfNxRQpnH4XzYWqXKYZQ4++Y6v
+   advRO5MqXBZw1Dn7xQC46VcQo/rT5kl6SBcwydVREYXX02FHfBkeSci1H
+   V/of1q2uGCfiJzCH96fH8m/JOeh72ZkaheddYKr78xvMSWRJGo1dkQ7pK
+   8YgmR7TVu2kSdYy/mYfxYU8YQdHrduT9LcJyChcOXK3NdQiTax83JRUS0
+   02HbTRpC53ucnLkHl4sQR7c3YtvOepQVU1t8xZmhKKUuksb93PcMKVssu
+   LP4uOrxjGNV481FeF6jL/9YXp4FQZpgHBlxlFB3YmNqSi+8rlDWjQ0pa6
+   w==;
+X-CSE-ConnectionGUID: fyn/f/HHQTuLQlrZhkmAgw==
+X-CSE-MsgGUID: M+yYJnAuTX+V5dDCr2gDNg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11669"; a="57048293"
 X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; 
-   d="scan'208";a="57048281"
+   d="scan'208";a="57048293"
 Received: from orviesa004.jf.intel.com ([10.64.159.144])
   by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jan 2026 05:49:12 -0800
-X-CSE-ConnectionGUID: 3psanrVbTtGgoavkyMUQUw==
-X-CSE-MsgGUID: g0E+JuNQRYarjdD7ueGt/Q==
+X-CSE-ConnectionGUID: noLH1GPoT2e5iwBFL7qsDg==
+X-CSE-MsgGUID: TPNbfTbKTRWsr+6apHjc9Q==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; 
-   d="scan'208";a="208618611"
+   d="scan'208";a="208618613"
 Received: from black.igk.intel.com ([10.91.253.5])
   by orviesa004.jf.intel.com with ESMTP; 12 Jan 2026 05:49:08 -0800
 Received: by black.igk.intel.com (Postfix, from userid 1003)
-	id B08B598; Mon, 12 Jan 2026 14:49:06 +0100 (CET)
+	id B87469B; Mon, 12 Jan 2026 14:49:06 +0100 (CET)
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Andi Shyti <andi@smida.it>,
 	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
@@ -75,17 +75,17 @@ Cc: Khalil Blaiech <kblaiech@nvidia.com>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Patrice Chotard <patrice.chotard@foss.st.com>,
 	Ard Biesheuvel <ardb@kernel.org>
-Subject: [PATCH v1 0/7] i2c: busses: Introduce and use HZ_PER_GHZ
-Date: Mon, 12 Jan 2026 14:46:08 +0100
-Message-ID: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 2/7] i2c: mlxbf: Use HZ_PER_GHZ constant instead of custom one
+Date: Mon, 12 Jan 2026 14:46:10 +0100
+Message-ID: <20260112134900.4142954-3-andriy.shevchenko@linux.intel.com>
 X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
+References: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_054913_891574_089FDF8C 
-X-CRM114-Status: UNSURE (   8.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260112_054913_946775_5F4C6E10 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,29 +100,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A few drivers for I²C host controllers use HZ_PER_GHZ in numeric form.
-This is less readable and prone to subtle mistakes. Instead, introduce
-a well defined constant and use it in the drivers. No functional change
-implied except one case where 64-bit division replaced with 32-bit one.
+Use HZ_PER_GHZ constant instead of custom one. No functional changes.
 
-Andy Shevchenko (7):
-  units: Add HZ_PER_GHZ
-  i2c: mlxbf: Use HZ_PER_GHZ constant instead of custom one
-  i2c: mt65xx: Use HZ_PER_GHZ constant instead of plain number
-  i2c: nomadik: Use HZ_PER_GHZ constant instead of plain number
-  i2c: rk3x: Use HZ_PER_GHZ constant instead of plain number
-  i2c: st: Use HZ_PER_GHZ constant instead of plain number
-  i2c: synquacer: Use HZ_PER_GHZ constant instead of plain number
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/i2c/busses/i2c-mlxbf.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
- drivers/i2c/busses/i2c-mlxbf.c     |  5 ++---
- drivers/i2c/busses/i2c-mt65xx.c    | 11 ++++++-----
- drivers/i2c/busses/i2c-nomadik.c   |  7 ++++---
- drivers/i2c/busses/i2c-rk3x.c      | 12 ++++++------
- drivers/i2c/busses/i2c-st.c        |  3 ++-
- drivers/i2c/busses/i2c-synquacer.c |  3 ++-
- include/linux/units.h              |  3 +++
- 7 files changed, 25 insertions(+), 19 deletions(-)
-
+diff --git a/drivers/i2c/busses/i2c-mlxbf.c b/drivers/i2c/busses/i2c-mlxbf.c
+index 8345f7e6385d..746f65989138 100644
+--- a/drivers/i2c/busses/i2c-mlxbf.c
++++ b/drivers/i2c/busses/i2c-mlxbf.c
+@@ -20,6 +20,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/string.h>
+ #include <linux/string_choices.h>
++#include <linux/units.h>
+ 
+ /* Defines what functionality is present. */
+ #define MLXBF_I2C_FUNC_SMBUS_BLOCK \
+@@ -72,8 +73,6 @@
+ /* Constant used to determine the PLL frequency. */
+ #define MLNXBF_I2C_COREPLL_CONST    16384ULL
+ 
+-#define MLXBF_I2C_FREQUENCY_1GHZ  1000000000ULL
+-
+ /* PLL registers. */
+ #define MLXBF_I2C_CORE_PLL_REG1         0x4
+ #define MLXBF_I2C_CORE_PLL_REG2         0x8
+@@ -1083,7 +1082,7 @@ static u32 mlxbf_i2c_get_ticks(struct mlxbf_i2c_priv *priv, u64 nanoseconds,
+ 	 *         Frequency
+ 	 */
+ 	frequency = priv->frequency;
+-	ticks = div_u64(nanoseconds * frequency, MLXBF_I2C_FREQUENCY_1GHZ);
++	ticks = div_u64(nanoseconds * frequency, HZ_PER_GHZ);
+ 	/*
+ 	 * The number of ticks is rounded down and if minimum is equal to 1
+ 	 * then add one tick.
 -- 
 2.50.1
 
