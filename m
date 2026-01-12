@@ -4,66 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B08C7C9EC90
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 13:36:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 110A2C9EC90
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 13:49:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tNWZXaS1FJQzVZ6hwzeLxJJeSgo8s+XK9jUPMtFsA/g=; b=YvFiJphA5LCsCzngZ92oAnEs3H
-	QS1nk3iAjQY/wNut1cNzo69kWSOfvlQrakl7sAi5efecf+LT5U+FqHaXvzVJvGYR03S4He8TzRwZc
-	tyUkVKKKQ/nRnCi/MaRYOkzE250JxyAtC5PJb+Eic8SARdagAljyvpjaiha7Qvbw1BPUPkktYwkOG
-	QBzi1bu+et0k8vDvPB2Zo8ctn+mleSPjZy4Pbp2PvIdlLFiFWBkgL26kOPTeAomaQ7V7QI7mmCT6Z
-	gILJpgWHzW2dfCuzE3gioFnYy2xhowY5dnYE48yMKUX8x0CbgTgkjPrseitlY6pAT+ivLqyWHThTA
-	zwdMinOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eRubClLmzavqnfQ0UMjEODLIhXHLBrNqh2E4vhasu94=; b=yQXGrUHEMnUXTQDoCRuLBDC7+l
+	TlCwfJi9TyupIrwhJGJmTmJ9fzm2CYoPBXk6ZHNgfjCWAfKeZgW6btJTpP6tPeV6cjxGQggT2hTGD
+	v+ewAnHHIDcvwLlW3DY7QK20q4USNjtlGZUEhFdgP6ob2TviVVoFeQ+pw2P3x3ZLDWrRb/U5BZRlV
+	0V4wR8E7T2Dr51ePzxoybzXt5DSh2JyHzS9NK6KnZLhPlYTXHNdw/DjIvAvRjLmlPO7su1sDXN+aW
+	tJhgG3zG2OiZfgOexgh4PPlFigY3uFcomMocNtN2KF4zdA8/BgLkh4NsHMvtQzIZYZBJh0HhOTexZ
+	e4B21nYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfI5S-00000005Q4B-1ydi;
-	Mon, 12 Jan 2026 13:36:02 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vfIIF-00000005RUJ-26CJ;
+	Mon, 12 Jan 2026 13:49:15 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfI5Q-00000005Q3n-3nt6;
-	Mon, 12 Jan 2026 13:36:01 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1578D6000A;
-	Mon, 12 Jan 2026 13:36:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69A42C16AAE;
-	Mon, 12 Jan 2026 13:35:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768224959;
-	bh=wx3vwavyvgTGfzp6h8X47zsgs32m0wRi01cnEWDyyOc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Tk5eb7kbHiRVP3gn5HFlTgUmg4oXCcb/K5L3CwpyJHARmM3ebvLZPjhqc6PkGIwvx
-	 og85amj9ERx0QUp3k/HAwRrxRMT5gUjjFGvjhRcUp/LwU4JqPudjQjOku4AsbGtCrO
-	 4fyRBfh2HdlmGkf+v0MbWRUs5RMn+5EQkxqwk1C6d0xLsCWqB5NAHLDNovLU+XH1C3
-	 40gPyOcmD9rk1assyM5T7Pn/+jin9a1xpdHANmbtp5+kiQQcQOTrvV0YtFlEHIJLxa
-	 wZiX9b78BDhj5FRXo5fmtct5rVnnn++TGTFOyYbvY9VQ0NVt5BD3lq+5XJ7Dujw3q5
-	 dY4jzerfhOhOA==
-Date: Mon, 12 Jan 2026 14:35:57 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 2/2] net: airoha: npu: Add the capability to
- read firmware names from dts
-Message-ID: <aWT4vcBzG6UnaqOF@lore-desk>
-References: <20260112-airoha-npu-firmware-name-v1-0-d0b148b6710f@kernel.org>
- <20260112-airoha-npu-firmware-name-v1-2-d0b148b6710f@kernel.org>
- <f57867a0-a57d-4572-b0ed-b2adb41d9689@lunn.ch>
+	id 1vfIIC-00000005RSM-2Iob;
+	Mon, 12 Jan 2026 13:49:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1768225752; x=1799761752;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=s4D8kw7OoyHkWsenYF7E+9Z6vB4aK7eDBACFxTCsJgQ=;
+  b=NbBz32xlKfw4WC5rQuACOLX2uAA5MKEq77HbfUzoi3mzZK0UfOuIHsya
+   3ILZt71mIOg8W21+wuFmkxidY1qmSW/HKqujBrxe8KxF9ZmJB7GOOShrp
+   lsBvw6+H7BuE+UI5uERhziG232wG8zLiLQRGsgYJ1v9g/8qA6gdsfLh+K
+   que2njKiolt/zicehhpNI4afql50EByx2jFEQpNOcpjvDpgRKRanxZrTz
+   875/6aolKIyyWmmhbpXOHs9g1141W8dI0H/+a+U1jZtjYLjysmaQB3FU6
+   DXrRJAvWBPx7dmeTFc8qx95oELBw5vDYmJMcbTYPI3dAvNeP5FMNqEj/T
+   w==;
+X-CSE-ConnectionGUID: sD7b/lShQjqGG0dxpeRPuA==
+X-CSE-MsgGUID: m0tsEvJDSKCi7cIJgdxQtw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11669"; a="57048262"
+X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; 
+   d="scan'208";a="57048262"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jan 2026 05:49:11 -0800
+X-CSE-ConnectionGUID: RSGfaLd6QVqd0LuDupeO2Q==
+X-CSE-MsgGUID: JO2qZ07QS3e8APOkDDRiqQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; 
+   d="scan'208";a="208618599"
+Received: from black.igk.intel.com ([10.91.253.5])
+  by orviesa004.jf.intel.com with ESMTP; 12 Jan 2026 05:49:08 -0800
+Received: by black.igk.intel.com (Postfix, from userid 1003)
+	id C1CDE9E; Mon, 12 Jan 2026 14:49:06 +0100 (CET)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Andi Shyti <andi@smida.it>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Qianfeng Rong <rongqianfeng@vivo.com>,
+	linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Cc: Khalil Blaiech <kblaiech@nvidia.com>,
+	Asmaa Mnebhi <asmaa@nvidia.com>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Qii Wang <qii.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Ard Biesheuvel <ardb@kernel.org>
+Subject: [PATCH v1 4/7] i2c: nomadik: Use HZ_PER_GHZ constant instead of plain number
+Date: Mon, 12 Jan 2026 14:46:12 +0100
+Message-ID: <20260112134900.4142954-5-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
+References: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ACHKGX5J56MzbVwz"
-Content-Disposition: inline
-In-Reply-To: <f57867a0-a57d-4572-b0ed-b2adb41d9689@lunn.ch>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260112_054912_627552_7AF18CC7 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,96 +100,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Use defined constant to avoid the possible mistakes and to provide
+an additional information on the units.
 
---ACHKGX5J56MzbVwz
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+While at it, drop unneeded 64-bit division, all operands fit 32-bit.
 
-> On Mon, Jan 12, 2026 at 11:00:08AM +0100, Lorenzo Bianconi wrote:
-> > Introduce the capability to read the firmware binary names from device-=
-tree
-> > using the firmware-name property if available.
-> > This is a preliminary patch to enable NPU offloading for MT7996 (Eagle)
-> > chipset since it requires a different binary with respect to the one
-> > used for MT7992 on the EN7581 SoC.
->=20
-> When i look at
->=20
-> airoha_npu.c
->=20
-> i see:
->=20
-> #define NPU_EN7581_FIRMWARE_DATA                "airoha/en7581_npu_data.b=
-in"
-> #define NPU_EN7581_FIRMWARE_RV32                "airoha/en7581_npu_rv32.b=
-in"
-> #define NPU_AN7583_FIRMWARE_DATA                "airoha/an7583_npu_data.b=
-in"
-> #define NPU_AN7583_FIRMWARE_RV32                "airoha/an7583_npu_rv32.b=
-in"
->=20
-> static const struct airoha_npu_soc_data en7581_npu_soc_data =3D {
->         .fw_rv32 =3D {
->                 .name =3D NPU_EN7581_FIRMWARE_RV32,
->                 .max_size =3D NPU_EN7581_FIRMWARE_RV32_MAX_SIZE,
->         },
->         .fw_data =3D {
->                 .name =3D NPU_EN7581_FIRMWARE_DATA,
->                 .max_size =3D NPU_EN7581_FIRMWARE_DATA_MAX_SIZE,
->         },
-> };
->=20
-> static const struct airoha_npu_soc_data an7583_npu_soc_data =3D {
->         .fw_rv32 =3D {
->                 .name =3D NPU_AN7583_FIRMWARE_RV32,
->                 .max_size =3D NPU_EN7581_FIRMWARE_RV32_MAX_SIZE,
->         },
->         .fw_data =3D {
->                 .name =3D NPU_AN7583_FIRMWARE_DATA,
->                 .max_size =3D NPU_EN7581_FIRMWARE_DATA_MAX_SIZE,
->         },
-> };
->=20
-> static const struct of_device_id of_airoha_npu_match[] =3D {
->         { .compatible =3D "airoha,en7581-npu", .data =3D &en7581_npu_soc_=
-data },
->         { .compatible =3D "airoha,an7583-npu", .data =3D &an7583_npu_soc_=
-data },
->         { /* sentinel */ }
-> };
->=20
-> Why cannot this scheme be extended with another compatible?
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/i2c/busses/i2c-nomadik.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-yes, that is another possibility I was thinking of but then I found
-"firwmare-name" property was quite a common approach.
-Something like:
+diff --git a/drivers/i2c/busses/i2c-nomadik.c b/drivers/i2c/busses/i2c-nomadik.c
+index 19b648fc094d..b63ee51c1652 100644
+--- a/drivers/i2c/busses/i2c-nomadik.c
++++ b/drivers/i2c/busses/i2c-nomadik.c
+@@ -31,6 +31,7 @@
+ #include <linux/pm_runtime.h>
+ #include <linux/regmap.h>
+ #include <linux/slab.h>
++#include <linux/units.h>
+ 
+ #define DRIVER_NAME "nmk-i2c"
+ 
+@@ -419,10 +420,10 @@ static void setup_i2c_controller(struct nmk_i2c_dev *priv)
+ 	 * modes are 250ns, 100ns, 10ns respectively.
+ 	 *
+ 	 * As the time for one cycle T in nanoseconds is
+-	 * T = (1/f) * 1000000000 =>
+-	 * slsu = cycles / (1000000000 / f) + 1
++	 * T = (1/f) * HZ_PER_GHZ =>
++	 * slsu = cycles / (HZ_PER_GHZ / f) + 1
+ 	 */
+-	ns = DIV_ROUND_UP_ULL(1000000000ULL, i2c_clk);
++	ns = DIV_ROUND_UP(HZ_PER_GHZ, i2c_clk);
+ 	switch (priv->sm) {
+ 	case I2C_FREQ_MODE_FAST:
+ 	case I2C_FREQ_MODE_FAST_PLUS:
+-- 
+2.50.1
 
-static const struct of_device_id of_airoha_npu_match[] =3D {
-	...
-	{ .compatible =3D "airoha,en7581-npu-7996", .data =3D &en7581_7996_npu_soc=
-_data },
-	...
-};
-
-What do you think?
-
-Regards,
-Lorenzo
-
->=20
->     Andrew
-
---ACHKGX5J56MzbVwz
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaWT4vQAKCRA6cBh0uS2t
-rHYNAQDGH3oT5hXKQNMrulNWdI8aXsyBx9SNvaFF4mgjMtA1iAD+KAgmsi6pfWp5
-lz+BZ302fPMsRSq5ALTDn3pqwONpUw4=
-=Ka0P
------END PGP SIGNATURE-----
-
---ACHKGX5J56MzbVwz--
 
