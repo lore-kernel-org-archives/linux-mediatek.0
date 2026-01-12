@@ -4,221 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AD20CF45C8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 20:36:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 012D8CF45D5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 22:22:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=M/Ba6LzjkeB+zWjL+Z4zxIoZTZTGVcvTDdy3SdutseQ=; b=a8Cel13Q7dN9iMW/od1aQhCCFL
-	Jfq6MnFuMgGs1+ZxNiMFeYPuth87sJ3Pp7JjZ+15M+TNkQBcqf2qy0nItHknBH5sX3Ad420zcSlyp
-	ygKL8GjReKe9jfE9GYevybv2PmynIKgWeAK5LxEIv+90dhNcpxi0QJxCJ7usi97SxqfsOra5eSybw
-	FVAtd+8yXp2X3NTC9jqfHXPR/Csm5PqFAMjNYvLBmaZO03NtDpTbcgJXdl30iRY6wrZpRomPpCW5C
-	cKqu3b1uLY+CjUqm9LQ50nYV2j9mL2/Y8TLVHfsqrlM9B9pBOxm+bR4/ApXptCAha1um0q1gdC/d4
-	oNwAs7SQ==;
+	bh=4w19gL9Si5xuUOM+xx0Gkc/M1vHSFtlbSnI9ldzTAww=; b=T7nHWNtLwnHo+eBUo1803dHCV6
+	9LLnb4SOrHiwF2yGTPAq6Tx8YWQdR1Fu87lvuFX987e+4RiM/deWZJG+h1IZsf5bdfukSwoTWiVD+
+	mhINZ2P6bExwwKuKi6MLWlEnWw6FZ4wErpNnNO1eLwEf5HnuQGHkrLDGepqkqp1S6gOE+ve2znGAT
+	/YxZITwskVJ5r2PWWd6Rlg0PV4nEjnWbupE5dpExQX/xBrbk0okKu/P9dsFSjEahWa1SKPgyTFVuW
+	hR0vxQXNhEhuq4tW+DVR3dNuZwAqoZMBgFtl9vDmXBgIwVF6SxNgLRq183HJEg1VAFk+AEWTKGlle
+	BKb+h0zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfOe5-00000006BIC-0yMy;
-	Mon, 12 Jan 2026 20:36:13 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1vfQIe-00000006FPx-1Bkr;
+	Mon, 12 Jan 2026 22:22:12 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfOdz-00000006BAI-2VFi;
-	Mon, 12 Jan 2026 20:36:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1768250167; x=1799786167;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=qUj8niNVfX9+vDdYMcQmMtutkkFc8vAbK8eRfRuvapk=;
-  b=W+gwi7d1DM2Af6vjsLKAdTGUMskwDj1EUCTjtTrPj7i9ZtwL4QJK40bv
-   gxx0NmBWrWAvEXi0D2oeVHDI6qjW0wIEuAb7nCZWRQlpuLlBNCWrqnF+w
-   8JeAhUNw9jcvvR0gwrTJt0hFYUraTV7Yalzk+U0L/OPDOL1rvEqUcUJPt
-   6peQ1Fm0jSm9FA0Jc4NTqDVcCdISQpfyjE2Xciw+kWXS+BopiFg1xdNXn
-   sgBFo+7LLsgcfmShJJ6xHUGMO5KdY+U8BFL6x6FrQnQwSWTzCOX9yb0fc
-   axObSVsKNhyEOP5EpREttiuyewjvMdQZdLe8DEcgD70Q+8CZ01NXYWxKe
-   w==;
-X-CSE-ConnectionGUID: +mTZ0EM2Qh6Gt1faYqQHqg==
-X-CSE-MsgGUID: q1kUVonGT0qTBN87x2kS2g==
-X-IronPort-AV: E=McAfee;i="6800,10657,11669"; a="80173854"
-X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; 
-   d="scan'208";a="80173854"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jan 2026 12:36:00 -0800
-X-CSE-ConnectionGUID: iw3PrMiXR5eS++D7j1LIkw==
-X-CSE-MsgGUID: gUFTEXqYTuqTjf9xF2Kmdg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; 
-   d="scan'208";a="208707642"
-Received: from black.igk.intel.com ([10.91.253.5])
-  by orviesa004.jf.intel.com with ESMTP; 12 Jan 2026 12:35:50 -0800
-Received: by black.igk.intel.com (Postfix, from userid 1003)
-	id 8AD1A9D; Mon, 12 Jan 2026 21:35:37 +0100 (CET)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Mark Brown <broonie@kernel.org>,
-	Varshini Rajendran <varshini.rajendran@microchip.com>,
-	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Haotian Zhang <vulab@iscas.ac.cn>,
-	Sunny Luo <sunny.luo@amlogic.com>,
-	Janne Grunau <j@jannau.net>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Amelie Delaunay <amelie.delaunay@foss.st.com>,
-	Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>,
-	CL Wang <cl634@andestech.com>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	William Zhang <william.zhang@broadcom.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Manikandan Muralidharan <manikandan.m@microchip.com>,
-	David Lechner <dlechner@baylibre.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Jonas Gorski <jonas.gorski@gmail.com>,
-	Hang Zhou <929513338@qq.com>,
-	Jun Guo <jun.guo@cixtech.com>,
-	Philipp Stanner <phasta@kernel.org>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	=?UTF-8?q?Beno=C3=AEt=20Monin?= <benoit.monin@bootlin.com>,
-	Shiji Yang <yangshiji66@outlook.com>,
-	James Clark <james.clark@linaro.org>,
-	Jonathan Marek <jonathan@marek.ca>,
-	Carlos Song <carlos.song@nxp.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Huacai Chen <chenhuacai@kernel.org>,
-	Xianwei Zhao <xianwei.zhao@amlogic.com>,
-	Prajna Rajendra Kumar <prajna.rajendrakumar@microchip.com>,
-	Sergio Perez Gonzalez <sperezglz@gmail.com>,
-	Qianfeng Rong <rongqianfeng@vivo.com>,
-	Haibo Chen <haibo.chen@nxp.com>,
-	Gabor Juhos <j4g8y7@gmail.com>,
-	Md Sadre Alam <quic_mdalam@quicinc.com>,
-	Rosen Penev <rosenp@gmail.com>,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Luis de Arquer <luis.dearquer@inertim.com>,
-	Cosmin Tanislav <cosmin-gabriel.tanislav.xa@renesas.com>,
-	Tudor Ambarus <tudor.ambarus@linaro.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Longbin Li <looong.bin@gmail.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	=?UTF-8?q?Cl=C3=A9ment=20Le=20Goffic?= <clement.legoffic@foss.st.com>,
-	Alessandro Grassi <alessandro.grassi@mailbox.org>,
-	Darshan R <rathod.darshan.0896@gmail.com>,
-	Aaron Kling <webgeek1234@gmail.com>,
-	Vishwaroop A <va@nvidia.com>,
-	Haixu Cui <quic_haixcui@quicinc.com>,
-	Darshan Rathod <darshanrathod475@gmail.com>,
-	linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-amlogic@lists.infradead.org,
-	asahi@lists.linux.dev,
-	linux-aspeed@lists.ozlabs.org,
-	openbmc@lists.ozlabs.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-sound@vger.kernel.org,
-	patches@opensource.cirrus.com,
-	imx@lists.linux.dev,
-	linux-arm-msm@vger.kernel.org,
-	linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	virtualization@lists.linux.dev
-Cc: Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ray Liu <ray.liu@airoha.com>,
-	Sven Peter <sven@kernel.org>,
-	Neal Gompa <neal@gompa.dev>,
-	Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Ryan Wanner <ryan.wanner@microchip.com>,
-	Michael Hennerich <michael.hennerich@analog.com>,
-	=?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
-	Kamal Dasu <kamal.dasu@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>,
-	Scott Branden <sbranden@broadcom.com>,
-	Kursad Oney <kursad.oney@broadcom.com>,
-	Anand Gore <anand.gore@broadcom.com>,
-	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
-	David Rhodes <david.rhodes@cirrus.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	Jean-Marie Verdun <verdun@hpe.com>,
-	Nick Hawkins <nick.hawkins@hpe.com>,
-	Yang Shen <shenyang39@huawei.com>,
-	Shawn Guo <shawnguo@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Lixu Zhang <lixu.zhang@intel.com>,
-	Yinbo Zhu <zhuyinbo@loongson.cn>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Conor Dooley <conor.dooley@microchip.com>,
-	Daire McNamara <daire.mcnamara@microchip.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Avi Fishman <avifishman70@gmail.com>,
-	Tomer Maimon <tmaimon77@gmail.com>,
-	Tali Perry <tali.perry1@gmail.com>,
-	Patrick Venture <venture@google.com>,
-	Nancy Yuen <yuenn@google.com>,
-	Benjamin Fair <benjaminfair@google.com>,
-	Han Xu <han.xu@nxp.com>,
-	Yogesh Gaur <yogeshgaur.83@gmail.com>,
-	Linus Walleij <linusw@kernel.org>,
-	Daniel Mack <daniel@zonque.org>,
-	Haojian Zhuang <haojian.zhuang@gmail.com>,
-	Robert Jarzmik <robert.jarzmik@free.fr>,
-	Chris Packham <chris.packham@alliedtelesis.co.nz>,
-	Fabrizio Castro <fabrizio.castro.jz@renesas.com>,
-	Andi Shyti <andi.shyti@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Paul Walmsley <pjw@kernel.org>,
-	Samuel Holland <samuel.holland@sifive.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Li-hao Kuo <lhjeff911@gmail.com>,
-	Masahisa Kojima <masahisa.kojima@linaro.org>,
-	Jassi Brar <jaswinder.singh@linaro.org>,
-	Laxman Dewangan <ldewangan@nvidia.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Sowjanya Komatineni <skomatineni@nvidia.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
-	Michal Simek <michal.simek@amd.com>,
-	Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 4/4] spi: Drop duplicate device_set_node() call
-Date: Mon, 12 Jan 2026 21:21:26 +0100
-Message-ID: <20260112203534.4186261-5-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260112203534.4186261-1-andriy.shevchenko@linux.intel.com>
-References: <20260112203534.4186261-1-andriy.shevchenko@linux.intel.com>
+	id 1vfQIb-00000006FP8-0Bd3
+	for linux-mediatek@lists.infradead.org;
+	Mon, 12 Jan 2026 22:22:10 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2a0f3f74587so51509965ad.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 12 Jan 2026 14:22:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlemail.com; s=20230601; t=1768256528; x=1768861328; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4w19gL9Si5xuUOM+xx0Gkc/M1vHSFtlbSnI9ldzTAww=;
+        b=boPJePymbvKlxGfcSUOMsgsoyvA3DchnMbZoNqrR329NgCM39BqAsODsDra3+pJi1T
+         9x4vk10KEI+mE9n2l4ndw7PhdHn+VR/y2G4Ro6i3FUYwJmZy0j9a8HXzbI9FQaSN81We
+         ++6rSyfI/LDlwXtxUjoAlHnj8qvkQy9+6lY7Vcq9dsikJj8gWYNqOnzjdpWp1bQvL+Hr
+         tvK2ANdF6YSp4ZBbCuFO2emOWQSqwVzuS2B/l186OOVrKI1MWhAiBXG6RHc/b/2bI9c+
+         zcmajo0SRZrfJH2TNBXSXUXPu6y8OhKRpEMiLHftxnyxiGTzpolnnIqs68feZkvAD7LZ
+         4cHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768256528; x=1768861328;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=4w19gL9Si5xuUOM+xx0Gkc/M1vHSFtlbSnI9ldzTAww=;
+        b=GnZUAOtEyqhWdMtTf78S1RSfdAm+YAbdxiodNLxnQ8iAke9n1vyE3dRLr8vyRrL/Io
+         LS6zPCyE488RV/ISvnJ73v/4eh31Cfvoy6uBV+0YBsHZu1jdAM1GlDKq8pFLlW3hh9eQ
+         2OMdoJ3TMECyduu0YnM8hr6VJSM5FcFnEWP+Gs8exYwIeBiF9bEpVLTFy4d1XwXZCu1X
+         5MwzI5jrCeWTZKKeAMeMIEVsoxVn0RHUlvftHLaC/8Bmm9plC/Dpazjjmm3g5mvC++xY
+         rdaa4tmo+pGyOtRNPP0kxg8mTr7NoQyir7fLfO+gyavD+MJsgGnCLbNOyrgJ5xBne72G
+         Yp5Q==
+X-Forwarded-Encrypted: i=1; AJvYcCX3N55oAaqXINQVMtMXLEroJWCgZfMMi11bGTBZsisS/4kkc5Birm9+dyUP3rdjG40u3JOwhe7kEyV2q/j9Zg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwF/TeChw5kjAeCuJQPoV3mLeID1khuoAtV2z6/wPU7JhgLtSMD
+	uGk/aAtCHOHQPlteNAk3vVfxi4kpjJGEfrYkMCSbyIbBNDVtlJW473knyzL0oLwAJgi0ExhgqtL
+	nL9LXmeuoAHSQB5hsL19DXUr8EdyRsr0=
+X-Gm-Gg: AY/fxX7OAtAdzXH/FRnHeNelEgtQxyjUo5vmCTG40d++4eolibWiLQeYeaaIsNuPIvi
+	XXSuMzcOeDD0a/GI1qf66wj60ilb52/ZA84RTmwgo2MVMX0dKLDyUvfJeW6vw4zluns7oIMH15L
+	xmGprIkthe0Zg0k0cpkfo0wL9/mVAXZQSo95igU1+qMmmI2q8OOYzVyQRwytFleubmSsuiBti49
+	I6FtuKcywAyBnBGNpcnYVDw0jqfU8PI9P95AFQLE1bBsG2FRtj/8bCHzHjztzrMqE/EdrtcOnq1
+	ro38p4O6ZMEYcnHfUeLGQK4bOzdE
+X-Google-Smtp-Source: AGHT+IF7+Y5y+W1I/oKu3PaWNvUb9K8PSy+WoJh05TRnlBlC82+qzM+GksYGzWHyPWmgmkdzBXyTwo91e0gYk9qAGBM=
+X-Received: by 2002:a17:903:40ca:b0:295:592e:7633 with SMTP id
+ d9443c01a7336-2a3ee4c0fb5mr187274885ad.29.1768256527834; Mon, 12 Jan 2026
+ 14:22:07 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-0-8d7a3dbacdf4@bootlin.com>
+ <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-2-8d7a3dbacdf4@bootlin.com>
+In-Reply-To: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-2-8d7a3dbacdf4@bootlin.com>
+From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Date: Mon, 12 Jan 2026 23:21:56 +0100
+X-Gm-Features: AZwV_Qj9tssGMaPejz2Zl0XwPzPqVqwiSQM5-St_AAUm7gwon2Sgi9P4XfkbVUU
+Message-ID: <CAFBinCBWUXNwEDCJNEmdCtOcGO9eVFfZFC9p9fpdRTesZ7xBSQ@mail.gmail.com>
+Subject: Re: [PATCH v2 2/6] drm/meson/dw-hdmi: convert to of_drm_find_and_get_bridge()
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Inki Dae <inki.dae@samsung.com>, 
+	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+	Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
+	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	Marek Szyprowski <m.szyprowski@samsung.com>, Hui Pu <Hui.Pu@gehealthcare.com>, 
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org, 
+	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
+	linux-renesas-soc@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_123607_671793_599F3825 
-X-CRM114-Status: GOOD (  18.18  )
+X-CRM114-CacheID: sfid-20260112_142209_353991_97050A20 
+X-CRM114-Status: GOOD (  13.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -233,254 +118,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The SPI core provides the default fwnode for the controller,
-assigned by device_set_node(). No need to repeat it in the driver.
+Hi Luca,
 
-Tested-by: Benoît Monin <benoit.monin@bootlin.com> # dw mobileye
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be> # renesas
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- drivers/spi/spi-airoha-snfi.c       | 1 -
- drivers/spi/spi-dln2.c              | 3 ---
- drivers/spi/spi-dw-core.c           | 2 --
- drivers/spi/spi-ep93xx.c            | 1 -
- drivers/spi/spi-gpio.c              | 1 -
- drivers/spi/spi-ljca.c              | 1 -
- drivers/spi/spi-loongson-core.c     | 1 -
- drivers/spi/spi-mpc512x-psc.c       | 2 --
- drivers/spi/spi-mpc52xx-psc.c       | 2 --
- drivers/spi/spi-nxp-fspi.c          | 2 --
- drivers/spi/spi-pxa2xx.c            | 2 --
- drivers/spi/spi-realtek-rtl-snand.c | 1 -
- drivers/spi/spi-rzv2h-rspi.c        | 2 --
- drivers/spi/spi-rzv2m-csi.c         | 2 --
- drivers/spi/spi-sc18is602.c         | 2 --
- drivers/spi/spi-sunplus-sp7021.c    | 1 -
- drivers/spi/spi-virtio.c            | 2 --
- 17 files changed, 28 deletions(-)
+On Fri, Jan 9, 2026 at 11:03=E2=80=AFAM Luca Ceresoli <luca.ceresoli@bootli=
+n.com> wrote:
+>
+> of_drm_find_bridge() is deprecated. Move to its replacement
+> of_drm_find_and_get_bridge() which gets a bridge reference, and ensure it
+> is put when done.
+>
+> dw_hdmi->bridge is used only in dw_hdmi_top_thread_irq(), so in order to
+> avoid potential use-after-free ensure the irq is freed before putting the
+> dw_hdmi->bridge reference.
+>
+> Acked-by: Maxime Ripard <mripard@kernel.org>
+> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Reviewed-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 
-diff --git a/drivers/spi/spi-airoha-snfi.c b/drivers/spi/spi-airoha-snfi.c
-index 70327aebc26b..7b6c09f91fef 100644
---- a/drivers/spi/spi-airoha-snfi.c
-+++ b/drivers/spi/spi-airoha-snfi.c
-@@ -1124,7 +1124,6 @@ static int airoha_snand_probe(struct platform_device *pdev)
- 	ctrl->bits_per_word_mask = SPI_BPW_MASK(8);
- 	ctrl->mode_bits = SPI_RX_DUAL;
- 	ctrl->setup = airoha_snand_setup;
--	device_set_node(&ctrl->dev, dev_fwnode(dev));
- 
- 	err = airoha_snand_nfi_init(as_ctrl);
- 	if (err)
-diff --git a/drivers/spi/spi-dln2.c b/drivers/spi/spi-dln2.c
-index 2013bc56ded8..d90282960ab6 100644
---- a/drivers/spi/spi-dln2.c
-+++ b/drivers/spi/spi-dln2.c
-@@ -682,15 +682,12 @@ static int dln2_spi_probe(struct platform_device *pdev)
- 	struct spi_controller *host;
- 	struct dln2_spi *dln2;
- 	struct dln2_platform_data *pdata = dev_get_platdata(&pdev->dev);
--	struct device *dev = &pdev->dev;
- 	int ret;
- 
- 	host = spi_alloc_host(&pdev->dev, sizeof(*dln2));
- 	if (!host)
- 		return -ENOMEM;
- 
--	device_set_node(&host->dev, dev_fwnode(dev));
--
- 	platform_set_drvdata(pdev, host);
- 
- 	dln2 = spi_controller_get_devdata(host);
-diff --git a/drivers/spi/spi-dw-core.c b/drivers/spi/spi-dw-core.c
-index 9ebf244294f8..0d59c141beb0 100644
---- a/drivers/spi/spi-dw-core.c
-+++ b/drivers/spi/spi-dw-core.c
-@@ -936,8 +936,6 @@ int dw_spi_add_controller(struct device *dev, struct dw_spi *dws)
- 	if (!ctlr)
- 		return -ENOMEM;
- 
--	device_set_node(&ctlr->dev, dev_fwnode(dev));
--
- 	dws->ctlr = ctlr;
- 	dws->dma_addr = (dma_addr_t)(dws->paddr + DW_SPI_DR);
- 
-diff --git a/drivers/spi/spi-ep93xx.c b/drivers/spi/spi-ep93xx.c
-index e1d097091925..90d5f3ea6508 100644
---- a/drivers/spi/spi-ep93xx.c
-+++ b/drivers/spi/spi-ep93xx.c
-@@ -689,7 +689,6 @@ static int ep93xx_spi_probe(struct platform_device *pdev)
- 	/* make sure that the hardware is disabled */
- 	writel(0, espi->mmio + SSPCR1);
- 
--	device_set_node(&host->dev, dev_fwnode(&pdev->dev));
- 	error = devm_spi_register_controller(&pdev->dev, host);
- 	if (error) {
- 		dev_err(&pdev->dev, "failed to register SPI host\n");
-diff --git a/drivers/spi/spi-gpio.c b/drivers/spi/spi-gpio.c
-index c8dadb532c40..072127a38fad 100644
---- a/drivers/spi/spi-gpio.c
-+++ b/drivers/spi/spi-gpio.c
-@@ -351,7 +351,6 @@ static int spi_gpio_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	if (fwnode) {
--		device_set_node(&host->dev, fwnode);
- 		host->use_gpio_descriptors = true;
- 	} else {
- 		status = spi_gpio_probe_pdata(pdev, host);
-diff --git a/drivers/spi/spi-ljca.c b/drivers/spi/spi-ljca.c
-index 3f412cf8f1cd..0c6e6248d8ba 100644
---- a/drivers/spi/spi-ljca.c
-+++ b/drivers/spi/spi-ljca.c
-@@ -238,7 +238,6 @@ static int ljca_spi_probe(struct auxiliary_device *auxdev,
- 	controller->auto_runtime_pm = false;
- 	controller->max_speed_hz = LJCA_SPI_BUS_MAX_HZ;
- 
--	device_set_node(&ljca_spi->controller->dev, dev_fwnode(&auxdev->dev));
- 	auxiliary_set_drvdata(auxdev, controller);
- 
- 	ret = spi_register_controller(controller);
-diff --git a/drivers/spi/spi-loongson-core.c b/drivers/spi/spi-loongson-core.c
-index b46f072a0387..f50423c3db4c 100644
---- a/drivers/spi/spi-loongson-core.c
-+++ b/drivers/spi/spi-loongson-core.c
-@@ -210,7 +210,6 @@ int loongson_spi_init_controller(struct device *dev, void __iomem *regs)
- 	controller->unprepare_message = loongson_spi_unprepare_message;
- 	controller->set_cs = loongson_spi_set_cs;
- 	controller->num_chipselect = 4;
--	device_set_node(&controller->dev, dev_fwnode(dev));
- 	dev_set_drvdata(dev, controller);
- 
- 	spi = spi_controller_get_devdata(controller);
-diff --git a/drivers/spi/spi-mpc512x-psc.c b/drivers/spi/spi-mpc512x-psc.c
-index 3c1638ba5bee..a1aeb5403a74 100644
---- a/drivers/spi/spi-mpc512x-psc.c
-+++ b/drivers/spi/spi-mpc512x-psc.c
-@@ -480,8 +480,6 @@ static int mpc512x_psc_spi_of_probe(struct platform_device *pdev)
- 	host->use_gpio_descriptors = true;
- 	host->cleanup = mpc512x_psc_spi_cleanup;
- 
--	device_set_node(&host->dev, dev_fwnode(dev));
--
- 	tempp = devm_platform_get_and_ioremap_resource(pdev, 0, NULL);
- 	if (IS_ERR(tempp))
- 		return dev_err_probe(dev, PTR_ERR(tempp), "could not ioremap I/O port range\n");
-diff --git a/drivers/spi/spi-mpc52xx-psc.c b/drivers/spi/spi-mpc52xx-psc.c
-index 3bbeb8d5bfb8..73d2383461ca 100644
---- a/drivers/spi/spi-mpc52xx-psc.c
-+++ b/drivers/spi/spi-mpc52xx-psc.c
-@@ -319,8 +319,6 @@ static int mpc52xx_psc_spi_of_probe(struct platform_device *pdev)
- 	host->transfer_one_message = mpc52xx_psc_spi_transfer_one_message;
- 	host->cleanup = mpc52xx_psc_spi_cleanup;
- 
--	device_set_node(&host->dev, dev_fwnode(dev));
--
- 	mps->psc = devm_platform_get_and_ioremap_resource(pdev, 0, NULL);
- 	if (IS_ERR(mps->psc))
- 		return dev_err_probe(dev, PTR_ERR(mps->psc), "could not ioremap I/O port range\n");
-diff --git a/drivers/spi/spi-nxp-fspi.c b/drivers/spi/spi-nxp-fspi.c
-index 50a7e4916a60..320b3d93df57 100644
---- a/drivers/spi/spi-nxp-fspi.c
-+++ b/drivers/spi/spi-nxp-fspi.c
-@@ -1383,8 +1383,6 @@ static int nxp_fspi_probe(struct platform_device *pdev)
- 	else
- 		ctlr->mem_caps = &nxp_fspi_mem_caps;
- 
--	device_set_node(&ctlr->dev, fwnode);
--
- 	ret = devm_add_action_or_reset(dev, nxp_fspi_cleanup, f);
- 	if (ret)
- 		return ret;
-diff --git a/drivers/spi/spi-pxa2xx.c b/drivers/spi/spi-pxa2xx.c
-index ec7117a94d5f..78c399e95ef2 100644
---- a/drivers/spi/spi-pxa2xx.c
-+++ b/drivers/spi/spi-pxa2xx.c
-@@ -1290,8 +1290,6 @@ int pxa2xx_spi_probe(struct device *dev, struct ssp_device *ssp,
- 	drv_data->controller_info = platform_info;
- 	drv_data->ssp = ssp;
- 
--	device_set_node(&controller->dev, dev_fwnode(dev));
--
- 	/* The spi->mode bits understood by this driver: */
- 	controller->mode_bits = SPI_CPOL | SPI_CPHA | SPI_CS_HIGH | SPI_LOOP;
- 
-diff --git a/drivers/spi/spi-realtek-rtl-snand.c b/drivers/spi/spi-realtek-rtl-snand.c
-index 741cf2af3e91..7d5853d202c6 100644
---- a/drivers/spi/spi-realtek-rtl-snand.c
-+++ b/drivers/spi/spi-realtek-rtl-snand.c
-@@ -400,7 +400,6 @@ static int rtl_snand_probe(struct platform_device *pdev)
- 	ctrl->mem_ops = &rtl_snand_mem_ops;
- 	ctrl->bits_per_word_mask = SPI_BPW_MASK(8);
- 	ctrl->mode_bits = SPI_RX_DUAL | SPI_RX_QUAD | SPI_TX_DUAL | SPI_TX_QUAD;
--	device_set_node(&ctrl->dev, dev_fwnode(dev));
- 
- 	return devm_spi_register_controller(dev, ctrl);
- }
-diff --git a/drivers/spi/spi-rzv2h-rspi.c b/drivers/spi/spi-rzv2h-rspi.c
-index aae916882915..23f0e92ae208 100644
---- a/drivers/spi/spi-rzv2h-rspi.c
-+++ b/drivers/spi/spi-rzv2h-rspi.c
-@@ -797,8 +797,6 @@ static int rzv2h_rspi_probe(struct platform_device *pdev)
- 		controller->dma_rx = NULL;
- 	}
- 
--	device_set_node(&controller->dev, dev_fwnode(dev));
--
- 	ret = devm_spi_register_controller(dev, controller);
- 	if (ret)
- 		dev_err(dev, "register controller failed\n");
-diff --git a/drivers/spi/spi-rzv2m-csi.c b/drivers/spi/spi-rzv2m-csi.c
-index 7c0442883ac0..5d80939dddb5 100644
---- a/drivers/spi/spi-rzv2m-csi.c
-+++ b/drivers/spi/spi-rzv2m-csi.c
-@@ -634,8 +634,6 @@ static int rzv2m_csi_probe(struct platform_device *pdev)
- 	controller->use_gpio_descriptors = true;
- 	controller->target_abort = rzv2m_csi_target_abort;
- 
--	device_set_node(&controller->dev, dev_fwnode(dev));
--
- 	ret = devm_request_irq(dev, irq, rzv2m_csi_irq_handler, 0,
- 			       dev_name(dev), csi);
- 	if (ret)
-diff --git a/drivers/spi/spi-sc18is602.c b/drivers/spi/spi-sc18is602.c
-index 1627aa66c965..78c558e7228e 100644
---- a/drivers/spi/spi-sc18is602.c
-+++ b/drivers/spi/spi-sc18is602.c
-@@ -251,8 +251,6 @@ static int sc18is602_probe(struct i2c_client *client)
- 	if (!host)
- 		return -ENOMEM;
- 
--	device_set_node(&host->dev, dev_fwnode(dev));
--
- 	hw = spi_controller_get_devdata(host);
- 
- 	/* assert reset and then release */
-diff --git a/drivers/spi/spi-sunplus-sp7021.c b/drivers/spi/spi-sunplus-sp7021.c
-index 256ae07db6be..789b092fe8c0 100644
---- a/drivers/spi/spi-sunplus-sp7021.c
-+++ b/drivers/spi/spi-sunplus-sp7021.c
-@@ -419,7 +419,6 @@ static int sp7021_spi_controller_probe(struct platform_device *pdev)
- 		ctlr = devm_spi_alloc_host(dev, sizeof(*pspim));
- 	if (!ctlr)
- 		return -ENOMEM;
--	device_set_node(&ctlr->dev, dev_fwnode(dev));
- 	ctlr->bus_num = pdev->id;
- 	ctlr->mode_bits = SPI_CPOL | SPI_CPHA | SPI_CS_HIGH | SPI_LSB_FIRST;
- 	ctlr->auto_runtime_pm = true;
-diff --git a/drivers/spi/spi-virtio.c b/drivers/spi/spi-virtio.c
-index 6aad9f1fd016..9e66c917fb75 100644
---- a/drivers/spi/spi-virtio.c
-+++ b/drivers/spi/spi-virtio.c
-@@ -344,8 +344,6 @@ static int virtio_spi_probe(struct virtio_device *vdev)
- 	priv->vdev = vdev;
- 	vdev->priv = priv;
- 
--	device_set_node(&ctrl->dev, dev_fwnode(&vdev->dev));
--
- 	dev_set_drvdata(&vdev->dev, ctrl);
- 
- 	virtio_spi_read_config(vdev);
--- 
-2.50.1
+[...]
+> @@ -789,8 +789,12 @@ static void meson_dw_hdmi_unbind(struct device *dev,=
+ struct device *master,
+>                                    void *data)
+>  {
+>         struct meson_dw_hdmi *meson_dw_hdmi =3D dev_get_drvdata(dev);
+> +       struct platform_device *pdev =3D to_platform_device(dev);
+> +       int irq =3D platform_get_irq(pdev, 0);
+>
+> +       devm_free_irq(dev, irq, meson_dw_hdmi);
+I have one question (so I can understand things better):
+is there a particular reason why you went with free'ing the IRQ
+instead of "just" masking it (so the hardware won't fire anymore of
+those IRQs)?
 
+
+Best regards,
+Martin
 
