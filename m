@@ -4,88 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8958C9EC91
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 13:49:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C29FEC9EC8D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 14:11:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Cs4xg16d/UeZGwRaqG6MsgU0QhqtrZXhq2dKXZL9o4A=; b=3JaJjnDS9JYIU0UB0Uj2RLKEOz
-	07ea3MiTuXAO6aaAJCbrr2HU9b2Bk+iN8pfVVYlfiPDHfE9FjC3aJoPu09I/8dJ5zmqUefqc2bshH
-	uvXgaTrJG0aUAXT1pFdAP23ihqiALSU28XGyGj+DkMCxrObbe8EP25rcPA0AQoH8qyd4T1toHhU+D
-	3pYFosCxSvcVm9jC2AQQjAeOx7Z34hyOI0LJfKJzhuD5yo8GEu908yofxixo++0tAkfQWjArRc7LY
-	Sh+q8uWT/vg26AnVYCMG1eUnU6ApDeBy/EJTlQev5H8ElfWK/Zpy7aSla6sKGH1T5TDgN3Ft6pKz8
-	fooJo/6A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cPfe4+F1jIR6NngD7tHxvuqFjI5b1NGNvcVIx0XSAp0=; b=PgOFvI4OvDRr//zSaiqT7gBInR
+	pWgxrudixQpPCJvx4rbYblqsYvHBDoblFgMfGtb4L02buUcq55FdvzeMCwT1Cwm5sLxU6efa9Jmlc
+	3JVH+5KjyXqlCstsJ7vllRaMlSy12/TJg4JlpKe3XhNqFCUXnGnNCslS0ZyMlv696f0CuGTChLqfi
+	tRF1dkjsXoJGGbFDTMoKT3sSwSTcR9xbGGsLS/faXZ8ArGUDQckKSzfKw6fatgBLW/S7Rbn+GkbLd
+	rl68C5wIOlbWPYZEW85B185ws8Rgu66Ilf6sviCdsE4PglLsZ/jKF2I22NUIo6SoFywr+XKuLztFh
+	mAmOnJmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfIIT-00000005RpS-2sBX;
-	Mon, 12 Jan 2026 13:49:29 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1vfIdm-00000005Unx-1Zcr;
+	Mon, 12 Jan 2026 14:11:30 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfIIH-00000005RVV-2XfQ;
-	Mon, 12 Jan 2026 13:49:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1768225757; x=1799761757;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=bvkjFMtSsNyVlD/gDmFcbP4PilFhSduRbbSoTWljZyA=;
-  b=IBeUwzY+XWvqbIZn2DpXc4ruJP4f0U+5wfyqL1BSXsKqj8z46MSCt3wd
-   nLL8J6RkFsEmVhOxf/7oax+El6yxGL09jn56JYWSTu5SwBWaqvGqbB0lM
-   TX47QiDkcLCKJTZGDkCkxXYG0+HKZDiQNlth+8knZAkxs1YnOG7Pyp2fe
-   n7wrG9B6t7nlAxYRSY4p/pNBHOe6+644LnrSZzunDNIi4buZHh2DMW1kv
-   u53qwcOwzKqpshiCQRfnq62x2sa/JK0SraIJv51M8FGKPsivTyWK6hKJQ
-   42RUzYb9eez1YnQ0np4E3M+M3J9U76VcMR7im2z1xa+Z7n5l8pcKZKds7
-   A==;
-X-CSE-ConnectionGUID: 6cnYFzfLT2mYvFeWux7hyQ==
-X-CSE-MsgGUID: rJBkaY0mSeOObJSsaIegrw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11669"; a="57048328"
-X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; 
-   d="scan'208";a="57048328"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Jan 2026 05:49:16 -0800
-X-CSE-ConnectionGUID: qxmDXGGUSi2DaE8/GG5AqQ==
-X-CSE-MsgGUID: /vn6Qq1uQVGqJCdFULVPXA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,221,1763452800"; 
-   d="scan'208";a="208618616"
-Received: from black.igk.intel.com ([10.91.253.5])
-  by orviesa004.jf.intel.com with ESMTP; 12 Jan 2026 05:49:12 -0800
-Received: by black.igk.intel.com (Postfix, from userid 1003)
-	id CEC9DA4; Mon, 12 Jan 2026 14:49:06 +0100 (CET)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Andi Shyti <andi@smida.it>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Wolfram Sang <wsa+renesas@sang-engineering.com>,
-	Qianfeng Rong <rongqianfeng@vivo.com>,
-	linux-i2c@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Cc: Khalil Blaiech <kblaiech@nvidia.com>,
-	Asmaa Mnebhi <asmaa@nvidia.com>,
-	Andi Shyti <andi.shyti@kernel.org>,
-	Qii Wang <qii.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Linus Walleij <linusw@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	Ard Biesheuvel <ardb@kernel.org>
-Subject: [PATCH v1 7/7] i2c: synquacer: Use HZ_PER_GHZ constant instead of plain number
-Date: Mon, 12 Jan 2026 14:46:15 +0100
-Message-ID: <20260112134900.4142954-8-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
-References: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
+	id 1vfIdk-00000005UnT-07Hd;
+	Mon, 12 Jan 2026 14:11:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=cPfe4+F1jIR6NngD7tHxvuqFjI5b1NGNvcVIx0XSAp0=; b=WO9meBC6JFVYzT9n+3xSr0vVLT
+	zxcw1xSA/aMOBUhxNeM8GjHtiNSaNVSX0rpDYdJMmqBMI0BTS91OZb+2lWuHStidjEEgbkTIMA3qQ
+	hmAmx3UgHROZE/SbnGgy995EQ1RlxddrCDCWonGcHwpe0LDIObLo+KpPtSrdIEGyKbGE=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1vfIdb-002UCA-HD; Mon, 12 Jan 2026 15:11:19 +0100
+Date: Mon, 12 Jan 2026 15:11:19 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next 2/2] net: airoha: npu: Add the capability to
+ read firmware names from dts
+Message-ID: <81f98b9a-3905-4bd9-80ee-348facefeab9@lunn.ch>
+References: <20260112-airoha-npu-firmware-name-v1-0-d0b148b6710f@kernel.org>
+ <20260112-airoha-npu-firmware-name-v1-2-d0b148b6710f@kernel.org>
+ <f57867a0-a57d-4572-b0ed-b2adb41d9689@lunn.ch>
+ <aWT4vcBzG6UnaqOF@lore-desk>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aWT4vcBzG6UnaqOF@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_054917_677457_C0894CFF 
-X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-CacheID: sfid-20260112_061128_084688_BD66496C 
+X-CRM114-Status: UNSURE (   9.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,31 +78,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use defined constant to avoid the possible mistakes and to provide
-an additional information on the units.
+> > Why cannot this scheme be extended with another compatible?
+> 
+> yes, that is another possibility I was thinking of but then I found
+> "firwmare-name" property was quite a common approach.
+> Something like:
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Having two different ways of doing the same thing in one driver just
+add unneeded complexity. Please just key of the compatible like all
+other devices this driver supports.
+
+    Andrew
+
 ---
- drivers/i2c/busses/i2c-synquacer.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/i2c/busses/i2c-synquacer.c b/drivers/i2c/busses/i2c-synquacer.c
-index 1230f51e1624..4891d68bf0ee 100644
---- a/drivers/i2c/busses/i2c-synquacer.c
-+++ b/drivers/i2c/busses/i2c-synquacer.c
-@@ -18,9 +18,10 @@
- #include <linux/sched.h>
- #include <linux/slab.h>
- #include <linux/spinlock.h>
-+#include <linux/units.h>
- 
- #define WAIT_PCLK(n, rate)	\
--	ndelay(DIV_ROUND_UP(DIV_ROUND_UP(1000000000, rate), n) + 10)
-+	ndelay(DIV_ROUND_UP(DIV_ROUND_UP(HZ_PER_GHZ, rate), n) + 10)
- 
- /* I2C register address definitions */
- #define SYNQUACER_I2C_REG_BSR		(0x00 << 2) // Bus Status
--- 
-2.50.1
-
+pw-bot: cr
 
