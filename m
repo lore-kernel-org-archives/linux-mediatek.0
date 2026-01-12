@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFCD4D2503F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 07:27:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5587AD2503F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 07:27:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ncCD7QdAbWZuTJ4VUM/GB5ZidYXAtNWFxqM/DILNihw=; b=Q9BTNtqFIR3pfc4Jz33UMTpCVg
-	NGqSDbx0j2/4Bqx8MU8nMurd/OHSozk6m/dkzSbuuusFKCq6QxtCvdJfNwBnmAXl1FPUIP6hUCLCQ
-	3zWYDsAW2ALO+/2xpQUmaUZhNjM1ysKxq76IdxJ8EP7v7PfjsCSItjPxoTmv64U12Hg07cmzXXyGn
-	2phZ/W/QeXLOTa2uE8fDNUV4p899c92xWLh6UDes+qb+wHJsMLqDYr0Ra/oZTO8D1tJCSwy8z54U7
-	eRF59hxFHGrT7QKCK1caE4vhLb0GITg5awhvzUjfb5wWSadWOB8OyXefQQx8YkCl0rQzP/+V5Afwa
-	dmyABPxw==;
+	bh=hjNXZzrzNnHd8WwXKi+KrrJ2wsOnxzoEVWlzPqz8Jso=; b=oDErMZgHmdKAteUlt7H1lQa5/+
+	ekFsFPb5xEcbNjAq7PNoLDVuDGJslrYqn9jU7YmD9ZOsaW9bqeFoAzFjOOG+O4CX1yhxt1zYVCM5q
+	90iH+F+EBvIOsx0VbyosSHJ367TJfcfE+ARyDMcmEwkhM5cyZazOoX1YOeUiVktSRO5VHCgy1u3Dh
+	GNgnCtGoYM5UuE+YZb5Hq6L9/ZwmzWfJnfPIkhIFJqVk0wyb/RCP1wPi1g9Ryt2VY4MTX+D6PpGQF
+	e+SUeby1Gc9B6lBNgSdOEEVf7ZbzNIOgvZhqQ5yw4h847p4TjxpJwQ57ZXv3zNlGW2DgibM1jz+kQ
+	CpaWY2yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfCKS-00000004sMd-35du;
-	Mon, 12 Jan 2026 07:27:08 +0000
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+	id 1vfCKt-00000004sSh-1Fzv;
+	Mon, 12 Jan 2026 07:27:35 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfCKP-00000004sKy-1s9Z
+	id 1vfCKr-00000004sRN-1wkM
 	for linux-mediatek@lists.infradead.org;
-	Mon, 12 Jan 2026 07:27:07 +0000
-Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-38305f05717so36541311fa.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 11 Jan 2026 23:27:04 -0800 (PST)
+	Mon, 12 Jan 2026 07:27:34 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-59b679cff1fso4833408e87.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 11 Jan 2026 23:27:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1768202823; x=1768807623; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1768202851; x=1768807651; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ncCD7QdAbWZuTJ4VUM/GB5ZidYXAtNWFxqM/DILNihw=;
-        b=k/f4oxlWTEQm8vDRt4JWBHua7+pNaRcfCPJHCovP0/oydcZ3RbqJAAmvIuCGbVLqKN
-         sb3bxP9USTu/ktDwMvEd0uoAoLslD5xMR9VkzBf1OXY4GKkwnD3JEgy6iWriNkALNzFN
-         AWH56JUieHlaxIiplvN2HnDlBLn6z3scAIq2I=
+        bh=hjNXZzrzNnHd8WwXKi+KrrJ2wsOnxzoEVWlzPqz8Jso=;
+        b=ILCGU4lk7Z0cBofRfUY+or+ogDz8uP2ip7//vwIZ9z14I14FJg/TZsXk81WKE0VmfD
+         lYX5vbX9Bb1Dqvif3DNRKe9u2pe0MPc9w2CE2Rc/hRq6LTDGdacfNleIKXd/2pdSLnHt
+         eMtVDOBu49ly3r/kooh4YPy7Mc+M/1qzSPQGg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768202823; x=1768807623;
+        d=1e100.net; s=20230601; t=1768202851; x=1768807651;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=ncCD7QdAbWZuTJ4VUM/GB5ZidYXAtNWFxqM/DILNihw=;
-        b=mhraXPksqy4iIjmbcu6cHdFhWD3WUZltvtuHuwj1Q4Nm98kZ3H73tL9o67ApURU6+Y
-         1TL/3nG+jyTPjQp4OKWM5ujCqpY5lCSj6rMHOhdR3k5+auQUGGaUWuzprOydAaeuPs6o
-         1HhfxUOqk2LZjepF0+usoDo5Hl1iQiHK4C4Ha5/5PjtZ4SB2ozJl3zaeBIsEn7CfDP3E
-         Ld8K9ZdQlqQbUpy8Z04ZtoaR0Sgtz3soDNnEjo/lY8sc62kaBjAKRilxlp/wOsj1q57V
-         U5I3uqYyo7gCb/Hzd4PqlkuBsyReqaQQu1/7O0E4Pyu9qq3jV2XCjcmXZ5n/mYbYx63P
-         NoHQ==
-X-Gm-Message-State: AOJu0YwlSBDZiqvm/wtVfrZYhcbJ5zcBOVj/+k8N3W4RJeyN0MlOjWu4
-	RUsQCOXgdp0TnrIPJ0FzRDbIUBYjLzOKF119BZ57ASK5/LcKfIJSCvnaMtzttzfnvsXaUFUpdqx
-	usTpu/FYuJ7KfXwHDtDLW6POMz+vBsE1tR7+VmgEB
-X-Gm-Gg: AY/fxX6K36ZscWPEXd6DCln48sRGwHFqw2Gs8PDx9e4IYD97QDfRxW0xEcDCzg4kvB8
-	d9S3/RUETaH4oEbVjqN8xXns0Mh1fLRSKIzsgvTCSGzeUTosKWFrSvIPS4pzISuoxzKwIkMd2/b
-	BWtF/TjvkZ+6jJF7Nm6k0ydb0GCZ4znPjCDQ7Cr2WiZTA6RTfH6/yiuZ2OJNkvJyAmBhHFeUiA6
-	cO+12aRlwmg3IXra0Yr2ft1fxiZgILINIqRslVSIK4qEYxbehcLvsvZfpK9aMI8Q1lgDKb1muJx
-	ZHL71kALbiS6QSd+bUzr7QQU
-X-Google-Smtp-Source: AGHT+IEtdTzShXz4wPeF5M02jtiMqXCbiAjaUDFF6b38x8rVY+o1KK8e4krh8D/G4oVEUwnaUdpjoMM+H1TVs+8ZT5U=
-X-Received: by 2002:a05:651c:18c6:b0:383:16e7:9c3 with SMTP id
- 38308e7fff4ca-38316e70cc8mr33492741fa.3.1768202823275; Sun, 11 Jan 2026
- 23:27:03 -0800 (PST)
+        bh=hjNXZzrzNnHd8WwXKi+KrrJ2wsOnxzoEVWlzPqz8Jso=;
+        b=iQZi0H6rMJP5Qg4af5IWcwIomOMZDWNKQYjFFK39Z3i3CTRzgC0aGF8dqQNQt3bYV5
+         jjTDkSrHyMW9ThQiNvtEgoPdEMd9qIPNDzlF2Po0+ibHKSu/ZxCTJDL+ubAhSwLnEp86
+         nxGVLiGKD0iza+3+fZpg46QMme/eT3m6HJdKVO3qAtRCL6hSi4c7d0kDgWdHHyzgv5l6
+         TFKK5buf9huXPUlztakZ2ml4bgPwibU0kVkk6d27fPoUja2aQvdhBpM+Y3ABECSd+iYX
+         LDBXOaiVIBI1S3X/yPCwjalVKJKK/NJL5Gy5OlD9kLywdS6RS5epYqVwMnUd/MktS5IN
+         tXEQ==
+X-Gm-Message-State: AOJu0YwWr0ta23D3CSI0SXcHD+tVb12F/Hv2EugTBFqbcYkaCRQH2hjX
+	ALgKJIJTmyk9ZyeJ02HaPMUKXc7llX105crS8eYUsUkIeovvLChHVS5fjWnnqiiEPhEoAdQZlTo
+	ryo0V44/RdfIL6VXnPTGLtvMjK5sXNmr5ez4mdsw9
+X-Gm-Gg: AY/fxX4Y5z3aAa2MmKEsMX//M6Lb2CDPCyuMXJsfQKFCHkOoEJlJiUZDzDO/7j2JsQR
+	ht5jtlfhEZ5Gk7D+VQP41dOxdIc9+2gEkvzmOmaHj19nZUn3ly19rYJicpV7PSiEOTxUU1tXjSr
+	QuRaUmChs3iLiZWTLSavIHul5sZvKQur5MTEPuyywaxd1JyPWADrIjsuPZMpNrwwV+V3wRgGCv0
+	rIpkSDRzRO2Dh02ljOYZSD5069IMpNDZPE8fuDk6DxIof8ajM3X9Ib4u9xbh7tGbVHWnubaRcF3
+	cG0hV+LSNV4LbM+KYhwcjIgu
+X-Google-Smtp-Source: AGHT+IFDiJ4ikKcCwIxZX4SezU35LBnUxDwbkGK9Em2aOhPxq3XtpkeM0bppBuO5WEJf5CT7uQpxTxcD+yOpL8T7LO8=
+X-Received: by 2002:a05:6512:3a83:b0:598:ee60:8af1 with SMTP id
+ 2adb3069b0e04-59b6ef04a41mr5556612e87.15.1768202851300; Sun, 11 Jan 2026
+ 23:27:31 -0800 (PST)
 MIME-Version: 1.0
-References: <20260109114747.37189-1-angelogioacchino.delregno@collabora.com> <20260109114747.37189-6-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20260109114747.37189-6-angelogioacchino.delregno@collabora.com>
+References: <20260109114747.37189-1-angelogioacchino.delregno@collabora.com> <20260109114747.37189-8-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260109114747.37189-8-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 12 Jan 2026 15:26:52 +0800
-X-Gm-Features: AZwV_QhjiYvS3V8-WWKF8DW2GE2PKz9EYPOgwGThAo9U-y6HyA7IDDJVCRyVGDI
-Message-ID: <CAGXv+5HmYUcwmXU2DyCEtYgsaJtVaLQQatzU9sUfiPNA0dQczQ@mail.gmail.com>
-Subject: Re: [PATCH 05/11] arm64: dts: mediatek: mt8183-jacuzzi-pico6: Fix
- typo in pinmux node
+Date: Mon, 12 Jan 2026 15:27:19 +0800
+X-Gm-Features: AZwV_Qior6rX0_9acmsyDt7cjn3RepUbmW4kOBhOOEjHOmhFq4_xiNmMvJriwDA
+Message-ID: <CAGXv+5GxHgdLc=VibTi4+q8uyk+hqBQAqxfyz3NnBtCFbj9urQ@mail.gmail.com>
+Subject: Re: [PATCH 07/11] arm64: dts: mediatek: mt8173-elm: Fix bluetooth
+ node name and reorder
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, krzk+dt@kernel.org, 
 	conor+dt@kernel.org, matthias.bgg@gmail.com, sjoerd@collabora.com, 
@@ -79,8 +79,8 @@ Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, krzk+dt@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260111_232705_492078_3A2E1E25 
-X-CRM114-Status: UNSURE (   7.21  )
+X-CRM114-CacheID: sfid-20260111_232733_511750_0FC30BB7 
+X-CRM114-Status: UNSURE (   9.19  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,10 +99,13 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Fri, Jan 9, 2026 at 7:48=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Rename "piins-bt-wakeup" to "pins-bt-wakeup" to fix a dtbs_check
-> warning happening due to this typo.
+> Change the node name for Marvell SD8897 SDIO Bluetooth from
+> `btmrvl@2` to `bluetooth@2` to fix a dtbs_check warning.
 >
-> Fixes: 055ef10ccdd4 ("arm64: dts: mt8183: Add jacuzzi pico/pico6 board")
+> While at it, also change the WiFi one from `mwifiex@1" to a
+> generic "wifi@1" and reorder the nodes so that wifi@1 comes
+> before bluetooth@2.
+>
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
 
