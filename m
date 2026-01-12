@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE16FC9EC98
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB20AC9EC99
 	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 14:56:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,51 +12,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=umNyXrI2ZeyzxxwZ/1XKsXXm7p8SZAfQvizgPCnLIWs=; b=2fAkn5HbkcvZYCV/2GtltNaNeY
-	WrgpyAGTrx0jFJJXgBXZNH2u+P60fBaf19bw4OZdW+yozKnXIZBsldBdBBnb32EyY1+42aEvRXBu7
-	8rIwn5zIAiNc31Dy6I5x+oj9OBQJmgZ7Q55ObLpESZtSS+fDlHWOS93ySmlRptgBmQLKb7J/XA9CJ
-	gmIEr2sBjMVzSxz62q5nFB6o0D/WyjgPv/Ot02S+RFVEAU6ztukN9wnbXn8ZQYOvaX7LFxXLF/uAU
-	p/2R5KBWmKtAH1KQ284URyO5LLVMDqrELBsRSWExtsv2ifxw3vGtzNbYfIChHPuOSg6zG5XR7nRSi
-	y7agnkFA==;
+	bh=87O3JqIkZHp6I/ueZ3YnKx42k5g2M8EmXTH6VBq5jz0=; b=luUpTRgMpqoEu1sXOoJcuVaTtC
+	h2X2pOt71d1GJHXZc9mAx5eFnqE5F13pZRcbHGFQkOckaYe/dxyLF/rhoTSuqC0MgrfoRVutt/yBY
+	TYBCwQF7GD8rMv5d5Vj6yvOB+v2Vl0aJ8XRdtkTWjC+nYnW7mjIKdybZhmewJ2eWdSrkg8fR7VrwD
+	uiBYhBbvtAxS71kVBhzOsjGbdID7YztSxqN3hRXhNjguDH420sHwmi0ywSOeGLz7lkzcKb2PSCmaH
+	jqKJy/utPtWEDaFYyIJTTtP7uLBOX4GBxqqcFoXwObB/XrBPvojjk78ohWaIZdBi2HgDg97EoPJpk
+	qaIo7ueA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfJL5-00000005aLN-0ho5;
-	Mon, 12 Jan 2026 14:56:15 +0000
+	id 1vfJL4-00000005aKr-3oWV;
+	Mon, 12 Jan 2026 14:56:14 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfJL3-00000005aHC-0LRw;
+	id 1vfJL3-00000005aHB-0OwE;
 	Mon, 12 Jan 2026 14:56:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=umNyXrI2ZeyzxxwZ/1XKsXXm7p8SZAfQvizgPCnLIWs=; b=lytmec8E0ytddMK1tsG01LqsCd
-	gmKGLWccCyUs/kKcNtnvQJXTmlSD6SL+79wg7Wlo4tF17lCSXY7Q19yGWofdxTPsyRZpckbN8xdLR
-	cA2bs603UUHXDr96LMr7BVRgvCIJKDTA5rgERhmXO86MF/gKCnt3Zv6fjNq4J9I3Uui9rx1gku8Zu
-	RA1d5/1pDeSkE5jfML1QKAA6u7gG9ZKc0SZ44jkou6C12RcArqctYn3xan+nqPX6V2+FUTFe1MJrc
-	Nt45gu4udANJjMLaqTxz1hKP07pfvw2n4zasz/LDI5xgbTo62Z1CcaDw7NWmZJAIwmL596pM4BF8A
-	YuEeLk9A==;
+	bh=87O3JqIkZHp6I/ueZ3YnKx42k5g2M8EmXTH6VBq5jz0=; b=HWvjY/eKNbJrplAX77uHuw0CRv
+	NmPzwqhi7sZyeg2iXK7nzI+hpQh1gqjmFxtI7ZBVYzTmPJ5GzCsbQhtIWBui2EMgDAV29Ry9M8zUo
+	v5qjuRsJYzVNPgImyXLCffYx2SwSF0JDBXcL2XmCkyPPYPpssbga3WQBnV0kGxP/JVqArJmuk9DBw
+	gLdgL2cVe5IrK/FFukwVqaaKkV/9O2Tcdt+PAPKnaRiBEYVHXBl6SE95fwbBf6k5k6yETS3y1gp3t
+	aLsZ6uuHZDVJLGtf0s7hpsvsJUbjFzrcglpATx2fgd4iJpkey1oBxip5S6fBgI+St6nYnHgbIKAH2
+	8SN6dzzQ==;
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfJKz-00000000xSR-1GCo;
+	id 1vfJKz-00000000xSQ-1GoH;
 	Mon, 12 Jan 2026 14:56:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768229764;
-	bh=2+DvUYmYV9U/Yj8ZST1r0/xHoFeYFSLopr9bIm8GCoo=;
+	s=mail; t=1768229763;
+	bh=gw1VaxWzqkyKrA2KxIUxIvewB29jkb6zfBD6Cnr2AVI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=MOzETribil6Cl9y0nxG5xkoWU+8V0zB3L08kfQ2O8t5Tl8FkHbdKCPwR0DEjX55Tz
-	 xSsl6e7guJ8jfl4fm6o8F+p8HWe2vq0Whh6fInP33Nz1sXSXXjGuqaEhJVq3PM/lW2
-	 kgCbvGwaeH4lhiXmb8y+FJkBA4PAZDkxwbzb7j6+/Iqw+m44DCMm6kTmE5rWnRAtfI
-	 4YUQqPf8/oKYyW4hWGwz40YWUZyo9rBHiTEiaB0QEHgbCT5p4+cCG8ex6U9LApvVmm
-	 27gx4ZToOO0iNxvt7ZrDBJyupZghIWETlxJmzJF6iOVEzojmMoaHm0qHy4CP0CmE7S
-	 ZO2i4iUPMmuiA==
+	b=Jvvp8D/P+mDkgw+JICaE/Z1AYqoyAAOjofI/lF7k9/a/WA8mOhDNBsq1MO7wgAJmS
+	 1Rf4Bk0oNTk7nETQ4hAp+kCViyilQBVWXqk7w7tJPkCf7ZvJ6XeJvwPi4xFIqVNPhy
+	 sbFPD4ZDI7eflyQoGZI4Yb6eqR1gYSST5MDyVvweUDu3DnUyRnLSVzZGP/nK1ksFkk
+	 i9DsC8gOM/4QYoK83hg5Cd4sSuv3cNF3pMk43nBelWHHtQwb/9yz74N+iz4dH80i1c
+	 y1o3sQLkzoR06eGbAyseWGzWgKSlnWIov5VIjXPLC/saPgE/YwcpSuqCiBImcnRHLD
+	 2mWzb5by9/JPA==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9919617E13F1;
-	Mon, 12 Jan 2026 15:56:03 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D527117E11FF;
+	Mon, 12 Jan 2026 15:56:02 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: krzk+dt@kernel.org
 Cc: herbert@gondor.apana.org.au,
@@ -75,17 +75,17 @@ Cc: herbert@gondor.apana.org.au,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v2 4/4] arm64: dts: mediatek: mt7986a: Change compatible for SafeXcel crypto
-Date: Mon, 12 Jan 2026 15:55:58 +0100
-Message-ID: <20260112145558.54644-5-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 3/4] arm64: dts: marvell: Add SoC specific compatibles to SafeXcel crypto
+Date: Mon, 12 Jan 2026 15:55:57 +0100
+Message-ID: <20260112145558.54644-4-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260112145558.54644-1-angelogioacchino.delregno@collabora.com>
 References: <20260112145558.54644-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_145609_499317_5ACA7054 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20260112_145609_513747_B804F770 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,28 +101,43 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Following the changes in the binding for the SafeXcel crypto
-engine, add a SoC specific compatible to the existing crypto
-node and, while at it, also change the fallback compatible to
-inside-secure,safexcel-eip97ies as the eip97 one is deprecated.
+engine, add SoC specific compatibles to the existing nodes in
+Armada 37xx and CP11x.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/marvell/armada-37xx.dtsi  | 3 ++-
+ arch/arm64/boot/dts/marvell/armada-cp11x.dtsi | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-index 7790601586cc..9693f62fd013 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-@@ -231,7 +231,7 @@ trng: rng@1020f000 {
+diff --git a/arch/arm64/boot/dts/marvell/armada-37xx.dtsi b/arch/arm64/boot/dts/marvell/armada-37xx.dtsi
+index c612317043ea..87f9367aec12 100644
+--- a/arch/arm64/boot/dts/marvell/armada-37xx.dtsi
++++ b/arch/arm64/boot/dts/marvell/armada-37xx.dtsi
+@@ -427,7 +427,8 @@ xor11 {
+ 			};
+ 
+ 			crypto: crypto@90000 {
+-				compatible = "inside-secure,safexcel-eip97ies";
++				compatible = "marvell,armada-3700-crypto",
++					     "inside-secure,safexcel-eip97ies";
+ 				reg = <0x90000 0x20000>;
+ 				interrupts = <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH>,
+ 					     <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH>,
+diff --git a/arch/arm64/boot/dts/marvell/armada-cp11x.dtsi b/arch/arm64/boot/dts/marvell/armada-cp11x.dtsi
+index d9d409eac259..39599171d51b 100644
+--- a/arch/arm64/boot/dts/marvell/armada-cp11x.dtsi
++++ b/arch/arm64/boot/dts/marvell/armada-cp11x.dtsi
+@@ -512,7 +512,8 @@ CP11X_LABEL(sdhci0): mmc@780000 {
  		};
  
- 		crypto: crypto@10320000 {
--			compatible = "inside-secure,safexcel-eip97";
-+			compatible = "mediatek,mt7986-crypto", "inside-secure,safexcel-eip97ies";
- 			reg = <0 0x10320000 0 0x40000>;
- 			interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH>,
- 				     <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>,
+ 		CP11X_LABEL(crypto): crypto@800000 {
+-			compatible = "inside-secure,safexcel-eip197b";
++			compatible = "marvell,armada-cp110-crypto",
++				     "inside-secure,safexcel-eip197b";
+ 			reg = <0x800000 0x200000>;
+ 			interrupts = <88 IRQ_TYPE_LEVEL_HIGH>,
+ 				<89 IRQ_TYPE_LEVEL_HIGH>,
 -- 
 2.52.0
 
