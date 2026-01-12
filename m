@@ -4,76 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1D88C9EC99
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 15:52:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3ED4C9EC8D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 16:08:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZkcabmcYCcBrxnwKFSNqoTlMq8l5sVsmuZV7ptzpUhs=; b=AfvZmUfcWYKxCoxqMitlcepXgQ
-	szCHVb3q3nXAPSTkWjMFOAxUv93RIvjM2rlYKfOna6EyJz+XIaexmYxNKBqM+MMiQFmNwKhAeqA10
-	354JKfG4n5eE0ithXh/qT8p+uvumAFI1da5NggLuwz7XtVJlIf+ndkVNS+99R2U9C+P9ON2vvCybz
-	uJZcyRbYY/sB9rSz/tonzjC5LEobQ4opJWdAIokdUS5mPhDosvS6UZuKL/+jHJIjHPcSf34bU4Duk
-	BuGxcRLq/RTiB+6/PNqBe7T319kIh+CCOLTW+TYkRH5oynJ8o+LjfVK4Pn0ESAMo8WU/N91iULIpG
-	shsj0GIw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XFchl4IL2iHP7X4M9jCzRqchpxPAMZ+ZvVMJ6ag12p4=; b=HB314iy+p7lNGeKDNSXiXSAZdB
+	HwA7J6oqW3imIzJl9LtVZHYGnm8cSn2ic8KVMO2T5WJ6PhrNQ3wh1wxn7Sji7+Phh/cGZHdfUU3FD
+	nuPoLoZZjDadVfIb+52+qZB4weWvDN/peeR0OciNM8ogV7iCJT/E2ag/nRifuHUScpTTw/LdFbb4j
+	xkpky34zeS80dcVgmWvpRSeFnlgU6BVE3XHnua9g1mbQtV/A77NCc51DgpT6VJlpjYIB9XXzbS94s
+	U8mJ+frRHvQP5Y3iyJRI1VfTbQ80tTt5Qb/Tbu7WhY7XO2YThSbHZW6IcfUIDM4t2I6NekAwwKj4B
+	wKKw0cQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfKDQ-00000005fcI-0tNa;
-	Mon, 12 Jan 2026 15:52:24 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vfKSb-00000005hK6-0OSj;
+	Mon, 12 Jan 2026 16:08:05 +0000
+Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfKDO-00000005fbl-3glD
+	id 1vfKSZ-00000005hJi-17H1
 	for linux-mediatek@lists.infradead.org;
-	Mon, 12 Jan 2026 15:52:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 551EA6000A
-	for <linux-mediatek@lists.infradead.org>; Mon, 12 Jan 2026 15:52:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09979C19422
-	for <linux-mediatek@lists.infradead.org>; Mon, 12 Jan 2026 15:52:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768233142;
-	bh=ZkcabmcYCcBrxnwKFSNqoTlMq8l5sVsmuZV7ptzpUhs=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=H8UJ8IaEpopQ/EXYsnMfDGmckISt8UEqaPIlrsVA9V4pYuvWLdsRW0EkDKUrHwuJx
-	 83kZlHNTNvMum/h5bOAws9xHUn2v4fHczgsAmXBEo/vF44IaAChXWJBbn2K1ogLW7f
-	 TNoDh9FVoDwG0clkJ732A72BgcdP5JB0pu7qUp7qspza+hZJW5gIdmcdBvcbVrOs2d
-	 rp2YAA9rfBU/6yaYdj8TaVVW/a1ME+/cCXj+Y48KZQS+kY1HT5WiDaepDIVyPUwDub
-	 AV0+PX3/JHW6P9gLCt066fLSGMuxQZ+vddw1XlNeqMdNeiVzyt4uDG5XCC0vlkfZAF
-	 pe7dwOsMs8MMQ==
-Received: by mail-lj1-f170.google.com with SMTP id 38308e7fff4ca-37fd6e91990so63915241fa.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 12 Jan 2026 07:52:21 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXbYre1c9a5F9zskEOIqeDWCZleY8YFfo8hQpzHFNnjY/TPDh7vChThaPyvbZoE3NDfr1eKqTpw5knj7uA8aw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwAQ13FNi295Cf8h42MJSs9X8SN8iOQruXlA4Xx4u6TGY7Fm9uq
-	7xW4BG7ph0FFQFAObLIkf+vfX36oDRjD1gLpGTcAhITT0MPcDvX3OALPXyZyT4W1/kJLnpW4Kkc
-	0+uc10cW+BndWheXt6CuS0XWOFJP0KzI=
-X-Google-Smtp-Source: AGHT+IGvtvpe0+JORzp/Ys20P6G9z09DfGY5vS/3Gm+svovxaEP0U/CWOpHfTeAwgDHpI7RPcWpKuzzFp/hRrSMcr6c=
-X-Received: by 2002:a2e:bea8:0:b0:383:1ec5:9650 with SMTP id
- 38308e7fff4ca-3831ec5abe9mr31087051fa.21.1768233140744; Mon, 12 Jan 2026
- 07:52:20 -0800 (PST)
+	Mon, 12 Jan 2026 16:08:04 +0000
+Received: by mail-ed1-x541.google.com with SMTP id 4fb4d7f45d1cf-65063a95558so9831187a12.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 12 Jan 2026 08:08:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1768234081; x=1768838881; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=XFchl4IL2iHP7X4M9jCzRqchpxPAMZ+ZvVMJ6ag12p4=;
+        b=YljR+9GU5WYWXO1wwydD5t1hnlsOb4xfLWtsQGqy3+joRfSdJUtXactSXgpw+ctAej
+         1peZ+6PhPQb8NnoM5Xc/7gvous4nSBGaQQ7Ynyi6ffOOzYNOAKDePBDWAazxmiVFb4wZ
+         THDQSJydeZhzzVAQGBginoJdZKkDpx7qLOskaZsi73R6duJ9f1dnoAT5+8bqzgoLF7Uy
+         px9uiMvYxjlP9cxReMG3DW9LWVKGJSYN4SNfL3/ZoWxu2zjK89hWLkJVLeauzKrA+9dw
+         2sK5cyyhIffJEXwdh1G+35Mhg5+1P9G6prRbLzeMTUXmdj6ly2AHJcrOVtjgdOrI9LPx
+         fXVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768234081; x=1768838881;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=XFchl4IL2iHP7X4M9jCzRqchpxPAMZ+ZvVMJ6ag12p4=;
+        b=N+GDV3Ita/0JTjarMjEQo8vouOduQnVFhIZkG9FQ83TLVnMQW+3aKA9k3u5rtcLHtN
+         oJXn99iGao96kxaQpJVLh2KZnbFmxnS0Mka7Qi31OUNcNrSmvlosmlQ7RbWTZuKARlvl
+         JAbaudSWkyGxLXSC7JHS8W6sGdI/6+lT3Lplq9YC7z++czAtPFUDJ8TZPGg41gKuqsJy
+         cjwsh7us2Q6ewbtgRoeRq/pw8CMG7M7V74iptGlDw1dzjqkRY4kkZCcHaN4G5wmJA9uA
+         VGP2ifHEzp5TnBTqoJPoaSQbqCSR9FVIDmmqawWp/CDR0mpjCRjLHhLc49TroZLNQ288
+         tVVQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU2eJge2WPNssHAqameM+ipB8Iku7s18bXUvYeuIxN5+lUVDs2Qje1BAXAv4uhmQmVZUuWMbfnv+c3dOKr/aA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwCf/0FSSPxlInvMwasQ1R25IkSFTrjBGli3p2NInIA4Ck4Pm7I
+	nJXRT8+9I1bzGNrjz1+C6hBlyD6e4d5bExKKKIG4PWmaQHFtK3kr2j4p
+X-Gm-Gg: AY/fxX7fm337cWo21sVD72ntXw9Uv37TW/27Mw+bShzAApeV/r3y7ozJbFUL3NAFMfz
+	9itrPmj4VsQLD1/GIX5XlLQzCBVLY+KMTL82s5JrL9+lg0MqQgiFIbZ6Ewzmh1VYHsvOHp4cdd9
+	S1fSPODgLLwe4F6vChee4X1d0hQc2AnKcBCUo6E90Kd3FoTW+70CXG3HkmYibTQRDWbm3KcLwoT
+	qvNjNOCEc91if12yxfKQvmlntipP9z274O2II/tdjDbPyBH6AEwNhURGsZpPB3791A1cz9vF0iu
+	wZ8F++b7TJ3ry3r6Bca6BnDWOincLVfIdEtncF39oMpU4/5XINjrUAWRMsg/SPdlx8nXr9kKYHl
+	BWj18oC2C2WMcK8UrKGYXjO3/At1m7LOm3L+7fT7KP+tu14SPnmOFZhGwUDJXs4NZ6JxTFa38xk
+	sWjIYo3yLetxLYB9D0n7Kj6CHg9L+dQM7hmy67/yc0SR0=
+X-Google-Smtp-Source: AGHT+IFz4Glbd4ZA3dxtqcV317tXnM3myln6ByCS2T281F927mkqk5Eht9v3v1U1SGONoSGsJThyfg==
+X-Received: by 2002:a17:907:9403:b0:b87:7e8:e287 with SMTP id a640c23a62f3a-b8707e91202mr564365466b.30.1768234080781;
+        Mon, 12 Jan 2026 08:08:00 -0800 (PST)
+Received: from MacBookPro ([2a02:8071:2186:3703:6de9:eb98:99c8:7af2])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b86f9a9103bsm667481666b.30.2026.01.12.08.08.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Jan 2026 08:08:00 -0800 (PST)
+From: Nauman Sabir <officialnaumansabir@gmail.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	Nauman Sabir <officialnaumansabir@gmail.com>
+Subject: [PATCH v3 1/3] dt-bindings: display: mediatek: Fix typo 'hardwares' to 'hardware'
+Date: Mon, 12 Jan 2026 17:07:59 +0100
+Message-ID: <20260112160759.19027-1-officialnaumansabir@gmail.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-References: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com> <20260112134900.4142954-5-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20260112134900.4142954-5-andriy.shevchenko@linux.intel.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Mon, 12 Jan 2026 16:52:07 +0100
-X-Gmail-Original-Message-ID: <CAD++jLmD+50JeZdcpDfhk_hv8xZukjAng15woDE_zFaxh=cRqQ@mail.gmail.com>
-X-Gm-Features: AZwV_QjeVsmFIXPVAfMxBTLxxVXBlmyoPLa2yVuN3Ez29-sBYgkr3sMPDrlgVTQ
-Message-ID: <CAD++jLmD+50JeZdcpDfhk_hv8xZukjAng15woDE_zFaxh=cRqQ@mail.gmail.com>
-Subject: Re: [PATCH v1 4/7] i2c: nomadik: Use HZ_PER_GHZ constant instead of
- plain number
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Andi Shyti <andi@smida.it>, Wolfram Sang <wsa+renesas@sang-engineering.com>, 
-	Qianfeng Rong <rongqianfeng@vivo.com>, linux-i2c@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	Khalil Blaiech <kblaiech@nvidia.com>, Asmaa Mnebhi <asmaa@nvidia.com>, 
-	Andi Shyti <andi.shyti@kernel.org>, Qii Wang <qii.wang@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Patrice Chotard <patrice.chotard@foss.st.com>, Ard Biesheuvel <ardb@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260112_080803_329054_11A5629B 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,21 +102,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 12, 2026 at 2:49=E2=80=AFPM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
+Fix incorrect plural form of the uncountable noun 'hardware' in the
+MediaTek DP binding description.
 
-> Use defined constant to avoid the possible mistakes and to provide
-> an additional information on the units.
->
-> While at it, drop unneeded 64-bit division, all operands fit 32-bit.
->
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Signed-off-by: Nauman Sabir <officialnaumansabir@gmail.com>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,dp.yaml       | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-It makes perfect sense, I don't remember why I put ULL in there
-anymore :/
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+index 274f590807ca..8f4bd9fb560b 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+@@ -11,7 +11,7 @@ maintainers:
+   - Jitao shi <jitao.shi@mediatek.com>
+ 
+ description: |
+-  MediaTek DP and eDP are different hardwares and there are some features
++  MediaTek DP and eDP are different hardware and there are some features
+   which are not supported for eDP. For example, audio is not supported for
+   eDP. Therefore, we need to use two different compatibles to describe them.
+   In addition, We just need to enable the power domain of DP, so the clock
+-- 
+2.52.0
 
-Reviewed-by: Linus Walleij <linusw@kernel.org>
-
-Yours,
-Linus Walleij
 
