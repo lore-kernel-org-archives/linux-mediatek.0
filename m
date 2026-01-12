@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D935D25042
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 07:40:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23442D25042
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 07:40:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1n52GJUXMp/HKtmkEtsDqFReft0eMQBSrCUNh4f3w4M=; b=1QUMoLkqIM3OxWzQQ7n4868r5Z
-	SF5u0zbPCQJpyUxqVxzUmXdeEjOoqKPjGL3aPAqfbVGAy24lj2retDHcRJwfA7HbfiLkQWBHHLGk2
-	tXMk81pfL2WICmwRlEU3Yu1+Iy2WUmaMyHylVzyEYrAsAzHPoJjAZ32jET8uLVnXKPt8+ZbiWadxx
-	81XSg0NNMGqG82FsNVnOLB6AnrlIiw+sfV/efG7HWTm90H5HZMKUwYdcXogBYC+krSt5ijJuRBap7
-	K7WIUrD7jLce0OJNZoqxp5r5l68fzDLcyrh+F0Up56zT4eEoFRa++IMnHIF4gAiXmKG+cfM4IG2j3
-	yIOV0uyg==;
+	bh=JtRi6MFrPdl+19+cK1e/kxjINMsNs/Hr2ADMl8wY1zQ=; b=Gq9wix8ujZSkyzr4DgyCGT4VIx
+	5/Zs94MFEJ0bqfe8Xl4r/cvkNAfRSJD5BuVjNgvMgJgt788mpVPrrjLiq3LkCNV3DZ/bhdADnH9Qv
+	OBhIQcCH4ucNZs4gGaqI13n9WHCLAW/1ctXJQwdADr5ld7Ih2iSr3upP9PZGgw7wEX+KwpaIf4obQ
+	5Es7IH6O0W1UYzv0G1/jjEOGFlhOt6WBWMJFYMtoQbEEdJxE0PqUnLo6TZRCVyhoigG03/yg7reCM
+	VsCtbE/0U5M+KtQwHTusHDY5503iBo5FUrt+UmbIsw6CWkXFowDPJobIgS30qt96fC0fPiz6aT4b3
+	jh+EVZ9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfCXD-00000004uZ7-0fVG;
-	Mon, 12 Jan 2026 07:40:19 +0000
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+	id 1vfCXU-00000004ud9-08ie;
+	Mon, 12 Jan 2026 07:40:36 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfCXA-00000004uYG-3IqQ
+	id 1vfCXR-00000004ubl-3UUz
 	for linux-mediatek@lists.infradead.org;
-	Mon, 12 Jan 2026 07:40:17 +0000
-Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-382fe06aa94so41836661fa.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 11 Jan 2026 23:40:15 -0800 (PST)
+	Mon, 12 Jan 2026 07:40:34 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-59b7b27ebf2so3201800e87.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 11 Jan 2026 23:40:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1768203614; x=1768808414; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1768203632; x=1768808432; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=1n52GJUXMp/HKtmkEtsDqFReft0eMQBSrCUNh4f3w4M=;
-        b=VXQI2hAJx1xz6+b12q8OgxZF137mdwJZU8OOJfDGR8masU1p/8IYptVj1m9Gl/oz/3
-         GYr2GJpARijcptkTYLkykG1cAkj0eCHMyo754f6VVoMyuZdO4W1X7zqxcSRGkdsCd716
-         2xWXchvjR++h1fOr7DId9s4+VDVXfMcTTaTr0=
+        bh=JtRi6MFrPdl+19+cK1e/kxjINMsNs/Hr2ADMl8wY1zQ=;
+        b=STLUmzsS+LieYt3GJzijK2whMSIgNHTVQSXOyaDlXc+HUka6IFeWRu/gWFf0xhmLBL
+         5R9qawgqzIW8gTbG2aRtYJFFAYJB2GgSJ97IBQTft6tx2VljkR4luOpAlLFeD1G86I3U
+         jQI+8nOfw3i31SvDMiP+mWorIYVg4avEGZdT8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768203614; x=1768808414;
+        d=1e100.net; s=20230601; t=1768203632; x=1768808432;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=1n52GJUXMp/HKtmkEtsDqFReft0eMQBSrCUNh4f3w4M=;
-        b=XdmR/6Ucrr354VMfz/saC3+/TV1RY0NuLdGaRLXhL4JQprKYinbFReMZkmVTVj8RVF
-         NNDBfqSf6t0yKw43nAO+unPvAGC2vUbDWPYUPQXVgFHMvKzdUf/xKihfAFBcGyf8ZnJt
-         CY4sa2MVcB4Ga+6T6m02uR6W62Gh9rHSs+U6VdDyWAaOAEaZ0TaDpkXEupBqzZRsibxU
-         8bAHaMS7G/aGqcRe18M5gPPyp58tjHG7KGDsdmdMrpZXHPBeOvEOSIrHBspTg4fSLwgt
-         dsrT8KT9+u7MOS+dbRlXZr0pyRVN7x8i0XI9A3P6EmglE17Co66m2jbWDDsYIbdKz4ZW
-         bELw==
-X-Gm-Message-State: AOJu0Ywo5DP1vu9xjHkNWiOav5vxQ7fGtytqMacGWX36kClzIoIS4BEJ
-	e/9rCCKt76vDyUi/9M3dvUzSt8sDOs+V8GoQwv5AUqe/Yp45Wr/HwbrSlu7E0MIh61mJ69lr28L
-	Yi3xClZlhWpcLQKvxk+q4mAp2JvAvMo9hlKinadouU0FY3HZcPSdSlg==
-X-Gm-Gg: AY/fxX7gKr5ih75RLA3cy8xRw56ptiKKPkfkXQoVITX0CMHtIxnt+hSa3MCo7No2pze
-	YgBDmN2at4yLhtnwIVwR2sfPUC9kxyNlmmY17oKrkBVz6O+a/ojuQcUU1e1ZJgSW2B029oqy8/0
-	zErl8Fjc53UPrKBlMf8oWcP6/BlYmCVSwhBmMTU2Vg6Krp7tgLESVkv18SotVUmOSslZ8Np1Udf
-	D/O3E2Go8E8fKZ1Ttj6/U4+agFxVwQz2UpUFpiou9h1jJ32PNQoQzkzI0taq+VKWAalzVjq9ib6
-	xD0vYHmxIJTFxaSYHZDp5Bwx
-X-Google-Smtp-Source: AGHT+IHUZT28NEm0pfAfk51zPeTo+Gj4RHUge+kB6DYLCdNVFDgCN4Sz5SqqU/frHG9MN/FkGcGoa1cuyd/52Y4L5JA=
-X-Received: by 2002:a05:651c:210f:b0:383:31cb:e3a8 with SMTP id
- 38308e7fff4ca-38331cbe654mr19249041fa.40.1768203614432; Sun, 11 Jan 2026
- 23:40:14 -0800 (PST)
+        bh=JtRi6MFrPdl+19+cK1e/kxjINMsNs/Hr2ADMl8wY1zQ=;
+        b=VtvDGwF9ddItKOzUFrBajjUgZzlgXrjVZ7fT2tSLfIVM5il63jrnBFB9ql8vDBuCo6
+         r/lZsq+1OF+th5giNr8DJSnJbIIUK2H1GR2+q9OO5YZrkM+pw+fIFWfJNVfKxjzxR8/I
+         W2lC0Q/ptMc3KRUr+dflqSzD6PN/g0usoAm6HXJgKqmkvNxhh1kUQRlHCnC+NupVJnIl
+         2OL22nGY4HMIxcscaDhvkrJxcK6zv5EOOQO8qbxiNZsWCUYXErFQf/c3+f0XxL/qIMdu
+         70PbcvYtksMgEV/j1ZKg2BEKnBr4TLA/oEeehzHEHQHdgDDHJGH4PePyq6Ihk/A9sQG7
+         jZBQ==
+X-Gm-Message-State: AOJu0Yxb5jGhfpnPoazifBpuChabw87dRw+3xarCBHnw0bGOEHTlErDo
+	7+krT3koIbL9DKNYTKYupI6z/22ehPXTq2p0mLu2VJI1TLiH3BWh8QEReO3YeswR5trC4Fna3ub
+	/Uc7f7It2w2nzofKNVok4QicCqy9HBE4GiyzyUf8E
+X-Gm-Gg: AY/fxX5h5lhIgwbe6Yz/IAUFqpzt7lYqa7BSjUfMSgShpxfRSh/aSEwZPNFaCe+nFt5
+	vTpxyDMmCf8Rwca+4Tsb+EuGuvx9U/8qlm8W8AxrOvELYr3qzDYzUicqFPNvufOf7HBSFzOeb7j
+	H+Y+zArrP6dyIkX/kLKvb2L1YaU1QfQX9XaAchHzcQj065PFTdiR1DRgm7qG16g5pzHc5LowYVA
+	E+/R5BcFBj0XlFw0mDoP1f7ZipUpe1tk/s4FhFGiGVA9f9CsOUuzPAfb3gSffuQ+IHvSeqVGCIZ
+	Z0t7mdYF3gCOS0GHOIAdCG6d
+X-Google-Smtp-Source: AGHT+IFlCspDZCPT9FMQStGT61bv+dAucJwKR5nac26W67Y6fKeZtDHqcvUx1A1+f7pEcKY9oNXx2pViJv8f4miGw+8=
+X-Received: by 2002:ac2:4e01:0:b0:595:91dc:72a5 with SMTP id
+ 2adb3069b0e04-59b6f03b941mr5675948e87.40.1768203631712; Sun, 11 Jan 2026
+ 23:40:31 -0800 (PST)
 MIME-Version: 1.0
-References: <20260109114747.37189-1-angelogioacchino.delregno@collabora.com> <20260109114747.37189-9-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20260109114747.37189-9-angelogioacchino.delregno@collabora.com>
+References: <20260109114747.37189-1-angelogioacchino.delregno@collabora.com> <20260109114747.37189-10-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260109114747.37189-10-angelogioacchino.delregno@collabora.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 12 Jan 2026 15:40:03 +0800
-X-Gm-Features: AZwV_Qg9LwCLxMIXkGb-DD3-ik3Cc_aZ4i9dLvLfg60QSxVSU71EYiNaKoNhU6g
-Message-ID: <CAGXv+5H3YLUahzOKP4qkUq=v9vz-uXv_0uOGSEsTKWgXoyUJ3w@mail.gmail.com>
-Subject: Re: [PATCH 08/11] arm64: dts: mediatek: mt8173-elm: Fix dsi0 ports warning
+Date: Mon, 12 Jan 2026 15:40:20 +0800
+X-Gm-Features: AZwV_Qh7fVNNMWj4l5kX9MHDq3r_XLplwxlkLkGSZaHxXqk6sxgyDlZM2EC7dDU
+Message-ID: <CAGXv+5HEFEYhKFuxx+tozMxyJsey-0GHgHR2zMZOfNWYj25U0Q@mail.gmail.com>
+Subject: Re: [PATCH 09/11] arm64: dts: mediatek: mt8173-elm: Remove regulators
+ from thermal node
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, krzk+dt@kernel.org, 
 	conor+dt@kernel.org, matthias.bgg@gmail.com, sjoerd@collabora.com, 
@@ -78,8 +79,8 @@ Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, krzk+dt@kernel.org,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260111_234016_869436_ED84976C 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20260111_234033_878669_5647D2C4 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,45 +98,20 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On Fri, Jan 9, 2026 at 7:48=E2=80=AFPM AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
 >
-> Since only a single port is present, remove the inner `ports`
-> parent node and just declare the single port as `port`.
+> The only reason to have a regulator in the thermal node is to keep
+> the CPU cores up while reading temperatures, but this is incorrect
+> because the AUXADC Thermal IP doesn't need any regulators to work,
+> at all.
+>
+> Since the thermal node was inherited only for adding vregs, remove
+> it entirely.
+> This change is safe also because, among other things, the actual
+> driver never used those regulators anyway.
+>
+> This also fixes a dtbs_check warning.
 >
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
 abora.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 8 +++-----
->  1 file changed, 3 insertions(+), 5 deletions(-)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/bo=
-ot/dts/mediatek/mt8173-elm.dtsi
-> index 59813fff7833..dc064cdcedb5 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-> @@ -206,11 +206,9 @@ target: trip-point1 {
->
->  &dsi0 {
->         status =3D "okay";
-> -       ports {
-> -               port {
-> -                       dsi0_out: endpoint {
-> -                               remote-endpoint =3D <&ps8640_in>;
-> -                       };
-
-Nit: while at it you could add a new line here to separate the child node
-from the properties, as per the dts coding style.
-
-Either way,
 
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
-
-> +       port {
-> +               dsi0_out: endpoint {
-> +                       remote-endpoint =3D <&ps8640_in>;
->                 };
->         };
->  };
-> --
-> 2.52.0
->
->
 
