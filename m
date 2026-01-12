@@ -4,71 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B116C9EC94
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 16:15:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA5AACF45A0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 16:38:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+JI2VuzUHBItC1ORh5iM9vn9gn8nD8f7zptIzIdihmE=; b=Qu8SLU9YZ/8pAN1eQwmRU/W7JK
-	e9bRgOlWhoSASpyVmtuHmkmoH7cKzNTzn/cjFyXCKAlyVn2QTmRoU3coLzQ2pjWAHfYiF9aT6iz7Y
-	QEMpnJAYw/IaQ0ANSmMiW8M0eB1GCDp84wSQHe8mScl3MV3l4YIkn8KJNsFV6ZYEPnM8Zwz1hsOzJ
-	D+QU5ObEkafyHEjyvvbZvPnVFVfNwF3hfzrYG1PGPd6TFG59NkFrKeCOKzJ/j9uXpkiGdOIP1qqiF
-	c4kgpet2AqScPYmucl2ox0IkUnO42mdTMkeXXO4rToUnVkgWgaqP0lIxECz8cnb77LpFntfniYKAK
-	YtePH6fQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y6frWGL3mv0azutt360p+irVL7NLCTrHz31j8urvnMs=; b=4DPyRLIoyZ7zPo1E0OBoLD+pWB
+	Cd3WRgSSyUu00CMPM+m9VxLDkxnnhC4MaBKJ587fddt5JTLNDdbRP31KB59DKJ5U7aWSGb0cib7Ld
+	lW2xoSSfOVeN4yWz1n+4AEYDXMX8zneZvHtW/dj8mISBStncCs4nUsNgE47V7eXc5gf66ncFqrayb
+	+8O8fLlBrZwgoB36YdCCqVXrrBAJ3g3PRdkruX8HuRaTjcPlb0ACVnxj6HgSpmLy59BTZXZ91IUbK
+	AI184UNxKwPILAo2aFxyxMwnF+wZ7dq10DnxQu2Lw0+/EkK6XnDl0zeb/Yl5XZlHbIicOJDfBfKs2
+	KyA233+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfKZw-00000005hsT-0GPU;
-	Mon, 12 Jan 2026 16:15:40 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vfKvt-00000005jhw-1ux0;
+	Mon, 12 Jan 2026 16:38:21 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfKZt-00000005hrh-2Tcx;
-	Mon, 12 Jan 2026 16:15:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768234534;
-	bh=bYyVTbzbpIwXM0uPnbgo13phUMak6kBFgj53wnMc9SA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HGZNZGy10HGBzqThshbno0nz2XaqOM/284NDxsBeH8qwpN1V29GLTrTGkqMIaH57Z
-	 eCt/UsK1RYFn3JfqeapeRZUjIMwoq6KG0NiZ9fpHfB/wdloU8YJpDsMCTP6TvdXVC+
-	 aDIu2tcs1/mTsSu+bTinEBjjRa2IU8uPxtXQrufCRv8oF/Qk+Hy5kuq1aVB6Oy51jI
-	 KTcZdVVSMY9UpjkvRi9DErTkvZ1rxDXsxsdPQdRfkVs3zkOMXZxUK+r+uOVoTJxpsi
-	 EaQtkD5NkkBrRgpZqrdBaWrC1yaPZGEBIUYW5nLdhc4WL7owtCsnmUhLJ0iWpSGvoW
-	 u0Ht4PiYdBn/A==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C313E17E0FF0;
-	Mon, 12 Jan 2026 17:15:33 +0100 (CET)
-Message-ID: <803c76e7-30fc-4a0d-ab30-ea779747300b@collabora.com>
-Date: Mon, 12 Jan 2026 17:15:33 +0100
+	id 1vfKvs-00000005jhh-0Yum;
+	Mon, 12 Jan 2026 16:38:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=y6frWGL3mv0azutt360p+irVL7NLCTrHz31j8urvnMs=; b=BWzg0ci9lRV6kM6SAg7C7W64ZR
+	hxsgs65EQUWzH+vLcV0xGzP7mlKYEi1ZGOzd2wQCIYUh2Gj/MHYmMlXCrpPrdb4QvQ7LKCcsVKZs1
+	2znQv+OE26br4sYs33mIe/b08YuM3ySyQVlV30Ou13MV5v+dT7N6HX5f1Psj26bR5j2Puu6qXM+Nu
+	Sudk3bDWLysMVCVz60/H7OO0En3GnyDUBqB9s1rqQho9v4U5RPwyzG4ChLkZFoSaB2s+2PnrFMlbD
+	cyGjFT5t4S5Bycf03Vddc7iqgHF2d7lEVn9AsWB2lzmOk0tJn5PaNZAVLHc4jc/rCgZ4j/Cg1esgb
+	aIGUEPlw==;
+Received: from 2001-1c00-8d85-5700-266e-96ff-fe07-7dcc.cable.dynamic.v6.ziggo.nl ([2001:1c00:8d85:5700:266e:96ff:fe07:7dcc] helo=noisy.programming.kicks-ass.net)
+	by desiato.infradead.org with esmtpsa (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vfKvn-00000001BSA-3TpF;
+	Mon, 12 Jan 2026 16:38:16 +0000
+Received: by noisy.programming.kicks-ass.net (Postfix, from userid 1000)
+	id C66AC302D3E; Mon, 12 Jan 2026 17:38:14 +0100 (CET)
+Date: Mon, 12 Jan 2026 17:38:14 +0100
+From: Peter Zijlstra <peterz@infradead.org>
+To: Dengjun Su <dengjun.su@mediatek.com>
+Cc: angelogioacchino.delregno@collabora.com, bsegall@google.com,
+	dietmar.eggemann@arm.com, haiqiang.gong@mediatek.com,
+	juri.lelli@redhat.com, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	matthias.bgg@gmail.com, mgorman@suse.de, mike.zhang@mediatek.com,
+	mingo@redhat.com, peijun.huang@mediatek.com, rostedt@goodmis.org,
+	vincent.guittot@linaro.org, vschneid@redhat.com
+Subject: Re: [PATCH] sched/rt: fix incorrect schedstats for rt thread
+Message-ID: <20260112163814.GP830755@noisy.programming.kicks-ass.net>
+References: <20260108111632.GH272712@noisy.programming.kicks-ass.net>
+ <20260109072451.2843331-1-dengjun.su@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 0/7] i2c: busses: Introduce and use HZ_PER_GHZ
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Andi Shyti <andi@smida.it>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Qianfeng Rong <rongqianfeng@vivo.com>, linux-i2c@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Khalil Blaiech <kblaiech@nvidia.com>, Asmaa Mnebhi <asmaa@nvidia.com>,
- Andi Shyti <andi.shyti@kernel.org>, Qii Wang <qii.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Linus Walleij
- <linusw@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Patrice Chotard <patrice.chotard@foss.st.com>,
- Ard Biesheuvel <ardb@kernel.org>
-References: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_081537_788780_521DF9A5 
-X-CRM114-Status: UNSURE (   9.09  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260109072451.2843331-1-dengjun.su@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,33 +74,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/01/26 14:46, Andy Shevchenko ha scritto:
-> A few drivers for I²C host controllers use HZ_PER_GHZ in numeric form.
-> This is less readable and prone to subtle mistakes. Instead, introduce
-> a well defined constant and use it in the drivers. No functional change
-> implied except one case where 64-bit division replaced with 32-bit one.
-> 
-> Andy Shevchenko (7):
->    units: Add HZ_PER_GHZ
->    i2c: mlxbf: Use HZ_PER_GHZ constant instead of custom one
->    i2c: mt65xx: Use HZ_PER_GHZ constant instead of plain number
->    i2c: nomadik: Use HZ_PER_GHZ constant instead of plain number
->    i2c: rk3x: Use HZ_PER_GHZ constant instead of plain number
->    i2c: st: Use HZ_PER_GHZ constant instead of plain number
->    i2c: synquacer: Use HZ_PER_GHZ constant instead of plain number
-> 
->   drivers/i2c/busses/i2c-mlxbf.c     |  5 ++---
->   drivers/i2c/busses/i2c-mt65xx.c    | 11 ++++++-----
->   drivers/i2c/busses/i2c-nomadik.c   |  7 ++++---
->   drivers/i2c/busses/i2c-rk3x.c      | 12 ++++++------
->   drivers/i2c/busses/i2c-st.c        |  3 ++-
->   drivers/i2c/busses/i2c-synquacer.c |  3 ++-
->   include/linux/units.h              |  3 +++
->   7 files changed, 25 insertions(+), 19 deletions(-)
-> 
+On Fri, Jan 09, 2026 at 03:24:47PM +0800, Dengjun Su wrote:
 
-Whole series is
+> For __update_stats_wait_end(), task_on_rq_migrating(p) is needed to
+> distinguish between stage 2 and stage 4 because they involve different
+> processing flows, but for __update_stats_wait_start(), it is not necessary
+> to distinguish between stage 1 and stage 3.
+> 
+> As for adding the condition wait_start > prev_wait_start, I think it is
+> more like a mechanism to prevent statistical deviations caused by time
+> inconsistencies.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+It looks like nonsense to me.. since you have a test-case, could you see
+what this does for you?
 
+Specifically:
+
+ - it ensures that when not in a migration, prev_wait_start must be 0
+
+ - it unconditionally subtracts; unsigned types are defined to wrap
+   nicely (2s complement) and it all should work just fine.
+
+---
+
+diff --git a/kernel/sched/stats.c b/kernel/sched/stats.c
+index d1c9429a4ac5..144b23029327 100644
+--- a/kernel/sched/stats.c
++++ b/kernel/sched/stats.c
+@@ -12,8 +12,10 @@ void __update_stats_wait_start(struct rq *rq, struct task_struct *p,
+ 	wait_start = rq_clock(rq);
+ 	prev_wait_start = schedstat_val(stats->wait_start);
+ 
+-	if (p && likely(wait_start > prev_wait_start))
++	if (p) {
++		WARN_ON_ONCE(!task_on_rq_migrating(p) && prev_wait_start);
+ 		wait_start -= prev_wait_start;
++	}
+ 
+ 	__schedstat_set(stats->wait_start, wait_start);
+ }
 
