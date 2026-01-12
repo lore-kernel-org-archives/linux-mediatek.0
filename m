@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47073C9EC96
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 14:40:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AF7BC9EC8D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 14:56:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OktVfPwfLzn0wtj2b2tV+soxGi9Ga0YyfQs/LDU5obU=; b=vdi1CGq/gc9TFnebm/uIPl6ydu
-	1eg/F9zPQZgQVY4pkI9/+4fzSNxEPd/Uk7Ek4fNNsdOG0Az7SY9YNqMO44ovQS7RweiZzVN5t9qQA
-	WhUuTNTFjhnGPMQewh0A4eIq/eZUT6hP4uP4AkmQIuw6yJ3RB1/q+CgAI6qRDvbRJth8lOsHH68Kx
-	bIU336Oz4RTN7r1Ii8TFhp3MKe5rbLKuvTKH9YVkVFdEPxaV8VQM4YJEMYn/pXM9rM+ZhzDEnG7Wn
-	RXmUZRDWreOGM/BNP+T0IWLWaee+joILyY75tUBCkbrGW7BTVMNXOyGNo2zFxec97aMLI2vd6vJWd
-	/EAbBqgw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=covm/HGiw0ucCW2VPzaD+ksdZU/SGQRug0e2csWYutg=; b=lB2LuDS9FY17BH9MnoSt+NirxT
+	SbF+RYw9CletHHrL1nb65ZIclbQSgUK03JLB2bVMzpdMyjGh28Tq6Z2re5hPbTMARVU69/1mTeXSx
+	lAWJGvQeMBpnMVp/NAlpoR+E8ZlRKMCkUwnqwt4lVyVN8n/Qz4YiBAW8F3SXskIVz3CkczvIy99wX
+	6z1djxX7Ywr/vZiLpmD7lsIHcWX9K4x4yR6wd6xTl/ignzPiFlV9P9RgUKd737TRuEkoFBk1GAdJD
+	f2In58vFcxGKvNOTDSKrNAa4UQzKtLi1mjjYBd4W7lxXh0XMRzkkNWHLE7a8bNbEEb2CH+xRy0qWe
+	1AlGmRyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfJ63-00000005YL9-1p7g;
-	Mon, 12 Jan 2026 14:40:43 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vfJKx-00000005aCN-3R93;
+	Mon, 12 Jan 2026 14:56:07 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfJ61-00000005YKk-3mJV;
-	Mon, 12 Jan 2026 14:40:42 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 05C996001A;
-	Mon, 12 Jan 2026 14:40:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FCBFC19421;
-	Mon, 12 Jan 2026 14:40:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768228840;
-	bh=SDAL0N+qnwLvzZJAzcXSoQROGQiuK08faEFfpMLHSZA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=m/yy/SHnqAKrjtGGfSswYMzKavZlqQqzOfGZKk7cxHJ9SwyNHu76QGX8eMuT8MKED
-	 CIVV6guZOvV3zdpAHHY3JtpNpRR+VRwmiEOvRTzKPruYxyRQN8o7Z9hiOPTF6V61fx
-	 5RSIwlNr0VpwquOMXhbMllbrMGjpmvd14l8kSOSPLt45xbZYUAjXPTGKNl/V3i+0MC
-	 C29rSyOSZW4aX+B8al2ILOz1UwUmL+ef5ZKVQg0fUXL6raFjU7QgEZ6alXHRdpBqsc
-	 sdsdg1TPTBm5wS5u7uPOqwOM/pSkCPS500YgbhGKRnCf4XBJQr2RvKn49X9ZVslzyc
-	 jKMwtYbmpRP3A==
-Date: Mon, 12 Jan 2026 15:40:38 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 2/2] net: airoha: npu: Add the capability to
- read firmware names from dts
-Message-ID: <aWUH5nHR3xz-vk-a@lore-desk>
-References: <20260112-airoha-npu-firmware-name-v1-0-d0b148b6710f@kernel.org>
- <20260112-airoha-npu-firmware-name-v1-2-d0b148b6710f@kernel.org>
- <f57867a0-a57d-4572-b0ed-b2adb41d9689@lunn.ch>
- <aWT4vcBzG6UnaqOF@lore-desk>
- <81f98b9a-3905-4bd9-80ee-348facefeab9@lunn.ch>
+	id 1vfJKv-00000005aA6-0NHo;
+	Mon, 12 Jan 2026 14:56:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1768229761;
+	bh=tCoHB+9VbDLSgUJNKgtCaz1rSx1hAZupwzWxkTySq3w=;
+	h=From:To:Cc:Subject:Date:From;
+	b=mfM7M73s6rzWwjFv4SPWhwSA7Cq3+Wfcd+DcGC3yyHIZWvo1mKOmxGucpe9M/K1+8
+	 Qcnu6Q6uALbI6wIB1GP1gHNvmwB2ljpv6BCPlbI54ZvyRKTHns1608Eht4cVCnrTzB
+	 3osoub6Ljl8+HR6nCVNZGZrNwUOEA+LaMiXscdnxMkiirmefM7iy6jp6pFyFnUAqxZ
+	 eVXw5YErKOQ4GUI7uxlg4iidRNSiiG5Vssa6V/LxMG9wM58deyv0MHdOeFA7NcXseX
+	 1SgvgTzgUF+C7IvzcG1weTRzr3yapMGHFkgb+6DwL+KC3/yCB9KhC5ySeYuYRtlbEb
+	 SfJi6L0BoXfog==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9791317E0333;
+	Mon, 12 Jan 2026 15:56:00 +0100 (CET)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: krzk+dt@kernel.org
+Cc: herbert@gondor.apana.org.au,
+	davem@davemloft.net,
+	robh@kernel.org,
+	conor+dt@kernel.org,
+	andrew@lunn.ch,
+	gregory.clement@bootlin.com,
+	sebastian.hesselbarth@gmail.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	atenart@kernel.org,
+	linux-crypto@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	kernel@collabora.com
+Subject: [PATCH v2 0/4] Fixes for EIP97/EIP197 binding and devicetrees
+Date: Mon, 12 Jan 2026 15:55:54 +0100
+Message-ID: <20260112145558.54644-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="35dfMFi+mqodQRNK"
-Content-Disposition: inline
-In-Reply-To: <81f98b9a-3905-4bd9-80ee-348facefeab9@lunn.ch>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260112_065605_281994_D0F600D7 
+X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,43 +85,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Changes in v2:
+ - Reorder commits
+ - Change to restrict interrupts/interrupt-names minItems to MediaTek only
 
---35dfMFi+mqodQRNK
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This series adds SoC compatibles to the EIP97/EIP197 binding, and also
+fixes all of the devicetrees to actually declare those in their nodes.
 
-> > > Why cannot this scheme be extended with another compatible?
-> >=20
-> > yes, that is another possibility I was thinking of but then I found
-> > "firwmare-name" property was quite a common approach.
-> > Something like:
->=20
-> Having two different ways of doing the same thing in one driver just
-> add unneeded complexity. Please just key of the compatible like all
-> other devices this driver supports.
->=20
->     Andrew
+The only platforms using this binding are Marvell and MediaTek.
 
-ack, I will fix it in v2.
+AngeloGioacchino Del Regno (4):
+  dt-bindings: crypto: inside-secure,safexcel: Add SoC compatibles
+  dt-bindings: crypto: inside-secure,safexcel: Mandate only ring IRQs
+  arm64: dts: marvell: Add SoC specific compatibles to SafeXcel crypto
+  arm64: dts: mediatek: mt7986a: Change compatible for SafeXcel crypto
 
-Regards,
-Lorenzo
+ .../crypto/inside-secure,safexcel.yaml        | 22 +++++++++++++++++++
+ arch/arm64/boot/dts/marvell/armada-37xx.dtsi  |  3 ++-
+ arch/arm64/boot/dts/marvell/armada-cp11x.dtsi |  3 ++-
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  2 +-
+ 4 files changed, 27 insertions(+), 3 deletions(-)
 
->=20
-> ---
-> pw-bot: cr
+-- 
+2.52.0
 
---35dfMFi+mqodQRNK
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaWUH5gAKCRA6cBh0uS2t
-rD+QAQD2KKc4Cab4DOiJr5tUgFk9XtQJh21lPwcIXXyOJIv41AEAivnvtVJJ4Nyo
-VQCZ8SeSJRq/fIn4RXDBDubNyNDJhAg=
-=G7LN
------END PGP SIGNATURE-----
-
---35dfMFi+mqodQRNK--
 
