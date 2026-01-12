@@ -4,90 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3ED4C9EC8D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 16:08:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B116C9EC94
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 16:15:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XFchl4IL2iHP7X4M9jCzRqchpxPAMZ+ZvVMJ6ag12p4=; b=HB314iy+p7lNGeKDNSXiXSAZdB
-	HwA7J6oqW3imIzJl9LtVZHYGnm8cSn2ic8KVMO2T5WJ6PhrNQ3wh1wxn7Sji7+Phh/cGZHdfUU3FD
-	nuPoLoZZjDadVfIb+52+qZB4weWvDN/peeR0OciNM8ogV7iCJT/E2ag/nRifuHUScpTTw/LdFbb4j
-	xkpky34zeS80dcVgmWvpRSeFnlgU6BVE3XHnua9g1mbQtV/A77NCc51DgpT6VJlpjYIB9XXzbS94s
-	U8mJ+frRHvQP5Y3iyJRI1VfTbQ80tTt5Qb/Tbu7WhY7XO2YThSbHZW6IcfUIDM4t2I6NekAwwKj4B
-	wKKw0cQw==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+JI2VuzUHBItC1ORh5iM9vn9gn8nD8f7zptIzIdihmE=; b=Qu8SLU9YZ/8pAN1eQwmRU/W7JK
+	e9bRgOlWhoSASpyVmtuHmkmoH7cKzNTzn/cjFyXCKAlyVn2QTmRoU3coLzQ2pjWAHfYiF9aT6iz7Y
+	QEMpnJAYw/IaQ0ANSmMiW8M0eB1GCDp84wSQHe8mScl3MV3l4YIkn8KJNsFV6ZYEPnM8Zwz1hsOzJ
+	D+QU5ObEkafyHEjyvvbZvPnVFVfNwF3hfzrYG1PGPd6TFG59NkFrKeCOKzJ/j9uXpkiGdOIP1qqiF
+	c4kgpet2AqScPYmucl2ox0IkUnO42mdTMkeXXO4rToUnVkgWgaqP0lIxECz8cnb77LpFntfniYKAK
+	YtePH6fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfKSb-00000005hK6-0OSj;
-	Mon, 12 Jan 2026 16:08:05 +0000
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
+	id 1vfKZw-00000005hsT-0GPU;
+	Mon, 12 Jan 2026 16:15:40 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfKSZ-00000005hJi-17H1
-	for linux-mediatek@lists.infradead.org;
-	Mon, 12 Jan 2026 16:08:04 +0000
-Received: by mail-ed1-x541.google.com with SMTP id 4fb4d7f45d1cf-65063a95558so9831187a12.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 12 Jan 2026 08:08:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768234081; x=1768838881; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=XFchl4IL2iHP7X4M9jCzRqchpxPAMZ+ZvVMJ6ag12p4=;
-        b=YljR+9GU5WYWXO1wwydD5t1hnlsOb4xfLWtsQGqy3+joRfSdJUtXactSXgpw+ctAej
-         1peZ+6PhPQb8NnoM5Xc/7gvous4nSBGaQQ7Ynyi6ffOOzYNOAKDePBDWAazxmiVFb4wZ
-         THDQSJydeZhzzVAQGBginoJdZKkDpx7qLOskaZsi73R6duJ9f1dnoAT5+8bqzgoLF7Uy
-         px9uiMvYxjlP9cxReMG3DW9LWVKGJSYN4SNfL3/ZoWxu2zjK89hWLkJVLeauzKrA+9dw
-         2sK5cyyhIffJEXwdh1G+35Mhg5+1P9G6prRbLzeMTUXmdj6ly2AHJcrOVtjgdOrI9LPx
-         fXVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768234081; x=1768838881;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=XFchl4IL2iHP7X4M9jCzRqchpxPAMZ+ZvVMJ6ag12p4=;
-        b=N+GDV3Ita/0JTjarMjEQo8vouOduQnVFhIZkG9FQ83TLVnMQW+3aKA9k3u5rtcLHtN
-         oJXn99iGao96kxaQpJVLh2KZnbFmxnS0Mka7Qi31OUNcNrSmvlosmlQ7RbWTZuKARlvl
-         JAbaudSWkyGxLXSC7JHS8W6sGdI/6+lT3Lplq9YC7z++czAtPFUDJ8TZPGg41gKuqsJy
-         cjwsh7us2Q6ewbtgRoeRq/pw8CMG7M7V74iptGlDw1dzjqkRY4kkZCcHaN4G5wmJA9uA
-         VGP2ifHEzp5TnBTqoJPoaSQbqCSR9FVIDmmqawWp/CDR0mpjCRjLHhLc49TroZLNQ288
-         tVVQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU2eJge2WPNssHAqameM+ipB8Iku7s18bXUvYeuIxN5+lUVDs2Qje1BAXAv4uhmQmVZUuWMbfnv+c3dOKr/aA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwCf/0FSSPxlInvMwasQ1R25IkSFTrjBGli3p2NInIA4Ck4Pm7I
-	nJXRT8+9I1bzGNrjz1+C6hBlyD6e4d5bExKKKIG4PWmaQHFtK3kr2j4p
-X-Gm-Gg: AY/fxX7fm337cWo21sVD72ntXw9Uv37TW/27Mw+bShzAApeV/r3y7ozJbFUL3NAFMfz
-	9itrPmj4VsQLD1/GIX5XlLQzCBVLY+KMTL82s5JrL9+lg0MqQgiFIbZ6Ewzmh1VYHsvOHp4cdd9
-	S1fSPODgLLwe4F6vChee4X1d0hQc2AnKcBCUo6E90Kd3FoTW+70CXG3HkmYibTQRDWbm3KcLwoT
-	qvNjNOCEc91if12yxfKQvmlntipP9z274O2II/tdjDbPyBH6AEwNhURGsZpPB3791A1cz9vF0iu
-	wZ8F++b7TJ3ry3r6Bca6BnDWOincLVfIdEtncF39oMpU4/5XINjrUAWRMsg/SPdlx8nXr9kKYHl
-	BWj18oC2C2WMcK8UrKGYXjO3/At1m7LOm3L+7fT7KP+tu14SPnmOFZhGwUDJXs4NZ6JxTFa38xk
-	sWjIYo3yLetxLYB9D0n7Kj6CHg9L+dQM7hmy67/yc0SR0=
-X-Google-Smtp-Source: AGHT+IFz4Glbd4ZA3dxtqcV317tXnM3myln6ByCS2T281F927mkqk5Eht9v3v1U1SGONoSGsJThyfg==
-X-Received: by 2002:a17:907:9403:b0:b87:7e8:e287 with SMTP id a640c23a62f3a-b8707e91202mr564365466b.30.1768234080781;
-        Mon, 12 Jan 2026 08:08:00 -0800 (PST)
-Received: from MacBookPro ([2a02:8071:2186:3703:6de9:eb98:99c8:7af2])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b86f9a9103bsm667481666b.30.2026.01.12.08.08.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Jan 2026 08:08:00 -0800 (PST)
-From: Nauman Sabir <officialnaumansabir@gmail.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	Nauman Sabir <officialnaumansabir@gmail.com>
-Subject: [PATCH v3 1/3] dt-bindings: display: mediatek: Fix typo 'hardwares' to 'hardware'
-Date: Mon, 12 Jan 2026 17:07:59 +0100
-Message-ID: <20260112160759.19027-1-officialnaumansabir@gmail.com>
-X-Mailer: git-send-email 2.52.0
+	id 1vfKZt-00000005hrh-2Tcx;
+	Mon, 12 Jan 2026 16:15:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1768234534;
+	bh=bYyVTbzbpIwXM0uPnbgo13phUMak6kBFgj53wnMc9SA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=HGZNZGy10HGBzqThshbno0nz2XaqOM/284NDxsBeH8qwpN1V29GLTrTGkqMIaH57Z
+	 eCt/UsK1RYFn3JfqeapeRZUjIMwoq6KG0NiZ9fpHfB/wdloU8YJpDsMCTP6TvdXVC+
+	 aDIu2tcs1/mTsSu+bTinEBjjRa2IU8uPxtXQrufCRv8oF/Qk+Hy5kuq1aVB6Oy51jI
+	 KTcZdVVSMY9UpjkvRi9DErTkvZ1rxDXsxsdPQdRfkVs3zkOMXZxUK+r+uOVoTJxpsi
+	 EaQtkD5NkkBrRgpZqrdBaWrC1yaPZGEBIUYW5nLdhc4WL7owtCsnmUhLJ0iWpSGvoW
+	 u0Ht4PiYdBn/A==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C313E17E0FF0;
+	Mon, 12 Jan 2026 17:15:33 +0100 (CET)
+Message-ID: <803c76e7-30fc-4a0d-ab30-ea779747300b@collabora.com>
+Date: Mon, 12 Jan 2026 17:15:33 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 0/7] i2c: busses: Introduce and use HZ_PER_GHZ
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Andi Shyti <andi@smida.it>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ Qianfeng Rong <rongqianfeng@vivo.com>, linux-i2c@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Khalil Blaiech <kblaiech@nvidia.com>, Asmaa Mnebhi <asmaa@nvidia.com>,
+ Andi Shyti <andi.shyti@kernel.org>, Qii Wang <qii.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Linus Walleij
+ <linusw@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Ard Biesheuvel <ardb@kernel.org>
+References: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_080803_329054_11A5629B 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20260112_081537_788780_521DF9A5 
+X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,28 +83,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix incorrect plural form of the uncountable noun 'hardware' in the
-MediaTek DP binding description.
+Il 12/01/26 14:46, Andy Shevchenko ha scritto:
+> A few drivers for I²C host controllers use HZ_PER_GHZ in numeric form.
+> This is less readable and prone to subtle mistakes. Instead, introduce
+> a well defined constant and use it in the drivers. No functional change
+> implied except one case where 64-bit division replaced with 32-bit one.
+> 
+> Andy Shevchenko (7):
+>    units: Add HZ_PER_GHZ
+>    i2c: mlxbf: Use HZ_PER_GHZ constant instead of custom one
+>    i2c: mt65xx: Use HZ_PER_GHZ constant instead of plain number
+>    i2c: nomadik: Use HZ_PER_GHZ constant instead of plain number
+>    i2c: rk3x: Use HZ_PER_GHZ constant instead of plain number
+>    i2c: st: Use HZ_PER_GHZ constant instead of plain number
+>    i2c: synquacer: Use HZ_PER_GHZ constant instead of plain number
+> 
+>   drivers/i2c/busses/i2c-mlxbf.c     |  5 ++---
+>   drivers/i2c/busses/i2c-mt65xx.c    | 11 ++++++-----
+>   drivers/i2c/busses/i2c-nomadik.c   |  7 ++++---
+>   drivers/i2c/busses/i2c-rk3x.c      | 12 ++++++------
+>   drivers/i2c/busses/i2c-st.c        |  3 ++-
+>   drivers/i2c/busses/i2c-synquacer.c |  3 ++-
+>   include/linux/units.h              |  3 +++
+>   7 files changed, 25 insertions(+), 19 deletions(-)
+> 
 
-Signed-off-by: Nauman Sabir <officialnaumansabir@gmail.com>
----
- .../devicetree/bindings/display/mediatek/mediatek,dp.yaml       | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Whole series is
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-index 274f590807ca..8f4bd9fb560b 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
-@@ -11,7 +11,7 @@ maintainers:
-   - Jitao shi <jitao.shi@mediatek.com>
- 
- description: |
--  MediaTek DP and eDP are different hardwares and there are some features
-+  MediaTek DP and eDP are different hardware and there are some features
-   which are not supported for eDP. For example, audio is not supported for
-   eDP. Therefore, we need to use two different compatibles to describe them.
-   In addition, We just need to enable the power domain of DP, so the clock
--- 
-2.52.0
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
