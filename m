@@ -4,112 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7487AD25040
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 07:33:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D935D25042
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 07:40:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zlyKorXjXIaBH04Qa5oK4g149V3RA+hal0qFyHf7wpQ=; b=FQ330jTYzLNpuEWCMSOFbY018o
-	+xhYWrvJePbL2AjKjufvhD/lSNvBXv7qAETYRMloWxRosMP7kDhyDdI4EfdBSd5TNJcPkMff4lALi
-	4Z8Rdeaj7vgRIP7DQ33T6FFGv0otLAs2B7vtCbhZ643Z+uXC8eWuHAz+Uh9uK+ptwzuegneEKGnzE
-	c2qlM9lVzU4R5M52QrvQG/Q/deVMk1OU3dqQMvtmouFmauh9awTVEenSnJVTmf/f7BAHGs6ta433i
-	jsk+ba/jhrmbRmSryMVpWmxOQY39Ts3BWK5tbIEGPDgUsN7R3EhBxPDtzRORyS5eAHE6UnYhGL37r
-	56R77HJA==;
+	bh=1n52GJUXMp/HKtmkEtsDqFReft0eMQBSrCUNh4f3w4M=; b=1QUMoLkqIM3OxWzQQ7n4868r5Z
+	SF5u0zbPCQJpyUxqVxzUmXdeEjOoqKPjGL3aPAqfbVGAy24lj2retDHcRJwfA7HbfiLkQWBHHLGk2
+	tXMk81pfL2WICmwRlEU3Yu1+Iy2WUmaMyHylVzyEYrAsAzHPoJjAZ32jET8uLVnXKPt8+ZbiWadxx
+	81XSg0NNMGqG82FsNVnOLB6AnrlIiw+sfV/efG7HWTm90H5HZMKUwYdcXogBYC+krSt5ijJuRBap7
+	K7WIUrD7jLce0OJNZoqxp5r5l68fzDLcyrh+F0Up56zT4eEoFRa++IMnHIF4gAiXmKG+cfM4IG2j3
+	yIOV0uyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfCQG-00000004suE-1gxn;
-	Mon, 12 Jan 2026 07:33:08 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vfCXD-00000004uZ7-0fVG;
+	Mon, 12 Jan 2026 07:40:19 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfCQD-00000004stY-40KG;
-	Mon, 12 Jan 2026 07:33:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6B73B43976;
-	Mon, 12 Jan 2026 07:33:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 488DBC116D0;
-	Mon, 12 Jan 2026 07:33:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768203184;
-	bh=KdRXhfGl56K1YQnkAzeYiX2UFWqFdyLMMf/xAfsazgs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=TYTEdSE5ONs10N1xaPrLoOvFhlajmZC79SjRE83TF7XfFJULFahdt0TuhRjcfaXO+
-	 HpZHPUNqMueI5PPPYmTBezPxDhEKBC+5QpOqWz1GndAFtPwUG61jMWHR568SNtPn3I
-	 TPuMcCVFlklcHwxykFQsAYaBil2g5ivBrZcQGD34OPCS/m8NrBFnXDm3SpSjKZAcWW
-	 dCZxagfOgWdeOoP0mUfbuiyBROVs2ixnjVYecK/7lSZWNBnI/nGrv1M7KDnczx0dF1
-	 20IpcW4Nf/lDZvoVkRh57gHFU3C+i7j4Ti6lpL/57yB1ml9uz6/lyf497/pkYvuTjW
-	 xCfBPr4Tg3N4w==
-Message-ID: <e5d1d9ce-0268-4b1b-9ce9-2b871926acbf@kernel.org>
-Date: Mon, 12 Jan 2026 08:32:58 +0100
+	id 1vfCXA-00000004uYG-3IqQ
+	for linux-mediatek@lists.infradead.org;
+	Mon, 12 Jan 2026 07:40:17 +0000
+Received: by mail-lj1-x229.google.com with SMTP id 38308e7fff4ca-382fe06aa94so41836661fa.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 11 Jan 2026 23:40:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1768203614; x=1768808414; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1n52GJUXMp/HKtmkEtsDqFReft0eMQBSrCUNh4f3w4M=;
+        b=VXQI2hAJx1xz6+b12q8OgxZF137mdwJZU8OOJfDGR8masU1p/8IYptVj1m9Gl/oz/3
+         GYr2GJpARijcptkTYLkykG1cAkj0eCHMyo754f6VVoMyuZdO4W1X7zqxcSRGkdsCd716
+         2xWXchvjR++h1fOr7DId9s4+VDVXfMcTTaTr0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768203614; x=1768808414;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=1n52GJUXMp/HKtmkEtsDqFReft0eMQBSrCUNh4f3w4M=;
+        b=XdmR/6Ucrr354VMfz/saC3+/TV1RY0NuLdGaRLXhL4JQprKYinbFReMZkmVTVj8RVF
+         NNDBfqSf6t0yKw43nAO+unPvAGC2vUbDWPYUPQXVgFHMvKzdUf/xKihfAFBcGyf8ZnJt
+         CY4sa2MVcB4Ga+6T6m02uR6W62Gh9rHSs+U6VdDyWAaOAEaZ0TaDpkXEupBqzZRsibxU
+         8bAHaMS7G/aGqcRe18M5gPPyp58tjHG7KGDsdmdMrpZXHPBeOvEOSIrHBspTg4fSLwgt
+         dsrT8KT9+u7MOS+dbRlXZr0pyRVN7x8i0XI9A3P6EmglE17Co66m2jbWDDsYIbdKz4ZW
+         bELw==
+X-Gm-Message-State: AOJu0Ywo5DP1vu9xjHkNWiOav5vxQ7fGtytqMacGWX36kClzIoIS4BEJ
+	e/9rCCKt76vDyUi/9M3dvUzSt8sDOs+V8GoQwv5AUqe/Yp45Wr/HwbrSlu7E0MIh61mJ69lr28L
+	Yi3xClZlhWpcLQKvxk+q4mAp2JvAvMo9hlKinadouU0FY3HZcPSdSlg==
+X-Gm-Gg: AY/fxX7gKr5ih75RLA3cy8xRw56ptiKKPkfkXQoVITX0CMHtIxnt+hSa3MCo7No2pze
+	YgBDmN2at4yLhtnwIVwR2sfPUC9kxyNlmmY17oKrkBVz6O+a/ojuQcUU1e1ZJgSW2B029oqy8/0
+	zErl8Fjc53UPrKBlMf8oWcP6/BlYmCVSwhBmMTU2Vg6Krp7tgLESVkv18SotVUmOSslZ8Np1Udf
+	D/O3E2Go8E8fKZ1Ttj6/U4+agFxVwQz2UpUFpiou9h1jJ32PNQoQzkzI0taq+VKWAalzVjq9ib6
+	xD0vYHmxIJTFxaSYHZDp5Bwx
+X-Google-Smtp-Source: AGHT+IHUZT28NEm0pfAfk51zPeTo+Gj4RHUge+kB6DYLCdNVFDgCN4Sz5SqqU/frHG9MN/FkGcGoa1cuyd/52Y4L5JA=
+X-Received: by 2002:a05:651c:210f:b0:383:31cb:e3a8 with SMTP id
+ 38308e7fff4ca-38331cbe654mr19249041fa.40.1768203614432; Sun, 11 Jan 2026
+ 23:40:14 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/3] dt-bindings: crypto: eip93: add clock gate and
- reset line
-To: Aleksander Jan Bajkowski <olek2@wp.pl>
-Cc: benjamin.larsson@genexis.eu, chester.a.unal@arinc9.com,
- davem@davemloft.net, angelogioacchino.delregno@collabora.com,
- ansuelsmth@gmail.com, conor+dt@kernel.org, herbert@gondor.apana.org.au,
- krzk+dt@kernel.org, matthias.bgg@gmail.com, robh@kernel.org,
- sergio.paracuellos@gmail.com, tsbogend@alpha.franken.de,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org
-References: <20260102155341.3682013-1-olek2@wp.pl>
- <20260103-sweet-micro-manul-12eaee@quoll>
- <d7ab5be3-8502-407c-baf6-714ac3a89cb7@wp.pl>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
- QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
- +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
- ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
- 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
- hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
- tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
- 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
- naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
- hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
- whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
- qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
- RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
- Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
- H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
- dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
- AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
- jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
- zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
- XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <d7ab5be3-8502-407c-baf6-714ac3a89cb7@wp.pl>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20260109114747.37189-1-angelogioacchino.delregno@collabora.com> <20260109114747.37189-9-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260109114747.37189-9-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 12 Jan 2026 15:40:03 +0800
+X-Gm-Features: AZwV_Qg9LwCLxMIXkGb-DD3-ik3Cc_aZ4i9dLvLfg60QSxVSU71EYiNaKoNhU6g
+Message-ID: <CAGXv+5H3YLUahzOKP4qkUq=v9vz-uXv_0uOGSEsTKWgXoyUJ3w@mail.gmail.com>
+Subject: Re: [PATCH 08/11] arm64: dts: mediatek: mt8173-elm: Fix dsi0 ports warning
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, matthias.bgg@gmail.com, sjoerd@collabora.com, 
+	hsinyi@chromium.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260111_233306_042899_E9BA74D0 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20260111_234016_869436_ED84976C 
+X-CRM114-Status: GOOD (  14.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,52 +94,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/01/2026 14:36, Aleksander Jan Bajkowski wrote:
-> Hi Krzysztof,
-> 
-> On 1/3/26 15:11, Krzysztof Kozlowski wrote:
->> On Fri, Jan 02, 2026 at 04:47:33PM +0100, Aleksander Jan Bajkowski wrote:
->>> Add the clock gate and reset line, both of which are available
->>> on the Airoha AN7581.
->>>
->>> Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
->>> ---
->>> v3:
->>> - introduce patch
->>> ---
->>>   .../crypto/inside-secure,safexcel-eip93.yaml       | 14 ++++++++++++++
->>>   1 file changed, 14 insertions(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml
->>> index 997bf9717f9e..c6c99c08dc68 100644
->>> --- a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml
->>> +++ b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml
->>> @@ -48,20 +48,34 @@ properties:
->>>     interrupts:
->>>       maxItems: 1
->>>   
->>> +  clocks:
->>> +    maxItems: 1
->>> +
->>> +  resets:
->>> +    maxItems: 1
->>> +
->>>   required:
->>>     - compatible
->>>     - reg
->>>     - interrupts
->>> +  - clocks
->>> +  - resets
->> That's ABI break without explanation in the commit msg.
->>
-> I think that the reset line and clock gate are available on all SoCs
-> with this IP Core. Should the reset line and clock gate only be
+On Fri, Jan 9, 2026 at 7:48=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Since only a single port is present, remove the inner `ports`
+> parent node and just declare the single port as `port`.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 8 +++-----
+>  1 file changed, 3 insertions(+), 5 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/bo=
+ot/dts/mediatek/mt8173-elm.dtsi
+> index 59813fff7833..dc064cdcedb5 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+> @@ -206,11 +206,9 @@ target: trip-point1 {
+>
+>  &dsi0 {
+>         status =3D "okay";
+> -       ports {
+> -               port {
+> -                       dsi0_out: endpoint {
+> -                               remote-endpoint =3D <&ps8640_in>;
+> -                       };
 
-Not related. I did not say that hardware has or has not. I speak about
-ABI, so the interface.
+Nit: while at it you could add a new line here to separate the child node
+from the properties, as per the dts coding style.
 
-> required for newly added SoCs, and remain optional for existing ones?
+Either way,
 
-Best regards,
-Krzysztof
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+
+> +       port {
+> +               dsi0_out: endpoint {
+> +                       remote-endpoint =3D <&ps8640_in>;
+>                 };
+>         };
+>  };
+> --
+> 2.52.0
+>
+>
 
