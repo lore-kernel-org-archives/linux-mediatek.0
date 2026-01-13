@@ -4,68 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7F36D29DEC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 08:34:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC834D29DF2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 09:17:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GiZxmY62qMIowyTzp7xRCLdxMkojzS+RhlTkCXmPUdc=; b=yjTm4RlQ7L7KRKYBUGflqi9Ijr
-	0Ddy2KeqcAcucXrZik1zqiBAu5AyOE84zn/1SmebL3z9eOBEfQV2QSOqzwf677IhO8zbkN8rU2wj8
-	EkHQXrMT6Impuvsp1WrrlQJlsXa8W+cShkwx79FMLYotiRL5vIb94DjD3eBfhc4bWxTc0DJWbUR2O
-	4rst8V4Ojthw9ygURzqmIkQ0zxgBA72Ohq7C481+HGEml81nerlP/VEiNeDo4Q9zyDwB0w7Wj+n/G
-	3LsG4X28Tnt1crmd9GicZVLmLDRT8RdryMOSWf8S9EEAq03BxSqzdtdYCs1AAOzTUG2oMWdXkIdgA
-	6VU865xw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=86VIaF2unP4vg5OpX+J8tHPXWoQ8hu3kSDMcmnIkxvQ=; b=0CIeXOpY+QifcuosGNVfSNCv35
+	HaZVAbMESXqeR4PjC3842glZQUaJLrvi57TPQhneBlzs1+LZJQRj1L+ZLTmo1UkjsfmFF+dzyMzvV
+	dJ3ig0zSLsZPBt43W0ApypmONLTAwM+1fQeXzqeua23I3KAt2j5ZWB3u4v74cSJlq/dRebO4K8zN7
+	wZSEfJ6PehGFjf4wh6RsqZHYSRhfmOp955U/SbZ5l7o3FYFpGE48xIZ29FBnNUlsPRpHywE8lsFhS
+	wrcI5zDfUHvp8pLZGYPk8oBbWmcBD6iPnPYXVXhXK0wDR62PnV49JFaTZNPm5gQBGEF4XL+uVkL2z
+	IrZvovcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfZqo-00000006lB7-0x8p;
-	Tue, 13 Jan 2026 08:34:06 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vfaX8-00000006pay-0GxH;
+	Tue, 13 Jan 2026 09:17:50 +0000
+Received: from mail.venturex.pl ([141.95.86.206])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfZql-00000006lA6-1meg;
-	Tue, 13 Jan 2026 08:34:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 642E840B56;
-	Tue, 13 Jan 2026 08:34:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B693DC116C6;
-	Tue, 13 Jan 2026 08:34:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768293242;
-	bh=jjUCjRQRE+P4dpfL4pcQVDUjSJrZEHUP4TE7rk2uXEc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AEKP2mr8PVEGjqZ/tiSEGkd/4F0WoFrcus8hDFhcRnbYyTHQyUcDORMuCxhHlqMbz
-	 gDhlQWTcxfOyvkYOKfsiRayJCm60lC3tZOnSe5DXnmTFAsHi6NnbC0K9jbhZKUL1h7
-	 tqWc6xVz16UOvQSC8JVAdzAymwaahi86G2ikDCcJvKuaTt9wXFac0pmwUmxXiO5XJp
-	 rlQ1LkM9/UUHFj8/tTO5pdM8ec8DrWXW2P2UxU0Ncj7Z0QdKrce7PMlecimOLIZ6pg
-	 giqHUrxeWLUEk1XtoG+8aN4fWlFdqzZ62NIwpKsve8RZ4ewwDiL4H0uHDiIQk/f2IF
-	 6eWKUjnncmS4Q==
-Date: Tue, 13 Jan 2026 09:33:59 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v3 1/2] dt-bindings: net: airoha: npu: Add BA
- memory region
-Message-ID: <aWYDd4Pwi84gA6zy@lore-desk>
-References: <20260108-airoha-ba-memory-region-v3-0-bf1814e5dcc4@kernel.org>
- <20260108-airoha-ba-memory-region-v3-1-bf1814e5dcc4@kernel.org>
+	id 1vfaX5-00000006pZP-0GH4
+	for linux-mediatek@lists.infradead.org;
+	Tue, 13 Jan 2026 09:17:48 +0000
+Received: by mail.venturex.pl (Postfix, from userid 1002)
+	id C594D29B1F; Tue, 13 Jan 2026 10:17:19 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=venturex.pl; s=mail;
+	t=1768295861; bh=86VIaF2unP4vg5OpX+J8tHPXWoQ8hu3kSDMcmnIkxvQ=;
+	h=Date:From:To:Subject:From;
+	b=H5clSeulJ9S2jKv2olcfXEYzlOVBrHmhn/j8Qtqa2J8eRJUCo2JeFASmTkab1nQEJ
+	 m9TuVQKDzAZhGiIUUzqJzJdbFtbp9piwlVCRyaIGoIVEY8vp9SpAkGE2UxRcDVguzh
+	 CSB5V2Qxl6C5EExWTUaNGZCRfpsoRcnyo7SHWPAMOUI2c5qngPAHj8khPkGeKTsXpL
+	 US+NLlSxKo5oulY6OSVt7flFscm2aeC6J0JzK3f20TS9aCIPkJx65IpCbTNOBZUdrb
+	 LHoooqPFbQFd2NZUSbcRFHTX4pl22REDC8nDMlol/sjy4Y6Tr8J2atyvr6RxIt/sj9
+	 M+NWv94PEKSDg==
+Received: by mail.venturex.pl for <linux-mediatek@lists.infradead.org>; Tue, 13 Jan 2026 09:15:36 GMT
+Message-ID: <20260113084501-0.1.c1.2a5lh.0.r5qn1j0q9w@venturex.pl>
+Date: Tue, 13 Jan 2026 09:15:36 GMT
+From: =?UTF-8?Q?"Miko=C5=82aj_Rak"?= <mikolaj.rak@venturex.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: Fundacja Rodzina a optymalizacja podatkowa 
+X-Mailer: mail.venturex.pl
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="yz3hkU5huftspXAr"
-Content-Disposition: inline
-In-Reply-To: <20260108-airoha-ba-memory-region-v3-1-bf1814e5dcc4@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_003403_504144_D4C1CD65 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20260113_011747_256862_8C0BB629 
+X-CRM114-Status: UNSURE (   1.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,93 +66,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Szanowni Pa=C5=84stwo,
 
---yz3hkU5huftspXAr
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+czy byliby Pa=C5=84stwo zainteresowani rozmow=C4=85 o mo=C5=BCliwych rozw=
+i=C4=85zaniach dla swojej firmy i rodziny?
 
-> Introduce Block Ack memory region used by NPU MT7996 (Eagle) offloading.
->=20
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
->  .../devicetree/bindings/net/airoha,en7581-npu.yaml  | 21 +++++++++++----=
-------
->  1 file changed, 11 insertions(+), 10 deletions(-)
+Nowelizacja ustawy o Fundacjach Rodzinnych otwiera przed przedsi=C4=99bio=
+rcami zupe=C5=82nie nowe mo=C5=BCliwo=C5=9Bci ochrony maj=C4=85tku i plan=
+owania sukcesji. Fundacja Rodzinna pozwala oddzieli=C4=87 aktywa od ryzyk=
+ biznesowych, prawnych i podatkowych, a jednocze=C5=9Bnie zachowa=C4=87 k=
+ontrol=C4=99 nad swoim maj=C4=85tkiem i zadba=C4=87 o jego trwa=C5=82o=C5=
+=9B=C4=87 dla kolejnych pokole=C5=84.
 
-Hi Rob, Krzysztof and Conor,
+Co istotne, po up=C5=82ywie 10 lat od wniesienia aktyw=C3=B3w do fundacji=
+, roszczenia o zachowek przestaj=C4=85 obowi=C4=85zywa=C4=87. Ustawodawca=
+ przewidzia=C5=82 r=C3=B3wnie=C5=BC liczne zwolnienia podatkowe obejmuj=C4=
+=85ce m.in. dochody z dzia=C5=82alno=C5=9Bci gospodarczej czy wynajem nie=
+ruchomo=C5=9Bci.
 
-Since this patch has been marked as 'needs ack' on patchwork, do you have a=
-ny
-comments on it? Thanks in advance.
+B=C4=99d=C4=99 wdzi=C4=99czny za informacj=C4=99, czy chcieliby Pa=C5=84s=
+two pozna=C4=87 mo=C5=BCliwo=C5=9B=C4=87 stworzenia Fundacji Rodzinnej?
 
-Regards,
-Lorenzo
 
->=20
-> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml=
- b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> index 59c57f58116b568092446e6cfb7b6bd3f4f47b82..19860b41286fd42f2a5ed15d5=
-dc75ee0eb00a639 100644
-> --- a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
-> @@ -42,14 +42,13 @@ properties:
->        - description: wlan irq line5
-> =20
->    memory-region:
-> -    oneOf:
-> -      - items:
-> -          - description: NPU firmware binary region
-> -      - items:
-> -          - description: NPU firmware binary region
-> -          - description: NPU wlan offload RX buffers region
-> -          - description: NPU wlan offload TX buffers region
-> -          - description: NPU wlan offload TX packet identifiers region
-> +    items:
-> +      - description: NPU firmware binary region
-> +      - description: NPU wlan offload RX buffers region
-> +      - description: NPU wlan offload TX buffers region
-> +      - description: NPU wlan offload TX packet identifiers region
-> +      - description: NPU wlan Block Ack buffers region
-> +    minItems: 1
-> =20
->    memory-region-names:
->      items:
-> @@ -57,6 +56,8 @@ properties:
->        - const: pkt
->        - const: tx-pkt
->        - const: tx-bufid
-> +      - const: ba
-> +    minItems: 1
-> =20
->  required:
->    - compatible
-> @@ -93,7 +94,7 @@ examples:
->                       <GIC_SPI 122 IRQ_TYPE_LEVEL_HIGH>,
->                       <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
->          memory-region =3D <&npu_firmware>, <&npu_pkt>, <&npu_txpkt>,
-> -                        <&npu_txbufid>;
-> -        memory-region-names =3D "firmware", "pkt", "tx-pkt", "tx-bufid";
-> +                        <&npu_txbufid>, <&npu_ba>;
-> +        memory-region-names =3D "firmware", "pkt", "tx-pkt", "tx-bufid",=
- "ba";
->        };
->      };
->=20
-> --=20
-> 2.52.0
->=20
-
---yz3hkU5huftspXAr
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaWYDdwAKCRA6cBh0uS2t
-rFtBAQD0yo69p4xD8JEzaHh0K8d8OYSRtrHkmX343xvu19+f8wEA9FbT9Hg1SDZr
-MxzoKUFGCDbNaLfe1G88bl8Ds5L68QQ=
-=FNzg
------END PGP SIGNATURE-----
-
---yz3hkU5huftspXAr--
+Pozdrawiam
+Miko=C5=82aj Rak
 
