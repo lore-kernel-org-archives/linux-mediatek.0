@@ -4,86 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7D0DC9EC97
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 10:13:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4EDBD0C84D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 10:45:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+LRLoreM4o+gGDWAZYVe2aUygCSNCbLkY2YsP8OXzQQ=; b=gEntVjd8kKvkTBoJRFu2djFbbq
-	o7obXxgErTQF+hE7ydNuKKJ8e1LuI933rfGpCMEcd7EDzUSng5pfwnGZEb7Rzc97HwnUah/nKx3AP
-	EF7aDLS3qCA96VWUnUfpnIl4CXqhQa+ft7gv5R1v33sYkvOAw9N7nHcz46dZti4PD8kiHXgLdyUhq
-	4wBJnO+TXVQSdSYpvyYUBrxWCFLCF4qaDNCPBkGAJ1iuui/8Pu6xIgwDPpU7Kl2L8PmmsxDE5+Q8A
-	8n7FEvbv2zSswxT+07v3MguPc+F+lHSOlK7Vyadc6bOMe0nlF4oPg/yPbjLC7Azvuxm10FJzaY57l
-	3Xad+M6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9I4JuA+DTKrsxAvgGNBrZD4ygy6kYD+KaH47v1t+hV8=; b=zSu2KOWcS5xmXuX6gsHwQYX0SP
+	yCl2/xWdW9tOhn+XokGOR+s+c80L2in2j7Wf7P2mvDJ4QSDzlQmoE/8dQ3U8QUmbqUj2U6jSYTXhO
+	MYjIcngxImwj74gJfd/jBmtABpxv0lq5Iz9buBxIZwkMhrtwbsQMbRrIB2iufD2N44FLeZ72RzO9V
+	pM3IWcNJkh92U0mlUtjYRFKrAtN0X3U0E1eb34NEYYk+CG1lGojNdC1R8MrK3bkyuTobN2DPDFI1p
+	yP+tYRCdhhPUMb3RMIMHsInLYk6SrH65/K+XQiho6O2AtH4MYrJmiwjrzKZ+Oyw8ZWE+M4p7xkCdo
+	HUrh8JTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfbPE-00000006suo-0HoM;
-	Tue, 13 Jan 2026 10:13:44 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vfbtv-00000006vka-0bDK;
+	Tue, 13 Jan 2026 10:45:27 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfbPC-00000006stN-2CGj
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 13 Jan 2026 10:13:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=+LRLoreM4o+gGDWAZYVe2aUygCSNCbLkY2YsP8OXzQQ=; b=M8kQzR05Eu9ry8hjGoOIsrxd9F
-	l7x5WVAnRE1HOiraUCR2IMbyM76iTSXjbkLIjWSlFSQve2EbN/8SFL6YvtHDwGE+WDGDkfkSoUGsT
-	AD8ZBirIRnKYp/8M8xs82ugkvtlV3k7f7FNJvuvcfT1tZgeuP53/AVvKEtzpddRTYRLaO1gpQ510I
-	dqDGLLK4tY7PC58JlyDgglo/JDeuQGWe3rqU4BRzooG6fvMPtFgaF1EEz/VWUphfSEKZKitA+Y5qh
-	v/UDor6IDpKIV3BVyB+rJ7RaRCxYHcKLSRyBhUeO0EkOGwF5/nueGdOGrz7At0jluxIb8y5LMElEO
-	EDro6dYA==;
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfbP9-00000002XeD-0et0
+	id 1vfbtr-00000006vjr-3X8o
 	for linux-mediatek@lists.infradead.org;
-	Tue, 13 Jan 2026 10:13:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7E77B444C0
-	for <linux-mediatek@lists.infradead.org>; Tue, 13 Jan 2026 10:13:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56580C19423
-	for <linux-mediatek@lists.infradead.org>; Tue, 13 Jan 2026 10:13:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768299216;
-	bh=RpOnPNW4xfI0Kz9zhPqicYu/rLC2pTmpoM33Trm+SMg=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=dBkyBNzZyikYWHBI84mEzG69MRM616RZBoMsO0F3Q1c1T/St0KrZ9e2JUQUHBxmA2
-	 3ghOxlMMpbwvS/wL74la9lRVcw7lVZLTyWJiprsxF5/oDzdFtYs3SmKTcdV3GQohVx
-	 6ukv6oI7L/80VLsINJQ3gIGwywWiYE4fp1vBKJEyuSQnejwmmr6sqzttwZsXeXj3ba
-	 X+Klx3wBvBhfpoXyoeO/EffiVahCypVxOcHqGQ6XJH0tDrCHhaz16CsG2xGrUPWY6N
-	 NsymtWt2Boevzn0e3ExO19xgQ8iQhqLMnifQUiiSr4WPa1qIiWHnrxefRm2bdiPR2v
-	 DCFLKopJUBlYA==
-Received: by mail-yw1-f182.google.com with SMTP id 00721157ae682-7927541abfaso25774557b3.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 13 Jan 2026 02:13:36 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCUp0g4Y36T1fXBtCZoNMvzs+kQkikwEn2obXxHFqUePYetpYrvsIpvPe/7ytbghxn6XhT2wRV0VocyNfBmeDw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwMu1d4xPIIqdd8Jbx+di9ZuOzULIkUIcbkTPkb7/Ux8aOZlHTW
-	cgU79ARpa8kWBdbxmLEHjp1ILtoUfMMqYOeMN9juE8kXPR+iOpFq+c/P1H2uxk/AG9tREqZVuMF
-	qcSBtd5s0o5+wKCNRv3FMLjJwBcDbHIM=
-X-Google-Smtp-Source: AGHT+IEjXK4zNU3B8MFfoIndGOeB/FKQBt1cyG91VMuMhesDC6zUrt9ZhhHY6gJ4lWXzCFjcVvXXmBBHZkq1dqdQ1TU=
-X-Received: by 2002:a05:690e:1442:b0:644:51a4:4f1a with SMTP id
- 956f58d0204a3-64716c67be2mr17455597d50.46.1768299214202; Tue, 13 Jan 2026
- 02:13:34 -0800 (PST)
+	Tue, 13 Jan 2026 10:45:25 +0000
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 60D5397u2865826
+	for <linux-mediatek@lists.infradead.org>; Tue, 13 Jan 2026 10:45:23 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=9I4JuA+DTKrsxAvgGNBrZD4y
+	gy6kYD+KaH47v1t+hV8=; b=c+6tHYd147u6Z9qI8EDeKTvgvPrWo6o2hDXsE9YK
+	f3CVlzV6eSxPAc4sgRgM1FqE+EwTKvHXXuPH4byfc3LXUevwVs953j2dwooIu1XP
+	cxTak+/YTgi/RX6eMaWNIcYC2Me08b7RxyhMjls9tEgEl8M71xjsjLydFGcN6BhW
+	xuH/wQ+XrP/5NlA2AZASkroPaSkhb1EJiUFL2CQp7F/MoUEmlqI8XnRV/uMUUAR3
+	dUvYucDqzYvBHqiQPr8Ip0SIxWdRTCG9WcDT8xb3ZRBZ2bszG6PgBhKriRxQ5lvl
+	5jdwc81/0m6IJyGYI6KeMza8aVDmC+4oYepw1FGXbRKE9Q==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4bnfjh92r6-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Tue, 13 Jan 2026 10:45:23 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8c52c67f65cso33404285a.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 13 Jan 2026 02:45:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1768301122; x=1768905922; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=9I4JuA+DTKrsxAvgGNBrZD4ygy6kYD+KaH47v1t+hV8=;
+        b=A0FgTfXY3apWpU6A3iRXUxeCO6YqrL1uRz9jy0W8MVAxVHXGiUSk1TJn/huSplCdX0
+         Lc/gF7D+rHSm5Baxi164AQakMGm3gm5xE5YhFbMJa3nTNjGlYblgPJu5DIARBNT/8/q+
+         teimtm159qQYcKcTlbw7gqqdZJkXvEhY4x34QJbsZYzxeJAxJTgPo4uYVPPZRqdJ5bW/
+         ygJUH17ozL0ZqpPugRbYqSAD4WzBaQhV0yrDpU0Z49fwvv3lhiZ2C94BFGH8CBaaTYtO
+         OJz5o0/6uTo7DNA+XXq4GFrrC8VGzp/ix64CpNaE4eECSUtM/ezZQmu7KxM71GJF39W3
+         QXnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768301122; x=1768905922;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=9I4JuA+DTKrsxAvgGNBrZD4ygy6kYD+KaH47v1t+hV8=;
+        b=DufA3fsV8actCTFfVebNOZMAcWKMzm34Le/QHWIyUfjRACztmk6jO7Y5wZRR7mBA5d
+         4ESKvjaO5JnP77PUINOxS4shSR1NorgMoBDqZ3sQ8KgaSZj//9Yei3tH2TvJdcrcFq2w
+         GRYzBVqdD3rHtHnE9KQyBzYdU18HI2xTOWP+cTcN42eUHSpLs/6XvzpwIhKclXTQrQa7
+         6FosNcssQQH7GCaA6M4pHijjkEeKrT5atDYN1Sgd9SgWpHQU9eQs/coBlj36GrMYBJl4
+         +fPfDhUtK9E6MpfGHY+KcgON/NOPO/9eiSECIcMl2BdHer0j6jH8OTCgUPW+nsT1I4r5
+         Htng==
+X-Forwarded-Encrypted: i=1; AJvYcCUrxQFYJk5gQTpVfJfjxKaZ9zsKMmiKfAM9vFTX9VwpARXqZfnOMIi9UypyaNr3g/ua/9huR+3JcLFjYdiV8g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz4l3s0LTgwThtkDxgUkpF9bNO4k9C3iMi04HCj0fyu2U7yfUd4
+	aYFmVG8bQRwYvCPdOCQ9pbvW3IHcJJvyXk4knQDnpA5i4hRhw9i7TFVX2TcXIcVrE8KwJHrINlR
+	0apUtOXtFJMZM+pPl7/xigtFmkjNt7olLScsZj0eKkFeUJD0MjVvKzzit39zNCoo+d6+MVDdujn
+	c=
+X-Gm-Gg: AY/fxX5sDN5aU4YS26W4/Sk1sSNQwXnnmfKmxvQsFu5HFl7cJljkMX+ipB8gGBmYqiu
+	nh/C+CXsXYHdBRk632TRyhjILlXL1Q0B3qHqkG0AGq/HK25O5IChkA3VGl2IapgcGqOeZklfBCp
+	AXYtklQy+GidG2AnQjOACO45bniOlfeQryS+6J835pNDAEfwvdePwp/VEV6HMmr9aoQ9omzZEWV
+	MtRTY0+YbQ5PtlmeCR3NlI31Yhv1m+LOEhHVNsvo2wWIktMJv44Yu+8kW7QSx+X6xaWLRWo2j65
+	JM9V50gPar/9amKcWX/pp/KQPrPORSpKSxT/FNbx4wS6qlJB53L16EI3PlT6fICw9EIfA/SuyyT
+	WzOMgr5pVU1H/4BH3+HerBGI1194HOoVIvrbkTBYi+fDL+VUOlQJTrwZ0x9en5j8mPJmwlhlUJx
+	oe0axQZyJN/A7homEhulXvR+M=
+X-Received: by 2002:a05:620a:4620:b0:8b2:e8b5:1ea3 with SMTP id af79cd13be357-8c389396ee9mr3113899785a.28.1768301122141;
+        Tue, 13 Jan 2026 02:45:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG+v5i4OzVytG7YmTzOdtD/BVcyfWkUol5gVPPJzVXwcGpOBqn8M4DeV5yIFPElPgFt6kFirA==
+X-Received: by 2002:a05:620a:4620:b0:8b2:e8b5:1ea3 with SMTP id af79cd13be357-8c389396ee9mr3113897385a.28.1768301121697;
+        Tue, 13 Jan 2026 02:45:21 -0800 (PST)
+Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-59b67b51b4csm5404992e87.19.2026.01.13.02.45.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Jan 2026 02:45:21 -0800 (PST)
+Date: Tue, 13 Jan 2026 12:45:19 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: linux-firmware@kernel.org, linux-mediatek@lists.infradead.org,
+        nfraprado@collabora.com, Jason-ch.Chen@mediatek.com,
+        angelogioacchino.delregno@collabora.com, Macpaul.Lin@mediatek.com
+Subject: Re: rename MT8188 SCP firmware and add symlink
+Message-ID: <3imlk7gitfiazewwrlottwnewfn255othxe64ui6jvusz5akjs@r2tmsrx3y3xx>
+References: <20260113094541.2528905-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-References: <20260112203534.4186261-1-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20260112203534.4186261-1-andriy.shevchenko@linux.intel.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Tue, 13 Jan 2026 11:13:22 +0100
-X-Gmail-Original-Message-ID: <CAD++jLkBKcK9eKOCfry2H1DzG=5Z93w2U-SRwHf2dkRBhyxQRw@mail.gmail.com>
-X-Gm-Features: AZwV_Qgxd8O6AeWZ_24rr74gIMc3R8RlMUxlB-x9t8krXDZ9OpAu7ZlluLqPS50
-Message-ID: <CAD++jLkBKcK9eKOCfry2H1DzG=5Z93w2U-SRwHf2dkRBhyxQRw@mail.gmail.com>
-Subject: Re: [PATCH v2 0/4] spi: Make SPI core to take care of fwnode assignment
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Mark Brown <broonie@kernel.org>, Varshini Rajendran <varshini.rajendran@microchip.com>, Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Haotian Zhang <vulab@iscas.ac.cn>, Sunny Luo <sunny.luo@amlogic.com>, Janne Grunau <j@jannau.net>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Chen-Yu Tsai <wens@kernel.org>, Amelie Delaunay <amelie.delaunay@foss.st.com>, Chin-Ting Kuo <chin-ting_kuo@aspeedtech.com>, CL Wang <cl634@andestech.com>, Patrice Chotard <patrice.chotard@foss.st.com>, Heiko Stuebner <heiko@sntech.de>, William Zhang <william.zhang@broadcom.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, Manikandan Muralidharan <manikandan.m@microchip.com>, David Lechner <dlechner@baylibre.com>, Florian Fainelli <florian.fainelli@broadcom.com>, Jonas Gorski <jonas.gorski@gmail.com>, Hang Zhou <929513338@qq.com>, Jun Guo <jun.guo@cixtech.com>, Philipp Stanner <phasta@kernel.org>, Charles Keepax <ckeepax@opensource.cirrus.com>, Bartosz Golaszewski <brgl@kernel.org>, =?UTF-8?Q?Beno=C3=AEt_Monin?= <benoit.monin@bootlin.com>, Shiji Yang <yangshiji66@outlook.com>, James Clark <james.clark@linaro.org>, Jonathan Marek <jonathan@marek.ca>, Carlos Song <carlos.song@nxp.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Huacai Chen <chenhuacai@kernel.org>, Xianwei Zhao <xianwei.zhao@amlogic.com>, Prajna Rajendra Kumar <prajna.rajendrakumar@microchip.com>, Sergio Perez Gonzalez <sperezglz@gmail.com>, Qianfeng Rong <rongqianfeng@vivo.com>, Haibo Chen <haibo.chen@nxp.com>, Gabor Juhos <j4g8y7@gmail.com>, Md Sadre Alam <quic_mdalam@quicinc.com>, Rosen Penev <rosenp@gmail.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Luis de Arquer <luis.dearquer@inertim.com>, Cosmin Tanislav <cosmin-gabriel.tanislav.xa@renesas.com>, Tudor Ambarus <tudor.ambarus@linaro.org>, Krzysztof Kozlowski <krzk@kernel.org>, Longbin Li <looong.bin@gmail.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, =?UTF-8?Q?Cl=C3=A9ment_Le_Goffic?= <clement.legoffic@foss.st.com>, Alessandro Grassi <alessandro.grassi@mailbox.org>, Darshan R <rathod.darshan.0896@gmail.com>, Aaron Kling <webgeek1234@gmail.com>, Vishwaroop A <va@nvidia.com>, Haixu Cui <quic_haixcui@quicinc.com>, Darshan Rathod <darshanrathod475@gmail.com>, linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, asahi@lists.linux.dev, linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, linux-sound@vger.kernel.org, patches@opensource.cirrus.com, imx@lists.linux.dev, linux-arm-msm@vger.kernel.org, linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, virtualization@lists.linux.dev, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, Lorenzo Bianconi <lorenzo@kernel.org>, Ray Liu <ray.liu@airoha.com>, Sven Peter <sven@kernel.org>, Neal Gompa <neal@gompa.dev>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>, Ryan Wanner <ryan.wanner@microchip.com>, Michael Hennerich <michael.hennerich@analog.com>, =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, Kamal Dasu <kamal.dasu@broadcom.com>, Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, Kursad Oney <kursad.oney@broadcom.com>, Anand Gore <anand.gore@broadcom.com>, =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, David Rhodes <david.rhodes@cirrus.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, Vladimir Oltean <olteanv@gmail.com>, Frank Li <Frank.Li@nxp.com>, Jean-Marie Verdun <verdun@hpe.com>, Nick Hawkins <nick.hawkins@hpe.com>, Yang Shen <shenyang39@huawei.com>, 
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Lixu Zhang <lixu.zhang@intel.com>, Yinbo Zhu <zhuyinbo@loongson.cn>, Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, Conor Dooley <conor.dooley@microchip.com>, Daire McNamara <daire.mcnamara@microchip.com>, Matthias Brugger <matthias.bgg@gmail.com>, Avi Fishman <avifishman70@gmail.com>, Tomer Maimon <tmaimon77@gmail.com>, Tali Perry <tali.perry1@gmail.com>, Patrick Venture <venture@google.com>, Nancy Yuen <yuenn@google.com>, Benjamin Fair <benjaminfair@google.com>, Han Xu <han.xu@nxp.com>, Yogesh Gaur <yogeshgaur.83@gmail.com>, Daniel Mack <daniel@zonque.org>, Haojian Zhuang <haojian.zhuang@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, Chris Packham <chris.packham@alliedtelesis.co.nz>, Fabrizio Castro <fabrizio.castro.jz@renesas.com>, Andi Shyti <andi.shyti@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Paul Walmsley <pjw@kernel.org>, Samuel Holland <samuel.holland@sifive.com>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Alain Volmat <alain.volmat@foss.st.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Li-hao Kuo <lhjeff911@gmail.com>, Masahisa Kojima <masahisa.kojima@linaro.org>, Jassi Brar <jaswinder.singh@linaro.org>, Laxman Dewangan <ldewangan@nvidia.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Sowjanya Komatineni <skomatineni@nvidia.com>, Masami Hiramatsu <mhiramat@kernel.org>, =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, Michal Simek <michal.simek@amd.com>, Max Filippov <jcmvbkbc@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260113094541.2528905-1-moudy.ho@mediatek.com>
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTEzMDA5MSBTYWx0ZWRfXxDnxno06Xv4U
+ 8GYcaUUGKdcys99SjqfjPm38y5bj3zFotGLG1zKRokkwiOTeXnyzW1vmgqpaQtJweyiUdA/pdFM
+ lTszV+D174ScRdgBxWKzXQwHTd9Hucjcq9gsyaCg0P7KFUs/q/gK6JN0Z3XoOsU0iWxOI1UzjeN
+ ySm/mijjg8ZoUi9TvS8MFHkVMZfDpY3USEg0vLz82sUzFG39MMvlbHJWdjPKyQ4s6nfb5KfafFU
+ b+W/eMQ3WOKPImdK7R+x1mbKmo5L3KlXocapguHIdqh48P7RKhB/1wcW8KvOTWo79bWjKwryGeJ
+ Kgct2CIiJbVvZ8MUJ2D15/2fGAH/xEqayb77wj/r5kQPDB74gsNjxhMdAW+vkKk7HUX4vqes+q3
+ japb37JnqfF6crCgXjrBqWdoIdTvX6YUQ5oww2E4ORcxJNQjlsQzA2aJiQCjw/Nk7qnpA6shsjc
+ uR5/GMKOaESBrwzEl0w==
+X-Proofpoint-GUID: zJURw5J1-YdIGfLZinohfjknKcdVZs04
+X-Proofpoint-ORIG-GUID: zJURw5J1-YdIGfLZinohfjknKcdVZs04
+X-Authority-Analysis: v=2.4 cv=XJQ9iAhE c=1 sm=1 tr=0 ts=69662243 cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=vUbySO9Y5rIA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=NEAV23lmAAAA:8 a=QJzb6Ko3GgTxAw7dr1QA:9 a=CjuIK1q_8ugA:10
+ a=IoWCM6iH3mJn3m4BftBB:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2026-01-13_02,2026-01-09_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 lowpriorityscore=0 malwarescore=0 spamscore=0 phishscore=0
+ priorityscore=1501 suspectscore=0 clxscore=1015 adultscore=0 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2512120000 definitions=main-2601130091
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_101339_608649_B4BEFC43 
-X-CRM114-Status: GOOD (  16.84  )
+X-CRM114-CacheID: sfid-20260113_024523_978836_4DB48B6E 
+X-CRM114-Status: GOOD (  16.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,27 +142,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 12, 2026 at 9:35=E2=80=AFPM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
+On Tue, Jan 13, 2026 at 05:45:04PM +0800, Moudy Ho wrote:
+> The following changes since commit 486ac8f9adb4d77b951b55179985c6b3c20b6957:
+> 
+>   Merge branch 'robot/pr-0-1768198342' into 'main' (2026-01-12 07:14:40 +0000)
+> 
+> are available in the Git repository at:
+> 
+>   https://github.com/MoudyHo/linux_fw_scp v27748.03
+> 
+> for you to fetch changes up to fdae06e63ed75fa3a91c8fab7a88c7b22c12ec3f:
+> 
+>   mediatek: rename MT8188 SCP firmware and add symlink (2026-01-13 17:13:26 +0800)
+> 
+> ----------------------------------------------------------------
+> Moudy Ho (1):
+>       mediatek: rename MT8188 SCP firmware and add symlink
+> 
+>  WHENCE                     |   3 ++-
+>  mediatek/mt8188/scp.img    | Bin 636548 -> 10 bytes
 
-> It seems all of the SPI drivers want to propagate fwnode (or of_node)
-> of the physical device to the SPI device. Make sure we don't duplicate
-> it over and over in each new driver (+2 in this cycle) by making core
-> to take care of that. Note, similar is done already by IIO and
-> I=C2=B2C subsystems.
->
-> There is one noticeable and quite specific case that is taken care in
-> the first patch and now we have a confirmation from Cirrus that everythin=
-g
-> is okay.  The rest is just a mechanical conversion after checking that
-> the parent device is assigned to the same that provides the respective
-> fwnode.
+If you have Link: in WHENCE, you don't need this file.
 
-This is clearly making the kernel a better place.
+>  mediatek/mt8188/scp_c0.img | Bin 0 -> 636548 bytes
+>  3 files changed, 2 insertions(+), 1 deletion(-)
+>  mode change 100644 => 120000 mediatek/mt8188/scp.img
+>  create mode 100644 mediatek/mt8188/scp_c0.img
+> 
 
-The series:
-Reviewed-by: Linus Walleij <linusw@kernel.org>
-
-Yours,
-Linus Walleij
+-- 
+With best wishes
+Dmitry
 
