@@ -4,72 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C6CED2F33A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 15:49:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82207D2F33D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 16:08:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:Cc
-	:References:In-Reply-To:Subject:To:From:Date:Message-ID:Reply-To:MIME-Version
-	:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=id5EpIdL4QmjVgbmtYvjivS78BtSux02Ne0F+r1cx3Y=; b=iuTlTZc0HHcbl0umuvUXa2emJk
-	kKgykusTmg20jcBnJ6mk9ZiDUFIq9QEqOUawyCLIMXc14NF+yHtifuEior6ZGsUCzD1p3Kj+YCwFZ
-	N8GDlLjsnbGAWHWuinxsNUsimuEAI+eOt4Y9J2+6Wt5mMFGwmez3WpPzRQ2ESL6/TRJCRaVqkyiIj
-	1Q2OrUHt0HefAtOZadh5VediF+Sp56jQeClL8ZnNqWLWsMNW8yrrC2LZHOk53AneqLSGcz9e9Mi8m
-	FroAAhISZwyAh9Eg1l1KQCQ33bTUo9PdPepV+vNR9iO1apvw8NMOc6AW8xs5iJnxEjQsbXd/Cmo2W
-	987i3dvg==;
+	bh=+chXS9ZDMKI2KjZOs6poLYGp8PpyW9pzoJKSHaXZwqQ=; b=I7Q3B8BkxRyFne6oyUHzsxCB2m
+	kDn4NI/iuLljG8RnJulpgxzxySOO7Nwieztf6Z7D3SZf+mfh1p/iYreFzSrdHbik+RMyzqc0H6FDy
+	PY/l8otVMIIb+ZTNOMvYNI1HugkNiv4TtAMQGjXcedv8vIXSfPam+Y8isEbuvK6eWpmTh9iVtjuuW
+	ko8egbVLh/H8SApDXIZ51cP24gRvNW/6DS8T8uPhSYg8by+0CVQQg7bXvroEY19T7GBsMRtnb7pU8
+	GR9/cJh6bR/DWAB+hSzuiY6V5ANHIvPA3xIcQUWlD5PyRso//Fcjdx7b2ke+yj/2IYLTGcceuL/1O
+	bnTDuhtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfgdy-00000007Q0S-2wwT;
-	Tue, 13 Jan 2026 15:49:18 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vfgwL-00000007RRJ-34p1;
+	Tue, 13 Jan 2026 16:08:17 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfgdw-00000007PzB-26PP;
-	Tue, 13 Jan 2026 15:49:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CA2844425B;
-	Tue, 13 Jan 2026 15:49:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29C9CC116C6;
-	Tue, 13 Jan 2026 15:49:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768319355;
-	bh=DL6DumQuAKzxPXqlFPaLc/uXsPbWMPmwgxQv1tCvmW0=;
-	h=Date:From:To:Subject:In-Reply-To:References:Cc:From;
-	b=ODQ4NksF3kuHZBXFrgVhO5YpFUJpkPm/Y/ykp4ja265B9koe5WMdyqy+E05tAAZ9I
-	 72miO/eTCw+4ieuqPduuyfRQ8fH/f6RevBvbLVDbhX3MAjoniVXn0FCesEe72DJAo/
-	 3fUqPSxrvHxlr8Ffqk32DIEOkuVdNOF7MNY4plwxnA6wIsnNx2GgqyaQ07DkdZ93q7
-	 GTpJaGN1F+uPxz31M4z56R8tgVXqeREpMudytTEwp6Md/UwHOHqmomDvhT5PuYPXDz
-	 9m8ijAKcWHtnoYyPTs3TsO9dFvZ2fSwcgxvzJ73hCoeYb0U/pZlaBzOKf7T7MA1Nnn
-	 94EzzfkDfKcjQ==
-Message-ID: <a3405fd8966a11655e39685e751832bf@kernel.org>
-Date: Tue, 13 Jan 2026 15:49:13 +0000
-From: "Maxime Ripard" <mripard@kernel.org>
-To: "Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>
-Subject: Re: [PATCH v4 03/10] drm/sun4i: hdmi_enc: implement clear_infoframe
- stub
-In-Reply-To: <20260107-limit-infoframes-2-v4-3-213d0d3bd490@oss.qualcomm.com>
-References: <20260107-limit-infoframes-2-v4-3-213d0d3bd490@oss.qualcomm.com>
-Cc: dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, "Abhinav
- Kumar" <abhinav.kumar@linux.dev>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
- Yan" <andy.yan@rock-chips.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>, "Chen-Yu
- Tsai" <wens@kernel.org>, "Chun-Kuang Hu" <chunkuang.hu@kernel.org>, "Dave
- Stevenson" <dave.stevenson@raspberrypi.com>, "David Airlie" <airlied@gmail.com>, "Dmitry
- Baryshkov" <lumag@kernel.org>, =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Jernej
- Skrabec" <jernej.skrabec@gmail.com>, "Jessica Zhang" <jesszhan0024@gmail.com>, "Jonas
- Karlman" <jonas@kwiboo.se>, "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Liu
- Ying" <victor.liu@nxp.com>, "Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, "Marijn
- Suijten" <marijn.suijten@somainline.org>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Maxime
- Ripard" <mripard@kernel.org>, =?utf-8?b?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, "Neil
- Armstrong" <neil.armstrong@linaro.org>, "Philipp Zabel" <p.zabel@pengutronix.de>, "Raspberry
- Pi Kernel Maintenance" <kernel-list@raspberrypi.com>, "Rob Clark" <robin.clark@oss.qualcomm.com>, "Robert
- Foss" <rfoss@kernel.org>, "Samuel Holland" <samuel@sholland.org>, "Sandy
- Huang" <hjc@rock-chips.com>, "Sean Paul" <sean@poorly.run>, "Simona Vetter" <simona@ffwll.ch>, "Thomas
- Zimmermann" <tzimmermann@suse.de>
+	id 1vfgwH-00000007RQI-0GCV;
+	Tue, 13 Jan 2026 16:08:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1768320489;
+	bh=XrcoqIdL7mqLMAZSLEUBjwk3677mywTfFnps1LIr2qA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=AXenmkWO0eq5YWShnSaSv3RU3e/vIfy2AYsdeNYFaYb63vC1Wfxa4deyTH9bKjZdA
+	 zkIfbiY4MFlNVaAbEHedzyfCo5epss/7f9Fe41KSANOp3W7SJ6jqA3jj5IhjA5cHfp
+	 jXMlLjN45Ix9TjPtsQyew8bp+hTWRzToGrBW5tPz9k3W8mUlOtHczuEQWkOnA7tK8E
+	 iY9NUTgtz4t5KziPuiYtjkxoj+jZ53hT/w1WayTNHan+buwycMpWWBUpp5tYW2wFgK
+	 8AtxVdb+UXSRg183npbS02u28cojtXfs1ns0AwIVQsmKKaVZDsyNpBbd/6qiSZ6l89
+	 DWmoRged+oF+w==
+Received: from fedora (unknown [IPv6:2a01:e0a:2c:6930:d919:a6e:5ea1:8a9f])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bbrezillon)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9819B17E026C;
+	Tue, 13 Jan 2026 17:08:08 +0100 (CET)
+Date: Tue, 13 Jan 2026 17:08:03 +0100
+From: Boris Brezillon <boris.brezillon@collabora.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Steven Price
+ <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Maarten
+ Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
+ <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, Chia-I Wu <olvaffe@gmail.com>,
+ kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org
+Subject: Re: [PATCH v2 0/4] Make MT8196 get its Mali GPU shader_present from
+ nvmem
+Message-ID: <20260113170803.6e5ebedb@fedora>
+In-Reply-To: <CAPDyKFqkPg5rWYk7cwDywRn_pexQhd2V3R63atjruJnSpYxfZQ@mail.gmail.com>
+References: <20251220-mt8196-shader-present-v2-0-45b1ff1dfab0@collabora.com>
+	<CAPDyKFqkPg5rWYk7cwDywRn_pexQhd2V3R63atjruJnSpYxfZQ@mail.gmail.com>
+Organization: Collabora
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_074916_565559_DE6DA100 
-X-CRM114-Status: UNSURE (   6.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260113_080813_271793_0DC54BA3 
+X-CRM114-Status: GOOD (  29.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,14 +87,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 7 Jan 2026 20:15:00 +0200, Dmitry Baryshkov wrote:
-> In preparation to making clear_infoframes callbacks required, add a stub
-> to the sun4i driver.
+On Mon, 29 Dec 2025 12:52:13 +0100
+Ulf Hansson <ulf.hansson@linaro.org> wrote:
+
+> On Sat, 20 Dec 2025 at 19:50, Nicolas Frattaroli
+> <nicolas.frattaroli@collabora.com> wrote:
+> >
+> > The MediaTek MT8196 SoC's Mali SHADER_PRESENT register does not list
+> > only functional shader cores, but also those that are fused off to
+> > improve yield.
+> >
+> > The SHADER_PRESENT bitmask with the one fused off core omitted is to be
+> > found in an efuse. However, the efuse address is considered
+> > confidential, and is not public knowledge.
+> >
+> > The MT8196 GPUEB MCU, which does the power management for the Mali GPU
+> > on this SoC, knows and reads the efuse however, and exposes it in the
+> > shared memory intended to communicate state to the application
+> > processor. Reading the bitmask from this shared memory area is the
+> > vendor's intended solution.
+> >
+> > This series models this in the binding and implements it in the
+> > corresponding Linux drivers:
+> > - the mali-valhall-csf binding gets an nvmem-cells/nvmem-cell-names
+> >   property to declare that shader-present is in a different castle
+> > - the mt8196-gpufreq binding requires nodes to expose the shader-present
+> >   cell
+> > - panthor checks for the presence of the shader-present cell and uses it
+> >   as the shader-present value if it's found, instead of the Mali GPU
+> >   register contents
+> > - mtk-mfg-pmdomain becomes an nvmem provider and will happily serve
+> >   queries for the shader-present cell
+> >
+> > While it would be preferable if we could read the efuse directly, it's
+> > not possible as things stand, and insisting on it will just keep this
+> > hardware from working in mainline. Running a GPU workload with a
+> > SHADER_PRESENT bitmask that includes a faulty core results in corrupt
+> > GPU rendering output.
+> >
+> > Modelling the mt8196-gpufreq device as a nvmem-cell provider however is
+> > not lying about the hardware's capabilities, as it truly does provide
+> > access to the nvmem-cell, even if it acts as a proxy.
+> >
+> > From a bindings and panthor perspective, this is also generic enough to
+> > where hypothetical other vendors doing the same thing (even with direct
+> > efuse access) can rely on the same cell name and implementation.
+> >
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>  
 > 
-> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+> I have applied the pmdomain changes in patch2 and patch 4 for next, thanks!
+> 
+> I assume the gpu changes will be funneled via another tree, but let me
+> know if there is a reason to keep these changes together.
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
+Yep, I just queued the remaining two patches to drm-misc-next.
 
-Thanks!
-Maxime
+Thanks,
+
+Boris
 
