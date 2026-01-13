@@ -4,61 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1458FD29DC2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 03:12:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57AE7D29DC7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 03:33:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=045EkAASI/mKzK5SIAJvk1GCcho1g4V28O3azTzPzCI=; b=V1DmDmTwbKEDu0ghZV0BnKwAzz
-	vAP8if1PLhYHteiwvgC5qJHpOdj3q5By8c2x1NGYvWJeVyBATtm7E1Q28wH2O75UaKdDQnzxdM56K
-	G2RnUTzgLeGzS2GDLP04vr8jt1OU+FZBblh20RUmRl6UWM7fRr8rYeMKCPPM4MQmtLB6tyFeSvcZ4
-	mySDq7MqXX2/qRb4Pb4CSopomPfE0op1YqV2c3/HVZnjiwqBkFn0gdiLXEyY32wejtENuSaEvfIH7
-	1mHN/33EYT5w9UqrKgNMzxexjCKElFs5CuGopxQl4hvMMvgCX5a0q5Cv7nGxXgesHXNd0+i603HCk
-	6SqV8UEg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yVCjNOhh/5LUVZYAUAkZpluoJLWyRhJAmhnP+XiOgZ4=; b=TnivVp1zLq64wTR/QWvOU27e3i
+	CwWj0QT6oAolGpCTnxp57jfaioXQqKZ5brsAdCx4Ufn/rQratWRrnwtFMscE9jVgQGNlX9z3qvorr
+	BAT7CeHhhpVgj/cvnX85ABdaXu9WHtPZRl/+qxy6AyP1jVBmrvFEatAJGPn+D1uAK8OOwYO5/GIZf
+	pxba3BzCZ/DfYxjB9cwOH6qmqdq541aAIWvxkcrCGtHoNbSrJaL2AmqPkoL0cndKxC7eNy4djcyPV
+	j76wHJCD31MgXAfoAt013RjeAaFeogzqQ4pCdd6SgpTPGHdQodcPS+G8g8499tZVrxpM9zYQLA8SJ
+	oqtAhOJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfUpP-00000006TBW-3s6m;
-	Tue, 13 Jan 2026 03:12:19 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1vfVA3-00000006UHi-3yTt;
+	Tue, 13 Jan 2026 03:33:39 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfUpK-00000006TB4-2xRY;
-	Tue, 13 Jan 2026 03:12:16 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
-	 (Exim 4.99)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1vfUp4-000000001Go-14dU;
-	Tue, 13 Jan 2026 03:11:58 +0000
-Date: Tue, 13 Jan 2026 03:11:54 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Bc-bocun Chen <bc-bocun.chen@mediatek.com>,
-	Rex Lu <rex.lu@mediatek.com>,
-	Mason-cw Chang <Mason-cw.Chang@mediatek.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Andrew Lunn <andrew@lunn.ch>, Vladimir Oltean <olteanv@gmail.com>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next RFC] net: ethernet: mtk_eth_soc: support using
- non-MediaTek DSA switches
-Message-ID: <34647edacab660b4cabed9733d2d3ef22bc041ac.1768273593.git.daniel@makrotopia.org>
+	id 1vfVA0-00000006UHD-1lYo;
+	Tue, 13 Jan 2026 03:33:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id A35B9442B2;
+	Tue, 13 Jan 2026 03:33:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86A2EC116D0;
+	Tue, 13 Jan 2026 03:33:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768275213;
+	bh=spgkXTbeqnIy58cj1/9lfs3zCULO03AiiPx6WBBkw64=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=bMyrmpwPlQAZYNzq7C1EIjw/cF5OoutO4g/uUqhUZSpdvUVKGdkj2uz9qOCjIqCxQ
+	 HWF4eBSllxC5djL6+8YYMCo1ooUhjy+i43GDuVGAyykzOEkY3fYWHeDZ96yvIzB3FZ
+	 3Q3b2nzKtJFFWhjqVdPSwJaVSydUq73sFNPiUNOXQE4Gm0WDsJO83M9cB1KM1RHTWW
+	 9X3Gxy0VZxur47BD3v290ZbvhM2nwc5ZTMyXswqKiQtBT+umnUV2hnDj5aKitkcYis
+	 9MODRdKyAuBoZGpjXAZtSYgN7JTO2bIRt1EeazlftzgQlZg4/kKlRXi9LBljCh8b9Y
+	 gHyBfFiCkrtMQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 78A5D380CFE1;
+	Tue, 13 Jan 2026 03:30:08 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net] net: airoha: Fix typo in airoha_ppe_setup_tc_block_cb
+ definition
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <176827500730.1659151.13605466861154324453.git-patchwork-notify@kernel.org>
+Date: Tue, 13 Jan 2026 03:30:07 +0000
+References: <20260109-airoha_ppe_dev_setup_tc_block_cb-typo-v1-1-282e8834a9f9@kernel.org>
+In-Reply-To: <20260109-airoha_ppe_dev_setup_tc_block_cb-typo-v1-1-282e8834a9f9@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ pabeni@redhat.com, kuba@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, lkp@intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_191214_753274_E6CF23F3 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20260112_193336_536334_6BAEB835 
+X-CRM114-Status: UNSURE (   7.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,115 +76,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek's Ethernet Frame Engine is tailored for use with their
-switches. This broke checksum and VLAN offloading when attaching a
-DSA switch which does not use MediaTek special tag format.
+Hello:
 
-As a work-around, make sure checksum offloading is disabled and
-make sure bits instructing the FE to parse or modify MTK special
-tags aren't set if the attached DSA switch isn't using the
-MediaTek special tag format.
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Note that this currently also disables checksum and VLAN offloading
-when using DSA switches using 802.1Q-based tags, though that those
-do work fine and can benefit from the offloading features of the
-Ethernet Frame Engine. This is why more feedback from DSA maintainers
-regarding this issue would be very welcome.
+On Fri, 09 Jan 2026 10:29:06 +0100 you wrote:
+> Fix Typo in airoha_ppe_dev_setup_tc_block_cb routine definition when
+> CONFIG_NET_AIROHA is not enabled.
+> 
+> Reported-by: kernel test robot <lkp@intel.com>
+> Closes: https://lore.kernel.org/oe-kbuild-all/202601090517.Fj6v501r-lkp@intel.com/
+> Fixes: f45fc18b6de04 ("net: airoha: Add airoha_ppe_dev struct definition")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> [...]
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 44 +++++++++++++++------
- 1 file changed, 31 insertions(+), 13 deletions(-)
+Here is the summary with links:
+  - [net] net: airoha: Fix typo in airoha_ppe_setup_tc_block_cb definition
+    https://git.kernel.org/netdev/net/c/dfdf77465620
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index e68997a29191b..654b707ee27a1 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1459,6 +1459,26 @@ static void setup_tx_buf(struct mtk_eth *eth, struct mtk_tx_buf *tx_buf,
- 	}
- }
- 
-+static bool mtk_uses_dsa(struct net_device *dev)
-+{
-+#if IS_ENABLED(CONFIG_NET_DSA)
-+	return netdev_uses_dsa(dev) &&
-+	       dev->dsa_ptr->tag_ops->proto == DSA_TAG_PROTO_MTK;
-+#else
-+	return false;
-+#endif
-+}
-+
-+static bool non_mtk_uses_dsa(struct net_device *dev)
-+{
-+#if IS_ENABLED(CONFIG_NET_DSA)
-+	return netdev_uses_dsa(dev) &&
-+	       dev->dsa_ptr->tag_ops->proto != DSA_TAG_PROTO_MTK;
-+#else
-+	return false;
-+#endif
-+}
-+
- static void mtk_tx_set_dma_desc_v1(struct net_device *dev, void *txd,
- 				   struct mtk_tx_dma_desc_info *info)
- {
-@@ -1531,7 +1551,7 @@ static void mtk_tx_set_dma_desc_v2(struct net_device *dev, void *txd,
- 		/* tx checksum offload */
- 		if (info->csum)
- 			data |= TX_DMA_CHKSUM_V2;
--		if (mtk_is_netsys_v3_or_greater(eth) && netdev_uses_dsa(dev))
-+		if (mtk_is_netsys_v3_or_greater(eth) && mtk_uses_dsa(dev))
- 			data |= TX_DMA_SPTAG_V3;
- 	}
- 	WRITE_ONCE(desc->txd5, data);
-@@ -2350,7 +2370,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		 * hardware treats the MTK special tag as a VLAN and untags it.
- 		 */
- 		if (mtk_is_netsys_v1(eth) && (trxd.rxd2 & RX_DMA_VTAG) &&
--		    netdev_uses_dsa(netdev)) {
-+		    mtk_uses_dsa(netdev)) {
- 			unsigned int port = RX_DMA_VPID(trxd.rxd3) & GENMASK(2, 0);
- 
- 			if (port < ARRAY_SIZE(eth->dsa_meta) &&
-@@ -3192,6 +3212,14 @@ static netdev_features_t mtk_fix_features(struct net_device *dev,
- 		}
- 	}
- 
-+	if ((features & NETIF_F_IP_CSUM) &&
-+	    non_mtk_uses_dsa(dev))
-+		features &= ~NETIF_F_IP_CSUM;
-+
-+	if ((features & NETIF_F_IPV6_CSUM) &&
-+	    non_mtk_uses_dsa(dev))
-+		features &= ~NETIF_F_IPV6_CSUM;
-+
- 	return features;
- }
- 
-@@ -3508,23 +3536,13 @@ static void mtk_gdm_config(struct mtk_eth *eth, u32 id, u32 config)
- 
- 	val |= config;
- 
--	if (eth->netdev[id] && netdev_uses_dsa(eth->netdev[id]))
-+	if (eth->netdev[id] && mtk_uses_dsa(eth->netdev[id]))
- 		val |= MTK_GDMA_SPECIAL_TAG;
- 
- 	mtk_w32(eth, val, MTK_GDMA_FWD_CFG(id));
- }
- 
- 
--static bool mtk_uses_dsa(struct net_device *dev)
--{
--#if IS_ENABLED(CONFIG_NET_DSA)
--	return netdev_uses_dsa(dev) &&
--	       dev->dsa_ptr->tag_ops->proto == DSA_TAG_PROTO_MTK;
--#else
--	return false;
--#endif
--}
--
- static int mtk_device_event(struct notifier_block *n, unsigned long event, void *ptr)
- {
- 	struct mtk_mac *mac = container_of(n, struct mtk_mac, device_notifier);
+You are awesome, thank you!
 -- 
-2.52.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
