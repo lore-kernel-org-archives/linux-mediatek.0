@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DBE7D29DE0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 08:12:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7679CD29DE2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 08:20:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J2TpJDly7xWYmvZulzvSGNJoS8l1InT2QiVMxj8eUnQ=; b=ak0Y0KhCSgCIyV9i4NgdwjIzd+
-	JJIEKnI9G6I6Y0PiDalMTUh2ElpVIzIrS4eo7kx1q5gcsxhBzlyAR0DpYNy8jabKLeRwOibuxJZcj
-	omSLFKew/oimx/aKWuivI8qUxg8nClnNtsKfv9tkMM4drBmhKWan3eMNnqsud/RxPkjOYOoIac0VP
-	2gFKUiHS+hIaLda1t5aFlbNMvnk9qiQnNOgTEIE5CexBbwr2H8tzXUPoOb8TA6UgCvIUaoOFHwqWz
-	tkFtN6WbQGHI/UwvrEnDkBd17CT/ZBEA94rUbC5OkGzIL0V4Y1P2rldI5VKGPUNFxRL7uNlwljJgJ
-	xFQooRjA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=L7hcDYx+9J7Ntj/MBYVNDeFz/IZyjH4ucJC66iwLttI=; b=ryC4b5LefQPX4x
+	00c72f6j/nWt8H3s9/zfF/JzqsL6wZ3123C0V2pVYVm9/SxcCtfr35pNixhkaSw17PtF7NI/ipx7z
+	Jag6iPgOF7mBqiJ+cqhGT5YhcZjxKPo8CjpivETmJ+Zd7gPhitWUMMkZtDS753cnPzNwInRKhgxqc
+	yvmTfkm++MsP/jq1jfYKfrT20fKnCw2hhHUsICHr43No+1DMNQKfQSou10SOczr77l74EkzRO3bmR
+	l3eHKv4/mQxRVB5uUDEd/xQkVOBWdmwAyQXlQLPYzB0tjhhHMXE0s03Jv23hVhXdnd94Jo3BUNoik
+	5utnC4Joh6QV/MVG5ahg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfZVW-00000006i5t-2L5c;
-	Tue, 13 Jan 2026 08:12:06 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vfZe1-00000006ivj-0Zcg;
+	Tue, 13 Jan 2026 08:20:53 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfZVT-00000006i3l-0vX3;
-	Tue, 13 Jan 2026 08:12:04 +0000
+	id 1vfZdz-00000006ivR-0pBy;
+	Tue, 13 Jan 2026 08:20:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7E333419C2;
-	Tue, 13 Jan 2026 08:12:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D22BAC19422;
-	Tue, 13 Jan 2026 08:12:01 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 4CA6460051;
+	Tue, 13 Jan 2026 08:20:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 70ADAC19421;
+	Tue, 13 Jan 2026 08:20:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768291922;
-	bh=qm+rItbWD7M6gskD+2ZgtO4El9J3UiCyaHNXI3efs/U=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eZjanKlMYS8SKbsSbk7gld33H5Rjqz+qoh2LhRDxxzvc308SPu/wGjII103/86xT+
-	 2yk8pa1RkbwxrnktMYHCYIt6MMJsArZzBqpO479BeZ8T8OmhOxA6HWs2/DXKLl0xUc
-	 AVznyIw+aG269hooPrcqDeqnVmD4jT8Iw4yWDcB04RRimNFBNOrZjGUJd6zFDJPxAu
-	 CAoPLkMHx5c/2KsCSEJ4sjqePC4SG0a4P+EswmMNWxrDxERViZvAqk6rXEma0335SZ
-	 aoTQu8cWdN89DZliKEpEstXNewtCsPyFVNnd184yF5msyk8m99NDgWymms5qNSfJBt
-	 YS2o/R3qBsCjQ==
-Date: Tue, 13 Jan 2026 09:11:59 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew@lunn.ch>, Andrew Lunn <andrew+netdev@lunn.ch>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 2/2] net: airoha: npu: Add the capability to
- read firmware names from dts
-Message-ID: <20260113-beige-guillemot-of-painting-575bda@quoll>
-References: <20260112-airoha-npu-firmware-name-v1-0-d0b148b6710f@kernel.org>
- <20260112-airoha-npu-firmware-name-v1-2-d0b148b6710f@kernel.org>
- <f57867a0-a57d-4572-b0ed-b2adb41d9689@lunn.ch>
- <aWT4vcBzG6UnaqOF@lore-desk>
+	s=k20201202; t=1768292450;
+	bh=i1Y5DZjciIYzsq+vPdVY9mHZmjo4XAc4nVfHVj1ap6Y=;
+	h=From:Subject:Date:To:Cc:From;
+	b=RfgZ2ADdX4mp3904VOIWBrIYyUUskCFYCDkp3OdIPf01lkjme+pG5wX4HHPxiFR+C
+	 v/iQ+FAs45BH1AhOx42vD7s8Qsrmezw8T/N/cxGCWyimRQrrjcfA9/dmiEj7XaonbN
+	 c1OKcIEx5KxIX4HKpzYDHIjDMi+7VK9gyusKPoc8aug5hQp+GzYWnhxk1/SlCMgW7O
+	 qLeMw6mIRgY6csOwFl2j45dyfTUo2AL5CyR8hp+mjDH3AvRRFebrCfo6T0b6cj2Z8s
+	 fljMUTcZHIL3J7bjtAGYWMkze3KH9c46t26jCgOIvebVMX4S0Ht03f78fVr+ufDYPH
+	 siQ4TNLxihYWw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH net-next v2 0/2] airoha: Add the en7581-npu-7996 support
+Date: Tue, 13 Jan 2026 09:20:26 +0100
+Message-Id: <20260113-airoha-npu-firmware-name-v2-0-28cb3d230206@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <aWT4vcBzG6UnaqOF@lore-desk>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_001203_447838_78548BA6 
-X-CRM114-Status: GOOD (  11.92  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNQQ6CMBBFr0K6dsy0IBhX3MOwKDKFidKSqaKGc
+ HcrcevyveS/v6hIwhTVKVuU0MyRg09gdpm6DNb3BNwlVgZNiRorsCxhsOCnBziW8WmFwNuRIC/
+ ogGistrlTaT4JOX5t6XOTeOB4D/Lenmb9tb+oNv+jswaEDltdHNuy0ujqK4mn2z5Ir5p1XT/hz
+ epFwQAAAA==
+X-Change-ID: 20260107-airoha-npu-firmware-name-34e5002a1a3f
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,22 +75,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 12, 2026 at 02:35:57PM +0100, Lorenzo Bianconi wrote:
-> > static const struct of_device_id of_airoha_npu_match[] = {
-> >         { .compatible = "airoha,en7581-npu", .data = &en7581_npu_soc_data },
-> >         { .compatible = "airoha,an7583-npu", .data = &an7583_npu_soc_data },
-> >         { /* sentinel */ }
-> > };
-> > 
-> > Why cannot this scheme be extended with another compatible?
-> 
-> yes, that is another possibility I was thinking of but then I found
-> "firwmare-name" property was quite a common approach.
+This is a preliminary patch to enable MT76 NPU offloading for MT7996
+(Eagle) chipset since it requires different binaries with respect to
+the ones used for MT7992 on the EN7581 SoC.
 
-"firmware-name" is for cases when the firmware is per board, not per
-SoC.
+---
+Changes in v2:
+- Introduce "airoha,en7581-npu-7996" compatible string to specify the
+  firmware and drop "firmware-name" property
+- Link to v1: https://lore.kernel.org/r/20260112-airoha-npu-firmware-name-v1-0-d0b148b6710f@kernel.org
+
+---
+Lorenzo Bianconi (2):
+      dt-bindings: net: airoha: npu: Add EN7581-7996 support
+      net: airoha: npu: Add en7581-npu-7996 compatible string
+
+ .../devicetree/bindings/net/airoha,en7581-npu.yaml       |  1 +
+ drivers/net/ethernet/airoha/airoha_npu.c                 | 16 ++++++++++++++++
+ 2 files changed, 17 insertions(+)
+---
+base-commit: cbe8e6bef6a3b4b895b47ea56f5952f1936aacb6
+change-id: 20260107-airoha-npu-firmware-name-34e5002a1a3f
 
 Best regards,
-Krzysztof
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
