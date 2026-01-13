@@ -4,106 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 012D8CF45D5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jan 2026 22:22:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1871CF45DD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 02:10:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4w19gL9Si5xuUOM+xx0Gkc/M1vHSFtlbSnI9ldzTAww=; b=T7nHWNtLwnHo+eBUo1803dHCV6
-	9LLnb4SOrHiwF2yGTPAq6Tx8YWQdR1Fu87lvuFX987e+4RiM/deWZJG+h1IZsf5bdfukSwoTWiVD+
-	mhINZ2P6bExwwKuKi6MLWlEnWw6FZ4wErpNnNO1eLwEf5HnuQGHkrLDGepqkqp1S6gOE+ve2znGAT
-	/YxZITwskVJ5r2PWWd6Rlg0PV4nEjnWbupE5dpExQX/xBrbk0okKu/P9dsFSjEahWa1SKPgyTFVuW
-	hR0vxQXNhEhuq4tW+DVR3dNuZwAqoZMBgFtl9vDmXBgIwVF6SxNgLRq183HJEg1VAFk+AEWTKGlle
-	BKb+h0zg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3RsK6qSFLu9CPDTWow3qqdM70hxJwjF6dfgE2tEmLlk=; b=2EpRll7ExFzkJwANc7SFWVIfe1
+	mm3fU83P8D3uJP4YNbYh83dFu6YiOvD7IELMS6GxqieT7UzpIntaYzmWDw5VZdGplKg6wbMutf0Wy
+	Z72LkV3SSqJH0L2pvWiPFQMVcJCKWCJn5IUI8u62MnsWrHtUEF0Hd37JwT/Fko/rF2sZzquBooi1x
+	RIN4UCIUd68Z4o+5bQZ1sX8LztKAas2u0T2HiGQAkQks71X2uK6ckMu8ekJBceXzTz5hIRIzbsJyc
+	vHqoSHLc4sXDDVvtqRHRvIQ0NvS+PbiwRNS1xdjTYSzfjwAOEj6DPmmofBFU2Oj+ma3AHgIFsgeHH
+	grsbt8Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfQIe-00000006FPx-1Bkr;
-	Mon, 12 Jan 2026 22:22:12 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1vfTrG-00000006Pfv-3Vio;
+	Tue, 13 Jan 2026 02:10:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfQIb-00000006FP8-0Bd3
+	id 1vfTrE-00000006Pem-2HhG
 	for linux-mediatek@lists.infradead.org;
-	Mon, 12 Jan 2026 22:22:10 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2a0f3f74587so51509965ad.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 12 Jan 2026 14:22:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20230601; t=1768256528; x=1768861328; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=4w19gL9Si5xuUOM+xx0Gkc/M1vHSFtlbSnI9ldzTAww=;
-        b=boPJePymbvKlxGfcSUOMsgsoyvA3DchnMbZoNqrR329NgCM39BqAsODsDra3+pJi1T
-         9x4vk10KEI+mE9n2l4ndw7PhdHn+VR/y2G4Ro6i3FUYwJmZy0j9a8HXzbI9FQaSN81We
-         ++6rSyfI/LDlwXtxUjoAlHnj8qvkQy9+6lY7Vcq9dsikJj8gWYNqOnzjdpWp1bQvL+Hr
-         tvK2ANdF6YSp4ZBbCuFO2emOWQSqwVzuS2B/l186OOVrKI1MWhAiBXG6RHc/b/2bI9c+
-         zcmajo0SRZrfJH2TNBXSXUXPu6y8OhKRpEMiLHftxnyxiGTzpolnnIqs68feZkvAD7LZ
-         4cHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768256528; x=1768861328;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=4w19gL9Si5xuUOM+xx0Gkc/M1vHSFtlbSnI9ldzTAww=;
-        b=GnZUAOtEyqhWdMtTf78S1RSfdAm+YAbdxiodNLxnQ8iAke9n1vyE3dRLr8vyRrL/Io
-         LS6zPCyE488RV/ISvnJ73v/4eh31Cfvoy6uBV+0YBsHZu1jdAM1GlDKq8pFLlW3hh9eQ
-         2OMdoJ3TMECyduu0YnM8hr6VJSM5FcFnEWP+Gs8exYwIeBiF9bEpVLTFy4d1XwXZCu1X
-         5MwzI5jrCeWTZKKeAMeMIEVsoxVn0RHUlvftHLaC/8Bmm9plC/Dpazjjmm3g5mvC++xY
-         rdaa4tmo+pGyOtRNPP0kxg8mTr7NoQyir7fLfO+gyavD+MJsgGnCLbNOyrgJ5xBne72G
-         Yp5Q==
-X-Forwarded-Encrypted: i=1; AJvYcCX3N55oAaqXINQVMtMXLEroJWCgZfMMi11bGTBZsisS/4kkc5Birm9+dyUP3rdjG40u3JOwhe7kEyV2q/j9Zg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwF/TeChw5kjAeCuJQPoV3mLeID1khuoAtV2z6/wPU7JhgLtSMD
-	uGk/aAtCHOHQPlteNAk3vVfxi4kpjJGEfrYkMCSbyIbBNDVtlJW473knyzL0oLwAJgi0ExhgqtL
-	nL9LXmeuoAHSQB5hsL19DXUr8EdyRsr0=
-X-Gm-Gg: AY/fxX7OAtAdzXH/FRnHeNelEgtQxyjUo5vmCTG40d++4eolibWiLQeYeaaIsNuPIvi
-	XXSuMzcOeDD0a/GI1qf66wj60ilb52/ZA84RTmwgo2MVMX0dKLDyUvfJeW6vw4zluns7oIMH15L
-	xmGprIkthe0Zg0k0cpkfo0wL9/mVAXZQSo95igU1+qMmmI2q8OOYzVyQRwytFleubmSsuiBti49
-	I6FtuKcywAyBnBGNpcnYVDw0jqfU8PI9P95AFQLE1bBsG2FRtj/8bCHzHjztzrMqE/EdrtcOnq1
-	ro38p4O6ZMEYcnHfUeLGQK4bOzdE
-X-Google-Smtp-Source: AGHT+IF7+Y5y+W1I/oKu3PaWNvUb9K8PSy+WoJh05TRnlBlC82+qzM+GksYGzWHyPWmgmkdzBXyTwo91e0gYk9qAGBM=
-X-Received: by 2002:a17:903:40ca:b0:295:592e:7633 with SMTP id
- d9443c01a7336-2a3ee4c0fb5mr187274885ad.29.1768256527834; Mon, 12 Jan 2026
- 14:22:07 -0800 (PST)
+	Tue, 13 Jan 2026 02:10:09 +0000
+X-UUID: f8ebf640f02411f09f706fa2197c6ceb-20260112
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3RsK6qSFLu9CPDTWow3qqdM70hxJwjF6dfgE2tEmLlk=;
+	b=GkYdBdTECoU+WRpWoY4QHgq8zcEnnSxXL8S+a4lUSb9VnZyC2DV2i7bRH31FMHsCH8aZva76RpQOsQoZD9K19IMCxi/Z1MN9LTNIajsL+uB9iT6wSYGbsZ9zgDCFal1sBkcTQ97ocHfdAdRCXOL3YyMcP10hss5XMSNbRirWSQA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.9,REQID:32889ee9-4d4d-4c14-a20e-c16ad386f32f,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:5047765,CLOUDID:b4630d5a-a957-4259-bcca-d3af718d7034,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
+	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: f8ebf640f02411f09f706fa2197c6ceb-20260112
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1828809202; Mon, 12 Jan 2026 19:10:03 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 13 Jan 2026 10:10:00 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 13 Jan 2026 10:10:00 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: <linux-firmware@kernel.org>
+CC: <linux-mediatek@lists.infradead.org>, <nfraprado@collabora.com>,
+	<Jason-ch.Chen@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+	<Macpaul.Lin@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>
+Subject: [PATCH] mediatek: add symlink for MT8188 SCP dual core firmware
+Date: Tue, 13 Jan 2026 10:08:55 +0800
+Message-ID: <20260113020959.2377348-2-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260113020959.2377348-1-moudy.ho@mediatek.com>
+References: <20260113020959.2377348-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-References: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-0-8d7a3dbacdf4@bootlin.com>
- <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-2-8d7a3dbacdf4@bootlin.com>
-In-Reply-To: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-2-8d7a3dbacdf4@bootlin.com>
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Mon, 12 Jan 2026 23:21:56 +0100
-X-Gm-Features: AZwV_Qj9tssGMaPejz2Zl0XwPzPqVqwiSQM5-St_AAUm7gwon2Sgi9P4XfkbVUU
-Message-ID: <CAFBinCBWUXNwEDCJNEmdCtOcGO9eVFfZFC9p9fpdRTesZ7xBSQ@mail.gmail.com>
-Subject: Re: [PATCH v2 2/6] drm/meson/dw-hdmi: convert to of_drm_find_and_get_bridge()
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Inki Dae <inki.dae@samsung.com>, 
-	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
-	Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
-	Marek Szyprowski <m.szyprowski@samsung.com>, Hui Pu <Hui.Pu@gehealthcare.com>, 
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_142209_353991_97050A20 
-X-CRM114-Status: GOOD (  13.74  )
+X-CRM114-CacheID: sfid-20260112_181008_583895_46BEF707 
+X-CRM114-Status: GOOD (  12.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,39 +87,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Luca,
+The MT8188 device tree (DTS) is configured for dual core SCP, and the
+driver by default attempts to load "scp_c0.img" as the core 0 firmware.
+Without this symlink, the firmware fails to load and the following error
+is observed:
 
-On Fri, Jan 9, 2026 at 11:03=E2=80=AFAM Luca Ceresoli <luca.ceresoli@bootli=
-n.com> wrote:
->
-> of_drm_find_bridge() is deprecated. Move to its replacement
-> of_drm_find_and_get_bridge() which gets a bridge reference, and ensure it
-> is put when done.
->
-> dw_hdmi->bridge is used only in dw_hdmi_top_thread_irq(), so in order to
-> avoid potential use-after-free ensure the irq is freed before putting the
-> dw_hdmi->bridge reference.
->
-> Acked-by: Maxime Ripard <mripard@kernel.org>
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Reviewed-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+  [   79.494105] remoteproc remoteproc0: powering up scp
+  [   79.496217] remoteproc remoteproc0: Booting fw image mediatek/mt8188/scp.img, size 636548
+  [   79.497298] platform 10500000.scp: IPI buf addr 0x000ffb40
+  [   79.498013] platform 10500000.scp: IPI buffer does not fit in SRAM.
 
-[...]
-> @@ -789,8 +789,12 @@ static void meson_dw_hdmi_unbind(struct device *dev,=
- struct device *master,
->                                    void *data)
->  {
->         struct meson_dw_hdmi *meson_dw_hdmi =3D dev_get_drvdata(dev);
-> +       struct platform_device *pdev =3D to_platform_device(dev);
-> +       int irq =3D platform_get_irq(pdev, 0);
->
-> +       devm_free_irq(dev, irq, meson_dw_hdmi);
-I have one question (so I can understand things better):
-is there a particular reason why you went with free'ing the IRQ
-instead of "just" masking it (so the hardware won't fire anymore of
-those IRQs)?
+This patch adds a symlink "scp_c0.img" pointing to "scp.img" under
+meditek/mt8188/ to ensure proper firmware loading for dual core SCP.
 
+Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+---
+ mediatek/mt8188/scp_c0.img | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 120000 mediatek/mt8188/scp_c0.img
 
-Best regards,
-Martin
+diff --git a/mediatek/mt8188/scp_c0.img b/mediatek/mt8188/scp_c0.img
+new file mode 120000
+index 00000000..8d1dcd4d
+--- /dev/null
++++ b/mediatek/mt8188/scp_c0.img
+@@ -0,0 +1 @@
++scp.img
+\ No newline at end of file
+-- 
+2.45.2
+
 
