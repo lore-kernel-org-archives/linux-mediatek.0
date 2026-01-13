@@ -4,63 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D57BD2D10E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 14:23:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0258D2D11F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 14:56:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FrbXOavI6hhdu7okbs60Hv1KLcrk9A9Fk+yY6A7OFGM=; b=WGtwRgkxP8P48NwxU3nXqM62ZJ
-	y9/tQYtQrk8N/sR3muBwANKBQDD2gxoH/jHbsIeUiSGIa6/BM21Fd56yyRF4n9jbaK8ZuciYqh7N+
-	ixgfMssLxYp53Jot8ChzzJ1BnVJMt7k2zaUOxH6OqJkF0GFKqRS+1ZjnqkGhKOZ3O+Bs7W4sBBayx
-	3cDtHl9S2QcWkmIP3PSiECKOWWTI0i+oNwofeiRwLh7hr6C2T0ctOd2vQgRW/p7uJZgFpf6cTWSoO
-	OeWFc79dSbc8LLExVb8dWYYSpXj+5Afczn7EMxSYd4cJNBOYQj3A5dbkiD6iHQ5pLzGcDWxUMsOtX
-	/z1NfaDQ==;
+	bh=to+rIAaUsFzHBBTw1pP8Vvw5y87DGsrmyZf6Qtijn4Q=; b=YqqyyFhaORmXx7XLhRkeWanl3m
+	/c2GMuVE6miYPMzfgvh0B/uicHBqGCu+nlAu6OB4/++K6MqabmO4WmsN/R/2rLSJ+ym1aXiFbqJw6
+	hM1bTZWkbxFMe+P3PClB0uGahEWtHgN8zuRe0vEuElVmc3KfnrTXgSsDi1Nb1U15JjlJU8bnDz8/9
+	Kxael9RiXncVjTbKKsngKlwarANpW5MMlTw9HcaEtJfGhC2HqmHAiysKfxkaeqAYQcm5v9tGbDyxG
+	eA5Of5O0QRD2rVMFfo6orKB7ge3FbPD0jpDmrY14wtluOkIr0b5yGilD72JKjdJxm32yGWPYZdKyI
+	dU1tD5WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vffIk-00000007FGp-0LjF;
-	Tue, 13 Jan 2026 14:23:18 +0000
+	id 1vffp8-00000007Ild-1Zrp;
+	Tue, 13 Jan 2026 14:56:46 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vffIi-00000007FG9-2CKX;
-	Tue, 13 Jan 2026 14:23:16 +0000
+	id 1vffp4-00000007IkY-1au2;
+	Tue, 13 Jan 2026 14:56:45 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A3F316000A;
-	Tue, 13 Jan 2026 14:23:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3A1FC116C6;
-	Tue, 13 Jan 2026 14:23:14 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 7460F6000A;
+	Tue, 13 Jan 2026 14:56:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4680C16AAE;
+	Tue, 13 Jan 2026 14:56:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768314195;
-	bh=3hwWDMSYImxtTFTuhPzBiBnGPdsb2QRZw+DjmSuu434=;
+	s=k20201202; t=1768316201;
+	bh=mddwGk9E211pqqLNC87BrcxRIxMRADenQX665fNT+nM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WvqDhf7SpZVQXiVf7n7S78DpkRF/WBp4KpW7zS8/JIHN25h8U1oBUVvAcTKsLUC6J
-	 NaU4yO4i0un0UJUnF7mdkD2jKEhm7Gh3U9ggHJLOY7TbmNi4ZMw+CCNKk5f0eLMAjV
-	 lRXb6VJUfTxlXSTMkhCGCHTAvLbchj24T/9C3nrYDm7j7sxjszczh7fVPusf1qPtt3
-	 rNHdwbuh+7Rl8Qsw2z41Rpzxim8mxzXuw3CeeCQGWZ9qXBrSSaZpFGzsD3PO0rRXrZ
-	 ctlyq9Jyzzq2X4FOdfoTABgkmZSjUl5gO8jXiovg7IFkU4V+rsfy4AJ7cJXfM4HCTe
-	 Qw48AdtHTx5CQ==
-Date: Tue, 13 Jan 2026 15:23:11 +0100
-From: Andi Shyti <andi.shyti@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Andi Shyti <andi@smida.it>, 
-	Wolfram Sang <wsa+renesas@sang-engineering.com>, Qianfeng Rong <rongqianfeng@vivo.com>, linux-i2c@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	Khalil Blaiech <kblaiech@nvidia.com>, Asmaa Mnebhi <asmaa@nvidia.com>, 
-	Qii Wang <qii.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Linus Walleij <linusw@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Patrice Chotard <patrice.chotard@foss.st.com>, 
-	Ard Biesheuvel <ardb@kernel.org>
-Subject: Re: [PATCH v1 1/7] units: Add HZ_PER_GHZ
-Message-ID: <aWZVN6bLbqZMu_mY@zenone.zhora.eu>
-References: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
- <20260112134900.4142954-2-andriy.shevchenko@linux.intel.com>
+	b=bQEy7znOEvUxQVJxKZIutih3qVH2s3AZ7kK6fZPcaUm9v3ikfbWiVeujHa7YYbOwf
+	 HLkcSgTKMKZYjqRCgu4MtT2LzkWVtea1D0KE2bD3KXeCkWEP1ov/JAFQIki+qqS4yv
+	 KQSJh4jbhl0E3RpHy4q1qlecCr6bqMgC6iVCuoXiCIMN4xX/D+65DxU47Xj7h/JHI2
+	 +QpUSLZVdh4YQaS907kjL7ftjsMmPmyp8ZgmnmqMEosxO2u9caB21mCed5JEZfLz/E
+	 SZX++KBa9Hj7Cxe1//y39fxHiELp6Bqet2nE7a0uK0igrZYrgiAZJAHYi/vGrua72Y
+	 YawIfjvtPDD2g==
+Date: Tue, 13 Jan 2026 15:56:38 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Aleksander Jan Bajkowski <olek2@wp.pl>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] net: airoha: implement get_link_ksettings
+Message-ID: <aWZdJoELeXE4GtGY@lore-desk>
+References: <20260110170212.570793-1-olek2@wp.pl>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="F0XY5+WqgebaVLDU"
 Content-Disposition: inline
-In-Reply-To: <20260112134900.4142954-2-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20260110170212.570793-1-olek2@wp.pl>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,20 +71,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
 
-On Mon, Jan 12, 2026 at 02:46:09PM +0100, Andy Shevchenko wrote:
-> The is going to be a new user of the HZ_PER_GHZ definition besides
-> possibly existing ones. Add that one to the header.
-> 
-> While at it, split Hz and kHz groups of the multipliers for better
-> maintenance and readability.
-> 
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+--F0XY5+WqgebaVLDU
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Andi Shyti <andi.shyti@kernel.org>
+> Implement the .get_link_ksettings to get the rate, duplex, and
+> auto-negotiation status.
+>=20
+> Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 1 +
+>  1 file changed, 1 insertion(+)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ether=
+net/airoha/airoha_eth.c
+> index 315d97036ac1..00cae2833f09 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
+> @@ -2803,6 +2803,7 @@ static const struct ethtool_ops airoha_ethtool_ops =
+=3D {
+>  	.get_drvinfo		=3D airoha_ethtool_get_drvinfo,
+>  	.get_eth_mac_stats      =3D airoha_ethtool_get_mac_stats,
+>  	.get_rmon_stats		=3D airoha_ethtool_get_rmon_stats,
+> +	.get_link_ksettings	=3D phy_ethtool_get_link_ksettings,
+>  	.get_link		=3D ethtool_op_get_link,
+>  };
 
-I'm taking this via i2c if no one is against.
+Tested-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-Andi
+Regards,
+Lorenzo
+
+> =20
+> --=20
+> 2.47.3
+>=20
+
+--F0XY5+WqgebaVLDU
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaWZdJgAKCRA6cBh0uS2t
+rFqnAP90urg3GOxbCoFAMqLCFB/L1q7Qs9YnOIYJFgJgDjGEOgEApHYGEt+vKXfJ
+hqWzAes4qvKgR6IWh7zYpF5BMJQ3pAI=
+=6pTG
+-----END PGP SIGNATURE-----
+
+--F0XY5+WqgebaVLDU--
 
