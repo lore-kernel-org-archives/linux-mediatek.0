@@ -4,75 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82207D2F33D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 16:08:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B57D2F326
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 16:14:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+chXS9ZDMKI2KjZOs6poLYGp8PpyW9pzoJKSHaXZwqQ=; b=I7Q3B8BkxRyFne6oyUHzsxCB2m
-	kDn4NI/iuLljG8RnJulpgxzxySOO7Nwieztf6Z7D3SZf+mfh1p/iYreFzSrdHbik+RMyzqc0H6FDy
-	PY/l8otVMIIb+ZTNOMvYNI1HugkNiv4TtAMQGjXcedv8vIXSfPam+Y8isEbuvK6eWpmTh9iVtjuuW
-	ko8egbVLh/H8SApDXIZ51cP24gRvNW/6DS8T8uPhSYg8by+0CVQQg7bXvroEY19T7GBsMRtnb7pU8
-	GR9/cJh6bR/DWAB+hSzuiY6V5ANHIvPA3xIcQUWlD5PyRso//Fcjdx7b2ke+yj/2IYLTGcceuL/1O
-	bnTDuhtg==;
+	bh=2YW3/cPoutnCooMdmymtn+e337rPX1kRy4+1I4m7VUA=; b=CXenBDu1wPVO6pzGLqxnL48m45
+	cCO2iDYO+gtpoV/DWNpzgyswnLlGgN5i/cYhYeTtNJMOnfobWu9XQX19Ikla3ZAU9RlukOL9ZumOl
+	m+E2D1IBRyQ0godH7JuViaFZGnwKhH9Bav7zJ/7yftt29BfQHn0tW3mdwfCMUQYUmbUU7W53eE3Zp
+	5kett3zovJg2pDq/qGIAZiG2i5ya5gwEHMqVVSKNDvCbb5KN0bWqVJ+RkhX5oPR7vt8XxYJUJk783
+	EBK9RVaKLQ1zXQsG20ZSXP8IVAJmOBc9lB3t4OIg1wC2TkErW1MUICJz5qquT2SKTuVz99INC0PhH
+	qnTwLn7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfgwL-00000007RRJ-34p1;
-	Tue, 13 Jan 2026 16:08:17 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vfh2e-00000007S55-3hUk;
+	Tue, 13 Jan 2026 16:14:49 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfgwH-00000007RQI-0GCV;
-	Tue, 13 Jan 2026 16:08:14 +0000
+	id 1vfh2X-00000007S4R-0bMB;
+	Tue, 13 Jan 2026 16:14:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768320489;
-	bh=XrcoqIdL7mqLMAZSLEUBjwk3677mywTfFnps1LIr2qA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=AXenmkWO0eq5YWShnSaSv3RU3e/vIfy2AYsdeNYFaYb63vC1Wfxa4deyTH9bKjZdA
-	 zkIfbiY4MFlNVaAbEHedzyfCo5epss/7f9Fe41KSANOp3W7SJ6jqA3jj5IhjA5cHfp
-	 jXMlLjN45Ix9TjPtsQyew8bp+hTWRzToGrBW5tPz9k3W8mUlOtHczuEQWkOnA7tK8E
-	 iY9NUTgtz4t5KziPuiYtjkxoj+jZ53hT/w1WayTNHan+buwycMpWWBUpp5tYW2wFgK
-	 8AtxVdb+UXSRg183npbS02u28cojtXfs1ns0AwIVQsmKKaVZDsyNpBbd/6qiSZ6l89
-	 DWmoRged+oF+w==
-Received: from fedora (unknown [IPv6:2a01:e0a:2c:6930:d919:a6e:5ea1:8a9f])
+	s=mail; t=1768320877;
+	bh=2YW3/cPoutnCooMdmymtn+e337rPX1kRy4+1I4m7VUA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=XedH2MOIpcd6couG9mkaZ4Fl8l1e6a/voT52yGUm+RbFki8MzaViyLD2P3g7qPjDD
+	 tDvsMWRGJ8dC+8k5JUSGj3OPlznZYkNQ3xieiywt0vRgMsp4ei+lgwiAW2SdQfrRr8
+	 dzkMuZMni1oKf4vUbwrk5jJREv6nK4NC19VAo9e4yw4x/dpOOpTMKhO40f+dqiWHNK
+	 W4u3azu/3vUxT00CHgMUi3zqKNjx3qNxdk25MNXpN79BzBWPmDL881sBX99IPAEksG
+	 QU9HJ+mlKHkW73qzZYnVvnvFtt283W4CIgVXw6mXepsTETn9vAt/XryQk6zh8RznWh
+	 SJuXhhC/JE1wQ==
+Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:366f:770f:eaa8:d3d])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9819B17E026C;
-	Tue, 13 Jan 2026 17:08:08 +0100 (CET)
-Date: Tue, 13 Jan 2026 17:08:03 +0100
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Steven Price
- <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Maarten
- Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
- <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chen-Yu Tsai <wenst@chromium.org>, Chia-I Wu <olvaffe@gmail.com>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org
-Subject: Re: [PATCH v2 0/4] Make MT8196 get its Mali GPU shader_present from
- nvmem
-Message-ID: <20260113170803.6e5ebedb@fedora>
-In-Reply-To: <CAPDyKFqkPg5rWYk7cwDywRn_pexQhd2V3R63atjruJnSpYxfZQ@mail.gmail.com>
-References: <20251220-mt8196-shader-present-v2-0-45b1ff1dfab0@collabora.com>
-	<CAPDyKFqkPg5rWYk7cwDywRn_pexQhd2V3R63atjruJnSpYxfZQ@mail.gmail.com>
-Organization: Collabora
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
+	(Authenticated sender: laura.nao)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 388A017E0B8E;
+	Tue, 13 Jan 2026 17:14:36 +0100 (CET)
+From: Laura Nao <laura.nao@collabora.com>
+To: sjoerd@collabora.com
+Cc: angelogioacchino.delregno@collabora.com,
+	kernel@collabora.com,
+	laura.nao@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	matthias.bgg@gmail.com,
+	mturquette@baylibre.com,
+	sboyd@kernel.org,
+	stable@vger.kernel.org,
+	wenst@chromium.org
+Subject: Re: [PATCH] clk: mediatek: Drop __initconst from gates
+Date: Tue, 13 Jan 2026 17:14:16 +0100
+Message-Id: <20260113161416.1256164-1-laura.nao@collabora.com>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20251223-mtk-gate-v1-1-e4a489ab33de@collabora.com>
+References: <20251223-mtk-gate-v1-1-e4a489ab33de@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_080813_271793_0DC54BA3 
-X-CRM114-Status: GOOD (  29.86  )
+X-CRM114-CacheID: sfid-20260113_081441_376341_CBE9F6C2 
+X-CRM114-Status: UNSURE (   5.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,62 +83,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 29 Dec 2025 12:52:13 +0100
-Ulf Hansson <ulf.hansson@linaro.org> wrote:
+On 12/23/25 12:05, Sjoerd Simons wrote:
+> Since commit 8ceff24a754a ("clk: mediatek: clk-gate: Refactor
+> mtk_clk_register_gate to use mtk_gate struct") the mtk_gate structs
+> are no longer just used for initialization/registration, but also at
+> runtime. So drop __initconst annotations.
+>
+> Fixes: 8ceff24a754a ("clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to use mtk_gate struct")
+> Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 
-> On Sat, 20 Dec 2025 at 19:50, Nicolas Frattaroli
-> <nicolas.frattaroli@collabora.com> wrote:
-> >
-> > The MediaTek MT8196 SoC's Mali SHADER_PRESENT register does not list
-> > only functional shader cores, but also those that are fused off to
-> > improve yield.
-> >
-> > The SHADER_PRESENT bitmask with the one fused off core omitted is to be
-> > found in an efuse. However, the efuse address is considered
-> > confidential, and is not public knowledge.
-> >
-> > The MT8196 GPUEB MCU, which does the power management for the Mali GPU
-> > on this SoC, knows and reads the efuse however, and exposes it in the
-> > shared memory intended to communicate state to the application
-> > processor. Reading the bitmask from this shared memory area is the
-> > vendor's intended solution.
-> >
-> > This series models this in the binding and implements it in the
-> > corresponding Linux drivers:
-> > - the mali-valhall-csf binding gets an nvmem-cells/nvmem-cell-names
-> >   property to declare that shader-present is in a different castle
-> > - the mt8196-gpufreq binding requires nodes to expose the shader-present
-> >   cell
-> > - panthor checks for the presence of the shader-present cell and uses it
-> >   as the shader-present value if it's found, instead of the Mali GPU
-> >   register contents
-> > - mtk-mfg-pmdomain becomes an nvmem provider and will happily serve
-> >   queries for the shader-present cell
-> >
-> > While it would be preferable if we could read the efuse directly, it's
-> > not possible as things stand, and insisting on it will just keep this
-> > hardware from working in mainline. Running a GPU workload with a
-> > SHADER_PRESENT bitmask that includes a faulty core results in corrupt
-> > GPU rendering output.
-> >
-> > Modelling the mt8196-gpufreq device as a nvmem-cell provider however is
-> > not lying about the hardware's capabilities, as it truly does provide
-> > access to the nvmem-cell, even if it acts as a proxy.
-> >
-> > From a bindings and panthor perspective, this is also generic enough to
-> > where hypothetical other vendors doing the same thing (even with direct
-> > efuse access) can rely on the same cell name and implementation.
-> >
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>  
-> 
-> I have applied the pmdomain changes in patch2 and patch 4 for next, thanks!
-> 
-> I assume the gpu changes will be funneled via another tree, but let me
-> know if there is a reason to keep these changes together.
+Reviewed-by: Laura Nao <laura.nao@collabora.com>
 
-Yep, I just queued the remaining two patches to drm-misc-next.
-
-Thanks,
-
-Boris
 
