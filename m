@@ -4,65 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89EAAD0C84D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 11:01:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 239A3D0C856
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 11:21:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cMyQxRxW90HzB5Lgl55ZU/MifENoUzgkvJPyp3LW47E=; b=2KLJoF595S+nh8Vk9Z+bNgwqDa
-	r2CRsddK1Gt1D8jxE3nLTBPU8d623duI1oSbszlL8gzbFHoJaTz5bX+llK8bNlEjaWl8gpZjG20Xs
-	8WkIjAeJJUqXGlgp6FaUN/uTZi43NbFdj3SzYQZ1BMUU3IPGRSvTf3manzs6D0Mg5kc2/37+HNrcj
-	zEzGNF2LGDi/70zjM09CAzbrKkXJG0mCYbUgwgoLskBfYY8G53aKXn/EAJDPDUILFRAbpww1Dt1Oi
-	Gk/OfWfsB9DkxLi59ZEosJs8biSb7RUXgGlXkQaxNn0W4W3w6ZM/S6fuJX7x1ctFweb2R0e4DTGJA
-	sbMTy4uA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qgaNMlo0ecxDk7l7zB9QRZDOYv3w+8Edx+hFHzajMuE=; b=nFSC92efwcYykq23C5jNeti+qP
+	N9laDRHHpIz5kY0cabI91DuVngp5ZuvgP5lP6ctqZxwd6IT1huLZW6hfmO3wdJZ3y1Qbbugu7VfHG
+	GTsBuxEcSvlA539rJ/NHzfLE7V2yLGlDPTfQgEKQVZllazcRfLedJv4ILIjV//Y/wcLM0wlYwPObz
+	a9DGNFqRuSZgYpbJBrIT5tJs2Em03u1qsp/qHhXHyAbJDcVWrIWX/hLZt/ZSSHJF6NPCAwTTZLAj5
+	aOMQkuFhJIrBDb8pykTB9sZc2giP3Du2JQ8hqsl4ogM5deCz4Qq9/mVVyjXQ1pDuFthEBr5PS/nZ/
+	9EpGUdgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfc9E-00000006xzd-0143;
-	Tue, 13 Jan 2026 11:01:16 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vfcT6-000000070r5-32f8;
+	Tue, 13 Jan 2026 11:21:48 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfc8U-00000006xC2-3Nj3;
-	Tue, 13 Jan 2026 11:00:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768302028;
-	bh=qBHtCmqQf3fbItk/B0xEDhMX4d577DCqnwXvhK6bRIA=;
-	h=From:To:Cc:Subject:Date:From;
-	b=UdeK7XYqgtDbieCGWK8RucVLb28Foo8tmygpqtX/Ve8owsSKVhhkKVTbLw2AzU80D
-	 Q2UaBwL/0eFxC9mqtL7wdeFgZDaJ4Vp3SFbafULWszQFkt24kog3n/3ZBd66NOLk25
-	 EhwOpgNt+s4Mc0Rlj6qnlhcM4ZaGwxqMaJoIpuGl6PyZs7aNG1N9OAmYwEa10zvKgN
-	 8fq+pnFyoW0Kc0Pa5Fm9P3uzlBLR8mIaBZE3F2WlqZzgOngjhlXhiPM5AKw69fdMBR
-	 cduJut5k7pE0oOt437aZ9M6innRx0s17MB11mBTOl4ftlfx/uzVmhsWh8OQJ5z1b5A
-	 jyVel3Zc769cg==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E5C7E17E10F4;
-	Tue, 13 Jan 2026 12:00:27 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH] arm64: dts: mediatek: mt8173-evb: Add interrupts to DA9211 regulator
-Date: Tue, 13 Jan 2026 12:00:26 +0100
-Message-ID: <20260113110026.37032-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.52.0
+	id 1vfcT2-000000070pT-2X91
+	for linux-mediatek@lists.infradead.org;
+	Tue, 13 Jan 2026 11:21:45 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1vfcSL-00066d-2T; Tue, 13 Jan 2026 12:21:01 +0100
+Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1vfcSI-000PhR-1E;
+	Tue, 13 Jan 2026 12:20:57 +0100
+Received: from pza by lupine with local (Exim 4.98.2)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1vfcSH-0000000051r-2Pxl;
+	Tue, 13 Jan 2026 12:20:57 +0100
+Message-ID: <a2d639102780d45eede4fa8a2c74b72b2ce3ac7a.camel@pengutronix.de>
+Subject: Re: [PATCH v2 3/6] drm/imx/dw-hdmi: convert to
+ of_drm_find_and_get_bridge()
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>, Andrzej Hajda	
+ <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+ Robert Foss <rfoss@kernel.org>, Laurent Pinchart
+ <Laurent.pinchart@ideasonboard.com>, Jonas Karlman	 <jonas@kwiboo.se>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst	
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Kevin Hilman <khilman@baylibre.com>,
+ Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl	
+ <martin.blumenstingl@googlemail.com>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team
+ <kernel@pengutronix.de>, Fabio Estevam	 <festevam@gmail.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Matthias Brugger	 <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>, Inki
+ Dae <inki.dae@samsung.com>,  Seung-Woo Kim <sw0312.kim@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski	
+ <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Laurent Pinchart	
+ <laurent.pinchart+renesas@ideasonboard.com>, Tomi Valkeinen	
+ <tomi.valkeinen+renesas@ideasonboard.com>, Kieran Bingham	
+ <kieran.bingham+renesas@ideasonboard.com>, Geert Uytterhoeven	
+ <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>
+Cc: Marek Szyprowski <m.szyprowski@samsung.com>, Hui Pu	
+ <Hui.Pu@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ 	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	imx@lists.linux.dev, linux-mediatek@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-renesas-soc@vger.kernel.org
+Date: Tue, 13 Jan 2026 12:20:57 +0100
+In-Reply-To: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-3-8d7a3dbacdf4@bootlin.com>
+References: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-0-8d7a3dbacdf4@bootlin.com>
+	 <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-3-8d7a3dbacdf4@bootlin.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2-0+deb13u1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_030031_540438_64F826D6 
-X-CRM114-Status: UNSURE (   7.97  )
+X-CRM114-CacheID: sfid-20260113_032144_653246_4DFB0748 
+X-CRM114-Status: UNSURE (   7.64  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,41 +103,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the required pinmux and assign the right interrupts-extended
-to the DA9211 regulator (PIO pin 15).
+On Fr, 2026-01-09 at 11:02 +0100, Luca Ceresoli wrote:
+> of_drm_find_bridge() is deprecated. Move to its replacement
+> of_drm_find_and_get_bridge() which gets a bridge reference, and ensure it
+> is put when done.
+>=20
+> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index 51118a4149d8..1049877e6cda 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -117,6 +117,7 @@ &i2c1 {
- 	buck: da9211@68 {
- 		compatible = "dlg,da9211";
- 		reg = <0x68>;
-+		interrupts-extended = <&pio 15 IRQ_TYPE_LEVEL_LOW>;
- 
- 		regulators {
- 			da9211_vcpu_reg: BUCKA {
-@@ -179,6 +180,13 @@ pins1 {
- 		};
- 	};
- 
-+	i2c1_pins_a: i2c1-pins {
-+		pins-da9211 {
-+			pinmux = <MT8173_PIN_15_EINT15__FUNC_GPIO15>;
-+			bias-pull-up;
-+		};
-+	};
-+
- 	mmc0_pins_default: mmc0-default-pins {
- 		pins-cmd-dat {
- 			pinmux = <MT8173_PIN_57_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
--- 
-2.52.0
-
+regards
+Philipp
 
