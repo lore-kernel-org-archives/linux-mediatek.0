@@ -4,90 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 239A3D0C856
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 11:21:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D645D2D0E4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 12:38:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qgaNMlo0ecxDk7l7zB9QRZDOYv3w+8Edx+hFHzajMuE=; b=nFSC92efwcYykq23C5jNeti+qP
-	N9laDRHHpIz5kY0cabI91DuVngp5ZuvgP5lP6ctqZxwd6IT1huLZW6hfmO3wdJZ3y1Qbbugu7VfHG
-	GTsBuxEcSvlA539rJ/NHzfLE7V2yLGlDPTfQgEKQVZllazcRfLedJv4ILIjV//Y/wcLM0wlYwPObz
-	a9DGNFqRuSZgYpbJBrIT5tJs2Em03u1qsp/qHhXHyAbJDcVWrIWX/hLZt/ZSSHJF6NPCAwTTZLAj5
-	aOMQkuFhJIrBDb8pykTB9sZc2giP3Du2JQ8hqsl4ogM5deCz4Qq9/mVVyjXQ1pDuFthEBr5PS/nZ/
-	9EpGUdgg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7mIzpSEjJlP0f9i4KYTcYSErkDPIom6vg3hsdO6a6OY=; b=wyNCIwBd33WScWyzPf3V9JrFND
+	BW946oO5dwibYvysLuvXJ3MOAwpWgusbgSgG0HXgLoov9EFcidrukh+HS9scd1gxJouR6wASxps0G
+	pmjw19SsCeUBmzVIWdm8D3G3la+AwAA79huG97vDuNFFNHZX7rU3R034aoKLZNkJY3fFKsQoWNzL5
+	59i2L+Rxus2RNhRhSN4F/5pVFVpan86i73kz8Za9QGKzae5fiOSs+FuIH7/7jvGFGpf46KYc0CmsI
+	ln9+nn8+TAjl9Y2EooYnmt7l2rkL1jQGmd5p4HuWTPaWUiPuL1sdQ7Urwdt49ftShDg3hG3pke8TY
+	yjvdC67A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfcT6-000000070r5-32f8;
-	Tue, 13 Jan 2026 11:21:48 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1vfdf2-000000075Vm-1QB2;
+	Tue, 13 Jan 2026 12:38:12 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfcT2-000000070pT-2X91
-	for linux-mediatek@lists.infradead.org;
-	Tue, 13 Jan 2026 11:21:45 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vfcSL-00066d-2T; Tue, 13 Jan 2026 12:21:01 +0100
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vfcSI-000PhR-1E;
-	Tue, 13 Jan 2026 12:20:57 +0100
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vfcSH-0000000051r-2Pxl;
-	Tue, 13 Jan 2026 12:20:57 +0100
-Message-ID: <a2d639102780d45eede4fa8a2c74b72b2ce3ac7a.camel@pengutronix.de>
-Subject: Re: [PATCH v2 3/6] drm/imx/dw-hdmi: convert to
- of_drm_find_and_get_bridge()
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>, Andrzej Hajda	
- <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
- Robert Foss <rfoss@kernel.org>, Laurent Pinchart
- <Laurent.pinchart@ideasonboard.com>, Jonas Karlman	 <jonas@kwiboo.se>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst	
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Kevin Hilman <khilman@baylibre.com>,
- Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl	
- <martin.blumenstingl@googlemail.com>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team
- <kernel@pengutronix.de>, Fabio Estevam	 <festevam@gmail.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Matthias Brugger	 <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>, Inki
- Dae <inki.dae@samsung.com>,  Seung-Woo Kim <sw0312.kim@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>, Krzysztof Kozlowski	
- <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, Laurent Pinchart	
- <laurent.pinchart+renesas@ideasonboard.com>, Tomi Valkeinen	
- <tomi.valkeinen+renesas@ideasonboard.com>, Kieran Bingham	
- <kieran.bingham+renesas@ideasonboard.com>, Geert Uytterhoeven	
- <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>
-Cc: Marek Szyprowski <m.szyprowski@samsung.com>, Hui Pu	
- <Hui.Pu@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- 	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	imx@lists.linux.dev, linux-mediatek@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-renesas-soc@vger.kernel.org
-Date: Tue, 13 Jan 2026 12:20:57 +0100
-In-Reply-To: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-3-8d7a3dbacdf4@bootlin.com>
-References: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-0-8d7a3dbacdf4@bootlin.com>
-	 <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-3-8d7a3dbacdf4@bootlin.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	id 1vfdey-000000075Uk-0W15;
+	Tue, 13 Jan 2026 12:38:09 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5821344265;
+	Tue, 13 Jan 2026 12:38:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 02E73C16AAE;
+	Tue, 13 Jan 2026 12:38:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768307887;
+	bh=XBh651uOFdz895yL+g9RcE+L3CQnvJrQsqohr3JUpro=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=ITei+nWuD0tmntKUe3z5GLKo96BDN6bl2LcQ2KuQO8tRhW73non6+I7D66FKs+POa
+	 9UR+MtSJ9ntb2TxeuPYwi2+LCL8jSaCrg4oNSxQAe0hhp0mvF0idnXxdhWyNUGMiYr
+	 l3TS/+ez5GBB9H3iJ5loMPeI1KlrLf2Ey6S96jXSCe+uoF/LTb1Ltv0kas3kJQe1Dd
+	 jchfWlDhv7K831iQlXB6QCuUekkkos4sJebdg51tOKi4DiOw+r2ipzWlkRpvS76OfI
+	 2J+8K7gnNGsLG4+YDM6HNF7/Wna4d7ca03ON4Kvv8fFDor2cfuZWIb3g65qvFMM5JM
+	 +0LCSQ9UIzWLQ==
+From: Lee Jones <lee@kernel.org>
+To: lee@kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+ matthias.bgg@gmail.com, sjoerd@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, kernel@collabora.com
+In-Reply-To: <20260109114356.36454-1-angelogioacchino.delregno@collabora.com>
+References: <20260109114356.36454-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: (subset) [PATCH] dt-bindings: mfd: syscon: Allow syscon
+ compatible for mediatek,mt7981-topmisc
+Message-Id: <176830788476.2846051.17154311682129442278.b4-ty@kernel.org>
+Date: Tue, 13 Jan 2026 12:38:04 +0000
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.15-dev-52d38
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_032144_653246_4DFB0748 
-X-CRM114-Status: UNSURE (   7.64  )
+X-CRM114-CacheID: sfid-20260113_043808_177381_ADE4C2DC 
+X-CRM114-Status: UNSURE (   8.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,15 +76,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fr, 2026-01-09 at 11:02 +0100, Luca Ceresoli wrote:
-> of_drm_find_bridge() is deprecated. Move to its replacement
-> of_drm_find_and_get_bridge() which gets a bridge reference, and ensure it
-> is put when done.
->=20
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+On Fri, 09 Jan 2026 12:43:56 +0100, AngeloGioacchino Del Regno wrote:
+> Commit a95419ff9f21 ("dt-bindings: mfd: syscon: Add mt7981-topmisc")
+> added the mediatek,mt7981-topmisc compatible to the `select` block
+> which is used only for compatibility with older dtschema, but did
+> not add it in the actual block allowing to specify the "syscon"
+> fallback compatible, which is required for such node to do anything
+> meaningful in the end.
+> 
+> [...]
 
-Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+Applied, thanks!
 
-regards
-Philipp
+[1/1] dt-bindings: mfd: syscon: Allow syscon compatible for mediatek,mt7981-topmisc
+      commit: a4d1081e82d588bd549284ad5321c018c86e6935
+
+--
+Lee Jones [李琼斯]
+
 
