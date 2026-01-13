@@ -4,71 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B57D2F326
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 16:14:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB763D2F34B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 17:31:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:Cc
+	:Subject:From:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
+	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2YW3/cPoutnCooMdmymtn+e337rPX1kRy4+1I4m7VUA=; b=CXenBDu1wPVO6pzGLqxnL48m45
-	cCO2iDYO+gtpoV/DWNpzgyswnLlGgN5i/cYhYeTtNJMOnfobWu9XQX19Ikla3ZAU9RlukOL9ZumOl
-	m+E2D1IBRyQ0godH7JuViaFZGnwKhH9Bav7zJ/7yftt29BfQHn0tW3mdwfCMUQYUmbUU7W53eE3Zp
-	5kett3zovJg2pDq/qGIAZiG2i5ya5gwEHMqVVSKNDvCbb5KN0bWqVJ+RkhX5oPR7vt8XxYJUJk783
-	EBK9RVaKLQ1zXQsG20ZSXP8IVAJmOBc9lB3t4OIg1wC2TkErW1MUICJz5qquT2SKTuVz99INC0PhH
-	qnTwLn7A==;
+	bh=ArN+gzNluv41ve7tNs9bCuLTGUt8HRF4hQp5onhOiSg=; b=YiqkEKy6uNqyeyezhIqo5EjnAZ
+	41fYkcCGH+C+WUXU4x/KYIVOYt1y/sGf7V7nTeLn8TFA0FBVjvVFNYrM1F8jlxyHH44NR3kv+2Lx+
+	Mm+XWi6Dg+aXvvR3M9eg9fVAqJsOWcE506M9pWaFEjja1lvrKdM0E9mtjQQaHpoBbI/cnm0v3pEgS
+	pQM6y867ia7axwMIyw6/poRu+ePv0p++fKUziQxKM1a1xdreUSCqMRgUOxIWx8hVIlitdjwCcJ6TY
+	tNmBXpaeUHjeoVh+CW1k017uk+xrZC5fX9di2/Z7XC8zEA9U+tm+qNHDcKdp4K2+6BPJE6kup+HNn
+	j4j1wGrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfh2e-00000007S55-3hUk;
-	Tue, 13 Jan 2026 16:14:49 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vfiEi-00000007Wwm-3hVL;
+	Tue, 13 Jan 2026 17:31:20 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfh2X-00000007S4R-0bMB;
-	Tue, 13 Jan 2026 16:14:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768320877;
-	bh=2YW3/cPoutnCooMdmymtn+e337rPX1kRy4+1I4m7VUA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=XedH2MOIpcd6couG9mkaZ4Fl8l1e6a/voT52yGUm+RbFki8MzaViyLD2P3g7qPjDD
-	 tDvsMWRGJ8dC+8k5JUSGj3OPlznZYkNQ3xieiywt0vRgMsp4ei+lgwiAW2SdQfrRr8
-	 dzkMuZMni1oKf4vUbwrk5jJREv6nK4NC19VAo9e4yw4x/dpOOpTMKhO40f+dqiWHNK
-	 W4u3azu/3vUxT00CHgMUi3zqKNjx3qNxdk25MNXpN79BzBWPmDL881sBX99IPAEksG
-	 QU9HJ+mlKHkW73qzZYnVvnvFtt283W4CIgVXw6mXepsTETn9vAt/XryQk6zh8RznWh
-	 SJuXhhC/JE1wQ==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:366f:770f:eaa8:d3d])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 388A017E0B8E;
-	Tue, 13 Jan 2026 17:14:36 +0100 (CET)
-From: Laura Nao <laura.nao@collabora.com>
-To: sjoerd@collabora.com
-Cc: angelogioacchino.delregno@collabora.com,
-	kernel@collabora.com,
-	laura.nao@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	mturquette@baylibre.com,
-	sboyd@kernel.org,
-	stable@vger.kernel.org,
-	wenst@chromium.org
-Subject: Re: [PATCH] clk: mediatek: Drop __initconst from gates
-Date: Tue, 13 Jan 2026 17:14:16 +0100
-Message-Id: <20260113161416.1256164-1-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20251223-mtk-gate-v1-1-e4a489ab33de@collabora.com>
-References: <20251223-mtk-gate-v1-1-e4a489ab33de@collabora.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+	id 1vfiEf-00000007Wv3-0Ek2;
+	Tue, 13 Jan 2026 17:31:19 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 907654E420AF;
+	Tue, 13 Jan 2026 17:31:12 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 43C8360701;
+	Tue, 13 Jan 2026 17:31:12 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 089C0103C81D3;
+	Tue, 13 Jan 2026 18:30:59 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1768325470; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=ArN+gzNluv41ve7tNs9bCuLTGUt8HRF4hQp5onhOiSg=;
+	b=SbsgZNDgkfZHCx/r34yGumijNEEAujBA1Asley4Zy9v924+EMnfgnRIOcSjOdM5mvGqWPR
+	lWsq+4rbWv1be42TFPaquIJOTEqiazGpexh6KgVqdj/vsp21Futc53PdAYnOxHNcXKfXWM
+	UPMA6t4YXAPOUmX4w/xDnACUO3E4LMeMErPwCMH1EWAjKXwOnIsQ28a7Nib3ZS84y0pFQm
+	0r3v24ZarNzuyfppzipCFobDWeOQLNpJc0/4gSmi7B9gJ2tirl0htm/b1q7gv8HVWCGTPs
+	rlMphTDPohwx9XlNXbinFpmLjBit+nuMZZCTpdBFpyRuhJNgeuQUSxvN+fm7cQ==
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Tue, 13 Jan 2026 18:30:58 +0100
+Message-Id: <DFNN251V4JL9.2ECEDGOKN8I4F@bootlin.com>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+Subject: Re: [PATCH v2 2/6] drm/meson/dw-hdmi: convert to
+ of_drm_find_and_get_bridge()
+Cc: "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
+ <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
+ Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
+ <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten
+ Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime Ripard"
+ <mripard@kernel.org>, "Thomas Zimmermann" <tzimmermann@suse.de>, "David
+ Airlie" <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Kevin
+ Hilman" <khilman@baylibre.com>, "Jerome Brunet" <jbrunet@baylibre.com>,
+ "Philipp Zabel" <p.zabel@pengutronix.de>, "Shawn Guo"
+ <shawnguo@kernel.org>, "Sascha Hauer" <s.hauer@pengutronix.de>,
+ "Pengutronix Kernel Team" <kernel@pengutronix.de>, "Fabio Estevam"
+ <festevam@gmail.com>, "Chun-Kuang Hu" <chunkuang.hu@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
+ <angelogioacchino.delregno@collabora.com>, "Inki Dae"
+ <inki.dae@samsung.com>, "Seung-Woo Kim" <sw0312.kim@samsung.com>, "Kyungmin
+ Park" <kyungmin.park@samsung.com>, "Krzysztof Kozlowski" <krzk@kernel.org>,
+ "Alim Akhtar" <alim.akhtar@samsung.com>, "Laurent Pinchart"
+ <laurent.pinchart+renesas@ideasonboard.com>, "Tomi Valkeinen"
+ <tomi.valkeinen+renesas@ideasonboard.com>, "Kieran Bingham"
+ <kieran.bingham+renesas@ideasonboard.com>, "Geert Uytterhoeven"
+ <geert+renesas@glider.be>, "Magnus Damm" <magnus.damm@gmail.com>, "Marek
+ Szyprowski" <m.szyprowski@samsung.com>, "Hui Pu" <Hui.Pu@gehealthcare.com>,
+ "Thomas Petazzoni" <thomas.petazzoni@bootlin.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
+ <linux-amlogic@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <imx@lists.linux.dev>,
+ <linux-mediatek@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
+ <linux-renesas-soc@vger.kernel.org>
+To: "Martin Blumenstingl" <martin.blumenstingl@googlemail.com>
+X-Mailer: aerc 0.20.1
+References: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-0-8d7a3dbacdf4@bootlin.com> <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-2-8d7a3dbacdf4@bootlin.com> <CAFBinCBWUXNwEDCJNEmdCtOcGO9eVFfZFC9p9fpdRTesZ7xBSQ@mail.gmail.com>
+In-Reply-To: <CAFBinCBWUXNwEDCJNEmdCtOcGO9eVFfZFC9p9fpdRTesZ7xBSQ@mail.gmail.com>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_081441_376341_CBE9F6C2 
-X-CRM114-Status: UNSURE (   5.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260113_093117_227862_9CE28528 
+X-CRM114-Status: GOOD (  18.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,15 +101,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/23/25 12:05, Sjoerd Simons wrote:
-> Since commit 8ceff24a754a ("clk: mediatek: clk-gate: Refactor
-> mtk_clk_register_gate to use mtk_gate struct") the mtk_gate structs
-> are no longer just used for initialization/registration, but also at
-> runtime. So drop __initconst annotations.
+Hello Martin,
+
+On Mon Jan 12, 2026 at 11:21 PM CET, Martin Blumenstingl wrote:
+> Hi Luca,
 >
-> Fixes: 8ceff24a754a ("clk: mediatek: clk-gate: Refactor mtk_clk_register_gate to use mtk_gate struct")
-> Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+> On Fri, Jan 9, 2026 at 11:03=E2=80=AFAM Luca Ceresoli <luca.ceresoli@boot=
+lin.com> wrote:
+>>
+>> of_drm_find_bridge() is deprecated. Move to its replacement
+>> of_drm_find_and_get_bridge() which gets a bridge reference, and ensure i=
+t
+>> is put when done.
+>>
+>> dw_hdmi->bridge is used only in dw_hdmi_top_thread_irq(), so in order to
+>> avoid potential use-after-free ensure the irq is freed before putting th=
+e
+>> dw_hdmi->bridge reference.
+>>
+>> Acked-by: Maxime Ripard <mripard@kernel.org>
+>> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+> Reviewed-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+>
+> [...]
+>> @@ -789,8 +789,12 @@ static void meson_dw_hdmi_unbind(struct device *dev=
+, struct device *master,
+>>                                    void *data)
+>>  {
+>>         struct meson_dw_hdmi *meson_dw_hdmi =3D dev_get_drvdata(dev);
+>> +       struct platform_device *pdev =3D to_platform_device(dev);
+>> +       int irq =3D platform_get_irq(pdev, 0);
+>>
+>> +       devm_free_irq(dev, irq, meson_dw_hdmi);
+> I have one question (so I can understand things better):
+> is there a particular reason why you went with free'ing the IRQ
+> instead of "just" masking it (so the hardware won't fire anymore of
+> those IRQs)?
 
-Reviewed-by: Laura Nao <laura.nao@collabora.com>
+One reason is symmetry: _bind requests the irq, so _unbind does the
+reverse.
 
+Another is I don't have the hardware, so I wanted my changes to be as small
+and clear as possible.
+
+In principle one could request/free the irq in probe/remove and then
+enable/disable it in bind/unbind. Whether it would be a good or bad idea I
+don't know, but surely it would be more complex and I wouldn't want to do
+it without any chance to test it on hardware.
+
+Also, that would only optimize the case of multiple bind/unbind cycles,
+which are not quite realistic without bridge hotplug. And brigde hotplug
+does not exist yet in mainline, and when it will arrive it will be used
+only for a few use cases.
+
+I hope this answers your question.
+
+Best regards,
+Luca
+
+--
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
