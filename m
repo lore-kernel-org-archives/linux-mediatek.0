@@ -4,72 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AEA0D0C852
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54E12D0C84D
 	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 11:01:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yCgzEWnwvyy33EIR1672xNm2180ZO6kr+dCmMTMlWOM=; b=z4eLxlWwno3Uo+mQ6BIdDj9db3
-	QFE580nX+1VAx6Xl/NTmNVChoHoqxGuthukuI5nhJg3rEzdnOomGSc0spGBqwbz+bTlUWh+L227Kx
-	LENetgKNR7MqvslrFZCv/PZ8GyuN2sQUCKTf9SFR1QghBubpa3NJ+MHE+qMmD8vkKRYUxcGGfYpo4
-	sBR9+stFCxcmxCMDnrC6g51w6PqEcSE6LS6ItDUfLVXLY6BJCw3dVISznuRhzBM7mg9u/0PlhOHuy
-	erlop5rydLTsyUu7Yk+UIIlxY722Mu8+e+0SX+8b4M4SdSEujlA63OQUuRVY6MqXLtdnZabWKcckA
-	t2ZDU5JA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kR9y8vMiTaKwH6rdtmAiNzQ9eqRrJWJwRKc1ydPCgpE=; b=evDcrtbK0NP9GKUjavJrnrcnx0
+	WWzCLtRVcvw0iwd+m4tDm3Kddm7LfyOl60PUgXSwLca2huMh+7apunZkPVeSehRCUUotWr8F4ZuWb
+	rOifsB2c8U+JlTyEc7ZWfqNKhhwC6R70ZvKFr+y1eZ4G3SpYMNBInsrNUcRXXVIvEaUY/7Bh/DDPC
+	CSwXhMGa6RZPbTipgqdRd03n7oNT9S1N/WeYFEMcJWexLFsN1k9LGANpnPpoJfQEArSIFGlMEGYhZ
+	JiuQA/E1/Dwr0H4y1yFAAlYTzRGs0l5UWPptTrzTimVuNprEULLttCTeiGo8gA8GlpGQDB+vN8yrA
+	jmNLevkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfc95-00000006xtb-2lxn;
-	Tue, 13 Jan 2026 11:01:07 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vfc8z-00000006xoW-4AuI;
+	Tue, 13 Jan 2026 11:01:05 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfc8K-00000006x5Q-0Q21;
+	id 1vfc8T-00000006xBJ-1Kbe;
 	Tue, 13 Jan 2026 11:00:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=kR9y8vMiTaKwH6rdtmAiNzQ9eqRrJWJwRKc1ydPCgpE=; b=ik/8VAjZb1VczHKzhMdZQzrL/+
+	/UqB5XZvKsA5i88v44VEw97tONKYmslh0r/ptmvyNfqdHFoGrbwQwFankaHTKkcRBfep3d/vLGhdP
+	PkRSLkFmRbzxljccNZh7j8M//zJlfYQEcralAnjDa+jONnIR20nVATmM8lKzate78VxY98tmhTzfK
+	OQU1vxH+hHZI8kLzhf7ryyLnS3oLTM/ZA4C6C4HBZ3l84BL+7u1pbqwlQMJNsiJgugTYGpSUC8LBo
+	yXYC4c/owfKC0gs29t2iDK7N9w8Z3m40tpH6G2nI1tFkdVrfm0pVGBrqIZVTlQZcSq5llsW5KxpVL
+	pmvY9YGQ==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vfc8P-00000002eiB-3iKZ;
+	Tue, 13 Jan 2026 11:00:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768302017;
-	bh=Qtzz12boIO/VIHRD3C752NQeLrf04iw9L8Q1Ovq/IUY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kfynO2Fw+GmTUUJqbGGo7tn19FvNwLBWV3hhk8lcL6XU3zlCKt/ZexsO3EVcMl8Ru
-	 b/G7wP2iQLL0Mn2/24j3bpuwI0EbVDStOa5UlZD/Bgm2qrJTPciB8w5huhrfXFONbN
-	 ulrMeSadQKUM0g5UQkV5TvDKUWDd4yg3n6xFG31tc+JcRvH0UGOdE/tEXTphxQGZta
-	 lAyCAnUU12GuXKEXrvI/dOR1qe7S/tMHZC1p699GDrkcCqDzFe2aX+gsJhpThU+rTC
-	 SZk+3iQKYmteH8ClyWE+GUpfICjZaMh9vCDD6Uv1D4IE6yYGG+PH/ot8f732mPTlT8
-	 /D+Sxp1qdSMqQ==
+	s=mail; t=1768302023;
+	bh=bptASkFhv+DFWmJaUioaR4+nnGLEW+O7QNQvsPtTfRY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=FRRzpuZsRCG2syqd6Tqb2fUsVzd5AdIvPvCQZ6fqoOt+GnShliDyo5VQ2KnH5WxE9
+	 +yHjGsyBVgp8IW1Ws3j4pQLjLIArQ/xTieBSpYOQN8xijIwKNf553Ep3lILwyymD8o
+	 t4oLPuOc7+qDIjJ98D1YMMUV3KkkNIE8PHPk8AGs4KdL2jaFzBF0QoKHzwR/zZCQBp
+	 4LIozmvDrwo0gwF+rrwdIOrDSw6REscztK4+nUtj9BhA4r8rM3k6bIRMvsLU/BwhC5
+	 Cm9x9T5JRp7A04lYKHImRXTa0FIz1piJf/W3nMfPg55nOzTl667ZuRGTeWKCGbP157
+	 Edv0ROtmthdzg==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1C57C17E1406;
-	Tue, 13 Jan 2026 12:00:17 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BF68017E11FF;
+	Tue, 13 Jan 2026 12:00:22 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Cc: robh@kernel.org,
+To: devicetree@vger.kernel.org
+Cc: andrew@lunn.ch,
+	olteanv@gmail.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
-	mturquette@baylibre.com,
-	sboyd@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	ulf.hansson@linaro.org,
-	linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org,
+	arinc.unal@arinc9.com,
+	Landen.Chao@mediatek.com,
+	dqfext@gmail.com,
+	sean.wang@mediatek.com,
+	daniel@makrotopia.org,
+	netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-pm@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH 4/5] arm64: dts: mediatek: mt7622: Add missing clock to audio-controller
-Date: Tue, 13 Jan 2026 12:00:11 +0100
-Message-ID: <20260113110012.36984-5-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] dt-bindings: net: dsa: mt7530: Allow interrupts-extended dependency
+Date: Tue, 13 Jan 2026 12:00:20 +0100
+Message-ID: <20260113110020.37013-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260113110012.36984-1-angelogioacchino.delregno@collabora.com>
-References: <20260113110012.36984-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_030025_639473_9A14DD77 
-X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-CacheID: sfid-20260113_110026_308749_557EA25A 
+X-CRM114-Status: UNSURE (   8.43  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,39 +104,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the missing audio_mrgif_pd clock to the audio-controller node
-to both resolve a dtbs_check warning and ensure that the AFE merge
-interface is clocked while using audio.
+When the MT7530 switch is configured as an interrupt-controller it
+also needs an interrupt but, in this case, only "interrupts" was
+allowed.
+
+Some devicetrees instead use the interrupts-extended property as a
+shorter form, and in place of "interrupts" and "interrupt-parent",
+as an equivalent.
+
+For this reason, when interrupt-controller is present, depend on
+either `interrupts` or `interrupts-extended`; this also resolves
+some dtbs_check warnings.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt7622.dtsi | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml       | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-index 158bd9a305d7..133a6dcc8ef7 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -654,7 +654,8 @@ afe: audio-controller {
- 				 <&audsys CLK_AUDIO_AFE>,
- 				 <&audsys CLK_AUDIO_AFE_CONN>,
- 				 <&audsys CLK_AUDIO_A1SYS>,
--				 <&audsys CLK_AUDIO_A2SYS>;
-+				 <&audsys CLK_AUDIO_A2SYS>,
-+				 <&audsys CLK_AUDIO_AFE_MRGIF>;
+diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+index 815a90808901..ffeb8d5836fe 100644
+--- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
++++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+@@ -279,8 +279,11 @@ allOf:
+         - resets
+         - reset-names
  
- 			clock-names = "infra_sys_audio_clk",
- 				      "top_audio_mux1_sel",
-@@ -688,7 +689,8 @@ afe: audio-controller {
- 				      "audio_afe_pd",
- 				      "audio_afe_conn_pd",
- 				      "audio_a1sys_pd",
--				      "audio_a2sys_pd";
-+				      "audio_a2sys_pd",
-+				      "audio_mrgif_pd";
+-  - dependencies:
+-      interrupt-controller: [ interrupts ]
++  - anyOf:
++      - dependencies:
++          interrupt-controller: [ interrupts ]
++      - dependencies:
++          interrupt-controller: [ interrupts-extended ]
  
- 			assigned-clocks = <&topckgen CLK_TOP_A1SYS_HP_SEL>,
- 					  <&topckgen CLK_TOP_A2SYS_HP_SEL>,
+   - if:
+       properties:
 -- 
 2.52.0
 
