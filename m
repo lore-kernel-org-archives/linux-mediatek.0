@@ -4,53 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC834D29DF2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 09:17:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE966D29DEC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 09:45:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:To:From:Date:Message-ID:Reply-To:Cc:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=86VIaF2unP4vg5OpX+J8tHPXWoQ8hu3kSDMcmnIkxvQ=; b=0CIeXOpY+QifcuosGNVfSNCv35
-	HaZVAbMESXqeR4PjC3842glZQUaJLrvi57TPQhneBlzs1+LZJQRj1L+ZLTmo1UkjsfmFF+dzyMzvV
-	dJ3ig0zSLsZPBt43W0ApypmONLTAwM+1fQeXzqeua23I3KAt2j5ZWB3u4v74cSJlq/dRebO4K8zN7
-	wZSEfJ6PehGFjf4wh6RsqZHYSRhfmOp955U/SbZ5l7o3FYFpGE48xIZ29FBnNUlsPRpHywE8lsFhS
-	wrcI5zDfUHvp8pLZGYPk8oBbWmcBD6iPnPYXVXhXK0wDR62PnV49JFaTZNPm5gQBGEF4XL+uVkL2z
-	IrZvovcg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TH9HLBFSf2M9aQf0oRpBhlUJN14RJoa5i1CqqbSox/4=; b=rkTK08uO3RMdC4/iKAE8QhXAiQ
+	TV2sZ7IIi4qNEFyWdVWikGNgdjVgcfqYoiusQ69T/scLVWnSwPMOkAWIArXj5Iuok8T2meejrjJbJ
+	PMhMLIWKDTOf0FfLWwIDeHzKkP+KAyPCeBBlYRnMXalm0GuOnpUDtye1RpFQc/kw8Ttsg0nURihuf
+	JHmSQy8uiLC/AKmcV2eu+m6NbohVuImSZfNDw0d3sC8z/kkGr0qjJFJwN/BQofmmZLbFLCkRavE8X
+	JvFzQ0rvz0C7JolcvpV5hGKt2P6tY2oa83MzuDl3ExlDS45BXp+Ch3IxFbdWKtsIHRIEUThXR96Nj
+	iFRrjDtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfaX8-00000006pay-0GxH;
-	Tue, 13 Jan 2026 09:17:50 +0000
-Received: from mail.venturex.pl ([141.95.86.206])
+	id 1vfayH-00000006rDt-12Kx;
+	Tue, 13 Jan 2026 09:45:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfaX5-00000006pZP-0GH4
+	id 1vfayE-00000006rDL-0hBf
 	for linux-mediatek@lists.infradead.org;
-	Tue, 13 Jan 2026 09:17:48 +0000
-Received: by mail.venturex.pl (Postfix, from userid 1002)
-	id C594D29B1F; Tue, 13 Jan 2026 10:17:19 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=venturex.pl; s=mail;
-	t=1768295861; bh=86VIaF2unP4vg5OpX+J8tHPXWoQ8hu3kSDMcmnIkxvQ=;
-	h=Date:From:To:Subject:From;
-	b=H5clSeulJ9S2jKv2olcfXEYzlOVBrHmhn/j8Qtqa2J8eRJUCo2JeFASmTkab1nQEJ
-	 m9TuVQKDzAZhGiIUUzqJzJdbFtbp9piwlVCRyaIGoIVEY8vp9SpAkGE2UxRcDVguzh
-	 CSB5V2Qxl6C5EExWTUaNGZCRfpsoRcnyo7SHWPAMOUI2c5qngPAHj8khPkGeKTsXpL
-	 US+NLlSxKo5oulY6OSVt7flFscm2aeC6J0JzK3f20TS9aCIPkJx65IpCbTNOBZUdrb
-	 LHoooqPFbQFd2NZUSbcRFHTX4pl22REDC8nDMlol/sjy4Y6Tr8J2atyvr6RxIt/sj9
-	 M+NWv94PEKSDg==
-Received: by mail.venturex.pl for <linux-mediatek@lists.infradead.org>; Tue, 13 Jan 2026 09:15:36 GMT
-Message-ID: <20260113084501-0.1.c1.2a5lh.0.r5qn1j0q9w@venturex.pl>
-Date: Tue, 13 Jan 2026 09:15:36 GMT
-From: =?UTF-8?Q?"Miko=C5=82aj_Rak"?= <mikolaj.rak@venturex.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Fundacja Rodzina a optymalizacja podatkowa 
-X-Mailer: mail.venturex.pl
+	Tue, 13 Jan 2026 09:45:51 +0000
+X-UUID: a162e402f06411f09f706fa2197c6ceb-20260113
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=TH9HLBFSf2M9aQf0oRpBhlUJN14RJoa5i1CqqbSox/4=;
+	b=uzr1lc75P7NjCGAJ3DxA09paItdXdzkFw+LM5FArNqrz3B96zZjRIwN0KQQbqCUARGphPxYIVwC4QGTMd50J3Rhk8/XiuZqICHjJs291FVGol6KPSJeatN5uAizhF/GRcfWd+sZiz9BCknW14t1gDSzXlRUBYkES9thUBtUScf4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.9,REQID:02018b04-7ba0-4cab-b93c-09fcf9dee76d,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:5047765,CLOUDID:e403bc79-8c8a-4fc4-88c0-3556e7711556,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:1,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: a162e402f06411f09f706fa2197c6ceb-20260113
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <moudy.ho@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2030724906; Tue, 13 Jan 2026 02:45:44 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 13 Jan 2026 17:45:42 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 13 Jan 2026 17:45:41 +0800
+From: Moudy Ho <moudy.ho@mediatek.com>
+To: <linux-firmware@kernel.org>
+CC: <linux-mediatek@lists.infradead.org>, <nfraprado@collabora.com>,
+	<Jason-ch.Chen@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+	<Macpaul.Lin@mediatek.com>
+Subject: rename MT8188 SCP firmware and add symlink
+Date: Tue, 13 Jan 2026 17:45:04 +0800
+Message-ID: <20260113094541.2528905-1-moudy.ho@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_011747_256862_8C0BB629 
-X-CRM114-Status: UNSURE (   1.54  )
+X-CRM114-CacheID: sfid-20260113_014550_207610_C9F76C30 
+X-CRM114-Status: UNSURE (   7.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,28 +86,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Szanowni Pa=C5=84stwo,
+The following changes since commit 486ac8f9adb4d77b951b55179985c6b3c20b6957:
 
-czy byliby Pa=C5=84stwo zainteresowani rozmow=C4=85 o mo=C5=BCliwych rozw=
-i=C4=85zaniach dla swojej firmy i rodziny?
+  Merge branch 'robot/pr-0-1768198342' into 'main' (2026-01-12 07:14:40 +0000)
 
-Nowelizacja ustawy o Fundacjach Rodzinnych otwiera przed przedsi=C4=99bio=
-rcami zupe=C5=82nie nowe mo=C5=BCliwo=C5=9Bci ochrony maj=C4=85tku i plan=
-owania sukcesji. Fundacja Rodzinna pozwala oddzieli=C4=87 aktywa od ryzyk=
- biznesowych, prawnych i podatkowych, a jednocze=C5=9Bnie zachowa=C4=87 k=
-ontrol=C4=99 nad swoim maj=C4=85tkiem i zadba=C4=87 o jego trwa=C5=82o=C5=
-=9B=C4=87 dla kolejnych pokole=C5=84.
+are available in the Git repository at:
 
-Co istotne, po up=C5=82ywie 10 lat od wniesienia aktyw=C3=B3w do fundacji=
-, roszczenia o zachowek przestaj=C4=85 obowi=C4=85zywa=C4=87. Ustawodawca=
- przewidzia=C5=82 r=C3=B3wnie=C5=BC liczne zwolnienia podatkowe obejmuj=C4=
-=85ce m.in. dochody z dzia=C5=82alno=C5=9Bci gospodarczej czy wynajem nie=
-ruchomo=C5=9Bci.
+  https://github.com/MoudyHo/linux_fw_scp v27748.03
 
-B=C4=99d=C4=99 wdzi=C4=99czny za informacj=C4=99, czy chcieliby Pa=C5=84s=
-two pozna=C4=87 mo=C5=BCliwo=C5=9B=C4=87 stworzenia Fundacji Rodzinnej?
+for you to fetch changes up to fdae06e63ed75fa3a91c8fab7a88c7b22c12ec3f:
 
+  mediatek: rename MT8188 SCP firmware and add symlink (2026-01-13 17:13:26 +0800)
 
-Pozdrawiam
-Miko=C5=82aj Rak
+----------------------------------------------------------------
+Moudy Ho (1):
+      mediatek: rename MT8188 SCP firmware and add symlink
+
+ WHENCE                     |   3 ++-
+ mediatek/mt8188/scp.img    | Bin 636548 -> 10 bytes
+ mediatek/mt8188/scp_c0.img | Bin 0 -> 636548 bytes
+ 3 files changed, 2 insertions(+), 1 deletion(-)
+ mode change 100644 => 120000 mediatek/mt8188/scp.img
+ create mode 100644 mediatek/mt8188/scp_c0.img
+
 
