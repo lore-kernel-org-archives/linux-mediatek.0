@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4362BD0C851
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 11:00:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5495AD0C84D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 11:00:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DIYw3Ie1wE4K5m5v+lXWFYYkD7qMZdsNjjuztbIofvQ=; b=0nHo6/3SaTALRXFdlyFoj2L/FB
-	WtFDJ+VqsqCJ6OpxWupvV31YeTjf9qPmXADKL39w6M0k3NG9q3+CaM72/aWe9Ouy14xJBlIBGQohl
-	IUjgNfdwtww49FRT2mmyfSS2shkdb1B52y9A5pWZKy2OyWJlp9gXH+qfNf0nKu9K+HROtzjEImLzU
-	hVaz42A13VSt7c+m/6LCAoyy2Sn25lYAYZGqG8gEyXKQp2vM6ghaBieSrYJQEnalMX+w5v9bSpqJJ
-	mmQmAa8q1YcXLiKMr5I4RK/Oo8VFuo63Nndy8TEk3P7yebiXPmmfFZbs40MS5h9A6srMFGMTYm+l1
-	7Mggj0CA==;
+	bh=tLrP/cVVrd6XV8OFVfRDXTiwaEY+PLg0nUSVIw6hDqw=; b=Isq56Utm325EQKCCq3f8PGMKT7
+	T/7pUKvaKE7lFexMQVunOKHNJPFmRbeZOQPIz4LlhrILq2PO//XwX9qPjZphvHw/oXo1laG3bLsXg
+	Av/utziTYMdUX61KCqG/4hQgi+j60mixe2ES3AjiD1N+N/ArPcUAq7bmqBD4CguqzbePXp82rJqKJ
+	s6/9BPvAIM/ixTkh6c73PfhRYFcN+RBKBXEYY9Dt46zCA6Efd0L3YxTHvZUovkTjmMTxP+w0qK9ul
+	/93FXQvMIjCuDneCM73+Y2MEIfN88RXJnqcKDVuI1WzZCLxfOKfzSbAGvUrqxKCd3GRludKv3zD4y
+	X0fKYhaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfc8W-00000006xFT-31NX;
-	Tue, 13 Jan 2026 11:00:32 +0000
+	id 1vfc8Y-00000006xIA-0auE;
+	Tue, 13 Jan 2026 11:00:35 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfc8B-00000006wwe-3Wkf;
-	Tue, 13 Jan 2026 11:00:13 +0000
+	id 1vfc8D-00000006wxj-0jVw;
+	Tue, 13 Jan 2026 11:00:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768302008;
-	bh=Axhq3LGTNbxz4u+KRkYjN6yjn7G1wJmLGxtKUA3MjMw=;
+	s=mail; t=1768302009;
+	bh=u65weYK7NpMKbZ0GoKI16YVgDU67PXN5aOx/v0oaUKQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kXBcjMT+Qy+GOdNm65k2fMfkmAy7vsKYxmzjLYrfYwHurGZdIXaOWk9y4G31lNXiD
-	 OgrPiaJ60CaNmJDXvJd29vxcnihWw/cTH/Re0zTGwnXW4f41d5pSAno5rtXO+OI1jm
-	 iwQEQ0HiBjyNhMIT56q1WC0igCkR0aDWkxRLJsByTzgiqDt/VicjK6bviHQsEHtXlP
-	 obOgbaBIuZRr1ESlNPaojyT/xa1mjBAO/X40zNLQTGLPYDEVgN++XPpFwuq3emP7f+
-	 qWgu88O3ZS3bA37/pQCXOnUpEh79K+TIjacQ3MkPPl3daUvOxd4TabLqsENFFXgC0u
-	 kpvj28Zwpmp8Q==
+	b=L7scX0yxN0bR06vP70FHOqwN1Ec6gq8GVw6fQVqQo6cHJkFDmL2Dq1nzzXAP4vIiW
+	 J6EaSLLJtIVU38MGQpidFaSnEjJQpmTfKcUNEssmdmi3zsBM1sabNjc3c/CCmCn+td
+	 ybWAHDM2+Hjev54IQexvRU1zhhZGktM17oO54Dxy264lp62ZTXWTHb/cDWGp35xWPs
+	 xokR095qQhH239bfZX2HOjZGdk/rk4vbK2X0QCqSW1gl16Ia3fJDZmZRjjLttiltyt
+	 XfFrZ9ofl/49B7dbIJGRQGXDxReefhG5ZOM8P+gYuMffpZsYcu/AnRwoZYl+I3ydrq
+	 i/8aOpumWkxUA==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EC5F917E150E;
-	Tue, 13 Jan 2026 12:00:07 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C446617E1513;
+	Tue, 13 Jan 2026 12:00:08 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org
 Cc: robh@kernel.org,
@@ -61,17 +61,17 @@ Cc: robh@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH 4/6] arm64: dts: mediatek: mt6331: Fix VCAM IO regulator name
-Date: Tue, 13 Jan 2026 11:59:58 +0100
-Message-ID: <20260113110000.36953-5-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 5/6] arm64: dts: mediatek: mt6795: Fix issues in SCPSYS node
+Date: Tue, 13 Jan 2026 11:59:59 +0100
+Message-ID: <20260113110000.36953-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260113110000.36953-1-angelogioacchino.delregno@collabora.com>
 References: <20260113110000.36953-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_030012_034865_1E636698 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20260113_030013_407786_E9EEBA29 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,28 +86,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The ldo-vcamio regulator is named "vcam_io", however, the binding
-only allows "vcamio" as name: change it to the latter to resolve
-a dtbs_check warning.
+Add the "mediatek,mt6795-scpsys" compatible to the SCPSYS node
+and remove #power-domain-cells (retaining it only in the power
+controller subnode) to resolve dtbs_check warnings.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt6331.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt6795.dtsi | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6331.dtsi b/arch/arm64/boot/dts/mediatek/mt6331.dtsi
-index 243afbffa21f..7e7b96e8ca6f 100644
---- a/arch/arm64/boot/dts/mediatek/mt6331.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6331.dtsi
-@@ -217,7 +217,7 @@ mt6331_vusb10_reg: ldo-vusb10 {
- 			};
+diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+index 58833e5135c8..ae2aaa51c9ad 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
+@@ -287,9 +287,8 @@ pericfg: syscon@10003000 {
+ 		};
  
- 			mt6331_vcamio_reg: ldo-vcamio {
--				regulator-name = "vcam_io";
-+				regulator-name = "vcamio";
- 				regulator-min-microvolt = <1200000>;
- 				regulator-max-microvolt = <1800000>;
- 				regulator-ramp-delay = <0>;
+ 		scpsys: syscon@10006000 {
+-			compatible = "syscon", "simple-mfd";
++			compatible = "mediatek,mt6795-scpsys", "syscon", "simple-mfd";
+ 			reg = <0 0x10006000 0 0x1000>;
+-			#power-domain-cells = <1>;
+ 
+ 			/* System Power Manager */
+ 			spm: power-controller {
 -- 
 2.52.0
 
