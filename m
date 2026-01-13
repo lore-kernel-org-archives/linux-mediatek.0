@@ -4,91 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54E12D0C84D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 11:01:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89EAAD0C84D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 11:01:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kR9y8vMiTaKwH6rdtmAiNzQ9eqRrJWJwRKc1ydPCgpE=; b=evDcrtbK0NP9GKUjavJrnrcnx0
-	WWzCLtRVcvw0iwd+m4tDm3Kddm7LfyOl60PUgXSwLca2huMh+7apunZkPVeSehRCUUotWr8F4ZuWb
-	rOifsB2c8U+JlTyEc7ZWfqNKhhwC6R70ZvKFr+y1eZ4G3SpYMNBInsrNUcRXXVIvEaUY/7Bh/DDPC
-	CSwXhMGa6RZPbTipgqdRd03n7oNT9S1N/WeYFEMcJWexLFsN1k9LGANpnPpoJfQEArSIFGlMEGYhZ
-	JiuQA/E1/Dwr0H4y1yFAAlYTzRGs0l5UWPptTrzTimVuNprEULLttCTeiGo8gA8GlpGQDB+vN8yrA
-	jmNLevkw==;
+	bh=cMyQxRxW90HzB5Lgl55ZU/MifENoUzgkvJPyp3LW47E=; b=2KLJoF595S+nh8Vk9Z+bNgwqDa
+	r2CRsddK1Gt1D8jxE3nLTBPU8d623duI1oSbszlL8gzbFHoJaTz5bX+llK8bNlEjaWl8gpZjG20Xs
+	8WkIjAeJJUqXGlgp6FaUN/uTZi43NbFdj3SzYQZ1BMUU3IPGRSvTf3manzs6D0Mg5kc2/37+HNrcj
+	zEzGNF2LGDi/70zjM09CAzbrKkXJG0mCYbUgwgoLskBfYY8G53aKXn/EAJDPDUILFRAbpww1Dt1Oi
+	Gk/OfWfsB9DkxLi59ZEosJs8biSb7RUXgGlXkQaxNn0W4W3w6ZM/S6fuJX7x1ctFweb2R0e4DTGJA
+	sbMTy4uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfc8z-00000006xoW-4AuI;
-	Tue, 13 Jan 2026 11:01:05 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfc8T-00000006xBJ-1Kbe;
-	Tue, 13 Jan 2026 11:00:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=kR9y8vMiTaKwH6rdtmAiNzQ9eqRrJWJwRKc1ydPCgpE=; b=ik/8VAjZb1VczHKzhMdZQzrL/+
-	/UqB5XZvKsA5i88v44VEw97tONKYmslh0r/ptmvyNfqdHFoGrbwQwFankaHTKkcRBfep3d/vLGhdP
-	PkRSLkFmRbzxljccNZh7j8M//zJlfYQEcralAnjDa+jONnIR20nVATmM8lKzate78VxY98tmhTzfK
-	OQU1vxH+hHZI8kLzhf7ryyLnS3oLTM/ZA4C6C4HBZ3l84BL+7u1pbqwlQMJNsiJgugTYGpSUC8LBo
-	yXYC4c/owfKC0gs29t2iDK7N9w8Z3m40tpH6G2nI1tFkdVrfm0pVGBrqIZVTlQZcSq5llsW5KxpVL
-	pmvY9YGQ==;
+	id 1vfc9E-00000006xzd-0143;
+	Tue, 13 Jan 2026 11:01:16 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfc8P-00000002eiB-3iKZ;
-	Tue, 13 Jan 2026 11:00:28 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vfc8U-00000006xC2-3Nj3;
+	Tue, 13 Jan 2026 11:00:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768302023;
-	bh=bptASkFhv+DFWmJaUioaR4+nnGLEW+O7QNQvsPtTfRY=;
+	s=mail; t=1768302028;
+	bh=qBHtCmqQf3fbItk/B0xEDhMX4d577DCqnwXvhK6bRIA=;
 	h=From:To:Cc:Subject:Date:From;
-	b=FRRzpuZsRCG2syqd6Tqb2fUsVzd5AdIvPvCQZ6fqoOt+GnShliDyo5VQ2KnH5WxE9
-	 +yHjGsyBVgp8IW1Ws3j4pQLjLIArQ/xTieBSpYOQN8xijIwKNf553Ep3lILwyymD8o
-	 t4oLPuOc7+qDIjJ98D1YMMUV3KkkNIE8PHPk8AGs4KdL2jaFzBF0QoKHzwR/zZCQBp
-	 4LIozmvDrwo0gwF+rrwdIOrDSw6REscztK4+nUtj9BhA4r8rM3k6bIRMvsLU/BwhC5
-	 Cm9x9T5JRp7A04lYKHImRXTa0FIz1piJf/W3nMfPg55nOzTl667ZuRGTeWKCGbP157
-	 Edv0ROtmthdzg==
+	b=UdeK7XYqgtDbieCGWK8RucVLb28Foo8tmygpqtX/Ve8owsSKVhhkKVTbLw2AzU80D
+	 Q2UaBwL/0eFxC9mqtL7wdeFgZDaJ4Vp3SFbafULWszQFkt24kog3n/3ZBd66NOLk25
+	 EhwOpgNt+s4Mc0Rlj6qnlhcM4ZaGwxqMaJoIpuGl6PyZs7aNG1N9OAmYwEa10zvKgN
+	 8fq+pnFyoW0Kc0Pa5Fm9P3uzlBLR8mIaBZE3F2WlqZzgOngjhlXhiPM5AKw69fdMBR
+	 cduJut5k7pE0oOt437aZ9M6innRx0s17MB11mBTOl4ftlfx/uzVmhsWh8OQJ5z1b5A
+	 jyVel3Zc769cg==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BF68017E11FF;
-	Tue, 13 Jan 2026 12:00:22 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E5C7E17E10F4;
+	Tue, 13 Jan 2026 12:00:27 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: devicetree@vger.kernel.org
-Cc: andrew@lunn.ch,
-	olteanv@gmail.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	robh@kernel.org,
+To: linux-mediatek@lists.infradead.org
+Cc: robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	arinc.unal@arinc9.com,
-	Landen.Chao@mediatek.com,
-	dqfext@gmail.com,
-	sean.wang@mediatek.com,
-	daniel@makrotopia.org,
-	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH] dt-bindings: net: dsa: mt7530: Allow interrupts-extended dependency
-Date: Tue, 13 Jan 2026 12:00:20 +0100
-Message-ID: <20260113110020.37013-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] arm64: dts: mediatek: mt8173-evb: Add interrupts to DA9211 regulator
+Date: Tue, 13 Jan 2026 12:00:26 +0100
+Message-ID: <20260113110026.37032-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_110026_308749_557EA25A 
-X-CRM114-Status: UNSURE (   8.43  )
+X-CRM114-CacheID: sfid-20260113_030031_540438_64F826D6 
+X-CRM114-Status: UNSURE (   7.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,41 +78,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When the MT7530 switch is configured as an interrupt-controller it
-also needs an interrupt but, in this case, only "interrupts" was
-allowed.
-
-Some devicetrees instead use the interrupts-extended property as a
-shorter form, and in place of "interrupts" and "interrupt-parent",
-as an equivalent.
-
-For this reason, when interrupt-controller is present, depend on
-either `interrupts` or `interrupts-extended`; this also resolves
-some dtbs_check warnings.
+Add the required pinmux and assign the right interrupts-extended
+to the DA9211 regulator (PIO pin 15).
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml       | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8173-evb.dts | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index 815a90808901..ffeb8d5836fe 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -279,8 +279,11 @@ allOf:
-         - resets
-         - reset-names
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+index 51118a4149d8..1049877e6cda 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
+@@ -117,6 +117,7 @@ &i2c1 {
+ 	buck: da9211@68 {
+ 		compatible = "dlg,da9211";
+ 		reg = <0x68>;
++		interrupts-extended = <&pio 15 IRQ_TYPE_LEVEL_LOW>;
  
--  - dependencies:
--      interrupt-controller: [ interrupts ]
-+  - anyOf:
-+      - dependencies:
-+          interrupt-controller: [ interrupts ]
-+      - dependencies:
-+          interrupt-controller: [ interrupts-extended ]
+ 		regulators {
+ 			da9211_vcpu_reg: BUCKA {
+@@ -179,6 +180,13 @@ pins1 {
+ 		};
+ 	};
  
-   - if:
-       properties:
++	i2c1_pins_a: i2c1-pins {
++		pins-da9211 {
++			pinmux = <MT8173_PIN_15_EINT15__FUNC_GPIO15>;
++			bias-pull-up;
++		};
++	};
++
+ 	mmc0_pins_default: mmc0-default-pins {
+ 		pins-cmd-dat {
+ 			pinmux = <MT8173_PIN_57_MSDC0_DAT0__FUNC_MSDC0_DAT0>,
 -- 
 2.52.0
 
