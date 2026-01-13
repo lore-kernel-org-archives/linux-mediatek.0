@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A52C6D29DE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 08:21:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7F36D29DEC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 08:34:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c8LOIbk1j/ExJ4WgejtdIwCyYoP80/IjJqkd8MVp4A4=; b=zWV2cwJUUGNuBNGMV6E2g0v8wZ
-	9KXIt1ywXCpc9bA1OtPYtN07YxqjogbwqVIjWZHwoz4or4+7coci0Fa0zn6oloAPIupV7EWGnostF
-	O5hRyU5BbyQeuRxuD+Utko9OfmDdBeAB30tiPIU+UeZA9WhlIt3XXfOjRRU0fqwOjgnrMbym5/Gqj
-	gUgH+OgkYOtHHvETRm9JBDjEywIgYnqnkH29MReK17xPOGH8s7GEBeBjZxaVOIbGNORaekGKXSvaa
-	SVioc/Y9dGIcQ/tiSnid+zOKmPYVwEjWAsl2+u5Nzfz4y07HXhV1fZRZtddBO2AD0/SKzH1xDSaaH
-	U0GYQBZA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GiZxmY62qMIowyTzp7xRCLdxMkojzS+RhlTkCXmPUdc=; b=yjTm4RlQ7L7KRKYBUGflqi9Ijr
+	0Ddy2KeqcAcucXrZik1zqiBAu5AyOE84zn/1SmebL3z9eOBEfQV2QSOqzwf677IhO8zbkN8rU2wj8
+	EkHQXrMT6Impuvsp1WrrlQJlsXa8W+cShkwx79FMLYotiRL5vIb94DjD3eBfhc4bWxTc0DJWbUR2O
+	4rst8V4Ojthw9ygURzqmIkQ0zxgBA72Ohq7C481+HGEml81nerlP/VEiNeDo4Q9zyDwB0w7Wj+n/G
+	3LsG4X28Tnt1crmd9GicZVLmLDRT8RdryMOSWf8S9EEAq03BxSqzdtdYCs1AAOzTUG2oMWdXkIdgA
+	6VU865xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfZe8-00000006izc-2VE8;
-	Tue, 13 Jan 2026 08:21:00 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vfZqo-00000006lB7-0x8p;
+	Tue, 13 Jan 2026 08:34:06 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfZe4-00000006ixQ-1Uu9;
-	Tue, 13 Jan 2026 08:20:56 +0000
+	id 1vfZql-00000006lA6-1meg;
+	Tue, 13 Jan 2026 08:34:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BA22E600BB;
-	Tue, 13 Jan 2026 08:20:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1BA57C19421;
-	Tue, 13 Jan 2026 08:20:54 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 642E840B56;
+	Tue, 13 Jan 2026 08:34:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B693DC116C6;
+	Tue, 13 Jan 2026 08:34:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768292455;
-	bh=VmVG7HfN5qM50MKrD1A4HpIQKCxv/1GewT37Y8s+F+w=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=IcUSfcg4T8FMsg7QJyUnAGZmUSwK7RSpWVbYrJkY/Tsszor0yphie34k2/7NPLxaF
-	 UdgAN5EmixALyfmlEfZUjLOcf+xY+nF7Jm6wv1i39GL4yRWY9h4iFNNwyou6M8+RR/
-	 dQmHJ/gQKUELpkmBeXsZBHkT2sT3N+Bj3Cmxko0sQ+uCWvYAQVexvOGMKdsOQCBJv1
-	 MdQWSl7jusDlhn0wHzr2CEG1mpspkLBvjgMeoOjLIdutw7EZfVhHuP46Q69i1g+CnE
-	 XChzBk7C1IIiz7tG8R2g5BcFNuo6wBPRlDj+zpq+WOgNma0TyqPCmQsn+lisYvrZc1
-	 6BJZM7dv1HYdg==
+	s=k20201202; t=1768293242;
+	bh=jjUCjRQRE+P4dpfL4pcQVDUjSJrZEHUP4TE7rk2uXEc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=AEKP2mr8PVEGjqZ/tiSEGkd/4F0WoFrcus8hDFhcRnbYyTHQyUcDORMuCxhHlqMbz
+	 gDhlQWTcxfOyvkYOKfsiRayJCm60lC3tZOnSe5DXnmTFAsHi6NnbC0K9jbhZKUL1h7
+	 tqWc6xVz16UOvQSC8JVAdzAymwaahi86G2ikDCcJvKuaTt9wXFac0pmwUmxXiO5XJp
+	 rlQ1LkM9/UUHFj8/tTO5pdM8ec8DrWXW2P2UxU0Ncj7Z0QdKrce7PMlecimOLIZ6pg
+	 giqHUrxeWLUEk1XtoG+8aN4fWlFdqzZ62NIwpKsve8RZ4ewwDiL4H0uHDiIQk/f2IF
+	 6eWKUjnncmS4Q==
+Date: Tue, 13 Jan 2026 09:33:59 +0100
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 13 Jan 2026 09:20:28 +0100
-Subject: [PATCH net-next v2 2/2] net: airoha: npu: Add en7581-npu-7996
- compatible string
+To: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v3 1/2] dt-bindings: net: airoha: npu: Add BA
+ memory region
+Message-ID: <aWYDd4Pwi84gA6zy@lore-desk>
+References: <20260108-airoha-ba-memory-region-v3-0-bf1814e5dcc4@kernel.org>
+ <20260108-airoha-ba-memory-region-v3-1-bf1814e5dcc4@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260113-airoha-npu-firmware-name-v2-2-28cb3d230206@kernel.org>
-References: <20260113-airoha-npu-firmware-name-v2-0-28cb3d230206@kernel.org>
-In-Reply-To: <20260113-airoha-npu-firmware-name-v2-0-28cb3d230206@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.14.2
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="yz3hkU5huftspXAr"
+Content-Disposition: inline
+In-Reply-To: <20260108-airoha-ba-memory-region-v3-1-bf1814e5dcc4@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260113_003403_504144_D4C1CD65 
+X-CRM114-Status: GOOD (  14.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,68 +80,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce "airoha,en7581-npu-7996" compatible string in order to
-specify different firmware binaries if the EN7581 SoC is running MT7996
-(Eagle) chipset.
-This is a preliminary patch to enable MT76 NPU offloading for MT7996
-(Eagle) chipset since it requires different binaries with respect to
-the ones used for MT7992 on the EN7581 SoC.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_npu.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+--yz3hkU5huftspXAr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
-index 22f72c146065998d5450477f664ed308b1569aa3..0032a4801bca066f75f60154e6df0b41d11b899f 100644
---- a/drivers/net/ethernet/airoha/airoha_npu.c
-+++ b/drivers/net/ethernet/airoha/airoha_npu.c
-@@ -16,6 +16,8 @@
- 
- #define NPU_EN7581_FIRMWARE_DATA		"airoha/en7581_npu_data.bin"
- #define NPU_EN7581_FIRMWARE_RV32		"airoha/en7581_npu_rv32.bin"
-+#define NPU_EN7581_7996_FIRMWARE_DATA		"airoha/en7581_MT7996_npu_data.bin"
-+#define NPU_EN7581_7996_FIRMWARE_RV32		"airoha/en7581_MT7996_npu_rv32.bin"
- #define NPU_AN7583_FIRMWARE_DATA		"airoha/an7583_npu_data.bin"
- #define NPU_AN7583_FIRMWARE_RV32		"airoha/an7583_npu_rv32.bin"
- #define NPU_EN7581_FIRMWARE_RV32_MAX_SIZE	0x200000
-@@ -624,6 +626,17 @@ static const struct airoha_npu_soc_data en7581_npu_soc_data = {
- 	},
- };
- 
-+static const struct airoha_npu_soc_data en7581_7996_npu_soc_data = {
-+	.fw_rv32 = {
-+		.name = NPU_EN7581_7996_FIRMWARE_RV32,
-+		.max_size = NPU_EN7581_FIRMWARE_RV32_MAX_SIZE,
-+	},
-+	.fw_data = {
-+		.name = NPU_EN7581_7996_FIRMWARE_DATA,
-+		.max_size = NPU_EN7581_FIRMWARE_DATA_MAX_SIZE,
-+	},
-+};
-+
- static const struct airoha_npu_soc_data an7583_npu_soc_data = {
- 	.fw_rv32 = {
- 		.name = NPU_AN7583_FIRMWARE_RV32,
-@@ -637,6 +650,7 @@ static const struct airoha_npu_soc_data an7583_npu_soc_data = {
- 
- static const struct of_device_id of_airoha_npu_match[] = {
- 	{ .compatible = "airoha,en7581-npu", .data = &en7581_npu_soc_data },
-+	{ .compatible = "airoha,en7581-npu-7996", .data = &en7581_7996_npu_soc_data },
- 	{ .compatible = "airoha,an7583-npu", .data = &an7583_npu_soc_data },
- 	{ /* sentinel */ }
- };
-@@ -782,6 +796,8 @@ module_platform_driver(airoha_npu_driver);
- 
- MODULE_FIRMWARE(NPU_EN7581_FIRMWARE_DATA);
- MODULE_FIRMWARE(NPU_EN7581_FIRMWARE_RV32);
-+MODULE_FIRMWARE(NPU_EN7581_7996_FIRMWARE_DATA);
-+MODULE_FIRMWARE(NPU_EN7581_7996_FIRMWARE_RV32);
- MODULE_FIRMWARE(NPU_AN7583_FIRMWARE_DATA);
- MODULE_FIRMWARE(NPU_AN7583_FIRMWARE_RV32);
- MODULE_LICENSE("GPL");
+> Introduce Block Ack memory region used by NPU MT7996 (Eagle) offloading.
+>=20
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  .../devicetree/bindings/net/airoha,en7581-npu.yaml  | 21 +++++++++++----=
+------
+>  1 file changed, 11 insertions(+), 10 deletions(-)
 
--- 
-2.52.0
+Hi Rob, Krzysztof and Conor,
 
+Since this patch has been marked as 'needs ack' on patchwork, do you have a=
+ny
+comments on it? Thanks in advance.
+
+Regards,
+Lorenzo
+
+>=20
+> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml=
+ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+> index 59c57f58116b568092446e6cfb7b6bd3f4f47b82..19860b41286fd42f2a5ed15d5=
+dc75ee0eb00a639 100644
+> --- a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+> @@ -42,14 +42,13 @@ properties:
+>        - description: wlan irq line5
+> =20
+>    memory-region:
+> -    oneOf:
+> -      - items:
+> -          - description: NPU firmware binary region
+> -      - items:
+> -          - description: NPU firmware binary region
+> -          - description: NPU wlan offload RX buffers region
+> -          - description: NPU wlan offload TX buffers region
+> -          - description: NPU wlan offload TX packet identifiers region
+> +    items:
+> +      - description: NPU firmware binary region
+> +      - description: NPU wlan offload RX buffers region
+> +      - description: NPU wlan offload TX buffers region
+> +      - description: NPU wlan offload TX packet identifiers region
+> +      - description: NPU wlan Block Ack buffers region
+> +    minItems: 1
+> =20
+>    memory-region-names:
+>      items:
+> @@ -57,6 +56,8 @@ properties:
+>        - const: pkt
+>        - const: tx-pkt
+>        - const: tx-bufid
+> +      - const: ba
+> +    minItems: 1
+> =20
+>  required:
+>    - compatible
+> @@ -93,7 +94,7 @@ examples:
+>                       <GIC_SPI 122 IRQ_TYPE_LEVEL_HIGH>,
+>                       <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
+>          memory-region =3D <&npu_firmware>, <&npu_pkt>, <&npu_txpkt>,
+> -                        <&npu_txbufid>;
+> -        memory-region-names =3D "firmware", "pkt", "tx-pkt", "tx-bufid";
+> +                        <&npu_txbufid>, <&npu_ba>;
+> +        memory-region-names =3D "firmware", "pkt", "tx-pkt", "tx-bufid",=
+ "ba";
+>        };
+>      };
+>=20
+> --=20
+> 2.52.0
+>=20
+
+--yz3hkU5huftspXAr
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaWYDdwAKCRA6cBh0uS2t
+rFtBAQD0yo69p4xD8JEzaHh0K8d8OYSRtrHkmX343xvu19+f8wEA9FbT9Hg1SDZr
+MxzoKUFGCDbNaLfe1G88bl8Ds5L68QQ=
+=FNzg
+-----END PGP SIGNATURE-----
+
+--yz3hkU5huftspXAr--
 
