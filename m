@@ -4,64 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57AE7D29DC7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 03:33:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0894ED29DC2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 05:15:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yVCjNOhh/5LUVZYAUAkZpluoJLWyRhJAmhnP+XiOgZ4=; b=TnivVp1zLq64wTR/QWvOU27e3i
-	CwWj0QT6oAolGpCTnxp57jfaioXQqKZ5brsAdCx4Ufn/rQratWRrnwtFMscE9jVgQGNlX9z3qvorr
-	BAT7CeHhhpVgj/cvnX85ABdaXu9WHtPZRl/+qxy6AyP1jVBmrvFEatAJGPn+D1uAK8OOwYO5/GIZf
-	pxba3BzCZ/DfYxjB9cwOH6qmqdq541aAIWvxkcrCGtHoNbSrJaL2AmqPkoL0cndKxC7eNy4djcyPV
-	j76wHJCD31MgXAfoAt013RjeAaFeogzqQ4pCdd6SgpTPGHdQodcPS+G8g8499tZVrxpM9zYQLA8SJ
-	oqtAhOJA==;
+	bh=yWBxLf1QC+y4YgB8POl0KL9EwXvMQCo2FGvWmorcofw=; b=Diidp/B7itxdOp57xhQEejYGqD
+	tMmxtZdo9g2zfjEtiaEf/8w0uOq3En8NAROnhJHZ8QTour6DS8VMfTga9FG61cpPccHDfhJodBgu6
+	88k1mWO9EKCNIxhpRbgY5e4qfyNL5Fc529w58cTeRu/7mKHFlmf3wuDQr2vGFBDTPewjKNHxxUZHW
+	+NCOgir0lUQLYMPNYUQ/mhpVokWtTseJ1F1xOXV9aba3WvqM75XLx5klyYVRwydxs+npWXigh9XW5
+	go4VqwWDvVlR5koL6MaT0/5Lrv1nuKnwyXGZfAtQh88ZNFg5H81m8UuQmsEWoEpP/9eWOASZq1lbj
+	7l5+bZlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfVA3-00000006UHi-3yTt;
-	Tue, 13 Jan 2026 03:33:39 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vfWki-00000006XjR-23ln;
+	Tue, 13 Jan 2026 05:15:36 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfVA0-00000006UHD-1lYo;
-	Tue, 13 Jan 2026 03:33:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A35B9442B2;
-	Tue, 13 Jan 2026 03:33:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86A2EC116D0;
-	Tue, 13 Jan 2026 03:33:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768275213;
-	bh=spgkXTbeqnIy58cj1/9lfs3zCULO03AiiPx6WBBkw64=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=bMyrmpwPlQAZYNzq7C1EIjw/cF5OoutO4g/uUqhUZSpdvUVKGdkj2uz9qOCjIqCxQ
-	 HWF4eBSllxC5djL6+8YYMCo1ooUhjy+i43GDuVGAyykzOEkY3fYWHeDZ96yvIzB3FZ
-	 3Q3b2nzKtJFFWhjqVdPSwJaVSydUq73sFNPiUNOXQE4Gm0WDsJO83M9cB1KM1RHTWW
-	 9X3Gxy0VZxur47BD3v290ZbvhM2nwc5ZTMyXswqKiQtBT+umnUV2hnDj5aKitkcYis
-	 9MODRdKyAuBoZGpjXAZtSYgN7JTO2bIRt1EeazlftzgQlZg4/kKlRXi9LBljCh8b9Y
-	 gHyBfFiCkrtMQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 78A5D380CFE1;
-	Tue, 13 Jan 2026 03:30:08 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1vfWkg-00000006Xil-3o6l
+	for linux-mediatek@lists.infradead.org;
+	Tue, 13 Jan 2026 05:15:36 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-59a10df8027so8530795e87.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 12 Jan 2026 21:15:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1768281332; x=1768886132; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=yWBxLf1QC+y4YgB8POl0KL9EwXvMQCo2FGvWmorcofw=;
+        b=asfs0pzM2UQyR/QTLUavCTVFX1ncbNk7KzUgM/7t3KVle08SK3eRGAPEEIIK2BzfmB
+         6XEcTGHKBX1P0mIwI2QigIE71Tw6i0jrVm/dJ3+gLnofMlo9fMYTAOgvon+uRcVgGq0a
+         eI3PzMKkcmc+02PZ/HtUh8d/GSvR0e8aL3/Dc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768281332; x=1768886132;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=yWBxLf1QC+y4YgB8POl0KL9EwXvMQCo2FGvWmorcofw=;
+        b=OdtNL8LA2pZdCOVTSo4mjeuDD17n42Cjuvr1J+BFYkbqi4pCnEhK2n7FOlOWOx1SDW
+         brNpX0rA/N2cQqtj5yUP+ruudH4qZs+sxTPq0EAdtwj1bNCpOrbllGtLaSPYlL/qA5vO
+         EtFTxkdq/5aa1vGdHRjVR3qULHMzDPOm4kuFjzyQDam0b77I8jqbVForm98Ot0l+yMx2
+         5bEep+VgJUNJZ2jqHA/la8LaFHJxFyg1XgKTjUxdBeXVXb/Dop2jcdJm5Z05TXj04SBJ
+         e4ChVvjLE9EJWRulvTOj1Oouj6cEDS5r/MOKTYDxtcPHYWKjX377/WQ1hWUglzDFkXLP
+         VJVQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWkr+y80OpaTCH5ZJDljYPL819TU8vU5K4+5MFk8NvJnxvTVotj9rRvG17wT3bLa75DdxQu6IujgUwmUnZVjg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzFfLazgyFmJVu2GMIPqD+rINRv6NwJkuWZ7fUyPNBDdElHdvzX
+	7macX+C0L4gkkX7ncBhmB+l92ASbYZ8lwQDR2a26OjWRoX/1Y3NCeDbOzJB2JyIdbsDszB76Ojz
+	iIljfD/bg6GzUGdIo0MfBCuylXaSA48RDSd1Yum8g
+X-Gm-Gg: AY/fxX6Gv1ih+ivl3sd1rijufegShbKdGQ3GCEZg0tKXOhQSk9xI00x2pf5eHRp3vpQ
+	ZyVmlCrxaeITGte1yOlg2f4gFeQ1U4xAH+/THEoVk1RF768TiJMSx57sQlc0AQxrZeC/OhyBHmr
+	SVo3LJKdUd8FGqiP4zxADQIsOAPY94ATmWVxlNwXEq1ODvinLyLlamvdmOGXHIiNnYx9eLCF5l/
+	7TEnHwxp6/QB12muJuN1/6WY9Cq+WD6oEmVhK4JIykPlXjn5kl9M7bJ+GdOJb9Y0uwhfeRjVusB
+	RhTWoDRr+K1vWotOvnD9n4sNtQ==
+X-Google-Smtp-Source: AGHT+IHWKs0mfOOzl5izVTf2Xnk+dBtkiERsFPIhjYONY21eCvBjmqzHviJFVUDrzrpWYYipwkevq6I80fQTIre1OE4=
+X-Received: by 2002:a2e:bd06:0:b0:37f:af1a:d455 with SMTP id
+ 38308e7fff4ca-382ff6dd8d4mr54027781fa.26.1768281332335; Mon, 12 Jan 2026
+ 21:15:32 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: airoha: Fix typo in airoha_ppe_setup_tc_block_cb
- definition
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <176827500730.1659151.13605466861154324453.git-patchwork-notify@kernel.org>
-Date: Tue, 13 Jan 2026 03:30:07 +0000
-References: <20260109-airoha_ppe_dev_setup_tc_block_cb-typo-v1-1-282e8834a9f9@kernel.org>
-In-Reply-To: <20260109-airoha_ppe_dev_setup_tc_block_cb-typo-v1-1-282e8834a9f9@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- pabeni@redhat.com, kuba@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, lkp@intel.com
+References: <20260113020959.2377348-1-moudy.ho@mediatek.com> <20260113020959.2377348-2-moudy.ho@mediatek.com>
+In-Reply-To: <20260113020959.2377348-2-moudy.ho@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 13 Jan 2026 13:15:21 +0800
+X-Gm-Features: AZwV_QgQaYc38zex9UgDK8EJeiDeEy6Wlobj2pgj5rttXP7rM_aLnUG0nodlUAc
+Message-ID: <CAGXv+5Ee59X1TufGeyJxo_JeLjSYC6qam=GwRXcZWyYkEQ7fCQ@mail.gmail.com>
+Subject: Re: [PATCH] mediatek: add symlink for MT8188 SCP dual core firmware
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: linux-firmware@kernel.org, linux-mediatek@lists.infradead.org, 
+	nfraprado@collabora.com, Jason-ch.Chen@mediatek.com, 
+	angelogioacchino.delregno@collabora.com, Macpaul.Lin@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260112_193336_536334_6BAEB835 
-X-CRM114-Status: UNSURE (   7.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260112_211534_985121_65A7585E 
+X-CRM114-Status: GOOD (  19.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,30 +94,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+On Tue, Jan 13, 2026 at 10:10=E2=80=AFAM Moudy Ho <moudy.ho@mediatek.com> w=
+rote:
+>
+> The MT8188 device tree (DTS) is configured for dual core SCP, and the
+> driver by default attempts to load "scp_c0.img" as the core 0 firmware.
+> Without this symlink, the firmware fails to load and the following error
+> is observed:
+>
+>   [   79.494105] remoteproc remoteproc0: powering up scp
+>   [   79.496217] remoteproc remoteproc0: Booting fw image mediatek/mt8188=
+/scp.img, size 636548
+>   [   79.497298] platform 10500000.scp: IPI buf addr 0x000ffb40
+>   [   79.498013] platform 10500000.scp: IPI buffer does not fit in SRAM.
+>
+> This patch adds a symlink "scp_c0.img" pointing to "scp.img" under
+> meditek/mt8188/ to ensure proper firmware loading for dual core SCP.
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+It should be the opposite. "scp_c0.img" is the proper name used upstream,
+"scp.img" is the old name used in old DTBs.
 
-On Fri, 09 Jan 2026 10:29:06 +0100 you wrote:
-> Fix Typo in airoha_ppe_dev_setup_tc_block_cb routine definition when
-> CONFIG_NET_AIROHA is not enabled.
-> 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Closes: https://lore.kernel.org/oe-kbuild-all/202601090517.Fj6v501r-lkp@intel.com/
-> Fixes: f45fc18b6de04 ("net: airoha: Add airoha_ppe_dev struct definition")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
+So you should rename "scp.img" to "scp_c0.img", and then add a symlink
+"scp.img" pointing to "scp_c0.img".
 
-Here is the summary with links:
-  - [net] net: airoha: Fix typo in airoha_ppe_setup_tc_block_cb definition
-    https://git.kernel.org/netdev/net/c/dfdf77465620
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> ---
+>  mediatek/mt8188/scp_c0.img | 1 +
+>  1 file changed, 1 insertion(+)
+>  create mode 120000 mediatek/mt8188/scp_c0.img
+>
+> diff --git a/mediatek/mt8188/scp_c0.img b/mediatek/mt8188/scp_c0.img
+> new file mode 120000
+> index 00000000..8d1dcd4d
+> --- /dev/null
+> +++ b/mediatek/mt8188/scp_c0.img
+> @@ -0,0 +1 @@
+> +scp.img
+> \ No newline at end of file
+> --
+> 2.45.2
+>
+>
 
