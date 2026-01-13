@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5495AD0C84D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 11:00:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48603D0C84F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 11:00:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tLrP/cVVrd6XV8OFVfRDXTiwaEY+PLg0nUSVIw6hDqw=; b=Isq56Utm325EQKCCq3f8PGMKT7
-	T/7pUKvaKE7lFexMQVunOKHNJPFmRbeZOQPIz4LlhrILq2PO//XwX9qPjZphvHw/oXo1laG3bLsXg
-	Av/utziTYMdUX61KCqG/4hQgi+j60mixe2ES3AjiD1N+N/ArPcUAq7bmqBD4CguqzbePXp82rJqKJ
-	s6/9BPvAIM/ixTkh6c73PfhRYFcN+RBKBXEYY9Dt46zCA6Efd0L3YxTHvZUovkTjmMTxP+w0qK9ul
-	/93FXQvMIjCuDneCM73+Y2MEIfN88RXJnqcKDVuI1WzZCLxfOKfzSbAGvUrqxKCd3GRludKv3zD4y
-	X0fKYhaQ==;
+	bh=1/Q8Ryvk+N7175e/GkC/LhCDTjPnj2Vzd1rAyxjBPSQ=; b=GrBjXDtl552H9dhRsGPRE/OQYi
+	p7LezuPjVPpBWyAgcEBMAYz0RB/XdOuoOU8IixBGg0ESiyV2gJ6N32AUv2uyujPNMqYwssqYYx9MZ
+	+u/csOH5He2HF19IVqgwSIk8xFM2NTwZeAxPX+1h2D7qbzu007lrVYebyx1ait2dCQ5SwL2ldfKyv
+	O8WffCeT27TVfyyZFWbaopc0M/0La0fe4ZOSWqQVq/D+BEMhnACgDFJDi39/2fkm8f/XoiMPu2PtO
+	Rg19SQFJNSbxu/nTDd0RrvUBiFxRkNnC7+5Ae73Sfxl9bIzhf2LG9DBRdoxSE15UrkZrE5v/Zg7Mb
+	itDiJhGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfc8Y-00000006xIA-0auE;
-	Tue, 13 Jan 2026 11:00:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vfc8Z-00000006xK7-3lr0;
+	Tue, 13 Jan 2026 11:00:36 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfc8D-00000006wxj-0jVw;
-	Tue, 13 Jan 2026 11:00:14 +0000
+	id 1vfc8D-00000006wyE-3R88;
+	Tue, 13 Jan 2026 11:00:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768302009;
-	bh=u65weYK7NpMKbZ0GoKI16YVgDU67PXN5aOx/v0oaUKQ=;
+	s=mail; t=1768302010;
+	bh=iLu8EGpNwMkDHk5AQxeZ6JfBZx9ZLm0ms2K34WntBDY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=L7scX0yxN0bR06vP70FHOqwN1Ec6gq8GVw6fQVqQo6cHJkFDmL2Dq1nzzXAP4vIiW
-	 J6EaSLLJtIVU38MGQpidFaSnEjJQpmTfKcUNEssmdmi3zsBM1sabNjc3c/CCmCn+td
-	 ybWAHDM2+Hjev54IQexvRU1zhhZGktM17oO54Dxy264lp62ZTXWTHb/cDWGp35xWPs
-	 xokR095qQhH239bfZX2HOjZGdk/rk4vbK2X0QCqSW1gl16Ia3fJDZmZRjjLttiltyt
-	 XfFrZ9ofl/49B7dbIJGRQGXDxReefhG5ZOM8P+gYuMffpZsYcu/AnRwoZYl+I3ydrq
-	 i/8aOpumWkxUA==
+	b=GP7Gpq/TXzFCpuqeTMj/2x1hk0ctvVMUF5PMT1wIWdkEc08dF1DEuNCmodjTcGCWW
+	 JK+aMMC9Yj4TmoLWjkjmlAD3c8uDGvDGn+vUPUtNH2MVd+gDH1/9zUtUHpifMOUf1S
+	 B7r90d5BViySe71qS8MNd07+84BTKIT0XQ3U9ALURrOOyF1K3v/ykjOUW49I/ZaTCM
+	 E+TJBJqA7tVidVHcY3DFECAj+20hzyprrHqfyuderRanu8eTN7U6ALMttXjTC5OAUm
+	 ktLGN2QL0+N+v8CYEDnYpM5Pv1Au0hJn0CDKuWv3bOLC7U422w7ATOzfdjsPUfEFV4
+	 EShM3N31te2Xg==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C446617E1513;
-	Tue, 13 Jan 2026 12:00:08 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9922C17E1520;
+	Tue, 13 Jan 2026 12:00:09 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org
 Cc: robh@kernel.org,
@@ -61,17 +61,18 @@ Cc: robh@kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH 5/6] arm64: dts: mediatek: mt6795: Fix issues in SCPSYS node
-Date: Tue, 13 Jan 2026 11:59:59 +0100
-Message-ID: <20260113110000.36953-6-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 6/6] arm64: dts: mediatek: mt6795-xperia-m5: Rename PMIC leds node
+Date: Tue, 13 Jan 2026 12:00:00 +0100
+Message-ID: <20260113110000.36953-7-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260113110000.36953-1-angelogioacchino.delregno@collabora.com>
 References: <20260113110000.36953-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_030013_407786_E9EEBA29 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20260113_030014_264760_482A6C90 
+X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,30 +87,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the "mediatek,mt6795-scpsys" compatible to the SCPSYS node
-and remove #power-domain-cells (retaining it only in the power
-controller subnode) to resolve dtbs_check warnings.
+The MT6332 PMIC leds node was named "mt6332-led", however, the
+binding rightfully enforces using the generic node name "leds".
+
+Change it to the latter to resolve dtbs_check warnings.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt6795.dtsi | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-index 58833e5135c8..ae2aaa51c9ad 100644
---- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-@@ -287,9 +287,8 @@ pericfg: syscon@10003000 {
- 		};
+diff --git a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
+index ecd13d089ceb..0e086dd487d9 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
++++ b/arch/arm64/boot/dts/mediatek/mt6795-sony-xperia-m5.dts
+@@ -507,7 +507,7 @@ &pmic {
+ 	 */
+ 	interrupts = <GIC_SPI 160 IRQ_TYPE_LEVEL_HIGH>;
  
- 		scpsys: syscon@10006000 {
--			compatible = "syscon", "simple-mfd";
-+			compatible = "mediatek,mt6795-scpsys", "syscon", "simple-mfd";
- 			reg = <0 0x10006000 0 0x1000>;
--			#power-domain-cells = <1>;
- 
- 			/* System Power Manager */
- 			spm: power-controller {
+-	mt6332-led {
++	leds {
+ 		compatible = "mediatek,mt6332-led";
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
 -- 
 2.52.0
 
