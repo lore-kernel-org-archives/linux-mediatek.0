@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A16B1D30CDB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 22:30:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15E49D30CE5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 22:37:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9vUSpEjSPMnjGALihciJWDPWN0mOu6ySB71SOZKM95A=; b=WTKL20YcBmHRUeTWtwPcXz0umr
-	prvd6x+7EAERqW4WZXTmh/DGVr6aM2amOJec3NhMv/5vmkmHzRpjRgocOLaC860CbXHv7+H6s2FZk
-	G2/lFrPC3eo5DbuSHKbHGQV7hrcMDHYcXXcrRy+u4RUkZAaWHIW3h5WstfX6DCZwn5WKWen1/aryg
-	h+CUZ/u8GHdlOWy9GpEl1EjUTh8F8DTBHkT8c1J2SBOxx/xqk9NapdVCCmxcFLPCrZ35PeV0k0+4V
-	+JN2icLRwxdK54N0XbZ8s0eMiKMLE8BHMseSfTgTefsdxl1Dx2AeYQ29Q3j50jka0e0XtsiehWfun
-	seF4go9Q==;
+	bh=pucd+G5aa0PzUeRY++f9dVcuMe4Ta0KK0tCfqj0Iq7g=; b=1ckA/+0LU5eFaMxF9oAjkRTG7Y
+	7T3qZDU6sziniDqqU3DPxuCguu2QZ4pTTaeQsGJySn8I23h2IjH7bXOAPY5rN5vmfIhuI+TeeJGBZ
+	5jdNLEECajdZq00eW5jKxrJA4mxLANb6pdYZrqWXiosFMNAQZetATe5Cyj96zGmuhVliRhs+tmGMo
+	1PgfIlDkyMKvG36zPXKsqXnz6FVa4ibbAXldRLY2XrVvAwn5fA+OHy5KCOtAhpjNGMm2g6/Z/tv+g
+	SFnh3EgMrHOaxu82mJM2jr8YVQP+6o6M1FGDkwVhMBPHvgfo1lChonW8Rs9xHs3dMjSE2cX7cVCfU
+	TvjFlgWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfmtt-00000007pOO-0Z87;
-	Tue, 13 Jan 2026 22:30:09 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vfn0U-00000007pes-12Mc;
+	Tue, 13 Jan 2026 22:36:58 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfmtp-00000007pNj-1uNX;
-	Tue, 13 Jan 2026 22:30:06 +0000
+	id 1vfn0S-00000007ped-39Y1;
+	Tue, 13 Jan 2026 22:36:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A65FC404CA;
-	Tue, 13 Jan 2026 22:30:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62439C116C6;
-	Tue, 13 Jan 2026 22:30:04 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D2B6E6000A;
+	Tue, 13 Jan 2026 22:36:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6461FC116C6;
+	Tue, 13 Jan 2026 22:36:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768343404;
-	bh=HhYgya/+gHZZL3BnlzehiCFBNBYrrXdk9ohT+saOEB0=;
+	s=k20201202; t=1768343815;
+	bh=KnVjavPiBn10fAwKoZ9AxMWWLrQDeyNt9CWuUHHMCaU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=k9UNEkrzSjMl/w0ZA3UHVOgoZR6ZfgYF77Fdp1b6d5mcBmMTaPRQ1Yd25VgPUGyit
-	 2HtjtFKjF0TQJdj7UuNrJqqPX4fKIq3v+VY3q4wNdvwKxTQZz/uCAxVQlswbTu0j69
-	 13G1cMBRBsllf7Vtlt6fT2O7o4WBqaz0WZuZfA2gTP65PFBz4B/J3srLI0Wyy/fih+
-	 72y4bN3s/RhYejt4JZCKArQfgFVMZ/EQywshTc11ff8fWgc+ZyFgDTMjh4H2Nrhh3e
-	 1ACeuTDzMx97tDYgI+J6rWcSLStQlijzcKofHweCezpx/6Ofz0zDzV1UgIo4YiUxWf
-	 d1uH3rLoSdV9A==
-Date: Tue, 13 Jan 2026 16:30:03 -0600
-From: Rob Herring <robh@kernel.org>
+	b=aEd1jP+3Ckz+Toi+4/j3sSrkYBiGUhlh3646PpYh8fwZotQDP44U2fcLomASRxzA4
+	 ZJjIvL0zq7Bf2x/iH5LrGadET7fhRU16mfWwdxA685CK5VklFl5lhw7kl364Pd1viw
+	 fv4T23vynYdf4HskNp5o4aFZtYgt252xTwltgpPVochev2I37ztbFuQS/7GHZw96/w
+	 FaZl3/2LpUyi6P6eKIItQ5+ZEXv3LgX8HHy8DnagVtdiRD8s8LN6ci7HfpG86K2fSP
+	 q7KoYDaN4Nlzf8QEQkT+3oBhN36h/L5dZpupb7FZSEcFgBZsSZsumH8m4nMH3iMU6G
+	 Wuq9WJAjN2aSQ==
+Date: Tue, 13 Jan 2026 16:36:54 -0600
+From: "Rob Herring (Arm)" <robh@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, andrew@lunn.ch, olteanv@gmail.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, krzk+dt@kernel.org, conor+dt@kernel.org,
-	matthias.bgg@gmail.com, arinc.unal@arinc9.com,
-	Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
-	daniel@makrotopia.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com
-Subject: Re: [PATCH] dt-bindings: net: dsa: mt7530: Allow interrupts-extended
- dependency
-Message-ID: <20260113223003.GA198961-robh@kernel.org>
-References: <20260113110020.37013-1-angelogioacchino.delregno@collabora.com>
+Cc: davem@davemloft.net, conor+dt@kernel.org, andrew@lunn.ch,
+	matthias.bgg@gmail.com, gregory.clement@bootlin.com,
+	kernel@collabora.com, devicetree@vger.kernel.org,
+	linux-crypto@vger.kernel.org, atenart@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	sebastian.hesselbarth@gmail.com, herbert@gondor.apana.org.au,
+	linux-kernel@vger.kernel.org, krzk+dt@kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 1/4] dt-bindings: crypto: inside-secure,safexcel: Add
+ SoC compatibles
+Message-ID: <176834381386.366633.8858781364146409753.robh@kernel.org>
+References: <20260112145558.54644-1-angelogioacchino.delregno@collabora.com>
+ <20260112145558.54644-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260113110020.37013-1-angelogioacchino.delregno@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_143005_516998_DBD1725B 
-X-CRM114-Status: GOOD (  16.54  )
+In-Reply-To: <20260112145558.54644-2-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,47 +75,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 13, 2026 at 12:00:20PM +0100, AngeloGioacchino Del Regno wrote:
-> When the MT7530 switch is configured as an interrupt-controller it
-> also needs an interrupt but, in this case, only "interrupts" was
-> allowed.
-> 
-> Some devicetrees instead use the interrupts-extended property as a
-> shorter form, and in place of "interrupts" and "interrupt-parent",
-> as an equivalent.
-> 
-> For this reason, when interrupt-controller is present, depend on
-> either `interrupts` or `interrupts-extended`; this also resolves
-> some dtbs_check warnings.
+
+On Mon, 12 Jan 2026 15:55:55 +0100, AngeloGioacchino Del Regno wrote:
+> Add SoC specific compatibles for the SafeXcel crypto engine,
+> including one for the EIP197B used by Marvell Armada CP110 and
+> and two for the EIP97IES used by Marvell Armada 3700 and by
+> MediaTek MT7986.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
->  .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml       | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
+>  .../bindings/crypto/inside-secure,safexcel.yaml           | 8 ++++++++
+>  1 file changed, 8 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> index 815a90808901..ffeb8d5836fe 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> @@ -279,8 +279,11 @@ allOf:
->          - resets
->          - reset-names
->  
-> -  - dependencies:
-> -      interrupt-controller: [ interrupts ]
-> +  - anyOf:
-> +      - dependencies:
-> +          interrupt-controller: [ interrupts ]
-> +      - dependencies:
-> +          interrupt-controller: [ interrupts-extended ]
 
-We already fixup this case:
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-dependencies:
-  interrupts: ...
-
-And there's a few other cases like yours. So I've pushed a dtschema 
-change to handle this case.
-
-Rob
 
