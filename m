@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 697CFD0C84F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 11:01:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AEA0D0C852
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jan 2026 11:01:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O9pHlsVVeZpxMIuezmmTJQLg3Gzv7LvrExjdhx0LN0Y=; b=KjLPbCeKRqoEghJxpJRRWftFhC
-	kaavngPTcCfBsjvXlzDy8wZfWjcznt9waoN5lhCamWDAlUxsXjGBOPKZJwnj1ajCoaq597Azvzppf
-	WDAdwMddFTE3zZ7v5ErnrO8jRu6MKuB6+yjqj0FRZ01kcIbT4xem95ODXqPdxM+da5CJetfeuSo0t
-	G0VCar2j6dgTdkWcALKyeXH06a0N+Rh4SfJpGt7iFEpeUXnWUYnX1jQSgQvDiNeCBNeUXU7+kdGx0
-	rfKXvA6N4CT4eRTYbub9LIy9y5w2vMEi9aSrUkx2b4yWikhcznMvK34YthJM1LuYRAck91sdJXlYq
-	XD3Yzr4A==;
+	bh=yCgzEWnwvyy33EIR1672xNm2180ZO6kr+dCmMTMlWOM=; b=z4eLxlWwno3Uo+mQ6BIdDj9db3
+	QFE580nX+1VAx6Xl/NTmNVChoHoqxGuthukuI5nhJg3rEzdnOomGSc0spGBqwbz+bTlUWh+L227Kx
+	LENetgKNR7MqvslrFZCv/PZ8GyuN2sQUCKTf9SFR1QghBubpa3NJ+MHE+qMmD8vkKRYUxcGGfYpo4
+	sBR9+stFCxcmxCMDnrC6g51w6PqEcSE6LS6ItDUfLVXLY6BJCw3dVISznuRhzBM7mg9u/0PlhOHuy
+	erlop5rydLTsyUu7Yk+UIIlxY722Mu8+e+0SX+8b4M4SdSEujlA63OQUuRVY6MqXLtdnZabWKcckA
+	t2ZDU5JA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfc8y-00000006xmS-27sP;
-	Tue, 13 Jan 2026 11:01:00 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vfc95-00000006xtb-2lxn;
+	Tue, 13 Jan 2026 11:01:07 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfc8H-00000006x3p-2ndU;
+	id 1vfc8K-00000006x5Q-0Q21;
 	Tue, 13 Jan 2026 11:00:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768302015;
-	bh=Tr1QlgpyH4V/BMEcHr0IvsfySZs0/Z/SUCzxP2lKDwY=;
+	s=mail; t=1768302017;
+	bh=Qtzz12boIO/VIHRD3C752NQeLrf04iw9L8Q1Ovq/IUY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kn6uZ/m7jSwNQJqMNHb9+Hpuon9dUySJ4tnP5xf/piraEdEWy2U4zBtdtK7XfKarU
-	 yhRnB8nm37ohZO8c3Cl9f2d5yt6/GspLDbJubfkw29Er72Jz9vTV6k1y6vMn4ucZiF
-	 O13NDxJhj3VjaPiR54HjOo1nV54lhwrnzZOpCGkEjJEwXCkXZz98tIGFqxiSTsVRv4
-	 L/+bcZ7FKDAfaAO7ZzquHDt6DT8s/vSUsOHg/v80hivxiM5nudJwm6I+PhQdIySHMF
-	 JcEGdC/rCJcMIgUMJMnp4QvOBEqavclPCjrN7DMv1nmj/7fqXYFh+fwWq/YQeO7Zgq
-	 GwIdfBevb8R4Q==
+	b=kfynO2Fw+GmTUUJqbGGo7tn19FvNwLBWV3hhk8lcL6XU3zlCKt/ZexsO3EVcMl8Ru
+	 b/G7wP2iQLL0Mn2/24j3bpuwI0EbVDStOa5UlZD/Bgm2qrJTPciB8w5huhrfXFONbN
+	 ulrMeSadQKUM0g5UQkV5TvDKUWDd4yg3n6xFG31tc+JcRvH0UGOdE/tEXTphxQGZta
+	 lAyCAnUU12GuXKEXrvI/dOR1qe7S/tMHZC1p699GDrkcCqDzFe2aX+gsJhpThU+rTC
+	 SZk+3iQKYmteH8ClyWE+GUpfICjZaMh9vCDD6Uv1D4IE6yYGG+PH/ot8f732mPTlT8
+	 /D+Sxp1qdSMqQ==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BE62217E10C8;
-	Tue, 13 Jan 2026 12:00:14 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1C57C17E1406;
+	Tue, 13 Jan 2026 12:00:17 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: linux-mediatek@lists.infradead.org
 Cc: robh@kernel.org,
@@ -59,17 +59,17 @@ Cc: robh@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-pm@vger.kernel.org,
 	kernel@collabora.com
-Subject: [PATCH 1/5] dt-bindings: clock: mediatek,mt7622-pciesys: Remove syscon compatible
-Date: Tue, 13 Jan 2026 12:00:08 +0100
-Message-ID: <20260113110012.36984-2-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 4/5] arm64: dts: mediatek: mt7622: Add missing clock to audio-controller
+Date: Tue, 13 Jan 2026 12:00:11 +0100
+Message-ID: <20260113110012.36984-5-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260113110012.36984-1-angelogioacchino.delregno@collabora.com>
 References: <20260113110012.36984-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_030019_849598_A8458188 
-X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-CacheID: sfid-20260113_030025_639473_9A14DD77 
+X-CRM114-Status: UNSURE (   9.35  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,47 +85,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PCIESYS register space contains a pure clock controller, which
-has no system controller register, so this definitely doesn't need
-any "syscon" compatible.
-
-As a side note, luckily no devicetree ever added the syscon string
-to PCIESYS clock controller node compatibles, so this also resolves
-a dtbs_check warning for mt7622.
+Add the missing audio_mrgif_pd clock to the audio-controller node
+to both resolve a dtbs_check warning and ensure that the AFE merge
+interface is clocked while using audio.
 
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../bindings/clock/mediatek,mt7622-pciesys.yaml        | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt7622.dtsi | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
-index 9c3913f9092c..c77111d10f90 100644
---- a/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
-+++ b/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
-@@ -14,11 +14,9 @@ maintainers:
+diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+index 158bd9a305d7..133a6dcc8ef7 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+@@ -654,7 +654,8 @@ afe: audio-controller {
+ 				 <&audsys CLK_AUDIO_AFE>,
+ 				 <&audsys CLK_AUDIO_AFE_CONN>,
+ 				 <&audsys CLK_AUDIO_A1SYS>,
+-				 <&audsys CLK_AUDIO_A2SYS>;
++				 <&audsys CLK_AUDIO_A2SYS>,
++				 <&audsys CLK_AUDIO_AFE_MRGIF>;
  
- properties:
-   compatible:
--    oneOf:
--      - items:
--          - const: mediatek,mt7622-pciesys
--          - const: syscon
--      - const: mediatek,mt7629-pciesys
-+    enum:
-+      - mediatek,mt7622-pciesys
-+      - mediatek,mt7629-pciesys
+ 			clock-names = "infra_sys_audio_clk",
+ 				      "top_audio_mux1_sel",
+@@ -688,7 +689,8 @@ afe: audio-controller {
+ 				      "audio_afe_pd",
+ 				      "audio_afe_conn_pd",
+ 				      "audio_a1sys_pd",
+-				      "audio_a2sys_pd";
++				      "audio_a2sys_pd",
++				      "audio_mrgif_pd";
  
-   reg:
-     maxItems: 1
-@@ -40,7 +38,7 @@ additionalProperties: false
- examples:
-   - |
-     clock-controller@1a100800 {
--        compatible = "mediatek,mt7622-pciesys", "syscon";
-+        compatible = "mediatek,mt7622-pciesys";
-         reg = <0x1a100800 0x1000>;
-         #clock-cells = <1>;
-         #reset-cells = <1>;
+ 			assigned-clocks = <&topckgen CLK_TOP_A1SYS_HP_SEL>,
+ 					  <&topckgen CLK_TOP_A2SYS_HP_SEL>,
 -- 
 2.52.0
 
