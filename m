@@ -4,104 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF9B9D38FE8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jan 2026 16:29:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB271D38FFF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jan 2026 17:28:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wOGask9npR+YlnkUj5CzN/Pzieo1MzhAPrMcaH9JsNk=; b=pZULHR9Rc2P+CUBelvFV2sRAT2
-	3vYEX8PcKCKiT5kbHTTyN/pfGc0jONUhN25V5HZznKJX7BKr9XcckRm5sRTmwvj346oxiHIh2q0Cx
-	MI6LaG1eOr6iXftN9KNGFuJoRxaRkW9H3h3U0+MqqDDHHWUx+dJ4p9+y1Q+qo/s1wMk5enwK1oSlT
-	wcFz8UxQB6hxAKFdxunj/rUDZX/+Vf+8UxP+eHCBAJIHL1Ed285GdwyE53KSZ19Cr5tDRH+F4ic+u
-	ZiZ+ZNGbvE7sLZbRQOOQXfrBog2y6quo9cqwafes3sZPQXHeXKEWUwLie86WTrw3VjedeMwqI5Rf5
-	ab/nCWNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	bh=fqrv+uluXUdCwqRqMV1mDM3218han9vFyABHpAgrIZQ=; b=Bo8jnFsVm/fYq8Vw1oR/bU1bQr
+	ZVpH4WtfKDGOQupDeHERbl4fOceUlx/MH3uj4nlFaXsKybeXxbxg5xKxMPjX9jOYvKDjqCP4hT8jb
+	2vPX6R+y5UNi/OK776Jz92S5DfnbsDNkZKFSKETzovt8v7VVYX2p0XP7hzuff4WMo+7wK4hnWml2f
+	ly44oPVuX7gC9QRC2GT/A29h6G8aynh2tY2GQ05xXx/HHnCXpxIIbARXYW6cwmYzjsCyATFXmdRol
+	IKkW9RYnTOh6yEaW6wys9Cmf9Vb5cwH8GHg+Wfo8aUDzMtCyv6mHcXRBLleWheFfTjDAFCoycdV1c
+	i5scGULg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg3kX-00000009vbj-3fHt;
-	Wed, 14 Jan 2026 16:29:37 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1vg4fg-0000000A8UN-1DKc;
+	Wed, 14 Jan 2026 17:28:40 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg3kT-00000009vYe-2HnX
-	for linux-mediatek@lists.infradead.org;
-	Wed, 14 Jan 2026 16:29:35 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-477a219dbcaso102165e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Jan 2026 08:29:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768408171; x=1769012971; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=wOGask9npR+YlnkUj5CzN/Pzieo1MzhAPrMcaH9JsNk=;
-        b=X+8LkvPSguzTaoMwIe1vCq89RzpIJ5HbrO/6SUZnwIs73Bo87PzhH4oYwfaluCOqCp
-         MfDEk9AjHwniLm/gujP6pKmcuDsY1a6qIe7fV2EYxpGqbzw86c6VXFTLw7H6KFqJdCs4
-         Zt8p5jcvg015ktaJx2sJfxWyfEtni9WDLJnWNPkk7UqkqEbzpUVbYJLHYzwAUWvyz1Nq
-         3XUMqE/+vwDSqW0Ski/aZDEOMDyNINQ/jAjBZuYPGBqmnZ9vBIy5fiAaxuONj138xRUn
-         OhS08Tg3sdfb9HadG8x5eoXq9ELOuZaU4qlF0xPzjJ1k90Q6SaYhTbzYF19BJjj17jeE
-         it5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768408171; x=1769012971;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wOGask9npR+YlnkUj5CzN/Pzieo1MzhAPrMcaH9JsNk=;
-        b=cFkiJoyxz19+3Cdr30t7rPF4aDmuiefKUW/G9zAhi52mUcmnj6akvnUivqxPR7otwy
-         2tCwX4n7nGXTzmxDzF6wU7PnwkZ/HIZjMUlmU/1SHlMT07PbvHAPQxIWkEGDqF17z/mj
-         yZX/zYt8O18EizFUOVnR9jSmWRa+2Ucqg13SqAgerYtHZjTZxw4assVWNYjZR13u4ij/
-         aoMyBAVaLfGATIYVmcXUMX1DPZmKsgJeBeHzdrKjU1k18JGKM0j1nV1GBdZIKrbBuTjc
-         h3HbM+IuZ5vKN5hxyaa0ZLBpBZZJSP2ixPZFihg0jmSbn4fK88Lu5kYrG4cJuQti9+QI
-         RxDg==
-X-Forwarded-Encrypted: i=1; AJvYcCX3T+i0ZATQmQMqiHSjsGdPu4T3yhlrP18hRdOtu0WqIL0Q7Xh6HyiF9rj5iAQztu11INMhJIIDIMLQmNdwlQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwBP0esH3vAQK5rgPWRdDyVDEnPI1TefM6buiOwhO6dOD2eAkHg
-	f8Da01VAoqDQkqBdGmw0UVNwFYqc7EsJNANRiTCgWbcHGDzI6yuHLFvV
-X-Gm-Gg: AY/fxX5gH6XY3IlLFV2BhSGFQPe4i7WZysocb+wK3bBMjsHhy+08Rq7KziqO3oPJVHC
-	G4kZ/mpd5hS9V9WZU7DaT6YNGxa81RKVkdQvgr8INfa+9UPa7d2HBytVIGpb0uVtjxhsO0FOMCE
-	4sN0kHIJ9A1BRKGjwRY5zWRZOGmm5xU+4LXMfhLHE0tubYaH9+gzJgmHrVcUyzcjOuPrsJU+13q
-	Vaqnp8ozYzYyfdZyVupZ2lpyDdZALMgE5hZC+VbTA4s7zKkh27+gt4F/qVRBN1MdI+csTH0/M4E
-	E+pc9USoylzHNNiSDKi4kii6x58Ww1wdiYUMVs91MzKvZLuRHl7a9GKVkRfQcE6tKLaQP20EdZu
-	uibjXDFxnjRCia1JyzgsiS6F9UPbslK+QC+jHAh+ucHZcbX4fQ5PYRU+tEfLq5bYZQFs1uRC6Zh
-	6JcIaYCp7A1mE7WWEd8BFmwH6HabKPL4bbKiUcVGk=
-X-Received: by 2002:a05:6000:310b:b0:430:fe22:5f1c with SMTP id ffacd0b85a97d-4342d5dd3d4mr3043280f8f.59.1768408171137;
-        Wed, 14 Jan 2026 08:29:31 -0800 (PST)
-Received: from Ansuel-XPS. (93-34-88-81.ip49.fastwebnet.it. [93.34.88.81])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-434af6b2988sm147835f8f.28.2026.01.14.08.29.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Jan 2026 08:29:30 -0800 (PST)
-Message-ID: <6967c46a.5d0a0220.1ba90b.393c@mx.google.com>
-X-Google-Original-Message-ID: <aWfEaBla1K6AZnsY@Ansuel-XPS.>
-Date: Wed, 14 Jan 2026 17:29:28 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v2 1/2] dt-bindings: net: airoha: npu: Add
- EN7581-7996 support
-References: <20260113-airoha-npu-firmware-name-v2-0-28cb3d230206@kernel.org>
- <20260113-airoha-npu-firmware-name-v2-1-28cb3d230206@kernel.org>
- <20260114-heretic-optimal-seahorse-bb094d@quoll>
- <aWdbWN6HS0fRqeDk@lore-desk>
- <75f9d8c9-20a9-4b7e-a41c-8a17c8288550@kernel.org>
- <69676b6c.050a0220.5afb9.88e4@mx.google.com>
- <e2d2c011-e041-4cf7-9ff5-7d042cd9005f@kernel.org>
- <69677256.5d0a0220.2dc5a5.fad0@mx.google.com>
- <76bbffa8-e830-4d02-a676-b494616568a2@lunn.ch>
+	id 1vg4fb-0000000A8S8-04in;
+	Wed, 14 Jan 2026 17:28:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 0C95F43F56;
+	Wed, 14 Jan 2026 17:28:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BFB82C4CEF7;
+	Wed, 14 Jan 2026 17:28:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768411713;
+	bh=wD/5RVHhGR99Mqb9HHrjiTflC51aStRb6BACeDI9CVE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=Zqg9qRe7uE1FygMozTkXAaWZGBj3D7YBYFSZBt2LQQMbz/euQHCq7j+XgVkO0tu7u
+	 JOlzmj+7L/Y7CHZalggRJh8YXrB20UtopsY6u1mnVrgdsaluAeKicAY8SXllN7Dfu2
+	 3QISaTvRBf0YFR9tYou4x/FG6TNAco1E7o0XPfiym71SxLBUsjzb8n2ebIu6haa0v3
+	 UhiyTtn9QkYieySz+Ylamyd+PFXJU7XTgkBHMcjR7ZrmnyINnmagPfv/ZwPPluruMF
+	 zHteLNNVXbIywvPHoC/jJGBElYbpoqmm4hCQHPKgJgy4q+BwvwumT5oWNdnpoaoATg
+	 nz59CcWh7LSDQ==
+Date: Wed, 14 Jan 2026 11:28:32 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Johnny-CC Chang =?utf-8?B?KOW8teaZi+WYiSk=?= <Johnny-CC.Chang@mediatek.com>
+Cc: "lukas@wunner.de" <lukas@wunner.de>,
+	Project_Global_Digits_Upstream_Group <Project_Global_Digits_Upstream_Group@mediatek.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"bhelgaas@google.com" <bhelgaas@google.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	Jason Gunthorpe <jgg@nvidia.com>,
+	Alex Williamson <alex@shazbot.org>
+Subject: Re: [PATCH] PCI: Mark Nvidia GB10 to avoid bus reset
+Message-ID: <20260114172832.GA822909@bhelgaas>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <76bbffa8-e830-4d02-a676-b494616568a2@lunn.ch>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <8d91c98a99a0a1b368691a93141f4f14e5ece44c.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_082933_603109_74D15B65 
-X-CRM114-Status: GOOD (  18.68  )
+X-CRM114-CacheID: sfid-20260114_092835_081559_56993883 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,36 +79,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 14, 2026 at 04:56:02PM +0100, Andrew Lunn wrote:
-> > > Yes. What you plug into PCI is not a part of this hardware, so cannot be
-> > > part of the compatible.
+[+cc Jason, Alex for Nvidia input]
+
+On Wed, Jan 14, 2026 at 06:39:24AM +0000, Johnny-CC Chang (張晋嘉) wrote:
+> On Tue, 2025-11-18 at 17:39 +0800, Johnny-CC Chang wrote:
+> > On Thu, 2025-11-13 at 10:39 +0100, Lukas Wunner wrote:
+> > > On Thu, Nov 13, 2025 at 04:44:06PM +0800, Johnny Chang wrote:
+> > > > Nvidia GB10 PCIe hosts will encounter problem occasionally
+> > > > after SBR(secondary bus reset) is applied.
 > > > 
+> > > Could you elaborate what kinds of problems occur, how often they
+> > > occur, etc?
 > > 
-> > Thanks for the quick response. Just to make sure Lorenzo doesn't get
-> > confused, I guess a v3 would be sending v1 again (firmware-names
-> > implementation series) with the review tag and we should be done with
-> > this.
-> 
-> Since this is a PCI device, you can ask it what it is, and then load
-> the correct firmware based on the PCI vendor:product. You don't need
-> to describe the hardware in DT because it is enumerable.
-> 
+> > There is about 1/1000 chance that after SBR is applied, any further
+> > access via this root port will be blocked and make system crash. 
 
-Hi Andrew,
+What sort of crash happens?  It's useful if we can include a bread
+crumb that will help people identify the crash and find a fix.
 
-I think it's problematic to create a bind between the NPU and
-PCIe.
+What I would expect is some kind of PCIe error like a config read
+timeout or unsupport request error.  But usually those just result in
+~0 data back to the CPU, which usually doesn't directly cause a crash.
 
-Do you have any hint on how it's possible to read the PCI
-device attached? I'm not aware of any API that can be used
-to enumerate what pcie devices is present on the device?
+> I would like to update below description to replace original comment in
+> v1 patch, is this information sufficient? 
+> --------
+> /*
+>  * After SBR(secondary bus reset) is applied on an Nvidia GB10
+>  * PCIe root port, there is 1/1000 chance that further requests
+>  * via this root port will be blocked and cause system unstable.
 
-Considering how tightly integrated things are in this SoC
-I still feel firmware-names is the most effective solution
-for this. The WiFi offload is mostly optional and sadly
-due to Airoha limitation, it's not possible to have separate
-blob for the single feature/support.
+I'm confused about what the topology is.  I first assumed GB10 was a
+PCIe Endpoint, since Secondary Bus Reset only applies to devices below
+a bridge, so SBR would be applied to a device by a config write to
+that bridge.
 
--- 
-	Ansuel
+But you mention a GB10 Root Port here, which obviously is not an
+Endpoint, so there's no bridge upstream from the GB10 that could
+initiate SBR to the GB10.
+
+If this is actually a GB10 issue, it sounds like a hardware erratum
+that lots of users would see and Nvidia would likely be aware of. 
+
+Bjorn
 
