@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCD37D37E32
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jan 2026 13:19:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7EDDD37E37
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jan 2026 14:02:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aWlL6GvAfyQK8Vann1h5mv1UdVufxpOFRRTw5dwPxjY=; b=YhmGIN8RacIJPRuHx49ukpIxok
-	jgEQ8AYXRgxgXxQGzETfYfibNObqaHK9nrZDkGUGJEbLwr3+LaCHPC/3qsMQZHMCh3FcA4A42oXqX
-	uaHf0wViNGLva/CN3KGX7Hrg4jKHaeisbDs1PL2m5Jo4RMcnwnRikgymh904Z0x9vW2awkzDylRse
-	JAv8jdWykM+LQipo3IM994gemWzQ9dEBL7VD6K6j8caB9sZo579QMt/tDkga3Ae4z2g5ID7yRL1+m
-	qyRJFbwHtpZhW3JumPDv0I2Qa5uzuHhYdRrxKTZAV3iXfxhACrYzMrBY9hZQ/HBBROi2UmP0c0azL
-	s8tB2zQg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=J1sVZeHtEogJhyQwi1M61Tt+JJUdb2rGfBZgVynMTfE=; b=vLJwvq99c0CIeqWq0xtbbtqxak
+	yclPPe9bCACiv1Ic5HOO9/h/XhRsvd2mI+YPLDTFkQsFgp+JfmTzbfJp7fPRETiwjtCF/cnepSGpt
+	h0kPrmQfbh26A+ogeoW6n8yN/3PaggwR7CVqKUxFeSM/EA5ag4W0xukzDWdTiP5A4vOJncjcq+tvl
+	sbhhvPPw99I5xmVjpjDAASsBKd7OvRBxpZLSPSMIAyCNdTgzBhx9Ojnkito6JIBOK12BnfM935v0+
+	Lvc+tu8VQJMgEjgnvUFu3pzlx6OarPpQ9QcEzV3wHvvXdyw0gpez6ceVfXJRwH1QE6goCinp5bHr8
+	TNVofvSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg0m3-00000009IqG-39KD;
-	Wed, 14 Jan 2026 13:18:59 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vg1Ro-00000009RTt-0S6u;
+	Wed, 14 Jan 2026 14:02:08 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg0m1-00000009IpN-3yL0;
-	Wed, 14 Jan 2026 13:18:58 +0000
+	id 1vg1Rm-00000009RSh-0WPY;
+	Wed, 14 Jan 2026 14:02:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EC8D360051;
-	Wed, 14 Jan 2026 13:18:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0E64C19422;
-	Wed, 14 Jan 2026 13:18:55 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A154F43624;
+	Wed, 14 Jan 2026 14:02:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A1352C2BC86;
+	Wed, 14 Jan 2026 14:01:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768396736;
-	bh=GzNGsGiv+Dat6D0sdE8p2iGYKVBLSwgdtjTPkzDp6KU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ayuX/yInGW/t2HtHRKGrsgyznv2o+2fOAGPkd0SpYjXtXQPdEbGCPnkGym489mU4Q
-	 rWIQf3SEJf03N/1f4m31O9VsSL9IV0rQAjdhPGGfzKOgbDSynFuKuSMIeitLctFBSJ
-	 eNcgXX7HHVaqOOs6m4CC7hYEpkg8qBpAUrW/S5Mgzbxi4LRIA4yujf4thdtsr1+cz7
-	 t8JQKzcB+CUW1L60x/eZo47DBluELyYYH3dNfO6DqtG6sFcVzSqsLJxFiAccXLzfEl
-	 hBXtogq3ulvLF4L+5mcUcRyIg59mcuNFHcf+h+cBx7QkLIcn2Nde9pOqKBAUW2r+Pv
-	 PFHUFUdqJQWsQ==
-Date: Wed, 14 Jan 2026 18:48:52 +0530
+	s=k20201202; t=1768399325;
+	bh=haCM6T+YzB8uXZZd8uUQUcECd5pePHN87zdScN5Eg9c=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=M8EystbPzjf3hIbat0l79Q5+uB24T3/rSm58fwr9j9jsIzZ6HHh1yxy06+ycFdWzA
+	 kCQ/MsWRHRVcN9TXxklMfR/x8Gk1woAJjz6RiF50A5XDghuMMg7BczGpkZ01mlMkeB
+	 g5um/0dqrqfSquRa4qmC5hiqJhsuVU9WMvitJ2M1N6PNGw1Un8+te/jW4S3aatLO8Z
+	 kkE/AwbTuxO/UzQVfVgNXt56CiAQLxiqLQfvk/vFy/Bid+4YUXdVf3S6I9vRQCiADp
+	 FNOY60maEkzw6Ms0vCj/ulWN2D6c4GcZWL99ODS+so9OJciWAK+JmthSByE0ctjfYo
+	 WvWwYUk6P2leQ==
 From: Vinod Koul <vkoul@kernel.org>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Daniel Golle <daniel@makrotopia.org>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	=?iso-8859-1?Q?Bj=F8rn?= Mork <bjorn@mork.no>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Eric Woudstra <ericwouds@gmail.com>,
-	Marek =?iso-8859-1?Q?Beh=FAn?= <kabel@kernel.org>,
-	Lee Jones <lee@kernel.org>,
-	Patrice Chotard <patrice.chotard@foss.st.com>
-Subject: Re: [PATCH v3 net-next 00/10] PHY polarity inversion via generic
- device tree properties
-Message-ID: <aWeXvFcGNK5T6As9@vaman>
-References: <20260111093940.975359-1-vladimir.oltean@nxp.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
+To: netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-phy@lists.infradead.org, Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>, 
+ Horatiu Vultur <horatiu.vultur@microchip.com>, 
+ =?utf-8?q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>, Andrew Lunn <andrew@lunn.ch>, 
+ Heiner Kallweit <hkallweit1@gmail.com>, 
+ Russell King <linux@armlinux.org.uk>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Eric Woudstra <ericwouds@gmail.com>, 
+ =?utf-8?q?Marek_Beh=C3=BAn?= <kabel@kernel.org>, Lee Jones <lee@kernel.org>, 
+ Patrice Chotard <patrice.chotard@foss.st.com>
 In-Reply-To: <20260111093940.975359-1-vladimir.oltean@nxp.com>
+References: <20260111093940.975359-1-vladimir.oltean@nxp.com>
+Subject: Re: (subset) [PATCH v3 net-next 00/10] PHY polarity inversion via
+ generic device tree properties
+Message-Id: <176839931828.937923.5236613118963138163.b4-ty@kernel.org>
+Date: Wed, 14 Jan 2026 19:31:58 +0530
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260114_060206_187247_470FDEE9 
+X-CRM114-Status: UNSURE (   6.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,165 +88,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11-01-26, 11:39, Vladimir Oltean wrote:
+
+On Sun, 11 Jan 2026 11:39:29 +0200, Vladimir Oltean wrote:
 > Introduce "rx-polarity" and "tx-polarity" device tree properties.
 > Convert two existing networking use cases - the EN8811H Ethernet PHY and
 > the Mediatek LynxI PCS.
 > 
 > Requested merge strategy:
 > Patches 1-5 through linux-phy
-
-
-The following changes since commit 8f0b4cce4481fb22653697cced8d0d04027cb1e8:
-
-  Linux 6.19-rc1 (2025-12-14 16:05:07 +1200)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git tags/phy_common_properties
-
-for you to fetch changes up to e7556b59ba65179612bce3fa56bb53d1b4fb20db:
-
-  phy: add phy_get_rx_polarity() and phy_get_tx_polarity() (2026-01-14 18:16:05 +0530)
-
-----------------------------------------------------------------
-phy common properties
-
-Vladimir Oltean <vladimir.oltean@nxp.com> wrote:
-
-Introduce "rx-polarity" and "tx-polarity" device tree properties with
-Kunit tests
-
-----------------------------------------------------------------
-Vladimir Oltean (5):
-      dt-bindings: phy: rename transmit-amplitude.yaml to phy-common-props.yaml
-      dt-bindings: phy-common-props: create a reusable "protocol-names" definition
-      dt-bindings: phy-common-props: ensure protocol-names are unique
-      dt-bindings: phy-common-props: RX and TX lane polarity inversion
-      phy: add phy_get_rx_polarity() and phy_get_tx_polarity()
-
- .../devicetree/bindings/phy/phy-common-props.yaml  | 157 ++++++++
- .../bindings/phy/transmit-amplitude.yaml           | 103 -----
- MAINTAINERS                                        |  10 +
- drivers/phy/Kconfig                                |  22 ++
- drivers/phy/Makefile                               |   2 +
- drivers/phy/phy-common-props-test.c                | 422 +++++++++++++++++++++
- drivers/phy/phy-common-props.c                     | 209 ++++++++++
- include/dt-bindings/phy/phy.h                      |   4 +
- include/linux/phy/phy-common-props.h               |  32 ++
- 9 files changed, 858 insertions(+), 103 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/phy/phy-common-props.yaml
- delete mode 100644 Documentation/devicetree/bindings/phy/transmit-amplitude.yaml
- create mode 100644 drivers/phy/phy-common-props-test.c
- create mode 100644 drivers/phy/phy-common-props.c
- create mode 100644 include/linux/phy/phy-common-props.h
-
 > linux-phy provides stable branch or tag to netdev
 > patches 6-10 through netdev
 > 
-> v2 at:
-> https://lore.kernel.org/netdev/20260103210403.438687-1-vladimir.oltean@nxp.com/
-> Changes since v2:
-> - fix bug with existing fwnode which is missing polarity properties.
->   This is supposed to return the default value, not an error. (thanks to
->   Bjørn Mork).
-> - fix inconsistency between PHY_COMMON_PROPS and GENERIC_PHY_COMMON_PROPS
->   Kconfig options by using PHY_COMMON_PROPS everywhere (thanks to Bjørn
->   Mork).
-> 
-> v1 at:
-> https://lore.kernel.org/netdev/20251122193341.332324-1-vladimir.oltean@nxp.com/
-> Changes since v1:
-> - API changes: split error code from returned value; introduce two new
->   helpers for simple driver cases
-> - Add KUnit tests
-> - Bug fixes in core code and in drivers
-> - Defer XPCS patches for later (*)
-> - Convert Mediatek LynxI PCS
-> - Logical change: rx-polarity and tx-polarity refer to the currently
->   described block, and not necessarily to device pins
-> - Apply Rob's feedback
-> - Drop the "joint maintainership" idea.
-> 
-> (*) To simplify the generic XPCS driver, I've decided to make
-> "tx-polarity" default to <PHY_POL_NORMAL>, rather than <PHY_POL_NORMAL>
-> OR <PHY_POL_INVERT> for SJA1105. But in order to avoid breakage, it
-> creates a hard dependency on this patch set being merged *first*:
-> https://lore.kernel.org/netdev/20251118190530.580267-1-vladimir.oltean@nxp.com/
-> so that the SJA1105 driver can provide an XPCS fwnode with the right
-> polarity specified. All patches in context can be seen at:
-> https://github.com/vladimiroltean/linux/tree/phy-polarity-inversion
-> 
-> Original cover letter:
-> 
-> Polarity inversion (described in patch 4/10) is a feature with at least
-> 4 potential new users waiting for a generic description:
-> - Horatiu Vultur with the lan966x SerDes
-> - Daniel Golle with the MaxLinear GSW1xx switches
-> - Bjørn Mork with the AN8811HB Ethernet PHY
-> - Me with a custom SJA1105 board, switch which uses the DesignWare XPCS
-> 
-> I became interested in exploring the problem space because I was averse
-> to the idea of adding vendor-specific device tree properties to describe
-> a common need.
-> 
-> This set contains an implementation of a generic feature that should
-> cater to all known needs that were identified during my documentation
-> phase.
-> 
-> Apart from what is converted here, we also have the following, which I
-> did not touch:
-> - "st,px_rx_pol_inv" - its binding is a .txt file and I don't have time
->   for such a large detour to convert it to dtschema.
-> - "st,pcie-tx-pol-inv" and "st,sata-tx-pol-inv" - these are defined in a
->   .txt schema but are not implemented in any driver. My verdict would be
->   "delete the properties" but again, I would prefer not introducing such
->   dependency to this series.
-> 
-> Vladimir Oltean (10):
->   dt-bindings: phy: rename transmit-amplitude.yaml to
->     phy-common-props.yaml
->   dt-bindings: phy-common-props: create a reusable "protocol-names"
->     definition
->   dt-bindings: phy-common-props: ensure protocol-names are unique
->   dt-bindings: phy-common-props: RX and TX lane polarity inversion
->   phy: add phy_get_rx_polarity() and phy_get_tx_polarity()
->   dt-bindings: net: airoha,en8811h: deprecate "airoha,pnswap-rx" and
->     "airoha,pnswap-tx"
->   net: phy: air_en8811h: deprecate "airoha,pnswap-rx" and
->     "airoha,pnswap-tx"
->   dt-bindings: net: pcs: mediatek,sgmiisys: deprecate "mediatek,pnswap"
->   net: pcs: pcs-mtk-lynxi: pass SGMIISYS OF node to PCS
->   net: pcs: pcs-mtk-lynxi: deprecate "mediatek,pnswap"
-> 
->  .../bindings/net/airoha,en8811h.yaml          |  11 +-
->  .../bindings/net/pcs/mediatek,sgmiisys.yaml   |   7 +-
->  .../bindings/phy/phy-common-props.yaml        | 157 +++++++
->  .../bindings/phy/transmit-amplitude.yaml      | 103 -----
->  MAINTAINERS                                   |  10 +
->  drivers/net/dsa/mt7530-mdio.c                 |   4 +-
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  19 +-
->  drivers/net/pcs/Kconfig                       |   1 +
->  drivers/net/pcs/pcs-mtk-lynxi.c               |  63 ++-
->  drivers/net/phy/Kconfig                       |   1 +
->  drivers/net/phy/air_en8811h.c                 |  53 ++-
->  drivers/phy/Kconfig                           |  22 +
->  drivers/phy/Makefile                          |   2 +
->  drivers/phy/phy-common-props-test.c           | 422 ++++++++++++++++++
->  drivers/phy/phy-common-props.c                | 209 +++++++++
->  include/dt-bindings/phy/phy.h                 |   4 +
->  include/linux/pcs/pcs-mtk-lynxi.h             |   5 +-
->  include/linux/phy/phy-common-props.h          |  32 ++
->  18 files changed, 979 insertions(+), 146 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/phy/phy-common-props.yaml
->  delete mode 100644 Documentation/devicetree/bindings/phy/transmit-amplitude.yaml
->  create mode 100644 drivers/phy/phy-common-props-test.c
->  create mode 100644 drivers/phy/phy-common-props.c
->  create mode 100644 include/linux/phy/phy-common-props.h
-> 
-> -- 
-> 2.43.0
+> [...]
 
+Applied, thanks!
+
+[01/10] dt-bindings: phy: rename transmit-amplitude.yaml to phy-common-props.yaml
+        commit: b7b4dcd96e3dfbb955d152c9ce4b490498b0f4b4
+[02/10] dt-bindings: phy-common-props: create a reusable "protocol-names" definition
+        commit: 33c79865c7d3cc84705ed133c101794902e60269
+[03/10] dt-bindings: phy-common-props: ensure protocol-names are unique
+        commit: 01fc2215940c20bbb22fa196a331ec9d50e45452
+[04/10] dt-bindings: phy-common-props: RX and TX lane polarity inversion
+        commit: fceb17ac05e772ffc82f1f008e876bf7752f0576
+[05/10] phy: add phy_get_rx_polarity() and phy_get_tx_polarity()
+        commit: e7556b59ba65179612bce3fa56bb53d1b4fb20db
+
+Best regards,
 -- 
 ~Vinod
+
+
 
