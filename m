@@ -4,66 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18EBDD31A15
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jan 2026 07:36:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9DD9D31A26
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jan 2026 08:10:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7ckEQlhSo0uNjJNCffM8K18YS1pvTsE1PMOujyFxuJ8=; b=vmDjnPunf4EMsa6Oy6rkj0Cxii
-	I51a40ojqT0EhZGZFjFe47CBNfZ3hnznjDY+3kf4I0rJbqRPrI09PgSIVGvZ2lw8540WOiOz6k2y3
-	513Ogd7LDKJAZkRDBHfqbB7ouBGmQzD1laUQ0U2i+Nwyd45WOM24pHzNHTK2BnCI/uHh0Jpwp9V23
-	wtPv2ycJIuJHckJpwx4Ornm5BlnL+lxW4dsaZYfuLTrUdfW8GVmQMknn4YcDKRCKrGJgoSA8BDty5
-	pfWNridtCQfpjBoLS+GeuGLe6U4tvGu3rn0mwSqHfG3POvnvEemAXx6Fjp9Gb0fUydOd859igAVT4
-	kTS3NrAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=iyQ7CAxaVgfqcnEakSL72b/nQ33nYsikOLFTzPcqfjI=; b=m0AlUq2aWfqSm10CqXvw2lZVRH
+	P5/yZIZNPUgQiEskm0HdXKp9oXSREu16Z14+zVrAoVX1tWMWl/RghmFUp2KNL65mSs0b+llHc/fTW
+	98Vq8Dt7KcdefjO0Chw1423aUJwyRIZ92kgBJGO+WxyfwwQhXIbtEJEbefdNZ4/S0HsRqVp1TAQrZ
+	yy7Tft3nfsKERnV5nJ/AKgI/O2YujT5lIQN3tSdR7Ou2NVbqVz+26TKOLHMDejwced2chisDtL71J
+	Sm56R0j9zeaHY3QRakNFhxsAz6dGzaCVkR3JSAiLqLPxKlfSDofDfOrO5vxdCNW3Gau1lw8RZns0n
+	NVGNgW+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfvQQ-00000008Czr-2pbN;
-	Wed, 14 Jan 2026 07:36:18 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vfvxq-00000008Hbh-12ma;
+	Wed, 14 Jan 2026 08:10:50 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfvQM-00000008Cyn-1umk;
-	Wed, 14 Jan 2026 07:36:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0E1CE438F7;
-	Wed, 14 Jan 2026 07:36:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41D50C4CEF7;
-	Wed, 14 Jan 2026 07:36:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768376172;
-	bh=219ZNTWKZ6kYNfbXo9YLqM426s7JXbLhIYA12mOsA0s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jPWwJoi85/9G7Kor36Kuo2Ljoq1U8Lu1svFRPTWiDIr7VirV/wSvCD5FgJkp3IoQq
-	 Pt2NO0suJtAPSzuCDGwHxEjfA94Gv3gb4+6cTGa1uyoq/roLyF2lAp0qhMbSXI6SC8
-	 5v/MMIoUP/5A5o+4sBe5HlWkkRD2ik3fzMw27grfHn6e7C+3i6zJ8o5QZDp3BnZoFL
-	 jyGwsBMhVkpSWVQDZj9ImYjPEXHs6xhQ2t6nAPRZdYrN22RSsaCybXTjoRjsxXxmHR
-	 Rerd1NgIifYsH/lGQFcXDBmgrclOmIxvQKWNd2i5usZTicWX3746OTqnAKd0/HtDSJ
-	 8pIxYxGxQZ8wQ==
-Date: Wed, 14 Jan 2026 08:36:09 +0100
-From: Andi Shyti <andi.shyti@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Andi Shyti <andi@smida.it>, 
-	Wolfram Sang <wsa+renesas@sang-engineering.com>, Qianfeng Rong <rongqianfeng@vivo.com>, linux-i2c@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	Khalil Blaiech <kblaiech@nvidia.com>, Asmaa Mnebhi <asmaa@nvidia.com>, 
-	Qii Wang <qii.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Linus Walleij <linusw@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Patrice Chotard <patrice.chotard@foss.st.com>, 
-	Ard Biesheuvel <ardb@kernel.org>
-Subject: Re: [PATCH v1 0/7] i2c: busses: Introduce and use HZ_PER_GHZ
-Message-ID: <aWdHRszwPfcniL1q@zenone.zhora.eu>
-References: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
+	id 1vfvxn-00000008Hal-1T4e
+	for linux-mediatek@lists.infradead.org;
+	Wed, 14 Jan 2026 08:10:48 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-42fbc3056afso4850292f8f.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 14 Jan 2026 00:10:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1768378245; x=1768983045; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=iyQ7CAxaVgfqcnEakSL72b/nQ33nYsikOLFTzPcqfjI=;
+        b=J+N6g+tD+nI3hyVDQ7pnxNP7yacB5rRCn3HOr3HJhwmrQIRlry9Cl4MrVZLVMsDR99
+         h3xKPLeSyrjGGGAX9mbUSZA1VqABkrRxRpu1f9Qme2twC/5CxByEROjh6ojgcz1/7H97
+         xul91USCBr0lXRrNuFEA0dZbDRYKBDijTDWYnjxQpaN3O97wIYmSfmIBDryZJNIHIOow
+         BBvHuVhrxg6iCKs4UrvFpZ4oI+cyUjNw8BN08GfK4q+IsfyciRfN2BpBBb5B5okXAT7z
+         PSHi5WgbGKGOgk5Y3oScuY1O5/DApLo1P7+1cSXz4oDzXnpHZzVEJrPjtLaZyZU4kuMx
+         pOUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768378245; x=1768983045;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=iyQ7CAxaVgfqcnEakSL72b/nQ33nYsikOLFTzPcqfjI=;
+        b=RTHFk3dyxsBdNL4fHDvkT21ungNY3iMIk8PRKK8s94ywDo+HvfgvY+x0x6SG5I/eeE
+         74aafa6e0gUwbcgaq0Qx7WHsXT5Jy9GLaonnHSatyN3S9ji7QICbx+LysqOLJZ3oGVls
+         8dpm6ZTwEa6gnxY9JzuuKvWkvNxRFsOyjHxthcrGSvGZTly1XFRARuLmVXl3Ds1vXbDb
+         m8OZSSKweGKUBXjN4AtNM9iFL8bT146Wsgoq4ZVCn0Evm8t9pQSxuahMwD2hCMOZUGSe
+         VuC30Rs0EzPngPyHJxbWVoBaPx+HlwrkI6ts2htH62F84M6QoOXyL2n26oXmEzPEXz31
+         mGpg==
+X-Gm-Message-State: AOJu0YyP72TpWd4Oh2clr82KYdqDilrZefpQJTdEWcK1mPEl+QW8vvoQ
+	QLqO04iyEOFxDtx3lZ2z3aSjkkc35wU352ridalkWpXTUyTm6oET9cI1
+X-Gm-Gg: AY/fxX6Gr+wz/fIig2VHdB8xA79aQVxuqzzr79zfc+h0F+ybBtWdswPDBgoEfejXrfI
+	+V6xOz/hjPs7UmNmQaWIZFYyT3dTLZa8YUt29gXVqi7PXGGVivCCgi/Hi47XftkHKHJz2YILOl0
+	aoVPJbKtHQ0prQ3EawulDNq7DoRLD4fllAA5bUsGwg4ymqCIIkJy75wjdgvjeCf+A6MTvAOC71h
+	E5zvNIN/oMIekDD/1qyIqXCpBLL90pXwcxg5jK7/4tfZI3PvQzWy1/SaX7AqUvQuoIq9WwtW116
+	V1giQEkBYms0uskswkCgp7lE4q5nHQhybISZfomGgppC4/+SqzDPWGxCT1W0J2/sCIKNXdagyir
+	L/j9UVK4cIRpSJO9B+Noue20zeDCxS8D2OPrLGtTab6vl1/QPpXtm3MJRW7xSy6GN5uB8QQQ2aH
+	M0UpWKshRRVEXH6uc0/fd0zMxW5uictLb6TUstbdx51VoLYJF+asDIhewfgjPXU4l+d2s=
+X-Received: by 2002:a05:6000:4024:b0:432:5ce4:6fed with SMTP id ffacd0b85a97d-4342c4f3f3bmr1574271f8f.9.1768378244853;
+        Wed, 14 Jan 2026 00:10:44 -0800 (PST)
+Received: from [192.168.1.27] (84.121.134.198.dyn.user.ono.com. [84.121.134.198])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-432bd5edd51sm48599398f8f.29.2026.01.14.00.10.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 14 Jan 2026 00:10:43 -0800 (PST)
+Message-ID: <0c93f704-40a2-4257-b834-8d0f3c50f2ee@gmail.com>
+Date: Wed, 14 Jan 2026 09:10:42 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V2] mediatek: rename MT8188 SCP firmware
+To: Moudy Ho <moudy.ho@mediatek.com>, linux-firmware@kernel.org
+Cc: linux-mediatek@lists.infradead.org, nfraprado@collabora.com,
+ Jason-ch.Chen@mediatek.com, angelogioacchino.delregno@collabora.com,
+ Macpaul.Lin@mediatek.com
+References: <20260114072433.3076970-1-moudy.ho@mediatek.com>
+ <20260114072433.3076970-2-moudy.ho@mediatek.com>
+Content-Language: en-GB
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20260114072433.3076970-2-moudy.ho@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_233614_534400_127833CE 
-X-CRM114-Status: UNSURE (   5.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260114_001047_399926_5691BDB6 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,19 +102,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+On 14/1/26 08:23, Moudy Ho wrote:
+> The MT8188 device tree (DTS) is configured for dual core SCP, and the
+> driver by default attempts to load "scp_c0.img" as the core 0 firmware.
+> To conform with upstream naming conventions, this patch renames the
+> existing firmware file "scp.img" to "scp_c0.img" to ensure proper firmware
+> loading for dual core SCP.
+> 
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 
-> Andy Shevchenko (7):
->   units: Add HZ_PER_GHZ
->   i2c: mlxbf: Use HZ_PER_GHZ constant instead of custom one
->   i2c: mt65xx: Use HZ_PER_GHZ constant instead of plain number
->   i2c: nomadik: Use HZ_PER_GHZ constant instead of plain number
->   i2c: rk3x: Use HZ_PER_GHZ constant instead of plain number
->   i2c: st: Use HZ_PER_GHZ constant instead of plain number
->   i2c: synquacer: Use HZ_PER_GHZ constant instead of plain number
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-merged to i2c/i2c-host.
+> ---
+>   WHENCE                                  |   3 ++-
+>   mediatek/mt8188/{scp.img => scp_c0.img} | Bin
+>   2 files changed, 2 insertions(+), 1 deletion(-)
+>   rename mediatek/mt8188/{scp.img => scp_c0.img} (100%)
+> 
+> diff --git a/WHENCE b/WHENCE
+> index 4a211c48..fecf42f8 100644
+> --- a/WHENCE
+> +++ b/WHENCE
+> @@ -6057,7 +6057,8 @@ File: mediatek/mt8192/scp.img
+>   Version: v2.0.20536
+>   File: mediatek/mt8195/scp.img
+>   Version: v2.0.21961
+> -File: mediatek/mt8188/scp.img
+> +File: mediatek/mt8188/scp_c0.img
+> +Link: mediatek/mt8188/scp.img -> scp_c0.img
+>   Version: v2.0.27748
+>   File: mediatek/mt8189/scp.img
+>   Version: v1.0.0
+> diff --git a/mediatek/mt8188/scp.img b/mediatek/mt8188/scp_c0.img
+> similarity index 100%
+> rename from mediatek/mt8188/scp.img
+> rename to mediatek/mt8188/scp_c0.img
 
-Thanks,
-Andi
 
