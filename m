@@ -4,83 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38703D31A31
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jan 2026 09:26:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44AD5D31A31
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jan 2026 09:26:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=raSq7QGEUhVHtaVWgQ9mKoAQ+G0ozyI9AkFxNN8FvA4=; b=32VIWH3A4PfK6ukw4Kl0sKE3Do
-	LSJ9GU+XNiZh41XSW/+lNMuYCxXfJ/wyp03j9BSWrj2O7PU1Ef7n3ntwjzLqAp93tnKw0FuWfwz6M
-	iDk6YdHqqk2sPUHHodFXS7CEWxVgPGDCez1NZNoShb5BWCZLOIarSRiOXp9Fakrn7+N4pWggo3rD6
-	tWEIN3uAKmp1DqR50SW0zr1cLiqWFNMISdZmHsN7GPW3Ky8mQTdypS6YnfMquUC2aNZQze6Vc19PF
-	VD2KBpRDq3lg32hqjxxd4WLku+mac5OaaqUEjIJwmEMOoO6FDFLEX1r1zDee0gLkgAh2oD34pZ0Mt
-	UG+fYzgA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3Mlc320+FlKJCeuwXpM+W2OpCU+Z5b0YhwAOgoIjkXE=; b=zHeWm5E1h6PoM9u2sW1+nNlL6o
+	8ivPancCUBNTIXFz2ah+YRm+RRFzRdgc8sqrFHNaRqwxRiY9wm2teJf4ifR110cpWOnVS8tDWlPPv
+	5yll+PDnO5lasELvag6lDQUQn+s64qNHxFi2vJhg+hlMUJ+5JOt/pLyOdomA6rGtgit7qp+ZGvWt8
+	A8Watrkd8R0BnP9zFoNGMA1CSkHd5Q6gdyzEuwtbYOXIbLMQTk0VcUueV1aKizOvo1cwGmJnlAAY/
+	HDe1P1Y+3Pt9zzd3fp+DDDeYMHcS0YRU5on3FGseNVCHMIZOXYrsXeRauhhMWFbJ5oDQ2qLlsqtEK
+	0gycW0vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfx8s-00000008XUx-27qO;
-	Wed, 14 Jan 2026 09:26:18 +0000
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+	id 1vfx9F-00000008Xdn-0PIS;
+	Wed, 14 Jan 2026 09:26:41 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfx8m-00000008XQm-0DXg
-	for linux-mediatek@lists.infradead.org;
-	Wed, 14 Jan 2026 09:26:13 +0000
-Received: by mail-pg1-x52b.google.com with SMTP id 41be03b00d2f7-c1e4a9033abso4423001a12.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Jan 2026 01:26:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1768382771; x=1768987571; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=raSq7QGEUhVHtaVWgQ9mKoAQ+G0ozyI9AkFxNN8FvA4=;
-        b=NG0EsgvKlozywlleFpi9J0Ndw39tgmMY4bxidXocwVqToK7Zoycu4cmjFp27bo5pug
-         Z2UBUgRP+3/vRJeFzoFpX0U8798sOpWESD0weO3qC+hDScuHvg7AC45Ml7+fitDAz7I1
-         m6q2zmfH9mw2u0LVSSWgUXHmHyjxTnzlGoI7M=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768382771; x=1768987571;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=raSq7QGEUhVHtaVWgQ9mKoAQ+G0ozyI9AkFxNN8FvA4=;
-        b=LCcQ9eiPGWPlvJTI2H/qLKxAA4ffV1TpOHlyxEOXWFSEu72+jJQDYDmyoQma3Qkp6f
-         /UzXfEb5jKDa4utAkLo0pIoNYVRys6ICbLR5HWeEYjl8zNTS/U/PK3D7jKG5AcP0G3yB
-         7OxSylGDHnBL5q6s3offvMXEKha4W+bMkg+0WA8RmLgdf0pNZ3pJQ6e/1emg0rIHErK8
-         grabQ8sRQbpaCwe1LjInkgtd044eY7lPPgVGjRvinyDs/6YrIw9ItAf5Q7lHgJT2pFQc
-         cJGOhABcXt0DkGfaHBr3UmTb63ldllN0aUNk0cN0ZbaxPQwVz98Io2pPffwhqKNAOQ1G
-         Z0nQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUg31mFLB0jjFLRDUGum21dJTGwc/2PQQ/kKVQUYPVr/R3/pW52ZdovfRN6rU8QnzECouaRmWng/GDLzC75wA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzE4ig7YLQrHKs4P7bq+ZvMDzme6xHNakwy56NnL2xSL/jH2jj3
-	tC16lsxBDLGOgAsyMYttWMSTGnTqzzOru0OQ7c7AB4DiiInms2fpaD2Vu6J53DCTNQ==
-X-Gm-Gg: AY/fxX4DpDmEeSTyUKo7pSj4RMXTCjCNfBwd0dcuOLFcUzlNoErcls8MXlxUxqSUStu
-	mGUXx+crbFmdvdJaOFHQuZgFr0QFqlZZ+3hP6myxEp2NpQjr/qUyg9B1K6Ei35bFKt+kDu+xPhw
-	S+6PP/PuEgCTsZs/srYeOldRNZahgKKQU04d8eh96h2cRkgcs7g18fHEZqK4CUP5O0dqsemyEdd
-	dFj1bAy16dc8pRP1rCnSVXlWVpEuacyFoQE9E4XNK0QkkGJq5Lpn4BWnsKQ3cveZZWUgYebpHPe
-	elk1miveZum2Zph3o34sN8FsLq1tzxGaGl42pkMT7adngB+vloYj/WMaBdcXExWnp4WNxA5M9t7
-	Fl0VsKHqtFPipyNkthDYMO6aDEn+EjBxT+bWH3JX4DlVDkf6DVPRyQTMhH654h2h8oGdhdt+by7
-	RY8SIl2CdXUQtMQbFhhnliKUrBVQVx5ORvDa2YZ+e0CSgxANmEOaUjUXxjLK+YZgXJcbVc
-X-Received: by 2002:a05:6a20:3c8e:b0:387:5daf:b302 with SMTP id adf61e73a8af0-38bed1f4c9dmr2354200637.65.1768382771115;
-        Wed, 14 Jan 2026 01:26:11 -0800 (PST)
-Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:c346:2298:451a:a3f3])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c4cca06b2edsm22131136a12.32.2026.01.14.01.26.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Jan 2026 01:26:10 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] arm64: dts: mediatek: mt8183-kukui: Clean up IT6505 regulator supply
-Date: Wed, 14 Jan 2026 17:26:04 +0800
-Message-ID: <20260114092605.3916367-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.52.0.457.g6b5491de43-goog
+	id 1vfx9D-00000008Xcs-29sP;
+	Wed, 14 Jan 2026 09:26:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 9D32060052;
+	Wed, 14 Jan 2026 09:26:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 96AE0C19425;
+	Wed, 14 Jan 2026 09:26:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768382798;
+	bh=4J5qG0oRoCaHRtRepzIClWWtTeN8Ko05MVH+M4vCBtc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=dbEWlOCAD5Fu9Ha+kKUDHjXJ00AbRyzFIE5PLYr8LYlfbiFlHjjOvswBMPCudAfO6
+	 ZVk5+huGzVtIcpWJW2FO4lXWPDDX4S6senDxZc9gAs5uzuC4RiATYpLf9Mirl2Xwi0
+	 1IQkazp7fHYtAlr9Egnqy4/5VxjQw5JHCjNycPItbg/4aAx3gdascyg/O/xLYakZ2b
+	 SDqFoVAw1PCU4ciy09VT+dHOVpWUwmXfzIGxJiz+tzgH0mokMuzKNAOUh/+KrSCxbe
+	 /K+6xzHMcScNAq0AGEH3IxwstOcM2TQhkV6SukXd5PQmY35EigEXaVAMl+c4SrtL83
+	 bbXw5Ba2UFfBA==
+Message-ID: <75f9d8c9-20a9-4b7e-a41c-8a17c8288550@kernel.org>
+Date: Wed, 14 Jan 2026 10:26:33 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_012612_128794_A318BE13 
-X-CRM114-Status: GOOD (  10.70  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v2 1/2] dt-bindings: net: airoha: npu: Add
+ EN7581-7996 support
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20260113-airoha-npu-firmware-name-v2-0-28cb3d230206@kernel.org>
+ <20260113-airoha-npu-firmware-name-v2-1-28cb3d230206@kernel.org>
+ <20260114-heretic-optimal-seahorse-bb094d@quoll> <aWdbWN6HS0fRqeDk@lore-desk>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <aWdbWN6HS0fRqeDk@lore-desk>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,39 +120,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Align the name of the regulator with the design schematic. Also fix up
-the gpio property to the new "gpios" property name, and add the
-GPIO_ACTIVE_HIGH flag. The flag is actively ignored in Linux in favor of
-the old "enable-active-high" property; nevertheless it is the correct
-description.
+On 14/01/2026 10:01, Lorenzo Bianconi wrote:
+>> On Tue, Jan 13, 2026 at 09:20:27AM +0100, Lorenzo Bianconi wrote:
+>>> Introduce en7581-npu-7996 compatible string in order to enable MT76 NPU
+>>> offloading for MT7996 (Eagle) chipset since it requires different
+>>> binaries with respect to the ones used for MT7992 on the EN7581 SoC.
+>>>
+>>> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+>>> ---
+>>>  Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml | 1 +
+>>>  1 file changed, 1 insertion(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+>>> index 59c57f58116b568092446e6cfb7b6bd3f4f47b82..96b2525527c14f60754885c1362b9603349a6353 100644
+>>> --- a/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+>>> +++ b/Documentation/devicetree/bindings/net/airoha,en7581-npu.yaml
+>>> @@ -18,6 +18,7 @@ properties:
+>>>    compatible:
+>>>      enum:
+>>>        - airoha,en7581-npu
+>>> +      - airoha,en7581-npu-7996
+>>
+>> This does not warrant new compatible. There is some misunderstanding and
+>> previous discussion asked you to use proper compatible, not invent fake
+>> one for non-existing hardware.  Either you have en7996-npu or
+>> en7581-npu. Not some mixture.
+> 
+> Hi Krzysztof,
+> 
+> We need to specify which fw binaries the airoha NPU module should load
+> according to the MT76 WiFi chipset is running on the board (since the NPU
+> firmware images are not the same for all the different WiFi chipsets).
+> We have two possible combinations:
+> - EN7581 NPU + MT7996 (Eagle)
+> - EN7581 NPU + MT7992 (Kite)
+> 
+> Please note the airoha NPU module is always the same (this is why is just
+> added the -7996 suffix in the compatible string). IIUC you are suggesting
+> to use the 'airoha,en7996-npu' compatible string, right?
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-Just a small cleanup. Not sure if you want the regulator node name also
-fixed?
+No. I am suggesting you need to describe here the hardware. You said
+this EN7581 NPU, so this is the only compatible you get, unless (which
+is not explained anywhere here) that's part of MT799x soc, but then you
+miss that compatible. Really, standard compatible rules apply - so
+either this is SoC element/component or dedicated chip.
 
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index 4b87d4940c8c..a8e257b21a88 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -44,10 +44,10 @@ clk32k: oscillator1 {
- 		clock-output-names = "clk32k";
- 	};
- 
--	it6505_pp18_reg: regulator0 {
-+	pp1800_it6505: regulator0 {
- 		compatible = "regulator-fixed";
--		regulator-name = "it6505_pp18";
--		gpio = <&pio 178 0>;
-+		regulator-name = "pp1800_it6505";
-+		gpios = <&pio 178 GPIO_ACTIVE_HIGH>;
- 		enable-active-high;
- 		vin-supply = <&pp1800_alw>;
- 	};
--- 
-2.52.0.457.g6b5491de43-goog
 
+Best regards,
+Krzysztof
 
