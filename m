@@ -4,96 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54059D31A26
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jan 2026 08:17:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70B43D31A26
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jan 2026 08:24:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rdiAvhIBSkRBz7twMnAqXfiNrByqG73RL/D6sMKeEGU=; b=ocX3H2vp3D79cITYWIbXiTFhyG
-	nROLufwjaEkItp3k+pAeXjZZZYmkdc4fvEFBMtEpJy7tJYiE2Tyi++W2ImyYZH9XPMeQDNqSVacZz
-	7aoupujoCcJwnJWcdmR/QlSOUIaDUw0ybsA+khdfWqxjRYfmMLAnsvjhBqUQvi/AToqa+YN4t8NIL
-	Md8Ri5Klrrk/Jz8FPIY2oGxsIKSsGCTGG1ATZuKgFLB5oMTrMg7srxTFoz3MJz4R/3ST0MEOn9VaL
-	FHCL9JYs93r+q7+m78Yhq1lrtL4x0yOF9X1VwcgXr+bpI1KspoQCT+HZSly916RqImxpIL9/3ah/r
-	5LwT14Eg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L6uGCquBWH6uiGdYe5lVZ12ucv1OD63hx3BorOh4YcA=; b=HiNjJYE+OlX4jI3OgASCUNzkVM
+	MYNt5T6c1A/9+rBYRAfoGlBszk47l4z95ZY3erlYlUxOn0POmCy3Zqj2zSqgmHpUEK/3iXTPBFU77
+	2Oy6mJancrRX4nDk2gF4cs8hErnAivRE9QMdr90zGdmiqtKqlQjTzcZa9bvOfWAh5/WL+NDnvC9o9
+	EG5CC6/YjQwCbRt25EfCzTKl5G7QmwjH+D2n59egVZ/rc8EtYHzfPb1Mjvg2CeAf0gYwM2jrOaFQ5
+	amA5LrdPYxiO4YQ7GfbN8kDhzMPGZ9fJCek4Zu2P2HT2bAzMLBDB0KvJ9vilh4nsvcGCndpIf20Ju
+	sV09jLkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfw3s-00000008IVA-3Q0O;
-	Wed, 14 Jan 2026 08:17:04 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1vfwAc-00000008K9B-3Mm0;
+	Wed, 14 Jan 2026 08:24:02 +0000
+Received: from mgamail.intel.com ([198.175.65.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfw3q-00000008ITf-05ZR
-	for linux-mediatek@lists.infradead.org;
-	Wed, 14 Jan 2026 08:17:03 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-47775fb6cb4so46179255e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Jan 2026 00:17:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768378620; x=1768983420; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=rdiAvhIBSkRBz7twMnAqXfiNrByqG73RL/D6sMKeEGU=;
-        b=jO29s82qyuhuATqj0iTHL96SuxHPpHmVl4kWO79Z5SWRAnUdMKgCBHLwdu7F98uMwV
-         kjr8Tapzgkl+NLHarrf+0H6Vj7YoaDboWywgat5C6ZOe7hXA82vrJ8WIuRYfB6JNb7tu
-         r6bdgm4Dkcp3vGH1T52e1pCyS+yoc5AZvabeUHtGBj8J3+y0uHLJ7XEn5nb+SeW8E/Rg
-         YsXSe+GFL/Xlfr+dQbI3b881irepxlx0JbRY7UcixK3SOG3wENPjmkVFaZXzWYEQHX4d
-         JxzFPWxAJNS/TZgaM4lTMoMepB/VauvazMjSUznJ8vRo8bVmw28Opr+sZj7pFoMtaDCy
-         Dtnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768378620; x=1768983420;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=rdiAvhIBSkRBz7twMnAqXfiNrByqG73RL/D6sMKeEGU=;
-        b=ItN8/l1tL0xDodrsKHsjnRPAMOcdNUlljLtz9gEeuBRJbcS/7IPsW7XicnE5btAy87
-         UCdOLi7TlgHfY3FWEgwaErdaSrK7vgB/2xaDsXCQ0ADemeCDU8R2s2X2AJ56ur8pj91g
-         KSDpOjgHUot30Wixkky7Z5r0KTO6ghFDmZXuBwWr3Mc1CaxRc7cjxsw3FDDo8xB8PcKP
-         55TcwWImcL6WSrvB/q1GjAyT24NzV4X0dsNXZr5952MLrdXPCNtQJdbGrc+mJepXQn6X
-         Gg1zS5p/9VhUXmiMxBLDA1lHrDJx4Q3WqhX0YePZ7X+IB/Wn7Vcg/+3IStwROkK44BSX
-         pqPA==
-X-Forwarded-Encrypted: i=1; AJvYcCX1K9e3ifLAYQpbh2S4L66LeRn3HE3Rj5s5kGujF0fR9dqQrMcrczeOSkQ6eOzu4B7HF8aFApgrQI/xoTK2kA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw0X3z/mHxpdn9gqGtjlHsSvUl+/C5fD50rT+udyf8SYrRzjewg
-	jH/DxD4pDoCbZ0PntuYCrnq8ff9kRaDz4RpBpltIpr4u5KwI9TX5AcvC
-X-Gm-Gg: AY/fxX536Ju3sen2EpWtObKqOnTHXGomuiA2yqfPkNPKTaznV3x/UuIJ+itLW1X/47S
-	n7XgFj/JFYeG7q4TSWeSzEtFXn8gkvdntlKQ1KzCOgY9Pk8jcZIMTrD/u4YehseQWfV5LGjR366
-	ClBGn9cSBXXijXCBR+IcrhTecUCXX6GTXRE03xZk4K98I4zSHeihI12lQo9gfy5SrmcCONm9Za4
-	ssuS1g102FQXCSgCATHFiyjuAlf0PP7Su91OlArEz58gIPO/ioJ29a5KPVynADMqCT2G/3p7non
-	RkO7Xj4ol463kdAHfGFEFTr37z90YO6u5fdNPohvnLBphjBj/vxyl9AWHumNJg9ibZPWhBYRJ0P
-	5qWLACXgcXAvAjMw29x1NVf9AD/uvL3Q6Xi6EmDGLzaK+rCHB1L0TjoBD9oxWfdRu3s8DZXGaKN
-	iaTEZF3NuX3a/vhIfYW5i9xYwB75to4aCqBnPaUyNdTtgnwGzCAJU1N1LeHiLDAt2yQcA=
-X-Received: by 2002:a05:600c:c0d0:b0:47e:e78a:c831 with SMTP id 5b1f17b1804b1-47ee78ac9e2mr3070835e9.36.1768378620011;
-        Wed, 14 Jan 2026 00:17:00 -0800 (PST)
-Received: from [192.168.1.27] (84.121.134.198.dyn.user.ono.com. [84.121.134.198])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-47ee578d37esm15572945e9.1.2026.01.14.00.16.58
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Jan 2026 00:16:59 -0800 (PST)
-Message-ID: <0eb5086c-39f1-4cf3-aa71-440036930052@gmail.com>
-Date: Wed, 14 Jan 2026 09:16:58 +0100
+	id 1vfwAZ-00000008K8F-2zTP;
+	Wed, 14 Jan 2026 08:24:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1768379040; x=1799915040;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=TpSIK25RbvWDNg7QiWIOtxQKPzkkGQzeiPPfyvIi0gk=;
+  b=g+LDosqMgXqI7uaIaZhjqLhXC4FdDirifXXYbS2+8Y4qxZ9duevkPIdt
+   e0VZXly5X2MAul2toIDmhIimwd9EGyqV0GTG58UiIkBL6umOzNvIA0BYZ
+   j8qU6X73nvHRYqnyLJZQC4v8KIzzzONHuisMB4CaexiTnH4XWu/AvghY+
+   M7tyV1Kip3u49sH4AHwyZ31se1lEXYh+9iMA3L5tdwUMOrkRKWAOmwCcH
+   3IiWfc/3ughwMJsGfZoO5A9AxZAS/efh7ZLLs97RVBpgtBxjz4kKmIPkH
+   8Rx5nod5a3pqO+xFenUwzb8oNCnl6H5Uqiba5D9Fqnp9po+RvWaHKRcQH
+   A==;
+X-CSE-ConnectionGUID: KseNro3xRF6l64WxT55mbA==
+X-CSE-MsgGUID: N++AtQT/Sm2/Zmu2FvyhaA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11670"; a="73309097"
+X-IronPort-AV: E=Sophos;i="6.21,225,1763452800"; 
+   d="scan'208";a="73309097"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jan 2026 00:23:58 -0800
+X-CSE-ConnectionGUID: g2NXVMXRT7+6Jm3R7rO9aA==
+X-CSE-MsgGUID: pmU4TLcgSYmvaqOcW2kQ5A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,225,1763452800"; 
+   d="scan'208";a="235333811"
+Received: from pgcooper-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.244.83])
+  by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Jan 2026 00:23:54 -0800
+Date: Wed, 14 Jan 2026 10:23:51 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Andi Shyti <andi.shyti@kernel.org>
+Cc: Andi Shyti <andi@smida.it>,
+	Wolfram Sang <wsa+renesas@sang-engineering.com>,
+	Qianfeng Rong <rongqianfeng@vivo.com>, linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Khalil Blaiech <kblaiech@nvidia.com>,
+	Asmaa Mnebhi <asmaa@nvidia.com>, Qii Wang <qii.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Linus Walleij <linusw@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	Ard Biesheuvel <ardb@kernel.org>
+Subject: Re: [PATCH v1 0/7] i2c: busses: Introduce and use HZ_PER_GHZ
+Message-ID: <aWdSlzLuU_psG_EV@smile.fi.intel.com>
+References: <20260112134900.4142954-1-andriy.shevchenko@linux.intel.com>
+ <aWdHRszwPfcniL1q@zenone.zhora.eu>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] dt-bindings: clock: mediatek,mt7622-pciesys: Remove
- syscon compatible
-Content-Language: en-GB
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com,
- ulf.hansson@linaro.org, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org,
- kernel@collabora.com
-References: <20260113110012.36984-1-angelogioacchino.delregno@collabora.com>
- <20260113110012.36984-2-angelogioacchino.delregno@collabora.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20260113110012.36984-2-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aWdHRszwPfcniL1q@zenone.zhora.eu>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_001702_079897_B3CF798E 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20260114_002359_853131_3E565E63 
+X-CRM114-Status: UNSURE (   8.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,50 +97,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/1/26 12:00, AngeloGioacchino Del Regno wrote:
-> The PCIESYS register space contains a pure clock controller, which
-> has no system controller register, so this definitely doesn't need
-> any "syscon" compatible.
+On Wed, Jan 14, 2026 at 08:36:09AM +0100, Andi Shyti wrote:
+> > Andy Shevchenko (7):
+> >   units: Add HZ_PER_GHZ
+> >   i2c: mlxbf: Use HZ_PER_GHZ constant instead of custom one
+> >   i2c: mt65xx: Use HZ_PER_GHZ constant instead of plain number
+> >   i2c: nomadik: Use HZ_PER_GHZ constant instead of plain number
+> >   i2c: rk3x: Use HZ_PER_GHZ constant instead of plain number
+> >   i2c: st: Use HZ_PER_GHZ constant instead of plain number
+> >   i2c: synquacer: Use HZ_PER_GHZ constant instead of plain number
 > 
-> As a side note, luckily no devicetree ever added the syscon string
-> to PCIESYS clock controller node compatibles, so this also resolves
-> a dtbs_check warning for mt7622.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> merged to i2c/i2c-host.
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Thank you!
 
-> ---
->   .../bindings/clock/mediatek,mt7622-pciesys.yaml        | 10 ++++------
->   1 file changed, 4 insertions(+), 6 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml b/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
-> index 9c3913f9092c..c77111d10f90 100644
-> --- a/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
-> +++ b/Documentation/devicetree/bindings/clock/mediatek,mt7622-pciesys.yaml
-> @@ -14,11 +14,9 @@ maintainers:
->   
->   properties:
->     compatible:
-> -    oneOf:
-> -      - items:
-> -          - const: mediatek,mt7622-pciesys
-> -          - const: syscon
-> -      - const: mediatek,mt7629-pciesys
-> +    enum:
-> +      - mediatek,mt7622-pciesys
-> +      - mediatek,mt7629-pciesys
->   
->     reg:
->       maxItems: 1
-> @@ -40,7 +38,7 @@ additionalProperties: false
->   examples:
->     - |
->       clock-controller@1a100800 {
-> -        compatible = "mediatek,mt7622-pciesys", "syscon";
-> +        compatible = "mediatek,mt7622-pciesys";
->           reg = <0x1a100800 0x1000>;
->           #clock-cells = <1>;
->           #reset-cells = <1>;
+-- 
+With Best Regards,
+Andy Shevchenko
+
 
 
