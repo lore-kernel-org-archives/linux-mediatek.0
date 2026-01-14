@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AB97D31A28
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jan 2026 08:27:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93B7DD31A25
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jan 2026 08:32:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7gkLDGpcH2ixv9Hp34Yj1+ZbXrSOZHF+yU29hk2sNpw=; b=J4LEueNbAJAGlhljnkYaf1TepB
-	x9Kh9ihc1DphFDtv7C2BOklx9RXegLZsRlneXmb5ZGegUoaaenuKsYgnkEsOpRW4AoaGLXzeqMhJ0
-	s1FHdSX58dAua3C1nSynhB2i97NpDTRaOvQ2lkjPNShLwJ4iCwEVExOpu8B6yDG3T6zpuhSMxNIRK
-	CYL6fcZZeRJA0eHspkbazKJH5H8n9qI0O0uh3S7QClzgT285th8Yjzcu0xFtSmAseF5pNW+3nh/sL
-	DPCPQV/EnDF0n5FA5Nm6fpKqs7PuJrbT5m/J3+BnXNXMECJVXAl2ov3ZjytD2PlHcinjYTa4CdA/g
-	3M/vXRUg==;
+	bh=mHcd84zHOUudaHxIV5RcEWlZaOzRYSGxhjtMk9WwAsI=; b=bI9KyTJFMIus3Wi1cLjxcdAJvW
+	QDTGmwRjceo0n9XHZ15UiQEevbogfv3GLI0ZaQMNpFG3vTPeOxv7mzjYfTaa8DfRSNcwujgFYXqFi
+	t6Rzp8uKDrLOuXnrFwfo6FB5FA9/HbUjeXhvDuZbd4yBMmPCxGr7oWfUBshG0ox8OL5P2UM7uvo/M
+	zcXMWZiUSzXCIDyvmP+Pdb+yg4wwYI837X1L9tiW8QlOEk+3MnzgvCGwPf8qQG+mdRmRKFe+uxq6W
+	SSiuwqT785CCYx/6S5gkm71ItRpFIS5jkIg+4maqsRjd/kiIlyJ5VBccAJwXq0ATsGE9Uj0V/Jzx0
+	N4Lw5q/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfwE9-00000008Kqj-3Z7U;
-	Wed, 14 Jan 2026 08:27:41 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vfwJ8-00000008Lj2-1Wf3;
+	Wed, 14 Jan 2026 08:32:50 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfwE6-00000008KpE-3n6R;
-	Wed, 14 Jan 2026 08:27:40 +0000
+	id 1vfwJ4-00000008LhC-3QTs;
+	Wed, 14 Jan 2026 08:32:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768379254;
-	bh=8MK2K1fASDPVnowqxQJ1JsgFLtEXmJrr6pW4o1QRCyc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UdOb5SP5TUuhuFc/WhQJMKtJekNVy54o3R38/WoQOOwEqbI7Va76TVfEYmO9/o7G0
-	 osO2Dkd+3GI4pdGm9DxibTNa3cFFqVe8WfdT+MsFCvNhTXYBstc3/Cqb95tBD0rmIZ
-	 CJ6f+G2Di4ibr0mPV+RLLFpmBuhlT0vNaDbYp21iDG1XCJzos/SAbwVajHb7AAOaKD
-	 WBia4g9eXgNJ4B5l0m6bUV+DiclrhgU/GxxWQTWZRQcoLuhex+WX+X3acRLMP8N2cM
-	 1TqAIYUYg0uEW9ekIygOQAyOdpljqwakRH+bvff9FedRviDiosITXaBb58PXcW+RS0
-	 ZJVO7cSIognsw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1768379563;
+	bh=hoxfy0ER/g+wAyeR3+r8k79uOE64Q3BdVvC8LlDiZg8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=S0blBjPd6ruf3r1TgKzm/WeFINixW9iY8V+LUMdVOBFMvFkCqLj6dYcloMepQpDA4
+	 HLUvaOBD5w7ZFElVNuVUfcPk7NCinOHCm3yKsrFSkKFYjGt3aDdJq4FcucF8Xa+l+e
+	 d/kHJZvGQLA4k2xNjq9Tb/4m3+B2x94rdD/lTniQBxHKU7TnehGnp/iUaDKkEvrxO5
+	 ym3fmwPIh1L0eoC/GQYh1P/rm+6XrVVytlwx5OZhWjRwgI8pMqwHS8qnEwki3sjVw8
+	 MPh1yJXdGzcNTz78aixoVt0anXKwUh7hhJqcTrop0G2UGB+gQyu3kfd9MERdjNJAnk
+	 60v4glXUNkODw==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 73DE517E0139;
-	Wed, 14 Jan 2026 09:27:34 +0100 (CET)
-Message-ID: <b38823d4-1bce-496b-a063-75f2139aa3bd@collabora.com>
-Date: Wed, 14 Jan 2026 09:27:33 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] dt-bindings: arm: mediatek: mmsys: Allow single
- vdo/mmsys endpoint
-To: Rob Herring <robh@kernel.org>
-Cc: krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20260108143934.69634-1-angelogioacchino.delregno@collabora.com>
- <20260113225346.GA367211-robh@kernel.org>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B559B17E0456;
+	Wed, 14 Jan 2026 09:32:42 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260113225346.GA367211-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: linux-mediatek@lists.infradead.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+ matthias.bgg@gmail.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ kernel@collabora.com
+In-Reply-To: <20260113110026.37032-1-angelogioacchino.delregno@collabora.com>
+References: <20260113110026.37032-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8173-evb: Add interrupts to
+ DA9211 regulator
+Message-Id: <176837956268.8998.2468559603116961084.b4-ty@collabora.com>
+Date: Wed, 14 Jan 2026 09:32:42 +0100
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_002739_153682_4CA9AB77 
-X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-CacheID: sfid-20260114_003247_057845_6D0F37FF 
+X-CRM114-Status: UNSURE (   4.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,30 +78,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/01/26 23:53, Rob Herring ha scritto:
-> On Thu, Jan 08, 2026 at 03:39:32PM +0100, AngeloGioacchino Del Regno wrote:
->> The hardware supports using just a single output while leaving all
->> of the others unconfigured (disabled), but the binding did not
->> really allow specifying a single endpoint@0, because in this case
->> one must either:
->>   - Call the subnode `endpoint` and not declare any address and/or
->>     size cells; or
->>   - Call the subnode `endpoint@0` and have at least one more other
->>     endpoint(@1 or @2), and declare address/size cells.
->>
->> Allow specifying a single `endpoint` subnode, without the `@0`
->> implicit suffix to suppress warnings happening on this kind of
->> valid usecase.
+On Tue, 13 Jan 2026 12:00:26 +0100, AngeloGioacchino Del Regno wrote:
+> Add the required pinmux and assign the right interrupts-extended
+> to the DA9211 regulator (PIO pin 15).
 > 
-> This series isn't needed. We've dropped this check from dtc. I'll do a
-> sync with upstream.
 > 
-> In any case, it's also a W=1 warning which wouldn't be my top priority.
-> 
-> Rob
 
-Oh, okay! Thanks for the feedback :D
+Applied to v6.19-next/dts64, thanks!
+
+[1/1] arm64: dts: mediatek: mt8173-evb: Add interrupts to DA9211 regulator
+      commit: 093d6e332259583a94d630897bdb07d6141bff57
 
 Cheers,
 Angelo
+
+
 
