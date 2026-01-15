@@ -4,70 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA3BD41173
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 11:16:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 501F3D41171
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 11:36:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EX2/pdJmOHGJyOPWOoO/jYiC22gEmhP8fRpbvVz1tbA=; b=gMC0ROYTgu7qxIXYUaQ4xkeQiG
-	cy02vWhfbf6lcBr2aOtlJO+3GcAHrW0fIlRESAxWNg4jX318h60mkj8Cg9ZSv/vY5gI4t/ULbBWR4
-	0upI7dJ017BnTnc39m6kfVNekEVbBHoQDkCWXZQ+dJ4VI2tW2f3sQhTRkkTbcusRM0CSRNJtBe1kh
-	9LEp5vX9epfIKFLkKZ/ZP0XetbqdCySlkbyxnXO97vdyps44z6FGvqYhx4yaFknsyc3JzqcA2IKun
-	epvGpnjcXTW4vSbQ7lyld9xRkHMTZs+zH3/CeYp7c3NyvpKW5O85U0ne8tIByUDpbLE/kAw7Dfgh8
-	QDLF3/Rw==;
+	bh=7znxV4iHygEQsdw5X30g1M+0yJ8aZwO2X2LkzHXdX08=; b=204BeS+nBUmCTExclmyVITYMGf
+	XyrgLTOLfz3OxKjiS+9TVWh20J5ZUIgvyFfbcDN+8k6eHhkiijvbz2Vs0IIoKpc7uIH/ZbWxmjvPy
+	rDb60ci1vwJo1Ws9NBBirP8kQMjOC9SOUmnJW2S6lEpg5Z8gU+g4YMotmAElucr6dauDy4xvuHdm2
+	Wv5RmQWj4919Jy+jcK/Yysr8RwCCnh4kBbP/eyjfxIbv0DPeLh7vwQDOkLR7YZUhEcJfy3csaMao5
+	Xb88ShT3VeFmHv8M4oaQhv9fiBZ6y1ekBIv+x05g5PKx2cBzAo6JLei/qqf+vOBJrSkA0HuownSTA
+	X0NE3DXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgLLV-0000000CCsi-02wv;
-	Thu, 15 Jan 2026 11:16:57 +0000
+	id 1vgLeF-0000000CEZ7-3qPX;
+	Thu, 15 Jan 2026 11:36:19 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgLLS-0000000CCrp-1CU8;
-	Thu, 15 Jan 2026 11:16:55 +0000
+	id 1vgLeD-0000000CEYS-0vA2;
+	Thu, 15 Jan 2026 11:36:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768475810;
-	bh=gDZnxx6q0qOAWO0hBNhp6yUK/DLiEBqTd5LIFfrJ1sQ=;
+	s=mail; t=1768476973;
+	bh=2838NbiS+1I9aTZDaFkizTzSaYb5pk5Dt6Y8NWiwHvs=;
 	h=From:To:Cc:Subject:Date:From;
-	b=gTE6zypqItfbmjm4GsreCssgWqf+84qPC4TokgTWJNKpwq5RYs5tHiEH3uJn/m99u
-	 AH8FwNMvh1YyfIWI/e2MusG9Djm3r6VBt/kXeR6jfYjiSWu+F0gYX2M20ZicFEK680
-	 0u0w4kedPWkziui13uMLqPQWmBJOIDj3whkJRnySwQvPozQ5pQh4O8G+2ABsWhZE3y
-	 cxukh4oKq8JUJxKdQPzTM6LvMKqT5JEdYZUj4MmNjiW3YRsH1RYzZc/sLCMWXnXibJ
-	 ymJ35HYNQasnzrxYo96OvH82COZ8Hs4YMvhpFGZFOhrmDPriEA6S/FHmj1DplKK1n8
-	 Ef25U81+5sVXA==
+	b=YH/+Oh2Sn6E8FX9gjDRLpQxpEiu4eghAuxWK4GQUOjPW39tWQ+OyjPq38gSq1ofMB
+	 XCFO9JZeEA/girDwkQfCPaUZcdzAkikPemTM1X5kS9x2AcNwLLcF3gT8rPOhS95Nuc
+	 1p4trT55hIO2OepyiRJ6qaOpfQfuWanKI4Wle+YItrfbU0DHFkkOwOpQ5tbq25XuBL
+	 nEc6yU7NSEGFzhH3z5yFQ78YpAPlRJaUCS5e685rCmQlw7/y84eLCct0X09U5bLlxz
+	 3K+2sniULZLkZOgqR47ylgaJECTNDwQ3zPpM2S//ZwrsztZGRdMmsRAsJA5Px1v1/e
+	 qlDl+eOx2A+/w==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E019717E10C8;
-	Thu, 15 Jan 2026 12:16:49 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6B8A317E01E7;
+	Thu, 15 Jan 2026 12:36:13 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: devicetree@vger.kernel.org
-Cc: andersson@kernel.org,
-	mathieu.poirier@linaro.org,
-	robh@kernel.org,
+To: linux-mediatek@lists.infradead.org
+Cc: robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	tinghan.shen@mediatek.com,
-	olivia.wen@mediatek.com,
-	linux-remoteproc@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
 	kernel@collabora.com
-Subject: [PATCH v2] dt-bindings: remoteproc: mediatek: Remove l1tcm MMIO from MT8188 dual
-Date: Thu, 15 Jan 2026 12:16:45 +0100
-Message-ID: <20260115111645.63295-1-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] arm64: dts: mediatek: mt8186-evb: Add vproc fixed regulator
+Date: Thu, 15 Jan 2026 12:36:08 +0100
+Message-ID: <20260115113608.64817-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_031654_483498_10073060 
-X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-CacheID: sfid-20260115_033617_436314_416958AE 
+X-CRM114-Status: UNSURE (   8.78  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,82 +78,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Even though the MT8188 SoC's Dual-Core SCP IP is practically the
-same as the one found on MT8195, it doesn't have a dedicated L1
-TCM and relies only on SRAM.
+This board at the moment has no support for PMIC regulators, but
+the CCI requires a vproc regulator in order to both stop giving
+dtbs_check warnings and to actually probe.
 
-Set reg/reg-names minItems to 1 globally and override it in all of
-the conditionals for the SoCs that require more, and then split
-the mt8195/8188 conditionals to allow specifying only the cfg MMIO
-on MT8188.
+Since vproc is a system-critical regulator and the bootloader
+enables it at max voltage, model it (at least temporarily) as
+a regulator-fixed and assign it to CCI.
 
-Fixes: 91e0d560b9fd ("dt-bindings: remoteproc: mediatek: Support MT8188 dual-core SCP")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
+ arch/arm64/boot/dts/mediatek/mt8186-evb.dts | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-Changes in v2:
- - Fix dtc warnings and validate again
-
-  CHKDT   ./Documentation/devicetree/bindings
-  LINT    ./Documentation/devicetree/bindings
-  DTEX    Documentation/devicetree/bindings/remoteproc/mtk,scp.example.dts
-  DTC [C] Documentation/devicetree/bindings/remoteproc/mtk,scp.example.dtb
-Done.
-
- .../bindings/remoteproc/mtk,scp.yaml          | 19 +++++++++++++++----
- 1 file changed, 15 insertions(+), 4 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-index 179c98b33b4d..f0cae3e4bc78 100644
---- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-@@ -28,11 +28,11 @@ properties:
-     description:
-       Should contain the address ranges for memory regions SRAM, CFG, and,
-       on some platforms, L1TCM.
--    minItems: 2
-+    minItems: 1
-     maxItems: 3
+diff --git a/arch/arm64/boot/dts/mediatek/mt8186-evb.dts b/arch/arm64/boot/dts/mediatek/mt8186-evb.dts
+index 2667a7424200..a941a931a07c 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8186-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8186-evb.dts
+@@ -22,6 +22,19 @@ memory@40000000 {
+ 		device_type = "memory";
+ 		reg = <0 0x40000000 0 0x80000000>;
+ 	};
++
++	vproc: regulator-vproc12 {
++		compatible = "regulator-fixed";
++		regulator-name = "vproc12";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1200000>;
++		regulator-max-microvolt = <1200000>;
++	};
++};
++
++&cci {
++	proc-supply = <&vproc>;
+ };
  
-   reg-names:
--    minItems: 2
-+    minItems: 1
-     maxItems: 3
- 
-   clocks:
-@@ -185,7 +185,7 @@ allOf:
-     then:
-       properties:
-         reg:
--          maxItems: 3
-+          minItems: 3
-         reg-names:
-           items:
-             - const: sram
-@@ -196,11 +196,22 @@ allOf:
-         compatible:
-           enum:
-             - mediatek,mt8188-scp-dual
-+    then:
-+      properties:
-+        reg:
-+          maxItems: 1
-+        reg-names:
-+          items:
-+            - const: cfg
-+  - if:
-+      properties:
-+        compatible:
-+          enum:
-             - mediatek,mt8195-scp-dual
-     then:
-       properties:
-         reg:
--          maxItems: 2
-+          minItems: 2
-         reg-names:
-           items:
-             - const: cfg
+ &i2c0 {
 -- 
 2.52.0
 
