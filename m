@@ -4,78 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A011D3CC88
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 00:14:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38CE7D3CC88
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 01:27:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=C2EzlVROqB2WDA6Pfe0fjYxuGy8i+tTBtHgwz97po6Q=; b=bm2imEUAzZaWUA0HgNWsTBPwNd
-	quRWBIjwH+5NDjAxXK2eFpPnJuEtifHEUdwSY/jnS+JuTs62XpUcpM3HX0UktPfD4NHrc6kQ6eDWb
-	pNY/7ZZM2WSNX/SlSQbc8S7Si7PNMQm+6vApCId8VPTrxDULWug9bYG/IJAiGFNShwAvQFyZdzxSb
-	ygFGeZcelfJHF5HIjQb8hx1TzIhbhs93qvvUOeTzEvpk+pvD+0mfBKDjugLrPpb/4VJ5VULMCrZ3Q
-	KcLgzoKTcFblXJBfB5N1EKcZjzVCpJ0p/jk6fLS1QfoybwScWVYd00U+OzCY0UmotLQpUqAX/kirC
-	/P+VK5Kw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7nFOQdtCY5WT4xucC+l+5Wmqy1J150GYREjDqaA3sxY=; b=4QBKwOVsTcTr79KahJWBOw5wYN
+	DN1NF7otdHmDduGkY7xqlcoo7qAjuRPS+T03kfYwdZI9g+4/6MIAG83FnwL8E4j3gVr+xWhPQexTr
+	MC7tj9yHZZuyC5KYUSHxyM9JhIQuxRQja1J3qkIE6iA0DqZinIv2U1qkD2Kj3nTgtWMmpGUvU8C9X
+	cW+2XpsKQk9mGofHLYOR7wW4UEr9Xf1gSiUCDq4af58gorrnYLCZ2G18Y9KefWWzhC0amBCjRp1R8
+	o1VFO5Yun8mx3X3jePmyAlXfDxtYCp3TvySZ1W8v3pkLoshEI9ru6oXglnMh2MNWY5BVhkJubCkuV
+	0Y/qVyHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgB0L-0000000BBik-3Wcl;
-	Thu, 15 Jan 2026 00:14:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vgC9K-0000000BOcH-2hLm;
+	Thu, 15 Jan 2026 01:27:46 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgB0K-0000000BBi6-0Q4E;
-	Thu, 15 Jan 2026 00:14:25 +0000
-X-UUID: 225394baf1a711f08b17dd397dc63300-20260114
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=C2EzlVROqB2WDA6Pfe0fjYxuGy8i+tTBtHgwz97po6Q=;
-	b=Nn0FNCwHPIVkg7NjqU5uE28QJEb5jHxVFvvycJfwYSnCK/K/4ezcxzqGtArdt8KW2Uhfq4oaAHjKfvdPpy2fJKUW4634zRo6TL+2hatWduPRJr9+NY6W5USxU27r7Vosanwm5iukxBgjsM4kfG01udRtwSx74NwMYSE4k83NzR0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.9,REQID:34ab7bb1-5998-4531-9740-8110a6c747b5,IP:0,UR
-	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
-	elease,TS:0
-X-CID-META: VersionHash:5047765,CLOUDID:f05285e8-ef90-4382-9c6f-55f2a0689a6b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|123|836|888|898,TC:-5,Content:0|
-	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:
-	0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 225394baf1a711f08b17dd397dc63300-20260114
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <robin.kuo@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 856363866; Wed, 14 Jan 2026 17:14:18 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 15 Jan 2026 08:14:15 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 15 Jan 2026 08:14:15 +0800
-From: <robin.kuo@mediatek.com>
-To: <robin.kuo@mediatek.com>, Andrew Morton <akpm@linux-foundation.org>, Chris
- Li <chrisl@kernel.org>, Kairui Song <kasong@tencent.com>, Kemeng Shi
-	<shikemeng@huaweicloud.com>, Nhat Pham <nphamcs@gmail.com>, Baoquan He
-	<bhe@redhat.com>, Barry Song <baohua@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <wsd_upstream@mediatek.com>, <casper.li@mediatek.com>,
-	<chinwen.chang@mediatek.com>, <Andrew.Yang@mediatek.com>,
-	<Qun-wei.Lin@mediatek.com>, <oliver.sang@intel.com>, <linux-mm@kvack.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH 1/1] Restore swap_space attr aviod krn panic
-Date: Thu, 15 Jan 2026 08:13:43 +0800
-Message-ID: <20260115001405.3513440-1-robin.kuo@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_161424_152620_B2B6A75D 
-X-CRM114-Status: GOOD (  11.15  )
+	id 1vgC9I-0000000BObE-2FPJ;
+	Thu, 15 Jan 2026 01:27:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 74B3060008;
+	Thu, 15 Jan 2026 01:27:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 902FAC4CEF7;
+	Thu, 15 Jan 2026 01:27:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
+	s=korg; t=1768440463;
+	bh=pQ8j9Tn71UcjHmJ1kXhLWOF2qZTGUivD/SECa9XZwOg=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=WaCZwQ2lpVB23m9mvRB7P1BdVy4CxTZrspTarWWH7iC1Y7Vm/y2UnRmacHj8EcHAi
+	 ILBqqksvYmtDVXZ3XjC5q4/lRdA6RQISezqaHVwQig0DO+PKG9cDjQodE6vsbkLH2g
+	 IIRxd/QP6TbOPmU3cW4acl9BGtSbgdbu/uCwtsCg=
+Date: Wed, 14 Jan 2026 17:27:41 -0800
+From: Andrew Morton <akpm@linux-foundation.org>
+To: <robin.kuo@mediatek.com>
+Cc: Chris Li <chrisl@kernel.org>, Kairui Song <kasong@tencent.com>, Kemeng
+ Shi <shikemeng@huaweicloud.com>, Nhat Pham <nphamcs@gmail.com>, Baoquan He
+ <bhe@redhat.com>, Barry Song <baohua@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, <wsd_upstream@mediatek.com>,
+ <casper.li@mediatek.com>, <chinwen.chang@mediatek.com>,
+ <Andrew.Yang@mediatek.com>, <Qun-wei.Lin@mediatek.com>,
+ <oliver.sang@intel.com>, <linux-mm@kvack.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH 1/1] Restore swap_space attr aviod krn panic
+Message-Id: <20260114172741.b8b6cb9aae39a5ae7a199eed@linux-foundation.org>
+In-Reply-To: <20260115001405.3513440-1-robin.kuo@mediatek.com>
+References: <20260115001405.3513440-1-robin.kuo@mediatek.com>
+X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,74 +73,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "robin.kuo" <robin.kuo@mediatek.com>
+On Thu, 15 Jan 2026 08:13:43 +0800 <robin.kuo@mediatek.com> wrote:
 
-Restore swap_space attr avoid krn panic
+> From: "robin.kuo" <robin.kuo@mediatek.com>
+> 
+> Restore swap_space attr avoid krn panic
 
-Commit 8b47299a411a ('mm, swap: mark swap address space ro and add
-context debug check') made the swap address space read-only.
-It may lead to kernel panic if arch_prepare_to_swap returns a failure 
-under heavy memory pressure as follows,
+Thanks, and welcome to Linux ;)
 
-el1_abort+0x40/0x64
-el1h_64_sync_handler+0x48/0xcc
-el1h_64_sync+0x84/0x88
-errseq_set+0x4c/0xb8 (P)
-__filemap_set_wb_err+0x20/0xd0
-shrink_folio_list+0xc20/0x11cc
-evict_folios+0x1520/0x1be4
-try_to_shrink_lruvec+0x27c/0x3dc
-shrink_one+0x9c/0x228
-shrink_node+0xb3c/0xeac
-do_try_to_free_pages+0x170/0x4f0
-try_to_free_pages+0x334/0x534
-__alloc_pages_direct_reclaim+0x90/0x158
-__alloc_pages_slowpath+0x334/0x588
-__alloc_frozen_pages_noprof+0x224/0x2fc
-__folio_alloc_noprof+0x14/0x64
-vma_alloc_zeroed_movable_folio+0x34/0x44
-do_pte_missing+0xad4/0x1040
-handle_mm_fault+0x4a4/0x790
-do_page_fault+0x288/0x5f8
-do_translation_fault+0x38/0x54
-do_mem_abort+0x54/0xa8
+> Commit 8b47299a411a ('mm, swap: mark swap address space ro and add
+> context debug check') made the swap address space read-only.
+> It may lead to kernel panic if arch_prepare_to_swap returns a failure 
+> under heavy memory pressure as follows,
+> 
+> el1_abort+0x40/0x64
+> el1h_64_sync_handler+0x48/0xcc
+> el1h_64_sync+0x84/0x88
+> errseq_set+0x4c/0xb8 (P)
+> __filemap_set_wb_err+0x20/0xd0
+> shrink_folio_list+0xc20/0x11cc
+> evict_folios+0x1520/0x1be4
+> try_to_shrink_lruvec+0x27c/0x3dc
+> shrink_one+0x9c/0x228
+> shrink_node+0xb3c/0xeac
+> do_try_to_free_pages+0x170/0x4f0
+> try_to_free_pages+0x334/0x534
+> __alloc_pages_direct_reclaim+0x90/0x158
+> __alloc_pages_slowpath+0x334/0x588
+> __alloc_frozen_pages_noprof+0x224/0x2fc
+> __folio_alloc_noprof+0x14/0x64
+> vma_alloc_zeroed_movable_folio+0x34/0x44
+> do_pte_missing+0xad4/0x1040
+> handle_mm_fault+0x4a4/0x790
+> do_page_fault+0x288/0x5f8
+> do_translation_fault+0x38/0x54
+> do_mem_abort+0x54/0xa8
+> 
+> Restore swap address space as not ro to avoid the panic.
 
-Restore swap address space as not ro to avoid the panic.
+Well damn.  We have checking tools which should be able to detect this:
+we referenced something which was dropped from kernel memory in the
+calling function's context.  i don't know who I should report this to.
 
-Signed-off-by: robin.kuo <robin.kuo@mediatek.com>
----
- mm/swap.h       | 2 +-
- mm/swap_state.c | 3 +--
- 2 files changed, 2 insertions(+), 3 deletions(-)
+I shall add cc:stable to this patch, to help ensure that it is
+backported into 6.18.x.
 
-diff --git a/mm/swap.h b/mm/swap.h
-index d034c13d8dd2..1bd466da3039 100644
---- a/mm/swap.h
-+++ b/mm/swap.h
-@@ -198,7 +198,7 @@ int swap_writeout(struct folio *folio, struct swap_iocb **swap_plug);
- void __swap_writepage(struct folio *folio, struct swap_iocb **swap_plug);
- 
- /* linux/mm/swap_state.c */
--extern struct address_space swap_space __ro_after_init;
-+extern struct address_space swap_space __read_mostly;
- static inline struct address_space *swap_address_space(swp_entry_t entry)
- {
- 	return &swap_space;
-diff --git a/mm/swap_state.c b/mm/swap_state.c
-index 5f97c6ae70a2..44d228982521 100644
---- a/mm/swap_state.c
-+++ b/mm/swap_state.c
-@@ -37,8 +37,7 @@ static const struct address_space_operations swap_aops = {
- #endif
- };
- 
--/* Set swap_space as read only as swap cache is handled by swap table */
--struct address_space swap_space __ro_after_init = {
-+struct address_space swap_space __read_mostly = {
- 	.a_ops = &swap_aops,
- };
- 
--- 
-2.45.2
 
 
