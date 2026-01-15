@@ -4,81 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84C79D44C46
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 12:57:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEE06D44C46
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 13:10:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jKsvTzx7FGKZSuhZwqpFxxukEJ1TaE9marOwSz35Oq8=; b=DDVZ8c+W98xx44zg38fQ9wVhvR
-	6B+kFSFXFIRaKDJdOeTR731SflQWI8H0rZtWwLni085kG1lzlcMETLl0bg3N2EnbpT0SSq7vIJp+E
-	dQt8XlSKUFGI+Cy+XYGlZO0RLOORQ79eioAFedGoGkUTdStt05/n63P6011hOXwwp2qB6Gu9Y2Xud
-	qRq5Q/8YemaxZQgLRb/4REtp7qKTzIS0qx/aOdy2FgkICjFAyRwF3IkEiZl3s34TH0ClsJObX0D/t
-	POGXPclI0EI+uRN6VXRjlPOrvpPgzwDGGYsugefMiThAFPX7Wu7rTH+r7XaYn1UFMPErqsynKJP7Y
-	bXilNPrQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YP69q32yMgT6rirbxWK59GPFgTZNcMCE7ROQl7g7utI=; b=MzUHS0z9cqOImL
+	pl2iruTCUaFmZOb1QF5KY1ID6AQk/Orbxl7mYJ0X9qeiVzfdMwUaEVa+u2CdLVXs+ymf2BFtASxs5
+	RYGPntLnZAI2dmRXbTdb1uUdahszz8D0vf2dOnXZ4+a2YGky8Cw9OYfWAruroyQbBYvo7JmqzKsSR
+	r8ktsJbQ6KLBcLLMCOQRwZ8+VwBv5qOG/+m+cp7b5loBCQwKLlR+Z1HF0tnlAJUh2d7/RRGq9K/ny
+	IDTPffmEiC2nUgA81Ihn38aux8vFxyxp4LVPBFPslLj5XEN7iRkd1ZEeipYDIB3+LsyLYj866kSje
+	CO0Jj+IjDHBaTpLnhdWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgMuL-0000000CMZz-2FeP;
-	Thu, 15 Jan 2026 12:57:01 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vgN7b-0000000COAh-2XmU;
+	Thu, 15 Jan 2026 13:10:43 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgMuE-0000000CMRY-1woz;
-	Thu, 15 Jan 2026 12:56:55 +0000
+	id 1vgN7Y-0000000CO9g-2t6S;
+	Thu, 15 Jan 2026 13:10:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768481811;
-	bh=5c73jSB5V916CT35L36ZsmgrVWA8Vvvy6jaycwwPDQU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=JZhEIDgYj+2dJ+8Z6AaGGwdgiGAncfG9P2Xmzf5svHPgghSEuJPkGFH5elw7IlPsj
-	 muU/qnYPTm4Hh9mdj6J5OusJyq+W8ijj5/WNgbfV+CTzzB+fjkO64H9KXrzF5JzTg/
-	 fpnGdYyLvrueNp+46fsxBduHSQZkhR1S+hyNJtVJgB5cJRgVNKTrmkA+1ZlsOijZqp
-	 nF5am7vlnuY+ILx/dm+m30Aw7bvKHYviokJMaX+yPUHawgBsrMi6ZeALFR9TbzU7Bn
-	 BqVjexWJ+YSP6x2TRA+Je5x7CTpjGJgc+FW2PfR5PPGyTnpnQqhR62DVRmPj2iz6TK
-	 XPNoA6ClZoR5w==
+	s=mail; t=1768482638;
+	bh=dWXWKnfDVR+IlEHGZ7ZNUwzNrPO+NGwKp0fV3hm++hk=;
+	h=From:To:Cc:Subject:Date:From;
+	b=AxBkfOiCV54NRAY1JslEhpl8RDtPEjACijHqqEt3hCj+laH6qFRbiSm/easIXweGo
+	 nUmPWSW6/yZha+1kzxYnVwIeC+z6+KuiKZbfxZ+UwzU89sZkYWUSNJ+Ms4I61hRX9M
+	 sl8F2kz8WnAWv2TO5Kq9E42ZdBwoAa4EKIV7qAKdHGwT/RBt23EG+DlpLDOV70ObhX
+	 X0FwleJuwAliSCls6CSlmU1HaasgsvTgDBps6x9k4mvNaKxgZdrSbW2S7fYYUIKz2O
+	 5Ty8y/4bGjSztsUDgyzS5uHlQzP1KS8J7s9Eu2L3yz+84lXYlyuXG6IMAWHu7HDPbC
+	 QN8MG7Tm2i/cg==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9907A17E1406;
-	Thu, 15 Jan 2026 13:56:50 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0EF4B17E10F8;
+	Thu, 15 Jan 2026 14:10:38 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: robh@kernel.org
-Cc: krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	tudor.ambarus@linaro.org,
-	pratyush@kernel.org,
-	mwalle@kernel.org,
-	miquel.raynal@bootlin.com,
-	richard@nod.at,
-	vigneshr@ti.com,
-	lgirdwood@gmail.com,
-	broonie@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	julien.massot@collabora.com,
-	eugen.hristev@linaro.org,
-	jiaxin.yu@mediatek.com,
-	shane.chien@mediatek.com,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mtd@lists.infradead.org,
-	linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	kernel@collabora.com
-Subject: [PATCH 4/4] arm64: dts: mediatek: mt8192: Rename mt8192-afe-pcm to audio-controller
-Date: Thu, 15 Jan 2026 13:56:24 +0100
-Message-ID: <20260115125624.73598-5-angelogioacchino.delregno@collabora.com>
+To: linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] arm64: dts: mediatek: mt7988a: Fix PCI-Express T-PHY node address
+Date: Thu, 15 Jan 2026 14:10:35 +0100
+Message-ID: <20260115131035.75574-1-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260115125624.73598-1-angelogioacchino.delregno@collabora.com>
-References: <20260115125624.73598-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_045654_668954_B2E8732C 
-X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-CacheID: sfid-20260115_051040_903057_A71AA00C 
+X-CRM114-Status: UNSURE (   9.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,33 +66,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: robh@kernel.org, conor+dt@kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Device tree nodes should have generic names, and this one doesn't.
-Rename the mt8192-afe-pcm subnode of audsys to `audio-controller`.
+The PCIe and USB TPHYs are under the soc bus, which provides MMIO,
+and all nodes under that must use the bus, otherwise those would
+clearly be out of place.
 
-This commit brings no functional changes, but resolves dtbs_check
-warnings.
+Add ranges to both the tphy(s) and assign the address to the main
+node to silence a dtbs_check warning, and fix the children to
+use the MMIO range of t-phy.
 
+Fixes: ("f693e6ba55ae arm64: dts: mediatek: mt7988: Add t-phy for ssusb1")
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 28 +++++++++++------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 47dea10dd3b8..9f8f115edd4c 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -973,7 +973,7 @@ audsys: syscon@11210000 {
- 			reg = <0 0x11210000 0 0x2000>;
- 			#clock-cells = <1>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+index bec590d26659..8c9a5aba2579 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
+@@ -629,20 +629,20 @@ pcie_intc1: interrupt-controller {
+ 		tphy: t-phy@11c50000 {
+ 			compatible = "mediatek,mt7986-tphy",
+ 				     "mediatek,generic-tphy-v2";
+-			#address-cells = <2>;
+-			#size-cells = <2>;
+-			ranges;
++			#address-cells = <1>;
++			#size-cells = <1>;
++			ranges = <0 0 0x11c50000 0x1000>;
+ 			status = "disabled";
  
--			afe: mt8192-afe-pcm {
-+			afe: audio-controller {
- 				compatible = "mediatek,mt8192-audio";
- 				interrupts = <GIC_SPI 202 IRQ_TYPE_LEVEL_HIGH 0>;
- 				resets = <&watchdog 17>;
+-			tphyu2port0: usb-phy@11c50000 {
+-				reg = <0 0x11c50000 0 0x700>;
++			tphyu2port0: usb-phy@0 {
++				reg = <0 0x700>;
+ 				clocks = <&infracfg CLK_INFRA_USB_UTMI_CK_P1>;
+ 				clock-names = "ref";
+ 				#phy-cells = <1>;
+ 			};
+ 
+-			tphyu3port0: usb-phy@11c50700 {
+-				reg = <0 0x11c50700 0 0x900>;
++			tphyu3port0: usb-phy@700 {
++				reg = <0x700 0x900>;
+ 				clocks = <&infracfg CLK_INFRA_USB_PIPE_CK_P1>;
+ 				clock-names = "ref";
+ 				#phy-cells = <1>;
+@@ -659,20 +659,20 @@ topmisc: system-controller@11d10084 {
+ 		xsphy: xs-phy@11e10000 {
+ 			compatible = "mediatek,mt7988-xsphy",
+ 				     "mediatek,xsphy";
+-			#address-cells = <2>;
+-			#size-cells = <2>;
+-			ranges;
++			#address-cells = <1>;
++			#size-cells = <1>;
++			ranges = <0 0 0x11e10000 0x3900>;
+ 			status = "disabled";
+ 
+-			xphyu2port0: usb-phy@11e10000 {
+-				reg = <0 0x11e10000 0 0x400>;
++			xphyu2port0: usb-phy@0 {
++				reg = <0 0x400>;
+ 				clocks = <&infracfg CLK_INFRA_USB_UTMI>;
+ 				clock-names = "ref";
+ 				#phy-cells = <1>;
+ 			};
+ 
+-			xphyu3port0: usb-phy@11e13000 {
+-				reg = <0 0x11e13400 0 0x500>;
++			xphyu3port0: usb-phy@3400 {
++				reg = <0x3400 0x500>;
+ 				clocks = <&infracfg CLK_INFRA_USB_PIPE>;
+ 				clock-names = "ref";
+ 				#phy-cells = <1>;
 -- 
 2.52.0
 
