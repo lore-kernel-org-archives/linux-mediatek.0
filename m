@@ -4,61 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38CE7D3CC88
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 01:27:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31E56D3CCA6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 03:20:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7nFOQdtCY5WT4xucC+l+5Wmqy1J150GYREjDqaA3sxY=; b=4QBKwOVsTcTr79KahJWBOw5wYN
-	DN1NF7otdHmDduGkY7xqlcoo7qAjuRPS+T03kfYwdZI9g+4/6MIAG83FnwL8E4j3gVr+xWhPQexTr
-	MC7tj9yHZZuyC5KYUSHxyM9JhIQuxRQja1J3qkIE6iA0DqZinIv2U1qkD2Kj3nTgtWMmpGUvU8C9X
-	cW+2XpsKQk9mGofHLYOR7wW4UEr9Xf1gSiUCDq4af58gorrnYLCZ2G18Y9KefWWzhC0amBCjRp1R8
-	o1VFO5Yun8mx3X3jePmyAlXfDxtYCp3TvySZ1W8v3pkLoshEI9ru6oXglnMh2MNWY5BVhkJubCkuV
-	0Y/qVyHA==;
+	bh=mFqFy9RQ3dA/nnw7r8tpBx+hUWY1mAD76Qmk6/4Ilf8=; b=zH9j1eYCQNCyS0H/BTUU4bU2Si
+	1cx+7sakT9eNr/mBY6WOC5qucr07uqXnoEc8/mDyENDlIeCj/96xDhFLqtKwZiM/BP0GQhY7/VUfx
+	PQzSXVCUfVXHL/6u7/WUQ11kZYIpa+tN/5oyc2bD2eJ9qm8w+eGPc9nUHcTl5lnj29T9Ec0n8Eq9d
+	zrtjVZf+X+Xn1iLjd2h18ZuOvEX4k5Y65assyO6hXvFkiWIQfMiqM8kSGvZuC6N8a8IPMTNzKfyx5
+	ErSCZgvB3cGOlRcy4VoHk7Tf4HlA4mOfjrfxz1qt7IlawjgnFLxZULNHxBG7t4T+KG8AwOyV3XEoa
+	mEwQiqSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgC9K-0000000BOcH-2hLm;
-	Thu, 15 Jan 2026 01:27:46 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vgDuW-0000000BfAR-2pme;
+	Thu, 15 Jan 2026 03:20:36 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgC9I-0000000BObE-2FPJ;
-	Thu, 15 Jan 2026 01:27:44 +0000
+	id 1vgDuU-0000000BfA4-2bHt;
+	Thu, 15 Jan 2026 03:20:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 74B3060008;
-	Thu, 15 Jan 2026 01:27:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 902FAC4CEF7;
-	Thu, 15 Jan 2026 01:27:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
-	s=korg; t=1768440463;
-	bh=pQ8j9Tn71UcjHmJ1kXhLWOF2qZTGUivD/SECa9XZwOg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=WaCZwQ2lpVB23m9mvRB7P1BdVy4CxTZrspTarWWH7iC1Y7Vm/y2UnRmacHj8EcHAi
-	 ILBqqksvYmtDVXZ3XjC5q4/lRdA6RQISezqaHVwQig0DO+PKG9cDjQodE6vsbkLH2g
-	 IIRxd/QP6TbOPmU3cW4acl9BGtSbgdbu/uCwtsCg=
-Date: Wed, 14 Jan 2026 17:27:41 -0800
-From: Andrew Morton <akpm@linux-foundation.org>
-To: <robin.kuo@mediatek.com>
-Cc: Chris Li <chrisl@kernel.org>, Kairui Song <kasong@tencent.com>, Kemeng
- Shi <shikemeng@huaweicloud.com>, Nhat Pham <nphamcs@gmail.com>, Baoquan He
- <bhe@redhat.com>, Barry Song <baohua@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, <wsd_upstream@mediatek.com>,
- <casper.li@mediatek.com>, <chinwen.chang@mediatek.com>,
- <Andrew.Yang@mediatek.com>, <Qun-wei.Lin@mediatek.com>,
- <oliver.sang@intel.com>, <linux-mm@kvack.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH 1/1] Restore swap_space attr aviod krn panic
-Message-Id: <20260114172741.b8b6cb9aae39a5ae7a199eed@linux-foundation.org>
-In-Reply-To: <20260115001405.3513440-1-robin.kuo@mediatek.com>
-References: <20260115001405.3513440-1-robin.kuo@mediatek.com>
-X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+	by tor.source.kernel.org (Postfix) with ESMTP id BF50A6013D;
+	Thu, 15 Jan 2026 03:20:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D65A0C4CEF7;
+	Thu, 15 Jan 2026 03:20:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768447233;
+	bh=NZBpd9t2dldHK6s4UhFBzTXNvxgBqXHlaYvR/qr30rY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Aj+jOaiB7zFl09qMBn2aj2Ned+uil/px7IejjD39h0g5I02X/RboOjclmd+RDbmwe
+	 NmpA6fmbjMjr47OeguoANjamUlCczqurohFhWRDClOZYOOIoT3JKxHjnd9ZNlhNcJg
+	 iOvZmEAGazei5Rv2DiRJ7NVyCVMsCTTC85d8G2d1la+TuMiqnlrfYExjz3Q7dWWIOK
+	 agwrzvr/UNPzCePYlbO1JJKGDULq63pdtMlg4cpLwfEDJoS73Al9QZ2ZtNKhMF2Vk4
+	 jHeJP4ekef8FBgyG8RVSybt6GqgD8U7wP3FlMOtQ/vin8soqNXi+s2F8RksZMG2ASd
+	 kvrxJeCGTwulA==
+From: Jakub Kicinski <kuba@kernel.org>
+To: jibin.zhang@mediatek.com
+Cc: Jakub Kicinski <kuba@kernel.org>,
+	davem@davemloft.net,
+	matthias.bgg@gmail.com,
+	horms@kernel.org,
+	angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	ncardwell@google.com,
+	pabeni@redhat.com,
+	edumazet@google.com,
+	kuniyu@google.com,
+	netdev@vger.kernel.org,
+	dsahern@kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [v2] net: fix segmentation of forwarding fraglist GRO
+Date: Wed, 14 Jan 2026 19:20:30 -0800
+Message-ID: <20260115032030.1539127-1-kuba@kernel.org>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20260111112355.21504-1-jibin.zhang@mediatek.com>
+References: <20260111112355.21504-1-jibin.zhang@mediatek.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,50 +79,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 15 Jan 2026 08:13:43 +0800 <robin.kuo@mediatek.com> wrote:
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least pausible.
 
-> From: "robin.kuo" <robin.kuo@mediatek.com>
-> 
-> Restore swap_space attr avoid krn panic
+For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-local.html
+---
+net: fix segmentation of forwarding fraglist GRO
 
-Thanks, and welcome to Linux ;)
+This patch adds checks for frag_list presence and protocol consistency
+when handling SKB_GSO_FRAGLIST packets in GSO segmentation. This ensures
+XLAT-converted packets fall back to skb_segment instead of skb_segment_list.
 
-> Commit 8b47299a411a ('mm, swap: mark swap address space ro and add
-> context debug check') made the swap address space read-only.
-> It may lead to kernel panic if arch_prepare_to_swap returns a failure 
-> under heavy memory pressure as follows,
-> 
-> el1_abort+0x40/0x64
-> el1h_64_sync_handler+0x48/0xcc
-> el1h_64_sync+0x84/0x88
-> errseq_set+0x4c/0xb8 (P)
-> __filemap_set_wb_err+0x20/0xd0
-> shrink_folio_list+0xc20/0x11cc
-> evict_folios+0x1520/0x1be4
-> try_to_shrink_lruvec+0x27c/0x3dc
-> shrink_one+0x9c/0x228
-> shrink_node+0xb3c/0xeac
-> do_try_to_free_pages+0x170/0x4f0
-> try_to_free_pages+0x334/0x534
-> __alloc_pages_direct_reclaim+0x90/0x158
-> __alloc_pages_slowpath+0x334/0x588
-> __alloc_frozen_pages_noprof+0x224/0x2fc
-> __folio_alloc_noprof+0x14/0x64
-> vma_alloc_zeroed_movable_folio+0x34/0x44
-> do_pte_missing+0xad4/0x1040
-> handle_mm_fault+0x4a4/0x790
-> do_page_fault+0x288/0x5f8
-> do_translation_fault+0x38/0x54
-> do_mem_abort+0x54/0xa8
-> 
-> Restore swap address space as not ro to avoid the panic.
+> diff --git a/net/ipv4/tcp_offload.c b/net/ipv4/tcp_offload.c
+> index fdda18b1abda..6c2c10f37f87 100644
+> --- a/net/ipv4/tcp_offload.c
+> +++ b/net/ipv4/tcp_offload.c
+> @@ -107,7 +107,9 @@ static struct sk_buff *tcp4_gso_segment(struct sk_buff *skb,
+>  	if (skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) {
+>  		struct tcphdr *th = tcp_hdr(skb);
+>
+> -		if (skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size)
+> +		if ((skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size) &&
+> +		    skb_has_frag_list(skb) &&
+> +		    (skb->protocol == skb_shinfo(skb)->frag_list->protocol))
+>  			return __tcp4_gso_segment_list(skb, features);
 
-Well damn.  We have checking tools which should be able to detect this:
-we referenced something which was dropped from kernel memory in the
-calling function's context.  i don't know who I should report this to.
+Should tcp6_gso_segment() in net/ipv6/tcpv6_offload.c receive the same
+treatment? Looking at that function, it has the identical pattern before
+this patch:
 
-I shall add cc:stable to this patch, to help ensure that it is
-backported into 6.18.x.
+    if (skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) {
+        struct tcphdr *th = tcp_hdr(skb);
 
+        if (skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size)
+            return __tcp6_gso_segment_list(skb, features);
 
+        skb->ip_summed = CHECKSUM_NONE;
+    }
+
+If an IPv4 packet is GRO-aggregated with fraglist and then converted by
+XLAT to IPv6, the same protocol mismatch could occur when it reaches
+tcp6_gso_segment(). Paolo raised this point in the v1 review:
+https://lore.kernel.org/all/aab6c515-12e4-48ca-8220-c0797dae781f@redhat.com/
+
+[ ... ]
+-- 
+pw-bot: cr
 
