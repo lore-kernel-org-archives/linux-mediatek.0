@@ -4,57 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEE06D44C46
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 13:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D479CD44C41
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 13:17:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YP69q32yMgT6rirbxWK59GPFgTZNcMCE7ROQl7g7utI=; b=MzUHS0z9cqOImL
-	pl2iruTCUaFmZOb1QF5KY1ID6AQk/Orbxl7mYJ0X9qeiVzfdMwUaEVa+u2CdLVXs+ymf2BFtASxs5
-	RYGPntLnZAI2dmRXbTdb1uUdahszz8D0vf2dOnXZ4+a2YGky8Cw9OYfWAruroyQbBYvo7JmqzKsSR
-	r8ktsJbQ6KLBcLLMCOQRwZ8+VwBv5qOG/+m+cp7b5loBCQwKLlR+Z1HF0tnlAJUh2d7/RRGq9K/ny
-	IDTPffmEiC2nUgA81Ihn38aux8vFxyxp4LVPBFPslLj5XEN7iRkd1ZEeipYDIB3+LsyLYj866kSje
-	CO0Jj+IjDHBaTpLnhdWA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RXVzOxFkgWBKQMNVu/rXBMKFrSMtpSEwuzmuFE6pyAU=; b=apYEsUfjFEGhRYj2rQAQdCVhSP
+	+na/KK+ETI7NlEyEzNeZT/MNhE6kQkAypK0+zHpZFI16+LdJJPrn9l+//KGr3TxB/7UWTA8PBzR7H
+	wKt8s7wUSyh38d9GgeQ2jxyqN+3vF8ntADbdyTAz3YEDoGkWxwPHsdFNCBG7xEqhEzQYZL5fDIclo
+	5cLQwFXF6/AHIQ0cROCVdi8m376RxOEFGcrFI6O/fHr1bRM23IJv80IBGShqjrBNL+qTJ9e1wSMuy
+	PPOEYIt/8bhXTVDQ8fIRCdMJoxwYwZRSQE4X0OcAsQwC9ilko6xJS+QvexH4TXQ22wl7cWP+VaNkn
+	N3hdAeQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgN7b-0000000COAh-2XmU;
-	Thu, 15 Jan 2026 13:10:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vgNDg-0000000COrB-3DDF;
+	Thu, 15 Jan 2026 13:17:00 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgN7Y-0000000CO9g-2t6S;
-	Thu, 15 Jan 2026 13:10:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768482638;
-	bh=dWXWKnfDVR+IlEHGZ7ZNUwzNrPO+NGwKp0fV3hm++hk=;
-	h=From:To:Cc:Subject:Date:From;
-	b=AxBkfOiCV54NRAY1JslEhpl8RDtPEjACijHqqEt3hCj+laH6qFRbiSm/easIXweGo
-	 nUmPWSW6/yZha+1kzxYnVwIeC+z6+KuiKZbfxZ+UwzU89sZkYWUSNJ+Ms4I61hRX9M
-	 sl8F2kz8WnAWv2TO5Kq9E42ZdBwoAa4EKIV7qAKdHGwT/RBt23EG+DlpLDOV70ObhX
-	 X0FwleJuwAliSCls6CSlmU1HaasgsvTgDBps6x9k4mvNaKxgZdrSbW2S7fYYUIKz2O
-	 5Ty8y/4bGjSztsUDgyzS5uHlQzP1KS8J7s9Eu2L3yz+84lXYlyuXG6IMAWHu7HDPbC
-	 QN8MG7Tm2i/cg==
-Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0EF4B17E10F8;
-	Thu, 15 Jan 2026 14:10:38 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: linux-mediatek@lists.infradead.org
-Subject: [PATCH v2] arm64: dts: mediatek: mt7988a: Fix PCI-Express T-PHY node address
-Date: Thu, 15 Jan 2026 14:10:35 +0100
-Message-ID: <20260115131035.75574-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.52.0
+	id 1vgNDf-0000000COqf-2yDp;
+	Thu, 15 Jan 2026 13:16:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2862460195;
+	Thu, 15 Jan 2026 13:16:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0634BC116D0;
+	Thu, 15 Jan 2026 13:16:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768483018;
+	bh=NEHndrv/GFLkXIcpeLx+QdTY9TQn1VHLAJq60OQCti0=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=NTNrOMeDrEwZPo0YuwydGexojvyGkalxYJsGJuevjCwnIuZyq7chxL69MRA1sxONM
+	 iqkmkPjX1P5gPB8knUCiRkNirOCBmtiZuFWKQdVreqOcZrncGESC9hY5gzUT0BDF9Y
+	 OJ70HjfDAtGrcOu4tXbtxCgV+j0Im8Rsnr0VgPAJypz+dzEOk+MIax888XnRWFKhl1
+	 6ub7q9aDNDNJD2DEvH6O5j7AfkvKGt7m7qKjfmTwRMnbzGMFBR7HMvFoJVCbrNJ6bo
+	 41TmKxXa3Q+stIjrAo4N+YevgIs3h/eeR62Rj9KqUDGoZnWI5jJhTNQTbNhrosIC8g
+	 W08/SSRR5Yshw==
+From: Pratyush Yadav <pratyush@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh@kernel.org,  krzk+dt@kernel.org,  conor+dt@kernel.org,
+  tudor.ambarus@linaro.org,  pratyush@kernel.org,  mwalle@kernel.org,
+  miquel.raynal@bootlin.com,  richard@nod.at,  vigneshr@ti.com,
+  lgirdwood@gmail.com,  broonie@kernel.org,  matthias.bgg@gmail.com,
+  julien.massot@collabora.com,  eugen.hristev@linaro.org,
+  jiaxin.yu@mediatek.com,  shane.chien@mediatek.com,
+  devicetree@vger.kernel.org,  linux-kernel@vger.kernel.org,
+  linux-mtd@lists.infradead.org,  linux-sound@vger.kernel.org,
+  linux-arm-kernel@lists.infradead.org,
+  linux-mediatek@lists.infradead.org,  kernel@collabora.com
+Subject: Re: [PATCH 1/4] dt-bindings: mtd: jedec,spi-nor: Add Winbond
+ W25Q(32/64/128/256)JWM
+In-Reply-To: <20260115125624.73598-2-angelogioacchino.delregno@collabora.com>
+	(AngeloGioacchino Del Regno's message of "Thu, 15 Jan 2026 13:56:21
+	+0100")
+References: <20260115125624.73598-1-angelogioacchino.delregno@collabora.com>
+	<20260115125624.73598-2-angelogioacchino.delregno@collabora.com>
+Date: Thu, 15 Jan 2026 13:16:53 +0000
+Message-ID: <2vxz5x93818a.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_051040_903057_A71AA00C 
-X-CRM114-Status: UNSURE (   9.40  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,85 +76,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com, krzk+dt@kernel.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PCIe and USB TPHYs are under the soc bus, which provides MMIO,
-and all nodes under that must use the bus, otherwise those would
-clearly be out of place.
+On Thu, Jan 15 2026, AngeloGioacchino Del Regno wrote:
 
-Add ranges to both the tphy(s) and assign the address to the main
-node to silence a dtbs_check warning, and fix the children to
-use the MMIO range of t-phy.
+> Add Winbond W25Q32JWM, W25Q64JWM, W25Q128JWM, W25Q256JWM to the
+> allowed compatible strings pattern.
+>
+> This also resolves a dtbs_check warning happening on all of the
+> MediaTek MT8192 Chromebooks devicetrees (for winbond,w25q64jwm).
 
-Fixes: ("f693e6ba55ae arm64: dts: mediatek: mt7988: Add t-phy for ssusb1")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt7988a.dtsi | 28 +++++++++++------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+We normally don't allow adding any more device-specific compatibles.
+This list here is only for legacy DTS. You should be using
+"jedec,spi-nor" in your device trees.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-index bec590d26659..8c9a5aba2579 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a.dtsi
-@@ -629,20 +629,20 @@ pcie_intc1: interrupt-controller {
- 		tphy: t-phy@11c50000 {
- 			compatible = "mediatek,mt7986-tphy",
- 				     "mediatek,generic-tphy-v2";
--			#address-cells = <2>;
--			#size-cells = <2>;
--			ranges;
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+			ranges = <0 0 0x11c50000 0x1000>;
- 			status = "disabled";
- 
--			tphyu2port0: usb-phy@11c50000 {
--				reg = <0 0x11c50000 0 0x700>;
-+			tphyu2port0: usb-phy@0 {
-+				reg = <0 0x700>;
- 				clocks = <&infracfg CLK_INFRA_USB_UTMI_CK_P1>;
- 				clock-names = "ref";
- 				#phy-cells = <1>;
- 			};
- 
--			tphyu3port0: usb-phy@11c50700 {
--				reg = <0 0x11c50700 0 0x900>;
-+			tphyu3port0: usb-phy@700 {
-+				reg = <0x700 0x900>;
- 				clocks = <&infracfg CLK_INFRA_USB_PIPE_CK_P1>;
- 				clock-names = "ref";
- 				#phy-cells = <1>;
-@@ -659,20 +659,20 @@ topmisc: system-controller@11d10084 {
- 		xsphy: xs-phy@11e10000 {
- 			compatible = "mediatek,mt7988-xsphy",
- 				     "mediatek,xsphy";
--			#address-cells = <2>;
--			#size-cells = <2>;
--			ranges;
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+			ranges = <0 0 0x11e10000 0x3900>;
- 			status = "disabled";
- 
--			xphyu2port0: usb-phy@11e10000 {
--				reg = <0 0x11e10000 0 0x400>;
-+			xphyu2port0: usb-phy@0 {
-+				reg = <0 0x400>;
- 				clocks = <&infracfg CLK_INFRA_USB_UTMI>;
- 				clock-names = "ref";
- 				#phy-cells = <1>;
- 			};
- 
--			xphyu3port0: usb-phy@11e13000 {
--				reg = <0 0x11e13400 0 0x500>;
-+			xphyu3port0: usb-phy@3400 {
-+				reg = <0x3400 0x500>;
- 				clocks = <&infracfg CLK_INFRA_USB_PIPE>;
- 				clock-names = "ref";
- 				#phy-cells = <1>;
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  Documentation/devicetree/bindings/mtd/jedec,spi-nor.yaml | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/Documentation/devicetree/bindings/mtd/jedec,spi-nor.yaml b/Documentation/devicetree/bindings/mtd/jedec,spi-nor.yaml
+> index 587af4968255..2db446c9ca9b 100644
+> --- a/Documentation/devicetree/bindings/mtd/jedec,spi-nor.yaml
+> +++ b/Documentation/devicetree/bindings/mtd/jedec,spi-nor.yaml
+> @@ -29,7 +29,7 @@ properties:
+>                (sst,)?sst26wf016b|\
+>                (sst,)?sst25wf(040b|080)|\
+>                winbond,w25x(80|32)|\
+> -              (winbond,)?w25q(16|32(w|dw)?|64(dw)?|80bl|128(fw)?|256))$"
+> +              (winbond,)?w25q(16|32(w|dw)?|64(dw|jwm)?|80bl|128(fw|jwm)?|256(jwm)?))$"
+>            - const: jedec,spi-nor
+>        - items:
+>            - enum:
+
 -- 
-2.52.0
-
+Regards,
+Pratyush Yadav
 
