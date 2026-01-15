@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD2D4D44C5A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 14:38:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B4EFD44C51
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 14:38:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J/FeA4DjIpvihRKqOOPncXjlCgByUn4v1i0+sGL5vbs=; b=swC4GP4hYIf01ir7VfX/+nBL6B
-	4HShgGAYPCt7cEG7NvoAyDce8L3IrixSGY59Ke7vJZh1pOOLEcFNnWL2Zzn3EM4R4hJUfeTquUxGC
-	EUxbk8dwcb05JnlY5WftxagrzmpYh6LFClWUnKB/xebFjqkUKAQuUT7L/auaea0MVzFxmucSiX6w1
-	HpPQ/9JZlx7Jm6PfxFsHcChX7fFJhqN9aQks26GioaZehSRLSR6FIy2Caa9GMWnj4bp6L0C3YrV1m
-	zrYZTeuBg0XZBb3oiU2bSgVmeYa24Ykc/Srn8Y9NON5/YLmmm+6qKizgn3JMy0k1e3Ap84zvKE9IK
-	uqKzkYmw==;
+	bh=DoyxLPjnBq1qhMQoPjoZ2qS39Mdd35mOR6xZOmQK8KY=; b=2TsDLoXSbi/GnEqI/rJNAq5loh
+	AOIC235hbIQ0TMBPs5FMzPHq+bGLMFakMq9Blqq7gIJrrVu4ykyKorVu9f01L7ZC8fLm5p7RwUkjU
+	6jAW0Qb6G+tO0alv/S4Xg1TClgaFspOh9g06ZNMHrhhaGGeg50uZIz8uS/yFFkJjJn6kmc2I3/MaG
+	V/rVLE4uTkLJ+4Gjb/bWyxFsDS3lvN5t3dDfHx2N9Q47BxjzjOgl5OAwS5IjaCGj1wnhwn7nq5kNw
+	DS8QHkDUcIaqbz8KTvYbueWOf4itp1mjzTAl/hNjTF7brhyYdjwQiEv4JoqkWWjvFp7aeOzTdjx79
+	YhauChTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgOUR-0000000CV5J-0ZiD;
-	Thu, 15 Jan 2026 14:38:23 +0000
-Received: from mail-oa1-f51.google.com ([209.85.160.51])
+	id 1vgOUW-0000000CV9H-31Po;
+	Thu, 15 Jan 2026 14:38:28 +0000
+Received: from mail-oi1-f170.google.com ([209.85.167.170])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgOUK-0000000CUvF-40JN
+	id 1vgOUM-0000000CUwZ-1JW4
 	for linux-mediatek@lists.infradead.org;
-	Thu, 15 Jan 2026 14:38:18 +0000
-Received: by mail-oa1-f51.google.com with SMTP id 586e51a60fabf-4042905015cso659782fac.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 15 Jan 2026 06:38:16 -0800 (PST)
+	Thu, 15 Jan 2026 14:38:19 +0000
+Received: by mail-oi1-f170.google.com with SMTP id 5614622812f47-45c70afbeebso576801b6e.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 15 Jan 2026 06:38:17 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768487896; x=1769092696;
+        d=1e100.net; s=20230601; t=1768487897; x=1769092697;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=J/FeA4DjIpvihRKqOOPncXjlCgByUn4v1i0+sGL5vbs=;
-        b=NqqPViUfaOCDNe46wqWZyF88iKVzCxdXig15BeomCm1DEjLSu+TCNev8Y6TTNNkK7s
-         0WrZdH/kRsAdocuzBqKHGH0mmFqoMyexEH2kSLTebIWnr2ahjWhr+6sMkV4Sq8nzeijI
-         CNPSRU9oyFHuDB8QltwMcBpjBEIXWxqphRgfJsbZ/y3ef8e5Kflw0Wo/E93rirH+wVOq
-         ic8Q445Su2a9OAeg/5/iGEb1IZsVzS2Be+7wu2y4uZTDMo6wHJajdiXemZabo2fzdeqr
-         xsck9LkgBnSDxfzMkwrYywPczs4HSdx7vp/bbJ5AJ4gDg0ztiBEsxG2I7NAYH/XSg3do
-         I0bg==
-X-Forwarded-Encrypted: i=1; AJvYcCUoODGA86f2MwnSei2QFfTRSu4kEXXsgxSZR7Ngb13bavT2Yr613uenXw2MdbVdIdePO4tFavZpKwx0GkZsKQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzSARVZW5LEixq2auhnRQdDdEq9DoBU32x3x1I6MclEY/qkyTjB
-	saMvMWwzQXdx6mv/XrnRyes52/su3nfHfC/GENxIy3M99qvQ/Iqfd87g
-X-Gm-Gg: AY/fxX6MEYztqJ+h76/NOwKoD0jncj8CiCkIOV6M4e75kg/AuHU8q24HKwkitpOoA8e
-	6joWYGm3Wgn9iskQT1cEWNY92IBLpxYuU0Jw/9APwfUvOMLR8CRUikqzgBYrLCDvs1oco6dmmO0
-	Yx37TvgKCrs8hqJPuoZJHu9gWqPKRlSJ/GK+2OZSzUWrG/CPpz6PQy0QdsZJqA2n1WLP2tAdEF0
-	bAabdlu4JNlEM59f0pYz1mICJjbH5bTp3k2hrOHV1DdhgNWaNsCdj0z+8BspDn7Cd0/X4zbJtRJ
-	4XWGU7M3oJyhvQGHZ1qEhL3jaLv3o7SeOjqD0RT5KWr5qj0vC7qBlAyaX57R5h6v419Dmd5o9qc
-	utUSWc/uVpkERX/adJsiV76VYSPfGDy7xPTgBTrFsowqQMw3XaqAiXeGrHNwaI5t9M/WbMt/fmM
-	ssyRUdQaIQlICO
-X-Received: by 2002:a05:6871:2211:b0:3d4:760f:544b with SMTP id 586e51a60fabf-4040716055bmr4253866fac.46.1768487895761;
-        Thu, 15 Jan 2026 06:38:15 -0800 (PST)
-Received: from localhost ([2a03:2880:10ff:4a::])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4040997ffacsm3714947fac.6.2026.01.15.06.38.15
+        bh=DoyxLPjnBq1qhMQoPjoZ2qS39Mdd35mOR6xZOmQK8KY=;
+        b=DWX6fY1toNcWpE3CTEuMMiCvSqjjhP6OLxqmEkGReZWIjnStjk+4IOfeSOyF3tJQ3Y
+         qpuOtwqOKL/GzFHzzkZdpnlb58Fe7HosA53q59qGXmxNzVf4wsOQ5L69K9U9VZPjvL5x
+         L3onPLtPEei86BN/agZ8HUNU22oX8ua4kbUzJ97ERO4TFeTTlrFLKshIlJ7PBSXr8lqr
+         5iWSF8g86bt2sCsutU3I67QOfYuvGKJYHV6FLXXkpauaE5u5HDxP4lr3+ANBRBHRIrC4
+         wMRN7K5rq+q6PyVXDgvwBNMddxMMMwm5/XXEkdnZ5S3YmoGG9Yz6N3kgGN+5Ur3bqPqZ
+         rTZg==
+X-Forwarded-Encrypted: i=1; AJvYcCXByl/yV4HZMqMbLXuZoY1h3oKFtAKVGV9WQOVTBxu1l6Z8pEAhbl5/ecJ1fZ3VZcFcepTYeI0XPhMfRDT2bw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzAVgASVO+aPKQ6aXmr/KBW9M0n/IMMyq85mCcbulmAkCUEUq+8
+	yrUqImzJRXAQ5UlV/LHcSQsVr1OJyKfOuEZse+vMoiUbrTPqGVHQCCFQ
+X-Gm-Gg: AY/fxX5PtwnS55Q+HOBNVmD5APY97fDcM6mbpV++mcfBl8SeOtroO5T1cBfAODaCHod
+	IDe4NKFekmEh2H5V4suF2NmsclenG1FZ4kCprCCm4eOw2mikCVKRzh6kIQr4DMoeXnobx0J3v6N
+	L+U+N7hY4FZoG92CifwL33OJdUzSURCUEmknkSIy5gXCFIW5J3Q+hsCuwqla9XUx77J+9Wm3rXd
+	DaW+8/D8jGNv2VlKoeEC8NpX6FqrIZNfNiOxhqWHxjQWO8+BYT+251d0HICUzDHGdZK8Ckobwbn
+	W4xiLdvh7jjqoMPc0LQAtV09UKXEzE6eon5DHQAjW9O8AsYwsbZblwPtjws3RXQ5+zH4W7hx3eL
+	pCxIijvzKnhv7xVEFNrIroQTQu/TLoE0bfT2oLANQ1fqBJm+CRhB4LhcswKSH3Sa9qO6wYEGcFh
+	iYpw==
+X-Received: by 2002:a05:6808:179d:b0:44d:aa8b:58f2 with SMTP id 5614622812f47-45c71463914mr4281989b6e.9.1768487896997;
+        Thu, 15 Jan 2026 06:38:16 -0800 (PST)
+Received: from localhost ([2a03:2880:10ff:70::])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-45a5e17cd0esm12818955b6e.3.2026.01.15.06.38.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Jan 2026 06:38:15 -0800 (PST)
+        Thu, 15 Jan 2026 06:38:16 -0800 (PST)
 From: Breno Leitao <leitao@debian.org>
-Date: Thu, 15 Jan 2026 06:37:50 -0800
-Subject: [PATCH net-next 3/9] net: mediatek: convert to use
- .get_rx_ring_count
+Date: Thu, 15 Jan 2026 06:37:51 -0800
+Subject: [PATCH net-next 4/9] net: ena: convert to use .get_rx_ring_count
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260115-grxring_big_v2-v1-3-b3e1b58bced5@debian.org>
+Message-Id: <20260115-grxring_big_v2-v1-4-b3e1b58bced5@debian.org>
 References: <20260115-grxring_big_v2-v1-0-b3e1b58bced5@debian.org>
 In-Reply-To: <20260115-grxring_big_v2-v1-0-b3e1b58bced5@debian.org>
 To: Ajit Khaparde <ajit.khaparde@broadcom.com>, 
@@ -91,25 +90,25 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Breno Leitao <leitao@debian.org>
 X-Mailer: b4 0.15-dev-47773
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1572; i=leitao@debian.org;
- h=from:subject:message-id; bh=dAvRCGWtWrgyCIbjzXr78wi4bL8QADGL+zFdAiYR2bc=;
- b=owEBbQKS/ZANAwAIATWjk5/8eHdtAcsmYgBpaPvRK7lb2WvUAPqaQKV1+ODpLebJeMp5bYV+Z
- NGd9H0VU2uJAjMEAAEIAB0WIQSshTmm6PRnAspKQ5s1o5Of/Hh3bQUCaWj70QAKCRA1o5Of/Hh3
- bSgUD/94DPM5bKVosd7hSCjQw9XhbrFa34AvpHooSQCwpmP0Abk5I+Rh+hYzUDUq0QQV/wSU95b
- CJ6l2SNhGUWoWw3CrFPm80hM6b3RIl6KN0aAsDiaVWMUrbN+KNbT3yEZp73aIHS8o/OxNFuVzmo
- Yuaz7rZ9ekX+FvaUabuLH/dFnmrMGQ5r0AYhTBGOMn5mMtab0Rx7SidFT5AWsXJGb5SSu4S6AVM
- ROPo81FwQsyWgssFN9PiKK19CzyjkMsmSag/Bwi/h50v7tjlNZO+WCcrcFhCQfchKXz2+Plk/0C
- xDGaZ5E90LuNVi916p4rNFr8qc3x8uza4tF9RdurlbPNtKVxbQe6vaFyD2iwpo3p14/XQu+tbk+
- nrJmVj7ro9woJ1ukGdJ2WQEppydsccRtXmOpCuYFPwFfKjigX2c5SVumJtB2W5JUtWRfOXDF3oF
- 4HVB/iPaNvLUgH5TzULt6Z3DNCh8d26NSPGspqxMsWndDHfZOjcG6ywIDyI78FCG2fvihxNpGc3
- Ed3ljL/dQPx0Y/nEdviEtGnaD1/d3fBTy3KwjAqIstvw8FEqLPPtLomDZHeyhaO7gB0zmRCH+1h
- Et4JOHjw0ZttjoVW83jemJG1OUmKM06SyamadYHRvSfaaW6aPAvPQQ/sDuW8WlsSRrTiLcICFNK
- fjUU/Z4OqxvNkzg==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1976; i=leitao@debian.org;
+ h=from:subject:message-id; bh=OhOSJKzo23oetHtU1SAjOSl7/D+75LUpKZ4+ls31geY=;
+ b=owEBbQKS/ZANAwAIATWjk5/8eHdtAcsmYgBpaPvRzU90PVMm7MPekl/O3zK7Y+8MrR9aM6Y7x
+ 4TXeGAZZvqJAjMEAAEIAB0WIQSshTmm6PRnAspKQ5s1o5Of/Hh3bQUCaWj70QAKCRA1o5Of/Hh3
+ bZVWD/9LbkqPQzVHwsSImpym9sTbJKoCskNG24AAU/IMLX779t9vMoqcv3HUHYI9fPsDoClHSFW
+ ZYig157cl0LxDp8/sQMiNzWfVOqbu9DgkWg+IWhOcuyqGzB1F7aA0bAr3JS+reJxTm315r7l59y
+ /vq+dBalf5swD1/jXnIjx6Ch8j0syo6aKxPV+8cCh62nQCdY9Zl9lowhAwhx/ofqUfIUM5v8Zsu
+ xQ/TFsQV1f3VIFsZQnJaYHLj8B3CBjTxiO7D6QrvfcoBtpiDLTjV2z5qTD9I/vT76nuCRxsYMY9
+ 2VzsdpmKATfHo/26UJapwSiyM78vm3MBq9fd/vYEFWVGibmQ32ItSkThxx1MvUsK6pVFSbzuhg9
+ JRuwcONTNvUzjDgI/uRe+0xDwSsvoDbmbQxkHlMDCcdSKDjpLLUyCM3CvpOXHB2jBORMqqS68Ap
+ rIVwinqC+xedm/nDu7gX+ZmRf02xHlkUP0QDd/VhoLO4CL0gTp86/yl7cOIFz2z3DK6DcOwrb0I
+ VYLloSJE6c/w4df5F5Kn1UAafUylUoCr0bhzXu9+xDC4YhUQwKL/G2p2a5zG738+SW8X8Mkkn6t
+ ocFT0jZUdz2/fYxEXl+Cf+Z4xwPv+/JMPOHJaUjuJqNEDfiRCBoQGOnuxMiOaN1MLP8ekZ51eBs
+ WW48ZocfUwPrT6A==
 X-Developer-Key: i=leitao@debian.org; a=openpgp;
  fpr=AC8539A6E8F46702CA4A439B35A3939FFC78776D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_063817_005266_67271934 
-X-CRM114-Status: GOOD (  12.25  )
+X-CRM114-CacheID: sfid-20260115_063818_425498_B851FD80 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,50 +126,57 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Use the newly introduced .get_rx_ring_count ethtool ops callback instead
 of handling ETHTOOL_GRXRINGS directly in .get_rxnfc().
 
+Since ETHTOOL_GRXRINGS was the only useful command handled by
+ena_get_rxnfc(), remove the function entirely.
+
 Signed-off-by: Breno Leitao <leitao@debian.org>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
+ drivers/net/ethernet/amazon/ena/ena_ethtool.c | 22 +++-------------------
+ 1 file changed, 3 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index e68997a29191..99abec2198d0 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -4625,18 +4625,20 @@ static void mtk_get_ethtool_stats(struct net_device *dev,
- 	} while (u64_stats_fetch_retry(&hwstats->syncp, start));
+diff --git a/drivers/net/ethernet/amazon/ena/ena_ethtool.c b/drivers/net/ethernet/amazon/ena/ena_ethtool.c
+index fe3479b84a1f..2455d6dddc26 100644
+--- a/drivers/net/ethernet/amazon/ena/ena_ethtool.c
++++ b/drivers/net/ethernet/amazon/ena/ena_ethtool.c
+@@ -835,27 +835,11 @@ static int ena_set_rxfh_fields(struct net_device *netdev,
+ 	return ena_com_fill_hash_ctrl(ena_dev, proto, hash_fields);
  }
  
-+static u32 mtk_get_rx_ring_count(struct net_device *dev)
-+{
-+	if (dev->hw_features & NETIF_F_LRO)
-+		return MTK_MAX_RX_RING_NUM;
-+
-+	return 0;
-+}
-+
- static int mtk_get_rxnfc(struct net_device *dev, struct ethtool_rxnfc *cmd,
- 			 u32 *rule_locs)
+-static int ena_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *info,
+-			 u32 *rules)
++static u32 ena_get_rx_ring_count(struct net_device *netdev)
  {
- 	int ret = -EOPNOTSUPP;
+ 	struct ena_adapter *adapter = netdev_priv(netdev);
+-	int rc = 0;
  
- 	switch (cmd->cmd) {
+-	switch (info->cmd) {
 -	case ETHTOOL_GRXRINGS:
--		if (dev->hw_features & NETIF_F_LRO) {
--			cmd->data = MTK_MAX_RX_RING_NUM;
--			ret = 0;
--		}
+-		info->data = adapter->num_io_queues;
+-		rc = 0;
 -		break;
- 	case ETHTOOL_GRXCLSRLCNT:
- 		if (dev->hw_features & NETIF_F_LRO) {
- 			struct mtk_mac *mac = netdev_priv(dev);
-@@ -4741,6 +4743,7 @@ static const struct ethtool_ops mtk_ethtool_ops = {
- 	.set_pauseparam		= mtk_set_pauseparam,
- 	.get_rxnfc		= mtk_get_rxnfc,
- 	.set_rxnfc		= mtk_set_rxnfc,
-+	.get_rx_ring_count	= mtk_get_rx_ring_count,
- 	.get_eee		= mtk_get_eee,
- 	.set_eee		= mtk_set_eee,
- };
+-	case ETHTOOL_GRXCLSRLCNT:
+-	case ETHTOOL_GRXCLSRULE:
+-	case ETHTOOL_GRXCLSRLALL:
+-	default:
+-		netif_err(adapter, drv, netdev,
+-			  "Command parameter %d is not supported\n", info->cmd);
+-		rc = -EOPNOTSUPP;
+-	}
+-
+-	return rc;
++	return adapter->num_io_queues;
+ }
+ 
+ static u32 ena_get_rxfh_indir_size(struct net_device *netdev)
+@@ -1096,7 +1080,7 @@ static const struct ethtool_ops ena_ethtool_ops = {
+ 	.get_sset_count         = ena_get_sset_count,
+ 	.get_strings		= ena_get_ethtool_strings,
+ 	.get_ethtool_stats      = ena_get_ethtool_stats,
+-	.get_rxnfc		= ena_get_rxnfc,
++	.get_rx_ring_count	= ena_get_rx_ring_count,
+ 	.get_rxfh_indir_size    = ena_get_rxfh_indir_size,
+ 	.get_rxfh_key_size	= ena_get_rxfh_key_size,
+ 	.get_rxfh		= ena_get_rxfh,
 
 -- 
 2.47.3
