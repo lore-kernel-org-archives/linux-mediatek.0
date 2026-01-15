@@ -4,62 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D03AD3CCBF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 07:57:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBE87D3CC9F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 08:05:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+kOkEvWB8IjrnJSFWvfV7NsR+wn8pdfHtmGf3dF5Aic=; b=IlfHk8o9Ze5cEqaHozNVBbHuy2
-	vSGvPUpR3NnQ6fRFvF1dBLv2tXzaVNilXDUK0wC1hDz5wr3tHFKwcQJkSXC34TfWgWG1QMeAKLxaQ
-	HyWQjmuWPdMp9BsgUw2bSwO0KenTM4PvstkqmaB3sL4RfRmbZK9JcZkD5mhU4qFEgkTLHi1BLUIxg
-	Hj8ICP9TnNiZMWPMNdv/eXsdUFC1WcmhEgBnqAm854aQtSWE9ulI3+wlN3BdvhKoei2RQcXuCsD8u
-	rMNPYsyf3WNjZsUxT7pzHQ49UdwgPwr/KF6aTceZFRGq9ElHrjM9DC2zCwxDMskkD0h7iMtyn1PmQ
-	ALBPHTng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eI5Aks8p/qGW9HFMkJeBYiCSRBBx6IXlghuKINHgvU8=; b=4EBOKzrZsusMSVDAEM4b1D8wdS
+	Zlm7/XuVOfH5xWtoAUKuaoeR2p6Qoaw5An8hGE7lsK4DIFh3+DWezAu+BOVYZQbyGe6zLgeDVI1dN
+	LtdwofdZtlGRsropCDXO5I8f5UtdG2nZCHgGWytQwYa6DNrZEULTcxBzSESKB734P9bZ6ZQMg7Lsu
+	mcLUo4C/FeZ4Kbu8KdhUMEdikkba9fJ0tZPQlXEYwGIgkBdXaLYVcxBxeh04GXbMe74IfL4peDn5Q
+	skeJPsAEiQtQspwYhfm87ETPGK7FOFh7dpfQDtTUQzGoFznNZKU/jqfwKvJJtG2o5C4lmKJEC3Jr0
+	JlXIj9uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgIE7-0000000BxNu-09qS;
-	Thu, 15 Jan 2026 07:57:07 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vgIMQ-0000000By0g-3wZZ;
+	Thu, 15 Jan 2026 08:05:42 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgIE5-0000000BxNg-1ZbL;
-	Thu, 15 Jan 2026 07:57:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3380960167;
-	Thu, 15 Jan 2026 07:57:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 899D1C116D0;
-	Thu, 15 Jan 2026 07:57:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768463823;
-	bh=z7M1gJSxco/n4ZsPehNhTapu74iwMGfHlhkpGIYRppU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YxUWpxsPOzHxOA0tGdbH62iRX4bmlHdJ4ghaK0B9VqEVDKqGzIE19FruKFYFVBVGK
-	 cWQqk+drILJSEIGsBFzk26fMSBtflhxTa6ReUMaFeCtJ7SHcwzGsq5sgpmHIvMBV3d
-	 Zzo3ZgeYY1cL8RzYLYSI9NTRn4yXyXpJZ0zF+mPwTsObq8xoOEOeTYaQT2Bc6/sB/Z
-	 xFxQ8jF8NHhhmVBGvlFHNEY+uVDBPWrc49KP+AmWf8VfMGN3lyy7Qj5rnz4/WSMNRr
-	 O+bbaBgjpVLIC3fc1Yy9oHKzR46sxzkO/Jccdz8C5Ra1ycdyXERKoyyHLIzm2EgpYM
-	 hvs1kzMCSec1Q==
-Date: Thu, 15 Jan 2026 08:57:01 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Sayantan Nandy <sayantann11@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	sayantan.nandy@airoha.com, bread.hsu@airoha.com,
-	kuldeep.malik@airoha.com, aniket.negi@airoha.com
-Subject: Re: [PATCH] net: airoha_eth: increase max MTU to 9220 for DSA jumbo
- frame support the industry standard for jumbo frame MTU is 9216 bytes. When
- using DSA sub-system, an extra 4 byte tag is added to each frame. To allow
- users to set the standard 9216-byte MTU via ifconfig ,increase
- AIROHA_MAX_MTU to 9220 bytes (9216+4).
-Message-ID: <aWidzQgGXpbht9zL@lore-desk>
-References: <20260115064043.45589-1-sayantann11@gmail.com>
+	id 1vgIMO-0000000Bxzj-0Ycn
+	for linux-mediatek@lists.infradead.org;
+	Thu, 15 Jan 2026 08:05:41 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-34c21417781so281238a91.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 15 Jan 2026 00:05:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1768464339; x=1769069139; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=eI5Aks8p/qGW9HFMkJeBYiCSRBBx6IXlghuKINHgvU8=;
+        b=QWaL28tr57H9hATBxXL1idG3iOjt+q39zvrTmLdQkOCDP5yvW5a6GBhNMe7/szjMG9
+         WpVkJAT1D0nmIls89YJGwekNaWBXSA9O9FKUkSet6sLzh4U87q1mbCNHf23IshYzflX/
+         uM7iMQJsb7waqVD1Klr+nRy98QmwYCUc4QovcIpgcItImWlyJxNAuxvye+LXqHZoxJ1H
+         5VZk9xeXmoV3Ud5SSgR0e3EoOZ2NKfvZh7gplxS5TIR0NhF/uaxLct6zMK9wzknzYE2A
+         4styQjXaUiZAX4ETq75wVPHi7o7KEWKFiV+Wt1XN72AZ30lnVydTJ4p4RYtbjtCZLNU5
+         uTIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768464339; x=1769069139;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=eI5Aks8p/qGW9HFMkJeBYiCSRBBx6IXlghuKINHgvU8=;
+        b=YpguQUlJPr/P7BVv9bmWnLw/hpjDz1B2oabAzSGF9IyPIQx9xZAUP+D347q7FrV2za
+         XtCzjKlaGd5221Ibpmg5XCppsc24dYuJkche8mKDIUHYYCtdeE8ESGXgq0oayIHpfimA
+         rLtF1KlkiMtaqkfGayZ58HhR8cfQJE+N4BZX77/hAkG5Wb6yH6nT1X/QANPK6ssh4BVd
+         HmRe7IEgNJd9XGYqQIv5yBZjkoPnGLNqB9/bm2wV5sYDlqnmMYsL1RicMW7spDYEEYBs
+         LzfJl5K+3snJkh7C09ShaXlNMISZ+cAweOQUui9VP8KCNMAgMbKDLWRTRERWeFYseFQt
+         Fbew==
+X-Forwarded-Encrypted: i=1; AJvYcCWlEm74D5on/wJqLGG+1ltXa4oY65q0tr+kcBNnKM1wh2RDvlwpBs2sWDWU9Rgs+9broq6NleqvEt7r0yb+dQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwP6GJmWtbT5/ULq5ORuCknZbhKK8c2hFjNyTWXK64hENR2LrNy
+	UH63p/Iubt/hpJ8lVVz6WqM/Of1BWq+vWSVSz8hvDDjBUrItH9VH7DTG0qNYZKQW3ClBsN0lA5S
+	VhEMBNcQeYqG2im6MrV+Iu5J8mKkSyXw=
+X-Gm-Gg: AY/fxX5rv5hoLXfGibuNEH1j5WpXLmN8ssKTxAmhXEex2nIV8+KA/4Cwe2bE7tnzj6G
+	JCSBzTXVkfaoKRUsCyvFNJS+gb8Ep4EDU2wr2JlzHIZVyb9CVM+EMRwojzQDbAhT1+TI/uqHS1N
+	SgRhlrPzBrp/Zfi95AQ67wF0Ja+Y+gpgi6TtoxNUSoz+xJ6+bmDsor5HjEGew4SlE8abMtVCJ4D
+	7E98ht+ZjS4X14kbcUCK+6eXLSChe7u+iKu4pjZWAfkxbKVJEji2K1v0qlQzifZTK81MeF0GS2x
+	bb/8KBRomaaqyxAZxr3aI/JaLhqM
+X-Received: by 2002:a17:90b:1d4e:b0:34f:6312:f22c with SMTP id
+ 98e67ed59e1d1-3510afcbd46mr4909265a91.0.1768464338603; Thu, 15 Jan 2026
+ 00:05:38 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="agj4UNEhb8R3CoY5"
-Content-Disposition: inline
-In-Reply-To: <20260115064043.45589-1-sayantann11@gmail.com>
+References: <20260115001405.3513440-1-robin.kuo@mediatek.com>
+In-Reply-To: <20260115001405.3513440-1-robin.kuo@mediatek.com>
+From: Kairui Song <ryncsn@gmail.com>
+Date: Thu, 15 Jan 2026 16:04:58 +0800
+X-Gm-Features: AZwV_QgPLO0RVfJdVJxqFZ4Y4W_kG-gmBtwevH7JFUpri4EIC-T2EJV0cJ8my68
+Message-ID: <CAMgjq7CrKv7QJNFO_vg1_nXA+RSW83mu8X4cMSVd2tfMA==Wew@mail.gmail.com>
+Subject: Re: [PATCH 1/1] Restore swap_space attr aviod krn panic
+To: robin.kuo@mediatek.com
+Cc: Andrew Morton <akpm@linux-foundation.org>, Chris Li <chrisl@kernel.org>, 
+	Kemeng Shi <shikemeng@huaweicloud.com>, Nhat Pham <nphamcs@gmail.com>, 
+	Baoquan He <bhe@redhat.com>, Barry Song <baohua@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, wsd_upstream@mediatek.com, 
+	casper.li@mediatek.com, chinwen.chang@mediatek.com, Andrew.Yang@mediatek.com, 
+	Qun-wei.Lin@mediatek.com, oliver.sang@intel.com, linux-mm@kvack.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260115_000540_173707_1DE624FF 
+X-CRM114-Status: GOOD (  24.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,54 +102,163 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Jan 15, 2026 at 8:14=E2=80=AFAM <robin.kuo@mediatek.com> wrote:
+>
+> From: "robin.kuo" <robin.kuo@mediatek.com>
+>
+> Restore swap_space attr avoid krn panic
+>
+> Commit 8b47299a411a ('mm, swap: mark swap address space ro and add
+> context debug check') made the swap address space read-only.
+> It may lead to kernel panic if arch_prepare_to_swap returns a failure
+> under heavy memory pressure as follows,
+>
+> el1_abort+0x40/0x64
+> el1h_64_sync_handler+0x48/0xcc
+> el1h_64_sync+0x84/0x88
+> errseq_set+0x4c/0xb8 (P)
+> __filemap_set_wb_err+0x20/0xd0
+> shrink_folio_list+0xc20/0x11cc
+> evict_folios+0x1520/0x1be4
+> try_to_shrink_lruvec+0x27c/0x3dc
+> shrink_one+0x9c/0x228
+> shrink_node+0xb3c/0xeac
+> do_try_to_free_pages+0x170/0x4f0
+> try_to_free_pages+0x334/0x534
+> __alloc_pages_direct_reclaim+0x90/0x158
+> __alloc_pages_slowpath+0x334/0x588
+> __alloc_frozen_pages_noprof+0x224/0x2fc
+> __folio_alloc_noprof+0x14/0x64
+> vma_alloc_zeroed_movable_folio+0x34/0x44
+> do_pte_missing+0xad4/0x1040
+> handle_mm_fault+0x4a4/0x790
+> do_page_fault+0x288/0x5f8
+> do_translation_fault+0x38/0x54
+> do_mem_abort+0x54/0xa8
+>
+> Restore swap address space as not ro to avoid the panic.
 
---agj4UNEhb8R3CoY5
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Hi Robin
 
-> This change ensures compatibility with common network equipment and jumbo=
- frame configurations.
+Thanks very much for the patch! I'm fine with it with some suggestions:
 
-can you please provide more details?
+Marking it as RO was intentional to avoid silent unexpected usages of
+the swap space, the swap space is hollow now, as all content is now in
+the swap table.
 
-Regards,
-Lorenzo
+For example the one you posted, calling filemap_set_wb_err for the
+swap space is meaningless, the error info will be ignored without any
+notice.
+In the comment for mapping_set_error (wrapper for filemap_set_wb_err):
+ * When a writeback error occurs, most filesystems will want to call
+ * mapping_set_error to record the error in the mapping so that it can be
+ * reported when the application calls fsync(2).
 
->=20
-> Signed-off-by: Sayantan Nandy <sayantann11@gmail.com>
-> ---
->  drivers/net/ethernet/airoha/airoha_eth.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
-net/airoha/airoha_eth.h
-> index fbbc58133364..20e602d61e61 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> @@ -21,7 +21,7 @@
->  #define AIROHA_MAX_NUM_IRQ_BANKS	4
->  #define AIROHA_MAX_DSA_PORTS		7
->  #define AIROHA_MAX_NUM_RSTS		3
-> -#define AIROHA_MAX_MTU			9216
-> +#define AIROHA_MAX_MTU			9220
->  #define AIROHA_MAX_PACKET_SIZE		2048
->  #define AIROHA_NUM_QOS_CHANNELS		4
->  #define AIROHA_NUM_QOS_QUEUES		8
-> --=20
-> 2.43.0
->=20
+So far there is no fsync for swap or other ways to report mapping
+errors to userspace. For example, __end_swap_bio_write will just print
+an error log if writetback failed. I went through the code, currently
+only arch_prepare_to_swap will cause a call to filemap_set_wb_err.
+Swap is not a persistent storage like normal FS, so simply bouncing
+the writeback folio back as active is good enough for almost all
+cases, like the one in end_swap_bio_write.
 
---agj4UNEhb8R3CoY5
-Content-Type: application/pgp-signature; name=signature.asc
+Catching potential issues with RO/panic is overkill indeed. So I'm
+fine with dropping the RO by default. But perhaps we can keep the RO
+attribute at least for VM_DEBUG build? Like this:
 
------BEGIN PGP SIGNATURE-----
+diff --git a/mm/swap.h b/mm/swap.h
+index eba4c04ad039..307cc71d3635 100644
+--- a/mm/swap.h
++++ b/mm/swap.h
+@@ -220,7 +220,12 @@ int swap_writeout(struct folio *folio, struct
+swap_iocb **swap_plug);
+ void __swap_writepage(struct folio *folio, struct swap_iocb **swap_plug);
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaWidzQAKCRA6cBh0uS2t
-rE5mAQDNH43QGKQqdK54O/WNSaz5NO5TROfHNgllhMJoY2J7gAEArEqFD7ASdBH5
-PfGPjeC1j0qi9Ysjn4GYqMIXUyyIWAQ=
-=JgeZ
------END PGP SIGNATURE-----
+ /* linux/mm/swap_state.c */
+-extern struct address_space swap_space __ro_after_init;
++#ifdef CONFIG_DEBUG_VM
++#define __swap_space_attr __ro_after_init
++#else
++#define __swap_space_attr __read_mostly
++#endif
++extern struct address_space swap_space __swap_space_attr;
+ static inline struct address_space *swap_address_space(swp_entry_t entry)
+ {
+        return &swap_space;
+diff --git a/mm/swap_state.c b/mm/swap_state.c
+index 3916d144eddc..11273e0ec811 100644
+--- a/mm/swap_state.c
++++ b/mm/swap_state.c
+@@ -38,7 +38,7 @@ static const struct address_space_operations swap_aops =
+=3D {
+ };
 
---agj4UNEhb8R3CoY5--
+ /* Set swap_space as read only as swap cache is handled by swap table */
+-struct address_space swap_space __ro_after_init =3D {
++struct address_space swap_space __swap_space_attr =3D {
+        .a_ops =3D &swap_aops,
+ };
+
+---
+
+And as for this particular error marking issue you posted, maybe we
+should just drop the handle_write_error I think. That helper was
+useful when the filesystems are still using the .writepage interface,
+but now all filesystem have switched to .writepages and only swap may
+call that helper, which is no longer helpful, as the error info is
+completely ignored with no report back to userspace. Maybe we need
+something like this:
+
+diff --git a/mm/vmscan.c b/mm/vmscan.c
+index 39f0336d9c29..62fe433aac0b 100644
+--- a/mm/vmscan.c
++++ b/mm/vmscan.c
+@@ -477,27 +477,6 @@ static int reclaimer_offset(struct scan_control *sc)
+        return PGSTEAL_DIRECT - PGSTEAL_KSWAPD;
+ }
+
+-/*
+- * We detected a synchronous write error writing a folio out.  Probably
+- * -ENOSPC.  We need to propagate that into the address_space for a subseq=
+uent
+- * fsync(), msync() or close().
+- *
+- * The tricky part is that after writepage we cannot touch the mapping: no=
+thing
+- * prevents it from being freed up.  But we have a ref on the folio and on=
+ce
+- * that folio is locked, the mapping is pinned.
+- *
+- * We're allowed to run sleeping folio_lock() here because we know
+the caller has
+- * __GFP_FS.
+- */
+-static void handle_write_error(struct address_space *mapping,
+-                               struct folio *folio, int error)
+-{
+-       folio_lock(folio);
+-       if (folio_mapping(folio) =3D=3D mapping)
+-               mapping_set_error(mapping, error);
+-       folio_unlock(folio);
+-}
+-
+ static bool skip_throttle_noprogress(pg_data_t *pgdat)
+ {
+        int reclaimable =3D 0, write_pending =3D 0;
+@@ -650,9 +629,10 @@ static pageout_t writeout(struct folio *folio,
+struct address_space *mapping,
+        else
+                res =3D swap_writeout(folio, plug);
+
+-       if (res < 0)
+-               handle_write_error(mapping, folio, res);
+-       if (res =3D=3D AOP_WRITEPAGE_ACTIVATE) {
++       if (res < 0) {
++               pr_alert_ratelimited("Swap failure of folio (order:
+%d, error: %d)\n",
++                                    folio_order(folio), res);
++       } else if (res =3D=3D AOP_WRITEPAGE_ACTIVATE) {
+                folio_clear_reclaim(folio);
+                return PAGE_ACTIVATE;
+        }
 
