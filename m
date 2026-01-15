@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72767D41145
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 08:49:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94DE7D4114B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jan 2026 09:25:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=edU6xkXjAjWZJykGFUAvi4D1HZcCJChoYmvCxl8CEyU=; b=fydIJ8/a43fIEAfSgFZTTv+Q1m
-	xaaEvDXyF0OSLmLRCYPp2W3Xy6G2wMaIJhq/reQvFhDyqJ/6slTDNVX3UOLEyViW47kBkIUvMgSuj
-	XK9f8T+Wbsb66Acfp2ZGtptLrYBhh4fqz9gECWCXe568zLhIItiDePKPFbeCtnOgwYAKIzJAoQjfg
-	V0Mz72jPWsP64CbdL2ydOaHMFbpanS1M91aJT3puhmpF5I7v53S55aheFjbY7OWFUkhJzUE2/r9u+
-	O2wwj6tmpm6wyV/RPqVAVjUW8l1jtmLUUX4QWKJLilQxaGuaVtqiBSGTESNZL7851q12VIkoUHWaP
-	PIbhQE5Q==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WYui0318UOsS6VyHkKkmfrBiXM5qykug+UUq04REjYo=; b=Z2bQQ5z+Fjdvme3a6qUcH/bLkH
+	GEthCDPyeNWiSjz/m9Y7yn9T7XMmvV7Pff2/9qS3ejsLpmdPmgLiWT3ogqw0ahUVfZ/y+JFT++E+l
+	iud5uboPFFBZ97JhoLdooGiHIM6q4XJ+RlTI0Q+pXGyxIptaoNS6wELOFfDhV5Y7jvfltT/QRXg5C
+	i95yrogsMswZuFgU0K0I56Mi6x9G8E8Fwe1owlK5RIDeBWdznCCjiitRx4WyGSewYW+Sg6ac5k4WF
+	3oR/lFIkFVe11818hDs4dE3NnfIcR/mySH57+fZmmFdSnejivq0jAgGMcdVRyO7EV49HcewNRoyNP
+	T4xvB6og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgJ2a-0000000C1EY-0BKm;
-	Thu, 15 Jan 2026 08:49:16 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1vgJbc-0000000C42R-0kcL;
+	Thu, 15 Jan 2026 09:25:28 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgJ2X-0000000C1Dq-2gwl
+	id 1vgJba-0000000C40Y-0u53
 	for linux-mediatek@lists.infradead.org;
-	Thu, 15 Jan 2026 08:49:14 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2a07f8dd9cdso4613475ad.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 15 Jan 2026 00:49:13 -0800 (PST)
+	Thu, 15 Jan 2026 09:25:27 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-64b8123c333so1110741a12.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 15 Jan 2026 01:25:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768466952; x=1769071752; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=edU6xkXjAjWZJykGFUAvi4D1HZcCJChoYmvCxl8CEyU=;
-        b=IJecGVPNhmSiWL1TqfCVtVRRdwiq4WCFhThGiTU5DE9jslWwucJvqblX2PkLiruHp3
-         Mvf55+itSbasmTkDx7ec1hG43pP7AAnpnHrZ4u4YzQCyMAKjHikq9w6cs0e/+9e86XfT
-         XKDPwd8n/lSxFA/o6GlUi7k/J+TB4p8ScOos72vyMB1By2htN2AXGWBtwX2/c1Yc9dR8
-         sYVVoJA1a5XzyB+QkCziqjcf9CE9+9v7aI+2fPSYVTaPQLEb2FMFru5ciDbYJ1ZL2vbg
-         SetCBfYlDe1LPz95cZzrPS/p7rIlp/vMhTqzFODXI0SvGals/Oh06VDxSvff6S/lHrVs
-         7FAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768466952; x=1769071752;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1768469124; x=1769073924; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=edU6xkXjAjWZJykGFUAvi4D1HZcCJChoYmvCxl8CEyU=;
-        b=pQZ5PCPAmScZkpSYHclFOcIsO/6DZhDdKEx3GPxFfqypsdFPCupvBdXWpt13EByeME
-         2qNlZZxT9F+MFtel2Ni5wE2BBpeqd3jpLdDeDjOw3u7SNc904BI6Ibo3vZI17V62XGFB
-         YfxueAAzwMkSMkqmSnJS1uspU+nDb11bXKLEIctzlod1by669yb7XZzsHtIOy3Aq08J+
-         d2JrhioaM5k0WuHE19s+s4sGa+DueLGPXcgZ4ExyovKcCCBMVFe3QZMCb7Q5tzQ/mZBN
-         reE1nKr9OfiSakr3LmlSIZCMmmPs8hmkk/eN50jbFaBa5qLz5+lrrnrKF8DJQALfTKi3
-         /xhA==
-X-Forwarded-Encrypted: i=1; AJvYcCVGtP5yUhbOQOk7pJ8g3wv67JHnANhEccKYbpR3YBUYefwQYZuvNJTSwUpdP+bram1M2NsBQStvZkAa/vVHpg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwQvHzOiJit9gAA/daAD6vGxTcESmxJezBSmlQf3PO3t8cgkUsz
-	a6P1LS491kxEgH4mFTYFDXl+HzLtiVdmiOLK4LnQ+ZoVs7m4wfKa5G8LrbWODg==
-X-Gm-Gg: AY/fxX5L9tg//HHGh7y8OszVcR/LkQyiaKjyDUHvjLAR03KQqkV+5L21ngbaX414waM
-	VqWck8+QHkNYeLtfIHPZEDGXv9yhf8Gxa/1VSVwLMRpoVYMHvjUfQc/MlW5IuVtNwsjYyQOieS1
-	x66xdp3IwzYHYpi1LArnBBHFh1BOy0Un73v1ptQF4cC168iP6FWfy6qw5orJE1rFJk6JslhE+CB
-	gnfVSR/Z7S5ZFPqodyyfElO8Z/wiMll9gVQobW8pNc7WdAMErPx2zP+DXNGhs1lq2O82FNOdOoE
-	4Xcu5nZmz7d5veIOWhEVy+3EtfaaGnH6Mzu57aIT+1Y0NMHPuCnKD35fRqbHRacZy1AAX/T9S5c
-	eTBSKOLr2d/DiA/LGXfrpvj73fNL9Hq+hyeXiCryCXQz32DqA3OToMVYWjV/vblgJtNW/ZzvLct
-	Dqaczn9YFnVGijB5+IBte/FrQ=
-X-Received: by 2002:a17:902:e551:b0:2a3:1b33:ae30 with SMTP id d9443c01a7336-2a599e3df46mr45989525ad.51.1768466952287;
-        Thu, 15 Jan 2026 00:49:12 -0800 (PST)
-Received: from nbai25050028.lan ([2409:4090:807d:4601:625b:d547:cf6b:e854])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2a3e3cd2b3asm243846775ad.88.2026.01.15.00.49.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Jan 2026 00:49:11 -0800 (PST)
-From: Sayantan Nandy <sayantann11@gmail.com>
-To: lorenzo@kernel.org
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org,
-	sayantan.nandy@airoha.com,
-	bread.hsu@airoha.com,
-	kuldeep.malik@airoha.com,
-	aniket.negi@airoha.com,
-	rajeev.kumar@airoha.com,
-	Sayantan Nandy <sayantann11@gmail.com>
-Subject: [PATCH] net: airoha_eth: increase max mtu to 9220 for DSA jumbo frames
-Date: Thu, 15 Jan 2026 14:18:37 +0530
-Message-ID: <20260115084837.52307-1-sayantann11@gmail.com>
-X-Mailer: git-send-email 2.43.0
+        bh=WYui0318UOsS6VyHkKkmfrBiXM5qykug+UUq04REjYo=;
+        b=Lwxhj1UorM5zwL+IB63k4/PakcIlc+EgfG6MyxzcxfTWrGQkoVnlmQen9nuNE7eQhq
+         4dodLxoSrbdHcIhE4wItqKuNfgDaBjIOK7OJ8cyIt4ZM+a00yZrAb5Qdq/jQfDHCsntB
+         ZIpM89La2f3I4HcPKTcv2qeai1IAhnQYFb9YTt/QH+X0Vngee52xJDAx4yMP+kqyjyn6
+         mLTCiJaklJHmTBAMxyWQgoyKdahPQnmW4oXW9iZJYBPeqJHfP3w4DZlcsAtttAIDfqh5
+         lcmI5fAzx5DvN41PwfZWqsEJGpzVqDt1/kjhsIALsahOn35uFyjocOemsIOQv/Yo9poN
+         M0rw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768469124; x=1769073924;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=WYui0318UOsS6VyHkKkmfrBiXM5qykug+UUq04REjYo=;
+        b=Zp7XO5i+TKJsi4vYca8RURkJdczt2HEqKY0obu1NRxLamCtmvwaPcXN0yJaDZrtQjw
+         pcUSig9P2g1M/ULlh4O3adHYZnjIT1qlLQgwZqGJcLQiyeYIVLdyq6GH843OSfzs/2uW
+         By8T0cX7q0JekQ/hc84uO7rEWGcoWSbBunrAUf0IOxP6WPr2t23wfvjIVaYurxCw7Ulj
+         e1eWAuhe9OXr1mLcPwzDFkRIsTgrA6dE2odITf5Gni0QWfUO2Z5sw+BSurrdOBhdvZHs
+         oAF/tFScH5u+M53Bd3Qfn/OeAgH9qwk1RH+5U0kxkGHyuPvG7esvFsQqrABIMzjJ+WjM
+         yuDw==
+X-Forwarded-Encrypted: i=1; AJvYcCXhQgrI579F0Naq+gb66ZQ6OHXErYeooonMrAMFLz7OO28GSSx6sDrBHfuCFIFRe3aSsxFwpXYsrSU8aK1QBg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwlectaSqHZoJbJMMf9UkG+V3vUR9zC0AkCtaSG/I7nvbnHqdnU
+	eOGfkLnk90hhVYNWz2maCGZ6hkgpbQooMG2Et0AtTlZrS6r8WPqXzcclu8hMnhVWkmEZJO3AIga
+	M9H0XtVOGzLxk2as0t+jUK579bZnke9Y=
+X-Gm-Gg: AY/fxX6gpytJ3Wgze6CA8FPOILd/BXv1E2WgmxNSBy5PCq/j8TGOO7occI61lFknEXS
+	iupu3gpw+wuguFfy+5TjWIKoZxDn5ZL7Mm8g5PS/MQpSoQ/PM6207HmW6FikiQISKHtRUKa5/fj
+	21GXgxdnryk++XK8ymu1f5RR49DCYlK4F9gME47ldpeaJD9h0SWm3IAdd2+IJLiLOawaC4LTtEG
+	er4aAsy3gas4Vw9ySAhnB7potIts0aUofdS6Ucq052Mby7tPhlayta7zbokoGhrUTcfbiNP7WTk
+	mBGStolUdpSmVxu9d/uBD+x3cZ17
+X-Received: by 2002:a05:6402:2804:b0:650:891f:1c06 with SMTP id
+ 4fb4d7f45d1cf-653ec115969mr4596435a12.12.1768469124088; Thu, 15 Jan 2026
+ 01:25:24 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20260115001405.3513440-1-robin.kuo@mediatek.com>
+In-Reply-To: <20260115001405.3513440-1-robin.kuo@mediatek.com>
+From: Kairui Song <ryncsn@gmail.com>
+Date: Thu, 15 Jan 2026 17:24:45 +0800
+X-Gm-Features: AZwV_QidmYXnF7h9yz4oq7n444gRgXoBRtnbiVEv5D6iVPSwvP_31krseRm0_Mw
+Message-ID: <CAMgjq7Db38sNdsGe121oBFshiJz+vUrKWf5BjB3djAYUr40LLA@mail.gmail.com>
+Subject: Re: [PATCH 1/1] Restore swap_space attr aviod krn panic
+To: robin.kuo@mediatek.com
+Cc: Andrew Morton <akpm@linux-foundation.org>, Chris Li <chrisl@kernel.org>, 
+	Kemeng Shi <shikemeng@huaweicloud.com>, Nhat Pham <nphamcs@gmail.com>, 
+	Baoquan He <bhe@redhat.com>, Barry Song <baohua@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, wsd_upstream@mediatek.com, 
+	casper.li@mediatek.com, chinwen.chang@mediatek.com, Andrew.Yang@mediatek.com, 
+	Qun-wei.Lin@mediatek.com, oliver.sang@intel.com, linux-mm@kvack.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_004913_680550_04F48B9F 
-X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-CacheID: sfid-20260115_012526_272517_2F36C1BF 
+X-CRM114-Status: UNSURE (   9.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,30 +103,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Industry standard for jumbo frame MTU is 9216 bytes. When using DSA
-sub-system, an extra 4 byte tag is added to each frame. To allow users
-to set the standard 9216-byte MTU via ifconfig,increase AIROHA_MAX_MTU
-to 9220 bytes (9216+4).
+On Thu, Jan 15, 2026 at 8:14=E2=80=AFAM <robin.kuo@mediatek.com> wrote:
+>
+> From: "robin.kuo" <robin.kuo@mediatek.com>
+>
+> Restore swap_space attr avoid krn panic
 
-Signed-off-by: Sayantan Nandy <sayantann11@gmail.com>
----
- drivers/net/ethernet/airoha/airoha_eth.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Also a nitpick, you may want to add "mm, swap:" prefix to the patch summary=
+.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index fbbc58133364..20e602d61e61 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -21,7 +21,7 @@
- #define AIROHA_MAX_NUM_IRQ_BANKS	4
- #define AIROHA_MAX_DSA_PORTS		7
- #define AIROHA_MAX_NUM_RSTS		3
--#define AIROHA_MAX_MTU			9216
-+#define AIROHA_MAX_MTU			9220
- #define AIROHA_MAX_PACKET_SIZE		2048
- #define AIROHA_NUM_QOS_CHANNELS		4
- #define AIROHA_NUM_QOS_QUEUES		8
--- 
-2.43.0
+> Commit 8b47299a411a ('mm, swap: mark swap address space ro and add
+> context debug check') made the swap address space read-only.
+> It may lead to kernel panic if arch_prepare_to_swap returns a failure
+> under heavy memory pressure as follows,
+>
+> el1_abort+0x40/0x64
+> el1h_64_sync_handler+0x48/0xcc
+> el1h_64_sync+0x84/0x88
+> errseq_set+0x4c/0xb8 (P)
+> __filemap_set_wb_err+0x20/0xd0
+> shrink_folio_list+0xc20/0x11cc
+> evict_folios+0x1520/0x1be4
+> try_to_shrink_lruvec+0x27c/0x3dc
+> shrink_one+0x9c/0x228
+> shrink_node+0xb3c/0xeac
+> do_try_to_free_pages+0x170/0x4f0
+> try_to_free_pages+0x334/0x534
+> __alloc_pages_direct_reclaim+0x90/0x158
+> __alloc_pages_slowpath+0x334/0x588
+> __alloc_frozen_pages_noprof+0x224/0x2fc
+> __folio_alloc_noprof+0x14/0x64
+> vma_alloc_zeroed_movable_folio+0x34/0x44
+> do_pte_missing+0xad4/0x1040
+> handle_mm_fault+0x4a4/0x790
+> do_page_fault+0x288/0x5f8
+> do_translation_fault+0x38/0x54
+> do_mem_abort+0x54/0xa8
+>
+> Restore swap address space as not ro to avoid the panic.
 
+For a stable backport simply making it not RO is simpler and better.
+We can do the cleanup and add debug attr as I mentioned in another
+reply later.
+
+So for this change with Cc stable:
+
+Acked-by: Kairui Song <kasong@tencent.com>
 
