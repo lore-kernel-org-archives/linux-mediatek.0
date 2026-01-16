@@ -4,81 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77EF7C982D4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 16:03:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 345E2C982DE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 16:57:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gtWZWTls5fOJzZ7/HCkTV3sZ8RZyOrzPhtTBtiT5PBg=; b=y8Hwm5Kwf27osi676kY6nQev0+
-	KzY3GDFcD7sbBxBdWbDlIGZJYccMBIl2WvF13GA9xywD/38eJO5N28qnQ0aHFWd4rloWzXLeLtjNU
-	CKghvdHUshdP9dXPExrRcgC1vMYUt5AdNVXn+N/5CrsakaJAg5l4ccii7YIRGl4gAHphYhmsUuRUZ
-	wCVRxzmOhOH3x+/CUZbIbLsoJjh3IMUdkf/ea+MRszWdfTjyWgkY28gvZFJ3v+dCTbRsBq9645Kjt
-	6mzXBcP1G31z5L74Xpfuz/xmhasMxGt3++OkWytXmIEvy1QtYANFXFW4TPP+rPqs5Xh7zS08G4m0V
-	IqctpskQ==;
+	bh=UCRzFnlL51J3r1v3KtHPuReG0jTDE1cPz5Nk0PllpmI=; b=HHWW+Poue8yYcWb9wGeETh3h8J
+	dN+/zCWFqczllQr6kEPSft0BIDE+y+qZuWmxwjsftc0llzW7oOw7pW1dPXFFnNcDWhR+WCLNHVgXi
+	NSZd0fWT8M/yBz3YcAQ8aOu2ZRNJfPmL5oO9FpATQjkXcHbZqKMTszV4qxh5H7p+W5Sz4s0F2HExS
+	STphKPUfynqceIkp6O+xz4VuwiSy7Bu/oUfGT54TyCihYQ7osluuh1+9BHoxK/KbLGpqToeyG3D6Y
+	vCNA9zpVp15uSGLwQORtLu1Q+Pmx00BqX+Jjfag9ldgUWsu+XEiIMn0emGwqySsOlXTIyWEHFKsIU
+	T09HSSOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgmI1-0000000EPZC-3GJq;
-	Fri, 16 Jan 2026 16:03:09 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vgn8X-0000000EV05-2yhW;
+	Fri, 16 Jan 2026 16:57:25 +0000
+Received: from mout.web.de ([212.227.17.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgmI0-0000000EPYY-007L
-	for linux-mediatek@lists.infradead.org;
-	Fri, 16 Jan 2026 16:03:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 149BE601B9
-	for <linux-mediatek@lists.infradead.org>; Fri, 16 Jan 2026 16:03:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB5D6C19423
-	for <linux-mediatek@lists.infradead.org>; Fri, 16 Jan 2026 16:03:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768579386;
-	bh=BhtIab84IdoeMyJM4092ElaZLaK1ny/rkG7xxvHmUy0=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=AOLA+Ql+21Qm4zX9fM7uTmeg39naSFS6NqTTgVNaGJELIKXsl2uTGHZJBHz0kPSrI
-	 R4dQa4Z0D1RIGXAx7JIB88WlJ5NUTEDw6fgj2SFfKCPnLppF30pcJEvesw803824sH
-	 x8MjEomB/AhV5ONwNp8sn/18+/4cP3kfhZ2xSYVX0ZPHWW/RFXlA1QbmCfzZRJMw9J
-	 JU81HLeAX42rAdblxrIjNguU5eED6vudZSXWN+8w3gbBVj2Ab6l0mZhx4Ku+pCGoVR
-	 XUm67rkb1gPyUozK+FA5zb5Ybi1Iq6J2ClPC3HJdoRgZDfDAzxLV4savFcErGMjyha
-	 CjJ0bgRAs59lw==
-Received: by mail-ej1-f46.google.com with SMTP id a640c23a62f3a-b876c0d5318so319911566b.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 16 Jan 2026 08:03:06 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCU1Nc+97YUO0jLXD+RcQM7BE23vow2jjIiUDqpV2thHEdyREz8NxAEad3Qh85fAnITutj7aR/WBBtiib4rPbQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyFhDBp7UNPvWQ5U1hSMJtACX4S9zQAv2QiDJIgSSdWLureyuxA
-	JYACZbIGZu4UjGMIIE9tz1/l8cD+OAhPlX1B66JrdTjvc1go2PVP4LIsavU/z90nebGCHCFOs3E
-	Lhsw5Lryi0W2nNUJlVDq4q6gppmlPLA==
-X-Received: by 2002:a17:906:fe0a:b0:b87:693:31 with SMTP id
- a640c23a62f3a-b8792feb242mr308189566b.52.1768579383254; Fri, 16 Jan 2026
- 08:03:03 -0800 (PST)
+	id 1vgn8V-0000000EUzB-1cXF;
+	Fri, 16 Jan 2026 16:57:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1768582621; x=1769187421; i=markus.elfring@web.de;
+	bh=UCRzFnlL51J3r1v3KtHPuReG0jTDE1cPz5Nk0PllpmI=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=WEcTJ8NrCXkdhCgtKJ8A+ub0H9dMTILNfgxtpoYFn7ubm/AIyUwKTJc4SbzyOq53
+	 Mw66Q1Z8c8f2iILtRporoy/pVnvaXHPFEVjkRl11ifD9ujv6iWTSPwMQVUj1bQK9b
+	 DuKkPdR+G+50b0Xe+4CqB4LctgAossZAVvFbqdykJo9jR0wVaBJ8kaSWc3p/NA58Q
+	 k34YSf0Rf9g8fm3g59xwF9Y6x92aMbA65WndQ862sf4ehQ86L/AtD3XsFAvskH4MN
+	 Pr8NMC+G5BDH9VME+Gv0ZjGLXgfbS+FAhiQydwFshFBr232OJt8m+FafPDoKW/AoH
+	 IZDKJclmcWI0aKLS7w==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.29] ([94.31.69.218]) by smtp.web.de (mrweb106
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1N6bCu-1vsNfP1y0M-00r8r9; Fri, 16
+ Jan 2026 17:57:01 +0100
+Message-ID: <d16ff74d-aa01-4b3a-aa76-9ac9a5c6c86b@web.de>
+Date: Fri, 16 Jan 2026 17:56:58 +0100
 MIME-Version: 1.0
-References: <20251223-openwrt-one-network-v5-0-7d1864ea3ad5@collabora.com> <20251223-openwrt-one-network-v5-2-7d1864ea3ad5@collabora.com>
-In-Reply-To: <20251223-openwrt-one-network-v5-2-7d1864ea3ad5@collabora.com>
-From: Rob Herring <robh@kernel.org>
-Date: Fri, 16 Jan 2026 10:02:51 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqLffH-MY+6frA_kxwifUPskLY8eNqtBoOP0O7Dxs=XHLQ@mail.gmail.com>
-X-Gm-Features: AZwV_QilotzZl5lJNLcliW_LfwPmw5qv0NdDfcdZ6pytb6giOF_8l_TtUZnUaC4
-Message-ID: <CAL_JsqLffH-MY+6frA_kxwifUPskLY8eNqtBoOP0O7Dxs=XHLQ@mail.gmail.com>
-Subject: Re: [PATCH v5 2/8] arm64: dts: mediatek: mt7981b: Add PCIe and USB support
-To: Sjoerd Simons <sjoerd@collabora.com>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
-	Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@kernel.org>, Lee Jones <lee@kernel.org>, 
-	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>, kernel@collabora.com, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-pci@vger.kernel.org, linux-phy@lists.infradead.org, 
-	netdev@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, 
-	Bryan Hinton <bryan@bryanhinton.com>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+To: Zilin Guan <zilin@seu.edu.cn>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Felix Fietkau <nbd@nbd.name>
+Cc: LKML <linux-kernel@vger.kernel.org>,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jianhao Xu <jianhao.xu@seu.edu.cn>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee
+ <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>
+References: <20260116144919.1482558-1-zilin@seu.edu.cn>
+Subject: Re: [PATCH] wifi: mt76: Fix memory leak after
+ mt76_connac_mcu_alloc_sta_req()
+Content-Language: en-GB, de-DE
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20260116144919.1482558-1-zilin@seu.edu.cn>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:GhP3f0OmHoEwyzJl8nBiItufgqDkyBKO0l/k/9qznQd195MT7I7
+ S88t/NC9arBrJ2IyFVqH9lHcaBi2Ic0GAYqnFQsbtbyosRCZ7IOh5jDyDW18MOLzQSZI84M
+ YrXMdY715Lgzxilyl+jDmVycI6FoFC8tA104J5120o5fGnYpVc6273zW1jgz158hRhORAf3
+ hF6Mx0crSLV+r6UxNxC/Q==
+UI-OutboundReport: notjunk:1;M01:P0:ENFTm9ZfFjE=;w7K+NAT/CaEQqIzyBRmbmhuFTpS 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
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260116_085723_784176_968A1350 
+X-CRM114-Status: UNSURE (   4.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,116 +88,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 23, 2025 at 6:38=E2=80=AFAM Sjoerd Simons <sjoerd@collabora.com=
-> wrote:
->
-> Add device tree nodes for PCIe controller and USB3 XHCI host
-> controller on MT7981B SoC. Both controllers share the USB3 PHY
-> which can be configured for either USB3 or PCIe operation.
->
-> The USB3 XHCI controller supports USB 2.0 and USB 3.0 SuperSpeed
-> operation. The PCIe controller is compatible with PCIe Gen2
-> specifications.
->
-> Also add the topmisc syscon node required for USB/PCIe PHY
-> multiplexing.
->
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
-> ---
-> V1 -> V2: Keep xhci reg and phys properties in single lines
-> ---
->  arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 80 +++++++++++++++++++++++++=
-++++++
->  1 file changed, 80 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/=
-dts/mediatek/mt7981b.dtsi
-> index 416096b80770..d3f37413413e 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-> @@ -2,6 +2,7 @@
->
->  #include <dt-bindings/clock/mediatek,mt7981-clk.h>
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include <dt-bindings/phy/phy.h>
->  #include <dt-bindings/reset/mt7986-resets.h>
->
->  / {
-> @@ -223,6 +224,55 @@ auxadc: adc@1100d000 {
->                         status =3D "disabled";
->                 };
->
-> +               xhci: usb@11200000 {
-> +                       compatible =3D "mediatek,mt7986-xhci", "mediatek,=
-mtk-xhci";
-> +                       reg =3D <0 0x11200000 0 0x2e00>, <0 0x11203e00 0 =
-0x0100>;
-> +                       reg-names =3D "mac", "ippc";
-> +                       clocks =3D <&infracfg CLK_INFRA_IUSB_SYS_CK>,
-> +                                <&infracfg CLK_INFRA_IUSB_CK>,
-> +                                <&infracfg CLK_INFRA_IUSB_133_CK>,
-> +                                <&infracfg CLK_INFRA_IUSB_66M_CK>,
-> +                                <&topckgen CLK_TOP_U2U3_XHCI_SEL>;
-> +                       clock-names =3D "sys_ck", "ref_ck", "mcu_ck", "dm=
-a_ck", "xhci_ck";
-> +                       interrupts =3D <GIC_SPI 173 IRQ_TYPE_LEVEL_HIGH>;
-> +                       phys =3D <&u2port0 PHY_TYPE_USB2>, <&u3port0 PHY_=
-TYPE_USB3>;
-> +                       status =3D "disabled";
-> +               };
-> +
-> +               pcie: pcie@11280000 {
-> +                       compatible =3D "mediatek,mt7981-pcie",
-> +                                    "mediatek,mt8192-pcie";
-> +                       reg =3D <0 0x11280000 0 0x4000>;
-> +                       reg-names =3D "pcie-mac";
-> +                       ranges =3D <0x82000000 0 0x20000000
-> +                                 0x0 0x20000000 0 0x10000000>;
-> +                       bus-range =3D <0x00 0xff>;
-> +                       clocks =3D <&infracfg CLK_INFRA_IPCIE_CK>,
-> +                                <&infracfg CLK_INFRA_IPCIE_PIPE_CK>,
-> +                                <&infracfg CLK_INFRA_IPCIER_CK>,
-> +                                <&infracfg CLK_INFRA_IPCIEB_CK>;
-> +                       clock-names =3D "pl_250m", "tl_26m", "peri_26m", =
-"top_133m";
-> +                       device_type =3D "pci";
-> +                       phys =3D <&u3port0 PHY_TYPE_PCIE>;
-> +                       phy-names =3D "pcie-phy";
-> +                       interrupts =3D <GIC_SPI 168 IRQ_TYPE_LEVEL_HIGH>;
-> +                       interrupt-map-mask =3D <0 0 0 7>;
-> +                       interrupt-map =3D <0 0 0 1 &pcie_intc 0>,
-> +                                       <0 0 0 2 &pcie_intc 1>,
-> +                                       <0 0 0 3 &pcie_intc 2>,
-> +                                       <0 0 0 4 &pcie_intc 3>;
-> +                       #address-cells =3D <3>;
-> +                       #interrupt-cells =3D <1>;
-> +                       #size-cells =3D <2>;
-> +                       status =3D "disabled";
-> +
-> +                       pcie_intc: interrupt-controller {
-> +                               interrupt-controller;
-> +                               #address-cells =3D <0>;
-> +                               #interrupt-cells =3D <1>;
-> +                       };
-> +               };
-> +
->                 pio: pinctrl@11d00000 {
->                         compatible =3D "mediatek,mt7981-pinctrl";
->                         reg =3D <0 0x11d00000 0 0x1000>,
-> @@ -252,6 +302,36 @@ mux {
->                         };
->                 };
->
-> +               topmisc: topmisc@11d10000 {
-> +                       compatible =3D "mediatek,mt7981-topmisc", "syscon=
-";
-> +                       reg =3D <0 0x11d10000 0 0x10000>;
-> +                       #clock-cells =3D <1>;
+=E2=80=A6
+> Fix this by explicitly freeing the skb in these error paths.
+=E2=80=A6
 
-This is now a warning as the syscon.yaml binding this compatible is
-defined in doesn't allow #clock-cells.
+How do you think about to avoid a bit of duplicate source code here?
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Do=
+cumentation/process/coding-style.rst?h=3Dv6.19-rc5#n526
 
-Rob
+Regards,
+Markus
 
