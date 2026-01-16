@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9314D47CA4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 01:06:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EF8BD47CAF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 01:06:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uzEynkgBJi1NWbI0Fd8DGgsgD9GPNNMBHOPHCo9YUDo=; b=oaJuXnteuMOszs9a3MC1CU83XQ
-	o0KpWb2buOAT02QGiUf4Skt759Eva2j57EMmOddTU5PI955Wq+Iajdvh/L15L252j+MOkzJZNOdgY
-	CH//nA/SmHCIf75i0J6FqEVvQ/4uCs58psZD2w5fi76d6pvuv82aWCdN3c62hf268ivTcsfhGNCrb
-	cdX51YjzANxqyjG/mc3oVgsBt4ZzRnNfGryIQiF6mAVUZtlM0cnHeTK7IR97HsvUsjFEdvIR+N2oH
-	eFwsECng87qMoTvJ0QA5nRS1tti6G/c8YUUCK9oUBSnocBD4ITwyy5W8IDeGWPXDFm3su/yWTXoEA
-	/VQG7tjw==;
+	bh=ewdMOqZu09vzVANg46kFx4cCu4Abbaa2QyPG4SOmwEs=; b=A6a4d3bp55zKOxnnq4ninos4r6
+	er/qIdHRx8MWrHO9kLLN1Mr92sSwvSiPtNdwEWg3d4y61z1R8envFF7CLQCLWzYOu3PMbxxlJisSa
+	Ftr6m5pJeq2sanv6W7p37mAHBnFJAiYFdQ+5DeXRB2Iv0E05ucu+6HWF5nBbRVBftA59P39djM652
+	0ud6+0jxHIEXRyLOBX5wxqEO+VHNNxc4TRAejQsRiBBuJh+PrFGnpHAaOPzzzkGjlhNlMDftL0W97
+	1LmEgwmWX3wEEcVr5O5I6I1TmElAaU2hGeQbCtmE1eJVU4ggOsTFhHhNI5L08Z1NHIPHy6alW9lUf
+	TVQXxefQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgYHq-0000000DOo4-3dGm;
-	Fri, 16 Jan 2026 01:06:02 +0000
-Received: from mail-dy1-x132a.google.com ([2607:f8b0:4864:20::132a])
+	id 1vgYHr-0000000DOos-1dbA;
+	Fri, 16 Jan 2026 01:06:03 +0000
+Received: from mail-dy1-x1331.google.com ([2607:f8b0:4864:20::1331])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgYHe-0000000DOeO-2qUu
+	id 1vgYHh-0000000DOjT-3kLv
 	for linux-mediatek@lists.infradead.org;
-	Fri, 16 Jan 2026 01:05:51 +0000
-Received: by mail-dy1-x132a.google.com with SMTP id 5a478bee46e88-2b04fcfc0daso1838850eec.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 15 Jan 2026 17:05:50 -0800 (PST)
+	Fri, 16 Jan 2026 01:05:55 +0000
+Received: by mail-dy1-x1331.google.com with SMTP id 5a478bee46e88-2ae2eb49b4bso3305616eec.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 15 Jan 2026 17:05:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768525550; x=1769130350; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1768525553; x=1769130353; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=uzEynkgBJi1NWbI0Fd8DGgsgD9GPNNMBHOPHCo9YUDo=;
-        b=m3ugjrg868+PljiU3EKJci2VKZf4d8cf4Clykf2kJ7/XPFE4nI+ujDs3PlMQjTM4eI
-         UQ4p4Kbc0XBMaSPVkbWB4pW3n9cu/tVlywlYsI52Vb0R5o/BtvbsCk6SeygsKKjiAAll
-         9bouWjVk3ds4nO3ZDILgOxuh7iUEF8ZFuT2ThjTRHvNEo77VUQUI+u4Tp25vzOzDpyDC
-         v9WOV8criZf5T5yyHe6Cm2zj8QyrcdS5D6vVCr7+PfVR9uRXOZLykH1eI4lcnGtCFstM
-         T3fqj7TIzFVsw0NlNu+Qcur1/HOoSQCYzAODLjd5wawQ3s3bxjs2r5VRm/Op3nbN2UzD
-         0t7w==
+        bh=ewdMOqZu09vzVANg46kFx4cCu4Abbaa2QyPG4SOmwEs=;
+        b=BXhk2/xMMNfv2noZgc2YoM8anHNVAgQGkxgz978hjuKLOEGDzDN0jQgL7fwmoP4DrK
+         Eb9wNMJA9RPxiZ/Hvu+C2P42eHV0mSK0bej+MqYSzZe1qOFXvAB7rMzVU9gTyqDhe04s
+         vpuibvH0Wqpubk5+sDABt0vq3mZj6tJWvOj6Eaouu4qXceHomhWPwlK2FVBHxG9jobX5
+         14QvTCe932F70j7k89AQjPFsxw+sU9NcA/IyR50abIVVfcE1xBNWmJY9NcvR0eThRCxF
+         +nop4XS7jdBqiKKBwwWR2DNcfa4ljMLgKn93vsX/TS01Giw4gLb74rEb9Ji+l2rywR7d
+         NmrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768525550; x=1769130350;
+        d=1e100.net; s=20230601; t=1768525553; x=1769130353;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=uzEynkgBJi1NWbI0Fd8DGgsgD9GPNNMBHOPHCo9YUDo=;
-        b=GXDhycqj/42rDU438RBIK7STOdYgMtv/+zDmn3Tc/yBx0iEaP+Np3ZWF+ZJa1Hs1eI
-         s2i9jxR88Tl8l2prSYA0UvNuKBttWXO2U3jqh/zOuqXHUcedJ5xZJuoTD2LUWdcJG/6h
-         sbTy21jKi3xuJ3wrMeF3m1zAKTk2R1KDfavKFYQN6oUILjUi0ZCvZP5GsCR6E89+dC8S
-         xvHEFBY6xM8PLxUdQVzASRXeCQZl61Iu6LwvXMH5kxb+UBZQQDjrcUbEzhzqcYL7vI3/
-         jOfHB2cWgE5j6w+7yghIDF2l8eDJWLqgSC78ut5Jl0RkvVN6nHO6+sIpSyDZGleAIyK/
-         1O1Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUlzY7dUH3bMOnyQr22otpwY+s3dmMxDe/DfRLDb8APeRSzYanIQV9S4ys2U5I88EE8LumSo0Ibl0RtEbekNA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwEousf/q9Q5ExTcPLAS9F1cgK7KnNXKGDmNo3zasNJ6g+D4V2B
-	+sIpDlqzz8dHcnZKHOqlfYKMRgxoUNxNpv4z6ZZJf7zkS2dldagZqCDR
-X-Gm-Gg: AY/fxX4ehRw9wSSDqrEphvX3pw4tJ0DPd2NXSEUqz/QgiZEYfGrVxUY9OG8kUsdO6Oj
-	7iMqIQy2Kp+5o/umjvdDtsYa5aiMHpj+oLeUvEwAy2+i7rjkd/fxEon0HhAvvN8v3OVSRZDEekj
-	3qkaYzBpyQpLvNQk86NsDymhlpd01JdBxn7ryGGhT4Sc3lojKzS/McrKBlhggC/m8AjMBDaGyy3
-	IcO6FGQf7wNgNt40uPU2ThGHd+Ohb0G0mEq3l4HmbcHeQRuFLneww+8jmU0KR0vgTrkkixqbM2n
-	PyzMA9wYD4nQZzsFJaJ8TjjI9fK01XzPN3GRTW3YGv1rsgFxZRTwNsKEkrj5fwXsyOVa/62b3lT
-	reNqSa0MmSVN8Jz/EpFwqTly+QIAfOqzctOOUeBXKp/ylg15irbZz2v8MFIXjgf7xh0lgHJvlwJ
-	eS/gEt8HlV0ovQ7AMBirgeNJKOcLwAmBAOGPy0QVI7P25hkHjj5XDJFKjFGcfFmA==
-X-Received: by 2002:a05:7301:678f:b0:2b0:4fe2:6a2e with SMTP id 5a478bee46e88-2b6b3f05fd8mr1663499eec.9.1768525549846;
-        Thu, 15 Jan 2026 17:05:49 -0800 (PST)
+        bh=ewdMOqZu09vzVANg46kFx4cCu4Abbaa2QyPG4SOmwEs=;
+        b=ritwyjlpaw/25gE8OpKh9xN5bQXMK/TMw1dH0y7l3pN5n2kxmRPWZraJrEYHrUxMtB
+         tl+npDw5GfVD1LBpaVzF2hWkiVutNmZ0qsnpkNo3LMotkZv1nbQ0uqe5A84AVOfT95ey
+         A3w2QDfGjL4zP/G30rd83q0769xABs4JwHJSxQUI98YNfxJQro1apzHdKn5YiWHKGNKg
+         EM/sKEWjduOeoK7IKXyBIWeObay1PHUi3tzyEO0jJvZrHbPytMMRCk9Uk5H6xSPy7YIY
+         pGgF28ZGAhR9EJMP83a5w+lSnUsuHLFDEIb5+dnx2/CBv9KvNah4D6Oek4ZQZepuATW3
+         e31w==
+X-Forwarded-Encrypted: i=1; AJvYcCUoFF9tfnPg083XaDw1JTHhGJW6ze2dGMHg2hnhD9GbhQgN1EY6gTom0O9cXHtJGQRF1Fj0QXPsl/2GAsu6Iw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzo21Qri5AerrjL2Efsf83oFfH2EFuOwOAEFfIumeyts46k/eaC
+	TwtXbkXKHf85wxqvZRNnhvmiY5MViLjG7CqvzrQMOmxbbcwpFj+5IZ/s
+X-Gm-Gg: AY/fxX5bL3G/y4kUrp680hIxb1ZNMBaAIaOPy2SCZD95Tpp2sypGenumFYULYjzH2a9
+	ZTjdSQu55xEH/UVWZumsGRfa5+/nKXp38+5TyIf9t370H4VHDGwEcpG4h0ngykmI3Red2P64gZs
+	FWLpkzlLgv3T3IXYg6N63Pge46+hyf9ljanTWaZoFmFoWbCwsWaqU5KAU18q69+NnMHzp7hVdxz
+	8uc/EssPOtG4iNqR8FETCHeN1YHwgPhozSsbewAt9B1t18Q10zCY0AqLbhCsemFGc1HBJA2wkkm
+	1D+U+AYq0vl89LEJrvx7ooPnP5O1eoB/6oAARGLgBRfeot4UZ2DVPeP9Kx5iJj8N0JfHTy5kAZ8
+	/8+gqZL2ixfP62zUbY1calg1kvReo4psEK5ALpeTc8zVloCE6KDeP0dVniPb3jYC6laldpKEWMJ
+	jbf0kvowf9p9o7H1+eMRISUVYSfaS5mwqLlZGxGAYQ+h5dotPjFvMypKx6Tn3Yv50/zhJRYYlq
+X-Received: by 2002:a05:7301:1e90:b0:2ae:5020:afe1 with SMTP id 5a478bee46e88-2b6b402c47amr1281429eec.14.1768525552939;
+        Thu, 15 Jan 2026 17:05:52 -0800 (PST)
 Received: from zcache.home.zacbowling.com ([2001:5a8:60d:bc9:f1d2:502c:a6ff:5556])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2b6b367cbc9sm1019884eec.32.2026.01.15.17.05.48
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2b6b367cbc9sm1019884eec.32.2026.01.15.17.05.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Jan 2026 17:05:49 -0800 (PST)
+        Thu, 15 Jan 2026 17:05:52 -0800 (PST)
 From: Zac <zac@zacbowling.com>
 To: sean.wang@kernel.org
 Cc: deren.wu@mediatek.com,
@@ -81,10 +81,11 @@ Cc: deren.wu@mediatek.com,
 	linux@frame.work,
 	ryder.lee@mediatek.com,
 	sean.wang@mediatek.com,
-	Zac <zac@zacbowling.com>
-Subject: [PATCH v4 18/21] wifi: mt76: mt7921: fix missing mutex protection in multiple paths
-Date: Thu, 15 Jan 2026 17:05:16 -0800
-Message-ID: <20260116010519.37001-19-zac@zacbowling.com>
+	Zac <zac@zacbowling.com>,
+	Zac Bowling <zbowling@gmail.com>
+Subject: [PATCH v4 20/21] wifi: mt76: fix list corruption in mt76_wcid_cleanup
+Date: Thu, 15 Jan 2026 17:05:18 -0800
+Message-ID: <20260116010519.37001-21-zac@zacbowling.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260116010519.37001-1-zac@zacbowling.com>
 References: <CAGp9LzpuyXRDa=TxqY+Xd5ZhDVvNayWbpMGDD1T0g7apkn7P0A@mail.gmail.com>
@@ -92,8 +93,9 @@ References: <CAGp9LzpuyXRDa=TxqY+Xd5ZhDVvNayWbpMGDD1T0g7apkn7P0A@mail.gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_170550_820896_7461F8B3 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20260115_170553_936193_DB8CA8DD 
+X-CRM114-Status: UNSURE (   9.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,82 +110,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt792x_mutex_acquire/release around ieee80211_iterate_*() calls in
-MT7921 driver to prevent race conditions:
+mt76_wcid_cleanup() was not removing wcid entries from sta_poll_list
+before mt76_reset_device() reinitializes the master list. This leaves
+stale pointers in wcid->poll_list, causing list corruption when
+mt76_wcid_add_poll() later checks list_empty() and tries to add the
+entry back.
 
-- mt7921_roc_abort_sync(): protect ROC abort iteration
-- mt7921_set_runtime_pm(): protect runtime PM iteration
-- mt7921_regd_set_6ghz_power_type(): protect 6GHz power type iteration
-- mt7921_mac_reset_work(): protect vif reconnect iteration after reset
+The fix adds proper cleanup of poll_list in mt76_wcid_cleanup(),
+matching how tx_list is already handled. This is similar to what
+mt7996_mac_sta_deinit_link() already does correctly.
 
-These paths were missing the mutex protection that is required when
-calling ieee80211_iterate_* functions with ITER_RESUME_ALL flag.
+Fixes list corruption warnings like:
+  list_add corruption. prev->next should be next (ffffffff...)
 
-Signed-off-by: Zac Bowling <zac@zacbowling.com>
+Signed-off-by: Zac Bowling <zbowling@gmail.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/mac.c  | 2 ++
- drivers/net/wireless/mediatek/mt76/mt7921/main.c | 9 ++++++++-
- 2 files changed, 10 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mac80211.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index 03b4960db7..f5c882e45b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -693,9 +693,11 @@ void mt7921_mac_reset_work(struct work_struct *work)
- 	clear_bit(MT76_RESET, &dev->mphy.state);
- 	pm->suspended = false;
- 	ieee80211_wake_queues(hw);
-+	mt792x_mutex_acquire(dev);
- 	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
- 					    mt7921_vif_connect_iter, NULL);
-+	mt792x_mutex_release(dev);
- 	mt76_connac_power_save_sched(&dev->mt76.phy, pm);
- }
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index 75772979f4..d0c522909e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -1716,6 +1716,16 @@ void mt76_wcid_cleanup(struct mt76_dev *dev, struct mt76_wcid *wcid)
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 5fae9a6e27..8fc3770d1b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -373,10 +373,13 @@ void mt7921_roc_abort_sync(struct mt792x_dev *dev)
+ 	idr_destroy(&wcid->pktid);
  
- 	timer_delete_sync(&phy->roc_timer);
- 	cancel_work_sync(&phy->roc_work);
--	if (test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
-+	if (test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state)) {
-+		mt792x_mutex_acquire(dev);
- 		ieee80211_iterate_interfaces(mt76_hw(dev),
- 					     IEEE80211_IFACE_ITER_RESUME_ALL,
- 					     mt7921_roc_iter, (void *)phy);
-+		mt792x_mutex_release(dev);
-+	}
- }
- EXPORT_SYMBOL_GPL(mt7921_roc_abort_sync);
++	/* Remove from sta_poll_list to prevent list corruption after reset.
++	 * Without this, mt76_reset_device() reinitializes sta_poll_list but
++	 * leaves wcid->poll_list with stale pointers, causing list corruption
++	 * when mt76_wcid_add_poll() checks list_empty().
++	 */
++	spin_lock_bh(&dev->sta_poll_lock);
++	if (!list_empty(&wcid->poll_list))
++		list_del_init(&wcid->poll_list);
++	spin_unlock_bh(&dev->sta_poll_lock);
++
+ 	spin_lock_bh(&phy->tx_lock);
  
-@@ -619,9 +622,11 @@ void mt7921_set_runtime_pm(struct mt792x_dev *dev)
- 	bool monitor = !!(hw->conf.flags & IEEE80211_CONF_MONITOR);
- 
- 	pm->enable = pm->enable_user && !monitor;
-+	mt792x_mutex_acquire(dev);
- 	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
- 					    mt7921_pm_interface_iter, dev);
-+	mt792x_mutex_release(dev);
- 	pm->ds_enable = pm->ds_enable_user && !monitor;
- 	mt76_connac_mcu_set_deep_sleep(&dev->mt76, pm->ds_enable);
- }
-@@ -765,9 +770,11 @@ mt7921_regd_set_6ghz_power_type(struct ieee80211_vif *vif, bool is_add)
- 	struct mt792x_dev *dev = phy->dev;
- 	u32 valid_vif_num = 0;
- 
-+	mt792x_mutex_acquire(dev);
- 	ieee80211_iterate_active_interfaces(mt76_hw(dev),
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
- 					    mt7921_calc_vif_num, &valid_vif_num);
-+	mt792x_mutex_release(dev);
- 
- 	if (valid_vif_num > 1) {
- 		phy->power_type = MT_AP_DEFAULT;
+ 	if (!list_empty(&wcid->tx_list))
 -- 
 2.52.0
 
