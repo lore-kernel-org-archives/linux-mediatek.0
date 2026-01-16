@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92CAAD4A60F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 14:21:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6F31C982C7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 14:49:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mBPzmlCg+pA1yBRm8LZsOW5MfSNjVeQLA5Whqc6P6wM=; b=pNIbwnLy08vFMsFShfiU3LPA8d
-	ioFWNKxFRJibWkf2E6E2tLTvSM18lsSQLVnEQUNagLheUpzOs2Xe2JB2NPnWnjUKbBdpiGoOAd/Yb
-	2mqU/tce3cCO+gl/NstsjbKVGNarE28/iZnDLxS7JA2UiTmJSJ59Qh360cyesBmtGvTzCHmS+iVx6
-	MHzqDL9VP5Vyry0UbOcfFXDXO16kWgdgSoNVBpfASJtJua7EZdbKmSMaJCrz2Ir3Flmiv9jHN42/X
-	lOIh6nQJCpI7yhGu74/UteNbRKAMQl90demlJb3Uige4DlXb9o4M1qysEX/x2gkUuWpuM2f0gGQWS
-	nKFRY28w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=j9K7rmAdqbPTPIWValz7hEgAqYgNsN11V7ednlfrUjo=; b=uNdPJIS2dP75Gb3+B+uFKUnH3O
+	5GmSlpRRs3nImSJp8IBfajs1rIi6KEvwPwOt7BDg939y7OzYEf3jKQbZGSt14h91MzKujsXke49o/
+	vYVd8vqAFS243Q+/RJaY4nTi84p4/gzBv3ZhJeAPIqfmzR2Aeui0vG7reiA9zYf6VSNED0Zy9XTmZ
+	/NBR95aFKD9IHTOevVRNcKQ5H/KUy0KOGZC2ae4pMuXmuU81ybPVf4rbINoLmRcqtzTtYR9LrzI9L
+	1qA96NNMjJa3yXr8twaq9t5gPuKWMdBXIeugvZmwdUNUJdtZ+cR6sLVRDHiyN3NO3CmqrtoN77oVp
+	pkGI5Pzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgkhO-0000000EFT5-1ves;
-	Fri, 16 Jan 2026 14:21:14 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1vgl8p-0000000EHmd-3oEZ;
+	Fri, 16 Jan 2026 14:49:36 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgkhL-0000000EFSG-3K03;
-	Fri, 16 Jan 2026 14:21:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=mBPzmlCg+pA1yBRm8LZsOW5MfSNjVeQLA5Whqc6P6wM=; b=iDkurxCPyzhBsZsmRZU8E6OPGm
-	/GRhjBxf63ELXOLdG09Kd2N3VvDk1xqq38gwGuNRGX0O5IXMUCPA3TivAJAAJCVLjvo863aUmCgGt
-	55IahhnhJdM9vo+A8Zc4aj1b3xvXPbHwCJCob11sXv35xdeZMH6Jv6UJRQkAp+/Y+WIk=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1vgkhE-00359Y-5p; Fri, 16 Jan 2026 15:21:04 +0100
-Date: Fri, 16 Jan 2026 15:21:04 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Benjamin Larsson <benjamin.larsson@genexis.eu>
-Cc: Sayantan Nandy <sayantann11@gmail.com>, lorenzo@kernel.org,
+	id 1vgl8m-0000000EHlg-1Ngr;
+	Fri, 16 Jan 2026 14:49:34 +0000
+Received: from LAPTOP-N070L597.localdomain (unknown [58.215.202.202])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 30efad814;
+	Fri, 16 Jan 2026 22:49:23 +0800 (GMT+08:00)
+From: Zilin Guan <zilin@seu.edu.cn>
+To: nbd@nbd.name
+Cc: lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	sayantan.nandy@airoha.com, bread.hsu@airoha.com,
-	kuldeep.malik@airoha.com, aniket.negi@airoha.com,
-	rajeev.kumar@airoha.com
-Subject: Re: [PATCH] net: airoha_eth: increase max mtu to 9220 for DSA jumbo
- frames
-Message-ID: <f0683837-73cd-4478-9f00-044875a0da75@lunn.ch>
-References: <20260115084837.52307-1-sayantann11@gmail.com>
- <e86cea28-1495-4b1a-83f1-3b0f1899b85f@lunn.ch>
- <c69e5d8d-5f2b-41f5-a8e9-8f34f383f60c@genexis.eu>
- <ce42ade7-acd9-4e6f-8e22-bf7b34261ad9@lunn.ch>
- <aded81ea-2fca-4e5b-a3a1-011ec036b26b@genexis.eu>
+	linux-mediatek@lists.infradead.org,
+	jianhao.xu@seu.edu.cn,
+	Zilin Guan <zilin@seu.edu.cn>
+Subject: [PATCH] wifi: mt76: Fix memory leak after mt76_connac_mcu_alloc_sta_req()
+Date: Fri, 16 Jan 2026 14:49:19 +0000
+Message-Id: <20260116144919.1482558-1-zilin@seu.edu.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aded81ea-2fca-4e5b-a3a1-011ec036b26b@genexis.eu>
+Content-Transfer-Encoding: 8bit
+X-HM-Tid: 0a9bc7484e7103a1kunm413733d011af07
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCHUwaVhhOGUhPT0IaTUsZSFYeHw5VEwETFhoSFy
+	QUDg9ZV1kYEgtZQVlOQ1VJSk5VSUtJVUlLSVlXWRYaDxIVHRRZQVlPS0hVSktJSE5DQ1VKS0tVS1
+	kG
+DKIM-Signature: a=rsa-sha256;
+	b=J0k1J7rVit3PgK1qJkp3af2rkPN7XylXEfAzG3YYI5+rFwCZnnJZgw8Ev6mVNw+FXbCeXGAcLkUlEwycVhKpJwuqtP/4yEitFk7cAlBTitNMm69VzzyXZ3x10R/eJmijfJDcciYuK+0tECK62jkV1fLSC87ZHN3E+YaxfaTQxws=; c=relaxed/relaxed; s=default; d=seu.edu.cn; v=1;
+	bh=j9K7rmAdqbPTPIWValz7hEgAqYgNsN11V7ednlfrUjo=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260116_062111_852761_740F91FC 
-X-CRM114-Status: GOOD (  20.80  )
+X-CRM114-CacheID: sfid-20260116_064933_099052_086F43B6 
+X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,47 +77,113 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 16, 2026 at 11:48:30AM +0100, Benjamin Larsson wrote:
-> Hi.
-> 
-> On 16/01/2026 02:08, Andrew Lunn wrote:
-> > On Thu, Jan 15, 2026 at 08:10:20PM +0100, Benjamin Larsson wrote:
-> > > On 15/01/2026 18:41, Andrew Lunn wrote:
-> > > > On Thu, Jan 15, 2026 at 02:18:37PM +0530, Sayantan Nandy wrote:
-> > > > > The Industry standard for jumbo frame MTU is 9216 bytes. When using DSA
-> > > > > sub-system, an extra 4 byte tag is added to each frame. To allow users
-> > > > > to set the standard 9216-byte MTU via ifconfig,increase AIROHA_MAX_MTU
-> > > > > to 9220 bytes (9216+4).
-> > > > What does the hardware actually support? Is 9220 the real limit? 10K?
-> > > > 16K?
-> > > > 
-> > > > 	Andrew
-> > > > 
-> > > Hi, datasheets say 16k and I have observed packet sizes close to that on the
-> > > previous SoC generation EN7523 on the tx path.
-> > Can you test 16K?
-> 
-> I probably can but it would take some time (weeks) as I dont have any
-> current setup with AN7581.
-> 
-> > 
-> > Does it make any difference to the memory allocation? Some drivers
-> > allocate receive buffers based on the MAX MTU, not the current MTU, so
-> > can eat up a lot of memory which is unlikely to be used. We should try
-> > to avoid that.
-> > 
-> > Thanks
-> > 	Andrew
-> 
-> Larger packets will consume more dma descriptors (a larger packet will be
-> split into several dma descriptors). So you dont allocate more memory to be
-> able to send jumbo frames.
+mt76_connac_mcu_alloc_sta_req() allocates an skb which is expected to
+be freed eventually by mt76_mcu_skb_send_msg(). However, currently if
+an intermediate function fails before sending, the allocated skb is
+leaked.
 
-So it 'costs' nothing to declare the actual maximum.
+Specifically, mt76_connac_mcu_sta_wed_update() and
+mt76_connac_mcu_sta_key_tlv() may fail, leading to an immediate memory
+leak in the error path.
 
-For the moment, 9220 seems acceptable, but please include in the
-commit message that the real maximum is higher, probably somewhere
-around 16K.
+Fix this by explicitly freeing the skb in these error paths.
+Commit 7c0f63fe37a5 ("wifi: mt76: mt7996: fix memory leak on
+mt7996_mcu_sta_key_tlv error") made a similar change.
 
-	Andrew
+Compile tested only. Issue found using a prototype static analysis tool
+and code review.
+
+Fixes: d1369e515efe ("wifi: mt76: connac: introduce mt76_connac_mcu_sta_wed_update utility routine")
+Fixes: 6683d988089c ("mt76: connac: move mt76_connac_mcu_add_key in connac module")
+Fixes: 4f831d18d12d ("wifi: mt76: mt7915: enable WED RX support")
+Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+Signed-off-by: Zilin Guan <zilin@seu.edu.cn>
+---
+ .../net/wireless/mediatek/mt76/mt76_connac_mcu.c | 16 ++++++++++++----
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c  |  4 +++-
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c  |  4 +++-
+ 3 files changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 0457712286d5..3f583e2a1dc1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -1295,8 +1295,10 @@ int mt76_connac_mcu_sta_ba(struct mt76_dev *dev, struct mt76_vif_link *mvif,
+ 				    wtbl_hdr);
+ 
+ 	ret = mt76_connac_mcu_sta_wed_update(dev, skb);
+-	if (ret)
++	if (ret) {
++		dev_kfree_skb(skb);
+ 		return ret;
++	}
+ 
+ 	ret = mt76_mcu_skb_send_msg(dev, skb, cmd, true);
+ 	if (ret)
+@@ -1309,8 +1311,10 @@ int mt76_connac_mcu_sta_ba(struct mt76_dev *dev, struct mt76_vif_link *mvif,
+ 	mt76_connac_mcu_sta_ba_tlv(skb, params, enable, tx);
+ 
+ 	ret = mt76_connac_mcu_sta_wed_update(dev, skb);
+-	if (ret)
++	if (ret) {
++		dev_kfree_skb(skb);
+ 		return ret;
++	}
+ 
+ 	return mt76_mcu_skb_send_msg(dev, skb, cmd, true);
+ }
+@@ -2764,12 +2768,16 @@ int mt76_connac_mcu_add_key(struct mt76_dev *dev, struct ieee80211_vif *vif,
+ 		return PTR_ERR(skb);
+ 
+ 	ret = mt76_connac_mcu_sta_key_tlv(sta_key_conf, skb, key, cmd);
+-	if (ret)
++	if (ret) {
++		dev_kfree_skb(skb);
+ 		return ret;
++	}
+ 
+ 	ret = mt76_connac_mcu_sta_wed_update(dev, skb);
+-	if (ret)
++	if (ret) {
++		dev_kfree_skb(skb);
+ 		return ret;
++	}
+ 
+ 	return mt76_mcu_skb_send_msg(dev, skb, mcu_cmd, true);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 00bff4d3aab8..04ec821225eb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -1765,8 +1765,10 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 	}
+ out:
+ 	ret = mt76_connac_mcu_sta_wed_update(&dev->mt76, skb);
+-	if (ret)
++	if (ret) {
++		dev_kfree_skb(skb);
+ 		return ret;
++	}
+ 
+ 	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
+ 				     MCU_EXT_CMD(STA_REC_UPDATE), true);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index cf0fdea45cf7..3bddd357cd0d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -1288,8 +1288,10 @@ int mt7925_mcu_add_key(struct mt76_dev *dev, struct ieee80211_vif *vif,
+ 		return PTR_ERR(skb);
+ 
+ 	ret = mt7925_mcu_sta_key_tlv(wcid, sta_key_conf, skb, key, cmd, msta);
+-	if (ret)
++	if (ret) {
++		dev_kfree_skb(skb);
+ 		return ret;
++	}
+ 
+ 	return mt76_mcu_skb_send_msg(dev, skb, mcu_cmd, true);
+ }
+-- 
+2.34.1
+
 
