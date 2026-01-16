@@ -4,61 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC521D47CA4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 01:08:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AB2FD4A5E4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 02:19:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LGiSUz37N9ovSZPw34TwWstspblmqZbHN8iTZJ4qCGU=; b=a/SzUCl2SLJLNcq2v1Nvlhxv5K
-	lFSiX+8GtVrApSMfEq4hRWhe0SngML74w+nUAV6TRcJzVl8GAAxvDl1K5viS+UtmrSKOoDkWgmvJC
-	R1lZXmCp7XlLS96FP5qSzA0kjI1sNTQzuc2QqRK8sz0H/rxq8bpFxEoj9JW58pxabN0MbdtqcdLgb
-	n42/KyE6taWf3bwU5hMKHTOpbBlatfmZRmi9dw8wB23mErviV7mm8qI2sY4BEI70clQCzMdwyba6S
-	uOu1piYzqbqKjloIE3WmIpjbN2moqZO2iiKcDIwZgnYKzUo6jYRF/WZhnS+BzOYFaGRt/Icev+FQ7
-	LqzdFFWA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:
+	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n19BO7MPLNwQuRYYioniDrJ0SfDC8NE/pXsgsfX4ako=; b=z7RbTRUezsdCAC9Nfvoop3ilo6
+	KnheW+C5UJOAAdqSmZpj/d6lIpWfRjKrjybSClT4n7mshN9M0vXGj7o+tIWNCZKOsG1ZhC3ea6h/2
+	BbpWtioleatgRrPsvOgcoK9/E30Cg5SgM5sGu+m1EMpGD09dn5e1W4y61aEdc0lYRAHTkrRduWsBS
+	lncP92Df/3jQMkhYSzOW81GyX1F7iVFO7Ob65+rZ6tNOWD1Nc+aktA/YxnPqTo2GTuhTlhRX+CVMX
+	WQ9erWEC7d6zzaCSmlsLZFTqZJRyiElvstX3IrLubuHAK8Cu1BoumO9+eoMyw4b49QaTgdez5tp+R
+	/vitbaRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgYKK-0000000DP35-0CfM;
-	Fri, 16 Jan 2026 01:08:36 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1vgZR4-0000000DSo1-0xOZ;
+	Fri, 16 Jan 2026 02:19:38 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgYKH-0000000DP2W-1f3j;
-	Fri, 16 Jan 2026 01:08:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=LGiSUz37N9ovSZPw34TwWstspblmqZbHN8iTZJ4qCGU=; b=JUkH8GxV7ehKt+YzFs1LPmF3J7
-	yZJdJP7NGpfeasSHg/nkXKNVRrqOa62ZUUCz5s/di26PwMOxmtS8V5mWv6RJbYPLTrfMU3NeiTTuy
-	lzQYzN4FqZrFBU1XAWDJopXBwEitl44YxBUAh0kScCYJdOm1EypPoGBEomkMYpww5xKc=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1vgYKB-0030eW-2r; Fri, 16 Jan 2026 02:08:27 +0100
-Date: Fri, 16 Jan 2026 02:08:27 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Benjamin Larsson <benjamin.larsson@genexis.eu>
-Cc: Sayantan Nandy <sayantann11@gmail.com>, lorenzo@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	sayantan.nandy@airoha.com, bread.hsu@airoha.com,
-	kuldeep.malik@airoha.com, aniket.negi@airoha.com,
-	rajeev.kumar@airoha.com
-Subject: Re: [PATCH] net: airoha_eth: increase max mtu to 9220 for DSA jumbo
- frames
-Message-ID: <ce42ade7-acd9-4e6f-8e22-bf7b34261ad9@lunn.ch>
-References: <20260115084837.52307-1-sayantann11@gmail.com>
- <e86cea28-1495-4b1a-83f1-3b0f1899b85f@lunn.ch>
- <c69e5d8d-5f2b-41f5-a8e9-8f34f383f60c@genexis.eu>
+	id 1vgZR1-0000000DSna-2JuM;
+	Fri, 16 Jan 2026 02:19:36 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id CA20E418DA;
+	Fri, 16 Jan 2026 02:19:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E212C116D0;
+	Fri, 16 Jan 2026 02:19:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768529974;
+	bh=n19BO7MPLNwQuRYYioniDrJ0SfDC8NE/pXsgsfX4ako=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=I9H4UuNdU35Xac09Te+mzVVtGN1Uxd+pVUCpHVhrDvWUSwx+O5WXwVOTXHBo8/Hph
+	 HWKlVc7FRYl771NgNzQGbo4lV/FEstPCEjLPoKE7FIZsdOPZxCw9No9zH5HrNj132/
+	 3nTy7tYP69kz1HM0ZkDYUZVVBg28PDTVmBlNuHkeYYCwk6+vGSkt1URS9qqS3QJH6i
+	 4nDPAT1yT+LM2tq6A3SqkIjyBUM3JhxE6ZKOs1hDmGQ17+Z0YDUZRZj9l9SLPSE2RH
+	 D0+0hp/BVK0wv3XJk+S1p+oRB6FX0DgcZMIoeDWj8hnFneljfBqNPfBCdqjQsjOsut
+	 Y7EsjW6Vb+BDA==
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <c69e5d8d-5f2b-41f5-a8e9-8f34f383f60c@genexis.eu>
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20251029-mt8189-dt-bindings-spmi-v1-1-fbea12a4ed5e@collabora.com>
+References: <20251029-mt8189-dt-bindings-spmi-v1-1-fbea12a4ed5e@collabora.com>
+Subject: Re: [PATCH] dt-bindings: spmi: spmi-mtk-pmif: Add compatible for MT8189 SoC
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Conor Dooley <conor+dt@kernel.org>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>
+Date: Thu, 15 Jan 2026 20:19:32 -0600
+Message-ID: <176852997268.16445.17842151987828757552@lazor>
+User-Agent: alot/0.11
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_170833_443457_36CFA977 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20260115_181935_620232_46D24862 
+X-CRM114-Status: UNSURE (   7.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,28 +71,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 15, 2026 at 08:10:20PM +0100, Benjamin Larsson wrote:
-> On 15/01/2026 18:41, Andrew Lunn wrote:
-> > On Thu, Jan 15, 2026 at 02:18:37PM +0530, Sayantan Nandy wrote:
-> > > The Industry standard for jumbo frame MTU is 9216 bytes. When using DSA
-> > > sub-system, an extra 4 byte tag is added to each frame. To allow users
-> > > to set the standard 9216-byte MTU via ifconfig,increase AIROHA_MAX_MTU
-> > > to 9220 bytes (9216+4).
-> > What does the hardware actually support? Is 9220 the real limit? 10K?
-> > 16K?
-> > 
-> > 	Andrew
-> > 
-> Hi, datasheets say 16k and I have observed packet sizes close to that on the
-> previous SoC generation EN7523 on the tx path.
+Quoting Louis-Alexis Eyraud (2025-10-29 08:31:16)
+> Add compatible string for the SPMI block on MT8189 SoC, which is
+> compatible with the one used on MT8195.
+>=20
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> ---
 
-Can you test 16K?
-
-Does it make any difference to the memory allocation? Some drivers
-allocate receive buffers based on the MAX MTU, not the current MTU, so
-can eat up a lot of memory which is unlikely to be used. We should try
-to avoid that.
-
-Thanks
-	Andrew
+Applied to spmi-next
 
