@@ -4,62 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D104D4A5EA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 03:05:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97E1DD4A5EB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 03:16:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y/Dkyj6XQc3q9kwRLC+eOQBUTpahy9oV06Yp+kzaqXc=; b=xjS8C6EXLlRbOPIurLNbzHo+w+
-	fecLXxNYYEytYLhcIaLmEFBvmXd7BIjdBDARm7YFRBYbnlYbkITR9U3h0EBWVPR1l+ihGphzlJonz
-	jPSnygpDRHSPEgOyDgI00bjM26lT7mQZ1mjbV+mgvVMcslNG20EG1HMBsaHLc8JiGNUaApMlqrGJo
-	oJI02Jh5iapvFUEl+tsEeXUIsCAx566vtDSfPOjCizT3CuZioZ8bvjcdmCsXRPvlQQOj9jIGofiF2
-	TLD2n+CeJDmuK4u5CSOPHCSstNu25EUG9lXjxFSgUqwzJP0Z1LR8NbKlUOSlX/uiWskLTE5aourgj
-	1QEBTHjQ==;
+	bh=B2+FCAQTC6FVsVubt6CQsBCJNComdynPbHPZmy46ChI=; b=DROdz0W+U9khtqHu4qyBdunxzj
+	sj4lQmSGTbKU+gSkvMfLJXt4+thPk23rnr2S6dBXdwHMUUmTxfaBG7RiL/1ZWcfcG4b0hYUcdPlh9
+	Qej1cwTeh6Y0NmmeizWJkG6ozneW3trvbHbjigGdOdRVq1voUJdWnuHToinPXxtYrvOLgDTVuMNH5
+	YdfvSRmhQIdPzKxCXX2IpVjlA8Kwusv3HiFbZmZZ8qHYtH0R8F8mPySUiNzCtvzcrEUc/LyBos5jC
+	PCBemKy31DvzevYKe19dBUeEzOsgYPQ53tzEgFYgG5FgEMpXFZyO5oZQBD67UQwWoTnLpS4BLVzVp
+	jg2xsNGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vga9n-0000000DVZb-3hpV;
-	Fri, 16 Jan 2026 03:05:51 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vgaKG-0000000DWAk-1jyP;
+	Fri, 16 Jan 2026 03:16:40 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vga9k-0000000DVZ6-3yYh;
-	Fri, 16 Jan 2026 03:05:50 +0000
+	id 1vgaKE-0000000DWAB-2fzg;
+	Fri, 16 Jan 2026 03:16:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E00534338D;
-	Fri, 16 Jan 2026 03:05:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4EA59C116D0;
-	Fri, 16 Jan 2026 03:05:47 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B04E560167;
+	Fri, 16 Jan 2026 03:16:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3BFD6C19421;
+	Fri, 16 Jan 2026 03:16:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768532747;
-	bh=U3Aoti0YPoxifwNh7V0YYpw1gTTxaBib3ervHQ0XypE=;
+	s=k20201202; t=1768533397;
+	bh=B2+FCAQTC6FVsVubt6CQsBCJNComdynPbHPZmy46ChI=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=L1QYiDqKnDOSSq+xNu+85WqFwC8Qoq9llFdwS+6br3L3Q5qGCwSBH4tzlpuO3mq3r
-	 vaEOV8686ZZIri8oA4Plxr8THRmQ6eDgQHLdKqOoGFF2BrIk6eOieq1eiChchXjgAE
-	 ND1QawHZH0QXhocxN9ghOzjhfneolngOFAQMz6fg0slaJUtuiMZLk7PnFhHoZkJ7Tm
-	 3wUSihRl3EyFF5DahJf+HsOKeV7ufvwsJ44HfcS9VcYQYRHdeOm7IR4w+ouPDkIUG4
-	 sMH810M6wuXKRoJEovwOxYpa2C3grmqrC5EPFCP2x8zuUc7moPv5lg+OVTZ+vQQ6V+
-	 +R/3912fAVxfQ==
-Date: Thu, 15 Jan 2026 19:05:46 -0800
+	b=OadD1y5pzThcRXgoOGbwyy0e3rC1wHFHn/FBWBj07osgVMonggwCQ8i9/uRKUtQrV
+	 B6GWHgrlHd6WyvQ1VATKmGsDNNcrm7Ox0DUuCGCQHzqgL/s6qgceLdNAo++4UGLS3t
+	 5sbDj1BVZau4SPy8PTe1tUFZNYjZ0xh2OLzBOUK8ImjRU5st7F3peTEWJMl+HckT91
+	 Rb1gi7AUhdEAAM+/swupIlSqiaJXQZAuoKFOcn+NZbtiC2HMKbzIDc68P+jjLdamul
+	 1KUDgLwQXNwcgUBDpGyu4lPCPiRPyij+kXEVxSMB3gs8hqJ0I3TpVM+HoaU3Vasck3
+	 2AdDsM7LITAdg==
+Date: Thu, 15 Jan 2026 19:16:35 -0800
 From: Jakub Kicinski <kuba@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Sayantan Nandy <sayantann11@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, sayantan.nandy@airoha.com, bread.hsu@airoha.com,
- kuldeep.malik@airoha.com, aniket.negi@airoha.com, rajeev.kumar@airoha.com
-Subject: Re: [PATCH] net: airoha_eth: increase max mtu to 9220 for DSA jumbo
- frames
-Message-ID: <20260115190546.5ede6750@kernel.org>
-In-Reply-To: <aWjuM3Ov0e45QyW4@lore-desk>
-References: <20260115084837.52307-1-sayantann11@gmail.com>
-	<aWjuM3Ov0e45QyW4@lore-desk>
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-phy@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Daniel Golle <daniel@makrotopia.org>,
+ Horatiu Vultur <horatiu.vultur@microchip.com>, =?UTF-8?B?QmrDuHJu?= Mork
+ <bjorn@mork.no>, Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit
+ <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo
+ Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Neil
+ Armstrong <neil.armstrong@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Eric Woudstra
+ <ericwouds@gmail.com>, Marek =?UTF-8?B?QmVow7pu?= <kabel@kernel.org>, Lee
+ Jones <lee@kernel.org>, Patrice Chotard <patrice.chotard@foss.st.com>
+Subject: Re: [PATCH v3 net-next 00/10] PHY polarity inversion via generic
+ device tree properties
+Message-ID: <20260115191635.33897ee8@kernel.org>
+In-Reply-To: <aWeXvFcGNK5T6As9@vaman>
+References: <20260111093940.975359-1-vladimir.oltean@nxp.com>
+	<aWeXvFcGNK5T6As9@vaman>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_190549_039497_7670E790 
-X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,23 +82,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 15 Jan 2026 14:40:03 +0100 Lorenzo Bianconi wrote:
-> > The Industry standard for jumbo frame MTU is 9216 bytes. When using DSA
-> > sub-system, an extra 4 byte tag is added to each frame. To allow users
-> > to set the standard 9216-byte MTU via ifconfig,increase AIROHA_MAX_MTU
-> > to 9220 bytes (9216+4).
-> > 
-> > Signed-off-by: Sayantan Nandy <sayantann11@gmail.com>  
-> 
-> I think the patch is fine, but here you are missing to specify this is v2
-> and this patch targets net-next. Moreover, please wait 24h before reposting
-> a new version of the same patch.
+On Wed, 14 Jan 2026 18:48:52 +0530 Vinod Koul wrote:
+> Subject: Re: [PATCH v3 net-next 00/10] PHY polarity inversion via generic device tree properties
 
-FWIW this is a good reminder for Sayantan for the future but it doesn't
-merit a repost in itself. net-next is our default tree, and pw bot
-guessed correctly.
-
-That said I think Andrews request warrants some extra testing here so:
--- 
-pw-bot: cr
+You can submit the PR in reply to the series, but please rewrite the
+subject to a typical PR format. Patchwork does not register this reply
+as a submission.
 
