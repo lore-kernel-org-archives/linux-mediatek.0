@@ -4,94 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4626C98302
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 21:29:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DBE5C9830C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 23:51:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uzksdNKE6zFNjKkRtgxoYFjKiQIY4jM1ByvFS9VthaE=; b=vpFix48fcaxRY+LC3qmqbB9IEc
-	0UT/bJ/+LjrZNUKDd8hWtHHcLYz7G86mwzeWpds4sgPHx2K2wTxrBvHZR97RDskslBmaJoJkz3Gds
-	8Giu+M+9d47NCbCZcLr6fIVoAOPk8Ux5n0ZhRmDyytrNC4gMR/5Qz9rFWqnn+KCQoL64oSjUSUQlf
-	CK788whDzTNHv9TnQGl4kynQ3V5xFjPGFRLpc/qL7hwOiDkIuffG3A5EigjJP/5l1c/kLcBUIRC1J
-	iDQhfcIlKoPMV0VbdqagTcG3RvjCpU4HjZJZnP4gue4AXRDiefng9QkEvquuv4VBZTDaHSK539mPq
-	NIbEWHCg==;
+	bh=5BcdL7DCGU07TDd/5iPyYkuFOyY06VDEoEYPaFNx7yE=; b=qh++1aY3F/3RhcdWAyrcq4THJ5
+	oIOYNbWlGuVtV0D1ey3wJkjeXXKgN1lq6sJAEQ303RE+MQhyfOv/dxREw/6Iac94Re1yVkNq3JI6l
+	h75W3wYH0iq8oKdzbsj/e0TI7ZsFEzzvrFfPrh6qAENMTDgeiGg1SS2rNFDqCLaLbJNpH4FjgCLz+
+	DGAiv3HPEv4I99cXYm7Liwzuv7Mb+9N9KlEMzklU/D2w1PNrlCLIq5N+bMO20bQ9wq5ATfgM6jPit
+	5yeXMblFDtNpXkLYmTCRkQC7cqTDRT2uyYNzOwhLINE5E3qsFH1opov+hSpycI5aHjLFMm07bymwM
+	qSb7BS/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgrNm-0000000EuRu-0JKZ;
-	Fri, 16 Jan 2026 21:29:26 +0000
-Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
+	id 1vgtbZ-0000000F1l6-13mT;
+	Fri, 16 Jan 2026 23:51:49 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgrNg-0000000EuLp-2fbm
+	id 1vgtbY-0000000F1kr-1NgG
 	for linux-mediatek@lists.infradead.org;
-	Fri, 16 Jan 2026 21:29:24 +0000
-Received: by mail-ot1-x330.google.com with SMTP id 46e09a7af769-7cfd7d33b88so878180a34.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 16 Jan 2026 13:29:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1768598959; x=1769203759; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=uzksdNKE6zFNjKkRtgxoYFjKiQIY4jM1ByvFS9VthaE=;
-        b=V8Rr5dGVR/1Wf5/1WQsXRZYcJY/0vT0xbP+mq0KLf0b7NEGf6E3Y4e8PI/GYebaeF6
-         PHCn8RtOsuAfzR38ppEd9qXFsMa+qSsCQNsqL5YMZaZzJopvkGphwDNSSG/0QAmVelfF
-         ZmJjtU/H6UGunhHG/2CzZ2SiEr0UvVyAt+i1+PCFzMbNBFt7BlwmmPgt9eblIxzptB7Y
-         P2A79zPVJnF5WUtUMR4HqcxYX/6lI27IizCla9fsp5bNtNwIJyRi/aupovVDHFmdGBia
-         aC08bNj8Awj+TGDiZD2y5a3NL1x6mhOEP+enWK42TPwp4B/+Kojs3BLXhNtonMCp71M7
-         V6iw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768598959; x=1769203759;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=uzksdNKE6zFNjKkRtgxoYFjKiQIY4jM1ByvFS9VthaE=;
-        b=FFMGJmf7aYNT2tW1bLi7ZF1EFzpK4h1HI4dkCdM1brcIuTszHVdniPMwdUDqv+osRg
-         dRCq8yUfwKt8Q5Tv8YHd6YS4s1BrOiqVaTYJAs2yMJk0l/sTNhZOZSo5G5tmtSkDwqUZ
-         4Ybgmirf4fvMDDKC4TGkJyulENZW43M5GAO8JOg1nhl3NXHl3kGVm8s92TxpMTZE2Fmz
-         H936EujhZEUDuB0ll6AYL8GIQqDYmluKjMMEPpW1sabC5ImHCb+l9MWERi0vZmkDN0GP
-         +YBE4nu1Z3WDEhPsWxWbkFF0QXWkdOXxIVVfYpzhAmtYveWB1qSGfkfIcwarjhBNg/Q0
-         0c3g==
-X-Forwarded-Encrypted: i=1; AJvYcCWZTngWOZ+irOMchSM+EtgBNUZvvC+XGUEjg76OsjgmO4TvCP9rc6X6ZHD8ujhtw8iecFI+39NVG9jbs+TjNg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzzfGeSZS3GDlG+Cnn5RUqzHkatVw5Sq7pQ+rzfnsh741AfVU24
-	QPayZr7iW7vCDVbcjGk121+WtzHWtg3GKLC0UtVNqMUHz5LjFoNFYSV8add4qvYv9IA=
-X-Gm-Gg: AY/fxX7LEqL9RmjgLYHnxUw99aD5yD2mV8Zrc9GW9lCWM375nVOr3u69YR1XxiPKoeF
-	T54w9zd9viuFqVO5+GE4xioeswlHbESm2wHsFhYDBugViWvc5wSszWAF/8xEJsgupt1jQfZqu9m
-	9wpyV0POQaYv8WSus9acifkCui6aK7BBCwrJrpAuePGCmonz+0kLttQkFqBX/htfCLk9upl3PCx
-	3tya3X1IZmAJWhEV/bciOr0cJ7hN1LDFl8nUF711F+hpWC6IX+QXdzULTj2w1WWTLS0UcYUNb6V
-	7T2ZVwjCoe5te7htCGhQ+DG+xLxHZKLJfP/hjWECcSMo0FzR1TCdGwnvxJSWYL1kovAOgYVT7Pm
-	cuIzu4TD4Gh4cmSmcQJz+GPUhU410M68hRUsSY634DZzkqWau+/jx0XPjD8PmyegXuXwCkohukt
-	FaWNw3PLpUi6L4ZAaFUm4YbVaPMEfLghuleak3RGQUAWHdrIfYA1n5Qzhr7DQd
-X-Received: by 2002:a05:6830:67d4:b0:7c7:827f:872e with SMTP id 46e09a7af769-7cfe028fa47mr2364292a34.38.1768598958732;
-        Fri, 16 Jan 2026 13:29:18 -0800 (PST)
-Received: from ?IPV6:2600:8803:e7e4:500:bd39:740e:f70f:5f7d? ([2600:8803:e7e4:500:bd39:740e:f70f:5f7d])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7cfdf2b593csm2229799a34.26.2026.01.16.13.29.17
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 16 Jan 2026 13:29:18 -0800 (PST)
-Message-ID: <108c951c-6124-48f2-9d8b-cac113b24402@baylibre.com>
-Date: Fri, 16 Jan 2026 15:29:17 -0600
+	Fri, 16 Jan 2026 23:51:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 63FC460192
+	for <linux-mediatek@lists.infradead.org>; Fri, 16 Jan 2026 23:51:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0546EC2BCAF
+	for <linux-mediatek@lists.infradead.org>; Fri, 16 Jan 2026 23:51:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768607507;
+	bh=78HHIyQq6HtcRgDAUe6py2URYh8Ya0TVMzsC4zKJWow=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=SzmPgWNCCsSi+phi8oxPp+adInnEOL/OLW4XQhPqwhoXz6xKVBvhz0ese2ODer8B6
+	 g3D0HwWT2sYYrcj8RHHNiV4EDQHJFQ7n1JcTdAgFyqC2T6QpvlwlRRzm9AU2Hr1jf+
+	 koOKF3F9wNrg65Hj2JxU74WIflgDOHxK6Oi98v1/VZddVbbsbstDmGGAsPlg2U6vnj
+	 99uD9Xv1iw3PWoisBqOOVGIAv8433IPvBvliG7i/5yCeLHu8Co1aL0InU+uMl/xnv4
+	 e04jYDtyDUnIoS23DVnh21Vvo5a7xNu5+uxkET9+KRIaGQpa+tBbWRXn/po+Vtl9rt
+	 zL8e+k45fOJ6g==
+Received: by mail-dl1-f46.google.com with SMTP id a92af1059eb24-121a0bcd364so3300924c88.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 16 Jan 2026 15:51:46 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCXswjf5ryOnGKg6dMQ1l1lQZY0Y0rTkVmUHX2qgT7JHMTL7bYG6tpx/34ZuwBvQFTbmM0uBd+SISPAaMN0eKA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyiS1fjeq4Cqzt+A+5h31HsUtQZTnuRI1nVQDuxxx6m7e7mfv06
+	C9f71HCaMIQxAVrIArWyeSiDUWxQWi00h3Aa+ZbrE+Lw7A9OpBXPZyRgYUq1aql19Wq4vHHTw/B
+	/CAqJLS0Th74UZrzNmOezrwCrXNb36Q==
+X-Received: by 2002:a05:7022:2394:b0:122:8d:3680 with SMTP id
+ a92af1059eb24-1244a78c9e4mr3776921c88.40.1768607506346; Fri, 16 Jan 2026
+ 15:51:46 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] arm: dts: mediatek: fix pinctl node names
-To: Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, Conor Dooley <conor+dt@kernel.org>,
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20260106-mtk-fix-mt7623-pinctl-name-v1-0-33817c7f78ee@baylibre.com>
- <176772122105.2350532.2584006959358435109.robh@kernel.org>
-Content-Language: en-US
-From: David Lechner <dlechner@baylibre.com>
-In-Reply-To: <176772122105.2350532.2584006959358435109.robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260116_132920_967954_CA13C058 
-X-CRM114-Status: GOOD (  25.86  )
+References: <20260108101959.14872-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260108101959.14872-1-angelogioacchino.delregno@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 16 Jan 2026 23:51:34 +0000
+X-Gmail-Original-Message-ID: <CAAOTY_8roBx1nPqvaon6F-ittiotJfi_aZu-1jgwHZVbQ_uh0A@mail.gmail.com>
+X-Gm-Features: AZwV_Qi3iCIeuX-2hrfld-Xfuvsl-3MOiLUpbyuk08dDI1xKsK1Z_v1DM9NSnaE
+Message-ID: <CAAOTY_8roBx1nPqvaon6F-ittiotJfi_aZu-1jgwHZVbQ_uh0A@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: mtk_dsi: Add support for High Speed (HS) mode
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	simona@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, bisson.gary@gmail.com, 
+	kernel@collabora.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,75 +82,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1/6/26 11:43 AM, Rob Herring wrote:
-> 
-> On Tue, 06 Jan 2026 09:20:54 -0600, David Lechner wrote:
->> While passing by, I noticed that the pinctrl nodes in a couple of dtsi
->> files did not match the addresses in their reg properties. Here are some
->> patches to fix that.
->>
->> Signed-off-by: David Lechner <dlechner@baylibre.com>
->> ---
->> David Lechner (2):
->>       arm: dts: mediatek: mt7623: fix pinctrl node name
->>       arm: dts: mediatek: mt8135: fix pinctrl node name
->>
->>  arch/arm/boot/dts/mediatek/mt7623.dtsi | 2 +-
->>  arch/arm/boot/dts/mediatek/mt8135.dtsi | 2 +-
->>  2 files changed, 2 insertions(+), 2 deletions(-)
->> ---
->> base-commit: 6cd6c12031130a349a098dbeb19d8c3070d2dfbe
->> change-id: 20260106-mtk-fix-mt7623-pinctl-name-f8593953bed7
->>
->> Best regards,
->> --
->> David Lechner <dlechner@baylibre.com>
->>
->>
->>
-> 
-> 
-> My bot found new DTB warnings on the .dts files added or changed in this
-> series.
-> 
-> Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-> are fixed by another series. Ultimately, it is up to the platform
-> maintainer whether these warnings are acceptable or not. No need to reply
-> unless the platform maintainer has comments.
-> 
-> If you already ran DT checks and didn't see these error(s), then
-> make sure dt-schema is up to date:
-> 
->   pip3 install dtschema --upgrade
-> 
-> 
-> This patch series was applied (using b4) to base:
->  Base: 6cd6c12031130a349a098dbeb19d8c3070d2dfbe (use --merge-base to override)
-> 
-> If this is not the correct base, please add 'base-commit' tag
-> (or use b4 which does this automatically)
-> 
-> New warnings running 'make CHECK_DTBS=y for arch/arm/boot/dts/mediatek/' for 20260106-mtk-fix-mt7623-pinctl-name-v1-0-33817c7f78ee@baylibre.com:
-> 
-> arch/arm/boot/dts/mediatek/mt7623a-rfb-emmc.dtb: pinctrl@1000b000 (mediatek,mt7623-pinctrl): 'cir-default', 'i2c0-default', 'i2c1-alt', 'i2c1-default', 'i2c2-alt', 'i2c2-default', 'i2s0-default', 'i2s1-default', 'keys-alt', 'leds-alt', 'mmc0', 'mmc0default', 'mmc1', 'mmc1default', 'nanddefault', 'pcie_pin_default', 'pwm-default', 'spi0-default', 'spi1-default', 'spi2-default', 'uart0-default', 'uart1-default', 'uart2-alt', 'uart2-default' do not match any of the regexes: '^pinctrl-[0-9]+$', 'pins$'
-> 	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt65xx-pinctrl.yaml
-> arch/arm/boot/dts/mediatek/mt7623a-rfb-nand.dtb: pinctrl@1000b000 (mediatek,mt7623-pinctrl): 'cir-default', 'i2c0-default', 'i2c1-alt', 'i2c1-default', 'i2c2-alt', 'i2c2-default', 'i2s0-default', 'i2s1-default', 'keys-alt', 'leds-alt', 'mmc0', 'mmc0default', 'mmc1', 'mmc1default', 'nanddefault', 'pcie_pin_default', 'pwm-default', 'spi0-default', 'spi1-default', 'spi2-default', 'uart0-default', 'uart1-default', 'uart2-alt', 'uart2-default' do not match any of the regexes: '^pinctrl-[0-9]+$', 'pins$'
-> 	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt65xx-pinctrl.yaml
-> arch/arm/boot/dts/mediatek/mt7623n-rfb-emmc.dtb: pinctrl@1000b000 (mediatek,mt7623-pinctrl): 'cir-default', 'hdmi-default', 'hdmi_ddc-default', 'i2c0-default', 'i2c1-alt', 'i2c1-default', 'i2c2-alt', 'i2c2-default', 'i2s0-default', 'i2s1-default', 'keys-alt', 'leds-alt', 'mmc0', 'mmc0default', 'mmc1', 'mmc1default', 'nanddefault', 'pcie_pin_default', 'pwm-default', 'spi0-default', 'spi1-default', 'spi2-default', 'uart0-default', 'uart1-default', 'uart2-alt', 'uart2-default' do not match any of the regexes: '^pinctrl-[0-9]+$', 'pins$'
-> 	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt65xx-pinctrl.yaml
-> arch/arm/boot/dts/mediatek/mt7623n-bananapi-bpi-r2.dtb: pinctrl@1000b000 (mediatek,mt7623-pinctrl): 'cir-default', 'hdmi-default', 'hdmi_ddc-default', 'i2c0-default', 'i2c1-alt', 'i2c1-default', 'i2c2-alt', 'i2c2-default', 'i2s0-default', 'i2s1-default', 'keys-alt', 'leds-alt', 'mmc0', 'mmc0default', 'mmc1', 'mmc1default', 'musb', 'nanddefault', 'pcie_pin_default', 'pwm-default', 'spi0-default', 'spi1-default', 'spi2-default', 'uart0-default', 'uart1-default', 'uart2-alt', 'uart2-default' do not match any of the regexes: '^pinctrl-[0-9]+$', 'pins$'
-> 	from schema $id: http://devicetree.org/schemas/pinctrl/mediatek,mt65xx-pinctrl.yaml
-> 
-> 
-> 
-> 
-> 
+Hi, Angelo:
 
-It's a bit late for me to be replying but this came up on IRC...
+AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> =E6=96=
+=BC
+2026=E5=B9=B41=E6=9C=888=E6=97=A5=E9=80=B1=E5=9B=9B =E4=B8=8A=E5=8D=8810:20=
+=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> Up until now, the MediaTek DSI Controller has always been working
+> in Low Power Mode (LPM), as this driver has always ignored the
+> MIPI_DSI_MSG_USE_LPM flag hence never setting HS mode.
+>
+> In the current state of the driver the only thing that is needed
+> to add support for DSI High Speed (HS) transmit is to simply set
+> the "HSTX" config bit in the configuration register.
+>
+> Check if flag MIPI_DSI_MSG_USE_LPM is set and, if not, set HSTX.
 
-I thought it was obvious that these were unrelated existing warnings, so
-I didn't reply initially. But to save anyone else the trouble of figuring
-it out, it should not block this series. I can send a separate patch later
-to fix the existing warnings if we want to clean that up too.
+Applied to mediatek-drm-next [1], thanks.
 
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
+
+Regards,
+Chun-Kuang.
+
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
+k/mtk_dsi.c
+> index e4953d5cb6a8..a90cae9512c5 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -155,6 +155,7 @@
+>  #define SHORT_PACKET                   0
+>  #define LONG_PACKET                    2
+>  #define BTA                            BIT(2)
+> +#define HSTX                           BIT(3)
+>  #define DATA_ID                                GENMASK(15, 8)
+>  #define DATA_0                         GENMASK(23, 16)
+>  #define DATA_1                         GENMASK(31, 24)
+> @@ -1177,6 +1178,9 @@ static void mtk_dsi_cmdq(struct mtk_dsi *dsi, const=
+ struct mipi_dsi_msg *msg)
+>         else
+>                 config =3D (msg->tx_len > 2) ? LONG_PACKET : SHORT_PACKET=
+;
+>
+> +       if (!(msg->flags & MIPI_DSI_MSG_USE_LPM))
+> +               config |=3D HSTX;
+> +
+>         if (msg->tx_len > 2) {
+>                 cmdq_size =3D 1 + (msg->tx_len + 3) / 4;
+>                 cmdq_off =3D 4;
+> --
+> 2.52.0
+>
 
