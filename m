@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81555D4899D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 13:21:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF083D4899E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 13:22:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4iTmYzOVpgFxHuDriWRzn+AZ8hOqr5YDbrQnj9lt7V0=; b=qsrUjPZSOfr3IwkffsAxT8Tu3c
-	AS0w/wooUOEzIsApW9KthlGJMJTY62txNqLUfRiaImy3iG07J0CIcr61U6SpLFTovfRxMDW/wVXfR
-	Y0dheDxgDXpWGQXHGYsEPxlOeSxvVObOJ4iobXDWXKTrIDNHQGACpUC/zY+6gVMC3sNYMf0N80F/X
-	hO+n+dqertAueX/gFHt9TY4pV79crsUanqRIM4lxg6soHrGDdkCUd7qSdEIggrvO9ZX8eLKSmfSof
-	0RT3FLaTbjhuN9ElP2NwNli2BHRDL3OPQ6XszyQgIyr0hHAzZU1JrY6DzCfM10MrdUjwzYWMilIkG
-	zbv4rBaA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TBntYEJyIW5T/g+/Y8hSI0e9Ry2Pdg94pES2EydsjdI=; b=FEwAtb6NatPEH6df0WL2iCji+n
+	IcF6+As+5vQ+/F+na4WsYZ5jaYzbPqajIfZnb/BZV1chW7D3KyDF/Lbo8gj8OtPqRkZihebk4w8o1
+	wdOhVzxAptSZe8v7vY8uvdQ7w5KmSePp6OFwdr6ZPGjfZ6c2LVt2waLaKTqC4lqvehXSRKOYHE27G
+	zaFJe/Y0EFrHHTQMDPLcuPSAWpQLP/iDrJoYw+Iih1s7wyFY9pt2aed1f9LVOQRRgUXe2d9xLHCXR
+	/WvoDFzOy8BwYPuCrwugqp4nVSBcWcpQOGi0XQKXe3FSCp/n3Hh7rjXigz2VTQYqvqJtC2i6OGkWX
+	XyUWzo2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgjl9-0000000EAVC-421D;
-	Fri, 16 Jan 2026 13:21:03 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vgjmb-0000000EAdo-2lwd;
+	Fri, 16 Jan 2026 13:22:33 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgjl7-0000000EAUX-2Ost;
-	Fri, 16 Jan 2026 13:21:02 +0000
+	id 1vgjma-0000000EAdU-2MDr;
+	Fri, 16 Jan 2026 13:22:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 675AA409E7;
-	Fri, 16 Jan 2026 13:21:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB169C16AAE;
-	Fri, 16 Jan 2026 13:20:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1768569660;
-	bh=Hx4B3T9G5r+JB4ec6LfcWHU2oCBwD0uTryYJxy1Wf9w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JloTXoYVvtfKxl1hJbr00aWwhaiTXTk8fFT23QLrRGFuMlow83TmKzKQKCQJqsdd+
-	 Sc23iCplWQBcBy1Gv4YYjgO1X957ZqGGkretMDHbH455eGe5kSQ+Fj/l+V5r4dJlfL
-	 8VO70YnOc2K+006PEhLXW1+B4JaB3/agMOFCRdvQ=
-Date: Fri, 16 Jan 2026 14:20:57 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Cc: jirislaby@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, fred2599@gmail.com,
-	linux-kernel@vger.kernel.org, linux-serial@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Project_Global_Digits_Upstream_Group@mediatek.com,
-	liguo.zhang@mediatek.com, Vasanth.Reddy@mediatek.com,
-	Yenchia Chen <yenchia.chen@mediatek.com>
-Subject: Re: [PATCH] MEDIATEK: serial: 8250_mtk: Add ACPI support
-Message-ID: <2026011631-zips-provider-6c46@gregkh>
-References: <20260105024103.2027085-1-zhiyong.tao@mediatek.com>
- <20260105024103.2027085-2-zhiyong.tao@mediatek.com>
+	by tor.source.kernel.org (Postfix) with ESMTP id AADCC60150;
+	Fri, 16 Jan 2026 13:22:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A21AC116C6;
+	Fri, 16 Jan 2026 13:22:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768569751;
+	bh=2VEdYo29uWhDiLRP2fq9J98xnEkof/Pep3fKzqyIui4=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=MkQxmtjSLAsRu38Ok5ugheI+luIhbZtgYVTZxIS662au2cdG/G9XcEvn84fHnVa13
+	 B+2NL3xg0PZytmkATpKmzSIzsQwbXZjM6tvl5y5pStCLZq6SKH8sGKwe2uAz2cLSE1
+	 dS4EMm69bYvYHTTJqKnNVpD3aJLO4xiZC6VgNlk08Tgb0YSOViBXvak44NuqFr1zyO
+	 lojMSVY/y3gXI/Kczfm9+vkRvwFkepm4ZZGwFRUo+qsQ1rZIgcUdQ84s9LAnZ31lI5
+	 IYvyPZEMZ7vWirvpsGWy3zid0tyhnITI6wDeUiB6FcDwcUmTlX8ZD242S4o+6ayuLS
+	 L4euapTRhHURA==
+From: Mark Brown <broonie@kernel.org>
+To: robh@kernel.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: krzk+dt@kernel.org, conor+dt@kernel.org, tudor.ambarus@linaro.org, 
+ pratyush@kernel.org, mwalle@kernel.org, miquel.raynal@bootlin.com, 
+ richard@nod.at, vigneshr@ti.com, lgirdwood@gmail.com, 
+ matthias.bgg@gmail.com, julien.massot@collabora.com, 
+ eugen.hristev@linaro.org, jiaxin.yu@mediatek.com, shane.chien@mediatek.com, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-mtd@lists.infradead.org, linux-sound@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ kernel@collabora.com
+In-Reply-To: <20260115125624.73598-1-angelogioacchino.delregno@collabora.com>
+References: <20260115125624.73598-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: (subset) [PATCH 0/4] MediaTek MT8192 dtbs_check fixes
+Message-Id: <176856974724.65310.2260409999915258318.b4-ty@kernel.org>
+Date: Fri, 16 Jan 2026 13:22:27 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260105024103.2027085-2-zhiyong.tao@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260116_052101_651345_65927BD8 
-X-CRM114-Status: UNSURE (   9.38  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-47773
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,19 +76,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 05, 2026 at 10:39:55AM +0800, Zhiyong Tao wrote:
-> From: "Zhiyong.Tao" <zhiyong.tao@mediatek.com>
+On Thu, 15 Jan 2026 13:56:20 +0100, AngeloGioacchino Del Regno wrote:
+> This series addresses most of the MediaTek MT8192 dtbs_check warnings
+> by adding a missing SPI NOR flash compatible string and fixing both
+> the audsys binding and devicetree node name.
 > 
-> Add ACPI support to 8250_mtk driver. This makes it possible to
-> use UART on ARM-based desktops with EDK2 UEFI firmware.
+> AngeloGioacchino Del Regno (4):
+>   dt-bindings: mtd: jedec,spi-nor: Add Winbond W25Q(32/64/128/256)JWM
+>   ASoC: dt-bindings: mt8192-afe-pcm: Fix clocks and clock-names
+>   dt-bindings: arm: mediatek: audsys: Support mt8192-audsys variant
+>   arm64: dts: mediatek: mt8192: Rename mt8192-afe-pcm to
+>     audio-controller
 > 
-> Signed-off-by: Yenchia Chen <yenchia.chen@mediatek.com>
-> Signed-off-by: Zhiyong.Tao <zhiyong.tao@mediatek.com>
+> [...]
 
-Please use your name, not '.' in it, like your email has.  Yenchia did
-it properly here.
+Applied to
 
-thanks,
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-greg k-h
+Thanks!
+
+[2/4] ASoC: dt-bindings: mt8192-afe-pcm: Fix clocks and clock-names
+      commit: 60e8451be1f7af4b51540f2cfd65c9c85af752e9
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
