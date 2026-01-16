@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A744D4A5EE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 03:19:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CE9CD4A5F7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 03:44:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JoF2AbVVEoWqyJCK7CJsC9G+oVYeU7nhRemC8Vabi7Q=; b=QjBGOmhzitXIr5m+NB3xHWXR+v
-	isFCxa6voLz483UqqfvcWLLVleAbimIcEmqgeVnfMbz7UAnD7nMO5FFfkIHbdXuoi/QrdgSMg5A/o
-	SUaumpeFATBGkYizAJ+fynKbo7RtNHno0XLuMrfBylO39py5QcdxUFEaTt6yRO8ylI7MEmKi1Hq9K
-	yDsTueMHjUU/VyXe6WdNj33e2IpHYAxO8dIwUjkycYge52NUeLi/QZ3IL1Ow7E4KnoopAj0lIBiOv
-	PNjDarzYztKNFz1Oza8g4i+XXjQpTUC7iC3gRGLrmt3zN4xrZLtJcVx8rxEAZ6wTm6iBMWt4PeVO7
-	xEoeLWlg==;
+	bh=Hiz45fyBoPGTyFol0iLWEwkTdZoN3MkpAQNLtJeSd9c=; b=BTzPTIQ5KaJj0cdNITd1D+zDt7
+	YFsDRJWauPZt0vlMyS8MbL8Iob9taXK1Vg3q8VfF/L+Az4JG8muBBMBkYQ4mzMr8ADPgg8xJaSlIG
+	zKQdvN1uVBePua8HIuU1FqnSTgB7c8eLbNCAIlcl4TyWmlH22oYucdEWJS0PAvbbnKko6UT4vBw+i
+	Q80vl2/f2mTKoh82u8ium36Ekf2l7ZWMjZFKCJ4HAR0tryqm84ihNIawLNslCzVmtVySx93yzVzTC
+	4/02JjzqIBZ83Tkr3vifh/kq15KNU6MyoL/pUOwI1qrO8VnabukoPeKUnc5KNmu22YggKj8Q75tWX
+	gQm8jVZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgaMy-0000000DWpZ-17FB;
-	Fri, 16 Jan 2026 03:19:28 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vgakd-0000000DXXC-3FPl;
+	Fri, 16 Jan 2026 03:43:55 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgaMw-0000000DWoB-1Pza;
-	Fri, 16 Jan 2026 03:19:26 +0000
+	id 1vgaka-0000000DXWj-2vL1;
+	Fri, 16 Jan 2026 03:43:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AC97E60160;
-	Fri, 16 Jan 2026 03:19:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B3CAC116D0;
-	Fri, 16 Jan 2026 03:19:24 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id F3416441A9;
+	Fri, 16 Jan 2026 03:43:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CDB3FC116D0;
+	Fri, 16 Jan 2026 03:43:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768533565;
-	bh=VdJdZpUrMYbP48ze7XiWYcrijQ8cjRhSAViY06JrWns=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=UfPpHK9Zs+U0XolvtAoWyNifcaJ7gKJDEZDRjcx/qG9hP6oEaFsIVpncLAsQsSBf5
-	 I0nd2pkfwH18qaqAe1BCUhxezG4bx7ZlzYhI9sWtDNwKQumt3mLXq5qimita/HMBUP
-	 QW40JDSebPhYGO3ngLZ2OW9vCAL/McNkDv+hiUPbBvUBSmw6YAjQZsGszx0BBcL8mN
-	 dvgURzsb55zeC0ZJTbDPPaYyJtr9psUVbcOvQmY2MibBL+UFaZR8/OHov8OaUrCJOe
-	 ojvDq4ltLZcX0v9x5yq/XgSFPad7wGsm478xvrSuF0bF3qtinApwa6v8/VenDmGqsX
-	 iRL+468HGOQGw==
-Date: Thu, 15 Jan 2026 19:19:23 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: Paolo Abeni <pabeni@redhat.com>, =?UTF-8?B?QmrDuHJu?= Mork
- <bjorn@mork.no>, netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Daniel Golle <daniel@makrotopia.org>, Horatiu Vultur
- <horatiu.vultur@microchip.com>, Andrew Lunn <andrew@lunn.ch>, Heiner
- Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Neil Armstrong
- <neil.armstrong@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Eric
- Woudstra <ericwouds@gmail.com>, Marek =?UTF-8?B?QmVow7pu?=
- <kabel@kernel.org>, Lee Jones <lee@kernel.org>, Patrice Chotard
- <patrice.chotard@foss.st.com>, Vinod Koul <vkoul@kernel.org>
-Subject: Re: [PATCH v3 net-next 05/10] phy: add phy_get_rx_polarity() and
- phy_get_tx_polarity()
-Message-ID: <20260115191923.640ea49d@kernel.org>
-In-Reply-To: <20260115093928.hdqlxkt6bd5w4xud@skbuf>
-References: <20260111093940.975359-1-vladimir.oltean@nxp.com>
-	<20260111093940.975359-6-vladimir.oltean@nxp.com>
-	<87o6n04b84.fsf@miraculix.mork.no>
-	<20260111141549.xtl5bpjtru6rv6ys@skbuf>
-	<aWeV1CEaEMvImS-9@vaman>
-	<33ff22b4-ead6-4703-8ded-1be5b5d0ead0@redhat.com>
-	<173d1032-386c-4188-933c-ca91ce36468f@redhat.com>
-	<20260115093928.hdqlxkt6bd5w4xud@skbuf>
+	s=k20201202; t=1768535031;
+	bh=Rk7ul3+7Pd2L2LKtycBrWaYq9U5m4oqexjF0isWTsys=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=ur7ou9TVo1Wkks1IlPV3IoVZDFs90ZBFQ9xfnfHgHr/GgEGqm8PAr9kL+Hsu2C60L
+	 zPP9c0xe0EfsfPUHW8o/kW1aL5dFzsGNYuJXiWXpeGOudoAYN1TBsIWsCvAs8sxawy
+	 qcKI0oWPXc0hw8RaKO9QRYtBTRDpFgiOTQeHjS2q/SYoi9DftkutaofhoqhbyyYISU
+	 Rcps+E1ceyw40H2zSR50kWbdimDVpahi8M0RK2IzxzYbpsy68D2pQ8Npcmm4nVBVt+
+	 GO0KOPNtN7XalXX981ewAP0GnkqVbDcfLRFTu/cMTykqxQkVTXzP+aeXL0TbqFNAZr
+	 oYMmKKr8XVuWA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 7894F380AA4B;
+	Fri, 16 Jan 2026 03:40:23 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v3 0/2] net: airoha: Init Block Ack memory region
+ for MT7996 NPU offloading
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <176853482227.70930.3785577053167700341.git-patchwork-notify@kernel.org>
+Date: Fri, 16 Jan 2026 03:40:22 +0000
+References: <20260108-airoha-ba-memory-region-v3-0-bf1814e5dcc4@kernel.org>
+In-Reply-To: <20260108-airoha-ba-memory-region-v3-0-bf1814e5dcc4@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260115_194352_782759_A998A5A0 
+X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,15 +77,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 15 Jan 2026 11:39:28 +0200 Vladimir Oltean wrote:
-> > > Could you please share a stable branch/tag, so that we can pull patches
-> > > 1-5 into the net-next tree from there?  
-> > 
-> > Vladimir, could you please re-post patches 1-5 after that Vinod shares
-> > the above? So that we don't keep in PW the dangling (current) series.
-> >  
-> Vinod did share the PR:
-> https://lore.kernel.org/netdev/aWeXvFcGNK5T6As9@vaman/
+Hello:
 
-IIUC Paolo did not pull Vinod's PR, so pulled now, you can repost.
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Thu, 08 Jan 2026 16:05:06 +0100 you wrote:
+> This is a preliminary series in order to enable NPU offloading for
+> MT7996 (Eagle) chipset.
+> 
+> ---
+> Changes in v3:
+> - Add missing minItems for memory-region-names in airoha,en7581-npu.yaml
+> - Link to v2: https://lore.kernel.org/r/20260107-airoha-ba-memory-region-v2-0-d8195fc66731@kernel.org
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,v3,1/2] dt-bindings: net: airoha: npu: Add BA memory region
+    https://git.kernel.org/netdev/net-next/c/40f9e446033e
+  - [net-next,v3,2/2] net: airoha: npu: Init BA memory region if provided via DTS
+    https://git.kernel.org/netdev/net-next/c/875a59c9a9e5
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
