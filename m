@@ -4,59 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EBCED4A5E4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 02:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D104D4A5EA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jan 2026 03:05:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:
-	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=L9EFgctOK7I61NwA7js08sNs8h4/HUg6GstBYjS/NkI=; b=q7MqHoZXlqE1FPOuH1xfJN09Lv
-	x2bXcP3/YJziODLubQg/ChoKs2oSOk6jOlPvFbrNh/odZhBt3h9B9cl1uc1jkNffALw6c+GCZvMVj
-	lRGraRBncoKB2ejQl+SGFwcC4j/6KRcU9m1vh1Yg4hqxqAgTRyHz2r5DVDcUePWQUugBFLiIvMn2V
-	UdGGnSPX2CGsxULJOmn/z53Vyx6Q26te6BSR1iPc92PkT9DGWrMz95orVbODvqr0hM5P3aKyZuiPT
-	PvDSJtki5qy7vVJ0MfA75I4qb5GDJkE30epQJTqrtXFhrjPx1uNA21U7SnQpA2rPw3KUNzlJ5QCa4
-	Eg3KqkWQ==;
+	bh=Y/Dkyj6XQc3q9kwRLC+eOQBUTpahy9oV06Yp+kzaqXc=; b=xjS8C6EXLlRbOPIurLNbzHo+w+
+	fecLXxNYYEytYLhcIaLmEFBvmXd7BIjdBDARm7YFRBYbnlYbkITR9U3h0EBWVPR1l+ihGphzlJonz
+	jPSnygpDRHSPEgOyDgI00bjM26lT7mQZ1mjbV+mgvVMcslNG20EG1HMBsaHLc8JiGNUaApMlqrGJo
+	oJI02Jh5iapvFUEl+tsEeXUIsCAx566vtDSfPOjCizT3CuZioZ8bvjcdmCsXRPvlQQOj9jIGofiF2
+	TLD2n+CeJDmuK4u5CSOPHCSstNu25EUG9lXjxFSgUqwzJP0Z1LR8NbKlUOSlX/uiWskLTE5aourgj
+	1QEBTHjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgZRR-0000000DSrx-3OF4;
-	Fri, 16 Jan 2026 02:20:01 +0000
+	id 1vga9n-0000000DVZb-3hpV;
+	Fri, 16 Jan 2026 03:05:51 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgZRP-0000000DSqu-0rS7;
-	Fri, 16 Jan 2026 02:20:00 +0000
+	id 1vga9k-0000000DVZ6-3yYh;
+	Fri, 16 Jan 2026 03:05:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C76534353A;
-	Fri, 16 Jan 2026 02:19:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9FFD5C116D0;
-	Fri, 16 Jan 2026 02:19:58 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E00534338D;
+	Fri, 16 Jan 2026 03:05:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4EA59C116D0;
+	Fri, 16 Jan 2026 03:05:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768529998;
-	bh=GCzrQ0j+1QSvMXWCusyN/aVUAD5+b87qrzjsqnsLW9U=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=XA9GmcYwKmthDROkg5o4SXiniwfdMDVdKRqX0dpVVlOhLQGKb/R1hiPaFU0QEYqgl
-	 sCHA/R7QRkZKRN5RRswx5y5MX9BEBFtVuZdifgDPgHSKrIsBjQHd+u+EgxaO/vZEZ4
-	 5hr8lOg7XojqmZQCWtmnV4vWnXNm6ft5jm00yPi/dzNf4RogLHWi+7znAzz5XWaMXG
-	 +vO1buEH1rqgQjJqolyIXJBHUFycnNZiOuwf0CsGD1/0mehSRAm9fV6GtdK+ZEMTAy
-	 G7vdRjFAffWxy2JsSGwlelruZLJYbVcIizBZGnH4pShN/0cq1B9Z0JquHlZ+4QlI8e
-	 il8AKQbNwbxoQ==
-Content-Type: text/plain; charset="utf-8"
+	s=k20201202; t=1768532747;
+	bh=U3Aoti0YPoxifwNh7V0YYpw1gTTxaBib3ervHQ0XypE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=L1QYiDqKnDOSSq+xNu+85WqFwC8Qoq9llFdwS+6br3L3Q5qGCwSBH4tzlpuO3mq3r
+	 vaEOV8686ZZIri8oA4Plxr8THRmQ6eDgQHLdKqOoGFF2BrIk6eOieq1eiChchXjgAE
+	 ND1QawHZH0QXhocxN9ghOzjhfneolngOFAQMz6fg0slaJUtuiMZLk7PnFhHoZkJ7Tm
+	 3wUSihRl3EyFF5DahJf+HsOKeV7ufvwsJ44HfcS9VcYQYRHdeOm7IR4w+ouPDkIUG4
+	 sMH810M6wuXKRoJEovwOxYpa2C3grmqrC5EPFCP2x8zuUc7moPv5lg+OVTZ+vQQ6V+
+	 +R/3912fAVxfQ==
+Date: Thu, 15 Jan 2026 19:05:46 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Sayantan Nandy <sayantann11@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, sayantan.nandy@airoha.com, bread.hsu@airoha.com,
+ kuldeep.malik@airoha.com, aniket.negi@airoha.com, rajeev.kumar@airoha.com
+Subject: Re: [PATCH] net: airoha_eth: increase max mtu to 9220 for DSA jumbo
+ frames
+Message-ID: <20260115190546.5ede6750@kernel.org>
+In-Reply-To: <aWjuM3Ov0e45QyW4@lore-desk>
+References: <20260115084837.52307-1-sayantann11@gmail.com>
+	<aWjuM3Ov0e45QyW4@lore-desk>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20251024083247.25814-1-angelogioacchino.delregno@collabora.com>
-References: <20251024083247.25814-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v4 0/5] SPMI: MediaTek: Add support for multi-bus
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, hsin-hsiung.wang@mediatek.com, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, kernel@collabora.com
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Date: Thu, 15 Jan 2026 20:19:56 -0600
-Message-ID: <176852999687.16445.9363555790881114587@lazor>
-User-Agent: alot/0.11
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_181959_274058_59F8061B 
-X-CRM114-Status: UNSURE (   9.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260115_190549_039497_7670E790 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,27 +74,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting AngeloGioacchino Del Regno (2025-10-24 03:32:42)
-> Changes in v4:
->  - Refactored IRQ domain handling due to deprecation of function
->    irq_domain_add_tree() to use the new irq_domain_create_tree()
->  - Added .irq_eoi() callback for rcs_irq as that better reflects
->    the actual functionality of this interrupt controller (as its
->    SLV_x_y_EINT registers are really signaling "EOI", not "ACK")
->  - Fixed to use generic_handle_domain_irq_safe() to avoid races
->  - Tested again on MT8196 Chromebook
->=20
-> Changes in v3:
->  - Added Fixes tag to commit 3, collected R-b tag from wenst
->=20
-> Changes in v2:
->  - Fixed indentation error in dt-bindings
->=20
-> This series adds basic support for multi-bus (multi-master) SPMI
-> controllers, as found in the MediaTek MT8196 Chromebook SoC and
-> the MediaTek MT6991 Dimensity 9400 Smartphone SoC, including RCS
-> interrupt handling and per-bus registration.
->=20
+On Thu, 15 Jan 2026 14:40:03 +0100 Lorenzo Bianconi wrote:
+> > The Industry standard for jumbo frame MTU is 9216 bytes. When using DSA
+> > sub-system, an extra 4 byte tag is added to each frame. To allow users
+> > to set the standard 9216-byte MTU via ifconfig,increase AIROHA_MAX_MTU
+> > to 9220 bytes (9216+4).
+> > 
+> > Signed-off-by: Sayantan Nandy <sayantann11@gmail.com>  
+> 
+> I think the patch is fine, but here you are missing to specify this is v2
+> and this patch targets net-next. Moreover, please wait 24h before reposting
+> a new version of the same patch.
 
-Applied to spmi-next
+FWIW this is a good reminder for Sayantan for the future but it doesn't
+merit a repost in itself. net-next is our default tree, and pw bot
+guessed correctly.
+
+That said I think Andrews request warrants some extra testing here so:
+-- 
+pw-bot: cr
 
