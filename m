@@ -4,139 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52B6BC98303
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jan 2026 03:05:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 503DCC98313
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jan 2026 04:37:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=UGMpGMqaNGWxqcwdjn1ROPnyxiXTVg4xGt3yGKLuYME=; b=PLcZ8srgG1tnJoRGgwD5peNih/
-	6XT5daYfvohvbmGucnqXTdIRocK7eWzC6WMANzmUde1Gc84jb083YY5xWVrgxviMiZWyFG8GYi3OS
-	Dh0t0QqOFvVjO1B3TrEa5NTHFN11sigBVWh/J2v2BMLx+Or3s2ZJwuwXfD7nNBGktzonsjniu3nEi
-	1nfbug9Hda6BsT0xW+vqYk9PqerwSnqOLd0sYRhJf4dhwf4piPyEddtIobPnIy8tGfm7b+AC0lNCI
-	o/I3JOLHxv58c8vdHLg/2efa/RmTFC5FDfLn7aub0fob6yNZb33T/BTPuZbAuYq61WVyfSrlh1alr
-	4E69St1w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QhFqOoUzZlkcRIWKFMqEdTV3qlP4lEfllwW9lbbfmWI=; b=RqLUUoZBv6v8GgcVb40lxZ9rKT
+	BHrZavacL6HKXBkZnvjuu2HWpVVsgIxXxLRhfHmRrfw2/7EsY+bkO7QUhNjp7ji5Uc8jh8NLMm8OL
+	a298mCtpGKaIOjWNyiaoAqdmHnjGVlSxIrD88ZG3xQmmAfCliPOUUJBxKFUa1u9t8koto1B3uGKvr
+	rVya9OXNZ1+oZc7RGzQBoTax02io8EZyRDyjadpB/bF96c7bXcRwUJaPYLmRLHjf6x6XSckaAHaf0
+	U+XbXiOSHX3Gq3FBYykJKQoLvO6Qy3AG0+YxV4rTR/ujbFKjdtkR09Z2f8t797FSNh0+IytvWGxuO
+	q5sCwoZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgwcs-0000000F9J0-3laq;
-	Sat, 17 Jan 2026 03:05:22 +0000
-Received: from mail-japanwestazolkn19011011.outbound.protection.outlook.com ([52.103.66.11] helo=OS0P286CU010.outbound.protection.outlook.com)
+	id 1vgy3z-0000000FC8U-0Doh;
+	Sat, 17 Jan 2026 04:37:27 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgwcn-0000000F9IS-3Hz0;
-	Sat, 17 Jan 2026 03:05:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=uvVjE8HRlu4As4OUnKqNebbz7yiTcDvIgIvHrxmXn1EEGsuw9drT4DHcttScqo97jvvcUhQ6GJsfDW2tnUhEyug1YUCmB/EQ44XT36ghEf7yznkBMf6wrZamAw9gOlLRi965W5pR/1kHN/SICjUe81w1ehIlhYgI79s0NWinTgdzkeI99Oc/LZpHbvzNk2klxVGgXtDuOZCUzrHNZ9QEaYpZnePyh5uRxr281m84manBxVSeOID/Ja0EszwvAupZbZUMOPpdx1XYX6zqdDTlZD9Ns+jf3Wq0hJ8hr/i9PtwdCCrWQiixVc+97wuHCGCHMfOSph8j3bn6gUFAFk4vTw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=UGMpGMqaNGWxqcwdjn1ROPnyxiXTVg4xGt3yGKLuYME=;
- b=qA6mHS23+vs3quA65laOd+46xBfF285yMrKTv64JLtrIyviWyso7p2qHQdKEW+6q7YPuVWLkb01MohklknbZILn/t7n/f05HVWgTIu6Lm0SRwkLS8+EiKqOPlPCiyElfuGHZVr/06xCoxnzo0FDWOSTkdKuu4rAjN6F2RR1b16yIAob54X0LYvKwUHub81sXQZ6gM3JBlwGRBCzIheJjIwhMlYlFTJwu1IdAfdVIznalCADXREMk9MQ6m9htf1wFcBxMCVr8nPHGiOd822Rat3SWvuxVsC7f250GtIQ0zQqGj0JVLyQj1eO3QdHcqlo2/QEj+e2FOIk2TL+eN/Q+yQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UGMpGMqaNGWxqcwdjn1ROPnyxiXTVg4xGt3yGKLuYME=;
- b=l5ZHVXMmdMbuX04mTIfmvnyaufeJOz2IPBTKc6vZF2NLBHQUow0Gh2LXP/pamJ4fy8OPHaWSLGKXi/TE2NvOP8gKy1WFerqs6m81OvSdNrsVFgDOkDbmKJS6fcjLQaZU93MruIXOx+Ny6MzfY+fRTSlmwdZOiHYK8NeDypRREhk4ODILAxrIsDz3Q/PIXtzJR7xyR3MpC2V2mzvGZcLcEhohy9FIxyR+PeQAaZPD3b+ZtyZUCA5lUXV9lQ6qKIgLqHDGaPM6gY1ptkmfH2zwViRVXyQaXnM/HmgZRccn8QNXWjqDWa+KA22PJorP/oNfIg5B15T4A6kBWssFkahULw==
-Received: from OS7PR01MB13834.jpnprd01.prod.outlook.com
- (2603:1096:604:36a::14) by TY7PR01MB13652.jpnprd01.prod.outlook.com
- (2603:1096:405:1eb::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.9; Sat, 17 Jan
- 2026 03:05:07 +0000
-Received: from OS7PR01MB13834.jpnprd01.prod.outlook.com
- ([fe80::6e58:e4b5:3405:28d6]) by OS7PR01MB13834.jpnprd01.prod.outlook.com
- ([fe80::6e58:e4b5:3405:28d6%4]) with mapi id 15.20.9520.006; Sat, 17 Jan 2026
- 03:05:07 +0000
-From: Shiji Yang <yangshiji66@outlook.com>
-To: linux-mediatek@lists.infradead.org,
-	linux-gpio@vger.kernel.org
-Cc: Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sam Shih <sam.shih@mediatek.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Shiji Yang <yangshiji66@outlook.com>
-Subject: [PATCH] pinctrl: mediatek: enable ies_present flag for MT798x
-Date: Sat, 17 Jan 2026 11:04:37 +0800
-Message-ID: <OS7PR01MB13834D5838A90C138C62CD817BC8AA@OS7PR01MB13834.jpnprd01.prod.outlook.com>
-X-Mailer: git-send-email 2.51.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SGXP274CA0001.SGPP274.PROD.OUTLOOK.COM (2603:1096:4:b8::13)
- To OS7PR01MB13834.jpnprd01.prod.outlook.com (2603:1096:604:36a::14)
-X-Microsoft-Original-Message-ID: <20260117030437.11947-1-yangshiji66@outlook.com>
+	id 1vgy3w-0000000FC7s-2DTp;
+	Sat, 17 Jan 2026 04:37:26 +0000
+Received: from pps.filterd (m0333521.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 60H26Zbk107231;
+	Sat, 17 Jan 2026 04:37:01 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2025-04-25; bh=QhFqOoUzZlkcRIWKFMqEdTV3qlP4lEfllwW9lbbfmWI=; b=
+	YGcaSSi3Lz6rthvVDr57z4cgv1NJE+bh0GopOBRpqwr6EU0qY6eJgYXSRoZn0OJR
+	V0XvhX2dmgNVtYUnwPvJgPREBf5QAYyZUc1D/T09fNDK1zSIQySrBpDPjrjt5UMk
+	xZVUA2WM0UK1SQIFgkyhs18RXx4kBAJBCTraWWpd94r6yTSN21+51sulutinwMxF
+	g1x6+akO12+oCnSCgBdG/4zMGwUwWFUQdctOV89XHPRcxrv86aK6LSbo7u4oKS8R
+	d67FDYAMHpRpKxnt4dAaQhAsqpMmG4Y0rGIGPDNs9DyAojQb24mf+6jNH5fXVGpX
+	ZtJrmtqwjJE2B62jHBPfdA==
+Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4br1b883au-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sat, 17 Jan 2026 04:37:00 +0000 (GMT)
+Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 60H1XeoL007621;
+	Sat, 17 Jan 2026 04:37:00 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 4br0v6bk64-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sat, 17 Jan 2026 04:37:00 +0000
+Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 60H4at7P005851;
+	Sat, 17 Jan 2026 04:36:59 GMT
+Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 4br0v6bk4d-5;
+	Sat, 17 Jan 2026 04:36:59 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+        =?UTF-8?q?Kai=20M=C3=A4kisara?= <Kai.Makisara@kolumbus.fi>,
+        =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+        Alim Akhtar <alim.akhtar@samsung.com>,
+        Avri Altman <avri.altman@wdc.com>,
+        Bart Van Assche <bvanassche@acm.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Peter Wang <peter.wang@mediatek.com>, Bean Huo <beanhuo@micron.com>,
+        Adrian Hunter <adrian.hunter@intel.com>,
+        Christoph Hellwig <hch@infradead.org>,
+        "Bao D. Nguyen" <quic_nguyenb@quicinc.com>, linux-scsi@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 0/8] scsi: Make use of bus callbacks
+Date: Fri, 16 Jan 2026 23:36:49 -0500
+Message-ID: <176862008991.2331811.13666589282791316750.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.51.2
+In-Reply-To: <cover.1766133330.git.u.kleine-koenig@baylibre.com>
+References: <cover.1766133330.git.u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: OS7PR01MB13834:EE_|TY7PR01MB13652:EE_
-X-MS-Office365-Filtering-Correlation-Id: 90a8533f-4fde-413b-2eb0-08de557537de
-X-MS-Exchange-SLBlob-MailProps: rYPt1fhvLTWbGL9eyGW7/UVWGVQcj2SHtQO8DbLb9vVjKF95PDehsUQhm0Y7q0LjB4hHKfjS0I3JQfnmlmyJjjL9zz4SPt3H7c2dRR2Nf5lKBY4510ET8FagdpBaocbCYiISs9ROn4Nh66DXldWO7Qw5ELTXgx4nEGlYCZUBwHXArB23MAVE6Mti5cUHpgoImrM0SNMZXb2xire+wwuEDo1dDfd+WLeNlWL7m83ufJWPsI+jbKVVqYPeklSqRwexdKAA/p0PqCFDgDzrUS5/AS+iaJI2Pm8zhdxCDqvuBy+EDZ2cS8vQna1wp7K6eU04Jzh4Cx8RNVbyTgsLUpkxvQBIPxH6jXCOwkcS5JOhMpfvJxf2PiXXOjSL7vBKcfvg1p60Fbn/xmW1OfUvAh23u78Al6gq4M0N3MjXK0rT3SZEz1DRH82GTSCNsJwcnCW1DyhKpV6KGqozC7bBmHyIxhbRunNzjR6/KH+G4l+cTjlklKkF/rVydkJVdl5GvbL4SxLtMjWDicl2oLBDy7g1074U+g9iflV3gvunZcWhvigdD2Llu3lUj8kGJatY88X4zpVGBcLomxsobSBpm2RPBv3P2I7YJOwjUImxHk22KmXNCzYr0qJssMh2GtemWn40OxKqFwCQ5RvYcbn7n7ytKF22WpuDX51X8gAaW21R2P59xHZCYFNlOJsodXLbDcKueqNv15QTkJePDUIQma0j1w==
-X-Microsoft-Antispam: BCL:0;ARA:14566002|23021999003|8060799015|19110799012|5062599005|15080799012|5072599009|461199028|3412199025|440099028|53005399003|40105399003|1710799026;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?JOcTOoDgDXguyW92oAoVn5r13fOPOKb/hDSsByrXGZsUtDhQ6UzrCWPNx9Pu?=
- =?us-ascii?Q?/d/p8u8tsb4ggmraJLAF3259U5L1FhlTOT5632GAw2Kr+wot/glNgz0CbXp9?=
- =?us-ascii?Q?SrB5KOkzbXJ6aSL+6S/B+JGHKMLyJIPDenV4o9kj0+KguzhBQohhD/uZN7Zn?=
- =?us-ascii?Q?drteUtpIEgDpYewzqd54eSEe6to1hh9XEnsL53WdafQ3pXoj89CDjUPVpP7+?=
- =?us-ascii?Q?dLeDUnh0J1VagmXj+/5+TL7ZuLOt+fQxVUwieCOZ+fF2ZuikYCnHuqqZdMsO?=
- =?us-ascii?Q?aeEBMEiXSJVogGzWAINYkLUhw82uKBsGKUGFHS02SPHdYV7N+iFDyxOl5IWT?=
- =?us-ascii?Q?nch9A3N8uu1JEOeeuI9eCJXT0NycF5jEugDSnWGliI5/4aF6ArxCe4zjmlnl?=
- =?us-ascii?Q?+BqVJReIdP3ccY1GMyBoDCFke2JdmtPFpTvjeDtL91injBH1QGbTJmXzhF0I?=
- =?us-ascii?Q?6aVtVQ0k4sRWtM17wgl+FAncyKvFnxNRSD8I0chRc3HxXdlh2DqfVHe+QWH2?=
- =?us-ascii?Q?ck3QU5DdU4oc6KDr1jvyodrnEdfZ1gDe+Tp2tdiZoXu6O6zIPzTOs4n6A89T?=
- =?us-ascii?Q?WMpy6ilgiwNxvm9wYkGKZ5Xwnq9c8IGWiR5dTqDbDqC28JMHEJhcAza2qmiK?=
- =?us-ascii?Q?rBs2xEDJCrD6MMSYd158rvHVatkFolzJOzRVjZGZ5SIMGBd+JgyYhIhNlLMk?=
- =?us-ascii?Q?F4peTxvfSGv8f2RCR0V0UmHw+awby7qet9tteZ8XxfPBIX0ooE0IGlHx5ACc?=
- =?us-ascii?Q?oBf4N+1wpfmf78DI+pqEVcge+G8385kMEygX0idlebsy7UwhvIEBbdNPauvz?=
- =?us-ascii?Q?HILnBdythUF3QugGSuMVUoLpxElF3rSq8wHkJRbHbgx9p/NRMA69tQDKdccZ?=
- =?us-ascii?Q?bizl7icUBDkwXHfAEvS8E45znnUCydCmekEdGYhxrkuYdhxtENdUz2EoVjHQ?=
- =?us-ascii?Q?Rhn5WJ4A5L8R0P6HiWM4nlw9zmzAVF//ssTHxIEcu0YAzA89OGz5y2zvJxrH?=
- =?us-ascii?Q?LqcSNFuTJmBKlOibymKlb16tqoYNBNwstYZxdn8o8cTRzIPGoyQq2DC4xLep?=
- =?us-ascii?Q?wEisH9fHvVm0C5aFWbuDM4HIANfeD2AlGADBQN4s6rTFtOaPkUDiY8A8JZUm?=
- =?us-ascii?Q?rqbL4wWSOvywF5gSVFNHAa2otlrqaqLPc6B/QusOZuClLuHxMLhYJJ7zmvw0?=
- =?us-ascii?Q?midUXH0Mq0fObqmTiXp3giXvbkWO+nc18p86reXlEgJXSyI3gzNw2sxxptI?=
- =?us-ascii?Q?=3D?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?0jtY5QkXTlzuWXxCoiclY+ZAm/pKA63j6YnsHCEH7MTQ0AgwOZnzPPTabjEO?=
- =?us-ascii?Q?vNyVL9Y0OCUgrEDJjy16KyPlkEj0FsK3DQxQx8M8P2iZ7cq7XN75LMyi2dIE?=
- =?us-ascii?Q?d9zJgrslb0Xiv1QQTqOriXvXFGRL3SR8FF94CkgKvpukKATz/v11BVacW6d1?=
- =?us-ascii?Q?4oPsnD0LJKS+vaox4Ldqi+8xtfrDBL9vQeM1GQfsPOtWwFnHQ62/kQIXI6eh?=
- =?us-ascii?Q?AQAYxut3dqb+OIkOW4bShtbhfKkWnMmQYuAVH/EGA6881ro2AHCIkpGLccHc?=
- =?us-ascii?Q?hwu2JosrwFI2FUJ5tdzdIECT6NjatAdtTmDnPxyjavYavxWFmFTVQHrk2bfG?=
- =?us-ascii?Q?1YkaJac3+I09yxJf8TkeyESMaINITb5C0mCip/noNDNR6Lt03l9ptPwNY6GE?=
- =?us-ascii?Q?EAFwskl7TQupgGA93RTyq/yCoz9SdlYPUTvlYlFwLlURYaWbf0Mtm+IAIctm?=
- =?us-ascii?Q?i+Lo4upjvnGXu9TAd/6xudS3KdnMeUoFIZBTBSAS7uA+GShfZdiJ5tDbOlfz?=
- =?us-ascii?Q?uL6CX+wHrPHnsz8yJpR//LFfGnrTB6mtEDZ2fMtOmulfglD41ZJsB0XF49gj?=
- =?us-ascii?Q?zTPjDo+Pj2zJN6v+we0SHY/Jtkpnr/+lganLOoPCfZ9aoMbvjJcChc/i8R/R?=
- =?us-ascii?Q?IZBWNBnEEx8yl4F70+LxdWRvcyJv2uDGdb3NSt0aBSDVRQAp6BJzvYMmCQNp?=
- =?us-ascii?Q?lQBCnaahrcB9cIWTwsOVWzXHJ3Fxpf6ng2LwwsCD2txCpIXKkIWo0H2fbxAy?=
- =?us-ascii?Q?51vFzTczwbi4I3DNnyrAu4i1dJdTCduzOtf88hOW1ZdZA5fYbKfQW1DPRZJU?=
- =?us-ascii?Q?MppMasedtybZjsr+am+zjNsSKxOet/DwkKU8/wZCS+B2ykyb1g4nj+EyEnJp?=
- =?us-ascii?Q?kbcvYEsHMDITtUilOyPXj4K5NZH5rqno7NYvR0JqRbaHiakitSm7mXDKR+jC?=
- =?us-ascii?Q?IbJVapXRU584pqu5ngnyC4tV7OMmGHLqFgYrJFIxGENE3iC14HMYy++P5P2g?=
- =?us-ascii?Q?KmHh/P1bz60se8Et/TKMpJKBvMZLw1HLlqykQGhuXh33PA3S43w8lvozPdmD?=
- =?us-ascii?Q?O2uVcs2iEA2GDYIr34kvJiVcNOfAJmORlS1W6kKgTQ2iYZPf2pbZ4xEKAKYm?=
- =?us-ascii?Q?u3O64D11slKY+k1BbiNgseZ7HW/1ULKIHQDdIuzY9y9+Acw/T2gToZtnOeRj?=
- =?us-ascii?Q?iecXz36d2waliNVGXTcLUO3tXpZrb/wdFhnp3aD2on+mGb/1yvig2ITzhcW+?=
- =?us-ascii?Q?s/Y3K0ZE5CPAQxVhk5wvEh+2JLGq+2VauxEuthqeFDYD0vMNFopntpopf5eD?=
- =?us-ascii?Q?cv4o0zBIoXS6L2LNY2kf6YpGwGVYUSJ9n8wDS0wX2/+pQEkcpIZi/cKZopTt?=
- =?us-ascii?Q?m5uUXjwl5n0syiO0HFalI6RjP4it?=
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 90a8533f-4fde-413b-2eb0-08de557537de
-X-MS-Exchange-CrossTenant-AuthSource: OS7PR01MB13834.jpnprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jan 2026 03:05:07.5145
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY7PR01MB13652
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2026-01-16_09,2026-01-15_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999 mlxscore=0 spamscore=0
+ malwarescore=0 bulkscore=0 adultscore=0 phishscore=0 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2601150000
+ definitions=main-2601170034
+X-Authority-Analysis: v=2.4 cv=WbcBqkhX c=1 sm=1 tr=0 ts=696b11ec cx=c_pps
+ a=OOZaFjgC48PWsiFpTAqLcw==:117 a=OOZaFjgC48PWsiFpTAqLcw==:17
+ a=IkcTkHD0fZMA:10 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=VwQbUJbxAAAA:8 a=LY8flSgGw48rVUN8yYkA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE3MDAzNSBTYWx0ZWRfX/tnNG0SmQwDh
+ cB69ZQUjYiczw9LKTYK47rdcD5FgpPmR3t3SdJ/BCEgWw4izvURCM/hpAm4x6WYE40bXOBA62zQ
+ oHBSa+RkQSK3aOnTAoCluzSYz8lGRgxJ5FW3C+r+JgTDIg169y4yI6SBVQTDyEqUttTFB0bsw0f
+ h6GpOw42C7Rv8DniukvKvvEzzpgp8FFbFUBhhXNwZiT1prFz2s4r8QuCqhVZ9P86bXiSseryZ4O
+ AdBSmuwsC3TJeQ387I82pP9l4QWdjoTblOoXiqCkGCbOmshjYd2BB917fNMeIlDFit0uev94a5I
+ 576TVQ9In2IjjIKB95+2rc9YSL0xlmSQnmm793NBgIRLqfZ+Xf3JPVwHmfGIMbtREcQr1VGa4xr
+ IG5zrY2eINe1GWV7C9pSOAvrQYgzRx8c6uZfyGRiPJBlh4eJvM88KpBkGEwL0bcdgJ/2LjCu4sj
+ xkyJfE3W2pPmGH4uArA==
+X-Proofpoint-ORIG-GUID: M1kVZeeNGj4bxSHU3Z8YGo8I68sXRoQG
+X-Proofpoint-GUID: M1kVZeeNGj4bxSHU3Z8YGo8I68sXRoQG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260116_190517_844053_F90657F8 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20260116_203724_573373_5ACCB218 
+X-CRM114-Status: GOOD (  19.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,66 +119,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT798x series SoCs have IES regiter definitions. I think we
-must enable the ies_present flag to correctly configure the pin
-input mode.
+On Fri, 19 Dec 2025 10:25:29 +0100, Uwe Kleine-König wrote:
 
-Signed-off-by: Shiji Yang <yangshiji66@outlook.com>
----
- drivers/pinctrl/mediatek/pinctrl-mt7981.c | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mt7986.c | 4 ++--
- drivers/pinctrl/mediatek/pinctrl-mt7988.c | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+> this is v2 of the series to make the scsi subsystem stop using the
+> callbacks .probe(), .remove() and .shutdown() of struct device_driver.
+> Instead use their designated alternatives in struct bus_type.
+> 
+> The eventual goal is to drop the callbacks from struct device_driver.
+> 
+> The 2nd patch introduces some legacy handling for drivers still using
+> the device_driver callbacks. This results in a runtime warning (in
+> driver_register()). The following patches convert all in-tree drivers
+> (and thus fix the warnings one after another).
+> Conceptually this legacy handling could be dropped at the end of the
+> series, but I think this is a bad idea because this silently breaks
+> out-of-tree drivers (which also covers drivers that are currently
+> prepared for mainline submission) and in-tree drivers I might have
+> missed (though I'm convinced I catched them all). That convinces me that
+> keeping the legacy handling for at least one development cycle is the
+> right choice. I'll care for that at the latest when I remove the
+> callbacks from struct device_driver.
+> 
+> [...]
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7981.c b/drivers/pinctrl/mediatek/pinctrl-mt7981.c
-index 6216c2e05..22c8f2480 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7981.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7981.c
-@@ -1019,7 +1019,7 @@ static struct mtk_pin_soc mt7981_data = {
- 	.nfuncs = ARRAY_SIZE(mt7981_functions),
- 	.eint_hw = &mt7981_eint_hw,
- 	.gpio_m = 0,
--	.ies_present = false,
-+	.ies_present = true,
- 	.base_names = mt7981_pinctrl_register_base_names,
- 	.nbase_names = ARRAY_SIZE(mt7981_pinctrl_register_base_names),
- 	.bias_disable_set = mtk_pinconf_bias_disable_set,
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7986.c b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-index 2a762ade9..5dda4b746 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-@@ -919,7 +919,7 @@ static struct mtk_pin_soc mt7986a_data = {
- 	.nfuncs = ARRAY_SIZE(mt7986_functions),
- 	.eint_hw = &mt7986a_eint_hw,
- 	.gpio_m = 0,
--	.ies_present = false,
-+	.ies_present = true,
- 	.base_names = mt7986_pinctrl_register_base_names,
- 	.nbase_names = ARRAY_SIZE(mt7986_pinctrl_register_base_names),
- 	.bias_disable_set = mtk_pinconf_bias_disable_set,
-@@ -945,7 +945,7 @@ static struct mtk_pin_soc mt7986b_data = {
- 	.nfuncs = ARRAY_SIZE(mt7986_functions),
- 	.eint_hw = &mt7986b_eint_hw,
- 	.gpio_m = 0,
--	.ies_present = false,
-+	.ies_present = true,
- 	.base_names = mt7986_pinctrl_register_base_names,
- 	.nbase_names = ARRAY_SIZE(mt7986_pinctrl_register_base_names),
- 	.bias_disable_set = mtk_pinconf_bias_disable_set,
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7988.c b/drivers/pinctrl/mediatek/pinctrl-mt7988.c
-index 9569e8c0c..fd3a7ff0a 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt7988.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7988.c
-@@ -1505,7 +1505,7 @@ static const struct mtk_pin_soc mt7988_data = {
- 	.nfuncs = ARRAY_SIZE(mt7988_functions),
- 	.eint_hw = &mt7988_eint_hw,
- 	.gpio_m = 0,
--	.ies_present = false,
-+	.ies_present = true,
- 	.base_names = mt7988_pinctrl_register_base_names,
- 	.nbase_names = ARRAY_SIZE(mt7988_pinctrl_register_base_names),
- 	.bias_disable_set = mtk_pinconf_bias_disable_set,
+Applied to 6.20/scsi-queue, thanks!
+
+[1/8] scsi: Pass a struct scsi_driver to scsi_{,un}register_driver()
+      https://git.kernel.org/mkp/scsi/c/7d42bcea57ae
+[2/8] scsi: Make use of bus callbacks
+      https://git.kernel.org/mkp/scsi/c/f7d4f1bf5724
+[3/8] scsi: ch: Convert to scsi bus methods
+      https://git.kernel.org/mkp/scsi/c/fba333569c8a
+[4/8] scsi: sd: Convert to scsi bus methods
+      https://git.kernel.org/mkp/scsi/c/63b541f054e7
+[5/8] scsi: ses: Convert to scsi bus methods
+      https://git.kernel.org/mkp/scsi/c/a71d5deea6e9
+[6/8] scsi: sr: Convert to scsi bus methods
+      https://git.kernel.org/mkp/scsi/c/9ccda35df7d5
+[7/8] scsi: st: Convert to scsi bus methods
+      https://git.kernel.org/mkp/scsi/c/4bc2205be460
+[8/8] scsi: ufs: Convert to scsi bus methods
+      https://git.kernel.org/mkp/scsi/c/44859905375f
+
 -- 
-2.51.0
-
+Martin K. Petersen
 
