@@ -4,75 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 672B4C9830C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Jan 2026 20:51:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DEE1C9830C
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Jan 2026 20:51:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6ebu4LnVWsggvJ0VMBMc6Smge/3FP4WVsi5XQ/uYo0k=; b=C4AUJlDkxAnwWiM9ptcd+k5Akk
-	cI++6ta9aOcaqAvSZtVZreSOfFTf3vWCPGmwiElgun5kN0Aal+l5A9S1ZPfHBl1jyUtNeoVMl21ip
-	z8A3BWSS079Muv1K+5cb03PfthPM6DYrt+cNQsQ+rNTzDSMG+Ok9YRuvkMnXK2yaRulBahktgHTef
-	egHsumt/fSa9q+yHlh091lhPKwJ0EL7jUbbBOcMNPm9nomXT18c195tSkxlO2zpbg21dAnHkBCee7
-	dN2xiZaJtBTNV98mFzA+ocA2lc5i9v58x/AoaBH31K6sr7vmh6Z5YtVYT2p2cFqWZ7mfmXHMz4Og3
-	d0v2oAuA==;
+	bh=L0Xg77SDmiqEWZO6sOqYU9yowUIYMPro3DOs3XY8uJc=; b=J5lEOlTpSNFgHgvpPPgwVYQowO
+	/91Q5wnKxkW5t/8K3yfy5a3i6KtMa7OPXpbu0emv0Dgmk459liI1Q1fxOdBIN06OfLvOGGIMv3Lp+
+	XrXVoto9ZqyA6lCWIqsv617yc0Bgm8HiBJmRvWXl9oOT4Ciypi3DMhWzk7kmh2O3hQkNA9Iun9o/S
+	418SaVeN5alw/3DBVTMqJwNS2xux+VXaYpZnKVNObfrI+/FId0ezMxTpARVbdf8VdZYgf5qxAkrqS
+	KrkiwaGPoEfOuSk+98ny17bwH6UipqJhpxDP2CPaAecAjK9vWNG2FeOMNzMvVEQgTchqmaimKBAlb
+	+fcSaayw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhZk0-00000000xBF-0eWm;
-	Sun, 18 Jan 2026 20:51:20 +0000
-Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
+	id 1vhZka-00000000xI3-2zEi;
+	Sun, 18 Jan 2026 20:51:56 +0000
+Received: from mail-oi1-x232.google.com ([2607:f8b0:4864:20::232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhZjx-00000000xAD-2hob
+	id 1vhZkV-00000000xGK-48GC
 	for linux-mediatek@lists.infradead.org;
-	Sun, 18 Jan 2026 20:51:18 +0000
-Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-7cfd2be567bso2296879a34.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 18 Jan 2026 12:51:17 -0800 (PST)
+	Sun, 18 Jan 2026 20:51:55 +0000
+Received: by mail-oi1-x232.google.com with SMTP id 5614622812f47-45c7f550f46so2262474b6e.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 18 Jan 2026 12:51:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1768769511; cv=none;
+        d=google.com; s=arc-20240605;
+        b=dO3f3U3wNBqPHJvZ8MOJLw5kCeT8FiZ71SguymmpeQ6O4iW5iQqB1tKqP2FJz8/SfM
+         bMiwI0Vga169FGTq5MGdrLl72/jQceLAYQkhZ0xOdyKaYt4vegKyU70GcjRP5NxpfbsA
+         QKNFskRvUf1dV7SE09xj/p1kvQ5JdI/O6SZUJCEVLXFQkJEOYhU879wXwxPI0iThDwKO
+         grv71VaqrMOFBWrBaP8OrWo6AcIkLkR6sg+OQGD6k8kENTRQNCdUPbTGbBaG/l25KDQO
+         JypvCL+HLaHi9Ai/swEnIQ6xLV6HkNr8wRIgx4yskyClvMsyIdroHiv5mkFW8NUReAY1
+         gpiQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=L0Xg77SDmiqEWZO6sOqYU9yowUIYMPro3DOs3XY8uJc=;
+        fh=GcNeDytTQKaOTlK44RXCTwKRJbvu7o4tTqDfoU3WxfM=;
+        b=Sl/P4p4nLiBOWit09FFLxMXfDhwwQ0V9pHeBs5TS5uNeKg8+G1gRRHUB++MbByIkQM
+         5yONAI0nZEvdadGcGAYJTtiqOTImlQoowKL6MBks4HbhPJocgin7e1YbDE2PV6IaWpw1
+         BAnSFaCw7+itOB1ZWTsQHSlDHFtfo/HCnlR8a6o72V+uqO6jfTq1IAEww0at4NiPLM0M
+         q96UWatAF+mSd8XOPSvRh2FBZZH0J1Udvez1JbVrORVxTIwUpZcfmZ9/9HB2kXwnPXhA
+         L3qbUsGJ8Vvn4YY5hUk8CcqJvr3LULThUH5f6V95eMhEzBRtaArdwNUpiaJoCWgpFgXg
+         QcTQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768769476; x=1769374276; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1768769511; x=1769374311; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=6ebu4LnVWsggvJ0VMBMc6Smge/3FP4WVsi5XQ/uYo0k=;
-        b=HQYzFeJ1UpG9iOWfLP8lT9Li+Dy5zirngsMqZrSi19T+zzfaiJtHVgtxrKVUpxjnaF
-         3mNPboaRv4Jm7fG7jJw+w382S7rreuqUySKmtdg0MEpG4zZCRUPmmhRS3ng9wOBAjbqS
-         /GG5TopBuCRVQUKGLjD7ISOJFEKj7uQvMx+I1JCSzvVWnvbRMVdCSL4gB6uL3L7hTaK7
-         BuGIBuYF/JN3oWwNrrUueMKDPyMKmSfqMBvAaNacrBV8KmOvdhbsZZ97ShZc4sOpBwiA
-         DghpkUY9jwuBq9oF6agbSh7Kt0L+N4B7n+NEQIZhfN+1lLKkgLLSvuPpXOAaAWaS3xRY
-         O8Og==
+        bh=L0Xg77SDmiqEWZO6sOqYU9yowUIYMPro3DOs3XY8uJc=;
+        b=PKljx3GZhnEph6nqaMIwnyRnEPz/5jOyg3jUdPMpeHrsH0dO1aGSGNxNfk18qWzKij
+         EAmd90xircvBEjN66VOw0oKiJN82UGcfD2W1YHkd4WCxgs3h9an6BfdMegedelYIS9J4
+         VfNYffxcjegixeM22feKQHlPh9/G+R9UV+vFitHtr5Xd6LawIZBVpXcD6UjB89FgG/CO
+         Dj8I3hvoIltwjahtnl11JJ2BooqU7WV+T8Y6Pzsvpljn2me9Lz3WdnlvxKGhrEdu8qle
+         RhQemmIFGLZAlufU5EViiaimusx41Kg0NXrG7ReVSb4Y/hsmT7YqfxHShnvx+8M3jim4
+         GZGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768769476; x=1769374276;
+        d=1e100.net; s=20230601; t=1768769511; x=1769374311;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=6ebu4LnVWsggvJ0VMBMc6Smge/3FP4WVsi5XQ/uYo0k=;
-        b=J/mtodNnVrvNhb0BGyHqzhzn0FVidrDTwVNYuXJR9TNtBAbVoOhU5A2+ILa+wRixmG
-         axh1OuwA0klIHO0t9Cr/D4y1SkDSr25PTMRRZhRNcKo7R/j7kieQwfisNizuXUhXKkVt
-         1+Qd8Libd2v1SeP8ndkl6Dn2HN0G4CJEYygT9CyAICk9UKfQi2ITHEwsrLWyCxTkG60k
-         3UYSstuihGyZ5dP6YKT7VomG315PhHA5102xDxCS1vc0EfcSJcSH+0d0TqTdbxeM16Zd
-         7iYv+/fJNNF3wbgf0mCyF+st4sZs6moSL4vtr7OkkXgbq8FhxzHZ5nBcQ8bp9aDxtTlX
-         ywMQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX0dH9NDPzvwUY2rc19LdVa1iumwZl9w2fnzl/gykOb9rrIa8WyVezQiX7SOh60App1Dlg2GzHXmXUQJC5ufQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzBYCKmIW9forJEnU/vdUzWDfh+3wBeUX6K8z48ayBIGPzdLU71
-	57IGeNtpC/22VHc8KUGQGcd+ZzByvh2RYm5Jy6pRbFrx2+wellkVBL7GabPuKzCbVgS3o1r4ny2
-	QPgrAGjHRPwmyZ4khXbf64szhdBrHG/c=
-X-Gm-Gg: AY/fxX7mHnjdpFjFjRSlnEN3PwiKsK4D3tkJYJgJbelTx7o3gZu318v4BdxGExdaGrh
-	rgzA95+iWJ9vspl0PCGuDE7F2UyV4COyYr1spEkUhGeB6zSLNQdCPa0v2dfmOEFB7G7On8c9UKs
-	kylT5fIWvzDFalazSZyro+mDritWP3DxuQVh0z0Z8EKT1BSMAP5F+kpl6iksUstRZmKlBasdiGF
-	RVE09CMFbWV+S2uelFmtr0X7YZGvCBTShyTvjly1qT/WQenH3GBV6ZFxzt6fngZxSPYaCe5ja9o
-	h7XV8kA=
-X-Received: by 2002:a05:6808:4a48:10b0:45c:a919:4281 with SMTP id
- 5614622812f47-45ca9194a13mr2871401b6e.55.1768769471670; Sun, 18 Jan 2026
- 12:51:11 -0800 (PST)
+        bh=L0Xg77SDmiqEWZO6sOqYU9yowUIYMPro3DOs3XY8uJc=;
+        b=NF3V0IDv5ZhLr6MXx60B6cotgYpbL+qbfmO67RAb/cw05KfE4re33VvePRq5+8obui
+         wBrReUa0qgnoPD3tCYQXc3DxP87s+5kcS/PQiuEC1tHp0BwjZg85ckpe7Eo1MUZdJfXu
+         LkspZCezpj1yR6dDsfZO/sx/VHNQmIFVoJaxRV8zc5aLznHaX+U0gYy3P5fU/r3KNMCx
+         oQlKPNjH+JkrHVTx+0jMCZdv9MNXvEJ9k26FrcDAJGlZ5U+5okYpc/bLq7rnDR/f0Dtv
+         1VHxeM5k9B+SceWZ/pqVZUSJ3jPimE70gFmO2GlskdIOYsTSMNCmR/zVJFGCFOztV9kD
+         EIVQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVluVTbS7Kml4IzQuumZ2jidc5LJB3hG03HGRMmVdkWS8zV4n9fwY7V6GuWs7ekVl5x24pniA8aGuWJk9TSTg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywko3o69F2GJNsk1P5FUN+kWEJYs1KE8xEFUSU2fm3aiyfqt0gH
+	HmR9f0WQRPT7eaWMy3gb35nrfQoTBHXBW023zcoJsHGrnest94j4LCsfgXSAdBJxwHxgLmPLDsm
+	VhKnw1ivkWh7Pm2i1rcUScJiXDW4DPxs=
+X-Gm-Gg: AY/fxX4QmXaIiHlkETbGS+WV0rUcLJWH72mU5MO6LQOW4xpLzzTIEyXQdSr2zuxJ5HQ
+	jzlrr4Gi5yuzDHSnrXNW0FuiJ/zKOz3S7xzAApNl6AMoFMgzwZQJRFcnqwwzIwAyGCNnXab2fql
+	bagAAKm2mjNPWaJ1j4BDVb9I5SA80TAgk+PttEHkMHQorzMj1szVh/FK4SoBPOOQlynZw50lNS1
+	qoH2WTGZtBXK+sfyLHf8oRmP4IbG7NhHrNbWTtRs1/BBg09cPlqjBGVuFoqcHZUpKdNx/Aa
+X-Received: by 2002:a05:6808:3008:b0:45c:8045:89a5 with SMTP id
+ 5614622812f47-45c9bf6af97mr4658298b6e.21.1768769511004; Sun, 18 Jan 2026
+ 12:51:51 -0800 (PST)
 MIME-Version: 1.0
-References: <20251224114452.141689-3-krzysztof.kozlowski@oss.qualcomm.com>
-In-Reply-To: <20251224114452.141689-3-krzysztof.kozlowski@oss.qualcomm.com>
+References: <20251224114452.141689-3-krzysztof.kozlowski@oss.qualcomm.com> <20251224114452.141689-4-krzysztof.kozlowski@oss.qualcomm.com>
+In-Reply-To: <20251224114452.141689-4-krzysztof.kozlowski@oss.qualcomm.com>
 From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Sun, 18 Jan 2026 14:51:00 -0600
-X-Gm-Features: AZwV_QiKHuV9-iLza1ZNjEP5Pn_YvHBwe0eaKo1Fuq0mka0rXUyl6A0C8nMcMM0
-Message-ID: <CABb+yY3vehi0wAtfLh=LL6QtXmcW3zo9-CyjfLeT3wYtNHB=sg@mail.gmail.com>
-Subject: Re: [PATCH 1/2] mailbox: mtk-cmdq: Simplify with scoped for each OF
+Date: Sun, 18 Jan 2026 14:51:39 -0600
+X-Gm-Features: AZwV_QinxiGf_fn13PxcUNz6VuDVYig5FVOqXyYeBIQ5vuPNPU2n6zlYdxCF0h4
+Message-ID: <CABb+yY3O7pqswS16qJx-Ud_HHxdkboRDWy4qBitd59wM_O31tg@mail.gmail.com>
+Subject: Re: [PATCH 2/2] mailbox: zynqmp-ipi: Simplify with scoped for each OF
  child loop
 To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -82,8 +102,8 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260118_125117_688643_3AB6EDCA 
-X-CRM114-Status: GOOD (  17.77  )
+X-CRM114-CacheID: sfid-20260118_125152_020065_CFA3AD26 
+X-CRM114-Status: GOOD (  17.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,58 +126,40 @@ On Wed, Dec 24, 2025 at 5:45=E2=80=AFAM Krzysztof Kozlowski
 >
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 > ---
->  drivers/mailbox/mtk-cmdq-mailbox.c | 12 ++++--------
->  1 file changed, 4 insertions(+), 8 deletions(-)
+>  drivers/mailbox/zynqmp-ipi-mailbox.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
 >
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmd=
-q-mailbox.c
-> index 1bf6984948ef..9da16b30eb41 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -636,7 +636,7 @@ static struct mbox_chan *cmdq_xlate(struct mbox_contr=
-oller *mbox,
->  static int cmdq_get_clocks(struct device *dev, struct cmdq *cmdq)
+> diff --git a/drivers/mailbox/zynqmp-ipi-mailbox.c b/drivers/mailbox/zynqm=
+p-ipi-mailbox.c
+> index 967967b2b8a9..42d2583e44ca 100644
+> --- a/drivers/mailbox/zynqmp-ipi-mailbox.c
+> +++ b/drivers/mailbox/zynqmp-ipi-mailbox.c
+> @@ -904,7 +904,7 @@ static void zynqmp_ipi_free_mboxes(struct zynqmp_ipi_=
+pdata *pdata)
+>  static int zynqmp_ipi_probe(struct platform_device *pdev)
 >  {
->         static const char * const gce_name =3D "gce";
-> -       struct device_node *node, *parent =3D dev->of_node->parent;
-> +       struct device_node *parent =3D dev->of_node->parent;
->         struct clk_bulk_data *clks;
+>         struct device *dev =3D &pdev->dev;
+> -       struct device_node *nc, *np =3D pdev->dev.of_node;
+> +       struct device_node *np =3D pdev->dev.of_node;
+>         struct zynqmp_ipi_pdata *pdata;
+>         struct of_phandle_args out_irq;
+>         struct zynqmp_ipi_mbox *mbox;
+> @@ -940,13 +940,12 @@ static int zynqmp_ipi_probe(struct platform_device =
+*pdev)
+>         pdata->num_mboxes =3D num_mboxes;
 >
->         cmdq->clocks =3D devm_kcalloc(dev, cmdq->pdata->gce_num,
-> @@ -661,7 +661,7 @@ static int cmdq_get_clocks(struct device *dev, struct=
- cmdq *cmdq)
->          * as the clock of the main GCE must be enabled for additional IP=
-s
->          * to be reachable.
->          */
-> -       for_each_child_of_node(parent, node) {
-> +       for_each_child_of_node_scoped(parent, node) {
->                 int alias_id =3D of_alias_get_id(node, gce_name);
+>         mbox =3D pdata->ipi_mboxes;
+> -       for_each_available_child_of_node(np, nc) {
+> +       for_each_available_child_of_node_scoped(np, nc) {
+>                 mbox->pdata =3D pdata;
+>                 mbox->setup_ipi_fn =3D ipi_fn;
 >
->                 if (alias_id < 0 || alias_id >=3D cmdq->pdata->gce_num)
-> @@ -670,17 +670,13 @@ static int cmdq_get_clocks(struct device *dev, stru=
-ct cmdq *cmdq)
->                 clks =3D &cmdq->clocks[alias_id];
->
->                 clks->id =3D devm_kasprintf(dev, GFP_KERNEL, "gce%d", ali=
-as_id);
-> -               if (!clks->id) {
-> -                       of_node_put(node);
-> +               if (!clks->id)
->                         return -ENOMEM;
-> -               }
->
->                 clks->clk =3D of_clk_get(node, 0);
-> -               if (IS_ERR(clks->clk)) {
-> -                       of_node_put(node);
-> +               if (IS_ERR(clks->clk))
->                         return dev_err_probe(dev, PTR_ERR(clks->clk),
->                                              "failed to get gce%d clock\n=
-", alias_id);
-> -               }
->         }
->
->         return 0;
+>                 ret =3D zynqmp_ipi_mbox_probe(mbox, nc);
+>                 if (ret) {
+> -                       of_node_put(nc);
+>                         dev_err(dev, "failed to probe subdev.\n");
+>                         ret =3D -EINVAL;
+>                         goto free_mbox_dev;
 > --
 > 2.51.0
 >
