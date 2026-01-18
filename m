@@ -4,80 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B39F7C9830C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Jan 2026 20:10:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 672B4C9830C
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Jan 2026 20:51:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AGoxtBWa7Hges9TlON6JW/74fTOpKQVhj45ottMY/WE=; b=FLZ5qf0UTJXwyB
-	e8/vxIFYlDJ4GNmXkrKmmw+YGXPEtHbFb06gbTPuTOuexTaP/F/cqQSNOzhZIxlIUnSEDoIoTqbfG
-	Yv51lAVLMj7iqHgAIJy4PnuGbwIKOGnVJ4JHiB7xcZmwpbK7SRXVzuwfsWRIcsrzkoNMbg3P/i9BL
-	QMmoEsD/i7tmUeXgNYI/PrpeySwDziXOsO6n5f0LHSB4VdteK6WaJHDWJBz1bKqb+GcDA+pkZRbH0
-	3VHRQD4amQUW4JF2eHuodfXrcHlWjHaLF1Hd/tCCYZqwhFrVQRuSaXY9FqYMSKcIwPaDIHsgPxBqL
-	ju9zZzyBnb3Nsd4ag3GA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6ebu4LnVWsggvJ0VMBMc6Smge/3FP4WVsi5XQ/uYo0k=; b=C4AUJlDkxAnwWiM9ptcd+k5Akk
+	cI++6ta9aOcaqAvSZtVZreSOfFTf3vWCPGmwiElgun5kN0Aal+l5A9S1ZPfHBl1jyUtNeoVMl21ip
+	z8A3BWSS079Muv1K+5cb03PfthPM6DYrt+cNQsQ+rNTzDSMG+Ok9YRuvkMnXK2yaRulBahktgHTef
+	egHsumt/fSa9q+yHlh091lhPKwJ0EL7jUbbBOcMNPm9nomXT18c195tSkxlO2zpbg21dAnHkBCee7
+	dN2xiZaJtBTNV98mFzA+ocA2lc5i9v58x/AoaBH31K6sr7vmh6Z5YtVYT2p2cFqWZ7mfmXHMz4Og3
+	d0v2oAuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhZ6h-00000000swg-15OJ;
-	Sun, 18 Jan 2026 20:10:43 +0000
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
+	id 1vhZk0-00000000xBF-0eWm;
+	Sun, 18 Jan 2026 20:51:20 +0000
+Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhZ6e-00000000svh-2nf5
+	id 1vhZjx-00000000xAD-2hob
 	for linux-mediatek@lists.infradead.org;
-	Sun, 18 Jan 2026 20:10:41 +0000
-Received: by mail-oi1-x22c.google.com with SMTP id 5614622812f47-45c889aba0dso2110922b6e.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 18 Jan 2026 12:10:39 -0800 (PST)
+	Sun, 18 Jan 2026 20:51:18 +0000
+Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-7cfd2be567bso2296879a34.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 18 Jan 2026 12:51:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768767038; x=1769371838; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1768769476; x=1769374276; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=AGoxtBWa7Hges9TlON6JW/74fTOpKQVhj45ottMY/WE=;
-        b=XfrnZK8rJg86GqTWrtSt+m5kwVlhGg2CFhUFtCbkz1N9QqFN2fHL7azpul5VNHMAw0
-         tgpXhfOXeMhYjeddAX112haV/eEcpF+Pi9VN93De629mxYyhBh1dHzMxg94l2mGy4qIq
-         N0S05df2DrZINj45VoIhekQbaUFZwskBPybTvECxmFkvyBqdsNTpnwKWMe01OMS2wEet
-         Uvb2MeDIiKNRoplBdt7NJ+7wwyY5vIGdoRZb0lIE1243NBk/3xgcMpIJ5vZctIth2/9M
-         r8goSWwD51+rB1PE9hzVbbVm8HRURLqi9oHflgss5Iu9K2v/2CLKjawH9+yZG+BQa75p
-         Fq2A==
+        bh=6ebu4LnVWsggvJ0VMBMc6Smge/3FP4WVsi5XQ/uYo0k=;
+        b=HQYzFeJ1UpG9iOWfLP8lT9Li+Dy5zirngsMqZrSi19T+zzfaiJtHVgtxrKVUpxjnaF
+         3mNPboaRv4Jm7fG7jJw+w382S7rreuqUySKmtdg0MEpG4zZCRUPmmhRS3ng9wOBAjbqS
+         /GG5TopBuCRVQUKGLjD7ISOJFEKj7uQvMx+I1JCSzvVWnvbRMVdCSL4gB6uL3L7hTaK7
+         BuGIBuYF/JN3oWwNrrUueMKDPyMKmSfqMBvAaNacrBV8KmOvdhbsZZ97ShZc4sOpBwiA
+         DghpkUY9jwuBq9oF6agbSh7Kt0L+N4B7n+NEQIZhfN+1lLKkgLLSvuPpXOAaAWaS3xRY
+         O8Og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768767038; x=1769371838;
+        d=1e100.net; s=20230601; t=1768769476; x=1769374276;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=AGoxtBWa7Hges9TlON6JW/74fTOpKQVhj45ottMY/WE=;
-        b=rESVEXilebbrIRxoOw1EuLLp+zI1j4dcrDCUOX9KDtEbHRbGQs2fOnLjydfc2d/Yk8
-         yhS/ds5B4vEAgIBl5ARw+XNivtM5Q0DCT2xEhtaWSqegD/TGy3SMYEuIBDib41VHBHKV
-         CVll3sCP1A0zGniIlfSD/SFhd2hgHnQbAOM+iwyxyy+y2HAApQnCxVSWdL3qIWNShUiM
-         KN3Ce6qfbeCJHQKT4rpaGFEuPpDNIwrcoiFd241hnaZ3mmZO0icpKi0Odjs58T9Mg2Pp
-         109bpW0cc67rI/xqnJxaVGkgILDN9S3TecLBo4BufbN40I3HwTbMSHAGM1w1PAKMVHzy
-         Ip9A==
-X-Forwarded-Encrypted: i=1; AJvYcCUmzJUeAMMfgtKSdoNQ4oLz6cKFjUy9e6MuwF2nvX8QbHcpCwTIm0BqAhapS7JyoymoXE5PCBwiNlQw0JJZdg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxS1taapHfY0+vAswaAwBLM8W12R4NRo8NwIvNCRY8Sse74CnHS
-	jhq0kDBnhXlnd0afMkrK3JfpdfkGXxTJMzKIHP3sS5zKMVluEL2LTvvZpFzUrN3IbslS70TLAeD
-	l5pUXIn1YBtY0P3wJVyUy3++7L9h8sqI=
-X-Gm-Gg: AY/fxX7CTCFef928WclcAYzo2R/VxMgOyEKkrkp+juTjIgZKrZnUt2hcwlVJT7wpMVL
-	uanES+8HGumXYa1IsT3GvtMx5hWL8Yfmv03Unmnl3DxtDjbUgZB+Pld/Aou4X+YD6JWJXNgLvP9
-	YSPLXghGbDlGvogVjn/vHxMp2R62Qjg61bfoGy0i7BeihLULHsso+3KIMWDV07dPSUk0Hrb5Sp/
-	3E7pFobQDTNvG3S5gwWZA7n8VikVMRTs92Doq74jUAZFpLrrbagAxW0GhFj9FcvYLxW4rHL
-X-Received: by 2002:a05:6808:80b3:b0:450:89ee:922b with SMTP id
- 5614622812f47-45c9c88dcd6mr5123911b6e.22.1768767038493; Sun, 18 Jan 2026
- 12:10:38 -0800 (PST)
+        bh=6ebu4LnVWsggvJ0VMBMc6Smge/3FP4WVsi5XQ/uYo0k=;
+        b=J/mtodNnVrvNhb0BGyHqzhzn0FVidrDTwVNYuXJR9TNtBAbVoOhU5A2+ILa+wRixmG
+         axh1OuwA0klIHO0t9Cr/D4y1SkDSr25PTMRRZhRNcKo7R/j7kieQwfisNizuXUhXKkVt
+         1+Qd8Libd2v1SeP8ndkl6Dn2HN0G4CJEYygT9CyAICk9UKfQi2ITHEwsrLWyCxTkG60k
+         3UYSstuihGyZ5dP6YKT7VomG315PhHA5102xDxCS1vc0EfcSJcSH+0d0TqTdbxeM16Zd
+         7iYv+/fJNNF3wbgf0mCyF+st4sZs6moSL4vtr7OkkXgbq8FhxzHZ5nBcQ8bp9aDxtTlX
+         ywMQ==
+X-Forwarded-Encrypted: i=1; AJvYcCX0dH9NDPzvwUY2rc19LdVa1iumwZl9w2fnzl/gykOb9rrIa8WyVezQiX7SOh60App1Dlg2GzHXmXUQJC5ufQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzBYCKmIW9forJEnU/vdUzWDfh+3wBeUX6K8z48ayBIGPzdLU71
+	57IGeNtpC/22VHc8KUGQGcd+ZzByvh2RYm5Jy6pRbFrx2+wellkVBL7GabPuKzCbVgS3o1r4ny2
+	QPgrAGjHRPwmyZ4khXbf64szhdBrHG/c=
+X-Gm-Gg: AY/fxX7mHnjdpFjFjRSlnEN3PwiKsK4D3tkJYJgJbelTx7o3gZu318v4BdxGExdaGrh
+	rgzA95+iWJ9vspl0PCGuDE7F2UyV4COyYr1spEkUhGeB6zSLNQdCPa0v2dfmOEFB7G7On8c9UKs
+	kylT5fIWvzDFalazSZyro+mDritWP3DxuQVh0z0Z8EKT1BSMAP5F+kpl6iksUstRZmKlBasdiGF
+	RVE09CMFbWV+S2uelFmtr0X7YZGvCBTShyTvjly1qT/WQenH3GBV6ZFxzt6fngZxSPYaCe5ja9o
+	h7XV8kA=
+X-Received: by 2002:a05:6808:4a48:10b0:45c:a919:4281 with SMTP id
+ 5614622812f47-45ca9194a13mr2871401b6e.55.1768769471670; Sun, 18 Jan 2026
+ 12:51:11 -0800 (PST)
 MIME-Version: 1.0
-References: <20251031155838.1650833-1-jason-jh.lin@mediatek.com> <e6c2c86d-71bd-453c-847c-1eff2be88be7@collabora.com>
-In-Reply-To: <e6c2c86d-71bd-453c-847c-1eff2be88be7@collabora.com>
+References: <20251224114452.141689-3-krzysztof.kozlowski@oss.qualcomm.com>
+In-Reply-To: <20251224114452.141689-3-krzysztof.kozlowski@oss.qualcomm.com>
 From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Sun, 18 Jan 2026 14:10:26 -0600
-X-Gm-Features: AZwV_Qh1K-r-Z8NlKIiE7Ar8yunvRZXy4lr5rzaBilBfhNZa6yCxoqTzBHyaliM
-Message-ID: <CABb+yY3ioZ4KCG0tp-r7Xj7hJZFf57xeA_mByUEZBXRaBQQ35w@mail.gmail.com>
-Subject: Re: [PATCH 0/9] Add GCE support for MT8196 (series 1/4)
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Date: Sun, 18 Jan 2026 14:51:00 -0600
+X-Gm-Features: AZwV_QiKHuV9-iLza1ZNjEP5Pn_YvHBwe0eaKo1Fuq0mka0rXUyl6A0C8nMcMM0
+Message-ID: <CABb+yY3vehi0wAtfLh=LL6QtXmcW3zo9-CyjfLeT3wYtNHB=sg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] mailbox: mtk-cmdq: Simplify with scoped for each OF
+ child loop
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Michal Simek <michal.simek@amd.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260118_121040_748448_10465F51 
-X-CRM114-Status: GOOD (  14.40  )
+X-CRM114-CacheID: sfid-20260118_125117_688643_3AB6EDCA 
+X-CRM114-Status: GOOD (  17.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +95,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Singo Chang <singo.chang@mediatek.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, Rob Herring <robh@kernel.org>, Xiandong Wang <xiandong.wang@mediatek.com>, Nicolas Dufresne <nicolas@ndufresne.ca>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-media@vger.kernel.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>, Jason-JH Lin <jason-jh.lin@mediatek.com>, linux-kernel@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Sirius Wang <sirius.wang@mediatek.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 8, 2026 at 3:37=E2=80=AFAM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+On Wed, Dec 24, 2025 at 5:45=E2=80=AFAM Krzysztof Kozlowski
+<krzysztof.kozlowski@oss.qualcomm.com> wrote:
 >
-> Il 31/10/25 16:56, Jason-JH Lin ha scritto:
-> > From: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
-> >
-> > This series adds initial support for the MediaTek MT8196 GCE in the CMD=
-Q
-> > driver, including related API changes for new hardware requirements.
-> >
-> > Series application order:
-> >    1. [Fixes] Refine DMA address handling for the command buffer
-> >    - https://lore.kernel.org/all/20251022171847.379470-1-jason-jh.lin@m=
-ediatek.com/
-> >    2. [Series 1/4] Add GCE support for MT8196 and update CMDQ APIs (thi=
-s series)
-> >    3. [Series 2/4] Migrate subsystems to new CMDQ APIs
-> >    4. [Series 3/4] Remove shift_pa from CMDQ jump functions
-> >    5. [Series 4/4] Remove deprecated CMDQ APIs
-> >
-> > Please apply this series after the DMA address handling Fixes patch[1],
-> > and before the following series.
-> >
+> Use scoped for-each loop when iterating over device nodes to make code a
+> bit simpler.
 >
-> Jassi, since this is touching both mailbox and soc/mediatek, can we avoid=
- to create
-> immutable branches to pick this entire thing?
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> ---
+>  drivers/mailbox/mtk-cmdq-mailbox.c | 12 ++++--------
+>  1 file changed, 4 insertions(+), 8 deletions(-)
 >
-> If you wish, I'm fine with you picking the soc/mediatek commits as well a=
-s the
-> mailbox ones, or I can pick the mailbox ones instead if you're okay with =
-that.
+> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmd=
+q-mailbox.c
+> index 1bf6984948ef..9da16b30eb41 100644
+> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
+> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+> @@ -636,7 +636,7 @@ static struct mbox_chan *cmdq_xlate(struct mbox_contr=
+oller *mbox,
+>  static int cmdq_get_clocks(struct device *dev, struct cmdq *cmdq)
+>  {
+>         static const char * const gce_name =3D "gce";
+> -       struct device_node *node, *parent =3D dev->of_node->parent;
+> +       struct device_node *parent =3D dev->of_node->parent;
+>         struct clk_bulk_data *clks;
 >
-Yes, I am fine with this going via mediatek tree.
-Acked-by: Jassi Brar <jassisinghbrar@gmail.com>
+>         cmdq->clocks =3D devm_kcalloc(dev, cmdq->pdata->gce_num,
+> @@ -661,7 +661,7 @@ static int cmdq_get_clocks(struct device *dev, struct=
+ cmdq *cmdq)
+>          * as the clock of the main GCE must be enabled for additional IP=
+s
+>          * to be reachable.
+>          */
+> -       for_each_child_of_node(parent, node) {
+> +       for_each_child_of_node_scoped(parent, node) {
+>                 int alias_id =3D of_alias_get_id(node, gce_name);
+>
+>                 if (alias_id < 0 || alias_id >=3D cmdq->pdata->gce_num)
+> @@ -670,17 +670,13 @@ static int cmdq_get_clocks(struct device *dev, stru=
+ct cmdq *cmdq)
+>                 clks =3D &cmdq->clocks[alias_id];
+>
+>                 clks->id =3D devm_kasprintf(dev, GFP_KERNEL, "gce%d", ali=
+as_id);
+> -               if (!clks->id) {
+> -                       of_node_put(node);
+> +               if (!clks->id)
+>                         return -ENOMEM;
+> -               }
+>
+>                 clks->clk =3D of_clk_get(node, 0);
+> -               if (IS_ERR(clks->clk)) {
+> -                       of_node_put(node);
+> +               if (IS_ERR(clks->clk))
+>                         return dev_err_probe(dev, PTR_ERR(clks->clk),
+>                                              "failed to get gce%d clock\n=
+", alias_id);
+> -               }
+>         }
+>
+>         return 0;
+> --
+> 2.51.0
+>
+Applied to mailbox/for-next.
+Thanks.
 
