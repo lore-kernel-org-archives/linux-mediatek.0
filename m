@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16C52C98315
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Jan 2026 21:19:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 449EFC9830C
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Jan 2026 23:39:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:CC:To:From:Date:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sZaN1oHwYtgJvHl/lPTrjlptxFSRmz2iSZBP4z3RVMI=; b=lh+DcQzbLypq6a
-	Rhm7ejXt7kOPBL9daOjlf8uZcLWQ2SbCMTSrWRG4fWGe8VF7+m7Ror7QmMwa3KkkulEYgcwPiXzpv
-	CmP7Trf0xeYJyWdIooSig4F1TndB28o+h7K7z3uv3E1gqwr255ANu77IkmEYm4T7GQl+Rb3MqyOEL
-	5Yui16w8eGSWPIBoVwLUA90JIMA36D8QinUU7yJpehP/9pNoHO6Oxr2dbJ2nsFHFmKwIB1zDXkSly
-	TvX/0eBPqIikY/qCwlhemtqNJGJAf3WZjN6BP7ld+83sZ3dKW0JNFs/ItzznT0iPtHnTwln/wlnoJ
-	tZMFVQdGrZjbBZiO4zLg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7PeYGSEV+pCKpmP5h4ZswQhQtI60VPCBnNh4a2KURQg=; b=jtGMgd/V9yrJexhlQwz3VouUiN
+	8nbekbfu+vUkxC4N0v5/3GeQDMj+uHgDsGrZmunFDEB6eJnJ0WlKWoj3gH6ekWYv/7E6xdnvU5Mz1
+	oRbevBRlV/BLuli407dbqbahB+uGFOUBwnKh+sfrX82zvqGTTDJEBvdTD2OVPSbRrawUkriPt4C6M
+	HYVBrN/iFAlsMvHYUiCsGi8LOrhoLcp8BaCljtzFE6NkIagX2jA05dqeWPO3GsgQ7SJlBGWy3gsoZ
+	NJ9E1lIZeciFkSHHd3pMRoEdzH2hsJOYM3lwqqtVcPWFkE9/V4Bk1wiTidUXkio6tZvQRMQKPGWXJ
+	EefzoDXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhaBG-000000010vd-1UEv;
-	Sun, 18 Jan 2026 21:19:30 +0000
-Received: from mout.gmx.net ([212.227.15.19])
+	id 1vhcMI-000000019vP-2GEG;
+	Sun, 18 Jan 2026 23:39:02 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhaBC-000000010tm-3qHy;
-	Sun, 18 Jan 2026 21:19:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1768771152; x=1769375952; i=frank-w@public-files.de;
-	bh=sZaN1oHwYtgJvHl/lPTrjlptxFSRmz2iSZBP4z3RVMI=;
-	h=X-UI-Sender-Class:Date:From:To:CC:Subject:Reply-to:In-Reply-To:
-	 References:Message-ID:MIME-Version:Content-Type:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=HtILRw2XVwOALYR4Lp/Slww2WacEdJ75XgAsTWx9rWGzyeYZ7w09YaXdZogwn4SH
-	 i/cbDObZFo13jcc2eST2q4K/9GHn44DDS3np/YsCBqxcXDsRzXWFCjcVKaZJiocf0
-	 Bii5f2a0sPUZmAYJr6qDIIMF+NWb3jWRNZsfoElyXVV+bOaSurqTzOjf8L+aFBk2v
-	 VbKBhSF/bUqoxc9BP0V+Rk6UX3rwu90un71JKO8dIPXdouIcCEsoc1wNTSZFwXK+T
-	 q3a7tHfBS88LzxhnwkPXXNDTpS9u/sk1uHrDpATEnMB/npoaDenFyy5MrQ4Jugc8w
-	 j1qiZLsvxXWGM0VnHQ==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from ehlo.thunderbird.net ([194.15.86.3]) by mail.gmx.net (mrgmx005
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MZTqW-1vL0go21Ic-00TBBf; Sun, 18
- Jan 2026 22:19:12 +0100
-Date: Sun, 18 Jan 2026 22:19:12 +0100
-From: Frank Wunderlich <frank-w@public-files.de>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-mediatek@lists.infradead.org
-CC: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2=5D_arm64=3A_dts=3A_mediatek=3A_mt7?=
- =?US-ASCII?Q?988a=3A_Fix_PCI-Express_T-PHY_node_address?=
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20260115131035.75574-1-angelogioacchino.delregno@collabora.com>
-References: <20260115131035.75574-1-angelogioacchino.delregno@collabora.com>
-Message-ID: <B5FE3278-9188-42AB-9218-BDD4126931F7@public-files.de>
+	id 1vhcMG-000000019um-2fcC
+	for linux-mediatek@lists.infradead.org;
+	Sun, 18 Jan 2026 23:39:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 98C824404B
+	for <linux-mediatek@lists.infradead.org>; Sun, 18 Jan 2026 23:38:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6B758C2BC87
+	for <linux-mediatek@lists.infradead.org>; Sun, 18 Jan 2026 23:38:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768779538;
+	bh=+vxkml/INomGVyZkkGO6Hqx4toau09AAIjsxs2+Q7rc=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=noEdgNVrT6pVkwprb4ltXn5Jg6NAi0NXpnTws17lln9TPUsZ+QUNYyUi+c0W8BJ0F
+	 9rAapkgXGAR/Jb7uLFAI0bkllKrfnOykgHLzi79gpaT4kjbojPVkXufHcHUCEMbiGn
+	 LyVmjSn0ZFfnDkBh5Vu7CzBKBpaqDp9rm6ebK4PQQdf6LxhxS4Q2dbKUzsgeAsikoj
+	 VDetUbLldqskmN5hrSKS2MhZpy7Sw1Y/Tu+GwSyz4RqIVbR2WI+Poe3fO+ZCVx16TP
+	 zb57+e11J5c4tbSgy2jCdhIW4jsA38PHsfpkRhfH2imaBL9o+hMyHOUYvQJR95WAIh
+	 SH4X2WRGyY9iA==
+Received: by mail-dl1-f45.google.com with SMTP id a92af1059eb24-121a0bcd376so2473025c88.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 18 Jan 2026 15:38:58 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCXiRH/42RKIAdBK2FOiQNQAe/0DIvyadtAsv8MmswsyQZEACQBpHCdl2M19y9k/xI6DfmcYlMeSfXe0VJrChQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxZtpTUq0BEFMjyDXqAJBGHrwGDx4H720UJx4vXDWn5oHnvY/lp
+	QfOgL5BtulxGMz+QQpHjqyLUZWW+eqbPI7HHPMvhHZaXvDzwMKxDSL9i1VBSmCioeClIZj4HgHD
+	T9iHFX8fS92q7HXhXiYQHdSSzYW6vlg==
+X-Received: by 2002:a05:7022:6984:b0:11b:9386:7ecd with SMTP id
+ a92af1059eb24-1244a74e3c1mr7505842c88.42.1768779537763; Sun, 18 Jan 2026
+ 15:38:57 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+References: <20260114092243.3914836-1-wenst@chromium.org>
+In-Reply-To: <20260114092243.3914836-1-wenst@chromium.org>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sun, 18 Jan 2026 23:38:37 +0000
+X-Gmail-Original-Message-ID: <CAAOTY__4eBE9bmhe5vmDUpdny1BKfCWEhK_=8n-NWDzdrPLYog@mail.gmail.com>
+X-Gm-Features: AZwV_QhVwsuXi4uDMwqFDraK5VDZQKOv7seycuWeLGpQl6fpPRNw1o9mQdzmUj0
+Message-ID: <CAAOTY__4eBE9bmhe5vmDUpdny1BKfCWEhK_=8n-NWDzdrPLYog@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: dpi: Find next bridge during probe
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:YiIRAb3ApyTUxW0oJNwcgTy77JFsxp0VK7ZglymXCqOJ+9r3/TJ
- b/urROz7vG6FElsK+9N4X9FvnukRW4nBnoWVg6w+NbK6eKTmhFSxM1xEED/B0YsmTRoJPCN
- HzP0X2OK7H3HiBF0o49DtUiNNFxAqIa57ZkHSfY6PjWMEkxeOJeD4/C9yXpabS/E9BBIWN1
- 8PUHTl47EfideOPv0QiTg==
-UI-OutboundReport: notjunk:1;M01:P0:y+cPne1xd+Y=;lXwVp7IvfOaEFxrCD+3b2/x1kyM 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 mLqu3x5bKc2A2+/62kvXMH5zJ5335
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260118_131927_308481_245BEAF1 
-X-CRM114-Status: UNSURE (   5.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260118_153900_720982_F80BD08D 
+X-CRM114-Status: GOOD (  26.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,30 +82,132 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi, Chen-yu:
 
-Thanks for fixing this=2E
-
-Am 15=2E Januar 2026 14:10:35 MEZ schrieb AngeloGioacchino Del Regno <ange=
-logioacchino=2Edelregno@collabora=2Ecom>:
->The PCIe and USB TPHYs are under the soc bus, which provides MMIO,
->and all nodes under that must use the bus, otherwise those would
->clearly be out of place=2E
+Chen-Yu Tsai <wenst@chromium.org> =E6=96=BC 2026=E5=B9=B41=E6=9C=8814=E6=97=
+=A5=E9=80=B1=E4=B8=89 =E4=B8=8A=E5=8D=889:23=E5=AF=AB=E9=81=93=EF=BC=9A
 >
->Add ranges to both the tphy(s) and assign the address to the main
->node to silence a dtbs_check warning, and fix the children to
->use the MMIO range of t-phy=2E
+> Trying to find the next bridge and deferring probe in the bridge attach
+> callback is much too late. At this point the driver has already finished
+> probing and is now running the component bind code path. What's even
+> worse is that in the specific case of the DSI host being the last
+> component to be added as part of the dsi_host_attach callback, the code
+> path that this is in:
 >
->Fixes: ("f693e6ba55ae arm64: dts: mediatek: mt7988: Add t-phy for ssusb1"=
-)
->Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino=2Edelregno@co=
-llabora=2Ecom>
+>  -> devm_drm_of_get_bridge()
+>     mtk_dpi_bridge_attach()
+>     drm_bridge_attach()
+>     mtk_dpi_bind()
+>     ...
+>     component_add()
+>     mtk_dsi_host_attach()
+>     anx7625_attach_dsi()
+>     anx7625_link_bridge() - done_probing callback for of_dp_aux_populate_=
+bus()
+>     of_dp_aux_populate_bus()
+>     anx7625_i2c_probe()
+>
+> _cannot_ return probe defer:
+>
+>     anx7625 4-0058: [drm:anx7625_bridge_attach] drm attach
+>     mediatek-drm mediatek-drm.15.auto: bound 14014000.dsi (ops mtk_dsi_co=
+mponent_ops)
+>     mediatek-drm mediatek-drm.15.auto: error -EPROBE_DEFER: failed to att=
+ach bridge /soc/dpi@14015000 to encoder TMDS-37
+>     [drm:mtk_dsi_host_attach] *ERROR* failed to add dsi_host component: -=
+517
+>     anx7625 4-0058: [drm:anx7625_link_bridge] *ERROR* fail to attach dsi =
+to host.
+>     panel-simple-dp-aux aux-4-0058: DP AUX done_probing() can't defer
+>     panel-simple-dp-aux aux-4-0058: probe with driver panel-simple-dp-aux=
+ failed with error -22
+>     anx7625 4-0058: [drm:anx7625_i2c_probe] probe done
+>
+> This results in the whole display driver failing to probe.
+>
+> Perhaps this was an attempt to mirror the structure in the DSI driver;
+> but in the DSI driver the next bridge is retrieved in the DSI attach
+> callback, not the bridge attach callback.
+>
+> Move the code finding the next bridge back to the probe function so that
+> deferred probing works correctly. Also rework the fallback to the old OF
+> graph endpoint numbering scheme so that deferred probing logs in both
+> cases.
+>
+> This issue was found on an MT8183 Jacuzzi device with an extra patch
+> enabling the DPI-based external display pipeline. Also tested on an
+> MT8192 Hayato device with both DSI and DPI display pipelines enabled.
 
-Tested-by: Frank Wunderlich <frank-w@public-files=2Ede>
+Applied to mediatek-drm-fixes [1], thanks.
 
-regards Frank
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-fixes
+
+Regards,
+Chun-Kuang.
+
+>
+> Fixes: 4c932840db1d ("drm/mediatek: Implement OF graphs support for displ=
+ay paths")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 23 +++++++++--------------
+>  1 file changed, 9 insertions(+), 14 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediate=
+k/mtk_dpi.c
+> index 61cab32e213a..53360b5d12ba 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -836,20 +836,6 @@ static int mtk_dpi_bridge_attach(struct drm_bridge *=
+bridge,
+>                                  enum drm_bridge_attach_flags flags)
+>  {
+>         struct mtk_dpi *dpi =3D bridge_to_dpi(bridge);
+> -       int ret;
+> -
+> -       dpi->next_bridge =3D devm_drm_of_get_bridge(dpi->dev, dpi->dev->o=
+f_node, 1, -1);
+> -       if (IS_ERR(dpi->next_bridge)) {
+> -               ret =3D PTR_ERR(dpi->next_bridge);
+> -               if (ret =3D=3D -EPROBE_DEFER)
+> -                       return ret;
+> -
+> -               /* Old devicetree has only one endpoint */
+> -               dpi->next_bridge =3D devm_drm_of_get_bridge(dpi->dev, dpi=
+->dev->of_node, 0, 0);
+> -               if (IS_ERR(dpi->next_bridge))
+> -                       return dev_err_probe(dpi->dev, PTR_ERR(dpi->next_=
+bridge),
+> -                                            "Failed to get bridge\n");
+> -       }
+>
+>         return drm_bridge_attach(encoder, dpi->next_bridge,
+>                                  &dpi->bridge, flags);
+> @@ -1319,6 +1305,15 @@ static int mtk_dpi_probe(struct platform_device *p=
+dev)
+>         if (dpi->irq < 0)
+>                 return dpi->irq;
+>
+> +       dpi->next_bridge =3D devm_drm_of_get_bridge(dpi->dev, dpi->dev->o=
+f_node, 1, -1);
+> +       if (IS_ERR(dpi->next_bridge) && PTR_ERR(dpi->next_bridge) =3D=3D =
+-ENODEV) {
+> +               /* Old devicetree has only one endpoint */
+> +               dpi->next_bridge =3D devm_drm_of_get_bridge(dpi->dev, dpi=
+->dev->of_node, 0, 0);
+> +       }
+> +       if (IS_ERR(dpi->next_bridge))
+> +               return dev_err_probe(dpi->dev, PTR_ERR(dpi->next_bridge),
+> +                                    "Failed to get bridge\n");
+> +
+>         platform_set_drvdata(pdev, dpi);
+>
+>         dpi->bridge.of_node =3D dev->of_node;
+> --
+> 2.52.0.457.g6b5491de43-goog
+>
 
