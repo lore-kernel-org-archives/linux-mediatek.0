@@ -4,188 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C21ECCF2F2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 12:11:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07162D29C22
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 12:57:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tcQtomXfPDa0hSsnMCmielc2XnY0M+O/1AKtV645RAk=; b=aMk9Cecl7UhUAntdqInoThRIpA
-	LvDrpnc1TvvlAWHhsMCeNXYrR8Amnpk3q7iqGjm6+mjOq4998eQJJqHptX538/2SLh2Um7jz8ixQl
-	LrWeiGKNuw8MqG4RD/iWa+DK1UW8jxyj7Y5WZVsaFPt0W0vCPhpuOqAq9JkUSvmwp1p9n4cTuzoIr
-	n2S3C9ZFKPO7p7oF0tVxXyKGcmygs8B5BHCbmb2wEDKCW2Ro8NgpCMiTggQMNe+923YCl1lWms7PI
-	Oazfjl96w3iuArMUK9nyRZ4Ctj5DB4uIiimmQUVFiKe03wef+5SKWWm3dInR+/rAA+2ZqxC2iKBeE
-	9IFsqJ+w==;
+	bh=lNHrn/XFzhadasziTUy6F7RftXtkLpDR8wFnHICqw0k=; b=LjIuBfac3vUNGEcEX+5s0NKIHE
+	FjPNfdqTLSlA9vjp9G2XXraTvyz1Xjxfv4DU4EV/sNIp6TKIX9GD60JXgPUYxSQskbp1WGYbwojze
+	jkNLHEWsQA3BbJMXBcZ60YVSXwrOhEOGqweBWtgTtWGSBnXTISxHVajOTQhqA2vpl4IppslIJm2Xq
+	inI/sXRW/dFc5rJQc43fSD6HXwtiadYYnHHlJEWeoL9+W5zYjpiApl6uXzpfhyPqZYgL2+KR9mlng
+	zxj8FNvtqj0w4oM6c9uaOCmuwq87qWLPgbUQJfDULiqy77OWVQ5XA9Iv8nvZ6ryYAT5EBNGc/6RNT
+	25eNkBMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vho6A-00000001yD3-1L48;
-	Mon, 19 Jan 2026 12:11:10 +0000
-Received: from mail-westcentralusazon11010060.outbound.protection.outlook.com ([40.93.198.60] helo=CY7PR03CU001.outbound.protection.outlook.com)
+	id 1vhooS-000000026fA-10Rp;
+	Mon, 19 Jan 2026 12:56:56 +0000
+Received: from mail-ot1-f52.google.com ([209.85.210.52])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vho5s-00000001y89-3AwM;
-	Mon, 19 Jan 2026 12:10:55 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=nwfdZ/0sfbEQQIdaezufurEpr260JgLKZ7Xwfo8aUL6A+nOqmZL+fy+eRdGM1DeZoA0b7PH5bI9QZKlSs3hjbsTd5Zy5FHVnKN7vbkOGBTy5ZXF3BYhRRVPQ0UUuWbfB7eoIKBhTrIrvX8RVBLB7vjuIqSieBskah8WSO1/gCaz6igfJzhJqHN1xf0JDkw5w4ykUdsgKeFVERU6iE+0ePx8Az1SotZ6TvKLzxPpCnjP8zDDuDDiedN2Efz80QR7m1v/fDacmNgnmjqgq/ZEFpqrtugpp+zPtZsUM/LUvWuYVR+2p4nBgL2ySpIxrWpdaSQ5jIk4dXOkFJZkuEEVgMw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tcQtomXfPDa0hSsnMCmielc2XnY0M+O/1AKtV645RAk=;
- b=YV7qabgHrA5NqFKioq5B3fHwQ0akY7DhIYZpdrUNK6aY5Iuxo8er8ThAOgVUbpPG9jZrZM/VXbZoIMgrdPHFidJMqKVIhxRt12zPu70oZD/9v3kIL/JzQ7I2BJnYZbErty0J+Tg0WGjlst7KhH1TLNMIy8fKT1FQ07UeCCuEBBzaZ0xLbYBQ9CyWtlLchXlrN/eA0CJfOO6kBOtFtQel4x9+7WdY12JmTtj7CGuJ0S2gTtCizxeX+71mEKqbqUVCdfZDBmbLAOnrhYoo4a2enYEIdvodnUAe12GNnQtkydY/RfHcVcIhwfr0l3ZXD/2at8oI15yFbVXAJKhpDy67+A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tcQtomXfPDa0hSsnMCmielc2XnY0M+O/1AKtV645RAk=;
- b=2panOLtA9wFccZF9ta4vrfUj2+GH6ldIxe7EXJ6T3gq1nOQMpYqcn/k69BOiNIKSnMMtXEgYdmNzSLzYchTQITL8X+Hid/n3WyahVesLzqUwIw1fb9QXdBhHn63ws/gjy1i1ou/IzjlwXh8LYEm69mUSLcnD73ot2lnXh430+yw=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Received: from PH7PR12MB6395.namprd12.prod.outlook.com (2603:10b6:510:1fd::14)
- by PH0PR12MB7839.namprd12.prod.outlook.com (2603:10b6:510:286::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.12; Mon, 19 Jan
- 2026 12:10:40 +0000
-Received: from PH7PR12MB6395.namprd12.prod.outlook.com
- ([fe80::5a9e:cee7:496:6421]) by PH7PR12MB6395.namprd12.prod.outlook.com
- ([fe80::5a9e:cee7:496:6421%5]) with mapi id 15.20.9520.011; Mon, 19 Jan 2026
- 12:10:40 +0000
-Message-ID: <fee2cc4f-5001-4734-b0e0-ae548801329d@amd.com>
-Date: Mon, 19 Jan 2026 17:40:25 +0530
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 6/9] net: xgbe: convert to use .get_rx_ring_count
-To: Breno Leitao <leitao@debian.org>,
- Ajit Khaparde <ajit.khaparde@broadcom.com>,
- Sriharsha Basavapatna <sriharsha.basavapatna@broadcom.com>,
- Somnath Kotur <somnath.kotur@broadcom.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Shay Agroskin <shayagr@amazon.com>, Arthur Kiyanovski <akiyano@amazon.com>,
- David Arinzon <darinzon@amazon.com>, Saeed Bishara <saeedb@amazon.com>,
- Bryan Whitehead <bryan.whitehead@microchip.com>,
- UNGLinuxDriver@microchip.com, Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
- Potnuri Bharat Teja <bharat@chelsio.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Jiawen Wu <jiawenwu@trustnetic.com>, Mengyuan Lou <mengyuanlou@net-swift.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+	id 1vhooP-000000026ds-42Qv
+	for linux-mediatek@lists.infradead.org;
+	Mon, 19 Jan 2026 12:56:55 +0000
+Received: by mail-ot1-f52.google.com with SMTP id 46e09a7af769-7cfd5d34817so2828742a34.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 19 Jan 2026 04:56:53 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768827413; x=1769432213;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=lNHrn/XFzhadasziTUy6F7RftXtkLpDR8wFnHICqw0k=;
+        b=ghxbocWU4qf+/Fkj16UpAgp6Az2rETecDDw2v8xN13GynFqEFwPPhiEeinuRGZrGgC
+         4otu9Q/6A71/Usc/u1bEyOM7kHwpDtIkXpoHFAgN1qUaVLTVPMvBxRUj/EvXKCBF0v8E
+         UpLMf6XHzSWOw9bzD/6JhudNqIbmrJwAtDz32W3O+U13wI+2Y90s10rVwZP0ccXGu5II
+         q/zBxi7F5E0is6GzG5j6tqp5kQjqwXLifvHsBMLHRsYX5SIUMt+nvpbQSbQSjt4zdk5b
+         KurnjTose6vJF6vIVgkpS+l4smCHfBAhHqTzKL7b8WCAFqRcTDSZ1O3JKExzlL6selHO
+         pwmQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWiz3Gm3qNfYyBWUKOH75+JIPappZtuJgP6+F9sPj8/wcntB9PKf0WKs1D1HTR9vjpvCLFLPuY4mhnX2S3fMQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzRfxdmMUJnVskZGiNKykBN+IvRLTsx3drW9jykvE5HNKqLMHpZ
+	W1J2tdB+aPzk2I5G3Ppnzp4dftOS3vEFjdYBdKBywa2KsiQ2q43czCtJ
+X-Gm-Gg: AY/fxX5VGJWZLEWTc9vbzBrW0ZwMemQq0lZuCQ1kRxCZkUN6mQR7CBbHUrPO3u6fy91
+	XMyajJQqHVWsWnPMscIYfBfwFAyV8rcF1O4sD3dhlnR8Dm6fbBs5RZ1aGJj0gZLBI1dbgNvp2Bh
+	175X2eKzzqgdlsaZVxgCYw4GjUJrrLmFP0/LQHhSyHwiWmCHapyxsGc81bzKi9GQ6z+n7Y9Bfv8
+	xO32RDWkot9xyRq4a1wju+mr4X4yqNvNNs/IlPeP9DVwdh27063PES6geYxMAkDlVNb0AQEQPJa
+	AKdDod1uYmjSndf12MPdCOru1P6Ifij89WtqHuX4Fx5UDU7o3neUKxEJugfQR2mn32Ma4NpB3zc
+	j1MU6iyA7KuGpXzcLEzr+kDtZsilR51sQt5s4T1nYcSaKto/dIGG3/zKE8NugRmDeC6Ur8IqQsP
+	3F
+X-Received: by 2002:a05:6830:82ea:b0:7cf:f7c1:d9ac with SMTP id 46e09a7af769-7cff7c1da6dmr4841137a34.9.1768827412551;
+        Mon, 19 Jan 2026 04:56:52 -0800 (PST)
+Received: from gmail.com ([2a03:2880:10ff:4::])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7cfdf2a5f02sm6632883a34.25.2026.01.19.04.56.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 Jan 2026 04:56:52 -0800 (PST)
+Date: Mon, 19 Jan 2026 04:56:49 -0800
+From: Breno Leitao <leitao@debian.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Ajit Khaparde <ajit.khaparde@broadcom.com>, 
+	Sriharsha Basavapatna <sriharsha.basavapatna@broadcom.com>, Somnath Kotur <somnath.kotur@broadcom.com>, 
+	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau <nbd@nbd.name>, 
+	Sean Wang <sean.wang@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Shay Agroskin <shayagr@amazon.com>, 
+	Arthur Kiyanovski <akiyano@amazon.com>, David Arinzon <darinzon@amazon.com>, 
+	Saeed Bishara <saeedb@amazon.com>, Bryan Whitehead <bryan.whitehead@microchip.com>, 
+	UNGLinuxDriver@microchip.com, Shyam Sundar S K <Shyam-sundar.S-k@amd.com>, 
+	Raju Rangoju <Raju.Rangoju@amd.com>, Potnuri Bharat Teja <bharat@chelsio.com>, 
+	Nicolas Ferre <nicolas.ferre@microchip.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Jiawen Wu <jiawenwu@trustnetic.com>, Mengyuan Lou <mengyuanlou@net-swift.com>, netdev@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next 1/9] net: benet: convert to use
+ .get_rx_ring_count
+Message-ID: <l66l2ijd45fkwniaesgau5jdzoxrdyt4t7tnsd6dpo4dlefytf@tugyhkn2th36>
 References: <20260115-grxring_big_v2-v1-0-b3e1b58bced5@debian.org>
- <20260115-grxring_big_v2-v1-6-b3e1b58bced5@debian.org>
-Content-Language: en-US
-From: "Rangoju, Raju" <raju.rangoju@amd.com>
-In-Reply-To: <20260115-grxring_big_v2-v1-6-b3e1b58bced5@debian.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: PN3PR01CA0080.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:c01:9a::22) To PH7PR12MB6395.namprd12.prod.outlook.com
- (2603:10b6:510:1fd::14)
+ <20260115-grxring_big_v2-v1-1-b3e1b58bced5@debian.org>
+ <20260117181551.0b139ca1@kernel.org>
+ <ziyd3327jr7miqgv2e252w4wpizphomkvxxge6nbjwtg4pyvf4@gvwwi2r7rykl>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH7PR12MB6395:EE_|PH0PR12MB7839:EE_
-X-MS-Office365-Filtering-Correlation-Id: c0fbd2df-7804-4159-d23b-08de5753c2e4
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|376014|921020|7053199007;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?YUZGN3oxZHEzSmdtNzBEMnNtckREWkhMWm5yanpBQ0R1Uy9ocW5WRXNPQmZZ?=
- =?utf-8?B?a0V4Q1NKcnduMFNHMFhSYUFydCtTNll1UFJaYnVxK05ucHdSWDYvSU9VaUFz?=
- =?utf-8?B?Mm5sd2xyWUhWMEZ2Qnd5eTczTzhPRENNK3ZSZHF3U2JKcWtzRjVBa2tmYkN6?=
- =?utf-8?B?SFh4OGIySVZjRXRZdzZWejhycjhFNGZyUlFhOXFJR0x4YllzL2Qrd3VQcmEz?=
- =?utf-8?B?SjlHOXBGb2dxdktXY3U0YmI2cDNWY1ZpSUoyQWdkWjBrVjlqZXhZcWdob0Vr?=
- =?utf-8?B?QjdFNWtpa2MxckFmbmt2R2MxR09veHh2M1JOYnNOZnVTdGFpZ25mNVNFZ2tM?=
- =?utf-8?B?RnRVUUlkeXpyNEo0NFYxUTdFUlVTNmdsTFF2dmVvaFZJQXQ2eFlZaGNyekJn?=
- =?utf-8?B?TExPZWxwY0E1L2djY0NCckhhc1Y0aHNGaWEvc0tmMVRYL1FEN0padzVsMW5u?=
- =?utf-8?B?eHpDLzhaNXVIMUkrd1o1SUFmaEkzVTdFNHhwRTEwaVpGZEVTNHJCNlB6OVBl?=
- =?utf-8?B?aUVLeXdtNkF1b1dlaFVwbFVCVG5TcFZKWk4vaThudTFicFJaaHNmWUdMS29n?=
- =?utf-8?B?UDk2cmlHNWU5bFFqQ0ZOS3hoMWVCdDUyYkhLcTJ6OGJJZ1lYYTRocjJwcGJO?=
- =?utf-8?B?bGd0cG9MdW5TQmtISXh3NVVrd0wxOTlja2hLSGpzNmV4QkVzdFZmY3FzNDg0?=
- =?utf-8?B?SHNzS0dOWUg4UDJGTTVtWG9rMkRBTTg2dFFPNVpaUE1JaXpic0NiR3U5WWY0?=
- =?utf-8?B?TFdkK2RJYi9UNFFFY2hGY3UvYTJVbTN0aE94WGV4bEJUU1pJOHAxaWdkRW5Q?=
- =?utf-8?B?N3RMT29abmtPQTREemlLS1NtQW5iQi91OElvWlpwK1JBT0ZtbmtzVzVLK0h4?=
- =?utf-8?B?K0R0OFdSZzc3N2lXZmx1dlg3UlJQM01jRWNhNnBuUmZrSHhjZEp2MlhPVmIr?=
- =?utf-8?B?bFdFSWxXZkZGNDFTWnFJbHl3ZWY0VkFSTlRQalQ2amZacFNWMEpvL3JoamJH?=
- =?utf-8?B?MmwzZmJGN3J4RTNacVRCUzc2UWpXeUtBaDdpZXY2ZnRYbWc1SFNZeVh1TlJm?=
- =?utf-8?B?MnVPYVhZS2VPQlBrbk9zNGZ2dTlSTGNtVEg3QzFPMHhIZWVncHUxdjZzTW9l?=
- =?utf-8?B?RTJ6NHlvNUNCMUgxMC83WVhsZ0FBMW1SNk5vRHg1QWVmem1QdmxHaDNkWlZi?=
- =?utf-8?B?aElhaGdxMCtsWDZIK2h4eTBVdUpnMVRwdlJ0L1JRcTE3V3Zjcy9kQWdZS2cr?=
- =?utf-8?B?NldxNUtNa2w2RkFQcENFY2pVM0hsVG9zMnE4dHpEMFJERUpyV2g4U1FxZHEy?=
- =?utf-8?B?VW1tcDZQZTU3Y015RHNnQ2swdUV5em4wRHpBVE9FY20raUVnZ0NMV2dMUjNE?=
- =?utf-8?B?NHVNeGNjWWNPbVhVcUxRdjI4UFJpTUU0ZjJBKzFtVi90dWJKb3VkYUJXdFhR?=
- =?utf-8?B?RjVvcS9oaHl4K3pjRUtkdzA1dzhNL2R0MW1nUjdSc3ZWcXFLckFZYmFTYXRS?=
- =?utf-8?B?QTFCTzV1dWRTUHNxL1ZrYW9ZMkdRU3N3TnRYNFl1RnY5bnU3K0YvTjF6TW5L?=
- =?utf-8?B?cVVnem5FL3RZVjJpQ1hJSGo2a05aNGQ1aGhmVlhhYnNnb2NQNWIxZ2RiSnpO?=
- =?utf-8?B?bVNzNEFZdWNzVHNodGRleW1jR3IwTmpXbitYN3lBQWFGQ0t1SklBbnN3Z0tP?=
- =?utf-8?B?VlovQnpYNWtqS2FOdk14VTRMSG9SUW8rY0NqLzJDRXJHNlJyVFN0bHBZTnl0?=
- =?utf-8?B?a3g1NnBheVZjVXZlckdtY0FwdHBaRDFtUThJUDdobkVUblNmQnBHd083SDJz?=
- =?utf-8?B?U3RwL2Rxa3ZSY05NZ0lwdE90RUxDNWZ5bE05aTVpcnhxZ3IvS256eHF2OXBs?=
- =?utf-8?B?alRYNWVRZnJ3N01JT0ljZW1GdzZWVjZ3Uk1KODl0VnQ5NmVSSmloV2pmbVZC?=
- =?utf-8?B?cHB4MlRIaGpsby9tVG83RUVEcDA5U1QxcEw2UW02UDBmb3FFOFlhR05maGYr?=
- =?utf-8?B?SFZWa1FTdXp5bHdhRkRyanRaWHpjOEpnRVpnVXBhZnRqdS9yRi91bW1zaXhq?=
- =?utf-8?B?Q2xwdTZyNTZaemRwWmlMcEhjSWhwTXc2WjJxZnBpakRyUVhsNzYzZnF1TGx3?=
- =?utf-8?B?bEV1VVhwN3NJZm1wWEhuV2REME5PUFYxZndlOGlacCt2MHlkaGN3RjVJamxh?=
- =?utf-8?B?MlE9PQ==?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7PR12MB6395.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(7416014)(376014)(921020)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?d2Zxc2hPMDBta2liUG5qREFPcG5LbytNZHhWaW1KL2F5ZXovbGJYcVp0aVdw?=
- =?utf-8?B?eWQ4UVNWOHdZZVdHYzFZNWJVWU9CanlUTlMwZTRCZitocTNMclovT1hOTEd2?=
- =?utf-8?B?QUVSaUhiWkFxMTlhSWVDNDhzMStnc1ZQUUxPcUJVMmNyQjV6bFVONjJjUzZV?=
- =?utf-8?B?eUtkWlV2MXFxTjdVRnBuejZvbi9JR0FKZVQ3WitybE8rVzVhYmZiUit6bG5z?=
- =?utf-8?B?aE1jeDk5S3lTeS9MZXQxRHp2cTJtRCtHenhaWmVmQ3JZUmxWbnRBdldITHhI?=
- =?utf-8?B?cGVYUk11Q08zY3V3dExBLzhPaGZyT1dndzR4NnI5Nk81TGJIem1OeDQwSStM?=
- =?utf-8?B?VU9QUVFKU0NyWXVKdDJPTmc3RFcvZVdvVjh5MWVCRlYrbU11d28reXNWdU1h?=
- =?utf-8?B?VHUxTmdrL29aN2RpRjJkSGxLUDFKS3dVM1FRNlMvUjU2UWthUE02RUthdFBU?=
- =?utf-8?B?RVBoUWo1dDRFbjZHeGU5dnhEQXNsNWdDOEVGdklQTmNsUlYrTytOQ2RDRGNT?=
- =?utf-8?B?RzBYaFB0NTg5NDFDR1ZldWJROW1VZDlZaGdoZ1dFWjA1NTZDY0tnd0tBWmVk?=
- =?utf-8?B?c2d2THlUOENqRWs2bDdVbm1mR0RsVG1KS1VwbWordURlVFRXYXBlUXhqU2hZ?=
- =?utf-8?B?b2RDR0xETVFicWYvN2hXOTJZNTZDZFdtaHl4aWI3ck9UaWZKc1NEaTIySHpO?=
- =?utf-8?B?Q0lpVVBCSVlDL0htZG9oSzdRRFFDTU9jK2VCU1dwcjFlbzFTWWM2M2RnNWY3?=
- =?utf-8?B?VnE0bFpCMnE4cUVDZHA4Sit3MUc4WTluY3JEZm5VQ1Z1b0NjQldMNEE5RXJ3?=
- =?utf-8?B?RkZSOER6LzZVMExVK01hQmtXUGYzQkU5eHRYdTR4WEdZckVxenUxQVZZSkJi?=
- =?utf-8?B?c0ExQmd0ZnlBcEpCcmg3VGNDRlZsY3daZFVJS3NjNDluOWJ0L0Y3M2ZGSVgw?=
- =?utf-8?B?WEE2dU4waHh4UGcwNXpyU0N2QWdTU0o2NmdxNitvajdSQXQ2L0xCOFhHYkQ3?=
- =?utf-8?B?ZzNwWUtZTGxJUnRSWmhxQTZmMkMvYUo5N04yb0gzemhxdWFDSHVyNmpuSFdM?=
- =?utf-8?B?bEM2RG1NZ1QzbDQzRlZHSG1LblljTHRXbTRubG45VC9sWVUrN05PbDJFK1N0?=
- =?utf-8?B?V1VVTThhUThETlB0N1VBdHZhV2srdlhKQVRGN3JlakNmS2J2YVNCL0cvVEdN?=
- =?utf-8?B?b0x0bGdTMitTS3pVM1lVNnFLOThRcWFXbCtkUWx6TjV3ZlFrYWJzWnFrcWQx?=
- =?utf-8?B?VWpZbmtjR0M5NlV3dmFOR2xOeVhBZDEveHQwUHZnQThLTjdTV2VZUlRmaWJ2?=
- =?utf-8?B?YW9qVEx6NFJ3OUI2YTJ6dkdoOHFURGM5SHk4cG1oOUc5dUhuZVF3REFqZTZH?=
- =?utf-8?B?TENrd1ZrTlk0WUdjazc1UXlsTmN5RW9SMit1R09velZKb3ZaK1owMDhkUFBp?=
- =?utf-8?B?RmpuNGM1S20zV0dFY3ZPZnU5ZHNxKzVCVFRvRGt0QlQ1Y2E3dk9jZ1VlcElP?=
- =?utf-8?B?eklxQldEN1UxbU1XdGttMVVDMnJGTnE5TWU2UEpoMHJaaU5ldFJGWW92anNT?=
- =?utf-8?B?LzhGNmZ1dGxnR29Nb29uWDZxZ0doYW9tMXdPdDM2dnk2N0lwK3ZDaUFBMlpG?=
- =?utf-8?B?SEp5MFJSTzk3ZVNEdDZPNVN4VStOaEhCN0JOZzQ5bUFhMFNwNmljZnJzTyth?=
- =?utf-8?B?ZEJSaHJKNXlJMkErOGg2RnJzSExoZ2NZdktUYUExb2pESHN6V21Md0c2YU1u?=
- =?utf-8?B?VVFUUSs1ZGxCMTRldEl1U3JaWGh0TXlBLzBJeE04WWUvN0djcm9SZWl4U1hI?=
- =?utf-8?B?dlN4V2JVOUxiWVRqVGlka2I3M0FEMkZQZzh1OHhsZGViK2YyT3poa2dYZUFG?=
- =?utf-8?B?ZTg4b25yTzdGT29PS29EeVE3ZW5rRDl6NDZpd0pHbTdvblRQMFNJcGtJMzlG?=
- =?utf-8?B?cEZCdUc5SU0rUEpUUml0QS9od1JPWmxNclpodytDdEd5UG1aV2w3L1ZsYTJ6?=
- =?utf-8?B?eGVPbnFmOEU0WmVlTm9uelJGV0s2NGx1a0drN3o0bVdGL0czMmIwTG5mZFR0?=
- =?utf-8?B?Mm52aHNzcCszWkxaSDFwVjhyMU1aRHZSS1QyalhzRmlUbkVyMkkybXllNWhn?=
- =?utf-8?B?UzJ5QlJZMW5qdTJmYkpDQ3FoSU8xbS92MHIySzg0cGFiNlNET3A2Y003NnEr?=
- =?utf-8?B?L1dZa1AwVVJReXdJaWIyaE8wcVhOQ2ZwK1NiQnJWeHU3eWNpejJscGd6NEZi?=
- =?utf-8?B?b2Frc2xvSllJclhKQ2FMaGF0MnljcUlUbStYYm5IdXcrbG5ycjFYSHpQQUlR?=
- =?utf-8?B?MW5xek9UMWV6bXdRSElwc0ZGWUZGcnJoNTlQZ00remF3bHpxYlVKdz09?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c0fbd2df-7804-4159-d23b-08de5753c2e4
-X-MS-Exchange-CrossTenant-AuthSource: PH7PR12MB6395.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jan 2026 12:10:40.1705
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 1RQq9f1Ay842bWsCE6w4cHsmDZx/drqCQQ9QDYha/ddOk91nkC72qygVfnVBvRNkXZyiQt6jJfXXBGO1KKzPiw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB7839
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ziyd3327jr7miqgv2e252w4wpizphomkvxxge6nbjwtg4pyvf4@gvwwi2r7rykl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_041053_232027_9B57953E 
-X-CRM114-Status: UNSURE (   8.16  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260119_045654_003858_458B3E23 
+X-CRM114-Status: GOOD (  20.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -200,19 +103,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 1/15/2026 8:07 PM, Breno Leitao wrote:
-> Use the newly introduced .get_rx_ring_count ethtool ops callback instead
-> of handling ETHTOOL_GRXRINGS directly in .get_rxnfc().
+On Mon, Jan 19, 2026 at 03:07:12AM -0800, Breno Leitao wrote:
+> Hello Jakub,
 > 
-> Since ETHTOOL_GRXRINGS was the only command handled by xgbe_get_rxnfc(),
-> remove the function entirely.
+> On Sat, Jan 17, 2026 at 06:15:51PM -0800, Jakub Kicinski wrote:
+> > On Thu, 15 Jan 2026 06:37:48 -0800 Breno Leitao wrote:
+> > > -static int be_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
+> > > -			u32 *rule_locs)
+> > > -{
+> > > -	struct be_adapter *adapter = netdev_priv(netdev);
+> > > -
+> > > -	if (!be_multi_rxq(adapter)) {
+> > > -		dev_info(&adapter->pdev->dev,
+> > > -			 "ethtool::get_rxnfc: RX flow hashing is disabled\n");
+> > > -		return -EINVAL;
+> > > -	}
+> > 
+> > I think we need to add this check to set_rxfh now. The error coming
+> > from get_rxnfc/GRXRINGS effectively shielded the driver from set_rxfh
+> > calls ever happening when there's only 1 ring. Now they will happen.
 > 
-> Signed-off-by: Breno Leitao <leitao@debian.org>
-> ---
+> You are absolutely correct. The ethtool core calls
+> get_rxnfc(ETHTOOL_GRXRINGS) _before_ allowing RSS configuration via
+> set_rxfh, and if it fails, ethtool_set_rxfh() will fail as well. And
+> with the current change, ethtool_set_rxfh() will not fail if the adapter
+> is not multi-queue.
 
-Reviewed-by: Raju Rangoju <Raju.Rangoju@amd.com>
+Upon further consideration, should we implement this limitation directly within
+the ethtool infrastructure?
 
+Something as:
+
+Author: Breno Leitao <leitao@debian.org>
+Date:   Mon Jan 19 03:25:05 2026 -0800
+
+   ethtool: reject RSS configuration on single-queue devices
+
+    Configuring RSS (Receive Side Scaling) makes no sense when the device
+    only has a single RX queue - there is nothing to distribute traffic
+    across. The indirection table would just map everything to queue 0.
+
+    Add explicit checks in ethtool_set_rxfh_indir() and ethtool_set_rxfh()
+    to reject RSS configuration when the device reports fewer than 2 RX rings.
+
+    This protects all drivers uniformly at the core level.
+
+    Signed-off-by: Breno Leitao <leitao@debian.org>
+
+
+diff --git a/net/ethtool/ioctl.c b/net/ethtool/ioctl.c
+index 9431e305b233..899864e96aab 100644
+--- a/net/ethtool/ioctl.c
++++ b/net/ethtool/ioctl.c
+@@ -1380,6 +1380,10 @@ static noinline_for_stack int ethtool_set_rxfh_indir(struct net_device *dev,
+                ret = num_rx_rings;
+                goto out;
+        }
++       if (num_rx_rings < 2) {
++               ret = -EOPNOTSUPP;
++               goto out;
++       }
+
+        if (user_size == 0) {
+                u32 *indir = rxfh_dev.indir;
+@@ -1599,6 +1603,10 @@ static noinline_for_stack int ethtool_set_rxfh(struct net_device *dev,
+                ret = num_rx_rings;
+                goto out_free;
+        }
++       if (num_rx_rings < 2) {
++               ret = -EOPNOTSUPP;
++               goto out_free;
++       }
 
 
