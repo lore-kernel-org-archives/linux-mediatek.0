@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60E69D29C2A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 14:23:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EC19D29C36
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 14:51:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H9QkcPpjDy8u+QLA0YmdH9TnxrqhsJKIiLdwqcuEWgQ=; b=q4Kkb2UUySaALRCJFnuIRtUCSg
-	dk9ZnIbo0MfqBShUnb3s3Kvy9cCEHqKqAIU+M3PhjMww1KSMibIuqT2CzXwHMQeQr9XwCQ05yK5cf
-	ESvhybPp6oIK3ba2HcC8wxYJdl2mht3LvCdbCSD18hAbLpM8ZDM3TXQdhXazoO+BEYmPDxHhIfeS6
-	hya1xyDTyUx5U+HH2atG7yriBO4JGxfjxbfQ+GhmaNjNDFmlZQhMG7EvvQ8skD+EBvjU8/6Z2XFKF
-	H6HuHNF1oFXtB6mN8Vk8nnQw96gvSzO9Yjcvs1iysiZwWOmtpjz2lB2dX6kicpUXp2dp8uu8BJJG9
-	52xcysNg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nJuu4ULUfV+umhoxx3amYuxkLqbVUhJCj4GIbe/iJKA=; b=17lG7Vpjpq9rpq/juaEuLKEFNd
+	oWUKdT0GvtkCR2fRuoeiYu8KLsd8dpLkV0ZO/lWh/sFp/U8dUBxJake+vHjr0dsNy7+2McFFZrcWO
+	6cZjnD4ZT+lmWHvXRd5cyijBjZbwyREByy8QKsDyI/JnwUM1pwOZKq4tHeUHJgvAqzakCqqdWn4Vz
+	ctyE4MlPGI0sw9KGuXPrZCE7CGv+8rFpTmmBces/GV2OT9DqjmyrFa2g2KRYXMIOCapSO+J788Z57
+	7/4eqFydLXOx1L+xyzZJCG05TIzOlp++puob9THSpJn2gjSxZVhwPlHL/A6XFE3ZnJNTuJScTG+6k
+	dyHh3XRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhq9o-00000002F8h-41uO;
-	Mon, 19 Jan 2026 14:23:04 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vhqbL-00000002IGr-3MMt;
+	Mon, 19 Jan 2026 14:51:31 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhq9l-00000002F6E-2tla;
-	Mon, 19 Jan 2026 14:23:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 223BA44314;
-	Mon, 19 Jan 2026 14:22:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F27D3C19423;
-	Mon, 19 Jan 2026 14:22:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768832579;
-	bh=fiqL2210uT1qUhHAJ17YtkjmIE+maRxzVtmI/uPQI3M=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=oWo/1RstEV3QGFIHLofwpXfSlzA18z/g+p0TFR6bZeSqWafgyI9QJKAvTvVUlVMCd
-	 +SqHpeYukNxFS1oR0pv8Z2vk6oNlxkQJ3KRSsVrlRR9ASslMvw82/G6E10pim7A1OP
-	 acLPnWHbo8jSQjKRrOgUyxQztN+XC6UVMMOhCUpN8tljKtDyxeb1+1gE/xO04Cjf4g
-	 dSp9cLkVihm9sTBCU7upA6tXsa+5iwB47ZqOn34XEDXTirYbSigxo3A8pRQB28KMW/
-	 se1nrHUJ7FubjkzSG3vdfm7/vg0PQmaS6AQJyUtJ6Ytat9QB5w5WdDO6KYLG7aDmKj
-	 rPW4sOwcKr7Mg==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id F29BD3A55FAF;
-	Mon, 19 Jan 2026 14:19:29 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1vhqau-00000002IFK-49Ht;
+	Mon, 19 Jan 2026 14:51:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=nJuu4ULUfV+umhoxx3amYuxkLqbVUhJCj4GIbe/iJKA=; b=VX3Jj1H7SiOv+CIBb/e3w1AItB
+	6u8u9zsEX13PM7NERyGOifWlHVVEp96FSWBES6r5sgEJr49JCw0+vo/uXbbK1wDHDxX8NsuTLrP6u
+	f4paQiXC7m3B+zGhE84nJprYbonuR5QHQPNMVfv6SfLdHAPlmMmXQQyUg9Gkg5aRYmFWE6LzHGnty
+	7e4EGtRzBjU3FvZ9C/sspGRtemvH6ji8T+Jyw0AqwnaqKkai65Td6AuDzsDNdpiVhvBmcWP/WEp5T
+	s05bQ5Qj6xdo+KCKchor02cJ7RvHHpIIfaFiCB98lcnMTecuHY2KRsiDpJMmMWujmfaCpSByMggRZ
+	tiJZMICg==;
+Received: from vps0.lunn.ch ([156.67.10.101])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vhqas-0000000CKP4-14jL;
+	Mon, 19 Jan 2026 14:51:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=nJuu4ULUfV+umhoxx3amYuxkLqbVUhJCj4GIbe/iJKA=; b=R/bjSLnKaunB5G29hAxpF6TDBK
+	ThsxuwI+1mJSRw5P1KA7r8h2JhjdWSS6b6VaBxUNYpaihDc6teH1ReKC+dXBapQzcZu1G9226NfFd
+	OGBAeR5n8ZOMIUgcZ8TbKyIMqbIE4Q/+MFgRy+Vcaju6R2o03Z6E98kmpAxAyZZ91N8w=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1vhqao-003Vvf-L4; Mon, 19 Jan 2026 15:50:58 +0100
+Date: Mon, 19 Jan 2026 15:50:58 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Sayantan Nandy <sayantann11@gmail.com>
+Cc: lorenzo@kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	sayantan.nandy@airoha.com, bread.hsu@airoha.com,
+	kuldeep.malik@airoha.com, aniket.negi@airoha.com,
+	brown.huang@airoha.com
+Subject: Re: [PATCH net-next v3] net: airoha_eth: increase max MTU to 9220
+ for DSA jumbo frames
+Message-ID: <fa6a4cfa-0169-46e3-8c7e-190b69a97e91@lunn.ch>
+References: <20260119073658.6216-1-sayantann11@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next 0/9] net: convert drivers to .get_rx_ring_count
- (part 2)
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <176883236852.1426077.755495066523870761.git-patchwork-notify@kernel.org>
-Date: Mon, 19 Jan 2026 14:19:28 +0000
-References: <20260115-grxring_big_v2-v1-0-b3e1b58bced5@debian.org>
-In-Reply-To: <20260115-grxring_big_v2-v1-0-b3e1b58bced5@debian.org>
-To: Breno Leitao <leitao@debian.org>
-Cc: ajit.khaparde@broadcom.com, sriharsha.basavapatna@broadcom.com,
- somnath.kotur@broadcom.com, andrew+netdev@lunn.ch, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, nbd@nbd.name,
- sean.wang@mediatek.com, lorenzo@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, shayagr@amazon.com,
- akiyano@amazon.com, darinzon@amazon.com, saeedb@amazon.com,
- bryan.whitehead@microchip.com, UNGLinuxDriver@microchip.com,
- Shyam-sundar.S-k@amd.com, Raju.Rangoju@amd.com, bharat@chelsio.com,
- nicolas.ferre@microchip.com, claudiu.beznea@tuxon.dev,
- jiawenwu@trustnetic.com, mengyuanlou@net-swift.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260119073658.6216-1-sayantann11@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_062301_809000_FE453E82 
-X-CRM114-Status: UNSURE (   8.03  )
+X-CRM114-CacheID: sfid-20260119_145102_375313_4BD43053 
+X-CRM114-Status: UNSURE (   9.51  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,45 +85,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Thu, 15 Jan 2026 06:37:47 -0800 you wrote:
-> Commit 84eaf4359c36 ("net: ethtool: add get_rx_ring_count callback to
-> optimize RX ring queries") added specific support for GRXRINGS callback,
-> simplifying .get_rxnfc.
+On Mon, Jan 19, 2026 at 01:06:58PM +0530, Sayantan Nandy wrote:
 > 
-> Remove the handling of GRXRINGS in .get_rxnfc() by moving it to the new
-> .get_rx_ring_count().
+> The industry standard jumbo frame MTU is 9216 bytes. When using the DSA
+> subsystem, a 4-byte tag is added to each Ethernet frame.
 > 
-> [...]
+> Increase AIROHA_MAX_MTU to 9220 bytes (9216 + 4) so that users can set a
+> standard 9216-byte MTU on DSA ports.
+> 
+> The underlying hardware supports significantly larger frame sizes
+> (approximately 16K). However, the maximum MTU is limited to 9220 bytes
+> for now, as this is sufficient to support standard jumbo frames and does
+> not incur additional memory allocation overhead.
+> 
+> 
+> Signed-off-by: Sayantan Nandy <sayantann11@gmail.com>
 
-Here is the summary with links:
-  - [net-next,1/9] net: benet: convert to use .get_rx_ring_count
-    (no matching commit)
-  - [net-next,2/9] net: tsnep: convert to use .get_rx_ring_count
-    https://git.kernel.org/netdev/net-next/c/efa375c44090
-  - [net-next,3/9] net: mediatek: convert to use .get_rx_ring_count
-    https://git.kernel.org/netdev/net-next/c/e33bd8dd7f1f
-  - [net-next,4/9] net: ena: convert to use .get_rx_ring_count
-    https://git.kernel.org/netdev/net-next/c/289f714a084c
-  - [net-next,5/9] net: lan743x: convert to use .get_rx_ring_count
-    https://git.kernel.org/netdev/net-next/c/05ba3044865d
-  - [net-next,6/9] net: xgbe: convert to use .get_rx_ring_count
-    https://git.kernel.org/netdev/net-next/c/507353bf84fc
-  - [net-next,7/9] net: cxgb4: convert to use .get_rx_ring_count
-    https://git.kernel.org/netdev/net-next/c/ceec168d03db
-  - [net-next,8/9] net: macb: convert to use .get_rx_ring_count
-    https://git.kernel.org/netdev/net-next/c/d1c7ed5dfa35
-  - [net-next,9/9] net: txgbe: convert to use .get_rx_ring_count
-    https://git.kernel.org/netdev/net-next/c/c4279332f479
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+    Andrew
 
