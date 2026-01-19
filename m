@@ -4,104 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BEF5CCF2EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 12:03:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6486ACCF2F2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 12:06:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Kzaz1i9qc6G7xsP+1FC5njEiUedEPzYKnb9i6e2a56w=; b=gvQCk/trDh8VgaWiLa0MLjzA36
-	vxuZy75hvBq21qsyzCeCwfVZvncNwY99+Ng3P4NIakGsysgAl8MX6bSQkrgX8RF5nlmdZ2kU7uTZw
-	z8UL8mSOhbrXWIGd08ilzrIwX/RqRJyBQ81WU1dQzeOxgsd4ViKtD9lwBaYsYN2KpvDUy+QuzxdBK
-	tc5HXx3B9+4LKpj+7CENXa3wF3WKocTwmM8vaXItvQ1bbj93Q6mORlgPeFOtkorGL2Kqmyowglskg
-	/zjIn6m9icJc6WqID8DQtYgs3ZeAW3BcenArNbUif5cXuPUuNUdlYp+7hC/i2JUi5+ns2V5NwKqdX
-	bnSFTw7Q==;
+	bh=PT2kb8626h9iBTlh/SYsEq06up8HphX/L2figK9gfWY=; b=rTajsD5JxE5fzLtOj6nrOvZVzo
+	1YphIjkcF6Bjxyt6K9ZJMsRMBii7Fpjd4zE7N8+A1bB5BOn4IAhpa0RSqdi+e75hbPB3x+gZ1HixP
+	S02DMi4ICfRAqVCzrpTvSJ6j13BcG+H9ux3nSM+mK9f+Ttag9NAZQHlrZ05XVbcSHaLafIEEA6me9
+	uVxh8sK9wrPwX+MWRWpUloEAVkj6+YQaO6JXGF8zJxdyVQpO2hxbvYdvMScXNI52m2XLXwih44NT2
+	bE1QUy6wZQ47GVpWNi+cAhZJqw1lLI9FCKfG3O/MtoaidlO12ONA4sb30H16a/t9wWaOIQtuiaJuJ
+	nF5BVOuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhnyt-00000001wWT-0Pa5;
-	Mon, 19 Jan 2026 12:03:39 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1vho1g-00000001wnZ-0ml5;
+	Mon, 19 Jan 2026 12:06:32 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhnyo-00000001wUj-0zi3
-	for linux-mediatek@lists.infradead.org;
-	Mon, 19 Jan 2026 12:03:37 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-4801d21c411so13407035e9.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Jan 2026 04:03:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768824212; x=1769429012; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=Kzaz1i9qc6G7xsP+1FC5njEiUedEPzYKnb9i6e2a56w=;
-        b=aBRqLTj1x4oh7GdSPlj+Pjn95QLwuQcFGOm63JRcTiZsPWwBLPMNWk0vOQGa0vzDpX
-         iybVmRyQeLx4LODkfGDhSRI2T//w+SUwvhUrmEnBbUQ+Rvxtm0EsDDBgjYtIZqqSnRYG
-         Qc7on/44HUksR1tnvuJYf3VjAxlOZ3rZzG2RDW3GAZzqmP3VeXGPi4y3eExPk/9afa27
-         94XcyPDg0e4S783aIc/ANuNgEaEmJerz7x9IQth8LjexGGfHTgfE0+MsSif5NzBqop1t
-         24P0VB30Z9XHDIxArPbC2nTUFG0DzLTPDowIlnqyfwbfrVP9COkmZQfNmtVw3ZnCBWBl
-         GezA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768824212; x=1769429012;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Kzaz1i9qc6G7xsP+1FC5njEiUedEPzYKnb9i6e2a56w=;
-        b=lzKOPznnC5hmaAHC97mj9dERFlayer5froYhxBKo7TzZDKRayzRisZOzmD0AvaqNtA
-         i6+Xq/AtaZQQpEplW+b2/FhBjf4DFjy1UyMaH+ijWZc0kdRnxCSXbJpNWkjKRKYMyLRs
-         Uy40wHO71x47V4F13+xdFbsPLaOKYzhTya5wBkR1NGiguoCD9Q+97v2iiU76sw6U4k7J
-         7acbGCA/nHQBDtY6PJ0O1IkUw8oGrap9s0QWslfv/4KbeVEKqh2vn+pqnZxwMIfHqtBB
-         pMCJnmeIX9Fl0XdzpvI10UkmY96+jFlSaYJrPN7UbYBhc0BtwJVwQi/gCCOyr5F58YKp
-         6N8Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUClbtss5Oafd/xqYDO2it/adEN0oyHJlgdzw/d+KXtT/CIxO3coNfz/zC02FH8gAF/YJ4VVklLlQCaqS8cGA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxRLN8ihjGLnTCzVnBwlx39vyFCDI+yy71mDoPWED3PEc3gpzYf
-	CFzCffzbTgTSzORue6kZIzfmUwdnUwfvU8EL2di4ijufL2RI1LVnzB/E
-X-Gm-Gg: AY/fxX4lspU0uK/hNAdjQj31XeK84mf5ENVJbKDGb85RJ0fYTHBLHTWVtloV/dmTO+4
-	Ou/zTWb3BuE5CIAM+jNm6mXatO6XKeebdzGQ6xL/HxB1vW42Qj7Vqlc5Oqil9DC9l5tX1tzGAuO
-	mRRuk04X41uIjQiEMXhHkMZwsibEPqmjmaqnm4HEQts2T3Vb5Nq2BlKn3vrN31rofkWToPr1PiG
-	kA79zGqyEsphS/9wUJO8rw3r9iBP3NgW+yMfFD329u6CHMGiwBDx+EC8++7pPug+H0xLXIwVkws
-	lA2pm7o0/PrGFKgQqrMF08vWvztbEAQGXgPWiRTkZKLgGEDj8jGAQpWuygO6p17/WyoCaAHtVSE
-	1Ci56gm2PNYkaCZbO0+Xre4uddzJ1Lw9Gh5Gt9O0ttV6kq6sZYv2QGg/A3+h/GJ6rV/HoSppp9d
-	IYjTMKLy/0SGc5Q+7IaGzyEtHH4PLaJMJm6ifNJZ0=
-X-Received: by 2002:a05:600c:1f12:b0:471:14af:c715 with SMTP id 5b1f17b1804b1-4801e2fc37bmr117353555e9.3.1768824211594;
-        Mon, 19 Jan 2026 04:03:31 -0800 (PST)
-Received: from Ansuel-XPS. (93-34-88-81.ip49.fastwebnet.it. [93.34.88.81])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4801fe3b01csm83250955e9.5.2026.01.19.04.03.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Jan 2026 04:03:31 -0800 (PST)
-Message-ID: <696e1d93.050a0220.7cbaa.5b25@mx.google.com>
-X-Google-Original-Message-ID: <aW4dkcDb8LikqH-y@Ansuel-XPS.>
-Date: Mon, 19 Jan 2026 13:03:29 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew@lunn.ch>, Krzysztof Kozlowski <krzk@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v2 1/2] dt-bindings: net: airoha: npu: Add
- EN7581-7996 support
-References: <6967c46a.5d0a0220.1ba90b.393c@mx.google.com>
- <9340a82a-bae8-4ef6-9484-3d2842cf34aa@lunn.ch>
- <aWfdY53PQPcqTpYv@lore-desk>
- <e8b48d9e-f5ba-400b-8e4a-66ea7608c9ae@lunn.ch>
- <aWgaHqXylN2eyS5R@lore-desk>
- <13947d52-b50d-425e-b06d-772242c75153@lunn.ch>
- <aWoAnwF4JhMshN1H@lore-desk>
- <aWvMhXIy5Qpniv39@lore-desk>
- <30f44777-776f-49b1-b2f5-e1918e8052fd@lunn.ch>
- <aW4QixwAJHaHWBBc@lore-desk>
+	id 1vho1J-00000001wkO-3Zya;
+	Mon, 19 Jan 2026 12:06:15 +0000
+X-UUID: 395d9a8af52f11f0ad39f32c34db0b1c-20260119
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=PT2kb8626h9iBTlh/SYsEq06up8HphX/L2figK9gfWY=;
+	b=CGRBTB4GU3BUAc9Bzk9hyIdAoQNj2jwv3M5RzvKYrWTodzic9ClAF4BFpoLIXZ00XtKCV8023W/NEP90lwBCXyd1PmkNXDFJyvQ+Zt4+fXYZNB5lY5yvpC1spIBRLLvHcABrYOWl7L41NERhAjms3IowsQieXTSlxGezGRSrPCw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.9,REQID:16ede996-9ac7-4043-9253-6b8e0121ba6f,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:5047765,CLOUDID:361af579-8c8a-4fc4-88c0-3556e7711556,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
+	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 395d9a8af52f11f0ad39f32c34db0b1c-20260119
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <friday.yang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1178757855; Mon, 19 Jan 2026 05:06:02 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 19 Jan 2026 20:05:59 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 19 Jan 2026 20:05:58 +0800
+From: Friday Yang <friday.yang@mediatek.com>
+To: Yong Wu <yong.wu@mediatek.com>, Krzysztof Kozlowski <krzk@kernel.org>, Rob
+ Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Philipp Zabel
+	<p.zabel@pengutronix.de>
+CC: Friday Yang <friday.yang@mediatek.com>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v12 2/2] memory: mtk-smi: mt8188: Add SMI reset and clamp
+Date: Mon, 19 Jan 2026 20:05:25 +0800
+Message-ID: <20260119120552.9325-3-friday.yang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20260119120552.9325-1-friday.yang@mediatek.com>
+References: <20260119120552.9325-1-friday.yang@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aW4QixwAJHaHWBBc@lore-desk>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_040334_327365_37543DA2 
-X-CRM114-Status: GOOD (  47.54  )
+X-CRM114-CacheID: sfid-20260119_040610_102702_277117A3 
+X-CRM114-Status: GOOD (  25.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,116 +90,356 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 19, 2026 at 12:07:55PM +0100, Lorenzo Bianconi wrote:
-> > > Airoha folks reported the NPU hw can't provide the PCIe Vendor/Device ID info
-> > > of the connected WiFi chip.
-> > > I guess we have the following options here:
-> > > - Rely on the firmware-name property as proposed in v1
-> > > - Access the PCIe bus from the NPU driver during probe in order to enumerate
-> > >   the PCIe devices and verify WiFi chip PCIe Vendor/Device ID
-> > > - During mt76 probe trigger the NPU fw reload if required. This approach would
-> > >   require adding a new callback in airoha_npu ops struct (please note I have
-> > >   not tested this approach and I not sure this is really doable).
-> > 
-> > What i'm wondering about is if the PCIe slots are hard coded in the
-> > firmware.  If somebody builds a board using different slots, they
-> > would then have different firmware? Or if they used the same slots,
-> > but swapped around the Ethernet and the WiFi, would it need different
-> > firmware?
-> 
-> As pointed out by Benjamin, the NPU is a generic Risc-V cpu cluster and it is
-> used to move packets from/to ethernet DMA rings to/from WiFi DMA rings without
-> involving the host cpu (similar to what we have for MTK with WED module).
-> I think the PCIe slot info is not necessary for the NPU to work since it is
-> configured by ethernet (airoha-eth) and wireless drivers (mt76) with DMA ring
-> addresses to use via the airoha npu ops APIs, NPU just moves data between the
-> DMA rings according to my understanding.
-> 
-> > 
-> > So is the firmware name a property of the board?
-> 
-> We need to run different binaries on the NPU based on the MT76 WiFi chip
-> available on the board since the MT76 DMA rings layout changes between MT76 SoC
-> revisions (e.g. Egle MT7996 vs Kite MT7992). In this sense, I agree, the
-> firmware name is a board property.
-> 
-> > 
-> > If the PCIe slots are actually hard coded in the NPU silicon, cannot
-> > be changed, then we might have a different solution, the firmware name
-> > might be placed into a .dtsi file, or even hard coded in the driver?
-> 
-> IIUC what you mean here, it seems the solution I proposed in v1 (using
-> firmware-name property), right?
-> In this case we can't hard code the firmware name in the NPU driver since
-> we can't understand the MT76 WiFi chip revision running on the board at
-> the moment (MT76 would need to provide this info during MT76 probe,
-> please take a look to the option 3 in my previous email).
-> 
-> > 
-> > > What do you think? Which one do you prefer?
-> > 
-> > I prefer to try to extract more information for the Airoha folks. What
-> > actually defines the firmware? Does the slots used matter? Does it
-> > matter what device goes in what slots? Is it all hard coded in
-> > silicon? Is there only one true hardware design and if you do anything
-> > else your board design is FUBAR, never to be supported?
-> 
-> I think the firmware is defined by the board hw configuration (e.g. MT76
-> SoC revision) and not by the specific PCIe slot used.
-> I do not think we have these info hardcoded in the silicon since NPU is a
-> generic RiscV cpu (this has been confirmed by airoha folks).
-> 
+To prevent handling glitch signals during MTCMOS on/off transitions,
+SMI requires clamp and reset operations. Parse the reset settings for
+SMI LARBs and the clamp settings for the SMI Sub-Common. Register
+genpd callback for the SMI LARBs located in image, camera and IPE
+subsystems, and apply reset and clamp operations within the callback.
+The 'mtk_smi_device_link_common' already parses the 'mediatek,smi'
+property. A similar step is required to obtain the SMI Common regmap
+from the 'mediatek,smi' property for the clamp function. To centralize
+this process and avoid redundant parsing, we achieve it together.
 
-Just to make sure everything is clear and talking on this in very
-simple words, there isn't anything ""hardcoded"" or strange.
+Signed-off-by: Friday Yang <friday.yang@mediatek.com>
+---
+ drivers/memory/mtk-smi.c | 177 ++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 167 insertions(+), 10 deletions(-)
 
-For """""""reasons""""""" (I assume space constraints or NPU CPU
-limitation) it's not possible to have a single NPU firmware to support
-both WiFi card.
+diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+index aaeba8ab211e..042b4c040def 100644
+--- a/drivers/memory/mtk-smi.c
++++ b/drivers/memory/mtk-smi.c
+@@ -10,11 +10,15 @@
+ #include <linux/err.h>
+ #include <linux/io.h>
+ #include <linux/iopoll.h>
++#include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_platform.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_domain.h>
+ #include <linux/pm_runtime.h>
++#include <linux/regmap.h>
++#include <linux/reset.h>
+ #include <linux/soc/mediatek/mtk_sip_svc.h>
+ #include <soc/mediatek/smi.h>
+ #include <dt-bindings/memory/mt2701-larb-port.h>
+@@ -34,6 +38,8 @@
+ #define SMI_FIFO_TH1			0x238
+ #define SMI_FIFO_TH2			0x23c
+ #define SMI_DCM				0x300
++#define SMI_COMMON_CLAMP_EN_SET		0x3c4
++#define SMI_COMMON_CLAMP_EN_CLR		0x3c8
+ #define SMI_DUMMY			0x444
 
-The NPU do simple task like configuring WED registers and handling DMA
-descriptor/some WiFi offload. Such configuration is specific to the WiFi
-card and it's not the same between MT7996 and MT7992.
+ /* SMI LARB */
+@@ -134,6 +140,7 @@ struct mtk_smi_larb_gen {
+ 	unsigned int			larb_direct_to_common_mask;
+ 	unsigned int			flags_general;
+ 	const u8			(*ostd)[SMI_LARB_PORT_NR_MAX];
++	const u8			*clamp_port;
+ };
 
-This is why specific firmware is needed. The specific NPU firmware have
-support for only ONE of the 2 WiFi card and doesn't support configuring
-and handling stuff for the other. (the code is not built in the
-firmware)
+ struct mtk_smi {
+@@ -150,6 +157,7 @@ struct mtk_smi {
+ };
 
-From the kernel side (in the MT76 code) we just instruct the NPU to
-start offloading stuff (if present) and all the SoC feature for WiFi
-offload are used. (WED, special DMA path, ...)
+ struct mtk_smi_larb { /* larb: local arbiter */
++	struct device			*dev;
+ 	struct mtk_smi			smi;
+ 	void __iomem			*base;
+ 	struct device			*smi_common_dev; /* common or sub-common dev */
+@@ -157,6 +165,10 @@ struct mtk_smi_larb { /* larb: local arbiter */
+ 	int				larbid;
+ 	u32				*mmu;
+ 	unsigned char			*bank;
++	struct regmap			*smi_comm_syscon; /* smi-comm or sub-comm */
++	u8				smi_comm_in_port_id; /* smi-comm or sub-comm */
++	struct notifier_block		nb;
++	struct reset_control		*rst_con;
+ };
 
-The possible combination that NPU can be used currently are the
-following:
-- Ethernet offload (all NPU firmware)
-- Ethernet offload + WiFi MT7996 (NPU firmware with MT7996 support)
-- Ethernet offload + WiFi MT7992 (NPU firmware with MT7992 support)
+ static int
+@@ -478,6 +490,19 @@ static const u8 mtk_smi_larb_mt8195_ostd[][SMI_LARB_PORT_NR_MAX] = {
+ 	[28] = {0x1a, 0x0e, 0x0a, 0x0a, 0x0c, 0x0e, 0x10,},
+ };
 
-The NPU makes use of feature already present in the SoC and makes use of
-reserved space in RAM for DMA handling so it really don't care of where
-the WiFi card is present (this is what I mean with nothing is hardcoded)
++static const u8 mtk_smi_larb_clamp_port_mt8188[MTK_LARB_NR_MAX] = {
++	[9]	= BIT(1), /* larb10 */
++	[10]	= BIT(2), /* larb11a */
++	[11]	= BIT(2), /* larb11b */
++	[12]	= BIT(3), /* larb11c */
++	[13]	= BIT(0), /* larb12 */
++	[16]	= BIT(1), /* larb15 */
++	[17]	= BIT(2), /* larb16a */
++	[18]	= BIT(2), /* larb16b */
++	[19]	= BIT(3), /* larb17a */
++	[20]	= BIT(3), /* larb17b */
++};
++
+ static const struct mtk_smi_larb_gen mtk_smi_larb_mt2701 = {
+ 	.port_in_larb = {
+ 		LARB0_PORT_OFFSET, LARB1_PORT_OFFSET,
+@@ -531,6 +556,7 @@ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8188 = {
+ 	.flags_general	            = MTK_SMI_FLAG_THRT_UPDATE | MTK_SMI_FLAG_SW_FLAG |
+ 				      MTK_SMI_FLAG_SLEEP_CTL | MTK_SMI_FLAG_CFG_PORT_SEC_CTL,
+ 	.ostd		            = mtk_smi_larb_mt8188_ostd,
++	.clamp_port                 = mtk_smi_larb_clamp_port_mt8188,
+ };
 
-I hope we are not getting annoying with insisting on the firmware-names
-solution.
+ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8192 = {
+@@ -582,28 +608,79 @@ static void mtk_smi_larb_sleep_ctrl_disable(struct mtk_smi_larb *larb)
+ 	writel_relaxed(0, larb->base + SMI_LARB_SLP_CON);
+ }
 
-My personal taste on this is that hardcoding the name in the driver
-seems a bit wrong and creating a way to dynamically select the firmware
-based on what is present in the hardware would be great but would
-introduce LOTS of COMPLEXITY for WiFi router that ship with a single
-WiFi card and would have their own dedicated .dts
+-static int mtk_smi_device_link_common(struct device *dev, struct device **com_dev)
++static int mtk_smi_larb_clamp_protect_enable(struct device *dev, bool enable)
++{
++	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
++	u32 reg;
++	int ret;
++
++	reg = enable ? SMI_COMMON_CLAMP_EN_SET : SMI_COMMON_CLAMP_EN_CLR;
++	ret = regmap_write(larb->smi_comm_syscon, reg, larb->smi_comm_in_port_id);
++	if (ret)
++		dev_err(dev, "Unable to %s clamp for input port %d: %d\n",
++			enable ? "enable" : "disable",
++			larb->smi_comm_in_port_id, ret);
++
++	return ret;
++}
++
++static int mtk_smi_genpd_callback(struct notifier_block *nb,
++				  unsigned long event, void *data)
++{
++	struct mtk_smi_larb *larb = container_of(nb, struct mtk_smi_larb, nb);
++	struct device *dev = larb->dev;
++	int ret = 0;
++
++	switch (event) {
++	case GENPD_NOTIFY_PRE_ON:
++	case GENPD_NOTIFY_PRE_OFF:
++		/* Clamp this larb to avoid the redundant commands */
++		ret = mtk_smi_larb_clamp_protect_enable(dev, true);
++		break;
++	case GENPD_NOTIFY_ON:
++		ret = reset_control_reset(larb->rst_con);
++		if (ret) {
++			dev_err(dev, "Failed to reset smi larb %d\n", ret);
++			break;
++		}
++
++		ret = mtk_smi_larb_clamp_protect_enable(dev, false);
++		break;
++	default:
++		break;
++	}
++	if (ret)
++		return NOTIFY_BAD;
++
++	return NOTIFY_OK;
++}
++
++static int mtk_smi_device_link_common(struct device *dev, struct device **com_dev,
++				      bool require_clamp)
+ {
+ 	struct platform_device *smi_com_pdev;
+ 	struct device_node *smi_com_node;
+ 	struct device *smi_com_dev;
+ 	struct device_link *link;
++	const struct mtk_smi_larb_gen *larb_gen;
++	struct mtk_smi_larb *larb;
++	int larbid, ret;
 
-To make this generic enough an idea might be to have simple .dtsi with
-prefilled firmware names.
+ 	smi_com_node = of_parse_phandle(dev->of_node, "mediatek,smi", 0);
+ 	if (!smi_com_node)
+ 		return -EINVAL;
 
-- en7581-npu-mt7992.dtsi
-- en7581-npu-mt7996.dtsi
+ 	smi_com_pdev = of_find_device_by_node(smi_com_node);
+-	of_node_put(smi_com_node);
+ 	if (!smi_com_pdev) {
+ 		dev_err(dev, "Failed to get the smi_common device\n");
+-		return -EINVAL;
++		ret = -EINVAL;
++		goto err_put_node;
+ 	}
 
-But they would only contain a single node with a single string.
+ 	/* smi common is the supplier, Make sure it is ready before */
+ 	if (!platform_get_drvdata(smi_com_pdev)) {
+-		put_device(&smi_com_pdev->dev);
+-		return -EPROBE_DEFER;
++		ret = -EPROBE_DEFER;
++		goto err_put_device;
+ 	}
 
-Hope this more practical explaination clears any doubt of the
-implementation.
+ 	smi_com_dev = &smi_com_pdev->dev;
+@@ -611,13 +688,36 @@ static int mtk_smi_device_link_common(struct device *dev, struct device **com_de
+ 			       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
+ 	if (!link) {
+ 		dev_err(dev, "Unable to link smi-common dev\n");
+-		put_device(&smi_com_pdev->dev);
+-		return -ENODEV;
++		ret = -ENODEV;
++		goto err_put_device;
+ 	}
 
--- 
-	Ansuel
+ 	*com_dev = smi_com_dev;
+
++	if (require_clamp) {
++		larb = dev_get_drvdata(dev);
++		larb_gen = larb->larb_gen;
++		larbid = larb->larbid;
++		larb->smi_comm_in_port_id = larb_gen->clamp_port[larbid];
++		larb->smi_comm_syscon = syscon_node_to_regmap(smi_com_node);
++		if (IS_ERR(larb->smi_comm_syscon)) {
++			dev_err(dev, "Failed to get smi syscon for larb %d\n", larbid);
++			ret = PTR_ERR(larb->smi_comm_syscon);
++			larb->smi_comm_syscon = NULL;
++			goto err_remove_link;
++		}
++	}
++	of_node_put(smi_com_node);
++
+ 	return 0;
++
++err_remove_link:
++	device_link_remove(dev, smi_com_dev);
++err_put_device:
++	put_device(&smi_com_pdev->dev);
++err_put_node:
++	of_node_put(smi_com_node);
++	return ret;
+ }
+
+ static int mtk_smi_dts_clk_init(struct device *dev, struct mtk_smi *smi,
+@@ -641,16 +741,39 @@ static int mtk_smi_dts_clk_init(struct device *dev, struct mtk_smi *smi,
+ 	return ret;
+ }
+
++static int mtk_smi_larb_parse_reset(struct mtk_smi_larb *larb)
++{
++	struct device *dev = larb->dev;
++	int ret;
++
++	larb->rst_con = devm_reset_control_get_exclusive(dev, "larb");
++	if (IS_ERR(larb->rst_con))
++		return dev_err_probe(dev, PTR_ERR(larb->rst_con),
++				     "Failed to get reset controller\n");
++
++	larb->nb.notifier_call = mtk_smi_genpd_callback;
++	ret = dev_pm_genpd_add_notifier(dev, &larb->nb);
++	if (ret) {
++		larb->nb.notifier_call = NULL;
++		return dev_err_probe(dev, ret,
++				     "Failed to add genpd callback\n");
++	}
++
++	return 0;
++}
++
+ static int mtk_smi_larb_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_smi_larb *larb;
+ 	struct device *dev = &pdev->dev;
++	bool require_clamp = false;
+ 	int ret;
+
+ 	larb = devm_kzalloc(dev, sizeof(*larb), GFP_KERNEL);
+ 	if (!larb)
+ 		return -ENOMEM;
+
++	larb->dev = dev;
+ 	larb->larb_gen = of_device_get_match_data(dev);
+ 	larb->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(larb->base))
+@@ -663,19 +786,44 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+
+ 	larb->smi.dev = dev;
+
+-	ret = mtk_smi_device_link_common(dev, &larb->smi_common_dev);
++	platform_set_drvdata(pdev, larb);
++	/* The larbid are sequential for IOMMU if this property is not present */
++	ret = of_property_read_s32(dev->of_node, "mediatek,larb-id", &larb->larbid);
++	if (ret == -EINVAL)
++		goto add_dev_link;
++	else if (ret || larb->larbid >= MTK_LARB_NR_MAX)
++		return dev_err_probe(dev, -EINVAL, "Invalid larbid:%d\n", larb->larbid);
++
++	if (larb->larb_gen->clamp_port && larb->larb_gen->clamp_port[larb->larbid])
++		require_clamp = true;
++
++add_dev_link:
++	ret = mtk_smi_device_link_common(dev, &larb->smi_common_dev, require_clamp);
+ 	if (ret < 0)
+ 		return ret;
+
++	/*
++	 * Only SMI LARBs in camera, image and IPE subsys need to
++	 * apply clamp and reset operations, others can be skipped.
++	 */
++	if (require_clamp) {
++		ret = mtk_smi_larb_parse_reset(larb);
++		if (ret)
++			goto err_link_remove;
++	}
++
+ 	pm_runtime_enable(dev);
+-	platform_set_drvdata(pdev, larb);
+ 	ret = component_add(dev, &mtk_smi_larb_component_ops);
+ 	if (ret)
+ 		goto err_pm_disable;
+ 	return 0;
+
+ err_pm_disable:
++	if (larb->nb.notifier_call)
++		dev_pm_genpd_remove_notifier(&pdev->dev);
++
+ 	pm_runtime_disable(dev);
++err_link_remove:
+ 	device_link_remove(dev, larb->smi_common_dev);
+ 	put_device(larb->smi_common_dev);
+ 	return ret;
+@@ -685,6 +833,9 @@ static void mtk_smi_larb_remove(struct platform_device *pdev)
+ {
+ 	struct mtk_smi_larb *larb = platform_get_drvdata(pdev);
+
++	if (larb->nb.notifier_call)
++		dev_pm_genpd_remove_notifier(&pdev->dev);
++
+ 	device_link_remove(&pdev->dev, larb->smi_common_dev);
+ 	pm_runtime_disable(&pdev->dev);
+ 	component_del(&pdev->dev, &mtk_smi_larb_component_ops);
+@@ -808,6 +959,11 @@ static const struct mtk_smi_common_plat mtk_smi_common_mt8188_vpp = {
+ 	.init     = mtk_smi_common_mt8195_init,
+ };
+
++static const struct mtk_smi_common_plat mtk_smi_sub_common_mt8188 = {
++	.type     = MTK_SMI_GEN2_SUB_COMM,
++	.has_gals = true,
++};
++
+ static const struct mtk_smi_common_plat mtk_smi_common_mt8192 = {
+ 	.type     = MTK_SMI_GEN2,
+ 	.has_gals = true,
+@@ -852,6 +1008,7 @@ static const struct of_device_id mtk_smi_common_of_ids[] = {
+ 	{.compatible = "mediatek,mt8186-smi-common", .data = &mtk_smi_common_mt8186},
+ 	{.compatible = "mediatek,mt8188-smi-common-vdo", .data = &mtk_smi_common_mt8188_vdo},
+ 	{.compatible = "mediatek,mt8188-smi-common-vpp", .data = &mtk_smi_common_mt8188_vpp},
++	{.compatible = "mediatek,mt8188-smi-sub-common", .data = &mtk_smi_sub_common_mt8188},
+ 	{.compatible = "mediatek,mt8192-smi-common", .data = &mtk_smi_common_mt8192},
+ 	{.compatible = "mediatek,mt8195-smi-common-vdo", .data = &mtk_smi_common_mt8195_vdo},
+ 	{.compatible = "mediatek,mt8195-smi-common-vpp", .data = &mtk_smi_common_mt8195_vpp},
+@@ -905,7 +1062,7 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+
+ 	/* link its smi-common if this is smi-sub-common */
+ 	if (common->plat->type == MTK_SMI_GEN2_SUB_COMM) {
+-		ret = mtk_smi_device_link_common(dev, &common->smi_common_dev);
++		ret = mtk_smi_device_link_common(dev, &common->smi_common_dev, false);
+ 		if (ret < 0)
+ 			return ret;
+ 	}
+--
+2.46.0
+
 
