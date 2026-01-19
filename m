@@ -4,91 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07162D29C22
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 12:57:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C4B9D29C27
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 13:09:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lNHrn/XFzhadasziTUy6F7RftXtkLpDR8wFnHICqw0k=; b=LjIuBfac3vUNGEcEX+5s0NKIHE
-	FjPNfdqTLSlA9vjp9G2XXraTvyz1Xjxfv4DU4EV/sNIp6TKIX9GD60JXgPUYxSQskbp1WGYbwojze
-	jkNLHEWsQA3BbJMXBcZ60YVSXwrOhEOGqweBWtgTtWGSBnXTISxHVajOTQhqA2vpl4IppslIJm2Xq
-	inI/sXRW/dFc5rJQc43fSD6HXwtiadYYnHHlJEWeoL9+W5zYjpiApl6uXzpfhyPqZYgL2+KR9mlng
-	zxj8FNvtqj0w4oM6c9uaOCmuwq87qWLPgbUQJfDULiqy77OWVQ5XA9Iv8nvZ6ryYAT5EBNGc/6RNT
-	25eNkBMw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:CC:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Eej85NiVPLP+u56kRUQxyZBmDKCIPKgy3FhLQoE5YEc=; b=3lYKAQRYFNq9G/QPFgi/kb/04q
+	YiyR5/sm6SnlRVQyan6zWsnqtgMDUTz69TIp7mq91K/yy5dY+3Ls5OYAlV0WzhJ9izAkEmYhXjyof
+	JhT6SCQXUujW1oe0rDT/mqLA0fEXegg4mA71Eijg/L/9AsZZLGJbU9NA0qyUjHoUmtWGM9iNUCGYJ
+	2a7ttUECG1pcARt0pD3Qusri1MhFu4wybJP7tMXHq82vgewkrR2CfffVvguWTrOkm74jK4gl/rcrM
+	zsc2Ql8Y9bmzD34e4DQCmxYJrcMEK49/iud/evP9deEXjX+mJuIt5pKlIIdzkJtSNEoW5l+2qOL2H
+	2ADiFj+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhooS-000000026fA-10Rp;
-	Mon, 19 Jan 2026 12:56:56 +0000
-Received: from mail-ot1-f52.google.com ([209.85.210.52])
+	id 1vhp0c-000000028Tm-0Skb;
+	Mon, 19 Jan 2026 13:09:30 +0000
+Received: from esa.microchip.iphmx.com ([68.232.153.233])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhooP-000000026ds-42Qv
-	for linux-mediatek@lists.infradead.org;
-	Mon, 19 Jan 2026 12:56:55 +0000
-Received: by mail-ot1-f52.google.com with SMTP id 46e09a7af769-7cfd5d34817so2828742a34.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Jan 2026 04:56:53 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768827413; x=1769432213;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=lNHrn/XFzhadasziTUy6F7RftXtkLpDR8wFnHICqw0k=;
-        b=ghxbocWU4qf+/Fkj16UpAgp6Az2rETecDDw2v8xN13GynFqEFwPPhiEeinuRGZrGgC
-         4otu9Q/6A71/Usc/u1bEyOM7kHwpDtIkXpoHFAgN1qUaVLTVPMvBxRUj/EvXKCBF0v8E
-         UpLMf6XHzSWOw9bzD/6JhudNqIbmrJwAtDz32W3O+U13wI+2Y90s10rVwZP0ccXGu5II
-         q/zBxi7F5E0is6GzG5j6tqp5kQjqwXLifvHsBMLHRsYX5SIUMt+nvpbQSbQSjt4zdk5b
-         KurnjTose6vJF6vIVgkpS+l4smCHfBAhHqTzKL7b8WCAFqRcTDSZ1O3JKExzlL6selHO
-         pwmQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWiz3Gm3qNfYyBWUKOH75+JIPappZtuJgP6+F9sPj8/wcntB9PKf0WKs1D1HTR9vjpvCLFLPuY4mhnX2S3fMQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzRfxdmMUJnVskZGiNKykBN+IvRLTsx3drW9jykvE5HNKqLMHpZ
-	W1J2tdB+aPzk2I5G3Ppnzp4dftOS3vEFjdYBdKBywa2KsiQ2q43czCtJ
-X-Gm-Gg: AY/fxX5VGJWZLEWTc9vbzBrW0ZwMemQq0lZuCQ1kRxCZkUN6mQR7CBbHUrPO3u6fy91
-	XMyajJQqHVWsWnPMscIYfBfwFAyV8rcF1O4sD3dhlnR8Dm6fbBs5RZ1aGJj0gZLBI1dbgNvp2Bh
-	175X2eKzzqgdlsaZVxgCYw4GjUJrrLmFP0/LQHhSyHwiWmCHapyxsGc81bzKi9GQ6z+n7Y9Bfv8
-	xO32RDWkot9xyRq4a1wju+mr4X4yqNvNNs/IlPeP9DVwdh27063PES6geYxMAkDlVNb0AQEQPJa
-	AKdDod1uYmjSndf12MPdCOru1P6Ifij89WtqHuX4Fx5UDU7o3neUKxEJugfQR2mn32Ma4NpB3zc
-	j1MU6iyA7KuGpXzcLEzr+kDtZsilR51sQt5s4T1nYcSaKto/dIGG3/zKE8NugRmDeC6Ur8IqQsP
-	3F
-X-Received: by 2002:a05:6830:82ea:b0:7cf:f7c1:d9ac with SMTP id 46e09a7af769-7cff7c1da6dmr4841137a34.9.1768827412551;
-        Mon, 19 Jan 2026 04:56:52 -0800 (PST)
-Received: from gmail.com ([2a03:2880:10ff:4::])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7cfdf2a5f02sm6632883a34.25.2026.01.19.04.56.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Jan 2026 04:56:52 -0800 (PST)
-Date: Mon, 19 Jan 2026 04:56:49 -0800
-From: Breno Leitao <leitao@debian.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Ajit Khaparde <ajit.khaparde@broadcom.com>, 
-	Sriharsha Basavapatna <sriharsha.basavapatna@broadcom.com>, Somnath Kotur <somnath.kotur@broadcom.com>, 
-	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau <nbd@nbd.name>, 
-	Sean Wang <sean.wang@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Shay Agroskin <shayagr@amazon.com>, 
-	Arthur Kiyanovski <akiyano@amazon.com>, David Arinzon <darinzon@amazon.com>, 
-	Saeed Bishara <saeedb@amazon.com>, Bryan Whitehead <bryan.whitehead@microchip.com>, 
-	UNGLinuxDriver@microchip.com, Shyam Sundar S K <Shyam-sundar.S-k@amd.com>, 
-	Raju Rangoju <Raju.Rangoju@amd.com>, Potnuri Bharat Teja <bharat@chelsio.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Jiawen Wu <jiawenwu@trustnetic.com>, Mengyuan Lou <mengyuanlou@net-swift.com>, netdev@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 1/9] net: benet: convert to use
- .get_rx_ring_count
-Message-ID: <l66l2ijd45fkwniaesgau5jdzoxrdyt4t7tnsd6dpo4dlefytf@tugyhkn2th36>
-References: <20260115-grxring_big_v2-v1-0-b3e1b58bced5@debian.org>
- <20260115-grxring_big_v2-v1-1-b3e1b58bced5@debian.org>
- <20260117181551.0b139ca1@kernel.org>
- <ziyd3327jr7miqgv2e252w4wpizphomkvxxge6nbjwtg4pyvf4@gvwwi2r7rykl>
+	id 1vhp0Z-000000028TD-1VEz;
+	Mon, 19 Jan 2026 13:09:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
+  t=1768828168; x=1800364168;
+  h=message-id:date:mime-version:subject:to:cc:references:
+   from:in-reply-to:content-transfer-encoding;
+  bh=gwTDCSKqc8LSu9yPNc5jngp7QL67XyPXB2CAD6UZF+E=;
+  b=1gBccfa51xObCrsv3dfhrU4R+wiXFQrOc8rRgH0CQCv0SseN8lEU7UM7
+   o2tRaJCHwvdTnqJiRNMNJnXR+5E30mowGA56qgrrLMP85Z8wcH7c0NFwE
+   ru5jo9ZEwqeELMk7P7CcvNEBywXTCEyjW4jl9sN7j0Qz5RtP/uD53u0TS
+   jgcFSJAYdu8aHqahgXhkJxvKntSO/xyzN6vI96+TsdiL8/hChJu4Ko9Sp
+   Ft+KYu7adzp/uPgjae/8KdxAe75mOa0ooWV7Glj5RyrIUqnHGeanQOoqq
+   1kBe2iBgCdLr3HN4TIJPZNM0/6GNw4UeYPcztAX7RgR1C30slDu1INnBm
+   g==;
+X-CSE-ConnectionGUID: MCMdS/2MS9W3q5v2vYq8nw==
+X-CSE-MsgGUID: ohbf7MsMRqSUEgskF7U23Q==
+X-IronPort-AV: E=Sophos;i="6.21,238,1763449200"; 
+   d="scan'208";a="283467428"
+X-Amp-Result: SKIPPED(no attachment in message)
+Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
+  by esa5.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 19 Jan 2026 06:09:23 -0700
+Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
+ chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.58; Mon, 19 Jan 2026 06:08:10 -0700
+Received: from [10.159.245.205] (10.10.85.11) by chn-vm-ex04.mchp-main.com
+ (10.10.85.152) with Microsoft SMTP Server id 15.1.2507.58 via Frontend
+ Transport; Mon, 19 Jan 2026 06:08:04 -0700
+Message-ID: <402feb92-104b-4fe0-b223-a85afd60d084@microchip.com>
+Date: Mon, 19 Jan 2026 14:08:04 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ziyd3327jr7miqgv2e252w4wpizphomkvxxge6nbjwtg4pyvf4@gvwwi2r7rykl>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 8/9] net: macb: convert to use .get_rx_ring_count
+To: Breno Leitao <leitao@debian.org>, Ajit Khaparde
+	<ajit.khaparde@broadcom.com>, Sriharsha Basavapatna
+	<sriharsha.basavapatna@broadcom.com>, Somnath Kotur
+	<somnath.kotur@broadcom.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
+ Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau
+	<nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Shay
+ Agroskin" <shayagr@amazon.com>, Arthur Kiyanovski <akiyano@amazon.com>,
+	"David Arinzon" <darinzon@amazon.com>, Saeed Bishara <saeedb@amazon.com>,
+	"Bryan Whitehead" <bryan.whitehead@microchip.com>,
+	<UNGLinuxDriver@microchip.com>, Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
+	Raju Rangoju <Raju.Rangoju@amd.com>, Potnuri Bharat Teja
+	<bharat@chelsio.com>, "Claudiu Beznea" <claudiu.beznea@tuxon.dev>, Jiawen Wu
+	<jiawenwu@trustnetic.com>, Mengyuan Lou <mengyuanlou@net-swift.com>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+References: <20260115-grxring_big_v2-v1-0-b3e1b58bced5@debian.org>
+ <20260115-grxring_big_v2-v1-8-b3e1b58bced5@debian.org>
+From: Nicolas Ferre <nicolas.ferre@microchip.com>
+Content-Language: en-US, fr
+Organization: microchip
+In-Reply-To: <20260115-grxring_big_v2-v1-8-b3e1b58bced5@debian.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_045654_003858_458B3E23 
-X-CRM114-Status: GOOD (  20.30  )
+X-CRM114-CacheID: sfid-20260119_050927_447943_A2B6FF23 
+X-CRM114-Status: GOOD (  17.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,76 +101,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 19, 2026 at 03:07:12AM -0800, Breno Leitao wrote:
-> Hello Jakub,
+On 15/01/2026 at 15:37, Breno Leitao wrote:
+> Use the newly introduced .get_rx_ring_count ethtool ops callback instead
+> of handling ETHTOOL_GRXRINGS directly in .get_rxnfc().
 > 
-> On Sat, Jan 17, 2026 at 06:15:51PM -0800, Jakub Kicinski wrote:
-> > On Thu, 15 Jan 2026 06:37:48 -0800 Breno Leitao wrote:
-> > > -static int be_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
-> > > -			u32 *rule_locs)
-> > > -{
-> > > -	struct be_adapter *adapter = netdev_priv(netdev);
-> > > -
-> > > -	if (!be_multi_rxq(adapter)) {
-> > > -		dev_info(&adapter->pdev->dev,
-> > > -			 "ethtool::get_rxnfc: RX flow hashing is disabled\n");
-> > > -		return -EINVAL;
-> > > -	}
-> > 
-> > I think we need to add this check to set_rxfh now. The error coming
-> > from get_rxnfc/GRXRINGS effectively shielded the driver from set_rxfh
-> > calls ever happening when there's only 1 ring. Now they will happen.
+> Signed-off-by: Breno Leitao <leitao@debian.org>
+
+Looks good to me:
+Acked-by: Nicolas Ferre <nicolas.ferre@microchip.com>
+
+Thanks, best regards,
+   Nicolas
+
+> ---
+>   drivers/net/ethernet/cadence/macb_main.c | 11 ++++++++---
+>   1 file changed, 8 insertions(+), 3 deletions(-)
 > 
-> You are absolutely correct. The ethtool core calls
-> get_rxnfc(ETHTOOL_GRXRINGS) _before_ allowing RSS configuration via
-> set_rxfh, and if it fails, ethtool_set_rxfh() will fail as well. And
-> with the current change, ethtool_set_rxfh() will not fail if the adapter
-> is not multi-queue.
-
-Upon further consideration, should we implement this limitation directly within
-the ethtool infrastructure?
-
-Something as:
-
-Author: Breno Leitao <leitao@debian.org>
-Date:   Mon Jan 19 03:25:05 2026 -0800
-
-   ethtool: reject RSS configuration on single-queue devices
-
-    Configuring RSS (Receive Side Scaling) makes no sense when the device
-    only has a single RX queue - there is nothing to distribute traffic
-    across. The indirection table would just map everything to queue 0.
-
-    Add explicit checks in ethtool_set_rxfh_indir() and ethtool_set_rxfh()
-    to reject RSS configuration when the device reports fewer than 2 RX rings.
-
-    This protects all drivers uniformly at the core level.
-
-    Signed-off-by: Breno Leitao <leitao@debian.org>
-
-
-diff --git a/net/ethtool/ioctl.c b/net/ethtool/ioctl.c
-index 9431e305b233..899864e96aab 100644
---- a/net/ethtool/ioctl.c
-+++ b/net/ethtool/ioctl.c
-@@ -1380,6 +1380,10 @@ static noinline_for_stack int ethtool_set_rxfh_indir(struct net_device *dev,
-                ret = num_rx_rings;
-                goto out;
-        }
-+       if (num_rx_rings < 2) {
-+               ret = -EOPNOTSUPP;
-+               goto out;
-+       }
-
-        if (user_size == 0) {
-                u32 *indir = rxfh_dev.indir;
-@@ -1599,6 +1603,10 @@ static noinline_for_stack int ethtool_set_rxfh(struct net_device *dev,
-                ret = num_rx_rings;
-                goto out_free;
-        }
-+       if (num_rx_rings < 2) {
-+               ret = -EOPNOTSUPP;
-+               goto out_free;
-+       }
+> diff --git a/drivers/net/ethernet/cadence/macb_main.c b/drivers/net/ethernet/cadence/macb_main.c
+> index 2d5f3eb09530..8135c5c2a51a 100644
+> --- a/drivers/net/ethernet/cadence/macb_main.c
+> +++ b/drivers/net/ethernet/cadence/macb_main.c
+> @@ -3850,6 +3850,13 @@ static int gem_get_all_flow_entries(struct net_device *netdev,
+>          return 0;
+>   }
+> 
+> +static u32 gem_get_rx_ring_count(struct net_device *netdev)
+> +{
+> +       struct macb *bp = netdev_priv(netdev);
+> +
+> +       return bp->num_queues;
+> +}
+> +
+>   static int gem_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
+>                  u32 *rule_locs)
+>   {
+> @@ -3857,9 +3864,6 @@ static int gem_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
+>          int ret = 0;
+> 
+>          switch (cmd->cmd) {
+> -       case ETHTOOL_GRXRINGS:
+> -               cmd->data = bp->num_queues;
+> -               break;
+>          case ETHTOOL_GRXCLSRLCNT:
+>                  cmd->rule_cnt = bp->rx_fs_list.count;
+>                  break;
+> @@ -3941,6 +3945,7 @@ static const struct ethtool_ops gem_ethtool_ops = {
+>          .set_ringparam          = macb_set_ringparam,
+>          .get_rxnfc                      = gem_get_rxnfc,
+>          .set_rxnfc                      = gem_set_rxnfc,
+> +       .get_rx_ring_count              = gem_get_rx_ring_count,
+>   };
+> 
+>   static int macb_ioctl(struct net_device *dev, struct ifreq *rq, int cmd)
+> 
+> --
+> 2.47.3
+> 
 
 
