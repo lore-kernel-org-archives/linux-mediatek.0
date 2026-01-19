@@ -4,60 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AB7DD29C40
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 16:14:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3C49D29C4F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 17:45:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mLMCaEGCjPkN2Mm2sQaGKmatY08Aupz94K2K6BZWWzg=; b=p1t/VPbxf45h+Ov44iO2Kpo3ed
-	zIv+2+WHCAjpaQrA8SUBOqGilcC9KUzW8PLxui7RKaJOi/ZAo77I74vr9FlDX8I3wMIosZHIitzjq
-	6SgL67V+VDtJLXkXZjRtxpw6upd2c5ZPPzx/bPGRouEmacDuL4UPmU8AlDmAOuhB9p0HrcGkDwsQ9
-	EtBS8mRfa3OaWLRXlF6mECNuGePsUpHythnd4yJo9NvQbttYufsYnhP6m8tmPq/IQFVizwtG6OAxa
-	X5M1qa7RtyKHuWn0RtDPhEXvXDDHVdxt67wt+jFlqWlzpSIpg+wmTUPZsK/Pu8mdN+THb3d6XeHYj
-	mqmrkauA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b8FG3iu4VXIYK2ixIxL6D4XbULtxT3YQRepQf0YaUAA=; b=qfgMFswxssD/UmyIMxPtM+4q7V
+	Wv7/fHVnKfzkPzzmMGNv6iFK4je0ccCFThX4Cye/JKA13ud0AA9Ubqx4SP+d+hBSJHP2F90iURIRQ
+	hwWRM0us5+skN5ZDdCzSdk6Eez9kQ/AP3T9Dl+oAG3lv8SELjTOO3ABIKTHo182046mPICvAg+8nG
+	bg33IFFdtQCQP0IXEx9bszt5HDnYCCYRdOSLyzTBbQNN8wQpqC3vpFFUSTc1kDCDNWuyUq/oW/+aI
+	kQz+Ub3h+PPHR53bLki7ILlT6ZCLCjX4WjenFQPEgpUDW/yZfTTtoCwgWIVVR3HlTiYPfhdFMNXHz
+	eG2qF0SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhrtu-00000002RBz-1GSH;
-	Mon, 19 Jan 2026 16:14:46 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vhtJY-00000002fBx-1mMB;
+	Mon, 19 Jan 2026 17:45:20 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhrtn-00000002RBi-1CbQ;
-	Mon, 19 Jan 2026 16:14:42 +0000
+	id 1vhtJW-00000002fBi-0lfi;
+	Mon, 19 Jan 2026 17:45:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 49B2460055;
-	Mon, 19 Jan 2026 16:14:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A157FC116C6;
-	Mon, 19 Jan 2026 16:14:37 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2D7CB60054;
+	Mon, 19 Jan 2026 17:45:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 907E0C116C6;
+	Mon, 19 Jan 2026 17:45:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768839278;
-	bh=lSfsVlCqyZvf6pA1XPog974EukldB/XYySTEmAm9AVY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=W0qXyLKYlu8MTMpc+PeSAw5wrgSVGYKLiidFDfPtqfjHPKJ5owqrFpAQUytFgwaCx
-	 Edof5E5tvwaMud5QVyJEgsRq4rAOpl01lKEJmFYfWW1c8GQNvd8hA80FkkmHSiPa5F
-	 LOWX2t4UboNXW+DFSjaHME8VvT7MLmV8xuGW4dbpUY0wwv+FLf65blXLLtCkkjG3ex
-	 pIsXuJPKVkKgpCx6gD8e70FCcuXRwG4bbJ+6fNrxeU/UtAQ8VH/vYAvwoLwyIr69RN
-	 m6YciAeGPSU0wKIoIkhffEUIvRtouSRbBEmt9r9lcbTFkEgeIvri1io0PDDAWT8x5Y
-	 G0BLP48bm4Kpg==
-Date: Mon, 19 Jan 2026 17:14:35 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Sayantan Nandy <sayantann11@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	sayantan.nandy@airoha.com, bread.hsu@airoha.com,
-	kuldeep.malik@airoha.com, aniket.negi@airoha.com,
-	brown.huang@airoha.com
-Subject: Re: [PATCH net-next v3] net: airoha_eth: increase max MTU to 9220
- for DSA jumbo frames
-Message-ID: <aW5Yay8rDupPfB-H@lore-desk>
-References: <20260119073658.6216-1-sayantann11@gmail.com>
+	s=k20201202; t=1768844716;
+	bh=QZppzWwMaxmLDfvLc0EL4sJUn0FxeL+jQ+zzwKRWA+s=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=WB+bXX/2wcQQZczTXvNBPixTycuoTgDFwCzKDyue0qGjEdd9b8ONdUpO2GxVnn1fr
+	 1O05KLhgXPr12NR2L3PqTQSRcOnr4OMi6MrkEkc1cxj60aeKmRFMoYK2qTZ1/h3yxS
+	 goAmTmr7kPJhQzlPiGbnEZ7PbyM03xP1ai7o6m+m2Jpfj9PRNup+qlCNsAH5s2SNHj
+	 CoorInrneQKQGQQm1K7A4uVbQaOBF+sEG5B3CGcmzTN6g/1Ktg3RoShBk2AKAKJ254
+	 /lFdKrjjxKSQfYMEjXeS+DG9eqoQP0yixST+O8fgbr2j7PDkGqyZECXlq3cYS0ATpY
+	 rC6W4TmQK42Zw==
+Date: Mon, 19 Jan 2026 09:45:14 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Breno Leitao <leitao@debian.org>
+Cc: Ajit Khaparde <ajit.khaparde@broadcom.com>, Sriharsha Basavapatna
+ <sriharsha.basavapatna@broadcom.com>, Somnath Kotur
+ <somnath.kotur@broadcom.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
+ S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo
+ Abeni <pabeni@redhat.com>, Felix Fietkau <nbd@nbd.name>, Sean Wang
+ <sean.wang@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Shay Agroskin
+ <shayagr@amazon.com>, Arthur Kiyanovski <akiyano@amazon.com>, David Arinzon
+ <darinzon@amazon.com>, Saeed Bishara <saeedb@amazon.com>, Bryan Whitehead
+ <bryan.whitehead@microchip.com>, UNGLinuxDriver@microchip.com, Shyam Sundar
+ S K <Shyam-sundar.S-k@amd.com>, Raju Rangoju <Raju.Rangoju@amd.com>,
+ Potnuri Bharat Teja <bharat@chelsio.com>, Nicolas Ferre
+ <nicolas.ferre@microchip.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Jiawen Wu <jiawenwu@trustnetic.com>, Mengyuan Lou
+ <mengyuanlou@net-swift.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next 1/9] net: benet: convert to use
+ .get_rx_ring_count
+Message-ID: <20260119094514.5b12a097@kernel.org>
+In-Reply-To: <l66l2ijd45fkwniaesgau5jdzoxrdyt4t7tnsd6dpo4dlefytf@tugyhkn2th36>
+References: <20260115-grxring_big_v2-v1-0-b3e1b58bced5@debian.org>
+	<20260115-grxring_big_v2-v1-1-b3e1b58bced5@debian.org>
+	<20260117181551.0b139ca1@kernel.org>
+	<ziyd3327jr7miqgv2e252w4wpizphomkvxxge6nbjwtg4pyvf4@gvwwi2r7rykl>
+	<l66l2ijd45fkwniaesgau5jdzoxrdyt4t7tnsd6dpo4dlefytf@tugyhkn2th36>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="J2jysX/UvlOutc68"
-Content-Disposition: inline
-In-Reply-To: <20260119073658.6216-1-sayantann11@gmail.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,71 +88,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, 19 Jan 2026 04:56:49 -0800 Breno Leitao wrote:
+> > > I think we need to add this check to set_rxfh now. The error coming
+> > > from get_rxnfc/GRXRINGS effectively shielded the driver from set_rxfh
+> > > calls ever happening when there's only 1 ring. Now they will happen.  
+> > 
+> > You are absolutely correct. The ethtool core calls
+> > get_rxnfc(ETHTOOL_GRXRINGS) _before_ allowing RSS configuration via
+> > set_rxfh, and if it fails, ethtool_set_rxfh() will fail as well. And
+> > with the current change, ethtool_set_rxfh() will not fail if the adapter
+> > is not multi-queue.  
+> 
+> Upon further consideration, should we implement this limitation directly within
+> the ethtool infrastructure?
 
---J2jysX/UvlOutc68
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+That may cause some regressions, we're getting the number of currently
+configured Rx rings. If we were to check how many Rx rings the device
+has that'd make sense. But since we can only access currently
+configured rings, in theory, if the device has multiple rings,
+just only one is active now - changing config for the RSS key or
+function should work just fine. IOW
 
->=20
-> The industry standard jumbo frame MTU is 9216 bytes. When using the DSA
-> subsystem, a 4-byte tag is added to each Ethernet frame.
->=20
-> Increase AIROHA_MAX_MTU to 9220 bytes (9216 + 4) so that users can set a
-> standard 9216-byte MTU on DSA ports.
->=20
-> The underlying hardware supports significantly larger frame sizes
-> (approximately 16K). However, the maximum MTU is limited to 9220 bytes
-> for now, as this is sufficient to support standard jumbo frames and does
-> not incur additional memory allocation overhead.
->=20
->=20
-> Signed-off-by: Sayantan Nandy <sayantann11@gmail.com>
+ # change key
+ # increase ring count to make they key meaningful
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
-> ---
-> v3:
-> - Document that hardware supports larger MTU (~16K), but limit to 9220 fo=
-r now
-> - Target net-next (netdev/main) as this is a feature enhancement
-> - No functional changes
->=20
-> v2:
-> - Clarified commit message regarding DSA tag overhead
->=20
->  drivers/net/ethernet/airoha/airoha_eth.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
-net/airoha/airoha_eth.h
-> index fbbc58133364..20e602d61e61 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> @@ -21,7 +21,7 @@
->  #define AIROHA_MAX_NUM_IRQ_BANKS	4
->  #define AIROHA_MAX_DSA_PORTS		7
->  #define AIROHA_MAX_NUM_RSTS		3
-> -#define AIROHA_MAX_MTU			9216
-> +#define AIROHA_MAX_MTU			9220
->  #define AIROHA_MAX_PACKET_SIZE		2048
->  #define AIROHA_NUM_QOS_CHANNELS		4
->  #define AIROHA_NUM_QOS_QUEUES		8
-> --=20
-> 2.43.0
->=20
-
---J2jysX/UvlOutc68
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaW5YawAKCRA6cBh0uS2t
-rBEmAQDHxUyhIPGHm22GhCpC1m40BZZI353lz/CrFQ+Y1qkV/wD+LNlBeyE/03VJ
-edunfoIYQPT9G31c6f8yeJVTeuFmKg8=
-=KIMb
------END PGP SIGNATURE-----
-
---J2jysX/UvlOutc68--
+Used to work.
 
