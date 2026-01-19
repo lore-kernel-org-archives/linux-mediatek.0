@@ -4,69 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98F70CCF2E7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 11:26:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54C45CCF2F2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 11:58:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KzxmvniV3PmcTwS+Q39kTCoibmIgDO8OCYrkpr5hM6M=; b=IGAQgtxyny+Cl5FTYxD+yBh2YH
-	X43Uv/JxkOq20O2VBYcjc0VpPcBdC4eYLLctH0eNpvTU1YuOKJZDFBwy2gAy2hQqAGgWbsFELyEGL
-	yQajBWvFOdB7j/DMXooyhm3xhtDjTVxv58B1jtl8gMUYDI3u1qUQBGQ3+pH1EI5cFl1G2RhQrrA8J
-	yidqsaTPcEk0Zt06C5m945ryhQZXizbrsQ6NCVYvI29Qr60iwb+qvicUG3RXOPaD+zfzN+rgWsku5
-	iE++FF5hgcJ8AVjFH5mp2r/eJceWLkmyFI94dX9pzA496qw+hNyfiCUHmDBpsp2giSl8xZbf71dJp
-	Li1qoUdg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZUH7VL3Mm3bzPsO/EVxu6oPgqxi2zrcrXrq0EG5YFSE=; b=vMqqlKqOxhe+LI
+	FfCRISA+DC5k7NzVbGWPDNDj1E/av2++nzqwIwDUksjl02RqW3N3yr/uqM6kfsg1hfahwgCNdpZYv
+	1aJub2CxX0goqKWnPcifl5Bn1g6geyQaCorcaub1Ulrk9PpxQGnc0Uf2wu/w8fN96k25FWvyuBeA4
+	huKo983Q81eCcNhCymwKx19RLodqjW/Q6n/vEeueX0M7TxdhrQt/FkRDhZYzLIbd1rOzopFEslSDI
+	mJbpgv6xdRY0T6cu3nU/LQppJroJ0NgBlRAToujlUAHaV6Z+TlCRYNtBt10Op9GKqPjcG9n1x+Vhd
+	lbQB7lSttHrFfWvXZWPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhnOi-00000001tMG-2zc3;
-	Mon, 19 Jan 2026 11:26:16 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vhnto-00000001w5N-3aWs;
+	Mon, 19 Jan 2026 11:58:24 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhnOf-00000001tKm-0vev;
-	Mon, 19 Jan 2026 11:26:15 +0000
+	id 1vhnta-00000001w3G-09Gd;
+	Mon, 19 Jan 2026 11:58:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768821969;
-	bh=9xXr2PPFCbMYAU/BCfJhTb7zo31zXr8jOcsm9o5sKxo=;
+	s=mail; t=1768823886;
+	bh=jTsRQd9AGY63xLGQjAR5MzI8ActOiX3EAiNvmnftFQs=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=b68qylH5vYrHcYmu7kZWSePqZ4NRlzquFL65A1+lZ1jhUxXyiFEB6n4X/L15R7W6U
-	 GGB6Rxn0iF6qitYrxB2ZROwW4n/OK6/4xRXgK4ed/iqEIy8GgKLbp2FDjbCOvH+WVc
-	 B313y6B4FaM83UAlEd1EG10pnHev4fPaeeecvtyQnRFc2rJY7p+HlGT5eGfgaeEbie
-	 u/eGzD//9iUidd9lbN68WNVPa9i8sbGzc8tC1p+hHNVFD2pcGpKU8W3o8zKhTjD4SO
-	 +G/7u0SxygvY9scLKSUbLBpBfQObGc2HxflceTr7o8HFeFLwd3jQxLWCtMkX8Y4lBG
-	 NmsiIF2cqs2pw==
+	b=EfhulzcFLtZYOZ0m0LmHUskUL8m/ch1z3bxJdaM9p/rUkGha6yndCy/wyVjOiWsDW
+	 E1NZHLLiWKtISCmc+9pm4BxoSiI6xjsy6yCuFmNEHr7AwH1DIL5X1XmflDM9TS68sD
+	 OOxN6zPEyolfCKTFiJzKCq4WCzgoKSMVzAQVfalmjp8oIOyXBTZZW9zPAWCWkd8Saj
+	 BFCW7QgWJWMsLYurQhwFb8jBrMPKV11p+Mi3oFhcSG5Ml24EPqdv1BCmQZpwI/Vh5q
+	 0HV4GwLUv6A35IMt8EoNIp0cAoNDPheLy0eTNoj6mYYt8Vw0AGoZhb0ZzET7B04qAR
+	 qP8Oys6/HXtNA==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BE2BB17E1013;
-	Mon, 19 Jan 2026 12:26:08 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BBF7817E0117;
+	Mon, 19 Jan 2026 12:58:05 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: robh@kernel.org, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: krzk+dt@kernel.org, conor+dt@kernel.org, tudor.ambarus@linaro.org, 
- pratyush@kernel.org, mwalle@kernel.org, miquel.raynal@bootlin.com, 
- richard@nod.at, vigneshr@ti.com, lgirdwood@gmail.com, broonie@kernel.org, 
- matthias.bgg@gmail.com, julien.massot@collabora.com, 
- eugen.hristev@linaro.org, jiaxin.yu@mediatek.com, shane.chien@mediatek.com, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-mtd@lists.infradead.org, linux-sound@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- kernel@collabora.com
-In-Reply-To: <20260115125624.73598-1-angelogioacchino.delregno@collabora.com>
-References: <20260115125624.73598-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: (subset) [PATCH 0/4] MediaTek MT8192 dtbs_check fixes
-Message-Id: <176882196871.27177.1302852396696042530.b4-ty@collabora.com>
-Date: Mon, 19 Jan 2026 12:26:08 +0100
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Jassi Brar <jassisinghbrar@gmail.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Jason-JH Lin <jason-jh.lin@mediatek.com>
+In-Reply-To: <20251031155838.1650833-1-jason-jh.lin@mediatek.com>
+References: <20251031155838.1650833-1-jason-jh.lin@mediatek.com>
+Subject: Re: (subset) [PATCH 0/9] Add GCE support for MT8196 (series 1/4)
+Message-Id: <176882388570.29723.2273368189503773750.b4-ty@collabora.com>
+Date: Mon, 19 Jan 2026 12:58:05 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_032614_052550_E728EB10 
-X-CRM114-Status: UNSURE (   5.51  )
+X-CRM114-CacheID: sfid-20260119_035817_298677_1AE2F68A 
+X-CRM114-Status: UNSURE (   9.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,29 +73,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>, devicetree@vger.kernel.org, Moudy Ho <moudy.ho@mediatek.com>, Xiandong Wang <xiandong.wang@mediatek.com>, Singo Chang <singo.chang@mediatek.com>, Chen-yu Tsai <wenst@chromium.org>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Nicolas Dufresne <nicolas@ndufresne.ca>, Project_Global_Chrome_Upstream_Group@mediatek.com, Paul-PL Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>, linux-mediatek@lists.infradead.org, Sirius Wang <sirius.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 15 Jan 2026 13:56:20 +0100, AngeloGioacchino Del Regno wrote:
-> This series addresses most of the MediaTek MT8192 dtbs_check warnings
-> by adding a missing SPI NOR flash compatible string and fixing both
-> the audsys binding and devicetree node name.
+On Fri, 31 Oct 2025 23:56:28 +0800, Jason-JH Lin wrote:
+> From: Jason-jh Lin <jason-jh.lin@mediatek.corp-partner.google.com>
 > 
-> AngeloGioacchino Del Regno (4):
->   dt-bindings: mtd: jedec,spi-nor: Add Winbond W25Q(32/64/128/256)JWM
->   ASoC: dt-bindings: mt8192-afe-pcm: Fix clocks and clock-names
->   dt-bindings: arm: mediatek: audsys: Support mt8192-audsys variant
->   arm64: dts: mediatek: mt8192: Rename mt8192-afe-pcm to
->     audio-controller
+> This series adds initial support for the MediaTek MT8196 GCE in the CMDQ
+> driver, including related API changes for new hardware requirements.
+> 
+> Series application order:
+>   1. [Fixes] Refine DMA address handling for the command buffer
+>   - https://lore.kernel.org/all/20251022171847.379470-1-jason-jh.lin@mediatek.com/
+>   2. [Series 1/4] Add GCE support for MT8196 and update CMDQ APIs (this series)
+>   3. [Series 2/4] Migrate subsystems to new CMDQ APIs
+>   4. [Series 3/4] Remove shift_pa from CMDQ jump functions
+>   5. [Series 4/4] Remove deprecated CMDQ APIs
 > 
 > [...]
 
-Applied to v6.19-next/dts64, thanks!
+Applied to v6.19-next/soc, thanks!
 
-[3/4] dt-bindings: arm: mediatek: audsys: Support mt8192-audsys variant
-      commit: a8e3d66ff5c0c37e7c10b3e486d2c5047bf9cf2b
-[4/4] arm64: dts: mediatek: mt8192: Rename mt8192-afe-pcm to audio-controller
-      commit: 25556c12f4d3edc2f614f752f204c3941697b30a
+[2/9] mailbox: mtk-cmdq: Add cmdq private data to cmdq_pkt for generating instruction
+      commit: 266f35701b6f7ddd9521310eb5add01001d4a614
+[3/9] mailbox: mtk-cmdq: Add GCE hardware virtualization configuration
+      commit: 7005b7cb2fff9081a6b1738b84a8ea12a6781fb3
+[4/9] mailbox: mtk-cmdq: Add mminfra_offset configuration for DRAM transaction
+      commit: 1c1874843bc43d9f333d441af00f61ece2373e5d
+[5/9] mailbox: mtk-cmdq: Add driver data to support for MT8196
+      commit: 5ea617e818333a2078dadc11e5734886e39901d0
+[6/9] soc: mediatek: mtk-cmdq: Add cmdq_get_mbox_priv() in cmdq_pkt_create()
+      commit: c775b23b1f78626daca804bd26f1460368f20406
+[7/9] soc: mediatek: mtk-cmdq: Add pa_base parsing for hardware without subsys ID support
+      commit: 4bf783d8415cc397334b375a05f0b2321fc6c319
+[8/9] soc: mediatek: mtk-cmdq: Extend cmdq_pkt_write API for SoCs without subsys ID
+      commit: 40dc5bbad63b5f60dd2e69a32def1a2673cba09e
+[9/9] soc: mediatek: mtk-cmdq: Add mminfra_offset adjustment for DRAM addresses
+      commit: 22ce09ce1af574747fce072c3f62c29c440538d7
 
 Cheers,
 Angelo
