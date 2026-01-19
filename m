@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F227CA5FFA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 20:25:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EAC5FC619B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 20:29:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pSuKFtKC7s877XSHGuWqoUFYp2mwqb5QifpnPHtPG7k=; b=LbGvBlEVD3s66SGr7tEENDhf9X
-	qrx8sFEP31to90t8+4qUSRYmqH7N1uZfbbNNzLMf6Lki7oiyNUTtdoTMXD7gy4ztjWBWJA2onEFaJ
-	dG9246wb9TFeJBNdMClmckhfBsniUFyf3911tTI49lsigHOXhGKDA+w3hudIghKHxaM02ka0mCk1z
-	UsNTVfgjiRCrphunOMKMj89MZfkvYQS4rScJsDHW2Jl+kl+uczyBLlpeYhuBKcRt/7k5VVYi+/i/g
-	r6E+Oqqb9BJ3M3dzsc94cZ3TZQMXhsjYnpfi+oayZsrBQKypWf4SUbKn6J/ShiBodPJXyPzBj6ddp
-	Cpl/1qRg==;
+	bh=KdLUv90Yj4SfljUabA6T05v2y+dukg4xbcWK9twXbTg=; b=HpqTDMYYcr8OmTkx32Ip+0n/9I
+	k9cHTr4MnnIFsbLSHDVJArjsxrr0wD9pw63wkx+0gzI+63P6dc4bzjUD5kPtyEQhAdFg140HuXRai
+	tsLo7OIIPhX8eR753YWs9HZpX2em/IObBRqnp2R7VB+3GD5hJNGasN/PmDYZxZ2nqwbK+v5UP4Dp8
+	ITsJE+EbB1cL6cEQfgJkUeOPIstB8qq8022eOdI/Tp0JJg/NCQ90+Mf8u1TcM1oD3p29nQdJqpY5h
+	STmQItkxcR+yQ/ClEaF8C2avGkWxiuteliX/mrB1lsvr2AyPXSvNLWUCLQm/BD+8rXxbQ7jdGD0rs
+	7XaMRwVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhvo4-00000002pRS-2BQX;
-	Mon, 19 Jan 2026 20:25:00 +0000
+	id 1vhvsN-00000002pqI-0C4E;
+	Mon, 19 Jan 2026 20:29:27 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhvo2-00000002pQy-1uDO;
-	Mon, 19 Jan 2026 20:24:59 +0000
+	id 1vhvsJ-00000002ppa-3NZL;
+	Mon, 19 Jan 2026 20:29:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=pSuKFtKC7s877XSHGuWqoUFYp2mwqb5QifpnPHtPG7k=; b=357irtbs3pVaYVLBLR2G2/geJR
-	xYtOgg3pEf9t/wgDJUcJ0/aqqVfW/bHNBCTjYon1tSUE9DHBmzJINV9WWbjRUZ9Vc824vvNnNSPiW
-	rtlTueQkF3+MqwVL+Y9snLQusadysyFu4NfJCFa+Dk3a0pWa/gpP8rcDSX5TA2LLIt+c=;
+	bh=KdLUv90Yj4SfljUabA6T05v2y+dukg4xbcWK9twXbTg=; b=j4Wpo5m6oYwy3U25GY6effkpZg
+	hcJkTTUQgzzpOZW77TqWL9IWtDh+QeDTlI/leYR0PeBrq4pK3VliXVLgM3HrK9JkN8/nBDr+DQcB+
+	YnxSzAnQ8aiIJOaGBcI2hTpke0n5RkhlT82uN5VO2sjlNtdinlF+Zr11U59Q9ZCPb4+g=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1vhvnq-003YtS-E8; Mon, 19 Jan 2026 21:24:46 +0100
-Date: Mon, 19 Jan 2026 21:24:46 +0100
+	id 1vhvsC-003Yxl-DS; Mon, 19 Jan 2026 21:29:16 +0100
+Date: Mon, 19 Jan 2026 21:29:16 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -49,18 +49,18 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v3 1/2] dt-bindings: net: airoha: npu: Add
- firmware-name property
-Message-ID: <a19efb66-e90d-4a11-ac26-923a1f3714ba@lunn.ch>
+Subject: Re: [PATCH net-next v3 2/2] net: airoha: npu: Add the capability to
+ read firmware names from dts
+Message-ID: <2b716edf-23c6-427d-beb5-16127b8bf429@lunn.ch>
 References: <20260119-airoha-npu-firmware-name-v3-0-cba88eed96cc@kernel.org>
- <20260119-airoha-npu-firmware-name-v3-1-cba88eed96cc@kernel.org>
+ <20260119-airoha-npu-firmware-name-v3-2-cba88eed96cc@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260119-airoha-npu-firmware-name-v3-1-cba88eed96cc@kernel.org>
+In-Reply-To: <20260119-airoha-npu-firmware-name-v3-2-cba88eed96cc@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_122458_756395_0C81D0E6 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20260119_122924_541118_EAC6117E 
+X-CRM114-Status: GOOD (  13.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,18 +75,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 19, 2026 at 04:32:40PM +0100, Lorenzo Bianconi wrote:
-> Add firmware-name property in order to introduce the capability to
-> specify the firmware names used for 'RiscV core' and 'Data section'
-> binaries. This patch is needed because NPU firmware binaries are board
-> specific since they depend on the MediaTek WiFi chip used on the board
-> (e.g. MT7996 or MT7992) and the WiFi chip version info is not available
-> in the NPU driver. This is a preliminary patch to enable MT76 NPU
-> offloading if the Airoha SoC is equipped with MT7996 (Eagle) WiFi chipset.
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+On Mon, Jan 19, 2026 at 04:32:41PM +0100, Lorenzo Bianconi wrote:
+> Introduce the capability to read the firmware binary names from device-tree
+> using the firmware-name property if available.
+> This patch is needed because NPU firmware binaries are board specific since
+> they depend on the MediaTek WiFi chip used on the board (e.g. MT7996 or
+> MT7992) and the WiFi chip version info is not available in the NPU driver.
+> This is a preliminary patch to enable MT76 NPU offloading if the Airoha SoC
+> is equipped with MT7996 (Eagle) WiFi chipset.
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+I _think_ you need to add the firmware file names to the end of the
+file using MODULE_FIRMWARE(). That gives dracul, or whatever is
+building in initramfs, the information it needs to include them.
 
-    Andrew
+	 Andrew
 
