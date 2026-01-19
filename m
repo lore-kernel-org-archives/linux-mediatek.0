@@ -4,90 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43589CCF2DF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 11:07:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACC4FCA5FF6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 11:08:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VS2moVsLFS8R82B6LKNK6mphxLmcNhEidNAZl37HgzY=; b=IUJM3GsXPTJQ+Rn4BziDba+Cq8
-	aRzSjGcajyIz9wngqPf3tAzPyqsLbkDDC3/ioIAsd7R87w8aBJ/uoLcbE73onX/Si0si5+yLMEDD+
-	0qIHZqCs+d40kT+fpdFkofJPnxBg6ox9IvwA3A2uTaG1yL51xms9j1P9xdqzgSwfKZ1fnCS2Jao4u
-	JJ9bJBSnsingSuwQnoggEybt+AgblLt6eb7MOVifK1kgbv9DugrrwVW3/QIAm37IrEMhzRWDsCtnR
-	oO9CGGDM49tvri0SxJptL1yoCn3nnzPufsA/xhnQF2buWytIQBbAcFRr0rtJzlSaioWOoCmvNvVVs
-	H3YPkE9g==;
+	bh=Fb2ZVi/2XuYHyFSHykKbPW3GDFgYNfgdcplh6PyABBI=; b=E3dst/xtAw1JrUJd8Vpegm1rN0
+	PXQ3iFLKlSXv+tMtrSKb/cBKLFFSwdFRLgbZ3bSpLAf4JFP4iYiPicJYSBPK+pf/g3QuqA0bA/5mu
+	es+0tMmOuy1i3aATT9O8KukHBsu08dROGSb4l8Cjz6F9WO7w2r6mOre0DES1VlOLcaXVRcnZg/5Lq
+	vKeNFcD3KrZh4kHofP1z8kbTS2VPyB8MQJyZw5LDgudcFaAo+naIp4GdXhiCCkzh4t2gZkrtGiVVS
+	bLe/DxeX8CUrOWTGAfAfN+JA6WCY9BCx/C0ecsrOTHpUODCc2q5lj8DuMKhjsSBtgiWlftHWgKNdR
+	Uqo4fhow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhn6N-00000001qsV-3bca;
-	Mon, 19 Jan 2026 11:07:19 +0000
-Received: from mail-oo1-f52.google.com ([209.85.161.52])
+	id 1vhn76-00000001r4w-38fj;
+	Mon, 19 Jan 2026 11:08:04 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhn6L-00000001qqi-0Tqf
-	for linux-mediatek@lists.infradead.org;
-	Mon, 19 Jan 2026 11:07:18 +0000
-Received: by mail-oo1-f52.google.com with SMTP id 006d021491bc7-661097640a8so1758839eaf.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Jan 2026 03:07:16 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768820835; x=1769425635;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=VS2moVsLFS8R82B6LKNK6mphxLmcNhEidNAZl37HgzY=;
-        b=meyopiCH+htLgcH3hL62Fv4gIdXaSKKy5kFYTB1A5qgg4ecevU+XhS3rFJF9SCGHMs
-         wb1w1jvf2g4vx2T2XJZZzxmvmIyJHxm+gEvRIpyTB+Dgc76dtYbJxT/iktwOAZCij8Xl
-         HFzbpkvLPmvJVKtxAITAnYjTMDMEP9G3pkBhDW5uvIQ8lN44XQOOhgaa5lSsZxtT4YWm
-         YH6zfPdhZovHwPKaiTaQsNVSiUC41PxikQ0RcxrfU7mLO/yfBu8mNEnjmAo9m9SwZpwE
-         k09GD8jU2pOC7BtiNhjjuf2z7hdJlHQkcQAnF2v6YMdf49WdZVd7o8j6h/7U5smUdEo7
-         zbxw==
-X-Forwarded-Encrypted: i=1; AJvYcCV9PSRmC9P68D7lYeIdrJoVkhNOy0yT79kdqrVCIwRQS7i5f6gLVG1LCmuqtkDfCsP5xZCoTWVOc2rxdvnwEw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx/WdamVbmD4AXyXjgKUE3auayMfIu5A3U+wzyb+XBj1/9948oZ
-	9K4NZGRSguucEqC+6Ar7Jx5v5GwzXc9z1X+dpZgpL+7wQy2FZ1L5OZMm
-X-Gm-Gg: AY/fxX5yDTcWxW9I4HCh7GqmczRUm1VA3srvlsJUfcEpsW72jFsW4sgb5QX+VSffBk5
-	tAe/WNVire3l2QennFzNQVOg7JkvmOdEg+sGg2S8rIKtqXYzDmVmJN7p0knKblhKpX8Q7d+q3Ud
-	W0tokAHvHMcidAtjrFuywNBMt5UyWfn9rIN90iWOHfoU8KLrWaEWMBwI4VHYK7ZI7EQpuwzNOog
-	Wxx5UsQY4PPCJwdWlWuaWwUPNAnA7xxg3ERNjm9TcqJd3cUrsq8a+jp8spYLKfL8P/lN+HC/jt1
-	V79bb8KNqLl4Z7Mx5j36mVBtoQY9iL7THfUoJXP6TjMvKQbxexWBIR6rddOsPo2Mdg1d7v/+N2/
-	xzVZYvvuv5o9OIF7twNFU6PpgSm060NuUCXklaz1FEDi+i/vC10AsKesDdR9Rxum8ZVRHLNHsYH
-	IEFtgjOl252PXB
-X-Received: by 2002:a05:6820:448b:b0:65f:54b1:a9af with SMTP id 006d021491bc7-661179b6b61mr3226026eaf.42.1768820835533;
-        Mon, 19 Jan 2026 03:07:15 -0800 (PST)
-Received: from gmail.com ([2a03:2880:10ff:52::])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4044bda443asm6804809fac.22.2026.01.19.03.07.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Jan 2026 03:07:14 -0800 (PST)
-Date: Mon, 19 Jan 2026 03:07:12 -0800
-From: Breno Leitao <leitao@debian.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Ajit Khaparde <ajit.khaparde@broadcom.com>, 
-	Sriharsha Basavapatna <sriharsha.basavapatna@broadcom.com>, Somnath Kotur <somnath.kotur@broadcom.com>, 
-	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Felix Fietkau <nbd@nbd.name>, 
-	Sean Wang <sean.wang@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Shay Agroskin <shayagr@amazon.com>, 
-	Arthur Kiyanovski <akiyano@amazon.com>, David Arinzon <darinzon@amazon.com>, 
-	Saeed Bishara <saeedb@amazon.com>, Bryan Whitehead <bryan.whitehead@microchip.com>, 
-	UNGLinuxDriver@microchip.com, Shyam Sundar S K <Shyam-sundar.S-k@amd.com>, 
-	Raju Rangoju <Raju.Rangoju@amd.com>, Potnuri Bharat Teja <bharat@chelsio.com>, 
-	Nicolas Ferre <nicolas.ferre@microchip.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Jiawen Wu <jiawenwu@trustnetic.com>, Mengyuan Lou <mengyuanlou@net-swift.com>, netdev@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	id 1vhn70-00000001r46-3AU2;
+	Mon, 19 Jan 2026 11:08:03 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id DEB1660142;
+	Mon, 19 Jan 2026 11:07:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42BD9C19422;
+	Mon, 19 Jan 2026 11:07:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768820877;
+	bh=XGp1ly3M8msIpsMceEw/gMyV9HMm+0pOXJC/6DgB8Fo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=VXtnwdpTpk1JAv2utnVYpbBPUwDSJKup88ycL7YA/UZ0dz/gtOSe0u43Z0Lh0SKeb
+	 bPgvkyHxDSsGGDcMr/nklUxpL7oVCSZF8ltacS3gqOrsUEChOAbgbWQ+mzU9iXSr43
+	 1IDGSXTCD6HGjI3YGvZ8noHk2g9fh4+4Y2IavFkqMYKpCZxOWGk6klutRiLfllUMl+
+	 8z9rTD0boj8lvVHS8BanonmH5BWOat3MqJflGr15O8HBDk2yOW8F9fRX32WUJgFOAu
+	 VWuo8I/uskefPRvosrUusEcsGA4ODArNcWrpYMbZblQhiVHOwv4EJDl8E8k+Nb+vRU
+	 7jMTmDSPyrsiQ==
+Date: Mon, 19 Jan 2026 12:07:55 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Christian Marangi <ansuelsmth@gmail.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next 1/9] net: benet: convert to use
- .get_rx_ring_count
-Message-ID: <ziyd3327jr7miqgv2e252w4wpizphomkvxxge6nbjwtg4pyvf4@gvwwi2r7rykl>
-References: <20260115-grxring_big_v2-v1-0-b3e1b58bced5@debian.org>
- <20260115-grxring_big_v2-v1-1-b3e1b58bced5@debian.org>
- <20260117181551.0b139ca1@kernel.org>
+Subject: Re: [PATCH net-next v2 1/2] dt-bindings: net: airoha: npu: Add
+ EN7581-7996 support
+Message-ID: <aW4QixwAJHaHWBBc@lore-desk>
+References: <76bbffa8-e830-4d02-a676-b494616568a2@lunn.ch>
+ <6967c46a.5d0a0220.1ba90b.393c@mx.google.com>
+ <9340a82a-bae8-4ef6-9484-3d2842cf34aa@lunn.ch>
+ <aWfdY53PQPcqTpYv@lore-desk>
+ <e8b48d9e-f5ba-400b-8e4a-66ea7608c9ae@lunn.ch>
+ <aWgaHqXylN2eyS5R@lore-desk>
+ <13947d52-b50d-425e-b06d-772242c75153@lunn.ch>
+ <aWoAnwF4JhMshN1H@lore-desk>
+ <aWvMhXIy5Qpniv39@lore-desk>
+ <30f44777-776f-49b1-b2f5-e1918e8052fd@lunn.ch>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="jQ3aUfoTq/ymejtM"
 Content-Disposition: inline
-In-Reply-To: <20260117181551.0b139ca1@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_030717_149367_D68301FB 
-X-CRM114-Status: GOOD (  12.44  )
+In-Reply-To: <30f44777-776f-49b1-b2f5-e1918e8052fd@lunn.ch>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,31 +87,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Jakub,
 
-On Sat, Jan 17, 2026 at 06:15:51PM -0800, Jakub Kicinski wrote:
-> On Thu, 15 Jan 2026 06:37:48 -0800 Breno Leitao wrote:
-> > -static int be_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
-> > -			u32 *rule_locs)
-> > -{
-> > -	struct be_adapter *adapter = netdev_priv(netdev);
-> > -
-> > -	if (!be_multi_rxq(adapter)) {
-> > -		dev_info(&adapter->pdev->dev,
-> > -			 "ethtool::get_rxnfc: RX flow hashing is disabled\n");
-> > -		return -EINVAL;
-> > -	}
-> 
-> I think we need to add this check to set_rxfh now. The error coming
-> from get_rxnfc/GRXRINGS effectively shielded the driver from set_rxfh
-> calls ever happening when there's only 1 ring. Now they will happen.
+--jQ3aUfoTq/ymejtM
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-You are absolutely correct. The ethtool core calls
-get_rxnfc(ETHTOOL_GRXRINGS) _before_ allowing RSS configuration via
-set_rxfh, and if it fails, ethtool_set_rxfh() will fail as well. And
-with the current change, ethtool_set_rxfh() will not fail if the adapter
-is not multi-queue.
+> > Airoha folks reported the NPU hw can't provide the PCIe Vendor/Device I=
+D info
+> > of the connected WiFi chip.
+> > I guess we have the following options here:
+> > - Rely on the firmware-name property as proposed in v1
+> > - Access the PCIe bus from the NPU driver during probe in order to enum=
+erate
+> >   the PCIe devices and verify WiFi chip PCIe Vendor/Device ID
+> > - During mt76 probe trigger the NPU fw reload if required. This approac=
+h would
+> >   require adding a new callback in airoha_npu ops struct (please note I=
+ have
+> >   not tested this approach and I not sure this is really doable).
+>=20
+> What i'm wondering about is if the PCIe slots are hard coded in the
+> firmware.  If somebody builds a board using different slots, they
+> would then have different firmware? Or if they used the same slots,
+> but swapped around the Ethernet and the WiFi, would it need different
+> firmware?
 
-Thanks for the heads-up. I will send a v2 shortly.
---breno
+As pointed out by Benjamin, the NPU is a generic Risc-V cpu cluster and it =
+is
+used to move packets from/to ethernet DMA rings to/from WiFi DMA rings with=
+out
+involving the host cpu (similar to what we have for MTK with WED module).
+I think the PCIe slot info is not necessary for the NPU to work since it is
+configured by ethernet (airoha-eth) and wireless drivers (mt76) with DMA ri=
+ng
+addresses to use via the airoha npu ops APIs, NPU just moves data between t=
+he
+DMA rings according to my understanding.
+
+>=20
+> So is the firmware name a property of the board?
+
+We need to run different binaries on the NPU based on the MT76 WiFi chip
+available on the board since the MT76 DMA rings layout changes between MT76=
+ SoC
+revisions (e.g. Egle MT7996 vs Kite MT7992). In this sense, I agree, the
+firmware name is a board property.
+
+>=20
+> If the PCIe slots are actually hard coded in the NPU silicon, cannot
+> be changed, then we might have a different solution, the firmware name
+> might be placed into a .dtsi file, or even hard coded in the driver?
+
+IIUC what you mean here, it seems the solution I proposed in v1 (using
+firmware-name property), right?
+In this case we can't hard code the firmware name in the NPU driver since
+we can't understand the MT76 WiFi chip revision running on the board at
+the moment (MT76 would need to provide this info during MT76 probe,
+please take a look to the option 3 in my previous email).
+
+>=20
+> > What do you think? Which one do you prefer?
+>=20
+> I prefer to try to extract more information for the Airoha folks. What
+> actually defines the firmware? Does the slots used matter? Does it
+> matter what device goes in what slots? Is it all hard coded in
+> silicon? Is there only one true hardware design and if you do anything
+> else your board design is FUBAR, never to be supported?
+
+I think the firmware is defined by the board hw configuration (e.g. MT76
+SoC revision) and not by the specific PCIe slot used.
+I do not think we have these info hardcoded in the silicon since NPU is a
+generic RiscV cpu (this has been confirmed by airoha folks).
+
+Regards,
+Lorenzo
+
+>=20
+>      Andrew
+
+--jQ3aUfoTq/ymejtM
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaW4QiwAKCRA6cBh0uS2t
+rHVjAP9ln1d7sXNSxkRsNknfKKihlRjELAPrblwXHVcTQkn0TwD/WBoeIZMbQe9k
+Bf2zPPl1UuZ2iwviFi92j0LWHYa8hgs=
+=EOBi
+-----END PGP SIGNATURE-----
+
+--jQ3aUfoTq/ymejtM--
 
