@@ -4,172 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B91B1CCF2CF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 09:12:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CBA1CCF2D1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 09:55:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3+6I410eRdgke0DERiNtBfKG3Un4h8KpWeJcu5/z050=; b=r31RxlKf6ZHyC7Y6pEibq+c1/s
-	ejfRQ+nh/+YcJtPhWuEVre40lizDasjkPrBInZTwTPMmzlGgKw1qoH/3gIaGoGJK7oMYR5W0Z6idt
-	S3oeQIT9XIZMigmwIP1rnOGSKxCk/pIlZfvyxsoFpA9RS365KWA0bBDLk2u5QqsNgwTDGJFEXBqG3
-	+F40ZV0oArBJ5kD6umN8t6HSz0+Nie7P0/turqhBTqMm0Z/WWW04WgyYZ3QPKxVEfHpS0PXsY8jgb
-	yV2Ucg/DEP8OOcSJ/abFRzPMROxsIHv45LR90lNFWpI0YFsvxt3NDEhR4Yvn/+EaQHlgjf7w5cRHp
-	KFnaIuoA==;
+	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oZUTYcHN6/Plwqa1FQpp2tYC7jATZotcmauaxCtvTwQ=; b=JhAvVkV2uvtGqM3x28HKGn/r5f
+	B35y3VSCuIj7aDI6ClEckBl/Lqq1hc1cvJwhAoD8G9IZIRPj3b1rM42IqWqv1tIwQrnYd+gFHEsZ+
+	uysUOqMsE08HozPyhnAI9l4lPMPKtfvf1Gk4O/quIqxEpZB8InphLf7RbNfJR+oXrtIhJXpMyRs6A
+	DNlHjVG8ZLmlx77StmY3xob8r2YXDmyRcssykn3QJe4WHyOjORBUdV2DP2VyRoGhdrCxtsXb1EAvI
+	eA3oLWUCybLYCBIqRBBKvSqXtx2wty5fFauymefjhqD9MjIlQ+tP7glwOSS4QCC3VPlz07rpOB9Ya
+	3AQDA/EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhlJd-00000001bpC-3eO2;
-	Mon, 19 Jan 2026 09:12:53 +0000
-Received: from mail-westeuropeazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c201::1] helo=AM0PR83CU005.outbound.protection.outlook.com)
+	id 1vhlz7-00000001gBb-3v5l;
+	Mon, 19 Jan 2026 09:55:45 +0000
+Received: from mail-northeuropeazon11010006.outbound.protection.outlook.com ([52.101.84.6] helo=DB3PR0202CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhlJX-00000001biV-07Cf
-	for linux-mediatek@lists.infradead.org;
-	Mon, 19 Jan 2026 09:12:48 +0000
+	id 1vhlz5-00000001gAx-0ZNX;
+	Mon, 19 Jan 2026 09:55:45 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=JmHylDHYhARJ1D/W+AmgXMlqvHhwHTS2HSg+Ovnhdw8RFfZwKBAqw/Iy7OquR9EAoLA0eUPPPAakecuZvKIMbIlEfqNiR5I8sTJSWccfNVj97J5KgV4Aept240QjIPR093Df8PxjkDnQK/uTXTy/H6L5bOfLWL7ewhFXLURolrE5kNG/Qv5lnPkesTJqB2DYYuPc83lLv4RjPcWGUzZ6UKlZeZIz3njas0IbBvBrrPa/GrN5/3bB/kXJtXCgq3TZYJvDCFmtAy/SRtAk7XnucDI8YGPmndXfPN3yZwxVTk4nGJIEPIaZKz5zhfAcMa4PlRlqrPynlkjmqCivqRk3kw==
+ b=kIlkqvi42s2/6q3aPmiX4KEwTMKpc1j6qqZSvgR31Rx81EsAg7QCJed/U5hlp04ftNjF0xJN1CzxGwaOLveiIFTCcHKTvDMYLOxrPGMfmGBTly2fen7QrOCNAnt4rp4zR7lnmaO4FW31YdM5KtP053lzGZekmcpeBfA8TFGEmNVdG49fxyd5j5kRwoK3Zt9b4McNMXJpDxyUzv2YLhVmyKE8mRM21OzvKK5ZCBaeO1uCX5kbZFJB0Y5nUDMhTT7WFujJRh8tP/trHZfK5NNdfafARgsI25IELyRRL8KCYCwTFeP9+/nPB7CarNc94PvdF1ssihw21HVNZ+cGC5UzVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3+6I410eRdgke0DERiNtBfKG3Un4h8KpWeJcu5/z050=;
- b=qJCNBgehTbmeDL75EAXZoBgRAHilRsaiyCn49VrC/vpGsOaf5OP6BeK+EJBlKXK7mRXXrn7pEVLNlAkBw68Zjziki0eR93et/YUzjOTSswN4t8eTULiFEeixdC2FZhk8CPufFU64vO3fBCRVV6Ewjo1VrbI3R+XRDBODcoxTbt23y6jTUQYXkrn+8GTo5E5ylR99UOeIwI45Bk7P1Ge+F8CDPX51Xx05L2b1Bv/Xr2MD+BjbSlvep5ohHyHxwvI4jkDa8eeFB99dWFuwklT+aaAmcLwLfHMeJLj0PBnXwD8tyDNsd5eO7+O3XpD6UaNNyb4nwSWUVXQxf30vM20O6A==
+ bh=oZUTYcHN6/Plwqa1FQpp2tYC7jATZotcmauaxCtvTwQ=;
+ b=nUHAKZMtKUoOE8rGOS3omat7hsXd+mLNbcbuaeNc2/Paw2Dn5pJ/nwWTPYCPs2kQho76+z672tYQblMqGg2XSWR7gJlWmQ1MZJRfLhZb2d/6iMfEu3SR1zmpWorvuRoG/6YIkGKPXKcoWbNEt3/Q9jG+1XBy50bhIwg9ecuRt971+0BJBGJmA7cr0P7GKmia16Rhi3OlW4LPl8ZPXPDRxbvTkv8tF+0VQ1AFqdtURiSPuJGLnxgKot8ADlsBnZFbt0DaSqlZUAjPcQeEI/r1sHWaxhNc9Jl7wsH0UDLDB1YsVVeGEnagQ9KUVgbCCAEBG09inBj/xfjr6+gCgyEdjw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
  header.d=nxp.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3+6I410eRdgke0DERiNtBfKG3Un4h8KpWeJcu5/z050=;
- b=KIFDv6UOKSHvoqHpcfBYPL0+a89bWN4SRn3UhdsWRpWrst5GsNAQnFpu7YR/1u3mZhV1BYB+UOukOKnxJuxjMWd3ShUz8q9x3FVPkkUhdYZSejcwTcVFU8RdO3UJp6SCy4M+yKcpsCsRX4T3t9FYP4C+KeTUY6gR/b69daXXilzKeKDaJU08Bn2cXb0Hrt1/WJptUfpp+9pJeS+dEr3Dgo/xHbnr72Ynxsl0O+lkKwQV/PTsnZ2Ut/XG4d/ZbMkdtPHXgBj0bhT0ZTUEXleglglefyMp6S13Ohr/+nnOL8lsdI6+sxNudvXQShVrkVgXFV8q3grXTvHzeikv6sbB3w==
+ bh=oZUTYcHN6/Plwqa1FQpp2tYC7jATZotcmauaxCtvTwQ=;
+ b=ll3lMbzNdTOkvb5CmDKzSj7kzN3WBARgB0LfZM131BLBPLNxlZktk0F8GUMRpwQt12XAprj6DW2xPgrlXdpJ3Kx+qroLQ2aHgJdcqC9CI29TxVipAvep+4t+fQ4V/3pnM8YVsISFKjSv9atTbWaFHOOCGEM9SsShCoA9Fx8lKkoOKNCh+LXryCsCqPSb3zmA/8EKb2iayoJQXfwekSDiG1+z4OSimX0eGB/ehWJiUaFI2PyILChff3jswTPfsXHBIKBZXaoXmMxg9ledb3F+es287MpYPlclXxZigzUXuz3g9vzKXLMHNl/4KAthP35tqEy3XRNKbLdwvmr02A5oqg==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
- by VI2PR04MB10762.eurprd04.prod.outlook.com (2603:10a6:800:26e::15) with
+Received: from AS8PR04MB8420.eurprd04.prod.outlook.com (2603:10a6:20b:3fd::16)
+ by DU4PR04MB11905.eurprd04.prod.outlook.com (2603:10a6:10:628::12) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.11; Mon, 19 Jan
- 2026 09:12:40 +0000
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9520.011; Mon, 19 Jan 2026
- 09:12:40 +0000
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: netdev@vger.kernel.org,
-	devicetree@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.10; Mon, 19 Jan
+ 2026 09:55:38 +0000
+Received: from AS8PR04MB8420.eurprd04.prod.outlook.com
+ ([fe80::3f0f:857:96a5:17f]) by AS8PR04MB8420.eurprd04.prod.outlook.com
+ ([fe80::3f0f:857:96a5:17f%3]) with mapi id 15.20.9520.011; Mon, 19 Jan 2026
+ 09:55:38 +0000
+From: Zhipeng Wang <zhipeng.wang_1@nxp.com>
+To: daniel.lezcano@linaro.org,
+	tglx@kernel.org
+Cc: shawnguo@kernel.org,
+	s.hauer@pengutronix.de,
+	kernel@pengutronix.de,
+	festevam@gmail.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Daniel Golle <daniel@makrotopia.org>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	=?UTF-8?q?Bj=C3=B8rn=20Mork?= <bjorn@mork.no>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Eric Woudstra <ericwouds@gmail.com>,
-	Alexander Couzens <lynxis@fe80.eu>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Felix Fietkau <nbd@nbd.name>
-Subject: [PATCH v4 net-next 4/5] net: pcs: pcs-mtk-lynxi: pass SGMIISYS OF node to PCS
-Date: Mon, 19 Jan 2026 11:12:19 +0200
-Message-Id: <20260119091220.1493761-5-vladimir.oltean@nxp.com>
+	chun-hung.wu@mediatek.com,
+	walter.chang@mediatek.com,
+	jstultz@google.com,
+	amergnat@baylibre.com,
+	aisheng.dong@nxp.com,
+	jindong.yue@nxp.com,
+	xuegang.liu@nxp.com
+Subject: [PATCH v2 0/4] clocksource: Add module support for timer drivers
+Date: Mon, 19 Jan 2026 18:55:07 +0900
+Message-Id: <20260119095511.3030739-1-zhipeng.wang_1@nxp.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260119091220.1493761-1-vladimir.oltean@nxp.com>
-References: <20260119091220.1493761-1-vladimir.oltean@nxp.com>
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: AM0PR02CA0170.eurprd02.prod.outlook.com
- (2603:10a6:20b:28e::7) To AM9PR04MB8585.eurprd04.prod.outlook.com
- (2603:10a6:20b:438::13)
+X-ClientProxiedBy: SG2PR06CA0241.apcprd06.prod.outlook.com
+ (2603:1096:4:ac::25) To AS8PR04MB8420.eurprd04.prod.outlook.com
+ (2603:10a6:20b:3fd::16)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|VI2PR04MB10762:EE_
-X-MS-Office365-Filtering-Correlation-Id: cd644bf4-4aab-42fb-2a5d-08de573ae570
+X-MS-TrafficTypeDiagnostic: AS8PR04MB8420:EE_|DU4PR04MB11905:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7dfc8999-8309-4da0-9fe7-08de5740e60e
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|19092799006|1800799024|366016|52116014|7416014|376014|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?kXSGD5zpmUKHlNS13RYwzeFCpdlEBx1xr0BNJP8dE5165y2nzmOd0FngLs4Z?=
- =?us-ascii?Q?9FRZtUj9HhILybA6GAh+nnBFsYihtADods2mOdbeJgMp4HjpBVb9fv8KZaKb?=
- =?us-ascii?Q?ERorL+WQpGt6zV2rIKQxw+oVart09zjgj0bMCanoO+qWzOHHuPu8Kr7hDvlP?=
- =?us-ascii?Q?i6wu+TjI2S/uNVhs4zDdG7+0BaXu2qVawTnPno7e1kcsho73/UH0Jtpmv3ZL?=
- =?us-ascii?Q?PIYUWFndKC+kc1bq3obxlXSL4WZIr5RCFAtaCp2jMTcrl3LszA6KDaugdFKk?=
- =?us-ascii?Q?No/cs+Mu72x4ttUFl93imYA3lMyd0ZBMPKIjstfD68hhNlTsh+Ymp/YEDNRQ?=
- =?us-ascii?Q?/r2da2FkuuS77xpsuSmMbPXgYkJLwUyDpYoI6gzjR5/+/wyN6LH2jmiYwL5V?=
- =?us-ascii?Q?ITOHAdVuBmf39GlE/kJvdpH0sSpUlIi1UEx0K3dZyKv2edfsIkJo5dIX+R7m?=
- =?us-ascii?Q?+0+QlH8xtCM5/3gQntbbHEpNAJ9skxR7DymF1/8YYP3Mfco+NeiqdpvEc8+N?=
- =?us-ascii?Q?Ki4aByi102GfzNZ08JvR9TWPgWPVtDaYlWCQWjPNxISqfxfCqyp6boi9Z9V/?=
- =?us-ascii?Q?XnsxjfVJIfgz0vHZSJx9KiKbpSoI/EeR/kkZbXFi/dzNgC+xQMaHFrTIUjpT?=
- =?us-ascii?Q?8WQj1qaiicP8BiIwfWqskAKFJhb+RP2Vux6JLYEL3cE0kXsVdvbbL371yAEs?=
- =?us-ascii?Q?xP2FSDuwJhKmMwTtRRm5DneXKPv5qnNr9kK0ZW6aIqpBKzyinmr3NWSldl7M?=
- =?us-ascii?Q?Fl5yJB9tbFHGcYutPkUnBFIvmkE3qNKR01cJOSq1HCvl8IVlocjkBa/eghtj?=
- =?us-ascii?Q?3/4A49IWswN83RqXAaWanTUUXxDMuMJWswPj549HiezuuaEv6i8AY75zklYc?=
- =?us-ascii?Q?+Ttfeld8rqCr+BK5umveL+cgWKwuaDM4JsWCxiqUyOEQDUJEWYyUdzCxp1d7?=
- =?us-ascii?Q?ux2v0iLP6/4s+e8GlOhgSj34VUr16RdR8yMHfCAUX0zpk2oyLLffl/oqSKWv?=
- =?us-ascii?Q?wSsN905Pwzdt2zzo+r2AvMgrZJ3OqyijRiU8VBrpMp5+e6fPPpzwNUXVb1Z1?=
- =?us-ascii?Q?gAQ7qvXFrHw7+W9OpfAXFC0btzuXzJ2QGvabruUzaFXMYVaSf7pElF8osqjT?=
- =?us-ascii?Q?7Q8HU0OilCGkgG2uTeS9WDPgH3GZ0aFafWlSdgDCHJqK0NqZuO+g7A/Btxt9?=
- =?us-ascii?Q?mFH6wfoe4mnKM1N/j6sw3Cbp9yAOC2W3U63SyXDHCIYpzVHafvwYZCWqBpEo?=
- =?us-ascii?Q?2g633BPpqMCQq/9rETDInOdNnnIHGdltNBh8i8+T4uCsT2SMsUcomQcww/Mx?=
- =?us-ascii?Q?KKGk8rcoy1yd2hZ0uZqOCBaHMLdl965YscJhrplaB3rNVwb8fCJUNwmwolAs?=
- =?us-ascii?Q?ADkhgbyS8fVs/y59TiyEDFgTJPxfka+AUXSN2xnUJOEKOL6XHcbjawumlfJP?=
- =?us-ascii?Q?DRasEIVOyQT2QmGWiY05tlfqPJDRGd56FFfT6xxI+f7kOeWzpZzTP6E2rrjF?=
- =?us-ascii?Q?iOmLbR+MciogN93Q/ofiPC0qMDEyMXWILmoyGvlexIYfK5E4g203KpnLjSkQ?=
- =?us-ascii?Q?0nGsKR/uG2lh4MCrIkAEq9nEPZm0mJYeLIkIi3n3AWfPZO9XgunN5c+tzNHT?=
- =?us-ascii?Q?TzgQcUxMXhMCXjKLy+zmZc8=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(19092799006)(1800799024)(366016)(52116014)(7416014)(376014)(38350700014);DIR:OUT;SFP:1101;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|52116014|19092799006|366016|1800799024|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?CgU0DA9QJk9w4Noz/CpCxjAsclqMYIbwnD0oWfOegJ5EbwsaCikW53KAHZMc?=
+ =?us-ascii?Q?JMyoyHXA/jUtpngyYigqTobIF+I2glp65vjfC7KjWso1I3UBcZovYrANfQ2i?=
+ =?us-ascii?Q?r1U11vNJACWWdkHmJuGU9rwIJSYt0wJ/ojQL3jxCYWixjnpkBJvniUtZWHfV?=
+ =?us-ascii?Q?ySwlSU2ks4TAEETZq+5Tk78/CjIx5mYwcrQ724riNGhZ2OBB5fyB3cEHoKD5?=
+ =?us-ascii?Q?s3fPYPElZvhq+GyemVED4vazYA1gcTIG0YH0jEd7aoU3rRxa2TD7MdtRj+wn?=
+ =?us-ascii?Q?nGfSWwo9gDfLDsNdH0uj5UsPmqMZQivK/ex6dNWXgurwlKmwcUUBSh9/bjWG?=
+ =?us-ascii?Q?j5vZVuRPw5YvV6ICX8CzRL1X9WtqlosnhtWw1tiLeC5UeJ0P6UhWdVfnv4SY?=
+ =?us-ascii?Q?J6/2p8MnX0TUolV1h3JL8b7Ohzp15SzvJnzPuY5M3rWblAbZjYPPUqxQRx7X?=
+ =?us-ascii?Q?HLSk8lG9OoaErZiPp3F9uxzWWxGxrj7QnNsY84imECrjP67v7yxk+U6BOSK+?=
+ =?us-ascii?Q?2WSseYAn+Lztul84V62zQqHaQ7JlocGPy57sG3h19q1MNCykWPbLSfW+eUEG?=
+ =?us-ascii?Q?nvIbf26Pkpw/eBhETjCETCMx5t7XMARe/QxXMH4+9Vg3OMQu1nb1f5c/IgfQ?=
+ =?us-ascii?Q?vwgMlWzzeQapSTz1j7Q1OMtZlEyMt9YM4TkIov9k8Bs6MlcJAf5MQcb6d7pZ?=
+ =?us-ascii?Q?XDLc8pek9b+yeWk+jLXexmQyH5oN7zWdO6+0InM1+N7yIu2/nrYJSE4U8xfD?=
+ =?us-ascii?Q?SKMHndKBVYMMK/HLg285QM4wNuc1hAdWUecFa89wQnCrcnxMgJZFdnPE0VM8?=
+ =?us-ascii?Q?F9WvUhClPJhqf8k/a4LVV2a4BJnFH4gA9byGFmC91mx7myZJ3VcQpDS7OUiP?=
+ =?us-ascii?Q?uBW2VZGXHD7BrZJwVFb5qWVARm+SSrYFySZdHoyO2G4g1LFyaUG0YpoH2cch?=
+ =?us-ascii?Q?5JZ0kh18dsfK9H1AzgQji0+9HJWUS6STNxccg83Z7QnHj2HcyGef2ATkoRHm?=
+ =?us-ascii?Q?dKZQfW7EUg2xje+MY40kVj4cSy4tZSMTyNB3ShJnHBfqlkrbtZOFQZ0SCrsD?=
+ =?us-ascii?Q?KXnFvjwcvpi/wcjgmqc70fRQ/DbLIivQ84WlUHJCddCLOTXppP7O3A69V+Ye?=
+ =?us-ascii?Q?k4K5bz7QMZpPGgd1EAwgB9SC0xZQKg1srL9E8vicc9gzQWo8QG3Qiuh4n6q5?=
+ =?us-ascii?Q?EHm9jcaomr7cBYCeP6QIcnTeo4Ko20e0tXdpLjaoh9Sy9tAyfztEUgyaQa7N?=
+ =?us-ascii?Q?xh0cbePFSvBq+Vq72sa8fquunbfI1JQ7cHrSOX1ePjyrI2cqjyfro29yuwKH?=
+ =?us-ascii?Q?1pWtG2mlS/mBaXHFlhlIIFFNbsjRLI/O2enBb6DoWLdxo6O9FSqSgQFJ6q38?=
+ =?us-ascii?Q?ePbmkJV9r+YFWpLQYzOZhbytIG4d67CJjRA0khbVZ1JL4ykd0wf1q+gVoLgn?=
+ =?us-ascii?Q?Wlzwjo4ZHRgT3b70cYoQ/nkQ0l85biHUhtSuiZYZ7S9Gk9+p+taeY8r3miwR?=
+ =?us-ascii?Q?oIWB6ns/8+YW2jxjRyI9M4H72U7Yu5Codj66Fd/v8Cu60wtkk/PLsNatq54C?=
+ =?us-ascii?Q?WLf5Sv4xUveTHTP0r4XPVDcfDhonSuhSMNIQ1Nm+cHQjeCAHETD4/SURybxi?=
+ =?us-ascii?Q?QJEC4YEKNAknCK7A7Y2PKlI=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8420.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(52116014)(19092799006)(366016)(1800799024)(38350700014);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?HciBche/BbWk2uIuSdgLrXRyP0b2a5Zr+y8RalMOAXt6jdh1oZHfLac7up6a?=
- =?us-ascii?Q?rWm0xu9JrJ5KKeNZS6WfXovBeiAPDeGAvs6obnlk+SHREQH61OIBlysYrWCO?=
- =?us-ascii?Q?r3xq/xN9Ae6kw0iPGM1rWMffq3r+GLFYhubRCLYHigXfNaGtIHDy1e+Dwm18?=
- =?us-ascii?Q?CkLaBZyz/0TzdlzXl3hm7rZpkKJt72Gpy3N+KXqfozYPl7zFdWsE5l9Jf3zA?=
- =?us-ascii?Q?BcWCPVHFuYfPVoJ+KyOUQmMAnmu7hAFXF3a7nDaF4OQMHVvrnfjyyY3HRzfn?=
- =?us-ascii?Q?MBmEtk1WOIUCUZUf3CGd5PGsmeDvK0bwvMhdSNRunmMKDNiPpf2JWJF++of/?=
- =?us-ascii?Q?V8DKdyXec9kd1lGAEZ/0MxYKthz88Z7K5rKYhYV/lNMiHr3Fp0oBmAfvLqJF?=
- =?us-ascii?Q?GTF5fL4y2AuwCVlifEaiuZ63uUCmjMpo5k91lv+4iwfSivTD3wNWmhhjvczn?=
- =?us-ascii?Q?fqvW1n2ZiYQlVAXo+nqN8ikoUrnmAKleSgtDFtXke0/KfgtH9/OBC5HzdLR8?=
- =?us-ascii?Q?JdMNIlNHb3jru3hBOxC5lLwxl3Izh+W0KHqdJPtgf0+fuVxI1B+gwpkMroq+?=
- =?us-ascii?Q?UN9TQWyfaRG8hgjkO+SFtmv2uqXR/vdkyrvb+SueG2SmL+a3Zf5OHXYq2xOK?=
- =?us-ascii?Q?URibi89ThnHhqlG0QCVnOy/aP24teZEjbnI9sr7OxeBBhNjYFNE6P+t/vwBn?=
- =?us-ascii?Q?MPUcRkfBneoi6l9ILBu9+Q/rKYdE/uoNpAJujacbsMIghiHu6f4ufnaBkPDS?=
- =?us-ascii?Q?5gPdveEwE4yXCWunjyux1QZBj4D9ZmCPNtB3OEdMtI/AJ0l2hGYwO2Fo1W8I?=
- =?us-ascii?Q?WiorXzMi40pJzwBrjlU8JO7CZTWLVsxIxOB68DyXetFWKBiTAYB54lWhmste?=
- =?us-ascii?Q?ny2U+gmUWqVM/EhO1Jcw5c6QIwm9Su9X2m2fnZFQPtgDyuBY0b/a3XrzFf25?=
- =?us-ascii?Q?Goe9HddDqrUDw1OkU1O4j+H+Miqs89Qv5/VFWwpk9YJoCyHDUTteLcM3pW51?=
- =?us-ascii?Q?4V0LgdhZivVuqO8lPxOyLN4dBNAO97L2r3wtKVCTNW2lf+/KIaXCXDpOZnd3?=
- =?us-ascii?Q?3A6kYypNwdNSRgRT6OtObLPY5U2S1gUn0Ao2PpzWXuW+xQpz/qYdwhHC6CV2?=
- =?us-ascii?Q?I4smS3VWuJy3hLimLCyp3ccULwXQNMovVNAns3gvRLJaue82+6RYzzgVtwn+?=
- =?us-ascii?Q?a6s6gFEg0ntBP69yy8szKnmIW0Eqt5DbrS4/7GPBEdzln8tg+69dGKZs66gv?=
- =?us-ascii?Q?wU8J2z9gZ7s7ckUKRvOBiQm2xfUTA1wGQ6O6YjwYjV+7ajjXCEqVYd3VDGcu?=
- =?us-ascii?Q?5kd8QV6YChGjkJ1WSLeCz3LNEgsWmhHP9EDLdOrp5+KqY2xb7OgjSTCITpPd?=
- =?us-ascii?Q?iwH3RvzX0wVJh5ZjHNhOo/0/0JdmzGxOzwMdfNLVXbjDmWrfp1964aTxkjHM?=
- =?us-ascii?Q?/NXw9DQRUb8K6v5ksqUKfZO8C6td9ds9V5uZicPriBmla3Hb+hRcFI0yE7JR?=
- =?us-ascii?Q?9s35rrDUP1BpjAhSMxc0N6LRIsU+FatS+jYZb3jJOL2RTZkd+iCBfaDNrfPc?=
- =?us-ascii?Q?bUtIq8h81hHdb8EeEKztiZDNDXSk++Yfp4qKvj4Ar1Isn/ZF4rV561al85js?=
- =?us-ascii?Q?xW5fAPb6QLQC8YxBvujn4/0mu2FWsd7kYCLqGjjs1qa51NSY0G951TTVZQkQ?=
- =?us-ascii?Q?wZxW09tCE705qoQqfyB8UPUbzd1X7WkQ0erqHgiH3o5i7RZEJ3Y/m8XAtgW2?=
- =?us-ascii?Q?DxoB1J3Aog=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?MyVfKtTd+0sCQDMq2ksMJqjKy7pClMDckA/jTlZkyaXS/gt9pHiRvOi7bos8?=
+ =?us-ascii?Q?I8cDb/es9yryjBZfPqzyZCnaMzkI8j24j8zXr8+ZZ62dzDVfTV1nPUMyZoUo?=
+ =?us-ascii?Q?uDGPicWfreDoKibkCokCrngOGwa3FOXa4O6p+CNutXIE1SzXojKChIYFayqG?=
+ =?us-ascii?Q?UpMuPJek7IIZ2Ltw9kd1e/lTTArOfzjwYeVUMlUSNHcOn3rx0jlw7+N7odUH?=
+ =?us-ascii?Q?DOdqTW2c3heP29xw8lPHCcjg6GK/Du7451r9+BD3j82hH/nCEa/khUpZgTFk?=
+ =?us-ascii?Q?apHzxvOF8ME1T7lcIhdzeichphul1VlC/Tb55+A9IbivdrvHeOqN5j5g5xXC?=
+ =?us-ascii?Q?eHG/qF4Cq1vXREY4sUGJ6ifZ2l++/2u8cgghz9805U33zUqy7RzARafkOxur?=
+ =?us-ascii?Q?sV2k4ms8/zv3wHVjEM/5VHj+d+uNWjBzdzATEYdj//0HhhGS1QRbmxS9gPUI?=
+ =?us-ascii?Q?suOZw4yDfn+3hEqk4m8Gh40CrJ8Ms4Kg5vQK+jb/IUcoxndmL7GEtdubHI+N?=
+ =?us-ascii?Q?sOK6CeaIuIc21s8SMp4B9T3NS9ubHPgWKdpNlhN02BsM6ujdFmnHF/C1fxQB?=
+ =?us-ascii?Q?OjOJQ9Qe7USwXJmH+1AiM3DSSWoXH6CpfVGdf1BAusT+IuERi899u4KJ6bg9?=
+ =?us-ascii?Q?fFTIoK9FpdSekZLJENjuKW9U3J8DcyMzHVvpMrIMdQxbB2cMDi9SbxVvKgRT?=
+ =?us-ascii?Q?Z6ANruA7xOEnGT1n2XWE6YN8lIyFNYbHRy+Q4sySzbEsDVrRItNG0ifK49c0?=
+ =?us-ascii?Q?Vy75JnS1+JHQtoEA6YmpjxZiqwW6n0qO/MKtZt+qNbgjQx8JNEvpLtgMCafF?=
+ =?us-ascii?Q?c4LUMPAfgpV1VuWbUBJ0qnEwazz7/tmSFVfdAPPYLVfl+7/YF+kop31YG32H?=
+ =?us-ascii?Q?Oq98FIClFmjPFUgbi8XVH2HchZtxjA4LS9MM2PHC8PilBQWxOQfyffGp30Wc?=
+ =?us-ascii?Q?5D42NNnjrnICKdZ/WKqpu6pKmc4yY2MIzcX9/2AFasWjB7J8In8MSakK0auv?=
+ =?us-ascii?Q?qn/PCpgSJL/qnb0TDW8Sw1xgQiKETGZ1iwTfv1UgGs4dt3uU2cDBH4tjsd+A?=
+ =?us-ascii?Q?Qil7AfBqhDc4TdNa/U1UxkE9YJRuRh0dPcFgiPWM0mAkhzq4yN10ar8fytbv?=
+ =?us-ascii?Q?Pvn+HaH006F07GQD+xBe3Q+9eV69wyNuewFBTpoGaEcGih4yqfOfeHzjSdt6?=
+ =?us-ascii?Q?Uw5w3NNY+3hVn0VZ9EeAOhOIGrCcqbqTlKY0ePQcqPecQkSyPu4tnuCswsUP?=
+ =?us-ascii?Q?VFrENRUEOpS/DX8btF31AgfP6khzNANkgxjA56zYeRsCmYNiaNq18NI8jEUe?=
+ =?us-ascii?Q?xR+FRmwwnZPP+upu9wLdDgAr8adiV7JPc+273koVZAef5RnVbG/JGkOp9ckz?=
+ =?us-ascii?Q?JFrbl4Z/HJp8cHI8Cua3uCUtgTQip5ADUTzpo7awLUwck7dZI977kUwHIg09?=
+ =?us-ascii?Q?kIj2dNtGlmnKQzTrBmyNngBp/oI/MSbcMpoI1lTiHT1gGmLP8dX49NSefx+P?=
+ =?us-ascii?Q?YCS+S88xfvrBjcYVEVcaRE/CHXEWIrIRhej+NqfOtaVt4dfapRdMDiahKg8K?=
+ =?us-ascii?Q?KY5JMGyVYCdz+E4YfAaP3LtsOObKztP11yk7au8TptA3Cl8Kf3WzITTSeKRd?=
+ =?us-ascii?Q?mmSDD3hXnxaHv/FHMsxgk4yQVg8KwgmPg8ARV5WMCUg2lxGf8RM4gydrq4yQ?=
+ =?us-ascii?Q?VgAsKs91a4B0NuUJGWLLptsEAezTWyGK2tEBEXrdzef1wwC+7/jf3/4BU2gh?=
+ =?us-ascii?Q?F0jTX+YowA=3D=3D?=
 X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cd644bf4-4aab-42fb-2a5d-08de573ae570
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7dfc8999-8309-4da0-9fe7-08de5740e60e
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8420.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jan 2026 09:12:40.3715
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jan 2026 09:55:38.4976
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Z2LgzO0A/PQ30TZreRMnLfUpoK7rlnYPnPlkCV7tFE6I4vG4ySdLf4nRHbXL+PNaR8Cef6uyOmzTzI+dKdrHFw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI2PR04MB10762
+X-MS-Exchange-CrossTenant-UserPrincipalName: CfzAe4Ae/rp/XefkbUJiffhe30GUUrCAXTpBc4Y+lmDxh0MpLwsBnaBN6PM6xolFAMMux+UgW3IxIj3i2dI0Fg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU4PR04MB11905
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_011247_072300_F2F81472 
-X-CRM114-Status: GOOD (  22.23  )
+X-CRM114-CacheID: sfid-20260119_015544_014785_19D4DF65 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -184,170 +175,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Mediatek LynxI PCS is used from the MT7530 DSA driver (where it does
-not have an OF presence) and from mtk_eth_soc, where it does
-(Documentation/devicetree/bindings/net/pcs/mediatek,sgmiisys.yaml
-informs of a combined clock provider + SGMII PCS "SGMIISYS" syscon
-block).
+This patch series enables clocksource timer drivers to be built as
+loadable kernel modules, which is particularly useful for GKI
+(Generic Kernel Image) configurations.
 
-Currently, mtk_eth_soc parses the SGMIISYS OF node for the
-"mediatek,pnswap" property and sets a bit in the "flags" argument of
-mtk_pcs_lynxi_create() if set.
+This series is based on the previous MediaTek timer modularization work:
+Link: https://lore.kernel.org/all/20230517022557.24388-1-walter.chang@mediatek.com/
 
-I'd like to deprecate "mediatek,pnswap" in favour of a property which
-takes the current phy-mode into consideration. But this is only known at
-mtk_pcs_lynxi_config() time, and not known at mtk_pcs_lynxi_create(),
-when the SGMIISYS OF node is parsed.
+The series includes:
+1. Export necessary functions from clocksource/mmio
+2. Remove __init markings from timer-of to support modules
+3. Convert MediaTek timer driver to support module build
+4. Convert i.MX TPM timer driver to support module build
 
-To achieve that, we must pass the OF node of the PCS, if it exists, to
-mtk_pcs_lynxi_create(), and let the PCS take a reference on it and
-handle property parsing whenever it wants.
+Testing performed:
+- Built and tested on i.MX8ULP platform
+- Built and tested on MediaTek platform
+- Verified both built-in and module configurations
+- Confirmed timer functionality in both configurations
 
-Use the fwnode API which is more general than OF (in case we ever need
-to describe the PCS using some other format). This API should be NULL
-tolerant, so add no particular tests for the mt7530 case.
+Changes in v2:
+- Added Signed-off-by from submitter (Zhipeng Wang) to all patches
+  as requested by reviewers
 
-Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
----
-v2->v4: none
-v1->v2: patch is new
+Changes in v1:
+- Fixed 'unsigned' to 'unsigned int' in clocksource_mmio_init()
+- Changed MODULE_LICENSE from "GPL v2" to "GPL" for mediatek driver
+- Added i.MX TPM timer driver module support
 
- drivers/net/dsa/mt7530-mdio.c               |  4 ++--
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 19 ++++++++-----------
- drivers/net/pcs/pcs-mtk-lynxi.c             | 15 ++++++++++-----
- include/linux/pcs/pcs-mtk-lynxi.h           |  5 ++---
- 4 files changed, 22 insertions(+), 21 deletions(-)
+Chun-Hung Wu (3):
+  clocksource/drivers/mmio: Export clocksource_mmio_init()
+  clocksource/drivers/timer-of: Remove __init markings
+  clocksource/drivers/timer-mediatek: Make timer-mediatek become loadable module
 
-diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
-index 0286a6cecb6f..11ea924a9f35 100644
---- a/drivers/net/dsa/mt7530-mdio.c
-+++ b/drivers/net/dsa/mt7530-mdio.c
-@@ -113,8 +113,8 @@ mt7531_create_sgmii(struct mt7530_priv *priv)
- 			ret = PTR_ERR(regmap);
- 			break;
- 		}
--		pcs = mtk_pcs_lynxi_create(priv->dev, regmap,
--					   MT7531_PHYA_CTRL_SIGNAL3, 0);
-+		pcs = mtk_pcs_lynxi_create(priv->dev, NULL, regmap,
-+					   MT7531_PHYA_CTRL_SIGNAL3);
- 		if (!pcs) {
- 			ret = -ENXIO;
- 			break;
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 99abec2198d0..35fef28ee2f9 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -4994,7 +4994,6 @@ static int mtk_sgmii_init(struct mtk_eth *eth)
- {
- 	struct device_node *np;
- 	struct regmap *regmap;
--	u32 flags;
- 	int i;
- 
- 	for (i = 0; i < MTK_MAX_DEVS; i++) {
-@@ -5003,18 +5002,16 @@ static int mtk_sgmii_init(struct mtk_eth *eth)
- 			break;
- 
- 		regmap = syscon_node_to_regmap(np);
--		flags = 0;
--		if (of_property_read_bool(np, "mediatek,pnswap"))
--			flags |= MTK_SGMII_FLAG_PN_SWAP;
--
--		of_node_put(np);
--
--		if (IS_ERR(regmap))
-+		if (IS_ERR(regmap)) {
-+			of_node_put(np);
- 			return PTR_ERR(regmap);
-+		}
- 
--		eth->sgmii_pcs[i] = mtk_pcs_lynxi_create(eth->dev, regmap,
--							 eth->soc->ana_rgc3,
--							 flags);
-+		eth->sgmii_pcs[i] = mtk_pcs_lynxi_create(eth->dev,
-+							 of_fwnode_handle(np),
-+							 regmap,
-+							 eth->soc->ana_rgc3);
-+		of_node_put(np);
- 	}
- 
- 	return 0;
-diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
-index 149ddf51d785..7f719da5812e 100644
---- a/drivers/net/pcs/pcs-mtk-lynxi.c
-+++ b/drivers/net/pcs/pcs-mtk-lynxi.c
-@@ -81,6 +81,7 @@ struct mtk_pcs_lynxi {
- 	phy_interface_t		interface;
- 	struct			phylink_pcs pcs;
- 	u32			flags;
-+	struct fwnode_handle	*fwnode;
- };
- 
- static struct mtk_pcs_lynxi *pcs_to_mtk_pcs_lynxi(struct phylink_pcs *pcs)
-@@ -168,7 +169,7 @@ static int mtk_pcs_lynxi_config(struct phylink_pcs *pcs, unsigned int neg_mode,
- 		regmap_set_bits(mpcs->regmap, SGMSYS_RESERVED_0,
- 				SGMII_SW_RESET);
- 
--		if (mpcs->flags & MTK_SGMII_FLAG_PN_SWAP)
-+		if (fwnode_property_read_bool(mpcs->fwnode, "mediatek,pnswap"))
- 			regmap_update_bits(mpcs->regmap, SGMSYS_QPHY_WRAP_CTRL,
- 					   SGMII_PN_SWAP_MASK,
- 					   SGMII_PN_SWAP_TX_RX);
-@@ -268,8 +269,8 @@ static const struct phylink_pcs_ops mtk_pcs_lynxi_ops = {
- };
- 
- struct phylink_pcs *mtk_pcs_lynxi_create(struct device *dev,
--					 struct regmap *regmap, u32 ana_rgc3,
--					 u32 flags)
-+					 struct fwnode_handle *fwnode,
-+					 struct regmap *regmap, u32 ana_rgc3)
- {
- 	struct mtk_pcs_lynxi *mpcs;
- 	u32 id, ver;
-@@ -303,10 +304,10 @@ struct phylink_pcs *mtk_pcs_lynxi_create(struct device *dev,
- 
- 	mpcs->ana_rgc3 = ana_rgc3;
- 	mpcs->regmap = regmap;
--	mpcs->flags = flags;
- 	mpcs->pcs.ops = &mtk_pcs_lynxi_ops;
- 	mpcs->pcs.poll = true;
- 	mpcs->interface = PHY_INTERFACE_MODE_NA;
-+	mpcs->fwnode = fwnode_handle_get(fwnode);
- 
- 	__set_bit(PHY_INTERFACE_MODE_SGMII, mpcs->pcs.supported_interfaces);
- 	__set_bit(PHY_INTERFACE_MODE_1000BASEX, mpcs->pcs.supported_interfaces);
-@@ -318,10 +319,14 @@ EXPORT_SYMBOL(mtk_pcs_lynxi_create);
- 
- void mtk_pcs_lynxi_destroy(struct phylink_pcs *pcs)
- {
-+	struct mtk_pcs_lynxi *mpcs;
-+
- 	if (!pcs)
- 		return;
- 
--	kfree(pcs_to_mtk_pcs_lynxi(pcs));
-+	mpcs = pcs_to_mtk_pcs_lynxi(pcs);
-+	fwnode_handle_put(mpcs->fwnode);
-+	kfree(mpcs);
- }
- EXPORT_SYMBOL(mtk_pcs_lynxi_destroy);
- 
-diff --git a/include/linux/pcs/pcs-mtk-lynxi.h b/include/linux/pcs/pcs-mtk-lynxi.h
-index be3b4ab32f4a..1bd4a27a8898 100644
---- a/include/linux/pcs/pcs-mtk-lynxi.h
-+++ b/include/linux/pcs/pcs-mtk-lynxi.h
-@@ -5,9 +5,8 @@
- #include <linux/phylink.h>
- #include <linux/regmap.h>
- 
--#define MTK_SGMII_FLAG_PN_SWAP BIT(0)
- struct phylink_pcs *mtk_pcs_lynxi_create(struct device *dev,
--					 struct regmap *regmap,
--					 u32 ana_rgc3, u32 flags);
-+					 struct fwnode_handle *fwnode,
-+					 struct regmap *regmap, u32 ana_rgc3);
- void mtk_pcs_lynxi_destroy(struct phylink_pcs *pcs);
- #endif
+Jindong Yue (1):
+  clocksource/drivers/imx-tpm: Support building imx-tpm driver as module
+
+ drivers/clocksource/Kconfig          |  4 ++--
+ drivers/clocksource/mmio.c           |  8 ++++---
+ drivers/clocksource/timer-imx-tpm.c  | 36 +++++++++++++++++++++++++---
+ drivers/clocksource/timer-mediatek.c | 33 +++++++++++++++++++++++++
+ drivers/clocksource/timer-of.c       | 23 +++++++++---------
+ drivers/clocksource/timer-of.h       |  6 ++---
+ 6 files changed, 88 insertions(+), 22 deletions(-)
+
 -- 
 2.34.1
 
