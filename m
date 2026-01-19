@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74C0ACCF2D9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 10:13:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61D72CCF2D5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 10:14:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:Cc
 	:References:In-Reply-To:Subject:To:From:Date:Message-ID:Reply-To:MIME-Version
 	:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zV5exWY9InxnSYXMek7ksQrF9O6g4mEkP+VjtOZIA4g=; b=E8ts1OUrTT6+R9R82mEteRBNP3
-	NFb+6oFnMWt4grkvElGUsLBduJXejdPpXYevU7hl1BDvJKh3hsCvhj4Wg9vVmw9CqNSrKC5SwrgVv
-	YtirltnCecM7RKe8QoR4t6ntotYAJesFvW7BInzWfoMSUJRIkuFHDxdGT7Vz2uf94LoYseCjLYXIN
-	IDKDDBbkOeNRd9ARS7LICNS6eg1t1o00RQVN6HjyV4lcwkwrdkryP5U6991SwkhQAoJo4YpVvwsI0
-	yS1BJ4WWtF5ZjVc84IOhomEg0lVlPE+Gc0Itwh/4xQJEE7VBVMzPpsLei/4YChcP68wE9mou3BgE8
-	szISdKww==;
+	bh=6OOaYEK0aDqTPEHL4pg9nl6lumOlvK4fhFHxH/uBU2I=; b=O/NMVujyR1g8GX3Jv4Duu2mHl1
+	hgHUvXC1N6ae7bU8k8ru1ZQ8ASi+rQ5oH5126YghiFHZuj+hkcYHPnm5wnApu9GDzQulxPTWDWOwv
+	dyls2padteVwXqk4pLDe/4o+vuJVvbbdedDTSNbxt+zAsRRc1jm8FCAKGU1WNuwhZChsgLnWz8+UD
+	eQ7UJuf+c3a81gXFjoma79VjEVSOGxms2iTWuQmOFjIfjsUJofkeeIvZiqL71+CNM8sWIntdsSiRA
+	JkmPWohywwN1U6KsK8JLmEe8prEloevZ3HmmDyfd3uVDxRd226GxQZdQ7FFpKVUrcdiA1RUR1Iam/
+	gwSqQsjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhmGb-00000001jGW-0ivD;
-	Mon, 19 Jan 2026 10:13:49 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vhmGq-00000001jM3-1e33;
+	Mon, 19 Jan 2026 10:14:14 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhmGZ-00000001jGG-1r1B;
-	Mon, 19 Jan 2026 10:13:47 +0000
+	id 1vhmGm-00000001jJs-1KOX;
+	Mon, 19 Jan 2026 10:14:01 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BA8A46014E;
-	Mon, 19 Jan 2026 10:13:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E657EC116C6;
-	Mon, 19 Jan 2026 10:13:45 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 34B6143D9B;
+	Mon, 19 Jan 2026 10:13:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89D94C16AAE;
+	Mon, 19 Jan 2026 10:13:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768817626;
-	bh=1P25O01V1+pU3qLbbBJW/GjfXAE5BGBvNtHpKC+MLLk=;
+	s=k20201202; t=1768817639;
+	bh=NYdJQrmH02NA6Tbg7YbuRjFQaGimaDqIcuD9t2JJMBQ=;
 	h=Date:From:To:Subject:In-Reply-To:References:Cc:From;
-	b=IoP7E/9pRu+7PDLd0H764jZC/uaNamD0WEa4z1KHQ1LWmWDuerkPTvD00JtG85EOm
-	 SzdPIkNXbCfn6Md0mGJ1ogDNrUlWfYU1KRUElYJpxZ3ji5qbTBJlJDcSjQcC2+mviQ
-	 ZE/wyaZPh8k7s/KFqIk92XNEj6nHbp+MKbgOVDgXzCLBRNPoVgD69UHUxtGvi1aqJi
-	 iNASTiwUxup4KrDlPpADUKJgItJpUr2eliuygQdOW5LikrdFAKge0CU9xKkXvS/5es
-	 ZLften5mQg2ZaW9SoWZc5htrDu8insI8Ww82s/O0GqFp0V6EbvOVPO8lCv97yl2k9S
-	 EZ2Y8jIU3vGdw==
-Message-ID: <2fb910198a3be542215592ac3f22d6b2@kernel.org>
-Date: Mon, 19 Jan 2026 10:13:43 +0000
+	b=AeDvMHo3DwRyyOwsOt3Jiff3SJaHaI2TfoOMnycd8ue94ufW3X2ZpsF5JcszxdXUc
+	 99hNu2JtkOZ5cz0f9co2ywnQRG4iUmRAcalXQa3PXdAGi9q7O0igqVcMNLB24CJ/7N
+	 U8w+R/ohSCTb/vVN1uKOeBRoEwuttAp7PCPpo/Z+z+AT0rExbUyP6gEo8P6xV9Dq96
+	 qxaw406z3/DWloyzjHoWvgxE7taQOk8S58Btjo1yeiT8pzUrDxq0UPsbZSXHi/ppnN
+	 Q1nJ0ThhOIm2KrJ7Hgqhe9cG6X2Yq6c+T8vVGpA78L/RCzsCY/wHLLT2Xh1G7ITpYm
+	 UTSrxZGZkorMw==
+Message-ID: <12c1669e5947ce144bd295e5a26a93da@kernel.org>
+Date: Mon, 19 Jan 2026 10:13:56 +0000
 From: "Maxime Ripard" <mripard@kernel.org>
 To: "Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>
-Subject: Re: [PATCH v4 01/10] drm/tests: hdmi: check the infoframes
- behaviour
-In-Reply-To: <20260107-limit-infoframes-2-v4-1-213d0d3bd490@oss.qualcomm.com>
-References: <20260107-limit-infoframes-2-v4-1-213d0d3bd490@oss.qualcomm.com>
+Subject: Re: [PATCH v4 07/10] drm/display: hdmi_state_helper: reject Audio
+ IF updates if it's not supported
+In-Reply-To: <20260107-limit-infoframes-2-v4-7-213d0d3bd490@oss.qualcomm.com>
+References: <20260107-limit-infoframes-2-v4-7-213d0d3bd490@oss.qualcomm.com>
 Cc: dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, "Abhinav
  Kumar" <abhinav.kumar@linux.dev>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
  Yan" <andy.yan@rock-chips.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>, "Chen-Yu
@@ -66,6 +66,10 @@ Cc: dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org, linux-arm-
  Huang" <hjc@rock-chips.com>, "Sean Paul" <sean@poorly.run>, "Simona Vetter" <simona@ffwll.ch>, "Thomas
  Zimmermann" <tzimmermann@suse.de>
 Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260119_021400_402836_967E8450 
+X-CRM114-Status: UNSURE (   7.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,11 +84,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 7 Jan 2026 20:14:58 +0200, Dmitry Baryshkov wrote:
-> Verify the InfoFrames behaviour. Check that reporting InfoFrame as
-> unsupported doesn't result in a commit error. Also check that HDR and
-> Audio InfoFrames are not triggered if corresponding features are not
-> enabled.
+On Wed, 7 Jan 2026 20:15:04 +0200, Dmitry Baryshkov wrote:
+> Updating the InfoFrame if it can not be sent over the wire makes no
+> sense. Change drm_atomic_helper_connector_hdmi_update_audio_infoframe()
+> and drm_atomic_helper_connector_hdmi_clear_audio_infoframe() to return
+> an error if Audio InfoFrame callbacks are not implemented.
 > 
 > 
 > [ ... ]
