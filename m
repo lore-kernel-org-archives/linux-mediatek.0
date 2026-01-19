@@ -4,97 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9262D29C27
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 13:11:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0186D29C2D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 14:04:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sQv1Bt+G0WvcxIzZAxYj6/Y3EZBw/e5lmYGYAAkBhgs=; b=ZsCQ+veNyKEl9zx8SUm/dL5rtt
-	ZHDLaNF3WXJg6UcbvAlmYH0EdUbWQejV/5Qh1sc8JaO5NxjFOslgMf5cuN5DEgnTFMyQ1PzAdse4w
-	6eQYTlxSv+Vr6O7/VmUFRncbcDfF68eJEYtf/KUP5jeUlTelimXP0D56R7iSJzTjD76EqaFg+zZQ1
-	dy9gNFabDfecz5ByHym65apUAEgFFBHKE8OV+fIBCz7ksaa8luvjVsrRtoOuAl9oKtN8gQHZ1Fjgl
-	OU8TcCbi+wsAQVLFVbh4GRpl9z7cMsgXpb94ab/0RvPl4AkejFFz+12BpxLyzYHTlWsLlXTeizf1w
-	GC66Sh/A==;
+	bh=T0rl3SMhzSTIAUIp4+rR+1cMtdJOvQXiZGRrtdfINPM=; b=k5EqyXrXBenznmsvlP2nHbaMnM
+	ANhsT2WjaLZbgYsISe6ndOUpv9mhu7ivPP7TxqRRwtnWv/EKaGtIg2lxyI2m2qHc4Hjxtp3l2nJlD
+	G2A6NmbP90fdVMbGUwEfsp0cEZehkx7tzEQ/5H/0XlNsQWd4FioDXZgUV1GQJKd3j2j3esXCkMQbQ
+	EC6NU77HlzTlbLMnxhKgk5A6sBfTKpTiBf+WKl/haFMt1eGRWJehhOzK/9fJgpaUdOLTEuC3+NSUj
+	4GyWGLIxloEVR1s4xCXATNQ20oxR7X8ZzYaSw/tk+dxAulETWyd94cqxyjKue1ln2vhBHjFoSOI3y
+	vgUQr7EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhp25-000000028aG-1uoT;
-	Mon, 19 Jan 2026 13:11:01 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1vhpsA-00000002DZn-0rUa;
+	Mon, 19 Jan 2026 14:04:50 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhp1i-000000028ZI-0gZi;
-	Mon, 19 Jan 2026 13:11:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1768828238; x=1800364238;
-  h=from:to:cc:subject:in-reply-to:references:date:
-   message-id:mime-version;
-  bh=aUXeE8chL4wN6frCncEOZhkvGcfHvgnI/l4mL6mm1mU=;
-  b=Cux/pO+I2BzJfABLuzNaPLdz7WGwMNwXvP2b+4UScGUPnhFp4ZIWv+ag
-   IIbz7jtcIqJ1lOSPhbUve9zHV89ZIQBlM6YJqhNWU8CGHSwPC0qWY9jTd
-   J0aRMd7bc+3btpaOrWpR4hZX1jHcDTX/6uHXyRSeZrwh+YT7XHAqdrLbo
-   kmtAKeOM/J+b8qyMIOQXXgjApNpKw2h/a3hkJ1jHl40sHHin8/y+AXNM3
-   rJLxCzhzXa48TS3hlTnF1AaE+Eu9AzbUrRbryoz7GQqe4rAxb6HAzh8r7
-   +e4oovG08rlBo7vDieKUtuLKrqok7AJygSoMg9SLpAVEo2/BLdv1kuTkK
-   Q==;
-X-CSE-ConnectionGUID: bb4h+/r9QoetODSRGVBQlQ==
-X-CSE-MsgGUID: ZEQp+xjnRg6whVi+yYFJ6Q==
-X-IronPort-AV: E=McAfee;i="6800,10657,11675"; a="92707770"
-X-IronPort-AV: E=Sophos;i="6.21,238,1763452800"; 
-   d="scan'208";a="92707770"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jan 2026 05:10:36 -0800
-X-CSE-ConnectionGUID: rMJSlhZAQa+O5hVQha3jIw==
-X-CSE-MsgGUID: e/WXSfj9TQWN8Yd2qyFdig==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,238,1763452800"; 
-   d="scan'208";a="206123498"
-Received: from aotchere-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.246.12])
-  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jan 2026 05:10:24 -0800
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Maxime Ripard
- <mripard@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, Abhinav
- Kumar <abhinav.kumar@linux.dev>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Andy Yan <andy.yan@rock-chips.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wens@kernel.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Dave Stevenson
- <dave.stevenson@raspberrypi.com>, David Airlie <airlied@gmail.com>, Dmitry
- Baryshkov <lumag@kernel.org>, Heiko =?utf-8?Q?St=C3=BCbner?=
- <heiko@sntech.de>, Jernej
- Skrabec <jernej.skrabec@gmail.com>, Jessica Zhang
- <jesszhan0024@gmail.com>, Jonas Karlman <jonas@kwiboo.se>, Laurent
- Pinchart <Laurent.pinchart@ideasonboard.com>, Liu Ying
- <victor.liu@nxp.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Marijn Suijten
- <marijn.suijten@somainline.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, =?utf-8?Q?Ma=C3=ADra?= Canal <mcanal@igalia.com>,
- Neil Armstrong
- <neil.armstrong@linaro.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Rob Clark
- <robin.clark@oss.qualcomm.com>, Robert Foss <rfoss@kernel.org>, Samuel
- Holland <samuel@sholland.org>, Sandy Huang <hjc@rock-chips.com>, Sean Paul
- <sean@poorly.run>, Simona Vetter <simona@ffwll.ch>, Thomas Zimmermann
- <tzimmermann@suse.de>
-Subject: Re: [PATCH v4 01/10] drm/tests: hdmi: check the infoframes behaviour
-In-Reply-To: <yj3r6d3azwwfl5g5yo5wj65qy47f5hzrio5tvfmxhgzlc5bezo@ij4dctwhswls>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park,
- 6 krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
-References: <20260107-limit-infoframes-2-v4-1-213d0d3bd490@oss.qualcomm.com>
- <2fb910198a3be542215592ac3f22d6b2@kernel.org>
- <yj3r6d3azwwfl5g5yo5wj65qy47f5hzrio5tvfmxhgzlc5bezo@ij4dctwhswls>
-Date: Mon, 19 Jan 2026 15:10:21 +0200
-Message-ID: <44a39340ccf7690f6458072eb886e6a658b981d7@intel.com>
+	id 1vhps8-00000002DYd-1dFd;
+	Mon, 19 Jan 2026 14:04:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=T0rl3SMhzSTIAUIp4+rR+1cMtdJOvQXiZGRrtdfINPM=; b=Y9I5nMCnbG8ouhn6DeqAN+7SUT
+	Ekkdoaqk+ZJbli/QK35eSVEF8Dssh8nvRD7e4yWodA2vxW8vmlRYZQI3ckcZNG2XiBBY860rTWJFe
+	tuXBJh6sWjFmoVMXS/cC3Tt7TQrER1bb5X3TNETy0e7Ru4lWKiY6eQudT6yW7TKCDTd4=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1vhprn-003VE9-KF; Mon, 19 Jan 2026 15:04:27 +0100
+Date: Mon, 19 Jan 2026 15:04:27 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Christian Marangi <ansuelsmth@gmail.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next v2 1/2] dt-bindings: net: airoha: npu: Add
+ EN7581-7996 support
+Message-ID: <cd1fd7b4-64a1-4b73-86aa-d3621ed814b4@lunn.ch>
+References: <6967c46a.5d0a0220.1ba90b.393c@mx.google.com>
+ <9340a82a-bae8-4ef6-9484-3d2842cf34aa@lunn.ch>
+ <aWfdY53PQPcqTpYv@lore-desk>
+ <e8b48d9e-f5ba-400b-8e4a-66ea7608c9ae@lunn.ch>
+ <aWgaHqXylN2eyS5R@lore-desk>
+ <13947d52-b50d-425e-b06d-772242c75153@lunn.ch>
+ <aWoAnwF4JhMshN1H@lore-desk>
+ <aWvMhXIy5Qpniv39@lore-desk>
+ <30f44777-776f-49b1-b2f5-e1918e8052fd@lunn.ch>
+ <aW4QixwAJHaHWBBc@lore-desk>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aW4QixwAJHaHWBBc@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_051038_268890_7CCC14A3 
-X-CRM114-Status: GOOD (  13.86  )
+X-CRM114-CacheID: sfid-20260119_060448_424831_23CD07C5 
+X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,34 +86,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 19 Jan 2026, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com> wrote:
-> On Mon, Jan 19, 2026 at 10:13:43AM +0000, Maxime Ripard wrote:
->> On Wed, 7 Jan 2026 20:14:58 +0200, Dmitry Baryshkov wrote:
->> > Verify the InfoFrames behaviour. Check that reporting InfoFrame as
->> > unsupported doesn't result in a commit error. Also check that HDR and
->> > Audio InfoFrames are not triggered if corresponding features are not
->> > enabled.
->> > 
->> > 
->> > [ ... ]
->> 
->> Acked-by: Maxime Ripard <mripard@kernel.org>
->
-> Thanks for all the discussions and the reviews!
+> > So is the firmware name a property of the board?
+> 
+> We need to run different binaries on the NPU based on the MT76 WiFi chip
+> available on the board since the MT76 DMA rings layout changes between MT76 SoC
+> revisions (e.g. Egle MT7996 vs Kite MT7992). In this sense, I agree, the
+> firmware name is a board property.
 
-Your commit ca59e33f5a1f ("drm/atomic: add max_size check to
-drm_property_replace_blob_from_id()") added a new parameter and this
-commit 7436a87db99d ("drm/tests: hdmi: check the infoframes behaviour")
-still uses the old number of parameters, breaking the build.
+O.K, lets go with v1 then. List the firmware filename in the board
+.dts file.
 
-When applying patches, please make sure to build the code before
-pushing.
-
-
-Thanks,
-Jani.
-
-
--- 
-Jani Nikula, Intel
+     Andrew
 
