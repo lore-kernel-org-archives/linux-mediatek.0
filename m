@@ -4,71 +4,213 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B228D2ED0F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 08:25:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE8FBD2ECF7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 09:07:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GbKlBej/CCNUcVlR7r3Kn5Fo4IUP8ZUrhvVbNV149LQ=; b=lr2F0hIY0acnBPelx+vVH58dGy
-	suN7Lpkw6cGB5AMgu+rySx7tiNwHKdddzQydRYeEvXVVPLPC8MrXtl30u2NX4+NBn9tjvb27ur6dL
-	B245lM1h8IaJoYTRowNDi+tKbC8Q/D7a+8zB8IVVoi68+Et9YYudwkW8I/iptR+7kUWzg9Oj2zQ3Q
-	FiRIDMwoo//EQGv0mHYs+76hTb6fBlwQlN7/CxSQyqo+IuRdEgpehfEfMw9qRdCdgrfAz9HSuhad2
-	UMfhq0HxWnilNd2ceXbPUuYYy6QxHaA42cpn5ddoFLJI/jcmR+15RvjSMwL69gFbIeOvELu3CSZS+
-	jnT9PwaQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uTQeQRZu+2deVSRWOO7awMPVsRC9qklkvHkp0p+VpAY=; b=QuGay0pW/WuxPAXMsIhfbXCOI5
+	LHzg+Pdgg61cuhbo4qgVO4kZ1oji4EDI+13vvDU34SAazGLIT7iLsZrXvIPyapKSYbPM52OgHV7hn
+	SHYZ0hxOF5VY09GcCOCRpio3Xc0uwRM2xP48UBFnCWa4o1OdDpws3qQE11BWuPM+xL8udUrMSKcgd
+	0jxhjvL4CGTuuBBczrzx762KykLlN4i93Y7L6CXHEzbg2hdCaeesqK0z1ZpxUxryAQfEOWQv5PnXU
+	kKAqekbOjW5qKmrwkWmH0IHN7i3jJO6qq9fgOYIo+1mtKhFqvPGdG8DKuaShuDK5HArjcwMtNeYAv
+	7qREQu1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vi73X-00000003ScR-1rm4;
-	Tue, 20 Jan 2026 08:25:43 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vi7i9-00000003VZ2-0kV8;
+	Tue, 20 Jan 2026 09:07:41 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vi73T-00000003ScK-21OW
-	for linux-mediatek@lists.infradead.org;
-	Tue, 20 Jan 2026 08:25:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 82B0660018
-	for <linux-mediatek@lists.infradead.org>; Tue, 20 Jan 2026 08:25:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3ADA5C19423
-	for <linux-mediatek@lists.infradead.org>; Tue, 20 Jan 2026 08:25:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768897538;
-	bh=C43VXqk9GnJNPUWh5LRNiprjeaEeARcvp4X4kA4WuOA=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=gkgwgr0EFUDuzRNiR6QMdruTAiTcY9kBIALcGs+RaWRiTfghjgUyWR0LsuQQT0iAR
-	 8m6zJjlC/qzB5NPEp9Q6OavBP97yDPslVYCJoCcN+/7t9GRlPjLvIvp1S0MhqdN40/
-	 PNrJ1FmHRNfoFWR5k0sQRkf15LXCmCczcYp4GDzklSmgF/+a5oKWZvm8BfcFTBpESK
-	 mPKZW/18aEeotV3xQPUWjtyY0nuCl2vAHKyl13o9H3LwyUvSUGqvatpIczB0MykYd+
-	 giZjeGuz+nBYpVmVpcfv0Rtucwkwt8MJMweYwtOUtVqfnks69fHLxu5YzarVARG2A2
-	 f5/xBRiTehC4A==
-Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-59b7b27ebf2so4861031e87.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 20 Jan 2026 00:25:37 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCVkw7hiXuNUGfpCWWiwrYoZ0J80jQ/V5N0/Sw4lPVs12P48z0nrXxoziY67oGIYGYstSHOs5rt4IpI6gbpabw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YymNxeYK4BBR6JMO2dPks2Tfk+k3txg2ulmVF4ELrqBEQVxm4Pb
-	uPFT5bO8Y++Q3Z3Nt62e9kK3W7yOTHUj+r0n0PdTtr7ePTubfGjK4FZtkJK7UX21unIQtuWjt43
-	8TvBPYy1HGxC9nl3zAt7SA4sGfYlPotU=
-X-Received: by 2002:a05:6512:114f:b0:59b:b25d:5c38 with SMTP id
- 2adb3069b0e04-59bb25d5cdbmr4645470e87.7.1768897535467; Tue, 20 Jan 2026
- 00:25:35 -0800 (PST)
+	id 1vi7i3-00000003VXa-36op;
+	Tue, 20 Jan 2026 09:07:40 +0000
+X-UUID: 71c046baf5df11f0ad39f32c34db0b1c-20260120
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=uTQeQRZu+2deVSRWOO7awMPVsRC9qklkvHkp0p+VpAY=;
+	b=c7kZCioTxB8jHUign3gwRouuZdGR0ndFB4Jbx7xiiQe74M5VKJtc/Y0Gvs5uVCK7MQ+EijitjqpeleR+v49z2z6Np2PjmCAa4DtXopjoIGZCyGhVJ07cr1Ii508mprs6WqPasbxHLsSDUoyJWVbSr4FD7FETPY8+ROZdK/C+pt4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.9,REQID:35bef5fa-2ec1-4e68-a2fb-d76c521c050c,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:5047765,CLOUDID:54b9bcef-16bd-4243-b4ca-b08ca08ab1d8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|888|898,
+	TC:-5,Content:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BE
+	C:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 71c046baf5df11f0ad39f32c34db0b1c-20260120
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+	(envelope-from <zhiyong.tao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1345570660; Tue, 20 Jan 2026 02:07:28 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 20 Jan 2026 17:07:25 +0800
+Received: from SI4PR04CU001.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 20 Jan 2026 17:07:25 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=D25lBae44IOtmowZ3jgjck3ZmMMxezOQ1Zz9RjoOfPnFLyQAnRtDfGI2ql2ZEVyIX7zjfO8DsW4R8hK8vdByp2olAHLloqepH5vuDbDpwpMQfnx85OuA6rJAA81uYdKjVeRNS3keEZxFSeHuvKF9eo12qeODdbMMyWhxEWti+zJazVXPfh5Y2FmU3aM6D3+sfpED3C78wZ/vjk1/bpRuJAGTBuASRN5ydI+jkGInd97TsWjsjjEsVueJLi3qcVTcYADLoXHS3i4iqMBuk9sR4qzdhA5yJoujbKp8a/BMHCeL+wpmDmdcvua6kl83z9++YttKh3D+iAPpY4lnbAgPKw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=uTQeQRZu+2deVSRWOO7awMPVsRC9qklkvHkp0p+VpAY=;
+ b=sT5O0mI3TjMuaHcjx1BPH3dMzd7h2GgkYC14RVG3l7XUxFh5XDCBGMx8mlonQjLnJXseTo5at7SUNbmDcrKeWb2kVbVTW2s1IXHDhoOIjRzaxaiJatfLRzFfGr/QTTWOX5K77AJa4T/HVV0jp+MFMv41JBWEH6lH9SMs682wGP1qKWLXS5hZLuXly7T3JHzuPW89UqgudiM6pPiiqHxbW8tQg10+eavypI7iUN+Oa6TAAoTSU+H+Oh2vAd1MGeoi5RjZSBbqFsKmx+hgoGwD0a5mCGDWkPhRprAWMFeDaG4yJjyFcuXUdZ+XDrA4g+IDMoBFP5PT4vHz1X5mICVykQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=uTQeQRZu+2deVSRWOO7awMPVsRC9qklkvHkp0p+VpAY=;
+ b=DXkFlaiGxaOS4AlbORTZ3C+bzar13p/DFa/tK4OnwS64pjb3PvEEJONCp2qB1ihCthkY3/+5Hy1hIGEPpDSuFAYriaGtVtCi6LOiP6ZIu5R8akZVJbFxrtJsvnWDglVwtRYkDynLSm3O+ra0y/pmPpXOsKyhlprzZjL0l929ZdE=
+Received: from SI2PR03MB5690.apcprd03.prod.outlook.com (2603:1096:4:15d::13)
+ by SEZPR03MB6761.apcprd03.prod.outlook.com (2603:1096:101:64::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.11; Tue, 20 Jan
+ 2026 09:07:22 +0000
+Received: from SI2PR03MB5690.apcprd03.prod.outlook.com
+ ([fe80::7361:3cf0:b441:7d0e]) by SI2PR03MB5690.apcprd03.prod.outlook.com
+ ([fe80::7361:3cf0:b441:7d0e%2]) with mapi id 15.20.9520.010; Tue, 20 Jan 2026
+ 09:07:22 +0000
+From: =?utf-8?B?WmhpeW9uZyBUYW8gKOmZtuW/l+WLhyk=?= <Zhiyong.Tao@mediatek.com>
+To: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>
+CC: Project_Global_Digits_Upstream_Group
+	<Project_Global_Digits_Upstream_Group@mediatek.com>, "fred2599@gmail.com"
+	<fred2599@gmail.com>, =?utf-8?B?WWVuY2hpYSBDaGVuICjpmbPlvaXlmIkp?=
+	<Yenchia.Chen@mediatek.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Vasanth Reddy
+	<Vasanth.Reddy@mediatek.com>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, =?utf-8?B?TGlndW8gWmhhbmcgKOW8oOeri+WbvSk=?=
+	<Liguo.Zhang@mediatek.com>, "jirislaby@kernel.org" <jirislaby@kernel.org>,
+	"linux-serial@vger.kernel.org" <linux-serial@vger.kernel.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH] MEDIATEK: serial: 8250_mtk: Add ACPI support
+Thread-Topic: [PATCH] MEDIATEK: serial: 8250_mtk: Add ACPI support
+Thread-Index: AQHcfey/SO6Kleh1dki/LWqHFZdmJbVU2gyAgAYCc4A=
+Date: Tue, 20 Jan 2026 09:07:22 +0000
+Message-ID: <f678673ec826b52169f21457e59c00aa15df9727.camel@mediatek.com>
+References: <20260105024103.2027085-1-zhiyong.tao@mediatek.com>
+	 <20260105024103.2027085-2-zhiyong.tao@mediatek.com>
+	 <2026011631-zips-provider-6c46@gregkh>
+In-Reply-To: <2026011631-zips-provider-6c46@gregkh>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR03MB5690:EE_|SEZPR03MB6761:EE_
+x-ms-office365-filtering-correlation-id: 85a2aff1-69de-410d-8763-08de5803525f
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|376014|366016|38070700021;
+x-microsoft-antispam-message-info: =?utf-8?B?b2h1b2lzZ0hpa3FjS2h0WElLUmI1eTJNTUc0TGIzY2lxOFk4TWxnVWFnRG9Z?=
+ =?utf-8?B?aVROcFJvRUd2b0lJeC8wVVFNQzQrVE9CUUxpVmRXR05kSHZuZnc5MUZSUVNK?=
+ =?utf-8?B?NVRPWDF6bVI5bmQrakg1Y1lNcFhlRzZGSk12OWJBN1J5MFdQZzBhQ2xmVlgv?=
+ =?utf-8?B?anFyR3VwbGdkcTVKMEszeXUzc3M4NzdMV2RJMGxwVkt5anJ0cTlBc3IrV2d4?=
+ =?utf-8?B?V3U1RUhEOEFtNnBFSUZFTlF0dGxya3drRmxtVFBOMElORjZ6TkU0MUJRRTNR?=
+ =?utf-8?B?Yndmd2IxaGFiRis3RXAvbXpuR3VpR1h4WVEvdWhTQTBsdER5V2xDcnRnektK?=
+ =?utf-8?B?V2lVSnRCbmNhc3l5WU9abVlMQ1FSYkRBUVB1N3BaRE84K0ZUR2duNFo2eGdt?=
+ =?utf-8?B?QnFIWnBOZDRoQXp4Zm5OSVNjMklNcWxCdkU3dkVwQnhBT0k4NTIvNkZCMmhC?=
+ =?utf-8?B?Zzd5dHIrK1FFbmQ1MHdyNUFyY3E3U0JvanE0RFpRcVFFeU9zTENPNkNuNkY5?=
+ =?utf-8?B?aXZJOVNyaVFhOUUxaXB0OTFJVVpqM3NFend5Z3drTytEWGlrSk9xb0RMZ0Ez?=
+ =?utf-8?B?SHlRKzhocDg1eGt6SGEybmN6Qm9wM1o0d1dzQUM0WEk1ZytKYSt2TFRKV01Z?=
+ =?utf-8?B?b24wdGpvZFJQbnhXNlZWbmFtZkMyS1RnVUFab00xaS8vcHl1OG1zNmhFcG9X?=
+ =?utf-8?B?V3dLUjJMbnpoMUtGLzV6Wkl5RC9aMmo3eTlNZFRBZzJuR01WR1JyYTIvemho?=
+ =?utf-8?B?Y0cxQ0FDNE0vaDFIZzljUjNYUlpHZElzL2NXc2RnMXAyOXMrcitQUnNZeHJw?=
+ =?utf-8?B?VnZFVEVjbkpBTmpxNXdlMTRydGhDSVdaMU9UQWFHYWRVVWM3eEJua05TeFlz?=
+ =?utf-8?B?ZURDR21zRS9DSHNLUGt6bThFTDUrUzB6dFJHOWh3TlphNzlmamljVFZ4SzAr?=
+ =?utf-8?B?ZmNTcy9rVzduR05renpRRW9VWmhVOWNsSEQyN1I3MEU3QXlkUnpLVkVtNHA1?=
+ =?utf-8?B?ay9oRFljUzFnd3BpclJKMFJWbERaeFUzR0pRSU45aEt0bVhXMUJhVGpUNDhr?=
+ =?utf-8?B?OCtRTDdiZ080aGNkejN4ajY1NHRWY29Xc3JSNS81bmh2dFc4NVpkdDQ4bTgx?=
+ =?utf-8?B?YlNCcWhOUE15RTlkU0pYNVlORHlJa1pXQXlDcGRISnFHSzBiR1pzRzA3Myt3?=
+ =?utf-8?B?NWZmVHduSXRpbHUxenpkL3JRQk55UlpianNVNm14WXBxQ1NqbVJsbjJabWJV?=
+ =?utf-8?B?ZnFGY3dldlJUWEJiWk1rWDBPb2N0TzB6NXhPYmR2SUw5bno2UHExMHpTeUhN?=
+ =?utf-8?B?cU5YV255THUzbXIwaG0ybTczTWoySW9QbEQ5TEUyZkxtQmxyVm1LNzJtRmIr?=
+ =?utf-8?B?dy90TEcyWnJIYjFiWCtabzdlR2dMVFZScUVIV0FnZ25vSXZ4WW9WakxycE81?=
+ =?utf-8?B?MTdDQjBpWW00R0NrMlRENzNPZ3B4UFg3VUhrRnNUWWtGa0VRWnZJZDFOWi9S?=
+ =?utf-8?B?UHhOM2x1UGtXK1ZrSWZuVEtSeXdqN2FWcHI2VjBRVnJkSzZxQkdnb1pzOVdZ?=
+ =?utf-8?B?NHpVU3gyOEptczRiWmJHK0Y5NmF3K05tSU5lQlhsVytKaW85TElYZ1JYZThV?=
+ =?utf-8?B?RUhOdSs0cFkyTEpBdUZ0RVN2VThYb3BBeDZ1VWN0MnBFRzBscWphbU9FeGNZ?=
+ =?utf-8?B?Tlgza3VtU2RRSzRnamc5ZFc4bC9OSitSdGMrSnV2ZTdXUXdXL042VzBXejdr?=
+ =?utf-8?B?eklFTFBETkRaRWN0dkVaWmM1Rm5yQzlORFBlaENaa2pVazQwWWl3aE5ZMTlN?=
+ =?utf-8?B?WFl6WUpiY0JoM0hMT0tlU0g4eXZPL0hENzZ4cDRKUk1zc0RpV2R6d1B5dWpu?=
+ =?utf-8?B?dWdPT1grWnZQNitVYXFGcm5OMlZBWGpOMVN3NWpBR1U3aW1iSTF0cEVseG1E?=
+ =?utf-8?B?b1JnNkpIc1dDUE4wTU5HZjJOZzc1SFBjTmJFWkhhUnlpbXlpNWt0MmlNSXFv?=
+ =?utf-8?B?YjFnUzd2allRdDJNQ2c1K3pZb28wM25ZUXFjWGZzbmNHdFI2dnkzUVFTb1pz?=
+ =?utf-8?B?bkRmOHpzc2NjWERxNkZQdll1dDlYb1dUWndFWFNaQUxObU9zbEp1MExiUGRo?=
+ =?utf-8?B?aVBhTnZnNVc4d1g4MUdKMzcySXViQkh6ak0zRmdmNmNZZHNGeEc2MXBQM1hT?=
+ =?utf-8?Q?evkLUCOWj3U6upkkUoeNE/A=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SI2PR03MB5690.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016)(38070700021);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?QTVYSzVZUWZNcmlwQTVLQWJLVHMyV0FyUjdEM01nNEhBcHY2T3NXQjlscWQy?=
+ =?utf-8?B?UTZSUmZDTGtBdkNJTVZLeEl0ZTNKWVR2OVpNVllUM0NSMjdENmk3K0w3WFdX?=
+ =?utf-8?B?ZmNmL3NYc1VpY2oxejA0RXZTNGk4bjB4TEZyeSs0T3gvN1NXbkhTWmtBNENW?=
+ =?utf-8?B?ak9MUlpEcU5IQVVXd1hSOEkvWEN0ejUwcnd2bE9hRWRodWFhTmczaGNWWWkr?=
+ =?utf-8?B?dGJ0ZDduKzJjOXlRUjBIRE1mNXlBL3VkOVh6ajFEd2tnTHZxUldVOXc5S1hz?=
+ =?utf-8?B?Q0ozYkNDL200akd0UWc3SWV0clo3LzB0UWFvMk1uQStrVEZ2d09uY3UzNUZH?=
+ =?utf-8?B?clRVbXNPRUpyOGgyWkttSFpGRDBLaUV3czVkc2NRZmJuMTlqUHpNNEcwaDQ2?=
+ =?utf-8?B?SEJGN3RZaGx2K3lyQVZ1cTFmZE1wdlU5c1g0bnZnM0lhTy9ybWl0TzMzRW00?=
+ =?utf-8?B?aUI0ZEQ0cVFvb25EUUQwSGk3czBuaEUwQ28xcDQ5T3pBL1ZrQ2JaOGV4SG5O?=
+ =?utf-8?B?OGZDOUZZelF1c0xPNjIzeTYzazVIczJYY05wQjJsblJmMjdhUCtLeWdzdXM3?=
+ =?utf-8?B?azJuNTc0YllScFR5Kzltdk1zZVl2SUQ4emdYUDdzZjZNTklHMXY4RVpTVmc1?=
+ =?utf-8?B?ZHJaLzA0Zmx2Sy9DaGMrekpxN0hvbUc4aDh5M1o3aDFNL0QrRFNaekFqbWky?=
+ =?utf-8?B?T0VnRkR6aGNPSi80TU1xcS9JOURHRE9XOWhmTHRXZU9HK2pvNGNKRmd4V09E?=
+ =?utf-8?B?NzkyeFVOSzZ6NWxTMURPZzlVYlVPVmZDbnlOV0VmQ0dER09aTWNlSE5EZ3hU?=
+ =?utf-8?B?VVRvTzhwYmRnRDVjSGdaakJESTZ1M1JUZ1FTMTlQZGRFdmE3ZXd5OHF4TUlx?=
+ =?utf-8?B?VEd1VzVTZGdwaENPTmtQWUptRThoRnNtQ0NzbkJYN25OTTl5UlBidGNPL3Jp?=
+ =?utf-8?B?RnVreG1ianhadGQyeDdFVkN6NTF6VGcxT0RaTi9RdDhpTHMzOE9CYXgwV3ZD?=
+ =?utf-8?B?NWxkeGtkY1pGUG9ob3JnVWl3REswejNQa0d5T0tEajhiMitlakFDcUIvZ2tn?=
+ =?utf-8?B?UTZRVEhuQWI1VndkTy8vUkJYamN0U0RwV0RMZHhkcjFmY2dZeE9SQiswR21j?=
+ =?utf-8?B?b0JaVThhZ0owS2ZlY3ZpSjB4allDUkRJY3piKytNU3I3WEkvaU9rSDlJYkw0?=
+ =?utf-8?B?SGNnR0Y5YWJrT09NR1ZVcURZb1ZJK1hidDZkdHdWQlo2bTRMRlZ6R29RbGxX?=
+ =?utf-8?B?Z1J2VnFvdzBiQVM5a0hIWjBjNFA1VXVScE45NjZRNXg1N1U0TkJidDhuWW0y?=
+ =?utf-8?B?bTVEeEtRdVNqSnJlbHBLV1NhS3ZWamduQVhxZUxoOUtvZEpDS0xPSEtLRndH?=
+ =?utf-8?B?WHJ2MS9GNkJ0ZnVCRVB0VzZMWWRlajBoRUh1bTJqeUkwemtKc2FsUVgxQitP?=
+ =?utf-8?B?bFZHcEUyYUNEdGxBS0g0TENCU0J6QVF0UHdHbU80VVRVSkFYbGxiVUxlSVdX?=
+ =?utf-8?B?Z0JEeW5EZG8zNEhVbVE2N0dBV003dkJVS29jaTY4eUtpVGltVUJWNDAwL1NE?=
+ =?utf-8?B?Y2RJYnpqTENNcElMSVBQMHlnaHBvR1ljeTU2VXhRdEpYSldDUWFFeVpzdUlV?=
+ =?utf-8?B?Q3ZIOEVKaXhJSnNUZHdMSkc1bGhlM0R0U056b1R5R29UUWRCZEl4MEpEajFY?=
+ =?utf-8?B?cEk4T2VmN0t3emFROTRDV21rd200YWw2VzJiYjRFOWJ1ek9LZVNFYk13bHBV?=
+ =?utf-8?B?VXkwTy9EVm9PZDlYdE01Tk1lMDNhVmg5bkZoSFd3cHZZSy9zM3A3QmN1cE42?=
+ =?utf-8?B?UUVialFhQS9ZYkZtWlo3eWhFa2VNSU5CcHRDZlNmc01vZVNFSGc3R3l4b1Nk?=
+ =?utf-8?B?U1FUSFprb3F2MUo1cmE2cTFsa1g3ZG1xQ2VIenA2MllzamtsU3B5RVEyZFhX?=
+ =?utf-8?B?bmI3c0xGQ2NhUVVVZEc5RTU3UHRjVWhhMmJzd3U1QlJNZ3ZZN0VjbDJNSE40?=
+ =?utf-8?B?Z2o1bmJRQmM5YS9CNmU0NmZkZzZLZ3p0R0MxYjJIYVp6L1FvS0IyRXFqN0ly?=
+ =?utf-8?B?eDZTZnNOQlN6bndyR1ZTMEVrSlloR3dNekZtcHQ4YWRiUGFqdmtpSk9pK0dv?=
+ =?utf-8?B?ZEM4R1JUQlZpc2dqdEFqdDVxUlZlZkIrOWFudWRqTGhaTmJCWjVBcTFaQ3NE?=
+ =?utf-8?B?Ni9DTWhzdVRsUGE5bjRTblQxQXpSQTYxaFA4WWQvR2FBRkxLNjREUFhaaHRJ?=
+ =?utf-8?B?MVFHVm1XU2hvdkJFR1lnMEUzaXd4VEV2dGRoa2JaaTZmOEE0OTVDSDlGZW1J?=
+ =?utf-8?B?RkRjNDNSaTM1cjUrMVhGajRZMVRHWDd6K0pjdUVzVGpWUTRHOVFVR3FqU0FM?=
+ =?utf-8?Q?+5xRxnGTIgfo74u4=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <0BE3AD4A10EE1B4FBE6D06B8E59F44C8@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <CAGp9LzpuyXRDa=TxqY+Xd5ZhDVvNayWbpMGDD1T0g7apkn7P0A@mail.gmail.com>
- <20260120062854.126501-1-zac@zacbowling.com> <20260120062854.126501-12-zac@zacbowling.com>
-In-Reply-To: <20260120062854.126501-12-zac@zacbowling.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Tue, 20 Jan 2026 02:25:23 -0600
-X-Gmail-Original-Message-ID: <CAGp9LzrcvW18xKFL-oF3wxRmb73G6PN59Y2NSA2E5idva1wtKg@mail.gmail.com>
-X-Gm-Features: AZwV_Qiq2kAii4UrcFAe4RI0CA6Ih68D7tpt-8hVRj2bSY2AWW1miq1tr9ZgKls
-Message-ID: <CAGp9LzrcvW18xKFL-oF3wxRmb73G6PN59Y2NSA2E5idva1wtKg@mail.gmail.com>
-Subject: Re: [PATCH 11/11] wifi: mt76: mt7925: fix ROC deadlocks and race conditions
-To: Zac <zac@zacbowling.com>
-Cc: deren.wu@mediatek.com, kvalo@kernel.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org, 
-	lorenzo@kernel.org, nbd@nbd.name, ryder.lee@mediatek.com, 
-	sean.wang@mediatek.com, stable@vger.kernel.org, linux@frame.work, 
-	zbowling@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR03MB5690.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 85a2aff1-69de-410d-8763-08de5803525f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Jan 2026 09:07:22.2905
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: +K0qBl8uWgqdZo1wvl6r+rQVbGNjFvpULO9plpG/216eFYp6raNDIaiM+RmwodMcxi1+3pLuwuPnwuyFgYgys0akvhU63op4WLXUK1bZpvM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR03MB6761
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260120_010735_795417_3B56A2D9 
+X-CRM114-Status: GOOD (  14.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,499 +225,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 20, 2026 at 12:29=E2=80=AFAM Zac <zac@zacbowling.com> wrote:
->
-> From: Zac Bowling <zac@zacbowling.com>
->
-> Fix multiple interrelated issues in the remain-on-channel (ROC) handling
-> that cause deadlocks, race conditions, and resource leaks.
->
-> Problems fixed:
->
-> 1. Deadlock in sta removal ROC abort path:
->    When a station is removed while a ROC operation is in progress, the
->    driver would call mt7925_roc_abort_sync() which waits for ROC completi=
-on.
->    However, the ROC work itself needs to acquire mt792x_mutex which is
->    already held during station removal, causing a deadlock.
->
->    Fix: Use async ROC abort (mt76_connac_mcu_abort_roc) when called from
->    paths that already hold the mutex, and add MT76_STATE_ROC_ABORT flag
->    to coordinate between the abort and the ROC timer.
->
-
-Hi Zac,
-
-Thanks for your continued efforts on the driver.
-We=E2=80=99ve sent a patch to address the mt7925 deadlock at the link below=
-:
-https://lists.infradead.org/pipermail/linux-mediatek/2025-December/102164.h=
-tml
-We plan to send the same fix to mt7921 as well.
-
-I had a couple of questions and suggestions:
-1. Would it be possible to rebase your patchset on top of this fix
-(and any other pending patches that are not yet merged)? We noticed
-some conflicts when applying the series, and rebasing it this way
-would make it easier for nbd to integrate the full patchset.
-2. Could you please elaborate on the test scenarios that would trigger
-ROC rate limiting for MLO authentication failures? If I recall
-correctly, ROC operations are typically handled sequentially unless
-multiple interfaces are created on the same physical device. In that
-case, how many virtual interfaces and which operating modes (GC/STA or
-multiple STAs) are required to reproduce the issue?
-
-I will try to prepare an out-of-tree branch with the current pending
-patches to help your patchset integrate more smoothly. Thanks for
-collecting community issues and fixes and incorporating them into the
-driver.
-
-             Sean
-
-> 2. ROC timer race during suspend:
->    The ROC timer could fire after the device started suspending but befor=
-e
->    the ROC was properly aborted, causing undefined behavior.
->
->    Fix: Delete ROC timer synchronously before suspend and check device
->    state before processing ROC timeout.
->
-> 3. ROC rate limiting for MLO auth failures:
->    Rapid ROC requests during MLO authentication can overwhelm the firmwar=
-e,
->    causing authentication timeouts. The MT7925 firmware has limited ROC
->    handling capacity.
->
->    Fix: Add rate limiting infrastructure with configurable minimum interv=
-al
->    between ROC requests. Track last ROC completion time and defer new
->    requests if they arrive too quickly.
->
-> 4. WCID leak in ROC cleanup:
->    When ROC operations are aborted, the associated WCID resources were
->    not being properly released, causing resource exhaustion over time.
->
->    Fix: Ensure WCID cleanup happens in all ROC termination paths.
->
-> 5. Async ROC abort race condition:
->    The async ROC abort could race with normal ROC completion, causing
->    double-free or use-after-free of ROC resources.
->
->    Fix: Use MT76_STATE_ROC_ABORT flag and proper synchronization to
->    prevent races between async abort and normal completion paths.
->
-> These fixes work together to provide robust ROC handling that doesn't
-> deadlock, properly releases resources, and handles edge cases during
-> suspend and MLO operations.
->
-> Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for =
-mt7925 device")
-> Signed-off-by: Zac Bowling <zac@zacbowling.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt76.h     |   1 +
->  .../net/wireless/mediatek/mt76/mt7925/main.c  | 175 ++++++++++++++++--
->  drivers/net/wireless/mediatek/mt76/mt792x.h   |   7 +
->  3 files changed, 170 insertions(+), 13 deletions(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wire=
-less/mediatek/mt76/mt76.h
-> index d05e83ea1cac..91f9dd95c89e 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-> @@ -511,6 +511,7 @@ enum {
->         MT76_STATE_POWER_OFF,
->         MT76_STATE_SUSPEND,
->         MT76_STATE_ROC,
-> +       MT76_STATE_ROC_ABORT,
->         MT76_STATE_PM,
->         MT76_STATE_WED_RESET,
->  };
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/n=
-et/wireless/mediatek/mt76/mt7925/main.c
-> index cc7ef2c17032..2404f7812897 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-> @@ -453,6 +453,24 @@ static void mt7925_roc_iter(void *priv, u8 *mac,
->         mt7925_mcu_abort_roc(phy, &mvif->bss_conf, phy->roc_token_id);
->  }
->
-> +/* Async ROC abort - safe to call while holding mutex.
-> + * Sets abort flag and lets roc_work handle cleanup without blocking.
-> + * This prevents deadlock when called from sta_remove path which holds m=
-utex.
-> + */
-> +static void mt7925_roc_abort_async(struct mt792x_dev *dev)
-> +{
-> +       struct mt792x_phy *phy =3D &dev->phy;
-> +
-> +       /* Set abort flag - roc_work checks this before acquiring mutex *=
-/
-> +       set_bit(MT76_STATE_ROC_ABORT, &phy->mt76->state);
-> +
-> +       /* Stop timer and schedule work to handle cleanup.
-> +        * Must schedule work since timer may not have fired yet.
-> +        */
-> +       timer_delete(&phy->roc_timer);
-> +       ieee80211_queue_work(phy->mt76->hw, &phy->roc_work);
-> +}
-> +
->  void mt7925_roc_abort_sync(struct mt792x_dev *dev)
->  {
->         struct mt792x_phy *phy =3D &dev->phy;
-> @@ -473,6 +491,17 @@ void mt7925_roc_work(struct work_struct *work)
->         phy =3D (struct mt792x_phy *)container_of(work, struct mt792x_phy=
-,
->                                                 roc_work);
->
-> +       /* Check abort flag BEFORE acquiring mutex to prevent deadlock.
-> +        * If abort is requested while we're in the sta_remove path (whic=
-h
-> +        * holds the mutex), we must not try to acquire it or we'll deadl=
-ock.
-> +        * Clear the flags and only notify mac80211 if ROC was actually a=
-ctive.
-> +        */
-> +       if (test_and_clear_bit(MT76_STATE_ROC_ABORT, &phy->mt76->state)) =
-{
-> +               if (test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state)=
-)
-> +                       ieee80211_remain_on_channel_expired(phy->mt76->hw=
-);
-> +               return;
-> +       }
-> +
->         if (!test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
->                 return;
->
-> @@ -500,14 +529,93 @@ static int mt7925_abort_roc(struct mt792x_phy *phy,
->         return err;
->  }
->
-> +/* ROC rate limiting constants - exponential backoff to prevent MCU over=
-load
-> + * when upper layers trigger rapid reconnection cycles (e.g., MLO auth f=
-ailures).
-> + * Max backoff ~1.6s, resets after 10s of no timeouts.
-> + */
-> +#define MT7925_ROC_BACKOFF_BASE_MS     100
-> +#define MT7925_ROC_BACKOFF_MAX_MS      1600
-> +#define MT7925_ROC_TIMEOUT_RESET_MS    10000
-> +#define MT7925_ROC_TIMEOUT_WARN_THRESH 5
-> +
-> +/* Check if ROC should be throttled due to recent timeouts.
-> + * Returns delay in jiffies if throttling, 0 if OK to proceed.
-> + */
-> +static unsigned long mt7925_roc_throttle_check(struct mt792x_phy *phy)
-> +{
-> +       unsigned long now =3D jiffies;
-> +
-> +       /* Reset timeout counter if it's been a while since last timeout =
-*/
-> +       if (phy->roc_timeout_count &&
-> +           time_after(now, phy->roc_last_timeout +
-> +                      msecs_to_jiffies(MT7925_ROC_TIMEOUT_RESET_MS))) {
-> +               phy->roc_timeout_count =3D 0;
-> +               phy->roc_backoff_until =3D 0;
-> +       }
-> +
-> +       /* Check if we're still in backoff period */
-> +       if (phy->roc_backoff_until && time_before(now, phy->roc_backoff_u=
-ntil))
-> +               return phy->roc_backoff_until - now;
-> +
-> +       return 0;
-> +}
-> +
-> +/* Record ROC timeout and calculate backoff period */
-> +static void mt7925_roc_record_timeout(struct mt792x_phy *phy)
-> +{
-> +       unsigned int backoff_ms;
-> +
-> +       phy->roc_last_timeout =3D jiffies;
-> +       phy->roc_timeout_count++;
-> +
-> +       /* Exponential backoff: 100ms, 200ms, 400ms, 800ms, 1600ms (cappe=
-d) */
-> +       backoff_ms =3D MT7925_ROC_BACKOFF_BASE_MS <<
-> +                    min_t(u8, phy->roc_timeout_count - 1, 4);
-> +       if (backoff_ms > MT7925_ROC_BACKOFF_MAX_MS)
-> +               backoff_ms =3D MT7925_ROC_BACKOFF_MAX_MS;
-> +
-> +       phy->roc_backoff_until =3D jiffies + msecs_to_jiffies(backoff_ms)=
-;
-> +
-> +       /* Warn if we're seeing repeated timeouts - likely upper layer is=
-sue */
-> +       if (phy->roc_timeout_count =3D=3D MT7925_ROC_TIMEOUT_WARN_THRESH)
-> +               dev_warn(phy->dev->mt76.dev,
-> +                        "mt7925: %u consecutive ROC timeouts, possible m=
-ac80211/wpa_supplicant issue (MLO key race?)\n",
-> +                        phy->roc_timeout_count);
-> +}
-> +
-> +/* Clear timeout tracking on successful ROC */
-> +static void mt7925_roc_clear_timeout(struct mt792x_phy *phy)
-> +{
-> +       phy->roc_timeout_count =3D 0;
-> +       phy->roc_backoff_until =3D 0;
-> +}
-> +
->  static int mt7925_set_roc(struct mt792x_phy *phy,
->                           struct mt792x_bss_conf *mconf,
->                           struct ieee80211_channel *chan,
->                           int duration,
->                           enum mt7925_roc_req type)
->  {
-> +       unsigned long throttle;
->         int err;
->
-> +       /* Check rate limiting - if in backoff period, wait or return bus=
-y */
-> +       throttle =3D mt7925_roc_throttle_check(phy);
-> +       if (throttle) {
-> +               /* For short backoffs, wait; for longer ones, return busy=
- */
-> +               if (throttle < msecs_to_jiffies(200)) {
-> +                       msleep(jiffies_to_msecs(throttle));
-> +               } else {
-> +                       dev_dbg(phy->dev->mt76.dev,
-> +                               "mt7925: ROC throttled, %lu ms remaining\=
-n",
-> +                               jiffies_to_msecs(throttle));
-> +                       return -EBUSY;
-> +               }
-> +       }
-> +
-> +       /* Clear stale abort flag from previous ROC */
-> +       clear_bit(MT76_STATE_ROC_ABORT, &phy->mt76->state);
-> +
->         if (test_and_set_bit(MT76_STATE_ROC, &phy->mt76->state))
->                 return -EBUSY;
->
-> @@ -523,7 +631,11 @@ static int mt7925_set_roc(struct mt792x_phy *phy,
->         if (!wait_event_timeout(phy->roc_wait, phy->roc_grant, 4 * HZ)) {
->                 mt7925_mcu_abort_roc(phy, mconf, phy->roc_token_id);
->                 clear_bit(MT76_STATE_ROC, &phy->mt76->state);
-> +               mt7925_roc_record_timeout(phy);
->                 err =3D -ETIMEDOUT;
-> +       } else {
-> +               /* Successful ROC - reset timeout tracking */
-> +               mt7925_roc_clear_timeout(phy);
->         }
->
->  out:
-> @@ -534,8 +646,27 @@ static int mt7925_set_mlo_roc(struct mt792x_phy *phy=
-,
->                               struct mt792x_bss_conf *mconf,
->                               u16 sel_links)
->  {
-> +       unsigned long throttle;
->         int err;
->
-> +       /* Check rate limiting - MLO ROC is especially prone to rapid-fir=
-e
-> +        * during reconnection cycles after MLO authentication failures.
-> +        */
-> +       throttle =3D mt7925_roc_throttle_check(phy);
-> +       if (throttle) {
-> +               if (throttle < msecs_to_jiffies(200)) {
-> +                       msleep(jiffies_to_msecs(throttle));
-> +               } else {
-> +                       dev_dbg(phy->dev->mt76.dev,
-> +                               "mt7925: MLO ROC throttled, %lu ms remain=
-ing\n",
-> +                               jiffies_to_msecs(throttle));
-> +                       return -EBUSY;
-> +               }
-> +       }
-> +
-> +       /* Clear stale abort flag from previous ROC */
-> +       clear_bit(MT76_STATE_ROC_ABORT, &phy->mt76->state);
-> +
->         if (WARN_ON_ONCE(test_and_set_bit(MT76_STATE_ROC, &phy->mt76->sta=
-te)))
->                 return -EBUSY;
->
-> @@ -550,7 +681,10 @@ static int mt7925_set_mlo_roc(struct mt792x_phy *phy=
-,
->         if (!wait_event_timeout(phy->roc_wait, phy->roc_grant, 4 * HZ)) {
->                 mt7925_mcu_abort_roc(phy, mconf, phy->roc_token_id);
->                 clear_bit(MT76_STATE_ROC, &phy->mt76->state);
-> +               mt7925_roc_record_timeout(phy);
->                 err =3D -ETIMEDOUT;
-> +       } else {
-> +               mt7925_roc_clear_timeout(phy);
->         }
->
->  out:
-> @@ -567,6 +701,7 @@ static int mt7925_remain_on_channel(struct ieee80211_=
-hw *hw,
->         struct mt792x_phy *phy =3D mt792x_hw_phy(hw);
->         int err;
->
-> +       cancel_work_sync(&phy->roc_work);
->         mt792x_mutex_acquire(phy->dev);
->         err =3D mt7925_set_roc(phy, &mvif->bss_conf,
->                              chan, duration, MT7925_ROC_REQ_ROC);
-> @@ -874,14 +1009,14 @@ static int mt7925_mac_link_sta_add(struct mt76_dev=
- *mdev,
->         if (!mlink)
->                 return -EINVAL;
->
-> -       idx =3D mt76_wcid_alloc(dev->mt76.wcid_mask, MT792x_WTBL_STA - 1)=
-;
-> -       if (idx < 0)
-> -               return -ENOSPC;
-> -
->         mconf =3D mt792x_vif_to_link(mvif, link_id);
->         if (!mconf)
->                 return -EINVAL;
->
-> +       idx =3D mt76_wcid_alloc(dev->mt76.wcid_mask, MT792x_WTBL_STA - 1)=
-;
-> +       if (idx < 0)
-> +               return -ENOSPC;
-> +
->         mt76_wcid_init(&mlink->wcid, 0);
->         mlink->wcid.sta =3D 1;
->         mlink->wcid.idx =3D idx;
-> @@ -901,14 +1036,16 @@ static int mt7925_mac_link_sta_add(struct mt76_dev=
- *mdev,
->
->         ret =3D mt76_connac_pm_wake(&dev->mphy, &dev->pm);
->         if (ret)
-> -               return ret;
-> +               goto err_wcid;
->
->         mt7925_mac_wtbl_update(dev, idx,
->                                MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
->
->         link_conf =3D mt792x_vif_to_bss_conf(vif, link_id);
-> -       if (!link_conf)
-> -               return -EINVAL;
-> +       if (!link_conf) {
-> +               ret =3D -EINVAL;
-> +               goto err_wcid;
-> +       }
->
->         /* should update bss info before STA add */
->         if (vif->type =3D=3D NL80211_IFTYPE_STATION && !link_sta->sta->td=
-ls) {
-> @@ -920,7 +1057,7 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *=
-mdev,
->                         ret =3D mt7925_mcu_add_bss_info(&dev->phy, mconf-=
->mt76.ctx,
->                                                       link_conf, link_sta=
-, false);
->                 if (ret)
-> -                       return ret;
-> +                       goto err_wcid;
->         }
->
->         if (ieee80211_vif_is_mld(vif) &&
-> @@ -928,28 +1065,34 @@ static int mt7925_mac_link_sta_add(struct mt76_dev=
- *mdev,
->                 ret =3D mt7925_mcu_sta_update(dev, link_sta, vif, true,
->                                             MT76_STA_INFO_STATE_NONE);
->                 if (ret)
-> -                       return ret;
-> +                       goto err_wcid;
->         } else if (ieee80211_vif_is_mld(vif) &&
->                    link_sta !=3D mlink->pri_link) {
->                 ret =3D mt7925_mcu_sta_update(dev, mlink->pri_link, vif,
->                                             true, MT76_STA_INFO_STATE_ASS=
-OC);
->                 if (ret)
-> -                       return ret;
-> +                       goto err_wcid;
->
->                 ret =3D mt7925_mcu_sta_update(dev, link_sta, vif, true,
->                                             MT76_STA_INFO_STATE_ASSOC);
->                 if (ret)
-> -                       return ret;
-> +                       goto err_wcid;
->         } else {
->                 ret =3D mt7925_mcu_sta_update(dev, link_sta, vif, true,
->                                             MT76_STA_INFO_STATE_NONE);
->                 if (ret)
-> -                       return ret;
-> +                       goto err_wcid;
->         }
->
->         mt76_connac_power_save_sched(&dev->mphy, &dev->pm);
->
->         return 0;
-> +
-> +err_wcid:
-> +       rcu_assign_pointer(dev->mt76.wcid[idx], NULL);
-> +       mt76_wcid_mask_clear(dev->mt76.wcid_mask, idx);
-> +       mt76_connac_power_save_sched(&dev->mphy, &dev->pm);
-> +       return ret;
->  }
->
->  static int
-> @@ -1135,7 +1278,8 @@ static void mt7925_mac_link_sta_remove(struct mt76_=
-dev *mdev,
->         if (!mlink)
->                 return;
->
-> -       mt7925_roc_abort_sync(dev);
-> +       /* Async abort - caller already holds mutex */
-> +       mt7925_roc_abort_async(dev);
->
->         mt76_connac_free_pending_tx_skbs(&dev->pm, &mlink->wcid);
->         mt76_connac_pm_wake(&dev->mphy, &dev->pm);
-> @@ -1530,6 +1674,8 @@ static int mt7925_suspend(struct ieee80211_hw *hw,
->         cancel_delayed_work_sync(&dev->pm.ps_work);
->         mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
->
-> +       /* Cancel ROC before quiescing starts */
-> +       mt7925_roc_abort_sync(dev);
->         mt792x_mutex_acquire(dev);
->
->         clear_bit(MT76_STATE_RUNNING, &phy->mt76->state);
-> @@ -1876,6 +2022,8 @@ static void mt7925_mgd_prepare_tx(struct ieee80211_=
-hw *hw,
->         u16 duration =3D info->duration ? info->duration :
->                        jiffies_to_msecs(HZ);
->
-> +       cancel_work_sync(&mvif->phy->roc_work);
-> +
->         mt792x_mutex_acquire(dev);
->         mt7925_set_roc(mvif->phy, &mvif->bss_conf,
->                        mvif->bss_conf.mt76.ctx->def.chan, duration,
-> @@ -2033,6 +2181,7 @@ mt7925_change_vif_links(struct ieee80211_hw *hw, st=
-ruct ieee80211_vif *vif,
->         if (old_links =3D=3D new_links)
->                 return 0;
->
-> +       cancel_work_sync(&phy->roc_work);
->         mt792x_mutex_acquire(dev);
->
->         for_each_set_bit(link_id, &rem, IEEE80211_MLD_MAX_NUM_LINKS) {
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wi=
-reless/mediatek/mt76/mt792x.h
-> index 8388638ed550..d9c1ea709390 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-> @@ -186,6 +186,13 @@ struct mt792x_phy {
->         wait_queue_head_t roc_wait;
->         u8 roc_token_id;
->         bool roc_grant;
-> +
-> +       /* ROC rate limiting to prevent MCU overload during rapid reconne=
-ction
-> +        * cycles (e.g., MLO authentication failures causing repeated ROC=
-).
-> +        */
-> +       u8 roc_timeout_count;           /* consecutive ROC timeouts */
-> +       unsigned long roc_last_timeout; /* jiffies of last timeout */
-> +       unsigned long roc_backoff_until;/* don't issue ROC until this tim=
-e */
->  };
->
->  struct mt792x_irq_map {
-> --
-> 2.52.0
->
+T24gRnJpLCAyMDI2LTAxLTE2IGF0IDE0OjIwICswMTAwLCBHcmVnIEtIIHdyb3RlOg0KPiBPbiBN
+b24sIEphbiAwNSwgMjAyNiBhdCAxMDozOTo1NUFNICswODAwLCBaaGl5b25nIFRhbyB3cm90ZToN
+Cj4gPiBGcm9tOiAiWmhpeW9uZy5UYW8iIDx6aGl5b25nLnRhb0BtZWRpYXRlay5jb20+DQo+ID4g
+DQo+ID4gQWRkIEFDUEkgc3VwcG9ydCB0byA4MjUwX210ayBkcml2ZXIuIFRoaXMgbWFrZXMgaXQg
+cG9zc2libGUgdG8NCj4gPiB1c2UgVUFSVCBvbiBBUk0tYmFzZWQgZGVza3RvcHMgd2l0aCBFREsy
+IFVFRkkgZmlybXdhcmUuDQo+ID4gDQo+ID4gU2lnbmVkLW9mZi1ieTogWWVuY2hpYSBDaGVuIDx5
+ZW5jaGlhLmNoZW5AbWVkaWF0ZWsuY29tPg0KPiA+IFNpZ25lZC1vZmYtYnk6IFpoaXlvbmcuVGFv
+IDx6aGl5b25nLnRhb0BtZWRpYXRlay5jb20+DQo+IA0KPiBQbGVhc2UgdXNlIHlvdXIgbmFtZSwg
+bm90ICcuJyBpbiBpdCwgbGlrZSB5b3VyIGVtYWlsIGhhcy7CoCBZZW5jaGlhDQo+IGRpZA0KPiBp
+dCBwcm9wZXJseSBoZXJlLg0KPiANCj4gdGhhbmtzLA0KPiANCj4gZ3JlZyBrLWgNCj4gDQo+ID09
+PiBUaGFuayB5b3UgZm9yIHlvdXIgc3VnZ2VzdGlvbi4gSSB3aWxsIGZpeCB0aGlzIGNoYW5nZSBp
+biB0aGUgbmV4dA0KPiB2ZXJzaW9uLiANCg0K
 
