@@ -4,98 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 193EFCA5FA0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 16:11:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50454CA5FA8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 16:32:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eDF4hEQ49oVuoE1o1FuTuulQQD1AKtsuCPOT8o0CxOI=; b=yXiaF2YfEQUouwFMpUK1chdT+f
-	BcDPfl0USOUwroA28dvnswXAjjR6/q/fQj66uRQv+M4hg14c+G1l25lLZmlU853Qhp3W3LbM3RGry
-	uJ1JYW+WM6Pv8392mgZu+cyEjMd2opvsDHp2iNeGoHUex+w5phNr/w4j7UdLzrtReIIpR2OZ1pY55
-	y6p7GXwpj0b2tiVZLJ/s3Itpj61DfZSXy/Je48InFWRnY3rJVFUTwowspFIKwux8AB3q9XSe0iLT3
-	ldpZDLHK3garTHSB2IY/Kb/lSGzy2v5lUZBdK8h+5aQgwW2wbydXgvhOEia66hJMCkkmDb8O9oAxO
-	ZYxPEDUQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VhzjevPNhMQIYJy/JYceU6XqDtK2KrWqkWBT13xQ+1c=; b=PqeAlb1alqAP8LvjVfnta0xQB/
+	xGjpHx2FaUIdm5KSoqMF4gtvI6WRpSZkGQjq4C+0PBZ2EgNeIITd0RnCdyPAdToV08qMFNiE4hs4G
+	WtAOdNF23nkwjj2kTjRy8x4j2grFM01pwetW05lMlKf8zMjaWHlXTJ3qFX0FGLQbUblqndgrXvbmz
+	v/Egw/HYvfgNQzZn6tby80vRTMv6MSUEZPhl27kpkrSPIwuIfEYy5mpN55N7tyfXxvz4hqRiEvZR0
+	mOsbgtfXhwK5TPuKwjgZt0/OOqzcudW5uWfm4WbTKHZljL6Dz034Hr/OfZEabnZmWNDTiJyAMXi7r
+	p+BOtzkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viEKf-000000048UU-1TBG;
-	Tue, 20 Jan 2026 16:11:53 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1viEeV-00000004Ao8-1pUu;
+	Tue, 20 Jan 2026 16:32:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viEKb-000000048SR-3sgc
+	id 1viEeS-00000004Anc-2S3q
 	for linux-mediatek@lists.infradead.org;
-	Tue, 20 Jan 2026 16:11:51 +0000
-Received: by mail-wr1-x442.google.com with SMTP id ffacd0b85a97d-43246af170aso3236402f8f.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 20 Jan 2026 08:11:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1768925507; x=1769530307; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=eDF4hEQ49oVuoE1o1FuTuulQQD1AKtsuCPOT8o0CxOI=;
-        b=jhm6GEpsVnNwij78L40Sya5qikFcE9WN6255ENYcsmNW8ft9mS/C8SMAn13a03O5Bz
-         Mmzx+famXuyQ9QP/rYu7hPfENJkrl/LOVyPdWU2p9USAjwiepf1JGDE3OrcSAJBzloZI
-         I2nf7wWTALf8kzxsaYQM0adQka9LzRpQGtHSnhu4zEyIWVZJpIzDnRG0jwf8Fnh5QIJM
-         9w+AMZ6XSOtq06WDEoUGSm8UyZFrVx2z/XMYRFjtG/rV4tvwgff5iW5HVYujd9EF0MQo
-         h6wZ1Obe89N6UtzHMIQiV6WA8eBgSWEA1LNtODpdAqMhQNUq006wf2TRL92CXMPFIgjB
-         LvRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768925507; x=1769530307;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=eDF4hEQ49oVuoE1o1FuTuulQQD1AKtsuCPOT8o0CxOI=;
-        b=no2s/rB2rzXCpkTTHB5Hdw/vfUYfKqvXoZ4NKyc7WpTNJsV7/SMaaz3V5x+Jtossf2
-         3GCLoUJ6tvYqvTJdCJ9O/ymP50+TDKsF8F1nSZAfvqXXQ5Ipd115b4T1wtTUptyIpYES
-         1mCZ+UGLAIAzef2gpFpwyu0nzmrocI8Tp+N9EiW3T1T6RwqIF6pmBz6QvHfTaisNIXmf
-         MeOurXgGUTPRH8mIdoUl2gQBIbHTdzDcI26lXM8cwq+Knm7/SikVo7ILt/udqv9lBCpp
-         AXCd55c6wXl+eXlkPOdSIR0Sa4O6j0/PsbV0mkzIVAq2pEsnSYvj5GCYZQ8TJxl9RE/b
-         x8iw==
-X-Forwarded-Encrypted: i=1; AJvYcCUp4+VjEduxoj+ZK/2gIkU6RnIYi3ewmEZVHgnI+ZT2TOwRWqCZjf6AwU6QZC+qruq6x40OOpcjjSszmeTmRA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxnsrkx7eMk8D2Q9HOj/oLt5TmtyY0hgqmH0bxVClI95KizbsN9
-	VZOJvkMAnci/2c2HxwkNxuSjJKHkf6tgCbI9NzlCSr3XFYsUCxdMx4e0EgfTIdYB00Q=
-X-Gm-Gg: AZuq6aIwmDeyZ5egmZql0Knl+0Mw8Tk9yfypshGSgcflYU4u7CLtFIa7EqSEp4DQT2/
-	P5sTCt1etE+syh+oO5TU8XdlHCh/o436EdJA61FRZHgwWbBo8sNapvnEWm/JWO7KvAt3JdKOGg2
-	TBnfYK1m4q+yDnbQ/2gVFFrDO27uh3KjiaDUAws3vpnphksKoegCt8K6Vmum6CRUw7NYv0el5on
-	cne3KiXRbOuP6u5c5TjnW73dRV6qtSGQYPTSwtAuAIsQk87GnGIljn3TBMG9Z2jPzvjaZuNjWJB
-	Lq/NBnUQUVfZldTyVEHV+sghGX1KtnB+oUPQENNojJS+Q9p1yfAJB4UoVpInCcJuscpKOl3hvR3
-	1Wki+Y9B5pRRR5e/j1/Tr4LdnfTci2X+HAMc03Z92oLMItHOzY8jtHqnUz5wutavFEKN4rxRAKk
-	dZYTxoGw0VtIZIvlexq/RA328O64F/Pv3ii1mhY7438M4W2j9bYpFvGrRea0fEO5rY4A==
-X-Received: by 2002:a05:6000:400e:b0:432:c17c:3094 with SMTP id ffacd0b85a97d-434cc99cd37mr25319021f8f.3.1768925507512;
-        Tue, 20 Jan 2026 08:11:47 -0800 (PST)
-Received: from ?IPV6:2a05:6e02:1041:c10:73c1:f0e1:c420:e523? ([2a05:6e02:1041:c10:73c1:f0e1:c420:e523])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-4356996cf42sm30553088f8f.20.2026.01.20.08.11.46
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 20 Jan 2026 08:11:47 -0800 (PST)
-Message-ID: <dedf467f-594a-4039-8baa-f43744463b1a@linaro.org>
-Date: Tue, 20 Jan 2026 17:11:45 +0100
+	Tue, 20 Jan 2026 16:32:21 +0000
+X-UUID: 92f8f88ef61d11f0ad39f32c34db0b1c-20260120
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=VhzjevPNhMQIYJy/JYceU6XqDtK2KrWqkWBT13xQ+1c=;
+	b=HkTIH7GtFLx7u61bQVBwVwuYaz5iwYlrLUS1eev5bkogPck/6lkPpd8APzb5KQ4Nme4V6VDV/+NblC2D794e/RlFxXRhsNL5Q0PnNs59i9i0xv0uO6RN6JwKHnl1kCPbQfOhDL98YZj1wz66AFzSQTpFPkvL4ehbPCUI9zlBmu4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:6b2081fc-55cc-43e6-bd3e-6733eed60b95,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:5036027a-8c8a-4fc4-88c0-3556e7711556,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 92f8f88ef61d11f0ad39f32c34db0b1c-20260120
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <leon.yen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 954340765; Tue, 20 Jan 2026 09:32:12 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 21 Jan 2026 00:32:10 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 21 Jan 2026 00:32:10 +0800
+From: Leon Yen <leon.yen@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<deren.wu@mediatek.com>, <sean.wang@mediatek.com>,
+	<mingyen.hsieh@mediatek.com>, <michael.lo@mediatek.com>,
+	<allan.wang@mediatek.com>, <quan.zhou@mediatek.com>,
+	<sarick.jiang@mediatek.com>, <ryder.lee@mediatek.com>,
+	<shayne.chen@mediatek.com>, <leon.yen@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7925: fix tx power setting failure after chip reset
+Date: Wed, 21 Jan 2026 00:31:52 +0800
+Message-ID: <20260120163152.3694116-1-leon.yen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/4] clocksource/drivers/imx-tpm: Support building
- imx-tpm driver as module
-To: Daniel Baluta <daniel.baluta@gmail.com>,
- Zhipeng Wang <zhipeng.wang_1@nxp.com>
-Cc: tglx@kernel.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
- kernel@pengutronix.de, festevam@gmail.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, chun-hung.wu@mediatek.com,
- walter.chang@mediatek.com, jstultz@google.com, amergnat@baylibre.com,
- aisheng.dong@nxp.com, jindong.yue@nxp.com, xuegang.liu@nxp.com
-References: <20260119095511.3030739-1-zhipeng.wang_1@nxp.com>
- <20260119095511.3030739-5-zhipeng.wang_1@nxp.com>
- <CAEnQRZBf6ymmrHUVXPdvQ3pQWwhON-dCqJ2v8FZPRBEo-X=zPQ@mail.gmail.com>
-Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-In-Reply-To: <CAEnQRZBf6ymmrHUVXPdvQ3pQWwhON-dCqJ2v8FZPRBEo-X=zPQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260120_081149_976225_92B0FF17 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20260120_083220_879156_4676F7AB 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,40 +87,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1/19/26 11:38, Daniel Baluta wrote:
-> On Mon, Jan 19, 2026 at 11:56 AM Zhipeng Wang <zhipeng.wang_1@nxp.com> wrote:
->>
->> From: Jindong Yue <jindong.yue@nxp.com>
->>
->> Change defconfig as tristate type and add platform driver
->> to support building it as a module.
->>
->> Signed-off-by: Jindong Yue <jindong.yue@nxp.com>
->> Signed-off-by: Zhipeng Wang <zhipeng.wang_1@nxp.com>
-> 
-> Reviewed-by: Daniel Baluta <daniel.baluta@nxp.com>
-> 
-> So you can now select the driver Y/M/n even if no COMPILE_TEST present.
-> 
-> I wonder why we needed the `if COMPILE_TEST` in the first place. But anyhow,
-> this change looks good.
+After the chip reset, the procedure to set the tx power will not be
+successful because the previous region setting is still remains.
+Clear the region setting during MAC initialization and allow it to be
+reset to finalize the TX power setting.
 
-The logic is to keep the timer option silent and let the platform's 
-Kconfig to select the timer driver when enabling the platform.
+Fixes: 3bc62aa4484d ("wifi: mt76: mt7925: add auto regdomain switch support")
+Signed-off-by: Leon Yen <leon.yen@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/init.c | 2 ++
+ drivers/net/wireless/mediatek/mt76/mt7925/regd.c | 3 ++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
 
-Then we wanted to be able to compile-test those drivers even if the 
-platform is not selected.
-
-Now we want to choose between module or compiled-in.
-
-I'm not sure if we really want to manually select the timer driver or 
-switch to module.
-
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+index 3ce5d6fcc69d..c0c5cb9aff75 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+@@ -91,6 +91,8 @@ int mt7925_mac_init(struct mt792x_dev *dev)
+ 
+ 	mt7925_mac_init_basic_rates(dev);
+ 
++	memzero_explicit(&dev->mt76.alpha2, sizeof(dev->mt76.alpha2));
++
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(mt7925_mac_init);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/regd.c b/drivers/net/wireless/mediatek/mt76/mt7925/regd.c
+index 292087e882d1..16f56ee879d4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/regd.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/regd.c
+@@ -232,7 +232,8 @@ int mt7925_regd_change(struct mt792x_phy *phy, char *alpha2)
+ 	    dev->regd_user)
+ 		return -EINVAL;
+ 
+-	if (mdev->alpha2[0] != '0' && mdev->alpha2[1] != '0')
++	if ((mdev->alpha2[0] && mdev->alpha2[0] != '0') &&
++	    (mdev->alpha2[1] && mdev->alpha2[1] != '0'))
+ 		return 0;
+ 
+ 	/* do not need to update the same country twice */
 -- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+2.45.2
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
 
