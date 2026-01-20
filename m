@@ -4,99 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35EC8D2ED0F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 09:43:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1645D2ECF7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 10:08:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NqSqOPYQK2f5kYAeUfisaGpHFpcmaF2a2lPKxFm9TWg=; b=dZktPKaaVjckfee4wbKcLrFa7a
-	pYKZ4UZHFAtuo321LgpEg5vhdPsjJr9hTwGnEP7/NU8oihOP+BLU0/tcLzgL0l0q0++C+BCzmrpGB
-	CaOfQ0pfGyt4wTiiDktQtN4OBZa+OctCANFzFco3Jk19lGaSKqLvK1wxEtjZOLcFMAAuEASPoBpO7
-	BhtuuYLmTZ0Jl8DJ/tMeIjT6TQyuMfoD15RuFzY8FrGmZxYY1eQN2Gcqi4X7om1iaZHQXvrk7j4Ki
-	VzX03pW9G3h3zEsxJ8KD6txqJF1PZyRy2Sz4kZ2rTJivwRWL1elaJRmp6i871wG0ILsl1r+uxqRZ1
-	nQPoHMHQ==;
+	bh=H8E5ZexNwUvepWRnAB8kom9407PvcV1LCFOFpBHsJ7Q=; b=Y5ZU1v0W87RlK8IGriMaV8z6O9
+	GmXjsccPm4q5bL1Y3VRrg1/pgcV7+sUDqRmzqNiVNeYCC/xKYZfD1zcJFo/tGzW5nh1IgZSqQoxJ3
+	zXLHtoIgZVC0h23BNBm8Px3NdUtX4vtd3ZGjByRka0n1mcuLXfTCSCd+c33eTdTl9VZ0NAEk8ghwA
+	9Cc7ycYBhYJr95KoteyGjLBtHRssOBc6G81fj3IZOt/EnA88TTOl4qUnbOh3J4jr65gyiPStBf/HQ
+	JcSIgyyo9a3zJIJlMR2n/Vo3GwjdZeEk5d4WSq9PJFX4qdkObMBexwsXZswIYTkkVQkA4HLpFqQef
+	pbUydMiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vi8Gx-00000003YBq-3Npu;
-	Tue, 20 Jan 2026 09:43:39 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vi8fO-00000003Zw8-0Z8H;
+	Tue, 20 Jan 2026 10:08:54 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vi8Gu-00000003YAp-1Tl3;
-	Tue, 20 Jan 2026 09:43:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768902211;
-	bh=cFmtw+W0nIPjyA9JXnCJ34TLkLN51eHKUkL0cw7+gFs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aJf6ki/55o9knlTHmfUazfZ+yXtr8Aw7sNER1HrKmXGGtA57yT7kPoc1Sn+kz30iz
-	 mGJoCamBbqY+HYJ0ltn/pgn6zRhCaK2nMrMgqGG4rI30O0xzbtrzPZJpYZnW2sJ/Zy
-	 nC/6gjaBFSUnc0pSjDic7VxOFBXmGZYFT/BaVDriwRu9OdtUlgkG9Qn8drbBqxAfw9
-	 KCsNLvo4KRWqXSHqZLQtfEeGt17ta1ZWgR6NXHLjKD5S2zU2hkCwKNvyaWzHc7JtWb
-	 cFeBc6eKGSBkjd6wpWnPgYGxX2myF//YDwVD4YbO7f1KMXiWJjwR95tsP8ujPxB7Fb
-	 x1A9PUrSKfZ4w==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 49F3F17E0CF3;
-	Tue, 20 Jan 2026 10:43:30 +0100 (CET)
-Message-ID: <c3878cb0-cf37-41a3-a875-cf8f2a604b0c@collabora.com>
-Date: Tue, 20 Jan 2026 10:43:29 +0100
+	id 1vi8fK-00000003ZvS-444p
+	for linux-mediatek@lists.infradead.org;
+	Tue, 20 Jan 2026 10:08:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1768903728;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=H8E5ZexNwUvepWRnAB8kom9407PvcV1LCFOFpBHsJ7Q=;
+	b=g2mCFRnavvT76+MUPL7exymMoakxZUI0HqHzPAHw8w5ZR5nXByI8W7MwZCjvmo4tyAcdp9
+	pTqC5mk9du+lE4GyQLvxjCaFHUj517mIDlikH4nJUJP9ZW0CYQG6d0w9N0dQY5jTGVfiL8
+	zrEIr6fciSZ6aFBPIt3A5q+QmCuQWMs=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-335-_FcBJWr0PV6z_w221_c1dQ-1; Tue, 20 Jan 2026 05:08:45 -0500
+X-MC-Unique: _FcBJWr0PV6z_w221_c1dQ-1
+X-Mimecast-MFC-AGG-ID: _FcBJWr0PV6z_w221_c1dQ_1768903724
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-430fb8d41acso2980140f8f.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 20 Jan 2026 02:08:45 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768903724; x=1769508524;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=H8E5ZexNwUvepWRnAB8kom9407PvcV1LCFOFpBHsJ7Q=;
+        b=E+i6+bgGnEExrLVyQyZUXyjI6Tj00yI2F3QeqREWeSG0ZJ75fg+UAZILO3X7j+rpxv
+         w6k+r8MvroZARjhtg/rMtNXh0NL7QxHEDfxrN+PfCOruZVaT9cWwYWJy6e0bT4NZXIfy
+         RKu+JM0Sv2pCCdn7X1v/WXNERhVrAqWV5iJaR/D7gu7tVVfOf0RC2x1F8B5iIET72Qf4
+         lcseZRrGH0ClNQh85oomJJslHNCNAOQtkNfvCtzqgMthjQBF8OmAAHCASjJixg79jZ/k
+         V5LwjdeaaI90ZHtrlba9h9L4NKYjXUTWqdQ43tsZNYng3ipJvIxMrbnHwzdn2okkLARe
+         T1dg==
+X-Forwarded-Encrypted: i=1; AJvYcCVCrOG+Y8PT6yAf9utCW8R0urpFEvEcpDJZF6jUu0vtx/BhZDSNa9FC6IyeV79Lb99JTKzmgfLOc2RrSxsPeA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxPtXFDQRdilyVN4b4Ghs2azMBU9ikPpnf3Qoo6A/YralRI468+
+	ItOvdcM96lz7vVIFpHFc0una50DYq195UD2GmYYb3pdwlm3aZ4ewyK7Bam0tpP28u/6Jz6NO72f
+	hl6N3nJxJgWzZ7ND9hghjSbf5jfgzwG7Po2GeI7RkNBs+3/slC1YsQeJE0QOkExbKWH2ja1JERw
+	==
+X-Gm-Gg: AZuq6aK2O1Wn63V1vjkzfuAlsB9SS39du8dLvpK2b/iXN7MNxwZjHgYGAc1Pcw+L70t
+	BBbgEOFBJ9X4DPp4NGxJ3pKYBQ8O4FBJ3AOjT5HZ32crXFI+u+AU5pDuiTmfknv17KUshidmb5Q
+	z6/FT//uMmtmISRE88aECEzGQz3yEoI/gOVMVkpcxI8YT8DWM24BK3gzDO59gYo/oxIvoGXvOdy
+	7FMs5pUqxG2b9za+kXWvfVHrSsc+5DYLrRIL5/zGqORN7cWgEEq2WdijV55rWQy6cBAUAXAKpsQ
+	l+xzxp+EbD1g8/3h8l1+Fdj3dBlczn+el7MvdD46t4YM3uhmFedbF2MvNXZxY1zsbTF/2cnu9yf
+	+uG3gqwq1Ok4G
+X-Received: by 2002:a05:6000:25c8:b0:430:f41f:bd42 with SMTP id ffacd0b85a97d-4356a0662e3mr18086969f8f.57.1768903724435;
+        Tue, 20 Jan 2026 02:08:44 -0800 (PST)
+X-Received: by 2002:a05:6000:25c8:b0:430:f41f:bd42 with SMTP id ffacd0b85a97d-4356a0662e3mr18086936f8f.57.1768903724027;
+        Tue, 20 Jan 2026 02:08:44 -0800 (PST)
+Received: from [192.168.88.32] ([150.228.93.113])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4356997eb1fsm28563115f8f.35.2026.01.20.02.08.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 20 Jan 2026 02:08:43 -0800 (PST)
+Message-ID: <f35ba439-bb32-4c62-a057-29f45f95083e@redhat.com>
+Date: Tue, 20 Jan 2026 11:08:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 11/24] scsi: ufs: mediatek: Rework probe function
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
- "robh@kernel.org" <robh@kernel.org>,
- =?UTF-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>,
- "kishon@kernel.org" <kishon@kernel.org>,
- "James.Bottomley@HansenPartnership.com"
- <James.Bottomley@HansenPartnership.com>,
- "bvanassche@acm.org" <bvanassche@acm.org>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
- <Chaotian.Jing@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
- "nicolas.frattaroli@collabora.com" <nicolas.frattaroli@collabora.com>,
- "vkoul@kernel.org" <vkoul@kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "krzk@kernel.org" <krzk@kernel.org>,
- "neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "avri.altman@wdc.com" <avri.altman@wdc.com>,
- "broonie@kernel.org" <broonie@kernel.org>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>
-Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- "kernel@collabora.com" <kernel@collabora.com>
-References: <20260108-mt8196-ufs-v5-0-49215157ec41@collabora.com>
- <20260108-mt8196-ufs-v5-11-49215157ec41@collabora.com>
- <81ed17eb-2170-4e97-b56d-488b5335ff5c@kernel.org>
- <dd2eba99adaddf7517f06acf7805d32e261fafa4.camel@mediatek.com>
- <87887adf-2c94-48c2-8f83-4e772ab50f60@kernel.org>
- <e9a6da3998195b9dbda5abd26bc6dd5d3aca07ff.camel@mediatek.com>
- <66ca211a-c909-4d0c-a22c-9cbd3489d372@kernel.org>
- <46cb450f92887ceba07614dc85ed495f6af7f602.camel@mediatek.com>
- <26c68bb1-1e63-4b47-babc-21ae27e3205e@collabora.com>
- <74944c55418976375955430d27ac568149d555f1.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] net: airoha_eth: increase max MTU to 9220 for DSA jumbo
+ frame support the industry standard for jumbo frame MTU is 9216 bytes. When
+ using DSA sub-system, an extra 4 byte tag is added to each frame. To allow
+ users to set the standard 9216-byte MTU via ifconfig ,increase AIROHA_MAX_MTU
+ to 9220 bytes (9216+4).
+To: Sayantan Nandy <sayantann11@gmail.com>, lorenzo@kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, sayantan.nandy@airoha.com, bread.hsu@airoha.com,
+ kuldeep.malik@airoha.com, aniket.negi@airoha.com
+References: <20260115064043.45589-1-sayantann11@gmail.com>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <20260115064043.45589-1-sayantann11@gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: h7Q4DzIdbYy9a_oVMGWIpICNlpe0UkOIC_A0Nplhee8_1768903724
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-In-Reply-To: <74944c55418976375955430d27ac568149d555f1.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260120_014336_569278_2F82032D 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20260120_020851_087190_DBE1D848 
+X-CRM114-Status: UNSURE (   7.47  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,38 +117,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 13/01/26 08:26, Peter Wang (王信友) ha scritto:
-> On Mon, 2026-01-12 at 16:02 +0100, AngeloGioacchino Del Regno wrote:
->> No, MediaTek's reset hardware implementation is not the same as Texas
->> Instruments.
->> It was *very similar* to TI in the past (years ago, around the MT6795
->> Helio
->> generation times).
->>
->> MediaTek's reset controller - by hardware - is definitely different
->> from the one
->> found in TI SoCs.
->>
->> Regards,
->> Angelo
-> 
-> I did not notice this change.
-> Will you be helping to upstream MediaTek's reset controller instead of
-> TI's?
-> 
+On 1/15/26 7:40 AM, Sayantan Nandy wrote:
+> This change ensures compatibility with common network equipment and jumbo frame configurations.
 
-The main reset controllers are already integrated in clock drivers since
-... well, years ago.
+It looks like that a significant amount of the description landed in the
+subject, which is not good.
 
-If there's any additional reset controller that is missing, and special to
-UFS, and that's not in the UFS clock driver, yes we can upstream that.
+Please reformat the changelog carefully.
 
-Cheers,
-Angelo
+Also it looks like this is intended to address a bug; if so it should
+target the 'net' tree and include a Fixes tag.
 
-> Thanks
-> Peter
-> 
+Thanks,
 
+Paolo
 
 
