@@ -4,64 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C466D2ECF7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 10:18:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EB45D2ED0F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 11:37:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rWToKTtEAIWhH1HaIs/bz39AlqiVbRY1gRmDOZ6F3lY=; b=wmdMJRRq1DG7JJKqIDYPGwzxP2
-	sbd/JXT2hd/UhoGn36NxuCeaOnBuw669qYoR+ro4hN4OfEuAEd72pTYSl3CJNZrariBNur8SxLUUu
-	MGkS3nhlJHpFwLevUa6YlFlIKdmHqvZbJAsJl6aCI0F614gNt96LCEqpX5QXU0LKx7YkFTU/h3aHG
-	95ixBvNC7Ur3kdHykNB5JisQLahHmCcZIgx/U7PNOzQpp75TYZXxLnbgj1hA/pujamKU0Zt+rq4h/
-	zRHYLphDaxDa50FPRlsxg03RV3hbWFLWmwJMSklSS04CLRklhNkUpMvrdo0tDg/dwtjZxbCiZbp5T
-	8jy85sBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=k6Xceg2OD/lxCrNfx6j5iuRJOA2fkoLkdUN/b0QbNS4=; b=2sEzbXiNkBUVibjlNsSDOyouk7
+	efPIHfuwxHJTkXivG30GuLqG9+KdyjGW5Cu5xHKr1D0cIHXWNXgnsAOIgE/K+9ZXIVZAJc+7iuDsP
+	hVf8zyWOO4MePPHzfezz4UI0IanwgMhtVBJKfaMM+PSFbCM9ZfrGLIflu/KlCrCy4oNd9aUaB60Ti
+	kisj9YwHic/kzT/eEPOqVBEc1UXlsxDSkcL6nYpM++LBOlqPMBc1KquNcko4vVRbUi3r6pbKO+sS1
+	JHMfXb3P8iP8Rr5WPw3zw3TC7CSEmPjVlQVYkVOuhFP7yCr5wD4QgPQDKYNgccICeqYG/ilXiFNGg
+	+YRSHIfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vi8oF-00000003bVX-0gz2;
-	Tue, 20 Jan 2026 10:18:03 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1viA3V-00000003j5L-3uU8;
+	Tue, 20 Jan 2026 11:37:53 +0000
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vi8o8-00000003bOs-0Cav;
-	Tue, 20 Jan 2026 10:17:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5A27C4393B;
-	Tue, 20 Jan 2026 10:17:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E04AAC16AAE;
-	Tue, 20 Jan 2026 10:17:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768904275;
-	bh=MR7e2R7CPVgyfSRb7MzhQnlnj8cAE7O5X1tWhsCzZNk=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JQ5NEMawg3O7GKUxWu9q8/3xE/leOejOE99oobrByn63rWM1HbjudTvX0jewCB9RK
-	 WnHo/d5e8Gj4C0Q1dQy5EFQs55T/enqqiCMskfWv0QxDm+98DXSuJCdTFYsMzEIWad
-	 qfQBRnxZsjqjCyqcT+kUgV2woBjFHKu2xfkC64kc/1PN0qtSsG5nzLBWlhXXHgznES
-	 SSzX0ZHA+u449aMqUeFM4xCrr1gv2NMD4wZXLMUqk7A15YUWkjXqGT2fe8RDe0Ipun
-	 /7w7JHwIp8xylTDLpVdivm+IB4iooYtNuS+YMob/03kcrR5m9KrWPM0xyyiYULEEPg
-	 QjYR+V8O7V29w==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 20 Jan 2026 11:17:18 +0100
-Subject: [PATCH net-next v4 2/2] net: airoha: npu: Add the capability to
- read firmware names from dts
+	id 1viA3S-00000003j3m-2U0y
+	for linux-mediatek@lists.infradead.org;
+	Tue, 20 Jan 2026 11:37:52 +0000
+Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-81f3c14027cso2902060b3a.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 20 Jan 2026 03:37:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1768909069; x=1769513869; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=k6Xceg2OD/lxCrNfx6j5iuRJOA2fkoLkdUN/b0QbNS4=;
+        b=muw2rRJYhIl3qQQocTngi8n0TThojt5VvKHJHOOqikIw2RNEeNnKrMLBOYhMpUjI6T
+         t1uWz+LbzfnQtq/WwSvw0vVTPqKxCCu6khr1kAAxhId8Ch2AkZBaE/tQAwpcKQ7z2/b/
+         cfI6nIOF2GMgvakjCWwdj5e9Uczkg58r3aDtCaLBVbpgiBKVgesID/pBlfXAv60Fi2v/
+         mjFBU+nM9q6c7cj1aRPwTlGZgAUI6WOU1rQGBMUVi+Kr3edRrVk5I5INsaOwFjD10RXM
+         r8bpWeFn9MBWjXh4tnKRIdJytN2GLpNHDl3/i5fYukkvP6cZNSaB2Ioi1hyHvNM+Bb7g
+         qNTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768909069; x=1769513869;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=k6Xceg2OD/lxCrNfx6j5iuRJOA2fkoLkdUN/b0QbNS4=;
+        b=C/eCIXZrKa35rCRfJ0bt2rLDp4ddMp9dBw86wAoHMMp7gYe2JhkpuGA7slrTfgQwCf
+         SN3aqed0c+LHm1duR9K4RIPUE8NM3inDCtzwPiPUSZfswlbaJ5Qqq69oJTfbZoggeY9R
+         O24BkMfm2Av31YvR8fkH8iENUyq5PiKMpwnuULmo5uRW2nUzNtBQK3UjjqwjnFijcfFL
+         ra8Nte5/gwrXAiNZ4tUZZb4K+xFO0ZN1htIOAFPoyhomZwBzbB5bupjOPFaYvzLi0/HJ
+         o9galT/f0uaSTmIAgw6JycQi9LoDegDEP5eJffAqEex3o4yvyS57KxBeQmpEABXxtCeE
+         V6ng==
+X-Forwarded-Encrypted: i=1; AJvYcCUVbxKIsTaWUaF9hytpfbarJvuTYJGBDqqLX+aTGXtchiWneQjGz403dBYXBeMZL/Op2WE17lfs7Yf38WLXyg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy3ds1zAHioLwuXYFJ2DcAUNMzKmsyFQlgpihQ+UjJ7bhe7p/au
+	5xMjUMyY4UB1TMtJk89/90Ah9w0bcPeKkiIx1ce0P6erT9yrfHMnZ1fn
+X-Gm-Gg: AY/fxX57i6zhoSLGmKbrE617AB86eRNr1FNU1WtDC2tkuotDsgfZcGVEgvVCnbMuoSy
+	C8AvxN1E77lWuvfPo+M2nKLh6IetjJTP07566e0Ohp8qfxG726jjlqEjbHtCwvB8yFRm6ZNrg46
+	I667eTU11LqRuQ8D8Diil2rC8lRQazG1r5YnVLRs26hj1C6WVmyh5twpTDJIgflVCUIOkgJ2LvV
+	iFzS4H6FinSO86zhWW9O3YpEoTwXiA64YOytYLzkoOdTA70ruqmIIBne5v3jCYp2ABrzkk6Ptg7
+	BwMW3ZrAg2v+K5bhK6cvdU0sDhwTZh6lmcLohF47ideBfluEiMv4GiFRxFVp1VuknVJSxpU6+eY
+	p/ep8rC8XNlWJntbB9az1ErP1I8KLhSThWQoX25ObBA8NkTRVPALFxGaR+f73C1g2WIElVftJGn
+	Rx72gDlS3cyjZ0ylB7O5Q+WNeWKQ==
+X-Received: by 2002:a05:6a00:929c:b0:81e:4a9e:f809 with SMTP id d2e1a72fcca58-81f8efbbe25mr13964911b3a.2.1768909069116;
+        Tue, 20 Jan 2026 03:37:49 -0800 (PST)
+Received: from [127.0.1.1] ([2001:861:3201:3d10:9fa0:1400:5c26:1419])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c5edf264b9csm11462134a12.15.2026.01.20.03.37.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Jan 2026 03:37:48 -0800 (PST)
+From: Gary Bisson <bisson.gary@gmail.com>
+Date: Tue, 20 Jan 2026 12:36:59 +0100
+Subject: [PATCH] drm/mediatek: mtk_dsi: enable hs clock during pre-enable
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260120-airoha-npu-firmware-name-v4-2-88999628b4c1@kernel.org>
-References: <20260120-airoha-npu-firmware-name-v4-0-88999628b4c1@kernel.org>
-In-Reply-To: <20260120-airoha-npu-firmware-name-v4-0-88999628b4c1@kernel.org>
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-X-Mailer: b4 0.14.2
+Message-Id: <20260120-mtkdsi-v1-1-b0f4094f3ac3@gmail.com>
+X-B4-Tracking: v=1; b=H4sIANpob2kC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDQyMD3dyS7JTiTF0jy1STZAuTVPMkYwsloOKCotS0zAqwQdGxtbUAlxA
+ E9VgAAAA=
+X-Change-ID: 20260120-mtkdsi-29e4c84e7b38
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Gary Bisson <bisson.gary@gmail.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1768909063; l=2852;
+ i=bisson.gary@gmail.com; s=20251201; h=from:subject:message-id;
+ bh=ETsLcSZWKB9eq3Cr6keAewRWPWzheGP6F9hf6pabzj8=;
+ b=vFf5Qdlbwe4FiGiI83Db84ydmZAaWLQ3TMiZXuLTGwCAwsOUAzY4UJTj0cTS0qPmPPd3VjN5F
+ RL5WhoIxZDkAMo+KcW2ej0+SI1Sze9wVe2bNPa23aYLM49ontoyVwcq
+X-Developer-Key: i=bisson.gary@gmail.com; a=ed25519;
+ pk=eaOrLwovHUZBMoLbrx+L1ppj+AH+TfgxkVhIEyrhkeE=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260120_021756_155662_4D38BDA8 
-X-CRM114-Status: GOOD (  17.82  )
+X-CRM114-CacheID: sfid-20260120_033750_623903_E8603A8C 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,120 +111,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce the capability to read the firmware binary names from device-tree
-using the firmware-name property if available.
-This patch is needed because NPU firmware binaries are board specific since
-they depend on the MediaTek WiFi chip used on the board (e.g. MT7996 or
-MT7992) and the WiFi chip version info is not available in the NPU driver.
-This is a preliminary patch to enable MT76 NPU offloading if the Airoha SoC
-is equipped with MT7996 (Eagle) WiFi chipset.
+Some bridges, such as the TI SN65DSI83, require the HS clock to be
+running in order to lock its PLL during its own pre-enable function.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Without this change, the bridge gives the following error:
+sn65dsi83 14-002c: failed to lock PLL, ret=-110
+sn65dsi83 14-002c: Unexpected link status 0x01
+sn65dsi83 14-002c: reset the pipe
+
+Move the necessary functions from enable to pre-enable.
+
+Signed-off-by: Gary Bisson <bisson.gary@gmail.com>
 ---
- drivers/net/ethernet/airoha/airoha_npu.c | 46 +++++++++++++++++++++++++++-----
- 1 file changed, 40 insertions(+), 6 deletions(-)
+Tested on Tungsten510 module with sn65dsi83 + tm070jdhg30 panel.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
-index a56b3780bb627cc393b94210b6b5c72cc95baea3..89f22f3f47dc562864f32395c88093e8f28e161b 100644
---- a/drivers/net/ethernet/airoha/airoha_npu.c
-+++ b/drivers/net/ethernet/airoha/airoha_npu.c
-@@ -16,6 +16,8 @@
- 
- #define NPU_EN7581_FIRMWARE_DATA		"airoha/en7581_npu_data.bin"
- #define NPU_EN7581_FIRMWARE_RV32		"airoha/en7581_npu_rv32.bin"
-+#define NPU_EN7581_7996_FIRMWARE_DATA		"airoha/en7581_MT7996_npu_data.bin"
-+#define NPU_EN7581_7996_FIRMWARE_RV32		"airoha/en7581_MT7996_npu_rv32.bin"
- #define NPU_AN7583_FIRMWARE_DATA		"airoha/an7583_npu_data.bin"
- #define NPU_AN7583_FIRMWARE_RV32		"airoha/an7583_npu_rv32.bin"
- #define NPU_EN7581_FIRMWARE_RV32_MAX_SIZE	0x200000
-@@ -195,18 +197,18 @@ static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
- }
- 
- static int airoha_npu_load_firmware(struct device *dev, void __iomem *addr,
--				    const struct airoha_npu_fw *fw_info)
-+				    const char *fw_name, int fw_max_size)
- {
- 	const struct firmware *fw;
- 	int ret;
- 
--	ret = request_firmware(&fw, fw_info->name, dev);
-+	ret = request_firmware(&fw, fw_name, dev);
- 	if (ret)
- 		return ret == -ENOENT ? -EPROBE_DEFER : ret;
- 
--	if (fw->size > fw_info->max_size) {
-+	if (fw->size > fw_max_size) {
- 		dev_err(dev, "%s: fw size too overlimit (%zu)\n",
--			fw_info->name, fw->size);
-+			fw_name, fw->size);
- 		ret = -E2BIG;
- 		goto out;
+Left mtk_dsi_set_mode() as part of the enable function to mimic what is
+done in the Samsung DSIM driver which is known to be working the TI
+bridge.
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 35 +++++++++++++++++------------------
+ 1 file changed, 17 insertions(+), 18 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 0e2bcd5f67b7..b560245d1be9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -672,6 +672,21 @@ static s32 mtk_dsi_switch_to_cmd_mode(struct mtk_dsi *dsi, u8 irq_flag, u32 t)
  	}
-@@ -218,6 +220,28 @@ static int airoha_npu_load_firmware(struct device *dev, void __iomem *addr,
- 	return ret;
  }
  
-+static int
-+airoha_npu_load_firmware_from_dts(struct device *dev, void __iomem *addr,
-+				  void __iomem *base)
++static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
 +{
-+	const char *fw_names[2];
-+	int ret;
-+
-+	ret = of_property_read_string_array(dev->of_node, "firmware-name",
-+					    fw_names, ARRAY_SIZE(fw_names));
-+	if (ret != ARRAY_SIZE(fw_names))
-+		return -EINVAL;
-+
-+	ret = airoha_npu_load_firmware(dev, addr, fw_names[0],
-+				       NPU_EN7581_FIRMWARE_RV32_MAX_SIZE);
-+	if (ret)
-+		return ret;
-+
-+	return airoha_npu_load_firmware(dev, base + REG_NPU_LOCAL_SRAM,
-+					fw_names[1],
-+					NPU_EN7581_FIRMWARE_DATA_MAX_SIZE);
++	if (!dsi->lanes_ready) {
++		dsi->lanes_ready = true;
++		mtk_dsi_rxtx_control(dsi);
++		usleep_range(30, 100);
++		mtk_dsi_reset_dphy(dsi);
++		mtk_dsi_clk_ulp_mode_leave(dsi);
++		mtk_dsi_lane0_ulp_mode_leave(dsi);
++		mtk_dsi_clk_hs_mode(dsi, 0);
++		usleep_range(1000, 3000);
++		/* The reaction time after pulling up the mipi signal for dsi_rx */
++	}
 +}
 +
- static int airoha_npu_run_firmware(struct device *dev, void __iomem *base,
- 				   struct resource *res)
+ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
  {
-@@ -233,14 +257,22 @@ static int airoha_npu_run_firmware(struct device *dev, void __iomem *base,
- 	if (IS_ERR(addr))
- 		return PTR_ERR(addr);
+ 	struct device *dev = dsi->host.dev;
+@@ -724,6 +739,8 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 	mtk_dsi_set_vm_cmd(dsi);
+ 	mtk_dsi_config_vdo_timing(dsi);
+ 	mtk_dsi_set_interrupt_enable(dsi);
++	mtk_dsi_lane_ready(dsi);
++	mtk_dsi_clk_hs_mode(dsi, 1);
  
-+	/* Try to load firmware images using the firmware names provided via
-+	 * dts if available.
-+	 */
-+	if (of_find_property(dev->of_node, "firmware-name", NULL))
-+		return airoha_npu_load_firmware_from_dts(dev, addr, base);
-+
- 	/* Load rv32 npu firmware */
--	ret = airoha_npu_load_firmware(dev, addr, &soc->fw_rv32);
-+	ret = airoha_npu_load_firmware(dev, addr, soc->fw_rv32.name,
-+				       soc->fw_rv32.max_size);
- 	if (ret)
- 		return ret;
- 
- 	/* Load data npu firmware */
- 	return airoha_npu_load_firmware(dev, base + REG_NPU_LOCAL_SRAM,
--					&soc->fw_data);
-+					soc->fw_data.name,
-+					soc->fw_data.max_size);
+ 	return 0;
+ err_disable_engine_clk:
+@@ -769,30 +786,12 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+ 	dsi->lanes_ready = false;
  }
  
- static irqreturn_t airoha_npu_mbox_handler(int irq, void *npu_instance)
-@@ -790,6 +822,8 @@ module_platform_driver(airoha_npu_driver);
+-static void mtk_dsi_lane_ready(struct mtk_dsi *dsi)
+-{
+-	if (!dsi->lanes_ready) {
+-		dsi->lanes_ready = true;
+-		mtk_dsi_rxtx_control(dsi);
+-		usleep_range(30, 100);
+-		mtk_dsi_reset_dphy(dsi);
+-		mtk_dsi_clk_ulp_mode_leave(dsi);
+-		mtk_dsi_lane0_ulp_mode_leave(dsi);
+-		mtk_dsi_clk_hs_mode(dsi, 0);
+-		usleep_range(1000, 3000);
+-		/* The reaction time after pulling up the mipi signal for dsi_rx */
+-	}
+-}
+-
+ static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+ {
+ 	if (dsi->enabled)
+ 		return;
  
- MODULE_FIRMWARE(NPU_EN7581_FIRMWARE_DATA);
- MODULE_FIRMWARE(NPU_EN7581_FIRMWARE_RV32);
-+MODULE_FIRMWARE(NPU_EN7581_7996_FIRMWARE_DATA);
-+MODULE_FIRMWARE(NPU_EN7581_7996_FIRMWARE_RV32);
- MODULE_FIRMWARE(NPU_AN7583_FIRMWARE_DATA);
- MODULE_FIRMWARE(NPU_AN7583_FIRMWARE_RV32);
- MODULE_LICENSE("GPL");
+-	mtk_dsi_lane_ready(dsi);
+ 	mtk_dsi_set_mode(dsi);
+-	mtk_dsi_clk_hs_mode(dsi, 1);
+-
+ 	mtk_dsi_start(dsi);
+ 
+ 	dsi->enabled = true;
 
+---
+base-commit: 8f0b4cce4481fb22653697cced8d0d04027cb1e8
+change-id: 20260120-mtkdsi-29e4c84e7b38
+
+Best regards,
 -- 
-2.52.0
+Gary Bisson <bisson.gary@gmail.com>
 
 
