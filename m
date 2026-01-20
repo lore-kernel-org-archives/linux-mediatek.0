@@ -4,110 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EC7ED2ECEC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jan 2026 21:24:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6530BD2ECEF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 00:18:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AP5uij4auzaarNTMKGDAE5deLZectmAWZbcZ2tCl4Wo=; b=KxhuwLFbzn0zDoszvPdYbxqy2X
-	hS26TFwoThfSnk7E/fpmV1nk3tbXFgfFbQqrx2E6FuJkzxrHt5SfAwiHeJjVaUfiIMoFptlFZ4fGL
-	HM6NiTxGlvJKaPy/k6TA6pngTSFkGpHrV1u4m1tcismsfR56pe3uoGArIyW/eGdvhhzFBYeQC5/C3
-	3+8XtLkzIJuu6gBumEvGnl07Sm01wxHAc0YhMp4zrLQU0BAIRNY2tv2KWAkQAQ5W+l20MlYpx4DvN
-	WvJ8ivkPA2yr8oplYzzvCTDWehX7jbr5ioj9wUxh5QKKr2Eh7v1CPtCIJlnYoKi06UsIPnw9RxOal
-	LHxNGMGg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+63T1XXK537SwUKOIzlHT0SNwo7xwEPuJFuRVDXEKGM=; b=AIpd8WxxhojdMr1o35RrjSQrbL
+	8MsVwcPQ090QW8WWL/zCR2svrEdMjR7ZK/XEXDsKWwnhLtKK84+de8FttzENyPH6KxPiL2JwDkIcW
+	1PRS8t8hayNp+b2CHoYNf+v6LMQGTTLRCRJ8k/5e70844NlGBoORPGasGRDjM3+S6kMQEbqJLzdjc
+	swojaiNslR3V+hlN6WlkrNxzzeA2HCy7TVMK2OhQkUPhfTYHrXQsQe1k8nRRQx8puJxmm8j+f4afT
+	Dm2Az1mjwt5A+V0ZRqoWi4MWCx46YPR7MZsXhkx7vtqDx9xvdnBVW6vJQMeYbwP2laqNGIBHW1533
+	KBuIlfBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhwjj-00000002tUs-10Z5;
-	Mon, 19 Jan 2026 21:24:35 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1vhzSD-00000002zp1-3pg6;
+	Tue, 20 Jan 2026 00:18:41 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhwjf-00000002tTq-0BqI
+	id 1vhzSA-00000002zof-3tda
 	for linux-mediatek@lists.infradead.org;
-	Mon, 19 Jan 2026 21:24:32 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2a09d981507so35621155ad.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Jan 2026 13:24:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1768857867; cv=none;
-        d=google.com; s=arc-20240605;
-        b=QceoM0aB6evqiXQdValcAp2hHEbXx7TwvOI+LmTzfxap0vsgWt9Fuilc06Rnu+w462
-         sZ287TjTeess5NJglraKe7QM4+qyO9MEUsB4/2t1WHpBTydlNS0TpzIO22m3f5AQW4RS
-         ggaab9x9dORud3Jz91/Pgja4kbvS4RX7X65daKgSX5TxBTtG8BTPXuwi39DOQDJajqwp
-         e0ARzMtWvauaXrOPKhSNQK+avMYanMHoFnZmaQ/024C0mnLecckG5cCqIkf6UZmK2Mfe
-         h0o6404HmOUs3usu40guPF2wf3wN2aktDdneNOyajTBRN98OhEbaduYAEVuvv+KJ+Nkf
-         ZD9Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=AP5uij4auzaarNTMKGDAE5deLZectmAWZbcZ2tCl4Wo=;
-        fh=THajSbhqx9TShZsJLoC7AdMY3fIvpkQGnzeFmRKsqPs=;
-        b=VjUu3C4H4/7ZHQMMdnzg1hYuQbda0Xxwyu+HqiFQgdwtqEIWv9xnavVq7s7sYOzhq/
-         3Vj6BC3r1olhL6UgZAl9ZWWbkidkrIUqzdy4AykqAnX4ydN7+GIN1SVPWx+beGVwS1nA
-         0FIUBqYZeFVzgnQ5p9jFz8XZwumQGlFugR4dlB/4jdXb66ZyaAytB6mjqtf3NbK55Sdp
-         1TwEMWXu8dm65jyr+DCm8ET6/fsp4MRacy1EhqZaUOCp6s+9mvd3t9PVZCKULlKG0vWu
-         64S1xxdzbijuivqLkQOJKB/gIFcxYh01ZJku7N5AQxfibiy+XfP7YiGd4CN3Jm5a0/5i
-         QvDw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=20230601; t=1768857867; x=1769462667; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=AP5uij4auzaarNTMKGDAE5deLZectmAWZbcZ2tCl4Wo=;
-        b=bJsohoTfefURwT4UVYR0lJQBNYYu1hVH+p8KqAlo1l/ChyobZoQzV0EI46XSh2y8cb
-         OY780fP/He9iHngLaX/tNeg8fJCQvicEZnrgUIO8Q4HSn7RI+tElLY1AKfu8yRpkIx9b
-         qM/xJIhbo55FUaghSfY8oyi5PGqbH5TxHpXuKwnQ45YNfybkewxw6vFLMeZnGiuOMqgs
-         0ylmd8tueA4b8qSIJHPZRhgxAfyCRgRb8kJ/xkMf5brYOsdA9I50ZElprXWWa9RIFY17
-         +1GvGKzfd3lU5lzpvdJUc/A2Xs5kkC57vSifgK7XAN6d7w9+8Am65FuTEvmaMpxRTlog
-         xJQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768857867; x=1769462667;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=AP5uij4auzaarNTMKGDAE5deLZectmAWZbcZ2tCl4Wo=;
-        b=aYopROq5tpMqBbo9w4CyOmcMl9xgqcOTWgU0HsOoZZIDGegH2w/M6FGaY7io9torSi
-         xtAL2TRSnkEPINjkeNFqyIDZX8ylObMkk3QNChYX1nWnM2kdCZDgPw/8fpAecMIV1CSA
-         q7tcm88Gx+zugzUo5m2qdMUO/FnpPQD6a1HQwZJSBljvCirxPMBf/fUZoJltSy3epXLJ
-         chZV+NXdKwovsxkGNwQqdKudKSzYeNrkEXWsp9+906K9S2HVOjIbuvtFVigecgbk3ZOq
-         BzI5A/AhsIA8Shm6LvsbV2ZUTQAKBaPMRN7qCCDoEIhJp94FkhqRqVoNX4Io5y51rjgJ
-         e10w==
-X-Forwarded-Encrypted: i=1; AJvYcCX3XOYP+sGO4WyNlk/KtGINUDwpHHEzwlYujnlc9YRUrbgJIjw5HIIQtZJXI4DM5tinP1TzeY6sfFDOH+ybOw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxi6gynyaNqKzlqaaTmCPMSEum+qcXyMQhBhAZr+xfqgEh6j0w3
-	aN5ByD/6F/5SmhRPt3ZYfkCMIvJGZN/n4zlRgprt2hNowuZLKBmcPAXenwTZL+zFn7Z9r8LuOPg
-	wEF3NB2h4nuogD4SLfbVDB36GdEdou7A=
-X-Gm-Gg: AZuq6aJzaXfFL+LaRJwUB3hxUwN7snSLWUGPfufaBKglH0JS9fJImttBi8LEx8nHz1o
-	z/dtK8D4SgWXFHiGCNG07HZ3Nf/AM85gIdDXCf6FSvesgsjuFVTEHqbo4gpZsbjlxNcoQWt19e1
-	jXVbP3f/uepoG10KhuGkGNu91g9fnY+YlgE1odFllDgzyd/PzhUX26vmbS7vR83yUz8Ph2O9oQW
-	aNwbl9d9D7QwI7t4oMKS48n8Z+9gPpwesncDtJJ9a9T9IC2bGe33NK0euROaneuQmacsMRM+Y5U
-	NV4kU/eiOf6rvzUFsielt5ak3FOsG1FdzVvMAjo=
-X-Received: by 2002:a17:902:e787:b0:2a0:fb1c:144e with SMTP id
- d9443c01a7336-2a700990c98mr136201155ad.7.1768857866821; Mon, 19 Jan 2026
- 13:24:26 -0800 (PST)
+	Tue, 20 Jan 2026 00:18:40 +0000
+X-UUID: 8ed0ebf0f59511f0a16f0188aa809bee-20260119
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+63T1XXK537SwUKOIzlHT0SNwo7xwEPuJFuRVDXEKGM=;
+	b=I709EEjTZ8/uGu2gvMtqyj12pX+IS8TZf+F9dr01lsh3Z0IjsQYurHX0J80WgfO9D/BwP4MLHdhbmeyUw7VfcH22tQ0D3qKErCdtl939gBLvHcO++NDFMve7vWQOL1g12KIXyW31sk89VDZKgxAuL/n7n0ZrO5kZW/01bZ9ieCI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.9,REQID:8c6cea06-4843-48b8-8814-12b24f7a03dd,IP:0,UR
+	L:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:r
+	elease,TS:0
+X-CID-META: VersionHash:5047765,CLOUDID:cd08b2e8-ef90-4382-9c6f-55f2a0689a6b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 8ed0ebf0f59511f0a16f0188aa809bee-20260119
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 139454216; Mon, 19 Jan 2026 17:18:34 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 20 Jan 2026 08:18:31 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 20 Jan 2026 08:18:31 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
+	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
+	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v1] Bluetooth: btusb: MT7922: Add VID/PID 0489/e174
+Date: Tue, 20 Jan 2026 08:18:29 +0800
+Message-ID: <20260120001829.3185977-1-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-References: <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-0-8d7a3dbacdf4@bootlin.com>
- <20260109-drm-bridge-alloc-getput-drm_of_find_bridge-3-v2-2-8d7a3dbacdf4@bootlin.com>
- <CAFBinCBWUXNwEDCJNEmdCtOcGO9eVFfZFC9p9fpdRTesZ7xBSQ@mail.gmail.com> <DFNN251V4JL9.2ECEDGOKN8I4F@bootlin.com>
-In-Reply-To: <DFNN251V4JL9.2ECEDGOKN8I4F@bootlin.com>
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Date: Mon, 19 Jan 2026 22:24:15 +0100
-X-Gm-Features: AZwV_QgxI3L9klOeJM7lsCljCRIK_bf05uJfhQMd5VWt4KtGJ4pArfXR_EjKQn4
-Message-ID: <CAFBinCCz+MobtXYdiyWRBBFBDo77iULLOZ1p2i4fAVnpJ1NzJw@mail.gmail.com>
-Subject: Re: [PATCH v2 2/6] drm/meson/dw-hdmi: convert to of_drm_find_and_get_bridge()
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-amlogic@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_132431_138106_DFEBE3D0 
-X-CRM114-Status: GOOD (  23.58  )
+X-CRM114-CacheID: sfid-20260119_161838_995616_D742574B 
+X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,52 +88,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Luca,
+Add VID 0489 & PID e174 for MediaTek MT7922 USB Bluetooth chip.
 
-On Tue, Jan 13, 2026 at 6:31=E2=80=AFPM Luca Ceresoli <luca.ceresoli@bootli=
-n.com> wrote:
-[...]
-> >> @@ -789,8 +789,12 @@ static void meson_dw_hdmi_unbind(struct device *d=
-ev, struct device *master,
-> >>                                    void *data)
-> >>  {
-> >>         struct meson_dw_hdmi *meson_dw_hdmi =3D dev_get_drvdata(dev);
-> >> +       struct platform_device *pdev =3D to_platform_device(dev);
-> >> +       int irq =3D platform_get_irq(pdev, 0);
-> >>
-> >> +       devm_free_irq(dev, irq, meson_dw_hdmi);
-> > I have one question (so I can understand things better):
-> > is there a particular reason why you went with free'ing the IRQ
-> > instead of "just" masking it (so the hardware won't fire anymore of
-> > those IRQs)?
->
-> One reason is symmetry: _bind requests the irq, so _unbind does the
-> reverse.
->
-> Another is I don't have the hardware, so I wanted my changes to be as sma=
-ll
-> and clear as possible.
-Understood, thanks!
+The information in /sys/kernel/debug/usb/devices about the Bluetooth
+device is listed as the below.
 
-> In principle one could request/free the irq in probe/remove and then
-> enable/disable it in bind/unbind. Whether it would be a good or bad idea =
-I
-> don't know, but surely it would be more complex and I wouldn't want to do
-> it without any chance to test it on hardware.
->
-> Also, that would only optimize the case of multiple bind/unbind cycles,
-> which are not quite realistic without bridge hotplug. And brigde hotplug
-> does not exist yet in mainline, and when it will arrive it will be used
-> only for a few use cases.
->
-> I hope this answers your question.
-Yes, I was curious whether you considered devm_free_irq() as the only
-"correct" approach (in this case I would have recommended a comment)
-or whether other approaches are fine too.
-This is useful knowledge for me in case we ever need to restructure the dri=
-ver.
+T:  Bus=06 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=0489 ProdID=e174 Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+I:  If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+I:* If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
 
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Best regards,
-Martin
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 1e01f8c855c9..c5bfc0092e5f 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -701,6 +701,8 @@ static const struct usb_device_id quirks_table[] = {
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x0489, 0xe170), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x0489, 0xe174), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x04ca, 0x3804), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x04ca, 0x38e4), .driver_info = BTUSB_MEDIATEK |
+-- 
+2.45.2
+
 
