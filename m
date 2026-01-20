@@ -4,63 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8AC4D2ECE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 14:00:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1954D111B0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 15:56:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RKzZpz3gJuGNt509m4Sz6slc/wkFAWSQZz3MkbOiXbg=; b=Cccc1aWfoJrlO11AoDUlGCy4YM
-	1CM2QVK1B2byFdbtg+IQu3WX5bxBzFfZ0vJhE95/ZiBQvPd/Rk0dGyRhM4OwTfoSnxB2ft4P+gYQz
-	WPvr4BzszfDqbHkqT1gJgFnNPV1Sqy71ubbudQenbV3pbWbDViSRF8JIPxbQUlVvh0JWpi3vAy3hF
-	qidZxfBGIQh797k2pPD5n6nIH7D2jkprO3lA6jWSYcqGcsEHjFgzbnVVTn6lHsDO08A2SaLLh1HQv
-	V5vHc1/532djKZNGsE2NzP2ni23nSTTObUClWZPTc9WU79qRhmjjy5d6pG15GNY2cF3ApyXHvAPJR
-	MVMpWVqQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ksy7oTP3n9EcNSGY38zUbSes8FptNvycCsb5JU2cCnU=; b=grRxgaSFkSegqT1tOwtiJcPsue
+	rJM6QNnNbMulCEO1x1BNB9hCViSaynOAZUM5Z05tvNlmpE37PpeLoSZJ8j9XW4Bhe20g+jAluV8dc
+	MdN3zzxDPA7ByqNXsAnIqx084oYfUW7fHx0KeVBaUponWUrP85vM54U+Syg2I5kgwAMmjl4T4dS9A
+	2dIchzUfTw0jPUp1TfalIMGye9Xmhhuth8LyCNYYBGf3a3wf6+fhXf+YWrliPfYwOBm1Dnnwqg5oC
+	F7tO2uPP20UaM+gZyzIJh0BEMNjGjf2LIDnrXsddH+1FI+3cUFzeaT6qSft7aVhPHn+Y1NzxlLFBb
+	vQ5Y3ppA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viCH8-00000003wj3-2zT1;
-	Tue, 20 Jan 2026 14:00:06 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1viE5m-000000047Ez-1INk;
+	Tue, 20 Jan 2026 15:56:30 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viCGw-00000003wgi-3Z7w;
-	Tue, 20 Jan 2026 14:00:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=RKzZpz3gJuGNt509m4Sz6slc/wkFAWSQZz3MkbOiXbg=; b=cI6Qo/eQJ0AWEzj5P2sKoQaw7j
-	kKCGiuXxXcnC/DbH+W1/MyliyZ/G5/woej2OQnzWHaJaUSsb8if6ttM7futcIZJYzo3BYqdNc6Jlg
-	6M3dOd8pxTrJl2u2OIeY6VslqfVOt6Om68vRPeDXELigFQPPn7PuE35jiyI6Q0XWv8sE=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1viCGp-003gXK-NP; Tue, 20 Jan 2026 14:59:47 +0100
-Date: Tue, 20 Jan 2026 14:59:47 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v4 2/2] net: airoha: npu: Add the capability to
- read firmware names from dts
-Message-ID: <d5a7afce-5591-4106-950d-92a1a1015132@lunn.ch>
-References: <20260120-airoha-npu-firmware-name-v4-0-88999628b4c1@kernel.org>
- <20260120-airoha-npu-firmware-name-v4-2-88999628b4c1@kernel.org>
+	id 1viE5g-000000047EC-3Nw2;
+	Tue, 20 Jan 2026 15:56:28 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 06AFC43DBD;
+	Tue, 20 Jan 2026 15:56:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C92DC19422;
+	Tue, 20 Jan 2026 15:56:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768924583;
+	bh=rSnO2feB5EiBNnb+J7F2y47pDPabNMsyZVGuP2G3Me4=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=r6w/78DNUnD4q+ZazBqHFykSpmDASwle1jvKAY2RW9wyLAp/h8G9L5/tjcaI9R/jM
+	 9pRu6XIQK58sNBOix3DUSxJAq7MGN3x7E8NTjrtIOI/uILhVnbs0VkuqcaXhSSbzSx
+	 swptr9+aCpYx581VWAng2j1zVu/RRPFuuWnCouU8btpDxdR6WRbaoJr10df8ytCsFY
+	 UkrqYgEkKKCWWIF25sQTEzeJKUEZJ3Dqe1gPvToi/kSr2kbxMprL3cXbeRU3Qhfmbo
+	 qFnEWJIFDqk8tL7fjcl7l7VdEtHtZGx0jqyXBGygOjnA8UewhShmk7XC0A7k+OUeXr
+	 NZ9th1dp5NoLw==
+From: Lee Jones <lee@kernel.org>
+To: linux-mediatek@lists.infradead.org, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+ sen.chu@mediatek.com, sean.wang@mediatek.com, macpaul.lin@mediatek.com, 
+ lee@kernel.org, matthias.bgg@gmail.com, lgirdwood@gmail.com, 
+ broonie@kernel.org, linux-pm@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ kernel@collabora.com
+In-Reply-To: <20260113110000.36953-1-angelogioacchino.delregno@collabora.com>
+References: <20260113110000.36953-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: (subset) [PATCH 0/6] Fix dtbs_check warnings for MediaTek
+ Helio X10 platform
+Message-Id: <176892458032.2302579.3859197830409835881.b4-ty@kernel.org>
+Date: Tue, 20 Jan 2026 15:56:20 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260120-airoha-npu-firmware-name-v4-2-88999628b4c1@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.15-dev-52d38
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260120_055957_090226_62A86231 
-X-CRM114-Status: GOOD (  12.55  )
+X-CRM114-CacheID: sfid-20260120_075624_867262_2E152D66 
+X-CRM114-Status: UNSURE (   6.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,18 +78,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 20, 2026 at 11:17:18AM +0100, Lorenzo Bianconi wrote:
-> Introduce the capability to read the firmware binary names from device-tree
-> using the firmware-name property if available.
-> This patch is needed because NPU firmware binaries are board specific since
-> they depend on the MediaTek WiFi chip used on the board (e.g. MT7996 or
-> MT7992) and the WiFi chip version info is not available in the NPU driver.
-> This is a preliminary patch to enable MT76 NPU offloading if the Airoha SoC
-> is equipped with MT7996 (Eagle) WiFi chipset.
+On Tue, 13 Jan 2026 11:59:54 +0100, AngeloGioacchino Del Regno wrote:
+> This series fixes various dtbs_check warnings happening on the MediaTek
+> Helio X10 platform devicetrees.
 > 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> Depending on correctness, either the bindings or the devicetree was
+> changed as a dtbs_check warning fix.
+> 
+> AngeloGioacchino Del Regno (6):
+>   dt-bindings: mfd: mediatek,mt8195-scpsys: Add mediatek,mt6795-scpsys
+>   dt-bindings: mfd: mediatek: mt6397: Add missing MT6331 regulator
+>     compat
+>   dt-bindings: regulator: mediatek,mt6331: Add missing ldo-vio28 vreg
+>   arm64: dts: mediatek: mt6331: Fix VCAM IO regulator name
+>   arm64: dts: mediatek: mt6795: Fix issues in SCPSYS node
+>   arm64: dts: mediatek: mt6795-xperia-m5: Rename PMIC leds node
+> 
+> [...]
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+Applied, thanks!
 
-    Andrew
+[1/6] dt-bindings: mfd: mediatek,mt8195-scpsys: Add mediatek,mt6795-scpsys
+      commit: bbdf8911f92c84c7ebd4a214200391748a1d2ff1
+[2/6] dt-bindings: mfd: mediatek: mt6397: Add missing MT6331 regulator compat
+      commit: cbc07585c95e08c7223bea753afba85fbe86e54a
+
+--
+Lee Jones [李琼斯]
+
 
