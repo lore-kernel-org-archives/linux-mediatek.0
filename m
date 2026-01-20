@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00C84D26296
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 20:10:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41A83D2629E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 20:10:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yRIzu+6S6vBi95fXcSYAvUvufcVOFBJ3gUVr6PCcUOA=; b=va1PUnph19pjcPXSGSg+IdLQWA
-	onszTKl9M73eXzG8KNK5Bs2kTBuFCz25eR0j/uDffV+Ir5WkYB2PLVmqfY+SAOPOkKq9vpOk5UvVg
-	kHdtgV+7qcdgPDVGJRWtOFilYfwO3gZ6/bVs4DimusNCuypkM5CRNGjmKoy65s9j5KiXzLOmM1Efb
-	iTHcblmWrsIQFpDm2009gf8LIQQvaPm+zBlgMcVm8by5CmAyHGHXyaW49qe3u77uFo0A2KmMTbF9T
-	BMgh0uYEvuwmBv6cQI1XHJ5aWE1tldPNC4Re3tcA/3MIa78oGJ+herOoZq4m2b59KK2bvhypmPueu
-	5HLCH6ZQ==;
+	bh=S4eJ97Uk/V3oa3o11cK676DDz0RecUq4tSnmFW3bFfU=; b=A+hQA6g2Ne+NGDOCyDGhFD5+GL
+	dEe+HSnQUdaUrfHj0fVMQ8RAurBxowvwO0+s5JbsiAlWy8JOK/1HmfINXmQkPuJPHeTR+FRX+vjZr
+	yJMCf/kqH0y01Q1NOT97ojxLygMSsU7F80eeeJZe4rAZt8zms7zjscdQ0W9Nx9O0Qgt8Kc8WtZITh
+	1thdaKMyf90p+IeiFE9n2R/yOEaAESddG0nU1vmp1M1cNJBd3e2CMb+YVxXTJe7AyDZYqkYoss4r3
+	RhlR6zWIMTcL3JWMga+92sfDmV8uhy4BpNxv4S2N8FcGhF2U/NySbUHsh6ibmihx0OBggDqWQtSqS
+	kZ+lXI8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viI3s-00000004Q2A-4Aub;
-	Tue, 20 Jan 2026 20:10:48 +0000
-Received: from mail-dl1-x122f.google.com ([2607:f8b0:4864:20::122f])
+	id 1viI3x-00000004Q3Q-14sz;
+	Tue, 20 Jan 2026 20:10:53 +0000
+Received: from mail-dl1-x1235.google.com ([2607:f8b0:4864:20::1235])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viI3r-00000004Q1a-0aV2
+	id 1viI3u-00000004Q2V-2ku5
 	for linux-mediatek@lists.infradead.org;
-	Tue, 20 Jan 2026 20:10:48 +0000
-Received: by mail-dl1-x122f.google.com with SMTP id a92af1059eb24-12332910300so9237994c88.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 20 Jan 2026 12:10:46 -0800 (PST)
+	Tue, 20 Jan 2026 20:10:51 +0000
+Received: by mail-dl1-x1235.google.com with SMTP id a92af1059eb24-12336f33098so4746359c88.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 20 Jan 2026 12:10:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768939846; x=1769544646; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1768939849; x=1769544649; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=yRIzu+6S6vBi95fXcSYAvUvufcVOFBJ3gUVr6PCcUOA=;
-        b=G3JU1kMGcjwD9IzNVGGe0UF0qlnxguvQCxJGU9Xtm7aEOgXHAgdudhnN8a0WYlDxGD
-         8fGxV7PR8LFmw12X4/RLY8wM933LVU303u5qCXNGN699XQvx3JwQwHH3ChO0bDrxr6BZ
-         tsKwL8p9xsv1LPsq7ud1m8E3S6vkB3rGihA9P3mw+lSPRYtqxEXM2qxFtmh1x7MEmECU
-         b56hXRbARMRomWR+6blLvLEW5roVBdr2Ecfw/IXEc1/kqYv+/P42Ya5IcqKoyghsuSUP
-         lR6yEB2NSNladlCbSSSKep+XOA2o+5tAvxCx3qpDuEbzCLJ5qpGdtFIiDS82l6JDvMcC
-         On+Q==
+        bh=S4eJ97Uk/V3oa3o11cK676DDz0RecUq4tSnmFW3bFfU=;
+        b=lBXU7CXytwBWapTK+Ja4DeTbOUkUc76+0T9d6OPtvkTZN2RQDOqfvdMz5TtfKXjuap
+         msvv6p2n4hGva0aEVBXX0t/g+ymMJIQVhniOSoK74xxcL6Z9fpoIJG1qIoGlC2gPgFVB
+         Gza4zckXTIeOTp0WBK8oyvdl8inqWsUqGW6BW7P+uZ8YXDhMMPJrWQRnX7VCAM7EkPJg
+         34rCyHbNVQGB0OJKlvuKH1XNnlbOknAi5C8JmGQ99yptjd8hLPNjqwWq0eAggKfp7bXO
+         bD6n0WbTFslfk8qIAh5+AoQThl3Zye0rxJn3XRwbFI+KtA6FLe6nEz1bgegcziWwcdRg
+         h0TA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768939846; x=1769544646;
+        d=1e100.net; s=20230601; t=1768939849; x=1769544649;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=yRIzu+6S6vBi95fXcSYAvUvufcVOFBJ3gUVr6PCcUOA=;
-        b=tlnAYGvij+8zJh1f5ZMbslQih6uqHFUJF2+6lN9tppoFHldZwKMQVtiMmsQXjq5lPh
-         D3HAVeWIxsGN57py6g9Uw28Nd0m7Y/4vcvJ/ZAaDp6fuity/bPmgyh3cWbVJ8hrb4lQl
-         XwKd4AyVGLlxg33qns5FnBA0il0qv/ML49Y22AV1RB4U5EklSUPrs6PiuHatWlmlwz0T
-         yzEZOreD5LoANSgxVX+BQO4zOmvOnhoeuGfWm2EJm+I1icVtf4W8IIAPz8E+fAReoe+d
-         rR27njeCBV6mCoNqtfLF1/5MmOOj0kmh/qNU3cNgJQfhxhSXs7ntIFtQl2wfzujBVkvs
-         B+GQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVojRuN61jTcSTMHo6rx0WKEz7nX2BUZ8d+Z8taSZZWsDZbF4/VN0oH3fbOpnQ7hvN/D5w7GOFHNzvs6D103A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwLFxxvKQOdR9leoz/X87q997mjwuBYATQSlgXywMKVvjOEu2j8
-	FFr/shGmBZVABzyh1dPYNFs2599uaR2AXHq95HaWEjgT85abOmpQUFnR
-X-Gm-Gg: AY/fxX5XI4nBJdaNNMngbuoOpPf/2NUqtoqk/7EBw3o0oV6pbVruMDCA6OlXw7RkEmz
-	wQsodCXO3gkameoytZmB+B/G4YlY2YNcf4NuXPR0kCiHBt2w+a7jGSeBzVDTjyCYHVczRjNRQRX
-	6cuxB2FUg8+ObPwQKuXvU4j7E500B/d1JLhcWRueXcuWdS5HswnIVqJUTk2IkUp414Vox8dQ4NG
-	iQY3zQzsrAIiZzeCAMb3jd7+XElL0eBLEDZLQ96Y/FEH4hG/YYfk/OhVMvNtc9HKQpWfoWO5lqk
-	uUHZuINxy7DYsfMvavcT20wJUrotda5Hrtk7nnosvD6hXRjcgdG7cbtsemKO7eOpCGm21Ib8CIo
-	y3ntndC0G2Kh37Zh+AqkNZvxtR5pcrxBlPcqQgWciqoic+k+ttSoXnWoWh+PBppFWpkqOEtUpQ+
-	Q8h8xtsILu0NNaJG29GrJKCMUrTs4IIJiHX9Kn/dBaDvrnylEgzRyNygbvNDcIXI3D3No8o/9O
-X-Received: by 2002:a05:7022:a82:b0:11b:9386:a3c8 with SMTP id a92af1059eb24-1244a7690f2mr13531760c88.41.1768939845915;
-        Tue, 20 Jan 2026 12:10:45 -0800 (PST)
+        bh=S4eJ97Uk/V3oa3o11cK676DDz0RecUq4tSnmFW3bFfU=;
+        b=YrRCFWlgLMLn3ypD2MRZJu1z3lKFpl6MYNtV0273L63YUQdgSNOHVd8nubNTHO4mpC
+         YamxR/4ijRvj/HtLRvtAjkfDCOOreCASrCqvM+PYmMzBzqXMhb55vLqYVrr4M3elO7Ly
+         AMVnS7QBAcExDl0W+wXVlW5ofFQt72yY4eMr0I+Pd4XsIfSNpYzoPBnNtKBIBtr+KOZa
+         qaapwCTONESXd5g7BDm3qBYUI869s17XCSfl/KaZdsxPXzUnpchQUOl8dlSdFjX6B7G+
+         m2P13OoP9BhdnMkIAB5FHmTBOYcxm2OuHmqD2kykQNrdtFjaI6/83sZs88krBZXi/o4V
+         hF5Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVyVY8K/ERJ0oQF4qEe8SlaB13NRU3dmKc5r26dpQxkln6eg0aelaCVpdeuxT/CeuAeL9Fe+Qgkw95fuGqwfg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzHvrcsH0oG3puH/Il5O1hGWlEsflMza/CQIR05hHSUaer7eloL
+	vwBERCW5TQTR1ubNseUl8Lb6PnR5+SC4SZG8UX1CFQg5VmV27DZn1X9r
+X-Gm-Gg: AY/fxX6rY0uhzo371QgfO8FxxgbszLtsWc1XcLtTmIyl4KSY4tDTZ96I/gvDNQ+qUBe
+	VdBkf8tJxHYJ6SvkX6OeWJ41M6D0OQskJQWDJ//8AT1N9l2Xc7Q01AbZRcO1/KliCpUAeOxoIUC
+	lzBi0zWM+yPZ6pgJWj1MC775fz90vq9nrQqoWWTOjVzDra7PYEC3lKRmEbcrUo2LEv5yyzfX5i5
+	0kock/dR38JqjUG5sCe4LfeujkGrOm76y7gsn+gKdQnTXoOmn3hNQgzVKY+VVenj/M8db0lIuCE
+	PGRHO1itraiD7SlH6hQ4zlR8obI3eKKCcfgHB6EKFimrlxfiopfM+X6y01rGZSUcmaVCzlqmY51
+	a6OrX+HX2OeR2V0MhY/k7gD8LfnM8bPY5J2+D7UXsMngCuwLQ2TfYqwpSG3ILGDFPwvs+eRdYHf
+	m8CpwNBkHyizarTx1mxGFKj4aUftufLVrZqQ/nBVsn/oGJ+6TS/RNhRhfgMfzbNQ==
+X-Received: by 2002:a05:7022:1289:b0:11a:51a8:eca with SMTP id a92af1059eb24-1244b32e446mr9126176c88.18.1768939849233;
+        Tue, 20 Jan 2026 12:10:49 -0800 (PST)
 Received: from zcache.home.zacbowling.com ([2001:5a8:60d:bc9:4a3c:9f7c:8037:90c1])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1244ad7201fsm21982990c88.7.2026.01.20.12.10.44
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1244ad7201fsm21982990c88.7.2026.01.20.12.10.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Jan 2026 12:10:44 -0800 (PST)
+        Tue, 20 Jan 2026 12:10:46 -0800 (PST)
 From: Zac <zac@zacbowling.com>
 To: sean.wang@kernel.org
 Cc: deren.wu@mediatek.com,
@@ -82,18 +82,21 @@ Cc: deren.wu@mediatek.com,
 	ryder.lee@mediatek.com,
 	sean.wang@mediatek.com,
 	zac@zacbowling.com,
-	zbowling@gmail.com
-Subject: [PATCH v6 00/13] wifi: mt76: stability fixes for deadlocks, NULL derefs, and race conditions
-Date: Tue, 20 Jan 2026 12:10:30 -0800
-Message-ID: <20260120201043.38225-1-zac@zacbowling.com>
+	zbowling@gmail.com,
+	Quan Zhou <quan.zhou@mediatek.com>
+Subject: [PATCH 01/13] wifi: mt76: mt7925: fix potential deadlock in mt7925_roc_abort_sync
+Date: Tue, 20 Jan 2026 12:10:31 -0800
+Message-ID: <20260120201043.38225-2-zac@zacbowling.com>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <CAGp9LzrcvW18xKFL-oF3wxRmb73G6PN59Y2NSA2E5idva1wtKg@mail.gmail.com>
+In-Reply-To: <20260120201043.38225-1-zac@zacbowling.com>
 References: <CAGp9LzrcvW18xKFL-oF3wxRmb73G6PN59Y2NSA2E5idva1wtKg@mail.gmail.com>
+ <20260120201043.38225-1-zac@zacbowling.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260120_121047_187624_924D386A 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20260120_121050_696465_465D22B2 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,56 +111,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Zac Bowling <zac@zacbowling.com>
+From: Sean Wang <sean.wang@mediatek.com>
 
-TLDR: This series addresses stability issues in both the MT7921 and MT7925 
-WiFi drivers that cause kernel panics, deadlocks, and system hangs 
-on various systems using these drivers.
+roc_abort_sync() can deadlock with roc_work(). roc_work() holds
+dev->mt76.mutex, while cancel_work_sync() waits for roc_work()
+to finish. If the caller already owns the same mutex, both
+sides block and no progress is possible.
 
-This v6 series is rebased on Sean Wang's upstream deadlock fix already sent
-which is now included as patch 01/13. The remaining 12 patches are my stability
-fixes.
+This deadlock can occur during station removal when
+mt76_sta_state() -> mt76_sta_remove() ->
+mt7925_mac_sta_remove_link() -> mt7925_mac_link_sta_remove() ->
+mt7925_roc_abort_sync() invokes cancel_work_sync() while
+roc_work() is still running and holding dev->mt76.mutex.
 
-Changes since v5:
-- Rebased on Sean Wang's fix for mt7925_roc_abort_sync deadlock (now patch 1)
-  and removed my work around for the same issue as Sean's fix is better.
-- Fixed format string warning in patch 12: %lu -> %u for jiffies_to_msecs()
-  return type (caught by kernel test robot)
-- Added patch 13: fix double wcid initialization race condition - removes
-  duplicate mt76_wcid_init() call that occurred after rcu_assign_pointer(),
-  which could cause list corruption, memory leaks, and race conditions
-  (this is a pre-existing bug in upstream, not introduced by this series)
+This avoids the mutex deadlock and preserves exactly-once
+work ownership.
 
-Zac Bowling (12):
-  wifi: mt76: fix list corruption in mt76_wcid_cleanup
-  wifi: mt76: mt792x: fix NULL pointer and firmware reload issues
-  wifi: mt76: mt7921: add mutex protection in critical paths
-  wifi: mt76: mt7921: fix deadlock in sta removal and suspend ROC abort
-  wifi: mt76: mt7925: add comprehensive NULL pointer protection for MLO
-  wifi: mt76: mt7925: add mutex protection in critical paths
-  wifi: mt76: mt7925: add MCU command error handling
-  wifi: mt76: mt7925: add lockdep assertions for mutex verification
-  wifi: mt76: mt7925: fix MLO roaming and ROC setup issues
-  wifi: mt76: mt7925: fix BA session teardown during beacon loss
-  wifi: mt76: mt7925: fix ROC deadlocks and race conditions
-  wifi: mt76: mt7925: fix double wcid initialization race condition
+Fixes: 45064d19fd3a ("wifi: mt76: mt7925: fix a potential association failure upon resuming")
+Co-developed-by: Quan Zhou <quan.zhou@mediatek.com>
+Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
-Sean Wang (1):
-  wifi: mt76: mt7925: fix potential deadlock in mt7925_roc_abort_sync
-
- drivers/net/wireless/mediatek/mt76/mac80211.c    |  10 +
- drivers/net/wireless/mediatek/mt76/mt76.h        |   1 +
- drivers/net/wireless/mediatek/mt76/mt7921/mac.c  |   2 +
- drivers/net/wireless/mediatek/mt76/mt7921/main.c |  28 ++-
- drivers/net/wireless/mediatek/mt76/mt7925/mac.c  |   8 +
- drivers/net/wireless/mediatek/mt76/mt7925/main.c | 303 ++++++++++++++++++++---
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c  |  48 +++-
- drivers/net/wireless/mediatek/mt76/mt7925/pci.c  |   2 +
- drivers/net/wireless/mediatek/mt76/mt792x.h      |   7 +
- drivers/net/wireless/mediatek/mt76/mt792x_core.c |  27 +-
- 10 files changed, 390 insertions(+), 46 deletions(-)
-
---
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 2d358a96640c..05990455ee7d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -457,12 +457,16 @@ void mt7925_roc_abort_sync(struct mt792x_dev *dev)
+ {
+ 	struct mt792x_phy *phy = &dev->phy;
+ 
++	if (!test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
++		return;
++
+ 	timer_delete_sync(&phy->roc_timer);
+-	cancel_work_sync(&phy->roc_work);
+-	if (test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
+-		ieee80211_iterate_interfaces(mt76_hw(dev),
+-					     IEEE80211_IFACE_ITER_RESUME_ALL,
+-					     mt7925_roc_iter, (void *)phy);
++
++	cancel_work(&phy->roc_work);
++
++	ieee80211_iterate_interfaces(mt76_hw(dev),
++				     IEEE80211_IFACE_ITER_RESUME_ALL,
++				     mt7925_roc_iter, (void *)phy);
+ }
+ EXPORT_SYMBOL_GPL(mt7925_roc_abort_sync);
+ 
+-- 
 2.52.0
 
 
