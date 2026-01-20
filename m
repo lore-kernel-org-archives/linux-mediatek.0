@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B95D7D2ED0F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 06:29:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0F89D2ECF7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 06:29:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gq8BwtBE3udkhb8xxJaDge5ayHDcllBWREYlF8lWPK8=; b=Q8dEks5LADWk/fTxK3GKvn1NI/
-	SbabIIU1gMqZ5+G2xZ3kAqhP9YH1ZAi7FxaOj8dZxCt5f+40FjO3mZ8WEiva5oL0Xd67z0ltLPBHN
-	lray0IgUsukSrYiVjBlnifhzFtkpQmuZa20xddIZX/1sGPAN5qRcTy6u7EeisTQ8+Pr00LQB6nEI7
-	K8KTG4eW26nJXiYRzG/XoOEvAROUxhFZ4HGyi2xbcKz3YlZ0W4Tsg6Px5L3amWIrFGKJHUkwdIGYC
-	CdrB0LvSZMfqey7muEPxDR/ABtrk6HCvbFAjs0xSBu6qc/2g8OyQcmJTH+YChjpFpN5Ra0aGKhuCZ
-	FpWUL2iw==;
+	bh=Yt1mPPXw8aFoKYpC5Tia09ZY3lzzrV+SydYHdLpjRKk=; b=b3n4CBhM30AEuFVK3cLKMU+i0S
+	LPUnbbLkrO/QszLCi+6vaqXqUUbzbju1Q5l9SZN1NVJFEiZDMbnyRc978nv9onA77GGpoDLqGsO+V
+	0HVIVbIS7+vTiR9f6P+DCGLDaKcWNBxoRfNHyVzwZ61JOnDY5q+xRT7/Pr9XNcy6SSyraatQFBidj
+	/3kWToXPzE5dkxRn6bU//Z5bdnHFmlShqxtwYrjHz4NWRkjNs08VYZRUhIo+54ixaN7+EjOMVkWSF
+	JTTmea4k7v8OhQfIP0VcOJpmZmZGm6xNTCIH0+QSagU36Ita1g0sYo+DGiKa5uqmfFXmwkeJl9XDN
+	BZvp0Q1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vi5Ep-00000003GgU-2qf0;
-	Tue, 20 Jan 2026 06:29:15 +0000
+	id 1vi5Eq-00000003GhV-22DT;
+	Tue, 20 Jan 2026 06:29:16 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vi5Ek-00000003Gby-0wUF
+	id 1vi5Em-00000003Gdb-1e55
 	for linux-mediatek@bombadil.infradead.org;
-	Tue, 20 Jan 2026 06:29:10 +0000
+	Tue, 20 Jan 2026 06:29:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=gq8BwtBE3udkhb8xxJaDge5ayHDcllBWREYlF8lWPK8=; b=aNPPBJgt3A56dpcRWveFZtSBFm
-	M5xWkuLzj6Hk3j0NNU3nw8J20Z8Imbl94BhnYTO2qq+CGWt2sNNjPDfg/tuDfBzXn41y5VAiZHAHQ
-	bojwrU1JkNcy8AKGnR5L8Q2fXJjihLjCWFlDNjy75MD1/BkR7MhcjgbMDYlOLJRhpNEMOurqLsuEI
-	gGifiGbEpMzLspFokLQiZwVTypsnkVvF5e0dOVrqfrTfIZjsGB611elPmp5R3pjPWLdHVSOnWrrWg
-	L6xD+MDQfhYy9jSf2+cnNtY8gZ8oNWpRqsFoLt1LIQOU3I8v0EwaDAx/2BdKnWLeZTMQhRn2LtCd9
-	ZKkcQ8Yw==;
-Received: from mail-dy1-x132a.google.com ([2607:f8b0:4864:20::132a])
+	bh=Yt1mPPXw8aFoKYpC5Tia09ZY3lzzrV+SydYHdLpjRKk=; b=oNXmyAjUEVMLOiE7IEtoJY6pMN
+	gsE8JPhdiGpJjGXb5DlIx3pcU+ZOFokm58l187V/j3Ua2SNqjhY6fzbkL1PLdXtUPpCvLbxbWY+t0
+	138oYpHtxmLfNAb4NQfVoUtW8fsxvM1oyxwgW1eWb2wHlXfUTO5OpjuD8eXiCO9Y7K+YEos0SCRjJ
+	n0/ode/CDBYNv5n805YOu7hnD+zzzF9H+ocr+hIF50OL36cQqhQzF/UK23KrReNuUKp3hCCTqtf8S
+	oxZ4hcLW6/YzXWS6G3tLLFovj6cskMuwW3yumu+F14pcnRbUwznEljgeozUupXqoljtOnLluE49HI
+	7QYD951A==;
+Received: from mail-dy1-x1344.google.com ([2607:f8b0:4864:20::1344])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vi5Eh-0000000DP6s-12Uk
+	id 1vi5Ej-0000000DP7C-2zyb
 	for linux-mediatek@lists.infradead.org;
-	Tue, 20 Jan 2026 06:29:09 +0000
-Received: by mail-dy1-x132a.google.com with SMTP id 5a478bee46e88-2ae61424095so5027867eec.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Jan 2026 22:29:06 -0800 (PST)
+	Tue, 20 Jan 2026 06:29:11 +0000
+Received: by mail-dy1-x1344.google.com with SMTP id 5a478bee46e88-2ac3d5ab81bso5272146eec.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 19 Jan 2026 22:29:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768890545; x=1769495345; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1768890548; x=1769495348; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=gq8BwtBE3udkhb8xxJaDge5ayHDcllBWREYlF8lWPK8=;
-        b=AiZHChOuEraVdQ1GcJk/HTbj949PBx2rvVo9dgNHsvbXREP/++Rr1sG+MNIciERHsL
-         pte9PFP0ZwnEWkMxIKtg0lkpBodEUitnkvSLB0/3jAIZGaaFNRlZRNv7P2RIN5PXFBh3
-         chbQYyXFxqZXyFCFmBKeni9TwxgdRMicH8a4GdFlmYIDcidH5mrydMX28pKuXUTZ79jH
-         WHT+eMdiR+SlErwiKvHkhaL5b6AbqUaVdu/qR/ukP24U5OU1vm6rtFdYXuLAq7Xa8fEM
-         cgRXzYkB9FabrHGK8GInl4LcCx5bHYs+60pjOq5ZmCxZJact52SzBZ8JVnTVD+t5+UkQ
-         k+lg==
+        bh=Yt1mPPXw8aFoKYpC5Tia09ZY3lzzrV+SydYHdLpjRKk=;
+        b=bO4jhngvFDYvk+FAQR2a+ixQ4/CJU6kLrSa/NakaVi9hpmSevRc6D6MwTKrAkZU0Jr
+         uhYXw3MFxtcWo5AulY3gOvGGUAqpRHwvn3ZMVFCkGvMqnVxHQDNHMSRzHsXhCtTVzL5m
+         RXIPBvAP6NjecNsCL2cO2iwLaXQoDWiI2hKy+9+d3Szbre9y4TMNhqvicCSd1n79O2kl
+         FHIS23IT4KrXdGAotfJ/jsPmy0Uqhb1jaY8ZKi74/hU33q6Bpl27vFrzyt0+p07/Vnzj
+         S9DLzEbrSG3NgHAKjmS5DR23iypPSq1rqQWR6gaAmkB6hjORuhTfWJPjXpfW12UVLIbi
+         35Yg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768890545; x=1769495345;
+        d=1e100.net; s=20230601; t=1768890548; x=1769495348;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=gq8BwtBE3udkhb8xxJaDge5ayHDcllBWREYlF8lWPK8=;
-        b=Z8LKmWTa7lzaSC4jrcYwf2Szd4B9vy738kAD/9V8rljG1U31i3tZnDbVrvd8eUuf5b
-         +OjLkhVV4nxxo/ea6SCl7FcIxh6q48ySJqe0d9sHt/R2hfwGiL0Wv15XOrb5x8csokRv
-         I46/cjOgBHO99ha03WcBSIEN1dyx84JQTUzs2gkKKZe4cud+snMYP4WVOeNDakq6zBaE
-         Vuwkj/l7l/osteNlZ3W4nBvS6Ml+NNHbwjcmwNhBkRiWts4ecAlC3m+c1hn/R/dk0tRm
-         COlfR9yn/ZdR7/gZ9Y2sJHMYNOguq4/JZNbxisbST0xSJQjjxrEBOo+E/XnsGMsjSV9P
-         Qmhw==
-X-Forwarded-Encrypted: i=1; AJvYcCX2by0vgitXgkocLGV3worgjfm5iwTRoYYniE9T6uPesyTa9SaPvwlzRXsli4RU/7A5uvmaqyLe7H5xYVwrsQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwA8m/mgRMNPVIZ3mtnJ8AmF8fi3CI3YltNRocag4Gn1DUMgc9v
-	wwZh3u3hT2+Pp0QB+4/uekn8M8vcfr03E7IRgHP+59srakvIGo/zeYgz
-X-Gm-Gg: AZuq6aLFnrmENjPMURXtQqn3jJu7QeG0qLBsqdxua9B0t4uJXd1zjw1qiSCJWjtc+TA
-	nywFU0RY7zBo0EXTiaVeVt+lMGVgiaKyv0EWdADTs0y4RV4z3i3H65d20NRpn4ZzNcQiXmplUoc
-	mzdYd+DJtwiSC70aj50+Fq7t8g/oaaTCqfRK/r2d0EdP4R6UYLvuYKA5yAUR8etaBcKmkTJYsn9
-	N6ilpXd3BbQ0aznGuTbnchmJAucbz8HMbMT/6aC6F0zGkk2aDZ1JGC4Inw/Hn+ZTKnuFvJ7u1GQ
-	jnUsiG2HUuYfJGERm6O4UnWNqbrtMdeubEEfM3W1n1BOVuk7xOXYWjO95ziqJcjkI39xyDomHSj
-	5SRU7ezWbjyAZ8fVd7sOX2TMj08K8sTfKXsABbYL8olGky5NtZRXcR2lE9OwgmhqRQI8hoef8zI
-	0awCvaoHClrTMjQkfYKGvJSAottQeaxUzqhuvgitZVOgqKZoRZpYtll+U/gaKM
-X-Received: by 2002:a05:7301:290a:b0:2ae:60fd:6f18 with SMTP id 5a478bee46e88-2b6b4e8a496mr11903860eec.22.1768890544990;
-        Mon, 19 Jan 2026 22:29:04 -0800 (PST)
+        bh=Yt1mPPXw8aFoKYpC5Tia09ZY3lzzrV+SydYHdLpjRKk=;
+        b=QbrZtE+AyP2KinYCvrPwXZh1ZCx5E3emJ8rQIpD+u7sHJjhdMw1jVaXihl8LIjr3UJ
+         YBb8sckjK+7rcZfRowbJbOOUrBIiffs9y5Vpck89Ak+qqPOgLuKu7Kfy9lGHqIVg1pMu
+         C8IIwxcfp1HwfycycPcgQEY95b3ajdrD6P2Nc4JKhdJLwlS3oYr+12nKkMwubtUIINUJ
+         vpXzobEjdNVEatc93B82xjS5PnW8GjcPocTbSb4pK1XKU8HgnBZ7zlIkHeJw8V8oWhgs
+         ERAacv45xZDBF0hFmaQ8AsFUe0V3xAnYfs8RHF11b3qf890VF7UcYLpTdNe2t9sKLsE5
+         jQeQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXIzlmxDX6pUzDQ0hEK+LPJH6QMzlF2wrIVXFabY5QWVgvt+SHmWBd1sEXTudSyTybM+WGD3vQT2ZpLRJPPIQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzrpOqQ6aifPsXjyuo43oDPqWoPGs2IDZRRfBOvRZakqmXSjsZa
+	uiaZysanM5G3FsQoZsYBwV1LPbhXpK/M68GwZHQn5ZUC65Xbv5otWWaC
+X-Gm-Gg: AZuq6aKYizDwaOeAtH9lUObrknYJcRLKSIdBCWWbBAAktyQA68CUEMgJ0mtKAspjRX1
+	sutx8x8/pJumw/+AvzFrMn7Oj0Wg50jGEPTNSa90xHaQ4SIddfz2n1D5xzEtrPMotU1C44JX+e7
+	siO2Sy3mtbehf+kuF6RV7Rmgjd4/dT1O9DsRbdU02QNss/rtkI9pVY79ifSuFzX8ClucKfLUD90
+	NwsOezIdvoWiVt1RQDHMUZcrO7bnMjVLl8qTJ4GKvRLw/DXJIUT/SSaae2lfp2sGP+cM35bu27e
+	icSmN4NGbJBNcPkP5Nz4HVaItebYO+V6bUXsR14kmSNza6b78dcxct0ktWrdfi0gJr0WIlL4t0z
+	HFQNB1WKjmODLPcZUEVhuacJaM+TxCcwweGEeqNuqhHajYRAKwO5OffpOv35ed81hkDArFaePoO
+	wSr9AE5Qho3/oXv1nK/97U60wRjQ48H1q4xGEfRZ/K4uSyI8ONpBQbs4b476p+
+X-Received: by 2002:a05:7300:54d:b0:2a4:3593:ddd9 with SMTP id 5a478bee46e88-2b6b46c69ebmr9563555eec.6.1768890547673;
+        Mon, 19 Jan 2026 22:29:07 -0800 (PST)
 Received: from zcache.home.zacbowling.com ([2001:5a8:60d:bc9:f31e:1cb:296a:cc2a])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2b6b3502c91sm15706784eec.9.2026.01.19.22.29.03
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2b6b3502c91sm15706784eec.9.2026.01.19.22.29.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Jan 2026 22:29:04 -0800 (PST)
+        Mon, 19 Jan 2026 22:29:07 -0800 (PST)
 From: Zac <zac@zacbowling.com>
 To: sean.wang@kernel.org
 Cc: deren.wu@mediatek.com,
@@ -99,9 +99,9 @@ Cc: deren.wu@mediatek.com,
 	linux@frame.work,
 	zbowling@gmail.com,
 	Zac Bowling <zac@zacbowling.com>
-Subject: [PATCH 06/11] wifi: mt76: mt7925: add mutex protection in critical paths
-Date: Mon, 19 Jan 2026 22:28:49 -0800
-Message-ID: <20260120062854.126501-7-zac@zacbowling.com>
+Subject: [PATCH 08/11] wifi: mt76: mt7925: add lockdep assertions for mutex verification
+Date: Mon, 19 Jan 2026 22:28:51 -0800
+Message-ID: <20260120062854.126501-9-zac@zacbowling.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260120062854.126501-1-zac@zacbowling.com>
 References: <CAGp9LzpuyXRDa=TxqY+Xd5ZhDVvNayWbpMGDD1T0g7apkn7P0A@mail.gmail.com>
@@ -109,8 +109,9 @@ References: <CAGp9LzpuyXRDa=TxqY+Xd5ZhDVvNayWbpMGDD1T0g7apkn7P0A@mail.gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260120_062907_559036_D490F0E5 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20260120_062909_862639_A645BF79 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,129 +128,58 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Zac Bowling <zac@zacbowling.com>
 
-Add proper mutex protection for mt7925 driver operations that access
-hardware state without proper synchronization. This fixes race conditions
-that can cause system instability during power management and recovery.
+Add lockdep_assert_held() calls to critical MCU functions to help catch
+mutex violations during development and debugging. This follows the
+pattern used in other mt76 drivers (mt7996, mt7915, mt7615).
 
-Fixes added:
+Functions with new assertions:
+- mt7925_mcu_add_bss_info(): Core BSS configuration MCU command
+- mt7925_mcu_sta_update(): Station record update MCU command
+- mt7925_mcu_uni_bss_ps(): Power save state MCU command
 
-1. mac.c: mt7925_mac_reset_work()
-   - Wrap ieee80211_iterate_active_interfaces() with mt792x_mutex
-   - The vif_connect_iter callback accesses hardware state
+These functions modify firmware state and must be called with the
+device mutex held to prevent race conditions. The lockdep assertions
+will trigger warnings at runtime if code paths exist that call these
+functions without proper mutex protection.
 
-2. mac.c: mt7925_mac_sta_assoc()
-   - Wrap vif_connect_iter call with mutex protection
-   - Called during station association which races with PM
+This aids in detecting the class of bugs fixed by patches in this series.
 
-3. main.c: mt7925_set_runtime_pm()
-   - Add mutex protection around mt76_connac_pm_wake/sleep
-   - Runtime PM can race with other operations
-
-4. main.c: mt7925_set_mlo_pm()
-   - Add mutex protection around MLO PM configuration
-   - Prevents races during MLO link setup/teardown
-
-5. pci.c: mt7925_pci_resume()
-   - Add mutex protection around ieee80211_iterate_active_interfaces
-   - The vif iteration accesses hardware state that needs synchronization
-
-These protections ensure consistent hardware state access during power
-management transitions and recovery operations.
-
-Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 device")
 Signed-off-by: Zac Bowling <zac@zacbowling.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/mac.c  | 2 ++
- drivers/net/wireless/mediatek/mt76/mt7925/main.c | 6 ++++--
- drivers/net/wireless/mediatek/mt76/mt7925/pci.c  | 4 ++++
- 3 files changed, 10 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-index 184efe8afa10..06420ac6ed55 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-@@ -1331,9 +1331,11 @@ void mt7925_mac_reset_work(struct work_struct *work)
- 	dev->hw_full_reset = false;
- 	pm->suspended = false;
- 	ieee80211_wake_queues(hw);
-+	mt792x_mutex_acquire(dev);
- 	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
- 					    mt7925_vif_connect_iter, NULL);
-+	mt792x_mutex_release(dev);
- 	mt76_connac_power_save_sched(&dev->mt76.phy, pm);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 94ec62a4538a..1c58b0be2be4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -1532,6 +1532,8 @@ int mt7925_mcu_uni_bss_ps(struct mt792x_dev *dev,
+ 		},
+ 	};
  
- 	mt7925_regd_change(&dev->phy, "00");
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 15d1b1b8d9f8..80ca5181150b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -755,9 +755,11 @@ void mt7925_set_runtime_pm(struct mt792x_dev *dev)
- 	bool monitor = !!(hw->conf.flags & IEEE80211_CONF_MONITOR);
++	lockdep_assert_held(&dev->mt76.mutex);
++
+ 	if (link_conf->vif->type != NL80211_IFTYPE_STATION)
+ 		return -EOPNOTSUPP;
  
- 	pm->enable = pm->enable_user && !monitor;
-+	mt792x_mutex_acquire(dev);
- 	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
- 					    mt7925_pm_interface_iter, dev);
-+	mt792x_mutex_release(dev);
- 	pm->ds_enable = pm->ds_enable_user && !monitor;
- 	mt7925_mcu_set_deep_sleep(dev, pm->ds_enable);
- }
-@@ -1331,14 +1333,12 @@ mt7925_mlo_pm_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
- 	if (mvif->mlo_pm_state != MT792x_MLO_CHANGED_PS)
- 		return;
+@@ -2047,6 +2049,8 @@ int mt7925_mcu_sta_update(struct mt792x_dev *dev,
+ 	struct mt792x_sta *msta;
+ 	struct mt792x_link_sta *mlink = NULL;
  
--	mt792x_mutex_acquire(dev);
- 	for_each_set_bit(i, &valid, IEEE80211_MLD_MAX_NUM_LINKS) {
- 		bss_conf = mt792x_vif_to_bss_conf(vif, i);
- 		if (!bss_conf)
- 			continue;
- 		mt7925_mcu_uni_bss_ps(dev, bss_conf);
- 	}
--	mt792x_mutex_release(dev);
- }
++	lockdep_assert_held(&dev->mt76.mutex);
++
+ 	if (link_sta) {
+ 		msta = (struct mt792x_sta *)link_sta->sta->drv_priv;
+ 		mlink = mt792x_sta_to_link(msta, link_sta->link_id);
+@@ -2853,6 +2857,8 @@ int mt7925_mcu_add_bss_info(struct mt792x_phy *phy,
+ 	struct mt792x_link_sta *mlink_bc;
+ 	struct sk_buff *skb;
  
- void mt7925_mlo_pm_work(struct work_struct *work)
-@@ -1347,9 +1347,11 @@ void mt7925_mlo_pm_work(struct work_struct *work)
- 					      mlo_pm_work.work);
- 	struct ieee80211_hw *hw = mt76_hw(dev);
- 
-+	mt792x_mutex_acquire(dev);
- 	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
- 					    mt7925_mlo_pm_iter, dev);
-+	mt792x_mutex_release(dev);
- }
- 
- void mt7925_scan_work(struct work_struct *work)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index c4161754c01d..3a9e32a1759d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -455,7 +455,9 @@ static int mt7925_pci_suspend(struct device *device)
- 	cancel_delayed_work_sync(&pm->ps_work);
- 	cancel_work_sync(&pm->wake_work);
- 
-+	mt792x_mutex_acquire(dev);
- 	mt7925_roc_abort_sync(dev);
-+	mt792x_mutex_release(dev);
- 
- 	err = mt792x_mcu_drv_pmctrl(dev);
- 	if (err < 0)
-@@ -582,10 +584,12 @@ static int _mt7925_pci_resume(struct device *device, bool restore)
- 	}
- 
- 	/* restore previous ds setting */
-+	mt792x_mutex_acquire(dev);
- 	if (!pm->ds_enable)
- 		mt7925_mcu_set_deep_sleep(dev, false);
- 
- 	mt7925_mcu_regd_update(dev, mdev->alpha2, dev->country_ie_env);
-+	mt792x_mutex_release(dev);
- failed:
- 	pm->suspended = false;
- 
++	lockdep_assert_held(&dev->mt76.mutex);
++
+ 	skb = __mt7925_mcu_alloc_bss_req(&dev->mt76, &mconf->mt76,
+ 					 MT7925_BSS_UPDATE_MAX_SIZE);
+ 	if (IS_ERR(skb))
 -- 
 2.52.0
 
