@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30140D2ED0F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 11:43:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CAC3D2ECF7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jan 2026 13:27:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ngMgxMsuYAaXWM2iLgCbEERMX7Daf83dQ+u3Z9+kh6Q=; b=RTTxhMyK6f4UaJRyLZTZmakANt
-	da5xEBtd3w4z3kgMY1NlqzTNrO7JRWoVqZ4JBIpcCPcrR0lBY3JCeDKdAIRRc5CAxD8LI9dUQaAgu
-	lj2fqbYvgyAI7U0jq5UVvFmePjAIz99odmaGM/UPseZ/VE5U2mc4cyByumxX/kwJ67zkRkv6tp/ZD
-	EFSW7kX3X7lS1C/fKDP7b127NUPJqlTzsT8j/lfIYMPBfKmR1RIADdinbvfA+G2gsSG7t8z9OEY2z
-	KIw61KCGXPPsvvLCgw8RupItRgCDBHpy6jpb538v7XhwM6xiQLJ+8wrEIPUnADEL/PSlvH5NMHeVj
-	v3FuSStQ==;
+	bh=uRsyVXo+utfOV7xUHj3FwKRXwOPzHU3LO1yl6vqb7DY=; b=p29wODEB8y3B5WIokNxbLMaiSm
+	vl5VjED0HuGGzeoUiTiNzMyb+Y+8/4R8g9c75GfgUFZx9+Qf2gusNKnBWzq5bc9A5BeIcvxb+w0v+
+	dIHCy+pVpSxzQL4XwkXvOFC0POOUlzGpyttZLngwTrvMDNuCYDVoLTxt8dwd/nFyWtfpbS/cqvnC+
+	nIbpHoSr4kOJHsetxldDMynb6et2mKV/L3lXA2I80SiCJTkKBVH4ezYz8Q8VUjMB/orX+MjRue78Z
+	0YHsIuNwLfBkpb9BEQSzRpdKKiJO83esF4UnhSgtk7HpZQCJWHYKAxeNpUhPOAo6Uc7M+1Rt/45aT
+	RjYSMm7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viA8a-00000003jiI-0NuL;
-	Tue, 20 Jan 2026 11:43:08 +0000
-Received: from mgamail.intel.com ([192.198.163.18])
+	id 1viBlO-00000003urQ-0d13;
+	Tue, 20 Jan 2026 13:27:18 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viA8X-00000003jhi-067l
+	id 1viBlL-00000003ur0-0T1y
 	for linux-mediatek@lists.infradead.org;
-	Tue, 20 Jan 2026 11:43:06 +0000
+	Tue, 20 Jan 2026 13:27:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1768909385; x=1800445385;
+  t=1768915634; x=1800451634;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=2jNhiXUBMyyLdyxAs9vQmmaOOOBC6WVaq/BZF27U5XY=;
-  b=SzevgQPefGS9cp4gKZilPvI9lqqR5N/dm3eOmH8od2Jd5OIQhOfZZ+LZ
-   w5qkpGd4g2F+NZBrAP4q7et0hw1JWRnDZcbaoax5SYW/5ZUdu947tCrv2
-   SazkFnSe2AoIKl8k9Z7J6RACftg8NataQWRfHPhUY0/7rCKTfjwrHTYTU
-   mO2wrF4vnX7C5cPqiciQMJdgxgPcKgQU5Uevu61I0NgY0vemVjB4yqRQa
-   LcFFFIZ0GuXLf01hIAsHAxN2tLq61Jv4exsHMdzWsRUikFSAWYQ0aIlzg
-   lsikojrVXb9OqWuSYDpprzxFdTNcUgZ3XR38KTBVUYMK6+l2QowRSmB+e
-   Q==;
-X-CSE-ConnectionGUID: Jw5+PdHmQsiyc/HptxBtdw==
-X-CSE-MsgGUID: UETa4L3WQJCs6mXlquaVjA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11676"; a="69315723"
+  bh=zliMfnqN7+4qWXkakteLMnL1rqDZXpRuUMDYk9dV31A=;
+  b=daGrMGhhfDoXYsw72hwnb0zmoftMFvcPLGoGRMVD/uuInE4EHhtMTydZ
+   AAt3c7mFC8q4uKTVb8SI6rk+8ZCod9GIloX2QPGaHpcAacdLFwZFniWKU
+   C7WXbtqgZkzU0DHmI4BGwQvxC9flTiH+YE89Y2kUuGz85Mgn1B7x0X2lg
+   7Kdx5PjUHi8p2M9AC3jiTlsk+426BkUQyhqjWQjs/NbNied0TjBE4WMPo
+   NxW2owjvupI1Ni2h4GJOPjT/1buaTOUay0XGrHJc+4EQL5QckSLTiOHFP
+   zLpJuKHQnmAYA9FCXw6CsavTVAvZpEaafCyL+P1iFHahUHB0WLzAS8+XS
+   g==;
+X-CSE-ConnectionGUID: SEeyI5vZSOylyehUFrHnQw==
+X-CSE-MsgGUID: BH+U2P6uRuWGMfuMhMf96A==
+X-IronPort-AV: E=McAfee;i="6800,10657,11676"; a="81232155"
 X-IronPort-AV: E=Sophos;i="6.21,240,1763452800"; 
-   d="scan'208";a="69315723"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jan 2026 03:43:04 -0800
-X-CSE-ConnectionGUID: eseWj3+4SPiBSrByS7Tl+Q==
-X-CSE-MsgGUID: bOuQi7P2T3SC8cwIMbNjpw==
+   d="scan'208";a="81232155"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jan 2026 05:27:12 -0800
+X-CSE-ConnectionGUID: qs6DvTcrSlGaTFKGlwR8NQ==
+X-CSE-MsgGUID: dy0vDc1tSN2LQyhVI9nNbg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.21,240,1763452800"; 
-   d="scan'208";a="205256698"
+   d="scan'208";a="205362466"
 Received: from lkp-server01.sh.intel.com (HELO 765f4a05e27f) ([10.239.97.150])
-  by orviesa006.jf.intel.com with ESMTP; 20 Jan 2026 03:43:00 -0800
+  by orviesa010.jf.intel.com with ESMTP; 20 Jan 2026 05:27:09 -0800
 Received: from kbuild by 765f4a05e27f with local (Exim 4.98.2)
 	(envelope-from <lkp@intel.com>)
-	id 1viA8P-00000000OuH-0ZsO;
-	Tue, 20 Jan 2026 11:42:57 +0000
-Date: Tue, 20 Jan 2026 19:42:49 +0800
+	id 1viBlB-00000000P1B-45b7;
+	Tue, 20 Jan 2026 13:27:05 +0000
+Date: Tue, 20 Jan 2026 21:26:40 +0800
 From: kernel test robot <lkp@intel.com>
 To: Zac <zac@zacbowling.com>, sean.wang@kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, deren.wu@mediatek.com, kvalo@kernel.org,
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	deren.wu@mediatek.com, kvalo@kernel.org,
 	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
 	linux-wireless@vger.kernel.org, lorenzo@kernel.org, nbd@nbd.name,
 	ryder.lee@mediatek.com, sean.wang@mediatek.com,
@@ -69,15 +70,15 @@ Cc: oe-kbuild-all@lists.linux.dev, deren.wu@mediatek.com, kvalo@kernel.org,
 	Zac Bowling <zac@zacbowling.com>
 Subject: Re: [PATCH 11/11] wifi: mt76: mt7925: fix ROC deadlocks and race
  conditions
-Message-ID: <202601201954.zxO1N1DS-lkp@intel.com>
+Message-ID: <202601202144.ee4DM9Pz-lkp@intel.com>
 References: <20260120062854.126501-12-zac@zacbowling.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20260120062854.126501-12-zac@zacbowling.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260120_034305_105488_D736F63C 
-X-CRM114-Status: GOOD (  13.85  )
+X-CRM114-CacheID: sfid-20260120_052715_241435_609E2D18 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,82 +107,63 @@ url:    https://github.com/intel-lab-lkp/linux/commits/Zac/wifi-mt76-fix-list-co
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
 patch link:    https://lore.kernel.org/r/20260120062854.126501-12-zac%40zacbowling.com
 patch subject: [PATCH 11/11] wifi: mt76: mt7925: fix ROC deadlocks and race conditions
-config: m68k-allyesconfig (https://download.01.org/0day-ci/archive/20260120/202601201954.zxO1N1DS-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 15.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260120/202601201954.zxO1N1DS-lkp@intel.com/reproduce)
+config: i386-randconfig-015-20260120 (https://download.01.org/0day-ci/archive/20260120/202601202144.ee4DM9Pz-lkp@intel.com/config)
+compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260120/202601202144.ee4DM9Pz-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202601201954.zxO1N1DS-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202601202144.ee4DM9Pz-lkp@intel.com/
 
 All warnings (new ones prefixed by >>):
 
-   In file included from include/linux/printk.h:621,
-                    from include/linux/kernel.h:31,
-                    from include/linux/skbuff.h:13,
-                    from include/linux/if_ether.h:19,
-                    from include/linux/etherdevice.h:20,
-                    from drivers/net/wireless/mediatek/mt76/mt7925/main.c:4:
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c: In function 'mt7925_set_roc':
->> drivers/net/wireless/mediatek/mt76/mt7925/main.c:610:33: warning: format '%lu' expects argument of type 'long unsigned int', but argument 4 has type 'unsigned int' [-Wformat=]
+>> drivers/net/wireless/mediatek/mt76/mt7925/main.c:611:5: warning: format specifies type 'unsigned long' but the argument has type 'unsigned int' [-Wformat]
      610 |                                 "mt7925: ROC throttled, %lu ms remaining\n",
-         |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/dynamic_debug.h:231:29: note: in definition of macro '__dynamic_func_call_cls'
-     231 |                 func(&id, ##__VA_ARGS__);                       \
-         |                             ^~~~~~~~~~~
-   include/linux/dynamic_debug.h:261:9: note: in expansion of macro '_dynamic_func_call_cls'
-     261 |         _dynamic_func_call_cls(_DPRINTK_CLASS_DFLT, fmt, func, ##__VA_ARGS__)
-         |         ^~~~~~~~~~~~~~~~~~~~~~
-   include/linux/dynamic_debug.h:284:9: note: in expansion of macro '_dynamic_func_call'
-     284 |         _dynamic_func_call(fmt, __dynamic_dev_dbg,              \
-         |         ^~~~~~~~~~~~~~~~~~
-   include/linux/dev_printk.h:165:9: note: in expansion of macro 'dynamic_dev_dbg'
-     165 |         dynamic_dev_dbg(dev, dev_fmt(fmt), ##__VA_ARGS__)
-         |         ^~~~~~~~~~~~~~~
-   include/linux/dev_printk.h:165:30: note: in expansion of macro 'dev_fmt'
-     165 |         dynamic_dev_dbg(dev, dev_fmt(fmt), ##__VA_ARGS__)
-         |                              ^~~~~~~
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c:609:25: note: in expansion of macro 'dev_dbg'
-     609 |                         dev_dbg(phy->dev->mt76.dev,
-         |                         ^~~~~~~
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c:610:59: note: format string is defined here
-     610 |                                 "mt7925: ROC throttled, %lu ms remaining\n",
-         |                                                         ~~^
-         |                                                           |
-         |                                                           long unsigned int
+         |                                                         ~~~
          |                                                         %u
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c: In function 'mt7925_set_mlo_roc':
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c:661:33: warning: format '%lu' expects argument of type 'long unsigned int', but argument 4 has type 'unsigned int' [-Wformat=]
-     661 |                                 "mt7925: MLO ROC throttled, %lu ms remaining\n",
-         |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/dynamic_debug.h:231:29: note: in definition of macro '__dynamic_func_call_cls'
+     611 |                                 jiffies_to_msecs(throttle));
+         |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/dev_printk.h:165:39: note: expanded from macro 'dev_dbg'
+     165 |         dynamic_dev_dbg(dev, dev_fmt(fmt), ##__VA_ARGS__)
+         |                                      ~~~     ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:285:19: note: expanded from macro 'dynamic_dev_dbg'
+     285 |                            dev, fmt, ##__VA_ARGS__)
+         |                                 ~~~    ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:261:59: note: expanded from macro '_dynamic_func_call'
+     261 |         _dynamic_func_call_cls(_DPRINTK_CLASS_DFLT, fmt, func, ##__VA_ARGS__)
+         |                                                                  ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:259:65: note: expanded from macro '_dynamic_func_call_cls'
+     259 |         __dynamic_func_call_cls(__UNIQUE_ID(ddebug), cls, fmt, func, ##__VA_ARGS__)
+         |                                                                        ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:231:15: note: expanded from macro '__dynamic_func_call_cls'
      231 |                 func(&id, ##__VA_ARGS__);                       \
          |                             ^~~~~~~~~~~
-   include/linux/dynamic_debug.h:261:9: note: in expansion of macro '_dynamic_func_call_cls'
-     261 |         _dynamic_func_call_cls(_DPRINTK_CLASS_DFLT, fmt, func, ##__VA_ARGS__)
-         |         ^~~~~~~~~~~~~~~~~~~~~~
-   include/linux/dynamic_debug.h:284:9: note: in expansion of macro '_dynamic_func_call'
-     284 |         _dynamic_func_call(fmt, __dynamic_dev_dbg,              \
-         |         ^~~~~~~~~~~~~~~~~~
-   include/linux/dev_printk.h:165:9: note: in expansion of macro 'dynamic_dev_dbg'
-     165 |         dynamic_dev_dbg(dev, dev_fmt(fmt), ##__VA_ARGS__)
-         |         ^~~~~~~~~~~~~~~
-   include/linux/dev_printk.h:165:30: note: in expansion of macro 'dev_fmt'
-     165 |         dynamic_dev_dbg(dev, dev_fmt(fmt), ##__VA_ARGS__)
-         |                              ^~~~~~~
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c:660:25: note: in expansion of macro 'dev_dbg'
-     660 |                         dev_dbg(phy->dev->mt76.dev,
-         |                         ^~~~~~~
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c:661:63: note: format string is defined here
+   drivers/net/wireless/mediatek/mt76/mt7925/main.c:662:5: warning: format specifies type 'unsigned long' but the argument has type 'unsigned int' [-Wformat]
      661 |                                 "mt7925: MLO ROC throttled, %lu ms remaining\n",
-         |                                                             ~~^
-         |                                                               |
-         |                                                               long unsigned int
+         |                                                             ~~~
          |                                                             %u
+     662 |                                 jiffies_to_msecs(throttle));
+         |                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/dev_printk.h:165:39: note: expanded from macro 'dev_dbg'
+     165 |         dynamic_dev_dbg(dev, dev_fmt(fmt), ##__VA_ARGS__)
+         |                                      ~~~     ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:285:19: note: expanded from macro 'dynamic_dev_dbg'
+     285 |                            dev, fmt, ##__VA_ARGS__)
+         |                                 ~~~    ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:261:59: note: expanded from macro '_dynamic_func_call'
+     261 |         _dynamic_func_call_cls(_DPRINTK_CLASS_DFLT, fmt, func, ##__VA_ARGS__)
+         |                                                                  ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:259:65: note: expanded from macro '_dynamic_func_call_cls'
+     259 |         __dynamic_func_call_cls(__UNIQUE_ID(ddebug), cls, fmt, func, ##__VA_ARGS__)
+         |                                                                        ^~~~~~~~~~~
+   include/linux/dynamic_debug.h:231:15: note: expanded from macro '__dynamic_func_call_cls'
+     231 |                 func(&id, ##__VA_ARGS__);                       \
+         |                             ^~~~~~~~~~~
+   2 warnings generated.
 
 
-vim +610 drivers/net/wireless/mediatek/mt76/mt7925/main.c
+vim +611 drivers/net/wireless/mediatek/mt76/mt7925/main.c
 
    592	
    593	static int mt7925_set_roc(struct mt792x_phy *phy,
@@ -201,8 +183,8 @@ vim +610 drivers/net/wireless/mediatek/mt76/mt7925/main.c
    607				msleep(jiffies_to_msecs(throttle));
    608			} else {
    609				dev_dbg(phy->dev->mt76.dev,
- > 610					"mt7925: ROC throttled, %lu ms remaining\n",
-   611					jiffies_to_msecs(throttle));
+   610					"mt7925: ROC throttled, %lu ms remaining\n",
+ > 611					jiffies_to_msecs(throttle));
    612				return -EBUSY;
    613			}
    614		}
