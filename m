@@ -4,102 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3296C44500
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jan 2026 08:38:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AD95C44500
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jan 2026 08:51:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YlaCsTUa7F4+bnXBKm75fmTPUHjK8kWJYjdBYurLfMU=; b=Vf+bPNoX5fbjvz+nqMXq23xhl2
-	OXk5yPRcrI8QmQPQ+xuBbtx6gWwWjGyHtcFHx+RJ3z+/axiZY1USwIBiz3LLGm74CDd5jilC0RFGh
-	hHwu18a3eSC1WsH3rsSigYwdlceTPh8nSgbtsJQ96mdG3rfln4DlzUy0xq7hbZcBGG3kqzaQH7cIW
-	JarlKfMNDusYc2oAYBBeSotR4JBoEsS1y4tjOpkuQ1VTfJhEwEk0idCcNyx0Mqk3Ual2Ic3iR/fkz
-	u203F6HGwfrZ5DljiY45KisUIku62a8Gn4CSLRCLaa9gbyGZy49TPldVtYajed4rYrtLVNTW3g1P3
-	NvMffTZw==;
+	bh=94w4uSDyTamepOy3HjdXK7yBFSu/jNoIL8m3quNA2nU=; b=qTAkS6JVnLdBRCd17FDvZADsQh
+	FR38XT6zreoXJcRc55zvEaKxS3byry2jmVHbAze4BgPsNBSjjp2SJ7Jpm6eDifElNU5jmiPNdpLd2
+	hY1agaSEjMEvEk8WMqJfiI0mOg+eTT3sr/6tH7EIS//eYxxXjriXhVsJGZp7u4EXEwuz0g9YP0CWt
+	8ccPtH91wmDeyJNaqJz8MjatMl8C8S5TzLxHgNH0v64ThKkEhqaCMdpF5Fd8HAlsWr5g6FjyZ/w6D
+	W65SBjnVVuLTAJt9T+ZaZpLU0iWF1Z4h1DkhYkwOwjjgZe7sr3UBsNKAkOodfFNg+WiRRnbivq4Wr
+	rnFQ0Fjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viqCj-00000006eyy-1SLc;
-	Thu, 22 Jan 2026 08:38:13 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1viqPA-00000006gL2-3KjK;
+	Thu, 22 Jan 2026 08:51:04 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viqCf-00000006exz-44UG
+	id 1viqP9-00000006gKF-0ClW
 	for linux-mediatek@lists.infradead.org;
-	Thu, 22 Jan 2026 08:38:11 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-59b672f8ec4so729657e87.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 22 Jan 2026 00:38:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1769071087; cv=none;
+	Thu, 22 Jan 2026 08:51:04 +0000
+Received: by mail-lf1-x130.google.com with SMTP id 2adb3069b0e04-59b67388c9cso758760e87.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 22 Jan 2026 00:51:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1769071861; cv=none;
         d=google.com; s=arc-20240605;
-        b=lDudbj7QO0kPD/W1EHiU68g5zu4rUHScU0rWMqonOnGUleHuluO+0UbiaMGPAvAdsZ
-         22DbgSiuEg0mmRUOWW1zHI5JFbAZnDCD9g91LQXETEklzpdYN7oAWmTsWV6XxKLoL+RA
-         HZWUpmH5RJ0fozEJ1cMDg4k2gN1vLC7COltq0VuUrPQlTUc/uwbqfx0lBr5+fHWjs6ji
-         MEQCLEP9aHvDp0BwF0/4MM1xRGV0abFwpZiz2exy0pTRkkVMB38FNOQSvOoimWs4OBS0
-         QxZpvQffBc5uVgsVu7kSfGvU/CCS04LzXGk/uXGLWcW9m02jcQIhyZ3zmUNPi5E2f9Iz
-         tkfw==
+        b=L0uhrB/vmOcleFQkk4q++8Aq568ZM12D3zpVj8SBQurY4ftLTEZVUQEh940l3/bCCB
+         laTQtMpMpaLgRSAeJTAplAJjryhLFA7dJQHJ3l+mDoWLVCj/ZY8j/b0fq/LaGH/iCuYb
+         NbUq46F98QUG5Jp2D8dtJ+LLdX/WB4mciZC3SDP4uY7WgEEvrzIuM3eiSefIKrc/Y1c4
+         PAV2yhOqI62Sze+R/puMsjKasA1/0FSa2Tl1mzh41fAJLCP8F+7YVX5SsD7oXVg7AF7V
+         kL1wyJzY007nhEyZf2baj6TAZNZlYcrMFlpeCf6uLdhbBN3Kewa+yB/5B43Qyn4lsCb+
+         epVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=YlaCsTUa7F4+bnXBKm75fmTPUHjK8kWJYjdBYurLfMU=;
-        fh=WRDmxL7uG1bbqfEZDIcDD4LCG3tYauRa8So+p7em1Ec=;
-        b=A159QxLn3v3G3ibrrRhjD4zdK4boVwX7/z6L6K+3XsVQPiFU6VR3CkWDFESQ2z92He
-         NBmGaJtB7SzU2s1fOhov0L+98uOW8Zrz3Imcp2O0Q86kInLI3bDBhDXkO/rGGliNtjSE
-         fzb6wx7W64I+7BuYfevOAesJvjVuITPk+QjDc+zn0TFOovjn83idpgBFvh727494ZXOU
-         Uv9VoyDdZcmlluD1mMM9sElbqQUXBH3dQcnjuqQattbHNstymd9qKH7kTpUJs1CF15/j
-         eulRbONxbZOkVm57WOny4MCT6xtZeW5ARuX8jTXOvOWhMstuhbAxIWKxq2odjNuKY46f
-         oshQ==;
+        bh=94w4uSDyTamepOy3HjdXK7yBFSu/jNoIL8m3quNA2nU=;
+        fh=c044dLTGNhSMxfJOjIarziMjU0qpVr2pMkMJhB9oadA=;
+        b=B0qZmS/z7a/4/1O8xCyGbK0IRiL4/kn0WBQSd+kI0Ek6Kojxvlaj1K21LXE4EU1LYL
+         QHx+ZMVg35ZmUoXkwd8a+mL3H4ZzDEZW61ETot45J0htaO3iyMK+QfNO9bw/aVS79lS+
+         QF46tRTulhCeJvrUYfwEPxeP3Wbh2lP/819/Qzkz2DdR0xVPb4Cs+FIZTYuZWp9L7Nlp
+         L4VF5pJtW/wuhzkSjdaW9ra7yB15w+85BcNxiT7q+gMRYmp2t+eiJU+76SpjvMjLFqli
+         wv3N05JO3X+ZNud/rhwBtAeFZ9zp/ff8DUyD0JL0tR7vgF1CsiX5Y2rny05z7RMewq62
+         iXYw==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1769071087; x=1769675887; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1769071861; x=1769676661; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=YlaCsTUa7F4+bnXBKm75fmTPUHjK8kWJYjdBYurLfMU=;
-        b=JJeWBon5WahUY/4XQewJdW3W/TUQn9+zt1xghKj/DRM1Vdu3QgnrhoIAmSLTtXkXlj
-         A4poOnyY4sqqfG0uPi2gAdrn//rUe9fTXpZv5t939Bw9FaT1QG7IHl0E0oeMQbkfBWgy
-         rFpOpbwy0VJFiFBb2rGh7AHlENqy5nXEhpVds=
+        bh=94w4uSDyTamepOy3HjdXK7yBFSu/jNoIL8m3quNA2nU=;
+        b=Uy1sT0aI12L+b+0IsHKb9kw53P0T9i4/oB2g6HJ9BYUfuvNRNYje1tbOQ747x9swTc
+         YQ3B57RCXX5I3J/XfEoWmDlUgMQD6ijgKfw1G7IpRZVzn5IE5gOWVCAHnRmCSnu3evTH
+         NjX5weF93sDoZFCrbms/qM66xxXHrt7oogndE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1769071087; x=1769675887;
+        d=1e100.net; s=20230601; t=1769071861; x=1769676661;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=YlaCsTUa7F4+bnXBKm75fmTPUHjK8kWJYjdBYurLfMU=;
-        b=Uma1o1sOeZ3nJx7ngysaowrAs5A8KzwL69zL2nwYD2hSaYycFDU+srhLjjTzKijBu8
-         +R9JiDmvj+lflwSbeEZGtHTgqOmn8rg/rzFOXCJS8Ju1Wxuivzf4wGNKLwYKf+vHabqf
-         WorkSd9goBY0cr9KgrdU6lDStK9x2iMzVvUZ8gPWZSQn/IaCTDn5g4P9CysWMUr+BjDi
-         vfIoj/1bgvdrgvGI9Gj5MUuPIk9LUkCO65I6C/qjVBgT2S8Am8CfOx3nfbUmc7L5Ixoc
-         MDwv29CrCgGjX0StRErVXCc0UZ9iet8QUut3IA7JUeiscYCVhW6gxfb/BGoijXwLWVQq
-         2H9w==
-X-Forwarded-Encrypted: i=1; AJvYcCU3TOJqX7c0OcA39Kd/ATZpNwf0VPHXWYD/H8/v0kw5PAcLAj0pMrd4/gV1HxCzWO+wrXifjP3OzDmzGVm/Tg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxS2B1PVryaUqm0IRLTsEJrFNYCdx3dlyD2Gk941XBpF4cmqn1n
-	ie/0lofzHRWFeZMjYuG6qPXDRCSuoNiRJaaTFEE0BdI6DbEBZnLkS19QHZDvf7l6ZR60VR0V2Gp
-	XU2MiFvwAfvsjnDcU6H44BdllzB4pqDeo48ZUx4rL
-X-Gm-Gg: AZuq6aIxCx4z9PwcewQaKRCybpU7ndQokgkTP0gZLa27KdOmMTGo4ZduqxwTeiAtn/T
-	z5lEuGGvAwST1RlqD7xyxr70vRzXysNLQWsrvG+NS71bsvLdrcvJu/v7IMHjp++j6lQYsE7ohdS
-	dSE1kYXUtyY9q0kPh4Hz79DW38fVgrxzeaP1zRZoFROjBe5PS4VNIkR7fsOLRPumzvXcOLfeUfU
-	eIElwuI1NV7Qt9urpJldjVPWGGTMztpAQQPoGdmuUHVZqmnAmKGJo4BKKQiLbw2+qgSWHKKA34r
-	nx5m/jLMlIh0w3yGE7Hr/y0X
-X-Received: by 2002:a05:6512:3a89:b0:59d:df5e:bfdf with SMTP id
- 2adb3069b0e04-59ddf5ec025mr395152e87.33.1769071087312; Thu, 22 Jan 2026
- 00:38:07 -0800 (PST)
+        bh=94w4uSDyTamepOy3HjdXK7yBFSu/jNoIL8m3quNA2nU=;
+        b=R+hGy2WTc+nENnG9NpSktycZ9KFsx63YK7e3s5+9iBZhVFjEAabp7bc2rinzJH8rtE
+         NVCxzVmsZ/m2w/bfRCfwycQHQwsM3Gam5j0NH7U6gu4TdhqvTj8fYylUqkjaBeW897Pu
+         0btz7w6ht+CkHKASo+lh09cPRLWjZ/RUrL5GS/QhaTkXwDvxXMTSPVD3jJ4seDiUuUpV
+         18Tpmk3Lu7QLx2aKTihICEZlu/AeERrKPiQoMeYx92anp19wQqR05MMOXtPPOi8Wg0gJ
+         8mwjbzWTrUp6wffuR7ZGb8zH9FJnCpiDjcNWf5xK4Pa1hWilLGWN8SWMkjg1auBgrgfd
+         BfAQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWNDxE9FcaGLuLWAIjOIUJHcfO8Uarbwft0CByKnldMiXp3zpT8iHPrBhsnBQvkkY3Xhr3Vr4+OOF5RuvlrTg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YysqaOGu/ENd3x5BgpVH4UkuBl67tUNhWdodJ6+MmuvRngoTidG
+	3n2MThtYz1+89NVK1xKs934LIpzso0gdXNyvtiZsmlhTpMSbTLsUmU1Aa1XpBGgqtY67eowUawG
+	gLH1ZwxH7k7AsxxDgbpTmNc4Q4dqa0D4W6vc+nsNk
+X-Gm-Gg: AZuq6aKGoCW2GS/VERurtn+VM8jPmoEY2Jjc+Diupd0Ggkj2f+LOn3PuiEQCsibEgjX
+	cZryGyKXb1BGBbSNgPvmpiNf0v8RjFQ5NwWKmRAWQpmWFJ/h8VLsfoK/d1QIBog9zjKWsiTO7j5
+	Yk30vIBm+l9ztx8FPrv9o3viMSwgd3Q47bLl3INciYkrTwGL61YYGaGB866E2PKkfyQENnGyoiF
+	fFJg+ydBXKjb8XohZXbqHyeR21S4Em/YnbTa2BFcqid8N87blVEH/rs9JuFBgeCu7ViVda8dpeE
+	t84cy6/NzMIoQDIATXTX2Mee
+X-Received: by 2002:a05:6512:b0d:b0:59b:71f4:3de9 with SMTP id
+ 2adb3069b0e04-59baef00149mr6980941e87.39.1769071860888; Thu, 22 Jan 2026
+ 00:51:00 -0800 (PST)
 MIME-Version: 1.0
-References: <20251231035357.1147578-1-tzungbi@kernel.org>
-In-Reply-To: <20251231035357.1147578-1-tzungbi@kernel.org>
+References: <20260112110755.2435899-1-tzungbi@kernel.org>
+In-Reply-To: <20260112110755.2435899-1-tzungbi@kernel.org>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 22 Jan 2026 16:37:55 +0800
-X-Gm-Features: AZwV_QjeC9rZEZXIfjNiCuGnuqLpCfwJ2SqaV5XzQbAguloGd0OTwSGqZvreCjo
-Message-ID: <CAGXv+5Fm7DFkZ_JONhHN4467=oVhuw-e1XtXuD53qBQDWd7cNw@mail.gmail.com>
-Subject: Re: [PATCH v2] pmdomain: mediatek: Break lock dependency to `prepare_lock`
-To: Tzung-Bi Shih <tzungbi@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-pm@vger.kernel.org, 
+Date: Thu, 22 Jan 2026 16:50:49 +0800
+X-Gm-Features: AZwV_Qg5dxj_2w51xU5BsupL9WV0BUnu7Ybn-tnvwj0lQPJsdFVmHAfqqHMP6iE
+Message-ID: <CAGXv+5GDd44NDv2WWhpUsjsE7QnjjsmJDii-qSG-VuX6hHgJGg@mail.gmail.com>
+Subject: Re: [PATCH v2] remoteproc: mediatek: Break lock dependency to `prepare_lock`
+To: Tzung-Bi Shih <tzungbi@kernel.org>
+Cc: Bjorn Andersson <andersson@kernel.org>, Mathieu Poirier <mathieu.poirier@linaro.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-remoteproc@vger.kernel.org, 
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260122_003810_139907_70DA7904 
-X-CRM114-Status: GOOD (  28.54  )
+X-CRM114-CacheID: sfid-20260122_005103_150599_C36EABD7 
+X-CRM114-Status: GOOD (  19.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,38 +115,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 31, 2025 at 11:54=E2=80=AFAM Tzung-Bi Shih <tzungbi@kernel.org>=
- wrote:
+On Mon, Jan 12, 2026 at 7:08=E2=80=AFPM Tzung-Bi Shih <tzungbi@kernel.org> =
+wrote:
 >
-> Break a circular locking dependency between the Generic Power Domain
-> lock (`genpd->mlock`) and the clock framework's `prepare_lock`.  Move
-> the prepare() to the domain initialization phase and the unprepare()
-> to the cleanup phase.
+> A potential circular locking dependency (ABBA deadlock) exists between
+> `ec_dev->lock` and the clock framework's `prepare_lock`.
 >
-> The possible deadlock occurs in the following scenario:
+> The first order (A -> B) occurs when scp_ipi_send() is called while
+> `ec_dev->lock` is held (e.g., within cros_ec_cmd_xfer()):
+> 1. cros_ec_cmd_xfer() acquires `ec_dev->lock` and calls scp_ipi_send().
+> 2. scp_ipi_send() calls clk_prepare_enable(), which acquires
+>    `prepare_lock`.
+> See #0 in the following example calling trace.
+> (Lock Order: `ec_dev->lock` -> `prepare_lock`)
 >
-> 1. `genpd_power_on` acquires `genpd->mlock` and then calls the driver's
->    `scpsys_power_on`.  The driver calls `clk_bulk_prepare_enable`,
->    which attempts to acquire `prepare_lock`.
+> The reverse order (B -> A) is more complex and has been observed
+> (learned) by lockdep.  It involves the clock prepare operation
+> triggering power domain changes, which then propagates through sysfs
+> and power supply uevents, eventually calling back into the ChromeOS EC
+> driver and attempting to acquire `ec_dev->lock`:
+> 1. Something calls clk_prepare(), which acquires `prepare_lock`.  It
+>    then triggers genpd operations like genpd_runtime_resume(), which
+>    takes `&genpd->mlock`.
+> 2. Power domain changes can trigger regulator changes; regulator
+>    changes can then trigger device link changes; device link changes
+>    can then trigger sysfs changes.  Eventually, power_supply_uevent()
+>    is called.
+> 3. This leads to calls like cros_usbpd_charger_get_prop(), which calls
+>    cros_ec_cmd_xfer_status(), which then attempts to acquire
+>    `ec_dev->lock`.
+> See #1 ~ #6 in the following example calling trace.
+> (Lock Order: `prepare_lock` -> `&genpd->mlock` -> ... -> `&ec_dev->lock`)
 >
-> > -> #0 (prepare_lock){+.+.}-{3:3}:
-> >        __lock_acquire
-> >        lock_acquire
-> >        __mutex_lock_common
-> >        mutex_lock_nested
-> >        clk_prepare
-> >        clk_bulk_prepare
-> >        scpsys_power_on
-> >        genpd_power_on
+> Move the clk_prepare()/clk_unprepare() operations for `scp->clk` to the
+> remoteproc prepare()/unprepare() callbacks.  This ensures `prepare_lock`
+> is only acquired in prepare()/unprepare() callbacks.  Since
+> `ec_dev->lock` is not involved in the callbacks, the dependency loop is
+> broken.
 >
-> 2. A clock provider (managed by a power domain) is resumed.
->    `clk_prepare` acquires `prepare_lock` and triggers a runtime resume of
->    its power domain, which attempts to acquire `genpd->mlock`.
+> This means the clock is always "prepared" when the SCP is running.  The
+> prolonged "prepared time" for the clock should be acceptable as SCP is
+> designed to be a very power efficient processor.  The power consumption
+> impact can be negligible.
 >
-> > -> #1 (&genpd->mlock){+.+.}-{3:3}:
-> >        __mutex_lock_common
-> >        mutex_lock_nested
-> >        genpd_lock_mtx
+> A simplified calling trace reported by lockdep:
+> > -> #6 (&ec_dev->lock)
+> >        cros_ec_cmd_xfer
+> >        cros_ec_cmd_xfer_status
+> >        cros_usbpd_charger_get_port_status
+> >        cros_usbpd_charger_get_prop
+> >        power_supply_get_property
+> >        power_supply_show_property
+> >        power_supply_uevent
+> >        dev_uevent
+> >        uevent_show
+> >        dev_attr_show
+> >        sysfs_kf_seq_show
+> >        kernfs_seq_show
+> > -> #5 (kn->active#2)
+> >        kernfs_drain
+> >        __kernfs_remove
+> >        kernfs_remove_by_name_ns
+> >        sysfs_remove_file_ns
+> >        device_del
+> >        __device_link_del
+> >        device_links_driver_bound
+> > -> #4 (device_links_lock)
+> >        device_link_remove
+> >        _regulator_put
+> >        regulator_put
+> > -> #3 (regulator_list_mutex)
+> >        regulator_lock_dependent
+> >        regulator_disable
+> >        scpsys_power_off
+> >        _genpd_power_off
+> >        genpd_power_off
+> > -> #2 (&genpd->mlock/1)
+> >        genpd_add_subdomain
+> >        pm_genpd_add_subdomain
+> >        scpsys_add_subdomain
+> >        scpsys_probe
+> > -> #1 (&genpd->mlock)
 > >        genpd_runtime_resume
 > >        __rpm_callback
 > >        rpm_callback
@@ -153,24 +203,13 @@ On Wed, Dec 31, 2025 at 11:54=E2=80=AFAM Tzung-Bi Shih <tzungbi@kernel.org>=
 > >        __pm_runtime_resume
 > >        clk_core_prepare
 > >        clk_prepare
-> >        clk_bulk_prepare
->
-> This creates a cycle: `mlock` -> `prepare_lock` -> `mlock`.
->
-> > Possible unsafe locking scenario:
-> >
-> >       CPU0                    CPU1
-> >       ----                    ----
-> >  lock(&genpd->mlock);
-> >                               lock(prepare_lock);
-> >                               lock(&genpd->mlock);
-> >  lock(prepare_lock);
->
-> This breaks the dependency chain in #0.
->
-> This is a revert of f0fce06e345d ("soc: mtk-pm-domains: Fix the clock
-> prepared issue").  However, addressing the issue by moving the
-> unprepare()/prepare() to PM suspend()/resume() callbacks.
+> > -> #0 (prepare_lock)
+> >        clk_prepare
+> >        scp_ipi_send
+> >        scp_send_ipi
+> >        mtk_rpmsg_send
+> >        rpmsg_send
+> >        cros_ec_pkt_xfer_rpmsg
 >
 > Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
 
@@ -178,299 +217,7 @@ Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 Tested-by: Chen-Yu Tsai <wenst@chromium.org> # MT8183 & MT8188 no regressio=
 ns
 
-This is unfortunately a known problem of the interaction between pmdomains
-and the clk subsystem. This *breaks* the circular lock dependency. AFAIU
-this works because the clk prepare op is a no-op, because all the clocks
-are MMIO based.
-
-There is another question of whether this actually deadlocks or not, i.e.
-if the involved &genpd->mlock is the same object or not. Perhaps the
-accuracy of lockdep could be improved by setting a different lock class
-key and name? See what regmap does.
-
-
-> ---
-> v2:
-> - Fix build error reported by "kernel test robot <lkp@intel.com>".
->
-> v1: https://lore.kernel.org/all/20251229043244.4103262-1-tzungbi@kernel.o=
-rg/
->
->  drivers/pmdomain/mediatek/mtk-pm-domains.c | 101 +++++++++++++++++----
->  1 file changed, 81 insertions(+), 20 deletions(-)
->
-> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomai=
-n/mediatek/mtk-pm-domains.c
-> index 80561d27f2b2..c371b08c9170 100644
-> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-> @@ -318,12 +318,12 @@ static int scpsys_hwv_power_on(struct generic_pm_do=
-main *genpd)
->         if (ret)
->                 goto err_infra;
->
-> -       ret =3D clk_bulk_prepare_enable(pd->num_clks, pd->clks);
-> +       ret =3D clk_bulk_enable(pd->num_clks, pd->clks);
->         if (ret)
->                 goto err_reg;
->
->         /* For HWV the subsys clocks refer to the HWV low power subsystem=
- */
-> -       ret =3D clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_c=
-lks);
-> +       ret =3D clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
->         if (ret)
->                 goto err_disable_clks;
->
-> @@ -365,7 +365,7 @@ static int scpsys_hwv_power_on(struct generic_pm_doma=
-in *genpd)
->         }
->
->         /* It's done! Disable the HWV low power subsystem clocks */
-> -       clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-> +       clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
->
->         if (MTK_SCPD_CAPS(pd, MTK_SCPD_INFRA_PWR_CTL))
->                 scpsys_sec_infra_power_on(false);
-> @@ -373,9 +373,9 @@ static int scpsys_hwv_power_on(struct generic_pm_doma=
-in *genpd)
->         return 0;
->
->  err_disable_subsys_clks:
-> -       clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-> +       clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
->  err_disable_clks:
-> -       clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
-> +       clk_bulk_disable(pd->num_clks, pd->clks);
->  err_reg:
->         scpsys_regulator_disable(pd->supply);
->  err_infra:
-> @@ -398,7 +398,7 @@ static int scpsys_hwv_power_off(struct generic_pm_dom=
-ain *genpd)
->                         return ret;
->         }
->
-> -       ret =3D clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_c=
-lks);
-> +       ret =3D clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
->         if (ret)
->                 goto err_infra;
->
-> @@ -437,8 +437,8 @@ static int scpsys_hwv_power_off(struct generic_pm_dom=
-ain *genpd)
->         if (ret)
->                 goto err_disable_subsys_clks;
->
-> -       clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-> -       clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
-> +       clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
-> +       clk_bulk_disable(pd->num_clks, pd->clks);
->
->         scpsys_regulator_disable(pd->supply);
->
-> @@ -448,7 +448,7 @@ static int scpsys_hwv_power_off(struct generic_pm_dom=
-ain *genpd)
->         return 0;
->
->  err_disable_subsys_clks:
-> -       clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-> +       clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
->  err_infra:
->         if (MTK_SCPD_CAPS(pd, MTK_SCPD_INFRA_PWR_CTL))
->                 scpsys_sec_infra_power_on(false);
-> @@ -616,7 +616,7 @@ static int scpsys_power_on(struct generic_pm_domain *=
-genpd)
->         if (ret)
->                 return ret;
->
-> -       ret =3D clk_bulk_prepare_enable(pd->num_clks, pd->clks);
-> +       ret =3D clk_bulk_enable(pd->num_clks, pd->clks);
->         if (ret)
->                 goto err_reg;
->
-> @@ -638,8 +638,7 @@ static int scpsys_power_on(struct generic_pm_domain *=
-genpd)
->          * access.
->          */
->         if (!MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUS_PROTECTION)) {
-> -               ret =3D clk_bulk_prepare_enable(pd->num_subsys_clks,
-> -                                             pd->subsys_clks);
-> +               ret =3D clk_bulk_enable(pd->num_subsys_clks, pd->subsys_c=
-lks);
->                 if (ret)
->                         goto err_pwr_ack;
->         }
-> @@ -653,8 +652,7 @@ static int scpsys_power_on(struct generic_pm_domain *=
-genpd)
->                 goto err_disable_sram;
->
->         if (MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUS_PROTECTION)) {
-> -               ret =3D clk_bulk_prepare_enable(pd->num_subsys_clks,
-> -                                             pd->subsys_clks);
-> +               ret =3D clk_bulk_enable(pd->num_subsys_clks, pd->subsys_c=
-lks);
->                 if (ret)
->                         goto err_enable_bus_protect;
->         }
-> @@ -667,10 +665,9 @@ static int scpsys_power_on(struct generic_pm_domain =
-*genpd)
->         scpsys_sram_disable(pd);
->  err_disable_subsys_clks:
->         if (!MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUS_PROTECTION))
-> -               clk_bulk_disable_unprepare(pd->num_subsys_clks,
-> -                                          pd->subsys_clks);
-> +               clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
->  err_pwr_ack:
-> -       clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
-> +       clk_bulk_disable(pd->num_clks, pd->clks);
->  err_reg:
->         scpsys_regulator_disable(pd->supply);
->         return ret;
-> @@ -695,7 +692,7 @@ static int scpsys_power_off(struct generic_pm_domain =
-*genpd)
->                 regmap_set_bits(scpsys->base, pd->data->ext_buck_iso_offs=
-,
->                                 pd->data->ext_buck_iso_mask);
->
-> -       clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-> +       clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
->
->         if (MTK_SCPD_CAPS(pd, MTK_SCPD_MODEM_PWRSEQ))
->                 scpsys_modem_pwrseq_off(pd);
-> @@ -708,7 +705,7 @@ static int scpsys_power_off(struct generic_pm_domain =
-*genpd)
->         if (ret < 0)
->                 return ret;
->
-> -       clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
-> +       clk_bulk_disable(pd->num_clks, pd->clks);
->
->         scpsys_regulator_disable(pd->supply);
->
-> @@ -855,6 +852,14 @@ generic_pm_domain *scpsys_add_one_domain(struct scps=
-ys *scpsys, struct device_no
->                 pd->genpd.flags |=3D GENPD_FLAG_IRQ_SAFE;
->         }
->
-> +       ret =3D clk_bulk_prepare(pd->num_clks, pd->clks);
-> +       if (ret)
-> +               goto err_put_subsys_clocks;
-> +
-> +       ret =3D clk_bulk_prepare(pd->num_subsys_clks, pd->subsys_clks);
-> +       if (ret)
-> +               goto err_unprepare_clocks;
-> +
->         /*
->          * Initially turn on all domains to make the domains usable
->          * with !CONFIG_PM and to get the hardware in sync with the
-> @@ -869,7 +874,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsy=
-s *scpsys, struct device_no
->                 ret =3D pd->genpd.power_on(&pd->genpd);
->                 if (ret < 0) {
->                         dev_err(scpsys->dev, "%pOF: failed to power on do=
-main: %d\n", node, ret);
-> -                       goto err_put_subsys_clocks;
-> +                       goto err_unprepare_subsys_clocks;
->                 }
->
->                 if (MTK_SCPD_CAPS(pd, MTK_SCPD_ALWAYS_ON))
-> @@ -888,6 +893,10 @@ generic_pm_domain *scpsys_add_one_domain(struct scps=
-ys *scpsys, struct device_no
->
->         return scpsys->pd_data.domains[id];
->
-> +err_unprepare_subsys_clocks:
-> +       clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-> +err_unprepare_clocks:
-> +       clk_bulk_unprepare(pd->num_clks, pd->clks);
->  err_put_subsys_clocks:
->         clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
->  err_put_clocks:
-> @@ -965,6 +974,8 @@ static void scpsys_remove_one_domain(struct scpsys_do=
-main *pd)
->         if (scpsys_domain_is_on(pd))
->                 scpsys_power_off(&pd->genpd);
->
-> +       clk_bulk_unprepare(pd->num_clks, pd->clks);
-> +       clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
->         clk_bulk_put(pd->num_clks, pd->clks);
->         clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
->  }
-> @@ -1208,6 +1219,7 @@ static int scpsys_probe(struct platform_device *pde=
-v)
->         if (!scpsys)
->                 return -ENOMEM;
->
-> +       platform_set_drvdata(pdev, scpsys);
->         scpsys->dev =3D dev;
->         scpsys->soc_data =3D soc;
->
-> @@ -1270,12 +1282,61 @@ static int scpsys_probe(struct platform_device *p=
-dev)
->         return ret;
->  }
->
-> +#ifdef CONFIG_PM_SLEEP
-> +static int scpsys_suspend(struct device *dev)
-> +{
-> +       struct scpsys *scpsys =3D dev_get_drvdata(dev);
-> +       struct generic_pm_domain *genpd;
-> +       struct scpsys_domain *pd;
-> +       int i;
-> +
-> +       for (i =3D 0; i < scpsys->pd_data.num_domains; i++) {
-> +               genpd =3D scpsys->pd_data.domains[i];
-> +               if (!genpd)
-> +                       continue;
-> +
-> +               pd =3D to_scpsys_domain(genpd);
-> +               clk_bulk_unprepare(pd->num_clks, pd->clks);
-> +               clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
-> +       }
-> +       return 0;
-> +}
-> +
-> +static int scpsys_resume(struct device *dev)
-> +{
-> +       struct scpsys *scpsys =3D dev_get_drvdata(dev);
-> +       struct generic_pm_domain *genpd;
-> +       struct scpsys_domain *pd;
-> +       int i, ret;
-> +
-> +       for (i =3D 0; i < scpsys->pd_data.num_domains; i++) {
-> +               genpd =3D scpsys->pd_data.domains[i];
-> +               if (!genpd)
-> +                       continue;
-> +
-> +               pd =3D to_scpsys_domain(genpd);
-> +               ret =3D clk_bulk_prepare(pd->num_clks, pd->clks);
-> +               if (ret)
-> +                       return ret;
-> +               ret =3D clk_bulk_prepare(pd->num_subsys_clks, pd->subsys_=
-clks);
-> +               if (ret)
-> +                       return ret;
-> +       }
-> +       return 0;
-> +}
-> +#endif
-> +
-> +static const struct dev_pm_ops scpsys_pm_ops =3D {
-> +       SET_SYSTEM_SLEEP_PM_OPS(scpsys_suspend, scpsys_resume)
-> +};
-> +
->  static struct platform_driver scpsys_pm_domain_driver =3D {
->         .probe =3D scpsys_probe,
->         .driver =3D {
->                 .name =3D "mtk-power-controller",
->                 .suppress_bind_attrs =3D true,
->                 .of_match_table =3D scpsys_of_match,
-> +               .pm =3D &scpsys_pm_ops,
->         },
->  };
->  builtin_platform_driver(scpsys_pm_domain_driver);
-> --
-> 2.52.0.351.gbe84eed79e-goog
->
->
+AFAIU this works because the SCP clock is internal MMIO based, and the
+prepare op is a no-op; so splitting the clk_prepare() call out helps
+to break the dependency while not incurring additional cost.
 
