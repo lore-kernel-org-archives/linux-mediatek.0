@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 950EBC44500
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jan 2026 10:41:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91C10C44500
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jan 2026 10:41:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rjs9Optglr3O3VHNCL6sWxh8myDbwYzhmJWtd0zFmS4=; b=Z9a6RuTTfIddfsFeRQy3YDgt/3
-	5+NwsdiATNAwqZ6DMLWZZL2VXKde2LPdlBoLf5MmCX0oab8Jl/93KQSfIfg18CMB1gvZXuetZXPuD
-	MkwegDN707PQacWFFX17pDNutr4wQn327c2WnwPOsJRzFifw13OOqpKo1dQiXGm87Xdb7/fqSkMSO
-	56iRz3N3pLHuhIaS+RDGz7lr5nt2CExuGyy29MeqnG7OtJds311rMp+6+twUvnrXHPdamFtOTMn1B
-	29msTKJOcGA4wSjqcoIoLaveAjiDn5kv4Epruzu19T/E5iXjHxC6me0FMZCCgQjPjrg7W5eigRQQI
-	cIyNJFGg==;
+	bh=i3Rlq27ytc1umu4wH4VjyweSB86feBdtCia7YnhpZ7A=; b=xqScP/AXur+dQIEohxrhmt7uID
+	b8836XgQm3CTCHierRnOF4fhi7Ev6PMVrJfHM3l0bkqJtFfaI/ND5tFER8vBkyyciqAZYAT1Y27rN
+	s6J2F2TaDEx1Uf6hmgfq+UJxlHWfbD7CVZSEJZa/rdFMRuOde6ulCOmelWs34Yy8sc/zU9AKgfvj6
+	yWF69IrFksAIzjqquMdU2oMbOjWknQDHKDlLQas2qATBBJNUbans4oQa7ZD9dMGcH39B2+pq/6TgV
+	7hZuayA+9+ZpyC1BfT0ThngUj0XBtRFhEpGB/UUAmrsagPKTeK1XoKKyH8KZA+x2c8dhtp6XbKmGh
+	F2B3q6/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vis7W-00000006sFg-1H7i;
-	Thu, 22 Jan 2026 10:40:58 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vis7a-00000006sKV-1i8n;
+	Thu, 22 Jan 2026 10:41:02 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vis7G-00000006rqY-0Z9M;
-	Thu, 22 Jan 2026 10:40:42 +0000
+	id 1vis7I-00000006rtq-2nlx;
+	Thu, 22 Jan 2026 10:40:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8EF66600CB;
-	Thu, 22 Jan 2026 10:40:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E56E5C116C6;
-	Thu, 22 Jan 2026 10:40:40 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 16FD0600C3;
+	Thu, 22 Jan 2026 10:40:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E069C116C6;
+	Thu, 22 Jan 2026 10:40:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769078441;
-	bh=Q09V5A7X3pM/0XY3mGlRPsebpRgqHCxs0F4mulk67UM=;
+	s=k20201202; t=1769078443;
+	bh=6RG/0E+e7ypwdL1JqZ0zGng7cYN5PEFOPEDzMeJF3D0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=EZiVaVuIMTO/2UAW8yzMgdAEjoh6u3221P/AUaWQeW+KSU3jvxOOnXilWpTERER52
-	 xdzUp845i0e75PLSiq4h5jDX7J5xyQPAASSG261fmtp/fqeRwvM5rQL0bWRdJknK3J
-	 TdtNEdyskBh0eeZczWa6iER3Ibe2Abn387XrRFF+N3+50W0IULXR+EbraC8ElYPgsd
-	 26OGDYVn2UJeFJkh7g2kxptN0BeCom85ZFOouD6qYMJ8+cww2wxEMceQgDRjtGrN+D
-	 XBCOmD0TP2S5B1hyhgXGu1uDTHHYRI0Di0hZLmK//K862n0TkZloY9FYDHW9L0kzSD
-	 /lJ1+C5IepBnw==
+	b=myDhehn6XWyqg2YOYOJB/E3akVEXbNvMBZbpDkAWDz4e60fDxQNE3EH2ANkYet+73
+	 Q4G9IeSIWXhZAyL6oxBelvSF2mf5Fds3cR7xhfm3faaV5+/W22NJWac/D3GzLkuxtQ
+	 vL2aiI2H06lFn3Fw8mxWVJHythHblyIr/rEEEPsiLuztsH5Zd9fzOfkOnEWnoGx7MI
+	 055UaEJyuBgpSXGz0yZMiGZVV13ZQgqqu4CDva536Ni0W4F7bf56cnTtVvQ7S5FdCd
+	 Knh4CiM3W3urzvz5JG5dSwQiKZbLHqcGEaTFOgcKh8EJPLE37+pftYay+UHUSIK0uW
+	 Z4u94QtIjGzOw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 22 Jan 2026 11:39:58 +0100
-Subject: [PATCH mt76 v2 14/17] wifi: mt76: Do not reset idx for NPU tx
- queues during reset
+Date: Thu, 22 Jan 2026 11:39:59 +0100
+Subject: [PATCH mt76 v2 15/17] wifi: mt76: mt7996: Do not schedule RRO and
+ TxFree queues during reset for NPU
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260122-mt76-npu-eagle-offload-v2-14-2374614c0de6@kernel.org>
+Message-Id: <20260122-mt76-npu-eagle-offload-v2-15-2374614c0de6@kernel.org>
 References: <20260122-mt76-npu-eagle-offload-v2-0-2374614c0de6@kernel.org>
 In-Reply-To: <20260122-mt76-npu-eagle-offload-v2-0-2374614c0de6@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
@@ -73,31 +73,130 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Do not run reset_q callaback with reset_idx set to true for NPU Tx
-queues. This is a preliminary patch to properly manage reset procedure
-when NPU offloading is enabled.
+This is a preliminary patch to properly manage reset procedure when NPU
+offloading is enabled.
 
 Tested-by: Kang Yang <kang.yang@airoha.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/dma.h | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/dma.c        | 11 +++++++++++
+ drivers/net/wireless/mediatek/mt76/mt76.h       | 10 ++++++++++
+ drivers/net/wireless/mediatek/mt76/mt7996/dma.c |  5 +++++
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 14 ++++++++++++++
+ 4 files changed, 40 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/dma.h b/drivers/net/wireless/mediatek/mt76/dma.h
-index 4a63de6c5bf5a34cb76f10a427649bc04ebe78b2..2a0226c83f3c92a615d34846b8fcb5fafb42d07c 100644
---- a/drivers/net/wireless/mediatek/mt76/dma.h
-+++ b/drivers/net/wireless/mediatek/mt76/dma.h
-@@ -174,7 +174,9 @@ void mt76_dma_queue_reset(struct mt76_dev *dev, struct mt76_queue *q,
- static inline void
- mt76_dma_reset_tx_queue(struct mt76_dev *dev, struct mt76_queue *q)
- {
--	dev->queue_ops->reset_q(dev, q, true);
-+	bool reset_idx = q && !mt76_queue_is_npu_tx(q);
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index f5c6bb94ccbbda6afe03b24cf245b30c797e855d..2d133ace7c33ac5492e287a53510ee4b6a6b7403 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -881,6 +881,10 @@ mt76_dma_rx_cleanup(struct mt76_dev *dev, struct mt76_queue *q)
+ 		    mt76_queue_is_wed_rro(q))
+ 			continue;
+ 
++		if (mt76_npu_device_active(dev) &&
++		    mt76_queue_is_wed_rro(q))
++			continue;
 +
-+	dev->queue_ops->reset_q(dev, q, reset_idx);
- 	if (mtk_wed_device_active(&dev->mmio.wed))
- 		mt76_wed_dma_setup(dev, q, true);
+ 		if (!mt76_queue_is_wed_rro_rxdmad_c(q) &&
+ 		    !mt76_queue_is_wed_rro_ind(q))
+ 			mt76_put_page_pool_buf(buf, false);
+@@ -923,6 +927,13 @@ mt76_dma_rx_reset(struct mt76_dev *dev, enum mt76_rxq_id qid)
+ 	    mt76_queue_is_wed_rro(q))
+ 		return;
+ 
++	if (mt76_npu_device_active(dev) &&
++	    mt76_queue_is_wed_rro(q))
++		return;
++
++	if (mt76_queue_is_npu_txfree(q))
++		return;
++
+ 	mt76_dma_sync_idx(dev, q);
+ 	if (mt76_queue_is_npu(q))
+ 		mt76_npu_fill_rx_queue(dev, q);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index eefc3f555f8afea2af67517683d522b657e20b7b..5e68efc367fce63bcc60a8792e6f9d118283e3ed 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -55,6 +55,8 @@
+ 				 FIELD_PREP(MT_QFLAG_WED_RING, _n))
+ #define MT_NPU_Q_TX(_n)		__MT_NPU_Q(MT76_WED_Q_TX, _n)
+ #define MT_NPU_Q_RX(_n)		__MT_NPU_Q(MT76_WED_Q_RX, _n)
++#define MT_NPU_Q_TXFREE(_n)	(FIELD_PREP(MT_QFLAG_WED_TYPE, MT76_WED_Q_TXFREE) | \
++				 FIELD_PREP(MT_QFLAG_WED_RING, _n))
+ 
+ struct mt76_dev;
+ struct mt76_phy;
+@@ -2003,6 +2005,14 @@ static inline bool mt76_queue_is_npu_rx(struct mt76_queue *q)
+ 	       FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) == MT76_WED_Q_RX;
  }
+ 
++static inline bool mt76_queue_is_npu_txfree(struct mt76_queue *q)
++{
++	if (q->flags & MT_QFLAG_WED)
++		return false;
++
++	return FIELD_GET(MT_QFLAG_WED_TYPE, q->flags) == MT76_WED_Q_TXFREE;
++}
++
+ struct mt76_txwi_cache *
+ mt76_token_release(struct mt76_dev *dev, int token, bool *wake);
+ int mt76_token_consume(struct mt76_dev *dev, struct mt76_txwi_cache **ptxwi);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/dma.c b/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
+index 1a4f5f5b2a8435933070bb7d8feab26a0c174922..8f5d297dafce23dcb3c1e53678f8d67dab9e8987 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/dma.c
+@@ -756,6 +756,9 @@ int mt7996_dma_init(struct mt7996_dev *dev)
+ 	     (is_mt7992(&dev->mt76)))) {
+ 		dev->mt76.q_rx[MT_RXQ_MAIN_WA].flags = MT_WED_Q_TXFREE;
+ 		dev->mt76.q_rx[MT_RXQ_MAIN_WA].wed = wed;
++	} else if (is_mt7992(&dev->mt76) &&
++		   mt76_npu_device_active(&dev->mt76)) {
++		dev->mt76.q_rx[MT_RXQ_MAIN_WA].flags = MT_NPU_Q_TXFREE(0);
+ 	}
+ 
+ 	if (mt7996_has_wa(dev)) {
+@@ -888,6 +891,8 @@ int mt7996_dma_init(struct mt7996_dev *dev)
+ 				/* tx free notify event from WA for band0 */
+ 				dev->mt76.q_rx[MT_RXQ_TXFREE_BAND0].flags = MT_WED_Q_TXFREE;
+ 				dev->mt76.q_rx[MT_RXQ_TXFREE_BAND0].wed = wed;
++			} else if (mt76_npu_device_active(&dev->mt76)) {
++				dev->mt76.q_rx[MT_RXQ_TXFREE_BAND0].flags = MT_NPU_Q_TXFREE(0);
+ 			}
+ 
+ 			ret = mt76_queue_alloc(dev,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index ebce6b080886896be746c37690ef38713fe2cbc2..c88a97dbab8d529e71c8bcbb146e7e319c32e6e4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -2563,6 +2563,13 @@ void mt7996_mac_reset_work(struct work_struct *work)
+ 		    mt76_queue_is_wed_rro(&dev->mt76.q_rx[i]))
+ 			continue;
+ 
++		if (mt76_npu_device_active(&dev->mt76) &&
++		    mt76_queue_is_wed_rro(&dev->mt76.q_rx[i]))
++			continue;
++
++		if (mt76_queue_is_npu_txfree(&dev->mt76.q_rx[i]))
++			continue;
++
+ 		napi_disable(&dev->mt76.napi[i]);
+ 	}
+ 	napi_disable(&dev->mt76.tx_napi);
+@@ -2618,6 +2625,13 @@ void mt7996_mac_reset_work(struct work_struct *work)
+ 		    mt76_queue_is_wed_rro(&dev->mt76.q_rx[i]))
+ 			continue;
+ 
++		if (mt76_npu_device_active(&dev->mt76) &&
++		    mt76_queue_is_wed_rro(&dev->mt76.q_rx[i]))
++			continue;
++
++		if (mt76_queue_is_npu_txfree(&dev->mt76.q_rx[i]))
++			continue;
++
+ 		napi_enable(&dev->mt76.napi[i]);
+ 		local_bh_disable();
+ 		napi_schedule(&dev->mt76.napi[i]);
 
 -- 
 2.52.0
