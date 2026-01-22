@@ -4,56 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65638D3EE67
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jan 2026 13:51:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62B17D3EE68
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jan 2026 13:51:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SC/ESIJoZQ70wF1atIQSPeil4YspI+2VRZWfBeQOJBg=; b=GmpFcuUioOqwUN
-	MuKk/iiVyES0t4+M/Yl3G6von+8w9LoMxF7cFpfqaMfz46ZBPYXARw9yGviMrdJZbmtSRCIXHjILy
-	EbzD3gB306vLc85EeevUa0k5OoSqmdv/yTVZuQUIdWs67/yeNFbBPylx97IOvxgu77jRaFDGjdn+j
-	XQvanP9SqPlB86ptHuRnzvzSLqi+NzFynWMTqCTpWKdDd7M54sLSC1HCQtMqFyGlclitMLuqaaaXN
-	14gB7qLJ5yR/8y9GI6yORY2sKO6hoSjsl/GzQIsQdAOV9ew+2cFl7RKjDc//c8zRCvUHLWeDxs1nx
-	1gKaniJ7ihyQMwTiQe7w==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8980YIqUz0nOVMSHpI3891zN28L3Tm4Fffqs27xNp90=; b=ZK5j9o/pVrXoN8IQOnLSmRrUxc
+	YYMZMhXIHmnvh3msI4XQ5N64+J6v/gcITsaJYGEgM3mV6nfWw/ENjvpXyC4bjYHJ7rZrBoBASVgWM
+	lML85pGAMtoxywZ/qxIBc1hMrgJGOtKpJlTtMUuRrPKZzbG7vkXUEe8iYLqICnoP7wxOLpFwuU6l2
+	WPRnL6wlimzshS++ZbWQko6jJFboleAx4Y7aECuHTjkhRqTNR0mMp+HV0vKhM4J0oST5kF6EC4WPg
+	GE4qwbBj8Xw9WwZjk/ppjHvGKPzbYpqmsqtmEzUHywEIfLjqFEmf4F6sUc/pS22NGzC0zQQQ5jBM1
+	tqx1+z5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viv6K-00000007BEf-0yr6;
-	Thu, 22 Jan 2026 13:51:56 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1viv6M-00000007BFQ-20UX;
+	Thu, 22 Jan 2026 13:51:58 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viv6H-00000007BE9-3IVP
+	id 1viv6J-00000007BER-3zxF
 	for linux-mediatek@lists.infradead.org;
-	Thu, 22 Jan 2026 13:51:54 +0000
+	Thu, 22 Jan 2026 13:51:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 87F68400EC;
-	Thu, 22 Jan 2026 13:51:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0489C116C6;
-	Thu, 22 Jan 2026 13:51:51 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 29D8F44167;
+	Thu, 22 Jan 2026 13:51:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A386DC116C6;
+	Thu, 22 Jan 2026 13:51:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769089912;
-	bh=2ovK75HHk76zhj92vAMM51CdwfMHMuCPL77ODcQJ3IE=;
-	h=From:Subject:Date:To:Cc:From;
-	b=Qtk8j762n2/gQZqJnlKHjUAULJIxNce6x5Ri5lpG2j5fSf+MvtLt2Sh20km0/t7RP
-	 fuHfs36LHrv5pgqqJBmXzjVf1hjNlVKhwRfFdA3GbLcjjl8l26YuLdgdIJyuHhb8qw
-	 vNFW1CHgPwIs/ji9qUd2BcPlygX67nBPZGzZShHEIr0k/8MuilWYOnxQHjU3qxdD00
-	 WPEAm9dUvqUMsPP+r3JMAUnebY3pRysds4AU83oY7P4XSwqlsR/xzYz7nJoUxdvUg9
-	 iQ5O9Y6wZOd2ZwrE9kzN132EtAW5U5dl0U818xP6tHOQf4ljyAFoWpdsJRjnofLAOX
-	 IgtaDJxchoNPg==
+	s=k20201202; t=1769089915;
+	bh=QTkWYKw57wG56SDMJhyvx/sMmU7Pdrz2QkwuQ6hivis=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=cv3oSPZ1nb+lA5ik5dCnNfWvS/VjFZv0d8xLhl/iLebAyJxT1kmZo2zO8wQOWXruE
+	 YWev48rbsU7OWYj/tWJoPJtempuddVeDqdhyI0QPDg1b/qO/Eu9N1s3KzNuK0ZxG9k
+	 s25M9dyMcwxf25A4ln2ciC+P48HO1XFzanKSCcmPrVgl8bpGvLks6CnsY6FfGoVuN6
+	 d2Dz/AzmzkOoH0YYWpPKpYH2Mri64KuwtpU0kXwYx5dsBQJDnsFD2vabkt8+VtNdYU
+	 9VBctbpqE22GeiFlaHS/czUKHvsqnWwgbPQVHfJyDYTpH5uUIIo6F034ssHAgSqQjA
+	 yA8qyl4f7LDVw==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH wireless-next 0/2] wifi: mac80211: Introduce eMLSR/eMLMR
- parsing support in AP mode.
-Date: Thu, 22 Jan 2026 14:51:32 +0100
-Message-Id: <20260122-mac80211-emlsr-v1-0-f0e43bb6d95a@kernel.org>
+Date: Thu, 22 Jan 2026 14:51:33 +0100
+Subject: [PATCH wireless-next 1/2] wifi: mac80211: Add EMLSR/EMLMR action
+ frame parsing support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MSwqAMAwA0auUrC00wU/xKuJCaqoBrdKACOLdL
- S7fYuYB5Sys0JsHMl+icqQCrAyEdUoLW5mLgRy1DgntPgXvCNHyvmm2TdfVzlOMPgQo0Zk5yv0
- Ph/F9P12f0ElgAAAA
-X-Change-ID: 20260121-mac80211-emlsr-5774082ff8cc
+Message-Id: <20260122-mac80211-emlsr-v1-1-f0e43bb6d95a@kernel.org>
+References: <20260122-mac80211-emlsr-v1-0-f0e43bb6d95a@kernel.org>
+In-Reply-To: <20260122-mac80211-emlsr-v1-0-f0e43bb6d95a@kernel.org>
 To: Johannes Berg <johannes@sipsolutions.net>
 Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, 
  Shayne Chen <shayne.chen@mediatek.com>, 
@@ -62,9 +60,8 @@ Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
  linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260122_055153_851413_54DFC944 
-X-CRM114-Status: UNSURE (   7.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260122_055156_058369_82128DC1 
+X-CRM114-Status: GOOD (  17.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,30 +79,190 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Introduce support in AP mode for parsing of the Operating Mode Notification
 frame sent by the client to enable/disable MLO eMLSR or eMLMR if supported
 by both the AP and the client.
-Add drv_set_eml_op_mode mac80211 callback in order to configure underlay
-driver with eMLSR info (control and bitmap).
 
+Tested-by: Christian Marangi <ansuelsmth@gmail.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
-Lorenzo Bianconi (2):
-      wifi: mac80211: Add EMLSR/EMLMR action frame parsing support
-      wifi: mac80211: Add drv_set_eml_op_mode driver callback
-
  include/linux/ieee80211-eht.h |  5 +++
- include/linux/ieee80211.h     |  6 +++
- include/net/mac80211.h        |  7 ++++
- net/mac80211/driver-ops.h     | 21 ++++++++++
- net/mac80211/eht.c            | 98 +++++++++++++++++++++++++++++++++++++++++++
- net/mac80211/ieee80211_i.h    |  2 +
- net/mac80211/iface.c          | 10 ++++-
- net/mac80211/rx.c             |  8 ++++
- net/mac80211/trace.h          | 31 ++++++++++++++
- 9 files changed, 187 insertions(+), 1 deletion(-)
----
-base-commit: 1e1dd9eeaab3908746d1dce5db6b0c29e0d28d6d
-change-id: 20260121-mac80211-emlsr-5774082ff8cc
+ include/linux/ieee80211.h     |  6 ++++
+ net/mac80211/eht.c            | 76 +++++++++++++++++++++++++++++++++++++++++++
+ net/mac80211/ieee80211_i.h    |  2 ++
+ net/mac80211/iface.c          | 10 +++++-
+ net/mac80211/rx.c             |  8 +++++
+ 6 files changed, 106 insertions(+), 1 deletion(-)
 
-Best regards,
+diff --git a/include/linux/ieee80211-eht.h b/include/linux/ieee80211-eht.h
+index f9782e46c5e5241bccc84c3bbc18b1cc9ec1879c..f409469d3db87c5714c68f8dada6fa212dff5c55 100644
+--- a/include/linux/ieee80211-eht.h
++++ b/include/linux/ieee80211-eht.h
+@@ -558,6 +558,11 @@ struct ieee80211_mle_tdls_common_info {
+ 
+ #define IEEE80211_MLC_PRIO_ACCESS_PRES_AP_MLD_MAC_ADDR	0x0010
+ 
++#define IEEE80211_EML_CTRL_EMLSR_MODE		BIT(0)
++#define IEEE80211_EML_CTRL_EMLMR_MODE		BIT(1)
++#define IEEE80211_EML_CTRL_PARAM_UPDATE		BIT(2)
++#define IEEE80211_EML_CTRL_INDEV_COEX_ACT	BIT(3)
++
+ /* no fixed fields in PRIO_ACCESS */
+ 
+ /**
+diff --git a/include/linux/ieee80211.h b/include/linux/ieee80211.h
+index fbde215c25aa79efd339aa530896a29dbb1a8ff8..f2c6f34f39f24ce59cbb2650f70e898d24d12901 100644
+--- a/include/linux/ieee80211.h
++++ b/include/linux/ieee80211.h
+@@ -1186,6 +1186,12 @@ struct ieee80211_mgmt {
+ 					u8 action_code;
+ 					u8 variable[];
+ 				} __packed epcs;
++				struct {
++					u8 action_code;
++					u8 dialog_token;
++					u8 control;
++					u8 variable[];
++				} __packed eml_omn;
+ 			} u;
+ 		} __packed action;
+ 		DECLARE_FLEX_ARRAY(u8, body); /* Generic frame body */
+diff --git a/net/mac80211/eht.c b/net/mac80211/eht.c
+index fd41046e3b681b753e6cc7ddf82046e4bc5df9b3..f1f60d41fccfc2da4ecd2961f6a524e94a6bfa6c 100644
+--- a/net/mac80211/eht.c
++++ b/net/mac80211/eht.c
+@@ -102,3 +102,79 @@ ieee80211_eht_cap_ie_to_sta_eht_cap(struct ieee80211_sub_if_data *sdata,
+ 
+ 	ieee80211_sta_recalc_aggregates(&link_sta->sta->sta);
+ }
++
++static void
++ieee80211_send_eml_op_mode_notif(struct ieee80211_sub_if_data *sdata,
++				 struct ieee80211_mgmt *req, u8 act_len)
++{
++	int hdr_len = offsetof(struct ieee80211_mgmt, u.action.u.eml_omn);
++	struct ieee80211_local *local = sdata->local;
++	struct ieee80211_mgmt *mgmt;
++	struct sk_buff *skb;
++
++	skb = dev_alloc_skb(local->tx_headroom + hdr_len + act_len);
++	if (!skb)
++		return;
++
++	skb_reserve(skb, local->tx_headroom);
++	mgmt = skb_put_zero(skb, hdr_len);
++	mgmt->frame_control = cpu_to_le16(IEEE80211_FTYPE_MGMT |
++					  IEEE80211_STYPE_ACTION);
++	memcpy(mgmt->da, req->sa, ETH_ALEN);
++	memcpy(mgmt->sa, sdata->vif.addr, ETH_ALEN);
++	memcpy(mgmt->bssid, sdata->vif.addr, ETH_ALEN);
++
++	mgmt->u.action.category = WLAN_CATEGORY_PROTECTED_EHT;
++	memcpy(&mgmt->u.action.u.eml_omn, &req->u.action.u.eml_omn, act_len);
++	mgmt->u.action.u.eml_omn.control &= ~(IEEE80211_EML_CTRL_PARAM_UPDATE |
++					      IEEE80211_EML_CTRL_INDEV_COEX_ACT);
++	ieee80211_tx_skb(sdata, skb);
++}
++
++void ieee80211_rx_eml_op_mode_notif(struct ieee80211_sub_if_data *sdata,
++				    struct sk_buff *skb)
++{
++	int hdr_len = offsetof(struct ieee80211_mgmt, u.action.u.eml_omn);
++	enum nl80211_iftype type = ieee80211_vif_type_p2p(&sdata->vif);
++	const struct wiphy_iftype_ext_capab *ift_ext_capa;
++	struct ieee80211_mgmt *mgmt = (void *)skb->data;
++	struct ieee80211_local *local = sdata->local;
++	u8 control = mgmt->u.action.u.eml_omn.control;
++	u8 *ptr = mgmt->u.action.u.eml_omn.variable;
++	u8 act_len = 3; /* action_code + dialog_token + control */
++
++	if (!ieee80211_vif_is_mld(&sdata->vif))
++		return;
++
++	ift_ext_capa = cfg80211_get_iftype_ext_capa(local->hw.wiphy, type);
++	if (!ift_ext_capa)
++		return;
++
++	if (!(ift_ext_capa->eml_capabilities & IEEE80211_EML_CAP_EMLSR_SUPP) &&
++	    !(ift_ext_capa->eml_capabilities & IEEE80211_EML_CAP_EMLMR_SUPPORT))
++		return;
++
++	/* eMLSR and eMLMR can't be enabled at the same time */
++	if ((control & IEEE80211_EML_CTRL_EMLSR_MODE) &&
++	    (control & IEEE80211_EML_CTRL_EMLMR_MODE))
++		return;
++
++	if ((control & IEEE80211_EML_CTRL_EMLSR_MODE) ||
++	    (control & IEEE80211_EML_CTRL_EMLMR_MODE))
++		act_len += sizeof(__le16); /* eMLSR/eMLMR link_bitmap */
++
++	if (control & IEEE80211_EML_CTRL_EMLMR_MODE) {
++		u8 mcs_map_count = ptr[3];
++
++		if (mcs_map_count > 2)
++			return;
++
++		/* mcs_map_count_control and mcs_map_bw */
++		act_len += 2 + mcs_map_count;
++	}
++
++	if (skb->len < hdr_len + act_len)
++		return;
++
++	ieee80211_send_eml_op_mode_notif(sdata, mgmt, act_len);
++}
+diff --git a/net/mac80211/ieee80211_i.h b/net/mac80211/ieee80211_i.h
+index dc757cb329740d621f6a9deb4e9ffe258e1b7d67..3ef93cd1fb33e2614c3e06c51d6b1ebcafa4824c 100644
+--- a/net/mac80211/ieee80211_i.h
++++ b/net/mac80211/ieee80211_i.h
+@@ -2837,6 +2837,8 @@ void ieee80211_destroy_frag_cache(struct ieee80211_fragment_cache *cache);
+ 
+ u8 ieee80211_ie_len_eht_cap(struct ieee80211_sub_if_data *sdata);
+ 
++void ieee80211_rx_eml_op_mode_notif(struct ieee80211_sub_if_data *sdata,
++				    struct sk_buff *skb);
+ void
+ ieee80211_eht_cap_ie_to_sta_eht_cap(struct ieee80211_sub_if_data *sdata,
+ 				    struct ieee80211_supported_band *sband,
+diff --git a/net/mac80211/iface.c b/net/mac80211/iface.c
+index 3ce94b95decd64eea4ea063ae98c111bdfd57e9c..17476fd9259b68b3d9c649eabad10efa42d56cd7 100644
+--- a/net/mac80211/iface.c
++++ b/net/mac80211/iface.c
+@@ -1664,7 +1664,15 @@ static void ieee80211_iface_process_skb(struct ieee80211_local *local,
+ 		}
+ 	} else if (ieee80211_is_action(mgmt->frame_control) &&
+ 		   mgmt->u.action.category == WLAN_CATEGORY_PROTECTED_EHT) {
+-		if (sdata->vif.type == NL80211_IFTYPE_STATION) {
++		if (sdata->vif.type == NL80211_IFTYPE_AP) {
++			switch (mgmt->u.action.u.eml_omn.action_code) {
++			case WLAN_PROTECTED_EHT_ACTION_EML_OP_MODE_NOTIF:
++				ieee80211_rx_eml_op_mode_notif(sdata, skb);
++				break;
++			default:
++				break;
++			}
++		} else if (sdata->vif.type == NL80211_IFTYPE_STATION) {
+ 			switch (mgmt->u.action.u.ttlm_req.action_code) {
+ 			case WLAN_PROTECTED_EHT_ACTION_TTLM_REQ:
+ 				ieee80211_process_neg_ttlm_req(sdata, mgmt,
+diff --git a/net/mac80211/rx.c b/net/mac80211/rx.c
+index ac437256f5d5c4b34601fd4c8a6f6f80469b2522..521e44c9e8dac498122e7a595d1eb8bb5751789d 100644
+--- a/net/mac80211/rx.c
++++ b/net/mac80211/rx.c
+@@ -3928,6 +3928,14 @@ ieee80211_rx_h_action(struct ieee80211_rx_data *rx)
+ 					      u.action.u.epcs))
+ 				goto invalid;
+ 			goto queue;
++		case WLAN_PROTECTED_EHT_ACTION_EML_OP_MODE_NOTIF:
++			if (sdata->vif.type != NL80211_IFTYPE_AP)
++				break;
++
++			if (len < offsetofend(typeof(*mgmt),
++					      u.action.u.eml_omn))
++				goto invalid;
++			goto queue;
+ 		default:
+ 			break;
+ 		}
+
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.52.0
 
 
