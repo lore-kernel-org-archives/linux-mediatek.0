@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CC5AD6CFBC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jan 2026 03:17:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85F03D6CFBF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jan 2026 03:17:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4o/P+C0jNzf2JiOQyXN2IxeKhOI4k26hisBucaHo4zk=; b=RWQCYeMI/BBm5gx7tC3Y4+hvw3
-	K/zE9zzz1h5ml4/pCdMRRaiSLz22XWxTKGv7/YXsKEL4JP8AtIXFONeNIcxtyvRunO7SCW3prXskr
-	W6wEKnxrCkF6YL3TtJ6LnhEWz1ek+pRgq7jj98kXaC9fk6hfdK9T4tBEjwGKx00cBoBK78tysd4eO
-	pffG5AtCr0n8B+2ejFXURJ4eW8OVGTOqugF0GEJXqn8zGBUQS6arE6XSrWd6Z7bRsxYnB1FiVNmS0
-	kW5yht7GS61n26lrY9+jIiyzhiaMvJ7p1wMrO/WLf3Nmcm/JwjC6wDeJQEyJ84YqdjkPL6Zrb2jRv
-	R9I0BlNQ==;
+	bh=By6b4MZUjK1C7fnrwZwcKbNKrmrHMohdiHMbodiHDz0=; b=ArY0oSpUbzU75ApKuxbkmT4Hcl
+	pVSQm1S7Yjaj3ymf/XPm6cJYujBNV8WCzT85MDdOU3cvx4U7bEik0HjEIXRYD6CfUn3GDx3Pq6NZi
+	ShPl1zs7MjOOiGuGD2fovaVtFawm+yponS6HqQR+seVp0Usl1ePxfX6j7B5vedfj6+LawQBYjE73Q
+	XyqEokbrdgKGgY17Niq0Ft8Ks+hNTKhNfnFO0vv01LSLjImPumyVupxJVUXye/TPNNq+lI07BgfBg
+	Xlq/7fB9zIK3+rn+wMpBz7p0V68G7K6EdgX7pIcg64GRYNAyvyKjBepLZzCMBDDZgghv9IeOUmTg6
+	IqN2rwHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vj7g2-000000085cD-0coZ;
-	Fri, 23 Jan 2026 03:17:38 +0000
+	id 1vj7g3-000000085eh-2E4H;
+	Fri, 23 Jan 2026 03:17:39 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vj7fu-000000085U4-0TlT;
-	Fri, 23 Jan 2026 03:17:31 +0000
-X-UUID: 0c184abaf80a11f0a16f0188aa809bee-20260122
+	id 1vj7fv-000000085VF-0T32;
+	Fri, 23 Jan 2026 03:17:32 +0000
+X-UUID: 0ba07486f80a11f0a16f0188aa809bee-20260122
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=4o/P+C0jNzf2JiOQyXN2IxeKhOI4k26hisBucaHo4zk=;
-	b=SEfZKtcLXSjne9UpLda96YwozOQ0XRO6WJ7I+fUONY59Y90KlGA/9azLeYEmb4vFwCDOS+4KkqvZ9IewASwrqkPFju/DHUHuu7oeDI0R6w08o0FVfdaaC8MEW9/IUdON9P3eg+s41kuYRyHPq/1S6yJMrDs9s15A8tIL4dNB7RI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From; bh=By6b4MZUjK1C7fnrwZwcKbNKrmrHMohdiHMbodiHDz0=;
+	b=R8pQPaJ44nfwM83DxGUrXEnuH6aXBM1c1bb44WfcmaXcIEccvOf4mCN/hNKCZyXfjfH4jKsBhVk65lcrKWqKTVJCnkcZ8seMixGiOeYq/lx+kyhBi5tXhsY35uKKVXQuNn4okccF9HU4Es2A6ZMmEdtLcRV3rYHftvNJwb6HkFg=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:499cf12e-6df9-4456-9786-07b3f7dfede3,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:89c9d04,CLOUDID:68a4dbef-16bd-4243-b4ca-b08ca08ab1d8,B
+X-CID-O-INFO: VERSION:1.3.11,REQID:79b34090-b56e-4ad2-86eb-bcd3a5032c14,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:99061e7a-8c8a-4fc4-88c0-3556e7711556,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
 	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,18 +42,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 0c184abaf80a11f0a16f0188aa809bee-20260122
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+X-UUID: 0ba07486f80a11f0a16f0188aa809bee-20260122
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
 	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 967009886; Thu, 22 Jan 2026 20:17:28 -0700
+	with ESMTP id 1651750372; Thu, 22 Jan 2026 20:17:27 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 23 Jan 2026 11:17:27 +0800
+ 15.2.2562.29; Fri, 23 Jan 2026 11:17:26 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 23 Jan 2026 11:17:26 +0800
+ 15.2.2562.29 via Frontend Transport; Fri, 23 Jan 2026 11:17:25 +0800
 From: Kyrie Wu <kyrie.wu@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
@@ -64,10 +64,9 @@ To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>
-CC: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v12 09/12] media: dt-bindings: mediatek,jpeg: Add mediatek, mt8196-jpgdec compatible
-Date: Fri, 23 Jan 2026 11:17:10 +0800
-Message-ID: <20260123031713.14621-10-kyrie.wu@mediatek.com>
+Subject: [PATCH v12 08/12] media: mediatek: jpeg: fix remove buffer removal timing for multi-core
+Date: Fri, 23 Jan 2026 11:17:09 +0800
+Message-ID: <20260123031713.14621-9-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20260123031713.14621-1-kyrie.wu@mediatek.com>
 References: <20260123031713.14621-1-kyrie.wu@mediatek.com>
@@ -76,8 +75,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260122_191730_162361_51673162 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20260122_191731_166357_72058E56 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,43 +91,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Compared to the previous generation IC, the MT8196 uses SMMU
-instead of IOMMU and supports features such as dynamic voltage
-and frequency scaling. Therefore, add "mediatek,mt8196-jpgdec"
-compatible to the binding document.
+Move calls to v4l2_m2m_src/dst_buf_remove() inside of the spinlock
+protected scope to ensure all necessary operations are performed
+before buffers are removed from their queues and ensure proper
+synchronization of buffer handling to avoid buffer lost.
 
+Fixes: 86379bd9d399 ("media: mtk-jpeg: Fixes jpeg enc&dec worker sw flow")
 Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- .../bindings/media/mediatek,mt8195-jpegdec.yaml           | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
-index e5448c60e3eb..28a9a9bfdbf8 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
-@@ -14,7 +14,9 @@ description:
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 01524b16ebab..e5aad89294e9 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1651,9 +1651,6 @@ static void mtk_jpegenc_worker(struct work_struct *work)
+ 		goto enc_end;
+ 	}
  
- properties:
-   compatible:
--    const: mediatek,mt8195-jpgdec
-+    enum:
-+      - mediatek,mt8195-jpgdec
-+      - mediatek,mt8196-jpgdec
+-	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+-	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+-
+ 	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
+ 			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
  
-   power-domains:
-     maxItems: 1
-@@ -44,7 +46,9 @@ patternProperties:
+@@ -1671,6 +1668,8 @@ static void mtk_jpegenc_worker(struct work_struct *work)
+ 			     &src_buf->vb2_buf);
+ 	mtk_jpeg_set_enc_params(ctx, comp_jpeg[hw_id]->reg_base);
+ 	mtk_jpeg_enc_start(comp_jpeg[hw_id]->reg_base);
++	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
++	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+ 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+ 	spin_unlock_irqrestore(&comp_jpeg[hw_id]->hw_lock, flags);
  
-     properties:
-       compatible:
--        const: mediatek,mt8195-jpgdec-hw
-+        enum:
-+          - mediatek,mt8195-jpgdec-hw
-+          - mediatek,mt8196-jpgdec-hw
+@@ -1752,9 +1751,6 @@ static void mtk_jpegdec_worker(struct work_struct *work)
+ 		goto dec_end;
+ 	}
  
-       reg:
-         maxItems: 1
+-	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
+-	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+-
+ 	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
+ 	if (mtk_jpeg_set_dec_dst(ctx,
+ 				 &jpeg_src_buf->dec_param,
+@@ -1779,6 +1775,8 @@ static void mtk_jpegdec_worker(struct work_struct *work)
+ 				jpeg_src_buf->bs_size,
+ 				&bs,
+ 				&fb);
++	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
++	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
+ 	mtk_jpeg_dec_start(comp_jpeg[hw_id]->reg_base);
+ 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+ 	spin_unlock_irqrestore(&comp_jpeg[hw_id]->hw_lock, flags);
 -- 
 2.45.2
 
