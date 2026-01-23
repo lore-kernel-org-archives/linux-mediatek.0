@@ -4,79 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ACE1D6CFBD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jan 2026 03:17:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3C20D72361
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jan 2026 09:28:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3yqWZOB8QJMNyMRCjmmVjLcxBnBoHVVIPBVyJGlzB0c=; b=lZdIod3Y/QUCeOZNBF0lwg2TcL
-	qabYdpPE3CvDXGJo/7dnI/cNUwsjV3vT7a5qa1+LJgHnBbKVA23Y5IurTUQ3fnLKaam7zPFaALCGU
-	j8nsErokIeJw9l7YnVC5RVkrbR9dGuT3DiWjFe9b6ES0Q9mERoECulyMz7DPMXgmNhfSL0A+i8VKu
-	+f5N8wOFje6E3kYUtojU8ypC0Urj+mpwOHzypayY8FdGi9PLRvgtwycUu6hx1iyDU1W6u5TxkjnBB
-	lBwMMeBQeoS7Scflu0W4TeSYZ4AzFqtVTMEBzpp9VO314fvkevR0uJSp8HEl3Ve1WJXjky9V3ySrA
-	HjmIICeg==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pRV8jk5gZuWFIIs+MJ2nROf6R7XRT5wfP85IRpLa9PM=; b=DzppJJpQqu/eTJIiA4fmUJ59FN
+	TOl54/LZijPakjUOO/y/2T+4nSU4tHej0KRxjckB6akFsCXNGbcZuzkbNMKCnjwCQ8aBxYCLUno6a
+	EX4RPYk91rwzqZ5QzCfzpWv6l959c1NGTlHC1OfecFf4fSRszkjYFSp5sOxcE2fFdwu8+/nRsh3yi
+	a0Yvtr4p2YPppTc8dPmeluV5OKvf64dZTRftcAyLDRiK67b3cDL4IcX5iHpNXDwFIB3T8+5jTKDz8
+	dlnLH8d/OFZZSIYEK2/64f0R3nzRWiC4qvpWjVYGRbSPSMyX79WBnB0+zMrPcvABx17fVPTGzsVJW
+	zs9vbivg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vj7gL-00000008621-17Ib;
-	Fri, 23 Jan 2026 03:17:57 +0000
+	id 1vjDTL-00000008ZdF-1lrE;
+	Fri, 23 Jan 2026 09:28:55 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vj7fy-000000085XK-3IDh;
-	Fri, 23 Jan 2026 03:17:36 +0000
-X-UUID: 0e028a5cf80a11f0a16f0188aa809bee-20260122
+	id 1vjDTJ-00000008Zct-0Fyv
+	for linux-mediatek@lists.infradead.org;
+	Fri, 23 Jan 2026 09:28:54 +0000
+X-UUID: ecd74866f83d11f0a16f0188aa809bee-20260123
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From; bh=3yqWZOB8QJMNyMRCjmmVjLcxBnBoHVVIPBVyJGlzB0c=;
-	b=gOH+QRtIl3MjxSQScD4iSNd2PwLDxi1CGm4GSr9AILP2JW2gQCYkF/Meg6/m8bi2HD7cPeDdLd7yAnW2Waz1MIFO6es/pKFhQMxP/ibMaR7jHcFbDkM85DQpR69+ejUsc6Sa3g6j+qB/GAhHRs9Rp/5DKc2naiNdAocadqtagWY=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=pRV8jk5gZuWFIIs+MJ2nROf6R7XRT5wfP85IRpLa9PM=;
+	b=Xyv2baT5vm1hqOdfPX/dQhmgMLGKN7UHuifHV5HFoT3AOMiHAKaNbn+7JrpiMLWP5B95P36T/mBM/MPWoaDbDdYbS1ALghrYRHCLVI3RLhsUNFmy2DqeAiD4ffS3GWn/j3Ldnp4xXcd7eDIz38OmZa51PZxpf4P2tVGR4SDfJcQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:a92bb0e6-bc6d-4593-b3e5-484f4b4d73a0,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:c7061e7a-8c8a-4fc4-88c0-3556e7711556,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.11,REQID:fc908fcf-1f50-4931-994b-858179a64b2c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:89c9d04,CLOUDID:0835795a-a957-4259-bcca-d3af718d7034,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:2,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:
+	0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 0e028a5cf80a11f0a16f0188aa809bee-20260122
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
+X-UUID: ecd74866f83d11f0a16f0188aa809bee-20260123
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 655331038; Thu, 22 Jan 2026 20:17:31 -0700
+	with ESMTP id 1024980736; Fri, 23 Jan 2026 02:28:49 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 23 Jan 2026 11:17:29 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ 15.2.2562.29; Fri, 23 Jan 2026 17:28:47 +0800
+Received: from mussdccf250.eus.mediatek.inc (10.73.250.250) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 23 Jan 2026 11:17:28 +0800
-From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v12 11/12] media: mediatek: jpeg: add jpeg compatible
-Date: Fri, 23 Jan 2026 11:17:12 +0800
-Message-ID: <20260123031713.14621-12-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20260123031713.14621-1-kyrie.wu@mediatek.com>
-References: <20260123031713.14621-1-kyrie.wu@mediatek.com>
+ 15.2.2562.29 via Frontend Transport; Fri, 23 Jan 2026 17:28:46 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	Allen Ye <allen.ye@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] mt76: fix backoff fields and max_power calculation
+Date: Fri, 23 Jan 2026 01:28:43 -0800
+Message-ID: <e92213f793f9cb9f509c26205e7ecb2be6ce77aa.1769156922.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260122_191734_847170_50C6629D 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20260123_012853_116137_145FAC48 
+X-CRM114-Status: GOOD (  16.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,103 +84,269 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add jpeg dec and enc compatible for mt8196
+From: Allen Ye <allen.ye@mediatek.com>
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+The maximum power value may exist in data or backoff field.
+To reponse the correct value of txpower, mt76 should also consider
+these values in sku table.
+
+Fixes: b05ab4be9fd7 (wifi: mt76: mt7915: add bf backoff limit table support)
+Signed-off-by: Allen Ye <allen.ye@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 34 +++++++++++++++++++
- .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  |  3 ++
- .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  |  3 ++
- 3 files changed, 40 insertions(+)
+ drivers/net/wireless/mediatek/mt76/eeprom.c | 171 +++++++++++++-------
+ drivers/net/wireless/mediatek/mt76/mt76.h   |   1 -
+ 2 files changed, 113 insertions(+), 59 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index e5aad89294e9..8f37619f4920 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1916,6 +1916,19 @@ static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
- 	.jpeg_worker = mtk_jpegenc_worker,
- };
- 
-+static struct mtk_jpeg_variant mtk8196_jpegenc_drvdata = {
-+	.formats = mtk_jpeg_enc_formats,
-+	.num_formats = MTK_JPEG_ENC_NUM_FORMATS,
-+	.qops = &mtk_jpeg_enc_qops,
-+	.m2m_ops = &mtk_jpeg_multicore_enc_m2m_ops,
-+	.dev_name = "mtk-jpeg-enc",
-+	.ioctl_ops = &mtk_jpeg_enc_ioctl_ops,
-+	.out_q_default_fourcc = V4L2_PIX_FMT_YUYV,
-+	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
-+	.multi_core = true,
-+	.jpeg_worker = mtk_jpegenc_worker,
-+};
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index 573400d57..3e182c8e0 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -9,6 +9,13 @@
+ #include <linux/nvmem-consumer.h>
+ #include <linux/etherdevice.h>
+ #include "mt76.h"
++#include "mt76_connac.h"
 +
- static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
- 	.formats = mtk_jpeg_dec_formats,
- 	.num_formats = MTK_JPEG_DEC_NUM_FORMATS,
-@@ -1929,6 +1942,19 @@ static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
- 	.jpeg_worker = mtk_jpegdec_worker,
- };
- 
-+static const struct mtk_jpeg_variant mtk8196_jpegdec_drvdata = {
-+	.formats = mtk_jpeg_dec_formats,
-+	.num_formats = MTK_JPEG_DEC_NUM_FORMATS,
-+	.qops = &mtk_jpeg_dec_qops,
-+	.m2m_ops = &mtk_jpeg_multicore_dec_m2m_ops,
-+	.dev_name = "mtk-jpeg-dec",
-+	.ioctl_ops = &mtk_jpeg_dec_ioctl_ops,
-+	.out_q_default_fourcc = V4L2_PIX_FMT_JPEG,
-+	.cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
-+	.multi_core = true,
-+	.jpeg_worker = mtk_jpegdec_worker,
++enum mt76_sku_type {
++	MT76_SKU_RATE,
++	MT76_SKU_BACKOFF,
++	MT76_SKU_BACKOFF_BF_OFFSET,
 +};
-+
- static const struct of_device_id mtk_jpeg_match[] = {
- 	{
- 		.compatible = "mediatek,mt8173-jpgdec",
-@@ -1950,6 +1976,14 @@ static const struct of_device_id mtk_jpeg_match[] = {
- 		.compatible = "mediatek,mt8195-jpgdec",
- 		.data = &mtk8195_jpegdec_drvdata,
- 	},
-+	{
-+		.compatible = "mediatek,mt8196-jpgenc",
-+		.data = &mtk8196_jpegenc_drvdata,
-+	},
-+	{
-+		.compatible = "mediatek,mt8196-jpgdec",
-+		.data = &mtk8196_jpegdec_drvdata,
-+	},
- 	{},
- };
  
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-index 3ee51efb966d..da034c866a6d 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-@@ -45,6 +45,9 @@ static const struct of_device_id mtk_jpegdec_hw_ids[] = {
- 	{
- 		.compatible = "mediatek,mt8195-jpgdec-hw",
- 	},
-+	{
-+		.compatible = "mediatek,mt8196-jpgdec-hw",
-+	},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_jpegdec_hw_ids);
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-index 5d45ab5dc63a..1a71e36d2a52 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-@@ -52,6 +52,9 @@ static const struct of_device_id mtk_jpegenc_drv_ids[] = {
- 	{
- 		.compatible = "mediatek,mt8195-jpgenc-hw",
- 	},
-+	{
-+		.compatible = "mediatek,mt8196-jpgenc-hw",
-+	},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_jpegenc_drv_ids);
+ static int mt76_get_of_eeprom_data(struct mt76_dev *dev, void *eep, int len)
+ {
+@@ -292,7 +299,6 @@ mt76_find_channel_node(struct device_node *np, struct ieee80211_channel *chan)
+ }
+ EXPORT_SYMBOL_GPL(mt76_find_channel_node);
+ 
+-
+ static s8
+ mt76_get_txs_delta(struct device_node *np, u8 nss)
+ {
+@@ -306,9 +312,24 @@ mt76_get_txs_delta(struct device_node *np, u8 nss)
+ 	return be32_to_cpu(val[nss - 1]);
+ }
+ 
++static inline u8 mt76_backoff_n_chains(struct mt76_dev *dev, u8 idx)
++{
++	/* 0:1T1S, 1:2T1S, ..., 14:5T5S */
++	static const u8 connac3_table[] =
++		{1, 2, 3, 4, 5, 2, 3, 4, 5, 3, 4, 5, 4, 5, 5};
++	static const u8 connac2_table[] =
++		{1, 2, 3, 4, 2, 3, 4, 3, 4, 4, 0, 0, 0, 0, 0};
++
++	if (idx < 0 || idx >= ARRAY_SIZE(connac3_table))
++		return 0;
++
++	return is_mt799x(dev) ? connac3_table[idx] : connac2_table[idx];
++}
++
+ static void
+-mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const s8 *data,
+-		       s8 target_power, s8 nss_delta, s8 *max_power)
++mt76_apply_array_limit(struct mt76_dev *dev, s8 *pwr, size_t pwr_len,
++		       const s8 *data, s8 target_power, s8 nss_delta,
++		       s8 *max_power, int n_chains, enum mt76_sku_type type)
+ {
+ 	int i;
+ 
+@@ -316,18 +337,50 @@ mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const s8 *data,
+ 		return;
+ 
+ 	for (i = 0; i < pwr_len; i++) {
+-		pwr[i] = min_t(s8, target_power, data[i] + nss_delta);
++		s8 backoff_delta, delta = mt76_tx_power_path_delta(n_chains);
++		int backoff_n_chains = 0;
++
++		switch (type) {
++		case MT76_SKU_RATE:
++			pwr[i] = min_t(s8, target_power, data[i] + nss_delta);
++			break;
++		case MT76_SKU_BACKOFF:
++			backoff_n_chains = mt76_backoff_n_chains(dev, i);
++			backoff_delta = mt76_tx_power_path_delta(backoff_n_chains);
++			pwr[i] = min_t(s8, target_power + delta - backoff_delta,
++				       data[i] + nss_delta);
++			break;
++		case MT76_SKU_BACKOFF_BF_OFFSET:
++			backoff_n_chains = mt76_backoff_n_chains(dev, i + 1);
++			backoff_delta = mt76_tx_power_path_delta(backoff_n_chains);
++			pwr[i] = min_t(s8, target_power + delta - backoff_delta,
++				       data[i] + nss_delta);
++			break;
++		default:
++			return;
++		}
++
++		/* used for padding, doesn't need to be considered */
++		if (data[i] >= S8_MAX - 1)
++			continue;
++
++		/* only consider backoff value for the configured chain number */
++		if (type != MT76_SKU_RATE && n_chains != backoff_n_chains)
++			continue;
++
+ 		*max_power = max(*max_power, pwr[i]);
+ 	}
+ }
+ 
+ static void
+-mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
+-			     const s8 *data, size_t len, s8 target_power,
+-			     s8 nss_delta)
++mt76_apply_multi_array_limit(struct mt76_dev *dev, s8 *pwr, size_t pwr_len,
++			     s8 pwr_num, const s8 *data, size_t len,
++			     s8 target_power, s8 nss_delta, s8 *max_power,
++			     int n_chains, enum mt76_sku_type type)
+ {
+ 	int i, cur;
+-	s8 max_power = -128;
++
++#define connac2_backoff_ru_idx	2
+ 
+ 	if (!data)
+ 		return;
+@@ -337,8 +390,13 @@ mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
+ 		if (len < pwr_len + 1)
+ 			break;
+ 
+-		mt76_apply_array_limit(pwr + pwr_len * i, pwr_len, data + 1,
+-				       target_power, nss_delta, &max_power);
++		if (!is_mt799x(dev) && type == MT76_SKU_BACKOFF &&
++		    i > connac2_backoff_ru_idx)
++			type = MT76_SKU_BACKOFF_BF_OFFSET;
++
++		mt76_apply_array_limit(dev, pwr + pwr_len * i, pwr_len, data + 1,
++				       target_power, nss_delta, max_power,
++				       n_chains, type);
+ 		if (--cur > 0)
+ 			continue;
+ 
+@@ -360,18 +418,11 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
+ 	struct device_node *np;
+ 	const s8 *val;
+ 	char name[16];
+-	u32 mcs_rates = dev->drv->mcs_rates;
+-	u32 ru_rates = ARRAY_SIZE(dest->ru[0]);
+ 	char band;
+ 	size_t len;
+-	s8 max_power = 0;
+-	s8 max_power_backoff = -127;
++	s8 max_power = -127;
+ 	s8 txs_delta;
+ 	int n_chains = hweight16(phy->chainmask);
+-	s8 target_power_combine = target_power + mt76_tx_power_path_delta(n_chains);
+-
+-	if (!mcs_rates)
+-		mcs_rates = 10;
+ 
+ 	memset(dest, target_power, sizeof(*dest) - sizeof(dest->path));
+ 	memset(&dest->path, 0, sizeof(dest->path));
+@@ -408,47 +459,51 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
+ 
+ 	txs_delta = mt76_get_txs_delta(np, hweight16(phy->chainmask));
+ 
++#define __apply_array_limit(arr, type)						\
++	mt76_apply_array_limit(dev, (arr), ARRAY_SIZE(arr), val, target_power,	\
++			       txs_delta, &max_power, n_chains, type)
++
++#define __apply_multi_array_limit(arr, type)					\
++	mt76_apply_multi_array_limit(dev, (arr)[0], ARRAY_SIZE((arr)[0]),	\
++				     ARRAY_SIZE(arr), val, len, target_power,	\
++				     txs_delta, &max_power, n_chains, type)
++
+ 	val = mt76_get_of_array_s8(np, "rates-cck", &len, ARRAY_SIZE(dest->cck));
+-	mt76_apply_array_limit(dest->cck, ARRAY_SIZE(dest->cck), val,
+-			       target_power, txs_delta, &max_power);
+-
+-	val = mt76_get_of_array_s8(np, "rates-ofdm",
+-				   &len, ARRAY_SIZE(dest->ofdm));
+-	mt76_apply_array_limit(dest->ofdm, ARRAY_SIZE(dest->ofdm), val,
+-			       target_power, txs_delta, &max_power);
+-
+-	val = mt76_get_of_array_s8(np, "rates-mcs", &len, mcs_rates + 1);
+-	mt76_apply_multi_array_limit(dest->mcs[0], ARRAY_SIZE(dest->mcs[0]),
+-				     ARRAY_SIZE(dest->mcs), val, len,
+-				     target_power, txs_delta);
+-
+-	val = mt76_get_of_array_s8(np, "rates-ru", &len, ru_rates + 1);
+-	mt76_apply_multi_array_limit(dest->ru[0], ARRAY_SIZE(dest->ru[0]),
+-				     ARRAY_SIZE(dest->ru), val, len,
+-				     target_power, txs_delta);
+-
+-	max_power_backoff = max_power;
+-	val = mt76_get_of_array_s8(np, "paths-cck", &len, ARRAY_SIZE(dest->path.cck));
+-	mt76_apply_array_limit(dest->path.cck, ARRAY_SIZE(dest->path.cck), val,
+-			       target_power_combine, txs_delta, &max_power_backoff);
+-
+-	val = mt76_get_of_array_s8(np, "paths-ofdm", &len, ARRAY_SIZE(dest->path.ofdm));
+-	mt76_apply_array_limit(dest->path.ofdm, ARRAY_SIZE(dest->path.ofdm), val,
+-			       target_power_combine, txs_delta, &max_power_backoff);
+-
+-	val = mt76_get_of_array_s8(np, "paths-ofdm-bf", &len, ARRAY_SIZE(dest->path.ofdm_bf));
+-	mt76_apply_array_limit(dest->path.ofdm_bf, ARRAY_SIZE(dest->path.ofdm_bf), val,
+-			       target_power_combine, txs_delta, &max_power_backoff);
+-
+-	val = mt76_get_of_array_s8(np, "paths-ru", &len, ARRAY_SIZE(dest->path.ru[0]) + 1);
+-	mt76_apply_multi_array_limit(dest->path.ru[0], ARRAY_SIZE(dest->path.ru[0]),
+-				     ARRAY_SIZE(dest->path.ru), val, len,
+-				     target_power_combine, txs_delta);
+-
+-	val = mt76_get_of_array_s8(np, "paths-ru-bf", &len, ARRAY_SIZE(dest->path.ru_bf[0]) + 1);
+-	mt76_apply_multi_array_limit(dest->path.ru_bf[0], ARRAY_SIZE(dest->path.ru_bf[0]),
+-				     ARRAY_SIZE(dest->path.ru_bf), val, len,
+-				     target_power_combine, txs_delta);
++	__apply_array_limit(dest->cck, MT76_SKU_RATE);
++
++	val = mt76_get_of_array_s8(np, "rates-ofdm", &len, ARRAY_SIZE(dest->ofdm));
++	__apply_array_limit(dest->ofdm, MT76_SKU_RATE);
++
++	val = mt76_get_of_array_s8(np, "rates-mcs", &len,
++				   ARRAY_SIZE(dest->mcs[0]) + 1);
++	__apply_multi_array_limit(dest->mcs, MT76_SKU_RATE);
++
++	val = mt76_get_of_array_s8(np, "rates-ru", &len,
++				   ARRAY_SIZE(dest->ru[0]) + 1);
++	__apply_multi_array_limit(dest->ru, MT76_SKU_RATE);
++
++	val = mt76_get_of_array_s8(np, "paths-cck", &len,
++				   ARRAY_SIZE(dest->path.cck));
++	__apply_array_limit(dest->path.cck, MT76_SKU_BACKOFF);
++
++	val = mt76_get_of_array_s8(np, "paths-ofdm", &len,
++				   ARRAY_SIZE(dest->path.ofdm));
++	__apply_array_limit(dest->path.ofdm, MT76_SKU_BACKOFF);
++
++	val = mt76_get_of_array_s8(np, "paths-ofdm-bf", &len,
++				   ARRAY_SIZE(dest->path.ofdm_bf));
++	__apply_array_limit(dest->path.ofdm_bf, MT76_SKU_BACKOFF_BF_OFFSET);
++
++	val = mt76_get_of_array_s8(np, "paths-ru", &len,
++				   ARRAY_SIZE(dest->path.ru[0]) + 1);
++	__apply_multi_array_limit(dest->path.ru, MT76_SKU_BACKOFF);
++
++	val = mt76_get_of_array_s8(np, "paths-ru-bf", &len,
++				   ARRAY_SIZE(dest->path.ru_bf[0]) + 1);
++	__apply_multi_array_limit(dest->path.ru_bf, MT76_SKU_BACKOFF);
++
++#undef __apply_array_limit
++#undef __apply_multi_array_limit
+ 
+ 	return max_power;
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index d05e83ea1..32876eab2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -540,7 +540,6 @@ struct mt76_driver_ops {
+ 	u32 survey_flags;
+ 	u16 txwi_size;
+ 	u16 token_size;
+-	u8 mcs_rates;
+ 
+ 	unsigned int link_data_size;
+ 
 -- 
 2.45.2
 
