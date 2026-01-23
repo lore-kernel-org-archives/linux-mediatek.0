@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9681FD6CFAA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jan 2026 01:46:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 269B1D6CFAE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jan 2026 01:47:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:
 	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=64Dv2Q73LpzBvPArXPMCYu6WRRtSWQKGL8gHPitpMsw=; b=oLlmL3UuRZmrYeCwCRHCkJp6q/
-	UWUjw5MYxnFLKfLqiur53UmGLC3bstC0aRlAnqoz2is0YieG9dv7AWLWlHwkzigVpJ+bmNocNvRhh
-	bKEEvJKqTjO/Acd9kQez+8MzarE3g/TCH646Cz+GyFdjGOcgwkpMYZtO8KsXP3PRGWZiJAq3i7WxN
-	Dgj5TFO9Jjn0tZ55iagZvIr0g5sQgOjh9tgBlf94lQWhmHWwlbzSEd7iWqNxh98yNvTJOP9NSFO4S
-	Y8Gol7xvrNzcz25lNkq93TwrwDK1L9xKoXQ53fZcC8aWOJ0hr+TUZmTikL40HdqmBZ7dZlCaSnXaS
-	wkpA2sIA==;
+	bh=s46UJ/fSZA41bC7jnvny8Q7zOEfqLogcJrNq4EgjrWQ=; b=0+HGdtkvaBJCo2wjHAYG2RxsM8
+	2UnZw2ne3Vu3kBKbmaLlkCuAn5tSEwxHYHdRA27jjrDe1owpI32y6yB9EIfAUVyeDXuOQDnQ0+XE7
+	5g79FR6Z55+929Od7G/00yVl0e0f4PYXQTl6eOUWs5/5MsyvAqgorOtvHWJ3bJaur0IFzxcodAq4X
+	WB8TdtPe/KCfq6AqNlgWvSY4ANWkHk+vjcQi/DvNGvXK2B4OYwSMsDvhl7hdpee5xPee3awExiJkC
+	92aVrSAGoSSMuQ+szDwvemP8uS7AMKPaXZAVvrZlzKiRa8mD70KO545k6xQvS9sDyIB1cVulh3Rdy
+	hqNI2CWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vj6Fh-00000007zSw-2fUS;
-	Fri, 23 Jan 2026 01:46:21 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vj6GS-00000007zYh-1KRg;
+	Fri, 23 Jan 2026 01:47:08 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vj6Ff-00000007zSJ-2Wvp;
-	Fri, 23 Jan 2026 01:46:19 +0000
+	id 1vj6GQ-00000007zY7-1Aww;
+	Fri, 23 Jan 2026 01:47:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EBB5960018;
-	Fri, 23 Jan 2026 01:46:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 971BCC116C6;
-	Fri, 23 Jan 2026 01:46:18 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B548660018;
+	Fri, 23 Jan 2026 01:47:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6006BC116C6;
+	Fri, 23 Jan 2026 01:47:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769132778;
-	bh=64Dv2Q73LpzBvPArXPMCYu6WRRtSWQKGL8gHPitpMsw=;
+	s=k20201202; t=1769132825;
+	bh=s46UJ/fSZA41bC7jnvny8Q7zOEfqLogcJrNq4EgjrWQ=;
 	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=LiA+Ng5HEHFveXvi/29UYw8nH8zrjoZQkFmDBi0FYmn1fC9r9PKkVFk3wqIg2lUaW
-	 XHGhsP1I3G52hceAcQjwaIUqqLGNh3eBtLP2evv2QQ9a4M3ThCRlfzlLtN44dJ3iwV
-	 oGXh0uuhXqKuAwHdo5u1XFK29m0P2WADuBLSLO/0DqLYhYkj8p/A0hQIB1bVDTuNl+
-	 /Ng0hz/h1VLYMuqgWrPXuV/RCkSW9awWWhZQBG5nxTNb/0WrlIte0X/VAE8YOQDP4x
-	 Sh0eexYFrtfXuL7fFE3SD2Pj3QuxsTDyJi6/Bx8tPFJNKoH7eMFKK2vbG5OboHg0jV
-	 WdER+C088v7tA==
+	b=Y8UQqE2qVJnEdAJ6/LJ+q+0UPRQ32VuvF766nNR4ZrFDTmQVni3Nm5he+V9yLa7DK
+	 Oc3EcA+sgUcLVja96H6KcSlWvnW0oEg/kB/DYI4vCZoYdgQiFoCgOHfS/L93q/Pg1i
+	 rC8T8gGYyrSmEBJNLIA2nd2nIjLnYnijYe9yFVlJSqmg/t/0l+zhZGHlFyR2UA3HL/
+	 mrtdGKztH05Q7fyCwChlHoesfEyWh4DVFQ1tEigz62m9UAB/+4nmsA4zyr3WgNmvtq
+	 ZEtZoQyN8bRgUJ3qKdvcc/WEnBlXXwLQO2QpTGnqMUI4u/4buZIvUW8q1onEfOFcQp
+	 oQZ3PXOkCdI1w==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20251222150235.34919-1-bartosz.golaszewski@oss.qualcomm.com>
-References: <20251222150235.34919-1-bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH] clk: mediatek: don't select clk-mt8192 for all ARM64 builds
+In-Reply-To: <20251123154315.1564-1-vulab@iscas.ac.cn>
+References: <20251123154315.1564-1-vulab@iscas.ac.cn>
+Subject: Re: [PATCH] clk: mediatek: Fix error handling in runtime PM setup
 From: Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-To: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>
-Date: Thu, 22 Jan 2026 18:46:16 -0700
-Message-ID: <176913277684.4027.726770744275023765@lazor>
+Cc: nfraprado@collabora.com, laura.nao@collabora.com, wenst@chromium.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Haotian Zhang <vulab@iscas.ac.cn>
+To: Haotian Zhang <vulab@iscas.ac.cn>, angelogioacchino.delregno@collabora.com, matthias.bgg@gmail.com, mturquette@baylibre.com
+Date: Thu, 22 Jan 2026 18:47:03 -0700
+Message-ID: <176913282359.4027.16928737563389647276@lazor>
 User-Agent: alot/0.11
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -67,12 +67,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Bartosz Golaszewski (2025-12-22 08:02:35)
-> This option defaults to y for ARCH64 meaning it's built even if we don't
-> want anything related to mediatek. Make the default condition stricter
-> and only build it if ARCH_MEDIATEK is selected.
+Quoting Haotian Zhang (2025-11-23 08:43:15)
+> devm_pm_runtime_enable() can fail due to memory allocation. The current
+> code ignores its return value, and when pm_runtime_resume_and_get() fails,
+> it returns directly without unmapping the shared_io region.
 >=20
-> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+> Add error handling for devm_pm_runtime_enable(). Reorder cleanup labels
+> to properly unmap shared_io on pm_runtime_resume_and_get() failure.
+>=20
+> Fixes: 2f7b1d8b5505 ("clk: mediatek: Do a runtime PM get on controllers d=
+uring probe")
+> Signed-off-by: Haotian Zhang <vulab@iscas.ac.cn>
 > ---
 
 Applied to clk-next
