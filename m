@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 414A5D6CFB1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jan 2026 01:45:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2AB9D6CFB1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jan 2026 01:45:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:
 	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S3zi7Cs5yb+b4cX4asMUomLRUx2T6EiDtE7IRZ9uGbE=; b=bJaz1EHSusgxfR/QTgEaNkyOJj
-	Y8x9Wo+wsQ+zS013aFzJANWoVP4McXn1dg3ZjZmp7GVP1mevBlvZSVmbVdYnojT0EXEIoIV4uawIr
-	joAZKNjSfonVUMcVjrgcuGb6PjWe205YDv3o96h3J3w181N8mMaDZsJbFM1Hu45uDgQudmEabIFZU
-	ci58kLpkG7npCsNqAJxKr98pBcs8ncOUhxmQKJwzR9gm0W8DsSfW7FyaOROYdMBDsc8xaZebuTYBi
-	JJ2MEQoAZrdJmcsph+V5Vu1RdLbVMQMvyfcnsaJIpji4mrnUev47JNj4DJlSyrI1c5wYocbc6BqoV
-	R05X+vDg==;
+	bh=SUqt5//9x6ikkcTBwd39LjEZbg7/SrQDa2wNA7zOQow=; b=lAlYiI+IUSb8Ev+FxuvKe/KlHH
+	1F6GwntMj8+g3oPNv0p0EWnPvp4AaVvQf//Dv+QNxj0QDh6nwN14wyafgcyn+I2qiU2AXO77tfHhH
+	hgYwleXc0anw1wcimVhf4+DruNm2AMDgcs+CcDodZL1QBXAUNh26m3uE9fMh6pjArDOV0V08AjP2d
+	d3+zdhJfBq83oYJKuZ3qaCjXF/GLoAV6QqEjSvFNCo4GjHRonfdRLnRxoaXf8J2aZv69b7z3Lb81/
+	YWjnlUNd9f60vtP8Ije4wurmSebA/MWui3/THE9p/ojEsazQBbcPsJ1XQMgALsgpuaON43aUrZTKI
+	6DmJKlSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vj6Eh-00000007z8i-1UcT;
-	Fri, 23 Jan 2026 01:45:19 +0000
+	id 1vj6El-00000007zBF-3vlz;
+	Fri, 23 Jan 2026 01:45:23 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vj6Ef-00000007z7C-0CAW;
-	Fri, 23 Jan 2026 01:45:18 +0000
+	id 1vj6Ej-00000007z9w-2APT;
+	Fri, 23 Jan 2026 01:45:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3EDAD43C23;
-	Fri, 23 Jan 2026 01:45:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED26CC19422;
-	Fri, 23 Jan 2026 01:45:15 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 36EBB43691;
+	Fri, 23 Jan 2026 01:45:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 080AEC2BC9E;
+	Fri, 23 Jan 2026 01:45:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769132716;
-	bh=S3zi7Cs5yb+b4cX4asMUomLRUx2T6EiDtE7IRZ9uGbE=;
+	s=k20201202; t=1769132721;
+	bh=SUqt5//9x6ikkcTBwd39LjEZbg7/SrQDa2wNA7zOQow=;
 	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=ts0x65zAxMz2H0YAVA/kGOCLaWdLxg4aEU9swNSUPcJU1K3nQcxIWLGmOCB4Zlqy1
-	 JgD/iB6NT7JFx2hlayM5FcT3lOrZRA4tAREStVwtAqVAvF++8csySgPGxpFKRXHe8o
-	 +WfMLeRHA9wb8a1YltdRp23bP1GQEP2oEDdRgalI6BFyjPs0bjEKy9lv3BR1JSclZQ
-	 QXQ3QGOzEwXsYZBP1AYWNR9CdcuwUO4S9oDhGIj3jnhR9cvtTGPERkr00pIXw1Y6Ia
-	 Pv1deqrxH7225uqxDHAEwIw9k71EfLBMY3lm+H6lr9CfZJEn1jhwv0VeQDmswG6KbX
-	 q+KPjL1ue1T0Q==
+	b=NhENHPB5ww4MTDz+GSgWQrvVQlmm8vLjHi0m1XU6gUMIwMrOiFWB/NUytwI8IvE+y
+	 erSmmJH7L7Lfql6j7XJmDFPyDeYn3JzpHWvuB4dfYDyQH+o9DfvjeQ0KsIzj+NNPs/
+	 Fxd5uY/Db7Wa1UJAfNzSBTJ72mxWKAmH3fJkPgvaCdOKj7oV3atXQjsktQc9NY+zNK
+	 aEXJ8jEWshAqH0qVUinuv3uYB/pz0Om+c6zH6l9P9eGPA7E4290y5IWOPKGSUXrOmu
+	 h6Sqt0jdb79DqhtwvlFwZcSPil9OrTxoL1huIM7U97FPaDU3weAsHtByXDzCjHECBZ
+	 mcaKFBdp8Iurw==
 Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20251215-mtk-pll-rpm-v3-3-5afb3191e869@collabora.com>
-References: <20251215-mtk-pll-rpm-v3-0-5afb3191e869@collabora.com> <20251215-mtk-pll-rpm-v3-3-5afb3191e869@collabora.com>
-Subject: Re: [PATCH RESEND v3 3/5] clk: mediatek: Pass device to clk_hw_register for PLLs
+In-Reply-To: <20251215-mtk-pll-rpm-v3-2-5afb3191e869@collabora.com>
+References: <20251215-mtk-pll-rpm-v3-0-5afb3191e869@collabora.com> <20251215-mtk-pll-rpm-v3-2-5afb3191e869@collabora.com>
+Subject: Re: [PATCH RESEND v3 2/5] clk: mediatek: Refactor pll registration to pass device
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: kernel@collabora.com, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, Chia-I Wu <olvaffe@gmail.com>, Dong Aisheng <aisheng.dong@nxp.com>, Laura Nao <laura.nao@collabora.com>, Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, =?utf-8?q?N=C3=ADcolas?= F. R. A. Prado <nfraprado@collabora.com>, Yassine Oudjana <y.oudjana@protonmail.com>
-Date: Thu, 22 Jan 2026 18:45:14 -0700
-Message-ID: <176913271422.4027.11922127679844362573@lazor>
+Date: Thu, 22 Jan 2026 18:45:19 -0700
+Message-ID: <176913271924.4027.2857487573564767197@lazor>
 User-Agent: alot/0.11
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260122_174517_109119_90716DDC 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20260122_174521_579650_18D09471 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,24 +71,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Nicolas Frattaroli (2025-12-15 03:24:00)
-> Passing the struct device pointer to clk_hw_register allows for runtime
-> power management to work for the registered clock controllers. However,
-> the mediatek PLL clocks do not do this.
+Quoting Nicolas Frattaroli (2025-12-15 03:23:59)
+> As it stands, mtk_clk_register_plls takes a struct device_node pointer
+> as its first argument. This is a tragic happenstance, as it's trivial to
+> get the device_node from a struct device, but the opposite not so much.
+> The struct device is a much more useful thing to have passed down.
 >=20
-> Change this by adding a struct device pointer argument to
-> mtk_clk_register_pll, and fix up the only other user of it. Also add a
-> new member to the struct mtk_clk_pll for the struct device pointer,
-> which is set by mtk_clk_register_pll and is used by
-> mtk_clk_register_pll_ops.
+> Refactor mtk_clk_register_plls to take a struct device pointer instead
+> of a struct device_node pointer, and fix up all users of this function.
 >=20
-> If mtk_clk_register_pll is called with a NULL struct device pointer,
-> then everything still works as expected; the clock core will simply
-> treat them as previously, i.e. without runtime power management.
->=20
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
 ora.com>
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 > ---
 
