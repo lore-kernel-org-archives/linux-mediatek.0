@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3C20D72361
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jan 2026 09:28:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3350FD7235E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jan 2026 09:32:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pRV8jk5gZuWFIIs+MJ2nROf6R7XRT5wfP85IRpLa9PM=; b=DzppJJpQqu/eTJIiA4fmUJ59FN
-	TOl54/LZijPakjUOO/y/2T+4nSU4tHej0KRxjckB6akFsCXNGbcZuzkbNMKCnjwCQ8aBxYCLUno6a
-	EX4RPYk91rwzqZ5QzCfzpWv6l959c1NGTlHC1OfecFf4fSRszkjYFSp5sOxcE2fFdwu8+/nRsh3yi
-	a0Yvtr4p2YPppTc8dPmeluV5OKvf64dZTRftcAyLDRiK67b3cDL4IcX5iHpNXDwFIB3T8+5jTKDz8
-	dlnLH8d/OFZZSIYEK2/64f0R3nzRWiC4qvpWjVYGRbSPSMyX79WBnB0+zMrPcvABx17fVPTGzsVJW
-	zs9vbivg==;
+	bh=I63zytWXS2xebVsEuvN+V7iX4l5JRzMVnP73vhaBndE=; b=b/EYsj3RG5PgVGB/NMcRQj5v88
+	avysKdwp6QRkH3c0u6Ws3WZIXdSlyt8c1+nw9yVpKW1/R4cB7F8qbS15iQ2yOmCZz12eeyOVTdnyA
+	jE/nJwuF59HILHnPSs+ZByPQKMH9+rPI4lGNdj9pzHhKysX7RbZWzn9DLXLVM1rluHgCtH5EOM514
+	bGnHLuncz/tuRGiBFtnSJWjSb4E+cBK6jEZGmzd8IpmfEYy18D8QH/tHhNfW+kvDLscvsSpSTHTLZ
+	z672465wqTjvbmVAUIp3YgwrOwtEc1jezY/UwLMTeqh2caFFM+Ski6PjJArAyPXj6UqYXr6a90tUb
+	iP8vhYgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjDTL-00000008ZdF-1lrE;
-	Fri, 23 Jan 2026 09:28:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1vjDX9-00000008aps-3yz0;
+	Fri, 23 Jan 2026 09:32:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjDTJ-00000008Zct-0Fyv
+	id 1vjDX7-00000008apX-0z7S
 	for linux-mediatek@lists.infradead.org;
-	Fri, 23 Jan 2026 09:28:54 +0000
-X-UUID: ecd74866f83d11f0a16f0188aa809bee-20260123
+	Fri, 23 Jan 2026 09:32:50 +0000
+X-UUID: 78ea1f18f83e11f0ad39f32c34db0b1c-20260123
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=pRV8jk5gZuWFIIs+MJ2nROf6R7XRT5wfP85IRpLa9PM=;
-	b=Xyv2baT5vm1hqOdfPX/dQhmgMLGKN7UHuifHV5HFoT3AOMiHAKaNbn+7JrpiMLWP5B95P36T/mBM/MPWoaDbDdYbS1ALghrYRHCLVI3RLhsUNFmy2DqeAiD4ffS3GWn/j3Ldnp4xXcd7eDIz38OmZa51PZxpf4P2tVGR4SDfJcQ=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=I63zytWXS2xebVsEuvN+V7iX4l5JRzMVnP73vhaBndE=;
+	b=L9rw0n4RkCgnUfKbVbubJZk/Tou3A0Wd7CtMeGd37hsQ9fGZNYE6b1Qlq/AA6LZEpODACAvIc9W1Uy0qxIZZKSklrudwEURoHaUfd1LMd6qiZ3bG928g941EM8CKpQm5aXupN108Dx1XEgfLnJpkrxuDAmXwBz/pNMuT4YlJICQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:fc908fcf-1f50-4931-994b-858179a64b2c,IP:0,U
+X-CID-O-INFO: VERSION:1.3.11,REQID:5a55a387-a967-48ce-abae-c8dd9ee51900,IP:0,U
 	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:89c9d04,CLOUDID:0835795a-a957-4259-bcca-d3af718d7034,B
+X-CID-META: VersionHash:89c9d04,CLOUDID:3471dbe8-ef90-4382-9c6f-55f2a0689a6b,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
 	0,EDM:2,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:
 	0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -43,24 +43,24 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ecd74866f83d11f0a16f0188aa809bee-20260123
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+X-UUID: 78ea1f18f83e11f0ad39f32c34db0b1c-20260123
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <ryder.lee@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1024980736; Fri, 23 Jan 2026 02:28:49 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+	with ESMTP id 34680566; Fri, 23 Jan 2026 02:32:44 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 23 Jan 2026 17:28:47 +0800
+ 15.2.2562.29; Fri, 23 Jan 2026 17:32:42 +0800
 Received: from mussdccf250.eus.mediatek.inc (10.73.250.250) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 23 Jan 2026 17:28:46 +0800
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Fri, 23 Jan 2026 17:32:41 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	Allen Ye <allen.ye@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH] mt76: fix backoff fields and max_power calculation
-Date: Fri, 23 Jan 2026 01:28:43 -0800
+Subject: [PATCH v1] wifi: mt76: fix backoff fields and max_power calculation
+Date: Fri, 23 Jan 2026 01:32:34 -0800
 Message-ID: <e92213f793f9cb9f509c26205e7ecb2be6ce77aa.1769156922.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
@@ -68,8 +68,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260123_012853_116137_145FAC48 
-X-CRM114-Status: GOOD (  16.19  )
+X-CRM114-CacheID: sfid-20260123_013249_304000_65CF3C5F 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,6 +83,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+Message-ID: <20260123093234.O7IRY3lpvbqRpVWrPJiQQ2NwesYdeii9Ep9i4zg-Hsk@z>
 
 From: Allen Ye <allen.ye@mediatek.com>
 
@@ -93,6 +94,8 @@ these values in sku table.
 Fixes: b05ab4be9fd7 (wifi: mt76: mt7915: add bf backoff limit table support)
 Signed-off-by: Allen Ye <allen.ye@mediatek.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+v1 - add "wifi:" prefix into subject
 ---
  drivers/net/wireless/mediatek/mt76/eeprom.c | 171 +++++++++++++-------
  drivers/net/wireless/mediatek/mt76/mt76.h   |   1 -
