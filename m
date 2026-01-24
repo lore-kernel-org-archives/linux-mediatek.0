@@ -4,76 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD4BD715DB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jan 2026 09:50:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F796D715E5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jan 2026 12:01:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EHh228QxGIXrrJVTE4aa2QYRaQvESHcQuamH6lLYXdQ=; b=U2sXqOyy+mPErAxkhNSoQznMBu
-	3K1LbVWQk9xvxb/GanPuATSkwzlnrgucdez16VbbDc3jJiHBWrnwKZNclPGNK13S6G4ZwyYq1jiRt
-	maeYRpvyhddTWdRDwbxZCLjJkKbUSywMJ3zu2nxJk8HIl+pF0Fyx8gVbyIkLoHYOocEqV67081J97
-	reY5RO4nZ5Po2xC662Vbp5mX++MlShtRbaJYmJX7XBWCY8I4K3g5fy82kjEz6N5quKwiMKCkWYdWK
-	XHSfimZ5GkxsI05CaDx9X3FY1YC6EsQguk/2CPKEtLHEhm0NVNWobIrkafSJGINNPU+mjh1EZahn8
-	GPRmzV1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=q/ASY1Etp9IXhLYDc9pjizpkuHyRR0lGX8YLQb99GLU=; b=wZ2AVgFzES3AX8mDQoqZf5O1cj
+	P5q4LkczTgpTamgr3TqjJwE1uqzXQbZgDC+ApA88XyFyUxPfpWdYcsZjqGKfZrT4TnagHvRa8fUNe
+	Pa3xhmpNACoqg/KhIqD9RywWM9lb6EOAEqrPoun3foKMwkqBhKzQjcFFH7L7uLd5CSDM8H8EAdOO1
+	Fd9MUCSrx0dQAOi7uTQr3ZjpFTsEwLdWRn13f8+nm7RM0+tf3TqeKPzcQ5Cj/gpaWBMz0SQawV6eh
+	4s6lkoF4y4890HuGyxjT6OzgYJX2aEUeLb9YHjG6O7WWbnj384qq8bSGfxg2fzABzxycFlNm/62tf
+	zb1uQaLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjaHs-0000000A8dR-1A9R;
-	Sat, 24 Jan 2026 09:50:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1vjcKo-0000000ACE0-43lh;
+	Sat, 24 Jan 2026 12:01:46 +0000
+Received: from sender4-pp-e107.zoho.com ([136.143.188.107])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjaHp-0000000A8d1-0gDO;
-	Sat, 24 Jan 2026 09:50:34 +0000
-X-UUID: 1c8eb004f90a11f0a16f0188aa809bee-20260124
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=EHh228QxGIXrrJVTE4aa2QYRaQvESHcQuamH6lLYXdQ=;
-	b=QiMq/4qW7pDGYKe/lJWvzXjQMUous/lQdv7DVMOoiUe6pM8l4TZ6IiT7EoVS5lTNxmTm/qgjgF3vlvf4KUCMu3UzfzidNFhN23Qk43yQ9KsKdvZNLL4WBl9bhjyopAsimuFMSIiiX0EBnjuGlkndP6iyLpoY4DuIp6uyIkbknDg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:159fc861-47c4-473a-a0f6-e06fdb9d59c1,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:97ac297a-8c8a-4fc4-88c0-3556e7711556,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
-	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 1c8eb004f90a11f0a16f0188aa809bee-20260124
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <jibin.zhang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 126600993; Sat, 24 Jan 2026 02:50:27 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Sat, 24 Jan 2026 17:50:24 +0800
-Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Sat, 24 Jan 2026 17:50:23 +0800
-From: Jibin Zhang <jibin.zhang@mediatek.com>
-To: Eric Dumazet <edumazet@google.com>, Neal Cardwell <ncardwell@google.com>,
-	Kuniyuki Iwashima <kuniyu@google.com>, "David S . Miller"
-	<davem@davemloft.net>, David Ahern <dsahern@kernel.org>, Jakub Kicinski
-	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Simon Horman
-	<horms@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: <wsd_upstream@mediatek.com>, Jibin Zhang <jibin.zhang@mediatek.com>
-Subject: [PATCH v3] net: fix segmentation of forwarding fraglist GRO
-Date: Sat, 24 Jan 2026 17:50:18 +0800
-Message-ID: <20260124095021.3953-1-jibin.zhang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1vjcKl-0000000ACCc-1Ln1;
+	Sat, 24 Jan 2026 12:01:45 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1769256076; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=ijju7OV8cxjgH3elB2gmL1oMT+YbAPT86SPZdv4qjKZzAYG34gwvrb4ImQG4ByMicfXeZmRxnC58PYAvIH/6CVZAP0MjYOCTlwti2Kct3Czy+5+3BOVFkIs6h/8nT3v8sEMQi0u56iHtDEaoClVoVaweXlpAFwHzE0/o/Vbd6O0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1769256076; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=q/ASY1Etp9IXhLYDc9pjizpkuHyRR0lGX8YLQb99GLU=; 
+	b=Fu4B3izq/WFA2pmjRbJ2Q8SrJhpLJQybY5cyWfzZN+8a4/fP4IyMlLo/5Cbmdl40pRq6P+7ob5+XMHRANLDWTPAmszx/kFkL6h8jB75Ce3iybSANQ4O+/qs4SFNiFGCcXrD+3aLba71N/C7nQH0+YPJllRUl9KPle8S8J8yiXFM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1769256076;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=q/ASY1Etp9IXhLYDc9pjizpkuHyRR0lGX8YLQb99GLU=;
+	b=RS/dpmwe8GfuFCFuAgpBqm4xEciZszKvdqBxfFXKrtpfGgLk43AsbHOzHAKS3VG9
+	nABKL1+bN5mLh4SDYHdYbimPH5SXNW3vHK3NZtF4SOqLOi8dIa/G7RGlVz6uCyMyiBE
+	U3i77DeYJQJJru9sKpLs56dC7GXfenHqOKEbFa8g=
+Received: by mx.zohomail.com with SMTPS id 1769256075449580.2925259520472;
+	Sat, 24 Jan 2026 04:01:15 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Sat, 24 Jan 2026 13:00:47 +0100
+Subject: [PATCH v6 01/24] dt-bindings: phy: Add mediatek,mt8196-ufsphy
+ variant
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260124-mt8196-ufs-v6-1-e7c005b60028@collabora.com>
+References: <20260124-mt8196-ufs-v6-0-e7c005b60028@collabora.com>
+In-Reply-To: <20260124-mt8196-ufs-v6-0-e7c005b60028@collabora.com>
+To: Alim Akhtar <alim.akhtar@samsung.com>, 
+ Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>, 
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, 
+ "Martin K. Petersen" <martin.petersen@oracle.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Mark Brown <broonie@kernel.org>, Chaotian Jing <Chaotian.Jing@mediatek.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>
+Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+ kernel@collabora.com, linux-scsi@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-phy@lists.infradead.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Conor Dooley <conor.dooley@microchip.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260124_015033_237142_1E6FD102 
-X-CRM114-Status: GOOD (  15.25  )
+X-CRM114-CacheID: sfid-20260124_040143_411368_1C68F6BB 
+X-CRM114-Status: UNSURE (   9.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,99 +96,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch enhances GSO segment checks by verifying the presence
-of frag_list and protocol consistency, addressing low throughput
-issues on IPv4 servers when used as hotspots
+The MediaTek MT8196 SoC includes an M-PHY compatible with the already
+existing mt8183 binding.
 
-Specifically, it fixes a bug in GSO segmentation when forwarding
-GRO packets with frag_list. The function skb_segment_list cannot
-correctly process GRO skbs converted by XLAT, because XLAT only
-converts the header of the head skb. As a result, skbs in the
-frag_list may remain unconverted, leading to protocol
-inconsistencies and reduced throughput.
+However, one omission from the original binding was that all of these
+variants may have an optional reset.
 
-To resolve this, the patch uses skb_segment to handle forwarded
-packets converted by XLAT, ensuring that all fragments are
-properly converted and segmented.
+Add the new compatible, and also the resets property, with an example.
 
-Signed-off-by: Jibin Zhang <jibin.zhang@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Acked-by: Vinod Koul <vkoul@kernel.org>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
-v3: Apply the same fix to tcp6_gso_segment(), as suggested.
+ .../devicetree/bindings/phy/mediatek,ufs-phy.yaml        | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-v2: To apply the added condition to a narrower scop
-
-  In this version, the condition (skb_has_frag_list(gso_skb) &&
-(gso_skb->protocol == skb_shinfo(gso_skb)->frag_list->protocol))
-is moved into inner 'if' statement to a narrower scope.
-
-  Send out the patch again for further discussion because:
-
-1. This issue has a significant impact and has occurred in many
-countries and regions.
-2. Currently, modifying BPF is not a good option, because BPF code
-cannot access the header of skb on the fraglist, and the required
-changes would affect a wide range of code.
-3. Directly disabling GRO aggregation for XLAT flows is also not a
-good solution, as this change would disable GRO even when forwarding
-is not needed, and it would also require cooperation from all device
-drivers.
-
-[2]: https://patchwork.kernel.org/patch/14375646
-
-[1]: https://patchwork.kernel.org/patch/14350844
-
----
- net/ipv4/tcp_offload.c   | 4 +++-
- net/ipv4/udp_offload.c   | 4 +++-
- net/ipv6/tcpv6_offload.c | 4 +++-
- 3 files changed, 9 insertions(+), 3 deletions(-)
-
-diff --git a/net/ipv4/tcp_offload.c b/net/ipv4/tcp_offload.c
-index fdda18b1abda..6c2c10f37f87 100644
---- a/net/ipv4/tcp_offload.c
-+++ b/net/ipv4/tcp_offload.c
-@@ -107,7 +107,9 @@ static struct sk_buff *tcp4_gso_segment(struct sk_buff *skb,
- 	if (skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) {
- 		struct tcphdr *th = tcp_hdr(skb);
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml
+index 6e2edd43fc2a..ee71dfa4e0c0 100644
+--- a/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml
++++ b/Documentation/devicetree/bindings/phy/mediatek,ufs-phy.yaml
+@@ -27,6 +27,7 @@ properties:
+       - items:
+           - enum:
+               - mediatek,mt8195-ufsphy
++              - mediatek,mt8196-ufsphy
+           - const: mediatek,mt8183-ufsphy
+       - const: mediatek,mt8183-ufsphy
  
--		if (skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size)
-+		if ((skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size) &&
-+		    skb_has_frag_list(skb) &&
-+		    (skb->protocol == skb_shinfo(skb)->frag_list->protocol))
- 			return __tcp4_gso_segment_list(skb, features);
+@@ -43,6 +44,10 @@ properties:
+       - const: unipro
+       - const: mp
  
- 		skb->ip_summed = CHECKSUM_NONE;
-diff --git a/net/ipv4/udp_offload.c b/net/ipv4/udp_offload.c
-index 19d0b5b09ffa..2a99f011793f 100644
---- a/net/ipv4/udp_offload.c
-+++ b/net/ipv4/udp_offload.c
-@@ -514,7 +514,9 @@ struct sk_buff *__udp_gso_segment(struct sk_buff *gso_skb,
++  resets:
++    items:
++      - description: Optional UFS M-PHY reset.
++
+   "#phy-cells":
+     const: 0
  
- 	if (skb_shinfo(gso_skb)->gso_type & SKB_GSO_FRAGLIST) {
- 		 /* Detect modified geometry and pass those to skb_segment. */
--		if (skb_pagelen(gso_skb) - sizeof(*uh) == skb_shinfo(gso_skb)->gso_size)
-+		if ((skb_pagelen(gso_skb) - sizeof(*uh) == skb_shinfo(gso_skb)->gso_size) &&
-+		    skb_has_frag_list(gso_skb) &&
-+		    (gso_skb->protocol == skb_shinfo(gso_skb)->frag_list->protocol))
- 			return __udp_gso_segment_list(gso_skb, features, is_ipv6);
+@@ -66,5 +71,16 @@ examples:
+         clock-names = "unipro", "mp";
+         #phy-cells = <0>;
+     };
++  - |
++    #include <dt-bindings/reset/mediatek,mt8196-resets.h>
++    ufs-phy@16800000 {
++        compatible = "mediatek,mt8196-ufsphy", "mediatek,mt8183-ufsphy";
++        reg = <0x16800000 0x10000>;
++        clocks = <&ufs_ao_clk 3>,
++                 <&ufs_ao_clk 5>;
++        clock-names = "unipro", "mp";
++        resets = <&ufs_ao_clk MT8196_UFSAO_RST0_UFS_MPHY>;
++        #phy-cells = <0>;
++    };
  
- 		ret = __skb_linearize(gso_skb);
-diff --git a/net/ipv6/tcpv6_offload.c b/net/ipv6/tcpv6_offload.c
-index effeba58630b..3c7fd0362475 100644
---- a/net/ipv6/tcpv6_offload.c
-+++ b/net/ipv6/tcpv6_offload.c
-@@ -170,7 +170,9 @@ static struct sk_buff *tcp6_gso_segment(struct sk_buff *skb,
- 	if (skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) {
- 		struct tcphdr *th = tcp_hdr(skb);
- 
--		if (skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size)
-+		if ((skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size) &&
-+		    skb_has_frag_list(skb) &&
-+		    (skb->protocol == skb_shinfo(skb)->frag_list->protocol))
- 			return __tcp6_gso_segment_list(skb, features);
- 
- 		skb->ip_summed = CHECKSUM_NONE;
+ ...
+
 -- 
-2.45.2
+2.52.0
 
 
