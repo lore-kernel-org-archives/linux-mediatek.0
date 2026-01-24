@@ -4,84 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36083D6261A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jan 2026 12:27:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD4BD715DB
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jan 2026 09:50:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0MWk6QHSw3kBGoFo3WuBGkaVSB2GJJ0RQE8xmhnr+tw=; b=eNN3xXRzMzlKzpng1AZUfQ7PtH
-	1WGRXwnQChxY6iPl++78+rCYoF7eAJ5pSyb9VpKbv2JCnacOG27pSW7NUJDP8gjeJc9wWQoch5j+N
-	znM0dobHp56b5iAl4e9pp9MLZwPukYm8L7Gf4ZO90/66O4gMMgAS6ELKjbYDMA6yWa0xn4EON1K41
-	AjoV5QmsDtNsCZaaolzVi8E1aIdufWyasmeY/gyV6EEeZrYYGAAcswrbbGPZilmMNpBrgOEk0w//R
-	pHSOK0FcJDY2fudsA0TfvKhTV4GYrdXoeRMm76WX/mX5dEcGQAU4ZGrtQ+pKKk3OxqvUqcLdV6IOx
-	WzaXzfiQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EHh228QxGIXrrJVTE4aa2QYRaQvESHcQuamH6lLYXdQ=; b=U2sXqOyy+mPErAxkhNSoQznMBu
+	3K1LbVWQk9xvxb/GanPuATSkwzlnrgucdez16VbbDc3jJiHBWrnwKZNclPGNK13S6G4ZwyYq1jiRt
+	maeYRpvyhddTWdRDwbxZCLjJkKbUSywMJ3zu2nxJk8HIl+pF0Fyx8gVbyIkLoHYOocEqV67081J97
+	reY5RO4nZ5Po2xC662Vbp5mX++MlShtRbaJYmJX7XBWCY8I4K3g5fy82kjEz6N5quKwiMKCkWYdWK
+	XHSfimZ5GkxsI05CaDx9X3FY1YC6EsQguk/2CPKEtLHEhm0NVNWobIrkafSJGINNPU+mjh1EZahn8
+	GPRmzV1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjGFk-00000008uWp-2MKd;
-	Fri, 23 Jan 2026 12:27:04 +0000
-Received: from mgamail.intel.com ([198.175.65.10])
+	id 1vjaHs-0000000A8dR-1A9R;
+	Sat, 24 Jan 2026 09:50:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjGFh-00000008uWG-3nzq;
-	Fri, 23 Jan 2026 12:27:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1769171222; x=1800707222;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=3iT+Gee8r381xtGkYnpzN+q/2dGkK5QY8w1KqVQC8Gs=;
-  b=Km09lhfgCfbG3ysMu0CMuEf/ECVmQqHKxzd7GO2uxgttiEr6kPy3u0wN
-   r86XvXx/B/npWNIW8L5LWSpHrTkafBr8LOr3paOoNJvLMTPEAHf1TTm0P
-   UTvC5m4WsjzcnrPLVrQyXmdAFUM6hgIuUujO9e1QUATmQov2habHAo+DQ
-   UY63dH5ZUvCpOK5yiPQsWVHvnixouZW0dYKMGIXSLLvtZUpGaduKyo3mt
-   19DB7cJAWVdZPRyql0BePZdgY5btwpYGbfYmKZNs7/Cn4MOxqwUaf9Ch8
-   JoCSkp0iM/ZBdsp+6Y+Dpf8+e0j4ysHvymfSRUlZlsucZaLsXc8DzlZ4s
-   w==;
-X-CSE-ConnectionGUID: 5aSOwroHT+6OoB300skxpA==
-X-CSE-MsgGUID: Xujxj4iaQLuiSd5qbIVJzA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11679"; a="87841450"
-X-IronPort-AV: E=Sophos;i="6.21,248,1763452800"; 
-   d="scan'208";a="87841450"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jan 2026 04:26:59 -0800
-X-CSE-ConnectionGUID: 5n8F5fXOSP+30nLg7BP14g==
-X-CSE-MsgGUID: zshX63vFSbi7DxIoTLduJQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,248,1763452800"; 
-   d="scan'208";a="206274997"
-Received: from lkp-server01.sh.intel.com (HELO 765f4a05e27f) ([10.239.97.150])
-  by orviesa010.jf.intel.com with ESMTP; 23 Jan 2026 04:26:56 -0800
-Received: from kbuild by 765f4a05e27f with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1vjGFY-00000000Twa-42p4;
-	Fri, 23 Jan 2026 12:26:52 +0000
-Date: Fri, 23 Jan 2026 20:26:08 +0800
-From: kernel test robot <lkp@intel.com>
-To: Kyrie Wu <kyrie.wu@mediatek.com>, Hans Verkuil <hverkuil@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1vjaHp-0000000A8d1-0gDO;
+	Sat, 24 Jan 2026 09:50:34 +0000
+X-UUID: 1c8eb004f90a11f0a16f0188aa809bee-20260124
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=EHh228QxGIXrrJVTE4aa2QYRaQvESHcQuamH6lLYXdQ=;
+	b=QiMq/4qW7pDGYKe/lJWvzXjQMUous/lQdv7DVMOoiUe6pM8l4TZ6IiT7EoVS5lTNxmTm/qgjgF3vlvf4KUCMu3UzfzidNFhN23Qk43yQ9KsKdvZNLL4WBl9bhjyopAsimuFMSIiiX0EBnjuGlkndP6iyLpoY4DuIp6uyIkbknDg=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:159fc861-47c4-473a-a0f6-e06fdb9d59c1,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:97ac297a-8c8a-4fc4-88c0-3556e7711556,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 1c8eb004f90a11f0a16f0188aa809bee-20260124
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <jibin.zhang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 126600993; Sat, 24 Jan 2026 02:50:27 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Sat, 24 Jan 2026 17:50:24 +0800
+Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Sat, 24 Jan 2026 17:50:23 +0800
+From: Jibin Zhang <jibin.zhang@mediatek.com>
+To: Eric Dumazet <edumazet@google.com>, Neal Cardwell <ncardwell@google.com>,
+	Kuniyuki Iwashima <kuniyu@google.com>, "David S . Miller"
+	<davem@davemloft.net>, David Ahern <dsahern@kernel.org>, Jakub Kicinski
+	<kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Simon Horman
+	<horms@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-media@vger.kernel.org
-Subject: Re: [PATCH v12 05/12] media: mediatek: jpeg: Fix multi-core clk
- suspend and resume setting
-Message-ID: <202601232059.fCMMbALw-lkp@intel.com>
-References: <20260123031713.14621-6-kyrie.wu@mediatek.com>
+	<netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: <wsd_upstream@mediatek.com>, Jibin Zhang <jibin.zhang@mediatek.com>
+Subject: [PATCH v3] net: fix segmentation of forwarding fraglist GRO
+Date: Sat, 24 Jan 2026 17:50:18 +0800
+Message-ID: <20260124095021.3953-1-jibin.zhang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260123031713.14621-6-kyrie.wu@mediatek.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260123_042702_024276_6B17BCBC 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20260124_015033_237142_1E6FD102 
+X-CRM114-Status: GOOD (  15.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,109 +88,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Kyrie,
+This patch enhances GSO segment checks by verifying the presence
+of frag_list and protocol consistency, addressing low throughput
+issues on IPv4 servers when used as hotspots
 
-kernel test robot noticed the following build warnings:
+Specifically, it fixes a bug in GSO segmentation when forwarding
+GRO packets with frag_list. The function skb_segment_list cannot
+correctly process GRO skbs converted by XLAT, because XLAT only
+converts the header of the head skb. As a result, skbs in the
+frag_list may remain unconverted, leading to protocol
+inconsistencies and reduced throughput.
 
-[auto build test WARNING on robh/for-next]
-[also build test WARNING on linuxtv-media-pending/master media-tree/master linus/master v6.19-rc6 next-20260122]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+To resolve this, the patch uses skb_segment to handle forwarded
+packets converted by XLAT, ensuring that all fragments are
+properly converted and segmented.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Kyrie-Wu/media-mediatek-jpeg-fix-jpeg-cores-amounts-setting/20260123-112425
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-patch link:    https://lore.kernel.org/r/20260123031713.14621-6-kyrie.wu%40mediatek.com
-patch subject: [PATCH v12 05/12] media: mediatek: jpeg: Fix multi-core clk suspend and resume setting
-config: parisc-allyesconfig (https://download.01.org/0day-ci/archive/20260123/202601232059.fCMMbALw-lkp@intel.com/config)
-compiler: hppa-linux-gcc (GCC) 15.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260123/202601232059.fCMMbALw-lkp@intel.com/reproduce)
+Signed-off-by: Jibin Zhang <jibin.zhang@mediatek.com>
+---
+v3: Apply the same fix to tcp6_gso_segment(), as suggested.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202601232059.fCMMbALw-lkp@intel.com/
+v2: To apply the added condition to a narrower scop
 
-All warnings (new ones prefixed by >>):
+  In this version, the condition (skb_has_frag_list(gso_skb) &&
+(gso_skb->protocol == skb_shinfo(gso_skb)->frag_list->protocol))
+is moved into inner 'if' statement to a narrower scope.
 
->> drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c:429:12: warning: 'mtk_jpegenc_resume' defined but not used [-Wunused-function]
-     429 | static int mtk_jpegenc_resume(struct device *dev)
-         |            ^~~~~~~~~~~~~~~~~~
->> drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c:420:12: warning: 'mtk_jpegenc_suspend' defined but not used [-Wunused-function]
-     420 | static int mtk_jpegenc_suspend(struct device *dev)
-         |            ^~~~~~~~~~~~~~~~~~~
->> drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c:412:12: warning: 'mtk_jpegenc_pm_resume' defined but not used [-Wunused-function]
-     412 | static int mtk_jpegenc_pm_resume(struct device *dev)
-         |            ^~~~~~~~~~~~~~~~~~~~~
->> drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c:402:12: warning: 'mtk_jpegenc_pm_suspend' defined but not used [-Wunused-function]
-     402 | static int mtk_jpegenc_pm_suspend(struct device *dev)
-         |            ^~~~~~~~~~~~~~~~~~~~~~
---
-   drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c: In function 'mtk_jpegdec_hw_irq_handler':
->> drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c:549:30: warning: variable 'ctx' set but not used [-Wunused-but-set-variable]
-     549 |         struct mtk_jpeg_ctx *ctx;
-         |                              ^~~
-   drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c: At top level:
->> drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c:707:12: warning: 'mtk_jpegdec_resume' defined but not used [-Wunused-function]
-     707 | static int mtk_jpegdec_resume(struct device *dev)
-         |            ^~~~~~~~~~~~~~~~~~
->> drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c:698:12: warning: 'mtk_jpegdec_suspend' defined but not used [-Wunused-function]
-     698 | static int mtk_jpegdec_suspend(struct device *dev)
-         |            ^~~~~~~~~~~~~~~~~~~
->> drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c:690:12: warning: 'mtk_jpegdec_pm_resume' defined but not used [-Wunused-function]
-     690 | static int mtk_jpegdec_pm_resume(struct device *dev)
-         |            ^~~~~~~~~~~~~~~~~~~~~
->> drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c:680:12: warning: 'mtk_jpegdec_pm_suspend' defined but not used [-Wunused-function]
-     680 | static int mtk_jpegdec_pm_suspend(struct device *dev)
-         |            ^~~~~~~~~~~~~~~~~~~~~~
+  Send out the patch again for further discussion because:
 
+1. This issue has a significant impact and has occurred in many
+countries and regions.
+2. Currently, modifying BPF is not a good option, because BPF code
+cannot access the header of skb on the fraglist, and the required
+changes would affect a wide range of code.
+3. Directly disabling GRO aggregation for XLAT flows is also not a
+good solution, as this change would disable GRO even when forwarding
+is not needed, and it would also require cooperation from all device
+drivers.
 
-vim +/mtk_jpegenc_resume +429 drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+[2]: https://patchwork.kernel.org/patch/14375646
 
-   401	
- > 402	static int mtk_jpegenc_pm_suspend(struct device *dev)
-   403	{
-   404		struct mtk_jpegenc_comp_dev *jpeg = dev_get_drvdata(dev);
-   405	
-   406		clk_bulk_disable_unprepare(jpeg->venc_clk.clk_num,
-   407					   jpeg->venc_clk.clks);
-   408	
-   409		return 0;
-   410	}
-   411	
- > 412	static int mtk_jpegenc_pm_resume(struct device *dev)
-   413	{
-   414		struct mtk_jpegenc_comp_dev *jpeg = dev_get_drvdata(dev);
-   415	
-   416		return clk_bulk_prepare_enable(jpeg->venc_clk.clk_num,
-   417					       jpeg->venc_clk.clks);
-   418	}
-   419	
- > 420	static int mtk_jpegenc_suspend(struct device *dev)
-   421	{
-   422		struct mtk_jpegenc_comp_dev *jpeg = dev_get_drvdata(dev);
-   423	
-   424		v4l2_m2m_suspend(jpeg->master_dev->m2m_dev);
-   425	
-   426		return pm_runtime_force_suspend(dev);
-   427	}
-   428	
- > 429	static int mtk_jpegenc_resume(struct device *dev)
-   430	{
-   431		struct mtk_jpegenc_comp_dev *jpeg = dev_get_drvdata(dev);
-   432		int ret;
-   433	
-   434		ret = pm_runtime_force_resume(dev);
-   435		if (ret < 0)
-   436			return ret;
-   437	
-   438		v4l2_m2m_resume(jpeg->master_dev->m2m_dev);
-   439	
-   440		return 0;
-   441	}
-   442	
+[1]: https://patchwork.kernel.org/patch/14350844
 
+---
+ net/ipv4/tcp_offload.c   | 4 +++-
+ net/ipv4/udp_offload.c   | 4 +++-
+ net/ipv6/tcpv6_offload.c | 4 +++-
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/net/ipv4/tcp_offload.c b/net/ipv4/tcp_offload.c
+index fdda18b1abda..6c2c10f37f87 100644
+--- a/net/ipv4/tcp_offload.c
++++ b/net/ipv4/tcp_offload.c
+@@ -107,7 +107,9 @@ static struct sk_buff *tcp4_gso_segment(struct sk_buff *skb,
+ 	if (skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) {
+ 		struct tcphdr *th = tcp_hdr(skb);
+ 
+-		if (skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size)
++		if ((skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size) &&
++		    skb_has_frag_list(skb) &&
++		    (skb->protocol == skb_shinfo(skb)->frag_list->protocol))
+ 			return __tcp4_gso_segment_list(skb, features);
+ 
+ 		skb->ip_summed = CHECKSUM_NONE;
+diff --git a/net/ipv4/udp_offload.c b/net/ipv4/udp_offload.c
+index 19d0b5b09ffa..2a99f011793f 100644
+--- a/net/ipv4/udp_offload.c
++++ b/net/ipv4/udp_offload.c
+@@ -514,7 +514,9 @@ struct sk_buff *__udp_gso_segment(struct sk_buff *gso_skb,
+ 
+ 	if (skb_shinfo(gso_skb)->gso_type & SKB_GSO_FRAGLIST) {
+ 		 /* Detect modified geometry and pass those to skb_segment. */
+-		if (skb_pagelen(gso_skb) - sizeof(*uh) == skb_shinfo(gso_skb)->gso_size)
++		if ((skb_pagelen(gso_skb) - sizeof(*uh) == skb_shinfo(gso_skb)->gso_size) &&
++		    skb_has_frag_list(gso_skb) &&
++		    (gso_skb->protocol == skb_shinfo(gso_skb)->frag_list->protocol))
+ 			return __udp_gso_segment_list(gso_skb, features, is_ipv6);
+ 
+ 		ret = __skb_linearize(gso_skb);
+diff --git a/net/ipv6/tcpv6_offload.c b/net/ipv6/tcpv6_offload.c
+index effeba58630b..3c7fd0362475 100644
+--- a/net/ipv6/tcpv6_offload.c
++++ b/net/ipv6/tcpv6_offload.c
+@@ -170,7 +170,9 @@ static struct sk_buff *tcp6_gso_segment(struct sk_buff *skb,
+ 	if (skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) {
+ 		struct tcphdr *th = tcp_hdr(skb);
+ 
+-		if (skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size)
++		if ((skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size) &&
++		    skb_has_frag_list(skb) &&
++		    (skb->protocol == skb_shinfo(skb)->frag_list->protocol))
+ 			return __tcp6_gso_segment_list(skb, features);
+ 
+ 		skb->ip_summed = CHECKSUM_NONE;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.45.2
+
 
