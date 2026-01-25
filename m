@@ -4,99 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEB37D715F8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jan 2026 22:41:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30BA6E63C9B
+	for <linux-mediatek@archiver.kernel.org>; Sun, 25 Jan 2026 10:52:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gZlVfidkKOQiEvLfi0ADHByzBmT1iloZ2pk/4vBngOY=; b=0Z8ikgzVv3KmCjZlS5COh83rXb
-	lMuAeUz2dUia8QAyRD3ALb8thA7ZaJtQfsxEbuLUL4cvCSnwYhrCQBUM4JKMXS8oAeM3ClFi5MeWZ
-	hHSpNTjeynZaweTzDTVizlcdirQHwVGPn7leIxB/WJpJSjPkTwBNQtDia5oUP6pOjeh6pCn1+/p9b
-	Q/0ERr/Gv8As6MyRorUIOSeDSFu8+MBK21JCWAihUvO4p72ty2La85eDu30RXwllox9m0RxXicppy
-	Z65fmuuJnDLrDPOmMu5vveQELFeezidjR/7HlVc73DnZCx8r/eIsb6+kwUYwZbyR+cfIer6B5HMOK
-	sAXfEs3w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=OCn5uMYPGGZkwfwxwxZLvNPFe3kVoY1QoRlPHQT1F3g=; b=tgytWdeCoCTSYN
+	+UDicwlybKVde3lkbFMOYd3FNCzf8gqsfSDST3TdvVcK+ZUOyHSRUhMA7S9Qziq9RWlan6cCGOL6S
+	MkzIlQHS5C18V2Z34AncEY0aR7QKx4l/wsil1/j0ptvImWE1f4/ZEMOp+pd3Ff0ra2zGneZOvnAg9
+	a8bVcs9illhPqH+ZuavcRWUMK/xWuFmkEC1qa1oN8DP0t+vXg68ry4j2VqVhyirVgREVr7ayP2nQ0
+	jOoDcH6OWzMaXZbz8zSGa+0at1CcSb6/A60q9B782YNRR0w20kc1k9tXuC2qOEhPoSw6pCIwA/3vQ
+	B9me6ZO4MBcsG6kFJCNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjmKC-0000000AfLp-3QKH;
-	Sat, 24 Jan 2026 22:41:48 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1vjxiy-0000000B5bw-0AJw;
+	Sun, 25 Jan 2026 10:52:08 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjmK9-0000000AfL0-14bL;
-	Sat, 24 Jan 2026 22:41:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1769294506; x=1800830506;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=WXKAC/fyF/NXplXJWNiQwBzi6DaoJqGNLNtWfgdhnOw=;
-  b=Xxcs/mBqmr/+7vwpbp8Z211GKHQZqZnkZ8rOkh4o26604R2T2ZKseW92
-   Q5IZ9LwC/HAIjrB0UBZebV5DoHjcj5YzOb1UPN8+RJXjaTbghsZuSWSZx
-   xggJ3R4FBznRi3rJ3b/0uoeRKiJ6EIcFMtK3IoS+qRH63jWPUXqZA51wG
-   kEJixJlgmLmdTwJsSERI/5PnfctUcPQRxwbqltLtA7nzTvV3FDC/PF5F2
-   SBk3ThEhkdRF9xlN9TdslwjRj7n55W/97yba0LUhJDxcLtNV0OkNzUwOS
-   HcpLrN+HFVNriIvJokDN1eEGcVsSK3A6+lYm7by/T+edMmN2nOc9Oy451
-   w==;
-X-CSE-ConnectionGUID: G+9IO8UrRwuwlmeR7maEsg==
-X-CSE-MsgGUID: Qpn9cprSR0i2HNCCR/4OQg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11681"; a="93174517"
-X-IronPort-AV: E=Sophos;i="6.21,251,1763452800"; 
-   d="scan'208";a="93174517"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jan 2026 14:41:45 -0800
-X-CSE-ConnectionGUID: rlROHsk0RwapfHGlgyqhJw==
-X-CSE-MsgGUID: nrGQiIp0QWqPtPE6cH7Zmw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,251,1763452800"; 
-   d="scan'208";a="230293682"
-Received: from lkp-server01.sh.intel.com (HELO 765f4a05e27f) ([10.239.97.150])
-  by fmviesa002.fm.intel.com with ESMTP; 24 Jan 2026 14:41:38 -0800
-Received: from kbuild by 765f4a05e27f with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1vjmJz-00000000Vau-3yq4;
-	Sat, 24 Jan 2026 22:41:35 +0000
-Date: Sun, 25 Jan 2026 06:41:04 +0800
-From: kernel test robot <lkp@intel.com>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Peter Wang <peter.wang@mediatek.com>,
-	Stanley Jhu <chu.stanley@gmail.com>,
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Chaotian Jing <Chaotian.Jing@mediatek.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	kernel@collabora.com, linux-scsi@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Subject: Re: [PATCH v6 14/24] scsi: ufs: mediatek: Switch to newer PM ops
- helpers
-Message-ID: <202601250638.kCl6evPM-lkp@intel.com>
-References: <20260124-mt8196-ufs-v6-14-e7c005b60028@collabora.com>
+	id 1vjxiv-0000000B5bf-2w20;
+	Sun, 25 Jan 2026 10:52:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7B2BC60018;
+	Sun, 25 Jan 2026 10:52:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C7EBC4CEF1;
+	Sun, 25 Jan 2026 10:52:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1769338323;
+	bh=oEMK/NQ1fqobKbWExDVcllQalgHRTxpeSvTj6dSXi0E=;
+	h=From:Subject:Date:To:Cc:From;
+	b=M916Q+2Wdfv5t0xYMwVvadX/WaHQkxh1wHamU8Fzeelqn7k860bFHT7TcAYEPW4xm
+	 hufJ3lQbMOkT7SWwJnTUsTXbg/SoeNXRy5VtF+rxqH3qwlu2e70heg/fIS9Swfhdv3
+	 Gwqh7bJtlpTDMDp9ESczJ/t1fzGIp3AJS3e8SWPlN5gVg8FoEkQtMcKxDiP8C8Rd1I
+	 2q3nf3z9n8noOwsDiw/5vVm3EGzvVz+y1V0aPT8eiBFlY2Lv2w21YsIpx/xPgHgGc7
+	 5UV8gY6XvE9Efn6hbpDbzOll12c5SP9wMYt4GxyiHBEq1SAT4YCvWLK3gNdIs3Jj6S
+	 6IA3BEBDdE31A==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH wireless-next v2 0/2] wifi: mac80211: Introduce eMLSR/eMLMR
+ parsing support in AP mode.
+Date: Sun, 25 Jan 2026 11:51:29 +0100
+Message-Id: <20260125-mac80211-emlsr-v2-0-466329d61c88@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260124-mt8196-ufs-v6-14-e7c005b60028@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260124_144145_338344_49AFC466 
-X-CRM114-Status: GOOD (  12.66  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/13Myw6CMBCF4Vchs7amHblUV76HYQFlCo1QzNQ0G
+ tJ3t5K4cfmf5HwbBGJHAS7FBkzRBbf6HHgowEydH0m4ITegxFoqVGLpjJaolKBlDiyqpimlRmu
+ 1MZBPDybrXjt4a3NPLjxXfu9+VN/1R+E/FZWQwkoqT31fD+equ96JPc3HlUdoU0oflHglnq0AA
+ AA=
+X-Change-ID: 20260121-mac80211-emlsr-5774082ff8cc
+To: Johannes Berg <johannes@sipsolutions.net>, 
+ Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, 
+ Shayne Chen <shayne.chen@mediatek.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Christian Marangi <ansuelsmth@gmail.com>, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,126 +79,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
+Introduce support in AP mode for parsing of the Operating Mode Notification
+frame sent by the client to enable/disable MLO eMLSR or eMLMR if supported
+by both the AP and the client.
+Add drv_set_eml_op_mode mac80211 callback in order to configure underlay
+driver with eMLSR info (control and bitmap).
+Implement drv_set_eml_op_mode callback for MT7996 driver.
 
-kernel test robot noticed the following build errors:
+---
+Changes in v2:
+- Improve sanity check against device EML capabilities
+- Squash patch 1/2 and 2/2
+- Validate link_bitmap with vif->active_links
+- Introduce ieee80211_eml_params struct as containe for EML info to pass
+  to the underlay driver.
+- Pass padding_delay and transition_delay to the underlay driver.
+- Implement drv_set_eml_op_mode callback for MT7996 driver.
+- Link to v1: https://lore.kernel.org/r/20260122-mac80211-emlsr-v1-0-f0e43bb6d95a@kernel.org
 
-[auto build test ERROR on 4af4e95edc37ae54f64cbd75b46f16ce15f3a6b8]
+---
+Lorenzo Bianconi (1):
+      wifi: mac80211: Add eMLSR/eMLMR action frame parsing support
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Nicolas-Frattaroli/dt-bindings-phy-Add-mediatek-mt8196-ufsphy-variant/20260124-201226
-base:   4af4e95edc37ae54f64cbd75b46f16ce15f3a6b8
-patch link:    https://lore.kernel.org/r/20260124-mt8196-ufs-v6-14-e7c005b60028%40collabora.com
-patch subject: [PATCH v6 14/24] scsi: ufs: mediatek: Switch to newer PM ops helpers
-config: arm64-randconfig-004-20260125 (https://download.01.org/0day-ci/archive/20260125/202601250638.kCl6evPM-lkp@intel.com/config)
-compiler: clang version 22.0.0git (https://github.com/llvm/llvm-project 9b8addffa70cee5b2acc5454712d9cf78ce45710)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260125/202601250638.kCl6evPM-lkp@intel.com/reproduce)
+MeiChia Chiu (1):
+      wifi: mt76: mt7996: Add eMLSR support
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202601250638.kCl6evPM-lkp@intel.com/
+ .../net/wireless/mediatek/mt76/mt76_connac_mcu.h   |   9 ++
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c   |  16 +++
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    |  54 +++++++++
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |   5 +
+ include/linux/ieee80211-eht.h                      |  28 +++++
+ include/linux/ieee80211.h                          |   6 +
+ include/net/mac80211.h                             |  23 ++++
+ net/mac80211/driver-ops.h                          |  22 ++++
+ net/mac80211/eht.c                                 | 135 +++++++++++++++++++++
+ net/mac80211/ieee80211_i.h                         |   2 +
+ net/mac80211/iface.c                               |  10 +-
+ net/mac80211/rx.c                                  |   8 ++
+ net/mac80211/trace.h                               |  32 +++++
+ 13 files changed, 349 insertions(+), 1 deletion(-)
+---
+base-commit: 1e1dd9eeaab3908746d1dce5db6b0c29e0d28d6d
+change-id: 20260121-mac80211-emlsr-5774082ff8cc
 
-All errors (new ones prefixed by >>):
-
->> drivers/ufs/host/ufs-mediatek.c:2339:8: error: call to undeclared function 'ufshcd_system_suspend'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-    2339 |         ret = ufshcd_system_suspend(dev);
-         |               ^
-   drivers/ufs/host/ufs-mediatek.c:2339:8: note: did you mean 'ufs_mtk_system_suspend'?
-   drivers/ufs/host/ufs-mediatek.c:2328:12: note: 'ufs_mtk_system_suspend' declared here
-    2328 | static int ufs_mtk_system_suspend(struct device *dev)
-         |            ^
-    2329 | {
-    2330 |         struct ufs_hba *hba = dev_get_drvdata(dev);
-    2331 |         struct arm_smccc_res res;
-    2332 |         int ret;
-    2333 | 
-    2334 |         if (hba->shutting_down) {
-    2335 |                 ret = -EBUSY;
-    2336 |                 goto out;
-    2337 |         }
-    2338 | 
-    2339 |         ret = ufshcd_system_suspend(dev);
-         |               ~~~~~~~~~~~~~~~~~~~~~
-         |               ufs_mtk_system_suspend
->> drivers/ufs/host/ufs-mediatek.c:2370:8: error: call to undeclared function 'ufshcd_system_resume'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
-    2370 |         ret = ufshcd_system_resume(dev);
-         |               ^
-   drivers/ufs/host/ufs-mediatek.c:2370:8: note: did you mean 'ufs_mtk_system_resume'?
-   drivers/ufs/host/ufs-mediatek.c:2355:12: note: 'ufs_mtk_system_resume' declared here
-    2355 | static int ufs_mtk_system_resume(struct device *dev)
-         |            ^
-    2356 | {
-    2357 |         int ret = 0;
-    2358 |         struct ufs_hba *hba = dev_get_drvdata(dev);
-    2359 |         struct arm_smccc_res res;
-    2360 | 
-    2361 |         if (pm_runtime_suspended(hba->dev))
-    2362 |                 goto out;
-    2363 | 
-    2364 |         if (ufs_mtk_is_rtff_mtcmos(hba))
-    2365 |                 ufs_mtk_mtcmos_ctrl(true, res);
-    2366 | 
-    2367 |         ufs_mtk_dev_vreg_set_lpm(hba, false);
-    2368 | 
-    2369 | out:
-    2370 |         ret = ufshcd_system_resume(dev);
-         |               ~~~~~~~~~~~~~~~~~~~~
-         |               ufs_mtk_system_resume
-   2 errors generated.
-
-
-vim +/ufshcd_system_suspend +2339 drivers/ufs/host/ufs-mediatek.c
-
-ddd90623ce26ea drivers/scsi/ufs/ufs-mediatek.c Stanley Chu 2019-03-16  2327  
-e7bf1d50063ce0 drivers/ufs/host/ufs-mediatek.c Stanley Chu 2022-06-23  2328  static int ufs_mtk_system_suspend(struct device *dev)
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2329  {
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2330  	struct ufs_hba *hba = dev_get_drvdata(dev);
-a6888d623eae6d drivers/ufs/host/ufs-mediatek.c Alice Chao  2024-03-15  2331  	struct arm_smccc_res res;
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2332  	int ret;
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2333  
-014de20bb36ba0 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-24  2334  	if (hba->shutting_down) {
-014de20bb36ba0 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-24  2335  		ret = -EBUSY;
-014de20bb36ba0 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-24  2336  		goto out;
-014de20bb36ba0 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-24  2337  	}
-014de20bb36ba0 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-24  2338  
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16 @2339  	ret = ufshcd_system_suspend(dev);
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2340  	if (ret)
-77b96ef70b6ba4 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-03  2341  		goto out;
-77b96ef70b6ba4 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-03  2342  
-77b96ef70b6ba4 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-03  2343  	if (pm_runtime_suspended(hba->dev))
-77b96ef70b6ba4 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-03  2344  		goto out;
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2345  
-42b1928360a32e drivers/ufs/host/ufs-mediatek.c Stanley Chu 2022-06-16  2346  	ufs_mtk_dev_vreg_set_lpm(hba, true);
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2347  
-a6888d623eae6d drivers/ufs/host/ufs-mediatek.c Alice Chao  2024-03-15  2348  	if (ufs_mtk_is_rtff_mtcmos(hba))
-a6888d623eae6d drivers/ufs/host/ufs-mediatek.c Alice Chao  2024-03-15  2349  		ufs_mtk_mtcmos_ctrl(false, res);
-a6888d623eae6d drivers/ufs/host/ufs-mediatek.c Alice Chao  2024-03-15  2350  
-77b96ef70b6ba4 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-03  2351  out:
-77b96ef70b6ba4 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-03  2352  	return ret;
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2353  }
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2354  
-e7bf1d50063ce0 drivers/ufs/host/ufs-mediatek.c Stanley Chu 2022-06-23  2355  static int ufs_mtk_system_resume(struct device *dev)
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2356  {
-77b96ef70b6ba4 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-03  2357  	int ret = 0;
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2358  	struct ufs_hba *hba = dev_get_drvdata(dev);
-a6888d623eae6d drivers/ufs/host/ufs-mediatek.c Alice Chao  2024-03-15  2359  	struct arm_smccc_res res;
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2360  
-77b96ef70b6ba4 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-03  2361  	if (pm_runtime_suspended(hba->dev))
-77b96ef70b6ba4 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-03  2362  		goto out;
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2363  
-a6888d623eae6d drivers/ufs/host/ufs-mediatek.c Alice Chao  2024-03-15  2364  	if (ufs_mtk_is_rtff_mtcmos(hba))
-a6888d623eae6d drivers/ufs/host/ufs-mediatek.c Alice Chao  2024-03-15  2365  		ufs_mtk_mtcmos_ctrl(true, res);
-a6888d623eae6d drivers/ufs/host/ufs-mediatek.c Alice Chao  2024-03-15  2366  
-b2f8abadabea32 drivers/ufs/host/ufs-mediatek.c Alice Chao  2025-09-03  2367  	ufs_mtk_dev_vreg_set_lpm(hba, false);
-b2f8abadabea32 drivers/ufs/host/ufs-mediatek.c Alice Chao  2025-09-03  2368  
-77b96ef70b6ba4 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-03  2369  out:
-77b96ef70b6ba4 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-03 @2370  	ret = ufshcd_system_resume(dev);
-77b96ef70b6ba4 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-03  2371  
-77b96ef70b6ba4 drivers/ufs/host/ufs-mediatek.c Peter Wang  2025-09-03  2372  	return ret;
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2373  }
-3fd23b8dfb54d9 drivers/ufs/host/ufs-mediatek.c Po-Wen Kao  2022-06-16  2374  
-
+Best regards,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
