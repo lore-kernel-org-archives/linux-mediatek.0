@@ -4,89 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A48D13C3E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jan 2026 15:47:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B0EFD19503
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jan 2026 16:49:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Onpoby8TzgYOiBiFEP1WwP/Cbvb++rQ+q0VOL7clC5Y=; b=WQqY6u1Ve0F1icHbETDKLquTEE
-	64KE0I5PZrm7YEqXNHzpQj+3xMWWRKVcDF3zTJsiH5XatUidSaq9M+StiLWGRyWAXGI80DVoGKS4c
-	P3GNBrSyBKRuVqEQK4Du49uphEfi9yYpQt5WjEFgd+GtojZw6Nnl4QnziRAYHdEGE1z6/hH1Vv+DI
-	mlfc0BgjJ6Xr2ujE5dkS5CLC49QC/YtcR09DAdIZM6aDbG/6Z1hISqyZ5GIcM2dzMKrjDdqygXC9P
-	NPAaoGU50jkdlVGrwbSQepZJEPpYCPG3DolrndiUi0KJFir9CgOeH1few1mslK/CpvUBLSSbnrUGu
-	Xjbw7P1A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Mime-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CzIM5S1aosasnRgv4fpJy7hXx99GJuvBk4X/AumVJ6E=; b=TM/yXqyRBH+iQKpKqk0DFliNHc
+	LGlobAvMSmubBlUITrepxmg2szA2NaYE7JEqtQPwLmpnhLKykjFVllGv3hjciE3ksti0bSUmFkMAx
+	hSA1WkDZ8FWuJ/5gz5U+r2BXvTsSTISwubweAfGXbDxpeiXqegeP7vrAIOSj3bBoRcXPTjcFTAC/W
+	k1m0nSzHdOa7Ee6iGvm9zt+1so9EYaFgeSIduiM4q7S8ckIl3kaWZqXCZBz0E9YtGLgvVlKZgerXK
+	EoKS3bZrCJHWt+CgkzNFCrExy/ThqNVvsRWfIA0XyYpGpDeDVybMTK8vLKLwL/xgmg3jqqQsRlckK
+	sCz6AGCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkOoN-0000000Cn79-0adQ;
-	Mon, 26 Jan 2026 15:47:31 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1vkPmM-0000000CtXN-3xDN;
+	Mon, 26 Jan 2026 16:49:30 +0000
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkOoL-0000000Cn6e-0wno
+	id 1vkPmK-0000000CtWf-1jJ7
 	for linux-mediatek@lists.infradead.org;
-	Mon, 26 Jan 2026 15:47:30 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-823075fed75so2502630b3a.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Jan 2026 07:47:28 -0800 (PST)
+	Mon, 26 Jan 2026 16:49:29 +0000
+Received: by mail-yw1-x1136.google.com with SMTP id 00721157ae682-78fba1a1b1eso70486647b3.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Jan 2026 08:49:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1769442448; x=1770047248; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Onpoby8TzgYOiBiFEP1WwP/Cbvb++rQ+q0VOL7clC5Y=;
-        b=KtXZYUMZDDoNxAdcTyiT95NPYBFB9Qi4Si29KqR9ThsRGdELzqZ6e7XOK+x49Z/U+s
-         EJNcLfJcX+A5go963VuyOvzB0jTXzsduHCEXjzzgBHOjiFDiTGFClwXoY7Pn39T5Y/J5
-         a+ZjzWqaa6Aq3sBKfx6WbsrpQiBjgOIIYQE+b3BeK67xy++cEsVzagKTyoioY0W1oKNZ
-         SqtjbZ3oMBUpH6RTNu0+Qv1IdfcDMV1++7Q911s+s0/1xBU3lDKFAEyy/wj0GjRXVKo0
-         /TBo3AJcmO+8Hp553iZnCEMBuGDNZ8CVfVG5u3OD8gW2syeEkcKh4NDVSFxB2q/10tms
-         zAOQ==
+        d=gmail.com; s=20230601; t=1769446167; x=1770050967; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:subject:references
+         :in-reply-to:message-id:cc:to:from:date:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=CzIM5S1aosasnRgv4fpJy7hXx99GJuvBk4X/AumVJ6E=;
+        b=EeWiMQ2M1BPLeoVJfnnEI/dtrlZB6M4+XDzxHJwAunM4pn5Pe8Dlkv8rVG1RKvMfos
+         QxSwU70gx1kS1zvrJNFrPz3dAqd6RAz3GMfU+a6cDuSy0gJP91bD6KkPjMMx5LetgUNk
+         fWfxm64ArbGbWSLH18raIOgtScZij07JGqyjO7X+ovcT9UqKaPABiNowpNgVqPfV6i59
+         iisLNO3WYgOzemeHIQkV/BYfVKzpBvy6Txv5xWe4Exk5kWJzTiR74Fs9/q5Kv4bmXNv+
+         UNP4hbirh/NgsxZWm9Qscn5YFoVnpPFLRCQCLDk2HJZ1/DZfulJ5FdlUJIpZz0gPoy+d
+         YF/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1769442448; x=1770047248;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Onpoby8TzgYOiBiFEP1WwP/Cbvb++rQ+q0VOL7clC5Y=;
-        b=K2p51zOxJ+N2RD1Nq6CZmNHNrD3t4mE9FJc5rHO69aj2MpX0yn/qD0MAktv9hj7ow4
-         rVj1zm+ZLMnCSF+Zzm8sZR83e1gbK5VR7tcXdoM/ZuwhbC3UiHahkWg0nnIVBLSTM+58
-         MbztaqBQsNHD1K9PNs03LKL/kklEwOA7ogvmkVUD5fd0CyyGdLitDhpidhAnQvMEpWDP
-         DqhYyMjAskvfS60Yo+UnO6S4zsMq/hR6LM210ICTcW/HjgnBxcpFRxhfX2QNas+50wXv
-         6rcsuuhIPcpgQSs6Wvw9sxCU85KFNTgo/GNdacZPkc+34miUY9ghfqWajpcp720tpxli
-         RDOg==
-X-Forwarded-Encrypted: i=1; AJvYcCWmW4FiDW9v8rTXDMEpdHRhAFSDJVCFD37i16gmerwfbeSkg+o5tpAoqW4jQx/mQWazezzLYZRbHuipyPGo3g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw5CQ77sI3/EFcrI46VAtXtlzl8IueNbiBMEtCkAtDOqnTEmTv0
-	Qfw+pwndlQWU+qmWJ12/82ezdhDNMo1IUv76BChN0b2FIo1OBEdvluz6oILkU7778IQ=
-X-Gm-Gg: AZuq6aK+QI/xgsQHjkPbp2ANwPRIeoF/MxB9rb/e/A8Jb6eMDNUYgNnRMROAoyAhHkj
-	g6uSzaaTcsNwRxsJgHyhqxrwPcFrOVdxV6cuqH2EnjbXOpBnrh0ynh7cawx5tRzppbVsDMyhxof
-	y3NmCVptNejC6YyWMSvsQSTmyj5SSO88SuzO75j2boZkPaZtwbSc8MlxdEn6Hp0PPRKj/nwGXfe
-	fsDr6DeUw6eay1wAJsbsEDIPszPAWKW7AuyM9B3mQyEcsdGCUmodEK3n6n0+4zWoqDDLOqqwkvv
-	hCts1cnVZ9rNmLD/Fk8LVM53MYlg73iIptUYL8xOk4IlALwaTsugsDNpyU1b4lJzDsERPNHqRvk
-	WVWQ6lTqL+Wnis8NzJsY98YZdh1Fo2vD9Mo/WRfxJy7ExqqDfN/q+iCFCi4Y6JWdIdq/zLW8km6
-	5I9HgnFOEXRoRUmw==
-X-Received: by 2002:a05:6a00:4b51:b0:81e:b93a:ab09 with SMTP id d2e1a72fcca58-8234119b7e6mr4073196b3a.1.1769442447588;
-        Mon, 26 Jan 2026 07:47:27 -0800 (PST)
-Received: from p14s ([2604:3d09:148c:c800:6260:7bcf:7e2d:fa8d])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c635a142e5asm8664137a12.12.2026.01.26.07.47.26
+        d=1e100.net; s=20230601; t=1769446167; x=1770050967;
+        h=content-transfer-encoding:mime-version:subject:references
+         :in-reply-to:message-id:cc:to:from:date:x-gm-gg:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=CzIM5S1aosasnRgv4fpJy7hXx99GJuvBk4X/AumVJ6E=;
+        b=ptqfc/dHtjxytmV8o+vVzWvVJOwAi6bWPxzuUx34F+pRRystVyIayxOQRg1UmeJ6Gx
+         0uzgZk6VG7/Q0PFY0gLT0YFNXwW7E6fjrlZencXt2l1//Xe+FqZVkL3y+gGqZjRLbB9Q
+         do/DAUd6FkH+oGgcV5MkMsrTe0bfLxLFTqathP+OS4Qy9yTaeZsONfWoU8fIeWnhF+BB
+         8fV4M0liF1JW9aSH4ZRsysq0qpr1nNae8qh0Ge0Ed29J/3xHq/B5h4u/aOBptRpkp7IK
+         NTY7/umhlgSXOjWCSl/omlFrz8S4VQR3DjKyTaFLXOif5OgjpSgr22EJqBdE5dSsX6tI
+         8yCA==
+X-Forwarded-Encrypted: i=1; AJvYcCWm4pXWlKSMnXYcRlAJAF/m2XOtawM/12HdtowBSuCuozXskl8D462jjmmu6qeuDozwq52nx93SmArSHapJyA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzVdUjCURhjwNzG1ZSMdXou6PUcRWeI9iqzdD7gigJeOLuXLbE/
+	ZIeoXKLtKgOf2e1h14asS03mgRtHRXMmumfd+9/smCNBMEbMz4JSqBiw
+X-Gm-Gg: AZuq6aKyyDDLY9gyZR732aw9izWCoSFViP+yszoTv7cG+iTlcXVDoe8N+/0w69I+SGp
+	MLRMlfwlBpDZ1fRCVrP58Ev8e77uaRS6n5PENKhROvLy2tBpHRgQVaVnuEJ+GdYhQHQbliUtzb5
+	cqFogSpG5kvQkeZluV91E0DxrACD6leAIGtlLhVFpIuDn+loT50bMIJ1P6GN7VR0LUpE9+AYig8
+	TVRZ7jxa83CF3BqbmcmGd1hYydDmoFlrd3WuzmOmCe6X1wUOHXbhUMLdeCcd797DmF/20p+y35n
+	ThcvkP6QAjOF85pqwEpPw09sPXF1KwJ1O3RVlQ5F6U77a5KmtqHxrjTL/XdTzMaZp/WbmBlcjA8
+	sZMzl09lySvzm+PhnqZDfm9W5TQ0IYY1zXulPvLRdcaWAIn6LIIVOGOOHrqdLqqJvyhDtBUxL0M
+	W9tjH6vm/tbW+IienAUqA7Q0fAY6vMkAkQaUIJzaitw/sA45LhfEgjnKXJvaY=
+X-Received: by 2002:a05:690c:6809:b0:794:107f:12b8 with SMTP id 00721157ae682-7945abe5d41mr35771317b3.10.1769446167253;
+        Mon, 26 Jan 2026 08:49:27 -0800 (PST)
+Received: from gmail.com (21.33.48.34.bc.googleusercontent.com. [34.48.33.21])
+        by smtp.gmail.com with UTF8SMTPSA id 00721157ae682-7943b2b9bfcsm49990507b3.38.2026.01.26.08.49.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Jan 2026 07:47:27 -0800 (PST)
-Date: Mon, 26 Jan 2026 08:47:24 -0700
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Tzung-Bi Shih <tzungbi@kernel.org>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-remoteproc@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] remoteproc: mediatek: Break lock dependency to
- `prepare_lock`
-Message-ID: <aXeMjN4ziJ-w63sB@p14s>
-References: <20260112110755.2435899-1-tzungbi@kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260112110755.2435899-1-tzungbi@kernel.org>
+        Mon, 26 Jan 2026 08:49:26 -0800 (PST)
+Date: Mon, 26 Jan 2026 11:49:26 -0500
+From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
+To: Jibin Zhang <jibin.zhang@mediatek.com>, 
+ Alexei Starovoitov <ast@kernel.org>, 
+ Daniel Borkmann <daniel@iogearbox.net>, 
+ Andrii Nakryiko <andrii@kernel.org>, 
+ Martin KaFai Lau <martin.lau@linux.dev>, 
+ Eduard Zingerman <eddyz87@gmail.com>, 
+ Song Liu <song@kernel.org>, 
+ Yonghong Song <yonghong.song@linux.dev>, 
+ John Fastabend <john.fastabend@gmail.com>, 
+ KP Singh <kpsingh@kernel.org>, 
+ Stanislav Fomichev <sdf@fomichev.me>, 
+ Hao Luo <haoluo@google.com>, 
+ Jiri Olsa <jolsa@kernel.org>, 
+ "David S . Miller" <davem@davemloft.net>, 
+ Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, 
+ Paolo Abeni <pabeni@redhat.com>, 
+ Simon Horman <horms@kernel.org>, 
+ Neal Cardwell <ncardwell@google.com>, 
+ Kuniyuki Iwashima <kuniyu@google.com>, 
+ David Ahern <dsahern@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ bpf@vger.kernel.org, 
+ netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ steffen.klassert@secunet.com
+Cc: wsd_upstream@mediatek.com, 
+ Jibin Zhang <jibin.zhang@mediatek.com>
+Message-ID: <willemdebruijn.kernel.11a4b80935127@gmail.com>
+In-Reply-To: <20260126152114.1211-1-jibin.zhang@mediatek.com>
+References: <20260126152114.1211-1-jibin.zhang@mediatek.com>
+Subject: Re: [PATCH v4] net: fix segmentation of forwarding fraglist GRO
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260126_074729_275981_1CDD9631 
-X-CRM114-Status: GOOD (  31.12  )
+X-CRM114-CacheID: sfid-20260126_084928_464326_3B669F1E 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,262 +127,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 12, 2026 at 11:07:55AM +0000, Tzung-Bi Shih wrote:
-> A potential circular locking dependency (ABBA deadlock) exists between
-> `ec_dev->lock` and the clock framework's `prepare_lock`.
-> 
-> The first order (A -> B) occurs when scp_ipi_send() is called while
-> `ec_dev->lock` is held (e.g., within cros_ec_cmd_xfer()):
-> 1. cros_ec_cmd_xfer() acquires `ec_dev->lock` and calls scp_ipi_send().
-> 2. scp_ipi_send() calls clk_prepare_enable(), which acquires
->    `prepare_lock`.
-> See #0 in the following example calling trace.
-> (Lock Order: `ec_dev->lock` -> `prepare_lock`)
-> 
-> The reverse order (B -> A) is more complex and has been observed
-> (learned) by lockdep.  It involves the clock prepare operation
-> triggering power domain changes, which then propagates through sysfs
-> and power supply uevents, eventually calling back into the ChromeOS EC
-> driver and attempting to acquire `ec_dev->lock`:
-> 1. Something calls clk_prepare(), which acquires `prepare_lock`.  It
->    then triggers genpd operations like genpd_runtime_resume(), which
->    takes `&genpd->mlock`.
-> 2. Power domain changes can trigger regulator changes; regulator
->    changes can then trigger device link changes; device link changes
->    can then trigger sysfs changes.  Eventually, power_supply_uevent()
->    is called.
-> 3. This leads to calls like cros_usbpd_charger_get_prop(), which calls
->    cros_ec_cmd_xfer_status(), which then attempts to acquire
->    `ec_dev->lock`.
-> See #1 ~ #6 in the following example calling trace.
-> (Lock Order: `prepare_lock` -> `&genpd->mlock` -> ... -> `&ec_dev->lock`)
-> 
-> Move the clk_prepare()/clk_unprepare() operations for `scp->clk` to the
-> remoteproc prepare()/unprepare() callbacks.  This ensures `prepare_lock`
-> is only acquired in prepare()/unprepare() callbacks.  Since
-> `ec_dev->lock` is not involved in the callbacks, the dependency loop is
-> broken.
-> 
-> This means the clock is always "prepared" when the SCP is running.  The
-> prolonged "prepared time" for the clock should be acceptable as SCP is
-> designed to be a very power efficient processor.  The power consumption
-> impact can be negligible.
-> 
-> A simplified calling trace reported by lockdep:
-> > -> #6 (&ec_dev->lock)
-> >        cros_ec_cmd_xfer
-> >        cros_ec_cmd_xfer_status
-> >        cros_usbpd_charger_get_port_status
-> >        cros_usbpd_charger_get_prop
-> >        power_supply_get_property
-> >        power_supply_show_property
-> >        power_supply_uevent
-> >        dev_uevent
-> >        uevent_show
-> >        dev_attr_show
-> >        sysfs_kf_seq_show
-> >        kernfs_seq_show
-> > -> #5 (kn->active#2)
-> >        kernfs_drain
-> >        __kernfs_remove
-> >        kernfs_remove_by_name_ns
-> >        sysfs_remove_file_ns
-> >        device_del
-> >        __device_link_del
-> >        device_links_driver_bound
-> > -> #4 (device_links_lock)
-> >        device_link_remove
-> >        _regulator_put
-> >        regulator_put
-> > -> #3 (regulator_list_mutex)
-> >        regulator_lock_dependent
-> >        regulator_disable
-> >        scpsys_power_off
-> >        _genpd_power_off
-> >        genpd_power_off
-> > -> #2 (&genpd->mlock/1)
-> >        genpd_add_subdomain
-> >        pm_genpd_add_subdomain
-> >        scpsys_add_subdomain
-> >        scpsys_probe
-> > -> #1 (&genpd->mlock)
-> >        genpd_runtime_resume
-> >        __rpm_callback
-> >        rpm_callback
-> >        rpm_resume
-> >        __pm_runtime_resume
-> >        clk_core_prepare
-> >        clk_prepare
-> > -> #0 (prepare_lock)
-> >        clk_prepare
-> >        scp_ipi_send
-> >        scp_send_ipi
-> >        mtk_rpmsg_send
-> >        rpmsg_send
-> >        cros_ec_pkt_xfer_rpmsg
-> 
-> Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
-> ---
-> v2:
-> - Re-organized commit message.
-> - Rebased to next-20260109.
-> 
-> v1: https://lore.kernel.org/r/20251229043146.4102967-1-tzungbi@kernel.org
-> 
->  drivers/remoteproc/mtk_scp.c     | 39 +++++++++++++++++++++++---------
->  drivers/remoteproc/mtk_scp_ipi.c |  4 ++--
->  2 files changed, 30 insertions(+), 13 deletions(-)
->
+[PATCH net v4]
 
-Applied.
- 
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index 328541e62158..4651311aeb07 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -283,7 +283,7 @@ static irqreturn_t scp_irq_handler(int irq, void *priv)
->  	struct mtk_scp *scp = priv;
->  	int ret;
->  
-> -	ret = clk_prepare_enable(scp->clk);
-> +	ret = clk_enable(scp->clk);
->  	if (ret) {
->  		dev_err(scp->dev, "failed to enable clocks\n");
->  		return IRQ_NONE;
-> @@ -291,7 +291,7 @@ static irqreturn_t scp_irq_handler(int irq, void *priv)
->  
->  	scp->data->scp_irq_handler(scp);
->  
-> -	clk_disable_unprepare(scp->clk);
-> +	clk_disable(scp->clk);
->  
->  	return IRQ_HANDLED;
->  }
-> @@ -665,7 +665,7 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
->  	struct device *dev = scp->dev;
->  	int ret;
->  
-> -	ret = clk_prepare_enable(scp->clk);
-> +	ret = clk_enable(scp->clk);
->  	if (ret) {
->  		dev_err(dev, "failed to enable clocks\n");
->  		return ret;
-> @@ -680,7 +680,7 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
->  
->  	ret = scp_elf_load_segments(rproc, fw);
->  leave:
-> -	clk_disable_unprepare(scp->clk);
-> +	clk_disable(scp->clk);
->  
->  	return ret;
->  }
-> @@ -691,14 +691,14 @@ static int scp_parse_fw(struct rproc *rproc, const struct firmware *fw)
->  	struct device *dev = scp->dev;
->  	int ret;
->  
-> -	ret = clk_prepare_enable(scp->clk);
-> +	ret = clk_enable(scp->clk);
->  	if (ret) {
->  		dev_err(dev, "failed to enable clocks\n");
->  		return ret;
->  	}
->  
->  	ret = scp_ipi_init(scp, fw);
-> -	clk_disable_unprepare(scp->clk);
-> +	clk_disable(scp->clk);
->  	return ret;
->  }
->  
-> @@ -709,7 +709,7 @@ static int scp_start(struct rproc *rproc)
->  	struct scp_run *run = &scp->run;
->  	int ret;
->  
-> -	ret = clk_prepare_enable(scp->clk);
-> +	ret = clk_enable(scp->clk);
->  	if (ret) {
->  		dev_err(dev, "failed to enable clocks\n");
->  		return ret;
-> @@ -734,14 +734,14 @@ static int scp_start(struct rproc *rproc)
->  		goto stop;
->  	}
->  
-> -	clk_disable_unprepare(scp->clk);
-> +	clk_disable(scp->clk);
->  	dev_info(dev, "SCP is ready. FW version %s\n", run->fw_ver);
->  
->  	return 0;
->  
->  stop:
->  	scp->data->scp_reset_assert(scp);
-> -	clk_disable_unprepare(scp->clk);
-> +	clk_disable(scp->clk);
->  	return ret;
->  }
->  
-> @@ -909,7 +909,7 @@ static int scp_stop(struct rproc *rproc)
->  	struct mtk_scp *scp = rproc->priv;
->  	int ret;
->  
-> -	ret = clk_prepare_enable(scp->clk);
-> +	ret = clk_enable(scp->clk);
->  	if (ret) {
->  		dev_err(scp->dev, "failed to enable clocks\n");
->  		return ret;
-> @@ -917,12 +917,29 @@ static int scp_stop(struct rproc *rproc)
->  
->  	scp->data->scp_reset_assert(scp);
->  	scp->data->scp_stop(scp);
-> -	clk_disable_unprepare(scp->clk);
-> +	clk_disable(scp->clk);
->  
->  	return 0;
->  }
->  
-> +static int scp_prepare(struct rproc *rproc)
-> +{
-> +	struct mtk_scp *scp = rproc->priv;
-> +
-> +	return clk_prepare(scp->clk);
-> +}
-> +
-> +static int scp_unprepare(struct rproc *rproc)
-> +{
-> +	struct mtk_scp *scp = rproc->priv;
-> +
-> +	clk_unprepare(scp->clk);
-> +	return 0;
-> +}
-> +
->  static const struct rproc_ops scp_ops = {
-> +	.prepare	= scp_prepare,
-> +	.unprepare	= scp_unprepare,
->  	.start		= scp_start,
->  	.stop		= scp_stop,
->  	.load		= scp_load,
-> diff --git a/drivers/remoteproc/mtk_scp_ipi.c b/drivers/remoteproc/mtk_scp_ipi.c
-> index c068227e251e..7a37e273b3af 100644
-> --- a/drivers/remoteproc/mtk_scp_ipi.c
-> +++ b/drivers/remoteproc/mtk_scp_ipi.c
-> @@ -171,7 +171,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
->  	    WARN_ON(len > scp_sizes->ipi_share_buffer_size) || WARN_ON(!buf))
->  		return -EINVAL;
->  
-> -	ret = clk_prepare_enable(scp->clk);
-> +	ret = clk_enable(scp->clk);
->  	if (ret) {
->  		dev_err(scp->dev, "failed to enable clock\n");
->  		return ret;
-> @@ -211,7 +211,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
->  
->  unlock_mutex:
->  	mutex_unlock(&scp->send_lock);
-> -	clk_disable_unprepare(scp->clk);
-> +	clk_disable(scp->clk);
->  
->  	return ret;
->  }
-> -- 
-> 2.52.0.457.g6b5491de43-goog
+Jibin Zhang wrote:
+> This patch enhances GSO segment handling by properly checking
+> the SKB_GSO_DODGY flag for frag_list GSO packets, addressing
+> low throughput issues observed when a station accesses IPv4
+> servers via hotspots with an IPv6-only upstream interface.
 > 
+> Specifically, it fixes a bug in GSO segmentation when forwarding
+> GRO packets containing a frag_list. The function skb_segment_list
+> cannot correctly process GRO skbs that have been converted by XLAT,
+> since XLAT only translates the header of the head skb. Consequently,
+> skbs in the frag_list may remain untranslated, resulting in protocol
+> inconsistencies and reduced throughput.
 > 
+> To address this, the patch explicitly sets the SKB_GSO_DODGY flag
+> for GSO packets in XLAT's IPv4/IPv6 protocol translation helpers
+> (bpf_skb_proto_4_to_6 and bpf_skb_proto_6_to_4). This marks GSO
+> packets as potentially modified after protocol translation. As a
+> result, GSO segmentation will avoid using skb_segment_list and
+> instead falls back to skb_segment for packets with the SKB_GSO_DODGY
+> flag. This ensures that only safe and fully translated frag_list
+> packets are processed by skb_segment_list, resolving protocol
+> inconsistencies and improving throughput when forwarding GRO packets
+> converted by XLAT.
+
+Fixes: 9fd1ff5d2ac7 ("udp: Support UDP fraglist GRO/GSO.")
+Cc: stable@vger.kernel.org
+
+
+
 
