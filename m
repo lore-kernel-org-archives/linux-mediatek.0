@@ -4,97 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1E87CF65DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jan 2026 11:03:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04818D13C2A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jan 2026 14:53:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aTH8w0h3kKICWLf+Wiu0sGV5MiSH0o7xe3QPb1+JG0w=; b=fQy5MeFgjawUkJKnbaxoTI3Vvz
-	yTQZwf2G7aeBtpEtIRTUXJxRSo8hrhSctZQ+0mAtFuO3VtcKUzNCRubP3M3Met/O5wMH7qwbMRtTK
-	LBgWdgH1JyGqKJZyl1SylkEsGq1wwacmFYnkxlM0VfS+iu4PPpVOEfz8ZpcFl5q4q9+uR4ikF78Qo
-	s1w0oZyXMmtBA/KVHoayoPpi4s5s47CAISI1Nq76/LFmItdDwTVGAcgt49FsJ3qyurYLelm7tCXS3
-	HHckMsdxRYAh/od9v3V8aWZwgOt6/25GUmsRemY8Ukt2rssWDKSts6T3ol/jTQcUzIcVr2QBIdlUj
-	86xnOnEQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tbr2gvvBmKr19PfRmNAsIexnBX5A6gjZiXTaUKZx1fk=; b=e7G/h+ckOyJDcUMJmqUz53O3Wj
+	SIWiedT8pkgrLNZawcGfnG5r+aQfKjdWC7qw1tMDV8tURODLgPZkEVeLE7JH/f5snDMVM9LP7r+8b
+	aESnkn4JCX8mz2FtZOiwVj/rdzliU198uM+fJObeaUDNhWIQ9U0tZbu6UCt+I+R5d44LyjlAQpwE5
+	g11Ge6EcAvLAM9h/WtvCiZEaEqjIexLPnrYDBzAoiFXqSERJ9oK8GtdeeHnNvur67f26ENTWCi6xG
+	m45ch4LPbpmkt3F9JU85QhQ643l5ux2XMKHyNDVfZM9+4ZJhlNypDSrGxjQS2MKxfBGVzPvLxLkzB
+	+Uh0Gb4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkKNd-0000000CNas-0WNz;
-	Mon, 26 Jan 2026 11:03:37 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1vkNxo-0000000Ciwr-1Xq4;
+	Mon, 26 Jan 2026 14:53:12 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkKNa-0000000CNZr-3Hrk
-	for linux-mediatek@lists.infradead.org;
-	Mon, 26 Jan 2026 11:03:35 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-47eddddcdcfso25009795e9.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Jan 2026 03:03:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1769425413; x=1770030213; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=aTH8w0h3kKICWLf+Wiu0sGV5MiSH0o7xe3QPb1+JG0w=;
-        b=nQErWVHweoDd6CkClnMk0hqbDXXjbZzvHX4PQo2fbdFaON9HUWcSLn22o0rUtd6JxH
-         QPN5k/Nlp0eqnthL0FkM4sIn7F4zYhJp2h2Z2pSKcL9j+IansJvPbtEySzGFkpR1BZfj
-         EuGWr+UPNrp/ZA9DdPZ35fTOXRPYbGuAaYRcpnjudsLmCyrzOOcCI9EHHAxsmGSk3rCc
-         c6fFYlfPponYAlBYJGfOf611rQSMGVCt4ImqmOAQmvMaPuu5rFLo2kcaWR+rYInzXCMQ
-         6x4fnTuVNaZ1fksfF0uPnbRtAjo12TxelvqGvahefwq1E/1kvLVgIqzMvbF0CKsL+ekH
-         5uFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1769425413; x=1770030213;
-        h=in-reply-to:content-disposition:mime-version:references:subject:cc
-         :to:from:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=aTH8w0h3kKICWLf+Wiu0sGV5MiSH0o7xe3QPb1+JG0w=;
-        b=h5El9Yi8jgSJSPV6OMLr/T6lDP95cxqMmRRP65/M74L0lziX4FrwgYJI2YPtOXp1d0
-         aK8da5XxnL1rlb/G+Ch8fc+4WXBIynwd766vQjyq5lvb8LUmpsToY4Hudf4uttQC7lRb
-         9hQRMC7jT0FzMbY3q4Ia2R202l8AmnpDgJNvzwP01vY0z8JDFT2/4GsjUJta3rNGz4BE
-         63XgtcTHng3KTiO560BqK283v1MTl/Bf0K7Wg5pUJZvW0FP17NM+OZT9i7D7p5SvFuk2
-         AGA8UlLLtQ5D6uOtm8U6K+fa+g9MWUVgSx+WLGmdlRqOpGZABJopwl8kyri14FNrWgD3
-         YL+A==
-X-Forwarded-Encrypted: i=1; AJvYcCWHls8slhxBip5uk6vV2JMjsRpdwzNi3j5g/83IfQnAaIOUKb98fqitc2TY7MBCPb68G3kb82qP6X2Svp6pvA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw6jx2GsfHcMoPz0uDe69Z8swySY0P+SOgwgL8D4K1or+X3NEOg
-	8VIYF465HyztOu+oCJBSncAkc+qywCa+Bh3Q8VZ4RrUJdMxQNYiRWynjiRk8WCFK
-X-Gm-Gg: AZuq6aKlhKObBqAfjVpQNwX/75csaJmQGazwrZfXVDaiuFTqy0w7EqPTtu38dJb1g3V
-	nZvgTIK4YKp1Ycs+IPbXJ3A7y8FZhSZbgQhyvj9kqKOUqoR1Zg7QW3VZ6WI4tb3QiXaherjmgcd
-	9lkGb7poqu46Y5fIWloLMfOJFWhjFPVy2XOdevbElNTPDpXODvB08PngY1wV18efvuz7/96QQ0j
-	5+bFCYdb8JVAq3xIPpH/K0OTiKYAsplLQIEQDpnMsLm2JMcWVlt3TBCiCmFYR26gFQdmSvyI2RJ
-	5Tsm+AJki9UJ0F0Jp4No8qnMzbCODH/J3ChR+46qs5v5M01QYVdTou/ZJqvP/diFZqiHaFUCMlv
-	U1A3+0tWLIJGqjyVMYiTWr/oJoQAeiJNiW1jBsGZr6u6FcEUGYQDqYVpbBmAtJfiEvGE9fUBuNZ
-	00UJpShA6FBrpTyCVlNDURsTk1lPXXaaHMw3xckW0=
-X-Received: by 2002:a05:600c:3113:b0:47d:403e:4eaf with SMTP id 5b1f17b1804b1-480650f2933mr10392565e9.10.1769425412353;
-        Mon, 26 Jan 2026 03:03:32 -0800 (PST)
-Received: from Ansuel-XPS. (93-34-88-81.ip49.fastwebnet.it. [93.34.88.81])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4804d85d146sm286254045e9.8.2026.01.26.03.03.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Jan 2026 03:03:31 -0800 (PST)
-Message-ID: <69774a03.050a0220.3a3ac6.305f@mx.google.com>
-X-Google-Original-Message-ID: <aXdKAHW0z2qC7s5e@Ansuel-XPS.>
-Date: Mon, 26 Jan 2026 12:03:28 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Johannes Berg <johannes@sipsolutions.net>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	MeiChia Chiu <MeiChia.Chiu@mediatek.com>
-Subject: Re: [PATCH wireless-next v2 2/2] wifi: mt76: mt7996: Add eMLSR
- support
-References: <20260125-mac80211-emlsr-v2-0-466329d61c88@kernel.org>
- <20260125-mac80211-emlsr-v2-2-466329d61c88@kernel.org>
+	id 1vkNxl-0000000Ciw4-2tfl;
+	Mon, 26 Jan 2026 14:53:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1769439184;
+	bh=GT4929KDy5PqpA3gBq0fVgekZu4eZCi/voc1Cx4I1as=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=evbz8UvyEOzZnE8SFDytJikkrW3Jv2+T+Upwsc0bmWbMVnRwWI/rL4PzxBGPqGN67
+	 TqgPDewslKzVt5kjkQMlif7DE78SRyG4ieTFEjvsnvrD2P3gO7TNZ2EqRZOGpN/lKT
+	 a04mgYXnvWsY1w7Yp9R+ApIwHVODnC7irlYBch/EJPGoF+lyGCQl08VOvfcVdLgCcT
+	 8cBFewH2kEjmq9STmuVf5zY0VkGEG428LwE0vwd2NQLuMAthnSK2UhzH8uTqiE7OZt
+	 EC23/BpmiXZKrYi22uo8waLPT5IP1IZTOG8eeJ0Q03es8v55ZOlgevD+NhrWjwvZBW
+	 Lk+a0XH20hbbQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 50B0117E0E6C;
+	Mon, 26 Jan 2026 15:53:03 +0100 (CET)
+Message-ID: <0fe71377-df0a-4e8e-a787-73455eddc133@collabora.com>
+Date: Mon, 26 Jan 2026 15:53:02 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260125-mac80211-emlsr-v2-2-466329d61c88@kernel.org>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 23/24] scsi: ufs: mediatek: Remove undocumented
+ "clk-scale-up-vcore-min"
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Chaotian Jing <Chaotian.Jing@mediatek.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>
+Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ kernel@collabora.com, linux-scsi@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org
+References: <20260124-mt8196-ufs-v6-0-e7c005b60028@collabora.com>
+ <20260124-mt8196-ufs-v6-23-e7c005b60028@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260124-mt8196-ufs-v6-23-e7c005b60028@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260126_030334_819000_90D11F64 
-X-CRM114-Status: UNSURE (   7.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260126_065309_895503_D11C2AC8 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,19 +91,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jan 25, 2026 at 11:51:31AM +0100, Lorenzo Bianconi wrote:
-> From: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+Il 24/01/26 13:01, Nicolas Frattaroli ha scritto:
+> The MediaTek UFS driver contains support for an undocumented,
+> non-vendor-prefixed u32 property named "clk-scale-up-vcore-min".
 > 
-> Implement set_eml_op_mode mac80211 callback in order to introduce eMLSR
-> support.
+> Since it is not part of any binding, and would not pass a bindings
+> review in its current form, remove it.
 > 
-> Signed-off-by: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
-> Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> To return this functionality, it needs to be resubmitted in a series
+> that also introduces it to the binding, and justifies what it is used
+> for. Compatibility with downstream device trees is not a valid
+> justification for its existence.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Tested-by: Christian Marangi <ansuelsmth@gmail.com>
+Not sure what this is used for, because then UFS DVFS for gears should be managed
+with OPPs (either dynamic or static) anyway, so the vcore (I guess this is the scp
+vcore in dvfsrc regulators) should be scaled like so, without ugly init hacks like
+the one that you just removed.
 
---
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-	Ansuel
+
 
