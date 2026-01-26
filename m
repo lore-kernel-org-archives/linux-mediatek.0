@@ -4,94 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BC47D19502
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jan 2026 17:45:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E2D8D19502
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jan 2026 18:00:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
-	Content-Transfer-Encoding:In-Reply-To:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ViZnPApGmUm2J4gBM2q37ZW/xc0HmDYJ2pAdJ6BXznM=; b=x5Nnb8OGcmn+Q87DyE2oVugodW
-	5q7RmSRjTTOtBeX9xsQVKHP/8gxIs1YgR+pVXL5FQcpcYIytYeOwnXVog+FdCnLeuGhx4Hsa2excI
-	wheX4BMchFoDdG3CWPtKplvePxRHZh1zUBdFdvpi15f+fQedqRBPx6s4LOuZoy99TrutbUQTRvIG4
-	Lbn2DVzxneTMdT8RIzYgoe1q2UvvEms8I1IAczLl+O1PDHHJ4t4+YmqNvm5fNbuUPbChuxTr5R1OY
-	KqDXdPCboNqL70eXyqePJG1M8cx0QWjeDkv6rGAeHR1ac5k987JH7EMEOLEoJEmMahlvBBaf5rEE8
-	D2A9NEiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MtP8Go2M3C9++DiSDULRDE+5Pn2l5CFyfesMiTCa6/g=; b=lOiJWKY1hupB0+1dzfsItlVHla
+	qXk+kEaTg5TJ7bWVHpwFQ8mQ/StsK2iDbvVik7sjK52PS9MTMwpNhOV/+zO3tGllb42AONI+xhdyR
+	ksDJ7Xixwj0gUgLGweRpuioEeuqY3xeo8XRljmUwYHn/GriRLbktL+2mcrKoluEqDBU7tS6ZjpKqn
+	RN/j5D0qAG91DdreJInHR9I+i8wPdaLkFtoclkOKfvleG2FfQ+edi4D5oOPgNBJAnmooSeYe/OoeZ
+	OKTvoTVwLTu6g4wSA1g5s4QG/LLET7Sg+BKR3iLwdm9CvpecVbUkMlLEnkg0dSEhBRurOqFf2qDle
+	Rt/hlyLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkQe6-0000000D0LK-2mKd;
-	Mon, 26 Jan 2026 17:45:02 +0000
-Received: from mailout2.w1.samsung.com ([210.118.77.12])
+	id 1vkQsw-0000000D1hF-3dce;
+	Mon, 26 Jan 2026 18:00:22 +0000
+Received: from mail-ot1-f48.google.com ([209.85.210.48])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkQe3-0000000D0Jj-35aW;
-	Mon, 26 Jan 2026 17:45:01 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id 20260126174455euoutp02672a86f4aa950dcb6186a3c4ea3e9c49~OWPEJIrBp1456614566euoutp023;
-	Mon, 26 Jan 2026 17:44:55 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com 20260126174455euoutp02672a86f4aa950dcb6186a3c4ea3e9c49~OWPEJIrBp1456614566euoutp023
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1769449495;
-	bh=ViZnPApGmUm2J4gBM2q37ZW/xc0HmDYJ2pAdJ6BXznM=;
-	h=Date:Subject:From:To:Cc:In-Reply-To:References:From;
-	b=EcUJtwIvikdAG2aaXvnIrEnVxjxp6sqj+eN+ReWnmhAZcoZTykDAYnBGn45TjgV9j
-	 6IydmTmfZcw7aIGKkxgoTwMd/FiRl51Qw8mUSbmfRj6dgT0++ll3wq8V+YBs81C+BN
-	 XVtyFbTgY9a2qQn8fxHgi1EnWme/xadUYtn7+BUU=
-Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20260126174455eucas1p1f219202580a1033d3e881adc4f37f206~OWPDiMXHA2201722017eucas1p1L;
-	Mon, 26 Jan 2026 17:44:55 +0000 (GMT)
-Received: from [106.210.134.192] (unknown [106.210.134.192]) by
-	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20260126174453eusmtip1343282648a6e7de9c928b52e4daf95d0~OWPBrT1zi0390203902eusmtip1Q;
-	Mon, 26 Jan 2026 17:44:53 +0000 (GMT)
-Message-ID: <36278555-a01e-4c96-bb26-e170016e5f8c@samsung.com>
-Date: Mon, 26 Jan 2026 18:44:52 +0100
+	id 1vkQsv-0000000D1gc-0M5N
+	for linux-mediatek@lists.infradead.org;
+	Mon, 26 Jan 2026 18:00:22 +0000
+Received: by mail-ot1-f48.google.com with SMTP id 46e09a7af769-7cfd2423793so1739262a34.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Jan 2026 10:00:20 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1769450419; x=1770055219;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=MtP8Go2M3C9++DiSDULRDE+5Pn2l5CFyfesMiTCa6/g=;
+        b=rih8VdOZ4sESbZQHE6IlcM4jI8UU5vDPSKtpaQz6AxLsIJN0SHtJcsGiYyhXp4BYOM
+         OUdJYsSeLjEx9VaNmmK43EvcYHZHiSszoXSqqu1yBM/qqXLKkF6l/DnTmp+SV3r+ni1S
+         Wu0/v0NJvWpUK3Zp2tzojwYBLUwSrmg4DvXUGILw92UYnEJxmOc6bS4fLfHciCemtORR
+         sTfrDxUyiz9AQ8zi/S8sw3/81NKnbilJs/AodYDy0J84Jy49L69IA4CbmvaoNoHkfkA+
+         N18EazbaSdV97kOWkLtNVQj90qp0lODZwLDSJcBpF39oJDQSp3UvspaJV0YVFiUNkw2P
+         E3Fg==
+X-Forwarded-Encrypted: i=1; AJvYcCXMIMW6/rmIyPMeD5Z7z+08zeRlk+Wc2hcxdV5/nBPq4PeNzT+onogHKlSHFxGvX/mPpe1XVe3VCxHollO5Iw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwvhKvelMNtqzQZbVu+oNScx72V2vziiVlFn4rPrQLIBNbdlbgE
+	n34cRP5FZvoaIGtNgLmNVDmdCBdzTM5ZH3hxFmhH/ZppgR+E3a9lbkTD
+X-Gm-Gg: AZuq6aKRrL+ZyDC8bWEfgwyH1JLypvdM3f3E/E6bVaN1XofEbU4cv9izM1NKxc2Kti9
+	SZpRhicWvNvclM0DpxhCLXjfapYi7In3EUKpBgyfnJNcj94Cscdnj04g2lpNPDLHPslz8GfTGj0
+	yia7FcvSo60aUgTorvxpx9nUyEbom5YNlIOhgk4/ZQAIdsJNv+VEZtNr30Cjx9jrUPHBq1C/0nE
+	nmwKSg5hyHVFSQxlw21IaCV0SAr6c5HiGVxcsxjQi62LU9ao4m3eCz953TjZGPUrcXUKM4qmQDs
+	QBbKK1h38/7ocvUMnKyZ5cI07TncY9VTqMONX5xi3hVGI9uyxgUbVamyRYMGbPS10c7bLT7iq4x
+	YdUtZkvsNlqxRxQBwqCK8D9zScqZipapt6LOoSlXzx/QOnN3bbDQ1Co459W2+J7h2+bGJdEtCfi
+	Hw9JS/rdswLNvxy2kLPKN1hvpOj2r1qfWgXbUwJD4bSZEx7MaRtDm9txaAo01rkyejDBifW+wZ7
+	Y9EQO6k2Q==
+X-Received: by 2002:a05:6830:3143:b0:7c6:d0b2:8eb6 with SMTP id 46e09a7af769-7d1701d7c73mr2647850a34.15.1769450419085;
+        Mon, 26 Jan 2026 10:00:19 -0800 (PST)
+Received: from sean-HP-EliteBook-830-G6.. (65-36-108-159.dyn.grandenetworks.net. [65.36.108.159])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7d15b3d31d4sm8173838a34.21.2026.01.26.10.00.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Jan 2026 10:00:18 -0800 (PST)
+From: Sean Wang <sean.wang@kernel.org>
+To: nbd@nbd.name,
+	lorenzo@kernel.org
+Cc: allan.wang@mediatek.com,
+	quan.zhou@mediatek.com,
+	leon.yen@mediatek.com,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Sean Wang <sean.wang@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7921: fix potential deadlock in mt7921_roc_abort_sync
+Date: Mon, 26 Jan 2026 12:00:13 -0600
+Message-ID: <20260126180013.8167-1-sean.wang@kernel.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Betterbird (Windows)
-Subject: Re: [PATCH v4 02/10] drm/vc4: hdmi: implement clear_infoframe
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>, Dave Stevenson
-	<dave.stevenson@raspberrypi.com>, =?UTF-8?Q?Ma=C3=ADra_Canal?=
-	<mcanal@igalia.com>, Raspberry Pi Kernel Maintenance
-	<kernel-list@raspberrypi.com>, Chen-Yu Tsai <wens@kernel.org>, Jernej
-	Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>,
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong
-	<neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent
-	Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
-	<jonas@kwiboo.se>, Liu Ying <victor.liu@nxp.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias
-	Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Rob Clark
-	<robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>, Abhinav
-	Kumar <abhinav.kumar@linux.dev>, Jessica Zhang <jesszhan0024@gmail.com>,
-	Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>,
-	Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
-	<heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Content-Language: en-US
-In-Reply-To: <5c247393-b096-43ea-9ff4-9dd5fcdeec73@samsung.com>
-Content-Transfer-Encoding: 7bit
-X-CMS-MailID: 20260126174455eucas1p1f219202580a1033d3e881adc4f37f206
-X-Msg-Generator: CA
-Content-Type: text/plain; charset="utf-8"
-X-RootMTR: 20260126174455eucas1p1f219202580a1033d3e881adc4f37f206
-X-EPHeader: CA
-X-CMS-RootMailID: 20260126174455eucas1p1f219202580a1033d3e881adc4f37f206
-References: <20260107-limit-infoframes-2-v4-0-213d0d3bd490@oss.qualcomm.com>
-	<20260107-limit-infoframes-2-v4-2-213d0d3bd490@oss.qualcomm.com>
-	<5c247393-b096-43ea-9ff4-9dd5fcdeec73@samsung.com>
-	<CGME20260126174455eucas1p1f219202580a1033d3e881adc4f37f206@eucas1p1.samsung.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260126_094500_046135_B24403BC 
-X-CRM114-Status: UNSURE (   9.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260126_100021_123980_4CC05DCD 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,24 +90,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26.01.2026 18:42, Marek Szyprowski wrote:
-> On 07.01.2026 19:14, Dmitry Baryshkov wrote:
->> Implement the clear_infoframe callback, disabling corresponding
->> InfoFrame type.
->>
->> Acked-by: Maxime Ripard <mripard@kernel.org>
->> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
->
-> This patch landed recently in linux-next as commit 3a4ceb89a972 
-> ("drm/vc4: hdmi: implement clear_infoframe"). In my tests I found that 
-> it causes the following regression on Qualcomm RB5 board:
->
-Please ignore my report, it looks that automated bisecting got a bit 
-confused.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Best regards
+roc_abort_sync() can deadlock with roc_work(). roc_work() holds
+dev->mt76.mutex, while cancel_work_sync() waits for roc_work()
+to finish. If the caller already owns the same mutex, both
+sides block and no progress is possible.
+
+This deadlock can occur during station removal when
+mt76_sta_state() -> mt76_sta_remove() -> mt7921_mac_sta_remove() ->
+mt7921_roc_abort_sync() invokes cancel_work_sync() while
+roc_work() is still running and holding dev->mt76.mutex.
+
+This avoids the mutex deadlock and preserves exactly-once
+work ownership.
+
+Fixes: 352d966126e6 ("wifi: mt76: mt7921: fix a potential association failure upon resuming")
+Co-developed-by: Quan Zhou <quan.zhou@mediatek.com>
+Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 05793a786644..ddb81ca6bda0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -371,12 +371,15 @@ void mt7921_roc_abort_sync(struct mt792x_dev *dev)
+ {
+ 	struct mt792x_phy *phy = &dev->phy;
+ 
++	if (!test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
++		return;
++
+ 	timer_delete_sync(&phy->roc_timer);
+-	cancel_work_sync(&phy->roc_work);
+-	if (test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
+-		ieee80211_iterate_interfaces(mt76_hw(dev),
+-					     IEEE80211_IFACE_ITER_RESUME_ALL,
+-					     mt7921_roc_iter, (void *)phy);
++	cancel_work(&phy->roc_work);
++
++	ieee80211_iterate_interfaces(mt76_hw(dev),
++				     IEEE80211_IFACE_ITER_RESUME_ALL,
++				     mt7921_roc_iter, (void *)phy);
+ }
+ EXPORT_SYMBOL_GPL(mt7921_roc_abort_sync);
+ 
 -- 
-Marek Szyprowski, PhD
-Samsung R&D Institute Poland
+2.43.0
 
 
