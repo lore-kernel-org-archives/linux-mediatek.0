@@ -4,55 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F6CECF65CB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jan 2026 09:55:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41C7ECF65DD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jan 2026 11:01:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c6SLZHWmi3bG47uXLjitlBWU8dCnV9F9bNYLjpvzGDo=; b=iLvI/3d8CYENBTy3lBbZKyTyv2
-	h4L6HApJNvFBTFLkGSVKfmDLJgfIiBVfS2fHMN2/0NYNI4+6x+RBNdi/iUHZpDUxFSGkHr2OtXfss
-	kvU2G+ubChinqB6iQsCFfSjRPKjZanU13sqwvw//6EgEjXBcyJ2k5wR/kuEk/y5I1rPNiT2s2JNGi
-	5zmg8aGg5pMocPeQN8MehA4wyBP87fBwtMunFu4y5jnTQazuEXEouTIPFdRHK58G5gfPAyOl3tHrt
-	FGfyvDgHgITluEJu3YHYRxh/ynJ4pIoiktUGuznQ4WR7JQbJMxEVSNqwBHWd6uHJFqaHj86weB4QR
-	2PXU5HcQ==;
+	bh=XvJrcXtn8iRvKT6VDEN9miPmbI0CvZ2DRzSRmtrceIs=; b=padhjI7bTQZ53YjIvzqDaY5w3M
+	O8qbzhOQcqe3Qnm2AqUGyN5GE3v3m7BgXMheTtZsmxxzIZyXKiHBfhG/vGpwqBLmq3DMFXbp4DDEt
+	kFjTWM0dtkNCCWl4npyYv+OcRU0cwE2JVASBOQwY5bw2RCq/OrFkVCzE6G4Q4Jvtt5LyWqfMAN9pS
+	1zTdHZaw9eJrffYXhofFkjPWkNOi6SImh7hJ8lElGLwdp5bLfc8xjdx1/uqXF9OWgy7bD8kXTkd9/
+	ejQoZu6B4cZg5ABOR9AeKNi/i5shEuBG2r9P3V/nH3006lEEoH52H1LkQPNxJvLZEK82p6AIZTTMP
+	ZHHN/uDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkJJK-0000000CF1u-07Cn;
-	Mon, 26 Jan 2026 09:55:06 +0000
-Received: from dvalin.narfation.org ([2a00:17d8:100::8b1])
+	id 1vkKLI-0000000CNHL-2khp;
+	Mon, 26 Jan 2026 11:01:12 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkJJH-0000000CF0e-1kOL
-	for linux-mediatek@lists.infradead.org;
-	Mon, 26 Jan 2026 09:55:05 +0000
-Received: by dvalin.narfation.org (Postfix) id EBE1E2100A;
-	Mon, 26 Jan 2026 09:54:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=narfation.org;
-	s=20121; t=1769421297;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=c6SLZHWmi3bG47uXLjitlBWU8dCnV9F9bNYLjpvzGDo=;
-	b=JXWlXr+z/H6t0c/RyhH2cc37C/M3U7DRo0wts1vHN3vsYQJbz+1UwM5rKwJ+80VHfmP/Sv
-	JoS0nfdtypBj268eI6iLcbx/X3rhqxbvnj59ef4dq9AYIEp0XVB5Of1TMrXoAkIvOJIbqn
-	aBstN6HxnSc/cVIgpHviP6cF379rcq0=
-From: Sven Eckelmann <sven@narfation.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Allen Ye <allen.ye@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: Re: [PATCH v1] wifi: mt76: fix backoff fields and max_power calculation
-Date: Mon, 26 Jan 2026 10:54:51 +0100
-Message-ID: <3594635.QJadu78ljV@ripper>
-In-Reply-To: <e92213f793f9cb9f509c26205e7ecb2be6ce77aa.1769156922.git.ryder.lee@mediatek.com>
-References: <e92213f793f9cb9f509c26205e7ecb2be6ce77aa.1769156922.git.ryder.lee@mediatek.com>
+	id 1vkKLF-0000000CNGo-3azJ;
+	Mon, 26 Jan 2026 11:01:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=XvJrcXtn8iRvKT6VDEN9miPmbI0CvZ2DRzSRmtrceIs=;
+	t=1769425269; x=1770634869; b=TRaWAPWy2FPQ7HdSTJvcfY1YMgSZKw98zExJow1ZNu+PTeK
+	onDgqkITqRrMyjw9Lx+HhKRgsjAqLRKBFjlJWZfF8ePLAlvEdDTOvQoMC+xt2N5v+8iv30W7ngmD6
+	V7/LKeE4JylNgHPS0qzjH2RtRrI9zhEndizHrxnicrdaV/9FhZu1a21SXfNPTHrpuS1wQYjUaDobm
+	7bbDTKWwYcVBRnb7MuVk93Hs9axTUpctH/RpeCqexVI0/8/AI7R27COmEyP8HslLqEhxz0lgoBRD1
+	DtiXpsVXLImVS7VVkYtYqpmImBx2m4zw49AbslguViy2GSzCDfX86Sd/6cTwyn1w==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.98.2)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1vkKL7-000000047Xj-15mx;
+	Mon, 26 Jan 2026 12:01:01 +0100
+Message-ID: <01e62344994a34daae0666b3873aa98e72fb5850.camel@sipsolutions.net>
+Subject: Re: [PATCH wireless-next v2 1/2] wifi: mac80211: Add eMLSR/eMLMR
+ action frame parsing support
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
+ <ryder.lee@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, Shayne
+ Chen	 <shayne.chen@mediatek.com>, Christian Marangi <ansuelsmth@gmail.com>,
+ 	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Date: Mon, 26 Jan 2026 11:59:45 +0100
+In-Reply-To: <20260125-mac80211-emlsr-v2-1-466329d61c88@kernel.org> (sfid-20260125_115209_143463_EFDC87D8)
+References: <20260125-mac80211-emlsr-v2-0-466329d61c88@kernel.org>
+	 <20260125-mac80211-emlsr-v2-1-466329d61c88@kernel.org>
+	 (sfid-20260125_115209_143463_EFDC87D8)
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="nextPart1952104.CQOukoFCf9";
- micalg="pgp-sha512"; protocol="application/pgp-signature"
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260126_015504_115850_CD64A44C 
-X-CRM114-Status: GOOD (  24.45  )
+X-CRM114-CacheID: sfid-20260126_030110_148837_139BAAD3 
+X-CRM114-Status: GOOD (  26.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,411 +79,194 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---nextPart1952104.CQOukoFCf9
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"; protected-headers="v1"
-From: Sven Eckelmann <sven@narfation.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>
-Date: Mon, 26 Jan 2026 10:54:51 +0100
-Message-ID: <3594635.QJadu78ljV@ripper>
-MIME-Version: 1.0
+On Sun, 2026-01-25 at 11:51 +0100, Lorenzo Bianconi wrote:
+>=20
+> +static inline u8 ieee80211_get_emlsr_pad_delay_update(u8 param)
+> +{
+> +	u8 pad_delay =3D FIELD_GET(IEEE80211_EML_EMLSR_PAD_DELAY, param);
 
-Please change your prefix from [PATCH v1] to [PATCH mt76 v1].
+I generally prefer the typed versions and mac80211 (mostly?) uses those,
+i.e. u8_get_bits() and friends, since they also cover endian conversions
+where needed. Is there any reason you use FIELD_* versions here?
 
-On Friday, 23 January 2026 10:32:34 CET Ryder Lee wrote:
-> From: Allen Ye <allen.ye@mediatek.com>
-> 
-> The maximum power value may exist in data or backoff field.
-> To reponse the correct value of txpower, mt76 should also consider
-> these values in sku table.
-> 
-> Fixes: b05ab4be9fd7 (wifi: mt76: mt7915: add bf backoff limit table support)
-> Signed-off-by: Allen Ye <allen.ye@mediatek.com>
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> ---
-> v1 - add "wifi:" prefix into subject
+> +	if (pad_delay > IEEE80211_EML_CAP_EMLSR_PADDING_DELAY_256US)
+> +		pad_delay =3D 0;
 
+Seems that should use a constant, rather than =3D0?
 
-Please send your patches before submission through checkpatch. Tools like 
-b4 [1] can help you to have a good workflow by reminding your about this
-(and provide good templates for many other things)
+Also, is that really the right thing to do (also below) to just silently
+cap it? Maybe that should be up to the caller? In some(/most/all)? cases
+we should probably even just _reject_ frames that carry an invalid
+value, which you can't do with this helper?
 
-
-WARNING: 'reponse' may be misspelled - perhaps 'response'?
-#126: 
-To reponse the correct value of txpower, mt76 should also consider
-   ^^^^^^^
-
-WARNING: Please use correct Fixes: style 'Fixes: <12+ chars of sha1> ("<title line>")' - ie: 'Fixes: b05ab4be9fd7 ("wifi: mt76: mt7915: add bf backoff limit table support")'
-#129: 
-Fixes: b05ab4be9fd7 (wifi: mt76: mt7915: add bf backoff limit table support)
-
-ERROR: that open brace { should be on the previous line
-#173: FILE: drivers/net/wireless/mediatek/mt76/eeprom.c:319:
-+       static const u8 connac3_table[] =
-+               {1, 2, 3, 4, 5, 2, 3, 4, 5, 3, 4, 5, 4, 5, 5};
-
-ERROR: that open brace { should be on the previous line
-#175: FILE: drivers/net/wireless/mediatek/mt76/eeprom.c:321:
-+       static const u8 connac2_table[] =
-+               {1, 2, 3, 4, 2, 3, 4, 3, 4, 4, 0, 0, 0, 0, 0};
-
-CHECK: Macro argument reuse 'arr' - possible side-effects?
-#288: FILE: drivers/net/wireless/mediatek/mt76/eeprom.c:462:
-+#define __apply_array_limit(arr, type)                                         \
-+       mt76_apply_array_limit(dev, (arr), ARRAY_SIZE(arr), val, target_power,  \
-+                              txs_delta, &max_power, n_chains, type)
-
-CHECK: Macro argument reuse 'arr' - possible side-effects?
-#292: FILE: drivers/net/wireless/mediatek/mt76/eeprom.c:466:
-+#define __apply_multi_array_limit(arr, type)                                   \
-+       mt76_apply_multi_array_limit(dev, (arr)[0], ARRAY_SIZE((arr)[0]),       \
-+                                    ARRAY_SIZE(arr), val, len, target_power,   \
-+                                    txs_delta, &max_power, n_chains, type)
-
-total: 2 errors, 2 warnings, 2 checks, 233 lines checked
-
-NOTE: For some of the reported defects, checkpatch may be able to
-      mechanically convert to the typical style using --fix or --fix-inplace.
-
-
->  static void
-> -mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const s8 *data,
-> -		       s8 target_power, s8 nss_delta, s8 *max_power)
-> +mt76_apply_array_limit(struct mt76_dev *dev, s8 *pwr, size_t pwr_len,
-> +		       const s8 *data, s8 target_power, s8 nss_delta,
-> +		       s8 *max_power, int n_chains, enum mt76_sku_type type)
->  {
->  	int i;
->  
-> @@ -316,18 +337,50 @@ mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const s8 *data,
->  		return;
->  
->  	for (i = 0; i < pwr_len; i++) {
-> -		pwr[i] = min_t(s8, target_power, data[i] + nss_delta);
-> +		s8 backoff_delta, delta = mt76_tx_power_path_delta(n_chains);
-
-Please avoid multiple function declarations per line. "To this end, use just 
-one data declaration per line (no commas for multiple data declarations)"
-
-This also looks on the first glance like destructuring (which doesn't exist 
-in C).
-
-> +		int backoff_n_chains = 0;
+> +static inline u32 ieee80211_get_emlsr_trans_delay_update(u8 param)
+> +{
+> +	u16 trans_delay =3D FIELD_GET(IEEE80211_EML_EMLSR_TRANS_DELAY, param);
 > +
-> +		switch (type) {
-> +		case MT76_SKU_RATE:
-> +			pwr[i] = min_t(s8, target_power, data[i] + nss_delta);
-> +			break;
-> +		case MT76_SKU_BACKOFF:
-> +			backoff_n_chains = mt76_backoff_n_chains(dev, i);
-> +			backoff_delta = mt76_tx_power_path_delta(backoff_n_chains);
-> +			pwr[i] = min_t(s8, target_power + delta - backoff_delta,
-> +				       data[i] + nss_delta);
-> +			break;
-> +		case MT76_SKU_BACKOFF_BF_OFFSET:
-> +			backoff_n_chains = mt76_backoff_n_chains(dev, i + 1);
-> +			backoff_delta = mt76_tx_power_path_delta(backoff_n_chains);
-> +			pwr[i] = min_t(s8, target_power + delta - backoff_delta,
-> +				       data[i] + nss_delta);
-> +			break;
-> +		default:
+> +	if (trans_delay > IEEE80211_EML_CAP_EMLSR_TRANSITION_DELAY_256US)
+> +		trans_delay =3D 0;
+> +
+> +	return trans_delay;
+
+why does that use _three_ different types? Wouldn't u8 be sufficient?
+
+> --- a/include/net/mac80211.h
+> +++ b/include/net/mac80211.h
+> @@ -1902,6 +1902,21 @@ enum ieee80211_offload_flags {
+>  	IEEE80211_OFFLOAD_DECAP_ENABLED		=3D BIT(2),
+>  };
+> =20
+> +struct ieee80211_eml_params {
+> +	u8 control;
+> +	u16 link_bitmap;
+> +	union {
+> +		struct {
+> +			u16 emlsr_pad_delay;
+> +			u16 emlsr_trans_delay;
+> +		};
+> +		struct {
+> +			u8 mcs_map_count;
+> +			u8 mcs_map_bw[9];
+> +		};
+> +	};
+> +};
+
+Maybe add kernel-doc? Also not sure the union really is worth it? It's a
+tiny thing. Especially since you don't even label it - maybe if the
+parts were labled emlsr and emlmr, and then you had emlsr.pad_delay?
+
+(I'd label them anyway, of course, even if not a union.)
+
+Also now the emlsr pad/trans delay are duplicated in the station info,
+is that worth doing? You have to and do track them there too, anyway, as
+we discussed on IRC, could just have the driver use them from there?
+
+Per spec I'm also not sure what the MCS map should be when it's not
+included in the frame?
+
+> + * @set_eml_op_mode: Configure eMLSR/eMLMR operation mode in the underla=
+y
+> + *	driver according to the parameter received in the EML Operating mode
+> + *	notification frame.
+
+Maybe describe the link_id here, or move it to the params and describe
+it in kernel-doc there?
+
+> +static inline int drv_set_eml_op_mode(struct ieee80211_sub_if_data *sdat=
+a,
+> +				      struct ieee80211_sta *sta,
+> +				      unsigned int link_id,
+> +				      struct ieee80211_eml_params *eml_params)
+> +{
+> +	struct ieee80211_local *local =3D sdata->local;
+> +	int ret =3D 0;
+
+Shouldn't that be -EOPNOTSUPP?
+
+> +static void
+> +ieee80211_send_eml_op_mode_notif(struct ieee80211_sub_if_data *sdata,
+> +				 struct ieee80211_mgmt *req, u8 act_len)
+> +{
+> +	int hdr_len =3D offsetof(struct ieee80211_mgmt, u.action.u.eml_omn);
+> +	struct ieee80211_local *local =3D sdata->local;
+> +	struct ieee80211_mgmt *mgmt;
+> +	struct sk_buff *skb;
+> +
+> +	skb =3D dev_alloc_skb(local->tx_headroom + hdr_len + act_len);
+> +	if (!skb)
+> +		return;
+> +
+> +	skb_reserve(skb, local->tx_headroom);
+> +	mgmt =3D skb_put_zero(skb, hdr_len);
+> +	mgmt->frame_control =3D cpu_to_le16(IEEE80211_FTYPE_MGMT |
+> +					  IEEE80211_STYPE_ACTION);
+> +	memcpy(mgmt->da, req->sa, ETH_ALEN);
+> +	memcpy(mgmt->sa, sdata->vif.addr, ETH_ALEN);
+> +	memcpy(mgmt->bssid, sdata->vif.addr, ETH_ALEN);
+> +
+> +	mgmt->u.action.category =3D WLAN_CATEGORY_PROTECTED_EHT;
+> +	memcpy(&mgmt->u.action.u.eml_omn, &req->u.action.u.eml_omn, act_len);
+> +	mgmt->u.action.u.eml_omn.control &=3D
+> +		~(IEEE80211_EML_CTRL_EMLSR_PARAM_UPDATE |
+> +		  IEEE80211_EML_CTRL_INDEV_COEX_ACT);
+> +	ieee80211_tx_skb(sdata, skb);
+
+It seems to me that it'd be better to not copy the request, but rather
+build the response. It's not _that_ much data, and from the spec it
+seems to me that e.g. the MCS map should be included in the response,
+but you do that now, I think?
+
+> +void ieee80211_rx_eml_op_mode_notif(struct ieee80211_sub_if_data *sdata,
+> +				    struct sk_buff *skb)
+> +{
+> +	int hdr_len =3D offsetof(struct ieee80211_mgmt, u.action.u.eml_omn);
+> +	enum nl80211_iftype type =3D ieee80211_vif_type_p2p(&sdata->vif);
+> +	struct ieee80211_rx_status *status =3D IEEE80211_SKB_RXCB(skb);
+> +	const struct wiphy_iftype_ext_capab *ift_ext_capa;
+> +	struct ieee80211_mgmt *mgmt =3D (void *)skb->data;
+> +	struct ieee80211_local *local =3D sdata->local;
+> +	u8 control =3D mgmt->u.action.u.eml_omn.control;
+> +	u8 *ptr =3D mgmt->u.action.u.eml_omn.variable;
+> +	struct ieee80211_eml_params eml_params =3D {};
+> +	struct sta_info *sta;
+> +	u8 act_len =3D 3; /* action_code + dialog_token + control */
+> +
+> +	if (!ieee80211_vif_is_mld(&sdata->vif))
+> +		return;
+> +
+> +	/* eMLSR and eMLMR can't be enabled at the same time */
+> +	if ((control & IEEE80211_EML_CTRL_EMLSR_MODE) &&
+> +	    (control & IEEE80211_EML_CTRL_EMLMR_MODE))
+> +		return;
+> +
+> +	if ((control & IEEE80211_EML_CTRL_EMLMR_MODE) &&
+> +	    (control & IEEE80211_EML_CTRL_EMLSR_PARAM_UPDATE))
+> +		return;
+> +
+> +	ift_ext_capa =3D cfg80211_get_iftype_ext_capa(local->hw.wiphy, type);
+> +	if (!ift_ext_capa)
+> +		return;
+> +
+> +	if (!status->link_valid)
+> +		return;
+> +
+> +	sta =3D sta_info_get_bss(sdata, mgmt->sa);
+> +	if (!sta)
+> +		return;
+> +
+> +	if (control & IEEE80211_EML_CTRL_EMLSR_MODE) {
+> +		if (!(ift_ext_capa->eml_capabilities &
+> +		      IEEE80211_EML_CAP_EMLSR_SUPP))
 > +			return;
-> +		}
-
-Instead of calculating something different in every case, couldn't this be harmonized as
-
-		int backoff_n_chains;
-		s8 backoff_delta;
-		s8 delta;
-
-		switch (type) {
-		case MT76_SKU_RATE:
-			delta = 0;
-			backoff_n_chains = 0;
-			backoff_delta = 0;
-			break;
-		case MT76_SKU_BACKOFF:
-			delta = mt76_tx_power_path_delta(n_chains);
-			backoff_n_chains = mt76_backoff_n_chains(dev, i);
-			backoff_delta = mt76_tx_power_path_delta(backoff_n_chains);
-			break;
-		case MT76_SKU_BACKOFF_BF_OFFSET:
-			delta = mt76_tx_power_path_delta(n_chains);
-			backoff_n_chains = mt76_backoff_n_chains(dev, i + 1);
-			backoff_delta = mt76_tx_power_path_delta(backoff_n_chains);
-			break;
-		default:
-			return;
-		}
-
-		pwr[i] = min_t(s8, target_power + delta - backoff_delta, data[i] + nss_delta);
-
-or
-
-		u8 backoff_chain_idx = i;
-		int backoff_n_chains;
-		s8 backoff_delta;
-		s8 delta;
-
-		switch (type) {
-		case MT76_SKU_RATE:
-			delta = 0;
-			backoff_n_chains = 0;
-			backoff_delta = 0;
-			break;
-		case MT76_SKU_BACKOFF:
-			backoff_chain_index += 1;
-			fallthrough;
-		case MT76_SKU_BACKOFF_BF_OFFSET:
-			delta = mt76_tx_power_path_delta(n_chains);
-			backoff_n_chains = mt76_backoff_n_chains(dev, backoff_chain_idx);
-			backoff_delta = mt76_tx_power_path_delta(backoff_n_chains);
-			break;
-		default:
-			return;
-		}
-
-		pwr[i] = min_t(s8, target_power + delta - backoff_delta, data[i] + nss_delta);
-
-[...]
->  static void
-> -mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
-> -			     const s8 *data, size_t len, s8 target_power,
-> -			     s8 nss_delta)
-> +mt76_apply_multi_array_limit(struct mt76_dev *dev, s8 *pwr, size_t pwr_len,
-> +			     s8 pwr_num, const s8 *data, size_t len,
-> +			     s8 target_power, s8 nss_delta, s8 *max_power,
-> +			     int n_chains, enum mt76_sku_type type)
->  {
->  	int i, cur;
-> -	s8 max_power = -128;
 > +
-> +#define connac2_backoff_ru_idx	2
-
-why this define in the middle of the function? Should this be in a header? 
-Should it just be a const?
-
->  
->  	if (!data)
->  		return;
-> @@ -337,8 +390,13 @@ mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
->  		if (len < pwr_len + 1)
->  			break;
->  
-> -		mt76_apply_array_limit(pwr + pwr_len * i, pwr_len, data + 1,
-> -				       target_power, nss_delta, &max_power);
-> +		if (!is_mt799x(dev) && type == MT76_SKU_BACKOFF &&
-> +		    i > connac2_backoff_ru_idx)
-> +			type = MT76_SKU_BACKOFF_BF_OFFSET;
-
-Can you please explain in the commit message how this format is structured. So 
-why everything after the third line of the expanded multi-array limit must be 
-considered a MT76_SKU_BACKOFF_BF_OFFSET? Adding some kernel-doc to each item in
-enum mt76_sku_type might help too.
-
-I have only seen one device in the wild (MT7905DAN + MT7975DN) which actually 
-uses the DT for the limits
-https://github.com/openwrt/openwrt/blob/17d45f677b0eb1da3c8190a2778fcdfcd9ecd234/target/linux/ramips/dts/mt7621_plasmacloud_pax1800-lite.dts#L11
-And there, it just uses the 2T1ss to the place where 1T1ss might be for beamforming.
-And this field doesn't seem to make a lot of sense (beamforming with 1 antennna?)
-and needs to be skipped.
-
-So yes, I can answer it by looking at some code I've used before for converting 
-some CSV [2] to DT entries:
-
-    rates_table = {
-        "paths-cck": [
-            row[0:4],
-        ],
-        "paths-ofdm": [
-            row[4:8],
-        ],
-        "paths-ofdm-bf": [
-            [
-                row[8],
-                *row[8:11],
-            ],  # duplicating first entry because it is needed in DTS but will not actually be used
-        ],
-        "paths-ru": compress_rates(
-            [
-                [1, *row[87:97]],  # RU26
-                [1, *row[107:117]],  # RU52
-                [1, *row[127:137]],  # RU106
-                [1, *row[11:21]],  # BW20 (HT/VHT)
-                [1, *row[30:40]],  # BW40 (HT/VHT)
-                [1, *row[49:59]],  # BW80 (HT/VHT)
-                [1, *row[68:78]],  # BW160 (HT/VHT)
-            ]
-        ),
-        "paths-ru-bf": compress_rates(
-            [
-                [1, *row[97:107]],  # RU26
-                [1, *row[117:127]],  # RU52
-                [1, *row[137:147]],  # RU106
-                [
-                    1,
-                    row[21],
-                    *row[21:30],
-                ],  # BW20 (HT/VHT), duplicating first entry
-                [
-                    1,
-                    row[40],
-                    *row[40:49],
-                ],  # BW40 (HT/VHT), duplicating first entry
-                [
-                    1,
-                    row[59],
-                    *row[59:68],
-                ],  # BW80 (HT/VHT), duplicating first entry
-                [
-                    1,
-                    row[78],
-                    *row[78:87],
-                ],  # BW160 (HT/VHT), duplicating first entry
-            ]
-        ),
-    }
-
-But it would be good to have this written down somewhere.
-
-
-
-> @@ -360,18 +418,11 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
->  	struct device_node *np;
->  	const s8 *val;
->  	char name[16];
-> -	u32 mcs_rates = dev->drv->mcs_rates;
-> -	u32 ru_rates = ARRAY_SIZE(dest->ru[0]);
->  	char band;
->  	size_t len;
-> -	s8 max_power = 0;
-> -	s8 max_power_backoff = -127;
-> +	s8 max_power = -127;
->  	s8 txs_delta;
->  	int n_chains = hweight16(phy->chainmask);
-> -	s8 target_power_combine = target_power + mt76_tx_power_path_delta(n_chains);
-> -
-> -	if (!mcs_rates)
-> -		mcs_rates = 10;
->  
->  	memset(dest, target_power, sizeof(*dest) - sizeof(dest->path));
->  	memset(&dest->path, 0, sizeof(dest->path));
-> @@ -408,47 +459,51 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
->  
->  	txs_delta = mt76_get_txs_delta(np, hweight16(phy->chainmask));
->  
-> +#define __apply_array_limit(arr, type)						\
-> +	mt76_apply_array_limit(dev, (arr), ARRAY_SIZE(arr), val, target_power,	\
-> +			       txs_delta, &max_power, n_chains, type)
+> +		if (control & IEEE80211_EML_CTRL_EMLSR_PARAM_UPDATE) {
+> +			u16 eml_cap =3D sta->sta.eml_cap;
+> +			u8 pad_delay, trans_delay;
 > +
-> +#define __apply_multi_array_limit(arr, type)					\
-> +	mt76_apply_multi_array_limit(dev, (arr)[0], ARRAY_SIZE((arr)[0]),	\
-> +				     ARRAY_SIZE(arr), val, len, target_power,	\
-> +				     txs_delta, &max_power, n_chains, type)
-> +
->  	val = mt76_get_of_array_s8(np, "rates-cck", &len, ARRAY_SIZE(dest->cck));
-> -	mt76_apply_array_limit(dest->cck, ARRAY_SIZE(dest->cck), val,
-> -			       target_power, txs_delta, &max_power);
-> -
-> -	val = mt76_get_of_array_s8(np, "rates-ofdm",
-> -				   &len, ARRAY_SIZE(dest->ofdm));
-> -	mt76_apply_array_limit(dest->ofdm, ARRAY_SIZE(dest->ofdm), val,
-> -			       target_power, txs_delta, &max_power);
-> -
-> -	val = mt76_get_of_array_s8(np, "rates-mcs", &len, mcs_rates + 1);
-> -	mt76_apply_multi_array_limit(dest->mcs[0], ARRAY_SIZE(dest->mcs[0]),
-> -				     ARRAY_SIZE(dest->mcs), val, len,
-> -				     target_power, txs_delta);
-> -
-> -	val = mt76_get_of_array_s8(np, "rates-ru", &len, ru_rates + 1);
-> -	mt76_apply_multi_array_limit(dest->ru[0], ARRAY_SIZE(dest->ru[0]),
-> -				     ARRAY_SIZE(dest->ru), val, len,
-> -				     target_power, txs_delta);
-> -
-> -	max_power_backoff = max_power;
-> -	val = mt76_get_of_array_s8(np, "paths-cck", &len, ARRAY_SIZE(dest->path.cck));
-> -	mt76_apply_array_limit(dest->path.cck, ARRAY_SIZE(dest->path.cck), val,
-> -			       target_power_combine, txs_delta, &max_power_backoff);
-> -
-> -	val = mt76_get_of_array_s8(np, "paths-ofdm", &len, ARRAY_SIZE(dest->path.ofdm));
-> -	mt76_apply_array_limit(dest->path.ofdm, ARRAY_SIZE(dest->path.ofdm), val,
-> -			       target_power_combine, txs_delta, &max_power_backoff);
-> -
-> -	val = mt76_get_of_array_s8(np, "paths-ofdm-bf", &len, ARRAY_SIZE(dest->path.ofdm_bf));
-> -	mt76_apply_array_limit(dest->path.ofdm_bf, ARRAY_SIZE(dest->path.ofdm_bf), val,
-> -			       target_power_combine, txs_delta, &max_power_backoff);
-> -
-> -	val = mt76_get_of_array_s8(np, "paths-ru", &len, ARRAY_SIZE(dest->path.ru[0]) + 1);
-> -	mt76_apply_multi_array_limit(dest->path.ru[0], ARRAY_SIZE(dest->path.ru[0]),
-> -				     ARRAY_SIZE(dest->path.ru), val, len,
-> -				     target_power_combine, txs_delta);
-> -
-> -	val = mt76_get_of_array_s8(np, "paths-ru-bf", &len, ARRAY_SIZE(dest->path.ru_bf[0]) + 1);
-> -	mt76_apply_multi_array_limit(dest->path.ru_bf[0], ARRAY_SIZE(dest->path.ru_bf[0]),
-> -				     ARRAY_SIZE(dest->path.ru_bf), val, len,
-> -				     target_power_combine, txs_delta);
-> +	__apply_array_limit(dest->cck, MT76_SKU_RATE);
-> +
-> +	val = mt76_get_of_array_s8(np, "rates-ofdm", &len, ARRAY_SIZE(dest->ofdm));
-> +	__apply_array_limit(dest->ofdm, MT76_SKU_RATE);
-> +
-> +	val = mt76_get_of_array_s8(np, "rates-mcs", &len,
-> +				   ARRAY_SIZE(dest->mcs[0]) + 1);
-> +	__apply_multi_array_limit(dest->mcs, MT76_SKU_RATE);
-> +
-> +	val = mt76_get_of_array_s8(np, "rates-ru", &len,
-> +				   ARRAY_SIZE(dest->ru[0]) + 1);
-> +	__apply_multi_array_limit(dest->ru, MT76_SKU_RATE);
-> +
-> +	val = mt76_get_of_array_s8(np, "paths-cck", &len,
-> +				   ARRAY_SIZE(dest->path.cck));
-> +	__apply_array_limit(dest->path.cck, MT76_SKU_BACKOFF);
-> +
-> +	val = mt76_get_of_array_s8(np, "paths-ofdm", &len,
-> +				   ARRAY_SIZE(dest->path.ofdm));
-> +	__apply_array_limit(dest->path.ofdm, MT76_SKU_BACKOFF);
-> +
-> +	val = mt76_get_of_array_s8(np, "paths-ofdm-bf", &len,
-> +				   ARRAY_SIZE(dest->path.ofdm_bf));
-> +	__apply_array_limit(dest->path.ofdm_bf, MT76_SKU_BACKOFF_BF_OFFSET);
-> +
-> +	val = mt76_get_of_array_s8(np, "paths-ru", &len,
-> +				   ARRAY_SIZE(dest->path.ru[0]) + 1);
-> +	__apply_multi_array_limit(dest->path.ru, MT76_SKU_BACKOFF);
-> +
-> +	val = mt76_get_of_array_s8(np, "paths-ru-bf", &len,
-> +				   ARRAY_SIZE(dest->path.ru_bf[0]) + 1);
-> +	__apply_multi_array_limit(dest->path.ru_bf, MT76_SKU_BACKOFF);
-> +
-> +#undef __apply_array_limit
-> +#undef __apply_multi_array_limit
+> +			/* Update sta padding and transition delay */
+> +			pad_delay =3D
+> +				ieee80211_get_emlsr_pad_delay_update(ptr[3]);
+> +			trans_delay =3D
+> +				ieee80211_get_emlsr_pad_delay_update(ptr[3]);
 
-Is such a big style change really necessary for a patch which is a fix 
-(according to you)? This might just make it harder to spot the differences and 
-might (in some cases) make it harder to backport it to stable kernels.
+It seems to me you're missing a bunch of input validation?
 
+> +
+> +			eml_cap &=3D ~(IEEE80211_EML_CAP_EMLSR_PADDING_DELAY |
+> +				     IEEE80211_EML_CAP_EMLSR_TRANSITION_DELAY);
+> +			eml_cap |=3D FIELD_PREP(IEEE80211_EML_EMLSR_PAD_DELAY,
+> +					      pad_delay) |
+> +				   FIELD_PREP(IEEE80211_EML_EMLSR_TRANS_DELAY,
+> +					      trans_delay);
+> +			sta->sta.eml_cap =3D eml_cap;
 
-Regards,
-	Sven
+Same comment about typed bitfield accessors, and u8_replace_bits() would
+even shorten that quite a bit.
 
-[1] https://b4.docs.kernel.org/en/latest/
-[2] https://github.com/openwrt/openwrt/pull/20152#issuecomment-3341491145
---nextPart1952104.CQOukoFCf9
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
+> +	if (skb->len < hdr_len + act_len)
+> +		return;
 
------BEGIN PGP SIGNATURE-----
+bit late that :)
 
-iHUEABYKAB0WIQS81G/PswftH/OW8cVND3cr0xT1ywUCaXc56wAKCRBND3cr0xT1
-yyaOAP9ynxiwshEHZcAF5pYXJIjwQY3Zk67nu2Hh43ROZN5dIAD+KTwzj/hRWaBe
-z4ib3qzbSqnG5qrH+gVCrDpoxQyPgA0=
-=NLs/
------END PGP SIGNATURE-----
-
---nextPart1952104.CQOukoFCf9--
-
-
-
+johannes
 
