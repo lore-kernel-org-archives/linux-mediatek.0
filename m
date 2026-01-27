@@ -4,95 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CF2ECA6CB8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 09:11:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F2BD19515
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 09:37:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
-	Content-Transfer-Encoding:In-Reply-To:From:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o3uYq+bvJ8IHWH6k2uOihpa6CKY0ItOKPXbc7h/Pz2g=; b=4Ms9VDSSbNVUvKhPBBdWgC7WDQ
-	YYQmLFdN9jKG1ymyO60oSwdxxJxkPLS0NkTE6nfcSG4UK+bPSPin5QImrjVhAy1UC8brn3aUP/yrn
-	9qAe7kGGjp0TPCbOQo4trGC9G/71zxucw+bNW/rKBVIcP4TkT4r3gDYfBJ9OY1gyL0bCDXzK1lTpD
-	sVEEtZpSXbqtdoQyf/tHbFHKN5iHmOmf1gEuveWY8A1qfT0a2mQeY19fp5RzZxKug/QlfqpFHJXK4
-	5Lt0o4tsuQlYCn/M3qt+0UjUVPsfb5XGgCXp7nITf0euLT+eXGNspDXcwx0Dq6Y4V/GufrBgsRlIT
-	njuYAzog==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qN+tpQ1BiZ+//HmA3wCEosCk0bNBvxeWcXDKb6cigNA=; b=G+XWAlUCEsepE63O0Cj2if4AXs
+	chuuXcWyPve0ztSJ55vRiqzpC0po46N24q+DCtyyLanI/Gw0pdJ5VkYPQKudqAYfpxUEelVjw7/L8
+	CWktyzfBs/tBYKXmHN+Wg6vVYNgGUhtuwNJECVZIEV10ty441zAAiF6IesaWfJ11S6vwhWd56Gsfl
+	i6xSU73mllR2rkzKX7SVLkSV2pvyHfmfDXoSvpBasC+2IJRZNWnCys9xCIQNzWK6l6qjz4UEOH5l5
+	QxH445RcLFFBA/gjNV9qYDhD+x4BSgdpeZQrm8xjbeBbB+TgnMNtLmZUragPIBH9ewevMf5EOZWZ3
+	VRL/bPJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkf6t-0000000DuZu-1dO2;
-	Tue, 27 Jan 2026 09:11:43 +0000
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
+	id 1vkfVv-0000000DxIW-0WPo;
+	Tue, 27 Jan 2026 09:37:35 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkf6o-0000000DuYu-3NmG;
-	Tue, 27 Jan 2026 09:11:41 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260127091130euoutp014c75f018134d9523a802741a4410d6be~Oi4Ej8mLk0793907939euoutp01d;
-	Tue, 27 Jan 2026 09:11:30 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260127091130euoutp014c75f018134d9523a802741a4410d6be~Oi4Ej8mLk0793907939euoutp01d
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1769505090;
-	bh=o3uYq+bvJ8IHWH6k2uOihpa6CKY0ItOKPXbc7h/Pz2g=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=ARDcksx7il7K+UJhL3qOUbJrzsCnWlDnWMyBKycHeHqFCGmyemgus6UZuDTSdf+bf
-	 sio+/WnMIcFH7Q4EvSeQJPsiIhXonBavFn5UetIdLJJLlTvKiDVGsd1YhwF3xweOeh
-	 qSQI7psb+mdS7QYSc32Br4lqAOSfjZL27eQp/MjQ=
-Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20260127091130eucas1p1440fbe9f7c4c663fa3a68f6fcb86470d~Oi4EUDQLX2294122941eucas1p1s;
-	Tue, 27 Jan 2026 09:11:30 +0000 (GMT)
-Received: from [106.210.134.192] (unknown [106.210.134.192]) by
-	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20260127091128eusmtip12e05e437c03450178ad4e2539faa417e~Oi4CsG4iT0357803578eusmtip1P;
-	Tue, 27 Jan 2026 09:11:28 +0000 (GMT)
-Message-ID: <002704a5-9ccb-4abb-beaf-5a448c17ea39@samsung.com>
-Date: Tue, 27 Jan 2026 10:11:27 +0100
+	id 1vkfVm-0000000DxGl-3oC1;
+	Tue, 27 Jan 2026 09:37:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id EAEBE60097;
+	Tue, 27 Jan 2026 09:37:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 23707C16AAE;
+	Tue, 27 Jan 2026 09:37:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1769506645;
+	bh=kW6QRj1KHFAisJA+DUtpLIHXA+CHWOk19fvX1z86acc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=pBesd8suneqE+ep6Zoo3I2+szbwRdxAk4WqwcxQkPkgMbp5jjSbSk2ViOlcOKpBf6
+	 YJbJTsRlq2tFyCFaZNpNwj4AZwaYFShutMjSLNGy/5cubxB/hDF2XDKHA/VbbcAYlM
+	 EyF8uQSegvrjHjqZbosTR3TNc5ozp02n2KkYKCAPkUvdThL5ljW2xSBF/T+tEnAVod
+	 S9AT8dTaT7I/u1NtNYxO3nO9WKSHanC+2ckfWNS/oNZQ6Za7dvs+Ayz55Z+uNJbh6y
+	 VgELspYxfOhH35nDjZr/y9+Gm0jJbm4lwxfaCyPApA+aR8w2xKTI+V0jk+s0VLxhWb
+	 XdWApszp5PH3w==
+Date: Tue, 27 Jan 2026 10:37:22 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Johannes Berg <johannes@sipsolutions.net>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH wireless-next v2 1/2] wifi: mac80211: Add eMLSR/eMLMR
+ action frame parsing support
+Message-ID: <aXiHUlHmrKz8JgXS@lore-desk>
+References: <20260125-mac80211-emlsr-v2-0-466329d61c88@kernel.org>
+ <20260125-mac80211-emlsr-v2-1-466329d61c88@kernel.org>
+ <01e62344994a34daae0666b3873aa98e72fb5850.camel@sipsolutions.net>
+ <aXftjdCtqnQk69ys@lore-desk>
+ <b592a6c9a8f59f112b2221b9a46568769b1e9dcd.camel@sipsolutions.net>
 MIME-Version: 1.0
-User-Agent: Betterbird (Windows)
-Subject: Re: [PATCH v4 02/10] drm/vc4: hdmi: implement clear_infoframe
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
-	<mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
-	<airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Dave Stevenson
-	<dave.stevenson@raspberrypi.com>, =?UTF-8?Q?Ma=C3=ADra_Canal?=
-	<mcanal@igalia.com>, Raspberry Pi Kernel Maintenance
-	<kernel-list@raspberrypi.com>, Chen-Yu Tsai <wens@kernel.org>, Jernej
-	Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>,
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong
-	<neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent
-	Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
-	<jonas@kwiboo.se>, Liu Ying <victor.liu@nxp.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias
-	Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Rob Clark
-	<robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>, Abhinav
-	Kumar <abhinav.kumar@linux.dev>, Jessica Zhang <jesszhan0024@gmail.com>,
-	Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>,
-	Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
-	<heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Content-Language: en-US
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-In-Reply-To: <jiq5ublhbfzuv3qsz3n6bve32wmto5hxc6mxppb2i2wagykafx@d235legi4r5o>
-Content-Transfer-Encoding: 7bit
-X-CMS-MailID: 20260127091130eucas1p1440fbe9f7c4c663fa3a68f6fcb86470d
-X-Msg-Generator: CA
-Content-Type: text/plain; charset="utf-8"
-X-RootMTR: 20260126174455eucas1p1f219202580a1033d3e881adc4f37f206
-X-EPHeader: CA
-X-CMS-RootMailID: 20260126174455eucas1p1f219202580a1033d3e881adc4f37f206
-References: <20260107-limit-infoframes-2-v4-0-213d0d3bd490@oss.qualcomm.com>
-	<20260107-limit-infoframes-2-v4-2-213d0d3bd490@oss.qualcomm.com>
-	<5c247393-b096-43ea-9ff4-9dd5fcdeec73@samsung.com>
-	<CGME20260126174455eucas1p1f219202580a1033d3e881adc4f37f206@eucas1p1.samsung.com>
-	<36278555-a01e-4c96-bb26-e170016e5f8c@samsung.com>
-	<jiq5ublhbfzuv3qsz3n6bve32wmto5hxc6mxppb2i2wagykafx@d235legi4r5o>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260127_011139_447091_F35A27B0 
-X-CRM114-Status: GOOD (  11.21  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="tGRs4KgtXgG4/Ty3"
+Content-Disposition: inline
+In-Reply-To: <b592a6c9a8f59f112b2221b9a46568769b1e9dcd.camel@sipsolutions.net>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,29 +79,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26.01.2026 20:00, Dmitry Baryshkov wrote:
-> On Mon, Jan 26, 2026 at 06:44:52PM +0100, Marek Szyprowski wrote:
->> On 26.01.2026 18:42, Marek Szyprowski wrote:
->>> On 07.01.2026 19:14, Dmitry Baryshkov wrote:
->>>> Implement the clear_infoframe callback, disabling corresponding
->>>> InfoFrame type.
->>>>
->>>> Acked-by: Maxime Ripard <mripard@kernel.org>
->>>> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
->>> This patch landed recently in linux-next as commit 3a4ceb89a972
->>> ("drm/vc4: hdmi: implement clear_infoframe"). In my tests I found that
->>> it causes the following regression on Qualcomm RB5 board:
->> Please ignore my report, it looks that automated bisecting got a bit
->> confused.
-> See https://lore.kernel.org/dri-devel/9ebc0582b0f7990d7df992a07ec8ef7f@kernel.org/T/#t
->
-> I'm going to push it to drm-misc-next-fixes.
 
-Thanks for pointing that patch! It fixed my issue.
+--tGRs4KgtXgG4/Ty3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Best regards
--- 
-Marek Szyprowski, PhD
-Samsung R&D Institute Poland
+> On Mon, 2026-01-26 at 23:41 +0100, Lorenzo Bianconi wrote:
+> >=20
+> > > Per spec I'm also not sure what the MCS map should be when it's not
+> > > included in the frame?
+> >=20
+> > IIUC the mcs map value are supposed to be in Operation mode notificatio=
+n frame
+> > just for eMLMR. I think the driver should check if the bit is set in
+> > ieee80211_eml_params control field to verify if mcs_map_bw values are v=
+alid.
+>=20
+> Yeah you're right, the MCS Map is always present if EMLMR Mode is set to
+> 1. I thought it was also optional and then what values should you use?
+>=20
+> Can't mac80211 validate the values?
 
+I guess we can validate eMLMR Supported MCS and NSS Set subfiled according =
+to
+the table 9-417t available in P802.11be standard.
+
+>=20
+> > Reading the standard, it is not clear to me if mcs map values are suppo=
+sed to be
+> > added in the Notification frame sent by the AP. What do you think?
+>=20
+> Hmm. I thought no, but then the language says it's present when the
+> EMLMR Mode is set to 1, so ... it would have to be? Strange, because
+> it's not really defined (well) in this direction.
+>=20
+> OK, I guess the memcpy was right after all:
+>=20
+>    An AP affiliated with the AP MLD that receives an EML Operating Mode
+>    Notification frame from a non-AP STA affiliated with the non-AP MLD
+>    should send an EML Operating Mode Notification frame to confirm the
+>    mode switch at the AP MLD to the non-AP STA with EML Control field
+>    set to the same value as EML Control field in the received EML
+>    Operating Mode Notification frame from the non-AP STA before the
+>    transition timeout expires.
+>=20
+> But I think better restrict memcpy() then to just the EML Control field
+> and build the action header etc. directly.
+
+I guess we can just memcpy() control field + link_bitmap (if present) +
+eMLMR Supported MCS and NSS Set subfiled (if present). Agree?
+
+Regards,
+Lorenzo
+
+>=20
+> johannes
+
+--tGRs4KgtXgG4/Ty3
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaXiHUgAKCRA6cBh0uS2t
+rPFrAP9U5RInNCg8lzoLRgQI/9uuSh9XghVNRgnh/e9FWA2hgQEAxUM+Se7rKHSk
+yA0+GV3G+INjnnXvmkBzfwRINc9uJAE=
+=iYd0
+-----END PGP SIGNATURE-----
+
+--tGRs4KgtXgG4/Ty3--
 
