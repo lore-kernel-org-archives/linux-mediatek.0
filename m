@@ -4,74 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02040D2FECE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 18:18:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79DD3D2FEDD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 19:50:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1O10nq57uF2yonMLHejTJonR3kk2tYwvSO30+vtuA7Q=; b=eQpeU6dnRpgZsaMezBFY8kI4Ip
-	21afbfrmWYwNBhEW1PGmohv/NcA73tVRzGaqjKFCYdLlyG9nE1Ix12DA3gOU9Q9sX4v6yQGHKIWF/
-	sXq9MSMdBoutOOOmIgMQb6eQOiqoxPAKg6ex+5m+PYBsKEX2I/mOAbH7GZ2OTwkfK6nqX41RYAFws
-	hu7eAm8gHX8Mn2xjBrg873I8GX/OUkawEVYsgOvBCnNifXcQiCezf4q91CHGE6vkeC2XiqeFTtSYf
-	xDY8Kd6YKsml822sTOViePghB3dIFapaoi01aAQf7kAdAf3rjghVChUzPcNHXU5mfkX6t+tBc10mI
-	56AxtAtA==;
+	bh=QNxiFgzgvkz20yq6oB76o5Yn6XJfaCPIW66VkQzuTDI=; b=JfWA1I6u7gE5/jotlKRS2GIuWX
+	iaRZsnjJyxOSlcKqGrytG50K4lmN+xT0LN6fhhJn8vhOWfjL14NwAHIBUdcGPeDfJKxGKxIXQxORW
+	m2Ds+aWAl65eg5iva7BYWZc5+zpshoeSVC+Zw1r7OxFLkuuwDXw1KQuE3Ya1xHSRqvKnxKbZZf861
+	hep+/v0o9+Aw/T3D1xQfV8DfXOYMXyEYfkOgI6J0e2+a04tKJ+nVwjETugu5QJi8DMdRy/wxfX+Bb
+	+/9rotgUOzqmLpG+ndZCV7sSBvPcVfwLnhP9jSImjwtc1tT5C/Iv61D1I1Ye7hg4dypz9xFQqusEL
+	vyKxXJWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkneB-0000000EnjZ-17nN;
-	Tue, 27 Jan 2026 18:18:41 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vkp5F-0000000Ey55-2UYg;
+	Tue, 27 Jan 2026 19:50:41 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkne8-0000000Enim-3pLV;
-	Tue, 27 Jan 2026 18:18:38 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1769537891; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=fEb0Cw0/fBkS8pB0EZvsd01qretjQhA9PdmsjDAZ2GyHqlsAwojf9WvigoKbhEdpZFndyMkv+fPCTQAtVFxTEEMO3W9tNaxKQTXWaEzvhZtn2INA42ZQaitNZYDILx7m+TnXWk+2m0wzyW4G/7T0yYs8xFQ4UlCF6HXkjyvNwBk=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1769537891; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=1O10nq57uF2yonMLHejTJonR3kk2tYwvSO30+vtuA7Q=; 
-	b=Udg8Byuy82YLS3nLoyIU67KXzJ9Jo2n15L1LIv0ZbWZmijGKUbK0KWSI26REhRRnhVTtfm+58TLJArSSxVokMMBfXtrpaoOIkLmv/x0BhwEX3bBL2nuGSdNjA8ca4jSOwUn9ucBWNRZyvJy6OKVlnL1U8FC5jW4zj3ZfUr641b0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1769537891;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=1O10nq57uF2yonMLHejTJonR3kk2tYwvSO30+vtuA7Q=;
-	b=cgyGGkiipdrS15+YkTQU3VtWMDwt3STN5bYx656tenyNtnVtPXA4PeTjgpF9qlEt
-	EJNKoG8RiZZfemBiNic0WN4pLV3I6hcyOWJNHY0lLzOxLzt4idbPvN+sK4VO9xZFJ5J
-	ZzI/VI4v1vHHGbBPzIGp6xh61Vw48cb+FWkJ6jgQ=
-Received: by mx.zohomail.com with SMTPS id 1769537889900300.4354081160377;
-	Tue, 27 Jan 2026 10:18:09 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
- Dong Aisheng <aisheng.dong@nxp.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Yassine Oudjana <y.oudjana@protonmail.com>,
- Laura Nao <laura.nao@collabora.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
- Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
- kernel@collabora.com, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 1/5] clk: Respect CLK_OPS_PARENT_ENABLE during recalc
-Date: Tue, 27 Jan 2026 19:18:02 +0100
-Message-ID: <6800096.lOV4Wx5bFT@workhorse>
-In-Reply-To: <4ea31b0d-af6e-44f7-86e4-35a43b8c71e7@sirena.org.uk>
-References: <20251010-mtk-pll-rpm-v3-0-fb1bd15d734a@collabora.com>
- <036da7ce-6487-4a6e-9b15-97c6d3bcdcec@sirena.org.uk>
- <4ea31b0d-af6e-44f7-86e4-35a43b8c71e7@sirena.org.uk>
+	id 1vkp5A-0000000Ey4U-0KPq;
+	Tue, 27 Jan 2026 19:50:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2C45E43D75;
+	Tue, 27 Jan 2026 19:50:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EAF5AC116C6;
+	Tue, 27 Jan 2026 19:50:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1769543435;
+	bh=UaKGXBQECE0SDe7XXMs88ifMfoexM+bNNiVKCwxPry8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=kLQTvED4LlSKzw2nWBpeK5viX8ZbqC10mYv1QroLhWLVlCqz2iR1bg4yYnRhz/FNn
+	 UlXU0v6oTqeW3oYFDM8UA/Ntm5uOmB151/wgibG3XMZwTlzSCm3HoDhdp+9cTSuDAX
+	 jt9crfIprdiN//Qns45XzTb++v6Rc/OEHjxt157GG8V04Ct4M9GDnXgfXKn8fYBAIx
+	 Te3wrBDNMsAun6AI7V81/8dvy5LJ607YML0E+bJU//aMBkUrSL0mhN3XOOekOqHe9w
+	 y4AS+6Vynd0jQIuR1Mrpa4jR/rMBq0d/IxubsJkTUwkKRKqJGOqh+IXHAZ/qpZsJh/
+	 7WDwMYHNnLQxQ==
+Date: Tue, 27 Jan 2026 19:50:25 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Dave Stevenson <dave.stevenson@raspberrypi.com>,
+	=?iso-8859-1?Q?Ma=EDra?= Canal <mcanal@igalia.com>,
+	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>, Liu Ying <victor.liu@nxp.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Abhinav Kumar <abhinav.kumar@linux.dev>,
+	Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org, Aishwarya.TCV@arm.com
+Subject: Re: [PATCH v4 05/10] drm/bridge: refactor HDMI InfoFrame callbacks
+Message-ID: <47619a02-c667-4fd0-afa9-f6cf7aba8dd4@sirena.org.uk>
+References: <20260107-limit-infoframes-2-v4-0-213d0d3bd490@oss.qualcomm.com>
+ <20260107-limit-infoframes-2-v4-5-213d0d3bd490@oss.qualcomm.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="sKQ7u6u6my6XlJTm"
+Content-Disposition: inline
+In-Reply-To: <20260107-limit-infoframes-2-v4-5-213d0d3bd490@oss.qualcomm.com>
+X-Cookie: Send some filthy mail.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260127_101837_017181_11690EFF 
-X-CRM114-Status: GOOD (  20.10  )
+X-CRM114-CacheID: sfid-20260127_115036_189349_04510036 
+X-CRM114-Status: GOOD (  15.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,55 +102,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 27 January 2026 18:25:04 Central European Standard Time Mark Brown wrote:
-> On Tue, Jan 27, 2026 at 05:01:35PM +0000, Mark Brown wrote:
-> > On Fri, Oct 10, 2025 at 10:47:09PM +0200, Nicolas Frattaroli wrote:
-> > > When CLK_OPS_PARENT_ENABLE was introduced, it guarded various clock
-> > > operations, such as setting the rate or switching parents. However,
-> > > another operation that can and often does touch actual hardware state is
-> > > recalc_rate, which may also be affected by such a dependency.
-> > 
-> > I'm seeing boot regressions in -next on the Avenger96 which bisect to
-> > this patch in -next.  The board resets during startup:
-> 
-> I am also seeing some similar regressions even earlier on i.MX8MP
-> platforms, though they're resetting even earlier before any output is
-> produced (even with earlycon).  Didn't confirm yet with a revert or
-> anything though.
-> 
 
-Someone else seemingly bisected to this commit on i.MX8MP as well
-and replied to the RESEND of the series, and confirmed with a
-revert[1].
+--sKQ7u6u6my6XlJTm
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-I'm somewhat surprised by this, because to me it doesn't make intuitive
-sense that some platforms would rely on CLK_OPS_PARENT_ENABLE to not
-enable the parent clock during a recalc.
+On Wed, Jan 07, 2026 at 08:15:02PM +0200, Dmitry Baryshkov wrote:
+> Having only a single set of callbacks, hdmi_clear_infoframe and
+> hdmi_write_infoframe, bridge drivers don't have an easy way to signal to
+> the DRM framework, which InfoFrames are actually supported by the
+> hardware and by the driver and which are not. Also, it makes it
 
-Can someone let me know which clocks (with which parent) in those
-affected devices is causing this? I'm wondering if this change
-unmasked some undeclared dependency that it's now stumbling over
-because it's enabling the parent earlier than ever.
+We're seeing oopses on Qualcomm RB5 platforms in -next which bisect to
+this patch.  Looking at the patch I'm not immediately seeing what it
+might be getting wrong, though I do note that the board uses a LT9611
+which is updated by the patch.
 
-Would appreciate if we could fix up the affected platforms rather
-than revert this, because the platform I added this for was
-definitely using a parent-child relationship, and definitely
-needed to have the parent clock on during recalc.
+Failure log:
 
-I can always bring back the RPM model I went for previously, but
-that feels like more of a hack around this caveat than a proper
-description of the clock relationship.
+3853 01:47:31.278489  <3>[   21.045573] msm_dpu ae01000.display-controller: [drm:msm_dsi_modeset_init [msm]] *ERROR* failed to create dsi connector: -22
+3854 01:47:31.280977  <3>[   21.057526] [drm:_dpu_kms_initialize_dsi:630] [dpu error]modeset_init failed for dsi[0], rc = -22
+3855 01:47:31.322994  <3>[   21.066927] [drm:_dpu_kms_setup_displays:766] [dpu error]initialize_dsi failed, rc = -22
+3856 01:47:31.323293  <3>[   21.075563] [drm:dpu_kms_hw_init:1283] [dpu error]modeset init failed: -22
+3857 01:47:31.323577  <3>[   21.083223] msm_dpu ae01000.display-controller: [drm:msm_drm_kms_init [msm]] *ERROR* kms hw init failed: -22
+3858 01:47:31.323809  <1>[   21.094033] Unable to handle kernel paging request at virtual address dead000000000108
 
-To not have me break everyone's -next for days on end, feel free
-to drop this patch. MT8196, which this was added for, doesn't boot
-with mainline yet anyway.
+...
 
-Kind regards,
-Nicolas Frattaroli
+3882 01:47:31.547579  <4>[   21.252828] Hardware name: Qualcomm Technologies, Inc. Robotics RB5 (DT)
 
-https://lore.kernel.org/all/6239343.lOV4Wx5bFT@steina-w/ [1]
+...
 
+3901 01:47:31.678351  <4>[   21.462030] Call trace:
+3902 01:47:31.721776  <4>[   21.464819]  drm_atomic_private_obj_fini+0x24/0x70 [drm] (P)
+3903 01:47:31.722072  <4>[   21.470924]  _dpu_kms_hw_destroy+0x4c/0x64 [msm]
+3904 01:47:31.722309  <4>[   21.475969]  dpu_kms_destroy+0x28/0xb0 [msm]
+3905 01:47:31.722528  <4>[   21.480650]  msm_drm_kms_uninit+0xac/0xd8 [msm]
+3906 01:47:31.722743  <4>[   21.485596]  msm_drm_uninit.isra.0+0x54/0xd4 [msm]
+3907 01:47:31.722968  <4>[   21.490816]  msm_drm_init+0x18c/0x1f0 [msm]
+3908 01:47:31.723228  <4>[   21.495409]  msm_drm_bind+0x30/0x3c [msm]
+3909 01:47:31.723442  <4>[   21.499824]  try_to_bring_up_aggregate_device+0x164/0x1d0
+3910 01:47:31.723646  <4>[   21.505635]  __component_add+0xa4/0x170
+3911 01:47:31.725046  <4>[   21.509851]  component_add+0x14/0x20
+3912 01:47:31.766295  <4>[   21.513793]  dsi_dev_attach+0x20/0x2c [msm]
+3913 01:47:31.766592  <4>[   21.518387]  dsi_host_attach+0x58/0x98 [msm]
+3914 01:47:31.766829  <4>[   21.523068]  devm_mipi_dsi_attach+0x34/0x90
+3915 01:47:31.767113  <4>[   21.527638]  lt9611uxc_attach_dsi.isra.0+0x84/0x100 [lontium_lt9611uxc]
+3916 01:47:31.767339  <4>[   21.534701]  lt9611uxc_probe+0x59c/0x62c [lontium_lt9611uxc]
 
+bisect log:
 
+git bisect start
+# status: waiting for both good and bad commits
+# good: [50814c5ce8d8f6751fd49c818abeb8853f8be2df] Merge branch 'for-linux-next-fixes' of https://gitlab.freedesktop.org/drm/misc/kernel.git
+git bisect good 50814c5ce8d8f6751fd49c818abeb8853f8be2df
+# status: waiting for bad commit, 1 good commit known
+# bad: [615aad0f61e0c7a898184a394dc895c610100d4f] Add linux-next specific files for 20260126
+git bisect bad 615aad0f61e0c7a898184a394dc895c610100d4f
+# good: [b047f48069330e050431e9ad762bd838af43337f] Merge branch 'mtd/next' of https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git
+git bisect good b047f48069330e050431e9ad762bd838af43337f
+# bad: [fe1e00e6f9fe8a160921f6a87f999075a1dfef0a] Merge branch 'for-mfd-next' of https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git
+git bisect bad fe1e00e6f9fe8a160921f6a87f999075a1dfef0a
+# good: [9d10cd526111a989eb353c3a4df9d4c79695ea8d] Merge tag 'drm-intel-next-2026-01-15' of https://gitlab.freedesktop.org/drm/i915/kernel into drm-next
+git bisect good 9d10cd526111a989eb353c3a4df9d4c79695ea8d
+# bad: [7260b161359d310b9a92513dbd73cd9a3a226c6f] Merge branch 'for-next' of https://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git
+git bisect bad 7260b161359d310b9a92513dbd73cd9a3a226c6f
+# bad: [d1968cd2a0ecab805106e5e60613dd45b63d52d9] Merge branch 'drm-next' of https://gitlab.freedesktop.org/drm/kernel.git
+git bisect bad d1968cd2a0ecab805106e5e60613dd45b63d52d9
+# good: [d2f618b8fe76b565f6bc0071b5eeee07a9012c6d] Merge tag 'drm-intel-next-fixes-2026-01-22' of https://gitlab.freedesktop.org/drm/i915/kernel into drm-next
+git bisect good d2f618b8fe76b565f6bc0071b5eeee07a9012c6d
+# good: [fc23163a7ca6cc0e6c3297aed3bdc9428aa8b1a9] Merge branch 'master' of https://git.kernel.org/pub/scm/linux/kernel/git/herbert/cryptodev-2.6.git
+git bisect good fc23163a7ca6cc0e6c3297aed3bdc9428aa8b1a9
+# skip: [00e6f8f60601b412e400873c8972f3e3802557f3] dt-bindings: vendor-prefixes: Add AlgolTek
+git bisect skip 00e6f8f60601b412e400873c8972f3e3802557f3
+# bad: [e5e1a0000746ded4d9fa16fceda0748aec2b6e6a] drm/bridge: samsung-dsim: samsung_dsim_host_attach: use a temporary variable for the next bridge
+git bisect bad e5e1a0000746ded4d9fa16fceda0748aec2b6e6a
+# bad: [0607052a6aee1e3d218a99fae70ba9f14b3b47ed] drm/hisilicon/hibmc: fix no showing problem with loading hibmc manually
+git bisect bad 0607052a6aee1e3d218a99fae70ba9f14b3b47ed
+# bad: [5a4e4e30f6dc4d2a68eec08257128906572f3346] drm/debug: don't register files for unsupported HDMI InfoFrames
+git bisect bad 5a4e4e30f6dc4d2a68eec08257128906572f3346
+# good: [638409979c5f7d3155afcded67532003e07a7d0e] drm/sun4i: hdmi_enc: implement clear_infoframe stub
+git bisect good 638409979c5f7d3155afcded67532003e07a7d0e
+# skip: [1d8847f457648ed4932019dcd3081bc27bcea936] drm/display: hdmi_state_helper: reject Audio IF updates if it's not supported
+git bisect skip 1d8847f457648ed4932019dcd3081bc27bcea936
+# bad: [e802c783be94bf71541a7e2ac8b1b5486aad10db] drm/display: hdmi_state_helper: split InfoFrame functions per type
+git bisect bad e802c783be94bf71541a7e2ac8b1b5486aad10db
+# good: [afc399f7a5ea7bf405b2ef85c7470529b1a9e47c] drm/connector: make clear_infoframe callback mandatory for HDMI connectors
+git bisect good afc399f7a5ea7bf405b2ef85c7470529b1a9e47c
+# bad: [b626b1a1c9ccadd8861870a2a450f02e0c61ab88] drm/bridge: refactor HDMI InfoFrame callbacks
+git bisect bad b626b1a1c9ccadd8861870a2a450f02e0c61ab88
+# first bad commit: [b626b1a1c9ccadd8861870a2a450f02e0c61ab88] drm/bridge: refactor HDMI InfoFrame callbacks
 
+--sKQ7u6u6my6XlJTm
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAml5FwAACgkQJNaLcl1U
+h9B9Tgf/X2VdX2dj9e0HmnAWF7Z6YHcQwTv5vOPRR3TtPQ1f0IJF84ETF90P7M+z
+0r53d6IbwJsKLOX4qsB/rNQEI5N+CJmuM3AAwc2f6ATSDYXwfp7G82qqjy1yhIf5
+WTaqKV6iegc3pW6A+6AaU7mOqNBCm74S+28Yb07/FYYYI4CLJ1MZODAbjAHdKJMh
+3KgxmTu9nFANpwxnxf7J6KAVvq+V3AWackd3YyPPRJymtC/VP3hDf+YJdFA8hBV0
+aHaxFLCwzVkFfUutqrJ45IQS3wyDewkuIHBBWMfls4ORz6J+JAHSgoxHFLC+Xvwv
+0T8FfKnKWZSsk5IGJrkrvzX7z2NSgg==
+=rTj8
+-----END PGP SIGNATURE-----
+
+--sKQ7u6u6my6XlJTm--
 
