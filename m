@@ -4,68 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3077D1951B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jan 2026 22:41:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1129FD13C3C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 02:43:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s0v3kKffFcbFoSynlduINN6Th2d+C2qLuSSjYWG64RY=; b=cnJxsPYV1aeS4bbYnkfDmmWMIi
-	MJ1T/wredzBPtk0z+CE8cWVufHwTXHGUakWOmRZOG+rnjb8GY+A+eI6w0G2l90XzIxgvdb8yNayIy
-	7z+T4LU+P7veUXfD8XZWzz5igHHLUQ++ZwRjotdrTQRxhc4Gwh2SSslX8TzA5iq2c2d8fi3Otd907
-	nrUwuJ1pdgp9slfBYgw/qzn7raY2akYCa7H80o1+q2uDSv/m6yma93O3wGcOF0YBy3zCGTp2TTRnU
-	ml7g0fTEPRPo3ufi+IGi85nXRep+FtLWBIS2oB+/3pkqUmxPtbhXaPrEKRKZaqqHOZ06VOPX7G4l3
-	JG0ChyGw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=6PBVDfDmY0sQUXiIsLsBjL/r8yVY5YCylH5TFAYY8HY=; b=bPvDu6TsshBkjv2xcvzckvSgpE
+	j1DoNfj8AqehhdkvIMfV5rP23YW3y4mOmq0f2UYPLNSS7/G79VH6ZDw7McREoIzDT7cdiwG67CLU1
+	lehHqThFriDMKGxKcxtwO5/txMP7s9YszYqLNkhrfae/WFHWRCAgC09Wh+pvz8RpLHveAS963iupG
+	6VedE3VBwHrFasu3360Pf5ePo23bpGn63jeCjxJ2IOlvs/tQKYVqSm2Z+JiOMnzIYLOX106CWBca2
+	veMYPUEAl4wgGZUuAVmDmCki/kOleuedoO+dpDSHEVOA7QYh+zhg5TySM161tGsLrO+/fnB3cU2Aw
+	4Cy3lyzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkVGv-0000000DK0v-0KVn;
-	Mon, 26 Jan 2026 22:41:25 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vkZ2u-0000000DVRY-3iqV;
+	Tue, 27 Jan 2026 02:43:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkVGs-0000000DK0S-0Lkv;
-	Mon, 26 Jan 2026 22:41:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B208143B63;
-	Mon, 26 Jan 2026 22:41:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E3D7C116C6;
-	Mon, 26 Jan 2026 22:41:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769467280;
-	bh=GG68a5Sdfw/2OYhV/QwlBvR+ObFQ6lplVxmghdV94Ws=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=lLu4CEVlm4o+fLpIapOoGxYB3DIXMNl3LdZWylEVcULSRdkEVa3kyHIau3bhMdij7
-	 A3xnrkxbWDPutWDFb6JE+rj6ZHXFKY3RnxtpR3uCe2Pr0jDCpjdwGAyHI3O4HjRmxD
-	 seQKh8P6iQSINNjYCgZwC1dkX3/a5rdgAiab8EkP7V0a8mzRAbZzUpqx1eFJ91UV2L
-	 diW2Dg3YEMfHbqPUg+bF+++v/xqbAdEt+NKdjfu3H3gWtQGr6vbJsjUBHOohVDP7Ws
-	 0akBcV7UNJTVZ7spWACuh0wGqTOEEqSZ/Wzr0imdjHtP8WHN79fXnmrIaZsWysy/XD
-	 8mM1IcvNv9ViQ==
-Date: Mon, 26 Jan 2026 23:41:17 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Johannes Berg <johannes@sipsolutions.net>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH wireless-next v2 1/2] wifi: mac80211: Add eMLSR/eMLMR
- action frame parsing support
-Message-ID: <aXftjdCtqnQk69ys@lore-desk>
-References: <20260125-mac80211-emlsr-v2-0-466329d61c88@kernel.org>
- <20260125-mac80211-emlsr-v2-1-466329d61c88@kernel.org>
- <01e62344994a34daae0666b3873aa98e72fb5850.camel@sipsolutions.net>
+	id 1vkZ2s-0000000DVQ3-127Q;
+	Tue, 27 Jan 2026 02:43:11 +0000
+X-UUID: e6f2a302fb2911f0a16f0188aa809bee-20260126
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6PBVDfDmY0sQUXiIsLsBjL/r8yVY5YCylH5TFAYY8HY=;
+	b=mzZTzeJ5uCbxtj8+Wndx65IeOjIznRgMIkTvXH6nVm5X1E5YaviU1hhsoaC7Ai3ELhjI6/6GFNSkzsS+KP/RacW772UndYrg2OTcHxnAy99cbLLgHvdb9K7W7kaIE2otWNXRRd9ELEObcamciWf3OR8nW9a6Gzaz1Sx8khXZr+Y=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:1a1ce64e-8a52-43ff-8292-d3a39ea7489a,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:4d06417a-8c8a-4fc4-88c0-3556e7711556,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: e6f2a302fb2911f0a16f0188aa809bee-20260126
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 506695007; Mon, 26 Jan 2026 19:43:03 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 27 Jan 2026 10:43:00 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 27 Jan 2026 10:42:59 +0800
+From: Kyrie Wu <kyrie.wu@mediatek.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
+	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro
+ Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>, Nicolas Dufresne
+	<nicolas.dufresne@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Arnd
+ Bergmann <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>, George Sun
+	<george.sun@mediatek.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
+	<andrzejtp2010@gmail.com>, Yilong Zhou <yilong.zhou@mediatek.com>
+Subject: [PATCH v7 00/10] Enable video decoder & encoder for MT8189
+Date: Tue, 27 Jan 2026 10:42:37 +0800
+Message-ID: <20260127024248.18406-1-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="FyaHzk/0gDfHIB6D"
-Content-Disposition: inline
-In-Reply-To: <01e62344994a34daae0666b3873aa98e72fb5850.camel@sipsolutions.net>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260126_144122_196443_0F9B5EA8 
-X-CRM114-Status: GOOD (  39.44  )
+X-CRM114-CacheID: sfid-20260126_184310_337719_4E4EB802 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,259 +94,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This series have the follow changing:
+Firstly add mt8189 video decoder compatible, profile and level to support
+MT8189 kernel driver.
+Secondly fix some bugs, including vp 4K profile2 and media device node
+number bug.
+Lastly, add mt8189 video encoder compatible.
 
---FyaHzk/0gDfHIB6D
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This series has been tested with MT8189 tast test.
+Encoding and decoding worked for this chip.
 
-> On Sun, 2026-01-25 at 11:51 +0100, Lorenzo Bianconi wrote:
-> >=20
-> > +static inline u8 ieee80211_get_emlsr_pad_delay_update(u8 param)
-> > +{
-> > +	u8 pad_delay =3D FIELD_GET(IEEE80211_EML_EMLSR_PAD_DELAY, param);
->=20
-> I generally prefer the typed versions and mac80211 (mostly?) uses those,
-> i.e. u8_get_bits() and friends, since they also cover endian conversions
-> where needed. Is there any reason you use FIELD_* versions here?
+Patches 1-3 Add decoder compatible.
+Patches 4-5 Add profile and level supporting.
+Patches 6 Add VP9 4K probability size supporting.
+Patches 7-8 fix some bugs.
+Patches 9-10 Adds encoder compatible.
 
-ack, I will fix it in v3.
+---
+H264 test results:
+./fluster.py run -d GStreamer-H.264-V4L2SL-Gst1.0 -j2 -t 90
+    JVT-AVC_V1	Ran 96/135 tests successfully
 
->=20
-> > +	if (pad_delay > IEEE80211_EML_CAP_EMLSR_PADDING_DELAY_256US)
-> > +		pad_delay =3D 0;
->=20
-> Seems that should use a constant, rather than =3D0?
->=20
-> Also, is that really the right thing to do (also below) to just silently
-> cap it? Maybe that should be up to the caller? In some(/most/all)? cases
-> we should probably even just _reject_ frames that carry an invalid
-> value, which you can't do with this helper?
+VP9 test results:
+./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0 -j2 -t 90
+	VP9-TEST-VECTORS	Ran 276/305 tests successfully
 
-I guess we can just move this code in the caller and reject the frame if the
-values are not valid. I will fix it in v3.
+v4l2-compliance test results:
+Compliance test for mtk-vcodec-enc device /dev/video2:
+Total for mtk-vcodec-enc device /dev/video2: 47, Succeeded: 46, Failed: 1, Warnings: 0
+Compliance test for mtk-vcodec-dec device /dev/video3:
+Total for mtk-vcodec-dec device /dev/video3: 48, Succeeded: 48, Failed: 0, Warnings: 0
 
->=20
-> > +static inline u32 ieee80211_get_emlsr_trans_delay_update(u8 param)
-> > +{
-> > +	u16 trans_delay =3D FIELD_GET(IEEE80211_EML_EMLSR_TRANS_DELAY, param);
-> > +
-> > +	if (trans_delay > IEEE80211_EML_CAP_EMLSR_TRANSITION_DELAY_256US)
-> > +		trans_delay =3D 0;
-> > +
-> > +	return trans_delay;
->=20
-> why does that use _three_ different types? Wouldn't u8 be sufficient?
->=20
-> > --- a/include/net/mac80211.h
-> > +++ b/include/net/mac80211.h
-> > @@ -1902,6 +1902,21 @@ enum ieee80211_offload_flags {
-> >  	IEEE80211_OFFLOAD_DECAP_ENABLED		=3D BIT(2),
-> >  };
-> > =20
-> > +struct ieee80211_eml_params {
-> > +	u8 control;
-> > +	u16 link_bitmap;
-> > +	union {
-> > +		struct {
-> > +			u16 emlsr_pad_delay;
-> > +			u16 emlsr_trans_delay;
-> > +		};
-> > +		struct {
-> > +			u8 mcs_map_count;
-> > +			u8 mcs_map_bw[9];
-> > +		};
-> > +	};
-> > +};
->=20
-> Maybe add kernel-doc? Also not sure the union really is worth it? It's a
-> tiny thing. Especially since you don't even label it - maybe if the
-> parts were labled emlsr and emlmr, and then you had emlsr.pad_delay?
->=20
-> (I'd label them anyway, of course, even if not a union.)
+scp upstream link:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20250811015922.32680-1-huayu.zong@mediatek.com/
+dtsi upstream link:
+https://lore.kernel.org/linux-mediatek/20251030134541.784011-12-jh.hsu@mediatek.com/T/#m847e35de0a5b18fac0ca0624a8559d84964ad5c7
 
-ack, I will add kernel-doc in v3.
+Changes compared with v6:
+--refactor the patches of set compatible data, profile and level
+--add reviewer to commit messages
+--fix commit message errors
 
->=20
-> Also now the emlsr pad/trans delay are duplicated in the station info,
-> is that worth doing? You have to and do track them there too, anyway, as
-> we discussed on IRC, could just have the driver use them from there?
+Changes compared with v5:
+--move default decoder parameters to compatible data structure
+--add reviewer to commit messages
+--Rebased on top of the latest media tree
 
-I agree, I guess we can drop emlsr_pad_delay and emlsr_trans_delay in
-ieee80211_eml_params struct and just rely on sta values. I will fix it in v=
-3.
+Changes compared with v4:
+--update H264 & vp9 fluster test results
+--update vp9 single core decoder prob size setting and commit messages
 
->=20
-> Per spec I'm also not sure what the MCS map should be when it's not
-> included in the frame?
+Changes compared with v3:
+--add reviewer to commit messages
+--Rebased on top of the latest media tree
 
-IIUC the mcs map value are supposed to be in Operation mode notification fr=
-ame
-just for eMLMR. I think the driver should check if the bit is set in
-ieee80211_eml_params control field to verify if mcs_map_bw values are valid.
+Changes compared with v2:
+--add H264 fluster test results
+--reorder compatible string for dt-bindings
 
->=20
-> > + * @set_eml_op_mode: Configure eMLSR/eMLMR operation mode in the under=
-lay
-> > + *	driver according to the parameter received in the EML Operating mode
-> > + *	notification frame.
->=20
-> Maybe describe the link_id here, or move it to the params and describe
-> it in kernel-doc there?
+Changes compared with v1:
+--add v4l2-compliance test results
+--add scp upstream link
+--add HW difference discriptions for dt-bindings commit messages
 
-ack, I will fix it in v3.
+This series patches dependent on:
+[1]
+https://patchwork.linuxtv.org/project/linux-media/cover/20250510075357.11761-1-yunfei.dong@mediatek.com/
+[2]
+https://patchwork.linuxtv.org/project/linux-media/cover/20250814085642.17343-1-kyrie.wu@mediatek.com/
 
->=20
-> > +static inline int drv_set_eml_op_mode(struct ieee80211_sub_if_data *sd=
-ata,
-> > +				      struct ieee80211_sta *sta,
-> > +				      unsigned int link_id,
-> > +				      struct ieee80211_eml_params *eml_params)
-> > +{
-> > +	struct ieee80211_local *local =3D sdata->local;
-> > +	int ret =3D 0;
->=20
-> Shouldn't that be -EOPNOTSUPP?
+Kyrie Wu (10):
+  dt-bindings: media: mediatek: decoder: Add MT8189
+    mediatek,vcodec-decoder
+  media: mediatek: decoder: Add a new platform data member
+  media: mediatek: vcodec: add decoder compatible to support MT8189
+  media: mediatek: vcodec: Refactor Decoder profile & level Handling
+  media: mediatek: vcodec: Add Decoder profile & level Initialization
+  media: mediatek: vcodec: Add VP9 Probability Size Configuration
+  media: mediatek: vcodec: Fix vp9 4096x2176 fail for profile2
+  media: mediatek: vcodec: Fix media device node number
+  dt-bindings: media: Add MT8189 mediatek,vcodec-encoder
+  media: mediatek: encoder: Add MT8189 encoder compatible data
 
-ack, I will fix it in v3.
+ .../media/mediatek,vcodec-encoder.yaml        |   2 +
+ .../media/mediatek,vcodec-subdev-decoder.yaml |   5 +-
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.h  |   6 +
+ .../vcodec/decoder/mtk_vcodec_dec_drv.c       |  42 +--
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  33 ++-
+ .../vcodec/decoder/mtk_vcodec_dec_hw.c        |   2 +-
+ .../vcodec/decoder/mtk_vcodec_dec_stateful.c  |  14 +
+ .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 251 ++++++++++++------
+ .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |  14 +-
+ .../vcodec/encoder/mtk_vcodec_enc_drv.c       |  14 +
+ 10 files changed, 261 insertions(+), 122 deletions(-)
 
->=20
-> > +static void
-> > +ieee80211_send_eml_op_mode_notif(struct ieee80211_sub_if_data *sdata,
-> > +				 struct ieee80211_mgmt *req, u8 act_len)
-> > +{
-> > +	int hdr_len =3D offsetof(struct ieee80211_mgmt, u.action.u.eml_omn);
-> > +	struct ieee80211_local *local =3D sdata->local;
-> > +	struct ieee80211_mgmt *mgmt;
-> > +	struct sk_buff *skb;
-> > +
-> > +	skb =3D dev_alloc_skb(local->tx_headroom + hdr_len + act_len);
-> > +	if (!skb)
-> > +		return;
-> > +
-> > +	skb_reserve(skb, local->tx_headroom);
-> > +	mgmt =3D skb_put_zero(skb, hdr_len);
-> > +	mgmt->frame_control =3D cpu_to_le16(IEEE80211_FTYPE_MGMT |
-> > +					  IEEE80211_STYPE_ACTION);
-> > +	memcpy(mgmt->da, req->sa, ETH_ALEN);
-> > +	memcpy(mgmt->sa, sdata->vif.addr, ETH_ALEN);
-> > +	memcpy(mgmt->bssid, sdata->vif.addr, ETH_ALEN);
-> > +
-> > +	mgmt->u.action.category =3D WLAN_CATEGORY_PROTECTED_EHT;
-> > +	memcpy(&mgmt->u.action.u.eml_omn, &req->u.action.u.eml_omn, act_len);
-> > +	mgmt->u.action.u.eml_omn.control &=3D
-> > +		~(IEEE80211_EML_CTRL_EMLSR_PARAM_UPDATE |
-> > +		  IEEE80211_EML_CTRL_INDEV_COEX_ACT);
-> > +	ieee80211_tx_skb(sdata, skb);
->=20
-> It seems to me that it'd be better to not copy the request, but rather
-> build the response. It's not _that_ much data, and from the spec it
-> seems to me that e.g. the MCS map should be included in the response,
-> but you do that now, I think?
+-- 
+2.45.2
 
-ack for avoiding memcpy().
-Reading the standard, it is not clear to me if mcs map values are supposed =
-to be
-added in the Notification frame sent by the AP. What do you think?
-
->=20
-> > +void ieee80211_rx_eml_op_mode_notif(struct ieee80211_sub_if_data *sdat=
-a,
-> > +				    struct sk_buff *skb)
-> > +{
-> > +	int hdr_len =3D offsetof(struct ieee80211_mgmt, u.action.u.eml_omn);
-> > +	enum nl80211_iftype type =3D ieee80211_vif_type_p2p(&sdata->vif);
-> > +	struct ieee80211_rx_status *status =3D IEEE80211_SKB_RXCB(skb);
-> > +	const struct wiphy_iftype_ext_capab *ift_ext_capa;
-> > +	struct ieee80211_mgmt *mgmt =3D (void *)skb->data;
-> > +	struct ieee80211_local *local =3D sdata->local;
-> > +	u8 control =3D mgmt->u.action.u.eml_omn.control;
-> > +	u8 *ptr =3D mgmt->u.action.u.eml_omn.variable;
-> > +	struct ieee80211_eml_params eml_params =3D {};
-> > +	struct sta_info *sta;
-> > +	u8 act_len =3D 3; /* action_code + dialog_token + control */
-> > +
-> > +	if (!ieee80211_vif_is_mld(&sdata->vif))
-> > +		return;
-> > +
-> > +	/* eMLSR and eMLMR can't be enabled at the same time */
-> > +	if ((control & IEEE80211_EML_CTRL_EMLSR_MODE) &&
-> > +	    (control & IEEE80211_EML_CTRL_EMLMR_MODE))
-> > +		return;
-> > +
-> > +	if ((control & IEEE80211_EML_CTRL_EMLMR_MODE) &&
-> > +	    (control & IEEE80211_EML_CTRL_EMLSR_PARAM_UPDATE))
-> > +		return;
-> > +
-> > +	ift_ext_capa =3D cfg80211_get_iftype_ext_capa(local->hw.wiphy, type);
-> > +	if (!ift_ext_capa)
-> > +		return;
-> > +
-> > +	if (!status->link_valid)
-> > +		return;
-> > +
-> > +	sta =3D sta_info_get_bss(sdata, mgmt->sa);
-> > +	if (!sta)
-> > +		return;
-> > +
-> > +	if (control & IEEE80211_EML_CTRL_EMLSR_MODE) {
-> > +		if (!(ift_ext_capa->eml_capabilities &
-> > +		      IEEE80211_EML_CAP_EMLSR_SUPP))
-> > +			return;
-> > +
-> > +		if (control & IEEE80211_EML_CTRL_EMLSR_PARAM_UPDATE) {
-> > +			u16 eml_cap =3D sta->sta.eml_cap;
-> > +			u8 pad_delay, trans_delay;
-> > +
-> > +			/* Update sta padding and transition delay */
-> > +			pad_delay =3D
-> > +				ieee80211_get_emlsr_pad_delay_update(ptr[3]);
-> > +			trans_delay =3D
-> > +				ieee80211_get_emlsr_pad_delay_update(ptr[3]);
->=20
-> It seems to me you're missing a bunch of input validation?
-
-ack, I will fix it in v3.
-
->=20
-> > +
-> > +			eml_cap &=3D ~(IEEE80211_EML_CAP_EMLSR_PADDING_DELAY |
-> > +				     IEEE80211_EML_CAP_EMLSR_TRANSITION_DELAY);
-> > +			eml_cap |=3D FIELD_PREP(IEEE80211_EML_EMLSR_PAD_DELAY,
-> > +					      pad_delay) |
-> > +				   FIELD_PREP(IEEE80211_EML_EMLSR_TRANS_DELAY,
-> > +					      trans_delay);
-> > +			sta->sta.eml_cap =3D eml_cap;
->=20
-> Same comment about typed bitfield accessors, and u8_replace_bits() would
-> even shorten that quite a bit.
-
-ack, I will fix it in v3.
-
->=20
-> > +	if (skb->len < hdr_len + act_len)
-> > +		return;
->=20
-> bit late that :)
-
-ack, I will fix it in v3.
-
-Regards,
-Lorenzo
-
->=20
-> johannes
-
---FyaHzk/0gDfHIB6D
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaXftjQAKCRA6cBh0uS2t
-rLisAP9om80pHQDOpkvChlQaFlawZ3byFu4csjW1/hk/HojIRgD+LLdCh5Vm2gpA
-XN3PnDjwrSF2tiFB0i7hjlpAlocr7gs=
-=3ipe
------END PGP SIGNATURE-----
-
---FyaHzk/0gDfHIB6D--
 
