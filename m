@@ -4,90 +4,174 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79DD3D2FEDD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 19:50:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09F0CD2FEDE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 20:27:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QNxiFgzgvkz20yq6oB76o5Yn6XJfaCPIW66VkQzuTDI=; b=JfWA1I6u7gE5/jotlKRS2GIuWX
-	iaRZsnjJyxOSlcKqGrytG50K4lmN+xT0LN6fhhJn8vhOWfjL14NwAHIBUdcGPeDfJKxGKxIXQxORW
-	m2Ds+aWAl65eg5iva7BYWZc5+zpshoeSVC+Zw1r7OxFLkuuwDXw1KQuE3Ya1xHSRqvKnxKbZZf861
-	hep+/v0o9+Aw/T3D1xQfV8DfXOYMXyEYfkOgI6J0e2+a04tKJ+nVwjETugu5QJi8DMdRy/wxfX+Bb
-	+/9rotgUOzqmLpG+ndZCV7sSBvPcVfwLnhP9jSImjwtc1tT5C/Iv61D1I1Ye7hg4dypz9xFQqusEL
-	vyKxXJWg==;
+	bh=R7u/+GzEYAjioDYmkQxOY6xsCw+YDBbFVfBMYmE+PTU=; b=D7JFfCQykdT1PfATj/c96JbKcy
+	JBuKBsByc9qPI6Vc9fC+T+swN9Hukt9FEGFmL1+rFYea+djv+OmFg4xww3zsDq9nuYaPUziKoyH8P
+	i5n00GVpRKStRZAJ4AdlEVlvpW9YCP7FwC3hqtTnYPXHbaWdojofJicHpitSWiLGDaqJOGbla2RNJ
+	2eDcvfQcLPzOY6gnXrsC4rH6VNK8IBOf//z7VPMBRWY/Nbbi8pwtmgtfUZJozR7o15eV8oOCY12fC
+	0AJ51MTN98I6t1pxsUPf6Ve0//lpZQRudfvHxhjlai4YMmKEjssfPIMbZwNVsz/wp7CEpyvd1hLlO
+	SrY7sC3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkp5F-0000000Ey55-2UYg;
-	Tue, 27 Jan 2026 19:50:41 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vkpeZ-0000000F08c-3mOb;
+	Tue, 27 Jan 2026 20:27:11 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkp5A-0000000Ey4U-0KPq;
-	Tue, 27 Jan 2026 19:50:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2C45E43D75;
-	Tue, 27 Jan 2026 19:50:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EAF5AC116C6;
-	Tue, 27 Jan 2026 19:50:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769543435;
-	bh=UaKGXBQECE0SDe7XXMs88ifMfoexM+bNNiVKCwxPry8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kLQTvED4LlSKzw2nWBpeK5viX8ZbqC10mYv1QroLhWLVlCqz2iR1bg4yYnRhz/FNn
-	 UlXU0v6oTqeW3oYFDM8UA/Ntm5uOmB151/wgibG3XMZwTlzSCm3HoDhdp+9cTSuDAX
-	 jt9crfIprdiN//Qns45XzTb++v6Rc/OEHjxt157GG8V04Ct4M9GDnXgfXKn8fYBAIx
-	 Te3wrBDNMsAun6AI7V81/8dvy5LJ607YML0E+bJU//aMBkUrSL0mhN3XOOekOqHe9w
-	 y4AS+6Vynd0jQIuR1Mrpa4jR/rMBq0d/IxubsJkTUwkKRKqJGOqh+IXHAZ/qpZsJh/
-	 7WDwMYHNnLQxQ==
-Date: Tue, 27 Jan 2026 19:50:25 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+	id 1vkpeX-0000000F07g-13G4
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 27 Jan 2026 20:27:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=R7u/+GzEYAjioDYmkQxOY6xsCw+YDBbFVfBMYmE+PTU=; b=rBTZO5xTRZ3wNA3yTskagyiv3n
+	nRR29gR4Y2BNyjbyaiKqpDhDvNNdIhNU/ui2/m7gsYThLFtPLIladnks68SnhFN2F7hDU6O+3IpKr
+	kN7zsEbb8ogFluy3A3beQzDhpss+ATG1tPxtmZWzmvpN2kGKc39sYh1F9ZrsNQIyST2P362o3R8dw
+	/XKMei5dxd96q1Mnoe+Mxig/4HZVjmuQcxAoqXPtWsm9v3SPG64yf191futo9GCuN08jvGMcwsltW
+	JgXKBNPF7/WsKIK85UEQ5cITDT+HKCA3hf9eGq8OixKi4hFhsNVV3r5FH/pDfJ0m5dIR4mY7uI88r
+	QraeUu2A==;
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vkpeT-00000007aIq-33f6
+	for linux-mediatek@lists.infradead.org;
+	Tue, 27 Jan 2026 20:27:08 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 60RJ0gUP2436403
+	for <linux-mediatek@lists.infradead.org>; Tue, 27 Jan 2026 20:27:01 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=R7u/+GzEYAjioDYmkQxOY6xs
+	Cw+YDBbFVfBMYmE+PTU=; b=OlEJLz9Jts4JCKDA2sUywDbOlEwV13u5StSD37uO
+	3jZ2LqLmnkOlj3tENXxxrto0rqSvazhIxACvFa3vg9Lr0LTfmIGoBSKKWVw7oxiA
+	Ygi6pAvHAHWzb6RO4xH6d0S62SdvBx5ZYlidlKngSSWsM9rethdRC2pSYUcDiBTF
+	T5FQSQLRcDQhV7oEF8GYAH9Gbn9OVoQhUGC0n7DrBSDA+jXZdZ2uyp0KnpDgA8Sm
+	dROwvv75q9PROWNOhczfWpFsK3gmh3eR87eCfuCL8Yc6qCOcag0QIWk8bnEMl7E3
+	7ZVSIDQJjUzuMcn7KtzSEzu5NNF2rO7f5YkXeibASpI4Sw==
+Received: from mail-vs1-f69.google.com (mail-vs1-f69.google.com [209.85.217.69])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4by355r90g-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Tue, 27 Jan 2026 20:27:01 +0000 (GMT)
+Received: by mail-vs1-f69.google.com with SMTP id ada2fe7eead31-5f52b01cdc7so6458907137.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 27 Jan 2026 12:27:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1769545620; x=1770150420; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=R7u/+GzEYAjioDYmkQxOY6xsCw+YDBbFVfBMYmE+PTU=;
+        b=COyVm6HKJIkaRjXee/0oh/tc4FEoAaCSOVMYqqeR/Yd5EWj5E/VrYdRQlFKGUuuugq
+         2ruty2XK4NWTHSz34LqeWDfN253JDx0N8GNwGEsJUHH8qU2BZePX17l0F8evr5j00qYy
+         KZOCrovn6B7Zj3ZYQgdWoeE1NJAmERqlt1BrQaJrq/xyvHrQhqaUaF5/ToVoUs9eFuOG
+         jCtvTVpedO1qDkWHyZYy/VUAqPKMBYDrxAQ+ievRAMidTK7UTaq1T1bLS3ekPxjByUTf
+         ep2/c3D38LRbh8wvxMs5P/jn5cFrlQ+jV+Pj+VxRMK2H2FjxDH7hI3CQskB9KavkP5qH
+         0Yxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1769545620; x=1770150420;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=R7u/+GzEYAjioDYmkQxOY6xsCw+YDBbFVfBMYmE+PTU=;
+        b=KHMRSJvU+egZfgk6BC3G0isz55H0WCwSEFZlnxH7hGDYamFdh6Ye5689jWxZEupRok
+         jUczBlALJy3zdrhu2J9XuZvgeN04W4RPSYA5EfRDizb6o7jlfJtMroVu6CIgNeOnNw1o
+         WQceYLqLhBOJ9+EBrxeBHV+WRrQYDvjdeMHQt7+TLMMA3rU8qe8ylNiPKIGHaW09i9LZ
+         fDev3drlJb66mRPf/D2owlWLhOPDPAEOjltu454M8WHDXfbPtWkDM+5RKIIJ/DBgK+xV
+         VCU/z0GECRTmg1m+XHsz6VaIZMOE9kHOWO5HwyZfvQcttaEn4zeIoM/OWbto+p464WAW
+         lrHQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVJDi6gjwmMbsMhc+8IkY8SmRVtVaQBApATAgq/OgY7Upr5wNpcV4CBIL8K+y4ZHBsERdoK8Bcmz60d3VlhpA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzVl6XZkKqa7vWmHST15zwfCMGKFVWL5KxMqIu8TcY3jFO1XADf
+	UAGpPn6Gh9SoCzlzdSUA/r3s1gh0jbKzDfwg565zQTKkxEgv5e7AfX9uEsS3LgZh2u+DzSRI1RP
+	76BzzESsWyPS9XQw1/LCMqlIso3gTHaJE+MDK3un83um7MXRV7VWLHHqRVldSN5arD8QM9vOeYG
+	o=
+X-Gm-Gg: AZuq6aLQSCtFj7kkCb8FoO2lArt9lJdTDOm/1Qun2zyMdxbG9U3L/A5RtxEoI5c0R2n
+	3ZRAXf5Thm+5PiaoAKvn0uFj/+RQOTBLH+vmtZFnrXx457QK6xJNbsfdRn20GqVfYyx/8yKFYwo
+	SiQsNF2rvWM41loIY90D7x2+1zw7T2gXYdAaQYo4vTl24/6flWblfeaXmoCvV7ujTvytCUK4XBV
+	PWhZ4UzxQN7fMGHhPuearT9xNA3JEONL4zmAPlbAWbfC0bucU9SYNlc/KOGuFw33Lu28rKa7aZU
+	TSc++G8OFmXvuUphkiHnvBroy+qNR63LTY8TJ/+GB8hZtT0rpdkz58roA6yvWsg2b/ouP/+64rH
+	vDHDi7rjfQlatSY0FpRrbpgR/n8gS4efWrNM7uC0A/ZDvd2iGrWSzn8nt8E5w2qn2J4vd1EQf4d
+	U59GGg/9x7WYNj/e4e9z/yyAQ=
+X-Received: by 2002:a05:6102:290e:b0:5ef:5387:ca85 with SMTP id ada2fe7eead31-5f7237d2386mr962054137.39.1769545619911;
+        Tue, 27 Jan 2026 12:26:59 -0800 (PST)
+X-Received: by 2002:a05:6102:290e:b0:5ef:5387:ca85 with SMTP id ada2fe7eead31-5f7237d2386mr962042137.39.1769545619368;
+        Tue, 27 Jan 2026 12:26:59 -0800 (PST)
+Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-59e07481b72sm147447e87.11.2026.01.27.12.26.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 Jan 2026 12:26:58 -0800 (PST)
+Date: Tue, 27 Jan 2026 22:26:56 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Mark Brown <broonie@kernel.org>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Dave Stevenson <dave.stevenson@raspberrypi.com>,
-	=?iso-8859-1?Q?Ma=EDra?= Canal <mcanal@igalia.com>,
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>, Liu Ying <victor.liu@nxp.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Dmitry Baryshkov <lumag@kernel.org>,
-	Abhinav Kumar <abhinav.kumar@linux.dev>,
-	Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org, Aishwarya.TCV@arm.com
+        Maxime Ripard <mripard@kernel.org>,
+        Thomas Zimmermann <tzimmermann@suse.de>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        Dave Stevenson <dave.stevenson@raspberrypi.com>,
+        =?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
+        Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+        Chen-Yu Tsai <wens@kernel.org>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Andrzej Hajda <andrzej.hajda@intel.com>,
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        Robert Foss <rfoss@kernel.org>,
+        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+        Jonas Karlman <jonas@kwiboo.se>, Liu Ying <victor.liu@nxp.com>,
+        Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+        Philipp Zabel <p.zabel@pengutronix.de>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Rob Clark <robin.clark@oss.qualcomm.com>,
+        Dmitry Baryshkov <lumag@kernel.org>,
+        Abhinav Kumar <abhinav.kumar@linux.dev>,
+        Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
+        Marijn Suijten <marijn.suijten@somainline.org>,
+        Sandy Huang <hjc@rock-chips.com>,
+        Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+        Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org,
+        linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+        linux-rockchip@lists.infradead.org, Aishwarya.TCV@arm.com
 Subject: Re: [PATCH v4 05/10] drm/bridge: refactor HDMI InfoFrame callbacks
-Message-ID: <47619a02-c667-4fd0-afa9-f6cf7aba8dd4@sirena.org.uk>
+Message-ID: <6p52srrxddazxiwqfqmjpef7k4bbpzojxqiy57zmhqcpqa2bum@gv555pvqrige>
 References: <20260107-limit-infoframes-2-v4-0-213d0d3bd490@oss.qualcomm.com>
  <20260107-limit-infoframes-2-v4-5-213d0d3bd490@oss.qualcomm.com>
+ <47619a02-c667-4fd0-afa9-f6cf7aba8dd4@sirena.org.uk>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="sKQ7u6u6my6XlJTm"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260107-limit-infoframes-2-v4-5-213d0d3bd490@oss.qualcomm.com>
-X-Cookie: Send some filthy mail.
+In-Reply-To: <47619a02-c667-4fd0-afa9-f6cf7aba8dd4@sirena.org.uk>
+X-Authority-Analysis: v=2.4 cv=YNWSCBGx c=1 sm=1 tr=0 ts=69791f95 cx=c_pps
+ a=5HAIKLe1ejAbszaTRHs9Ug==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=vUbySO9Y5rIA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=QCwxOkPKupwELJ-03vgA:9 a=CjuIK1q_8ugA:10
+ a=gYDTvv6II1OnSo0itH1n:22
+X-Proofpoint-ORIG-GUID: 0Tc1XKNPBlPNv72930kYAluuwEqiBAtg
+X-Proofpoint-GUID: 0Tc1XKNPBlPNv72930kYAluuwEqiBAtg
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTI3MDE2NiBTYWx0ZWRfXxR3RfQ6/Ppgw
+ iSgZP01HtLtu3hpaXo50KRoqv405Tx5cqzypYvkbSED1T1Aoj2wPppQQPgN6j2+m+9EJR9dR+gm
+ dUVgo5QJ+lc23KCz+IY1mA1e5BvSjJMihjk4SgwmW3luEbxgH61cPdY3VbuGfDe8HeLQZKoOiDb
+ xavsYiBcATUrvldF7z2PbZ0aXQWTnjAPF9Bgxp8xlmH8XrTYwVm5mGk+laTyelSpeSdHy7d0InA
+ 2jQfA2/WG+rW35dItRSWYAyQioH9ubpy55yJwAmi0oDnr6XVU6YzSBuWqN8P7NlVAvkCQ77kdgj
+ fHRYMeZN4jKHWjpN4yWxCvqvm00sJhR1os7ybauuALP1YmBKYIJHwbKcPEloVxZEmLIfLGvp+qQ
+ 2VKGDv7En+/CIsIvYr7dRR+P3lU23Bc66vph34v9wF4cpIVhOtUIxwza5MWRIcO7EIIieLpDhU2
+ wYsMOmYP6e/aZQfv4Xg==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-01-27_04,2026-01-27_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 phishscore=0 suspectscore=0 lowpriorityscore=0 adultscore=0
+ priorityscore=1501 spamscore=0 impostorscore=0 malwarescore=0 clxscore=1015
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2601150000 definitions=main-2601270166
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260127_115036_189349_04510036 
-X-CRM114-Status: GOOD (  15.41  )
+X-CRM114-CacheID: sfid-20260127_202706_211688_DCD5EFD7 
+X-CRM114-Status: GOOD (  19.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,111 +186,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jan 27, 2026 at 07:50:25PM +0000, Mark Brown wrote:
+> On Wed, Jan 07, 2026 at 08:15:02PM +0200, Dmitry Baryshkov wrote:
+> > Having only a single set of callbacks, hdmi_clear_infoframe and
+> > hdmi_write_infoframe, bridge drivers don't have an easy way to signal to
+> > the DRM framework, which InfoFrames are actually supported by the
+> > hardware and by the driver and which are not. Also, it makes it
+> 
+> We're seeing oopses on Qualcomm RB5 platforms in -next which bisect to
+> this patch.  Looking at the patch I'm not immediately seeing what it
+> might be getting wrong, though I do note that the board uses a LT9611
 
---sKQ7u6u6my6XlJTm
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+LT9611UXC, yes. Fixed with [1], fix committed to drm-misc-next-fixes.
 
-On Wed, Jan 07, 2026 at 08:15:02PM +0200, Dmitry Baryshkov wrote:
-> Having only a single set of callbacks, hdmi_clear_infoframe and
-> hdmi_write_infoframe, bridge drivers don't have an easy way to signal to
-> the DRM framework, which InfoFrames are actually supported by the
-> hardware and by the driver and which are not. Also, it makes it
+[1] https://lore.kernel.org/dri-devel/176945413960.1492466.3261759749688865592.b4-ty@oss.qualcomm.com/T/#t
 
-We're seeing oopses on Qualcomm RB5 platforms in -next which bisect to
-this patch.  Looking at the patch I'm not immediately seeing what it
-might be getting wrong, though I do note that the board uses a LT9611
-which is updated by the patch.
+> which is updated by the patch.
+> 
 
-Failure log:
-
-3853 01:47:31.278489  <3>[   21.045573] msm_dpu ae01000.display-controller: [drm:msm_dsi_modeset_init [msm]] *ERROR* failed to create dsi connector: -22
-3854 01:47:31.280977  <3>[   21.057526] [drm:_dpu_kms_initialize_dsi:630] [dpu error]modeset_init failed for dsi[0], rc = -22
-3855 01:47:31.322994  <3>[   21.066927] [drm:_dpu_kms_setup_displays:766] [dpu error]initialize_dsi failed, rc = -22
-3856 01:47:31.323293  <3>[   21.075563] [drm:dpu_kms_hw_init:1283] [dpu error]modeset init failed: -22
-3857 01:47:31.323577  <3>[   21.083223] msm_dpu ae01000.display-controller: [drm:msm_drm_kms_init [msm]] *ERROR* kms hw init failed: -22
-3858 01:47:31.323809  <1>[   21.094033] Unable to handle kernel paging request at virtual address dead000000000108
-
-...
-
-3882 01:47:31.547579  <4>[   21.252828] Hardware name: Qualcomm Technologies, Inc. Robotics RB5 (DT)
-
-...
-
-3901 01:47:31.678351  <4>[   21.462030] Call trace:
-3902 01:47:31.721776  <4>[   21.464819]  drm_atomic_private_obj_fini+0x24/0x70 [drm] (P)
-3903 01:47:31.722072  <4>[   21.470924]  _dpu_kms_hw_destroy+0x4c/0x64 [msm]
-3904 01:47:31.722309  <4>[   21.475969]  dpu_kms_destroy+0x28/0xb0 [msm]
-3905 01:47:31.722528  <4>[   21.480650]  msm_drm_kms_uninit+0xac/0xd8 [msm]
-3906 01:47:31.722743  <4>[   21.485596]  msm_drm_uninit.isra.0+0x54/0xd4 [msm]
-3907 01:47:31.722968  <4>[   21.490816]  msm_drm_init+0x18c/0x1f0 [msm]
-3908 01:47:31.723228  <4>[   21.495409]  msm_drm_bind+0x30/0x3c [msm]
-3909 01:47:31.723442  <4>[   21.499824]  try_to_bring_up_aggregate_device+0x164/0x1d0
-3910 01:47:31.723646  <4>[   21.505635]  __component_add+0xa4/0x170
-3911 01:47:31.725046  <4>[   21.509851]  component_add+0x14/0x20
-3912 01:47:31.766295  <4>[   21.513793]  dsi_dev_attach+0x20/0x2c [msm]
-3913 01:47:31.766592  <4>[   21.518387]  dsi_host_attach+0x58/0x98 [msm]
-3914 01:47:31.766829  <4>[   21.523068]  devm_mipi_dsi_attach+0x34/0x90
-3915 01:47:31.767113  <4>[   21.527638]  lt9611uxc_attach_dsi.isra.0+0x84/0x100 [lontium_lt9611uxc]
-3916 01:47:31.767339  <4>[   21.534701]  lt9611uxc_probe+0x59c/0x62c [lontium_lt9611uxc]
-
-bisect log:
-
-git bisect start
-# status: waiting for both good and bad commits
-# good: [50814c5ce8d8f6751fd49c818abeb8853f8be2df] Merge branch 'for-linux-next-fixes' of https://gitlab.freedesktop.org/drm/misc/kernel.git
-git bisect good 50814c5ce8d8f6751fd49c818abeb8853f8be2df
-# status: waiting for bad commit, 1 good commit known
-# bad: [615aad0f61e0c7a898184a394dc895c610100d4f] Add linux-next specific files for 20260126
-git bisect bad 615aad0f61e0c7a898184a394dc895c610100d4f
-# good: [b047f48069330e050431e9ad762bd838af43337f] Merge branch 'mtd/next' of https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git
-git bisect good b047f48069330e050431e9ad762bd838af43337f
-# bad: [fe1e00e6f9fe8a160921f6a87f999075a1dfef0a] Merge branch 'for-mfd-next' of https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git
-git bisect bad fe1e00e6f9fe8a160921f6a87f999075a1dfef0a
-# good: [9d10cd526111a989eb353c3a4df9d4c79695ea8d] Merge tag 'drm-intel-next-2026-01-15' of https://gitlab.freedesktop.org/drm/i915/kernel into drm-next
-git bisect good 9d10cd526111a989eb353c3a4df9d4c79695ea8d
-# bad: [7260b161359d310b9a92513dbd73cd9a3a226c6f] Merge branch 'for-next' of https://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git
-git bisect bad 7260b161359d310b9a92513dbd73cd9a3a226c6f
-# bad: [d1968cd2a0ecab805106e5e60613dd45b63d52d9] Merge branch 'drm-next' of https://gitlab.freedesktop.org/drm/kernel.git
-git bisect bad d1968cd2a0ecab805106e5e60613dd45b63d52d9
-# good: [d2f618b8fe76b565f6bc0071b5eeee07a9012c6d] Merge tag 'drm-intel-next-fixes-2026-01-22' of https://gitlab.freedesktop.org/drm/i915/kernel into drm-next
-git bisect good d2f618b8fe76b565f6bc0071b5eeee07a9012c6d
-# good: [fc23163a7ca6cc0e6c3297aed3bdc9428aa8b1a9] Merge branch 'master' of https://git.kernel.org/pub/scm/linux/kernel/git/herbert/cryptodev-2.6.git
-git bisect good fc23163a7ca6cc0e6c3297aed3bdc9428aa8b1a9
-# skip: [00e6f8f60601b412e400873c8972f3e3802557f3] dt-bindings: vendor-prefixes: Add AlgolTek
-git bisect skip 00e6f8f60601b412e400873c8972f3e3802557f3
-# bad: [e5e1a0000746ded4d9fa16fceda0748aec2b6e6a] drm/bridge: samsung-dsim: samsung_dsim_host_attach: use a temporary variable for the next bridge
-git bisect bad e5e1a0000746ded4d9fa16fceda0748aec2b6e6a
-# bad: [0607052a6aee1e3d218a99fae70ba9f14b3b47ed] drm/hisilicon/hibmc: fix no showing problem with loading hibmc manually
-git bisect bad 0607052a6aee1e3d218a99fae70ba9f14b3b47ed
-# bad: [5a4e4e30f6dc4d2a68eec08257128906572f3346] drm/debug: don't register files for unsupported HDMI InfoFrames
-git bisect bad 5a4e4e30f6dc4d2a68eec08257128906572f3346
-# good: [638409979c5f7d3155afcded67532003e07a7d0e] drm/sun4i: hdmi_enc: implement clear_infoframe stub
-git bisect good 638409979c5f7d3155afcded67532003e07a7d0e
-# skip: [1d8847f457648ed4932019dcd3081bc27bcea936] drm/display: hdmi_state_helper: reject Audio IF updates if it's not supported
-git bisect skip 1d8847f457648ed4932019dcd3081bc27bcea936
-# bad: [e802c783be94bf71541a7e2ac8b1b5486aad10db] drm/display: hdmi_state_helper: split InfoFrame functions per type
-git bisect bad e802c783be94bf71541a7e2ac8b1b5486aad10db
-# good: [afc399f7a5ea7bf405b2ef85c7470529b1a9e47c] drm/connector: make clear_infoframe callback mandatory for HDMI connectors
-git bisect good afc399f7a5ea7bf405b2ef85c7470529b1a9e47c
-# bad: [b626b1a1c9ccadd8861870a2a450f02e0c61ab88] drm/bridge: refactor HDMI InfoFrame callbacks
-git bisect bad b626b1a1c9ccadd8861870a2a450f02e0c61ab88
-# first bad commit: [b626b1a1c9ccadd8861870a2a450f02e0c61ab88] drm/bridge: refactor HDMI InfoFrame callbacks
-
---sKQ7u6u6my6XlJTm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAml5FwAACgkQJNaLcl1U
-h9B9Tgf/X2VdX2dj9e0HmnAWF7Z6YHcQwTv5vOPRR3TtPQ1f0IJF84ETF90P7M+z
-0r53d6IbwJsKLOX4qsB/rNQEI5N+CJmuM3AAwc2f6ATSDYXwfp7G82qqjy1yhIf5
-WTaqKV6iegc3pW6A+6AaU7mOqNBCm74S+28Yb07/FYYYI4CLJ1MZODAbjAHdKJMh
-3KgxmTu9nFANpwxnxf7J6KAVvq+V3AWackd3YyPPRJymtC/VP3hDf+YJdFA8hBV0
-aHaxFLCwzVkFfUutqrJ45IQS3wyDewkuIHBBWMfls4ORz6J+JAHSgoxHFLC+Xvwv
-0T8FfKnKWZSsk5IGJrkrvzX7z2NSgg==
-=rTj8
------END PGP SIGNATURE-----
-
---sKQ7u6u6my6XlJTm--
+-- 
+With best wishes
+Dmitry
 
