@@ -4,73 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B222CA6CB6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 09:03:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CF2ECA6CB8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 09:11:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:Content-Type:
+	Content-Transfer-Encoding:In-Reply-To:From:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MeqVQloYBUgHFacGrCxsF/LQzrrfHdlNQ+KOGNUpnDY=; b=YK4pFWXegM4PXTYN3/jgtvDcdo
-	fNsUdVX1e3r6xyO0g0f7uCp2gmoG1jPrsTZ8GZgXwKO99qvAOhGbvPlWXjUYHhFHoaXtVLhX1RMIm
-	4c5zq+voJ9CbooWGu4vdUwgFn465fWuaK4zB48dZltsmjtvcWEo9wWY1OsF+C3i4lI1cE6Ip2TOnk
-	Rl94jKupAYeBup1dbT26LsMV/LiGC1uAcAmx2fMuai4RYVYRTtCh7soMysUmMhKkHvzlqKvS7H28M
-	j3kEFqcDT54Eub4YwtqEn2RENEW5hdyDw041r4E9l9Y7WSS3XgE2wNrIskrwTTWNFJAgOr63acCBB
-	U4cB4SZA==;
+	bh=o3uYq+bvJ8IHWH6k2uOihpa6CKY0ItOKPXbc7h/Pz2g=; b=4Ms9VDSSbNVUvKhPBBdWgC7WDQ
+	YYQmLFdN9jKG1ymyO60oSwdxxJxkPLS0NkTE6nfcSG4UK+bPSPin5QImrjVhAy1UC8brn3aUP/yrn
+	9qAe7kGGjp0TPCbOQo4trGC9G/71zxucw+bNW/rKBVIcP4TkT4r3gDYfBJ9OY1gyL0bCDXzK1lTpD
+	sVEEtZpSXbqtdoQyf/tHbFHKN5iHmOmf1gEuveWY8A1qfT0a2mQeY19fp5RzZxKug/QlfqpFHJXK4
+	5Lt0o4tsuQlYCn/M3qt+0UjUVPsfb5XGgCXp7nITf0euLT+eXGNspDXcwx0Dq6Y4V/GufrBgsRlIT
+	njuYAzog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkeym-0000000DtkN-2ZWt;
-	Tue, 27 Jan 2026 09:03:20 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vkf6t-0000000DuZu-1dO2;
+	Tue, 27 Jan 2026 09:11:43 +0000
+Received: from mailout1.w1.samsung.com ([210.118.77.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkeyg-0000000Dtj3-2i3o
-	for linux-mediatek@lists.infradead.org;
-	Tue, 27 Jan 2026 09:03:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B5DB142DF5
-	for <linux-mediatek@lists.infradead.org>; Tue, 27 Jan 2026 09:03:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 97D0CC116C6
-	for <linux-mediatek@lists.infradead.org>; Tue, 27 Jan 2026 09:03:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769504593;
-	bh=MeqVQloYBUgHFacGrCxsF/LQzrrfHdlNQ+KOGNUpnDY=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=pPV4DL7m/gJvEHlaiCbGnx+4lsWCYgMcLWzvj+ZC6g2LZ8/ujtsYjQZwM8+zNeHr+
-	 lbl0L29BFzybBu0YzW/P8gDh1fhHNrahKL0lP0C8pUEl8A/ud0jLY8XTPG34BV/YCX
-	 fHaC1vSf7nRAEdZB+Rg6Fzuu+NGqNjpv/e7le0Hk7ElHPjkArc7MnW04pKzkxEYSds
-	 8XBwpoyMTZog+4Y9LHtO9ATOcA1rVBOh4xADhxtlP+mpKgR23jsWPnxO8ywxGK5TTX
-	 aGQovehOrhQZm6Rv9M6L7IqWMWq02SoJ7UG1EAhciLIgsWYG9lnDxayANpZ1P2nzcT
-	 WRhDrQFDoDtcw==
-Received: by mail-yx1-f42.google.com with SMTP id 956f58d0204a3-6446c1a7a1cso4366471d50.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 27 Jan 2026 01:03:13 -0800 (PST)
-X-Gm-Message-State: AOJu0YzwiKap1uAWAFLGyfzhxY9VDDs3euIhWKCcCXdRJON+Lz7RP3UL
-	vBSmBZMijgZxRiipe+odcNvwUiYAdCCoW5IggXc5s7OH+FyYN8l2T5RgJ1NknlZF8lzd0+8ssk2
-	aHKmJS62wCq1G6+x5UE/Gdn93hfKfpNU=
-X-Received: by 2002:a05:690e:b4d:b0:649:6581:a68f with SMTP id
- 956f58d0204a3-6498fc15729mr549082d50.19.1769504592911; Tue, 27 Jan 2026
- 01:03:12 -0800 (PST)
+	id 1vkf6o-0000000DuYu-3NmG;
+	Tue, 27 Jan 2026 09:11:41 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260127091130euoutp014c75f018134d9523a802741a4410d6be~Oi4Ej8mLk0793907939euoutp01d;
+	Tue, 27 Jan 2026 09:11:30 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260127091130euoutp014c75f018134d9523a802741a4410d6be~Oi4Ej8mLk0793907939euoutp01d
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1769505090;
+	bh=o3uYq+bvJ8IHWH6k2uOihpa6CKY0ItOKPXbc7h/Pz2g=;
+	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
+	b=ARDcksx7il7K+UJhL3qOUbJrzsCnWlDnWMyBKycHeHqFCGmyemgus6UZuDTSdf+bf
+	 sio+/WnMIcFH7Q4EvSeQJPsiIhXonBavFn5UetIdLJJLlTvKiDVGsd1YhwF3xweOeh
+	 qSQI7psb+mdS7QYSc32Br4lqAOSfjZL27eQp/MjQ=
+Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
+	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+	20260127091130eucas1p1440fbe9f7c4c663fa3a68f6fcb86470d~Oi4EUDQLX2294122941eucas1p1s;
+	Tue, 27 Jan 2026 09:11:30 +0000 (GMT)
+Received: from [106.210.134.192] (unknown [106.210.134.192]) by
+	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
+	20260127091128eusmtip12e05e437c03450178ad4e2539faa417e~Oi4CsG4iT0357803578eusmtip1P;
+	Tue, 27 Jan 2026 09:11:28 +0000 (GMT)
+Message-ID: <002704a5-9ccb-4abb-beaf-5a448c17ea39@samsung.com>
+Date: Tue, 27 Jan 2026 10:11:27 +0100
 MIME-Version: 1.0
-References: <OS7PR01MB13834D5838A90C138C62CD817BC8AA@OS7PR01MB13834.jpnprd01.prod.outlook.com>
-In-Reply-To: <OS7PR01MB13834D5838A90C138C62CD817BC8AA@OS7PR01MB13834.jpnprd01.prod.outlook.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Tue, 27 Jan 2026 10:03:02 +0100
-X-Gmail-Original-Message-ID: <CAD++jLmx_kdVF9HuOt35EEtFVBYnaRrDYBkTfU4AyaaKeBPdVA@mail.gmail.com>
-X-Gm-Features: AZwV_QhrL_MsPD_jNlzFPukjH1u2v412Vs0zwRaVna-VU9spr3ixByrU9UpuLWU
-Message-ID: <CAD++jLmx_kdVF9HuOt35EEtFVBYnaRrDYBkTfU4AyaaKeBPdVA@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: enable ies_present flag for MT798x
-To: Shiji Yang <yangshiji66@outlook.com>
-Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sam Shih <sam.shih@mediatek.com>, 
-	Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Betterbird (Windows)
+Subject: Re: [PATCH v4 02/10] drm/vc4: hdmi: implement clear_infoframe
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+	<mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
+	<airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Dave Stevenson
+	<dave.stevenson@raspberrypi.com>, =?UTF-8?Q?Ma=C3=ADra_Canal?=
+	<mcanal@igalia.com>, Raspberry Pi Kernel Maintenance
+	<kernel-list@raspberrypi.com>, Chen-Yu Tsai <wens@kernel.org>, Jernej
+	Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>,
+	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong
+	<neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent
+	Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
+	<jonas@kwiboo.se>, Liu Ying <victor.liu@nxp.com>, Chun-Kuang Hu
+	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias
+	Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Rob Clark
+	<robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>, Abhinav
+	Kumar <abhinav.kumar@linux.dev>, Jessica Zhang <jesszhan0024@gmail.com>,
+	Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>,
+	Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+	<heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org
+Content-Language: en-US
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+In-Reply-To: <jiq5ublhbfzuv3qsz3n6bve32wmto5hxc6mxppb2i2wagykafx@d235legi4r5o>
+Content-Transfer-Encoding: 7bit
+X-CMS-MailID: 20260127091130eucas1p1440fbe9f7c4c663fa3a68f6fcb86470d
+X-Msg-Generator: CA
+Content-Type: text/plain; charset="utf-8"
+X-RootMTR: 20260126174455eucas1p1f219202580a1033d3e881adc4f37f206
+X-EPHeader: CA
+X-CMS-RootMailID: 20260126174455eucas1p1f219202580a1033d3e881adc4f37f206
+References: <20260107-limit-infoframes-2-v4-0-213d0d3bd490@oss.qualcomm.com>
+	<20260107-limit-infoframes-2-v4-2-213d0d3bd490@oss.qualcomm.com>
+	<5c247393-b096-43ea-9ff4-9dd5fcdeec73@samsung.com>
+	<CGME20260126174455eucas1p1f219202580a1033d3e881adc4f37f206@eucas1p1.samsung.com>
+	<36278555-a01e-4c96-bb26-e170016e5f8c@samsung.com>
+	<jiq5ublhbfzuv3qsz3n6bve32wmto5hxc6mxppb2i2wagykafx@d235legi4r5o>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260127_010314_702309_53CED676 
-X-CRM114-Status: UNSURE (   8.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260127_011139_447091_F35A27B0 
+X-CRM114-Status: GOOD (  11.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,17 +107,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jan 17, 2026 at 4:05=E2=80=AFAM Shiji Yang <yangshiji66@outlook.com=
-> wrote:
-
-> The MT798x series SoCs have IES regiter definitions. I think we
-> must enable the ies_present flag to correctly configure the pin
-> input mode.
+On 26.01.2026 20:00, Dmitry Baryshkov wrote:
+> On Mon, Jan 26, 2026 at 06:44:52PM +0100, Marek Szyprowski wrote:
+>> On 26.01.2026 18:42, Marek Szyprowski wrote:
+>>> On 07.01.2026 19:14, Dmitry Baryshkov wrote:
+>>>> Implement the clear_infoframe callback, disabling corresponding
+>>>> InfoFrame type.
+>>>>
+>>>> Acked-by: Maxime Ripard <mripard@kernel.org>
+>>>> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+>>> This patch landed recently in linux-next as commit 3a4ceb89a972
+>>> ("drm/vc4: hdmi: implement clear_infoframe"). In my tests I found that
+>>> it causes the following regression on Qualcomm RB5 board:
+>> Please ignore my report, it looks that automated bisecting got a bit
+>> confused.
+> See https://lore.kernel.org/dri-devel/9ebc0582b0f7990d7df992a07ec8ef7f@kernel.org/T/#t
 >
-> Signed-off-by: Shiji Yang <yangshiji66@outlook.com>
+> I'm going to push it to drm-misc-next-fixes.
 
-No one said anything so patch applied!
+Thanks for pointing that patch! It fixed my issue.
 
-Yours,
-Linus Walleij
+Best regards
+-- 
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
+
 
