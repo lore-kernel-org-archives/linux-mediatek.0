@@ -4,69 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F2FD2FEC4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 17:25:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02040D2FECE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 18:18:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=epLIJhkrys+CiHq6G2TqBF8RMwxjfAZPQFgcjmq43pA=; b=U5wqcvSbFBL18WP6TDp2JTxdbR
-	Zw+bfweUA4w0vuUQhorYADNc3F0IM5xY+cAEUfNPDjMpu+X7k8p9us3Y2aqGDrY6lktFiSgc9Oz5k
-	OP92N/TwQu+RuMXONhI/ud7bvvd/Mu1jshO6LA9Lpby/KFt4n8SEy6JcKkxwuXYLxhOU0hmFUfBfk
-	+SGmYc+csZMgMZfUkxOdfXOnPaYDXQvH9yHLFgQJsucMXW/BLMHB5D/qaCdDe2SxAYsXQ1oMR2vnD
-	8/ouwhd3LlyNqlbN7DgHjJKFVevAAEhuZQGDYGqcULrM3bpqAjTMUZwvuGCCECjhGZLZMEgSZYV6p
-	yrGu2BUg==;
+	bh=1O10nq57uF2yonMLHejTJonR3kk2tYwvSO30+vtuA7Q=; b=eQpeU6dnRpgZsaMezBFY8kI4Ip
+	21afbfrmWYwNBhEW1PGmohv/NcA73tVRzGaqjKFCYdLlyG9nE1Ix12DA3gOU9Q9sX4v6yQGHKIWF/
+	sXq9MSMdBoutOOOmIgMQb6eQOiqoxPAKg6ex+5m+PYBsKEX2I/mOAbH7GZ2OTwkfK6nqX41RYAFws
+	hu7eAm8gHX8Mn2xjBrg873I8GX/OUkawEVYsgOvBCnNifXcQiCezf4q91CHGE6vkeC2XiqeFTtSYf
+	xDY8Kd6YKsml822sTOViePghB3dIFapaoi01aAQf7kAdAf3rjghVChUzPcNHXU5mfkX6t+tBc10mI
+	56AxtAtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkmom-0000000EjAI-3Jg2;
-	Tue, 27 Jan 2026 17:25:32 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vkneB-0000000EnjZ-17nN;
+	Tue, 27 Jan 2026 18:18:41 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkmok-0000000Ej9w-21rD;
-	Tue, 27 Jan 2026 17:25:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8AC4A60132;
-	Tue, 27 Jan 2026 17:25:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EEAA8C116C6;
-	Tue, 27 Jan 2026 17:25:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769534729;
-	bh=rW38RPoI3oC7pNCyY0rJv3O6uYwRPEMNoNEw8/xECFw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=broqQYSUyCZFqhUBVTkrR+dH3UsWbklfnhuW3B0HJf/2US/ZGqbFoSwMfI9QS1+AU
-	 irWM9QESApcK+/HViaWyDz080JoEFiS0H+7X2Yim/C5wv1xUlffScWUGE/g8LVxGIV
-	 TVN+um2U/fSPVvxp2GsbZgXoVXkLUd6HMzxhYuAeiu0e69LTvhBCvSO8gVgSXU6hjC
-	 Dab1HZsAECYGVgpU0E+i1X6hDDlJp680ohEBrUC3Il2mZdg3kKCYf6oqZsIBefj5Eb
-	 qbpJC/mdaHmzKFtpfLnH58a+cPtH8mXxN6l0b8KiaQUE9PipMMwAYCJZXz82bLnZVB
-	 d0oMLucv9S9uw==
-Date: Tue, 27 Jan 2026 17:25:04 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+	id 1vkne8-0000000Enim-3pLV;
+	Tue, 27 Jan 2026 18:18:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1769537891; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=fEb0Cw0/fBkS8pB0EZvsd01qretjQhA9PdmsjDAZ2GyHqlsAwojf9WvigoKbhEdpZFndyMkv+fPCTQAtVFxTEEMO3W9tNaxKQTXWaEzvhZtn2INA42ZQaitNZYDILx7m+TnXWk+2m0wzyW4G/7T0yYs8xFQ4UlCF6HXkjyvNwBk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1769537891; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=1O10nq57uF2yonMLHejTJonR3kk2tYwvSO30+vtuA7Q=; 
+	b=Udg8Byuy82YLS3nLoyIU67KXzJ9Jo2n15L1LIv0ZbWZmijGKUbK0KWSI26REhRRnhVTtfm+58TLJArSSxVokMMBfXtrpaoOIkLmv/x0BhwEX3bBL2nuGSdNjA8ca4jSOwUn9ucBWNRZyvJy6OKVlnL1U8FC5jW4zj3ZfUr641b0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1769537891;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=1O10nq57uF2yonMLHejTJonR3kk2tYwvSO30+vtuA7Q=;
+	b=cgyGGkiipdrS15+YkTQU3VtWMDwt3STN5bYx656tenyNtnVtPXA4PeTjgpF9qlEt
+	EJNKoG8RiZZfemBiNic0WN4pLV3I6hcyOWJNHY0lLzOxLzt4idbPvN+sK4VO9xZFJ5J
+	ZzI/VI4v1vHHGbBPzIGp6xh61Vw48cb+FWkJ6jgQ=
+Received: by mx.zohomail.com with SMTPS id 1769537889900300.4354081160377;
+	Tue, 27 Jan 2026 10:18:09 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Mark Brown <broonie@kernel.org>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Dong Aisheng <aisheng.dong@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Yassine Oudjana <y.oudjana@protonmail.com>,
-	Laura Nao <laura.nao@collabora.com>,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
-	Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	kernel@collabora.com, linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ Dong Aisheng <aisheng.dong@nxp.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Yassine Oudjana <y.oudjana@protonmail.com>,
+ Laura Nao <laura.nao@collabora.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
+ Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ kernel@collabora.com, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH v3 1/5] clk: Respect CLK_OPS_PARENT_ENABLE during recalc
-Message-ID: <4ea31b0d-af6e-44f7-86e4-35a43b8c71e7@sirena.org.uk>
+Date: Tue, 27 Jan 2026 19:18:02 +0100
+Message-ID: <6800096.lOV4Wx5bFT@workhorse>
+In-Reply-To: <4ea31b0d-af6e-44f7-86e4-35a43b8c71e7@sirena.org.uk>
 References: <20251010-mtk-pll-rpm-v3-0-fb1bd15d734a@collabora.com>
- <20251010-mtk-pll-rpm-v3-1-fb1bd15d734a@collabora.com>
  <036da7ce-6487-4a6e-9b15-97c6d3bcdcec@sirena.org.uk>
+ <4ea31b0d-af6e-44f7-86e4-35a43b8c71e7@sirena.org.uk>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="RF8mwgvq6/WUQAl0"
-Content-Disposition: inline
-In-Reply-To: <036da7ce-6487-4a6e-9b15-97c6d3bcdcec@sirena.org.uk>
-X-Cookie: I brake for chezlogs!
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260127_101837_017181_11690EFF 
+X-CRM114-Status: GOOD (  20.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,41 +86,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tuesday, 27 January 2026 18:25:04 Central European Standard Time Mark Brown wrote:
+> On Tue, Jan 27, 2026 at 05:01:35PM +0000, Mark Brown wrote:
+> > On Fri, Oct 10, 2025 at 10:47:09PM +0200, Nicolas Frattaroli wrote:
+> > > When CLK_OPS_PARENT_ENABLE was introduced, it guarded various clock
+> > > operations, such as setting the rate or switching parents. However,
+> > > another operation that can and often does touch actual hardware state is
+> > > recalc_rate, which may also be affected by such a dependency.
+> > 
+> > I'm seeing boot regressions in -next on the Avenger96 which bisect to
+> > this patch in -next.  The board resets during startup:
+> 
+> I am also seeing some similar regressions even earlier on i.MX8MP
+> platforms, though they're resetting even earlier before any output is
+> produced (even with earlycon).  Didn't confirm yet with a revert or
+> anything though.
+> 
 
---RF8mwgvq6/WUQAl0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Someone else seemingly bisected to this commit on i.MX8MP as well
+and replied to the RESEND of the series, and confirmed with a
+revert[1].
 
-On Tue, Jan 27, 2026 at 05:01:35PM +0000, Mark Brown wrote:
-> On Fri, Oct 10, 2025 at 10:47:09PM +0200, Nicolas Frattaroli wrote:
-> > When CLK_OPS_PARENT_ENABLE was introduced, it guarded various clock
-> > operations, such as setting the rate or switching parents. However,
-> > another operation that can and often does touch actual hardware state is
-> > recalc_rate, which may also be affected by such a dependency.
->=20
-> I'm seeing boot regressions in -next on the Avenger96 which bisect to
-> this patch in -next.  The board resets during startup:
+I'm somewhat surprised by this, because to me it doesn't make intuitive
+sense that some platforms would rely on CLK_OPS_PARENT_ENABLE to not
+enable the parent clock during a recalc.
 
-I am also seeing some similar regressions even earlier on i.MX8MP
-platforms, though they're resetting even earlier before any output is
-produced (even with earlycon).  Didn't confirm yet with a revert or
-anything though.
+Can someone let me know which clocks (with which parent) in those
+affected devices is causing this? I'm wondering if this change
+unmasked some undeclared dependency that it's now stumbling over
+because it's enabling the parent earlier than ever.
 
---RF8mwgvq6/WUQAl0
-Content-Type: application/pgp-signature; name="signature.asc"
+Would appreciate if we could fix up the affected platforms rather
+than revert this, because the platform I added this for was
+definitely using a parent-child relationship, and definitely
+needed to have the parent clock on during recalc.
 
------BEGIN PGP SIGNATURE-----
+I can always bring back the RPM model I went for previously, but
+that feels like more of a hack around this caveat than a proper
+description of the clock relationship.
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAml49O8ACgkQJNaLcl1U
-h9DWogf/Z6f+ynVN93YYO78VeYBg+sDQozhRTPncQpjvglNt8Mq+zTZKAzdWU8fo
-jwbjNVtpH6kamkMp5b/tIVaFzuD8cHU0B0AdnVcnueJXNJ49AxUy9oIZlKCJTS6f
-bMFQoiJ6nniK04tIBXw7KUjIOqetkXLva4CtzYO7Lp/CHsp6nJF6ExXMxodiy9R9
-EFOwyOMcWNtVg+C/ekXKzvtoYWOWBZ7ug39ftHJwnpUYLLX4tqj4e2F3UWTT6zd6
-4BiaA6euXIAGpX+ndLto43Ecm2QwSMrZ+r3KGQelFMY3G7GnGkzZxAgb1G1dlE4I
-wUCqqcDUxVEXsebEpYs7GbyDTI+Mhw==
-=uEAl
------END PGP SIGNATURE-----
+To not have me break everyone's -next for days on end, feel free
+to drop this patch. MT8196, which this was added for, doesn't boot
+with mainline yet anyway.
 
---RF8mwgvq6/WUQAl0--
+Kind regards,
+Nicolas Frattaroli
+
+https://lore.kernel.org/all/6239343.lOV4Wx5bFT@steina-w/ [1]
+
+
+
+
 
