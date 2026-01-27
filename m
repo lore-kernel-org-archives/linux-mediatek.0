@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F2BD19515
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 09:37:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D752D19515
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 09:39:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qN+tpQ1BiZ+//HmA3wCEosCk0bNBvxeWcXDKb6cigNA=; b=G+XWAlUCEsepE63O0Cj2if4AXs
-	chuuXcWyPve0ztSJ55vRiqzpC0po46N24q+DCtyyLanI/Gw0pdJ5VkYPQKudqAYfpxUEelVjw7/L8
-	CWktyzfBs/tBYKXmHN+Wg6vVYNgGUhtuwNJECVZIEV10ty441zAAiF6IesaWfJ11S6vwhWd56Gsfl
-	i6xSU73mllR2rkzKX7SVLkSV2pvyHfmfDXoSvpBasC+2IJRZNWnCys9xCIQNzWK6l6qjz4UEOH5l5
-	QxH445RcLFFBA/gjNV9qYDhD+x4BSgdpeZQrm8xjbeBbB+TgnMNtLmZUragPIBH9ewevMf5EOZWZ3
-	VRL/bPJA==;
+	bh=oZ1nqRttscRDb16nvyQHmnYUcs+BHGQLI8sK1OBlzmU=; b=wVD3Z0GhpIH4Z9LQpFhHd2DbdS
+	dLxoCaO6vfK62x56ljlyenL4/T3l4hsseV/lGOMnGVbzJjpEwD/vawRO85J9azbRyAGfOAdgYWgXa
+	frL4lLPRhKj+FUMrjpxDa/k7/evOKtMO8JU8ZCledlhxiInIuJQ2c/DiofglVeGlPfd8yJVdbQM62
+	CfMtLv1mfzRUqGfpDhreF0UDPlei1qh/0ad/mTiyzVYZttnc4JFL0FWDN6aZBtCYNy47TdDMMtRSF
+	akOJ6HX4gf1zNUnQwsAa6EnA0L1OpwCUMUJeK8oYQ+BFY0tdhTBKhOk3RdK+d3BBeIVa7ug1afmti
+	Ty64YZgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkfVv-0000000DxIW-0WPo;
-	Tue, 27 Jan 2026 09:37:35 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vkfXf-0000000DxoI-0dnC;
+	Tue, 27 Jan 2026 09:39:23 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkfVm-0000000DxGl-3oC1;
-	Tue, 27 Jan 2026 09:37:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EAEBE60097;
-	Tue, 27 Jan 2026 09:37:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 23707C16AAE;
-	Tue, 27 Jan 2026 09:37:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769506645;
-	bh=kW6QRj1KHFAisJA+DUtpLIHXA+CHWOk19fvX1z86acc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pBesd8suneqE+ep6Zoo3I2+szbwRdxAk4WqwcxQkPkgMbp5jjSbSk2ViOlcOKpBf6
-	 YJbJTsRlq2tFyCFaZNpNwj4AZwaYFShutMjSLNGy/5cubxB/hDF2XDKHA/VbbcAYlM
-	 EyF8uQSegvrjHjqZbosTR3TNc5ozp02n2KkYKCAPkUvdThL5ljW2xSBF/T+tEnAVod
-	 S9AT8dTaT7I/u1NtNYxO3nO9WKSHanC+2ckfWNS/oNZQ6Za7dvs+Ayz55Z+uNJbh6y
-	 VgELspYxfOhH35nDjZr/y9+Gm0jJbm4lwxfaCyPApA+aR8w2xKTI+V0jk+s0VLxhWb
-	 XdWApszp5PH3w==
-Date: Tue, 27 Jan 2026 10:37:22 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Johannes Berg <johannes@sipsolutions.net>
-Cc: Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
+	id 1vkfXd-0000000Dxn9-0APf;
+	Tue, 27 Jan 2026 09:39:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=oZ1nqRttscRDb16nvyQHmnYUcs+BHGQLI8sK1OBlzmU=;
+	t=1769506760; x=1770716360; b=SjdqwJJwqwjDGi9atwB7JbG1zOAscLkkxKZo5zDz/bdj2+c
+	fhJYWClTNISP2owmCB3CyCZaxY8TCRCGhW0CSTB1oDvDxLmk7HICTLo+Gv79M77hTDLCxsz/3X9MI
+	iQyMoM+L4NdrzojRp7sQ1YgWWzBVzQzzWO9oGyS/is1Gsmn8DzSoW5Wmjyg1y3Ait9/pLYNSbCtHN
+	esD706CxSOnKInB5Y+cn2QpggMuvL5Pi9gceaa4E+IZSdpTFtFRO060Cpheb9bZhIF7kPTUXNNXWr
+	qq1HxpMVylTIxdCO0956EdZJkl2+ASMmMBs6KgtTpOS03nuXv/whu0JznqgQq7AA==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.98.2)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1vkfXV-00000004vNm-2gYa;
+	Tue, 27 Jan 2026 10:39:13 +0100
+Message-ID: <3a70b1e233d413b8b812d4c16dd0263f3ff4557f.camel@sipsolutions.net>
 Subject: Re: [PATCH wireless-next v2 1/2] wifi: mac80211: Add eMLSR/eMLMR
  action frame parsing support
-Message-ID: <aXiHUlHmrKz8JgXS@lore-desk>
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, 	linux-wireless@vger.kernel.org,
+ Felix Fietkau <nbd@nbd.name>, Shayne Chen	 <shayne.chen@mediatek.com>,
+ Christian Marangi <ansuelsmth@gmail.com>, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Date: Tue, 27 Jan 2026 10:39:12 +0100
+In-Reply-To: <aXiHUlHmrKz8JgXS@lore-desk> (sfid-20260127_103728_074617_E1C38CA6)
 References: <20260125-mac80211-emlsr-v2-0-466329d61c88@kernel.org>
- <20260125-mac80211-emlsr-v2-1-466329d61c88@kernel.org>
- <01e62344994a34daae0666b3873aa98e72fb5850.camel@sipsolutions.net>
- <aXftjdCtqnQk69ys@lore-desk>
- <b592a6c9a8f59f112b2221b9a46568769b1e9dcd.camel@sipsolutions.net>
+	 <20260125-mac80211-emlsr-v2-1-466329d61c88@kernel.org>
+	 <01e62344994a34daae0666b3873aa98e72fb5850.camel@sipsolutions.net>
+	 <aXftjdCtqnQk69ys@lore-desk>
+	 <b592a6c9a8f59f112b2221b9a46568769b1e9dcd.camel@sipsolutions.net>
+	 <aXiHUlHmrKz8JgXS@lore-desk> (sfid-20260127_103728_074617_E1C38CA6)
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="tGRs4KgtXgG4/Ty3"
-Content-Disposition: inline
-In-Reply-To: <b592a6c9a8f59f112b2221b9a46568769b1e9dcd.camel@sipsolutions.net>
+X-malware-bazaar: not-scanned
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260127_013921_078778_48D9AFA0 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,73 +82,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---tGRs4KgtXgG4/Ty3
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> On Mon, 2026-01-26 at 23:41 +0100, Lorenzo Bianconi wrote:
+On Tue, 2026-01-27 at 10:37 +0100, Lorenzo Bianconi wrote:
+>=20
+> > OK, I guess the memcpy was right after all:
 > >=20
-> > > Per spec I'm also not sure what the MCS map should be when it's not
-> > > included in the frame?
+> > =C2=A0=C2=A0=C2=A0An AP affiliated with the AP MLD that receives an EML=
+ Operating Mode
+> > =C2=A0=C2=A0=C2=A0Notification frame from a non-AP STA affiliated with =
+the non-AP MLD
+> > =C2=A0=C2=A0=C2=A0should send an EML Operating Mode Notification frame =
+to confirm the
+> > =C2=A0=C2=A0=C2=A0mode switch at the AP MLD to the non-AP STA with EML =
+Control field
+> > =C2=A0=C2=A0=C2=A0set to the same value as EML Control field in the rec=
+eived EML
+> > =C2=A0=C2=A0=C2=A0Operating Mode Notification frame from the non-AP STA=
+ before the
+> > =C2=A0=C2=A0=C2=A0transition timeout expires.
 > >=20
-> > IIUC the mcs map value are supposed to be in Operation mode notificatio=
-n frame
-> > just for eMLMR. I think the driver should check if the bit is set in
-> > ieee80211_eml_params control field to verify if mcs_map_bw values are v=
-alid.
+> > But I think better restrict memcpy() then to just the EML Control field
+> > and build the action header etc. directly.
 >=20
-> Yeah you're right, the MCS Map is always present if EMLMR Mode is set to
-> 1. I thought it was also optional and then what values should you use?
->=20
-> Can't mac80211 validate the values?
+> I guess we can just memcpy() control field + link_bitmap (if present) +
+> eMLMR Supported MCS and NSS Set subfiled (if present). Agree?
 
-I guess we can validate eMLMR Supported MCS and NSS Set subfiled according =
-to
-the table 9-417t available in P802.11be standard.
+Well, the link bitmap and MCS set subfields are all _part_ of the EML
+Control field, so I'd not phrase it that way, but yes.
 
->=20
-> > Reading the standard, it is not clear to me if mcs map values are suppo=
-sed to be
-> > added in the Notification frame sent by the AP. What do you think?
->=20
-> Hmm. I thought no, but then the language says it's present when the
-> EMLMR Mode is set to 1, so ... it would have to be? Strange, because
-> it's not really defined (well) in this direction.
->=20
-> OK, I guess the memcpy was right after all:
->=20
->    An AP affiliated with the AP MLD that receives an EML Operating Mode
->    Notification frame from a non-AP STA affiliated with the non-AP MLD
->    should send an EML Operating Mode Notification frame to confirm the
->    mode switch at the AP MLD to the non-AP STA with EML Control field
->    set to the same value as EML Control field in the received EML
->    Operating Mode Notification frame from the non-AP STA before the
->    transition timeout expires.
->=20
-> But I think better restrict memcpy() then to just the EML Control field
-> and build the action header etc. directly.
-
-I guess we can just memcpy() control field + link_bitmap (if present) +
-eMLMR Supported MCS and NSS Set subfiled (if present). Agree?
-
-Regards,
-Lorenzo
-
->=20
-> johannes
-
---tGRs4KgtXgG4/Ty3
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaXiHUgAKCRA6cBh0uS2t
-rPFrAP9U5RInNCg8lzoLRgQI/9uuSh9XghVNRgnh/e9FWA2hgQEAxUM+Se7rKHSk
-yA0+GV3G+INjnnXvmkBzfwRINc9uJAE=
-=iYd0
------END PGP SIGNATURE-----
-
---tGRs4KgtXgG4/Ty3--
+johannes
 
