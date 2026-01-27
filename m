@@ -4,84 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B629D25920
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 02:43:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 575A9D2595C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jan 2026 08:04:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k7kT7FIASxnKruzwo7e82b+7l9rC3y2r57xnfSrZR70=; b=Ss+ey5MtxRuup4sVDtKmbAUVzL
-	ZT5B3oIWxYqluSMBA9Qz/u9Qsrp5+JrFBURGHwEpi5AwPfXQNYvdqeo5XjGPObFiyoFTQ2aqzmERa
-	WIobQT0pvn3X7E5hJVw+ufZwgXeMWzVuUd+PREEfjxa9oPIQDpdnDDdzGcqGU9VVCHkaepyAqiDY5
-	lkNQl1ImGO3zmatU07vvKDHC8EO4ptKZCKlCfLPK4ipBgybECYYh0QITNOuJBraTBkUws7URatv7J
-	Jut+57l97rjzhBKO3/zQhBWoJfN2Jp8voWw+7ZbydqcLTtmQQ9Xv2xqzb3cCfcIycHCQOLThjD1h2
-	QElRXbcg==;
+	bh=h+1+uhzaNgtaSPXCQF2LP7SSvxe54i1i/2urVLgEc/g=; b=edmvCe7KTLX72BvP86HXcsm0J0
+	WKTFaCKrV0nBF+THC4XhI31pJRrL9Ow0LXUSP+zGEJ3NWKP+IJEybS4aX3RToKmEyF0wPd02egb2Q
+	fn2ZKmdnw9EYBk4n9wk/3MA+f3xB6lnX8QFAb9q1UOOEyh7MQxMxbcRVCB076pJtonwt09foixpvX
+	bbckyByt1RQ9nowtYkP6FR94WJ1mE6bZ2Yt1O3TsIT/T6JPi8tNZbLOswQc3gbXaOPRmYA+9kEHhr
+	xIOqKv+rri3IZQOI9eO1NuQjJlti93+7Fgxt7oy/edeHntKXmgL+sUgnAswDtSxt3N47RA00O45r2
+	mZ4u866Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkZ3H-0000000DVrw-2aEO;
-	Tue, 27 Jan 2026 02:43:35 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vke3U-0000000DoTR-2QPF;
+	Tue, 27 Jan 2026 08:04:08 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkZ34-0000000DVZ7-3VDJ;
-	Tue, 27 Jan 2026 02:43:23 +0000
-X-UUID: ee88e2f2fb2911f0ad39f32c34db0b1c-20260126
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=k7kT7FIASxnKruzwo7e82b+7l9rC3y2r57xnfSrZR70=;
-	b=aZvY3PYsw7lodoHJAtRPkFjkQi31Im1H6xNiS/nogtH3YX/MtuHn9pvGuAdgVH6yDQH3tq469MnIrvwX0VVcF8qEJfoTVJJ0b+LbqGHE4Q8ka6gpSdDypAdkoup+IT9Nps1Zyu5vQxLQV7mqq7LQJtP61YotIvaMDFnUcMq7vwU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:17a955e3-6d2a-4d5b-92a1-9c1dfbed0f2b,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:89c9d04,CLOUDID:670d985a-a957-4259-bcca-d3af718d7034,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ee88e2f2fb2911f0ad39f32c34db0b1c-20260126
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1283456792; Mon, 26 Jan 2026 19:43:16 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 27 Jan 2026 10:43:13 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 27 Jan 2026 10:43:12 +0800
-From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
-	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro
- Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>, Nicolas Dufresne
-	<nicolas.dufresne@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Arnd
- Bergmann <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>, George Sun
-	<george.sun@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
-	<andrzejtp2010@gmail.com>, Yilong Zhou <yilong.zhou@mediatek.com>
-Subject: [PATCH v7 10/10] media: mediatek: encoder: Add MT8189 encoder compatible data
-Date: Tue, 27 Jan 2026 10:42:47 +0800
-Message-ID: <20260127024248.18406-11-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20260127024248.18406-1-kyrie.wu@mediatek.com>
-References: <20260127024248.18406-1-kyrie.wu@mediatek.com>
+	id 1vke3R-0000000DoSZ-3arH;
+	Tue, 27 Jan 2026 08:04:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+	Resent-Cc:Resent-Message-ID; bh=h+1+uhzaNgtaSPXCQF2LP7SSvxe54i1i/2urVLgEc/g=;
+	t=1769501045; x=1770710645; b=c0cJ1y84A72yheZChnr/VfG/l9YUZk2XehTTZxXtxeA+UiF
+	GnXDwM7K8KDW7vgCXw8TCvyzpJUtSLQLUsLPhazw/63oC2V3Ay2xT2XEtzp8GX+3BSpkIOx/rCtsU
+	cnk/zzt3uh5HKzISXaZYjqzynLsDz/RlPz7j6LcP0+U/mGGzZS3Ds1lDqiRACHC6vJ+g/9NEZJc2o
+	RLDTfHzAXzV/SIiBvuNzrzMQc+buh5B7HwrBs9IPrKwj/wwvWhH2oKOsIvVy4nwsBikzMBcGw4NLL
+	bpjI89Gn6dDeMmLo+hq/V7AXofM6GvHFE54arcHt0+mLe7tPZGWO01u945ynpi1w==;
+Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+	(Exim 4.98.2)
+	(envelope-from <johannes@sipsolutions.net>)
+	id 1vke3I-00000004tNs-02NE;
+	Tue, 27 Jan 2026 09:03:56 +0100
+Message-ID: <b592a6c9a8f59f112b2221b9a46568769b1e9dcd.camel@sipsolutions.net>
+Subject: Re: [PATCH wireless-next v2 1/2] wifi: mac80211: Add eMLSR/eMLMR
+ action frame parsing support
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, 	linux-wireless@vger.kernel.org,
+ Felix Fietkau <nbd@nbd.name>, Shayne Chen	 <shayne.chen@mediatek.com>,
+ Christian Marangi <ansuelsmth@gmail.com>, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Date: Tue, 27 Jan 2026 09:02:28 +0100
+In-Reply-To: <aXftjdCtqnQk69ys@lore-desk> (sfid-20260126_234123_580390_07BE70DF)
+References: <20260125-mac80211-emlsr-v2-0-466329d61c88@kernel.org>
+	 <20260125-mac80211-emlsr-v2-1-466329d61c88@kernel.org>
+	 <01e62344994a34daae0666b3873aa98e72fb5850.camel@sipsolutions.net>
+	 <aXftjdCtqnQk69ys@lore-desk> (sfid-20260126_234123_580390_07BE70DF)
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260126_184322_882365_1E33DEF9 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20260127_000405_922872_F69D4F37 
+X-CRM114-Status: GOOD (  15.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,47 +80,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add MT8189 compatible data to initialize platform data for encoder.
+On Mon, 2026-01-26 at 23:41 +0100, Lorenzo Bianconi wrote:
+>=20
+> > Per spec I'm also not sure what the MCS map should be when it's not
+> > included in the frame?
+>=20
+> IIUC the mcs map value are supposed to be in Operation mode notification =
+frame
+> just for eMLMR. I think the driver should check if the bit is set in
+> ieee80211_eml_params control field to verify if mcs_map_bw values are val=
+id.
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c   | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+Yeah you're right, the MCS Map is always present if EMLMR Mode is set to
+1. I thought it was also optional and then what values should you use?
 
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-index 86d0ab03f151..5e203caa47d4 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-@@ -469,6 +469,19 @@ static const struct mtk_vcodec_enc_pdata mt8196_pdata = {
- 	.set_dma_bit_mask = true,
- };
- 
-+static const struct mtk_vcodec_enc_pdata mt8189_pdata = {
-+	.venc_model_num = 8189,
-+	.capture_formats = mtk_video_formats_capture_h264,
-+	.num_capture_formats = ARRAY_SIZE(mtk_video_formats_capture_h264),
-+	.output_formats = mtk_video_formats_output,
-+	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output),
-+	.min_bitrate = 64,
-+	.max_bitrate = 100000000,
-+	.core_id = VENC_SYS,
-+	.uses_common_fw_iface = true,
-+	.set_dma_bit_mask = true,
-+};
-+
- static const struct of_device_id mtk_vcodec_enc_match[] = {
- 	{.compatible = "mediatek,mt8173-vcodec-enc",
- 			.data = &mt8173_avc_pdata},
-@@ -479,6 +492,7 @@ static const struct of_device_id mtk_vcodec_enc_match[] = {
- 	{.compatible = "mediatek,mt8192-vcodec-enc", .data = &mt8192_pdata},
- 	{.compatible = "mediatek,mt8195-vcodec-enc", .data = &mt8195_pdata},
- 	{.compatible = "mediatek,mt8196-vcodec-enc", .data = &mt8196_pdata},
-+	{.compatible = "mediatek,mt8189-vcodec-enc", .data = &mt8189_pdata},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_vcodec_enc_match);
--- 
-2.45.2
+Can't mac80211 validate the values?
 
+> Reading the standard, it is not clear to me if mcs map values are suppose=
+d to be
+> added in the Notification frame sent by the AP. What do you think?
+
+Hmm. I thought no, but then the language says it's present when the
+EMLMR Mode is set to 1, so ... it would have to be? Strange, because
+it's not really defined (well) in this direction.
+
+OK, I guess the memcpy was right after all:
+
+   An AP affiliated with the AP MLD that receives an EML Operating Mode
+   Notification frame from a non-AP STA affiliated with the non-AP MLD
+   should send an EML Operating Mode Notification frame to confirm the
+   mode switch at the AP MLD to the non-AP STA with EML Control field
+   set to the same value as EML Control field in the received EML
+   Operating Mode Notification frame from the non-AP STA before the
+   transition timeout expires.
+
+But I think better restrict memcpy() then to just the EML Control field
+and build the action header etc. directly.
+
+johannes
 
