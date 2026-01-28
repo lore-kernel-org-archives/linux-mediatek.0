@@ -4,75 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61DE4D3F091
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jan 2026 16:32:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 237A1D3F097
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jan 2026 17:08:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8fXtwqHC1+p9P6rO/BH9MhMmi1JYpoUyS2OtqfTLx8w=; b=EPwmuRyLxwKd5FLbggCN6xmKhV
-	URCQB/9BtbH79/CQBYHg3hABViqArXSYBjaBTOl2W/gwz1qWHD+NQzBd0k9U0fALtqN4WJAdhi8SE
-	yoJarsUqL5IXxD0jtfyUR4d2tjLzDoVUjqzDD1LzMapR6k7srTjGefScxlj97gUzRdel6Or89hqgv
-	pSUb4cB4wUp9VIr2xOLzAylh5HpBd6oldbfCiIlLcbFZINwR1R93mPt/67mPyfEO12E4e4NcvzMzW
-	+ICqlHOMxMwVuHoahSk4IByHZA2GIdzwfhpAArNgyasmIJj4Lhzz92WuiJuoBxUk00rdVdjWR3U7J
-	81gx7hzA==;
+	bh=QdScfKiDln5+KrqCxS2yzhZmPZruReM8MeyXrDgNnq0=; b=DfmcmvD3Qq3vMK8Oc6FcU3Lqh2
+	3DOfhMsuJ0SxfQ3tPzoZwoiKyXZA2xUcIG4lnBfoYHGRL7cyE/0sf633YY4ZfnWehWerNBTTA2l1N
+	uPb/W0cq9YyxXG33WJLCo3qKzcPB2qkJc9iGkdITXCHyaI2d4DCKh7L3a4xAntRQ2dp52F4MtU1XD
+	5qSGwNPc+3K4Oz48CCbza5m9RErwSZWdwbdiUQW1tQGEEkdOycVqtJMpGtwnCJnYgUV82L9CTteMP
+	SD4up+kMP3swEAqxe9uIKk3jzlH3nxYONqHIcUaViBHbnllv2nmMLzszC0QWiwqvdLdAkY2ndUYJ6
+	a2NjIP+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl8Sd-0000000GP5o-2fLA;
-	Wed, 28 Jan 2026 16:32:07 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vl91x-0000000GRal-0fkN;
+	Wed, 28 Jan 2026 17:08:37 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl8SZ-0000000GP5L-0GX9;
-	Wed, 28 Jan 2026 16:32:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1769617904; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=l0Cg2TLttp29EHOBbwKdxXJx+xlCqUIDwMhiHRrGcQlQGxQAl+cbZZerzf/yJHdqENXi5i78EEPnmq3+QYV8q4vvV8IWlYbvGN/uJ2gzeEBvDZDAM43l9ZOg2u9FUdZXXcQ/4FA6I3JNJSz/PcWLCLwi3su1GgLBc67MIQTpbHs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1769617904; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=8fXtwqHC1+p9P6rO/BH9MhMmi1JYpoUyS2OtqfTLx8w=; 
-	b=Tit4ublDdDnnqeUwnRqbpWJRVKT2vv0aWR/loA9NmvlXRdcRjBDS5VAeiKKTrvLV95CzNrJRCUA99UMmD/Y3Ve7pOUTOY8K7CzHXlr4RlBw37CABf1RKXLKJP6x+hNzoIDQZix9WO0j8K573szEPYqwghhyqk5mFQDRu7b+4oYE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1769617904;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=8fXtwqHC1+p9P6rO/BH9MhMmi1JYpoUyS2OtqfTLx8w=;
-	b=VjVYoi0i5YsN0KQC4EBuW3yAqSs2dSzu7H9QUTMdimJxMNtl7zz2WeKlWSLiSvpZ
-	dEGVTOldZ2er6i/gG0zTZPIQ9pWpS0jMY3Sg1r2xtX4ibMZJqQkwvOnzgF/sGX6VkBX
-	iW/vsl23jzF/L9HMyNIHIEIYD7a6NuSUtxDl5vVw=
-Received: by mx.zohomail.com with SMTPS id 1769617901729754.2671002504206;
-	Wed, 28 Jan 2026 08:31:41 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Alexander Stein <alexander.stein@ew.tq-group.com>,
- Mark Brown <broonie@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
- Dong Aisheng <aisheng.dong@nxp.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Yassine Oudjana <y.oudjana@protonmail.com>,
- Laura Nao <laura.nao@collabora.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>,
- Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
- kernel@collabora.com, linux-clk@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+	id 1vl91v-0000000GRaK-3rvo;
+	Wed, 28 Jan 2026 17:08:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 001B36000A;
+	Wed, 28 Jan 2026 17:08:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99717C4CEF1;
+	Wed, 28 Jan 2026 17:08:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1769620114;
+	bh=f92JorMVXZAxTrxStzte/NgjHdrAF6TknJcnijB+Wmc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=DTTNDQUAlr5l6THkjx24i8blVSe2OwDne0saZFlxQ8gzaE1Ar1y47e73wl/uXFL6n
+	 /LNs7BgtZBy4qyO0jObdfNnV0XRajSiSrisGLHr2v+Q/U+jQ5SeqUFmk0T0zGsrcpL
+	 fQuq0iaKsk2hdugDFbnL8bWyKtXUec7zVqI1HcYSK4/9bLoFwFk2Ug/91Nwj2EKXYA
+	 p1vco4P4qqz29cpSklN2cZiTic06dq0bTT+FQQh0DrjqpGqKoPqX4sGHNLqySVNx+r
+	 Rr4oxXoMjhQ8IB614dC21j906uAjxMuynSBV9jQr1pBo/ZC6NRAdfcWx1oBfnjiQHi
+	 lMlLizBJscDvQ==
+Date: Wed, 28 Jan 2026 17:08:28 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Alexander Stein <alexander.stein@ew.tq-group.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Dong Aisheng <aisheng.dong@nxp.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Yassine Oudjana <y.oudjana@protonmail.com>,
+	Laura Nao <laura.nao@collabora.com>,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	kernel@collabora.com, linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH v3 1/5] clk: Respect CLK_OPS_PARENT_ENABLE during recalc
-Date: Wed, 28 Jan 2026 17:31:35 +0100
-Message-ID: <4040610.5fSG56mABF@workhorse>
-In-Reply-To: <9ed19fb1-258f-44c4-b816-73c0d7d28a6e@sirena.org.uk>
+Message-ID: <b12b05b0-154b-46a7-a760-cf0bdf67a8b9@sirena.org.uk>
 References: <20251010-mtk-pll-rpm-v3-0-fb1bd15d734a@collabora.com>
  <5050249.GXAFRqVoOG@steina-w>
  <9ed19fb1-258f-44c4-b816-73c0d7d28a6e@sirena.org.uk>
+ <4040610.5fSG56mABF@workhorse>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260128_083205_004958_4ACA8206 
-X-CRM114-Status: GOOD (  14.92  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="5H4TKIXeuvQhBs07"
+Content-Disposition: inline
+In-Reply-To: <4040610.5fSG56mABF@workhorse>
+X-Cookie: I brake for chezlogs!
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,49 +83,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wednesday, 28 January 2026 16:21:47 Central European Standard Time Mark Brown wrote:
-> On Wed, Jan 28, 2026 at 03:55:54PM +0100, Alexander Stein wrote:
-> 
-> > This is for TQMa8MPxL/MBa8MPxL:
-> 
-> > [    1.452788] __clk_core_init: enabling parent audio_pll1_out for clkout1_sel
-> > [    1.457677] __clk_core_init: disabling parent audio_pll1_out for clkout1_sel
-> > [    1.464270] __clk_core_init: enabling parent audio_pll1_out for clkout2_sel
-> > [    1.471760] __clk_core_init: disabling parent audio_pll1_out for clkout2_sel
-> > [    1.478360] __clk_core_init: enabling parent sys_pll2_500m for arm_a53_div
-> > [    1.485259] __clk_core_init: disabling parent sys_pll2_500m for arm_a53_div
-> 
-> As expected same result on i.MX8MP-EVK.
-> 
 
-This one puzzles me a little. arm_a53_div is neither marked critical
-nor is its parent. If arm_a53_div is required for the system to function,
-then I'd have expected at least it to be marked as critical, allowing us
-to do the workaround in init I proposed as an alternate solution for the
-stm32mp1 in my other reply.
+--5H4TKIXeuvQhBs07
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Also, after reading the code some more, I think that alternate solution
-has a simpler implementation: move the parent disable to after the
+On Wed, Jan 28, 2026 at 05:31:35PM +0100, Nicolas Frattaroli wrote:
+> On Wednesday, 28 January 2026 16:21:47 Central European Standard Time Mark Brown wrote:
 
-  if (core->flags & CLK_IS_CRITICAL) {
+> > > [    1.478360] __clk_core_init: enabling parent sys_pll2_500m for arm_a53_div
+> > > [    1.485259] __clk_core_init: disabling parent sys_pll2_500m for arm_a53_div
 
-check in __clk_core_init.
+> > As expected same result on i.MX8MP-EVK.
 
-One explanation is that some other critical clock hangs off sys_pll2_500m,
-but we're spoiled for choice here. I can't think of a simple fix right now
-that I feel confident in.
+> This one puzzles me a little. arm_a53_div is neither marked critical
+> nor is its parent. If arm_a53_div is required for the system to function,
+> then I'd have expected at least it to be marked as critical, allowing us
+> to do the workaround in init I proposed as an alternate solution for the
+> stm32mp1 in my other reply.
 
-Every IMX8MP composite clock that isn't critical seems to set
-IMX_COMPOSITE_CLK_FLAGS_DEFAULT, which includes CLK_OPS_PARENT_ENABLE,
-which seems like a pretty weird choice to make when you then rely on
-the parent not getting touched during __clk_core_init.
+Given that all the cores in the system are A53s I rather fear that it is
+in fact critical and should be marked as such.
 
-I will try to get an RFC fix out tonight (CET). I think STM32MP1 is
-falling over because I messed up, and i.MX8MP is falling over due to
-a combination of me messing up and its clock driver messing up.
+--5H4TKIXeuvQhBs07
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Kind regards,
-Nicolas Frattaroli
+-----BEGIN PGP SIGNATURE-----
 
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAml6QowACgkQJNaLcl1U
+h9D9Ygf/cdCGE7T1qR/648Ls3rSPg4pjmtGvSDshbBZ4arj6XMt4qGLjJDM/9GT+
+pdfIMSHITssC7TutL+XWNOYj9apZEw3CP7irmSM5p1of9b9IMpMKRG7WVHAY5UPG
+HEgukH+mzZFVeqVtSbPhUlotUs6dTsfwgJFH47bQmevWyL3BvhIW3tuRIEOrNyEx
+v8anef9iRv2wpuWWVCJNHy3tMOoW3VkIBoiYSTjKWXDuxgL2e5dGt4xO5ubm8flQ
+3dmqP3EEtVs5HXu36hbCqrX3ziEDiUlTZZeyZbtl0DoZaUeRF9VjOtGZV8jQgXod
+o2oz3BxKrwTrEvPutpqQheh7qo1hYA==
+=zbUu
+-----END PGP SIGNATURE-----
 
+--5H4TKIXeuvQhBs07--
 
