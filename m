@@ -4,89 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C335D3F071
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jan 2026 14:41:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00F30D3F069
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jan 2026 14:47:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qzQW4x9GvHfNuuUCAGvznnJeLzhvnRmnz1hEJUjOKEo=; b=gZFjziVIfXb5QARspr7daZSKZc
-	mBULue0Kd1dc//ZaosN0q77z9QSkdQEReUH+sfiSEopB9Htu1eOEKMPieS4NK/Sq1XbpGFxJUEClD
-	FEJPl9b7WZoWHuorhLUk+d70qZcItTkIP81hY5pZnqXrv5MiYmMU2VfDAlwHj++co/yJZ9lp6c09W
-	II83IWm/Ropaf+AyJcKW+cLSCmoULHLmZJJGQCE3JIMcS+RRlddZk+ScRNA1qsqdKppGk1V55K/vd
-	lT+9cBwG80b6u/zh+g1LCjP6zjG5v2Q+1gXU9w+OTExJeFTNJKJGnBCF2n7FQNIoMWOcgaQnF6XMI
-	8ScEt2Xg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x0L21iZQE6yD4RaKldOb6lO8mhKXmFZPHTycUeA2FrU=; b=Ja1HISI5G4saE+h1zewljh2ZIt
+	y4Dvby7YP3327NQ/YxIymQkzZ+3s/AYwNYS9/ITS9GnVUQrbEdAz9k6Umz8w2dlVvdY+P5Qa7h7xs
+	Rz/kTlIxBfAm8PfZyt39f1WPFH4krhAReClOsEVcz8Za3Dbg4yaQEtLyQFXPGr98q1V6dMCwIAMyq
+	JEDj/9q3h+yGu/adaYvjIme2L5B70JsFPYQ3B4rBquDdgjJLwyvnF73u+k9vAVjQepTbwgG7TyYI+
+	HuhK9+yB/eqNTdvXIaoztqly1I2KBjwkYEP5m+Z1TepLWbS7wwPdozLxPY8p65nUEPCNDAsXfenvO
+	AbN+iqSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl6jx-0000000GCDI-1WY2;
-	Wed, 28 Jan 2026 14:41:53 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vl6pC-0000000GCfz-4Aos;
+	Wed, 28 Jan 2026 14:47:19 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl6ju-0000000GCCd-3Up8;
-	Wed, 28 Jan 2026 14:41:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1769611307;
-	bh=wAlJzcsh4bYcVJgHM5D12nidM5/BBv4ehJTvbKYkBXY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VskxW8cQHOvCgDxJWR5jQb0a7ljthDHhE46HFb7V4NWE6bTMUh6bjUOb1KcTt6PTd
-	 OfzE5i91d4FrRg9WNrAl2lnzH9E9r6bdVxrIQsPIqM9h6+YcP6bTiWsJW/wrrYDmwJ
-	 Y3G67ScEvLw1gUGY95KVXXTy6eGqvjyNOzMyl7jOsm/KtPiw5WOrKOe3sHSYDRZfOZ
-	 VXl1i208d5j8uSPWvNq/Eg+BDvw7de3GtWhcKmlvkrQOSpO5auDnncpnfhwIyS4Ubd
-	 C4imqDlgX1frq8W75CH7TG6jk0608gPt3GzB8SDRa7GFxiD1BvTHLYB9DXSwj0CxpK
-	 wwCq2kwH3nodg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A919017E0699;
-	Wed, 28 Jan 2026 15:41:46 +0100 (CET)
-Message-ID: <92cabfc7-b35c-4ed8-9654-c4ef52bcbe03@collabora.com>
-Date: Wed, 28 Jan 2026 15:41:46 +0100
+	id 1vl6p9-0000000GCfQ-2rtT;
+	Wed, 28 Jan 2026 14:47:17 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id C315F600AD;
+	Wed, 28 Jan 2026 14:47:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FF98C4CEF1;
+	Wed, 28 Jan 2026 14:47:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1769611634;
+	bh=tHWNBPFYS91KkDSP5taGybUFdFj3eFVqHM55nD7uiTk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ul09wiqX8UI6vXHuhBsL1eLLc7dCJAXEsJeehfRWsu+h1mwgsjjfsDX+NWjAL2b0/
+	 4xqPup32t3j8pF3fJvYzjBxDVdTjfbqCjine4m+iR1kdAfSATO6+JS1XECxnrGg6is
+	 LZ5YvjxU11g0ldUEHoMSJwXuoJcpmrGJfShYZe7EEnhLY5rVl0VxGyNsyOmNYKbAY0
+	 iI4GVkNvMY/i7nt1HyCra7DRgdR/olvh0SbCo66t9XYKIAsHI3ADMRSK4Q4s63HEtX
+	 BGbImqzNemsDZ6piY5Kvm38n1ehvBSDQFVIvExRsnn2/e+tvmf8632pV3aPoU2Fmp/
+	 xO+gE52vLMC0A==
+Date: Wed, 28 Jan 2026 14:47:08 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Dong Aisheng <aisheng.dong@nxp.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Yassine Oudjana <y.oudjana@protonmail.com>,
+	Laura Nao <laura.nao@collabora.com>,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
+	kernel@collabora.com, linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3 1/5] clk: Respect CLK_OPS_PARENT_ENABLE during recalc
+Message-ID: <daa1906b-a112-4158-aec2-ad1d29b4fe35@sirena.org.uk>
+References: <20251010-mtk-pll-rpm-v3-0-fb1bd15d734a@collabora.com>
+ <6800096.lOV4Wx5bFT@workhorse>
+ <1cbf0f37-13de-46a5-a3c0-0509048c519e@sirena.org.uk>
+ <6678782.DvuYhMxLoT@workhorse>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 05/10] media: mediatek: vcodec: Add Decoder profile &
- level Initialization
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- =?UTF-8?B?S3lyaWUgV3UgKOWQtOaZlyk=?= <Kyrie.Wu@mediatek.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?R2VvcmdlIFN1biAo5a2Z5p6XKQ==?= <George.Sun@mediatek.com>,
- =?UTF-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
- "nhebert@chromium.org" <nhebert@chromium.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "mchehab@kernel.org" <mchehab@kernel.org>,
- "hverkuil@xs4all.nl" <hverkuil@xs4all.nl>,
- =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- =?UTF-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?= <Irui.Wang@mediatek.com>,
- "robh@kernel.org" <robh@kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>, "arnd@arndb.de" <arnd@arndb.de>,
- =?UTF-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?=
- <Andrew-CT.Chen@mediatek.com>
-Cc: "andrzejtp2010@gmail.com" <andrzejtp2010@gmail.com>,
- "neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
- =?UTF-8?B?WWlsb25nIFpob3UgKOWRqOaYk+m+mSk=?= <Yilong.Zhou@mediatek.com>
-References: <20260127024248.18406-1-kyrie.wu@mediatek.com>
- <20260127024248.18406-6-kyrie.wu@mediatek.com>
- <4a6e111d-49ef-449d-af9d-b0bd4fb468a5@collabora.com>
- <54689bc16875b979147c021123c2546aacb7541e.camel@mediatek.com>
- <8b1c78db-12fc-4f06-bf2b-49b47f24850a@collabora.com>
- <d00d4dc685d76273ea99c9b90897602617c53abb.camel@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <d00d4dc685d76273ea99c9b90897602617c53abb.camel@collabora.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260128_064151_026948_6B3268CF 
-X-CRM114-Status: GOOD (  22.61  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="GDKwEpCHvyP7dewC"
+Content-Disposition: inline
+In-Reply-To: <6678782.DvuYhMxLoT@workhorse>
+X-Cookie: I brake for chezlogs!
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,291 +82,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 28/01/26 14:39, Nicolas Dufresne ha scritto:
-> Hi,
-> 
-> Le mercredi 28 janvier 2026 à 10:53 +0100, AngeloGioacchino Del Regno a écrit :
->> Il 28/01/26 08:45, Kyrie Wu (吴晗) ha scritto:
->>> On Tue, 2026-01-27 at 13:07 +0100, AngeloGioacchino Del Regno wrote:
->>>> Il 27/01/26 03:42, Kyrie Wu ha scritto:
->>>>> This commit initializes codec profile & level for VDEC. It sets
->>>>> default values for H264, H265, and VP9 codecs across multiple
->>>>> chipset configurations.
->>>>>
->>>>
->>>> The previous patch "Refactor decoder profile and level handling" will
->>>> break the
->>>> driver if this patch is not also applied at the same time.
->>>>
->>>> The change looks good, but you should squash 05/10 in 04/10, and
->>>> assign the params
->>>> that you're adding here along with the refactoring, so that you get
->>>> one single
->>>> patch that, if applied, doesn't break anything as it doesn't depend
->>>> on additional
->>>> (future, as this is number 5) patch.
->>>>
->>>> Please squash
->>>>
->>>> Cheers,
->>>> Angelo
->>>
->>> Dear Angelo,
->>>
->>> The 04/10 and 05/10 were designed in one patch in v6,
->>> but Nicolas thought that refactor patch and configuration
->>> were two different changes, should separate them in this
->>> comments:
->>> https://patchwork.linuxtv.org/project/linux-media/patch/20251202074038.3173-5-kyrie.wu@mediatek.com/
->>
->> Even though in this case I disagree with Nicolas, I'm the mediatek maintainer,
->> not a linux-media maintainer... so... let's go with whatever the media
->> maintainers think it's best.
-> 
-> No need to disagree, I was not very clear in my reply indeed. What I want to see
-> is the added MT8189 configuration in isolation. So when I said two patches, the
-> first one should reorganize the code for existing platform, without breaking it,
-> and the second should add MT8189 support. I will have a read at these two patch
-> to understand what is being done wrong, and can provide further feedback later.
-> 
-> The commit description in v6 was only saying that it was adding a configuration
-> for MT8189.
-> 
 
-Re-reading what I wrote - my words could be misunderstood as well, so - just in
-case anyone did: sorry, that wasn't meant as any form of attack and was purely
-about sharing an opinion in a friendlier way than what appears from my previous
-words. Eh, writing emails fast .... :-P
+--GDKwEpCHvyP7dewC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Btw.
+On Wed, Jan 28, 2026 at 03:09:46PM +0100, Nicolas Frattaroli wrote:
+> On Wednesday, 28 January 2026 00:14:29 Central European Standard Time Mark Brown wrote:
 
-Happy to see that we're on the same page.
+> > Do you have a debugging patch we could run which would say which clocks
+> > are impacted?  I guess it's more of an issue for the platforms that give
+> > no output but for at least Avenger96 I was getting earlycon output.
 
-Cheers,
-Angelo
+> Try this one
 
-> Nicolas
-> 
->>
->>>
->>> In my mind, refactor profile and level setting and assign
->>> former ICs' parameters could merge into same patch. The
->>> configuration of MT8189 should split to another one, because
->>> it is a new setting.
->>>
->>> Do you agree with my opinion? I look forward to your further reply.
->>>
->>
->> I agree with your opinion, but if linux-media maintainers want those two
->> patches separated as you just did, I will raise my hands, so...
->>
->> Reviewed-by: AngeloGioacchino Del Regno
->> <angelogioacchino.delregno@collabora.com
->>
->> ...because when the two patches are applied at the same time, there's no
->> breakage. But I want to still repeat my stance on this: single patches
->> should never depend on subsequent patches to avoid regressions (and I know
->> you agree as your previous version was compliant with that stance).
->>
->> Cheers,
->> Angelo
->>
->>> Thanks.
->>>
->>> Regards,
->>> Kyrie.
->>>
->>>
->>>>
->>>>> Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
->>>>> ---
->>>>>     .../vcodec/decoder/mtk_vcodec_dec_stateful.c  | 12 +++
->>>>>     .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 84
->>>>> +++++++++++++++++++
->>>>>     2 files changed, 96 insertions(+)
->>>>>
->>>>> diff --git
->>>>> a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta
->>>>> teful.c
->>>>> b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta
->>>>> teful.c
->>>>> index 8ddb61670dc6..a47906b9d717 100644
->>>>> ---
->>>>> a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta
->>>>> teful.c
->>>>> +++
->>>>> b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta
->>>>> teful.c
->>>>> @@ -619,4 +619,16 @@ const struct mtk_vcodec_dec_pdata
->>>>> mtk_vdec_8173_pdata = {
->>>>>     	.is_subdev_supported = false,
->>>>>     	.hw_arch = MTK_VDEC_PURE_SINGLE_CORE,
->>>>>     	.chip_name = 8173,
->>>>> +	.h264_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_H264_LEVEL_4_1,
->>>>> +		.profile = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
->>>>> +	},
->>>>> +	.h265_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_HEVC_LEVEL_4,
->>>>> +		.profile =
->>>>> V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STILL_PICTURE,
->>>>> +	},
->>>>> +	.vp9_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_VP9_LEVEL_4_0,
->>>>> +		.profile = V4L2_MPEG_VIDEO_VP9_PROFILE_1,
->>>>> +	},
->>>>>     };
->>>>> diff --git
->>>>> a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta
->>>>> teless.c
->>>>> b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta
->>>>> teless.c
->>>>> index a1f419202a24..b571c4ed3f79 100644
->>>>> ---
->>>>> a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta
->>>>> teless.c
->>>>> +++
->>>>> b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_sta
->>>>> teless.c
->>>>> @@ -830,6 +830,18 @@ const struct mtk_vcodec_dec_pdata
->>>>> mtk_vdec_8183_pdata = {
->>>>>     	.is_subdev_supported = false,
->>>>>     	.hw_arch = MTK_VDEC_PURE_SINGLE_CORE,
->>>>>     	.chip_name = 8183,
->>>>> +	.h264_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_H264_LEVEL_4_2,
->>>>> +		.profile = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
->>>>> +	},
->>>>> +	.h265_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_HEVC_LEVEL_4,
->>>>> +		.profile =
->>>>> V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STILL_PICTURE,
->>>>> +	},
->>>>> +	.vp9_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_VP9_LEVEL_4_0,
->>>>> +		.profile = V4L2_MPEG_VIDEO_VP9_PROFILE_1,
->>>>> +	},
->>>>>     };
->>>>>     
->>>>>     /* This platform data is used for one lat and one core
->>>>> architecture. */
->>>>> @@ -869,24 +881,72 @@ const struct mtk_vcodec_dec_pdata
->>>>> mtk_vdec_8188_pdata = {
->>>>>     	MTK_STATELESS_DEC_DATA,
->>>>>     	.hw_arch = MTK_VDEC_LAT_SINGLE_CORE,
->>>>>     	.chip_name = 8188,
->>>>> +	.h264_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_H264_LEVEL_5_2,
->>>>> +		.profile = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_10,
->>>>> +	},
->>>>> +	.h265_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_HEVC_LEVEL_5_1,
->>>>> +		.profile = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
->>>>> +	},
->>>>> +	.vp9_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_VP9_LEVEL_5_1,
->>>>> +		.profile = V4L2_MPEG_VIDEO_VP9_PROFILE_2,
->>>>> +	},
->>>>>     };
->>>>>     
->>>>>     const struct mtk_vcodec_dec_pdata mtk_vdec_8192_pdata = {
->>>>>     	MTK_STATELESS_DEC_DATA,
->>>>>     	.hw_arch = MTK_VDEC_LAT_SINGLE_CORE,
->>>>>     	.chip_name = 8192,
->>>>> +	.h264_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_H264_LEVEL_5_2,
->>>>> +		.profile = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
->>>>> +	},
->>>>> +	.h265_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_HEVC_LEVEL_4,
->>>>> +		.profile =
->>>>> V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STILL_PICTURE,
->>>>> +	},
->>>>> +	.vp9_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_VP9_LEVEL_5_1,
->>>>> +		.profile = V4L2_MPEG_VIDEO_VP9_PROFILE_1,
->>>>> +	},
->>>>>     };
->>>>>     
->>>>>     const struct mtk_vcodec_dec_pdata mtk_vdec_8195_pdata = {
->>>>>     	MTK_STATELESS_DEC_DATA,
->>>>>     	.hw_arch = MTK_VDEC_LAT_SINGLE_CORE,
->>>>>     	.chip_name = 8195,
->>>>> +	.h264_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_H264_LEVEL_6_0,
->>>>> +		.profile = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_10,
->>>>> +	},
->>>>> +	.h265_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_HEVC_LEVEL_5_2,
->>>>> +		.profile = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
->>>>> +	},
->>>>> +	.vp9_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_VP9_LEVEL_5_2,
->>>>> +		.profile = V4L2_MPEG_VIDEO_VP9_PROFILE_2,
->>>>> +	},
->>>>>     };
->>>>>     
->>>>>     const struct mtk_vcodec_dec_pdata mtk_vdec_8196_pdata = {
->>>>>     	MTK_STATELESS_DEC_DATA,
->>>>>     	.hw_arch = MTK_VDEC_LAT_SINGLE_CORE,
->>>>>     	.chip_name = 8196,
->>>>> +	.h264_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_H264_LEVEL_6_0,
->>>>> +		.profile = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_10,
->>>>> +	},
->>>>> +	.h265_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_HEVC_LEVEL_5_2,
->>>>> +		.profile = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10,
->>>>> +	},
->>>>> +	.vp9_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_VP9_LEVEL_5_2,
->>>>> +		.profile = V4L2_MPEG_VIDEO_VP9_PROFILE_2,
->>>>> +	},
->>>>>     };
->>>>>     
->>>>>     const struct mtk_vcodec_dec_pdata mtk_vdec_single_core_pdata = {
->>>>> @@ -910,6 +970,18 @@ const struct mtk_vcodec_dec_pdata
->>>>> mtk_vdec_8186_pdata = {
->>>>>     	MTK_STATELESS_DEC_DATA,
->>>>>     	.hw_arch = MTK_VDEC_PURE_SINGLE_CORE,
->>>>>     	.chip_name = 8186,
->>>>> +	.h264_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_H264_LEVEL_4_2,
->>>>> +		.profile = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
->>>>> +	},
->>>>> +	.h265_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_HEVC_LEVEL_4,
->>>>> +		.profile =
->>>>> V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STILL_PICTURE,
->>>>> +	},
->>>>> +	.vp9_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_VP9_LEVEL_4_1,
->>>>> +		.profile = V4L2_MPEG_VIDEO_VP9_PROFILE_1,
->>>>> +	},
->>>>>     };
->>>>>     
->>>>>     const struct mtk_vcodec_dec_pdata mtk_vdec_8189_pdata = {
->>>>> @@ -928,4 +1000,16 @@ const struct mtk_vcodec_dec_pdata
->>>>> mtk_vdec_8189_pdata = {
->>>>>     	.is_subdev_supported = true,
->>>>>     	.hw_arch = MTK_VDEC_PURE_SINGLE_CORE,
->>>>>     	.chip_name = 8189,
->>>>> +	.h264_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_H264_LEVEL_5_2,
->>>>> +		.profile = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_10,
->>>>> +	},
->>>>> +	.h265_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_HEVC_LEVEL_4,
->>>>> +		.profile =
->>>>> V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_STILL_PICTURE,
->>>>> +	},
->>>>> +	.vp9_params = {
->>>>> +		.level = V4L2_MPEG_VIDEO_VP9_LEVEL_5_2,
->>>>> +		.profile = V4L2_MPEG_VIDEO_VP9_PROFILE_2,
->>>>> +	},
->>>>>     };
->>>>
->>>>
+For the Avenger96 that says:
 
+[    0.347816] __clk_core_init: enabling parent ck_hse for ck_per
+[    0.352230] __clk_core_init: disabling parent ck_hse for ck_per
+[    0.358207] __clk_core_init: enabling parent pll1_p for ck_mpu
+[    0.364005] __clk_core_init: disabling parent pll1_p for ck_mpu
 
+https://lava.sirena.org.uk/scheduler/job/2412562#L563
+
+--GDKwEpCHvyP7dewC
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAml6IWwACgkQJNaLcl1U
+h9BBPwf+LjkTj9Qp0vyhD/i/R80ajL4bZ1ZDsFjeS7Q9ndpXjMlkWi2WkEMZIwa/
+P+8ztpF6h/fmEXd3p0CscB4vRcESWpxlen8r+emlnUb+3fauARNtpcCn2rKnHkOO
+jD6NPuNlD8RtZ4I2CciBtNW62ueWIz6wicxe31v6YMianQtrz7x6ir8LJjYO8yLx
+4vrxf50/IQcQYSaNAukI+kmPEL/61gjY6FK8/vj6in7tdZDiIU/tj2pjI5WVtP28
+MzzqbpFGPx9OEPRwKeScc8p9c69qdWQ+WCORo6VxGo1FQ4r068BFEUjOKSNFwRWU
+W3J95d/PsXOZF12bpTIlh1Kq63T43A==
+=9Yi1
+-----END PGP SIGNATURE-----
+
+--GDKwEpCHvyP7dewC--
 
