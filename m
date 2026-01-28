@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D055DD25B48
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jan 2026 11:50:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65095D25B4E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jan 2026 12:56:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iRJzba95YNbQZtqj//pbDPHC/663xqJuFvXEYYPTvLA=; b=Sxs4tFHe63YnFhpYKAqGqzTwC0
-	QfL3isceD4BskmijFSAC0EZiEmKHcVcZns0FUS+wZFoyHP9YUe7bMKF5tCGiGsNrPYb7vfAOghCkE
-	cTPyV3NwSoX47xaEQz9fcrDiU+q0v9ywkMCpbEesFBjnbS+6XTRGMqjf8Om2T6zajI795kMAqcf7l
-	NHpaEzIV4FcVq8kUA/Gh1F/OcjYMqBCmK3ZFtK+/sbGWS1P0MmmHU9VopPacKZk5OfEZwGgazlskx
-	PW/fYoGYWieSwz7eB4dmPTiSooCiWVI/9fvQBBrjXO/Sdpwes1f9Ej5WGv6uXaBMpLKFx+TqqQ3lu
-	d6CSZibA==;
+	bh=hTiN/iPB7YC4G8N3oGDx91LxSB/gFMs0+raSrolrvNM=; b=L2mc9WWKjTxnAPe4id4BL5zUfj
+	Kl/u3hryCKPmBu8y/Untp5Xjk13xP7jT/KfTFgIE/8rVlCXjVaNGZOed4op5oI3spUAqy8cZMkr8M
+	b6uk51ji2/BxxYTaMkrdXl3sXjYbK3SEzFQvpXdGHhPU4GLqc3VPJS7+Of+aWu2XXxPAUI1hDxSYU
+	h2XZsX66Y4bciPpTsxl+Y87GT74bvHNwKMXUrBN7wNLk5owr76TgaVYCy65ZtDpsYErreKwhZrFk7
+	X6NlFb0ipNBklW/ypgcGym+7XwzNMUNNYmbRTROmfZA4i2iPDgrUYdCSDQDKUSLX9Nw2IwzdPfZz+
+	Z7zyXvMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl43q-0000000FxP4-0m43;
-	Wed, 28 Jan 2026 11:50:14 +0000
-Received: from s3.sipsolutions.net ([2a01:4f8:242:246e::2] helo=sipsolutions.net)
+	id 1vl55w-0000000G1Ow-2JKg;
+	Wed, 28 Jan 2026 12:56:28 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl43o-0000000FxOA-0PUf;
-	Wed, 28 Jan 2026 11:50:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
-	Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
-	Resent-Cc:Resent-Message-ID; bh=iRJzba95YNbQZtqj//pbDPHC/663xqJuFvXEYYPTvLA=;
-	t=1769601011; x=1770810611; b=J9jRZfMvuSZN2nLySUcUiZCcvFq2l9VxtjjkVI0vE63bV0M
-	gAt9PFAPA1QXwS2go+Vfy8uxEaOkEOUVWDxUzPcbYudbbYzN+fKJW38wFA2kiplGXcnPnFrmAoDur
-	P7nsU1v1SDV5PhEmoEAleUEkKpnlme9rRERmv0aaIX5DqrlCQa4oXVs93lscbdWnU2a0TOoQZW1HJ
-	pZYY5Tyz1v7wtqB1DqSoUP2tifFVTlTbnybitiEbGduHyo2sYGVCvJbB4P/6K7p71lu83PGMyp+qa
-	4fM0cDiD9qJtHj/o6z4dROcN4MLXcrxv6/VW51H5GNhe5M8kM9NqXD6zoM7RD8DQ==;
-Received: by sipsolutions.net with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
-	(Exim 4.98.2)
-	(envelope-from <johannes@sipsolutions.net>)
-	id 1vl43e-00000005oNF-3cT0;
-	Wed, 28 Jan 2026 12:50:03 +0100
-Message-ID: <69d939aae0abecfdd011219e00076542c6e1abb1.camel@sipsolutions.net>
+	id 1vl55u-0000000G1OS-3Xug;
+	Wed, 28 Jan 2026 12:56:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7ACDF43A8E;
+	Wed, 28 Jan 2026 12:56:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 052DAC4CEF1;
+	Wed, 28 Jan 2026 12:56:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1769604985;
+	bh=H4wMz2eOAnUA22tTDE7YiBFrw9e46OADbwnLFMXxEO0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=szJg0Tu7aEAsIXuqZmjwT9iKyObWKOLeGtNRMZwoMxX0ZMLKle53P58TIhFIIKyRA
+	 GhB3MV/D77gqyJDuPA0ls0gquLgQQbUFydd8gmEz6Q6wFR1GoFBl6yLeAkC0heiOII
+	 yDms8tBugAcp/68u/zb6emvWYZfcCc0jHOlGd7fWe49PTAvbMDOBa2w0CXFJA+YXaN
+	 960sh9sOPxpOxgfkvcIa032R7+iParcfgq2hnME75CBOJSY1TuN6A8jLZY55OL8BDz
+	 YORkI6YiCSaDHooIsX23qX8IAAOgMxdPj52MYKAsyzJkB2a/Ye9iAJjTRZJCeBVT2n
+	 KCKhtMQ+MyqcA==
+Date: Wed, 28 Jan 2026 13:56:22 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Johannes Berg <johannes@sipsolutions.net>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
 Subject: Re: [PATCH wireless-next v3] wifi: mac80211: Add eMLSR/eMLMR action
  frame parsing support
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee
- <ryder.lee@mediatek.com>,  Sean Wang <sean.wang@mediatek.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, Shayne
- Chen	 <shayne.chen@mediatek.com>, Christian Marangi <ansuelsmth@gmail.com>,
- 	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Date: Wed, 28 Jan 2026 12:50:01 +0100
-In-Reply-To: <20260128-mac80211-emlsr-v3-1-473b0c1d9cc4@kernel.org> (sfid-20260128_121810_555043_35237ACC)
+Message-ID: <aXoHdmjLKB-g54ie@lore-desk>
 References: <20260128-mac80211-emlsr-v3-1-473b0c1d9cc4@kernel.org>
-	 (sfid-20260128_121810_555043_35237ACC)
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
+ <69d939aae0abecfdd011219e00076542c6e1abb1.camel@sipsolutions.net>
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="1Zs3XZ6GtgRi+Qdz"
+Content-Disposition: inline
+In-Reply-To: <69d939aae0abecfdd011219e00076542c6e1abb1.camel@sipsolutions.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260128_035012_158509_7C332541 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20260128_045626_906755_AF5FD1FF 
+X-CRM114-Status: GOOD (  16.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,37 +79,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I probably missed this the last time already:
 
-> +	if ((control & IEEE80211_EML_CTRL_EMLSR_MODE) ||
-> +	    (control & IEEE80211_EML_CTRL_EMLMR_MODE)) {
-> +		eml_params.link_bitmap =3D get_unaligned_le16(ptr);
-> +		if (eml_params.link_bitmap &&
+--1Zs3XZ6GtgRi+Qdz
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Surely 0 is an invalid bitmap? To disable it, you send a frame without
-IEEE80211_EML_CTRL_EMLSR_MODE or IEEE80211_EML_CTRL_EMLMR_MODE set, so I
-don't see how an empty bitmap would be valid?
+> I probably missed this the last time already:
+>=20
+> > +	if ((control & IEEE80211_EML_CTRL_EMLSR_MODE) ||
+> > +	    (control & IEEE80211_EML_CTRL_EMLMR_MODE)) {
+> > +		eml_params.link_bitmap =3D get_unaligned_le16(ptr);
+> > +		if (eml_params.link_bitmap &&
+>=20
+> Surely 0 is an invalid bitmap? To disable it, you send a frame without
+> IEEE80211_EML_CTRL_EMLSR_MODE or IEEE80211_EML_CTRL_EMLMR_MODE set, so I
+> don't see how an empty bitmap would be valid?
 
-> +		    !(eml_params.link_bitmap & sdata->vif.active_links))
+ack, right. When we disable EMLSR IEEE80211_EML_CTRL_EMLSR_MODE so link_bit=
+map
+is not present. I will fix it in v4.
 
-That's the wrong check, I think? It only checks that you have any
-overlap, but we need all bits to be valid, i.e. only
+>=20
+> > +		    !(eml_params.link_bitmap & sdata->vif.active_links))
+>=20
+> That's the wrong check, I think? It only checks that you have any
+> overlap, but we need all bits to be valid, i.e. only
+>=20
+> 		(link_bitmap & active_links) =3D=3D link_bitmap
+>=20
+> is valid, no?
 
-		(link_bitmap & active_links) =3D=3D link_bitmap
+ack, I will fix it in v4.
 
-is valid, no?
+>=20
+> > +			return;
+> > +	}
+> > +
+> > +	if (drv_set_eml_op_mode(sdata, &sta->sta, &eml_params))
+> > +		return;
+> > +
+> > +	ieee80211_send_eml_op_mode_notif(sdata, mgmt, opt_len);
+>=20
+> IMHO it would make more sense to pass "ptr, opt_len" rather than "mgmt,
+> opt_len", since that's just what gets copied and then the callee doesn't
+> need to dig it out.
 
-> +			return;
-> +	}
-> +
-> +	if (drv_set_eml_op_mode(sdata, &sta->sta, &eml_params))
-> +		return;
-> +
-> +	ieee80211_send_eml_op_mode_notif(sdata, mgmt, opt_len);
+But I guess we need mgmt pointer to set even other fields (e.g. dst-addr,
+dialog_token, ecc.).
 
-IMHO it would make more sense to pass "ptr, opt_len" rather than "mgmt,
-opt_len", since that's just what gets copied and then the callee doesn't
-need to dig it out.
+Regards,
+Lorenzo
 
-johannes
+>=20
+> johannes
+
+--1Zs3XZ6GtgRi+Qdz
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaXoHdgAKCRA6cBh0uS2t
+rIx9AQDvMwmRdK2HHZaNcr3E02VyLsA7SNysCnhg80MPCO/FTAD7BFs1g3oXdEyR
+83lkQ9fbka8Lcr0RoF34SyfP3qzyoQk=
+=gLbO
+-----END PGP SIGNATURE-----
+
+--1Zs3XZ6GtgRi+Qdz--
 
