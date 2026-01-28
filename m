@@ -4,71 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 237A1D3F097
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jan 2026 17:08:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15F07D46BF2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jan 2026 19:01:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QdScfKiDln5+KrqCxS2yzhZmPZruReM8MeyXrDgNnq0=; b=DfmcmvD3Qq3vMK8Oc6FcU3Lqh2
-	3DOfhMsuJ0SxfQ3tPzoZwoiKyXZA2xUcIG4lnBfoYHGRL7cyE/0sf633YY4ZfnWehWerNBTTA2l1N
-	uPb/W0cq9YyxXG33WJLCo3qKzcPB2qkJc9iGkdITXCHyaI2d4DCKh7L3a4xAntRQ2dp52F4MtU1XD
-	5qSGwNPc+3K4Oz48CCbza5m9RErwSZWdwbdiUQW1tQGEEkdOycVqtJMpGtwnCJnYgUV82L9CTteMP
-	SD4up+kMP3swEAqxe9uIKk3jzlH3nxYONqHIcUaViBHbnllv2nmMLzszC0QWiwqvdLdAkY2ndUYJ6
-	a2NjIP+g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:
+	Subject:References:In-Reply-To:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=y7ixvs9SjVU/C4VAAsX3lvuUJ8ZvAu9S9zoeDiQHuKU=; b=l8SqpX+GpuDfMGQRqJfHyFPQMJ
+	KinOrfr2U9oVmSb7TMzCLgMhhNwzGq6KUlXDiAKfsKPjDqWazhcm7WQXNFSqtkv7rfAMy4TNy0iei
+	DQpjUEplbv00uiLMr/YOx69ZUJAJxLWHkBti9ohyRvb43okCRMp689Pni0izVFAcLAH9e+oSqrt4i
+	xtr4ed7LIjeewbDoX8APhvYoQQf48w5EmO0BLjEc6bV1GHGECCcUaSK3eafOMiMgB4czg3PFsBjhU
+	dBt+6GzJeEpvwnHhZTvd3subWz9YvfQG+4/3dYW7DatI1/jxqOt9qHA5NQHHLl4R/9LmMIUjGKK1X
+	IFdf+qYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl91x-0000000GRal-0fkN;
-	Wed, 28 Jan 2026 17:08:37 +0000
+	id 1vlAnB-0000000Gf0q-486G;
+	Wed, 28 Jan 2026 19:01:30 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl91v-0000000GRaK-3rvo;
-	Wed, 28 Jan 2026 17:08:35 +0000
+	id 1vlAn7-0000000Gezv-1j3N;
+	Wed, 28 Jan 2026 19:01:28 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 001B36000A;
-	Wed, 28 Jan 2026 17:08:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99717C4CEF1;
-	Wed, 28 Jan 2026 17:08:31 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 830F660007;
+	Wed, 28 Jan 2026 19:01:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 26C71C4CEF1;
+	Wed, 28 Jan 2026 19:01:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769620114;
-	bh=f92JorMVXZAxTrxStzte/NgjHdrAF6TknJcnijB+Wmc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DTTNDQUAlr5l6THkjx24i8blVSe2OwDne0saZFlxQ8gzaE1Ar1y47e73wl/uXFL6n
-	 /LNs7BgtZBy4qyO0jObdfNnV0XRajSiSrisGLHr2v+Q/U+jQ5SeqUFmk0T0zGsrcpL
-	 fQuq0iaKsk2hdugDFbnL8bWyKtXUec7zVqI1HcYSK4/9bLoFwFk2Ug/91Nwj2EKXYA
-	 p1vco4P4qqz29cpSklN2cZiTic06dq0bTT+FQQh0DrjqpGqKoPqX4sGHNLqySVNx+r
-	 Rr4oxXoMjhQ8IB614dC21j906uAjxMuynSBV9jQr1pBo/ZC6NRAdfcWx1oBfnjiQHi
-	 lMlLizBJscDvQ==
-Date: Wed, 28 Jan 2026 17:08:28 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Alexander Stein <alexander.stein@ew.tq-group.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Dong Aisheng <aisheng.dong@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Yassine Oudjana <y.oudjana@protonmail.com>,
-	Laura Nao <laura.nao@collabora.com>,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
-	Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
-	kernel@collabora.com, linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 1/5] clk: Respect CLK_OPS_PARENT_ENABLE during recalc
-Message-ID: <b12b05b0-154b-46a7-a760-cf0bdf67a8b9@sirena.org.uk>
-References: <20251010-mtk-pll-rpm-v3-0-fb1bd15d734a@collabora.com>
- <5050249.GXAFRqVoOG@steina-w>
- <9ed19fb1-258f-44c4-b816-73c0d7d28a6e@sirena.org.uk>
- <4040610.5fSG56mABF@workhorse>
+	s=k20201202; t=1769626884;
+	bh=n34TAjuaUJNq368XZLmuh46Sjt4jj9OJ3xPmOcHju38=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=C8w2mvSqqOv6CNJooWdWwnMODpl641zH6FL4vTpgMjRx34EvM9qL//KZoVYqmVwQr
+	 V6V0P5e1YDea3DWFmUsl+x1oMwNTe2zUS6dKUAWeT7RixPfgiCU/7di9qvJCBGXTJC
+	 hpAr6nOsVvFDkue6E7q7/axgb0P3PEIg16XjCW7/A6o/XeXlAaF3W0C1C8RPk1sb+t
+	 FHNmfFEyooZOZ9bvKOLJgTJXss8jw0JMDsG1rx/N/A2MaegXoGs4GVqb0Ak6e0bdUJ
+	 e3D3ST4S/1fPQtZLjzAblj7sTvVRxPR67coMBhPVIHX64yhlEwQV5lOkEp0LSkQf3O
+	 YRbj1SwAQFH5w==
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="5H4TKIXeuvQhBs07"
-Content-Disposition: inline
-In-Reply-To: <4040610.5fSG56mABF@workhorse>
-X-Cookie: I brake for chezlogs!
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <3745487.e9J7NaK4W3@workhorse>
+References: <20251010-mtk-pll-rpm-v3-0-fb1bd15d734a@collabora.com> <6678782.DvuYhMxLoT@workhorse> <daa1906b-a112-4158-aec2-ad1d29b4fe35@sirena.org.uk> <3745487.e9J7NaK4W3@workhorse>
+Subject: Re: [PATCH v3 1/5] clk: Respect CLK_OPS_PARENT_ENABLE during recalc
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Michael Turquette <mturquette@baylibre.com>, Dong Aisheng <aisheng.dong@nxp.com>, Matthias Brugger <matthias.bgg@gmail.com>, Yassine Oudjana <y.oudjana@protonmail.com>, Laura Nao <laura.nao@collabora.com>, =?utf-8?q?N=C3=ADcolas?= F. R. A. Prado <nfraprado@collabora.com>, Chia-I Wu <olvaffe@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>, kernel@collabora.com, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Mark Brown <broonie@kernel.org>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Wed, 28 Jan 2026 12:01:22 -0700
+Message-ID: <176962688200.4027.9869545980331892869@lazor>
+User-Agent: alot/0.11
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,42 +67,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Quoting Nicolas Frattaroli (2026-01-28 09:04:55)
+> On Wednesday, 28 January 2026 15:47:08 Central European Standard Time Mar=
+k Brown wrote:
+> >=20
+> > For the Avenger96 that says:
+> >=20
+> > [    0.347816] __clk_core_init: enabling parent ck_hse for ck_per
+> > [    0.352230] __clk_core_init: disabling parent ck_hse for ck_per
+> > [    0.358207] __clk_core_init: enabling parent pll1_p for ck_mpu
+> > [    0.364005] __clk_core_init: disabling parent pll1_p for ck_mpu
+> >=20
+> > https://lava.sirena.org.uk/scheduler/job/2412562#L563
+> >=20
+>=20
+> Okay, on this one, there may be a problem in the clock tree.
+> ck_mpu is marked CLK_IS_CRITICAL, but its parent, pll1_p, is not. Clock
+> core doesn't seem to check whether any children of a clock are marked as
+> critical before disabling it.
+>=20
+> I'm not super familiar with the intended semantics of critical clocks.
+> If we need to manually mark all parents of critical clocks as critical
+> as well, then a (potentially partial) fix for the Avenger96 might be:
+>=20
 
---5H4TKIXeuvQhBs07
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Marking parents critical hasn't been strictly necessary so far because
+we've been relying on the prepare/enable count on a critical child to
+keep the parent prepared/enabled.
 
-On Wed, Jan 28, 2026 at 05:31:35PM +0100, Nicolas Frattaroli wrote:
-> On Wednesday, 28 January 2026 16:21:47 Central European Standard Time Mark Brown wrote:
+>=20
+> I just looked for CLK_IS_CRITICAL clocks in that file that have the
+> CLK_OPS_PARENT_ENABLE flag, and marked their PLL parents as critical
+> as well.
+>=20
+> An alternate approach would be to skip the parent enable/disable pair
+> in the problematic patch in __clk_core_init for clocks that are marked
+> as critical, because if the parent wasn't on for a critical clock then
+> we wouldn't be in that function, we would be dead.
 
-> > > [    1.478360] __clk_core_init: enabling parent sys_pll2_500m for arm_a53_div
-> > > [    1.485259] __clk_core_init: disabling parent sys_pll2_500m for arm_a53_div
+The parent may not be known yet in __clk_core_init() because we lazily
+find parents. Putting it another way, we can get to the recalc_rate()
+call in __clk_core_init() for a clk with CLK_OPS_PARENT_ENABLE when the
+parent pointer is NULL. This hasn't been a problem because when we adopt
+the orphan clk the rate is recalculated (see
+clk_core_reparent_orphans_nolock()).
 
-> > As expected same result on i.MX8MP-EVK.
+I don't see an easy way out of this problem because in general we need
+to know a clk with CLK_OPS_PARENT_ENABLE is parented enough to be able
+to read the registers when calling clk_ops like recalc_rate() (and
+probably get_parent() as well meaning that clk_op can't touch
+hardware?). Maybe the simplest approach is to skip any sort of hardware
+access when this flag is set during setup and reparenting.
 
-> This one puzzles me a little. arm_a53_div is neither marked critical
-> nor is its parent. If arm_a53_div is required for the system to function,
-> then I'd have expected at least it to be marked as critical, allowing us
-> to do the workaround in init I proposed as an alternate solution for the
-> stm32mp1 in my other reply.
-
-Given that all the cores in the system are A53s I rather fear that it is
-in fact critical and should be marked as such.
-
---5H4TKIXeuvQhBs07
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAml6QowACgkQJNaLcl1U
-h9D9Ygf/cdCGE7T1qR/648Ls3rSPg4pjmtGvSDshbBZ4arj6XMt4qGLjJDM/9GT+
-pdfIMSHITssC7TutL+XWNOYj9apZEw3CP7irmSM5p1of9b9IMpMKRG7WVHAY5UPG
-HEgukH+mzZFVeqVtSbPhUlotUs6dTsfwgJFH47bQmevWyL3BvhIW3tuRIEOrNyEx
-v8anef9iRv2wpuWWVCJNHy3tMOoW3VkIBoiYSTjKWXDuxgL2e5dGt4xO5ubm8flQ
-3dmqP3EEtVs5HXu36hbCqrX3ziEDiUlTZZeyZbtl0DoZaUeRF9VjOtGZV8jQgXod
-o2oz3BxKrwTrEvPutpqQheh7qo1hYA==
-=zbUu
------END PGP SIGNATURE-----
-
---5H4TKIXeuvQhBs07--
+BTW, I don't know what this patch is actually fixing, so I'm going to
+revert it. When it is resubmitted please describe the problem you're
+seeing.
 
