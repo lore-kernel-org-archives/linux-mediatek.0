@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0073D358DC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jan 2026 08:18:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E6CDD358DD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jan 2026 08:18:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IDaqmz+jOzRuCeSxlUAdH2cvfPDelKI52XxXT1MsurU=; b=nGYqoffSTwJBwOmSe7lZd2LQ3R
-	RaA8/z4NrxDSMEx7JdjFlbMolGSszi3biaBMbjG+tdPHVpSrIIhezG+2P3rUb/r2jwOF4/33XGzde
-	AP6UxuwBVGvts4nf6UQGl2v2D9dUG7+qn50rxNrw+C/eFVtTWG3FSqlp1M7wc+z3tFw/OJ6xk9AQL
-	xdR1uFeTlFP7aU/h7X2fCIRHpybQyg5jj0yAo5+XNyoWpoTqHoDp828hggYTJnPcmjNHDDVFoK8lo
-	OSHRFTuofTX7URno2sSn20pWR1Goml3ol9aKPnJsoQA2cFewnwR3albmumgQkCWf4unPDlBClYwU2
-	u14jjkIA==;
+	bh=sv2sCi1LhoxanCq/pgAsKlL6gjjvT4vp60gwfpl3NMU=; b=DvRzNeYFSsRdWAs+pAINfHkdi1
+	YWZ9CkwSM90m0w3ErpxAtLLiI4aYyNat510VRi+C8FIsPUELmq2iPEyoTs1xsfJ0CzAlNas8pYEeC
+	waCNPVbREcJkLBP3CtM6i5EMTabJIxRZvbPeK3fA+CpvWo6n15oFQsw1PcoPE7YJ23ZpVH42hKaTx
+	9wDWC9+rrJqX4blAQgh1S4Bsnp9OQv3AKc4c3IwIvbF9FkKeQBJ+xhUDqAd4sx07AFGp1ioXFiPsQ
+	z6IQ83Yhz03M9pFjU6TWkHOVl1BD3VTpxUK3ETD+4huPghqTyjTrPnclnp078OnF/R2HGCexbxEfd
+	DHMFncUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlNEu-0000000HRr3-42n7;
-	Thu, 29 Jan 2026 08:18:56 +0000
-Received: from mail-dl1-x122d.google.com ([2607:f8b0:4864:20::122d])
+	id 1vlNEv-0000000HRrH-0yC0;
+	Thu, 29 Jan 2026 08:18:57 +0000
+Received: from mail-dl1-x122f.google.com ([2607:f8b0:4864:20::122f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlNEp-0000000HRo0-1uvF
+	id 1vlNEq-0000000HRoj-2Vhi
 	for linux-mediatek@lists.infradead.org;
-	Thu, 29 Jan 2026 08:18:52 +0000
-Received: by mail-dl1-x122d.google.com with SMTP id a92af1059eb24-12336c0a8b6so1318104c88.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 29 Jan 2026 00:18:51 -0800 (PST)
+	Thu, 29 Jan 2026 08:18:53 +0000
+Received: by mail-dl1-x122f.google.com with SMTP id a92af1059eb24-124b117776fso506518c88.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 29 Jan 2026 00:18:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1769674730; x=1770279530; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1769674732; x=1770279532; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=IDaqmz+jOzRuCeSxlUAdH2cvfPDelKI52XxXT1MsurU=;
-        b=NHDFXzegWMETSnE7I8rpsNMuknqLI8kncWI1ydwOIsR8KBPUs5BiOW3xpr51IiWyxb
-         Kit+AfVSKbM4NQcYpptgGD6cFjB+6S2WNjnV1zU142GAuVSVqSC2AmBeYRSW+bKenwDq
-         v7Ee9l1RgPOhFMSnqp+wsb2GhCA0RWvZfusLMox4qx4oBn3cpfouATYPF1pdgAfzWChi
-         qrLf1lAFWj2tF52iki1IYBVp7BE+hrL9VeWIlILW4CfYC64U4YPorJoBWkZC/lSrePbx
-         UGe7w97VJdrlFpeh7FmfvKPHAx5SmK5zpTxPmmGDTPbCXVwo7FsWicrqw5hzpMZz/FEB
-         HaPA==
+        bh=sv2sCi1LhoxanCq/pgAsKlL6gjjvT4vp60gwfpl3NMU=;
+        b=FVI76NKTXkwI0agZUIl+VkIVmiU/cdAKl2JCXc+/nFSZNfN586ANGnoOqwdf/fjtjp
+         xs1zFHf15v4QiJyH/xXB51qaHcULmIxygM5zRjl8O5BUzPnLhxohUvBcC/5OOaLiTKhC
+         H4kdRK+F2GjNzkHEhvIp8pdPVx0BQzCNsA9nFcd3J+P03n3V8PaZxghUnjM4vh8eCtZ2
+         pFgEgYgF2u7Yf4PlbDxR/Cm1ctxxr7uFqXXv0oi9/eqtiwqswG1ntM3m/IxhHiCErP1G
+         VrkBu4hTx6ZNL1cmv6/YqM4/12jWtyf6IH+NsY7cx59s2+jF2fObjb8WvB1oQNlur5KI
+         jBVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1769674730; x=1770279530;
+        d=1e100.net; s=20230601; t=1769674732; x=1770279532;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=IDaqmz+jOzRuCeSxlUAdH2cvfPDelKI52XxXT1MsurU=;
-        b=nR0129BYDCaRFrJ5n6Jm8ON35lk5h6X6pOeYmCWuQpnkyEZgGWbvj7VixH4dNyDXF4
-         dI2ofwrzoQ9YoyiWKOVPhjfIXQjRS2r/iSdIlEqa0BupkuUDwvANFhJSQhsg+ZDAC80A
-         6Jb9F8Hmsj/CrQ3wClvkx2Vd2QJJ8k7d/jmEWxmfxKT5PCIV6es8sPxAxpAPvt/XdjmH
-         6Ffshz6Y7g4Zc8WAiNWdCD98Z15xfuQlAEVsuyJIGaidEEoY9vnG4G1pUx4sNG1Svyqt
-         ddelyQqleMQndQWDnDh038j1p9lPj+ymGJ+ws19Ph7e2SoVWvBz/bMDrVSrVFGVxhYWs
-         OZXA==
-X-Forwarded-Encrypted: i=1; AJvYcCVHgmGlXjZSr1WTWgGU2tdeWhXtuP1jesJWax7B8dWVLSpVjQEgR2sdXD3NuWDJzI9+9HitueOnFEwWnr1QyA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyFUCmOHbTrLG9xQJtThknEJzYysuhWkt9eAyHVTZR7+hElj5gk
-	ZZmP8ghtkwyxS+QZunJDBoUezcTXo2L0SO+TGtVlbZqjF40Cm2gjUfPF
-X-Gm-Gg: AZuq6aIEFvPb7N+Rt3A3bkwZLjhxI2t3IidqeHSjP6KYEhaiDKSioqc7i1TbJE9bqVV
-	upGg3gmkIBEsfaj0/wEiT7QRjdFZw7hKHiR80jh8mNShHLN7cr9NbzLnDjybAOfty5WVPtj9KGY
-	1q5fJgSjtSvbzfpWlts9jjU8t0/c7rKSol7s0ATti8FR1XeikZ9YVVaEC06kkDSKkuZJSCwnWHB
-	s5P/dZMxUmlgG61crta9gqYP9jEBQgDuiJLMutAVLMlxbRKdaNnrRF4J36n5JiyIgoE2csrEZTD
-	W8LsXb3r/KmT8LAfbXyo9kPppajt8H1S/SUoJN+JooXG/QjBAKBm2JHp/Yer/IwyWWTkAGE1uKg
-	9wcpGIRtYhZLPtofOI30w8r5mClKgvFWHMwO31nF3c4poFOkzv/1elYnWCmDumj9LUdJ4f7VKqm
-	JsxFbsB9uBUEoq8DoFOkb+lExNA40cqUAq+CfjTDytm3sQSnypYdNdru+5UiHZv4puQi3BvwQ=
-X-Received: by 2002:a05:7022:e0e:b0:11e:70d8:5dbb with SMTP id a92af1059eb24-124a005f9damr4371735c88.7.1769674730326;
-        Thu, 29 Jan 2026 00:18:50 -0800 (PST)
+        bh=sv2sCi1LhoxanCq/pgAsKlL6gjjvT4vp60gwfpl3NMU=;
+        b=px5r2hkjdZi04EDaCaFmSM++jzNZvYxcH6LLmRLNlR3ZntqQXSldtpIMzUqcU8Aqi0
+         U/OTD16q1wvCgyGYhepDMvXtOi29E+q0a7N8FKBRgvAMlp05PJCVStGTTvTCb2cXKplE
+         O83myn39XQlmX9g4mmrnMZQGE3eAkag4m5lNPGWEq9g+ekSroym74/2aO+TgMWSeadID
+         1UfXAEg9nEr/tqZ3OtfkSwvT5WFIkj4N3HPbTg3qpz3QPom8sqz1ZWvg8m3Ortd9jsss
+         kwkBYDzzf4+mdMXTLgQaMgU3SH5RGcl800cKOgF469M5BnyO2Qpiy314PA0x5BNijNKg
+         9Jaw==
+X-Forwarded-Encrypted: i=1; AJvYcCUyIqXXt2G/KDjE4XgEz2s15ziCWsvAqHyuUgzvkEMgns7Dw4ySywed31Wy64RR/8HNE1RiYYCEq4xWkWoWqw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwVFklKB7CYCuVyzk2MIcLWfb6WsvO5pLFDxD5tj+jLESpq7p3X
+	na10QokFmqLZdlacYyDj8u5C6u58Xm1W3n9xxizYytj4sz9x+gzDe2lH
+X-Gm-Gg: AZuq6aL8RK5XjQbyqUXcvei++dO2Hi9/ENEBO+XxnAKkR+TsYDicTLNVEiuQma2o2Hw
+	WK3d0wyvl5jsGn4pf7KdJkv1KY8Qgb0L1o+IDxOk+SIfJvPsEXDJ+5131NJ9iqcsF6ScNanKTxo
+	q4qQKqZSsUhqlBQiOLyQq4Nh7Nx5JPxDI6NJ0OuoJX76axFzws7BBceDwEy8vx/tyTC0IXAXzCy
+	PmicIxuO5nIC+hTCH0d4iOYw+iV9iAI3HhLv7Ncf4EWijFcXpXRg4ON7YM/hLBb9WURZ+5Q1Ul7
+	oP4+fK+hoVX27aKDVeK9L3U+ApYG5lneEAn1MY6TmNpnhv1UiDjNyHmzyHvM20vJ9w5rWK7cNHt
+	bWAeda6dBRiWGBy4vIAX+gTLT1Lyof90rGm+1qCVOlvcdanPTgaHZzzsA7dG/72FoefIHzdq+t9
+	uFeJYF5NbhMAvc53DvIf2mNts2VQZll5SfcNAniaFZ7ALnUfUOeIf8atC/TKphUHgXE/rGSgM=
+X-Received: by 2002:a05:7022:6a0:b0:11b:9386:826c with SMTP id a92af1059eb24-124a00d64dbmr5188230c88.41.1769674731965;
+        Thu, 29 Jan 2026 00:18:51 -0800 (PST)
 Received: from zcache.home.zacbowling.com ([2001:5a8:60d:bc9:f31e:1cb:296a:cc2a])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-124a9efb4casm5483508c88.16.2026.01.29.00.18.49
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-124a9efb4casm5483508c88.16.2026.01.29.00.18.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 Jan 2026 00:18:49 -0800 (PST)
+        Thu, 29 Jan 2026 00:18:51 -0800 (PST)
 From: Zac <zac@zacbowling.com>
 To: nbd@nbd.name
 Cc: deren.wu@mediatek.com,
@@ -83,9 +83,9 @@ Cc: deren.wu@mediatek.com,
 	sean.wang@mediatek.com,
 	zac@zacbowling.com,
 	zbowling@gmail.com
-Subject: [PATCH v7 3/6] wifi: mt76: mt7925: add mutex protection in critical paths
-Date: Thu, 29 Jan 2026 00:18:36 -0800
-Message-ID: <20260129081839.179709-4-zac@zacbowling.com>
+Subject: [PATCH v7 4/6] wifi: mt76: mt7925: add MCU command error handling in ampdu_action
+Date: Thu, 29 Jan 2026 00:18:37 -0800
+Message-ID: <20260129081839.179709-5-zac@zacbowling.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260129081839.179709-1-zac@zacbowling.com>
 References: <c9b81e89-cd29-44f2-b4e8-0179b2049c21@nbd.name>
@@ -93,9 +93,8 @@ References: <c9b81e89-cd29-44f2-b4e8-0179b2049c21@nbd.name>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260129_001851_539132_2667728A 
-X-CRM114-Status: UNSURE (   7.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260129_001852_657586_8748DCF7 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,62 +109,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add proper mutex protection for mt7925 driver operations that access
-hardware state without proper synchronization. This fixes race conditions
-that can cause system instability during power management and recovery.
+Add proper error handling for MCU command return values that were
+previously being ignored. Without proper error handling, failures in
+MCU communication can leave the driver in an inconsistent state.
 
-Fixes:
+Changes:
+- Check mt7925_mcu_uni_tx_ba() return value
+- Check mt7925_mcu_uni_rx_ba() return value
+- Return error to mac80211 on failure
 
-1. mac.c: mt7925_mac_reset_work()
-   - Wrap ieee80211_iterate_active_interfaces() with mt792x_mutex
-   - The vif_connect_iter callback accesses hardware state
-
-2. main.c: mt7925_set_runtime_pm()
-   - Add mutex protection around ieee80211_iterate_active_interfaces()
-   - Runtime PM can race with other operations
-
-These protections ensure consistent hardware state access during power
-management transitions and recovery operations.
+Special case for IEEE80211_AMPDU_TX_STOP_CONT:
+The ieee80211_stop_tx_ba_cb_irqsafe() callback is kept unconditional
+because during beacon loss, the MCU command may fail but mac80211
+MUST be notified to complete the BA session teardown. Otherwise the
+state machine gets stuck and triggers WARN in
+__ieee80211_stop_tx_ba_session(). This matches the behavior of mt7921
+and mt7996 drivers.
 
 Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 device")
 Signed-off-by: Zac Bowling <zac@zacbowling.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/mac.c  | 2 ++
- drivers/net/wireless/mediatek/mt76/mt7925/main.c | 2 ++
- 2 files changed, 4 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-index f1f0bc9eab04..88cf214ab452 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-@@ -1330,9 +1330,11 @@ void mt7925_mac_reset_work(struct work_struct *work)
- 	dev->hw_full_reset = false;
- 	pm->suspended = false;
- 	ieee80211_wake_queues(hw);
-+	mt792x_mutex_acquire(dev);
- 	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
- 					    mt7925_vif_connect_iter, NULL);
-+	mt792x_mutex_release(dev);
- 	mt76_connac_power_save_sched(&dev->mt76.phy, pm);
- 
- 	mt7925_regd_change(&dev->phy, "00");
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 88ee90709b75..82de6f30ec27 100644
+index 82de6f30ec27..8236edb1fb48 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -770,9 +770,11 @@ void mt7925_set_runtime_pm(struct mt792x_dev *dev)
- 	bool monitor = !!(hw->conf.flags & IEEE80211_CONF_MONITOR);
- 
- 	pm->enable = pm->enable_user && !monitor;
-+	mt792x_mutex_acquire(dev);
- 	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
- 					    mt7925_pm_interface_iter, dev);
-+	mt792x_mutex_release(dev);
- 	pm->ds_enable = pm->ds_enable_user && !monitor;
- 	mt7925_mcu_set_deep_sleep(dev, pm->ds_enable);
- }
+@@ -1300,22 +1300,22 @@ mt7925_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	case IEEE80211_AMPDU_RX_START:
+ 		mt76_rx_aggr_start(&dev->mt76, &msta->deflink.wcid, tid, ssn,
+ 				   params->buf_size);
+-		mt7925_mcu_uni_rx_ba(dev, params, true);
++		ret = mt7925_mcu_uni_rx_ba(dev, params, true);
+ 		break;
+ 	case IEEE80211_AMPDU_RX_STOP:
+ 		mt76_rx_aggr_stop(&dev->mt76, &msta->deflink.wcid, tid);
+-		mt7925_mcu_uni_rx_ba(dev, params, false);
++		ret = mt7925_mcu_uni_rx_ba(dev, params, false);
+ 		break;
+ 	case IEEE80211_AMPDU_TX_OPERATIONAL:
+ 		mtxq->aggr = true;
+ 		mtxq->send_bar = false;
+-		mt7925_mcu_uni_tx_ba(dev, params, true);
++		ret = mt7925_mcu_uni_tx_ba(dev, params, true);
+ 		break;
+ 	case IEEE80211_AMPDU_TX_STOP_FLUSH:
+ 	case IEEE80211_AMPDU_TX_STOP_FLUSH_CONT:
+ 		mtxq->aggr = false;
+ 		clear_bit(tid, &msta->deflink.wcid.ampdu_state);
+-		mt7925_mcu_uni_tx_ba(dev, params, false);
++		ret = mt7925_mcu_uni_tx_ba(dev, params, false);
+ 		break;
+ 	case IEEE80211_AMPDU_TX_START:
+ 		set_bit(tid, &msta->deflink.wcid.ampdu_state);
+@@ -1324,6 +1324,11 @@ mt7925_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	case IEEE80211_AMPDU_TX_STOP_CONT:
+ 		mtxq->aggr = false;
+ 		clear_bit(tid, &msta->deflink.wcid.ampdu_state);
++		/* MCU command may fail during beacon loss, but callback must
++		 * always be called to complete the BA session teardown in
++		 * mac80211. Otherwise the state machine gets stuck and triggers
++		 * WARN in __ieee80211_stop_tx_ba_session().
++		 */
+ 		mt7925_mcu_uni_tx_ba(dev, params, false);
+ 		ieee80211_stop_tx_ba_cb_irqsafe(vif, sta->addr, tid);
+ 		break;
 -- 
 2.52.0
 
