@@ -4,66 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3CE1D61015
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jan 2026 13:50:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52543D73E87
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jan 2026 23:24:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U623dX4RFpkw20riF9BbOspWLI1Mth4SOSMFwzOgUzs=; b=fVQt69JQN3mqL741/GrdQKH+d3
-	F6UEIoEyEqNsQdYY/VWx/w/WtKKbm09xrCEAHr6UTdyO/qRWj+pl2D/lePj1ro43uYT6uytMgjXWP
-	O9Or+JXg62LZFbKaNNOUyATF4rDTRtWLm0dKzyx3Lk0Ew5/WWNfFrz444Xcm4QDbr+citOkURnxE3
-	yB0LxwooLADxKD5Ka8oPl42zA6TkH2UKJF/YWIDuaF0vxENlyWWZWLNqlDQ4xYjixWiVCkJrKKLzf
-	Ai32o/Y7pVHV0T5bbcfwYs3Eg4i2fNHygcjrle5foH0Iy7GEY1LPb463jxXCW+vUPDqh9Dz1y36gu
-	f0gopALA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=L3xhdHlKfGLcqgxeTS+ozWIuu1fcHH/+mliJjYQyaZI=; b=Z/P12BRhXcXmVQih3jRHq2yCEm
+	WERXlcdlSfnm/JGCT0HWqUhoAczb+E73STGOjvYv5/GFzJqiEkoOPUjDPzY3XcztJnE6GqGzWljUT
+	zyEZqM0DJ8lXjeFROr2JifLwsr2NLot2cMCDU3akb6/t8jliTszx63VuTI64MqQr9NgLDl7aXtt5+
+	jLHa4o+djBIDe96ZHTemVABOhICJYKr8dE5w9VzQ0Ol9bhGZpA5zV7VSYpEAToQnRlu0YSjNW7k9a
+	0I5CHoj6D4OWj0lxeScS+/4vJOPakPlHmmwlQuEzumuVQ3Z5owBDK0bmxeCjSVv4y7xSG88Sop3jA
+	HQbLaXTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlSPY-00000000B55-1L3K;
-	Thu, 29 Jan 2026 13:50:16 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vlbMt-00000000mNe-0Kkq;
+	Thu, 29 Jan 2026 23:24:07 +0000
+Received: from mailgate01.uberspace.is ([2001:1a50:11:0:c83f:a8ff:fea6:c8da])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlSPV-00000000B47-1PHy;
-	Thu, 29 Jan 2026 13:50:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 64A3760125;
-	Thu, 29 Jan 2026 13:50:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 173B4C116D0;
-	Thu, 29 Jan 2026 13:50:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769694612;
-	bh=njAphseulUjoK8AcV8JEhX+CD2myxOkOYR9RBZrz5cM=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=u0WZL1tkJowyLwckCyw8Rdp7Hy6l7Ju1AFUKkMjjazQl5IbCZcbdcuV/oL2Yu5tzE
-	 5odwCTVEMcKCeOEmantn7kbzk04mJ9R4n1q7T8l7bnuffpA+7TvrEjM+Lxkno51MYG
-	 pjw+bAgdwYflOmorrKAMV9vMbtUOM/fnkM/6efv8WU4pQqHD2HkfHnfa+P9ywrQ2Tf
-	 R5nVNq6uwI7irsKZBEviIYr99UCPoXDukVvmvRH9YyiuUBJDIDVKFewwVjzauAsEin
-	 2u8BwEcz1Eiux4WdFepqcB58psKEPMcxcK9lEfZILlEliWRV7cJ/mR1ugetoN2/oG1
-	 gSM3zG1+4bTAA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 4EB4B380CEC7;
-	Thu, 29 Jan 2026 13:50:06 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1vlbMo-00000000mMs-3nH4
+	for linux-mediatek@lists.infradead.org;
+	Thu, 29 Jan 2026 23:24:05 +0000
+Received: from mailgate02.uberspace.is (mailgate02.uberspace.is [185.26.156.114])
+	by mailgate01.uberspace.is (Postfix) with ESMTPS id 8593061712
+	for <linux-mediatek@lists.infradead.org>; Fri, 30 Jan 2026 00:23:51 +0100 (CET)
+Received: from perseus.uberspace.de (perseus.uberspace.de [95.143.172.134])
+	by mailgate02.uberspace.is (Postfix) with ESMTPS id 70DC717F6D4
+	for <linux-mediatek@lists.infradead.org>; Fri, 30 Jan 2026 00:23:51 +0100 (CET)
+Received: (qmail 32761 invoked by uid 988); 29 Jan 2026 23:23:51 -0000
+Authentication-Results: perseus.uberspace.de;
+	auth=pass (plain)
+Received: from unknown (HELO unkown) (::1)
+	by perseus.uberspace.de (Haraka/3.1.1) with ESMTPSA; Fri, 30 Jan 2026 00:23:51 +0100
+From: David Bauer <mail@david-bauer.net>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH mt76] wifi: mt76: don't return TXQ when exceeding max non-AQL packets
+Date: Fri, 30 Jan 2026 00:23:20 +0100
+Message-ID: <20260129232321.276575-1-mail@david-bauer.net>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v4] net: fix segmentation of forwarding fraglist GRO
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <176969460511.2509271.18000962996568146768.git-patchwork-notify@kernel.org>
-Date: Thu, 29 Jan 2026 13:50:05 +0000
-References: <20260126152114.1211-1-jibin.zhang@mediatek.com>
-In-Reply-To: <20260126152114.1211-1-jibin.zhang@mediatek.com>
-To: Jibin Zhang <jibin.zhang@mediatek.com>
-Cc: ast@kernel.org, daniel@iogearbox.net, andrii@kernel.org,
- martin.lau@linux.dev, eddyz87@gmail.com, song@kernel.org,
- yonghong.song@linux.dev, john.fastabend@gmail.com, kpsingh@kernel.org,
- sdf@fomichev.me, haoluo@google.com, jolsa@kernel.org, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
- ncardwell@google.com, kuniyu@google.com, dsahern@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- bpf@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- wsd_upstream@mediatek.com
+X-Rspamd-Bar: /
+X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-2.999999) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
+X-Rspamd-Score: -0.099999
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=david-bauer.net; s=uberspace;
+	h=from:to:cc:subject:date;
+	bh=cYV+S1poLG3zOhpK3v5Vt81YSGQXzrx6B1Ag/C8c48g=;
+	b=ndYNbSDQrNwf7xGt82nlrHof8y4t/AgBZh4xQb7NYSFYb9ZEJ4Hgu8wZdPxDrAnsmsEYf+7ljX
+	cRuRwJkHHnmOdV3YA38wo3cE6NkbdozK/T1FRKulgf8XWUubf0veIF8pOzGkIJeHCpvJIESsax8u
+	6Utc+9hhVW53MAJXL8h4x6cwoizLt4gZ1Q9DiMdtp2mbnH+4+37GuO5r+OgRQf4A5urQAfyxesb9
+	6K8E/Zf1WpUErPf/dExUrde31xDB84T0TrQdVNX7/PumcINXJLIzPLfi1hwYxGwh/WITPb2vJttk
+	M1ejI9DyHa3rOy6lGDIq39tcZaRb/GC0sz0BsCWxpTHp0f5FhVIlqtLIPOtKq6BA281DO1ej/4vW
+	+IrZJ6WJoRTFE4hu3MGm47hZGLe68S0NlBxjLK4PDF/BwJHsrF5PPBXCkd3gVVa6xBaKE6aUj/N8
+	dOwEwrwdc7h7S9fgipUI1l3YHj6KJs46bR2/2CEGTLT9+WNcDY3ZABfXiy//f2mnuJfBilPQ4REw
+	G1nQjW1vvNbQa67fY46dlIU6R4LUP8Ur7NG6uhVMS+USBgzNaJyIOHi+2bh3nobggb1qHyvBIsSU
+	+NZoX7k7AUoO9KhwPbYzXa5+45nMZlEwSw3bI3MpPfq0jO0KjsZ4ZJliT2Zwo2q9sODYajl6KVCF
+	8=
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260129_152403_171486_AE42BB1F 
+X-CRM114-Status: GOOD (  12.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,34 +90,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+mt76_txq_send_burst does check if the number of non-AQL frames exceeds
+the maximum. In this case the queue is returned to ieee80211_return_txq
+when iterating over the scheduled TXQs in mt76_txq_schedule_list.
 
-This patch was applied to netdev/net.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
+This has the effect of inserting said TXQ at the head of the list. This
+means the loop will get the same TXQ again, which will terminate the
+scheduling round. TXQs following in the list thus never get scheduled
+for transmission.
 
-On Mon, 26 Jan 2026 23:21:11 +0800 you wrote:
-> This patch enhances GSO segment handling by properly checking
-> the SKB_GSO_DODGY flag for frag_list GSO packets, addressing
-> low throughput issues observed when a station accesses IPv4
-> servers via hotspots with an IPv6-only upstream interface.
-> 
-> Specifically, it fixes a bug in GSO segmentation when forwarding
-> GRO packets containing a frag_list. The function skb_segment_list
-> cannot correctly process GRO skbs that have been converted by XLAT,
-> since XLAT only translates the header of the head skb. Consequently,
-> skbs in the frag_list may remain untranslated, resulting in protocol
-> inconsistencies and reduced throughput.
-> 
-> [...]
+This can manifest in high latency low throughput or broken connections
+for said STAs.
 
-Here is the summary with links:
-  - [v4] net: fix segmentation of forwarding fraglist GRO
-    https://git.kernel.org/netdev/net/c/426ca15c7f6c
+Check if the non-AQL packet count exceeds the limit and not return the
+TXQ in this case.
+Schedule all TXQs for the STA in case the non-AQL limit can be satisfied
+again.
 
-You are awesome, thank you!
+Signed-off-by: David Bauer <mail@david-bauer.net>
+---
+ drivers/net/wireless/mediatek/mt76/tx.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/tx.c b/drivers/net/wireless/mediatek/mt76/tx.c
+index 9ec6d0b53a84a..0753acf2eccb8 100644
+--- a/drivers/net/wireless/mediatek/mt76/tx.c
++++ b/drivers/net/wireless/mediatek/mt76/tx.c
+@@ -227,7 +227,9 @@ mt76_tx_check_non_aql(struct mt76_dev *dev, struct mt76_wcid *wcid,
+ 		      struct sk_buff *skb)
+ {
+ 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
++	struct ieee80211_sta *sta;
+ 	int pending;
++	int i;
+ 
+ 	if (!wcid || info->tx_time_est)
+ 		return;
+@@ -235,6 +237,17 @@ mt76_tx_check_non_aql(struct mt76_dev *dev, struct mt76_wcid *wcid,
+ 	pending = atomic_dec_return(&wcid->non_aql_packets);
+ 	if (pending < 0)
+ 		atomic_cmpxchg(&wcid->non_aql_packets, pending, 0);
++
++	sta = wcid_to_sta(wcid);
++	if (!sta || pending != MT_MAX_NON_AQL_PKT - 1)
++		return;
++
++	for (i = 0; i < ARRAY_SIZE(sta->txq); i++) {
++		if (!sta->txq[i])
++			continue;
++
++		ieee80211_schedule_txq(dev->hw, sta->txq[i]);
++	}
+ }
+ 
+ void __mt76_tx_complete_skb(struct mt76_dev *dev, u16 wcid_idx, struct sk_buff *skb,
+@@ -542,6 +555,9 @@ mt76_txq_schedule_list(struct mt76_phy *phy, enum mt76_txq_id qid)
+ 		if (!wcid || test_bit(MT_WCID_FLAG_PS, &wcid->flags))
+ 			continue;
+ 
++		if (atomic_read(&wcid->non_aql_packets) >= MT_MAX_NON_AQL_PKT)
++			continue;
++
+ 		phy = mt76_dev_phy(dev, wcid->phy_idx);
+ 		if (test_bit(MT76_RESET, &phy->state) || phy->offchannel)
+ 			continue;
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.51.0
 
 
