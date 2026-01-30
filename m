@@ -4,65 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9AEFD49C71
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jan 2026 08:17:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CD82E6BF18
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jan 2026 14:58:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8rgOMETSMC9Bs3nuV0cUho26a3uyffmK4JEWMz/4FzU=; b=17Tt7J/HXamMElfRQogiF2J+eW
-	4t5InnR5BipWptY2/RN14i/z1U/eZqYTBbkDK7udHKo/8Yxwa2uKzGN8QuS7oNIcRi6i3Ag+O8Rq+
-	dYRBCqgJbeMnYYeFu3jQHvUlkVZbVIBCkNVB9xoGFscK+MAWpIOat8G6rUzcc6TVfKg6ctUp9HUBc
-	ONFBUGlSKr7jFQRm1qZxJpKNv4KcNhxlkrpbsVjJFL9RRoav+4RtHy6N/eT20FQK9EnOCqV1wqceG
-	+nxlBKUzzJfITH/Lck/7xNs/XuZau+k5+rfsi1jHY7x0+whQKrN2TOiwGq/zLxVAWlN1NziuZthst
-	VR1mZCwg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wcZlIWBHgUJjjrpFugrQ8hzHKe52OUDXWzJ9M6y5b6w=; b=rPIXLTwwUGxpZt8zeQEV+v6wzL
+	tReAw3hVcboDK/z/AWTAq2bDDnn0Ymo5vEoNVvbyUmMrauC1PfUvXzkJhHh2D35m5CDA7kNUvwQdO
+	/lCLmCBhfe75MvYZDG7m4V0WMJ852PMfNDBcGwvkIeI9SHudVNDxEAM6h+CNEy/j21TCsT+ofuSy1
+	dDN6ycakwbgkDnOwdZp7MnoJQjyFWuHc4T5zz0AZdttFqxLz4UIR2A6IfXrbXVgnN5/RMLfxB4zXI
+	KmiVlPzcchxRZzEGBPvk0+n8dKcLaFq2/NYmiyuNEBzwWOEc4BVYO3j6vgXO8h36VUFDxg0T7aXk2
+	fLnU5Ldg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vljhB-00000001CBx-30b8;
-	Fri, 30 Jan 2026 08:17:37 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vljh9-00000001CBU-1QKa
-	for linux-mediatek@lists.infradead.org;
-	Fri, 30 Jan 2026 08:17:36 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5917043801;
-	Fri, 30 Jan 2026 08:17:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38CCAC4CEF7;
-	Fri, 30 Jan 2026 08:17:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769761054;
-	bh=SxLqE44zUUxs1dvaadGY9E3DpJnP/taoyxmSUjwcM00=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SiK1xCBmZRzZSTAGdSIV7V9uGeUjIdIa1736iKo1bi11W9OkKJhT9ttVn0pAEpDwT
-	 rGtdYUWt4JbDaciao5Y6YdWMzZW+zCoP6Zjs3SLtE0xV+B9kZZs9X3KCNIgtvFUQw4
-	 JJ14slv8bApSWz/a7RA07Bk0B7oCt7SJmdXFpHQWjgf7UV9EYxHPuwbWvnWOlb2ENA
-	 LCWB8NU+/cXbgeurd+ocqQAsUCmH3pkD4zs4Wa6OS0n4wgdTcvl24eLybvQZMZdZ25
-	 w+dHyoIPScNcPsJc18pYNc9PkRzdrK4OtYLL9Sm9s9q7+LTe9IVBeaYdILPWF2mlV8
-	 httBgzWekJC5w==
-Date: Fri, 30 Jan 2026 08:17:31 +0000
-From: Tzung-Bi Shih <tzungbi@kernel.org>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] pmdomain: mediatek: Break lock dependency to
- `prepare_lock`
-Message-ID: <aXxpG3hEVVjuWInc@google.com>
-References: <20251231035357.1147578-1-tzungbi@kernel.org>
- <CAGXv+5Fm7DFkZ_JONhHN4467=oVhuw-e1XtXuD53qBQDWd7cNw@mail.gmail.com>
- <CAPDyKFrqqXYy_Y-7WA=5taBhE4rcYX+Uz_RnGpOtD-AF3eipVQ@mail.gmail.com>
+	id 1vlpxM-00000001bv2-2Hcd;
+	Fri, 30 Jan 2026 14:58:44 +0000
+Received: from azure-sdnproxy.icoremail.net ([13.76.78.106])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vlpxI-00000001buS-1ko1;
+	Fri, 30 Jan 2026 14:58:43 +0000
+Received: from zju.edu.cn (unknown [106.117.99.170])
+	by mtasvr (Coremail) with SMTP id _____wBnPM78xnxp8L1gAA--.5479S3;
+	Fri, 30 Jan 2026 22:58:05 +0800 (CST)
+Received: from ubuntu.localdomain (unknown [106.117.99.170])
+	by mail-app1 (Coremail) with SMTP id yy_KCgDH0dv5xnxpnhTxBQ--.54572S2;
+	Fri, 30 Jan 2026 22:58:03 +0800 (CST)
+From: Duoming Zhou <duoming@zju.edu.cn>
+To: linux-wireless@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	nbd@nbd.name,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
+	shayne.chen@mediatek.com,
+	sean.wang@mediatek.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	kuba@kernel.org,
+	alexander.deucher@amd.com,
+	pkshih@realtek.com,
+	akpm@linux-foundation.org,
+	StanleyYP.Wang@mediatek.com,
+	howard-yh.hsu@mediatek.com,
+	rosenp@gmail.com,
+	Duoming Zhou <duoming@zju.edu.cn>
+Subject: [PATCH] wifi: mt76: mt7915: fix use-after-free bugs in mt7915_mac_dump_work()
+Date: Fri, 30 Jan 2026 22:57:59 +0800
+Message-Id: <20260130145759.84272-1-duoming@zju.edu.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAPDyKFrqqXYy_Y-7WA=5taBhE4rcYX+Uz_RnGpOtD-AF3eipVQ@mail.gmail.com>
+X-CM-TRANSID: yy_KCgDH0dv5xnxpnhTxBQ--.54572S2
+X-CM-SenderInfo: qssqjiasttq6lmxovvfxof0/1tbiAwYHAWl7uAYDcwBHsY
+X-CM-DELIVERINFO: =?B?cYGOmAXKKxbFmtjJiESix3B1w3uoVhYI+vyen2ZzBEkOnu5chDpkB+ZdGnv/zQ0PbP
+	CR11YjdbuMySUouUtrOXK8iwzYcuYFk7aHTFsYiRbb0uC/oQbxyu3xRrnSKM/xJF44wcM8
+	Hq9+lQsvkMLsMeqhmXkB8lQQRIwc0TJdq+owcnJ2UFiSBZHsqxAN1s176MXBxg==
+X-Coremail-Antispam: 1Uk129KBj93XoW7Zr1xKr15CFykKFyxXFy8tFc_yoW8WFWkpa
+	yFga4UurWUWFsrt3yDJFWxJa15W3Zag34jkryrW34Yq395GFySyws8ZFy29Fy0yF4qkFyY
+	vr45tr98uFyYvFXCm3ZEXasCq-sJn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7ZEXa
+	sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
+	0xBIdaVrnRJUUU9Eb4IE77IF4wAFF20E14v26ryj6rWUM7CY07I20VC2zVCF04k26cxKx2
+	IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
+	e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_tr0E3s1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
+	0_Gr1j6F4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AK
+	xVW0oVCq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc804VCY07AIYIkI8VC2zVCFFI0UMc
+	02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAF
+	wI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcxkI7VAKI48JM4x0Y48IcxkI7V
+	AKI48G6xCjnVAKz4kxM4IIrI8v6xkF7I0E8cxan2IY04v7MxAIw28IcxkI7VAKI48JMxC2
+	0s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI
+	0_JrI_JrWlx4CE17CEb7AF67AKxVW8ZVWrXwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE
+	14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20x
+	vaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8
+	JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7IU8YFAJUUUUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260130_001735_399033_0D36BE2A 
-X-CRM114-Status: GOOD (  19.50  )
+X-CRM114-CacheID: sfid-20260130_065840_811025_88837162 
+X-CRM114-Status: UNSURE (   7.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,41 +98,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 27, 2026 at 02:57:46PM +0100, Ulf Hansson wrote:
-> On Thu, 22 Jan 2026 at 09:38, Chen-Yu Tsai <wenst@chromium.org> wrote:
-> > On Wed, Dec 31, 2025 at 11:54 AM Tzung-Bi Shih <tzungbi@kernel.org> wrote:
-> > > @@ -398,7 +398,7 @@ static int scpsys_hwv_power_off(struct generic_pm_domain *genpd)
-> > >                         return ret;
-> > >         }
-> > >
-> > > -       ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
-> > > +       ret = clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
-> 
-> scpsys_hwv_power_off() is typically called by genpd in the suspend
-> noirq() phase, when all devices attached to the genpd in question have
-> been suspended too. See genpd_suspend_noirq().
-> 
-> This means that scpsys_suspend() (below) may be called to unprepare
-> the clock, before scpsys_hwv_power_off() may call clk_disable(). This
-> is a bug according to the clock framework.
+When the mt7915 pci chip is detaching, the mt7915_crash_data is
+released in mt7915_coredump_unregister(). However, the work item
+dump_work may still be running or pending, leading to UAF bugs
+when the already freed crash_data is dereferenced again in
+mt7915_mac_dump_work().
 
-Ack, I observed a similar warning in a system suspend/resume cycle.
+The race condition can occur as follows:
 
-> 
-> Moving scpsys_suspend() to the noirq phase too could maybe work.
+CPU 0 (removal path)               | CPU 1 (workqueue)
+mt7915_pci_remove()                | mt7915_sys_recovery_set()
+ mt7915_unregister_device()        |  mt7915_reset()
+  mt7915_coredump_unregister()     |   queue_work()
+   vfree(dev->coredump.crash_data) | mt7915_mac_dump_work()
+                                   |  crash_data-> // UAF
 
-No, I guess it doesn't work as .prepare() can sleep however noirq phase
-shouldn't/can't.
+Fix this by ensuring dump_work is properly canceled before
+the crash_data is deallocated. Add cancel_work_sync() in
+mt7915_unregister_device() to synchronize with any pending
+or executing dump work.
 
-> Although, perhaps an even simpler solution would be to do the
-> clk_prepare() during ->probe() and clk_unprepare() during ->remove()
-> (and error path in probe). Of course, this assumes that
-> clk_prepare/unprepare doesn't really do anything hardware wise, so we
-> don't start wasting power by keeping the clocks prepared.
+Fixes: 4dbcb9125cc3 ("wifi: mt76: mt7915: enable coredump support")
+Signed-off-by: Duoming Zhou <duoming@zju.edu.cn>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-It turns out a pure revert of f0fce06e345d ("soc: mtk-pm-domains: Fix
-the clock prepared issue").  Per the commit message of f0fce06e345d,
-the concern is some PLLs keep prepared even if the system is suspended.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index 22443cbc74a..250c2d2479b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -1294,6 +1294,7 @@ int mt7915_register_device(struct mt7915_dev *dev)
+ 
+ void mt7915_unregister_device(struct mt7915_dev *dev)
+ {
++	cancel_work_sync(&dev->dump_work);
+ 	mt7915_unregister_ext_phy(dev);
+ 	mt7915_coredump_unregister(dev);
+ 	mt7915_unregister_thermal(&dev->phy);
+-- 
+2.34.1
 
-Not sure should we take the compromise?
 
