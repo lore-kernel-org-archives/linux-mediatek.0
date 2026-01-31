@@ -4,81 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B41BD46C1D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Jan 2026 02:47:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BD73D46C1D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Jan 2026 02:51:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cY4OaEbfPMSGoQkehbAS8VkO0Bj7/6vJSUeIUHRE3SM=; b=QqSfTLdiiVzbQ6XkO17SmRAmmR
-	7cSC6VAs4DrxKrz9rPsw8Vkk+Sw2RYgRp84oJW04ymSGF9xgo0pT++wkMbmzteuyzX+0HgHkMeFvR
-	cw63xOFpoQmA2+0o1LeKyfWRjrKBxyV/PfwqPphWN6fffCvP7KWLVysy+8llkm6gXb930Lq5U+6B3
-	/bzOfursL4AAdQYjjphr4Ynj5KRwrHrUDKOlT8pblX2Aid9+IfM4zzDFpnZiIHy6o0CHXWHiLVrzE
-	2X7sI+tE9nv6Ok/LiXUVGLinmIgX0Otj9df1gvZQ3IobeSy+MBBvNKynEjUCB9ELUnzzBjGmINQo9
-	pFOAonvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XwTZvf90Q0/ZiQiDf033n6HLd/eCmwjI8aHKLe2j3RY=; b=IFf0wE3zC6XG6f3gGOcfW84vI1
+	L34sY1KzseAAhqW5nPCHYC9oxy8YsmEgJsjQWue8E+89cCiZtYi9LYfQCYtxqY3Ugrt5xM6zA4FF4
+	NJtWE5W86EUBcLYl+QA0IizrgrNZx6tLkXGsEH4lQ6o5TbtNMAuSSOBu9PwsQ+DuU5nQrBQo7zCr2
+	csawoSpTvDr0kIkwXnk4nWQSmC0wXMbpE+TjDrtnRXZyzW48AmbweXX1fbcm3yUR9PNQl6oz/LWGK
+	JEv8zZnxXG6WMj43HxVUh/sC4D1x7Ock3SZ3u1engNJDmnB9fzEfbEVzPBgJHtnZ+yPyUTUJL/frl
+	/V7U6Fag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vm11c-00000002F66-13Zn;
-	Sat, 31 Jan 2026 02:47:52 +0000
-Received: from zg8tmja5ljk3lje4mi4ymjia.icoremail.net ([209.97.182.222])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vm11Y-00000002F5d-0c9n;
-	Sat, 31 Jan 2026 02:47:50 +0000
-Received: from zju.edu.cn (unknown [218.12.16.80])
-	by mtasvr (Coremail) with SMTP id _____wDn73NKbX1p7mRjAA--.1562S3;
-	Sat, 31 Jan 2026 10:47:39 +0800 (CST)
-Received: from ubuntu.localdomain (unknown [218.12.16.80])
-	by mail-app2 (Coremail) with SMTP id zC_KCgAHH0NFbX1pJeyZBQ--.46417S2;
-	Sat, 31 Jan 2026 10:47:37 +0800 (CST)
-From: Duoming Zhou <duoming@zju.edu.cn>
-To: linux-wireless@vger.kernel.org
-Cc: linux-kernel@vger.kernel.org,
+	id 1vm15B-00000002FOJ-33Ro;
+	Sat, 31 Jan 2026 02:51:33 +0000
+Received: from abb.hmeau.com ([180.181.231.80])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vm158-00000002FNc-2ipt;
+	Sat, 31 Jan 2026 02:51:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=gondor.apana.org.au; s=h01; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:cc:to:subject:message-id:date:
+	from:content-type:reply-to; bh=XwTZvf90Q0/ZiQiDf033n6HLd/eCmwjI8aHKLe2j3RY=; 
+	b=cIwTeMe2DGawNVZAcxX0uzCavRFgi/KseVVkwhC+A/0rDViJdToutcIHhByMlTM/Q0AyukeNKl1
+	JijFga/DzGXHxO3FJTB3ANo9eCPIpN02+DA0aJP+TGAKarU/fya9VC+KM8QZwosrOor5Q1rPC32ER
+	Td0x3B0nBvJwF2T01UOjLkZxfWbYqcJmUJWaJjUjO5vE/CGGc8nhN/+FfSlQJ68FUj6MEU/hyr44V
+	+qHAmTXdB9iEyo5or6PSNFf3aUh3Iy7aC60/JBd/RazXhvVHcEIwGT0BBS2J8zGZea2BGKzf+f5Cy
+	lKITDUh7vXOjSvBnnkTIS6rYAJ+9JCYnjHDg==;
+Received: from loth.rohan.me.apana.org.au ([192.168.167.2])
+	by formenos.hmeau.com with smtp (Exim 4.96 #2 (Debian))
+	id 1vm14p-003RvN-2X;
+	Sat, 31 Jan 2026 10:51:12 +0800
+Received: by loth.rohan.me.apana.org.au (sSMTP sendmail emulation); Sat, 31 Jan 2026 10:51:11 +0800
+Date: Sat, 31 Jan 2026 10:51:11 +0800
+From: Herbert Xu <herbert@gondor.apana.org.au>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: krzk+dt@kernel.org, davem@davemloft.net, robh@kernel.org,
+	conor+dt@kernel.org, andrew@lunn.ch, gregory.clement@bootlin.com,
+	sebastian.hesselbarth@gmail.com, matthias.bgg@gmail.com,
+	atenart@kernel.org, linux-crypto@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	kuba@kernel.org,
-	rex.lu@mediatek.com,
-	Duoming Zhou <duoming@zju.edu.cn>
-Subject: [PATCH] wifi: mt76: mt7996: fix use-after-free bugs in mt7996_mac_dump_work()
-Date: Sat, 31 Jan 2026 10:47:31 +0800
-Message-Id: <20260131024731.18741-1-duoming@zju.edu.cn>
-X-Mailer: git-send-email 2.34.1
+	linux-mediatek@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v2 0/4] Fixes for EIP97/EIP197 binding and devicetrees
+Message-ID: <aX1uH28_Zd1i-d_A@gondor.apana.org.au>
+References: <20260112145558.54644-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zC_KCgAHH0NFbX1pJeyZBQ--.46417S2
-X-CM-SenderInfo: qssqjiasttq6lmxovvfxof0/1tbiAwcHAWl9CYYARQAis+
-X-CM-DELIVERINFO: =?B?nx7eAAXKKxbFmtjJiESix3B1w3uoVhYI+vyen2ZzBEkOnu5chDpkB+ZdGnv/zQ0PbP
-	CR17BdU0YDZAV/2Ln4UAAcl16DGRBFtdZlxZ1QrbH4wGfx32Jfz4aN3dUbt+We9+91Yi8K
-	fgiSaWccdsHHI9sjkRU1Sfihgbwg4TzFg1kDojip5H+f+rmxSWW3Qj0hUa1qOA==
-X-Coremail-Antispam: 1Uk129KBj93XoW7Zr1xKr15CFykKF15KFWkZrc_yoW8Ww43p3
-	yrCa4j934UurZrJw4DAF4IvF1UG3Z3Kw4UGrZ5W3s0q3s3GF9ayw4DAFyDuF1jkFs2yFWY
-	yr4jq3s8WFyYvFXCm3ZEXasCq-sJn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7ZEXa
-	sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
-	0xBIdaVrnRJUUU9Eb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2
-	IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
-	e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_tr0E3s1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
-	0_Gr1j6F4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AK
-	xVW0oVCq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc804VCY07AIYIkI8VC2zVCFFI0UMc
-	02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAF
-	wI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcxkI7VAKI48JM4x0Y48IcxkI7V
-	AKI48G6xCjnVAKz4kxM4IIrI8v6xkF7I0E8cxan2IY04v7MxAIw28IcxkI7VAKI48JMxC2
-	0s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI
-	0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE
-	14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20x
-	vaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8
-	JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7IU801v3UUUUU==
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260112145558.54644-1-angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260130_184748_507395_EE7EC49E 
-X-CRM114-Status: UNSURE (   7.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260130_185130_692183_2BAE6A00 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,45 +74,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When the mt7996 pci chip is detaching, the mt7996_crash_data is
-released in mt7996_coredump_unregister(). However, the work item
-dump_work may still be running or pending, leading to UAF bugs
-when the already freed crash_data is dereferenced again in
-mt7996_mac_dump_work().
+On Mon, Jan 12, 2026 at 03:55:54PM +0100, AngeloGioacchino Del Regno wrote:
+> Changes in v2:
+>  - Reorder commits
+>  - Change to restrict interrupts/interrupt-names minItems to MediaTek only
+> 
+> This series adds SoC compatibles to the EIP97/EIP197 binding, and also
+> fixes all of the devicetrees to actually declare those in their nodes.
+> 
+> The only platforms using this binding are Marvell and MediaTek.
+> 
+> AngeloGioacchino Del Regno (4):
+>   dt-bindings: crypto: inside-secure,safexcel: Add SoC compatibles
+>   dt-bindings: crypto: inside-secure,safexcel: Mandate only ring IRQs
+>   arm64: dts: marvell: Add SoC specific compatibles to SafeXcel crypto
+>   arm64: dts: mediatek: mt7986a: Change compatible for SafeXcel crypto
+> 
+>  .../crypto/inside-secure,safexcel.yaml        | 22 +++++++++++++++++++
+>  arch/arm64/boot/dts/marvell/armada-37xx.dtsi  |  3 ++-
+>  arch/arm64/boot/dts/marvell/armada-cp11x.dtsi |  3 ++-
+>  arch/arm64/boot/dts/mediatek/mt7986a.dtsi     |  2 +-
+>  4 files changed, 27 insertions(+), 3 deletions(-)
+> 
+> -- 
+> 2.52.0
 
-The race condition can occur as follows:
-
-CPU 0 (removal path)               | CPU 1 (workqueue)
-mt7996_pci_remove()                | mt7996_sys_recovery_set()
- mt7996_unregister_device()        |  mt7996_reset()
-  mt7996_coredump_unregister()     |   queue_work()
-   vfree(dev->coredump.crash_data) | mt7996_mac_dump_work()
-                                   |  crash_data-> // UAF
-
-Fix this by ensuring dump_work is properly canceled before
-the crash_data is deallocated. Add cancel_work_sync() in
-mt7996_unregister_device() to synchronize with any pending
-or executing dump work.
-
-Fixes: 878161d5d4a4 ("wifi: mt76: mt7996: enable coredump support")
-Signed-off-by: Duoming Zhou <duoming@zju.edu.cn>
----
- drivers/net/wireless/mediatek/mt76/mt7996/init.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 00a8286bd13..0ccaa5dce19 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -1726,6 +1726,7 @@ int mt7996_register_device(struct mt7996_dev *dev)
- 
- void mt7996_unregister_device(struct mt7996_dev *dev)
- {
-+	cancel_work_sync(&dev->dump_work);
- 	cancel_work_sync(&dev->wed_rro.work);
- 	mt7996_unregister_phy(mt7996_phy3(dev));
- 	mt7996_unregister_phy(mt7996_phy2(dev));
+Patches 1-2 applied.  Thanks.
 -- 
-2.34.1
-
+Email: Herbert Xu <herbert@gondor.apana.org.au>
+Home Page: http://gondor.apana.org.au/~herbert/
+PGP Key: http://gondor.apana.org.au/~herbert/pubkey.txt
 
