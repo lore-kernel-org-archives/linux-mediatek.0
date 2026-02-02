@@ -4,80 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF450E73158
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Feb 2026 11:52:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69C79E7315A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Feb 2026 12:02:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YehUUsjtuHlyhxJTWORrwLPRmBeZ16UED5xESeEXaBo=; b=TEqoUEkHKt0km68z+nvwtknOXS
-	zSEdxq8LnvDFjDW+ZD/x/39A6snEtGyLVOkRpHz1wQbL89BKvR+Fy6Sbtpg8JQ2e1Shc0403ELZNO
-	yMWwsMsMY/OnRZzNjI3U381S3vxNps8ZegQh4q5E17e5CuoKqMf1MHptx/2MJe0PDeYsOUt00bUsi
-	r+52/sfMnY0ReqyPrVtvOmlxqZ6B8cpjbILJ2XCcFQrQ/yjqXXmK1kmnPUb41eUfsh2J4Ja3iUHxT
-	8FHBm5K8AJPFDpcd7agL+rbnrcbky7KM/6Hs1CVX2IKgIPnzYNZv5ooz0UzT9ann8eqY2s6EmgpCB
-	yciMYURw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Qpk5oiK9fJbcLQekbY2icjVWQS6Dd6h/FoictXFczlg=; b=iDOW0wQ5oewhXGz/JrHrTWLgxN
+	LCHeowoNze2VyENRYScGi8H57/W/VpYrTlRpT2euFwUDg2x1DxoDg6/PNQ6ydW2yWz+kccsyofxwR
+	8JW+sCtobJJFrYLDCiMYyOLS6FQHx79xjPv87asRkee/wxWss6nMtudLV/8ZNLL+J7ZGOGSO6W5hS
+	3xjRS/cV8SQEhBGN1S7/Qcjh26xPh9+NR120Dq+Uy71UZLFdFhxQqUf09ihZxeTVX/mWKytGHF5Un
+	OO87/97pTsTWD0tsK0M2eKPDrxHEgnhaDc22jgIogGbkn4rvha3Uy9gHN2WC7OuhrLm1rXzgn4m6y
+	oMQnPVbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmsU3-00000004vlA-07GB;
-	Mon, 02 Feb 2026 11:52:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vmsdA-00000004wNC-1rjP;
+	Mon, 02 Feb 2026 12:02:12 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmsU0-00000004vkN-3ONQ
-	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Feb 2026 11:52:46 +0000
-X-UUID: aa8eba82002d11f1ad39f32c34db0b1c-20260202
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=YehUUsjtuHlyhxJTWORrwLPRmBeZ16UED5xESeEXaBo=;
-	b=qDiIljQzs43D5ENNDx8Wnbs1dXTkZnqXToP0zCeqRAIYj5HPheKYDiwJ9U7D7mCY2Y/uBnIp7eXdKRBCQU/m0hHd53wdNqC2aWzisNuX2578Ra0s1rIuPmXkzXXNrQyq0b60JEPQhD8RPLIuT9zlUqvuCx8rFxCas53KaO2X8bg=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:59e80450-78b5-4ce9-8082-1c538e317bce,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:d4413cf0-16bd-4243-b4ca-b08ca08ab1d8,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|836|888|898,TC:-5,Co
-	ntent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL
-	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: aa8eba82002d11f1ad39f32c34db0b1c-20260202
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <shayne.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 494731928; Mon, 02 Feb 2026 04:52:36 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 2 Feb 2026 19:52:33 +0800
-Received: from [10.233.130.16] (10.233.130.16) by mtkmbs13n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.2562.29 via Frontend
- Transport; Mon, 2 Feb 2026 19:52:33 +0800
-Message-ID: <41b9111e696c0b0a9a3ad4d8728cf9819aa64708.camel@mediatek.com>
-Subject: Re: [PATCH 5/5] wifi: mt76: mt7996: fix queue pause after scan due
- to wrong channel switch reason
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
-	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
-	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>, StanleyYP Wang
-	<StanleyYP.Wang@mediatek.com>
-Date: Mon, 2 Feb 2026 19:52:33 +0800
-In-Reply-To: <fe5bb9ed-7dab-4cd5-b2ab-e5252713095c@nbd.name>
-References: <20260202075311.365673-1-shayne.chen@mediatek.com>
-	 <20260202075311.365673-5-shayne.chen@mediatek.com>
-	 <fe5bb9ed-7dab-4cd5-b2ab-e5252713095c@nbd.name>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.3-0ubuntu1 
+	id 1vmsd7-00000004wLt-2LGN;
+	Mon, 02 Feb 2026 12:02:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1770033726;
+	bh=P4Io04UTfWHKaU8dn372SXp/ADnhIotls8qbAU8ww58=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Lb/Jd4bPneXXo7vP7EXdIy8TlmmoLMvxODxJQdtAIUr57Tpc1ISnxSTmFGNic0HrZ
+	 Qzr0238dUk6clzG2Y2jZEhw75Kt/MrkxiebU/LZFeBQtc7thu6F7yWkLjSRptl+IH1
+	 63nKVpZir8/aw8X8aveHklPTb6A4lOA998p0giYszrAIzF5rZY1Qh+oUcZPD9CSjSS
+	 vsW7yx9EVTDNMLGBevwcHc0/jk+XWYY/M+tdzxT8sjgvoRxR29zalBeHGOEIT9YKf4
+	 c5aT4DS/QU9EdricmqvPFJ+hHSiQdTFgrI09/5OecJWKBZFTjAD0y6SnUOZsL0uiKG
+	 K3D/RlTtPVO7g==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8DC8C17E1149;
+	Mon,  2 Feb 2026 13:02:05 +0100 (CET)
+Message-ID: <a6d810fd-111d-4121-bec1-3c3f9ca53e68@collabora.com>
+Date: Mon, 2 Feb 2026 13:02:04 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/3] pmdomain: mediatek: Add power domain driver for
+ MT8189 SoC
+To: "irving.ch.lin" <irving-ch.lin@mediatek.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Matthias Brugger <mbrugger@suse.com>, devicetree@vger.kernel.org,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Qiqi Wang <qiqi.wang@mediatek.com>, sirius.wang@mediatek.com,
+ vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
+References: <20260202064820.347550-1-irving-ch.lin@mediatek.com>
+ <20260202064820.347550-4-irving-ch.lin@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260202064820.347550-4-irving-ch.lin@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260202_035245_204979_C4C8C2BF 
-X-CRM114-Status: GOOD (  17.42  )
+X-CRM114-CacheID: sfid-20260202_040209_759555_81D32145 
+X-CRM114-Status: UNSURE (   8.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,44 +84,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2026-02-02 at 10:01 +0100, Felix Fietkau wrote:
-> On 02.02.26 08:53, Shayne Chen wrote:
-> > From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
-> >=20
-> > Previously, we use the IEEE80211_CONF_IDLE flag to avoid setting
-> > the
-> > parking channel with the CH_SWITCH_NORMAL reason, which could
-> > trigger TX
-> > emission before bootup CAC.
-> >=20
-> > However, we found that this flag can be set after triggering
-> > scanning on a
-> > connected station interface, and the reason
-> > CH_SWITCH_SCAN_BYPASS_DPD will
-> > be used when switching back to the operating channel, which makes
-> > the
-> > firmware failed to resume paused AC queues.
-> >=20
-> > Seems that we should avoid relying on this flag after switching to
-> > single
-> > multi-radio architecture. Instead, replace it with
-> > MT76_STATE_RUNNING.
->=20
-> I don't see how the conditions are comparable at all. I also don't
-> see=20
-> how this function can be called with MT76_STATE_RUNNING unset.
->=20
-The condition is used to prevent mt7996_mcu_set_chan_info() (in
-mt7996_run()) from triggering TX emission.
+Il 02/02/26 07:48, irving.ch.lin ha scritto:
+> From: Irving-CH Lin <irving-ch.lin@mediatek.com>
+> 
+> Introduce a new power domain (pmd) driver for the MediaTek mt8189 SoC.
+> This driver ports and refines the power domain framework, dividing
+> hardware blocks (CPU, GPU, peripherals, etc.) into independent power
+> domains for precise and energy-efficient power management.
+> 
+> Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
 
-> Maybe a better replacement would be to check for a chanctx on the
-> phy?
->=20
-Will do some tests on this and send v2.
-
-Thanks,
-Shayne=20
-
-> - Felix
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
