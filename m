@@ -4,95 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47BA6D73EB5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Jan 2026 03:52:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1194CD172B8
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Feb 2026 02:45:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=a+tuxKzfIwGph4KGmy/W4D3saam1yAaOrHAbmg45lyE=; b=3AzRa3b4ecEHaWHBfLXCZNMf0O
-	qNuunD+44jpNgwQi81H/655JxwYzqBF1QFWLhu5x820HCdriCU4KV+p0kVHY3b5uMDfXw8uO8fACo
-	tbDxAO9IH8DCetdVLYGH9QuVDJDaN02rgh8djF8/BqD6x9YGEjcRlhzJyuOls/INwSO6w0iTqXWCM
-	RmGN1D+WtPFm9zfmJIgTW2j4RYQnhzKi+DhEbfYbDlKWFUl2E8hxPLhzqJdVAEKDt+se++oGclTdo
-	s80n7V0EHNbEVlBlPvWL1oEDOedap9xQRwVFc0bM+rbMbSGHY6Rg5EvmNl4BUKYZn/BH4AG3NMtDu
-	UhV3Pusw==;
+	bh=n7l0qcnyrUiRMBos2/spllTnQlnbr3gDS72IGaq9hbw=; b=O1iCRMK5JnXsB9HV3Vk4Ebudew
+	k6IB+BYAhBxKvpvWYPwLBhIpAS/9Vl9XeGnNBVx/unvGNZBfrcbKn6yTwu7SRElbMoeFzsrL7GQze
+	VD2MdVLPi5Jw92Cj9UIwjNo+qZdS9K0loPT9IaYufsoBi1NlgznKEBKicZ5sjTBXmIomTmFUg+Gwg
+	gjA/S/HuNOL3URrDtBki7GvNnw7udGqK6kRq/4n2Xr1WecAkcqU6KGYszWm/54cdAXRSkW6u3RiI0
+	AlFl38ZpYuZJVH0HXW7oWD9DJKMt95SZAWmlaX8MX5L5aPYNnyroog7glzsDps6BOzzsg0M6wGtVt
+	U/sbk9XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vm21x-00000002HwP-1S1T;
-	Sat, 31 Jan 2026 03:52:17 +0000
-Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
+	id 1vmjwe-00000004MIV-2DYl;
+	Mon, 02 Feb 2026 02:45:44 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vm21u-00000002HvJ-36TG
+	id 1vmjwc-00000004MIA-2ktL
 	for linux-mediatek@lists.infradead.org;
-	Sat, 31 Jan 2026 03:52:16 +0000
-Received: by mail-ot1-x32a.google.com with SMTP id 46e09a7af769-7d18dd2adf7so1647647a34.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 30 Jan 2026 19:52:14 -0800 (PST)
+	Mon, 02 Feb 2026 02:45:43 +0000
+Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-81ed3e6b8e3so2036995b3a.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 01 Feb 2026 18:45:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=u-northwestern-edu.20230601.gappssmtp.com; s=20230601; t=1769831533; x=1770436333; darn=lists.infradead.org;
+        d=tier4.jp; s=google; t=1770000341; x=1770605141; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=a+tuxKzfIwGph4KGmy/W4D3saam1yAaOrHAbmg45lyE=;
-        b=tB38abUrOAAB1zOZa893UpwOZMgw9/z9RYCumu3BFV4HRvaBH+TE0I2r+G4HgYmrPF
-         GaTR7Yrjp7RLC4wiwdv71J/o/cvfyAanKNZXsA4hJ/OhKuBTvcPBZuYTmlC5qfM8US4R
-         Ya0OLKCrUXyQZL2pRzUzKp+Ddime6FemcmC4jZ+fRw7ILiZm/3xc5MzPN/zF1kWkZvya
-         8mbKnykz0E33Kz8pQlRMrVANv9RtyZaBm2gw17B2aeGul5c8CH9gnN/80P4G64DKf/EF
-         kfkPgaALGGhcel63nR13x6RL/xPLcUT75YZMJnbo1izqYSAnLJmrOeq6Lg6skhRuZhSK
-         0rJA==
+        bh=n7l0qcnyrUiRMBos2/spllTnQlnbr3gDS72IGaq9hbw=;
+        b=Fl490CZEgXdc8UxP9sjGAGxH0OacB3Ropw2BJRzfmrzWNWVvPoPgc3A8i1HBMJsyL1
+         AWJEPYduO8WkICtneLhBWenHnRTzcuU370P1kZi9sgItPmHWICTF9K+M6PG7RqL8fZbg
+         UJrKKJ+iZ1iktLOuozQqDjcue5Dhc59fySK2NZGgrPmY6vli3g7LuYZxVBXCGcVByAIf
+         HXPSFEiG9npgwrUZSLs7mmrrVuMRE3T76/lBZVseebOn7hoC1ktry1PfmepFExA2xDD9
+         ZeKjpHjxmT+jsE197JvdFwVcEbxjviKiNVOqKlMll+lILdk7UkJkhmjnGuQlO/xzluZQ
+         mLpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1769831533; x=1770436333;
+        d=1e100.net; s=20230601; t=1770000341; x=1770605141;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=a+tuxKzfIwGph4KGmy/W4D3saam1yAaOrHAbmg45lyE=;
-        b=Wm50PcFwnc6s/wD6nPCvU01F8Xl5TUM4JisWzqyRvgI3YLvEXVMBDCh26/BvZ3zdMJ
-         XodttPpIft78v48y0RhVpRGP3eXw1OFVC+OhMknnwdQQrGj4C0Y5NTAJx4qqFpg11lZT
-         QtDvMONgYvmzIXNx+fvWTQZQbAYbI90HN2P93n1USMBJWCmveWgnIaWosssFgr0G/t5T
-         QaqKQcSqFrKJIJqchm4T5RiIzHpfZRggYTWI/xBWQYoR1pbl+Ni6cE/q7/SSOl3g0AgU
-         Y5+BA16iuh9pzFmNsKqgND2OwmAz8E74Pt9vE3NOF6gVdlAilk/L+09WH9P+JOLdkERM
-         cFFg==
-X-Forwarded-Encrypted: i=1; AJvYcCXov1D+9uL8++E16Yd5PGFxWkV7gCeB6cxcvrXyDLMG3Wbnhr/OebOQxp4odu1jengFyho1kVy4REixUoYJVA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxe/+7XppCn3naLZRpxj+WPdNU4+h7A4GDA8OcKoQXUI5f6vo+R
-	lQrXKXDvjGa+qnSf7q3oBAU3GCAyM5UwYcsxRGEf2H5eaOh2T3H81EeeKv6b4XkuxmCgk6LgZwh
-	n7mnT
-X-Gm-Gg: AZuq6aKqFmvS9KmyE+wRIJ/NA0XptHyqA3pOhlrysJYDZ04JK5a8F9bDPmyTAjinwAI
-	CSjJbwNycqECkJ4r82IGE2rxn4kpZ1NUakTQmItNic00xJHrsgZUoPzEKz4cbc92fASyn3EHtAY
-	6mdUTXOvDENeBE+VUvdbEgbsU/2xXl0n6l+7eIuaEAUTDqX5t+1kuSyFAsDPjUc5vWjs0dnZm1f
-	KUNJVycmG5S1OPQOuZaZ0cxreWvCDPRzXSBuTWa4BROWEHQsEn3MCfZoiymje69mcLrmN5XQ08O
-	e2Nh+DLVYfad9T1z82Sc+hZPDW80ndQn9CfFcX8EALIIgUdX3Qd8x12gY9CEhYygtyCa3XulLPx
-	GrBErAa9J3vRWO9D8jNmOIE2CZ2a4g1soQBj5JPS0pf2du5Y7bqKxNhb8iuTof5PVSAGBkGwnkE
-	SZkdr1+EzS2A/qdYRJTdAGYSoWAsViphl6KHkRSP7VqY5Jn1aJHRLmIQh8lVkb+/OPN+IcXe4BD
-	LrjGwwMjsUDMmNcpba8jPkwBWJfmBI=
-X-Received: by 2002:a05:6830:6738:b0:7cf:d96d:7882 with SMTP id 46e09a7af769-7d1a5250f74mr3189657a34.3.1769831533374;
-        Fri, 30 Jan 2026 19:52:13 -0800 (PST)
-Received: from security.cs.northwestern.edu (security.cs.northwestern.edu. [165.124.184.136])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7d18c69ac16sm6727975a34.7.2026.01.30.19.52.12
+        bh=n7l0qcnyrUiRMBos2/spllTnQlnbr3gDS72IGaq9hbw=;
+        b=LzpUqDH6JzXXgHm24N925nrdVRDdVAUD/FHvcv+z8x6w9eJ5K1rEil3RdSWd2e0I+F
+         pvS+yN03vNWNUTPT6st2Byp6HEDUZtKERGMrquL9FQRCfNhC1DyH+VK4zf/8XsQU9p3y
+         riLzTDaYD6ZPTC2BqTOmt7WmPH2ow6KIPbZR2fW68t9vdSFCAegLByKMCzvVkkrhUQul
+         YQi+3EWcUS6as5CIbAS2tnc8B923ZD4w3pVfW2aF53wjDzaEJGX5egz5fbEqbDoHZFRf
+         6+YAnAA9TpmUbV//FIlpHGt2lqOI/m0GFYWNY3ap+HI4Tz/QZ1fqKYt4XQ1une8SDJ2q
+         TghQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUtHGzNQB7moP0eW4tf/I5h13Fl9r9pNr8TT+P3srIsGLJQvtpI0L+fNmWO4mvUdHGT/JB8AQ8wgnetSZdRDw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyS58oszbaQuF/zDYjqhZkLgJLDlLH4p6FLJdtNgY8eJYoVMJ0D
+	59R3/k2BqIQrzbW/18JDaHeJl7NzjYOkfzS0VXn4aUkuHNoJVrmoxyhqI//9Ca3LCpc=
+X-Gm-Gg: AZuq6aK2F8DQBPMncHiH2t4kzFMNdlsa/llvYWRqqZNiYey6DDrCwiKU6HIvSTBFxky
+	qjplUIygsqWQFHhSGH7qTSGI/cdV+b2yniSB9re9SY3/YN6yCLS2RPn++5pgcM4oVto1np1gSsF
+	w5U3QUSbT5YOwf2etazfkp811A7TPFPB6ItpVtjL318z+6dqFr2EqkxPb3C/7cGKc9VCnId+pQF
+	9+wmZ/2BLLJGra7GSSjlRk0y8SI8FH1amMBuNgcYhJz6eo2XSIOImj+nbynSp9ltA+JzFIzq9W5
+	mc12eVKzLtVu5qB7pEdsXugoBvkpLC3E8+r55L5nA+/l86dQwxpTugD+9fm/0vJABoEs/wU4v9A
+	8xKggFrctZ00ul40QTaNo1enHHMAQuH5VScLabdkwt5TcD2HV3qeT/1QzfhW1wHzWeuizcR/MvI
+	DOUMCraVkC4JWXIgo9MOeDRMYCSXFLkGvmrp35r1xFZbZQkVk=
+X-Received: by 2002:a05:6a20:3d8b:b0:35e:5a46:2d68 with SMTP id adf61e73a8af0-392dffe0dddmr8347239637.9.1770000341265;
+        Sun, 01 Feb 2026 18:45:41 -0800 (PST)
+Received: from dpc2500057.. (fsb6a9315e.tkyc502.ap.nuro.jp. [182.169.49.94])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2a88b413d16sm135081995ad.25.2026.02.01.18.45.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Jan 2026 19:52:12 -0800 (PST)
-From: Ziyi Guo <n7l8m4@u.northwestern.edu>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>
-Cc: Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+        Sun, 01 Feb 2026 18:45:41 -0800 (PST)
+From: Keita Morisaki <keita.morisaki@tier4.jp>
+To: Peter Wang <peter.wang@mediatek.com>,
+	Chaotian Jing <chaotian.jing@mediatek.com>
+Cc: Stanley Jhu <chu.stanley@gmail.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	linux-scsi@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Ziyi Guo <n7l8m4@u.northwestern.edu>
-Subject: [PATCH v2] wifi: mt76: add missing lock protection in mt76_sta_state for sta_event callback
-Date: Sat, 31 Jan 2026 03:52:10 +0000
-Message-Id: <20260131035210.2198259-1-n7l8m4@u.northwestern.edu>
+	linux-kernel@vger.kernel.org,
+	Keita Morisaki <keita.morisaki@tier4.jp>
+Subject: [PATCH] scsi: ufs: mediatek: Fix page faults in ufs_mtk_clk_scale trace event
+Date: Mon,  2 Feb 2026 11:45:26 +0900
+Message-Id: <20260202024526.122515-1-keita.morisaki@tier4.jp>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260130_195214_972288_E795EBBD 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260201_184542_713002_E09CB4EB 
+X-CRM114-Status: GOOD (  15.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,44 +101,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt76_sta_state() calls the sta_event callback without holding dev->mutex.
-However, mt7915_mac_sta_event() (MT7915 implementation of this callback)
-calls mt7915_mac_twt_teardown_flow() which has
-lockdep_assert_held(&dev->mt76.mutex) indicating that callers must
-hold this lock.
+The ufs_mtk_clk_scale trace event currently stores the address of the
+name string directly via __field(const char *, name). This pointer may
+become invalid after the module is unloaded, causing page faults when
+the trace buffer is subsequently accessed.
 
-The locking pattern in mt76_sta_state() is inconsistent:
-- mt76_sta_add() acquires dev->mutex before calling dev->drv->sta_add
-- mt76_sta_remove() acquires dev->mutex before calling __mt76_sta_remove
-- But sta_event callback is called without acquiring the lock
+This can occur because the MediaTek UFS driver can be configured as a
+loadable module (tristate in Kconfig), meaning the name string passed
+to the trace event may reside in module memory that becomes invalid
+after module unload.
 
-Add mutex_lock()/mutex_unlock() around the mt7915_mac_twt_teardown_flow
-invocation to fix the missing lock protection and maintain consistency
-with the existing locking pattern.
+Fix this by using __string() and __assign_str() to copy the string
+contents into the ring buffer instead of storing the pointer. This
+ensures the trace data remains valid regardless of module state.
 
-Signed-off-by: Ziyi Guo <n7l8m4@u.northwestern.edu>
+This change increases the memory usage for each ftrace entry by a few
+bytes (clock names are typically 7-15 characters like "ufs_sel" or
+"ufs_sel_max_src") compared to storing an 8-byte pointer.
+
+Note that this change does not affect anything unless all of the
+following conditions are met:
+- CONFIG_SCSI_UFS_MEDIATEK is enabled
+- ftrace tracing is enabled
+- The ufs_mtk_clk_scale event is enabled in ftrace
+
+Signed-off-by: Keita Morisaki <keita.morisaki@tier4.jp>
 ---
-v2:
- - Move the locking to MT7915 driver to avoid deadlock in other drivers
+ drivers/ufs/host/ufs-mediatek-trace.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
- drivers/net/wireless/mediatek/mt76/mt7915/main.c | 2 ++
- 1 file changed, 2 insertions(+)
+diff --git a/drivers/ufs/host/ufs-mediatek-trace.h b/drivers/ufs/host/ufs-mediatek-trace.h
+index b5f2ec314..0df8ac843 100644
+--- a/drivers/ufs/host/ufs-mediatek-trace.h
++++ b/drivers/ufs/host/ufs-mediatek-trace.h
+@@ -33,19 +33,19 @@ TRACE_EVENT(ufs_mtk_clk_scale,
+ 	TP_ARGS(name, scale_up, clk_rate),
+ 
+ 	TP_STRUCT__entry(
+-		__field(const char*, name)
++		__string(name, name)
+ 		__field(bool, scale_up)
+ 		__field(unsigned long, clk_rate)
+ 	),
+ 
+ 	TP_fast_assign(
+-		__entry->name = name;
++		__assign_str(name);
+ 		__entry->scale_up = scale_up;
+ 		__entry->clk_rate = clk_rate;
+ 	),
+ 
+ 	TP_printk("ufs: clk (%s) scaled %s @ %lu",
+-		  __entry->name,
++		  __get_str(name),
+ 		  __entry->scale_up ? "up" : "down",
+ 		  __entry->clk_rate)
+ );
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 90d5e79fbf74..e212e964fda0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -851,8 +851,10 @@ int mt7915_mac_sta_event(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 		return mt7915_mcu_add_sta(dev, vif, sta, CONN_STATE_PORT_SECURE, false);
- 
- 	case MT76_STA_EVENT_DISASSOC:
-+		mutex_lock(&dev->mt76.mutex);
- 		for (i = 0; i < ARRAY_SIZE(msta->twt.flow); i++)
- 			mt7915_mac_twt_teardown_flow(dev, msta, i);
-+		mutex_unlock(&dev->mt76.mutex);
- 
- 		mt7915_mcu_add_sta(dev, vif, sta, CONN_STATE_DISCONNECT, false);
- 		msta->wcid.sta_disabled = 1;
+base-commit: 18f7fcd5e69a04df57b563360b88be72471d6b62
 -- 
 2.34.1
 
