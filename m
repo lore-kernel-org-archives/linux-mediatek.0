@@ -4,56 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73BBCE73147
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Feb 2026 08:53:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F49FE73146
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Feb 2026 09:01:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RE0gFltxi5DIMKf1lTQ50Q9AGlA4tyMJX1qsAvinHrw=; b=ChJfSOJEgfHOs4bbq6NAK2XNx+
-	T4z2DctXv4cqod067xHQy/eK0EJyp++YiiPdrJa2YXm5/veclyw8o9LzYVw8cy/NEsldXP2vpotEs
-	dFHDDZrmw4wOHVfoRvx0gpxITs1JVw9QRvuOiLRc0eqkIMZkDU0kSgMD+uxrOePL1SNvmMPjxbOrf
-	CMMY14N4Jvvpw+dHC6Iftx8xjQx6eGg8IA14996ONnayRi6+k9V8xFpU19AmSwcdO+qTdp6L6Du4o
-	0CMTDqAjAYBL+e3YWR3TgAM5+UqO4ybaM4S241uCV1mxbBzz97J5jiKZqrqsR6FAIGh0fNMx+CUOz
-	ljy7bF0g==;
+	bh=gTLT5rBN1tmilZKqgxHnH2BI8ZLBcL0x1IMNMfsaxOA=; b=Jr7swO5JJv4MzzgZxSjhD6zMlk
+	tggwvM2zBtmvVScBGUN44eWVED5u8iMbtPLxKHaLfTci/ZRCcD6asJzpE/Zk3RqVyFPvx/sD7tja4
+	cQ3S9HTjNVXQwLW5DZbS2gCq1CMAMNJhJ9Py7TNcZHt5UD4d5N1Zc9EISmvxci+SNXTzrZ8okearC
+	d0hV1YBDXDj5F3+TqWjyTx9l5Fb8lkCkv2TSBEWWBvFaZRaH7FCIFEThE8GpnykkXyeNleQeZgy2g
+	+8Euh9dB9BA0jMQOAkCyO7WCJTUojk5KnU9RLTJm7VWQZwlYuqaTHAib0XWL6rkFgbbh0C8Z8kakA
+	I9j2yHvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmpgI-00000004fRo-10rD;
-	Mon, 02 Feb 2026 08:53:14 +0000
+	id 1vmpoE-00000004gEV-1frS;
+	Mon, 02 Feb 2026 09:01:26 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmpgF-00000004fRN-1lBD
+	id 1vmpoC-00000004gDt-1xPw
 	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Feb 2026 08:53:12 +0000
+	Mon, 02 Feb 2026 09:01:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
 	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
 	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=RE0gFltxi5DIMKf1lTQ50Q9AGlA4tyMJX1qsAvinHrw=; b=kJFQeriaak9S28vZGWWVI9F9Gq
-	OzaRN0jHM7IK1LFhWClzyTz6C/VevkwbgN3/Ky123bLIV94BXtTxFzKkHvTwq1cB4u5BljMK/PLx9
-	CZPOHYx+YCStk/Mikgkv2leucDsDCBq6yglkOw7GK8gUlEwmqVyh1Jt5N5LdTepIQDH0=;
+	bh=gTLT5rBN1tmilZKqgxHnH2BI8ZLBcL0x1IMNMfsaxOA=; b=qDWIFh/9hPEjjNKr/we++7mqMq
+	IvarddmxRpm7VDIi1DsZr/Ydu2VS/SaNPqxN1mAYLapYZJVoFF/hGWS6qypL7k+Jx4ppWpcVMZ7nH
+	aiRRnOvooY2PvkQW/EAjTjYvu5X2Bu1MITese/rqsJdL8XVK/xJvfljg8P3pO2o5gjGQ=;
 Received: from p54a43c03.dip0.t-ipconnect.de ([84.164.60.3] helo=nf.local)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
 	(Exim 4.96)
 	(envelope-from <nbd@nbd.name>)
-	id 1vmpfv-000AX6-1Q;
-	Mon, 02 Feb 2026 09:52:51 +0100
-Message-ID: <e785fe7c-eb3c-4697-9ea6-705c8c9dcfe1@nbd.name>
-Date: Mon, 2 Feb 2026 09:52:50 +0100
+	id 1vmpo4-000Awk-2N;
+	Mon, 02 Feb 2026 10:01:16 +0100
+Message-ID: <fe5bb9ed-7dab-4cd5-b2ab-e5252713095c@nbd.name>
+Date: Mon, 2 Feb 2026 10:01:16 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] wifi: mt76: fix potential deadlock caused by rx_lock
+Subject: Re: [PATCH 5/5] wifi: mt76: mt7996: fix queue pause after scan due to
+ wrong channel switch reason
 To: Shayne Chen <shayne.chen@mediatek.com>
 Cc: linux-wireless <linux-wireless@vger.kernel.org>,
  Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
  Evelyn Tsai <evelyn.tsai@mediatek.com>, Money Wang
  <money.wang@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 References: <20260202075311.365673-1-shayne.chen@mediatek.com>
+ <20260202075311.365673-5-shayne.chen@mediatek.com>
 Content-Language: en-US
 From: Felix Fietkau <nbd@nbd.name>
 Autocrypt: addr=nbd@nbd.name; keydata=
@@ -79,12 +82,12 @@ Autocrypt: addr=nbd@nbd.name; keydata=
  TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
  GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
  cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <20260202075311.365673-1-shayne.chen@mediatek.com>
+In-Reply-To: <20260202075311.365673-5-shayne.chen@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260202_005311_561384_86E975F9 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20260202_010124_508715_B6AD8854 
+X-CRM114-Status: GOOD (  11.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,28 +103,24 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 02.02.26 08:53, Shayne Chen wrote:
-> A deadlock will occur if both of the following conditions are met,
-> because they each attempt to acquire the rx_lock:
-> - mac80211 receives an unexpected BAR control frame, which triggers
->    a BA deletion
-> - A transmission failure happens due to an abnormality in DMA
+> From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 > 
-> Since ieee80211_tx_status_ext() is primarily used to address AQL issues,
-> avoid potential deadlocks by restricting calls to ieee80211_tx_status_ext
-> only for data frames.
+> Previously, we use the IEEE80211_CONF_IDLE flag to avoid setting the
+> parking channel with the CH_SWITCH_NORMAL reason, which could trigger TX
+> emission before bootup CAC.
+> 
+> However, we found that this flag can be set after triggering scanning on a
+> connected station interface, and the reason CH_SWITCH_SCAN_BYPASS_DPD will
+> be used when switching back to the operating channel, which makes the
+> firmware failed to resume paused AC queues.
+> 
+> Seems that we should avoid relying on this flag after switching to single
+> multi-radio architecture. Instead, replace it with MT76_STATE_RUNNING.
 
-First of all, ieee80211_tx_status_ext is not primarily used to address 
-AQL, ieee80211_free_txskb handles it as well. The reason for it is tx 
-status handling, e.g. for management frames sent by hostapd that require 
-an ACK status report, so limiting the status calls for data frames seems 
-wrong to me.
+I don't see how the conditions are comparable at all. I also don't see 
+how this function can be called with MT76_STATE_RUNNING unset.
 
-I don't really understand how the scenario you're describing leads to a 
-deadlock. From my understanding, if something in the mac80211 rx path 
-triggers a tx, it should end up calling mt76_tx(), which queues the skb 
-to wcid->tx_list and triggers the tx worker. So the actual dma tx callls 
-are expected to come from the worker kthread.
-How does this lead to a deadlock on rx_lock?
+Maybe a better replacement would be to check for a chanctx on the phy?
 
 - Felix
 
