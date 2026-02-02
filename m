@@ -4,37 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D3BCD73E86
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Feb 2026 06:48:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FEE9E7C70B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Feb 2026 07:54:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6WNKW5goEwaRlHDoKmv4Vl+byjPHj/KUF5mZ0U/9vLE=; b=aVXFEsDM6IPvzFxhDFtmJBNoFz
-	3/hZ2IW2NgPwAKqwEjWOvc4T3TNyF6ph92ffglo+35y8+iBf4BLKmy6o+0cKYbyi35JzPYSHaPBe9
-	PHEUS604ulZm0TnBoWcdKo91f4Sg9m6mAjBPipf6rshFOgU8xtbgvmGS2bJJfZT83y8NsXDJoom6W
-	IoBM/5Av9ra1JAc+Nlr7ZMAHdq7zqcACDm0UX6FuYB+qVcCBnDVlkF0MetOwqboHKkl7Y//nonZwR
-	XlFLATu2Q0UBh1DDbR94FnrpUPTbRyWykZ5AhGccXHdLmKq4dZOtce+dBjPYBtjV32lZiKU+TNa9D
-	65poyBiQ==;
+	bh=OBsRq9wTSokuZFFA8Dcd1l3YCrpJkoJ/AtXfSB5b7S4=; b=fK1bu9W9KnGHFPpc3uQCT+iZsx
+	GCLNQ2cYJUlAh3fgDC/zgHH84guVDNo305vb/XXw+EdN2WIYkPyGCAD5iDhnKwlx/HUrubtRrkZor
+	IFYh/+Tp9x3l/ejWJyu7yWUFLhU3Mpx1dsDKkgldYE+bN1S7s3XSc0POm/WiYt5i82V+5ciHji4bb
+	+8xRrdoT1LaFPrDjaX/iOrl71A+tK8In/nwSQAvEW+MJBo5s5d0n6xnUhQPys2Fp4RE2H+elqwFmi
+	LH+E8eDKXjPl0PT3RNHBVOSWduhByXwGiYZIM7aVM2YCbBGRcuQC1HYd5890XJRXz53UgZW8pOOLW
+	QJxZYOHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmnjg-00000004YbC-0DXC;
-	Mon, 02 Feb 2026 06:48:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vmolO-00000004cVe-3CHw;
+	Mon, 02 Feb 2026 07:54:26 +0000
+Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmnjc-00000004YYf-0iPF;
-	Mon, 02 Feb 2026 06:48:33 +0000
-X-UUID: 2c306dea000311f1ad39f32c34db0b1c-20260201
+	id 1vmolM-00000004cUA-2WXK
+	for linux-mediatek@lists.infradead.org;
+	Mon, 02 Feb 2026 07:54:25 +0000
+X-UUID: 605f7da0000c11f1ad39f32c34db0b1c-20260202
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=6WNKW5goEwaRlHDoKmv4Vl+byjPHj/KUF5mZ0U/9vLE=;
-	b=WSqhJBRFKvG6RP03oZxgEdQNkAZV6sADZsr6a4DKu7ktpSskdeQ7Haa3qJKgpY7mMbZAxKHqKH8eFonGRCJ/2Dap4wW/AR/kztpGTtEBWGh1PHMa2FjMRNBaz9jW/8nhW+CgN3sKiDLNCoelBiF0/+DCGTiNQUht3aKBLvSvX+w=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=OBsRq9wTSokuZFFA8Dcd1l3YCrpJkoJ/AtXfSB5b7S4=;
+	b=PVveEnMaU32EXrrhi89hHTuuvPVFqeT/S+OjVrCaIYdCBT2BmII/57GCmT1ElIm6c+MYTx+KOKDd9NeyU+FZhdit7I2AM9fu0DZ3IDsr6cOkcwmsh+TPBrWpH6Vk2D/5pUJI51ZcPZWKNWUoHx3fA+iggBGjQtbpklRyyEy3Zhc=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:ff21e5cc-0632-450d-9b83-fc8cd7a457d7,IP:0,U
+X-CID-O-INFO: VERSION:1.3.11,REQID:d6780a76-0e79-4839-aa50-a54873c4f7a9,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:01aa34e9-ef90-4382-9c6f-55f2a0689a6b,B
+X-CID-META: VersionHash:89c9d04,CLOUDID:937a35e9-ef90-4382-9c6f-55f2a0689a6b,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
 	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,42 +43,38 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 2c306dea000311f1ad39f32c34db0b1c-20260201
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <irving-ch.lin@mediatek.com>)
+X-UUID: 605f7da0000c11f1ad39f32c34db0b1c-20260202
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 961369049; Sun, 01 Feb 2026 23:48:25 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+	with ESMTP id 1216779718; Mon, 02 Feb 2026 00:54:18 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 2 Feb 2026 14:48:22 +0800
+ 15.2.2562.29; Mon, 2 Feb 2026 15:54:15 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 2 Feb 2026 14:48:22 +0800
-From: irving.ch.lin <irving-ch.lin@mediatek.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: Matthias Brugger <mbrugger@suse.com>, <devicetree@vger.kernel.org>,
-	<linux-pm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Qiqi Wang
-	<qiqi.wang@mediatek.com>, <sirius.wang@mediatek.com>,
-	<vince-wl.liu@mediatek.com>, <jh.hsu@mediatek.com>,
-	<irving-ch.lin@mediatek.com>
-Subject: [PATCH 3/3] pmdomain: mediatek: Add power domain driver for MT8189 SoC
-Date: Mon, 2 Feb 2026 14:48:15 +0800
-Message-ID: <20260202064820.347550-4-irving-ch.lin@mediatek.com>
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 2 Feb 2026 15:54:15 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>, StanleyYP Wang
+	<StanleyYP.Wang@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH 5/5] wifi: mt76: mt7996: fix queue pause after scan due to wrong channel switch reason
+Date: Mon, 2 Feb 2026 15:53:10 +0800
+Message-ID: <20260202075311.365673-5-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260202064820.347550-1-irving-ch.lin@mediatek.com>
-References: <20260202064820.347550-1-irving-ch.lin@mediatek.com>
+In-Reply-To: <20260202075311.365673-1-shayne.chen@mediatek.com>
+References: <20260202075311.365673-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260201_224832_243040_949848C0 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20260201_235424_709525_27B7FE6A 
+X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,535 +89,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Irving-CH Lin <irving-ch.lin@mediatek.com>
+From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 
-Introduce a new power domain (pmd) driver for the MediaTek mt8189 SoC.
-This driver ports and refines the power domain framework, dividing
-hardware blocks (CPU, GPU, peripherals, etc.) into independent power
-domains for precise and energy-efficient power management.
+Previously, we use the IEEE80211_CONF_IDLE flag to avoid setting the
+parking channel with the CH_SWITCH_NORMAL reason, which could trigger TX
+emission before bootup CAC.
 
-Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
+However, we found that this flag can be set after triggering scanning on a
+connected station interface, and the reason CH_SWITCH_SCAN_BYPASS_DPD will
+be used when switching back to the operating channel, which makes the
+firmware failed to resume paused AC queues.
+
+Seems that we should avoid relying on this flag after switching to single
+multi-radio architecture. Instead, replace it with MT76_STATE_RUNNING.
+
+Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/pmdomain/mediatek/mt8189-pm-domains.h | 485 ++++++++++++++++++
- drivers/pmdomain/mediatek/mtk-pm-domains.c    |   5 +
- 2 files changed, 490 insertions(+)
- create mode 100644 drivers/pmdomain/mediatek/mt8189-pm-domains.h
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/pmdomain/mediatek/mt8189-pm-domains.h b/drivers/pmdomain/mediatek/mt8189-pm-domains.h
-new file mode 100644
-index 000000000000..c28b9460c074
---- /dev/null
-+++ b/drivers/pmdomain/mediatek/mt8189-pm-domains.h
-@@ -0,0 +1,485 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2025 MediaTek Inc.
-+ * Author: Qiqi Wang <qiqi.wang@mediatek.com>
-+ */
-+
-+#ifndef __SOC_MEDIATEK_MT8189_PM_DOMAINS_H
-+#define __SOC_MEDIATEK_MT8189_PM_DOMAINS_H
-+
-+#include "mtk-pm-domains.h"
-+#include <dt-bindings/power/mediatek,mt8189-power.h>
-+
-+/*
-+ * MT8189 power domain support
-+ */
-+
-+#define MT8189_SPM_PWR_STATUS				0x0f40
-+#define MT8189_SPM_PWR_STATUS_2ND			0x0f44
-+#define MT8189_SPM_PWR_STATUS_MSB			0x0f48
-+#define MT8189_SPM_PWR_STATUS_MSB_2ND			0x0f4c
-+#define MT8189_SPM_XPU_PWR_STATUS			0x0f50
-+#define MT8189_SPM_XPU_PWR_STATUS_2ND			0x0f54
-+
-+#define MT8189_PROT_EN_EMICFG_GALS_SLP_SET		0x0084
-+#define MT8189_PROT_EN_EMICFG_GALS_SLP_CLR		0x0088
-+#define MT8189_PROT_EN_EMICFG_GALS_SLP_RDY		0x008c
-+#define MT8189_PROT_EN_MMSYS_STA_0_SET			0x0c14
-+#define MT8189_PROT_EN_MMSYS_STA_0_CLR			0x0c18
-+#define MT8189_PROT_EN_MMSYS_STA_0_RDY			0x0c1c
-+#define MT8189_PROT_EN_MMSYS_STA_1_SET			0x0c24
-+#define MT8189_PROT_EN_MMSYS_STA_1_CLR			0x0c28
-+#define MT8189_PROT_EN_MMSYS_STA_1_RDY			0x0c2c
-+#define MT8189_PROT_EN_INFRASYS_STA_0_SET		0x0c44
-+#define MT8189_PROT_EN_INFRASYS_STA_0_CLR		0x0c48
-+#define MT8189_PROT_EN_INFRASYS_STA_0_RDY		0x0c4c
-+#define MT8189_PROT_EN_INFRASYS_STA_1_SET		0x0c54
-+#define MT8189_PROT_EN_INFRASYS_STA_1_CLR		0x0c58
-+#define MT8189_PROT_EN_INFRASYS_STA_1_RDY		0x0c5c
-+#define MT8189_PROT_EN_PERISYS_STA_0_SET		0x0c84
-+#define MT8189_PROT_EN_PERISYS_STA_0_CLR		0x0c88
-+#define MT8189_PROT_EN_PERISYS_STA_0_RDY		0x0c8c
-+#define MT8189_PROT_EN_MCU_STA_0_SET			0x0c94
-+#define MT8189_PROT_EN_MCU_STA_0_CLR			0x0c98
-+#define MT8189_PROT_EN_MCU_STA_0_RDY			0x0c9c
-+#define MT8189_PROT_EN_MD_STA_0_SET			0x0ca4
-+#define MT8189_PROT_EN_MD_STA_0_CLR			0x0ca8
-+#define MT8189_PROT_EN_MD_STA_0_RDY			0x0cac
-+
-+#define MT8189_PROT_EN_EMISYS_STA_0_MM_INFRA		(GENMASK(21, 20))
-+#define MT8189_PROT_EN_INFRASYS_STA_0_CONN		(BIT(8))
-+#define MT8189_PROT_EN_INFRASYS_STA_1_CONN		(BIT(12))
-+#define MT8189_PROT_EN_INFRASYS_STA_0_MM_INFRA		(BIT(16))
-+#define MT8189_PROT_EN_INFRASYS_STA_1_MM_INFRA		(BIT(11))
-+#define MT8189_PROT_EN_INFRASYS_STA_1_MFG1		(BIT(20))
-+#define MT8189_PROT_EN_MCU_STA_0_CONN			(BIT(1))
-+#define MT8189_PROT_EN_MCU_STA_0_CONN_2ND		(BIT(0))
-+#define MT8189_PROT_EN_MD_STA_0_MFG1			(BIT(0) | BIT(2))
-+#define MT8189_PROT_EN_MD_STA_0_MFG1_2ND		(BIT(4))
-+#define MT8189_PROT_EN_MM_INFRA_IGN			(BIT(1))
-+#define MT8189_PROT_EN_MM_INFRA_2_IGN			(BIT(0))
-+#define MT8189_PROT_EN_MMSYS_STA_0_CAM_MAIN		(GENMASK(31, 30))
-+#define MT8189_PROT_EN_MMSYS_STA_1_CAM_MAIN		(GENMASK(10, 9))
-+#define MT8189_PROT_EN_MMSYS_STA_0_DISP			(GENMASK(1, 0))
-+#define MT8189_PROT_EN_MMSYS_STA_0_ISP_IMG1		(BIT(3))
-+#define MT8189_PROT_EN_MMSYS_STA_1_ISP_IMG1		(BIT(7))
-+#define MT8189_PROT_EN_MMSYS_STA_0_ISP_IPE		(BIT(2))
-+#define MT8189_PROT_EN_MMSYS_STA_1_ISP_IPE		(BIT(8))
-+#define MT8189_PROT_EN_MMSYS_STA_0_MDP0			(BIT(18))
-+#define MT8189_PROT_EN_MMSYS_STA_1_MM_INFRA		(GENMASK(3, 2))
-+#define MT8189_PROT_EN_MMSYS_STA_1_MM_INFRA_2ND		(GENMASK(15, 7))
-+#define MT8189_PROT_EN_MMSYS_STA_0_VDE0			(BIT(20))
-+#define MT8189_PROT_EN_MMSYS_STA_1_VDE0			(BIT(13))
-+#define MT8189_PROT_EN_MMSYS_STA_0_VEN0			(BIT(12))
-+#define MT8189_PROT_EN_MMSYS_STA_1_VEN0			(BIT(12))
-+#define MT8189_PROT_EN_PERISYS_STA_0_AUDIO		(BIT(6))
-+#define MT8189_PROT_EN_PERISYS_STA_0_SSUSB		(BIT(7))
-+#define MT8189_PROT_EN_EMICFG_GALS_SLP_MFG1		(GENMASK(5, 4))
-+
-+static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8189[] = {
-+	BUS_PROT_BLOCK_INFRA, BUS_PROT_BLOCK_SMI
-+};
-+
-+static const struct scpsys_domain_data scpsys_domain_data_mt8189[] = {
-+	[MT8189_POWER_DOMAIN_CONN] = {
-+		.name = "conn",
-+		.sta_mask = BIT(1),
-+		.ctl_offs = 0xe04,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.bp_cfg = {
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MCU_STA_0_CONN,
-+					MT8189_PROT_EN_MCU_STA_0_SET,
-+					MT8189_PROT_EN_MCU_STA_0_CLR,
-+					MT8189_PROT_EN_MCU_STA_0_RDY),
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_INFRASYS_STA_1_CONN,
-+					MT8189_PROT_EN_INFRASYS_STA_1_SET,
-+					MT8189_PROT_EN_INFRASYS_STA_1_CLR,
-+					MT8189_PROT_EN_INFRASYS_STA_1_RDY),
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MCU_STA_0_CONN_2ND,
-+					MT8189_PROT_EN_MCU_STA_0_SET,
-+					MT8189_PROT_EN_MCU_STA_0_CLR,
-+					MT8189_PROT_EN_MCU_STA_0_RDY),
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_INFRASYS_STA_0_CONN,
-+					MT8189_PROT_EN_INFRASYS_STA_0_SET,
-+					MT8189_PROT_EN_INFRASYS_STA_0_CLR,
-+					MT8189_PROT_EN_INFRASYS_STA_0_RDY),
-+		},
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+	},
-+	[MT8189_POWER_DOMAIN_AUDIO] = {
-+		.name = "audio",
-+		.sta_mask = BIT(6),
-+		.ctl_offs = 0xe18,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.bp_cfg = {
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_PERISYS_STA_0_AUDIO,
-+					MT8189_PROT_EN_PERISYS_STA_0_SET,
-+					MT8189_PROT_EN_PERISYS_STA_0_CLR,
-+					MT8189_PROT_EN_PERISYS_STA_0_RDY),
-+		},
-+	},
-+	[MT8189_POWER_DOMAIN_ADSP_TOP_DORMANT] = {
-+		.name = "adsp-top-dormant",
-+		.sta_mask = BIT(7),
-+		.ctl_offs = 0xe1c,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(9),
-+		.sram_pdn_ack_bits = BIT(13),
-+		.caps = MTK_SCPD_SRAM_ISO | MTK_SCPD_SRAM_PDN_INVERTED |
-+			MTK_SCPD_ACTIVE_WAKEUP | MTK_SCPD_KEEP_DEFAULT_OFF,
-+	},
-+	[MT8189_POWER_DOMAIN_ADSP_INFRA] = {
-+		.name = "adsp-infra",
-+		.sta_mask = BIT(8),
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.ctl_offs = 0xe20,
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+	},
-+	[MT8189_POWER_DOMAIN_ADSP_AO] = {
-+		.name = "adsp-ao",
-+		.sta_mask = BIT(9),
-+		.ctl_offs = 0xe24,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+	},
-+	[MT8189_POWER_DOMAIN_ISP_IMG1] = {
-+		.name = "isp-img1",
-+		.sta_mask = BIT(10),
-+		.ctl_offs = 0xe28,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.bp_cfg = {
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_0_ISP_IMG1,
-+					MT8189_PROT_EN_MMSYS_STA_0_SET,
-+					MT8189_PROT_EN_MMSYS_STA_0_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_0_RDY),
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_1_ISP_IMG1,
-+					MT8189_PROT_EN_MMSYS_STA_1_SET,
-+					MT8189_PROT_EN_MMSYS_STA_1_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_1_RDY),
-+		},
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+	},
-+	[MT8189_POWER_DOMAIN_ISP_IMG2] = {
-+		.name = "isp-img2",
-+		.sta_mask = BIT(11),
-+		.ctl_offs = 0xe2c,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+	},
-+	[MT8189_POWER_DOMAIN_ISP_IPE] = {
-+		.name = "isp-ipe",
-+		.sta_mask = BIT(12),
-+		.ctl_offs = 0xe30,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.bp_cfg = {
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_0_ISP_IPE,
-+					MT8189_PROT_EN_MMSYS_STA_0_SET,
-+					MT8189_PROT_EN_MMSYS_STA_0_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_0_RDY),
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_1_ISP_IPE,
-+					MT8189_PROT_EN_MMSYS_STA_1_SET,
-+					MT8189_PROT_EN_MMSYS_STA_1_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_1_RDY),
-+		},
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+	},
-+	[MT8189_POWER_DOMAIN_VDE0] = {
-+		.name = "vde0",
-+		.sta_mask = BIT(14),
-+		.ctl_offs = 0xe38,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.bp_cfg = {
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_0_VDE0,
-+					MT8189_PROT_EN_MMSYS_STA_0_SET,
-+					MT8189_PROT_EN_MMSYS_STA_0_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_0_RDY),
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_1_VDE0,
-+					MT8189_PROT_EN_MMSYS_STA_1_SET,
-+					MT8189_PROT_EN_MMSYS_STA_1_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_1_RDY),
-+		},
-+	},
-+	[MT8189_POWER_DOMAIN_VEN0] = {
-+		.name = "ven0",
-+		.sta_mask = BIT(16),
-+		.ctl_offs = 0xe40,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.bp_cfg = {
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_0_VEN0,
-+					MT8189_PROT_EN_MMSYS_STA_0_SET,
-+					MT8189_PROT_EN_MMSYS_STA_0_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_0_RDY),
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_1_VEN0,
-+					MT8189_PROT_EN_MMSYS_STA_1_SET,
-+					MT8189_PROT_EN_MMSYS_STA_1_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_1_RDY),
-+		},
-+	},
-+	[MT8189_POWER_DOMAIN_CAM_MAIN] = {
-+		.name = "cam-main",
-+		.sta_mask = BIT(18),
-+		.ctl_offs = 0xe48,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.bp_cfg = {
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_0_CAM_MAIN,
-+					MT8189_PROT_EN_MMSYS_STA_0_SET,
-+					MT8189_PROT_EN_MMSYS_STA_0_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_0_RDY),
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_1_CAM_MAIN,
-+					MT8189_PROT_EN_MMSYS_STA_1_SET,
-+					MT8189_PROT_EN_MMSYS_STA_1_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_1_RDY),
-+		},
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+	},
-+	[MT8189_POWER_DOMAIN_CAM_SUBA] = {
-+		.name = "cam-suba",
-+		.sta_mask = BIT(20),
-+		.ctl_offs = 0xe50,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+	},
-+	[MT8189_POWER_DOMAIN_CAM_SUBB] = {
-+		.name = "cam-subb",
-+		.sta_mask = BIT(21),
-+		.ctl_offs = 0xe54,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+	},
-+	[MT8189_POWER_DOMAIN_MDP0] = {
-+		.name = "mdp0",
-+		.sta_mask = BIT(26),
-+		.ctl_offs = 0xe68,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.bp_cfg = {
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_0_MDP0,
-+					MT8189_PROT_EN_MMSYS_STA_0_SET,
-+					MT8189_PROT_EN_MMSYS_STA_0_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_0_RDY),
-+		},
-+	},
-+	[MT8189_POWER_DOMAIN_DISP] = {
-+		.name = "disp",
-+		.sta_mask = BIT(28),
-+		.ctl_offs = 0xe70,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.bp_cfg = {
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_0_DISP,
-+					MT8189_PROT_EN_MMSYS_STA_0_SET,
-+					MT8189_PROT_EN_MMSYS_STA_0_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_0_RDY),
-+		},
-+	},
-+	[MT8189_POWER_DOMAIN_MM_INFRA] = {
-+		.name = "mm-infra",
-+		.sta_mask = BIT(30),
-+		.ctl_offs = 0xe78,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.bp_cfg = {
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_1_MM_INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_1_SET,
-+					MT8189_PROT_EN_MMSYS_STA_1_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_1_RDY),
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MMSYS_STA_1_MM_INFRA_2ND,
-+					MT8189_PROT_EN_MMSYS_STA_1_SET,
-+					MT8189_PROT_EN_MMSYS_STA_1_CLR,
-+					MT8189_PROT_EN_MMSYS_STA_1_RDY),
-+			BUS_PROT_WR_IGN_SUBCLK(INFRA,
-+					       MT8189_PROT_EN_MM_INFRA_IGN,
-+					       MT8189_PROT_EN_MMSYS_STA_1_SET,
-+					       MT8189_PROT_EN_MMSYS_STA_1_CLR,
-+					       MT8189_PROT_EN_MMSYS_STA_1_RDY),
-+			BUS_PROT_WR_IGN_SUBCLK(INFRA,
-+					       MT8189_PROT_EN_MM_INFRA_2_IGN,
-+					       MT8189_PROT_EN_MMSYS_STA_1_SET,
-+					       MT8189_PROT_EN_MMSYS_STA_1_CLR,
-+					       MT8189_PROT_EN_MMSYS_STA_1_RDY),
-+		},
-+	},
-+	[MT8189_POWER_DOMAIN_DP_TX] = {
-+		.name = "dp-tx",
-+		.sta_mask = BIT(0),
-+		.ctl_offs = 0xe80,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS_MSB,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_MSB_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+	},
-+	[MT8189_POWER_DOMAIN_CSI_RX] = {
-+		.name = "csi-rx",
-+		.sta_mask = BIT(7),
-+		.ctl_offs = 0xe9c,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS_MSB,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_MSB_2ND,
-+		.caps = MTK_SCPD_KEEP_DEFAULT_OFF,
-+	},
-+	[MT8189_POWER_DOMAIN_SSUSB] = {
-+		.name = "ssusb",
-+		.sta_mask = BIT(10),
-+		.ctl_offs = 0xea8,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS_MSB,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_MSB_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.bp_cfg = {
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_PERISYS_STA_0_SSUSB,
-+					MT8189_PROT_EN_PERISYS_STA_0_SET,
-+					MT8189_PROT_EN_PERISYS_STA_0_CLR,
-+					MT8189_PROT_EN_PERISYS_STA_0_RDY),
-+		},
-+		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-+	},
-+	[MT8189_POWER_DOMAIN_MFG0] = {
-+		.name = "mfg0",
-+		.sta_mask = BIT(1),
-+		.ctl_offs = 0xeb4,
-+		.pwr_sta_offs = MT8189_SPM_XPU_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_XPU_PWR_STATUS_2ND,
-+		.caps = MTK_SCPD_DOMAIN_SUPPLY,
-+	},
-+	[MT8189_POWER_DOMAIN_MFG1] = {
-+		.name = "mfg1",
-+		.sta_mask = BIT(2),
-+		.ctl_offs = 0xeb8,
-+		.pwr_sta_offs = MT8189_SPM_XPU_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_XPU_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.bp_cfg = {
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_INFRASYS_STA_1_MFG1,
-+					MT8189_PROT_EN_INFRASYS_STA_1_SET,
-+					MT8189_PROT_EN_INFRASYS_STA_1_CLR,
-+					MT8189_PROT_EN_INFRASYS_STA_1_RDY),
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MD_STA_0_MFG1,
-+					MT8189_PROT_EN_MD_STA_0_SET,
-+					MT8189_PROT_EN_MD_STA_0_CLR,
-+					MT8189_PROT_EN_MD_STA_0_RDY),
-+			BUS_PROT_WR_IGN(INFRA,
-+					MT8189_PROT_EN_MD_STA_0_MFG1_2ND,
-+					MT8189_PROT_EN_MD_STA_0_SET,
-+					MT8189_PROT_EN_MD_STA_0_CLR,
-+					MT8189_PROT_EN_MD_STA_0_RDY),
-+			BUS_PROT_WR_IGN(SMI,
-+					MT8189_PROT_EN_EMICFG_GALS_SLP_MFG1,
-+					MT8189_PROT_EN_EMICFG_GALS_SLP_SET,
-+					MT8189_PROT_EN_EMICFG_GALS_SLP_CLR,
-+					MT8189_PROT_EN_EMICFG_GALS_SLP_RDY),
-+		},
-+		.caps = MTK_SCPD_DOMAIN_SUPPLY,
-+	},
-+	[MT8189_POWER_DOMAIN_MFG2] = {
-+		.name = "mfg2",
-+		.sta_mask = BIT(3),
-+		.ctl_offs = 0xebc,
-+		.pwr_sta_offs = MT8189_SPM_XPU_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_XPU_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+	},
-+	[MT8189_POWER_DOMAIN_MFG3] = {
-+		.name = "mfg3",
-+		.sta_mask = BIT(4),
-+		.ctl_offs = 0xec0,
-+		.pwr_sta_offs = MT8189_SPM_XPU_PWR_STATUS,
-+		.pwr_sta2nd_offs = MT8189_SPM_XPU_PWR_STATUS_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+	},
-+	[MT8189_POWER_DOMAIN_EDP_TX_DORMANT] = {
-+		.name = "edp-tx-dormant",
-+		.sta_mask = BIT(12),
-+		.ctl_offs = 0xf70,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS_MSB,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_MSB_2ND,
-+		.sram_pdn_bits = BIT(9),
-+		.sram_pdn_ack_bits = 0,
-+		.caps = MTK_SCPD_SRAM_ISO | MTK_SCPD_SRAM_PDN_INVERTED,
-+	},
-+	[MT8189_POWER_DOMAIN_PCIE] = {
-+		.name = "pcie",
-+		.sta_mask = BIT(13),
-+		.ctl_offs = 0xf74,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS_MSB,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_MSB_2ND,
-+		.sram_pdn_bits = BIT(8),
-+		.sram_pdn_ack_bits = BIT(12),
-+		.caps = MTK_SCPD_ACTIVE_WAKEUP,
-+	},
-+	[MT8189_POWER_DOMAIN_PCIE_PHY] = {
-+		.name = "pcie-phy",
-+		.sta_mask = BIT(14),
-+		.ctl_offs = 0xf78,
-+		.pwr_sta_offs = MT8189_SPM_PWR_STATUS_MSB,
-+		.pwr_sta2nd_offs = MT8189_SPM_PWR_STATUS_MSB_2ND,
-+	},
-+};
-+
-+static const struct scpsys_soc_data mt8189_scpsys_data = {
-+	.domains_data = scpsys_domain_data_mt8189,
-+	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8189),
-+	.bus_prot_blocks = scpsys_bus_prot_blocks_mt8189,
-+	.num_bus_prot_blocks = ARRAY_SIZE(scpsys_bus_prot_blocks_mt8189),
-+};
-+
-+#endif /* __SOC_MEDIATEK_MT8189_PM_DOMAINS_H */
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index 3eeb0dabf7d7..58648f4f689b 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -26,6 +26,7 @@
- #include "mt8183-pm-domains.h"
- #include "mt8186-pm-domains.h"
- #include "mt8188-pm-domains.h"
-+#include "mt8189-pm-domains.h"
- #include "mt8192-pm-domains.h"
- #include "mt8195-pm-domains.h"
- #include "mt8196-pm-domains.h"
-@@ -1171,6 +1172,10 @@ static const struct of_device_id scpsys_of_match[] = {
- 		.compatible = "mediatek,mt8188-power-controller",
- 		.data = &mt8188_scpsys_data,
- 	},
-+	{
-+		.compatible = "mediatek,mt8189-power-controller",
-+		.data = &mt8189_scpsys_data,
-+	},
- 	{
- 		.compatible = "mediatek,mt8192-power-controller",
- 		.data = &mt8192_scpsys_data,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 68d698033e43..1d5ea28e7b9b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -3925,7 +3925,7 @@ int mt7996_mcu_set_chan_info(struct mt7996_phy *phy, u16 tag)
+ 	if (phy->mt76->hw->conf.flags & IEEE80211_CONF_MONITOR)
+ 		req.switch_reason = CH_SWITCH_NORMAL;
+ 	else if (phy->mt76->offchannel ||
+-		 phy->mt76->hw->conf.flags & IEEE80211_CONF_IDLE)
++		 !test_bit(MT76_STATE_RUNNING, &phy->mt76->state))
+ 		req.switch_reason = CH_SWITCH_SCAN_BYPASS_DPD;
+ 	else if (!cfg80211_reg_can_beacon(phy->mt76->hw->wiphy, chandef,
+ 					  NL80211_IFTYPE_AP))
 -- 
-2.45.2
+2.51.0
 
 
