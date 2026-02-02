@@ -4,69 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 883E1E7314A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Feb 2026 09:51:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1793FE7315B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Feb 2026 11:42:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EuBa+l2AzlSrxEzg4zfkGHB/RsuSvROlvtiybPhAHyA=; b=B62kNYo8vid0PxJDJjp4Ey/MRJ
-	WvvWAd3zfh2EOWdgqQjQWGG6HUUC2Adf8NoazAB5aR2Be+POXCck4RUG2dpKjuaVkhQ8oKa2d9iQp
-	r1bK6sKnOGrLKkvv5mCfdyxSn5lEwfeOcfx61sMnQKP7F/kdaGr8iStZUb6K/XXuPA+LDWy/muljR
-	CrgrqynY83iuir2/B3raHieayWg0/uFFmbNJ6SI4wr+5nJuYLdVaB7kZ6W4WjqRAwTOI4sw+sh9SZ
-	FBVWG+5dinhA1XvvSobtdiTYkpWGLVgFYFeYVD4fC15DK6t9CME9Z12qoWJhNihwiNP2ow25h3IXe
-	N1P/g+ig==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YbDR66UHgtoMBuhFvGughte3mGcWvDFLPT55VUGio60=; b=E1/Duftpwv50CeaFavrXs1mGd5
+	O5w560Z5bbrkNu03jc6Vje80NWc3Q7x+1KiusCSCI7zAeFrqFlLWDSTsEkDEJgIqX54wcbV5xqQiF
+	iPIy+84t65F9spNe25f72tNa98cmp7QkR2mlleTwAT0hcPili0HB8RmedixJGSDAgNJ04tVv+TwKN
+	fQcA9AYBscW7XUrCNy5D5mTX3Co07xoBpKMpv8jVtibGPrcI/V4INoYHkrUwsaVXx/bvaU8xC5sUG
+	s9VoHEQlorlD2gFGUv/zvP+xa6AGFvDjY2D0m3hOFSJ13rVD2LqC/T9vXuiYNVHTHmEmDpplkUHVo
+	5+O8EBDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmqaG-00000004kAX-0e6N;
-	Mon, 02 Feb 2026 09:51:04 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vmsKJ-00000004vIy-1wh0;
+	Mon, 02 Feb 2026 11:42:43 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmqaD-00000004kA4-16Pp;
-	Mon, 02 Feb 2026 09:51:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B8B2641902;
-	Mon,  2 Feb 2026 09:51:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72939C116C6;
-	Mon,  2 Feb 2026 09:50:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770025860;
-	bh=9VvuiTF467pCqWROe44rFu4fSzJobnhhxxMf2Eom6eM=;
-	h=From:To:Cc:Subject:Date:From;
-	b=sLS8F96yFvtI2VcRrQd5MKVhMx3f/3AhVBQB0m+STBoCPWqz4SCjPi9n5lBJeXSD2
-	 ZLgkDMTKQ+dFoyyf05bthwt5K5eLPEp+C3IGxH6ZgaMc6Bb/LaW/FqRP05Ek+0gkL2
-	 aIWgkwWsh5TM7NVnlHC+24fDnu8iAK8bYV53YaKtQPkxwqZMZeEHJS5tEL9JfBr9lk
-	 mh7kNDkRxNOKpQEPuv32e0wHeTYkla3w2HBx5kbAyrh/WpI56casA1aS4J176f+C1Q
-	 B1Z/wZc/gHqBlIuScJPQVV1s2M1uwMj5Zq8LPJXASaI2y2reLgVfw+cs5OQcub2W0W
-	 Tnfsp2bTbkOOQ==
-From: Arnd Bergmann <arnd@kernel.org>
-To: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Peter Wang <peter.wang@mediatek.com>,
-	Chaotian Jing <chaotian.jing@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Arnd Bergmann <arnd@arndb.de>,
-	Stanley Jhu <chu.stanley@gmail.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	Chun-Hung Wu <chun-hung.wu@mediatek.com>,
-	linux-scsi@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] scsi: ufs: host: mediatek: require CONFIG_PM
-Date: Mon,  2 Feb 2026 10:50:18 +0100
-Message-Id: <20260202095052.1232703-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.39.5
+	id 1vmsKF-00000004vHu-1fQO;
+	Mon, 02 Feb 2026 11:42:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1770032555;
+	bh=w7krebU2H1Mpuz4YFi6JBpMGhVX2NYi1AWbumRrPDkY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=qTCNvj/bQDmaAHIv567WhqG6RBXfeMpXqP4tocFYidQG+D51ESaH6nkX/efvGvdPt
+	 FAMFdBKAlI0892rG877TQ08ZBIQziKgXGoH8z9WXx05HaiLWUy41RwBA+DbVhukuZN
+	 ftihXDoqLIzKXn7Vsqy7F6DYnELi/wzLDYtEopioyWQcTLqfjrGwuYhARnXWgIq+WA
+	 PMyYgz8QUneYI2UejnZhYGwKkRTpIa+CwCpdzl8JAf5d7Xs4SSX0nJoWKBfGfwrCRu
+	 N8j1KPtUyG8iMQXiPvTWvOAQNH5Dy1iGFUF7TeSKWg2k2HBqw0TAjc1XxK/Bgwo9di
+	 RHv/Cb/sV+n8Q==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8202117E130A;
+	Mon,  2 Feb 2026 12:42:34 +0100 (CET)
+Message-ID: <845cca9d-1912-4f00-8245-3d5293f164db@collabora.com>
+Date: Mon, 2 Feb 2026 12:42:33 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] scsi: ufs: host: mediatek: require CONFIG_PM
+To: Arnd Bergmann <arnd@kernel.org>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Peter Wang <peter.wang@mediatek.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, Stanley Jhu <chu.stanley@gmail.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ Bart Van Assche <bvanassche@acm.org>,
+ Chun-Hung Wu <chun-hung.wu@mediatek.com>, linux-scsi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20260202095052.1232703-1-arnd@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260202095052.1232703-1-arnd@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260202_015101_345468_8016ACEB 
-X-CRM114-Status: GOOD (  16.08  )
+X-CRM114-CacheID: sfid-20260202_034239_713040_BB23DBE2 
+X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,109 +84,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+Il 02/02/26 10:50, Arnd Bergmann ha scritto:
+> From: Arnd Bergmann <arnd@arndb.de>
+> 
+> The added print statement from a recent fix causes the
+> driver to fail building when CONFIG_PM is disabled:
+> 
+> drivers/ufs/host/ufs-mediatek.c: In function 'ufs_mtk_resume':
+> drivers/ufs/host/ufs-mediatek.c:1890:40: error: 'struct dev_pm_info' has no member named 'request'
+>   1890 |                         hba->dev->power.request,
+> 
+> It seems unlikely that the driver can work at all without
+> CONFIG_PM, so just add a dependency and remove the existing
+> ifdef checks, rather than adding another ifdef.
+> 
+> Fixes: 15ef3f5aa822 ("scsi: ufs: host: mediatek: Enhance recovery on resume failure")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-The added print statement from a recent fix causes the
-driver to fail building when CONFIG_PM is disabled:
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-drivers/ufs/host/ufs-mediatek.c: In function 'ufs_mtk_resume':
-drivers/ufs/host/ufs-mediatek.c:1890:40: error: 'struct dev_pm_info' has no member named 'request'
- 1890 |                         hba->dev->power.request,
-
-It seems unlikely that the driver can work at all without
-CONFIG_PM, so just add a dependency and remove the existing
-ifdef checks, rather than adding another ifdef.
-
-Fixes: 15ef3f5aa822 ("scsi: ufs: host: mediatek: Enhance recovery on resume failure")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/ufs/host/Kconfig        |  1 +
- drivers/ufs/host/ufs-mediatek.c | 12 +++---------
- include/ufs/ufshcd.h            |  4 ----
- 3 files changed, 4 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/ufs/host/Kconfig b/drivers/ufs/host/Kconfig
-index 7d5117b2dab4..964ae70e7390 100644
---- a/drivers/ufs/host/Kconfig
-+++ b/drivers/ufs/host/Kconfig
-@@ -72,6 +72,7 @@ config SCSI_UFS_QCOM
- config SCSI_UFS_MEDIATEK
- 	tristate "Mediatek specific hooks to UFS controller platform driver"
- 	depends on SCSI_UFSHCD_PLATFORM && ARCH_MEDIATEK
-+	depends on PM
- 	depends on RESET_CONTROLLER
- 	select PHY_MTK_UFS
- 	select RESET_TI_SYSCON
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 66b11cc0703b..b3daaa07e925 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -2437,7 +2437,6 @@ static void ufs_mtk_remove(struct platform_device *pdev)
- 	ufshcd_pltfrm_remove(pdev);
- }
- 
--#ifdef CONFIG_PM_SLEEP
- static int ufs_mtk_system_suspend(struct device *dev)
- {
- 	struct ufs_hba *hba = dev_get_drvdata(dev);
-@@ -2484,9 +2483,7 @@ static int ufs_mtk_system_resume(struct device *dev)
- 
- 	return ret;
- }
--#endif
- 
--#ifdef CONFIG_PM
- static int ufs_mtk_runtime_suspend(struct device *dev)
- {
- 	struct ufs_hba *hba = dev_get_drvdata(dev);
-@@ -2525,13 +2522,10 @@ static int ufs_mtk_runtime_resume(struct device *dev)
- 
- 	return ufshcd_runtime_resume(dev);
- }
--#endif
- 
- static const struct dev_pm_ops ufs_mtk_pm_ops = {
--	SET_SYSTEM_SLEEP_PM_OPS(ufs_mtk_system_suspend,
--				ufs_mtk_system_resume)
--	SET_RUNTIME_PM_OPS(ufs_mtk_runtime_suspend,
--			   ufs_mtk_runtime_resume, NULL)
-+	SYSTEM_SLEEP_PM_OPS(ufs_mtk_system_suspend, ufs_mtk_system_resume)
-+	RUNTIME_PM_OPS(ufs_mtk_runtime_suspend, ufs_mtk_runtime_resume, NULL)
- 	.prepare	 = ufshcd_suspend_prepare,
- 	.complete	 = ufshcd_resume_complete,
- };
-@@ -2541,7 +2535,7 @@ static struct platform_driver ufs_mtk_pltform = {
- 	.remove = ufs_mtk_remove,
- 	.driver = {
- 		.name   = "ufshcd-mtk",
--		.pm     = &ufs_mtk_pm_ops,
-+		.pm     = pm_ptr(&ufs_mtk_pm_ops),
- 		.of_match_table = ufs_mtk_of_match,
- 	},
- };
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index a64c19563b03..8563b6648976 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -1344,17 +1344,13 @@ static inline void *ufshcd_get_variant(struct ufs_hba *hba)
- 	return hba->priv;
- }
- 
--#ifdef CONFIG_PM
- extern int ufshcd_runtime_suspend(struct device *dev);
- extern int ufshcd_runtime_resume(struct device *dev);
--#endif
--#ifdef CONFIG_PM_SLEEP
- extern int ufshcd_system_suspend(struct device *dev);
- extern int ufshcd_system_resume(struct device *dev);
- extern int ufshcd_system_freeze(struct device *dev);
- extern int ufshcd_system_thaw(struct device *dev);
- extern int ufshcd_system_restore(struct device *dev);
--#endif
- 
- extern int ufshcd_dme_reset(struct ufs_hba *hba);
- extern int ufshcd_dme_enable(struct ufs_hba *hba);
--- 
-2.39.5
 
 
