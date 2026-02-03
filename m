@@ -4,76 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B08AE83057
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Feb 2026 06:25:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAF4EE8305F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Feb 2026 08:32:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OP2N/nleBhBlAyv2V95uSRI6uJfND7JrtKouTkzXdkw=; b=zQyY1t/PY7GM/AZpJuSqLosMr0
-	PK2D/OQjv1r1EDr36NhwucN0z1MpqoJC19ceINd4DNU2NC0V9/acCGFPn26NlAgmpP8NKQzTH5Qew
-	zOZ7lE1bjMQ23rfdsrjmuW2NPTDx5ZgZRT+pr4xzYfhhuHGTy2cx6jYT7vcCx7zNM9+94Tdau2g/6
-	mCuTxa1e+LXhboggaSbErwffhxM8SzT/djZPDrtxr9GKu+ic1wMjUfmSWXz0BSirb+Y6DuKLBAaY8
-	70JE1VD+S2M07Fkw/48Du7hGG15nSnVCeFGDZEDgGWDxYXliGtTStUsLuztzNOS1Bst5eA2bgkjXE
-	61Df0hjQ==;
+	bh=+Ry+NWSCCN7z6pnli5crDc4C7kD20vNARto9OvcFV68=; b=paAxKV+lLEa/sAJQu8XvT0lHB1
+	X/wHCPiQGinevn+U/VnQbthoJm39pz7SaF/hHmImnbQ6WxNMR38s6pGRY8KGE/stCeolalk4cV+2F
+	JN0DArEU8I7ASAEn4uVCVNlmAMs3hJtzMxTN2fX1b1+1F/iutNnoNJAPgjQcKhql5cH/DDJ8Kb54/
+	6UgM070LiSdRLYMaUxBbKbdV3AjDEL6iE0MIuEuiho0qN0gnmuSHkyilwJCBqOAFQIZdUdejnNSRK
+	R59eJqScRAQKjYPX4HqaVApTBqaimNzknCWbYACjS90hA04pJXb9RCl1XA4lxp5Pu4yF1pvxIljnv
+	juxiJqhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vn9qo-00000006BNg-1tsa;
-	Tue, 03 Feb 2026 06:25:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vnBps-00000006JZv-1KNB;
+	Tue, 03 Feb 2026 08:32:36 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vn9ql-00000006BKl-2OWe
-	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Feb 2026 06:25:24 +0000
-X-UUID: 19df9afa00c911f1ad39f32c34db0b1c-20260202
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=OP2N/nleBhBlAyv2V95uSRI6uJfND7JrtKouTkzXdkw=;
-	b=PofFxX+wQ+EAk82PxtmR351gWXOg2lLxwO2pg9ASnLn561SV5uyUWfDriNfKqgFHGkFClQTERXKL9NlNFF+Fe9BPhl8eZKCe5xpAVM3xxxyvZiyU0U/8gtwVHPq93y/UQvu1cKVj5PL2ioSo3u9mpdUuseEgD0jTBkwP5tINA3U=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:5ea09873-2a9c-413a-acf0-7fdae48a53c7,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:af1544f0-16bd-4243-b4ca-b08ca08ab1d8,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
-	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 19df9afa00c911f1ad39f32c34db0b1c-20260202
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 604401682; Mon, 02 Feb 2026 23:25:14 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 3 Feb 2026 14:25:12 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 3 Feb 2026 14:25:12 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
-	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v1 0/3] Trigger reset if firmware status is abnormal when
-Date: Tue, 3 Feb 2026 14:25:07 +0800
-Message-ID: <20260203062510.848761-1-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1vnBpp-00000006JYw-3jaa;
+	Tue, 03 Feb 2026 08:32:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id B3EFC40B62;
+	Tue,  3 Feb 2026 08:32:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 160B1C116D0;
+	Tue,  3 Feb 2026 08:32:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1770107551;
+	bh=Rxqd6CZwBn18DO82HK4+2RYTRznPltmfeG6JDWGATF8=;
+	h=From:Date:Subject:To:Cc:From;
+	b=nRuQmNY7tHHkXXX3CEDKDi3qX9Bc9CY+8ueHn7ndQ+m2AIyj6XNX+hj7l6W4xN5XZ
+	 svPYoNCZ+OGWSgb/GUklF5Zy1pbOwkCSuuqDEcSk0JXlxmhWEdLXtbG+YbVu+9DFLI
+	 Mny2S3v533zHOwz6Vyed4SCRAQ1DpsZ5jAGV/g6ypnNQS9FFLkdFb/cX3UGTDLtqlr
+	 Dju9Sb+Ww5xQ3QlGIKmiKanQl7eJFwJL66m9VKiabaVuil53hq2y6M0frODPdXTrVa
+	 gcLzyhgXkMk/opPJX3nGTF1CiOS2B/sOEMVHaTkRVhcefC7gaaFk4IHHqSPX94oeqk
+	 qz8NjpcU9PjdQ==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 03 Feb 2026 09:32:02 +0100
+Subject: [PATCH mt76] wifi: mt76: mt7996: Add eMLSR support
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260203-mt7996-emlsr-v1-1-38ffb3d5110c@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDIwNj3dwSc0tLM93U3JziIl3L5GSLRDMLk+TkpEQloJaCotS0zAqwcdG
+ xtbUA6rvh0l4AAAA=
+X-Change-ID: 20260203-mt7996-emlsr-9cc8a684ccba
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ MeiChia Chiu <MeiChia.Chiu@mediatek.com>, 
+ Christian Marangi <ansuelsmth@gmail.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260202_222523_622734_DD23D803 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260203_003234_096709_D0FAC8B4 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,32 +79,176 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When the device unexpectedly restarts during previous firmware
-download process, it can cause mt79xx firmware status to be
-abnormal in the next attempt. In this case, a reset should be
-performed to ensure everything starts afresh.
+From: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
 
-These changes include:
-1. Optimizing the handling after the download function retry
-   is exhausted, a reset should be performed.
-2. Another download firmware command also needs to check status
-   , and if an unexpected status occurs, trigger a reset.
-3. Adding a flag "BTMTK_FIRMWARE_DL_RETRY": if download firmware
-   process enters the reset mechanism, this flag will be set.
-   After a successful setup, the flag will be cleared.
-   If the flag is already set, no further reset attempts will be
-   made to avoid endless reset retries.
+Implement set_eml_op_mode mac80211 callback in order to introduce eMLSR
+support.
 
-Chris Lu (3):
-  Bluetooth: btmtk: improve mt79xx firmware setup retry flow
-  Bluetooth: btmtk: add status check in  mt79xx firmware setup
-  Bluetooth: btmtk: Add reset mechanism if downloading firmware failed
+Tested-by: Christian Marangi <ansuelsmth@gmail.com>
+Signed-off-by: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ .../net/wireless/mediatek/mt76/mt76_connac_mcu.h   |  9 ++++
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c   | 16 +++++++
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 55 ++++++++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  4 ++
+ 4 files changed, 84 insertions(+)
 
- drivers/bluetooth/btmtk.c | 21 +++++++++++++++++++--
- drivers/bluetooth/btmtk.h |  1 +
- 2 files changed, 20 insertions(+), 2 deletions(-)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index f44977f9093da76a9f5e2b4d7ce147de28c5b18e..b8629c0a1639b3f55d2133bdea28fa6cae552cac 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -628,6 +628,13 @@ struct sta_rec_tx_proc {
+ 	__le32 flag;
+ } __packed;
+ 
++struct sta_rec_eml_op {
++	__le16 tag;
++	__le16 len;
++	u8 link_bitmap;
++	u8 link_ant_num[3];
++} __packed;
++
+ /* wtbl_rec */
+ 
+ struct wtbl_req_hdr {
+@@ -796,6 +803,7 @@ struct wtbl_raw {
+ 					 sizeof(struct sta_rec_he_6g_capa) + \
+ 					 sizeof(struct sta_rec_pn_info) + \
+ 					 sizeof(struct sta_rec_tx_proc) + \
++					 sizeof(struct sta_rec_eml_op) + \
+ 					 sizeof(struct tlv) +		\
+ 					 MT76_CONNAC_WTBL_UPDATE_MAX_SIZE)
+ 
+@@ -832,6 +840,7 @@ enum {
+ 	STA_REC_PN_INFO = 0x26,
+ 	STA_REC_KEY_V3 = 0x27,
+ 	STA_REC_HDRT = 0x28,
++	STA_REC_EML_OP = 0x29,
+ 	STA_REC_HDR_TRANS = 0x2B,
+ 	STA_REC_MAX_NUM
+ };
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 7046bf26d8ed6776ea114592f8b89c8b2a605339..48e4cd5af9293cedb9018fd9148dceac67bc4653 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -2368,6 +2368,21 @@ mt7996_reconfig_complete(struct ieee80211_hw *hw,
+ 					     MT7996_WATCHDOG_TIME);
+ }
+ 
++static int
++mt7996_set_eml_op_mode(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
++		       struct ieee80211_sta *sta,
++		       struct ieee80211_eml_params *eml_params)
++{
++	struct mt7996_dev *dev = mt7996_hw_dev(hw);
++	int ret;
++
++	mutex_lock(&dev->mt76.mutex);
++	ret = mt7996_mcu_set_emlsr_mode(dev, vif, sta, eml_params);
++	mutex_unlock(&dev->mt76.mutex);
++
++	return ret;
++}
++
+ const struct ieee80211_ops mt7996_ops = {
+ 	.add_chanctx = mt76_add_chanctx,
+ 	.remove_chanctx = mt76_remove_chanctx,
+@@ -2431,4 +2446,5 @@ const struct ieee80211_ops mt7996_ops = {
+ 	.change_vif_links = mt7996_change_vif_links,
+ 	.change_sta_links = mt7996_mac_sta_change_links,
+ 	.reconfig_complete = mt7996_reconfig_complete,
++	.set_eml_op_mode = mt7996_set_eml_op_mode,
+ };
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 8e1c8e1d6a99f093a2b7d7dc3a0c56f3a4bc220b..3098bddc5f6d6d33433bc653d5ef63bbe5c740fb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -1302,6 +1302,61 @@ int mt7996_mcu_set_protection(struct mt7996_phy *phy, struct mt7996_vif_link *li
+ 				     MCU_WM_UNI_CMD(BSS_INFO_UPDATE), true);
+ }
+ 
++int mt7996_mcu_set_emlsr_mode(struct mt7996_dev *dev,
++			      struct ieee80211_vif *vif,
++			      struct ieee80211_sta *sta,
++			      struct ieee80211_eml_params *eml_params)
++{
++	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
++	struct mt7996_sta_link *msta_link;
++	struct sta_rec_eml_op *eml_op;
++	struct mt7996_vif_link *link;
++	struct sk_buff *skb;
++	struct tlv *tlv;
++
++	msta_link = mt76_dereference(msta->link[eml_params->link_id],
++				     &dev->mt76);
++	if (!msta_link)
++		return -EINVAL;
++
++	link = mt7996_vif_link(dev, vif, eml_params->link_id);
++	if (!link)
++		return -EINVAL;
++
++	skb = __mt76_connac_mcu_alloc_sta_req(&dev->mt76, &link->mt76,
++					      &msta_link->wcid,
++					      MT7996_STA_UPDATE_MAX_SIZE);
++	if (IS_ERR(skb))
++		return PTR_ERR(skb);
++
++	tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_EML_OP, sizeof(*eml_op));
++	eml_op = (struct sta_rec_eml_op *)tlv;
++	eml_op->link_bitmap = 0;
++
++	if (eml_params->control & IEEE80211_EML_CTRL_EMLSR_MODE) {
++		unsigned long link_bitmap = eml_params->link_bitmap;
++		unsigned int link_id;
++
++		for_each_set_bit(link_id, &link_bitmap,
++				 IEEE80211_MLD_MAX_NUM_LINKS) {
++			struct mt76_phy *mphy;
++
++			link = mt7996_vif_link(dev, vif, link_id);
++			if (!link)
++				continue;
++
++			mphy = mt76_vif_link_phy(&link->mt76);
++			if (!mphy)
++				continue;
++
++			eml_op->link_bitmap |= BIT(mphy->band_idx);
++		}
++	}
++
++	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
++				     MCU_WMWA_UNI_CMD(STA_REC_UPDATE), true);
++}
++
+ int mt7996_mcu_set_timing(struct mt7996_phy *phy, struct ieee80211_vif *vif,
+ 			  struct ieee80211_bss_conf *link_conf)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+index 3ff730e36fa60830cc9ba5311643b008860cec22..c5d60c273cf8e15e3d54e2d851acbd83ce69719d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -875,6 +875,10 @@ int mt7996_mcu_wtbl_update_hdr_trans(struct mt7996_dev *dev,
+ 				     struct mt7996_vif_link *link,
+ 				     struct mt7996_sta_link *msta_link);
+ int mt7996_mcu_cp_support(struct mt7996_dev *dev, u8 mode);
++int mt7996_mcu_set_emlsr_mode(struct mt7996_dev *dev,
++			      struct ieee80211_vif *vif,
++			      struct ieee80211_sta *sta,
++			      struct ieee80211_eml_params *eml_params);
+ #ifdef CONFIG_MAC80211_DEBUGFS
+ void mt7996_sta_add_debugfs(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 			    struct ieee80211_sta *sta, struct dentry *dir);
 
+---
+base-commit: 4eefc435c985f4dfdba9afb1c705f0e17377c084
+change-id: 20260203-mt7996-emlsr-9cc8a684ccba
+
+Best regards,
 -- 
-2.45.2
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
