@@ -4,93 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6712E8B393
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Feb 2026 03:32:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DE62E83EF4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Feb 2026 08:55:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pQbKpNswXJTNi8jP1PSICS1P2ix+Ty3CgZzKqkQPvCQ=; b=jyQtTN8Q8OEGMD8cdhpEDAWZ1q
-	69OyTbGhFPn5AGlv/GMNTxD03B7AbxY07XfJ8gNgFGx+YGBdpdy+f+NcNuWL9k2Ko7vMPA19t5+sZ
-	wg8UGizYd4DoRZ9IOR8vWRXuEWLnt3PMDlIU+gYjDmKivLams5UgqDopZs1HcK0LpopLj7Ta+f0LG
-	INTahV5Y+qIUd1vS27yrgprygjJ6rAge5CkLim4fuTAkUWh3MlZqusv3WzdV+Q49SxQpQ8iXeQ7Hh
-	h2d4EU8tn0h5I383CWbMrPCbSUaL74jqHjqEFSCz188PfVHCFQB+njFbK0dbc58SNbwZ2r6ibbpsq
-	Y3so9+LA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HPTM0HmXrYNazv5+kyisaj3v8r/4RebBdezhh+nEyJQ=; b=3ZFLSsvY6nyHRxwESQGfT6Ljeb
+	UGbtp85yXdfHleDK3DI3i7hxBpT44AY9FC1dYDCXK83ylLm3whuNdo1UH8WdM7aEICZOQPMoN3Ckj
+	pScItx/bJwYgSuKnNDt6jgGs0fbpqHfB1OLsJZtoajJH2Jw4X1/e+6phPXA8DEHQ37eSYAJBqyVrB
+	DKSMNNH1Yh1iuWWeEbaiI8+DReW+U2szbOA1Rci3tqSU7aCKmUhFXgJC1cBfhzshxSMhUPqYKyK/8
+	KqDA7K1g3DwiKUxwcr76G7v7PjQX3qXmHyyygiHhjkKHcg10lEba69rvMvHZzoIlfOjCRRbiym5OV
+	MS/3AmHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnTcb-00000007prG-2XMz;
-	Wed, 04 Feb 2026 03:32:05 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1vnYfu-000000089F7-3fxC;
+	Wed, 04 Feb 2026 08:55:50 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnTcZ-00000007pql-0IaU
-	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Feb 2026 03:32:04 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2a07f8dd9cdso44461205ad.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 03 Feb 2026 19:32:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=tier4.jp; s=google; t=1770175921; x=1770780721; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=pQbKpNswXJTNi8jP1PSICS1P2ix+Ty3CgZzKqkQPvCQ=;
-        b=VgcDH7vrm/X6j7UzYI+osemn3mS1BEW7qIdWlz7Dqfw5vwF46Ae8S7jYeBBpSLSl/4
-         G55xTxVWUnLmvzVh7qdddCRJ27BTGA42plMzrdS7T1GXoxXBEnTqVcS3pjek8JD3or1b
-         8Qr5QU83wSY4SXv+znxAd/ccP7mA1aMM4SLhFJiDZLtekdX+rcxdLwRgsTahLbORsWXf
-         ibteQVv4sQmPJ+mOypSz73wk8VVcA5cL0qGoGpB757MY1VGcMoNTUbiAqmeDi4J8poJI
-         jeWu3x5Pn2AaYgcRGoDa+PFrEXCo/QauXUTD2cd6lsYX6c5EodPFtKM5dwR3IJOS6+QE
-         Uzvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1770175921; x=1770780721;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=pQbKpNswXJTNi8jP1PSICS1P2ix+Ty3CgZzKqkQPvCQ=;
-        b=RAuUUV4XsujpLimbAKohVQqSzb8X2x1H6SQpa8SUPQ2Z5Hitgx+Ox0h/YNT1y23ULw
-         UbU/rMHOauMfONvTDa3T3HNsAz6gkKYJJZNWMnB0NxZ3MvWVjtFQsasvn3kG2Qy0jngL
-         SNS68A/yWL3p6T0KBOoqxfsxIrb/Xi1WlLf7B6Xqk4Vrzj7aLH3w9e3uaP/MqiLx+pPu
-         j5Mm/A/sww1ixjBoYiHPjKvKLNJskELt+gt2AUPE2NiWEVPEpuXtzhjtlyZv7XMA7iu0
-         hcE/E8XCOOelVggjllGdRKdHyqUXhTY8FqFxfTw88S8XBvpnWJiVjlAMBUDyU5ptHIyW
-         uSKA==
-X-Forwarded-Encrypted: i=1; AJvYcCWznGbZ/yZcH3NUVPQgjz/V/nwOga61+/ESMZGBVa6ghus6r7GaQfZxRXBGtQhyWKu7WTqpvHC1U7RaQ9/ZVg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzFFyMVKJ3Q6KNwqMzrFJwalsPAzwYPEAHIbuX3L4UY/0pMD+OZ
-	bB0XRZGAMH80fyPfbiuxnfIwTRVAbN8D2MRre3ErV72XaMasnxqP2vpeh3f0NDw/oEc=
-X-Gm-Gg: AZuq6aJjWXepXX+MPyZBcC/7IZMqX50E6C4lgTN9dVsMW2qf1o5btpuY9FpP8I5TVLw
-	WnV2dos344OFAGTeQERRa+RamZnSa+4RMVYtnT/fF/kmy/MPeOveyaofeqDkVQuds+z7aYJbOGV
-	lyl0afiJGeqBkWSqkD1rnM5tW3ZxeFiYgtM5ONIZEt0dqO/DZfmBJZ2Ajdu6yZIXrGsJeRo1eGa
-	dE+nG7VlEOxLXKnVw2YTtF2vNzKi7e2UtQMmjv+M5qe9T4PyFvFAwFXAVGV/hfQaJpKf+Kd3gTE
-	OinjqDoPNvtO+9zowGUnr01ve2tyceDEKETfvEgbegQYHDkA6t6SI7Piq6ykpGzb5b7TlB85iKo
-	V2gqGXajAdo3mvH8eEOKmpqRe1eA9uIi4rN1qJCbgyvpZVzPNrILSe+qm1cSSYIkx4F1uGJbxI1
-	2zeoeXBevitdNteOo7J2M26Y4BdqvvDUl+x64Zu/JRTpct+B0=
-X-Received: by 2002:a17:902:e74b:b0:2a1:2b5f:d16b with SMTP id d9443c01a7336-2a933e515fdmr16462875ad.31.1770175921652;
-        Tue, 03 Feb 2026 19:32:01 -0800 (PST)
-Received: from dpc2500057.. (fsb6a9315e.tkyc502.ap.nuro.jp. [182.169.49.94])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2a93397ef6fsm7931335ad.95.2026.02.03.19.32.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Feb 2026 19:32:01 -0800 (PST)
-From: Keita Morisaki <keita.morisaki@tier4.jp>
-To: martin.petersen@oracle.com
-Cc: James.Bottomley@HansenPartnership.com,
-	chaotian.jing@mediatek.com,
-	chu.stanley@gmail.com,
-	keita.morisaki@tier4.jp,
-	linux-kernel@vger.kernel.org,
+	id 1vnYfs-000000089Ef-0fii;
+	Wed, 04 Feb 2026 08:55:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2E83340A60;
+	Wed,  4 Feb 2026 08:55:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 953B8C4CEF7;
+	Wed,  4 Feb 2026 08:55:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1770195347;
+	bh=dc2pDQlje1TpaNRVrS3ErZEz9RPQs03Rk8N+eEL5ybw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=p+1kiDEo+GImuELw6M/ciamJR/XwnorEXfsn64N9Da5bZpqqC2FNvOV8KjPj3822r
+	 x1k0FEc7WLtJZb0dxTQ5644XqoxRiXpYCBNSx3EnDWuqVXu4AbAHE842D5JaUygQyE
+	 OTi0XlzMpjhDDgJk6WVzG/qkPAZMs8ayIg2ePTcNEkxQ7HId1ysWqjHzuE5YXRgkQR
+	 W05gik34LqWcD4dwJ/BXLnf67EERGXuqbrnVwINRsaZ9RUTCYbtVLw9fSPrJAzqoR+
+	 5RgC6zkbdXOV7+Qxef4R9+ruLssY6jprOQ6N/YtMm79byZg/YZh3rVcOx1XyGcYiIk
+	 lj7Th0Afvl6Xw==
+From: Tzung-Bi Shih <tzungbi@kernel.org>
+To: Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	linux-remoteproc@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-scsi@vger.kernel.org,
-	peter.wang@mediatek.com
-Subject: Re: [PATCH] scsi: ufs: mediatek: Fix page faults in ufs_mtk_clk_scale trace event
-Date: Wed,  4 Feb 2026 12:31:12 +0900
-Message-Id: <20260204033112.2513463-1-keita.morisaki@tier4.jp>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <yq1jywtnq7o.fsf@ca-mkp.ca.oracle.com>
-References: <yq1jywtnq7o.fsf@ca-mkp.ca.oracle.com>
+	tzungbi@kernel.org
+Subject: [PATCH] remoteproc: mediatek: Unprepare SCP clock during system suspend
+Date: Wed,  4 Feb 2026 08:54:42 +0000
+Message-ID: <20260204085442.1822123-1-tzungbi@kernel.org>
+X-Mailer: git-send-email 2.53.0.rc2.204.g2597b5adb4-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260203_193203_142495_CDC5D648 
-X-CRM114-Status: UNSURE (   5.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260204_005548_220105_E67F6224 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,9 +74,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Martin,
+Prior to commit d935187cfb27 ("remoteproc: mediatek: Break lock
+dependency to prepare_lock"), `scp->clk` was prepared and enabled only
+when it needs to communicate with the SCP.  The commit d935187cfb27
+moved the prepare operation to remoteproc's prepare(), keeping the clock
+prepared as long as the SCP is running.
 
-> Applied to 6.20/scsi-staging, thanks!
+The power consumption due to the prolonged clock preparation can be
+negligible when the system is running, as SCP is designed to be a very
+power efficient processor.
 
-Thank you for the update! Greatful to contribute!
+However, the clock remains prepared even when the system enters system
+suspend.  This prevents the underlying clock controller (and potentially
+the parent PLLs) from shutting down, which increases power consumption
+and may block the system from entering deep sleep states.
+
+Add suspend and resume callbacks.  Unprepare the clock in suspend() if
+it was active and re-prepare it in resume() to ensure the clock is
+properly disabled during system suspend, while maintaining the "always
+prepared" semantics while the system is active.
+
+Fixes: d935187cfb27 ("remoteproc: mediatek: Break lock dependency to prepare_lock")
+Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
+---
+ drivers/remoteproc/mtk_scp.c | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index 4651311aeb07..6200c687e232 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -1592,12 +1592,40 @@ static const struct of_device_id mtk_scp_of_match[] = {
+ };
+ MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
+ 
++#ifdef CONFIG_PM_SLEEP
++static int scp_suspend(struct device *dev)
++{
++	struct mtk_scp *scp = dev_get_drvdata(dev);
++	struct rproc *rproc = scp->rproc;
++
++	/* Only unprepare if the SCP is running and holding the clock */
++	if (rproc->state == RPROC_RUNNING)
++		clk_unprepare(scp->clk);
++	return 0;
++}
++
++static int scp_resume(struct device *dev)
++{
++	struct mtk_scp *scp = dev_get_drvdata(dev);
++	struct rproc *rproc = scp->rproc;
++
++	if (rproc->state == RPROC_RUNNING)
++		return clk_prepare(scp->clk);
++	return 0;
++}
++#endif
++
++static const struct dev_pm_ops scp_pm_ops = {
++	SET_SYSTEM_SLEEP_PM_OPS(scp_suspend, scp_resume)
++};
++
+ static struct platform_driver mtk_scp_driver = {
+ 	.probe = scp_probe,
+ 	.remove = scp_remove,
+ 	.driver = {
+ 		.name = "mtk-scp",
+ 		.of_match_table = mtk_scp_of_match,
++		.pm = &scp_pm_ops,
+ 	},
+ };
+ 
+-- 
+2.53.0.rc2.204.g2597b5adb4-goog
+
 
