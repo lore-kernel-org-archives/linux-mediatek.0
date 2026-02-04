@@ -4,62 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DE62E83EF4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Feb 2026 08:55:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69FC5E9538D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Feb 2026 12:00:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HPTM0HmXrYNazv5+kyisaj3v8r/4RebBdezhh+nEyJQ=; b=3ZFLSsvY6nyHRxwESQGfT6Ljeb
-	UGbtp85yXdfHleDK3DI3i7hxBpT44AY9FC1dYDCXK83ylLm3whuNdo1UH8WdM7aEICZOQPMoN3Ckj
-	pScItx/bJwYgSuKnNDt6jgGs0fbpqHfB1OLsJZtoajJH2Jw4X1/e+6phPXA8DEHQ37eSYAJBqyVrB
-	DKSMNNH1Yh1iuWWeEbaiI8+DReW+U2szbOA1Rci3tqSU7aCKmUhFXgJC1cBfhzshxSMhUPqYKyK/8
-	KqDA7K1g3DwiKUxwcr76G7v7PjQX3qXmHyyygiHhjkKHcg10lEba69rvMvHZzoIlfOjCRRbiym5OV
-	MS/3AmHg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aqNMzU1Qw+T1MRI2oqS9RMu5Na9ZwPrUfIxVrukiy8k=; b=bMQW1HIqOmAs322IM8VYaSQqSC
+	vkoZhQqc34pfXogyztH5+iWBO7pdtWTZkZj/yh7Av2uuGR4XQFBDlikhUBwjwnsbC/f+k+6p54N7f
+	Sw66ZrUyNk+TWeumhWmr+UY7gxlLBtLmKxt4Ks53AqeUDHLuzMIVUq+1oSEw4gK9U2Ooc1x8lqTzp
+	K5lhXwRAFv/962khja0bKg5ALePwKS7Wx+l8se4HYfkg+mjPm72OfJ/vXGMVEeCz3w4GtwfP/S8zl
+	n2TcBHDCu+o2p/X1YUnxlCqfjsYz7rIsUjP/J3x75PUgdIxqnpJwqs/ARflxGZWWYXmuie4NO8GQn
+	Ov40da1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnYfu-000000089F7-3fxC;
-	Wed, 04 Feb 2026 08:55:50 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vnbYZ-00000008OqN-1K2U;
+	Wed, 04 Feb 2026 12:00:27 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnYfs-000000089Ef-0fii;
-	Wed, 04 Feb 2026 08:55:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2E83340A60;
-	Wed,  4 Feb 2026 08:55:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 953B8C4CEF7;
-	Wed,  4 Feb 2026 08:55:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770195347;
-	bh=dc2pDQlje1TpaNRVrS3ErZEz9RPQs03Rk8N+eEL5ybw=;
-	h=From:To:Cc:Subject:Date:From;
-	b=p+1kiDEo+GImuELw6M/ciamJR/XwnorEXfsn64N9Da5bZpqqC2FNvOV8KjPj3822r
-	 x1k0FEc7WLtJZb0dxTQ5644XqoxRiXpYCBNSx3EnDWuqVXu4AbAHE842D5JaUygQyE
-	 OTi0XlzMpjhDDgJk6WVzG/qkPAZMs8ayIg2ePTcNEkxQ7HId1ysWqjHzuE5YXRgkQR
-	 W05gik34LqWcD4dwJ/BXLnf67EERGXuqbrnVwINRsaZ9RUTCYbtVLw9fSPrJAzqoR+
-	 5RgC6zkbdXOV7+Qxef4R9+ruLssY6jprOQ6N/YtMm79byZg/YZh3rVcOx1XyGcYiIk
-	 lj7Th0Afvl6Xw==
-From: Tzung-Bi Shih <tzungbi@kernel.org>
-To: Bjorn Andersson <andersson@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	linux-remoteproc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	tzungbi@kernel.org
-Subject: [PATCH] remoteproc: mediatek: Unprepare SCP clock during system suspend
-Date: Wed,  4 Feb 2026 08:54:42 +0000
-Message-ID: <20260204085442.1822123-1-tzungbi@kernel.org>
-X-Mailer: git-send-email 2.53.0.rc2.204.g2597b5adb4-goog
+	id 1vnbYW-00000008Opk-0hSQ;
+	Wed, 04 Feb 2026 12:00:25 +0000
+X-UUID: 1283c2ba01c111f1a16f0188aa809bee-20260204
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=aqNMzU1Qw+T1MRI2oqS9RMu5Na9ZwPrUfIxVrukiy8k=;
+	b=OU6ZtDEKYYAo7KV4BW5z4hplCHYaTL24iCpf9Cc9TJAxDsiZTb6j8jc6i3XQCvB6bp5nqxpPCRB7vwMT9r7sS7ady7MvIw2rllaU7LHjggfFXdcIP+AHYOobfY0ktDmNRP1QpYx1ESa0b8425uBfF5ti/P5h4NwPxApxrvP1idU=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:a2d0e2ab-2c29-4649-a0eb-e49669aeac68,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:1,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:1
+X-CID-META: VersionHash:89c9d04,CLOUDID:063fec5a-a957-4259-bcca-d3af718d7034,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 1283c2ba01c111f1a16f0188aa809bee-20260204
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+	(envelope-from <dengjun.su@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1257625685; Wed, 04 Feb 2026 05:00:17 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 4 Feb 2026 20:00:14 +0800
+Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 4 Feb 2026 20:00:14 +0800
+From: Dengjun Su <dengjun.su@mediatek.com>
+To: <linux-kernel@vger.kernel.org>, Peter Zijlstra <peterz@infradead.org>
+CC: <dengjun.su@mediatek.com>, <mike.zhang@mediatek.com>,
+	<haiqiang.gong@mediatek.com>, <peijun.huang@mediatek.com>, Ingo Molnar
+	<mingo@redhat.com>, Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
+	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
+	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, Mel
+ Gorman <mgorman@suse.de>, Valentin Schneider <vschneid@redhat.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2 RESEND] sched: fix incorrect schedstats for rt and dl thread
+Date: Wed, 4 Feb 2026 19:59:29 +0800
+Message-ID: <20260204115959.3183567-1-dengjun.su@mediatek.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260204_005548_220105_E67F6224 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20260204_040024_216944_9DC2E720 
+X-CRM114-Status: GOOD (  17.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,78 +90,98 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prior to commit d935187cfb27 ("remoteproc: mediatek: Break lock
-dependency to prepare_lock"), `scp->clk` was prepared and enabled only
-when it needs to communicate with the SCP.  The commit d935187cfb27
-moved the prepare operation to remoteproc's prepare(), keeping the clock
-prepared as long as the SCP is running.
+For RT and DL thread, only 'set_next_task_(rt/dl)' will call
+'update_stats_wait_end_(rt/dl)' to update schedstats information.
+However, during the migration process,
+'update_stats_wait_start_(rt/dl)' will be called twice, which
+will cause the values of wait_max and wait_sum to be incorrect.
+The specific output as follows:
+$ cat /proc/6046/task/6046/sched | grep wait
+wait_start                                   :             0.000000
+wait_max                                     :        496717.080029
+wait_sum                                     :       7921540.776553
 
-The power consumption due to the prolonged clock preparation can be
-negligible when the system is running, as SCP is designed to be a very
-power efficient processor.
+A complete schedstats information update flow of migrate should be
+__update_stats_wait_start() [enter queue A, stage 1] ->
+__update_stats_wait_end()   [leave queue A, stage 2] ->
+__update_stats_wait_start() [enter queue B, stage 3] ->
+__update_stats_wait_end()   [start running on queue B, stage 4]
 
-However, the clock remains prepared even when the system enters system
-suspend.  This prevents the underlying clock controller (and potentially
-the parent PLLs) from shutting down, which increases power consumption
-and may block the system from entering deep sleep states.
+    Stage 1: prev_wait_start is 0, and in the end, wait_start records the
+    time of entering the queue.
+    Stage 2: task_on_rq_migrating(p) is true, and wait_start is updated to
+    the waiting time on queue A.
+    Stage 3: prev_wait_start is the waiting time on queue A, wait_start is
+    the time of entering queue B, and wait_start is expected to be greater
+    than prev_wait_start. Under this condition, wait_start is updated to
+    (the moment of entering queue B) - (the waiting time on queue A).
+    Stage 4: the final wait time = (time when starting to run on queue B)
+    - (time of entering queue B) + (waiting time on queue A) = waiting
+    time on queue B + waiting time on queue A.
 
-Add suspend and resume callbacks.  Unprepare the clock in suspend() if
-it was active and re-prepare it in resume() to ensure the clock is
-properly disabled during system suspend, while maintaining the "always
-prepared" semantics while the system is active.
+The current problem is that stage 2 does not call __update_stats_wait_end
+to update wait_start, which causes the final computed wait time = waiting
+time on queue B + the moment of entering queue A, leading to incorrect
+wait_max and wait_sum.
 
-Fixes: d935187cfb27 ("remoteproc: mediatek: Break lock dependency to prepare_lock")
-Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
+Add 'update_stats_wait_end_(rt/dl)' in 'update_stats_dequeue_(rt/dl)' to
+update schedstats information when dequeue_task.
+
+Signed-off-by: Dengjun Su <dengjun.su@mediatek.com>
 ---
- drivers/remoteproc/mtk_scp.c | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+v2: changes according to Peter's suggestions
+    1. add fix for dl class;
+    2. add more commit message to explain the reasons for the
+       modifications.
+---
+ kernel/sched/deadline.c | 4 ++++
+ kernel/sched/rt.c       | 7 ++++++-
+ 2 files changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 4651311aeb07..6200c687e232 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -1592,12 +1592,40 @@ static const struct of_device_id mtk_scp_of_match[] = {
- };
- MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
+diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
+index 319439fe1870..610243a56bf8 100644
+--- a/kernel/sched/deadline.c
++++ b/kernel/sched/deadline.c
+@@ -2115,10 +2115,14 @@ update_stats_dequeue_dl(struct dl_rq *dl_rq, struct sched_dl_entity *dl_se,
+ 			int flags)
+ {
+ 	struct task_struct *p = dl_task_of(dl_se);
++	struct rq *rq = rq_of_dl_rq(dl_rq);
  
-+#ifdef CONFIG_PM_SLEEP
-+static int scp_suspend(struct device *dev)
-+{
-+	struct mtk_scp *scp = dev_get_drvdata(dev);
-+	struct rproc *rproc = scp->rproc;
+ 	if (!schedstat_enabled())
+ 		return;
+ 
++	if (p != rq->curr)
++		update_stats_wait_end_dl(dl_rq, dl_se);
 +
-+	/* Only unprepare if the SCP is running and holding the clock */
-+	if (rproc->state == RPROC_RUNNING)
-+		clk_unprepare(scp->clk);
-+	return 0;
-+}
+ 	if ((flags & DEQUEUE_SLEEP)) {
+ 		unsigned int state;
+ 
+diff --git a/kernel/sched/rt.c b/kernel/sched/rt.c
+index f1867fe8e5c5..12f2efddca9f 100644
+--- a/kernel/sched/rt.c
++++ b/kernel/sched/rt.c
+@@ -1302,13 +1302,18 @@ update_stats_dequeue_rt(struct rt_rq *rt_rq, struct sched_rt_entity *rt_se,
+ 			int flags)
+ {
+ 	struct task_struct *p = NULL;
++	struct rq *rq = rq_of_rt_rq(rt_rq);
+ 
+ 	if (!schedstat_enabled())
+ 		return;
+ 
+-	if (rt_entity_is_task(rt_se))
++	if (rt_entity_is_task(rt_se)) {
+ 		p = rt_task_of(rt_se);
+ 
++		if (p != rq->curr)
++			update_stats_wait_end_rt(rt_rq, rt_se);
++	}
 +
-+static int scp_resume(struct device *dev)
-+{
-+	struct mtk_scp *scp = dev_get_drvdata(dev);
-+	struct rproc *rproc = scp->rproc;
-+
-+	if (rproc->state == RPROC_RUNNING)
-+		return clk_prepare(scp->clk);
-+	return 0;
-+}
-+#endif
-+
-+static const struct dev_pm_ops scp_pm_ops = {
-+	SET_SYSTEM_SLEEP_PM_OPS(scp_suspend, scp_resume)
-+};
-+
- static struct platform_driver mtk_scp_driver = {
- 	.probe = scp_probe,
- 	.remove = scp_remove,
- 	.driver = {
- 		.name = "mtk-scp",
- 		.of_match_table = mtk_scp_of_match,
-+		.pm = &scp_pm_ops,
- 	},
- };
+ 	if ((flags & DEQUEUE_SLEEP) && p) {
+ 		unsigned int state;
  
 -- 
-2.53.0.rc2.204.g2597b5adb4-goog
+2.43.0
 
 
