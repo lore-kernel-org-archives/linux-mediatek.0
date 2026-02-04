@@ -4,78 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69FC5E9538D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Feb 2026 12:00:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A25EE9D3E1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Feb 2026 14:35:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aqNMzU1Qw+T1MRI2oqS9RMu5Na9ZwPrUfIxVrukiy8k=; b=bMQW1HIqOmAs322IM8VYaSQqSC
-	vkoZhQqc34pfXogyztH5+iWBO7pdtWTZkZj/yh7Av2uuGR4XQFBDlikhUBwjwnsbC/f+k+6p54N7f
-	Sw66ZrUyNk+TWeumhWmr+UY7gxlLBtLmKxt4Ks53AqeUDHLuzMIVUq+1oSEw4gK9U2Ooc1x8lqTzp
-	K5lhXwRAFv/962khja0bKg5ALePwKS7Wx+l8se4HYfkg+mjPm72OfJ/vXGMVEeCz3w4GtwfP/S8zl
-	n2TcBHDCu+o2p/X1YUnxlCqfjsYz7rIsUjP/J3x75PUgdIxqnpJwqs/ARflxGZWWYXmuie4NO8GQn
-	Ov40da1A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qs8kXAX9DSECmo0hIsKWGPWeQx+EzOKrLeqIOYIIodk=; b=s+Yr4pvP7lYxN8LSjPIoraPGg9
+	cJ2yatS2gAlMzn7QvRIrBr3D7DygZ/2mdt67BWaVQl4SsTIFQs1sJD6Al2KXNz9kumzAxxZ0aNHyK
+	bibI7NCmQIdpIaME7MRQ5KdM/qV9oOknjqy6Lou6ltgfoanilnrSwz5ulVe9ePayfYTTLc6hUJTTQ
+	n1WD5k732O8UJAz8RjtnBsXdlU0UzJCfPaCGhwmv/UxESRKhSBiMxmo3YJ8TuN5g25MXQYWX394Jf
+	vxB+gsvjHyWows7z3YMXZ5JtOcGZjlozzYZtJ5sS7o/3W7Kpn8hxbd7EWcjr9+H94yexe8hYpDPDv
+	krR1E9OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnbYZ-00000008OqN-1K2U;
-	Wed, 04 Feb 2026 12:00:27 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1vndyq-00000008bAX-3bfC;
+	Wed, 04 Feb 2026 14:35:44 +0000
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnbYW-00000008Opk-0hSQ;
-	Wed, 04 Feb 2026 12:00:25 +0000
-X-UUID: 1283c2ba01c111f1a16f0188aa809bee-20260204
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=aqNMzU1Qw+T1MRI2oqS9RMu5Na9ZwPrUfIxVrukiy8k=;
-	b=OU6ZtDEKYYAo7KV4BW5z4hplCHYaTL24iCpf9Cc9TJAxDsiZTb6j8jc6i3XQCvB6bp5nqxpPCRB7vwMT9r7sS7ady7MvIw2rllaU7LHjggfFXdcIP+AHYOobfY0ktDmNRP1QpYx1ESa0b8425uBfF5ti/P5h4NwPxApxrvP1idU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:a2d0e2ab-2c29-4649-a0eb-e49669aeac68,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:1,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:1
-X-CID-META: VersionHash:89c9d04,CLOUDID:063fec5a-a957-4259-bcca-d3af718d7034,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
-	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 1283c2ba01c111f1a16f0188aa809bee-20260204
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <dengjun.su@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1257625685; Wed, 04 Feb 2026 05:00:17 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 4 Feb 2026 20:00:14 +0800
-Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 4 Feb 2026 20:00:14 +0800
-From: Dengjun Su <dengjun.su@mediatek.com>
-To: <linux-kernel@vger.kernel.org>, Peter Zijlstra <peterz@infradead.org>
-CC: <dengjun.su@mediatek.com>, <mike.zhang@mediatek.com>,
-	<haiqiang.gong@mediatek.com>, <peijun.huang@mediatek.com>, Ingo Molnar
-	<mingo@redhat.com>, Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot
-	<vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, Mel
- Gorman <mgorman@suse.de>, Valentin Schneider <vschneid@redhat.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 RESEND] sched: fix incorrect schedstats for rt and dl thread
-Date: Wed, 4 Feb 2026 19:59:29 +0800
-Message-ID: <20260204115959.3183567-1-dengjun.su@mediatek.com>
-X-Mailer: git-send-email 2.43.0
+	id 1vndyl-00000008b9i-3EHU
+	for linux-mediatek@lists.infradead.org;
+	Wed, 04 Feb 2026 14:35:43 +0000
+Received: by mail-yx1-xb134.google.com with SMTP id 956f58d0204a3-649db2b6cdcso1166575d50.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Feb 2026 06:35:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1770215738; cv=none;
+        d=google.com; s=arc-20240605;
+        b=MsvdtH7CAvCa7eTZGtYJD33G6HdDcsDDwr81XqvI9nl19hC74WPekL6BJaXI6mFX5p
+         eS3sCrWFoiCzKJq6gdlBcJb8aFcBt9UClKgrRH3CKwKigeR1rMLic7j+UdapKwdnpgjQ
+         j5wGc14YzxMzpJh8tsA1rf9HMlMTxR1sAd/K8nMeW2+UtB97AG/0wMu3FLBXJ+SrGxBX
+         keEPHLiVtrHhuuTlMg01hQJN/fkjDOGMCS//aJVg71VwYwZ02brQ7ryV9NX4QynX5K6I
+         1RmzhN2jWPmEvZVQ3ngpneiqbhjSrglemri9KTh/3IlSpKnznDW0eUQl6M72HU78Zaf2
+         0sDg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=qs8kXAX9DSECmo0hIsKWGPWeQx+EzOKrLeqIOYIIodk=;
+        fh=0edjjVS2ZQlyLyUJKOYCXYmHfmLFOpvn/XGZ9j9TN68=;
+        b=ju02r+exjNyxpej+G8dmyp3SfVwytjTaFi5LK8LcCNMRZ17zL5GL1uG6ZhVG849Pta
+         60ze/R6whx7r2xvx+E8gciEe9yMRrEwyAnX2DbYt9TvABX12d8rurZxnockrF4Rmii/l
+         q39fidiRG2aIQ4QJ/EOiZAviA1GYWdkRsRTGN2/l+QraGAu3fWT07TBN/v/QKkPmEIvZ
+         2ZBANKyU6oq9i6XPsN5q5DkzmwezTNQCqZ6IqVI65JrvDhwXP2E5qkwufp7nZw9ZYpgP
+         nr5gMUdDc1+bTgpmn+emQ/ZaDdOpusWK537x/oTyX2YN4kaEhBAAng5geZ7MexsOsSQi
+         Gncw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1770215738; x=1770820538; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=qs8kXAX9DSECmo0hIsKWGPWeQx+EzOKrLeqIOYIIodk=;
+        b=cy36cYUMRUf1ecS4DWP3FeSm9OGPvgtbIE3bHeXr4mILQV2ix+dU10i1gCCM9l8IbB
+         lEq2Tl826yMKuXd8InQQ1hMUaVf6yj48rYv1nDx93bYUymqfwR3zkdaIdSqmLj1n+mgF
+         WKthG1xOs3OWi0LmfUX+FTjVj3eDnQuj/scJpZlBDqocekAKXEy46eYblccSL8N0Arwe
+         K693/MLPp7ol/HxmZBHHzauXpxjqF9X/cHK2yodhtm0XL2y/WUmoUHfNILeq2qeY5w4P
+         NgLV8YqcK6v53WXcy5CN//cEqM120c/CPNaXbX4xf9sYI8ZdvGQM1VzwQaVCubW5qyFu
+         9NzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1770215738; x=1770820538;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qs8kXAX9DSECmo0hIsKWGPWeQx+EzOKrLeqIOYIIodk=;
+        b=obt9Qu5WXwp63Y1FbiV8+ZRL+ZvF5ALm4BdKJzDlXbdoWAIqLxYyBI3QAc1jKRxrgP
+         hwb6iSjUa8cZsOiKVwrVxrkPSQFt+phClCiUBJ12sOQFjldoElhyb0tzHQOgK7HH9vBT
+         VszEBR6hGjixonZMlgscJsQuyDo9QLuk6Oi3gbTyO19r3IqfKR6RM9Y8NLdo8MJKlMY/
+         3cqrMFDuZFpnpk25v8BmvSrquffSCKBcN027EKQG3ZOW5ell/L8GGnFbCr4d93g0e6QR
+         OB7C1XsGODNdsv5ZfuJD/QCRe78N/Qtci3CuGewOZ7VJwMkkQLsBeoeL+G627niNp85S
+         3POA==
+X-Forwarded-Encrypted: i=1; AJvYcCW/o3w1Xkp8zs5Hae9vTLGZt+BYK15051NST+Ft9RL4Njw8iGJBJtWWGxSla1awSVv8fC4yKtt1sNnH9IasJQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyAWnkNsi+Lh9LLf34WBBd2CgUJqQUK4oWOCPK3QcWd6uPAwp9I
+	jzNkXEVBMC13qNVPVSsqnDQi2k4oJQQlQM2XsHc0UFdAd6+DqwF7oYFMupyZvtTKriXXzeR24rR
+	Zq7OSHkQalem0Iq7hqwwR/BSHDfz4a2ohvbtXQgE7Uw==
+X-Gm-Gg: AZuq6aKYp4eOwqsjytjyY2ea/IUR+/dX1KW9uJpskS8cTd3qjukN5RANMHdgtcgfLCy
+	4txcMhY0BTVH8dryHSA3ttjbNePHsv7R0UJAMRjCBrb8M7eyJ7XmYnHgWl7dKr/f4tjqLHon8cN
+	9ScQo+kKHBGGV4CrUCujc7zfJHuPASAb2bUB8GHr2Dj2HxyJ4ojI9mN9sJ9eeEVGjLEwV8BPEg9
+	a1oRs0A1GEbKwuuw8NVRNW47h731Aa1wibsgcjgJPdncncYAv3QZgiy+fjH+gT7lCiOIEKko06/
+	18IG+jE=
+X-Received: by 2002:a53:c0d0:0:b0:649:d4ce:243f with SMTP id
+ 956f58d0204a3-649db33fb9cmr2174177d50.3.1770215738543; Wed, 04 Feb 2026
+ 06:35:38 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20260204020709.24604-1-ot_cathy.xu@mediatek.com>
+In-Reply-To: <20260204020709.24604-1-ot_cathy.xu@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Wed, 4 Feb 2026 15:35:00 +0100
+X-Gm-Features: AZwV_QjKyxhBAxAWnQN3ZmPtmDSh2TTxzwvjZf3Uhrpoyqis27NsaHph3OPTLhw
+Message-ID: <CAPDyKFrGgf1+vYVA6S1SJTZ8+n9WJo91e1VWeWq8p3RNHz1qtw@mail.gmail.com>
+Subject: Re: [PATCH] mmc: mtk-sd: disable new_tx/rx and modify related
+ settings for mt8189
+To: Cathy Xu <ot_cathy.xu@mediatek.com>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mmc@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Mengqi Zhang <Mengqi.Zhang@mediatek.com>, 
+	Wenbin Mei <Wenbin.Mei@mediatek.com>, Andy-ld Lu <Andy-ld.Lu@mediatek.com>, 
+	Yong Mao <yong.mao@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260204_040024_216944_9DC2E720 
-X-CRM114-Status: GOOD (  17.88  )
+X-CRM114-CacheID: sfid-20260204_063541_783777_FE9064BE 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,98 +119,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For RT and DL thread, only 'set_next_task_(rt/dl)' will call
-'update_stats_wait_end_(rt/dl)' to update schedstats information.
-However, during the migration process,
-'update_stats_wait_start_(rt/dl)' will be called twice, which
-will cause the values of wait_max and wait_sum to be incorrect.
-The specific output as follows:
-$ cat /proc/6046/task/6046/sched | grep wait
-wait_start                                   :             0.000000
-wait_max                                     :        496717.080029
-wait_sum                                     :       7921540.776553
+On Wed, 4 Feb 2026 at 03:09, Cathy Xu <ot_cathy.xu@mediatek.com> wrote:
+>
+> Disable new_tx/rx and modify related settings helps avoid data
+> transmission instability, and better compatibility for mt8189.
+>
+> Signed-off-by: Cathy Xu <ot_cathy.xu@mediatek.com>
 
-A complete schedstats information update flow of migrate should be
-__update_stats_wait_start() [enter queue A, stage 1] ->
-__update_stats_wait_end()   [leave queue A, stage 2] ->
-__update_stats_wait_start() [enter queue B, stage 3] ->
-__update_stats_wait_end()   [start running on queue B, stage 4]
+Should this have a fixes/stable tag?
 
-    Stage 1: prev_wait_start is 0, and in the end, wait_start records the
-    time of entering the queue.
-    Stage 2: task_on_rq_migrating(p) is true, and wait_start is updated to
-    the waiting time on queue A.
-    Stage 3: prev_wait_start is the waiting time on queue A, wait_start is
-    the time of entering queue B, and wait_start is expected to be greater
-    than prev_wait_start. Under this condition, wait_start is updated to
-    (the moment of entering queue B) - (the waiting time on queue A).
-    Stage 4: the final wait time = (time when starting to run on queue B)
-    - (time of entering queue B) + (waiting time on queue A) = waiting
-    time on queue B + waiting time on queue A.
+Kind regards
+Uffe
 
-The current problem is that stage 2 does not call __update_stats_wait_end
-to update wait_start, which causes the final computed wait time = waiting
-time on queue B + the moment of entering queue A, leading to incorrect
-wait_max and wait_sum.
-
-Add 'update_stats_wait_end_(rt/dl)' in 'update_stats_dequeue_(rt/dl)' to
-update schedstats information when dequeue_task.
-
-Signed-off-by: Dengjun Su <dengjun.su@mediatek.com>
----
-v2: changes according to Peter's suggestions
-    1. add fix for dl class;
-    2. add more commit message to explain the reasons for the
-       modifications.
----
- kernel/sched/deadline.c | 4 ++++
- kernel/sched/rt.c       | 7 ++++++-
- 2 files changed, 10 insertions(+), 1 deletion(-)
-
-diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
-index 319439fe1870..610243a56bf8 100644
---- a/kernel/sched/deadline.c
-+++ b/kernel/sched/deadline.c
-@@ -2115,10 +2115,14 @@ update_stats_dequeue_dl(struct dl_rq *dl_rq, struct sched_dl_entity *dl_se,
- 			int flags)
- {
- 	struct task_struct *p = dl_task_of(dl_se);
-+	struct rq *rq = rq_of_dl_rq(dl_rq);
- 
- 	if (!schedstat_enabled())
- 		return;
- 
-+	if (p != rq->curr)
-+		update_stats_wait_end_dl(dl_rq, dl_se);
-+
- 	if ((flags & DEQUEUE_SLEEP)) {
- 		unsigned int state;
- 
-diff --git a/kernel/sched/rt.c b/kernel/sched/rt.c
-index f1867fe8e5c5..12f2efddca9f 100644
---- a/kernel/sched/rt.c
-+++ b/kernel/sched/rt.c
-@@ -1302,13 +1302,18 @@ update_stats_dequeue_rt(struct rt_rq *rt_rq, struct sched_rt_entity *rt_se,
- 			int flags)
- {
- 	struct task_struct *p = NULL;
-+	struct rq *rq = rq_of_rt_rq(rt_rq);
- 
- 	if (!schedstat_enabled())
- 		return;
- 
--	if (rt_entity_is_task(rt_se))
-+	if (rt_entity_is_task(rt_se)) {
- 		p = rt_task_of(rt_se);
- 
-+		if (p != rq->curr)
-+			update_stats_wait_end_rt(rt_rq, rt_se);
-+	}
-+
- 	if ((flags & DEQUEUE_SLEEP) && p) {
- 		unsigned int state;
- 
--- 
-2.43.0
-
+> ---
+>  drivers/mmc/host/mtk-sd.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 302ac8529c4f..b2680cc054bd 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -682,15 +682,15 @@ static const struct mtk_mmc_compatible mt8189_compat = {
+>         .needs_top_base = true,
+>         .pad_tune_reg = MSDC_PAD_TUNE0,
+>         .async_fifo = true,
+> -       .data_tune = true,
+> +       .data_tune = false,
+>         .busy_check = true,
+>         .stop_clk_fix = true,
+> -       .stop_dly_sel = 1,
+> -       .pop_en_cnt = 2,
+> +       .stop_dly_sel = 3,
+> +       .pop_en_cnt = 8,
+>         .enhance_rx = true,
+>         .support_64g = true,
+> -       .support_new_tx = true,
+> -       .support_new_rx = true,
+> +       .support_new_tx = false,
+> +       .support_new_rx = false,
+>         .support_spm_res_release = true,
+>  };
+>
+> --
+> 2.45.2
+>
 
