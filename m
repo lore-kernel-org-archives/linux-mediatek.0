@@ -4,69 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD9FCEC1EA6
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Feb 2026 11:47:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA65BEC1EAC
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Feb 2026 12:30:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AUNYtzLL0GMF68RWR6XVwRo9ouH4LPFhahq/dBMM37A=; b=HNKmK7ORZM8SB3d+uDfuPUDx0N
-	XSSvkJJF2edqqrudwm7A+OWkFzWYON7SKiOFixbuVgGiJrfngZBVRIYinizPXixQKS7nwiQriBIE3
-	iTyq1hgrLDx13WDkp7mpcbOtA2XBh6IFgZJZYlXHDl7Epf2Kjb27uAvo8E1fIyEDNIVSzKHONBOKx
-	mrPOGQ4qX6WiQj3JU5knkWyI3ztB8zHfj8f5dtRE0vqQkYpgL8AlqtWhBTBMOeXleXIfirxpEkE19
-	ZdoitIHI3DpxUnYdax+OOIJQimftc6JWf9erlHreD4LIb6Yn9188SY8ZuaF0nqtheP7+38SZwPt+d
-	IYIY939Q==;
+	bh=qSG0aRohbGb0tpwrwMSVLkygfswX+S8xga2s7G+y8zg=; b=y2AzBc1EILcGblsSuQcH9F/pe9
+	hFLaHCWU/29DOTVRtisjtgQmuv/33lXFnBDO94EAIG6QF0lMrimHV/w9FMhmbnotl9rJevX9yvQTB
+	qRYOzgtI+hUR7TjqOVpWHXCoJZx3IipB/M24C+Y2XIm+ZFd27KAonpestSWfksc2uPsASYwHAf8No
+	VJQRhqmCyn3svk2zdqk0QpOsZPhcqu+AyD2+7eYebSkAbrdVT/uAQCefSJyEiYij1mlOnJimbVSSu
+	wv+fcnBQ7A8Tt9Nux9m9QTEj3G01lcH20f17fXhDUuQ45xf8GgmJTvDQc+SkZeoNOHHp2na5L7U+b
+	7Aoh18/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnxpk-00000009qVI-1Wms;
-	Thu, 05 Feb 2026 11:47:40 +0000
+	id 1vnyVW-00000009sk0-01gi;
+	Thu, 05 Feb 2026 12:30:50 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnxph-00000009qUq-3VVu;
-	Thu, 05 Feb 2026 11:47:39 +0000
+	id 1vnyVS-00000009shu-24km;
+	Thu, 05 Feb 2026 12:30:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770292052;
-	bh=Ws6OzDQVrOxdD0jUIjuPKZPO9P+V9t/Y8YCXpYTlx3o=;
+	s=mail; t=1770294642;
+	bh=uND1ONUGdNhpoclQ5sqn36Q9nqz74LEUWRO+lp7PPWU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Mql04GFJR869FmjE8II2bQN1vOz0TJZ3gFVy8SLkasH1216LF4hvRO/wokQ6kfT+y
-	 tAMKmnMeP48ZNbfagP5T5B5FB8nBE16jaoyj/pxe9I0/+qvajfbmVy7FNZpdn1SsD/
-	 Eklo8uEXsMxyBYhnCOUqKIoEMFNUHLd62PK/iMHqYPXAIkEqt9GfTELjssvZB19nsK
-	 UOfEyjZzSn/IC6PSUAIswwAHGpFvfdOzCpmA47cm7UNx+H6ncth13hzZDNEkRtBKck
-	 Iqq8RuW2Ao34OywVNZAIC1T+zUPGOjfqtewgxqoLpMTYSUqOh7dMMW/UCWOn2F9Nm1
-	 ferjkv0gmPq3w==
+	b=O6WJ1OH9sjuOjCUfTuTUHRKgw7hpjfNMDr4o8IJD8FHKeyWqDlRaR/gFdzwws6JOP
+	 TbsXvDxkjKTNqQCawECwYmWneKx5qp9WMK5AMwSBSPuQAnHAld6hT2sB7kdKGUBfLl
+	 Mmfnn+NFNI7XSr4DzD+kCTeIAPDVLnnzoMsFzlPIH+JG4K4tp0ACpuQ6QHFfVzoUth
+	 PofobZYSsBh2iT2tLdjJnYjypp3Ttl6ddtj6jq4IkDG76o9Vd3yyBNREnCtPMvcMak
+	 6ZClfSyQbq7rYGVkBoUmwITNo5A05UevRspsaAnca0YSqxUauIkiPhuuSUpxSJ2eBD
+	 nV+wtHyPasPLg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5546217E06C3;
-	Thu,  5 Feb 2026 12:47:32 +0100 (CET)
-Message-ID: <33719d8d-af95-49ae-bc5e-247784529d12@collabora.com>
-Date: Thu, 5 Feb 2026 12:47:31 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7FC0917E0017;
+	Thu,  5 Feb 2026 13:30:42 +0100 (CET)
+Message-ID: <a880d5d9-348e-4777-ae7f-69bdf7794e58@collabora.com>
+Date: Thu, 5 Feb 2026 13:30:42 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] mmc: mtk-sd: disable new_tx/rx and modify related
- settings for mt8189
-To: Cathy Xu <ot_cathy.xu@mediatek.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Mengqi Zhang <Mengqi.Zhang@mediatek.com>,
- Wenbin Mei <Wenbin.Mei@mediatek.com>, Andy-ld Lu <Andy-ld.Lu@mediatek.com>,
- Yong Mao <yong.mao@mediatek.com>
-References: <20260204020709.24604-1-ot_cathy.xu@mediatek.com>
+Subject: Re: [PATCH] remoteproc: mediatek: Unprepare SCP clock during system
+ suspend
+To: Tzung-Bi Shih <tzungbi@kernel.org>, Bjorn Andersson
+ <andersson@kernel.org>, Mathieu Poirier <mathieu.poirier@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, linux-remoteproc@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260204085442.1822123-1-tzungbi@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260204020709.24604-1-ot_cathy.xu@mediatek.com>
+In-Reply-To: <20260204085442.1822123-1-tzungbi@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260205_034738_055546_53DAD687 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20260205_043046_717714_FA03D4F7 
+X-CRM114-Status: GOOD (  27.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,45 +77,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/02/26 03:06, Cathy Xu ha scritto:
-> Disable new_tx/rx and modify related settings helps avoid data
-> transmission instability, and better compatibility for mt8189.
+Il 04/02/26 09:54, Tzung-Bi Shih ha scritto:
+> Prior to commit d935187cfb27 ("remoteproc: mediatek: Break lock
+> dependency to prepare_lock"), `scp->clk` was prepared and enabled only
+> when it needs to communicate with the SCP.  The commit d935187cfb27
+> moved the prepare operation to remoteproc's prepare(), keeping the clock
+> prepared as long as the SCP is running.
 > 
-> Signed-off-by: Cathy Xu <ot_cathy.xu@mediatek.com>
+> The power consumption due to the prolonged clock preparation can be
+> negligible when the system is running, as SCP is designed to be a very
+> power efficient processor.
+> 
+> However, the clock remains prepared even when the system enters system
+> suspend.  This prevents the underlying clock controller (and potentially
+> the parent PLLs) from shutting down, which increases power consumption
+> and may block the system from entering deep sleep states.
+> 
+> Add suspend and resume callbacks.  Unprepare the clock in suspend() if
+> it was active and re-prepare it in resume() to ensure the clock is
+> properly disabled during system suspend, while maintaining the "always
+> prepared" semantics while the system is active.
+> 
+> Fixes: d935187cfb27 ("remoteproc: mediatek: Break lock dependency to prepare_lock")
+> Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
 
-Needs a fixes tag. Please add the relevant one and resend.
+Would be great if you could mention that in this driver, at the moment of writing,
+there is no .attach() callback, hence rproc->state can never be RPROC_ATTACHED (as
+in case that would also leave the clock prepared).
 
-Thanks,
-Angelo
+In any case, even though I don't exactly *love* how this is actually done, I don't
+really have any better option.
+
+But....
 
 > ---
->   drivers/mmc/host/mtk-sd.c | 10 +++++-----
->   1 file changed, 5 insertions(+), 5 deletions(-)
+>   drivers/remoteproc/mtk_scp.c | 28 ++++++++++++++++++++++++++++
+>   1 file changed, 28 insertions(+)
 > 
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 302ac8529c4f..b2680cc054bd 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -682,15 +682,15 @@ static const struct mtk_mmc_compatible mt8189_compat = {
->   	.needs_top_base = true,
->   	.pad_tune_reg = MSDC_PAD_TUNE0,
->   	.async_fifo = true,
-> -	.data_tune = true,
-> +	.data_tune = false,
->   	.busy_check = true,
->   	.stop_clk_fix = true,
-> -	.stop_dly_sel = 1,
-> -	.pop_en_cnt = 2,
-> +	.stop_dly_sel = 3,
-> +	.pop_en_cnt = 8,
->   	.enhance_rx = true,
->   	.support_64g = true,
-> -	.support_new_tx = true,
-> -	.support_new_rx = true,
-> +	.support_new_tx = false,
-> +	.support_new_rx = false,
->   	.support_spm_res_release = true,
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index 4651311aeb07..6200c687e232 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -1592,12 +1592,40 @@ static const struct of_device_id mtk_scp_of_match[] = {
+>   };
+>   MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
+>   
+> +#ifdef CONFIG_PM_SLEEP
+
+...you don't need this ifdef as when CONFIG_PM_SLEEP is not set the macro
+SET_SYSTEM_SLEEP_PM_OPS is stubbed out (check pm.h).
+
+After removing the ifdef, there'll be something to change, specifically:
+
+> +static int scp_suspend(struct device *dev)
+
+static int __maybe_unused scp_suspend(struct device *dev)
+{
+
+> +{
+> +	struct mtk_scp *scp = dev_get_drvdata(dev);
+> +	struct rproc *rproc = scp->rproc;
+> +
+> +	/* Only unprepare if the SCP is running and holding the clock */
+> +	if (rproc->state == RPROC_RUNNING)
+> +		clk_unprepare(scp->clk);
+> +	return 0;
+> +}
+> +
+> +static int scp_resume(struct device *dev)
+
+static int __maybe_unused scp_resume(struct device *dev)
+{
+
+After which,
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Cheers,
+Angelo
+
+> +{
+> +	struct mtk_scp *scp = dev_get_drvdata(dev);
+> +	struct rproc *rproc = scp->rproc;
+> +
+> +	if (rproc->state == RPROC_RUNNING)
+> +		return clk_prepare(scp->clk);
+> +	return 0;
+> +}
+> +#endif
+> +
+> +static const struct dev_pm_ops scp_pm_ops = {
+> +	SET_SYSTEM_SLEEP_PM_OPS(scp_suspend, scp_resume)
+> +};
+> +
+>   static struct platform_driver mtk_scp_driver = {
+>   	.probe = scp_probe,
+>   	.remove = scp_remove,
+>   	.driver = {
+>   		.name = "mtk-scp",
+>   		.of_match_table = mtk_scp_of_match,
+> +		.pm = &scp_pm_ops,
+>   	},
 >   };
 >   
+
 
 
