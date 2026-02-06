@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21DBDEE20A6
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Feb 2026 14:05:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88FC6EE20A6
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Feb 2026 14:10:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=D7VRj+v7qEc06M4Xk9DWJiXeX8foMwNN9cX3WL7kVL4=; b=WO+bXbO8yhz5sQ6r2a5HaS5WVy
-	m/RTUw9WYzstvc7hqOYLisUsEyDnvWRsQzGEMXfLFjZA/8d1gm8S7vnq5q2X2Xlzf+66AW2ia9u/2
-	6q6yIkEh8y3lyiSUfT75PHFmYbIsw/o/4gLqI7wjWSlQCHDbh0u7yp+UaBX2CXoULXCtu3gkPmGE1
-	hCmDvPjgSmAHTxjJ92Vm2/qoYiAaEG08TLaKJ8+7fKLdXC7tGDQoHqiYrnzRdQTRGcPmxBWwAPMLz
-	loRmn5JDATjmldSA2SKlmMLYH/7b1d/jyIdr7oyEy8ILNZdDnTFks2o+CVXfdxvBjLa4vRLmCvCI8
-	mAJIk8iQ==;
+	bh=Peb4bRvkuJSgns1XA6+qJKAdVywZBsdpUaY2vtFtMTE=; b=JK8LdADUt4jfzXs8HkaCXhoQYY
+	0x73/glOMONBYDGY7G1h8Hz4OLhQieadllL0fuXE+jwtm0TEvbS0Vg3lBM7prQ/v9l6hWb5QJ4bnm
+	vClUs3E3zc46v5qRM7lazwwxDvY9Ugac2IB0ypnOeLBunabamyQPmpFpvCdfNVejd6Vb/ML+H+jqg
+	d4gTeWEUrvxGvIJsM77n9FJPfbm3wBODICQ7tySyG2zC0e+zPU+XB2AHYuyuXB2T/oTN+qN48cySe
+	EumSY94ca1x6twIjXQ8dJ+KFsS9d6QsBIzJkFZ+ytv4A+iTr2cjOZN7HytGLLs4U/n9amKvALsgeS
+	oOzIE/Fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voMSj-0000000BPTQ-3IY8;
-	Fri, 06 Feb 2026 14:05:33 +0000
-Received: from sender4-pp-g120.zoho.com ([136.143.188.120])
+	id 1voMXv-0000000BPyT-17qe;
+	Fri, 06 Feb 2026 14:10:55 +0000
+Received: from sender4-pp-g122.zoho.com ([136.143.188.122])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voMSd-0000000BPRi-2mHy;
-	Fri, 06 Feb 2026 14:05:31 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1770386715; cv=none; 
+	id 1voMXs-0000000BPy4-1JtG;
+	Fri, 06 Feb 2026 14:10:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1770387040; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=H1SP3ZWZy2n98oO2VRMxJGvKxvpA1VEp5Apb33GV/zAYu2rb5ydXgKTDBQ1nfEb0ay8KXRn2ntPixct3OenOr69IgpxflVP8EfC9ikjC/xQ0HicpRrxXyvodS66fM8sIwAP5i1/bIBHcwrolRrSg0U6ljAd1FyG9gd0LwPBEUiI=
+	b=BMjN2G2e1K3gWDVCQGaE3haovIpIcRG4WDTXC+xBYm5AQWe1i0dr+bXGNXfUL93eHKpOHGDL3LXA6iGOf8EUTc1+UcI927DTEHVjK2EH9q3FSPYFXo5lWJTcIpw4ExRyJSB8nz9xK7dLOP9dQfQlve6ElDl87SwCCIWELB6lbRA=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1770386715; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=D7VRj+v7qEc06M4Xk9DWJiXeX8foMwNN9cX3WL7kVL4=; 
-	b=nL/TljZpqzFHkcaqPnRJAemc20d3H7DJVZPgCCQXsisSIUPSt9PQq3/4GIfKI+uDsFqdBaOHUW9Rr2fuXIgax+0ZWir7N5a/YYw1wkwqV4xstHKSGRQpV7LVAYiQ7WVw8D+pbvX4sbmlPZotqgjn7JZ+4gRCLnjSwMEv/2NKHpg=
+	t=1770387040; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Peb4bRvkuJSgns1XA6+qJKAdVywZBsdpUaY2vtFtMTE=; 
+	b=MpE/8s0ryy6kBrOXVXzuPdhFQh0xeZF8KdXoWA8tbpSyZT8AEPQ7xBIcEO0vD/+qw5qV+A0DYQY7/1XIor14jKmmffgdFyckG/kYOKVHhFQIM0drGwdJMpiKxkGuVnIWkYgyix32N6V9oy1IJtHNbY2/TtJa+t1wh7CKrwVX5eo=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
 	dmarc=pass header.from=<nfraprado@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1770386715;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1770387039;
 	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
 	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=D7VRj+v7qEc06M4Xk9DWJiXeX8foMwNN9cX3WL7kVL4=;
-	b=R3hWU0ey2b0XSdkkpcpslzY1kZSDT7TRQY2KMG+As2U7PZh3BKjqjbKvm0JXYHnI
-	14L+DnBIZ6MEwy+gfQ3UiP7GCkJQU7Wh7TLZRiCySCZQtWldcRw3DJjlNap6XTZikN0
-	gQZFuy1mF2Cjp71QPhmO/V/ilJKjb2E1kc8DDUsA=
-Received: by mx.zohomail.com with SMTPS id 1770386713473881.7041592011303;
-	Fri, 6 Feb 2026 06:05:13 -0800 (PST)
-Message-ID: <2fc9635430e6af0c175d6d019b7cd1598034892c.camel@collabora.com>
-Subject: Re: [PATCH 09/11] drm/colorop: Introduce 3x3 Matrix
+	bh=Peb4bRvkuJSgns1XA6+qJKAdVywZBsdpUaY2vtFtMTE=;
+	b=CkUovisgpBVCh8YQUPhbv5VBgS4fEwhK7I95wZ1LIIXAW5UEHW/tss1AqNgSnAQq
+	meFi6m7CQzmrWZpVf5qrp9IMYHJfZMnbGdi+vlJ40IDUMx3Y2AemCPkiHDjsc4+8MJg
+	OY66qtNZvH1E7MI9O0clQhV2fDHUO6psNvhbF1o4=
+Received: by mx.zohomail.com with SMTPS id 1770387038864755.1550395699519;
+	Fri, 6 Feb 2026 06:10:38 -0800 (PST)
+Message-ID: <b97e849eb0de3fc497f4473df142d39f3cb7c823.camel@collabora.com>
+Subject: Re: [PATCH 03/11] drm/mediatek: ovl: Add supports_plane_colorops
+ flag
 From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
-To: Pekka Paalanen <pekka.paalanen@collabora.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard	
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
-	 <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Chun-Kuang Hu	
- <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
- 	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, daniels@collabora.com, 
-	ariel.dalessandro@collabora.com, kernel@collabora.com
-Date: Fri, 06 Feb 2026 09:05:11 -0500
-In-Reply-To: <20260206112702.4afdbc48@eldfell>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann	 <tzimmermann@suse.de>, David
+ Airlie <airlied@gmail.com>, Simona Vetter	 <simona@ffwll.ch>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel	 <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	daniels@collabora.com, ariel.dalessandro@collabora.com, kernel@collabora.com
+Date: Fri, 06 Feb 2026 09:10:37 -0500
+In-Reply-To: <55bcc926-a090-4f4c-9325-6599761d10c6@collabora.com>
 References: <20251223-mtk-ovl-pre-blend-colorops-v1-0-0cb99bd0ab33@collabora.com>
-		<20251223-mtk-ovl-pre-blend-colorops-v1-9-0cb99bd0ab33@collabora.com>
-	 <20260206112702.4afdbc48@eldfell>
+	 <20251223-mtk-ovl-pre-blend-colorops-v1-3-0cb99bd0ab33@collabora.com>
+	 <55bcc926-a090-4f4c-9325-6599761d10c6@collabora.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.56.2-8 
 MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260206_060527_741415_9E0D1A36 
-X-CRM114-Status: GOOD (  24.89  )
+X-CRM114-CacheID: sfid-20260206_061052_501590_CA3AC968 
+X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,177 +86,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2026-02-06 at 11:27 +0200, Pekka Paalanen wrote:
-> On Tue, 23 Dec 2025 16:44:50 -0300
-> N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com> wrote:
->=20
-> > Introduce a 3x3 Matrix colorop analogous to the 3x4 Matrix colorop,
-> > with
-> > the difference of not supporting offset coefficients.
+On Fri, 2026-02-06 at 11:07 +0100, AngeloGioacchino Del Regno wrote:
+> Il 23/12/25 20:44, N=C3=ADcolas F. R. A. Prado ha scritto:
+> > Add a supports_plane_colorops flag to the driver data to allow SoCs
+> > that
+> > support per-plane color operations to enable support for it in the
+> > driver.
 > >=20
 > > Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-> > ---
-> > =C2=A0drivers/gpu/drm/drm_atomic.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=
-=A0 1 +
-> > =C2=A0drivers/gpu/drm/drm_atomic_uapi.c |=C2=A0 3 +++
-> > =C2=A0drivers/gpu/drm/drm_colorop.c=C2=A0=C2=A0=C2=A0=C2=A0 | 21 ++++++=
-+++++++++++++++
-> > =C2=A0include/drm/drm_colorop.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 |=C2=A0 3 +++
-> > =C2=A0include/uapi/drm/drm_mode.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=
- 16 ++++++++++++++++
-> > =C2=A05 files changed, 44 insertions(+)
-> >=20
-> > diff --git a/drivers/gpu/drm/drm_atomic.c
-> > b/drivers/gpu/drm/drm_atomic.c
-> > index 6d3ea8056b60..bf4a31c02b70 100644
-> > --- a/drivers/gpu/drm/drm_atomic.c
-> > +++ b/drivers/gpu/drm/drm_atomic.c
-> > @@ -802,6 +802,7 @@ static void
-> > drm_atomic_colorop_print_state(struct drm_printer *p,
-> > =C2=A0		drm_printf(p, "\tdata blob id=3D%d\n", state->data ?
-> > state->data->base.id : 0);
-> > =C2=A0		break;
-> > =C2=A0	case DRM_COLOROP_CTM_3X4:
-> > +	case DRM_COLOROP_CTM_3X3:
-> > =C2=A0		drm_printf(p, "\tdata blob id=3D%d\n", state->data ?
-> > state->data->base.id : 0);
-> > =C2=A0		break;
-> > =C2=A0	case DRM_COLOROP_MULTIPLIER:
-> > diff --git a/drivers/gpu/drm/drm_atomic_uapi.c
-> > b/drivers/gpu/drm/drm_atomic_uapi.c
-> > index 7320db4b8489..7a70e894a2ef 100644
-> > --- a/drivers/gpu/drm/drm_atomic_uapi.c
-> > +++ b/drivers/gpu/drm/drm_atomic_uapi.c
-> > @@ -709,6 +709,9 @@ static int
-> > drm_atomic_color_set_data_property(struct drm_colorop *colorop,
-> > =C2=A0		size =3D colorop->size * colorop->size * colorop-
-> > >size *
-> > =C2=A0		=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 sizeof(struct drm_color_lu=
-t32);
-> > =C2=A0		break;
-> > +	case DRM_COLOROP_CTM_3X3:
-> > +		size =3D sizeof(struct drm_color_ctm);
-> > +		break;
-> > =C2=A0	default:
-> > =C2=A0		/* should never get here */
-> > =C2=A0		return -EINVAL;
-> > diff --git a/drivers/gpu/drm/drm_colorop.c
-> > b/drivers/gpu/drm/drm_colorop.c
-> > index a19e03fb9c7c..51c1a0726dfa 100644
-> > --- a/drivers/gpu/drm/drm_colorop.c
-> > +++ b/drivers/gpu/drm/drm_colorop.c
-> > @@ -68,6 +68,7 @@ static const struct drm_prop_enum_list
-> > drm_colorop_type_enum_list[] =3D {
-> > =C2=A0	{ DRM_COLOROP_CTM_3X4, "3x4 Matrix"},
-> > =C2=A0	{ DRM_COLOROP_MULTIPLIER, "Multiplier"},
-> > =C2=A0	{ DRM_COLOROP_3D_LUT, "3D LUT"},
-> > +	{ DRM_COLOROP_CTM_3X3, "3x3 Matrix"},
-> > =C2=A0};
-> > =C2=A0
-> > =C2=A0static const char * const colorop_curve_1d_type_names[] =3D {
-> > @@ -377,6 +378,26 @@ int drm_plane_colorop_ctm_3x4_init(struct
-> > drm_device *dev, struct drm_colorop *c
-> > =C2=A0}
-> > =C2=A0EXPORT_SYMBOL(drm_plane_colorop_ctm_3x4_init);
-> > =C2=A0
-> > +int drm_plane_colorop_ctm_3x3_init(struct drm_device *dev, struct
-> > drm_colorop *colorop,
-> > +				=C2=A0=C2=A0 struct drm_plane *plane, const
-> > struct drm_colorop_funcs *funcs,
-> > +				=C2=A0=C2=A0 uint32_t flags)
-> > +{
-> > +	int ret;
-> > +
-> > +	ret =3D drm_plane_colorop_init(dev, colorop, plane, funcs,
-> > DRM_COLOROP_CTM_3X3, flags);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	ret =3D drm_colorop_create_data_prop(dev, colorop);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	drm_colorop_reset(colorop);
-> > +
-> > +	return 0;
-> > +}
-> > +EXPORT_SYMBOL(drm_plane_colorop_ctm_3x3_init);
-> > +
-> > =C2=A0/**
-> > =C2=A0 * drm_plane_colorop_mult_init - Initialize a
-> > DRM_COLOROP_MULTIPLIER
-> > =C2=A0 *
-> > diff --git a/include/drm/drm_colorop.h b/include/drm/drm_colorop.h
-> > index 8ec98521607d..ee7fa0eb5dbf 100644
-> > --- a/include/drm/drm_colorop.h
-> > +++ b/include/drm/drm_colorop.h
-> > @@ -426,6 +426,9 @@ int drm_plane_colorop_curve_1d_lut_init(struct
-> > drm_device *dev, struct drm_color
-> > =C2=A0int drm_plane_colorop_ctm_3x4_init(struct drm_device *dev, struct
-> > drm_colorop *colorop,
-> > =C2=A0				=C2=A0=C2=A0 struct drm_plane *plane, const
-> > struct drm_colorop_funcs *funcs,
-> > =C2=A0				=C2=A0=C2=A0 uint32_t flags);
-> > +int drm_plane_colorop_ctm_3x3_init(struct drm_device *dev, struct
-> > drm_colorop *colorop,
-> > +				=C2=A0=C2=A0 struct drm_plane *plane, const
-> > struct drm_colorop_funcs *funcs,
-> > +				=C2=A0=C2=A0 uint32_t flags);
-> > =C2=A0int drm_plane_colorop_mult_init(struct drm_device *dev, struct
-> > drm_colorop *colorop,
-> > =C2=A0				struct drm_plane *plane, const
-> > struct drm_colorop_funcs *funcs,
-> > =C2=A0				uint32_t flags);
-> > diff --git a/include/uapi/drm/drm_mode.h
-> > b/include/uapi/drm/drm_mode.h
-> > index cbbbfc1dfe2b..b894b19eb9f8 100644
-> > --- a/include/uapi/drm/drm_mode.h
-> > +++ b/include/uapi/drm/drm_mode.h
-> > @@ -964,6 +964,22 @@ enum drm_colorop_type {
-> > =C2=A0	 *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 color =3D lut=
-3d[index]
-> > =C2=A0	 */
-> > =C2=A0	DRM_COLOROP_3D_LUT,
-> > +
-> > +	/**
-> > +	 * @DRM_COLOROP_CTM_3X3:
-> > +	 *
-> > +	 * enum string "3x3 Matrix"
-> > +	 *
-> > +	 * A 3x3 matrix. Its values are specified via the
-> > +	 * &drm_color_ctm struct provided via the DATA property.
-> > +	 *
-> > +	 * The DATA blob is a float[9]:
-> > +	 * out=C2=A0=C2=A0 matrix=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 in
-> > +	 * | R |=C2=A0=C2=A0 | 0=C2=A0 1=C2=A0 2 |=C2=A0=C2=A0 | R |
-> > +	 * | G | =3D | 3=C2=A0 4=C2=A0 5 | x | G |
-> > +	 * | B |=C2=A0=C2=A0 | 6=C2=A0 7=C2=A0 8 |=C2=A0=C2=A0 | B |
-> > +	 */
-> > +	DRM_COLOROP_CTM_3X3,
-> > =C2=A0};
-> > =C2=A0
-> > =C2=A0/**
-> >=20
 >=20
-> Acked-by: Pekka Paalanen <pekka.paalanen@collabora.com>
+> You should merge this patch [03/11] with [05/11] - so that you
+> introduce the member
+> in the same commit where you use it.
 >=20
-> FWIW, the statement "The DATA blob is a float[9]" is incorrect, but
-> the
-> same wording exists already with the DRM_COLOROP_CTM_3X4. The data
-> type
-> is not a float, nor is it a float reinterpreted as __u64 (they are
-> not
-> even the same size). Documentation for the structs explains the
-> correct
-> type, which is a fixed-point number.
->=20
-> The struct types document also the layout, so there is no need to
-> repeat the layout here. It may be worth mentioning that the blob must
-> contain exactly one instance of the struct.
+> This patch is a one-liner and it's not doing anything complicated at
+> all :-)
 
-Makes sense, thanks! I'll fix that in v2.
+Sure, will do in v2 :).
 
 --=20
 Thanks,
