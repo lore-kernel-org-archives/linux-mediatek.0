@@ -4,75 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17F88EE20A8
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Feb 2026 14:13:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2BCBEE20A8
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Feb 2026 14:56:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xvam5HJNIvasJ/2nIByj8E9UTXU+JTYDZ6M6R68d/EY=; b=lugHXICwWLIhQI3FfzS08W1Azh
-	ySQ5BlKPu3JDTe9Ppg11Uz/vMD/Dig8m/9CtxfFDpCh2LSN4mpxdLH/ucJ547l1TP/K7MarUZEguC
-	QZqLJHI3vDA9YINBGtQ7jmEUaqGGgFBAYIYD4RWVGctdhuO2SCyP6KlzGPkTSy2ySLdqjX0YNZIXM
-	sgfa+PegQSCh+KRD9W3/ZQo0XgbgNT4PUBAPQLD22Q2jmMWwxH9mQdWu+TxJDawEN/Ggj9rV5fW9J
-	bsp61D1pZlo/PDiBG/S6je9DqBZgYvUlWdAoQtEGjCiyHLWGacwxqHNqg1WrnKpQysDHFKImmyruQ
-	FdMVuYYQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WaMSa8aNPT2Syrv1Z36gDQAmqymrmu0QQPmiXAsgue4=; b=dURzHOG36V4c+SA3cIdrfPuVb5
+	qBowJ00LdOP+U5uX7gWCyBYeMGTj9C6BJyIBv1Eek+eUMhbsASOdiHhRBY/sQ1DqKJ7fqlbmBKu1/
+	MNLIoca8DL6DvGREyW1T04cQABbxFj27tXcHoLPJUVOCyGCUvM+SPvIiyKVnT0XwSqq+XLWNAl64h
+	aIyN1TSa4mTTeqmVOyzv9eu1F5r02HucYfvRRf3es1qhPz18di04FWxDHlAHze6JEd9e3PmnxgavG
+	ZaetzQTC7tan3iRQallH4m9dDIJWjAfAL+Vm/z6LQhBEbNQbKIaci1zic1FxE2euH02WhQOf+8U8t
+	Sps4HIyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voMaj-0000000BQGC-1eyb;
-	Fri, 06 Feb 2026 14:13:49 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1voNFn-0000000BSiP-2OKQ;
+	Fri, 06 Feb 2026 14:56:15 +0000
+Received: from relay.yourmailgateway.de ([46.38.247.119])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voMag-0000000BQFP-3w8T;
-	Fri, 06 Feb 2026 14:13:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1770387214; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Gt+coUoet8QH0TDqiquTwhBLpKT89/Akykd/Qhjkz+jl4xNs7KMymHAUTG5im9Or4TqucZ2BmEn0njypAvlSnrU0vHer9kUO4mDd+YQvjAJ7xO9uQCQea4EUtbJmT4IS2Ig54a4+ca3NVm9fI/d3E+WQezSKM8A8Ja9lrkLGPzc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1770387214; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=xvam5HJNIvasJ/2nIByj8E9UTXU+JTYDZ6M6R68d/EY=; 
-	b=fUkZAKXTaUrhAz7q63XAWElVsPJYHqA+Hp0X7XdnlH632o2qI2OSov7SMd9nUGoF0PmMA/wqtpKjbE2HAkcHrxffcWcZnxTMpnzkxpOLwV7gSOSXYmcQQ4a3TWbPZxAXpOm04A0wG2pYjf3j0MTVCMGGFBFq3v0mEa0T0A0Y9vU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nfraprado@collabora.com;
-	dmarc=pass header.from=<nfraprado@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1770387214;
-	s=zohomail; d=collabora.com; i=nfraprado@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=xvam5HJNIvasJ/2nIByj8E9UTXU+JTYDZ6M6R68d/EY=;
-	b=f8S4RADjyViHt7femYhhlq9LTWkAFgUbqPBzyhXPNCt5x81+xJstzn2mZU0Dov8R
-	OWuvJTtRyW7N00h9PTXZOZkhVtCBeqk0nb56eVlWAo1aCoVPRqA1NeibY5I/GS5aafV
-	Kx0iTFB/RUyXh4pU5p/slXNB3oFcDjmaoP3h+Wnc=
-Received: by mx.zohomail.com with SMTPS id 1770387213516827.7987217683014;
-	Fri, 6 Feb 2026 06:13:33 -0800 (PST)
-Message-ID: <9849130a6c4da61bd7291f40a9a3d224d32ef08a.camel@collabora.com>
-Subject: Re: [PATCH 01/11] drm/mediatek: Introduce DDP plane_colorops_init()
- hook
-From: =?ISO-8859-1?Q?N=EDcolas?= "F. R. A. Prado" <nfraprado@collabora.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann	 <tzimmermann@suse.de>, David
- Airlie <airlied@gmail.com>, Simona Vetter	 <simona@ffwll.ch>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>, Philipp Zabel	 <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	daniels@collabora.com, ariel.dalessandro@collabora.com, kernel@collabora.com
-Date: Fri, 06 Feb 2026 09:13:31 -0500
-In-Reply-To: <8d043341-9099-47b2-a1fe-538502e40f99@collabora.com>
-References: <20251223-mtk-ovl-pre-blend-colorops-v1-0-0cb99bd0ab33@collabora.com>
-	 <20251223-mtk-ovl-pre-blend-colorops-v1-1-0cb99bd0ab33@collabora.com>
-	 <8d043341-9099-47b2-a1fe-538502e40f99@collabora.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2-8 
+	id 1voNFj-0000000BShK-0oec
+	for linux-mediatek@lists.infradead.org;
+	Fri, 06 Feb 2026 14:56:13 +0000
+Received: from mors-relay-8404.netcup.net (localhost [127.0.0.1])
+	by mors-relay-8404.netcup.net (Postfix) with ESMTPS id 4f6xwR5pSgz8BnF;
+	Fri,  6 Feb 2026 15:55:35 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
+	s=key2; t=1770389735;
+	bh=CKKrzvJzRBC0RVs1xQVpfARoLf7sngWbE8xevZ6p6uY=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cIqY4obMCio58JAfFJTP7A1Eetq3aQHdJ1NEo7YXrb2KN4AFPuYlqf6Ygqak8nsDD
+	 HrcJYqdqlpiDv2gDvn0LkewDh3XJ7GWGuzutL0xKH7CaRMCOctNueSTsLA0DeWmCbM
+	 eyVm6uv621G6SrsEuPAORrf1FDB3Cj56arbnnH2buYzMTkW6mBy/Ku6+Yt7QMCRxel
+	 zN2g/oEdUf6iW0DS/LPzkvz+JJ47HOt4FuRQaPOlr+LF3Oo8Vm39GTRUIPB1ojtYjh
+	 o0QC5XaO8B6qY8AsP7+XfV8W+fXfwj9odSVz+FZgGhOmopcQr9PgBPtNLryKNzI5Dy
+	 mWXvM1v4kCOiA==
+Received: from policy01-mors.netcup.net (unknown [46.38.225.35])
+	by mors-relay-8404.netcup.net (Postfix) with ESMTPS id 4f6xwR55WYz4x83;
+	Fri,  6 Feb 2026 15:55:35 +0100 (CET)
+X-Virus-Scanned: Debian amavisd-new at policy01-mors.netcup.net
+Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by policy01-mors.netcup.net (Postfix) with ESMTPS id 4f6xwQ1Qj0z8sbc;
+	Fri,  6 Feb 2026 15:55:34 +0100 (CET)
+Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
+	by mxe9fb.netcup.net (Postfix) with ESMTPSA id 54E1A6759F;
+	Fri,  6 Feb 2026 15:55:33 +0100 (CET)
+Authentication-Results: mxe9fb;
+        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
+Received-SPF: pass (mxe9fb: connection is authenticated)
+Message-ID: <df6fcd73-fe0a-42fc-97ce-7e458c340553@leemhuis.info>
+Date: Fri, 6 Feb 2026 15:55:31 +0100
 MIME-Version: 1.0
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Subject: Re: [REGRESSION] mt8183-kukui: dts: changes in dts caused display to
+ no longer initialize - Was: Re: mt8183-kukui: drm/mediatek: dts: Invalid
+ display hw pipeline when probing mediatek-drm
+To: Denis Gessert <denisgessert@gmail.com>,
+ "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>
+Cc: Evans Jahja <evansjahja13@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ regressions@lists.linux.dev, =?UTF-8?Q?Otto_Pfl=C3=BCger?=
+ <otto.pflueger@abscue.de>
+References: <CAFLVeg9hwH3PbKu5rPWZWqq6yz5mRRoB9oqxDkxNRdEDLGbVBw@mail.gmail.com>
+ <CAFLVeg_soeYV4tOYKMo6TMYOtuWWU4TFCjUTxUrVEyGcRwMz7A@mail.gmail.com>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+Content-Language: de-DE, en-US
+In-Reply-To: <CAFLVeg_soeYV4tOYKMo6TMYOtuWWU4TFCjUTxUrVEyGcRwMz7A@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-PPP-Message-ID: <177038973370.2546695.17362443736661889721@mxe9fb.netcup.net>
+X-Rspamd-Server: rspamd-worker-8404
+X-Rspamd-Queue-Id: 54E1A6759F
+X-NC-CID: YiiuFaE1FQhWjD/GcfomQ+rJ6LWwGExfn0Xfp7+mw1Ii/t9weHQ=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260206_061347_124448_1FD052AD 
-X-CRM114-Status: UNSURE (   8.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260206_065611_976432_699F9CB4 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,24 +99,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2026-02-06 at 11:07 +0100, AngeloGioacchino Del Regno wrote:
-> Il 23/12/25 20:44, N=C3=ADcolas F. R. A. Prado ha scritto:
-> > Introduce a plane_colorops_init() hook to allow DDP components to
-> > define
-> > how to initialize the color pipeline on their planes.
-> >=20
-> > Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
->=20
-> Just a nit for the commit description.
->=20
-> In preparation for adding support for per-plane color pipelines,
-> introduce a new
-> plane_colorops_init() hook to allow [...etc]
+On 2/6/26 12:33, Denis Gessert wrote:
+> 
+> I found this email chain while troubleshooting why my Levovo Duet
+> (with the MT8183 chip) would not boot using any 6.18.* kernel.
+> 
+> I can confirm that on my device the current stable 6.18.8 does not
+> boot unless I revert the commit
+> 
+> commit e72d63fa0563f8a6e98c10fed3a9ce74dc0536e6 (HEAD)
+> Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Date:   Thu Jul 24 10:39:08 2025 +0200
+> 
+>     arm64: dts: mediatek: mt8183: Migrate to display controller OF graph
+> 
+> mentioned below. With the reverted commit the device boots as intended.
 
-Will do in v2!
+There is a fix for it from Otto here that I guess should help
+https://lore.kernel.org/lkml/20260106-mt8183-display-graph-v2-1-e7e56054eef5@abscue.de/
 
---=20
-Thanks,
+Side note: lacks a stable tag and maybe should have been merged this
+cycle instead of the next. But given that 6.19 is immanent it might be
+good if this could be backported to 6.19.y once it landed in mainline.
 
-N=C3=ADcolas
+> PS: Apologies for the potential double-mail. 
+No worries, happens.
+
+Ciao, Thortsten
 
