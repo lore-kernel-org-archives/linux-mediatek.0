@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0F86ECD9BE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Feb 2026 03:32:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6036ECD9BF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Feb 2026 03:36:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uyZY47xyw0FpO/vvb+kG3CYBhV/+d4RzYVY6puc0EvE=; b=GCbtwxE92V0i2mpp7X0E5fTAv8
-	720bprcWrJqoiFjzufu7l68H2oTQ1SCpJgfLtu1Z+MdveV7rvK+zOnrNFpcAJ5YBAvPOi2WQhxSwJ
-	X2sD+4fZBHo6PeUO9S3GSiJyNdacFoU/lOpHaijQIXeHvaZsEPdUNt9bFWLZFAWrrtbjw30LjE/Jm
-	P7eIQr8eBel9OWDX/1Iz6GZz2xGTxtw0miWqaz+fPKWwN60EAsPzUrilywSjeWZDC+tSzQzQQzXAT
-	2hrlf1q/5IOIou9KLB59XKJ14aHXaADpvm7Y4hrO2dkw5OzCnBSOeQ3Ff7PmHwXj1WI59YjMLQcua
-	tUzVHgGA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Q9PMDCR5M61UjnLo8qS3MJxI0E0obebtYNPar4LQ1dU=; b=GuRRhTf4FZSUwokSBlLrLW1z6h
+	uJJ8DnZCBGQkgmTr6qunw8OleuxnzriiFKYFTgkI08DaorJIIzcl1e9nhbeYpRGSM4b9U1IzA1t7w
+	5fSxIv4uUPrO9OeOe4xkVsBVnfI+/7Gck5La3etexDReAt8OJeEZiEsQspgoJ/AbNfiLNFqLHQ7+G
+	BfIIPW+W0HyemNtgL82e3PUz5dDDFL5e6CKsWhJWKnMwbfIH9qxmTj0MAB8Ux2/RxlpJFVUf5m6Us
+	OpTwixZhKO7hABfbFPitdPaKhHvvV30cQUVnNMnl9AOZmbyjFEUxiZRmKIxSkQ664YL61Oge7oqnn
+	6UfSMbmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voCZa-0000000Ao9Z-3tf4;
-	Fri, 06 Feb 2026 03:31:58 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1voCdx-0000000AoTp-2nvG;
+	Fri, 06 Feb 2026 03:36:29 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voCZE-0000000Ao82-2pQG;
-	Fri, 06 Feb 2026 03:31:57 +0000
+	id 1voCdv-0000000AoTM-2quC;
+	Fri, 06 Feb 2026 03:36:27 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 883F244357;
-	Fri,  6 Feb 2026 03:31:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06F58C4CEF7;
-	Fri,  6 Feb 2026 03:31:32 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B121B6001A;
+	Fri,  6 Feb 2026 03:36:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1939BC4CEF7;
+	Fri,  6 Feb 2026 03:36:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770348694;
-	bh=hVVbQbgdE25lF5ghgQPEsPcAOupRTNJtJ71dyf69LX0=;
-	h=From:To:Cc:Subject:Date:From;
-	b=odiN74dKqEcp90TApVdIFSTI2p/6fRoWtJB69yufrp0J9K/aT96NG11Z+MUW3D/Sq
-	 WPNqJiPKjte1J4jDxPdJeai3a1lahk+l0YtKlZoMP8tRgYOYJEiR9oCFxn8EKsE84Y
-	 687yVUmGZUapGZKzg5O82Z98Er1vZzo1QvhQXXi7gsf7bSOWCnmWFhYVQqLn2m1cPv
-	 Tnf3HGE0T/vN7zX+soxLC9sRHrKKisREpv80XTnP0Srbxyh8i52+fKKsK0Q2QEOdPO
-	 6bAtDiLddpi5y2M25DKSagHAcibJhA66OwTC6yTP/dgytZpLxIBhzmNT7rhNtWx4WM
-	 XRRr6DPdveEnw==
+	s=k20201202; t=1770348986;
+	bh=3MP4Io1FQNfw2qWLKxUuFzooJmPrZrW7egR2WNYgQyo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PcXWaXHnWXrMpP6QccpsnPpusgRX3HGIa99QmRQUCUv+oKnuQp+1HhS9WiqBG+rb8
+	 vUysoDmFr9SR+Fi11go0BDmC/XOByaUIyemB383sCfTC3d22nG2pfGv6W9VKeH7DLS
+	 QtKSzl+MLSNLEMczijA35dqvQhZeg7kadKGOgIg787Zo7fwfE5Z7fhni9BRmXYQZJB
+	 uVtGwLacLxoAq9zJcVA4ywpGg9bGcyRmFKDm4QNB0m0nrtpcWTRkhll8eJNzSDWYKV
+	 eKlhsUb7tYXmEGZa+/0PYmIk7NTxaevN14yQW7FPG7D+unaUU9HnNkUV8kUi4sXHwu
+	 v7ifhsY6UAs5g==
+Date: Fri, 6 Feb 2026 03:36:22 +0000
 From: Tzung-Bi Shih <tzungbi@kernel.org>
-To: Bjorn Andersson <andersson@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	tzungbi@kernel.org,
-	linux-remoteproc@vger.kernel.org,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Chen-Yu Tsai <wenst@chromium.org>, linux-remoteproc@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2] remoteproc: mediatek: Unprepare SCP clock during system suspend
-Date: Fri,  6 Feb 2026 03:30:33 +0000
-Message-ID: <20260206033034.3031781-1-tzungbi@kernel.org>
-X-Mailer: git-send-email 2.53.0.rc2.204.g2597b5adb4-goog
+Subject: Re: [PATCH] remoteproc: mediatek: Unprepare SCP clock during system
+ suspend
+Message-ID: <aYVhtt_d0b22XxkV@google.com>
+References: <20260204085442.1822123-1-tzungbi@kernel.org>
+ <a880d5d9-348e-4777-ae7f-69bdf7794e58@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260205_193136_788274_192840FD 
-X-CRM114-Status: GOOD (  15.04  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a880d5d9-348e-4777-ae7f-69bdf7794e58@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,91 +73,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prior to commit d935187cfb27 ("remoteproc: mediatek: Break lock
-dependency to prepare_lock"), `scp->clk` was prepared and enabled only
-when it needs to communicate with the SCP.  The commit d935187cfb27
-moved the prepare operation to remoteproc's prepare(), keeping the clock
-prepared as long as the SCP is running.
+On Thu, Feb 05, 2026 at 01:30:42PM +0100, AngeloGioacchino Del Regno wrote:
+> Il 04/02/26 09:54, Tzung-Bi Shih ha scritto:
+> > Prior to commit d935187cfb27 ("remoteproc: mediatek: Break lock
+> > dependency to prepare_lock"), `scp->clk` was prepared and enabled only
+> > when it needs to communicate with the SCP.  The commit d935187cfb27
+> > moved the prepare operation to remoteproc's prepare(), keeping the clock
+> > prepared as long as the SCP is running.
+> > 
+> > The power consumption due to the prolonged clock preparation can be
+> > negligible when the system is running, as SCP is designed to be a very
+> > power efficient processor.
+> > 
+> > However, the clock remains prepared even when the system enters system
+> > suspend.  This prevents the underlying clock controller (and potentially
+> > the parent PLLs) from shutting down, which increases power consumption
+> > and may block the system from entering deep sleep states.
+> > 
+> > Add suspend and resume callbacks.  Unprepare the clock in suspend() if
+> > it was active and re-prepare it in resume() to ensure the clock is
+> > properly disabled during system suspend, while maintaining the "always
+> > prepared" semantics while the system is active.
+> > 
+> > Fixes: d935187cfb27 ("remoteproc: mediatek: Break lock dependency to prepare_lock")
+> > Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
+> 
+> Would be great if you could mention that in this driver, at the moment of writing,
+> there is no .attach() callback, hence rproc->state can never be RPROC_ATTACHED (as
+> in case that would also leave the clock prepared).
 
-The power consumption due to the prolonged clock preparation can be
-negligible when the system is running, as SCP is designed to be a very
-power efficient processor.
+Thanks for your review.  Add it in the commit message and code comment in
+v2[1].
 
-However, the clock remains prepared even when the system enters system
-suspend.  This prevents the underlying clock controller (and potentially
-the parent PLLs) from shutting down, which increases power consumption
-and may block the system from entering deep sleep states.
+[1] https://lore.kernel.org/all/20260206033034.3031781-1-tzungbi@kernel.org/
 
-Add suspend and resume callbacks.  Unprepare the clock in suspend() if
-it was active and re-prepare it in resume() to ensure the clock is
-properly disabled during system suspend, while maintaining the "always
-prepared" semantics while the system is active.  The driver doesn't
-implement .attach() callback, hence it only checks for RPROC_RUNNING.
+> > +#ifdef CONFIG_PM_SLEEP
+> 
+> ...you don't need this ifdef as when CONFIG_PM_SLEEP is not set the macro
+> SET_SYSTEM_SLEEP_PM_OPS is stubbed out (check pm.h).
+> 
+> After removing the ifdef, there'll be something to change, specifically:
+> 
+> > +static int scp_suspend(struct device *dev)
+> 
+> static int __maybe_unused scp_suspend(struct device *dev)
+> {
+> 
+> > +{
+> > +	struct mtk_scp *scp = dev_get_drvdata(dev);
+> > +	struct rproc *rproc = scp->rproc;
+> > +
+> > +	/* Only unprepare if the SCP is running and holding the clock */
+> > +	if (rproc->state == RPROC_RUNNING)
+> > +		clk_unprepare(scp->clk);
+> > +	return 0;
+> > +}
+> > +
+> > +static int scp_resume(struct device *dev)
+> 
+> static int __maybe_unused scp_resume(struct device *dev)
+> {
 
-Fixes: d935187cfb27 ("remoteproc: mediatek: Break lock dependency to prepare_lock")
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
----
- drivers/remoteproc/mtk_scp.c | 39 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
-
-diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-index 4651311aeb07..bb6f6a16d895 100644
---- a/drivers/remoteproc/mtk_scp.c
-+++ b/drivers/remoteproc/mtk_scp.c
-@@ -1592,12 +1592,51 @@ static const struct of_device_id mtk_scp_of_match[] = {
- };
- MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
- 
-+static int __maybe_unused scp_suspend(struct device *dev)
-+{
-+	struct mtk_scp *scp = dev_get_drvdata(dev);
-+	struct rproc *rproc = scp->rproc;
-+
-+	/*
-+	 * Only unprepare if the SCP is running and holding the clock.
-+	 *
-+	 * Note: `scp_ops` doesn't implement .attach() callback, hence
-+	 * `rproc->state` can never be RPROC_ATTACHED.  Otherwise, it
-+	 * should also be checked here.
-+	 */
-+	if (rproc->state == RPROC_RUNNING)
-+		clk_unprepare(scp->clk);
-+	return 0;
-+}
-+
-+static int __maybe_unused scp_resume(struct device *dev)
-+{
-+	struct mtk_scp *scp = dev_get_drvdata(dev);
-+	struct rproc *rproc = scp->rproc;
-+
-+	/*
-+	 * Only prepare if the SCP was running and holding the clock.
-+	 *
-+	 * Note: `scp_ops` doesn't implement .attach() callback, hence
-+	 * `rproc->state` can never be RPROC_ATTACHED.  Otherwise, it
-+	 * should also be checked here.
-+	 */
-+	if (rproc->state == RPROC_RUNNING)
-+		return clk_prepare(scp->clk);
-+	return 0;
-+}
-+
-+static const struct dev_pm_ops scp_pm_ops = {
-+	SET_SYSTEM_SLEEP_PM_OPS(scp_suspend, scp_resume)
-+};
-+
- static struct platform_driver mtk_scp_driver = {
- 	.probe = scp_probe,
- 	.remove = scp_remove,
- 	.driver = {
- 		.name = "mtk-scp",
- 		.of_match_table = mtk_scp_of_match,
-+		.pm = &scp_pm_ops,
- 	},
- };
- 
--- 
-2.53.0.rc2.204.g2597b5adb4-goog
-
+Fix them in v2 too.
 
