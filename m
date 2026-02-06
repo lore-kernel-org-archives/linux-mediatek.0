@@ -4,87 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2BCBEE20A8
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Feb 2026 14:56:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05B26EE20B6
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Feb 2026 16:59:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WaMSa8aNPT2Syrv1Z36gDQAmqymrmu0QQPmiXAsgue4=; b=dURzHOG36V4c+SA3cIdrfPuVb5
-	qBowJ00LdOP+U5uX7gWCyBYeMGTj9C6BJyIBv1Eek+eUMhbsASOdiHhRBY/sQ1DqKJ7fqlbmBKu1/
-	MNLIoca8DL6DvGREyW1T04cQABbxFj27tXcHoLPJUVOCyGCUvM+SPvIiyKVnT0XwSqq+XLWNAl64h
-	aIyN1TSa4mTTeqmVOyzv9eu1F5r02HucYfvRRf3es1qhPz18di04FWxDHlAHze6JEd9e3PmnxgavG
-	ZaetzQTC7tan3iRQallH4m9dDIJWjAfAL+Vm/z6LQhBEbNQbKIaci1zic1FxE2euH02WhQOf+8U8t
-	Sps4HIyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SINkWacze5S98GIhSSbJIYdPhJkcW6UFPLcuajb3eHY=; b=x2YZUxnoYSonyFoMJUWhC4qvzZ
+	1EDNJUUkpf/Po1DcRqdqislPyR9Mn9rbpxxWT3xv/I8bv24JlH0Iw9YcHXviK2UGWObMod6fLSjLH
+	0ki0jEX/RWJ5arJxnp7R2aFf7WjucvlTvpyYi8TRCDM1x7bzIXS4QEopNNbaTqVaZITM4kpvbtjc6
+	7CzAlhKIS9c0fB7mM0TruKahhpZGHzZaEAMhwzDv4Khgg2ApQjKM/3bJUjU50Kxj4BSiqKbD9gUHF
+	yDxUUvDPDtczRdtBW9QIz07lnBc29khFYWDFuzBrQYRmVq4yj0f0nE+FS/qsDFStvpx8nAsNuj4jI
+	+lzKjKKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voNFn-0000000BSiP-2OKQ;
-	Fri, 06 Feb 2026 14:56:15 +0000
-Received: from relay.yourmailgateway.de ([46.38.247.119])
+	id 1voPAY-0000000BaxH-1S2z;
+	Fri, 06 Feb 2026 16:58:59 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voNFj-0000000BShK-0oec
+	id 1voPAU-0000000Bawu-075U
 	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Feb 2026 14:56:13 +0000
-Received: from mors-relay-8404.netcup.net (localhost [127.0.0.1])
-	by mors-relay-8404.netcup.net (Postfix) with ESMTPS id 4f6xwR5pSgz8BnF;
-	Fri,  6 Feb 2026 15:55:35 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
-	s=key2; t=1770389735;
-	bh=CKKrzvJzRBC0RVs1xQVpfARoLf7sngWbE8xevZ6p6uY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cIqY4obMCio58JAfFJTP7A1Eetq3aQHdJ1NEo7YXrb2KN4AFPuYlqf6Ygqak8nsDD
-	 HrcJYqdqlpiDv2gDvn0LkewDh3XJ7GWGuzutL0xKH7CaRMCOctNueSTsLA0DeWmCbM
-	 eyVm6uv621G6SrsEuPAORrf1FDB3Cj56arbnnH2buYzMTkW6mBy/Ku6+Yt7QMCRxel
-	 zN2g/oEdUf6iW0DS/LPzkvz+JJ47HOt4FuRQaPOlr+LF3Oo8Vm39GTRUIPB1ojtYjh
-	 o0QC5XaO8B6qY8AsP7+XfV8W+fXfwj9odSVz+FZgGhOmopcQr9PgBPtNLryKNzI5Dy
-	 mWXvM1v4kCOiA==
-Received: from policy01-mors.netcup.net (unknown [46.38.225.35])
-	by mors-relay-8404.netcup.net (Postfix) with ESMTPS id 4f6xwR55WYz4x83;
-	Fri,  6 Feb 2026 15:55:35 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at policy01-mors.netcup.net
-Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by policy01-mors.netcup.net (Postfix) with ESMTPS id 4f6xwQ1Qj0z8sbc;
-	Fri,  6 Feb 2026 15:55:34 +0100 (CET)
-Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
-	by mxe9fb.netcup.net (Postfix) with ESMTPSA id 54E1A6759F;
-	Fri,  6 Feb 2026 15:55:33 +0100 (CET)
-Authentication-Results: mxe9fb;
-        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
-Received-SPF: pass (mxe9fb: connection is authenticated)
-Message-ID: <df6fcd73-fe0a-42fc-97ce-7e458c340553@leemhuis.info>
-Date: Fri, 6 Feb 2026 15:55:31 +0100
+	Fri, 06 Feb 2026 16:58:56 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-481188b7760so17530635e9.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 06 Feb 2026 08:58:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1770397132; cv=none;
+        d=google.com; s=arc-20240605;
+        b=I1bzd86LxgiqOM3NuCaDyzJ1IZ9iWmy0/Abm/TOvvSTajq7vXUk2CPr3bqKx/JIqJ9
+         L6QC0WZbZ81XcULg0kOIMvcbs6pMLVMQj8Mn+i08gx6q/seOdYIICMb0werDNHD+fizF
+         8dwbOx6fCQFxK/cRorMD2eNJBPI+b35LgBGsRNMCLwEuhpXWqCgkWeFhwjQsD9NBelE8
+         ddk6Ib3z5H567u3G9HAhfbh82i7DKN9soTuVg2X+CgU8OTC4lYbgusTnCqTnf/YJ3KMg
+         h0J0/6GxMgqQCUBcLxfRcU2UTn/z9o2s3y0NFEi7OWIgeXi/YERTon9fr37kR6LN9nv0
+         c3Kg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=SINkWacze5S98GIhSSbJIYdPhJkcW6UFPLcuajb3eHY=;
+        fh=k49FpJqqpmlMvWRsxnJ5Z984bhbseDWlJdHDMHaDk1U=;
+        b=gMDOB79sJZEaVOqFWkx/ye/NiyHaD63VitVo5VICYuBgpJ3pGnsY3fKZxuNNCrakpA
+         s0/mld2BZD2w40tv/Sb7Vq2XYrvJWM4u/yF76Yj7Dvo23jqbv84hsvFeWehLKTaq2xXX
+         +JDntVElvKGkHyEy4GTAEcCjgxhunkHZvlGj63rTzxf2DK8J6QzEKdyRf2SUlc7ofe+A
+         i+V7kRQWvQW4oTG0Rbuf3FWXbsC4ZCJ2PEjlnMcjjh9Wb6laiw/VBEe5YnV+H0ZqLamZ
+         hmraMr3yiq3HQMqvpFoi3NbBGw+EI/u5BTrx20bfma0dAt77uwnhXMOIKLKd4N1eZfrD
+         L7vg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1770397132; x=1771001932; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=SINkWacze5S98GIhSSbJIYdPhJkcW6UFPLcuajb3eHY=;
+        b=PMkFEIdZX1tgUDrsWkWIDMn6CjbmEElV5UrclRvfoD4eURuH0nB8OQOFbS3MpRqHAA
+         EC74DiUBJqMgO+4akRQ5WS9OHcmnkHgNJiFt5QX3d/Vz5kr+Ve3wA7WF15AU0hp+WgYF
+         PHRI1/7h1JeYb1rG5g1XU6BvYGD05FK5i7lNDgJ9ShlsYvm9Hv6j/6lHyShAtC3G0k0k
+         fmUwP/i3R2yM6y2KbT0+vHOf1mROyN0I2YDBpjWcfPpJMvwWfKy9o2Gk18fY7LGImAgN
+         /EgGLblrJpXSO4r5bdRTTBl9P0OZ8hxKj5NQzFRiBnDBXyiTz2vs6st+YvVXTqDsSJe9
+         1rkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1770397132; x=1771001932;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=SINkWacze5S98GIhSSbJIYdPhJkcW6UFPLcuajb3eHY=;
+        b=fx4MsrBP8ZXy6uUcwE9u7Q2/vgIoDoka/CgbUFS6lm5UBYLqLS8SZjUH2S/sJI0Efl
+         t5fk7HVmeaofJ8cEnQhLSpFR4VkOL3KBSy3cGVT0Cy29QX4hjlgNlci0fq6euDK2HhCq
+         6cjM+dw5uFrvGq6ey2mdGO48O1cN63rkRLZ6X78Q7bctWg/+yDRkd9UYbIGYFAlHuzqG
+         H0mSc2agZ/jmlo727ix6XzHHZ3nMaHFDzSo4zRZME1SYuUK7nXj7rtthu6ikxMLRCzfZ
+         AqWmJtbwBSmAdBGAUj+M5dUgq1nGul9pAK67RcU/jcIKMmYiUwXO1JOBRSBm8uW5P/yz
+         Ai4w==
+X-Forwarded-Encrypted: i=1; AJvYcCWH1I1wqmeYFIefjKulQ3Bz8VLboiyMKi++QwYs/f0Xkk3MoTdFQM2kVeXUs9OVHJN5/44g5A9+oTXC49AegQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzVy9dmvpgskQEBT8a8nYO4kGQDsxcXNOnelUSppWWunoLGHT0v
+	Z9v8AJYTowzjBZl+gmha02kZ64QgfhqBTGkfXJc8hDtT+zwOWjronNnnCaLB4a8m2HSuuUs7/9G
+	IfUzmpbCzSWFLz7mXVY6HSnb3WUW5Yzg=
+X-Gm-Gg: AZuq6aJfydt5Ut/ByXg5LSFv4Xg3uGsjSHaldY0lXdqrTM/VBcjzZVK3Ypv9hdKS9l+
+	josfyOr6eDHO6GPaNHSJgiVkI7TTmEL6GRLcOG/Sf/VMOHyao8AqFt4ME7qLVMD1ugBLryEMz6D
+	gTXT6sFlOXQZRUk0ZdEZf9H4rhRoANEVYuRDatQi8vXLAGI52uOcCaVzaVsavNhjf2kyRDyH8mk
+	AM1AiyS0eICNjhCyN+yz+NMsMF6F16up1vV1lSkQzmVdcvuk2ttbuinA5hhym1AAod3kybN
+X-Received: by 2002:a05:600c:19d1:b0:477:9a28:b09a with SMTP id
+ 5b1f17b1804b1-483208b9470mr43758935e9.0.1770397131636; Fri, 06 Feb 2026
+ 08:58:51 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+References: <CAFLVeg9hwH3PbKu5rPWZWqq6yz5mRRoB9oqxDkxNRdEDLGbVBw@mail.gmail.com>
+ <CAFLVeg_soeYV4tOYKMo6TMYOtuWWU4TFCjUTxUrVEyGcRwMz7A@mail.gmail.com> <df6fcd73-fe0a-42fc-97ce-7e458c340553@leemhuis.info>
+In-Reply-To: <df6fcd73-fe0a-42fc-97ce-7e458c340553@leemhuis.info>
+From: Denis Gessert <denisgessert@gmail.com>
+Date: Fri, 6 Feb 2026 17:58:39 +0100
+X-Gm-Features: AZwV_QgNCppAnl3lb89V9TBwVA6S5u-NVBJN7ILzPpKGv0R-o4J6O7rbHQT_tuA
+Message-ID: <CAFLVeg-qeWu4ntgyqotsgjogPEyhqrMGG=UDWuZe+-D3K8YPTA@mail.gmail.com>
 Subject: Re: [REGRESSION] mt8183-kukui: dts: changes in dts caused display to
  no longer initialize - Was: Re: mt8183-kukui: drm/mediatek: dts: Invalid
  display hw pipeline when probing mediatek-drm
-To: Denis Gessert <denisgessert@gmail.com>,
- "angelogioacchino.delregno@collabora.com"
- <angelogioacchino.delregno@collabora.com>
-Cc: Evans Jahja <evansjahja13@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- regressions@lists.linux.dev, =?UTF-8?Q?Otto_Pfl=C3=BCger?=
- <otto.pflueger@abscue.de>
-References: <CAFLVeg9hwH3PbKu5rPWZWqq6yz5mRRoB9oqxDkxNRdEDLGbVBw@mail.gmail.com>
- <CAFLVeg_soeYV4tOYKMo6TMYOtuWWU4TFCjUTxUrVEyGcRwMz7A@mail.gmail.com>
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-Content-Language: de-DE, en-US
-In-Reply-To: <CAFLVeg_soeYV4tOYKMo6TMYOtuWWU4TFCjUTxUrVEyGcRwMz7A@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-PPP-Message-ID: <177038973370.2546695.17362443736661889721@mxe9fb.netcup.net>
-X-Rspamd-Server: rspamd-worker-8404
-X-Rspamd-Queue-Id: 54E1A6759F
-X-NC-CID: YiiuFaE1FQhWjD/GcfomQ+rJ6LWwGExfn0Xfp7+mw1Ii/t9weHQ=
+To: Thorsten Leemhuis <regressions@leemhuis.info>
+Cc: "angelogioacchino.delregno@collabora.com" <angelogioacchino.delregno@collabora.com>, 
+	Evans Jahja <evansjahja13@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	regressions@lists.linux.dev, =?UTF-8?Q?Otto_Pfl=C3=BCger?= <otto.pflueger@abscue.de>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260206_065611_976432_699F9CB4 
-X-CRM114-Status: GOOD (  12.78  )
+X-CRM114-CacheID: sfid-20260206_085854_300999_17083104 
+X-CRM114-Status: GOOD (  15.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,31 +118,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/6/26 12:33, Denis Gessert wrote:
-> 
-> I found this email chain while troubleshooting why my Levovo Duet
-> (with the MT8183 chip) would not boot using any 6.18.* kernel.
-> 
-> I can confirm that on my device the current stable 6.18.8 does not
-> boot unless I revert the commit
-> 
-> commit e72d63fa0563f8a6e98c10fed3a9ce74dc0536e6 (HEAD)
-> Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Date:   Thu Jul 24 10:39:08 2025 +0200
-> 
->     arm64: dts: mediatek: mt8183: Migrate to display controller OF graph
-> 
-> mentioned below. With the reverted commit the device boots as intended.
+Thanks for the quick response. I compiled 6.18.9 with this patch
+(without reverting the previous commit) and it boots successfully.
 
-There is a fix for it from Otto here that I guess should help
-https://lore.kernel.org/lkml/20260106-mt8183-display-graph-v2-1-e7e56054eef5@abscue.de/
+Cheers,
+Denis
 
-Side note: lacks a stable tag and maybe should have been merged this
-cycle instead of the next. But given that 6.19 is immanent it might be
-good if this could be backported to 6.19.y once it landed in mainline.
-
-> PS: Apologies for the potential double-mail. 
-No worries, happens.
-
-Ciao, Thortsten
+Am Fr., 6. Feb. 2026 um 15:55 Uhr schrieb Thorsten Leemhuis
+<regressions@leemhuis.info>:
+>
+> On 2/6/26 12:33, Denis Gessert wrote:
+> >
+> > I found this email chain while troubleshooting why my Levovo Duet
+> > (with the MT8183 chip) would not boot using any 6.18.* kernel.
+> >
+> > I can confirm that on my device the current stable 6.18.8 does not
+> > boot unless I revert the commit
+> >
+> > commit e72d63fa0563f8a6e98c10fed3a9ce74dc0536e6 (HEAD)
+> > Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > Date:   Thu Jul 24 10:39:08 2025 +0200
+> >
+> >     arm64: dts: mediatek: mt8183: Migrate to display controller OF graph
+> >
+> > mentioned below. With the reverted commit the device boots as intended.
+>
+> There is a fix for it from Otto here that I guess should help
+> https://lore.kernel.org/lkml/20260106-mt8183-display-graph-v2-1-e7e56054eef5@abscue.de/
+>
+> Side note: lacks a stable tag and maybe should have been merged this
+> cycle instead of the next. But given that 6.19 is immanent it might be
+> good if this could be backported to 6.19.y once it landed in mainline.
+>
+> > PS: Apologies for the potential double-mail.
+> No worries, happens.
+>
+> Ciao, Thortsten
 
