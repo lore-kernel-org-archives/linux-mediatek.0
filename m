@@ -4,44 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42CDAEE2084
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Feb 2026 10:21:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 813D2EE2082
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Feb 2026 10:21:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MvOhV3M/QBbgjrcEx8qeuRUy1VqmTxMQQXRpbVHPN/Y=; b=UX3fcc+usWxTGk65EyPYOSt2wG
-	dAXnvHsUc85PfgTvYkLzVkH24as8c8UVUMUvR8gfYI/tK/4aV2G5jjl6q0KTuhE4byqdK4uyp9g1K
-	OO4O+sNwhWilzff5IKV+1/X3bo2ckiB4fvO5NKsyNQlss14+3+UWaAE5o37peylcJkTZz8VmmyqCb
-	oq8KcWLAPDOFESmAIIpIUugmHxoL5Mmp6jgbwia7As699/ujsV5eRacDEcCnIMBR44XXSf41IHAu7
-	5s5JqkPYH1LLFwz3Hdi9JzzWXB+zyjpbpvtwvTnLuRiISdILAgyobncyV7TjkrIhbyfPoAm+2mCvS
-	o8/zjZ7w==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=T3qmREDUK/hg3y1Aloren8RJ9Uvld3RN9ufvh+a0UZQ=; b=dnmCYyBzEGGNyZ
+	GCgmvJAekRMzPYj61wgeFdGssHSV7j5S2vIwTodT3Yr5ai7/urIVn52WU2HG8TtcYdLFzniyc5TPq
+	NlsJVbO6pNbF5Hhof9l8y/tf83E7Y7TU2vfexkdrEu5xr6eiB7wrPXrlatyQ4aSv8tLhGjpXzg9mn
+	WhMm6Ytv97Cuq+4BsOyfky91MbfHk5mGSRjpcMeI/fy+UAuV56TszZrE0lJrILsOsP+bo+OckfeZH
+	EwXzXK7tf4unKRoSdqxVsGTc1cYKIcL0Nrgo76vkOfdZvFxPUw1hPzsSvJytO3PJ32JRlqSGq/1mC
+	JRbkAJOrUMRJ/YXc3QIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voIxP-0000000BAWs-3w58;
-	Fri, 06 Feb 2026 10:20:59 +0000
+	id 1voIxs-0000000BAfZ-2duL;
+	Fri, 06 Feb 2026 10:21:28 +0000
 Received: from ahti.lucaweiss.eu ([128.199.32.197])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voIxN-0000000BAVa-0Cnp;
-	Fri, 06 Feb 2026 10:20:58 +0000
+	id 1voIxp-0000000BAeN-0wrM;
+	Fri, 06 Feb 2026 10:21:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=lucaweiss.eu; s=s1;
-	t=1770373253; bh=hW1y+4RnYCDFlCJ8eDAD1QUcPOaENLmR0lDQL12MGuY=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=drbMME86Ogl6L0kBG53NS+yYgz/ZBTwwfzzrSrqxh8R2glF0mCy0RvYJBrlcoDP65
-	 K8L3RipJxfuvRM4EbZIZ+RiffnwWDU2uHw+oBnCfBi0xprHg9CSoTjtEhYyAZpfiAw
-	 8nPv17RebT3pWr4T8G2lfy1Mx51sliNeTPdAQaCM=
+	t=1770373253; bh=R6d6LOYx1acrZEfT768rwpy3DqJ5O4GGUCRhdfOAiOs=;
+	h=From:Subject:Date:To:Cc;
+	b=c9xEOKQ/su2/QSb8Z4jYID+ZTdPzW74lDLaWIT/7ZSAI9HcA6ZtBtv6a+Vb0AAhMi
+	 Z7XcvChmWFJQTpLFvydDN21rBPSqWOCwPkfJtn28eohMzJmJYU8ab8ws5GZFa2R1r1
+	 KvFpNCOJlwwg/yKBEV4wwfX/ru9b0PGT05czLSNI=
 From: Luca Weiss <luca@lucaweiss.eu>
-Date: Fri, 06 Feb 2026 11:20:49 +0100
-Subject: [PATCH 2/2] arm64: dts: mediatek: mt8516: fix syscfg-pctl
- compatible
+Subject: [PATCH 0/2] Fix syscfg-pctl compatible for MT8516
+Date: Fri, 06 Feb 2026 11:20:47 +0100
+Message-Id: <20260206-mt8516-syscfg-syscon-v1-0-96dcb37acdb4@lucaweiss.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260206-mt8516-syscfg-syscon-v1-2-96dcb37acdb4@lucaweiss.eu>
-References: <20260206-mt8516-syscfg-syscon-v1-0-96dcb37acdb4@lucaweiss.eu>
-In-Reply-To: <20260206-mt8516-syscfg-syscon-v1-0-96dcb37acdb4@lucaweiss.eu>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MywqAIBAAfyX2nKCCi/Qr0aHHZnvIwo0opH9PP
+ A1zmMkglJgEuiZDopuFj1jEtA3M2xgDKV6Kg9UWtdWo9ss7g0pemddQcUSF5BYz6RE9WSjpmWj
+ lp2774ft+maRIpmYAAAA=
+X-Change-ID: 20260206-mt8516-syscfg-syscon-6e5d1b0a68e2
 To: ~postmarketos/upstreaming@lists.sr.ht, Lee Jones <lee@kernel.org>, 
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
@@ -52,25 +53,25 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Luca Weiss <luca@lucaweiss.eu>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=717; i=luca@lucaweiss.eu;
- h=from:subject:message-id; bh=hW1y+4RnYCDFlCJ8eDAD1QUcPOaENLmR0lDQL12MGuY=;
- b=owEBbQKS/ZANAwAKAXLYQ7idTddWAcsmYgBphcCDpTDBsjyGZzws0QiiLO+nk5cJ1JdGUiv+k
- AzmT03sAi6JAjMEAAEKAB0WIQQ5utIvCCzakboVj/py2EO4nU3XVgUCaYXAgwAKCRBy2EO4nU3X
- VptJEAC3YRzi+gckFaL3vgrMJio1ngXDFN0ka3GWygwg52KRviu5Fv0S7Tx5K5QbV3v67pvQ0/7
- Iqosb6q5/bTFYA8t8bfiOyY75dLKtqnGcX03Cd2BfBJ50iFTgbAfbcUnnqWo7h03ubjBg/TVkVc
- W/Y+zZs/U7cpBpc40n07uFbEga0iIYhiYLlM2L/tviT47JeEi2SroXZi26JvuvbkkmeYAAnlUYs
- 8iaWiQ/MWHXvmh7/T0NmxmozxqJt+4rSi1LU+shAIlLVvHeucBQ600ssN+YMBuCOsOOQRXEhj2d
- /MxEDHzmRFwsjXCHkerz7zaDVEgV2UAXicalqfp7TdM9ni3SGQ48XcuK8MsydauQ0XqyIlwMaiw
- 590VZEZy4UDcLgurZi2HUapLga6Pd5RQ+5793C4Skkar4LA5Gy7fgB+9BbyyBGdUAVfvMCwUr4j
- yjSU6eXDWAC8I3l582kjFDjmCM6zUt+X0F7YNPLRC9BOvQ/YQAthryd5vYdOymsMMVC9Ti1vKUI
- uwS33bz+O9jugI5LBAkArXfiB1/3CDiugx7/eM9dy2FxpIfY0rHP7MXYt2t0VNxGRV4noTOqQf0
- r/PPto1A4J/NCKps5713VuriXeWLTjaWeCBeWHnyp+i9xAb1VfGpVoPEB0laDiU8C9FLgxh2DDU
- bdduudg3GXgZJCA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=614; i=luca@lucaweiss.eu;
+ h=from:subject:message-id; bh=R6d6LOYx1acrZEfT768rwpy3DqJ5O4GGUCRhdfOAiOs=;
+ b=owEBbQKS/ZANAwAKAXLYQ7idTddWAcsmYgBphcCCle6WQVY8NfJ/FMmSJUdEibM9IZeseQXgt
+ WZADv8RTTqJAjMEAAEKAB0WIQQ5utIvCCzakboVj/py2EO4nU3XVgUCaYXAggAKCRBy2EO4nU3X
+ Vs+eD/9LBSIv48EKjvhOdZoTFAt94zO89FZiJosZwfat8w8XNmaWa66EC2YdT4YjRiYeXn40Q6e
+ D+h+Yo/szBLSwT4vWDU382eTBV8HhAoExnDPnH6hsIqgkfETc4B4kdefOkMXlGht8+jvNZOSb71
+ dFxKEKNruMiWnvn4KAe5mDso9V0PZf5Dau2lzyIsUKKBHmft3RgXoJxCj78TK66vPF746VJIPub
+ rmZgWZrhbPGsfve91HoWnXUUKd3JMENpNfQ2l+e1jLm6Cy2niFYAAoHKeiKsjkvnicqRCQK6yIu
+ gHs89P2adwGFyjKZMBx1hg9AJfPliBNMfaYOP7E99FXSBdMMSR/LljV39hAtSmLZY0G2A4ETLym
+ uE61xzKqL2IhlSWLicVqk/as5WNCGEmed2W+8AN755ABnswylamh8Jwwj+pr3g6GyWWmmAX+N1v
+ 3as7Gid5JHwaVBjtkYs7xBwNJacLuXS2H85EaVcDXz5svfvhSy08D17QFcH9nL33jq6Nt5tOx+E
+ WbNoj7kI1qIUepNGqIWfAU6lAVelA3I+uSn0htfkE2Jktu0Z5Y/GQxuP9Y1jF6QQMQZFUThql28
+ ywK4WMHLtrcjDGnfY6h2mUTb7Ejx4IULWOx1JS+UHQZz7tUOh73WSzmwcuPLIkMVrswzpPkaqk+
+ B1Dp6RguibkHjaA==
 X-Developer-Key: i=luca@lucaweiss.eu; a=openpgp;
  fpr=BD04DA24C971B8D587B2B8D7FAF69CF6CD2D02CD
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260206_022057_242210_28810F63 
-X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-CacheID: sfid-20260206_022125_406759_8BC8D79F 
+X-CRM114-Status: UNSURE (   7.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,29 +87,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Just 'syscon' is not allowed by the dt-bindings, so add
-mediatek,mt8516-syscfg to it.
+Address a dtbs_check warning on MT8516 by introducing a new compatible
+for the syscon.
 
 Signed-off-by: Luca Weiss <luca@lucaweiss.eu>
 ---
- arch/arm64/boot/dts/mediatek/mt8516.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Luca Weiss (2):
+      dt-bindings: mfd: syscon: Add mt8516-syscfg
+      arm64: dts: mediatek: mt8516: fix syscfg-pctl compatible
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8516.dtsi b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-index b5e753759465..67836407d0cc 100644
---- a/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
-@@ -232,7 +232,7 @@ keypad: keypad@10002000 {
- 		};
- 
- 		syscfg_pctl: syscfg-pctl@10005000 {
--			compatible = "syscon";
-+			compatible = "mediatek,mt8516-syscfg", "syscon";
- 			reg = <0 0x10005000 0 0x1000>;
- 		};
- 
+ Documentation/devicetree/bindings/mfd/syscon.yaml | 2 ++
+ arch/arm64/boot/dts/mediatek/mt8516.dtsi          | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+---
+base-commit: 9845cf73f7db6094c0d8419d6adb848028f4a921
+change-id: 20260206-mt8516-syscfg-syscon-6e5d1b0a68e2
 
+Best regards,
 -- 
-2.52.0
+Luca Weiss <luca@lucaweiss.eu>
 
 
