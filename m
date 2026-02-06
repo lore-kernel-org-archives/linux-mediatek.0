@@ -4,60 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE665ECD9BE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Feb 2026 03:40:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35D88EB28F1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Feb 2026 08:51:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wLeGguxU5YDL/fDRuu+46YR1QFycm4KwR3pnd1FWMiE=; b=OR054SQhqRjq7tW5oot8465t3E
-	6uVQ74GBd0ovrDyYHiZjtO8KWx8kIMxG8a31bePKm2hKI+RMw7GTmrkVWPkBjGzPrv1E0vG34JJPG
-	d0sPfEy4vhJTUB+jfuysoVlUbY2yQoFw9HV7cB3YzebJ5DmVu/CP3arq/SUmiSob8N+Gq9Tdik90C
-	uZbdp/4VaeSNCO7Xywum77nrqaKZiPVgrx/M25nGgONwwfkwjrmj7g07LxIFxa99pZRFW6IKnSoh1
-	wDox5pxtHyGM4H6+sJ/jdkXair3/LHI0eU2XBKQr1naPSIEQroJ4MYCTo/SRYIuG8U5YxRNhp5p9h
-	qci8glAQ==;
+	bh=MinFAbbVOdoR83Ltkm3t2nF+VJzZlX8cRHfFjmhcvVA=; b=3fOwgDYsCthuTxvI0CsNAdrNho
+	dFFCQ2yxnCnzH6c4waqLZuSyiaXejuCF4MIB+XLbk1UdUD34QU+nfYYKsxZ0yHEAOkHUvQ09LTAP0
+	WrSwptnqa6P96JElVs60iNZfgPuRVuohVFrgWa3/7QlqZh5uIm/nuILviVey7cHh4Sx69O2Z9pXRP
+	uhqiYzSqlD8//Mp6p4cczPT5wmPX0RGu5uZ4pXerpZslKZmEW+JHB/2gNGLC6/b05q4WqvWsSBMa/
+	KzePSboY52d8jag9Oa60lmgFs7u4GqIdQZ++Vlt8A29Mi9dFVNGOx9Xy3aZRsQ1xOfIp6Xzw6p2lL
+	XBTpXINg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voCht-0000000Aofq-2NFX;
-	Fri, 06 Feb 2026 03:40:33 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1voHYu-0000000B3eh-45d7;
+	Fri, 06 Feb 2026 08:51:36 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voChr-0000000Aofd-2GHZ;
-	Fri, 06 Feb 2026 03:40:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A197560010;
-	Fri,  6 Feb 2026 03:40:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 17BB9C4CEF7;
-	Fri,  6 Feb 2026 03:40:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770349230;
-	bh=FODg6UNvIBu/ZybFA9evOhDRmMXlzJppqNIxz1lUES4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UGbDFSHKu32A0MBDQvShwysZrEWY04LY9wi7FxWw1eNXl4fs4yLgZ3folOAtj2qnQ
-	 MC/+pMH6f20yRAk2eQ4n5Lv5Ah9x6wEUuDw+vxxTYIvvtUyVXiVCHGzq5W5yY2Btz+
-	 +/ZtjL2hE7A/mYfBmM13E22ur+lvAR9pmWQJ7jIm2aRF2IeN4InP8SadGHLI6reRX9
-	 u9g/4ht7FSdkMsixdozPU0Nok+0bN64uuZvlIxDdJcw18/+wJOEjWCemyqh22JlfwX
-	 0+KTUjHlS1NfWnJ1bK38dd2Z7fvNA0Vf6EbKzaNBywLtR6+gCdV4Cx1SfcbnKcpJOk
-	 0ZL5E4OLQUKng==
-Date: Fri, 6 Feb 2026 03:40:26 +0000
-From: Tzung-Bi Shih <tzungbi@kernel.org>
-To: Bjorn Andersson <andersson@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>, linux-remoteproc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] remoteproc: mediatek: Unprepare SCP clock during
- system suspend
-Message-ID: <aYViqgirwN2Xgp61@google.com>
-References: <20260206033034.3031781-1-tzungbi@kernel.org>
+	id 1voHYs-0000000B3e3-0RuV;
+	Fri, 06 Feb 2026 08:51:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1770367889;
+	bh=8cWuy2S8DaSwgYrlkHnpzPAslnN9oEH1hvc3lC/AbEU=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=S8AZlDAuT2tMkIVDxejZ2ylBzw8HiUymsCvenm5Y7mbTxdH5oxHoRQjgfmPw5BXjM
+	 1emUHLByh6Ddnga8GY3MhAcLgsc+xfwjYAGWmz9K5nu8mijtlAa9bKirn25Pw6OQdC
+	 qljipE0581+rnnuWrJQLqgf40AWdy7WaUKOvidLL5t8dlI9qyTL0jXgMrsnftiUJlR
+	 P0AW6I6LVmqVslOT3T8tPTI9eRIjUGSwOKV3+Avnzq353IeJBCOlpPax5OGl53OThj
+	 T7g6Yjc5mxaFSNl0LaF7RFWyiL7mPRdHMp3yUEVrZCd00/TtzsqArmzZaNe2jsgJCm
+	 OofRdD7pvKQpg==
+Received: from eldfell (unknown [194.136.85.206])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: pq)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2C71117E001E;
+	Fri,  6 Feb 2026 09:51:29 +0100 (CET)
+Date: Fri, 6 Feb 2026 10:51:02 +0200
+From: Pekka Paalanen <pekka.paalanen@collabora.com>
+To: "=?UTF-8?B?TsOtY29sYXM=?= F. R. A. Prado" <nfraprado@collabora.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
+ <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, daniels@collabora.com,
+ ariel.dalessandro@collabora.com, kernel@collabora.com
+Subject: Re: [PATCH 07/11] drm/colorop: Introduce HLG EOTF
+Message-ID: <20260206105102.1208fff9@eldfell>
+In-Reply-To: <20251223-mtk-ovl-pre-blend-colorops-v1-7-0cb99bd0ab33@collabora.com>
+References: <20251223-mtk-ovl-pre-blend-colorops-v1-0-0cb99bd0ab33@collabora.com>
+	<20251223-mtk-ovl-pre-blend-colorops-v1-7-0cb99bd0ab33@collabora.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260206033034.3031781-1-tzungbi@kernel.org>
+Content-Type: multipart/signed; boundary="Sig_/Z3McZGD/cduzL_hjq1GrAml";
+ protocol="application/pgp-signature"; micalg=pgp-sha256
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260206_005134_326958_8B07A59A 
+X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,103 +81,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 06, 2026 at 03:30:33AM +0000, Tzung-Bi Shih wrote:
-> Prior to commit d935187cfb27 ("remoteproc: mediatek: Break lock
-> dependency to prepare_lock"), `scp->clk` was prepared and enabled only
-> when it needs to communicate with the SCP.  The commit d935187cfb27
-> moved the prepare operation to remoteproc's prepare(), keeping the clock
-> prepared as long as the SCP is running.
-> 
-> The power consumption due to the prolonged clock preparation can be
-> negligible when the system is running, as SCP is designed to be a very
-> power efficient processor.
-> 
-> However, the clock remains prepared even when the system enters system
-> suspend.  This prevents the underlying clock controller (and potentially
-> the parent PLLs) from shutting down, which increases power consumption
-> and may block the system from entering deep sleep states.
-> 
-> Add suspend and resume callbacks.  Unprepare the clock in suspend() if
-> it was active and re-prepare it in resume() to ensure the clock is
-> properly disabled during system suspend, while maintaining the "always
-> prepared" semantics while the system is active.  The driver doesn't
-> implement .attach() callback, hence it only checks for RPROC_RUNNING.
-> 
-> Fixes: d935187cfb27 ("remoteproc: mediatek: Break lock dependency to prepare_lock")
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
+--Sig_/Z3McZGD/cduzL_hjq1GrAml
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, 23 Dec 2025 16:44:48 -0300
+N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com> wrote:
+
+> Introduce definition of a hybrid log-gamma electro-optical transfer
+> function for 1D Curve colorops.
+>=20
+> Signed-off-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
 > ---
-
-Pardon me for forgetting to attach changelog before sending the patch.  Here
-is the changelog:
-
-v2:
-- Add note and code comment for RPROC_ATTACHED.
-- Use __maybe_unused instead of '#ifdef CONFIG_PM_SLEEP'.
-- Add R-b tag.
-
-v1: https://lore.kernel.org/all/20260204085442.1822123-1-tzungbi@kernel.org
-
->  drivers/remoteproc/mtk_scp.c | 39 ++++++++++++++++++++++++++++++++++++
->  1 file changed, 39 insertions(+)
-> 
-> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
-> index 4651311aeb07..bb6f6a16d895 100644
-> --- a/drivers/remoteproc/mtk_scp.c
-> +++ b/drivers/remoteproc/mtk_scp.c
-> @@ -1592,12 +1592,51 @@ static const struct of_device_id mtk_scp_of_match[] = {
+>  drivers/gpu/drm/drm_colorop.c |  1 +
+>  include/drm/drm_colorop.h     | 10 ++++++++++
+>  2 files changed, 11 insertions(+)
+>=20
+> diff --git a/drivers/gpu/drm/drm_colorop.c b/drivers/gpu/drm/drm_colorop.c
+> index fafe45b93ff8..a19e03fb9c7c 100644
+> --- a/drivers/gpu/drm/drm_colorop.c
+> +++ b/drivers/gpu/drm/drm_colorop.c
+> @@ -79,6 +79,7 @@ static const char * const colorop_curve_1d_type_names[]=
+ =3D {
+>  	[DRM_COLOROP_1D_CURVE_BT2020_OETF] =3D "BT.2020 OETF",
+>  	[DRM_COLOROP_1D_CURVE_GAMMA22] =3D "Gamma 2.2",
+>  	[DRM_COLOROP_1D_CURVE_GAMMA22_INV] =3D "Gamma 2.2 Inverse",
+> +	[DRM_COLOROP_1D_CURVE_HLG_EOTF] =3D "HLG",
 >  };
->  MODULE_DEVICE_TABLE(of, mtk_scp_of_match);
->  
-> +static int __maybe_unused scp_suspend(struct device *dev)
-> +{
-> +	struct mtk_scp *scp = dev_get_drvdata(dev);
-> +	struct rproc *rproc = scp->rproc;
+> =20
+>  static const struct drm_prop_enum_list drm_colorop_lut1d_interpolation_l=
+ist[] =3D {
+> diff --git a/include/drm/drm_colorop.h b/include/drm/drm_colorop.h
+> index ee6454b08b2d..8ec98521607d 100644
+> --- a/include/drm/drm_colorop.h
+> +++ b/include/drm/drm_colorop.h
+> @@ -126,6 +126,16 @@ enum drm_colorop_curve_1d_type {
+>  	 * The inverse of &DRM_COLOROP_1D_CURVE_GAMMA22
+>  	 */
+>  	DRM_COLOROP_1D_CURVE_GAMMA22_INV,
 > +
-> +	/*
-> +	 * Only unprepare if the SCP is running and holding the clock.
+> +	/**
+> +	 * @DRM_COLOROP_1D_CURVE_HLG_EOTF:
 > +	 *
-> +	 * Note: `scp_ops` doesn't implement .attach() callback, hence
-> +	 * `rproc->state` can never be RPROC_ATTACHED.  Otherwise, it
-> +	 * should also be checked here.
-> +	 */
-> +	if (rproc->state == RPROC_RUNNING)
-> +		clk_unprepare(scp->clk);
-> +	return 0;
-> +}
-> +
-> +static int __maybe_unused scp_resume(struct device *dev)
-> +{
-> +	struct mtk_scp *scp = dev_get_drvdata(dev);
-> +	struct rproc *rproc = scp->rproc;
-> +
-> +	/*
-> +	 * Only prepare if the SCP was running and holding the clock.
+> +	 * enum string "HLG"
 > +	 *
-> +	 * Note: `scp_ops` doesn't implement .attach() callback, hence
-> +	 * `rproc->state` can never be RPROC_ATTACHED.  Otherwise, it
-> +	 * should also be checked here.
+> +	 * Hybrid log-gamma transfer function.
 > +	 */
-> +	if (rproc->state == RPROC_RUNNING)
-> +		return clk_prepare(scp->clk);
-> +	return 0;
-> +}
+> +	DRM_COLOROP_1D_CURVE_HLG_EOTF,
 > +
-> +static const struct dev_pm_ops scp_pm_ops = {
-> +	SET_SYSTEM_SLEEP_PM_OPS(scp_suspend, scp_resume)
-> +};
-> +
->  static struct platform_driver mtk_scp_driver = {
->  	.probe = scp_probe,
->  	.remove = scp_remove,
->  	.driver = {
->  		.name = "mtk-scp",
->  		.of_match_table = mtk_scp_of_match,
-> +		.pm = &scp_pm_ops,
->  	},
->  };
->  
-> -- 
-> 2.53.0.rc2.204.g2597b5adb4-goog
-> 
+
+Hi,
+
+if you read ITU-R BT.2100[1], you will see that the HLG EOTF has three
+parameters: the system gamma, the display nominal peak luminance, and
+the display black luminance. You cannot define a HLG EOTF or its
+inverse without these parameters. One might assume to derive the system
+gamma from the peak luminance, but I would like to leave that as a free
+parameter if possible, because I'm not convinced the formulas for it are
+universally applicable.
+
+The HLG OETF on the other hand is a fixed function. Did you mean that
+instead?
+
+
+[1]: https://gitlab.freedesktop.org/pq/color-and-hdr/-/blob/main/doc/specs.=
+md#itu-r-bt2100
+
+
+Thanks,
+pq
+
+--Sig_/Z3McZGD/cduzL_hjq1GrAml
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEJQjwWQChkWOYOIONI1/ltBGqqqcFAmmFq3YACgkQI1/ltBGq
+qqfkthAAl9JVF0BXYzyrmP1Q4T70bzj+epbVNcVjVbZlOwqrh+7gVLz7rrchimpN
+Sngz1zHLFa91+4ZkuzzGGPqxeCDOVhr0eraz6lrraMo0cWzQdtgfTkKLexw8t4ds
+67U5dv/QBYdDTfQRlxlMGM9hXtG044wNJk0QCzeQQvXSSY3sNNzCVf47JvW4VqW/
+/P3VfzkIP/VyPQqfeX+OFqthjrnMv0wZLR1e5JxzYtk+bXxV7b+KR249uLy61ddN
+4OGn3X2iufMMXyzY9WEq3nOMhhtWG4pzux2KE4OabdbwPRI+fsUadSnVMFQjs7eo
+nSD2mFTXG5DW4UNWnnrWeZKdZee74i+G2G8ojWS0zHqFZ9cRjr7WsAi50xbfl1du
+tLZKuHwOuX1kPgzEmMaNwrzlT/J1ROuSq/tRd3EXdXu6jqK4Abive/XDu1Nkltwt
+MwWkOqnuQ3gnVoGcsEw6Gk71EBl96JlQf1JFBE23FnaarllJXwYYZZVmDtwH1hMx
+LWb9YcDcFeKa+qcEsvvVrWZmP9umpN5h4BkJpLypuAKsq5+o6OnnUapHpc0EyLxD
+vqsVV/NZJyPXlMhyLcO/DUSefJHZKFZvShxZRXi+DRu7K3utFMvq8Qg9mZaJyByG
+CN7kNQAdDQM0ELz7I3pIEleHpeyC3HI80/AA94FgWoh1tdLgTQU=
+=jHqA
+-----END PGP SIGNATURE-----
+
+--Sig_/Z3McZGD/cduzL_hjq1GrAml--
 
