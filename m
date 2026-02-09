@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3DEBE7E0CD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Feb 2026 17:03:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E0B5E7E0CD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Feb 2026 17:36:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Lu184qV9euYKcp5XauGvcgF98v5627jKDTrjeXzM34c=; b=kJ2Xbg+SAwJ8b3QbDbmb/5XBm3
-	2AGIcF39VtJ8RmUaNs3SroxRRtf8RLBKeOoXlyIaZNwBwsGv24rLQi9XuthEnev6x+I3qejaub3xP
-	3dVas790ej3fmh8wceU4geddn6igHI0mL5kobAPK+vBLZBkAyS/SzS5D1D0SrWUmhuVpoAeBvkKVH
-	QUQ5rARSkjNK6E0/iRJZEKaI64cIFxDjIP6exxqWpO+q1AsQ4W+XFz/zMz/FE7GbBVIeqfesxYfsX
-	P4rww1HrWr1jCkuxiaHxoj4XGmApLLJC1j1UbY4WiwKDNoK/ZOSUSkaj43c3nXnu/OBi/5TgkWcRY
-	vIvWGhmA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4uLZFA9EDgwufVfCNMxyHtsbVojkXIGepFycqtkX6Y8=; b=UJR2ac226Gz6+dA12aaudtnsxR
+	7dno0yJr010e3Iz6dSfeHMUODofbaFoyRgKdXk3FBhRv8kS3c0y8X3YTqIXiFLc6Rk9EniXbZCZJD
+	2dwJrP6smtQWYzxn3K+EqeAeBnJYs1Xo9OQjRE1r8Hh5L2FPks2HXGhR/8okZDi2or6uQiTMptqdb
+	JrxDvOj6a/Sz10lRDzgfdp+FGSLaZl1woVc8yFC9ALgyxg18YZUd7vj7daxSdDYZyZZ2jhiJz0tii
+	wDbyLn0lMBGETMyC0/l+Ilz2edB1tR+nLhcW0ATrGa0zpdcC6nyMxdl6h4oW0bYC5GOnhonKmcbAc
+	rBxgQmEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpUfX-0000000Fjuc-26si;
-	Mon, 09 Feb 2026 17:03:27 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1vpVB4-0000000Fmiq-0a9h;
+	Mon, 09 Feb 2026 17:36:02 +0000
+Received: from mgamail.intel.com ([192.198.163.13])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpUfS-0000000FjtG-0DIA
-	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Feb 2026 17:03:26 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-480706554beso34783105e9.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Feb 2026 09:03:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1770656600; x=1771261400; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Lu184qV9euYKcp5XauGvcgF98v5627jKDTrjeXzM34c=;
-        b=K9PVT2PZANDS6U4+z6RNqlHhrmn5nRLK0grspiyr90SNICehUMYMiXB8T48TKwMM0O
-         JtpxMxCRIE17oQN59G/xl1qnYOK/T+m80tXFsW1Taok6OSWrlTmTnXNfCuNd1FNEEmUK
-         RzfGJaOnyGyCObsDPh8508lkg6VvrtLLFI0+0rH+pkNDVRLDjJZxe4SAqtKnFnF+7fIu
-         spAhxFVfTje8mKRcW6JdbQKxp/1IjyPufGEPPiccm5VGJPnjV3RVeYCMOjJ+BPZi/vwW
-         Tih7fpNCcdeXBeifPjmy2H5g6d/JP/ckH058Mh2PEbqFyoRC6jasYRUVkw/SV7p/Hg0K
-         klLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1770656600; x=1771261400;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Lu184qV9euYKcp5XauGvcgF98v5627jKDTrjeXzM34c=;
-        b=XwSSavsCmkfcZfBRS1LMyvK40/ztFB8RvNi6CJIOF0OIIlXZCfTy4AXxQyn0WL6xxC
-         wOPabDmlLYVzac8pqZBXiAeZLkwi0zQ7/gKFIieDtSswmJ+BGwwnSCZ7LUNQHijtqYFP
-         8YrKPqTL31vCjcx3jZE2TS4MtKele7Wxtq0QTeshab9VD+VWJtDVIzbXi3oWfcJg27LI
-         PnNVCjWQ8WUiQOjbD4nA6mKQcH9lSA7/1LxxcmSmrJJTWkPTJFA7OUVtP7T+NLFJEDbt
-         pBp9sZD6/2+ylZ2FiyB5cdoWBhsDYukeqYdout/HI81AgcERUwobED7NxYs/Rd1tDorZ
-         3IUw==
-X-Gm-Message-State: AOJu0Yy5Efpr4IqCYmJG7XeMEgDfBJGmvYbzEJb7aoVp17R0pPxjIQlB
-	IAbioPAKM2qV8U0Kye7fTUlOdJPMdVh069PL5KpZam9kH6qf+2YBrm0sa+R1kA==
-X-Gm-Gg: AZuq6aKvHEEZqtRbd3hJRMbppc8Cj54WL0+gVLHaSzLPb5PlJNjW+TsSLmKhN68eejI
-	M85Q6oCA4QdE0ZGEO6LpwoZ+Xk67dAYPiVHXuoVxrK6JAwkyFM1egEAsHfrJVNFgKFatVBRnAjU
-	iSBLMAaaalCpu0y/6BCG0OhUtuzPJEj2KkzwHdwnKdWUphmW2Li7t9ULaXG/9HJrvr15ocr2yZF
-	5YhE27trP9MZwmDqyGCUbMEJX3nyhbBWQ2XWRAQfV4Nfma4M1DzYtIL3rnPq5eyinYUwQxZO11a
-	yoeTA1uA3Y9L6t6a0JdJ3JSLF11/77n5/ppDMd3C75lywJ6NtBFKRU3mO+3mOAHvv9NWrD5iPHt
-	OIoOsKRovHZH2teN8PCzuFI9ZEC8asX0pwnKUzZ0cVHxCsQyi/RpvP7qEK71aQicbcee8nrGLgM
-	UdlN0/MdmKmdm/aeLWugRzljcU8n0tpQ==
-X-Received: by 2002:a05:600c:5489:b0:47d:3ead:7440 with SMTP id 5b1f17b1804b1-4832022918dmr156996825e9.32.1770656599449;
-        Mon, 09 Feb 2026 09:03:19 -0800 (PST)
-Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4832096f127sm129870525e9.6.2026.02.09.09.03.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Feb 2026 09:03:19 -0800 (PST)
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-To: linux-mediatek@lists.infradead.org
-Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	id 1vpVB1-0000000FmhL-2t2i;
+	Mon, 09 Feb 2026 17:36:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1770658560; x=1802194560;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Hhc+P7FHqU4LgtmCeJTNFX3Ofym7oq3Q9RPdNlZvRIk=;
+  b=Zuk0V5g6MywxZC+MdTn5/kgviydXyJHM/FOMKXvcWTWYI+o9aeBv9SiU
+   ATsegVCZ/Uc28v+8X+sejxuZ1EtTAKEhPVtXsvwFYBOuxUl+x1nBWvT1p
+   +Pfcpdi/+QIvZF3ENiHDQ123JF27hBZN6UNUfYvrfmccvcQ20zS+kcisY
+   XIN3f76wEGS8XBLizS8pcaA932mbnYYzUyDxu0IZbJqo96REFWg/vyVO1
+   7VFofeo/xNrh6GvoIeoxzkTNJBv/Dy8N/2tsY2d7hAhZ3xYPpCzicQjr6
+   efOM6GumwkRxfJW9fDVJrj0cQoE7AU9Sbb2/63/e9VlqA6S3O7CrOqjoh
+   w==;
+X-CSE-ConnectionGUID: /6XN+H2IRjaBFHbkFmB/qw==
+X-CSE-MsgGUID: /XIC/d3rSH2AP5bWbFuelg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11696"; a="74375254"
+X-IronPort-AV: E=Sophos;i="6.21,282,1763452800"; 
+   d="scan'208";a="74375254"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Feb 2026 09:35:56 -0800
+X-CSE-ConnectionGUID: 4hFr77PNRICoNQu5PyKO+Q==
+X-CSE-MsgGUID: HZKBtb4ASjqQd/aLqRnCJQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,282,1763452800"; 
+   d="scan'208";a="216622485"
+Received: from lkp-server01.sh.intel.com (HELO 765f4a05e27f) ([10.239.97.150])
+  by orviesa005.jf.intel.com with ESMTP; 09 Feb 2026 09:35:50 -0800
+Received: from kbuild by 765f4a05e27f with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1vpVAp-00000000oB4-3Ap7;
+	Mon, 09 Feb 2026 17:35:47 +0000
+Date: Tue, 10 Feb 2026 01:35:07 +0800
+From: kernel test robot <lkp@intel.com>
+To: kyle-jk.liao@mediatek.com, Marc Zyngier <maz@kernel.org>,
+	Oliver Upton <oupton@kernel.org>, Joey Gouly <joey.gouly@arm.com>,
+	Suzuki K Poulose <suzuki.poulose@arm.com>,
+	Zenghui Yu <yuzenghui@huawei.com>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Fabien Parent <fparent@baylibre.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2] soc: mediatek: mtk-mmsys: Restore MT8167 routing masks lost during merge
-Date: Mon,  9 Feb 2026 17:01:50 +0000
-Message-ID: <20260209170149.419984-2-l.scorcia@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	Quentin Perret <qperret@google.com>,
+	Vincent Donnefort <vdonnefort@google.com>,
+	linux-arm-kernel@lists.infradead.org, kvmarm@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: oe-kbuild-all@lists.linux.dev, wsd_upstream@mediatek.com,
+	rock.yeh@mediatek.com, hungwen.chien@mediatek.com,
+	"kyle-jk.liao" <kyle-jk.liao@mediatek.com>
+Subject: Re: [PATCH] KVM: arm64: Allow module-owned pages in host stage-2
+ range adjustment
+Message-ID: <202602100127.gNjhsGVB-lkp@intel.com>
+References: <20260209032421.1278325-1-kyle-jk.liao@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260209032421.1278325-1-kyle-jk.liao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260209_090323_722436_F29E618C 
-X-CRM114-Status: UNSURE (   9.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260209_093559_741424_6E416B61 
+X-CRM114-Status: GOOD (  15.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,55 +99,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The original patch that was sent to the mailing lists included the values for
-the route masks, but they got lost during merge: add back the full register
-masks where missing.
+Hi,
 
-Fixes: 060f7875bd23 ("soc: mediatek: mmsys: Add support for MT8167 SoC")
+kernel test robot noticed the following build errors:
 
-Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
----
- drivers/soc/mediatek/mt8167-mmsys.h | 11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
+[auto build test ERROR on kvmarm/next]
+[also build test ERROR on linus/master v6.19 next-20260205]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/soc/mediatek/mt8167-mmsys.h b/drivers/soc/mediatek/mt8167-mmsys.h
-index c468926561b4..eef14083c47b 100644
---- a/drivers/soc/mediatek/mt8167-mmsys.h
-+++ b/drivers/soc/mediatek/mt8167-mmsys.h
-@@ -10,24 +10,29 @@
- #define MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN	0x06c
- 
- #define MT8167_DITHER_MOUT_EN_RDMA0			0x1
-+#define MT8167_DITHER_MOUT_EN_MASK			0x7
-+
- #define MT8167_RDMA0_SOUT_DSI0				0x2
-+#define MT8167_RDMA0_SOUT_MASK				0x3
-+
- #define MT8167_DSI0_SEL_IN_RDMA0			0x1
-+#define MT8167_DSI0_SEL_IN_MASK				0x3
- 
- static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
- 	MMSYS_ROUTE(OVL0, COLOR0,
- 		    MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, OVL0_MOUT_EN_COLOR0,
- 		    OVL0_MOUT_EN_COLOR0),
- 	MMSYS_ROUTE(DITHER0, RDMA0,
--		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_RDMA0,
-+		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_MASK,
- 		    MT8167_DITHER_MOUT_EN_RDMA0),
- 	MMSYS_ROUTE(OVL0, COLOR0,
- 		    MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN, COLOR0_SEL_IN_OVL0,
- 		    COLOR0_SEL_IN_OVL0),
- 	MMSYS_ROUTE(RDMA0, DSI0,
--		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_RDMA0,
-+		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_MASK,
- 		    MT8167_DSI0_SEL_IN_RDMA0),
- 	MMSYS_ROUTE(RDMA0, DSI0,
--		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_DSI0,
-+		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_MASK,
- 		    MT8167_RDMA0_SOUT_DSI0),
- };
- 
+url:    https://github.com/intel-lab-lkp/linux/commits/kyle-jk-liao-mediatek-com/KVM-arm64-Allow-module-owned-pages-in-host-stage-2-range-adjustment/20260209-112902
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/kvmarm/kvmarm.git next
+patch link:    https://lore.kernel.org/r/20260209032421.1278325-1-kyle-jk.liao%40mediatek.com
+patch subject: [PATCH] KVM: arm64: Allow module-owned pages in host stage-2 range adjustment
+config: arm64-defconfig (https://download.01.org/0day-ci/archive/20260210/202602100127.gNjhsGVB-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 15.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260210/202602100127.gNjhsGVB-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202602100127.gNjhsGVB-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   In file included from arch/arm64/include/asm/bug.h:26,
+                    from include/linux/bug.h:5,
+                    from include/linux/thread_info.h:13,
+                    from arch/arm64/include/asm/processor.h:35,
+                    from include/linux/sched.h:13,
+                    from include/linux/resume_user_mode.h:6,
+                    from include/linux/entry-virt.h:6,
+                    from include/linux/kvm_host.h:5,
+                    from arch/arm64/kvm/hyp/nvhe/mem_protect.c:7:
+   arch/arm64/kvm/hyp/nvhe/mem_protect.c: In function 'host_stage2_adjust_range':
+>> arch/arm64/kvm/hyp/nvhe/mem_protect.c:513:74: error: 'PKVM_MODULE_OWNED_PAGE' undeclared (first use in this function)
+     513 |                         (state != PKVM_NOPAGE && state != (PKVM_NOPAGE | PKVM_MODULE_OWNED_PAGE)));
+         |                                                                          ^~~~~~~~~~~~~~~~~~~~~~
+   include/asm-generic/bug.h:110:32: note: in definition of macro 'WARN_ON'
+     110 |         int __ret_warn_on = !!(condition);                              \
+         |                                ^~~~~~~~~
+   arch/arm64/kvm/hyp/nvhe/mem_protect.c:513:74: note: each undeclared identifier is reported only once for each function it appears in
+     513 |                         (state != PKVM_NOPAGE && state != (PKVM_NOPAGE | PKVM_MODULE_OWNED_PAGE)));
+         |                                                                          ^~~~~~~~~~~~~~~~~~~~~~
+   include/asm-generic/bug.h:110:32: note: in definition of macro 'WARN_ON'
+     110 |         int __ret_warn_on = !!(condition);                              \
+         |                                ^~~~~~~~~
+
+
+vim +/PKVM_MODULE_OWNED_PAGE +513 arch/arm64/kvm/hyp/nvhe/mem_protect.c
+
+   492	
+   493	static int host_stage2_adjust_range(u64 addr, struct kvm_mem_range *range)
+   494	{
+   495		struct kvm_mem_range cur;
+   496		kvm_pte_t pte;
+   497		u64 granule;
+   498		s8 level;
+   499		int ret;
+   500		enum pkvm_page_state state;
+   501	
+   502		hyp_assert_lock_held(&host_mmu.lock);
+   503		ret = kvm_pgtable_get_leaf(&host_mmu.pgt, addr, &pte, &level);
+   504		if (ret)
+   505			return ret;
+   506	
+   507		if (kvm_pte_valid(pte))
+   508			return -EAGAIN;
+   509	
+   510		if (pte) {
+   511			state = get_host_state(hyp_phys_to_page(addr));
+   512			WARN_ON(addr_is_memory(addr) &&
+ > 513				(state != PKVM_NOPAGE && state != (PKVM_NOPAGE | PKVM_MODULE_OWNED_PAGE)));
+   514			return -EPERM;
+   515		}
+   516	
+   517		for (; level <= KVM_PGTABLE_LAST_LEVEL; level++) {
+   518			if (!kvm_level_supports_block_mapping(level))
+   519				continue;
+   520			granule = kvm_granule_size(level);
+   521			cur.start = ALIGN_DOWN(addr, granule);
+   522			cur.end = cur.start + granule;
+   523			if (!range_included(&cur, range))
+   524				continue;
+   525			*range = cur;
+   526			return 0;
+   527		}
+   528	
+   529		WARN_ON(1);
+   530	
+   531		return -EINVAL;
+   532	}
+   533	
+
 -- 
-2.43.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
