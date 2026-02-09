@@ -4,72 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65F77E81BA1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Feb 2026 11:42:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A68DE81BAD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Feb 2026 12:21:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ONysd0XmPaCVxy1cOTkdRWd4Qhmxb142xQ4kKjK8kR8=; b=On07+J6squxtZqEs1l2ytVcavW
-	5HQE246YhofqBc1aNB2UWgv7eseG1rYj6kpFWmuSHbmCC7vZruDaP+pVkAJtiyoLWoSBjyuHm4OCL
-	F0cVoHqzpm9WRb6PXc6HG8K5Ec2U0rxpOBb2y30Uq5IA2dRFKJefj2CjD5JF4xIvXEWqQYur9iN4n
-	HSeEvQX09nVsfKktaCuftk6bc/D+nYPedIPrTurRBSDseUZuEoVW3m3VOw39XBtQsRdQOmZpojjJP
-	vjHmnOmpYWM4hX3e3D2cCOVPchocl+1XRdAFLYX8m2WGt87W/KihgdGIKfwUp+VEgyQFpYIeQw5D8
-	rxb/Ix5g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=uYHdjwe6Z2tYVFm2NU+tRR4i/B4PB/vlm+8kwLkkP6w=; b=J3Wqs4xJku/IR8om/Aadwu4vOC
+	XmqtYnS5VaVRwkwZTWGooflYOzhnZ7IrTOWVLzkZflEwJvqUDUcGK99v/zXWnv6HxKq75l7Kmnnel
+	hNsaunXErwM6wCb16qOG6ARYljZ+x2T7zsaPKX8sm6srRxaEfDofo6dhCKUKSn+CsL+lNYcHZcZOM
+	rTzsbT2FVRhGXEly7An/oR50ktSnaPeheBEs1KyW3YeTU0PcpeWFnSlmySCI8KYGvIDYiTKL3TNb8
+	GJji6pHyNOjG8MMMkNAPTb35Mg5rBToHSp+pmQlviEqPLZ4deozY9tMvpl5hmsG9KXeQDBToz1Xfh
+	5L5ATM/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpPed-0000000FJoS-1Q5W;
-	Mon, 09 Feb 2026 11:42:11 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vpQGP-0000000FMFY-3Cc1;
+	Mon, 09 Feb 2026 12:21:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpPeb-0000000FJo6-1mtT
+	id 1vpQGM-0000000FMFB-3rmW
 	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Feb 2026 11:42:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770637327;
-	bh=UbLizSxhVVXAh/w7Ptx95cgdsgsfjuOy3Uoimq/uwnU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=UJhaFLhY5cUPurgSiKNW+qV2sU1tqCeIBIPkRtaL8vF0snruWViLM+scsCLtPyu7P
-	 jsywKHmvHokuyJrp0JcYTVJ1jmqaIGTp9uHBzWWVlV+H6wQtNIM35vT9+nEBqAXOWc
-	 Tq4fHBjn9TjV+OF3uLFKxY/CtLI1iXEGVfEbrITZCSM2aAtAYZP/duPGrJFP+TytCb
-	 OQk4ww2pkpMjvpVcV4UF0ocLBWSOrM0VrG0E6aQJcrrUyaGXnnYGhZTDFqB2d9bQiC
-	 F9EQTYT2Vn2iLyIus99hnkPjpdnU3GFU1Z9oP4Ohd+Qa7XWZwuxNAFKDpQO9Uz6ixk
-	 KnU1PqhXcHxPg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id ECBDD17E13D5;
-	Mon,  9 Feb 2026 12:42:06 +0100 (CET)
-Message-ID: <908f3c03-a8b0-4535-9cfa-294c6ade8152@collabora.com>
-Date: Mon, 9 Feb 2026 12:42:06 +0100
+	Mon, 09 Feb 2026 12:21:12 +0000
+X-UUID: ce1182e405b111f1ad39f32c34db0b1c-20260209
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=uYHdjwe6Z2tYVFm2NU+tRR4i/B4PB/vlm+8kwLkkP6w=;
+	b=rnVOYM7jZvQe+kKaQj/i08fAUZZVCCHVPwgbkyxFPjx1fx6dsihpPG4NwJwv8dynJebDQgMzTkwpyLnuc8ToeJCfyYyHsd1QyJI5WPBty0s00O2xnRf1rUVgoSQ2K9680LLyc57zLKa2UIuFXNsv3KFyPDbPVYuV3yMA4NQUkMM=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:9eb22e8e-7729-4fb5-b242-1dad01626168,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:cbe2185b-a957-4259-bcca-d3af718d7034,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|123|836|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: ce1182e405b111f1ad39f32c34db0b1c-20260209
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1302769787; Mon, 09 Feb 2026 05:21:04 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 9 Feb 2026 20:21:03 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 9 Feb 2026 20:21:03 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+	<avri.altman@sandisk.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <tun-yu.yu@mediatek.com>,
+	<eddie.huang@mediatek.com>, <naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>,
+	<bvanassche@acm.org>
+Subject: [PATCH v1] ufs: core: support UFS 4.1 CQ entry tag
+Date: Mon, 9 Feb 2026 20:20:37 +0800
+Message-ID: <20260209122101.1529379-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [REGRESSION] mt8183-kukui: dts: changes in dts caused display to
- no longer initialize - Was: Re: mt8183-kukui: drm/mediatek: dts: Invalid
- display hw pipeline when probing mediatek-drm
-To: Denis Gessert <denisgessert@gmail.com>,
- Thorsten Leemhuis <regressions@leemhuis.info>
-Cc: Evans Jahja <evansjahja13@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- regressions@lists.linux.dev, =?UTF-8?Q?Otto_Pfl=C3=BCger?=
- <otto.pflueger@abscue.de>
-References: <CAFLVeg9hwH3PbKu5rPWZWqq6yz5mRRoB9oqxDkxNRdEDLGbVBw@mail.gmail.com>
- <CAFLVeg_soeYV4tOYKMo6TMYOtuWWU4TFCjUTxUrVEyGcRwMz7A@mail.gmail.com>
- <df6fcd73-fe0a-42fc-97ce-7e458c340553@leemhuis.info>
- <CAFLVeg-qeWu4ntgyqotsgjogPEyhqrMGG=UDWuZe+-D3K8YPTA@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAFLVeg-qeWu4ntgyqotsgjogPEyhqrMGG=UDWuZe+-D3K8YPTA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260209_034209_709218_27196818 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20260209_042110_991853_B2E1C574 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,54 +90,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/02/26 17:58, Denis Gessert ha scritto:
-> Thanks for the quick response. I compiled 6.18.9 with this patch
-> (without reverting the previous commit) and it boots successfully.
-> 
-> Cheers,
-> Denis
-> 
+From: Peter Wang <peter.wang@mediatek.com>
 
-Well, I missed all those replies to this thread, and sent a redundant reply
-saying .. well, the same as Thorsten (hey, thanks for being faster than me!).
+The UFS 4.1 specification introduces a new completion queue(CQ)
+entry format, allowing the tag to be obtained directly.
 
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/ufs/core/ufs-mcq.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-Happy to see further confirmation that the patch that we both mentioned is
-actually fixing the issue.
-
-Cheers!
-Angelo
-
-> Am Fr., 6. Feb. 2026 um 15:55 Uhr schrieb Thorsten Leemhuis
-> <regressions@leemhuis.info>:
->>
->> On 2/6/26 12:33, Denis Gessert wrote:
->>>
->>> I found this email chain while troubleshooting why my Levovo Duet
->>> (with the MT8183 chip) would not boot using any 6.18.* kernel.
->>>
->>> I can confirm that on my device the current stable 6.18.8 does not
->>> boot unless I revert the commit
->>>
->>> commit e72d63fa0563f8a6e98c10fed3a9ce74dc0536e6 (HEAD)
->>> Author: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>> Date:   Thu Jul 24 10:39:08 2025 +0200
->>>
->>>      arm64: dts: mediatek: mt8183: Migrate to display controller OF graph
->>>
->>> mentioned below. With the reverted commit the device boots as intended.
->>
->> There is a fix for it from Otto here that I guess should help
->> https://lore.kernel.org/lkml/20260106-mt8183-display-graph-v2-1-e7e56054eef5@abscue.de/
->>
->> Side note: lacks a stable tag and maybe should have been merged this
->> cycle instead of the next. But given that 6.19 is immanent it might be
->> good if this could be backported to 6.19.y once it landed in mainline.
->>
->>> PS: Apologies for the potential double-mail.
->> No worries, happens.
->>
->> Ciao, Thortsten
-
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index ad0ada57959a..d8b5cf18a01c 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -273,13 +273,18 @@ void ufshcd_mcq_write_cqis(struct ufs_hba *hba, u32 val, int i)
+ EXPORT_SYMBOL_GPL(ufshcd_mcq_write_cqis);
+ 
+ /*
+- * Current MCQ specification doesn't provide a Task Tag or its equivalent in
++ * UFS 4.0 MCQ specification doesn't provide a Task Tag or its equivalent in
+  * the Completion Queue Entry. Find the Task Tag using an indirect method.
++ * UFS 4.1 and above can directly return the Task Tag in the Completion Queue
++ * Entry.
+  */
+ static int ufshcd_mcq_get_tag(struct ufs_hba *hba, struct cq_entry *cqe)
+ {
+ 	u64 addr;
+ 
++	if (hba->ufs_version >= ufshci_version(4, 1))
++		return cqe->task_tag;
++
+ 	/* sizeof(struct utp_transfer_cmd_desc) must be a multiple of 128 */
+ 	BUILD_BUG_ON(sizeof(struct utp_transfer_cmd_desc) & GENMASK(6, 0));
+ 
+-- 
+2.45.2
 
 
