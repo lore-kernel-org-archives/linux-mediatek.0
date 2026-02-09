@@ -4,107 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C9CEEF06E3
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Feb 2026 02:02:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA8B7EF06ED
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Feb 2026 03:26:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tcETeBu3Dm8+7JToFL4CZXhvEvkcVHG2c1u9m4FGNxA=; b=La3c1/SN65yhdmuV4npb4OGGQb
-	98dcmMiu2UXzlSp8ZRon0itzH118vG4tkwd6mRQMgJhJfML/WmVVXe29KtB5BBNnNMjwbuFy9xO3n
-	4z4F06dSozIkV/eu5obwfj+LfL3fmnzJ6Pmph+1UCtBprPSuve7al4gf/VgXKOpWu9B85WvfoC0wr
-	xLsOb5LMwLLvzGk9dmau/7dndV+30h5DS2NGMGW01FiBKALb4zRAwckP7HbC0krWfZzlP7+Cy7qJU
-	b0uwc2SuxYxdNXi2LhBVpQIytdttvLZ2XtHjNXAZpVqGvmYN5mZkkSJKmwnqu0GGA6KY2GdB2pcsD
-	vTAV2RbQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zdf80m6iia5xIhe9PY6XN+0habe8icFkZYue+zSTHR4=; b=MT5UPQIz/pDaq6c5+WWBpk/fyB
+	EjkzHOBTlViv5yMQuLN7lkX67yjW3fG5lZmN8ubQKUK05THo7GN9825AygcCRhQn5OBd7FpnGBECd
+	TE0ZF2kAI1bZ0zCRiqOcEy55cGjHHgpXNQBo/7szl95Zo6VF5HM0eqdk38+8OdwaDY8j75KMb5t7A
+	Gf6p+vuo+OV8bMQuRbOZcN1OrowYDcaCVFtlUHlUpUT7PZdnNBLhsfaUr4UcL+hWoUrn52utEiiLn
+	LRQC990IO/nVfIN7C70vNQrT54S0gJVx2Bj99xP3Qlt0dNis1vgx169T3xFE6kcdqb28VWsMEGn/1
+	Bg4WkCWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vou7o-0000000CvO9-05QE;
-	Sun, 08 Feb 2026 02:02:12 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1vpHuT-0000000Elur-16RM;
+	Mon, 09 Feb 2026 03:26:01 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vou7l-0000000CvNS-08Zy;
-	Sun, 08 Feb 2026 02:02:10 +0000
-Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6181t2k11885188;
-	Sun, 8 Feb 2026 02:01:57 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	corp-2025-04-25; bh=tcETeBu3Dm8+7JToFL4CZXhvEvkcVHG2c1u9m4FGNxA=; b=
-	dYpWGi7kWFnDoR8VmoWzjOvpSNkJ/uDdNwH0LNrj73IhDQC8Qvn9ph4Ow38l6yji
-	ON0y9To2angkzFnSGJX9CiO01mHE0IIqE/05/KDDq5UIZhbZGGMh0OZlWCWQZRGV
-	q3zVCirqo+MG7ex/nnzprH1RMhiHJ3rmarcjazsXoqyuF3XhB4QuSwLIzDToZhij
-	ZjBXUnP0lkSCQIunvpPQaxfi3C/sTOI7LUcJzK829OD1ykCrgV7Mtu7mV96ZWiGB
-	tR3TtBTl2j/AxFFMxgCUjcQtWajVwm7OvQ+V3JsoIgqdfKMUCJ61RE5O1il7SJWG
-	7ejyrsLuMJPgOZ/MMyaL5A==
-Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4c5xjyrhpa-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Sun, 08 Feb 2026 02:01:56 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 6181pw6w006636;
-	Sun, 8 Feb 2026 02:01:55 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 4c5uubuk4b-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Sun, 08 Feb 2026 02:01:55 +0000
-Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 61821sxM016745;
-	Sun, 8 Feb 2026 02:01:54 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTP id 4c5uubuk3y-2;
-	Sun, 08 Feb 2026 02:01:54 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
-        Peter Wang <peter.wang@mediatek.com>,
-        Chaotian Jing <chaotian.jing@mediatek.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Arnd Bergmann <arnd@kernel.org>
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        Arnd Bergmann <arnd@arndb.de>, Stanley Jhu <chu.stanley@gmail.com>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        Avri Altman <avri.altman@wdc.com>,
-        Bart Van Assche <bvanassche@acm.org>,
-        Chun-Hung Wu <chun-hung.wu@mediatek.com>, linux-scsi@vger.kernel.org,
-        linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-        linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] scsi: ufs: host: mediatek: require CONFIG_PM
-Date: Sat,  7 Feb 2026 21:01:43 -0500
-Message-ID: <177051564504.3805738.4590217986991125255.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.51.2
-In-Reply-To: <20260202095052.1232703-1-arnd@kernel.org>
-References: <20260202095052.1232703-1-arnd@kernel.org>
+	id 1vpHuR-0000000EluS-0Qcm;
+	Mon, 09 Feb 2026 03:26:00 +0000
+X-UUID: 082c0cba056711f1ad39f32c34db0b1c-20260208
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zdf80m6iia5xIhe9PY6XN+0habe8icFkZYue+zSTHR4=;
+	b=HEwH8cDbsOEpF/LN5SZZNb0dhhP5j4F8rudHNj7qN21UmKhw/aN7zx0XxxVhUM74aK3D8SJ0AcAK3dmu5rS9nbQpDY7VH+QdeeJqYAV2dF3yG3maF6Vu6gNcMCsGiXl1FtH3BwuUWLvX/1tCI3rgN2N1+/BbR8UjyhFRcZVKLqo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:8e93d860-8560-411d-a35b-16da45660f3e,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:f765135b-a957-4259-bcca-d3af718d7034,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|123|836|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 082c0cba056711f1ad39f32c34db0b1c-20260208
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <kyle-jk.liao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1702595252; Sun, 08 Feb 2026 20:25:50 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 9 Feb 2026 11:25:47 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 9 Feb 2026 11:25:47 +0800
+From: <kyle-jk.liao@mediatek.com>
+To: Marc Zyngier <maz@kernel.org>, Oliver Upton <oupton@kernel.org>, Joey
+ Gouly <joey.gouly@arm.com>, Suzuki K Poulose <suzuki.poulose@arm.com>,
+	Zenghui Yu <yuzenghui@huawei.com>, Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Quentin
+ Perret <qperret@google.com>, Vincent Donnefort <vdonnefort@google.com>,
+	<linux-arm-kernel@lists.infradead.org>, <kvmarm@lists.linux.dev>,
+	<linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+CC: <wsd_upstream@mediatek.com>, <rock.yeh@mediatek.com>,
+	<hungwen.chien@mediatek.com>, kyle-jk.liao <kyle-jk.liao@mediatek.com>
+Subject: [PATCH] KVM: arm64: Allow module-owned pages in host stage-2 range adjustment
+Date: Mon, 9 Feb 2026 11:24:13 +0800
+Message-ID: <20260209032421.1278325-1-kyle-jk.liao@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-02-08_01,2026-02-05_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 adultscore=0 phishscore=0
- bulkscore=0 mlxlogscore=999 suspectscore=0 mlxscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2601150000
- definitions=main-2602080015
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA4MDAxNSBTYWx0ZWRfX6izQoR5uz+l7
- NsVyF9eHFbaYsduFwWxucBN0oVqzRDIyc854L9vXglXb4+MCJOg7qr0dT3340qS+cvnnZbdacBo
- CaUe4BiwUZn033ac7/f9XWhLDMJgDIW3R+um3uewJ211Ar13MzQ0Wq+piXwMU3TaQjiI/nKj3Z9
- ev0OZsV1mtYl/2JQxpFrJviqQGuCjkgfqtZmTFgYl6cKkydhd3qbDziD4ogkA7ToP7fFMpwJ++k
- uWf1DHQK8FivqtJIwFzdmn6wa97Imns73y/yoEJJciaNcuSUOKxJktEgv9uMEWZ9RvwX/q+peDe
- LJgYamD7bMwkFofPXzsgqu+VyYIfb3XkX9VZYy9hf4fMzhn/aKtLbpycRA3FBCdiCj5CrQ/roS9
- Iwl2YHaw2MyDqzxPbtkxsMQe1P6hjNPx3FHMSw+X0NbKAnDflRzhk6t6tTMR1WRZTuw4EfZZnSj
- 89VTCQyAsYhcJTJAUVMI9M3hKC2Tmcqo1UanRxRU=
-X-Proofpoint-GUID: SXHAOhsG7xFZ8meJW56HdLJhmdmPwTe-
-X-Proofpoint-ORIG-GUID: SXHAOhsG7xFZ8meJW56HdLJhmdmPwTe-
-X-Authority-Analysis: v=2.4 cv=VPLQXtPX c=1 sm=1 tr=0 ts=6987ee94 b=1 cx=c_pps
- a=zPCbziy225d3KhSqZt3L1A==:117 a=zPCbziy225d3KhSqZt3L1A==:17
- a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=VwQbUJbxAAAA:8
- a=Fpp2hou-xS4CYN6b9oAA:9 a=QEXdDO2ut3YA:10 cc=ntf awl=host:12103
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260207_180209_073714_3055D074 
-X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-CacheID: sfid-20260208_192559_160903_99F72CCE 
+X-CRM114-Status: UNSURE (   9.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -120,22 +91,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 02 Feb 2026 10:50:18 +0100, Arnd Bergmann wrote:
+From: "kyle-jk.liao" <kyle-jk.liao@mediatek.com>
 
-> The added print statement from a recent fix causes the
-> driver to fail building when CONFIG_PM is disabled:
-> 
-> drivers/ufs/host/ufs-mediatek.c: In function 'ufs_mtk_resume':
-> drivers/ufs/host/ufs-mediatek.c:1890:40: error: 'struct dev_pm_info' has no member named 'request'
->  1890 |                         hba->dev->power.request,
-> 
-> [...]
+The host_stage2_adjust_range() function triggers a WARN_ON when
+encountering pages marked as both PKVM_NOPAGE and PKVM_MODULE_OWNED_PAGE.
+This occurs when load_unaligned_zeropad() accesses memory that crosses
+page boundaries, where one of the pages is module-owned.
 
-Applied to 6.20/scsi-queue, thanks!
+Extend the check to accept pages with the PKVM_MODULE_OWNED_PAGE flag
+in addition to PKVM_NOPAGE, preventing spurious warnings during normal
+module memory access patterns.
 
-[1/1] scsi: ufs: host: mediatek: require CONFIG_PM
-      https://git.kernel.org/mkp/scsi/c/bbb8d98fb453
+Signed-off-by: kyle-jk.liao <kyle-jk.liao@mediatek.com>
+---
+ arch/arm64/kvm/hyp/nvhe/mem_protect.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
+diff --git a/arch/arm64/kvm/hyp/nvhe/mem_protect.c b/arch/arm64/kvm/hyp/nvhe/mem_protect.c
+index 49db32f3ddf7..baaabf4b5112 100644
+--- a/arch/arm64/kvm/hyp/nvhe/mem_protect.c
++++ b/arch/arm64/kvm/hyp/nvhe/mem_protect.c
+@@ -495,6 +495,7 @@ static int host_stage2_adjust_range(u64 addr, struct kvm_mem_range *range)
+ 	u64 granule;
+ 	s8 level;
+ 	int ret;
++	enum pkvm_page_state state;
+ 
+ 	hyp_assert_lock_held(&host_mmu.lock);
+ 	ret = kvm_pgtable_get_leaf(&host_mmu.pgt, addr, &pte, &level);
+@@ -505,8 +506,9 @@ static int host_stage2_adjust_range(u64 addr, struct kvm_mem_range *range)
+ 		return -EAGAIN;
+ 
+ 	if (pte) {
++		state = get_host_state(hyp_phys_to_page(addr));
+ 		WARN_ON(addr_is_memory(addr) &&
+-			get_host_state(hyp_phys_to_page(addr)) != PKVM_NOPAGE);
++			(state != PKVM_NOPAGE && state != (PKVM_NOPAGE | PKVM_MODULE_OWNED_PAGE)));
+ 		return -EPERM;
+ 	}
+ 
 -- 
-Martin K. Petersen
+2.45.2
+
 
