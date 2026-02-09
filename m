@@ -4,123 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CF36E94616
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Feb 2026 21:49:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87BA2E94617
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Feb 2026 22:45:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oDoWGOvnSSAXOftdZaUiXU7zO2JN++fSCDG5BqTE7LQ=; b=YVoZENF5xyyQyj2KGxz/AiLKGQ
-	TEteWdZgujC9ACwbQWqNn/NLwz3T1rsoqjz3I/lfim4fbpck69Cq6qNd8MamaP9pT86PAePbXgnzh
-	6kV9OwqFTmsgkDssLAfrjSs/mMYCSPz2U8/inBNPiSDQkZWE/xEJO+u0QsdxKjFpsIEXXmiEwOQIH
-	9h8aRhHH2R7YTdd8T20QUqoUNXczQjtyao2urH6lnBHWIRcQHdZhbMVPqWy2/+y2NLQbwbPa09P1/
-	ZobZxiAPrVHLZDoAoGJH0yRPAYLT42xsFGxyC71wYMs+/i3FISFYs/cnnRbO4PNvXrHlxlFnIiBkm
-	a2OKZAbg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BFy5cWkNZY/+Xo/CLxFQ4IBzC+Kh2JxP1U3xs6wsvsc=; b=yteatuYN2PN88w9TO/jxDYUpfj
+	kG85Wz5D+I93wYRPeZ9AjSZlMPEz3tJy81+pDuwWRJfJPKyqszoPKYW+q69scG0QVswuRwemJIGR0
+	60wwXgHYlbWQtQvmQ1+VLKweuTbu2ZycYUvO4wma6cmcz45lFDca64Q3VOwLfT9hlD9NaDRJsBEdc
+	8zcGEv/WG0WpisZnLZj1l3ro2KOcSBp+46I74Nuv46kJryFwHf6myrMCqeZTk7u4fULn/Fy3DTTks
+	k5R9RsQHt1mUIS25iHp/qPrIt6jLxsKd0hYW1RKlKSXGxICK9iLZlYGIydR5IY+icVWWBEaqtmRJD
+	GA9qsWNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpZ8V-0000000G45U-0BLJ;
-	Mon, 09 Feb 2026 21:49:39 +0000
-Received: from galaxy.gendns.com ([66.235.175.158])
+	id 1vpa0I-0000000G9H2-47IC;
+	Mon, 09 Feb 2026 22:45:14 +0000
+Received: from mgamail.intel.com ([198.175.65.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpZ8R-0000000G41p-3SKd;
-	Mon, 09 Feb 2026 21:49:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lechnology.com; s=default; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=oDoWGOvnSSAXOftdZaUiXU7zO2JN++fSCDG5BqTE7LQ=; b=sNxY3zZt0CSHmXGl+BwW8I9o/L
-	fDkqryCPQ7Tu5xiyV8p7zo45MjItLfp/TiYZQ6zZuGMnQipbSbSe6FKOb3KAJGfi+u9WEtzv7fYmJ
-	NmvttdM3m8nD7HpgFXJ6sNzGgL+e+gnmUQPHLxkB8kseZB47G+wPQRdMR22FVOh5a1DUhN+fmhnBS
-	z7lU/h35W3Nl4P7sBUgaUcPL2DcWw2916zPttjYbDZwhzk7iuneETixon/AtzYsjPlICRv0RjoqDy
-	N4H1yPTtjVzXAEtcCqt07VRMOttqSSYxQbRVWARzPIY5wTGB9V5cpor3Xh+IXUnjMbu1eVvqKgAof
-	QjviySPg==;
-Received: from ip98-183-112-25.ok.ok.cox.net ([98.183.112.25]:41990 helo=[192.168.1.142])
-	by galaxy.gendns.com with essmtpa  (TLS1.3) tls TLS_AES_128_GCM_SHA256
-	(Exim 4.99.1)
-	(envelope-from <david@lechnology.com>)
-	id 1vpZ7j-00000002kl3-0bkj;
-	Mon, 09 Feb 2026 16:48:49 -0500
-Message-ID: <1b092f9c-d0b1-47df-a83e-a99d7491a32b@lechnology.com>
-Date: Mon, 9 Feb 2026 15:48:45 -0600
+	id 1vpa0F-0000000G9GF-1drm;
+	Mon, 09 Feb 2026 22:45:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1770677111; x=1802213111;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=tkWj3JgcbeYlPLHKSXUowNE5MSQz4gAoqclO6I2NS5M=;
+  b=jXu1ZV8e9zIY0ll8tAb5xyWlXTcpAATy8OdWPmfqKw4dpNq/O6w/gYmn
+   +2ta9sYUPVwNPvHuVmnn36+mRvrfkDl55IPN3Q91maXNWmDHSTdSOGSXl
+   fmJLzem3l/3B8M25iaBt3USgvmK15BNrcvtkZDRprvYqYdTkQKvAACYB8
+   kq9rL9EJ1OPutFsH6PIm7d8A9t1lcUt4VGscqJHnMMv/Yg3jQKwHLlD/c
+   bUFAKt8bZSZWcfGDMqt6kM8VAJPDqwftqxQpxkRHEqE/HR7hKBez9sovi
+   jUxBDV4MKQ/UikgdxFNgs4ZidlNypJA1uPY3tG/wAlJvAajQ3xO52zDDa
+   Q==;
+X-CSE-ConnectionGUID: 2NcZzyPmSTSazQDQI/HCKg==
+X-CSE-MsgGUID: 7ozHTBMtS7G4tCEQxFIHVQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11696"; a="89213180"
+X-IronPort-AV: E=Sophos;i="6.21,283,1763452800"; 
+   d="scan'208";a="89213180"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Feb 2026 14:45:06 -0800
+X-CSE-ConnectionGUID: hD8YfJwIQVewqJzeCu1T2w==
+X-CSE-MsgGUID: 0pEVhVq7QsGfJlBgGcnrwg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,283,1763452800"; 
+   d="scan'208";a="211031702"
+Received: from lkp-server01.sh.intel.com (HELO 765f4a05e27f) ([10.239.97.150])
+  by orviesa010.jf.intel.com with ESMTP; 09 Feb 2026 14:45:01 -0800
+Received: from kbuild by 765f4a05e27f with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1vpa03-00000000oNk-1EMJ;
+	Mon, 09 Feb 2026 22:44:59 +0000
+Date: Tue, 10 Feb 2026 06:44:17 +0800
+From: kernel test robot <lkp@intel.com>
+To: kyle-jk.liao@mediatek.com, Marc Zyngier <maz@kernel.org>,
+	Oliver Upton <oupton@kernel.org>, Joey Gouly <joey.gouly@arm.com>,
+	Suzuki K Poulose <suzuki.poulose@arm.com>,
+	Zenghui Yu <yuzenghui@huawei.com>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Quentin Perret <qperret@google.com>,
+	Vincent Donnefort <vdonnefort@google.com>,
+	linux-arm-kernel@lists.infradead.org, kvmarm@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	wsd_upstream@mediatek.com, rock.yeh@mediatek.com,
+	hungwen.chien@mediatek.com,
+	"kyle-jk.liao" <kyle-jk.liao@mediatek.com>
+Subject: Re: [PATCH] KVM: arm64: Allow module-owned pages in host stage-2
+ range adjustment
+Message-ID: <202602100627.0HOjIqkT-lkp@intel.com>
+References: <20260209032421.1278325-1-kyle-jk.liao@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8189: Add pinmux macro header
- file
-To: Cathy Xu <ot_cathy.xu@mediatek.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Yong Mao <yong.mao@mediatek.com>, Wenbin Mei <Wenbin.Mei@mediatek.com>,
- Axe Yang <Axe.Yang@mediatek.com>, Lei Xue <Lei.Xue@mediatek.com>
-References: <20250919020525.7904-1-ot_cathy.xu@mediatek.com>
-Content-Language: en-US
-From: David Lechner <david@lechnology.com>
-Autocrypt: addr=david@lechnology.com; keydata=
- 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
-In-Reply-To: <20250919020525.7904-1-ot_cathy.xu@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - galaxy.gendns.com
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - lechnology.com
-X-Get-Message-Sender-Via: galaxy.gendns.com: authenticated_id: davidmain+lechnology.com/only user confirmed/virtual account not confirmed
-X-Authenticated-Sender: galaxy.gendns.com: davidmain@lechnology.com
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260209032421.1278325-1-kyle-jk.liao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260209_134935_913225_95FBC40E 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20260209_144511_526888_685FBE86 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,64 +100,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/18/25 9:03 PM, Cathy Xu wrote:
-> Add the pinctrl header file on MediaTek mt8189.
-> 
-> Signed-off-by: Cathy Xu <ot_cathy.xu@mediatek.com>
-> ---
-> This patch is base on the patch series:
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=981475
-> [1] dt-bindings: pinctrl: mediatek: Add support for mt8189
-> [2] arm64: dts: mediatek: mt8189: Add pinmux macro header file
-> [3] pinctrl: mediatek: Add pinctrl driver on mt8189
-> Since patch [1] and [3] of the series have already been merged, this
-> patch(patch [2]) is being resent individually after modifications.
-> ---
->  arch/arm64/boot/dts/mediatek/mt8189-pinfunc.h | 1125 +++++++++++++++++
->  1 file changed, 1125 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-pinfunc.h
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8189-pinfunc.h b/arch/arm64/boot/dts/mediatek/mt8189-pinfunc.h
-> new file mode 100644
-> index 000000000000..df69f50c267a
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8189-pinfunc.h
+Hi,
 
-General question:
+kernel test robot noticed the following build errors:
 
-Why do we have similar files in two different places different places?
+[auto build test ERROR on kvmarm/next]
+[also build test ERROR on linus/master v6.19 next-20260209]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-$ ls arch/arm64/boot/dts/mediatek/*-pin*
-arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h
-arch/arm64/boot/dts/mediatek/mt6878-pinfunc.h
-arch/arm64/boot/dts/mediatek/mt6893-pinfunc.h
-arch/arm64/boot/dts/mediatek/mt8167-pinfunc.h
-arch/arm64/boot/dts/mediatek/mt8173-pinfunc.h
-arch/arm64/boot/dts/mediatek/mt8196-pinfunc.h
-arch/arm64/boot/dts/mediatek/mt8516-pinfunc.h
+url:    https://github.com/intel-lab-lkp/linux/commits/kyle-jk-liao-mediatek-com/KVM-arm64-Allow-module-owned-pages-in-host-stage-2-range-adjustment/20260209-112902
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/kvmarm/kvmarm.git next
+patch link:    https://lore.kernel.org/r/20260209032421.1278325-1-kyle-jk.liao%40mediatek.com
+patch subject: [PATCH] KVM: arm64: Allow module-owned pages in host stage-2 range adjustment
+config: arm64-allmodconfig (https://download.01.org/0day-ci/archive/20260210/202602100627.0HOjIqkT-lkp@intel.com/config)
+compiler: clang version 19.1.7 (https://github.com/llvm/llvm-project cd708029e0b2869e80abe31ddb175f7c35361f90)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260210/202602100627.0HOjIqkT-lkp@intel.com/reproduce)
 
-$ ls include/dt-bindings/pinctrl/mt*
-include/dt-bindings/pinctrl/mt65xx.h
-include/dt-bindings/pinctrl/mt6779-pinfunc.h
-include/dt-bindings/pinctrl/mt6795-pinfunc.h
-include/dt-bindings/pinctrl/mt6797-pinfunc.h
-include/dt-bindings/pinctrl/mt7623-pinfunc.h
-include/dt-bindings/pinctrl/mt8135-pinfunc.h
-include/dt-bindings/pinctrl/mt8183-pinfunc.h
-include/dt-bindings/pinctrl/mt8186-pinfunc.h
-include/dt-bindings/pinctrl/mt8192-pinfunc.h
-include/dt-bindings/pinctrl/mt8195-pinfunc.h
-include/dt-bindings/pinctrl/mt8365-pinfunc.h
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202602100627.0HOjIqkT-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> arch/arm64/kvm/hyp/nvhe/mem_protect.c:513:53: error: use of undeclared identifier 'PKVM_MODULE_OWNED_PAGE'
+     513 |                         (state != PKVM_NOPAGE && state != (PKVM_NOPAGE | PKVM_MODULE_OWNED_PAGE)));
+         |                                                                          ^
+   1 error generated.
 
 
-Plus one different naming pattern.
+vim +/PKVM_MODULE_OWNED_PAGE +513 arch/arm64/kvm/hyp/nvhe/mem_protect.c
 
-$ ls include/dt-bindings/pinctrl/mediatek,*
-include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h
+   492	
+   493	static int host_stage2_adjust_range(u64 addr, struct kvm_mem_range *range)
+   494	{
+   495		struct kvm_mem_range cur;
+   496		kvm_pte_t pte;
+   497		u64 granule;
+   498		s8 level;
+   499		int ret;
+   500		enum pkvm_page_state state;
+   501	
+   502		hyp_assert_lock_held(&host_mmu.lock);
+   503		ret = kvm_pgtable_get_leaf(&host_mmu.pgt, addr, &pte, &level);
+   504		if (ret)
+   505			return ret;
+   506	
+   507		if (kvm_pte_valid(pte))
+   508			return -EAGAIN;
+   509	
+   510		if (pte) {
+   511			state = get_host_state(hyp_phys_to_page(addr));
+   512			WARN_ON(addr_is_memory(addr) &&
+ > 513				(state != PKVM_NOPAGE && state != (PKVM_NOPAGE | PKVM_MODULE_OWNED_PAGE)));
+   514			return -EPERM;
+   515		}
+   516	
+   517		for (; level <= KVM_PGTABLE_LAST_LEVEL; level++) {
+   518			if (!kvm_level_supports_block_mapping(level))
+   519				continue;
+   520			granule = kvm_granule_size(level);
+   521			cur.start = ALIGN_DOWN(addr, granule);
+   522			cur.end = cur.start + granule;
+   523			if (!range_included(&cur, range))
+   524				continue;
+   525			*range = cur;
+   526			return 0;
+   527		}
+   528	
+   529		WARN_ON(1);
+   530	
+   531		return -EINVAL;
+   532	}
+   533	
 
-
-
-Which one is preferred?
-
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
