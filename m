@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B889E7E0CA
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Feb 2026 11:12:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 472C8E7E0CE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Feb 2026 11:34:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pK5Jb5YU3/bUOSoHbUzBG2UQRqskDuKlCeBBelau2Hk=; b=DBkQok92QXyYjg+bfl8tN+t2UY
-	TjYfRJUY6EvrHT7k4mVLYcxI9Fie2eJIOmntaiaaLTkaLr+ZbroYM7v3uHGzRXZZtd82a63GfwSSr
-	SWU6W3V7vKr+oqETvsCW0POgaohNTFSRo6RhQYCLPoH6b7CrBbnhAfbOnMUjHwYa/BEBufWQ+RRrS
-	cST0JzV3+C0KdtKL4v/wwPf5KF0zAmcAP/jFyo4sNW8byWwoEYneNIWjRkfHmokfMIAP/7bHO6/Ht
-	27cSE9DqKgIm3IY966cIdNWCPY5I1QrLtgiDqOJLKWLnG5Phh+e1x4CATA3odI/CLwqT6lw1uKPoN
-	SpOct5Xg==;
+	bh=GeaatGTazdImiT/XM1FnhJJRe6EeXeVkuzHwA/9Wk18=; b=GhEF6xQn7MJkE4INnow9N50+LG
+	WaMdkDuvJEonH5LN7ZM6H8g+eIbKjvMhD7aYGg2H+eeFUEE755hkd9qNArYv4pZb0+yg0Eq53KbxT
+	4M0mWrQ5vaQPHID3jG2/A0xBj1uRBvQLO+za5+9ycp1AOEEitnOjH+A1kyADHxGYzPjlM0RrzFkFJ
+	QNi80stTlHYYIpucjvrlUaptYN+BcgIyb1KSSU41naCWzUMaQwLNDqGjXadFiX4D3hJdcWfrOukq3
+	ob/YbF17FM10Mjun5TwvrphDX7Nt8Spckr5vw7t90JUvWyklzk0VWdKNnYllcNdIl11cPcldhY0H0
+	S4fEOJsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpPBs-0000000FHF5-1m1E;
-	Mon, 09 Feb 2026 11:12:28 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vpPXU-0000000FJ0W-3P2N;
+	Mon, 09 Feb 2026 11:34:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpPBn-0000000FHEO-290A;
-	Mon, 09 Feb 2026 11:12:25 +0000
+	id 1vpPXS-0000000FIzX-1BBl;
+	Mon, 09 Feb 2026 11:34:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770635539;
-	bh=prs/+pekCsrcWWpQ9nWoZrcm7PMTmPz42teQbvfpKMs=;
+	s=mail; t=1770636883;
+	bh=4QrS573yngF8n4NJk1Mnael+xbLQy+ZP/mKMuKo0Ysc=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ePDf+wmsnkN4HZOJDSqmh1eJLQ8Lm2Iu64aayHftqUM9CoxSL+0X0aHGVsI0HQ1Lc
-	 Fyz2Xes1Nq5C4lWyRTLw/I4I5uZgzj7l6Tfvz4iZfsQxnUY9pWQjRWgr3Iu8q3tJkd
-	 hNrrqcf8a8+rLgl0TEIzHGV5iMb5brZVcKdW6XmqVVNrBYfwh9zeoiyVX2m8rJQn0h
-	 w06QJA25Qd+bkmhKEPKZ4mtAXoJqkFNUVawxKzGHJUjz9hfhaznRR88zKsYsFdnvBL
-	 XdsCAw8WiESwCozCG1oTozQgNkKlyIj1E12cwnXH1jbm/onR4YJN9+3xGW9OHkFMTe
-	 5INIzqP7grJ2w==
+	b=WwrKdaXGqV2ja4v3TQhhSZpBckr3H70ZFVczJeL8EUXvlZNRaLuI6fQTTSG0CVVHW
+	 8lPe2ABwjsv3/lAwLiVYsRvnHYowhnbIKcImczfEuW9bQYiPha9vUAgel8vydBNojY
+	 MOjhtHgVXRPWHDWMw7/AP1BCtVv7+7RcIXv3oUfJZ9aytAHR+KC+iqdrfneufQf492
+	 2SxvFpjVn/4escftOJgZQO1kESdWPtZLsPBZjZ8PrfO60ABooWv6aPyA66ERArfUlJ
+	 qRIsqMwI+pXkBgU5j2WI203EaPGl1C4gYci4Rprc9CsNcN+xs2XDR7awRE/KMEXZ9w
+	 tbDXFgwbTrrfw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4B7BC17E0699;
-	Mon,  9 Feb 2026 12:12:19 +0100 (CET)
-Message-ID: <e50c03af-309b-4a9e-99b9-048203e8acf8@collabora.com>
-Date: Mon, 9 Feb 2026 12:12:18 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C60BA17E0699;
+	Mon,  9 Feb 2026 12:34:42 +0100 (CET)
+Message-ID: <3476c51b-9293-40f1-8b5c-9ac9802d7d97@collabora.com>
+Date: Mon, 9 Feb 2026 12:34:42 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] soc: mediatek: mtk-mmsys: Restore MT8167 routing masks
- lost during merge
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
- linux-mediatek@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Fabien Parent <fparent@baylibre.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20260206122623.670023-1-l.scorcia@gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: mfd: syscon: Add mt8516-syscfg
+To: Krzysztof Kozlowski <krzk@kernel.org>, Luca Weiss <luca@lucaweiss.eu>
+Cc: ~postmarketos/upstreaming@lists.sr.ht, Lee Jones <lee@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, phone-devel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260206-mt8516-syscfg-syscon-v1-0-96dcb37acdb4@lucaweiss.eu>
+ <20260206-mt8516-syscfg-syscon-v1-1-96dcb37acdb4@lucaweiss.eu>
+ <20260207-tricky-strange-swan-6f11b0@quoll>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260206122623.670023-1-l.scorcia@gmail.com>
+In-Reply-To: <20260207-tricky-strange-swan-6f11b0@quoll>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260209_031223_795388_499EB16B 
-X-CRM114-Status: GOOD (  16.70  )
+X-CRM114-CacheID: sfid-20260209_033446_490624_033112AC 
+X-CRM114-Status: GOOD (  19.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,74 +80,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/02/26 13:26, Luca Leonardo Scorcia ha scritto:
-> The original patch at
-> https://lore.kernel.org/all/20201027160631.608503-2-fparent@baylibre.com/
-> included the values for the route masks, but they got lost during merge.
+Il 07/02/26 11:51, Krzysztof Kozlowski ha scritto:
+> On Fri, Feb 06, 2026 at 11:20:48AM +0100, Luca Weiss wrote:
+>> Document the Mediatek mt8516-syscfg.
 > 
-> Fixes: 060f7875bd23 ("soc: mediatek: mmsys: Add support for MT8167 SoC")
+> Which is what? What is syscfg block?
 > 
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 
-Hello Luca,
-thanks for this patch!
+Not sure this is really a SYSCFG block.
 
-I agree that the masks should be corrected, and I think the code itself is all
-good stuff. Great job!
+This should be a GPIO controller range, which is split between IOCFG and EINT.
+Now, the legacy drivers are declaring the EINT iospace in the pinctrl node, and
+getting the GPIO controller (IOCFG) iospace from a regmap.
 
-However, the commit description needs to be fixed; please, don't add links, as
-those are meaningful now, but may not work in some years from now.
+I don't have any board with MT8516... but well, the really-right-thing to do
+would be to migrate that SoC off of the legacy driver, to the new-style one
+that *properly* takes two iospaces:
+"base" -> (0x10005000)
+"eint" -> (0x1000b000)
 
-Something like:
-"The original patch that got sent to the mailing lists included the values for
-the route masks, but they got lost during merge: add back the full register
-masks where missing"
+Luca, if you've got such a board, could you please try to migrate this SoC out
+of the improper (but working good) driver and bindings?
 
-...the Fixes tag is good.
+If not... well, I think this block is IOCFG, not SYSCFG...
 
 Cheers,
 Angelo
 
-> ---
->   drivers/soc/mediatek/mt8167-mmsys.h | 11 ++++++++---
->   1 file changed, 8 insertions(+), 3 deletions(-)
+>>
+>> Signed-off-by: Luca Weiss <luca@lucaweiss.eu>
+>> ---
+>>   Documentation/devicetree/bindings/mfd/syscon.yaml | 2 ++
+>>   1 file changed, 2 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
+>> index e57add2bacd3..a67699f1faee 100644
+>> --- a/Documentation/devicetree/bindings/mfd/syscon.yaml
+>> +++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+>> @@ -91,6 +91,7 @@ select:
+>>             - mediatek,mt8135-pctl-b-syscfg
+>>             - mediatek,mt8173-pctl-a-syscfg
+>>             - mediatek,mt8365-syscfg
+>> +          - mediatek,mt8516-syscfg
 > 
-> diff --git a/drivers/soc/mediatek/mt8167-mmsys.h b/drivers/soc/mediatek/mt8167-mmsys.h
-> index c468926561b4..eef14083c47b 100644
-> --- a/drivers/soc/mediatek/mt8167-mmsys.h
-> +++ b/drivers/soc/mediatek/mt8167-mmsys.h
-> @@ -10,24 +10,29 @@
->   #define MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN	0x06c
->   
->   #define MT8167_DITHER_MOUT_EN_RDMA0			0x1
-> +#define MT8167_DITHER_MOUT_EN_MASK			0x7
-> +
->   #define MT8167_RDMA0_SOUT_DSI0				0x2
-> +#define MT8167_RDMA0_SOUT_MASK				0x3
-> +
->   #define MT8167_DSI0_SEL_IN_RDMA0			0x1
-> +#define MT8167_DSI0_SEL_IN_MASK				0x3
->   
->   static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
->   	MMSYS_ROUTE(OVL0, COLOR0,
->   		    MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, OVL0_MOUT_EN_COLOR0,
->   		    OVL0_MOUT_EN_COLOR0),
->   	MMSYS_ROUTE(DITHER0, RDMA0,
-> -		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_RDMA0,
-> +		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_MASK,
->   		    MT8167_DITHER_MOUT_EN_RDMA0),
->   	MMSYS_ROUTE(OVL0, COLOR0,
->   		    MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN, COLOR0_SEL_IN_OVL0,
->   		    COLOR0_SEL_IN_OVL0),
->   	MMSYS_ROUTE(RDMA0, DSI0,
-> -		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_RDMA0,
-> +		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_MASK,
->   		    MT8167_DSI0_SEL_IN_RDMA0),
->   	MMSYS_ROUTE(RDMA0, DSI0,
-> -		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_DSI0,
-> +		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_MASK,
->   		    MT8167_RDMA0_SOUT_DSI0),
->   };
->   
+> Why aren't you placing it with all others mediatek,mt8516 syscons?
+> 
+> Why this is so generically called "syscfg", completely not looking like
+> a real name from datasheet unlike the others in this device.
+> 
+> You have entire commit msg to explain that.
+> 
+> Best regards,
+> Krzysztof
+> 
+
 
 
