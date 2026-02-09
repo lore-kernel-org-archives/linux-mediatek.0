@@ -4,78 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A68DE81BAD
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Feb 2026 12:21:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DD05E81BD7
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Feb 2026 15:19:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uYHdjwe6Z2tYVFm2NU+tRR4i/B4PB/vlm+8kwLkkP6w=; b=J3Wqs4xJku/IR8om/Aadwu4vOC
-	XmqtYnS5VaVRwkwZTWGooflYOzhnZ7IrTOWVLzkZflEwJvqUDUcGK99v/zXWnv6HxKq75l7Kmnnel
-	hNsaunXErwM6wCb16qOG6ARYljZ+x2T7zsaPKX8sm6srRxaEfDofo6dhCKUKSn+CsL+lNYcHZcZOM
-	rTzsbT2FVRhGXEly7An/oR50ktSnaPeheBEs1KyW3YeTU0PcpeWFnSlmySCI8KYGvIDYiTKL3TNb8
-	GJji6pHyNOjG8MMMkNAPTb35Mg5rBToHSp+pmQlviEqPLZ4deozY9tMvpl5hmsG9KXeQDBToz1Xfh
-	5L5ATM/g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YTzvCYXiRiQsNzIWAR8ywGvKHYp+IRPHv2CPPhaIo54=; b=fp4AJ4zvwLFZ2wCokjROryBMmm
+	fak096WyH+TwJTgHxBkdgDu/bHc3zOF6hXli3HLsBpQBlaqX3O7XTArYDEYvRtZcEahbl5qud3wZT
+	HJ7/EWMMruzY9+zJx4BAtCAFXIGq6D/PYN6O6gl9G3z7JYixgAk25XjXRlW84KZIhoUpPtkZ94Wcu
+	rNJ6yc17yIkHFitn2ohTMP6Gf5l2M2dbpGFrOcHOxvtJ8sa/Fwqxe3HfobM+Xy1g5CKIPIlE9oFIP
+	TiiL/7JhX0TC51CIjaJcTnXxeTBElaocdUWpDjgAPmOA+2fY/4Ae5wbvuAMO+r5BFyNT+TQY4OFQa
+	btLKgkhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpQGP-0000000FMFY-3Cc1;
-	Mon, 09 Feb 2026 12:21:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vpT3D-0000000FawG-3j3h;
+	Mon, 09 Feb 2026 15:19:47 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpQGM-0000000FMFB-3rmW
+	id 1vpT38-0000000FatU-0k47
 	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Feb 2026 12:21:12 +0000
-X-UUID: ce1182e405b111f1ad39f32c34db0b1c-20260209
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=uYHdjwe6Z2tYVFm2NU+tRR4i/B4PB/vlm+8kwLkkP6w=;
-	b=rnVOYM7jZvQe+kKaQj/i08fAUZZVCCHVPwgbkyxFPjx1fx6dsihpPG4NwJwv8dynJebDQgMzTkwpyLnuc8ToeJCfyYyHsd1QyJI5WPBty0s00O2xnRf1rUVgoSQ2K9680LLyc57zLKa2UIuFXNsv3KFyPDbPVYuV3yMA4NQUkMM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:9eb22e8e-7729-4fb5-b242-1dad01626168,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:cbe2185b-a957-4259-bcca-d3af718d7034,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|123|836|888|898,TC:-5,Content:0|
-	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
-	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ce1182e405b111f1ad39f32c34db0b1c-20260209
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1302769787; Mon, 09 Feb 2026 05:21:04 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 9 Feb 2026 20:21:03 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 9 Feb 2026 20:21:03 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@sandisk.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <tun-yu.yu@mediatek.com>,
-	<eddie.huang@mediatek.com>, <naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>,
-	<bvanassche@acm.org>
-Subject: [PATCH v1] ufs: core: support UFS 4.1 CQ entry tag
-Date: Mon, 9 Feb 2026 20:20:37 +0800
-Message-ID: <20260209122101.1529379-1-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Mon, 09 Feb 2026 15:19:43 +0000
+Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-43636c9fd7eso77607f8f.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Feb 2026 07:19:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1770650379; x=1771255179; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=YTzvCYXiRiQsNzIWAR8ywGvKHYp+IRPHv2CPPhaIo54=;
+        b=g1KM9thy7/ZRG7Q+0c2BpSM8zBceORF2xA4nfcMkkuhxggMb1pUBwY27sN4k6zwjqX
+         na+4ZOPiRGyoSgRu56s106Ga/qtaDiDnJFEXhWKUeMKm4WPyZodvO3xnMVnxK6hohWf6
+         Cj+igLmMBHMRRs0uX2cjVB8fyhstRU3cKbgwcVCq4nCRmrMjVYaLzwnCRFud2tLvfEsY
+         v9JCSCfRDrF1FRyCRw7jqztSqkR8r6ciGJXpTQARp3YjkdcfqBdDLQIqkimEb9URyJ/7
+         m9aFZ213Cvip1szWd/GloR788a7Rwe7YC32NUJd0GK2LPavyaD2eC7rhGFKNWDT6KwfD
+         NYxA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1770650379; x=1771255179;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YTzvCYXiRiQsNzIWAR8ywGvKHYp+IRPHv2CPPhaIo54=;
+        b=eIwUBBegZyA6kCs+zCiK67MfGYL+0derqKI6+uxVOJv2JGgwbJuklaB1LIh6xYYV8k
+         wC63FGPAZ4u7qUW5ztah6eFdnKvzevxsYwAK7lTAynCWWU3r7uyC7IuAqKBEmMKr+1O4
+         jozJpRsDRCiwijLwDBUVgB4OZybz6RKamuhXVlTvRzoc/CJ8xwyTBydNq+4XuJyvNuxp
+         RTroM7Ak7rM9zovAclktq70FSvuV72pTCIQjUnTiZ1jNn2Rlf9dEpSj/YQZgscnDAvN+
+         pDii9FId8Ekno96KRswTPv8Piq3MHOF9jpVapcl3Wj5r1yNVnVy7lBR/V2r4sMvvg+M0
+         nZ0Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUIzgv88o/14/OaNIxR0kgpL9FmU/jS1U4UnSUSril9Y4zhrIa/1IPhvDPgcSYvHO6oJh+OrWrcNVa0ECCeKw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyhO/M5KkEqpqyLN3QDH8bKu1d1uhZQOI/0dLHq0XB2l9TpulE3
+	0di06cHCnNONi6zDDoptMdiY04DRdlx2ZCFPwV0MGkWCMQ6iHoulY8dT
+X-Gm-Gg: AZuq6aJp5FV7c37yTEDTfa8dOdxlhtnFB9gECIMiuRyGtufnImIzh2OvnnJBJL69yRP
+	bHNnj/bQKo7/RrL6t8Y41I/+yTCt9Qe7u961A7l1frpxarHjZ7hmiTXU9Z1mSE/R5zd//epVpgp
+	VmA9L4utQLUGv0M5ZWP1THQSZsVolkzcDLBMMHYDQI9kaWCkf8KCzsCnGqyGOEOdCcd3g158TLO
+	+etNnL/V3OXYWxu4cK0QePdmcEValxOocbSNjXatAAZpAw6eR00D1zuFMZIbG4Itp5MPzsmmR7F
+	nIFbHFdeB/frQL9WLzbCFKQGXRJyOnYeW1bF5o+q3LLls2k75CbT7+ie023a54nZi1q/32R4BEG
+	cELdq18AP38kGN2f7zkdb6BO4x6pAAyQxr5vKVDVh24Fmx7LG5PsMp38jvCsz4ezemxOO5yBIdA
+	McLcUoCh+YsbvZNTlSY1ecYu7OUAhL6v00bwPv3cls12Pu0vFCxAsIRfmNAce7/98jZUrExSQ1K
+	vhD4nyW
+X-Received: by 2002:a05:6000:184b:b0:437:72ce:8954 with SMTP id ffacd0b85a97d-43772ce8a4dmr1977190f8f.6.1770650378901;
+        Mon, 09 Feb 2026 07:19:38 -0800 (PST)
+Received: from thomas-precision3591.paris.inria.fr (wifi-pro-83-213.paris.inria.fr. [128.93.83.213])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-4376686130csm15122697f8f.1.2026.02.09.07.19.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Feb 2026 07:19:38 -0800 (PST)
+From: Thomas Fourier <fourier.thomas@gmail.com>
+To: 
+Cc: Thomas Fourier <fourier.thomas@gmail.com>,
+	stable@vger.kernel.org,
+	Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sujuan Chen <sujuan.chen@mediatek.com>,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net] net: mtk: wed: Fix dma_free_coherent() size mtk_wed_hwrro_free_buffer()
+Date: Mon,  9 Feb 2026 16:18:21 +0100
+Message-ID: <20260209151822.136934-2-fourier.thomas@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260209_042110_991853_B2E1C574 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260209_071942_259603_145F2278 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,41 +111,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+The DMA buffer alloc'd in mtk_wed_hwrro_buffer_alloc() with size
+dev->wlan.rx_nbuf but is freed with size dev->hw_rro.size.
 
-The UFS 4.1 specification introduces a new completion queue(CQ)
-entry format, allowing the tag to be obtained directly.
+Change the dealloc size to match the one used in
+mtk_wed_hwrro_buffer_alloc().
 
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+Fixes: 6757d345dd7d ("net: ethernet: mtk_wed: introduce hw_rro support for MT7988")
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Thomas Fourier <fourier.thomas@gmail.com>
 ---
- drivers/ufs/core/ufs-mcq.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/mediatek/mtk_wed.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
-index ad0ada57959a..d8b5cf18a01c 100644
---- a/drivers/ufs/core/ufs-mcq.c
-+++ b/drivers/ufs/core/ufs-mcq.c
-@@ -273,13 +273,18 @@ void ufshcd_mcq_write_cqis(struct ufs_hba *hba, u32 val, int i)
- EXPORT_SYMBOL_GPL(ufshcd_mcq_write_cqis);
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+index 1ed1f88dd7f8..455df564174d 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+@@ -879,7 +879,7 @@ mtk_wed_hwrro_free_buffer(struct mtk_wed_device *dev)
+ 		__free_page(page);
+ 	}
  
- /*
-- * Current MCQ specification doesn't provide a Task Tag or its equivalent in
-+ * UFS 4.0 MCQ specification doesn't provide a Task Tag or its equivalent in
-  * the Completion Queue Entry. Find the Task Tag using an indirect method.
-+ * UFS 4.1 and above can directly return the Task Tag in the Completion Queue
-+ * Entry.
-  */
- static int ufshcd_mcq_get_tag(struct ufs_hba *hba, struct cq_entry *cqe)
- {
- 	u64 addr;
+-	dma_free_coherent(dev->hw->dev, dev->hw_rro.size * sizeof(*desc),
++	dma_free_coherent(dev->hw->dev, dev->wlan.rx_nbuf * sizeof(*desc),
+ 			  desc, dev->hw_rro.desc_phys);
  
-+	if (hba->ufs_version >= ufshci_version(4, 1))
-+		return cqe->task_tag;
-+
- 	/* sizeof(struct utp_transfer_cmd_desc) must be a multiple of 128 */
- 	BUILD_BUG_ON(sizeof(struct utp_transfer_cmd_desc) & GENMASK(6, 0));
- 
+ free_pagelist:
 -- 
-2.45.2
+2.43.0
 
 
