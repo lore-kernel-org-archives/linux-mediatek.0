@@ -4,105 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CED86EA3F35
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 09:55:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A615FEA3F38
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 10:10:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t12lxM+brFyq0KY7Nz/qV0/1FHoQ9NnONI3XMskNk5E=; b=wIWNQ7Tg3Vbu6sOQUfY+2yruBq
-	ahaP+xHjVgvOXTSpwhcSlZdGuVXT7sZoccRcE7QSCn6x367H31ZZrfgUkp0hWmGhdP0jc781E3kUD
-	2r0+I7Y495ukzPK0dNsWshJKcVirY7L1DvaoOnrgVXPKTw9BH+mx/TKUnsaGqsyURZ7M6JgwUuxKe
-	XBi49WI8DFjt4OAkqjBrwds0sL7aF52TEbz1kr0WEOI3THHM24nSpgzWqEhmasbthSnzPOn3e3Ll9
-	qT3Vc/u0Zj8mfyUeWKSntqdD2dRzroqqmqbIHFeri9JCglCnyCxInMbEj2v1KyCY8Yb2aXu1Sk4md
-	5xi+K0HA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wt7NnjuhYR2KBDv6JU/NFHr/7oZgaw0FyHpTViakKPE=; b=C/DaJmsSDSWernw5DGSAEaSbRs
+	hBASOutFJY9a8dQU8P9O4LXZ4KRL+l8guGLFkzGYVd2I9Ft2Fh/x58AwBezC2jfdIgn4wGSM4H+ox
+	5snUpiu05H/BgFleAwZ+mUid20+LjGbpjfOYxUdNc/AjGt8HUiQ5rh/faQu9FSkQGoa/byhOatZf9
+	1LnJ5cEHOjF9+NnBYWjT/ASInWEFtkFlhxS/2oLOup3T837cI8/ReUIG5Oh0AdctjXQSlOvu5wdew
+	j2BUdHwhDPm55r1boE57Zm/089NO8zphp/i8E8NwUnM/aFuyD1egk0RGl+sLy3YYRSjBhHL7HTK4x
+	4WpUF5BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpkSf-0000000Gmqg-1FXJ;
-	Tue, 10 Feb 2026 09:55:13 +0000
-Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+	id 1vpkhS-0000000Govz-0bsp;
+	Tue, 10 Feb 2026 10:10:30 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpkSc-0000000Gmpi-1yVo
+	id 1vpkhQ-0000000Govb-0JBi
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Feb 2026 09:55:12 +0000
-Received: by mail-lj1-x236.google.com with SMTP id 38308e7fff4ca-385c6c727fcso43466681fa.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Feb 2026 01:55:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1770717308; cv=none;
-        d=google.com; s=arc-20240605;
-        b=JokyPjwsA4NOUo+ecI/PHFu8qDsKHcTvb1Tn6qaniIqq7YeTuEdX/UOXGksGLqvoTN
-         8BHas1/1MSkMrMmaeX92K44QBaIItkTFaetH2rYh9dMtISuVcTMSKFXkEZOnnOOkOjHa
-         yJeEUyfYpkNsbwClR+of5zrptaMgMtKbUJ4rEnsXqXRCwA1qicBlq3VglAO/f1tl9YFA
-         NvrCOI0EmXuAsGM/juDHgLeevsWMrk03cFovJklzO9Zc8Vlo+gCNiuWiBTYqZImdi6iV
-         xort1HwDRVFmgothwtSRuXiCR3Zx9EKPSWllNM6gF68YxAMBLLQifVTwVZLu8rQBM0Cu
-         PR/g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=t12lxM+brFyq0KY7Nz/qV0/1FHoQ9NnONI3XMskNk5E=;
-        fh=o3oX4T/kdWEpJ4AfueA1kviJjRHm1RlIbak+KiD9F7A=;
-        b=BEVWqECCJolNNsO42eWjqL41fza8OoW5M0R1wh1FUtqNvKdt4plWN2PBDhrIIRYZDX
-         hl6tw/SaMek/bqbamJLIelLu2KOVq9I6ygAtl7mkWKvLTw79xP122jM6qcLAS7wBeL9i
-         tfgNPRsU6aLvCkE83n7SggluUIuwmz9TFm7+rkk1RV68wT9PLOnz3iENiqdmtKQ2lHsr
-         6hhcwWSWQPMmMX5yN1CPup/VgusOo1YGWai2L8Jrqljh1Su/0ypq63gTAvnYSzniLVXk
-         0zlt1lrF4J4DO9C8taPiFLdKIB8kPtIQe0geu+QwDx2hZuEIPQQSkEKNJiqpu4B20kSX
-         lYvw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Tue, 10 Feb 2026 10:10:29 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-43767807da6so455218f8f.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Feb 2026 02:10:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1770717308; x=1771322108; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=t12lxM+brFyq0KY7Nz/qV0/1FHoQ9NnONI3XMskNk5E=;
-        b=Lrw60HJD0O/qDsruRs+RA+frIxWkrSRwFhU3D6AK0G1p2t9VNUnsjv+7+X/eHi/WTR
-         KCn7oZe9Jarp2Z4NwT9DjELYhT68T5tCWIgkpqiyRfp/K+Q8gXLcPwDj6nXQyoLG9s70
-         C66O/oIkTweJqyr5PFp2mBHsJzuVoDwrtoDnQ=
+        d=gmail.com; s=20230601; t=1770718226; x=1771323026; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=wt7NnjuhYR2KBDv6JU/NFHr/7oZgaw0FyHpTViakKPE=;
+        b=K71YaVhqcbIHXfsEi/xlS/KPlvGPtaPkORPFT8DllIxhXei7NLZ9DWoy+qclF6fSzL
+         YEN/KeJgLkNMBgW18tmWAZkXSc7DjWs8NnLF5f6Twwg2UsKLkkXkMQplna+qnCioio4I
+         znflxqycVclszPCYKLup7PBuLV2ukZVlymNp+xL5hkBGKLOE+/I/5nF9rRRVqZiuVh0q
+         J3l8DD+ve/6/tzQi1hQL8TB4rWsRwWFwUNs6PfiV71tHTwm917aMyLqvkpdPfNzvmV/V
+         PzSK9/Xc+tFP7IGoSRefd616pr2in0fboSrECeQK78XXNwj2iIiIgf6wTBgRbt3Re6bO
+         o2cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1770717308; x=1771322108;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=t12lxM+brFyq0KY7Nz/qV0/1FHoQ9NnONI3XMskNk5E=;
-        b=Qun56xYaLUdMcYEvAkR0ZyeJRpA8wcJAS/zE5uPf9GSXJEMVoDC0JZD6Vp8FAVVKFZ
-         wqDAR4d6QQONntzvKmVeR0jwowQeSlBDwXup5m3+uUEVrvWUetWNihoM0iURNVmmbcqg
-         9h7guhRrkprcqEkEO6zRMEseAo6SXavfmFVqC0yih8Zr+pQZyeuQoi8m4zFyNHcqVCnd
-         Hn/eZCrZa8kzSXeyLWmZJAxrxmCaKyGlXV4/r2K/KJc8WG1AOE2cgtr0PLfV5ZrZC7Bj
-         Az+D9UT3R+23RuFC0n9mXUNKbL8gXFKDERwr++UuE9QK/X0X9+itEWZzx1TUhSzdgs7b
-         F0Mw==
-X-Gm-Message-State: AOJu0Yzy4I6Y05O5JB7d/b8ZS9H19tWzBOpWfb2Ugv990HN5yda7B325
-	7XvCmdtBFlJxJ0zSz31XpUWb2GGIszpvkKfSWsaymZJJwrwLhNK3AnDICZsP8khN7rq1svYgVQJ
-	Sky8lgxO0uuP2PdGUw6lrVv76xjKUFvNM9p1ctQqP
-X-Gm-Gg: AZuq6aKKNOPpieBkmb+fv8fvKX/3kEch2SrByDQRa7vwr6bJYfo74ED7PDAp55hxLjT
-	aCICbG57S0LoTDDE36HNyAU1QummRPJGIk1+hmijDhPNqMmCG9FHkb/gTyqLptrmWKdg+bwhKDD
-	LTwxXsRcbBhAlbqcT6oCHYlME6k5iTwcR3Us60zDhFU6k4Ywlxt/fOl+ZXRNx0B/eHY5bFtTHwM
-	7rwqhFscT++nHmGrxkNmmDk80MlAse1aWHesJVRi8ChUJTMyPv0dW+BUPOKE1wVjZtORBXAyZ3t
-	Wo3i8zcABmdq3GbqKR1mJVUWyQ004OwMgJA47A==
-X-Received: by 2002:a05:6512:32c8:b0:59e:24e5:a3a5 with SMTP id
- 2adb3069b0e04-59e55bd0c28mr479672e87.29.1770717308202; Tue, 10 Feb 2026
- 01:55:08 -0800 (PST)
-MIME-Version: 1.0
-References: <20260210093333.5112-1-l.scorcia@gmail.com>
-In-Reply-To: <20260210093333.5112-1-l.scorcia@gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 10 Feb 2026 17:54:57 +0800
-X-Gm-Features: AZwV_QhvCuo8DxUPuUh7S4r_8wwpmJqqu_YbBa1qxu1eyMYPq5mPl5vB5s7VIBQ
-Message-ID: <CAGXv+5Ep+YGsqZqWB3HXES07sFw8YtoTEPDxkq1yHQPJpFDTUw@mail.gmail.com>
-Subject: Re: [PATCH RFC] drm/mediatek: Remove all conflicting aperture devices
- during probe
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+        d=1e100.net; s=20230601; t=1770718226; x=1771323026;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=wt7NnjuhYR2KBDv6JU/NFHr/7oZgaw0FyHpTViakKPE=;
+        b=QDXc3pCmwuTKU3MjiPFBCayeq6cUKb+jvxYSVUm35034jAgpDC9ySTT3HgMA3UDE5B
+         NWC4RGyKbEVfqAZz3H5BQ1dngVYdaXWbgskLjCVqfvtrW+qxLjEjme7wZnySoKYLLSBK
+         iPUiOM6wzKLluytMI7ygIZxCPUBu/6o2XZ6XPQdaG6Z4HPqgnO1hkzo7Ff6UK2QGiwDb
+         oQgvx2xfvjqL/T+Fw6eTcziEMH3jXY4lfW0Db8sPVk7hM8A1o8S3sOs/UycW60IYBuvB
+         qeWvv6AB4bSgDGK5ZcG0vL08QCH/eA4kb6jK3l+abP5HsKvRLG8tl79hfnlTw0SLQnNu
+         dvKw==
+X-Forwarded-Encrypted: i=1; AJvYcCVL/A/GeQWFGoAjew5DLEKYnxdDxC1qQdJRfgSVG3LYLjPF4/LMfOzvLTA1iIM1q+Sk56e54EGvvmDKFRYTqA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YykyWAgdrULl6it5XNbMPLEk8iP5I6LzWS7/WNxwG77XRy9s6OU
+	LFdUE1PDUede+CnEGhVls+B2KRk9GJxv25xa8T2TRGbH5VyIgXQu2vmN
+X-Gm-Gg: AZuq6aKKKT+KRdjsgLymA3MpqvIXbcmr1EDQl0wWR5w2oKH5rSwhOjovkgPURHFVYWO
+	tDnLZvxgbV2BKJhbA3Zd0hI163uIpETxvYgdLnIG7KNgAxDkIIpaCF3lmSZIY21vE71yh/5OsJM
+	oNdgaQ01TTV9dJjO0o8vMhj8Ec09OjcyUxVsYS0pHnqrqyBbqgiYZbEw/KkGnuJk0HtNVnrnG0V
+	Q9ecZEHxz7JfQ3JK9OEKmRgYmVb1aj0D7wkn9KIzee0IHQkDDvuHjMP0+kPMmWVzb7OPTm999/U
+	0carVZmbYI9QS81vjbBmgZRs9Dn9qDYnXs4bhlDkzEcLIVyIsOaEsosolkTw9iU7TavgZ5OA+MQ
+	Crx6zv8QAySi7m7jaXCoXQ1i648ZqKaw4jpK8QMNuRfwKsjiDSmbUBX9RqVTahITnJVa/4EeJA3
+	miPYpIodEEegKJcB4l2kWqna+O4w==
+X-Received: by 2002:a05:6000:2889:b0:436:1a24:df81 with SMTP id ffacd0b85a97d-4362904b702mr20341629f8f.2.1770718225617;
+        Tue, 10 Feb 2026 02:10:25 -0800 (PST)
+Received: from [10.176.235.211] ([137.201.254.43])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4362972fa41sm36773507f8f.23.2026.02.10.02.10.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Feb 2026 02:10:25 -0800 (PST)
+Message-ID: <12c200207a5e4419ed3f7ba54aaaf2f74db80de5.camel@gmail.com>
+Subject: Re: [PATCH v2] ufs: core: support UFSHCI 4.1 CQ entry tag
+From: Bean Huo <huobean@gmail.com>
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org, 
+ martin.petersen@oracle.com, avri.altman@sandisk.com,
+ alim.akhtar@samsung.com,  jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, 
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com, 
+ chaotian.jing@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com,  naomi.chu@mediatek.com, ed.tsai@mediatek.com,
+ bvanassche@acm.org
+Date: Tue, 10 Feb 2026 11:10:22 +0100
+In-Reply-To: <20260210071834.1837878-1-peter.wang@mediatek.com>
+References: <20260210071834.1837878-1-peter.wang@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.4-0ubuntu2.1 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260210_015510_615372_C7107461 
-X-CRM114-Status: GOOD (  32.21  )
+X-CRM114-CacheID: sfid-20260210_021028_124884_B6025C34 
+X-CRM114-Status: UNSURE (   5.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,86 +105,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 10, 2026 at 5:34=E2=80=AFPM Luca Leonardo Scorcia
-<l.scorcia@gmail.com> wrote:
->
-> If a device has a framebuffer available it might be already used as
-> display by simple-framebuffer or simpledrm when mediatek-drm is probed.
-> This is actually helpful when porting to a new device as
-> framebuffers are simple to setup in device trees and fbcon can be
-> used to monitor the kernel boot process.
->
-> When drm-mediatek loads a new fb device is initialized, however
-> fbcon remains attached to the initial framebuffer which is no longer
-> connected to the actual display - the early fb is never removed.
->
-> We can gracefully transition from framebuffer handling to drm-managed
-> display by calling aperture_remove_all_conflicting_devices as we probe
-> mediatek-drm. This takes care of unloading other fb devices/drivers
-> and disconnects fbcon which then automatically reconnects to
-> mediatekdrmfb as soon as it's available.
->
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> ---
-> This patch has been tested on Xiaomi Mi Smart Clock, however
-> I'd like to get some feedback from more knowledgeable people,
-> especially about those points:
-> 1. Is aperture support on mtk-drm desired at all?
-> 2. mtk-drm does not know about the fb address therefore as far
->    as I can see we can't use the more specific function
->    aperture_remove_conflicting_devices. This means that all generic
->    aperture drivers will be unloaded. It might not be a real world issue
->    as I can't see why one might want to load mtk-drm while keeping
->    other aperture  device drivers active, but my experience is very limit=
-ed.
+On Tue, 2026-02-10 at 15:17 +0800, peter.wang@mediatek.com wrote:
+> From: Peter Wang <peter.wang@mediatek.com>
+>=20
+> The UFSHCI 4.1 specification introduces a new completion queue(CQ)
+> entry format, allowing the tag to be obtained directly.
+>=20
+> Signed-off-by: Peter Wang <peter.wang@mediatek.com>
 
-This is pretty much what all other platform drivers do. So that's fine.
-
-> Thanks!
->
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 6 ++++++
->  1 file changed, 6 insertions(+)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/med=
-iatek/mtk_drm_drv.c
-> index a94c51a83261..17e45b93fe49 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -4,6 +4,7 @@
->   * Author: YT SHEN <yt.shen@mediatek.com>
->   */
->
-> +#include <linux/aperture.h>
->  #include <linux/component.h>
->  #include <linux/module.h>
->  #include <linux/of.h>
-> @@ -1116,6 +1117,11 @@ static int mtk_drm_probe(struct platform_device *p=
-dev)
->         if (!private->all_drm_private)
->                 return -ENOMEM;
->
-> +       /* Remove framebuffer owners, this will release fbcon if active *=
-/
-> +       ret =3D aperture_remove_all_conflicting_devices(DRIVER_NAME);
-> +       if (ret < 0)
-> +               dev_err(dev, "Failed to remove conflicting aperture devic=
-es (%d)", ret);
-> +
-
-I believe this could be in mtk_drm_bind() just before drm_dev_register().
-The idea is you want to kick out the existing framebuffer as late as
-possible to reduce the time the screen is unresponsive.
-
-
-ChenYu
-
->         /* Bringup ovl_adaptor */
->         if (mtk_drm_find_mmsys_comp(private, DDP_COMPONENT_DRM_OVL_ADAPTO=
-R)) {
->                 ovl_adaptor =3D platform_device_register_data(dev, "media=
-tek-disp-ovl-adaptor",
-> --
-> 2.43.0
->
->
+Reviewed-by: Bean Huo <beanhuo@micron.com>
 
