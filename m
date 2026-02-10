@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8353CEA3F0F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 07:20:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A844EEA3F2A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 09:01:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9FEN1HqP8ndGjelACjQMrblPKmL7wKWC260ls5HMtMI=; b=Yhc+9nzI9KG4vW06YZkiqjw8jl
-	TuIeknX2T2tQ2pm9YJmkMCGb8dplr30/5N56bJ7DCZw3QZR0kEA3d0DXDKJXtKUp84no8PJib15Bz
-	eiw9Ey+7p4yQ0OEJ3u2g0lQsCObjxIWyqXmUrUUp2kFZAk6s8t4jyNBckOOGDTV5tvWZq1BS4fOZq
-	cFOWjRrzUxa1gap8qUDIUAThrpkiheeJE+PV6STOdU2h99rm/4I88O1/+70xNV245EVM3Pl2FplYc
-	rnsSzA0eIZHoxqaLvNyD5173b5gXqKiyMA8zlPIEKTUsNUPjWfam2bN0xaTYPZg2Hj1yaacCuQqxd
-	Q9JdZB8g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xtXTW7IGCXG3bewc2ZEtlerGZ4w448nsa2fTUZPugL8=; b=LNHtjEXcfQwaQyqitJoCrTFF1n
+	BiBUa7c/pAbXrul2Ad3zA1YNNvLHlIer8veHoki64hhfxzl/Ni8jkwTs0ge+bW9bhLh/FfmO25W1P
+	+PvRP/iaOK8LexZfdOy0plTbGXNZMtyUSdUXL5PmSveJBNaqEehoUk/OBouhkykSjPCpFyn4FGlCL
+	/XAzHQg/bfSBGLmhoKVp22dzAnWQMLB6f5tZbbTjiwjbdoOdLyvPBBzXXJiBJKg2vXVLSeWqguE2G
+	ZLgSfmtnF4cuMvcIXfPxdEhgnWjTzwtKYBQQz/jgnU8a39i2MCf98HI8w8yVgLyhWO8Q9IFT+iWhG
+	wlpjT22w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpi2T-0000000GcZ4-2CUE;
-	Tue, 10 Feb 2026 07:20:01 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vpjcP-0000000Gill-0w7Y;
+	Tue, 10 Feb 2026 09:01:13 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpi2Q-0000000GcYD-0hLZ;
-	Tue, 10 Feb 2026 07:19:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770707995;
-	bh=mXytY2lL2wi8cjZeNB2IcAirtUMY2l1nJ77qqr3eRgI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cORE1bB6JiXPP7MxYMEIB9mnMgtmqwgQWX81FlF2vw5eQto+1TUUuWBeugjetaSV8
-	 Hj+Ua2UaDoaOn3wzQBLNmooz3DV7UbKMkaVOSRxOlRZWasCebnpSw3TCi3wavrMIPR
-	 VAF1c/3QFj1yh3vT9Abs/Xzwp/B9+EPUKy3EkSI0xnN/DW0r3RvRro0opIMTKzU4E4
-	 uhPC1u5cw0mgJG1qxpa3eSkS6XE0xImmDJtUcFxDzPlTvUnhr6AmuPM35XvHS2uN1u
-	 0lUvIGnc7IC+qf+frLWojZ/ioO6Fx2k2K1yWxtkXE4ChKnpDTrOx/y6p8Yjiev5gZL
-	 PDXhRtW/OBwxg==
-Received: from [192.168.50.190] (unknown [171.76.81.211])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 36D1717E13A6;
-	Tue, 10 Feb 2026 08:19:49 +0100 (CET)
-Message-ID: <5ed6508c-78ab-4606-b503-9bc54f5cdea9@collabora.com>
-Date: Tue, 10 Feb 2026 12:49:46 +0530
+	id 1vpjcH-0000000Gikg-41z5;
+	Tue, 10 Feb 2026 09:01:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2DF5643C23;
+	Tue, 10 Feb 2026 09:01:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 861AFC116C6;
+	Tue, 10 Feb 2026 09:01:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1770714063;
+	bh=1IgCLrreBz/N3YL81SnN8Md7AwrHBpXjhO7OoBiEfuE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Eoh7RfHs2d/lzXJGMj9r0vsZfjdss7xFmnLeHycQqrYwhzi0IkLaY9ygXkurLITKA
+	 OQ5hPL3QvPrjYDAf9fA4xo2WdJwPyjYgepZ8paEZVPm0SR//NdSG3Ab/UnRfeUeoAr
+	 pJ1lWDkIxt//QncVLThos3PphGWLFlGwINqm4lF/L4ObuhArMhub6IWTVO7Z4uNBnB
+	 jTBBySNPN7ZzrFPxP3DhnTolTyDyp2ubEg6pIki+e49dsalP/pYx9GCetWYq+IzLjs
+	 sRra9iC5eLbUN6dAHW47WhkLtuOjr47IEUa+WQnrKYd1wkQzAa+wBgNZsDcRtkw3wZ
+	 zJ7LGJgXI0SZQ==
+Date: Tue, 10 Feb 2026 10:01:00 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Thomas Fourier <fourier.thomas@gmail.com>
+Cc: stable@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sujuan Chen <sujuan.chen@mediatek.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net] net: mtk: wed: Fix dma_free_coherent() size
+ mtk_wed_hwrro_free_buffer()
+Message-ID: <aYrzzEvl8IG1caxS@lore-desk>
+References: <20260209151822.136934-2-fourier.thomas@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 6/7] drm/ci: uprev IGT
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
- helen.fornazier@gmail.com, airlied@gmail.com, simona.vetter@ffwll.ch,
- lumag@kernel.org, robdclark@gmail.com, robin.clark@oss.qualcomm.com,
- guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
- valentine.burley@collabora.com, linux-mediatek@lists.infradead.org,
- linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
- amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev,
- linux-kernel@vger.kernel.org
-References: <20260127104406.200505-1-vignesh.raman@collabora.com>
- <20260127104406.200505-7-vignesh.raman@collabora.com>
- <zi7frtnecrzyei4fl4nmwmth3icnsyycxxobbrcwovbqfsfq4z@eh25dyfrjkqz>
- <9949e82b-6ec2-4975-939b-d6a709ecf43f@collabora.com>
- <5vxrhiilcsaull2airasmc3pjqazvswrtojozz264i5vk3m6zl@pgkdwq46p4ho>
-Content-Language: en-US
-From: Vignesh Raman <vignesh.raman@collabora.com>
-In-Reply-To: <5vxrhiilcsaull2airasmc3pjqazvswrtojozz264i5vk3m6zl@pgkdwq46p4ho>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="5gUtC+mBewt4W4cJ"
+Content-Disposition: inline
+In-Reply-To: <20260209151822.136934-2-fourier.thomas@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260209_231958_392761_A72DEFF1 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20260210_010106_042788_B201FF02 
+X-CRM114-Status: GOOD (  17.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,44 +81,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dmitry,
 
-On 27/01/26 19:55, Dmitry Baryshkov wrote:
-> On Tue, Jan 27, 2026 at 06:26:11PM +0530, Vignesh Raman wrote:
->> Hi Dmitry,
->>
->> On 27/01/26 18:01, Dmitry Baryshkov wrote:
->>> On Tue, Jan 27, 2026 at 04:14:01PM +0530, Vignesh Raman wrote:
->>>> Recent IGT [1] seems to be broken on MSM hardware, with many tests
->>>> failing due to the old_primary->index != 0 assertion. Uprev IGT to
->>>> the last known good revision where the tests pass, and update the
->>>> expectation files accordingly.
->>>>
->>>> [1] https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/commit/a909ab05
->>>>
->>>> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
->>>> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
->>>
->>> It is not clear, which parts here are due to Mesa uprev (yes, there are
->>> some of those) and which are due to the IGT uprev. Please split into two
->>> commits and make sure that Mesa-uprev passes more or less clearly.
->>
->> The mesa uprev and the IGT uprev are already split into two separate
->> commits. The IGT uprev only updates the IGT version in gitlab-ci.yml and
->> xfails.
-> 
-> I think I was not clear enough: Mesa uprev also causes some of the
-> xfails. Those needs to be a part of the Mesa uprev commit.
+--5gUtC+mBewt4W4cJ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I have created v2 where the mesa uprev commit also includes the updated 
-xfails. I will send IGT uprev as a separate commit/series.
+> The DMA buffer alloc'd in mtk_wed_hwrro_buffer_alloc() with size
+> dev->wlan.rx_nbuf but is freed with size dev->hw_rro.size.
+>=20
+> Change the dealloc size to match the one used in
+> mtk_wed_hwrro_buffer_alloc().
+>=20
+> Fixes: 6757d345dd7d ("net: ethernet: mtk_wed: introduce hw_rro support fo=
+r MT7988")
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Thomas Fourier <fourier.thomas@gmail.com>
+> ---
+>  drivers/net/ethernet/mediatek/mtk_wed.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethern=
+et/mediatek/mtk_wed.c
+> index 1ed1f88dd7f8..455df564174d 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+> @@ -879,7 +879,7 @@ mtk_wed_hwrro_free_buffer(struct mtk_wed_device *dev)
+>  		__free_page(page);
+>  	}
+> =20
+> -	dma_free_coherent(dev->hw->dev, dev->hw_rro.size * sizeof(*desc),
+> +	dma_free_coherent(dev->hw->dev, dev->wlan.rx_nbuf * sizeof(*desc),
+>  			  desc, dev->hw_rro.desc_phys);
 
-https://lore.kernel.org/dri-devel/20260210071138.2256773-1-vignesh.raman@collabora.com/T/#t
+I think this problem is present even in the mtk git repo. I guess we should
+allocate DMA buffer using dev->hw_rro.size instead of using dev->wlan.rx_nb=
+uf
+directly.
+
+@Sujuan: any input on it?
 
 Regards,
-Vignesh
+Lorenzo
 
-> 
-> 
+> =20
+>  free_pagelist:
+> --=20
+> 2.43.0
+>=20
 
+--5gUtC+mBewt4W4cJ
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaYrzzAAKCRA6cBh0uS2t
+rDvzAPkBX1YTfrEpUBYKFlg/hoAY2G+5Paz3zr1hmUyqY94m+AEAyhM0Q8sr8rB8
+DSN4g6RwZHsJPkjsBLlo+xDkFDbtFQA=
+=DElc
+-----END PGP SIGNATURE-----
+
+--5gUtC+mBewt4W4cJ--
 
