@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E05EAEB26F8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 18:42:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BBE4EB2700
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 20:19:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qA7I/kJYrPEzo77yMTNNn8uGOXpGSKO6msM5RGhG9Gc=; b=OncmUd/0JXe6BdEQOJssVHatyD
-	3H2DgSTSYAGyfsGgUPghJaYIxJdyJIfhvETVo3u02qx1GNkyHuvk0Mjh7nujOfA1d08FCqvw6oPDR
-	IDrgPxPk9Lr/f8sXWZdnhFO29J3Ej0iG0/Mm1dT3PLRyOb7yUOaXspWQrSO5cDwPvHv4CeSy+/pcd
-	3PR8olSrdN6lirTjCLDEdxXth2jVnTIKDnC0DDemAAAlQRYi6vTgIHv27XfvrLy9lve8tMNjCISna
-	HBKNC3RG2LXFG+WKk1m6UxdEWC8/19VQrTel6z3OZr/vX3kZB8GQVTjk9w0Pj6zZ5nMpN8dh5cMvL
-	r7/GCipw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=a7LT16Pkf6gAH2KbKPKOEQEsN90e34wIpaLIN5RNQcw=; b=U1FYvQ1GYz+pIp8PPUMiULc597
+	nDtj1Hv3A+OoC+0oqPEVKUw9UonLFX53Ic/rhr7CHyb4edisiHdHx3rsgkWYC6Ep3VlKTin5hK3Af
+	ksjXKIB1HdOIxb08BKhuTp525amTfdo9upnR16u5RH4gCbGvyD/T5X4mqOOfaxeQdRPpHkCeg6LAL
+	q7fC+7PTXM87385eSUweMt3OzWCfbnViP+Ur6UbNau0PwRvQes8qGKvkfpP7pgrTkkGFyEA2w7yRW
+	Zz23s7ZUIkLa2N2oYDa0V5ZMSvXAS17SSBE4IR7QeLV74O8rtmhAuHC80dSm8c5dOHgA9RaMMuZ/G
+	HUC8a2fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpsgW-0000000HP6E-3v8N;
-	Tue, 10 Feb 2026 18:42:04 +0000
-Received: from 013.lax.mailroute.net ([199.89.1.16])
+	id 1vpuD2-0000000HTi5-2apg;
+	Tue, 10 Feb 2026 20:19:44 +0000
+Received: from mailgate02.uberspace.is ([2a00:d0c0:200:0:1c7b:a6ff:fee0:8ea4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpsgU-0000000HP5v-2Xy7
+	id 1vpuCy-0000000HTgd-2eNr
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Feb 2026 18:42:03 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 013.lax.mailroute.net (Postfix) with ESMTP id 4f9Vlt2v2Rzlfvq4;
-	Tue, 10 Feb 2026 18:42:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1770748919; x=1773340920; bh=qA7I/kJYrPEzo77yMTNNn8uG
-	OXpGSKO6msM5RGhG9Gc=; b=DnNkr2Rf6RkNeryW7z6+17Xjx2KmqtOyLxk2knAa
-	FmHdtc18I6YI5oV2orxOy1HKZpHmcMYo3FVCDGc8PF/U3vBkEyuj4Cplz7XwQzy2
-	p/hXqyRLxzEzhglE9E1whAqUc7nTJzwTzYOShHZn82twgKHc6OeylG/iMCtfBBEH
-	1Ei5kPEDlUSlYmfB6/IHZ48eTwpDhp3TBNISH7+9unGL9sDrn7KNGSBRmrODk5m5
-	TZEQJzLsxJFvr1IxXDEJaHkcjpl+AAooviGsD+ijs0po4zTLpWroNwGdT3qrg/5O
-	GK890ifIz0sT+R0fEoffOOnFvb1ssCfkcjSAGKQ4v24CVg==
-X-Virus-Scanned: by MailRoute
-Received: from 013.lax.mailroute.net ([127.0.0.1])
- by localhost (013.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id MPqQywuOkm4f; Tue, 10 Feb 2026 18:41:59 +0000 (UTC)
-Received: from [100.119.48.131] (unknown [104.135.180.219])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 013.lax.mailroute.net (Postfix) with ESMTPSA id 4f9Vll3136zlfvpH;
-	Tue, 10 Feb 2026 18:41:55 +0000 (UTC)
-Message-ID: <21c0f687-ce78-4720-b29e-fca35f7f85e1@acm.org>
-Date: Tue, 10 Feb 2026 10:41:53 -0800
+	Tue, 10 Feb 2026 20:19:42 +0000
+Received: from perseus.uberspace.de (perseus.uberspace.de [95.143.172.134])
+	by mailgate02.uberspace.is (Postfix) with ESMTPS id EC3891802AF
+	for <linux-mediatek@lists.infradead.org>; Tue, 10 Feb 2026 21:19:29 +0100 (CET)
+Received: (qmail 28944 invoked by uid 988); 10 Feb 2026 20:19:29 -0000
+Authentication-Results: perseus.uberspace.de;
+	auth=pass (plain)
+Received: from unknown (HELO unkown) (::1)
+	by perseus.uberspace.de (Haraka/3.1.1) with ESMTPSA; Tue, 10 Feb 2026 21:19:29 +0100
+From: David Bauer <mail@david-bauer.net>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH mt76] wifi: mt76: mt7915: sync station power save state
+Date: Tue, 10 Feb 2026 21:19:14 +0100
+Message-ID: <20260210201917.993424-1-mail@david-bauer.net>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/2] add debug log for command timeout
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@sandisk.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com
-References: <20260210070837.1820710-1-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20260210070837.1820710-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-Rspamd-Bar: /
+X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-3) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
+X-Rspamd-Score: -0.1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=david-bauer.net; s=uberspace;
+	h=from:to:cc:subject:date;
+	bh=+iJygy5Rsph3wgdm2ihgiOtTPWuxGIOIgL9IIraZFsc=;
+	b=RC9Kht1zeY9OVpr4Eb3kudMKBbZdFnACKFC2IFZQRPkWWoE4rI1ToCk3lYpUisMmwqQh3rd0Ji
+	R4+bbYFtW1zElJ31SHgumImP/uN5otpyaRyHh4irmmGKEL4DASpUCzYqERaquhicCNHJ7OH+IvSg
+	853X61J+oHhxwPXXJ3UwjW5sLHBfYEhCDGmygbvnVyUrv/Pehn04oC1UvSTcRapuegwq/hE9xf7S
+	uxkdIyjz1LJZRHoH/S1MxSkHsdXoTvxkiLrMsiu7vzeV6Xx1NTiErp1R+h0UKmsxZm15FNmhGoO+
+	Ig8VA09VAwykr3ASxXgrD4BHm54dj/laleQAFGjnkHc/pmZWjmmel4MpmPMhKYgoYVxfbDSY1yyH
+	X/csZYmHmaaZUiUiXTRiEGH8mnNmwjtXRlGXqjZof6xYqavPMgauEISq7GtMYLgMtiGqcAjeqKTI
+	PEQCjURKpQbQvM5qLHafJUXTlRRGQi4gDrTZrkmF8tSKSUUER6YCGGnDN2f7RoDhlQWmyOTKcHHB
+	PsMMR231EdKW0hmcYwJOQX3XEafrSmTT4CYb/kfU2ziWcQq8jAosEVCWvfR4PMOTTC9wIlgxgupp
+	YaKCzDPLe8QM4BP8n205UFwxsjEbDAuUZ4ct6ZpxAhGcL0Hg8zd+vJB3uV0guY8yBJVMaVhRyEy4
+	E=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260210_104202_683623_E392F90D 
-X-CRM114-Status: UNSURE (   6.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260210_121941_160490_437D22A2 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,8 +87,101 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/9/26 10:41 PM, peter.wang@mediatek.com wrote:
-> Add some logs to make it easier to debug after a command timeout.
+Host receives a power save state change event everytime a station enters
+or leaves PS mode. Use this unsolicited event to stop filling up TX
+queues in firmware, as the hardware will buffer frames for stations in
+power safe indefinitely.
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Limit packets to be enqueued for sleeping STAs in order to manage the
+packet backlog in the host-system while still being able to indicate
+pending traffic to said STAs.
+
+Signed-off-by: David Bauer <mail@david-bauer.net>
+---
+ .../net/wireless/mediatek/mt76/mt7915/main.c  |  1 +
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 28 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  9 ++++++
+ 3 files changed, 38 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 90d5e79fbf74d..71b94db64ef6d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -1783,6 +1783,7 @@ const struct ieee80211_ops mt7915_ops = {
+ 	.sw_scan_complete = mt76_sw_scan_complete,
+ 	.release_buffered_frames = mt76_release_buffered_frames,
+ 	.get_txpower = mt76_get_txpower,
++	.set_tim = mt76_set_tim,
+ 	.set_sar_specs = mt7915_set_sar_specs,
+ 	.channel_switch_beacon = mt7915_channel_switch_beacon,
+ 	.get_stats = mt7915_get_stats,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 00bff4d3aab80..8b4a5973b240c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -402,6 +402,31 @@ mt7915_mcu_rx_bcc_notify(struct mt7915_dev *dev, struct sk_buff *skb)
+ 			mt7915_mcu_cca_finish, mphy->hw);
+ }
+ 
++static void mt7915_mcu_rx_ps_sync(struct mt7915_dev *dev, struct sk_buff *skb)
++{
++	struct mt7915_mcu_ps_notify *p;
++	struct ieee80211_sta *sta;
++	struct mt76_wcid *wcid;
++	u16 wcid_idx;
++
++	p = (struct mt7915_mcu_ps_notify *)skb->data;
++	wcid_idx = p->wtbl_lower | (p->wtbl_higher) << 8;
++
++	rcu_read_lock();
++	wcid = mt76_wcid_ptr(dev, wcid_idx);
++	if (!wcid)
++		goto out;
++
++	sta = wcid_to_sta(wcid);
++	if (!sta)
++		goto out;
++
++	ieee80211_sta_ps_transition_ni(sta, !!p->ps_bit);
++
++out:
++	rcu_read_unlock();
++}
++
+ static void
+ mt7915_mcu_rx_ext_event(struct mt7915_dev *dev, struct sk_buff *skb)
+ {
+@@ -424,6 +449,9 @@ mt7915_mcu_rx_ext_event(struct mt7915_dev *dev, struct sk_buff *skb)
+ 	case MCU_EXT_EVENT_BCC_NOTIFY:
+ 		mt7915_mcu_rx_bcc_notify(dev, skb);
+ 		break;
++	case MCU_EXT_EVENT_PS_SYNC:
++		mt7915_mcu_rx_ps_sync(dev, skb);
++		break;
+ 	default:
+ 		break;
+ 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 3af11a075a2f4..836fe46393256 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -54,6 +54,15 @@ struct mt7915_mcu_bcc_notify {
+ 	u8 rsv;
+ } __packed;
+ 
++struct mt7915_mcu_ps_notify {
++	struct mt76_connac2_mcu_rxd_hdr rxd;
++
++	u8 wtbl_lower;
++	u8 ps_bit;
++	u8 wtbl_higher;
++	u8 rsv;
++} __packed;
++
+ struct mt7915_mcu_rdd_report {
+ 	struct mt76_connac2_mcu_rxd_hdr rxd;
+ 
+-- 
+2.51.0
+
 
