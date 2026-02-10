@@ -4,77 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6F13EA3F22
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 07:12:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36368EA3F0F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 07:18:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OFjkFEgVQrPaNNpMGgKBVGgBkCAe+P3inUlufC0H4vI=; b=A9NZQf7xN7+D36dUmj+a9wlgub
-	0ZkaKxj0QSOnYGGF9aX/TuEdWu2sJc3/5LFDLQoH6cLMhsdBncmDTAANbWsx8y4Uz3JpxouxtzL0y
-	sJvkbOXp/eEy3DFa8lWpj7ejZUTrAeZ+krbHNH9mNggfXh0Y629x4ogxbUiCPuPe6hVl5XTv9rykh
-	NxtRNzObKBIxerZtyextL64p0dK/vYgA44LYn4bhFzsbb7ecew/IqP8y7dl5robFFfOrlnr6Ua0tf
-	9xw1jcRZowmhd/eUW2eGPIzkG0P/u7Uhwu8wqN2kNYhOGRyVTujxTDQP0v6D7G/lFmR8sQc7fxXZG
-	0l9DruZA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+xmc0FC3pvGrjmeYLsIfeCCZfgwjBH2I7Ows6bFhFk8=; b=0sM739fbBL900mJ4nj5HeV8bhH
+	rWPsojD4PacuiSxLy0moM/+JBLb3/U1icF0E6Qc6jse1T2cBpaxtHLJOFbjhQksi/jUBCQ7R1nn/b
+	0E3ECwCTwjxkxXHzEYhcwapMM5cIAEZKaoc33dSJauF4pN9G/igj2ZQ8qVCvKFTuvaQ76Va6C30jV
+	Sx69UiSIDmVl+/xdZCFaD6VG8RgRc19eLj4GiA0yc0h1aXGIcsoJGCcFz2Z5wEJokUl2V+8RYSCHU
+	HC0EqhjIquu3k2Q0sF3yqDbsV0MAfIHQR358h7BWiwMDOYO5DFPAEWB0CqYHhfi9rFpjJwbcZ3QJI
+	O4+KQi/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vphvD-0000000GaHj-3MM6;
-	Tue, 10 Feb 2026 07:12:31 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vpi1D-0000000GcRh-3zQ2;
+	Tue, 10 Feb 2026 07:18:43 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vphvA-0000000GaC8-19qY;
-	Tue, 10 Feb 2026 07:12:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770707546;
-	bh=Zg7OUqfAZZe65f/9spAPWQfwgSU13zo2MWnxBVaGkLA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YP50/IL4e7POtXz6IJkLt0tcDzX5hhWruUKzmN6QecjvdEtEUXl6AQI6Or0gonakX
-	 DlRiWU3fTdQfd+YHkiruzhUjxU6id0yuu8s2Ig5/m6FD8d0Ya+vxIXye+reUXJxYg8
-	 ipho5/uLR7m3FX2Qvd2oKTd2q3H0axlmDbfargeFZhfIQj6pBc5xtBgcB+wNpSoJlw
-	 QwGQHxXSZBotmgjKeNj3EO7ydkTUTZkQBJ98e5VeDpKTXpcaki660Ndnt8VDtq3Gn3
-	 w/Jyl6DP890NdxXiolwnJncJGJD8+S0Bf7fWMtZoK35iqJJDGloslPiQXxkf77jHyI
-	 LBgBbuYDpjLWw==
-Received: from vignesh-thinkpad.. (unknown [171.76.81.211])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 850D917E1352;
-	Tue, 10 Feb 2026 08:12:21 +0100 (CET)
-From: Vignesh Raman <vignesh.raman@collabora.com>
-To: dri-devel@lists.freedesktop.org
-Cc: daniels@collabora.com,
-	helen.fornazier@gmail.com,
-	airlied@gmail.com,
-	simona.vetter@ffwll.ch,
-	dmitry.baryshkov@oss.qualcomm.com,
-	lumag@kernel.org,
-	robdclark@gmail.com,
-	robin.clark@oss.qualcomm.com,
-	guilherme.gallo@collabora.com,
-	sergi.blanch.torne@collabora.com,
-	valentine.burley@collabora.com,
-	linux-mediatek@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	amd-gfx@lists.freedesktop.org,
-	linux-arm-msm@vger.kernel.org,
-	intel-gfx@lists.freedesktop.org,
-	virtualization@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 5/5] drm/ci: add rk3588-rock-5b
-Date: Tue, 10 Feb 2026 12:41:34 +0530
-Message-ID: <20260210071138.2256773-6-vignesh.raman@collabora.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260210071138.2256773-1-vignesh.raman@collabora.com>
-References: <20260210071138.2256773-1-vignesh.raman@collabora.com>
+	id 1vpi1B-0000000GcQz-2sh6
+	for linux-mediatek@lists.infradead.org;
+	Tue, 10 Feb 2026 07:18:42 +0000
+X-UUID: b8615ca4065011f1a16f0188aa809bee-20260210
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+xmc0FC3pvGrjmeYLsIfeCCZfgwjBH2I7Ows6bFhFk8=;
+	b=B9BMjaJIcO4OYRb9amEy67RMoeU/CVTo0rJmTZ9OEGgwflR7fUR3pjgi8rv9AXw9NnIxnXrM6KP/fUe4qwAG2iWMVeYD8cCtm5/EDJx7t5sGFJkHk6uecw4tnY/9iJczbOfqj6JVcn2Huubde7uASljbA5SZYYZINlVTXXM7DEs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:89215142-453b-4a73-a5a0-7a7ed0e445c2,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:826bca7a-8c8a-4fc4-88c0-3556e7711556,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|123|836|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: b8615ca4065011f1a16f0188aa809bee-20260210
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 53616566; Tue, 10 Feb 2026 00:18:38 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 10 Feb 2026 15:18:36 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 10 Feb 2026 15:18:36 +0800
+From: <peter.wang@mediatek.com>
+To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
+	<avri.altman@sandisk.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <tun-yu.yu@mediatek.com>,
+	<eddie.huang@mediatek.com>, <naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>,
+	<bvanassche@acm.org>
+Subject: [PATCH v2] ufs: core: support UFSHCI 4.1 CQ entry tag
+Date: Tue, 10 Feb 2026 15:17:30 +0800
+Message-ID: <20260210071834.1837878-1-peter.wang@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260209_231228_641276_7C4270B0 
-X-CRM114-Status: GOOD (  14.97  )
+X-CRM114-CacheID: sfid-20260209_231841_755515_AC526465 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,220 +90,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add job that executes the IGT test suite for rk3588-rock-5b.
+From: Peter Wang <peter.wang@mediatek.com>
 
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
-Reviewed-by: Daniel Stone <daniels@collabora.com>
+The UFSHCI 4.1 specification introduces a new completion queue(CQ)
+entry format, allowing the tag to be obtained directly.
+
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
 ---
+ drivers/ufs/core/ufs-mcq.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-v2:
-  - No changes.
-
----
- MAINTAINERS                                   |  1 +
- drivers/gpu/drm/ci/arm64.config               |  5 ++++
- drivers/gpu/drm/ci/build.sh                   |  1 +
- drivers/gpu/drm/ci/gitlab-ci.yml              |  1 +
- drivers/gpu/drm/ci/igt_runner.sh              |  2 +-
- drivers/gpu/drm/ci/test.yml                   | 28 +++++++++++++++++++
- .../drm/ci/xfails/panthor-rk3588-fails.txt    |  5 ++++
- .../drm/ci/xfails/panthor-rk3588-skips.txt    | 20 +++++++++++++
- .../drm/ci/xfails/rockchip-rk3588-fails.txt   |  9 ++++++
- .../drm/ci/xfails/rockchip-rk3588-skips.txt   | 14 ++++++++++
- 10 files changed, 85 insertions(+), 1 deletion(-)
- create mode 100644 drivers/gpu/drm/ci/xfails/panthor-rk3588-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/panthor-rk3588-skips.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3588-fails.txt
- create mode 100644 drivers/gpu/drm/ci/xfails/rockchip-rk3588-skips.txt
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index ff92b9cc9435..b0eed114ed29 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2149,6 +2149,7 @@ L:	dri-devel@lists.freedesktop.org
- S:	Supported
- T:	git https://gitlab.freedesktop.org/drm/misc/kernel.git
- F:	Documentation/devicetree/bindings/gpu/arm,mali-valhall-csf.yaml
-+F:	drivers/gpu/drm/ci/xfails/panthor*
- F:	drivers/gpu/drm/panthor/
- F:	include/uapi/drm/panthor_drm.h
+diff --git a/drivers/ufs/core/ufs-mcq.c b/drivers/ufs/core/ufs-mcq.c
+index ad0ada57959a..a4d0f8834314 100644
+--- a/drivers/ufs/core/ufs-mcq.c
++++ b/drivers/ufs/core/ufs-mcq.c
+@@ -273,13 +273,18 @@ void ufshcd_mcq_write_cqis(struct ufs_hba *hba, u32 val, int i)
+ EXPORT_SYMBOL_GPL(ufshcd_mcq_write_cqis);
  
-diff --git a/drivers/gpu/drm/ci/arm64.config b/drivers/gpu/drm/ci/arm64.config
-index b850b88787ad..5da3913ec8a4 100644
---- a/drivers/gpu/drm/ci/arm64.config
-+++ b/drivers/gpu/drm/ci/arm64.config
-@@ -209,3 +209,8 @@ CONFIG_ARM_TEGRA_DEVFREQ=y
- CONFIG_TEGRA_SOCTHERM=y
- CONFIG_DRM_TEGRA_DEBUG=y
- CONFIG_PWM_TEGRA=y
-+
-+# For Rockchip rk3588
-+CONFIG_DRM_PANTHOR=m
-+CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY=y
-+CONFIG_PHY_ROCKCHIP_SAMSUNG_HDPTX=y
-diff --git a/drivers/gpu/drm/ci/build.sh b/drivers/gpu/drm/ci/build.sh
-index 4353ee0f8889..d00d549cbd9c 100644
---- a/drivers/gpu/drm/ci/build.sh
-+++ b/drivers/gpu/drm/ci/build.sh
-@@ -16,6 +16,7 @@ if [[ "$KERNEL_ARCH" = "arm64" ]]; then
-     GCC_ARCH="aarch64-linux-gnu"
-     DEBIAN_ARCH="arm64"
-     DEVICE_TREES="arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dtb"
-+    DEVICE_TREES+=" arch/arm64/boot/dts/rockchip/rk3588-rock-5b.dtb"
-     DEVICE_TREES+=" arch/arm64/boot/dts/amlogic/meson-gxl-s805x-libretech-ac.dtb"
-     DEVICE_TREES+=" arch/arm64/boot/dts/allwinner/sun50i-h6-pine-h64.dtb"
-     DEVICE_TREES+=" arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dtb"
-diff --git a/drivers/gpu/drm/ci/gitlab-ci.yml b/drivers/gpu/drm/ci/gitlab-ci.yml
-index 20e8cbdc39e9..56088c5393cd 100644
---- a/drivers/gpu/drm/ci/gitlab-ci.yml
-+++ b/drivers/gpu/drm/ci/gitlab-ci.yml
-@@ -136,6 +136,7 @@ stages:
-   - meson
-   - msm
-   - panfrost
-+  - panthor
-   - powervr
-   - rockchip
-   - software-driver
-diff --git a/drivers/gpu/drm/ci/igt_runner.sh b/drivers/gpu/drm/ci/igt_runner.sh
-index 1c01bda52237..741d30655ab5 100755
---- a/drivers/gpu/drm/ci/igt_runner.sh
-+++ b/drivers/gpu/drm/ci/igt_runner.sh
-@@ -23,7 +23,7 @@ set -e
+ /*
+- * Current MCQ specification doesn't provide a Task Tag or its equivalent in
++ * UFSHCI 4.0 MCQ specification doesn't provide a Task Tag or its equivalent in
+  * the Completion Queue Entry. Find the Task Tag using an indirect method.
++ * UFSHCI 4.1 and above can directly return the Task Tag in the Completion Queue
++ * Entry.
+  */
+ static int ufshcd_mcq_get_tag(struct ufs_hba *hba, struct cq_entry *cqe)
+ {
+ 	u64 addr;
  
- mkdir -p /lib/modules
- case "$DRIVER_NAME" in
--    amdgpu|vkms)
-+    amdgpu|vkms|panthor)
-         # Cannot use HWCI_KERNEL_MODULES as at that point we don't have the module in /lib
-         mv /install/modules/lib/modules/* /lib/modules/. || true
-         modprobe --first-time $DRIVER_NAME
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index b7409f8a13a5..f6bee5b67931 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -206,6 +206,19 @@ msm:sm8350-hdk:
-     KERNEL_IMAGE_TYPE: ""
-     RUNNER_TAG: mesa-ci-x86-64-lava-rk3399-gru-kevin
++	if (hba->ufs_version >= ufshci_version(4, 1))
++		return cqe->task_tag;
++
+ 	/* sizeof(struct utp_transfer_cmd_desc) must be a multiple of 128 */
+ 	BUILD_BUG_ON(sizeof(struct utp_transfer_cmd_desc) & GENMASK(6, 0));
  
-+.rk3588:
-+  extends:
-+    - .lava-igt:arm64
-+    - .rockchip-device
-+  parallel: 2
-+  variables:
-+    DEVICE_TYPE: rk3588-rock-5b
-+    GPU_VERSION: rk3588
-+    BOOT_METHOD: u-boot
-+    KERNEL_IMAGE_NAME: Image
-+    KERNEL_IMAGE_TYPE: "image"
-+    RUNNER_TAG: mesa-ci-x86-64-lava-rk3588-rock-5b
-+
- rockchip:rk3288:
-   extends:
-     - .rk3288
-@@ -226,6 +239,16 @@ panfrost:rk3399:
-     - .rk3399
-     - .panfrost-gpu
- 
-+rockchip:rk3588:
-+  extends:
-+    - .rk3588
-+    - .rockchip-display
-+
-+panthor:rk3588:
-+  extends:
-+    - .rk3588
-+    - .panthor-gpu
-+
- .i915:
-   extends:
-     - .lava-igt:x86_64
-@@ -354,6 +377,11 @@ amdgpu:stoney:
-   variables:
-     DRIVER_NAME: panfrost
- 
-+.panthor-gpu:
-+  stage: panthor
-+  variables:
-+    DRIVER_NAME: panthor
-+
- .mt8173:
-   extends:
-     - .mediatek-device
-diff --git a/drivers/gpu/drm/ci/xfails/panthor-rk3588-fails.txt b/drivers/gpu/drm/ci/xfails/panthor-rk3588-fails.txt
-new file mode 100644
-index 000000000000..7407bd0128d4
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panthor-rk3588-fails.txt
-@@ -0,0 +1,5 @@
-+core_hotunplug@hotreplug,Fail
-+core_hotunplug@hotreplug-lateclose,Fail
-+core_hotunplug@hotunplug-rescan,Fail
-+core_hotunplug@unplug-rescan,Fail
-+core_setmaster@master-drop-set-user,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/panthor-rk3588-skips.txt b/drivers/gpu/drm/ci/xfails/panthor-rk3588-skips.txt
-new file mode 100644
-index 000000000000..b724cf04e3b3
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/panthor-rk3588-skips.txt
-@@ -0,0 +1,20 @@
-+# Skip driver specific tests
-+^amdgpu.*
-+^msm.*
-+nouveau_.*
-+^v3d.*
-+^vc4.*
-+^vmwgfx*
-+
-+# Skip intel specific tests
-+gem_.*
-+i915_.*
-+tools_test.*
-+kms_dp_link_training.*
-+
-+# Panfrost is not a KMS driver, so skip the KMS tests
-+kms_.*
-+
-+# Skip display functionality tests for GPU-only drivers
-+dumb_buffer.*
-+fbdev.*
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3588-fails.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3588-fails.txt
-new file mode 100644
-index 000000000000..799c3b04c3f2
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3588-fails.txt
-@@ -0,0 +1,9 @@
-+core_setmaster@master-drop-set-user,Fail
-+kms_3d,Fail
-+kms_cursor_legacy@forked-bo,Fail
-+kms_cursor_legacy@forked-move,Fail
-+kms_cursor_legacy@single-bo,Fail
-+kms_cursor_legacy@single-move,Fail
-+kms_cursor_legacy@torture-bo,Fail
-+kms_cursor_legacy@torture-move,Fail
-+kms_lease@lease-uevent,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/rockchip-rk3588-skips.txt b/drivers/gpu/drm/ci/xfails/rockchip-rk3588-skips.txt
-new file mode 100644
-index 000000000000..a165fccd8a93
---- /dev/null
-+++ b/drivers/gpu/drm/ci/xfails/rockchip-rk3588-skips.txt
-@@ -0,0 +1,14 @@
-+# Skip driver specific tests
-+^amdgpu.*
-+^msm.*
-+nouveau_.*
-+^panfrost.*
-+^v3d.*
-+^vc4.*
-+^vmwgfx*
-+
-+# Skip intel specific tests
-+gem_.*
-+i915_.*
-+tools_test.*
-+kms_dp_link_training.*
 -- 
-2.47.3
+2.45.2
 
 
