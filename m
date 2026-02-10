@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E7D6EA811F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 14:28:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEA25EA3F22
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 16:11:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iLRJO034PzNlcAUBwZKAbBLhNDsdkfdFamaIdMTqIdE=; b=GZlbgZOIBQHFTmUWpOpjAy+VOW
-	cVMpKFF4khNQD/JXYdxnqsVqj9ATfY4QFqUdOc0WbSb9ZStx9PXWgLGVGZqO29xGcYScmpz/FgzSB
-	c7TLffg6knBppOoC6pPJTbFkD20L6Wj00lyySeoTMt+yn+NC6zrFvY+oI8BTmvzhVcV46/DB5TZ87
-	DlVUlIe39vDUN1fD0aq+l5VDLVLIxnl9qBkUvUuQ3glEyCWG4+9jJ+0+EcjREyhT9N0Gc6cuyc3uN
-	BzUHv7nbDTmBeA+nG7241TUDnUh98VFMiwWiqIUlbbPdLAbLiwFVzXldslwzNJpsNXU9aS9QYehK7
-	nQgeHS2w==;
+	bh=IbCBjyvOQusFhwRoELNOw/DkpVAJ767NedVSh8uzPu0=; b=xHIsqq2aBe6s2+7IGX51PutYeA
+	vJE3OduAD1jtCth+6/v9Y6O3PpASFnZUJpA2eudblLJhrUvSbvfwzG42jEdfAFNoqdigG6LOt0w3k
+	GyEgwi+pOuO6m8XxEniQsBJQQO62PjrXZgwlxcOMCJaiUkQAw/Qg7MOkHXPAnsFt3TnEhDtSwk2Iq
+	p2+JTxwuHit04lhoClj+TwfJdMkZRvM2XsuR2CC1YWLcQNlHBhEw6oBfnL/pA8f/sx/eqWDAW2yHJ
+	oLZkyWUUSztuEzJlSPViJKr8qlxbSwNC9Dm0Fib8+MEQ5bK5OpIvR/J7O+C+8vsV33i42Eu8S1xSM
+	sWE5+R4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpoj2-0000000H35r-3tpH;
-	Tue, 10 Feb 2026 14:28:24 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vpqKL-0000000HCFT-1iyL;
+	Tue, 10 Feb 2026 16:11:01 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpoiz-0000000H34i-2if8;
-	Tue, 10 Feb 2026 14:28:22 +0000
+	id 1vpqKJ-0000000HCEx-03fz;
+	Tue, 10 Feb 2026 16:11:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770733698;
-	bh=muVQ1zQzdc9CjW+SMGZIOKie1oQVfcVMN3gvbBxDNQw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=n6QsXv0HmwEC4rsdnP2MtqVr7K2V/6R9qghoJSN7lLgDKzayX8QLq7Z3JT7nF2b11
-	 f2goSCY2LqBw56NAm/s7IDxxyiAL74ofPiLNc56kPLdOXYIrEstWGiTlmHD4QuSI9Y
-	 q4ruM/bLlfad2Oq1DPAzvWtDSrVWgRt4Uw17mlDQW9GUIUGgw++IO8KB4vheHBEsIk
-	 iyHxWEuVbE7mU9q+xwO258CHdCPasCNjmHKZotgf0LC8P3RKGpVQpjEvybX/hDkxYS
-	 2KAhXNLy9yjE1oRVvxgeghNTrq9YjsqBhOYJNDIdJtV0S03hT+PXjpOPqeHIEdZByC
-	 PfVZ0TBb919dg==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	s=mail; t=1770739854;
+	bh=lLVDD99fYBVm2CdLzN2zj/HZbrLO0z3wX6Z5az0oTNk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Optq0UcrlWtJQoGV5TU1aPGXWMxciVd3yJJkWNEa2bsRMWsKuy8W78gGRRLF4teCR
+	 Q+pHjGV3xH4zYuSzAIfryAVNEGS3mb8tdsnj05HHae8WxCkCoYSh+lJNQNjjvbAp5g
+	 zGG/tvVB//HewOto7KknXDt4dpeAu2iPADwm9Vp32UJqpxOsU0rhhJObNTZs3/q2tF
+	 sCMw1dqm6GzpJZlNwO0EvQeJTWTsAih8PPZg/fm0jgnthFOQSgHkaAGTd4hvGgHXmC
+	 rSGf747THQxMwGzHA/UaSEXlTUyffdrzcX0KwYmdvX3C7pm+hFUZTuOUoTzDVkQgij
+	 pkT6RRU4DxoBA==
+Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:7872:ec71:6d40:b8ea])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E580C17E12A9;
-	Tue, 10 Feb 2026 15:28:17 +0100 (CET)
-Message-ID: <0ccca45c-34af-4d38-ad0f-6cd080f2882d@collabora.com>
-Date: Tue, 10 Feb 2026 15:28:17 +0100
+	(Authenticated sender: laura.nao)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4503317E0E90;
+	Tue, 10 Feb 2026 17:10:53 +0100 (CET)
+From: Laura Nao <laura.nao@collabora.com>
+To: aford173@gmail.com
+Cc: angelogioacchino.delregno@collabora.com,
+	broonie@kernel.org,
+	laura.nao@collabora.com,
+	lgirdwood@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-pm@vger.kernel.org,
+	matthias.bgg@gmail.com,
+	mturquette@baylibre.com,
+	nfraprado@collabora.com,
+	sboyd@kernel.org,
+	ulf.hansson@linaro.org
+Subject: Re: [PATCH 2/5] clk: mediatek: Fix MT8196 topckgen2 orphan clocks
+Date: Tue, 10 Feb 2026 17:10:49 +0100
+Message-Id: <20260210161049.42621-1-laura.nao@collabora.com>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20260210053708.17239-2-aford173@gmail.com>
+References: <20260210053708.17239-2-aford173@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] dt-bindings: arm: mediatek: audsys: Support
- mt8192-audsys variant
-To: Rob Herring <robh@kernel.org>
-Cc: krzk+dt@kernel.org, conor+dt@kernel.org, tudor.ambarus@linaro.org,
- pratyush@kernel.org, mwalle@kernel.org, miquel.raynal@bootlin.com,
- richard@nod.at, vigneshr@ti.com, lgirdwood@gmail.com, broonie@kernel.org,
- matthias.bgg@gmail.com, julien.massot@collabora.com,
- eugen.hristev@linaro.org, jiaxin.yu@mediatek.com, shane.chien@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mtd@lists.infradead.org, linux-sound@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20260115125624.73598-1-angelogioacchino.delregno@collabora.com>
- <20260115125624.73598-4-angelogioacchino.delregno@collabora.com>
- <CAL_JsqL=zAqyVDAP_B1VW1FWKoS9OEdTNZiZabSNxDscBryYgw@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAL_JsqL=zAqyVDAP_B1VW1FWKoS9OEdTNZiZabSNxDscBryYgw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260210_062821_863018_AFE20DC2 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20260210_081059_207667_9677369B 
+X-CRM114-Status: UNSURE (   8.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,101 +85,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 10/02/26 14:41, Rob Herring ha scritto:
-> On Thu, Jan 15, 2026 at 6:56 AM AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->>
->> Add support for the mediatek,mt8192-audsys compatible, which uses
->> a different audio controller (mt8192-afe-pcm) compared to mt8183
->> and mt2701.
->>
->> This resolves a dtbs_check warning on all MT8192 devicetrees.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   .../arm/mediatek/mediatek,audsys.yaml         | 46 +++++++++++++------
->>   1 file changed, 33 insertions(+), 13 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml
->> index f3a761cbd0fd..09a6c16e7e82 100644
->> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml
->> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml
->> @@ -48,19 +48,39 @@ required:
->>     - compatible
->>     - '#clock-cells'
->>
->> -if:
->> -  properties:
->> -    compatible:
->> -      contains:
->> -        const: mediatek,mt8183-audiosys
->> -then:
->> -  properties:
->> -    audio-controller:
->> -      $ref: /schemas/sound/mediatek,mt8183-audio.yaml#
->> -else:
->> -  properties:
->> -    audio-controller:
->> -      $ref: /schemas/sound/mediatek,mt2701-audio.yaml#
->> +allOf:
->> + - if:
-> 
-> Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml:52:2:
-> [warning] wrong indentation: expected 2 but found 1 (indentation)
-> 
-> 
->> +     properties:
->> +       compatible:
->> +         contains:
->> +           enum:
->> +             - mediatek,mt2701-audsys
->> +             - mediatek,mt7622-audsys
->> +   then:
->> +     properties:
->> +       audio-controller:
->> +         $ref: /schemas/sound/mediatek,mt2701-audio.yaml#
->> +
->> + - if:
->> +     properties:
->> +       compatible:
->> +         contains:
->> +           const: mediatek,mt8183-audiosys
->> +   then:
->> +     properties:
->> +       audio-controller:
->> +         $ref: /schemas/sound/mediatek,mt8183-audio.yaml#
->> +
->> + - if:
->> +     properties:
->> +       compatible:
->> +         contains:
->> +           const: mediatek,mt8192-audsys
->> +   then:
->> +     properties:
->> +       audio-controller:
->> +         $ref: /schemas/sound/mt8192-afe-pcm.yaml#
->> +
->>
-> 
-> Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml:84:1:
-> [warning] too many blank lines (2 > 1) (empty-lines)
-> 
-> Please fix as these are warnings in linux-next now.
-> 
+Hi,
 
-Ack. Sorry for the mistakes. Not sure how this happened.
+On 2/10/26 06:37, Adam Ford wrote:
+> There are a few clocks with names spelled incorrecly, so when a child tries
+> to associate itself to a parent, there isn't a parent.  Fixing the names
+> restores the proper parent-child relations of these clocks and eliminates
+> the orphaned clocks.
+>
+> Fixes: b093e0f17099 ("clk: mediatek: Add MT8196 topckgen2 clock support")
+> Signed-off-by: Adam Ford <aford173@gmail.com>
 
-Let me see when I can get some minutes to get this addressed.
+I intended to drop the ck_ prefix from the clock names in the original 
+driver submission, but it appears I missed some of them.
 
-Cheers,
-Angelo
+Reviewed-by: Laura Nao <laura.nao@collabora.com>
 
-> 
->>   additionalProperties: false
->>
->> --
->> 2.52.0
->>
+Thanks!
 
+Laura
 
 
