@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B168AEA3F3A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 11:31:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5709DEA810A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 12:48:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V8crLI44g1DsLEHB024GHulFB1kvu+UtDdlE2bSCrX4=; b=G/8RFTw6Z18/OZK4SKrpt5KtUJ
-	JFfrha4XnHErqc6jfc1P+Z1YzSeybA9avUaci+JT54hty0/CDb4jWocDEu7/BMwldjEWHu1SSA7U6
-	qW9x4qpmY0dB5KwcNvhOruSgy+QtCX74B+cYlKQkfVQ/lJbnC4PdYcrbrkC7J8ODNqw98kxVX1vf0
-	FOoPHWS9o6GiW5DzBx+iPB6BawlN1bwGqnWQeGnZGQpakpdlBNr2YkuBPzoDbV01P+lLfEFcXUXmL
-	08Rg1irafc7cRPcK729X1eChcI8RX/QePAni6JWt5JVxWCJ0h2kJu7Gk7nq+lI+9beAjSGWdeSCT7
-	o2TCGurA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Content-Type:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=maKY7w7nwib2BGdnzfNLGr6LuqDTUaTGWNtj37hTxCg=; b=41n5T2zcO/priK
+	B4AgCUJItVnEOg7//F5unwO1sf+QeizgDTQhCUJi3CmNGXxSowuRgSKhYuhJcoxCWulMVcZ4pf4Ij
+	YqEzpG/GBS6NWZh1cD8ZFw6ylBJuCI+l6+5WOpqiJl35JYJYdm+mohaC+yLHnLcg1I/qxuH7Rije1
+	/9tH+8Y8MmaMIHtE57/hNThmU7+W+/bGdj5KI169Vs13qDcbGzC9BWovui6tZ+3BHm7cYRt5z6bez
+	Wm5nW8mF9TNSl0Gt/fRjYvM4HB67bX1EHDKR+EirzkYW2GmpNnU7/cH00Bw759V8V6bnwjbq537+a
+	ZtIHOz1RhaL96gBstiXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vplxz-0000000Gt9u-0mfO;
-	Tue, 10 Feb 2026 11:31:39 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vpnAI-0000000GxI4-0yCJ;
+	Tue, 10 Feb 2026 12:48:26 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vplxu-0000000Gt95-2aTc;
-	Tue, 10 Feb 2026 11:31:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770723090;
-	bh=Dda5EyfS/mUf58NECP6/RPGWDX/572xH+xh6MoBCJCY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Nfihc0kHazcC50eVR4FMsM5nDqivuBoghIHrKvFJlSyifQ9YeM7ucf+rvIV2C2FKu
-	 FQ1+3Z8I+yLDhq1xyBwUbdBKCjk+LKytHEJP9HgXjCVyNi6Pa8dZcJhn40Isaez+IY
-	 Z+GIFXQGo22NdkhgmeLGKYAbAcpot8ejF/0oZ+dFZx5VsDVgz2ffXTdJTpj15C1bXq
-	 UaMydpBX+gXDk8SADeSMBktGYbjo77dmu3GPTZkpeDo7ReJnUPVrfA8BaEk+V8sllu
-	 39aWwAyyEEgdNQcqXSIiVwMN/nhmEDxyDfFBZaFEUA4/MJcr9M5Op/idvTDY+wAoIt
-	 2YIEq66cNiPHQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C845117E12C5;
-	Tue, 10 Feb 2026 12:31:29 +0100 (CET)
-Message-ID: <0960ece8-02e6-468f-9ee6-38e529939d35@collabora.com>
-Date: Tue, 10 Feb 2026 12:31:29 +0100
+	id 1vpnAF-0000000GxHI-1gYx
+	for linux-mediatek@lists.infradead.org;
+	Tue, 10 Feb 2026 12:48:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2D4D3436FA
+	for <linux-mediatek@lists.infradead.org>; Tue, 10 Feb 2026 12:48:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0BC58C116C6
+	for <linux-mediatek@lists.infradead.org>; Tue, 10 Feb 2026 12:48:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1770727702;
+	bh=/yLTrEwFx14Dt9Rfp5vSAMLnucczQsLEDATsUcijQh0=;
+	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc:From;
+	b=lxfgH7JbVpaXTZgCXtPeacOeRoRqvwbSeiQKRQ+CWb1BVOyn4X/FUNVyU8wG+46Ql
+	 zHPQAvWpU/lsPHuGmBCWO8gtVgozcmXWtJF+4gtY2p8GdRa0RPxaL5f+l7qtpIlPFl
+	 ZGxKcrHwNy2xhQo1ddiquABe/dBB0ANpCYID4oX5OGPQA8Ir3CerZyZP18Y85Gy6gc
+	 Crs5Xi7rCUVM8pMn8nKVbP2mO3j+s7GrbVDW7Ep2ybo+Y8fnAUZJm2Rv2hwaWHXXKk
+	 K3t9MapjBhjrVP1+rBiq4jW7yeIE4z/s4OtIJ0Qk2bTwrvUKx16eNxEl1QVkEG647a
+	 z0kPurYsJNNrA==
+Received: by mail-lj1-f179.google.com with SMTP id 38308e7fff4ca-382fea4a160so47027431fa.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Feb 2026 04:48:21 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCXBoG9EQj53cQSHRVP+uEzSNvt8VZA7tVPms9QGupFnPAPpUQvjvyR3TtUusk2sctEQGd0r7HE1MJeWIwLFDg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyeaOWs1jvmr25ONjVeodrsVIFxJVFfyiSzznm5XIUxicLhLWcJ
+	uZ3IbZ7CkDT4Vu8yhmi94vuprrkWO5/M5nwXKKSDjZ5Z+u5Ay+EPhkXcm6PUW7nZLqlVjO1bNzz
+	gZZ32SOW8HWiTMzaQ8yBLMWBy7OjpJiQ=
+X-Received: by 2002:a05:651c:31cd:b0:386:fa6b:44dc with SMTP id
+ 38308e7fff4ca-386fa6b49ecmr1427891fa.9.1770727700437; Tue, 10 Feb 2026
+ 04:48:20 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/mediatek: dsi: Store driver data before invoking
- mipi_dsi_host_register
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20260209090516.14369-1-l.scorcia@gmail.com>
- <5535ac41-efb8-4bf5-91bb-9b6f63517e8f@collabora.com>
- <CAORyz2J=zEMgNS6n6ouVZ3QA1moYfP053Jr5vhcscR9nDmKOfA@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAORyz2J=zEMgNS6n6ouVZ3QA1moYfP053Jr5vhcscR9nDmKOfA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20250919020525.7904-1-ot_cathy.xu@mediatek.com>
+ <1b092f9c-d0b1-47df-a83e-a99d7491a32b@lechnology.com> <7ed7a5e3-0c83-44e8-b7d2-e93e0b686df8@collabora.com>
+In-Reply-To: <7ed7a5e3-0c83-44e8-b7d2-e93e0b686df8@collabora.com>
+From: Chen-Yu Tsai <wens@kernel.org>
+Date: Tue, 10 Feb 2026 20:48:06 +0800
+X-Gmail-Original-Message-ID: <CAGb2v66eSZUVk8_CXDMn6jmEJeC9QqJcz1eO-wVT-9OxrkU6Aw@mail.gmail.com>
+X-Gm-Features: AZwV_Qj5PKRKpTYJzhQaY6M0aPxMiwKhFHv4dpRoWs-3c-choy2xYtUHpIM2CXI
+Message-ID: <CAGb2v66eSZUVk8_CXDMn6jmEJeC9QqJcz1eO-wVT-9OxrkU6Aw@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mediatek: mt8189: Add pinmux macro header file
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: David Lechner <david@lechnology.com>, Cathy Xu <ot_cathy.xu@mediatek.com>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Yong Mao <yong.mao@mediatek.com>, 
+	Wenbin Mei <Wenbin.Mei@mediatek.com>, Axe Yang <Axe.Yang@mediatek.com>, 
+	Lei Xue <Lei.Xue@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260210_033134_834009_1685705F 
-X-CRM114-Status: GOOD (  24.71  )
+X-CRM114-CacheID: sfid-20260210_044823_488855_DE72C434 
+X-CRM114-Status: GOOD (  33.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,119 +85,229 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: wens@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 09/02/26 19:46, Luca Leonardo Scorcia ha scritto:
-> Il giorno lun 9 feb 2026 alle ore 12:40 AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> ha scritto:
->>
->> Il 09/02/26 10:05, Luca Leonardo Scorcia ha scritto:
->>> The call to mipi_dsi_host_register triggers a callback to mtk_dsi_bind,
->>> which uses dev_get_drvdata to retrieve the mtk_dsi struct, so this
->>> structure needs to be stored inside the driver data before invoking it.
->>>
->>> As drvdata is currently uninitialized it leads to a crash when
->>> registering the DSI DRM encoder right after acquiring
->>> the mode_config.idr_mutex, blocking all subsequent DRM operations.
->>>
->>> Fixes the following crash during mediatek-drm probe (tested on Xiaomi
->>> Smart Clock x04g):
->>>
->>> Unable to handle kernel NULL pointer dereference at virtual address
->>>    0000000000000040
->>> [...]
->>> ---[ end trace 0000000000000000 ]---
->>>
->>> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
->>
->> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->>
->> ... but wait, what have I just read? Xiaomi Smart Clock?! MT8167?
->>
->> Are you running upstream on this device?
->> If so, why don't you also contribute a nice devicetree to get this device finally
->> upstream?!?! :-)
-> 
-> That's correct! Most of the work had already been done by the
-> wonderful people at postmarketOS, I just had to connect the dots. Some
-> crucial patches (mt6392 regulator, mt8167 display nodes) were
-> submitted in the past but weren't merged for various reasons.
-> 
-> Just rebased on v6.19: https://pasteboard.co/6bXQeWlwUqmz.jpg
+On Tue, Feb 10, 2026 at 7:03=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Il 09/02/26 22:48, David Lechner ha scritto:
+> > On 9/18/25 9:03 PM, Cathy Xu wrote:
+> >> Add the pinctrl header file on MediaTek mt8189.
+> >>
+> >> Signed-off-by: Cathy Xu <ot_cathy.xu@mediatek.com>
+> >> ---
+> >> This patch is base on the patch series:
+> >> https://patchwork.kernel.org/project/linux-mediatek/list/?series=3D981=
+475
+> >> [1] dt-bindings: pinctrl: mediatek: Add support for mt8189
+> >> [2] arm64: dts: mediatek: mt8189: Add pinmux macro header file
+> >> [3] pinctrl: mediatek: Add pinctrl driver on mt8189
+> >> Since patch [1] and [3] of the series have already been merged, this
+> >> patch(patch [2]) is being resent individually after modifications.
+> >> ---
+> >>   arch/arm64/boot/dts/mediatek/mt8189-pinfunc.h | 1125 +++++++++++++++=
+++
+> >>   1 file changed, 1125 insertions(+)
+> >>   create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-pinfunc.h
+> >>
+> >> diff --git a/arch/arm64/boot/dts/mediatek/mt8189-pinfunc.h b/arch/arm6=
+4/boot/dts/mediatek/mt8189-pinfunc.h
+> >> new file mode 100644
+> >> index 000000000000..df69f50c267a
+> >> --- /dev/null
+> >> +++ b/arch/arm64/boot/dts/mediatek/mt8189-pinfunc.h
+> >
+> > General question:
+> >
+> > Why do we have similar files in two different places different places?
+> >
+> > $ ls arch/arm64/boot/dts/mediatek/*-pin*
+> > arch/arm64/boot/dts/mediatek/mt2712-pinfunc.h
+> > arch/arm64/boot/dts/mediatek/mt6878-pinfunc.h
+> > arch/arm64/boot/dts/mediatek/mt6893-pinfunc.h
+> > arch/arm64/boot/dts/mediatek/mt8167-pinfunc.h
+> > arch/arm64/boot/dts/mediatek/mt8173-pinfunc.h
+> > arch/arm64/boot/dts/mediatek/mt8196-pinfunc.h
+> > arch/arm64/boot/dts/mediatek/mt8516-pinfunc.h
+> >
+> > $ ls include/dt-bindings/pinctrl/mt*
+> > include/dt-bindings/pinctrl/mt65xx.h
+> > include/dt-bindings/pinctrl/mt6779-pinfunc.h
+> > include/dt-bindings/pinctrl/mt6795-pinfunc.h
+> > include/dt-bindings/pinctrl/mt6797-pinfunc.h
+> > include/dt-bindings/pinctrl/mt7623-pinfunc.h
+> > include/dt-bindings/pinctrl/mt8135-pinfunc.h
+> > include/dt-bindings/pinctrl/mt8183-pinfunc.h
+> > include/dt-bindings/pinctrl/mt8186-pinfunc.h
+> > include/dt-bindings/pinctrl/mt8192-pinfunc.h
+> > include/dt-bindings/pinctrl/mt8195-pinfunc.h
+> > include/dt-bindings/pinctrl/mt8365-pinfunc.h
+> >
+> >
+> > Plus one different naming pattern.
+> >
+> > $ ls include/dt-bindings/pinctrl/mediatek,*
+> > include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h
+> >
+> >
+> >
+> > Which one is preferred?
+> >
+> >
+> The MediaTek pinctrl must gain compatibility with standard pinctrl bindin=
+gs. Until
+> then, bindings maintainers decided that these headers must go to the dts/=
+mediatek
+> folder.
+>
+> It is my desire to (but lack of time on my side hits hard) do the right t=
+hing and
+> make the MediaTek pinctrl drivers to actually "understand" standard bindi=
+ngs.
 
-Oh that's so cool!
+The headers encode the pin numbers and mux values in a way that the
+"pinmux" property requires, all the while giving them meaningful names.
 
-> 
-> I am trying to get it working as much as I can, then cleanup and
-> submit. At the moment storage, usb networking, rtc, buttons, screen,
-> touch, backlight, light/presence sensors, drm and gce are all working;
-> still missing wifi/bt, audio and cpuidle.
-> 
+I suppose you could consider them part of the binding, as the pin controlle=
+r
+binding assembles all the individual PIO blocks in the SoC to produce one
+unified view of all the pins. How they are ordered is important.
 
-You got an astonishingly big amount of features working fine then.
-That is practically almost everything.
+Plus the datasheets are horrible to read, as the pins aren't always numbere=
+d,
+but are referred to using symbolic names like I2S2_MCLK.
 
-I do encourage you to send all this good stuff upstream, as I'd anyway not really
-expect your v1 to be perfect (however, I'm ready to get pleasantly surprised, so
-please do?!).
+> I'd be - of course - happy if anyone else beats me on time (which wouldn'=
+t be hard
+> really) and pushes a series to fix this situation.
+>
+> Just to be clear - right now, the MTK pinctrl DT looks like:
+>
+>         panel_default_pins: panel-default-pins {
+>                 pins-rst {
+>                         pinmux =3D <PINMUX_GPIO108__FUNC_GPIO108>;
+>                         output-high;
+>                 };
+>
+>                 pins-en {
+>                         pinmux =3D <PINMUX_GPIO48__FUNC_GPIO48>;
+>                         output-low;
+>                 };
+>         };
+>
+>         spi1_pins: spi1-pins {
+>                 pins {
+>                         pinmux =3D <PINMUX_GPIO136__FUNC_SPIM1_CSB>,
+>                                  <PINMUX_GPIO137__FUNC_SPIM1_CLK>,
+>                                  <PINMUX_GPIO138__FUNC_SPIM1_MO>,
+>                                  <PINMUX_GPIO139__FUNC_SPIM1_MI>;
+>                         bias-disable;
+>                 };
+>         };
 
-Getting your current state correctly upstreamed makes you able to avoid refactors
-during development and to actually get all the rest here upstream in relatively
-less time.
+To be fair, the above is one valid kind of generic pinmux description.
 
-After all, while it would be nice to have something complete and 100% working in
-the first-ever iteration, you got really a lot of nice stuff there - and from an
-upstream point of view, a device with this percentage of completion would be
-perfectly acceptable.
+From Documentation/devicetree/bindings/pinctrl/pinmux-node.yaml :
 
-Sending patches to add up more features later, even one by one, is just a regular
-workflow, so that'd be perfectly acceptable as well.
+While not required to be used, there are 3 generic forms of pin muxing node=
+s
+which pin controller devices can use.
 
-What is not acceptable is non-functional placeholders that get deleted entirely
-with subsequent patches (like adding a UART node with fake pinctrl because the
-bootloader leaves that configured, but then deleting everything and refactoring
-to make it proper ... bar exceptional cases, of course, everything is always
-relative to specific situations).
+For hardware where pin multiplexing configurations have to be specified for
+each single pin the number of required sub-nodes containing "pin" and
+"function" properties can quickly escalate and become hard to write and
+maintain.
 
-Ultimately, it's your choice though, of course.
+For cases like this, the pin controller driver may use the pinmux helper
+property, where the pin identifier is provided with mux configuration setti=
+ngs
+in a pinmux group. A pinmux group consists of the pin identifier and mux
+settings represented as a single integer or an array of integers.
 
-Keep up the good work!
+The pinmux property accepts an array of pinmux groups, each of them describ=
+ing
+a single pin multiplexing configuration.
 
-Cheers,
-Angelo
+ - end quote -
 
->> Cheers,
->> Angelo
->>
->>> ---
->>>    drivers/gpu/drm/mediatek/mtk_dsi.c | 4 ++--
->>>    1 file changed, 2 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
->>> index 4c2983852596..2358407b8a6b 100644
->>> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
->>> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
->>> @@ -1232,6 +1232,8 @@ static int mtk_dsi_probe(struct platform_device *pdev)
->>>
->>>        dsi->host.ops = &mtk_dsi_ops;
->>>        dsi->host.dev = dev;
->>> +     platform_set_drvdata(pdev, dsi);
->>> +
->>>        ret = mipi_dsi_host_register(&dsi->host);
->>>        if (ret < 0)
->>>                return dev_err_probe(dev, ret, "Failed to register DSI host\n");
->>> @@ -1254,8 +1256,6 @@ static int mtk_dsi_probe(struct platform_device *pdev)
->>>
->>>        init_waitqueue_head(&dsi->irq_wait_queue);
->>>
->>> -     platform_set_drvdata(pdev, dsi);
->>> -
->>>        dsi->bridge.of_node = dev->of_node;
->>>        dsi->bridge.type = DRM_MODE_CONNECTOR_DSI;
->>>
->>
->>
-> 
-> 
+So Mediatek is following one of the generic pinmux bindings. It's not the
+only one using this scheme either. STM32 and some of the Renesas platforms
+also follow it.
+
+> ....but the driver should gain compatibility with nodes which would look =
+like:
+>
+>         panel_default_pins: panel-default-pins {
+>                 pins-rst {
+>                         pins =3D "gpio108";
+>                         function =3D "gpio";
+>                         output-high;
+>                 };
+>
+>                 pins-en {
+>                         pins =3D "gpio48";
+>                         function =3D "gpio";
+>                         output-low;
+>                 };
+>         };
+>
+>         spi1_pins: spi1-pins {
+>                 pins-bus {
+>                         pins =3D "gpio136", "gpio137", "gpio138", "gpio13=
+9",
+>                         function =3D "spi_m1";
+
+Why is it "spi_m1", not "spi1"?
+
+
+Honestly you likely don't want this, or rather you don't want a huge table
+of pins and pinmux values and strings in the kernel. It takes a lot of time
+to write, even more time to review, and takes up a lot of space for each
+pinctrl driver. And those are generally built-in.
+
+The Allwinner platform has gone in the reverse direction: instead of having
+a huge table, we put the mux value in the DT using a custom property.
+See the following for discussions:
+
+https://patchwork.ozlabs.org/project/linux-gpio/cover/20171113012523.2328-1=
+-andre.przywara@arm.com/
+https://patchwork.ozlabs.org/project/linux-gpio/patch/20171113012523.2328-2=
+-andre.przywara@arm.com/
+
+And this is what finally landed:
+
+https://lore.kernel.org/linux-gpio/20250306235827.4895-7-andre.przywara@arm=
+.com/
+
+Has it caused a bit of trouble? Perhaps. I was working on various periphera=
+ls
+on a new board and put in the wrong mux value and didn't notice for a coupl=
+e
+days.
+
+
+
+ChenYu
+
+>                         bias-disable;
+>                 };
+>         };
+>
+> .... or
+>
+>         spi1_pins: spi1-pins {
+>                 pins-bus {
+>                         function =3D "spi_m1";
+>                         groups =3D "spi_m1_pins";
+>                         bias-disable;
+>                 };
+>         };
+>
+> That's the entire situation.
+>
+> Cheers,
+> Angelo
+>
 
