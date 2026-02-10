@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED457EA3F22
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 16:15:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B529EF0704
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 16:19:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rv7yW98OoRgTousE8IWDfe5nMbnqjPN7IlweunYrkU4=; b=5HBt4ud1IPCdbxgdMHFitpJBwu
-	T0SuFz+WGycmQzFQXq6zsjjLlHnxR7k5ZXXkrNolfeiFafWe1rjGr1xZ9tAGt+SqAaqNGGyEU6prP
-	TpGgIhb7xLFZFihYRWKTeF8yxgl92eewqzi/p2CnqEvOWSrB44R2xqe4MC/mYjatEDP0/eE0GEvjW
-	pDtE9egWrVjnamrm2PE0sX/gleo6KDpJvHNHeo72m1CeQ7Wre/Q8A9jfNQynR+HcrDm3AXxlIVVEK
-	ZUOZDcu4t+hbkqcNDj2OS44uT7Dr8Ou3MxjXObNVyRB6pO0LvSn18NzrUMOaJ6ULIgUpf1ZVY3+YV
-	98hUuJFA==;
+	bh=wtYKz9DZ9OmCr2jawKIcM7UjhwlVK2jwWRthCX3yHHc=; b=dYJTQTyFjdZC+fWDKs16th8mdL
+	b071wLjpQVtaGJWrjQ6LUaXfYIScd023W5Jz84r6v2jOzos/ayWFfVZkyS11JODTDdVh06EaTpEnM
+	A3gGBl3+55MqTnxZNwRLDfLCpjGrCdPj51sxiEw5JKNGMRdUzFp532qgezakdXu5gSSeO7hbH8sKR
+	MFEHm5DOv/VV6K914QxnjUHyHErRsCyACOkUFVEhwjcOdV5gz5A5yLt++hh4eZ6tlB6KnRmQeopOo
+	oflfIuP8OLqDJZo5qv8Ba1oVMxwTUeDf1/GK0grTzYre5PJ1NAoTkMJD9vk8veVbkrBcrKLTUEZQF
+	mAaQkM/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpqOS-0000000HCn4-1QmP;
-	Tue, 10 Feb 2026 16:15:16 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vpqST-0000000HDMg-2qec;
+	Tue, 10 Feb 2026 16:19:25 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpqOP-0000000HCln-1Y7X;
-	Tue, 10 Feb 2026 16:15:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770740110;
-	bh=ESssw3AcJ/djN6ROZdEIy2RGCShV5/2AG674QUn3s1E=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=jq81/DkTQ50k6Du5aMe0jYXrIYsIr/tvNvYgUjxFVCpxwVzet94JC+4xhx/51iUFy
-	 u12/nuIG0maHLuTKHDy1FHtFRA1IvYUsa0anxLnyGfW4IsqA0rkYNqjFhA8ESQq3yy
-	 QJoT9vjvz6kUc5WJU3MpeJ2WBAQglUq67AhX2wWJ2MtTL4B+rvRG6mXXnTcE+4V8Xn
-	 zLSjWVDKybK49QUm0xvmkuZtDysk+8sPa5C+JC0L2gLtPgizqjeF3onvlHtA0IoNw9
-	 czQ8UYDkErtlZh44Wdj9eKm8AjQPssLcSR+EN0jICAnRzDOjhpDCWErvxSV0p6ei+g
-	 Bj6fBpva8gLpg==
-Received: from laura.lan (unknown [IPv6:2001:b07:646b:e2:7872:ec71:6d40:b8ea])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laura.nao)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A360417E0C21;
-	Tue, 10 Feb 2026 17:15:09 +0100 (CET)
-From: Laura Nao <laura.nao@collabora.com>
-To: aford173@gmail.com
-Cc: angelogioacchino.delregno@collabora.com,
-	broonie@kernel.org,
-	laura.nao@collabora.com,
-	lgirdwood@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-pm@vger.kernel.org,
-	matthias.bgg@gmail.com,
-	mturquette@baylibre.com,
-	nfraprado@collabora.com,
-	sboyd@kernel.org,
-	ulf.hansson@linaro.org
-Subject: Re: [PATCH 5/5] drivers: clk: mediatek: Fix error finding regmap
-Date: Tue, 10 Feb 2026 17:14:57 +0100
-Message-Id: <20260210161457.43020-1-laura.nao@collabora.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20260210053708.17239-5-aford173@gmail.com>
-References: <20260210053708.17239-5-aford173@gmail.com>
+	id 1vpqSR-0000000HDLW-0IIV;
+	Tue, 10 Feb 2026 16:19:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6C70943DE1;
+	Tue, 10 Feb 2026 16:19:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A22C5C116C6;
+	Tue, 10 Feb 2026 16:19:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1770740362;
+	bh=ZJqOCWTAIrRuyAoY45qHcqTE8451yB5SKL/tec9M0p0=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=PDKg51NqNRpnHna5J8H7l2Z7tf3hV15X62gj355S1cPdzhUbCiUzgeiNxctSsuuRR
+	 wmSuAX/kHbEdbwLx7OYeSGrLt9QrVelVytwH1aes4yLPxiGUAhmM/fNgKPulVR4Nwr
+	 x5+9kTeJn7lZ1CkJHa5TnR+Xa5cX2qbhZO673DcPT1GSgsSqH7d9RsqQbsKuGQ6bEg
+	 wa32/VXpIdCucOLuJYbrtqH+wtaBqydJH/GKyh/2/FdnBGNhVbIXbO6sHnnzcot3rW
+	 XtzNpRGmurIaCD2K0T8b9ojBJjD/VdYhsl09WqKsZR/zg+o0upVRkVjaMEsPxJSFTp
+	 fuuRGtzAVlYTw==
+From: Mark Brown <broonie@kernel.org>
+To: linux-mediatek@lists.infradead.org, Adam Ford <aford173@gmail.com>
+Cc: angelogioacchino.delregno@collabora.com, 
+ Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Laura Nao <laura.nao@collabora.com>, 
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
+In-Reply-To: <20260210053708.17239-1-aford173@gmail.com>
+References: <20260210053708.17239-1-aford173@gmail.com>
+Subject: Re: (subset) [PATCH 1/5] pmdomain: mediatek: Fix power domain
+ count
+Message-Id: <177074035936.275824.8148864726689689381.b4-ty@kernel.org>
+Date: Tue, 10 Feb 2026 16:19:19 +0000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.15-dev-47773
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260210_081513_567689_86E26B37 
-X-CRM114-Status: GOOD (  18.98  )
+X-CRM114-CacheID: sfid-20260210_081923_147451_387BCD87 
+X-CRM114-Status: GOOD (  10.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,52 +78,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Mon, 09 Feb 2026 23:37:01 -0600, Adam Ford wrote:
+> The wrong value of the number of domains is wrong which leads to
+> failures when trying to enumerate nested power domains.
+> 
+>  PM: genpd_xlate_onecell: invalid domain index 0
+>  PM: genpd_xlate_onecell: invalid domain index 1
+>  PM: genpd_xlate_onecell: invalid domain index 3
+>  PM: genpd_xlate_onecell: invalid domain index 4
+>  PM: genpd_xlate_onecell: invalid domain index 5
+>  PM: genpd_xlate_onecell: invalid domain index 13
+>  PM: genpd_xlate_onecell: invalid domain index 14
+> 
+> [...]
 
-On 2/10/26 06:37, Adam Ford wrote:
-> The clock driver for clk-mt8196-vdisp-ao doesn't use the same common clk
-> functions that other clocks use.  As such, this clock returns an error:
->
->   Cannot find regmap for /soc: -ENOMEM
->   clk-mt8196-vdisp-ao 3e800000.syscon: probe with driver clk-mt8196-vdisp-ao failed with error -12
->
-> Fix this by using the common clock calls.  With this patch, the following
-> new clocks properly enumerate:
->
->   mm_v_disp_vdisp_ao_config
->   mm_v_disp_dpc
->   mm_v_smi_sub_somm0
->
-> Fixes: d4fb7e15a520 ("clk: mediatek: Add MT8196 disp-ao clock support")
-> Signed-off-by: Adam Ford <aford173@gmail.com>
-> ---
->  drivers/clk/mediatek/clk-mt8196-vdisp_ao.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/clk/mediatek/clk-mt8196-vdisp_ao.c b/drivers/clk/mediatek/clk-mt8196-vdisp_ao.c
-> index fddb69d1c3eb..070c60f40b64 100644
-> --- a/drivers/clk/mediatek/clk-mt8196-vdisp_ao.c
-> +++ b/drivers/clk/mediatek/clk-mt8196-vdisp_ao.c
-> @@ -67,8 +67,8 @@ static const struct of_device_id of_match_clk_mt8196_vdisp_ao[] = {
->  MODULE_DEVICE_TABLE(of, of_match_clk_mt8196_vdisp_ao);
->  
->  static struct platform_driver clk_mt8196_vdisp_ao_drv = {
-> -	.probe = mtk_clk_pdev_probe,
-> -	.remove = mtk_clk_pdev_remove,
-> +	.probe = mtk_clk_simple_probe,
-> +	.remove = mtk_clk_simple_remove,
->  	.driver = {
->  		.name = "clk-mt8196-vdisp-ao",
->  		.of_match_table = of_match_clk_mt8196_vdisp_ao,
+Applied to
 
-This driver is actually expected to be registered by the mtk-mmsys 
-driver via platform_device_register_data() (related changes are in a 
-pending series [1]), which is why it is probed via mtk_clk_pdev_probe.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
 
-[1] https://lore.kernel.org/all/20250828080855.3502514-8-paul-pl.chen@mediatek.com/
+Thanks!
 
-Best,
+[4/5] regulator: mt6363: Fix interrmittent timeout
+      commit: 1a4b0c999101b2532723f9bd9818b70ffa7580f4
 
-Laura
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
