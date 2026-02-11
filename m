@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0012EB596C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Feb 2026 05:42:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF737EB596D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Feb 2026 05:42:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W50oqbR0eI6igwOGBiAI8u7uiOJbS1jWeDgipBWJQIA=; b=fCxoOkglklcYfkIevbTvMDXVqX
-	6nUW5YXy+2XgBcUTOAprNvO0jUQLk9Qhw2j3RLkoD284CjukFVrPBBtsQIgfB9jARWUQHbqVeh1Xi
-	hOSktHr6IwoQ2wiSACqM2Cwmd0pzPrOVBdaw5qshj957XTzoYjG4iPMUwcYcd7eP/+9jfSrCH0+ne
-	2DAp4VN7W7T1/PZI0XPGDh0RNztZKbaF/oA4bPOlLp4QkIgQsbKKZrTn0wsVVkY3IyxY0swSmY96z
-	Qz9aQ3pMHX46HvOOJLKpbBk7Vlec3LcBwDvgF+s1QlJeo8SxSodo/KyGN50lKf0DkdZ6Sj7qO87qw
-	8eLi2vng==;
+	bh=I8JOeYlQ4PIMz2gRUrc87JnjNhfOyg4gIeV6N6y6Lvc=; b=U9DUgRVqQL//ZC1iOeR5WK1DK4
+	VS5uATwR3kja3ZtHhuNpTyGGyINJgGWvdhCm4Xbi3Rdx5LHBtDcYcRpIBXIbPZ/YTl+2lOOE7pZX1
+	23yO3s+keyFCyCy3DR3imEokqDmBtkI8Q8VpK7itNsgidbRdIrC8hxZPZ50zEDKAaehzk1xWLoe2Q
+	fYgH48cTk1i1gI9/AUP3ndTA6Yh4+MRXogjjBpxO61AXSgnTUBcxF9j84vFZkSBopUbucOQGIhqM2
+	vU2AfJdnPfWkwhIRB5MDCjRGQKDl2oj/EXkeXlls7xA0piyXWAU1OUaALq0c95dSZ9hqqkSKRYTo1
+	ftbMLrMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vq2zt-00000000F2k-3c6b;
-	Wed, 11 Feb 2026 05:42:45 +0000
+	id 1vq2zu-00000000F4g-418F;
+	Wed, 11 Feb 2026 05:42:46 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vq2zj-00000000Eqq-0mRO;
-	Wed, 11 Feb 2026 05:42:36 +0000
-X-UUID: 74d04ef2070c11f1ad39f32c34db0b1c-20260210
+	id 1vq2zk-00000000EsB-0jbG;
+	Wed, 11 Feb 2026 05:42:37 +0000
+X-UUID: 737b434a070c11f1ad39f32c34db0b1c-20260210
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=W50oqbR0eI6igwOGBiAI8u7uiOJbS1jWeDgipBWJQIA=;
-	b=X9EHb/ltG7YjyRYDuHF8UoFWKGrVh8WSg1ZJWZCHslXj1Z/JWUCxNkBgA0h3lyFqQ3Tx42qumaf3/ZDyYrDI6iJTZsF6GfAOxMJNABpZ/qYH3SuK3EBDaE6Hif+yYopNlzBYJSHv2mLBmDy19nP7hV9/eR4Bb6yEw2E+FvKI1Jk=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=I8JOeYlQ4PIMz2gRUrc87JnjNhfOyg4gIeV6N6y6Lvc=;
+	b=pMKVR2waMuvE+Zu00GnnQny8xHvQ06WazA3uzIfehwhi0Ji9vltwn5oTVCrtBGDhE73Mn7fQXtPrDfufGTO235vM+GybtFYV+qnWISlueotsx9Oy11x22H9Ar3bS/1Wl2YqnMWSsxMBvHjtycE6ly7kdGQBW5Gz+HOf1mYBWNmA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:821d7d8c-9aae-487e-abfd-19af420cea4b,IP:0,U
+X-CID-O-INFO: VERSION:1.3.11,REQID:1b7e46c4-7728-45da-b027-f1576e956108,IP:0,U
 	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
 	:release,TS:-5
-X-CID-META: VersionHash:89c9d04,CLOUDID:33788de9-ef90-4382-9c6f-55f2a0689a6b,B
+X-CID-META: VersionHash:89c9d04,CLOUDID:b450d47a-8c8a-4fc4-88c0-3556e7711556,B
 	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
 	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
 	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -42,18 +42,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 74d04ef2070c11f1ad39f32c34db0b1c-20260210
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+X-UUID: 737b434a070c11f1ad39f32c34db0b1c-20260210
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <yunfei.dong@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1539444558; Tue, 10 Feb 2026 22:42:30 -0700
+	with ESMTP id 1866461526; Tue, 10 Feb 2026 22:42:28 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 11 Feb 2026 13:42:29 +0800
+ 15.2.2562.29; Wed, 11 Feb 2026 13:42:26 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 11 Feb 2026 13:42:28 +0800
+ 15.2.2562.29 via Frontend Transport; Wed, 11 Feb 2026 13:42:25 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
 	<nfraprado@collabora.com>, Sebastian Fricke <sebastian.fricke@collabora.com>,
@@ -68,9 +68,9 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
 	<Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3 08/14] media: mediatek: vcodec: support vcp architecture
-Date: Wed, 11 Feb 2026 13:41:35 +0800
-Message-ID: <20260211054149.27249-9-yunfei.dong@mediatek.com>
+Subject: [PATCH v3 05/14] media: mediatek: vcodec: get different firmware ipi id
+Date: Wed, 11 Feb 2026 13:41:32 +0800
+Message-ID: <20260211054149.27249-6-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.46.0
 In-Reply-To: <20260211054149.27249-1-yunfei.dong@mediatek.com>
 References: <20260211054149.27249-1-yunfei.dong@mediatek.com>
@@ -79,8 +79,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260210_214235_325276_B95B0A11 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20260210_214236_223149_24A61F99 
+X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,29 +95,170 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some platforms expose the video codec through the VCP coprocessor.
-Use the VCP architecture when the VCP coprocessor is found.
+Getting ipi(inter-processor interrupt) id according to firmware
+type and hardware index for different architecture.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c      | 3 +++
- 1 file changed, 3 insertions(+)
+ .../platform/mediatek/vcodec/common/mtk_vcodec_fw.c | 13 +++++++++++++
+ .../platform/mediatek/vcodec/common/mtk_vcodec_fw.h |  1 +
+ .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c       |  5 +++--
+ .../vcodec/decoder/vdec/vdec_h264_req_multi_if.c    |  5 +++--
+ .../vcodec/decoder/vdec/vdec_hevc_req_multi_if.c    |  5 +++--
+ .../mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c  |  5 +++--
+ .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c       |  5 +++--
+ 7 files changed, 29 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-index d9f722698198..3db046a1aeac 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-@@ -381,6 +381,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 	} else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
- 					 &rproc_phandle)) {
- 		fw_type = SCP;
-+	} else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vcp",
-+					 &rproc_phandle)) {
-+		fw_type = VCP;
- 	} else {
- 		dev_dbg(&pdev->dev, "Could not get vdec IPI device");
- 		return -ENODEV;
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.c
+index fc547afa4ebf..4ed7639dfa30 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.c
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.c
+@@ -5,6 +5,19 @@
+ #include "mtk_vcodec_fw_priv.h"
+ #include "mtk_vcodec_fw_vcp.h"
+ 
++int mtk_vcodec_fw_get_ipi(enum mtk_vcodec_fw_type type, int hw_id)
++{
++	switch (type) {
++	case SCP:
++		return hw_id == MTK_VDEC_LAT0 ? SCP_IPI_VDEC_LAT : SCP_IPI_VDEC_CORE;
++	case VCP:
++		return hw_id == MTK_VDEC_LAT0 ? VCP_IPI_LAT_DECODER : VCP_IPI_CORE_DECODER;
++	default:
++		return -EINVAL;
++	}
++}
++EXPORT_SYMBOL_GPL(mtk_vcodec_fw_get_ipi);
++
+ struct mtk_vcodec_fw *mtk_vcodec_fw_select(void *priv, enum mtk_vcodec_fw_type type,
+ 					   enum mtk_vcodec_fw_use fw_use)
+ {
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
+index c1642fb09b42..142e2e87905c 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
+@@ -41,5 +41,6 @@ int mtk_vcodec_fw_ipi_register(struct mtk_vcodec_fw *fw, int id,
+ int mtk_vcodec_fw_ipi_send(struct mtk_vcodec_fw *fw, int id,
+ 			   void *buf, unsigned int len, unsigned int wait);
+ int mtk_vcodec_fw_get_type(struct mtk_vcodec_fw *fw);
++int mtk_vcodec_fw_get_ipi(enum mtk_vcodec_fw_type type, int hw_id);
+ 
+ #endif /* _MTK_VCODEC_FW_H_ */
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
+index 7be4b6086920..a22802c9ebea 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
+@@ -1877,6 +1877,7 @@ static int vdec_av1_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+ {
+ 	struct vdec_av1_slice_instance *instance;
+ 	struct vdec_av1_slice_init_vsi *vsi;
++	enum mtk_vcodec_fw_type fw_type = ctx->dev->fw_handler->type;
+ 	int ret;
+ 
+ 	instance = kzalloc(sizeof(*instance), GFP_KERNEL);
+@@ -1884,8 +1885,8 @@ static int vdec_av1_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+ 		return -ENOMEM;
+ 
+ 	instance->ctx = ctx;
+-	instance->vpu.id = SCP_IPI_VDEC_LAT;
+-	instance->vpu.core_id = SCP_IPI_VDEC_CORE;
++	instance->vpu.id = mtk_vcodec_fw_get_ipi(fw_type, MTK_VDEC_LAT0);
++	instance->vpu.core_id = mtk_vcodec_fw_get_ipi(fw_type, MTK_VDEC_CORE);
+ 	instance->vpu.ctx = ctx;
+ 	instance->vpu.codec_type = ctx->current_codec;
+ 
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
+index 9a9dc2f88d6e..2be1f6096de6 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_h264_req_multi_if.c
+@@ -1204,6 +1204,7 @@ static int vdec_h264_slice_single_decode(void *h_vdec, struct mtk_vcodec_mem *bs
+ 
+ static int vdec_h264_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+ {
++	enum mtk_vcodec_fw_type fw_type = ctx->dev->fw_handler->type;
+ 	struct vdec_h264_slice_inst *inst;
+ 	int err, vsi_size;
+ 	unsigned char *temp;
+@@ -1214,8 +1215,8 @@ static int vdec_h264_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+ 
+ 	inst->ctx = ctx;
+ 
+-	inst->vpu.id = SCP_IPI_VDEC_LAT;
+-	inst->vpu.core_id = SCP_IPI_VDEC_CORE;
++	inst->vpu.id = mtk_vcodec_fw_get_ipi(fw_type, MTK_VDEC_LAT0);
++	inst->vpu.core_id = mtk_vcodec_fw_get_ipi(fw_type, MTK_VDEC_CORE);
+ 	inst->vpu.ctx = ctx;
+ 	inst->vpu.codec_type = ctx->current_codec;
+ 	inst->vpu.capture_type = ctx->capture_fourcc;
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
+index 88eca50c2017..2b0255257384 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_hevc_req_multi_if.c
+@@ -855,6 +855,7 @@ static int vdec_hevc_slice_setup_core_buffer(struct vdec_hevc_slice_inst *inst,
+ 
+ static int vdec_hevc_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+ {
++	enum mtk_vcodec_fw_type fw_type = ctx->dev->fw_handler->type;
+ 	struct vdec_hevc_slice_inst *inst;
+ 	int err, vsi_size;
+ 
+@@ -864,8 +865,8 @@ static int vdec_hevc_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+ 
+ 	inst->ctx = ctx;
+ 
+-	inst->vpu.id = SCP_IPI_VDEC_LAT;
+-	inst->vpu.core_id = SCP_IPI_VDEC_CORE;
++	inst->vpu.id = mtk_vcodec_fw_get_ipi(fw_type, MTK_VDEC_LAT0);
++	inst->vpu.core_id = mtk_vcodec_fw_get_ipi(fw_type, MTK_VDEC_CORE);
+ 	inst->vpu.ctx = ctx;
+ 	inst->vpu.codec_type = ctx->current_codec;
+ 	inst->vpu.capture_type = ctx->capture_fourcc;
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
+index e1d4960553f2..36b76a92fdc2 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp8_req_if.c
+@@ -272,6 +272,7 @@ static int vdec_vp8_slice_get_decode_parameters(struct vdec_vp8_slice_inst *inst
+ 
+ static int vdec_vp8_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+ {
++	enum mtk_vcodec_fw_type fw_type = ctx->dev->fw_handler->type;
+ 	struct vdec_vp8_slice_inst *inst;
+ 	int err;
+ 
+@@ -281,8 +282,8 @@ static int vdec_vp8_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+ 
+ 	inst->ctx = ctx;
+ 
+-	inst->vpu.id = SCP_IPI_VDEC_LAT;
+-	inst->vpu.core_id = SCP_IPI_VDEC_CORE;
++	inst->vpu.id = mtk_vcodec_fw_get_ipi(fw_type, MTK_VDEC_LAT0);
++	inst->vpu.core_id = mtk_vcodec_fw_get_ipi(fw_type, MTK_VDEC_CORE);
+ 	inst->vpu.ctx = ctx;
+ 	inst->vpu.codec_type = ctx->current_codec;
+ 	inst->vpu.capture_type = ctx->capture_fourcc;
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+index cd1935014d76..a700532ed7f2 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_vp9_req_lat_if.c
+@@ -1844,6 +1844,7 @@ static int vdec_vp9_slice_update_core(struct vdec_vp9_slice_instance *instance,
+ 
+ static int vdec_vp9_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+ {
++	enum mtk_vcodec_fw_type fw_type = ctx->dev->fw_handler->type;
+ 	struct vdec_vp9_slice_instance *instance;
+ 	struct vdec_vp9_slice_init_vsi *vsi;
+ 	int ret;
+@@ -1853,8 +1854,8 @@ static int vdec_vp9_slice_init(struct mtk_vcodec_dec_ctx *ctx)
+ 		return -ENOMEM;
+ 
+ 	instance->ctx = ctx;
+-	instance->vpu.id = SCP_IPI_VDEC_LAT;
+-	instance->vpu.core_id = SCP_IPI_VDEC_CORE;
++	instance->vpu.id = mtk_vcodec_fw_get_ipi(fw_type, MTK_VDEC_LAT0);
++	instance->vpu.core_id = mtk_vcodec_fw_get_ipi(fw_type, MTK_VDEC_CORE);
+ 	instance->vpu.ctx = ctx;
+ 	instance->vpu.codec_type = ctx->current_codec;
+ 
 -- 
 2.45.2
 
