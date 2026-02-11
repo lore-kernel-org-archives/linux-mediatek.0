@@ -4,70 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F880EB5946
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Feb 2026 01:24:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 434F5EB5969
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Feb 2026 05:42:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jivEQvL4i11K5bRMGCc+nSULGNrxIk8t3KCJl0ckdTQ=; b=suk598t28A8hfS58y9mujwuOot
-	iMKuuAnui1Hctyfx3Et499rtzWMbnzq3lAkhmzk8cjaH4mhHRnSrOI1C/BLtgA0LL2fkfVBWjGJbz
-	h3GH7W3cmy1VlRDeRoT4bCYJaBc5nK+kdngZ/0ZX9HHDXCTy8KPbXHIIi10udFs7t1PN4pCgIoeJP
-	L1mLsvndRWJ0Y1qmWMN1+NyfuRd00G3hWebwvp6C1vHFA7BnFhYtXiE60yNOLA31sUyAU5RWHTcpe
-	nZ/PzJClXABKyid5V99AsBVDWgHNIdTJSpJCP2XZTN4hN9NPTg6gxurvUiZUZFfTJvajGC3TK1tKj
-	taYuZt7g==;
+	bh=KL+qaj8pnmbhjg1wnd2RxNqlC8N0xbIZdiIsvG+R0XE=; b=qQ/KoMzElXw2LHVV9yRot8FosU
+	T2IwoKApg8VdhhjgWnrctZN9cL5/WzFxwGBfgK+xv/lSsujkThk+5QFogRHs+YuLWtBQ2xGUvp6zN
+	S3aRCfVbyVeO0+7FngHeEbwbtZIwiGIYJ1EiEFe5IA/8j9oHICrNQ++GBZ7yXTd34FJFN5796pZKK
+	R27Jot1KuR2av65Chxvg6r2nLiLfH9YLD9w9Oq1jB3rKDZJBh+zzZMLflJlL+Nhu80F7YZAWGA3wi
+	OEzztHB5CpOqE02VOarm2Oappt8DTXHRZOX1adoqCaCo7w0g8KWTl/9utfwpJrHYvdlsWo1/TFySA
+	kEL3CDFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpyxe-000000005LR-3LB4;
-	Wed, 11 Feb 2026 01:24:10 +0000
-Received: from n169-111.mail.139.com ([120.232.169.111])
-	by bombadil.infradead.org with smtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpyxZ-000000005Kz-1HLM;
-	Wed, 11 Feb 2026 01:24:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=139.com; s=dkim; l=0;
-	h=from:subject:message-id:to:cc:mime-version;
-	bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
-	b=k4rY8dyGr+ZMmzENq7OohDKkBqouz9FEPkuvpZpoPy2YaK+fGQxhYpcBPyeZ+Q+QDqaRoIenyGLWP
-	 SR5+0/xsXrRQzCd7gXlTkv4tYv5GSmppWI8powPt/dLQursmCCRm9N+Ujc5LLHySiwEJwG4NK9lJxg
-	 oXFIH7Jrn3vN73gI=
-X-RM-TagInfo: emlType=0                                       
-X-RM-SPAM: 
-X-RM-SPAM-FLAG: 00000000
-Received: from NTT-kernel-dev (unknown[60.247.85.88])
-	by rmsmtp-lg-appmail-18-12021 (RichMail) with SMTP id 2ef5698bda265d5-02609;
-	Wed, 11 Feb 2026 09:23:52 +0800 (CST)
-X-RM-TRANSID: 2ef5698bda265d5-02609
-From: Li hongliang <1468888505@139.com>
-To: gregkh@linuxfoundation.org,
-	stable@vger.kernel.org,
-	u201911157@hust.edu.cn
-Cc: patches@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	mturquette@baylibre.com,
-	sboyd@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	miles.chen@mediatek.com,
-	wenst@chromium.org,
-	chun-jie.chen@mediatek.com,
-	ikjn@chromium.org,
-	weiyi.lu@mediatek.com,
-	linux-clk@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	dzm91@hust.edu.cn
-Subject: [PATCH 6.1.y] clk: mediatek: fix of_iomap memory leak
-Date: Wed, 11 Feb 2026 09:23:51 +0800
-Message-Id: <20260211012351.2076922-1-1468888505@139.com>
-X-Mailer: git-send-email 2.34.1
+	id 1vq2zD-00000000ElC-1wob;
+	Wed, 11 Feb 2026 05:42:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vq2zB-00000000Eko-22AW;
+	Wed, 11 Feb 2026 05:42:02 +0000
+X-UUID: 5f60821c070c11f1a16f0188aa809bee-20260210
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=KL+qaj8pnmbhjg1wnd2RxNqlC8N0xbIZdiIsvG+R0XE=;
+	b=eAhu7tC3nXy8Jx6HwAYU+86/H3FRZrgEQWh76BQxxVv7wywPP/fdxC8QzoWh0hC2YFcobjF21iYiA9ITq3okZrIykZKS0L7h+c5M14fXMGVUOp3bwzD1IX8Wsy/IjyIY05oZUamoutPT+QW1Bq85aoRq0HROQvRZ9VZglAdkz4g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:494141a1-163b-4a95-8c65-1b83c5a61345,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:b4cc91f0-16bd-4243-b4ca-b08ca08ab1d8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 5f60821c070c11f1a16f0188aa809bee-20260210
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <yunfei.dong@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1688446426; Tue, 10 Feb 2026 22:41:54 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 11 Feb 2026 13:41:51 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 11 Feb 2026 13:41:51 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: =?UTF-8?q?N=C3=ADcolas=20F=20=2E=20R=20=2E=20A=20=2E=20Prado?=
+	<nfraprado@collabora.com>, Sebastian Fricke <sebastian.fricke@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Hans Verkuil
+	<hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Benjamin Gaignard
+	<benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>,
+	Daniel Almeida <daniel.almeida@collabora.com>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+	Daniel Vetter <daniel@ffwll.ch>, Steve Cho <stevecho@chromium.org>, Yunfei
+ Dong <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v3 00/14] media: mediatek: vcodec: support video decoder in mt8196
+Date: Wed, 11 Feb 2026 13:41:27 +0800
+Message-ID: <20260211054149.27249-1-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260210_172406_322430_5EC9773C 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20260210_214201_538066_CB2E5115 
+X-CRM114-Status: GOOD (  16.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,56 +93,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bosi Zhang <u201911157@hust.edu.cn>
+This patch set adds support for the video decoder on the MediaTek MT8196
+platform, leveraging the VCP microprocessor for enhanced performance. It
+introduces new firmware interfaces for kernel-side communication with VCP,
+adds MT8196 compatible, codec levels/profiles, and private data. Rewrites
+the AV1 driver to support extended VSI structures, then change irq table
+and cdf table size.
 
-[ Upstream commit 3db7285e044144fd88a356f5b641b9cd4b231a77 ]
+This patch set depends on "Add VCP support for mt8196"[1]
 
-Smatch reports:
-drivers/clk/mediatek/clk-mtk.c:583 mtk_clk_simple_probe() warn:
-    'base' from of_iomap() not released on lines: 496.
+[1] https://patchwork.kernel.org/project/linux-remoteproc/patch/20250402092134.12293-2-xiangzhi.tang@mediatek.com/
 
-This problem was also found in linux-next. In mtk_clk_simple_probe(),
-base is not released when handling errors
-if clk_data is not existed, which may cause a leak.
-So free_base should be added here to release base.
+Compliance Test Result:
+- v4l2-compliance: 48/49 tests passed, 1 failed (known issue)
+- fail: v4l2-test-controls.cpp(981): ret (got 13)
+-        test VIDIOC_G/S/TRY_EXT_CTRLS: FAIL
 
-Fixes: c58cd0e40ffa ("clk: mediatek: Add mtk_clk_simple_probe() to simplify clock providers")
-Signed-off-by: Bosi Zhang <u201911157@hust.edu.cn>
-Reviewed-by: Dongliang Mu <dzm91@hust.edu.cn>
-Link: https://lore.kernel.org/r/20230422084331.47198-1-u201911157@hust.edu.cn
-Signed-off-by: Stephen Boyd <sboyd@kernel.org>
-Signed-off-by: Li hongliang <1468888505@139.com>
+Fluster Test Result:
+- H264：
+- Ran 95/135 tests successfully   in 73.540 secs
+- H265：
+- Ran 142/147 tests successfully  in 100.168 secs
+- VP9：
+- Ran 276/305 tests successfully  in 106.804 secs
+- AV1：
+- Ran 240/242 tests successfully  in 23.991 secs
 ---
- drivers/clk/mediatek/clk-mtk.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+Changed in v3:
+- Depends on change no update
+- Add Compliance and Fluster test result
+- Re-write the commit message for patch 12
+- Change the patches according to review suggestion for patch: 3/4/5/6/14
 
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index 7b1ad73309b1..c2ca3d7576c2 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -505,8 +505,10 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
- 	num_clks += mcd->num_mux_clks;
- 
- 	clk_data = mtk_alloc_clk_data(num_clks);
--	if (!clk_data)
--		return -ENOMEM;
-+	if (!clk_data) {
-+		r = -ENOMEM;
-+		goto free_base;
-+	}
- 
- 	if (mcd->fixed_clks) {
- 		r = mtk_clk_register_fixed_clks(mcd->fixed_clks,
-@@ -594,6 +596,7 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
- 					      mcd->num_fixed_clks, clk_data);
- free_data:
- 	mtk_free_clk_data(clk_data);
-+free_base:
- 	if (mcd->shared_io && base)
- 		iounmap(base);
- 
+Changed in v2:
+- re-write the commit message for patch 1
+---
+Yunfei Dong (14):
+  dt-bindings: media: mediatek: vcodec: add decoder dt-bindings for
+    mt8196
+  media: mediatek: vcodec: add decoder compatible to support mt8196
+  media: mediatek: vcodec: add driver to support vcp
+  media: mediatek: vcodec: add driver to support vcp encoder
+  media: mediatek: vcodec: get different firmware ipi id
+  media: mediatek: vcodec: get share memory address
+  media: mediatek: vcodec: define MT8196 vcodec levels.
+  media: mediatek: vcodec: support vcp architecture
+  media: mediatek: vcodec: support 36bit iova address
+  media: mediatek: vcodec: clean xpc status
+  media: mediatek: vcodec: add debug information
+  media: mediatek: vcodec: send share memory address to vcp
+  media: mediatek: decoder: fill av1 buffer size with picinfo
+  media: mediatek: decoder: support av1 extend vsi
+
+ .../media/mediatek,vcodec-subdev-decoder.yaml |   1 +
+ .../media/platform/mediatek/vcodec/Kconfig    |   4 +
+ .../platform/mediatek/vcodec/common/Makefile  |   4 +
+ .../mediatek/vcodec/common/mtk_vcodec_dbgfs.c |  21 +-
+ .../mediatek/vcodec/common/mtk_vcodec_fw.c    |  16 +
+ .../mediatek/vcodec/common/mtk_vcodec_fw.h    |   2 +
+ .../vcodec/common/mtk_vcodec_fw_priv.h        |  12 +
+ .../vcodec/common/mtk_vcodec_fw_vcp.c         | 561 ++++++++++++++++++
+ .../vcodec/common/mtk_vcodec_fw_vcp.h         | 153 +++++
+ .../vcodec/decoder/mtk_vcodec_dec_drv.c       |  16 +
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |   1 +
+ .../vcodec/decoder/mtk_vcodec_dec_hw.c        |  28 +
+ .../vcodec/decoder/mtk_vcodec_dec_hw.h        |  13 +-
+ .../vcodec/decoder/mtk_vcodec_dec_stateless.c |   6 +
+ .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c | 113 +++-
+ .../decoder/vdec/vdec_h264_req_multi_if.c     |  11 +-
+ .../decoder/vdec/vdec_hevc_req_multi_if.c     |  12 +-
+ .../vcodec/decoder/vdec/vdec_vp8_req_if.c     |   5 +-
+ .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |  29 +-
+ .../mediatek/vcodec/decoder/vdec_ipi_msg.h    |   2 +
+ .../mediatek/vcodec/decoder/vdec_vpu_if.c     |  12 +-
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |   1 -
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.h  |   2 +
+ 23 files changed, 987 insertions(+), 38 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.c
+ create mode 100644 drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.h
+
 -- 
-2.34.1
-
+2.45.2
 
 
