@@ -4,61 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 078CFECD6E0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Feb 2026 19:40:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C237ECD6EA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Feb 2026 21:11:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LZ2v3CCUSuAb0OEd65VgHBtUCSyeLExUnG319DyHelE=; b=sh5dJ1lgQgCFwKgdlH8+YE5yRP
-	dV0ACsKm83QcpMJGjjjDLiQmZz1TeUUWpfZA7hhFmEZa7qs4lK5wW/bv4C2g5MN18UxO357+LSlSk
-	lkN3TWVtmpJG2rR3geYpqA+J/Z1EFEOvj/vhEvQ611TUYyYLCb1+PWOTAWlRz3ARY+naGwVbaPFQe
-	NmMG3WMbsJsKcopm+1lDpi0U5oVlsPbYWK9fKjSWRZz0qRGTjfuT3/mXGLx7xZQsoqUxPAJCEKkY8
-	RwUxA6icaonl5JAdnmaVtvBu0dNo8a3C4ND909W0BNg+ZcUlcOEuZGFZ/6xKqUqZYVZ7X9PlJy/BI
-	Ej3jEkLw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bPPRhkitxlK//gTZRRsF5v2yRH8onuqOKwbqxx2J0AM=; b=IYam4Kf/e1zIBJeQFTlp9wDylq
+	y+6/TqwO/cgw9MiK8mDteknJrobrxsVYP48qUkfF8E23CZ3aICQ9pcvloZ0qhg6mV8U8ZS7UI/Ig5
+	YygzwQgYu7raTdIprY6rg2BkJsUjhhZGHTImyXQa9x3S6BQELXc9pqHGZiOFsBce9K+sUBRkROeei
+	sv00sArs3OJwjqGNvFy0bCksyqciVZiWYnR55sW9/1SVi2osOH5D1Bb9gkFWi1gjeLK9/OsNCidBg
+	aQ/w85RQvcqnh564WahVyTDZPvsj66haQkv2Qd1W72WnMbmXh+YFhgpkgSd0UP77MDVvSSSZE7vv+
+	DkLpyQmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqG4P-00000000zeP-12JB;
-	Wed, 11 Feb 2026 19:40:17 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vqHUM-000000013ph-2xBg;
+	Wed, 11 Feb 2026 21:11:10 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqG4O-00000000zeJ-1TP8
+	id 1vqHUI-000000013pE-3cpP
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Feb 2026 19:40:16 +0000
+	Wed, 11 Feb 2026 21:11:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0139F601D7;
-	Wed, 11 Feb 2026 19:40:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8F7BC4CEF7;
-	Wed, 11 Feb 2026 19:40:14 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id CBB7E60018;
+	Wed, 11 Feb 2026 21:11:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 634A3C4CEF7;
+	Wed, 11 Feb 2026 21:11:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770838814;
-	bh=PWur7uL4N7a7ELfHOH7WsEqTpF8FtMWr3QSD94+Xv+M=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=uG634CiO7qluuOW1wOjlBQOoG5mkj58FiYGnNByoVKXucYq50U93xEMrHZbjFf+0i
-	 9Z47IJcHJ0FyI5ejl0nGX8MDqfMJt5NWHAxkY64TbNpbGmM8+V1ESKLyQWGY5JiniX
-	 PLyEzrQyiAKTuE0/gtcYAzSSgSZ4mDsU7VZ7lskKHt2TIrpm1Z1+aX34z/Q5sp/Mwa
-	 CKzSFDcf+IkRBcT4ngb2DuuyowF7IDSFot6xsEMdb0fSHO6p+FoBNSWqPKHgBOO2rK
-	 w6T1l+UqOyZQikYyksyokypJI7+r5xAm1HiTcSFv6zpjmdd8KjGUbFCRTubYfYLoYS
-	 avQ+PS5mDlZbw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id C22C139EF964;
-	Wed, 11 Feb 2026 19:40:10 +0000 (UTC)
+	s=k20201202; t=1770844265;
+	bh=8BS0HjUZ2c2XIa09Dyj75cOKCDZd5+HLlSJGloTMoCY=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=sJdIJGOTEcR/pVqdOis0U72NT3kdqQiTVivMV3Hp6+Tnh4gEBuJ9M7ecacD8kDUlC
+	 E4QnwLkF51qxA7SmFEAznZ6BzdzjSZ0Q/crsmMSPffPLjN452hh3zS54otYqgbOpeQ
+	 emHeajY+TaK6mydY0JQ/Uq4DbYrQ8zG0iwXY7TTHUQR7yJ9vOxMZMq9nvxyxhrluhO
+	 FnAJzM+J6LqNleggYWSC+Y+UNJhUuLdh5vwh0f2muWC95RiLaiEv9l3J2x5eWLb6LU
+	 unUz5DQtVL3SlJjkZtO0vnZaKhihHmazKyc6oYTylesJGcq5511qbCN4fMrTinond4
+	 /XrYo3gHB16bA==
+Date: Wed, 11 Feb 2026 15:11:04 -0600
 Content-Type: text/plain; charset="utf-8"
-MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v1 0/3] Trigger reset if firmware status is abnormal when
-From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <177083880957.688115.17676708288116358310.git-patchwork-notify@kernel.org>
-Date: Wed, 11 Feb 2026 19:40:09 +0000
-References: <20260203062510.848761-1-chris.lu@mediatek.com>
-In-Reply-To: <20260203062510.848761-1-chris.lu@mediatek.com>
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
- sean.wang@mediatek.com, will-cy.Lee@mediatek.com, ss.wu@mediatek.com,
- steve.lee@mediatek.com, linux-bluetooth@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ Allen Ye <allen.ye@mediatek.com>, Felix Fietkau <nbd@nbd.name>, 
+ devicetree@vger.kernel.org
+To: Ryder Lee <ryder.lee@mediatek.com>
+In-Reply-To: <4111ba0734fc7818f899db0bea08e3428eb536d5.1770836705.git.ryder.lee@mediatek.com>
+References: <8fa8ec500b3d4de7b1966c6887f1dfbe5c46a54c.1770836705.git.ryder.lee@mediatek.com>
+ <4111ba0734fc7818f899db0bea08e3428eb536d5.1770836705.git.ryder.lee@mediatek.com>
+Message-Id: <177084426457.3906539.9556948985092789939.robh@kernel.org>
+Subject: Re: [PATCH v4 2/2] dt-bindings: net: wireless: mt76: clarify
+ backoff limit usage
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,42 +71,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
 
-This series was applied to bluetooth/bluetooth-next.git (master)
-by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
-
-On Tue, 3 Feb 2026 14:25:07 +0800 you wrote:
-> When the device unexpectedly restarts during previous firmware
-> download process, it can cause mt79xx firmware status to be
-> abnormal in the next attempt. In this case, a reset should be
-> performed to ensure everything starts afresh.
+On Wed, 11 Feb 2026 11:14:30 -0800, Ryder Lee wrote:
+> Clarify the usage of path backoff limit properties in mt76 binding.
+> Add explicit documentation for old generation (mt7915, mt7916, mt7981,
+> mt7986) and new generation (mt7990, mt7992, mt7996) devices, including
+> the difference in beamforming and non-beamforming entries.
 > 
-> These changes include:
-> 1. Optimizing the handling after the download function retry
->    is exhausted, a reset should be performed.
-> 2. Another download firmware command also needs to check status
->    , and if an unexpected status occurs, trigger a reset.
-> 3. Adding a flag "BTMTK_FIRMWARE_DL_RETRY": if download firmware
->    process enters the reset mechanism, this flag will be set.
->    After a successful setup, the flag will be cleared.
->    If the flag is already set, no further reset attempts will be
->    made to avoid endless reset retries.
+> Rephrase the paths-ru/paths-ru-bf description to reflect the actual
+> usage.
 > 
-> [...]
+> Co-developed-by: Allen Ye <allen.ye@mediatek.com>
+> Signed-off-by: Allen Ye <allen.ye@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+> v1-v3: none
+> 
+> v4:
+> - revise commit message
+> - use PCI id as the compatible string to replace "connac2/3"
+> ---
+>  .../bindings/net/wireless/mediatek,mt76.yaml  | 21 +++++++++++++++++++
+>  1 file changed, 21 insertions(+)
+> 
 
-Here is the summary with links:
-  - [v1,1/3] Bluetooth: btmtk: improve mt79xx firmware setup retry flow
-    https://git.kernel.org/bluetooth/bluetooth-next/c/9cc9fc9bff32
-  - [v1,2/3] Bluetooth: btmtk: add status check in mt79xx firmware setup
-    https://git.kernel.org/bluetooth/bluetooth-next/c/458b6d8b0108
-  - [v1,3/3] Bluetooth: btmtk: Add reset mechanism if downloading firmware failed
-    https://git.kernel.org/bluetooth/bluetooth-next/c/73130272a121
+My bot found errors running 'make dt_binding_check' on your patch:
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+yamllint warnings/errors:
+./Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml:30:23: [error] missing starting space in comment (comments)
+./Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml:31:23: [error] missing starting space in comment (comments)
+./Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml:32:23: [error] missing starting space in comment (comments)
+./Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml:33:23: [error] missing starting space in comment (comments)
+./Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml:34:23: [error] missing starting space in comment (comments)
 
+dtschema/dtc warnings/errors:
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.kernel.org/project/devicetree/patch/4111ba0734fc7818f899db0bea08e3428eb536d5.1770836705.git.ryder.lee@mediatek.com
+
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
