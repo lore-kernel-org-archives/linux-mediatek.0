@@ -4,156 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41124EB5943
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Feb 2026 23:33:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F880EB5946
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Feb 2026 01:24:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ADTHSpRp+uv+dVOZtQkY5yAvdQXOfCFG4kzF4oSxP9Q=; b=FpEASYA7frtjNtPZfxPQ3UlNFi
-	qeLswuieYimalnJ5hUB/CqQGdtBagLPiBoP9OZaXB1d/AV5qdbE/2Rm8QBn6cax54oB3Z9Vpls8r7
-	svdFZD3PKerq3MmN53uVOIMCEj0Rq9biuvT3TFh4SGko+FyWtjGtXyykt6RJ9YfPMas0ukpusyjYf
-	RAy+q8X8igH/4gtwzEohjwES2B8xvt9yy/IB5pun5d2L/RF/Lqe9ckQ8aZmgUm/mJoFNQ7rLMwXnN
-	8VqUDb49OvALwaBGn3tEhSCb6pGo8TULI/tprtgJZxnKtIqwGLU9GcIRWZz4aX1v8E/dFsbO+zqNA
-	XgTYUW7Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=jivEQvL4i11K5bRMGCc+nSULGNrxIk8t3KCJl0ckdTQ=; b=suk598t28A8hfS58y9mujwuOot
+	iMKuuAnui1Hctyfx3Et499rtzWMbnzq3lAkhmzk8cjaH4mhHRnSrOI1C/BLtgA0LL2fkfVBWjGJbz
+	h3GH7W3cmy1VlRDeRoT4bCYJaBc5nK+kdngZ/0ZX9HHDXCTy8KPbXHIIi10udFs7t1PN4pCgIoeJP
+	L1mLsvndRWJ0Y1qmWMN1+NyfuRd00G3hWebwvp6C1vHFA7BnFhYtXiE60yNOLA31sUyAU5RWHTcpe
+	nZ/PzJClXABKyid5V99AsBVDWgHNIdTJSpJCP2XZTN4hN9NPTg6gxurvUiZUZFfTJvajGC3TK1tKj
+	taYuZt7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpxEk-000000001Pr-1BnA;
-	Tue, 10 Feb 2026 23:33:42 +0000
-Received: from mail-norwayeastazon11023093.outbound.protection.outlook.com ([40.107.159.93] helo=OSPPR02CU001.outbound.protection.outlook.com)
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpxEh-000000001LX-0WhY;
-	Tue, 10 Feb 2026 23:33:40 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ZKTnFnLZWY79/Kdg94dlK221OT9MT2yNPcPbOvAgSF4HiZEBMbrJiJY9MM+pDFRGgRxto/Z8wERtKnFd/UeQqs3ItcyX7oICUD71O2tTm5GVSzLA40QYnfBGrcjKvdLfHibHALfV9znhFppUjBYzqm0+QHwc6skhxWIdGCuDgxYaMvVJdr4/NmJ4sK0/HQyJnTHRtIpDl23+8SYT98Jgf8NIedtoadtAJGoMDqcJamieNNi5kREIx/QH3l8x2fqOVAf1gYl4eMMhSwTzo/+G3SUyMxRP2ozxUk3u0/l/kLDIm8QYLo+aodLxex71Wp9MJ0F8nKmD+a4eaJr8/EuyFA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ADTHSpRp+uv+dVOZtQkY5yAvdQXOfCFG4kzF4oSxP9Q=;
- b=Sakn5yBjSorIDOLnEyrAHfdfHfcqQPsa7/9iUmiWmY56C3khIDN5CvCfSWL4rcYaWVTWTPoIg8jyYFeiTX4GCgNPxRJetQu5duChhhorEqBqAkUD+v5UOyG3poBnVgfr45FIP8T/ZGGrQAmpIhYp3Z06qQXcu35KGBATDAbQBzB5hlv8B4i+Aea6E8wuYSAKGJ59JK+GAylG9fWJA+PLJBxm8IdqKYL6egm1TLwytC/6nzfSQE0NHnZfjF2GPwxRs4waoAJsjLbh2N00U9cG+PAhe+0Z+spouy+alpTfBrMJp10gNJxiNCz2Ie1kqUuVsdUIs/iSccAsquq12nbP+Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
- dkim=pass header.d=iopsys.eu; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ADTHSpRp+uv+dVOZtQkY5yAvdQXOfCFG4kzF4oSxP9Q=;
- b=jPwTQ5o9GxDd+8KA7W8tDHQMdeFBNiV53JAxx7IL4BpG443k/9Kzt+Z3COKrR3HC7Kvj8cS5UWdSL+i+prY4vk4zBwl7oohjAMFnDR60pQNUCJcxPXvxFXTwrGY8Wzh6g+qcUK4LeKTrC9SCiOw6x+fA90z8g1RxGqf3J6UFwmumpfh9klvMaPi7YtO7dx2GMN+D5t8en/RPfO51BflduYBl/1VgwQ/yC5jmp+M1yXjAJlFBcLqhSoTd3Rss8eOLDaN41f0qEdqEIiLGXL4cxSMfzpfrLNu4r91A2U7eRdaY3Q7W2J5MNPoQe4cmzUe/6AaD/US29KL+pThUJMtf8A==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=iopsys.eu;
-Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
- by GV1PR08MB7313.eurprd08.prod.outlook.com (2603:10a6:150:1c::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9587.19; Tue, 10 Feb
- 2026 23:33:31 +0000
-Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
- ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
- ([fe80::3c7:6d2e:8afe:e4dc%4]) with mapi id 15.20.9587.010; Tue, 10 Feb 2026
- 23:33:31 +0000
-From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1vpyxe-000000005LR-3LB4;
+	Wed, 11 Feb 2026 01:24:10 +0000
+Received: from n169-111.mail.139.com ([120.232.169.111])
+	by bombadil.infradead.org with smtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vpyxZ-000000005Kz-1HLM;
+	Wed, 11 Feb 2026 01:24:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=139.com; s=dkim; l=0;
+	h=from:subject:message-id:to:cc:mime-version;
+	bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
+	b=k4rY8dyGr+ZMmzENq7OohDKkBqouz9FEPkuvpZpoPy2YaK+fGQxhYpcBPyeZ+Q+QDqaRoIenyGLWP
+	 SR5+0/xsXrRQzCd7gXlTkv4tYv5GSmppWI8powPt/dLQursmCCRm9N+Ujc5LLHySiwEJwG4NK9lJxg
+	 oXFIH7Jrn3vN73gI=
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM: 
+X-RM-SPAM-FLAG: 00000000
+Received: from NTT-kernel-dev (unknown[60.247.85.88])
+	by rmsmtp-lg-appmail-18-12021 (RichMail) with SMTP id 2ef5698bda265d5-02609;
+	Wed, 11 Feb 2026 09:23:52 +0800 (CST)
+X-RM-TRANSID: 2ef5698bda265d5-02609
+From: Li hongliang <1468888505@139.com>
+To: gregkh@linuxfoundation.org,
+	stable@vger.kernel.org,
+	u201911157@hust.edu.cn
+Cc: patches@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	mturquette@baylibre.com,
+	sboyd@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	miles.chen@mediatek.com,
+	wenst@chromium.org,
+	chun-jie.chen@mediatek.com,
+	ikjn@chromium.org,
+	weiyi.lu@mediatek.com,
+	linux-clk@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Cc: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Subject: [PATCH RESEND v3 2/2] ARM: dts: airoha: en7523: add reset-controller support
-Date: Wed, 11 Feb 2026 02:33:12 +0300
-Message-ID: <20260210233312.199766-3-mikhail.kshevetskiy@iopsys.eu>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260210233312.199766-1-mikhail.kshevetskiy@iopsys.eu>
-References: <20260210233312.199766-1-mikhail.kshevetskiy@iopsys.eu>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: MI1P293CA0016.ITAP293.PROD.OUTLOOK.COM (2603:10a6:290:3::8)
- To DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
+	dzm91@hust.edu.cn
+Subject: [PATCH 6.1.y] clk: mediatek: fix of_iomap memory leak
+Date: Wed, 11 Feb 2026 09:23:51 +0800
+Message-Id: <20260211012351.2076922-1-1468888505@139.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|GV1PR08MB7313:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5ad8e503-1d5b-4b03-0bd5-08de68fccc96
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|52116014|376014|1800799024|38350700014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?upT0sE3cl2TU815OyeDEabLUm+83HaK8Pee7406f8KfN+wglBHsHCNp7o1KW?=
- =?us-ascii?Q?RDHzoYeFOZJyBoO8X4Re8PbrEAFyiYlJOY6HXpD2ANEX9A9H7sFAtfxZMbnP?=
- =?us-ascii?Q?9xaZtTDTrgcTByBiZzWyUhW/m3zLJKX/J2B1IF8BNFWpcnF5gb3g5ez/XDxv?=
- =?us-ascii?Q?FnpbIx2so35ZqiPnzfMYyuASJkceAOSjcnpPENaUtYIelRgWfSMj6t29pkUF?=
- =?us-ascii?Q?QdQ3OcLvNcmvVMStAvU9qW8wSLKT+Fwvg3xZhUuMJcRNic1ohc+vZ9G7uocN?=
- =?us-ascii?Q?IoaSUdpG8qHgrtWZ+W4vAPaalLQSxr65D70WTuif2oTgRWUEepYAToK1Xa9Z?=
- =?us-ascii?Q?QYmScXCkSqM9YCHQ/HrItLg0d/ksObW1iBxfmHvDd7u6W5v1IATBsbqx8uyl?=
- =?us-ascii?Q?Ty1/lBW8xlF7wKXHClMw7TQuWfCplvluW0tq6rUhmU3KptBa527QYlgsf/9d?=
- =?us-ascii?Q?sXvAuIq12scbwRAcPeRQOhpfoGyY6HpKassgoted0yndVr2qK1s1Zj2IQ9JR?=
- =?us-ascii?Q?86fEHNwIomY+ilES8GnVBnhHbhgvFKLQbyfqwxa4EE82I0E0P5BgCIHkKMzS?=
- =?us-ascii?Q?R9r5iauV1V/iQlDP9aqWR25VElXEzso5R61RA+aNaZrqVne8IgScJsRl6epw?=
- =?us-ascii?Q?YeKsbuIK1qVgedNUzjPkr16p9u2FtdsvOkvB1wJ2yLZLMgGseBNA1s7ILIGZ?=
- =?us-ascii?Q?5Il5lQDvh1CG2yxFgl9GUSE+JbQTN7OzJTigQFoBc3Pwbg+jOKCeVj6e5ofO?=
- =?us-ascii?Q?TPgMkJha2/TSwAZNbc8XCDurQ9Gbvwr9CxRh2ni80zZzBNRCIzuukfwFYp+K?=
- =?us-ascii?Q?qGtPsLvIFULgA9dzUU/lIQrEIju25HGHrOVqMZMffL0HqaXeanMO+DAo7hMi?=
- =?us-ascii?Q?ot5dfw9o8qWf63ydXAhy0On0Uk80nBPYJLbAjFRP1qopWld5Eu2cN/+7B6u/?=
- =?us-ascii?Q?uSzzsM5KHI4czBB/32yjpt5d3tT4PwQqFL0JrMNl4+EK0PwMTMgqukUnffOZ?=
- =?us-ascii?Q?yzOvrfYAaIR8wP/okgaynKhUu1yCYKEx4P7SvOlLkZ7ZXeZKkJAsFub8h/ld?=
- =?us-ascii?Q?07QOoIVtFVuXKv7otMFEJS2l0jaGPiJt/wLxKExn2l/EucqZ4J1xTQNUuRuD?=
- =?us-ascii?Q?28ho4jnftt9jqGkE6GzlFcz4ZTiILOZa/lTrnmx7PzeSdGsFkXiZOWSVRXZt?=
- =?us-ascii?Q?QHyjuSbucClyVAlK3OiQkHsDW+zqa2kYVk0KaxpoRWm0J5c/fzkxaygN3lPR?=
- =?us-ascii?Q?Vo583UWHFXTGrQU2TAKZV1987Oc2cbaI+XJE1xHJAcO9f4xeGkA6zJJQtStD?=
- =?us-ascii?Q?r5PS8hNAEeuxx2Nu75SRzhj5YbuA8OVfig2dBUT/E8PE8Io7D4A9cWo8v1ey?=
- =?us-ascii?Q?3WKlVBjbsWuQK31iWn334da87Cvj2V8A+Ys6O/wgDAdfoRoqTkkVehjrOWm6?=
- =?us-ascii?Q?7EgfZ9u4VUHtMk7MN4nvoneZEWzBFYDwQkYocMd7qrXrQz51gBSQrIfCKh2g?=
- =?us-ascii?Q?hw5cxs85QgMtrv9Nmd3N007vlQXpgYPfXqiAcUf781OIeSWtUmggmDh+mHji?=
- =?us-ascii?Q?Qm56w5cUL+JxlgpgTBNKvd1krG1LJkhOMmp7+2J3wdjmHrbrtTr7masSN5Nr?=
- =?us-ascii?Q?Ep2MPnAaEgrFkwdGQqA3tlM=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(52116014)(376014)(1800799024)(38350700014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?WUZVMapVrHihJJhxAS9UxosjhAg4rTUsz0e9MH7te/Z3LNlD3RBKKpzXyH5Q?=
- =?us-ascii?Q?qRIB0Nt4Z48NZIBcSrtlXu7MN021R4Im9acOZYOUfO1bSGCHsGMFgVwNAoJF?=
- =?us-ascii?Q?85p43UKq9ql5nf2n4Li3SLFv7yi6HcK+QopLIZpXRfLhIog2v7K4scJD7wvB?=
- =?us-ascii?Q?cycJ0zaeEL/SH+EvMzQ5WyuYAYnn3kgC1pDA/iG7BUgMM0xys3NV8+g7Vf7n?=
- =?us-ascii?Q?mFwnRv431+44wQ6hkH31s/sjRTMc756dNw05j4MsbTDYGUGAZUD4L+5oek55?=
- =?us-ascii?Q?cepuFYXHU4o6A7iDpQjsK3aNohq2RZxdoXWSh7WyjbkeQM21CheWFnz/+JLm?=
- =?us-ascii?Q?Ms3LpoH5Z/oDvRtSnTbxw5woYAGbd9cVQ7QF3+3ohKzLaaeieI3gK4rL42zo?=
- =?us-ascii?Q?ZzREMIPs2uhTEEEXmLltBaKBk/NTeqERqWqxcKXYVaVRLbmBnQSIgdE2JNTT?=
- =?us-ascii?Q?gwEMr/u3x41eTzZ+ADhsphC3x+jSTmGkHLaT4CEUOBKivbbOfsm56TI+9ZPe?=
- =?us-ascii?Q?A/IDHrtq/oe8E3c/ncBxK52lwcypJkts6p+/GvZY3u7HzE2eZGPbKxzFohZX?=
- =?us-ascii?Q?lBQ0fp/5jjrBPc0ZLvYY16BDJkehuqkRqwqAyAK1JDrTfF9U4TdiBW5vVsRu?=
- =?us-ascii?Q?EK8ur+8/acMb/ovNBzKIIZtqDAiczzFx4vb7zQO0fqCU1gk+HcCobabJw5SI?=
- =?us-ascii?Q?gllvmwTe33Sr+Vp+Wcj8e2i5vznt+Jz6rRoAm+qNZBKVsSSFPFwY46Qayqyk?=
- =?us-ascii?Q?JbwPThj/GrB9IbX4sg8qM6kUgsXRiHpMjdHjbTMLrGRC3i0tqT6TyRJ4ea87?=
- =?us-ascii?Q?4XxLaq/GO0R2+cpuJqemqRLfByxUquWc9qSbnMIFNYoRJCKZVziWuWccuXHl?=
- =?us-ascii?Q?uFkk45M548cn8JwEi1ZoIJfObkMHsi+Gpcvn/nddSiTVt5zZU2sK6VTT28Zh?=
- =?us-ascii?Q?VOUpxGLE7gmC6Nhz95rOtF232xVLtV4EKWJL5srVW5hRQWIzGrAKVIY1dwLs?=
- =?us-ascii?Q?NhPgY5RnmswfrNr56+mi2i0CUqqzuE6QWRqWoi45s016Ww5np8fPCcoUW1A/?=
- =?us-ascii?Q?mHZVLqVyWjRdyi4Iw2B2Tt77rSaRO38aL5uyQtDDIJzljXYbKBNe8MGzD5SS?=
- =?us-ascii?Q?Apb6CsYOFoXbFW/ngQs6yrGQSh1lOu9efTzJuVW3Y7Oa4XIjaB5EtVqz+dBo?=
- =?us-ascii?Q?ndJnztyEPwLrrKSLbPWws+JcL7J3IXJkPLgxXdc4lBe0rAgV7pxXUbHprTaj?=
- =?us-ascii?Q?rwxe1r2WzwelpBwmKE7+nuQGsIOv/4fvJ2Etga3HuXTOZbGtZ4QOtq+9X3wH?=
- =?us-ascii?Q?T3fF7A4Ydq2RzBso19VQ36vJSxY+hZoW2rTWjuZoBLBYST9+x8XqxyWxl4Uu?=
- =?us-ascii?Q?d18+WyBUhhk9OzfC0c9k2btZHTAJ6Pd/u62RlI6CTeXNSBCoBr2MrxJFBgp8?=
- =?us-ascii?Q?o/Mrjjljg1hLo12k203VYuRqgQ8L+qtzhdp0IYqoAVRI044nqQx85DZlGxT+?=
- =?us-ascii?Q?2b9U5fo1zMHd9f2rVUAkfzhW2BdcdVo3A+01iC9MqTtzj1oCRKzvQpMjCZvG?=
- =?us-ascii?Q?OgeQ6Pw7UWBaaZuArxvSTz/4RdjgDOVGcJKu8v8PjyugTaUtzTZfjL8AUXqY?=
- =?us-ascii?Q?MOWcOZ/SeFrlu6Nv/gRPNvdiG13TtjBDchuaxg/RxDX3rOKYqL+6/TStsEpk?=
- =?us-ascii?Q?QPJ61m3H7X3T5HsVJDhxsTTU1H+OQ3TBheERdFlIbtgLB+FC0+0VuQa/Xo0i?=
- =?us-ascii?Q?KyMDjGZX2H7QV001XgzKKzs/37qUMoQ=3D?=
-X-OriginatorOrg: iopsys.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5ad8e503-1d5b-4b03-0bd5-08de68fccc96
-X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Feb 2026 23:33:30.9078
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: und8uSIA82nbpVPX1FN2W51bTb1uvkoXJk9AmI+zBZSrQ/7yckLj8ZZ/VBgvLioB9UM6KfedJh15aUamSH/lJJ0SMTZBDotxqSNc677Aqow=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV1PR08MB7313
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260210_153339_183924_53D69DC7 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20260210_172406_322430_5EC9773C 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -168,36 +82,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch updates EN7523 dtsi to reflect the reset-controller
-support for EN7523 SoC.
+From: Bosi Zhang <u201911157@hust.edu.cn>
 
-Signed-off-by: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+[ Upstream commit 3db7285e044144fd88a356f5b641b9cd4b231a77 ]
+
+Smatch reports:
+drivers/clk/mediatek/clk-mtk.c:583 mtk_clk_simple_probe() warn:
+    'base' from of_iomap() not released on lines: 496.
+
+This problem was also found in linux-next. In mtk_clk_simple_probe(),
+base is not released when handling errors
+if clk_data is not existed, which may cause a leak.
+So free_base should be added here to release base.
+
+Fixes: c58cd0e40ffa ("clk: mediatek: Add mtk_clk_simple_probe() to simplify clock providers")
+Signed-off-by: Bosi Zhang <u201911157@hust.edu.cn>
+Reviewed-by: Dongliang Mu <dzm91@hust.edu.cn>
+Link: https://lore.kernel.org/r/20230422084331.47198-1-u201911157@hust.edu.cn
+Signed-off-by: Stephen Boyd <sboyd@kernel.org>
+Signed-off-by: Li hongliang <1468888505@139.com>
 ---
- arch/arm/boot/dts/airoha/en7523.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/clk/mediatek/clk-mtk.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm/boot/dts/airoha/en7523.dtsi b/arch/arm/boot/dts/airoha/en7523.dtsi
-index 31191b8d1430..115cc44093ab 100644
---- a/arch/arm/boot/dts/airoha/en7523.dtsi
-+++ b/arch/arm/boot/dts/airoha/en7523.dtsi
-@@ -4,6 +4,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/clock/en7523-clk.h>
-+#include <dt-bindings/reset/airoha,en7523-reset.h>
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index 7b1ad73309b1..c2ca3d7576c2 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -505,8 +505,10 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
+ 	num_clks += mcd->num_mux_clks;
  
- / {
- 	interrupt-parent = <&gic>;
-@@ -91,6 +92,7 @@ scu: system-controller@1fa20000 {
- 		reg = <0x1fa20000 0x400>,
- 		      <0x1fb00000 0x1000>;
- 		#clock-cells = <1>;
-+		#reset-cells = <1>;
- 	};
+ 	clk_data = mtk_alloc_clk_data(num_clks);
+-	if (!clk_data)
+-		return -ENOMEM;
++	if (!clk_data) {
++		r = -ENOMEM;
++		goto free_base;
++	}
  
- 	gic: interrupt-controller@9000000 {
+ 	if (mcd->fixed_clks) {
+ 		r = mtk_clk_register_fixed_clks(mcd->fixed_clks,
+@@ -594,6 +596,7 @@ int mtk_clk_simple_probe(struct platform_device *pdev)
+ 					      mcd->num_fixed_clks, clk_data);
+ free_data:
+ 	mtk_free_clk_data(clk_data);
++free_base:
+ 	if (mcd->shared_io && base)
+ 		iounmap(base);
+ 
 -- 
-2.51.0
+2.34.1
+
 
 
