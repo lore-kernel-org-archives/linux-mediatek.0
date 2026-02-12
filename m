@@ -4,67 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC8F7ECD6F7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Feb 2026 23:38:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5171EECD6FD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Feb 2026 00:36:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=j48FfPDaRDO8Vb9Nsgm54zCdmh+wSyuk0NSMT0yzZC4=; b=iYQdI0GsIZXg0Km/Im7CSuHEM/
-	soGWMGI2yeZWYyYqIhN6Io7xbKx0Fb3Rm4lCEkgSS/b+DlWMDadOLbrU72ylWbACITNovTestJJ9E
-	+wO2TXdaZPVZ0RH6735Ry8useS8bjTMhnid706gbNh1j5t0qMrloT0WpK5DPWKusQMp3J51yvUnkR
-	0f6/whx9qMfzLLzNdhLNtpTMa5OlzXcBfuvWpv/mMx7Pgbn0DhL+l3NFnWvbNrD8NoZD3IPJuOrBy
-	/SnzEOSPYXYb4KHWSwoISKfcS0Q2fnCYEw09IQvb93FQ8Q6JjND2pKiwoTY7pHE4IUf4LHT6w/ggD
-	4WcM2P7g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oH3IAtOnsh2fuVtcrht4CGGicuTHa4AMS7Ui0cJNMKY=; b=a/La/h5apm8cUv7BiysZ9aiNLq
+	a816VRg5tYUNB10Cca0FdMdQeXkqmI2S02mikvsj+BjPKdngXaffxR88i2fGp0xsGQjQ9Ed5LfL9z
+	OFhD7BFJYa9LyVzBoPTypASblrsGvFOUnXt40eloZ3qPHjZIgIp3HTdTbpGIn7we+3gHksAKpfeYV
+	CQgQWYZ7/H2lY4I1XBhF+c+V3yQrQ7EzdR+BGeLDp6U6Y3oVsBi2sjY4CZKasRP9cQL1icdh8ziZD
+	rRAKs/18F2Q2Htcne47w6FXDKCb4PSZ67v/G0bd6XDShZx9hwY3Slm6on6SJQmOnlx39u4co5+24y
+	h1ARZ8Lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqJnD-00000001Bi2-38Zf;
-	Wed, 11 Feb 2026 23:38:47 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vqKgt-00000001EQz-2SVR;
+	Thu, 12 Feb 2026 00:36:19 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqJn8-00000001BeA-2CAd;
-	Wed, 11 Feb 2026 23:38:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id AB3F040BA5;
-	Wed, 11 Feb 2026 23:38:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33CE3C4CEF7;
-	Wed, 11 Feb 2026 23:38:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770853121;
-	bh=4jTbSxZzNpRvJyhZmPNiPdYfMrJ6GIEd9wv8G0Qpd44=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JMhz3t411aZw1o0RHm1vPLtquyB36ebyPU0SmGaU5t5GUYiPiodL/O48aA4FPqXTc
-	 IimPJrYr4xHrRMPGhGhoDaJCU9F/yzViQyfvttoCb1npoBFn3sJNpOJXQX9fIOVN8l
-	 5a9sCSE4ikBA9dz3hPWbl2DnU7kdDZ4YwK++T0cxyPFt8XWgm+2I2fb3sT8qZqHcgh
-	 1OYQ5YERZ5PZ9xVP1+3EDLP3sMDtsyiHr0h71+dgrKkUpai9CIQ+FJazBEsQ2Hzter
-	 9Jec6gCBiDfreWq6biAtP13ysy//Hk6yqxDWIAVWKL5FqzTMXrdo69NhY/oe53Yb6N
-	 6j4wCySuloqmA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 12 Feb 2026 00:38:12 +0100
-Subject: [PATCH RFC 2/2] wifi: mt76: mt7996: Add beacon_reconf IE parsing
- support
+	id 1vqKgq-00000001EQR-3Bfe
+	for linux-mediatek@lists.infradead.org;
+	Thu, 12 Feb 2026 00:36:17 +0000
+X-UUID: d47bac9a07aa11f1a16f0188aa809bee-20260211
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=oH3IAtOnsh2fuVtcrht4CGGicuTHa4AMS7Ui0cJNMKY=;
+	b=acbkqUPfIufeDpy48wq3Go/EaB7PKgzGQNsUksCxZfBLGiok3pWf6eU5cJ0RksFzAN2hLttDUCkFo7ymZN4Am4DrF0glnKd/JEzlKfjuCDmwj4+nrFPgjwGg5CkKdlVapYuCp/YFVtBnL4MDZyyd7bK1TOHrxxOPGSqyJxlw3Ts=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:2e628077-2dac-4c9c-9fb4-23cae7441028,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:4410335b-a957-4259-bcca-d3af718d7034,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: d47bac9a07aa11f1a16f0188aa809bee-20260211
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1060710584; Wed, 11 Feb 2026 17:36:11 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 12 Feb 2026 08:36:09 +0800
+Received: from mussdccf250.eus.mediatek.inc (10.73.250.250) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 12 Feb 2026 08:36:07 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Rob Herring <robh@kernel.org>
+CC: <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-wireless@vger.kernel.org>, Allen Ye <allen.ye@mediatek.com>, Ryder Lee
+	<ryder.lee@mediatek.com>
+Subject: [PATCH v5 1/2] wifi: mt76: fix backoff fields and max_power calculation
+Date: Wed, 11 Feb 2026 16:36:05 -0800
+Message-ID: <8fa8ec500b3d4de7b1966c6887f1dfbe5c46a54c.1770856296.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260212-mt7996-link-reconf-v1-2-2b110340d6c4@kernel.org>
-References: <20260212-mt7996-link-reconf-v1-0-2b110340d6c4@kernel.org>
-In-Reply-To: <20260212-mt7996-link-reconf-v1-0-2b110340d6c4@kernel.org>
-To: Johannes Berg <johannes@sipsolutions.net>, Felix Fietkau <nbd@nbd.name>, 
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
- Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Aditya Kumar Singh <aditya.kumar.singh@oss.qualcomm.com>, 
- Ping-Ke Shih <pkshih@realtek.com>, 
- Jeff Johnson <jeff.johnson@oss.qualcomm.com>, 
- linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260211_153842_622704_568B724C 
-X-CRM114-Status: GOOD (  19.10  )
+X-CRM114-CacheID: sfid-20260211_163616_807081_DF394CF2 
+X-CRM114-Status: GOOD (  18.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,379 +85,290 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Shayne Chen <shayne.chen@mediatek.com>
+From: Allen Ye <allen.ye@mediatek.com>
 
-Implement the capability to offload the countdown for MLO link
-reconfiguration IE sent by the AP MLD if the specified link is going
-to be removed.
+The maximum power value may exist in either the data or backoff field.
+Previously, backoff power limits were not considered in txpower reporting.
+This patch ensures mt76 also considers backoff values in the SKU table.
 
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
-Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Also, each RU entry (RU26, RU52, RU106, BW20, ...) in the DTS corresponds
+to 10 stream combinations (1T1ss, 2T1ss, 3T1ss, 4T1ss, 2T2ss, 3T2ss,
+4T2ss, 3T3ss, 4T3ss, 4T4ss).
+
+For beamforming tables:
+- In connac2, beamforming entries for BW20~BW160, and OFDM do not include
+  1T1ss.
+- In connac3, beamforming entries for BW20~BW160, and RU include 1T1ss,
+  but OFDM beamforming does not include 1T1ss.
+
+Non-beamforming and RU entries for both connac2 and connac3 include 1T1ss.
+
+Fixes: b05ab4be9fd7 ("wifi: mt76: mt7915: add bf backoff limit table support")
+Signed-off-by: Allen Ye <allen.ye@mediatek.com>
+Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt76_connac_mcu.h   |   5 +
- drivers/net/wireless/mediatek/mt76/mt7996/init.c   |   3 +-
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 185 +++++++++++++++++++++
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.h    |  69 +++++++-
- 4 files changed, 260 insertions(+), 2 deletions(-)
+v1:
+- Add "wifi:" prefix to the subject.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index f44977f9093da76a9f5e2b4d7ce147de28c5b18e..669f20d57d591a092afbb33bc58f4b63e82ae9b6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1067,6 +1067,7 @@ enum {
- 	MCU_UNI_EVENT_WED_RRO = 0x57,
- 	MCU_UNI_EVENT_PER_STA_INFO = 0x6d,
- 	MCU_UNI_EVENT_ALL_STA_INFO = 0x6e,
-+	MCU_UNI_EVENT_MLD = 0x81,
- 	MCU_UNI_EVENT_SDO = 0x83,
- };
+v2:
+- Fix checkpatch errors.
+- Remove unnecessary style changes.
+- Add explanation for connac2 index adjustment.
+
+v3:
+- Fix "case"s for MT76_SKU_BACKOFF_BF_OFFSET and MT76_SKU_BACKOFF.
+- add more explanation for connac2/connac3 tables.
+---
+ drivers/net/wireless/mediatek/mt76/eeprom.c | 154 ++++++++++++++------
+ drivers/net/wireless/mediatek/mt76/mt76.h   |   1 -
+ 2 files changed, 109 insertions(+), 46 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index 573400d57..afdb73661 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -9,6 +9,13 @@
+ #include <linux/nvmem-consumer.h>
+ #include <linux/etherdevice.h>
+ #include "mt76.h"
++#include "mt76_connac.h"
++
++enum mt76_sku_type {
++	MT76_SKU_RATE,
++	MT76_SKU_BACKOFF,
++	MT76_SKU_BACKOFF_BF_OFFSET,
++};
  
-@@ -1309,6 +1310,8 @@ enum {
- 	MCU_UNI_CMD_ALL_STA_INFO = 0x6e,
- 	MCU_UNI_CMD_ASSERT_DUMP = 0x6f,
- 	MCU_UNI_CMD_RADIO_STATUS = 0x80,
-+	MCU_UNI_CMD_MLD = 0x82,
-+	MCU_UNI_CMD_PEER_MLD = 0x83,
- 	MCU_UNI_CMD_SDO = 0x88,
- };
+ static int mt76_get_of_eeprom_data(struct mt76_dev *dev, void *eep, int len)
+ {
+@@ -292,7 +299,6 @@ mt76_find_channel_node(struct device_node *np, struct ieee80211_channel *chan)
+ }
+ EXPORT_SYMBOL_GPL(mt76_find_channel_node);
  
-@@ -1384,6 +1387,8 @@ enum {
- 	UNI_BSS_INFO_MLD = 26,
- 	UNI_BSS_INFO_PM_DISABLE = 27,
- 	UNI_BSS_INFO_EHT = 30,
-+	UNI_BSS_INFO_MLD_LINK_OP = 36,
-+	UNI_BSS_INFO_BCN_ML_RECONF = 38,
- };
- 
- enum {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 2937e89ad0c9c489274cfa4f6aeb694fb4456bd1..bf084cd434304e1afd3c3f8bbe726740f4d19f52 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -507,7 +507,8 @@ mt7996_init_wiphy(struct ieee80211_hw *hw, struct mtk_wed_device *wed)
- 
- 	wiphy->reg_notifier = mt7996_regd_notifier;
- 	wiphy->flags |= WIPHY_FLAG_HAS_CHANNEL_SWITCH |
--			WIPHY_FLAG_SUPPORTS_MLO;
-+			WIPHY_FLAG_SUPPORTS_MLO |
-+			WIPHY_FLAG_MLO_RECONF_ADV_OFFLOAD;
- 	wiphy->mbssid_max_interfaces = 16;
- 	wiphy->iftype_ext_capab = iftypes_ext_capa;
- 	wiphy->num_iftype_ext_capab = ARRAY_SIZE(iftypes_ext_capa);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 8e1c8e1d6a99f093a2b7d7dc3a0c56f3a4bc220b..310a580028a8e3532923fa82d65739b008dc58af 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -816,6 +816,50 @@ mt7996_mcu_wed_rro_event(struct mt7996_dev *dev, struct sk_buff *skb)
- 	}
+-
+ static s8
+ mt76_get_txs_delta(struct device_node *np, u8 nss)
+ {
+@@ -306,9 +312,24 @@ mt76_get_txs_delta(struct device_node *np, u8 nss)
+ 	return be32_to_cpu(val[nss - 1]);
  }
  
-+static void
-+mt7996_mcu_mld_reconf_finish(void *priv, u8 *mac, struct ieee80211_vif *vif)
++static inline u8 mt76_backoff_n_chains(struct mt76_dev *dev, u8 idx)
 +{
-+	struct mt7996_mld_event_data *data = priv;
-+	struct mt7996_mcu_mld_ap_reconf_event *reconf = (void *)data->data;
++	/* 0:1T1ss, 1:2T1ss, ..., 14:5T5ss */
++	static const u8 connac3_table[] = {
++		1, 2, 3, 4, 5, 2, 3, 4, 5, 3, 4, 5, 4, 5, 5};
++	static const u8 connac2_table[] = {
++		1, 2, 3, 4, 2, 3, 4, 3, 4, 4, 0, 0, 0, 0, 0};
 +
-+	if (!ether_addr_equal(vif->addr, data->mld_addr))
-+		return;
++	if (idx >= ARRAY_SIZE(connac3_table))
++		return 0;
 +
-+	ieee80211_mlo_reconf_complete_notify(vif,
-+					     le16_to_cpu(reconf->link_bitmap));
++	return is_mt799x(dev) ? connac3_table[idx] : connac2_table[idx];
 +}
 +
-+static void
-+mt7996_mcu_mld_event(struct mt7996_dev *dev, struct sk_buff *skb)
-+{
-+	struct mt7996_mcu_mld_event *e = (void *)skb->data;
-+	struct mt7996_mld_event_data data = {};
-+	struct tlv *tlv;
-+	int len;
+ static void
+-mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const s8 *data,
+-		       s8 target_power, s8 nss_delta, s8 *max_power)
++mt76_apply_array_limit(struct mt76_dev *dev, s8 *pwr, size_t pwr_len,
++		       const s8 *data, s8 target_power, s8 nss_delta,
++		       s8 *max_power, int n_chains, enum mt76_sku_type type)
+ {
+ 	int i;
+ 
+@@ -316,18 +337,51 @@ mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const s8 *data,
+ 		return;
+ 
+ 	for (i = 0; i < pwr_len; i++) {
+-		pwr[i] = min_t(s8, target_power, data[i] + nss_delta);
++		u8 backoff_chain_idx = i;
++		int backoff_n_chains;
++		s8 backoff_delta;
++		s8 delta;
 +
-+	memcpy(data.mld_addr, e->mld_addr, ETH_ALEN);
-+	skb_pull(skb, sizeof(*e));
-+	tlv = (struct tlv *)skb->data;
-+	len = skb->len;
-+
-+	while (len > 0 && le16_to_cpu(tlv->len) <= len) {
-+		data.data = (u8 *)tlv;
-+
-+		switch (le16_to_cpu(tlv->tag)) {
-+		case UNI_EVENT_MLD_RECONF_AP_REM_TIMER:
-+			ieee80211_iterate_active_interfaces_atomic(
-+				dev->mt76.hw, IEEE80211_IFACE_ITER_RESUME_ALL,
-+				mt7996_mcu_mld_reconf_finish, &data);
++		switch (type) {
++		case MT76_SKU_RATE:
++			delta = 0;
++			backoff_delta = 0;
++			backoff_n_chains = 0;
++			break;
++		case MT76_SKU_BACKOFF_BF_OFFSET:
++			backoff_chain_idx += 1;
++			fallthrough;
++		case MT76_SKU_BACKOFF:
++			delta = mt76_tx_power_path_delta(n_chains);
++			backoff_n_chains = mt76_backoff_n_chains(dev, backoff_chain_idx);
++			backoff_delta = mt76_tx_power_path_delta(backoff_n_chains);
 +			break;
 +		default:
-+			break;
++			return;
 +		}
 +
-+		len -= le16_to_cpu(tlv->len);
-+		tlv = (struct tlv *)((u8 *)tlv + le16_to_cpu(tlv->len));
-+	}
-+}
++		pwr[i] = min_t(s8, target_power + delta - backoff_delta, data[i] + nss_delta);
 +
- static void
- mt7996_mcu_uni_rx_unsolicited_event(struct mt7996_dev *dev, struct sk_buff *skb)
- {
-@@ -837,6 +881,9 @@ mt7996_mcu_uni_rx_unsolicited_event(struct mt7996_dev *dev, struct sk_buff *skb)
- 	case MCU_UNI_EVENT_WED_RRO:
- 		mt7996_mcu_wed_rro_event(dev, skb);
- 		break;
-+	case MCU_UNI_EVENT_MLD:
-+		mt7996_mcu_mld_event(dev, skb);
-+		break;
- 	default:
- 		break;
- 	}
-@@ -2863,6 +2910,142 @@ mt7996_mcu_beacon_cntdwn(struct sk_buff *rskb, struct sk_buff *skb,
++		/* used for padding, doesn't need to be considered */
++		if (data[i] >= S8_MAX - 1)
++			continue;
++
++		/* only consider backoff value for the configured chain number */
++		if (type != MT76_SKU_RATE && n_chains != backoff_n_chains)
++			continue;
++
+ 		*max_power = max(*max_power, pwr[i]);
  	}
  }
  
-+static int
-+mt7996_mcu_mld_reconf(struct mt7996_dev *dev, struct ieee80211_vif *vif,
-+		      u16 removed_links, u16 *removal_count)
-+{
-+	struct mld_req_hdr hdr = { .mld_idx = 0xff };
-+	unsigned long rem = removed_links;
-+	struct mld_reconf_timer *rt;
-+	struct sk_buff *skb;
-+	struct tlv *tlv;
-+	u8 link_id;
-+
-+	skb = mt76_mcu_msg_alloc(&dev->mt76, NULL, sizeof(hdr) + sizeof(*rt));
-+	if (!skb)
-+		return -ENOMEM;
-+
-+	memcpy(hdr.mld_addr, vif->addr, ETH_ALEN);
-+	skb_put_data(skb, &hdr, sizeof(hdr));
-+
-+	tlv = mt7996_mcu_add_uni_tlv(skb, UNI_CMD_MLD_RECONF_AP_REM_TIMER,
-+				     sizeof(*rt));
-+	rt = (struct mld_reconf_timer *)tlv;
-+	rt->link_bitmap = cpu_to_le16(removed_links);
-+
-+	for_each_set_bit(link_id, &rem, IEEE80211_MLD_MAX_NUM_LINKS) {
-+		struct ieee80211_bss_conf *link_conf;
-+		struct mt7996_vif_link *link;
-+		u8 band_idx;
-+		u16 to_sec;
-+
-+		link_conf = link_conf_dereference_protected(vif, link_id);
-+		if (!link_conf)
-+			continue;
-+
-+		link = mt7996_vif_link(dev, vif, link_id);
-+		if (!link)
-+			continue;
-+
-+		to_sec = link_conf->beacon_int * removal_count[link_id] / 1000;
-+		band_idx = link->phy->mt76->band_idx;
-+		rt->to_sec[band_idx] = cpu_to_le16(to_sec);
-+		rt->bss_idx[band_idx] = link->mt76.idx;
-+	}
-+
-+	return mt76_mcu_skb_send_msg(&dev->mt76, skb, MCU_WM_UNI_CMD(MLD), true);
-+}
-+
-+static void
-+mt7996_mcu_beacon_ml_reconf(struct mt7996_dev *dev,
-+			    struct ieee80211_bss_conf *link_conf,
-+			    struct sk_buff *rskb, struct sk_buff *skb,
-+			    struct ieee80211_mutable_offsets *offs)
-+{
-+	u16 tail_offset = offs->tim_offset + offs->tim_length;
-+	u16 removal_count[IEEE80211_MLD_MAX_NUM_LINKS] = {};
-+	u16 removal_offs[IEEE80211_MLD_MAX_NUM_LINKS] = {};
-+	u8 link_id, *beacon_tail = skb->data + tail_offset;
-+	struct bss_bcn_ml_reconf_offset *reconf_offs;
-+	struct bss_bcn_ml_reconf_tlv *reconf;
-+	const struct element *elem, *sub;
-+	unsigned long removed_links = 0;
-+	bool has_reconf = false;
-+	struct tlv *tlv;
-+
-+	/* TODO: currently manually parse reconf info directly from the IE, it
-+	 * is expected to be passed from upper layer in the future.
-+	 */
-+	for_each_element_extid(elem, WLAN_EID_EXT_EHT_MULTI_LINK, beacon_tail,
-+			       skb->len - tail_offset) {
-+		if (ieee80211_mle_type_ok(elem->data + 1,
-+					  IEEE80211_ML_CONTROL_TYPE_RECONF,
-+					  elem->datalen - 1)) {
-+			has_reconf = true;
-+			break;
-+		}
-+	}
-+
-+	if (!has_reconf)
-+		return;
-+
-+	for_each_mle_subelement(sub, elem->data + 1, elem->datalen - 1) {
-+		struct ieee80211_mle_per_sta_profile *prof = (void *)sub->data;
-+		u8 *pos = prof->variable;
-+		u16 control;
-+
-+		if (sub->id != IEEE80211_MLE_SUBELEM_PER_STA_PROFILE)
-+			continue;
-+
-+		if (!ieee80211_mle_reconf_sta_prof_size_ok(sub->data,
-+							   sub->datalen))
-+			return;
-+
-+		control = le16_to_cpu(prof->control);
-+		link_id = control & IEEE80211_MLE_STA_RECONF_CONTROL_LINK_ID;
-+		removed_links |= BIT(link_id);
-+
-+		if (control &
-+		    IEEE80211_MLE_STA_RECONF_CONTROL_STA_MAC_ADDR_PRESENT)
-+			pos += 6;
-+
-+		if (control &
-+		    IEEE80211_MLE_STA_RECONF_CONTROL_AP_REM_TIMER_PRESENT) {
-+			removal_offs[link_id] = pos - skb->data;
-+			removal_count[link_id] = le16_to_cpu(*(__le16 *)pos);
-+		}
-+	}
-+
-+	if (!removed_links)
-+		return;
-+
-+	/* the first link to be removed */
-+	if (link_conf->link_id == __ffs(removed_links))
-+		mt7996_mcu_mld_reconf(dev, link_conf->vif, removed_links,
-+				      removal_count);
-+
-+	tlv = mt7996_mcu_add_uni_tlv(rskb, UNI_BSS_INFO_BCN_ML_RECONF,
-+				     sizeof(*reconf) +
-+				     sizeof(*reconf_offs) * hweight16(removed_links));
-+	reconf = (struct bss_bcn_ml_reconf_tlv *)tlv;
-+	reconf->reconf_count = hweight16(removed_links);
-+
-+	reconf_offs = (struct bss_bcn_ml_reconf_offset *)reconf->offset;
-+	for_each_set_bit(link_id, &removed_links,
-+			 IEEE80211_MLD_MAX_NUM_LINKS) {
-+		struct mt7996_vif_link *link;
-+
-+		link = mt7996_vif_link(dev, link_conf->vif, link_id);
-+		if (!link)
-+			continue;
-+
-+		reconf_offs->ap_removal_timer_offs =
-+			cpu_to_le16(removal_offs[link_id]);
-+		reconf_offs->bss_idx = link->mt76.idx;
-+		reconf_offs++;
-+	}
-+}
-+
  static void
- mt7996_mcu_beacon_mbss(struct sk_buff *rskb, struct sk_buff *skb,
- 		       struct bss_bcn_content_tlv *bcn,
-@@ -3006,6 +3189,8 @@ int mt7996_mcu_add_beacon(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	if (link_conf->bssid_indicator)
- 		mt7996_mcu_beacon_mbss(rskb, skb, bcn, &offs);
- 	mt7996_mcu_beacon_cntdwn(rskb, skb, &offs, link_conf->csa_active);
-+	if (ieee80211_vif_is_mld(link_conf->vif))
-+		mt7996_mcu_beacon_ml_reconf(dev, link_conf, rskb, skb, &offs);
- out:
- 	dev_kfree_skb(skb);
- 	return mt76_mcu_skb_send_msg(&dev->mt76, rskb,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-index d9fb49f7b01b6cca2fd7a0e760c1d2b1b74eab5b..bb98194b98879ed7039791b3990019cbd43f120b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
-@@ -487,6 +487,20 @@ struct bss_prot_tlv {
- 	__le32 prot_mode;
- } __packed;
+-mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
+-			     const s8 *data, size_t len, s8 target_power,
+-			     s8 nss_delta)
++mt76_apply_multi_array_limit(struct mt76_dev *dev, s8 *pwr, size_t pwr_len,
++			     s8 pwr_num, const s8 *data, size_t len,
++			     s8 target_power, s8 nss_delta, s8 *max_power,
++			     int n_chains, enum mt76_sku_type type)
+ {
++	static const int connac2_backoff_ru_idx = 2;
+ 	int i, cur;
+-	s8 max_power = -128;
  
-+struct bss_bcn_ml_reconf_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 reconf_count;
-+	u8 rsv[3];
-+	u8 offset[];
-+} __packed;
-+
-+struct bss_bcn_ml_reconf_offset {
-+	__le16 ap_removal_timer_offs;
-+	u8 bss_idx;
-+	u8 rsv;
-+} __packed;
-+
- struct sta_rec_ht_uni {
- 	__le16 tag;
- 	__le16 len;
-@@ -660,6 +674,57 @@ struct mld_setup_link {
- 	u8 __rsv;
- } __packed;
+ 	if (!data)
+ 		return;
+@@ -337,8 +391,26 @@ mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
+ 		if (len < pwr_len + 1)
+ 			break;
  
-+struct mld_req_hdr {
-+	u8 ver;
-+	u8 mld_addr[ETH_ALEN];
-+	u8 mld_idx;
-+	u8 flag;
-+	u8 rsv[3];
-+	u8 buf[];
-+} __packed;
+-		mt76_apply_array_limit(pwr + pwr_len * i, pwr_len, data + 1,
+-				       target_power, nss_delta, &max_power);
++		/* Each RU entry (RU26, RU52, RU106, BW20, ...) in the DTS
++		 * corresponds to 10 stream combinations (1T1ss, 2T1ss, 3T1ss,
++		 * 4T1ss, 2T2ss, 3T2ss, 4T2ss, 3T3ss, 4T3ss, 4T4ss).
++		 *
++		 * For beamforming tables:
++		 * - In connac2, beamforming entries for BW20~BW160 and OFDM
++		 *   do not include 1T1ss.
++		 * - In connac3, beamforming entries for BW20~BW160 and RU
++		 *   include 1T1ss, but OFDM beamforming does not include 1T1ss.
++		 *
++		 * Non-beamforming and RU entries for both connac2 and connac3
++		 * include 1T1ss.
++		 */
++		if (!is_mt799x(dev) && type == MT76_SKU_BACKOFF &&
++		    i > connac2_backoff_ru_idx)
++			type = MT76_SKU_BACKOFF_BF_OFFSET;
 +
-+struct mld_reconf_timer {
-+	__le16 tag;
-+	__le16 len;
-+	__le16 link_bitmap;
-+	__le16 to_sec[__MT_MAX_BAND]; /* timeout of reconf (second) */
-+	u8 bss_idx[__MT_MAX_BAND];
-+	u8 rsv;
-+} __packed;
-+
-+enum {
-+	UNI_CMD_MLD_RECONF_AP_REM_TIMER = 0x03,
-+	UNI_CMD_MLD_RECONF_STOP_LINK = 0x04,
-+};
-+
-+struct mt7996_mcu_mld_event {
-+	struct mt7996_mcu_rxd rxd;
-+	/* fixed field */
-+	u8 ver;
-+	u8 mld_addr[ETH_ALEN];
-+	u8 mld_idx;
-+	u8 rsv[4];
-+	/* tlv */
-+	u8 buf[];
-+} __packed;
-+
-+struct mt7996_mld_event_data {
-+	u8 mld_addr[ETH_ALEN];
-+	u8 *data;
-+};
-+
-+struct mt7996_mcu_mld_ap_reconf_event {
-+	__le16 tag;
-+	__le16 len;
-+	__le16 link_bitmap;
-+	u8 bss_idx[3];
-+	u8 rsv[3];
-+} __packed;
-+
-+enum {
-+	UNI_EVENT_MLD_RECONF_AP_REM_TIMER = 0x04,
-+};
-+
- struct hdr_trans_en {
- 	__le16 tag;
- 	__le16 len;
-@@ -847,7 +912,9 @@ enum {
- 					 sizeof(struct bss_bcn_content_tlv) +	\
- 					 4 + MT_TXD_SIZE +			\
- 					 sizeof(struct bss_bcn_cntdwn_tlv) +	\
--					 sizeof(struct bss_bcn_mbss_tlv))
-+					 sizeof(struct bss_bcn_mbss_tlv) +	\
-+					 sizeof(struct bss_bcn_ml_reconf_tlv) +	\
-+					 3 * sizeof(struct bss_bcn_ml_reconf_offset))
- #define MT7996_MAX_BSS_OFFLOAD_SIZE	2048
- #define MT7996_MAX_BEACON_SIZE		(MT7996_MAX_BSS_OFFLOAD_SIZE - \
- 					 MT7996_BEACON_UPDATE_SIZE)
-
++		mt76_apply_array_limit(dev, pwr + pwr_len * i, pwr_len, data + 1,
++				       target_power, nss_delta, max_power,
++				       n_chains, type);
+ 		if (--cur > 0)
+ 			continue;
+ 
+@@ -360,18 +432,11 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
+ 	struct device_node *np;
+ 	const s8 *val;
+ 	char name[16];
+-	u32 mcs_rates = dev->drv->mcs_rates;
+-	u32 ru_rates = ARRAY_SIZE(dest->ru[0]);
+ 	char band;
+ 	size_t len;
+-	s8 max_power = 0;
+-	s8 max_power_backoff = -127;
++	s8 max_power = -127;
+ 	s8 txs_delta;
+ 	int n_chains = hweight16(phy->chainmask);
+-	s8 target_power_combine = target_power + mt76_tx_power_path_delta(n_chains);
+-
+-	if (!mcs_rates)
+-		mcs_rates = 10;
+ 
+ 	memset(dest, target_power, sizeof(*dest) - sizeof(dest->path));
+ 	memset(&dest->path, 0, sizeof(dest->path));
+@@ -409,46 +474,45 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
+ 	txs_delta = mt76_get_txs_delta(np, hweight16(phy->chainmask));
+ 
+ 	val = mt76_get_of_array_s8(np, "rates-cck", &len, ARRAY_SIZE(dest->cck));
+-	mt76_apply_array_limit(dest->cck, ARRAY_SIZE(dest->cck), val,
+-			       target_power, txs_delta, &max_power);
++	mt76_apply_array_limit(dev, dest->cck, ARRAY_SIZE(dest->cck), val,
++			       target_power, txs_delta, &max_power, n_chains, MT76_SKU_RATE);
+ 
+-	val = mt76_get_of_array_s8(np, "rates-ofdm",
+-				   &len, ARRAY_SIZE(dest->ofdm));
+-	mt76_apply_array_limit(dest->ofdm, ARRAY_SIZE(dest->ofdm), val,
+-			       target_power, txs_delta, &max_power);
++	val = mt76_get_of_array_s8(np, "rates-ofdm", &len, ARRAY_SIZE(dest->ofdm));
++	mt76_apply_array_limit(dev, dest->ofdm, ARRAY_SIZE(dest->ofdm), val,
++			       target_power, txs_delta, &max_power, n_chains, MT76_SKU_RATE);
+ 
+-	val = mt76_get_of_array_s8(np, "rates-mcs", &len, mcs_rates + 1);
+-	mt76_apply_multi_array_limit(dest->mcs[0], ARRAY_SIZE(dest->mcs[0]),
+-				     ARRAY_SIZE(dest->mcs), val, len,
+-				     target_power, txs_delta);
++	val = mt76_get_of_array_s8(np, "rates-mcs", &len, ARRAY_SIZE(dest->mcs[0]) + 1);
++	mt76_apply_multi_array_limit(dev, dest->mcs[0], ARRAY_SIZE(dest->mcs[0]),
++				     ARRAY_SIZE(dest->mcs), val, len, target_power,
++				     txs_delta, &max_power, n_chains, MT76_SKU_RATE);
+ 
+-	val = mt76_get_of_array_s8(np, "rates-ru", &len, ru_rates + 1);
+-	mt76_apply_multi_array_limit(dest->ru[0], ARRAY_SIZE(dest->ru[0]),
+-				     ARRAY_SIZE(dest->ru), val, len,
+-				     target_power, txs_delta);
++	val = mt76_get_of_array_s8(np, "rates-ru", &len, ARRAY_SIZE(dest->ru[0]) + 1);
++	mt76_apply_multi_array_limit(dev, dest->ru[0], ARRAY_SIZE(dest->ru[0]),
++				     ARRAY_SIZE(dest->ru), val, len, target_power,
++				     txs_delta, &max_power, n_chains, MT76_SKU_RATE);
+ 
+-	max_power_backoff = max_power;
+ 	val = mt76_get_of_array_s8(np, "paths-cck", &len, ARRAY_SIZE(dest->path.cck));
+-	mt76_apply_array_limit(dest->path.cck, ARRAY_SIZE(dest->path.cck), val,
+-			       target_power_combine, txs_delta, &max_power_backoff);
++	mt76_apply_array_limit(dev, dest->path.cck, ARRAY_SIZE(dest->path.cck), val,
++			       target_power, txs_delta, &max_power, n_chains, MT76_SKU_BACKOFF);
+ 
+ 	val = mt76_get_of_array_s8(np, "paths-ofdm", &len, ARRAY_SIZE(dest->path.ofdm));
+-	mt76_apply_array_limit(dest->path.ofdm, ARRAY_SIZE(dest->path.ofdm), val,
+-			       target_power_combine, txs_delta, &max_power_backoff);
++	mt76_apply_array_limit(dev, dest->path.ofdm, ARRAY_SIZE(dest->path.ofdm), val,
++			       target_power, txs_delta, &max_power, n_chains, MT76_SKU_BACKOFF);
+ 
+ 	val = mt76_get_of_array_s8(np, "paths-ofdm-bf", &len, ARRAY_SIZE(dest->path.ofdm_bf));
+-	mt76_apply_array_limit(dest->path.ofdm_bf, ARRAY_SIZE(dest->path.ofdm_bf), val,
+-			       target_power_combine, txs_delta, &max_power_backoff);
++	mt76_apply_array_limit(dev, dest->path.ofdm_bf, ARRAY_SIZE(dest->path.ofdm_bf), val,
++			       target_power, txs_delta, &max_power, n_chains,
++			       MT76_SKU_BACKOFF_BF_OFFSET);
+ 
+ 	val = mt76_get_of_array_s8(np, "paths-ru", &len, ARRAY_SIZE(dest->path.ru[0]) + 1);
+-	mt76_apply_multi_array_limit(dest->path.ru[0], ARRAY_SIZE(dest->path.ru[0]),
+-				     ARRAY_SIZE(dest->path.ru), val, len,
+-				     target_power_combine, txs_delta);
++	mt76_apply_multi_array_limit(dev, dest->path.ru[0], ARRAY_SIZE(dest->path.ru[0]),
++				     ARRAY_SIZE(dest->path.ru), val, len, target_power,
++				     txs_delta, &max_power, n_chains, MT76_SKU_BACKOFF);
+ 
+ 	val = mt76_get_of_array_s8(np, "paths-ru-bf", &len, ARRAY_SIZE(dest->path.ru_bf[0]) + 1);
+-	mt76_apply_multi_array_limit(dest->path.ru_bf[0], ARRAY_SIZE(dest->path.ru_bf[0]),
+-				     ARRAY_SIZE(dest->path.ru_bf), val, len,
+-				     target_power_combine, txs_delta);
++	mt76_apply_multi_array_limit(dev, dest->path.ru_bf[0], ARRAY_SIZE(dest->path.ru_bf[0]),
++				     ARRAY_SIZE(dest->path.ru_bf), val, len, target_power,
++				     txs_delta, &max_power, n_chains, MT76_SKU_BACKOFF);
+ 
+ 	return max_power;
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index d05e83ea1..32876eab2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -540,7 +540,6 @@ struct mt76_driver_ops {
+ 	u32 survey_flags;
+ 	u16 txwi_size;
+ 	u16 token_size;
+-	u8 mcs_rates;
+ 
+ 	unsigned int link_data_size;
+ 
 -- 
-2.53.0
+2.45.2
 
 
