@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4AC2EB48F0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Feb 2026 09:55:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDA6AEB48F2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Feb 2026 09:58:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3lGjYhMYArClGmT+MBkZx7WjfoJcGQ/ZGOmAjK7M3TU=; b=0Xupvpdhq6n+ZwPGNVNcIn0t2I
-	d5JWnmHbXLAW9Qoy6Xz8aGgN22+5hhn3waQ8GvNT0F6Fi/bsizSEEX7kiQ2JWlC8d1wzA96DfpkOv
-	E6Y5EA4IkoBERbrToUim54XlUpOkHOM5WVgnbECma59ofvQeLR5lPQLjSwabU+DhvhU1oQ3+xGrw/
-	bRLrs5U7XoABliqr2Y2S8cqeaHTII+NFVYbLaYBBW8RnMg7DRwwUzDhP9OgKaKvKykTpw/Yw8bD9x
-	XNpyzKPGF5ImWWMEv+Wwv+jrFsLpNSzZxYnyLLEEtsRZTosv2e5oEfzl8UHzDpUotsHOLrGyYI/21
-	H9Qu2pdA==;
+	bh=mkGWUPE4kbgIrGU7OKLJU4AZXsAD3UfwYSHh1C3eZ8s=; b=j/Cqwu4NvhSvCWtU3PwQaJQqFO
+	CByyK4S2M0le50fbJwoNwzKWg/hKneFVtKhtNQupjoezGrClzI8PZZNMjrjN0vS2gIw5LdZwzG1AY
+	wvpfPC/v0krtrkAhTo6WT2Y4rZNfyJ1VbUjt0/HGu/jhpHNbjKWJ1ZQxICQKWVoD+/i+SjzBcBvwa
+	NssNQDjA9/52XKuICzwEvwYmayi/Ldi5h6bdRwVGDCyMl3+fWBhJdnp2TtK3aPxOalX4pM31DNz3B
+	ebAFOKrdte8ZjOCrcpP4zqHK8dVG3AR7cc9GThh0vwrSL1WDR1Wx27w/wU04/bH1n2s28/0dtW43f
+	9Pd9V0nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqTQ1-00000001sBS-3aK1;
-	Thu, 12 Feb 2026 09:55:29 +0000
+	id 1vqTST-00000001sSA-3hKc;
+	Thu, 12 Feb 2026 09:58:01 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqTPt-00000001sAb-3SFc;
-	Thu, 12 Feb 2026 09:55:25 +0000
+	id 1vqTSR-00000001sRV-2QB0;
+	Thu, 12 Feb 2026 09:58:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770890118;
-	bh=N62o0AizXGvG6KW1+joGamHuqnTNnvR3ujtxM+9dnw8=;
+	s=mail; t=1770890277;
+	bh=iI/SDCfh9dwezKTtvQ5Eybbk3cWcaOxqf8BgHUVGu8o=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=laYuff1m37ibybD2IrXe46Ic/HVfch2ccbM/zJh2WZzVGmJey+Fp5p1EPLvPSplDX
-	 wxgOsM1LZ+VcENrVt4c1qV7ZJFhX5yhT1trmn976thQAHdPLIIHZeIceuFZ6kOFPDd
-	 /AN0oy2uUCj3ZSDWIoAhkL+wDCT9N4cjf4oTYAkibaOIZW3xpJOqDffJfKzVntEo3K
-	 r4sYbDkTI0exkwkYN/nSXFL9ArH5M6UlGT7vG16bTe2mFoCdRpv9vv3X0SXJheQOrE
-	 jhW0dXAf3u+GgreZkvjV7kQd0NkH5HLIkNsiZ6AxRRwcPnMF+MElCCNT6hFoMe8EVL
-	 Uy5eke5GkKwAw==
+	b=Qx7j6msvSlwIPvhIdnaGJURYQJkiClQGtAQfeUMjbThdUhwbtD9koTFe30N5bQIdI
+	 FfIWh7nHzqo4b6RTawfBl4XbzBXO7IlCFn9K91gB03B4F+oTBpVfcD7P/7Bhvs5h5r
+	 1Io7K5e/NB+IfMj3SMejAhjBQV+qSb3CQBW8b/+VfhMep11NCKOU1fQbYgi72ydSLY
+	 SY+ebUYoCvIlL3FbRcV0wHnbjoDQMM1SBZPwQfUlMYpe85yXmIqofgRx8151AmQb1E
+	 yqrXotGuKvxk8Rwb5DY6jC3bYANmqGMlbuahyp60zjeZV+jg5TdiMLly2mFtkRgV01
+	 /qihAKdQ/E9dw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4148817E110D;
-	Thu, 12 Feb 2026 10:55:18 +0100 (CET)
-Message-ID: <2db84c85-706c-42db-8706-debe37ca3166@collabora.com>
-Date: Thu, 12 Feb 2026 10:55:17 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 93A7917E1305;
+	Thu, 12 Feb 2026 10:57:56 +0100 (CET)
+Message-ID: <01682ecb-b3bc-41de-94e0-83271ba121a4@collabora.com>
+Date: Thu, 12 Feb 2026 10:57:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 7/7] arm64: dts: mt8167: Add additional mmsys reset bits
+Subject: Re: [PATCH 6/7] arm64: dts: mt8167: Add the mmsys reset bit to reset
+ dsi
 To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
  linux-mediatek@lists.infradead.org
 Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
@@ -58,15 +59,16 @@ Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org
 References: <cover.1770836189.git.l.scorcia@gmail.com>
- <6f803b6dd1f61728c17afadd2fe983e9fdc0c109.1770836190.git.l.scorcia@gmail.com>
+ <72dcec7fe8bfd8ee7e8ef58708690268f3c07d42.1770836190.git.l.scorcia@gmail.com>
+ <CAORyz2LRkVcOss3vFS3Y3FtZfn_s-Um8G9JLgedXEeySorr0=w@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <6f803b6dd1f61728c17afadd2fe983e9fdc0c109.1770836190.git.l.scorcia@gmail.com>
+In-Reply-To: <CAORyz2LRkVcOss3vFS3Y3FtZfn_s-Um8G9JLgedXEeySorr0=w@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260212_015522_307101_E85955AB 
-X-CRM114-Status: GOOD (  13.78  )
+X-CRM114-CacheID: sfid-20260212_015759_767652_53E75F98 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,49 +83,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/02/26 20:03, Luca Leonardo Scorcia ha scritto:
-> Some extra mmsys reset bits are defined in the Lenovo
-> Smart Clock kernel sources - file cmdq_mdp.c
+Il 12/02/26 09:01, Luca Leonardo Scorcia ha scritto:
+> I apologize for the mistake, I did not notice that the dsi node is not
+> present upstream yet, so this specific patch won't apply. Any comments
+> are appreciated though!
+> I will send a separate patch to add the display nodes to the dts and
+> the required compatibles to the bindings.
 > 
 
-Hah, just noticed that this patch actually adds the same resets as the ones
-in my hints at patch 2.
+Initially, I didn't notice either.
 
-In any case, since you're adding the MMSYS resets in patch [2/7], having two
-patches doesn't make any sense.
+P.S.: resets goes after phy (alphabetical order)
 
-Leaving the fact that this patch has the wrong title ... but well anyway, just
-squash this one with [2/7] and send one patch adding all of the mmsys resets
-at once.
+Cheers
 
-Cheers,
-Angelo
-
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> ---
->   include/dt-bindings/reset/mt8167-resets.h | 9 +++++++++
->   1 file changed, 9 insertions(+)
+> Il giorno mer 11 feb 2026 alle ore 20:06 Luca Leonardo Scorcia
+> <l.scorcia@gmail.com> ha scritto:
+>>
+>> DSI hardware reset is needed to prevent different settings between
+>> the bootloader and the kernel.
+>>
+>> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+>> ---
+>>   arch/arm64/boot/dts/mediatek/mt8167.dtsi | 3 +++
+>>   1 file changed, 3 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/mediatek/mt8167.dtsi b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
+>> index caf51f203dd3..ee2792d53b2c 100644
+>> --- a/arch/arm64/boot/dts/mediatek/mt8167.dtsi
+>> +++ b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
+>> @@ -8,6 +8,7 @@
+>>   #include <dt-bindings/clock/mt8167-clk.h>
+>>   #include <dt-bindings/memory/mt8167-larb-port.h>
+>>   #include <dt-bindings/power/mt8167-power.h>
+>> +#include <dt-bindings/reset/mt8167-resets.h>
+>>
+>>   #include "mt8167-pinfunc.h"
+>>
+>> @@ -189,6 +190,7 @@ dsi: dsi@14012000 {
+>>                                   <&mmsys CLK_MM_DSI_DIGITAL>,
+>>                                   <&mipi_tx>;
+>>                          clock-names = "engine", "digital", "hs";
+>> +                       resets = <&mmsys MT8167_MMSYS_SW0_RST_B_DISP_DSI0>;
+>>                          phys = <&mipi_tx>;
+>>                          phy-names = "dphy";
+>>                          status = "disabled";
+>> @@ -295,6 +297,7 @@ mmsys: syscon@14000000 {
+>>                          compatible = "mediatek,mt8167-mmsys", "syscon";
+>>                          reg = <0 0x14000000 0 0x1000>;
+>>                          #clock-cells = <1>;
+>> +                       #reset-cells = <1>;
+>>                  };
+>>
+>>                  smi_common: smi@14017000 {
+>> --
+>> 2.43.0
+>>
 > 
-> diff --git a/include/dt-bindings/reset/mt8167-resets.h b/include/dt-bindings/reset/mt8167-resets.h
-> index f77c2ca897cf..b379f8f023d5 100644
-> --- a/include/dt-bindings/reset/mt8167-resets.h
-> +++ b/include/dt-bindings/reset/mt8167-resets.h
-> @@ -33,6 +33,15 @@
->   #define MT8167_TOPRGU_SW_RST_NUM		15
->   
->   /* MMSYS resets */
-> +#define MT8167_MMSYS_SW0_RST_B_SMI_COMMON	0
-> +#define MT8167_MMSYS_SW0_RST_B_SMI_LARB		1
-> +#define MT8167_MMSYS_SW0_RST_B_CAM_MDP		2
-> +#define MT8167_MMSYS_SW0_RST_B_MDP_RDMA0	3
-> +#define MT8167_MMSYS_SW0_RST_B_MDP_RSZ0		4
-> +#define MT8167_MMSYS_SW0_RST_B_MDP_RSZ1		5
-> +#define MT8167_MMSYS_SW0_RST_B_MDP_TDSHP0	6
-> +#define MT8167_MMSYS_SW0_RST_B_MDP_WDMA		7
-> +#define MT8167_MMSYS_SW0_RST_B_MDP_WROT0	8
->   #define MT8167_MMSYS_SW0_RST_B_DISP_DSI0	22
->   
->   #endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8167 */
-
+> 
 
 
