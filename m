@@ -4,83 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D05A2EB48F4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Feb 2026 10:01:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CDA3EB48F8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Feb 2026 11:15:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+/Pg8Kgz+0kKiwJ2rlkl+AbLR6pcx1M1c/4v5llLUWg=; b=fLlAq4KIi0L/CKYFlKzqTU3LDY
-	kk8Cr+wOW7hcL2J1I2jWmZ48IlQ7OJnsrno9BPggc3DSfcQ6mDRHbZq/LtGhpKGbCkwxHe1tQW8/u
-	sVB3Fmh64hQqfZEQNa+0jezrN8vaH5sM8KkzO340kJZ116h7eR3askjJCi3DKGC5KP2pSOGGuR6NB
-	skZ34ZubCSULvx/vv9497ymSr2XsNpTm3XJCHau+00BTA9l7uKB/lfPrnCofnYAtmXuhl63y1C0pB
-	fA3Wano91ReevcHFettQjDmSnKBVYncH58+Gp26v8jpZLW9GNz34AI5UD8N2CjPJAkmCQoioJx2SY
-	+RE1fpcQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PylArt1DJBhUgOleaGgSP9LNJI7Dw6dwFu1NZqqNkC4=; b=TMfYmaYX5k2iS4eR6FIzX55UrF
+	ROwIlRpmYas3T28TM9eywGzAlqWRJJMuQzY3i7ZaMJkpmAwCjYyNYrG4fMmll/Hu4SqfE3xCCwaol
+	2kyTebygGbicJAv8tJ2VqLJzLGd56BXqRupeP/a6bqEoBvK0AnlyPFAtqG7FtW8AJpmBdGp3TM8Iv
+	IwmTgATWeEPZLLEfWWX2B3jIJd30zuIwMkqGy+2ncDxi3X6rYKnAQ84vHdvE5itlT+FoQ3uXiU6Rt
+	H2QGv0A6WM/ycvd/NkOQNs45/LIjfWRaG1NxUIe8hmiQ5HEWfGx3Myflk6qa739fC0F2qQP9rYNOE
+	Os9uFqqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqTVq-00000001smq-2saI;
-	Thu, 12 Feb 2026 10:01:30 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vqUfN-00000001ynC-0Uh9;
+	Thu, 12 Feb 2026 11:15:25 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqTVl-00000001sgY-1Fhl;
-	Thu, 12 Feb 2026 10:01:26 +0000
-X-UUID: c8ee053607f911f1ad39f32c34db0b1c-20260212
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=+/Pg8Kgz+0kKiwJ2rlkl+AbLR6pcx1M1c/4v5llLUWg=;
-	b=LGiKKXf+CCGM0C4eIXJ1YGf3KwvxTpdvTxvgJ6UPYUBQiecVB40jLEdl45/9mEveCpNKLbjH5MbLcr8VK4p8i+jvMKXLPBRidkhr084FUnP60aUsrp6hwLwm+7ERH3a2aLOvYGl/whdWiAW3yNwE6zlGT6YdZq0XScn/ZZJGIaA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:55a1d861-04b1-403f-b374-502cf248337b,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:89c9d04,CLOUDID:3626395b-a957-4259-bcca-d3af718d7034,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c8ee053607f911f1ad39f32c34db0b1c-20260212
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 87373424; Thu, 12 Feb 2026 03:01:22 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 12 Feb 2026 18:01:19 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 12 Feb 2026 18:01:18 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<nicolas.dufresne@collabora.com>, <sebastian.fricke@collabora.com>, Tiffany
- Lin <tiffany.lin@mediatek.com>, kyrie wu <kyrie.wu@mediatek.com>
-CC: Yunfei Dong <yunfei.dong@mediatek.com>, Maoguang Meng
-	<maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>, Irui
- Wang <irui.wang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v4 6/6] media: mediatek: encoder: Add MT8196 encoder compatible data
-Date: Thu, 12 Feb 2026 18:01:03 +0800
-Message-ID: <20260212100104.11863-7-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20260212100104.11863-1-irui.wang@mediatek.com>
-References: <20260212100104.11863-1-irui.wang@mediatek.com>
+	id 1vqUfK-00000001ymh-194E;
+	Thu, 12 Feb 2026 11:15:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1770894918;
+	bh=PkNrrH4GKmmT+PDGVmEmRURG14F9GTcvVWwsKASKDEs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ps0HFXzUSqRov8F/80F/npFPUEy86MI3CeLp5Bu0UBisLMYSj7UUMDMsYU/gIpH2+
+	 eSNhecsxai16QHW33cSZL9DEU2bgG25iYJQpR4LW2GwBAD7StBr5eBgS2VgagX07Eq
+	 Pa4pn8sa3UbOMYYU/y5aoc4YlY3ga/KVTjkdYnLD0LSFlaaPfB0o5zXVnArft0hnUZ
+	 Uiu6eVaoq4dqTc28hkgQe4QCN4z3Og6otA0m5X3OfFwwHnYW+7cFyuJdHvqOyAytPe
+	 3HrPVOyBRYA7ZTphoCmQe60+5MctsshmmOK7qOuY5hQrVfAbdspQjYghYK4kh6I6ra
+	 l/pB+lIPMBYaQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CCA2D17E114C;
+	Thu, 12 Feb 2026 12:15:17 +0100 (CET)
+Message-ID: <8fc93d93-7d99-4d38-9fa8-92951a0acdcf@collabora.com>
+Date: Thu, 12 Feb 2026 12:15:17 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 04/10] pmdomain: mediatek: Refactor bus protection
+ regmaps retrieval
+To: =?UTF-8?B?TWFjcGF1bCBMaW4gKOael+aZuuaWjCk=?= <Macpaul.Lin@mediatek.com>,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: =?UTF-8?B?UGFibG8gU3VuICjlravmr5Pnv5Qp?= <pablo.sun@mediatek.com>,
+ "lihongbo22@huawei.com" <lihongbo22@huawei.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "kernel@collabora.com" <kernel@collabora.com>,
+ "ulf.hansson@linaro.org" <ulf.hansson@linaro.org>,
+ =?UTF-8?B?TW91ZHkgSG8gKOS9leWul+WOnyk=?= <Moudy.Ho@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ =?UTF-8?B?QmVhciBXYW5nICjokKnljp/mg5/lvrcp?= <bear.wang@mediatek.com>,
+ "mbrugger@suse.com" <mbrugger@suse.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ Nicolas Prado <nfraprado@collabora.com>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "y.oudjana@protonmail.com" <y.oudjana@protonmail.com>,
+ "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?TWFuZHlKSCBMaXUgKOWKieS6uuWDlik=?= <MandyJH.Liu@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Sjoerd Simons <sjoerd@collabora.com>
+References: <20250805074746.29457-1-angelogioacchino.delregno@collabora.com>
+ <20250805074746.29457-5-angelogioacchino.delregno@collabora.com>
+ <a2eae87efe46ebf397bcec3580eb9bc152b80846.camel@collabora.com>
+ <be3a2d50-044b-429a-820c-5260c6ce730c@collabora.com>
+ <fd071501b66fb332439617f2b270c837043b0862.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <fd071501b66fb332439617f2b270c837043b0862.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260212_020125_362665_CC67D80C 
-X-CRM114-Status: GOOD (  14.32  )
+X-CRM114-CacheID: sfid-20260212_031522_517309_6A468416 
+X-CRM114-Status: GOOD (  29.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,87 +100,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8196 encoder use common firmware interface, add compatible data to
-support MT8196 encoding, and need set dma mask to support 34bit.
+Il 12/02/26 08:58, Macpaul Lin (林智斌) ha scritto:
+> On Tue, 2025-10-14 at 11:59 +0200, AngeloGioacchino Del Regno wrote:
+>>
+>> External email : Please do not click links or open attachments until
+>> you have verified the sender or the content.
+>>
+>>
+>> Il 13/10/25 15:41, Sjoerd Simons ha scritto:
+>>> Hey,
+>>>
+>>> On Tue, 2025-08-05 at 09:47 +0200, AngeloGioacchino Del Regno
+>>> wrote:
+>>>> In preparation to add support for new generation SoCs like
+>>>> MT8196,
+>>>> MT6991 and other variants, which require to set bus protection on
+>>>> different busses than the ones found on legacy chips, and to also
+>>>> simplify and reduce memory footprint of this driver, refactor the
+>>>> mechanism to retrieve and use the bus protection regmaps.
+>>>>
+>>>> This is done by removing the three pointers to struct regmap from
+>>>> struct scpsys_domain (allocated for each power domain) and moving
+>>>> them to the main struct scpsys (allocated per driver instance) as
+>>>> an array of pointers to regmap named **bus_prot.
+>>>
+>>> Trying to boot v6.18.0-rc1 on a Genio 700 EVK using the arm64
+>>> defconfig,
+>>> ends up hanging at boot (seemingly when probing MTU3 and/or mmc,
+>>> but that
+>>> might be a red herring).
+>>>
+>>> Either reverting this patch *or* having CONFIG_MTK_MMSYS builtin
+>>> rather
+>>> then a module seems to solve that.
+>>>
+>>
+>> Thanks for the report.
+>>
+>> This is not a problem with this patch specifically, but surely some
+>> race condition
+>> that was already present before and that does get uncovered with this
+>> one in some
+>> conditions.
+>>
+>> Without the devicetree updates (which are not upstream yet) this
+>> patch is
+>> fully retaining the legacy functionality 1-to-1.
+>>
+>> I'll check what's going on ASAP.
+>>
+>> Cheers,
+>> Angelo
+>>
+> 
+> This issue also happened on mt8195. I've done bisect on linux-next
+> master with mt8195-genio-1200-evk board.
+> The result shows c29345fa5f66bea0790cf2219f57b974d4fc177b is the first
+> bad commit.
+> 
+> I cannot simply revert this commit since there are some dependencies
+> commits.
+> 
+> I'm not sure if there are any API or flag change would
+> affect interaction between the pm-domain driver and scp firmware.
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
----
- .../vcodec/encoder/mtk_vcodec_enc_drv.c       | 19 +++++++++++++++++++
- .../vcodec/encoder/mtk_vcodec_enc_drv.h       |  2 ++
- 2 files changed, 21 insertions(+)
+I'm 99% sure that the SCP firmware has nothing to do with this - but then
+even if it did, there's some quirk to be uncovered and properly handled.
 
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-index 9a94bd096397..86d0ab03f151 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-@@ -20,6 +20,8 @@
- #include "mtk_vcodec_enc_pm.h"
- #include "../common/mtk_vcodec_intr.h"
- 
-+#define VENC_DMA_BIT_MASK 34
-+
- static const struct mtk_video_fmt mtk_video_formats_output[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12M,
-@@ -300,6 +302,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 		goto err_res;
- 	}
- 
-+	if (dev->venc_pdata->set_dma_bit_mask)
-+		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(VENC_DMA_BIT_MASK));
-+
- 	mutex_init(&dev->enc_mutex);
- 	mutex_init(&dev->dev_mutex);
- 	spin_lock_init(&dev->dev_ctx_lock);
-@@ -451,6 +456,19 @@ static const struct mtk_vcodec_enc_pdata mt8195_pdata = {
- 	.core_id = VENC_SYS,
- };
- 
-+static const struct mtk_vcodec_enc_pdata mt8196_pdata = {
-+	.venc_model_num = 8196,
-+	.capture_formats = mtk_video_formats_capture_h264,
-+	.num_capture_formats = ARRAY_SIZE(mtk_video_formats_capture_h264),
-+	.output_formats = mtk_video_formats_output,
-+	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output),
-+	.min_bitrate = 64,
-+	.max_bitrate = 100000000,
-+	.core_id = VENC_SYS,
-+	.uses_common_fw_iface = true,
-+	.set_dma_bit_mask = true,
-+};
-+
- static const struct of_device_id mtk_vcodec_enc_match[] = {
- 	{.compatible = "mediatek,mt8173-vcodec-enc",
- 			.data = &mt8173_avc_pdata},
-@@ -460,6 +478,7 @@ static const struct of_device_id mtk_vcodec_enc_match[] = {
- 	{.compatible = "mediatek,mt8188-vcodec-enc", .data = &mt8188_pdata},
- 	{.compatible = "mediatek,mt8192-vcodec-enc", .data = &mt8192_pdata},
- 	{.compatible = "mediatek,mt8195-vcodec-enc", .data = &mt8195_pdata},
-+	{.compatible = "mediatek,mt8196-vcodec-enc", .data = &mt8196_pdata},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_vcodec_enc_match);
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-index 769fb5009964..475953d39aa4 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.h
-@@ -32,6 +32,7 @@
-  * @core_id: stand for h264 or vp8 encode index
-  * @uses_34bit: whether the encoder uses 34-bit iova
-  * @uses_common_fw_iface: whether the encoder uses common driver interface
-+ * @set_dma_bit_mask: whether the encoder need set extra DMA bit mask
-  */
- struct mtk_vcodec_enc_pdata {
- 	u16 venc_model_num;
-@@ -45,6 +46,7 @@ struct mtk_vcodec_enc_pdata {
- 	u8 core_id;
- 	bool uses_34bit;
- 	bool uses_common_fw_iface;
-+	bool set_dma_bit_mask;
- };
- 
- /*
--- 
-2.45.2
+So - if it is (again, most probably not) a firmware issue, it was only a
+matter of time until this situation would've happened. It's pretty common
+to see two wrongs making one thing right (but in 100% of the cases it does
+eventually break).
+
+> Just a remind it is hard for MediaTek to update scp firmware for a
+> mass production chip. Each scp firmware seems specifically designed for
+> each chip separately which leads the API might be changed between each
+> chip.
+> 
+
+Adding Louis-Alexis to the loop;
+
+Louis, can you please try to reproduce this one on any of our boards?
+I can't seem to be able to reproduce here.
+
+Cheers,
+Angelo
+
+> The error log occurs on emmc at first and than rcu_preempt happens.
+> [    1.291055] mtk-msdc 11240000.mmc: msdc_track_cmd_data: cmd=8
+> arg=000001AA; host->error=0x00000002
+> [    1.292775] mtk-msdc 11240000.mmc: msdc_track_cmd_data: cmd=55
+> arg=00000000; host->error=0x00000002
+> [    1.294539] mtk-msdc 11240000.mmc: msdc_track_cmd_data: cmd=55
+> arg=00000000; host->error=0x00000002
+> [    1.296293] mtk-msdc 11240000.mmc: msdc_track_cmd_data: cmd=55
+> arg=00000000; host->error=0x00000002
+> ...
+> [    1.430408] mtk-msdc 11240000.mmc: msdc_track_cmd_data: cmd=55
+> arg=00000000; host->error=0x00000002
+> [    1.433766] mmc0: Failed to initialize a non-removable card
+> [   22.297240] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+> [   22.298723] rcu:     6-...0: (2 ticks this GP)
+> idle=104c/1/0x4000000000000000 softirq=45/45 fqs=37
+> [   22.299827] rcu:     (detected by 2, t=5256 jiffies, g=-1051, q=200
+> ncpus=8)
+> [   22.300689] Sending NMI from CPU 2 to CPUs 6:
+> ...
+> 
+> Best regards,
+> Macpaul Lin
+> 
 
 
