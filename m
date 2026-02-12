@@ -4,90 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6A27EEA84C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Feb 2026 19:26:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1EF2EEA84B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Feb 2026 19:31:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=VbOs3cQtoIqcba8ksEIev4JgP5sJJiSr7MKbA/ghxVg=; b=uPQGfHY4XmlUHElZiCaG7PrZsz
-	Hc4GTpu5xupZzpN4HWQtffzznLddN1xO1UliOk5ri2gu3lb4NNrvZw+pfpBqTfd6BtKgEpXjdLwTm
-	dlUr1Bl2KajteatcudYPAhtQiSUjKFtNQ+Dfg+RkhR5J4Q+7p6vxF7MVReIxRpbxFcTUOO/6271hK
-	NxvNmjM8UTmTQ55NKeV2OMdtYgc3CK41l05btauciFs3k7Btv/ulEv2b1D5j2XoouI4h7BP9JwD5h
-	S8RUCC7o4KeL3rSIKwIuh9byg8orrTIdjh1IGIhgR/f+lK2qvkF4cHtTHzLIe0rXMYM3EpyUmaM49
-	ofH7i3kQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+tanNjc4QIAKKG8H7yNuDsbO8ZoKAd9yWg6r/Xlmmqs=; b=rr2exzl1caWkiQk/2+XX1JZYfh
+	w9wn5kyAflJk/up5iVECg+ivBTCqsJ5ZAXa6PcJLw35WxzWdED6kACYmlxzq0vM2gpJ9/DlrjOLAG
+	b60AD9Dz1Vz/9M6c3a3gZIVnA0KDxZtsvEJX1vMssZqGeu++ZSCutvKlyZ1+jIr76nJYCcGmlZyJZ
+	TrGDCEypIDtA0ktu54mPvzO9HGyvP2qvD40tC/0xJfmb6xq6HYBvLu7YK3rDvB1dejdvCv/jZ8hQQ
+	MTzAps3t586dEzjUAqSVyCiqcBhmlrWZZagOWjGqpeHyEiDISyne7yEU6oZkiLAGmwkgki9IP8G0v
+	NxhG/m3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqcKu-00000002Zmv-0s4P;
-	Thu, 12 Feb 2026 19:26:48 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1vqcPV-00000002a1h-2eV6;
+	Thu, 12 Feb 2026 19:31:33 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqcKr-00000002ZmA-3Oz7
-	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Feb 2026 19:26:46 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-482f454be5bso22975865e9.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 12 Feb 2026 11:26:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1770924403; x=1771529203; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=VbOs3cQtoIqcba8ksEIev4JgP5sJJiSr7MKbA/ghxVg=;
-        b=T2WJwvgCO7QIgxGUmeDWVhamRJiRiP5mB1zKJvwgZFOqxFPxlxDo/Vu20Jpwv6dEXz
-         QLWcUrbZdiI7jNXOgt5z0Nv5CMev0W3StQnGlTuJzmPg7HOGfbWSBZ8uW2vEMNy8aDWQ
-         jfHEFFF/fXID6phSRfGlOtJD6xewhn/b0n+ZYkDnq1VgTAEcWIkzzNlWSeSKEoQ69FAY
-         +RFoOcThkCqVoLeh7ApbHwAde5JkM1B1+Ba/4KpIUzpLpE6mROlKPyAkLrVyErCltW+V
-         T7533W+HMsQfsCmt72BtRweeTTI6XWzkN5K8QvkamHTwjDCelUniHbmnfNj4f8THrCFW
-         njXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1770924403; x=1771529203;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=VbOs3cQtoIqcba8ksEIev4JgP5sJJiSr7MKbA/ghxVg=;
-        b=mbu3hI5N2NeJUrS4PIztzs8hob11ykL9ndjpWSRgLnLYu9yLdJwo1bpN4MpMlkFStE
-         lY9ehyB/K+ZgRZ1uWE/v0mhTuSUkcSU6tw0bpUPccozZWR/WETKlB4vWL77SZTsOnVmo
-         iYdOn53cG+dyW5MrUQgW2sppDdaqCLKEstAx/jma9B3Z6d2FvXoWsig+U4uRDB1ThHDV
-         Zr0NkJt4PwCX4cUw44V6++hP6Z6uF9d1rkeNRCZoAgYbXXAmy5fecKV/tXZi53xYLOB6
-         LulTIZMhtwQdfKQ0PXUaRczGVnmZrdtcsdoXybdov3MBmtErtiUilqs0XcKjR6X2LLsC
-         KGCg==
-X-Gm-Message-State: AOJu0Yx8avufItgbBlzn0AsqH68Ojkrf9xymLSbDAJeolOmT6iiYqI+3
-	TykjL6taNPIR4W3IGyeXPnjVrZ5wkin0Tj45/S0tton1HIZAHCMmu9l7RkyHQw==
-X-Gm-Gg: AZuq6aLdZBRC3KBTMd76nUGsWw8PWANvG/xWCovN4boLNEkYOBu0IMi8cWah9z5zt05
-	aKkkcd6gtw3AZMDFFObs9CPR9F+StVQ/LBNPPZGoU58vZlYdJQQbBz6vyIAy2XWp5xG/9noFq/F
-	Il963G2/vxP/YuOftRuvkqSS7YhqSTYpquZKIcvyBnGf0k94ebeoJiTj1GCbY9jX41QXZWxxybk
-	LF4HfHMfbUFR0HO+qEtlo5cQAswi3QWGTqSx67FJdpusk5qnwEKkBZU90xaPMVvuGnhTI5CDWGv
-	a2SdzatNqtwtXT3tHQFrNYXvEGZnk289pm/8/eeHz0SHNRDQMSj2BuZfPxjG0x725RMaRuTStb0
-	PdIefeyZql1llXD9E5CKfIplriPy5PF+71EHVR1m3miaB1otv/BBOb/awrAScSP3e0aLiZQwZDb
-	LEijHOvvJhUnH2Bng5NCM=
-X-Received: by 2002:a05:600c:1f8d:b0:46e:59bd:f7e2 with SMTP id 5b1f17b1804b1-4836601387bmr57305525e9.11.1770924402981;
-        Thu, 12 Feb 2026 11:26:42 -0800 (PST)
-Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-483719b8e71sm20405e9.2.2026.02.12.11.26.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Feb 2026 11:26:42 -0800 (PST)
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-To: linux-mediatek@lists.infradead.org
-Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2] drm/mediatek: Remove all conflicting aperture devices during probe
-Date: Thu, 12 Feb 2026 19:22:47 +0000
-Message-ID: <20260212192605.263160-1-l.scorcia@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1vqcPR-00000002a0j-0MOH;
+	Thu, 12 Feb 2026 19:31:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1770924686;
+	bh=+qNUr0UoriHOp1Z7R0j7T53LVOa64ZsApE4fd9vU1/I=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=d8nUvkAehy9yHTSm6VurTOk3PcmpaHehiHFDkoonwDV33kpogDUNL1ptxqo9LRK6A
+	 qX1Y4Q1vs7t0xSxy2eeG8EP1SMUpaeHXJhmAlX+oQ6dxqsBta0V7+MAqbN1CBqZB3y
+	 bhfFYEEO1X3YtJ3KoJP5L9aRWFnEiLlyRMoML0f0c3bGMFJGV3WIq+v4QmdwVue+SO
+	 R/t2p0GEq6Vd2w6YU2UvNIl1iddu+puh4N77Krk0tSKgEuqP0qn7q+ojPmENkIfji5
+	 8DKsE9YLxQK6tinu1KNyswU3YLRogAmtUsrI1ZMWdisHu8m1UD3F3AW+6zBjiL8khO
+	 KcDuY0tc3sT7g==
+Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3DB0A17E1274;
+	Thu, 12 Feb 2026 20:31:24 +0100 (CET)
+Message-ID: <ce23bec1765032aad25e036b46cf45eb97764ea0.camel@collabora.com>
+Subject: Re: [PATCH v3 02/14] media: mediatek: vcodec: add decoder
+ compatible to support mt8196
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ =?ISO-8859-1?Q?N=EDcolas?= "F . R . A . Prado"	 <nfraprado@collabora.com>,
+ Sebastian Fricke <sebastian.fricke@collabora.com>,  Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, AngeloGioacchino Del Regno	
+ <angelogioacchino.delregno@collabora.com>, Benjamin Gaignard	
+ <benjamin.gaignard@collabora.com>, Nathan Hebert <nhebert@chromium.org>, 
+ Daniel Almeida <daniel.almeida@collabora.com>,
+ linux-mediatek@lists.infradead.org
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+ <frkoenig@chromium.org>,  Daniel Vetter <daniel@ffwll.ch>, Steve Cho
+ <stevecho@chromium.org>, Yunfei Dong <yunfei.dong@mediatek.com>, 
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com
+Date: Thu, 12 Feb 2026 14:31:21 -0500
+In-Reply-To: <6176231.DvuYhMxLoT@workhorse>
+References: <20260211054149.27249-1-yunfei.dong@mediatek.com>
+	 <20260211054149.27249-3-yunfei.dong@mediatek.com>
+	 <6176231.DvuYhMxLoT@workhorse>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-ExWRxj2PEKAcesDrVVPq"
+User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260212_112645_868155_01D64BB7 
-X-CRM114-Status: GOOD (  15.57  )
+X-CRM114-CacheID: sfid-20260212_113129_305986_8CF0910D 
+X-CRM114-Status: GOOD (  21.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,58 +101,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If a device has a framebuffer available it might be already used as
-display by simple-framebuffer or simpledrm when mediatek-drm is probed.
-This is actually helpful when porting to a new device as
-framebuffers are simple to setup in device trees and fbcon can be
-used to monitor the kernel boot process.
 
-When drm-mediatek loads a new fb device is initialized, however
-fbcon remains attached to the initial framebuffer which is no longer
-connected to the actual display - the early fb is never removed.
+--=-ExWRxj2PEKAcesDrVVPq
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-We can gracefully transition from framebuffer handling to drm-managed
-display by calling aperture_remove_all_conflicting_devices before
-registering mediatek-drm. This takes care of unloading other fb
-devices/drivers and disconnects fbcon which then automatically
-reconnects to mediatekdrmfb as soon as it's available.
+Hi,
 
-The function is invoked just before drm_dev_register() to kick out
-the existing framebuffer as late as possible to reduce the time the
-screen is unresponsive.
+Le jeudi 12 f=C3=A9vrier 2026 =C3=A0 17:48 +0100, Nicolas Frattaroli a =C3=
+=A9crit=C2=A0:
+> On Wednesday, 11 February 2026 06:41:29 Central European Standard Time Yu=
+nfei
+> Dong wrote:
+> > MT8196 is lat single core architecture. Support its compatible and
+> > use `mtk_lat_sig_core_pdata` to initialize platform data.
+> >=20
+> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > ---
+> > =C2=A0.../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c=C2=A0=
+=C2=A0 | 6 ++++++
+> > =C2=A0.../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h=C2=A0=
+=C2=A0 | 1 +
+> > =C2=A02 files changed, 7 insertions(+)
+> >=20
+> > diff --git
+> > a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+> > b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+> > index 3b81fae9f913..d9f722698198 100644
+> > --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv=
+.c
+> > +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv=
+.c
+> > @@ -347,6 +347,8 @@ static void mtk_vcodec_dec_get_chip_name(struct
+> > mtk_vcodec_dec_dev *vdec_dev)
+> > =C2=A0		vdec_dev->chip_name =3D MTK_VDEC_MT8186;
+> > =C2=A0	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8188-
+> > vcodec-dec"))
+> > =C2=A0		vdec_dev->chip_name =3D MTK_VDEC_MT8188;
+> > +	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8196-
+> > vcodec-dec"))
+> > +		vdec_dev->chip_name =3D MTK_VDEC_MT8196;
+>=20
+> Why is this entire function written like this, and why does it exist
+> at all? You can store the chip name in the platform data for a compatible=
+,
+> thereby avoiding a massive of_device_is_compatible if block because that'=
+s
+> what platform data is for.
+>=20
+> The only place where this function is even used is in probe.
+>=20
+> Just store it in your mtk_vcodec_match's .data struct and pull it from
+> dev->vdec_pdata. No need for the function.
 
-Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
----
-v2: Moved the call to aperture_remove_all_conflicting_devices to 
-    right before drm_dev_register()
+I have already asked this to the dev working on some other MTK codec patchs=
+et,
+and I think he already posted some proper refactoring (but had more changes=
+ to
+finish it up). Mind, Yunfei, coordinating the effort on removing all the if=
+/else
+please ? We are doing the same code review again and again with every singl=
+e
+individual working on this driver.
 
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 5 +++++
- 1 file changed, 5 insertions(+)
+regards,
+Nicolas
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index a94c51a83261..02effd9fc698 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -4,6 +4,7 @@
-  * Author: YT SHEN <yt.shen@mediatek.com>
-  */
- 
-+#include <linux/aperture.h>
- #include <linux/component.h>
- #include <linux/module.h>
- #include <linux/of.h>
-@@ -670,6 +671,10 @@ static int mtk_drm_bind(struct device *dev)
- 	if (ret < 0)
- 		goto err_free;
- 
-+	ret = aperture_remove_all_conflicting_devices(DRIVER_NAME);
-+	if (ret < 0)
-+		dev_err(dev, "Error %d while removing conflicting aperture devices", ret);
-+
- 	ret = drm_dev_register(drm, 0);
- 	if (ret < 0)
- 		goto err_deinit;
--- 
-2.43.0
+>=20
+> > =C2=A0	else
+> > =C2=A0		vdec_dev->chip_name =3D MTK_VDEC_INVAL;
+> > =C2=A0}
+> > @@ -560,6 +562,10 @@ static const struct of_device_id mtk_vcodec_match[=
+] =3D {
+> > =C2=A0		.compatible =3D "mediatek,mt8188-vcodec-dec",
+> > =C2=A0		.data =3D &mtk_lat_sig_core_pdata,
+> > =C2=A0	},
+> > +	{
+> > +		.compatible =3D "mediatek,mt8196-vcodec-dec",
+> > +		.data =3D &mtk_lat_sig_core_pdata,
+> > +	},
+> > =C2=A0	{},
+> > =C2=A0};
+> > =C2=A0
+> > diff --git
+> > a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+> > b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+> > index c9d27534c63e..f06dfc1a3455 100644
+> > --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv=
+.h
+> > +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv=
+.h
+> > @@ -29,6 +29,7 @@ enum mtk_vcodec_dec_chip_name {
+> > =C2=A0	MTK_VDEC_MT8188 =3D 8188,
+> > =C2=A0	MTK_VDEC_MT8192 =3D 8192,
+> > =C2=A0	MTK_VDEC_MT8195 =3D 8195,
+> > +	MTK_VDEC_MT8196 =3D 8196,
+> > =C2=A0};
+> > =C2=A0
+> > =C2=A0/*
+> >=20
+>=20
+>=20
+>=20
 
+--=-ExWRxj2PEKAcesDrVVPq
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaY4qiQAKCRDZQZRRKWBy
+9HeYAQCWhI9bf5Bxz3iHnJha5FN0WSgszG3muAHP/g8J/IEASQD+P/e/9t05GUPv
++FUC4Inp4Ry1nEoRPqRIjZMwr70F9g8=
+=JVru
+-----END PGP SIGNATURE-----
+
+--=-ExWRxj2PEKAcesDrVVPq--
 
