@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DBE5EB48F2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Feb 2026 10:01:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16BAAEB48EB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Feb 2026 10:01:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w4BuRfvPiHk02CWIsjcO19CfxSc2VhrjUzw3Uv9wegY=; b=M9uvPWfcFPM5Gd7C2vOKW7kI6M
-	KtFZ5+gAcTfDPgOtKL7em4t1fMKFvHwVY0j4W0rXtTmtrCZM2DNf5ld+3DQq+4xp24xW1lYZM4AqE
-	dDI/tFafQKDNP7JE8gVogi5S7enn9QOx0d0cXX8wAg7MC5uYY6EmOAAY+pVVBc0qPa5R2VB3LyDkc
-	U6IUkLdgqCAYxvDKxcup2iJ+lQPK+jhkMZPJTHbXVpCZ75YS8cdcILzwGaaGofMagpkTfaEj6z/UP
-	vOptEicvEkc708v50ykL8wd9p0BYSSL1pG3TJ6LzmCyHgF0q+lh2q8RqBk2h7CvXm7Yt2cAH1hJ6j
-	nFSPJDhw==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=51uReRVE1SRGwH7Hqmx0C40LHPiimOtzbA/5oaXIx1Q=; b=A7+ZzmsrITSZi+hW4+1RYXfCgr
+	eJFhLrYBMu2Maki2ZATttlUAlLn0KgI5hgwYUz1oCMHbRU1f+O2RFxkUcK4H4DxosL9dSaML1MEy1
+	6OLQtORxoEhcSTw0lhvwOJ22OOnELDpCiEbPk4JTLWN2YZcPx9+NM7L7VIVkfsLKKKH9V9geTPAs1
+	QI2V51S04dSZwyZ51uWulvlf1FaYdqTBNtX+rciRZepelYuI5o9h19XIE41/J85oxZwfVA40EMxWl
+	U+OlgVInMpRNbZ3PT2orBS8nV4hJQwrY6stvu/C0maWhEJGVPrcgbcWH2KZaRnoBb/4xTO/XHXVGY
+	mIHrXecg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqTVj-00000001sex-1ynm;
-	Thu, 12 Feb 2026 10:01:23 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1vqTVk-00000001sfX-06jK;
+	Thu, 12 Feb 2026 10:01:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqTVh-00000001sdB-089T;
+	id 1vqTVg-00000001sd9-3zpF;
 	Thu, 12 Feb 2026 10:01:22 +0000
-X-UUID: c73b587407f911f1a16f0188aa809bee-20260212
+X-UUID: c46bcbd807f911f1ad39f32c34db0b1c-20260212
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=w4BuRfvPiHk02CWIsjcO19CfxSc2VhrjUzw3Uv9wegY=;
-	b=GfuU5u6Wvkgatn2NANsNge1UPAcNZfUk+K986w/w9ZKS9lsBqAEmjk485wh6SerJc48Mrn6/F0LQqJMoOwHuumAoyV8SGknvwAb7Mj3qbERojR6ubAgFgFGU9jFAk35Lifa5CH9tsysKmRGGKel8hSSNWjGXDjK84jn2sDpxmyI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=51uReRVE1SRGwH7Hqmx0C40LHPiimOtzbA/5oaXIx1Q=;
+	b=rLcp3mfExWFrmxaa79qe7in9E7q31wyLLSC/wf1Zzefby6DYVejkkZemDyfmWx+HQe6byWUY90+JBIjNbR6jrFkYSCrq/tUGo2VcB/wmZP9SIfo2VPvI0ew01ySiFwkoVKS8KPCv8dWRMa3kSPpqIY6TaKNnGba4wWLuvH5p63M=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:a58322c8-d6ee-4fa0-bfac-16547f28cec1,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:8f0be27a-8c8a-4fc4-88c0-3556e7711556,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.11,REQID:cece6616-3a0e-473a-be63-c3e1fd47df79,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:89c9d04,CLOUDID:442c9be9-ef90-4382-9c6f-55f2a0689a6b,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:2,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,O
+	SA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c73b587407f911f1a16f0188aa809bee-20260212
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+X-UUID: c46bcbd807f911f1ad39f32c34db0b1c-20260212
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <irui.wang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 719461945; Thu, 12 Feb 2026 03:01:19 -0700
+	with ESMTP id 1673435804; Thu, 12 Feb 2026 03:01:14 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 12 Feb 2026 18:01:18 +0800
+ 15.2.2562.29; Thu, 12 Feb 2026 18:01:12 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 12 Feb 2026 18:01:17 +0800
+ 15.2.2562.29 via Frontend Transport; Thu, 12 Feb 2026 18:01:11 +0800
 From: Irui Wang <irui.wang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
 	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
@@ -68,19 +68,17 @@ CC: Yunfei Dong <yunfei.dong@mediatek.com>, Maoguang Meng
 	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v4 5/6] dt-bindings: media: mediatek,vcodec-encoder: Add MT8196 with VCP support
-Date: Thu, 12 Feb 2026 18:01:02 +0800
-Message-ID: <20260212100104.11863-6-irui.wang@mediatek.com>
+Subject: [PATCH v4 0/6] Add support for MT8196 video encoder
+Date: Thu, 12 Feb 2026 18:00:57 +0800
+Message-ID: <20260212100104.11863-1-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20260212100104.11863-1-irui.wang@mediatek.com>
-References: <20260212100104.11863-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260212_020121_068137_3CBB3B75 
-X-CRM114-Status: GOOD (  12.29  )
+X-CRM114-CacheID: sfid-20260212_020121_046486_D4E2FF22 
+X-CRM114-Status: GOOD (  14.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,64 +93,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for MT8196 video encoder which uses VCP (Video Co-Processor)
-for firmware management. Unlike previous platforms that use SCP/VPU, MT8196
-requires VCP to load and execute the video encoding firmware, with the
-encoder communicating through VCP to perform encoding operations.
+This patch series add support for MT8196 video encoder.
+patch 1~3: Add a new encoder driver interface for new VCP firmware.
+patch 4~6: Add MT8196 encoder driver platform data.
 
-Add the "mediatek,mt8196-vcodec-enc" compatible string and introduce
-the "mediatek,vcp" property to reference the VCP device, which is
-required for MT8196 encoder operation.
+About adding new driver support, the v4l2-compliance report shows:
+"Total for mtk-vcodec-enc device /dev/video3: 47, Succeeded: 46, Failed: 1, Warnings: 0"
+The 1 Failed case is not caused by current patch set:
+                fail: v4l2-test-controls.cpp(1171): node->codec_mask & STATEFUL_ENCODER
+        test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: FAIL
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
----
- .../media/mediatek,vcodec-encoder.yaml        | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+This patch set depends on "media: mediatek: vcodec: support video decoder in mt8196"[1]
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-index ebc615584f92..4c8acebeb9d3 100644
---- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-@@ -24,6 +24,7 @@ properties:
-               - mediatek,mt8188-vcodec-enc
-               - mediatek,mt8192-vcodec-enc
-               - mediatek,mt8195-vcodec-enc
-+              - mediatek,mt8196-vcodec-enc
-       - items:
-           - const: mediatek,mt8186-vcodec-enc
-           - const: mediatek,mt8183-vcodec-enc
-@@ -58,6 +59,13 @@ properties:
-     description:
-       Describes point to scp.
- 
-+  mediatek,vcp:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Reference to the VCP (Video Co-Processor) device that loads and executes
-+      the video encoding firmware. The encoder communicates with the firmware
-+      through VCP to perform encoding operations.
-+
-   power-domains:
-     maxItems: 1
- 
-@@ -76,6 +84,17 @@ required:
-   - iommus
- 
- allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt8196-vcodec-enc
-+
-+    then:
-+      required:
-+        - mediatek,vcp
-+
-   - if:
-       properties:
-         compatible:
+[1] https://patchwork.linuxtv.org/project/linux-media/list/?series=21718
+
+Change in v4:
+ - Rework patch3 commit message.
+ - Rework patch5 commit with more details.
+ - Rebase patch onto decoder's patch set.
+ - Link to v3: https://patchwork.linuxtv.org/project/linux-media/cover/20250814085642.17343-1-kyrie.wu@mediatek.com/
+
+Change in v3:
+ - Add venc rc buffer alloc failure error handling.
+ - Add mediatek,vcp property definition in dt-bindning.
+
+Change in v2:
+ - Add support for VCP encode process.
+ - Add MT8196 encoder driver platform data.
+ - Rebase encoder patch onto decoder's patch set.
+ - Fix some review comments in v1.
+
+Irui Wang (6):
+  media: mediatek: encoder: Add a new encoder driver interface
+  media: mediatek: encoder: Add support for common firmware interface
+  media: mediatek: encoder: Add support for VCP encode process
+  media: mediatek: encoder: Add a new platform data member
+  dt-bindings: media: mediatek,vcodec-encoder: Add MT8196 with VCP
+    support
+  media: mediatek: encoder: Add MT8196 encoder compatible data
+
+ .../media/mediatek,vcodec-encoder.yaml        |  19 +
+ .../mediatek/vcodec/common/mtk_vcodec_fw.c    |  19 +
+ .../mediatek/vcodec/common/mtk_vcodec_fw.h    |   2 +
+ .../vcodec/common/mtk_vcodec_fw_priv.h        |   1 +
+ .../vcodec/common/mtk_vcodec_fw_vcp.c         |   6 +
+ .../platform/mediatek/vcodec/encoder/Makefile |   1 +
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |  36 +-
+ .../vcodec/encoder/mtk_vcodec_enc_drv.c       |  28 +
+ .../vcodec/encoder/mtk_vcodec_enc_drv.h       |  15 +-
+ .../vcodec/encoder/venc/venc_common_if.c      | 683 ++++++++++++++++++
+ .../vcodec/encoder/venc/venc_h264_if.c        |   8 +-
+ .../mediatek/vcodec/encoder/venc_drv_if.c     |   3 +-
+ .../mediatek/vcodec/encoder/venc_drv_if.h     |  11 +-
+ .../mediatek/vcodec/encoder/venc_ipi_msg.h    |  26 +
+ .../mediatek/vcodec/encoder/venc_vpu_if.c     |  47 +-
+ 15 files changed, 853 insertions(+), 52 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/vcodec/encoder/venc/venc_common_if.c
+
 -- 
 2.45.2
 
