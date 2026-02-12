@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D562EB48EC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Feb 2026 09:05:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31378EB48ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Feb 2026 09:05:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TZ3uOaMaLdzHzN8G3oXEtJI9llm/fFxrp6KV8BGLatU=; b=ngR3BZ+rEyRz9ssg3MLXMtBdYY
-	oaiD4yiNMxCGRsVWHGbfjVFmK0g5dPGdwT8v/ms3qRDGHgxnGGuO7KMMLRKhSQCNGoX106zLP14yt
-	ozSBgQLejNO3ikNAWdR4DfTlwtwBtBB9T5PqddNrSoY4fND9rxXyM7pN4udLixVgM2sTN2FL1Yxb9
-	uLSX1N9lICmTky531O5puuHDHM6JSaVZgK86wXLO0gUCVyYQrvApK4ssiAE0lqBqvSDmFnZpIJDNI
-	WY254vVp1Bt6OL15JCmmcWT5fXkH0wB8t7PVcOqDWVZUBgsBhvrlfgockhHhp1sNXLqGIi88vxTTY
-	eSycfQ3g==;
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+lJekS6s5Ztn15eyMG3EZaQrgzdtK7QJJeUMGyzfKT8=; b=XBSkYGEh9T2anhcUvPzA/ds57a
+	k21aD2tQooEiVCYYIfadXZKQ/Er7gXvXivQToMQySW7xaBclwMz4LdnxwnZ5pc8DPFKYN5gmr/NAB
+	sssf8BMCtujB5OHJelfJIOJ2g+hsIre4LY42X73j3Rl2EsYtidCN1DkacTMaSev1FxYUHqg7iVFxI
+	rbshJmV6se5tNFPT4Ui4SpEmjB5xCZigQ9056RytNN5Cn/91qwOUatKi9Y/GbNRt4ZyURzSX/vt5P
+	kIzKTkXLDVwZxOlC27SJ2KL7UFA2M7DFYww2CIwLO+FqcGtzJCyQwQx2vSJENjA/3I4QlA/wpKtfA
+	WsCHCkAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqSdh-00000001oFH-3gRz;
-	Thu, 12 Feb 2026 09:05:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1vqSdk-00000001oFk-0dLr;
+	Thu, 12 Feb 2026 09:05:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqSdf-00000001oE5-1O1M
+	id 1vqSdg-00000001oE9-1258
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Feb 2026 09:05:32 +0000
-X-UUID: f89a9a2207f111f1a16f0188aa809bee-20260212
+	Thu, 12 Feb 2026 09:05:33 +0000
+X-UUID: f881a13e07f111f1ad39f32c34db0b1c-20260212
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=TZ3uOaMaLdzHzN8G3oXEtJI9llm/fFxrp6KV8BGLatU=;
-	b=nKfE0bY+WLmRbRVfRFggJPfuuv+guqCTQQEH+uRSAL5/9sGJcEyIKcacJiFoh3bEJ+6TeJRb5e0Xxl4x/C46e47FLVmeeZq6tZfuTFe0rspNJ922i66uVeNFIklBXgYZjeJNyuEup+pxJJfzQrrIF++TLEvf5cNwXbGxdQSEgXA=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=+lJekS6s5Ztn15eyMG3EZaQrgzdtK7QJJeUMGyzfKT8=;
+	b=JDkjxnHhsDhmuD85aQbuUpayj3xa1KZFHzi9Ew0r5wQEvXgcrCeOikl3ZZ3EkOh7CJK3+HdFp97UTWaR/MjhmKaA2ZyU2rVl1NlF5+wdXoXpgbQqqq/X1qqIs5I9lDrjXPklaysEKMZZuBVoqTjt7EeVPFOIGsJt7xFyWASyJ+s=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:f9b39b88-413b-4faf-af1e-f37152494eee,IP:0,U
+X-CID-O-INFO: VERSION:1.3.11,REQID:43934b6f-28d8-4b12-8734-237cb9ba7241,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:89c9d04,CLOUDID:527be17a-8c8a-4fc4-88c0-3556e7711556,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:b7f89ef0-16bd-4243-b4ca-b08ca08ab1d8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: f89a9a2207f111f1a16f0188aa809bee-20260212
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+X-UUID: f881a13e07f111f1ad39f32c34db0b1c-20260212
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
 	(envelope-from <shayne.chen@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1200536542; Thu, 12 Feb 2026 02:05:26 -0700
+	with ESMTP id 2132241674; Thu, 12 Feb 2026 02:05:26 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 12 Feb 2026 17:05:24 +0800
+ 15.2.2562.29; Thu, 12 Feb 2026 17:05:23 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 12 Feb 2026 17:05:24 +0800
+ 15.2.2562.29 via Frontend Transport; Thu, 12 Feb 2026 17:05:23 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
 	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
 	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>, Shayne Chen
-	<shayne.chen@mediatek.com>
-Subject: [PATCH mt76 2/3] wifi: mt76: mt7996: add variant for MT7992 chipsets
-Date: Thu, 12 Feb 2026 17:03:09 +0800
-Message-ID: <20260212090310.3335392-2-shayne.chen@mediatek.com>
+	linux-mediatek <linux-mediatek@lists.infradead.org>, StanleyYP Wang
+	<StanleyYP.Wang@mediatek.com>, Elwin Huang <s09289728096@gmail.com>, Shayne
+ Chen <shayne.chen@mediatek.com>
+Subject: [PATCH mt76 1/3] wifi: mt76: add external EEPROM support for mt799x chipsets
+Date: Thu, 12 Feb 2026 17:03:08 +0800
+Message-ID: <20260212090310.3335392-1-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260212090310.3335392-1-shayne.chen@mediatek.com>
-References: <20260212090310.3335392-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260212_010531_384777_4003F467 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20260212_010532_296226_072C96AC 
+X-CRM114-Status: GOOD (  21.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,99 +88,411 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce VAR_TYPE_24 for the MT7992 chipsets, a dual-band variant
-supporting 3T3R/2SS on the 2 GHz band and 5T5R/4SS on the 5GHz band.
+From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 
+For the MT7992 and MT7990 chipsets, efuse mode is not supported because
+there is insufficient space in the efuse to store the calibration data.
+Therefore, an additional on-chip EEPROM is added to address this
+limitation.
+
+Co-developed-by: Elwin Huang <s09289728096@gmail.com>
+Signed-off-by: Elwin Huang <s09289728096@gmail.com>
+Co-developed-by: Shayne Chen <shayne.chen@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c | 5 ++++-
- drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 3 +++
- drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h | 7 +++++++
- 4 files changed, 15 insertions(+), 2 deletions(-)
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  1 +
+ .../wireless/mediatek/mt76/mt7996/eeprom.c    | 59 +++++++------
+ .../net/wireless/mediatek/mt76/mt7996/init.c  |  3 +-
+ .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 83 ++++++++++++-------
+ .../net/wireless/mediatek/mt76/mt7996/mcu.h   | 43 +++++++++-
+ .../wireless/mediatek/mt76/mt7996/mt7996.h    | 20 ++++-
+ 6 files changed, 148 insertions(+), 61 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index f44977f9093d..e91966cd5efe 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -1308,6 +1308,7 @@ enum {
+ 	MCU_UNI_CMD_PER_STA_INFO = 0x6d,
+ 	MCU_UNI_CMD_ALL_STA_INFO = 0x6e,
+ 	MCU_UNI_CMD_ASSERT_DUMP = 0x6f,
++	MCU_UNI_CMD_EXT_EEPROM_CTRL = 0x74,
+ 	MCU_UNI_CMD_RADIO_STATUS = 0x80,
+ 	MCU_UNI_CMD_SDO = 0x88,
+ };
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
-index 00c72be8498f..ac05f7d75d63 100644
+index 8f60772913b4..00c72be8498f 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
-@@ -33,6 +33,8 @@ static char *mt7996_eeprom_name(struct mt7996_dev *dev)
- 			if (dev->var.fem == MT7996_FEM_INT)
- 				return MT7992_EEPROM_DEFAULT_23_INT;
- 			return MT7992_EEPROM_DEFAULT_23;
-+		case MT7992_VAR_TYPE_24:
-+			return MT7992_EEPROM_DEFAULT_24;
- 		case MT7992_VAR_TYPE_44:
- 		default:
- 			if (dev->var.fem == MT7996_FEM_INT)
-@@ -392,7 +394,8 @@ bool mt7996_eeprom_has_background_radar(struct mt7996_dev *dev)
- 			return false;
- 		break;
- 	case MT7992_DEVICE_ID:
--		if (dev->var.type == MT7992_VAR_TYPE_23)
-+		if (dev->var.type == MT7992_VAR_TYPE_23 ||
-+		    dev->var.type == MT7992_VAR_TYPE_24)
- 			return false;
- 		break;
- 	case MT7990_DEVICE_ID: {
+@@ -153,7 +153,7 @@ mt7996_eeprom_check_or_use_default(struct mt7996_dev *dev, bool use_default)
+ 
+ 	dev_warn(dev->mt76.dev, "eeprom load fail, use default bin\n");
+ 	memcpy(eeprom, fw->data, MT7996_EEPROM_SIZE);
+-	dev->flash_mode = true;
++	dev->eeprom_mode = EEPROM_MODE_DEFAULT_BIN;
+ 
+ out:
+ 	release_firmware(fw);
+@@ -163,26 +163,31 @@ mt7996_eeprom_check_or_use_default(struct mt7996_dev *dev, bool use_default)
+ 
+ static int mt7996_eeprom_load(struct mt7996_dev *dev)
+ {
++	u32 eeprom_blk_size, block_num;
+ 	bool use_default = false;
+-	int ret;
++	int ret, i;
+ 
+ 	ret = mt76_eeprom_init(&dev->mt76, MT7996_EEPROM_SIZE);
+ 	if (ret < 0)
+ 		return ret;
+ 
+ 	if (ret && !mt7996_check_eeprom(dev)) {
+-		dev->flash_mode = true;
++		dev->eeprom_mode = EEPROM_MODE_FLASH;
+ 		goto out;
+ 	}
+ 
+-	if (!dev->flash_mode) {
+-		u32 eeprom_blk_size = MT7996_EEPROM_BLOCK_SIZE;
+-		u32 block_num = DIV_ROUND_UP(MT7996_EEPROM_SIZE, eeprom_blk_size);
++	memset(dev->mt76.eeprom.data, 0, MT7996_EEPROM_SIZE);
++	if (mt7996_has_ext_eeprom(dev)) {
++		/* external eeprom mode */
++		dev->eeprom_mode = EEPROM_MODE_EXT;
++		eeprom_blk_size = MT7996_EXT_EEPROM_BLOCK_SIZE;
++	} else {
+ 		u8 free_block_num;
+-		int i;
+ 
+-		memset(dev->mt76.eeprom.data, 0, MT7996_EEPROM_SIZE);
+-		ret = mt7996_mcu_get_eeprom_free_block(dev, &free_block_num);
++		/* efuse mode */
++		dev->eeprom_mode = EEPROM_MODE_EFUSE;
++		eeprom_blk_size = MT7996_EEPROM_BLOCK_SIZE;
++		ret = mt7996_mcu_get_efuse_free_block(dev, &free_block_num);
+ 		if (ret < 0)
+ 			return ret;
+ 
+@@ -191,27 +196,29 @@ static int mt7996_eeprom_load(struct mt7996_dev *dev)
+ 			use_default = true;
+ 			goto out;
+ 		}
++	}
++
++	/* check if eeprom data from fw is valid */
++	if (mt7996_mcu_get_eeprom(dev, 0, NULL, eeprom_blk_size,
++				  dev->eeprom_mode) ||
++	    mt7996_check_eeprom(dev)) {
++		use_default = true;
++		goto out;
++	}
++
++	/* read eeprom data from fw */
++	block_num = DIV_ROUND_UP(MT7996_EEPROM_SIZE, eeprom_blk_size);
++	for (i = 1; i < block_num; i++) {
++		u32 len = eeprom_blk_size;
+ 
+-		/* check if eeprom data from fw is valid */
+-		if (mt7996_mcu_get_eeprom(dev, 0, NULL, 0) ||
+-		    mt7996_check_eeprom(dev)) {
++		if (i == block_num - 1)
++			len = MT7996_EEPROM_SIZE % eeprom_blk_size;
++		ret = mt7996_mcu_get_eeprom(dev, i * eeprom_blk_size,
++					    NULL, len, dev->eeprom_mode);
++		if (ret && ret != -EINVAL) {
+ 			use_default = true;
+ 			goto out;
+ 		}
+-
+-		/* read eeprom data from fw */
+-		for (i = 1; i < block_num; i++) {
+-			u32 len = eeprom_blk_size;
+-
+-			if (i == block_num - 1)
+-				len = MT7996_EEPROM_SIZE % eeprom_blk_size;
+-			ret = mt7996_mcu_get_eeprom(dev, i * eeprom_blk_size,
+-						    NULL, len);
+-			if (ret && ret != -EINVAL) {
+-				use_default = true;
+-				goto out;
+-			}
+-		}
+ 	}
+ 
+ out:
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index 1fab04909831..3b4f808b968c 100644
+index 2937e89ad0c9..1fab04909831 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -1173,7 +1173,7 @@ static int mt7996_variant_type_init(struct mt7996_dev *dev)
- 		else if (u32_get_bits(val, MT_PAD_GPIO_ADIE_COMB_7992))
- 			var_type = MT7992_VAR_TYPE_44;
- 		else
--			return -EINVAL;
-+			var_type = MT7992_VAR_TYPE_24;
- 		break;
- 	case MT7990_DEVICE_ID:
- 		var_type = MT7990_VAR_TYPE_23;
+@@ -1207,7 +1207,8 @@ static int mt7996_variant_fem_init(struct mt7996_dev *dev)
+ 	if (ret)
+ 		return ret;
+ 
+-	ret = mt7996_mcu_get_eeprom(dev, MT7976C_EFUSE_OFFSET, buf, sizeof(buf));
++	ret = mt7996_mcu_get_eeprom(dev, MT7976C_EFUSE_OFFSET, buf, sizeof(buf),
++				    EEPROM_MODE_EFUSE);
+ 	if (ret && ret != -EINVAL)
+ 		return ret;
+ 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 46099486ec09..98db3bcf76f0 100644
+index 9ccf9f97c984..46099486ec09 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -18,6 +18,9 @@
- 		case MT7992_VAR_TYPE_23:			\
- 			_fw = MT7992_##name##_23;		\
- 			break;					\
-+		case MT7992_VAR_TYPE_24:			\
-+			_fw = MT7992_##name##_24;		\
-+			break;					\
- 		default:					\
- 			_fw = MT7992_##name;			\
- 		}						\
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index ea1f656a9334..d36fb5396141 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -64,6 +64,11 @@
- #define MT7992_FIRMWARE_DSP_23		"mediatek/mt7996/mt7992_dsp_23.bin"
- #define MT7992_ROM_PATCH_23		"mediatek/mt7996/mt7992_rom_patch_23.bin"
+@@ -3950,7 +3950,7 @@ static int mt7996_mcu_set_eeprom_flash(struct mt7996_dev *dev)
+ #define MAX_PAGE_IDX_MASK	GENMASK(7, 5)
+ #define PAGE_IDX_MASK		GENMASK(4, 2)
+ #define PER_PAGE_SIZE		0x400
+-	struct mt7996_mcu_eeprom req = {
++	struct mt7996_mcu_eeprom_update req = {
+ 		.tag = cpu_to_le16(UNI_EFUSE_BUFFER_MODE),
+ 		.buffer_mode = EE_MODE_BUFFER
+ 	};
+@@ -3992,57 +3992,80 @@ static int mt7996_mcu_set_eeprom_flash(struct mt7996_dev *dev)
  
-+#define MT7992_FIRMWARE_WA_24		"mediatek/mt7996/mt7992_wa_24.bin"
-+#define MT7992_FIRMWARE_WM_24		"mediatek/mt7996/mt7992_wm_24.bin"
-+#define MT7992_FIRMWARE_DSP_24		"mediatek/mt7996/mt7992_dsp_24.bin"
-+#define MT7992_ROM_PATCH_24		"mediatek/mt7996/mt7992_rom_patch_24.bin"
+ int mt7996_mcu_set_eeprom(struct mt7996_dev *dev)
+ {
+-	struct mt7996_mcu_eeprom req = {
++	struct mt7996_mcu_eeprom_update req = {
+ 		.tag = cpu_to_le16(UNI_EFUSE_BUFFER_MODE),
+ 		.len = cpu_to_le16(sizeof(req) - 4),
+ 		.buffer_mode = EE_MODE_EFUSE,
+ 		.format = EE_FORMAT_WHOLE
+ 	};
+ 
+-	if (dev->flash_mode)
++	if (dev->eeprom_mode != EEPROM_MODE_EFUSE)
+ 		return mt7996_mcu_set_eeprom_flash(dev);
+ 
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_WM_UNI_CMD(EFUSE_CTRL),
+ 				 &req, sizeof(req), true);
+ }
+ 
+-int mt7996_mcu_get_eeprom(struct mt7996_dev *dev, u32 offset, u8 *buf, u32 buf_len)
++int mt7996_mcu_get_eeprom(struct mt7996_dev *dev, u32 offset, u8 *buf, u32 buf_len,
++			  enum mt7996_eeprom_mode mode)
+ {
+-	struct {
+-		u8 _rsv[4];
+-
+-		__le16 tag;
+-		__le16 len;
+-		__le32 addr;
+-		__le32 valid;
+-		u8 data[16];
+-	} __packed req = {
+-		.tag = cpu_to_le16(UNI_EFUSE_ACCESS),
+-		.len = cpu_to_le16(sizeof(req) - 4),
+-		.addr = cpu_to_le32(round_down(offset,
+-				    MT7996_EEPROM_BLOCK_SIZE)),
++	struct mt7996_mcu_eeprom_access req = {
++		.info.len = cpu_to_le16(sizeof(req) - 4),
+ 	};
++	struct mt7996_mcu_eeprom_access_event *event;
+ 	struct sk_buff *skb;
+-	bool valid;
+-	int ret;
++	int ret, cmd;
++	u32 addr;
 +
- #define MT7990_FIRMWARE_WA		""
- #define MT7990_FIRMWARE_WM		"mediatek/mt7996/mt7990_wm.bin"
- #define MT7990_FIRMWARE_DSP		""
-@@ -79,6 +84,7 @@
- #define MT7992_EEPROM_DEFAULT_MIX	"mediatek/mt7996/mt7992_eeprom_2i5e.bin"
- #define MT7992_EEPROM_DEFAULT_23	"mediatek/mt7996/mt7992_eeprom_23.bin"
- #define MT7992_EEPROM_DEFAULT_23_INT	"mediatek/mt7996/mt7992_eeprom_23_2i5i.bin"
-+#define MT7992_EEPROM_DEFAULT_24	"mediatek/mt7996/mt7992_eeprom_24_2i5i.bin"
++	switch (mode) {
++	case EEPROM_MODE_EFUSE:
++		addr = round_down(offset, MT7996_EEPROM_BLOCK_SIZE);
++		cmd = MCU_WM_UNI_CMD_QUERY(EFUSE_CTRL);
++		req.info.tag = cpu_to_le16(UNI_EFUSE_ACCESS);
++		break;
++	case EEPROM_MODE_EXT:
++		addr = round_down(offset, MT7996_EXT_EEPROM_BLOCK_SIZE);
++		cmd = MCU_WM_UNI_CMD_QUERY(EXT_EEPROM_CTRL);
++		req.info.tag = cpu_to_le16(UNI_EXT_EEPROM_ACCESS);
++		req.eeprom.ext_eeprom.data_len = cpu_to_le32(buf_len);
++		break;
++	default:
++		return -EINVAL;
++	}
  
- #define MT7990_EEPROM_DEFAULT		"mediatek/mt7996/mt7990_eeprom.bin"
- #define MT7990_EEPROM_DEFAULT_INT	"mediatek/mt7996/mt7990_eeprom_2i5i.bin"
-@@ -158,6 +164,7 @@ enum mt7996_var_type {
- enum mt7992_var_type {
- 	MT7992_VAR_TYPE_44,
- 	MT7992_VAR_TYPE_23,
-+	MT7992_VAR_TYPE_24,
+-	ret = mt76_mcu_send_and_get_msg(&dev->mt76,
+-					MCU_WM_UNI_CMD_QUERY(EFUSE_CTRL),
+-					&req, sizeof(req), true, &skb);
++	req.info.addr = cpu_to_le32(addr);
++	ret = mt76_mcu_send_and_get_msg(&dev->mt76, cmd, &req, sizeof(req),
++					true, &skb);
+ 	if (ret)
+ 		return ret;
+ 
+-	valid = le32_to_cpu(*(__le32 *)(skb->data + 16));
+-	if (valid) {
+-		u32 addr = le32_to_cpu(*(__le32 *)(skb->data + 12));
++	event = (struct mt7996_mcu_eeprom_access_event *)skb->data;
++	if (event->valid) {
++		u32 ret_len = le32_to_cpu(event->eeprom.ext_eeprom.data_len);
++
++		addr = le32_to_cpu(event->addr);
+ 
+ 		if (!buf)
+ 			buf = (u8 *)dev->mt76.eeprom.data + addr;
+-		if (!buf_len || buf_len > MT7996_EEPROM_BLOCK_SIZE)
+-			buf_len = MT7996_EEPROM_BLOCK_SIZE;
+ 
+-		skb_pull(skb, 48);
+-		memcpy(buf, skb->data, buf_len);
++		switch (mode) {
++		case EEPROM_MODE_EFUSE:
++			if (!buf_len || buf_len > MT7996_EEPROM_BLOCK_SIZE)
++				buf_len = MT7996_EEPROM_BLOCK_SIZE;
++
++			memcpy(buf, event->eeprom.efuse, buf_len);
++			break;
++		case EEPROM_MODE_EXT:
++			if (!buf_len || buf_len > MT7996_EXT_EEPROM_BLOCK_SIZE)
++				buf_len = MT7996_EXT_EEPROM_BLOCK_SIZE;
++
++			memcpy(buf, event->eeprom.ext_eeprom.data,
++			       ret_len < buf_len ? ret_len : buf_len);
++			break;
++		default:
++			ret = -EINVAL;
++			break;
++		}
+ 	} else {
+ 		ret = -EINVAL;
+ 	}
+@@ -4052,7 +4075,7 @@ int mt7996_mcu_get_eeprom(struct mt7996_dev *dev, u32 offset, u8 *buf, u32 buf_l
+ 	return ret;
+ }
+ 
+-int mt7996_mcu_get_eeprom_free_block(struct mt7996_dev *dev, u8 *block_num)
++int mt7996_mcu_get_efuse_free_block(struct mt7996_dev *dev, u8 *block_num)
+ {
+ 	struct {
+ 		u8 _rsv[4];
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+index d70540982983..39df13679779 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.h
+@@ -145,7 +145,7 @@ struct mt7996_mcu_background_chain_ctrl {
+ 	u8 rsv[2];
+ } __packed;
+ 
+-struct mt7996_mcu_eeprom {
++struct mt7996_mcu_eeprom_update {
+ 	u8 _rsv[4];
+ 
+ 	__le16 tag;
+@@ -155,6 +155,43 @@ struct mt7996_mcu_eeprom {
+ 	__le16 buf_len;
+ } __packed;
+ 
++union eeprom_data {
++	struct {
++		__le32 data_len;
++		DECLARE_FLEX_ARRAY(u8, data);
++	} ext_eeprom;
++	DECLARE_FLEX_ARRAY(u8, efuse);
++} __packed;
++
++struct mt7996_mcu_eeprom_info {
++	u8 _rsv[4];
++
++	__le16 tag;
++	__le16 len;
++	__le32 addr;
++	__le32 valid;
++} __packed;
++
++struct mt7996_mcu_eeprom_access {
++	struct mt7996_mcu_eeprom_info info;
++	union eeprom_data eeprom;
++} __packed;
++
++struct mt7996_mcu_eeprom_access_event {
++	u8 _rsv[4];
++
++	__le16 tag;
++	__le16 len;
++	__le32 version;
++	__le32 addr;
++	__le32 valid;
++	__le32 size;
++	__le32 magic_no;
++	__le32 type;
++	__le32 rsv[4];
++	union eeprom_data eeprom;
++} __packed;
++
+ struct mt7996_mcu_phy_rx_info {
+ 	u8 category;
+ 	u8 rate;
+@@ -875,6 +912,10 @@ enum {
+ 	UNI_EFUSE_BUFFER_RD,
  };
  
- enum mt7990_var_type {
++enum {
++	UNI_EXT_EEPROM_ACCESS = 1,
++};
++
+ enum {
+ 	UNI_VOW_DRR_CTRL,
+ 	UNI_VOW_RX_AT_AIRTIME_EN = 0x0b,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+index 3ff730e36fa6..ea1f656a9334 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -85,6 +85,7 @@
+ 
+ #define MT7996_EEPROM_SIZE		7680
+ #define MT7996_EEPROM_BLOCK_SIZE	16
++#define MT7996_EXT_EEPROM_BLOCK_SIZE	1024
+ #define MT7996_TOKEN_SIZE		16384
+ #define MT7996_HW_TOKEN_SIZE		8192
+ 
+@@ -169,6 +170,13 @@ enum mt7996_fem_type {
+ 	MT7996_FEM_MIX,
+ };
+ 
++enum mt7996_eeprom_mode {
++	EEPROM_MODE_DEFAULT_BIN,
++	EEPROM_MODE_EFUSE,
++	EEPROM_MODE_FLASH,
++	EEPROM_MODE_EXT,
++};
++
+ enum mt7996_txq_id {
+ 	MT7996_TXQ_FWDL = 16,
+ 	MT7996_TXQ_MCU_WM,
+@@ -441,7 +449,7 @@ struct mt7996_dev {
+ 
+ 	u32 hw_pattern;
+ 
+-	bool flash_mode:1;
++	u8 eeprom_mode;
+ 	bool has_eht:1;
+ 
+ 	struct {
+@@ -717,8 +725,9 @@ int mt7996_mcu_set_fixed_rate_ctrl(struct mt7996_dev *dev,
+ int mt7996_mcu_set_fixed_field(struct mt7996_dev *dev, struct mt7996_sta *msta,
+ 			       void *data, u8 link_id, u32 field);
+ int mt7996_mcu_set_eeprom(struct mt7996_dev *dev);
+-int mt7996_mcu_get_eeprom(struct mt7996_dev *dev, u32 offset, u8 *buf, u32 buf_len);
+-int mt7996_mcu_get_eeprom_free_block(struct mt7996_dev *dev, u8 *block_num);
++int mt7996_mcu_get_eeprom(struct mt7996_dev *dev, u32 offset, u8 *buf, u32 buf_len,
++			  enum mt7996_eeprom_mode mode);
++int mt7996_mcu_get_efuse_free_block(struct mt7996_dev *dev, u8 *block_num);
+ int mt7996_mcu_get_chip_config(struct mt7996_dev *dev, u32 *cap);
+ int mt7996_mcu_set_ser(struct mt7996_dev *dev, u8 action, u8 set, u8 band);
+ int mt7996_mcu_set_txbf(struct mt7996_dev *dev, u8 action);
+@@ -816,6 +825,11 @@ static inline bool mt7996_has_wa(struct mt7996_dev *dev)
+ 	return !is_mt7990(&dev->mt76);
+ }
+ 
++static inline bool mt7996_has_ext_eeprom(struct mt7996_dev *dev)
++{
++	return !is_mt7996(&dev->mt76);
++}
++
+ void mt7996_mac_init(struct mt7996_dev *dev);
+ u32 mt7996_mac_wtbl_lmac_addr(struct mt7996_dev *dev, u16 wcid, u8 dw);
+ bool mt7996_mac_wtbl_update(struct mt7996_dev *dev, int idx, u32 mask);
 -- 
 2.51.0
 
