@@ -4,106 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0011AEDF052
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Feb 2026 08:01:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D562EB48EC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Feb 2026 09:05:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/bjVwokrZxKsldJsperXEzSS9XKywY388N/cfuXNnbI=; b=DErNriSC3dEnzXRFbTZt7lq5lK
-	Wi5yvf9oUWVBSHCaS/o2Xfr+s3B1QPBMGG/ZOEFfmt7uuOSwvqbB/lyV6VtMXH/JsNgtWfm4dfj24
-	lNUpk8Fzm4iJqe2xAVO3V0ED0Yzy5mk6rnnb3y4elb7Tn/33jjAppWbL/+veH6AtybakxvjOe7s9V
-	M9XcojNwUpw9ourjKCXChGaNPe6uqFZYJZZJ74rds55amG5N8Rvk2RsOq4TgDWUm6z+1iwLKBFuxY
-	cc32+2gncjbHk8eZxIykjU9HJPlx48BQNEre5hUZkPKbO6b5I9Z7IliFqo9yOImA4k1zZ50XbbkUO
-	u61eISyQ==;
+	bh=TZ3uOaMaLdzHzN8G3oXEtJI9llm/fFxrp6KV8BGLatU=; b=ngR3BZ+rEyRz9ssg3MLXMtBdYY
+	oaiD4yiNMxCGRsVWHGbfjVFmK0g5dPGdwT8v/ms3qRDGHgxnGGuO7KMMLRKhSQCNGoX106zLP14yt
+	ozSBgQLejNO3ikNAWdR4DfTlwtwBtBB9T5PqddNrSoY4fND9rxXyM7pN4udLixVgM2sTN2FL1Yxb9
+	uLSX1N9lICmTky531O5puuHDHM6JSaVZgK86wXLO0gUCVyYQrvApK4ssiAE0lqBqvSDmFnZpIJDNI
+	WY254vVp1Bt6OL15JCmmcWT5fXkH0wB8t7PVcOqDWVZUBgsBhvrlfgockhHhp1sNXLqGIi88vxTTY
+	eSycfQ3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqRdn-00000001jkj-3sO6;
-	Thu, 12 Feb 2026 08:01:35 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1vqSdh-00000001oFH-3gRz;
+	Thu, 12 Feb 2026 09:05:33 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqRdg-00000001jja-3Lac
+	id 1vqSdf-00000001oE5-1O1M
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Feb 2026 08:01:35 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-b8f7a30515aso183492666b.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 12 Feb 2026 00:01:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1770883286; cv=none;
-        d=google.com; s=arc-20240605;
-        b=EguRUn1dHmUPBmOn7/gZXtRQunMs44YUrwu25kNGAQQIx4KN6H3hRQ6AkQPglh4/zq
-         eck2Fvbvo3/H3O8+oKvAVSEy4etvugGcA1yiAZfdrNEHgjSL850xeyYGBhO7c9O8BXEm
-         cL2sia2Ha3fwlHzI6YwBf2SwBClMqynTQKrBUfixq0cZRRYGuHJ0phZILClu4aattnaK
-         vve8NqSx2vLy9W2s5NQYtYwGRR86NlndNIQZB+P4hxkbVyET7lqVr7i3KNOdyKuHyFGs
-         KahBphWzdbz3/onglaKuxlgTerJrtV2ztGWHMNAwY20qoUHKUPfWYA4nImWw9rUBQlxm
-         B48A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=/bjVwokrZxKsldJsperXEzSS9XKywY388N/cfuXNnbI=;
-        fh=JDEKlSTW8kodWggP6pvNYbntYr20JDDjQJXG2z7XOYc=;
-        b=KSTMeST9btgbnjKzdP1mj8uLg/KAriZCNYVMygaAB4AjongOnCAbGL/qOA8YeqzmT2
-         ViNyDTm2a4k383KmmL2QkY00mWzmmWxVQLgP/Z3M14aGncvVmparukul/q2+wW7nzwd6
-         UjXnTUUMqO2gBJQpM4TpsVtbTDEzKq+2WzC8ANNHmPAlLl8Nrk6oso56Cyu6WO4w4HF/
-         rRMTcw4oOi9Lu9fd3+lKOeg8pY9T8OVzhmyXbmzGTZKe/p4UcMihsqT+OjDne2+eJWlR
-         aVPcgsAnb0H7ijDqDDC6X5owZpgEsiQ9unqfimtjFLxMetfuyyRJbWmQr3LR23AWnfUi
-         1ciA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1770883286; x=1771488086; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=/bjVwokrZxKsldJsperXEzSS9XKywY388N/cfuXNnbI=;
-        b=nqUjCAfwQ2u72aZw/w/FZ8+MRXHJKgAzrtBS2RZzctaEMzCZ1wCh6dSP/P3ZESbzgm
-         Q+xGLyB5THsEcNcl4KekRhXJfM3EouiN/w7dB1okO5/v7X9WvlXEsfaXyJdKQC2To1HJ
-         4kREBPdD+Vm1AHMibeJtB0BbY3RDfny3U0TTGH1C2YK+kRX6KmzoeYzftcDVU9P5wqBd
-         sJVdea9YwjvvOjzJchFHPeytwJXiJvDrL1jl08R4zgNteGeFxvU4tKn52ycgCE/Fsnm3
-         6JxMAAiVzRofu0aSFyPkZl8bnGxFkCtABoEvMgfjJoM0oiwVOxr+0PuIUCQOGeE3lBU8
-         VTCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1770883286; x=1771488086;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/bjVwokrZxKsldJsperXEzSS9XKywY388N/cfuXNnbI=;
-        b=sOqKwFQH+Wss/1MTyiSUTXxx4HZJRSHhK3kRyWeVQgFsLTkyELt5gb2s/vqDz5UqRZ
-         u4XwWdIKkfVjCTPEKma4OySX7+0kHes2sP8dflQVaiNkilrUOxkIPW6zK+eocv+fMnCp
-         FNoGb1jB7UDGLS3UNsc2Xfri6Ux+2zYRq9sT916B2TrJuEVItW0zUZ7ouyiqZ41j7s1x
-         vNlgbRt9rBvZQaPBK2F+fA7hzU/Dbl9UyP5jNuEwLxxit/CxLpY1vdSDtz2uwmengog8
-         1glIH9j1DzasS37Io1ykYOspSFHVQS7xmclemXfmmTpz1OKG3G1KCGahg9U61Qpvt/T8
-         dp0Q==
-X-Gm-Message-State: AOJu0YzAz+85phNdk8jGZ6ELJK+U4u0UJcfQf/8w/qBz9GDBUf0JXVZc
-	v9RCsyeY1rWaZHdCCyM+ThLr6pBLNTbG2ijUztykN4LUtaJ5Uy1JNvTu5FoIsyaXL52j9BReNM6
-	QeDk7pT+kMhCz75J/unSiw9YbC5xxWayBg02ppWwzDg==
-X-Gm-Gg: AZuq6aKs4ikR/RuopM0ql8lmAdfe1J4bXpogOR4gZf7zSolAR/P/41KpNuEaLq7pKc6
-	Jxd/VYH8qSgOi6ldFLpQe34QVbjPQwDFcRnn+jUZbRU8SYRG5HUCN+8ZSPoovqjOfEdlkVDSCCJ
-	stYlZcoI8kH+4c6z9nEFjzfW1WoSI585DQnLkXyuEZFaQZUSRmLwoTKhlGaI4IvctC8mcYWP7bb
-	AJIMRkWEPE/s8lX5/Fy8duMrZ3nHSFQBqFUjQfVreISiu2vK0RX1FyWfU1V8ZO8SZ0er6T1ET9U
-	2oHdeaYSbrSNdPPt
-X-Received: by 2002:a17:907:5c6:b0:b87:728a:81ac with SMTP id
- a640c23a62f3a-b8f8f229912mr118971966b.12.1770883286087; Thu, 12 Feb 2026
- 00:01:26 -0800 (PST)
+	Thu, 12 Feb 2026 09:05:32 +0000
+X-UUID: f89a9a2207f111f1a16f0188aa809bee-20260212
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=TZ3uOaMaLdzHzN8G3oXEtJI9llm/fFxrp6KV8BGLatU=;
+	b=nKfE0bY+WLmRbRVfRFggJPfuuv+guqCTQQEH+uRSAL5/9sGJcEyIKcacJiFoh3bEJ+6TeJRb5e0Xxl4x/C46e47FLVmeeZq6tZfuTFe0rspNJ922i66uVeNFIklBXgYZjeJNyuEup+pxJJfzQrrIF++TLEvf5cNwXbGxdQSEgXA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:f9b39b88-413b-4faf-af1e-f37152494eee,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:89c9d04,CLOUDID:527be17a-8c8a-4fc4-88c0-3556e7711556,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: f89a9a2207f111f1a16f0188aa809bee-20260212
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1200536542; Thu, 12 Feb 2026 02:05:26 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 12 Feb 2026 17:05:24 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 12 Feb 2026 17:05:24 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+	<lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+	<evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Shayne Chen
+	<shayne.chen@mediatek.com>
+Subject: [PATCH mt76 2/3] wifi: mt76: mt7996: add variant for MT7992 chipsets
+Date: Thu, 12 Feb 2026 17:03:09 +0800
+Message-ID: <20260212090310.3335392-2-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260212090310.3335392-1-shayne.chen@mediatek.com>
+References: <20260212090310.3335392-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-References: <cover.1770836189.git.l.scorcia@gmail.com> <72dcec7fe8bfd8ee7e8ef58708690268f3c07d42.1770836190.git.l.scorcia@gmail.com>
-In-Reply-To: <72dcec7fe8bfd8ee7e8ef58708690268f3c07d42.1770836190.git.l.scorcia@gmail.com>
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Date: Thu, 12 Feb 2026 09:01:14 +0100
-X-Gm-Features: AZwV_Qh-kArDFbixo6RuZvbk22282A_FJyXPAiI4Zij2df0ii1VxnMVAlbiH_j4
-Message-ID: <CAORyz2LRkVcOss3vFS3Y3FtZfn_s-Um8G9JLgedXEeySorr0=w@mail.gmail.com>
-Subject: Re: [PATCH 6/7] arm64: dts: mt8167: Add the mmsys reset bit to reset dsi
-To: linux-mediatek@lists.infradead.org
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, linux-watchdog@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260212_000132_404385_21C65EB1 
-X-CRM114-Status: GOOD (  15.39  )
+X-CRM114-CacheID: sfid-20260212_010531_384777_4003F467 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,57 +89,100 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I apologize for the mistake, I did not notice that the dsi node is not
-present upstream yet, so this specific patch won't apply. Any comments
-are appreciated though!
-I will send a separate patch to add the display nodes to the dts and
-the required compatibles to the bindings.
+Introduce VAR_TYPE_24 for the MT7992 chipsets, a dual-band variant
+supporting 3T3R/2SS on the 2 GHz band and 5T5R/4SS on the 5GHz band.
 
-Il giorno mer 11 feb 2026 alle ore 20:06 Luca Leonardo Scorcia
-<l.scorcia@gmail.com> ha scritto:
->
-> DSI hardware reset is needed to prevent different settings between
-> the bootloader and the kernel.
->
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8167.dtsi | 3 +++
->  1 file changed, 3 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8167.dtsi b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-> index caf51f203dd3..ee2792d53b2c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-> @@ -8,6 +8,7 @@
->  #include <dt-bindings/clock/mt8167-clk.h>
->  #include <dt-bindings/memory/mt8167-larb-port.h>
->  #include <dt-bindings/power/mt8167-power.h>
-> +#include <dt-bindings/reset/mt8167-resets.h>
->
->  #include "mt8167-pinfunc.h"
->
-> @@ -189,6 +190,7 @@ dsi: dsi@14012000 {
->                                  <&mmsys CLK_MM_DSI_DIGITAL>,
->                                  <&mipi_tx>;
->                         clock-names = "engine", "digital", "hs";
-> +                       resets = <&mmsys MT8167_MMSYS_SW0_RST_B_DISP_DSI0>;
->                         phys = <&mipi_tx>;
->                         phy-names = "dphy";
->                         status = "disabled";
-> @@ -295,6 +297,7 @@ mmsys: syscon@14000000 {
->                         compatible = "mediatek,mt8167-mmsys", "syscon";
->                         reg = <0 0x14000000 0 0x1000>;
->                         #clock-cells = <1>;
-> +                       #reset-cells = <1>;
->                 };
->
->                 smi_common: smi@14017000 {
-> --
-> 2.43.0
->
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c | 5 ++++-
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 3 +++
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h | 7 +++++++
+ 4 files changed, 15 insertions(+), 2 deletions(-)
 
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
+index 00c72be8498f..ac05f7d75d63 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/eeprom.c
+@@ -33,6 +33,8 @@ static char *mt7996_eeprom_name(struct mt7996_dev *dev)
+ 			if (dev->var.fem == MT7996_FEM_INT)
+ 				return MT7992_EEPROM_DEFAULT_23_INT;
+ 			return MT7992_EEPROM_DEFAULT_23;
++		case MT7992_VAR_TYPE_24:
++			return MT7992_EEPROM_DEFAULT_24;
+ 		case MT7992_VAR_TYPE_44:
+ 		default:
+ 			if (dev->var.fem == MT7996_FEM_INT)
+@@ -392,7 +394,8 @@ bool mt7996_eeprom_has_background_radar(struct mt7996_dev *dev)
+ 			return false;
+ 		break;
+ 	case MT7992_DEVICE_ID:
+-		if (dev->var.type == MT7992_VAR_TYPE_23)
++		if (dev->var.type == MT7992_VAR_TYPE_23 ||
++		    dev->var.type == MT7992_VAR_TYPE_24)
+ 			return false;
+ 		break;
+ 	case MT7990_DEVICE_ID: {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index 1fab04909831..3b4f808b968c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -1173,7 +1173,7 @@ static int mt7996_variant_type_init(struct mt7996_dev *dev)
+ 		else if (u32_get_bits(val, MT_PAD_GPIO_ADIE_COMB_7992))
+ 			var_type = MT7992_VAR_TYPE_44;
+ 		else
+-			return -EINVAL;
++			var_type = MT7992_VAR_TYPE_24;
+ 		break;
+ 	case MT7990_DEVICE_ID:
+ 		var_type = MT7990_VAR_TYPE_23;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+index 46099486ec09..98db3bcf76f0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
+@@ -18,6 +18,9 @@
+ 		case MT7992_VAR_TYPE_23:			\
+ 			_fw = MT7992_##name##_23;		\
+ 			break;					\
++		case MT7992_VAR_TYPE_24:			\
++			_fw = MT7992_##name##_24;		\
++			break;					\
+ 		default:					\
+ 			_fw = MT7992_##name;			\
+ 		}						\
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+index ea1f656a9334..d36fb5396141 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -64,6 +64,11 @@
+ #define MT7992_FIRMWARE_DSP_23		"mediatek/mt7996/mt7992_dsp_23.bin"
+ #define MT7992_ROM_PATCH_23		"mediatek/mt7996/mt7992_rom_patch_23.bin"
+ 
++#define MT7992_FIRMWARE_WA_24		"mediatek/mt7996/mt7992_wa_24.bin"
++#define MT7992_FIRMWARE_WM_24		"mediatek/mt7996/mt7992_wm_24.bin"
++#define MT7992_FIRMWARE_DSP_24		"mediatek/mt7996/mt7992_dsp_24.bin"
++#define MT7992_ROM_PATCH_24		"mediatek/mt7996/mt7992_rom_patch_24.bin"
++
+ #define MT7990_FIRMWARE_WA		""
+ #define MT7990_FIRMWARE_WM		"mediatek/mt7996/mt7990_wm.bin"
+ #define MT7990_FIRMWARE_DSP		""
+@@ -79,6 +84,7 @@
+ #define MT7992_EEPROM_DEFAULT_MIX	"mediatek/mt7996/mt7992_eeprom_2i5e.bin"
+ #define MT7992_EEPROM_DEFAULT_23	"mediatek/mt7996/mt7992_eeprom_23.bin"
+ #define MT7992_EEPROM_DEFAULT_23_INT	"mediatek/mt7996/mt7992_eeprom_23_2i5i.bin"
++#define MT7992_EEPROM_DEFAULT_24	"mediatek/mt7996/mt7992_eeprom_24_2i5i.bin"
+ 
+ #define MT7990_EEPROM_DEFAULT		"mediatek/mt7996/mt7990_eeprom.bin"
+ #define MT7990_EEPROM_DEFAULT_INT	"mediatek/mt7996/mt7990_eeprom_2i5i.bin"
+@@ -158,6 +164,7 @@ enum mt7996_var_type {
+ enum mt7992_var_type {
+ 	MT7992_VAR_TYPE_44,
+ 	MT7992_VAR_TYPE_23,
++	MT7992_VAR_TYPE_24,
+ };
+ 
+ enum mt7990_var_type {
 -- 
-Luca Leonardo Scorcia
-l.scorcia@gmail.com
+2.51.0
+
 
