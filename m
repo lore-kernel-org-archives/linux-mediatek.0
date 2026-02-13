@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C3ADEF48DC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Feb 2026 07:52:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1C3DEF48DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Feb 2026 08:00:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Pq2xEbhTYnXnXb5Ldq5n4CZxxvbCZjmnS44mtdH3DTk=; b=Kjh7M1d9/cYMIcGy528rfXaW5x
-	73kkk48wtF68pdoiFyfcOxy7vuVVJ3zRNrKc3FZap58IS+kBl9cFwoKO8GWNZPIDfXfkb4aisecnv
-	h86aKJSQBHrTauJmRGEtjZdJz9JhRfawpsj/QSvD1McmB+ssNyZqCfn0w9j+mOwjiloISZO4TyfGt
-	A4MomcWfm1A+S3ADp1u/CriT0sZFx41BvCeQeHLj6Jx1d06m0Z6kUp2j0WbzlYFrjkJM65Ac7wm9U
-	e5BjmIsxVOlqTokUVzOwKTWtQfyTCRJBjiTW4G81YwSt8vCkKpM65sn6OczmYw59ALIDFaWlLI9Lz
-	Pn0AlkiQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2STdLaYuCNMXqLtR8ZHygOV0ZDC+dDAI3w5ajot7auI=; b=H8+h2/SRPZX8yrURlFvH6NtDhS
+	zJdFIfpHjUSLM+hrl6UxGqovr9VKaxq/hxthk4EgXORbQ0qUN6cqRWattibp7gxDCy5Y45/hOCO06
+	/CpLruBNyPQWJuWwP+twhbhctwJmOQKOxSglQIPyyZxzT8HvnqPFhewkjMbVDYx7g5zgtxEcXXAvS
+	9NW1o87R7T4qFMCwr7WDnoMLp555xEue1yJHRNC6RAJ5Gjdmz2syYVGMAKGBHRNEVQwZAgN8DQEIq
+	pwKukIY6cLY4OROJFMdRwjXjAfN8Ti1HC+h/iNgDnUXJuR1FOmhpql4QTWpoTH/QXqcKt3Zvh6KIq
+	5gyRI3Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqnyO-000000037tk-3MDk;
-	Fri, 13 Feb 2026 07:52:20 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vqo6Y-000000038QM-2KGA;
+	Fri, 13 Feb 2026 08:00:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqnyM-000000037tX-3rye;
-	Fri, 13 Feb 2026 07:52:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id F0F956091C;
-	Fri, 13 Feb 2026 07:52:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2457EC116C6;
-	Fri, 13 Feb 2026 07:52:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770969137;
-	bh=UefBuSp8hc5xNGX436f+hEfJZc5QS43b+SrCXPfytKU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=X51X4gAuckniFmBn8+Z0Vkt9gmlv5zxA1umRA7wUuISNEbf15D5G9ITXD4KMdAqIK
-	 n3Vf/vVQjhh5QFV/ZfVILdXQW8pAe6jb6Zwnf6p0S5KUPft56ZTn9Pf3Na2kU3HZhL
-	 UMhTGVljOokCqeHEKn1TOSCXPdIuO7sXP5fmKyF5xphRfJs+ZXklbaDFF9vZSgVpEz
-	 xXpLjCf2KedgM82O10+2cLpebioC7/8MhmEn0A3M8NCHN+8PfpKmDhGNiTfSiFZ3mL
-	 6Nh5TXg3jho036ruD8x/r3tiP2WfkcYK3a/5gsRshR+kAkmsD7Tivi+XBU43tbrtBf
-	 n8xvT9Il+kFKw==
-Date: Fri, 13 Feb 2026 08:52:15 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Irui Wang <irui.wang@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, wenst@chromium.org, 
-	angelogioacchino.delregno@collabora.com, nicolas.dufresne@collabora.com, sebastian.fricke@collabora.com, 
-	Tiffany Lin <tiffany.lin@mediatek.com>, kyrie wu <kyrie.wu@mediatek.com>, 
-	Yunfei Dong <yunfei.dong@mediatek.com>, Maoguang Meng <maoguang.meng@mediatek.com>, 
-	Longfei Wang <longfei.wang@mediatek.com>, Project_Global_Chrome_Upstream_Group@mediatek.com, 
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 5/6] dt-bindings: media: mediatek,vcodec-encoder: Add
- MT8196 with VCP support
-Message-ID: <20260213-didactic-whispering-impala-ea9e64@quoll>
-References: <20260212100104.11863-1-irui.wang@mediatek.com>
- <20260212100104.11863-6-irui.wang@mediatek.com>
+	id 1vqo6W-000000038Px-2VF4
+	for linux-mediatek@lists.infradead.org;
+	Fri, 13 Feb 2026 08:00:45 +0000
+X-UUID: 167dc08008b211f1a16f0188aa809bee-20260213
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=2STdLaYuCNMXqLtR8ZHygOV0ZDC+dDAI3w5ajot7auI=;
+	b=hgfGejTKipP/rjTgiXtbX78KuZc2FIYn6ChH+NyYNH18iz68sj3lrAETw0NqoACuj0R+wG1It3kW+UY8MHN/0riFQZ/TX2PlrdyECF07EIJw2E/NbweOS+ZPtsV4gZzQRxSeVKJsZhSm5Ozo6DUZUS7aSNZ6PPAaDhk1WDRVSIc=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:d5abb6a1-da0c-4c84-b84b-62eab854677f,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:89c9d04,CLOUDID:e22d425b-a957-4259-bcca-d3af718d7034,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 167dc08008b211f1a16f0188aa809bee-20260213
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1588839225; Fri, 13 Feb 2026 01:00:39 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Fri, 13 Feb 2026 16:00:37 +0800
+Received: from mussdccf250.eus.mediatek.inc (10.73.250.250) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Fri, 13 Feb 2026 16:00:36 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: <linux-mediatek@lists.infradead.org>, <linux-wireless@vger.kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7996: Disable Rx hdr_trans in monitor mode
+Date: Fri, 13 Feb 2026 00:00:29 -0800
+Message-ID: <04008426d6cd5de3995beefb98f9d13f35526c25.1770969275.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260212100104.11863-6-irui.wang@mediatek.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260213_000044_671155_7F581FB3 
+X-CRM114-Status: UNSURE (   6.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,75 +85,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 12, 2026 at 06:01:02PM +0800, Irui Wang wrote:
-> Add support for MT8196 video encoder which uses VCP (Video Co-Processor)
-> for firmware management. Unlike previous platforms that use SCP/VPU, MT8196
-> requires VCP to load and execute the video encoding firmware, with the
-> encoder communicating through VCP to perform encoding operations.
+Ensure raw frames are captured without header modification.
 
-Again, read review from v2. Subject is still wrong.
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 2 ++
+ drivers/net/wireless/mediatek/mt76/mt7996/regs.h | 3 +++
+ 2 files changed, 5 insertions(+)
 
-> 
-> Add the "mediatek,mt8196-vcodec-enc" compatible string and introduce
-> the "mediatek,vcp" property to reference the VCP device, which is
-> required for MT8196 encoder operation.
-> 
-> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-> ---
->  .../media/mediatek,vcodec-encoder.yaml        | 19 +++++++++++++++++++
->  1 file changed, 19 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-> index ebc615584f92..4c8acebeb9d3 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-> @@ -24,6 +24,7 @@ properties:
->                - mediatek,mt8188-vcodec-enc
->                - mediatek,mt8192-vcodec-enc
->                - mediatek,mt8195-vcodec-enc
-> +              - mediatek,mt8196-vcodec-enc
->        - items:
->            - const: mediatek,mt8186-vcodec-enc
->            - const: mediatek,mt8183-vcodec-enc
-> @@ -58,6 +59,13 @@ properties:
->      description:
->        Describes point to scp.
->  
-> +  mediatek,vcp:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      Reference to the VCP (Video Co-Processor) device that loads and executes
-> +      the video encoding firmware. The encoder communicates with the firmware
-> +      through VCP to perform encoding operations.
-> +
->    power-domains:
->      maxItems: 1
->  
-> @@ -76,6 +84,17 @@ required:
->    - iommus
->  
->  allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt8196-vcodec-enc
-> +
-> +    then:
-> +      required:
-> +        - mediatek,vcp
-
-And here still did not implement the comment. So basically you did not
-implement fully v2 and v3.
-
-And if something was not clear, you have entire huge Mediatek company,
-with huge budget and enormous resources, to help you instead of pushing
-something which ignores review THIRD time.
-
-NAK
-
-Best regards,
-Krzysztof
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 7046bf26d8ed..bd3409b296b3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -485,6 +485,8 @@ static void mt7996_set_monitor(struct mt7996_phy *phy, bool enabled)
+ 
+ 	mt76_rmw_field(dev, MT_DMA_DCR0(phy->mt76->band_idx),
+ 		       MT_DMA_DCR0_RXD_G5_EN, enabled);
++	mt76_rmw_field(dev, MT_MDP_DCR0,
++		       MT_MDP_DCR0_RX_HDR_TRANS_EN, !enabled);
+ 	mt7996_phy_set_rxfilter(phy);
+ 	mt7996_mcu_set_sniffer_mode(phy, enabled);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
+index e48e0e575b64..393faae2d52b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/regs.h
+@@ -159,6 +159,9 @@ enum offs_rev {
+ #define MT_MDP_BASE				0x820cc000
+ #define MT_MDP(ofs)				(MT_MDP_BASE + (ofs))
+ 
++#define MT_MDP_DCR0				MT_MDP(0x800)
++#define MT_MDP_DCR0_RX_HDR_TRANS_EN		BIT(19)
++
+ #define MT_MDP_DCR2				MT_MDP(0x8e8)
+ #define MT_MDP_DCR2_RX_TRANS_SHORT		BIT(2)
+ 
+-- 
+2.45.2
 
 
