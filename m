@@ -4,89 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A8C4EE36A0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Feb 2026 09:28:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7E50EE369A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Feb 2026 09:32:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jHs4G1qTl5dH6NxUBkTOCYuf3Dr2RKwKYeA6Wh+PnvE=; b=EEx3kBUUYSor/tvtQZ7kkis6G7
-	nhQgBaQQBkiT+6XslZ+L2jVDmlKdH2hPpjyX336TlPDOfR8B3AC2mPojKcBBV7GDeSsN0uFYl2zbv
-	vQt2OQ2fDGQxbHoqcXm/9iPe1jMSmGjbN0BT6IiCayCR9S6QkzoY5n+TvWxEdeFJDQ2A224+UDgel
-	lQonVCYY0/6t3Jv75DyH9t36mwq394tOWTQCd8+/wqVJ09zaW8GCCiMLWySWCeDYD92NhKBR68C4T
-	48C2qX9PWFJxtDGvBC/5cF+DfZePdJPGG4tha7B1owbyODz5845I1wIZG0PsKY6sdM6k99anDr+m1
-	PeUETYnQ==;
+	bh=Z5QqmuQrBvbSfzwxccepjXNcjsxJHZZUf1QGqe+ZWp4=; b=DwSOP02UN3rawc90CawHR952xH
+	UdtHKZJ4AsJTiW9DEsq+DO1Q0K9/yfAFmYW7D9OIkKWjLhDG3ZO/EYQefqa1aJykeuLaEO6PWjS0g
+	7Ziu3LNajmvSqhmAfSqm8lXEYAGHrmiC6ycPTlkl8eXUI9mZixv5udanWIlc0Q3rZlrDem1AReYQs
+	e5oBl+rC9i1val5fNe/CPOC0dE2GxWAuTiehCi//M2uWO+V6SMsImQJImyradaxr9G0qB0wi/8pSI
+	IsLF8QCkL0XrJeO2n8XEL1tNfvS/sYzv3WKzlgcDAxXOyOjcC89IW/SxhmrFdXX1E5gNW1JxyGp6w
+	3rwl9FSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqpTc-00000003EZt-0ZZ7;
-	Fri, 13 Feb 2026 09:28:40 +0000
-Received: from relay.yourmailgateway.de ([188.68.63.174])
+	id 1vqpXj-00000003EwM-32Db;
+	Fri, 13 Feb 2026 09:32:55 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqpTY-00000003EZ3-0Hn8
-	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Feb 2026 09:28:38 +0000
-Received: from mors-relay8204.netcup.net (localhost [127.0.0.1])
-	by mors-relay8204.netcup.net (Postfix) with ESMTPS id 4fC6KD0LNrz8bRt;
-	Fri, 13 Feb 2026 09:28:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
-	s=key2; t=1770974880;
-	bh=grByNNgXR4K1WiR61nAJLCUz7cIFwiHqZquGeTaeLoE=;
+	id 1vqpXh-00000003Evw-3qHu;
+	Fri, 13 Feb 2026 09:32:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id E7DE16091C;
+	Fri, 13 Feb 2026 09:32:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 157A5C116C6;
+	Fri, 13 Feb 2026 09:32:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1770975172;
+	bh=xsNmS3sMFINv6sJaT4EuuEnJmzEKekP8MtmtfTiiI+E=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GEtbiYpL1WcISWTNX1jfaDopTW6B9cHdXG0fasc1XpxWwoXxD7bX3FhA+PQjwhYxb
-	 qWUMUVudbb2QvOjQ9AJT5NRhkTIr5TF5wUXd+7w8yNfKr6fYnYERyuAGF86gQRVb4v
-	 ENwTyqikw+EZ2PpcTwg865N+tyuHM9lUBPIqaOz718KXkMNo+QAmWV04mtrSnjxMWb
-	 W7m/hTk3/zxs0qTkd4NpUUQoUK8g3tY3N+U09erh+K4W8i+yf9kDK9r4BJQsM0oTdX
-	 pujZThphh/D4PeceezSURWmkNCgw+Twy0w5Q5FVQS7QT6qDaAnK3/NehcssGPPHEah
-	 S283xuI0KawLA==
-Received: from policy01-mors.netcup.net (unknown [46.38.225.35])
-	by mors-relay8204.netcup.net (Postfix) with ESMTPS id 4fC6KC6jWPz8bRr;
-	Fri, 13 Feb 2026 09:27:59 +0000 (UTC)
-X-Virus-Scanned: Debian amavisd-new at policy01-mors.netcup.net
-Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by policy01-mors.netcup.net (Postfix) with ESMTPS id 4fC6KB20YZz8t41;
-	Fri, 13 Feb 2026 10:27:58 +0100 (CET)
-Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
-	by mxe9fb.netcup.net (Postfix) with ESMTPSA id 6053E6728C;
-	Fri, 13 Feb 2026 10:27:57 +0100 (CET)
-Authentication-Results: mxe9fb;
-        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
-Received-SPF: pass (mxe9fb: connection is authenticated)
-Message-ID: <96e7f0fc-65f4-4613-b556-3a2d869dabb4@leemhuis.info>
-Date: Fri, 13 Feb 2026 10:27:51 +0100
+	b=mH6gkC/JTizLJvfX6jl9NgswUC9kmfkZ9mi6DLpDS4mVuQ3M7VyNSzAP+nkzF7mon
+	 pLHb6qQR3Dfbuxmr0OeFO85yFfJw9kO267jk69Hhv7ZSD/40H7ijM3VhcAzds/EBhe
+	 SP1dhV6m0uwTRzmDxKiMTJBCV/4y6w55RRdeXUY0Mgp9jIxg+LzV+pWOvuTyeSC4Bb
+	 /J8PfcTYBRxWbsJCJgGvyYFuaV671vuiR2S+gfV0Z4xTyDtn0XSs6uKnaKGZX6t+1Z
+	 e0ys6YPuMUcu89CAkyEEVlnEy7ScG/k99N6jWMmAo/EBCgqDFUWTZkFNraWv3bOGXJ
+	 ZCYC8HO/93T2w==
+Message-ID: <e69cf0c6-f7cf-4f83-a7fc-dc4b9dfe174c@kernel.org>
+Date: Fri, 13 Feb 2026 10:32:46 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [REGRESSION] mt8183-kukui: dts: changes in dts caused display to
- no longer initialize - Was: Re: mt8183-kukui: drm/mediatek: dts: Invalid
- display hw pipeline when probing mediatek-drm
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Denis Gessert <denisgessert@gmail.com>
-Cc: Evans Jahja <evansjahja13@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- regressions@lists.linux.dev, =?UTF-8?Q?Otto_Pfl=C3=BCger?=
- <otto.pflueger@abscue.de>
-References: <CAFLVeg9hwH3PbKu5rPWZWqq6yz5mRRoB9oqxDkxNRdEDLGbVBw@mail.gmail.com>
- <CAFLVeg_soeYV4tOYKMo6TMYOtuWWU4TFCjUTxUrVEyGcRwMz7A@mail.gmail.com>
- <df6fcd73-fe0a-42fc-97ce-7e458c340553@leemhuis.info>
- <CAFLVeg-qeWu4ntgyqotsgjogPEyhqrMGG=UDWuZe+-D3K8YPTA@mail.gmail.com>
- <908f3c03-a8b0-4535-9cfa-294c6ade8152@collabora.com>
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-Content-Language: de-DE, en-US
-In-Reply-To: <908f3c03-a8b0-4535-9cfa-294c6ade8152@collabora.com>
+Subject: Re: [PATCH v4 5/6] dt-bindings: media: mediatek,vcodec-encoder: Add
+ MT8196 with VCP support
+To: =?UTF-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?= <Irui.Wang@mediatek.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>,
+ =?UTF-8?B?TG9uZ2ZlaSBXYW5nICjnjovpvpnpo54p?= <Longfei.Wang@mediatek.com>,
+ =?UTF-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
+ "wenst@chromium.org" <wenst@chromium.org>,
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?TWFvZ3VhbmcgTWVuZyAo5a2f5q+b5bm/KQ==?=
+ <Maoguang.Meng@mediatek.com>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "nicolas.dufresne@collabora.com" <nicolas.dufresne@collabora.com>,
+ "mchehab@kernel.org" <mchehab@kernel.org>,
+ =?UTF-8?B?S3lyaWUgV3UgKOWQtOaZlyk=?= <Kyrie.Wu@mediatek.com>,
+ =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ "hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
+ "sebastian.fricke@collabora.com" <sebastian.fricke@collabora.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20260212100104.11863-1-irui.wang@mediatek.com>
+ <20260212100104.11863-6-irui.wang@mediatek.com>
+ <20260213-didactic-whispering-impala-ea9e64@quoll>
+ <13bf9b8673c6d47e07dee4a233945ed542e9b4f3.camel@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <13bf9b8673c6d47e07dee4a233945ed542e9b4f3.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-PPP-Message-ID: <177097487771.825663.10388203810986665295@mxe9fb.netcup.net>
-X-Rspamd-Server: rspamd-worker-8404
-X-Rspamd-Queue-Id: 6053E6728C
-X-NC-CID: cA1TgezXRliQ2k/M8T5pGyaY7S9Tj9Em3yC/U5L8VvqWxXawOY0=
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260213_012836_566103_E8CBE0B4 
-X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,62 +137,116 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/9/26 12:42, AngeloGioacchino Del Regno wrote:
-> Il 06/02/26 17:58, Denis Gessert ha scritto:
->> Thanks for the quick response. I compiled 6.18.9 with this patch
->> (without reverting the previous commit) and it boots successfully.
+On 13/02/2026 10:27, Irui Wang (王瑞) wrote:
+> Dear Krzysztof,
 > 
-> Well, I missed all those replies to this thread, and sent a redundant reply
-> saying .. well, the same as Thorsten (hey, thanks for being faster than
-> me!).
+> I sincerely apologize for taking up your time to review and respond to
+> this patch. The maintainers' review comments are very important to us,
+> so we will never ignore them, there must be some misunderstanding in
+> this process.
+> 
+> On Fri, 2026-02-13 at 08:52 +0100, Krzysztof Kozlowski wrote:
+>> On Thu, Feb 12, 2026 at 06:01:02PM +0800, Irui Wang wrote:
+>>> Add support for MT8196 video encoder which uses VCP (Video Co-
+>>> Processor)
+>>> for firmware management. Unlike previous platforms that use
+>>> SCP/VPU, MT8196
+>>> requires VCP to load and execute the video encoding firmware, with
+>>> the
+>>> encoder communicating through VCP to perform encoding operations.
+>>
+>> Again, read review from v2. Subject is still wrong.
 
-Happens. :-D
+Here "read review from v2"
 
-> Happy to see further confirmation that the patch that we both mentioned is
-> actually fixing the issue.
+> 
+> From the reviews of v2 and v3, my understanding is that the patch lacks
+> details, so we add more description for current modification, for 'VCP'
+> usage. So we are very grateful if you could provide a `correct Subject
+> ` example for us, thanks a lot.
 
-The big question remains: Now that this landed in mainline, should we as
-the stable team to pick this up for 6.18.y and 6.19.y to get it resolved
-there quickly? They might pick it up on their own due to the Fixes tag,
-but that is not guaranteed.
+You received one at v2.
 
-Ciao, Thorsten
-
->> Am Fr., 6. Feb. 2026 um 15:55 Uhr schrieb Thorsten Leemhuis
->> <regressions@leemhuis.info>:
->>>
->>> On 2/6/26 12:33, Denis Gessert wrote:
->>>>
->>>> I found this email chain while troubleshooting why my Levovo Duet
->>>> (with the MT8183 chip) would not boot using any 6.18.* kernel.
->>>>
->>>> I can confirm that on my device the current stable 6.18.8 does not
->>>> boot unless I revert the commit
->>>>
->>>> commit e72d63fa0563f8a6e98c10fed3a9ce74dc0536e6 (HEAD)
->>>> Author: AngeloGioacchino Del Regno
->>>> <angelogioacchino.delregno@collabora.com>
->>>> Date:   Thu Jul 24 10:39:08 2025 +0200
->>>>
->>>>      arm64: dts: mediatek: mt8183: Migrate to display controller OF
->>>> graph
->>>>
->>>> mentioned below. With the reverted commit the device boots as intended.
->>>
->>> There is a fix for it from Otto here that I guess should help
->>> https://lore.kernel.org/lkml/20260106-mt8183-display-graph-v2-1-
->>> e7e56054eef5@abscue.de/
->>>
->>> Side note: lacks a stable tag and maybe should have been merged this
->>> cycle instead of the next. But given that 6.19 is immanent it might be
->>> good if this could be backported to 6.19.y once it landed in mainline.
->>>
->>>> PS: Apologies for the potential double-mail.
->>> No worries, happens.
->>>
->>> Ciao, Thortsten
 > 
 > 
+>>>
+>>> Add the "mediatek,mt8196-vcodec-enc" compatible string and
+>>> introduce
+>>> the "mediatek,vcp" property to reference the VCP device, which is
+>>> required for MT8196 encoder operation.
+>>>
+>>> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+>>> ---
+>>>  .../media/mediatek,vcodec-encoder.yaml        | 19
+>>> +++++++++++++++++++
+>>>  1 file changed, 19 insertions(+)
+>>>
+>>> diff --git
+>>> a/Documentation/devicetree/bindings/media/mediatek,vcodec-
+>>> encoder.yaml
+>>> b/Documentation/devicetree/bindings/media/mediatek,vcodec-
+>>> encoder.yaml
+>>> index ebc615584f92..4c8acebeb9d3 100644
+>>> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-
+>>> encoder.yaml
+>>> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-
+>>> encoder.yaml
+>>> @@ -24,6 +24,7 @@ properties:
+>>>                - mediatek,mt8188-vcodec-enc
+>>>                - mediatek,mt8192-vcodec-enc
+>>>                - mediatek,mt8195-vcodec-enc
+>>> +              - mediatek,mt8196-vcodec-enc
+>>>        - items:
+>>>            - const: mediatek,mt8186-vcodec-enc
+>>>            - const: mediatek,mt8183-vcodec-enc
+>>> @@ -58,6 +59,13 @@ properties:
+>>>      description:
+>>>        Describes point to scp.
+>>>  
+>>> +  mediatek,vcp:
+>>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>>> +    description:
+>>> +      Reference to the VCP (Video Co-Processor) device that loads
+>>> and executes
+>>> +      the video encoding firmware. The encoder communicates with
+>>> the firmware
+>>> +      through VCP to perform encoding operations.
+>>> +
+>>>    power-domains:
+>>>      maxItems: 1
+>>>  
+>>> @@ -76,6 +84,17 @@ required:
+>>>    - iommus
+>>>  
+>>>  allOf:
+>>> +  - if:
+>>> +      properties:
+>>> +        compatible:
+>>> +          contains:
+>>> +            enum:
+>>> +              - mediatek,mt8196-vcodec-enc
+>>> +
+>>> +    then:
+>>> +      required:
+>>> +        - mediatek,vcp
+>>
+>> And here still did not implement the comment. So basically you did
+>> not
+>> implement fully v2 and v3.
+> 
+> If you are mean about the `else statement`, I left a comments and want
+> to get an explanation from you, if you feel that my reply is
+> unsatisfactory or incorrect, please let me know.
+> 
+> The key point is that our patch can satisfy you and get a Reviewed-by
+> from you.
 > 
 
+Neither your answer, nor commit description here are actually ANSWERING
+to my comment at v3. If you answer with irrelevant/unrelated comment,
+the reviewer's feedback stays. OR explain please with different words
+why other devices have vcp but your commit msg says they do not have vcp.
+
+Best regards,
+Krzysztof
 
