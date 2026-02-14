@@ -4,89 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D50DBEDF142
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Feb 2026 08:27:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFE3DEF5852
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Feb 2026 21:26:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=OJhZ6X3qHQLlGKjG9LB5k56TNXFVKGNDz+IqQMuGJ24=; b=0klWPvMSD6FDe1dBJ62MO+15a8
-	GMKvHEvcMG8EMdtdIMwd1hcKzQqgqBD4sFcJyiKz/Q9b3I3vIcKzQv0ZjuyIx96BlKhI97kYkXR9t
-	SJFLyl5oVcB51peHfJx+zOUBfnBxSgVAkMdk+Wt9n+z1Vb79PXPK1W5MHI37dofD8eom+8EuEPoU+
-	JbxyetHT5YBDRGAyWWDtZC/u8JQxW2wqoB3S2yVmNXmg8DF0snyiWv/wL7mItPNQfDL7Qyp5qdQ/L
-	40bvRMPXNoSdquBLKttclC+aMkHWRcI4sO5Y72yMCu9R1lm0+Q3j2x2eKW/2OK1jRtyguCE33KHZ3
-	dBdSJBlg==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ErBSkw+qsT894iqDmcRKRX3ClWoCNhw1vF99xVYmVT0=; b=Hk8fRmUDNiqdqsdiYa7W10Uy3I
+	DWvy4tOX7jozcKSG0Nn9Az0WAKkjvSqIFYVvUo04/0zTH29bqJrNYkqF7lS0f/ubkZLjTcUSr2DG6
+	4IpBhDymF7KqLev+SgntvXupv8bbtklvjlfsjfLgMydSQzkMkmfWLv+1iMoDdDbVOSGa78Nl25nsX
+	5fSeTo2KPTffIt19fBkuR5ywT9j/f8zeY+d74NgGXmFO65wXHmzIxJcy6lwYRTBoTFOXAjzCDrRd3
+	zbLC8HAaxANo2WcIoM2vyV5czyF/axkTwoot+g0MrHrEICo2r8E+gcXZfywGykKIECpF9xSUIa8f4
+	vucEdECw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrB0Q-00000004OrD-1mKp;
-	Sat, 14 Feb 2026 08:27:58 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1vrN9M-00000004wuK-1Ftn;
+	Sat, 14 Feb 2026 21:26:00 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrB0O-00000004Oqs-2YVG
-	for linux-mediatek@lists.infradead.org;
-	Sat, 14 Feb 2026 08:27:57 +0000
-Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2ab46931cf1so13533255ad.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 14 Feb 2026 00:27:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1771057675; x=1771662475; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=OJhZ6X3qHQLlGKjG9LB5k56TNXFVKGNDz+IqQMuGJ24=;
-        b=Dr4IuVzjmw9QlXnN4PngXm+oNB8IDqxKz28oKyG+zEaad9BGngbSzOpIv6I7/CIBZJ
-         jj0IgU2rYIMd/WHdtEXM8UKioM6owDdvbHINxJXawwZpOs1i2W5NHi+q+YTlVbJS7hr9
-         UW6NXii3OjhOHVJSj8L7/eUVSHH9juN7QZQ5dUGKjPIPCUV8j7FYDlCTwW5EkPIXwUw7
-         yAlgcp9AuE6Tnju5OhEsvQh0JjlL2f5/6MoPejRlqBBCOKxFrm3adsz8RRpbNfvlDHGy
-         I/qphuW5z1knXbT8ldhCZuwhdZIAN/LghWLztzXZoP2etYbgiRqJJMkj6PiXTmPY3OqQ
-         QtQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771057675; x=1771662475;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OJhZ6X3qHQLlGKjG9LB5k56TNXFVKGNDz+IqQMuGJ24=;
-        b=tVKqAcLGbYVgvPFz4oPK10dGIplKkG2Lu81FwKzgvynRfN7fwBUrdhrXWSCytD5a+0
-         sj+UC+K+VF3nz7itrtQU1xxx2apjCInNZMH7+HFyUX+o23noWQD0gURJ0lLyGxEi4Rhj
-         uRZ54siO+72CuK40yvqycoDRRMQYHpDAkb9awxoiN89Jk+C3Ib54WibqRhAj0O4r0QGu
-         GhrJl4V+tJkNA9ar9X8zMExUr/H60/GeFqWNRDNUCnJlhSqMyyk6iBzt1VSMAthWiTI3
-         Eq1gsKk2L3srrZ9BC8z+VTHH8kvR0ZhIakg5SFUCCZhrcrU+fXF3+910CrBVxxd9KN+4
-         5BGg==
-X-Forwarded-Encrypted: i=1; AJvYcCVkzHvmPzA97lyux1c56R03oWcDIJF47eSdmx4LnhU5cVKcDvM+ayUc29k/rDtGFX1ZbIN0fEhiNCG8af4S+Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz+HRyCqC0hLojIvOY289ZaJhBIa3bn5pY2I3EojlDWJfGRCBru
-	RPqVFgEfCeVWHmiUnnZUA1hBNS0ZHoQjvuwIMz2INHSlWVHcAngxqlri
-X-Gm-Gg: AZuq6aK+qQqbXS4zyWOku25/KKlaZYyrGFD54oqFbuSAgSHJ1GviKBVitHbhz+EPXuu
-	+NVuq8/446m9by9b5mcjV77mINSN9rUAQrvzuO4AnJxdgeWO0tl3g7/QU5vU0cN6Kh5a8ZUhWRb
-	JxvpNu4SS9eLPrWhLQVnHfZJTmPG/jmKEDP2bLbaRVOTRTY3CpR8GxN2BFN5qw1nMmz0xjQMhJY
-	fbb7lpfGWE9Fcg3EZ0See0Pr2raZA5c25U4oAI4jvGkxfVvdSi9SNnHOUBZnPHL0ivTm5t0I/FE
-	CH/Zx47ySXYAmCyUsVmtfHdC7cU1zJjVEnVmC61o1el18epB+veFlnUMwbsOyAzBmfVJVXxd7IE
-	tgS+kfDjvZyhenQ46KoAPjvGDvbl93Ibf0nkR2vdl1IFI4CdJ2t7Zq3XtEEKw1y5hwT8YFvf86W
-	4u/DeCwRxO1O1vPh/jmOnuKLKnNlyn6b+dHiuCK/zDS5Aaxtm+
-X-Received: by 2002:a17:902:f547:b0:2aa:d5b1:194f with SMTP id d9443c01a7336-2acba495a44mr28702715ad.30.1771057675271;
-        Sat, 14 Feb 2026 00:27:55 -0800 (PST)
-Received: from kush-pc.lan ([157.48.94.145])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ad1a9d5d3asm13412975ad.51.2026.02.14.00.27.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 14 Feb 2026 00:27:54 -0800 (PST)
-From: OnlineLearningTutorials <kush.kulshrestha5@gmail.com>
-X-Google-Original-From: OnlineLearningTutorials <kush.kulshrestha.5@gmail.com>
-To: luiz.dentz@gmail.com,
-	marcel@holtmann.org
-Cc: kush.kulshrestha.5@gmail.com,
+	id 1vrN9J-00000004wt9-2u2w;
+	Sat, 14 Feb 2026 21:25:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id ECAA6415F2;
+	Sat, 14 Feb 2026 21:25:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0559C19422;
+	Sat, 14 Feb 2026 21:25:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1771104356;
+	bh=wXXapwFeYVgtQZwgGByrjTAqhAfXkHTGrYtefsyZo9E=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=mkOcGjHS+MbvpM5d1YKV1UJ+L9uNRLis4jTZ6Yz6eHiEohtOmJlP05sEqhUIhXQZb
+	 fP19pi33tJwsvTOFVUBSYIRQ3swen5FvPfnCfNvy8ZZHJU2Au3O4gj8g6uwxETv+u9
+	 2z5gTIiRzv7+rlAI07jbnzf2RhzrnHN+GERNkymZ83lIuH+OGSpfanR+qE2VYHWq1x
+	 eCp0bKyrVemD3G1LPjjGhvUS1fb/1eR4I//dUlPxKOEIFJX+NsCvmh/TIPYpPad6ty
+	 8PA91dvf+4b5wQHpPDByY7EkICmF/A9FXD1QpUTR1n61Ri2mY5HyFcq4KXw6II7+dZ
+	 i+ikxghzSluBQ==
+From: Sasha Levin <sashal@kernel.org>
+To: patches@lists.linux.dev,
+	stable@vger.kernel.org
+Cc: Johnny-CC Chang <Johnny-CC.Chang@mediatek.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Sasha Levin <sashal@kernel.org>,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-bluetooth@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] Bluetooth: btusb: Add support for MediaTek MT7902
-Date: Sat, 14 Feb 2026 13:57:38 +0530
-Message-ID: <20260214082738.139047-1-kush.kulshrestha.5@gmail.com>
+	linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.19-5.10] PCI: Mark Nvidia GB10 to avoid bus reset
+Date: Sat, 14 Feb 2026 16:23:02 -0500
+Message-ID: <20260214212452.782265-37-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20260214212452.782265-1-sashal@kernel.org>
+References: <20260214212452.782265-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.19
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260214_002756_653952_EFB6B5DE 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20260214_132557_791581_4B62371A 
+X-CRM114-Status: GOOD (  15.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,53 +83,131 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds USB IDs for the AzureWave/MediaTek MT7902 Bluetooth
-module.
-The device IDs included are:
-- 13d3:3579
-- 13d3:3580
-- 13d3:3594
-- 13d3:3596
+From: Johnny-CC Chang <Johnny-CC.Chang@mediatek.com>
 
-Signed-off-by: OnlineLearningTutorials <kush.kulshrestha.5@gmail.com>
+[ Upstream commit c81a2ce6b6a844d1a57d2a69833a9d0f00403f00 ]
+
+After asserting Secondary Bus Reset to downstream devices via a GB10 Root
+Port, the link may not retrain correctly, e.g., the link may retrain with a
+lower lane count or config accesses to downstream devices may fail.
+
+Prevent use of Secondary Bus Reset for devices below GB10.
+
+Signed-off-by: Johnny-CC Chang <Johnny-CC.Chang@mediatek.com>
+[bhelgaas: drop pci_ids.h update (only used once), update commit log]
+Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
+Link: https://patch.msgid.link/20251113084441.2124737-1-Johnny-CC.Chang@mediatek.com
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/bluetooth/btmtk.c |  1 +
- drivers/bluetooth/btusb.c | 10 ++++++++++
- 2 files changed, 11 insertions(+)
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index a8c520dc09e1..b793947dd920 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -1323,6 +1323,7 @@ int btmtk_usb_setup(struct hci_dev *hdev)
- 	case 0x7668:
- 		fwname = FIRMWARE_MT7668;
- 		break;
-+	case 0x7902:
- 	case 0x7922:
- 	case 0x7925:
- 	case 0x7961:
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index fcec8e589e81..13a2aa13b9f4 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -629,6 +629,16 @@ static const struct usb_device_id quirks_table[] = {
- 	/* Additional MediaTek MT7668 Bluetooth devices */
- 	{ USB_DEVICE(0x043e, 0x3109), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH },
-+
-+	/* Additional MediaTek MT7902 Bluetooth devices */
-+	{ USB_DEVICE(0x13d3, 0x3579), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x13d3, 0x3580), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x13d3, 0x3594), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x13d3, 0x3596), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
+LLM Generated explanations, may be completely bogus:
+
+## Analysis of PCI Quirk for Nvidia GB10 Bus Reset
+
+### Commit Message Analysis
+
+The commit adds a PCI quirk to prevent Secondary Bus Reset (SBR) for
+devices behind Nvidia GB10 Root Ports. The problem is clearly stated:
+after asserting SBR, the link may not retrain correctly — leading to
+reduced lane count or complete failure of config accesses to downstream
+devices. This is a real hardware bug with concrete symptoms (link
+degradation, device inaccessibility).
+
+### Code Change Analysis
+
+The change is minimal and surgical:
+- Two `DECLARE_PCI_FIXUP_HEADER` lines are added for two specific Nvidia
+  device IDs (`0x22CE` and `0x22D0`)
+- Both call the existing `quirk_no_bus_reset()` function, which simply
+  sets `PCI_DEV_FLAGS_NO_BUS_RESET` on the device
+- A comment block explains why the quirk is needed, with a link to the
+  mailing list discussion
+
+The diff also shows context that there's already a similar quirk pattern
+for other Nvidia GPU devices (`quirk_nvidia_no_bus_reset` matching
+`0x2340` range), as well as Atheros devices. This is a well-established
+pattern in the kernel.
+
+### Classification: Hardware Quirk
+
+This falls squarely into the **hardware quirk** category, which is
+explicitly listed as a strong YES signal for stable backporting.
+Hardware quirks:
+- Fix real-world hardware issues
+- Are trivial additions to existing infrastructure
+- Have near-zero risk of regression (they only affect the specific
+  hardware identified by the PCI IDs)
+
+### Scope and Risk Assessment
+
+- **Lines changed**: ~8 lines (2 macro invocations + comment block)
+- **Files touched**: 1 (`drivers/pci/quirks.c`)
+- **Complexity**: Minimal — uses existing `quirk_no_bus_reset()`
+  function
+- **Risk**: Extremely low — only affects devices with vendor ID
+  `PCI_VENDOR_ID_NVIDIA` and device IDs `0x22CE` or `0x22D0`
+- **No dependencies**: The `quirk_no_bus_reset()` function and
+  `DECLARE_PCI_FIXUP_HEADER` macro have existed in the kernel for a very
+  long time
+
+### User Impact
+
+- **Who is affected**: Users with Nvidia GB10 Root Ports (likely
+  MediaTek platforms given the author's affiliation)
+- **Severity without fix**: Bus reset can cause downstream devices to
+  become inaccessible (config accesses fail) or degrade link performance
+  (lower lane count). This can manifest as device failures, system
+  hangs, or degraded performance
+- **Severity with fix**: Bus reset is avoided for these specific root
+  ports, preventing the link training failure
+
+### Stability Indicators
+
+- **Reviewed-by**: Manivannan Sadhasivam (PCI subsystem reviewer)
+- **Committed by**: Bjorn Helgaas (PCI subsystem maintainer), who also
+  edited the commit log
+- **Mailing list link**: Provided for traceability
+- The pattern is identical to many existing quirks in the same file
+
+### Dependency Check
+
+No dependencies. The `quirk_no_bus_reset()` function exists in all
+stable trees. `DECLARE_PCI_FIXUP_HEADER` and `PCI_VENDOR_ID_NVIDIA` are
+long-established. This will apply cleanly to any stable tree.
+
+### Conclusion
+
+This is a textbook hardware quirk addition — small, self-contained, zero
+regression risk, fixes a real hardware issue (bus reset failure causing
+device inaccessibility), uses existing well-tested infrastructure,
+reviewed and committed by the PCI subsystem maintainer. It meets all
+stable kernel criteria.
+
+**YES**
+
+ drivers/pci/quirks.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index 54c76ba9a767e..5782dfb863cad 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -3748,6 +3748,14 @@ static void quirk_no_bus_reset(struct pci_dev *dev)
+ 	dev->dev_flags |= PCI_DEV_FLAGS_NO_BUS_RESET;
+ }
  
- 	/* Additional MediaTek MT7920 Bluetooth devices */
- 	{ USB_DEVICE(0x0489, 0xe134), .driver_info = BTUSB_MEDIATEK |
++/*
++ * After asserting Secondary Bus Reset to downstream devices via a GB10
++ * Root Port, the link may not retrain correctly.
++ * https://lore.kernel.org/r/20251113084441.2124737-1-Johnny-CC.Chang@mediatek.com
++ */
++DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_NVIDIA, 0x22CE, quirk_no_bus_reset);
++DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_NVIDIA, 0x22D0, quirk_no_bus_reset);
++
+ /*
+  * Some NVIDIA GPU devices do not work with bus reset, SBR needs to be
+  * prevented for those affected devices.
 -- 
 2.51.0
 
