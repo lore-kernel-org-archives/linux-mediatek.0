@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B4E1EF99EA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Feb 2026 01:03:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA0F6EF99EA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Feb 2026 01:07:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dhJ/jq/Pj5DOouPa4A2fn7aUx9kY+OMCW90WgTFPDZc=; b=Xmd1tCtGWCiGPthyGvW7NFrOC3
-	cGBUQun3JWTWXIx95122kyTlBSj2QLKE5p9atWZJeoOIydfFfgmcHejc3b+nZah0fPxMHHfdENz1I
-	QXZS5+ljHnEyfv5HV/VClNueCq868g5goH11g68qGcIejRrkpJM21bLtp15M9/PgiR1EIvjm3oc5w
-	N3/j7cQVkeXmtm54A2CLCPTD07Kv9rwFFNpgG3hBs6A4dt/Wd0bm0nlCly6lGX7MF4uSUVCrVNIXq
-	Cac2IxjsNJ8U0xDJxJfYpZqU42ZhxK4UiX4dIPwO2oDf7csSstey3fjasaJ2VuPVbcP96NhlQhYtz
-	ykxTdVCw==;
+	bh=F9jBCZof2KflqNaybxTzLtq9Mjcx8z9DFxizGag2cF0=; b=lfpfiPXbbtl9whOsGJKGVz9jc6
+	JPzyd4xJDDfRi5J6n4wZbpFK17JFOnrpU9kcSFZy4uq81ya9GD5bHV5vktsnW7gVCl6pSESDoLEbq
+	vLUUOtiKWh6AQCAfbc1iKmsNbKceYegp02tYBntBWuHVyKgEb+dXtq43W+PVDgMx86h84kREXZGcq
+	FQEGIXIYD+hjw2kDchkU1//ClL8TwKukgrM9y8XMEjV74dzAQ4XlK2/RPw1hJsCXb6IUiDJKBsDPf
+	SrdOTfUayZtwYWRYDb/qFyj09F7BRJs//1FCODu+3Zm2yMZTvMvyDSBCEz1Nj1vEFZjwmkgDA1KmV
+	EsXFROmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vr43m-000000045ud-3tWi;
-	Sat, 14 Feb 2026 01:02:58 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vr47p-000000046vF-0aQO;
+	Sat, 14 Feb 2026 01:07:09 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vr43j-000000045tz-1YYZ;
-	Sat, 14 Feb 2026 01:02:56 +0000
+	id 1vr47m-000000046u4-2ssl;
+	Sat, 14 Feb 2026 01:07:06 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8F60E42D8C;
-	Sat, 14 Feb 2026 01:02:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56751C19423;
-	Sat, 14 Feb 2026 01:02:53 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id ACFA960140;
+	Sat, 14 Feb 2026 01:07:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F044DC116C6;
+	Sat, 14 Feb 2026 01:07:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771030974;
-	bh=ftu+ftRP09XJH/t4f5CrfgMb7qM3jXxRAJ21ZZT8UmQ=;
+	s=k20201202; t=1771031225;
+	bh=rDcWMAVldkzNaS8lDSB7w2Yk/9/U2azR+6IWXKQYi50=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=bbhX3Z3R4rYNFPRG94aligZWiB1IkA63Ob7rs4AgHNyLN4LCUdQmB6m1mhTdbXuRf
-	 8RsIfN0jtIC3bcb+qRwcUeugk47enEZFei+5KNLi2MDK+MbPmM5qgZpQ4H3fmSgvCY
-	 a0ZmPyRuOYLTzthP9UEur/75Z3e63CPoM9B8Lsq62vBb44sk4CL6FVMZ7YuYIzl5eU
-	 JObSYA7KjbHrRQ0pwGCnQDbWMMW+uRDLDyERhu2A1Eay0NeJZC+2AkRaUd1zA3jEr4
-	 hSOLCDWpQ4w260mxjBjK5i+isOSpyjNwFYSRwy2TEqFdbBrDqhwBVtlC2P+SgvROJs
-	 tPZpgUkfwWO/g==
+	b=ODDFwlURN5QaD6cm8CNWXh/XgakSO58kpoPQkT3XCs28MC3fdV5ios/DWlzP9XI/O
+	 DGlSTN9hkHBOc0oZ7Pvwe5RePIzX2ngCHHWsxW++TXKmb38zMVCJ5EE3OO3c1ZYgbY
+	 xjtYIbJOEXnVTuERaDFa7+tb4p0QfZZpLgX0FN1hs5Qez1kPmwiAtGmMCcrjwN16iE
+	 kyiQgFxo03gi5t5GdEE/Tq2MI2t3CdqAsV/8avoyW4jbm2YoEUAJJBNcVrd3bsy8+1
+	 v5vqOD7SSF/M8sYrxMhY7v573LVwX7Wpa9yjGcwEtT4ZxJDzA7Yl2Siji2L/6zL/M3
+	 FBrobmJoqpLig==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Xiaolei Wang <xiaolei.wang@windriver.com>,
-	=?UTF-8?q?Ma=C3=ADra=20Canal?= <mcanal@igalia.com>,
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	mwen@igalia.com,
 	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
+	neil.armstrong@linaro.org,
+	nhebert@chromium.org,
+	yelangyan@huaqin.corp-partner.google.com,
+	sebastian.fricke@collabora.com,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.19-5.15] drm/v3d: Set DMA segment size to avoid debug warnings
-Date: Fri, 13 Feb 2026 19:58:04 -0500
-Message-ID: <20260214010245.3671907-4-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.19-6.6] media: mediatek: vcodec: Don't try to decode 422/444 VP9
+Date: Fri, 13 Feb 2026 19:59:50 -0500
+Message-ID: <20260214010245.3671907-110-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20260214010245.3671907-1-sashal@kernel.org>
 References: <20260214010245.3671907-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.19
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260213_170255_457231_F078A344 
-X-CRM114-Status: GOOD (  21.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,48 +82,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Xiaolei Wang <xiaolei.wang@windriver.com>
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
-[ Upstream commit 9eb018828b1b30dfba689c060735c50fc5b9f704 ]
+[ Upstream commit 3e92d7e4935084ecdbdc88880cc4688618ae1557 ]
 
-When using V3D rendering with CONFIG_DMA_API_DEBUG enabled, the
-kernel occasionally reports a segment size mismatch. This is because
-'max_seg_size' is not set. The kernel defaults to 64K. setting
-'max_seg_size' to the maximum will prevent 'debug_dma_map_sg()'
-from complaining about the over-mapping of the V3D segment length.
+This is not supported by the hardware and trying to decode
+these leads to LAT timeout errors.
 
-DMA-API: v3d 1002000000.v3d: mapping sg segment longer than device
- claims to support [len=8290304] [max=65536]
-WARNING: CPU: 0 PID: 493 at kernel/dma/debug.c:1179 debug_dma_map_sg+0x330/0x388
-CPU: 0 UID: 0 PID: 493 Comm: Xorg Not tainted 6.12.53-yocto-standard #1
-Hardware name: Raspberry Pi 5 Model B Rev 1.0 (DT)
-pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-pc : debug_dma_map_sg+0x330/0x388
-lr : debug_dma_map_sg+0x330/0x388
-sp : ffff8000829a3ac0
-x29: ffff8000829a3ac0 x28: 0000000000000001 x27: ffff8000813fe000
-x26: ffffc1ffc0000000 x25: ffff00010fdeb760 x24: 0000000000000000
-x23: ffff8000816a9bf0 x22: 0000000000000001 x21: 0000000000000002
-x20: 0000000000000002 x19: ffff00010185e810 x18: ffffffffffffffff
-x17: 69766564206e6168 x16: 74207265676e6f6c x15: 20746e656d676573
-x14: 20677320676e6970 x13: 5d34303334393134 x12: 0000000000000000
-x11: 00000000000000c0 x10: 00000000000009c0 x9 : ffff8000800e0b7c
-x8 : ffff00010a315ca0 x7 : ffff8000816a5110 x6 : 0000000000000001
-x5 : 000000000000002b x4 : 0000000000000002 x3 : 0000000000000008
-x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff00010a315280
-Call trace:
- debug_dma_map_sg+0x330/0x388
- __dma_map_sg_attrs+0xc0/0x278
- dma_map_sgtable+0x30/0x58
- drm_gem_shmem_get_pages_sgt+0xb4/0x140
- v3d_bo_create_finish+0x28/0x130 [v3d]
- v3d_create_bo_ioctl+0x54/0x180 [v3d]
- drm_ioctl_kernel+0xc8/0x140
- drm_ioctl+0x2d4/0x4d8
-
-Signed-off-by: Xiaolei Wang <xiaolei.wang@windriver.com>
-Link: https://patch.msgid.link/20251203130323.2247072-1-xiaolei.wang@windriver.com
-Signed-off-by: Maíra Canal <mcanal@igalia.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
@@ -133,140 +101,145 @@ LLM Generated explanations, may be completely bogus:
 
 ### 1. Commit Message Analysis
 
-The commit message is clear and well-documented. It explains:
-- **The problem**: When CONFIG_DMA_API_DEBUG is enabled, V3D triggers a
-  WARNING because `max_seg_size` is not set, defaulting to 64K.
-- **The trigger**: Normal GPU rendering on Raspberry Pi 5 running Xorg.
-- **The mechanism**: `debug_dma_map_sg()` detects that the scatterlist
-  segment (8,290,304 bytes) exceeds the device's reported max (65,536
-  bytes).
-- A full stack trace is provided, confirming this is a real,
-  reproducible issue hit during normal operation (PID 493 is Xorg).
+The commit message is clear and direct: "Don't try to decode 422/444
+VP9" with the explanation that "this is not supported by the hardware
+and trying to decode these leads to LAT timeout errors." This describes
+a real hardware limitation that causes a user-visible failure (decode
+timeout).
 
 ### 2. Code Change Analysis
 
-The patch adds a single line:
+The change adds exactly 6 lines of code to the
+`V4L2_CID_STATELESS_VP9_FRAME` case in `mtk_vdec_s_ctrl()`:
 
-```c
-dma_set_max_seg_size(&pdev->dev, UINT_MAX);
+```496:505:drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec
+_stateless.c
+        case V4L2_CID_STATELESS_VP9_FRAME:
+                frame = (struct v4l2_ctrl_vp9_frame *)hdr_ctrl->p_new.p;
+
+                if (frame->bit_depth == 10) {
+                        ctx->is_10bit_bitstream = true;
+                } else if (frame->bit_depth != 8) {
+                        mtk_v4l2_vdec_err(ctx, "VP9: bit_depth:%d",
+frame->bit_depth);
+                        return -EINVAL;
+                }
+                break;
 ```
 
-This is placed right after `dma_set_mask_and_coherent()` succeeds, which
-is the natural location. It tells the DMA layer that V3D has no hardware
-constraint on DMA segment sizes (because V3D uses its own MMU to handle
-scatterlist mappings). The 64K default is simply incorrect for this
-device.
+The new code, inserted between the bit_depth check and the `break`,
+checks the VP9 frame's subsampling flags. Both
+`V4L2_VP9_FRAME_FLAG_X_SUBSAMPLING` and
+`V4L2_VP9_FRAME_FLAG_Y_SUBSAMPLING` must be set (indicating 4:2:0). If
+either is missing, it means the stream uses 4:2:2, 4:4:0, or 4:4:4 — all
+unsupported.
 
-### 3. Established Pattern Across DRM Subsystem
+### 3. The Bug Mechanism (Detailed)
 
-This is an extremely well-established pattern. My search found **17
-other DRM drivers** making the exact same call:
+The critical path that allows unsupported VP9 streams to reach the
+hardware:
 
-- `drivers/gpu/drm/panfrost/panfrost_gpu.c` —
-  `dma_set_max_seg_size(pfdev->base.dev, UINT_MAX);`
-- `drivers/gpu/drm/i915/i915_driver.c` —
-  `dma_set_max_seg_size(i915->drm.dev, UINT_MAX);`
-- `drivers/gpu/drm/amd/amdgpu/amdgpu_ttm.c` —
-  `dma_set_max_seg_size(adev->dev, UINT_MAX);`
-- `drivers/gpu/drm/msm/msm_drv.c` — `dma_set_max_seg_size(dev,
-  UINT_MAX);`
-- `drivers/gpu/drm/imagination/pvr_device.c`, `lima`, `panthor`,
-  `etnaviv`, `mediatek`, `vmwgfx`, `virtio`, `tidss`, `sun4i`, `xlnx`,
-  `arm/komeda`, `xe`, `exynos`
+**Step 1**: The V4L2 core validates VP9 frame data in
+`validate_vp9_frame()` (in `v4l2-ctrls-core.c`). This validates *VP9
+spec compliance* — e.g., profile 0/2 must be 4:2:0, profile 1/3 must be
+non-4:2:0. It does NOT enforce driver-specific hardware limitations.
 
-The panfrost commit `ac5037afefd33` (2020) has the identical rationale:
-"Since all we do with scatterlists is map them in the MMU, we don't have
-any hardware constraints on how they're laid out. Let the DMA layer know
-so it won't warn when DMA API debugging is enabled." V3D was simply
-missed when this pattern was being applied across DRM drivers.
+```606:616:drivers/media/v4l2-core/v4l2-ctrls-core.c
+        /* Profile 0 and 2 only accept YUV 4:2:0. */
+        if ((frame->profile == 0 || frame->profile == 2) &&
+            (!(frame->flags & V4L2_VP9_FRAME_FLAG_X_SUBSAMPLING) ||
+             !(frame->flags & V4L2_VP9_FRAME_FLAG_Y_SUBSAMPLING)))
+                return -EINVAL;
 
-### 4. Bug Classification
-
-This fixes a **kernel WARNING** that fires during normal GPU buffer
-allocation. The call path is:
-
-```
-v3d_create_bo_ioctl → v3d_bo_create_finish → drm_gem_shmem_get_pages_sgt
-→ dma_map_sgtable → debug_dma_map_sg (WARNING)
+        /* Profile 1 and 3 only accept YUV 4:2:2, 4:4:0 and 4:4:4. */
+        if ((frame->profile == 1 || frame->profile == 3) &&
+            ((frame->flags & V4L2_VP9_FRAME_FLAG_X_SUBSAMPLING) &&
+             (frame->flags & V4L2_VP9_FRAME_FLAG_Y_SUBSAMPLING)))
+                return -EINVAL;
 ```
 
-Every time a GPU buffer object larger than 64K is created (which is
-virtually every BO for rendering), this warning fires. On a system with
-DMA debug enabled, this causes severe log spam and performance
-degradation from the warning path.
+**Step 2**: The VP9 PROFILE menu control and the VP9 FRAME compound
+control are **separate, independent V4L2 controls**. The profile field
+inside the FRAME control is not cross-validated against the PROFILE menu
+control. So userspace can submit a VP9 frame with profile=1 even if the
+PROFILE control only advertises support for profiles 0 and 2.
 
-### 5. Backport Compatibility
+**Step 3**: The driver's `s_ctrl` handler only checked `bit_depth`, not
+subsampling. So a valid VP9 spec frame with profile 1 and 4:2:2
+subsampling would pass all checks and reach the hardware.
 
-- **V3D driver availability**: Added in v4.18, present in all current
-  LTS trees (5.4, 5.10, 5.15, 6.1, 6.6, 6.12).
-- **API compatibility**: In kernels before v6.12 (commit
-  `334304ac2baca`), `dma_set_max_seg_size` returns `int` instead of
-  `void`. Since this patch does **not** check the return value, it
-  compiles cleanly on both old and new signatures.
-- **Context adjustment**: In older stable trees (6.6, 6.1, etc.), the
-  error path after `dma_set_mask_and_coherent` uses `return ret;`
-  instead of `goto clk_disable;`. This means the patch won't apply
-  verbatim, but the fix is trivial to adapt — the `dma_set_max_seg_size`
-  line just needs to be inserted between the mask check and
-  `v3d->va_width =`, regardless of the surrounding error handling style.
+**Step 4**: The MediaTek hardware decoder only supports 4:2:0. The VP9
+LAT decoder has a `struct vdec_vp9_slice_reference` with `subsampling_x`
+and `subsampling_y` fields that get passed to firmware/hardware.
+Attempting to decode non-4:2:0 causes a LAT hardware timeout (1000ms via
+`WAIT_INTR_TIMEOUT_MS`).
 
-### 6. Risk Assessment
+### 4. Impact on Stable Trees
 
-- **Size**: 1 line added, 1 file changed — minimal.
-- **Scope**: Only affects V3D DMA segment size metadata — no functional
-  change to DMA mapping behavior at runtime.
-- **Regression risk**: Near zero. If the call fails (impossible for
-  platform devices which always have `dma_parms`), the result is the
-  status quo (warnings continue).
-- **Testing**: The author tested on Raspberry Pi 5, and the maintainer
-  (Maíra Canal) signed off.
+**v6.6** is especially affected. I verified that:
+- The file and the `mtk_vdec_s_ctrl` function exist in v6.6 (added via
+  commit `9d86be9bda6cd`)
+- In v6.6, the VP9 profile control allows ALL profiles 0-3 (`max =
+  V4L2_MPEG_VIDEO_VP9_PROFILE_3`) with **no skip mask**. This means
+  profiles 1 and 3 (which require non-4:2:0 subsampling) are explicitly
+  advertised as supported, making the bug trivially reproducible with
+  any VP9 4:2:2 content.
+- The code context at the insertion point in v6.6 is identical to the
+  diff context, so the patch applies cleanly.
 
-### 7. User Impact
+**v6.12** already has the profile restriction (`menu_skip_mask =
+BIT(V4L2_MPEG_VIDEO_VP9_PROFILE_1)`, `max = PROFILE_2`), which reduces
+the attack surface, but the bug still exists because the FRAME control's
+profile field is not validated against the PROFILE control.
 
-- **Who is affected**: Raspberry Pi 5 users (V3D 7.1) and Raspberry Pi 4
-  users (V3D 4.2) running any graphical desktop with
-  CONFIG_DMA_API_DEBUG enabled.
-- **Severity**: Kernel WARNING spam during every buffer allocation,
-  causing log pollution and potential performance issues from the
-  warning code path.
-- **Real-world**: The reporter was using a Yocto-based system
-  (6.12.53-yocto-standard), showing this is a production environment.
+**v6.1 and earlier**: The `s_ctrl` handler doesn't exist, so the patch
+doesn't apply.
 
-### 8. Stable Criteria Check
+### 5. Patch Characteristics
 
-| Criterion | Met? |
-|-----------|------|
-| Obviously correct and tested | Yes — one-line, well-established
-pattern, tested on real hardware |
-| Fixes a real bug | Yes — WARNING during normal GPU operation |
-| Important issue | Yes — affects normal rendering on popular hardware |
-| Small and contained | Yes — 1 line, 1 file |
-| No new features | Yes — just configures existing DMA parameter |
-| Applies to stable | Yes — trivial context adjustment needed for older
-trees |
+- **Size**: 6 new lines
+- **Self-contained**: No dependencies on any other commits
+- **Pattern**: Follows the exact same validation pattern as the
+  `bit_depth` check immediately above it
+- **Error handling**: Standard `-EINVAL` return with diagnostic error
+  message
+- **Risk**: Extremely low — only rejects invalid configurations that the
+  hardware cannot handle
+- **Reviewed-by**: AngeloGioacchino Del Regno (Collabora, MediaTek
+  subsystem maintainer)
 
-This is an ideal stable candidate: a tiny, obviously correct fix for a
-real issue, following an established pattern used by 17 other DRM
-drivers, with zero regression risk.
+### 6. Conclusion
+
+This commit fixes a real, user-visible hardware bug. Without this fix,
+attempting to decode VP9 4:2:2 or 4:4:4 content on MediaTek SoCs causes
+a 1-second hardware timeout, resulting in decode errors. The fix is
+small (6 lines), surgical, self-contained, follows existing code
+patterns exactly, and has zero risk of regression (it only rejects
+configurations that will always fail). It's especially important for
+v6.6 where the profile control doesn't even restrict non-4:2:0 profiles.
 
 **YES**
 
- drivers/gpu/drm/v3d/v3d_drv.c | 2 ++
- 1 file changed, 2 insertions(+)
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c      | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/gpu/drm/v3d/v3d_drv.c b/drivers/gpu/drm/v3d/v3d_drv.c
-index e8a46c8bad8a2..f469de456f9bb 100644
---- a/drivers/gpu/drm/v3d/v3d_drv.c
-+++ b/drivers/gpu/drm/v3d/v3d_drv.c
-@@ -378,6 +378,8 @@ static int v3d_platform_drm_probe(struct platform_device *pdev)
- 	if (ret)
- 		goto clk_disable;
- 
-+	dma_set_max_seg_size(&pdev->dev, UINT_MAX);
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+index d873159b9b306..9eef3ff2b1278 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
+@@ -502,6 +502,12 @@ static int mtk_vdec_s_ctrl(struct v4l2_ctrl *ctrl)
+ 			mtk_v4l2_vdec_err(ctx, "VP9: bit_depth:%d", frame->bit_depth);
+ 			return -EINVAL;
+ 		}
 +
- 	v3d->va_width = 30 + V3D_GET_FIELD(mmu_debug, V3D_MMU_VA_WIDTH);
- 
- 	ident1 = V3D_READ(V3D_HUB_IDENT1);
++		if (!(frame->flags & V4L2_VP9_FRAME_FLAG_X_SUBSAMPLING) ||
++		    !(frame->flags & V4L2_VP9_FRAME_FLAG_Y_SUBSAMPLING)) {
++			mtk_v4l2_vdec_err(ctx, "VP9: only 420 subsampling is supported");
++			return -EINVAL;
++		}
+ 		break;
+ 	case V4L2_CID_STATELESS_AV1_SEQUENCE:
+ 		seq = (struct v4l2_ctrl_av1_sequence *)hdr_ctrl->p_new.p;
 -- 
 2.51.0
 
