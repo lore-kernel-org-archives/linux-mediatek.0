@@ -4,70 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA0F6EF99EA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Feb 2026 01:07:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D50DBEDF142
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Feb 2026 08:27:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F9jBCZof2KflqNaybxTzLtq9Mjcx8z9DFxizGag2cF0=; b=lfpfiPXbbtl9whOsGJKGVz9jc6
-	JPzyd4xJDDfRi5J6n4wZbpFK17JFOnrpU9kcSFZy4uq81ya9GD5bHV5vktsnW7gVCl6pSESDoLEbq
-	vLUUOtiKWh6AQCAfbc1iKmsNbKceYegp02tYBntBWuHVyKgEb+dXtq43W+PVDgMx86h84kREXZGcq
-	FQEGIXIYD+hjw2kDchkU1//ClL8TwKukgrM9y8XMEjV74dzAQ4XlK2/RPw1hJsCXb6IUiDJKBsDPf
-	SrdOTfUayZtwYWRYDb/qFyj09F7BRJs//1FCODu+3Zm2yMZTvMvyDSBCEz1Nj1vEFZjwmkgDA1KmV
-	EsXFROmQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OJhZ6X3qHQLlGKjG9LB5k56TNXFVKGNDz+IqQMuGJ24=; b=0klWPvMSD6FDe1dBJ62MO+15a8
+	GMKvHEvcMG8EMdtdIMwd1hcKzQqgqBD4sFcJyiKz/Q9b3I3vIcKzQv0ZjuyIx96BlKhI97kYkXR9t
+	SJFLyl5oVcB51peHfJx+zOUBfnBxSgVAkMdk+Wt9n+z1Vb79PXPK1W5MHI37dofD8eom+8EuEPoU+
+	JbxyetHT5YBDRGAyWWDtZC/u8JQxW2wqoB3S2yVmNXmg8DF0snyiWv/wL7mItPNQfDL7Qyp5qdQ/L
+	40bvRMPXNoSdquBLKttclC+aMkHWRcI4sO5Y72yMCu9R1lm0+Q3j2x2eKW/2OK1jRtyguCE33KHZ3
+	dBdSJBlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vr47p-000000046vF-0aQO;
-	Sat, 14 Feb 2026 01:07:09 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vrB0Q-00000004OrD-1mKp;
+	Sat, 14 Feb 2026 08:27:58 +0000
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vr47m-000000046u4-2ssl;
-	Sat, 14 Feb 2026 01:07:06 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id ACFA960140;
-	Sat, 14 Feb 2026 01:07:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F044DC116C6;
-	Sat, 14 Feb 2026 01:07:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771031225;
-	bh=rDcWMAVldkzNaS8lDSB7w2Yk/9/U2azR+6IWXKQYi50=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ODDFwlURN5QaD6cm8CNWXh/XgakSO58kpoPQkT3XCs28MC3fdV5ios/DWlzP9XI/O
-	 DGlSTN9hkHBOc0oZ7Pvwe5RePIzX2ngCHHWsxW++TXKmb38zMVCJ5EE3OO3c1ZYgbY
-	 xjtYIbJOEXnVTuERaDFa7+tb4p0QfZZpLgX0FN1hs5Qez1kPmwiAtGmMCcrjwN16iE
-	 kyiQgFxo03gi5t5GdEE/Tq2MI2t3CdqAsV/8avoyW4jbm2YoEUAJJBNcVrd3bsy8+1
-	 v5vqOD7SSF/M8sYrxMhY7v573LVwX7Wpa9yjGcwEtT4ZxJDzA7Yl2Siji2L/6zL/M3
-	 FBrobmJoqpLig==
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
+	id 1vrB0O-00000004Oqs-2YVG
+	for linux-mediatek@lists.infradead.org;
+	Sat, 14 Feb 2026 08:27:57 +0000
+Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2ab46931cf1so13533255ad.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 14 Feb 2026 00:27:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1771057675; x=1771662475; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=OJhZ6X3qHQLlGKjG9LB5k56TNXFVKGNDz+IqQMuGJ24=;
+        b=Dr4IuVzjmw9QlXnN4PngXm+oNB8IDqxKz28oKyG+zEaad9BGngbSzOpIv6I7/CIBZJ
+         jj0IgU2rYIMd/WHdtEXM8UKioM6owDdvbHINxJXawwZpOs1i2W5NHi+q+YTlVbJS7hr9
+         UW6NXii3OjhOHVJSj8L7/eUVSHH9juN7QZQ5dUGKjPIPCUV8j7FYDlCTwW5EkPIXwUw7
+         yAlgcp9AuE6Tnju5OhEsvQh0JjlL2f5/6MoPejRlqBBCOKxFrm3adsz8RRpbNfvlDHGy
+         I/qphuW5z1knXbT8ldhCZuwhdZIAN/LghWLztzXZoP2etYbgiRqJJMkj6PiXTmPY3OqQ
+         QtQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1771057675; x=1771662475;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=OJhZ6X3qHQLlGKjG9LB5k56TNXFVKGNDz+IqQMuGJ24=;
+        b=tVKqAcLGbYVgvPFz4oPK10dGIplKkG2Lu81FwKzgvynRfN7fwBUrdhrXWSCytD5a+0
+         sj+UC+K+VF3nz7itrtQU1xxx2apjCInNZMH7+HFyUX+o23noWQD0gURJ0lLyGxEi4Rhj
+         uRZ54siO+72CuK40yvqycoDRRMQYHpDAkb9awxoiN89Jk+C3Ib54WibqRhAj0O4r0QGu
+         GhrJl4V+tJkNA9ar9X8zMExUr/H60/GeFqWNRDNUCnJlhSqMyyk6iBzt1VSMAthWiTI3
+         Eq1gsKk2L3srrZ9BC8z+VTHH8kvR0ZhIakg5SFUCCZhrcrU+fXF3+910CrBVxxd9KN+4
+         5BGg==
+X-Forwarded-Encrypted: i=1; AJvYcCVkzHvmPzA97lyux1c56R03oWcDIJF47eSdmx4LnhU5cVKcDvM+ayUc29k/rDtGFX1ZbIN0fEhiNCG8af4S+Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz+HRyCqC0hLojIvOY289ZaJhBIa3bn5pY2I3EojlDWJfGRCBru
+	RPqVFgEfCeVWHmiUnnZUA1hBNS0ZHoQjvuwIMz2INHSlWVHcAngxqlri
+X-Gm-Gg: AZuq6aK+qQqbXS4zyWOku25/KKlaZYyrGFD54oqFbuSAgSHJ1GviKBVitHbhz+EPXuu
+	+NVuq8/446m9by9b5mcjV77mINSN9rUAQrvzuO4AnJxdgeWO0tl3g7/QU5vU0cN6Kh5a8ZUhWRb
+	JxvpNu4SS9eLPrWhLQVnHfZJTmPG/jmKEDP2bLbaRVOTRTY3CpR8GxN2BFN5qw1nMmz0xjQMhJY
+	fbb7lpfGWE9Fcg3EZ0See0Pr2raZA5c25U4oAI4jvGkxfVvdSi9SNnHOUBZnPHL0ivTm5t0I/FE
+	CH/Zx47ySXYAmCyUsVmtfHdC7cU1zJjVEnVmC61o1el18epB+veFlnUMwbsOyAzBmfVJVXxd7IE
+	tgS+kfDjvZyhenQ46KoAPjvGDvbl93Ibf0nkR2vdl1IFI4CdJ2t7Zq3XtEEKw1y5hwT8YFvf86W
+	4u/DeCwRxO1O1vPh/jmOnuKLKnNlyn6b+dHiuCK/zDS5Aaxtm+
+X-Received: by 2002:a17:902:f547:b0:2aa:d5b1:194f with SMTP id d9443c01a7336-2acba495a44mr28702715ad.30.1771057675271;
+        Sat, 14 Feb 2026 00:27:55 -0800 (PST)
+Received: from kush-pc.lan ([157.48.94.145])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ad1a9d5d3asm13412975ad.51.2026.02.14.00.27.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 14 Feb 2026 00:27:54 -0800 (PST)
+From: OnlineLearningTutorials <kush.kulshrestha5@gmail.com>
+X-Google-Original-From: OnlineLearningTutorials <kush.kulshrestha.5@gmail.com>
+To: luiz.dentz@gmail.com,
+	marcel@holtmann.org
+Cc: kush.kulshrestha.5@gmail.com,
 	matthias.bgg@gmail.com,
-	neil.armstrong@linaro.org,
-	nhebert@chromium.org,
-	yelangyan@huaqin.corp-partner.google.com,
-	sebastian.fricke@collabora.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.19-6.6] media: mediatek: vcodec: Don't try to decode 422/444 VP9
-Date: Fri, 13 Feb 2026 19:59:50 -0500
-Message-ID: <20260214010245.3671907-110-sashal@kernel.org>
+	angelogioacchino.delregno@collabora.com,
+	linux-bluetooth@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] Bluetooth: btusb: Add support for MediaTek MT7902
+Date: Sat, 14 Feb 2026 13:57:38 +0530
+Message-ID: <20260214082738.139047-1-kush.kulshrestha.5@gmail.com>
 X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260214010245.3671907-1-sashal@kernel.org>
-References: <20260214010245.3671907-1-sashal@kernel.org>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.19
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260214_002756_653952_EFB6B5DE 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,164 +101,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+This patch adds USB IDs for the AzureWave/MediaTek MT7902 Bluetooth
+module.
+The device IDs included are:
+- 13d3:3579
+- 13d3:3580
+- 13d3:3594
+- 13d3:3596
 
-[ Upstream commit 3e92d7e4935084ecdbdc88880cc4688618ae1557 ]
-
-This is not supported by the hardware and trying to decode
-these leads to LAT timeout errors.
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: OnlineLearningTutorials <kush.kulshrestha.5@gmail.com>
 ---
+ drivers/bluetooth/btmtk.c |  1 +
+ drivers/bluetooth/btusb.c | 10 ++++++++++
+ 2 files changed, 11 insertions(+)
 
-LLM Generated explanations, may be completely bogus:
-
-## Analysis
-
-### 1. Commit Message Analysis
-
-The commit message is clear and direct: "Don't try to decode 422/444
-VP9" with the explanation that "this is not supported by the hardware
-and trying to decode these leads to LAT timeout errors." This describes
-a real hardware limitation that causes a user-visible failure (decode
-timeout).
-
-### 2. Code Change Analysis
-
-The change adds exactly 6 lines of code to the
-`V4L2_CID_STATELESS_VP9_FRAME` case in `mtk_vdec_s_ctrl()`:
-
-```496:505:drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec
-_stateless.c
-        case V4L2_CID_STATELESS_VP9_FRAME:
-                frame = (struct v4l2_ctrl_vp9_frame *)hdr_ctrl->p_new.p;
-
-                if (frame->bit_depth == 10) {
-                        ctx->is_10bit_bitstream = true;
-                } else if (frame->bit_depth != 8) {
-                        mtk_v4l2_vdec_err(ctx, "VP9: bit_depth:%d",
-frame->bit_depth);
-                        return -EINVAL;
-                }
-                break;
-```
-
-The new code, inserted between the bit_depth check and the `break`,
-checks the VP9 frame's subsampling flags. Both
-`V4L2_VP9_FRAME_FLAG_X_SUBSAMPLING` and
-`V4L2_VP9_FRAME_FLAG_Y_SUBSAMPLING` must be set (indicating 4:2:0). If
-either is missing, it means the stream uses 4:2:2, 4:4:0, or 4:4:4 — all
-unsupported.
-
-### 3. The Bug Mechanism (Detailed)
-
-The critical path that allows unsupported VP9 streams to reach the
-hardware:
-
-**Step 1**: The V4L2 core validates VP9 frame data in
-`validate_vp9_frame()` (in `v4l2-ctrls-core.c`). This validates *VP9
-spec compliance* — e.g., profile 0/2 must be 4:2:0, profile 1/3 must be
-non-4:2:0. It does NOT enforce driver-specific hardware limitations.
-
-```606:616:drivers/media/v4l2-core/v4l2-ctrls-core.c
-        /* Profile 0 and 2 only accept YUV 4:2:0. */
-        if ((frame->profile == 0 || frame->profile == 2) &&
-            (!(frame->flags & V4L2_VP9_FRAME_FLAG_X_SUBSAMPLING) ||
-             !(frame->flags & V4L2_VP9_FRAME_FLAG_Y_SUBSAMPLING)))
-                return -EINVAL;
-
-        /* Profile 1 and 3 only accept YUV 4:2:2, 4:4:0 and 4:4:4. */
-        if ((frame->profile == 1 || frame->profile == 3) &&
-            ((frame->flags & V4L2_VP9_FRAME_FLAG_X_SUBSAMPLING) &&
-             (frame->flags & V4L2_VP9_FRAME_FLAG_Y_SUBSAMPLING)))
-                return -EINVAL;
-```
-
-**Step 2**: The VP9 PROFILE menu control and the VP9 FRAME compound
-control are **separate, independent V4L2 controls**. The profile field
-inside the FRAME control is not cross-validated against the PROFILE menu
-control. So userspace can submit a VP9 frame with profile=1 even if the
-PROFILE control only advertises support for profiles 0 and 2.
-
-**Step 3**: The driver's `s_ctrl` handler only checked `bit_depth`, not
-subsampling. So a valid VP9 spec frame with profile 1 and 4:2:2
-subsampling would pass all checks and reach the hardware.
-
-**Step 4**: The MediaTek hardware decoder only supports 4:2:0. The VP9
-LAT decoder has a `struct vdec_vp9_slice_reference` with `subsampling_x`
-and `subsampling_y` fields that get passed to firmware/hardware.
-Attempting to decode non-4:2:0 causes a LAT hardware timeout (1000ms via
-`WAIT_INTR_TIMEOUT_MS`).
-
-### 4. Impact on Stable Trees
-
-**v6.6** is especially affected. I verified that:
-- The file and the `mtk_vdec_s_ctrl` function exist in v6.6 (added via
-  commit `9d86be9bda6cd`)
-- In v6.6, the VP9 profile control allows ALL profiles 0-3 (`max =
-  V4L2_MPEG_VIDEO_VP9_PROFILE_3`) with **no skip mask**. This means
-  profiles 1 and 3 (which require non-4:2:0 subsampling) are explicitly
-  advertised as supported, making the bug trivially reproducible with
-  any VP9 4:2:2 content.
-- The code context at the insertion point in v6.6 is identical to the
-  diff context, so the patch applies cleanly.
-
-**v6.12** already has the profile restriction (`menu_skip_mask =
-BIT(V4L2_MPEG_VIDEO_VP9_PROFILE_1)`, `max = PROFILE_2`), which reduces
-the attack surface, but the bug still exists because the FRAME control's
-profile field is not validated against the PROFILE control.
-
-**v6.1 and earlier**: The `s_ctrl` handler doesn't exist, so the patch
-doesn't apply.
-
-### 5. Patch Characteristics
-
-- **Size**: 6 new lines
-- **Self-contained**: No dependencies on any other commits
-- **Pattern**: Follows the exact same validation pattern as the
-  `bit_depth` check immediately above it
-- **Error handling**: Standard `-EINVAL` return with diagnostic error
-  message
-- **Risk**: Extremely low — only rejects invalid configurations that the
-  hardware cannot handle
-- **Reviewed-by**: AngeloGioacchino Del Regno (Collabora, MediaTek
-  subsystem maintainer)
-
-### 6. Conclusion
-
-This commit fixes a real, user-visible hardware bug. Without this fix,
-attempting to decode VP9 4:2:2 or 4:4:4 content on MediaTek SoCs causes
-a 1-second hardware timeout, resulting in decode errors. The fix is
-small (6 lines), surgical, self-contained, follows existing code
-patterns exactly, and has zero risk of regression (it only rejects
-configurations that will always fail). It's especially important for
-v6.6 where the profile control doesn't even restrict non-4:2:0 profiles.
-
-**YES**
-
- .../mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c      | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-index d873159b9b306..9eef3ff2b1278 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-@@ -502,6 +502,12 @@ static int mtk_vdec_s_ctrl(struct v4l2_ctrl *ctrl)
- 			mtk_v4l2_vdec_err(ctx, "VP9: bit_depth:%d", frame->bit_depth);
- 			return -EINVAL;
- 		}
-+
-+		if (!(frame->flags & V4L2_VP9_FRAME_FLAG_X_SUBSAMPLING) ||
-+		    !(frame->flags & V4L2_VP9_FRAME_FLAG_Y_SUBSAMPLING)) {
-+			mtk_v4l2_vdec_err(ctx, "VP9: only 420 subsampling is supported");
-+			return -EINVAL;
-+		}
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index a8c520dc09e1..b793947dd920 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -1323,6 +1323,7 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+ 	case 0x7668:
+ 		fwname = FIRMWARE_MT7668;
  		break;
- 	case V4L2_CID_STATELESS_AV1_SEQUENCE:
- 		seq = (struct v4l2_ctrl_av1_sequence *)hdr_ctrl->p_new.p;
++	case 0x7902:
+ 	case 0x7922:
+ 	case 0x7925:
+ 	case 0x7961:
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index fcec8e589e81..13a2aa13b9f4 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -629,6 +629,16 @@ static const struct usb_device_id quirks_table[] = {
+ 	/* Additional MediaTek MT7668 Bluetooth devices */
+ 	{ USB_DEVICE(0x043e, 0x3109), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
++
++	/* Additional MediaTek MT7902 Bluetooth devices */
++	{ USB_DEVICE(0x13d3, 0x3579), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x13d3, 0x3580), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x13d3, 0x3594), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x13d3, 0x3596), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 
+ 	/* Additional MediaTek MT7920 Bluetooth devices */
+ 	{ USB_DEVICE(0x0489, 0xe134), .driver_info = BTUSB_MEDIATEK |
 -- 
 2.51.0
 
