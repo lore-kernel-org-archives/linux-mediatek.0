@@ -4,108 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0ED0EF5870
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Feb 2026 08:56:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10C91EF586F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Feb 2026 10:02:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hK2+6zb+a/Y4VH1TL80C2G151TdqXNj4FnAMCZ4aPCY=; b=uzX0c7/lQwh8A9hcTERVILPf0e
-	35aJLmtj4Ms2H58nGRd+G4+KFNqKZIF3k/taDSfMZs0FQgKB0lAPv5CtyelfMkJVmHtCPbaAMO8qt
-	sHuZr44geQGOKhdf1NODPxGQQclHG8RDWQi15AG/X0nky05DtAN2/+ICvqg2OkLNm9KfItNse4KnQ
-	LU+9CnIBq6Y4zwi7IqL+vywckftUhgltIMUmRctaSBQf00svHd0uhFc46akRC1JDXpBjtYO75xQ3g
-	1qGI7Bya1NNkJay+9WwxBs84litkCVVaVZjlG/pJFbnGklW4w4u3SkwLhN/GdAGQcjqvlWG8CN9pN
-	59bMDXzQ==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EK56X4yUyK6p90PJP+pf1u3MX2f+sfz3TRR04+2G4T8=; b=cqaA0/SnbJOCeiDeUTIeAN+JW0
+	qHrII7ETmX0rQEoN4piFQ7S9FEYHoZ6TFA3DNCZv6uDC6ArrscspVd5oEb3XI81Rb7OC8wha+h77x
+	co5F4nSNZ95j9G5Ur7DEIXHMcOCH6hhEFAVG6STlz+Q+ZWwYjCiwKFddnoF2qiwFyeCLTMIsW5sAB
+	3nVGAsFGSjkNN92P5RjaCJQD1qUhYTpH0whEEYL6tY8cC9QUnmXCSN1jl1Hh5DhYEWTFHk3MzQiuy
+	76Zc8T2Ya4/wmXM1fBGI+uHEHsNrn4NifxHnw19G1jw/v6wCsLZM93BSOHvHdsi2e7n+f5pHqxC1U
+	VYiZxnUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrXvG-00000005HTx-2JlB;
-	Sun, 15 Feb 2026 08:56:10 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vrYxc-00000005JZl-2R6a;
+	Sun, 15 Feb 2026 10:02:40 +0000
+Received: from forward101a.mail.yandex.net ([2a02:6b8:c0e:500:1:45:d181:d101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrXvF-00000005HSY-3bdE
-	for linux-mediatek@lists.infradead.org;
-	Sun, 15 Feb 2026 08:56:09 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D89EE6001D;
-	Sun, 15 Feb 2026 08:55:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DCDEFC4CEF7;
-	Sun, 15 Feb 2026 08:55:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771145738;
-	bh=QQO+j1E3+GhhZtDPLBDgQ5bYSmkIcaM5bXYvmccLwoQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=rFaimtH3Cfmt/BAbUhUfor6Gx2OrxNhFJVhDdIeaTmQRvvrRcFGoVrXg905ac9Xa5
-	 xhrX41RsINilsHboyqdhIyYrseTQWpsS2hAiHlpX9VI0NQvPfiye7hgeaQs7qrhxey
-	 8FfLsrOZfkAYb7ILi+6BDOy1Srg2Dst00B9m5ut1wOJ6gf4klmIitre6YEI85jPm9D
-	 TBgzpi9qA6+Dxz1YAckUX/c3BeXrQ4cmml6U/a50gOdrIP5rWsmz6ElfcUxwggJ5VU
-	 AIJ7Y7fno5wc7qLOL+7iJCKj4Ex3LzVOyOb4T7671hbrGibNV76yInw7ze6fsOBArU
-	 hxmcebxZ22fFg==
-Message-ID: <a80eada0-c30b-4e4c-a47d-5e03f5331ff6@kernel.org>
-Date: Sun, 15 Feb 2026 09:55:35 +0100
+	id 1vrYxX-00000005JYq-2phw;
+	Sun, 15 Feb 2026 10:02:38 +0000
+Received: from mail-nwsmtp-smtp-production-main-54.vla.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-54.vla.yp-c.yandex.net [IPv6:2a02:6b8:c17:2010:0:640:2180:0])
+	by forward101a.mail.yandex.net (Yandex) with ESMTPS id C762280C19;
+	Sun, 15 Feb 2026 13:02:25 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-54.vla.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id 02U6OQUG14Y0-rqjbwYxY;
+	Sun, 15 Feb 2026 13:02:25 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=onurozkan.dev;
+	s=mail; t=1771149745;
+	bh=EK56X4yUyK6p90PJP+pf1u3MX2f+sfz3TRR04+2G4T8=;
+	h=Message-ID:Date:Cc:Subject:To:From;
+	b=B9UjE9SzXK5scnpObCqr7CuifSEFqaFsMpm86WX89Sf1FM6OjeTWgWmEl5Uc/IX/1
+	 k2hRFfCdjZ6yTOm17+R2SxqNFY3wsYET9Rtzh6lN3nbUrIIBAEkPKKRLRc3/anF3jw
+	 YpvpfGJW/Y6mrAB3bLVLw0tpe6E+UurPtKGuJEks=
+Authentication-Results: mail-nwsmtp-smtp-production-main-54.vla.yp-c.yandex.net; dkim=pass header.i=@onurozkan.dev
+From: =?UTF-8?q?Onur=20=C3=96zkan?= <work@onurozkan.dev>
+To: Alim Akhtar <alim.akhtar@samsung.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Boris Brezillon <boris.brezillon@collabora.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	David Airlie <airlied@gmail.com>,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-sunxi@lists.linux.dev,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Samuel Holland <samuel@sholland.org>,
+	Simona Vetter <simona@ffwll.ch>,
+	Steven Price <steven.price@arm.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>
+Cc: =?UTF-8?q?Onur=20=C3=96zkan?= <work@onurozkan.dev>
+Subject: [PATCH v1 0/2] arm64: dts + drm/panthor: require explicit GPU sram-supply
+Date: Sun, 15 Feb 2026 13:01:56 +0300
+Message-ID: <20260215100156.135374-1-work@onurozkan.dev>
+X-Mailer: git-send-email 2.51.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/2] dt-bindings: net: wireless: mt76: clarify backoff
- limit usage
-To: Ryder Lee <Ryder.Lee@mediatek.com>
-Cc: "robh@kernel.org" <robh@kernel.org>, "nbd@nbd.name" <nbd@nbd.name>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?B?QWxsZW4gWWUgKOiRieiKt+WLsyk=?= <Allen.Ye@mediatek.com>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>
-References: <8fa8ec500b3d4de7b1966c6887f1dfbe5c46a54c.1770856296.git.ryder.lee@mediatek.com>
- <e39bff1d56a3f8b5146b881eef3442a4af97078b.1770856296.git.ryder.lee@mediatek.com>
- <20260212-benevolent-peacock-of-rain-afbb6b@quoll>
- <d7e22b328fda50ebbf96f334fc15d63da9e7c19b.camel@mediatek.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <d7e22b328fda50ebbf96f334fc15d63da9e7c19b.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260215_020235_904110_A460A207 
+X-CRM114-Status: UNSURE (   8.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,50 +96,176 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/02/2026 18:31, Ryder Lee wrote:
->>>  
->>>    reg:
->>>      minItems: 1
->>> @@ -252,6 +257,14 @@ properties:
->>>                        followed by 10 power limit values. The order
->>> of the
->>>                        channel resource unit settings is RU26,
->>> RU52, RU106,
->>>                        RU242/SU20, RU484/SU40, RU996/SU80 and
->>> RU2x996/SU160.
->>> +                      - For mt7981/mt7986/mt7915/mt7916
->>> +                        - Beamforming entries for BW20~BW160 and
->>> OFDM do not
->>> +                          include 1T1ss.
->>> +                        - When 1T1ss is not used, it should be
->>> filled with 0.
->>
->> Shouldn't be skipped in such case? Why filling with 0 matters?
->>
-> This logic was already present in driver. The driver determines whether
-> to skip 1T1ss based on its value (0), so my update is focused on
-> improving the documentation to guide users on the correct DTS format.
-> 
-> For example, in the paths-ru-bf entries:
-> <1 20 22 38 36 24 30 23 21 28 29>,
-> <1 20 39 31 25 26 25 28 30 39 39>,
-> <1 37 34 26 26 25 21 34 23 34 24>,
-> <1 0 20 23 31 23 30 39 28 29 36>,
-> <1 0 27 34 33 34 29 38 33 33 22>,
-> <1 0 30 23 39 28 21 25 29 28 21>,
-> <1 0 34 20 38 32 35 33 37 26 36>;
-> (The order of all fields is required by the firmware.)
-> 
-> The value for 1T1ss is set to 0 when it is not used, and the driver
-> will skip it during parsing. So, users should always fill the DTS with
-> all 10 values, using 0 for unused entries.
-> 
-> This ensures that the parsing logic remains simple and uniform,
-> avoiding potential errors or misalignment.
-> 
+Hi all,
 
-OK
+This series follows the discussion around panthor's SRAM regulator handling
+and the DT expectations for mali GPU nodes.
 
-Best regards,
-Krzysztof
+Today, if sram-supply is missing in the DT file, panthor falls back to
+a dummy regulator with a warning. This implicit behavior hides missing
+DT wiring behind regulator core fallback.
+
+As discussed in [1], the agreed direction is:
+- Update DTs to explicitly provide sram-supply, when no separate SRAM
+  rail exists, use the same regulator as mali-supply.
+- Make panthor to treat sram-supply as mandatory for all compatibles
+  except mt8196-mali (as that SoC manages SRAM outside panthor).
+
+
+- First patch applies the DT updates across affected files.
+- Second patch makes panthor to treat sram-supply as mandatory
+  except mt8196-mali.
+
+[1]: https://lore.kernel.org/all/20260213155937.6af75786@nimda/
+
+BR,
+Onur
+
+Onur Özkan (2):
+  arm64: dts: add missing sram-supply to mali gpu nodes
+  drm/panthor: treat sram as mandatory except mt8196
+
+ .../boot/dts/allwinner/sun50i-h313-tanix-tx1.dts    |  1 +
+ arch/arm64/boot/dts/allwinner/sun50i-h313-x96q.dts  |  1 +
+ .../boot/dts/allwinner/sun50i-h6-beelink-gs1.dts    |  1 +
+ .../boot/dts/allwinner/sun50i-h6-orangepi-3.dts     |  1 +
+ .../boot/dts/allwinner/sun50i-h6-orangepi.dtsi      |  1 +
+ .../arm64/boot/dts/allwinner/sun50i-h6-pine-h64.dts |  1 +
+ arch/arm64/boot/dts/allwinner/sun50i-h6-tanix.dtsi  |  1 +
+ .../dts/allwinner/sun50i-h616-bigtreetech-cb1.dtsi  |  1 +
+ .../dts/allwinner/sun50i-h616-orangepi-zero2.dts    |  1 +
+ .../boot/dts/allwinner/sun50i-h616-x96-mate.dts     |  1 +
+ .../dts/allwinner/sun50i-h618-longan-module-3h.dtsi |  1 +
+ .../dts/allwinner/sun50i-h618-orangepi-zero2w.dts   |  1 +
+ .../dts/allwinner/sun50i-h618-orangepi-zero3.dts    |  1 +
+ .../dts/allwinner/sun50i-h618-transpeed-8k618-t.dts |  1 +
+ .../allwinner/sun50i-h700-anbernic-rg35xx-2024.dts  |  1 +
+ .../boot/dts/allwinner/sun55i-a527-cubie-a5e.dts    |  1 +
+ .../boot/dts/allwinner/sun55i-h728-x96qpro+.dts     |  1 +
+ .../boot/dts/allwinner/sun55i-t527-avaota-a1.dts    |  1 +
+ .../boot/dts/allwinner/sun55i-t527-orangepi-4a.dts  |  1 +
+ .../boot/dts/exynos/exynos5433-tm2-common.dtsi      |  1 +
+ arch/arm64/boot/dts/exynos/exynos7-espresso.dts     |  1 +
+ arch/arm64/boot/dts/mediatek/mt8183-evb.dts         |  1 +
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi      |  1 +
+ arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts     |  1 +
+ arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi    |  1 +
+ arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi     |  1 +
+ arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi    |  1 +
+ arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi     |  1 +
+ arch/arm64/boot/dts/mediatek/mt8365-evk.dts         |  1 +
+ .../boot/dts/mediatek/mt8390-genio-common.dtsi      |  1 +
+ .../boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi   |  1 +
+ .../boot/dts/mediatek/mt8395-genio-common.dtsi      |  1 +
+ .../dts/mediatek/mt8395-kontron-3-5-sbc-i1200.dts   |  1 +
+ .../boot/dts/mediatek/mt8395-radxa-nio-12l.dts      |  1 +
+ arch/arm64/boot/dts/renesas/r9a07g044l2-remi-pi.dts |  1 +
+ .../boot/dts/renesas/r9a09g056n48-rzv2n-evk.dts     |  1 +
+ .../boot/dts/renesas/r9a09g057h44-rzv2h-evk.dts     |  1 +
+ arch/arm64/boot/dts/renesas/rzg2l-smarc-som.dtsi    |  1 +
+ arch/arm64/boot/dts/renesas/rzg2lc-smarc-som.dtsi   |  1 +
+ arch/arm64/boot/dts/renesas/rzg3e-smarc-som.dtsi    |  1 +
+ arch/arm64/boot/dts/rockchip/px30-cobra.dtsi        |  1 +
+ arch/arm64/boot/dts/rockchip/px30-evb.dts           |  1 +
+ .../boot/dts/rockchip/px30-firefly-jd4-core.dtsi    |  1 +
+ arch/arm64/boot/dts/rockchip/px30-pp1516.dtsi       |  1 +
+ arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts     |  1 +
+ .../boot/dts/rockchip/rk3326-anbernic-rg351m.dtsi   |  1 +
+ .../boot/dts/rockchip/rk3326-gameforce-chi.dts      |  1 +
+ arch/arm64/boot/dts/rockchip/rk3326-odroid-go.dtsi  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3328-a1.dts          |  1 +
+ arch/arm64/boot/dts/rockchip/rk3328-roc.dtsi        |  1 +
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts      |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-eaidk-610.dts   |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-evb-ind.dts     |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts     |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi        |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts  |  1 +
+ .../arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts   |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi    |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts    |  1 +
+ .../arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts |  1 +
+ .../boot/dts/rockchip/rk3399-pinephone-pro.dts      |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi       |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi     |  1 +
+ .../arm64/boot/dts/rockchip/rk3399-rock-4c-plus.dts |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi    |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi   |  1 +
+ .../arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts |  1 +
+ .../arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts |  1 +
+ arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3528-rock-2.dtsi     |  1 +
+ .../boot/dts/rockchip/rk3566-anbernic-rgxx3.dtsi    |  1 +
+ .../boot/dts/rockchip/rk3566-bigtreetech-cb2.dtsi   |  1 +
+ arch/arm64/boot/dts/rockchip/rk3566-lckfb-tspi.dts  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3566-lubancat-1.dts  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3566-nanopi-r3s.dts  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3566-odroid-m1s.dts  |  1 +
+ .../arm64/boot/dts/rockchip/rk3566-orangepi-3b.dtsi |  1 +
+ arch/arm64/boot/dts/rockchip/rk3566-pinetab2.dtsi   |  1 +
+ .../boot/dts/rockchip/rk3566-powkiddy-rk2023.dtsi   |  1 +
+ .../arm64/boot/dts/rockchip/rk3566-powkiddy-x55.dts |  1 +
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3566-radxa-cm3.dtsi  |  1 +
+ .../boot/dts/rockchip/rk3566-radxa-zero-3.dtsi      |  1 +
+ arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts      |  1 +
+ arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts     |  1 +
+ arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi   |  1 +
+ .../boot/dts/rockchip/rk3568-9tripod-x3568-v4.dts   |  1 +
+ arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3568-easepi-r1.dts   |  1 +
+ arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts    |  1 +
+ .../boot/dts/rockchip/rk3568-fastrhino-r66s.dtsi    |  1 +
+ .../arm64/boot/dts/rockchip/rk3568-hinlink-opc.dtsi |  1 +
+ arch/arm64/boot/dts/rockchip/rk3568-lubancat-2.dts  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3568-mecsbc.dts      |  1 +
+ arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dtsi |  1 +
+ arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts   |  1 +
+ arch/arm64/boot/dts/rockchip/rk3568-photonicat.dts  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3568-qnap-tsx33.dtsi |  1 +
+ arch/arm64/boot/dts/rockchip/rk3568-radxa-cm3i.dtsi |  1 +
+ arch/arm64/boot/dts/rockchip/rk3568-roc-pc.dts      |  1 +
+ arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts     |  1 +
+ arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts     |  1 +
+ .../boot/dts/rockchip/rk3568-wolfvision-pf5.dts     |  1 +
+ .../boot/dts/rockchip/rk3576-100ask-dshanpi-a1.dts  |  1 +
+ .../arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts |  1 +
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts    |  1 +
+ .../boot/dts/rockchip/rk3576-luckfox-core3576.dtsi  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dts   |  1 +
+ arch/arm64/boot/dts/rockchip/rk3576-nanopi-r76s.dts |  1 +
+ arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dts      |  1 +
+ arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts     |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588-armsom-lm7.dtsi |  1 +
+ .../arm64/boot/dts/rockchip/rk3588-armsom-sige7.dts |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588-coolpi-cm5.dtsi |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588-h96-max-v58.dts |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts      |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi  |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588-ok3588-c.dts    |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588-orangepi-5.dtsi |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts  |  1 +
+ .../boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi    |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi      |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588-turing-rk1.dtsi |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts  |  1 +
+ .../boot/dts/rockchip/rk3588s-gameforce-ace.dts     |  1 +
+ .../boot/dts/rockchip/rk3588s-indiedroid-nova.dts   |  1 +
+ .../boot/dts/rockchip/rk3588s-khadas-edge2.dts      |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts  |  1 +
+ .../arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts     |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts    |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts    |  1 +
+ drivers/gpu/drm/panthor/panthor_devfreq.c           | 13 +++++++++----
+ 138 files changed, 146 insertions(+), 4 deletions(-)
+
+-- 
+2.51.2
+
 
