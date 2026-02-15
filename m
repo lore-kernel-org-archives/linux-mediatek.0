@@ -4,69 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6540EF587C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Feb 2026 15:03:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9277E63F06
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Feb 2026 17:41:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s5plnKFyC/vjHQ7I0zGiL3OzcbdKlPLy8GxWgUJXlcQ=; b=eMoajF7tVUlaChemCYxLbbwAkw
-	8poRwzVdLbA3em4wtD0pkhe8O2vB5evMqmn9RNMpd4cs+p2fPlh71sWvCzcS+6aw/cHLcPOSbIobm
-	SQQmd+4B+GN/6jYgw4McX/iiFKSl012zj0FsiFGpEepg+lsZHNwFdEQa4EsPkAoFLeC9d4SWcpFaS
-	GEYWMNoMDlRwfCTseCF9OsEddiLZD9uLcgRbTyMzE5M4huHRJlkbPa0v75VpbhfytZFsk8jeYgqzd
-	bvpIFAp9ntdAmHycIcUT6iyGo3jo0fKObFmG1X4WJlus53HliOZPJ3ihk7/wepVYlKUR7fc5jNst+
-	tlvMVwzQ==;
+	bh=2nQIiixSupi1hTrThTatn4iyZhw5dMWzNXPtSI1reY4=; b=LoBwXcT8ChEuCyY1GQsiSPz9xm
+	/TRx1o2MNmoNG8Hrjcz5Zl8knPBikjSO11C0XjhUja/k1uOrlK8W/rTbY7yzH3lg4jPVaPv1qXryj
+	jDV8rO0hB02NRvLP43Y33Pplg8g1H4chyq7dtXuccONDJkGZsSl3Pgx0dhFaBvw6SzS3NDZeMipje
+	PMP3mB9i4gg9ZZzkBbQnpAJNb3osY4jOuYAln5QofQNrpgZGm+OuaXP6jD0bJMv1QWsoy40/mOzhM
+	SdDSYjFs+7exxihh8kVlfF6e2hi6vIFIjfe2mcwBRqF2Gvtbb6YwuTugmhFWpf5SA4q778+o1+nkz
+	bP5mvjYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrdew-00000005SBx-0kYq;
-	Sun, 15 Feb 2026 15:03:42 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vrg7m-00000005Yma-04ud;
+	Sun, 15 Feb 2026 17:41:38 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrdet-00000005SBb-3LE0;
-	Sun, 15 Feb 2026 15:03:39 +0000
+	id 1vrg7i-00000005Ylr-3XMi;
+	Sun, 15 Feb 2026 17:41:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 77FF560008;
-	Sun, 15 Feb 2026 15:03:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E36BAC4CEF7;
-	Sun, 15 Feb 2026 15:03:36 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 33DC04454E;
+	Sun, 15 Feb 2026 17:41:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0D7FC4CEF7;
+	Sun, 15 Feb 2026 17:41:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771167818;
-	bh=ALJQ6v0jihErAld2wDaIVC7Dc1Pu90VzccUmQjBo3qE=;
+	s=k20201202; t=1771177294;
+	bh=LbQM1SY4h+dsVwn+X2vz/LGXYAHWPx+4nDtz+WVRXY4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=SnD4l3f95hoKZ/Qa9q6GeL+aHkkQKVGQWYcFSumWEgq764zoOJ+SDty/oFEzQOMYl
-	 lSM3cEflzIPYKNXUptUEOm3DlLfAonrrD6hxii/Vz95CXvLTu//U46YAHR2Vc9Cls5
-	 4n6DrSkRYbsSpscFIsDngHW/KOAxCoy9GBRWHFezHLSJrjnfzAnoEaIppTare5prrM
-	 57vm27zFvAnmjZx/0eH/CbGKvSPqpcbSy4DaVWwVXj3q57LZF4LpkjDG4JL8mFJonC
-	 FbPDZj8zapFhj9fzpbEYFua19kRVE8XXhciHFMChAQAWHAzjjJ0N4HHJvVw9uM8fg6
-	 JTwGGwMHJgF0A==
+	b=WdK6NmcFacf//rpk+7mVBNLf9Uqw6vxsXU1TO8FE6CTNQvYRINSdI9AGMmCd4lVEx
+	 veFIrQHD0RHWZ/N2p9mhKY/gARXQ+6GdUeVOsZNT7kKxd286kULU027R63mp9utP6p
+	 2zyO8Ik66k6+NDYQRPZfPiylsL7d2boC5ZMXhYqBpfILEa0JQo1xYr4cVkaEI2OkbA
+	 Wb8BXkWKcPdQu8Bj/SXXeQfXqo4Vy0oiaQnXZvDkR3+8xuZe/HwSCB5e6DnsEWTfS4
+	 YYvBRnXlsfHkrDuZkHTz0LkO74O9NekcL1vlfXd8/ad5wVlhEjLPE5efOuBSalQuYp
+	 qGgPvZHkaB6RQ==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Keita Morisaki <keita.morisaki@tier4.jp>,
-	Peter Wang <peter.wang@mediatek.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
+Cc: Tzung-Bi Shih <tzungbi@kernel.org>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
 	Sasha Levin <sashal@kernel.org>,
-	chaotian.jing@mediatek.com,
+	andersson@kernel.org,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-scsi@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
+	linux-remoteproc@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.19-6.12] scsi: ufs: mediatek: Fix page faults in ufs_mtk_clk_scale() trace event
-Date: Sun, 15 Feb 2026 10:03:19 -0500
-Message-ID: <20260215150333.2150455-2-sashal@kernel.org>
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.19-5.15] remoteproc: mediatek: Break lock dependency to `prepare_lock`
+Date: Sun, 15 Feb 2026 12:41:18 -0500
+Message-ID: <20260215174120.2390402-10-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260215150333.2150455-1-sashal@kernel.org>
-References: <20260215150333.2150455-1-sashal@kernel.org>
+In-Reply-To: <20260215174120.2390402-1-sashal@kernel.org>
+References: <20260215174120.2390402-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.19
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260215_094134_946989_61D33425 
+X-CRM114-Status: GOOD (  23.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,99 +84,335 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Keita Morisaki <keita.morisaki@tier4.jp>
+From: Tzung-Bi Shih <tzungbi@kernel.org>
 
-[ Upstream commit 9672ed3de7d772ceddd713c769c05e832fc69bae ]
+[ Upstream commit d935187cfb27fc4168f78f3959aef4eafaae76bb ]
 
-The ufs_mtk_clk_scale() trace event currently stores the address of the
-name string directly via __field(const char *, name). This pointer may
-become invalid after the module is unloaded, causing page faults when the
-trace buffer is subsequently accessed.
+A potential circular locking dependency (ABBA deadlock) exists between
+`ec_dev->lock` and the clock framework's `prepare_lock`.
 
-This can occur because the MediaTek UFS driver can be configured as a
-loadable module (tristate in Kconfig), meaning the name string passed to
-the trace event may reside in module memory that becomes invalid after
-module unload.
+The first order (A -> B) occurs when scp_ipi_send() is called while
+`ec_dev->lock` is held (e.g., within cros_ec_cmd_xfer()):
+1. cros_ec_cmd_xfer() acquires `ec_dev->lock` and calls scp_ipi_send().
+2. scp_ipi_send() calls clk_prepare_enable(), which acquires
+   `prepare_lock`.
+See #0 in the following example calling trace.
+(Lock Order: `ec_dev->lock` -> `prepare_lock`)
 
-Fix this by using __string() and __assign_str() to copy the string contents
-into the ring buffer instead of storing the pointer. This ensures the trace
-data remains valid regardless of module state.
+The reverse order (B -> A) is more complex and has been observed
+(learned) by lockdep.  It involves the clock prepare operation
+triggering power domain changes, which then propagates through sysfs
+and power supply uevents, eventually calling back into the ChromeOS EC
+driver and attempting to acquire `ec_dev->lock`:
+1. Something calls clk_prepare(), which acquires `prepare_lock`.  It
+   then triggers genpd operations like genpd_runtime_resume(), which
+   takes `&genpd->mlock`.
+2. Power domain changes can trigger regulator changes; regulator
+   changes can then trigger device link changes; device link changes
+   can then trigger sysfs changes.  Eventually, power_supply_uevent()
+   is called.
+3. This leads to calls like cros_usbpd_charger_get_prop(), which calls
+   cros_ec_cmd_xfer_status(), which then attempts to acquire
+   `ec_dev->lock`.
+See #1 ~ #6 in the following example calling trace.
+(Lock Order: `prepare_lock` -> `&genpd->mlock` -> ... -> `&ec_dev->lock`)
 
-This change increases the memory usage for each ftrace entry by a few bytes
-(clock names are typically 7-15 characters like "ufs_sel" or
-"ufs_sel_max_src") compared to storing an 8-byte pointer.
+Move the clk_prepare()/clk_unprepare() operations for `scp->clk` to the
+remoteproc prepare()/unprepare() callbacks.  This ensures `prepare_lock`
+is only acquired in prepare()/unprepare() callbacks.  Since
+`ec_dev->lock` is not involved in the callbacks, the dependency loop is
+broken.
 
-Note that this change does not affect anything unless all of the following
-conditions are met:
+This means the clock is always "prepared" when the SCP is running.  The
+prolonged "prepared time" for the clock should be acceptable as SCP is
+designed to be a very power efficient processor.  The power consumption
+impact can be negligible.
 
- - CONFIG_SCSI_UFS_MEDIATEK is enabled
+A simplified calling trace reported by lockdep:
+> -> #6 (&ec_dev->lock)
+>        cros_ec_cmd_xfer
+>        cros_ec_cmd_xfer_status
+>        cros_usbpd_charger_get_port_status
+>        cros_usbpd_charger_get_prop
+>        power_supply_get_property
+>        power_supply_show_property
+>        power_supply_uevent
+>        dev_uevent
+>        uevent_show
+>        dev_attr_show
+>        sysfs_kf_seq_show
+>        kernfs_seq_show
+> -> #5 (kn->active#2)
+>        kernfs_drain
+>        __kernfs_remove
+>        kernfs_remove_by_name_ns
+>        sysfs_remove_file_ns
+>        device_del
+>        __device_link_del
+>        device_links_driver_bound
+> -> #4 (device_links_lock)
+>        device_link_remove
+>        _regulator_put
+>        regulator_put
+> -> #3 (regulator_list_mutex)
+>        regulator_lock_dependent
+>        regulator_disable
+>        scpsys_power_off
+>        _genpd_power_off
+>        genpd_power_off
+> -> #2 (&genpd->mlock/1)
+>        genpd_add_subdomain
+>        pm_genpd_add_subdomain
+>        scpsys_add_subdomain
+>        scpsys_probe
+> -> #1 (&genpd->mlock)
+>        genpd_runtime_resume
+>        __rpm_callback
+>        rpm_callback
+>        rpm_resume
+>        __pm_runtime_resume
+>        clk_core_prepare
+>        clk_prepare
+> -> #0 (prepare_lock)
+>        clk_prepare
+>        scp_ipi_send
+>        scp_send_ipi
+>        mtk_rpmsg_send
+>        rpmsg_send
+>        cros_ec_pkt_xfer_rpmsg
 
- - ftrace tracing is enabled
-
- - The ufs_mtk_clk_scale event is enabled in ftrace
-
-Signed-off-by: Keita Morisaki <keita.morisaki@tier4.jp>
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
-Link: https://patch.msgid.link/20260202024526.122515-1-keita.morisaki@tier4.jp
-Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
+Signed-off-by: Tzung-Bi Shih <tzungbi@kernel.org>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Tested-by: Chen-Yu Tsai <wenst@chromium.org>
+Link: https://lore.kernel.org/r/20260112110755.2435899-1-tzungbi@kernel.org
+Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-The `ufs_mtk_clk_scale` trace event was introduced in August 2022
-(kernel 6.1 era), so this buggy code exists in multiple stable trees
-(6.1.y, 6.6.y, and later).
+Good - the `prepare`/`unprepare` ops were added in 2020, well before any
+current stable tree branch point. They exist in 5.10, 5.15, 6.1, and all
+newer stable trees.
 
-### 8. CONCLUSION
+### 5. User Impact Assessment
 
-This is a textbook stable backport candidate:
-- **Fixes a real crash** (page fault / use-after-free on dangling
-  pointer)
-- **Extremely small and contained** (4-line change in one file)
-- **Uses well-established patterns**
-  (`__string()/__assign_str()/__get_str()`) that are the correct and
-  standard approach
-- **Zero risk of regression** — this is strictly more correct than the
-  original code
-- **Affected code exists in stable trees** dating back to at least 6.1
-- **Reviewed and accepted** by the relevant maintainers
-- **Self-contained** — no dependencies on other patches
+This affects **MediaTek SCP on ChromeOS devices** (Chromebooks with
+MediaTek SoCs). The deadlock scenario involves:
+- ChromeOS EC communication via rpmsg (SCP IPI)
+- Clock framework interactions
+- Power domain/regulator/device link chains
 
-The fix is small, surgical, and meets all stable kernel criteria.
+This is a real-world deadlock that lockdep detected. ChromeOS devices
+are widely deployed, and a deadlock in the EC communication path could
+cause a complete system hang.
+
+### 6. Risk Assessment
+
+**Changes are mechanical and low-risk:**
+- All `clk_prepare_enable()` → `clk_enable()` (7 call sites)
+- All `clk_disable_unprepare()` → `clk_disable()` (7 call sites)
+- New `scp_prepare()`/`scp_unprepare()` callbacks added to `scp_ops`
+  (simple wrappers)
+
+**The pattern is well-established** - `clk_prepare()` is meant to be
+called in sleepable context, `clk_enable()` can be called from any
+context including IRQ. Separating them is a standard clock framework
+pattern.
+
+**Total: 30 insertions, 13 deletions** across 2 files - small and
+contained.
+
+### 7. Dependency Check
+
+The commit is self-contained:
+- No subsequent commits in these files depend on it
+- The `rproc_ops.prepare`/`.unprepare` callbacks exist since 2020
+  (present in all stable trees: 5.10+)
+- No other infrastructure changes needed
+
+### Verification
+
+- **git log master** confirmed commit d935187cfb27f is the exact commit
+  being analyzed
+- **git log --oneline d935187cfb27f..master** confirmed no subsequent
+  commits modify the same files (no dependencies)
+- **git log/show 33467ac3c8dc8** confirmed `prepare`/`unprepare` ops
+  were added to `rproc_ops` in April 2020, present in stable trees 5.10+
+- **Code review of remoteproc_internal.h** confirmed
+  `rproc_prepare_device()`/`rproc_unprepare_device()` wrappers exist and
+  are called in `rproc_fw_boot()` and `rproc_shutdown()` paths
+- **Reviewed-by and Tested-by** from Chen-Yu Tsai (wenst@chromium.org)
+  confirms the fix was tested on real hardware
+- **Lockdep call trace** in commit message confirms this is a real
+  detected lock ordering issue, not theoretical
+- The commit is a standalone single patch (not part of a series) -
+  confirmed by lore.kernel.org link format (single patch, not X/Y)
+
+### Summary
+
+This commit fixes a **lockdep-detected ABBA deadlock** in the MediaTek
+SCP remoteproc driver. The deadlock involves the clock framework's
+`prepare_lock` and the ChromeOS EC's `ec_dev->lock`. The fix is
+mechanically simple (splitting `clk_prepare_enable` into separate
+`clk_prepare` + `clk_enable` calls), uses existing remoteproc framework
+infrastructure (`prepare`/`unprepare` callbacks available since 2020),
+and has been reviewed and tested. The scope is limited to 2 files with
+30 insertions/13 deletions. The risk of regression is very low as it
+uses a well-established clock framework pattern, and the benefit is
+preventing a real deadlock on ChromeOS devices with MediaTek SoCs.
 
 **YES**
 
- drivers/ufs/host/ufs-mediatek-trace.h | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/remoteproc/mtk_scp.c     | 39 +++++++++++++++++++++++---------
+ drivers/remoteproc/mtk_scp_ipi.c |  4 ++--
+ 2 files changed, 30 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/ufs/host/ufs-mediatek-trace.h b/drivers/ufs/host/ufs-mediatek-trace.h
-index b5f2ec3140748..0df8ac843379a 100644
---- a/drivers/ufs/host/ufs-mediatek-trace.h
-+++ b/drivers/ufs/host/ufs-mediatek-trace.h
-@@ -33,19 +33,19 @@ TRACE_EVENT(ufs_mtk_clk_scale,
- 	TP_ARGS(name, scale_up, clk_rate),
+diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+index db8fd045468d9..98d00bd5200cc 100644
+--- a/drivers/remoteproc/mtk_scp.c
++++ b/drivers/remoteproc/mtk_scp.c
+@@ -283,7 +283,7 @@ static irqreturn_t scp_irq_handler(int irq, void *priv)
+ 	struct mtk_scp *scp = priv;
+ 	int ret;
  
- 	TP_STRUCT__entry(
--		__field(const char*, name)
-+		__string(name, name)
- 		__field(bool, scale_up)
- 		__field(unsigned long, clk_rate)
- 	),
+-	ret = clk_prepare_enable(scp->clk);
++	ret = clk_enable(scp->clk);
+ 	if (ret) {
+ 		dev_err(scp->dev, "failed to enable clocks\n");
+ 		return IRQ_NONE;
+@@ -291,7 +291,7 @@ static irqreturn_t scp_irq_handler(int irq, void *priv)
  
- 	TP_fast_assign(
--		__entry->name = name;
-+		__assign_str(name);
- 		__entry->scale_up = scale_up;
- 		__entry->clk_rate = clk_rate;
- 	),
+ 	scp->data->scp_irq_handler(scp);
  
- 	TP_printk("ufs: clk (%s) scaled %s @ %lu",
--		  __entry->name,
-+		  __get_str(name),
- 		  __entry->scale_up ? "up" : "down",
- 		  __entry->clk_rate)
- );
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 
+ 	return IRQ_HANDLED;
+ }
+@@ -665,7 +665,7 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
+ 	struct device *dev = scp->dev;
+ 	int ret;
+ 
+-	ret = clk_prepare_enable(scp->clk);
++	ret = clk_enable(scp->clk);
+ 	if (ret) {
+ 		dev_err(dev, "failed to enable clocks\n");
+ 		return ret;
+@@ -680,7 +680,7 @@ static int scp_load(struct rproc *rproc, const struct firmware *fw)
+ 
+ 	ret = scp_elf_load_segments(rproc, fw);
+ leave:
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 
+ 	return ret;
+ }
+@@ -691,14 +691,14 @@ static int scp_parse_fw(struct rproc *rproc, const struct firmware *fw)
+ 	struct device *dev = scp->dev;
+ 	int ret;
+ 
+-	ret = clk_prepare_enable(scp->clk);
++	ret = clk_enable(scp->clk);
+ 	if (ret) {
+ 		dev_err(dev, "failed to enable clocks\n");
+ 		return ret;
+ 	}
+ 
+ 	ret = scp_ipi_init(scp, fw);
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 	return ret;
+ }
+ 
+@@ -709,7 +709,7 @@ static int scp_start(struct rproc *rproc)
+ 	struct scp_run *run = &scp->run;
+ 	int ret;
+ 
+-	ret = clk_prepare_enable(scp->clk);
++	ret = clk_enable(scp->clk);
+ 	if (ret) {
+ 		dev_err(dev, "failed to enable clocks\n");
+ 		return ret;
+@@ -734,14 +734,14 @@ static int scp_start(struct rproc *rproc)
+ 		goto stop;
+ 	}
+ 
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 	dev_info(dev, "SCP is ready. FW version %s\n", run->fw_ver);
+ 
+ 	return 0;
+ 
+ stop:
+ 	scp->data->scp_reset_assert(scp);
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 	return ret;
+ }
+ 
+@@ -909,7 +909,7 @@ static int scp_stop(struct rproc *rproc)
+ 	struct mtk_scp *scp = rproc->priv;
+ 	int ret;
+ 
+-	ret = clk_prepare_enable(scp->clk);
++	ret = clk_enable(scp->clk);
+ 	if (ret) {
+ 		dev_err(scp->dev, "failed to enable clocks\n");
+ 		return ret;
+@@ -917,12 +917,29 @@ static int scp_stop(struct rproc *rproc)
+ 
+ 	scp->data->scp_reset_assert(scp);
+ 	scp->data->scp_stop(scp);
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 
+ 	return 0;
+ }
+ 
++static int scp_prepare(struct rproc *rproc)
++{
++	struct mtk_scp *scp = rproc->priv;
++
++	return clk_prepare(scp->clk);
++}
++
++static int scp_unprepare(struct rproc *rproc)
++{
++	struct mtk_scp *scp = rproc->priv;
++
++	clk_unprepare(scp->clk);
++	return 0;
++}
++
+ static const struct rproc_ops scp_ops = {
++	.prepare	= scp_prepare,
++	.unprepare	= scp_unprepare,
+ 	.start		= scp_start,
+ 	.stop		= scp_stop,
+ 	.load		= scp_load,
+diff --git a/drivers/remoteproc/mtk_scp_ipi.c b/drivers/remoteproc/mtk_scp_ipi.c
+index c068227e251e7..7a37e273b3af8 100644
+--- a/drivers/remoteproc/mtk_scp_ipi.c
++++ b/drivers/remoteproc/mtk_scp_ipi.c
+@@ -171,7 +171,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
+ 	    WARN_ON(len > scp_sizes->ipi_share_buffer_size) || WARN_ON(!buf))
+ 		return -EINVAL;
+ 
+-	ret = clk_prepare_enable(scp->clk);
++	ret = clk_enable(scp->clk);
+ 	if (ret) {
+ 		dev_err(scp->dev, "failed to enable clock\n");
+ 		return ret;
+@@ -211,7 +211,7 @@ int scp_ipi_send(struct mtk_scp *scp, u32 id, void *buf, unsigned int len,
+ 
+ unlock_mutex:
+ 	mutex_unlock(&scp->send_lock);
+-	clk_disable_unprepare(scp->clk);
++	clk_disable(scp->clk);
+ 
+ 	return ret;
+ }
 -- 
 2.51.0
 
