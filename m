@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3D21EF5870
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Feb 2026 08:55:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C630EF5872
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Feb 2026 08:55:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T8EVs3djMjehVjELOyPKlz6f3ecqc5eYir0MGFdbhOo=; b=HF9mZ3dGAYS7sVGzIleYJvaxYw
-	hirA2nEwGbNeu/4rbfgiAnRQtDp5Whpe+IotcyAi1luNlip/yWtoy7eL4L2iXIEa2lQiKvwjDZGOM
-	HUpUPg5FshiTAGl01khtkFTznNkDqgmDwbxU6sIgK0BXRF/zxPHDMyjuuvBZoZUu2QoOz/8JE8lAz
-	1FulELpJjYyN7PgsraO/KfocnOqX1at7rZVfgAyrSqA3nxntE+aDnu8ZW4OjFK5uydVEqy/dwgqWK
-	TY+wCXAaUdXfdBiqaGLV2EWnjYlUMcBPLY0SQzyuAvjTriwmMDSdBcMKSrY6gEYeKT/0Z4EHT45la
-	FKZlmUtw==;
+	bh=OOuzpPA9uWV8J5AQ3WmBGHEpVL6AtcatIKQ7g9sh6vg=; b=IZBTL45pjWH5VGMWooI9+XmmmO
+	DXf7cHQiU0ArUrMTqXKYdaMJ+6mvbRAmbAp6Yi8RfGBnjKdL2fTpIxYSBvgoMkdJ79k49TEkhjNu5
+	ovckI8W8SmP8jnHbSuRFLqbZ8wf+UzfiLzVzVpO0jxsG39qQwvF8O8zKhKjnzZ0oYIPf1xAxSTeSc
+	uspeGe3tf8GpVSwx37V866Fm+Bwo2RuTzXcpIjQtWqIjuIf/lJDGsQd0T6Oq7zgCREAJdrRtvjwHW
+	QiKeM+t6DjH5ETp85LYXS9RSScM7v0gv7gShA/cAOER5m7xlw3YvQYy0naKErCLySsU052hgn6TZb
+	ItfgbubA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrXut-00000005HB6-1mxK;
+	id 1vrXut-00000005HBc-3LXL;
 	Sun, 15 Feb 2026 08:55:47 +0000
 Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrXuo-00000005H6S-0GD3
+	id 1vrXup-00000005H7b-3ZQz
 	for linux-mediatek@lists.infradead.org;
-	Sun, 15 Feb 2026 08:55:43 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-4834826e555so22860795e9.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 15 Feb 2026 00:55:41 -0800 (PST)
+	Sun, 15 Feb 2026 08:55:45 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-483487335c2so19956185e9.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 15 Feb 2026 00:55:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1771145740; x=1771750540; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1771145742; x=1771750542; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=T8EVs3djMjehVjELOyPKlz6f3ecqc5eYir0MGFdbhOo=;
-        b=X6Fzld5OZ8tuX12fYm1LnZjv7KRKNGYmMheSMmcImwv8t0mrfdGYlXmbdKJi/N+DY8
-         XYrB6rkOhyr7lsJ6jwG+7G4HZgZ1QIYlik88b8ePe1RWwMSUPG/In5SHxGiGPwMhkEMn
-         6cJ2gDrXhv273nig1qiYezhwkC13ad4Yy/Ajkin+FGOZ6Y5w8+8ossaX2MbEmPBt3ez6
-         q07e6FaGAEoF51C9TTAL65PmaBLe9/+uZZljEFP2U9rFOiRxENULht++V3PJnlvnChb5
-         1M6cm890fHOVuPHFWhx0ccaQNolzhAcL/hGOhf63Qo6LfigYV5t9ihdC0wptU4NJWqAi
-         96Cg==
+        bh=OOuzpPA9uWV8J5AQ3WmBGHEpVL6AtcatIKQ7g9sh6vg=;
+        b=T2DBJAf9SpS+l1V23UogKakaDl44OCbZb49iYtrJF2uerRZffXr4958033bwmaX9Xs
+         eMakdl69mriDHPqOxio+LJF9zYhAmbUQVTscM0Kju58ybdzSiPLSNmbF1Epo0xzVOev5
+         4tHq8QOBcT3incfnNxieiquLcIBvAke13QpZ2lB46csueeQqgc+nkcdIEk77UfdGI5iP
+         ray7R24Nuzxufs9X6OuDyZ1w8DTo+rMDj7HEPNOeTH2eTogsl1L30cJ/B7/m5WRxOYUI
+         z0H7nDXN8B6xDKQo8W7X/tfGJSAMdkhAS98GEDNKVxcaqPjTt+M3vKHgMqeqzge/5++B
+         V8yA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771145740; x=1771750540;
+        d=1e100.net; s=20230601; t=1771145742; x=1771750542;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=T8EVs3djMjehVjELOyPKlz6f3ecqc5eYir0MGFdbhOo=;
-        b=eZ2TYWrfF7VL2OXR85Oe6XooPQLUvAnDONPjWM0dF6i1j5OIsWZBQK+C6Ov+Rxfp6U
-         cGXyIwCcEydiccHVMlFnDQKvQNiAKffMsHoGCKCKSUHoo/9glauH8Yi0otMhOOSDLGeL
-         QqwRrOCzXGovdv9ilNkE5VFa4otqtqI53EAShPpyDoBPbT4Nv8kXcIJvuCNM/oP2ZI72
-         DfTy4e81ZHZsDVSEVvFHQlZgYiV67UEJ4Ay9xd6qM5r5cvaC5eGlUAA1YLZBm2oHOMrs
-         aUpbtLnAevpn9FNZUtIoelxt+lFMaHn+MPJBtG3tuBOZcCMmeezu5ouI2rn1Zuld6Lif
-         dfmw==
-X-Gm-Message-State: AOJu0YzN4QkGBAaNJXZ7wudjWSJZBwPZTqqx5S4kZyp0NIqYd4mjxoyX
-	KVV71IOg2sQ1LtaDZqXZYVumVn712hsVLI6e1vlbrywxklbFjmwfjKLKYwSYgg==
-X-Gm-Gg: AZuq6aLbCUNsWDN2uovSLm81eJt+yEB7U76q3EssK972OQsSUW0KBEya4uVIDbRDIRN
-	zKNUt1ceMAzKTWk+SwT7Nabio0/FI53KClqXTRKZfrvWzF5+QhTkyXJtWVtQrmBC3JaK9J1LuJF
-	wHjDpIJPoMicb/RZHUbCwSXhfNVG1Y6f0y6rXMQ/23xMKtwqhfJ1oOHZjpcMqC5I3cnFZmHnChu
-	pUSScDnBeuusD8BqIVVlVrSVkqCiX0zi6YUJ2+XL3AH+4ThoEylC1toool+oQce0iGxE/RArLHn
-	NPAnbB63+NSIdGJI9Mmd05vnVGRKXiK3GZwTNXnQQqlY0dks7zBeXI5c5cQPSNJojPHEtOd2UJ1
-	U3HtVNnWJCqK5n5ZgPytf6kzatxc7H5Qse+RVQ40erSd1f8UrHPjc4xoEJ3PSSuD/RUw2vCVZBZ
-	4pQ0UUbjzL941/purhSNw=
-X-Received: by 2002:a05:600c:6814:b0:483:43da:6c87 with SMTP id 5b1f17b1804b1-48379c14894mr77535195e9.33.1771145739686;
-        Sun, 15 Feb 2026 00:55:39 -0800 (PST)
+        bh=OOuzpPA9uWV8J5AQ3WmBGHEpVL6AtcatIKQ7g9sh6vg=;
+        b=aJOBz3+aH41hvkRI++mDCV0PB+srJ2aH5G6C0n2MIh1HnP478qUiftjvQq7UZ7NEh/
+         8Kh7sf+nnPSWolCKyb0Sww7D+UWtDfxg9mpqadCPgqPM9kgXG6ftK6JLWzRrMD0bwpm6
+         6j8nZcPFGId1DkExxclYvEeKE7j0MUus8zZDKHjf+4rNrHROECw4fYV0KQj5OVRehqL3
+         VTIYLlChMMKHppTG9r1C9alF759ySDwrwJHZTR/8cT75sKeTa5f34EnPfbBFgW7Pcfzy
+         pgTi4/qofDUVYNolG6njVcewPY8LT8bt6kK+1uf8apSDfAgNZ8DQ9upxhQ4jnmusEdDq
+         L4fA==
+X-Gm-Message-State: AOJu0YxlC0yT6N0jLRwzyU4K2Iq1mxTvrXFdb8dFCv6v+FeludL/uZlQ
+	w915sX7Hj7q9PMn6fHzGimNLmd8/95hkTlfG8CBXGMB5AiC6rYG+unYbfsD2SQ==
+X-Gm-Gg: AZuq6aJmW5kK98t7IJSMoGz98yckEeSBmkSf6iZAtevh5RUUN/y4kZ/YTxDD7hj1B7i
+	TnmMLWUriQjy5oq4WeshYh1DCTNDf3POmD6LzMLPr5AkQtjVt93S5ItEvt4Zm8HWOI+mh/a+2sI
+	HlpgGPT0YBjcueMrSHmS3oZ3w6kZfZIPPLFr7itDs4DnEvVlf5YYrSkijCWCi4ZEZXo/w1+wNUT
+	F/+W/CHhd3cC/BjFCq9I0cFcInrMacs2c8UANTPXHMFDkj2XQAUZoPuy8tkJv/2wVzg/4ORfLLl
+	YedE+3XZ5WIRAB7qzvSXI4Bn+71wXAv2iKGewqEsRvNZQjffxRcI6ESyHh+DLxBRia45xr/GnSd
+	lTd8HgJDvkJGIqV+3e2DLT+6NDTbNJVtaUWi2pFZbt7jgtf4Y+yAXx4WFFAHMhhjnC61qQ7HHFl
+	E89BZifnM3Gtv7rH3l3so=
+X-Received: by 2002:a05:600c:a43:b0:477:89d5:fdb2 with SMTP id 5b1f17b1804b1-48373a0808amr107412955e9.14.1771145741816;
+        Sun, 15 Feb 2026 00:55:41 -0800 (PST)
 Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4834d5d78cfsm547211675e9.1.2026.02.15.00.55.38
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4834d5d78cfsm547211675e9.1.2026.02.15.00.55.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 15 Feb 2026 00:55:39 -0800 (PST)
+        Sun, 15 Feb 2026 00:55:41 -0800 (PST)
 From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 To: linux-mediatek@lists.infradead.org
 Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
@@ -92,17 +92,17 @@ Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-phy@lists.infradead.org
-Subject: [PATCH 1/4] arm64: dts: mt8167: Reorder nodes according to mmio address
-Date: Sun, 15 Feb 2026 08:53:53 +0000
-Message-ID: <b7d7c27dda4dc1779425c57d187b84abaf6a1093.1771144723.git.l.scorcia@gmail.com>
+Subject: [PATCH 2/4] dt-bindings: display: mediatek: Add compatibles for MediaTek mt8167
+Date: Sun, 15 Feb 2026 08:53:54 +0000
+Message-ID: <826d54c75cfd1b8e4713431a9426e89edade9eb2.1771144723.git.l.scorcia@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1771144723.git.l.scorcia@gmail.com>
 References: <cover.1771144723.git.l.scorcia@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260215_005542_144153_97D23521 
-X-CRM114-Status: GOOD (  10.59  )
+X-CRM114-CacheID: sfid-20260215_005544_042989_8ABE1AEE 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,132 +117,143 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for adding display nodes. No other changes.
+Add compatibles for various display-related blocks of MediaTek mt8167.
 
 Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8167.dtsi | 68 ++++++++++++------------
- 1 file changed, 34 insertions(+), 34 deletions(-)
+ .../devicetree/bindings/display/mediatek/mediatek,aal.yaml   | 1 +
+ .../devicetree/bindings/display/mediatek/mediatek,ccorr.yaml | 4 +++-
+ .../bindings/display/mediatek/mediatek,dither.yaml           | 1 +
+ .../devicetree/bindings/display/mediatek/mediatek,dsi.yaml   | 5 ++++-
+ .../devicetree/bindings/display/mediatek/mediatek,gamma.yaml | 1 +
+ .../devicetree/bindings/display/mediatek/mediatek,ovl.yaml   | 1 +
+ .../devicetree/bindings/display/mediatek/mediatek,rdma.yaml  | 1 +
+ .../devicetree/bindings/display/mediatek/mediatek,wdma.yaml  | 4 +++-
+ Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml  | 1 +
+ 9 files changed, 16 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8167.dtsi b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-index 2374c0953057..27cf32d7ae35 100644
---- a/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-@@ -29,12 +29,6 @@ infracfg: infracfg@10001000 {
- 			#clock-cells = <1>;
- 		};
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+index daf90ebb39bf..4bbea72b292a 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+@@ -33,6 +33,7 @@ properties:
+           - enum:
+               - mediatek,mt2712-disp-aal
+               - mediatek,mt6795-disp-aal
++              - mediatek,mt8167-disp-aal
+           - const: mediatek,mt8173-disp-aal
+       - items:
+           - enum:
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+index fca8e7bb0cbc..5c5068128d0c 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+@@ -25,7 +25,9 @@ properties:
+           - mediatek,mt8183-disp-ccorr
+           - mediatek,mt8192-disp-ccorr
+       - items:
+-          - const: mediatek,mt8365-disp-ccorr
++          - enum:
++              - mediatek,mt8167-disp-ccorr
++              - mediatek,mt8365-disp-ccorr
+           - const: mediatek,mt8183-disp-ccorr
+       - items:
+           - enum:
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+index abaf27916d13..891c95be15b9 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+@@ -26,6 +26,7 @@ properties:
+           - mediatek,mt8183-disp-dither
+       - items:
+           - enum:
++              - mediatek,mt8167-disp-dither
+               - mediatek,mt8186-disp-dither
+               - mediatek,mt8188-disp-dither
+               - mediatek,mt8192-disp-dither
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+index 27ffbccc2a08..bcbde16648c0 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.yaml
+@@ -25,11 +25,14 @@ properties:
+       - enum:
+           - mediatek,mt2701-dsi
+           - mediatek,mt7623-dsi
+-          - mediatek,mt8167-dsi
+           - mediatek,mt8173-dsi
+           - mediatek,mt8183-dsi
+           - mediatek,mt8186-dsi
+           - mediatek,mt8188-dsi
++      - items:
++          - enum:
++              - mediatek,mt8167-dsi
++          - const: mediatek,mt2701-dsi
+       - items:
+           - enum:
+               - mediatek,mt6795-dsi
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+index 48542dc7e784..ec1054bb06d4 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+@@ -28,6 +28,7 @@ properties:
+       - items:
+           - enum:
+               - mediatek,mt6795-disp-gamma
++              - mediatek,mt8167-disp-gamma
+           - const: mediatek,mt8173-disp-gamma
+       - items:
+           - enum:
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+index 4f110635afb6..679f731f0f15 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+@@ -23,6 +23,7 @@ properties:
+     oneOf:
+       - enum:
+           - mediatek,mt2701-disp-ovl
++          - mediatek,mt8167-disp-ovl
+           - mediatek,mt8173-disp-ovl
+           - mediatek,mt8183-disp-ovl
+           - mediatek,mt8192-disp-ovl
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+index 878f676b581f..cb187a95c11e 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+@@ -36,6 +36,7 @@ properties:
+           - enum:
+               - mediatek,mt7623-disp-rdma
+               - mediatek,mt2712-disp-rdma
++              - mediatek,mt8167-disp-rdma
+           - const: mediatek,mt2701-disp-rdma
+       - items:
+           - enum:
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+index a3a2b71a4523..816841a96133 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+@@ -24,7 +24,9 @@ properties:
+       - enum:
+           - mediatek,mt8173-disp-wdma
+       - items:
+-          - const: mediatek,mt6795-disp-wdma
++          - enum:
++              - mediatek,mt6795-disp-wdma
++              - mediatek,mt8167-disp-wdma
+           - const: mediatek,mt8173-disp-wdma
  
--		apmixedsys: apmixedsys@10018000 {
--			compatible = "mediatek,mt8167-apmixedsys", "syscon";
--			reg = <0 0x10018000 0 0x710>;
--			#clock-cells = <1>;
--		};
--
- 		scpsys: syscon@10006000 {
- 			compatible = "mediatek,mt8167-scpsys", "syscon", "simple-mfd";
- 			reg = <0 0x10006000 0 0x1000>;
-@@ -101,18 +95,6 @@ power-domain@MT8167_POWER_DOMAIN_CONN {
- 			};
- 		};
- 
--		imgsys: syscon@15000000 {
--			compatible = "mediatek,mt8167-imgsys", "syscon";
--			reg = <0 0x15000000 0 0x1000>;
--			#clock-cells = <1>;
--		};
--
--		vdecsys: syscon@16000000 {
--			compatible = "mediatek,mt8167-vdecsys", "syscon";
--			reg = <0 0x16000000 0 0x1000>;
--			#clock-cells = <1>;
--		};
--
- 		pio: pinctrl@1000b000 {
- 			compatible = "mediatek,mt8167-pinctrl";
- 			reg = <0 0x1000b000 0 0x1000>;
-@@ -124,12 +106,36 @@ pio: pinctrl@1000b000 {
- 			interrupts = <GIC_SPI 134 IRQ_TYPE_LEVEL_HIGH>;
- 		};
- 
-+		apmixedsys: apmixedsys@10018000 {
-+			compatible = "mediatek,mt8167-apmixedsys", "syscon";
-+			reg = <0 0x10018000 0 0x710>;
-+			#clock-cells = <1>;
-+		};
-+
-+		iommu: m4u@10203000 {
-+			compatible = "mediatek,mt8167-m4u";
-+			reg = <0 0x10203000 0 0x1000>;
-+			mediatek,larbs = <&larb0>, <&larb1>, <&larb2>;
-+			interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_LOW>;
-+			#iommu-cells = <1>;
-+		};
-+
- 		mmsys: syscon@14000000 {
- 			compatible = "mediatek,mt8167-mmsys", "syscon";
- 			reg = <0 0x14000000 0 0x1000>;
- 			#clock-cells = <1>;
- 		};
- 
-+		larb0: larb@14016000 {
-+			compatible = "mediatek,mt8167-smi-larb";
-+			reg = <0 0x14016000 0 0x1000>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&mmsys CLK_MM_SMI_LARB0>,
-+				 <&mmsys CLK_MM_SMI_LARB0>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
-+		};
-+
- 		smi_common: smi@14017000 {
- 			compatible = "mediatek,mt8167-smi-common";
- 			reg = <0 0x14017000 0 0x1000>;
-@@ -139,14 +145,10 @@ smi_common: smi@14017000 {
- 			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
- 		};
- 
--		larb0: larb@14016000 {
--			compatible = "mediatek,mt8167-smi-larb";
--			reg = <0 0x14016000 0 0x1000>;
--			mediatek,smi = <&smi_common>;
--			clocks = <&mmsys CLK_MM_SMI_LARB0>,
--				 <&mmsys CLK_MM_SMI_LARB0>;
--			clock-names = "apb", "smi";
--			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
-+		imgsys: syscon@15000000 {
-+			compatible = "mediatek,mt8167-imgsys", "syscon";
-+			reg = <0 0x15000000 0 0x1000>;
-+			#clock-cells = <1>;
- 		};
- 
- 		larb1: larb@15001000 {
-@@ -159,6 +161,12 @@ larb1: larb@15001000 {
- 			power-domains = <&spm MT8167_POWER_DOMAIN_ISP>;
- 		};
- 
-+		vdecsys: syscon@16000000 {
-+			compatible = "mediatek,mt8167-vdecsys", "syscon";
-+			reg = <0 0x16000000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		larb2: larb@16010000 {
- 			compatible = "mediatek,mt8167-smi-larb";
- 			reg = <0 0x16010000 0 0x1000>;
-@@ -168,13 +176,5 @@ larb2: larb@16010000 {
- 			clock-names = "apb", "smi";
- 			power-domains = <&spm MT8167_POWER_DOMAIN_VDEC>;
- 		};
--
--		iommu: m4u@10203000 {
--			compatible = "mediatek,mt8167-m4u";
--			reg = <0 0x10203000 0 0x1000>;
--			mediatek,larbs = <&larb0>, <&larb1>, <&larb2>;
--			interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_LOW>;
--			#iommu-cells = <1>;
--		};
- 	};
- };
+   reg:
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
+index acdbce937b0a..c6d0bbdbe0e2 100644
+--- a/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
++++ b/Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
+@@ -23,6 +23,7 @@ properties:
+       - items:
+           - enum:
+               - mediatek,mt7623-mipi-tx
++              - mediatek,mt8167-mipi-tx
+           - const: mediatek,mt2701-mipi-tx
+       - items:
+           - enum:
 -- 
 2.43.0
 
