@@ -4,76 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92A2DE81A24
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 14:20:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A29DE81A25
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 14:41:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xI4TauUaQM3GB5GqKkDqYSOsy+XFO04swF0+y9bWRrY=; b=dIuSlZnFY5Rrhi6IxMfEQ0DSD8
-	4+if27rWoKZ/Ky1f0K1+clf5ZCycOmnhcqelQTH0w9iD/0ve7tNXM4DXgb1p0FbpRIvr88t7OGkKg
-	E7PXwqFNhCU7X+p2Gkhl14iO6Fda5h2YJ5LSwIgMUfGFyzlY5CAIAZJI7//Rm0ALNoJorpfTf1mMV
-	4xA/LV96p1fn4GilLZIhZppmvyLB58t/ouJYEWwOEDhtsEQmpjLdMgl5GDyrfCvKEUKv/dTbgHTpw
-	k96SfQYC1Dy9z9P2S6uODZfv+L78yG17b82u9y2JZo57V8nB38YmzGz1HbEA3TMVGToyas6HIZ+Uc
-	3kOlZW6A==;
+	bh=F2UA0yW+NVCi0Rj+zD3YngWiaGKgRpmAvZ4q7nxAizA=; b=Bel6g2E9KSCf3P+6oxUazBb/kQ
+	HjcN6pMBnFg8k+yJeuHpfWpb80eKGmq4GjwNSEn80h9n6aZUntEF+l8qOh7iVm4CPTMNHK7wlEvkq
+	vnNWN0r/b9jrJ8JRh/tAiW7b1bSNNnLKhsU+atuNEeBZJmbcOlGMUyDOUlKFpNjW52so+t2KynTLK
+	IOnCAWmaLe8yCpOwAEjO4gR7O67dLQKrJ37hYFFzH9bIUvZe/8g5nQty/wsJBqVm/sFZNj4rndpxa
+	BBCjcgPW6GdWRaZh0NQj50OkIqC7cLesEHKlT8sj732oYWdhfyTvSZeDGMx9NbmwqkNed7ekKEBL5
+	fvEHnVTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrzSq-00000006m0j-11Ml;
-	Mon, 16 Feb 2026 14:20:40 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vrzn8-00000006o89-2bE8;
+	Mon, 16 Feb 2026 14:41:38 +0000
+Received: from forward501a.mail.yandex.net ([178.154.239.81])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrzSn-00000006lzz-2hn5;
-	Mon, 16 Feb 2026 14:20:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771251635;
-	bh=LpONIyurVKlNTOn/3d2FZntrtRRFlJmchmd0RLMCFp4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=lv7OKuFvFLoZjW/iPvVCHfLw3yaZpQvkh3sCrud39qbidVRk2kcy4bj8BV9HimpzH
-	 WdoT65tJex7/y9zX1hnnbFB4PSh+wY7U2a2FhWurd81XyuRCidjy/cd6PtuCtRDOOc
-	 9r2lwRDOBLwVoZHRTDcR2h+aGJ8UREz9vDQUIcy5/zJ6mud4XH9Ddbh4kMCC2R5/aY
-	 MfzL7UuvaCA+TpZACzGQ6t8xBAi6Uz8ze2ejrhIkjlYCCrYectziG458moo1lBNsXZ
-	 D3nuoqoOCfZfxAyulNvByrAtqFoeRgds6/BGcv3P1Bom4ePkeAjvqY92+C2sj4Gfd8
-	 qIuFqm7x6OCkw==
-Received: from fedora (unknown [IPv6:2a01:e0a:2c:6930:d919:a6e:5ea1:8a9f])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C40E917E0454;
-	Mon, 16 Feb 2026 15:20:34 +0100 (CET)
-Date: Mon, 16 Feb 2026 15:20:30 +0100
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Liviu Dudau <liviu.dudau@arm.com>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Adam Ford
- <aford173@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Onur =?UTF-8?B?w5Z6a2Fu?=
- <work@onurozkan.dev>, Steven Price <steven.price@arm.com>, Maarten
- Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+	id 1vrzn4-00000006o7U-0PCG;
+	Mon, 16 Feb 2026 14:41:36 +0000
+Received: from mail-nwsmtp-smtp-production-main-84.vla.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-84.vla.yp-c.yandex.net [IPv6:2a02:6b8:c1f:1311:0:640:df31:0])
+	by forward501a.mail.yandex.net (Yandex) with ESMTPS id 0B3A68095D;
+	Mon, 16 Feb 2026 17:41:23 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-84.vla.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id 9fZpnRiGtW20-b1bTBWDR;
+	Mon, 16 Feb 2026 17:41:21 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=onurozkan.dev;
+	s=mail; t=1771252882;
+	bh=F2UA0yW+NVCi0Rj+zD3YngWiaGKgRpmAvZ4q7nxAizA=;
+	h=Cc:Message-ID:Subject:Date:References:To:From:In-Reply-To;
+	b=NyvCOl3o32x+iw1Q465tLwUlGI6/pT7B+o8ykON6zPRVCpP9TWHQVo66Dl0dXUpYO
+	 XEjlGZ5m3fQsjtEv8rMvU1yImXWRtRnxzzZotGxdsv9PNj1r0BsVLrp8K4LdU+VB1L
+	 ZfkUfT5iG17ey+b/r53LyB2iWI72kZkpO+NQZFKc=
+Authentication-Results: mail-nwsmtp-smtp-production-main-84.vla.yp-c.yandex.net; dkim=pass header.i=@onurozkan.dev
+Date: Mon, 16 Feb 2026 17:41:07 +0300
+From: Onur =?UTF-8?B?w5Z6a2Fu?= <work@onurozkan.dev>
+To: Boris Brezillon <boris.brezillon@collabora.com>
+Cc: Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
  <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
  <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Matthias Brugger
- <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Mark Brown <broonie@kernel.org>
+ linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH v1 2/2] drm/panthor: treat sram as mandatory except
  mt8196
-Message-ID: <20260216152030.5f91104e@fedora>
-In-Reply-To: <aZMiv7ARO4TUSUTa@e142607>
+Message-ID: <20260216174107.1b9c03a4@nimda>
+In-Reply-To: <20260216103743.626c71e3@fedora>
 References: <20260215100302.136719-1-work@onurozkan.dev>
-	<20260216104423.6b5bcc96@fedora>
-	<523c7b99-33a7-410d-8efb-b7bb2f2f416d@collabora.com>
-	<4730819.LvFx2qVVIh@workhorse>
-	<aZMiv7ARO4TUSUTa@e142607>
-Organization: Collabora
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
+	<20260215100302.136719-2-work@onurozkan.dev>
+	<20260216103743.626c71e3@fedora>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260216_062037_834224_428614C7 
-X-CRM114-Status: GOOD (  32.39  )
+X-CRM114-CacheID: sfid-20260216_064134_337628_500F8D80 
+X-CRM114-Status: GOOD (  25.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,93 +79,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Liviu,
+On Mon, 16 Feb 2026 10:37:43 +0100
+Boris Brezillon <boris.brezillon@collabora.com> wrote:
 
-On Mon, 16 Feb 2026 13:59:27 +0000
-Liviu Dudau <liviu.dudau@arm.com> wrote:
-
-> On Mon, Feb 16, 2026 at 01:43:19PM +0100, Nicolas Frattaroli wrote:
-> > On Monday, 16 February 2026 12:44:39 Central European Standard Time Ang=
-eloGioacchino Del Regno wrote: =20
-> > > Il 16/02/26 10:44, Boris Brezillon ha scritto: =20
-> > > > Hello Adam,
-> > > >=20
-> > > > On Sun, 15 Feb 2026 16:21:34 -0600
-> > > > Adam Ford <aford173@gmail.com> wrote:
-> > > >  =20
-> > > >> On Sun, Feb 15, 2026 at 4:04=E2=80=AFAM Onur =C3=96zkan <work@onur=
-ozkan.dev> wrote: =20
-> > > >>>
-> > > >>> If sram-supply is missing, Panthor falls back to a
-> > > >>> dummy regulator with a warning. This implicit behavior
-> > > >>> hides missing DT wiring behind regulator core fallback. =20
+> On Sun, 15 Feb 2026 13:02:51 +0300
+> Onur =C3=96zkan <work@onurozkan.dev> wrote:
+>=20
+> > If sram-supply is missing, Panthor falls back to a
+> > dummy regulator with a warning. This implicit behavior
+> > hides missing DT wiring behind regulator core fallback.
 > >=20
-> > This is intentional design of the regulator API. A missing supply will
-> > always result in a dummy regulator. The _optional function bubbles the
-> > missing supply condition up to the caller.
+> > Make SRAM handling explicit: require sram-supply for all
+> > Panthor compatibles except mt8196-mali where GPU supplies
+> > are intentionally managed outside Panthor and DT does not
+> > model sram-supply for that compatible.
 > >=20
-> > Catching device trees lacking supplies that are marked as required by
-> > the binding is done with dtbs_check, not at runtime. =20
+> > This keeps DT power modeling explicit and avoids relying on
+> > dummy-regulator fallback.
+> >=20
+> > Link: https://lore.kernel.org/all/20260213155937.6af75786@nimda/
+> > Signed-off-by: Onur =C3=96zkan <work@onurozkan.dev>
+> > ---
+> >  drivers/gpu/drm/panthor/panthor_devfreq.c | 13 +++++++++----
+> >  1 file changed, 9 insertions(+), 4 deletions(-)
+> >=20
+> > diff --git a/drivers/gpu/drm/panthor/panthor_devfreq.c
+> > b/drivers/gpu/drm/panthor/panthor_devfreq.c index
+> > 2249b41ca4af..5f6075f18fe3 100644 ---
+> > a/drivers/gpu/drm/panthor/panthor_devfreq.c +++
+> > b/drivers/gpu/drm/panthor/panthor_devfreq.c @@ -206,12 +206,17 @@
+> > int panthor_devfreq_init(struct panthor_device *ptdev)
+> >  	 * But without knowing if it's beneficial or not (in term
+> > of power
+> >  	 * consumption), or how much it slows down the
+> > suspend/resume steps,
+> >  	 * let's just keep regulators enabled for the device
+> > lifetime.
+> > +	 *
+> > +	 * Treat sram-supply as mandatory except for mt8196-mali.
+> > It manages
+> > +	 * SRAM outside Panthor so this driver must not require
+> > direct control
+> > +	 * over it.
+> >  	 */
+> > -	ret =3D devm_regulator_get_enable_optional(dev, "sram");
+> > -	if (ret && ret !=3D -ENODEV) {
+> > -		if (ret !=3D -EPROBE_DEFER)
+> > +	if (!of_device_is_compatible(dev->of_node,
+> > "mediatek,mt8196-mali")) {
 >=20
-> I'm replying to this thread while I'm also trying to cover some discussio=
-n in the
-> DT patch series.
+> Rather than checking for specific compats here, let's go for
+> a dont_need_sram_supply bool in panthor_soc_data.
 >=20
-> What we're trying to solve is this: the Mali GPUs have an L2$+bits power =
-domain
-> that in upstream ended up being called 'sram' for reasons. The domain is =
-important
-> both for ultimate power savings (you can turn off most of the other GPU d=
-omains
-> and preserve enough state for the GPU to wake up on an interrupt) and for=
- normal
-> operations, for obvious reasons. Now, vendors either don't bother to put a
-> separate domain just for "sram" or go to the extreme of handing over cont=
-rol over
-> that domain to an MCU that implements aggresive and system-wide policies.=
- We're
-> trying to cater for all cases, include the (currently hypotetical) one wh=
-ere you
-> have a separate "sram" power domain that Linux can control.
->=20
-> When we have first upstreamed the bindings, inspired by Panfrost driver, =
-we have
-> added the sram-supply as mandatory which I think is turning out to be a m=
-istake.
-> Prompted by Mark Brown's reply[1] to Tyr adding 'sram-supply' as an optio=
-nal
-> property, Onur has started this and the DT patch series[2] to enforce the=
- presence
-> of an 'sram-supply' to reduce the number of warnings in dtbs_check. In re=
-ality
-> what we are enforcing is a dummy supply that is the same as the one the G=
-PU is using
-> because most of the systems don't have a specific one.
->=20
-> So the problem we have is: do we change the upstream binding and make 'sr=
-am-supply'
-> optional for every compatible string given that it is unlikely to be prov=
-ided (and
-> the code did not enforce it in panthor_devfreq.c anyway from the beginnin=
-g), or
-> do we accept that this power domain is important but usually not specifie=
-d and we
-> go with the current DT patch series that provides one?
 
-My main worry with this approach is that SoC/board bring-up tends to be
-an iterative process in practice, and it usually starts with a
-bunch of resources forcibly enabled (either in the bootloader
-or directly in Linux) because that's easy. Problem is, that's also very
-easy to forget defining non-optional resources when the dts[i] is
-upstreamed, because everything seems to work just fine. And because of
-this DT backward-compat constraint, if get it wrong, and the supply is
-needed for real, when we get to implement the real thing we're just
-screwed. Having a runtime error preventing the device to probe forces
-people to at least think twice before doing something stupid, like
-making the SRAM (or L2-cache) supply point to the core supply when they
-are two distinct regulator outputs.
+Makes sense.
+
+> > +		ret =3D devm_regulator_get_enable_optional(dev,
+> > "sram");
+>=20
+> If we assume SRAM supply is mandatory, should this be
+> devm_regulator_get_enable() instead?
+>
+
+That was the first thing I did but when I tested it, it didn't work as
+expected because devm_regulator_get_enable() fell back to the dummy
+regulator without returning an error.
 
 Regards,
+Onur
+=20
+> > +		if (ret) {
+> >  			DRM_DEV_ERROR(dev, "Couldn't
+> > retrieve/enable sram supply\n");
+> > -		return ret;
+> > +			return ret;
+> > +		}
+> >  	}
+> > =20
+> >  	opp =3D devfreq_recommended_opp(dev, &cur_freq, 0);
+>=20
 
-Boris
 
