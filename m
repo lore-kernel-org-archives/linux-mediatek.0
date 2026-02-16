@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0ED9E63F3F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 09:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBD0EE7BD8C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 10:47:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OhbOHynWdIqyd2LkLlh4zuE6O3h/dec0WUZPV7py2YA=; b=zD7rPn2HZvM5vSHzpiT5zeLVs/
-	dnqt8M043++dRPpApT7t6hfgkIaR5xh0+wEXIF3k3yqavMkOSh7TS4axGcoa+LOC9D16gUpQyQfGD
-	jDYubl3B163wjBfnMNnkpZqqYodAa//nYR2CosBWRQhMqarPv+odzH7Pk9xYK5h80EHGwNexuZxBW
-	YvSUCBmlnDVO/o5tJAmJSKjpapeXh50vZFmgGIxlc3e3nIz2Lw+nuN6LEy7XutfHa3827nOEfpd6k
-	RnOYq2Co4M7rNv3ugM+ksjpqHAuK1Jaz7EBMMBvC2VIyMj56uXbuLlsg1p1vxvkPZzR23KYnJ37+Y
-	TbQQJbFQ==;
+	bh=99nJyG38AdT6lfENG9BsH6/GyJNIEWjsDvdcblfA61g=; b=VeQ2KBHFtybQlcbFGdOgiLO2D2
+	NQlg1KnTrdLJXf5y/XUIpSLYCavO6Hg2Yp7BhEoaXio0tz20oLxB8UkUKkksnXm54Y05iONOglT7w
+	hskO+hfFi2NbKFKEHvMjqHnO1ZpporxQkjMJxhTNpa/0jIjVPR4n669FyMQOz4NP15J6TT3B3lpq+
+	mgSAs8kPuYQQBR/O23ZnJQiYn+hg2eHrfKHK33c3ux0d00pgVwRAldbFUcpx/U9BpZfExamRB9lRv
+	+e1d2dr/6dJoSzN37cyzJ9TM9zxODqMU2eCd12/HMyWP1FZsUrsh1k1PMjvo4uT7TTjX9JTeVVKrC
+	95mXraXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrv9s-00000006I7x-3pIl;
-	Mon, 16 Feb 2026 09:44:48 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vrw8A-00000006NZK-0tnq;
+	Mon, 16 Feb 2026 10:47:06 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrv9a-00000006I1b-2d0P;
-	Mon, 16 Feb 2026 09:44:46 +0000
+	id 1vrw87-00000006NYz-2axm
+	for linux-mediatek@lists.infradead.org;
+	Mon, 16 Feb 2026 10:47:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771235068;
-	bh=ZmNpag6GBURIks4wmS3ojXtnwZVF30mG5EnZSm/42mM=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=FEiCZYIl0PM2WOaah9nVZrSvsCdSKwKNLfCD+UYJF/IgEmZSmsyUdvPWNVRDhU6Zz
-	 HLsdZID4K3bLcl7wVOEEePR+PyIjUjxlMBD0O3/F8GBitCJBvH/FnLWm3MfuAAKwDF
-	 2Hv3MiIVwzGLbxx+GyPk4Lr32zrHmgTbMz/3mO03RuvUyxlvHxAJhaRAFUgPTWZWlb
-	 yfO9tJEmjxotzi7TjCN904iA+CEiy1ytTOZJB0yGTK/v52v4NPe8v50fAQ+frMwPrE
-	 rKvgD4+TyXe7CCkD/iA9MRiuNLFjHwpToTbnBKSzL9CZ1ZYNjsC6vpOFtE7j3GWGM+
-	 YjCjTxQghzd0A==
-Received: from fedora (unknown [IPv6:2a01:e0a:2c:6930:d919:a6e:5ea1:8a9f])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1771238820;
+	bh=Zzin5ThTM9Imyf75zYHV+Tk+Fha+1QurOEuuq7ZkmWQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=fT7TaQ0C/ikyDEBGY2C7G+7P/fo4AtNST7bMbWiKDKrmMe+1gy65BjnWZ54PG1+SE
+	 qQDSOTWFjnImyYE30/10pcSWSECaBtFIDN0LThfDdpr7NZIokMjZMuyvPU8zmaaSNL
+	 lbcY1b1SCUMDf7J2pbOWZM4w0D9pY6Hrmk51j5J0UwJMFJN6i9XBLi53U9hrav2InY
+	 oNpaqeAVirbCTqX25CntkeQaRHqIQG9amW2BSA902jnQuRw/Mqf7F1w+KKplsPLVyx
+	 rwimIZmdoETkP7/bYVZG8mWBi8h1UqreKXMrbdVpCXMjdU/bYVzkTaxSAGTdsVX6Gp
+	 5MZMdzkuSwsqA==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: bbrezillon)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8841A17E137B;
-	Mon, 16 Feb 2026 10:44:27 +0100 (CET)
-Date: Mon, 16 Feb 2026 10:44:23 +0100
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Adam Ford <aford173@gmail.com>
-Cc: Onur =?UTF-8?B?w5Z6a2Fu?= <work@onurozkan.dev>, Steven Price
- <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>, Maarten
- Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
- <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
- <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v1 2/2] drm/panthor: treat sram as mandatory except
- mt8196
-Message-ID: <20260216104423.6b5bcc96@fedora>
-In-Reply-To: <CAHCN7xJJgLxPSf0QJ9nvY4Z3BguDmYJtpeprT+obD5DgA8rOgQ@mail.gmail.com>
-References: <20260215100302.136719-1-work@onurozkan.dev>
-	<20260215100302.136719-2-work@onurozkan.dev>
-	<CAHCN7xJJgLxPSf0QJ9nvY4Z3BguDmYJtpeprT+obD5DgA8rOgQ@mail.gmail.com>
-Organization: Collabora
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 973AF17E1523;
+	Mon, 16 Feb 2026 11:47:00 +0100 (CET)
+Message-ID: <86e2d0f9-5c25-4cce-b4a8-68fb569f987d@collabora.com>
+Date: Mon, 16 Feb 2026 11:46:59 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [REGRESSION] mt8183-kukui: dts: changes in dts caused display to
+ no longer initialize - Was: Re: mt8183-kukui: drm/mediatek: dts: Invalid
+ display hw pipeline when probing mediatek-drm
+To: Thorsten Leemhuis <regressions@leemhuis.info>,
+ Denis Gessert <denisgessert@gmail.com>
+Cc: Evans Jahja <evansjahja13@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ regressions@lists.linux.dev, =?UTF-8?Q?Otto_Pfl=C3=BCger?=
+ <otto.pflueger@abscue.de>
+References: <CAFLVeg9hwH3PbKu5rPWZWqq6yz5mRRoB9oqxDkxNRdEDLGbVBw@mail.gmail.com>
+ <CAFLVeg_soeYV4tOYKMo6TMYOtuWWU4TFCjUTxUrVEyGcRwMz7A@mail.gmail.com>
+ <df6fcd73-fe0a-42fc-97ce-7e458c340553@leemhuis.info>
+ <CAFLVeg-qeWu4ntgyqotsgjogPEyhqrMGG=UDWuZe+-D3K8YPTA@mail.gmail.com>
+ <908f3c03-a8b0-4535-9cfa-294c6ade8152@collabora.com>
+ <96e7f0fc-65f4-4613-b556-3a2d869dabb4@leemhuis.info>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <96e7f0fc-65f4-4613-b556-3a2d869dabb4@leemhuis.info>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260216_014431_077145_F7B20955 
-X-CRM114-Status: GOOD (  26.10  )
+X-CRM114-CacheID: sfid-20260216_024703_879478_98A03859 
+X-CRM114-Status: GOOD (  16.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,79 +86,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Adam,
+Il 13/02/26 10:27, Thorsten Leemhuis ha scritto:
+> On 2/9/26 12:42, AngeloGioacchino Del Regno wrote:
+>> Il 06/02/26 17:58, Denis Gessert ha scritto:
+>>> Thanks for the quick response. I compiled 6.18.9 with this patch
+>>> (without reverting the previous commit) and it boots successfully.
+>>
+>> Well, I missed all those replies to this thread, and sent a redundant reply
+>> saying .. well, the same as Thorsten (hey, thanks for being faster than
+>> me!).
+> 
+> Happens. :-D
+> 
+>> Happy to see further confirmation that the patch that we both mentioned is
+>> actually fixing the issue.
+> 
+> The big question remains: Now that this landed in mainline, should we as
+> the stable team to pick this up for 6.18.y and 6.19.y to get it resolved
+> there quickly? They might pick it up on their own due to the Fixes tag,
+> but that is not guaranteed.
+> 
 
-On Sun, 15 Feb 2026 16:21:34 -0600
-Adam Ford <aford173@gmail.com> wrote:
+Yes, please, that'd be great.
 
-> On Sun, Feb 15, 2026 at 4:04=E2=80=AFAM Onur =C3=96zkan <work@onurozkan.d=
-ev> wrote:
-> >
-> > If sram-supply is missing, Panthor falls back to a
-> > dummy regulator with a warning. This implicit behavior
-> > hides missing DT wiring behind regulator core fallback.
-> >
-> > Make SRAM handling explicit: require sram-supply for all
-> > Panthor compatibles except mt8196-mali where GPU supplies
-> > are intentionally managed outside Panthor and DT does not
-> > model sram-supply for that compatible.
-> >
-> > This keeps DT power modeling explicit and avoids relying on
-> > dummy-regulator fallback.
-> >
-> > Link: https://lore.kernel.org/all/20260213155937.6af75786@nimda/
-> > Signed-off-by: Onur =C3=96zkan <work@onurozkan.dev>
-> > ---
-> >  drivers/gpu/drm/panthor/panthor_devfreq.c | 13 +++++++++----
-> >  1 file changed, 9 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/drivers/gpu/drm/panthor/panthor_devfreq.c b/drivers/gpu/dr=
-m/panthor/panthor_devfreq.c
-> > index 2249b41ca4af..5f6075f18fe3 100644
-> > --- a/drivers/gpu/drm/panthor/panthor_devfreq.c
-> > +++ b/drivers/gpu/drm/panthor/panthor_devfreq.c
-> > @@ -206,12 +206,17 @@ int panthor_devfreq_init(struct panthor_device *p=
-tdev)
-> >          * But without knowing if it's beneficial or not (in term of po=
-wer
-> >          * consumption), or how much it slows down the suspend/resume s=
-teps,
-> >          * let's just keep regulators enabled for the device lifetime.
-> > +        *
-> > +        * Treat sram-supply as mandatory except for mt8196-mali. It ma=
-nages
-> > +        * SRAM outside Panthor so this driver must not require direct =
-control
-> > +        * over it.
-> >          */
-> > -       ret =3D devm_regulator_get_enable_optional(dev, "sram");
-> > -       if (ret && ret !=3D -ENODEV) {
-> > -               if (ret !=3D -EPROBE_DEFER)
-> > +       if (!of_device_is_compatible(dev->of_node, "mediatek,mt8196-mal=
-i")) { =20
->=20
-> I wonder if a more generic device tree flag would be better here.
+Cheers,
+Angelo
 
-No, we don't want it as a separate DT flag. This is all stuff we can
-hide behind the compat, and every bit we add to the DT we don't
-strictly need turns out to be a liability in the long run in general.
+> Ciao, Thorsten
+> 
+>>> Am Fr., 6. Feb. 2026 um 15:55 Uhr schrieb Thorsten Leemhuis
+>>> <regressions@leemhuis.info>:
+>>>>
+>>>> On 2/6/26 12:33, Denis Gessert wrote:
+>>>>>
+>>>>> I found this email chain while troubleshooting why my Levovo Duet
+>>>>> (with the MT8183 chip) would not boot using any 6.18.* kernel.
+>>>>>
+>>>>> I can confirm that on my device the current stable 6.18.8 does not
+>>>>> boot unless I revert the commit
+>>>>>
+>>>>> commit e72d63fa0563f8a6e98c10fed3a9ce74dc0536e6 (HEAD)
+>>>>> Author: AngeloGioacchino Del Regno
+>>>>> <angelogioacchino.delregno@collabora.com>
+>>>>> Date:   Thu Jul 24 10:39:08 2025 +0200
+>>>>>
+>>>>>       arm64: dts: mediatek: mt8183: Migrate to display controller OF
+>>>>> graph
+>>>>>
+>>>>> mentioned below. With the reverted commit the device boots as intended.
+>>>>
+>>>> There is a fix for it from Otto here that I guess should help
+>>>> https://lore.kernel.org/lkml/20260106-mt8183-display-graph-v2-1-
+>>>> e7e56054eef5@abscue.de/
+>>>>
+>>>> Side note: lacks a stable tag and maybe should have been merged this
+>>>> cycle instead of the next. But given that 6.19 is immanent it might be
+>>>> good if this could be backported to 6.19.y once it landed in mainline.
+>>>>
+>>>>> PS: Apologies for the potential double-mail.
+>>>> No worries, happens.
+>>>>
+>>>> Ciao, Thortsten
+>>
+>>
+>>
+> 
 
-> What happens if others do the same as Mediatek or Mediatek decides to
-> do this with more processors and this list grows?
 
-That's what panthor_soc_data is for: you can attach per-compat
-properties without polluting the DT with more stuff that can be
-directly inferred from the compatible.
-
-> It seems like a
-> panthor binding might be useful to prevent future bloat.
-
-It's actually the opposite, the more we add to the DT, the trickier it
-gets to maintain, because we tend to get those things wrong (is the
-SRAM really not needed on mt8196, or is this just a workaround to hide
-the fact the PM is deferred to some FW?).
-
-Regards,
-
-Boris
 
