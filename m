@@ -4,60 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8369E81A3A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 15:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1936E81A3A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 16:01:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZWzPWZxwT6T3Dy9250yQqgOiJzayCf9BdoAZzi1Up9U=; b=2+2hxXK2vVcQ6EZh0xOVNfE0Cz
-	6GuRSc/ayDO/pqV2yU/gizTN7t/sYS0uq1VeukUaE64YU6ESoVrQ6wrThAqWUEXr0PcYKq4l8H96s
-	4cWbvkOGYmyUGEVcUgQ1zsA7jbECApy8AxmWdnPEA9YFJcd0Q87syvIhXL2ApJqeFrF+8oRs8pIQV
-	nbEsrEZM4PldU/Ep8OPcz4DLtZnhbsyHUJnClgDslagXq/fEPqAG5HN7QEFkAzpettedENXxMLQ8s
-	C0HnkwCyMKd024t5Al50SRzhLcMJEmMwbo1UhIV3lRYugQtq7LhtWO0Kk9YnBk4uVubJ1/KWDzxtk
-	ACmx4T+w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pkwIbbWuaRHSuI60ba7tFAZeixEkrpc5I8oRuVKtKU0=; b=maXEnEyWhAf/MhHhnRI3izd302
+	7rr00GPabh24zulecoi2eyu91/FHENuELi8n1Dbse4AsKPRiQHYkC8j6tsuFuBs01NxwZwgajNoAK
+	3LJXwYDVx5WdIpqJTrD/t4N74yPaJma/R1UXOAmPVKm7F0osmcAeROD/7fEkemsem02uBiey6v9mr
+	4n2JpHX+sV379X7jORYrKGpC37BpHJDAwKT9Td6G6JfjkiPJYP4cz6DF2qH6HgXfJ4gTJDeLms31f
+	E5xoEzUHRTOytXD995XerE3NiOixHvDpoTclRLJT7ZtqTi6oQpbUSf0b4uslvhq30xqzb5d4euYug
+	BZQDp5Ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs0P2-00000006sPf-1pG2;
-	Mon, 16 Feb 2026 15:20:48 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs0Oy-00000006sP1-0vl7;
-	Mon, 16 Feb 2026 15:20:46 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 90E5F1570;
-	Mon, 16 Feb 2026 07:20:35 -0800 (PST)
-Received: from [10.57.56.155] (unknown [10.57.56.155])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9EDB93F632;
-	Mon, 16 Feb 2026 07:20:39 -0800 (PST)
-Message-ID: <acacf0a5-faff-4036-ac7d-011581668fa8@arm.com>
-Date: Mon, 16 Feb 2026 15:20:37 +0000
+	id 1vs12W-00000006xaL-1LeL;
+	Mon, 16 Feb 2026 16:01:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vs12T-00000006xZY-1rmj
+	for linux-mediatek@lists.infradead.org;
+	Mon, 16 Feb 2026 16:01:35 +0000
+X-UUID: c24846240b5011f1a16f0188aa809bee-20260216
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=pkwIbbWuaRHSuI60ba7tFAZeixEkrpc5I8oRuVKtKU0=;
+	b=dVTGfZBc+N2K+oi5MI9+Y1HzHlWMpqUjPTTrLF1CI6zdlM6YB6Njke3uiKq5jkdFaXgdbdFENNOcl2iNbKggu3XP1u1Z2F+ERxO+Zbctnby5oORuihcghPviNZ9x6JSqU21ihMMtvhzhk5jrl5Qxni//P4meoRu/E7ggIKJhFks=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:256a7f21-b5fe-4ccb-afbb-171ecd16e9ad,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:da3fff7a-8c8a-4fc4-88c0-3556e7711556,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: c24846240b5011f1a16f0188aa809bee-20260216
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <ryder.lee@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1276649553; Mon, 16 Feb 2026 09:01:30 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 17 Feb 2026 00:01:28 +0800
+Received: from mussdccf250.eus.mediatek.inc (10.73.250.250) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 17 Feb 2026 00:01:27 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Rob Herring <robh@kernel.org>
+CC: <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-wireless@vger.kernel.org>, Allen Ye <allen.ye@mediatek.com>, Ryder Lee
+	<ryder.lee@mediatek.com>
+Subject: [PATCH v7 1/3] wifi: mt76: fix backoff fields and max_power calculation
+Date: Mon, 16 Feb 2026 08:01:14 -0800
+Message-ID: <8fa8ec500b3d4de7b1966c6887f1dfbe5c46a54c.1771205424.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/2] drm/panthor: treat sram as mandatory except mt8196
-To: =?UTF-8?Q?Onur_=C3=96zkan?= <work@onurozkan.dev>,
- Boris Brezillon <boris.brezillon@collabora.com>
-Cc: Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260215100302.136719-1-work@onurozkan.dev>
- <20260215100302.136719-2-work@onurozkan.dev> <20260216103743.626c71e3@fedora>
- <20260216174107.1b9c03a4@nimda>
-From: Steven Price <steven.price@arm.com>
-Content-Language: en-GB
-In-Reply-To: <20260216174107.1b9c03a4@nimda>
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260216_072044_350598_A39530D6 
-X-CRM114-Status: GOOD (  20.96  )
+X-CRM114-CacheID: sfid-20260216_080134_310032_2C45928D 
+X-CRM114-Status: GOOD (  19.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,120 +84,294 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+Message-ID: <20260216160114.HD_RJ4h6F8L-lQa0204hzlCwGz8F3iOMEFwE6GXSJRM@z>
 
-On 16/02/2026 14:41, Onur Özkan wrote:
-> On Mon, 16 Feb 2026 10:37:43 +0100
-> Boris Brezillon <boris.brezillon@collabora.com> wrote:
-> 
->> On Sun, 15 Feb 2026 13:02:51 +0300
->> Onur Özkan <work@onurozkan.dev> wrote:
->>
->>> If sram-supply is missing, Panthor falls back to a
->>> dummy regulator with a warning. This implicit behavior
->>> hides missing DT wiring behind regulator core fallback.
->>>
->>> Make SRAM handling explicit: require sram-supply for all
->>> Panthor compatibles except mt8196-mali where GPU supplies
->>> are intentionally managed outside Panthor and DT does not
->>> model sram-supply for that compatible.
->>>
->>> This keeps DT power modeling explicit and avoids relying on
->>> dummy-regulator fallback.
->>>
->>> Link: https://lore.kernel.org/all/20260213155937.6af75786@nimda/
->>> Signed-off-by: Onur Özkan <work@onurozkan.dev>
->>> ---
->>>  drivers/gpu/drm/panthor/panthor_devfreq.c | 13 +++++++++----
->>>  1 file changed, 9 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/drivers/gpu/drm/panthor/panthor_devfreq.c
->>> b/drivers/gpu/drm/panthor/panthor_devfreq.c index
->>> 2249b41ca4af..5f6075f18fe3 100644 ---
->>> a/drivers/gpu/drm/panthor/panthor_devfreq.c +++
->>> b/drivers/gpu/drm/panthor/panthor_devfreq.c @@ -206,12 +206,17 @@
->>> int panthor_devfreq_init(struct panthor_device *ptdev)
->>>  	 * But without knowing if it's beneficial or not (in term
->>> of power
->>>  	 * consumption), or how much it slows down the
->>> suspend/resume steps,
->>>  	 * let's just keep regulators enabled for the device
->>> lifetime.
->>> +	 *
->>> +	 * Treat sram-supply as mandatory except for mt8196-mali.
->>> It manages
->>> +	 * SRAM outside Panthor so this driver must not require
->>> direct control
->>> +	 * over it.
->>>  	 */
->>> -	ret = devm_regulator_get_enable_optional(dev, "sram");
->>> -	if (ret && ret != -ENODEV) {
->>> -		if (ret != -EPROBE_DEFER)
->>> +	if (!of_device_is_compatible(dev->of_node,
->>> "mediatek,mt8196-mali")) {
->>
->> Rather than checking for specific compats here, let's go for
->> a dont_need_sram_supply bool in panthor_soc_data.
->>
-> 
-> Makes sense.
-> 
->>> +		ret = devm_regulator_get_enable_optional(dev,
->>> "sram");
->>
->> If we assume SRAM supply is mandatory, should this be
->> devm_regulator_get_enable() instead?
->>
-> 
-> That was the first thing I did but when I tested it, it didn't work as
-> expected because devm_regulator_get_enable() fell back to the dummy
-> regulator without returning an error.
+From: Allen Ye <allen.ye@mediatek.com>
 
-My understanding was that devm_regulator_get_enable() would output a
-warning in that case.
+The maximum power value may exist in either the data or backoff field.
+Previously, backoff power limits were not considered in txpower reporting.
+This patch ensures mt76 also considers backoff values in the SKU table.
 
-I'm not sure it really makes sense to deliberately fail the probe just
-because the regulator isn't there: we know in practice it often works
-and it can be useful for bring-up purposes. The issue was that we don't
-want DTs submitted without the "sram" regulator and the dt-check hasn't
-been sufficient in the past to catch such errors.
+Also, each RU entry (RU26, RU52, RU106, BW20, ...) in the DTS corresponds
+to 10 stream combinations (1T1ss, 2T1ss, 3T1ss, 4T1ss, 2T2ss, 3T2ss,
+4T2ss, 3T3ss, 4T3ss, 4T4ss).
 
-So a dmesg warning seems (to me) like the right sort of balance -
-there's obviously something to fix, but it doesn't block bring-up
-(unless of course the hardware actually requires it of course).
+For beamforming tables:
+- In connac2, beamforming entries for BW20~BW160, and OFDM do not include
+  1T1ss.
+- In connac3, beamforming entries for BW20~BW160, and RU include 1T1ss,
+  but OFDM beamforming does not include 1T1ss.
 
-I also note that you've lost the -EPROBE_DEFER check, meaning that the
-log message you've added will spam the logs if a defer happens.
+Non-beamforming and RU entries for both connac2 and connac3 include 1T1ss.
 
-My reading for these threads is that we need:
+Fixes: b05ab4be9fd7 ("wifi: mt76: mt7915: add bf backoff limit table support")
+Signed-off-by: Allen Ye <allen.ye@mediatek.com>
+Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+v1:
+- Add "wifi:" prefix to the subject.
 
- * A new field in panthor_soc_data for the mt8196 case.
+v2:
+- Fix checkpatch errors.
+- Remove unnecessary style changes.
+- Add explanation for connac2 index adjustment.
 
- * To check for new field, and if it's not set then use
-devm_regulator_get_enable() so that it generates a warning message if
-the regulator isn't present. Otherwise we skip the call.
+v3:
+- Fix "case"s for MT76_SKU_BACKOFF_BF_OFFSET and MT76_SKU_BACKOFF.
+- add more explanation for connac2/connac3 tables.
 
-So no need for panthor itself to log any messages, and we just return
-any errors from devm_regulator_get_enable(). A missing regulator will
-generate a warning but no error.
+v7: add missing dts mailing list and maintainers.
+---
+ drivers/net/wireless/mediatek/mt76/eeprom.c | 154 ++++++++++++++------
+ drivers/net/wireless/mediatek/mt76/mt76.h   |   1 -
+ 2 files changed, 109 insertions(+), 46 deletions(-)
 
-What am I missing?
-
-Thanks,
-Steve
-
-> Regards,
-> Onur
->  
->>> +		if (ret) {
->>>  			DRM_DEV_ERROR(dev, "Couldn't
->>> retrieve/enable sram supply\n");
->>> -		return ret;
->>> +			return ret;
->>> +		}
->>>  	}
->>>  
->>>  	opp = devfreq_recommended_opp(dev, &cur_freq, 0);
->>
-> 
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index 573400d57..afdb73661 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -9,6 +9,13 @@
+ #include <linux/nvmem-consumer.h>
+ #include <linux/etherdevice.h>
+ #include "mt76.h"
++#include "mt76_connac.h"
++
++enum mt76_sku_type {
++	MT76_SKU_RATE,
++	MT76_SKU_BACKOFF,
++	MT76_SKU_BACKOFF_BF_OFFSET,
++};
+ 
+ static int mt76_get_of_eeprom_data(struct mt76_dev *dev, void *eep, int len)
+ {
+@@ -292,7 +299,6 @@ mt76_find_channel_node(struct device_node *np, struct ieee80211_channel *chan)
+ }
+ EXPORT_SYMBOL_GPL(mt76_find_channel_node);
+ 
+-
+ static s8
+ mt76_get_txs_delta(struct device_node *np, u8 nss)
+ {
+@@ -306,9 +312,24 @@ mt76_get_txs_delta(struct device_node *np, u8 nss)
+ 	return be32_to_cpu(val[nss - 1]);
+ }
+ 
++static inline u8 mt76_backoff_n_chains(struct mt76_dev *dev, u8 idx)
++{
++	/* 0:1T1ss, 1:2T1ss, ..., 14:5T5ss */
++	static const u8 connac3_table[] = {
++		1, 2, 3, 4, 5, 2, 3, 4, 5, 3, 4, 5, 4, 5, 5};
++	static const u8 connac2_table[] = {
++		1, 2, 3, 4, 2, 3, 4, 3, 4, 4, 0, 0, 0, 0, 0};
++
++	if (idx >= ARRAY_SIZE(connac3_table))
++		return 0;
++
++	return is_mt799x(dev) ? connac3_table[idx] : connac2_table[idx];
++}
++
+ static void
+-mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const s8 *data,
+-		       s8 target_power, s8 nss_delta, s8 *max_power)
++mt76_apply_array_limit(struct mt76_dev *dev, s8 *pwr, size_t pwr_len,
++		       const s8 *data, s8 target_power, s8 nss_delta,
++		       s8 *max_power, int n_chains, enum mt76_sku_type type)
+ {
+ 	int i;
+ 
+@@ -316,18 +337,51 @@ mt76_apply_array_limit(s8 *pwr, size_t pwr_len, const s8 *data,
+ 		return;
+ 
+ 	for (i = 0; i < pwr_len; i++) {
+-		pwr[i] = min_t(s8, target_power, data[i] + nss_delta);
++		u8 backoff_chain_idx = i;
++		int backoff_n_chains;
++		s8 backoff_delta;
++		s8 delta;
++
++		switch (type) {
++		case MT76_SKU_RATE:
++			delta = 0;
++			backoff_delta = 0;
++			backoff_n_chains = 0;
++			break;
++		case MT76_SKU_BACKOFF_BF_OFFSET:
++			backoff_chain_idx += 1;
++			fallthrough;
++		case MT76_SKU_BACKOFF:
++			delta = mt76_tx_power_path_delta(n_chains);
++			backoff_n_chains = mt76_backoff_n_chains(dev, backoff_chain_idx);
++			backoff_delta = mt76_tx_power_path_delta(backoff_n_chains);
++			break;
++		default:
++			return;
++		}
++
++		pwr[i] = min_t(s8, target_power + delta - backoff_delta, data[i] + nss_delta);
++
++		/* used for padding, doesn't need to be considered */
++		if (data[i] >= S8_MAX - 1)
++			continue;
++
++		/* only consider backoff value for the configured chain number */
++		if (type != MT76_SKU_RATE && n_chains != backoff_n_chains)
++			continue;
++
+ 		*max_power = max(*max_power, pwr[i]);
+ 	}
+ }
+ 
+ static void
+-mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
+-			     const s8 *data, size_t len, s8 target_power,
+-			     s8 nss_delta)
++mt76_apply_multi_array_limit(struct mt76_dev *dev, s8 *pwr, size_t pwr_len,
++			     s8 pwr_num, const s8 *data, size_t len,
++			     s8 target_power, s8 nss_delta, s8 *max_power,
++			     int n_chains, enum mt76_sku_type type)
+ {
++	static const int connac2_backoff_ru_idx = 2;
+ 	int i, cur;
+-	s8 max_power = -128;
+ 
+ 	if (!data)
+ 		return;
+@@ -337,8 +391,26 @@ mt76_apply_multi_array_limit(s8 *pwr, size_t pwr_len, s8 pwr_num,
+ 		if (len < pwr_len + 1)
+ 			break;
+ 
+-		mt76_apply_array_limit(pwr + pwr_len * i, pwr_len, data + 1,
+-				       target_power, nss_delta, &max_power);
++		/* Each RU entry (RU26, RU52, RU106, BW20, ...) in the DTS
++		 * corresponds to 10 stream combinations (1T1ss, 2T1ss, 3T1ss,
++		 * 4T1ss, 2T2ss, 3T2ss, 4T2ss, 3T3ss, 4T3ss, 4T4ss).
++		 *
++		 * For beamforming tables:
++		 * - In connac2, beamforming entries for BW20~BW160 and OFDM
++		 *   do not include 1T1ss.
++		 * - In connac3, beamforming entries for BW20~BW160 and RU
++		 *   include 1T1ss, but OFDM beamforming does not include 1T1ss.
++		 *
++		 * Non-beamforming and RU entries for both connac2 and connac3
++		 * include 1T1ss.
++		 */
++		if (!is_mt799x(dev) && type == MT76_SKU_BACKOFF &&
++		    i > connac2_backoff_ru_idx)
++			type = MT76_SKU_BACKOFF_BF_OFFSET;
++
++		mt76_apply_array_limit(dev, pwr + pwr_len * i, pwr_len, data + 1,
++				       target_power, nss_delta, max_power,
++				       n_chains, type);
+ 		if (--cur > 0)
+ 			continue;
+ 
+@@ -360,18 +432,11 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
+ 	struct device_node *np;
+ 	const s8 *val;
+ 	char name[16];
+-	u32 mcs_rates = dev->drv->mcs_rates;
+-	u32 ru_rates = ARRAY_SIZE(dest->ru[0]);
+ 	char band;
+ 	size_t len;
+-	s8 max_power = 0;
+-	s8 max_power_backoff = -127;
++	s8 max_power = -127;
+ 	s8 txs_delta;
+ 	int n_chains = hweight16(phy->chainmask);
+-	s8 target_power_combine = target_power + mt76_tx_power_path_delta(n_chains);
+-
+-	if (!mcs_rates)
+-		mcs_rates = 10;
+ 
+ 	memset(dest, target_power, sizeof(*dest) - sizeof(dest->path));
+ 	memset(&dest->path, 0, sizeof(dest->path));
+@@ -409,46 +474,45 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
+ 	txs_delta = mt76_get_txs_delta(np, hweight16(phy->chainmask));
+ 
+ 	val = mt76_get_of_array_s8(np, "rates-cck", &len, ARRAY_SIZE(dest->cck));
+-	mt76_apply_array_limit(dest->cck, ARRAY_SIZE(dest->cck), val,
+-			       target_power, txs_delta, &max_power);
++	mt76_apply_array_limit(dev, dest->cck, ARRAY_SIZE(dest->cck), val,
++			       target_power, txs_delta, &max_power, n_chains, MT76_SKU_RATE);
+ 
+-	val = mt76_get_of_array_s8(np, "rates-ofdm",
+-				   &len, ARRAY_SIZE(dest->ofdm));
+-	mt76_apply_array_limit(dest->ofdm, ARRAY_SIZE(dest->ofdm), val,
+-			       target_power, txs_delta, &max_power);
++	val = mt76_get_of_array_s8(np, "rates-ofdm", &len, ARRAY_SIZE(dest->ofdm));
++	mt76_apply_array_limit(dev, dest->ofdm, ARRAY_SIZE(dest->ofdm), val,
++			       target_power, txs_delta, &max_power, n_chains, MT76_SKU_RATE);
+ 
+-	val = mt76_get_of_array_s8(np, "rates-mcs", &len, mcs_rates + 1);
+-	mt76_apply_multi_array_limit(dest->mcs[0], ARRAY_SIZE(dest->mcs[0]),
+-				     ARRAY_SIZE(dest->mcs), val, len,
+-				     target_power, txs_delta);
++	val = mt76_get_of_array_s8(np, "rates-mcs", &len, ARRAY_SIZE(dest->mcs[0]) + 1);
++	mt76_apply_multi_array_limit(dev, dest->mcs[0], ARRAY_SIZE(dest->mcs[0]),
++				     ARRAY_SIZE(dest->mcs), val, len, target_power,
++				     txs_delta, &max_power, n_chains, MT76_SKU_RATE);
+ 
+-	val = mt76_get_of_array_s8(np, "rates-ru", &len, ru_rates + 1);
+-	mt76_apply_multi_array_limit(dest->ru[0], ARRAY_SIZE(dest->ru[0]),
+-				     ARRAY_SIZE(dest->ru), val, len,
+-				     target_power, txs_delta);
++	val = mt76_get_of_array_s8(np, "rates-ru", &len, ARRAY_SIZE(dest->ru[0]) + 1);
++	mt76_apply_multi_array_limit(dev, dest->ru[0], ARRAY_SIZE(dest->ru[0]),
++				     ARRAY_SIZE(dest->ru), val, len, target_power,
++				     txs_delta, &max_power, n_chains, MT76_SKU_RATE);
+ 
+-	max_power_backoff = max_power;
+ 	val = mt76_get_of_array_s8(np, "paths-cck", &len, ARRAY_SIZE(dest->path.cck));
+-	mt76_apply_array_limit(dest->path.cck, ARRAY_SIZE(dest->path.cck), val,
+-			       target_power_combine, txs_delta, &max_power_backoff);
++	mt76_apply_array_limit(dev, dest->path.cck, ARRAY_SIZE(dest->path.cck), val,
++			       target_power, txs_delta, &max_power, n_chains, MT76_SKU_BACKOFF);
+ 
+ 	val = mt76_get_of_array_s8(np, "paths-ofdm", &len, ARRAY_SIZE(dest->path.ofdm));
+-	mt76_apply_array_limit(dest->path.ofdm, ARRAY_SIZE(dest->path.ofdm), val,
+-			       target_power_combine, txs_delta, &max_power_backoff);
++	mt76_apply_array_limit(dev, dest->path.ofdm, ARRAY_SIZE(dest->path.ofdm), val,
++			       target_power, txs_delta, &max_power, n_chains, MT76_SKU_BACKOFF);
+ 
+ 	val = mt76_get_of_array_s8(np, "paths-ofdm-bf", &len, ARRAY_SIZE(dest->path.ofdm_bf));
+-	mt76_apply_array_limit(dest->path.ofdm_bf, ARRAY_SIZE(dest->path.ofdm_bf), val,
+-			       target_power_combine, txs_delta, &max_power_backoff);
++	mt76_apply_array_limit(dev, dest->path.ofdm_bf, ARRAY_SIZE(dest->path.ofdm_bf), val,
++			       target_power, txs_delta, &max_power, n_chains,
++			       MT76_SKU_BACKOFF_BF_OFFSET);
+ 
+ 	val = mt76_get_of_array_s8(np, "paths-ru", &len, ARRAY_SIZE(dest->path.ru[0]) + 1);
+-	mt76_apply_multi_array_limit(dest->path.ru[0], ARRAY_SIZE(dest->path.ru[0]),
+-				     ARRAY_SIZE(dest->path.ru), val, len,
+-				     target_power_combine, txs_delta);
++	mt76_apply_multi_array_limit(dev, dest->path.ru[0], ARRAY_SIZE(dest->path.ru[0]),
++				     ARRAY_SIZE(dest->path.ru), val, len, target_power,
++				     txs_delta, &max_power, n_chains, MT76_SKU_BACKOFF);
+ 
+ 	val = mt76_get_of_array_s8(np, "paths-ru-bf", &len, ARRAY_SIZE(dest->path.ru_bf[0]) + 1);
+-	mt76_apply_multi_array_limit(dest->path.ru_bf[0], ARRAY_SIZE(dest->path.ru_bf[0]),
+-				     ARRAY_SIZE(dest->path.ru_bf), val, len,
+-				     target_power_combine, txs_delta);
++	mt76_apply_multi_array_limit(dev, dest->path.ru_bf[0], ARRAY_SIZE(dest->path.ru_bf[0]),
++				     ARRAY_SIZE(dest->path.ru_bf), val, len, target_power,
++				     txs_delta, &max_power, n_chains, MT76_SKU_BACKOFF);
+ 
+ 	return max_power;
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index d05e83ea1..32876eab2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -540,7 +540,6 @@ struct mt76_driver_ops {
+ 	u32 survey_flags;
+ 	u16 txwi_size;
+ 	u16 token_size;
+-	u8 mcs_rates;
+ 
+ 	unsigned int link_data_size;
+ 
+-- 
+2.45.2
 
 
