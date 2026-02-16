@@ -4,72 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFE5BE7BDAC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 13:07:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DB39E63F15
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 13:38:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JGu/7CadCfnI7dq3WybZJKcCnjrFanotW4mbepc0i+8=; b=muVW8XC+ywJlpd+us5MjiDdbSi
-	684ceGfQbRLd2s3SXNLCwOwNgP34DUT4bv64++lkNfOHtKJA4KWfG8grL+5kmre1A3PbzlTHT68Vq
-	gp9GlYnp+iX/qg/o53idzxo9rAYcPX6SCaVmYsYCl45gMavBRIzeIC0OtRi9cbPuZ+1V5r6cUYFK+
-	mJ6FIyvNrlUzEoYWMpvZhvQX9efDJHzVMjHQTsRCrTkH1SNhUVTgms8y7IkrH9LJ+Ku/56Ea0zWd7
-	6JQ0locINJJuH25NgBND+RT+ypxcc+ghqpyzYy5SwEBA/k0Hs34saBvQVz6n3Tqm8xfdvYi8LZA7E
-	RqT+WALQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LY2Y0LxFSdMEXjuR+QnpUOadiC18LiHpPzIEebtTR0w=; b=3ziQxAjS+7dudt
+	KKbmKGtgCDDaxgTqgqqwWk8HM3eeoYv1wrX5hg8vSi35ulhIxcInoMHt+OTzZGBd6/I050LtYE30u
+	GFF4eopGzf73Lw0vQO+13kUXY41xoRl2+XTn4UE9wEYyokz3G5bTtlQ0dhn6odedzGcav98ab5/8z
+	RbdXjkgiZirb4ZlQhrtJ6DFzZkCKMGnquztIBt51R/MwysBkj6ZYODD64oDocN65YTQsmEyrD5lJr
+	lmmhPRUOhNfrfS0+YQlrmxyw7enqK1am5qND0+No43hbQc09ZmZB2ADPk0KDH5G///HamsvnT8KC2
+	zlD+6gVzr7ilGkqKvLfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vryK6-00000006cLR-2eXH;
-	Mon, 16 Feb 2026 13:07:34 +0000
-Received: from sender4-pp-e109.zoho.com ([136.143.188.109])
+	id 1vryny-00000006fHd-0csd;
+	Mon, 16 Feb 2026 13:38:26 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vryK1-00000006cGJ-23Bg;
-	Mon, 16 Feb 2026 13:07:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1771247244; cv=none; 
+	id 1vrynu-00000006fGj-17df;
+	Mon, 16 Feb 2026 13:38:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1771249081; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=MUtVUkjbO3wF62ULoQDCvoti7vkf2UzL/iIpWVg3OeoJYo1+T7R8hiZlZaC7dw/vHTHS/WyFCSHdhaPeKyY5C0muhUJ7X9yBEIqYJrzgP2G57+OV/jkW44YQrylU1owGIFFePMADjRslIfa0Z44QidN6kF/vD5RIfzifVpU+3jI=
+	b=OXYtallJF5W4UTmroweQAK1Ud2q03aTAEFfnc+eEC+vGI648zGyu9GsIiz3WlnFlIT+72dYs1HEz0qr4je8RZb8nxbb99jHqRHQN5Kq1M26/umIPVNk76+rsD0WqKEWpk7+TGaXeP4QL0qSKrzC7dvLszlEsE+Di0TdWsCS+DMo=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1771247244; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=JGu/7CadCfnI7dq3WybZJKcCnjrFanotW4mbepc0i+8=; 
-	b=nSKv8NHV22sUlwg5ny/7rf3YvJpPd04M4U1xXKJjPPHgJhgrqzh63p8uyhpcXFnlFFrdJGC9xUmxQlgxrd36wLUgIXAsAnIFfVTDJmxexqaa49SKAKcB7RmovADE41zaRSKIo/zXKmFkRuYFvLQ4R8+ApIy+QKJb6x/tIx1zt54=
+	t=1771249081; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=LY2Y0LxFSdMEXjuR+QnpUOadiC18LiHpPzIEebtTR0w=; 
+	b=eeLoIKU3khp1lsvBaXnHoFmiyCC9pieeaSjK5FCcIilo4ZiNV5d62EtjDkUCHFkf4a0IafLUr8XyHI7aW+SDTWZHlPTZIX5tf5X87Q5KIM6c2KxUhJ090sadsbuFf+DoTd2Gu/EuYNjvdDN8j/Ln7M3/D2TiFQO14RkPyyQjg+w=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1771247244;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1771249081;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=JGu/7CadCfnI7dq3WybZJKcCnjrFanotW4mbepc0i+8=;
-	b=XdA74lDT681nugGdLFGw9r8VDO9Nj8sarers1MES3gQXiP2e/UfVCP+hDazo9vm2
-	2eYEc4ICdAi6dqZCXAUBLsWMGT9Xjl9EC0ehFtYyhQ4zGdKwuErxwMd6Ro3WGnWMlpR
-	JYGHnlnek4/rLDDOoYpkHL14zI1fiL9ParrisucA=
-Received: by mx.zohomail.com with SMTPS id 1771247243156433.035940506512;
-	Mon, 16 Feb 2026 05:07:23 -0800 (PST)
+	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
+	bh=LY2Y0LxFSdMEXjuR+QnpUOadiC18LiHpPzIEebtTR0w=;
+	b=MOfjQjlYwboi+w17rSsAN3TgScO3X6hQl+AGdABVaPS8DJVX6THd8d2Gl5kfcUer
+	T4wPXHbp8qYlg5uhBRahJiqX3BKKeuVKMS79ajeFEhrOAbEm5uo22h2Qds7Kt1yu1ws
+	+KvYWUmYI2XFcTweuTeMBn7wpwp9RV61k0Okt9rw=
+Received: by mx.zohomail.com with SMTPS id 1771249080123420.8339921382387;
+	Mon, 16 Feb 2026 05:38:00 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Boris Brezillon <boris.brezillon@collabora.com>,
- Adam Ford <aford173@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Onur =?UTF-8?B?w5Z6a2Fu?= <work@onurozkan.dev>,
- Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v1 2/2] drm/panthor: treat sram as mandatory except mt8196
-Date: Mon, 16 Feb 2026 13:43:19 +0100
-Message-ID: <4730819.LvFx2qVVIh@workhorse>
-In-Reply-To: <523c7b99-33a7-410d-8efb-b7bb2f2f416d@collabora.com>
-References: <20260215100302.136719-1-work@onurozkan.dev> <20260216104423.6b5bcc96@fedora>
- <523c7b99-33a7-410d-8efb-b7bb2f2f416d@collabora.com>
+Subject: [PATCH v7 00/23] MediaTek UFS Cleanup and MT8196 Enablement
+Date: Mon, 16 Feb 2026 14:37:33 +0100
+Message-Id: <20260216-mt8196-ufs-v7-0-b5f2907c6da7@collabora.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/23QzUrEMBQF4FcpWRu5+W9m5XuIi/zcOoFpq0mnj
+ Ax9d2MHscUuT+A7N5w7KZgTFnJq7iTjnEoahxrMU0PC2Q3vSFOsmXDgigGTtJ9aZjW9doUGDNJ
+ bZw0qQSr4yNil21r2+vbIGT+vtXN6PBLvCtIw9n2aTs2At4nWXg2cCfIDzqlMY/5aPzOzVRzdn
+ RkFyqyKAX0rfGhfwni5OD9m91zL16qZb7necV55EEa0QgaJxh1xseFc7LioHDqQXjpjVdcdcfn
+ HOWt3XFYeIwbjhLYx8iOufrkGBnuuKpeWM8WUqfuzI643nO+n05WjCQDKawD+b7plWb4BLNauO
+ BQCAAA=
+X-Change-ID: 20251014-mt8196-ufs-cec4b9a97e53
+To: Alim Akhtar <alim.akhtar@samsung.com>, 
+ Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+ Kishon Vijay Abraham I <kishon@kernel.org>, 
+ Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>, 
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, 
+ "Martin K. Petersen" <martin.petersen@oracle.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Mark Brown <broonie@kernel.org>, Chaotian Jing <Chaotian.Jing@mediatek.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>
+Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+ kernel@collabora.com, linux-scsi@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-phy@lists.infradead.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Conor Dooley <conor.dooley@microchip.com>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260216_050729_584631_141140E2 
-X-CRM114-Status: GOOD (  39.00  )
+X-CRM114-CacheID: sfid-20260216_053823_247485_CC0EDA33 
+X-CRM114-Status: GOOD (  21.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,145 +100,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Monday, 16 February 2026 12:44:39 Central European Standard Time AngeloG=
-ioacchino Del Regno wrote:
-> Il 16/02/26 10:44, Boris Brezillon ha scritto:
-> > Hello Adam,
-> >=20
-> > On Sun, 15 Feb 2026 16:21:34 -0600
-> > Adam Ford <aford173@gmail.com> wrote:
-> >=20
-> >> On Sun, Feb 15, 2026 at 4:04=E2=80=AFAM Onur =C3=96zkan <work@onurozka=
-n.dev> wrote:
-> >>>
-> >>> If sram-supply is missing, Panthor falls back to a
-> >>> dummy regulator with a warning. This implicit behavior
-> >>> hides missing DT wiring behind regulator core fallback.
+In this series, the existing MediaTek UFS binding is expanded and
+completed to correctly describe not just the existing compatibles, but
+also to introduce a new compatible in the from of the MT8196 SoC.
 
-This is intentional design of the regulator API. A missing supply will
-always result in a dummy regulator. The _optional function bubbles the
-missing supply condition up to the caller.
+The resets, which until now were completely absent from both the UFS
+host controller binding and the UFS PHY binding, are introduced to both.
+This also means the driver's undocumented and, in mainline, unused reset
+logic is reworked. In particular, the PHY reset is no longer a reset of
+the host controller node, but of the PHY node.
 
-Catching device trees lacking supplies that are marked as required by
-the binding is done with dtbs_check, not at runtime.
+This means the host controller can reset the PHY through the common PHY
+framework.
 
-> >>>
-> >>> Make SRAM handling explicit: require sram-supply for all
-> >>> Panthor compatibles except mt8196-mali where GPU supplies
-> >>> are intentionally managed outside Panthor and DT does not
-> >>> model sram-supply for that compatible.
-> >>>
-> >>> This keeps DT power modeling explicit and avoids relying on
-> >>> dummy-regulator fallback.
-> >>>
-> >>> Link: https://lore.kernel.org/all/20260213155937.6af75786@nimda/
-> >>> Signed-off-by: Onur =C3=96zkan <work@onurozkan.dev>
-> >>> ---
-> >>>   drivers/gpu/drm/panthor/panthor_devfreq.c | 13 +++++++++----
-> >>>   1 file changed, 9 insertions(+), 4 deletions(-)
-> >>>
-> >>> diff --git a/drivers/gpu/drm/panthor/panthor_devfreq.c b/drivers/gpu/=
-drm/panthor/panthor_devfreq.c
-> >>> index 2249b41ca4af..5f6075f18fe3 100644
-> >>> --- a/drivers/gpu/drm/panthor/panthor_devfreq.c
-> >>> +++ b/drivers/gpu/drm/panthor/panthor_devfreq.c
-> >>> @@ -206,12 +206,17 @@ int panthor_devfreq_init(struct panthor_device =
-*ptdev)
-> >>>           * But without knowing if it's beneficial or not (in term of=
- power
-> >>>           * consumption), or how much it slows down the suspend/resum=
-e steps,
-> >>>           * let's just keep regulators enabled for the device lifetim=
-e.
-> >>> +        *
-> >>> +        * Treat sram-supply as mandatory except for mt8196-mali. It =
-manages
-> >>> +        * SRAM outside Panthor so this driver must not require direc=
-t control
-> >>> +        * over it.
-> >>>           */
-> >>> -       ret =3D devm_regulator_get_enable_optional(dev, "sram");
-> >>> -       if (ret && ret !=3D -ENODEV) {
-> >>> -               if (ret !=3D -EPROBE_DEFER)
-> >>> +       if (!of_device_is_compatible(dev->of_node, "mediatek,mt8196-m=
-ali")) {
+The resets remain optional.
 
-If you really need a per-SoC branch then please just store it in the
-platform data so we don't have these "of_device_is_compatible" checks
-littered throughout the driver.
+Additionally, a massive number of driver cleanups are introduced. These
+were prompted by me inspecting the driver more closely as I was
+adjusting it to correspond to the binding.
 
-> >>
-> >> I wonder if a more generic device tree flag would be better here.
-> >=20
-> > No, we don't want it as a separate DT flag. This is all stuff we can
-> > hide behind the compat, and every bit we add to the DT we don't
-> > strictly need turns out to be a liability in the long run in general.
-> >=20
-> >> What happens if others do the same as Mediatek or Mediatek decides to
-> >> do this with more processors and this list grows?
-> >=20
-> > That's what panthor_soc_data is for: you can attach per-compat
-> > properties without polluting the DT with more stuff that can be
-> > directly inferred from the compatible.
-> >=20
-> >> It seems like a
-> >> panthor binding might be useful to prevent future bloat.
-> >=20
-> > It's actually the opposite, the more we add to the DT, the trickier it
-> > gets to maintain, because we tend to get those things wrong (is the
-> > SRAM really not needed on mt8196, or is this just a workaround to hide
-> > the fact the PM is deferred to some FW?).
-> >=20
->=20
-> MT8196 has three supplies: core, stack, sram.
->=20
-> For example, the Google Rauru Chromebooks use those:
->=20
->         core-supply =3D <&mt6373_vbuck7>;
->         stack-supply =3D <&mt6316dp_vbuck0>;
->         sram-supply =3D <&mt6316kp_vbuck1>;
->=20
-> As of now (in our midstream trees), these supplies are declared in the gp=
-ufreq
-> node (the performance domain controller), and required to be on whenever =
-GPUEB
-> interaction is needed, other than whenever the GPU itself is, well, neede=
-d to
-> be powered.
->=20
-> As of the current model, these supplies are getting powered on and off al=
-ong
-> with the MFG power domain.
->=20
-> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/=
-drivers/pmdomain/mediatek/mtk-mfg-pmdomain.c#n1005
->=20
-> I'm not sure what happens if we also add those to the GPU node... for thi=
-s, I'm
-> adding Nicolas to the Ccs, as he is the one who developed support for EB.
+The driver still implements vendor properties that are undocumented in
+the binding. I did not touch most of those, as I neither want to
+convince the bindings maintainers that they are needed without knowing
+precisely what they're for, nor do I want to argue with the driver
+authors when removing them.
 
-=46airly sure they need to be on as part of any of the operations the MFG s=
-tuff
-does, but I also am not 100% sure on this because I didn't take notes at the
-time.
+Due to the "Marie Kondo with a chainsaw" nature of the driver cleanup
+patches, I humbly request that reviewers do not comment on displeasing
+code they see in the context portion of a patch before they've read the
+whole patch series, as that displeasing code may in fact be reworked in
+a subsequent patch of this series. Please keep comments focused on the
+changed lines of the diff; I know there's more that can be done, but it
+doesn't necessarily need to be part of this series.
 
-Either way, this patch shouldn't exist, it doesn't do anything useful, as a
-missing supply from the DT can be caught with `make dtbs_check`. It does not
-need to be booted on each device to then have the driver abort probe at run=
-time.
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+Changes in v7:
+- Rebase onto next-20260205, which drops "scsi: ufs: mediatek: Switch to
+  newer PM ops helpers" as Arnd sent an equivalent patch that also fixes
+  the PM-less build failure.
+- Link to v6: https://lore.kernel.org/r/20260124-mt8196-ufs-v6-0-e7c005b60028@collabora.com
 
->=20
-> Cheers,
-> Angelo
->=20
-> > Regards,
-> >=20
-> > Boris
->=20
->=20
->=20
+Changes in v6:
+- Reword "Rework probe function" commit to better justify the changes
+  being made.
+- Drop "Add vendor prefix to clk-scale-up-vcore-min"
+- Add patch to remove clk-scale-up-vcore-min entirely, describing the
+  process for bringing it back (in a different form) in the commit
+  message.
+- Link to v5: https://lore.kernel.org/r/20260108-mt8196-ufs-v5-0-49215157ec41@collabora.com
 
+Changes in v5:
+- Drop "scsi: ufs: mediatek: Make scale_us in setup_clk_gating const" as
+  someone else already got a patch in for this into next.
+- Make mtk_init_boost_crypt void
+- Don't disable/enable misc regulators during suspend/resume, but enable
+  them once when acquiring with a devm helper.
+- Link to v4: https://lore.kernel.org/r/20251218-mt8196-ufs-v4-0-ddec7a369dd2@collabora.com
 
+Changes in v4:
+- bindings: Redo the supply situation, as the avdd pins don't describe
+  the vcc(q2) card supplies.
+- bindings: format clock in mt8196 example more tersely.
+- phy: use devm_reset_control_get_optional_exclusive directly
+- driver: get and enable/disable the aforementioned avdd supplies.
+- Link to v3: https://lore.kernel.org/r/20251023-mt8196-ufs-v3-0-0f04b4a795ff@collabora.com
 
+Changes in v3:
+- Split mediatek,ufs bindings change into two patches, one for
+  completing the existing binding, one for the MT8196
+- Add over a dozen driver cleanup patches
+- Add explicit support for the MT8196 compatible to the driver
+- Note: next-20251023, on which I based this, currently has a broken
+  build due to an unrelated OPP core change that was merged with no
+  build testing. I can't use next-20251022 either, as that lacks the
+  recent mediatek UFS changes. It is what it is.
+- Link to v2: https://lore.kernel.org/r/20251016-mt8196-ufs-v2-0-c373834c4e7a@collabora.com
+
+Changes in v2:
+- Reorder define in mtk_sip_svc.h
+- Use bulk reset APIs in UFS host driver
+- Link to v1: https://lore.kernel.org/r/20251014-mt8196-ufs-v1-0-195dceb83bc8@collabora.com
+
+---
+Nicolas Frattaroli (23):
+      dt-bindings: phy: Add mediatek,mt8196-ufsphy variant
+      dt-bindings: ufs: mediatek,ufs: Complete the binding
+      dt-bindings: ufs: mediatek,ufs: Add mt8196 variant
+      scsi: ufs: mediatek: Move MTK_SIP_UFS_CONTROL to mtk_sip_svc.h
+      phy: mediatek: ufs: Add support for resets
+      scsi: ufs: mediatek: Rework resets
+      scsi: ufs: mediatek: Rework 0.9V regulator
+      scsi: ufs: mediatek: Rework init function
+      scsi: ufs: mediatek: Rework the crypt-boost stuff
+      scsi: ufs: mediatek: Handle misc host voltage regulators
+      scsi: ufs: mediatek: Rework probe function
+      scsi: ufs: mediatek: Remove vendor kernel quirks cruft
+      scsi: ufs: mediatek: Use the common PHY framework
+      scsi: ufs: mediatek: Remove mediatek,ufs-broken-rtc property
+      scsi: ufs: mediatek: Rework _ufs_mtk_clk_scale error paths
+      scsi: ufs: mediatek: Clean up logging prints
+      scsi: ufs: mediatek: Rework ufs_mtk_wait_idle_state
+      scsi: ufs: mediatek: Don't acquire dvfsrc-vcore twice
+      scsi: ufs: mediatek: Rework hardware version reading
+      scsi: ufs: mediatek: Back up idle timer in per-instance struct
+      scsi: ufs: mediatek: Remove ret local from link_startup_notify
+      scsi: ufs: mediatek: Remove undocumented "clk-scale-up-vcore-min"
+      scsi: ufs: mediatek: Add MT8196 compatible, update copyright
+
+ .../devicetree/bindings/phy/mediatek,ufs-phy.yaml  |  16 +
+ .../devicetree/bindings/ufs/mediatek,ufs.yaml      | 173 +++-
+ drivers/phy/mediatek/phy-mtk-ufs.c                 |  71 ++
+ drivers/ufs/host/ufs-mediatek-sip.h                |   9 -
+ drivers/ufs/host/ufs-mediatek.c                    | 961 +++++++++------------
+ drivers/ufs/host/ufs-mediatek.h                    |  17 +-
+ include/linux/soc/mediatek/mtk_sip_svc.h           |   3 +
+ 7 files changed, 652 insertions(+), 598 deletions(-)
+---
+base-commit: b6f9fd35d9481a416c75f1e9c8088bc81d24a286
+change-id: 20251014-mt8196-ufs-cec4b9a97e53
+
+Best regards,
+-- 
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 
