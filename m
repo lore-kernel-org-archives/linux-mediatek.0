@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7939E63F34
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 07:33:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD9C1E63F3F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 09:38:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=78DHIaHZVCFxKQKyc4tpQy1gNowVh1Vw5q9aCwG2J6U=; b=loY5nr36wQ7zw6VkZEC+GIiBeI
-	0mMeyfLBN0Wn7Ia0Oryu4z34BT+K78tFG+eiqlQj6XrkpJfX12E3YoBcoXdv/DKaHj5sI2xoVQtVq
-	XgZSlgJtX1rt+NKXdT8P36SF/FzPCJLoJIw+0vptHECnA5WjQpN2EnawDw8aJg6ZjQf0ks+7dIw2H
-	EsQvbFof/D/6jV2DFDyXl6hAt2ifSD2jFz/No7nxYBu0KyubhNPO/DgHKuN5zDO9NiNjH/4BEDp3y
-	ZgYpLcBVP9pQsnexztxAqZ+jJwdpQwptZgafu/bNoJqO5IzhXS+veEFMym0up7kIILEb1Vp8436kj
-	D8VFUdmg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7CcwQ/cJ15LurDvNMUFT6OHMLkbdRcIU82RsZZ8OV/k=; b=Yls6lajefbGbLlziVzCrLxnTUR
+	7nCgz3VoZvoxVqT7W1mh8uHjT/XoCYB5tw5DjugllfE7j+1leuABMkII82uXiRkF/5j+bI64xxJi7
+	mw4C3AOSuhuX5IrGMny0iBrIiDsQC8JZX26y8S9RHP4h6gEhH2z3KH7H0XS156wk0j/yNpCzCBZlQ
+	+DUJfIUW8cWA6qaS8ne3mjh7kdAQO8dZ0KmhEf9Kqt+F92LX14P1nHJdLBP13qh6v3JETTHjSby4k
+	Sui2s7LWC/PRc+leidVZ1+fDgd57muYpvBWnjxh0FdYCKWrkTp88F6VR31Nwhf+UMc/tR97ssoc+r
+	gM41cZMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrt6o-000000065Vi-2uwf;
-	Mon, 16 Feb 2026 07:33:30 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vrv3E-00000006HUH-2slM;
+	Mon, 16 Feb 2026 09:37:56 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrt6m-000000065VF-2Pu7;
-	Mon, 16 Feb 2026 07:33:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 131534172E;
-	Mon, 16 Feb 2026 07:33:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F60CC116C6;
-	Mon, 16 Feb 2026 07:33:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771227207;
-	bh=w7gR/wVBwvZ3WZD3NJA5tmYWfKrKzKAxUYlSShdw8CY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Q3pYux48C9KcBtjmJr458LNiKRLeGHD/ydSbcFlEjRcqMfTBGIo6pCltTd3dy4Ekz
-	 FlENBSREHpi3SG3kNy/WpPHf6hg67Je0svWUwTT62trAnICptVC392GsruF7DNQKyu
-	 3MY0c2H0Ehkk3hiw33Yq6KXRnZHHvGXNnCIOcO91iyXK/mOYxV0dNSO7ktmYyLnl25
-	 PFQuUVDqKfol7W7FEVbKzn4mAJlcRSHtX68yYe/D7AO+BKWJDlejvHpZvx+E2VlXpp
-	 MhY3wjOGvtfH518CQoID2KIKDU9iGuIOgJi3AJYtXtYTq7kJgbx3NsQ2t7UvmZMGdD
-	 cTLL7R8U60YnA==
-Date: Mon, 16 Feb 2026 08:33:25 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jitao Shi <jitao.shi@mediatek.com>, 
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org
-Subject: Re: [PATCH 2/4] dt-bindings: display: mediatek: Add compatibles for
- MediaTek mt8167
-Message-ID: <20260216-slim-mega-sawfly-52a08b@quoll>
-References: <cover.1771144723.git.l.scorcia@gmail.com>
- <826d54c75cfd1b8e4713431a9426e89edade9eb2.1771144723.git.l.scorcia@gmail.com>
+	id 1vrv3B-00000006HTp-2Kgv;
+	Mon, 16 Feb 2026 09:37:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1771234669;
+	bh=qKKaBe4wf2RPk6OJWEKoKbKnw8/kv7zGYyXRckENEUk=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=I2oKvwoHlI8oSPvQHSJXXW0H+75phIPDMf1wu11+r2nCrG7sPX4d6GeUd373hlnkZ
+	 VQY/qoPjgZh3gTS6czi3gfPJ/3Zt/HueoprNTYXysbI8e9vbhlVBajuhoA4PiXo/Fm
+	 bem+wpW58TJlZcscN47Hqf/MwSyAZyLoDnSXQG7YcooUur9JbfxiLpVEVTVk1k93r0
+	 6yWlwvjrpobD13y/YZfDS56vsMY2e66Xg+nUIWN/qEeDI+6RKexXCjmaDVy4vENgE8
+	 CUtuE8mfzaSWAU0VUIdkhC2pE7vM2XVE9QUbj+VyXINf1n+nghNXEoqwu13ea9+h66
+	 FwfZ3OG9qPKdQ==
+Received: from fedora (unknown [IPv6:2a01:e0a:2c:6930:d919:a6e:5ea1:8a9f])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bbrezillon)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E067817E137B;
+	Mon, 16 Feb 2026 10:37:48 +0100 (CET)
+Date: Mon, 16 Feb 2026 10:37:43 +0100
+From: Boris Brezillon <boris.brezillon@collabora.com>
+To: Onur =?UTF-8?B?w5Z6a2Fu?= <work@onurozkan.dev>
+Cc: Steven Price <steven.price@arm.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
+ <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v1 2/2] drm/panthor: treat sram as mandatory except
+ mt8196
+Message-ID: <20260216103743.626c71e3@fedora>
+In-Reply-To: <20260215100302.136719-2-work@onurozkan.dev>
+References: <20260215100302.136719-1-work@onurozkan.dev>
+	<20260215100302.136719-2-work@onurozkan.dev>
+Organization: Collabora
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <826d54c75cfd1b8e4713431a9426e89edade9eb2.1771144723.git.l.scorcia@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260215_233328_657621_00E2BD47 
-X-CRM114-Status: UNSURE (   9.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260216_013753_748004_A9A30629 
+X-CRM114-Status: GOOD (  19.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,25 +82,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Feb 15, 2026 at 08:53:54AM +0000, Luca Leonardo Scorcia wrote:
-> Add compatibles for various display-related blocks of MediaTek mt8167.
-> 
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+On Sun, 15 Feb 2026 13:02:51 +0300
+Onur =C3=96zkan <work@onurozkan.dev> wrote:
+
+> If sram-supply is missing, Panthor falls back to a
+> dummy regulator with a warning. This implicit behavior
+> hides missing DT wiring behind regulator core fallback.
+>=20
+> Make SRAM handling explicit: require sram-supply for all
+> Panthor compatibles except mt8196-mali where GPU supplies
+> are intentionally managed outside Panthor and DT does not
+> model sram-supply for that compatible.
+>=20
+> This keeps DT power modeling explicit and avoids relying on
+> dummy-regulator fallback.
+>=20
+> Link: https://lore.kernel.org/all/20260213155937.6af75786@nimda/
+> Signed-off-by: Onur =C3=96zkan <work@onurozkan.dev>
 > ---
->  .../devicetree/bindings/display/mediatek/mediatek,aal.yaml   | 1 +
->  .../devicetree/bindings/display/mediatek/mediatek,ccorr.yaml | 4 +++-
->  .../bindings/display/mediatek/mediatek,dither.yaml           | 1 +
->  .../devicetree/bindings/display/mediatek/mediatek,dsi.yaml   | 5 ++++-
->  .../devicetree/bindings/display/mediatek/mediatek,gamma.yaml | 1 +
->  .../devicetree/bindings/display/mediatek/mediatek,ovl.yaml   | 1 +
->  .../devicetree/bindings/display/mediatek/mediatek,rdma.yaml  | 1 +
->  .../devicetree/bindings/display/mediatek/mediatek,wdma.yaml  | 4 +++-
->  Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml  | 1 +
->  9 files changed, 16 insertions(+), 3 deletions(-)
+>  drivers/gpu/drm/panthor/panthor_devfreq.c | 13 +++++++++----
+>  1 file changed, 9 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/panthor/panthor_devfreq.c b/drivers/gpu/drm/=
+panthor/panthor_devfreq.c
+> index 2249b41ca4af..5f6075f18fe3 100644
+> --- a/drivers/gpu/drm/panthor/panthor_devfreq.c
+> +++ b/drivers/gpu/drm/panthor/panthor_devfreq.c
+> @@ -206,12 +206,17 @@ int panthor_devfreq_init(struct panthor_device *ptd=
+ev)
+>  	 * But without knowing if it's beneficial or not (in term of power
+>  	 * consumption), or how much it slows down the suspend/resume steps,
+>  	 * let's just keep regulators enabled for the device lifetime.
+> +	 *
+> +	 * Treat sram-supply as mandatory except for mt8196-mali. It manages
+> +	 * SRAM outside Panthor so this driver must not require direct control
+> +	 * over it.
+>  	 */
+> -	ret =3D devm_regulator_get_enable_optional(dev, "sram");
+> -	if (ret && ret !=3D -ENODEV) {
+> -		if (ret !=3D -EPROBE_DEFER)
+> +	if (!of_device_is_compatible(dev->of_node, "mediatek,mt8196-mali")) {
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Rather than checking for specific compats here, let's go for
+a dont_need_sram_supply bool in panthor_soc_data.
 
-Best regards,
-Krzysztof
+> +		ret =3D devm_regulator_get_enable_optional(dev, "sram");
+
+If we assume SRAM supply is mandatory, should this be
+devm_regulator_get_enable() instead?
+
+> +		if (ret) {
+>  			DRM_DEV_ERROR(dev, "Couldn't retrieve/enable sram supply\n");
+> -		return ret;
+> +			return ret;
+> +		}
+>  	}
+> =20
+>  	opp =3D devfreq_recommended_opp(dev, &cur_freq, 0);
 
 
