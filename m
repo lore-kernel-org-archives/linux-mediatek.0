@@ -4,78 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CD56E7BDB6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 12:40:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1B33E7BDB0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 12:55:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OhyB6c8ntYZYSygMUgb1bVq3hiRaTuESplIUrEVnry8=; b=0hQRjqD3dK59zFEz8c8xP4+Ymw
-	uiQvUOUkz1ZhdBsKNiSMTd1wEVMqR0ln5OYyjTkUF+X0Nyb3EeUYrZmHWj+YB3aKAnoM2Szw4Zy3V
-	KTfCCLWdHClvK//iB7ZfWQMKGGqhePLFnN148JjHZ+ofj8GN4On3G9s8jYizL+roaMGjwAexxt4ie
-	F00yWsT+8V6Xm/wsakw4EhPSgL44AcCpse74MFkH7XUDERHC18NwavR7UntDiyYX4G7No1w4AH+39
-	yAQduWwBV6iG7WjK0JIXtjPD3Cr3hCwIeReGB6to09+cUIWbcY+86y1fDhNFrNqb3Lo2sdJgbbQi7
-	On4AuBnw==;
+	bh=UlDGfFZMFg2LbDgZploC3uTDhh0m7NDFkuYt90ab8PE=; b=hNIvdtNGDoTLjiNt2NJRqjrpaR
+	IEEQYzVk/hiuEOhDgoKxQyzwzRINs78QMQtkyfhF5z4qzdNK/0c2qQrMEnWYbz35WdMs+V0mXmLWH
+	czwwymNXw4RPFL4N7XU6c0gJvySbsm8c54L49aBO+VHtdSWujPCIlFcm7Q+3HIHlzHYilFkaoBoMJ
+	ALM0fkS0ZvLyi2wnHj+uNwvm8diw32j3sMi71DN6o7ypJXTpor0b9ICxKd/IHcaNQJeXgFzJlOOno
+	EICDo3c52L9pM+PTbB9dPyemZ7udgIVpoN0ahjmYvIvMPGNmdQYZv/jFDFPoTNf1yMs+AJrHisHvg
+	eiXqxuBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrxtz-00000006XGE-3Ay8;
-	Mon, 16 Feb 2026 12:40:35 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vry8Q-00000006Yuc-0Pc9;
+	Mon, 16 Feb 2026 12:55:30 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrxtw-00000006XFX-0s76;
-	Mon, 16 Feb 2026 12:40:33 +0000
+	id 1vry8M-00000006Yu5-260X
+	for linux-mediatek@lists.infradead.org;
+	Mon, 16 Feb 2026 12:55:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771245629;
-	bh=PHIqXh1eLE9p2tZcIm96nDuJo+9ii2K9jjaxQdmaZYw=;
+	s=mail; t=1771246523;
+	bh=wMud/zXsW57h/pzFLrQyWiLWanq9uGVhLdnmh94RKyY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=IrQ8bremQEZjbg01aNCDrn750sqUk0ybTWIVCZAkFrY1bw89+SLoiIhCLdA/ll009
-	 1jHWrvmAk4riWb6sxOrJsfLrWzbYto7qU1Vg0jn91SrlFUoZTFSDPL4IG8u9IpsBsA
-	 nHaF58HdlaHPbW3OX86CsU4NxzmbA9QZDx45oWrlAVSolKTN2ZaXBiXeNNRVVdQyz4
-	 uSJp/sQU3Towk5ziQGMfloPmonmfJGACNsdSnefoB0ucq+J+uw2L8Ae3sU7mlBsTsF
-	 h7AjXMRVo200AS09QenWCC9BKpsnKdpz/l9Fw1ETWVa6ysVsfKD2xVQN/gf5yhvefm
-	 TYcK4zFOm4miw==
+	b=AC4bpm3thsMtP87lemc3eM14HXqf4MEjhDK6TVvGXfJRYVT+6OrpM7w9MakmNjNRR
+	 orgwToWFJjxiMGL5YX/VN5TkTG0D/ZkAm+GUN3JquiQw+dyziBO0zO9t606R+Fpg4k
+	 UFKGzpCJlGbccREX9PNc6P241OZxCm6MGIxsly3rljmv7R1Mjb8UVrLcYMT4n+Fjm+
+	 UJeF+a+lFsAGvawT8e/K6pSjkWiAe6P1g9gy9hMm/NZcVWaQ9mDiDumTMmBcBunRpS
+	 zOP4cuXv8OVBvBL/o0BSG3Xk2uR+A2Mg3lnk8lu2XkW4od6CoLszW9EVbHhD7+Msug
+	 xgORXVDmAviYg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3C25A17E00A3;
-	Mon, 16 Feb 2026 13:40:28 +0100 (CET)
-Message-ID: <90e0cbe5-3219-4196-a4bd-015e320d07b3@collabora.com>
-Date: Mon, 16 Feb 2026 13:40:27 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9082D17E12A9;
+	Mon, 16 Feb 2026 13:55:23 +0100 (CET)
+Message-ID: <60ff7530-b9a4-47a7-b5bc-3c81a57a4fc0@collabora.com>
+Date: Mon, 16 Feb 2026 13:55:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 00/24] MediaTek UFS Cleanup and MT8196 Enablement
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
- Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Kishon Vijay Abraham I <kishon@kernel.org>,
- Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Chaotian Jing <Chaotian.Jing@mediatek.com>,
- Neil Armstrong <neil.armstrong@linaro.org>
-Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- kernel@collabora.com, linux-scsi@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-phy@lists.infradead.org, Conor Dooley <conor.dooley@microchip.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-References: <20260124-mt8196-ufs-v6-0-e7c005b60028@collabora.com>
+Subject: Re: [PATCH] Bluetooth: btusb: Add support for MediaTek MT7902
+To: OnlineLearningTutorials <kush.kulshrestha5@gmail.com>,
+ luiz.dentz@gmail.com, marcel@holtmann.org
+Cc: kush.kulshrestha.5@gmail.com, matthias.bgg@gmail.com,
+ linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260214082738.139047-1-kush.kulshrestha.5@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260124-mt8196-ufs-v6-0-e7c005b60028@collabora.com>
+In-Reply-To: <20260214082738.139047-1-kush.kulshrestha.5@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260216_044032_431316_87350E0D 
-X-CRM114-Status: GOOD (  38.77  )
+X-CRM114-CacheID: sfid-20260216_045526_706329_4DB91F98 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,158 +77,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/01/26 13:00, Nicolas Frattaroli ha scritto:
-> In this series, the existing MediaTek UFS binding is expanded and
-> completed to correctly describe not just the existing compatibles, but
-> also to introduce a new compatible in the from of the MT8196 SoC.
+Il 14/02/26 09:27, OnlineLearningTutorials ha scritto:
+> This patch adds USB IDs for the AzureWave/MediaTek MT7902 Bluetooth
+> module.
+> The device IDs included are:
+> - 13d3:3579
+> - 13d3:3580
+> - 13d3:3594
+> - 13d3:3596
 > 
-> The resets, which until now were completely absent from both the UFS
-> host controller binding and the UFS PHY binding, are introduced to both.
-> This also means the driver's undocumented and, in mainline, unused reset
-> logic is reworked. In particular, the PHY reset is no longer a reset of
-> the host controller node, but of the PHY node.
-> 
-> This means the host controller can reset the PHY through the common PHY
-> framework.
-> 
-> The resets remain optional.
-> 
-> Additionally, a massive number of driver cleanups are introduced. These
-> were prompted by me inspecting the driver more closely as I was
-> adjusting it to correspond to the binding.
-> 
-> The driver still implements vendor properties that are undocumented in
-> the binding. I did not touch most of those, as I neither want to
-> convince the bindings maintainers that they are needed without knowing
-> precisely what they're for, nor do I want to argue with the driver
-> authors when removing them.
-> 
-> Due to the "Marie Kondo with a chainsaw" nature of the driver cleanup
-> patches, I humbly request that reviewers do not comment on displeasing
-> code they see in the context portion of a patch before they've read the
-> whole patch series, as that displeasing code may in fact be reworked in
-> a subsequent patch of this series. Please keep comments focused on the
-> changed lines of the diff; I know there's more that can be done, but it
-> doesn't necessarily need to be part of this series.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> Signed-off-by: OnlineLearningTutorials <kush.kulshrestha.5@gmail.com>
 
-Nicolas, can you please rebase this series on the latest linux-next?
+Please use your real name when you send patches, and also use the get_maintainer.pl
+script.
 
-All that you have to do is resend everything as-is, but drop patch [14/24], as the
-same thing that you've done there landed in form of..
-
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/drivers/ufs/host/ufs-mediatek.c?h=next-20260213&id=bbb8d98fb4536594cb104fd630ea0f7dce3771d6
-
-Besides. It feels like we're again playing a resend-and-nobody-cares game again
-with this UFS driver.
-
-I want to remind everyone that we've been trying to cleanup this thing for more
-than a year and that our patches keep getting mostly ignored, if not for some
-random nitpick here and there. (we: as I myself tried to clean it up a year ago
-with my own patches that I had sent to the list - multiple versions of those)
-
-Expressing my huge frustration here: at this point I'm not even sure why we keep
-trying to make this right, other than being stubborn about feeling the need to
-have good stuff in the kernel, instead of downstream code dumps which should've
-never landed in the first place.
-
-Though everyone here is human, and humans make mistakes (a lot), that's fine: the
-problem happens when people negate mistakes, don't fix those, and don't care (not
-because of lack of time, but because not caring at all, again - we've tried to do
-those cleanups for a year now). One. Year.
-Actually, more than one year, I don't even remember anymore.
-
-This is not good behavior in a community, and should never happen.
-
-Yet, here we are. Again. On the same driver. In the same subsystem.
-
-Oh well.
+Actually, just read: https://docs.kernel.org/process/submitting-patches.html
 
 Regards,
 Angelo
 
 > ---
-> Changes in v6:
-> - Reword "Rework probe function" commit to better justify the changes
->    being made.
-> - Drop "Add vendor prefix to clk-scale-up-vcore-min"
-> - Add patch to remove clk-scale-up-vcore-min entirely, describing the
->    process for bringing it back (in a different form) in the commit
->    message.
-> - Link to v5: https://lore.kernel.org/r/20260108-mt8196-ufs-v5-0-49215157ec41@collabora.com
+>   drivers/bluetooth/btmtk.c |  1 +
+>   drivers/bluetooth/btusb.c | 10 ++++++++++
+>   2 files changed, 11 insertions(+)
 > 
-> Changes in v5:
-> - Drop "scsi: ufs: mediatek: Make scale_us in setup_clk_gating const" as
->    someone else already got a patch in for this into next.
-> - Make mtk_init_boost_crypt void
-> - Don't disable/enable misc regulators during suspend/resume, but enable
->    them once when acquiring with a devm helper.
-> - Link to v4: https://lore.kernel.org/r/20251218-mt8196-ufs-v4-0-ddec7a369dd2@collabora.com
-> 
-> Changes in v4:
-> - bindings: Redo the supply situation, as the avdd pins don't describe
->    the vcc(q2) card supplies.
-> - bindings: format clock in mt8196 example more tersely.
-> - phy: use devm_reset_control_get_optional_exclusive directly
-> - driver: get and enable/disable the aforementioned avdd supplies.
-> - Link to v3: https://lore.kernel.org/r/20251023-mt8196-ufs-v3-0-0f04b4a795ff@collabora.com
-> 
-> Changes in v3:
-> - Split mediatek,ufs bindings change into two patches, one for
->    completing the existing binding, one for the MT8196
-> - Add over a dozen driver cleanup patches
-> - Add explicit support for the MT8196 compatible to the driver
-> - Note: next-20251023, on which I based this, currently has a broken
->    build due to an unrelated OPP core change that was merged with no
->    build testing. I can't use next-20251022 either, as that lacks the
->    recent mediatek UFS changes. It is what it is.
-> - Link to v2: https://lore.kernel.org/r/20251016-mt8196-ufs-v2-0-c373834c4e7a@collabora.com
-> 
-> Changes in v2:
-> - Reorder define in mtk_sip_svc.h
-> - Use bulk reset APIs in UFS host driver
-> - Link to v1: https://lore.kernel.org/r/20251014-mt8196-ufs-v1-0-195dceb83bc8@collabora.com
-> 
-> ---
-> Nicolas Frattaroli (24):
->        dt-bindings: phy: Add mediatek,mt8196-ufsphy variant
->        dt-bindings: ufs: mediatek,ufs: Complete the binding
->        dt-bindings: ufs: mediatek,ufs: Add mt8196 variant
->        scsi: ufs: mediatek: Move MTK_SIP_UFS_CONTROL to mtk_sip_svc.h
->        phy: mediatek: ufs: Add support for resets
->        scsi: ufs: mediatek: Rework resets
->        scsi: ufs: mediatek: Rework 0.9V regulator
->        scsi: ufs: mediatek: Rework init function
->        scsi: ufs: mediatek: Rework the crypt-boost stuff
->        scsi: ufs: mediatek: Handle misc host voltage regulators
->        scsi: ufs: mediatek: Rework probe function
->        scsi: ufs: mediatek: Remove vendor kernel quirks cruft
->        scsi: ufs: mediatek: Use the common PHY framework
->        scsi: ufs: mediatek: Switch to newer PM ops helpers
->        scsi: ufs: mediatek: Remove mediatek,ufs-broken-rtc property
->        scsi: ufs: mediatek: Rework _ufs_mtk_clk_scale error paths
->        scsi: ufs: mediatek: Clean up logging prints
->        scsi: ufs: mediatek: Rework ufs_mtk_wait_idle_state
->        scsi: ufs: mediatek: Don't acquire dvfsrc-vcore twice
->        scsi: ufs: mediatek: Rework hardware version reading
->        scsi: ufs: mediatek: Back up idle timer in per-instance struct
->        scsi: ufs: mediatek: Remove ret local from link_startup_notify
->        scsi: ufs: mediatek: Remove undocumented "clk-scale-up-vcore-min"
->        scsi: ufs: mediatek: Add MT8196 compatible, update copyright
-> 
->   .../devicetree/bindings/phy/mediatek,ufs-phy.yaml  |  16 +
->   .../devicetree/bindings/ufs/mediatek,ufs.yaml      | 173 +++-
->   drivers/phy/mediatek/phy-mtk-ufs.c                 |  71 ++
->   drivers/ufs/host/ufs-mediatek-sip.h                |   9 -
->   drivers/ufs/host/ufs-mediatek.c                    | 973 +++++++++------------
->   drivers/ufs/host/ufs-mediatek.h                    |  17 +-
->   include/linux/soc/mediatek/mtk_sip_svc.h           |   3 +
->   7 files changed, 655 insertions(+), 607 deletions(-)
-> ---
-> base-commit: 4af4e95edc37ae54f64cbd75b46f16ce15f3a6b8
-> change-id: 20251014-mt8196-ufs-cec4b9a97e53
-> 
-> Best regards,
+> diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+> index a8c520dc09e1..b793947dd920 100644
+> --- a/drivers/bluetooth/btmtk.c
+> +++ b/drivers/bluetooth/btmtk.c
+> @@ -1323,6 +1323,7 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+>   	case 0x7668:
+>   		fwname = FIRMWARE_MT7668;
+>   		break;
+> +	case 0x7902:
+>   	case 0x7922:
+>   	case 0x7925:
+>   	case 0x7961:
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index fcec8e589e81..13a2aa13b9f4 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -629,6 +629,16 @@ static const struct usb_device_id quirks_table[] = {
+>   	/* Additional MediaTek MT7668 Bluetooth devices */
+>   	{ USB_DEVICE(0x043e, 0x3109), .driver_info = BTUSB_MEDIATEK |
+>   						     BTUSB_WIDEBAND_SPEECH },
+> +
+> +	/* Additional MediaTek MT7902 Bluetooth devices */
+> +	{ USB_DEVICE(0x13d3, 0x3579), .driver_info = BTUSB_MEDIATEK |
+> +						     BTUSB_WIDEBAND_SPEECH },
+> +	{ USB_DEVICE(0x13d3, 0x3580), .driver_info = BTUSB_MEDIATEK |
+> +						     BTUSB_WIDEBAND_SPEECH },
+> +	{ USB_DEVICE(0x13d3, 0x3594), .driver_info = BTUSB_MEDIATEK |
+> +						     BTUSB_WIDEBAND_SPEECH },
+> +	{ USB_DEVICE(0x13d3, 0x3596), .driver_info = BTUSB_MEDIATEK |
+> +						     BTUSB_WIDEBAND_SPEECH },
+>   
+>   	/* Additional MediaTek MT7920 Bluetooth devices */
+>   	{ USB_DEVICE(0x0489, 0xe134), .driver_info = BTUSB_MEDIATEK |
+
 
 
