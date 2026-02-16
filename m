@@ -4,75 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2EE2E81A3A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 16:01:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85808E81A43
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Feb 2026 16:24:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rAzH74nBcBGKigZp9kU3P2C14pIvF/kRN1BygaisLuw=; b=tC/8ZJb/gzyc15qIY1y7seim13
-	0sHj6uShoGoWO/6IgbjbmMyay1v3V8suRoyYNtDTh8xKDEf5vP3Yftck7eJYg0cEjMla1Akna5sW0
-	JDBj7IccdoH/7czmWJWsaLSj1sbFgU+U+omr+eilYGulZSx+4K+1KVD48wjOopUPnM9F+dvpmTXoB
-	PxfoT0S0BJUTwwrwJNGVz94xVeDQcu14N5qPRjEebVuM2IElE+GXD2KN3WGQ2GQF3sUt8NXdTwSDY
-	Hm4ey8L8u+ORr7DALm2iTRyvdthF+ohilPlhdxFPDeXHXlcRRJIA0vjnAMCGx+1ecL3bEkWhx4CL4
-	M9dUUzSw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=eFUae8M607uXIOUb6KuR+f1ZcnqADfRg4QxjDLkY0MQ=; b=RiNm+sZF77lrANAmfultue349D
+	7ugvqK7j5DewjX32c4XVGlydxAa0bb+2jdkwXzalfOsQ/cV9ZZOMEx73chGC5qq+u5o7SngpDNaaK
+	jBnm5rzwRO4cE89k8CL+1ugbd+UAP4Fi0nui9ZY2QAexn3zkYbuTWrQCe4txPTjENdj25jynnRlyx
+	vO79Tz+XKrEf7J47JTaX2SMxFfK/ryvXytq2k39WGkFg+hin05z5iesSVH/WfJv0glG8D3/5N+r0j
+	grtOlfSf7SHyPR3ml6W+ceD2m0vbcmJfdUKvMM4Fxc5F7PjOJHzN+KNmZW2gmGqfK0vFJ2wFgz0Xx
+	Sw5QS8IQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs12c-00000006xcB-3Q3T;
-	Mon, 16 Feb 2026 16:01:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vs1P5-000000070mn-2sNz;
+	Mon, 16 Feb 2026 16:24:55 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs12Z-00000006xbH-2LVD
+	id 1vs1P2-000000070kX-3Nak
 	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Feb 2026 16:01:40 +0000
-X-UUID: c52a06020b5011f1ad39f32c34db0b1c-20260216
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=rAzH74nBcBGKigZp9kU3P2C14pIvF/kRN1BygaisLuw=;
-	b=GNPoEeCF5QhYrGITsWrBLIs3DYkL+dQHSHbpehuq+hZbr8Hgqsf+epn2G+gx78bvoknLNs97W4H+xt7vV2kLg4URgwxNAsJAXF90JNJO33xmkRcqcyBkIxf3a1QH73O0jyK6/34CyZ70IcEsBjdqCvcHunpiZ6BsSulQAkMRTwQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:e742d508-b509-471d-944f-470842940043,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:a6b7bcf0-16bd-4243-b4ca-b08ca08ab1d8,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c52a06020b5011f1ad39f32c34db0b1c-20260216
-Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 468807022; Mon, 16 Feb 2026 09:01:35 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 17 Feb 2026 00:01:33 +0800
-Received: from mussdccf250.eus.mediatek.inc (10.73.250.250) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 17 Feb 2026 00:01:32 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Rob Herring <robh@kernel.org>
-CC: <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-wireless@vger.kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Allen
- Ye <allen.ye@mediatek.com>
-Subject: [PATCH v7 3/3] dt-bindings: net: wireless: mt76: clarify backoff limit usage
-Date: Mon, 16 Feb 2026 08:01:16 -0800
-Message-ID: <87acf1a8ab5642298c67915b3afc41e624b312a7.1771205424.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <8fa8ec500b3d4de7b1966c6887f1dfbe5c46a54c.1771205424.git.ryder.lee@mediatek.com>
-References: <8fa8ec500b3d4de7b1966c6887f1dfbe5c46a54c.1771205424.git.ryder.lee@mediatek.com>
+	Mon, 16 Feb 2026 16:24:53 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-43638a33157so3283548f8f.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 16 Feb 2026 08:24:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1771259090; x=1771863890; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=eFUae8M607uXIOUb6KuR+f1ZcnqADfRg4QxjDLkY0MQ=;
+        b=Hf0f016kNMMNWUyaHj9FxHf7p2Vf0fUMSVMOkwfhWT17G5+zutvYEM1sZxu+v9SCJG
+         T/D9G5pdCNlkB9rGK1HVkBGKqCIzuqDwSA6JDrQtxDqC+G+3WQ63yYn+Lpmxu1x9Lq+N
+         OhYIGVsUp/XotrfzndPCvdHSOuXCZq/FGmxy5CZ7/7g5m+393FhOvFKz7UPb7qP0Hnpv
+         g2X7JOkShko8Ue8eKu+pa5jgMnKKDvReb9KcUcacPYySjUVq8RD8AHt9TIYLC8P87amA
+         uOl1Sm6wY5rYDHPVbi275uUJvEIFD8FidjJL4+sqJfY20ZyRI1RjQKPaXAXLc+6qlQQg
+         6RNw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1771259090; x=1771863890;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=eFUae8M607uXIOUb6KuR+f1ZcnqADfRg4QxjDLkY0MQ=;
+        b=RHF23Pjwbv6RT2rZ3ObzPEZb82DPcLTojTj3OqRON6OnbioBZ8bFDEDVNHaJCv9wKT
+         IKeeo7HVJlAkwy7530HK/0kBJ1bsFaHf6rfGmLkqmEsrC+2wnRHrDcSRCPmHRu4wC7Di
+         iHljUAlJiZvLjez6dDf4rnO3gOfB8Vz3kCi9BDdI5i0R3WYJ1bBIxg6ZWRZY57ijcRhs
+         BBdyjYfS8V1H8/wl4Fb3IWT/Zplc5vWEDVSWtgNiivWdimX/fFuRIYIrX/H6gFfKPGqR
+         IZMJOBq3pC6SqsHK5+D5NkzfM946MFqW/THXJnua6Y306jTIDFnVdLO6AEtM/MKnp4ca
+         wFKQ==
+X-Gm-Message-State: AOJu0YznudmDTZZ0Nzzvi2a3VYSc/rsW9edUbNF3Xfw+5WVndv+RM2oX
+	yWI8thZNgcRC/TbKU+D3DYwGuraQb9wP/QszTZin/y1HeF8nqMLHJ4EX3OVpPw==
+X-Gm-Gg: AZuq6aK1s7JXiCxsFbPepNQn5vSO2i6gTd4efrlOYV47b6b4vOAOzZ6pXdrigucM+zx
+	FjFy1gUeLT47SXT/xQ3/tsjytq+9lNsMXciDzoHBLeQlMDp5V9rgMnbYpDn0duY3On9AWRgcxZv
+	JxcRVc0YNI7GSgfbYOqRqrL0wqZSJoAO6b9RxBnJJeVBKwKJQfpGZVkcK6l0gpv6adr5gIDMEgF
+	8Qcmg6SjapHWXJBV/0GSYsWrKL9x9XVUFelbhhfpxcT5innfdALDwbBRlxcCrx0PxnEFwikeXX4
+	JpKJN9ALO7jfvirrosQ4jpQPGkZIbqhW29zms6Ub8+CALleVxNIX0JKeHP9IqY3eQVDo3qGa4H5
+	ziTucUcxMwW0jID3P8uMNVcMqrIELT2InINKA8JlyHqW3qemqSDpW8/KdqKvN59wqFwo3qJCINn
+	g0i8NvaQ9jHOxvr/3p3Sk=
+X-Received: by 2002:a05:6000:2501:b0:435:e460:235b with SMTP id ffacd0b85a97d-4379795572emr15102960f8f.59.1771259089859;
+        Mon, 16 Feb 2026 08:24:49 -0800 (PST)
+Received: from luca-vm.lan ([154.61.61.58])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43796a6a6desm28775962f8f.10.2026.02.16.08.24.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 Feb 2026 08:24:49 -0800 (PST)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jitao Shi <jitao.shi@mediatek.com>,
+	Fabien Parent <fparent@baylibre.com>,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org
+Subject: [PATCH v2 0/6] Add support for mt8167 display blocks
+Date: Mon, 16 Feb 2026 16:22:11 +0000
+Message-ID: <cover.1771258407.git.l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260216_080139_816845_BBBDD40C 
-X-CRM114-Status: UNSURE (   9.67  )
+X-CRM114-CacheID: sfid-20260216_082452_857706_C12DDEB1 
+X-CRM114-Status: UNSURE (   9.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,65 +115,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
-Message-ID: <20260216160116.azZTMhhOA-3vmkzTknsAJqOkc0fGNo7Y0RE11HGD1Mg@z>
 
-Clarify the usage of path backoff limit properties in mt76 binding.
-Add explicit documentation for old generation (mt7915, mt7916, mt7981,
-mt7986) and new generation (mt7990, mt7992, mt7996) devices, including
-the difference in beamforming and non-beamforming entries.
+This series adds support for the display blocks on MediaTek mt8167.
+Tested on Xiaomi Mi Smart Clock x04g.
 
-Rephrase the paths-ru/paths-ru-bf description to make them more precise.
+The first patch just does some reordering of dts nodes with no other changes
+as this makes later patches cleaner and easier to follow.
 
-Co-developed-by: Allen Ye <allen.ye@mediatek.com>
-Signed-off-by: Allen Ye <allen.ye@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-v4:
-- revise commit message
-- use PCI id as the compatible string to replace "connac2/3"
+v2:
+ - Separate patch for mediatek,dsi-phy binding;
+ - Separate patch for mt8167-dsi binding;
+ - Simplified OF graph endpoints in mt8167.dtsi.
 
-v5: fix missing starting space in comment(comments)
-v6: separate commits with their own separate rationale
-v7: add missing dts mailing list and maintainers
----
- .../bindings/net/wireless/mediatek,mt76.yaml     | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+Luca Leonardo Scorcia (5):
+  arm64: dts: mt8167: Reorder nodes according to mmio address
+  dt-bindings: display: mediatek: Add compatibles for MediaTek mt8167
+  dt-bindings: display: mediatek: Correct compatibility for mt8167-dsi
+  dt-bindings: phy: mediatek,dsi-phy: Add support for mt8167
+  arm64: dts: mediatek: mt8167: Add DRM nodes
 
-diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-index 72cc30251..20b868f7d 100644
---- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-+++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-@@ -257,6 +257,14 @@ properties:
-                       followed by 10 power limit values. The order of the
-                       channel resource unit settings is RU26, RU52, RU106,
-                       RU242/SU20, RU484/SU40, RU996/SU80 and RU2x996/SU160.
-+                      - For mt7981/mt7986/mt7915/mt7916
-+                        - Beamforming entries for BW20~BW160 and OFDM do not
-+                          include 1T1ss.
-+                        - When 1T1ss is not used, it should be filled with 0.
-+                      - For mt7996/mt7992/mt7990
-+                        - Beamforming entries for BW20~BW160 and RU include
-+                          1T1ss, but OFDM does not include 1T1ss.
-+                        - 1T1ss is taken into account, so no need to fill with 0.
-                     minItems: 1
-                     maxItems: 7
-                     items:
-@@ -275,6 +283,14 @@ properties:
-                       followed by 10 power limit values. The order of the
-                       channel resource unit settings is RU26, RU52, RU106,
-                       RU242/SU20, RU484/SU40, RU996/SU80 and RU2x996/SU160.
-+                      - For mt7981/mt7986/mt7915/mt7916
-+                        - Beamforming entries for BW20~BW160 and OFDM do not
-+                          include 1T1ss.
-+                        - When 1T1ss is not used, it should be filled with 0.
-+                      - For mt7996/mt7992/mt7990
-+                        - Beamforming entries for BW20~BW160 and RU include
-+                          1T1ss, but OFDM does not include 1T1ss.
-+                        - 1T1ss is taken into account, so no need to fill with 0.
-                     minItems: 1
-                     maxItems: 7
-                     items:
+Val Packett (1):
+  gpu: drm: mediatek: ovl: add specific entry for mt8167
+
+ .../display/mediatek/mediatek,aal.yaml        |   1 +
+ .../display/mediatek/mediatek,ccorr.yaml      |   4 +-
+ .../display/mediatek/mediatek,dither.yaml     |   1 +
+ .../display/mediatek/mediatek,dsi.yaml        |   5 +-
+ .../display/mediatek/mediatek,gamma.yaml      |   1 +
+ .../display/mediatek/mediatek,ovl.yaml        |   1 +
+ .../display/mediatek/mediatek,rdma.yaml       |   1 +
+ .../display/mediatek/mediatek,wdma.yaml       |   4 +-
+ .../bindings/phy/mediatek,dsi-phy.yaml        |   1 +
+ arch/arm64/boot/dts/mediatek/mt8167.dtsi      | 381 ++++++++++++++++--
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c       |  12 +
+ 11 files changed, 377 insertions(+), 35 deletions(-)
+
 -- 
-2.45.2
+2.43.0
 
 
