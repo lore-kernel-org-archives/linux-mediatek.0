@@ -4,115 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA65BE909A9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Feb 2026 14:05:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10CEBE909C7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Feb 2026 15:50:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w7/ZxD0gyzUi+GQ6guwRmxS/saZ8Vlcke1WYSE/BbT8=; b=IQyaSINSOw8a1zzw6HczaZDXtF
-	PysEBtnRxYect+v36ZritGX4kcTEQRJNZ3673Ea7N1sLtikU4YtNOAZYMVq6LIM7KiOLel3YhJtOO
-	wViLY7xo3wIBngJ2GYZ03j6axUzVLqudpZBJr5eQYnUH53ouTVChibEj4ZEL/Gxl852eaQ6K3OL4X
-	ShU13fLRd2EBpqzwIks/SQEGA9Y7OUwEXfcYMfLny853wTrx7ahyrNG/22l3HINeKhQZGJeL66DNL
-	ipycarOBYodKeINClwKOrQgHlvZAZ8mAW/basTSzTLWW3VKdzskdPY+QkkhcNUsZ3oQLqSJLfA37g
-	O29HbEgQ==;
+	bh=/Nsb9d4cdh3TIN7gk7P/dLzs//wsu5O2NugIegk+Dvg=; b=TzljF7o5Kc6XznF5LT48Ze1MBW
+	ewArhlTDtvZqvm5aB80KCpktxLJLxLZeBUrNEPPYIpnqaiTn4sRbDMo1F63MvEdoXFpIXAQ1tspcf
+	/i7DqpXqgL/LgH5jMpFXlXiUdqlhbqlXXGObdFUiGlv8mjQpwS/bWFOPKdqKD0L6HDjIytxlc3SvY
+	rE4XgyLMQpq1gyon+m8XP2W3TlnGvgrNgn+GIsNoclVtHDAjjSSjG1dQi3V5TESLFN0kh0RCXSwmF
+	bl1kraHyd5efXRPsY9YdhSE1QA1dwVnff8GUhAwSsBH7vxPpxMIMywJf/5nDmh+Iu0TaKgNwES3Cy
+	p90PBUZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsLhy-00000008OXK-0ZmL;
-	Tue, 17 Feb 2026 14:05:46 +0000
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+	id 1vsNLV-00000008WTU-0de9;
+	Tue, 17 Feb 2026 15:50:42 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsLhv-00000008OWD-04ND
+	id 1vsNLO-00000008WT0-1uAy
 	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Feb 2026 14:05:44 +0000
-Received: by mail-yx1-xb12c.google.com with SMTP id 956f58d0204a3-64c28495b3dso214205d50.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Feb 2026 06:05:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1771337141; cv=none;
-        d=google.com; s=arc-20240605;
-        b=TPYjf+Bu0Hv3OIGIkV8KE40T6CnkBGKjauJod9HNhV1zsen0mbn651murynLcdGDW8
-         Js4uUm8Y/1ptH/RUl/ozJW5pw0Y5Z/BGN8+e92RaBFOj9FOR7wSlgQxLiP27WZ57d4k5
-         7bAGGEdOmexSv0BRaNrTxvDudP95dbuY4j0xlyq/mRZHUZWLgeRWRmog6i+ggUw/XEpi
-         ktGWVw2JPEtKJ6G9dQM9jW3ZRQNf6a4SzZaZZzgXNwfKjXvWy5J0JFFdX38dFe+ZwKt8
-         dgrBcOa8KpQ972Qh9G0AKxAMWyeM8swucb7JyjwCxi5FbolXFg111sfpTjNA66o+A3/L
-         Pgqg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=w7/ZxD0gyzUi+GQ6guwRmxS/saZ8Vlcke1WYSE/BbT8=;
-        fh=p/sg+1GdMg8TqVgPIzPeukuA1IV8ONtGXe8OX5MidMY=;
-        b=HxqxCHzOfpCqsp8uvp5/IAbVipx4CRfXbZo8X2nulAtnqqX7TbgT72whl0LfjZqyqW
-         x7jfoQwi526YY/5ZXZyfdAO2MDNknUPeMgK3xLInH1snkQl6F45rnkDKZ9hvOrtYNORv
-         SsU9V2ltq+u7ucPeKUQ6jmbOWYOY27L6ER3rmkZH5aWjHfrn+iI4mi2vyadrLAlTs/VE
-         TPLba5bJwtBh7P2iVq1aepYQCIRApoP3/QWaGqPScoHTith0+Zdren+hdybFjFebc0VC
-         c3liIZr9l3A6CXK+jzmTh/XxBTFhzUq/WyaHl+Rd5RSnjh3g59XhaIaWOskg/6ELXE5I
-         1RwA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Tue, 17 Feb 2026 15:50:37 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-65b9db5e4c1so332873a12.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Feb 2026 07:50:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1771337141; x=1771941941; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=w7/ZxD0gyzUi+GQ6guwRmxS/saZ8Vlcke1WYSE/BbT8=;
-        b=jEToiA/52kZg3odX3YQh5LhzQ0tfP5rMXkvznN4OpIunh3RDsxXySzLNkiyg0eFPMr
-         hD4nQaaMbSTfX7ufmm2aiVhGvH/4Dg1l+RrHuqB9foPE8W3hvuttid/+ursHtQ/uciDc
-         JZiPwkpanbT/msJvX3yif5zzAIAfvLEqVm/CCLcATkoMWwMXB+61+WQpmSssknvrQpsd
-         SqCmnyqppI8m66yx91Vf3BKE8ajhXw9z6Iz+qs9HUbx6Or6Va29aPMZCqgezNJzz7f/4
-         nmjemHb1JQ7AY/m8aY2ozlQSITCHUeJpLUHsDLRMSE6faGddgFfDE5k0D6Zy+tdda/ld
-         BgPg==
+        d=gmail.com; s=20230601; t=1771343432; x=1771948232; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=/Nsb9d4cdh3TIN7gk7P/dLzs//wsu5O2NugIegk+Dvg=;
+        b=l/aH6lpM5XqfTYdg7RjLi7YfiPzgn9yPBq6c+Uls0lWU5pgGd60LCf05t68TFVeJCS
+         RiNAsX9ynYKx/v16SUEIuFJE6f/J4LyKn9cf5fKmbUcgJQ58FmSJcq+q3lcr8PYx0Yo+
+         VpsVNQEsXciXbFgRyIVxLTDpUhYIJzetM3auP4sDvT++i5+97Y0YabEpjxRQC9AML5pR
+         kFTV2BFCzm1KtXKWFSTdS6OmLKFzmRrfan2BaH2AE0JNVjJ9WESXv2f+bWXbls3ub1Y6
+         qOPTwRTxFXN9C2pWt/KHqm8fSl0sy6TbEqOVzSxcXc+qFmCehPCcG64T182P6s7qZ8ZX
+         Qn8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771337141; x=1771941941;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=w7/ZxD0gyzUi+GQ6guwRmxS/saZ8Vlcke1WYSE/BbT8=;
-        b=VH2KhitsDDL83kFzXR+xSSae1gwTn8PrN0tKBL8XQjYBlqNIfLB2W6EjqRU8pvjYEz
-         QSkWRwOavipV8qGbGO35LW72qUxprqkeUKX2T35nwWGCqbHbWKaCPuCN7AL3xke5P3Qa
-         taZY+Totf51rcMmcsqFzMEbVG8ZpV0yAlsHFwpK7CB0VDGz8d/AjWxqqF1b4debBWPCU
-         eCyTift5O2yvmogyF0RPXdWo3x99M9h6ojvjCIcGmHEXTZp2XKbhVzhpVflcFt0Kd7zY
-         enUenRzomvEtQIhvbui/epw5s7LB8a9rEa8egNGk3fW31pD87+lUnA+A8wfWjzfRkLaE
-         N9vA==
-X-Gm-Message-State: AOJu0Ywr/jK5JL9dwrmBTaMb2yvUcUa7nK3YBzie1o3yPuveIqqQNdJ7
-	91IfblIyUHMZzS6WJuOIyj9V2czpNBBMYOML5tcF0TpPx0+mHThKbL3VEkS4nicNZB1B9xi5m1w
-	aCSuuy3HPyXDkOWGBgOgWg0nVM2DHyrs=
-X-Gm-Gg: AZuq6aJmN/bTLRoD3PGg16dubiMigiNkdfjG+eD6x21jGwmvuWJkTJmGxKQsFEfytnM
-	SSz5a4dz7+tsgAvugUhbz+4851ijiJKkHqM+zR8v6ibhMzs/+GXASTSV/W3fmIppovrWADgX7Sl
-	LzTTo1+emDpoT38eSO3uM4nfgcyCpZaV8HQEnf8kmyj1wlGoK3p6aHfYvY0sHOyFu0Jf7gERg4E
-	0TnChClOQBSxwOxvMk/PQIyWrOTvyI5gL2DzEA7SjhZzoSAZ5yrz2M+CyAbWqTynTfGoCfSx6ZU
-	IMuEUA==
-X-Received: by 2002:a05:690e:1c1c:b0:649:f09d:a6cc with SMTP id
- 956f58d0204a3-64c14b29c19mr10963024d50.1.1771337141377; Tue, 17 Feb 2026
- 06:05:41 -0800 (PST)
-MIME-Version: 1.0
-References: <cover.1771258407.git.l.scorcia@gmail.com> <ff920a7cc94f2b0c03d4bb55142030fded30d07c.1771258407.git.l.scorcia@gmail.com>
- <20260217135828.4hgbyhnz5nuzm6p7@skbuf>
-In-Reply-To: <20260217135828.4hgbyhnz5nuzm6p7@skbuf>
+        d=1e100.net; s=20230601; t=1771343432; x=1771948232;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=/Nsb9d4cdh3TIN7gk7P/dLzs//wsu5O2NugIegk+Dvg=;
+        b=M9/rc7DMMgR1+QQpeUTAk7U1Jht/VdbpeR7vwXAPrETX/ybqDE7pyY/G6U408LWdWG
+         F5y5I3FTAPv8HSmCb/JEITyq+n/hCt74uhPPAYRwhYqv2p6a+nHywzBuVCJcD0oGH7ld
+         3/TwOgCXhIsdhaBsJkhb4aLikdU4h/3ZsE28PbXYcS/ygMV6yy5UpquNvqiE6xid3eWH
+         S/TD5gLULTZQskgqX4quB79tt7Zh44Vk7M+r6hs4E+NWT/fFhyT0O0yfRFMxIP0Nn6JN
+         FtjOyBS9asem0SW8oAthr7Rjsp8MAOD6BfP/0n8nL7HB00kTwd2QJXFWGuHAt4m/Nq5Y
+         xYpQ==
+X-Gm-Message-State: AOJu0YzkBQKr0p6EXy3eH53+lUnVUEy+IoE9SJzJYIhM6WqBuPi8lYW7
+	sz/xICv908B5/MvVu+JjUHzQtEgkLTvaRsrz8uUEmP2mlhTG5+h5fzw9qjc4uS5u
+X-Gm-Gg: AZuq6aKoaC9cCqF6cyGAPFhfKklu0bXwbm1W1Nbt5hxMwUeJKPpqBSKi35+rq4luVJ4
+	3BH4vOqUb2JuXJdtOfI/2ETFGmE7tpBgAWIbruNqzwLV9I0tIhRaor8PquPC4ebkkEYmOJ756t1
+	cMMjbLWKM/7NFNhSZizu6x55cemYrjULuhQB8SMtWNR0mu+TFe9cdw4RLK1a6QiKH7UH3rJwtqt
+	RYx5QXaApj984PIagBS73i7vcvpbPOBL2uNK1W3zfo4mpWtObLdH/eQ2wefGxMazFCNEHlAQ8xv
+	yw7RpjYV414w1PZtnlKd84zfjU30MVGY2WFgJmmL6/oaDA2HqcpYytGSFLkMwMi3XbTh14oqAT3
+	Xdzaeiig7CpsFWgmoy+a0J72cDvYYLziliyhqYsoFUla/6SPrq7CGnXK0r7eD7t8UQe0Ro6Zmal
+	9KJhKwixMe8b6rbW5knNBwRdKYtg==
+X-Received: by 2002:a05:600c:b93:b0:47a:94fc:d063 with SMTP id 5b1f17b1804b1-48370e38ba0mr147624125e9.1.1771336712310;
+        Tue, 17 Feb 2026 05:58:32 -0800 (PST)
+Received: from skbuf ([2a02:2f04:d501:d900:ac3e:d4d0:5059:7047])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-48378b5196esm129721775e9.8.2026.02.17.05.58.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Feb 2026 05:58:31 -0800 (PST)
+Date: Tue, 17 Feb 2026 15:58:28 +0200
 From: Vladimir Oltean <olteanv@gmail.com>
-Date: Tue, 17 Feb 2026 16:05:29 +0200
-X-Gm-Features: AZwV_QiVnluoIVm_8_wyxtM9osk-BEP_4tSvKqw7PjMg4MAO7-oL-lW1MUMi7lE
-Message-ID: <CA+h21hoTJXkJr4_KWtFsxUMeqOXesxk5WKZbr5GWHawAi=idKg@mail.gmail.com>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jitao Shi <jitao.shi@mediatek.com>,
+	Fabien Parent <fparent@baylibre.com>,
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org
 Subject: Re: [PATCH v2 3/6] dt-bindings: display: mediatek: Correct
  compatibility for mt8167-dsi
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jitao Shi <jitao.shi@mediatek.com>, Fabien Parent <fparent@baylibre.com>, 
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-phy@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Message-ID: <20260217135828.4hgbyhnz5nuzm6p7@skbuf>
+References: <cover.1771258407.git.l.scorcia@gmail.com>
+ <ff920a7cc94f2b0c03d4bb55142030fded30d07c.1771258407.git.l.scorcia@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ff920a7cc94f2b0c03d4bb55142030fded30d07c.1771258407.git.l.scorcia@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260217_060543_063577_3BB91B61 
-X-CRM114-Status: UNSURE (   8.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260217_075035_672146_F901A338 
+X-CRM114-Status: GOOD (  18.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,12 +116,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 17 Feb 2026 at 15:58, Vladimir Oltean <olteanv@gmail.com> wrote:
-> To help the build test automation select the proper base branch, you can
-> use the "phy-next" or "phy-fixes" git subject prefixes when generating
-> your patches.
+Hi Luca,
 
-Ah, sorry, I missed the fact that only patch 4/6 touches linux-phy.
+On Mon, Feb 16, 2026 at 04:22:14PM +0000, Luca Leonardo Scorcia wrote:
+> Remove the dedicated "mediatek,mt8167-dsi" compatible from the device list and
+> describe it as compatible with mt2701 instead. It is safe to do so because:
+> 
+> - Bootloader doesn't rely on this single compatible; and
+> - There was never any upstreamed devicetree using this single compatible; and
+> - The MT8167 DSI Controller is fully compatible with the one found in MT2701.
+> 
+> Fixes: 8867c4b39361 ("dt-bindings: display: mediatek: dsi: add documentation for MT8167 SoC")
 
-What is the merge strategy for this set?
+Not sure which direction this patch will go in the next revision, but
+(if this patch remains in this form, and intended as a bug fix) please
+do not mix fixes for the current (and stable) kernel with new development
+for the next kernel in the same series. They are supposed to be applied
+to
+https://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git/log/?h=next
+and
+https://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git/log/?h=fixes
+respectively.
+
+(also see Documentation/process/stable-kernel-rules.rst for what is
+generally considered to be a bug fix. We don't use the word "fix" very
+lightly, there needs to be a user-visible impact.)
+
+To help the build test automation select the proper base branch, you can
+use the "phy-next" or "phy-fixes" git subject prefixes when generating
+your patches.
+
+You can send fixes at any time, but please send new development for the
+next kernel only when the merge window isn't open (unless it is marked
+as RFC, then it can also be sent any time).
 
