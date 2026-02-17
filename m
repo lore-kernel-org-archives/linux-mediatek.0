@@ -4,67 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB8D0E63F2C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Feb 2026 07:58:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1799E68145
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Feb 2026 08:18:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vSCmBoyIfaMQvSouN+JWXP6An+Ww8g97pYUcejHGHIw=; b=Lm8nTiPMBYr4RaJcrd4s8RE8/m
-	2+rFBPTIMpeGfVm59kNa8CvvVkS1f/WXvdroiyAa+EqKRs0pp6IZ9JmW908a9l0dzCqFaA5O2DrVB
-	zoTszitTl5UELBflV613V/+v5HSfKN5lzZag9r+mQIJIpfv2IP75XDP8yqOvDQr5kKhJ9YknDjTiz
-	005+myiRav9+9tJ65LPzXzlXjybTOT5z5qYra0wH8Sr9JiEpFcEeExN3qv0gPU7hY96elgJJFRz77
-	EN5fMmdYcRHwjO5KyHlvFE1ITAh0m9MwDUN0YiqRS5lLXHWz7ZE+lh0p1GyV/lSQjdd13qN0tac5l
-	e9abwfLw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:To:From:References:Cc:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3RVH1ipZIHBe/R/M3jd5GddnpbaCXSeGBKFUjvszSCo=; b=o3+xOXKpBWrq1E7L9jiek6tx8a
+	IVZpYIhwRkvX4QMj23WnKfgCy9ST0Ue1RYWaSSB6A6oBu6K/KSip/kuOXJfrmigci4KHTJnbfnFA+
+	8R7tteW/0uls5y0/OXF8jjVQ9pMcB+K33UClv2N9sErPgzr/rbkaYSkkQ1x3hKCCwbahLpQ9NLdrk
+	mnSWgAxxKzwx0S39Du884ooh6bL8ZR2VC+7wTBg95hCsjrggM5rIfHjeJQNXLeYyh9PKI8K+xPmxc
+	e7C+PLgLpf/QO0121Wnn83llAFzlY1bbj+fGxjvOrXQshloabgzrLWXOtt7hBARUgd3U5IoIF5TU0
+	e+6AC75g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsFyT-00000007ntS-3d3D;
-	Tue, 17 Feb 2026 07:58:25 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vsGHh-00000007qaH-3WBr;
+	Tue, 17 Feb 2026 08:18:17 +0000
+Received: from relay.yourmailgateway.de ([188.68.61.107])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsFyR-00000007nsi-2wXk;
-	Tue, 17 Feb 2026 07:58:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E83FD61339;
-	Tue, 17 Feb 2026 07:58:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 17CC8C4CEF7;
-	Tue, 17 Feb 2026 07:58:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771315102;
-	bh=9aqY/yhZWXO2CxYiklCZabTtP8Ya9dOUEw5jP19yryc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Sbs2aSBbKi7EeT2eYI44w0WYnYW6SAca4VY+PNyH9SmbHfWx17g5aQ/z1Ou1GSp76
-	 mK5R5d99G5sCm2g+JJbcEexHljxznkMN63OE6FFnMejvbqamq6yq5XR2QFwxvs8vNJ
-	 j3KNup3XsvNQxiCdwMGxzVd8C4PHnSqpeasZfNIh8qb0KGBBLYeeVDwnimfmS/B/jO
-	 vgZtqb9YlRJ1L8VQ1vGk+QxsZIZYOVfb9KWel/w4+DHPfEBR33Brm20RU6ml7iwx/b
-	 s7Qkb1RS2PSIjIGW3jtjK66ljqcJ28HzXyjDK0VdVHxCXbtWEhadUNckF7717fcGha
-	 Zi//j4Cj9yZQg==
-Date: Tue, 17 Feb 2026 08:58:20 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Jitao Shi <jitao.shi@mediatek.com>, 
-	Fabien Parent <fparent@baylibre.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-phy@lists.infradead.org
-Subject: Re: [PATCH v2 3/6] dt-bindings: display: mediatek: Correct
- compatibility for mt8167-dsi
-Message-ID: <20260217-stereotyped-dazzling-loon-f06e18@quoll>
-References: <cover.1771258407.git.l.scorcia@gmail.com>
- <ff920a7cc94f2b0c03d4bb55142030fded30d07c.1771258407.git.l.scorcia@gmail.com>
+	id 1vsGHc-00000007qZm-0RfR
+	for linux-mediatek@lists.infradead.org;
+	Tue, 17 Feb 2026 08:18:16 +0000
+Received: from mors-relay-8405.netcup.net (localhost [127.0.0.1])
+	by mors-relay-8405.netcup.net (Postfix) with ESMTPS id 4fFXZj2MFDz73QD;
+	Tue, 17 Feb 2026 09:18:05 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
+	s=key2; t=1771316285;
+	bh=wNmASthUQB6K1/NE1lVtryc0WHAWlmUfvnJEL99T7II=;
+	h=Date:Subject:Cc:References:From:To:In-Reply-To:From;
+	b=K/INfGig2CqnhuhFu1l3cReb1UiZU0ljGlD2Ay1S+/Opx0y8AXgvZVUK4lrSrka81
+	 RPr8l0PTa9CuY9CapWdjy4Dq+WueC/ipSxSnmd4Gm0LNoFrhNJ9b1h0LUU4qRgrCAZ
+	 stAP+rAtnk0hvt0ykzH/WmnRdkhfefImMx9PfOUwigJQZZ5MNmGNmeD+Bz2B8JXWkX
+	 gK/ZbXHhOmecX1JdOtchrAKRHSOXyVwnRfbXC+94c59EZMAAGfm3FTuKDGeh/2NxLe
+	 +hqz5NOeurvA+fgZN+4Vig3SoJG4QbAE1CjwdmPiVkQlWR+sU8tznTQQjdIHsG8hZd
+	 ETi+s84gglMqQ==
+Received: from policy02-mors.netcup.net (unknown [46.38.225.35])
+	by mors-relay-8405.netcup.net (Postfix) with ESMTPS id 4fFXZj1djdz73QC;
+	Tue, 17 Feb 2026 09:18:05 +0100 (CET)
+Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by policy02-mors.netcup.net (Postfix) with ESMTPS id 4fFXZg1pH9z8sbs;
+	Tue, 17 Feb 2026 09:18:03 +0100 (CET)
+Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
+	by mxe9fb.netcup.net (Postfix) with ESMTPSA id 771AE67559;
+	Tue, 17 Feb 2026 09:18:01 +0100 (CET)
+Authentication-Results: mxe9fb;
+        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
+Received-SPF: pass (mxe9fb: connection is authenticated)
+Message-ID: <6fce0406-1515-4cf8-afdf-24217148d1c8@leemhuis.info>
+Date: Tue, 17 Feb 2026 09:18:00 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <ff920a7cc94f2b0c03d4bb55142030fded30d07c.1771258407.git.l.scorcia@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [REGRESSION] mt8183-kukui: dts: changes in dts caused display to
+ no longer initialize - Was: Re: mt8183-kukui: drm/mediatek: dts: Invalid
+ display hw pipeline when probing mediatek-drm
+Cc: Evans Jahja <evansjahja13@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ regressions@lists.linux.dev, =?UTF-8?Q?Otto_Pfl=C3=BCger?=
+ <otto.pflueger@abscue.de>, Denis Gessert <denisgessert@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <CAFLVeg9hwH3PbKu5rPWZWqq6yz5mRRoB9oqxDkxNRdEDLGbVBw@mail.gmail.com>
+ <CAFLVeg_soeYV4tOYKMo6TMYOtuWWU4TFCjUTxUrVEyGcRwMz7A@mail.gmail.com>
+ <df6fcd73-fe0a-42fc-97ce-7e458c340553@leemhuis.info>
+ <CAFLVeg-qeWu4ntgyqotsgjogPEyhqrMGG=UDWuZe+-D3K8YPTA@mail.gmail.com>
+ <908f3c03-a8b0-4535-9cfa-294c6ade8152@collabora.com>
+ <96e7f0fc-65f4-4613-b556-3a2d869dabb4@leemhuis.info>
+ <86e2d0f9-5c25-4cce-b4a8-68fb569f987d@collabora.com>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+Content-Language: de-DE, en-US
+To: Greg KH <gregkh@linuxfoundation.org>,
+ "stable@vger.kernel.org" <stable@vger.kernel.org>,
+ Sasha Levin <sashal@kernel.org>
+In-Reply-To: <86e2d0f9-5c25-4cce-b4a8-68fb569f987d@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-PPP-Message-ID: <177131628267.3901032.8736787722890015484@mxe9fb.netcup.net>
+X-Rspamd-Server: rspamd-worker-8404
+X-Rspamd-Queue-Id: 771AE67559
+X-NC-CID: P5UaJjDo5RUgOdWt7kmuYNYP5qwhRRqev6fiWP7bbNuOTjfyU6I=
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260217_001812_613936_5D60EA00 
+X-CRM114-Status: GOOD (  15.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,47 +104,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 16, 2026 at 04:22:14PM +0000, Luca Leonardo Scorcia wrote:
-> Remove the dedicated "mediatek,mt8167-dsi" compatible from the device list and
-> describe it as compatible with mt2701 instead. It is safe to do so because:
+On 2/16/26 11:46, AngeloGioacchino Del Regno wrote:
+> Il 13/02/26 10:27, Thorsten Leemhuis ha scritto:
+>> On 2/9/26 12:42, AngeloGioacchino Del Regno wrote:
+>>> Il 06/02/26 17:58, Denis Gessert ha scritto:
+>>>> Thanks for the quick response. I compiled 6.18.9 with this patch
+>>>> (without reverting the previous commit) and it boots successfully.
+>>> Happy to see further confirmation that the patch that we both
+>>> mentioned is
+>>> actually fixing the issue.
+>> The big question remains: Now that this landed in mainline, should we as
+>> the stable team to pick this up for 6.18.y and 6.19.y to get it resolved
+>> there quickly? They might pick it up on their own due to the Fixes tag,
+>> but that is not guaranteed.
+> Yes, please, that'd be great.
 
-You are not doing what you wrote. The dedicated mediatek,mt8167-dsi is
-still there. And if you want to describe mediatek,mt8167-dsi with OTHER
-compatible (mt2701), it is a NAK. It is wrong and not allowed by writing
-bindings doc.
+Hi stable team! Could you please pick up be0b304eeb8c5f ("arm64: dts:
+mediatek: mt8183: Add missing endpoint IDs to display graph") [merged
+v6.19-post, committed by Angelo, who ACKed this request; see quote
+above] for 6.18.y and 6.19.y? It fixes a regression in e72d63fa0563
+("arm64: dts: mediatek: mt8183: Migrate to display controller OF
+graph"). tia! Ciao, Thorsten
 
-You just added fallback, didn't you?
-
-Please wrap commit message according to Linux coding style / submission
-process (neither too early nor over the limit):
-https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/process/submitting-patches.rst#L597
-
-Please run scripts/checkpatch.pl on the patches and fix reported
-warnings. After that, run also 'scripts/checkpatch.pl --strict' on the
-patches and (probably) fix more warnings. Some warnings can be ignored,
-especially from --strict run, but the code here looks like it needs a
-fix. Feel free to get in touch if the warning is not clear.
-
+>>>> Am Fr., 6. Feb. 2026 um 15:55 Uhr schrieb Thorsten Leemhuis
+>>>> <regressions@leemhuis.info>:
+>>>>>
+>>>>> On 2/6/26 12:33, Denis Gessert wrote:
+>>>>>>
+>>>>>> I found this email chain while troubleshooting why my Levovo Duet
+>>>>>> (with the MT8183 chip) would not boot using any 6.18.* kernel.
+>>>>>>
+>>>>>> I can confirm that on my device the current stable 6.18.8 does not
+>>>>>> boot unless I revert the commit
+>>>>>>
+>>>>>> commit e72d63fa0563f8a6e98c10fed3a9ce74dc0536e6 (HEAD)
+>>>>>> Author: AngeloGioacchino Del Regno
+>>>>>> <angelogioacchino.delregno@collabora.com>
+>>>>>> Date:   Thu Jul 24 10:39:08 2025 +0200
+>>>>>>
+>>>>>>       arm64: dts: mediatek: mt8183: Migrate to display controller OF
+>>>>>> graph
+>>>>>>
+>>>>>> mentioned below. With the reverted commit the device boots as
+>>>>>> intended.
+>>>>>
+>>>>> There is a fix for it from Otto here that I guess should help
+>>>>> https://lore.kernel.org/lkml/20260106-mt8183-display-graph-v2-1-
+>>>>> e7e56054eef5@abscue.de/
+>>>>>
+>>>>> Side note: lacks a stable tag and maybe should have been merged this
+>>>>> cycle instead of the next. But given that 6.19 is immanent it might be
+>>>>> good if this could be backported to 6.19.y once it landed in mainline.
+>>>>>
+>>>>>> PS: Apologies for the potential double-mail.
+>>>>> No worries, happens.
+>>>>>
+>>>>> Ciao, Thortsten
+>>>
+>>>
+>>>
+>>
 > 
-> - Bootloader doesn't rely on this single compatible; and
-
-Does not matter. You still CANNOT remove a compatible. If bootloader
-starts to rely on this single compatible, you add it back? No.
-
-> - There was never any upstreamed devicetree using this single compatible; and
-> - The MT8167 DSI Controller is fully compatible with the one found in MT2701.
 > 
-> Fixes: 8867c4b39361 ("dt-bindings: display: mediatek: dsi: add documentation for MT8167 SoC")
 > 
-
-There is never a blank line between tags.
-
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> ---
->  .../devicetree/bindings/display/mediatek/mediatek,dsi.yaml   | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
-
-Best regards,
-Krzysztof
 
 
