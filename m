@@ -4,114 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65DF1E909D8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Feb 2026 16:37:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC969E909DE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Feb 2026 17:02:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eIGbAV+8Vnm23slA1If+Si9qq/awHjco1XJ0AGN0iyQ=; b=ojVqvX2P3ow3Ry48d1AP63ZnxZ
-	X2kpzvu7Qexic8nlGbj6z9IhiSQ5nkZB5/cTsNu/M0VQL8D24F6Jj1AsDpfMPtpZeY2Gs+foU0O1v
-	QSnohkBJSzVPN3PZBTE7UO5h6/W9zOAyCj8MNbk8h2pgSlBQ8QCXbSwt6AyX9g6szKnkhwYDKKStR
-	vnsPwtswhf/TRF2InCLUsA3D4r4Auy7Gnvh6rKpchCyGYebkMCrSl9ZTlOIsuREliwd1R81O0YQ7D
-	JjR4qLQd+ji450DWTP925im401pNsF+t3m3Jle9gJLwGJcvkjJIMwQr+Qh5PYPqs40I/phSSCWPVl
-	mTCejG2w==;
+	bh=qOoRjgnSHrNjTvcalH2hcho9xgYd1gl35shmwDVmt2k=; b=qhzGPTPuf41ezWJopOhMZxhS91
+	hjABCTyu8R/yUmYrBf6/Am62QWGXjyNmtk1ZpiqjUtp/pDtIqeWnfuvJMZKgdnKS7wwhQOEvJIlYM
+	8T9jtFbH8uak1PS5T/cpxTD/bAPwkxkiM28HfOvvYmKdqnM//AcrSbd4juBoLVxDxhz5qaPhKEqqx
+	grq9TiaJCwMwBzBf78Ku4bK5rjuA08GfO2X+3tBHXCHiFn7rRZU2CQMk3EqwOCyG0qQI0UkFWyMuR
+	luuI7//SlFuC8MQvOFbVHuvpvbYXG3w/NdwiDwJE+yBlS9PCPdiXi6ydC4a1A1wFRTaSeyzas6fWQ
+	H7pIyfWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsO5B-00000008a51-3PiJ;
-	Tue, 17 Feb 2026 16:37:53 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1vsOT1-00000008crS-1wI2;
+	Tue, 17 Feb 2026 17:02:31 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsO58-00000008a3u-0A0e
-	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Feb 2026 16:37:52 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id 4fb4d7f45d1cf-65c0e2cbde1so1825616a12.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Feb 2026 08:37:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1771346267; cv=none;
-        d=google.com; s=arc-20240605;
-        b=OVPK9R/CTgc2d0YWGkekbZhWD9FW2rGQJHROaGSvWcCFdlJeD2DlORhNkJ8nxZ2IT/
-         9G7fM0lZeg71Si83adCDb7XGY2oq1ARBNDvx8fq46oiSMf6+DpExkEKO9Ar1WLS2zAve
-         Vxl7NclIEHZJzly/SZtVMue4qmv22tSAmE1mMcmaa34BcrdFyvwLgiLDAt5ii85MDx4k
-         QTiTzKunjZ8ti1d2arZjNCJsLMUzw44aWu7wqIxGLQ/H9aDrjtyJrb5EfuHesQI0vIzi
-         u8Q2866Czp+9it2lYBf5R4AEfAJ/wajFGnkCCJGjWnYVx0sqxbhMrUL263XMtqYsLi80
-         y/oA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=eIGbAV+8Vnm23slA1If+Si9qq/awHjco1XJ0AGN0iyQ=;
-        fh=QApU9iVGuGWwdo+1S6r/GfW/oH8CyMefHMGN2yNm5xk=;
-        b=SOqTiCVF/QlHtdOs7UxMJDC1m4Edh7BfLC0LR4ha0g58sWC1b1yHQuvOEcakl8iFUQ
-         Bxci5kFKIlOlX9x1hOdVLmvfxOdkxC+7WxADlnZsV5L6HmaUvd1j7PCs52Qas1iuK09r
-         Dyj6qYF53l4StMlDe59XPBO4uvyn55FMWDGQ97MPDfZmvgXu8csQzzlinqSbQZ/fFBEd
-         eDmUc68DyX77zc8KX6VA4//G3vXX45soT3KhP2ZoOCLbSipweV9KtD5uNhOvu12+Ub6A
-         ZHZ+nbQawFoRqzmsmMT2y0aVySIZww4J5nICAdM3OXdgzy/66jM1jXfhRqPdeCJlcK4g
-         7a+Q==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1771346267; x=1771951067; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=eIGbAV+8Vnm23slA1If+Si9qq/awHjco1XJ0AGN0iyQ=;
-        b=HQI31/0pakNEaH7kgDRrAcBjXj3DnE41+mkIzXVr6z76QOMZeDs1h9HIpEyBuluNVN
-         s/vsLNUFY1eV4tg4YyCherla9PPjGWJ/yanr51A9X0dOMkPckaC2kK5ZkqJ+dzSI9Iiq
-         59eIsKctKvOSrMbssJU1NEAqQXuYdtdE0OBGKslQvInoutXuV3jccp3B9vdHPOSPsOji
-         5Q4/fbY4biPHvvaHR960vwpkIHIy7wxd5tOwY7uFBqt82pbMogbgT6KBh/Oc9RPUK1Rl
-         3jcHkYEUvoB2votg1ZnaJGXNkZU6aul1HtNegZKXIfoH4bYpPyQkeV8pqvZlqvLu9ZYd
-         kJgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771346267; x=1771951067;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=eIGbAV+8Vnm23slA1If+Si9qq/awHjco1XJ0AGN0iyQ=;
-        b=dsSbec+x+sf8RSCBJaKuXkaoylxG3Men2avnD72J1+JCCuJYVePDyGaiQGnq0n4m3G
-         /rE1fPL3WgTMpJtxHo3FOHLRBHlqkOFIvcKGfx7X5MPeVhYtWfcgl1E+tgwPTb7KaT+x
-         LA/59xXfsEnyD0EK/L91vhetABBJFaQkS5AgBISo+4IQtXZEEoKfqooznzvBcWzGz6VH
-         xTkim7WdKSDK2AbFdjAt2pnyNJm1hT+mDvyvyLZObeYLPwbIhHs/ucCOSSzth2N0rSCk
-         vXLg1JXgzOQJjNRgGDGOllONKKMFyWR4tdBpMR5G5Yz0n4JmkiyqWVrxe3TmF7J6iCg1
-         o8ew==
-X-Gm-Message-State: AOJu0Ywvbz3Ms1KnG2dzk8+q/nukK2HHJzvfo02pXToPs8EdE2gLYpfO
-	WwDIWx33P0VvqJcjiTDmv20dtVzozDjsoBwKP/yQZJSM/s01fjLjTxUobDhcg/52RcqFSxjUNE7
-	ceOcG9zVzPbMCIpCotI25eLHDSlud4t4=
-X-Gm-Gg: AZuq6aI7m1rDDC6uBU1NW8Fcc541XVcLswM8UMt1GbJfkNugn8SFKlm4llOof27sXoI
-	Iimw8JWt5Itjzd0Ddv0ol0IZeyKTNs12c6bsCcZ540O0tctKMzlNBe973sw/ZGB5VjA3pTI00lj
-	IY8AvODZGHzpWRj7PM+JvBlbYC3fIUeDvji4PY0aHkTnwKXSaMOpMOD/+UoHXje8UcvelPt700C
-	mt75+f+Mva2tLDNDqVFiCLg2mNXFBJf8O+3j9/q5KJHEEV4QJXPa5a8rMsnRkOG8DHEmdRq0XMI
-	qtU1rw3EEd0xnMw3
-X-Received: by 2002:a05:6402:3648:b0:65c:1f0f:e6f6 with SMTP id
- 4fb4d7f45d1cf-65c1f0fee06mr2535558a12.22.1771346267257; Tue, 17 Feb 2026
- 08:37:47 -0800 (PST)
-MIME-Version: 1.0
-References: <cover.1771258407.git.l.scorcia@gmail.com> <ff920a7cc94f2b0c03d4bb55142030fded30d07c.1771258407.git.l.scorcia@gmail.com>
- <20260217135828.4hgbyhnz5nuzm6p7@skbuf>
-In-Reply-To: <20260217135828.4hgbyhnz5nuzm6p7@skbuf>
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Date: Tue, 17 Feb 2026 17:37:36 +0100
-X-Gm-Features: AaiRm51UVemOzhQMk6xoVI4EJaD4w62lgA3q3kyqzB9n5tt-MdAm1A1cRwc2sAA
-Message-ID: <CAORyz2L6_4yLb7t6-H3MjCu7QJtPF0QTvdsvdBw8f9zTey_tBw@mail.gmail.com>
-Subject: Re: [PATCH v2 3/6] dt-bindings: display: mediatek: Correct
- compatibility for mt8167-dsi
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Jitao Shi <jitao.shi@mediatek.com>, Fabien Parent <fparent@baylibre.com>, 
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-phy@lists.infradead.org
+	id 1vsOR1-00000008bwX-05Bh;
+	Tue, 17 Feb 2026 17:00:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1771347611; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=QHszZFOWTbW11U8NV6KPlrJZGsJUGGmvCS2afP1YX+VDV4DJzUcOieqGb5ON6MhIkMxKwHi/8S5ReAe4l11iZP8x1BJc+TFSc3qXFLKGY6cgq4SBub6n5RQbCVdyA3oe8nBK1ZZCb9cogQpzqPi9QCI2xt9YdKxOAnhYkPucrYc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1771347611; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=qOoRjgnSHrNjTvcalH2hcho9xgYd1gl35shmwDVmt2k=; 
+	b=CsVdkvxj+cocPq5qvwKi2A3KUkm2LhZSz+qfhsAXW+P1Zd2jp+tjXBsnRBD4s7IpnFlkF6cx4sk1vsqDlaLqJCsJorqNYCzo2dM5TJ9ExxHKWwBx1FVV39/WtnICb5Cg7UN3L56IOYuJ2qHQg2uT0klmRLcxigfs/0sq4Qx6U4E=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1771347611;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=qOoRjgnSHrNjTvcalH2hcho9xgYd1gl35shmwDVmt2k=;
+	b=XFCehqo3rqYYi6FbsDMqUhqUfvbdhGZBsNhWdwP1dUlPjBFsAGe8YsZcyEkwFbgq
+	rzWk3SsYGvMz+fVq8BArAPieMwaNuOExAyqTjd5LpN6yDSaAxFKz2Ot+HT4tBup5AXw
+	1PdkmBEnSuTAA7c6xBB7szxGLmwEtKsAcq+eg+Co=
+Received: by mx.zohomail.com with SMTPS id 1771347608544533.6723972839652;
+	Tue, 17 Feb 2026 09:00:08 -0800 (PST)
+Message-ID: <c2e418a1fb0c8df38f47fed5010f2a22621afeaa.camel@collabora.com>
+Subject: Re: [PATCH v3 04/10] pmdomain: mediatek: Refactor bus protection
+ regmaps retrieval
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: Macpaul Lin =?UTF-8?Q?=28=E6=9E=97=E6=99=BA=E6=96=8C=29?=
+	 <Macpaul.Lin@mediatek.com>, AngeloGioacchino Del Regno
+	 <angelogioacchino.delregno@collabora.com>
+Cc: Pablo Sun =?UTF-8?Q?=28=E5=AD=AB=E6=AF=93=E7=BF=94=29?=	
+ <pablo.sun@mediatek.com>, "lihongbo22@huawei.com" <lihongbo22@huawei.com>, 
+ "robh@kernel.org"	 <robh@kernel.org>, "kernel@collabora.com"
+ <kernel@collabora.com>,  "ulf.hansson@linaro.org"	
+ <ulf.hansson@linaro.org>, Moudy Ho
+ =?UTF-8?Q?=28=E4=BD=95=E5=AE=97=E5=8E=9F=29?=	 <Moudy.Ho@mediatek.com>,
+ "mbrugger@suse.com" <mbrugger@suse.com>,  "conor+dt@kernel.org"	
+ <conor+dt@kernel.org>, Sjoerd Simons <sjoerd@collabora.com>, 
+ "linux-kernel@vger.kernel.org"	 <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org"	 <devicetree@vger.kernel.org>,
+ "linux-mediatek@lists.infradead.org"	 <linux-mediatek@lists.infradead.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,  Nicolas Prado
+ <nfraprado@collabora.com>, "wenst@chromium.org" <wenst@chromium.org>, Bear
+ Wang =?UTF-8?Q?=28=E8=90=A9=E5=8E=9F=E6=83=9F=E5=BE=B7=29?=	
+ <bear.wang@mediatek.com>, "y.oudjana@protonmail.com"
+ <y.oudjana@protonmail.com>,  "linux-pm@vger.kernel.org"	
+ <linux-pm@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"	
+ <linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"	
+ <matthias.bgg@gmail.com>, MandyJH Liu
+ =?UTF-8?Q?=28=E5=8A=89=E4=BA=BA=E5=83=96=29?=	 <MandyJH.Liu@mediatek.com>
+Date: Tue, 17 Feb 2026 18:00:01 +0100
+In-Reply-To: <54d3abf79ce1cc0f59a18cfff585699073918f60.camel@mediatek.com>
+References: <20250805074746.29457-1-angelogioacchino.delregno@collabora.com>
+		 <20250805074746.29457-5-angelogioacchino.delregno@collabora.com>
+		 <a2eae87efe46ebf397bcec3580eb9bc152b80846.camel@collabora.com>
+		 <be3a2d50-044b-429a-820c-5260c6ce730c@collabora.com>
+		 <fd071501b66fb332439617f2b270c837043b0862.camel@mediatek.com>
+		 <8fc93d93-7d99-4d38-9fa8-92951a0acdcf@collabora.com>
+	 <54d3abf79ce1cc0f59a18cfff585699073918f60.camel@mediatek.com>
+Organization: Collabora Ltd
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+MIME-Version: 1.0
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260217_083750_924096_23031BF1 
-X-CRM114-Status: GOOD (  29.96  )
+X-CRM114-CacheID: sfid-20260217_090027_093717_0F42CCA7 
+X-CRM114-Status: GOOD (  57.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,68 +105,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Vladimir,
-thank you for the reply and explanation. As a new contributor it is
-greatly appreciated.
-Those patches are definitely intended for next since as far as
-I know there is no mt8167 device using upstream kernels out there.
+Hi Angelo and Macpaul,
 
-As for the Fixes tag, the rationale for it was that it's ultimately
-not coherent with both its original author's intended usage [1] nor
-with the current code as it's not present in [2], possibly due to the
-fact that at the time of the original contribution bindings were text
-only and less accurate, so I described is as a "Fix". I understand now
-that the Fixes tag has a special meaning in the merge process so I
-will just remove it in v3, it does not add much information anyway.
-Also thanks about the git commit prefix suggestion, I didn't know about it!
+On Fri, 2026-02-13 at 16:07 +0000, Macpaul Lin (=E6=9E=97=E6=99=BA=E6=96=8C=
+) wrote:
+> On Thu, 2026-02-12 at 12:15 +0100, AngeloGioacchino Del Regno wrote:
+> > Il 12/02/26 08:58, Macpaul Lin (=E6=9E=97=E6=99=BA=E6=96=8C) ha scritto=
+:
+> > > On Tue, 2025-10-14 at 11:59 +0200, AngeloGioacchino Del Regno
+> > > wrote:
+> > > >=20
+> > > > External email : Please do not click links or open attachments
+> > > > until
+> > > > you have verified the sender or the content.
+> > > >=20
+> > > >=20
+> > > > Il 13/10/25 15:41, Sjoerd Simons ha scritto:
+> > > > > Hey,
+> > > > >=20
+> > > > > On Tue, 2025-08-05 at 09:47 +0200, AngeloGioacchino Del Regno
+> > > > > wrote:
+> > > > > > In preparation to add support for new generation SoCs like
+> > > > > > MT8196,
+> > > > > > MT6991 and other variants, which require to set bus
+> > > > > > protection on
+> > > > > > different busses than the ones found on legacy chips, and
+> > > > > > to
+> > > > > > also
+> > > > > > simplify and reduce memory footprint of this driver,
+> > > > > > refactor
+> > > > > > the
+> > > > > > mechanism to retrieve and use the bus protection regmaps.
+> > > > > >=20
+> > > > > > This is done by removing the three pointers to struct
+> > > > > > regmap
+> > > > > > from
+> > > > > > struct scpsys_domain (allocated for each power domain) and
+> > > > > > moving
+> > > > > > them to the main struct scpsys (allocated per driver
+> > > > > > instance) as
+> > > > > > an array of pointers to regmap named **bus_prot.
+> > > > >=20
+> > > > > Trying to boot v6.18.0-rc1 on a Genio 700 EVK using the arm64
+> > > > > defconfig,
+> > > > > ends up hanging at boot (seemingly when probing MTU3 and/or
+> > > > > mmc,
+> > > > > but that
+> > > > > might be a red herring).
+> > > > >=20
+> > > > > Either reverting this patch *or* having CONFIG_MTK_MMSYS
+> > > > > builtin
+> > > > > rather
+> > > > > then a module seems to solve that.
+> > > > >=20
+> > > >=20
+> > > > Thanks for the report.
+> > > >=20
+> > > > This is not a problem with this patch specifically, but surely
+> > > > some
+> > > > race condition
+> > > > that was already present before and that does get uncovered
+> > > > with
+> > > > this
+> > > > one in some
+> > > > conditions.
+> > > >=20
+> > > > Without the devicetree updates (which are not upstream yet)
+> > > > this
+> > > > patch is
+> > > > fully retaining the legacy functionality 1-to-1.
+> > > >=20
+> > > > I'll check what's going on ASAP.
+> > > >=20
+> > > > Cheers,
+> > > > Angelo
+> > > >=20
+> > >=20
+> > > This issue also happened on mt8195. I've done bisect on linux-
+> > > next
+> > > master with mt8195-genio-1200-evk board.
+> > > The result shows c29345fa5f66bea0790cf2219f57b974d4fc177b is the
+> > > first
+> > > bad commit.
+> > >=20
+> > > I cannot simply revert this commit since there are some
+> > > dependencies
+> > > commits.
+> > >=20
+> > > I'm not sure if there are any API or flag change would
+> > > affect interaction between the pm-domain driver and scp firmware.
+> >=20
+> > I'm 99% sure that the SCP firmware has nothing to do with this -
+> > but
+> > then
+> > even if it did, there's some quirk to be uncovered and properly
+> > handled.
+> >=20
+> > So - if it is (again, most probably not) a firmware issue, it was
+> > only a
+> > matter of time until this situation would've happened. It's pretty
+> > common
+> > to see two wrongs making one thing right (but in 100% of the cases
+> > it
+> > does
+> > eventually break).
+> >=20
+> > > Just a remind it is hard for MediaTek to update scp firmware for
+> > > a
+> > > mass production chip. Each scp firmware seems specifically
+> > > designed
+> > > for
+> > > each chip separately which leads the API might be changed between
+> > > each
+> > > chip.
+> > >=20
+> >=20
+> > Adding Louis-Alexis to the loop;
+> >=20
+> > Louis, can you please try to reproduce this one on any of our
+> > boards?
+> > I can't seem to be able to reproduce here.
+> >=20
+> > Cheers,
+> > Angelo
+> >=20
+> >=20
+>=20
+> Angelo and Louis,=20
+> Please put this issue to low priority.
+> I did reported this issue but it should be quite a while from now.
+>=20
+> I'm not sure why and how the mail client or mail server send out this
+> mail so late, and it has been sent twice until I've discovered right
+> now.
+> I guess this issue has been gone during 6.18-rcX period.
+> However, double check the latest status with latest kernel version is
+> good. I think it should be fixed already with AFBC patch or something
+> around that time.=20
+>=20
+This issue was indeed fixed by commit c1bac49fe91f ("pmdomains: mtk-pm-
+domains: Fix spinlock recursion in probe"), that was merged for v6.18
+release.
+I did not reproduce it with stable or linux-next tags since then, on
+the Genio boards I'm using.
 
-I apologize for the confusion and I appreciate all guidance from maintainers.
-I really want to do stuff The Right Way, it's just a matter of moving
-along the learning curve.
+> > > The error log occurs on emmc at first and than rcu_preempt
+> > > happens.
+> > > [=C2=A0=C2=A0=C2=A0 1.291055] mtk-msdc 11240000.mmc: msdc_track_cmd_d=
+ata: cmd=3D8
+> > > arg=3D000001AA; host->error=3D0x00000002
+> > > [=C2=A0=C2=A0=C2=A0 1.292775] mtk-msdc 11240000.mmc: msdc_track_cmd_d=
+ata: cmd=3D55
+> > > arg=3D00000000; host->error=3D0x00000002
+> > > [=C2=A0=C2=A0=C2=A0 1.294539] mtk-msdc 11240000.mmc: msdc_track_cmd_d=
+ata: cmd=3D55
+> > > arg=3D00000000; host->error=3D0x00000002
+> > > [=C2=A0=C2=A0=C2=A0 1.296293] mtk-msdc 11240000.mmc: msdc_track_cmd_d=
+ata: cmd=3D55
+> > > arg=3D00000000; host->error=3D0x00000002
+> > > ...
+> > > [=C2=A0=C2=A0=C2=A0 1.430408] mtk-msdc 11240000.mmc: msdc_track_cmd_d=
+ata: cmd=3D55
+> > > arg=3D00000000; host->error=3D0x00000002
+> > > [=C2=A0=C2=A0=C2=A0 1.433766] mmc0: Failed to initialize a non-remova=
+ble card
 
-[1] https://lore.kernel.org/linux-mediatek/20210406113631.2675029-3-fparent@baylibre.com/
-[2] https://github.com/torvalds/linux/blob/9702969978695d9a699a1f34771580cdbb153b33/drivers/gpu/drm/mediatek/mtk_dsi.c#L13061
+There are still some error logs related to mtk-msdc on Genio 1200-EVK
+board like those but unrelated to this issue. They appear during boot
+when no sdcard is inserted in the micro sd connector.
+It seems there is no card detection GPIO present on the board that
+could be used to prevent those log occurrences.
 
-Il giorno mar 17 feb 2026 alle ore 16:35 Vladimir Oltean
-<olteanv@gmail.com> ha scritto:
->
-> Hi Luca,
->
-> On Mon, Feb 16, 2026 at 04:22:14PM +0000, Luca Leonardo Scorcia wrote:
-> > Remove the dedicated "mediatek,mt8167-dsi" compatible from the device list and
-> > describe it as compatible with mt2701 instead. It is safe to do so because:
-> >
-> > - Bootloader doesn't rely on this single compatible; and
-> > - There was never any upstreamed devicetree using this single compatible; and
-> > - The MT8167 DSI Controller is fully compatible with the one found in MT2701.
-> >
-> > Fixes: 8867c4b39361 ("dt-bindings: display: mediatek: dsi: add documentation for MT8167 SoC")
->
-> Not sure which direction this patch will go in the next revision, but
-> (if this patch remains in this form, and intended as a bug fix) please
-> do not mix fixes for the current (and stable) kernel with new development
-> for the next kernel in the same series. They are supposed to be applied
-> to
-> https://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git/log/?h=next
-> and
-> https://git.kernel.org/pub/scm/linux/kernel/git/phy/linux-phy.git/log/?h=fixes
-> respectively.
->
-> (also see Documentation/process/stable-kernel-rules.rst for what is
-> generally considered to be a bug fix. We don't use the word "fix" very
-> lightly, there needs to be a user-visible impact.)
->
-> To help the build test automation select the proper base branch, you can
-> use the "phy-next" or "phy-fixes" git subject prefixes when generating
-> your patches.
->
-> You can send fixes at any time, but please send new development for the
-> next kernel only when the merge window isn't open (unless it is marked
-> as RFC, then it can also be sent any time).
+There is also cases when emmc is enumerated as mmc1 (and sd as mmc0),
+as no mmc alias is declared in this board devicetree.
+I'll send a patch to add them.
 
+Regards,
+Louis-Alexis
 
-
--- 
-Luca Leonardo Scorcia
-l.scorcia@gmail.com
+> > > [=C2=A0=C2=A0 22.297240] rcu: INFO: rcu_preempt detected stalls on
+> > > CPUs/tasks:
+> > > [=C2=A0=C2=A0 22.298723] rcu:=C2=A0=C2=A0=C2=A0=C2=A0 6-...0: (2 tick=
+s this GP)
+> > > idle=3D104c/1/0x4000000000000000 softirq=3D45/45 fqs=3D37
+> > > [=C2=A0=C2=A0 22.299827] rcu:=C2=A0=C2=A0=C2=A0=C2=A0 (detected by 2,=
+ t=3D5256 jiffies, g=3D-1051,
+> > > q=3D200
+> > > ncpus=3D8)
+> > > [=C2=A0=C2=A0 22.300689] Sending NMI from CPU 2 to CPUs 6:
+> > > ...
+> > >=20
+> > > Best regards,
+> > > Macpaul Lin
+> > >=20
+> >=20
+> >=20
+> Best regards,
+> Macpaul Lin
 
