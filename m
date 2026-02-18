@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2C91E9A03E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBF91E9A03B
 	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Feb 2026 09:23:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DP8z2bUsJx4G62UXg2hfgSoqlrQfpk9papNyWSX33AU=; b=NgB7lNSIDbUmGR
-	NN452vhXSbiwQuouDTi8B/y47HO8+WsuSXc0mepkJyGwG0rEdu/+7TJDNAkn/ThPlaPyXh76sStPd
-	/DStfWoyBdYwKtLl0rX1AsbAXMPuJy5pdJqP68xitc5sc2CBlugarfBXqix9zkvWxQ0AbyONF+nFJ
-	P1U32OzoXqxswODCLRVzvxuxhplLl2uq9MDM5gy0bFURfPzV07EuU9NPgmu4D4qWeftSmdEIlAsHz
-	mUF9KgV9chqCwQHRVJJ2odt3YUDzMjTeuyVdYr+5AL4TOHcYq6Vc613+UEU4GA47OoRq7VnSmTmDn
-	ibJb9076v4FlL16vgZAw==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7uoQVBxJ3BbS2KybUO7O3FILsEEJ+ro5f2F6+ScA4U4=; b=lftbVg7/8GMMp6rTUzaHWiI0Xy
+	29RcgvrANf+MQYQYIQAiA3huQRU4+IvVg8GinNCH2gHKm+USBTshSG8oTBAm+0OK3iorB51cz2n3s
+	r7kmzb0TKVwyWuWDFVGPrly0bL/Tp/SOx2pPt//RkIYl52nXeqrOGDW6ZZR4jkQqBPneszx4XbaTW
+	HA7ths1SxuCeu79nt2PoiunjAMXQiXALBCWxGHF+molXJM5h3Kf4wZ1SiT1At38Gyg0i4dfdemH/X
+	OkHvJW2rgSrABmBQlQf5tbPN2qMTiMtgRdEsxoXvJXia16vxOnux/D8OlQCde7dtHg+kpWRedWM/E
+	bpl5UJpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsdmk-00000009XIU-0PiC;
-	Wed, 18 Feb 2026 09:23:54 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vsdmj-00000009XII-2Dql;
+	Wed, 18 Feb 2026 09:23:53 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsdmf-00000009XGX-45Qd;
+	id 1vsdmf-00000009XGW-40x9;
 	Wed, 18 Feb 2026 09:23:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771406625;
-	bh=/0hkWzIe4d8EKtH2G9BKPTi25LCzBo6R8Hd9DQCMMu0=;
-	h=From:Subject:Date:To:Cc:From;
-	b=OtR4LkBWQP1eFthukqCvn48r59GyipT2E8fCFZQKjKzawoJ+tvAc+ffk6fWaibeM3
-	 vAbwFO2Gs0+omd/xKoGSxp+xQzcZrpP5mW5W6w9UopJx/VSzXNrqWZFa2Dy62nSivu
-	 aXrCy6E2E9y834bmoP9yVRK6GFj5IkhDtMfwzukr9mpX6eg8Rqm/3DM4HLjW7RgT9h
-	 DRLtJgHQ4unjj/2WeKum2LkZ5etPpsokVh6cviQ/sG6x+VGacThto9dZ+oWe4FXFtA
-	 R+CZL8ml39Btka5xNQey9iCob3xBkC6VPmstMCv0FOX0iowbVfTo/CsU8OBLxkyb6z
-	 V07tZFJis7bSw==
+	s=mail; t=1771406626;
+	bh=TgZ+DLlkvLfG/Wfxf7z4TGRSZUBz59EnjarV2GXABeA=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=T6TesFBgmbUrvso6N2iOElT4oWluAXQOvDR0ZTUSHIUQYZcj+rj/iP3j3tWnKtPst
+	 /dCTBe5HanA04bbDQHInRQwTv94i+r5f7rokILjGgeSF5k8TJDkx4A/7dADlg3Lfys
+	 5RiyKalaJZs7xKGsHP1quNA5ic5KUJ9Cvc0yUE9qv2IDfCq2RZz+Prb+gRkZ0LUbjR
+	 EK7dBOYOtnz2QcRVeCXTktBDk0fum1dk5Y1Dex1RPvqXaiinvAps13IrP0wbuR21Fe
+	 8U4Q5dedO75uW4ZXGvfwiRCXp6lwkNmt+kHWPdtmX3aZoHwRKAGxwaujw26ZYPYrk6
+	 PJCn9OHCZaXDw==
 Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5205117E04DC;
-	Wed, 18 Feb 2026 10:23:45 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1616617E1301;
+	Wed, 18 Feb 2026 10:23:46 +0100 (CET)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Subject: [PATCH 0/3] Add mmc aliases for Mediatek Genio boards
-Date: Wed, 18 Feb 2026 10:23:01 +0100
-Message-Id: <20260218-mtk-genio-mmc-aliases-v1-0-e218e9f771c5@collabora.com>
+Date: Wed, 18 Feb 2026 10:23:02 +0100
+Subject: [PATCH 1/3] arm64: dts: mediatek: mt8395-genio-common: add mmc
+ aliases
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/y2NQQrCMBBFrxJm7UAbsDa9inSRxGkdNIlmohRK7
- 95gXb4P7/0VhDKTwKBWyPRl4RQrtCcF/m7jTMi3yqAb3TW67TGUB84UOWEIHu2TrZAgeWPPpnf
- GmQmq+8o08fLrXseDM70/NV+OEVz10KcQuAwq0lLwf3GBcdt2+kCgDpgAAAA=
-X-Change-ID: 20260218-mtk-genio-mmc-aliases-ec9a598b9b9f
+Message-Id: <20260218-mtk-genio-mmc-aliases-v1-1-e218e9f771c5@collabora.com>
+References: <20260218-mtk-genio-mmc-aliases-v1-0-e218e9f771c5@collabora.com>
+In-Reply-To: <20260218-mtk-genio-mmc-aliases-v1-0-e218e9f771c5@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -63,17 +62,16 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1771406625; l=974;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1771406625; l=935;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=/0hkWzIe4d8EKtH2G9BKPTi25LCzBo6R8Hd9DQCMMu0=;
- b=0xtamJWjRnVkzg3XXOQQ8Gj6AYz91OVmmy/C3+F8bFJ52kEnsonP0yTwupEnEKW9NoO0qzjC8
- 6cxOuUUaWlqAgi6vZFFAeccEcVEmaHp5wqJirpRmc3DU1mCvNX6Pq2B
+ bh=TgZ+DLlkvLfG/Wfxf7z4TGRSZUBz59EnjarV2GXABeA=;
+ b=kcFqSvWw1W77FScjAqh+wdOWdReQD8Y4we7M3J6IUP3SdpJn0FyJ/X9PBpMdsh1IDeLR6jK0D
+ Wy6ADJrF+zGAfpa1sHMWjI39Ea1GUmz8/Zfi+JkjjbmhL55S53X8tEm
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260218_012350_182438_9DEB7BFF 
-X-CRM114-Status: UNSURE (   8.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260218_012350_181753_E98ACAC6 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,29 +86,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds mmc for the Mediatek Genio boards mmc aliases in the
-board devicetrees that do not have them, so that mmc host controllers
-get enumerated in a consistent order.
-
-This series is based on linux-next next-20260217 tag.
+Add aliases for mmc nodes, so that the eMMC and SDCard host controllers
+get enumerated in a consistent order for the Mediatek Genio 1200-EVK
+board.
+Also, reorder serial0 so all aliases are sorted alphanumerically.
 
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
-Louis-Alexis Eyraud (3):
-      arm64: dts: mediatek: mt8395-genio-common: add mmc aliases
-      arm64: dts: mediatek: mt8395-radxa-nio-12l: add mmc aliases
-      arm64: dts: mediatek: mt8365-evk: add mmc aliases
-
- arch/arm64/boot/dts/mediatek/mt8365-evk.dts           | 4 +++-
  arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi | 4 +++-
- arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts | 4 +++-
- 3 files changed, 9 insertions(+), 3 deletions(-)
----
-base-commit: 5295425d4409ca3afec37f78306e09b2e9e92e7a
-change-id: 20260218-mtk-genio-mmc-aliases-ec9a598b9b9f
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Best regards,
+diff --git a/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
+index d849af4d36134df6a7b9f7967efd0db13c372d7a..62c336e215009e03cf9aef9aa099228aba5918cc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi
+@@ -18,8 +18,10 @@
+ 
+ / {
+ 	aliases {
+-		serial0 = &uart0;
+ 		ethernet0 = &eth;
++		mmc0 = &mmc0;
++		mmc1 = &mmc1;
++		serial0 = &uart0;
+ 	};
+ 
+ 	chosen {
+
 -- 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+2.53.0
 
 
