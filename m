@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74F04E9A04D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACD6FE9A02C
 	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Feb 2026 00:40:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,51 +12,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IXfVeHyX+vnFiRwnw/g9U5y3U00iL+2V2iXWuqTDgPw=; b=flOPN+L3gP0/pkTxieszVgwUT2
-	XNmLpjm5UZgtTrLH+zOK8waQa9VhS/woKzlTz8pB++zvor/yR7qRJCd8l1vBFZwYEMpavDCjV+YBo
-	ZEIxBMnl8B7pAr+iQGNYh++aFgU3uw7v2Rlted4OBT0bN8tF1RVHVliscT1nv3KFxoPFfvSWEsb7+
-	WrHJM2IHsn9RMzlT55IIf4Nhl5sT3xBwhe0pOq0jz5JfW4FqOoARdo/ZpLCyFnDVKDZqzvnU6e+P8
-	tKP3K5rPWgAjKdNly60dnjg41gsqlpgDRYQ5lCg4JRdLx6MNZDwc5ZK26Qn7zUJAdA3MWK4KfETiu
-	DL0jBWxw==;
+	bh=4z7lJJUQMglrP+sakMJrEsjC5MSnfldpiVMijPhZKlI=; b=UhOhwWxarprT8S1oxbAvMVueD8
+	p4/XG2J+Edy0YWILkLg6XSeWtItDQhT1aJjpnnWZO242iMEThgUNtEvPvZoELgao35ooOMMB++a1d
+	o+WxyFPqg4hOItaGUoHryr0Y/WhbktwsOWbyymC0W8Q03VfuMksVc6EgwA5w/CreqE6dTd2b4WY4i
+	0THBMBBrb3W9JYsVFyPpi5PvIZlIrIOrdXUzDw99oxP5wZ5pSXukoEYPMw1sv9MwbdIvjtUvEzhHp
+	dDpyx1Et0ars8iilE97sQ80kaT4yxIgZOO/WhhwcLkKGdJwHitSgU7dz1xw9q0ARNwhH8L2a9+e6o
+	0MXc4MlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vss5j-0000000Aeg8-1uAn;
+	id 1vss5j-0000000AegT-38n3;
 	Thu, 19 Feb 2026 00:40:27 +0000
-Received: from mail-oa1-f41.google.com ([209.85.160.41])
+Received: from mail-oa1-f44.google.com ([209.85.160.44])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vss5f-0000000Aed7-1DLv
+	id 1vss5f-0000000AeeA-18sP
 	for linux-mediatek@lists.infradead.org;
 	Thu, 19 Feb 2026 00:40:26 +0000
-Received: by mail-oa1-f41.google.com with SMTP id 586e51a60fabf-40f1a1f77a6so244585fac.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Feb 2026 16:40:22 -0800 (PST)
+Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-4043b909ed4so291687fac.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Feb 2026 16:40:23 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771461621; x=1772066421;
+        d=1e100.net; s=20230601; t=1771461622; x=1772066422;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=IXfVeHyX+vnFiRwnw/g9U5y3U00iL+2V2iXWuqTDgPw=;
-        b=fLGxk2j4GqOwXhvAbhH5+ZLNI3qvxnpSZ0Ub6eMqL1X0d66yZZDzX91p0CSx9BOcsk
-         3yQNGzzngov+YoiyMWkxJyikU70q+nhnvaGqAgyeIq6FHdf9337PYtJ9xReztoC2ughW
-         8wJydT3hDiuPTmyUiRl7hjhoM/YYT99nKQDrGU7VPunEos77HONFvP16TUwdOfPhEvXP
-         kVVzshP6ztqLYIbm0UUzGEP8WONeJ6d6k/qK/alr2U9Hc7ZIINCAWvMkTiOND5wVemGj
-         XQGW1dzgpOn955yfD8Z8Z2QCndkwqS9CHatpqiStKRxs2zoM75DXJ7CLpUZM0doY5K51
-         Dc7A==
-X-Forwarded-Encrypted: i=1; AJvYcCXG4NUyhSlAlr567XO1zgyGFFn0seZLWsup8J1KEZMHmRyR3x4tPdbLXCVhEAzR6B+kB93kf4PYMMdL80sLaQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx00Ud2dz6gsup1RKMXKl72ucuR3POc6i/dKE9LLOnKZl2Gbfnp
-	+eVg7O/17ZhCqNvcdyb56F2aWHpObfxep+wL6rbbilf6Fg/ZWhe2deoi
-X-Gm-Gg: AZuq6aJDEfUD1Bl22mw3JSAepVMnDa7vUKXMn4OFySpLzqO7mB6nQt0o8u5Lv4Rk/jQ
-	ag45rSdxtYc5+ZnFXa3udJBAikZEbCJwtqBUHQ1EE6G/SEd9jYDoLaBm3g5NOsDsxEP0PKVbL0g
-	6U1hOKGuMNpDGD2DBZrgJLs3yYZRWYXMnuP0DiD+v1vc5TljfmkdS27QLf6eUjAjFHEvKLXsBXN
-	GndzK9e76Rkv0Xcgx3IsChk6D24EXNKn1+iGnJv6J/JNPpohesCXCropMawQxxziOnNM2ZjPyc+
-	JbDQRaG8w6GEJVwUvXx2Bd880f3Gy1bUxmm8ufkd7tZ5RFMYu7iAwS928B+po5xIY0sCyN6Kybm
-	MnuIOpRC8TaQMbSHKXAqn2cY1gEhNerFoFU+TcW42FTIjqxKtSvpPi/4MY+ZupLJVdkq4CdsUAQ
-	qRe+FKCqKZx4q4r0NoODV/pZXZHnAMIEPT+LhLL+xWkr6b+Dg=
-X-Received: by 2002:a05:6870:1741:b0:409:7fab:e3fe with SMTP id 586e51a60fabf-4153a148ad4mr615569fac.50.1771461620588;
-        Wed, 18 Feb 2026 16:40:20 -0800 (PST)
+        bh=4z7lJJUQMglrP+sakMJrEsjC5MSnfldpiVMijPhZKlI=;
+        b=WL2UJ5Su5/fSobBqtBGqINrD8vpdH9KItnSjOyBjDL8dHYLEhaQvsaHotwLXYXaF2r
+         vdP3qhyvYzBOIQlyVOgvPrNBkq1xss5KtEax2sY/VrlTXV7Xj7+0eGqiOUra/eEsXeXs
+         AOvuODHLrVeJpi5feCX5DHV3Aa+oWcYcaHx9ShaSV1mezQ96GpqWtal5ZATawg/5E2In
+         xF84rI3DaL8FZj9m9BnFNcpKY4KPjV55CzgE+ZZaJFMt6UGRvy2hoZ2ukOogDSvrZL1f
+         WbOrBJ3YWMLjkBRq4MffdVZ7kby5qxJpG3tzp45vMy8c9E/n6eoDj5n4M2ps/iB6AjkP
+         IrmQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVc7XzOUfMkEXyKNeqWK42HjifRZ6oW+QvgKe6MT9mVJ9KTPs5FlCode6mhNzvbk7IrUAoYspwHm0ZllgTe5A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzFFfBlf8/uP8ShgGAiJJeDbULEyHsWQX+uZqnwD1hhC1eLCvda
+	ZxLDOjQ3vUGmWPrIdd7f5ApDg59vLxp2N5lMS+mqK376wUOR7Hb4ftQK
+X-Gm-Gg: AZuq6aLPQRwlm8FMO7lymT27kR9tNBbRsBXQ70kezcKvDsv25PNDtZBJt3c7LAvaEez
+	B+ctd3dm76g81NfGhXzEzVDQT9ZH40UfYk4SSa+b9pBOnGCnbWtot3oe8T37LfnhVIlWD032XOL
+	oY0ku9XodSluvyrUMdDio22fnKBRBr3lIst2sTvqh5X/QRsz4Eve2546gJKpW35O+WrrJF1qdYW
+	OISak4U9qYoNFfkL0L3j2iTCju1fWKDSr3oEUDyTHVJGeZ4PI6a44MKg567DA7m/iH6oKwwl/ZR
+	bQCYuN0y6nljFZce0YWNeafg2raQlc3pDIDV2LhcPA1Zvapir3wPjIjFNTHKH77Qmovi6c/MA6P
+	oHZWqTRJYRHrCBWa5ZFkH5xMF/0wvTC3MoRi9Ytiw7oP/w3mPZS8iYehB6Iyy7iVFOYtkay+IUW
+	+WKdCRxLAYXQYNJbeuF8ctUkifR5GOLEbtZrsvuMgYFapMtl8=
+X-Received: by 2002:a05:6870:1405:b0:40e:9550:3242 with SMTP id 586e51a60fabf-40eeea800famr11337612fac.16.1771461622267;
+        Wed, 18 Feb 2026 16:40:22 -0800 (PST)
 Received: from sean-HP-EliteBook-830-G6.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-40eaee45d12sm23477659fac.1.2026.02.18.16.40.19
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-40eaee45d12sm23477659fac.1.2026.02.18.16.40.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Feb 2026 16:40:19 -0800 (PST)
+        Wed, 18 Feb 2026 16:40:21 -0800 (PST)
 From: sean.wang@kernel.org
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
@@ -64,18 +64,17 @@ Cc: linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Sean Wang <sean.wang@mediatek.com>,
 	Xiong Huang <xiong.huang@mediatek.com>
-Subject: [PATCH 05/11] wifi: mt76: connac: mark MT7902 as hw txp devices
-Date: Wed, 18 Feb 2026 18:40:01 -0600
-Message-ID: <20260219004007.19733-5-sean.wang@kernel.org>
+Subject: [PATCH 06/11] wifi: mt76: mt792x: add PSE handling barrier for the large MCU cmd
+Date: Wed, 18 Feb 2026 18:40:02 -0600
+Message-ID: <20260219004007.19733-6-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260219004007.19733-1-sean.wang@kernel.org>
 References: <20260219004007.19733-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260218_164023_327732_0748470F 
-X-CRM114-Status: UNSURE (   8.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260218_164023_317175_AC1AFE7B 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,30 +91,56 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Add MT7902 to is_mt76_fw_txp() so it follows the legacy TX descriptor
-path like the other connac2 chips that return false.
+Add a dummy register read in mt76_connac_mcu_rate_txpower_band() to act as
+a PSE barrier. This would release PSE pages and prevents buffer underflow
+issues when handling MCU commands with larger payloads without the response
+in mt76_connac_mcu_set_rate_txpower().
 
-This is a prerequisite patch before enabling MT7902 pcie support.
+This is a prerequisite patch before enabling MT7902 PCIe and SDIO support.
 
 Co-developed-by: Xiong Huang <xiong.huang@mediatek.com>
 Signed-off-by: Xiong Huang <xiong.huang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt76_connac.h | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 4 ++++
+ drivers/net/wireless/mediatek/mt76/mt792x_regs.h     | 2 ++
+ 2 files changed, 6 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-index 02bea67d37c3..d868bb7c7ab8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-@@ -271,6 +271,7 @@ static inline bool is_mt76_fw_txp(struct mt76_dev *dev)
- 	case 0x7961:
- 	case 0x7920:
- 	case 0x7922:
-+	case 0x7902:
- 	case 0x7925:
- 	case 0x7663:
- 	case 0x7622:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index d7fbf3454bb8..89bd52ea8bf7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -4,6 +4,7 @@
+ #include <linux/firmware.h>
+ #include "mt76_connac2_mac.h"
+ #include "mt76_connac_mcu.h"
++#include "mt792x_regs.h"
+ 
+ int mt76_connac_mcu_start_firmware(struct mt76_dev *dev, u32 addr, u32 option)
+ {
+@@ -2246,6 +2247,9 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
+ 					    false);
+ 		if (err < 0)
+ 			goto out;
++
++		/* read a CR to avoid PSE buffer underflow */
++		mt76_connac_mcu_reg_rr(dev, MT_PSE_BASE);
+ 	}
+ 
+ out:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
+index acf627aed609..7ddde9286861 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
+@@ -25,6 +25,8 @@
+ #define MT_PLE_AC_QEMPTY(_n)		MT_PLE(0x500 + 0x40 * (_n))
+ #define MT_PLE_AMSDU_PACK_MSDU_CNT(n)	MT_PLE(0x10e0 + ((n) << 2))
+ 
++#define MT_PSE_BASE			0x820c8000
++
+ /* TMAC: band 0(0x21000), band 1(0xa1000) */
+ #define MT_WF_TMAC_BASE(_band)		((_band) ? 0x820f4000 : 0x820e4000)
+ #define MT_WF_TMAC(_band, ofs)		(MT_WF_TMAC_BASE(_band) + (ofs))
 -- 
 2.43.0
 
