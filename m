@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40651C531E8
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 596C9C531EA
 	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Feb 2026 22:56:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jKYUgE4Lj5YWYTlIcNqqLcI1EoAo5/fpI79A2agQr2o=; b=OZznEZdV4G7Qzrh7V1gf7FwHr4
-	BPQJi/Lv+m2T6WADM/yycCmCSwHRrhd5Z4/xUgsrpQWgdnhM94UmQAW2e5OcXtGuhTyzfPpMjgjHG
-	rDCD4IYjmoeuoXucpBKYvxK8/zuAP4BHnmQtzVZoGxucDbzlZK9pShMXizs+IAAlyXL39ArWEyNma
-	VhpKp37NI6AzKSZGnGt/K9cTr2y4j0uA5sAJLDlUbZzJ5epauk439kHyJaWAeu4jbzjcK98a2cJ2K
-	faLywYvrDRJSROOPkcrFeocdU0hl/+m45RcYoWvc67SQVe5u42GLSenmqaZh/0FLQaUcCNE7umqrg
-	Nb06cYVA==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WfGnMtYSvSKtoJnZqrv9UGQYGmLqGwp6t5dpvCm2nwQ=; b=Wkw2WB40g89jK4
+	piBt0OiTNbxSGXGuiR86Ec8h7dEnCMkK7d88n9D0GtCxB8okTjrtEhP9hJXBn9ODNL9v1fb8d6Dg0
+	rUyRYR0UMqkVfIGagjwM797/uCjd5ya+qK4yFxlvnlTb9S7yu7gFLNdvA4wK7XgMrTAI8pci+egsz
+	/szze9CgfxYh8GKFdDL5wtiM3I99lPGUpMvfTIlHm6ixw/AWRwRPfQKL0X68aZbov0vvUwn+iUhz7
+	it38SEvP7YGE45xCtvfAxbuE/7c0emy2fKyTXBgwFh+oVhtSCUrT/D1dI9wWw4SA26I4p7jyj37wi
+	dUFqroyz89K2mclMyt/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtCwD-0000000CES0-0SJw;
-	Thu, 19 Feb 2026 22:56:01 +0000
-Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
+	id 1vtCwC-0000000CEQn-2Kgq;
+	Thu, 19 Feb 2026 22:56:00 +0000
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtCw9-0000000CEJL-1evV
+	id 1vtCw7-0000000CEHI-284t
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Feb 2026 22:55:59 +0000
-Received: by mail-ot1-x330.google.com with SMTP id 46e09a7af769-7d4cb7e10efso1304388a34.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Feb 2026 14:55:57 -0800 (PST)
+	Thu, 19 Feb 2026 22:55:58 +0000
+Received: by mail-ot1-x332.google.com with SMTP id 46e09a7af769-7d18d0e6d71so990351a34.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Feb 2026 14:55:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1771541756; x=1772146556; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=jKYUgE4Lj5YWYTlIcNqqLcI1EoAo5/fpI79A2agQr2o=;
-        b=P91RRIC2E5tcfanMjrMrK44RqdNqk+CSW5XNuz98iR0z+hRw4/6MvOvjktGQWxawbQ
-         Wg7PxvMmrKj1arvG2P1APJxr/jxttQhU/uAjvzywSE1iw6mDwUW0MpHfCdJqnsdxKi6B
-         bGbX5hwwWm6gqX62+GqbJQsbhta0SYHFnAXIUmP6SF/R1li15b9bt6wiNyYElmn0+QiO
-         ikWBQvLWS08tDen8UwlNUWqthXDX565r2uA3Xa4Utwo0XimHt+DXV5G+Um1PFxUa9lkX
-         Bj+xku5elqB7lFabfW33m8czBjw/tzbCOmwTNy+IC2CTg3utiLawJ1IczN37rWMAuCPU
-         9NLg==
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1771541754; x=1772146554; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=WfGnMtYSvSKtoJnZqrv9UGQYGmLqGwp6t5dpvCm2nwQ=;
+        b=P+irXaP+sFF9ev5+IDdHI/cqcOzlRWAk4LhHYrLfQ3dOSNvXRDUDVxOzEWaC+i446G
+         htDDP3Tf+JZEXITGx7zXqUZ46NmTrYHdKNVgF8y8lR44znzGVh4mPZMFxOhxOFX7qoxW
+         rBW6/B3KHCt5t/J2HZ+CmObkH+qMPKBp5gGxDmA5xRgCdmnvQxnti1yeqKayO0jW+x+s
+         FUKM2lljACEM92eXMPf5Bk4w2RgUkbm4s9FiZ0d1BtopIGE7gBGLWFqYb2+tkZz0PQ7E
+         8mM78+hEa4k7RWGFG3BdUr+IgajdLfxkTr3B85MsvlE9yLFHcFotn39h+vb0mwPLpsjI
+         OsDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771541756; x=1772146556;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=jKYUgE4Lj5YWYTlIcNqqLcI1EoAo5/fpI79A2agQr2o=;
-        b=qxwzSTEmMwYl7AGJ8JojOulUI+81rBeeSiXX+RSuXDCwyM5S91Mp64avjnlMzKUwU8
-         UPtUVMchTpjMY+9dd/Gz0BYXC2NBULFPN8eGgcFB2q7UKBYQ/FmAkB5MTDycE9FznaRB
-         exVy2h0mJElQ/m3KdsIfaRqB0kdTVqq8ksMy+twoPNeM9409rkdNdt90g2D1kc0RFW7G
-         jAy9Q2Z8OS61/sb4XwWVH1WKsJC0u5/1HMBT2HHS6BFDoE4XaxGbwzJDN7NlzdKkUEK8
-         0jbdY6epdAxoHgzNCBaFgCpzobeX8jzDTx44LvvXeWz1UqgwLD9TbKmF1HHhj6XTJEc3
-         J3yg==
-X-Forwarded-Encrypted: i=1; AJvYcCX1V2viz7qp/yaPdoqmn0Ie5a/i/EoszWWmca0xjzrAGtF7vzxygQQ+Ecw7V8EuQ36GNW6mVp5X1gBRV0n/cQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxQgcC0y8JTl//XAT2H4+YtnA3yE4RQf8Hw5IbsMRM3LmtxA8IB
-	WP1RXihRLLbOKEhTv647MX5Y2IhMUi+zNCF9i1ne1Nqgcs27Oeuy0WykXDkSC3TH7pk=
-X-Gm-Gg: AZuq6aLH1S9zqVLR+r0iL9wLCut9/L7qC4hxqLzypCTW0SSLLc/2cKlWPzrmdUMvx9U
-	ypUGos2sRLus/oUILfowk02OLiruwDDxrGoh/W9qbokf0RVEUVE3CP0omx8elr4KkgjX15xIwVh
-	pdr3HQ0gwE/U4Kdr+IGhTGaq7qvKTUhJvjE7d1i7KokrUCmBuTc+ElelPpvGrD+jNnjh4aCv4uq
-	/zP+ZNat7ZHu3WBUPtmpO3CoO+1H6VHPmLZFI959TeeuAzY6UDMtgP9yHa2UklOP/heamZuaHj+
-	qW/ofazLpNB5lZRZ7GK2AUU2DXiyKYETTYJiaYsDzlO3q9F/65+ZngEHm4fULE9Sm+6RP+NvhQG
-	Otw0YCnigXRrkgC5EtVSOZDoBgtIKgdTYwlCFmOveJfH3yN5ToNgjNy+wXVXvCqblAw8gbvxZ4k
-	S6I8tvVyFsWXBK4Bj/mLdeKgOpAw==
-X-Received: by 2002:a05:6830:2b23:b0:7c9:5bef:e9b with SMTP id 46e09a7af769-7d4d0a9a731mr11337634a34.3.1771541756215;
-        Thu, 19 Feb 2026 14:55:56 -0800 (PST)
+        d=1e100.net; s=20230601; t=1771541754; x=1772146554;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=WfGnMtYSvSKtoJnZqrv9UGQYGmLqGwp6t5dpvCm2nwQ=;
+        b=d85SKAeOxbpMG6D6n0OtxLbK1bTEYZPxlxj+LqLTPtfuAErJiHByanTLMKfm6uGwmS
+         KMyL6FZJWjyMwtOtPBzXIcBoA58c7q162mvw7a/z4j5iEWiUSvgdfd0xvsBbBibTOq/7
+         g9yVTBh9SnQmN+or3Dmg7gsLFrzEA+pZexkEINKXy8VkFmspy9xN81/3ten2nRVwQ9zz
+         5EefQF1rJEMe7QGqYlBcOUQ4sOSR4QPxFEMX2LgsrPfNVZZ/ZCihIC9mjDRwfaA1Xeaq
+         Z7JQ4W5FKoirvkgxjWllEDpvDv8H46JvaYGgw9qs7evMaZ/zpzdaKbf1OerCAa7BfPNX
+         2V9Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWomS62GpNBKZA5p8s6uO1Uwz75atd1xtXQwsVYWZuIyNG8QCELgVt7AKbc3PfKNzplbsEziLer6Y6XhmHTAg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxua+Cy+7dav4+8E5d0T8xw9rULmSuQUM8HpQQxIN4Jk2uP3HtQ
+	7P2LZWtXC1zvb6+VnSSp/FV+ehWXQgZf/3fUYhtlcv5U1nVgU1uZHaolAJQTnVJdn24=
+X-Gm-Gg: AZuq6aJ3uz3/62aZWPonKpJPbIsFraa/xYC3vNC85oYB01hrCsymEDJXATQHQllur95
+	+Eb1GuNiUUVMOcIsZlG6nWpJgkfXMUGK6S7gzXzfXDC7ZsVyLblCdF/31IWhG2iPlJgmIBxFA+D
+	G/G3NPCIiC7HTibYy3pg3+1iovraELbUIGSiD0HEucMOmMW1/FEFmNGawR14ccBiv2F3tmCEK/t
+	mpvuBOLLwfnbaVa9rFdOO77sxDR8m9foqoU7Qjer14xgUEP0+MD5M4CPqwjg1vdE6pH6r9Sb3cs
+	1fkfVEJ+sOoqOfOqnSIh6ydQXgMHw9jnSDVvOxHLbrZLCQ4FxIQagSvp6ugRGwJPQrlMrpiFJR5
+	PuX3CqX44Sn1QrDYbjLSbaWKglS//vIpOs6+L0KGOBFqEdA9A4vJt54jqPyZaWjl/i0dp8juD9O
+	K6ZXixyrGKLb5y8jWhYeiHmlmMDw==
+X-Received: by 2002:a05:6830:67f3:b0:7cf:f7c1:d9ac with SMTP id 46e09a7af769-7d4d0acc297mr12600516a34.9.1771541754355;
+        Thu, 19 Feb 2026 14:55:54 -0800 (PST)
 Received: from [127.0.1.1] ([2600:8803:e7e4:500:d4c1:bce:26a1:c903])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7d4a7720a95sm20565585a34.29.2026.02.19.14.55.55
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7d4a7720a95sm20565585a34.29.2026.02.19.14.55.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Feb 2026 14:55:55 -0800 (PST)
+        Thu, 19 Feb 2026 14:55:53 -0800 (PST)
 From: David Lechner <dlechner@baylibre.com>
-Date: Thu, 19 Feb 2026 16:55:30 -0600
-Subject: [PATCH 2/2] dt-bindings: regulator: mt6359: make regulator names
- unique
+Subject: [PATCH 0/2] arm64: dts: mediatek: mt6359: give regulators unique
+ names
+Date: Thu, 19 Feb 2026 16:55:28 -0600
+Message-Id: <20260219-mtk-mt6359-fix-regulator-names-v1-0-ee0fcebfe1d9@baylibre.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260219-mtk-mt6359-fix-regulator-names-v1-2-ee0fcebfe1d9@baylibre.com>
-References: <20260219-mtk-mt6359-fix-regulator-names-v1-0-ee0fcebfe1d9@baylibre.com>
-In-Reply-To: <20260219-mtk-mt6359-fix-regulator-names-v1-0-ee0fcebfe1d9@baylibre.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2NQQqDMBBFryKzdkAjpsSrFBchmaRDNZaJloJ4d
+ 4cu3uLB4/8TKglThak5QejLlbei0rcNhJcvmZCjOpjO2M70Dtf9rdhhdJj4h0L5WPy+CRa/UsV
+ A3sQYrHukAXTkI6TZ/+A5X9cNZXdb9XAAAAA=
+X-Change-ID: 20260219-mtk-mt6359-fix-regulator-names-cea2ddc697f3
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -89,20 +90,20 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  David Lechner <dlechner@baylibre.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1337; i=dlechner@baylibre.com;
- h=from:subject:message-id; bh=q5ubFzH4qgc7OuFNqgcrKZJjea7RWBN3Hi9vN43DLO4=;
- b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBpl5TzMYDxF2HX4rTA3UnTgVFDxUpAyCkM1Kg6Q
- /Pk2GoyLeWJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaZeU8wAKCRDCzCAB/wGP
- wBX4B/494HnG2O3/PxDWMUTl5U+mRUHVBFcrRCjPMQGllZGxZhl0cAExWCe/Riqh1c8ca7b6ksR
- O13CBTRTitM2swXkuwkkECCdVDc/WK2FwJMX9HYlAXourphfs+DFDrQAPcAa2EippXn/tQRsnhI
- MrL41gtfiROq8S5cQYJP5wu5ansEBfY5z/1iabqbsDaDNHfn3jOyUqunbQ0HXY6xxdTPzYCKRDx
- O3Ovcp4iVhPbzgPCtidoQ6joIT2IRTIs3A5GCtnG5j6s6Ul2zCJBGvTEFBVyV59LJWoJq2rk74y
- MGyj5pAs73pMtMSh+HHVuMJoVlPv22ngO/F3KJU6T3Te7LZO
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1054; i=dlechner@baylibre.com;
+ h=from:subject:message-id; bh=hJfG4u45vdCvSUtHigkyFONhukFUc6nMEAYruquPqJg=;
+ b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBpl5TlJcv80s/C/Okoq3TlYmeApRt7FhXmVQch/
+ AycgWxpsYeJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaZeU5QAKCRDCzCAB/wGP
+ wHH1B/9qHLMxyOde09UGuNhGJ6MzrXJAsPOna4RlNdG4C50Su876Rz/GwXwUTF0CJuuDACjekAV
+ rhgitrHiyMuaC2PWeIZIsG5XCwzAdy9iOzpV3Yl2DnpQtoP9APz8vCc64YeSl5zgs9ljCEtKGVw
+ w5l56Prt46rL8oLShOp5diD+BNQlQPvSKe+JwwT7MaZ9Zl2rspSDzvPTVst4pWw28ysshT4xvL+
+ rgCn6SMFnn8L7/a1gumT2tbdPVgCod8Q1zWgiBg063uQwi8UQitgQM0AE8siYN+kE0BABZn8AFU
+ nKPHGoyxCym8Bikoh9aePjwcvL+qTiicPPNYKwLWFTqCHibP
 X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
  fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260219_145557_452035_183F2DF0 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20260219_145555_803647_72F521AE 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,38 +118,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update the example devicetree with unique regulator names for all
-regulators. This reflects the same change made to the actual .dtsi file.
+While working on this regulator in U-Boot, I noticed that the regulator
+names were not unique. This is considered an error in U-Boot and we get
+the following error messages:
+
+mt6359_regulator ldo_vrfck_1: 'regulator-name' has nonunique value: 'vrfck
+mt6359_regulator ldo_vemc_1: 'regulator-name' has nonunique value: 'vemc
+
+To fix, we add the _1 suffix regulator-name devicetree property to match
+the same pattern seen in the node names.
 
 Signed-off-by: David Lechner <dlechner@baylibre.com>
 ---
+David Lechner (2):
+      arm64: dts: mediatek: mt6359: give regulators unique names
+      dt-bindings: regulator: mt6359: make regulator names unique
+
  Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt6359.dtsi                          | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+---
+base-commit: 44982d352c33767cd8d19f8044e7e1161a587ff7
+change-id: 20260219-mtk-mt6359-fix-regulator-names-cea2ddc697f3
 
-diff --git a/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-index d6b3b5a5c0b3..fe4ac9350ba0 100644
---- a/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-+++ b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-@@ -287,7 +287,7 @@ examples:
-           regulator-max-microvolt = <1700000>;
-         };
-         mt6359_vrfck_1_ldo_reg: ldo_vrfck_1 {
--          regulator-name = "vrfck";
-+          regulator-name = "vrfck_1";
-           regulator-min-microvolt = <1240000>;
-           regulator-max-microvolt = <1600000>;
-         };
-@@ -309,7 +309,7 @@ examples:
-           regulator-max-microvolt = <3300000>;
-         };
-         mt6359_vemc_1_ldo_reg: ldo_vemc_1 {
--          regulator-name = "vemc";
-+          regulator-name = "vemc_1";
-           regulator-min-microvolt = <2500000>;
-           regulator-max-microvolt = <3300000>;
-         };
-
+Best regards,
 -- 
-2.43.0
+David Lechner <dlechner@baylibre.com>
 
 
