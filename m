@@ -4,88 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E119E9A05F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Feb 2026 19:33:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8227C531BC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Feb 2026 19:42:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SWGz+B8eMT0H/TO7oSEQ8rrfEO9SmYPAxbyblFO9GZo=; b=H+vLZRHZgbWmUoWUQtpDu+ultW
-	PyZOOlH8k8HJ2UswFyG/h7WMoEelDydhQEnysZegT1PTrHWVIUD6bVgWXDcO4hav43qkT4gjbzr7Y
-	CzsAQ3L7OloJmfbuWIKTQulDsNV6lxk0EoM+ZYn+5ycnPXA6n0r2cOJTqhd2OY2gEE7fjzyeUWeZF
-	aMJWA1tZEgKZF8BUmEUtyaxHowZ5Ew2uNvFMyP0x+xzt3kH4xUezibO8bPhasGrMjTxDJ+Pe6E8OP
-	M3MXyiqJMdSt3D2L59FfKaBH9jhcVMtZdxddTw7HKEwAh4q1BlaecYHRyrKDLjNgKIeBFC3rdlpcN
-	jvZ82OeA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=17XK3meZ03iUdZqQRtoxoxHX9Zd+qrkGcSktTTzYFBM=; b=2sxn5D8QUPghHz
+	fgtlbc52R+st3kLiWMKjG/2+anpTr4jbKlrbyGjq94MPQD5/YFrICYz+JnRfjhzq6wzqGSKt93xxm
+	vLiNgvuYDZen/+GZx2uN4hhnIJuhZTV7MvfeL702Rd1uu1gFJV9YbB8+agQqYX2cgRmYIAMeuAk6J
+	VLhjxvNgRISpEKKmuDJPxcmEJjY1TSU178gD1XlmiY1EYgH7D8X62Trz33KRZwpkrxxOJrg6I0wAJ
+	4rmFHpAS6WmBZcRkxFfWCIr9d0/T62Wp0fbbt1Ox5/jGuEcYLNYQSWcoDTzy9dxB1vjpE10QC9ZLU
+	MD7oeGhAXFoBDY8oVWnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vt9lj-0000000BqqM-3r86;
-	Thu, 19 Feb 2026 19:32:59 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1vt9vM-0000000BrXE-3DBJ;
+	Thu, 19 Feb 2026 19:42:56 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vt9lh-0000000BqpY-2vPP
+	id 1vt9vJ-0000000BrVN-1dmw
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Feb 2026 19:32:58 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-4376acce52eso838933f8f.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Feb 2026 11:32:57 -0800 (PST)
+	Thu, 19 Feb 2026 19:42:55 +0000
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 61JBMIn43564475
+	for <linux-mediatek@lists.infradead.org>; Thu, 19 Feb 2026 19:42:52 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:message-id
+	:mime-version:subject:to; s=qcppdkim1; bh=17XK3meZ03iUdZqQRtoxox
+	HX9Zd+qrkGcSktTTzYFBM=; b=d/YoCMPy3dOPOftDx6PKyh5Y831zNqbl3bgSE5
+	tNQsbdMlSrX0VIEyb8wsG2NCoR5XgmamsqgheAxCxsgFtCOtIwvtQnWvAjhZZOWW
+	KOqhYOdZa1uc+j4vO4CzzHD0zhsqe6/Knu3CjsAinJ9mQYxt8rNq1cYm5lZecwfY
+	K3wIginPCaUvDsixSxFO4zHKzqF1hrIDgm5UiYBxiAI8r3uMJdCVXoHWLNQi/MM1
+	+iei5YtJSncVUWWdC4UWIv4/Aj1d0f53feS9bZIIofS0ta4vIqK7PHPMVfzKkaz1
+	S0xqLnF3p/0xM8vo+uo0i1OyLH/873tnxfhm5Jfg0xtjiNEA==
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com [209.85.214.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ce1k81hxs-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Thu, 19 Feb 2026 19:42:52 +0000 (GMT)
+Received: by mail-pl1-f200.google.com with SMTP id d9443c01a7336-2aaf2f3bef6so12697735ad.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Feb 2026 11:42:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1771529576; x=1772134376; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=SWGz+B8eMT0H/TO7oSEQ8rrfEO9SmYPAxbyblFO9GZo=;
-        b=HfHiurHNp0LBNH87s86davL7t/wJrVC219UI7kGorU7EQWQsoAJNsDyjb85O5WQ6wb
-         8uX472F0JGVvWxk2M9TCKc//TduJ2N6X/+5V6JloRjBXFgIsr8nqE5AC5UHp0OtuBNMv
-         p5c2QqzQT9P0V4+Be4cLmqbe97FtVJ0bbjB6MxIuWOCU+xVeX01Ekg08oXtuGaNEezTg
-         nBTCwuT2leNwu4t/I5fqMppMblVmMC9dF+eynremNEtVKTk4TYY/ml13phMtRL5bsBDT
-         zwxAH4EdUd8Q1VauOqXJaTvNEcPsYfcovivEjI6PKlBex9nZb4TrLaCdEsNi13jHBxbw
-         S3/Q==
+        d=oss.qualcomm.com; s=google; t=1771530171; x=1772134971; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=17XK3meZ03iUdZqQRtoxoxHX9Zd+qrkGcSktTTzYFBM=;
+        b=bx0LCqNwn5xTi/zEfWkXhSJKjtdBSukMz7K0/Fx9Rm08b3Pf5OIrstv5JPyFwoSosr
+         utxepMs1RqC5RlatGrKjaOH2R/GJYhpBmsDu/+JwE86UQzgbYirc296CLsWr4WAOivnr
+         ADxknlh7QIajEf36pTtc0tdhvtur3qXOP/PRqDjERM3z9qPLeP7/c/dZ1d2Tik3fLE+J
+         72+FWEwz9VcNvfgKjdPNn60aRLR4pkGSGEcwikMIe26nkC+AU0D5YiYZIFce2FAMHbQG
+         8mBjtOrM9SAIZfLLkRo9JZ7mhXXA8GKGmAbLpRuIDASP2+VjPKK9lc0tuwTFDwQYf5oD
+         HU5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771529576; x=1772134376;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20230601; t=1771530171; x=1772134971;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=SWGz+B8eMT0H/TO7oSEQ8rrfEO9SmYPAxbyblFO9GZo=;
-        b=QkrLZ+Zq45ECK4cBwjuRO/TDEIwYKfoJebIfkWCV7S28/OCUXiNZp+KDWJqgarDr2m
-         IzpTz3Vv0kj8R7PS/KBo9X69Iw0+tXhjTKxAQyTuRz48INzgCicpMRkXbIy2P7JcqTtX
-         Jpa8Q9SFVmX8LLfivqyMSYJkyM0l8jdPrMoI5nQqqUP4l3PDTkf/fL43rzjW67fcjDFi
-         YWE3USVfilgupohaHieYfH6ZNmY5P1eKSTaxdAbJJaN5e9e9TzDJSyd2kHPVIgntXkZ/
-         kI8eOYQeuGWHEd3zI+w/eU0DTtBJ8/ispJWBBw22SNOcY1Zh84WF211Ia7rcfMe5JYPq
-         0+Vg==
-X-Forwarded-Encrypted: i=1; AJvYcCVQLWBMHsSjIwMDd+39basLl/twV5Y8wYy4Yj7PH7AlgNiyK1HWDhjXb1+mZstHMS+6/iKt1XrlSu8qqvT3Vw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx2seo0ehkQ7mFOUBpVo8JAiFCxA5ttUdpMwim25j8hChE9UbMT
-	pnkYZ8YsarpHO+rXualFiebqGD1iU0Kn4lYW2fRKLsvwpVvvJfLq27I=
-X-Gm-Gg: AZuq6aLMihWoiQ5/o3Q7uKaCV0BeKnhX7nzt2Yg1vIHlVJgYTd+JRfnToPXCXl/T3sF
-	CgJiZ83KeOZOldLT35VdGX1L/ljBcD666BNO5Ag3LJIOMkPFe5gX1reTOm7NINJwPChBl8Ci6uX
-	AGOebpXLSxpUYrBj3dyKsHr554ktVwGL+od6t6yb24Zc7Us+GIrQ/rzazOU74578cRcqmbjOeLD
-	dqt2HDDZ+4eOFVSj5pKREPEYzPG1rvf6Equ8qxNuzFzF28MeqLejVZD7rNVrtr9Gq7LN5dM204p
-	80nCVBQLQUs4PRlKLfZVKEkIoDJWf+b7uwYjDKqJg7NLcB+L9xatVW9UFKcmxO58rWWOEpuRLis
-	6y+cvsIzogsR15CZYiYI60EoSiiA9jo+fgGsYswHRKmbksYy0mGCV6Rbjaf+1FCAmbaKU20KEA3
-	onet6G6r79F603ykgOjqrCTF9VBC/FmLm3Q0nU1nvu+0NQyCRw40b5d1z8TrckXy85d/VahGkiD
-	rY=
-X-Received: by 2002:a5d:5d8a:0:b0:437:6c07:998f with SMTP id ffacd0b85a97d-43958e4b8e3mr12040212f8f.45.1771529575675;
-        Thu, 19 Feb 2026 11:32:55 -0800 (PST)
-Received: from archlinux.v.cablecom.net (77-56-128-136.dclient.hispeed.ch. [77.56.128.136])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43796ac800esm53981412f8f.27.2026.02.19.11.32.54
+        bh=17XK3meZ03iUdZqQRtoxoxHX9Zd+qrkGcSktTTzYFBM=;
+        b=dGRgiJa20Bp3qZAWma7hXyQP72U8EGqysGgLUBMYsHbSin+/BWVgPKo826S56UuMMV
+         hfop3glteXrIEAap9AINbPN2if62WTc0Z7lt6iZk20tbPMcqRU0wp/Eyprv+aulrUFTT
+         yP3UftAlfosfItiR9N+WmaK7iF0UujNotffRhvEQMM65xBF2qOw2F9CyO17x8Lhcs/Qb
+         oJt6E/1pr9RH0v7Wg9mmYquelMpPZLQT9yxAuGtq63aS39vp1m3vxRYD7wbErFFTq6cg
+         l8WSsfNYdSwxzf784J8rMWSwQhW6cvusxiE+JpjhJswRA0Pa4nVgixIdPYLoype17U6N
+         NB5w==
+X-Forwarded-Encrypted: i=1; AJvYcCVfGMty8XrkarmKAoqoRJkrqaGYUDMqZuMcIsvbEdrllQo92R9kw3P3dPm0fw/k6EFrqZjcUrgr4NSjFhcG9w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyFD8ovO41DxEgwECEX+8wbLh/y2Q9qFVv5G9F2UaWqj26/M8Jm
+	45JUuwrA8F+3VAV2xYb/wTaH+VNAWR+ABS0dHw3TVdv0h/lNPuqfKKJR55dH37hTUVa5ykMN1Q7
+	tuzbY63HeaGB+bPuUETxRv/TSHrbeg4/thc64fSmMEhVQlDexhZ3SZy/EYLF8b6lV4LX6ErH/C4
+	g=
+X-Gm-Gg: AZuq6aLp9ijCI20uoRV78ARmyG4y4WV/F5A4OgNyD0VKT4kGQi45R0SUCBBAM2ZJtNv
+	rzK1zvMYJJQT0IVnM0fKs7o8+MxCbW4/QhGpx4thgA2eVOjckYBIXp5WKdejkLfh2UYMoIntWzl
+	gcknoaCln+rOVsxRL2ysagzO4iSl7yHedMoqTxfQYoEGLlzhhJe25ocH2b0CxBkv0JfVEPloe2h
+	yWD/UhlGnsflIPO6jddXAZjbzYDlmuqYc8OYpkGXuBoDAibeF/4C/RkobtVm0tc6MKsadqoOaBu
+	kC8dmsdtz1ighe8ZcpURDcxRB+rWNG5L/CGCMX0JLd13nllc8USrpMwR8GMu+NL6VZXo4vJ36Y8
+	KTtrd5/x+ID46r9raCHoaS4UloSHCTHAzoZSknvbq4k/1xLzreOS5dtNXaUKZM3ZZOXj/ZCBhXn
+	tdhU8BtF9gVS5FkLADStqiRxMmbgGLBk7l7vT8OHw=
+X-Received: by 2002:a17:902:ce87:b0:2a9:5f11:3a26 with SMTP id d9443c01a7336-2ad1740bcaamr190724075ad.7.1771530171162;
+        Thu, 19 Feb 2026 11:42:51 -0800 (PST)
+X-Received: by 2002:a17:902:ce87:b0:2a9:5f11:3a26 with SMTP id d9443c01a7336-2ad1740bcaamr190723835ad.7.1771530170705;
+        Thu, 19 Feb 2026 11:42:50 -0800 (PST)
+Received: from hu-rajkbhag-blr.qualcomm.com (blr-bdr-fw-01_GlobalNAT_AllZones-Outside.qualcomm.com. [103.229.18.19])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ad1a712ed9sm264404225ad.20.2026.02.19.11.42.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Feb 2026 11:32:55 -0800 (PST)
-From: Dylan Eray <dylan.eray6@gmail.com>
-To: linux-bluetooth@vger.kernel.org
-Cc: luiz.dentz@gmail.com,
-	sean.wang@mediatek.com,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	pmenzel@molgen.mpg.de,
-	Dylan Eray <dylan.eray6@gmail.com>
-Subject: [PATCH v2] Bluetooth: btusb: Add Lite-On 04ca:3807 for MediaTek MT7921
-Date: Thu, 19 Feb 2026 20:32:09 +0100
-Message-ID: <20260219193209.69937-1-dylan.eray6@gmail.com>
-X-Mailer: git-send-email 2.53.0
+        Thu, 19 Feb 2026 11:42:50 -0800 (PST)
+From: Raj Kumar Bhagat <raj.bhagat@oss.qualcomm.com>
+Subject: [PATCH wireless-next 0/2] wifi: mac80211: fetch FILS and
+ unsolicited probe response templates by link ID
+Date: Fri, 20 Feb 2026 01:12:40 +0530
+Message-Id: <20260220-fils-prob-by-link-v1-0-a2746a853f75@oss.qualcomm.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIALBnl2kC/x3MQQqDMBBG4avIrDuQBLHgVcRFU/+0gyHKTKkW8
+ e6GLr/FewcZVGDUNwcpvmKylAp/a+j5fpQXWKZqCi50LgTHSbLxqkvk+OMsZWYg+XvX+jb5SLV
+ bFUn2/3OgTRQZZlywf2g8zwuoT+8IcgAAAA==
+X-Change-ID: 20260220-fils-prob-by-link-eef176414f1b
+To: Jeff Johnson <jjohnson@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+        Lorenzo Bianconi <lorenzo@kernel.org>,
+        Ryder Lee <ryder.lee@mediatek.com>,
+        Shayne Chen <shayne.chen@mediatek.com>,
+        Sean Wang <sean.wang@mediatek.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Johannes Berg <johannes@sipsolutions.net>
+Cc: linux-wireless@vger.kernel.org, ath11k@lists.infradead.org,
+        linux-kernel@vger.kernel.org, ath12k@lists.infradead.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org,
+        Sriram R <quic_srirrama@quicinc.com>,
+        Raj Kumar Bhagat <raj.bhagat@oss.qualcomm.com>
+X-Mailer: b4 0.14.3
+X-Proofpoint-GUID: GgwBf3kEqeq33RzBL3hGB14LtszelX9W
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjE5MDE3OSBTYWx0ZWRfX1AAokQko+0zx
+ d8vQbSWdf0Zbg1udSELwI9LgAql/nvr4V4fRbtG+/9DvjIXAXNem4Pw4q8l1LbWC7JPO2a9lZBP
+ NO4VrqtddqvoQoG0y34jEKy+51leDAJ4tDCKGoermE2EQgGrCae5RH0+btRfCrq8jhsUFTyIGh/
+ 9Z0P+oI1FJarZbr8tPO102cd22RbqH90mmFAkZVgNXgN1iIU4hnBrTGyZ1CHHgRdj9aeKQeWQDG
+ PKGpXFY4SnEJ7rTSx4CqZtGdIaqHOYd6ETTHjvw+n/I/nckb8pZjFNzU9uzlY97lLtI0NmkZGwo
+ ouU6gdqMW6ay2rXA0ysoJ4go+KzWMP+h29+2YSzbd2oIyXgUeDiEzTkbaZSOJ9Cpx4msr8QOkBu
+ sL24HUYC3ywZxBdQ/protD2IDW8Z5AlBJFqqLo7HW7NgbxYK62MKPv2F0clDI8lPRdIoKpG6FBZ
+ LmJUCDNgPBY0eW0GTaA==
+X-Authority-Analysis: v=2.4 cv=cdrfb3DM c=1 sm=1 tr=0 ts=699767bc cx=c_pps
+ a=IZJwPbhc+fLeJZngyXXI0A==:117 a=Ou0eQOY4+eZoSc0qltEV5Q==:17
+ a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22
+ a=wJPCH--AHzS56o4of04A:9 a=QEXdDO2ut3YA:10 a=uG9DUKGECoFWVXl0Dc02:22
+X-Proofpoint-ORIG-GUID: GgwBf3kEqeq33RzBL3hGB14LtszelX9W
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-02-19_04,2026-02-19_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 bulkscore=0 adultscore=0 priorityscore=1501 phishscore=0
+ impostorscore=0 lowpriorityscore=0 suspectscore=0 malwarescore=0
+ clxscore=1011 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2602190179
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260219_113257_753815_67C55952 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20260219_114253_546870_4171B52F 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,49 +156,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add USB device ID (04ca:3807) for a Lite-On Wireless_Device containing
-a MediaTek MT7921 (MT7920) Bluetooth chipset found in Acer laptops.
+Currently, the FILS discovery and unsolicited probe response templates
+are always fetched from the default link of a virtual interface in both
+Multi-Link Operation (MLO) and non-MLO cases. However, in the MLO case
+there is a need to fetch these templates from a specific link instead of
+the default link.
 
-Without this entry, btusb binds via the generic USB class-based wildcard
-match but never sets the BTUSB_MEDIATEK flag. This means btmtk never
-triggers firmware loading, and the driver sends a raw HCI Reset that
-the uninitialized chip cannot respond to, resulting in:
+Hence, add support for fetching these templates based on the link ID from
+the corresponding link data.
 
-  Bluetooth: hci0: Opcode 0x0c03 failed: -110
-
-The information in /sys/kernel/debug/usb/devices about the Bluetooth
-device is listed as the below:
-
-T:  Bus=03 Lev=01 Prnt=01 Port=09 Cnt=01 Dev#=5 Spd=480 MxCh=0
-P:  Vendor=04ca ProdID=3807 Rev=1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:  #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-I:  If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-I:  If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-I:  If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-Signed-off-by: Dylan Eray <dylan.eray6@gmail.com>
 ---
- drivers/bluetooth/btusb.c | 2 ++
- 1 file changed, 2 insertions(+)
+Sriram R (2):
+      wifi: mac80211: fetch FILS discovery template by link ID
+      wifi: mac80211: fetch unsolicited probe response template by link ID
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index fcec8e5..fd637cf 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -705,6 +705,8 @@ static const struct usb_device_id quirks_table[] = {
- 						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x04ca, 0x3804), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x04ca, 0x3807), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x04ca, 0x38e4), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x13d3, 0x3568), .driver_info = BTUSB_MEDIATEK |
--- 
-2.53.0
+ drivers/net/wireless/ath/ath11k/mac.c           |  4 +--
+ drivers/net/wireless/ath/ath12k/mac.c           |  6 ++--
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c |  4 +--
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c |  6 ++--
+ include/net/mac80211.h                          |  8 +++--
+ net/mac80211/tx.c                               | 40 ++++++++++++++++---------
+ 6 files changed, 44 insertions(+), 24 deletions(-)
+---
+base-commit: 37a93dd5c49b5fda807fd204edf2547c3493319c
+change-id: 20260220-fils-prob-by-link-eef176414f1b
 
 
