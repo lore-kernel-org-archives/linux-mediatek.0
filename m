@@ -4,102 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B431C531D1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Feb 2026 21:27:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40651C531E8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Feb 2026 22:56:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UA1VERvz5151jt2KdPat2DgK+V02UUk6l4sZ04x/A1s=; b=rqG5C5n60UvuQKVQb4qzEFlx4u
-	ldtRyKIYQBqzy08+ZC16dHgQQjGZQskMV33MiQDEiw75ThYwgaQGp9FGFspKibIf9WByYOMr/I7VC
-	UZrwuQtIQxP4lC9AiCH3k/A/aVZJ6lhVcAUpe/iuoviErIMv+P8q0EmkheEPAoypAMEsMU7FSRC21
-	FoblCIieKzbWK/Zn9aRHU/iRhmmIeXpYZGvkkEbgr3leBGENqjP/sRm3+R9G9nhdVcX4soOquoAms
-	VTnNshHNvDYM2Ecu3y4xwc2lt7nz/GkRzDgLY77bWEvwtqzNxgyvpha6ukGNBePRZscJ7foe0KENJ
-	dKVFUrlw==;
+	bh=jKYUgE4Lj5YWYTlIcNqqLcI1EoAo5/fpI79A2agQr2o=; b=OZznEZdV4G7Qzrh7V1gf7FwHr4
+	BPQJi/Lv+m2T6WADM/yycCmCSwHRrhd5Z4/xUgsrpQWgdnhM94UmQAW2e5OcXtGuhTyzfPpMjgjHG
+	rDCD4IYjmoeuoXucpBKYvxK8/zuAP4BHnmQtzVZoGxucDbzlZK9pShMXizs+IAAlyXL39ArWEyNma
+	VhpKp37NI6AzKSZGnGt/K9cTr2y4j0uA5sAJLDlUbZzJ5epauk439kHyJaWAeu4jbzjcK98a2cJ2K
+	faLywYvrDRJSROOPkcrFeocdU0hl/+m45RcYoWvc67SQVe5u42GLSenmqaZh/0FLQaUcCNE7umqrg
+	Nb06cYVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtBYZ-0000000C62N-0dwV;
-	Thu, 19 Feb 2026 21:27:31 +0000
-Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
+	id 1vtCwD-0000000CES0-0SJw;
+	Thu, 19 Feb 2026 22:56:01 +0000
+Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtBYV-0000000C61U-2HFw
+	id 1vtCw9-0000000CEJL-1evV
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Feb 2026 21:27:29 +0000
-Received: by mail-oa1-x2a.google.com with SMTP id 586e51a60fabf-40ee196dd78so933440fac.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Feb 2026 13:27:27 -0800 (PST)
+	Thu, 19 Feb 2026 22:55:59 +0000
+Received: by mail-ot1-x330.google.com with SMTP id 46e09a7af769-7d4cb7e10efso1304388a34.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Feb 2026 14:55:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1771536446; x=1772141246; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=UA1VERvz5151jt2KdPat2DgK+V02UUk6l4sZ04x/A1s=;
-        b=jLzRW19v4O2EUqqsx/8X1VZ3MRHkwkHzprQDiU9Stj4PexeZk4X+YOJMio6CRyu2sq
-         tQewpy5XetELLipKaOwXP28JxS6oFnfjvcvkzRNXA3B5fHYpCICRmLHU0kYg5gDscuZr
-         +gWuXubEwrQF3fIAJHRl55NqJuqbwHRu1tHlq3LCplrcYqSlb1fXcN4DSoKRSU8eI+na
-         r6aG0pwuev/RwJnTqzhtZ3AMHZBVjq8YJ3aEm9nUd4LuqimUfG2sF5zPC91puhkzaHNG
-         LMAb5M9DSkVUWElo4NSaLwuypssanu3uoi6HcM/ax4q+NLRQbDiVVdTTC5iOrSx+hp2y
-         bVGQ==
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1771541756; x=1772146556; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=jKYUgE4Lj5YWYTlIcNqqLcI1EoAo5/fpI79A2agQr2o=;
+        b=P91RRIC2E5tcfanMjrMrK44RqdNqk+CSW5XNuz98iR0z+hRw4/6MvOvjktGQWxawbQ
+         Wg7PxvMmrKj1arvG2P1APJxr/jxttQhU/uAjvzywSE1iw6mDwUW0MpHfCdJqnsdxKi6B
+         bGbX5hwwWm6gqX62+GqbJQsbhta0SYHFnAXIUmP6SF/R1li15b9bt6wiNyYElmn0+QiO
+         ikWBQvLWS08tDen8UwlNUWqthXDX565r2uA3Xa4Utwo0XimHt+DXV5G+Um1PFxUa9lkX
+         Bj+xku5elqB7lFabfW33m8czBjw/tzbCOmwTNy+IC2CTg3utiLawJ1IczN37rWMAuCPU
+         9NLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771536446; x=1772141246;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=UA1VERvz5151jt2KdPat2DgK+V02UUk6l4sZ04x/A1s=;
-        b=XfdxHWGtW+ncquNb0WkOiwS6g0c+cU/+uDS567QGOjeH+nrrUbG6mspcJkOQq8rJAA
-         bMeVnwKE3LMc4d4ULKg5g1G+/bRFcjT67N5gjL1SDnTUI814hQ3dP0mSz5+qE7oSxU94
-         IgiJsUkV6izbCWpAJ3X4Xu8sniOyCiyP9gXSNbTLc7qFwC18Yupse5tW8KI79h01T7pV
-         94MhoecLDFYHqkLx++9e9gkXa0pAxRBJ+By2godzjuVcSrHQsHalpOQZcsiZ7mtwWz3d
-         Yv51CiI/CSNd9XrQ01YQXiaM3t5LhEJUYdcsSesXEXRSS6nYYB28F8e9u0tf8fOALIIc
-         HK4Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWwofZHLYuvqcvPxZKNtrVnSYIEVR4YcpnL8HbT8vXIpjI65ITIOudmuGRUjmhCCUYtIaj6wWm2FcAv4M+aeQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxPPqRz8uBg0t2okFAC8KDQTEOaRf+Q+6WeyWD2g/KU3NDISpVI
-	tuoWBQQ8UYl6A4e6cKqVvLRQv3sOhcUPBMEUd7ntzCxKSZ9OW+Qeb5Out1UALALQdUI=
-X-Gm-Gg: AZuq6aICT7ebK50+SvhimT9CJaW37bRSRcMXckPeTZD+WZ5M3ELok3Ochm74Nu8FrvH
-	RcWMQliiW4QkfD0pXxruVNM9RWYeKcIQj3qsLzei9wa9AZRNgSSXtpgdWjSr9/s/KTrIVl0F0ZF
-	A/gfFfRsF++mlBcAcjAh+jO+kLUtg5oR5nBcYQJ9xZzkCIHtwWd+U/q1GIUoxllOlQFxdNoXo+q
-	9rJ+JTPhTydS54HMQSZswMnGH+57w3EsyMRg7wR77W18fTJwGTnBG8Z50lWNDbVVkfMD5QVpycw
-	De//xvebTT89e/4GK5wpPv1cBDOaGr1LC6VzvSZKFeuv2U1c7Y6oIEMsRAjYVPAtIUZJPY6Qqj9
-	qF+l2zL1MwyxdRXrGWL9c6P+6XVsw8T3fyGaZr2kMNjYFarVaWR86M/xXtQx+2n9+6e79UHaKuQ
-	mCSEQZfO43BvxiPEQ38zJVIIK2vPOnZltG/WHhRjsztB2Qa+YTGapAM8c5xzUBjC0cbZWmiQ==
-X-Received: by 2002:a05:6870:326e:b0:404:1ec2:562c with SMTP id 586e51a60fabf-4154539ed1emr1793941fac.6.1771536446376;
-        Thu, 19 Feb 2026 13:27:26 -0800 (PST)
-Received: from ?IPV6:2600:8803:e7e4:500:d4c1:bce:26a1:c903? ([2600:8803:e7e4:500:d4c1:bce:26a1:c903])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-40f062ee328sm18930333fac.4.2026.02.19.13.27.25
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Feb 2026 13:27:25 -0800 (PST)
-Message-ID: <5e6fbdcc-6a19-4d99-af5f-50ba8fa529bb@baylibre.com>
-Date: Thu, 19 Feb 2026 15:27:24 -0600
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 05/18] clk: mediatek: Add MT8189 vlpckgen clock support
+        d=1e100.net; s=20230601; t=1771541756; x=1772146556;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=jKYUgE4Lj5YWYTlIcNqqLcI1EoAo5/fpI79A2agQr2o=;
+        b=qxwzSTEmMwYl7AGJ8JojOulUI+81rBeeSiXX+RSuXDCwyM5S91Mp64avjnlMzKUwU8
+         UPtUVMchTpjMY+9dd/Gz0BYXC2NBULFPN8eGgcFB2q7UKBYQ/FmAkB5MTDycE9FznaRB
+         exVy2h0mJElQ/m3KdsIfaRqB0kdTVqq8ksMy+twoPNeM9409rkdNdt90g2D1kc0RFW7G
+         jAy9Q2Z8OS61/sb4XwWVH1WKsJC0u5/1HMBT2HHS6BFDoE4XaxGbwzJDN7NlzdKkUEK8
+         0jbdY6epdAxoHgzNCBaFgCpzobeX8jzDTx44LvvXeWz1UqgwLD9TbKmF1HHhj6XTJEc3
+         J3yg==
+X-Forwarded-Encrypted: i=1; AJvYcCX1V2viz7qp/yaPdoqmn0Ie5a/i/EoszWWmca0xjzrAGtF7vzxygQQ+Ecw7V8EuQ36GNW6mVp5X1gBRV0n/cQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxQgcC0y8JTl//XAT2H4+YtnA3yE4RQf8Hw5IbsMRM3LmtxA8IB
+	WP1RXihRLLbOKEhTv647MX5Y2IhMUi+zNCF9i1ne1Nqgcs27Oeuy0WykXDkSC3TH7pk=
+X-Gm-Gg: AZuq6aLH1S9zqVLR+r0iL9wLCut9/L7qC4hxqLzypCTW0SSLLc/2cKlWPzrmdUMvx9U
+	ypUGos2sRLus/oUILfowk02OLiruwDDxrGoh/W9qbokf0RVEUVE3CP0omx8elr4KkgjX15xIwVh
+	pdr3HQ0gwE/U4Kdr+IGhTGaq7qvKTUhJvjE7d1i7KokrUCmBuTc+ElelPpvGrD+jNnjh4aCv4uq
+	/zP+ZNat7ZHu3WBUPtmpO3CoO+1H6VHPmLZFI959TeeuAzY6UDMtgP9yHa2UklOP/heamZuaHj+
+	qW/ofazLpNB5lZRZ7GK2AUU2DXiyKYETTYJiaYsDzlO3q9F/65+ZngEHm4fULE9Sm+6RP+NvhQG
+	Otw0YCnigXRrkgC5EtVSOZDoBgtIKgdTYwlCFmOveJfH3yN5ToNgjNy+wXVXvCqblAw8gbvxZ4k
+	S6I8tvVyFsWXBK4Bj/mLdeKgOpAw==
+X-Received: by 2002:a05:6830:2b23:b0:7c9:5bef:e9b with SMTP id 46e09a7af769-7d4d0a9a731mr11337634a34.3.1771541756215;
+        Thu, 19 Feb 2026 14:55:56 -0800 (PST)
+Received: from [127.0.1.1] ([2600:8803:e7e4:500:d4c1:bce:26a1:c903])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7d4a7720a95sm20565585a34.29.2026.02.19.14.55.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Feb 2026 14:55:55 -0800 (PST)
 From: David Lechner <dlechner@baylibre.com>
-To: "irving.ch.lin" <irving-ch.lin@mediatek.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Richard Cochran <richardcochran@gmail.com>,
- Bartosz Golaszewski <brgl@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>,
- Miles Chen <miles.chen@mediatek.com>
-Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Qiqi Wang <qiqi.wang@mediatek.com>, sirius.wang@mediatek.com,
- vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
-References: <20260202062840.342707-1-irving-ch.lin@mediatek.com>
- <20260202062840.342707-6-irving-ch.lin@mediatek.com>
- <b7fd3dfe-c141-4164-80c2-ddc1f79374f8@lechnology.com>
-Content-Language: en-US
-In-Reply-To: <b7fd3dfe-c141-4164-80c2-ddc1f79374f8@lechnology.com>
-Content-Type: text/plain; charset=UTF-8
+Date: Thu, 19 Feb 2026 16:55:30 -0600
+Subject: [PATCH 2/2] dt-bindings: regulator: mt6359: make regulator names
+ unique
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20260219-mtk-mt6359-fix-regulator-names-v1-2-ee0fcebfe1d9@baylibre.com>
+References: <20260219-mtk-mt6359-fix-regulator-names-v1-0-ee0fcebfe1d9@baylibre.com>
+In-Reply-To: <20260219-mtk-mt6359-fix-regulator-names-v1-0-ee0fcebfe1d9@baylibre.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ David Lechner <dlechner@baylibre.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1337; i=dlechner@baylibre.com;
+ h=from:subject:message-id; bh=q5ubFzH4qgc7OuFNqgcrKZJjea7RWBN3Hi9vN43DLO4=;
+ b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBpl5TzMYDxF2HX4rTA3UnTgVFDxUpAyCkM1Kg6Q
+ /Pk2GoyLeWJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaZeU8wAKCRDCzCAB/wGP
+ wBX4B/494HnG2O3/PxDWMUTl5U+mRUHVBFcrRCjPMQGllZGxZhl0cAExWCe/Riqh1c8ca7b6ksR
+ O13CBTRTitM2swXkuwkkECCdVDc/WK2FwJMX9HYlAXourphfs+DFDrQAPcAa2EippXn/tQRsnhI
+ MrL41gtfiROq8S5cQYJP5wu5ansEBfY5z/1iabqbsDaDNHfn3jOyUqunbQ0HXY6xxdTPzYCKRDx
+ O3Ovcp4iVhPbzgPCtidoQ6joIT2IRTIs3A5GCtnG5j6s6Ul2zCJBGvTEFBVyV59LJWoJq2rk74y
+ MGyj5pAs73pMtMSh+HHVuMJoVlPv22ngO/F3KJU6T3Te7LZO
+X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
+ fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260219_132727_593540_4E92F326 
-X-CRM114-Status: GOOD (  14.40  )
+X-CRM114-CacheID: sfid-20260219_145557_452035_183F2DF0 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,32 +117,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/19/26 2:44 PM, David Lechner wrote:
-> On 2/2/26 12:28 AM, irving.ch.lin wrote:
->> From: Irving-CH Lin <irving-ch.lin@mediatek.com>
->>
->> Add support for the MT8189 vlpckgen clock controller, which provides
->> muxes and dividers for clock selection in vlp domain for other IP blocks.
->>
->> Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
->> ---
-> 
-> 
->> +static const char * const vlp_aud_adc_parents[] = {
->> +	"clk26m",
->> +	"vowpll",
->> +	"aud_adc_ext",
-> 
-> I could not find a matching clock name for "aud_adc_ext" in any
-> of the other clock drivers. Which clock is this (i.e. what is the
-> macro name in mediatek,mt8189-clk.h)?
+Update the example devicetree with unique regulator names for all
+regulators. This reflects the same change made to the actual .dtsi file.
 
-I was able to solve this one. It is a fixed clock. It seems to be
-missing from the devicetree, so I will comment there instead.
+Signed-off-by: David Lechner <dlechner@baylibre.com>
+---
+ Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> 
->> +	"osc_d10"
->> +};
->> +
+diff --git a/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
+index d6b3b5a5c0b3..fe4ac9350ba0 100644
+--- a/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
++++ b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
+@@ -287,7 +287,7 @@ examples:
+           regulator-max-microvolt = <1700000>;
+         };
+         mt6359_vrfck_1_ldo_reg: ldo_vrfck_1 {
+-          regulator-name = "vrfck";
++          regulator-name = "vrfck_1";
+           regulator-min-microvolt = <1240000>;
+           regulator-max-microvolt = <1600000>;
+         };
+@@ -309,7 +309,7 @@ examples:
+           regulator-max-microvolt = <3300000>;
+         };
+         mt6359_vemc_1_ldo_reg: ldo_vemc_1 {
+-          regulator-name = "vemc";
++          regulator-name = "vemc_1";
+           regulator-min-microvolt = <2500000>;
+           regulator-max-microvolt = <3300000>;
+         };
+
+-- 
+2.43.0
 
 
