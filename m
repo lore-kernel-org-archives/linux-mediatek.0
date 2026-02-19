@@ -4,103 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 009B6E9A057
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Feb 2026 18:40:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ACB3E9A05A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Feb 2026 19:11:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9IWO5m5WHHqRoC8lS5ugD/MQKoBV1QdUD735Fcl1Kkk=; b=PqSCQ2OJ/p+/lLn8ND8/lh05MP
-	iFLOmLgqrgAA5WnA+XSeXnjdZUmRxq7/JCQL3VPAjxzG5C3iaLUV2H9fkv+rObZtPVPsmA45IEc0V
-	mZTWtXC/4ArDslcKO3XaOB8FBdP7MGsfMOwCVF1pu5SySHtBkYQRFMmyK8c9iD3crwrTRNmoMGfQV
-	Z4ztJJZ3ZIIRi4ZRhhBkDYl8j06U6AC/xYrvK9EQGauaIq57TtJVJ36pLSuYl41xakq5P0PK9PQ+R
-	8tWDcq8FjwxKfKoh6yYBvXUpEDz+9RBaZO87gZVCOCrgcJax6FAieK95isqfC5J8pDa4JX1HfXica
-	75xpkofw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=La+aWbMATMluSKFWFaMvl61r2uBPiwHLmJhaoS4H630=; b=Pg4EoO12SOA+6M3RN9NakeeKWk
+	Jx65FIYlNnQwmdK3kbFB0t8mj8xB2QJKvN3ZqbkNUIHciwSjOzbqbjqZbVkI3daCN99LkqIo9bmDi
+	EtzNnI1Wz2uheoVLzAQh8Og9lg/orFcOVzVl4RX47KI7rZyWb9dUORecFixGbWK6dv/bqj2i/CVwj
+	6frvaqHZhESHzMKKE5xsUsaeuBYps9XMQRPv4zvurSforTYp7EYGAxUohpmj2m7eizyZ1v3qO4lwr
+	YzguPzSGB9M8YXK9rN0YTBi8oLEQfk3DgQMT9zaMXrnfPhea2/gElWlDvhpdyXHb5sPKVnyELEnjV
+	MmsqahoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vt8x8-0000000BnNH-27to;
-	Thu, 19 Feb 2026 18:40:42 +0000
-Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
+	id 1vt9Qx-0000000Bovb-43NV;
+	Thu, 19 Feb 2026 19:11:31 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vt8x3-0000000BnLm-3Dsk
+	id 1vt9Qv-0000000BotI-46ff
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Feb 2026 18:40:40 +0000
-Received: by mail-oa1-x29.google.com with SMTP id 586e51a60fabf-413acc82f38so475169fac.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Feb 2026 10:40:37 -0800 (PST)
+	Thu, 19 Feb 2026 19:11:31 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-436e87589e8so1314476f8f.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Feb 2026 11:11:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1771526436; x=1772131236; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=9IWO5m5WHHqRoC8lS5ugD/MQKoBV1QdUD735Fcl1Kkk=;
-        b=byzKzpH0jBeVbTId1pSBu8fnLmaImUule1DNoaOnGoyaORwA8BsD8x48a/j4QAaNpo
-         TzoXWefNF422G91U0qLqMu+ShGPOXWKsnLaPISzgE2CdIIXPArqjmUo6xYHmPpspUkwN
-         nb739aYPCo/cPnSseceq1r8wCv/y5qws2s5UwcHkuPbv80VjsYM7XcR4kVJXTl4b0WuY
-         5rc+MpwHGHivvodh8F3h3e34N3knzoHXlq82AU9FnSLV/2AhGeq07sA9RJN2jgQXUabC
-         1VSJjH9sk+YgoIdGvxSoVYlFpLzlWv5zvzNEbSOXplRFhBRR0buW6e6VBmB+5fpJOkk6
-         b1Tg==
+        d=gmail.com; s=20230601; t=1771528288; x=1772133088; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=La+aWbMATMluSKFWFaMvl61r2uBPiwHLmJhaoS4H630=;
+        b=acn7Hn45kosl9bX5VwG+yjp0NjGNBsNKouaGs2IayCUMpNi5dwylFHDx3AKxpb/uy2
+         HfdXTe74r0gWjKs6mZ2/zGPFMyedHgMigQi070JHoTh1wGCgGkCE2n+gRxy5BqjQCqPa
+         CKY8HI6V0q6OJbghwTRLWXc0CJLem1buBdUhYcKGxsK3kH5nui+MS4QLKzYrI5FkWxb/
+         U0NYN7RsFd+Yp1F7mh7iioWNIyiYC4CyZxkFgA9tc/L9nSu3Vag5fCP0oJb3W8jB2PWt
+         2wsJYwimqRXwjWlRIbRFnNlU5bR8aGxv365Ixy0c1mfZf2JE7PhV9oPaEHeOglFZHwGq
+         aPMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771526436; x=1772131236;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=9IWO5m5WHHqRoC8lS5ugD/MQKoBV1QdUD735Fcl1Kkk=;
-        b=P7hwTSEUT8n+1wV8yZ0OPK/V4zZGiz919DAhqnJJERNbQIx273RiGBKUtWFCIKcITG
-         7h+H2WOkfCWLonTtq0uPyW1hY4FVdd4jcuk1W9SW+9799/+W7+P6j7u6Aa7XFbS5GthV
-         TkQdI4ZnHzD4hl7AAfTP2gTm481sigxaG/Oi78OSx8XNp6/LQhp0ne3ifiDwvJYTWq8c
-         S+DwROhIMnFYvJ+6lA95uBc2aTvODhPAGVOoVt02BTlzgyPGn1nx9M6hCYORHDGumkbC
-         KfoX/f0jQhmCyNG9NCul4Bu5Gv2Zy3DXo7i/U+NpNDj3U2xTCO5e8eb1odZiA1pt8fkt
-         V3lQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXfPqIz0ZGhyo3mPj/osslsUaith5Hp2A+NcLFFrjlLCX3FqF4Phi7phMxPbFWlp7N+x8hGka/rkrwfLSmyrw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxw/jJHR+A1DUQSGTthF9a6DCiniXFjg48xpIikyHtjCKWHFZp4
-	lCFLrOUqgqHLBlKwK+S2ICFmAnCtX3SansRZ9k9RVTS38698R34FwmrUj3vufn38yZ4=
-X-Gm-Gg: AZuq6aJEW6fNFpO29jT5DXmNNGE0TYwPNPf+kZn/06Bt3/+0uClK5RMfRDF+o1mfVrI
-	bveEyCUmTseKRFkroS+xjAD3owhETYjHe9DMAN0aIxs1L5wyN+MKcJG6zgtH35fI2kfWmPEqsVz
-	UNpFezqxD9NL5EFLvgEMJ/WyzPDcAVRfTTi5yDaBgYzeuvLkY+eyLr2bXS3tILCkj2JWQhqIfjo
-	iuq2kzSkQJnrWKbzSEup6oeTgP5/gnpnFlZf4OaJ687X7KRxhyF/Wb1Dt0kRDUU7DMfVzh7XW/u
-	+tV6YxWXI698tiDeOXKj54tA8I9rDX+5PvpvhQxwT3zD2/ar2MZm3dFUYXziHVfd0sug30WxeC+
-	vmNxcXs4HKMXYTCkeMndmZHqGLtuktpyqL4Q4DCsW2sU1PawUaNYTB/bbaFIHkUAS1wsPnVpu0G
-	X64+p68tTwFPE639IWrjp+oOcICYitV9N1evV4LpP3IL3zdpV03W7CLfy1E1vINvrW9z8ypqIBj
-	7EZ7xTZ
-X-Received: by 2002:a05:6870:1587:b0:409:a121:19d9 with SMTP id 586e51a60fabf-40f0d9b194dmr9062080fac.47.1771526436041;
-        Thu, 19 Feb 2026 10:40:36 -0800 (PST)
-Received: from ?IPV6:2600:8803:e7e4:500:d4c1:bce:26a1:c903? ([2600:8803:e7e4:500:d4c1:bce:26a1:c903])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-40ee62b6f61sm21460634fac.10.2026.02.19.10.40.34
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 19 Feb 2026 10:40:34 -0800 (PST)
-Message-ID: <751d82d2-0d03-48ed-a917-dbb0cc8a3418@baylibre.com>
-Date: Thu, 19 Feb 2026 12:40:33 -0600
+        d=1e100.net; s=20230601; t=1771528288; x=1772133088;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=La+aWbMATMluSKFWFaMvl61r2uBPiwHLmJhaoS4H630=;
+        b=IDOjG6rmrxcDktayYEXPhmwh+D1kqbEi0E2Yeul46xOOBCax9esbe9shUArVfeNdcA
+         9zqgbMBlBLCTVA5IUt2ffx9TE4y7OVo1lbaoxr9+d3ZwLoB8Xm1VdN5sKZ7emr6v3Co2
+         PicyA9ECqrUh144FHvkyUBpwbv6sQ+tSRFxF3Y4RoPCz4aMUNRmAApyQyeoGtZanXYSg
+         ItTP2VHWR7fvISmssOLYvZ1YskLW3iiK+Fm6oAC16QZ/rzM6MjjQFJhn5QVX+9qlXXKv
+         9Gd22lOooJPKpD3PVWbVs4e1r6jJUMDwYx7oVnCn6xI2J8Qc6XYW/ugFnj9QxugHD4YY
+         bd2A==
+X-Forwarded-Encrypted: i=1; AJvYcCXdv6VBxyOLh7GDrWxPSgOWQIpc0lH9f6TV/Z7vVirPAI9xvpzcZXvikwJsbs++x9XYrl8FRwE5rur/rBby2g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzx5hYeKTXcEUXu6kry8gfRBjl5ODnVTv/cyLnWk0Apg5Iax3N6
+	nuPiT3v5OXHkAaoPg6gQmYBJ135q4RUfRBIcDe+4qNhxSyPhuuhT76w=
+X-Gm-Gg: AZuq6aKT/udGaQ9sci558oYafb7A6uFQmv4IJFlQpYu2koc40+9w8Pv+1kjUxlDt/k0
+	4JWYZ4PLwCF7TLpbz6R98xrIKc3oZesbZneWn8du/vt1VdmDdxnnbZoI0a51HPpIdgmkE19IkNj
+	T8VTV3vZ2Gq90FfCmRVef5bThpcOurtwEHSeI77t/+irf4v8jKWkcM9SNMWtDFtk5Lre6mwiOy/
+	+4ZRO3N9rQkLIet/TyCoj5UmkoogxCjF0bku+h31mxnc5w2xve5oUi0XAvoECZIrgD3tJ/otuo4
+	KeHwCtaLWVdBf7yqJa4gVkfChTknbs43eIlW6o7WYG6RyBZ6gYse8Uau8hDmvpnBBclXILVoigE
+	Fs9rXEGbpS80Qb6iQV1g+Bh+RZc2eZjDfmHpqlyEy9MkKrFz+8dcP3D1rvBZrG5fY9ZJIfANP90
+	KAou9hv7VyIc4U8ESicyb+Qy6ITWhbvrQk76ET0RlYJQdYpGxtDRbFPa8Sc0JL2rdOe/l0kuk5f
+	+Y=
+X-Received: by 2002:a05:6000:2307:b0:437:75c1:5793 with SMTP id ffacd0b85a97d-437978c99fbmr37483846f8f.3.1771528287521;
+        Thu, 19 Feb 2026 11:11:27 -0800 (PST)
+Received: from archlinux.v.cablecom.net (77-56-128-136.dclient.hispeed.ch. [77.56.128.136])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43796ad0166sm51696809f8f.35.2026.02.19.11.11.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Feb 2026 11:11:27 -0800 (PST)
+From: Dylan Eray <dylan.eray6@gmail.com>
+To: linux-bluetooth@vger.kernel.org
+Cc: luiz.dentz@gmail.com,
+	sean.wang@mediatek.com,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Dylan Eray <dylan.eray6@gmail.com>
+Subject: [PATCH] Bluetooth: btusb: Add Lite-On 04ca:3807 for MediaTek MT7921
+Date: Thu, 19 Feb 2026 20:11:02 +0100
+Message-ID: <20260219191102.64722-1-dylan.eray6@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 06/18] clk: mediatek: Add MT8189 vlpcfg clock support
-To: "irving.ch.lin" <irving-ch.lin@mediatek.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Richard Cochran <richardcochran@gmail.com>,
- Bartosz Golaszewski <brgl@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>,
- Miles Chen <miles.chen@mediatek.com>
-Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Qiqi Wang <qiqi.wang@mediatek.com>, sirius.wang@mediatek.com,
- vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
-References: <20260202062840.342707-1-irving-ch.lin@mediatek.com>
- <20260202062840.342707-7-irving-ch.lin@mediatek.com>
-Content-Language: en-US
-From: David Lechner <dlechner@baylibre.com>
-In-Reply-To: <20260202062840.342707-7-irving-ch.lin@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260219_104037_980390_F77933AD 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20260219_111130_025633_3452EFF9 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,34 +99,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/2/26 12:28 AM, irving.ch.lin wrote:
-> From: Irving-CH Lin <irving-ch.lin@mediatek.com>
-> 
-> Add support for the MT8189 vlpcfg clock controller,
-> which provides clock gate control for vlp domain IPs.
-> 
-> Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
-> ---
+Add USB device ID (04ca:3807) for a Lite-On Wireless_Device containing
+a MediaTek MT7921 (MT7920) Bluetooth chipset found in Acer laptops.
 
-...
+Without this entry, btusb binds via the generic USB class-based wildcard
+match but never sets the BTUSB_MEDIATEK flag. This means btmtk never
+triggers firmware loading, and the driver sends a raw HCI Reset that
+the uninitialized chip cannot respond to, resulting in:
 
-> +static const struct of_device_id of_match_clk_mt8189_vlpcfg[] = {
-> +	{ .compatible = "mediatek,mt8189-vlp-ao", .data = &vlpcfg_ao_reg_mcd },
-> +	{ .compatible = "mediatek,mt8189-vlpcfg-ao", .data = &vlpcfg_reg_mcd },
+  Bluetooth: hci0: Opcode 0x0c03 failed: -110
 
-These names are a bit confusing to me. I would expect vlpcfg_ao_reg_mcd
-to match "mediatek,mt8189-vlpcfg-ao" since they both contain "vlpcfg" and
-"ao" in the name.
+Signed-off-by: Dylan Eray <dylan.eray6@gmail.com>
+---
+ drivers/bluetooth/btusb.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-In other words, this is the naming I would expect to avoid confusion:
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index fcec8e5..fd637cf 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -705,6 +705,8 @@ static const struct usb_device_id quirks_table[] = {
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x04ca, 0x3804), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x04ca, 0x3807), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x04ca, 0x38e4), .driver_info = BTUSB_MEDIATEK |
+ 						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x13d3, 0x3568), .driver_info = BTUSB_MEDIATEK |
+-- 
+2.53.0
 
-	{ .compatible = "mediatek,mt8189-vlp-ao", .data = &vlp_ao_reg_mcd },
-	{ .compatible = "mediatek,mt8189-vlpcfg-ao", .data = &vlpcfg_ao_reg_mcd },
-
-I suspect that the same improvement could be made in the other patches in
-this series as well.
-
-> +	{ /* sentinel */ }
-> +};
-> +
 
