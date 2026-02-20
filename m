@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A748C53216
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Feb 2026 07:51:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FD9EC5518F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Feb 2026 10:09:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PDZx31Yzb+3KQ9sF3N/ebw8Imf3fgRe0XFGJM7tnvhM=; b=JU1QgsU12j0ubPVk+qNOMrxpD+
-	NtPYF3grSsMN6Qz388GaVyVSRsConvl1qXalMeTLbYWrRbyQ2/pYYHhvf3/ZeFbKbFQJ0Ly9sAlT5
-	5CIRxTPoFnCwUiRHwJCRNWdWgly8cZuRHGw51dsuDIDFFxTC/pe0BCeTuySUrj1FZ3gmV/ocC5P3x
-	N1iOz1rBlLdtnHe+V69FZU2tfQFvP3Eo3rhB2Qu6PnpL1yqsae5rq6UbhavSGaJHoB+fbQKTX8/oe
-	apaVvl+2GiCPfuDmf2N6FPruLcKv7Jn7OrIk528k/dvmDea82SDTWete1qknOHjT57Wl4F7PEmMPK
-	VBxef/VQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ZEnBQTzrEXfGRJZ0vwGdsn5LJQVzUrtWPfVR8wUTzHo=; b=InUYgzCOjQjx5GMubPYLQwzLPl
+	v15/HgPg9G0EjBRullmy8z3x4SnVy5LLik9RrQ4ryqgsBtJrykbXvBTSrJ5tjqVCfeWB+sASe4GI3
+	aduLxl1WadhlA6+V5526iScHOvHV6Kjg5Bha3i+qLEt45mzlpCSQNZADt/bNUev1yqk0oqdNKDCnN
+	WByx6JjxW9CDePQYEAyGmc0h/ygxqSP1Zzp2/oXCNw1g76jf3vRd9jPr84cp3I2w8IMJc/ZtK4VPg
+	fWtunwrJJImx2tWRdzny+dJ2+N+8HddSxr8lcpUccdAlh27DpgFScoRvoGjl8hU71PWUlOtZ9Mp+v
+	ANUNgR/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtLIY-0000000DMwe-3zzl;
-	Fri, 20 Feb 2026 07:51:38 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vtNSD-0000000DrWE-26IE;
+	Fri, 20 Feb 2026 10:09:45 +0000
+Received: from mail1.manjaro.org ([142.132.176.110])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtLIX-0000000DMwC-29AH;
-	Fri, 20 Feb 2026 07:51:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 78D3E6184C;
-	Fri, 20 Feb 2026 07:51:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72DCDC116C6;
-	Fri, 20 Feb 2026 07:51:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771573896;
-	bh=8BzeL6OtW1xxqVp2So7EwtUL67QY4V4CLXtCVdlFdxc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=iVA3/mirqgpBxJmHFHRCJfTR3WchRt6JDx56pu/c0fhaRRaQHhLv1cs91yoCh7SLT
-	 iQxgk+fihDthjWCJVWHPZcfXMBFdZk1SYRLxG3JgbonusxmJttgelxUbJvnqbrC3o7
-	 fTNarmpKj6OfBwst6A4NcbFmoqDtz5jf7ZIj7Va4cGJrTzLKZLur5qtBMGGymEljxw
-	 Jt4q3IuYFT8sCNgw2p+TGrjNoy3KCrkuNTyqTlRaAR5zJQJLXn1sAd31ScHU8Is8K+
-	 qvRY9cc2Tb8iNCgmhi7XW7gnnEfrcM+ea4oCx8hnE/L/Ip96ICEQ0aBB5ovq1k/fZu
-	 m8yah7z2u4khQ==
-Date: Fri, 20 Feb 2026 08:51:33 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: David Lechner <dlechner@baylibre.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/2] dt-bindings: regulator: mt6359: make regulator names
- unique
-Message-ID: <20260220-bizarre-tricky-stingray-94db2b@quoll>
-References: <20260219-mtk-mt6359-fix-regulator-names-v1-0-ee0fcebfe1d9@baylibre.com>
- <20260219-mtk-mt6359-fix-regulator-names-v1-2-ee0fcebfe1d9@baylibre.com>
+	id 1vtNSB-0000000DrQy-0X43
+	for linux-mediatek@lists.infradead.org;
+	Fri, 20 Feb 2026 10:09:44 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 8875C41F93;
+	Fri, 20 Feb 2026 11:09:34 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1771582177; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=ZEnBQTzrEXfGRJZ0vwGdsn5LJQVzUrtWPfVR8wUTzHo=;
+	b=iS+zoyC5cE/li4csAMJpwWo/TAfqMWhlRJ6jl+TzPXKxZy8/ATYT2bBiJRsKhD4L+IrYR1
+	acFVUQQD9i2WFKqcem/0+89Vf4U42vF7PzJJGZXX+XeqJb9yfO8yYkK1y8O6NgqOlHrl23
+	7LLP3qi1LZRdAPBRkHn6E+Z2l+JX3CJfrE5WTaEg6dJ6xtz+0t/6TJoApcKVzh4+60LV+q
+	jzTgxdnVK7cNenVUIhtS5u8gt0NoIS3o4N29RXy+Lpsx5jYOMD+ECil8nVbZIz7/SFVftM
+	qnaqnrsrTjvQxsElPDKyofeafCNFAKo7fUc3K3u/0908NbXHj73xDXhu1nYf6Q==
+Message-ID: <39e814ff-2ea2-4984-9e8a-2902fef7c4bc@manjaro.org>
+Date: Fri, 20 Feb 2026 11:09:33 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260219-mtk-mt6359-fix-regulator-names-v1-2-ee0fcebfe1d9@baylibre.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 03/11] wifi: mt76: mt7921: handle MT7902 irq_map quirk
+ with mutable copy
+To: sean.wang@kernel.org, nbd@nbd.name, lorenzo.bianconi@redhat.com
+Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Sean Wang <sean.wang@mediatek.com>, Xiong Huang <xiong.huang@mediatek.com>
+References: <20260219004007.19733-1-sean.wang@kernel.org>
+ <20260219004007.19733-3-sean.wang@kernel.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philip_M=C3=BCller?= <philm@manjaro.org>
+Organization: Manjaro Community
+In-Reply-To: <20260219004007.19733-3-sean.wang@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260220_020943_413828_58948BB9 
+X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,21 +73,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 19, 2026 at 04:55:30PM -0600, David Lechner wrote:
-> Update the example devicetree with unique regulator names for all
-> regulators. This reflects the same change made to the actual .dtsi file.
-> 
-> Signed-off-by: David Lechner <dlechner@baylibre.com>
+Hi Sean,
+
+on Linus master tree we still have 'mt76_mmio_init(&dev->mt76, 
+pcim_iomap_table(pdev)[0]);', hence your patch currently won't apply.
+
+On 2/19/26 01:39, sean.wang@kernel.org wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+>
+> MT7902 PCIe requires a different wm2_complete_mask value, so introduce a
+> mutable per-device copy of the default irq_map and override the field
+> only for this chip. Other devices continue using the shared const
+> template.
+>
+> This is a prerequisite patch before enabling MT7902 PCIe support.
+>
+> Co-developed-by: Xiong Huang <xiong.huang@mediatek.com>
+> Signed-off-by: Xiong Huang <xiong.huang@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
+>   drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 14 ++++++++++++++
+>   1 file changed, 14 insertions(+)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> index 65c7fe671137..5f857a21f362 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> @@ -327,6 +327,20 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+>   	dev->hif_ops = &mt7921_pcie_ops;
+>   	dev->irq_map = &irq_map;
+>   	mt76_mmio_init(&dev->mt76, regs);
+> +
+> +	if (id->device == 0x7902) {
+> +		struct mt792x_irq_map *map;
+> +
+> +		/* MT7902 needs a mutable copy because wm2_complete_mask differs */
+> +		map = devm_kmemdup(&pdev->dev, &irq_map,
+> +				   sizeof(irq_map), GFP_KERNEL);
+> +		if (!map)
+> +			return -ENOMEM;
+> +
+> +		map->rx.wm2_complete_mask = 0;
+> +		dev->irq_map = map;
+> +	}
+> +
+>   	tasklet_init(&mdev->irq_tasklet, mt792x_irq_tasklet, (unsigned long)dev);
+>   
+>   	dev->phy.dev = dev;
 
-Subject: regulator
 
->  Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-
-Best regards,
-Krzysztof
+-- 
+Best, Philip
 
 
