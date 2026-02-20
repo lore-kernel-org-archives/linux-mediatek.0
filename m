@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E297C5AD4D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Feb 2026 17:53:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9821FC5AD55
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Feb 2026 18:31:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0srCeho4DTy1RFWev4F97XRwpqyAchfSz4tNZb1F+Ug=; b=U+VXHYkXj9nnuoRUcZK1WEj2Z6
-	s4Ix5MSkLLVIQDYcrd3Z033ytrJcBfPstGVNQPlqvimyDFVNX1K1EEpsHzYBd7FUJO90HbqtEC/3j
-	EWE+/YUAcyrXMhdS3Xq7dy0qs5bo4dHwXt1Mj5aiiGUa8lPCtSMx0gSEVxq6b1KhuFCmpJ9CKaPJE
-	nvQQDuWtnnnXY+AnDtwQhutigIIqAnrWDYJgvOcrx5D9LM+nUIWSRBbXP669SQxUAfhQBxOMtqkZy
-	zhl/wq1idpGfhNT1wxRNNA8ZDnkZZvZZUfdjMZgK3lvc4yjqgIjpBnHiWSJLZME6LWlS4M2h4w1n5
-	SbwlGYng==;
+	bh=brWaA6cS9nnxcx7TnhC5xTkVkOlNT9sYmXd5f9+hT/Q=; b=ZftsnPEwpBCacjtzS661t7CroQ
+	lAbaqxqyb4Z7LCve5xq09hbFIRt1a1h5smE8I20aHHelX+5LDgYF9O0KiAIR6gFg6T5O1jTynEmRb
+	JoVurXUd5FTLtCgqowebZ2+qZUM3LhhRmlF5lRxQkie2ZiCa2myL0ChQJNcdTybpCeTwekLnlEmaQ
+	Ii02oKjbgwM/yt/5huCfOKLPJRom4MwiE9IerEoDWc9SCTvzLqrEwnw5VMx8hf/aFzcaZJM+YRXaf
+	l+lKNE3XcjQER0NMBlE5NCAGYRxUVSGZoJfIUoPIVT4gBvkaQLSmdUNwuR4twzRzbCbdy4S9wRv0t
+	TrQVLN5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtUhF-0000000FPxb-1Tla;
-	Fri, 20 Feb 2026 17:53:45 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vtVHY-0000000FSB2-1qTb;
+	Fri, 20 Feb 2026 18:31:16 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtUhB-0000000FPwD-22a7;
-	Fri, 20 Feb 2026 17:53:42 +0000
+	id 1vtVHU-0000000FSA7-37Re
+	for linux-mediatek@lists.infradead.org;
+	Fri, 20 Feb 2026 18:31:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8306843CD3;
-	Fri, 20 Feb 2026 17:53:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2B9EC116C6;
-	Fri, 20 Feb 2026 17:53:39 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 594EF44461
+	for <linux-mediatek@lists.infradead.org>; Fri, 20 Feb 2026 18:31:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 367CAC19424
+	for <linux-mediatek@lists.infradead.org>; Fri, 20 Feb 2026 18:31:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771610020;
-	bh=zNATZPRtqPD3ySxmy8GYe+CARDOEJ9t0TrF6n5pOmTE=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=B/kT1Cv5HlExiMa1VET81TqQAYYr9tLcOCAnJJOdYaK/sPblFipClpHYyjogdEkG0
-	 HKk85M77RiFqctmJv2TKiFzu0iTYJ98/4FyPJyPHRLzUFPff0p9dtjSyWqTnpNl151
-	 hIn5yV2EWQmaVjj4NBWUpNo7stuvoREiuWcuUE51B11JG4W46absJE1rza03DKOni7
-	 yffyAmnqEx/nFTM8RU+HQMaX7rJuM2MSqY/sKZfNI53l9saPewBvCrwSwMBwrVqkld
-	 KdLhrcXUnSMVKKQMzK+kbVvcnrDlhrlQjh9QUSv13NXam3yqbRhppYpAq5tKj0a3Ua
-	 WCmRfCeSGkzeg==
-Message-ID: <3b0d26bd-35ff-40af-af8e-fbc1dd0d31cd@kernel.org>
-Date: Fri, 20 Feb 2026 09:53:38 -0800
+	s=k20201202; t=1771612270;
+	bh=jtxdnsFoaJ7ZZ3Cqn+tSp7m5G53dJk4cSH6H7At3v18=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=a6uJkrPwgYJUifSyCTS6qLRblT3UuP8pQhDCmNAd2ogqq5vgBEsHwq8dslg95Fr1M
+	 QE1qEwpPqLbgGyGBKdPG/vP4VNWVDlhs9IYK06sSbep9fCo3MBIK+S5fNuzsKmGmWL
+	 h2/G71sxc2mVMfFqbdMY7IclfV225a4CVo51pykG11YGDk2h68oBqoWRHwrOTXN+eB
+	 HsbrO5uBlRdRKmL/zJwkT1bbPqJYSawCm7Zz78cgYbavZ+KUnACdpmbZj5IO+i0aRE
+	 XNBFYKoaXBvfdKZOJURklibqI4NNg3hc/C/o8ekrxP3QxYh6KF4Kdav65dJaAoaVfg
+	 nEz+gA8l7HzDQ==
+Received: by mail-lj1-f179.google.com with SMTP id 38308e7fff4ca-385bc6910eeso22887051fa.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 20 Feb 2026 10:31:10 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCVcXchyrAEgmfG91roukYDy4VxiuZxRx5iaxfjxB6J/bJPEBdiQndY32slcmaYLzu1KwCiegk2wWLCtcTLthg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxHzgsvssIyW6dKs0l9PdsXzMCkgCrNvqR/4B97iESJffM6FNIY
+	KSVzTh2bmDB6FwBdY3dS2l9FsePTAfxTZPRTygZwEcN1lchKAgOdngizgU1gmq/2snLeGS7sn2m
+	9g2F+fe2yiq9nqWinkPFGkvfT75T+QPk=
+X-Received: by 2002:ac2:4f0d:0:b0:59d:f2a4:3e98 with SMTP id
+ 2adb3069b0e04-5a0ed88d733mr123595e87.4.1771612268567; Fri, 20 Feb 2026
+ 10:31:08 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH wireless-next 0/2] wifi: mac80211: fetch FILS and
- unsolicited probe response templates by link ID
-To: Raj Kumar Bhagat <raj.bhagat@oss.qualcomm.com>,
- Jeff Johnson <jjohnson@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Johannes Berg <johannes@sipsolutions.net>
-Cc: linux-wireless@vger.kernel.org, ath11k@lists.infradead.org,
- linux-kernel@vger.kernel.org, ath12k@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Sriram R <quic_srirrama@quicinc.com>
-References: <20260220-fils-prob-by-link-v1-0-a2746a853f75@oss.qualcomm.com>
-From: Jeff Johnson <jjohnson@kernel.org>
-Content-Language: en-US
-In-Reply-To: <20260220-fils-prob-by-link-v1-0-a2746a853f75@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20260219231624.8226-1-sean.wang@kernel.org> <0cb6c45b-a5a4-46bf-a73d-97c482da9339@molgen.mpg.de>
+In-Reply-To: <0cb6c45b-a5a4-46bf-a73d-97c482da9339@molgen.mpg.de>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Fri, 20 Feb 2026 12:30:56 -0600
+X-Gmail-Original-Message-ID: <CAGp9LzqYB=xPfAuL61xi-ve=f6PZWWaa2gpf50-75yXWee-ZHA@mail.gmail.com>
+X-Gm-Features: AaiRm50CGzZAUpdHBs8DARRVcPhWLB2FVeLnVfyzVg436zGF1NWQ8dHO4F1lG6w
+Message-ID: <CAGp9LzqYB=xPfAuL61xi-ve=f6PZWWaa2gpf50-75yXWee-ZHA@mail.gmail.com>
+Subject: Re: [PATCH 1/4] mmc: sdio: add MediaTek MT7902 SDIO device ID
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Cc: marcel@holtmann.org, luiz.dentz@gmail.com, ulf.hansson@linaro.org, 
+	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-mmc@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260220_095341_549522_66A677B7 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20260220_103112_824260_7CCCB079 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,34 +83,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/19/2026 11:42 AM, Raj Kumar Bhagat wrote:
-> Currently, the FILS discovery and unsolicited probe response templates
-> are always fetched from the default link of a virtual interface in both
-> Multi-Link Operation (MLO) and non-MLO cases. However, in the MLO case
-> there is a need to fetch these templates from a specific link instead of
-> the default link.
-> 
-> Hence, add support for fetching these templates based on the link ID from
-> the corresponding link data.
-> 
-> ---
-> Sriram R (2):
->       wifi: mac80211: fetch FILS discovery template by link ID
->       wifi: mac80211: fetch unsolicited probe response template by link ID
-> 
->  drivers/net/wireless/ath/ath11k/mac.c           |  4 +--
->  drivers/net/wireless/ath/ath12k/mac.c           |  6 ++--
+Dear Paul,
 
-Acked-by: Jeff Johnson <jjohnson@kernel.org> # for drivers/net/wireless/ath
+On Thu, Feb 19, 2026 at 5:28=E2=80=AFPM Paul Menzel <pmenzel@molgen.mpg.de>=
+ wrote:
+>
+> Dear Sean,
+>
+>
+> Thank you for the patch.
+>
+> Am 20.02.26 um 00:16 schrieb Sean Wang:
+> > From: Sean Wang <sean.wang@mediatek.com>
+> >
+> > Add SDIO device ID (0x790a) for MediaTek MT7902 to sdio_ids.h.
+>
+> Tested how?
 
->  drivers/net/wireless/mediatek/mt76/mt7915/mcu.c |  4 +--
->  drivers/net/wireless/mediatek/mt76/mt7996/mcu.c |  6 ++--
->  include/net/mac80211.h                          |  8 +++--
->  net/mac80211/tx.c                               | 40 ++++++++++++++++---------
->  6 files changed, 44 insertions(+), 24 deletions(-)
-> ---
-> base-commit: 37a93dd5c49b5fda807fd204edf2547c3493319c
-> change-id: 20260220-fils-prob-by-link-eef176414f1b
-> 
+Tested on real hardware with successful card detection, driver
+initialization and the connectivity.
 
+>
+> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> > ---
+> >   include/linux/mmc/sdio_ids.h | 1 +
+> >   1 file changed, 1 insertion(+)
+> >
+> > diff --git a/include/linux/mmc/sdio_ids.h b/include/linux/mmc/sdio_ids.=
+h
+> > index 673cbdf43453..97cc834fb3d5 100644
+> > --- a/include/linux/mmc/sdio_ids.h
+> > +++ b/include/linux/mmc/sdio_ids.h
+> > @@ -112,6 +112,7 @@
+> >   #define SDIO_DEVICE_ID_MEDIATEK_MT7663              0x7663
+> >   #define SDIO_DEVICE_ID_MEDIATEK_MT7668              0x7668
+> >   #define SDIO_DEVICE_ID_MEDIATEK_MT7961              0x7961
+> > +#define SDIO_DEVICE_ID_MEDIATEK_MT7902               0x790a
+>
+> Please sort it.
+
+I will address the sorting in v2.
+Thanks for the review.
+
+>
+> >
+> >   #define SDIO_VENDOR_ID_MICROCHIP_WILC               0x0296
+> >   #define SDIO_DEVICE_ID_MICROCHIP_WILC1000   0x5347
+>
+>
+> Kind regards,
+>
+> Paul
 
