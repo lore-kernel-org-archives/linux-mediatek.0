@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB7CC5AD2B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Feb 2026 17:24:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E297C5AD4D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Feb 2026 17:53:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VMtBjDynAUrdGXb65pAy82w5yT36ShqPLb+7ARA+3p4=; b=qxM+FCpZhgusE55qWa8KEIDaGR
-	cl7oQSsZ5xHOPV+nEKalBkcPJpIFEoKqUB6pQlTlC+1DMh8k5uGv9+t4DCSKluTG04RxB44ckOo1r
-	nRlkEHkpP0d/T5dbUcwleDlwMqyHB1dKWBxeJ///oB0vrmsIfUMUdzevASXIh83wqpNToYho2yi3d
-	qN/OsSDf/Got7FaSeHUwxBs7Y8SOTlhoxPBUGA1A9I4PC8wjf678l+d/pqm3x0SjKlgPB56e0H+Ht
-	pLZdqdnKJPiEuVLcey4Fm0aUs0FFdYuHPV1gwaaQWu5rm45vJ3MFZxxuHU57PThjRspJ8vLVbyp70
-	N/JGDX4w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0srCeho4DTy1RFWev4F97XRwpqyAchfSz4tNZb1F+Ug=; b=U+VXHYkXj9nnuoRUcZK1WEj2Z6
+	s4Ix5MSkLLVIQDYcrd3Z033ytrJcBfPstGVNQPlqvimyDFVNX1K1EEpsHzYBd7FUJO90HbqtEC/3j
+	EWE+/YUAcyrXMhdS3Xq7dy0qs5bo4dHwXt1Mj5aiiGUa8lPCtSMx0gSEVxq6b1KhuFCmpJ9CKaPJE
+	nvQQDuWtnnnXY+AnDtwQhutigIIqAnrWDYJgvOcrx5D9LM+nUIWSRBbXP669SQxUAfhQBxOMtqkZy
+	zhl/wq1idpGfhNT1wxRNNA8ZDnkZZvZZUfdjMZgK3lvc4yjqgIjpBnHiWSJLZME6LWlS4M2h4w1n5
+	SbwlGYng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtUEY-0000000FMrS-3HmT;
-	Fri, 20 Feb 2026 17:24:06 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vtUhF-0000000FPxb-1Tla;
+	Fri, 20 Feb 2026 17:53:45 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtUEW-0000000FMqt-163I;
-	Fri, 20 Feb 2026 17:24:05 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1771608235; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=YBCcT81WeOfR/jYm0ED2xKnwL1X6Nflt1qxXhPg6Nt/XV/5NEb0ibRJr4TzshY7mvg1Lve15oDVy6eDl+y912fQUDay4WLqVch+AF75puBK30G3EMwFNxav2mCfgWZQc5ADoU/vR3EeOBMrASyLICK6yXgnie1yl3MDJNCs9vT0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1771608235; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=VMtBjDynAUrdGXb65pAy82w5yT36ShqPLb+7ARA+3p4=; 
-	b=fBgFi56qATptdpO05qbjDb5ZSnvvwkpOMun0WwiV5r0ErLAKyEBwsqHdcBxIJ14o9C0m+rA7olNxSCgCjHw++s8pFAdbrWMy7TrVT7d9OM4JGCDRp6XaFFlj02pWU3jFmUKX4VhtkuM6MS/P2+EbJaTK1hAP4sO4y+I1DPY6bgI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1771608235;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=VMtBjDynAUrdGXb65pAy82w5yT36ShqPLb+7ARA+3p4=;
-	b=ODn65+XAYumAU3ekou2ZiBT0MogrLVMNvz3Xz+x88kywWuT8wiRY/1WcFOrfxMoA
-	Quw6vTLy522rnvZf+Xkx36kGge9dQrvBktkz0F6Hy3LBT30IQdpeBg6Klsi27T4t9oR
-	tl5rtHMWll0Q/kBnoT/gd0iHYVAQzuCknui1K5mk=
-Received: by mx.zohomail.com with SMTPS id 177160823270486.7919574958737;
-	Fri, 20 Feb 2026 09:23:52 -0800 (PST)
-Message-ID: <6122f085216c03469bc93f49f3d76b2072c24e71.camel@collabora.com>
-Subject: Re: [PATCH] mmc: mtk-sd: disable new_tx/rx and modify related
- settings for mt8189
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: Cathy Xu <ot_cathy.xu@mediatek.com>, Chaotian Jing	
- <chaotian.jing@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>
-Cc: linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Mengqi Zhang <Mengqi.Zhang@mediatek.com>, Wenbin Mei
- <Wenbin.Mei@mediatek.com>, Andy-ld Lu	 <Andy-ld.Lu@mediatek.com>, Yong Mao
- <yong.mao@mediatek.com>
-Date: Fri, 20 Feb 2026 18:23:47 +0100
-In-Reply-To: <20260204020709.24604-1-ot_cathy.xu@mediatek.com>
-References: <20260204020709.24604-1-ot_cathy.xu@mediatek.com>
-Organization: Collabora Ltd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	id 1vtUhB-0000000FPwD-22a7;
+	Fri, 20 Feb 2026 17:53:42 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8306843CD3;
+	Fri, 20 Feb 2026 17:53:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2B9EC116C6;
+	Fri, 20 Feb 2026 17:53:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1771610020;
+	bh=zNATZPRtqPD3ySxmy8GYe+CARDOEJ9t0TrF6n5pOmTE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=B/kT1Cv5HlExiMa1VET81TqQAYYr9tLcOCAnJJOdYaK/sPblFipClpHYyjogdEkG0
+	 HKk85M77RiFqctmJv2TKiFzu0iTYJ98/4FyPJyPHRLzUFPff0p9dtjSyWqTnpNl151
+	 hIn5yV2EWQmaVjj4NBWUpNo7stuvoREiuWcuUE51B11JG4W46absJE1rza03DKOni7
+	 yffyAmnqEx/nFTM8RU+HQMaX7rJuM2MSqY/sKZfNI53l9saPewBvCrwSwMBwrVqkld
+	 KdLhrcXUnSMVKKQMzK+kbVvcnrDlhrlQjh9QUSv13NXam3yqbRhppYpAq5tKj0a3Ua
+	 WCmRfCeSGkzeg==
+Message-ID: <3b0d26bd-35ff-40af-af8e-fbc1dd0d31cd@kernel.org>
+Date: Fri, 20 Feb 2026 09:53:38 -0800
 MIME-Version: 1.0
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH wireless-next 0/2] wifi: mac80211: fetch FILS and
+ unsolicited probe response templates by link ID
+To: Raj Kumar Bhagat <raj.bhagat@oss.qualcomm.com>,
+ Jeff Johnson <jjohnson@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Johannes Berg <johannes@sipsolutions.net>
+Cc: linux-wireless@vger.kernel.org, ath11k@lists.infradead.org,
+ linux-kernel@vger.kernel.org, ath12k@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Sriram R <quic_srirrama@quicinc.com>
+References: <20260220-fils-prob-by-link-v1-0-a2746a853f75@oss.qualcomm.com>
+From: Jeff Johnson <jjohnson@kernel.org>
+Content-Language: en-US
+In-Reply-To: <20260220-fils-prob-by-link-v1-0-a2746a853f75@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260220_092404_368824_FCA2000E 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20260220_095341_549522_66A677B7 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,51 +81,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Wed, 2026-02-04 at 10:06 +0800, Cathy Xu wrote:
-> Disable new_tx/rx and modify related settings helps avoid data
-> transmission instability, and better compatibility for mt8189.
->=20
-> Signed-off-by: Cathy Xu <ot_cathy.xu@mediatek.com>
+On 2/19/2026 11:42 AM, Raj Kumar Bhagat wrote:
+> Currently, the FILS discovery and unsolicited probe response templates
+> are always fetched from the default link of a virtual interface in both
+> Multi-Link Operation (MLO) and non-MLO cases. However, in the MLO case
+> there is a need to fetch these templates from a specific link instead of
+> the default link.
+> 
+> Hence, add support for fetching these templates based on the link ID from
+> the corresponding link data.
+> 
 > ---
-> =C2=A0drivers/mmc/host/mtk-sd.c | 10 +++++-----
-> =C2=A01 file changed, 5 insertions(+), 5 deletions(-)
->=20
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 302ac8529c4f..b2680cc054bd 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -682,15 +682,15 @@ static const struct mtk_mmc_compatible
-> mt8189_compat =3D {
-> =C2=A0	.needs_top_base =3D true,
-> =C2=A0	.pad_tune_reg =3D MSDC_PAD_TUNE0,
-> =C2=A0	.async_fifo =3D true,
-> -	.data_tune =3D true,
-> +	.data_tune =3D false,
-> =C2=A0	.busy_check =3D true,
-> =C2=A0	.stop_clk_fix =3D true,
-> -	.stop_dly_sel =3D 1,
-> -	.pop_en_cnt =3D 2,
-> +	.stop_dly_sel =3D 3,
-> +	.pop_en_cnt =3D 8,
-> =C2=A0	.enhance_rx =3D true,
-> =C2=A0	.support_64g =3D true,
-> -	.support_new_tx =3D true,
-> -	.support_new_rx =3D true,
-> +	.support_new_tx =3D false,
-> +	.support_new_rx =3D false,
-> =C2=A0	.support_spm_res_release =3D true,
-> =C2=A0};
-> =C2=A0
-I've tested this patch on Genio 720-EVK board that uses MT8391 SoC, a
-MT8189 variant.
-I did not get issue with these new settings when using this board eMMC
-(MSDC0) or microsd (MSDC1). I did not observe issues with previous
-settings but as it does not seem to cause regressions,
+> Sriram R (2):
+>       wifi: mac80211: fetch FILS discovery template by link ID
+>       wifi: mac80211: fetch unsolicited probe response template by link ID
+> 
+>  drivers/net/wireless/ath/ath11k/mac.c           |  4 +--
+>  drivers/net/wireless/ath/ath12k/mac.c           |  6 ++--
 
-Tested-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Acked-by: Jeff Johnson <jjohnson@kernel.org> # for drivers/net/wireless/ath
 
-Regards,
-Louis-Alexis
+>  drivers/net/wireless/mediatek/mt76/mt7915/mcu.c |  4 +--
+>  drivers/net/wireless/mediatek/mt76/mt7996/mcu.c |  6 ++--
+>  include/net/mac80211.h                          |  8 +++--
+>  net/mac80211/tx.c                               | 40 ++++++++++++++++---------
+>  6 files changed, 44 insertions(+), 24 deletions(-)
+> ---
+> base-commit: 37a93dd5c49b5fda807fd204edf2547c3493319c
+> change-id: 20260220-fils-prob-by-link-eef176414f1b
+> 
+
 
