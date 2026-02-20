@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9821FC5AD55
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Feb 2026 18:31:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29EBEC5AD57
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Feb 2026 18:39:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=brWaA6cS9nnxcx7TnhC5xTkVkOlNT9sYmXd5f9+hT/Q=; b=ZftsnPEwpBCacjtzS661t7CroQ
-	lAbaqxqyb4Z7LCve5xq09hbFIRt1a1h5smE8I20aHHelX+5LDgYF9O0KiAIR6gFg6T5O1jTynEmRb
-	JoVurXUd5FTLtCgqowebZ2+qZUM3LhhRmlF5lRxQkie2ZiCa2myL0ChQJNcdTybpCeTwekLnlEmaQ
-	Ii02oKjbgwM/yt/5huCfOKLPJRom4MwiE9IerEoDWc9SCTvzLqrEwnw5VMx8hf/aFzcaZJM+YRXaf
-	l+lKNE3XcjQER0NMBlE5NCAGYRxUVSGZoJfIUoPIVT4gBvkaQLSmdUNwuR4twzRzbCbdy4S9wRv0t
-	TrQVLN5Q==;
+	bh=l9wAYpUkNDggm+xpUXS46dSTi4ek7gG5ZohcgKwDyZ4=; b=ttTQcHHvdZdc8QJ4XLy+PhCJP2
+	F4YdNlJHn4ZCuCSXHQRZ3e//n6OXA8y7MW9mkdgANijR4tKhxKs3KZToej7UjAMSvQIvAy0W0MFlQ
+	lZqGA6nmUb2mISsk7BTgUW3Gt7oa3/kdGrXOQDvvic/FCKxh8NYilMjLjTm2XF2ol/zCzXRVUsGMB
+	XFYf3/CUbsJ5dNCq4aR4s1SU4u/9/ddds8PyTpw2LwNtpm+LaYIMqbftjY+KOdwfBnaZrM41l3p9y
+	tE9zYU2e9m0kDEc0RPfA5crJLKjb6O9kw/1ECzBk1b0JA+AdIrvYmmkA15ssq8aVzT9EQT8v3DvQ0
+	DuvQWGSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtVHY-0000000FSB2-1qTb;
-	Fri, 20 Feb 2026 18:31:16 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vtVPt-0000000FSeB-0j72;
+	Fri, 20 Feb 2026 18:39:53 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtVHU-0000000FSA7-37Re
+	id 1vtVPr-0000000FSdu-36wd
 	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Feb 2026 18:31:15 +0000
+	Fri, 20 Feb 2026 18:39:51 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 594EF44461
-	for <linux-mediatek@lists.infradead.org>; Fri, 20 Feb 2026 18:31:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 367CAC19424
-	for <linux-mediatek@lists.infradead.org>; Fri, 20 Feb 2026 18:31:10 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B03E060134
+	for <linux-mediatek@lists.infradead.org>; Fri, 20 Feb 2026 18:39:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6652FC4AF09
+	for <linux-mediatek@lists.infradead.org>; Fri, 20 Feb 2026 18:39:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771612270;
-	bh=jtxdnsFoaJ7ZZ3Cqn+tSp7m5G53dJk4cSH6H7At3v18=;
+	s=k20201202; t=1771612790;
+	bh=5381ncl+i3DeRJNXMHjSIVGfU1Cn20+SK2GkcZCssO8=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=a6uJkrPwgYJUifSyCTS6qLRblT3UuP8pQhDCmNAd2ogqq5vgBEsHwq8dslg95Fr1M
-	 QE1qEwpPqLbgGyGBKdPG/vP4VNWVDlhs9IYK06sSbep9fCo3MBIK+S5fNuzsKmGmWL
-	 h2/G71sxc2mVMfFqbdMY7IclfV225a4CVo51pykG11YGDk2h68oBqoWRHwrOTXN+eB
-	 HsbrO5uBlRdRKmL/zJwkT1bbPqJYSawCm7Zz78cgYbavZ+KUnACdpmbZj5IO+i0aRE
-	 XNBFYKoaXBvfdKZOJURklibqI4NNg3hc/C/o8ekrxP3QxYh6KF4Kdav65dJaAoaVfg
-	 nEz+gA8l7HzDQ==
-Received: by mail-lj1-f179.google.com with SMTP id 38308e7fff4ca-385bc6910eeso22887051fa.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 20 Feb 2026 10:31:10 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCVcXchyrAEgmfG91roukYDy4VxiuZxRx5iaxfjxB6J/bJPEBdiQndY32slcmaYLzu1KwCiegk2wWLCtcTLthg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxHzgsvssIyW6dKs0l9PdsXzMCkgCrNvqR/4B97iESJffM6FNIY
-	KSVzTh2bmDB6FwBdY3dS2l9FsePTAfxTZPRTygZwEcN1lchKAgOdngizgU1gmq/2snLeGS7sn2m
-	9g2F+fe2yiq9nqWinkPFGkvfT75T+QPk=
-X-Received: by 2002:ac2:4f0d:0:b0:59d:f2a4:3e98 with SMTP id
- 2adb3069b0e04-5a0ed88d733mr123595e87.4.1771612268567; Fri, 20 Feb 2026
- 10:31:08 -0800 (PST)
+	b=lBGabEWWsd4EIsekD8MaDuPKqwdyX+HEKywI+7kv+weBVA8spFSUlRTM6SrLqpbRm
+	 y0ZaXQ7ms9KM1kiRqOyeby/rQCfKLE1yxQtARi7h4bdNLE4WNSeLIbfOI5JFGb8YZj
+	 Xu8b/pnEGXKKvJS4hD+mYOMC2pRVDtxiHSA9aSYM1IMiPjJzrLuh3Kc8+LSemZdWQ6
+	 wDuzZE4XskIUyc2EfNp4tiEN69z2968GhDxrzVrwK5RJ6nYvf7Egt9CWbQPRDHAtJV
+	 /s+gb/IbLOh7u7Nhxp0P0HOjcAY+VFAMDi0tJtwCqOOgXCDtWB/3FrhToeKqOXEJPc
+	 kOsg5xCXdumFQ==
+Received: by mail-lj1-f180.google.com with SMTP id 38308e7fff4ca-385e7cafef9so20165101fa.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 20 Feb 2026 10:39:50 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCU1e1qcqbSZehgvpwpxplZxblyKGEYqlQA9cIljm6EDo2wP1WFn17aZhDaOVqm2wBYuMKyuQeaLUfLLx/o0NQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxrTWdNRg9cvQjZnsiZ9njwqbnKCpu3+eJzJ9bxL6ifYtMxvPbC
+	/P+UIsqqAgvxfUf36rlE9PgCHENUy/zFdGQxZNWQ+t53UyisA7SbbK1O7KkrGf6ceZwY3FQnHV2
+	P1t+676P11ZvXAEy2pgtTZFjzlOKSkTI=
+X-Received: by 2002:a2e:be1a:0:b0:37f:b6a4:f5df with SMTP id
+ 38308e7fff4ca-389a58a072bmr2575741fa.0.1771612788762; Fri, 20 Feb 2026
+ 10:39:48 -0800 (PST)
 MIME-Version: 1.0
-References: <20260219231624.8226-1-sean.wang@kernel.org> <0cb6c45b-a5a4-46bf-a73d-97c482da9339@molgen.mpg.de>
-In-Reply-To: <0cb6c45b-a5a4-46bf-a73d-97c482da9339@molgen.mpg.de>
+References: <20260219004007.19733-1-sean.wang@kernel.org> <20260219004007.19733-3-sean.wang@kernel.org>
+ <39e814ff-2ea2-4984-9e8a-2902fef7c4bc@manjaro.org>
+In-Reply-To: <39e814ff-2ea2-4984-9e8a-2902fef7c4bc@manjaro.org>
 From: Sean Wang <sean.wang@kernel.org>
-Date: Fri, 20 Feb 2026 12:30:56 -0600
-X-Gmail-Original-Message-ID: <CAGp9LzqYB=xPfAuL61xi-ve=f6PZWWaa2gpf50-75yXWee-ZHA@mail.gmail.com>
-X-Gm-Features: AaiRm50CGzZAUpdHBs8DARRVcPhWLB2FVeLnVfyzVg436zGF1NWQ8dHO4F1lG6w
-Message-ID: <CAGp9LzqYB=xPfAuL61xi-ve=f6PZWWaa2gpf50-75yXWee-ZHA@mail.gmail.com>
-Subject: Re: [PATCH 1/4] mmc: sdio: add MediaTek MT7902 SDIO device ID
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Cc: marcel@holtmann.org, luiz.dentz@gmail.com, ulf.hansson@linaro.org, 
-	linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-mmc@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+Date: Fri, 20 Feb 2026 12:39:37 -0600
+X-Gmail-Original-Message-ID: <CAGp9Lzos_u7pQQtvmFMzcnJ3JxyFwf6h=ZH=zGwp5pmrNsbR4A@mail.gmail.com>
+X-Gm-Features: AaiRm53lLKBAKXycbad-w8DaS1gdC-crDm_9Fe1tUWIv13Okh2y4_fIeyrE4Y68
+Message-ID: <CAGp9Lzos_u7pQQtvmFMzcnJ3JxyFwf6h=ZH=zGwp5pmrNsbR4A@mail.gmail.com>
+Subject: Re: [PATCH 03/11] wifi: mt76: mt7921: handle MT7902 irq_map quirk
+ with mutable copy
+To: =?UTF-8?Q?Philip_M=C3=BCller?= <philm@manjaro.org>
+Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, linux-wireless@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, 
+	Xiong Huang <xiong.huang@mediatek.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260220_103112_824260_7CCCB079 
-X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,55 +82,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Paul,
+Hi Philip,
 
-On Thu, Feb 19, 2026 at 5:28=E2=80=AFPM Paul Menzel <pmenzel@molgen.mpg.de>=
- wrote:
+On Fri, Feb 20, 2026 at 4:09=E2=80=AFAM Philip M=C3=BCller <philm@manjaro.o=
+rg> wrote:
 >
-> Dear Sean,
+> Hi Sean,
 >
+> on Linus master tree we still have 'mt76_mmio_init(&dev->mt76,
+> pcim_iomap_table(pdev)[0]);', hence your patch currently won't apply.
+
+The patchset is based on the latest mt76 tree.
+If needed, please apply the following commit first so the series
+applies cleanly:
+https://github.com/nbd168/wireless/commit/4eefc435c985f4dfdba9afb1c705f0e17=
+377c084
+That patch will go to Linus=E2=80=99 master first, then this series.
+
 >
-> Thank you for the patch.
->
-> Am 20.02.26 um 00:16 schrieb Sean Wang:
+> On 2/19/26 01:39, sean.wang@kernel.org wrote:
 > > From: Sean Wang <sean.wang@mediatek.com>
 > >
-> > Add SDIO device ID (0x790a) for MediaTek MT7902 to sdio_ids.h.
->
-> Tested how?
-
-Tested on real hardware with successful card detection, driver
-initialization and the connectivity.
-
->
+> > MT7902 PCIe requires a different wm2_complete_mask value, so introduce =
+a
+> > mutable per-device copy of the default irq_map and override the field
+> > only for this chip. Other devices continue using the shared const
+> > template.
+> >
+> > This is a prerequisite patch before enabling MT7902 PCIe support.
+> >
+> > Co-developed-by: Xiong Huang <xiong.huang@mediatek.com>
+> > Signed-off-by: Xiong Huang <xiong.huang@mediatek.com>
 > > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > > ---
-> >   include/linux/mmc/sdio_ids.h | 1 +
-> >   1 file changed, 1 insertion(+)
+> >   drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 14 ++++++++++++++
+> >   1 file changed, 14 insertions(+)
 > >
-> > diff --git a/include/linux/mmc/sdio_ids.h b/include/linux/mmc/sdio_ids.=
-h
-> > index 673cbdf43453..97cc834fb3d5 100644
-> > --- a/include/linux/mmc/sdio_ids.h
-> > +++ b/include/linux/mmc/sdio_ids.h
-> > @@ -112,6 +112,7 @@
-> >   #define SDIO_DEVICE_ID_MEDIATEK_MT7663              0x7663
-> >   #define SDIO_DEVICE_ID_MEDIATEK_MT7668              0x7668
-> >   #define SDIO_DEVICE_ID_MEDIATEK_MT7961              0x7961
-> > +#define SDIO_DEVICE_ID_MEDIATEK_MT7902               0x790a
->
-> Please sort it.
-
-I will address the sorting in v2.
-Thanks for the review.
-
->
+> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/=
+net/wireless/mediatek/mt76/mt7921/pci.c
+> > index 65c7fe671137..5f857a21f362 100644
+> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+> > @@ -327,6 +327,20 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
+> >       dev->hif_ops =3D &mt7921_pcie_ops;
+> >       dev->irq_map =3D &irq_map;
+> >       mt76_mmio_init(&dev->mt76, regs);
+> > +
+> > +     if (id->device =3D=3D 0x7902) {
+> > +             struct mt792x_irq_map *map;
+> > +
+> > +             /* MT7902 needs a mutable copy because wm2_complete_mask =
+differs */
+> > +             map =3D devm_kmemdup(&pdev->dev, &irq_map,
+> > +                                sizeof(irq_map), GFP_KERNEL);
+> > +             if (!map)
+> > +                     return -ENOMEM;
+> > +
+> > +             map->rx.wm2_complete_mask =3D 0;
+> > +             dev->irq_map =3D map;
+> > +     }
+> > +
+> >       tasklet_init(&mdev->irq_tasklet, mt792x_irq_tasklet, (unsigned lo=
+ng)dev);
 > >
-> >   #define SDIO_VENDOR_ID_MICROCHIP_WILC               0x0296
-> >   #define SDIO_DEVICE_ID_MICROCHIP_WILC1000   0x5347
+> >       dev->phy.dev =3D dev;
 >
 >
-> Kind regards,
+> --
+> Best, Philip
 >
-> Paul
 
