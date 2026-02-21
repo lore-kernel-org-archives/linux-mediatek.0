@@ -4,60 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19FCEC5B560
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Feb 2026 20:41:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7B5DC61DE2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Feb 2026 13:38:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zJAJz4As+dY2YvWTSGNfjXWs1izAe46KTiADqUeQoFM=; b=XRN+ubms5uUx7lKyCvZccdRqaK
-	HVS8YXrw+TmXYil4vR9k0655JpHpcGH7UIef6jBA96MJvTG6R52Cu8kLZ81MWTg3OxtYtOSevzox9
-	sJI6YInvRZrHUN6TjOPAtX8CAEzNTy3gIG+F813HXFPFKbSWQCov+36j6w5Y0/Ob30bUjWrsB814S
-	wZ5fXPUC0JsODytNUag8WkZ6eqKrzyJGquqiZlFjT0rdvbKOJP0goVCR2bmzGXQYGHeKkuTiiX5vT
-	wTVVxNxcrPzq/zJih45SvTQi40qFOKbOXDiFT1Xa1woS7Ge07KMcypVHK+93k3TmyfwEbZwbrox9m
-	7IgWbhog==;
+	bh=Pyk6Z+VoDuJMdL4eJZ3cKHVL9+OM0IxwS6L8hXr1m84=; b=l5NVWuk/xUC4BID5J74XbxYa0q
+	OHNWMTpJT84cc/veuGNT8wXOlBOW6XUS2U3qvHsS8puE3my8a9VzVaAlUmiQ0Ah/qxdDvxG7bOKdu
+	uyLTVhaG290LE4YdRyyKJVMFOlAdaqNssde/70D7JatllBFUYTrpgIYvO5OzGEBfHXEARKP7gIKyI
+	ZXKoRbsOl5myjRQFmgwJbGtSfFIRFG7G1+E6oJToMAJNv8RBEfUqjJDhUX2hZKL110FdUo6H5TY6K
+	OOd+Ln3iZHpCMAHlzO7fa1Twmp1QyfYW0PkEZ9zN/pcRD5SHpfpjXnkMtvXHaE+7Oztl9yfSn4IlT
+	rW4aE4NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtXJT-0000000FaBw-2f15;
-	Fri, 20 Feb 2026 20:41:23 +0000
-Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
+	id 1vtnBO-0000000G4UT-0hJD;
+	Sat, 21 Feb 2026 13:38:06 +0000
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtXJQ-0000000FaBV-2wIA
+	id 1vtnBL-0000000G4U7-1Yea
 	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Feb 2026 20:41:22 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id C5C9141F93;
-	Fri, 20 Feb 2026 21:41:13 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1771620077; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references:
-	 disposition-notification-to; bh=zJAJz4As+dY2YvWTSGNfjXWs1izAe46KTiADqUeQoFM=;
-	b=Z3IwoiBssdUWyxaJ3Z+AfKVDU+C+3egfr2l/bFeyQhrMZShF6N2JNY45Apz8hI0pod+480
-	zZllqWH+UBqxPtpD6J4xRdxlT5yUWunQcEOoZpvfvj1wVmidiJm4Cs8kYu/yDank+UnBdM
-	i1i7EUBPJDdxXcCSOex+mN5RyrzHvasGsQGJJfkqoCAnna3a3YU/mj7X8HX7hrhD+i5rLW
-	C+tLrjj7PLkfvkoIaRVVeHiCTFw6wUAgfZPR0rm0I4N/7EGNlV1C83y9We5+CgUpgDUEmq
-	2VXhYLn6R2PTlM/ujdn1OcMGUPhi6mXv8fxIxvGYghryimp9+UsFAxVJ5EngZA==
-Message-ID: <cab3c9a6-5563-40f5-9389-42ae3ac877ac@manjaro.org>
-Date: Fri, 20 Feb 2026 21:41:13 +0100
+	Sat, 21 Feb 2026 13:38:04 +0000
+Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-2ad4d639db3so14318905ad.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 21 Feb 2026 05:38:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1771681082; x=1772285882; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Pyk6Z+VoDuJMdL4eJZ3cKHVL9+OM0IxwS6L8hXr1m84=;
+        b=jEbcSrcm4A22KvaZZqOwJQ4gNBMlqRPYUOIOYSUsJAEGxj7ziASGFBOUajrJqrjAXq
+         rleHVB+KUBVU77YYHU9gY1xIJh9yrmAGnUSe/s06JYP2ModI05JR4QdZgWVIK2xqo882
+         vPtNxELVwvS+7fdauU2CPR02qrpU4yYT9M0HO68uTxv1WihWxpKpJRJXYMuVxsydLkda
+         jY4/juB64wYInv/UPjdoYqfzR2OJwGCLbQoOH8t49jaP8lf1/h73Wdjd0k/7GqebRktB
+         fMiMn6TV1m5KgniP1TkfS2XCtujjrZXYxyOSpcklNYAJBddlMtt0IPqFTw60d+R31aPs
+         eaYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1771681082; x=1772285882;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=Pyk6Z+VoDuJMdL4eJZ3cKHVL9+OM0IxwS6L8hXr1m84=;
+        b=uxg63wGaSWlE/qkQoxewRq5BfPY4MvkfAMHwUqDykPzJ00mGyaU3O1p5+CUMciqjAv
+         r8JzovQGqhbo8BDE8c+NDaHeEbYmsiTU2v6v0F7UaZ2vtUqfyUtHoMEJ9w4WqSoFVU2O
+         RJ8kXK9uQT34JguxbaJbgB+IBy26XvI8NF94XPHiBaJ1JiGaWwcvYKDl2iYoSYhQYx92
+         rWGct8v0UyUme564l1b18hXVmPYe2My23Gz43ayoiP95Z+Ofszbb/PQan3wsDdTSPJDi
+         eF6QvjnayyNhVqCV13KPgs0wmr7AW8NAaqSdcbS8klZiGGRTeKsZ7nrEqs0xIHq1WjlV
+         XcEQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUmlzuEgelatSUy66r500yPsVBSxlO2Bi4dk60eEILjuUbvHGt7i7H0iplNWMzONd2ESr9Pv5YilzishxPPzA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzj+3FRKCS7RKqCaArUktHT9Z7u4nr4V5t3TPBYZdXs6gZnEhnW
+	KzLUl5AeHZn6ysGoYoad4pdw9DyFh472zW8wop/WzNiKer+YXUz35sqeIr9T8g==
+X-Gm-Gg: AZuq6aKlm1vTBdOmCHL6/AiFFw/6mnDgpkKS2pwc2eUzIkBmNzpVgXEiHA3k0xZ1TMq
+	i5cH8ocb6eo6a9zAnGFh6wJbGM83StsbT9C+FllrXE+0aflpPSBCYsptNKG0iFESZy0FcUtzK4L
+	CRt1U8s9bj6P1MwssqUEbeT3jcVlyH/JmJvYzRwLitFeDczWPPJ6pmt/k0GagJNNqZHLqXDuVkZ
+	rxBupHP2qEoTo6n2f5LNmASl+/RlFwb1xzhfFKhXEb8piUVsDityohncr1TuedRjFxnJQbR/jKL
+	/d0ToAhmGqhst8uZBZAQuLKNHrIGarSQk9MNF64DmHLI1XsERHZB8bdMajiXSgwrYQv5AiVdxmJ
+	ZKgXWzx6289xUnLuMtWt0FvAzx8EG4cL3nn9204POBvO4DFTABLP9QMjt0ddFPwMmnTNRnV4V3A
+	23avmW8tb2edcdQxdpNnDvyXa9p22erYQRym0h7j8=
+X-Received: by 2002:a17:903:11cc:b0:2ab:344e:1400 with SMTP id d9443c01a7336-2ad74515cccmr29318235ad.37.1771681081793;
+        Sat, 21 Feb 2026 05:38:01 -0800 (PST)
+Received: from kush-pc.lan ([2409:40d4:420d:708c:4402:953d:ce2d:1659])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ad7500e29asm21493075ad.44.2026.02.21.05.37.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 21 Feb 2026 05:38:01 -0800 (PST)
+From: OnlineLearningTutorials <kush.kulshrestha5@gmail.com>
+X-Google-Original-From: OnlineLearningTutorials <kush.kulshrestha.5@gmail.com>
+To: sean.wang@kernel.org
+Cc: linux-bluetooth@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-mmc@vger.kernel.org,
+	luiz.dentz@gmail.com,
+	marcel@holtmann.org,
+	sean.wang@mediatek.com,
+	ulf.hansson@linaro.org
+Subject: Re: [PATCH 3/4] Bluetooth: btusb: Add new VID/PID 13d3/3579 for MT7902
+Date: Sat, 21 Feb 2026 19:07:48 +0530
+Message-ID: <20260221133748.309045-1-kush.kulshrestha.5@gmail.com>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20260219231624.8226-3-sean.wang@kernel.org>
+References: <20260219231624.8226-3-sean.wang@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/11] wifi: mt76: connac: use is_connac2() to replace
- is_mt7921() checks
-To: sean.wang@kernel.org, nbd@nbd.name, lorenzo.bianconi@redhat.com
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Sean Wang <sean.wang@mediatek.com>
-References: <20260219004007.19733-1-sean.wang@kernel.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philip_M=C3=BCller?= <philm@manjaro.org>
-Organization: Manjaro Community
-In-Reply-To: <20260219004007.19733-1-sean.wang@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260220_124121_107588_3B5B3574 
-X-CRM114-Status: GOOD (  19.04  )
+X-CRM114-CacheID: sfid-20260221_053803_419080_99C57D72 
+X-CRM114-Status: UNSURE (   7.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,289 +107,151 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Sean,
 
-this patch needed the following lines additionally to compile cleanly:
+Thanks for helping me to add driver for mt7902 chip.
 
-drivers/net/wireless/mediatek/mt76/mt792x_core.c
+I have checked the wifi driver for mt7902 and it is working correctly with new firmware,
+earlier I have issue with old firmware, thanks.
 
-@@ -691,7 +691,7 @@ int mt792x_init_wiphy(struct ieee80211_h
-      ieee80211_hw_set(hw, SUPPORTS_MULTI_BSSID);
-      ieee80211_hw_set(hw, SUPPORTS_ONLY_HE_MULTI_BSSID);
-
--    if (is_mt7921(&dev->mt76)) {
-+    if (is_connac2(&dev->mt76)) {
-          ieee80211_hw_set(hw, CHANCTX_STA_CSA);
-      }
-
-On 2/19/26 01:39, sean.wang@kernel.org wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
->
-> Unify all per-chip conditionals under the new is_connac2() helper. This
-> avoids confusion caused by the previous is_mt7921() check, which
-> implicitly covered multiple connac2 chipsets and no longer reflected its
-> actual scope. This is a clean-up only change with no functional impact.
->
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->   .../net/wireless/mediatek/mt76/mt76_connac.h  |  2 +-
->   .../wireless/mediatek/mt76/mt76_connac_mac.c  | 16 ++++++------
->   .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 26 +++++++++----------
->   .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  2 +-
->   .../net/wireless/mediatek/mt76/mt792x_core.c  |  2 +-
->   .../net/wireless/mediatek/mt76/mt792x_dma.c   |  2 +-
->   6 files changed, 25 insertions(+), 25 deletions(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> index 813d61bffc2c..02bea67d37c3 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> @@ -187,7 +187,7 @@ static inline bool is_mt7922(struct mt76_dev *dev)
->   	return mt76_chip(dev) == 0x7922;
->   }
->   
-> -static inline bool is_mt7921(struct mt76_dev *dev)
-> +static inline bool is_connac2(struct mt76_dev *dev)
->   {
->   	return mt76_chip(dev) == 0x7961 || is_mt7922(dev) || is_mt7920(dev);
->   }
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-> index 4ef44514d48d..e76f6e28b7f0 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-> @@ -173,7 +173,7 @@ void mt76_connac_write_hw_txp(struct mt76_dev *dev,
->   
->   	txp->msdu_id[0] = cpu_to_le16(id | MT_MSDU_ID_VALID);
->   
-> -	if (is_mt7663(dev) || is_mt7921(dev) || is_mt7925(dev))
-> +	if (is_mt7663(dev) || is_connac2(dev) || is_mt7925(dev))
->   		last_mask = MT_TXD_LEN_LAST;
->   	else
->   		last_mask = MT_TXD_LEN_AMSDU_LAST |
-> @@ -217,7 +217,7 @@ mt76_connac_txp_skb_unmap_hw(struct mt76_dev *dev,
->   	u32 last_mask;
->   	int i;
->   
-> -	if (is_mt7663(dev) || is_mt7921(dev) || is_mt7925(dev))
-> +	if (is_mt7663(dev) || is_connac2(dev) || is_mt7925(dev))
->   		last_mask = MT_TXD_LEN_LAST;
->   	else
->   		last_mask = MT_TXD_LEN_MSDU_LAST;
-> @@ -309,7 +309,7 @@ u16 mt76_connac2_mac_tx_rate_val(struct mt76_phy *mphy,
->   	chandef = mvif->ctx ? &mvif->ctx->def : &mphy->chandef;
->   	band = chandef->chan->band;
->   
-> -	if (is_mt7921(mphy->dev)) {
-> +	if (is_connac2(mphy->dev)) {
->   		rateidx = ffs(conf->basic_rates) - 1;
->   		goto legacy;
->   	}
-> @@ -547,7 +547,7 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
->   	val = MT_TXD1_LONG_FORMAT |
->   	      FIELD_PREP(MT_TXD1_WLAN_IDX, wcid->idx) |
->   	      FIELD_PREP(MT_TXD1_OWN_MAC, omac_idx);
-> -	if (!is_mt7921(dev))
-> +	if (!is_connac2(dev))
->   		val |= MT_TXD1_VTA;
->   	if (phy_idx || band_idx)
->   		val |= MT_TXD1_TGID;
-> @@ -556,7 +556,7 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
->   	txwi[2] = 0;
->   
->   	val = FIELD_PREP(MT_TXD3_REM_TX_COUNT, 15);
-> -	if (!is_mt7921(dev))
-> +	if (!is_connac2(dev))
->   		val |= MT_TXD3_SW_POWER_MGMT;
->   	if (key)
->   		val |= MT_TXD3_PROTECT_FRAME;
-> @@ -598,7 +598,7 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
->   		txwi[6] |= cpu_to_le32(val);
->   		txwi[3] |= cpu_to_le32(MT_TXD3_BA_DISABLE);
->   
-> -		if (!is_mt7921(dev)) {
-> +		if (!is_connac2(dev)) {
->   			u8 spe_idx = mt76_connac_spe_idx(mphy->antenna_mask);
->   
->   			if (!spe_idx)
-> @@ -830,7 +830,7 @@ mt76_connac2_mac_decode_he_mu_radiotap(struct mt76_dev *dev, struct sk_buff *skb
->   	};
->   	struct ieee80211_radiotap_he_mu *he_mu;
->   
-> -	if (is_mt7921(dev)) {
-> +	if (is_connac2(dev)) {
->   		mu_known.flags1 |= HE_BITS(MU_FLAGS1_SIG_B_COMP_KNOWN);
->   		mu_known.flags2 |= HE_BITS(MU_FLAGS2_PUNC_FROM_SIG_A_BW_KNOWN);
->   	}
-> @@ -1046,7 +1046,7 @@ int mt76_connac2_mac_fill_rx_rate(struct mt76_dev *dev,
->   		stbc = FIELD_GET(MT_PRXV_HT_STBC, v0);
->   		gi = FIELD_GET(MT_PRXV_HT_SGI, v0);
->   		*mode = FIELD_GET(MT_PRXV_TX_MODE, v0);
-> -		if (is_mt7921(dev))
-> +		if (is_connac2(dev))
->   			dcm = !!(idx & MT_PRXV_TX_DCM);
->   		else
->   			dcm = FIELD_GET(MT_PRXV_DCM, v0);
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> index 3f583e2a1dc1..d7fbf3454bb8 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> @@ -65,7 +65,7 @@ int mt76_connac_mcu_init_download(struct mt76_dev *dev, u32 addr, u32 len,
->   	int cmd;
->   
->   	if ((!is_connac_v1(dev) && addr == MCU_PATCH_ADDRESS) ||
-> -	    (is_mt7921(dev) && addr == 0x900000) ||
-> +	    (is_connac2(dev) && addr == 0x900000) ||
->   	    (is_mt7925(dev) && (addr == 0x900000 || addr == 0xe0002800)) ||
->   	    (is_mt799x(dev) && addr == 0x900000))
->   		cmd = MCU_CMD(PATCH_START_REQ);
-> @@ -402,7 +402,7 @@ void mt76_connac_mcu_sta_basic_tlv(struct mt76_dev *dev, struct sk_buff *skb,
->   	switch (vif->type) {
->   	case NL80211_IFTYPE_MESH_POINT:
->   	case NL80211_IFTYPE_AP:
-> -		if (vif->p2p && !is_mt7921(dev))
-> +		if (vif->p2p && !is_connac2(dev))
->   			conn_type = CONNECTION_P2P_GC;
->   		else
->   			conn_type = CONNECTION_INFRA_STA;
-> @@ -410,7 +410,7 @@ void mt76_connac_mcu_sta_basic_tlv(struct mt76_dev *dev, struct sk_buff *skb,
->   		basic->aid = cpu_to_le16(link_sta->sta->aid);
->   		break;
->   	case NL80211_IFTYPE_STATION:
-> -		if (vif->p2p && !is_mt7921(dev))
-> +		if (vif->p2p && !is_connac2(dev))
->   			conn_type = CONNECTION_P2P_GO;
->   		else
->   			conn_type = CONNECTION_INFRA_AP;
-> @@ -874,7 +874,7 @@ void mt76_connac_mcu_sta_tlv(struct mt76_phy *mphy, struct sk_buff *skb,
->   		struct sta_rec_vht *vht;
->   		int len;
->   
-> -		len = is_mt7921(dev) ? sizeof(*vht) : sizeof(*vht) - 4;
-> +		len = is_connac2(dev) ? sizeof(*vht) : sizeof(*vht) - 4;
->   		tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_VHT, len);
->   		vht = (struct sta_rec_vht *)tlv;
->   		vht->vht_cap = cpu_to_le32(sta->deflink.vht_cap.cap);
-> @@ -885,7 +885,7 @@ void mt76_connac_mcu_sta_tlv(struct mt76_phy *mphy, struct sk_buff *skb,
->   	/* starec uapsd */
->   	mt76_connac_mcu_sta_uapsd(skb, vif, sta);
->   
-> -	if (!is_mt7921(dev))
-> +	if (!is_connac2(dev))
->   		return;
->   
->   	if (sta->deflink.ht_cap.ht_supported || sta->deflink.he_cap.has_he)
-> @@ -1778,7 +1778,7 @@ int mt76_connac_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
->   	req->ssid_type_ext = n_ssids ? BIT(0) : 0;
->   	req->ssids_num = n_ssids;
->   
-> -	duration = is_mt7921(phy->dev) ? 0 : MT76_CONNAC_SCAN_CHANNEL_TIME;
-> +	duration = is_connac2(phy->dev) ? 0 : MT76_CONNAC_SCAN_CHANNEL_TIME;
->   	/* increase channel time for passive scan */
->   	if (!sreq->n_ssids)
->   		duration *= 2;
-> @@ -1821,7 +1821,7 @@ int mt76_connac_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
->   		req->ies_len = cpu_to_le16(sreq->ie_len);
->   	}
->   
-> -	if (is_mt7921(phy->dev))
-> +	if (is_connac2(phy->dev))
->   		req->scan_func |= SCAN_FUNC_SPLIT_SCAN;
->   
->   	memcpy(req->bssid, sreq->bssid, ETH_ALEN);
-> @@ -1897,7 +1897,7 @@ int mt76_connac_mcu_sched_scan_req(struct mt76_phy *phy,
->   		get_random_mask_addr(addr, sreq->mac_addr,
->   				     sreq->mac_addr_mask);
->   	}
-> -	if (is_mt7921(phy->dev)) {
-> +	if (is_connac2(phy->dev)) {
->   		req->mt7921.bss_idx = mvif->idx;
->   		req->mt7921.delay = cpu_to_le32(sreq->delay);
->   	}
-> @@ -2037,7 +2037,7 @@ mt76_connac_mcu_build_sku(struct mt76_dev *dev, s8 *sku,
->   			  struct mt76_power_limits *limits,
->   			  enum nl80211_band band)
->   {
-> -	int max_power = is_mt7921(dev) ? 127 : 63;
-> +	int max_power = is_connac2(dev) ? 127 : 63;
->   	int i, offset = sizeof(limits->cck);
->   
->   	memset(sku, max_power, MT_SKU_POWER_LIMIT);
-> @@ -2065,7 +2065,7 @@ mt76_connac_mcu_build_sku(struct mt76_dev *dev, s8 *sku,
->   		offset += 12;
->   	}
->   
-> -	if (!is_mt7921(dev))
-> +	if (!is_connac2(dev))
->   		return;
->   
->   	/* he */
-> @@ -2121,7 +2121,7 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
->   				  enum nl80211_band band)
->   {
->   	struct mt76_dev *dev = phy->dev;
-> -	int sku_len, batch_len = is_mt7921(dev) ? 8 : 16;
-> +	int sku_len, batch_len = is_connac2(dev) ? 8 : 16;
->   	static const u8 chan_list_2ghz[] = {
->   		1, 2,  3,  4,  5,  6,  7,
->   		8, 9, 10, 11, 12, 13, 14
-> @@ -2162,7 +2162,7 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
->   	if (!limits)
->   		return -ENOMEM;
->   
-> -	sku_len = is_mt7921(dev) ? sizeof(sku_tlbv) : sizeof(sku_tlbv) - 92;
-> +	sku_len = is_connac2(dev) ? sizeof(sku_tlbv) : sizeof(sku_tlbv) - 92;
->   	tx_power = 2 * phy->hw->conf.power_level;
->   	if (!tx_power)
->   		tx_power = 127;
-> @@ -3080,7 +3080,7 @@ static u32 mt76_connac2_get_data_mode(struct mt76_dev *dev, u32 info)
->   {
->   	u32 mode = DL_MODE_NEED_RSP;
->   
-> -	if ((!is_mt7921(dev) && !is_mt7925(dev)) || info == PATCH_SEC_NOT_SUPPORT)
-> +	if ((!is_connac2(dev) && !is_mt7925(dev)) || info == PATCH_SEC_NOT_SUPPORT)
->   		return mode;
->   
->   	switch (FIELD_GET(PATCH_SEC_ENC_TYPE_MASK, info)) {
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-> index f44977f9093d..1ef25385f3c6 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-> @@ -1866,7 +1866,7 @@ mt76_connac_mcu_gen_dl_mode(struct mt76_dev *dev, u8 feature_set, bool is_wa)
->   
->   	ret |= feature_set & FW_FEATURE_SET_ENCRYPT ?
->   	       DL_MODE_ENCRYPT | DL_MODE_RESET_SEC_IV : 0;
-> -	if (is_mt7921(dev) || is_mt7925(dev))
-> +	if (is_connac2(dev) || is_mt7925(dev))
->   		ret |= feature_set & FW_FEATURE_ENCRY_MODE ?
->   		       DL_CONFIG_ENCRY_MODE_SEL : 0;
->   	ret |= FIELD_PREP(DL_MODE_KEY_IDX,
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-> index f318a53e4deb..2142fcc4ae27 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-> @@ -151,7 +151,7 @@ void mt792x_stop(struct ieee80211_hw *hw, bool suspend)
->   	cancel_work_sync(&dev->reset_work);
->   	mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
->   
-> -	if (is_mt7921(&dev->mt76)) {
-> +	if (is_connac2(&dev->mt76)) {
->   		mt792x_mutex_acquire(dev);
->   		mt76_connac_mcu_set_mac_enable(&dev->mt76, 0, false, false);
->   		mt792x_mutex_release(dev);
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-> index 1ddec7788b66..34f07bd3097d 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-> @@ -356,7 +356,7 @@ EXPORT_SYMBOL_GPL(mt792x_poll_rx);
->   
->   int mt792x_wfsys_reset(struct mt792x_dev *dev)
->   {
-> -	u32 addr = is_mt7921(&dev->mt76) ? 0x18000140 : 0x7c000140;
-> +	u32 addr = is_connac2(&dev->mt76) ? 0x18000140 : 0x7c000140;
->   
->   	mt76_clear(dev, addr, WFSYS_SW_RST_B);
->   	msleep(50);
+For Bluetooth driver, you already added VID/PID 13d3/3579 for MT7902
+There are some other VID/PID which are part of mt7902 bluetooth chip
+	13d3/3580 - (my chip)
+	13d3/3594 - https://github.com/OnlineLearningTutorials/mt7902_temp/commit/f94e0075ca04e50629852adbb567e130f8784873
+	13d3/3596 - https://github.com/OnlineLearningTutorials/mt7902_temp/commit/2a3db89c7a87241846d166defa17ebd22d4be337
+	
+Please add these VID/PID or instruct me to add, 
+below are device debug - cat /sys/kernel/debug/usb/devices
 
 
--- 
-Best, Philip
+cat /sys/kernel/debug/usb/devices
+
+T:  Bus=03 Lev=01 Prnt=01 Port=02 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=13d3 ProdID=3580 Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+I:  If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+I:* If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+
+
+
+cat /sys/kernel/debug/usb/devices
+
+T: Bus=03 Lev=01 Prnt=01 Port=02 Cnt=01 Dev#= 3 Spd=480 MxCh= 0
+D: Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs= 1
+P: Vendor=13d3 ProdID=3594 Rev= 1.00
+S: Manufacturer=MediaTek Inc.
+S: Product=Wireless_Device
+S: SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A: FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E: Ad=81(I) Atr=03(Int.) MxPS= 16 Ivl=125us
+E: Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E: Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E: Ad=83(I) Atr=01(Isoc) MxPS= 0 Ivl=1ms
+E: Ad=03(O) Atr=01(Isoc) MxPS= 0 Ivl=1ms
+I: If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E: Ad=83(I) Atr=01(Isoc) MxPS= 9 Ivl=1ms
+E: Ad=03(O) Atr=01(Isoc) MxPS= 9 Ivl=1ms
+I: If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E: Ad=83(I) Atr=01(Isoc) MxPS= 17 Ivl=1ms
+E: Ad=03(O) Atr=01(Isoc) MxPS= 17 Ivl=1ms
+I: If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E: Ad=83(I) Atr=01(Isoc) MxPS= 25 Ivl=1ms
+E: Ad=03(O) Atr=01(Isoc) MxPS= 25 Ivl=1ms
+I: If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E: Ad=83(I) Atr=01(Isoc) MxPS= 33 Ivl=1ms
+E: Ad=03(O) Atr=01(Isoc) MxPS= 33 Ivl=1ms
+I: If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E: Ad=83(I) Atr=01(Isoc) MxPS= 49 Ivl=1ms
+E: Ad=03(O) Atr=01(Isoc) MxPS= 49 Ivl=1ms
+I: If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E: Ad=83(I) Atr=01(Isoc) MxPS= 63 Ivl=1ms
+E: Ad=03(O) Atr=01(Isoc) MxPS= 63 Ivl=1ms
+I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E: Ad=8a(I) Atr=03(Int.) MxPS= 64 Ivl=125us
+E: Ad=0a(O) Atr=03(Int.) MxPS= 64 Ivl=125us
+I: If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E: Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E: Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+
+
+cat /sys/kernel/debug/usb/devices
+
+T:  Bus=07 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=13d3 ProdID=3596 Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+
+
+Thanks
 
 
