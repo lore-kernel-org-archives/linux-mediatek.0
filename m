@@ -4,71 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2522C61DE8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Feb 2026 20:27:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C935CC6369F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Feb 2026 15:21:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ps69o7WWPr6vz2OyjQZ7xbhelTlJcel0qMHZyQfxkmg=; b=OkcQSiKnbLTo6q94wzKl+j2Kdz
-	Wob50AZVDjKW+/fIsRzs0Ukrlh/70znfd0TwZfMPh1Wsi7W3nNye5LSvVoofP5Z5OOplvxy10P39Y
-	afGBcCK26mUmN1EcCF/mxNXc+ZXO23sEiWjgqs/5LrZqhrIruvAXPD0i8CByhMrcQm4x8Hota+lzp
-	rWXa3UQ5VLbRqN5HgO8IsaXR+OyQkzscho/qJPKUfwjwpFA8QhcsdgmfJqK0AZCuGe0nJrkZGQ0rT
-	wkmwSb/dbo3iNTaYT0XXb5EtfbunoNgYHwyCakIuSo92yg0GipHUHcUy0zpJF3vfc3RniTVzuZ/HG
-	fyYIozLQ==;
+	bh=RwMyY8SrnHU2z32vgoGv2ovly9AsWZ9ieYYoE4/CChA=; b=2Ad6WERCcmEtDdpieAHPg59Wse
+	quud1ytKPZuJ3iEjjQCTi4k/DRhom81TWbZumPJ+k+KkLF+16f6e0okoBC6++GtUxth9K9epKT6Px
+	gGG44UoSLoZ0lvKYvsOlHrwdxsA+YrTijNSoCE77f2pP7q2S1nj3oFDVKqP5/bxZM9m/4u4kDxBjL
+	ALAgbEAl+HDTQnjVnAcUBm+YGZH+A3C+EFHMBvGfy/JHDbrE4NVALo7H+JSS3xusmWn/0bfx4ts/q
+	UTX4K40cmVni556Iotbu62BVrRakJiN5/Sv9eZyygNgr4Fgy+hRWaVGd2YIFkBJDd4Obk0wwXFCz8
+	9nCUf8ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtta2-0000000GJ8m-0R47;
-	Sat, 21 Feb 2026 20:27:58 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vuBGl-0000000GmKz-27Lk;
+	Sun, 22 Feb 2026 15:21:15 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vttZz-0000000GJ8Q-2nU0
+	id 1vuBGj-0000000GmKb-2bDv
 	for linux-mediatek@lists.infradead.org;
-	Sat, 21 Feb 2026 20:27:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id AF80E444E5
-	for <linux-mediatek@lists.infradead.org>; Sat, 21 Feb 2026 20:27:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83A9FC19425
-	for <linux-mediatek@lists.infradead.org>; Sat, 21 Feb 2026 20:27:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771705674;
-	bh=zneKyBJndQq0Mj4R/3czIhM2Q/54LTosY2Thm/qYPqQ=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=eD3ip8A+YBW3KNk2kDd6MXbtXNuRSpQdp+c9+UBK5cs7m4Ltt6fVt8BRxOQxXSDJe
-	 fXZb5Xu25fXXKlX5Qiy04NxE/ek9dIHIhyPTTPfvGakk9wFcbYWz4YpnqMc5uJek6g
-	 p56xMVQ6+GuYL6RmEK8AKFcAkmI/yfnC/0UDCgFGkYKbIbweqBj7/7Ms9JQWSU5xrR
-	 WbpUjCswf/VvBEFSsBRdfuJn+XV0xgO7SRsWlX4PNnWqIGZo7Uv2doyepdw78t2iDn
-	 Wbz6i0lmBPLzQRansr4DdTcy9F2NhzqM9MEtGP1iAy3O78fjtw1enSbffGdZ38QXnn
-	 5pslqUa5AkPMA==
-Received: by mail-lj1-f172.google.com with SMTP id 38308e7fff4ca-3870df2331aso40316051fa.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 21 Feb 2026 12:27:54 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXPd46weVZHYzhc2Acf9lZ4wBT6M4PoNeY6uKd4FxjMPUuPk0nQzXbgDmVoruDua5WLEZD/ZkuoTJ2IWOKFvA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy95CLiHFYr1C82rNiy4xXX56+UyeQ9SJ70S1P2TBtgTtNE2Vn5
-	wnhlEoXvuif5K7czLLLwdpxP4wDnJvG8uXJ3VVScO7s41iDXHFR1+3cv6V1RSqrIDAcPg9qp7gu
-	s9JHqaKYHfnDpiDqk3ctsgTGqIihKiO0=
-X-Received: by 2002:a2e:3212:0:b0:386:4942:246d with SMTP id
- 38308e7fff4ca-38853a09209mr26215631fa.21.1771705672809; Sat, 21 Feb 2026
- 12:27:52 -0800 (PST)
+	Sun, 22 Feb 2026 15:21:14 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-483a233819aso32877725e9.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 22 Feb 2026 07:21:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1771773671; x=1772378471; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=RwMyY8SrnHU2z32vgoGv2ovly9AsWZ9ieYYoE4/CChA=;
+        b=LZJ0jkHMD82BPEcq5zr/HExvxHP+cR6rlMuaNTrUrV4DzpZIUbyaCOvEr+I24mAztw
+         wqP57DHNaWVVmlAgnLjdKFjsYaKZXLCUoqUKjvbpSFats8Ch/XjIff9sP67c/5z3Y/UQ
+         Wg91Z9TPVt4ak0D4nchq9KDTX+1nlLYZI202Dino30PdLixMT5Rbf2TEOLweoZgbQpok
+         /0JY1yUBB+IDff7uw6x8yA63c8xNJ6qRuRrJ3WQj//NxTUCBnF8V5TOIBLotgDeqZgc5
+         zRgbtxusHXbF3llwn6uJ6oiMiwXP8UCz1beSJCHF7/aNNsFfDcp8yVsW6ts17GVoEZZE
+         EUyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1771773671; x=1772378471;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:subject:from:user-agent:mime-version:date:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=RwMyY8SrnHU2z32vgoGv2ovly9AsWZ9ieYYoE4/CChA=;
+        b=f0kbFq+gyo5pbTNM3Kv+Mx4OI4r1ItgzNQxmFcIeTdCVaxsRSpWeKkbXm9ka6pdcwS
+         JxZqq1JlOrfpR81iHBZv2yqJ/UF42mtFTA/cDh4dcE4ZCPnP6u/cGYPfR64GhWmLEIfV
+         XSFcQGE0CswQAqTlIR+ugWJ2Cjta/hzrsCGPqWqadYf2xWBdIrpiveUyU+GfFLMQ7VBj
+         l1NSfldB7czQ2X0WZiLI02mB1n7ySqfrAk2XC8iizBh691a4bGnkGGV05hYq1hyOaK2F
+         0GUgXAnxFW9GQvWWYouC0AMzhkaXXHhhBgGBGVj9x5510xfMWGp2aZkJJSGtkqzy2FlJ
+         +9cg==
+X-Forwarded-Encrypted: i=1; AJvYcCUIaf062BmVuOTxkee97QLqwCryFW+25Qp17fVTJ69c/OIxnSNfPguzTX2nbB+weD+tBMJuGChzg+jT3VO0nw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzr2IFxOmMcDDPk2D6vBNID0LVnGbdXu8rfl6VxlZqrH8nfMo/S
+	z5jpLXlblAN1u/+qEuxQe87OhV56LeVAVCZZwKPL+QMH7+o5lEovEWvy
+X-Gm-Gg: AZuq6aLiQDQK62SfnvGpKoxW9gXL2h/NLa+PS5rJ0L6DXYf+14H60wgoZizXY4yHUas
+	RmwPL0Bhgiy6BvQHYtUQFFW8V+5hERkj5LVWLTDD/JgG+HntSWenRtMZo9Ua0sL5WolahTxr2hA
+	fTFOrfiZ/RXUi+GdvmfMieJINSfxF28bMjqThFLKnqnKTV9aOxnfndvoD4A2L6q9xTg9y+zoQUE
+	vSfGjc+r4CDw3GMf1B8eBKRJWOtOkPtaZsddwcVdT6Rmj+4cPZffZkT/M/xP4zrbnYCHyxOoS8K
+	GNlDTv6QJxdaZziODS4y4Sie/HiGtZJfXIsJI7svI2c/8iOzjm/kKaKif+WAcUYuPWpLS172Dms
+	I+vc2bTyL52xo0an8Nk/TVIu/+kpRCFo2WlOGL9KPwRB1fDnsKWur9GEHC83Y0rTMqh+Dzs8ram
+	0xo/h2FuJ1ldUe39fgPpnbWkGN34imXg==
+X-Received: by 2002:a05:600c:4fd5:b0:483:498f:7963 with SMTP id 5b1f17b1804b1-483a9637a61mr79460125e9.26.1771773670964;
+        Sun, 22 Feb 2026 07:21:10 -0800 (PST)
+Received: from [192.168.1.50] ([81.196.40.93])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-483a31f0330sm177582775e9.9.2026.02.22.07.21.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 22 Feb 2026 07:21:10 -0800 (PST)
+Message-ID: <11ad2bab-deb7-4a8d-966a-75ffd2bb8e71@gmail.com>
+Date: Sun, 22 Feb 2026 17:21:06 +0200
 MIME-Version: 1.0
-References: <20260219231624.8226-3-sean.wang@kernel.org> <20260221133748.309045-1-kush.kulshrestha.5@gmail.com>
-In-Reply-To: <20260221133748.309045-1-kush.kulshrestha.5@gmail.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Sat, 21 Feb 2026 14:27:41 -0600
-X-Gmail-Original-Message-ID: <CAGp9Lzoq3nZS8A9m=H9JJmiCv11bWDmoLXqBLCU-Qm80k7=R1Q@mail.gmail.com>
-X-Gm-Features: AaiRm51aTshfZS8JovVoAN872wiVNqYZMZDUTqUzHSK5_NRtRPr2fd9rGAtzk0U
-Message-ID: <CAGp9Lzoq3nZS8A9m=H9JJmiCv11bWDmoLXqBLCU-Qm80k7=R1Q@mail.gmail.com>
-Subject: Re: [PATCH 3/4] Bluetooth: btusb: Add new VID/PID 13d3/3579 for MT7902
-To: OnlineLearningTutorials <kush.kulshrestha5@gmail.com>
-Cc: linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-mmc@vger.kernel.org, luiz.dentz@gmail.com, marcel@holtmann.org, 
-	sean.wang@mediatek.com, ulf.hansson@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+From: Bitterblue Smith <rtl8821cerfe2@gmail.com>
+Subject: Re: [PATCH 3/4] Bluetooth: btusb: Add new VID/PID 13d3/3579 for
+ MT7902
+To: Sean Wang <sean.wang@kernel.org>, marcel@holtmann.org,
+ luiz.dentz@gmail.com, ulf.hansson@linaro.org
+Cc: linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-mmc@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>
+References: <20260219231624.8226-1-sean.wang@kernel.org>
+ <20260219231624.8226-3-sean.wang@kernel.org>
+Content-Language: en-US
+In-Reply-To: <20260219231624.8226-3-sean.wang@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260221_122755_754123_0DBE3552 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20260222_072113_787952_2A3E2506 
+X-CRM114-Status: GOOD (  13.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,201 +103,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 21, 2026 at 7:38=E2=80=AFAM OnlineLearningTutorials
-<kush.kulshrestha5@gmail.com> wrote:
->
-> Hi Sean,
->
-> Thanks for helping me to add driver for mt7902 chip.
->
-> I have checked the wifi driver for mt7902 and it is working correctly wit=
-h new firmware,
-> earlier I have issue with old firmware, thanks.
->
-> For Bluetooth driver, you already added VID/PID 13d3/3579 for MT7902
-> There are some other VID/PID which are part of mt7902 bluetooth chip
->         13d3/3580 - (my chip)
->         13d3/3594 - https://github.com/OnlineLearningTutorials/mt7902_tem=
-p/commit/f94e0075ca04e50629852adbb567e130f8784873
->         13d3/3596 - https://github.com/OnlineLearningTutorials/mt7902_tem=
-p/commit/2a3db89c7a87241846d166defa17ebd22d4be337
->
-> Please add these VID/PID or instruct me to add,
+On 20/02/2026 01:16, Sean Wang wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> Add VID 13d3 & PID 3633 for MediaTek MT7922 USB Bluetooth chip.
+> 
 
-Hi Kush,
+Hi, there is a copy paste error.
 
-Glad to hear Wi-Fi works with the new firmware.
-I=E2=80=99ll add the additional Bluetooth VID/PIDs in the next version to m=
-ake
-the MT7902 chipset more accessible.
-Appreciate the report and logs.
+> The information in /sys/kernel/debug/usb/devices about the Bluetooth
+> device is listed as the below.
+> 
+> T:  Bus=01 Lev=01 Prnt=01 Port=09 Cnt=04 Dev#=  7 Spd=480  MxCh= 0
+> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+> P:  Vendor=13d3 ProdID=3579 Rev= 1.00
+> S:  Manufacturer=MediaTek Inc.
+> S:  Product=Wireless_Device
+> S:  SerialNumber=000000000
+> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> I:  If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+> I:* If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  drivers/bluetooth/btusb.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+> index 247d6aff5e79..c8c50daec967 100644
+> --- a/drivers/bluetooth/btusb.c
+> +++ b/drivers/bluetooth/btusb.c
+> @@ -671,7 +671,8 @@ static const struct usb_device_id quirks_table[] = {
+>  						     BTUSB_WIDEBAND_SPEECH },
+>  	{ USB_DEVICE(0x13d3, 0x3606), .driver_info = BTUSB_MEDIATEK |
+>  						     BTUSB_WIDEBAND_SPEECH },
+> -
+> +	{ USB_DEVICE(0x13d3, 0x3579), .driver_info = BTUSB_MEDIATEK |
+> +						     BTUSB_WIDEBAND_SPEECH },
+>  	/* MediaTek MT7922 Bluetooth devices */
+>  	{ USB_DEVICE(0x13d3, 0x3585), .driver_info = BTUSB_MEDIATEK |
+>  						     BTUSB_WIDEBAND_SPEECH },
 
-> below are device debug - cat /sys/kernel/debug/usb/devices
->
->
-> cat /sys/kernel/debug/usb/devices
->
-> T:  Bus=3D03 Lev=3D01 Prnt=3D01 Port=3D02 Cnt=3D01 Dev#=3D  2 Spd=3D480  =
-MxCh=3D 0
-> D:  Ver=3D 2.10 Cls=3Def(misc ) Sub=3D02 Prot=3D01 MxPS=3D64 #Cfgs=3D  1
-> P:  Vendor=3D13d3 ProdID=3D3580 Rev=3D 1.00
-> S:  Manufacturer=3DMediaTek Inc.
-> S:  Product=3DWireless_Device
-> S:  SerialNumber=3D000000000
-> C:* #Ifs=3D 3 Cfg#=3D 1 Atr=3De0 MxPwr=3D100mA
-> A:  FirstIf#=3D 0 IfCount=3D 3 Cls=3De0(wlcon) Sub=3D01 Prot=3D01
-> I:* If#=3D 0 Alt=3D 0 #EPs=3D 3 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D81(I) Atr=3D03(Int.) MxPS=3D  16 Ivl=3D125us
-> E:  Ad=3D82(I) Atr=3D02(Bulk) MxPS=3D 512 Ivl=3D0ms
-> E:  Ad=3D02(O) Atr=3D02(Bulk) MxPS=3D 512 Ivl=3D0ms
-> I:* If#=3D 1 Alt=3D 0 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D   0 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D   0 Ivl=3D1ms
-> I:  If#=3D 1 Alt=3D 1 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D   9 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D   9 Ivl=3D1ms
-> I:  If#=3D 1 Alt=3D 2 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  17 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  17 Ivl=3D1ms
-> I:  If#=3D 1 Alt=3D 3 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  25 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  25 Ivl=3D1ms
-> I:  If#=3D 1 Alt=3D 4 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  33 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  33 Ivl=3D1ms
-> I:  If#=3D 1 Alt=3D 5 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  49 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  49 Ivl=3D1ms
-> I:  If#=3D 1 Alt=3D 6 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  63 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  63 Ivl=3D1ms
-> I:  If#=3D 2 Alt=3D 0 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D8a(I) Atr=3D03(Int.) MxPS=3D  64 Ivl=3D125us
-> E:  Ad=3D0a(O) Atr=3D03(Int.) MxPS=3D  64 Ivl=3D125us
-> I:* If#=3D 2 Alt=3D 1 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D8a(I) Atr=3D03(Int.) MxPS=3D 512 Ivl=3D125us
-> E:  Ad=3D0a(O) Atr=3D03(Int.) MxPS=3D 512 Ivl=3D125us
->
->
->
-> cat /sys/kernel/debug/usb/devices
->
-> T: Bus=3D03 Lev=3D01 Prnt=3D01 Port=3D02 Cnt=3D01 Dev#=3D 3 Spd=3D480 MxC=
-h=3D 0
-> D: Ver=3D 2.10 Cls=3Def(misc ) Sub=3D02 Prot=3D01 MxPS=3D64 #Cfgs=3D 1
-> P: Vendor=3D13d3 ProdID=3D3594 Rev=3D 1.00
-> S: Manufacturer=3DMediaTek Inc.
-> S: Product=3DWireless_Device
-> S: SerialNumber=3D000000000
-> C:* #Ifs=3D 3 Cfg#=3D 1 Atr=3De0 MxPwr=3D100mA
-> A: FirstIf#=3D 0 IfCount=3D 3 Cls=3De0(wlcon) Sub=3D01 Prot=3D01
-> I:* If#=3D 0 Alt=3D 0 #EPs=3D 3 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E: Ad=3D81(I) Atr=3D03(Int.) MxPS=3D 16 Ivl=3D125us
-> E: Ad=3D82(I) Atr=3D02(Bulk) MxPS=3D 512 Ivl=3D0ms
-> E: Ad=3D02(O) Atr=3D02(Bulk) MxPS=3D 512 Ivl=3D0ms
-> I:* If#=3D 1 Alt=3D 0 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E: Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D 0 Ivl=3D1ms
-> E: Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D 0 Ivl=3D1ms
-> I: If#=3D 1 Alt=3D 1 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E: Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D 9 Ivl=3D1ms
-> E: Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D 9 Ivl=3D1ms
-> I: If#=3D 1 Alt=3D 2 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E: Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D 17 Ivl=3D1ms
-> E: Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D 17 Ivl=3D1ms
-> I: If#=3D 1 Alt=3D 3 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E: Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D 25 Ivl=3D1ms
-> E: Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D 25 Ivl=3D1ms
-> I: If#=3D 1 Alt=3D 4 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E: Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D 33 Ivl=3D1ms
-> E: Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D 33 Ivl=3D1ms
-> I: If#=3D 1 Alt=3D 5 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E: Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D 49 Ivl=3D1ms
-> E: Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D 49 Ivl=3D1ms
-> I: If#=3D 1 Alt=3D 6 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E: Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D 63 Ivl=3D1ms
-> E: Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D 63 Ivl=3D1ms
-> I:* If#=3D 2 Alt=3D 0 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3D(none)
-> E: Ad=3D8a(I) Atr=3D03(Int.) MxPS=3D 64 Ivl=3D125us
-> E: Ad=3D0a(O) Atr=3D03(Int.) MxPS=3D 64 Ivl=3D125us
-> I: If#=3D 2 Alt=3D 1 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3D(none)
-> E: Ad=3D8a(I) Atr=3D03(Int.) MxPS=3D 512 Ivl=3D125us
-> E: Ad=3D0a(O) Atr=3D03(Int.) MxPS=3D 512 Ivl=3D125us
->
->
-> cat /sys/kernel/debug/usb/devices
->
-> T:  Bus=3D07 Lev=3D01 Prnt=3D01 Port=3D00 Cnt=3D01 Dev#=3D  2 Spd=3D480  =
-MxCh=3D 0
-> D:  Ver=3D 2.10 Cls=3Def(misc ) Sub=3D02 Prot=3D01 MxPS=3D64 #Cfgs=3D  1
-> P:  Vendor=3D13d3 ProdID=3D3596 Rev=3D 1.00
-> S:  Manufacturer=3DMediaTek Inc.
-> S:  Product=3DWireless_Device
-> S:  SerialNumber=3D000000000
-> C:* #Ifs=3D 3 Cfg#=3D 1 Atr=3De0 MxPwr=3D100mA
-> A:  FirstIf#=3D 0 IfCount=3D 3 Cls=3De0(wlcon) Sub=3D01 Prot=3D01
-> I:* If#=3D 0 Alt=3D 0 #EPs=3D 3 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D81(I) Atr=3D03(Int.) MxPS=3D  16 Ivl=3D125us
-> E:  Ad=3D82(I) Atr=3D02(Bulk) MxPS=3D 512 Ivl=3D0ms
-> E:  Ad=3D02(O) Atr=3D02(Bulk) MxPS=3D 512 Ivl=3D0ms
-> I:* If#=3D 1 Alt=3D 0 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D   0 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D   0 Ivl=3D1ms
-> I:  If#=3D 1 Alt=3D 1 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D   9 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D   9 Ivl=3D1ms
-> I:  If#=3D 1 Alt=3D 2 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  17 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  17 Ivl=3D1ms
-> I:  If#=3D 1 Alt=3D 3 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  25 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  25 Ivl=3D1ms
-> I:  If#=3D 1 Alt=3D 4 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  33 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  33 Ivl=3D1ms
-> I:  If#=3D 1 Alt=3D 5 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  49 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  49 Ivl=3D1ms
-> I:  If#=3D 1 Alt=3D 6 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3Dbtusb
-> E:  Ad=3D83(I) Atr=3D01(Isoc) MxPS=3D  63 Ivl=3D1ms
-> E:  Ad=3D03(O) Atr=3D01(Isoc) MxPS=3D  63 Ivl=3D1ms
-> I:* If#=3D 2 Alt=3D 0 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3D(none)
-> E:  Ad=3D8a(I) Atr=3D03(Int.) MxPS=3D  64 Ivl=3D125us
-> E:  Ad=3D0a(O) Atr=3D03(Int.) MxPS=3D  64 Ivl=3D125us
-> I:  If#=3D 2 Alt=3D 1 #EPs=3D 2 Cls=3De0(wlcon) Sub=3D01 Prot=3D01 Driver=
-=3D(none)
-> E:  Ad=3D8a(I) Atr=3D03(Int.) MxPS=3D 512 Ivl=3D125us
-> E:  Ad=3D0a(O) Atr=3D03(Int.) MxPS=3D 512 Ivl=3D125us
->
->
-> Thanks
->
+My MT7902 card bought from Aliexpress has a different USB ID: 0e8d 1ede.
+
+    T:  Bus=01 Lev=01 Prnt=01 Port=05 Cnt=02 Dev#=  4 Spd=480  MxCh= 0
+    D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+    P:  Vendor=0e8d ProdID=1ede Rev= 1.00
+    S:  Manufacturer=MediaTek Inc.
+    S:  Product=Wireless_Device
+    S:  SerialNumber=000000000
+    C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+    A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+    I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+    E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+    E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+    E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+    I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+    E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+    E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+    I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+    E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+    E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+    I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+    E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+    E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+    I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+    E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+    E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+    I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+    E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+    E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+    I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+    E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+    E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+    I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+    E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+    E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+    I:  If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+    E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+    E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+    I:* If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+    E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+    E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+
 
