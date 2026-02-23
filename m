@@ -4,66 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DABB6EA4FC7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 14:46:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6BF5E909BC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 15:42:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8dsGNhs/X2W16wd1pyLsNwJnTK0xSFKOeI3nGX+ZGPM=; b=ZjTajJiLhZjD2vgf/pnNOBdLJV
-	4tm/ILigWmfxZCbq2I/deeOXr1ZDGj5BxHB6KJMQIObJb0dKLYd867Vqv/Bc5VMj+fhMrcheUEaQv
-	qftoM/2TvJWpoPKsICcndAxuVtIR5p/ICt2dPeS0iUFJh1xX7eapYx38+s5B7EZgbVlDDYcAjBHNl
-	KvJviYaYTtLqC/N3uQaJONZSDgiRDABpKC+Xv9zvaHDeTgejQ9oucbbaqInma3voJLUwlxxYR0CV/
-	OFWl3T9b9v2RDfrvVpdxCixaX/g8IDDgCDm3P4oalBeem4cLQKv1BILkI81kRj/jiclrOz+VJYBX1
-	IhLnq2FA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oQN6ZUdZ5erQ+SaInNOddsQxyH6uHy7XfKgfFoo7sKc=; b=SfQVEhG2uMktXf1Vd8SKmBMyrZ
+	ZzdATK6U1YU/7fMUUShuHBePB/KcXrUwDITlcCt1wxwoYrXpDSrFNjErCS8tBPlrh4b9myr3XuPYC
+	c7W0UaO4GLjehlY9t34yYQnUD+/HMOVtcC9txoIcWJ9iZptnlQqYy0h2VNl5j2UEAATe2aGeLBuGW
+	1h+cW/scEajgO60+8LGyrZFSeiaAklfpeVtIz+F4JVUyQVsGvRtUTtZ146fEgYKAb7gRtYCCv6mw7
+	M6eXEpSj3G/v4VqcM69Bt+01owUthg2Z0oG4WE0Xti362ztH1YZwbzN3U2yFlwVnb900V5B2HoxUr
+	+Hc19IBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuXCW-00000000UpS-3eQd;
-	Mon, 23 Feb 2026 14:46:20 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vuY4b-00000000b6Y-1vVQ;
+	Mon, 23 Feb 2026 15:42:13 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuXCT-00000000Up1-1Tkb;
-	Mon, 23 Feb 2026 14:46:18 +0000
+	id 1vuY4a-00000000b5y-2QLD;
+	Mon, 23 Feb 2026 15:42:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A06B5407C9;
-	Mon, 23 Feb 2026 14:46:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 52568C116C6;
-	Mon, 23 Feb 2026 14:46:13 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8D50460054;
+	Mon, 23 Feb 2026 15:42:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13CECC116C6;
+	Mon, 23 Feb 2026 15:42:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771857975;
-	bh=teNVBJErbdtcUWBxBqB1OQagnnRI/zPyGSOOwMdkUNY=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=me/OJi+zmeH2vkjG9b4f82FAl9EM1UZzt69iajB21pITCljyf6YEPK2ufDGBErn4p
-	 GR3d5GxDZgTOn5eKSUrJfw8oZm3p3FEIdIW/ZL93xuaWEc+H1ZasIO1WFzEOiViaQI
-	 YKzQMNCr/6XWrALZ6/nIH7ZT2eDLpMs38KVXnSsgO3SIUihqNm9dYr/JUiXogqWCqz
-	 SpetGQ0CYqs9mnyEtmQ8FKCHW1kfoWksIWv36oiEjtoQ4o1AN6pEoeTltDd7C8yixO
-	 AJudpKBdPHE1ZIlmo5pUANfHzHi0370aqsAnoadrKeByTumiYPq//B5x/XxEtz0dEV
-	 Cy8rYDgAEu6Uw==
-From: Mark Brown <broonie@kernel.org>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, 
- Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, 
- David Lechner <dlechner@baylibre.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20260219-mtk-mt6359-fix-regulator-names-v1-0-ee0fcebfe1d9@baylibre.com>
-References: <20260219-mtk-mt6359-fix-regulator-names-v1-0-ee0fcebfe1d9@baylibre.com>
-Subject: Re: (subset) [PATCH 0/2] arm64: dts: mediatek: mt6359: give
- regulators unique names
-Message-Id: <177185797303.229167.4225970079951259515.b4-ty@kernel.org>
-Date: Mon, 23 Feb 2026 14:46:13 +0000
+	s=k20201202; t=1771861331;
+	bh=yurSs7VYMIRx+Jmbg9pFFMOien12/FbdH7HI65YtUAA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=T4XEVoLjwgsQ7ovKA7xtbUTIVcHWVCyV6pn7LOJ292tti18smMR8wnG77SxgalbDg
+	 RfgNRI6zvKs/8cXZyOMCiLBb0YqaZH9xuRDx2MY4NeupnNbZFjJqhMaJ8YeAvg7B5v
+	 VBYPz9rOAI/WFv0qLsSJzaRmANj4Tm0r0GykuOYk2PjjD3h+49jCkt2p5FSw0rNbk5
+	 z3KuS76ScNLrjShfi32YBoHfRV9eG09CMT3drMUaizPybn/yJnzaV8C4ege2Vjb7v4
+	 wPmK9fQ3opNtBptr+RX6VE2r07joRxsro9c4TFt4tqOEhoN/+cg4n1U/D5sWlOyEsE
+	 hV1PcbRbJs2aw==
+Date: Mon, 23 Feb 2026 05:42:10 -1000
+From: Tejun Heo <tj@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	Lai Jiangshan <jiangshanlai@gmail.com>,
+	Tobias Schrammm <t.schramm@manjaro.org>,
+	Sebastian Reichel <sre@kernel.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	Dan Carpenter <dan.carpenter@linaro.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>, Lee Jones <lee@kernel.org>,
+	Dzmitry Sankouski <dsankouski@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>, driver-core@lists.linux.dev,
+	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev
+Subject: Re: [PATCH 1/9] workqueue: devres: Add device-managed allocate
+ workqueue
+Message-ID: <aZx1UpYSNmapYBpU@slm.duckdns.org>
+References: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
+ <20260223-workqueue-devm-v1-1-10b3a6087586@oss.qualcomm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15-dev-47773
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_064617_447432_EE9379BE 
-X-CRM114-Status: GOOD (  13.00  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260223-workqueue-devm-v1-1-10b3a6087586@oss.qualcomm.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,42 +87,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 19 Feb 2026 16:55:28 -0600, David Lechner wrote:
-> While working on this regulator in U-Boot, I noticed that the regulator
-> names were not unique. This is considered an error in U-Boot and we get
-> the following error messages:
-> 
-> mt6359_regulator ldo_vrfck_1: 'regulator-name' has nonunique value: 'vrfck
-> mt6359_regulator ldo_vemc_1: 'regulator-name' has nonunique value: 'vemc
-> 
-> [...]
+Hello,
 
-Applied to
+On Mon, Feb 23, 2026 at 08:27:29AM +0100, Krzysztof Kozlowski wrote:
+> @@ -568,19 +588,31 @@ alloc_workqueue_lockdep_map(const char *fmt, unsigned int flags, int max_active,
+>   */
+>  #define alloc_ordered_workqueue(fmt, flags, args...)			\
+>  	alloc_workqueue(fmt, WQ_UNBOUND | __WQ_ORDERED | (flags), 1, ##args)
+> +#define devm_alloc_ordered_workqueue(dev, fmt, flags, args...)		\
+> +	devm_alloc_workqueue(dev, fmt, WQ_UNBOUND | __WQ_ORDERED | (flags), 1, ##args)
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+Let's just add devm_alloc_workqueue() and devm_alloc_ordered_workqueue() and
+skip the legacy wrappers.
 
-Thanks!
+Thanks.
 
-[2/2] dt-bindings: regulator: mt6359: make regulator names unique
-      commit: be704107e79696e855aa41e901a926039b6d2410
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+-- 
+tejun
 
