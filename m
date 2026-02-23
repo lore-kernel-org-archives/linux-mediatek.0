@@ -4,76 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9241AE98DF8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 07:39:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 683F5E98E08
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 08:56:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N+XH2HAzLPZ9530IfeM/72WceJHI53X8avol8hUZiP4=; b=YGV7v2sflsTPFb5qdER9gFq+9c
-	KDZD/8f50jr/gqiNqH1YoDSaxfdSN2NfxsZp0sGnowF4Xq8NgSa5vNumYOTTNgaVOuBnyb52H4kD2
-	Pl1u/HhQMM5M9LfAClYGCHJtQlY3yS+vyh9XkVjogj+7QZCyfzrFLmhVeeY4Nfy4Ar08MG1Uh9Cu2
-	+EyNtepMli2a3y/wNQtCWzr8ktWYCi2mCTuOJCXEX6XDhSqcV9yRv1ziKeY6Q9Us0mOetaVFS2rph
-	rgA7AUytMJ7rh+WeYLSor6qFn+QNUK4vxRW8oYG+2LLSqEO9Kd2rq461QPUpdIsZV1T45mF6z4ZvT
-	8JSLCyJw==;
+	bh=Vp6hzmp+LTp3vjMQe5MwQV5z+ZO1M6imfAXHQSpg4cQ=; b=ztHX0Ts116PnFF7H7Cc7V8i96S
+	DwcvPlWNxm66RjJ2zbZdshCCf6KmbdfGhcCVdsFLMxJb8eN8wqZ/O1RAMdfqwKX7igf1WaRJi07Oy
+	A8ljopXEt/DRbYV8+WtQ4FmkT84bbQhXRWLvZj+oEqxnuo939MWr8rO5DpZejE5WMmHr9W2X7wyay
+	6lSiY/OsrRrIFB1J7Kl7p5QBOwO17enLvKXzFn+fvcM9C1pA1UG8f9rnROGdp3G1QQ6WueU6cDsgz
+	fikQroicRewbYVnndRxvjdL4ruJ7Dvj8A5CkY8Gu4QgIvC0rII5nSiRTHS2Oxz3IsNuBI0qKotCvK
+	bz/HaoRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuQXA-0000000HOFY-0xmv;
-	Mon, 23 Feb 2026 07:39:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vuRk3-0000000HRkG-28Vq;
+	Mon, 23 Feb 2026 08:56:35 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuQX6-0000000HOCz-0DdU
-	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Feb 2026 07:39:09 +0000
-X-UUID: ba314c30108a11f1ad39f32c34db0b1c-20260223
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=N+XH2HAzLPZ9530IfeM/72WceJHI53X8avol8hUZiP4=;
-	b=LOFbo1F6tLrKpb8G/6cePCpSc04WuV2dxuSSLnTxY2AnEIhNGgLiaKduRlWnFuSk8EOzQv7q38eKEJY9r+rX5WY0B8v9OQZo6x5e5sq0rWcNVkDAOtk/QCMOj5RDTjQB6cHttPeqfqAK57Ko51dFqd7my4HD4w9zkvwFZlQuOnk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:c46a0a8e-9d0d-493d-8134-c90868c77633,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:42e8e2e9-ef90-4382-9c6f-55f2a0689a6b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ba314c30108a11f1ad39f32c34db0b1c-20260223
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <jb.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1447835888; Mon, 23 Feb 2026 00:39:04 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 23 Feb 2026 15:39:01 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 23 Feb 2026 15:39:01 +0800
-From: JB Tsai <jb.tsai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<Deren.Wu@mediatek.com>, <Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>,
-	<Ryder.Lee@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>
-Subject: [PATCH 5/5] wifi: mt76: mt7921: disable auto regd changes after user set
-Date: Mon, 23 Feb 2026 15:38:54 +0800
-Message-ID: <20260223073854.2464232-5-jb.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260223073854.2464232-1-jb.tsai@mediatek.com>
-References: <20260223073854.2464232-1-jb.tsai@mediatek.com>
+	id 1vuRjz-0000000HRjM-2pdG;
+	Mon, 23 Feb 2026 08:56:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1771836991; x=1803372991;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=vTxb26YHC2bRnF15WcUVg9+N/0yuey9uzbRSyk1F6sA=;
+  b=U37uPR6U+A8B5V7z3+NcoRT9Sd0pEgvT0p8nr+Hkqdz8C/Rm8hY62ude
+   WL+XXb9XNAq3XT0oGu5uUTrys2O+ejeNPao4wQdMXs9/4+SWMYBdg9PCo
+   FD2/JXaPO02+dqjlE1iy6XC867Zf96KGBEMvb7fVzcEk9y7Xs5RQMim52
+   X/WrxvW6rvT9BH2SinE0dUNMEwSTmOgG9CsyRTzOvme1TztzQkWp/Yj8j
+   uys+Py1UwQAvnxo2G5yHyzsd4klz7uHIvwBORAKRnMBMim3BQ8lqY6Xnz
+   FrT2ZmJKjWWD72LwkQCn8qB4HDAwTelEWf9+PoHkZHx1vmo75aYMtsrdV
+   A==;
+X-CSE-ConnectionGUID: 7J2hPYYQTEaYEOCzXew39A==
+X-CSE-MsgGUID: 0hQqGR7nRJGhJBxvmqquug==
+X-IronPort-AV: E=McAfee;i="6800,10657,11709"; a="95443378"
+X-IronPort-AV: E=Sophos;i="6.21,306,1763452800"; 
+   d="scan'208";a="95443378"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Feb 2026 00:56:26 -0800
+X-CSE-ConnectionGUID: ChybxgAWQCaFwtRmsXad8A==
+X-CSE-MsgGUID: weYH3rz0QoGnqBoexHAGNQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,306,1763452800"; 
+   d="scan'208";a="214581172"
+Received: from abityuts-desk.ger.corp.intel.com (HELO localhost) ([10.245.245.222])
+  by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Feb 2026 00:56:21 -0800
+Date: Mon, 23 Feb 2026 10:56:18 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Shuah Khan <skhan@linuxfoundation.org>, Tejun Heo <tj@kernel.org>,
+	Lai Jiangshan <jiangshanlai@gmail.com>,
+	Tobias Schrammm <t.schramm@manjaro.org>,
+	Sebastian Reichel <sre@kernel.org>,
+	Dan Carpenter <dan.carpenter@linaro.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>, Lee Jones <lee@kernel.org>,
+	Dzmitry Sankouski <dsankouski@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>, driver-core@lists.linux.dev,
+	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev
+Subject: Re: [PATCH 1/9] workqueue: devres: Add device-managed allocate
+ workqueue
+Message-ID: <aZwWMiYEvr3DXi3E@smile.fi.intel.com>
+References: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
+ <20260223-workqueue-devm-v1-1-10b3a6087586@oss.qualcomm.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260223-workqueue-devm-v1-1-10b3a6087586@oss.qualcomm.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260222_233908_090119_E47BFAE3 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20260223_005631_806840_07B2AFCD 
+X-CRM114-Status: GOOD (  18.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,53 +103,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add regd_user flag to block automatic regulatory domain updates
-if set by user.
+On Mon, Feb 23, 2026 at 08:27:29AM +0100, Krzysztof Kozlowski wrote:
+> Add a Resource-managed version of alloc_workqueue() to fix common
+> problem of drivers mixing devm() calls with destroy_workqueue.  Such
+> naive and discouraged driver approach leads to difficult to debug bugs
+> when the driver:
+> 
+> 1. Allocates workqueue in standard way and destroys it in driver
+>    remove() callback,
+> 2. Sets work struct with devm_work_autocancel(),
+> 3. Registers interrupt handler with devm_request_threaded_irq().
+> 
+> Which leads to following unbind/removal path:
+> 
+> 1. destroy_workqueue() via driver remove(),
+>    Any interrupt coming now would still execute the interrupt handler,
+>    which queues work on destroyed workqueue.
+> 2. devm_irq_release(),
+> 3. devm_work_drop() -> cancel_work_sync() on destroyed workqueue.
+> 
+> devm_alloc_workqueue() has two benefits:
+> 1. Solves above problem of mix-and-match devres and non-devres code in
+>    driver,
+> 2. Simplify any sane drivers which were correctly using
+>    alloc_workqueue() + devm_add_action_or_reset().
 
-Signed-off-by: JB Tsai <jb.tsai@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/mcu.c  | 1 +
- drivers/net/wireless/mediatek/mt76/mt7921/regd.c | 7 ++++++-
- 2 files changed, 7 insertions(+), 1 deletion(-)
+>  include/linux/workqueue.h                        | 32 ++++++++++++++++++++++++
+>  kernel/workqueue.c                               | 32 ++++++++++++++++++++++++
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 4e455aad2f4c..3806798081a2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -419,6 +419,7 @@ static int mt7921_load_clc(struct mt792x_dev *dev, const char *fw_name)
- 	u8 *clc_base = NULL, hw_encap = 0;
- 
- 	dev->phy.clc_chan_conf = 0xff;
-+	dev->regd_user = false;
- 	if (!mt7921_regd_clc_supported(dev))
- 		return 0;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regd.c b/drivers/net/wireless/mediatek/mt76/mt7921/regd.c
-index b53fa1f5c6db..58d68d7cf1a1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/regd.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/regd.c
-@@ -118,6 +118,10 @@ void mt7921_regd_notifier(struct wiphy *wiphy,
- 	struct mt76_connac_pm *pm = &dev->pm;
- 	struct mt76_dev *mdev = &dev->mt76;
- 
-+	if (req->initiator == NL80211_REGDOM_SET_BY_USER &&
-+	    !dev->regd_user)
-+		dev->regd_user = true;
-+
- 	/* do not need to update the same country twice */
- 	if (!memcmp(req->alpha2, mdev->alpha2, 2) &&
- 	    dev->country_ie_env == req->country_ie_env)
-@@ -169,7 +173,8 @@ int mt7921_regd_change(struct mt792x_phy *phy, char *alpha2)
- 		return 0;
- 
- 	if (!mt7921_regd_is_valid_alpha2(alpha2) ||
--	    !mt7921_regd_clc_supported(dev))
-+	    !mt7921_regd_clc_supported(dev) ||
-+	    dev->regd_user)
- 		return -EINVAL;
- 
- 	if (mdev->alpha2[0] != '0' && mdev->alpha2[1] != '0')
+Hmm... We have devm-helpers.h. Why the new one is in workqueue.h?
+Can we have some consistency here?
+
+...
+
+> +	ptr = devres_alloc(devm_destroy_workqueue, sizeof(*ptr), GFP_KERNEL);
+> +	if (!ptr)
+> +		return NULL;
+> +
+> +	va_start(args, max_active);
+> +	wq = alloc_workqueue(fmt, flags, max_active, args);
+> +	va_end(args);
+> +	if (wq) {
+> +		*ptr = wq;
+> +		devres_add(dev, ptr);
+> +	} else {
+> +		devres_free(ptr);
+> +	}
+
+Why not using devm_add_action_or_reset()?
+
+...
+
+> +void devm_destroy_workqueue(struct device *dev, void *res)
+> +{
+> +	destroy_workqueue(*(struct workqueue_struct **)res);
+> +}
+> +EXPORT_SYMBOL_GPL(devm_destroy_workqueue);
+
+Is this going to be used?
+
 -- 
-2.45.2
+With Best Regards,
+Andy Shevchenko
+
 
 
