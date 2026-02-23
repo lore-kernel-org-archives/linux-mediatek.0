@@ -4,166 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 769CAE98DF5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 07:28:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05D91E98DF3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 07:39:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=V13TbOnjuV6VzvANE56HZysaUseqHKiXk3Stv9fSSv0=; b=ByIDpq968DWo2iUQqiCqnWOI80
-	f/NU+jVfMAs2Ew6FORooCj515kQz9dw3U2sFHJy6scHTL0NrPtITweEwU/prtNAglpozXMMdA85/r
-	ug1VQ/YEYkOOegMrKZgCspCe0obcaleXrqrqaQ0IfzXVDzv50nt3DDt0NqXND8k8HTyRF4VObgT7V
-	ytSUX6nAfimILaaQe8HQ+3h495k3OHdqfxiuVhsKek16Ab9Chi5NMY73AWjs4hjCrFJQI4QR5iiue
-	tURHGe42Lx32AJS6rN5KMZAbk4WMbvXHktuvjzwUyFvpXviyLGyc7MSYQhJPCw6tRrrtjFEG0gmmY
-	NVi9mk2w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YivnOTAbiMqEyFv+2SP79n5iUJYP62LtjycTcWNwMuc=; b=pBITF3HVjSia02DafjpVPNgc5H
+	KnLvQLh5m5CIqEKXqL9abeocoyeB7f+lUGI+sYuJz4Cw2PyfGryDZlxEyRsqGpM6ypCG1pvHE2ZiI
+	yRoPfa8OsqEsXITZE8NwdcuHxmJcGxiiaed7ELImO5DeL2GCCPIFpy0LPtWvgzNSHSElFse3Ykz8B
+	fuOPFymzTBAmnioiuPfijvNSErrEi2ApwXnla85mp8DeAPFr/Das8zqKNzrAIEvGHIhlCZfDDM6Rf
+	sNCQ03UnIJ5FBybGR8vunL9aCPgImTsOGxGuKhyvxevbjQxtNQv3uvVlrkGFCLN1jkih/yRaUcwru
+	YYCam/vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuQMT-0000000HMz9-2Eh8;
-	Mon, 23 Feb 2026 07:28:09 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1vuQX7-0000000HODV-1D4W;
+	Mon, 23 Feb 2026 07:39:09 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuQMO-0000000HMpy-0Tlp
+	id 1vuQX4-0000000HOBt-32ud
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Feb 2026 07:28:05 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 61MHsVYr3018272
-	for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 07:28:03 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	V13TbOnjuV6VzvANE56HZysaUseqHKiXk3Stv9fSSv0=; b=bqdUhSGg4fNXC5Tt
-	lBynV7L5CjuSOXJESYwWx3vFyqDGDls7Zwtx7n9sISNSuMJzh7UN16lJ1w6hz4s5
-	2bThB4m0OzgpMqh7TiUxcmBjPWZOLk2wkaBSYBw5RNRm93k55D3BIgWqvIon0MIr
-	ZbghUmGcXmjMY7v7Kc5oWG0gRwQRAJCmhK7yj8iTuw2EEiwBhm5GLL1E8ryEqvwp
-	tJnt0AEfpr8xKWCvvxkvKVaIBiHl9KFAnKVTR+vOCizkWpraNxR7J5XHJNG3dOX9
-	mEG5mvwhpWDUHVP9s6z26/akucfbtWNRM1FpY2dp8NShJqDdJljAs+CiJj/M7ACH
-	VitS8g==
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cf5u8krxr-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 07:28:03 +0000 (GMT)
-Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8c70ef98116so4541480885a.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 22 Feb 2026 23:28:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1771831682; x=1772436482; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=V13TbOnjuV6VzvANE56HZysaUseqHKiXk3Stv9fSSv0=;
-        b=fJt03GOYU1KBSHNQ4gQJzXHEVUFroXcMJSJiX8SDP8LytuYg/D3VT5lS6FPZjh3VBH
-         czthZpp68TLUPPrKxK+g6gAsmP9M+avNDoSQIQZhZ43vbY7DBS8afV2UD4R+WuEBnOKC
-         CfLUMLdmHQFRqS071S+/HM02irv1teC9dJ0ylQ2sAsjOW5rQMYlxUerfSE/XUbR20S8l
-         1ubCsxLJQAjt3hWLgFqzUmJNFFN/bMTbg6DBHMRHHJq5dxrEL5tWSmRQPahXYeqtNBoy
-         K/BLkdX6QT+Rt9FIQU/4MN3mor/rNLOgLl3ZU6WfMJsgukTuTQTIc/xQW5VlVX4WIhci
-         LV2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771831682; x=1772436482;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=V13TbOnjuV6VzvANE56HZysaUseqHKiXk3Stv9fSSv0=;
-        b=iq6UFQqVIznjl3z3KGnekJ2ybCAkfEFsQ/Zh3UB/aA7vlDU9lcdkCvf/GQ4I7Wj05o
-         spgGV8ESW38R3W3q+OnnQcCkUSmWHixxHAGUK0e8YDJqqnEgTMcM+aJBO9U2jdhMUnxG
-         0iN/mTc2DNCRow8SXzovXltzYA31VQEYjA7lCT+1zVef5c6bHqxHPAGiePTn2oJxSLv8
-         96Ab+KiV2gC7kU4ugsqqTxPsj8xBd3PTaiSPvtVgU8Jq1CENFJj328xUGTu+AxtiTPEH
-         XWLvlTU9d17/VWOCJP6wsFgGKMUkWYUlvSG22kpJI7zK1Kvzdg9q/6t/CaPZK5rQhTG6
-         p0Ew==
-X-Forwarded-Encrypted: i=1; AJvYcCUzZEzJJLEB/TnQcdqpUW+7h1QIwO7QRXXzqA10d7EUhvECZ1FlXpXF1S8D2adXaXEZFFnkpN7O6qzpRTi7IA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxZje5BBlIC/2pmWNTQJx2JWSw10JM+um94pvvfuv7N3hn3Rotz
-	lCBSMgiQlkwUaEMM++RU41nGbQbrtoSZ20vcbY+Chr7gaOS6+U9HE5wSSUc7FTJSSy8zpiDrett
-	RCKhQIHj1oglQQsRgOYQ5ajRb+FRuNTri09/DkCCeXnodYVm04xNxQ6GWKVnxVyvXhLUAg/RGh1
-	8=
-X-Gm-Gg: AZuq6aLDErMnzJrhcIVpZk58hhl45u5TPJDT1Wq+aRo7aG/n1+wAqTSujnDBQ9Uabmn
-	Vj2VjnABC+KAFZGJvUoUqyAOCNTtRi138Pes28KKvsKCRkeEZ/u+InJmmbDyMgV9dQQeoglSvbE
-	ym6VLIIFr8gKKMK+58f4gb/BAifO9bOi/9z7feacH1oFiDeF8RdAm2PPFDWKynmt910dohmE9XW
-	IdBSfCCRj8Y74XC00pHPxnugWSYh+VecT/WYNLyAUhGIi/iwu4BSt1ZVcCGm30GkriFh2g96CbI
-	1vrGKhwr5jmcpkfZr0yWMBd+14HBp+mrk2cfokaDH5d9/Yy/hFQro6WEY8r2W1ALVD+jx7+8IEU
-	N6b8dEsZCr1k+U4u2Tf8zN0VxmagfPzJvNGGwufLtYe2+QQ==
-X-Received: by 2002:a05:620a:414d:b0:8ca:3c67:8914 with SMTP id af79cd13be357-8cb8ca92dbdmr1030170085a.72.1771831682483;
-        Sun, 22 Feb 2026 23:28:02 -0800 (PST)
-X-Received: by 2002:a05:620a:414d:b0:8ca:3c67:8914 with SMTP id af79cd13be357-8cb8ca92dbdmr1030168285a.72.1771831682019;
-        Sun, 22 Feb 2026 23:28:02 -0800 (PST)
-Received: from [127.0.1.1] ([178.197.223.140])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43970bf9ff5sm18550286f8f.4.2026.02.22.23.28.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Feb 2026 23:28:01 -0800 (PST)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Date: Mon, 23 Feb 2026 08:27:37 +0100
-Subject: [PATCH 9/9] platform/chrome: cros_usbpd_logger: Simplify with devm
+	Mon, 23 Feb 2026 07:39:07 +0000
+X-UUID: b8394d24108a11f1ad39f32c34db0b1c-20260223
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=YivnOTAbiMqEyFv+2SP79n5iUJYP62LtjycTcWNwMuc=;
+	b=LRZuVhzkneELZJeYvGfl1E9YTka8R+uaJKEj+FMfby1ThYSkDEZuOjPa37eeN9kL6MGDK7Up+ZKDDWsivbuBFHDECA0ItwKULnoEJvnckE5NZ+sWdhy3MgWKYlmeYbMcZE6ay8+L8JccDwDuqIPybZP1Ox6TGY/NMHgD2SNN26A=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:c1a33d0d-a703-4613-9dab-a2ea5c416e6e,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:89c9d04,CLOUDID:caf9805b-a957-4259-bcca-d3af718d7034,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: b8394d24108a11f1ad39f32c34db0b1c-20260223
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
+	(envelope-from <jb.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1196028042; Mon, 23 Feb 2026 00:39:00 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 23 Feb 2026 15:38:58 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 23 Feb 2026 15:38:58 +0800
+From: JB Tsai <jb.tsai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<Deren.Wu@mediatek.com>, <Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>,
+	<Ryder.Lee@mediatek.com>, <Leon.Yen@mediatek.com>,
+	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>
+Subject: [PATCH 2/5] wifi: mt76: mt7921: refactor CLC support check flow
+Date: Mon, 23 Feb 2026 15:38:51 +0800
+Message-ID: <20260223073854.2464232-2-jb.tsai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260223073854.2464232-1-jb.tsai@mediatek.com>
+References: <20260223073854.2464232-1-jb.tsai@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260223-workqueue-devm-v1-9-10b3a6087586@oss.qualcomm.com>
-References: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
-In-Reply-To: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        "Rafael J. Wysocki" <rafael@kernel.org>,
-        Danilo Krummrich <dakr@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
-        Shuah Khan <skhan@linuxfoundation.org>, Tejun Heo <tj@kernel.org>,
-        Lai Jiangshan <jiangshanlai@gmail.com>,
-        Tobias Schrammm <t.schramm@manjaro.org>,
-        Sebastian Reichel <sre@kernel.org>,
-        Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-        Dan Carpenter <dan.carpenter@linaro.org>,
-        Krzysztof Kozlowski <krzk@kernel.org>, Lee Jones <lee@kernel.org>,
-        Dzmitry Sankouski <dsankouski@gmail.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>
-Cc: driver-core@lists.linux.dev, linux-doc@vger.kernel.org,
-        linux-kernel@vger.kernel.org,
-        Sebastian Reichel <sebastian.reichel@collabora.com>,
-        linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev,
-        Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2369;
- i=krzysztof.kozlowski@oss.qualcomm.com; h=from:subject:message-id;
- bh=Tz7aCKZpxvE/URE9NHfPfJCIW6o+Wox+HN1jMO8zCgg=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpnAFu3KNp+CTKSy+V7k67mEChB+6tEknfgjT/Q
- 0+9orefkKyJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaZwBbgAKCRDBN2bmhouD
- 1wuWD/9J+JqARU6TsvU4zvVDheM7Vy4GbVVCDxKaqTn1LB64+jTh7G+qQDyEO+/8tfwnovEz32a
- dZfCA3g8kmt9XMucw0VfKlsZIX+GwOFNPaCzVAIUDxeJAZLU7RU0qIm5Sr9Tfvg2BRzyeDraYlT
- J7liSpFkaTD39Xe9e+ncf8BMH+iTwVSEDGmzCDAoM8binwflLgSFhX8+1BAAD+6dGF7I8S5Jd9F
- f+Yfs6XweClFjvk/QYcBtkxFZgTpt1p4s/Ksnk40iJqDUWV9nT7P4LCPGIedS+T3FPn0QWCatUy
- WQrnAzUWqundJe80uxqAF47q1sVAqylM2iuodrq7bUXWaR8M1DHKMOsQK60jEyt+n0BrWTqTC4X
- 0OvX08AJfnLsjhGl7MXfKjH+t/A+dPPQeqxzDF//csXt0QJqWoJNq9HCMfDdAkCxvlSeo4H9Z+z
- cYCbIcdRo8JQNn5a6H/48X2v7YhZV8tkKw2OTs2JmW54h38R8qRm/EVPRfMRk0VxUtTcZIuj/Vm
- qUIhXscFFPVRJCkWfps7q1UEqNoWwk6x+NdWrH7EYppRe0NRgJ7xIAgldkle635fxHyB2C0sUgo
- yylFHJPeufQjL0tRBOlpP0gjwNExCI+B70e1ZlGbs4mOM7RJCdTfEZLGq4326lxqaEVTZZ5aRHq
- kW1pfV1AjFgY8vg==
-X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp;
- fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
-X-Proofpoint-GUID: jZHQlKMB1_6lYsxAGCc7CgsjTxqKOHOM
-X-Authority-Analysis: v=2.4 cv=cJftc1eN c=1 sm=1 tr=0 ts=699c0183 cx=c_pps
- a=50t2pK5VMbmlHzFWWp8p/g==:117 a=6nO30s3o7FuWeffXwhKHTA==:17
- a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
- a=EUspDBNiAAAA:8 a=fg_Lw6XCFRazdZfdaoQA:9 a=QEXdDO2ut3YA:10
- a=IoWCM6iH3mJn3m4BftBB:22
-X-Proofpoint-ORIG-GUID: jZHQlKMB1_6lYsxAGCc7CgsjTxqKOHOM
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA2NCBTYWx0ZWRfX2yMmpwGFTVDl
- XEWk0fFXwWVnHPs9+h9aM1M11XMYpitwUZcZI+6QzvPoEGyF6kF6DfFsdwQRuMuxT9aRw20YfSm
- lQUYu+dak2ZMz/udvjrO1AfyiX48jI+fsCW/UWqpxIVUf3oQbGpY1MTWG0y94+pzAxIqYfmMRxb
- 3Etga0NylZ6Gyuqn1VUJhszXN/+bvavJIU/5ncdsahU6vR4fAZlXN4BHOz9WkY0etkeAgx500tE
- VZ3B7EJAaqTMPr4CWowP0EbiHdZxSwb0CZ8bAK8fFisZicuL1K3CNJu7/wO0amp9LRybx6ZiZBK
- E3HWWTwjk97fZxqIJDMajcXZx0QmEFTPGt8NVzdnHXY+700SUObubd9BtnE2fGthIc7xgiBmNw+
- xisNtrPVXlWZGbSdsVjVTLbr+pV354YzHomLKGeeoMNEG6WWLtXg54sLAKTuqPCDoX9+eygGnHn
- GWT1dBEnQNVTuGVmo5g==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-02-23_01,2026-02-20_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 spamscore=0 clxscore=1015 malwarescore=0 suspectscore=0
- priorityscore=1501 lowpriorityscore=0 phishscore=0 impostorscore=0
- adultscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2602130000
- definitions=main-2602230064
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260222_232804_324243_3BD81F4C 
-X-CRM114-Status: GOOD (  16.35  )
+X-CRM114-CacheID: sfid-20260222_233906_778341_CCEEDE9F 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -178,75 +88,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Simplify the driver by using devm interfaces, which allow to drop
-probe() error paths and the remove() callback.
+Move the disable_clc module parameter to regd.c and introduce
+mt7925_regd_clc_supported() to centralize CLC support checks.
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Signed-off-by: JB Tsai <jb.tsai@mediatek.com>
 ---
- drivers/platform/chrome/cros_usbpd_logger.c | 18 +++++++-----------
- 1 file changed, 7 insertions(+), 11 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/mcu.c  | 14 ++++++++------
+ drivers/net/wireless/mediatek/mt76/mt7921/regd.c | 13 +++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt7921/regd.h |  1 +
+ 3 files changed, 22 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/platform/chrome/cros_usbpd_logger.c b/drivers/platform/chrome/cros_usbpd_logger.c
-index 7ce75e2e039e..b0d176c0f4cc 100644
---- a/drivers/platform/chrome/cros_usbpd_logger.c
-+++ b/drivers/platform/chrome/cros_usbpd_logger.c
-@@ -5,6 +5,7 @@
-  * Copyright 2018 Google LLC.
-  */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index 8442dbd2ee23..1e2afa736cdf 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -4,6 +4,7 @@
+ #include <linux/fs.h>
+ #include <linux/firmware.h>
+ #include "mt7921.h"
++#include "regd.h"
+ #include "mcu.h"
+ #include "../mt76_connac2_mac.h"
+ #include "../mt792x_trace.h"
+@@ -11,10 +12,6 @@
+ #define MT_STA_BFER			BIT(0)
+ #define MT_STA_BFEE			BIT(1)
  
-+#include <linux/devm-helpers.h>
- #include <linux/ktime.h>
- #include <linux/math64.h>
- #include <linux/mod_devicetable.h>
-@@ -199,6 +200,7 @@ static int cros_usbpd_logger_probe(struct platform_device *pd)
- 	struct cros_ec_dev *ec_dev = dev_get_drvdata(pd->dev.parent);
- 	struct device *dev = &pd->dev;
- 	struct logger_data *logger;
-+	int ret;
- 
- 	logger = devm_kzalloc(dev, sizeof(*logger), GFP_KERNEL);
- 	if (!logger)
-@@ -210,25 +212,20 @@ static int cros_usbpd_logger_probe(struct platform_device *pd)
- 	platform_set_drvdata(pd, logger);
- 
- 	/* Retrieve PD event logs periodically */
--	INIT_DELAYED_WORK(&logger->log_work, cros_usbpd_log_check);
--	logger->log_workqueue =	create_singlethread_workqueue("cros_usbpd_log");
-+	logger->log_workqueue =	devm_create_singlethread_workqueue(dev, "cros_usbpd_log");
- 	if (!logger->log_workqueue)
- 		return -ENOMEM;
- 
-+	ret = devm_delayed_work_autocancel(dev, &logger->log_work, cros_usbpd_log_check);
-+	if (ret)
-+		return ret;
-+
- 	queue_delayed_work(logger->log_workqueue, &logger->log_work,
- 			   CROS_USBPD_LOG_UPDATE_DELAY);
- 
- 	return 0;
- }
- 
--static void cros_usbpd_logger_remove(struct platform_device *pd)
--{
--	struct logger_data *logger = platform_get_drvdata(pd);
+-static bool mt7921_disable_clc;
+-module_param_named(disable_clc, mt7921_disable_clc, bool, 0644);
+-MODULE_PARM_DESC(disable_clc, "disable CLC support");
 -
--	cancel_delayed_work_sync(&logger->log_work);
--	destroy_workqueue(logger->log_workqueue);
--}
--
- static int __maybe_unused cros_usbpd_logger_resume(struct device *dev)
+ int mt7921_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+ 			      struct sk_buff *skb, int seq)
  {
- 	struct logger_data *logger = dev_get_drvdata(dev);
-@@ -263,7 +260,6 @@ static struct platform_driver cros_usbpd_logger_driver = {
- 		.pm = &cros_usbpd_logger_pm_ops,
- 	},
- 	.probe = cros_usbpd_logger_probe,
--	.remove = cros_usbpd_logger_remove,
- 	.id_table = cros_usbpd_logger_id,
- };
+@@ -422,8 +419,7 @@ static int mt7921_load_clc(struct mt792x_dev *dev, const char *fw_name)
+ 	u8 *clc_base = NULL, hw_encap = 0;
  
-
+ 	dev->phy.clc_chan_conf = 0xff;
+-	if (mt7921_disable_clc ||
+-	    mt76_is_usb(&dev->mt76))
++	if (!mt7921_regd_clc_supported(dev))
+ 		return 0;
+ 
+ 	if (mt76_is_mmio(&dev->mt76)) {
+@@ -470,6 +466,9 @@ static int mt7921_load_clc(struct mt792x_dev *dev, const char *fw_name)
+ 	for (offset = 0; offset < len; offset += le32_to_cpu(clc->len)) {
+ 		clc = (const struct mt7921_clc *)(clc_base + offset);
+ 
++		if (clc->idx >= ARRAY_SIZE(phy->clc))
++			break;
++
+ 		/* do not init buf again if chip reset triggered */
+ 		if (phy->clc[clc->idx])
+ 			continue;
+@@ -1403,6 +1402,9 @@ int mt7921_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
+ 	struct mt792x_phy *phy = (struct mt792x_phy *)&dev->phy;
+ 	int i, ret;
+ 
++	if (!ARRAY_SIZE(phy->clc))
++		return -ESRCH;
++
+ 	/* submit all clc config */
+ 	for (i = 0; i < ARRAY_SIZE(phy->clc); i++) {
+ 		ret = __mt7921_mcu_set_clc(dev, alpha2, env_cap,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regd.c b/drivers/net/wireless/mediatek/mt76/mt7921/regd.c
+index 6e6c81189222..70440ab8ba82 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/regd.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/regd.c
+@@ -7,6 +7,19 @@
+ #include "regd.h"
+ #include "mcu.h"
+ 
++static bool mt7921_disable_clc;
++module_param_named(disable_clc, mt7921_disable_clc, bool, 0644);
++MODULE_PARM_DESC(disable_clc, "disable CLC support");
++
++bool mt7921_regd_clc_supported(struct mt792x_dev *dev)
++{
++	if (mt7921_disable_clc ||
++	    mt76_is_usb(&dev->mt76))
++		return false;
++
++	return true;
++}
++
+ static void
+ mt7921_regd_channel_update(struct wiphy *wiphy, struct mt792x_dev *dev)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regd.h b/drivers/net/wireless/mediatek/mt76/mt7921/regd.h
+index 0ba6161e1919..74bc2fdd532c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/regd.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/regd.h
+@@ -9,5 +9,6 @@
+ void mt7921_regd_update(struct mt792x_dev *dev);
+ void mt7921_regd_notifier(struct wiphy *wiphy,
+ 			  struct regulatory_request *request);
++bool mt7921_regd_clc_supported(struct mt792x_dev *dev);
+ 
+ #endif
 -- 
-2.51.0
+2.45.2
 
 
