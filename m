@@ -4,99 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66C1FE98DEF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 07:28:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 769CAE98DF5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 07:28:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EievHyEEfc+ZB9sgh0Kt3vK9ZMOHKaJHuHGtcF08CgI=; b=RckgE1RzC69Y5pXD8WvMa3HsIn
-	QhL+RJwSjpRlgvALgxgTo8H4obEu2HRllflicSP71zSTOOSC7hWNyjRatvrYLGvYU4slUYmyW4YPs
-	XJOYeNlr44ils02WkB4Vuf7nYCevHwToIUACfr7bWaDpdYK6Tdjo3+b56Fjm6hwMX7GDHxDRD6yp8
-	vjQ0nw+VjEXVKuaM43SySBo+Yh9D1ZPBp01lH6tqxd+rD/R2ojoaUr/jQeWkNb6Q7ajDUhmqFiWs7
-	SvlstxbxwxCYfJAr5RayBa7AMd7JwY1ItOUPBjRWJo15kjszNThH/PLOFKs43LN0hmSw+m586fY2y
-	qmFc2ZAA==;
+	bh=V13TbOnjuV6VzvANE56HZysaUseqHKiXk3Stv9fSSv0=; b=ByIDpq968DWo2iUQqiCqnWOI80
+	f/NU+jVfMAs2Ew6FORooCj515kQz9dw3U2sFHJy6scHTL0NrPtITweEwU/prtNAglpozXMMdA85/r
+	ug1VQ/YEYkOOegMrKZgCspCe0obcaleXrqrqaQ0IfzXVDzv50nt3DDt0NqXND8k8HTyRF4VObgT7V
+	ytSUX6nAfimILaaQe8HQ+3h495k3OHdqfxiuVhsKek16Ab9Chi5NMY73AWjs4hjCrFJQI4QR5iiue
+	tURHGe42Lx32AJS6rN5KMZAbk4WMbvXHktuvjzwUyFvpXviyLGyc7MSYQhJPCw6tRrrtjFEG0gmmY
+	NVi9mk2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuQMQ-0000000HMv1-1M0X;
-	Mon, 23 Feb 2026 07:28:06 +0000
+	id 1vuQMT-0000000HMz9-2Eh8;
+	Mon, 23 Feb 2026 07:28:09 +0000
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuQMM-0000000HMnS-0Vo0
+	id 1vuQMO-0000000HMpy-0Tlp
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Feb 2026 07:28:03 +0000
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 61MIF4FM2508185
-	for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 07:28:01 GMT
+	Mon, 23 Feb 2026 07:28:05 +0000
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 61MHsVYr3018272
+	for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 07:28:03 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	EievHyEEfc+ZB9sgh0Kt3vK9ZMOHKaJHuHGtcF08CgI=; b=OR0kQOaV8mPN3yp4
-	O4ooXQ7AMGaHD/vk0t/uniHvc39ZF0bY6yiA6wRIgVnd2zwJmllKwH3nmURftTsR
-	uRwNUWNzXJfjcBuSn89FBRiGhezEOAu8mK/OqUxVcj2jUvYHEK8Pe1WR8DZgAVgU
-	v8fkhvAiCSOAsv07CTnGUpakv65K27hZ7OnJOGXCEYopS/QA3HFpnFTX3AK2dheg
-	lEMRXRjPu3Q7GNK0ijrV9Nx6jFhWIWseomXEojpOGB/a6tiuk8J6YLbmzSw6wfLU
-	gkL6XIel1ooBiXNQVu0rStqwPjcUZuBaEceEUqO1/gGjxd/hJlhc84MkaknPP7+K
-	CiTQyA==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cf5vj3rg2-1
+	V13TbOnjuV6VzvANE56HZysaUseqHKiXk3Stv9fSSv0=; b=bqdUhSGg4fNXC5Tt
+	lBynV7L5CjuSOXJESYwWx3vFyqDGDls7Zwtx7n9sISNSuMJzh7UN16lJ1w6hz4s5
+	2bThB4m0OzgpMqh7TiUxcmBjPWZOLk2wkaBSYBw5RNRm93k55D3BIgWqvIon0MIr
+	ZbghUmGcXmjMY7v7Kc5oWG0gRwQRAJCmhK7yj8iTuw2EEiwBhm5GLL1E8ryEqvwp
+	tJnt0AEfpr8xKWCvvxkvKVaIBiHl9KFAnKVTR+vOCizkWpraNxR7J5XHJNG3dOX9
+	mEG5mvwhpWDUHVP9s6z26/akucfbtWNRM1FpY2dp8NShJqDdJljAs+CiJj/M7ACH
+	VitS8g==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cf5u8krxr-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 07:28:01 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-8c71500f274so455223985a.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 22 Feb 2026 23:28:01 -0800 (PST)
+	for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 07:28:03 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8c70ef98116so4541480885a.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 22 Feb 2026 23:28:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1771831680; x=1772436480; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1771831682; x=1772436482; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=EievHyEEfc+ZB9sgh0Kt3vK9ZMOHKaJHuHGtcF08CgI=;
-        b=UwY+q8N7hnlp+4TwiCQqmS0hxE9QDsKK2Xfa5FD5bD6AllLJAB4WJxppkFWrvfR6bZ
-         SDnF321HRsdbigaaNVLi/xYckZ+5Qyv46pxtiC8lbfPJ0vEErlCdbZSLuci2hBIo3U9Q
-         Fe7M94nFjRkSQ7ctEVvEuFY3xPfHrspywrUO1aFlx2mvLE7gKlzoWk5DVJtHQWahCU/u
-         oY9DUBdq6e3WunzOGuPH2OCwcIYpSGZ6qMIuAtPSCWX225zbHMTO5k0flekNIFqzvwru
-         tGK60tpE8J4gPCYDgZ3CPMVO3ankddD/HaJwq3JhcQ53+oYYuMwj6dhbf+N3kTBL4P3W
-         PHgQ==
+        bh=V13TbOnjuV6VzvANE56HZysaUseqHKiXk3Stv9fSSv0=;
+        b=fJt03GOYU1KBSHNQ4gQJzXHEVUFroXcMJSJiX8SDP8LytuYg/D3VT5lS6FPZjh3VBH
+         czthZpp68TLUPPrKxK+g6gAsmP9M+avNDoSQIQZhZ43vbY7DBS8afV2UD4R+WuEBnOKC
+         CfLUMLdmHQFRqS071S+/HM02irv1teC9dJ0ylQ2sAsjOW5rQMYlxUerfSE/XUbR20S8l
+         1ubCsxLJQAjt3hWLgFqzUmJNFFN/bMTbg6DBHMRHHJq5dxrEL5tWSmRQPahXYeqtNBoy
+         K/BLkdX6QT+Rt9FIQU/4MN3mor/rNLOgLl3ZU6WfMJsgukTuTQTIc/xQW5VlVX4WIhci
+         LV2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771831680; x=1772436480;
+        d=1e100.net; s=20230601; t=1771831682; x=1772436482;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=EievHyEEfc+ZB9sgh0Kt3vK9ZMOHKaJHuHGtcF08CgI=;
-        b=hTaDUwea0CmBbhZZzGaNL2pg9ptmfzOJcaL/pct8bVDjhIhwem2lUKFBIWNOxQ/Bjn
-         TQD0u/yIejXY8O2T+9o3mNaeqWXaJjdcOPErYQ3L2MKKFjVYlFjnYN1TatUmh4TSb7Q7
-         ZVFCFqvUyhP8T9NKEcBVUML9RHNXfgSYfE3B6r/ro2cEQse8X7t8Y7QG78mvJQvO3X2a
-         x7YSJF7gOE8AEpx8qeAqh1uPIzkqbOLdyvV0995xNayy7y40h8THb44UE8nCQUw9ciRE
-         zFX335D9nCqe83/JlxLVW+Vk3PTKO7qE5XDC2MhrEXct7sA4HxM7v5mM4tKsDE8YhKxv
-         YwYQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX8BcRzaKu/m91GwVZ1+aWCB6W3Fs52zjr+gCmtxqd/tUbIl8C4EPYYZ7axuK7K2rTbcmrtBtCoCYg0/LE0nA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyBGD/qlHf7gyVfKUaeurXYPT1VodpJUsR8qS4nrulyaS+rw1LZ
-	yJm6rTxKbN1WOd60p03gyua7Q46pRxztXeBlC0zYjj5r7PfumkmhnyowQ/usHkt+6FY/2iIFues
-	L+E5VgQH69uJ2bB2NmeWG2y0bc+fUA6FwLjc7NSlV5gGx0UKxlLj5vx/IpqKZO/N/QiPLtUec1c
-	g=
-X-Gm-Gg: AZuq6aJTZK9W07Eqedgb20eJF00fENp8c5F2MsyYLwgoTgelE3aGx2YNOt/Ni4/UInJ
-	wYLN+TOg1Fl8nG/jDTnAvU0CvjwycGZ6wbNvHonzW9tzHJ4E9p2Y5mn0ATpXwT7SW93fD7tYm3X
-	jdkiyJlATMlynvW0RC9pumkgPcq3j3C9pRmrtGsvKgurxwjxSWwvV3kpefh8Rn9YPATrq1AByaz
-	H4rk8T9kvJQSpju6XF1uhZiyQKSPUVGCK32Sp87rTzAxbTH8y9GmNADiy6CFBcoJkLT/1ZDkU6x
-	sv6EPdMSpjrY+3VDAlOV95p4ubIg6n5pCj9RwC2r73OcILHjt8au9MPIBl9BwVvSVnpXpv73QJG
-	E1rWGEV85cs8m/IFZ9eI9A//AVuNrNd8nBoCeutBhgeaASg==
-X-Received: by 2002:a05:620a:4085:b0:8c6:ac29:70ff with SMTP id af79cd13be357-8cb8ca65e96mr953128985a.52.1771831680576;
-        Sun, 22 Feb 2026 23:28:00 -0800 (PST)
-X-Received: by 2002:a05:620a:4085:b0:8c6:ac29:70ff with SMTP id af79cd13be357-8cb8ca65e96mr953126785a.52.1771831680071;
-        Sun, 22 Feb 2026 23:28:00 -0800 (PST)
+        bh=V13TbOnjuV6VzvANE56HZysaUseqHKiXk3Stv9fSSv0=;
+        b=iq6UFQqVIznjl3z3KGnekJ2ybCAkfEFsQ/Zh3UB/aA7vlDU9lcdkCvf/GQ4I7Wj05o
+         spgGV8ESW38R3W3q+OnnQcCkUSmWHixxHAGUK0e8YDJqqnEgTMcM+aJBO9U2jdhMUnxG
+         0iN/mTc2DNCRow8SXzovXltzYA31VQEYjA7lCT+1zVef5c6bHqxHPAGiePTn2oJxSLv8
+         96Ab+KiV2gC7kU4ugsqqTxPsj8xBd3PTaiSPvtVgU8Jq1CENFJj328xUGTu+AxtiTPEH
+         XWLvlTU9d17/VWOCJP6wsFgGKMUkWYUlvSG22kpJI7zK1Kvzdg9q/6t/CaPZK5rQhTG6
+         p0Ew==
+X-Forwarded-Encrypted: i=1; AJvYcCUzZEzJJLEB/TnQcdqpUW+7h1QIwO7QRXXzqA10d7EUhvECZ1FlXpXF1S8D2adXaXEZFFnkpN7O6qzpRTi7IA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxZje5BBlIC/2pmWNTQJx2JWSw10JM+um94pvvfuv7N3hn3Rotz
+	lCBSMgiQlkwUaEMM++RU41nGbQbrtoSZ20vcbY+Chr7gaOS6+U9HE5wSSUc7FTJSSy8zpiDrett
+	RCKhQIHj1oglQQsRgOYQ5ajRb+FRuNTri09/DkCCeXnodYVm04xNxQ6GWKVnxVyvXhLUAg/RGh1
+	8=
+X-Gm-Gg: AZuq6aLDErMnzJrhcIVpZk58hhl45u5TPJDT1Wq+aRo7aG/n1+wAqTSujnDBQ9Uabmn
+	Vj2VjnABC+KAFZGJvUoUqyAOCNTtRi138Pes28KKvsKCRkeEZ/u+InJmmbDyMgV9dQQeoglSvbE
+	ym6VLIIFr8gKKMK+58f4gb/BAifO9bOi/9z7feacH1oFiDeF8RdAm2PPFDWKynmt910dohmE9XW
+	IdBSfCCRj8Y74XC00pHPxnugWSYh+VecT/WYNLyAUhGIi/iwu4BSt1ZVcCGm30GkriFh2g96CbI
+	1vrGKhwr5jmcpkfZr0yWMBd+14HBp+mrk2cfokaDH5d9/Yy/hFQro6WEY8r2W1ALVD+jx7+8IEU
+	N6b8dEsZCr1k+U4u2Tf8zN0VxmagfPzJvNGGwufLtYe2+QQ==
+X-Received: by 2002:a05:620a:414d:b0:8ca:3c67:8914 with SMTP id af79cd13be357-8cb8ca92dbdmr1030170085a.72.1771831682483;
+        Sun, 22 Feb 2026 23:28:02 -0800 (PST)
+X-Received: by 2002:a05:620a:414d:b0:8ca:3c67:8914 with SMTP id af79cd13be357-8cb8ca92dbdmr1030168285a.72.1771831682019;
+        Sun, 22 Feb 2026 23:28:02 -0800 (PST)
 Received: from [127.0.1.1] ([178.197.223.140])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43970bf9ff5sm18550286f8f.4.2026.02.22.23.27.58
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43970bf9ff5sm18550286f8f.4.2026.02.22.23.28.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 22 Feb 2026 23:27:59 -0800 (PST)
+        Sun, 22 Feb 2026 23:28:01 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Date: Mon, 23 Feb 2026 08:27:36 +0100
-Subject: [PATCH 8/9] mfd: ezx-pcap: Avoid rescheduling after destroying
- workqueue
+Date: Mon, 23 Feb 2026 08:27:37 +0100
+Subject: [PATCH 9/9] platform/chrome: cros_usbpd_logger: Simplify with devm
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260223-workqueue-devm-v1-8-10b3a6087586@oss.qualcomm.com>
+Message-Id: <20260223-workqueue-devm-v1-9-10b3a6087586@oss.qualcomm.com>
 References: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
 In-Reply-To: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -120,50 +119,51 @@ Cc: driver-core@lists.linux.dev, linux-doc@vger.kernel.org,
         linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev,
         Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2013;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2369;
  i=krzysztof.kozlowski@oss.qualcomm.com; h=from:subject:message-id;
- bh=NdggOG5IZsY7LXa79Nq7AL/G3ae8FCgqBbMs7M+Uv2w=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpnAFtqPjY1qKyahTuUblrNnMhZfW/1VNWITp6i
- +IhXm5LfTeJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaZwBbQAKCRDBN2bmhouD
- 15FIEACAA9XT78ap89BEm6isO1fI6/YX3bggCblWINXzvuzlJGfwB3B0VnAFlTD6+y1zI1shA7J
- Eiiyd/S8i/yKNwjPmqMBhZrjNVdSEs8HdfTN0rvmHhgNqSi8Yyoq1gFJ3HtKmnFyA0qHpsvUpq3
- +VQQwHfPysAby0QYLjXKUwyRzOo41GW/vhM/sItWsdQRCPnEzG+O6ogAT4WiWGcX+Wmwk62STPC
- ief7WiwnKfWJXzieUqsRZVGqZd7mXQsNUrfcIBv0DINdyn0j8odj6D6xo4jgf49thmMDr5CAefC
- yG5p8y1WdKdh+hD1ddFb65TmYSFU9HO2AIzdLNTly7bNQ/GcQlQ97HomBZKTClUGuzTJhLmuv/2
- mwB/7U4KZr9+/VWT+spMEVHe2wGqrOzEKaxbaEIvN8DqgrgFvl1x1qp5/O6Z8UODnFLukCFY707
- gdcJRcK1CKnClIWcJ6w72wS1ItFXBTVBgstbzQ33MCr3IzqNDgTDQRi8lyJXourEeL8wOjXajGb
- qd6HYIqo1vKR5qtCH9fYdNXPAwCavd26qPmcpDaOH3omR1dHCo60MJi+A0c51ZTYkHNd02g77Zd
- 835Pl1A8pEm9U/0tyUb/tGHKgz/oaVXIm7/AZuCOdlDJdniUZ8/PBzIMWpPeXMeLh7flqzKBr0S
- 3fbO7I7VZezSo0A==
+ bh=Tz7aCKZpxvE/URE9NHfPfJCIW6o+Wox+HN1jMO8zCgg=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpnAFu3KNp+CTKSy+V7k67mEChB+6tEknfgjT/Q
+ 0+9orefkKyJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaZwBbgAKCRDBN2bmhouD
+ 1wuWD/9J+JqARU6TsvU4zvVDheM7Vy4GbVVCDxKaqTn1LB64+jTh7G+qQDyEO+/8tfwnovEz32a
+ dZfCA3g8kmt9XMucw0VfKlsZIX+GwOFNPaCzVAIUDxeJAZLU7RU0qIm5Sr9Tfvg2BRzyeDraYlT
+ J7liSpFkaTD39Xe9e+ncf8BMH+iTwVSEDGmzCDAoM8binwflLgSFhX8+1BAAD+6dGF7I8S5Jd9F
+ f+Yfs6XweClFjvk/QYcBtkxFZgTpt1p4s/Ksnk40iJqDUWV9nT7P4LCPGIedS+T3FPn0QWCatUy
+ WQrnAzUWqundJe80uxqAF47q1sVAqylM2iuodrq7bUXWaR8M1DHKMOsQK60jEyt+n0BrWTqTC4X
+ 0OvX08AJfnLsjhGl7MXfKjH+t/A+dPPQeqxzDF//csXt0QJqWoJNq9HCMfDdAkCxvlSeo4H9Z+z
+ cYCbIcdRo8JQNn5a6H/48X2v7YhZV8tkKw2OTs2JmW54h38R8qRm/EVPRfMRk0VxUtTcZIuj/Vm
+ qUIhXscFFPVRJCkWfps7q1UEqNoWwk6x+NdWrH7EYppRe0NRgJ7xIAgldkle635fxHyB2C0sUgo
+ yylFHJPeufQjL0tRBOlpP0gjwNExCI+B70e1ZlGbs4mOM7RJCdTfEZLGq4326lxqaEVTZZ5aRHq
+ kW1pfV1AjFgY8vg==
 X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA2NCBTYWx0ZWRfX84HwOATg2Pzb
- EvoLgKdj3PYzfEoJK7U0kYyBInGS4fVYHLS3vzdHNV3sH9Aa0gDJ6CiV3JGns/4luGp9Hgp3jY9
- m4Pg+aSb1Qd2+OUquUkD8La/DHVIocXJ75n4Sj2enJl5QmhJVN7NdcweXK1OZux7DxuYBKbWMAc
- yLPTQFaVnm+iJKBdv8W8//z8QRH+FpfrMUKbJoNSzklmo9zJUegqq5965bZfwvAldYWnA1mS9Ib
- B4T/VqpQ22aO3ENppeVUZCOYesCZOxQ8kb6Fam3plbot52LIlcsKhfMA5JuXUyBLF4RypOc/0ls
- 3w2fUhMKLEPtnCj01AQPJyrKoOWB/ldlf2If6VlAfbnayRWkHs1cmz2zkAIdri3zP2Zy0MGQWj3
- hI+QHLWC7N3QZQqFNoUShOX11BHQq0p/uD3TbYF+zDLJi91VHfZuU6PfyABWelri3hffBRQbEaJ
- C7Vn61oNugA1uwYI3OQ==
-X-Authority-Analysis: v=2.4 cv=T5KBjvKQ c=1 sm=1 tr=0 ts=699c0181 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=6nO30s3o7FuWeffXwhKHTA==:17
+X-Proofpoint-GUID: jZHQlKMB1_6lYsxAGCc7CgsjTxqKOHOM
+X-Authority-Analysis: v=2.4 cv=cJftc1eN c=1 sm=1 tr=0 ts=699c0183 cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=6nO30s3o7FuWeffXwhKHTA==:17
  a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=EUspDBNiAAAA:8 a=Iaj16dx_8Jk8doGcJVoA:9 a=QEXdDO2ut3YA:10
- a=NFOGd7dJGGMPyQGDc5-O:22
-X-Proofpoint-GUID: ywr20S1vmw74KFSJFVwUdxCriZXO2zAs
-X-Proofpoint-ORIG-GUID: ywr20S1vmw74KFSJFVwUdxCriZXO2zAs
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
+ a=EUspDBNiAAAA:8 a=fg_Lw6XCFRazdZfdaoQA:9 a=QEXdDO2ut3YA:10
+ a=IoWCM6iH3mJn3m4BftBB:22
+X-Proofpoint-ORIG-GUID: jZHQlKMB1_6lYsxAGCc7CgsjTxqKOHOM
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA2NCBTYWx0ZWRfX2yMmpwGFTVDl
+ XEWk0fFXwWVnHPs9+h9aM1M11XMYpitwUZcZI+6QzvPoEGyF6kF6DfFsdwQRuMuxT9aRw20YfSm
+ lQUYu+dak2ZMz/udvjrO1AfyiX48jI+fsCW/UWqpxIVUf3oQbGpY1MTWG0y94+pzAxIqYfmMRxb
+ 3Etga0NylZ6Gyuqn1VUJhszXN/+bvavJIU/5ncdsahU6vR4fAZlXN4BHOz9WkY0etkeAgx500tE
+ VZ3B7EJAaqTMPr4CWowP0EbiHdZxSwb0CZ8bAK8fFisZicuL1K3CNJu7/wO0amp9LRybx6ZiZBK
+ E3HWWTwjk97fZxqIJDMajcXZx0QmEFTPGt8NVzdnHXY+700SUObubd9BtnE2fGthIc7xgiBmNw+
+ xisNtrPVXlWZGbSdsVjVTLbr+pV354YzHomLKGeeoMNEG6WWLtXg54sLAKTuqPCDoX9+eygGnHn
+ GWT1dBEnQNVTuGVmo5g==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-23_01,2026-02-20_04,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 spamscore=0 malwarescore=0 priorityscore=1501 clxscore=1015
- phishscore=0 lowpriorityscore=0 adultscore=0 impostorscore=0 bulkscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2602230064
+ bulkscore=0 spamscore=0 clxscore=1015 malwarescore=0 suspectscore=0
+ priorityscore=1501 lowpriorityscore=0 phishscore=0 impostorscore=0
+ adultscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2602130000
+ definitions=main-2602230064
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260222_232802_340983_A39884CE 
-X-CRM114-Status: GOOD (  16.10  )
+X-CRM114-CacheID: sfid-20260222_232804_324243_3BD81F4C 
+X-CRM114-Status: GOOD (  16.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -178,61 +178,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Driver allocates workqueue and then registers additional interrupt
-handler with devm interface.  This means that device removal will not
-use a reversed order, but first destroy workqueue and then, via devm
-release handlers, free the interrupt.
-
-The interrupt handler registered with devm does not directly
-use/schedule work items on the workqueue and the remove() function
-correctly removes other IRQs handlers, however the code mixing devm and
-non-devm interfaces is difficult to analyze and read.
-
-Make the code flow much more obvious by using devm interface for
-allocating the workqueue, so it will be freed with the rest of devm
-resources.
+Simplify the driver by using devm interfaces, which allow to drop
+probe() error paths and the remove() callback.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-
 ---
+ drivers/platform/chrome/cros_usbpd_logger.c | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
 
-Depends on devm_create_singlethread_workqueue() from earlier patches.
----
- drivers/mfd/ezx-pcap.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/mfd/ezx-pcap.c b/drivers/mfd/ezx-pcap.c
-index b929559d84ae..a06fc3447104 100644
---- a/drivers/mfd/ezx-pcap.c
-+++ b/drivers/mfd/ezx-pcap.c
-@@ -375,8 +375,6 @@ static void ezx_pcap_remove(struct spi_device *spi)
- 	/* cleanup irqchip */
- 	for (i = pcap->irq_base; i < (pcap->irq_base + PCAP_NIRQS); i++)
- 		irq_set_chip_and_handler(i, NULL, NULL);
--
--	destroy_workqueue(pcap->workqueue);
- }
+diff --git a/drivers/platform/chrome/cros_usbpd_logger.c b/drivers/platform/chrome/cros_usbpd_logger.c
+index 7ce75e2e039e..b0d176c0f4cc 100644
+--- a/drivers/platform/chrome/cros_usbpd_logger.c
++++ b/drivers/platform/chrome/cros_usbpd_logger.c
+@@ -5,6 +5,7 @@
+  * Copyright 2018 Google LLC.
+  */
  
- static int ezx_pcap_probe(struct spi_device *spi)
-@@ -411,7 +409,7 @@ static int ezx_pcap_probe(struct spi_device *spi)
++#include <linux/devm-helpers.h>
+ #include <linux/ktime.h>
+ #include <linux/math64.h>
+ #include <linux/mod_devicetable.h>
+@@ -199,6 +200,7 @@ static int cros_usbpd_logger_probe(struct platform_device *pd)
+ 	struct cros_ec_dev *ec_dev = dev_get_drvdata(pd->dev.parent);
+ 	struct device *dev = &pd->dev;
+ 	struct logger_data *logger;
++	int ret;
  
- 	/* setup irq */
- 	pcap->irq_base = pdata->irq_base;
--	pcap->workqueue = create_singlethread_workqueue("pcapd");
-+	pcap->workqueue = devm_create_singlethread_workqueue(&spi->dev, "pcapd");
- 	if (!pcap->workqueue)
+ 	logger = devm_kzalloc(dev, sizeof(*logger), GFP_KERNEL);
+ 	if (!logger)
+@@ -210,25 +212,20 @@ static int cros_usbpd_logger_probe(struct platform_device *pd)
+ 	platform_set_drvdata(pd, logger);
+ 
+ 	/* Retrieve PD event logs periodically */
+-	INIT_DELAYED_WORK(&logger->log_work, cros_usbpd_log_check);
+-	logger->log_workqueue =	create_singlethread_workqueue("cros_usbpd_log");
++	logger->log_workqueue =	devm_create_singlethread_workqueue(dev, "cros_usbpd_log");
+ 	if (!logger->log_workqueue)
  		return -ENOMEM;
  
-@@ -463,9 +461,7 @@ static int ezx_pcap_probe(struct spi_device *spi)
- free_irqchip:
- 	for (i = pcap->irq_base; i < (pcap->irq_base + PCAP_NIRQS); i++)
- 		irq_set_chip_and_handler(i, NULL, NULL);
--/* destroy_workqueue: */
--	destroy_workqueue(pcap->workqueue);
--ret:
++	ret = devm_delayed_work_autocancel(dev, &logger->log_work, cros_usbpd_log_check);
++	if (ret)
++		return ret;
 +
- 	return ret;
+ 	queue_delayed_work(logger->log_workqueue, &logger->log_work,
+ 			   CROS_USBPD_LOG_UPDATE_DELAY);
+ 
+ 	return 0;
  }
+ 
+-static void cros_usbpd_logger_remove(struct platform_device *pd)
+-{
+-	struct logger_data *logger = platform_get_drvdata(pd);
+-
+-	cancel_delayed_work_sync(&logger->log_work);
+-	destroy_workqueue(logger->log_workqueue);
+-}
+-
+ static int __maybe_unused cros_usbpd_logger_resume(struct device *dev)
+ {
+ 	struct logger_data *logger = dev_get_drvdata(dev);
+@@ -263,7 +260,6 @@ static struct platform_driver cros_usbpd_logger_driver = {
+ 		.pm = &cros_usbpd_logger_pm_ops,
+ 	},
+ 	.probe = cros_usbpd_logger_probe,
+-	.remove = cros_usbpd_logger_remove,
+ 	.id_table = cros_usbpd_logger_id,
+ };
  
 
 -- 
