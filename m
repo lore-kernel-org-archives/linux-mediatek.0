@@ -4,75 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6BF5E909BC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 15:42:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42E0BEC1106
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 16:26:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oQN6ZUdZ5erQ+SaInNOddsQxyH6uHy7XfKgfFoo7sKc=; b=SfQVEhG2uMktXf1Vd8SKmBMyrZ
-	ZzdATK6U1YU/7fMUUShuHBePB/KcXrUwDITlcCt1wxwoYrXpDSrFNjErCS8tBPlrh4b9myr3XuPYC
-	c7W0UaO4GLjehlY9t34yYQnUD+/HMOVtcC9txoIcWJ9iZptnlQqYy0h2VNl5j2UEAATe2aGeLBuGW
-	1h+cW/scEajgO60+8LGyrZFSeiaAklfpeVtIz+F4JVUyQVsGvRtUTtZ146fEgYKAb7gRtYCCv6mw7
-	M6eXEpSj3G/v4VqcM69Bt+01owUthg2Z0oG4WE0Xti362ztH1YZwbzN3U2yFlwVnb900V5B2HoxUr
-	+Hc19IBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GPabK+sR6tt9Q+NXwIlbFeumv2ta8pwtwfHRnJheAtg=; b=ZtjlmmOhqg4XlNepZ15OPIu9qT
+	/fD0OwmnmNQyam+bMhCFEJfH8qI5enEjpLjRyFaTLxvMnGSl+R31DheIde7+T5A7d8eA+w0LhrWq7
+	SsnrpOG0t99eDA3DB7fNAxGxt/lyA88H5s1U9Ck2yZSfPf/zaQ2h6ygLBzazPoBm4OilQX0F6Nees
+	YtVtyjV3QNhT0p74iqPjKKEQuU+1se8LR4HNyflGcGcu4idyww7j7xCNLBFpidcalgt3GlA1nRXVV
+	uaOU4zRPcwWX7mCoqcE9tTQFYoSSKZIJhHMVXJ1BcP/dDk0CHcFa2Wiu+ndxwh4vLxYMYfQpOqOfa
+	pBWOollg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuY4b-00000000b6Y-1vVQ;
-	Mon, 23 Feb 2026 15:42:13 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vuYlb-00000000flP-3F2l;
+	Mon, 23 Feb 2026 16:26:39 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuY4a-00000000b5y-2QLD;
-	Mon, 23 Feb 2026 15:42:12 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8D50460054;
-	Mon, 23 Feb 2026 15:42:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 13CECC116C6;
-	Mon, 23 Feb 2026 15:42:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771861331;
-	bh=yurSs7VYMIRx+Jmbg9pFFMOien12/FbdH7HI65YtUAA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=T4XEVoLjwgsQ7ovKA7xtbUTIVcHWVCyV6pn7LOJ292tti18smMR8wnG77SxgalbDg
-	 RfgNRI6zvKs/8cXZyOMCiLBb0YqaZH9xuRDx2MY4NeupnNbZFjJqhMaJ8YeAvg7B5v
-	 VBYPz9rOAI/WFv0qLsSJzaRmANj4Tm0r0GykuOYk2PjjD3h+49jCkt2p5FSw0rNbk5
-	 z3KuS76ScNLrjShfi32YBoHfRV9eG09CMT3drMUaizPybn/yJnzaV8C4ege2Vjb7v4
-	 wPmK9fQ3opNtBptr+RX6VE2r07joRxsro9c4TFt4tqOEhoN/+cg4n1U/D5sWlOyEsE
-	 hV1PcbRbJs2aw==
-Date: Mon, 23 Feb 2026 05:42:10 -1000
-From: Tejun Heo <tj@kernel.org>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Shuah Khan <skhan@linuxfoundation.org>,
-	Lai Jiangshan <jiangshanlai@gmail.com>,
-	Tobias Schrammm <t.schramm@manjaro.org>,
-	Sebastian Reichel <sre@kernel.org>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Dan Carpenter <dan.carpenter@linaro.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>, Lee Jones <lee@kernel.org>,
-	Dzmitry Sankouski <dsankouski@gmail.com>,
+	id 1vuYla-00000000fkS-0oYk
+	for linux-mediatek@bombadil.infradead.org;
+	Mon, 23 Feb 2026 16:26:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=GPabK+sR6tt9Q+NXwIlbFeumv2ta8pwtwfHRnJheAtg=; b=k6NL9F36mLeYfEqBlNPH0Q70oK
+	u6XTqK9rSUZGV8In5s24GfnTdC/A1FcreBzT9ZIi+mnpu99yVMGH8M/IHG53jb8ofJ5UyI96OhATr
+	X6GKkHBcfIGGjHOudVn6IQQTLAGNrwvsBC4kfDiskcf20nkXns4jYS5RThLpCe7/uTIVtSD5v05Q8
+	1xVrePnYVxbqINJO4bzC8EGMA3jqr/lehlIAVNTuGAi8uloj1Umiy56gj0KDr2CaremR7QOXz2Xk1
+	j3M16K3UyIKXtWtaSNx8WNaYBPAxLMIhF20lzsBddvQuGYJCuVwQXWldd1CeIBbiHORl7SVQmjyT5
+	h9qcSjGw==;
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vuYlW-00000005T47-2kf6
+	for linux-mediatek@lists.infradead.org;
+	Mon, 23 Feb 2026 16:26:37 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-436309f1ad7so3403932f8f.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 08:26:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1771863992; x=1772468792; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=GPabK+sR6tt9Q+NXwIlbFeumv2ta8pwtwfHRnJheAtg=;
+        b=eCR4GKJD3ly9qIlIlTPoy2FOuo5CG1vebz0qG9ANKDraeAiN8oJNaGtPGIAw5X+MRJ
+         2BjJOcF7hCoDzQvzSpKtSZYxx1ydpm3wq4u0CoKd614AAkfqQm1pO+m+u2skcsA/j4JE
+         kjzxha7O2BQDlT93np951OEBtM9Q3/024gBEJMgMOohO+2oENYRO8eoTWKENzA96d5LU
+         LM1Otv9Khy+Ydu822rRJUU74zfTrl1SWXF68rKeR+AH5/dwPeevQ1yjL1npGsmz2g1rr
+         QMJBsEXbb3qYBc+J8PbBBeAZU0GKVegzpDVPHtI8QnglGH8QxoUZ4C3m9dCHbDF87/oP
+         reEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1771863992; x=1772468792;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=GPabK+sR6tt9Q+NXwIlbFeumv2ta8pwtwfHRnJheAtg=;
+        b=vmquhuBtawaUBBrI+U08du+hiRjo+Y+4K/EREtfhUZ8Tr1ASbPB9F3PkOyWgySgvaK
+         pupegc0uO4nKsGBf5g6PLpjxls3k8GG57s0S5fbFsEmLGXFZ3M63z3mlYa9SsMweWbdc
+         WEXmYSBbThlIHm0rd8PAc9n7PVgYLU0lG/irkWU2ZtDoJNd7CBZZjwXchcBuOgrQmQ6Y
+         yiGv/NRheiNi1JpIBcqCpvyk+1OT9BD4vLIWTQVid497swbkIeexshvh333JTAbDI7rC
+         J6ms8/7qWtFZRmqckWKdrbmx6XS3aTYJzhyBZAUY6QbrNB2rgVvlTBYOqPFABySfcjtO
+         1IiQ==
+X-Gm-Message-State: AOJu0YyYw85mH5qMo3IvQdHaICBGfVUytOnLlUMLkYyepGj/+LJnHObN
+	RipSBCJBbYG35hu6Xdd7sbd9qBYpaqB+dYU/es2z0OEFUJNMRjNdT3p5h4FB/A==
+X-Gm-Gg: ATEYQzw2MzvsfzkPySDJ3tp7z9kFoKGaSjrJKL9uldRAdkZUrM6WdUV32cJ1pwpl9Hc
+	Q7W/HeQSdWD4Mn/tpizEwYdYqjGmCjhV8GrOVsWCMxcOlgRrdHAUf0ECV7zwrPq25VX63NFs9y6
+	j4A7OBEnOKnX3Eo4w7p0hl1INc3fg7EP2paCYHZyrmR3Zm6WtxmsO5KJDC/Z+spIi1bQWK9cEdT
+	Q/k7i6BgRVINoalpHZfd8Xw2HTdL+CyKfOgnsOznIxUVKRYoM+mHzFtW9gIivZtP5G2TWA4ssp4
+	2DhL7lyYwljstiPLsOtax6juoPOT0vXd7Huz1oAFG+D1NwZ03mG9ZeOWmFFOEqdGJDexSZ+w2Bp
+	ZWAavytRKWbqVnf0bD6u2fFfYQF2XaCszRL1ToNdAdCwqhO32wAo9GU17zZ1jyENO0ym5xUj/6j
+	QOaYR0WSBxwIOki4LYgLg=
+X-Received: by 2002:a05:6000:40cd:b0:437:719d:a753 with SMTP id ffacd0b85a97d-4396f156a40mr16159891f8f.11.1771863992210;
+        Mon, 23 Feb 2026 08:26:32 -0800 (PST)
+Received: from luca-vm.lan ([154.61.61.58])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43970d5463dsm19120357f8f.34.2026.02.23.08.26.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Feb 2026 08:26:31 -0800 (PST)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, driver-core@lists.linux.dev,
-	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev
-Subject: Re: [PATCH 1/9] workqueue: devres: Add device-managed allocate
- workqueue
-Message-ID: <aZx1UpYSNmapYBpU@slm.duckdns.org>
-References: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
- <20260223-workqueue-devm-v1-1-10b3a6087586@oss.qualcomm.com>
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org
+Subject: [PATCH v3 0/6] Add support for mt8167 display blocks
+Date: Mon, 23 Feb 2026 16:22:44 +0000
+Message-ID: <cover.1771863641.git.l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260223-workqueue-devm-v1-1-10b3a6087586@oss.qualcomm.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260223_162634_741611_B23A730A 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,21 +128,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+This series adds support for the display blocks on MediaTek mt8167.
+Tested on Xiaomi Mi Smart Clock x04g.
 
-On Mon, Feb 23, 2026 at 08:27:29AM +0100, Krzysztof Kozlowski wrote:
-> @@ -568,19 +588,31 @@ alloc_workqueue_lockdep_map(const char *fmt, unsigned int flags, int max_active,
->   */
->  #define alloc_ordered_workqueue(fmt, flags, args...)			\
->  	alloc_workqueue(fmt, WQ_UNBOUND | __WQ_ORDERED | (flags), 1, ##args)
-> +#define devm_alloc_ordered_workqueue(dev, fmt, flags, args...)		\
-> +	devm_alloc_workqueue(dev, fmt, WQ_UNBOUND | __WQ_ORDERED | (flags), 1, ##args)
+The first patch just does some reordering of dts nodes with no other
+changes as this makes later patches cleaner and easier to follow.
 
-Let's just add devm_alloc_workqueue() and devm_alloc_ordered_workqueue() and
-skip the legacy wrappers.
+v3:
+ - Added mt8167-dsi compatible to driver instead of changing the binding;
+ - Resolved patch formatting issues.
 
-Thanks.
+v2:
+ - Separate patch for mediatek,dsi-phy binding;
+ - Separate patch for mt8167-dsi binding;
+ - Simplified OF graph endpoints in mt8167.dtsi.
+
+Luca Leonardo Scorcia (5):
+  arm64: dts: mt8167: Reorder nodes according to mmio address
+  dt-bindings: display: mediatek: Add compatibles for MediaTek mt8167
+  dt-bindings: phy: mediatek,dsi-phy: Add support for mt8167
+  arm64: dts: mediatek: mt8167: Add DRM nodes
+  drm/mediatek: dsi: Add compatible for mt8167-dsi
+
+Val Packett (1):
+  gpu: drm: mediatek: ovl: add specific entry for mt8167
+
+ .../display/mediatek/mediatek,aal.yaml        |   1 +
+ .../display/mediatek/mediatek,ccorr.yaml      |   4 +-
+ .../display/mediatek/mediatek,dither.yaml     |   1 +
+ .../display/mediatek/mediatek,gamma.yaml      |   1 +
+ .../display/mediatek/mediatek,ovl.yaml        |   1 +
+ .../display/mediatek/mediatek,rdma.yaml       |   1 +
+ .../display/mediatek/mediatek,wdma.yaml       |   4 +-
+ .../bindings/phy/mediatek,dsi-phy.yaml        |   1 +
+ arch/arm64/boot/dts/mediatek/mt8167.dtsi      | 381 ++++++++++++++++--
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c       |  12 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c            |   1 +
+ 11 files changed, 374 insertions(+), 34 deletions(-)
 
 -- 
-tejun
+2.43.0
+
 
