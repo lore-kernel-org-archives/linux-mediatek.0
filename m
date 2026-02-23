@@ -4,76 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 507AFEA4FC5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 13:54:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5136AEA4FBA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 14:16:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fr7d7tb2OSvjYLeMmzPSFkX3IY9HuIWVM8tRYP8LeRw=; b=44jHuQk4PDB5Kqxb9EEk236BAo
-	3z/XH13KNy6FXRgwkh7CjnpiiR6NQ5rzFDrPBKmNhPukHE5rfs40s6nQw8pdStPsggCJs2ydlow4i
-	BNZqrbtPeJm8F+yxHWoxirlpQ8xxgshM8zNQtRuc7DoXMKY27UtXKD0O4lelOnMqSc2ifyiIa1wVG
-	klLkl3YKLyK35jzacBxDOAbwsVdw6G/tLrvwEm2MMrsRixeH0XKw47kmtXzMlB0I1uSjHICiRrRAl
-	zv/AR3L38lasuAGCzOYxjNoGCINjnmNXvu/7N2dE2z+g7HxMamw0YSBsiU8nh1mW2rosuVBWvZx5S
-	nUrCdD/g==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HJysTvCTqmpRUuXQbPd6ZdWuCMMviCnnW2mHB9RPSLQ=; b=BQu8BNesla2OE7hdbV0YSeXZaT
+	/q2NX3IpmufeMciksBfHU4Mvt43KOcTIbH769ia5OYMvXwRHOuejKsiudJ4+e5hexVDKIVX6bcP7K
+	HD9C2JOxaAbi2jun46iY1FXQbMe/5PX39L1o6YHwFDqtqVcbJQsmcW8o/atiMiNiHr3jwmG2qZrrZ
+	ceep481c+BYnNt9Pol837DLCZ6TXqltmRnFCCzA7hSgsgcVp/Ojj5O+neSZ3l9nwK1JbBucOwGoCo
+	r66fWVR++qKMxJNb9r0jgeiJWuOJIdBPCwkKU1bXk/ugmm50kAG07xU7RAeqi9nSbL50NXkCw2wci
+	sxlIAxdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuWOT-00000000QAK-1Wpe;
-	Mon, 23 Feb 2026 13:54:37 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vuWk0-00000000SCv-3SBj;
+	Mon, 23 Feb 2026 14:16:52 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuWOP-00000000Q90-2fu4;
-	Mon, 23 Feb 2026 13:54:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771854871;
-	bh=wsxrGT9iiPD6ZitFu90+kuRPo6NfbN5RrwpeDZ7GNQY=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=AlMRZCcNRh1z6NRy2/I17Dm2/sYYtXapstkwgNAT5JC829doMkVfCZu6bzBply4mX
-	 Z5V6k4Fugil9Pbk1jTOoN/oVEeqCfAKqRT6IFKDIziyaucxhMAd41jYXXqW7jof677
-	 m0mMfBerf0M5K1EAeqrIdfXRJS/x3Bi5RLQslWTpMP/myCyMmu2Sx78PopsHOkRg5o
-	 H/O52ahKyojFXDNplvjDFYJUmk8ft5TTBoJujoIoALlB0oZxnqE3hsUdIzuhOftNBq
-	 DfnF/yKg27joBLxmlkAJl7pPQ1DW9pvBgJOzHRgZOaVPAldn1YCSM7vOX8Bt/2/G1z
-	 L2GiCzzldb9Dw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 559BF17E043F;
-	Mon, 23 Feb 2026 14:54:30 +0100 (CET)
-Message-ID: <8030ee40-5972-499b-b693-b26fb7ffe7e2@collabora.com>
-Date: Mon, 23 Feb 2026 14:54:29 +0100
+	id 1vuWjy-00000000SBW-0rk5
+	for linux-mediatek@lists.infradead.org;
+	Mon, 23 Feb 2026 14:16:51 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-4836f4cbe0bso33066755e9.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 06:16:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1771856208; x=1772461008; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=HJysTvCTqmpRUuXQbPd6ZdWuCMMviCnnW2mHB9RPSLQ=;
+        b=S9zOnnHZnbx+cMDOX0g7p4zN2zE+sDFzxpeERtiokkOXw3tSzd72ojP0HOjZnSBSIt
+         XTYMari/o2XnIHFePOiBLqxR3bWib/1J4080Z0bLwZBoR6kz0tOwPunb7DIz0chylF8N
+         ZuHmq9IDBeqc8ueJ0qxgdlK96QELg9v9yEqzRYTuvR/9eCxJNMm3tjpAHT412oL3Xk/D
+         w3XPurYzNheLK0xYSjb/daaMMKKN7n+zWWzKMhGENo/lqovw0J/RhQuckFyX+AMpKa2W
+         CUEgObEkvhXVdYgAaNVPw2lAtDOPYnQ44iRE+nA0ofoobZt9d5/JZh80B3Uu0jKyjeYW
+         t0vA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1771856208; x=1772461008;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=HJysTvCTqmpRUuXQbPd6ZdWuCMMviCnnW2mHB9RPSLQ=;
+        b=qC3MlpIYLLA2ktlY+iDG2+7iAv3mIS3iBt93qTccsJevwWNiKSOXfJS4yHUuJYeKpN
+         pk+hPEU6IVHD4afvG4h6d2FgqRBTkBTg7QDEs7QgRm7Kzv9ejmJA7nMPm04jAW0esVqm
+         GwNDHWT/F8U1gMxpGANCnEXvGtvBhwu5EbL7fk8LpnbXziV12njzwZ6i7NjaW+RKsnqz
+         Qre7PL4NeKYwJyNk2T/XmSeD9QlLqvZizTqs/VjOxASbu5/swP7B16sS8aZUZGylp9C5
+         VQREg3ODZPHFrRE4CYU1Jer3DHQKCCwjE2zkfLzf68a2+PZMo0HIBsTxB0PvOnkdmn1T
+         brIA==
+X-Gm-Message-State: AOJu0YxoKp9uKbamtMOokSfPdUVJrGqg8PTu9eOkg0cCAKfvdrUh6VHG
+	XO6BHzQf5pyQUud5XapvccAbCWFwjMIqOsWkm0uQ8ipG32SXqVfpv3onivqgZA==
+X-Gm-Gg: AZuq6aKVQXfVhjGf3CuDJCvhRWS9AKtPOIlXsRDi72j+kduGs/dbI13lQkXyYIu/LYH
+	uWWSzs3JZTmp57smsFO7vw3NEKs4XmtQMt4ErBCLmvir/gkk3tkD89I4e7ZCAWGFYPhgSSmcMQp
+	c4FAN8aLBvg5zFxMD7WQPfaewpP+pPx1IUwZ92kdTdOQpSjK1onZGtxCL2finY1Jk3qYHV4CTEG
+	hrUZMrW2jvhVxXbtrdNIAyM7Y+VI3SPBS1PCiB5ktPT6TEljsyV7balYYuvDkUYoLS1ILkF7T51
+	1FxZj6NqCFXic78QAmjiQ7/KiDck72cEnADH/PKI3sHlx4RIKhUgq/2MK/eSaC5lvYYQoDsHfQ4
+	qjq9hHgInYOOvVPPcv/NT6AT5niw4xpnqKxxhKrR4gNL3W6r2wvubLcKenfZq+aQ7QZWv8pYX2i
+	WuFo2IQwfZEVZ2lQPK3ns=
+X-Received: by 2002:a05:600c:6206:b0:46f:d682:3c3d with SMTP id 5b1f17b1804b1-483a95b71b5mr161419085e9.13.1771856207390;
+        Mon, 23 Feb 2026 06:16:47 -0800 (PST)
+Received: from luca-vm.lan ([154.61.61.58])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-483a43088fdsm86531165e9.30.2026.02.23.06.16.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Feb 2026 06:16:46 -0800 (PST)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	CK Hu <ck.hu@mediatek.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v2] drm/mediatek: dsi: Store driver data before invoking mipi_dsi_host_register
+Date: Mon, 23 Feb 2026 14:16:34 +0000
+Message-ID: <20260223141638.2022490-1-l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 05/18] clk: mediatek: Add MT8189 vlpckgen clock support
-To: David Lechner <dlechner@baylibre.com>,
- "irving.ch.lin" <irving-ch.lin@mediatek.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Richard Cochran <richardcochran@gmail.com>,
- Bartosz Golaszewski <brgl@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>,
- Miles Chen <miles.chen@mediatek.com>
-Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Qiqi Wang <qiqi.wang@mediatek.com>, sirius.wang@mediatek.com,
- vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
-References: <20260202062840.342707-1-irving-ch.lin@mediatek.com>
- <20260202062840.342707-6-irving-ch.lin@mediatek.com>
- <4b22e998-b38e-4452-82ce-1389d7086a04@baylibre.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <4b22e998-b38e-4452-82ce-1389d7086a04@baylibre.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_055435_373977_5B616340 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20260223_061650_263892_1E797001 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,34 +104,106 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/02/26 21:49, David Lechner ha scritto:
-> On 2/2/26 12:28 AM, irving.ch.lin wrote:
->> From: Irving-CH Lin <irving-ch.lin@mediatek.com>
->>
->> Add support for the MT8189 vlpckgen clock controller, which provides
->> muxes and dividers for clock selection in vlp domain for other IP blocks.
->>
->> Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
->> ---
-> 
-> ...
-> 
->> +static const struct mtk_gate vlp_ck_clks[] = {
->> +	GATE_VLP_CK(CLK_VLP_CK_VADSYS_VLP_26M_EN, "vlp_vadsys_vlp_26m", "clk26m", 1),
->> +	GATE_VLP_CK_FLAGS(CLK_VLP_CK_FMIPI_CSI_UP26M_CK_EN, "VLP_fmipi_csi_up26m",
-> 
-> Should "VLP_fmipi_csi_up26m" be all lower-case to match the style of all of
-> the other clock names? i.e. "vlp_fmipi_csi_up26m"
-> 
+The call to mipi_dsi_host_register triggers a callback to mtk_dsi_bind,
+which uses dev_get_drvdata to retrieve the mtk_dsi struct, so this
+structure needs to be stored inside the driver data before invoking it.
 
-It *must*. Yes.
+As drvdata is currently uninitialized it leads to a crash when
+registering the DSI DRM encoder right after acquiring
+the mode_config.idr_mutex, blocking all subsequent DRM operations.
 
-Regards,
-Angelo
+Fixes the following crash during mediatek-drm probe (tested on Xiaomi
+Smart Clock x04g):
 
->> +			  "osc_d10", 11, CLK_IS_CRITICAL),
->> +};
->> +
+Unable to handle kernel NULL pointer dereference at virtual address
+ 0000000000000040
+[...]
+Modules linked in: mediatek_drm(+) drm_display_helper cec drm_client_lib
+ drm_dma_helper drm_kms_helper panel_simple
+[...]
+Call trace:
+ drm_mode_object_add+0x58/0x98 (P)
+ __drm_encoder_init+0x48/0x140
+ drm_encoder_init+0x6c/0xa0
+ drm_simple_encoder_init+0x20/0x34 [drm_kms_helper]
+ mtk_dsi_bind+0x34/0x13c [mediatek_drm]
+ component_bind_all+0x120/0x280
+ mtk_drm_bind+0x284/0x67c [mediatek_drm]
+ try_to_bring_up_aggregate_device+0x23c/0x320
+ __component_add+0xa4/0x198
+ component_add+0x14/0x20
+ mtk_dsi_host_attach+0x78/0x100 [mediatek_drm]
+ mipi_dsi_attach+0x2c/0x50
+ panel_simple_dsi_probe+0x4c/0x9c [panel_simple]
+ mipi_dsi_drv_probe+0x1c/0x28
+ really_probe+0xc0/0x3dc
+ __driver_probe_device+0x80/0x160
+ driver_probe_device+0x40/0x120
+ __device_attach_driver+0xbc/0x17c
+ bus_for_each_drv+0x88/0xf0
+ __device_attach+0x9c/0x1cc
+ device_initial_probe+0x54/0x60
+ bus_probe_device+0x34/0xa0
+ device_add+0x5b0/0x800
+ mipi_dsi_device_register_full+0xdc/0x16c
+ mipi_dsi_host_register+0xc4/0x17c
+ mtk_dsi_probe+0x10c/0x260 [mediatek_drm]
+ platform_probe+0x5c/0xa4
+ really_probe+0xc0/0x3dc
+ __driver_probe_device+0x80/0x160
+ driver_probe_device+0x40/0x120
+ __driver_attach+0xc8/0x1f8
+ bus_for_each_dev+0x7c/0xe0
+ driver_attach+0x24/0x30
+ bus_add_driver+0x11c/0x240
+ driver_register+0x68/0x130
+ __platform_register_drivers+0x64/0x160
+ mtk_drm_init+0x24/0x1000 [mediatek_drm]
+ do_one_initcall+0x60/0x1d0
+ do_init_module+0x54/0x240
+ load_module+0x1838/0x1dc0
+ init_module_from_file+0xd8/0xf0
+ __arm64_sys_finit_module+0x1b4/0x428
+ invoke_syscall.constprop.0+0x48/0xc8
+ do_el0_svc+0x3c/0xb8
+ el0_svc+0x34/0xe8
+ el0t_64_sync_handler+0xa0/0xe4
+ el0t_64_sync+0x198/0x19c
+Code: 52800022 941004ab 2a0003f3 37f80040 (29005a80)
+---[ end trace 0000000000000000 ]---
 
+Fixes: e4732b590a77 ("drm/mediatek: dsi: Register DSI host after acquiring clocks and PHY")
+Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+v2: Added Fixes tag
+
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index d7726091819c..af4871de9e4c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -1232,6 +1232,8 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ 
+ 	dsi->host.ops = &mtk_dsi_ops;
+ 	dsi->host.dev = dev;
++	platform_set_drvdata(pdev, dsi);
++
+ 	ret = mipi_dsi_host_register(&dsi->host);
+ 	if (ret < 0)
+ 		return dev_err_probe(dev, ret, "Failed to register DSI host\n");
+@@ -1245,8 +1247,6 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ 
+ 	init_waitqueue_head(&dsi->irq_wait_queue);
+ 
+-	platform_set_drvdata(pdev, dsi);
+-
+ 	dsi->bridge.of_node = dev->of_node;
+ 	dsi->bridge.type = DRM_MODE_CONNECTOR_DSI;
+ 
+-- 
+2.43.0
 
 
