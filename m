@@ -4,103 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0403DEA4FAE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 13:19:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 090E4EA4FBA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 13:44:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u47cn9soFrW8BHoPy5Odl1FEs5rvVnzdpDoreo2Nl90=; b=muBFqOv4bxJVvebJNSQtJoilib
-	uoxX4FrkHfFpJSpbk/TeNtsWEZQO/KZNxoEKHA+QsVn5KUniWbqAcNV8BNEhIxF8wAWbOZSLMUzGe
-	ch/dIZ9pKHhtVoUUBcocDx5qiGbQxRx/8AJZcjv0WBfgczr0WlrHLdj+SkekHlh85zlcrPfG1TzFn
-	vvx51h4HozLVyY8VcJyfsWVsHtKsHNk9NiuccS7BBPf0grth+d0BZgFEQSocQPzND6/dFQY88fn2n
-	TSSf9WCQBUyNnfIF9oL/44H/Lw3uA0WSDQ7kmWFXvvNWEjNMCav4Bzd/rpv4LGlC5vBKahK9tvP2B
-	OyJhyeAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5nwkizms9ifnZyJWzOsCvtsqDtIyvUslzvpRvHRnyUE=; b=nZjp5mmnb83wtlKJYKGzCDP6Jb
+	l17OkU6oNawmPhgXZ7YuyfbZO35wVFiaQU/qkFVwk01sj7k3sphzQNQzpG6zFFG4flCG94978urQA
+	4oc5Y54BghIEwVyAFnh6FABunHeiENKu1q4y54Qz2q95QVWDSe6NIGGTkYyS6DCLcTa8Kwd+YlMMR
+	dmf+ADjI8eIK6tQr2GQd/EZzmb76U66uLZ38yGU9NQX4VXCMs2R/cB71qyyyhBtwygJqHg6OJHgIP
+	uF8TCEGQK4j19/gbbRwFS4aRbUiczOBAWoP5LEGC2QEroMraaJmQiP2Dnmlzq8RygpPuvM+t3M6oe
+	AJyaW5nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuVqE-00000000Lbj-2giJ;
-	Mon, 23 Feb 2026 13:19:14 +0000
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+	id 1vuWEv-00000000OyR-1dh1;
+	Mon, 23 Feb 2026 13:44:45 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuVqC-00000000Las-09Yj
-	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Feb 2026 13:19:13 +0000
-Received: by mail-lj1-x235.google.com with SMTP id 38308e7fff4ca-38709888abeso36347051fa.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 05:19:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1771852749; cv=none;
-        d=google.com; s=arc-20240605;
-        b=D88f9UuD9rGFX82+Qal7CVyLBtOwiFLWjZ/PAFQq4Z18d4Kiv8Ic2OfyBxC27LGvZi
-         4WGYPkPzmyChfQ+87HCD2GMaV4h6G0DP4mRET1hqpBQ5yJdZYiZu6vUKVMPbyHziT3Us
-         GmBdHC0F9koM3GnwOnUTMq6DNrueZvDn7OVu2jEXJlz46AsTUo8wWL1fOBpPWrR2I1oD
-         xDtN753tfANtVTjRzGEGwOGIEP1EFnLVksgT9Iw1BOfM0u8Y3R660yXXhmnAB6R5WSod
-         J+oqlIhvzoCN4vUBe/LAt63wzaa1fSSoRtk+6DtGE9Ur/5FnQa7nVMMQWNrkW8t5G4wN
-         r3pg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=u47cn9soFrW8BHoPy5Odl1FEs5rvVnzdpDoreo2Nl90=;
-        fh=XNMNMz7VBcglR2/ctZOQ2tHxN7q7gSth3IQWEKssXJY=;
-        b=IiEA1WOxQxPLyjJIgcd5aks4rTQB69snLpQO3ghQL5h3yPcnwAH2d5aOf/idxPSq06
-         410GpPzkRq3GYLPDxNbx3L6+OnmfzHXx+8DDGNnAa2GQ3KzymLOOEdspX5J/899mMSes
-         iO4mNHSez/J/FuBWBRiVl2yKfNMHQGLHAdWeKpxz47Lg/Fc6SkJ0YQm7S3i+h4PFl8Yf
-         +wkPBVRgrF6gyMFDx7hYMs1Wr7YtSDfamDsl+cG3OQ+Nb1Pe/7KgEnFKVRysRU7MXWlP
-         Tf2wiTAwnMS+6UBf7aozt174+djtUrgJPA/MrJ69yrBld/qbUwfc+hHgybuyjpWQTz/q
-         Gn9A==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1771852749; x=1772457549; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=u47cn9soFrW8BHoPy5Odl1FEs5rvVnzdpDoreo2Nl90=;
-        b=XRihpXbfG/uBQxaqCF7mFJbb3sPy2rG8glt+lAlPWOvuuio2uVI3/6q3vEiVqhhkEN
-         JLeFODZDozXwnkv/w1W5YbLvVG5Jk6O0dGw03ySsMOWyQWZHKZzcFE6iDOKgO1MOV+9F
-         YWnQJZe5k0BMtWwuf7xhof+69Dyg7B4UqvUrJq4d55bBNlNGBccjpK3CvJGIVRa58a3+
-         fBTNV/pi1ST/3g4cv7lGkUaEdwWmug4KG6S30oJm5xlYchsGXnN8553BZB4cGga7Lzux
-         NYFXmAqs9mGlhNyGp/K1j5c/m/Tn2Kp/9lKtR/S8MJGH+BxZbagRfHCyonmI7Noi0bqD
-         +nyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771852749; x=1772457549;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=u47cn9soFrW8BHoPy5Odl1FEs5rvVnzdpDoreo2Nl90=;
-        b=sbaYmgDXJy48zPyTLIw9Q5k1foJ3xShtnlBLFS/8mADPlJe6aWo1SlvHaz+J3WTxdN
-         ymxe4COzEyI0s79gSqW4C8Mb9UBm38+Pugh91knHjnzBhbU2p2HanN4ouuM2zoR4nu1/
-         7e3YRIgU7DXVFtf2jfqwcicc8pFH7aUHzZHfbTkw6oz9Q0r0mTMzXdeHPC61+nN1RWqF
-         n4/6k4Ira3u0tPXHzQHVpZFWMovUyL5X8+TeLsFwzNuGdMs/ytKf6o4fkwALgRw0jchR
-         LjwtoYtvuf5xcy6OQnWOFAvDS/9Y+5lE4VC3Yv6uxa4euUv23kf1fbtAEz8Mgve1GCyM
-         6EWg==
-X-Forwarded-Encrypted: i=1; AJvYcCWtWUSFqVhPCgELDfJCjBFN0egS9Ibjj9KxDpsZum4Gr8Hp6NV449SlV22E5V2Cm7/4k7SZ3e+4WB9DU5N9Hw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzyXBcssJxfYU6+Bf2Ay3hVaN0lnrghT/24X7mg8T5xKBZE+uQU
-	StY2VPsUCUkwzK26DYsayyZrxrIoyL20mX1Wc6muDKeQv/K6qpdcxMlhbOuWO5fkm6tWKsSH2k5
-	3DTLkf03hUbN30oPOCkBCwIMX65RbqoUy1xV9vkJifLPI23xzO/qMcl0=
-X-Gm-Gg: AZuq6aLHrpZ5BDO93sKYqtXPahGJSZpa+VhrJVzLD8MQ+LyL9NQtin2H17fQb3S3f8q
-	rZols+R3KOPlrkNn9h1kh/eqjDY20vyNhy/e6AEsScK+WN4dUXb45oSeOIT5hsloYrLSAP4WFJc
-	g9yWy/D4vCMyYjoDaOGW3iv0+lrUXi8xvo5sc08002uo5Z+a0I9RwMkoy6h4n+pa3WrVDaxT/7f
-	VVspkPnDKZk9Qe2vrSpvCQo/2PRSiFeRzkGI1GBHHcDMduI6weKQpSYfqHSIQumnOFH0AHAXmX0
-	JmxUNwoc
-X-Received: by 2002:ac2:4bc1:0:b0:59d:e9df:6dcd with SMTP id
- 2adb3069b0e04-5a0ed87df97mr2593500e87.15.1771852749330; Mon, 23 Feb 2026
- 05:19:09 -0800 (PST)
+	id 1vuWEs-00000000Oxy-2a2k;
+	Mon, 23 Feb 2026 13:44:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1771854278;
+	bh=acMrGJNdojnzZ6jicbdncch2AzpkhBiFzlmsdz3QkPo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Vd7OLWX8Dc+Jh5op1aOlT/jS9Tv3AqwTrgGspy28Lr1Hdb84hQxzeyP0TxZVhGRdd
+	 vQsMl/Ndvb6U4cNDCZvLBFiXagTI9sgpQhsDZ9zy/4YssDuf1Y7zbbfUmDi3SmnUzR
+	 6zKF6hRoDNA36EZENTeizb+spvgdhudrAt8tOJiBQbfg9vhu+uOBNTpeWINWJV86mC
+	 qCo1Xd10VylZovA5RBP0OW45IQQRNMnJs0z9c7sO6LIB6nMRhCfEnVlZibIN6+QwCr
+	 84rwVmAY0ab+52lSE8siQlir1P8fiqUVfySKPFzcSXynLZrccysINCG8NeQjn80Uiy
+	 UlUeEeUhk+wAw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6D04B17E04C4;
+	Mon, 23 Feb 2026 14:44:38 +0100 (CET)
+Message-ID: <663a0322-1a9b-45e7-9233-93592878bbaa@collabora.com>
+Date: Mon, 23 Feb 2026 14:44:37 +0100
 MIME-Version: 1.0
-References: <20260219231624.8226-1-sean.wang@kernel.org>
-In-Reply-To: <20260219231624.8226-1-sean.wang@kernel.org>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 23 Feb 2026 14:18:33 +0100
-X-Gm-Features: AaiRm53UIVVBouS8ori9IKqoVA3ZwCaDsyl3whmD_0t9aHnCuwJJwIQxLct_CEw
-Message-ID: <CAPDyKFoiqit-_PWQ3SitGD2YV=J3ZcD97T4p-+MwYXjLVe6fdA@mail.gmail.com>
-Subject: Re: [PATCH 1/4] mmc: sdio: add MediaTek MT7902 SDIO device ID
-To: Sean Wang <sean.wang@kernel.org>
-Cc: marcel@holtmann.org, luiz.dentz@gmail.com, linux-bluetooth@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-mmc@vger.kernel.org, 
-	Sean Wang <sean.wang@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] arm64: dts: mediatek: mt6359: give regulators unique
+ names
+To: David Lechner <dlechner@baylibre.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260219-mtk-mt6359-fix-regulator-names-v1-0-ee0fcebfe1d9@baylibre.com>
+ <20260219-mtk-mt6359-fix-regulator-names-v1-1-ee0fcebfe1d9@baylibre.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260219-mtk-mt6359-fix-regulator-names-v1-1-ee0fcebfe1d9@baylibre.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_051912_110077_83B46E40 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20260223_054442_856510_55C374FF 
+X-CRM114-Status: UNSURE (   6.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,41 +81,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 20 Feb 2026 at 00:16, Sean Wang <sean.wang@kernel.org> wrote:
->
-> From: Sean Wang <sean.wang@mediatek.com>
->
-> Add SDIO device ID (0x790a) for MediaTek MT7902 to sdio_ids.h.
->
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Il 19/02/26 23:55, David Lechner ha scritto:
+> Change the regulator-name properties to be unique for all regulators.
+> U-Boot cannot handle duplicate names.
+> 
+> Signed-off-by: David Lechner <dlechner@baylibre.com>
 
-This should go along with the other patches, so I am not picking this
-via my mmc tree.
+Okay, makes sense.
 
-With the sorting (pointed out by other reviewers) fixed, please add:
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Acked-by: Ulf Hansson <ulf.hansson@linaro.org>
 
-Kind regards
-Uffe
-
-> ---
->  include/linux/mmc/sdio_ids.h | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/include/linux/mmc/sdio_ids.h b/include/linux/mmc/sdio_ids.h
-> index 673cbdf43453..97cc834fb3d5 100644
-> --- a/include/linux/mmc/sdio_ids.h
-> +++ b/include/linux/mmc/sdio_ids.h
-> @@ -112,6 +112,7 @@
->  #define SDIO_DEVICE_ID_MEDIATEK_MT7663         0x7663
->  #define SDIO_DEVICE_ID_MEDIATEK_MT7668         0x7668
->  #define SDIO_DEVICE_ID_MEDIATEK_MT7961         0x7961
-> +#define SDIO_DEVICE_ID_MEDIATEK_MT7902         0x790a
->
->  #define SDIO_VENDOR_ID_MICROCHIP_WILC          0x0296
->  #define SDIO_DEVICE_ID_MICROCHIP_WILC1000      0x5347
-> --
-> 2.43.0
->
 
