@@ -4,97 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67324EEC28C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 22:01:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21E5AEEC2A7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 22:41:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vwmeVddzSBrk6onBg3XthXPBezPsVZCBdsI2Jvj2LQw=; b=A+hN24sybMUtmO7G46+Iq6Cy7v
-	METUtOIiBRoni6yB11YSG9Ltx+lJ2qBEcwVjc/quVHHrBKTu6En5kIuPc8fwD6NPrCn7hq4aO6iVT
-	oOVUH50iwKUMfTN3ck5vDJw9/WqV1M/RQqdsmpAVJ0r8JFGJpUFcnC5q8pgxQiNaXaXKRvV0PehEn
-	ti4BXHbE2zFED37fqQ6H3yWVpE+g6shzH3lq5TMFVSCKX6mN2ArxL5JlkdeVjZjUb4nZTbaLj+MMG
-	EPDYR17XRz3RrLJlIsZ+0SvY9FNHsc9uYeYSScrSBbBLw+wbXt0wkio+euU4F6qHXZFJEKK5sOXi3
-	MsqwKU4A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JWKpmp7rR7lZ24ob2b+u9Uqg1OW7vSSvgBsPQFGMQYM=; b=Pj+MdcvlTOownDmepxiWnHU081
+	5DCSMRJHLasF+YyU49Kqs2nPA/xGE8kbBMYJ0I5AMigkMpiw+ZQFCa9yx+/shSI0afIbHnPhZexii
+	kspkxUi5Vq/wGZOdTnp2UQhdSdpI4Ukh4XNyW0mAsFoo2u7vukchznXWkadm+SIYkLwKlO3sgnMFW
+	ZJqbrynBvpKnTeC5KTAU2H7JyIzA5ARkG0Y0SU5mrM9Do5KA7CYcl/BhVZwxB+J1ZzfVc595CDhFE
+	oU6KsjlWgj20znGClEIoJSfsMXIvPJwTpWFlPDglppw7E4HAfsJoplyJMskRztAocBF9jr+4F1JHV
+	KYI9ikKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vudzu-000000015RF-2MZr;
-	Mon, 23 Feb 2026 22:01:46 +0000
-Received: from mail-dl1-x1234.google.com ([2607:f8b0:4864:20::1234])
+	id 1vuech-000000017ro-1i6R;
+	Mon, 23 Feb 2026 22:41:51 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vudzq-000000015QE-2maR
+	id 1vuecg-000000017rA-0o6B
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Feb 2026 22:01:44 +0000
-Received: by mail-dl1-x1234.google.com with SMTP id a92af1059eb24-12732e6a123so841273c88.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 14:01:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1771884102; x=1772488902; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=vwmeVddzSBrk6onBg3XthXPBezPsVZCBdsI2Jvj2LQw=;
-        b=HNqOu8RIiwhrBoYyZS3dmmB0/QEgl7kWqePSwoGGQidt18NJLWEAoYH7u8EMdK9gac
-         CV+eXBlL3oV0illc073wONBHAeVX4zWxXesOHnSLaBrmtxqpk+an6qV+EK4RWu3Bh9IA
-         W6ANWr+K5ZEBRHBvTO1Ob1Ho5G2Ay6C/H89RmoA6YB79LXnd6XcOITxAI6h8mpvkBH3u
-         EOZ4jbNQgMamwsWgW/3Ddv8P9Toc1kqHkaTyiUWCi6ycBlDdVD5Aq6ojjnNs4AaSyjzo
-         ubAsqUk/ItL3GqcaWvH/8L5JxcYc4bTiY1BcGU08S1Skyob0EXTdBRfqQjVwDJCmYlEI
-         v1LQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771884102; x=1772488902;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vwmeVddzSBrk6onBg3XthXPBezPsVZCBdsI2Jvj2LQw=;
-        b=S7PTN4FwxL/s0PqK+/b6rAWXHH42OWNz/aaf1zxxaL+b/zni1SGdYlEeYQo/+e5/Ys
-         N/YI6iAUAUrzaff47NlEQuP4kA3+VJE5hQ4kwiDfQoCz0e+8f7tF+V1+N99BuuvX/b7w
-         hyegxDdjMmTRsJm1paN5MWHz9gic8rZbvR5vh8rJtRf9KFK/mAQNJs/CmNUmWBcuLtk/
-         7o/1yKMl14ZfqPA4km/RlOukh3NNwZiljj6dQbulSelMRyFlIr/+GP6aTEqIi/7nCABi
-         vT/7PXMtyScaLfhGxXpdA2rv8G07F+gy62fH7wSLd+EGo4Sci6+EKqoULONmLZIbMroL
-         fIyw==
-X-Gm-Message-State: AOJu0YwArRmbKWy1Mzs2I7AX36IEMIbWcD0Rnt3ROrg//5no/VHvJzDZ
-	A4wUnhIhOfdqobFiyAabls8HFJ2vIzuFUBXmeS7x91m9Aj7G3Yu0V3/C
-X-Gm-Gg: AZuq6aIoHYQc5ShEPxEw3PyuV26NCFHmOG0Tz6S7dws15um0JsSykfRDL2ukRNuqA2l
-	MoAOlimCllTF2IwgnaM1rIRi352BfDojmF6DpGocayOkNMt4SvXVAIRvB4rnb2aiCThS8YHo+rJ
-	Bf2nX3GdFFy/EpIpJNTFsD0X5/PKz3Y8PfLvn6Xu30tWwxpl2cMBKWAp8ZACbVtQjONfTKPwlJ0
-	DIqkYWtYTI055lA1peCAuRsdRTcEAz0NOUoLMYR1eyYccm/jdCdG2kEcI7LdngADViwwtbbuKZ4
-	CheGmrL/oQynIVa2VsueJ2rwK0+cyw5CwQq40SneHeqveq3O+JXTdoNdIxKQEDYuGynMCczIdDe
-	+IRgyBgCGg1IsNnpB/qU9B4Ip6BpzoKpsjjhIcfHid7WrE2xpMcLFSUuSm4/mUCCh5Pde3XFUzY
-	//Um9lMrGoOwzDPxUpNL7532NcVAoa3ypHur4nKKB2ZZkZAoH6hDJoVbr6qx+4cD7b
-X-Received: by 2002:a05:7022:2521:b0:11b:9386:a3c8 with SMTP id a92af1059eb24-1276ad8bb87mr4839876c88.41.1771884101638;
-        Mon, 23 Feb 2026 14:01:41 -0800 (PST)
-Received: from google.com ([2a00:79e0:2ebe:8:1b48:5d6e:ab6e:5287])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1276af2edd7sm9460001c88.8.2026.02.23.14.01.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Feb 2026 14:01:41 -0800 (PST)
-Date: Mon, 23 Feb 2026 14:01:37 -0800
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, Fabien Parent <parent.f@gmail.com>, 
-	Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Julien Massot <julien.massot@collabora.com>, 
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, Gary Bisson <bisson.gary@gmail.com>, 
-	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rtc@vger.kernel.org
-Subject: Re: [PATCH 3/9] dt-bindings: input: mtk-pmic-keys: add MT6392
- binding definition
-Message-ID: <aZzOHVh10zr9hiWs@google.com>
-References: <cover.1771865014.git.l.scorcia@gmail.com>
- <056cbc09fcbb4a2845cece69209a2a564d993ac5.1771865015.git.l.scorcia@gmail.com>
+	Mon, 23 Feb 2026 22:41:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4AB35600AE
+	for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 22:41:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 00D8DC4AF0B
+	for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 22:41:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1771886509;
+	bh=TeMt0AX/UmpbUNYFEiguHKbS1SjqNPE1azh8i2vqJzQ=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=Q90md/KOfDcrfeagom1mAd7Dnb31vbELqv/0ewQ49+oNrfvDteCcF15V2QIFcXULU
+	 2OLzBw2ngjDgswaMRmp1sqnGWkWuZgxtVyfBaWEfAbYBpbPKDjjEXC8iyUei9aM0kM
+	 MZ3yxduWuGINQouT1LlLNajEQ65zx8t8yJhww+1Hqubax+F3Hgu1snRN4VK1QVvbTG
+	 n1wHJtwowrr1tcsgwcaYYpJ5Rzb8WFOvCSC9qOIYqP451B/w3cBVq57KApTQnvk2zH
+	 tI6TCQ2Xa7xn29xn0rQLAC+5jjiwCqKGuma7QANgvvRZJpSfZMEqlL5oC7qQKTLAmG
+	 4ggxPjXV2EJVQ==
+Received: by mail-lj1-f178.google.com with SMTP id 38308e7fff4ca-3871a08189aso39853721fa.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 14:41:48 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCXhwYkC+CVmAl/EVPrMJdHw1BZwaN9TyTqKw0VgNQRPOwFNuvblnzXsOhJ05lXi7rRO26C6mp81tjY0puDw5Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxXDm6dXH7cGR2BCgzT+e5fKw+jTtT3LGiJF+j3dxORokbZ+9j1
+	52sW9VZ4Og4/3DPewjJQULuEUwSf7Ra0IRZDHe7mI0ECj47B7tIuJhSIS8CCy4ZuhDgERerBFgB
+	DkWThD5K/prS7W5EOuFzfvTWBwRZtgho=
+X-Received: by 2002:a2e:a7cf:0:b0:386:7e61:5de1 with SMTP id
+ 38308e7fff4ca-389a58a71b3mr36637261fa.0.1771886507309; Mon, 23 Feb 2026
+ 14:41:47 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <056cbc09fcbb4a2845cece69209a2a564d993ac5.1771865015.git.l.scorcia@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_140142_727689_F0BD6508 
-X-CRM114-Status: GOOD (  14.84  )
+References: <20260223073854.2464232-1-jb.tsai@mediatek.com> <20260223073854.2464232-2-jb.tsai@mediatek.com>
+In-Reply-To: <20260223073854.2464232-2-jb.tsai@mediatek.com>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Mon, 23 Feb 2026 16:41:34 -0600
+X-Gmail-Original-Message-ID: <CAGp9LzoJ=bi2Ao9V2byetnNCkYunHdGV4i4VUzyYC_iHHPu7WQ@mail.gmail.com>
+X-Gm-Features: AaiRm52Tkb3GZi5rcuvrRWZRAU3Z5n3dk8fj2slXJOZmMqBLAby5G5mYuaWZbxo
+Message-ID: <CAGp9LzoJ=bi2Ao9V2byetnNCkYunHdGV4i4VUzyYC_iHHPu7WQ@mail.gmail.com>
+Subject: Re: [PATCH 2/5] wifi: mt76: mt7921: refactor CLC support check flow
+To: JB Tsai <jb.tsai@mediatek.com>
+Cc: nbd@nbd.name, lorenzo@kernel.org, linux-wireless@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, Deren.Wu@mediatek.com, 
+	Sean.Wang@mediatek.com, Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com, 
+	Leon.Yen@mediatek.com, litien.chang@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,38 +81,137 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 23, 2026 at 05:12:42PM +0000, Luca Leonardo Scorcia wrote:
-> From: Fabien Parent <parent.f@gmail.com>
-> 
-> Add the binding documentation of the mtk-pmic-keys for the MT6392 PMICs.
-> 
-> Signed-off-by: Fabien Parent <parent.f@gmail.com>
-> Signed-off-by: Val Packett <val@packett.cool>
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+HI, JB
 
-Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+On Mon, Feb 23, 2026 at 1:40=E2=80=AFAM JB Tsai <jb.tsai@mediatek.com> wrot=
+e:
+>
+> Move the disable_clc module parameter to regd.c and introduce
+> mt7925_regd_clc_supported() to centralize CLC support checks.
 
-Please merge with the rest of the series.
+typo, s/7925/7921/
 
+>
+> Signed-off-by: JB Tsai <jb.tsai@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
-> index b95435bd6a9b..2d3c4161a7f8 100644
-> --- a/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
-> +++ b/Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml
-> @@ -30,6 +30,7 @@ properties:
->        - mediatek,mt6357-keys
->        - mediatek,mt6358-keys
->        - mediatek,mt6359-keys
-> +      - mediatek,mt6392-keys
->        - mediatek,mt6397-keys
->  
->    power-off-time-sec: true
+>  drivers/net/wireless/mediatek/mt76/mt7921/mcu.c  | 14 ++++++++------
+>  drivers/net/wireless/mediatek/mt76/mt7921/regd.c | 13 +++++++++++++
+>  drivers/net/wireless/mediatek/mt76/mt7921/regd.h |  1 +
+>  3 files changed, 22 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/mcu.c
+> index 8442dbd2ee23..1e2afa736cdf 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+> @@ -4,6 +4,7 @@
+>  #include <linux/fs.h>
+>  #include <linux/firmware.h>
+>  #include "mt7921.h"
+> +#include "regd.h"
+>  #include "mcu.h"
+>  #include "../mt76_connac2_mac.h"
+>  #include "../mt792x_trace.h"
+> @@ -11,10 +12,6 @@
+>  #define MT_STA_BFER                    BIT(0)
+>  #define MT_STA_BFEE                    BIT(1)
+>
+> -static bool mt7921_disable_clc;
+> -module_param_named(disable_clc, mt7921_disable_clc, bool, 0644);
+> -MODULE_PARM_DESC(disable_clc, "disable CLC support");
+> -
+>  int mt7921_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+>                               struct sk_buff *skb, int seq)
+>  {
+> @@ -422,8 +419,7 @@ static int mt7921_load_clc(struct mt792x_dev *dev, co=
+nst char *fw_name)
+>         u8 *clc_base =3D NULL, hw_encap =3D 0;
+>
+>         dev->phy.clc_chan_conf =3D 0xff;
+> -       if (mt7921_disable_clc ||
+> -           mt76_is_usb(&dev->mt76))
+> +       if (!mt7921_regd_clc_supported(dev))
+>                 return 0;
+>
+>         if (mt76_is_mmio(&dev->mt76)) {
+> @@ -470,6 +466,9 @@ static int mt7921_load_clc(struct mt792x_dev *dev, co=
+nst char *fw_name)
+>         for (offset =3D 0; offset < len; offset +=3D le32_to_cpu(clc->len=
+)) {
+>                 clc =3D (const struct mt7921_clc *)(clc_base + offset);
+>
+> +               if (clc->idx >=3D ARRAY_SIZE(phy->clc))
+> +                       break;
+> +
 
-Thanks.
+I=E2=80=99d keep the refactor logic-preserving. This bounds check is a
+correctness fix (prevents OOB on phy->clc[clc->idx])
+so please send it as a separate hardening patch and describe the failure an=
+d fix
+Also, ARRAY_SIZE() is for compile-time arrays only if phy->clc were a
+pointer, it would be invalid/misleading I guess.
 
--- 
-Dmitry
+>                 /* do not init buf again if chip reset triggered */
+>                 if (phy->clc[clc->idx])
+>                         continue;
+> @@ -1403,6 +1402,9 @@ int mt7921_mcu_set_clc(struct mt792x_dev *dev, u8 *=
+alpha2,
+>         struct mt792x_phy *phy =3D (struct mt792x_phy *)&dev->phy;
+>         int i, ret;
+>
+> +       if (!ARRAY_SIZE(phy->clc))
+> +               return -ESRCH;
+> +
+
+Ditto,  to keep the refactor logic-preserving, send it as a separate
+hardening patch and describe the failure and fix and also
+!ARRAY_SIZE(phy->clc) isn=E2=80=99t a meaningful runtime check I guess.
+
+>         /* submit all clc config */
+>         for (i =3D 0; i < ARRAY_SIZE(phy->clc); i++) {
+>                 ret =3D __mt7921_mcu_set_clc(dev, alpha2, env_cap,
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regd.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7921/regd.c
+> index 6e6c81189222..70440ab8ba82 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/regd.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/regd.c
+> @@ -7,6 +7,19 @@
+>  #include "regd.h"
+>  #include "mcu.h"
+>
+> +static bool mt7921_disable_clc;
+> +module_param_named(disable_clc, mt7921_disable_clc, bool, 0644);
+> +MODULE_PARM_DESC(disable_clc, "disable CLC support");
+> +
+
+should we explicitly include <linux/moduleparam.h> ?
+
+> +bool mt7921_regd_clc_supported(struct mt792x_dev *dev)
+> +{
+> +       if (mt7921_disable_clc ||
+> +           mt76_is_usb(&dev->mt76))
+> +               return false;
+> +
+> +       return true;
+> +}
+> +
+>  static void
+>  mt7921_regd_channel_update(struct wiphy *wiphy, struct mt792x_dev *dev)
+>  {
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regd.h b/drivers/n=
+et/wireless/mediatek/mt76/mt7921/regd.h
+> index 0ba6161e1919..74bc2fdd532c 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/regd.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/regd.h
+> @@ -9,5 +9,6 @@
+>  void mt7921_regd_update(struct mt792x_dev *dev);
+>  void mt7921_regd_notifier(struct wiphy *wiphy,
+>                           struct regulatory_request *request);
+> +bool mt7921_regd_clc_supported(struct mt792x_dev *dev);
+>
+>  #endif
+> --
+> 2.45.2
+>
+>
 
