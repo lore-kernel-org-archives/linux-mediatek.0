@@ -4,77 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61291E63C8B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 10:39:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E1B6E98E13
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 10:44:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pQGO0rOrP6CshyI23vD7FI6nty5bzJA+eY3Su3dHLJQ=; b=1xtI/1VWgED584OuDK45XT6KN+
-	3G/0wZ9GkEo5+J5a9+o08KLM7KdfbcovifUwPwR6A91/+/udCHTkJGieHQEpq1J14gNgmLbdSf0CM
-	Fnb2t6iLyUCKDuJLNRsrjMAAhcZY5xLEZhU2XnwNVYmn1im86plG9LihRMeNmaDdJETslzfiShtsF
-	h1nY16webhGVoXIdaDFOwDQLj1bsdjqvj8M56tvoBMNa/IH3anlAOhTk6dEwlT637CBFhTto6t/1w
-	49OXTK2QQSJmFB3VO5bGCI4f4PnLizfxoLFK8Wo2VpMLfkW19Bq0mTvLu4zejo8uBMT1z1VyHzLmr
-	Kzg5tCRg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dEm7HrivSN92H320JoMsqP4dSh+43yPvwNxb4pfR5LE=; b=RwV8NIn22/mFNy+VwI9iWVaUZ/
+	jDUxl8BmFuVHNK7/8f2lG64xpDa3VLSwbQUCWg9msJ1R4LKxPNxBAgCL0CkAn31xZoN1exirMLQj1
+	3UCJf43hnUTBSvwR8Coj+HeKEyT9rNAHbj8irfl25rorBIJ8K1Q+WJu9Ub0C9LFdHTsQn7DbTgJjn
+	q2fxYzYHjcYXFK0l4XmasCOf6d+aFUeDSzzI2fAIE3v1KVvtYWXfJ9q1qV0Z48Edqrt8T14Tem5Oa
+	i8y2AtT5gXPnVBLa84RmB2feKxFVXYxg42uiQqJDd56sSkv5oKC72b0OmxJiiVxZ/8dwGRXsgtTcW
+	NFjP6IBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuTLR-000000004gD-2mlA;
-	Mon, 23 Feb 2026 10:39:17 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1vuTQr-0000000053s-2Gtg;
+	Mon, 23 Feb 2026 10:44:53 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuTLP-000000004fs-28hk
-	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Feb 2026 10:39:16 +0000
-X-UUID: e35f62cc10a311f1a16f0188aa809bee-20260223
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=pQGO0rOrP6CshyI23vD7FI6nty5bzJA+eY3Su3dHLJQ=;
-	b=EyxOPe700SZVQeoTFn0XtbWd5i3FaQ+fX2WvChQi8+6fc9RhINXTO3o+7wismmR2bZMufBcEIBHyfFA6IjpimyP7+60pomcKuVedtUOqHrn2cPM94gNjexnu2B4uq6SawXL6Gn1mD1PUl58MnjzlD3pvyt4nfgeZbKSla4Se4r8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:50f1c7be-3d53-4ca8-a794-621bada3a4f3,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:8a04e9f0-16bd-4243-b4ca-b08ca08ab1d8,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|123|836|888|898,TC:-5,Content:0|
-	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
-	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: e35f62cc10a311f1a16f0188aa809bee-20260223
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1273889864; Mon, 23 Feb 2026 03:39:10 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 23 Feb 2026 18:39:08 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 23 Feb 2026 18:39:08 +0800
-From: <peter.wang@mediatek.com>
-To: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-	<avri.altman@sandisk.com>, <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <tun-yu.yu@mediatek.com>,
-	<eddie.huang@mediatek.com>, <naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>,
-	<bvanassche@acm.org>, <sh043.lee@samsung.com>
-Subject: [PATCH v1] ufs: core: Move link recovery for hibern8 exit failure to wl_resume
-Date: Mon, 23 Feb 2026 18:37:57 +0800
-Message-ID: <20260223103906.2533654-1-peter.wang@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1vuTQo-0000000053D-16Tj;
+	Mon, 23 Feb 2026 10:44:51 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 34E0843F30;
+	Mon, 23 Feb 2026 10:44:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 005E6C116C6;
+	Mon, 23 Feb 2026 10:44:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1771843489;
+	bh=U3uZ/m6WL6vhuqlVvk4N1REvKJGTee1dBWqzamU05lQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=GjObXvQh+XcEFZxMdwj1fCT77G7dIM8o3tnYvqyCB7CZYDfDueLADGTsutq8/vC/H
+	 YWoBG5oTnBJnB3fSdRcAhcDviWKIggsj7DVVE4j8TXszvKGLQ6WeTvtqV1rdOfNKKI
+	 rRGinfVPOVNwmtzLPimdj9p2ebtPlXLrNFAp1yrsGufJa6fTYMj/7noqkJxJhzmBNi
+	 p21tacj3CjyT52vdwC46vblGIedvTNymTz8spRd3Ri8fbW738c4rGMrx6XV9+zgs69
+	 xxIdj6ulWwGi9FcJ4orBgx3nUZbSIhD/IAcQ1qWCiuBxYAvc4PUlBnMb9z21AFh3MT
+	 Tqp+P9naEjbCw==
+Message-ID: <71d92039-44ab-4154-9716-03634c491c48@kernel.org>
+Date: Mon, 23 Feb 2026 11:44:42 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/9] workqueue: devres: Add device-managed allocate
+ workqueue
+To: Danilo Krummrich <dakr@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ Shuah Khan <skhan@linuxfoundation.org>, Tejun Heo <tj@kernel.org>,
+ Lai Jiangshan <jiangshanlai@gmail.com>,
+ Tobias Schrammm <t.schramm@manjaro.org>, Sebastian Reichel <sre@kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Dan Carpenter <dan.carpenter@linaro.org>, Lee Jones <lee@kernel.org>,
+ Dzmitry Sankouski <dsankouski@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>,
+ driver-core@lists.linux.dev, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev
+References: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
+ <20260223-workqueue-devm-v1-1-10b3a6087586@oss.qualcomm.com>
+ <DGM9WUWC4ZE8.1A08TAKKT4FLJ@kernel.org>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <DGM9WUWC4ZE8.1A08TAKKT4FLJ@kernel.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_023915_601549_76B86F2B 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20260223_024450_446432_5CECFE76 
+X-CRM114-Status: GOOD (  15.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,57 +133,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+On 23/02/2026 11:36, Danilo Krummrich wrote:
+> On Mon Feb 23, 2026 at 8:27 AM CET, Krzysztof Kozlowski wrote:
+>> +__printf(2, 5) struct workqueue_struct *
+>> +devm_alloc_workqueue(struct device *dev, const char *fmt, unsigned int flags,
+>> +		     int max_active, ...)
+>> +{
+>> +	struct workqueue_struct **ptr, *wq;
+>> +	va_list args;
+>> +
+>> +	ptr = devres_alloc(devm_destroy_workqueue, sizeof(*ptr), GFP_KERNEL);
+> 
+> The function pointer passed to devres_alloc() is commonly named *_release().
 
-Move the link recovery trigger from ufshcd_uic_pwr_ctrl() to
-__ufshcd_wl_resume(). Ensure link recovery is only attempted
-when hibern8 exit fails during resume, not during hibern8 enter
-in suspend. Improve error handling and prevent unnecessary link
-recovery attempts.
+devm-helpers.h disagree :), but I understand poor patterns spread all
+over. I will use the release name.
 
-Fixes: 35dabf4503b9 ("scsi: ufs: core: Use link recovery when h8 exit fails during runtime resume")
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+> 
+>> +	if (!ptr)
+>> +		return NULL;
+>> +
+>> +	va_start(args, max_active);
+>> +	wq = alloc_workqueue(fmt, flags, max_active, args);
+>> +	va_end(args);
+>> +	if (wq) {
+>> +		*ptr = wq;
+>> +		devres_add(dev, ptr);
+>> +	} else {
+>> +		devres_free(ptr);
+>> +	}
+>> +
+>> +	return wq;
+>> +}
+>> +EXPORT_SYMBOL_GPL(devm_alloc_workqueue);
+> 
+> <snip>
+> 
+>> +void devm_destroy_workqueue(struct device *dev, void *res)
+>> +{
+>> +	destroy_workqueue(*(struct workqueue_struct **)res);
+>> +}
+>> +EXPORT_SYMBOL_GPL(devm_destroy_workqueue);
+> 
+> I assume you did not mean to export the release callback (which doesn't seem to
+> be useful), but a function that calls devres_destroy(), i.e. something analogous
+> to devm_remove_action().
+> 
+> If you don't actually need it, I would prefer not to add something that calls
+> devres_destroy() for now.
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 44efb03765b9..9908375b2f98 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -4385,14 +4385,6 @@ static int ufshcd_uic_pwr_ctrl(struct ufs_hba *hba, struct uic_command *cmd)
- 	spin_unlock_irqrestore(hba->host->host_lock, flags);
- 	mutex_unlock(&hba->uic_cmd_mutex);
- 
--	/*
--	 * If the h8 exit fails during the runtime resume process, it becomes
--	 * stuck and cannot be recovered through the error handler.  To fix
--	 * this, use link recovery instead of the error handler.
--	 */
--	if (ret && hba->pm_op_in_progress)
--		ret = ufshcd_link_recovery(hba);
--
- 	return ret;
- }
- 
-@@ -10175,7 +10167,15 @@ static int __ufshcd_wl_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 		} else {
- 			dev_err(hba->dev, "%s: hibern8 exit failed %d\n",
- 					__func__, ret);
--			goto vendor_suspend;
-+			/*
-+			 * If the h8 exit fails during the runtime resume
-+			 * process, it becomes stuck and cannot be recovered
-+			 * through the error handler. To fix this, use link
-+			 * recovery instead of the error handler.
-+			 */
-+			ret = ufshcd_link_recovery(hba);
-+			if (ret)
-+				goto vendor_suspend;
- 		}
- 	} else if (ufshcd_is_link_off(hba)) {
- 		/*
--- 
-2.45.2
+Andy pointed out EXPORT is not actually needed, so I will just drop it.
 
+Best regards,
+Krzysztof
 
