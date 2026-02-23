@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DD6AEA4FC2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 13:54:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 507AFEA4FC5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 13:54:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oS/sLxpW2QkgK7+gNEbXfb4danus6m6ITx2G8ctTYEk=; b=DUpNNFfObH/K7V56xlUpK9Y0JG
-	7X8LkGfMCRDRrZdUX56VMu5m8cLc+Yrvs9GSuUgnU6mTfXZ5YrTAhQqQ9/zoOukgkirD+VdmdyCg5
-	pUk5BqTb3shpx7EziBFOvgVY7FZpWM7Zbd65u7mi9Aw/KpStXGLIDdkvjls900BFQu9oW/AghRfRK
-	R956CvRXO7/uiGyfev0KWBW7a2tbdtO00DzU4HSWnE7X6/xdknd8Fa0YjCoGXn5ey7QtQj/p+qAgc
-	iAc80VQrqNvLYR5BM8jk8zgtuuubQ+YXB1Cowh3X5OdtbWaBJ0wswzJvbvw9Yn49CkhhZfrcje4kx
-	DeyqjGoA==;
+	bh=Fr7d7tb2OSvjYLeMmzPSFkX3IY9HuIWVM8tRYP8LeRw=; b=44jHuQk4PDB5Kqxb9EEk236BAo
+	3z/XH13KNy6FXRgwkh7CjnpiiR6NQ5rzFDrPBKmNhPukHE5rfs40s6nQw8pdStPsggCJs2ydlow4i
+	BNZqrbtPeJm8F+yxHWoxirlpQ8xxgshM8zNQtRuc7DoXMKY27UtXKD0O4lelOnMqSc2ifyiIa1wVG
+	klLkl3YKLyK35jzacBxDOAbwsVdw6G/tLrvwEm2MMrsRixeH0XKw47kmtXzMlB0I1uSjHICiRrRAl
+	zv/AR3L38lasuAGCzOYxjNoGCINjnmNXvu/7N2dE2z+g7HxMamw0YSBsiU8nh1mW2rosuVBWvZx5S
+	nUrCdD/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuWO4-00000000Q2e-29in;
-	Mon, 23 Feb 2026 13:54:12 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vuWOT-00000000QAK-1Wpe;
+	Mon, 23 Feb 2026 13:54:37 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuWO2-00000000Q1Z-1HBg;
-	Mon, 23 Feb 2026 13:54:11 +0000
+	id 1vuWOP-00000000Q90-2fu4;
+	Mon, 23 Feb 2026 13:54:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771854847;
-	bh=OIrW2x18OBe7MtWg9i3mOOyaUsL/tDgUO70shj0Bbso=;
+	s=mail; t=1771854871;
+	bh=wsxrGT9iiPD6ZitFu90+kuRPo6NfbN5RrwpeDZ7GNQY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=m93/wLHBj5MojNg8x/3XhD7n67KrTfMf1tReVhaLtzoyPsAfLd3DUg3IFTsTKNLDM
-	 FvvMR4KQM5z3f5HzguS8dhxp6Mp56AQ1GgQYisThGW4yn3jVk0wHSOcuiPGymEOG7r
-	 /o+NnKlgY7xGBlX9dvNqg56q6sDH1Sxv8Tr1HhHO+piyXdYJVRz39Cf9HePb/lTdei
-	 4HSn9lyT4cUBG+YEjGQHSb92jmqAkyc18+SfSuHs585OOv+un1CLjsYMyGphVD1vSn
-	 oiFBhp/mMf/npegCu0Eu9VddNTyh7ekPKcWgq7PE8OxDNCcnqVs9z+2q0zt7BVehdf
-	 S8hI9PPpSwoxA==
+	b=AlMRZCcNRh1z6NRy2/I17Dm2/sYYtXapstkwgNAT5JC829doMkVfCZu6bzBply4mX
+	 Z5V6k4Fugil9Pbk1jTOoN/oVEeqCfAKqRT6IFKDIziyaucxhMAd41jYXXqW7jof677
+	 m0mMfBerf0M5K1EAeqrIdfXRJS/x3Bi5RLQslWTpMP/myCyMmu2Sx78PopsHOkRg5o
+	 H/O52ahKyojFXDNplvjDFYJUmk8ft5TTBoJujoIoALlB0oZxnqE3hsUdIzuhOftNBq
+	 DfnF/yKg27joBLxmlkAJl7pPQ1DW9pvBgJOzHRgZOaVPAldn1YCSM7vOX8Bt/2/G1z
+	 L2GiCzzldb9Dw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8C91D17E04D4;
-	Mon, 23 Feb 2026 14:54:06 +0100 (CET)
-Message-ID: <864fe00a-1b4c-4ba0-8f42-c1b04f2999ad@collabora.com>
-Date: Mon, 23 Feb 2026 14:54:06 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 559BF17E043F;
+	Mon, 23 Feb 2026 14:54:30 +0100 (CET)
+Message-ID: <8030ee40-5972-499b-b693-b26fb7ffe7e2@collabora.com>
+Date: Mon, 23 Feb 2026 14:54:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v5 05/18] clk: mediatek: Add MT8189 vlpckgen clock support
@@ -65,15 +65,15 @@ Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
 References: <20260202062840.342707-1-irving-ch.lin@mediatek.com>
  <20260202062840.342707-6-irving-ch.lin@mediatek.com>
- <e0b39f90-f4a4-46c5-90ff-54a261c075b4@baylibre.com>
+ <4b22e998-b38e-4452-82ce-1389d7086a04@baylibre.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <e0b39f90-f4a4-46c5-90ff-54a261c075b4@baylibre.com>
+In-Reply-To: <4b22e998-b38e-4452-82ce-1389d7086a04@baylibre.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_055410_490398_6AFFC0AB 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20260223_055435_373977_5B616340 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,7 +88,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 19/02/26 22:10, David Lechner ha scritto:
+Il 19/02/26 21:49, David Lechner ha scritto:
 > On 2/2/26 12:28 AM, irving.ch.lin wrote:
 >> From: Irving-CH Lin <irving-ch.lin@mediatek.com>
 >>
@@ -102,28 +102,20 @@ Il 19/02/26 22:10, David Lechner ha scritto:
 > 
 >> +static const struct mtk_gate vlp_ck_clks[] = {
 >> +	GATE_VLP_CK(CLK_VLP_CK_VADSYS_VLP_26M_EN, "vlp_vadsys_vlp_26m", "clk26m", 1),
+>> +	GATE_VLP_CK_FLAGS(CLK_VLP_CK_FMIPI_CSI_UP26M_CK_EN, "VLP_fmipi_csi_up26m",
 > 
-> In mediatek,mt8189-clk.h, we have:
-> 
-> #define CLK_VLP_CK_VADSYS_VLP_26M_EN			24
-> #define CLK_VLP_CK_SEJ_13M_EN				25
-> #define CLK_VLP_CK_SEJ_26M_EN				26
-> #define CLK_VLP_CK_FMIPI_CSI_UP26M_CK_EN		27
-> 
-> Are we missing the middle two clocks here?
-> 
-> Or should the be omitted from the header file?
+> Should "VLP_fmipi_csi_up26m" be all lower-case to match the style of all of
+> the other clock names? i.e. "vlp_fmipi_csi_up26m"
 > 
 
-The arrays must match bindings, and since the two clocks are missing, this means
-that this is completely broken.
+It *must*. Yes.
 
 Regards,
 Angelo
 
->> +	GATE_VLP_CK_FLAGS(CLK_VLP_CK_FMIPI_CSI_UP26M_CK_EN, "VLP_fmipi_csi_up26m",
 >> +			  "osc_d10", 11, CLK_IS_CRITICAL),
 >> +};
 >> +
+
 
 
