@@ -4,76 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 503C9EC1114
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 17:13:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B7B2EC110E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 17:17:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oPpFcSeau7Gf5T+AlcnvIXzzk2Xfytp8JNl+DHgmVgg=; b=JFbVyNc/XmugLlAcoUDZpUCcQK
-	X95a+yOWuJ4ViARPROvmPid+U6IoudRgWge6hOZTy6czJBro0SLSk8yAcT3S1rm+j6zB3DFqYfUU+
-	OBuDscBp4ey3XeA/Fg19uUcFxFsIjov+AaIENVKOtK0CWlXyHelFjJhS8JoQ1HsbRJ2W9gL2vBuBE
-	uPQe1BvVtmR7P8yErW++Z7a7B+Mb2UKkwXpKisSZCh6eHtNCBstzo+/dbnMIOeoIUpr13UjDms/jK
-	gaCB4sDuTiJS6evTZ81XaMBK15qx+gNSIHJUPH7sLA+oNklN2B6m/5S4524CoUCXS4fS987NA5rnA
-	YZeKxUJw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hyGEcrLpV4bwwocVSCsdzUyZjiaZncJT9oIq/dUyqxc=; b=iNn3YAQCfaJP2KYpsS4GzNUaUL
+	ANnNebS540l+npWvUNysECtr1xBI5xCa9cBnwqYEhiYUolO3irQFn4McT1a2G6MwfTzLlWhUZFc5v
+	5WLgOZhm6sBvQ++1Q1T0VKFFIsTGbOO5i7vFGFNf/QI9PuitsQQRoN/igEHY3m0SgKLuVwzUb6LQp
+	+adtQt3QdHVBjgIantJlMp7sQbI1KCsvPwSy3JPvCOUzqOphTW8kC63XORJy6J1qW5m9hmuS1y3B8
+	hcywKgBf3Q8qzZ2KJUP13Bvd/MQnFiYrpg3rTR9kjh6AfVV73W8qtH27gH5LwpxhhfOgpRCNC0EQf
+	+eBHCpZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuZV3-00000000jYH-10BP;
-	Mon, 23 Feb 2026 17:13:37 +0000
-Received: from 011.lax.mailroute.net ([199.89.1.14])
+	id 1vuZYY-00000000jhk-0WmR;
+	Mon, 23 Feb 2026 17:17:14 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuZV0-00000000jXv-2J40
+	id 1vuZYU-00000000jgk-3zu8
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Feb 2026 17:13:35 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 011.lax.mailroute.net (Postfix) with ESMTP id 4fKS9p04ldz1XLyhN;
-	Mon, 23 Feb 2026 17:13:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1771866811; x=1774458812; bh=oPpFcSeau7Gf5T+AlcnvIXzz
-	k2Xfytp8JNl+DHgmVgg=; b=dXfWs53vD0knK4w3w5yRjw2N0JQjKPpT+emD3JSw
-	tn2PVNYOSXvf2Z/phY/tPI7RbCXvyEZCOYGLK745TDliTAAyTTMAG1qtA0HtdVuJ
-	S0MD6kRSSPUK/baZd7evIdwW1Etyi+2+zD5ZuNtzSqxiATOEfLHXkLsQdYzxkS4F
-	WLuC2TBK6UXToIPdVzfPgCdaJs6o0D1FOczByZhEsVNRyR1VxrvoIznnX5EpOfua
-	N/LOHpoXLYL00Jb5QWDj7po49T9/O5N6RJhC2/AGqhOb9CcfA9uKFJC90hLWRstH
-	vPuhDJlyrDQWfKnPJ3l52tD+WAh3/1YhyLVGPvplmnn5JA==
-X-Virus-Scanned: by MailRoute
-Received: from 011.lax.mailroute.net ([127.0.0.1])
- by localhost (011.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id F1Eg1G2IcSFi; Mon, 23 Feb 2026 17:13:31 +0000 (UTC)
-Received: from [100.119.48.131] (unknown [104.135.180.219])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4fKS9f6vcsz1XLyhM;
-	Mon, 23 Feb 2026 17:13:26 +0000 (UTC)
-Message-ID: <5017b907-16de-4d7f-a7c6-dbc504ffd1eb@acm.org>
-Date: Mon, 23 Feb 2026 09:13:25 -0800
+	Mon, 23 Feb 2026 17:17:12 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4837907f535so41307825e9.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 09:17:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1771867029; x=1772471829; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=hyGEcrLpV4bwwocVSCsdzUyZjiaZncJT9oIq/dUyqxc=;
+        b=dVHyqrk2mCtt//qFyPHtwGysqx9N7DdtfPwAPKJvGbzlr95YMT2jlqOdifoF0Ldd9L
+         zSBayrU2n7FnXq7Y/uOb67XPCu2uYg8Jwu8g6vvoTPj2wrktzX0yjZeI9JZ8vBz0fUo9
+         9U09UD3YnBHo5gShdULoVO62ICogaNRR2WQMzVW+j52q0jBLf6VwOdUZKBD2rrY+Rgdq
+         uiuGoH058RAaLbX3LaW1psM/elURGglc7lME+JatIDvSKq5saiixtN2SLvbjUONPH8u1
+         sl80ZswVWL9KtNyjsUEHqymSI42Tdj3uD68ZC6IAhBaGPzurxr5YRX5tCh/I1cxLt63M
+         yGzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1771867029; x=1772471829;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=hyGEcrLpV4bwwocVSCsdzUyZjiaZncJT9oIq/dUyqxc=;
+        b=REGrkItDUQRMtb2gDKkiGM3cjvMWWFDYIRBpfGHNedvp2hSf9VGkckcIKaCYzPtLU1
+         UwuV89/dmWFet1W1Ygc/FipZccuKbVXvWJaQ/od1bdc3hrV5BxIF9hkCKfCuMmRQOqT5
+         sPscbm8Lf981D7zsE9gRpYPKWCGjxVw/KCVDKS9YwRFi9Ee3HRkwEa6rzopkIdthSiY7
+         JH944vqyZshRfxG3RfAf7HJApw2sdC/Rknm18HbkfZXkz7z1j00/pzCsLECfFMGjVPy4
+         k378FxDCmzk9Fex8AizgYtjONQqYdZcBRWJPtX0b79RPAyPhBqY4Xb/qROAPIogRaoHH
+         n2jw==
+X-Gm-Message-State: AOJu0Yz20b502BIgq/oKMmjaZOO/A2MXfUPCJZuqT0JgdwJ66MFQrYOj
+	ShWXpLsoCuD/c5UV5W5YP9HDR1NgxRWmiGkgxax8V1z5A1Dm9Wq/yDJz1nLigQ==
+X-Gm-Gg: ATEYQzzTO6B2VSBsK1ejgpWvSLiGKp6qZduS6Kj6GOgRvV58L9OPE82uAjzD3bMOIDL
+	aT1XEqt41dhLLnqppBhVRACenH6/XB2ldXNKRBmDW6K1BwppFN7iHaSQ3FVy+vo8z2Hkhne05kr
+	6wayR7whM/zDWYXbBHtG5ejXqi7G4j2Z3Ho3UGMEnaomiywulxEzkD2MHATdJT8eT+sW7fOpVBB
+	J97jzzsSNpcWwTUXJBjO4KFNHa62Skntd7f6Pzr8YR8GbQScceYjuodTAfU1sbrzn/UPm9mvE5Y
+	sFQEax5W4lbAiexizHzaZqAPbiLqC1Jfe5nEC8aFMTyPZiLDVXDNF/HfoM5xwpxNujJ8FQDeiRv
+	CaZB0FtUxCZZ+JvB/aHeBLejv7URDvzkMcqyiUhkVY7ROJsPQenNHRAg6fGUTt6axFHjD5dIMZC
+	dbf7Mfhn5wGnCAMSnehfA=
+X-Received: by 2002:a05:6000:2910:b0:437:8111:e2d0 with SMTP id ffacd0b85a97d-4396f1562efmr16272260f8f.8.1771867028658;
+        Mon, 23 Feb 2026 09:17:08 -0800 (PST)
+Received: from luca-vm.lan ([154.61.61.58])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43970d4c982sm20871454f8f.31.2026.02.23.09.17.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Feb 2026 09:17:08 -0800 (PST)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Eddie Huang <eddie.huang@mediatek.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Julien Massot <julien.massot@collabora.com>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	Gary Bisson <bisson.gary@gmail.com>,
+	Val Packett <val@packett.cool>,
+	Fabien Parent <parent.f@gmail.com>,
+	Chen Zhong <chen.zhong@mediatek.com>,
+	linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rtc@vger.kernel.org
+Subject: [PATCH 0/9] Add support for mt6392 PMIC
+Date: Mon, 23 Feb 2026 17:12:39 +0000
+Message-ID: <cover.1771865014.git.l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] ufs: core: Fix possible NULL pointer dereference in
- ufshcd_add_command_trace()
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@sandisk.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com
-References: <20260223065657.2432447-1-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20260223065657.2432447-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_091334_607263_3055B669 
-X-CRM114-Status: GOOD (  11.96  )
+X-CRM114-CacheID: sfid-20260223_091711_000083_5A0DF412 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,29 +119,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/22/26 10:56 PM, peter.wang@mediatek.com wrote:
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index ec175a099459..44efb03765b9 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -515,8 +515,8 @@ static void ufshcd_add_command_trace(struct ufs_hba *hba, struct scsi_cmnd *cmd,
->   
->   	if (hba->mcq_enabled) {
->   		struct ufs_hw_queue *hwq = ufshcd_mcq_req_to_hwq(hba, rq);
-> -
-> -		hwq_id = hwq->id;
-> +		if (hwq)
-> +			hwq_id = hwq->id;
->   	} else {
->   		doorbell = ufshcd_readl(hba, REG_UTP_TRANSFER_REQ_DOOR_BELL);
->   	}
+The MediaTek mt6392 PMIC is usually found on devices powered by
+the mt8516/mt8167 SoC, and is yet another mt6397 variant.
 
-This will cause "-1" to be assigned to hwq_id instead of a queue number
-if a request has already been completed. Wouldn't it be better to
-introduce a new helper function that returns READ_ONCE(req->mq_hctx)
-->queue_num instead of making the above change?
+This series is mostly based around patches submitted a couple
+years ago by Fabien Parent and not merged and from Val Packett's
+submission from Jan 2025 that included extra cleanups, fixes, and a
+new dtsi file similar to ones that exist for other PMICs. Some
+comments weren't addressed and the series was ultimately not merged.
 
-Thanks,
+This series only enables three functions: regulators, keys, and RTC.
 
-Bart.
+I have added a handful of device tree improvements to fix some
+dtbs_check errors and addressed the comments from last year's
+reviews. The series has been tested on Xiaomi Mi Smart Clock x04g.
+
+Fabien Parent (5):
+  dt-bindings: mfd: mt6397: Add bindings for MT6392 PMIC
+  dt-bindings: regulator: add support for MT6392
+  dt-bindings: input: mtk-pmic-keys: add MT6392 binding definition
+  mfd: mt6397: Add support for MT6392 pmic
+  regulator: mt6392: Add support for MT6392 regulator
+
+Val Packett (4):
+  soc: mediatek: mtk-pmic-wrap: add compatible for MT6392 PMIC
+  input: keyboard: mtk-pmic-keys: add MT6392 support
+  rtc: mt6397: add compatible for MT6392 PMIC
+  arm64: dts: mt6392: add mt6392 PMIC dtsi
+
+ .../bindings/input/mediatek,pmic-keys.yaml    |   1 +
+ .../bindings/mfd/mediatek,mt6397.yaml         |   3 +
+ arch/arm64/boot/dts/mediatek/mt6392.dtsi      | 133 +++++
+ drivers/input/keyboard/mtk-pmic-keys.c        |  15 +
+ drivers/mfd/mt6397-core.c                     |  43 ++
+ drivers/mfd/mt6397-irq.c                      |   8 +
+ drivers/regulator/Kconfig                     |   9 +
+ drivers/regulator/Makefile                    |   1 +
+ drivers/regulator/mt6392-regulator.c          | 491 ++++++++++++++++++
+ drivers/rtc/rtc-mt6397.c                      |   1 +
+ drivers/soc/mediatek/mtk-pmic-wrap.c          |   1 +
+ include/linux/mfd/mt6392/core.h               |  42 ++
+ include/linux/mfd/mt6392/registers.h          | 487 +++++++++++++++++
+ include/linux/mfd/mt6397/core.h               |   1 +
+ include/linux/regulator/mt6392-regulator.h    |  40 ++
+ 15 files changed, 1276 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6392.dtsi
+ create mode 100644 drivers/regulator/mt6392-regulator.c
+ create mode 100644 include/linux/mfd/mt6392/core.h
+ create mode 100644 include/linux/mfd/mt6392/registers.h
+ create mode 100644 include/linux/regulator/mt6392-regulator.h
+
+-- 
+2.43.0
+
 
