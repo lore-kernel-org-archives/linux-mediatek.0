@@ -4,77 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70C08EC1112
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 17:24:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4148EC1117
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 17:55:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lkt0S9mMcUaUASmdJ3Lv+6XStfU5iRAFdPpB/dYdz0A=; b=0KNXQCLPU+B1F1nyIONqZ/lPj3
-	PRAj11zz0vA2Bcs3UK8CX3Aae18ErIXcFROX/dOliiVM6TNqWHxoJzelCOrdfoi6RLiZvLKcWWHxz
-	tiQ9QsoOXzPQdyRh+KG0zfvyb//bIcyQvvnTWyNLuHIzgc3AUszVB7dGk1dfK7yRZr7J6eWHkI8Oz
-	yv+9QHA1Rcl1nvc35em9/VBd6e7jjkUU1xHGoWzBa0i69lCtpUKuR5vSQZmL4/sSbTB+qeGoW9fYp
-	RL3U8mPYIV35i7kq9J2IBbDrqYVEHS7ui3hCsc2XaiymbhPgxMRcVgdIblSq0GtEJINs/V1kAYghy
-	Ar4cabwA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8S3D2amG83bMjq3rYrixdtz5QNwrXVFuIOF99KB48r8=; b=TcBOFFw39RdP21KxxGqyVGjqk4
+	1YMKnoQqxt2ZJJxW+LIgmwTb9ArQIK9l6nSBunZQpc9GUBx/ZIl/YLa3DHPD5Y/FPCYY/p8YPYMTo
+	kSnactmadu9iKcLsBknjIs4ERhqRmubkKFUs0uR7iGdO8VcOx7fa+DCGC5nJLm0CaCXHi16QmCuZ2
+	/eoCfEjl2UwRsJwT8haqSjUvSb4qXaL7afhwQRP7/muIiGO+E8fweua2Wv74icIkp/8GY6+8+gOKC
+	+uxi3VkQVEObZMMCZ2LJe/QXnbauiPUY7C9soGzxSOcBGpFNn8dJZ6mzEga1XxVVeEQDwGY2yX5kt
+	GBjSm9wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuZfL-00000000m6I-3x14;
-	Mon, 23 Feb 2026 17:24:15 +0000
-Received: from 013.lax.mailroute.net ([199.89.1.16])
+	id 1vua9M-00000000ptK-0Eyv;
+	Mon, 23 Feb 2026 17:55:16 +0000
+Received: from mail-dl1-x1229.google.com ([2607:f8b0:4864:20::1229])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuZfK-00000000m58-1ErC
+	id 1vua9J-00000000psg-1OvL
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Feb 2026 17:24:15 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 013.lax.mailroute.net (Postfix) with ESMTP id 4fKSQ55jn5zlfddy;
-	Mon, 23 Feb 2026 17:24:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1771867450; x=1774459451; bh=lkt0S9mMcUaUASmdJ3Lv+6XS
-	tfU5iRAFdPpB/dYdz0A=; b=dB/oLCgXcfxxRPqpm98ZVtGmlFVhCskFoWDwi5FX
-	fly25rD4JSPqLpR33R38RoWjZMGf8XCjk54FZ0US0p08wIjWBSDGOQd4p5Lf9PDd
-	y6Q552xcbtcH7UF4fk6k5RWKAL5+D4IZuMxtqleWZJG8R3BLFXOcv6QkttBh5TCx
-	esbdISLJr83Y4PTES8jWyXcp5QL5UqEEZfdvvbFs4CMmAJ9cXnTqB7XhS/nwgTFL
-	dYM5TktwwQ2X7dqSu3c5cT+0aWjXAEi1CthAE1IFqSWPRUDzBKodmT0tMJ0oTcCh
-	lkjWrFgaN8A6wDJs1iX8XCmZiB46s2LExsK62xl3wROEoA==
-X-Virus-Scanned: by MailRoute
-Received: from 013.lax.mailroute.net ([127.0.0.1])
- by localhost (013.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id SyCnbIyf9r_U; Mon, 23 Feb 2026 17:24:10 +0000 (UTC)
-Received: from [100.119.48.131] (unknown [104.135.180.219])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 013.lax.mailroute.net (Postfix) with ESMTPSA id 4fKSPc2qvWzlfddS;
-	Mon, 23 Feb 2026 17:23:48 +0000 (UTC)
-Message-ID: <d95704e9-64d2-458f-8a4f-8d6b5f668033@acm.org>
-Date: Mon, 23 Feb 2026 09:23:46 -0800
+	Mon, 23 Feb 2026 17:55:14 +0000
+Received: by mail-dl1-x1229.google.com with SMTP id a92af1059eb24-1271195d2a7so105401c88.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 09:55:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1771869312; x=1772474112; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=8S3D2amG83bMjq3rYrixdtz5QNwrXVFuIOF99KB48r8=;
+        b=QSyg660UlKYrFi43YIwDo2LyEuZ3g3QWKTg/ARY1HOoEu/MjRfp9IoXseC4+HrEyX3
+         4wJaw/TGXslUUUtHwcvgC9S2gfQZerVj8mfa7hQQ9VSsfmASVOq9auAbg1fJnykKa4Lw
+         vogt1sBk+jvLHPaP00leOkWgam1xITucdD9/ScnsFHpCdSpWxVHKFmVtiyZBlFNl6vEW
+         9Kaf4Rfa48cgh3yQfqwogC5w24dOoVJhudUnUXAY9efNdPhOZvbU/34xN6IpxD8jHSuF
+         1WIUa9GuYeb0tgm6Rvd2OF+M5UCwHUeVIL4g/ahdNhBRl9Xy90+iLNXZI8WJeWxLaOZD
+         f0kQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1771869312; x=1772474112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=8S3D2amG83bMjq3rYrixdtz5QNwrXVFuIOF99KB48r8=;
+        b=qttI7sBY5UBjTofXnzqujngd95SzB6saG0+kNgvVOLbDZBOhr2s5Fi7oep5NoLF22k
+         VVysb4S6yBA7RxxuDteyfPI6+2W8X50FL1FubrZFgjpD9qxbZvHIJOZMSLRoQgb4kWVq
+         3Hj5MvK3fZQuhhRCA7YieGemIgE0NzyTnHSWMo0tFt6uNUlPE9jTqz+wVIsZJ0kzgzR1
+         JvqoS5FGfGuSiHB8ZB50xMs41q/lCuBrNpy52mEJdd8VylULgAExIAGVrdqL/V4HbxhN
+         8Yx/MAaxydSvSH16CjqzNA8lFzuEv0veTNOnW9bt2fM3Tky7imW+MI3M4yvYpeqxcQRh
+         3WnA==
+X-Gm-Message-State: AOJu0YzkqR02mLDuueSh2jlv6XSsNNpTRohATxOokd2dT7xbn4MOLVLm
+	1x4swynGo2wPb0yae+yNbSdaqck3KX0hR7jd4pFLZcRKQ3oELESpOW92
+X-Gm-Gg: AZuq6aLZl+8aiR9RgwxCJ1LyygmFXTEMzGKl46ml9szC3JbTD9nsyADZ/Lpf/FOfiMg
+	wuEPeAOCymzILcAc+CgpDRoMV8MPnInbPdOLvGFJoSB6dm/XyYZaN7G/wIEXUBzJ/3NXWjSiJzB
+	L/Jl0vZ1jktHU9AZZ2moV2VOaymIrZDD/lNVwXTbpRZynGx/TuA6vvAiUxXFyX5/mMoRS3BGay9
+	mNWvsZJQD/Ofp25X8d7OcCk3mdj79VyOo+H7wIt2do65f0SqXnJY9Xdew0Qk0QJrUTxHbSc/PM4
+	18UuA+/YWq3ZC25/YJ13Z+qtknnfbsHjTAKgI3RB0QFUPC0BJv75wHy1i7U4NHEyG53q1lObsqU
+	PcG6VXk1NMiZwfxsht96jk7FYuR+bkYojQr2Fn04hlLtOcHf1YB+7aMKDp5mFTHlml9XQFnGUjc
+	hSja8nz6euon2J1vePFUOwWIrvcF+LOb9u6+bsVJPloNRTo8X5lpp+b6mP4PMbCAqVclto1qymJ
+	UU=
+X-Received: by 2002:a05:7022:2214:b0:11b:9386:a3bf with SMTP id a92af1059eb24-1276ad61a70mr4534016c88.42.1771869312175;
+        Mon, 23 Feb 2026 09:55:12 -0800 (PST)
+Received: from google.com ([2a00:79e0:2ebe:8:1b48:5d6e:ab6e:5287])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1276af7ad65sm7334624c88.11.2026.02.23.09.55.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Feb 2026 09:55:11 -0800 (PST)
+Date: Mon, 23 Feb 2026 09:55:08 -0800
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, Val Packett <val@packett.cool>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
+	Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Mark Brown <broonie@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Gary Bisson <bisson.gary@gmail.com>, 
+	Julien Massot <julien.massot@collabora.com>, Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
+	Fabien Parent <parent.f@gmail.com>, Chen Zhong <chen.zhong@mediatek.com>, 
+	linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rtc@vger.kernel.org
+Subject: Re: [PATCH 7/9] input: keyboard: mtk-pmic-keys: add MT6392 support
+Message-ID: <aZyUXip4zgeDUdVQ@google.com>
+References: <cover.1771865014.git.l.scorcia@gmail.com>
+ <2c96591313084d240ac94b9d42d91d984fa9bce7.1771865015.git.l.scorcia@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] ufs: core: Move link recovery for hibern8 exit failure
- to wl_resume
-To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
- martin.petersen@oracle.com, avri.altman@sandisk.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, tun-yu.yu@mediatek.com,
- eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com,
- sh043.lee@samsung.com
-References: <20260223103906.2533654-1-peter.wang@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20260223103906.2533654-1-peter.wang@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <2c96591313084d240ac94b9d42d91d984fa9bce7.1771865015.git.l.scorcia@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_092414_347935_14EC911F 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20260223_095513_363668_B743C792 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +109,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/23/26 2:37 AM, peter.wang@mediatek.com wrote:
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index 44efb03765b9..9908375b2f98 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -4385,14 +4385,6 @@ static int ufshcd_uic_pwr_ctrl(struct ufs_hba *hba, struct uic_command *cmd)
->   	spin_unlock_irqrestore(hba->host->host_lock, flags);
->   	mutex_unlock(&hba->uic_cmd_mutex);
->   
-> -	/*
-> -	 * If the h8 exit fails during the runtime resume process, it becomes
-> -	 * stuck and cannot be recovered through the error handler.  To fix
-> -	 * this, use link recovery instead of the error handler.
-> -	 */
-> -	if (ret && hba->pm_op_in_progress)
-> -		ret = ufshcd_link_recovery(hba);
-> -
->   	return ret;
->   }
->   
-> @@ -10175,7 +10167,15 @@ static int __ufshcd_wl_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->   		} else {
->   			dev_err(hba->dev, "%s: hibern8 exit failed %d\n",
->   					__func__, ret);
-> -			goto vendor_suspend;
-> +			/*
-> +			 * If the h8 exit fails during the runtime resume
-> +			 * process, it becomes stuck and cannot be recovered
-> +			 * through the error handler. To fix this, use link
-> +			 * recovery instead of the error handler.
-> +			 */
-> +			ret = ufshcd_link_recovery(hba);
-> +			if (ret)
-> +				goto vendor_suspend;
->   		}
->   	} else if (ufshcd_is_link_off(hba)) {
->   		/*
+On Mon, Feb 23, 2026 at 05:12:46PM +0000, Luca Leonardo Scorcia wrote:
+> From: Val Packett <val@packett.cool>
+> 
+> Add support for the MT6392 PMIC to the keys driver.
+> 
+> Signed-off-by: Val Packett <val@packett.cool>
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+
+Please feel free to merge with the rest of the series.
+
+Thanks.
+
+-- 
+Dmitry
 
