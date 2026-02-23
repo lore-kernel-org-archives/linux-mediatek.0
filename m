@@ -4,120 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94691E98E14
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 10:19:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86E6AE63C8B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 10:36:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:
+	To:Cc:Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
+	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vauRH6wSmN5THyXqYMMv35ijD3w6TuKTDxwsmKZOZGA=; b=qNtux5hXB+D+9WrniGZRh03UGM
-	hxPs8gzcnkSOAwYjZpcJ+p7kPmd68cEZ6FOHmtdrrYeRY7coNHfG1efljuhLzcOBGF60L1hxh7wOu
-	Tyf1d4TQlR+2hm0UVIBIoMWbN8fUSb9yicfsTvCHTp/rhs1IQJ+Tq4mYxf6n+3o/3Ve9pWAAZHVIZ
-	ULvBl/DDZlvRZX05EhtUStktJBEDW8abE19ee3QibDHWD5PqrLkvgvI7SS2Dh2BImGZNh4HTb6rtG
-	Q6GCKivQaHlbRJ0IgMzSd1o3lo8dQZWU+dHZqZNDDff9aD2sMq4ipkUxGOCkpcT9laIb4RVXy5QRg
-	LnikY2Ag==;
+	bh=gCKgF+SQBcRf7H7yGf7xlQEg5ny9ucdp2uQxbv5/0Os=; b=jPoNZnnKtu8WFCIO81f0B9CEic
+	P9IgFoTahlP48HtRH6NomRoDgGqgb6ys/WlJS0jPgkYQF8YLvj8FTtRkANrs79P9LCAxXTD05yb0b
+	DaePd1V1ZF2IVrAhRpWWxrZhqZsRxBudVjnkDF3zhiGDQ8kbgEE3YYWO+nFp5g7IXnv99gM+u17w4
+	ksBkX2ZyOyRdyEORchwq93v2WwpnpuF56PUp71nDpY+XSvpfqc5xKNuB6vAcdpnOg3z6RTOjrqOKx
+	wEnORz1XjtLC8zatQ/hpDu65ppu0XoAD0041QVjsjjIrgrC53u6/+YeLhaG1uCDu3iaIw9Ii/z9W0
+	1IaVA0qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuT2D-000000001zw-2EvF;
-	Mon, 23 Feb 2026 10:19:25 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vuTIa-000000004UN-0bAz;
+	Mon, 23 Feb 2026 10:36:20 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuT29-000000001yr-1OOW;
-	Mon, 23 Feb 2026 10:19:23 +0000
+	id 1vuTIX-000000004Tg-0fVJ;
+	Mon, 23 Feb 2026 10:36:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 440D640913;
-	Mon, 23 Feb 2026 10:19:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06634C116C6;
-	Mon, 23 Feb 2026 10:19:14 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4CBF141852;
+	Mon, 23 Feb 2026 10:36:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50DB8C116C6;
+	Mon, 23 Feb 2026 10:36:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771841960;
-	bh=X0d/XGvHpwZScfvSz5HK7fcj1vTy3esDK40Iv+brjp4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mly5crhZ7ZEd6hspmnqW4r63zchGNzczzQiB/OKmKHgmLyqnEucLWVBLUXvImSirc
-	 RGgYAQT1mi6WOeBbuuvsmbOGNcW5bpXKOl/6/MQeRI2nyCfNeYzx5sB5ahCbEJP01k
-	 z0eC8eZ+vdk0I0E9ZNegzk6nYIIckNiHGndfskdWTHgIKTZkzzXT8lgdtAZh+VUNcu
-	 bmNd4PTQYOkicDydeuA6pLtFzYf033E2Jne+GJ2DpNntx/YH9RT8LRC3ltmJEnY+Ah
-	 NKg7OyU3gcrJUlUIKu/oHaEZKBOAeNObTpaZ2cncsHtJgtwt7JONUsPBzGl+iEAE7j
-	 N0mbxB2IlxggQ==
-Message-ID: <388e52a2-4537-46f0-84d9-eb7a1f3b1660@kernel.org>
-Date: Mon, 23 Feb 2026 11:19:13 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/9] power: supply: max77705: Free allocated workqueue and
- fix removal order
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
- Tejun Heo <tj@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>,
- Tobias Schrammm <t.schramm@manjaro.org>, Sebastian Reichel <sre@kernel.org>,
- Dan Carpenter <dan.carpenter@linaro.org>, Lee Jones <lee@kernel.org>,
- Dzmitry Sankouski <dsankouski@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>,
- driver-core@lists.linux.dev, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev
-References: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
- <20260223-workqueue-devm-v1-3-10b3a6087586@oss.qualcomm.com>
- <aZwWl57oJln1xH5m@smile.fi.intel.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
- QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
- +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
- ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
- 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
- hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
- tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
- 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
- naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
- hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
- whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
- qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
- RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
- Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
- H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
- dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
- AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
- jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
- zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
- XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <aZwWl57oJln1xH5m@smile.fi.intel.com>
+	s=k20201202; t=1771842975;
+	bh=AiVxbYjTjkFCDusZ5tWu7n3s2U71UIpWbTezPnBHohQ=;
+	h=Date:Subject:Cc:To:From:References:In-Reply-To:From;
+	b=g018biIbLMWiMgHMZWobv71WB0aDNk0V5mHABji3/oQj3XLzM55HPmrBH+gw8NLP9
+	 4aFelAoKv77LNIwGM+/LTapuKx9mVvzEJ2L301pPtTMtOM0r8aXiVRj5h0tlOYPnq0
+	 brl1ukA+PDKddKhXcBHoVMuJcO/8RzmbIldDMOOJjgUT92rUnefSZbuOXkTIRjUX9P
+	 joksQ/AF6fENHVP37XJW5oZWiAzNSPklNWkkCfGuG5kfnx5WJyX+qqe/Cp7gpQNvkT
+	 FOUUUbuXuikeaIw63y50ihIesqm1gE1hUP9Cy1hgtbOVFCRNlNdZfvKbHVgxwQe8ft
+	 zfydjoMRh3uMQ==
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Date: Mon, 23 Feb 2026 11:36:08 +0100
+Message-Id: <DGM9WUWC4ZE8.1A08TAKKT4FLJ@kernel.org>
+Subject: Re: [PATCH 1/9] workqueue: devres: Add device-managed allocate
+ workqueue
+Cc: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, "Jonathan Corbet" <corbet@lwn.net>, "Shuah Khan"
+ <skhan@linuxfoundation.org>, "Tejun Heo" <tj@kernel.org>, "Lai Jiangshan"
+ <jiangshanlai@gmail.com>, "Tobias Schrammm" <t.schramm@manjaro.org>,
+ "Sebastian Reichel" <sre@kernel.org>, "Andy Shevchenko"
+ <andriy.shevchenko@linux.intel.com>, "Dan Carpenter"
+ <dan.carpenter@linaro.org>, "Krzysztof Kozlowski" <krzk@kernel.org>, "Lee
+ Jones" <lee@kernel.org>, "Dzmitry Sankouski" <dsankouski@gmail.com>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
+ <angelogioacchino.delregno@collabora.com>, "Benson Leung"
+ <bleung@chromium.org>, "Tzung-Bi Shih" <tzungbi@kernel.org>,
+ <driver-core@lists.linux.dev>, <linux-doc@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, "Sebastian Reichel"
+ <sebastian.reichel@collabora.com>, <linux-pm@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <chrome-platform@lists.linux.dev>
+To: "Krzysztof Kozlowski" <krzysztof.kozlowski@oss.qualcomm.com>
+From: "Danilo Krummrich" <dakr@kernel.org>
+References: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
+ <20260223-workqueue-devm-v1-1-10b3a6087586@oss.qualcomm.com>
+In-Reply-To: <20260223-workqueue-devm-v1-1-10b3a6087586@oss.qualcomm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_021921_563295_42ABEDB9 
-X-CRM114-Status: GOOD (  15.38  )
+X-CRM114-CacheID: sfid-20260223_023617_264596_A83BF538 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,47 +87,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23/02/2026 09:57, Andy Shevchenko wrote:
-> On Mon, Feb 23, 2026 at 08:27:31AM +0100, Krzysztof Kozlowski wrote:
->> Use devm interface for allocating workqueue to fix two bugs at the same
->> time:
->>
->> 1. Driver leaks the memory on remove(), because the workqueue is not
->>    destroyed.
->>
->> 2. Driver allocates workqueue and then registers interrupt handlers
->>    with devm interface.  This means that probe error paths will not use a
->>    reversed order, but first the destroy workqueue and then, via devm
->>    release handlers, free the interrupt.
->>
->>    The interrupt handler schedules work on this exact workqueue, thus if
->>    interrupt is hit in this short time window - after destroying
->>    workqueue, but before devm() frees the interrupt, the work scheduling
->>    will lead to use of freed memory.
-> 
-> ...
-> 
->>  	ret = devm_request_threaded_irq(dev, regmap_irq_get_virq(irq_data, MAX77705_CHGIN_I),
->>  					NULL, max77705_chgin_irq,
->>  					IRQF_TRIGGER_NONE,
->>  					"chgin-irq", chg);
->> -	if (ret) {
->> -		dev_err_probe(dev, ret, "Failed to Request chgin IRQ\n");
->> -		goto destroy_wq;
->> -	}
->> +	if (ret)
->> +		return dev_err_probe(dev, ret, "Failed to Request chgin IRQ\n");
-> 
-> This should be just
-> 
-> 		return ret;
-> 
-> 
-> devm_*_irq() prints the message. No need to repeat this in the caller(s).
-> 
+On Mon Feb 23, 2026 at 8:27 AM CET, Krzysztof Kozlowski wrote:
+> +__printf(2, 5) struct workqueue_struct *
+> +devm_alloc_workqueue(struct device *dev, const char *fmt, unsigned int f=
+lags,
+> +		     int max_active, ...)
+> +{
+> +	struct workqueue_struct **ptr, *wq;
+> +	va_list args;
+> +
+> +	ptr =3D devres_alloc(devm_destroy_workqueue, sizeof(*ptr), GFP_KERNEL);
 
-I guess separate commit then.
+The function pointer passed to devres_alloc() is commonly named *_release()=
+.
 
-Best regards,
-Krzysztof
+> +	if (!ptr)
+> +		return NULL;
+> +
+> +	va_start(args, max_active);
+> +	wq =3D alloc_workqueue(fmt, flags, max_active, args);
+> +	va_end(args);
+> +	if (wq) {
+> +		*ptr =3D wq;
+> +		devres_add(dev, ptr);
+> +	} else {
+> +		devres_free(ptr);
+> +	}
+> +
+> +	return wq;
+> +}
+> +EXPORT_SYMBOL_GPL(devm_alloc_workqueue);
+
+<snip>
+
+> +void devm_destroy_workqueue(struct device *dev, void *res)
+> +{
+> +	destroy_workqueue(*(struct workqueue_struct **)res);
+> +}
+> +EXPORT_SYMBOL_GPL(devm_destroy_workqueue);
+
+I assume you did not mean to export the release callback (which doesn't see=
+m to
+be useful), but a function that calls devres_destroy(), i.e. something anal=
+ogous
+to devm_remove_action().
+
+If you don't actually need it, I would prefer not to add something that cal=
+ls
+devres_destroy() for now.
 
