@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E28AEA4FB1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 11:29:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 503D2EA4FAE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 11:34:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YQvL1o0OvTI1mBRXe6J7e77H1AaWR0evF3QR4ks37Pc=; b=cz18LBdYdrZeSFKxiSOKOu0Kj2
-	bj2nJZNW0vExgJw98P5n0UladSKuwl72HmYnRWUu8N0sw+UMBdmpzV6K2uW8GmcxrdFvWUr/HUIHI
-	OaPzFkXfNI+GODGfh73MYMVGztql3tbKTb/1bo4fgfiR2IVbvOwIBhmblTCoZ+hHqDKnW1rv13Ok3
-	FZy2i9Zof1JBvjwK4FAzgGQBuFVvVbMFF8QCxyVF1k9+2rI4OdG7NVSvwpxsu9bdbbLCPap58lqTd
-	ax669Y1poKofGiKReRmRWv3kpAoZ2xvQcbXSHc6GFJUCy0RhOGs0aGSI/zlTJq1N7RFuaOnwdZgUh
-	Nw9+Sq8g==;
+	bh=sHLq2sRIA9Oa0qhEIlNeL7MJz4s3RrwVavRtqq/yDvU=; b=d4Yfd9B0udw5A9uXCF5/v4Ck7D
+	9vPrahNaxbHX4VT7vo9OZOeZEY3VG3PXFjejU94zK0VxcqMBwbLb9C+daZ3+OZT1iVmKKyH95ubD5
+	gOvO2QXK2BHj1pwvfJQcDDz67kBFWKkq2ahoDDqv4Osit8OskvSOayhz2wYOio8+UeizGoq+mzbX2
+	GJZuLYxPp3KlmIZn/Gd3hfsr0hyRDjcTrpCmuJzx8Z1XXIpR25DOrCt0T+voSjHb+qgZdAMOj2wZH
+	fqRnnrQ7FWUkaneMRxoRog9KKmNBWP7wPyYsIC9RRukMuIUrPDkVN4JC6rD2GXGcd2l8aviIzwm7m
+	FC4uHleg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuU7q-00000000BGa-2nTG;
-	Mon, 23 Feb 2026 11:29:18 +0000
-Received: from mgamail.intel.com ([198.175.65.18])
+	id 1vuUCm-00000000ByI-1T96;
+	Mon, 23 Feb 2026 11:34:24 +0000
+Received: from mgamail.intel.com ([198.175.65.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuU7m-00000000BFl-1WAG;
-	Mon, 23 Feb 2026 11:29:17 +0000
+	id 1vuUCj-00000000Bxc-1Zoc;
+	Mon, 23 Feb 2026 11:34:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1771846154; x=1803382154;
+  t=1771846462; x=1803382462;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=fEP1EqpU5pWdSqvz/h+F1omgn6WyLNssApYypg0Qt4Y=;
-  b=e0QOz0IRm6q9OCPcbzHkAz7mIzq3HGJiSCwDhpMSODbFCbLW9F9rYDg2
-   MNpDk3aQTDqOPS2kLDVcTMSES/ineR7Ord8Fzl76E55yYW3RoOQZ7C2DA
-   rd0s7vzItKIKaViZBBvqPXQxl03iLkR9ZZFk9fxAcUCibsg0otLN122x0
-   TJ8J2xaOKFufY0l9Q4k3ckzIyE76dg99y6sLSDhRmcIuipznZm5cnkTa1
-   G2qbA2d4DHZb3RxW1kOYbLhfL6XxuJqNH0Qo9JnxtJvdFudbeb+hZzcli
-   P9X2RfkahIWZfs1CwpFRhOJ78RWDe3bPpNo5EsgQeozVHywG2ZxKaAt5z
-   Q==;
-X-CSE-ConnectionGUID: +V7DIQp/SoKItn82K8+gyA==
-X-CSE-MsgGUID: 8VAuaVLtR+yROmhEltw2nA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11709"; a="72877451"
+  bh=iDAMs2by9bj1uD5GcOuSsqTjHpLUeMUMQVPtg7eI0dY=;
+  b=MZRTNCQ0Yz5fEbLTwoOFqmwRj8zjzSDg8LntklI2y0mTpCk6BVihJuSZ
+   liOXGjcyGFLIXOHo/8gDu3caA6F6EjWCzCHGntSg/nOQtGM7eLa26BwbL
+   FkaLaYc4AjtsnXxmP0EaPp7bwIVTO4o/e7lXDRXvIrZ40CT1F/tu6oWoQ
+   W7Ac0MHMLp6X3tQcA1+Jok7PeqxOrJX4b62IPzpesxc+JbCA+eJBcL+3Z
+   E9dM7QBvFiNBXYrEAAwbxqvZ4TVqLVHjH2FUvKn1pX6MyvAe7raSvTH6Z
+   GK8Gt1KYXugi51ud3n5dUifvN42TJ6k0el5LDU5Q1sxQPb7/XwtzUjyBf
+   w==;
+X-CSE-ConnectionGUID: hbHTUx8gQk65gQynMUQXLQ==
+X-CSE-MsgGUID: Pn7gFIDpR/CXpIjirvQCgA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11709"; a="95455007"
 X-IronPort-AV: E=Sophos;i="6.21,306,1763452800"; 
-   d="scan'208";a="72877451"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Feb 2026 03:29:11 -0800
-X-CSE-ConnectionGUID: hD9iXHfERW+iK52sDEl2XQ==
-X-CSE-MsgGUID: vl4NaUoVTxiGaBJ/ElX4hQ==
+   d="scan'208";a="95455007"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Feb 2026 03:34:21 -0800
+X-CSE-ConnectionGUID: uc81lelzRSaazTvmw9TItg==
+X-CSE-MsgGUID: 8/jJ6qoATta4FcN19+4Fig==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.21,306,1763452800"; 
-   d="scan'208";a="253256215"
+   d="scan'208";a="246140516"
 Received: from abityuts-desk.ger.corp.intel.com (HELO localhost) ([10.245.245.222])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Feb 2026 03:29:06 -0800
-Date: Mon, 23 Feb 2026 13:29:03 +0200
+  by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Feb 2026 03:34:15 -0800
+Date: Mon, 23 Feb 2026 13:34:12 +0200
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Krzysztof Kozlowski <krzk@kernel.org>
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
@@ -76,22 +76,22 @@ Cc: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev
-Subject: Re: [PATCH 3/9] power: supply: max77705: Free allocated workqueue
- and fix removal order
-Message-ID: <aZw5_66M3jV30c1l@smile.fi.intel.com>
+Subject: Re: [PATCH 1/9] workqueue: devres: Add device-managed allocate
+ workqueue
+Message-ID: <aZw7NJOhkq6DlyZA@smile.fi.intel.com>
 References: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
- <20260223-workqueue-devm-v1-3-10b3a6087586@oss.qualcomm.com>
- <aZwWl57oJln1xH5m@smile.fi.intel.com>
- <388e52a2-4537-46f0-84d9-eb7a1f3b1660@kernel.org>
+ <20260223-workqueue-devm-v1-1-10b3a6087586@oss.qualcomm.com>
+ <aZwWMiYEvr3DXi3E@smile.fi.intel.com>
+ <534a9d0f-600e-4162-a48c-f9797241dacd@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <388e52a2-4537-46f0-84d9-eb7a1f3b1660@kernel.org>
+In-Reply-To: <534a9d0f-600e-4162-a48c-f9797241dacd@kernel.org>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_032914_798380_0B3A8973 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20260223_033421_536956_A1C639D1 
+X-CRM114-Status: GOOD (  17.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,34 +106,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 23, 2026 at 11:19:13AM +0100, Krzysztof Kozlowski wrote:
-> On 23/02/2026 09:57, Andy Shevchenko wrote:
-> > On Mon, Feb 23, 2026 at 08:27:31AM +0100, Krzysztof Kozlowski wrote:
+On Mon, Feb 23, 2026 at 11:18:41AM +0100, Krzysztof Kozlowski wrote:
+> On 23/02/2026 09:56, Andy Shevchenko wrote:
+> > On Mon, Feb 23, 2026 at 08:27:29AM +0100, Krzysztof Kozlowski wrote:
 
 ...
 
-> >>  	ret = devm_request_threaded_irq(dev, regmap_irq_get_virq(irq_data, MAX77705_CHGIN_I),
-> >>  					NULL, max77705_chgin_irq,
-> >>  					IRQF_TRIGGER_NONE,
-> >>  					"chgin-irq", chg);
-> >> -	if (ret) {
-> >> -		dev_err_probe(dev, ret, "Failed to Request chgin IRQ\n");
-> >> -		goto destroy_wq;
-> >> -	}
-> >> +	if (ret)
-> >> +		return dev_err_probe(dev, ret, "Failed to Request chgin IRQ\n");
+> >> +	ptr = devres_alloc(devm_destroy_workqueue, sizeof(*ptr), GFP_KERNEL);
+> >> +	if (!ptr)
+> >> +		return NULL;
+> >> +
+> >> +	va_start(args, max_active);
+> >> +	wq = alloc_workqueue(fmt, flags, max_active, args);
+> >> +	va_end(args);
+> >> +	if (wq) {
+> >> +		*ptr = wq;
+> >> +		devres_add(dev, ptr);
+> >> +	} else {
+> >> +		devres_free(ptr);
+> >> +	}
 > > 
-> > This should be just
-> > 
-> > 		return ret;
-> > 
-> > 
-> > devm_*_irq() prints the message. No need to repeat this in the caller(s).
-> > 
+> > Why not using devm_add_action_or_reset()?
 > 
-> I guess separate commit then.
+> Where? Here? How the code would be simpler, exactly?
 
-WFM!
+static void devm_workqueue(struct device *dev, void *wq)
+{
+	destroy_workqueue(wq);
+}
+...
+{
+	...
+
+	va_start(args, max_active);
+	wq = alloc_workqueue(fmt, flags, max_active, args);
+	va_end(args);
+	if (!wq)
+		return NULL; // or ERR_PTR(-ENOMEM) on your choice
+
+	ret = devm_add_action_or_reset(dev, ..., wq);
+	if (ret)
+		return NULL; // ERR_PTR(ret) on your choice
+
+	return wq;
+}
+
+Compare to yours :-)
+
+...
+
+> >> +void devm_destroy_workqueue(struct device *dev, void *res)
+> >> +{
+> >> +	destroy_workqueue(*(struct workqueue_struct **)res);
+> >> +}
+> >> +EXPORT_SYMBOL_GPL(devm_destroy_workqueue);
+> > 
+> > Is this going to be used?
+> 
+> It is not used in this patchset, but most of devm-allocators have the
+> cleanup.
 
 -- 
 With Best Regards,
