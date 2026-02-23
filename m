@@ -4,97 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4148EC1117
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 17:55:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F01CEC1120
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 19:06:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8S3D2amG83bMjq3rYrixdtz5QNwrXVFuIOF99KB48r8=; b=TcBOFFw39RdP21KxxGqyVGjqk4
-	1YMKnoQqxt2ZJJxW+LIgmwTb9ArQIK9l6nSBunZQpc9GUBx/ZIl/YLa3DHPD5Y/FPCYY/p8YPYMTo
-	kSnactmadu9iKcLsBknjIs4ERhqRmubkKFUs0uR7iGdO8VcOx7fa+DCGC5nJLm0CaCXHi16QmCuZ2
-	/eoCfEjl2UwRsJwT8haqSjUvSb4qXaL7afhwQRP7/muIiGO+E8fweua2Wv74icIkp/8GY6+8+gOKC
-	+uxi3VkQVEObZMMCZ2LJe/QXnbauiPUY7C9soGzxSOcBGpFNn8dJZ6mzEga1XxVVeEQDwGY2yX5kt
-	GBjSm9wA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=exgfE8ktpWjoGx7BWRifvOIDppNSZSX62nYtLWrbQms=; b=v7rL/6fTlgrcD0SifXqjiQQWh4
+	+OtlY7+e1KncJOsR5S18td+utYaFKy0tkUaHw2zdS4y9Tbiu9byA7B+quMnDRNlwFkZBmoxZOKzO0
+	l1tZTjsaaCTs8Sj8kONPQow0gSTQcga3dKOaH/A67ONGPK+gvoL5HJjqtOqxhQE29816qzG/LxIEj
+	0ZXMtuuZAnLr4tFwGpAeBf2WHaPke9hA4ejWj4KG6X8PBrLunkIQRhuqn+NHQlqBQGXmQSgomU6ez
+	ofXDWqbdAOWzNCnu59sKIs4JD85lYpR+HM/mDasJluLQfvt2A6+fCyrxb2AvlUreWrdKNlPJqOflz
+	27tQJIjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vua9M-00000000ptK-0Eyv;
-	Mon, 23 Feb 2026 17:55:16 +0000
-Received: from mail-dl1-x1229.google.com ([2607:f8b0:4864:20::1229])
+	id 1vubG2-00000000uFy-48e1;
+	Mon, 23 Feb 2026 19:06:15 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vua9J-00000000psg-1OvL
+	id 1vubG0-00000000uFc-34Qi
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Feb 2026 17:55:14 +0000
-Received: by mail-dl1-x1229.google.com with SMTP id a92af1059eb24-1271195d2a7so105401c88.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 09:55:12 -0800 (PST)
+	Mon, 23 Feb 2026 19:06:14 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-65a431e305eso8795112a12.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 11:06:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1771869312; x=1772474112; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=8S3D2amG83bMjq3rYrixdtz5QNwrXVFuIOF99KB48r8=;
-        b=QSyg660UlKYrFi43YIwDo2LyEuZ3g3QWKTg/ARY1HOoEu/MjRfp9IoXseC4+HrEyX3
-         4wJaw/TGXslUUUtHwcvgC9S2gfQZerVj8mfa7hQQ9VSsfmASVOq9auAbg1fJnykKa4Lw
-         vogt1sBk+jvLHPaP00leOkWgam1xITucdD9/ScnsFHpCdSpWxVHKFmVtiyZBlFNl6vEW
-         9Kaf4Rfa48cgh3yQfqwogC5w24dOoVJhudUnUXAY9efNdPhOZvbU/34xN6IpxD8jHSuF
-         1WIUa9GuYeb0tgm6Rvd2OF+M5UCwHUeVIL4g/ahdNhBRl9Xy90+iLNXZI8WJeWxLaOZD
-         f0kQ==
+        d=gmail.com; s=20230601; t=1771873571; x=1772478371; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=exgfE8ktpWjoGx7BWRifvOIDppNSZSX62nYtLWrbQms=;
+        b=aDzSeWjUY7zV4uzUxD3C4I0jNgsAx1MJYI1qpRgoD8yWXCyBkexYK68vbHvIygv78N
+         j3Szz8Ou+AItbQOibxShUB4XLMceODXdu89XOrutlNs7eyMVG3lSAuo8swdZU5xUIZ2l
+         c99H7E5fTbSIxFUzIG2ZF5km/3xUIreDrzy4OqFUj6M/5L08wvHHtvHcf6BmUxPLeiyU
+         OIjfbPtGBuovpiwFVmgl1CntsS1dawFPk/9bHwiUwOXD5K0VeYiaLkhJqs2NSM3AVmyT
+         PHhrzDFotLIiElmjxq2zV7mkhp4z6OOL5/6/Ue/+EWgnitqBp3BbE/Avxi+kx4CB452s
+         ZgQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771869312; x=1772474112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=8S3D2amG83bMjq3rYrixdtz5QNwrXVFuIOF99KB48r8=;
-        b=qttI7sBY5UBjTofXnzqujngd95SzB6saG0+kNgvVOLbDZBOhr2s5Fi7oep5NoLF22k
-         VVysb4S6yBA7RxxuDteyfPI6+2W8X50FL1FubrZFgjpD9qxbZvHIJOZMSLRoQgb4kWVq
-         3Hj5MvK3fZQuhhRCA7YieGemIgE0NzyTnHSWMo0tFt6uNUlPE9jTqz+wVIsZJ0kzgzR1
-         JvqoS5FGfGuSiHB8ZB50xMs41q/lCuBrNpy52mEJdd8VylULgAExIAGVrdqL/V4HbxhN
-         8Yx/MAaxydSvSH16CjqzNA8lFzuEv0veTNOnW9bt2fM3Tky7imW+MI3M4yvYpeqxcQRh
-         3WnA==
-X-Gm-Message-State: AOJu0YzkqR02mLDuueSh2jlv6XSsNNpTRohATxOokd2dT7xbn4MOLVLm
-	1x4swynGo2wPb0yae+yNbSdaqck3KX0hR7jd4pFLZcRKQ3oELESpOW92
-X-Gm-Gg: AZuq6aLZl+8aiR9RgwxCJ1LyygmFXTEMzGKl46ml9szC3JbTD9nsyADZ/Lpf/FOfiMg
-	wuEPeAOCymzILcAc+CgpDRoMV8MPnInbPdOLvGFJoSB6dm/XyYZaN7G/wIEXUBzJ/3NXWjSiJzB
-	L/Jl0vZ1jktHU9AZZ2moV2VOaymIrZDD/lNVwXTbpRZynGx/TuA6vvAiUxXFyX5/mMoRS3BGay9
-	mNWvsZJQD/Ofp25X8d7OcCk3mdj79VyOo+H7wIt2do65f0SqXnJY9Xdew0Qk0QJrUTxHbSc/PM4
-	18UuA+/YWq3ZC25/YJ13Z+qtknnfbsHjTAKgI3RB0QFUPC0BJv75wHy1i7U4NHEyG53q1lObsqU
-	PcG6VXk1NMiZwfxsht96jk7FYuR+bkYojQr2Fn04hlLtOcHf1YB+7aMKDp5mFTHlml9XQFnGUjc
-	hSja8nz6euon2J1vePFUOwWIrvcF+LOb9u6+bsVJPloNRTo8X5lpp+b6mP4PMbCAqVclto1qymJ
-	UU=
-X-Received: by 2002:a05:7022:2214:b0:11b:9386:a3bf with SMTP id a92af1059eb24-1276ad61a70mr4534016c88.42.1771869312175;
-        Mon, 23 Feb 2026 09:55:12 -0800 (PST)
-Received: from google.com ([2a00:79e0:2ebe:8:1b48:5d6e:ab6e:5287])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1276af7ad65sm7334624c88.11.2026.02.23.09.55.10
+        d=1e100.net; s=20230601; t=1771873571; x=1772478371;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=exgfE8ktpWjoGx7BWRifvOIDppNSZSX62nYtLWrbQms=;
+        b=HFOeLzRYC5Eiks0OImA+FrMZ0HpdORGd/hhES1PjdIvOGILplrYrEVnSHCeb9xrGz2
+         DnFONXpnQpyVcAKPwZmbeEfcjkAMLc3vEqONRW3x4OlxgNq7epjBF4uKaLj/rBKVggGw
+         X405HiD8aBOE9OVL9AfTYIfqbB9SQBrq6KRka7sk4J+AlcigW7EobvJZtXL07yjpteLB
+         3wZ/kKnxYJzC/k4SNdI9ezrZvXHDvMAhNd4C/lWDArTcmvjkNJIUh+wKn2+q0zXgytEx
+         yyHupStrLkgW/52WvDaSZXWyDklTyuNsJrFWAFWcXo88+RT8rd59Um8Hwaz8Q4c7HW9A
+         w+iw==
+X-Gm-Message-State: AOJu0Ywnm8KJC4ZfdskFZ4kBY/L6jdY42+4fnjfZr8kzwcu7ohMc6Asj
+	6CvHvZbvmSJzfoqGtBa7LUA0/Eir2dJCN0tPzpsccmulvQRQsW8S04ad7vhClQ==
+X-Gm-Gg: AZuq6aJPBQSj+NolbL5MB+5ikwYUyeiobkSVhSGNC0exVKdQcsvbyHrnaBHEuN2i5mp
+	KRmJEG/JUispI/Wh81JVXX5fduPVzRqDu+D0Vl6TZ4LVdEBNHkxS5I7L4RVh4/dsbztWTneHrKG
+	ZgkrwpLf1xfStQ7Fpalr2i7hKGwBmIEocgpJARYj/bAGD5mkKaSSo1tDBUOhug9wNHPRlkXoe1H
+	iiDEc/FCaITDYySJRD6XZtKTvnD4XU5qISdyRspiXP1XiAXhd5SPjKo3Umg3SQR3K6zTJ6pa0Ks
+	cNPI7uPH1GM3nQWqGMt8WuLUzJkQJbHiWbsGsFAXjUY1T8uc0PF9XJXq5QIRijnX2UT6Fb3aGsO
+	uhumQcZlgv3OemwyJOF8veaxRKx0zOvDL2sfMhwR7F9aftBHPKGfNDY0QGhePBU0N0z9IXIru3K
+	t5IdqMc/n4ohX4qlXOSPk=
+X-Received: by 2002:a05:600c:1c04:b0:480:1b65:b741 with SMTP id 5b1f17b1804b1-483a95cfc62mr176431495e9.15.1771867090231;
+        Mon, 23 Feb 2026 09:18:10 -0800 (PST)
+Received: from luca-vm.lan ([154.61.61.58])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43970d4c982sm20871454f8f.31.2026.02.23.09.18.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Feb 2026 09:55:11 -0800 (PST)
-Date: Mon, 23 Feb 2026 09:55:08 -0800
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, Val Packett <val@packett.cool>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
-	Lee Jones <lee@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Gary Bisson <bisson.gary@gmail.com>, 
-	Julien Massot <julien.massot@collabora.com>, Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
-	Fabien Parent <parent.f@gmail.com>, Chen Zhong <chen.zhong@mediatek.com>, 
-	linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rtc@vger.kernel.org
-Subject: Re: [PATCH 7/9] input: keyboard: mtk-pmic-keys: add MT6392 support
-Message-ID: <aZyUXip4zgeDUdVQ@google.com>
+        Mon, 23 Feb 2026 09:18:09 -0800 (PST)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Fabien Parent <parent.f@gmail.com>,
+	Val Packett <val@packett.cool>,
+	Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Eddie Huang <eddie.huang@mediatek.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	Julien Massot <julien.massot@collabora.com>,
+	Gary Bisson <bisson.gary@gmail.com>,
+	Chen Zhong <chen.zhong@mediatek.com>,
+	linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rtc@vger.kernel.org
+Subject: [PATCH 6/9] regulator: mt6392: Add support for MT6392 regulator
+Date: Mon, 23 Feb 2026 17:12:45 +0000
+Message-ID: <81250922d4095d1be0a96a5148b206e03123256d.1771865015.git.l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <cover.1771865014.git.l.scorcia@gmail.com>
 References: <cover.1771865014.git.l.scorcia@gmail.com>
- <2c96591313084d240ac94b9d42d91d984fa9bce7.1771865015.git.l.scorcia@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2c96591313084d240ac94b9d42d91d984fa9bce7.1771865015.git.l.scorcia@gmail.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_095513_363668_B743C792 
-X-CRM114-Status: UNSURE (   9.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260223_110612_923510_3E21BD17 
+X-CRM114-Status: GOOD (  21.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,20 +122,601 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 23, 2026 at 05:12:46PM +0000, Luca Leonardo Scorcia wrote:
-> From: Val Packett <val@packett.cool>
-> 
-> Add support for the MT6392 PMIC to the keys driver.
-> 
-> Signed-off-by: Val Packett <val@packett.cool>
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+From: Fabien Parent <parent.f@gmail.com>
 
-Acked-by: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+The MT6392 is a regulator found on boards based on the MediaTek
+MT8167, MT8516, and probably other SoCs. It is a so called PMIC and
+connects as a slave to a SoC using SPI, wrapped inside PWRAP.
 
-Please feel free to merge with the rest of the series.
+Signed-off-by: Fabien Parent <parent.f@gmail.com>
+Co-developed-by: Val Packett <val@packett.cool>
+Signed-off-by: Val Packett <val@packett.cool>
+Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+---
+ drivers/regulator/Kconfig                  |   9 +
+ drivers/regulator/Makefile                 |   1 +
+ drivers/regulator/mt6392-regulator.c       | 491 +++++++++++++++++++++
+ include/linux/regulator/mt6392-regulator.h |  40 ++
+ 4 files changed, 541 insertions(+)
+ create mode 100644 drivers/regulator/mt6392-regulator.c
+ create mode 100644 include/linux/regulator/mt6392-regulator.h
 
-Thanks.
-
+diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
+index d2335276cce5..66876d730807 100644
+--- a/drivers/regulator/Kconfig
++++ b/drivers/regulator/Kconfig
+@@ -991,6 +991,15 @@ config REGULATOR_MT6380
+ 	  This driver supports the control of different power rails of device
+ 	  through regulator interface.
+ 
++config REGULATOR_MT6392
++	tristate "MediaTek MT6392 PMIC"
++	depends on MFD_MT6397
++	help
++	  Say y here to select this option to enable the power regulator of
++	  MediaTek MT6392 PMIC.
++	  This driver supports the control of different power rails of device
++	  through regulator interface.
++
+ config REGULATOR_MT6397
+ 	tristate "MediaTek MT6397 PMIC"
+ 	depends on MFD_MT6397
+diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
+index 1beba1493241..db5145cfcf36 100644
+--- a/drivers/regulator/Makefile
++++ b/drivers/regulator/Makefile
+@@ -117,6 +117,7 @@ obj-$(CONFIG_REGULATOR_MT6360) += mt6360-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6363) += mt6363-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6370) += mt6370-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6380)	+= mt6380-regulator.o
++obj-$(CONFIG_REGULATOR_MT6392)	+= mt6392-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6397)	+= mt6397-regulator.o
+ obj-$(CONFIG_REGULATOR_MTK_DVFSRC) += mtk-dvfsrc-regulator.o
+ obj-$(CONFIG_REGULATOR_QCOM_LABIBB) += qcom-labibb-regulator.o
+diff --git a/drivers/regulator/mt6392-regulator.c b/drivers/regulator/mt6392-regulator.c
+new file mode 100644
+index 000000000000..1ac5cdf4eb7f
+--- /dev/null
++++ b/drivers/regulator/mt6392-regulator.c
+@@ -0,0 +1,491 @@
++// SPDX-License-Identifier: GPL-2.0
++//
++// Copyright (c) 2020 MediaTek Inc.
++// Copyright (c) 2020 BayLibre, SAS.
++// Author: Chen Zhong <chen.zhong@mediatek.com>
++// Author: Fabien Parent <fparent@baylibre.com>
++//
++// Based on mt6397-regulator.c
++
++#include <linux/module.h>
++#include <linux/linear_range.h>
++#include <linux/of.h>
++#include <linux/platform_device.h>
++#include <linux/regmap.h>
++#include <linux/mfd/mt6397/core.h>
++#include <linux/mfd/mt6392/registers.h>
++#include <linux/regulator/driver.h>
++#include <linux/regulator/machine.h>
++#include <linux/regulator/mt6392-regulator.h>
++#include <linux/regulator/of_regulator.h>
++
++#define MT6392_BUCK_MODE_AUTO	0
++#define MT6392_BUCK_MODE_FORCE_PWM	1
++#define MT6392_LDO_MODE_NORMAL	0
++#define MT6392_LDO_MODE_LP	1
++
++/*
++ * MT6392 regulators' information
++ *
++ * @desc: standard fields of regulator description.
++ * @qi: Mask for query enable signal status of regulators
++ * @vselon_reg: Register sections for hardware control mode of bucks
++ * @vselctrl_reg: Register for controlling the buck control mode.
++ * @vselctrl_mask: Mask for query buck's voltage control mode.
++ */
++struct mt6392_regulator_info {
++	struct regulator_desc desc;
++	u32 qi;
++	u32 vselon_reg;
++	u32 vselctrl_reg;
++	u32 vselctrl_mask;
++	u32 modeset_reg;
++	u32 modeset_mask;
++};
++
++#define MT6392_BUCK(match, vreg, min, max, step, volt_ranges, enreg,	\
++		vosel, vosel_mask, voselon, vosel_ctrl,			\
++		_modeset_reg, _modeset_mask, rampdelay)		\
++[MT6392_ID_##vreg] = {							\
++	.desc = {							\
++		.name = #vreg,						\
++		.of_match = of_match_ptr(match),			\
++		.ops = &mt6392_volt_range_ops,				\
++		.type = REGULATOR_VOLTAGE,				\
++		.id = MT6392_ID_##vreg,					\
++		.owner = THIS_MODULE,					\
++		.n_voltages = (max - min)/step + 1,			\
++		.linear_ranges = volt_ranges,				\
++		.n_linear_ranges = ARRAY_SIZE(volt_ranges),		\
++		.vsel_reg = vosel,					\
++		.vsel_mask = vosel_mask,				\
++		.enable_reg = enreg,					\
++		.enable_mask = BIT(0),					\
++		.ramp_delay = rampdelay,				\
++	},								\
++	.qi = BIT(13),							\
++	.vselon_reg = voselon,						\
++	.vselctrl_reg = vosel_ctrl,					\
++	.vselctrl_mask = BIT(1),					\
++	.modeset_reg = _modeset_reg,					\
++	.modeset_mask = _modeset_mask,					\
++}
++
++#define MT6392_LDO(match, vreg, ldo_volt_table, enreg, enbit, vosel,	\
++		vosel_mask, _modeset_reg, _modeset_mask, entime)	\
++[MT6392_ID_##vreg] = {							\
++	.desc = {							\
++		.name = #vreg,						\
++		.of_match = of_match_ptr(match),			\
++		.ops = &mt6392_volt_table_ops,				\
++		.type = REGULATOR_VOLTAGE,				\
++		.id = MT6392_ID_##vreg,					\
++		.owner = THIS_MODULE,					\
++		.n_voltages = ARRAY_SIZE(ldo_volt_table),		\
++		.volt_table = ldo_volt_table,				\
++		.vsel_reg = vosel,					\
++		.vsel_mask = vosel_mask,				\
++		.enable_reg = enreg,					\
++		.enable_mask = BIT(enbit),				\
++		.enable_time = entime,					\
++	},								\
++	.qi = BIT(15),							\
++	.modeset_reg = _modeset_reg,					\
++	.modeset_mask = _modeset_mask,					\
++}
++
++#define MT6392_LDO_LINEAR(match, vreg, min, max, step, volt_ranges,	\
++		enreg, enbit, vosel, vosel_mask, _modeset_reg,		\
++		_modeset_mask, entime)					\
++[MT6392_ID_##vreg] = {							\
++	.desc = {							\
++		.name = #vreg,						\
++		.of_match = of_match_ptr(match),			\
++		.ops = &mt6392_volt_ldo_range_ops,			\
++		.type = REGULATOR_VOLTAGE,				\
++		.id = MT6392_ID_##vreg,					\
++		.owner = THIS_MODULE,					\
++		.n_voltages = (max - min)/step + 1,			\
++		.linear_ranges = volt_ranges,				\
++		.n_linear_ranges = ARRAY_SIZE(volt_ranges),		\
++		.vsel_reg = vosel,					\
++		.vsel_mask = vosel_mask,				\
++		.enable_reg = enreg,					\
++		.enable_mask = BIT(enbit),				\
++		.enable_time = entime,					\
++	},								\
++	.qi = BIT(15),							\
++	.modeset_reg = _modeset_reg,					\
++	.modeset_mask = _modeset_mask,					\
++}
++
++#define MT6392_REG_FIXED(match, vreg, enreg, enbit, volt,		\
++		_modeset_reg, _modeset_mask, entime)			\
++[MT6392_ID_##vreg] = {							\
++	.desc = {							\
++		.name = #vreg,						\
++		.of_match = of_match_ptr(match),			\
++		.ops = &mt6392_volt_fixed_ops,				\
++		.type = REGULATOR_VOLTAGE,				\
++		.id = MT6392_ID_##vreg,					\
++		.owner = THIS_MODULE,					\
++		.n_voltages = 1,					\
++		.enable_reg = enreg,					\
++		.enable_mask = BIT(enbit),				\
++		.enable_time = entime,					\
++		.min_uV = volt,						\
++	},								\
++	.qi = BIT(15),							\
++	.modeset_reg = _modeset_reg,					\
++	.modeset_mask = _modeset_mask,					\
++}
++
++#define MT6392_REG_FIXED_NO_MODE(match, vreg, enreg, enbit, volt,	\
++	entime)								\
++[MT6392_ID_##vreg] = {							\
++	.desc = {							\
++		.name = #vreg,						\
++		.of_match = of_match_ptr(match),			\
++		.ops = &mt6392_volt_fixed_no_mode_ops,			\
++		.type = REGULATOR_VOLTAGE,				\
++		.id = MT6392_ID_##vreg,					\
++		.owner = THIS_MODULE,					\
++		.n_voltages = 1,					\
++		.enable_reg = enreg,					\
++		.enable_mask = BIT(enbit),				\
++		.enable_time = entime,					\
++		.min_uV = volt,						\
++	},								\
++	.qi = BIT(15),							\
++}
++
++static const struct linear_range buck_volt_range1[] = {
++	REGULATOR_LINEAR_RANGE(700000, 0, 0x7f, 6250),
++};
++
++static const struct linear_range buck_volt_range2[] = {
++	REGULATOR_LINEAR_RANGE(1400000, 0, 0x7f, 12500),
++};
++
++static const u32 ldo_volt_table1[] = {
++	1800000, 1900000, 2000000, 2200000,
++};
++
++static const struct linear_range ldo_volt_range2[] = {
++	REGULATOR_LINEAR_RANGE(3300000, 0, 3, 100000),
++};
++
++static const u32 ldo_volt_table3[] = {
++	1800000, 3300000,
++};
++
++static const u32 ldo_volt_table4[] = {
++	3000000, 3300000,
++};
++
++static const u32 ldo_volt_table5[] = {
++	1200000, 1300000, 1500000, 1800000, 2000000, 2800000, 3000000, 3300000,
++};
++
++static const u32 ldo_volt_table6[] = {
++	1240000, 1390000,
++};
++
++static const u32 ldo_volt_table7[] = {
++	1200000, 1300000, 1500000, 1800000,
++};
++
++static const u32 ldo_volt_table8[] = {
++	1800000, 2000000,
++};
++
++static int mt6392_buck_set_mode(struct regulator_dev *rdev, unsigned int mode)
++{
++	int ret, val = 0;
++	struct mt6392_regulator_info *info = rdev_get_drvdata(rdev);
++
++	switch (mode) {
++	case REGULATOR_MODE_FAST:
++		val = MT6392_BUCK_MODE_FORCE_PWM;
++		break;
++	case REGULATOR_MODE_NORMAL:
++		val = MT6392_BUCK_MODE_AUTO;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	val <<= ffs(info->modeset_mask) - 1;
++
++	ret = regmap_update_bits(rdev->regmap, info->modeset_reg,
++				  info->modeset_mask, val);
++
++	return ret;
++}
++
++static unsigned int mt6392_buck_get_mode(struct regulator_dev *rdev)
++{
++	unsigned int val;
++	unsigned int mode;
++	int ret;
++	struct mt6392_regulator_info *info = rdev_get_drvdata(rdev);
++
++	ret = regmap_read(rdev->regmap, info->modeset_reg, &val);
++	if (ret < 0)
++		return ret;
++
++	val &= info->modeset_mask;
++	val >>= ffs(info->modeset_mask) - 1;
++
++	if (val & 0x1)
++		mode = REGULATOR_MODE_FAST;
++	else
++		mode = REGULATOR_MODE_NORMAL;
++
++	return mode;
++}
++
++static int mt6392_ldo_set_mode(struct regulator_dev *rdev, unsigned int mode)
++{
++	int ret, val = 0;
++	struct mt6392_regulator_info *info = rdev_get_drvdata(rdev);
++
++	switch (mode) {
++	case REGULATOR_MODE_STANDBY:
++		val = MT6392_LDO_MODE_LP;
++		break;
++	case REGULATOR_MODE_NORMAL:
++		val = MT6392_LDO_MODE_NORMAL;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	val <<= ffs(info->modeset_mask) - 1;
++
++	ret = regmap_update_bits(rdev->regmap, info->modeset_reg,
++				  info->modeset_mask, val);
++
++	return ret;
++}
++
++static unsigned int mt6392_ldo_get_mode(struct regulator_dev *rdev)
++{
++	unsigned int val;
++	unsigned int mode;
++	int ret;
++	struct mt6392_regulator_info *info = rdev_get_drvdata(rdev);
++
++	ret = regmap_read(rdev->regmap, info->modeset_reg, &val);
++	if (ret < 0)
++		return ret;
++
++	val &= info->modeset_mask;
++	val >>= ffs(info->modeset_mask) - 1;
++
++	if (val & 0x1)
++		mode = REGULATOR_MODE_STANDBY;
++	else
++		mode = REGULATOR_MODE_NORMAL;
++
++	return mode;
++}
++
++static const struct regulator_ops mt6392_volt_range_ops = {
++	.list_voltage = regulator_list_voltage_linear_range,
++	.map_voltage = regulator_map_voltage_linear_range,
++	.set_voltage_sel = regulator_set_voltage_sel_regmap,
++	.get_voltage_sel = regulator_get_voltage_sel_regmap,
++	.set_voltage_time_sel = regulator_set_voltage_time_sel,
++	.enable = regulator_enable_regmap,
++	.disable = regulator_disable_regmap,
++	.is_enabled = regulator_is_enabled_regmap,
++	.set_mode = mt6392_buck_set_mode,
++	.get_mode = mt6392_buck_get_mode,
++};
++
++static const struct regulator_ops mt6392_volt_table_ops = {
++	.list_voltage = regulator_list_voltage_table,
++	.map_voltage = regulator_map_voltage_iterate,
++	.set_voltage_sel = regulator_set_voltage_sel_regmap,
++	.get_voltage_sel = regulator_get_voltage_sel_regmap,
++	.set_voltage_time_sel = regulator_set_voltage_time_sel,
++	.enable = regulator_enable_regmap,
++	.disable = regulator_disable_regmap,
++	.is_enabled = regulator_is_enabled_regmap,
++	.set_mode = mt6392_ldo_set_mode,
++	.get_mode = mt6392_ldo_get_mode,
++};
++
++static const struct regulator_ops mt6392_volt_ldo_range_ops = {
++	.list_voltage = regulator_list_voltage_linear_range,
++	.map_voltage = regulator_map_voltage_linear_range,
++	.set_voltage_sel = regulator_set_voltage_sel_regmap,
++	.get_voltage_sel = regulator_get_voltage_sel_regmap,
++	.set_voltage_time_sel = regulator_set_voltage_time_sel,
++	.enable = regulator_enable_regmap,
++	.disable = regulator_disable_regmap,
++	.is_enabled = regulator_is_enabled_regmap,
++	.set_mode = mt6392_ldo_set_mode,
++	.get_mode = mt6392_ldo_get_mode,
++};
++
++static const struct regulator_ops mt6392_volt_fixed_ops = {
++	.list_voltage = regulator_list_voltage_linear,
++	.enable = regulator_enable_regmap,
++	.disable = regulator_disable_regmap,
++	.is_enabled = regulator_is_enabled_regmap,
++	.set_mode = mt6392_ldo_set_mode,
++	.get_mode = mt6392_ldo_get_mode,
++};
++
++static const struct regulator_ops mt6392_volt_fixed_no_mode_ops = {
++	.list_voltage = regulator_list_voltage_linear,
++	.enable = regulator_enable_regmap,
++	.disable = regulator_disable_regmap,
++	.is_enabled = regulator_is_enabled_regmap,
++};
++
++/* The array is indexed by id(MT6392_ID_XXX) */
++static struct mt6392_regulator_info mt6392_regulators[] = {
++	MT6392_BUCK("buck_vproc", VPROC, 700000, 1493750, 6250,
++		buck_volt_range1, MT6392_VPROC_CON7, MT6392_VPROC_CON9, 0x7f,
++		MT6392_VPROC_CON10, MT6392_VPROC_CON5, MT6392_VPROC_CON2,
++		0x100, 12500),
++	MT6392_BUCK("buck_vsys", VSYS, 1400000, 2987500, 12500,
++		buck_volt_range2, MT6392_VSYS_CON7, MT6392_VSYS_CON9, 0x7f,
++		MT6392_VSYS_CON10, MT6392_VSYS_CON5, MT6392_VSYS_CON2, 0x100,
++		25000),
++	MT6392_BUCK("buck_vcore", VCORE, 700000, 1493750, 6250,
++		buck_volt_range1, MT6392_VCORE_CON7, MT6392_VCORE_CON9, 0x7f,
++		MT6392_VCORE_CON10, MT6392_VCORE_CON5, MT6392_VCORE_CON2,
++		0x100, 12500),
++	MT6392_REG_FIXED("ldo_vxo22", VXO22, MT6392_ANALDO_CON1, 10, 2200000,
++		MT6392_ANALDO_CON1, 0x2, 110),
++	MT6392_LDO("ldo_vaud22", VAUD22, ldo_volt_table1,
++		MT6392_ANALDO_CON2, 14, MT6392_ANALDO_CON8, 0x60,
++		MT6392_ANALDO_CON2, 0x2, 264),
++	MT6392_REG_FIXED_NO_MODE("ldo_vcama", VCAMA, MT6392_ANALDO_CON4, 15,
++		2800000, 264),
++	MT6392_REG_FIXED("ldo_vaud28", VAUD28, MT6392_ANALDO_CON23, 14, 2800000,
++		MT6392_ANALDO_CON23, 0x2, 264),
++	MT6392_REG_FIXED("ldo_vadc18", VADC18, MT6392_ANALDO_CON25, 14, 1800000,
++		MT6392_ANALDO_CON25, 0x2, 264),
++	MT6392_LDO_LINEAR("ldo_vcn35", VCN35, 3300000, 3600000, 100000,
++		ldo_volt_range2, MT6392_ANALDO_CON21, 12, MT6392_ANALDO_CON16,
++		0xC, MT6392_ANALDO_CON21, 0x2, 264),
++	MT6392_REG_FIXED("ldo_vio28", VIO28, MT6392_DIGLDO_CON0, 14, 2800000,
++		MT6392_DIGLDO_CON0, 0x2, 264),
++	MT6392_REG_FIXED("ldo_vusb", VUSB, MT6392_DIGLDO_CON2, 14, 3300000,
++		MT6392_DIGLDO_CON2, 0x2, 264),
++	MT6392_LDO("ldo_vmc", VMC, ldo_volt_table3,
++		MT6392_DIGLDO_CON3, 12, MT6392_DIGLDO_CON24, 0x10,
++		MT6392_DIGLDO_CON3, 0x2, 264),
++	MT6392_LDO("ldo_vmch", VMCH, ldo_volt_table4,
++		MT6392_DIGLDO_CON5, 14, MT6392_DIGLDO_CON26, 0x80,
++		MT6392_DIGLDO_CON5, 0x2, 264),
++	MT6392_LDO("ldo_vemc3v3", VEMC3V3, ldo_volt_table4,
++		MT6392_DIGLDO_CON6, 14, MT6392_DIGLDO_CON27, 0x80,
++		MT6392_DIGLDO_CON6, 0x2, 264),
++	MT6392_LDO("ldo_vgp1", VGP1, ldo_volt_table5,
++		MT6392_DIGLDO_CON7, 15, MT6392_DIGLDO_CON28, 0xE0,
++		MT6392_DIGLDO_CON7, 0x2, 264),
++	MT6392_LDO("ldo_vgp2", VGP2, ldo_volt_table5,
++		MT6392_DIGLDO_CON8, 15, MT6392_DIGLDO_CON29, 0xE0,
++		MT6392_DIGLDO_CON8, 0x2, 264),
++	MT6392_REG_FIXED("ldo_vcn18", VCN18, MT6392_DIGLDO_CON11, 14, 1800000,
++		MT6392_DIGLDO_CON11, 0x2, 264),
++	MT6392_LDO("ldo_vcamaf", VCAMAF, ldo_volt_table5,
++		MT6392_DIGLDO_CON31, 15, MT6392_DIGLDO_CON32, 0xE0,
++		MT6392_DIGLDO_CON31, 0x2, 264),
++	MT6392_LDO("ldo_vm", VM, ldo_volt_table6,
++		MT6392_DIGLDO_CON47, 14, MT6392_DIGLDO_CON48, 0x30,
++		MT6392_DIGLDO_CON47, 0x2, 264),
++	MT6392_REG_FIXED("ldo_vio18", VIO18, MT6392_DIGLDO_CON49, 14, 1800000,
++		MT6392_DIGLDO_CON49, 0x2, 264),
++	MT6392_LDO("ldo_vcamd", VCAMD, ldo_volt_table7,
++		MT6392_DIGLDO_CON51, 14, MT6392_DIGLDO_CON52, 0x60,
++		MT6392_DIGLDO_CON51, 0x2, 264),
++	MT6392_REG_FIXED("ldo_vcamio", VCAMIO, MT6392_DIGLDO_CON53, 14, 1800000,
++		MT6392_DIGLDO_CON53, 0x2, 264),
++	MT6392_REG_FIXED("ldo_vm25", VM25, MT6392_DIGLDO_CON55, 14, 2500000,
++		MT6392_DIGLDO_CON55, 0x2, 264),
++	MT6392_LDO("ldo_vefuse", VEFUSE, ldo_volt_table8,
++		MT6392_DIGLDO_CON57, 14, MT6392_DIGLDO_CON58, 0x10,
++		MT6392_DIGLDO_CON57, 0x2, 264),
++};
++
++static int mt6392_set_buck_vosel_reg(struct platform_device *pdev)
++{
++	struct mt6397_chip *mt6392 = dev_get_drvdata(pdev->dev.parent);
++	int i;
++	u32 regval;
++
++	for (i = 0; i < MT6392_MAX_REGULATOR; i++) {
++		if (mt6392_regulators[i].vselctrl_reg) {
++			if (regmap_read(mt6392->regmap,
++				mt6392_regulators[i].vselctrl_reg,
++				&regval) < 0) {
++				dev_err(&pdev->dev,
++					"Failed to read buck ctrl\n");
++				return -EIO;
++			}
++
++			if (regval & mt6392_regulators[i].vselctrl_mask) {
++				mt6392_regulators[i].desc.vsel_reg =
++				mt6392_regulators[i].vselon_reg;
++			}
++		}
++	}
++
++	return 0;
++}
++
++static int mt6392_regulator_probe(struct platform_device *pdev)
++{
++	struct mt6397_chip *mt6392 = dev_get_drvdata(pdev->dev.parent);
++	struct regulator_config config = {};
++	struct regulator_dev *rdev;
++	int i;
++
++	/* Query buck controller to select activated voltage register part */
++	if (mt6392_set_buck_vosel_reg(pdev))
++		return -EIO;
++
++	for (i = 0; i < MT6392_MAX_REGULATOR; i++) {
++		config.dev = &pdev->dev;
++		config.driver_data = &mt6392_regulators[i];
++		config.regmap = mt6392->regmap;
++
++		rdev = devm_regulator_register(&pdev->dev,
++					       &mt6392_regulators[i].desc,
++					       &config);
++		if (IS_ERR(rdev)) {
++			dev_err(&pdev->dev, "failed to register %s\n",
++				mt6392_regulators[i].desc.name);
++			return PTR_ERR(rdev);
++		}
++	}
++
++	return 0;
++}
++
++static const struct platform_device_id mt6392_platform_ids[] = {
++	{"mt6392-regulator", 0},
++	{ /* sentinel */ },
++};
++MODULE_DEVICE_TABLE(platform, mt6392_platform_ids);
++
++static struct platform_driver mt6392_regulator_driver = {
++	.driver = {
++		.name = "mt6392-regulator",
++	},
++	.probe = mt6392_regulator_probe,
++	.id_table = mt6392_platform_ids,
++};
++
++module_platform_driver(mt6392_regulator_driver);
++
++MODULE_AUTHOR("Chen Zhong <chen.zhong@mediatek.com>");
++MODULE_DESCRIPTION("Regulator Driver for MediaTek MT6392 PMIC");
++MODULE_LICENSE("GPL v2");
+diff --git a/include/linux/regulator/mt6392-regulator.h b/include/linux/regulator/mt6392-regulator.h
+new file mode 100644
+index 000000000000..dfcbcacb5ad4
+--- /dev/null
++++ b/include/linux/regulator/mt6392-regulator.h
+@@ -0,0 +1,40 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2019 MediaTek Inc.
++ * Author: Chen Zhong <chen.zhong@mediatek.com>
++ */
++
++#ifndef __LINUX_REGULATOR_MT6392_H
++#define __LINUX_REGULATOR_MT6392_H
++
++enum {
++	MT6392_ID_VPROC = 0,
++	MT6392_ID_VSYS,
++	MT6392_ID_VCORE,
++	MT6392_ID_VXO22,
++	MT6392_ID_VAUD22,
++	MT6392_ID_VCAMA,
++	MT6392_ID_VAUD28,
++	MT6392_ID_VADC18,
++	MT6392_ID_VCN35,
++	MT6392_ID_VIO28,
++	MT6392_ID_VUSB = 10,
++	MT6392_ID_VMC,
++	MT6392_ID_VMCH,
++	MT6392_ID_VEMC3V3,
++	MT6392_ID_VGP1,
++	MT6392_ID_VGP2,
++	MT6392_ID_VCN18,
++	MT6392_ID_VCAMAF,
++	MT6392_ID_VM,
++	MT6392_ID_VIO18,
++	MT6392_ID_VCAMD,
++	MT6392_ID_VCAMIO,
++	MT6392_ID_VM25,
++	MT6392_ID_VEFUSE,
++	MT6392_ID_RG_MAX,
++};
++
++#define MT6392_MAX_REGULATOR	MT6392_ID_RG_MAX
++
++#endif /* __LINUX_REGULATOR_MT6392_H */
 -- 
-Dmitry
+2.43.0
+
 
