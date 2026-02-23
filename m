@@ -4,91 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3035BE98E08
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 08:58:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 250B6E98E14
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 10:18:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WFuaVzPQl4CQPwK6/N1xOrsReRZnToutTgzmjfabsMo=; b=nwNa5J0ySVvTvAOMP988n2K4yq
-	D0MdU+CXO/Elb/Kg9QyPFgD2OBeVhuRoA8QUIgQRNY1EyAG8ZjYE9mODYuWBhutjJt/t1G8R458jA
-	DJUGLKoaQKNWAN+E2q6OcdXK/bKoBO7oOWdNZLIwYr9Ou8ORTenUcqxac3jzsHnMsQpethMYPs6Xp
-	2PJKvA1wYD+reOo3XOgkbHdlye8rSJWIwhjZQGZqKnZ9LxO6qx8cWP7ewRlMUC32l9PkL4AWcEXvc
-	1PCeN0+O0APskmP8iUHZ/jxfg3+1fb0pMpvS7//ymp9KZIBQM/TVtk5My0bvrurW8K1YRrqZMiCWg
-	HzoMFL6g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=g+vTwdoV9KKn+RA8TVGHR1kuUvWEk18K6gKcXUCwBgg=; b=UjJ9PW70xTAI0Sn19sG2PNmPzr
+	e4Ply+BNrtYo+KgWiG+Vfp4dAUpWvKnZOzDh35Of1PuL3U3xg3ac/7/YP/U3GUvbtsq8HNzML2l17
+	/DSn55c5rfnt/L8v03M/w5AfY01Zt0+j2O9sy24UxkNiyWnw1tBeRaMdKs1a4JmB5g9dyuWptklQV
+	WF8dOnT8fWzFyIYqgabYseNYlG5Ky+4gKGzAmYdp+ggzWRVmT0wwjPlsh+NQp+GT6T9X11qhwYUmS
+	iozGCcTASofcR01DE2YdOu9vHnPMye23mFDDylX/4C/FdU7u35d8CSyw/vGvT+AN4BZM+8husoPFo
+	LeOoD6uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuRlc-0000000HS1S-0tsI;
-	Mon, 23 Feb 2026 08:58:12 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1vuT1h-000000001tV-1God;
+	Mon, 23 Feb 2026 10:18:53 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuRlZ-0000000HS0j-0lKX;
-	Mon, 23 Feb 2026 08:58:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1771837089; x=1803373089;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Ngc0//nsKMhxzUW0W1XhdpkPjpuyDMO5L5jYaVXufF8=;
-  b=VfT4Z6GnfkciudcbHnfsuotZcM4JyZKdgQI/fv7GhpFyPcWTSA/E9gO9
-   KM8o4RQtjVbvhJ/G/rC4jeIsFddMsMznnlWdJkrs3zxHY6yz+zNo9GQfw
-   o3RMmWKQH5hr1kuuRXDsi9wT8XPd0g39VrFE+x5IfpnHok0kJhJverzZ2
-   Bk1ReoJqBa30LJwaVq4/ZGC+3sT0kA5nTejSm/J8e25Ppy9mIqMpVaMr4
-   ESk/X1p1V7TYmA8AhCobkRPOJ+YWBpzMW9msJ0c2GC4/qjc41OzNKcSZF
-   EPStrof4M91v0C8YjGxmM4k6Imvd8lHfeyMpjba6o3od0B5aIdIGZULIk
-   w==;
-X-CSE-ConnectionGUID: EB4bNYAHTV+Y6A/6BfVzew==
-X-CSE-MsgGUID: UNPUS+t9TMCiCfJ+YtB+vQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11709"; a="84188575"
-X-IronPort-AV: E=Sophos;i="6.21,306,1763452800"; 
-   d="scan'208";a="84188575"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Feb 2026 00:58:08 -0800
-X-CSE-ConnectionGUID: 6dbkBlWcQpekmjJk8Yu6Xw==
-X-CSE-MsgGUID: LIs0ElR+SfGL2UTDHKAZ9w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,306,1763452800"; 
-   d="scan'208";a="219617271"
-Received: from abityuts-desk.ger.corp.intel.com (HELO localhost) ([10.245.245.222])
-  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Feb 2026 00:58:02 -0800
-Date: Mon, 23 Feb 2026 10:57:59 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Danilo Krummrich <dakr@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	Shuah Khan <skhan@linuxfoundation.org>, Tejun Heo <tj@kernel.org>,
-	Lai Jiangshan <jiangshanlai@gmail.com>,
-	Tobias Schrammm <t.schramm@manjaro.org>,
-	Sebastian Reichel <sre@kernel.org>,
-	Dan Carpenter <dan.carpenter@linaro.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>, Lee Jones <lee@kernel.org>,
-	Dzmitry Sankouski <dsankouski@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>, driver-core@lists.linux.dev,
-	linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev
-Subject: Re: [PATCH 3/9] power: supply: max77705: Free allocated workqueue
- and fix removal order
-Message-ID: <aZwWl57oJln1xH5m@smile.fi.intel.com>
-References: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
- <20260223-workqueue-devm-v1-3-10b3a6087586@oss.qualcomm.com>
+	id 1vuT1e-000000001t4-33DR;
+	Mon, 23 Feb 2026 10:18:52 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 450EE43F3F;
+	Mon, 23 Feb 2026 10:18:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F194CC116D0;
+	Mon, 23 Feb 2026 10:18:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1771841929;
+	bh=vA/9bw48qeJHcc7T2p9LnhnwiLZGKOxWqrYOZe/cSMI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=He+iLFkmhb10PCtcvbiCcBZxvFQkflyWF/MqYm6W1KnBjkIDCOk8i3bjnYqAxGnTG
+	 Es3Xc+FranQrXtoOF/7h/jkvvGGxvGBP++VUFvMOLRLfvxlD/OgyPNsByOeLN2ZqqN
+	 c2aFIhcO1QamPCYHtg1lwIqPpiDhBPvFfRV8LUZC5FdmDp0r5B+2WBZPSsygXtESgb
+	 iJL0SqGm+LZMU62gG6cCfdCIx+9TQFsCNaC058s4v8xZqw6+RTqHY+c5uMbMMuawfa
+	 dh/UOLPTBnrt0cLjq217cjqqkUFwJqPB0yiBNjAE/b9GVLop5GsDuqesExhpS6pCUg
+	 q+9jFcWGfqjxA==
+Message-ID: <534a9d0f-600e-4162-a48c-f9797241dacd@kernel.org>
+Date: Mon, 23 Feb 2026 11:18:41 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260223-workqueue-devm-v1-3-10b3a6087586@oss.qualcomm.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/9] workqueue: devres: Add device-managed allocate
+ workqueue
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>,
+ Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
+ Tejun Heo <tj@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>,
+ Tobias Schrammm <t.schramm@manjaro.org>, Sebastian Reichel <sre@kernel.org>,
+ Dan Carpenter <dan.carpenter@linaro.org>, Lee Jones <lee@kernel.org>,
+ Dzmitry Sankouski <dsankouski@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>,
+ driver-core@lists.linux.dev, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev
+References: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
+ <20260223-workqueue-devm-v1-1-10b3a6087586@oss.qualcomm.com>
+ <aZwWMiYEvr3DXi3E@smile.fi.intel.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <aZwWMiYEvr3DXi3E@smile.fi.intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_005809_240709_4BE55419 
-X-CRM114-Status: GOOD (  14.70  )
+X-CRM114-CacheID: sfid-20260223_021851_041048_9C07145A 
+X-CRM114-Status: GOOD (  18.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,61 +132,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 23, 2026 at 08:27:31AM +0100, Krzysztof Kozlowski wrote:
-> Use devm interface for allocating workqueue to fix two bugs at the same
-> time:
+On 23/02/2026 09:56, Andy Shevchenko wrote:
+> On Mon, Feb 23, 2026 at 08:27:29AM +0100, Krzysztof Kozlowski wrote:
+>> Add a Resource-managed version of alloc_workqueue() to fix common
+>> problem of drivers mixing devm() calls with destroy_workqueue.  Such
+>> naive and discouraged driver approach leads to difficult to debug bugs
+>> when the driver:
+>>
+>> 1. Allocates workqueue in standard way and destroys it in driver
+>>    remove() callback,
+>> 2. Sets work struct with devm_work_autocancel(),
+>> 3. Registers interrupt handler with devm_request_threaded_irq().
+>>
+>> Which leads to following unbind/removal path:
+>>
+>> 1. destroy_workqueue() via driver remove(),
+>>    Any interrupt coming now would still execute the interrupt handler,
+>>    which queues work on destroyed workqueue.
+>> 2. devm_irq_release(),
+>> 3. devm_work_drop() -> cancel_work_sync() on destroyed workqueue.
+>>
+>> devm_alloc_workqueue() has two benefits:
+>> 1. Solves above problem of mix-and-match devres and non-devres code in
+>>    driver,
+>> 2. Simplify any sane drivers which were correctly using
+>>    alloc_workqueue() + devm_add_action_or_reset().
 > 
-> 1. Driver leaks the memory on remove(), because the workqueue is not
->    destroyed.
+>>  include/linux/workqueue.h                        | 32 ++++++++++++++++++++++++
+>>  kernel/workqueue.c                               | 32 ++++++++++++++++++++++++
 > 
-> 2. Driver allocates workqueue and then registers interrupt handlers
->    with devm interface.  This means that probe error paths will not use a
->    reversed order, but first the destroy workqueue and then, via devm
->    release handlers, free the interrupt.
+> Hmm... We have devm-helpers.h. Why the new one is in workqueue.h?
+> Can we have some consistency here?
+
+No problem, I can move it there.
+
 > 
->    The interrupt handler schedules work on this exact workqueue, thus if
->    interrupt is hit in this short time window - after destroying
->    workqueue, but before devm() frees the interrupt, the work scheduling
->    will lead to use of freed memory.
+> ...
+> 
+>> +	ptr = devres_alloc(devm_destroy_workqueue, sizeof(*ptr), GFP_KERNEL);
+>> +	if (!ptr)
+>> +		return NULL;
+>> +
+>> +	va_start(args, max_active);
+>> +	wq = alloc_workqueue(fmt, flags, max_active, args);
+>> +	va_end(args);
+>> +	if (wq) {
+>> +		*ptr = wq;
+>> +		devres_add(dev, ptr);
+>> +	} else {
+>> +		devres_free(ptr);
+>> +	}
+> 
+> Why not using devm_add_action_or_reset()?
 
-...
+Where? Here? How the code would be simpler, exactly?
 
->  	ret = devm_request_threaded_irq(dev, regmap_irq_get_virq(irq_data, MAX77705_CHGIN_I),
->  					NULL, max77705_chgin_irq,
->  					IRQF_TRIGGER_NONE,
->  					"chgin-irq", chg);
-> -	if (ret) {
-> -		dev_err_probe(dev, ret, "Failed to Request chgin IRQ\n");
-> -		goto destroy_wq;
-> -	}
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Failed to Request chgin IRQ\n");
+> 
+> ...
+> 
+>> +void devm_destroy_workqueue(struct device *dev, void *res)
+>> +{
+>> +	destroy_workqueue(*(struct workqueue_struct **)res);
+>> +}
+>> +EXPORT_SYMBOL_GPL(devm_destroy_workqueue);
+> 
+> Is this going to be used?
 
-This should be just
-
-		return ret;
-
-
-devm_*_irq() prints the message. No need to repeat this in the caller(s).
-
-...
-
->  	ret = devm_request_threaded_irq(dev, regmap_irq_get_virq(irq_data, MAX77705_AICL_I),
->  					NULL, max77705_aicl_irq,
->  					IRQF_TRIGGER_NONE,
->  					"aicl-irq", chg);
-> -	if (ret) {
-> -		dev_err_probe(dev, ret, "Failed to Request aicl IRQ\n");
-> -		goto destroy_wq;
-> -	}
-> +	if (ret)
-> +		return dev_err_probe(dev, ret, "Failed to Request aicl IRQ\n");
-
-Ditto.
-
--- 
-With Best Regards,
-Andy Shevchenko
+It is not used in this patchset, but most of devm-allocators have the
+cleanup.
 
 
+Best regards,
+Krzysztof
 
