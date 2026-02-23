@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D9C5EC1109
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 16:39:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 503C9EC1114
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Feb 2026 17:13:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LXaiZuc4XbaNPexryA/QPNUm2OBlv5lDsdbuylfxvoQ=; b=Fq6tuaQXuM1ovzAzhG1G1XZVCF
-	M4DruuFFOXQMPQGBDJ/eibFFimBbCH0FjOSy4SaaVUSvcieYrMgi9NMf1Qms+Hc7owzFSVzHRoTyM
-	OSgXomf5bkI7Gpacf+qzoQNMzzGzD637OkvU7y1O2gjN44/8iToc/vE9vykMtzAG8869KnNvBAZks
-	V/vF97cfaYAbznP/azVBqtOZEkzduV/VOwXRNdNnxRdbGeTMo2zgqQDOVtUwSN1N9rDQOdAxPxqVY
-	K+NyeT/ULg85MwgKhUPG0uj2w0IwwcdI5t2dc/EXYHTGdHZGSXThwxkXkyIMSglxVDkuQVt2mteeJ
-	IfO1h0xA==;
+	bh=oPpFcSeau7Gf5T+AlcnvIXzzk2Xfytp8JNl+DHgmVgg=; b=JFbVyNc/XmugLlAcoUDZpUCcQK
+	X95a+yOWuJ4ViARPROvmPid+U6IoudRgWge6hOZTy6czJBro0SLSk8yAcT3S1rm+j6zB3DFqYfUU+
+	OBuDscBp4ey3XeA/Fg19uUcFxFsIjov+AaIENVKOtK0CWlXyHelFjJhS8JoQ1HsbRJ2W9gL2vBuBE
+	uPQe1BvVtmR7P8yErW++Z7a7B+Mb2UKkwXpKisSZCh6eHtNCBstzo+/dbnMIOeoIUpr13UjDms/jK
+	gaCB4sDuTiJS6evTZ81XaMBK15qx+gNSIHJUPH7sLA+oNklN2B6m/5S4524CoUCXS4fS987NA5rnA
+	YZeKxUJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuYyT-00000000hbG-05Zi;
-	Mon, 23 Feb 2026 16:39:58 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vuZV3-00000000jYH-10BP;
+	Mon, 23 Feb 2026 17:13:37 +0000
+Received: from 011.lax.mailroute.net ([199.89.1.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuYyQ-00000000haS-2c2j;
-	Mon, 23 Feb 2026 16:39:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771864791;
-	bh=GU3xnXyHmn1mP9zwAI0ndO9wqT8jjc20jlPhIMyYZ3U=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aGJOp4cpuNZIhOCgBm2vWH/Q7p9UCp+cYXlFkz/q+2dSREdLxaqWr/vcyPmfQi2Ak
-	 v7pWlRC2cNSmfbgdWzOBQ0wM+YfKBqk1qZUufrVfYyutdcLd1Ary2uiq9SLb5JYzQd
-	 VdWoMC4Yzmse2Hk7YzM34X6GNqo48+l6EZRQSGD3/M09DXhjPvVdKYjFzZxEVTyyme
-	 11Hm1M7B9NHN8qKtWyCN6hbg7PViSR1LExxjoMp4SeENj7PSUm60kOLEGV3bcMVNNF
-	 9uYE+VAXoaeld90Myr836VCVCFNcU7saSylxSvu5eElRSrW1fhST57q8YuKn54ivCx
-	 LuH+Y+9OKKSHA==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1vuZV0-00000000jXv-2J40
+	for linux-mediatek@lists.infradead.org;
+	Mon, 23 Feb 2026 17:13:35 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 011.lax.mailroute.net (Postfix) with ESMTP id 4fKS9p04ldz1XLyhN;
+	Mon, 23 Feb 2026 17:13:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1771866811; x=1774458812; bh=oPpFcSeau7Gf5T+AlcnvIXzz
+	k2Xfytp8JNl+DHgmVgg=; b=dXfWs53vD0knK4w3w5yRjw2N0JQjKPpT+emD3JSw
+	tn2PVNYOSXvf2Z/phY/tPI7RbCXvyEZCOYGLK745TDliTAAyTTMAG1qtA0HtdVuJ
+	S0MD6kRSSPUK/baZd7evIdwW1Etyi+2+zD5ZuNtzSqxiATOEfLHXkLsQdYzxkS4F
+	WLuC2TBK6UXToIPdVzfPgCdaJs6o0D1FOczByZhEsVNRyR1VxrvoIznnX5EpOfua
+	N/LOHpoXLYL00Jb5QWDj7po49T9/O5N6RJhC2/AGqhOb9CcfA9uKFJC90hLWRstH
+	vPuhDJlyrDQWfKnPJ3l52tD+WAh3/1YhyLVGPvplmnn5JA==
+X-Virus-Scanned: by MailRoute
+Received: from 011.lax.mailroute.net ([127.0.0.1])
+ by localhost (011.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id F1Eg1G2IcSFi; Mon, 23 Feb 2026 17:13:31 +0000 (UTC)
+Received: from [100.119.48.131] (unknown [104.135.180.219])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B212617E069A;
-	Mon, 23 Feb 2026 17:39:50 +0100 (CET)
-Message-ID: <3e0a65f8-3c65-4382-8c39-a6d30db2a52a@collabora.com>
-Date: Mon, 23 Feb 2026 17:39:49 +0100
+	(Authenticated sender: bvanassche@acm.org)
+	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4fKS9f6vcsz1XLyhM;
+	Mon, 23 Feb 2026 17:13:26 +0000 (UTC)
+Message-ID: <5017b907-16de-4d7f-a7c6-dbc504ffd1eb@acm.org>
+Date: Mon, 23 Feb 2026 09:13:25 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 5/6] drm/mediatek: dsi: Add compatible for mt8167-dsi
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
- linux-mediatek@lists.infradead.org
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org
-References: <cover.1771863641.git.l.scorcia@gmail.com>
- <2fbf179c03c61f527e2583f9df4f97f6aaf3297a.1771863641.git.l.scorcia@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v1] ufs: core: Fix possible NULL pointer dereference in
+ ufshcd_add_command_trace()
+To: peter.wang@mediatek.com, linux-scsi@vger.kernel.org,
+ martin.petersen@oracle.com, avri.altman@sandisk.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, tun-yu.yu@mediatek.com,
+ eddie.huang@mediatek.com, naomi.chu@mediatek.com, ed.tsai@mediatek.com
+References: <20260223065657.2432447-1-peter.wang@mediatek.com>
 Content-Language: en-US
-In-Reply-To: <2fbf179c03c61f527e2583f9df4f97f6aaf3297a.1771863641.git.l.scorcia@gmail.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20260223065657.2432447-1-peter.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_083954_839192_DE266341 
-X-CRM114-Status: UNSURE (   5.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260223_091334_607263_3055B669 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,13 +88,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/02/26 17:22, Luca Leonardo Scorcia ha scritto:
-> The mt8167 DSI controller is fully compatible with the one found in
-> mt2701. Device tree documentation is already present upstream.
-> 
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+On 2/22/26 10:56 PM, peter.wang@mediatek.com wrote:
+> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+> index ec175a099459..44efb03765b9 100644
+> --- a/drivers/ufs/core/ufshcd.c
+> +++ b/drivers/ufs/core/ufshcd.c
+> @@ -515,8 +515,8 @@ static void ufshcd_add_command_trace(struct ufs_hba *hba, struct scsi_cmnd *cmd,
+>   
+>   	if (hba->mcq_enabled) {
+>   		struct ufs_hw_queue *hwq = ufshcd_mcq_req_to_hwq(hba, rq);
+> -
+> -		hwq_id = hwq->id;
+> +		if (hwq)
+> +			hwq_id = hwq->id;
+>   	} else {
+>   		doorbell = ufshcd_readl(hba, REG_UTP_TRANSFER_REQ_DOOR_BELL);
+>   	}
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+This will cause "-1" to be assigned to hwq_id instead of a queue number
+if a request has already been completed. Wouldn't it be better to
+introduce a new helper function that returns READ_ONCE(req->mq_hctx)
+->queue_num instead of making the above change?
 
+Thanks,
 
+Bart.
 
