@@ -4,78 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DDD8EFB806
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Feb 2026 06:14:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E58E9EFB7F9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Feb 2026 07:03:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rQv1yJimGlxvy4yGPgOsX/UNrk5wbgDTKKecRY0I1tE=; b=S8a34t5shkNDko0Z9KhZ/O7e+s
-	ekW90Z8ZHWD6KPzaqnHrrySaXf6f9XcSJGglY0kls6N18brQpwdRWDhDpxY/7obZT0nxPYmVXZ6/K
-	26Kuq/sSpxy95xJZa9gdm3CTcMj8TujHKFjmsl63wHKZ95vnc08/E/KgsGyrbsirW2A9hGs2ZN6XQ
-	xtEsj+2r2KHS2HBVksUpizRbLBpvn6D+rt0ZWEbRs4PrmDcOqPTlSoxCDXiVAkyzt3Jzi8Ryl0glF
-	XcaFX0hSTjYOza0qFUzEyNS5Q8SbADEftAK/I0pVkt19MCtFRFtMvNpfo4dZkeFx2pwb1vQJ9Orud
-	czjaqNpQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=G/Mt3Ra+5yhEMXBUYKmVnriP9LLAY3r66sMCycefNDI=; b=g9Gl/ANS5MvXJY8liaRprSEE38
+	bzNBB7v1EFPRZS0N5C/8T/csMvYNLmMErFkRgj6E335eI/eReYhOtJaD8kxUSpTr3cr4Awr5k1aXI
+	XutLVkgO+FtFLc9j2s45iHl/Ih+eLl9eyyEgzNnXUpt12U/ykTTWAXmqvCjgQs47Drf03WDAyXQB4
+	rMqXWJ6X8Hn+jpeh6xEN+bXI4CgwiXgc+lzL5gVn8wXDXvMyt5lEWlPNyO8GrPQCr5rClJEBEIkbu
+	s6A1ffCnQpNrrUvBP3F0eSjA7vlSoRb/4Iap+GrMtgsMBe9eAmrmnLzOuptRU3NWQ9lP14OZk0Aeg
+	C34/QRBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vulgv-00000001WB2-2Rio;
-	Tue, 24 Feb 2026 06:14:41 +0000
-Received: from mail-oo1-f42.google.com ([209.85.161.42])
+	id 1vumS1-00000001YWP-2jIE;
+	Tue, 24 Feb 2026 07:03:21 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vulgs-00000001WAG-2QMO
+	id 1vumRy-00000001YVV-3T0P
 	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Feb 2026 06:14:40 +0000
-Received: by mail-oo1-f42.google.com with SMTP id 006d021491bc7-679b072ed3aso2686295eaf.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 22:14:38 -0800 (PST)
+	Tue, 24 Feb 2026 07:03:19 +0000
+Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-8230c33f477so2225261b3a.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 23:03:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1771916597; x=1772521397; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=G/Mt3Ra+5yhEMXBUYKmVnriP9LLAY3r66sMCycefNDI=;
+        b=U4t9G+yViEnf35xDRFPPY55dSq5m8p+4JWG3XgJtJwaXomssg4kqB6cOTbmBtRvsEI
+         9+pS1EYOp5Xyh9zLsRriEfnci8dDNPOa8aRXY8NPWERAUpr39GPtZPVuBJPWA77YzQ5Q
+         c170D4jxeQMvhw9ZXrYcWSWW/3Ffhks7g8J3M=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771913677; x=1772518477;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=rQv1yJimGlxvy4yGPgOsX/UNrk5wbgDTKKecRY0I1tE=;
-        b=dcr8KnVMfHr7yUAHZHK1fILALfomOgnVCtHxCm99gAFFBTCo39yRflmHP5v0bvm3X8
-         0P7h00vUZV476I1JKMnqt23cEG6X2G5ABHROxAlfWichHubha6Pas+s+LIN0vwJSOjzB
-         FiYZjJOC+lPm53yVnL4GuqfS+lF60oJCq0d3ZholDXRdknvsNwPp23zk7eSVwTvo65zv
-         2cSeXbdhjhcymRmEDI1rlXayfzRshcQ6qphSbfQHRmR3S+Qupk2RRydwr7pg9x2bj+1W
-         tbz4hPWI/bWvEmjU6Ma1Y2V324ArqsY9TWiJkXmAQcBxyQMMiPo7yFfxEEZsnNeHox6y
-         U5Dg==
-X-Forwarded-Encrypted: i=1; AJvYcCWJzq6splfouUYrXIfWm6So2qD0cc0Aquh6Si33iPpUIw6qh1T96i3J//E8lf0EvsmnrQ62CwqvYoX4Cw98vQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz11r+NjFtL+b9ZjnfIv3vtOZmzAkq/K9FJ3kS0BrP95dIAlxc2
-	Lxcs8tiU8x+GYWjSmTndMH6w3ilXLI4Q6+8JF7dkI9b0Rg8QjbluhfSt
-X-Gm-Gg: AZuq6aLGorcSU56Y1ibL54uop37ynT5Hky2YALuBL7C8uJkqIxygH6msho/kgxmMYhD
-	ZnsPy5OGRk4W8Dvs0Ec98OP5PTsicnJctT2nAZSMlOUiSpLne5dSEGOJIpz8oWM4Vd/kS/9wAQ1
-	6PxcRVxaavPekrOsAvZNS9R5rmPn3/Y7shEK6yeR9QXB2jaszknrwHQe+Ce7ktiL1weObztk/HV
-	0uBCgbE4KxBRoL8z0z3dUd+Lp/iMyM8g5djpTSJ0nSZ0ihEc5UiiubPyyIL0cvml9t9hkeVapwR
-	bFVMFMs5SA92Nco+O8P2Qe5LBUHPNPcvB/v1WN4iSI3GWySljXgbX0qSaG5hrMVRdftbaOxlQb8
-	iypdWyAnSQzMbxieJMQJ74seB4TKBMsPGkQFKHdxVSDvCiolylBNmwuEtayumFlmCnX1vhZZFB5
-	JigYdei7MBj27MRLl69f5FICqJ+bTV+/L3fk697qZW/F/Q/krakN+/6/SkvLMWPtE=
-X-Received: by 2002:a05:6820:4c04:b0:661:1d0c:a5af with SMTP id 006d021491bc7-679c461247dmr5953555eaf.69.1771913677584;
-        Mon, 23 Feb 2026 22:14:37 -0800 (PST)
-Received: from sean-HP-EliteBook-830-G6.attlocal.net ([2600:1702:5083:7610:8ac2:4fdd:a742:61b8])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-679c56dbde9sm7895306eaf.11.2026.02.23.22.14.35
+        d=1e100.net; s=20230601; t=1771916597; x=1772521397;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=G/Mt3Ra+5yhEMXBUYKmVnriP9LLAY3r66sMCycefNDI=;
+        b=l/GVLDMpfKgrL5NH6tVjs4NxqpIpWMourYtXIZeEg4ff5i/ysMgSEPO48ZyfKkWrVx
+         WoZCjZ5YtIP+PnEnJbEC6c7S0TFOunT5Fp6l8CsEplRNKZopl/LCAYI0vVtnALgRSduf
+         fzKvU5lEdED4Jbx5/l7cLJMkG8aeBfcRE6IX8OUwYAn8myFIyraGraobAKW/6R64NOci
+         Py1BGMxvVC790hEgOS3mF6dgln94521AuJRe9eOyr2Ebky5W7T55RqivIqDY+a6SwBpM
+         OqK2hADpdciz0Ou6fvSfIPftjLSoqp1f3BIK2JrXQqEgkyOFxSA7mqmAyrpcXgKLUfoj
+         UNWg==
+X-Forwarded-Encrypted: i=1; AJvYcCXzmU3FF3fyo9nIPjrCn4GQ94eIjYVdAYnOPaBBOVMQb5okMyz0b9LMLuGpDUYle6IJXwSdMbFBJvKkU8lW7g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy9zF0P+hRWIfbUa65rkth/D5GEEnYiCevDvK5sGlEqgaOpIJtF
+	BfoFwIsChzCGW0s7KJPZRKezhLXHFjCuyHtwzdWRR4SnTDNs+BF2kiVnd9gQWnz+cQ==
+X-Gm-Gg: ATEYQzw9wntJ8CybDbMgWhS5HOVCtkiCwUWWqOs7RS6KqI/YoiAzHOrRkkQcnjzf+5g
+	M5fvMncG/k5Gyf9zKAs9OoyHoOXGLkpd9noDKh2OQFubZEjQL44Glg6ZkddI+dBONAl0MLSBgiD
+	+MfDTnMcF/yd2t3e4n+ZcHUuSPCxjwrKGhMS6ZuKBca9cjw9EuzkySucVi8G+oGkplvJ1KC7QdC
+	Akkv0ii04Cqybk8X0M06fVeMuf5RG8Vku47WB8Y92K2X8Q7W0slDpW7ajlqkQ5JK7L8+ZNbUbC3
+	Ns0tPyXyo0GlApPTiJ9DGoG0gjwwFcB9HKeEBVw0ml4cOzt0j/rS5fxilnVmFOBpVKxOZflFRIO
+	mRZeEow738JhEyPpA33+fTIqQ9scZuJdTCY75tnaHkjDFbVboRVfpBP3Nr8o+cjfMKf2CU2uAgw
+	Ybm71xgCM0CzVc/5Ojb/uWKEMTK6GybfD98gKE47veiPoqRw8kZ0/RJFUufNj/SJtLV9uBojj86
+	1lqtl9I
+X-Received: by 2002:a05:6a00:330a:b0:81f:9986:9205 with SMTP id d2e1a72fcca58-826daab0281mr12440056b3a.57.1771916597314;
+        Mon, 23 Feb 2026 23:03:17 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:752d:3fd0:786d:ab57])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-826dd873263sm10007748b3a.33.2026.02.23.23.03.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Feb 2026 22:14:35 -0800 (PST)
-From: Sean Wang <sean.wang@kernel.org>
-To: marcel@holtmann.org,
-	luiz.dentz@gmail.com,
-	ulf.hansson@linaro.org
-Cc: linux-bluetooth@vger.kernel.org,
+        Mon, 23 Feb 2026 23:03:16 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-mediatek@lists.infradead.org,
-	linux-mmc@vger.kernel.org,
-	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH v2 8/8] Bluetooth: btmtk: add MT7902 SDIO support
-Date: Tue, 24 Feb 2026 00:13:25 -0600
-Message-ID: <20260224061325.20189-8-sean.wang@kernel.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260224061325.20189-1-sean.wang@kernel.org>
-References: <20260224061325.20189-1-sean.wang@kernel.org>
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] arm64: dts: mediatek: mt8195-cherry: Disable xhci1 completely
+Date: Tue, 24 Feb 2026 15:03:05 +0800
+Message-ID: <20260224070306.2650182-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.53.0.371.g1d285c8824-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_221438_620636_D7959EDA 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20260223_230318_953928_68448D05 
+X-CRM114-Status: UNSURE (   9.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,117 +97,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+There is nothing connected to xhci1 in this design, nor in the actual
+end devices.
 
-Add MT7902 Bluetooth SDIO support by introducing chip data and
-registering the device ID.
+Disable xhci1. Keep the USB PHY enabled, as it is a shared PHY and used
+for pcie1.
 
-Runtime PM is not yet supported by the driver, but normal operation
-is unaffected.
-
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-v2: no changes
----
- drivers/bluetooth/btmtksdio.c | 42 ++++++++++++++++++++++++-----------
- 1 file changed, 29 insertions(+), 13 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index e986e5af51ae..042064464d34 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -42,24 +42,35 @@ struct btmtksdio_data {
- 	const char *fwname;
- 	u16 chipid;
- 	bool lp_mbox_supported;
-+	bool pm_runtime_supported;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index b3761b80cac7..6e99122c65ac 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -1495,6 +1495,7 @@ &u3phy0 {
  };
  
- static const struct btmtksdio_data mt7663_data = {
- 	.fwname = FIRMWARE_MT7663,
- 	.chipid = 0x7663,
- 	.lp_mbox_supported = false,
-+	.pm_runtime_supported = true,
+ &u3phy1 {
++	/* shared between xhci1 and pcie1. */
+ 	status = "okay";
  };
  
- static const struct btmtksdio_data mt7668_data = {
- 	.fwname = FIRMWARE_MT7668,
- 	.chipid = 0x7668,
- 	.lp_mbox_supported = false,
-+	.pm_runtime_supported = true,
+@@ -1563,16 +1564,6 @@ &xhci0 {
+ 	vbus-supply = <&usb_vbus>;
  };
  
- static const struct btmtksdio_data mt7921_data = {
- 	.fwname = FIRMWARE_MT7961,
- 	.chipid = 0x7921,
- 	.lp_mbox_supported = true,
-+	.pm_runtime_supported = true,
-+};
-+
-+static const struct btmtksdio_data mt7902_data = {
-+	.fwname = FIRMWARE_MT7902,
-+	.chipid = 0x7902,
-+	.lp_mbox_supported = false,
-+	.pm_runtime_supported = false,
- };
- 
- static const struct sdio_device_id btmtksdio_table[] = {
-@@ -69,6 +80,8 @@ static const struct sdio_device_id btmtksdio_table[] = {
- 	 .driver_data = (kernel_ulong_t)&mt7668_data },
- 	{SDIO_DEVICE(SDIO_VENDOR_ID_MEDIATEK, SDIO_DEVICE_ID_MEDIATEK_MT7961),
- 	 .driver_data = (kernel_ulong_t)&mt7921_data },
-+	{SDIO_DEVICE(SDIO_VENDOR_ID_MEDIATEK, SDIO_DEVICE_ID_MEDIATEK_MT7902),
-+	.driver_data = (kernel_ulong_t)&mt7902_data },
- 	{ }	/* Terminating entry */
- };
- MODULE_DEVICE_TABLE(sdio, btmtksdio_table);
-@@ -1090,6 +1103,7 @@ static int btmtksdio_setup(struct hci_dev *hdev)
- 	set_bit(BTMTKSDIO_HW_TX_READY, &bdev->tx_state);
- 
- 	switch (bdev->data->chipid) {
-+	case 0x7902:
- 	case 0x7921:
- 		if (test_bit(BTMTKSDIO_HW_RESET_ACTIVE, &bdev->tx_state)) {
- 			err = btmtksdio_mtk_reg_read(hdev, MT7921_DLSTATUS,
-@@ -1167,22 +1181,24 @@ static int btmtksdio_setup(struct hci_dev *hdev)
- 	delta = ktime_sub(rettime, calltime);
- 	duration = (unsigned long long)ktime_to_ns(delta) >> 10;
- 
--	pm_runtime_set_autosuspend_delay(bdev->dev,
--					 MTKBTSDIO_AUTOSUSPEND_DELAY);
--	pm_runtime_use_autosuspend(bdev->dev);
-+	if (bdev->data->pm_runtime_supported) {
-+		pm_runtime_set_autosuspend_delay(bdev->dev,
-+						 MTKBTSDIO_AUTOSUSPEND_DELAY);
-+		pm_runtime_use_autosuspend(bdev->dev);
- 
--	err = pm_runtime_set_active(bdev->dev);
--	if (err < 0)
--		return err;
-+		err = pm_runtime_set_active(bdev->dev);
-+		if (err < 0)
-+			return err;
- 
--	/* Default forbid runtime auto suspend, that can be allowed by
--	 * enable_autosuspend flag or the PM runtime entry under sysfs.
--	 */
--	pm_runtime_forbid(bdev->dev);
--	pm_runtime_enable(bdev->dev);
-+		/* Default forbid runtime auto suspend, that can be allowed by
-+		 * enable_autosuspend flag or the PM runtime entry under sysfs.
-+		 */
-+		pm_runtime_forbid(bdev->dev);
-+		pm_runtime_enable(bdev->dev);
- 
--	if (enable_autosuspend)
--		pm_runtime_allow(bdev->dev);
-+		if (enable_autosuspend)
-+			pm_runtime_allow(bdev->dev);
-+	}
- 
- 	bt_dev_info(hdev, "Device setup in %llu usecs", duration);
- 
+-&xhci1 {
+-	status = "okay";
+-
+-	phys = <&u2port1 PHY_TYPE_USB2>;
+-	rx-fifo-depth = <3072>;
+-	vusb33-supply = <&mt6359_vusb_ldo_reg>;
+-	vbus-supply = <&usb_vbus>;
+-	mediatek,u3p-dis-msk = <1>;
+-};
+-
+ &xhci2 {
+ 	status = "okay";
+ 	vbus-supply = <&usb_vbus>;
 -- 
-2.43.0
+2.53.0.371.g1d285c8824-goog
 
 
