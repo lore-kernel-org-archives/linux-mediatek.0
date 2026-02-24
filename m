@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E639EFB806
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Feb 2026 06:14:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC8A6EFB806
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Feb 2026 06:14:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QUF4zYwzw3l5eL7X34yaprIHZ+/TkclTpkQhDDhb93M=; b=IRpKlIOh28Hf9KmKc/JfBK/eeS
-	3LVhI/pkLngEVNAzf4EGL0I6bKzv5VpM+Orw9WjOu68x37AfXero8xn3J4yOEDv+HcW6VTMt1Kpke
-	7UbVDLrWYmF5kncL95gXcLQWQDcTFJ1Oi/QL5rmi0tt22AWKh5OyiejYJyvrPcEjjNYL47J8fhQrJ
-	hJxOx/R7PNix43XnheVYaFFKvslOQysCFEuqv0IJbTQ5Uup8liQKIbXnPQ1XjTAYb2Ef76DLGlkZI
-	POXvcW1ZS2/3U9bWOCW8Tn9ZWNOgCDqOjtGgjTwyQvuXMn5PuQXCvv7ABq8+SdP2vOgKvgiJOMyIr
-	FSU3MqyA==;
+	bh=yF9BrzHSjOCb61spjQQsg4By9fXphtW27Do+4p/DLZc=; b=vIOQOGLJGNkMo69qXcwXglJqro
+	k3La+iiIwhqUestLOTOX+763UfRtHkT/p0fZojWRqMYGu2xVJBzl41Mgiy949l/ulhEYx4dlNnCQI
+	d+a2IgRhbFggUXvwM6ON2PwxKTfm2o8xAqoHt855ryklbZsn4bBBJozXhZWQpuNuCxcn8cFdlzExy
+	CZGaQFkdy2dub6tvlot0sV/vw0SxhuGtdh3hZGxrOTbWL8r0CfE8QbsEPf7uwbBCtvtOC6WxX7z/g
+	+HBMvEt2Ouazr4H2Y3UWv1tWo+LxpjfxzZ3AKBKDJ6feElADTt4DemYZ3uNYqwo82egzO7Xi2JpcP
+	scGadPiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vulgQ-00000001W2i-3OWD;
-	Tue, 24 Feb 2026 06:14:10 +0000
-Received: from mail-ot1-f46.google.com ([209.85.210.46])
+	id 1vulgX-00000001W49-0Iyk;
+	Tue, 24 Feb 2026 06:14:17 +0000
+Received: from mail-oo1-f50.google.com ([209.85.161.50])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vulgO-00000001W2L-0OeL
+	id 1vulgU-00000001W3Y-3BOJ
 	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Feb 2026 06:14:09 +0000
-Received: by mail-ot1-f46.google.com with SMTP id 46e09a7af769-7d4c1d2123dso5119973a34.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 22:14:07 -0800 (PST)
+	Tue, 24 Feb 2026 06:14:15 +0000
+Received: by mail-oo1-f50.google.com with SMTP id 006d021491bc7-66ee7b9af94so2020530eaf.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 22:14:14 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771913647; x=1772518447;
+        d=1e100.net; s=20230601; t=1771913654; x=1772518454;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=QUF4zYwzw3l5eL7X34yaprIHZ+/TkclTpkQhDDhb93M=;
-        b=vsfLGfLWoHZAGaPX7Ttd4T81MmpErqN7+VX7MqBQeM7Fc+PIxHvr16JEYICUbaIXHL
-         TeDbsg1ZZoWaVYE8SRsyaKjF0GXbwDXQXRKNvgyIALmyUmi1+MePCHPlSoQBhnZDrQFV
-         j5qKO8IsQ/32fd5M3knn5RuVZOOLa9UBK2Dj0Fz4d0nbW5+AVtRl/WpTk/bdwWgaGFYz
-         QaR2+a4b5DiwKc9bPynhCRXgositzYsRzTAr3+5KTUneXtjv81LhOWRocqxNDHt8e1J+
-         7TCUH8Y8N3PjNStdi0hnTfKAzc3bnJki4Xa45a3bORg1T6RQE9JUZDVGgKQPUrz6NGOY
-         khaQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWe7nb9fg24AAoYQMadMyhYLtqG1cgidP47F9jijO77IjUfZDfMA4cc/9rTN5htfejwTmvM6dR8izt8bnaLjw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx6vdu764T5deaV7Wn7ucLK3Yun3gsgUSmj4aD1Y/YDKjlSu6KT
-	+1Cfv8Iq+ubUpzScKwl5jCod5vxWJ2e1Zu5zLcO1s/pWhI5C/Glr5uRf
-X-Gm-Gg: AZuq6aJQITWGvRJD7dwgtdfnnFG8JbEIyrQCe0B33bqbAJFDtDobK/EI3qMbkXm2aED
-	IRmZGGpMuvCEck3k9ghlEmGT+blLhqafGSrImbxrQP0CexjTBcTgJ//Nf8pwGc3/d4h1tZdJCvy
-	aL3K0Jz7SKjZsud1t5aqotTOmpWTRDx17b8tzaJcq1A89WLjqp6QoPJis21hK2rJlbfGzdE/Zl9
-	W7taGakgKqJmbX41Mb9LAwbDnymDe6kmcHwlFV2hdQwmD4tZb7hndzkkrOLRrhSyDZVFZkWIo/x
-	QstAvrfzDZHDqg8KmCZP+8lcCUChsnJyksxkdz2yT1BgGCCFAD6FhsMwVEzBLrFRHGArnCEGb6F
-	14avyAHqmq66DllEsJqsqvXHaB4xPZ1Gr7y5deZ3m1WTrv0uf8N9Ywov2Wo1CohGqcN95eFefB/
-	igd+xicBcakye97N1PBjdBmh2EgxJc5+q1ou76g7WswcrkjB2KY8k/fcw76ysEAPs=
-X-Received: by 2002:a05:6820:468b:b0:673:fc01:a1d1 with SMTP id 006d021491bc7-679c44a7106mr4590922eaf.16.1771913647001;
-        Mon, 23 Feb 2026 22:14:07 -0800 (PST)
+        bh=yF9BrzHSjOCb61spjQQsg4By9fXphtW27Do+4p/DLZc=;
+        b=nxpONZrz35V5iArIj9IjYRCP1nIYYpzdOEDvBkyPW2k/+fwp9FL04cj0FlIgoBxIsS
+         UzigXs8SGpTfQarhlXevVFF6m195ntYiwRFEwKtXX+BJB34pEQGz869wX3ICIlndfb7P
+         WElxlDdCqeCCVmDB8yrjFYtuJdFHKKlV+nFbkat5C3yCFwQDkhD2I0uMYDxg1yVjW5p8
+         Xl4PcVB5e8etgujzT1zYv1wi7KD9w8lTn9duatGsQnJqV5qroAjO/sSfMy/GwxU3miL2
+         mWKZAh4VYtNctbJL16CQs5H9/3KztliM4B1ixg7q5ajpvv5BDjJmDS9rsYUYu/dP6bcg
+         g28w==
+X-Forwarded-Encrypted: i=1; AJvYcCWpAZ85zhNYO0QYbBG2f5++8H2JL6eZAjWh8DO+Jav2ucYWQNRvVZ8BPJQ7Hubh1LRLIS3UAngZuxWKTNw3Pg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzXFq5iu+r4ZfukSR4kwJkvaaFBACW8ujCA5vXXiefjgHY7zj4m
+	EJcz/Ar+IG8DxCZe8L7ORfUeFcscrWg5e3ZMkApPPNnMJiW1Z4DYWzsX
+X-Gm-Gg: AZuq6aJGCnmQz2WowHcPfxKXlsD95UYOLESa7Z+Hs4PFIJ4JG494+7yNJV2jbnKrONT
+	1nCtnZCthQVRMz5WJvGrM+YljM6Ia+IfNnsjJXNQK8nALZXtkoAtL+ZhZCxp71YlKoh7LpSQ9zJ
+	YA5OX6Qs/IXZjWLboDzUNyMMa1NLC0a3h0cFH7K+8SNxEjJW7N21LhDu9MjzbhNSLlcZn7xSuUi
+	/9KYMkRLTW0TuZ0zMDR2CLdKzb9uQHQ5JeTA4lKXfPRcMQcJ6f1N0EnTuX4ROMja3ODgq9/2Zai
+	y4QwAGKI2vg4AGHbyNtiWwfnVBdg+RWuZrR1qUrHJS3P+ZVxtxW/2WppDqtzX93kiH8phONbVI/
+	ll0WKKAIqNbkRsv53HgsMX/Usl5D1TNn3juzJLIrvdfKDe3daPE6wI2FNsB4kUsqJrTBrmil8f1
+	yh9LE77inFOqAPs1KFKodez0GmXJxpX9r+zeCdKzAMZ8+bnQ7UMWJXXFri9mkxaCs=
+X-Received: by 2002:a05:6820:162b:b0:676:7c9d:29ca with SMTP id 006d021491bc7-679c470ed7fmr5824085eaf.56.1771913653634;
+        Mon, 23 Feb 2026 22:14:13 -0800 (PST)
 Received: from sean-HP-EliteBook-830-G6.attlocal.net ([2600:1702:5083:7610:8ac2:4fdd:a742:61b8])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-679c56dbde9sm7895306eaf.11.2026.02.23.22.14.05
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-679c56dbde9sm7895306eaf.11.2026.02.23.22.14.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Feb 2026 22:14:06 -0800 (PST)
+        Mon, 23 Feb 2026 22:14:13 -0800 (PST)
 From: Sean Wang <sean.wang@kernel.org>
 To: marcel@holtmann.org,
 	luiz.dentz@gmail.com,
@@ -64,18 +64,20 @@ To: marcel@holtmann.org,
 Cc: linux-bluetooth@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-mmc@vger.kernel.org,
-	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH v2 3/8] Bluetooth: btusb: Add new VID/PID 13d3/3579 for MT7902
-Date: Tue, 24 Feb 2026 00:13:20 -0600
-Message-ID: <20260224061325.20189-3-sean.wang@kernel.org>
+	Sean Wang <sean.wang@mediatek.com>,
+	Kush Kulshrestha <kush.kulshrestha.5@gmail.com>
+Subject: [PATCH v2 4/8] Bluetooth: btusb: Add new VID/PID 13d3/3580 for MT7902
+Date: Tue, 24 Feb 2026 00:13:21 -0600
+Message-ID: <20260224061325.20189-4-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260224061325.20189-1-sean.wang@kernel.org>
 References: <20260224061325.20189-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_221408_141156_7A1F9FD8 
-X-CRM114-Status: GOOD (  12.45  )
+X-CRM114-CacheID: sfid-20260223_221414_855764_361AC9D7 
+X-CRM114-Status: UNSURE (   9.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,14 +94,14 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Add VID 13d3 & PID 3579 for MediaTek MT7902 USB Bluetooth chip.
+Add VID 13d3 & PID 3580 for MediaTek MT7902 USB Bluetooth chip.
 
 The information in /sys/kernel/debug/usb/devices about the Bluetooth
 device is listed as the below.
 
-T:  Bus=01 Lev=01 Prnt=01 Port=09 Cnt=04 Dev#=  7 Spd=480  MxCh= 0
+T:  Bus=03 Lev=01 Prnt=01 Port=02 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
 D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=13d3 ProdID=3579 Rev= 1.00
+P:  Vendor=13d3 ProdID=3580 Rev= 1.00
 S:  Manufacturer=MediaTek Inc.
 S:  Product=Wireless_Device
 S:  SerialNumber=000000000
@@ -137,26 +139,24 @@ I:* If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
 E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
 E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
 
+Co-developed-by: Kush Kulshrestha <kush.kulshrestha.5@gmail.com>
+Signed-off-by: Kush Kulshrestha <kush.kulshrestha.5@gmail.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
-v2:
-1. Update the commit message with the correct VID/PID.
-2. Add clear comments specifying which device the VID/PID corresponds to.
+v2: newly added
 ---
- drivers/bluetooth/btusb.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/bluetooth/btusb.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index d58e7e4557b9..94554097191d 100644
+index 94554097191d..3a45b16c6b08 100644
 --- a/drivers/bluetooth/btusb.c
 +++ b/drivers/bluetooth/btusb.c
-@@ -671,7 +671,9 @@ static const struct usb_device_id quirks_table[] = {
+@@ -674,6 +674,8 @@ static const struct usb_device_id quirks_table[] = {
+ 	/* MediaTek MT7902 Bluetooth devices */
+ 	{ USB_DEVICE(0x13d3, 0x3579), .driver_info = BTUSB_MEDIATEK |
  						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x13d3, 0x3606), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH },
--
-+	/* MediaTek MT7902 Bluetooth devices */
-+	{ USB_DEVICE(0x13d3, 0x3579), .driver_info = BTUSB_MEDIATEK |
++	{ USB_DEVICE(0x13d3, 0x3580), .driver_info = BTUSB_MEDIATEK |
 +						     BTUSB_WIDEBAND_SPEECH },
  	/* MediaTek MT7922 Bluetooth devices */
  	{ USB_DEVICE(0x13d3, 0x3585), .driver_info = BTUSB_MEDIATEK |
