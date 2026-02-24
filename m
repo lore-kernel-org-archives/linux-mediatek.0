@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 621DDEFB806
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Feb 2026 06:13:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBB5FEFB7F9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Feb 2026 06:14:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AfopHsfGlEfdUUn+Z5Ob2uv5rH6VmacISxBMgn7zNc4=; b=zuUS1xfhrfKuCRLkTi7zPS2tB4
-	HUfpmlPapOv+QhzZFXBoDbdoypO5JVBL9w3aXJaQu0Yx/rSnTi5yAoqaN5J2kiUksHbsgND5YYjIC
-	SrMTYeVr6koQmXsuw6LZKX0iO7wXN7S5B6lXFHfi5ugerFgz7LBxJVk3o0IWe3wqdvJAzINMYU5KD
-	bSwCV7uFPyRbQOXzkPSs1EjPqgwTiNkNZemY0jQBrDOqKi1Y6lwd/AVzNCgpwns/jzhiDOHH5YSrt
-	GWIxSs2hMJErRqhr776Rv5jFy7SZFf7ZaKQiIdJQO3I3nAQgo9XhwUXzo3a+xkkBrXF9dUyuZfIE3
-	xp5+Ggcg==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KXbMDu4NldZsQWzooZBGPLWKOu0HOKaZs77YpksnpCs=; b=B5mACEF4PwnnhTHEVFUFlLi0fF
+	N3oJ+kDlUa19B49zUTp/mEc5aJIJOIXepsivxLBi8c6JEClN79RJZLWrJQpNku9yNqSmjVyiUrz7/
+	+da8zh4no5KtB6WeIDS9Jb1nOTQ4yJ80NR/rNoWQXhh8hdnWSbsnRvp7EGADurOHiflENv3sKo1Ra
+	LJwyWFEvehihTRH30F+erCUC4D9V11GOdDtpXFLUYRxIdh6XxoVL6dZ7H4Ld6k56DnUs17lrz8EQ5
+	V7nvrU2STUH7zAaGjTZfDfTYy0O9UFVlYwNl3yCLPrJfmoDPcQldq/ioz57Wn6KovBXpHdDgS1p6T
+	46jpJRvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vulg5-00000001VzR-1DWA;
-	Tue, 24 Feb 2026 06:13:49 +0000
-Received: from mail-oo1-f52.google.com ([209.85.161.52])
+	id 1vulgH-00000001W1G-2HNe;
+	Tue, 24 Feb 2026 06:14:01 +0000
+Received: from mail-ot1-f45.google.com ([209.85.210.45])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vulg3-00000001Vz7-1otR
+	id 1vulgF-00000001W0w-0Pnu
 	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Feb 2026 06:13:48 +0000
-Received: by mail-oo1-f52.google.com with SMTP id 006d021491bc7-662f9aeb782so3270834eaf.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 22:13:46 -0800 (PST)
+	Tue, 24 Feb 2026 06:14:00 +0000
+Received: by mail-ot1-f45.google.com with SMTP id 46e09a7af769-7d18f80b5c2so4446491a34.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Feb 2026 22:13:58 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771913625; x=1772518425;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=AfopHsfGlEfdUUn+Z5Ob2uv5rH6VmacISxBMgn7zNc4=;
-        b=XP6z7og2clLD3aLWj7rpGBDgKePvFeLx8RKrvxKF947VGZhsuvsfvdq2DwdVRzVbIs
-         I0oAkE3zILmLqljlT8RCok1Ce3vSQpmIziNfQ2pFXu83HhyQ6r0/8Lg9HU3dl14D6zmj
-         9O3n2Oqt8sNJ4gShHrr3JGW2r79IcUOK1FUsRvyTWelW0xS3saqatydhnieFDUpkZw4E
-         jZogehlT8NgRuB3YBnnEsVeGhGxx+sprDX8vGcj/bj1B4tNPjSL4zpQaj9ltT44AVI1G
-         hyid8KTulXqhYgcvPbYegAVZq/hNOZlmLMxddtEgDIi8MZWaFFQJAMzNtdplSSGxNKx+
-         VQkg==
-X-Forwarded-Encrypted: i=1; AJvYcCXnZP2vLkPBT4GA14DIcUTJIX/fV0Vfum8ohZawobcvJzcgQ52XAW9XnuZf/yW8eNQVTVlSAGu1L88Ay/yRVw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw5FbFPEaeK3O4Km1IErxm6zSkrU9C1q5xhQ8a3XI3II70G+pnm
-	z/IQU7Zo3pTd0/yG19qGa5EqigHjd3Xhp2c49YeSgyI4aHdSPWr54o6v/jKAZQ==
-X-Gm-Gg: AZuq6aJWvrvHF6bKJI7vJIqGMapy3bsNXOXxjPlEoPE/cOoGZyaw3H5eRAb8Iyvlhxt
-	7U1YbiXUVE/KzHR0+rb+hVPhiZvQxWrdcrtkf+OSOx5qtM4/9NzWt3+ou40p7yx6sBC7IUs09Jn
-	6CSnpNRyLKgahClsLkEp7FVWjtD3CIfcURwg68mdGU7U56UxLBWXsdgjB7FRGFDrVGpE/btQT51
-	keLTf9Ny/Nt7HB7HZGa95tIbmq93MTGm2RALIbc8+JOuvt8S6OnAud+rcQGF0Gzhi1p6kXLNDUP
-	YgKV25WcBem33SRshBxyHoMLNPtyL6GVPL8EsOlrurSFAASR2ifTSLCsSl0+YY8fTeNRMOPnL0x
-	vfQ2LBVQSkthpfdBgdawd+aVKqM/yIUv80CmAYycTyhnvaSxLzXqYh785jdynHV1MoJIDpCqsUY
-	V3RsspREyqtUjMIoVEqC63f/nu/PMqUarTAhYJJwVr1IQ4HIluFn3skLxOREpPgn0=
-X-Received: by 2002:a05:6820:61d:b0:679:95da:9752 with SMTP id 006d021491bc7-679c464670dmr6311208eaf.11.1771913625371;
-        Mon, 23 Feb 2026 22:13:45 -0800 (PST)
+        d=1e100.net; s=20230601; t=1771913638; x=1772518438;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=KXbMDu4NldZsQWzooZBGPLWKOu0HOKaZs77YpksnpCs=;
+        b=E3wTji4ashDFWGOJnx+qHQQlJ7hAH+jIu528EBfHuByqFSR83NR1YSDkX63HaMXXhW
+         lcpkQ5cSUj+bqqqqB9lqya5EYglTd0qXjjin+Qor5t0kt9H2J+APZD/aKpMs7R9oR7Aq
+         NnULTwV9l/rQAygk/LMJ08gzddUkn2uiIdohdjUjtkGRPsQlOpDyzpTTzryxC/1Vs/Dk
+         MkiB/RURCL8HJL9skWQpZs+1qX6N9aSReXzP1AMUNPIBRDmRojGE+IoSHKUwVqy8SEC0
+         zVGHkAUnFG03loMGG9G7C1wmEBkIfGxnlmh6zdDMNqlDwXE8bQridJ1+Gq+ka7zBXA2k
+         x4kw==
+X-Forwarded-Encrypted: i=1; AJvYcCXFHsIvVDwTzKMl8kS+JWeoKrC4DOtmImHaBwHY1HJ++RhrLhiithM0DGx8JPVOWKWXZ+fn+OVEvmpHdO6dzw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxBFUG/EdoxjjmfQaZsN6aaSiZfFBBVFi2/zlf6y+SllyJWblOr
+	YttJbIuEI0BTDFcZnrvR6Jcmzk3pCC4YYIASO8jJfsazK15PDfpUeqyt70DJ2w==
+X-Gm-Gg: AZuq6aKKruLI4fGqPyy24A95dqO7xzSQ2gHp1/ha2v0UX6JYBEzhXjlfvHGM2tX/rni
+	IopVZ0HnnTuHWhMVNb/+0di9WulKeMk9gEhfzHrqbJLX6FBRL3SxqN7GU4+5tHxZGaEhh8MG3+X
+	Bi2dXDJNHa3+TEUO7xQ1SqPc3+qbvLrh3JrO2uFzYUZczyvTTXye0cO28qUCUDydr0cDG4MltTJ
+	YtcJG3oWG/koUKX1ahLHyKKN/iAJRPC5TpdaBhPip91BfHzORLhCH6OaIurjTP3pO2PyVLa6zWw
+	mBq3xPoswnycpBYWJFGLTjWJLN5dbSABUOnz1uLFK5TzgkTbjeYolcqyHqO3IAMfkdP1IFpT72p
+	dnXgoiW7nhltT1f1VVgfI+rALfgXDcuoHhsP129qpXLQKZc5pBlAudMclJSmGdg+XBPt/B6JTen
+	T7DfAqIxaCz2gvAxcGW6CfI9KRiQ+q9QwqfEc5aUMANHqzNMq1OjTPWGOag3JlsYU=
+X-Received: by 2002:a05:6820:828:b0:674:2eda:cbe7 with SMTP id 006d021491bc7-679c450123amr6421042eaf.52.1771913637860;
+        Mon, 23 Feb 2026 22:13:57 -0800 (PST)
 Received: from sean-HP-EliteBook-830-G6.attlocal.net ([2600:1702:5083:7610:8ac2:4fdd:a742:61b8])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-679c56dbde9sm7895306eaf.11.2026.02.23.22.13.42
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-679c56dbde9sm7895306eaf.11.2026.02.23.22.13.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Feb 2026 22:13:43 -0800 (PST)
+        Mon, 23 Feb 2026 22:13:56 -0800 (PST)
 From: Sean Wang <sean.wang@kernel.org>
 To: marcel@holtmann.org,
 	luiz.dentz@gmail.com,
@@ -65,15 +65,17 @@ Cc: linux-bluetooth@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-mmc@vger.kernel.org,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH v2 1/8] mmc: sdio: add MediaTek MT7902 SDIO device ID
-Date: Tue, 24 Feb 2026 00:13:18 -0600
-Message-ID: <20260224061325.20189-1-sean.wang@kernel.org>
+Subject: [PATCH v2 2/8] Bluetooth: btmtk: add MT7902 MCU support
+Date: Tue, 24 Feb 2026 00:13:19 -0600
+Message-ID: <20260224061325.20189-2-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260224061325.20189-1-sean.wang@kernel.org>
+References: <20260224061325.20189-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_221347_504033_E0F1CC47 
-X-CRM114-Status: UNSURE (   8.09  )
+X-CRM114-CacheID: sfid-20260223_221359_142136_664DEA4D 
+X-CRM114-Status: UNSURE (   8.77  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,31 +93,41 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Add SDIO device ID (0x790a) for MediaTek MT7902 to sdio_ids.h.
+Add MT7902 device ID and firmware filename to enable MCU firmware
+loading.
 
-Acked-by: Ulf Hansson <ulf.hansson@linaro.org>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
-v2:
-1. Sort the MT7902 SDIO ID definitions.
-2. Add Acked-by from Ulf. Ulf mentioned this should go along with the other
-patches, so Ulf not picking this via the mmc tree.
+v2: no changes
 ---
- include/linux/mmc/sdio_ids.h | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/bluetooth/btmtk.c | 1 +
+ drivers/bluetooth/btmtk.h | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/include/linux/mmc/sdio_ids.h b/include/linux/mmc/sdio_ids.h
-index 673cbdf43453..dce89c110691 100644
---- a/include/linux/mmc/sdio_ids.h
-+++ b/include/linux/mmc/sdio_ids.h
-@@ -111,6 +111,7 @@
- #define SDIO_VENDOR_ID_MEDIATEK			0x037a
- #define SDIO_DEVICE_ID_MEDIATEK_MT7663		0x7663
- #define SDIO_DEVICE_ID_MEDIATEK_MT7668		0x7668
-+#define SDIO_DEVICE_ID_MEDIATEK_MT7902		0x790a
- #define SDIO_DEVICE_ID_MEDIATEK_MT7961		0x7961
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 14e2f4100806..2507d587f28a 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -1338,6 +1338,7 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+ 	case 0x7922:
+ 	case 0x7925:
+ 	case 0x7961:
++	case 0x7902:
+ 		btmtk_fw_get_filename(fw_bin_name, sizeof(fw_bin_name), dev_id,
+ 				      fw_version, fw_flavor);
  
- #define SDIO_VENDOR_ID_MICROCHIP_WILC		0x0296
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index b9df2b8f0627..adaf385626ee 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -5,6 +5,7 @@
+ #define FIRMWARE_MT7663		"mediatek/mt7663pr2h.bin"
+ #define FIRMWARE_MT7668		"mediatek/mt7668pr2h.bin"
+ #define FIRMWARE_MT7922		"mediatek/BT_RAM_CODE_MT7922_1_1_hdr.bin"
++#define FIRMWARE_MT7902		"mediatek/BT_RAM_CODE_MT7902_1_1_hdr.bin"
+ #define FIRMWARE_MT7961		"mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin"
+ #define FIRMWARE_MT7925		"mediatek/mt7925/BT_RAM_CODE_MT7925_1_1_hdr.bin"
+ 
 -- 
 2.43.0
 
