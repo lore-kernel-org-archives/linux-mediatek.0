@@ -4,81 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A9F0F3C986
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Feb 2026 14:51:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91C3EEFB81C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Feb 2026 16:49:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vv63Bmk8v8hQ7TUParpNLdhU99o6I3+yG2U0bzr7vMM=; b=JzqudwJJq3ulz31MG4TBsce5Ir
-	q+XVWpPkc9oTuCn9bW6WW9gLwvK2k2CjpKD9h6P+0M7zMcVBrlDq2+W73ywgjx9/xXTxNKunXVRUz
-	wgWTgftswXrfi9C5cTbSgWuJX+MB7cmiFfcubkqVIW4yCaCEvUN/h2F3bZhmqfm3SfzFL9POE77Ms
-	L/YgdBBjloZxtCf/8uI01EGIvwHmiTfp0qXbjBx7ByTWEwPmWRWTuHA4zFhKv/eb7/NGBK4ZFNEM/
-	Z6C+A+5fi/eN4PsQPwkqF2hq3JaDheerEn5MtSLDJkQz6E+hgnwVNCPorVxgUOxvafuPhwzPtbF/8
-	SoNhagHw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XalST2aF8KFTi0PVkHHN8BFRIi0fE5s/1PbfuL/uOZY=; b=nRXapoGROI5QmpKKirYaXVrjBg
+	FOwiMbXGpa80iEYc8dmNx+fZ+pnCPia+Env10daTTno+QLtRtF29m/iKIy0Q/CKNqfvomWM1xeftj
+	NIjMsz/9uDkdi67kp0NfbIDU3zn6ujPjCLFnmDFKoa9bnTlrQ45nK7eUhxM+l9uBLfk9QBosHffFN
+	y0bin+Tx0PwWRBtbbjQAdoLpGIYpV1wZ/QCy0Pm/OevjEluYuQJQinVK95zB2VYBhpPVeyuk68b7L
+	dLh+eQ420tkjHif8Ie4O2oQ7ecALdf/r5F2L0NFox4bhGEVlZxWXm3GTYrI+S1f3i1+i2CU3KhXon
+	KSKi/KhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vutkp-00000002Gtc-3I2u;
-	Tue, 24 Feb 2026 14:51:15 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1vuvar-00000002QMQ-2nQo;
+	Tue, 24 Feb 2026 16:49:05 +0000
+Received: from 011.lax.mailroute.net ([199.89.1.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vutkl-00000002GsJ-0mpa
+	id 1vuvao-00000002QLl-2Sgf
 	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Feb 2026 14:51:13 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 667B04E41098;
-	Tue, 24 Feb 2026 14:51:06 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 24C245FD9D;
-	Tue, 24 Feb 2026 14:51:06 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 1CD291036918D;
-	Tue, 24 Feb 2026 15:50:56 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1771944664; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 in-reply-to:references; bh=vv63Bmk8v8hQ7TUParpNLdhU99o6I3+yG2U0bzr7vMM=;
-	b=cD2sSTvK9wDOM/N20TtC46mcK2bV3UBwXSPqsbQTDEs6c5NyXjf/DCEa3yMNuckoA+P5KB
-	DieONpwghmo3ZeTv3jcgCKxiIeaw717hsi/FDLOyIzct2cPf1A4J7wF8F7j2V2OIaFdyHX
-	gzmEKYrZ03o6cdoLelmJpOoZfSSB/1GPE7iy1YPF3O01o5GHs2rgoRqwOpOxIbPtL0wTxx
-	0k2ljd6eulJfXgGIiCspal3DXsuVS1hfScxP24FUdWLoZRqbtEv7YVOlYLzuEPwbpGXvqt
-	vdnG/K/WWHxudvj0zQHDR/mnbJr56zdLLFQOZshOw4/Agz42COIEf9F6FVm9Dg==
-Date: Tue, 24 Feb 2026 15:50:56 +0100
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, Fabien Parent <parent.f@gmail.com>,
-	Val Packett <val@packett.cool>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Eddie Huang <eddie.huang@mediatek.com>,
-	Gary Bisson <bisson.gary@gmail.com>,
-	Julien Massot <julien.massot@collabora.com>,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rtc@vger.kernel.org
-Subject: Re: [PATCH 1/9] dt-bindings: mfd: mt6397: Add bindings for MT6392
- PMIC
-Message-ID: <202602241450566c680722@mail.local>
-References: <cover.1771865014.git.l.scorcia@gmail.com>
- <c5ce038359583c5318c2d5ee341287c213aef880.1771865015.git.l.scorcia@gmail.com>
+	Tue, 24 Feb 2026 16:49:03 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 011.lax.mailroute.net (Postfix) with ESMTP id 4fL3b16G4sz1XM6JH;
+	Tue, 24 Feb 2026 16:49:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1771951740; x=1774543741; bh=XalST2aF8KFTi0PVkHHN8BFR
+	Ii0fE5s/1PbfuL/uOZY=; b=qBxE8ENTIOpj/w4jV//jJhXpbdxJx0rJD44PgWzK
+	TH0+veOghWtUkKHbe2ZuvTAN/5eJ1Ouwt/ep/hOoHHxLyVo9eVVVZg8PHIkvyNmW
+	/fG4x0WxUBtREo4ki3yl5rjrrlXH5ISFcipWseCYlvNOr5GxUHiJYU6Le2CNBbqH
+	LF6gJfqEutGtaP05d8wAX8S5zuRTnePJAdXowr4FHvzjRWec2QzYYPGqOjyvIZAW
+	SLgK0fs2hwRz7Fx7n/vw8Dqfvw8viepiX5cdqQMjAlw42e9wRgyUgZG63ADqsEqs
+	XsK22yCNPZGgVErTefzCIclHy9EpNq4SdolKTiMjyvkd6Q==
+X-Virus-Scanned: by MailRoute
+Received: from 011.lax.mailroute.net ([127.0.0.1])
+ by localhost (011.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id nWkhkSnBG_o3; Tue, 24 Feb 2026 16:49:00 +0000 (UTC)
+Received: from [172.20.150.38] (unknown [4.28.11.157])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4fL3Zz1FXGz1XM6J7;
+	Tue, 24 Feb 2026 16:48:58 +0000 (UTC)
+Message-ID: <72757f9f-20de-4fb8-b5eb-507dbcdbe22a@acm.org>
+Date: Tue, 24 Feb 2026 08:48:58 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <c5ce038359583c5318c2d5ee341287c213aef880.1771865015.git.l.scorcia@gmail.com>
-X-Last-TLS-Session-Version: TLSv1.3
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] ufs: core: Fix possible NULL pointer dereference in
+ ufshcd_add_command_trace()
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>
+Cc: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+References: <20260223065657.2432447-1-peter.wang@mediatek.com>
+ <5017b907-16de-4d7f-a7c6-dbc504ffd1eb@acm.org>
+ <399765bade9b7adcca89a94313e71635d1336172.camel@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <399765bade9b7adcca89a94313e71635d1336172.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_065111_383255_C23743FF 
-X-CRM114-Status: GOOD (  15.06  )
+X-CRM114-CacheID: sfid-20260224_084902_715746_92F0555E 
+X-CRM114-Status: UNSURE (   6.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,48 +89,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23/02/2026 17:12:40+0000, Luca Leonardo Scorcia wrote:
-> From: Fabien Parent <parent.f@gmail.com>
-> 
-> Add the currently supported bindings for the MT6392 PMIC.
-> 
-> Signed-off-by: Fabien Parent <parent.f@gmail.com>
-> Signed-off-by: Val Packett <val@packett.cool>
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> ---
->  Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> index 6a89b479d10f..5f422d311d4d 100644
-> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> @@ -39,6 +39,7 @@ properties:
->            - mediatek,mt6328
->            - mediatek,mt6358
->            - mediatek,mt6359
-> +          - mediatek,mt6392
->            - mediatek,mt6397
->        - items:
->            - enum:
-> @@ -67,6 +68,7 @@ properties:
->                - mediatek,mt6323-rtc
->                - mediatek,mt6331-rtc
->                - mediatek,mt6358-rtc
-> +              - mediatek,mt6392-rtc
+On 2/23/26 9:29 PM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
+> Therefore, there is no need to assign hwq_id separately.
 
-Shouldn't you rather use "mediatek,mt6392-rtc", "mediatek,mt6397-rtc" as
-the compatible so you don't have to change anything in the driver?
+Hi Peter,
 
->                - mediatek,mt6397-rtc
->            - items:
->                - enum:
-> -- 
-> 2.43.0
-> 
+That's not what I proposed. When ignoring the NULL test, this is what
+the current ufshcd_add_command_trace() implementation does:
 
--- 
-Alexandre Belloni, co-owner and COO, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+	hwq_id =3D hba->uhq[READ_ONCE(req->mq_hctx)->queue_num].id;
+
+That's more complicated than necessary. This should be sufficient
+(again ignoring the NULL test):
+
+	hwq_id =3D READ_ONCE(req->mq_hctx)->queue_num;
+
+Anyway, since the proposed change probably only results in a small
+performance improvement, let's proceed with the current patch.
+
+Bart.
 
