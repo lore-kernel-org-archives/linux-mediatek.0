@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03E31EFB7EE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD45CEEC2B5
 	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Feb 2026 09:34:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,59 +12,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ofGVsD+0y9IyAQN5kTJHdEKS4RRA+QdEPBxusS+y7tA=; b=ZM5+b8mxGe0AwDlNISHwjoiTeu
-	IBe6TNtiC2FQdAh+TOFVXWVqszPFTXCcKwX2PiVc9O5938FaInamCQVAbTcAbzqQS6ObOG9yRRty1
-	bXfmgxaS59PVngwMZmo0xuvljYHfyFNA9CImFesSby7vlOAldRsTf/D21n1F0gWXxLbAW3UAUZL13
-	MRqY7r7iZT9qeiC57c0minE9O+1elO8mGdMq4130mwLwLUjxCu1NqCeZxzWV9NDzpgdeqhBSUhK0p
-	z05VAsEO1ObfyY1PygR69/h+Rf2hvHtRjzECphcBD4vVXIcRWTZCyAmn41SwvG4/D5V4J9KupF96A
-	7uPPnRfw==;
+	bh=mC/ymCJjlKjlnRcOmpCa6zEsBctkwYrDYhbroiBDD8A=; b=NQiqtE0g7ejYzqQDJwyfGgPqA2
+	779n9ubcWhPSy2mwTeaowRHvhbqyKvpVlykyzH0IhRHQgqhzGwM0uWJ36rlOWCGKaHoEeG5bmCS9W
+	R8zbb0Lh4P+QBgbywjsIrfgcZ0FImTVjv0k+Z+vK1hnO0AM/6S48v9GT92xqPLa0AkY+YSimZl9Ur
+	iSX2ASJunOAZE2ngVb3ybrUULvWPzBLcSqAlDE8n+6VstXTSG34RTV1YAE/iY3QLCRmgVk+KujauB
+	CrysEWrrRbqyo/370BlwExptyCfG90lzm7Gpp6UXDn3MLLZ2HNsUQGixGR6gFx0ywQL6Phqk/g6vW
+	bpu5Oy5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuoo3-00000001lXq-0947;
-	Tue, 24 Feb 2026 09:34:15 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vuoo2-00000001lXT-3CiF;
+	Tue, 24 Feb 2026 09:34:14 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuonr-00000001lOn-3DCS;
+	id 1vuons-00000001lOo-2Aye;
 	Tue, 24 Feb 2026 09:34:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771925641;
-	bh=T2apQorXFL/CfNepfTu/gWcSREoPjaSTYbtBLt0lHhI=;
+	s=mail; t=1771925642;
+	bh=bju+bv/VR4hPKTpxBKpuapRP9tylBhD2c/qGUd2VY4o=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=DLI/UIIs+DtIpri6X+c1kaUkaN1DMnlbHxpNEuLr0rrZSLLk1PdZmjCmbaSd9AjcQ
-	 Ktpmmg61L/PaH/Bmm2Geh0HlPbbnXPFLoDkUlpAPxVFkchnuOcRsiYuz456qUv/4Oo
-	 T5QLfVsXNXsph1Le8DoN+lJM49h4oB2Pbr+yJkE7PcI+2a399OZ99wF3MBtFh0iOVT
-	 h4IbhuWiNF6CunLgltV7rZyCN7aTl4+3xZtBrVAHDtNrVf5V8jc2BExBKDwbUhsYSz
-	 AsL/riic+/gjY6nz6/LVBKAvEz7HWhduscRd8pd5PcjKWjGGurlEQ6WaJckgObvcCf
-	 DyeT8cNSiD9tA==
+	b=hGerxt/XSoTQd+FMhU1QxHgBLYmHXoEpWq/cCAktT6qA3IEz/tHuG6bnRVMK/SKsz
+	 4e2LJKQSHFoPPw7sAN4zPU+FCoPOCpch0IZelFDtlBIUbiryAZ+aeW64CaqmWRV+uj
+	 LuZLrPSMkLKL6cZAKZ3ptIja/Eeomm0DQjG4unSEmGyukNaS0tU1iamqKHWn1P+Nc/
+	 rZvtsa4ComEmuk8qXH56ysU1MfEJpL0+JsIw9+Z4XlMaFyiMW+Jlmy2aY0lWxJzPi1
+	 QWXU/vy/YM0fvgzGyfJ3FvC+BvrLMToU0aQHIs3oztyLm98gUCsbDZ0W5tUoktbKKK
+	 OanmGgRsUzdUg==
 Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 037AC17E0C21;
-	Tue, 24 Feb 2026 10:34:00 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9577B17E0D33;
+	Tue, 24 Feb 2026 10:34:01 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+To: linux-mediatek@lists.infradead.org, 
+ Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, 
- David Lechner <dlechner@baylibre.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20260219-mtk-mt6359-fix-regulator-names-v1-0-ee0fcebfe1d9@baylibre.com>
-References: <20260219-mtk-mt6359-fix-regulator-names-v1-0-ee0fcebfe1d9@baylibre.com>
-Subject: Re: (subset) [PATCH 0/2] arm64: dts: mediatek: mt6359: give
- regulators unique names
-Message-Id: <177192564097.11826.16624284759603222093.b4-ty@collabora.com>
-Date: Tue, 24 Feb 2026 10:34:00 +0100
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org
+In-Reply-To: <cover.1771863641.git.l.scorcia@gmail.com>
+References: <cover.1771863641.git.l.scorcia@gmail.com>
+Subject: Re: (subset) [PATCH v3 0/6] Add support for mt8167 display blocks
+Message-Id: <177192564156.11826.14547610643774213696.b4-ty@collabora.com>
+Date: Tue, 24 Feb 2026 10:34:01 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_013403_952980_89112182 
-X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-CacheID: sfid-20260224_013404_701084_6D306308 
+X-CRM114-Status: UNSURE (   9.14  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,20 +85,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 19 Feb 2026 16:55:28 -0600, David Lechner wrote:
-> While working on this regulator in U-Boot, I noticed that the regulator
-> names were not unique. This is considered an error in U-Boot and we get
-> the following error messages:
+On Mon, 23 Feb 2026 16:22:44 +0000, Luca Leonardo Scorcia wrote:
+> This series adds support for the display blocks on MediaTek mt8167.
+> Tested on Xiaomi Mi Smart Clock x04g.
 > 
-> mt6359_regulator ldo_vrfck_1: 'regulator-name' has nonunique value: 'vrfck
-> mt6359_regulator ldo_vemc_1: 'regulator-name' has nonunique value: 'vemc
+> The first patch just does some reordering of dts nodes with no other
+> changes as this makes later patches cleaner and easier to follow.
+> 
+> v3:
+>  - Added mt8167-dsi compatible to driver instead of changing the binding;
+>  - Resolved patch formatting issues.
 > 
 > [...]
 
 Applied to v7.0-next/dts64, thanks!
 
-[1/2] arm64: dts: mediatek: mt6359: give regulators unique names
-      commit: d91639d0ab3223b61c00442021dc639c9ddc2b76
+[1/6] arm64: dts: mt8167: Reorder nodes according to mmio address
+      commit: d51b7191f2072e11259edd2bff88385891d0ae56
 
 Cheers,
 Angelo
