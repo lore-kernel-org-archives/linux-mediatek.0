@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A959EF55439
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 02:08:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 815F4F5543A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 02:08:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NRlKLgn0KbJxKCz+WVFjXR2Fmx+IsyATbboYye+8idQ=; b=VCLpRy3fhManpIx9aH/0IWUqNv
-	DJaOQKJiGgTwvAtJuC9gKeJXeBfeU1TqxKEJ0l8s56uCdBxT3mDCgY/TfMtrIIQHdv5w+8/udRw/7
-	RlKwc17c7y406ph7vmpXzLBuZp2st8MNrd80qdb+XewCootsQnRNwrn7j2Sgl3hjg2Q9N/lqCTVvE
-	3NqqtZlJS2t8gSKYfYc65ZtlZ5FJQFYKHqZlDojEyyMRlmPgrJgvOAWMkcmcFvLk4VwT9y9Y3ikle
-	y4UIYic69J1tfGK5ZQww3Nhpcziw8NaJdS2MOp5Ph8KzSkPj+G/ZWKEF4fUwoaJkJdxuv/VptqwTB
-	QcjfeAhw==;
+	bh=oiBICH0QgqmMAV9uuMkMi3BhSmbfCc+hSodQOal5Ujk=; b=fyK4N9YS0uh2HSfS6+i1T/Rh/V
+	zNQR30DbaUtaCySGq5ynkfeWCvboz7Sp+SDpEB50Bn5MZZNPTtKBhYnG6I3INbKFEPUsKcI+x4zbD
+	QtNvsiVPqUUYXYTPf9bPpo3Hljq6XUHvXYZS6oyu0q7gFp0M2GQhLBq/7O6ba9RysOb+wdLNfTeJT
+	DevyJarnSvN3DdolQ67uuvRzyGtL7ffL9gnSk2z9Ae1HPzefaG2gdUuKBJ8F1f9VmWhX+9PWocSPd
+	A8UjUDUHuFfswNZHvNNJnGdNCblKaw33SoGc7UMVvcNvQYi2N5Mgru526x9YItEXNZrmLaBFQWgr5
+	ygYGJdHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vv4KQ-000000034Zn-3IMK;
-	Wed, 25 Feb 2026 02:08:42 +0000
+	id 1vv4KS-000000034ae-2Bik;
+	Wed, 25 Feb 2026 02:08:44 +0000
 Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vv4KN-000000034Z0-3Ury
+	id 1vv4KP-000000034ZV-2lIv
 	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Feb 2026 02:08:41 +0000
-Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 61OIu6Rp369450;
-	Wed, 25 Feb 2026 02:08:36 GMT
+	Wed, 25 Feb 2026 02:08:42 +0000
+Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 61OIvVwv3930646;
+	Wed, 25 Feb 2026 02:08:37 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
 	:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=
-	corp-2025-04-25; bh=NRlKLgn0KbJxKCz+WVFjXR2Fmx+IsyATbboYye+8idQ=; b=
-	JNIP+Nzd93kCZSAt9hhm2z9ABU0Us2Xk1E5qoNOoQC00mZ4PLVLEwSNAeB17UCRf
-	DEXV+TQ5F4D4YVrZ1arK1q6z7WAhgN3IvasEag9TjgiAOkDRr0MceVEpJdtS3jtg
-	baHgLna4ontfoDZmLPbLcSiCCIJZTziTl0smU0xMwQ4TgtiTajJDVjBPdSrXUMLg
-	FF3L41AlFP2/MeSI+LTM2rpMIFyi3RYVd774Ca+YMOq+3LBujV0di9oG5jT2NYk5
-	GRlGlPy59ip7mIaxAz4yZd344Wv/gmngtxgmsnKJiohh+qlYwVdvUCQMEKnvbkTv
-	LBpKLOa6YyoShSuWxvmCiw==
+	corp-2025-04-25; bh=oiBICH0QgqmMAV9uuMkMi3BhSmbfCc+hSodQOal5Ujk=; b=
+	ShVtZ8JM7+9jH3s7wWEOdznGhS0JLzCMh/n0IHTFe4SoDWmaMVJ4ZrP3JWjAy2HU
+	ZWh7eNkHzhRd1YDcL/qM1hG1xwQvtc0Gve06znl8DkCckF1+50Kkc6jzRhIoSxxE
+	PEwWSNaW/QBmx7qpVMEDY5bINOYluO7QQ2k1EHNms1/JxcnWPuPuAuDThzPH9psU
+	jf1zrDr8h84VLg1mYvMnYdSJf/2qKRBkjLT5F7PH2sGeDSJ6MsUlyHZDEettAE3+
+	5Rj2vpd/22KxGTZ+WDHRMgeYW3HkEBWrPzDpqEeprOJUpJ7GnPgDVU9wyK5Hpuh5
+	u0w2dWb5iZBpBMQW/6Ftlg==
 Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4cf4k5wasb-1
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4cf58qdb6e-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 25 Feb 2026 02:08:35 +0000 (GMT)
+	Wed, 25 Feb 2026 02:08:37 +0000 (GMT)
 Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 61P0JwXv015636;
-	Wed, 25 Feb 2026 02:08:35 GMT
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 61P127Q8015739;
+	Wed, 25 Feb 2026 02:08:36 GMT
 Received: from pps.reinject (localhost [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 4cf35ar240-1
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 4cf35ar24j-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 25 Feb 2026 02:08:35 +0000
+	Wed, 25 Feb 2026 02:08:36 +0000
 Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 61P28YNP029537;
-	Wed, 25 Feb 2026 02:08:34 GMT
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 61P28YNR029537;
+	Wed, 25 Feb 2026 02:08:36 GMT
 Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 4cf35ar1yt-1;
-	Wed, 25 Feb 2026 02:08:34 +0000
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 4cf35ar1yt-2;
+	Wed, 25 Feb 2026 02:08:36 +0000
 From: "Martin K. Petersen" <martin.petersen@oracle.com>
 To: linux-scsi@vger.kernel.org, avri.altman@sandisk.com,
         alim.akhtar@samsung.com, jejb@linux.ibm.com, peter.wang@mediatek.com
@@ -65,13 +65,14 @@ Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
         chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
         cc.chou@mediatek.com, chaotian.jing@mediatek.com,
         tun-yu.yu@mediatek.com, eddie.huang@mediatek.com,
-        naomi.chu@mediatek.com, ed.tsai@mediatek.com, bvanassche@acm.org
-Subject: Re: [PATCH v1] ufs: core: Fix possible NULL pointer dereference in ufshcd_add_command_trace()
-Date: Tue, 24 Feb 2026 21:08:03 -0500
-Message-ID: <177198526950.1649777.14781899060414426367.b4-ty@oracle.com>
+        naomi.chu@mediatek.com, ed.tsai@mediatek.com, bvanassche@acm.org,
+        sh043.lee@samsung.com
+Subject: Re: [PATCH v1] ufs: core: Move link recovery for hibern8 exit failure to wl_resume
+Date: Tue, 24 Feb 2026 21:08:04 -0500
+Message-ID: <177198526953.1649777.13224863174266234470.b4-ty@oracle.com>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260223065657.2432447-1-peter.wang@mediatek.com>
-References: <20260223065657.2432447-1-peter.wang@mediatek.com>
+In-Reply-To: <20260223103906.2533654-1-peter.wang@mediatek.com>
+References: <20260223103906.2533654-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -82,24 +83,25 @@ X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 phishs
  spamscore=0 bulkscore=0 mlxlogscore=999 suspectscore=0 adultscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2602130000
  definitions=main-2602250018
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjI1MDAxOCBTYWx0ZWRfX6wXDKnmYWUzM
- VmCVJu4R6Valk68htKBtAD+6LlNij+SjQML0Ef9Nk3a04spZO2Hw7UhdRXp64XfFoRb1yPQuM6p
- 2rz2idjzn1H4WkB4eeDELBYoq7xmEXKKs4Zumt20WBWXFTZIIuIEtJNO7vWrH66eF0bj3PmU+1T
- JWpt9SHZEgrJSgogLJSwuKSVPPfJ+cqv7N8y0r/BHfKRXG590bePZEuPtettuMgnoOeir9WLaTR
- C1MB5+JeCzuEND4joa9SPzA0s5AyKa9FuZaXFeHf+4TatPVwBlnM19fVvqLZdY0zKs0Aq2f1Xud
- y9ba+5p6lcZI6Q/z6evJMYKJlGHB+Kbd1L2qE+k5Rdqporf2Xv78/pzAsoCtd31SQX7o3RPheTE
- G5KBf8xrJ20+vRu5xznFRbf+1oGswh/fEDcXPJoVqzZsTPWc96Kfyh6OMNlkXFL4sWHuJbUOlID
- y6v6CFm14A7gZkpvJxg==
-X-Proofpoint-GUID: a3ReR6AHAKoaiix3vushhu5sOd8W8jO2
-X-Authority-Analysis: v=2.4 cv=b9C/I9Gx c=1 sm=1 tr=0 ts=699e59a3 cx=c_pps
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjI1MDAxOCBTYWx0ZWRfX3I5CDdYxB05F
+ nWZnCd/Z6wWID/uIpnfk5LDl2+AaFdYZlZrHtIxrn8nZ3Nx85IcNvS0GvNXSTxWb5TiJ9W5cctl
+ aJAIm1sRw9Fc2o4dg6XU9FdkOj58Nz8cLnYw8ZBVvXYudxX6HPbUTDCnbXshJzJfUlT0joelHAm
+ 2kp7Dhiv2Wc/mo29LMzZT/xt/ag8idOzepgxrpPlHIpTQBGLCwT2RZBVi40ckUpoRHsuVuTsR7O
+ o9qkSA2SQdU6F6RsDA/fT5Hxzm9IS4Fm1lQb+alVxIausfhY6ecHxdBE1PQhdmSxvX+kzDsB7Wz
+ 1lngCe8ZUQXrxsobrDe7Kep3yPuuTw1YOoTjmmsfMhcPC27tw2YtlUr/nakslrUargcFncuOQXS
+ G1DLt1M25+yucTclzodI3tf5J/u7i2pGaOuDhKVk4L3bUw85T1oS9CJYaIRl8KjLpxhX1rzuoPi
+ lA1/qTa4NL9HtNzy1VQ==
+X-Authority-Analysis: v=2.4 cv=XNc9iAhE c=1 sm=1 tr=0 ts=699e59a5 cx=c_pps
  a=OOZaFjgC48PWsiFpTAqLcw==:117 a=OOZaFjgC48PWsiFpTAqLcw==:17
  a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
  a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=VwQbUJbxAAAA:8
- a=mpaa-ttXAAAA:8 a=stBri3xtFCMNqwqhnAMA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-ORIG-GUID: a3ReR6AHAKoaiix3vushhu5sOd8W8jO2
+ a=mpaa-ttXAAAA:8 a=Xy4G9aJaCs3E2Fc1aycA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: 0-o0X9ZKoPq7o0RZcYi8XtYgRu5TDthy
+X-Proofpoint-GUID: 0-o0X9ZKoPq7o0RZcYi8XtYgRu5TDthy
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_180840_115420_3C0D49DB 
-X-CRM114-Status: GOOD (  10.44  )
+X-CRM114-CacheID: sfid-20260224_180841_719383_06C7F394 
+X-CRM114-Status: UNSURE (   8.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,21 +116,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 23 Feb 2026 14:56:09 +0800, peter.wang@mediatek.com wrote:
+On Mon, 23 Feb 2026 18:37:57 +0800, peter.wang@mediatek.com wrote:
 
-> The kernel log indicates a crash in ufshcd_add_command_trace,
-> due to a NULL pointer dereference when accessing hwq->id.
-> This can happen if ufshcd_mcq_req_to_hwq() returns NULL.
+> Move the link recovery trigger from ufshcd_uic_pwr_ctrl() to
+> __ufshcd_wl_resume(). Ensure link recovery is only attempted
+> when hibern8 exit fails during resume, not during hibern8 enter
+> in suspend. Improve error handling and prevent unnecessary link
+> recovery attempts.
 > 
-> This patch adds a NULL check for hwq before accessing its
-> id field to prevent a kernel crash.
 > 
 > [...]
 
 Applied to 7.0/scsi-fixes, thanks!
 
-[1/1] ufs: core: Fix possible NULL pointer dereference in ufshcd_add_command_trace()
-      https://git.kernel.org/mkp/scsi/c/30df81f2228d
+[1/1] ufs: core: Move link recovery for hibern8 exit failure to wl_resume
+      https://git.kernel.org/mkp/scsi/c/62c015373e1c
 
 -- 
 Martin K. Petersen
