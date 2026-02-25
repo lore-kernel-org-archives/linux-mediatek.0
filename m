@@ -4,92 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05617EFD238
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 09:41:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66DBAEFD238
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 09:47:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZTzGWHccByJBdaZUZxrkE2sNIhOCCTQKy9wwE5UBFMs=; b=Ak5ej34p7WAAZ3WuGithu+cXdC
-	ex8PsZY4MZ3ik3A4+5Eze4GoWjKoBW3tnOimIbZ57zDoTTI7t5I73GxaNKR+OiHMc6ODTgxpJPbrm
-	OhqB9BVvaCpwM7X1zr0vEhF+p4hicmHOEculGAVptWHsvAkwrUmZ+Su1JVNo6MrrELgUABZI92T7G
-	bEYUgSvvxudMTZW7APO2T4wMD+fl8dap5SNZA1H/TPVMzlxuSImuoCRTABfgyD5X31Jg5764v96za
-	5BmxS8nKBczmS3KZaCrA35wzIljGiu6Xhb0xPwEiOGU5vXqCaZ8LX1JjE6jUMuLTW4DoKPcXSujgj
-	0CYLaPig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=dMi/Y4bfq04gJP60qx0132hG+kj1q74zT7Boy4YZonM=; b=YTvrzdrdXjEe5DzaLWocC1W37g
+	P5DsC+Vvk9NYCcDWbyFrXqlkeVbxatR/BOPg3IoYOFpjhUQAKPlAVasfW/d5q89RRGEIU9TkMd05U
+	CxJd/1+0PH7pyKPDEvkCx2/j9JZMmnWOPlpi9FbZIrDubm59em8St0AFLnIm7WCmvjhLxR4IHjrrW
+	yEKPH/d3cDgUsnb9bUrmDRPNJxalCCRXcn6H5Bu5uGJu+RFM9xWGNUjuh+PeANQTsmsXZQ51ud9jQ
+	OKMfpfuJDlxE6vXJenN2Uw3cgz7IwMtOTEK1/wh1cRVLcUK6Yle64zT/U/dRO3N/pLJgz95TAszRN
+	PrikZ21w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvBOJ-00000003iGa-090n;
-	Wed, 25 Feb 2026 09:41:11 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1vvBUZ-00000003ilY-1mIM;
+	Wed, 25 Feb 2026 09:47:39 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvBOG-00000003iEn-0HK9
+	id 1vvBUX-00000003iks-2JkK
 	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Feb 2026 09:41:10 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4806ce0f97bso52053585e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Feb 2026 01:41:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1772012466; x=1772617266; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ZTzGWHccByJBdaZUZxrkE2sNIhOCCTQKy9wwE5UBFMs=;
-        b=iZckZT/S2FIEHHwIMCr/7ctzXOywBTJSf5rsExzZLUT9W9dVKOKW45DLlccuBV/XBE
-         e8K+CFxKTacEU0oIwMPBtBm8ATxWQSg7EvcRpLbincw7L8hMmJwcRtj8PDMBV3pbXr+x
-         bX/kgMbt6xpXeAQvMb3MPua+5WUAuETTIaGlBV3ZR7DDqiw4bZhUx44IFkUwxFmEeJzx
-         5qMX1LxvrtfFw5wEdlF+Xjzw+sdcUBUOSNPiYBLIvn86LIfbG5RriD4b6I9qXbGEPqIh
-         1nPB0n4VnrZpmPNBIbqZYIjafB/r9o1stH7L9P6Jx0QBxriBPW40x7spENu5fcmdu7Q6
-         WbPg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772012466; x=1772617266;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ZTzGWHccByJBdaZUZxrkE2sNIhOCCTQKy9wwE5UBFMs=;
-        b=tUq4l4BPGdjfjqIEipf872hjqNtltH6fpe13+s0wcPr/i75Oo27RNlMPl//3lMSOBH
-         t0/WzRpNlJDzZe1opTGqrmdbZ65y3goXjD2KaqTGajDOBODBEfBSuoZEM5nhzq/KkUYF
-         2Q7O64XhMBnNJl2k8E2+YtD+OalTI6qdeb0mjM5zFJDWgpD2KawQa2SKkKlvTmwhlp0Z
-         6UvibJ5y/rKrOJJ5BG76RKV9E7IEYqL427CzAGcXcinqSnUjPSVoKazcHREbKEfu8eUe
-         9l1V582xdKxgXfrGQdAPZFuDW8g7TCMSQsBXSwaRPO/QnB2p86MQhKxuy/Y+ePaG0VjM
-         xeDA==
-X-Gm-Message-State: AOJu0YyQTvpuShcZ8dmrnZFRK8nulF5Z7tIzMmQw1aCZuYMScHMD4o90
-	bELGACAcvYGUl7IxhFTZKcxCGV+HTK6MC+zUYpmDE2KjMV7Q9a1Wj/6394FKBw==
-X-Gm-Gg: ATEYQzx75ozFZi++gqcDBRXugWnhfBC2O2L+iWpZqwLb26JAiH4gU+RACt/CxbX31m9
-	QFgOoatagcjEFpQrdblZXG4W43RfLqIhI0wJZFt84wi0XivMyPsKeI0uCa07op/l0wEZxr2lPOx
-	G4BOC75bCuvdHMxiF5oiPm39qlBf2ByUjlLdZ9eZpDOF3pWTor1Q3kOIktkXAiEAUbXEFOoHf1v
-	7x4piRqovVVc9xSIT3rzBeL7mWJMlPgSplSIrr6/gCTQ8uoNBKr2i2pTI/jp/kkZz76zA0wQhlq
-	THRDVdky90PKaqUWyPpxRKglnU8EXiAHrBEB+lVVQ88RyzKRqBqQUHbEeKe/Xa+o+jsTaxGxoYe
-	SK87dudlR+VQQL5WZLDFXAqDCvYndfD09Eb9GFFj+CbA5NSWFrejXq53tE4+nfBS49F+QrmpXfa
-	45AtL8uk85C2F2V6eFKbs=
-X-Received: by 2002:a05:600c:8b31:b0:483:2c98:435e with SMTP id 5b1f17b1804b1-483a95ee684mr256150945e9.34.1772012465553;
-        Wed, 25 Feb 2026 01:41:05 -0800 (PST)
-Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-483bd6f2f88sm59282785e9.2.2026.02.25.01.41.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Feb 2026 01:41:05 -0800 (PST)
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-To: linux-mediatek@lists.infradead.org
-Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	CK Hu <ck.hu@mediatek.com>,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v3] drm/mediatek: dsi: Store driver data before invoking mipi_dsi_host_register
-Date: Wed, 25 Feb 2026 09:38:41 +0000
-Message-ID: <20260225094047.76780-1-l.scorcia@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	Wed, 25 Feb 2026 09:47:38 +0000
+X-UUID: 00b750d2122f11f1a16f0188aa809bee-20260225
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=dMi/Y4bfq04gJP60qx0132hG+kj1q74zT7Boy4YZonM=;
+	b=F5Q7yqw4oTqEoU9+tUorQWnoPo4Jd4O7BNrGFk55DkJ4GT35E0zfQPvf4sy82wT4nBirUnHSexxqzx5ASSzQpVZdfZTDh42V6AFL3lC5I5jOnwhSb/m4Sgz47RdiPdQu+KsVR3rpEkuVo11C19L6zCo/OPL4wqYGyE0ZG2Bc/v0=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:b752060d-01d1-46f5-b5a1-408e2d56ddaf,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:89c9d04,CLOUDID:5757985b-a957-4259-bcca-d3af718d7034,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 00b750d2122f11f1a16f0188aa809bee-20260225
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <quan.zhou@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 922522775; Wed, 25 Feb 2026 02:47:30 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 25 Feb 2026 17:47:28 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 25 Feb 2026 17:47:27 +0800
+From: Quan Zhou <quan.zhou@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Sean Wang <sean.wang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
+	Leon Yen <Leon.Yen@mediatek.com>, Ming Yen Hsieh
+	<mingyen.hsieh@mediatek.com>, Allan Wang <allan.wang@mediatek.com>, Sarick
+ Jiang <sarick.jiang@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Shengxi
+ Xu <shengxi.xu@mediatek.com>, Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
+	Michael Lo <Michael.Lo@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>, Robin
+ Chiu <robin.chiu@mediatek.com>, linux-wireless
+	<linux-wireless@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Quan Zhou <quan.zhou@mediatek.com>,
+	<stable@vger.kernel.org>
+Subject: [patch] wifi: mt76: mt7925: fix incorrect TLV length in CLC command
+Date: Wed, 25 Feb 2026 17:47:22 +0800
+Message-ID: <f56ae0e705774dfa8aab3b99e5bbdc92cd93523e.1772011204.git.quan.zhou@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_014108_117930_2F3FC814 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20260225_014737_607446_CB108DF4 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,112 +93,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The call to mipi_dsi_host_register triggers a callback to mtk_dsi_bind,
-which uses dev_get_drvdata to retrieve the mtk_dsi struct, so this
-structure needs to be stored inside the driver data before invoking it.
+The previous implementation of __mt7925_mcu_set_clc() set the TLV length
+field (.len) incorrectly during CLC command construction. The length was
+initialized as sizeof(req) - 4, regardless of the actual segment length.
+This could cause the WiFi firmware to misinterpret the command payload,
+resulting in command execution errors.
 
-As drvdata is currently uninitialized it leads to a crash when
-registering the DSI DRM encoder right after acquiring
-the mode_config.idr_mutex, blocking all subsequent DRM operations.
+This patch moves the TLV length assignment to after the segment is
+selected, and sets .len to sizeof(req) + seg->len - 4, matching the
+actual command content. This ensures the firmware receives the
+correct TLV length and parses the command properly.
 
-Fixes the following crash during mediatek-drm probe (tested on Xiaomi
-Smart Clock x04g):
-
-Unable to handle kernel NULL pointer dereference at virtual address
- 0000000000000040
-[...]
-Modules linked in: mediatek_drm(+) drm_display_helper cec drm_client_lib
- drm_dma_helper drm_kms_helper panel_simple
-[...]
-Call trace:
- drm_mode_object_add+0x58/0x98 (P)
- __drm_encoder_init+0x48/0x140
- drm_encoder_init+0x6c/0xa0
- drm_simple_encoder_init+0x20/0x34 [drm_kms_helper]
- mtk_dsi_bind+0x34/0x13c [mediatek_drm]
- component_bind_all+0x120/0x280
- mtk_drm_bind+0x284/0x67c [mediatek_drm]
- try_to_bring_up_aggregate_device+0x23c/0x320
- __component_add+0xa4/0x198
- component_add+0x14/0x20
- mtk_dsi_host_attach+0x78/0x100 [mediatek_drm]
- mipi_dsi_attach+0x2c/0x50
- panel_simple_dsi_probe+0x4c/0x9c [panel_simple]
- mipi_dsi_drv_probe+0x1c/0x28
- really_probe+0xc0/0x3dc
- __driver_probe_device+0x80/0x160
- driver_probe_device+0x40/0x120
- __device_attach_driver+0xbc/0x17c
- bus_for_each_drv+0x88/0xf0
- __device_attach+0x9c/0x1cc
- device_initial_probe+0x54/0x60
- bus_probe_device+0x34/0xa0
- device_add+0x5b0/0x800
- mipi_dsi_device_register_full+0xdc/0x16c
- mipi_dsi_host_register+0xc4/0x17c
- mtk_dsi_probe+0x10c/0x260 [mediatek_drm]
- platform_probe+0x5c/0xa4
- really_probe+0xc0/0x3dc
- __driver_probe_device+0x80/0x160
- driver_probe_device+0x40/0x120
- __driver_attach+0xc8/0x1f8
- bus_for_each_dev+0x7c/0xe0
- driver_attach+0x24/0x30
- bus_add_driver+0x11c/0x240
- driver_register+0x68/0x130
- __platform_register_drivers+0x64/0x160
- mtk_drm_init+0x24/0x1000 [mediatek_drm]
- do_one_initcall+0x60/0x1d0
- do_init_module+0x54/0x240
- load_module+0x1838/0x1dc0
- init_module_from_file+0xd8/0xf0
- __arm64_sys_finit_module+0x1b4/0x428
- invoke_syscall.constprop.0+0x48/0xc8
- do_el0_svc+0x3c/0xb8
- el0_svc+0x34/0xe8
- el0t_64_sync_handler+0xa0/0xe4
- el0t_64_sync+0x198/0x19c
-Code: 52800022 941004ab 2a0003f3 37f80040 (29005a80)
----[ end trace 0000000000000000 ]---
-
-Fixes: e4732b590a77 ("drm/mediatek: dsi: Register DSI host after acquiring clocks and PHY")
-Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+Cc: stable@vger.kernel.org
+Signed-off-by: Quan Zhou <quan.zhou@mediatek.com>
 ---
-v3: Also initialize irq_wait_queue before calling platform_set_drvdata
-v2: Added Fixes tag
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/gpu/drm/mediatek/mtk_dsi.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index d7726091819c..acee2227275b 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -1232,6 +1232,11 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 1379bf6a26b5..abcdd0e0b3b5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -3380,7 +3380,6 @@ __mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
+ 		u8 rsvd[64];
+ 	} __packed req = {
+ 		.tag = cpu_to_le16(0x3),
+-		.len = cpu_to_le16(sizeof(req) - 4),
  
- 	dsi->host.ops = &mtk_dsi_ops;
- 	dsi->host.dev = dev;
-+
-+	init_waitqueue_head(&dsi->irq_wait_queue);
-+
-+	platform_set_drvdata(pdev, dsi);
-+
- 	ret = mipi_dsi_host_register(&dsi->host);
- 	if (ret < 0)
- 		return dev_err_probe(dev, ret, "Failed to register DSI host\n");
-@@ -1243,10 +1248,6 @@ static int mtk_dsi_probe(struct platform_device *pdev)
- 		return dev_err_probe(&pdev->dev, ret, "Failed to request DSI irq\n");
- 	}
+ 		.idx = idx,
+ 		.env = env_cap,
+@@ -3409,6 +3408,7 @@ __mt7925_mcu_set_clc(struct mt792x_dev *dev, u8 *alpha2,
+ 		memcpy(req.type, rule->type, 2);
  
--	init_waitqueue_head(&dsi->irq_wait_queue);
--
--	platform_set_drvdata(pdev, dsi);
--
- 	dsi->bridge.of_node = dev->of_node;
- 	dsi->bridge.type = DRM_MODE_CONNECTOR_DSI;
- 
+ 		req.size = cpu_to_le16(seg->len);
++		req.len = cpu_to_le16(sizeof(req) + seg->len - 4);
+ 		dev->phy.clc_chan_conf = clc->ver == 1 ? 0xff : rule->flag;
+ 		skb = __mt76_mcu_msg_alloc(&dev->mt76, &req,
+ 					   le16_to_cpu(req.size) + sizeof(req),
 -- 
-2.43.0
+2.45.2
 
 
