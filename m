@@ -4,91 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84D5AFD3775
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 17:04:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F395FD3777
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 17:13:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3RYgv+ynJj3S1QIru3Hn9dqc29aPNWjUzmoSLU7r5Kw=; b=ivubT5gtv+m4If2MM5YakGWMe5
-	kHBuSWtjHonZKjztBVNaqw24a94QQpwNF8633DnrqmE+UaAAxv4aayJi3c2t4zbVd4Yo0Oc/nGjI6
-	GC49fwVsBfHnFmqb0h9ZlssNNmFyvzMvKyP3ov7R8FdoXhgMI/3u2UBCBMAccFLhL7dNOI2UMVxGU
-	Gpmt1jxwCtUfghU5Z99OOC+WPgGK7dx3yPT/ktgPoXF3eg79f5toMD3AkyLHxNMxvl6m/u6e+HVBz
-	OvhjYGMmFV4MYzcaBYZZEBYm7bItd9HTo0GfDxXsW8DTffUydAAI1Tmnkk/RO3MR2/JovzvxdaFJJ
-	CIorf4yw==;
+	bh=jpUJEtvyUfbAfsM/AsYdfsmRudWk2usCr4zOgiJsVxI=; b=pPwqQ9RTYofK9VUvIb0PuKSOH+
+	22nqCEU80BEGyxbLAVJ5yRn+fp4X8hhSUdFMP5jj5BsTQrCGZMnl6OV2Z4S5TgW6MahE+zepAL1KO
+	Lfenjlb3prx5r/GlkotEXSB50wQDyorNosxzsDk2hEHZnPnXJ42IUixWitQ1wbkJdetLkDR77KO/g
+	ZhIMfCUYM/L+PHzIrQWPDElvYFriGlgWo17ejjf1ni843rujrl1nsv9AcQIkzHb3y6h7pz/Cn0zXs
+	rtsAY8TR33DejPSSczXNCLe2Rr00QX88KWN0OpYsKBtrAWXahNWzFUDGSXIg+XH1+reRkajA+3Zw1
+	KMKx7m6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvIIu-00000004bBE-1jd1;
-	Wed, 25 Feb 2026 17:04:04 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vvIRb-00000004cmZ-3ukV;
+	Wed, 25 Feb 2026 17:13:03 +0000
+Received: from mail-dl1-x122f.google.com ([2607:f8b0:4864:20::122f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvIIr-00000004b8i-3YBx;
-	Wed, 25 Feb 2026 17:04:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1772038990; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Stq7NiyxW5CF/ZYpj1nqvMDannoyZwlnMzQ/PgyeF0NaxkMVUlI68eDs/afuHnbr2+WHFmRQZxfJTlYWlLd0zyLWqjjWUVTxJnumFxAofhYeOXCqmvKvqp555F7wVXsQumH5tw1GduK4PpZ5MrE99aPbOnBScVHIW5+7cxFCsaM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1772038990; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=3RYgv+ynJj3S1QIru3Hn9dqc29aPNWjUzmoSLU7r5Kw=; 
-	b=a5Oe0Ndnnz06KHDJo5Dq3J6MK/1KLjOuG3mwgwqqqQbKovJWasZ2MCpjlf8ey6OnHnCH4SKGA2z2D1avhxLtcyK+FRyYoZXnSih4UZM7quz5VNvfSBEPZ9pvoY+A2AMBB4eNwEzhaTesQui5FtYM0obtGOLyxS312/LjUHkL7vg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772038990;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=3RYgv+ynJj3S1QIru3Hn9dqc29aPNWjUzmoSLU7r5Kw=;
-	b=V3jgCVhIW8MxRWz+GFV+y8JHyIm3dWD68I3G+7EGdF+br4N512+++HwmFH7XXJyX
-	VTX84XBJmyiXwt+qxWxRcDszqGbmzTaLyzaROG7CcMhxb7bXr21EUYFCQsl2vZalyv8
-	FARjC/W5DW9MnsdktyO2a03wVkp5f4pro6xFBbTQ=
-Received: by mx.zohomail.com with SMTPS id 1772038989356790.0109700812275;
-	Wed, 25 Feb 2026 09:03:09 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Jani Nikula <jani.nikula@linux.intel.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
- Rodrigo Siqueira <siqueira@igalia.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>,
- Samuel Holland <samuel@sholland.org>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- Maxime Ripard <mripard@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH 14/14] drm/display: hdmi: Use drm_output_color_format instead of
- hdmi_colorspace
-Date: Wed, 25 Feb 2026 18:03:00 +0100
-Message-ID: <8234454.EvYhyI6sBW@workhorse>
-In-Reply-To: <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
-References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
- <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
+	id 1vvIRa-00000004cln-0uhG
+	for linux-mediatek@lists.infradead.org;
+	Wed, 25 Feb 2026 17:13:03 +0000
+Received: by mail-dl1-x122f.google.com with SMTP id a92af1059eb24-12732e6a123so1158410c88.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Feb 2026 09:13:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1772039581; x=1772644381; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=jpUJEtvyUfbAfsM/AsYdfsmRudWk2usCr4zOgiJsVxI=;
+        b=UK1cq3Cvi3maVM0MczpAmQQmC2OhCa+5ankVUDqsT5oPwAN/nIvJvhxgHEd8cGgOQH
+         wYLs91wh0MX0OocgG5FjpvqJlVaONJQCdPm+4qNGav07zmQ1w4ZF2jYebNtUqM5TOdsw
+         3dAqBQNuLakYEAnjpq78ZrFZU9xZqQQrWXRKLps8Gi3zWNNg/9g4iPzkq/qFIYyRJxIo
+         +VOOcHJd+MfF2Pp6ofezuJMOrV+xiJbyzCKiKMLk79bpFI0gtahQdELgB4/yspAfDke6
+         d1lEQO8VJRVzXgzDceMK27nvOZ+VbvryfyYz0e2DWbupa2shlchPIMqkByr3cLIrgdTw
+         iRrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772039581; x=1772644381;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=jpUJEtvyUfbAfsM/AsYdfsmRudWk2usCr4zOgiJsVxI=;
+        b=L85uNClBQcPksVtuS6K+5qmniR0lHLA9HWZ3/J4Aw8DXCajk5EUUpaK2mUC4jKIpLM
+         YZRG/kRcaC+LNkiR/qMp7s+nmKfNC9L7lWQNWpdzJ2T+QUe+YvMJNcpsZ1vAlqp4P1ez
+         9yeKSKnorbHG6DQsI4lq78uW0AcQAFABHTpfsJi+1LLeD+5AcoHbOZ0dsir/ERslpZ2x
+         VvO2f6O0CmZqAJXbbYsgs8WjkY9pxORHBl4/glGCxGTwWG5ZUBG/GcFi0w92tOC1GdPF
+         u/qFXIBYsI/jF8C5odksyF5+XtbHH7Q87EknSllmNbmKK+642DjS4ZMg+31sKntGM5Ep
+         Fzgg==
+X-Forwarded-Encrypted: i=1; AJvYcCWDJrZPJO3B3Yvj+hSONu8tho++joQd+IRb/NSntgK9vkZRJHWRO59Yw8xOEc0G1wNEmr7Sw8by2mq1c1li2A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxdDxQ44tH7ow56OOVmtNl2Ww70V5keq194JJemj7UAMnhmV7Nz
+	JAmsX5V/HqLm0RSBQJ57xBxuusirm2OohEysD0uRRDOgqzaj3vizSbAg
+X-Gm-Gg: ATEYQzzKzW3HECBU+XyAaq2lB4tcsK/JFVPU1O1YK9Iv+As9o0C6hYNCjYCjMBiL0n6
+	IuXmo3DftJ6RbeCziXtn5tzLcn3ZyC/wWWIz0lebfn58iF+eVvpLjFvftv4wvTGcefolCiBM9BC
+	1CQPAZqRjdR/5CRDFvtYNmEroKSdgeuYHcWlqEvvISjkb3ylW+n+No0v0b4DL/46eX+86Wo9lyK
+	jCZn/zkSyq4WMKj5HFZeLbN+z+FvyjhuN4PYhipwRCmkdPI0GNczE2nh/4UImh64dWJBOoRT/3O
+	US0j2l+KChjZ/GIOLtWCzm+s2vGfXQg5Wnl/L+jmmtLgHMVoRA52zS57HJZOW0pzyiVKQQ4e13Q
+	B6ud9PegYphbbwyIupvSwMMpYEGYUS/jAYxs2ucm0GgNEmvIvwsK5Or/dtbxPHJv0d7zs2q7tlu
+	W8Czk43z6QsFe/dhLEJfs+rR0uOpsBSpFafpiClsH+7hQrFOJpLrFCv9QG1EK+XFhU
+X-Received: by 2002:a05:701a:ca03:b0:127:3440:e5d5 with SMTP id a92af1059eb24-1276ad627ecmr6367928c88.21.1772039581204;
+        Wed, 25 Feb 2026 09:13:01 -0800 (PST)
+Received: from google.com ([2a00:79e0:2ebe:8:64dd:9670:711a:678e])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1276af10481sm14411000c88.3.2026.02.25.09.12.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Feb 2026 09:13:00 -0800 (PST)
+Date: Wed, 25 Feb 2026 09:12:57 -0800
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Hugo Villeneuve <hugo@hugovil.com>
+Cc: Andy Shevchenko <andriy.shevchenko@intel.com>, robin@protonic.nl, 
+	andy@kernel.org, geert@linux-m68k.org, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, hvilleneuve@dimonoff.com, mkorpershoek@kernel.org, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, lee@kernel.org, 
+	alexander.sverdlin@gmail.com, marek.vasut@gmail.com, akurz@blala.de, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-input@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3 4/4] Input: charlieplex_keypad: add GPIO charlieplex
+ keypad
+Message-ID: <aZ8sjwaKk5MCSDlg@google.com>
+References: <20260225155409.612478-1-hugo@hugovil.com>
+ <20260225155409.612478-5-hugo@hugovil.com>
+ <aZ8fXXGMx3fk7gKs@smile.fi.intel.com>
+ <20260225114155.3ee2efb002aa0f52a905f535@hugovil.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260225114155.3ee2efb002aa0f52a905f535@hugovil.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_090401_924473_64CEDFDA 
-X-CRM114-Status: GOOD (  24.70  )
+X-CRM114-CacheID: sfid-20260225_091302_257451_CF4BA3CC 
+X-CRM114-Status: GOOD (  27.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,99 +106,126 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 24 February 2026 11:58:53 Central European Standard Time Maxime Ripard wrote:
-> The hdmi_colorspace enum was defined to represent the colorspace value
-> of the HDMI infoframes. It was later used by some HDMI drivers to
-> express the output format they should be setting up.
+Hi Hugo,
+
+On Wed, Feb 25, 2026 at 11:41:55AM -0500, Hugo Villeneuve wrote:
+> Hi Andy,
+> thank you for the review.
 > 
-> During the introduction of the HDMI helpers, it then was used to
-> represent it in the drm_connector_hdmi_state structure.
+> On Wed, 25 Feb 2026 18:12:13 +0200
+> Andy Shevchenko <andriy.shevchenko@intel.com> wrote:
 > 
-> However, it's always been somewhat redundant with the DRM_COLOR_FORMAT_*
-> defines, and now with the drm_output_color_format enum. Let's
-> consolidate around drm_output_color_format in drm_connector_hdmi_state
-> to facilitate the current effort to provide a global output format
-> selection mechanism.
+> > On Wed, Feb 25, 2026 at 10:54:01AM -0500, Hugo Villeneuve wrote:
+> > 
+> > > Add support for GPIO-based charlieplex keypad, allowing to control
+> > > N^2-N keys using N GPIO lines.
+> > > 
+> > > Reuse matrix keypad keymap to simplify, even if there is no concept
+> > > of rows and columns in this type of keyboard.
+> > 
+> > ...
+> > 
+> > > +/*
+> > > + *  GPIO driven charlieplex keypad driver
+> > > + *
+> > > + *  Copyright (c) 2025 Hugo Villeneuve <hvilleneuve@dimonoff.com>
+> > > + *
+> > > + *  Based on matrix_keyboard.c
+> > 
+> > A single space after asterisk is enough.
 > 
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> ---
->  drivers/gpu/drm/bridge/inno-hdmi.c                 |   6 +-
->  drivers/gpu/drm/bridge/ite-it6263.c                |   2 +-
->  drivers/gpu/drm/display/drm_hdmi_helper.c          |   7 +-
->  drivers/gpu/drm/display/drm_hdmi_state_helper.c    |  52 ++++--
->  drivers/gpu/drm/drm_bridge.c                       |   2 +-
->  drivers/gpu/drm/drm_connector.c                    |  14 +-
->  drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |   8 +-
->  drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             |   2 +-
->  drivers/gpu/drm/tests/drm_connector_test.c         |  80 ++++-----
->  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 182 ++++++++++-----------
->  drivers/gpu/drm/vc4/vc4_hdmi.c                     |  18 +-
->  drivers/gpu/drm/vc4/vc4_hdmi.h                     |   2 +-
->  include/drm/display/drm_hdmi_helper.h              |   3 +-
->  include/drm/drm_connector.h                        |   7 +-
->  14 files changed, 205 insertions(+), 180 deletions(-)
+> Ok, leftover from copy/paste from matrix_keyboard.c :)
 > 
-> [... snip ...]
->
-> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-> index 4f5b27fab475c7c733622eb8727927571f3fb8fe..171cd495976a3e16f201fd339d3d42a09dc3b63f 100644
-> --- a/drivers/gpu/drm/drm_connector.c
-> +++ b/drivers/gpu/drm/drm_connector.c
-> [... snip ...]
->  
-> @@ -1424,25 +1424,25 @@ drm_hdmi_connector_get_broadcast_rgb_name(enum drm_hdmi_broadcast_rgb broadcast_
->  	return broadcast_rgb_names[broadcast_rgb].name;
->  }
->  EXPORT_SYMBOL(drm_hdmi_connector_get_broadcast_rgb_name);
->  
->  static const char * const output_format_str[] = {
-> -	[HDMI_COLORSPACE_RGB]		= "RGB",
-> -	[HDMI_COLORSPACE_YUV420]	= "YUV 4:2:0",
-> -	[HDMI_COLORSPACE_YUV422]	= "YUV 4:2:2",
-> -	[HDMI_COLORSPACE_YUV444]	= "YUV 4:4:4",
-> +	[DRM_OUTPUT_COLOR_FORMAT_RGB444]	= "RGB",
-> +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR420]	= "YUV 4:2:0",
-> +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR422]	= "YUV 4:2:2",
-> +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR444]	= "YUV 4:4:4",
->  };
->  
->  /*
->   * drm_hdmi_connector_get_output_format_name() - Return a string for HDMI connector output format
->   * @fmt: Output format to compute name of
->   *
->   * Returns: the name of the output format, or NULL if the type is not
->   * valid.
->   */
->  const char *
-> -drm_hdmi_connector_get_output_format_name(enum hdmi_colorspace fmt)
-> +drm_hdmi_connector_get_output_format_name(enum drm_output_color_format fmt)
->  {
->  	if (fmt >= ARRAY_SIZE(output_format_str))
->  		return NULL;
+> > 
+> > > + */
+> > 
+> > ...
+> > 
+> > + bitops.h
+> > 
+> > > +#include <linux/delay.h>
+> > 
+> > + dev_printk.h
+> > + device/devres.h
+> > + err.h
+> > 
+> > > +#include <linux/gpio/consumer.h>
+> > > +#include <linux/input.h>
+> > > +#include <linux/input/matrix_keypad.h>
+> > 
+> > + math.h
+> 
+> Ok.
+> 
+> 
+> > 
+> > > +#include <linux/module.h>
+> > 
+> > > +#include <linux/of.h>
+> > 
+> > Is this in use? Or you wanted mod_devicetable.h for OF ID table?
+> 
+> I need only OF ID table, so will replace with mod_devicetable.h.
+> 
+> 
+> > 
+> > > +#include <linux/platform_device.h>
+> > > +#include <linux/property.h>
+> > > +#include <linux/types.h>
+> > 
+> > ...
+> > 
+> > > +	for (code = 0, oline = 0; oline < keypad->nlines; oline++) {
+> > > +		DECLARE_BITMAP(values, MATRIX_MAX_ROWS);
+> > > +		int iline;
+> > 
+> > > +		int rc;
+> > 
+> > I think Dmitry prefers 'error' name for this kind of variables.
+> 
+> I hate using "error", can be so misleading :)
+> 
+> I would prefer to use "rc" everywhere, but if Dmitry chimes in and
+> specifies "error" or "err", then so it will be.
 
-Almost unrelated nit: we might want to also `fmt < 0 ||` here, since the
-base type of enums is a signed int. I almost caught myself using this function
-as a way to quickly check if a supplied color format property from userspace
-was valid, which would've had some unpleasant consequences for the kernel's
-memory.
+Yes, I prefer err or error for variables that carry error code or 0.
+This allows to write
 
-Alternatively, I make my own switch-case based "is this a valid enum value"
-function. I probably should do that actually, but my laziness lead me to
-make sure we only have a single source of truth of what counts as a valid
-enum value.
+	error = action(...);
+	if (error) {
+		// handle it
+	}
 
->  
->  	return output_format_str[fmt];
-> [... snip ...]
-
-Thanks for your work on this series, I was afraid of getting rid of
-DRM_COLOR_FORMAT_* myself because I suspected it was going to be a
-fairly large refactor across every driver. Guess I was both right
-and wrong: it touches many files, but all the replacements are
-fairly simple. :)
-
-Kind regards,
-Nicolas Frattaroli
+which is very clear IMO.
 
 
+> > > +
+> > > +	err = input_register_device(keypad->input_dev);
+> > > +	if (err)
+> > > +		return err;
+> > 
+> > > +	platform_set_drvdata(pdev, keypad);
+> > 
+> > Is this needed?
+> 
+> No, will remove it, and replace last lines with:
+> 
+>    return input_register_device(keypad->input_dev);
+
+Please use
+
+	err = input_register_device(...);
+	if (err)
+		return err;
+
+	return 0;
+
+It clearly differentiates error an normal paths, shows that function
+returns 0 and not anything else on success, and allows to reorder
+or add additional actions easily.
+
+Thanks.
+
+-- 
+Dmitry
 
