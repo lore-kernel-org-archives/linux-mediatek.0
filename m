@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45C08FD3758
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 13:13:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D60F6FD375D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 13:13:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JkFKmLFoS5VyjvW2tMtlrEbUDAOIi7gXZRzyh13CmhQ=; b=iVp+jEPPQAsvtEhJnqKGYw/F1X
-	iMAJSJzxbij1fOkcM3zTep7tcj6RC5txi3lSPRGZfWYulBJHZ3Fazn+qK71nC+q+Ca28XLMctrEyM
-	lufw/GiVbZHLdEQbltX1UG/5nGcSs3xXNNUP48LOLkmdJrMfJr9cohQyMCzqooocwPKBueXf8lqVb
-	52lT4yskqHsDsNG2GAOMdQGb+tNApSY1AoGzoCNb9L8BBuo2pSwMVWNILVueh/MxPsFlVtdUc8LLu
-	Ul+0pUk5JC2elsWcG/ToQ3C86Xotil6rIuqb0MDn6yS2OEKqNyrzc2QRhEklLlgl5JgDxPmoIhVeA
-	GX3x+bwg==;
+	bh=kjoi/tdi5Udptnb8uShxOAXdeKTkS37ls+psj9vBk/c=; b=14UAs2MTbsp2tPiydGCMEZ+hSM
+	OZUe9rBKreergqLNszy8hOgGKQ7roM4pcEW4gzEeL8pzWfvtg6wLZ/ZM/2Gwjfq6E9F9HGni5HBqJ
+	od9UTLYY3P5gS0wCtUm6KbdO6y25q51PYYQ5inKDUmKQRRlfNV1X0UsdlECMhs4jM0qEi8g48QgtL
+	c5Poai0xdswpYYOPumXJwJ1lLaIiB3BNLMSM7+wHlvnCa/4JDI3u9vG4cYWAx8OOP8/fbYsc1H0Ub
+	YteniC44zeAWpLc8ubOuPTE8e0Yqbjk0A0M9cOlGBnh7We3q9a/5azqAVN+VykG1BrJKWDoccZWGA
+	slXqSUnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvEhV-000000043Fo-0WuJ;
-	Wed, 25 Feb 2026 13:13:13 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vvEha-000000043LR-3Kz0;
+	Wed, 25 Feb 2026 13:13:20 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvEhP-00000004380-1049;
-	Wed, 25 Feb 2026 13:13:08 +0000
+	id 1vvEhQ-0000000438q-3ilV;
+	Wed, 25 Feb 2026 13:13:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772025185;
-	bh=FgRCrpuX9seBlaU1PRhdPC/qxo2FBhcMug3D6AadulA=;
+	s=mail; t=1772025186;
+	bh=n4DHsYxUKbgES8MiHsACk0FhFdNJP+CaJdwmJWhWYi4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JRn23u/l2T3tKj9C2Fr4FErYoYMWhOpx5JPV7WuEopb1h+sB5pJCemXN3/XD5cmfF
-	 e6I+g1IVb+ZoVrdMp2HcquuFcrsWeIhMC+tBUhoMhc0xBL43lXnXPSQJ8OHl3KF0Oy
-	 pk5va31bzFHI8tmNpVFz7Cu5CPBIEtWIiOFoSgZefBFXMVXJu5uLXlkeSFibc1tYtf
-	 h/0GsCR+KWQu9MJrP1okzqyRAq7iPJlJyiz09yjC2FoACoDyFzAFe4VjZBLtl2PG7m
-	 fDzhWzlo4MvCGedcrzWJGitzVMkLwypJhl4yLEuzcIYtV10/dtcekwPIPoDfRgfOhX
-	 esfbnvhHQH9mA==
+	b=Onu5z4WqnR/45diDIi/k8XZqdvJ6b9N6+Qvzu6F5eIir/6l0ngkpAjraPNJMwpR4x
+	 yQgO0HEtqvSJ3tP0m04aw1j8GeIHl+4GYESGhyxQjNHVK95gK+QQdF1CJKyX+e5buw
+	 xHblyUWmbpzwk5w2lNKkcCQJdQG+RxWQjNE/chLCUzCFUvsdm9/qe8YeKbxjUgNz3t
+	 CYu3bwCG6VtIvQpq/t1QxE1H1ubJkLRm4GXKlWncpUFjq/V5RqHzVHO++Jti5YRHwG
+	 kWoDlvpHU/JBeDX3/W+Kd7f1EvdWR4kJNTRe1BUdX8LGTUi3GDHpnU5Yw/4DO3xOwB
+	 XquDH7uzzIbHQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E327C17E0D98;
-	Wed, 25 Feb 2026 14:13:04 +0100 (CET)
-Message-ID: <e0204fbb-4d82-44ec-a381-c030098ef86a@collabora.com>
-Date: Wed, 25 Feb 2026 14:13:04 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5A59C17E012E;
+	Wed, 25 Feb 2026 14:13:06 +0100 (CET)
+Message-ID: <ff0fd6d6-c7b7-420e-96bd-75f844188cf5@collabora.com>
+Date: Wed, 25 Feb 2026 14:13:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/7] PCI: mediatek-gen3: Add error path for probe and
- resume driver callbacks
+Subject: Re: [PATCH 1/7] PCI: mediatek-gen3: Clean up mtk_pcie_parse_port()
+ with dev_err_probe()
 To: Chen-Yu Tsai <wenst@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee
  <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>,
@@ -60,15 +60,15 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Bartosz Golaszewski <brgl@bgdev.pl>, linux-pci@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20260225072225.3345307-1-wenst@chromium.org>
- <20260225072225.3345307-3-wenst@chromium.org>
+ <20260225072225.3345307-2-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260225072225.3345307-3-wenst@chromium.org>
+In-Reply-To: <20260225072225.3345307-2-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_051307_424046_91B6D423 
-X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-CacheID: sfid-20260225_051309_472150_879D24EF 
+X-CRM114-Status: UNSURE (   9.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,17 +85,25 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 25/02/26 08:22, Chen-Yu Tsai ha scritto:
-> The probe and resume callbacks currently do teardown in the conditional
-> block directly. This is going to get ugly when the pwrctrl calls are
-> added.
+> mtk_pcie_parse_port() in the pcie-mediatek-gen driver has a bunch of
 > 
-> Move the teardown to proper error cleanup paths.
+>      if (err) {
+>      	dev_err(dev, "error message\n");
+> 	return err; # or goto
+>      }
+> 
+> patterns.
+> 
+> Simplify these with dev_err_probe(). The system also gains proper
+> deferred probe messages that can be seen in
+> 
+>      /sys/kernel/debug/devices_deferred
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Though I don't exactly like it that much, you have a "more than just good" reason,
-and that's enough for me to say
+Ah, finally - thanks for this cleanup, love it.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
