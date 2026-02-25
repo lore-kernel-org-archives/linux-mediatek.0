@@ -4,69 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77712FD3773
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 16:57:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84D5AFD3775
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 17:04:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:References:In-Reply-To:
-	Message-Id:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6Xsu0Zgs56ZTjjF/y5JOVDhujspJDUCWfcwVY2hiQD8=; b=3NisWfoPKOqA7Z
-	f5iLVxtf64FoYr5NhHLB2pjaPZ9cwk8ConhUXHKDO8QmoqiYGeafIiyWmsG2kv/aOqLd7bZf0xbvE
-	aKs8WPa6y+199ukswvDUbPX+eaBPAgtHXdtJExbc9SnAGo9He6cM1k5wJtz039Tn/g7wyJCZwm1ag
-	yskFlBldJ3A9pwiDuSHwUC25xQCZ1OFCvqJ78cjism55+kacU19EuuVQ5gPt5lOioNigHDwRsnSrb
-	bU9/1TsSlniKo6Br4lYGDKNnw3byv9a/8xXucSmjCZSNcPk8wDxhgjiHOkeMwFtwGzlfYwdYzIddW
-	O6IhMIqh+YbDGhIUbA2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3RYgv+ynJj3S1QIru3Hn9dqc29aPNWjUzmoSLU7r5Kw=; b=ivubT5gtv+m4If2MM5YakGWMe5
+	kHBuSWtjHonZKjztBVNaqw24a94QQpwNF8633DnrqmE+UaAAxv4aayJi3c2t4zbVd4Yo0Oc/nGjI6
+	GC49fwVsBfHnFmqb0h9ZlssNNmFyvzMvKyP3ov7R8FdoXhgMI/3u2UBCBMAccFLhL7dNOI2UMVxGU
+	Gpmt1jxwCtUfghU5Z99OOC+WPgGK7dx3yPT/ktgPoXF3eg79f5toMD3AkyLHxNMxvl6m/u6e+HVBz
+	OvhjYGMmFV4MYzcaBYZZEBYm7bItd9HTo0GfDxXsW8DTffUydAAI1Tmnkk/RO3MR2/JovzvxdaFJJ
+	CIorf4yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvICF-00000004aCA-4350;
-	Wed, 25 Feb 2026 16:57:11 +0000
-Received: from mail.hugovil.com ([162.243.120.170])
+	id 1vvIIu-00000004bBE-1jd1;
+	Wed, 25 Feb 2026 17:04:04 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvICC-00000004aBJ-2sSm;
-	Wed, 25 Feb 2026 16:57:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hugovil.com
-	; s=x; h=Subject:Content-Transfer-Encoding:Mime-Version:Message-Id:Cc:To:From
-	:Date:subject:date:message-id:reply-to;
-	bh=6Xsu0Zgs56ZTjjF/y5JOVDhujspJDUCWfcwVY2hiQD8=; b=nlq+pd4/mueP7MR8da4s9fG+Ti
-	MljCQ+I9fT/muEHpM7HjYQ1Rm7WEu9flXyI/luE18WWn7ip6pe9Wlal1ky0J5d6mhymsbNol+LFFO
-	3w7U6zl+tKxiynCVvsATte/zSLDIPdrZcl9hffvDqgh6f1HTrBmLZclre3BdaV3mZz3c=;
-Received: from modemcable168.174-80-70.mc.videotron.ca ([70.80.174.168]:39918 helo=pettiford.lan)
-	by mail.hugovil.com with esmtpa (Exim 4.92)
-	(envelope-from <hugo@hugovil.com>)
-	id 1vvIBw-0001Vc-St; Wed, 25 Feb 2026 11:56:54 -0500
-Date: Wed, 25 Feb 2026 11:56:52 -0500
-From: Hugo Villeneuve <hugo@hugovil.com>
-To: Hugo Villeneuve <hugo@hugovil.com>
-Cc: Andy Shevchenko <andriy.shevchenko@intel.com>, robin@protonic.nl,
- andy@kernel.org, geert@linux-m68k.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, dmitry.torokhov@gmail.com, hvilleneuve@dimonoff.com,
- mkorpershoek@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, lee@kernel.org,
- alexander.sverdlin@gmail.com, marek.vasut@gmail.com, akurz@blala.de,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Message-Id: <20260225115652.8beb1979df3824f7a95d22bc@hugovil.com>
-In-Reply-To: <20260225114155.3ee2efb002aa0f52a905f535@hugovil.com>
-References: <20260225155409.612478-1-hugo@hugovil.com>
-	<20260225155409.612478-5-hugo@hugovil.com>
-	<aZ8fXXGMx3fk7gKs@smile.fi.intel.com>
-	<20260225114155.3ee2efb002aa0f52a905f535@hugovil.com>
-X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 70.80.174.168
-X-SA-Exim-Mail-From: hugo@hugovil.com
-Subject: Re: [PATCH v3 4/4] Input: charlieplex_keypad: add GPIO charlieplex
- keypad
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.hugovil.com)
+	id 1vvIIr-00000004b8i-3YBx;
+	Wed, 25 Feb 2026 17:04:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1772038990; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Stq7NiyxW5CF/ZYpj1nqvMDannoyZwlnMzQ/PgyeF0NaxkMVUlI68eDs/afuHnbr2+WHFmRQZxfJTlYWlLd0zyLWqjjWUVTxJnumFxAofhYeOXCqmvKvqp555F7wVXsQumH5tw1GduK4PpZ5MrE99aPbOnBScVHIW5+7cxFCsaM=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1772038990; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=3RYgv+ynJj3S1QIru3Hn9dqc29aPNWjUzmoSLU7r5Kw=; 
+	b=a5Oe0Ndnnz06KHDJo5Dq3J6MK/1KLjOuG3mwgwqqqQbKovJWasZ2MCpjlf8ey6OnHnCH4SKGA2z2D1avhxLtcyK+FRyYoZXnSih4UZM7quz5VNvfSBEPZ9pvoY+A2AMBB4eNwEzhaTesQui5FtYM0obtGOLyxS312/LjUHkL7vg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772038990;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=3RYgv+ynJj3S1QIru3Hn9dqc29aPNWjUzmoSLU7r5Kw=;
+	b=V3jgCVhIW8MxRWz+GFV+y8JHyIm3dWD68I3G+7EGdF+br4N512+++HwmFH7XXJyX
+	VTX84XBJmyiXwt+qxWxRcDszqGbmzTaLyzaROG7CcMhxb7bXr21EUYFCQsl2vZalyv8
+	FARjC/W5DW9MnsdktyO2a03wVkp5f4pro6xFBbTQ=
+Received: by mx.zohomail.com with SMTPS id 1772038989356790.0109700812275;
+	Wed, 25 Feb 2026 09:03:09 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Jani Nikula <jani.nikula@linux.intel.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
+ Rodrigo Siqueira <siqueira@igalia.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ Maxime Ripard <mripard@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH 14/14] drm/display: hdmi: Use drm_output_color_format instead of
+ hdmi_colorspace
+Date: Wed, 25 Feb 2026 18:03:00 +0100
+Message-ID: <8234454.EvYhyI6sBW@workhorse>
+In-Reply-To: <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
+References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
+ <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_085708_915709_A3658393 
-X-CRM114-Status: GOOD (  38.21  )
+X-CRM114-CacheID: sfid-20260225_090401_924473_64CEDFDA 
+X-CRM114-Status: GOOD (  24.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,254 +103,99 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 25 Feb 2026 11:41:55 -0500
-Hugo Villeneuve <hugo@hugovil.com> wrote:
+On Tuesday, 24 February 2026 11:58:53 Central European Standard Time Maxime Ripard wrote:
+> The hdmi_colorspace enum was defined to represent the colorspace value
+> of the HDMI infoframes. It was later used by some HDMI drivers to
+> express the output format they should be setting up.
+> 
+> During the introduction of the HDMI helpers, it then was used to
+> represent it in the drm_connector_hdmi_state structure.
+> 
+> However, it's always been somewhat redundant with the DRM_COLOR_FORMAT_*
+> defines, and now with the drm_output_color_format enum. Let's
+> consolidate around drm_output_color_format in drm_connector_hdmi_state
+> to facilitate the current effort to provide a global output format
+> selection mechanism.
+> 
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> ---
+>  drivers/gpu/drm/bridge/inno-hdmi.c                 |   6 +-
+>  drivers/gpu/drm/bridge/ite-it6263.c                |   2 +-
+>  drivers/gpu/drm/display/drm_hdmi_helper.c          |   7 +-
+>  drivers/gpu/drm/display/drm_hdmi_state_helper.c    |  52 ++++--
+>  drivers/gpu/drm/drm_bridge.c                       |   2 +-
+>  drivers/gpu/drm/drm_connector.c                    |  14 +-
+>  drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |   8 +-
+>  drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             |   2 +-
+>  drivers/gpu/drm/tests/drm_connector_test.c         |  80 ++++-----
+>  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 182 ++++++++++-----------
+>  drivers/gpu/drm/vc4/vc4_hdmi.c                     |  18 +-
+>  drivers/gpu/drm/vc4/vc4_hdmi.h                     |   2 +-
+>  include/drm/display/drm_hdmi_helper.h              |   3 +-
+>  include/drm/drm_connector.h                        |   7 +-
+>  14 files changed, 205 insertions(+), 180 deletions(-)
+> 
+> [... snip ...]
+>
+> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+> index 4f5b27fab475c7c733622eb8727927571f3fb8fe..171cd495976a3e16f201fd339d3d42a09dc3b63f 100644
+> --- a/drivers/gpu/drm/drm_connector.c
+> +++ b/drivers/gpu/drm/drm_connector.c
+> [... snip ...]
+>  
+> @@ -1424,25 +1424,25 @@ drm_hdmi_connector_get_broadcast_rgb_name(enum drm_hdmi_broadcast_rgb broadcast_
+>  	return broadcast_rgb_names[broadcast_rgb].name;
+>  }
+>  EXPORT_SYMBOL(drm_hdmi_connector_get_broadcast_rgb_name);
+>  
+>  static const char * const output_format_str[] = {
+> -	[HDMI_COLORSPACE_RGB]		= "RGB",
+> -	[HDMI_COLORSPACE_YUV420]	= "YUV 4:2:0",
+> -	[HDMI_COLORSPACE_YUV422]	= "YUV 4:2:2",
+> -	[HDMI_COLORSPACE_YUV444]	= "YUV 4:4:4",
+> +	[DRM_OUTPUT_COLOR_FORMAT_RGB444]	= "RGB",
+> +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR420]	= "YUV 4:2:0",
+> +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR422]	= "YUV 4:2:2",
+> +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR444]	= "YUV 4:4:4",
+>  };
+>  
+>  /*
+>   * drm_hdmi_connector_get_output_format_name() - Return a string for HDMI connector output format
+>   * @fmt: Output format to compute name of
+>   *
+>   * Returns: the name of the output format, or NULL if the type is not
+>   * valid.
+>   */
+>  const char *
+> -drm_hdmi_connector_get_output_format_name(enum hdmi_colorspace fmt)
+> +drm_hdmi_connector_get_output_format_name(enum drm_output_color_format fmt)
+>  {
+>  	if (fmt >= ARRAY_SIZE(output_format_str))
+>  		return NULL;
 
-> Hi Andy,
-> thank you for the review.
-> 
-> On Wed, 25 Feb 2026 18:12:13 +0200
-> Andy Shevchenko <andriy.shevchenko@intel.com> wrote:
-> 
-> > On Wed, Feb 25, 2026 at 10:54:01AM -0500, Hugo Villeneuve wrote:
-> > 
-> > > Add support for GPIO-based charlieplex keypad, allowing to control
-> > > N^2-N keys using N GPIO lines.
-> > > 
-> > > Reuse matrix keypad keymap to simplify, even if there is no concept
-> > > of rows and columns in this type of keyboard.
-> > 
-> > ...
-> > 
-> > > +/*
-> > > + *  GPIO driven charlieplex keypad driver
-> > > + *
-> > > + *  Copyright (c) 2025 Hugo Villeneuve <hvilleneuve@dimonoff.com>
-> > > + *
-> > > + *  Based on matrix_keyboard.c
-> > 
-> > A single space after asterisk is enough.
-> 
-> Ok, leftover from copy/paste from matrix_keyboard.c :)
-> 
-> > 
-> > > + */
-> > 
-> > ...
-> > 
-> > + bitops.h
-> > 
-> > > +#include <linux/delay.h>
-> > 
-> > + dev_printk.h
-> > + device/devres.h
-> > + err.h
-> > 
-> > > +#include <linux/gpio/consumer.h>
-> > > +#include <linux/input.h>
-> > > +#include <linux/input/matrix_keypad.h>
-> > 
-> > + math.h
-> 
-> Ok.
-> 
-> 
-> > 
-> > > +#include <linux/module.h>
-> > 
-> > > +#include <linux/of.h>
-> > 
-> > Is this in use? Or you wanted mod_devicetable.h for OF ID table?
-> 
-> I need only OF ID table, so will replace with mod_devicetable.h.
+Almost unrelated nit: we might want to also `fmt < 0 ||` here, since the
+base type of enums is a signed int. I almost caught myself using this function
+as a way to quickly check if a supplied color format property from userspace
+was valid, which would've had some unpleasant consequences for the kernel's
+memory.
 
-Hi Andy,
-finally I need <linux/of.h> for of_match_ptr()...
+Alternatively, I make my own switch-case based "is this a valid enum value"
+function. I probably should do that actually, but my laziness lead me to
+make sure we only have a single source of truth of what counts as a valid
+enum value.
 
-But I will keep <mod_devicetable.h> ...
+>  
+>  	return output_format_str[fmt];
+> [... snip ...]
 
+Thanks for your work on this series, I was afraid of getting rid of
+DRM_COLOR_FORMAT_* myself because I suspected it was going to be a
+fairly large refactor across every driver. Guess I was both right
+and wrong: it touches many files, but all the replacements are
+fairly simple. :)
 
-> > 
-> > > +#include <linux/platform_device.h>
-> > > +#include <linux/property.h>
-> > > +#include <linux/types.h>
-> > 
-> > ...
-> > 
-> > > +	for (code = 0, oline = 0; oline < keypad->nlines; oline++) {
-> > > +		DECLARE_BITMAP(values, MATRIX_MAX_ROWS);
-> > > +		int iline;
-> > 
-> > > +		int rc;
-> > 
-> > I think Dmitry prefers 'error' name for this kind of variables.
-> 
-> I hate using "error", can be so misleading :)
-> 
-> I would prefer to use "rc" everywhere, but if Dmitry chimes in and
-> specifies "error" or "err", then so it will be.
-> 
-> 
-> > 
-> > > +		/* Activate only one line as output at a time. */
-> > > +		gpiod_direction_output(keypad->line_gpios->desc[oline], 1);
-> > > +
-> > > +		if (keypad->settling_time_us)
-> > > +			fsleep(keypad->settling_time_us);
-> > > +
-> > > +		/* Read input on all other lines. */
-> > > +		rc = gpiod_get_array_value_cansleep(keypad->line_gpios->ndescs,
-> > > +						    keypad->line_gpios->desc,
-> > > +						    keypad->line_gpios->info, values);
-> > > +		if (rc)
-> > > +			return;
-> > > +
-> > > +		for (iline = 0; iline < keypad->nlines; iline++) {
-> > > +			if (iline == oline)
-> > > +				continue; /* Do not read active output line. */
-> > > +
-> > > +			/* Check if GPIO is asserted. */
-> > > +			if (test_bit(iline, values)) {
-> > > +				code = MATRIX_SCAN_CODE(oline, iline,
-> > > +							get_count_order(keypad->nlines));
-> > > +				/*
-> > > +				 * Exit loop immediately since we cannot detect
-> > > +				 * more than one key press at a time.
-> > > +				 */
-> > > +				break;
-> > > +			}
-> > > +		}
-> > > +
-> > > +		gpiod_direction_input(keypad->line_gpios->desc[oline]);
-> > > +
-> > > +		if (code)
-> > > +			break;
-> > > +	}
-> > 
-> > ...
-> > 
-> > > +static int charlieplex_keypad_init_gpio(struct platform_device *pdev,
-> > > +					struct charlieplex_keypad *keypad)
-> > > +{
-> > > +	int i;
-> > 
-> > Why signed? But see below as well.
-> 
-> Will switch to unsigned.
-> 
-> 
-> > 
-> > > +	keypad->line_gpios = devm_gpiod_get_array(&pdev->dev, "line", GPIOD_IN);
-> > > +	if (IS_ERR(keypad->line_gpios))
-> > > +		return PTR_ERR(keypad->line_gpios);
-> > > +
-> > > +	keypad->nlines = keypad->line_gpios->ndescs;
-> > > +
-> > > +	if (keypad->nlines > MATRIX_MAX_ROWS)
-> > > +		return -EINVAL;
-> > 
-> > > +	for (i = 0; i < keypad->nlines; i++)
-> > 
-> > iterator is local to the loop, hence
-> > 
-> > 	for (unsigned int i = 0; i < keypad->nlines; i++)
-> 
-> Ok
-> 
-> 
-> > 
-> > > +		gpiod_set_consumer_name(keypad->line_gpios->desc[i], "charlieplex_kbd_line");
-> > > +
-> > > +	return 0;
-> > > +}
-> > 
-> > ...
-> > 
-> > > +static int charlieplex_keypad_probe(struct platform_device *pdev)
-> > > +{
-> > > +	struct charlieplex_keypad *keypad;
-> > > +	unsigned int debounce_interval_ms;
-> > > +	unsigned int poll_interval_ms;
-> > > +	struct input_dev *input_dev;
-> > 
-> > > +	int err;
-> > 
-> > The naming is even inconsistent between the functions...
-> 
-> Agreed, will fix as stated above.
-> 
-> 
-> > 
-> > > +	keypad = devm_kzalloc(&pdev->dev, sizeof(*keypad), GFP_KERNEL);
-> > > +	if (!keypad)
-> > > +		return -ENOMEM;
-> > > +
-> > > +	input_dev = devm_input_allocate_device(&pdev->dev);
-> > > +	if (!input_dev)
-> > > +		return -ENOMEM;
-> > > +
-> > > +	keypad->input_dev = input_dev;
-> > > +
-> > > +	device_property_read_u32(&pdev->dev, "poll-interval", &poll_interval_ms);
-> > > +	device_property_read_u32(&pdev->dev, "debounce-delay-ms", &debounce_interval_ms);
-> > > +	device_property_read_u32(&pdev->dev, "settling-time-us", &keypad->settling_time_us);
-> > > +
-> > > +	keypad->current_code = -1;
-> > > +	keypad->debounce_code = -1;
-> > > +	keypad->debounce_threshold = DIV_ROUND_UP(debounce_interval_ms, poll_interval_ms);
-> > > +
-> > > +	err = charlieplex_keypad_init_gpio(pdev, keypad);
-> > > +	if (err)
-> > > +		return err;
-> > > +
-> > > +	input_dev->name		= pdev->name;
-> > > +	input_dev->id.bustype	= BUS_HOST;
-> > > +
-> > > +	err = matrix_keypad_build_keymap(NULL, NULL, keypad->nlines,
-> > > +					 keypad->nlines, NULL, input_dev);
-> > > +	if (err)
-> > > +		dev_err_probe(&pdev->dev, -ENOMEM, "failed to build keymap\n");
-> > > +
-> > > +	if (device_property_read_bool(&pdev->dev, "autorepeat"))
-> > > +		__set_bit(EV_REP, input_dev->evbit);
-> > > +
-> > > +	input_set_capability(input_dev, EV_MSC, MSC_SCAN);
-> > > +
-> > > +	err = input_setup_polling(input_dev, charlieplex_keypad_poll);
-> > > +	if (err)
-> > > +		dev_err_probe(&pdev->dev, err, "unable to set up polling\n");
-> > > +
-> > > +	input_set_poll_interval(input_dev, poll_interval_ms);
-> > > +
-> > > +	input_set_drvdata(input_dev, keypad);
-> > > +
-> > > +	err = input_register_device(keypad->input_dev);
-> > > +	if (err)
-> > > +		return err;
-> > 
-> > > +	platform_set_drvdata(pdev, keypad);
-> > 
-> > Is this needed?
-> 
-> No, will remove it, and replace last lines with:
-> 
->    return input_register_device(keypad->input_dev);
-> 
-> 
-> > 
-> > > +	return 0;
-> > > +}
-> > 
-> > -- 
-> > With Best Regards,
-> > Andy Shevchenko
-> > 
-> > 
-> > 
-> 
-> Hugo Villeneuve
+Kind regards,
+Nicolas Frattaroli
 
 
--- 
-Hugo Villeneuve
 
