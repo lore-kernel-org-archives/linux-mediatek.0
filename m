@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D6A4FD375E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5072FD375F
 	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 13:13:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,42 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1pt9Gg+51plmQ9qSs1GN5KvykFAGV2Slzj1PaKVZUOk=; b=1HfEdC6KxgemQ5naOHoSnh/r3g
-	V6QtWEoYQxdJUbq3SAE4zilZX4tBAZNtbG4hX1qgdOlzPgrFCIIJDiv77OnxnJgEC58Qwf0FvYzXl
-	/YM5sUKZ/R1ZSc5+QiJPYAZ9NsYuMGSvI4PLwtb6iV7RPDh5wfoVgbSfkbB8lxPfAL55XoeBPsD86
-	prdiZh40Nv/zjbZEzbY2xLEk/rcKkv3C3MuS8pFZjyhbvN6RTNyLutsSjyl34kHpssdGtvHEvhFWF
-	6tui38WPRP0Aez62RXfgy9GUfCKqBKlmoptTJ1b2ZsDDq216j4Za+nKRLQbHn92UQ6rYqyF1llZjt
-	U6YCj9jw==;
+	bh=YGYL5PjOEPbwUaDq1z3K2LmetQQqT1ShXR1KX+ml8yE=; b=pM9m3KkgUDgxTEDX3icataN29t
+	SsBBr5TThG5ekI251wWsXdmH+RSxvWjO6xP46+KYh4GYEoli4zkxADHDSL7YNtyGzTgAS+Y3zFTMD
+	yKv8jXiC4nQIQOmAPAdmSNtrPefBvMJoDpbZrUhc/FBVTxwSvPqjn5iTrUEiuzt2NJxrIttQfOG1f
+	DTG9dSxLhfxQUVRNTEEu8gbyklnH5hN0oTogzZ5eojfx/fYoTsxjQa447+um8/LBLW76v0HyDvTiR
+	4Byxm9gH7N7Ebt2VYaQDTuvZLF3l8Z3vmpr2IRzUcS48eIpN3HM0JznM1NUKewYMVl0+fgF71Sv3/
+	E+/qM/mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvEhS-000000043Ay-0khy;
+	id 1vvEhS-000000043C9-3Jqt;
 	Wed, 25 Feb 2026 13:13:10 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvEhL-0000000436c-3TxV;
-	Wed, 25 Feb 2026 13:13:05 +0000
+	id 1vvEhN-0000000436m-1UKC;
+	Wed, 25 Feb 2026 13:13:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772025181;
-	bh=/0xaQZyWpI4s5bVwNLU2o3Pf+ovfZdLHiQEKO2fUD+0=;
+	s=mail; t=1772025182;
+	bh=0OYJVrGzHeHo71a4qjaYHaB5i/Wxv/lLqWp9M+WtRQg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=CtB7luOegegOwzmuv0XXOtfg3KHaGanVCDQLIiXCW7k+avQn1VNLPIpWtKhcKEU6k
-	 oru3I/07fm0bwX4VZ4lxrrkcliCrClJN8iJV0h70fBKdPjpHVdXX2EdiveE4NRiISi
-	 jpCvpjyKdyy8/7822HEBA/mcAPJo2lMvSEvSTu0U5oVdWE0jrVYfExOvYnAY/2YnuE
-	 iedKeHoBhldBBGcQQGOk9zjgbWEu1UkfE2YyE1NLYZWOq0EX31+8aTulmDRabekCmN
-	 s/1BjzwJ7ahEKpujGXJVvxsx+XLV1SC4COv34t91z8i94FxUHrXcoUZqUIbGzrtRrL
-	 f0XGPaVGa0yPw==
+	b=R0B2OzV4iRgrFJQjaLeW5PqN6rUJwdVlMdClTqJAsv6M/rxxo0azL9WyzH93S9Is0
+	 NKvkhvKlnRsItAQUfsir2NCy2hpOApMWL4oUT8aGxq0OQATkusUUYKgale9jafnHJM
+	 4JqRr/FWoyL9D01gR9nNiU5zPvav/HrCEZVfsUQie4AdWNDW90Yz7N4sIJnf+mw1ta
+	 OCnas86JWDlIv4+oVv5nVfXn7BFjPuKVELcFEFZQqxtDwjl3qFp525lutQ7Kz9ndpx
+	 EPIA0Eaolzl3f6bge3euMAuayNJTE76tpK6Fhqwo8XDTa5LWNsl1ncwFylC6qT+BUv
+	 QhGEw1ii3tSbw==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E6AAD17E0D70;
-	Wed, 25 Feb 2026 14:13:00 +0100 (CET)
-Message-ID: <c79f2d6e-42ac-4df6-a3bf-3a596d43fd19@collabora.com>
-Date: Wed, 25 Feb 2026 14:13:00 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D136917E0D8E;
+	Wed, 25 Feb 2026 14:13:01 +0100 (CET)
+Message-ID: <ce5899b6-1b88-4212-9e61-edd80c5b8c3a@collabora.com>
+Date: Wed, 25 Feb 2026 14:13:01 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/7] PCI: mediatek-gen3: Integrate new pwrctrl API
+Subject: Re: [PATCH 4/7] PCI: mediatek-gen3: Disable device if further setup
+ fails
 To: Chen-Yu Tsai <wenst@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee
  <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>,
@@ -59,15 +60,15 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Bartosz Golaszewski <brgl@bgdev.pl>, linux-pci@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20260225072225.3345307-1-wenst@chromium.org>
- <20260225072225.3345307-6-wenst@chromium.org>
+ <20260225072225.3345307-5-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260225072225.3345307-6-wenst@chromium.org>
+In-Reply-To: <20260225072225.3345307-5-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_051304_013919_106919FF 
-X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-CacheID: sfid-20260225_051305_567158_BF56F538 
+X-CRM114-Status: UNSURE (   8.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,17 +85,16 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 25/02/26 08:22, Chen-Yu Tsai ha scritto:
-> With the new PCI pwrctrl API and PCI slot binding and power drivers, we
-> now have a way to describe and power up WiFi/BT adapters connected
-> through a PCIe or M.2 slot, or exploded onto the mainboard itself.
+> If further setup fails after the device is powered on and link training
+> succeeds, we want to place the device back in a quiescence state to
+> avoid unintended activity and save power. This also helps with power
+> state tracking and balancing once pwrctrl API is integrated.
 > 
-> Integrate the PCI pwrctrl API into the PCIe driver, so that power is
-> properly enabled before PCIe link training is done, allowing the
-> card to successfully be detected.
+> Power down the device in the error paths of mtk_pcie_startup_port() and
+> mtk_pcie_setup().
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
 
 
