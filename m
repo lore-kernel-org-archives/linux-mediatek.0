@@ -4,73 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1147FD45E7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 20:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC606FD45F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 21:27:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	References:In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gG32QezSPmvNiifOmlk3UNWlKCkfpONTm9OEYsqWNT8=; b=gJoLWA7HyqEXTRIFCGo2I1Ef/d
-	htoCPVWw+9MOBn07HW2+g5S6gwQf0e63Nl9HgFNV/pthp5ID1fr5U1pY55NvXD6bI3RONLp8isYAN
-	wm0TrpvF3I5elH1WKr7On9o44vp4IS50Gaa46SWkDYEmvDzGHzVwMFw3QtKUK3MNbU9/1tQuSWzmg
-	pnoNhL7sQI5PRwOxJ/xzDzQX9tEdfo78BJ6zufEtfynC24JAilA0fDRTjC0WyANFZeIp3ENFvxcuF
-	2DPGXQppkRo5fxVEs+Ur3fmfH6f0RnKob1/mgAn7LiHDsd2GuMkJPGQWuWe6hwEGrkLD5ZPKRobvd
-	7soWX7PA==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6qd3od5gT9Y56WsM6DlqnASWYdZTTGBmXPSgA7J3iS4=; b=G2bC23CqGOiwknyVimUkcVNuya
+	jFNs0HI+utfs7AhDZcerUbIlddb5oZyQwfLijDggXYVpUPC+x0ud2K+MvZB2Obr4x85pPF+WEhHuQ
+	vx9D5v5MTLp11/euK138TiCSDWLYUJXYZEGiVOaSwHQUC03VR3/iT73TTgmSDw/8GBwAgkRdq4yFa
+	zFQimxCqKT1GebQJ8HzUeFE6ASyO0NU1rRkr3Zr7i9kV0FpnMiXFeiJDsyB+1I47QtomW6eiXq/QC
+	o6taL255Od9+wE9dJV1GKc/pckmF2TSa9dKkIm/YBm0awaKCFLDEF/A3lexJ9NHkFPmrFLdx4Hg1w
+	rVIPcMUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvL7l-00000004pAy-1ZmG;
-	Wed, 25 Feb 2026 20:04:45 +0000
-Received: from mout.gmx.net ([212.227.15.19])
+	id 1vvMPV-00000004vKm-38Cu;
+	Wed, 25 Feb 2026 21:27:09 +0000
+Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvL7i-00000004pAI-0LIY;
-	Wed, 25 Feb 2026 20:04:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=public-files.de;
-	s=s31663417; t=1772049853; x=1772654653; i=frank-w@public-files.de;
-	bh=gG32QezSPmvNiifOmlk3UNWlKCkfpONTm9OEYsqWNT8=;
-	h=X-UI-Sender-Class:MIME-Version:Message-ID:From:To:Cc:Subject:
-	 Content-Type:Date:In-Reply-To:References:
-	 Content-Transfer-Encoding:cc:content-transfer-encoding:
-	 content-type:date:from:message-id:mime-version:reply-to:subject:
-	 to;
-	b=AeeZB5hfIlBef29wS0xZ+xYQBwvlJkspdXind8lEvQFZBhCQpMsxNCswTC58YI1b
-	 qhj5GBFYVPptD0RQuUiY0ig2tGCbu9eH82nuTNBMaHbUmZXfZvss/zZ6SVVyz5A2I
-	 cE5vya6poceVh/efQVk6S3WY64pmdVqmlOq8tZkJXROi1oJ2wMeauxSunf8Bnw3RW
-	 bUhDy/GVchGWxYJJ6ZxmkW1wlTp6Nn5fxLEspGH2onYWxSP7T3hNZ2ybpRc+/YqZA
-	 /j0UQRN0gB73cCMqASNyxXGCXfbk4fv36g15ngsMleuOSx+iQ//5BkmC8aSZ/HZTi
-	 YklIWORUA9nrzcx5TA==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [80.245.74.92] ([80.245.74.92]) by
- trinity-msg-rest-gmx-gmx-live-8d9bc96fb-9hfbf (via HTTP); Wed, 25 Feb 2026
- 20:04:13 +0000
+	id 1vvMPS-00000004vJr-32PD
+	for linux-mediatek@lists.infradead.org;
+	Wed, 25 Feb 2026 21:27:08 +0000
+Received: by mail-oi1-x231.google.com with SMTP id 5614622812f47-463a0e14abfso125686b6e.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Feb 2026 13:27:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1772054825; x=1772659625; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=6qd3od5gT9Y56WsM6DlqnASWYdZTTGBmXPSgA7J3iS4=;
+        b=pe1s+URMgQRuN7jzSiHB8jGvhr35M3eBn1nr23Hv2oBBncBb6MSs1vCugKG0u/OgYH
+         x6cldFOTGYXArxFHy/f3ay6wAG6Q5j9vmpAlZZGgQTpR9w5MRbybnBJvtkYKrgMP9WCP
+         G+pUlND+5IQb88YqdEi/i/AqLn94Lc6nUCcNIcS2BHLEZoYiPuCuGmjkqFI8nj1oSmay
+         u2KHt/FNynn15A8U3BIjYn8Fu+jSJSMR9QhNau1ACdZKQMcDXI8/dswJCfSOrIrGSi0g
+         BiJdUv2140m+pJ1VAwZ9f8wBL3PmDB+d5d6GBOBMVrojkGb7vSO1kGEQe6GUn1SvjJkC
+         QV5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772054825; x=1772659625;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=6qd3od5gT9Y56WsM6DlqnASWYdZTTGBmXPSgA7J3iS4=;
+        b=qIkkDu5YYcbnsko/QE0wGvnvyvuqMn4pAS0B+dYGwNRrbT+TQW0BEzM5ETuR+CicF5
+         TqFHmTcsqA5endGg7LSX3oyqn+H8urPP0OZmT0QHH2/Gl6ZQxwHodXwjB1qNYyMVoYGQ
+         OmfDUBzGXSY4za53griGIqugqvNBBvfYqlCBXGwYgoqNEWmQDzJXemtPSip3RBL97XTc
+         yxb0mfs+/pQ48xDKWn1JP/sii3dO8wgpgdbmRn5bZHfVlF+R+HQRB6lEf2lMUB2YSOmv
+         UVrsz2LVkA+SCGuHR+QHvu/uZuUxXs0K6dHFJtvh/HIEIHkKurttp9ht5BYMpz53OUVU
+         l9pg==
+X-Forwarded-Encrypted: i=1; AJvYcCUNcKKP81skhZTYhHfwx4uXyVx+UjdOzOwv5Bu2RprgDzKOgDDtnLU8AInt9DTYY9TWY4MRuvqgHao3PAgwIw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw+Dkp0CJYi32tK99MUW3mE9GDd7wlRwwdgTADQJinc4Da9jwnG
+	hX7vBRN4TuYRZqXfw7NTuXBOnXgj+tsURZc4eh5ZPYaX4KlyJhGM9IZPGEd8rlzUHIU=
+X-Gm-Gg: ATEYQzyaNBi3WCfc2yrKlObc+aner/W3tLIkHEglQDLlKgW2N3cRxA1zbSTXj83jbK6
+	gIa0UGULlV2h74ikkaL9zFLHkYDDgSbWGE9ROusik9ezePTNBzAntpzwN41NbisPCXYOjL/HKm9
+	A8LhltOCB+Z72xBwos8DYOUV8G95A9F0ioEC9IKG97ykWm8zqcIonOOgO52+ZKoqLXsiEYGN8LF
+	R+/n8sogP+LjsjVC2p0rZZ6GTK49uL/ZGg6ydmJmbLonlWPKP4bBPfcM+CS2u6GgM7htt/KvEoQ
+	gEONTDxguqKvoVfCMwsEj2Tjlvm20K5mkdAh4oeqzeJo27A9X2sdnEsFJ5VbRk3ARH4RXFGPjyg
+	w1pLyHt8NTM4Y3AtgtOLrwYjwQlDifXorbkM4NgBf3O24UuyV59szk71UzVQs6ID5qD8zl/075t
+	WfbzzldeT7zUbTxDl/Za1EYVvSHDUkz1rYG2ViN9hfJbt5uoqbAYhd1JnAMRa5BerHUD1/h8g=
+X-Received: by 2002:a05:6870:2188:b0:3e8:8e56:671a with SMTP id 586e51a60fabf-4157b210230mr8655778fac.54.1772054824819;
+        Wed, 25 Feb 2026 13:27:04 -0800 (PST)
+Received: from ?IPV6:2600:8803:e7e4:500:146:def2:caeb:cb1f? ([2600:8803:e7e4:500:146:def2:caeb:cb1f])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4160cf2572bsm64198fac.2.2026.02.25.13.27.02
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 25 Feb 2026 13:27:04 -0800 (PST)
+Message-ID: <120c7f33-4ca1-4d35-ac1b-b65362f1adfc@baylibre.com>
+Date: Wed, 25 Feb 2026 15:27:01 -0600
 MIME-Version: 1.0
-Message-ID: <trinity-983c3017-9988-4ea9-b704-0dddd89a1e20-1772049853446@trinity-msg-rest-gmx-gmx-live-8d9bc96fb-9hfbf>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: frank-w@public-files.de, linux@fw-web.de, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Aw: Re: [PATCH] arm64: dts: mediatek: mt7988a-bpi-r4pro: fix model
- string
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 4/7] iio: Rename 'sign' field to `format` in struct
+ iio_scan_type
+To: Francesco Lavra <flavra@baylibre.com>, Jonathan Corbet <corbet@lwn.net>,
+ Shuah Khan <skhan@linuxfoundation.org>, Lars-Peter Clausen
+ <lars@metafoo.de>, Michael Hennerich <Michael.Hennerich@analog.com>,
+ Lucas Stankus <lucas.p.stankus@gmail.com>,
+ Jonathan Cameron <jic23@kernel.org>, =?UTF-8?Q?Nuno_S=C3=A1?=
+ <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
+ Puranjay Mohan <puranjay@kernel.org>,
+ Cosmin Tanislav <cosmin.tanislav@analog.com>,
+ Ramona Gradinariu <ramona.gradinariu@analog.com>,
+ Antoniu Miclaus <antoniu.miclaus@analog.com>,
+ Petre Rodan <petre.rodan@subdimension.ro>,
+ Dan Robertson <dan@dlrobertson.com>, Benson Leung <bleung@chromium.org>,
+ Guenter Roeck <groeck@chromium.org>, Jiri Kosina <jikos@kernel.org>,
+ Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
+ Matti Vaittinen <mazziesaccount@gmail.com>,
+ Marcelo Schmitt <marcelo.schmitt@analog.com>,
+ Esteban Blanc <eblanc@baylibre.com>, Jorge Marques
+ <jorge.marques@analog.com>, Sergiu Cuciurean <sergiu.cuciurean@analog.com>,
+ Dragos Bogdan <dragos.bogdan@analog.com>,
+ Alisa-Dariana Roman <alisa.roman@analog.com>,
+ Trevor Gamblin <tgamblin@baylibre.com>, Renato Lui Geh
+ <renatogeh@gmail.com>, Eugen Hristev <eugen.hristev@linaro.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, Andreas Klinger
+ <ak@it-klinger.de>, Paul Cercueil <paul@crapouillou.net>,
+ Ramona Bolboaca <ramona.bolboaca@analog.com>,
+ Marcus Folkesson <marcus.folkesson@gmail.com>,
+ Kent Gustavsson <kent@minoris.se>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>,
+ Matteo Martelli <matteomartelli3@gmail.com>,
+ Marius Cristea <marius.cristea@microchip.com>,
+ Heiko Stuebner <heiko@sntech.de>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Kurt Borja <kuurtb@gmail.com>,
+ Francesco Dolcini <francesco@dolcini.it>,
+ =?UTF-8?Q?Jo=C3=A3o_Paulo_Gon=C3=A7alves?=
+ <jpaulo.silvagoncalves@gmail.com>, =?UTF-8?Q?Leonard_G=C3=B6hrs?=
+ <l.goehrs@pengutronix.de>, Oleksij Rempel <o.rempel@pengutronix.de>,
+ Haibo Chen <haibo.chen@nxp.com>, Salih Erim <salih.erim@amd.com>,
+ Conall O'Griofa <conall.ogriofa@amd.com>, Michal Simek
+ <michal.simek@amd.com>, Gustavo Silva <gustavograzs@gmail.com>,
+ Tomasz Duszynski <tduszyns@gmail.com>, Roan van Dijk <roan@protonic.nl>,
+ Jyoti Bhayana <jbhayana@google.com>, Mariel Tinaco
+ <Mariel.Tinaco@analog.com>, Nishant Malpani <nish.malpani25@gmail.com>,
+ Rui Miguel Silva <rmfrfs@gmail.com>, Linus Walleij <linusw@kernel.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Alex Lanzano
+ <lanzano.alex@gmail.com>, Jagath Jog J <jagathjog1996@gmail.com>,
+ Jean-Baptiste Maneyrol <jean-baptiste.maneyrol@tdk.com>,
+ Remi Buisson <remi.buisson@tdk.com>, Christian Eggers <ceggers@arri.de>,
+ Mudit Sharma <muditsharma.info@gmail.com>,
+ Javier Carrasco <javier.carrasco.cruz@gmail.com>, =?UTF-8?Q?Ond=C5=99ej_Jir?=
+ =?UTF-8?Q?man?= <megi@xff.cz>, Song Qiang <songqiang1304521@gmail.com>,
+ Dixit Parmar <dixitparmar19@gmail.com>,
+ Gerald Loacker <gerald.loacker@wolfvision.net>, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org,
+ chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, imx@lists.linux.dev,
+ linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+References: <20260225100421.2366864-1-flavra@baylibre.com>
+ <20260225101735.2368252-1-flavra@baylibre.com>
+Content-Language: en-US
+From: David Lechner <dlechner@baylibre.com>
+In-Reply-To: <20260225101735.2368252-1-flavra@baylibre.com>
 Content-Type: text/plain; charset=UTF-8
-Date: Wed, 25 Feb 2026 20:04:13 +0000
-In-Reply-To: <1665fa1f-67da-4688-89db-d864b5bb0509@public-files.de>
-References: <20251215074609.4100-1-linux@fw-web.de>
- <1665fa1f-67da-4688-89db-d864b5bb0509@public-files.de>
-X-UI-CLIENT-META-MAIL-DROP: W10=
-X-Provags-ID: V03:K1:MTa4HafF8wMtqwitPqKwnJiblV59jVORNj6NeHLkfbucTFZAfloke+uyhbk01SYWtm5DE
- 2vWHliuKBDxPZOE00E9cQ3vgWSx2nQStFkX5OG7UjYcS74aq4Ab8dMo80Ktvn1VQQBFhzDMM38lw
- y8uM79rKMXlwf0Nzzy3Xw4sLJxGg5IML0m3QgkG9gX0JgitbFBMkdCvcM/vR6PLQ57zzZqQCMNgi
- sefmb6mwe2pvnVSx3NIMK2yFJo7FNtQrux7WGtSF6SraLyQirav5ZqviHQyW68ZfJEQh6A7is0+H
- 3KkY8GtqYj3pfRN1GRqVvDibZwdz6vZouWE4w8XpZFGiq9RiJ6F3jdGq2JBDJIN3aw=
-UI-OutboundReport: notjunk:1;M01:P0:qsc6YkO+Gdg=;WzTLxP4LvGDDcM7IEBb/jL7SGHk TxLrbolL0/hVsr6IUVT0Ks2FIIe3Lebfd2e2rqXxahs6/4MYHdjBptJcrJ6K9R0YI4FaY5iwB pxz7WUVU0QccGyD1tTt78zT16el4zbdQCJDBzkEgWsUZO6yj6IitZspYp4mNn4+4CFyM2oZNm FdgHk6VJ2lsZrnRcfE1dJVg4tnV7Y2+E988eFvNHvjzT2BLsw0zue4UvmsTmCNU+A2gYSF1R5 64KpEz4ekYZYEujOCf/iv/UJbV4PycCOZCe3HexrhA2h5zqW7IQ9MNtH8sa1DDc4Ya4bTPFMo Zu1MQrVvxd2y8HC/7C/OpoL0Na/NQVMLkX7syMubWrkc0QrenP8X0KTqExUlA52vZelkVjePM nuIydkNUTCljVUcZ03xMMBiBlSSS8HVgpV5TUb34j13mFjyoP3qYlpev89M1+WEmZgazaU6tG yTRP+zqabn43t++EllKEZ012B3DmPubBWyap10wOk/eqtLpg/iTPrX0VQwlCpO8iBvOI6eEvO y2uVse+/2vY/rwWMrSwC1K8hjsbiETwcEYw1FENPIugg21TGUr+DKzJlqWBJUTMs/XWySjdEd fyAoCToZUovYH7cGIe+C7eMRUwNgqnsFItbyKQBiZR0lZbBAmeJbQuGUES3i4XJYkEBHwby4V Cgn1CHetBivksUBsbiybyxb4Pf2DcvNyXFfEx26aTU2ZXAx59S76plYSZItDOp0RoTk5R4kCd jAZSzXG4J7g4SKLTWutpptOcNbnaKWSBr9SML69uCRbyAtd1PzHJwHOoHp2RuRVgHnQelp2CZ YjVEFbKnrL/pzba3MDPxuLuPtjrP5xrdKZWoup3OETkjQqDvfU181OHZn1zRo2ToE/aZ6IMoJ bMLRPEZtmu9RlzqoKFaEzD8Z1D2LqopNpkCkjr33KkHKXuAMGJhGsWQo5rROdAltImZKciSqw 8xF+1rMroArPY0KiFW6EV5ql2jzhzP8F7a0S7o0qOnHytFp/PLd0tSFCgybx1rrhfQ5W2SdDz XxJlDxzfQvesITU1HGzuAKSFytGHQb3xhcvHIyp4l2dqqgreQVqo6DdBvIgjnSQvC6frhBdIt zjLujjhOtT+tQceYp1Da9BbwBMnBfL3CzboFqsVYv8SF+PDXJMufe4QB/rHSEua01SnNN5PyK dRyxwkIfrESYlpeFimSxSTfKoGoaXkX4DzGxo3pnZ+IKeALnIfB3xaiNyg0943S+zzQdrnkn3 2pI6gxfNeglaCh+9nyfDqapUtMxQ7TNSBPvjwy8IZEYSo6i1HuTLcGdwMHHtZMwO4xnYdTeTJ sgIHolWW60F+0Z2w6ORfd0FpPROL84pDM+OW3ZGXEloslwfzOLWNODYdDxmCPID7MmRA0ag3H VFoGWyCVvvF3LF/c9seawQIkVJrv/PNL7a2VjFD1B/bng/dV3EBMqn1jS5GCsd3mCRyNu6Iqk TUsxk60g95JPEvmYhn654Lw5MyeSOTppzIkMZuzTWvsNxUBXylpDpmUnpAjREILXR90VLw/74 kSJV8J2kxIwxgCwRNtW5w43VTf0acz0q70IRDP/ERuBG7PuH6oK4WDIamV1Qeue/7JY2eOr6f g1hje231Cw0HXszBM1VhhpTAOsUxzNa4rf0j0qhwtRslGlosj7RQ3q6l0jFC578V55ShvWY5c y7IN1zPUCAb2OlESn3/nB9Gdz2vjzxupOAwtHK2uZxcQbmf9k7HKOnbDOmJE4LlqlTMILkj5Y kx4oLgIis6pyFEJeAyYSoyejIHgafcEFlI/Uw+3E9fc6vbxvrpTCKvFebqFgy1EgrCMCy8tLr ZvFO6mMeccyZ+99RoYleifE0xqT21fKa4kH7pyAFpOcA4+cUKQn3dMda6Dx8+QMrOmFobdCFv ad/SM1weqB1IPJ+CjlmOBU1nQQlnTjqB5OIBqvZ+WwZLyn27E0CnDl/4PKMgP6yQoK1QVi5HR Nt5k60mwgkEzS1kQiCJ6cl3smjTAm5dFUQrMrNhMfPe3rucadeElB1qReuH6HANQt/dPDSAHw 4UmkqEWG6pFwZFFzbbC9jSc6pVD5YxxmUnmoBOWlpi8WJ1PQXdVDkEZcAu2kJKN1BThmRMq0g Oj5TvjTtvk3Facv9C+2y3loIWZB+Z88Kdk3H/9IvpN0xwno1v712u+5BoGRbh8ObM86QLeRPb CFT+ZFjPZbhA9vnFp6UNjkmy7O/jYg6L4mgkHUq3qWJZgpL4AxDLEaPcf1i4OmItPj1NIju8W /14bucn/QjSPKhd9qjcNf5tVGkw/yEm9Wa4IRC+3DXI5IhrPpJ2s1iGI6vU3/gYw4l/ZVv7J0 DIIx0rRDrjGYnJMSJ8ob7oekneGofKBfsIUb3ZSL/WNcNlXz5YS8bo7PoWpB6O90+OIgjbzWg iIHiNcN4cvPRSxvsRouGJ3A6s5z10fv62rX7ps166psB6Pj5nAbezog/NSIDJZPpFQ2AaJqmZ MgmK/eOLZd7D0hbpJvQBCldEuscq1mq7X+oGOZT2vLOFZ5fOwAgGgEb1RqXyI4DKM5Nh9tf2O pmLMblrdTQXcskJ3d+Dt2uCSw9UgPj/N/gcERq/278SrOhk9tOeSRJpXmdS+x93yZJom+lDSS l8litK+lO9WZR23d/j+22P9NQ9gwqZKGdS3Dtwe8sdWYB+4WQnxeO6lbrywQsYuX3SqG+yPzh YKqbJtw5dMvQilblao3RlNSyjyrnCj5Nv9P/jH8GjK9/6W96oCwqBLTp1WbSs7kF4PgoCq+nu vTrG1U6pqEe7HJoMJL+PH3PlVVjMbth5AbZsNRnJk+fi4IgAFDISLsmPimSiiRMxBPilqCJUz uRHvGgEckfNznBCyPDDo/VjixDMiieDTsTwnWwdOVoAtonrUKgVxmepkt64V5Xc0KBSZJoan5 iDmOgCK2QdpgtcHaIzUWZRkNej9noOQUKJOtWkERrC5/moF5G6327XPnWTeEDoXJZK4EQXVpd BZuhR1wX/9EdgDPPQKVbT0AjCFTSBrg1mGhdtgzDtAVZsZUUYCi2JMB/UQ0PO52bmT9xAl0P8 qHys8XAU/ZmQHGnM1PwQR8HxAIX57HWBT5M6hJR1Q3vsDV352i1OWYe80Im7r5ZswNxskP0BG t78Lo04k8d0yV9Y5RZV/+oDAd6iTwUvhdQDOIzsfyinbtFBd42SSJ1W5HmcXDzJqM38u9QG4p oKl4HIb3s2+btLVcelXi4Rt48hDz6yfly2UqwM0TiQkad1lkEQ8lC+8Q4JrnZpiuBP6r0/w+I KaVmdO+swl7HoVHJv0nPowrJC/CcLl9hRmwU76DWxrB3k4+NmU6bgDcbBWZBmWq3gvCpoVICu +hK84RJacLrFMf0+5+t7WoMHn6bk3VmxfaKyuqknGfee0wTE7PYZqf90YhP0pzNKAwNlsBPfX XyjWWDpZaT+EJfhmMid5BMvFR5HlRAABKxL5+dP5A+B/Cu31aR91bGHnGLVJV4UMXlSyE1Ios hGNuq6Ps5H1fsMRpebJKLkj1uoW1dy+CqXJdEE/AbvGGrqSm/gBdjzNWEIHXimVBc0HMhUqHh EGgf39Ev5q3dQWD2s4gnml64SY8bSvCwzHxDWwrHL4JGpP3j/NuGnessSrDFSk/oAy4vdC+VH lINvDsoA++ddF+mlYOCbc0q0QIjNKEsLMAnJDlcrpT0LK24mKJrZ5aZzCUi5lzqI+ZbF5OH7M +Hn/W0UrNbs6dn6H8Q6n2PD8IOgzcIwm9DCtcuW1GuyVm2wJ2nxO/57RhIOX3jNobbD23vlUT P9ozJaD6QLFrAMB/a2DRI0YleTWnoMmGv4In9LQrgnTEoEYCDGIkWfNhxup1lC0JXaa1dnVhO nAwbG6T+jeNdFpy74zfYbReNQOGONGQmqHodrCevF5dLsBYCiMnpv0CbB7BPBdyxqyU+WWHAJ
- WsfWfx54p99sQIF/TcIOo52jRDSIPQ4HmI/nPWhQv4cfswx73LfDXDDmEHMdOVyxNRudKyyjq OPQ+LZ3/5dA5TeblS8KzzztfQc8mg3TnwN4YQpgVcKAKLfI9e9b2y1vATmoMVTSiRKaModpxa BX8v4NC7dlCIZDcsYy+/5Gl+ckVyytZ5OzvAL3sx8vROaWeBg6ZrXfRdfvXbPg8BIaiKxXc56 kR30dCIvb3EB3ZACgpJRGcpuqXusobm6mlfmTvlbKpsA+lemQAr/jbSlrv2lIbrysFy1c8Z7i 4TIG5OF3bDRQQ+E3/H1C6+HggVdBtj72jjYLO5D8bs6kbBPIxfzzAqyzcRyDgi97jOVsS/yu9 P6G9ma6zSgNHHXOyGrA7nA6L1S1gkfCgOxbMO8e5cRUwm9SwmfwGNDaOw4ICLEc2utND07nqY 35kq+RVG1dw08dlv9VGMuD4FXqQgDsAth6UqHTVDK9ovjjHleaz7/wareZx7N5PCa3TiFOCNj TVH+ITO2iFTACP+SN5AUEN02KenoH5KRsOw6u16mIPWk5YIvUsaF6OSiN1/NrlMlxscoVaYcy MI18buQcaly56yux3kDMUHkeXIVL6Dmsn6XlbCWb7Lxnx7zSbGFl2aseO4lN6hu1uFnC/+PeH LTSOTgnt+K/NLHecb4waSPjS0Vi2q1OqPZBkuCWtOW3g8eQD1RK08Fjue5d84hktfhu+PKGIO OA23RZpkv/OK6ectY8i8BzztaHGlPoWZf8qUgap+7Eo5/FgDtwpmkT8R6XgZFc7b9xec03EyH 2P4CwHAzRAnhBEhBhELjM0WxGrnrUkngfZAPIECd14miSjhD8EmqzXGZAb7eOLifSWISzhQWi CwX5S5RJx7eMS5Mcxv3otevUG/pKz1zZTcz/EVUhafp55Rx6fjrNmTNdye87ilQ+jLs6uYqHi zLkQ9pz2WK47PRWDy/dpBX5WXGumVaOME4dy9DQUwn8gJG7Q4Q+hqyf1EETmc3NuMBw7T693b RQ/qLhA4I7MaQJuhmjttOdw==
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_120442_677967_2F80BAC7 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20260225_132706_963759_CDB2CB07 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,71 +165,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo
+On 2/25/26 4:17 AM, Francesco Lavra wrote:
+> This field is used to differentiate between signed and unsigned integers.
+> A following commit will extend its use to in order to add support for non-
+> integer scan elements; therefore, change its name from 'sign' to a more
+> generic 'format'.
+> 
 
-can you please add this fix?
-
-regards Frank
-
-> Gesendet: Freitag, 16. Januar 2026 um 14:38
-> Von: "Frank Wunderlich" <frank-w@public-files.de>
-> An: "Frank Wunderlich" <linux@fw-web.de>, "Rob Herring" <robh@kernel.org=
->, "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@ke=
-rnel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino =
-Del Regno" <angelogioacchino.delregno@collabora.com>
-> CC: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-=
-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-> Betreff: Re: [PATCH] arm64: dts: mediatek: mt7988a-bpi-r4pro: fix model =
-string
->
-> Hi,
->=20
-> just a gentle ping
->=20
-> regards Frank
->=20
-> Am 15.12.25 um 08:46 schrieb Frank Wunderlich:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >
-> > Fix incorrect model string in Devicetree for BPI-R4-Pro.
-> >
-> > Fixes: f397471a6a8c ("arm64: dts: mediatek: mt7988: Add devicetree for=
- BananaPi R4 Pro")
-> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-4e.dts | 2 =
-+-
-> >   arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-8x.dts | 2 =
-+-
-> >   2 files changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-=
-4e.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-4e.dts
-> > index c7ea6e88c4f4..621d01e3cd89 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-4e.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-4e.dts
-> > @@ -9,7 +9,7 @@
-> >   #include "mt7988a-bananapi-bpi-r4-pro.dtsi"
-> >  =20
-> >   / {
-> > -	model =3D "Bananapi BPI-R4";
-> > +	model =3D "Bananapi BPI-R4 Pro 4E";
-> >   	compatible =3D "bananapi,bpi-r4-pro-4e",
-> >   		     "bananapi,bpi-r4-pro",
-> >   		     "mediatek,mt7988a";
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-=
-8x.dts b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-8x.dts
-> > index c9a0e69e9dd5..bb15bfa5e6ae 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-8x.dts
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-8x.dts
-> > @@ -9,7 +9,7 @@
-> >   #include "mt7988a-bananapi-bpi-r4-pro.dtsi"
-> >  =20
-> >   / {
-> > -	model =3D "Bananapi BPI-R4";
-> > +	model =3D "Bananapi BPI-R4 Pro 8X";
-> >   	compatible =3D "bananapi,bpi-r4-pro-8x",
-> >   		     "bananapi,bpi-r4-pro",
-> >   		     "mediatek,mt7988a";</frank-w@public-files.de></frank-w@public=
--files.de>
+Maybe Jonathan is OK with doing this all at once, but another alternative
+could be to introduce a union to allow both names at the same time, then
+we could make the change more gradually.
 
