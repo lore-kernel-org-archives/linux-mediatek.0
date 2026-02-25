@@ -4,77 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01839EFD23D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 10:41:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18F28FD374D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 12:33:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Az83B8+u+O/+8RgAIslUgHN/aIRNLe/wvu6o0L5xp7o=; b=KLhenHPq1Q1cR0ojq5m8VfjHbj
-	paU9wZB/D7dSV+SOmLXbNALyAC67yd0mOLiq8OrpRoxQqL0y6j/ye8xJD5WDI+rpHqCmqiM5B861U
-	lY+hu6VLI4CvLVGIvTcKQux2K2qPWNrRRAbbw5Ji6+LhK5Sp9Wtq9oI3OqeZJOzS20IvLuiPkKnJB
-	X4JWjQiX6PNHolZUcnTF5n6x7n8HIMSTZphkWViLNaQn5uxy+j8qyZy8HEpoV8utCeBY6xbPj371Z
-	yDZytU+HqHoqBDNBMvvFpGpAPr829GQ1n0HcdoPcxrt9kYjZSDErOCrB9DtkXKkqlVebfEk99vjsL
-	cQCz2+EQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+aTfZru+ua783by6X4ar6XsTSgXozs70Dtg1s2kjjoo=; b=BT79b0pNEq9PH2c9UU79LeFd5h
+	NF5Fbw+NejL2qtAwR3FgoaB4/OrRutonxGNbIdCaDO9tWHLl6BqH9iKwde3TENiSp7/tuQ7oBk/Cx
+	A3Aq5oVGSdGJkzH7/Yp/cX1phIc0icorkzJasjYozuZjJLXKS3Uczna/K0Mbm1qK31gBrxUoTqWU+
+	R8Ki/39QJjpxuC7IRSldXPkUMsyaDoZlfpAxY6RPzcexpe+fjaAr1FdBoTBmAnl3bnRrwp2ZcVxvu
+	sGWlFgwDUgocbPAxYQ+9MAQ71q2jjNYKkhcm6p6mwE+62/2z9MTY4/Mz8Rca9V6FUyYafmP2Oi9at
+	rkvh3/Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvCL5-00000003pFR-1fBd;
-	Wed, 25 Feb 2026 10:41:55 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vvE5S-000000040dn-0mCs;
+	Wed, 25 Feb 2026 12:33:54 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvCL0-00000003pD7-3vI5
-	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Feb 2026 10:41:52 +0000
-X-UUID: 93ea41a0123611f1ad39f32c34db0b1c-20260225
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=Az83B8+u+O/+8RgAIslUgHN/aIRNLe/wvu6o0L5xp7o=;
-	b=jVmsLz8HN3ntRfRi8PYrAwoKqy4Z+X4m1WqbeE3kPc5/9MD5ZUduHqzMJlm3cepGmITE+qhenXX4OO5nm0DdAzwkcjUhwB7rFDMlcbLk6eMreMBkdc+S7OszjjbnKc0UdidNIhpeD4k6hOqOsZ/GUKVbA2+JYIMgk4126Lzp9R4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:d58dcd43-a1e7-4054-920a-675e157bfdae,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:08befae9-ef90-4382-9c6f-55f2a0689a6b,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
-	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 93ea41a0123611f1ad39f32c34db0b1c-20260225
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1359006133; Wed, 25 Feb 2026 03:41:44 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 25 Feb 2026 18:41:41 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 25 Feb 2026 18:41:41 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
-	SS Wu <ss.wu@mediatek.com>, Steve Lee <steve.lee@mediatek.com>,
-	linux-bluetooth <linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [RESEND PATCH v1 2/2] Bluetooth: btusb: MT7925: Add VID/PID 0e8d/8c38
-Date: Wed, 25 Feb 2026 18:41:36 +0800
-Message-ID: <20260225104136.3943529-2-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260225104136.3943529-1-chris.lu@mediatek.com>
-References: <20260225104136.3943529-1-chris.lu@mediatek.com>
+	id 1vvE5P-000000040d0-0QJn;
+	Wed, 25 Feb 2026 12:33:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1772022827;
+	bh=5womokAWb7eAtY3yaV7gLf//uGlpLRP7R/I+K3LaXLg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=OET3r2C9WUilq/M/+ydIBKk5+9/gWXhe/A/j/DDrLFeoAwxWIaHpb9e15qFoNI0Mx
+	 OT8dGrXqGztq+GENRdr8H7noLPvfY7+6Bd/WSSPkjW6v4UarULbA22lrfqDLG01vGF
+	 79KkTgtOd1QNKpRY37IpBW2qUQyoKMApGTiUARQMhT5rM5ryMjLhmDlu13gNqnLnuY
+	 f6WnYMuOFVYhiBZrS03+L1om2i2evbrPn57s6cHtJeLY24bk8jbAAYWLnmW/sztN6x
+	 WBNoMH8+aRZnZS299AQil67vosv68a0DHBX/er1D7RkuPPNPVT/B+AvylFWZWBos1e
+	 45lvmVYOJrQbw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 948E317E04DC;
+	Wed, 25 Feb 2026 13:33:46 +0100 (CET)
+Message-ID: <5e61f0d5-d168-4d28-8a68-eb1369e7cf8b@collabora.com>
+Date: Wed, 25 Feb 2026 13:33:46 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 17/23] scsi: ufs: mediatek: Rework
+ ufs_mtk_wait_idle_state
+To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
+ "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ =?UTF-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>,
+ "kishon@kernel.org" <kishon@kernel.org>,
+ "James.Bottomley@HansenPartnership.com"
+ <James.Bottomley@HansenPartnership.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
+ "neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
+ <Chaotian.Jing@mediatek.com>, "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "nicolas.frattaroli@collabora.com" <nicolas.frattaroli@collabora.com>,
+ "vkoul@kernel.org" <vkoul@kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "broonie@kernel.org" <broonie@kernel.org>
+Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ "kernel@collabora.com" <kernel@collabora.com>
+References: <20260216-mt8196-ufs-v7-0-b5f2907c6da7@collabora.com>
+ <20260216-mt8196-ufs-v7-17-b5f2907c6da7@collabora.com>
+ <dd895595dbd4cf855ef4ea53aa1b5a0d30169f6c.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <dd895595dbd4cf855ef4ea53aa1b5a0d30169f6c.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_024151_089731_82F3D9D7 
-X-CRM114-Status: GOOD (  10.22  )
+X-CRM114-CacheID: sfid-20260225_043351_309108_B58BBAA2 
+X-CRM114-Status: GOOD (  15.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,70 +104,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add VID 0e8d & PID 8c38 for MediaTek MT7925 USB Bluetooth chip.
+Il 25/02/26 11:32, Peter Wang (王信友) ha scritto:
+> On Mon, 2026-02-16 at 14:37 +0100, Nicolas Frattaroli wrote:
+>> While ufs_mtk_wait_idle state has some code smells for me (the
+>> VS_HCE_BASE early exit seems racey at best), it can still benefit
+>> from
+>> some general cleanup to make the code flow less convoluted.
+>>
+>> Use the iopoll helpers, for one, and specifically the one that sleeps
+>> and does not busy delay, as it's being done for up to 5ms.
+>>
+>> The register read is split out to a helper function that branches
+>> between new and old style flow.
+>>
+>> Every called uses the same 5ms timeout value, so there is no point in
+>> making this a parameter. Just assume a 5ms timeout in the function.
+>>
+>> Reviewed-by: AngeloGioacchino Del Regno
+>> <angelogioacchino.delregno@collabora.com>
+>> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> 
+> Hi Nicolas,
+> 
+> The logic is quite different.
+> 
+> Previously, the check was:
+> If (sm >= VS_HIB_ENTER) and (sm <= VS_HIB_EXIT), then wait for sm to
+> reach VS_HCE_BASE.
+> If not ((val < VS_HIB_ENTER) and (val > VS_HIB_EXIT)), then exit the
+> loop directly.
+> 
+> Now, the logic is:
+> If sm == VS_HCE_BASE, return 0.
+> If (sm >= VS_HIB_ENTER) and (sm <= VS_HIB_EXIT), then wait for sm to
+> transition to any other state and exit the poll.
+> 
 
-The information in /sys/kernel/debug/usb/devices about the Bluetooth
-device is listed as the below.
+The logic is practically the same, except it's proper now.
 
-T:  Bus=06 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=0e8d ProdID=8c38 Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-I:  If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-I:* If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+There's no need to wait for `sm = VS_HCE_BASE` if `sm == VS_HCE_BASE`.
 
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
----
- drivers/bluetooth/btusb.c | 2 ++
- 1 file changed, 2 insertions(+)
+In other words, just read the comment that Nicolas has put in the code:
+/* If the device is already in the base state after 10us, don't wait. */
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index c60f9be0699f..e384d70663d2 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -749,6 +749,8 @@ static const struct usb_device_id quirks_table[] = {
- 						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x0489, 0xe151), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH },
-+	{ USB_DEVICE(0x0e8d, 0x8c38), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x13d3, 0x3602), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH },
- 	{ USB_DEVICE(0x13d3, 0x3603), .driver_info = BTUSB_MEDIATEK |
--- 
-2.45.2
+...because there's no need to wait for the device to get to BASE state,
+if the device is *already* in BASE state. It's pretty obvious stuff here.
+
+Regards,
+Angelo
+
+> Thanks
+> Peter
+
 
 
