@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5072FD375F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 13:13:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C147FD375E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 13:13:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YGYL5PjOEPbwUaDq1z3K2LmetQQqT1ShXR1KX+ml8yE=; b=pM9m3KkgUDgxTEDX3icataN29t
-	SsBBr5TThG5ekI251wWsXdmH+RSxvWjO6xP46+KYh4GYEoli4zkxADHDSL7YNtyGzTgAS+Y3zFTMD
-	yKv8jXiC4nQIQOmAPAdmSNtrPefBvMJoDpbZrUhc/FBVTxwSvPqjn5iTrUEiuzt2NJxrIttQfOG1f
-	DTG9dSxLhfxQUVRNTEEu8gbyklnH5hN0oTogzZ5eojfx/fYoTsxjQa447+um8/LBLW76v0HyDvTiR
-	4Byxm9gH7N7Ebt2VYaQDTuvZLF3l8Z3vmpr2IRzUcS48eIpN3HM0JznM1NUKewYMVl0+fgF71Sv3/
-	E+/qM/mw==;
+	bh=/2iXmGHfS/NXEAjPWYjEaZZnH6x43O895hkr7rfUvYE=; b=dkrraDDZKOXZa3g/R/5RcyShsj
+	tMUbE95MRZICr1l72u6VbW/7u6x41g+M1GrMjMalfXo7dQFwnfom0eML2ktyi2mPV70XzMTDa0XmV
+	8x5B9Ps4UnsrqyZvWXjKJclUm6cyzVw3em4KJRF82r0q6zMLvLtx0yDDLJNmGOPlKutX229lZFjAU
+	9lof3rx7lCzJ3i+W2nDYlh12PBCcw0U+3dOSJb/pD9F7yr9Mek88Vg2qpCFiyTnTh4Bj5V+iYbabr
+	jSW0EZDVXcxkMBDWaJPWuGctVcUirsqCBS2Ir65k1RJr6SCI97Pg9uCJt44b9simIAFE8x/uaFHjC
+	L6UoYYfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvEhS-000000043C9-3Jqt;
-	Wed, 25 Feb 2026 13:13:10 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vvEhU-000000043FI-3XNj;
+	Wed, 25 Feb 2026 13:13:12 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvEhN-0000000436m-1UKC;
-	Wed, 25 Feb 2026 13:13:06 +0000
+	id 1vvEhO-0000000437U-1KwB;
+	Wed, 25 Feb 2026 13:13:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772025182;
-	bh=0OYJVrGzHeHo71a4qjaYHaB5i/Wxv/lLqWp9M+WtRQg=;
+	s=mail; t=1772025184;
+	bh=9nwd6J7vPnLix9sIrT5JA6n5SKgLQzROMtQ/2zyqkUs=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=R0B2OzV4iRgrFJQjaLeW5PqN6rUJwdVlMdClTqJAsv6M/rxxo0azL9WyzH93S9Is0
-	 NKvkhvKlnRsItAQUfsir2NCy2hpOApMWL4oUT8aGxq0OQATkusUUYKgale9jafnHJM
-	 4JqRr/FWoyL9D01gR9nNiU5zPvav/HrCEZVfsUQie4AdWNDW90Yz7N4sIJnf+mw1ta
-	 OCnas86JWDlIv4+oVv5nVfXn7BFjPuKVELcFEFZQqxtDwjl3qFp525lutQ7Kz9ndpx
-	 EPIA0Eaolzl3f6bge3euMAuayNJTE76tpK6Fhqwo8XDTa5LWNsl1ncwFylC6qT+BUv
-	 QhGEw1ii3tSbw==
+	b=im/XYZ3U7IBhKG3hMNpSZWXbSP/UCDRog0YG9LEu7mEp1bG+o+4sWRgyAuLVyCqcI
+	 CT+ZeiXosUlmLTmSYDOF8SgWapuK75nNR30kxOX5vO12K7jwqKhguRAY43oV7rcGeK
+	 cq7mc4QU50wRSpWWx49+OeavS5BvZnpT2C67V48sD1ngD6dUdEJteEpdx35KNxhx7V
+	 vOweyG4ifkrlwyCGW57RvyZ0RP4O5C7wJ34ShQ5Ff4O69TZMczxVZEFy5lyLjkj967
+	 +okSWbtLufruEAsiytKqUcsK61lQv51b918iVvytlxippO+oNLxc+ys3/UbDx7L1+u
+	 7XLGx1wl0eWAQ==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D136917E0D8E;
-	Wed, 25 Feb 2026 14:13:01 +0100 (CET)
-Message-ID: <ce5899b6-1b88-4212-9e61-edd80c5b8c3a@collabora.com>
-Date: Wed, 25 Feb 2026 14:13:01 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6A3E117E0D91;
+	Wed, 25 Feb 2026 14:13:03 +0100 (CET)
+Message-ID: <d028150f-0202-4816-a8d1-dfd35eb75fa2@collabora.com>
+Date: Wed, 25 Feb 2026 14:13:03 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/7] PCI: mediatek-gen3: Disable device if further setup
- fails
+Subject: Re: [PATCH 3/7] PCI: mediatek-gen3: Split out device power helpers
 To: Chen-Yu Tsai <wenst@chromium.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, Ryder Lee
  <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>,
@@ -60,16 +59,15 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Bartosz Golaszewski <brgl@bgdev.pl>, linux-pci@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20260225072225.3345307-1-wenst@chromium.org>
- <20260225072225.3345307-5-wenst@chromium.org>
+ <20260225072225.3345307-4-wenst@chromium.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260225072225.3345307-5-wenst@chromium.org>
+In-Reply-To: <20260225072225.3345307-4-wenst@chromium.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_051305_567158_BF56F538 
-X-CRM114-Status: UNSURE (   8.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260225_051306_517539_6DF0A383 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,16 +83,31 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 25/02/26 08:22, Chen-Yu Tsai ha scritto:
-> If further setup fails after the device is powered on and link training
-> succeeds, we want to place the device back in a quiescence state to
-> avoid unintended activity and save power. This also helps with power
-> state tracking and balancing once pwrctrl API is integrated.
+> Split out existing code that deals with device power sequencing into
+> into helpers to allow cleaning up the error paths and integrating the
+> new PCI pwrctrl API,
 > 
-> Power down the device in the error paths of mtk_pcie_startup_port() and
-> mtk_pcie_setup().
+> This change is purely code movement.
 > 
 > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 
+I was really about to (and really wrote 80% of it) write a comment saying
+that this is not really doing power up, but then I looked at the other
+patches before continuing.
+
+Eh, I agree about doing what you're doing in this number of steps, but please
+write that spoiler in the commit description here :-)
+
+Something along the lines of...
+
+In preparation for adding full power on/off control with the pwrctrl API, split
+out the existing code that only partially deals with device power sequencing into
+separate helper functions.
+
+This is purely moving code around, and brings no functional changes.
+
+After which:
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
