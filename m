@@ -4,81 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9981AFD3770
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 16:14:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D3D9FD376A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 16:33:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wyQnL6kLj7vFF3gAfDzW32+wMIHyGXfIQPrZHtMbQi4=; b=pIaveK5IJkc4bRBtGzr+NMSOFN
-	dxWvHo+vA30bwH9iJyIcKVqNBq9wW15WWJ+wsQVetRriuWPFL4pfQIqLttl5KeFD1rCsZ6oD/I84l
-	7pod6/pXU8HFl2f1285nzUs19mhfJqq6fTW0kZyZnlHfFCUSwiBAoB6zmo0gasegKt/RR/kLVTxEA
-	pa/B0GUjySq3NXiL3gOgObvXPW7Is3Ty1Q/hzUWWDUaSz6A/O87dpNNOlI2Jm5jFWEhHvG47sEtj1
-	nuDkuojFi9bueeX8N3qJ4qy6C/wtIFhUguSrFbxcrkHZCg5kp1FN6/pEzsYSbp70Mp/X4ELgmPM/h
-	+cECtjGQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ddQboShUAU4xr9xh3nmF5l6YT/z5QDVdd1na5dDuboI=; b=mME4Z4ls9SqyxCpa/hMgXXl1NF
+	xBlw4woKZriY06hhipIP7GD45y3BC/L5eTqJ0hU+bSVt/P5fL16xovXVTgfJC2qT1kfw7/zttosnC
+	Fu+I+IMg3hnFpcbD6R5NWiq0k5DbmRFuRjPujdj0qHk5RpcMjfRpZk6HZelvpFeNRhyx0Hvk9FgGf
+	Kc+TQKC1JgMVoFVcHhrKbi7qvkyaqaJP8C2yGm8cKojPcT/hn9mzGa1LOZCPBNaEoPbm93VRZTCy/
+	TwHESzabFrFZPa50h1SuUsrHPcxlHPEsThm7WkP7RTLM5j+9lpbH9oSd+AJEFHELnw19BLHpXZaVd
+	gEL4TC1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvHXB-00000004U0g-2DLe;
-	Wed, 25 Feb 2026 16:14:45 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvHX8-00000004Tvx-21Ji
+	id 1vvHpN-00000004Wul-1v3l;
+	Wed, 25 Feb 2026 16:33:33 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vvHpL-00000004Wu1-0D7H
 	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Feb 2026 16:14:43 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AB72E1713
-	for <linux-mediatek@lists.infradead.org>; Wed, 25 Feb 2026 08:14:32 -0800 (PST)
-Received: from [192.168.0.1] (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id CF42E3F73B
-	for <linux-mediatek@lists.infradead.org>; Wed, 25 Feb 2026 08:14:38 -0800 (PST)
-Date: Wed, 25 Feb 2026 16:12:08 +0000
-From: Liviu Dudau <liviu.dudau@arm.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Harry Wentland <harry.wentland@amd.com>,
-	Leo Li <sunpeng.li@amd.com>, Rodrigo Siqueira <siqueira@igalia.com>,
-	Alex Deucher <alexander.deucher@amd.com>,
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-	Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>,
-	Samuel Holland <samuel@sholland.org>,
-	Dave Stevenson <dave.stevenson@raspberrypi.com>,
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH 10/14] drm/arm: komeda: Convert to drm_output_color_format
-Message-ID: <aZ8fWNYrwyxr0vqC@e142607>
-References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
- <20260224-drm-rework-color-formats-v1-10-bebc76604ada@kernel.org>
+	Wed, 25 Feb 2026 16:33:32 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-358ed90bcefso1138096a91.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Feb 2026 08:33:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1772037210; x=1772642010; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ddQboShUAU4xr9xh3nmF5l6YT/z5QDVdd1na5dDuboI=;
+        b=m7abO92IbhnFxgFzeaOdozz8Bv4OLQbHFJ/Z9Ke0GuSHCId3o1/NRn8gnEJJZC8OkK
+         +JCRRfs4bp+raxpN8YY8FjhwTyvLjAnMoqxLCa8LqZKwAK3oeMFzlVFDbec+A7//OruB
+         R0TRLnzsH/V1dCI/rEnhevREeYbWdeTjUMNxpOOjx0rGnp9skFtsRQ51vltLwU4fF4up
+         0vj1iYFV+VbEmEHVsuwRDi0LaemXkn25LvzS0rLSTplMPVdmdGAj4OLljS64VH2iA+9B
+         jE/KIaEX/MWZpml4a1VWcLtOYW4g3XdFZQA0JDH5rgcm6DDJghiRIx8u86BaAbpJCU6Q
+         +TcA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772037210; x=1772642010;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ddQboShUAU4xr9xh3nmF5l6YT/z5QDVdd1na5dDuboI=;
+        b=ZWBLDQdOJJMqzuYn4a0JtRAAzCc7X44U2MDe4463sOd8b/TmRh43WsIftBaN+XNOHd
+         KUuks9iqNrwk8VQAteqwgh+7IalSafu5/+QA0DLTvBqZNU2Ix869U8zTc/ActOEw42Zf
+         +synx+m7apmzixrhRkUHClaXLD96OtugaNBgBJJagZiPi3RfUULiUVP+I5OJzwzl4Jeh
+         J093ut230Ih/8E3l04Xbgv/4/7iRLhB8Q5SgZWh6rxE1gJVpNBaiFqKaJ8TKMdjqqBk1
+         jNSrB8ijrfG+PkhDdbJbglb7MMXulsQxKXcugdhB4UlfWWCe9rtPhQuiPyVQu38iGJAP
+         D80w==
+X-Forwarded-Encrypted: i=1; AJvYcCXaMBL6dNoEpobY42O+uciz+uOffqokqJ5ClavDvLOHB9/SEDkvTW1j3njeGNTiMQB++wl7PfkLOh360p9xkw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyKtmWVofrkxrUoHeMphGALXNb8br1WCePG3VQozgTmCGAYP43q
+	Zy4tQUQ7oCJItsJG8fohw24qSIrg3Kvn28XCKdNxVg4vFdURsuXDDLc7BJXarqTl
+X-Gm-Gg: ATEYQzx48n9lZClZXmFI2ygY2AyEhnc5Ls7FtCWKtmjspCsC56nkOaqzbfesN1rX8It
+	vP1AMNtHH/VPZEo8t6znVBwVcNauz2QZHXXe36NBn7IwWNaCpDu2UsUqmZ6/D6Qx6fBAoM9Mp+X
+	cA6de/4FJgYQsatOBNRhJQrXvISPTtH9osfXDEDOAC6ocGZ6+Z6IozlEC0Zzb+3APwAy4B6Sh0q
+	+Nkr4IQI+Mw+IFaHJhaaX10U4OmHbBfrlRqwiTC8e2/OEauKmsTNiZZOf6/gCt7yrEe05dqjOe/
+	m7gdzaTQyTX7uZHoJnwCYMGlqHjaOtkXl3O0rY4XkJdv/8m6AiuUuSptZdkzYuVpD+j60P51nWb
+	8Tug3Y6xgK0udcnciRYUziJV8tb3NWt9ND8d5TwM5bc6auz75z3FfGEwUVnZdYebFrKuQL/0xAA
+	d6CmeM4iKIHEx8KbfEztA5AmBv4gc7GyfaoPKA
+X-Received: by 2002:a17:90b:4987:b0:339:ec9c:b275 with SMTP id 98e67ed59e1d1-358ae7e86a8mr15320596a91.6.1772037209583;
+        Wed, 25 Feb 2026 08:33:29 -0800 (PST)
+Received: from junjungu-PC.localdomain ([2408:820c:9009:3f2:55d9:d867:54ea:d951])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-359037af167sm3335665a91.15.2026.02.25.08.33.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Feb 2026 08:33:29 -0800 (PST)
+From: Felix Gu <ustc.gu@gmail.com>
+Date: Thu, 26 Feb 2026 00:33:24 +0800
+Subject: [PATCH] mailbox: mtk-vcp-mailbox: Fix the return value in
+ mtk_vcp_mbox_xlate()
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260224-drm-rework-color-formats-v1-10-bebc76604ada@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260226-vcp-v1-1-766c5877017d@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAFMkn2kC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDIyNT3bLkAl3jRAtTYxMTc6BgqhJQZUFRalpmBdiU6NjaWgDxwXc+VQA
+ AAA==
+X-Change-ID: 20260225-vcp-3a853447202e
+To: Jassi Brar <jassisinghbrar@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Jjian Zhou <jjian.zhou@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Felix Gu <ustc.gu@gmail.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1772037206; l=961;
+ i=ustc.gu@gmail.com; h=from:subject:message-id;
+ bh=W+jP3zwPXvbN6VQlSiaHn6aD2hpSIbT32Oq/GSFkHGI=;
+ b=A/kPlRCS6V2E+kcdMjDircq5UF5u5qvwoxlGCWmLXVI6bOhw4nyn1gIgaR/jjArtEVtu/mn28
+ cAgO0P9PlqYDVFsfrrdx5LSusYs0BjvWhrCnLB3brTGMgo5KtRrD2WK
+X-Developer-Key: i=ustc.gu@gmail.com; a=ed25519;
+ pk=fjUXwmjchVN7Ja6KGP55IXOzFeCl9edaHoQIEUA+/hw=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_081442_595898_8D7B9D5B 
-X-CRM114-Status: GOOD (  28.23  )
+X-CRM114-CacheID: sfid-20260225_083331_083700_FC33CAE6 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,154 +111,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Feb 24, 2026 at 11:58:49AM +0100, Maxime Ripard wrote:
-> Now that we introduced a new drm_output_color_format enum to represent
-> what DRM_COLOR_FORMAT_* bits were representing, we can switch to the new
-> enum.
-> 
-> The main different is that while DRM_COLOR_FORMAT_ was a bitmask,
-> drm_output_color_format is a proper enum. However, the enum was done is
-> such a way than DRM_COLOR_FORMAT_X = BIT(DRM_OUTPUT_COLOR_FORMAT_X) so
-> the transitition is easier.
-> 
-> The only thing we need to consider is if the original code meant to use
-> that value as a bitmask, in which case we do need to keep the bit shift,
-> or as a discriminant in which case we don't.
-> 
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+The return value of mtk_vcp_mbox_xlate() is checked by IS_ERR(), so
+return NULL is incorrect and could lead to a NULL pointer dereference.
 
-For the first patch in the series that introduces the enum and this one:
+Fixes: b562abd95672 ("mailbox: mediatek: Add mtk-vcp-mailbox driver")
+Signed-off-by: Felix Gu <ustc.gu@gmail.com>
+---
+ drivers/mailbox/mtk-vcp-mailbox.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Liviu Dudau <liviu.dudau@arm.com>
+diff --git a/drivers/mailbox/mtk-vcp-mailbox.c b/drivers/mailbox/mtk-vcp-mailbox.c
+index cedad575528f..1b291b8ea15a 100644
+--- a/drivers/mailbox/mtk-vcp-mailbox.c
++++ b/drivers/mailbox/mtk-vcp-mailbox.c
+@@ -50,7 +50,7 @@ static struct mbox_chan *mtk_vcp_mbox_xlate(struct mbox_controller *mbox,
+ 					    const struct of_phandle_args *sp)
+ {
+ 	if (sp->args_count)
+-		return NULL;
++		return ERR_PTR(-EINVAL);
+ 
+ 	return &mbox->chans[0];
+ }
+
+---
+base-commit: 3ef088b0c5772a6f75634e54aa34f5fc0a2c041c
+change-id: 20260225-vcp-3a853447202e
 
 Best regards,
-Liviu
-
-> ---
->  drivers/gpu/drm/arm/display/komeda/d71/d71_component.c     | 14 +++++++-------
->  drivers/gpu/drm/arm/display/komeda/komeda_crtc.c           |  2 +-
->  drivers/gpu/drm/arm/display/komeda/komeda_pipeline.h       |  5 +++--
->  drivers/gpu/drm/arm/display/komeda/komeda_pipeline_state.c |  2 +-
->  4 files changed, 12 insertions(+), 11 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/arm/display/komeda/d71/d71_component.c b/drivers/gpu/drm/arm/display/komeda/d71/d71_component.c
-> index 67e5d3b4190f62549bc8da700deb4b15e138b515..27ca2930cdac6e76a058102ea2c1d8306d85e751 100644
-> --- a/drivers/gpu/drm/arm/display/komeda/d71/d71_component.c
-> +++ b/drivers/gpu/drm/arm/display/komeda/d71/d71_component.c
-> @@ -1078,15 +1078,15 @@ static void d71_improc_update(struct komeda_component *c,
->  	}
->  
->  	mask |= IPS_CTRL_YUV | IPS_CTRL_CHD422 | IPS_CTRL_CHD420;
->  
->  	/* config color format */
-> -	if (st->color_format == DRM_COLOR_FORMAT_YCBCR420)
-> +	if (st->color_format == DRM_OUTPUT_COLOR_FORMAT_YCBCR420)
->  		ctrl |= IPS_CTRL_YUV | IPS_CTRL_CHD422 | IPS_CTRL_CHD420;
-> -	else if (st->color_format == DRM_COLOR_FORMAT_YCBCR422)
-> +	else if (st->color_format == DRM_OUTPUT_COLOR_FORMAT_YCBCR422)
->  		ctrl |= IPS_CTRL_YUV | IPS_CTRL_CHD422;
-> -	else if (st->color_format == DRM_COLOR_FORMAT_YCBCR444)
-> +	else if (st->color_format == DRM_OUTPUT_COLOR_FORMAT_YCBCR444)
->  		ctrl |= IPS_CTRL_YUV;
->  
->  	malidp_write32_mask(reg, BLK_CONTROL, mask, ctrl);
->  }
->  
-> @@ -1143,16 +1143,16 @@ static int d71_improc_init(struct d71_dev *d71,
->  		return PTR_ERR(c);
->  	}
->  
->  	improc = to_improc(c);
->  	improc->supported_color_depths = BIT(8) | BIT(10);
-> -	improc->supported_color_formats = DRM_COLOR_FORMAT_RGB444 |
-> -					  DRM_COLOR_FORMAT_YCBCR444 |
-> -					  DRM_COLOR_FORMAT_YCBCR422;
-> +	improc->supported_color_formats = BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444) |
-> +					  BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444) |
-> +					  BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422);
->  	value = malidp_read32(reg, BLK_INFO);
->  	if (value & IPS_INFO_CHD420)
-> -		improc->supported_color_formats |= DRM_COLOR_FORMAT_YCBCR420;
-> +		improc->supported_color_formats |= BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420);
->  
->  	improc->supports_csc = true;
->  	improc->supports_gamma = true;
->  
->  	return 0;
-> diff --git a/drivers/gpu/drm/arm/display/komeda/komeda_crtc.c b/drivers/gpu/drm/arm/display/komeda/komeda_crtc.c
-> index 5a66948ffd24343cfc144e9b500679fd0c6bf43b..e78604469ef74800a4cac1e854821578b7e7bce8 100644
-> --- a/drivers/gpu/drm/arm/display/komeda/komeda_crtc.c
-> +++ b/drivers/gpu/drm/arm/display/komeda/komeda_crtc.c
-> @@ -38,11 +38,11 @@ void komeda_crtc_get_color_config(struct drm_crtc_state *crtc_st,
->  			min_bpc = conn_bpc;
->  	}
->  
->  	/* connector doesn't config any color_format, use RGB444 as default */
->  	if (!conn_color_formats)
-> -		conn_color_formats = DRM_COLOR_FORMAT_RGB444;
-> +		conn_color_formats = BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444);
->  
->  	*color_depths = GENMASK(min_bpc, 0);
->  	*color_formats = conn_color_formats;
->  }
->  
-> diff --git a/drivers/gpu/drm/arm/display/komeda/komeda_pipeline.h b/drivers/gpu/drm/arm/display/komeda/komeda_pipeline.h
-> index ac8725e248537e5737d16cd36860401c42073500..dbe93894b2f6a193e24963d497ebb7b717ce3ebb 100644
-> --- a/drivers/gpu/drm/arm/display/komeda/komeda_pipeline.h
-> +++ b/drivers/gpu/drm/arm/display/komeda/komeda_pipeline.h
-> @@ -315,20 +315,21 @@ struct komeda_splitter_state {
->  	u16 overlap;
->  };
->  
->  struct komeda_improc {
->  	struct komeda_component base;
-> -	u32 supported_color_formats;  /* DRM_RGB/YUV444/YUV420*/
-> +	u32 supported_color_formats;  /* BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444/YUV444/YUV420) */
->  	u32 supported_color_depths; /* BIT(8) | BIT(10)*/
->  	u8 supports_degamma : 1;
->  	u8 supports_csc : 1;
->  	u8 supports_gamma : 1;
->  };
->  
->  struct komeda_improc_state {
->  	struct komeda_component_state base;
-> -	u8 color_format, color_depth;
-> +	enum drm_output_color_format color_format;
-> +	u8 color_depth;
->  	u16 hsize, vsize;
->  	u32 fgamma_coeffs[KOMEDA_N_GAMMA_COEFFS];
->  	u32 ctm_coeffs[KOMEDA_N_CTM_COEFFS];
->  };
->  
-> diff --git a/drivers/gpu/drm/arm/display/komeda/komeda_pipeline_state.c b/drivers/gpu/drm/arm/display/komeda/komeda_pipeline_state.c
-> index f4e76b46ca327a1c5db9bdbdd9550b45190b30d8..6f9b10cc831ff748296b9ed30b6de398c90c4786 100644
-> --- a/drivers/gpu/drm/arm/display/komeda/komeda_pipeline_state.c
-> +++ b/drivers/gpu/drm/arm/display/komeda/komeda_pipeline_state.c
-> @@ -797,11 +797,11 @@ komeda_improc_validate(struct komeda_improc *improc,
->  					 improc->supported_color_formats);
->  			return -EINVAL;
->  		}
->  
->  		st->color_depth = __fls(avail_depths);
-> -		st->color_format = BIT(__ffs(avail_formats));
-> +		st->color_format = __ffs(avail_formats);
->  	}
->  
->  	if (kcrtc_st->base.color_mgmt_changed) {
->  		drm_lut_to_fgamma_coeffs(kcrtc_st->base.gamma_lut,
->  					 st->fgamma_coeffs);
-> 
-> -- 
-> 2.52.0
-> 
-
 -- 
-====================
-| I would like to |
-| fix the world,  |
-| but they're not |
-| giving me the   |
- \ source code!  /
-  ---------------
-    ¯\_(ツ)_/¯
+Felix Gu <ustc.gu@gmail.com>
+
 
