@@ -4,99 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D3D9FD376A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 16:33:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EB49FD376A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 16:36:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ddQboShUAU4xr9xh3nmF5l6YT/z5QDVdd1na5dDuboI=; b=mME4Z4ls9SqyxCpa/hMgXXl1NF
-	xBlw4woKZriY06hhipIP7GD45y3BC/L5eTqJ0hU+bSVt/P5fL16xovXVTgfJC2qT1kfw7/zttosnC
-	Fu+I+IMg3hnFpcbD6R5NWiq0k5DbmRFuRjPujdj0qHk5RpcMjfRpZk6HZelvpFeNRhyx0Hvk9FgGf
-	Kc+TQKC1JgMVoFVcHhrKbi7qvkyaqaJP8C2yGm8cKojPcT/hn9mzGa1LOZCPBNaEoPbm93VRZTCy/
-	TwHESzabFrFZPa50h1SuUsrHPcxlHPEsThm7WkP7RTLM5j+9lpbH9oSd+AJEFHELnw19BLHpXZaVd
-	gEL4TC1w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Cc:To:From:Reply-To:
+	Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wHKdwAMNEz9YwMlr8EqS0oQhOrg5q+vUv7LPu03mT64=; b=5E/YleX7AxHJKs
+	CGieOtO4MI3WmriS8jinadG72UBbgvWAZ6FS4Zn0hSLM80k8l9qffN2SStPb7dpHEcxZcC0KjtQSd
+	ETE6IpQeplMGgGDThw4Agnw4u1yk5BLRus9lQECNEDD7oP+TLVRMp1VIU6++G3Xi2WFWvpq99LVpo
+	vbkLhsU7Ia2ZNT7jzHxf+CYGgsDqpzmxt17YRe36KKR54zsnmL36cDUD50aCfuZyKknzxiC/K8Osj
+	tSoppnlf8Bzeh8oMW/cyA/hWVGtOJH7u+XgEacBz7JlLfVsIRV443B5gLOkspBoWscHyE52Rtha1o
+	VbssbC3TcPTeNSoI95Xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvHpN-00000004Wul-1v3l;
-	Wed, 25 Feb 2026 16:33:33 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1vvHru-00000004XFE-2tZX;
+	Wed, 25 Feb 2026 16:36:10 +0000
+Received: from mail.hugovil.com ([162.243.120.170])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvHpL-00000004Wu1-0D7H
-	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Feb 2026 16:33:32 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id 98e67ed59e1d1-358ed90bcefso1138096a91.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Feb 2026 08:33:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1772037210; x=1772642010; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ddQboShUAU4xr9xh3nmF5l6YT/z5QDVdd1na5dDuboI=;
-        b=m7abO92IbhnFxgFzeaOdozz8Bv4OLQbHFJ/Z9Ke0GuSHCId3o1/NRn8gnEJJZC8OkK
-         +JCRRfs4bp+raxpN8YY8FjhwTyvLjAnMoqxLCa8LqZKwAK3oeMFzlVFDbec+A7//OruB
-         R0TRLnzsH/V1dCI/rEnhevREeYbWdeTjUMNxpOOjx0rGnp9skFtsRQ51vltLwU4fF4up
-         0vj1iYFV+VbEmEHVsuwRDi0LaemXkn25LvzS0rLSTplMPVdmdGAj4OLljS64VH2iA+9B
-         jE/KIaEX/MWZpml4a1VWcLtOYW4g3XdFZQA0JDH5rgcm6DDJghiRIx8u86BaAbpJCU6Q
-         +TcA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772037210; x=1772642010;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ddQboShUAU4xr9xh3nmF5l6YT/z5QDVdd1na5dDuboI=;
-        b=ZWBLDQdOJJMqzuYn4a0JtRAAzCc7X44U2MDe4463sOd8b/TmRh43WsIftBaN+XNOHd
-         KUuks9iqNrwk8VQAteqwgh+7IalSafu5/+QA0DLTvBqZNU2Ix869U8zTc/ActOEw42Zf
-         +synx+m7apmzixrhRkUHClaXLD96OtugaNBgBJJagZiPi3RfUULiUVP+I5OJzwzl4Jeh
-         J093ut230Ih/8E3l04Xbgv/4/7iRLhB8Q5SgZWh6rxE1gJVpNBaiFqKaJ8TKMdjqqBk1
-         jNSrB8ijrfG+PkhDdbJbglb7MMXulsQxKXcugdhB4UlfWWCe9rtPhQuiPyVQu38iGJAP
-         D80w==
-X-Forwarded-Encrypted: i=1; AJvYcCXaMBL6dNoEpobY42O+uciz+uOffqokqJ5ClavDvLOHB9/SEDkvTW1j3njeGNTiMQB++wl7PfkLOh360p9xkw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyKtmWVofrkxrUoHeMphGALXNb8br1WCePG3VQozgTmCGAYP43q
-	Zy4tQUQ7oCJItsJG8fohw24qSIrg3Kvn28XCKdNxVg4vFdURsuXDDLc7BJXarqTl
-X-Gm-Gg: ATEYQzx48n9lZClZXmFI2ygY2AyEhnc5Ls7FtCWKtmjspCsC56nkOaqzbfesN1rX8It
-	vP1AMNtHH/VPZEo8t6znVBwVcNauz2QZHXXe36NBn7IwWNaCpDu2UsUqmZ6/D6Qx6fBAoM9Mp+X
-	cA6de/4FJgYQsatOBNRhJQrXvISPTtH9osfXDEDOAC6ocGZ6+Z6IozlEC0Zzb+3APwAy4B6Sh0q
-	+Nkr4IQI+Mw+IFaHJhaaX10U4OmHbBfrlRqwiTC8e2/OEauKmsTNiZZOf6/gCt7yrEe05dqjOe/
-	m7gdzaTQyTX7uZHoJnwCYMGlqHjaOtkXl3O0rY4XkJdv/8m6AiuUuSptZdkzYuVpD+j60P51nWb
-	8Tug3Y6xgK0udcnciRYUziJV8tb3NWt9ND8d5TwM5bc6auz75z3FfGEwUVnZdYebFrKuQL/0xAA
-	d6CmeM4iKIHEx8KbfEztA5AmBv4gc7GyfaoPKA
-X-Received: by 2002:a17:90b:4987:b0:339:ec9c:b275 with SMTP id 98e67ed59e1d1-358ae7e86a8mr15320596a91.6.1772037209583;
-        Wed, 25 Feb 2026 08:33:29 -0800 (PST)
-Received: from junjungu-PC.localdomain ([2408:820c:9009:3f2:55d9:d867:54ea:d951])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-359037af167sm3335665a91.15.2026.02.25.08.33.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Feb 2026 08:33:29 -0800 (PST)
-From: Felix Gu <ustc.gu@gmail.com>
-Date: Thu, 26 Feb 2026 00:33:24 +0800
-Subject: [PATCH] mailbox: mtk-vcp-mailbox: Fix the return value in
- mtk_vcp_mbox_xlate()
+	id 1vvHro-00000004XE7-40Bc;
+	Wed, 25 Feb 2026 16:36:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hugovil.com
+	; s=x; h=Subject:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Cc:To
+	:From:subject:date:message-id:reply-to;
+	bh=wHKdwAMNEz9YwMlr8EqS0oQhOrg5q+vUv7LPu03mT64=; b=zfjSHjNeqN0+aHPGFacwcMU2xT
+	AeynVr6e9UBRY5NiqaFsK9zHOP+4w4YW0+9U1WpDWeMfPeb0El+uNrSxvCgPhc1ZilmgqGZYvWTn+
+	62o10n4C0w7n3ptZocHFu6PH9+QOTsAPuccNX0yAxyEXJTbBU2e2Z6CPf1ZL9SEO1JyY=;
+Received: from modemcable168.174-80-70.mc.videotron.ca ([70.80.174.168]:47746 helo=pettiford.lan)
+	by mail.hugovil.com with esmtpa (Exim 4.92)
+	(envelope-from <hugo@hugovil.com>)
+	id 1vvHDH-0005uT-Ix; Wed, 25 Feb 2026 10:54:12 -0500
+From: Hugo Villeneuve <hugo@hugovil.com>
+To: robin@protonic.nl,
+	andy@kernel.org,
+	geert@linux-m68k.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	dmitry.torokhov@gmail.com,
+	hvilleneuve@dimonoff.com,
+	mkorpershoek@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	lee@kernel.org,
+	alexander.sverdlin@gmail.com,
+	marek.vasut@gmail.com,
+	akurz@blala.de
+Cc: devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-input@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	hugo@hugovil.com
+Date: Wed, 25 Feb 2026 10:53:57 -0500
+Message-ID: <20260225155409.612478-1-hugo@hugovil.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260226-vcp-v1-1-766c5877017d@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAFMkn2kC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDIyNT3bLkAl3jRAtTYxMTc6BgqhJQZUFRalpmBdiU6NjaWgDxwXc+VQA
- AAA==
-X-Change-ID: 20260225-vcp-3a853447202e
-To: Jassi Brar <jassisinghbrar@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Jjian Zhou <jjian.zhou@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Felix Gu <ustc.gu@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1772037206; l=961;
- i=ustc.gu@gmail.com; h=from:subject:message-id;
- bh=W+jP3zwPXvbN6VQlSiaHn6aD2hpSIbT32Oq/GSFkHGI=;
- b=A/kPlRCS6V2E+kcdMjDircq5UF5u5qvwoxlGCWmLXVI6bOhw4nyn1gIgaR/jjArtEVtu/mn28
- cAgO0P9PlqYDVFsfrrdx5LSusYs0BjvWhrCnLB3brTGMgo5KtRrD2WK
-X-Developer-Key: i=ustc.gu@gmail.com; a=ed25519;
- pk=fjUXwmjchVN7Ja6KGP55IXOzFeCl9edaHoQIEUA+/hw=
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 70.80.174.168
+X-SA-Exim-Mail-From: hugo@hugovil.com
+Subject: [PATCH v3 0/4] input: add GPIO-based charlieplex keypad
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.hugovil.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_083331_083700_FC33CAE6 
-X-CRM114-Status: GOOD (  10.92  )
+X-CRM114-CacheID: sfid-20260225_083605_097872_99C30B9B 
+X-CRM114-Status: GOOD (  15.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,35 +85,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The return value of mtk_vcp_mbox_xlate() is checked by IS_ERR(), so
-return NULL is incorrect and could lead to a NULL pointer dereference.
+From: Hugo Villeneuve <hvilleneuve@dimonoff.com>
 
-Fixes: b562abd95672 ("mailbox: mediatek: Add mtk-vcp-mailbox driver")
-Signed-off-by: Felix Gu <ustc.gu@gmail.com>
----
- drivers/mailbox/mtk-vcp-mailbox.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hello,
+this patch series add a new GPIO charlieplex keypad driver.
 
-diff --git a/drivers/mailbox/mtk-vcp-mailbox.c b/drivers/mailbox/mtk-vcp-mailbox.c
-index cedad575528f..1b291b8ea15a 100644
---- a/drivers/mailbox/mtk-vcp-mailbox.c
-+++ b/drivers/mailbox/mtk-vcp-mailbox.c
-@@ -50,7 +50,7 @@ static struct mbox_chan *mtk_vcp_mbox_xlate(struct mbox_controller *mbox,
- 					    const struct of_phandle_args *sp)
- {
- 	if (sp->args_count)
--		return NULL;
-+		return ERR_PTR(-EINVAL);
- 
- 	return &mbox->chans[0];
- }
+The first two patches simply commonize two properties that are present in
+a few bindings, so that the actual patches for the charlieplex keypad driver
+can reuse them instead of also redefining them.
 
----
-base-commit: 3ef088b0c5772a6f75634e54aa34f5fc0a2c041c
-change-id: 20260225-vcp-3a853447202e
+I have tested the driver on a custom board with a Solidrun RZ/G2LC SOM
+with three charlieplex keyboards, all connected thru a single PCA9416 I2C GPIO
+expander.
 
-Best regards,
+Link: [v1] https://lore.kernel.org/all/20260203155023.536103-1-hugo@hugovil.com/
+Link: [v2] https://lore.kernel.org/all/20260213171431.2228814-1-hugo@hugovil.com/
+
+Changes for v3:
+- Add ASCII diagram in bindings, and reference to it in example
+- Reorder properties alphabetically
+- Add patch to define common input settling-time-us property
+- Add patch to define common input debounce-delay-ms property
+
+Changes for v2:
+- Fix yamllint error for example
+- Remove unused debug variable (nkeys)
+- Remove support for custom linux,no-autorepeat DT property
+- Remove support for custom gpio-activelow DT property
+
+Thank you.
+
+Hugo Villeneuve (4):
+  dt-bindings: input: add debounce-delay-ms common property
+  dt-bindings: input: add settling-time-us common property
+  dt-bindings: input: add GPIO charlieplex keypad
+  Input: charlieplex_keypad: add GPIO charlieplex keypad
+
+ .../bindings/auxdisplay/holtek,ht16k33.yaml   |   5 +-
+ .../bindings/input/cirrus,ep9307-keypad.yaml  |   7 +-
+ .../input/gpio-charlieplex-keypad.yaml        | 106 +++++++++
+ .../bindings/input/gpio-matrix-keypad.yaml    |   5 +-
+ .../devicetree/bindings/input/input.yaml      |  16 ++
+ .../input/mediatek,mt6779-keypad.yaml         |   1 +
+ .../devicetree/bindings/mfd/fsl,mc13xxx.yaml  |   2 -
+ MAINTAINERS                                   |   7 +
+ drivers/input/keyboard/Kconfig                |  14 ++
+ drivers/input/keyboard/Makefile               |   1 +
+ drivers/input/keyboard/charlieplex_keypad.c   | 213 ++++++++++++++++++
+ 11 files changed, 365 insertions(+), 12 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/input/gpio-charlieplex-keypad.yaml
+ create mode 100644 drivers/input/keyboard/charlieplex_keypad.c
+
+
+base-commit: ab2e361ca97a42b7af8be1d273646b30d3b75bf3
 -- 
-Felix Gu <ustc.gu@gmail.com>
+2.47.3
 
 
