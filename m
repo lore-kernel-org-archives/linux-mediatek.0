@@ -4,97 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E76EF357DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 07:23:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34B51EFD206
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Feb 2026 08:11:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=296zJScy32zZ99pggZVYgRNpwHzrGar0aPdVMmqKLxo=; b=peItW0CUHgGBkEbMvMwFj20QD7
-	IvXcKYwr0XLyuXKJD9nHaywwQ08tf2g93aRu/S6LXka69NloBz3rAz6U3xLGuNDUH2V92MiJ1zjhm
-	ZFCfUql13B1E19SYOHbMOmgh0QphwdLZAtwS8Tsx+aTbzLhMOJWkLa7jLbOIVsYx9z1o8Fqbc2daz
-	q6ic/Op/avki6CrXnPlJ3+hGaCYyheakJDOHkWAyb45cRIwNzTTLG5jGaBBjB1YPJ+crgdxLSmXFn
-	HoSmIqZKNTEezXKCxQqY41A5+h5Hzx/MLKztIfgXzBdcRXq9Rrb3eeHzA7S5V0voBr/bvh7qTS2Js
-	XTdP80mw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xWgvuyyKOdHiamZL9D4cj9vV0r+h5EBYUsOqhsdXzTM=; b=V2hwyycK3ERiG6w8at/4//PnxM
+	hfGvZYy7G7zY3qIhi5oK2QPY5bjJB7LLKMclMzJHu2kl85wMYqCBckH7FJu1K6WVApCw5FFU034F0
+	HOXt/oqNMUa6J/U/+4L6PYlYhX+Tze+zl4unIxouAYYUTHnPlLgw+FumWOilu79qW3KBlVbHlSVqs
+	csDIYFT4lFkqD3/RL66L29wvhQfC8H2esX/zZXu1uM+8jRtQRJRBLLCM49l0K9DWyot0Ekwe30ubQ
+	uX3rJsS6du0M4twh4E5gbrFPfHsgvVdz+NEftKf0NZASptxU2wuStnIVV3/mgpq+/PkB/9rI0SC99
+	lcBhus3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vv9Er-00000003Pjo-2XwO;
-	Wed, 25 Feb 2026 07:23:17 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1vv9zZ-00000003TZb-38rc;
+	Wed, 25 Feb 2026 08:11:33 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vv9El-00000003PcF-0GC7
+	id 1vv9zX-00000003TYR-32ec
 	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Feb 2026 07:23:12 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2a7bced39cfso64927475ad.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 24 Feb 2026 23:23:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1772004190; x=1772608990; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=296zJScy32zZ99pggZVYgRNpwHzrGar0aPdVMmqKLxo=;
-        b=VeVnZ0NLdTg/2cbFK1QNx+P1jwyJGEQsZK49ubQHfDCvfG8Etq8fI4rhVXdyBdevy2
-         eqXgfaScPnP7+M4h4FKt2LsIrLWS7Rpw/0DAZvd3rK8zNdYdLPYlNBZ8aDlIqJ2gkWSd
-         eQl+1+4iy140C8n/th6b2GOstNd25xUYEf9hM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772004190; x=1772608990;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=296zJScy32zZ99pggZVYgRNpwHzrGar0aPdVMmqKLxo=;
-        b=pIRirbTD4OWfCcmzjWjmFlBizmvBMGnYTVlPOfYblnNzWOFOdFDzEawKBnob5Akbca
-         9GW+f8lBzi/mxdLIgPwPDucOtPAIAHcJ/CrL0+pE6A2/HDfF48A0GTLBTzAs7qfbKAFt
-         XfGEbFtgaQXD0eltk+ZpVePc0BMtkRfvLyWEHOd6GzKpDmaMzeMiRcsj9LMBzxebfOxH
-         OiE5Nd31Z2tsbmFdAF2TFavmtDNPvzx/9XMtQ33Otl1juliXENJnvsyUTEG11V2xvEgy
-         Kbpq6gwWO/kmZPsnbvSrf3lmjkT8oHyV0RdUektWGUUPbTgBizyuULCiWrimVGqa3oUe
-         GBTg==
-X-Forwarded-Encrypted: i=1; AJvYcCV5l9Vy5ZdU44s4Eo17w+8igVu6C+ziJiEt/hA6iKtIDu4s5RewifpukZC7WnU6ay5cfQbGANYy1+LLFXlLvw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw+fyGUC+LvzDTK6nxgAXXa5s7ZreLA0mrTvIghZgzL1wP7McAz
-	NDtCDKQ3JRy2s0EVjuxNQuaLvWd54IexNfngpk9W/6eMoZOWe9NKJXHC5OayNM+MYA==
-X-Gm-Gg: ATEYQzyUYLlZ2mdKoACWhHbjKKONgewc7HD3Fea3jBiVMcjTrCKIRzDvjl8m2vFdb4i
-	5sHB7ddehlAr0M73a53fhGwq9hb3dm9yYQl/FwNcnsYR6G9j+aBCUeg5zumJXWJJFhUj4vUJsUZ
-	uD+RZg546idaGP/n91qHQDCT9Z1ZzeWJwozcjv92MCZMvU6gawCgFSP7KNJE1tYyEhFR54DzML3
-	jpxz7Nqx+gApzZK3a26sCjc4taZMDYbtILVznI49Qp75r6cKWBwW0ggfmy7biUVHY2ybjclixFV
-	TwCVnXATm2u2rHSFFGb6Sr+bmTmBLRak/o0yQo5EAErn9RVtwwDspoavrXxQyoXITvSvL/Yh+Ie
-	4b6qzsvQ4kTLsLW1Kc8wOc72e1HwDDNYPfV51mg56o81P1Cd5tq8Y2NMqPZthGLxmrtx7GWUlHK
-	NbAoov+RbvAMK8W9/M3wTZhY1nwd9NpxqVz8/fQdtDTT0SBEFboVeUQtExugYyKW+ni67QJEDsH
-	vSjUQ==
-X-Received: by 2002:a17:903:37c5:b0:2a7:5751:5b27 with SMTP id d9443c01a7336-2ad7451eaabmr146610585ad.39.1772004190346;
-        Tue, 24 Feb 2026 23:23:10 -0800 (PST)
-Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:9d6:2e6a:941b:690])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ad7503fdc9sm130814435ad.80.2026.02.24.23.23.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Feb 2026 23:23:09 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>,
-	linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 7/7] arm64: dts: mediatek: mt8195-cherry-dojo: Describe M.2 M-key NVMe slot
-Date: Wed, 25 Feb 2026 15:22:24 +0800
-Message-ID: <20260225072225.3345307-8-wenst@chromium.org>
-X-Mailer: git-send-email 2.53.0.414.gf7e9f6c205-goog
-In-Reply-To: <20260225072225.3345307-1-wenst@chromium.org>
-References: <20260225072225.3345307-1-wenst@chromium.org>
+	Wed, 25 Feb 2026 08:11:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id B8DBF4410B
+	for <linux-mediatek@lists.infradead.org>; Wed, 25 Feb 2026 08:11:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8EF08C19425
+	for <linux-mediatek@lists.infradead.org>; Wed, 25 Feb 2026 08:11:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772007090;
+	bh=usaysjS0gpHIFyZHKJqEeInHs9jknMQNaMJew5h1pqg=;
+	h=From:In-Reply-To:References:Date:Subject:To:Cc:From;
+	b=YYc/RIttJOjCfXUewXc0JG8muvoFbg2hfl3g2yQ9Ch/KYy+WqwclhcPEbkZgrYv/J
+	 LCuzuzOCSgB1psAFoEHbVuOCsmQ+j686d/ofMNUVUKWqE9YhiFuX3b/ez1TLeJwpDJ
+	 FQOpMeSxcDM1tTIQfNG+FkzE1MIgHOoK8ZNdlkI5PwZdbvxY6b+WO9a6Hgjy8XP+/J
+	 /djEwSr6Kk6YMHA/jUDEYzomg72N3j0XmY4WDsWp9yGt+VvRXCdNjwfZMrrY8G8srz
+	 As0q4z4TITTCTLtw8GONuAgTQQcZms3oQsVn2fvW1kSspwmA/YBk5CpS9M3gKceSXF
+	 HaozfnjBTLfMA==
+Received: by mail-lj1-f171.google.com with SMTP id 38308e7fff4ca-38706f96202so40186201fa.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Feb 2026 00:11:30 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCVtQRa0nm4d6VarGlAvyYKLPu0fsgk9cy33loubxIFwxXzI0t2JdFTbTsJfJTSLlsFgsCabs7vIabtDSBZJXA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YySs7j3b2szyOiKjH2ZZpr0C1+F0Af+iWymyDeGESfC6ZpyJ392
+	nbEYKVBo3O1HrUVr+Cs9DdSU7HUHg4uB2n78i2HbFtopUDxZyRWCQPeO5VdsIlVb+DApfmjQEcd
+	7sUofQBuJmj6j++KX/jF/FZLjxO0asrIdrGtU70v0MQ==
+X-Received: by 2002:a2e:bccb:0:b0:383:246a:74ec with SMTP id
+ 38308e7fff4ca-389a5cddb2amr51858551fa.18.1772007089247; Wed, 25 Feb 2026
+ 00:11:29 -0800 (PST)
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 25 Feb 2026 00:11:28 -0800
+Received: from 969154062570 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 25 Feb 2026 00:11:28 -0800
+From: Bartosz Golaszewski <brgl@kernel.org>
+In-Reply-To: <20260225072225.3345307-2-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20260225072225.3345307-1-wenst@chromium.org> <20260225072225.3345307-2-wenst@chromium.org>
+Date: Wed, 25 Feb 2026 00:11:28 -0800
+X-Gmail-Original-Message-ID: <CAMRc=Mc79ex9Sbz1ThVf62JEO3G-KY6LRS0EyBGvvJwxrzSqww@mail.gmail.com>
+X-Gm-Features: AaiRm53FAfXDI6zI7HqJU4aTyz7YrJdL0-41-67eGZ5k3Q4aiUw3d0tcyRAeQOs
+Message-ID: <CAMRc=Mc79ex9Sbz1ThVf62JEO3G-KY6LRS0EyBGvvJwxrzSqww@mail.gmail.com>
+Subject: Re: [PATCH 1/7] PCI: mediatek-gen3: Clean up mtk_pcie_parse_port()
+ with dev_err_probe()
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	Bartosz Golaszewski <brgl@bgdev.pl>, linux-pci@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_232311_136307_C1B0A8B5 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20260225_001131_780352_843F8311 
+X-CRM114-Status: UNSURE (   8.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,75 +93,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Dojo device has a M.2 M-key slot for an included NVMe on some
-models.
+On Wed, 25 Feb 2026 08:22:18 +0100, Chen-Yu Tsai <wenst@chromium.org> said:
+> mtk_pcie_parse_port() in the pcie-mediatek-gen driver has a bunch of
+>
+>     if (err) {
+>     	dev_err(dev, "error message\n");
+> 	return err; # or goto
+>     }
+>
+> patterns.
+>
+> Simplify these with dev_err_probe(). The system also gains proper
+> deferred probe messages that can be seen in
+>
+>     /sys/kernel/debug/devices_deferred
+>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
 
-Add a proper device tree description based on the new M.2 M-key binding.
-Power for the slot is controlled by the embedded controller. As far as
-the main SoC is concerned, it is always on.
-
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- .../dts/mediatek/mt8195-cherry-dojo-r1.dts    | 38 +++++++++++++++++++
- 1 file changed, 38 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts b/arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts
-index 49664de99b88..57cc329f49c4 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry-dojo-r1.dts
-@@ -11,6 +11,28 @@ / {
- 	compatible = "google,dojo-sku7", "google,dojo-sku5",
- 		     "google,dojo-sku3", "google,dojo-sku1",
- 		     "google,dojo", "mediatek,mt8195";
-+
-+	nvme-connector {
-+		compatible = "pcie-m2-m-connector";
-+		/* power is controlled by EC */
-+		vpcie3v3-supply = <&pp3300_z2>;
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			port@0 {
-+				reg = <0>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				nvme_ep: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&pcie0_ep>;
-+				};
-+			};
-+		};
-+	};
- };
- 
- &audio_codec {
-@@ -72,6 +94,22 @@ &pcie0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie0_pins_default>;
- 	status = "okay";
-+
-+	pcie@0 {
-+		compatible = "pciclass,0604";
-+		reg = <0 0 0 0 0>;
-+		device_type = "pci";
-+		num-lanes = <2>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		ranges;
-+
-+		port {
-+			pcie0_ep: endpoint {
-+				remote-endpoint = <&nvme_ep>;
-+			};
-+		};
-+	};
- };
- 
- &pciephy {
--- 
-2.53.0.414.gf7e9f6c205-goog
-
+Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 
