@@ -4,150 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 274A7FD8FC3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 15:21:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97A38FD8FCA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 15:36:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v4wCEKw0Nt9I7N3arAqX3iSp8OwAWsyE+JK61yKbXB4=; b=a2NqfbQqsA0ej/LCBV3pmgVpfU
-	w5TRUxUh27zXkkhjCf/I2UiXZl5CHPQN/q0bv1e/e/sYuvaXgduzeCzooVp6pt0ndO5ntZxmXKbmy
-	BXkb1cqWulytVOdMbJf4tdMFTWnW5oe3y4o7RDz3HONw2IKeQ2D8iQdiRKWIcCH/2j8G9aYhWCyNZ
-	9CzRwdlUelELnlcjpJvDyErPpF43lor5Hhgy50LzQ7oGSS/bPCUFq01x4AnXmjfAg9pyHQKBPkUB4
-	mv78c155R84KcjVZ+l8BwbgS1D5yNDw/BcVjyeCZuf1HQ2LNwcP7f9MzEHaruzlEX+75yj10FQGkm
-	xJojAaUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:
+	Content-Transfer-Encoding:Content-Type:Mime-Version:References:In-Reply-To:
+	Message-Id:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=oZecWF3NiatTSfAKKcQIw612XEUcqHAxd6f6riYEwns=; b=Sf9s9hsn03GN8u
+	6d6IFwQHzuOcf3Et7r+MYidzyAX94pMoQXt7e0OJzxVSRxefHFwY/zPRC4FwJcGZ8d9dhUlzjQs9s
+	OxrpKJzS1TGOak3T10YxSM7nAmLUfd8m1mcTW02VFR1h8Dz4/+pUy0/ppSeLgaghhePzgZZ8V9kLA
+	e8g8kM+37xou8WG3elKZoJX04fMfMoUNvHhHAQioDv+q0EMEi8tvVuZPGCTcKwwqaeddm2/724ETr
+	4gP3nnP8adNkR/RqWqfG5lre2pGFwpWtNuF1IcJfINsE7sUp+MUvlPu9+lrUA+ezfrIepYwBXdGDV
+	PxWOn6T71zxywYb7lc3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvdB9-00000006ULc-1twD;
-	Thu, 26 Feb 2026 15:21:27 +0000
-Received: from mail-norwayeastazon11013006.outbound.protection.outlook.com ([40.107.159.6] helo=OSPPR02CU001.outbound.protection.outlook.com)
+	id 1vvdPR-00000006Wi7-0ZCn;
+	Thu, 26 Feb 2026 15:36:13 +0000
+Received: from mail.hugovil.com ([162.243.120.170])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvdB7-00000006ULA-2jOE;
-	Thu, 26 Feb 2026 15:21:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=rkh2UB5ry4tesRCkvlkZu8gcdWi6lEJ3BgFBYYrjRUuLaVDYEv5EHoetkzD2jFaMBFPHs3CQ72gDL0YNBhi2nIuk95YgNYMJFTYfFWwo9xBEiFz1M3poXl8f0yFxf+Xl6uRA0Gug+p3UpE5BrshxJSdLd1mfz7TPU4dVleBUrBot+iJUB91gFn4F1j1Y9sES9Ok8F8/Ajh6mtQQwvSv46L7phlcMsuHYl9h7nllHbdogcIHQzpwLEQUKmPNZyNW3Ii8WcZHnWIlnYR6IlVdGXIWJ1S0EgvY27HN38Yz29FCG1vEqhaz2bICarVP3+CK2rCIIT6qvBaZrCWpRAT+7+g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=v4wCEKw0Nt9I7N3arAqX3iSp8OwAWsyE+JK61yKbXB4=;
- b=oj3sglAqfi1xps/5TDNujClGRxhsTmznfi17r/zRHlzvVGvB5lKFobg75H07SLK5DemuS9RHfkm1C1BmbyanEJXF9t8PVkhukh6PTkFqaEkvL2HYDwabM/jxsvy2/Ci2OhjKpHB7ZIgNN5ZlXvRoPs5cd3wSg/be8dJkOHW2oRQy0CBFabZP7HPZm9rBCBpxmYCcn5v6kTOTn5iMhmLKiEqma3S2h5euMpcttktz2dDdKsT6+Vu/nhqmVLFk4/zfHdQRN2/5pFLy1gyznkvSaWvgtJf06bJXvDoHvw7fpOJ9jGOxg+DTsg+hinUfkRu5AhFvXqi7jTGGGXJl/LePlA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=v4wCEKw0Nt9I7N3arAqX3iSp8OwAWsyE+JK61yKbXB4=;
- b=h9zmMPOH7ro/CT7af2u9Xoay1fcQKmDd3trEPBmnj8y8wHBeVq2iAuqnBJiWR2q8VImnIKiWhMks60WUl3W7O2Ryf37X9TLHCNZ3K2DxPmvmXjbcy8Hx4WafjU7+j9a+gfZQ/ZXbyQcmevdYwkjau1NrGpeHNNock1huxblbyCCH7KyivLnUMKHb/5Wkh9pFwFoDLzbo5hEYW+zTMVx7T4f4DEzgqmA4M7EJ0YRQffIVvXfUxGwArqMea7WXQ9bgehloz1wgLUMyHZA+uB7mkvhsSQRPRKOpr6FN7cEeXTjsbVdNDGnKN7Y9TWg7Q/Nj2WhbuzSQC37CC1aLJzs99A==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
- by AS8PR04MB8834.eurprd04.prod.outlook.com (2603:10a6:20b:42d::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9654.13; Thu, 26 Feb
- 2026 15:21:19 +0000
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9632.017; Thu, 26 Feb 2026
- 15:21:19 +0000
-Date: Thu, 26 Feb 2026 17:21:15 +0200
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
+	id 1vvdPN-00000006WhD-3657;
+	Thu, 26 Feb 2026 15:36:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hugovil.com
+	; s=x; h=Subject:Content-Transfer-Encoding:Mime-Version:Message-Id:Cc:To:From
+	:Date:subject:date:message-id:reply-to;
+	bh=oZecWF3NiatTSfAKKcQIw612XEUcqHAxd6f6riYEwns=; b=Obh4goj0wcyaCRe0GmMzTwe3Jx
+	Xana9RHJNMtVRKjoYe2XIXhGbofESdeZf8CpYCFpT5IWpuWgay8mJqDhHeFVGvR9d7XoMVGTyZmxo
+	KeINU57rz5cz1xSV3WvmIxPcKQ9d4cBlVBkOsYQcie97cIPnFP+78nE8eXRfwjcKlpxQ=;
+Received: from modemcable168.174-80-70.mc.videotron.ca ([70.80.174.168]:35240 helo=pettiford.lan)
+	by mail.hugovil.com with esmtpa (Exim 4.92)
+	(envelope-from <hugo@hugovil.com>)
+	id 1vvdP9-0006eE-AE; Thu, 26 Feb 2026 10:35:56 -0500
+Date: Thu, 26 Feb 2026 10:35:54 -0500
+From: Hugo Villeneuve <hugo@hugovil.com>
 To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Daniel Golle <daniel@makrotopia.org>,
-	Horatiu Vultur <horatiu.vultur@microchip.com>,
-	=?utf-8?B?QmrDuHJu?= Mork <bjorn@mork.no>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Eric Woudstra <ericwouds@gmail.com>,
-	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>,
-	Lee Jones <lee@kernel.org>,
-	Patrice Chotard <patrice.chotard@foss.st.com>,
-	"open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>,
-	KUnit Development <kunit-dev@googlegroups.com>
-Subject: Re: [PATCH v3 net-next 05/10] phy: add phy_get_rx_polarity() and
- phy_get_tx_polarity()
-Message-ID: <20260226152115.pwizozoapudgvmgl@skbuf>
-References: <20260111093940.975359-1-vladimir.oltean@nxp.com>
- <20260111093940.975359-6-vladimir.oltean@nxp.com>
- <CAMuHMdUBaoYKNj52gn8DQeZFZ42Cvm6xT6fvo0-_twNv1k3Jhg@mail.gmail.com>
- <20260226151036.x4z4bdlxwgsqlkhs@skbuf>
- <CAMuHMdXKbiKUkP=+FDA_-Kd_qx1X6vzSuyPU+Tdd9MgR=Q5WMw@mail.gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAMuHMdXKbiKUkP=+FDA_-Kd_qx1X6vzSuyPU+Tdd9MgR=Q5WMw@mail.gmail.com>
-X-ClientProxiedBy: VI1PR0102CA0001.eurprd01.prod.exchangelabs.com
- (2603:10a6:802::14) To AM9PR04MB8585.eurprd04.prod.outlook.com
- (2603:10a6:20b:438::13)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|AS8PR04MB8834:EE_
-X-MS-Office365-Filtering-Correlation-Id: b055fcec-1338-462f-bb97-08de754ab126
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|10070799003|7416014|376014|19092799006|366016|1800799024;
-X-Microsoft-Antispam-Message-Info: yCTu7NqRjOcSyfuz8akNiR7s9YrEgBQSVhdnlSBxACX2Dv/X+kLsOYkZCf7L1HZsAd+YfFL4r+H5WfXwYjFJPgm1fw3lG9MLU5Ze+fdg5QZ7bEP2HAKAs7cwTFflEyJ/RqcS/hJOiEgvqWZ01z3zLfOeKggQCFgm5iYoRI2fUlNMyN4mPS43Bz3lIwcqGzq86y4mN4R9PlyMsNAHRjzoV6KgwPqWwmSic9PsHGiqH17NTaZsq6QTAZwn6vFJAiQU07cMMfRdkRxOHEBuzYWSsGOUBebL0GTigiLgd2Tj0llHIgrP/YQZiMao0BxtLH2FpUH6MqLZLp3ZhjDyzFFJdovHkb+AlNz6qswOW/TLk6cYcUGjxAFf7E0DOnmvR7URGBg7205lIreFDg+vAZgK+ITlTsdRr0IHg8dSxdGkpwZLiUuKIStnztl0EilTdDHwfEwtF36czBdhVSO35LH9iAIclIb9InQflxYK7T4D+bZZbdohBn5pqj1phZVmE1+kxyooySgwRAY9aGl0MZo8x3seIzH5eInWM3jTBq6dG0eUkTDvtv2gllv2oOpK2wF/gg26vcND/JfRNCp3BzGPuMYRA00ClRLU8iYx4MML0rCeXTjSq0A2ZZJCPGIxThAgIwY+a5j5sRDQc0yStIgt2zGck+X2yN26/8yHGLyCxPflJgnrP4NyfyU2hTKe8kvlkY5YxZrsgqHhf4Pk0LNhVpup6+n7AlEQ3mETt709EF8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(10070799003)(7416014)(376014)(19092799006)(366016)(1800799024);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?698eYqcizXUElIsFaOD3UJEhPiwyrjuVQPcIaZtH7v1EIXwgsG5UtweF+xOH?=
- =?us-ascii?Q?qAmn1b7VBj6FBoJi75woP2kmGNfZ0OJU4SmySTf9MGB/lDlYwP44ROAo1NeL?=
- =?us-ascii?Q?gWOVeXdYyqt95mXtEAW20bVD/2mzeCWy9FPRdnWJ5HzRh1lNWc9MmWmT6NU5?=
- =?us-ascii?Q?4uhLtGumsHQtBB7qWw2/j9ZtCCtf54fKglGVLGFtrSjcQtoQSuQ9FJAH2IQj?=
- =?us-ascii?Q?5azbpAFMP5/Qmo+kpSJZToc/t4qonYZiExmwfXvCqXU1f9BdX0QkU0dkJICG?=
- =?us-ascii?Q?l9wybXXi+8GgfjPgJ09WvPNkk2e+Krgjo0qtSJpaJV1tUZ8psZ7I7Qb51gh5?=
- =?us-ascii?Q?6zbHHgJUp0HbjzGrO8Rk2yLjuaRq6yrnqJT9ySRoY1z/YTWw2WjBWByc99rY?=
- =?us-ascii?Q?EtlbRTGluv6uWKzqQVWsj5dFraeCnQNUINXOSiJ6TpsaUXh25uty7wlncafP?=
- =?us-ascii?Q?rbcpAt5CpGpsn7fW9SxhH35p8fevlPJhPSEaCvO6h+xHlCEWJHrXWnPJgSnu?=
- =?us-ascii?Q?UYET5pETZjeFfRqK1uZMCwxlYOKbSzzk1dl3Wvv+tKoQe2zrAvG2cWSqP8kl?=
- =?us-ascii?Q?1AAkg68DnVA5ILN2ndw16Erjp50z4RbuTVV75Cw5fv+LrawuMXfHBGb/Lg0m?=
- =?us-ascii?Q?/vxT6cFuSta/xxQ8WrpI6HIsgxjY3dUGrjmngwXyRFCl1xwT45x7sytfhhuA?=
- =?us-ascii?Q?xMa/Qt3z6X+MYuhItJe64DOLRmmQPxYZMHG0avAQ4OdmIsHeyEO/oJ5duo1T?=
- =?us-ascii?Q?oseZRLWKVBptwPltHz3i62T3ph3ju8iUAGuSRmROq7VC2vXQj843K5Aafccu?=
- =?us-ascii?Q?cKzg/Nqlgf++/4s1SyR62WpOtSLqbXnwO2iTpAy1FKPqI4N1Gzrt6df1xwOW?=
- =?us-ascii?Q?r4JiRfxmE7lp9op0yVxU1fuJMg0AqLiG/wHawe679TGj3TxjYlPjKhmexa3u?=
- =?us-ascii?Q?k76mOsEcKSviF7eu+xoxYERhAUHP9adndC/5BTFRsmnjX8f2aTO1nvzXHK6A?=
- =?us-ascii?Q?9AlT05xiok5eZWJqg6leS+7jdmP6f4wj8E7upUxXNJKH2UzATBgTtR9RbR6S?=
- =?us-ascii?Q?8A1MU+S3992l94HDV5IL+HHOhETbI3cAFyIJq55OHH8a6wKk4+r3EUROcb5a?=
- =?us-ascii?Q?GHzdE/cSZd1vnjooEUY1+V0GEBINrw4+CFjzaVw2YOehOnm6spWQd7pTK3YB?=
- =?us-ascii?Q?s5sxKZrN11kC4/bhlRtv/aSrRnwC2wwtCAcf0286P+KnwmQVCY6H500gfs1h?=
- =?us-ascii?Q?joOqDNeqJn7lgc/IZXeCllQuqmn7HTpmyRJMOo6Sy+0DjeVYXGjLzynZ9wLa?=
- =?us-ascii?Q?6XAZBmId4egeb8oeoBI35Y2DTQze4YHoNMXcmdu/3Llhgemr0kpQ2bXyL0dt?=
- =?us-ascii?Q?XbPv/fx+fk7FSM6SN7jRttD7QffvrFfZczUIXuBRmltTXTioRItndClBD/xZ?=
- =?us-ascii?Q?8eCksSpU3ObV8n5az4oQPryUCArYDbTxl6SP8rUpuS01SYP2rYuD4jeUwQM5?=
- =?us-ascii?Q?fiKTbH+FLygKjg2tlGnuJUXibfntFwcy8Lvyds6fImn73a/9t4SEUeyKE2yy?=
- =?us-ascii?Q?6iNP/WKSAGZM+QXvmdIYOdoMa9JtPxF+X4gSmzB9lnnqGKyWNHIe/gEBlPoZ?=
- =?us-ascii?Q?xA990DtNv1c1cmMeEHjEZK8DOE8l1bGuO0RCz31wNA9pSKt6co6kmzCjQNpD?=
- =?us-ascii?Q?T4YnsiT0YFpX0vhIKINolbGcF1++BYgDASjFqffFTYPRc10JPFOg12KWGsuq?=
- =?us-ascii?Q?h5UDR35nHpTs6Es1Rv6PuS0+x7GjwF+ZxHVQkPTLDsKZz5tKscZ+Bk2Z0k1b?=
-X-MS-Exchange-AntiSpam-MessageData-1: jiCcLuiNKnAZkMrKFxoRRzF9Xj0pKy207bQ=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b055fcec-1338-462f-bb97-08de754ab126
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Feb 2026 15:21:19.7289
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: xQ1fSJqX/vs0rJlre7s93hjhSGKe7CefqdZ2ZUYwz67DBPjglzgpB4/ZSLpk250A7bP8qmRpIMmaPoFJUh4Nnw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8834
+Cc: robin@protonic.nl, andy@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, dmitry.torokhov@gmail.com, hvilleneuve@dimonoff.com,
+ mkorpershoek@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, lee@kernel.org,
+ alexander.sverdlin@gmail.com, marek.vasut@gmail.com, akurz@blala.de,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Message-Id: <20260226103554.cf271dbdfbd20b3702fabc03@hugovil.com>
+In-Reply-To: <CAMuHMdVdYX9p9DfDoyMv8qEm52kY51QULkEnuxRBH2OyWyYf6g@mail.gmail.com>
+References: <20260225155409.612478-1-hugo@hugovil.com>
+	<20260225155409.612478-4-hugo@hugovil.com>
+	<CAMuHMdVdYX9p9DfDoyMv8qEm52kY51QULkEnuxRBH2OyWyYf6g@mail.gmail.com>
+X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 70.80.174.168
+X-SA-Exim-Mail-From: hugo@hugovil.com
+Subject: Re: [PATCH v3 3/4] dt-bindings: input: add GPIO charlieplex keypad
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.hugovil.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_072125_713821_A87D7587 
-X-CRM114-Status: GOOD (  26.34  )
+X-CRM114-CacheID: sfid-20260226_073609_870017_2CF99EF1 
+X-CRM114-Status: GOOD (  36.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,65 +78,170 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Feb 26, 2026 at 04:13:59PM +0100, Geert Uytterhoeven wrote:
-> Hi Vladimir,
-> 
-> On Thu, 26 Feb 2026 at 16:10, Vladimir Oltean <vladimir.oltean@nxp.com> wrote:
-> > On Thu, Feb 26, 2026 at 02:22:29PM +0100, Geert Uytterhoeven wrote:
-> > > > +config PHY_COMMON_PROPS
-> > > > +       bool
-> > > > +       help
-> > > > +         This parses properties common between generic PHYs and Ethernet PHYs.
-> > > > +
-> > > > +         Select this from consumer drivers to gain access to helpers for
-> > > > +         parsing properties from the
-> > > > +         Documentation/devicetree/bindings/phy/phy-common-props.yaml schema.
-> > > > +
-> > > > +config PHY_COMMON_PROPS_TEST
-> > > > +       tristate "KUnit tests for PHY common props" if !KUNIT_ALL_TESTS
-> > > > +       select PHY_COMMON_PROPS
-> > >
-> > > This select means that enabling KUNIT_ALL_TESTS also enables extra
-> > > functionality, which may not be desirable in a production system.
-> > > As PHY_COMMON_PROPS is bool, this extra functionality is even part of
-> > > the base kernel if KUNIT_ALL_TESTS=m.  Unfortunately PHY_COMMON_PROPS is
-> > > invisible, so this cannot just be changed from "select" to "depends on".
-> > > But perhaps PHY_COMMON_PROPS can be made visible if KUNIT_ALL_TESTS,
-> > > so the select can be turned into a dependency?
-> >
-> > Is this what you're asking for?
-> >
-> > -- >8 --
-> > diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
-> > index 02467dfd4fb0..1875d5b784f6 100644
-> > --- a/drivers/phy/Kconfig
-> > +++ b/drivers/phy/Kconfig
-> > @@ -6,7 +6,7 @@
-> >  menu "PHY Subsystem"
-> >
-> >  config PHY_COMMON_PROPS
-> > -       bool
-> > +       bool "PHY common properties" if KUNIT_ALL_TESTS
-> >         help
-> >           This parses properties common between generic PHYs and Ethernet PHYs.
-> >
-> > @@ -16,8 +16,7 @@ config PHY_COMMON_PROPS
-> >
-> >  config PHY_COMMON_PROPS_TEST
-> >         tristate "KUnit tests for PHY common props" if !KUNIT_ALL_TESTS
-> > -       select PHY_COMMON_PROPS
-> > -       depends on KUNIT
-> > +       depends on KUNIT && PHY_COMMON_PROPS
-> >         default KUNIT_ALL_TESTS
-> >         help
-> >           This builds KUnit tests for the PHY common property API.
-> > -- >8 --
-> 
-> Yes, that would work.  Do you think it is acceptable?
-> Thanks!
+Hi Geert,
 
-Yes, I think it's fine. I misinterpreted what kunit_"all"_tests means,
-then read its prompt which says "All KUnit tests with satisfied dependencies".
+On Thu, 26 Feb 2026 10:32:30 +0100
+Geert Uytterhoeven <geert@linux-m68k.org> wrote:
 
-I'll send a patch.
+> Hi Hugo,
+> 
+> On Wed, 25 Feb 2026 at 16:54, Hugo Villeneuve <hugo@hugovil.com> wrote:
+> > From: Hugo Villeneuve <hvilleneuve@dimonoff.com>
+> >
+> > Add DT bindings for GPIO charlieplex keypad.
+> >
+> > Signed-off-by: Hugo Villeneuve <hvilleneuve@dimonoff.com>
+> 
+> Thanks for your patch!
+> 
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/input/gpio-charlieplex-keypad.yaml
+> > @@ -0,0 +1,106 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +
+> > +$id: http://devicetree.org/schemas/input/gpio-charlieplex-keypad.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: GPIO charlieplex keypad
+> > +
+> > +maintainers:
+> > +  - Hugo Villeneuve <hvilleneuve@dimonoff.com>
+> > +
+> > +description: |
+> > +  The charlieplex keypad supports N^2)-N different key combinations (where N is
+> > +  the number of lines). Key presses and releases are detected by configuring
+> > +  only one line as output at a time, and reading other line states. This process
+> > +  is repeated for each line. Diodes are required to ensure current flows in only
+> > +  one direction between any pair of pins.
+> > +  This mechanism doesn't allow to detect simultaneous key presses.
+> 
+> Indeed, e.g. pressing S1 and S2 simultaneously will show a ghost
+> S5 keypress.
+> 
+> > +
+> > +  Wiring example for 3 lines keyboard with 6 switches and 3 diodes:
+> > +
+> > +  L0  --+---------------------+----------------------+
+> > +        |                     |                      |
+> > +  L1  -------+-----------+---------------------+     |
+> > +        |    |           |    |                |     |
+> > +  L2  -------------+----------------+-----+    |     |
+> > +        |    |     |     |    |     |     |    |     |
+> > +        |    |     |     |    |     |     |    |     |
+> > +        |  S1 \  S2 \    |  S3 \  S4 \    |  S5 \  S6 \
+> > +        |    |     |     |    |     |     |    |     |
+> > +        |    +--+--+     |    +--+--+     |    +--+--+
+> > +        |       |        |       |        |       |
+> > +        |    D1 v        |    D2 v        |    D3 v
+> > +        |       - (k)    |       - (k)    |       - (k)
+> > +        |       |        |       |        |       |
+> > +        +-------+        +-------+        +-------+
+> 
+> Don't you need pull-down resistors on L[0-2], and/or a way to specify
+> in DT to enable internal poll-down on GPIO controllers that support it?
+> Some controllers may support internal pull-up only, but I guess that
+> can be handled using GPIO_ACTIVE_LOW?
+
+Yes, using something like this:
+
+  line-gpios = <&gpio2 25 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+
+should work I think, although with my hardware unfortunately I cannot
+test it.
+
+Hugo.
+
+
+> 
+> > +
+> > +  L: GPIO line
+> > +  S: switch
+> > +  D: diode (k indicates cathode)
+> > +
+> > +allOf:
+> > +  - $ref: input.yaml#
+> > +  - $ref: /schemas/input/matrix-keymap.yaml#
+> > +
+> > +properties:
+> > +  compatible:
+> > +    const: gpio-charlieplex-keypad
+> > +
+> > +  autorepeat: true
+> > +
+> > +  debounce-delay-ms:
+> > +    default: 5
+> > +
+> > +  line-gpios:
+> > +    description:
+> > +      List of GPIOs used as lines. The gpio specifier for this property
+> > +      depends on the gpio controller to which these lines are connected.
+> > +
+> > +  linux,keymap: true
+> > +
+> > +  poll-interval: true
+> > +
+> > +  settling-time-us: true
+> > +
+> > +  wakeup-source: true
+> > +
+> > +required:
+> > +  - compatible
+> > +  - line-gpios
+> > +  - linux,keymap
+> > +  - poll-interval
+> > +
+> > +additionalProperties: false
+> > +
+> > +examples:
+> > +  - |
+> > +    #include <dt-bindings/gpio/gpio.h>
+> > +    #include <dt-bindings/input/input.h>
+> > +
+> > +    charlieplex-keypad {
+> 
+> "keyboard", as per Devicetree Specification Generic Names
+> Recommendation.
+> 
+> > +        compatible = "gpio-charlieplex-keypad";
+> > +        debounce-delay-ms = <20>;
+> > +        poll-interval = <5>;
+> > +        settling-time-us = <2>;
+> > +
+> > +        line-gpios = <&gpio2 25 GPIO_ACTIVE_HIGH
+> > +                      &gpio2 26 GPIO_ACTIVE_HIGH
+> > +                      &gpio2 27 GPIO_ACTIVE_HIGH>;
+> > +
+> > +        /* MATRIX_KEY(output, input, key-code) */
+> > +        linux,keymap = <
+> > +            /*
+> > +             * According to wiring diagram above, if L1 is configured as
+> > +             * output and HIGH, and we detect a HIGH level on input L0,
+> > +             * then it means S1 is pressed: MATRIX_KEY(L1, L0, KEY...)
+> > +             */
+> > +            MATRIX_KEY(1, 0, KEY_F1) /* S1 */
+> > +            MATRIX_KEY(2, 0, KEY_F2) /* S2 */
+> > +            MATRIX_KEY(0, 1, KEY_F3) /* S3 */
+> > +            MATRIX_KEY(2, 1, KEY_F4) /* S4 */
+> > +            MATRIX_KEY(1, 2, KEY_F5) /* S5 */
+> > +            MATRIX_KEY(0, 2, KEY_F6) /* S6 */
+> > +        >;
+> > +    };
+> 
+> Gr{oetje,eeting}s,
+> 
+>                         Geert
+> 
+> --
+> Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+> 
+> In personal conversations with technical people, I call myself a hacker. But
+> when I'm talking to journalists I just say "programmer" or something like that.
+>                                 -- Linus Torvalds
+> 
+
+
+-- 
+Hugo Villeneuve
 
