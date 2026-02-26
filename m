@@ -4,72 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A904FD8FFC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 19:11:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F35EFFD9E0A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 21:08:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QsrGpH4o2HFZOH/D1AdkaQWzdLv5TPDTs3kNOb4aBj4=; b=gBj761Tu02O3c2civlnsmH6IiF
-	BP2cUk9nkfLu/enkZtUVRuNGKnk3EsjlLbS6uzL3Tja35fRMHM53QhaopK8V1NIqU9M9i1nmjZEQj
-	9j4EJdDNtEtrML8YzUTi+sYehvV9CbqMzOZZudf3rgg+v5SdorKOU3VnNYima7rH0o0gxQM6tL9W9
-	Fgl8njOHshNv0jwnWmAluZZQ2cF0qXRql2QaZu4a4SnwfiLiedbRPfUiM27CmM69wWRykKWTnwlP6
-	a+KtYSFRvxGub9/hipGCR3UGFOZDNrt2wMkoIQbmRqdbnLmDQUIwMk086kAs85BDq2YEjRonT7A2I
-	f3GhHv2A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aG1xWWc8EdSqvFAlhgQ31P7qyW73SGSmDz40wAFzb0I=; b=cRY+4qhzuTy+RWogv9C/mxpubf
+	p/0JUScJpn5ECxaN505DEQOJ14TIcnjEndkWeHeudjPCuyHWI6g7U+xRQjp/2y/kyBVDg12KcY7rw
+	I1LhOgQI+JyAUQloxLYXgQMYjaCe47dVXQ53Nj3PMkhRdCSb3MxJKv8PoouvF4Pp/G+stRZ7jTl6b
+	snCDwR1e4mvNQ1i5JMsRlv1KBLPVBswhTmMPe6SHNmBfx7G6FIlRUdhxaFrpKiZeC7O1ilzrPiW8S
+	GcgKYpE0vWsDNCopqLNABgL/nYBOdvTgO6CXVx5cDq0QXNiCuunaQduQBW7PJQ0+RZ6volRPomhCz
+	PYLQhbXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvgmB-000000071zj-0lXH;
-	Thu, 26 Feb 2026 19:11:55 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vvib4-00000007CbS-1dWp;
+	Thu, 26 Feb 2026 21:08:34 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvgm7-000000071w4-3qBn;
-	Thu, 26 Feb 2026 19:11:53 +0000
+	id 1vvib2-00000007Caz-0aRQ;
+	Thu, 26 Feb 2026 21:08:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 93ECA409D7;
-	Thu, 26 Feb 2026 19:11:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B0BDC19423;
-	Thu, 26 Feb 2026 19:11:50 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5D5814187C;
+	Thu, 26 Feb 2026 21:08:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B353BC116C6;
+	Thu, 26 Feb 2026 21:08:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772133111;
-	bh=+JK0woIfrSlrz8x0i3M8XRl8t8nRrkmf3J1am0HEVcc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=KOVJpWOieNu3hwNvs3hC/9lUtZ7HA50gO40q0nQGWa1MswMzxHcVdhvkXXBQw+h2U
-	 qPGpjdBGI3mEFNM5zA/woIJEXbfV4rzigQuAv7+xgthayw7zlwY63XrJwGJ+3p4GOZ
-	 SV/cJxevho7rPYI/JkuSrL+0IWKLEW7v1rx13qncjCU+pqokmDMuucNUaWFx94IDt0
-	 IJSqUIATWo3LcjRlhD2fQsnC0EM5cUevr7+Ztc0m7LOCfhSqB8DfH1OckfUiU+2EO2
-	 OVWNUroTkKXfT0RD2TqkZD4tpL8U/+KqofMC9RhVrpnjaD6Tw9to7fJZQCkpUSJtgM
-	 ahXYhKAtLTzyQ==
+	s=k20201202; t=1772140111;
+	bh=lvfOpg7Q8B6PQTUDRETaioIBfNXDdU4p85aEpRkDPOo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=okPxQoNNaXjtAHqbKapEVhYnnFPHYkR3E2EUG40wOSSEOLr4PJaNr1MRVGPG0qfG8
+	 mBOH8D1uR19BK5b8TbcQRhDsWJx5vCtcOCPVOjLwxo4hDhgG6FLwmEhilXtdOsMkSW
+	 vp+KM+cFo6ZxSiHQQtHsNkVhPCoR6BSsHtwaN7BtymqDcnDFoQ+2eYvWFuUU8TRInk
+	 ZzyU5XdhN+nsFL9FP0pWzTv2pAvdiGzdXnK90vkTMRHhbRajsyoRewD1QxjZ0vGRbk
+	 Q39H0419rUtEoySHeTIty+ybr0a71yLnBXAFS/jOM5cfaDe36b0cO2Wu1xvvnIbkuK
+	 0Udtksr66NM7g==
+Date: Thu, 26 Feb 2026 22:08:28 +0100
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Thu, 26 Feb 2026 20:11:16 +0100
-Subject: [PATCH wireless 3/3] wifi: mt76: Fix possible oob access in
- mt76_connac2_mac_write_txwi_80211()
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260226-mt76-addba-req-oob-access-v1-3-b0f6d1ad4850@kernel.org>
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>,
+	MeiChia Chiu <meichia.chiu@mediatek.com>,
+	Leon Yen <leon.yen@mediatek.com>, Deren Wu <deren.wu@mediatek.com>,
+	Quan Zhou <quan.zhou@mediatek.com>,
+	Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+Cc: Johannes Berg <johannes@sipsolutions.net>,
+	Howard Hsu <howard-yh.hsu@mediatek.com>,
+	Bo Jiao <Bo.Jiao@mediatek.com>, linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Hao Zhang <hao.zhang@mediatek.com>,
+	Nelson Yu <nelson.yu@mediatek.com>
+Subject: Re: [PATCH wireless 0/3] wifi: mt76: Fix possible out-of-bound
+ accesses in mt76 driver
+Message-ID: <aaC2TBksZcml-DDT@lore-desk>
 References: <20260226-mt76-addba-req-oob-access-v1-0-b0f6d1ad4850@kernel.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="S9cDFWTiBubiysDv"
+Content-Disposition: inline
 In-Reply-To: <20260226-mt76-addba-req-oob-access-v1-0-b0f6d1ad4850@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- StanleyYP Wang <StanleyYP.Wang@mediatek.com>, 
- Peter Chiu <chui-hao.chiu@mediatek.com>, 
- MeiChia Chiu <meichia.chiu@mediatek.com>, Leon Yen <leon.yen@mediatek.com>, 
- Deren Wu <deren.wu@mediatek.com>, Quan Zhou <quan.zhou@mediatek.com>, 
- Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-Cc: Johannes Berg <johannes@sipsolutions.net>, 
- Howard Hsu <howard-yh.hsu@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, 
- linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Hao Zhang <hao.zhang@mediatek.com>, 
- Nelson Yu <nelson.yu@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_111151_992697_E6A07674 
-X-CRM114-Status: UNSURE (   7.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260226_130832_216008_263DF4CF 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,30 +87,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Check frame length before accessing the mgmt fields in
-mt76_connac2_mac_write_txwi_80211 in order to avoid a possible oob
-access.
 
-Fixes: 182071cdd594b ("mt76: connac: move connac2_mac_write_txwi in mt76_connac module")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c | 1 +
- 1 file changed, 1 insertion(+)
+--S9cDFWTiBubiysDv
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-index 3304b5971be09e4c20178bdff66febf67bcd5c19..ad66a64200213a45e44d6f30a7a1e4306fd84240 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
-@@ -413,6 +413,7 @@ mt76_connac2_mac_write_txwi_80211(struct mt76_dev *dev, __le32 *txwi,
- 	u32 val;
- 
- 	if (ieee80211_is_action(fc) &&
-+	    skb->len >= IEEE80211_MIN_ACTION_SIZE + 1 &&
- 	    mgmt->u.action.category == WLAN_CATEGORY_BACK &&
- 	    mgmt->u.action.u.addba_req.action_code == WLAN_ACTION_ADDBA_REQ) {
- 		u16 capab = le16_to_cpu(mgmt->u.action.u.addba_req.capab);
+> Check mgmt frame length before accessing header fields in order to avoid
+> a possible oob access for injected frames.
 
--- 
-2.53.0
+Hi Felix,
 
+do you think these patches can go directly into the wireless tree or do you
+prefer to get them into your tree?
+
+Regards,
+Lorenzo
+
+>=20
+> ---
+> Lorenzo Bianconi (3):
+>       wifi: mt76: mt7996: Fix possible oob access in mt7996_mac_write_txw=
+i_80211()
+>       wifi: mt76: mt7925: Fix possible oob access in mt7925_mac_write_txw=
+i_80211()
+>       wifi: mt76: Fix possible oob access in mt76_connac2_mac_write_txwi_=
+80211()
+>=20
+>  drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c | 1 +
+>  drivers/net/wireless/mediatek/mt76/mt7925/mac.c      | 1 +
+>  drivers/net/wireless/mediatek/mt76/mt7996/mac.c      | 1 +
+>  3 files changed, 3 insertions(+)
+> ---
+> base-commit: 8bf22c33e7a172fbc72464f4cc484d23a6b412ba
+> change-id: 20260226-mt76-addba-req-oob-access-848280920814
+>=20
+> Best regards,
+> --=20
+> Lorenzo Bianconi <lorenzo@kernel.org>
+>=20
+
+--S9cDFWTiBubiysDv
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaaC2TAAKCRA6cBh0uS2t
+rHhKAQCot+MHK/5KIrSE0/KTRx1gyVUHvLhpk9gAlg/5EadIsAEA2JrMGDHYx42t
+r5l7H27eW/uMNIW4K/jrBJ25uZ+dtA4=
+=PxUT
+-----END PGP SIGNATURE-----
+
+--S9cDFWTiBubiysDv--
 
