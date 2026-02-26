@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CA34FC5926
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 10:36:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5C61FC591F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 10:45:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ACIzDCkhxtQJV5IF7s1iC699gkzxLNEonaEWItuvqUg=; b=nzqWbWu5AvysF1EbGRl3mtgXXV
-	CENP+4bTupDktZXJGDYkHAPU9v4C89noUnzmZWn7ZszUh8NLQgq5tiMdTPPqUsKtJOjkz0ebDxBaO
-	dH1Hgv6ed7nxepLFel0VK2INWk++BXgRClhowOCjuP1NieiIKl7+CWaqi+tImykrH6D1ElQ6OrPlm
-	LC9YtaKotJGxOnfDgfYBSuaEojQqpqG+QBY5l80eIwpqQhZPkv5RgArr+jaj1eQacYkzF26czKpZF
-	RI7kQoOJqK/14fKa7BcW28Tsf6/5V0OXY/pa1nGx9fpsSWHCKycoxyTOvN0rZimiq5xWriXT5PsLw
-	XUdTYD/w==;
+	bh=3WEZrYfla4xz+1nx4sbFXm09bsKMdAQd/62PrBV4VdQ=; b=V3gz+kKtpeWpTRlOrx3snj130b
+	J03Uza63EyAx4SUCgtmgIhMreq8gdvIxJDgirNxJJltFJ3SybHpZS3dSzjwDp3LInYHzt5hQe1ir7
+	mFGh5Jt4mPDPfFzdBb1sbSNwjKeFtqn95QeaGEUpiBshBvwD5rEELqLtAvJkpZoQkufo1J8GYUkbE
+	cx50VdJlmmWLF1rLSmARLKewlrN5UijKd05qjTuQsl57YkAvq7pKsJGL9CIg8iNKCZvR/MWaoBQvT
+	71vw2XiN9PMBE+5uOW2hWG7VTJxJvjHO5XMlx06TQM2ZtmF+ES+3hgS/Z1CgC3Rm/KvR+nSbUYHEd
+	gOaHxXrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvYjA-00000005wF9-1Y4E;
-	Thu, 26 Feb 2026 10:36:16 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vvYsH-00000005wru-1wK1;
+	Thu, 26 Feb 2026 10:45:41 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvYj6-00000005wE2-1pqP;
-	Thu, 26 Feb 2026 10:36:14 +0000
+	id 1vvYsF-00000005wrD-0iIC;
+	Thu, 26 Feb 2026 10:45:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772102169;
-	bh=W3qLjNuC+QLK2F8P217EOXE0d8RIhLDiKC2NEPOx7v8=;
+	s=mail; t=1772102736;
+	bh=6YFT7Dv9/RPthcEUnhhwy5zDoUaHap7U9kpRpUeIPV4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=G3B4blNbzGIfSFsN2Pq23YbXZim4VHupb3i2mKyKj4xFv4ddYl4Sus69IZSY4lw7t
-	 6i3gpratx3W9zv3kXHtvbOfl9x7tdqVZqqI21laWGAoq/8yUCaCC9bd0OqJM3K8qaT
-	 g/FFF2doYJdQTsguQe+VkqThZ94g1f5Rng8kQXTj93PmZ+7sM+oa4TswUvr1tDvYfa
-	 oBWqzoOAdgoPg10cd8Vk1HprIvxxB0YEa3NsPoWq2O9uwpXi3Djqf0LodAgvm4nL3s
-	 F923l+cXyGnxkL14T07f6d3l4PLUpzdDw/rJMFjqYdv2NDs/AmzXSYMLGfdBq34uWs
-	 e1XlOztdw9ebw==
+	b=aOKhl1gYmC58Q5XnPaaVFV4AX+HRZb/FaZT8kvMrbAX4ocU8UvOwkOrmxuMbZExjm
+	 q/5pxtHOPqwZtl4qTw/eJkvwmwu5Yj9BE8qGvk6kr1AVqhRzDERERpxn0XgjJTSvtj
+	 wPWqCgfmYc2RdUxfhGerzWAUOPfTrzvqV1AHbpTXLngoKvpWhap3qPd5vgpOjw+QmD
+	 jnx5GXl85lesOX+SfuCKuFHcINonNKENolDlEjaEzUzEdf6A2Y+z2QRqnjOM6Ck3Ao
+	 xcyP/cF9XTE1tbDfDSOKNbv0yQ8lZjCVnr0uv25vTWPWTLA0Vw3Efc6/I3SM5fQhuC
+	 zmAai5oTQnjcg==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 24C5817E03E5;
-	Thu, 26 Feb 2026 11:36:08 +0100 (CET)
-Message-ID: <48e8f40b-f5f3-42b5-a97b-7a25d1dc0fb8@collabora.com>
-Date: Thu, 26 Feb 2026 11:36:07 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6C83017E0029;
+	Thu, 26 Feb 2026 11:45:35 +0100 (CET)
+Message-ID: <84f22f00-e3eb-4ea5-999e-260c81f29338@collabora.com>
+Date: Thu, 26 Feb 2026 11:45:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 20/23] scsi: ufs: mediatek: Back up idle timer in
- per-instance struct
+Subject: Re: [PATCH v7 16/23] scsi: ufs: mediatek: Clean up logging prints
 To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
  "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
  "robh@kernel.org" <robh@kernel.org>,
  =?UTF-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>,
  "kishon@kernel.org" <kishon@kernel.org>,
- "James.Bottomley@HansenPartnership.com"
- <James.Bottomley@HansenPartnership.com>,
+ "James.Bottomley@hansenpartnership.com"
+ <James.Bottomley@hansenpartnership.com>,
  "bvanassche@acm.org" <bvanassche@acm.org>,
  =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
  <Chaotian.Jing@mediatek.com>, "conor+dt@kernel.org" <conor+dt@kernel.org>,
@@ -80,18 +79,19 @@ Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
  "kernel@collabora.com" <kernel@collabora.com>
 References: <20260216-mt8196-ufs-v7-0-b5f2907c6da7@collabora.com>
- <20260216-mt8196-ufs-v7-20-b5f2907c6da7@collabora.com>
- <5d9723fd6b4ff8430889efb33e0fc93a10c4a880.camel@mediatek.com>
- <cad2e275-8b5d-4023-b3da-a191bfd065c5@collabora.com>
- <6297edc9c2d6d1a323f188ef411205701a629d88.camel@mediatek.com>
+ <20260216-mt8196-ufs-v7-16-b5f2907c6da7@collabora.com>
+ <c333898413d249c017430d4ae98bc7be3bf33a64.camel@mediatek.com>
+ <2575185.irdbgypaU6@workhorse>
+ <f0e97a38-a11b-4e69-902a-e0ccd0dc4540@collabora.com>
+ <259b24885e5e721ae562d27dd761b02e6a68c971.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <6297edc9c2d6d1a323f188ef411205701a629d88.camel@mediatek.com>
+In-Reply-To: <259b24885e5e721ae562d27dd761b02e6a68c971.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_023613_007003_41A9D6AB 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20260226_024539_501159_D7FB9098 
+X-CRM114-Status: GOOD (  19.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,48 +106,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/02/26 04:46, Peter Wang (王信友) ha scritto:
-> On Wed, 2026-02-25 at 13:40 +0100, AngeloGioacchino Del Regno wrote:
->> In my opinion "ahit" is way less readable than
->> "hibernate_idle_timer".
+Il 26/02/26 08:00, Peter Wang (王信友) ha scritto:
+> On Wed, 2026-02-25 at 14:18 +0100, AngeloGioacchino Del Regno wrote:
+>>> Depends on your view of what's useful information for the user.
+>>>
+>>> I can change both of these back to _info if I have to send out a
+>>> next
+>>> revision, just to get this through though.
+>>>
 >>
->> The hibernate_idle_timer member here stores the AUTO HIBERNATE IDLE
->> TIMER, and
->> there is no other possible hibernation state in this driver.
+>> Definitely don't change that back to dev_info() as this is debugging
+>> information
+>> that spams the kernel log for no reason.
 >>
->> Not sure why this could ever be confusing in terms of its intended
->> use: its
->> intended use is to store the (auto) hibern8 idle timer, and the
->> member is called
->> hibernate_idle_timer.
->>
->> In my eyes, that matches 1:1 with its usage. Loud and clear.
+>> This has to be dev_dbg().
 >>
 >> Regards,
 >> Angelo
 >>
->>
+>>>
 > 
-> Hi AngeloGioacchino,
+> Hi AngeloGioacchino, Nicolas,
 > 
-> If you want to refer to the AUTO HIBERNATE IDLE TIMER,
-> then you cannot omit "auto" because the UFS driver also
-> has a manual hibernate method.
-> However, "AUTO HIBERNATE IDLE TIMER" is too long,
-> and we often use "ahit" instead (which is also used in
-> the UFSHCI spec). For example:
-> https://elixir.bootlin.com/linux/v6.19.3/source/include/ufs/ufshcd.h#L978
-> 
-> So, if you want to distinguish it from hba->ahit, I suggest
-> using backup_ahit or saved_ahit instead.
+> At least, "device reset done" is important information that
+> users would care about, and it should not spam the kernel log.
+> You wouldn't expect device resets to occur repeatedly, would you?
 > 
 
-Okay, does "saved_auto_hibern8_idle_tmr" sound good for you instead?
+Sorry Peter, but I'd argue that the users don't care about how much and when
+their UFS device resets. Users just want to use a device, without caring
+about any implementation detail.
+The spirit is: "radio silence as long as everything works good".
+
+Power users might want to check the kernel log in a problematic scenario to
+seek for a message that says that "something went horribly wrong", but other
+than developers, nobody cares about when UFS resets.
+
+ From a developer standpoint, I do agree with you in that we do *not* want to
+see device resets occurring repeatedly, but we're talking about a user here.
+
+See it like this... imagine if all of the device drivers in the Linux kernel
+would say "device reset done": how many devices are present in one SoC (of
+course, ignoring subdevices on a board)?
+
+Of all those many devices, if all of them would print a message saying that
+their reset is done (and operation is ok), the kernel log would get quite a
+bit clogged, you'd need to have a bigger RAM carveout just for .. well, the
+kernel log itself, and then you'd have to grep the log, hoping to find the
+one single line that helps you finding an issue that you're having.
+
+This is the reason why keeping any message that is not exactly a *single*
+indication of an error (so, an actual issue) as a dev_dbg() is a sensible
+thing to do (and of course, with dynamic debug in the kernel, you can always
+activate that on-the-fly without recompiling to verify functionality should
+you have any immediate doubt).
+
+So while I agree about your reasons, I very strongly disagree about having
+this message as a dev_info(), nor anything else that is not dev_dbg() really.
 
 Regards,
 Angelo
 
 > Thanks
 > Peter
+> 
 
 
