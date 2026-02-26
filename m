@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F35EFFD9E0A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 21:08:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0065FD9E0A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 21:45:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aG1xWWc8EdSqvFAlhgQ31P7qyW73SGSmDz40wAFzb0I=; b=cRY+4qhzuTy+RWogv9C/mxpubf
-	p/0JUScJpn5ECxaN505DEQOJ14TIcnjEndkWeHeudjPCuyHWI6g7U+xRQjp/2y/kyBVDg12KcY7rw
-	I1LhOgQI+JyAUQloxLYXgQMYjaCe47dVXQ53Nj3PMkhRdCSb3MxJKv8PoouvF4Pp/G+stRZ7jTl6b
-	snCDwR1e4mvNQ1i5JMsRlv1KBLPVBswhTmMPe6SHNmBfx7G6FIlRUdhxaFrpKiZeC7O1ilzrPiW8S
-	GcgKYpE0vWsDNCopqLNABgL/nYBOdvTgO6CXVx5cDq0QXNiCuunaQduQBW7PJQ0+RZ6volRPomhCz
-	PYLQhbXA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fpFL8gAw4IAHZejDMtFioFGSH6+h+EUQlY1TRzKiVrk=; b=nOsHaoNp2r7ZRKhKvIwqWWhH5P
+	+dKOeuM9RYfI0g5III2/4ODATfwAnY4RURmMmBq2qb7r9H+i2ZXlWgTLeWwHb7pcTTx2fgOYm7Bmn
+	1Gvlp/yWbIYrvUaJEVLkRcRcPyUljOUnTwcCVkULArFhID0Fi3YnD4q+6QJvAJa6FuJJQmcfKBqRg
+	e0IxunUxlQI6dX6oCrw5Xu5M9l4YGENuR0BIESVZIOybEiG/XTAXpKoX132NSVrX/Va7QdaLtFp4c
+	9vFOF9pq4phqmPs/yUPgNtypBFnoeIqPIxp33tCBdV9MnrZNLbJbbgKFK7d7w3BQ9gvlBfOjiXx1x
+	Nw7DcEzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvib4-00000007CbS-1dWp;
-	Thu, 26 Feb 2026 21:08:34 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vvjAm-00000007GLt-3aYF;
+	Thu, 26 Feb 2026 21:45:28 +0000
+Received: from mailgate02.uberspace.is ([2a00:d0c0:200:0:1c7b:a6ff:fee0:8ea4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvib2-00000007Caz-0aRQ;
-	Thu, 26 Feb 2026 21:08:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5D5814187C;
-	Thu, 26 Feb 2026 21:08:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B353BC116C6;
-	Thu, 26 Feb 2026 21:08:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772140111;
-	bh=lvfOpg7Q8B6PQTUDRETaioIBfNXDdU4p85aEpRkDPOo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=okPxQoNNaXjtAHqbKapEVhYnnFPHYkR3E2EUG40wOSSEOLr4PJaNr1MRVGPG0qfG8
-	 mBOH8D1uR19BK5b8TbcQRhDsWJx5vCtcOCPVOjLwxo4hDhgG6FLwmEhilXtdOsMkSW
-	 vp+KM+cFo6ZxSiHQQtHsNkVhPCoR6BSsHtwaN7BtymqDcnDFoQ+2eYvWFuUU8TRInk
-	 ZzyU5XdhN+nsFL9FP0pWzTv2pAvdiGzdXnK90vkTMRHhbRajsyoRewD1QxjZ0vGRbk
-	 Q39H0419rUtEoySHeTIty+ybr0a71yLnBXAFS/jOM5cfaDe36b0cO2Wu1xvvnIbkuK
-	 0Udtksr66NM7g==
-Date: Thu, 26 Feb 2026 22:08:28 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
+	id 1vvjAj-00000007GKl-3ICm
+	for linux-mediatek@lists.infradead.org;
+	Thu, 26 Feb 2026 21:45:27 +0000
+Received: from perseus.uberspace.de (perseus.uberspace.de [95.143.172.134])
+	by mailgate02.uberspace.is (Postfix) with ESMTPS id 1174618015E
+	for <linux-mediatek@lists.infradead.org>; Thu, 26 Feb 2026 22:45:09 +0100 (CET)
+Received: (qmail 6313 invoked by uid 988); 26 Feb 2026 21:45:08 -0000
+Authentication-Results: perseus.uberspace.de;
+	auth=pass (plain)
+Received: from unknown (HELO unkown) (::1)
+	by perseus.uberspace.de (Haraka/3.1.1) with ESMTPSA; Thu, 26 Feb 2026 22:45:07 +0100
+From: David Bauer <mail@david-bauer.net>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
 	Shayne Chen <shayne.chen@mediatek.com>,
 	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
-	Peter Chiu <chui-hao.chiu@mediatek.com>,
-	MeiChia Chiu <meichia.chiu@mediatek.com>,
-	Leon Yen <leon.yen@mediatek.com>, Deren Wu <deren.wu@mediatek.com>,
-	Quan Zhou <quan.zhou@mediatek.com>,
-	Mingyen Hsieh <mingyen.hsieh@mediatek.com>
-Cc: Johannes Berg <johannes@sipsolutions.net>,
-	Howard Hsu <howard-yh.hsu@mediatek.com>,
-	Bo Jiao <Bo.Jiao@mediatek.com>, linux-wireless@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Hao Zhang <hao.zhang@mediatek.com>,
-	Nelson Yu <nelson.yu@mediatek.com>
-Subject: Re: [PATCH wireless 0/3] wifi: mt76: Fix possible out-of-bound
- accesses in mt76 driver
-Message-ID: <aaC2TBksZcml-DDT@lore-desk>
-References: <20260226-mt76-addba-req-oob-access-v1-0-b0f6d1ad4850@kernel.org>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] wifi: mt76: mt7915: add debug query from WA firmware
+Date: Thu, 26 Feb 2026 22:45:00 +0100
+Message-ID: <20260226214502.2561168-1-mail@david-bauer.net>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="S9cDFWTiBubiysDv"
-Content-Disposition: inline
-In-Reply-To: <20260226-mt76-addba-req-oob-access-v1-0-b0f6d1ad4850@kernel.org>
+Content-Transfer-Encoding: 8bit
+X-Rspamd-Bar: /
+X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-2.999999) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
+X-Rspamd-Score: -0.099999
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=david-bauer.net; s=uberspace;
+	h=from:to:cc:subject:date;
+	bh=7k4vYrbJ6xrpxAjo9hJNkIdxQq6FFLUNTmda5XOMLE0=;
+	b=v0EcSVJyA3j4V41/5QzOj4WBK9JMFD9bud0Fewr2BKZ1XkNJUPXyPZ7rl9x44lt0ouI5GhVCKx
+	JPV9YEaiQggB72quWuW33gzsZ5ZQdturHuYScCFFVXJyDVRRBjeWzmXj9MSxqBzRJOVuBcvdNE5S
+	2dTgcMSnS/maZWYSHje+aVwSnynuyPazCqkzoaQctsoJd61gdO/ohKKLnNxKFNGOkoBcP/CgwPve
+	GoIVhkzzv7nxBcNxhserfT9BuQJT5FwSR3T0/2GoNyjO7FuOJv+JxGmDKxNMTzayTuqzO8Ca3XWt
+	speoY+nQoVPT4xHtZIsyOeS+aFNX2KYA9+STP5mWvYqvGIiZpJwz9rStNC7oyW4wLnX63/Z6ncAA
+	cpYP5Q48OktQd+KTpXy8LWEamMaakSdG6+U6GpP4l/WqdePWxGhZCNu0svynKJtRQijkfxN7nOen
+	Ox0abD9a5k6fgw9uhwuLCC7Z97IKzeHyGsXny/x06nDq+ol5+Kx5j4dVAaQG0lMdapDrp1LL2obO
+	3RdW+a1iVLRBnrdl8Ql+PhotOry6hJ1E4lBAioLWfGqS3SkFeOi6aNxQK7D88Ym8QpevC0nkwtW+
+	S3AfEFLE0NmdxZoQMkz8SstnuEmTEFKbPdR/uL2L5AFqBY9hrD67KVzOanY9VyM6fHe3sesfmDtq
+	M=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_130832_216008_263DF4CF 
-X-CRM114-Status: GOOD (  10.77  )
+X-CRM114-CacheID: sfid-20260226_134526_235053_44BA0417 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,56 +87,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add a new file to the mt76 debugfs to allow querying internal state
+information from the WA firmware.
 
---S9cDFWTiBubiysDv
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This allows to extract more information from the internal queue
+structures and configured limits.
 
-> Check mgmt frame length before accessing header fields in order to avoid
-> a possible oob access for injected frames.
+Signed-off-by: David Bauer <mail@david-bauer.net>
+---
+ .../wireless/mediatek/mt76/mt7915/debugfs.c   | 81 +++++++++++++++++++
+ 1 file changed, 81 insertions(+)
 
-Hi Felix,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+index 26ed3745af43e..018b1c70b524b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+@@ -603,6 +603,86 @@ mt7915_fw_debug_wa_get(void *data, u64 *val)
+ DEFINE_DEBUGFS_ATTRIBUTE(fops_fw_debug_wa, mt7915_fw_debug_wa_get,
+ 			 mt7915_fw_debug_wa_set, "%lld\n");
+ 
++struct {
++	u8 idx;
++	u8 query_cmd;
++	char *description;
++} mt7915_fw_wa_debug_query[] = {
++	{ 0, 0x16, "MSDU drop info" },
++	{ 1, 0x17, "AC queue tail drop" },
++	{ 2, 0x19, "TX Free info" },
++	{ 3, 0x20, "BSS Table" },
++	{ 4, 0x21, "STA records" },
++};
++
++static ssize_t
++mt7915_fw_query_wa_set(struct file *file, const char __user *user_buf,
++		       size_t count, loff_t *ppos)
++{
++	struct mt7915_phy *phy = file->private_data;
++	struct mt7915_dev *dev = phy->dev;
++	char buf[16];
++	u16 val;
++
++	if (count >= sizeof(buf))
++		return -EINVAL;
++
++	if (copy_from_user(buf, user_buf, count))
++		return -EFAULT;
++
++	if (count && buf[count - 1] == '\n')
++		buf[count - 1] = '\0';
++	else
++		buf[count] = '\0';
++
++	if (kstrtou16(buf, 0, &val))
++		return -EINVAL;
++
++	for (int i = 0; i < ARRAY_SIZE(mt7915_fw_wa_debug_query); i++) {
++		if (val != mt7915_fw_wa_debug_query[i].idx)
++			continue;
++
++		mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(QUERY),
++				  mt7915_fw_wa_debug_query[i].query_cmd,
++				  0, 0);
++		return count;
++	}
++
++	return -EINVAL;
++}
++
++static ssize_t
++mt7915_fw_query_wa_get(struct file *file, char __user *user_buf,
++		       size_t count, loff_t *ppos)
++{
++	static const size_t bufsz = 1024;
++	ssize_t ret;
++	char *buff;
++	int desc = 0;
++	int i;
++
++	buff = kmalloc(bufsz, GFP_KERNEL);
++	if (!buff)
++		return -ENOMEM;
++
++	for (i = 0; i < ARRAY_SIZE(mt7915_fw_wa_debug_query); i++) {
++		desc += scnprintf(buff + desc, bufsz - desc,
++				  "%d: %s\n", mt7915_fw_wa_debug_query[i].idx,
++				  mt7915_fw_wa_debug_query[i].description);
++	}
++
++	ret = simple_read_from_buffer(user_buf, count, ppos, buff, desc);
++	kfree(buff);
++	return ret;
++}
++
++static const struct file_operations fw_query_wa_fops = {
++	.write = mt7915_fw_query_wa_set,
++	.read = mt7915_fw_query_wa_get,
++	.open = simple_open,
++	.llseek = default_llseek,
++};
++
+ static struct dentry *
+ create_buf_file_cb(const char *filename, struct dentry *parent, umode_t mode,
+ 		   struct rchan_buf *buf, int *is_global)
+@@ -1310,6 +1390,7 @@ int mt7915_init_debugfs(struct mt7915_phy *phy)
+ 			    &mt7915_sys_recovery_ops);
+ 	debugfs_create_file("fw_debug_wm", 0600, dir, dev, &fops_fw_debug_wm);
+ 	debugfs_create_file("fw_debug_wa", 0600, dir, dev, &fops_fw_debug_wa);
++	debugfs_create_file("fw_query_wa", 0600, dir, dev, &fw_query_wa_fops);
+ 	debugfs_create_file("fw_debug_bin", 0600, dir, dev, &fops_fw_debug_bin);
+ 	debugfs_create_file("fw_util_wm", 0400, dir, dev,
+ 			    &mt7915_fw_util_wm_fops);
+-- 
+2.51.0
 
-do you think these patches can go directly into the wireless tree or do you
-prefer to get them into your tree?
-
-Regards,
-Lorenzo
-
->=20
-> ---
-> Lorenzo Bianconi (3):
->       wifi: mt76: mt7996: Fix possible oob access in mt7996_mac_write_txw=
-i_80211()
->       wifi: mt76: mt7925: Fix possible oob access in mt7925_mac_write_txw=
-i_80211()
->       wifi: mt76: Fix possible oob access in mt76_connac2_mac_write_txwi_=
-80211()
->=20
->  drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c | 1 +
->  drivers/net/wireless/mediatek/mt76/mt7925/mac.c      | 1 +
->  drivers/net/wireless/mediatek/mt76/mt7996/mac.c      | 1 +
->  3 files changed, 3 insertions(+)
-> ---
-> base-commit: 8bf22c33e7a172fbc72464f4cc484d23a6b412ba
-> change-id: 20260226-mt76-addba-req-oob-access-848280920814
->=20
-> Best regards,
-> --=20
-> Lorenzo Bianconi <lorenzo@kernel.org>
->=20
-
---S9cDFWTiBubiysDv
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaaC2TAAKCRA6cBh0uS2t
-rHhKAQCot+MHK/5KIrSE0/KTRx1gyVUHvLhpk9gAlg/5EadIsAEA2JrMGDHYx42t
-r5l7H27eW/uMNIW4K/jrBJ25uZ+dtA4=
-=PxUT
------END PGP SIGNATURE-----
-
---S9cDFWTiBubiysDv--
 
