@@ -4,66 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97A38FD8FCA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 15:36:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77AE8FD8FD3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 16:25:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:References:In-Reply-To:
-	Message-Id:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oZecWF3NiatTSfAKKcQIw612XEUcqHAxd6f6riYEwns=; b=Sf9s9hsn03GN8u
-	6d6IFwQHzuOcf3Et7r+MYidzyAX94pMoQXt7e0OJzxVSRxefHFwY/zPRC4FwJcGZ8d9dhUlzjQs9s
-	OxrpKJzS1TGOak3T10YxSM7nAmLUfd8m1mcTW02VFR1h8Dz4/+pUy0/ppSeLgaghhePzgZZ8V9kLA
-	e8g8kM+37xou8WG3elKZoJX04fMfMoUNvHhHAQioDv+q0EMEi8tvVuZPGCTcKwwqaeddm2/724ETr
-	4gP3nnP8adNkR/RqWqfG5lre2pGFwpWtNuF1IcJfINsE7sUp+MUvlPu9+lrUA+ezfrIepYwBXdGDV
-	PxWOn6T71zxywYb7lc3A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=txv6vQDrf8TvuXaw8FFr2/au2yNyfaaMtDMt+HBRQ0U=; b=o4KcC7tkmrh8ve1lqssg4P6naY
+	fmmc4Gf1vnqPLLQlwzBGQvNn59sIQQtwZEJxu1UsS1nVj+xPCyS9uTOg1MrcETW3B7tCDBGmk3lhF
+	GgU2BKmeEucwtjJlERXxHCs8lIBl9yQPkbPvKTOSSxcleHXNAnGx/vs27Q+uvsim1s7IuSjcpUvXQ
+	fAQy5D87C38J4j/WW7MYzNeee2nYJRV4HENX511/HNCOxKCb74cPOOS5S5XIAMdcjy1cBNqSoR9PU
+	ArZJyaAwr7+YMkn3UBG/imxGprLLFp0RLuCGVvTZdbQO8o7ypukOa4Ol7sgXCC9rHvFVVTtlp1rE4
+	glo39P9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvdPR-00000006Wi7-0ZCn;
-	Thu, 26 Feb 2026 15:36:13 +0000
-Received: from mail.hugovil.com ([162.243.120.170])
+	id 1vveAu-00000006jCA-2HC1;
+	Thu, 26 Feb 2026 16:25:16 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvdPN-00000006WhD-3657;
-	Thu, 26 Feb 2026 15:36:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hugovil.com
-	; s=x; h=Subject:Content-Transfer-Encoding:Mime-Version:Message-Id:Cc:To:From
-	:Date:subject:date:message-id:reply-to;
-	bh=oZecWF3NiatTSfAKKcQIw612XEUcqHAxd6f6riYEwns=; b=Obh4goj0wcyaCRe0GmMzTwe3Jx
-	Xana9RHJNMtVRKjoYe2XIXhGbofESdeZf8CpYCFpT5IWpuWgay8mJqDhHeFVGvR9d7XoMVGTyZmxo
-	KeINU57rz5cz1xSV3WvmIxPcKQ9d4cBlVBkOsYQcie97cIPnFP+78nE8eXRfwjcKlpxQ=;
-Received: from modemcable168.174-80-70.mc.videotron.ca ([70.80.174.168]:35240 helo=pettiford.lan)
-	by mail.hugovil.com with esmtpa (Exim 4.92)
-	(envelope-from <hugo@hugovil.com>)
-	id 1vvdP9-0006eE-AE; Thu, 26 Feb 2026 10:35:56 -0500
-Date: Thu, 26 Feb 2026 10:35:54 -0500
-From: Hugo Villeneuve <hugo@hugovil.com>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: robin@protonic.nl, andy@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, dmitry.torokhov@gmail.com, hvilleneuve@dimonoff.com,
- mkorpershoek@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, lee@kernel.org,
- alexander.sverdlin@gmail.com, marek.vasut@gmail.com, akurz@blala.de,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Message-Id: <20260226103554.cf271dbdfbd20b3702fabc03@hugovil.com>
-In-Reply-To: <CAMuHMdVdYX9p9DfDoyMv8qEm52kY51QULkEnuxRBH2OyWyYf6g@mail.gmail.com>
-References: <20260225155409.612478-1-hugo@hugovil.com>
-	<20260225155409.612478-4-hugo@hugovil.com>
-	<CAMuHMdVdYX9p9DfDoyMv8qEm52kY51QULkEnuxRBH2OyWyYf6g@mail.gmail.com>
-X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 70.80.174.168
-X-SA-Exim-Mail-From: hugo@hugovil.com
-Subject: Re: [PATCH v3 3/4] dt-bindings: input: add GPIO charlieplex keypad
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.hugovil.com)
+	id 1vveAs-00000006jBf-2Uib;
+	Thu, 26 Feb 2026 16:25:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1772123057; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=N3OLfKBmkYO933URbrFu8+uXKn2ij+6WUXq71kEBTO4Nu4LcTpRcQZjphpUAwyqNRHGQAP2cDjEaDUq70au60Jh8aFdxv+OKp5d6P4QL+GJp6jNsd7xL1veJ3YFZQO7pHANe9yQFb6fIoYHki3Vv16IWve2sbM8I/MyTbBaWS0A=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1772123057; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=txv6vQDrf8TvuXaw8FFr2/au2yNyfaaMtDMt+HBRQ0U=; 
+	b=j8gKxdMDGurJreehgySCvuU/3qEdLoYmbBq2Ahq8cRm2sLFBW7OAExJNJb34Oycb2zYaxG0/8idwbu5Qe85W6l8PzVVm6lYKE+Jgba1uyWKm58OoY77QAZvdSEsox2hv5yEfJgByhZ0f6R20rl1Rrv8ORwBaeVUnb0L5sRbHkzw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772123057;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=txv6vQDrf8TvuXaw8FFr2/au2yNyfaaMtDMt+HBRQ0U=;
+	b=WIldgH/0a6NjbWUpy/KVeZjrvqxYggRojCnNIaaDT6piQoyNjIDfQdgQS9G78G3v
+	1m7YlCA/zRt0Oc22zrGr3RJZVs8P6yRXB04+Zoya4VZhWuPao2Y4SJeAx0PQXsaZiIa
+	6JMWI/E18LL044fdeDRbnMfcUoXpZ0MeeyiIDx98=
+Received: by mx.zohomail.com with SMTPS id 1772123055193953.572434392059;
+	Thu, 26 Feb 2026 08:24:15 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Jani Nikula <jani.nikula@linux.intel.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
+ Rodrigo Siqueira <siqueira@igalia.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ Maxime Ripard <mripard@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH 14/14] drm/display: hdmi: Use drm_output_color_format instead of
+ hdmi_colorspace
+Date: Thu, 26 Feb 2026 17:24:05 +0100
+Message-ID: <5558942.31r3eYUQgx@workhorse>
+In-Reply-To: <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
+References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
+ <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_073609_870017_2CF99EF1 
-X-CRM114-Status: GOOD (  36.73  )
+X-CRM114-CacheID: sfid-20260226_082514_669451_06E31DAF 
+X-CRM114-Status: GOOD (  19.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,170 +103,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Geert,
-
-On Thu, 26 Feb 2026 10:32:30 +0100
-Geert Uytterhoeven <geert@linux-m68k.org> wrote:
-
-> Hi Hugo,
+On Tuesday, 24 February 2026 11:58:53 Central European Standard Time Maxime Ripard wrote:
+> The hdmi_colorspace enum was defined to represent the colorspace value
+> of the HDMI infoframes. It was later used by some HDMI drivers to
+> express the output format they should be setting up.
 > 
-> On Wed, 25 Feb 2026 at 16:54, Hugo Villeneuve <hugo@hugovil.com> wrote:
-> > From: Hugo Villeneuve <hvilleneuve@dimonoff.com>
-> >
-> > Add DT bindings for GPIO charlieplex keypad.
-> >
-> > Signed-off-by: Hugo Villeneuve <hvilleneuve@dimonoff.com>
+> During the introduction of the HDMI helpers, it then was used to
+> represent it in the drm_connector_hdmi_state structure.
 > 
-> Thanks for your patch!
+> However, it's always been somewhat redundant with the DRM_COLOR_FORMAT_*
+> defines, and now with the drm_output_color_format enum. Let's
+> consolidate around drm_output_color_format in drm_connector_hdmi_state
+> to facilitate the current effort to provide a global output format
+> selection mechanism.
 > 
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/input/gpio-charlieplex-keypad.yaml
-> > @@ -0,0 +1,106 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +
-> > +$id: http://devicetree.org/schemas/input/gpio-charlieplex-keypad.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: GPIO charlieplex keypad
-> > +
-> > +maintainers:
-> > +  - Hugo Villeneuve <hvilleneuve@dimonoff.com>
-> > +
-> > +description: |
-> > +  The charlieplex keypad supports N^2)-N different key combinations (where N is
-> > +  the number of lines). Key presses and releases are detected by configuring
-> > +  only one line as output at a time, and reading other line states. This process
-> > +  is repeated for each line. Diodes are required to ensure current flows in only
-> > +  one direction between any pair of pins.
-> > +  This mechanism doesn't allow to detect simultaneous key presses.
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> ---
+>  drivers/gpu/drm/bridge/inno-hdmi.c                 |   6 +-
+>  drivers/gpu/drm/bridge/ite-it6263.c                |   2 +-
+>  drivers/gpu/drm/display/drm_hdmi_helper.c          |   7 +-
+>  drivers/gpu/drm/display/drm_hdmi_state_helper.c    |  52 ++++--
+>  drivers/gpu/drm/drm_bridge.c                       |   2 +-
+>  drivers/gpu/drm/drm_connector.c                    |  14 +-
+>  drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |   8 +-
+>  drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             |   2 +-
+>  drivers/gpu/drm/tests/drm_connector_test.c         |  80 ++++-----
+>  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 182 ++++++++++-----------
+>  drivers/gpu/drm/vc4/vc4_hdmi.c                     |  18 +-
+>  drivers/gpu/drm/vc4/vc4_hdmi.h                     |   2 +-
+>  include/drm/display/drm_hdmi_helper.h              |   3 +-
+>  include/drm/drm_connector.h                        |   7 +-
+>  14 files changed, 205 insertions(+), 180 deletions(-)
 > 
-> Indeed, e.g. pressing S1 and S2 simultaneously will show a ghost
-> S5 keypress.
-> 
-> > +
-> > +  Wiring example for 3 lines keyboard with 6 switches and 3 diodes:
-> > +
-> > +  L0  --+---------------------+----------------------+
-> > +        |                     |                      |
-> > +  L1  -------+-----------+---------------------+     |
-> > +        |    |           |    |                |     |
-> > +  L2  -------------+----------------+-----+    |     |
-> > +        |    |     |     |    |     |     |    |     |
-> > +        |    |     |     |    |     |     |    |     |
-> > +        |  S1 \  S2 \    |  S3 \  S4 \    |  S5 \  S6 \
-> > +        |    |     |     |    |     |     |    |     |
-> > +        |    +--+--+     |    +--+--+     |    +--+--+
-> > +        |       |        |       |        |       |
-> > +        |    D1 v        |    D2 v        |    D3 v
-> > +        |       - (k)    |       - (k)    |       - (k)
-> > +        |       |        |       |        |       |
-> > +        +-------+        +-------+        +-------+
-> 
-> Don't you need pull-down resistors on L[0-2], and/or a way to specify
-> in DT to enable internal poll-down on GPIO controllers that support it?
-> Some controllers may support internal pull-up only, but I guess that
-> can be handled using GPIO_ACTIVE_LOW?
+> [... snip ...]
+> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+> index 4f5b27fab475c7c733622eb8727927571f3fb8fe..171cd495976a3e16f201fd339d3d42a09dc3b63f 100644
+> --- a/drivers/gpu/drm/drm_connector.c
+> +++ b/drivers/gpu/drm/drm_connector.c
+> @@ -589,14 +589,14 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+>  
+>  	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
+>  	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
+>  		return -EINVAL;
+>  
+> -	if (!supported_formats || !(supported_formats & BIT(HDMI_COLORSPACE_RGB)))
+> +	if (!supported_formats || !(supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444)))
+>  		return -EINVAL;
+>  
+> -	if (connector->ycbcr_420_allowed != !!(supported_formats & BIT(HDMI_COLORSPACE_YUV420)))
+> +	if (connector->ycbcr_420_allowed != !!(supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420)))
+>  		return -EINVAL;
 
-Yes, using something like this:
+I don't think this will work as-is. drm_bridge_connector_init calls this
+function assuming hdmi_colorspace bitmasks in supported_formats.
 
-  line-gpios = <&gpio2 25 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)
+This may have slipped through the conversion; the synopsys dw-hdmi-qp core
+(separate from synopsys dw-hdmi) also assumes hdmi_colorspace, see e.g.
+dw_hdmi_qp_plat_data::supported_formats in include/drm/bridge/dw_hdmi_qp.h
 
-should work I think, although with my hardware unfortunately I cannot
-test it.
+So should be a simple fix I hope.
 
-Hugo.
+>  
+>  	if (!(max_bpc == 8 || max_bpc == 10 || max_bpc == 12))
+>  		return -EINVAL;
+>  
+> [... snip ...]
+
+Kind regards,
+Nicolas Frattaroli
 
 
-> 
-> > +
-> > +  L: GPIO line
-> > +  S: switch
-> > +  D: diode (k indicates cathode)
-> > +
-> > +allOf:
-> > +  - $ref: input.yaml#
-> > +  - $ref: /schemas/input/matrix-keymap.yaml#
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: gpio-charlieplex-keypad
-> > +
-> > +  autorepeat: true
-> > +
-> > +  debounce-delay-ms:
-> > +    default: 5
-> > +
-> > +  line-gpios:
-> > +    description:
-> > +      List of GPIOs used as lines. The gpio specifier for this property
-> > +      depends on the gpio controller to which these lines are connected.
-> > +
-> > +  linux,keymap: true
-> > +
-> > +  poll-interval: true
-> > +
-> > +  settling-time-us: true
-> > +
-> > +  wakeup-source: true
-> > +
-> > +required:
-> > +  - compatible
-> > +  - line-gpios
-> > +  - linux,keymap
-> > +  - poll-interval
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/gpio/gpio.h>
-> > +    #include <dt-bindings/input/input.h>
-> > +
-> > +    charlieplex-keypad {
-> 
-> "keyboard", as per Devicetree Specification Generic Names
-> Recommendation.
-> 
-> > +        compatible = "gpio-charlieplex-keypad";
-> > +        debounce-delay-ms = <20>;
-> > +        poll-interval = <5>;
-> > +        settling-time-us = <2>;
-> > +
-> > +        line-gpios = <&gpio2 25 GPIO_ACTIVE_HIGH
-> > +                      &gpio2 26 GPIO_ACTIVE_HIGH
-> > +                      &gpio2 27 GPIO_ACTIVE_HIGH>;
-> > +
-> > +        /* MATRIX_KEY(output, input, key-code) */
-> > +        linux,keymap = <
-> > +            /*
-> > +             * According to wiring diagram above, if L1 is configured as
-> > +             * output and HIGH, and we detect a HIGH level on input L0,
-> > +             * then it means S1 is pressed: MATRIX_KEY(L1, L0, KEY...)
-> > +             */
-> > +            MATRIX_KEY(1, 0, KEY_F1) /* S1 */
-> > +            MATRIX_KEY(2, 0, KEY_F2) /* S2 */
-> > +            MATRIX_KEY(0, 1, KEY_F3) /* S3 */
-> > +            MATRIX_KEY(2, 1, KEY_F4) /* S4 */
-> > +            MATRIX_KEY(1, 2, KEY_F5) /* S5 */
-> > +            MATRIX_KEY(0, 2, KEY_F6) /* S6 */
-> > +        >;
-> > +    };
-> 
-> Gr{oetje,eeting}s,
-> 
->                         Geert
-> 
-> --
-> Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-> 
-> In personal conversations with technical people, I call myself a hacker. But
-> when I'm talking to journalists I just say "programmer" or something like that.
->                                 -- Linus Torvalds
-> 
 
 
--- 
-Hugo Villeneuve
 
