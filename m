@@ -4,91 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77AE8FD8FD3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 16:25:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CF5CFD8FF5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 19:11:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=txv6vQDrf8TvuXaw8FFr2/au2yNyfaaMtDMt+HBRQ0U=; b=o4KcC7tkmrh8ve1lqssg4P6naY
-	fmmc4Gf1vnqPLLQlwzBGQvNn59sIQQtwZEJxu1UsS1nVj+xPCyS9uTOg1MrcETW3B7tCDBGmk3lhF
-	GgU2BKmeEucwtjJlERXxHCs8lIBl9yQPkbPvKTOSSxcleHXNAnGx/vs27Q+uvsim1s7IuSjcpUvXQ
-	fAQy5D87C38J4j/WW7MYzNeee2nYJRV4HENX511/HNCOxKCb74cPOOS5S5XIAMdcjy1cBNqSoR9PU
-	ArZJyaAwr7+YMkn3UBG/imxGprLLFp0RLuCGVvTZdbQO8o7ypukOa4Ol7sgXCC9rHvFVVTtlp1rE4
-	glo39P9A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ihCtXKGi1aJ7/jPGgagG1iiziFIVSP2pX3HG0KJ2yIY=; b=hUIr6fZ/w8lCa2
+	bO2WCj63ZZ2Mcj/WFSy/1A3xycUdlkEKx8sJnBP5kWK/MLzyWDhQmu92yUu2b6Su6EdJTUpw9Ck6s
+	a9OYnZAj8MsSIKSp0NazWB+kZLntgcMC2KFXl+qlt16CU1q065HbI7DcJMB1szo7EwAAwRCRQW8Pq
+	usodgBdR8NqOrB2+3hm6zhV592LFvYgVHCFpygqeXIY86M+o6JkFk2+WYW2/NJNJ4HgRvtyUjx3Lx
+	iYUD7CxWRyzVpuX7ZrSXQI32WmEypEYRV960XjuT+qABPwDfXqEucAAKpPgdpLLI/imfgAONQA0qi
+	v36HSi9G7q1V0PswQ4WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vveAu-00000006jCA-2HC1;
-	Thu, 26 Feb 2026 16:25:16 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vvgm1-000000071sG-3w9Q;
+	Thu, 26 Feb 2026 19:11:45 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vveAs-00000006jBf-2Uib;
-	Thu, 26 Feb 2026 16:25:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1772123057; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=N3OLfKBmkYO933URbrFu8+uXKn2ij+6WUXq71kEBTO4Nu4LcTpRcQZjphpUAwyqNRHGQAP2cDjEaDUq70au60Jh8aFdxv+OKp5d6P4QL+GJp6jNsd7xL1veJ3YFZQO7pHANe9yQFb6fIoYHki3Vv16IWve2sbM8I/MyTbBaWS0A=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1772123057; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=txv6vQDrf8TvuXaw8FFr2/au2yNyfaaMtDMt+HBRQ0U=; 
-	b=j8gKxdMDGurJreehgySCvuU/3qEdLoYmbBq2Ahq8cRm2sLFBW7OAExJNJb34Oycb2zYaxG0/8idwbu5Qe85W6l8PzVVm6lYKE+Jgba1uyWKm58OoY77QAZvdSEsox2hv5yEfJgByhZ0f6R20rl1Rrv8ORwBaeVUnb0L5sRbHkzw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772123057;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=txv6vQDrf8TvuXaw8FFr2/au2yNyfaaMtDMt+HBRQ0U=;
-	b=WIldgH/0a6NjbWUpy/KVeZjrvqxYggRojCnNIaaDT6piQoyNjIDfQdgQS9G78G3v
-	1m7YlCA/zRt0Oc22zrGr3RJZVs8P6yRXB04+Zoya4VZhWuPao2Y4SJeAx0PQXsaZiIa
-	6JMWI/E18LL044fdeDRbnMfcUoXpZ0MeeyiIDx98=
-Received: by mx.zohomail.com with SMTPS id 1772123055193953.572434392059;
-	Thu, 26 Feb 2026 08:24:15 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Jani Nikula <jani.nikula@linux.intel.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
- Rodrigo Siqueira <siqueira@igalia.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>,
- Samuel Holland <samuel@sholland.org>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- Maxime Ripard <mripard@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH 14/14] drm/display: hdmi: Use drm_output_color_format instead of
- hdmi_colorspace
-Date: Thu, 26 Feb 2026 17:24:05 +0100
-Message-ID: <5558942.31r3eYUQgx@workhorse>
-In-Reply-To: <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
-References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
- <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
+	id 1vvgm0-000000071re-3CIc;
+	Thu, 26 Feb 2026 19:11:44 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id AE4B4600AA;
+	Thu, 26 Feb 2026 19:11:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DBB37C116C6;
+	Thu, 26 Feb 2026 19:11:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772133103;
+	bh=Xvc/uex8GcERGA559dxvK49CKwAjLVlFT4RI0I/QFHA=;
+	h=From:Subject:Date:To:Cc:From;
+	b=lsq1LBNlkafKUl/8E9voZBtBjfkOixZ5Whl3tPt7vQATYnt56l1DDTkQcUOFbyXMJ
+	 zJh6A8WCPisgq6noIzUpR2JT/87FazF+cu1UNrIdG26UN59Ybmeg39ZMQf+NYawRjC
+	 hHFJuKpW5/xFFRbnKFXIhwG6zrObNUVv7NbB8ezIfSSAYCJLDVe8Rq7uD6k/rH4Hf/
+	 ZgQwP1onCjsfZDPjaUX2Cqn++FNylBUlnLqWVucSJw31GgwB5Gr32rPAMS+CG8HNPr
+	 UglMOzzjXWpBnDtftBxvS9SBwJzasueXXcJ2iJKVuD47rycwnHtBSDEQiQVfyUayEk
+	 3whfnr0oX5RCg==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH wireless 0/3] wifi: mt76: Fix possible out-of-bound
+ accesses in mt76 driver
+Date: Thu, 26 Feb 2026 20:11:13 +0100
+Message-Id: <20260226-mt76-addba-req-oob-access-v1-0-b0f6d1ad4850@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="utf-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_082514_669451_06E31DAF 
-X-CRM114-Status: GOOD (  19.31  )
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2M0QqDMAwAf0XybKAG6ep+ZfhQ27gFpt0S2Qbiv
+ 6/4eHB3OxirsMG12UH5IyZlrdC1DaRHXO+MkisDOfKOyOOyXTzGnKeIym8sZcKYEpth6AMFN5A
+ LXQ+1fynP8jvfN/iK8rNaMB7HHwOzEMp1AAAA
+X-Change-ID: 20260226-mt76-addba-req-oob-access-848280920814
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ StanleyYP Wang <StanleyYP.Wang@mediatek.com>, 
+ Peter Chiu <chui-hao.chiu@mediatek.com>, 
+ MeiChia Chiu <meichia.chiu@mediatek.com>, Leon Yen <leon.yen@mediatek.com>, 
+ Deren Wu <deren.wu@mediatek.com>, Quan Zhou <quan.zhou@mediatek.com>, 
+ Mingyen Hsieh <mingyen.hsieh@mediatek.com>
+Cc: Johannes Berg <johannes@sipsolutions.net>, 
+ Howard Hsu <howard-yh.hsu@mediatek.com>, Bo Jiao <Bo.Jiao@mediatek.com>, 
+ linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Hao Zhang <hao.zhang@mediatek.com>, 
+ Nelson Yu <nelson.yu@mediatek.com>, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,76 +82,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 24 February 2026 11:58:53 Central European Standard Time Maxime Ripard wrote:
-> The hdmi_colorspace enum was defined to represent the colorspace value
-> of the HDMI infoframes. It was later used by some HDMI drivers to
-> express the output format they should be setting up.
-> 
-> During the introduction of the HDMI helpers, it then was used to
-> represent it in the drm_connector_hdmi_state structure.
-> 
-> However, it's always been somewhat redundant with the DRM_COLOR_FORMAT_*
-> defines, and now with the drm_output_color_format enum. Let's
-> consolidate around drm_output_color_format in drm_connector_hdmi_state
-> to facilitate the current effort to provide a global output format
-> selection mechanism.
-> 
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> ---
->  drivers/gpu/drm/bridge/inno-hdmi.c                 |   6 +-
->  drivers/gpu/drm/bridge/ite-it6263.c                |   2 +-
->  drivers/gpu/drm/display/drm_hdmi_helper.c          |   7 +-
->  drivers/gpu/drm/display/drm_hdmi_state_helper.c    |  52 ++++--
->  drivers/gpu/drm/drm_bridge.c                       |   2 +-
->  drivers/gpu/drm/drm_connector.c                    |  14 +-
->  drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |   8 +-
->  drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             |   2 +-
->  drivers/gpu/drm/tests/drm_connector_test.c         |  80 ++++-----
->  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 182 ++++++++++-----------
->  drivers/gpu/drm/vc4/vc4_hdmi.c                     |  18 +-
->  drivers/gpu/drm/vc4/vc4_hdmi.h                     |   2 +-
->  include/drm/display/drm_hdmi_helper.h              |   3 +-
->  include/drm/drm_connector.h                        |   7 +-
->  14 files changed, 205 insertions(+), 180 deletions(-)
-> 
-> [... snip ...]
-> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-> index 4f5b27fab475c7c733622eb8727927571f3fb8fe..171cd495976a3e16f201fd339d3d42a09dc3b63f 100644
-> --- a/drivers/gpu/drm/drm_connector.c
-> +++ b/drivers/gpu/drm/drm_connector.c
-> @@ -589,14 +589,14 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
->  
->  	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
->  	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
->  		return -EINVAL;
->  
-> -	if (!supported_formats || !(supported_formats & BIT(HDMI_COLORSPACE_RGB)))
-> +	if (!supported_formats || !(supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444)))
->  		return -EINVAL;
->  
-> -	if (connector->ycbcr_420_allowed != !!(supported_formats & BIT(HDMI_COLORSPACE_YUV420)))
-> +	if (connector->ycbcr_420_allowed != !!(supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420)))
->  		return -EINVAL;
+Check mgmt frame length before accessing header fields in order to avoid
+a possible oob access for injected frames.
 
-I don't think this will work as-is. drm_bridge_connector_init calls this
-function assuming hdmi_colorspace bitmasks in supported_formats.
+---
+Lorenzo Bianconi (3):
+      wifi: mt76: mt7996: Fix possible oob access in mt7996_mac_write_txwi_80211()
+      wifi: mt76: mt7925: Fix possible oob access in mt7925_mac_write_txwi_80211()
+      wifi: mt76: Fix possible oob access in mt76_connac2_mac_write_txwi_80211()
 
-This may have slipped through the conversion; the synopsys dw-hdmi-qp core
-(separate from synopsys dw-hdmi) also assumes hdmi_colorspace, see e.g.
-dw_hdmi_qp_plat_data::supported_formats in include/drm/bridge/dw_hdmi_qp.h
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c | 1 +
+ drivers/net/wireless/mediatek/mt76/mt7925/mac.c      | 1 +
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c      | 1 +
+ 3 files changed, 3 insertions(+)
+---
+base-commit: 8bf22c33e7a172fbc72464f4cc484d23a6b412ba
+change-id: 20260226-mt76-addba-req-oob-access-848280920814
 
-So should be a simple fix I hope.
-
->  
->  	if (!(max_bpc == 8 || max_bpc == 10 || max_bpc == 12))
->  		return -EINVAL;
->  
-> [... snip ...]
-
-Kind regards,
-Nicolas Frattaroli
-
-
-
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
