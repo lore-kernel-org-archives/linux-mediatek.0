@@ -4,85 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 883ACFC592E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 11:04:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B74F7FCE079
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 13:31:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BWCo0kG96iv+7s5TDWEYgj7Bqm4OdYUx2iwx1W1m2LI=; b=uw6ALt32W5DdQDa3Dj0ohN93Bz
-	iwCbn4DgYz6JGFroW2WydUiaY8qxgXP2hZ9vTwChcrCVzgWjVdJrfcdKznwH2gNK4a3uXFAB7bFwp
-	jpiu5SRK2+KuPBcQGsvVeEcxXZMPXSwyhuc718OdQPds68qXAthlwg/h8RtcezAmJDMJAa9S+tgo8
-	QnqbivO+9pr0TotcTafOMHzn1mmP+O1whZc1R+B/5vt9/CQrmuXBV0rYPXvz893P36tLimQ2Dqeeg
-	NXb4mwfKX+tbXjjP3+YbXEnXADNl64yKwb+n0BasgXQBETrh0c+gC6rbhv+lkbChNFUElx3CgU+UA
-	Jp3cqdXg==;
+	bh=5twdPm6qtk6BxBBh6eqwsmb5sfIcorWjwwVPoxGI8zc=; b=YifJMmV5G93J5raD3IDoHNtc5O
+	BB33HjoPSNAE2DMNrg8fEO4B6LBJXuLOIlejOvZOrU95yZmw1tvu9Eu45yBoyK0AO49YpoQ4sqCYC
+	vPnb9pCPPVQW7Im9sGdtSCSyKn+2jFFNUxxlP/xK9xzosWIKQs89ptBld94T/LFhk/MtGg2vFZFP5
+	8MZwAQzyS9XJTrT2avYDuE16GGLo4NyXgNk45itQ/AVWJE+k4HIk2DrNdRClcZAn5OmzFkiv1BujL
+	fYxO7JTst0PyJpZSjTIlPINJDHbyDWIkMgPcNdRQZhIQ/527+RKI1P55eqnSd+xa4twFAMYn+8RPd
+	SdCiC/cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvYa0-00000005uN0-2XyD;
-	Thu, 26 Feb 2026 10:26:48 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vvbSE-00000006E1X-3hFV;
+	Thu, 26 Feb 2026 13:30:58 +0000
+Received: from mail-qv1-f47.google.com ([209.85.219.47])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvYZs-00000005uKT-1xx5;
-	Thu, 26 Feb 2026 10:26:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772101597;
-	bh=3eCyIbVoYn9bRaJqczY4pr5CznMSS3V4x87uwrFbJ8c=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=MjUnMuyP3A9OINHEM1o5EkAlqs43uO4wcutkdSRek77KS0YwY3w3YUluDbMw5H2qe
-	 0Mg5JjkP471JwsyMgSNKGGMGHDGYxopjSBAwog7VoL7ySRUlyS5D6fyDMR2ieD9/c6
-	 5aMFlxvr8ahCmIRQh0bFwDKwTe8mZD0MtR/0n7O1g27CJmNkQjpysBwem3bfcYW20g
-	 4q2FQQ/Dp/efBlcZPJpNsdsQCvK+Op4uFUhq03ZqjBuNElbeYCFunPUhuRXlmuskqP
-	 puec1xwDeGqNwkefR0voO3Ys3h4r6f+wTL6b2fQy790CVJCg0RKVfUQI1by3qx5J9P
-	 quH1qqZTClrQQ==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3494A17E0097;
-	Thu, 26 Feb 2026 11:26:37 +0100 (CET)
-Message-ID: <2e241629-2526-41c5-92fd-a0a0ec3ffc4e@collabora.com>
-Date: Thu, 26 Feb 2026 11:26:36 +0100
+	id 1vvbSC-00000006E19-2zr1
+	for linux-mediatek@lists.infradead.org;
+	Thu, 26 Feb 2026 13:30:57 +0000
+Received: by mail-qv1-f47.google.com with SMTP id 6a1803df08f44-89549b2f538so15471206d6.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Feb 2026 05:30:56 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772112655; x=1772717455;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=5twdPm6qtk6BxBBh6eqwsmb5sfIcorWjwwVPoxGI8zc=;
+        b=vQjsHx7VhjjDpmuxELdjwZw30rg1G1UdtH+ydrxrin8CTMvWeK9uNzl40NcSJYEQ5g
+         3z9/Mih79+KvhS0xyTApH5otwedRHz1bYJ/5lrm77zU0ieAi6LAw37OVoSjid25Ek72r
+         WF4HE5oaT2yISvu3ILqG+GDKRvqTywFkszCCcNmCc0PgBLn1v05n2gRP9qHI3VZOm7l6
+         zPonW7dhFuwiR81n6z5MabfvWeXKuZW88eoDBLyADz3mltn95hIUfJCK7a41LaMRwvP+
+         jNMFSzMv7aFuOrBsqlGttj14pUIt0VzzNhANAXZU71mjpwjTMCM0K+O0Lg/JMlfljod7
+         nJzQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVuZ0zitzihD9uz57UP7jS6SnrZrCGt2iJ1nouBgl/Aw18Wto71kqzZEo39hECOTVzwvobFv4Uu6ny0VC5IBA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyWmAUW6OtwfyJPnHPbtwiqwTPJA7fiT+uf7z1vjWN30UBZ5QeJ
+	sCdL/8CFG/JnpBNYGfjAV7ijUy6rrY7ETR9JNprDqFPtGyF0LO6fg2jVKCiKArzT
+X-Gm-Gg: ATEYQzxa0lA/lrS92qA7Q9caBtUHG5jrhOGFcRNnB+7pQBgT3uUYBYAmOj1ECtpDATN
+	pnU9aljc8FkM96T1qNf98IzQ2Xx/Rbad+nXL1ogAHG92NTdWY0laxPCSf9p48wF/TSuk2bzBRPf
+	Ah9gkWkISlsXpqWr3gFy3krU142yWbq7WvzI4TRJQhFIRB42Gkc6q6lj11NWQ85IroJjkXnZNW8
+	ALPLHswI6chvPcJaDcUlCr+B7YmQITYRN/oDwHo/r+92B4EQWMik1zrs4cCZ1sh5pbJJ4Qepb4/
+	eTHYrYV77Zw16cQUg1LpFo98KSEJhx7/SDtUY38xRvmoKKMzAbrfsX8xa2e4EyyTEKdqZrkGEul
+	/tGPJMvV/w83ILBtIX+pZ3Xq4x6ge/lGoQ/VtfHC07cZOkNSdGKZE6J1vdEf/ikgXLyo3wWxr3u
+	vFU6kWcNdM9xZAP0NTh74TzVbOEzj3E38vCn7nPpjkTEp+CMA71lcJZK0alGLp/LIv
+X-Received: by 2002:ad4:5765:0:b0:897:1ff:a6c with SMTP id 6a1803df08f44-899c13b90a6mr59038076d6.10.1772112654766;
+        Thu, 26 Feb 2026 05:30:54 -0800 (PST)
+Received: from mail-qk1-f181.google.com (mail-qk1-f181.google.com. [209.85.222.181])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8cbbf6f6950sm204004685a.27.2026.02.26.05.30.54
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 26 Feb 2026 05:30:54 -0800 (PST)
+Received: by mail-qk1-f181.google.com with SMTP id af79cd13be357-8cb4136d865so100667285a.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Feb 2026 05:30:54 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCXS2Meb3056tlWV/x2P/npxSMmKG3LXrLuIxHyuWKFoV7zFiF1YI1oUWXuPRXtWkJkgFTfwE7lIjkAvY0ifUg==@lists.infradead.org
+X-Received: by 2002:a05:6102:ccf:b0:5fd:ed98:cf0f with SMTP id
+ ada2fe7eead31-5ff14157fafmr2006779137.34.1772112160689; Thu, 26 Feb 2026
+ 05:22:40 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/11] Plane Color Pipeline support for MediaTek
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "pekka.paalanen@collabora.com" <pekka.paalanen@collabora.com>,
- Nicolas Prado <nfraprado@collabora.com>,
- "harry.wentland@amd.com" <harry.wentland@amd.com>
-Cc: "wiagn233@outlook.com" <wiagn233@outlook.com>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
- <mripard@kernel.org>, Daniel Stone <daniels@collabora.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- Ariel D'Alessandro <ariel.dalessandro@collabora.com>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "xaver.hugl@gmail.com" <xaver.hugl@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "airlied@gmail.com"
- <airlied@gmail.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-References: <20251223-mtk-ovl-pre-blend-colorops-v1-0-0cb99bd0ab33@collabora.com>
- <TY4PR01MB144323B0DDC18B05EE1472B5298BFA@TY4PR01MB14432.jpnprd01.prod.outlook.com>
- <TY4PR01MB14432E7601C0BE848D25E80C398BAA@TY4PR01MB14432.jpnprd01.prod.outlook.com>
- <cdf6a704-88f8-414a-adf1-65ea7237337f@amd.com>
- <20260206110901.660cf712@eldfell>
- <5963bca37996fa054ad75d4e5017d9c7e5158e9f.camel@collabora.com>
- <3efaa7ec40c68f0d463da00c3a57474a40d4fdae.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <3efaa7ec40c68f0d463da00c3a57474a40d4fdae.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+References: <20260111093940.975359-1-vladimir.oltean@nxp.com> <20260111093940.975359-6-vladimir.oltean@nxp.com>
+In-Reply-To: <20260111093940.975359-6-vladimir.oltean@nxp.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Thu, 26 Feb 2026 14:22:29 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdUBaoYKNj52gn8DQeZFZ42Cvm6xT6fvo0-_twNv1k3Jhg@mail.gmail.com>
+X-Gm-Features: AaiRm523jRWdOCfOPJhqksDewbEoHD_GTMJ0xjyZsvboq3n-XWtXIhj4iGm1B4M
+Message-ID: <CAMuHMdUBaoYKNj52gn8DQeZFZ42Cvm6xT6fvo0-_twNv1k3Jhg@mail.gmail.com>
+Subject: Re: [PATCH v3 net-next 05/10] phy: add phy_get_rx_polarity() and phy_get_tx_polarity()
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Daniel Golle <daniel@makrotopia.org>, Horatiu Vultur <horatiu.vultur@microchip.com>, 
+	=?UTF-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>, Andrew Lunn <andrew@lunn.ch>, 
+	Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Eric Woudstra <ericwouds@gmail.com>, =?UTF-8?B?TWFyZWsgQmVow7pu?= <kabel@kernel.org>, 
+	Lee Jones <lee@kernel.org>, Patrice Chotard <patrice.chotard@foss.st.com>, 
+	"open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>, 
+	KUnit Development <kunit-dev@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_022640_656025_F1AD2DF2 
-X-CRM114-Status: GOOD (  24.59  )
+X-CRM114-CacheID: sfid-20260226_053056_758070_F254ADA1 
+X-CRM114-Status: GOOD (  29.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,96 +108,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/02/26 07:24, CK Hu (胡俊光) ha scritto:
-> On Fri, 2026-02-06 at 08:28 -0500, Nícolas F. R. A. Prado wrote:
->> On Fri, 2026-02-06 at 11:09 +0200, Pekka Paalanen wrote:
->>> On Fri, 2 Jan 2026 13:40:21 -0500
->>> Harry Wentland <harry.wentland@amd.com> wrote:
->>>
->>>> On 2026-01-01 07:37, Shengyu Qu wrote:
->>>>>
->>>>>
->>>>> 在 2025/12/30 02:53, Shengyu Qu 写道:
->>>>>>
->>>>>>
->>>>>> 在 2025/12/24 3:44, NÃ colas F. R. A. Prado 写道:
->>>
->>>>>>> Given the lack of support for writeback connectors on the
->>>>>>> MediaTek KMS driver, combined with limited hardware
->>>>>>> documentation, I haven't been able to verify the correctness
->>>>>>> of
->>>>>>> each curve, only that they were visually sane (gamma curves
->>>>>>> made
->>>>>>> the image on the display brighter, while inverse gamma made
->>>>>>> it
->>>>>>> darker).
->>>>>>
->>>>>> Hmmm I don't think this is acceptable. sRGB/scRGB has two
->>>>>> transfer
->>>>>> functions mentioned in original specification[1]. To keep color
->>>>>> accuracy, we need someone from mediatek confirm whether this is
->>>>>> piece- wise or pure power 2.2 transfer function, this is
->>>>>> already
->>>>>> done in original amdgpu color pipeline series, sRGB means
->>>>>> piece-wise while also dedicated power 2.2 function exists.
->>>>
->>>> Not sure what you mean with this not being acceptable. This is
->>>> about
->>>> enabling HW support for this functionality. Not every HW has
->>>> writeback for testing. At some point you'll have to trust the
->>>> driver
->>>> devs if you're going to use functionality of the driver. We're not
->>>> always going to get everything perfect, but if that's really such a
->>>> worry you can always use shaders to do precisely what you want.
->>>>
->>>
->>> Hi Harry,
->>>
->>> yes, but I understood that in this case, the hardware documentation
->>> available is so vague that it's impossible to say what it will
->>> actually
->>> do. There are no formulas given or referenced in the documentation,
->>> are
->>> there, Nícolas?
->>
->> No formulas at all, the only documentation I had available for the
->> curves was the register definition, which simply lists the possible
->> values: SCRGB, BT709, BT2020, HLG.
-> 
-> Hi, Nicolas:
-> 
-> In [1], it shows OVL could output data to WDMA which could write data into DRAM.
-> Its control is similar to RDMA. RDMA read data from DRAM and WDMA write data into DRAM.
-> Do you have interest to implement WDMA?
+Hi Vladimir,
 
-I wrote a WDMA driver a long ago, but I couldn't get it to work (though, I admit I
-didn't try hard to actually get it working).... if you want to take a look to check
-if anything obvious is missing, the driver is here:
+CC kunit
 
-https://gitlab.collabora.com/mediatek/aiot/linux/-/blob/mediatek-dev/drivers/gpu/drm/mediatek/mtk_disp_wdma.c?ref_type=heads
+On Sun, 11 Jan 2026 at 10:44, Vladimir Oltean <vladimir.oltean@nxp.com> wro=
+te:
+> Add helpers in the generic PHY folder which can be used using 'select
+> GENERIC_PHY_COMMON_PROPS' from Kconfig, without otherwise needing to
+> enable GENERIC_PHY.
+>
+> These helpers need to deal with the slight messiness of the fact that
+> the polarity properties are arrays per protocol, and with the fact that
+> there is no default value mandated by the standard properties, all
+> default values depend on driver and protocol (PHY_POL_NORMAL may be a
+> good default for SGMII, whereas PHY_POL_AUTO may be a good default for
+> PCIe).
+>
+> Push the supported mask of polarities to these helpers, to simplify
+> drivers such that they don't need to validate what's in the device tree
+> (or other firmware description).
+>
+> Add a KUnit test suite to make sure that the API produces the expected
+> results. The fact that we use fwnode structures means we can validate
+> with software nodes, and as opposed to the device_property API, we can
+> bypass the need to have a device structure.
+>
+> Co-developed-by: Bj=C3=B8rn Mork <bjorn@mork.no>
+> Signed-off-by: Bj=C3=B8rn Mork <bjorn@mork.no>
+> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 
-The driver I wrote was supposed to work on MT8781 Helio G99 (for a personal project
-as in upstreaming of the Xiaomi Poco M5 smartphone) and on MT8195 as a PoC.
-I did test both platforms and this driver didn't work on both... not sure if that
-was because I misconfigured the MMSYS routing (on both) or if there's any actual
-issue with the driver I wrote.
+Thanks for your patch, which is now commit e7556b59ba651796
+("phy: add phy_get_rx_polarity() and phy_get_tx_polarity()") in
+v7.0-rc1.
 
-Again, didn't invest much time on this, anyway, so some obvious issue might be
-present.
+> --- a/drivers/phy/Kconfig
+> +++ b/drivers/phy/Kconfig
+> @@ -5,6 +5,28 @@
+>
+>  menu "PHY Subsystem"
+>
+> +config PHY_COMMON_PROPS
+> +       bool
+> +       help
+> +         This parses properties common between generic PHYs and Ethernet=
+ PHYs.
+> +
+> +         Select this from consumer drivers to gain access to helpers for
+> +         parsing properties from the
+> +         Documentation/devicetree/bindings/phy/phy-common-props.yaml sch=
+ema.
+> +
+> +config PHY_COMMON_PROPS_TEST
+> +       tristate "KUnit tests for PHY common props" if !KUNIT_ALL_TESTS
+> +       select PHY_COMMON_PROPS
 
-Cheers,
-Angelo
+This select means that enabling KUNIT_ALL_TESTS also enables extra
+functionality, which may not be desirable in a production system.
+As PHY_COMMON_PROPS is bool, this extra functionality is even part of
+the base kernel if KUNIT_ALL_TESTS=3Dm.  Unfortunately PHY_COMMON_PROPS is
+invisible, so this cannot just be changed from "select" to "depends on".
+But perhaps PHY_COMMON_PROPS can be made visible if KUNIT_ALL_TESTS,
+so the select can be turned into a dependency?
 
-> This is just a suggestion.
-> I could accept we believe what document say first and wait for someone to verify it.
-> 
-> [1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/soc/mediatek/mt8195-mmsys.h?h=v7.0-rc1#n8
-> 
-> Regards,
-> CK
-> 
->>
-> 
+> +       depends on KUNIT
+> +       default KUNIT_ALL_TESTS
+> +       help
+> +         This builds KUnit tests for the PHY common property API.
+> +
+> +         For more information on KUnit and unit tests in general,
+> +         please refer to the KUnit documentation in Documentation/dev-to=
+ols/kunit/.
+> +
+> +         When in doubt, say N.
+> +
+>  config GENERIC_PHY
+>         bool "PHY Core"
+>         help
+
+Gr{oetje,eeting}s,
+
+                        Geert
 
 
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
+
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
