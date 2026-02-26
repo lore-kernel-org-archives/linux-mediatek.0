@@ -4,97 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E3C3FD8FC7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 15:19:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 274A7FD8FC3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 15:21:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O0ezGVOcarv9ScNAFNBu6P5NdLNkz1RoEz4XxD5dNpA=; b=rdO99jeo3gf+JgNtgBnDqnAgqF
-	UgqjaySiOts1IahM/T+5Rt8zccJ+h89urMdP56BFAV3ZvdRV5utNRicUaghmu7mz6DrjlS6XGe0eu
-	Yln6MjMUu8F8tFwe8fHjyDl8jNDBRhw4nCqkUDg48R2WkJM6l+z2ghBfpeRtKqYLpfeEEWfCps2Bc
-	GO8UmGB+M8hNONDdSMKMsGhacm7ewHgevWt9NQYfZBU1AIgsAtEHISWTaYzMEJ8g6L4XDru82SCSA
-	tGqb2Lyi0Wkz+tkVPwFa922/ly686EBQMgxvxkVw1R4mlz2WTy6+KbgJz4x5S0WqSQ4yftM7opMhc
-	eoywoFKw==;
+	bh=v4wCEKw0Nt9I7N3arAqX3iSp8OwAWsyE+JK61yKbXB4=; b=a2NqfbQqsA0ej/LCBV3pmgVpfU
+	w5TRUxUh27zXkkhjCf/I2UiXZl5CHPQN/q0bv1e/e/sYuvaXgduzeCzooVp6pt0ndO5ntZxmXKbmy
+	BXkb1cqWulytVOdMbJf4tdMFTWnW5oe3y4o7RDz3HONw2IKeQ2D8iQdiRKWIcCH/2j8G9aYhWCyNZ
+	9CzRwdlUelELnlcjpJvDyErPpF43lor5Hhgy50LzQ7oGSS/bPCUFq01x4AnXmjfAg9pyHQKBPkUB4
+	mv78c155R84KcjVZ+l8BwbgS1D5yNDw/BcVjyeCZuf1HQ2LNwcP7f9MzEHaruzlEX+75yj10FQGkm
+	xJojAaUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvd9B-00000006UD1-0Iwi;
-	Thu, 26 Feb 2026 15:19:25 +0000
-Received: from mail-yw1-f181.google.com ([209.85.128.181])
+	id 1vvdB9-00000006ULc-1twD;
+	Thu, 26 Feb 2026 15:21:27 +0000
+Received: from mail-norwayeastazon11013006.outbound.protection.outlook.com ([40.107.159.6] helo=OSPPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvd99-00000006UCh-34Yz
-	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Feb 2026 15:19:24 +0000
-Received: by mail-yw1-f181.google.com with SMTP id 00721157ae682-7985d11da10so9381597b3.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Feb 2026 07:19:23 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772119162; x=1772723962;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=O0ezGVOcarv9ScNAFNBu6P5NdLNkz1RoEz4XxD5dNpA=;
-        b=s2lMCVBPvytamrCI/oyzvSYYIvL+z8Gz4WtZ7d7T8DJZ2NuEb9c/dZcf8tC4dkalXB
-         ksaPHH35KLO90CXnapIku6RBmKn6fQuTuMk78BJeSmKC7EVGZ4auRXRBJybV3Qq/vj03
-         J07U3N+Q4w3/HWaLdZDhadKcLAIuojgVVpvD0kypId1DiH8GPOUrs0otbmDtRouQ8plF
-         Jjk214AVTmkNyudNXIpnlIoUTyRXJSHzfh9VJkzIE3U1iGT/7Tw67HVssSP1fODM1ry3
-         N26HLtn0ghTMS/jpkr9cm6/FyuDDrQ5Gx/95gTpAZEQF2DWRlAlSRZRKD3WI8cjAnBad
-         HieQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU0I+kpzHUeoWCE0z5Qeh2OWD3aYJROvD6EshZiEgvswzXV6BDL4Xc3XpqFku4P1IduVIOX/0l4fwJSTUDl3A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwHeVatOQsQDL0OJ41hdBHlNNIQ/o8PZ3EgvcrrWD0zxP9uR5ds
-	w7CJn1S6B/zMIsFMWf51i5PPPB1I5q9QWn6NvfGfnQ0biP7pAdLI7UhO8DkYurS0
-X-Gm-Gg: ATEYQzzDBS/16fVTEJmSs9dPPwAFm6V02LJht2R/I0c0mhJIRHP3w/tBkiMwqO7hzSU
-	uS10Ds/Vbo1XHXBhss1c5a0kFxY887kjcGh/iF96IKTEOZeYydxfUp041KtaJK+aMMgUXTjccai
-	hYwKtaP4KJUome02Ttn+oKNJro0cnZfKIWQkgcyxTKEhXbAI632Nm7dVgvn2Bd09hnqkZCBPXxf
-	0JWIY9N6DlO2L5y79AKiY97BT1Y2qFtOA6j0okjNucslTULwVJjdCE7TsJVR6nB9tB3Zkx+PDyz
-	DLIXA6nMqnLmAgSFuPxwQWqcCSWzKyGa5kPXR9QzoCCWsJOFrERFXtX3c4+WifJm1HBSb34SPhP
-	HveNDueFeTMso8v4MWo9tHFsn0GvcwuokCZr2hzEYHpUkFDhMJQJJaTRL/hIESu5bMdhJf9u4ld
-	JtDVqfnFAuKhx2VD4CFsuTwBl+wwhrYZdoJQXdjEyfhfUh8hVIYHjVpeeCYvcf
-X-Received: by 2002:a05:690c:1d:b0:798:2720:a6d6 with SMTP id 00721157ae682-79876c57f7cmr23886707b3.19.1772119162204;
-        Thu, 26 Feb 2026 07:19:22 -0800 (PST)
-Received: from mail-yx1-f49.google.com (mail-yx1-f49.google.com. [74.125.224.49])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-79876c537e1sm9634487b3.41.2026.02.26.07.19.21
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 26 Feb 2026 07:19:21 -0800 (PST)
-Received: by mail-yx1-f49.google.com with SMTP id 956f58d0204a3-64ae222d87dso794824d50.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Feb 2026 07:19:21 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCV4JSRx6oRU9d4vItYYBBQ2HBjCAe7sXrhgJa92ok3ZVrIsKxEN9qrtReTEQwh2xjTvXoi7uNRt6r4ZQak+vQ==@lists.infradead.org
-X-Received: by 2002:a05:6102:3a09:b0:5ef:6550:e9f0 with SMTP id
- ada2fe7eead31-5ff20c71950mr1513822137.36.1772118850413; Thu, 26 Feb 2026
- 07:14:10 -0800 (PST)
-MIME-Version: 1.0
-References: <20260111093940.975359-1-vladimir.oltean@nxp.com>
- <20260111093940.975359-6-vladimir.oltean@nxp.com> <CAMuHMdUBaoYKNj52gn8DQeZFZ42Cvm6xT6fvo0-_twNv1k3Jhg@mail.gmail.com>
- <20260226151036.x4z4bdlxwgsqlkhs@skbuf>
-In-Reply-To: <20260226151036.x4z4bdlxwgsqlkhs@skbuf>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Thu, 26 Feb 2026 16:13:59 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdXKbiKUkP=+FDA_-Kd_qx1X6vzSuyPU+Tdd9MgR=Q5WMw@mail.gmail.com>
-X-Gm-Features: AaiRm50hl5iFqVfPGnJ3OyUGaG2ytMnVkvc4q6N2_1XHwxz7HIPlFh5Oi8AcHkM
-Message-ID: <CAMuHMdXKbiKUkP=+FDA_-Kd_qx1X6vzSuyPU+Tdd9MgR=Q5WMw@mail.gmail.com>
-Subject: Re: [PATCH v3 net-next 05/10] phy: add phy_get_rx_polarity() and phy_get_tx_polarity()
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Daniel Golle <daniel@makrotopia.org>, Horatiu Vultur <horatiu.vultur@microchip.com>, 
-	=?UTF-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>, Andrew Lunn <andrew@lunn.ch>, 
-	Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Eric Woudstra <ericwouds@gmail.com>, =?UTF-8?B?TWFyZWsgQmVow7pu?= <kabel@kernel.org>, 
-	Lee Jones <lee@kernel.org>, Patrice Chotard <patrice.chotard@foss.st.com>, 
-	"open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>, 
+	id 1vvdB7-00000006ULA-2jOE;
+	Thu, 26 Feb 2026 15:21:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=rkh2UB5ry4tesRCkvlkZu8gcdWi6lEJ3BgFBYYrjRUuLaVDYEv5EHoetkzD2jFaMBFPHs3CQ72gDL0YNBhi2nIuk95YgNYMJFTYfFWwo9xBEiFz1M3poXl8f0yFxf+Xl6uRA0Gug+p3UpE5BrshxJSdLd1mfz7TPU4dVleBUrBot+iJUB91gFn4F1j1Y9sES9Ok8F8/Ajh6mtQQwvSv46L7phlcMsuHYl9h7nllHbdogcIHQzpwLEQUKmPNZyNW3Ii8WcZHnWIlnYR6IlVdGXIWJ1S0EgvY27HN38Yz29FCG1vEqhaz2bICarVP3+CK2rCIIT6qvBaZrCWpRAT+7+g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=v4wCEKw0Nt9I7N3arAqX3iSp8OwAWsyE+JK61yKbXB4=;
+ b=oj3sglAqfi1xps/5TDNujClGRxhsTmznfi17r/zRHlzvVGvB5lKFobg75H07SLK5DemuS9RHfkm1C1BmbyanEJXF9t8PVkhukh6PTkFqaEkvL2HYDwabM/jxsvy2/Ci2OhjKpHB7ZIgNN5ZlXvRoPs5cd3wSg/be8dJkOHW2oRQy0CBFabZP7HPZm9rBCBpxmYCcn5v6kTOTn5iMhmLKiEqma3S2h5euMpcttktz2dDdKsT6+Vu/nhqmVLFk4/zfHdQRN2/5pFLy1gyznkvSaWvgtJf06bJXvDoHvw7fpOJ9jGOxg+DTsg+hinUfkRu5AhFvXqi7jTGGGXJl/LePlA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=v4wCEKw0Nt9I7N3arAqX3iSp8OwAWsyE+JK61yKbXB4=;
+ b=h9zmMPOH7ro/CT7af2u9Xoay1fcQKmDd3trEPBmnj8y8wHBeVq2iAuqnBJiWR2q8VImnIKiWhMks60WUl3W7O2Ryf37X9TLHCNZ3K2DxPmvmXjbcy8Hx4WafjU7+j9a+gfZQ/ZXbyQcmevdYwkjau1NrGpeHNNock1huxblbyCCH7KyivLnUMKHb/5Wkh9pFwFoDLzbo5hEYW+zTMVx7T4f4DEzgqmA4M7EJ0YRQffIVvXfUxGwArqMea7WXQ9bgehloz1wgLUMyHZA+uB7mkvhsSQRPRKOpr6FN7cEeXTjsbVdNDGnKN7Y9TWg7Q/Nj2WhbuzSQC37CC1aLJzs99A==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
+ by AS8PR04MB8834.eurprd04.prod.outlook.com (2603:10a6:20b:42d::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9654.13; Thu, 26 Feb
+ 2026 15:21:19 +0000
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9632.017; Thu, 26 Feb 2026
+ 15:21:19 +0000
+Date: Thu, 26 Feb 2026 17:21:15 +0200
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Daniel Golle <daniel@makrotopia.org>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	=?utf-8?B?QmrDuHJu?= Mork <bjorn@mork.no>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Eric Woudstra <ericwouds@gmail.com>,
+	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>,
+	Lee Jones <lee@kernel.org>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	"open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>,
 	KUnit Development <kunit-dev@googlegroups.com>
-Content-Type: text/plain; charset="UTF-8"
+Subject: Re: [PATCH v3 net-next 05/10] phy: add phy_get_rx_polarity() and
+ phy_get_tx_polarity()
+Message-ID: <20260226152115.pwizozoapudgvmgl@skbuf>
+References: <20260111093940.975359-1-vladimir.oltean@nxp.com>
+ <20260111093940.975359-6-vladimir.oltean@nxp.com>
+ <CAMuHMdUBaoYKNj52gn8DQeZFZ42Cvm6xT6fvo0-_twNv1k3Jhg@mail.gmail.com>
+ <20260226151036.x4z4bdlxwgsqlkhs@skbuf>
+ <CAMuHMdXKbiKUkP=+FDA_-Kd_qx1X6vzSuyPU+Tdd9MgR=Q5WMw@mail.gmail.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAMuHMdXKbiKUkP=+FDA_-Kd_qx1X6vzSuyPU+Tdd9MgR=Q5WMw@mail.gmail.com>
+X-ClientProxiedBy: VI1PR0102CA0001.eurprd01.prod.exchangelabs.com
+ (2603:10a6:802::14) To AM9PR04MB8585.eurprd04.prod.outlook.com
+ (2603:10a6:20b:438::13)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|AS8PR04MB8834:EE_
+X-MS-Office365-Filtering-Correlation-Id: b055fcec-1338-462f-bb97-08de754ab126
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|10070799003|7416014|376014|19092799006|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: yCTu7NqRjOcSyfuz8akNiR7s9YrEgBQSVhdnlSBxACX2Dv/X+kLsOYkZCf7L1HZsAd+YfFL4r+H5WfXwYjFJPgm1fw3lG9MLU5Ze+fdg5QZ7bEP2HAKAs7cwTFflEyJ/RqcS/hJOiEgvqWZ01z3zLfOeKggQCFgm5iYoRI2fUlNMyN4mPS43Bz3lIwcqGzq86y4mN4R9PlyMsNAHRjzoV6KgwPqWwmSic9PsHGiqH17NTaZsq6QTAZwn6vFJAiQU07cMMfRdkRxOHEBuzYWSsGOUBebL0GTigiLgd2Tj0llHIgrP/YQZiMao0BxtLH2FpUH6MqLZLp3ZhjDyzFFJdovHkb+AlNz6qswOW/TLk6cYcUGjxAFf7E0DOnmvR7URGBg7205lIreFDg+vAZgK+ITlTsdRr0IHg8dSxdGkpwZLiUuKIStnztl0EilTdDHwfEwtF36czBdhVSO35LH9iAIclIb9InQflxYK7T4D+bZZbdohBn5pqj1phZVmE1+kxyooySgwRAY9aGl0MZo8x3seIzH5eInWM3jTBq6dG0eUkTDvtv2gllv2oOpK2wF/gg26vcND/JfRNCp3BzGPuMYRA00ClRLU8iYx4MML0rCeXTjSq0A2ZZJCPGIxThAgIwY+a5j5sRDQc0yStIgt2zGck+X2yN26/8yHGLyCxPflJgnrP4NyfyU2hTKe8kvlkY5YxZrsgqHhf4Pk0LNhVpup6+n7AlEQ3mETt709EF8=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(10070799003)(7416014)(376014)(19092799006)(366016)(1800799024);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?698eYqcizXUElIsFaOD3UJEhPiwyrjuVQPcIaZtH7v1EIXwgsG5UtweF+xOH?=
+ =?us-ascii?Q?qAmn1b7VBj6FBoJi75woP2kmGNfZ0OJU4SmySTf9MGB/lDlYwP44ROAo1NeL?=
+ =?us-ascii?Q?gWOVeXdYyqt95mXtEAW20bVD/2mzeCWy9FPRdnWJ5HzRh1lNWc9MmWmT6NU5?=
+ =?us-ascii?Q?4uhLtGumsHQtBB7qWw2/j9ZtCCtf54fKglGVLGFtrSjcQtoQSuQ9FJAH2IQj?=
+ =?us-ascii?Q?5azbpAFMP5/Qmo+kpSJZToc/t4qonYZiExmwfXvCqXU1f9BdX0QkU0dkJICG?=
+ =?us-ascii?Q?l9wybXXi+8GgfjPgJ09WvPNkk2e+Krgjo0qtSJpaJV1tUZ8psZ7I7Qb51gh5?=
+ =?us-ascii?Q?6zbHHgJUp0HbjzGrO8Rk2yLjuaRq6yrnqJT9ySRoY1z/YTWw2WjBWByc99rY?=
+ =?us-ascii?Q?EtlbRTGluv6uWKzqQVWsj5dFraeCnQNUINXOSiJ6TpsaUXh25uty7wlncafP?=
+ =?us-ascii?Q?rbcpAt5CpGpsn7fW9SxhH35p8fevlPJhPSEaCvO6h+xHlCEWJHrXWnPJgSnu?=
+ =?us-ascii?Q?UYET5pETZjeFfRqK1uZMCwxlYOKbSzzk1dl3Wvv+tKoQe2zrAvG2cWSqP8kl?=
+ =?us-ascii?Q?1AAkg68DnVA5ILN2ndw16Erjp50z4RbuTVV75Cw5fv+LrawuMXfHBGb/Lg0m?=
+ =?us-ascii?Q?/vxT6cFuSta/xxQ8WrpI6HIsgxjY3dUGrjmngwXyRFCl1xwT45x7sytfhhuA?=
+ =?us-ascii?Q?xMa/Qt3z6X+MYuhItJe64DOLRmmQPxYZMHG0avAQ4OdmIsHeyEO/oJ5duo1T?=
+ =?us-ascii?Q?oseZRLWKVBptwPltHz3i62T3ph3ju8iUAGuSRmROq7VC2vXQj843K5Aafccu?=
+ =?us-ascii?Q?cKzg/Nqlgf++/4s1SyR62WpOtSLqbXnwO2iTpAy1FKPqI4N1Gzrt6df1xwOW?=
+ =?us-ascii?Q?r4JiRfxmE7lp9op0yVxU1fuJMg0AqLiG/wHawe679TGj3TxjYlPjKhmexa3u?=
+ =?us-ascii?Q?k76mOsEcKSviF7eu+xoxYERhAUHP9adndC/5BTFRsmnjX8f2aTO1nvzXHK6A?=
+ =?us-ascii?Q?9AlT05xiok5eZWJqg6leS+7jdmP6f4wj8E7upUxXNJKH2UzATBgTtR9RbR6S?=
+ =?us-ascii?Q?8A1MU+S3992l94HDV5IL+HHOhETbI3cAFyIJq55OHH8a6wKk4+r3EUROcb5a?=
+ =?us-ascii?Q?GHzdE/cSZd1vnjooEUY1+V0GEBINrw4+CFjzaVw2YOehOnm6spWQd7pTK3YB?=
+ =?us-ascii?Q?s5sxKZrN11kC4/bhlRtv/aSrRnwC2wwtCAcf0286P+KnwmQVCY6H500gfs1h?=
+ =?us-ascii?Q?joOqDNeqJn7lgc/IZXeCllQuqmn7HTpmyRJMOo6Sy+0DjeVYXGjLzynZ9wLa?=
+ =?us-ascii?Q?6XAZBmId4egeb8oeoBI35Y2DTQze4YHoNMXcmdu/3Llhgemr0kpQ2bXyL0dt?=
+ =?us-ascii?Q?XbPv/fx+fk7FSM6SN7jRttD7QffvrFfZczUIXuBRmltTXTioRItndClBD/xZ?=
+ =?us-ascii?Q?8eCksSpU3ObV8n5az4oQPryUCArYDbTxl6SP8rUpuS01SYP2rYuD4jeUwQM5?=
+ =?us-ascii?Q?fiKTbH+FLygKjg2tlGnuJUXibfntFwcy8Lvyds6fImn73a/9t4SEUeyKE2yy?=
+ =?us-ascii?Q?6iNP/WKSAGZM+QXvmdIYOdoMa9JtPxF+X4gSmzB9lnnqGKyWNHIe/gEBlPoZ?=
+ =?us-ascii?Q?xA990DtNv1c1cmMeEHjEZK8DOE8l1bGuO0RCz31wNA9pSKt6co6kmzCjQNpD?=
+ =?us-ascii?Q?T4YnsiT0YFpX0vhIKINolbGcF1++BYgDASjFqffFTYPRc10JPFOg12KWGsuq?=
+ =?us-ascii?Q?h5UDR35nHpTs6Es1Rv6PuS0+x7GjwF+ZxHVQkPTLDsKZz5tKscZ+Bk2Z0k1b?=
+X-MS-Exchange-AntiSpam-MessageData-1: jiCcLuiNKnAZkMrKFxoRRzF9Xj0pKy207bQ=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b055fcec-1338-462f-bb97-08de754ab126
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Feb 2026 15:21:19.7289
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: xQ1fSJqX/vs0rJlre7s93hjhSGKe7CefqdZ2ZUYwz67DBPjglzgpB4/ZSLpk250A7bP8qmRpIMmaPoFJUh4Nnw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8834
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_071923_781070_23806979 
-X-CRM114-Status: GOOD (  30.66  )
+X-CRM114-CacheID: sfid-20260226_072125_713821_A87D7587 
+X-CRM114-Status: GOOD (  26.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,70 +162,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Vladimir,
-
-On Thu, 26 Feb 2026 at 16:10, Vladimir Oltean <vladimir.oltean@nxp.com> wrote:
-> On Thu, Feb 26, 2026 at 02:22:29PM +0100, Geert Uytterhoeven wrote:
-> > > +config PHY_COMMON_PROPS
-> > > +       bool
-> > > +       help
-> > > +         This parses properties common between generic PHYs and Ethernet PHYs.
-> > > +
-> > > +         Select this from consumer drivers to gain access to helpers for
-> > > +         parsing properties from the
-> > > +         Documentation/devicetree/bindings/phy/phy-common-props.yaml schema.
-> > > +
-> > > +config PHY_COMMON_PROPS_TEST
-> > > +       tristate "KUnit tests for PHY common props" if !KUNIT_ALL_TESTS
-> > > +       select PHY_COMMON_PROPS
+On Thu, Feb 26, 2026 at 04:13:59PM +0100, Geert Uytterhoeven wrote:
+> Hi Vladimir,
+> 
+> On Thu, 26 Feb 2026 at 16:10, Vladimir Oltean <vladimir.oltean@nxp.com> wrote:
+> > On Thu, Feb 26, 2026 at 02:22:29PM +0100, Geert Uytterhoeven wrote:
+> > > > +config PHY_COMMON_PROPS
+> > > > +       bool
+> > > > +       help
+> > > > +         This parses properties common between generic PHYs and Ethernet PHYs.
+> > > > +
+> > > > +         Select this from consumer drivers to gain access to helpers for
+> > > > +         parsing properties from the
+> > > > +         Documentation/devicetree/bindings/phy/phy-common-props.yaml schema.
+> > > > +
+> > > > +config PHY_COMMON_PROPS_TEST
+> > > > +       tristate "KUnit tests for PHY common props" if !KUNIT_ALL_TESTS
+> > > > +       select PHY_COMMON_PROPS
+> > >
+> > > This select means that enabling KUNIT_ALL_TESTS also enables extra
+> > > functionality, which may not be desirable in a production system.
+> > > As PHY_COMMON_PROPS is bool, this extra functionality is even part of
+> > > the base kernel if KUNIT_ALL_TESTS=m.  Unfortunately PHY_COMMON_PROPS is
+> > > invisible, so this cannot just be changed from "select" to "depends on".
+> > > But perhaps PHY_COMMON_PROPS can be made visible if KUNIT_ALL_TESTS,
+> > > so the select can be turned into a dependency?
 > >
-> > This select means that enabling KUNIT_ALL_TESTS also enables extra
-> > functionality, which may not be desirable in a production system.
-> > As PHY_COMMON_PROPS is bool, this extra functionality is even part of
-> > the base kernel if KUNIT_ALL_TESTS=m.  Unfortunately PHY_COMMON_PROPS is
-> > invisible, so this cannot just be changed from "select" to "depends on".
-> > But perhaps PHY_COMMON_PROPS can be made visible if KUNIT_ALL_TESTS,
-> > so the select can be turned into a dependency?
->
-> Is this what you're asking for?
->
-> -- >8 --
-> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
-> index 02467dfd4fb0..1875d5b784f6 100644
-> --- a/drivers/phy/Kconfig
-> +++ b/drivers/phy/Kconfig
-> @@ -6,7 +6,7 @@
->  menu "PHY Subsystem"
->
->  config PHY_COMMON_PROPS
-> -       bool
-> +       bool "PHY common properties" if KUNIT_ALL_TESTS
->         help
->           This parses properties common between generic PHYs and Ethernet PHYs.
->
-> @@ -16,8 +16,7 @@ config PHY_COMMON_PROPS
->
->  config PHY_COMMON_PROPS_TEST
->         tristate "KUnit tests for PHY common props" if !KUNIT_ALL_TESTS
-> -       select PHY_COMMON_PROPS
-> -       depends on KUNIT
-> +       depends on KUNIT && PHY_COMMON_PROPS
->         default KUNIT_ALL_TESTS
->         help
->           This builds KUnit tests for the PHY common property API.
-> -- >8 --
+> > Is this what you're asking for?
+> >
+> > -- >8 --
+> > diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+> > index 02467dfd4fb0..1875d5b784f6 100644
+> > --- a/drivers/phy/Kconfig
+> > +++ b/drivers/phy/Kconfig
+> > @@ -6,7 +6,7 @@
+> >  menu "PHY Subsystem"
+> >
+> >  config PHY_COMMON_PROPS
+> > -       bool
+> > +       bool "PHY common properties" if KUNIT_ALL_TESTS
+> >         help
+> >           This parses properties common between generic PHYs and Ethernet PHYs.
+> >
+> > @@ -16,8 +16,7 @@ config PHY_COMMON_PROPS
+> >
+> >  config PHY_COMMON_PROPS_TEST
+> >         tristate "KUnit tests for PHY common props" if !KUNIT_ALL_TESTS
+> > -       select PHY_COMMON_PROPS
+> > -       depends on KUNIT
+> > +       depends on KUNIT && PHY_COMMON_PROPS
+> >         default KUNIT_ALL_TESTS
+> >         help
+> >           This builds KUnit tests for the PHY common property API.
+> > -- >8 --
+> 
+> Yes, that would work.  Do you think it is acceptable?
+> Thanks!
 
-Yes, that would work.  Do you think it is acceptable?
-Thanks!
+Yes, I think it's fine. I misinterpreted what kunit_"all"_tests means,
+then read its prompt which says "All KUnit tests with satisfied dependencies".
 
-Gr{oetje,eeting}s,
-
-                        Geert
-
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+I'll send a patch.
 
