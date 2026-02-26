@@ -4,80 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 384BAFCE09B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 14:48:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 526ECFD8FC5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Feb 2026 15:10:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:References:In-Reply-To:
-	Message-Id:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LF1zAuSNqXIs/9ctoJjEp+VMTDcoeXF/IvZ3mF+jESg=; b=rp3PceN6Av0sWG
-	/jgH7LnIdIFOV61QOOJxn9NfLVCEIE34Bvn119jBOq6OS9FJAc4mmXxtGQ533EDkjhOcEmqcyjn8+
-	jRbReHsktEcvR8BbJ0mIQmg1F4eAiNp4MG2GhJVhIS1KDpmOmqTxZq/Mx/Gmaqb9QQqqBB+4+NFTW
-	gWAGO2Tr3MXJNB2rTk9SvERDAX7kgggVhelKh6puMBld0WEcZDRoi+T73/TzjY4WhjTQ+jfMdaNtV
-	nON/5IwLarstoRxOEJUII1QmSOOW6JFTm5dSS9dkBPwPcq+dlAFp4eUbM6T12GoGglyRfcrcRyuEl
-	XZGLzCkcc1gJ6hso7+Ug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4nONTDWkgchCtFH0DK+TEo2OO7Tk2Ldh3zyG9EuOoyM=; b=QYm+stH7yPpC0Pw63r3dfqv31Z
+	b67jPrNMMI2EnI2oUkHplZkYomA+ExoY+a/Vjok1WZe2im5C8lz6DUNTsjHW1yZK56tnCfmROimt+
+	Xm+ibCogpdPmt2XqY1xulUvb0Di0deas3GpML8eCBxiIhOSPNwOQjycQS+i/KMM8bqtZ18tSHUu9v
+	0dAuDZVXQv946lt5pwxMy7XaVjg/3jiHCfeUgdpDpv9uH4+OcMD7lyntzL9loUDT2IP8jgATseAL4
+	2nuJ+45vxQcqi1MrwjWfOCGyRulKx1/XI8iyngtWYvZ1+C4rhM87L9YdbUyFfOIcoivTTWOyGYKFe
+	5BncXo7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvcfM-00000006MzO-25dj;
-	Thu, 26 Feb 2026 14:48:36 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1vvd0t-00000006PsT-2n2N;
+	Thu, 26 Feb 2026 15:10:51 +0000
+Received: from mail-northeuropeazon11012059.outbound.protection.outlook.com ([52.101.66.59] helo=DUZPR83CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvcfK-00000006MyU-2koY;
-	Thu, 26 Feb 2026 14:48:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Subject:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=LF1zAuSNqXIs/9ctoJjEp+VMTDcoeXF/IvZ3mF+jESg=; b=SPExeKznZ7pxe6U6nIsfsSwzti
-	b2TRZOQAbszKikg8EBoz9GikGJmeAoZ8k1GMoL4n+/Jv5C7GBJWlTFrq0LLTK1XPyUfySQY3rod6d
-	4vp7tRsNz95x5R9UZpadqee+iIpvJIHJRp1VoB9XR+BmVEoix/Xa5NhwLacCGNjRhOtQPP4SVXOM0
-	fRrMzlO2wqiqu+3wXUvWq6gwvg9DNmb57JfYvdM3odIWU8WjVN2u45S5KzC9tr0yJVCUZ2FqO7GKY
-	Y+Bl118iXSPUO2Kofxu4aMMDCrGUE5UFBgeESJRtCDRNti0zLeRQZBjHkjFYOMO3MuWr237s7Udlt
-	+vwfEKQQ==;
-Received: from mail.hugovil.com ([162.243.120.170])
-	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvcfH-00000002xnQ-0XPp;
-	Thu, 26 Feb 2026 14:48:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hugovil.com
-	; s=x; h=Subject:Content-Transfer-Encoding:Mime-Version:Message-Id:Cc:To:From
-	:Date:subject:date:message-id:reply-to;
-	bh=LF1zAuSNqXIs/9ctoJjEp+VMTDcoeXF/IvZ3mF+jESg=; b=G7U75ipV5fNWP5LU5UL5Flnmb3
-	6zLQjZqQFHHR0I9QbeAm5xdxA0aAYpZwxMWMuWd+lTBYR9zz77wfUTqGUMroszRXqY0rBLM6XFJ6Y
-	Wi8BEr51t14dNJwV7zWaxcCWrWAl0ro7lMrZprtKB84ogNWycVyJTVQBsfLF9NTyTzk8=;
-Received: from modemcable168.174-80-70.mc.videotron.ca ([70.80.174.168]:47368 helo=pettiford.lan)
-	by mail.hugovil.com with esmtpa (Exim 4.92)
-	(envelope-from <hugo@hugovil.com>)
-	id 1vvcew-0004LS-Jk; Thu, 26 Feb 2026 09:48:11 -0500
-Date: Thu, 26 Feb 2026 09:48:09 -0500
-From: Hugo Villeneuve <hugo@hugovil.com>
+	id 1vvd0r-00000006PqT-0NNy;
+	Thu, 26 Feb 2026 15:10:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=XEvfEw5h4Uunc9xu2icnAXctbbCdMjyt7ixHAbuRUnXVq0SGyNQ0ylm4z9SMe8JlD99xyXB7sbMzl8s3cEMkoDokoYKSxppvulcgNh2oNH2rLWINycOc+5Vo22Kz+R30RiUXHOOx65UBMzhppt9iY4azZlu3iL9kuasorppdOIICc3UF7KDJX+SkvI13EDMSiOHqIr7LnDngkgn9pWmziHfB83w6fs5b+FSLruo4cUmCm9DPCEVr8dfI+ydGStZC/K2zAbfdbcmhrIT4aOvPOzt7fSLQSfr8jMxHPuGz1Zd7w5rTbWzZhZmzBbAdDlvBVW6X7BjKfMQ+g9EZt3Z5sA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=4nONTDWkgchCtFH0DK+TEo2OO7Tk2Ldh3zyG9EuOoyM=;
+ b=jGmj+vzwVDRK3hN9anzCWdyvtL5wFaBpX6joHpXVfjSztI8iBqS06KQ4w8NcdkvQkXSkRptnvhURmleY5yLyCdo2l+mQdUW8hrjZuM5ci/lsELO0z4l228hU0X1JqFaS5ZbWmD7efTT0N80wh0vuAQB7DBgAAcOrf6DcXdkAgNw2PZr7Boi5804YCHdAoANqFgDbBmL3k5/M0ngAJ5wbRl+nt2a3z+Z3Cg/3v023zXUQgyqoa2myt+NZPq4CzCiqy8kM5pX6yHyDVKd8uVJAuCuQ/pLRvsY8NvNVgI6GbFg4tBTZ6NDcpXmOlMsufLDhjWg9O54jldYBIiFgGwlC8A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=4nONTDWkgchCtFH0DK+TEo2OO7Tk2Ldh3zyG9EuOoyM=;
+ b=Mf4hKO0JvHRRHM5iJ9lZPqRfxUqYEzjpmwR6AEg06XOPaTszFGbgnHWG0fGno80WGZrkoHeuKkAN2d0o3Kj+Idxzjbhb1Z1LE766QDq18F0Dx1E/gTTLkVYZPVquJP7gt3azI+c7pqh6Q9JgB+DjmWONOWCVqVCtQCRG5rmet9Et9KZyZXrUJbb7ClU/OWWHBI51DfJTsHA7CROReK7XpOgsNBYeQjkuAv/Cv8rOUDPGvdjo/9P2Lp3UytTJYPjo3twHeJSsDI2IqM95yi5aHCxnZX4vho1pd5fM6LgSNOwX0g6X4fYOMTGsWlSBhs6jmLZz3NDZ5LdKA8kEnTpChg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
+ by PA1PR04MB10119.eurprd04.prod.outlook.com (2603:10a6:102:45d::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9654.11; Thu, 26 Feb
+ 2026 15:10:40 +0000
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9632.017; Thu, 26 Feb 2026
+ 15:10:40 +0000
+Date: Thu, 26 Feb 2026 17:10:36 +0200
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
 To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: robin@protonic.nl, andy@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, dmitry.torokhov@gmail.com, hvilleneuve@dimonoff.com,
- mkorpershoek@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, lee@kernel.org,
- alexander.sverdlin@gmail.com, marek.vasut@gmail.com, akurz@blala.de,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Message-Id: <20260226094809.ce24cde2622c7adb84fb4410@hugovil.com>
-In-Reply-To: <CAMuHMdVdYX9p9DfDoyMv8qEm52kY51QULkEnuxRBH2OyWyYf6g@mail.gmail.com>
-References: <20260225155409.612478-1-hugo@hugovil.com>
-	<20260225155409.612478-4-hugo@hugovil.com>
-	<CAMuHMdVdYX9p9DfDoyMv8qEm52kY51QULkEnuxRBH2OyWyYf6g@mail.gmail.com>
-X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 70.80.174.168
-X-SA-Exim-Mail-From: hugo@hugovil.com
-Subject: Re: [PATCH v3 3/4] dt-bindings: input: add GPIO charlieplex keypad
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.hugovil.com)
+Cc: netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Daniel Golle <daniel@makrotopia.org>,
+	Horatiu Vultur <horatiu.vultur@microchip.com>,
+	=?utf-8?B?QmrDuHJu?= Mork <bjorn@mork.no>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Eric Woudstra <ericwouds@gmail.com>,
+	Marek =?utf-8?B?QmVow7pu?= <kabel@kernel.org>,
+	Lee Jones <lee@kernel.org>,
+	Patrice Chotard <patrice.chotard@foss.st.com>,
+	"open list:KERNEL SELFTEST FRAMEWORK" <linux-kselftest@vger.kernel.org>,
+	KUnit Development <kunit-dev@googlegroups.com>
+Subject: Re: [PATCH v3 net-next 05/10] phy: add phy_get_rx_polarity() and
+ phy_get_tx_polarity()
+Message-ID: <20260226151036.x4z4bdlxwgsqlkhs@skbuf>
+References: <20260111093940.975359-1-vladimir.oltean@nxp.com>
+ <20260111093940.975359-6-vladimir.oltean@nxp.com>
+ <CAMuHMdUBaoYKNj52gn8DQeZFZ42Cvm6xT6fvo0-_twNv1k3Jhg@mail.gmail.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAMuHMdUBaoYKNj52gn8DQeZFZ42Cvm6xT6fvo0-_twNv1k3Jhg@mail.gmail.com>
+X-ClientProxiedBy: VIYP296CA0002.AUTP296.PROD.OUTLOOK.COM
+ (2603:10a6:800:29d::7) To AM9PR04MB8585.eurprd04.prod.outlook.com
+ (2603:10a6:20b:438::13)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|PA1PR04MB10119:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0d513477-067e-41ba-c0e1-08de754933e7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|10070799003|1800799024|366016|19092799006|376014|7416014;
+X-Microsoft-Antispam-Message-Info: qS70icsTNhbhgDokLJN5HHBj01Ol/q7jzHbR797oCpS6NG0acpXssdNptcJ0JD6WqksVNeyXmzWLLnGXd6LL+inPkYf7QXP3uGyT8jU98bMYweZD6oyPdE4orzK4Zp5acbJTjB1FTZ8wQbC7jWbgKo5LjMH9cQ1l17CDvRInZfqecGKdLvab58kMArjV4UiipKMzwJapxuJz6qOFLgiNOAQPQkv2A+8Vm4hCqemPKAihPqfBIjKSV+4XWiMfRE1PdJ2lZEcEnGrAFhxlBCj7pyzRm+0Aqj2tr+OlMF8TDogNRFlV4AQH9InotS0rlKbm28MtoW2YEB9Dmyp0ch6NKiZS7X3f/i59+5wMacsq9BhuF98lfMbT8FIs7FncLPfh0s7NvHHuxVc5FHb0Owwq/0i3Zm9sxoZeafg3hFzGqtutUKV8NErcGnz9Z+dg4thcAlZU5jBWIikZp6QH2+IrgSQC+W7z36vT/xttN3p0aK5VScXw8rOMSv5E6FGZPgsed/pTi0z1jh0Fxp5rTjz2EuO/nSz+XdLluku/liIO2/YLnxkbzh3vIOeb3SHNx5Je7TgfB8J8UzIuMhFm6yqMv8EEsTvA0/M1pM32tYRQQLyWgPIgEsJAKKD6Nl3BgMs9oEwQynWsQCy65UxJv238Sk1PW+FztQUYRaP1Sg+S6JKHPVl4EI5rnHedigkOyXMpMZGWD64GrLsM90LRTO+gFynevHVGNcCHXCDN9w6sLCo=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(10070799003)(1800799024)(366016)(19092799006)(376014)(7416014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?cuvQTPKvFv4PxIpRPaHpzxhg8hxe/CixpDxwMAVCW3+BvJLs9dWuxfCN/YNT?=
+ =?us-ascii?Q?2pfyY6Z9S0G0oSzoAa3LUdJvCETGGeNAri+RIMMv5OW3D7jfQ8zgM5dnAMHm?=
+ =?us-ascii?Q?6+CHFzod7HGaOFO7MZ7O7LsF2Tn9E6nUHqTN8QPJpZZzu1/1LMr2LHRNNZ/B?=
+ =?us-ascii?Q?sjnKpQ1XyRwiccLe5RJgKQLmd8JmbNQc3GOrlGcmFB81fMgpyZzMK0w1utXe?=
+ =?us-ascii?Q?DIjlx+GFFJzOxm4rsB7evotW6qbZAOq4YoreiNcNJP31A/+TeYRCpk1OEElm?=
+ =?us-ascii?Q?ayidT07zhy/O3wTfIaa1et4vKtikpjkAXlVxoSPAabNBg+7qbXVEQwmAGiRY?=
+ =?us-ascii?Q?EBhr9abye5EsI8eraCvozGyCUFLE/eIHLOjGiV+JXNuzghuJEDpZ/d/6mSYB?=
+ =?us-ascii?Q?VRNI0cyvupopxvZM3o6s4ZoYMj294g4R7zXChmsXVNUMnv8DnunuXm6IJpAK?=
+ =?us-ascii?Q?CyICL3h65VnCUkhQFeBtSNRfgCVpcs3fEognU4uonD1n8GD8U0rN3JdC3VME?=
+ =?us-ascii?Q?a05hu1gqPFRkbhQoboIBpiWCsmXekLrm6A1K6gBmDc9M88h2/v0yDccYU66F?=
+ =?us-ascii?Q?ZoRu6+Ucup8XHYkqvi+ljWCGSceAaZ7jY+RTWnT4tQNqRC8l4CmF2DQYwg2J?=
+ =?us-ascii?Q?wFaJPaB7pvKxCBREj67wmS5ZUMC3Q/0EzWSYcLnAOxuBv7TT3q7IakwYsrB3?=
+ =?us-ascii?Q?NHQwqhsJC7tOV5T46ZRuCAV9mrl7YMsEsB0zfb2sKk3H8c9kEZfaI4rI+84b?=
+ =?us-ascii?Q?ynKqL0OSIqJ0nziY6XpeUxNReRI8TbsT/xHeEq1qJkq8lq/tHSWP8QPdVofs?=
+ =?us-ascii?Q?lU6R3Qn6mvTGbD6w8uc+IOqMTmaDFZRqRqYVEtpybxlsymLptDssmDJLDJsG?=
+ =?us-ascii?Q?PSX57Zbvi7Kts8F04SUL5JmmVwjnKJhKM/Om13kbgktXJ6V3W5J8qlGO2SaV?=
+ =?us-ascii?Q?pn4MjfxkDHPE0dNjhhJ5iber4zhY2lhvuKfP4+Y6PPF+eBFSpVbc2qrazr/f?=
+ =?us-ascii?Q?n6XOhUrUSxTsl1duQPhkMqs21CPdFvYknLmrISZ6IQN9Z++RFd4XbQXLLE2R?=
+ =?us-ascii?Q?h+17WWYK+ms5wZgoZu1eOs4qdMw271coZMgUl2K9Cr7KQ7Vns+hnbIc64rWp?=
+ =?us-ascii?Q?4Blj6sR9n383zG86+bspouhrRiUdgfmLITrnaskFqEGVJeVB4Dg2bagTNOht?=
+ =?us-ascii?Q?L3GTozJm97S1HwiDU3mFG3oIprXjlXnVXkT3ZnE5K8UI1Y+6OGYOLAIPNS7Y?=
+ =?us-ascii?Q?mXDB6ztfbp3FO46LvRMIMfI8Z/b3w6/oTsbnQUp67ApGs0ABiYTh/ZsW8Ac0?=
+ =?us-ascii?Q?9Yjyu9K+iH53qEji1SEfEihoyklYbhTcSOn3oHk5pTKFkyzKKjPP/6CIbljQ?=
+ =?us-ascii?Q?bbvlmuD5Re8yyXHE+cM5tCv95hNeKIJlXuE7Wysr5w89KtwifmkThE5wWGXx?=
+ =?us-ascii?Q?LzV0aLCZ40nuVTJWCZtsZ5Uu5YyIoj81SNC8Y8OPuqr6wzoGO1ACJR65vkGn?=
+ =?us-ascii?Q?TdmqtawB67ZKbYdILwK1ssYjSwicbXhpZ0bpvgbdmmLLTC6ryzXIDjZ3GEOW?=
+ =?us-ascii?Q?lRLdKrKKw0dKL9+EKeM3vb38sQQJmclDBRJUl34K+OSC1IJiAmvcj36tIaod?=
+ =?us-ascii?Q?3zY9wicHwhtY7Q3JE1R6I4J9WRx3zNebNhzWVlqhjzF2QPDTdzgDy9rwN6TY?=
+ =?us-ascii?Q?O7rHpUGxumdbqwRx54GhE4WhSJNPionuAhYRBWwfPdgUFqJG9RhT/V8jpNWH?=
+ =?us-ascii?Q?pESC3P2iJ3Z4bgb8ipHW9ehRX3zUNbLMhrhwhW1KwIzNffLHN/5Mn7Egwh9S?=
+X-MS-Exchange-AntiSpam-MessageData-1: bfb1JofLkcM1XSZxKYvlEG/kuNCKHuNLSg0=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0d513477-067e-41ba-c0e1-08de754933e7
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Feb 2026 15:10:39.9219
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: kzIwM/b233988glJu+0mQAbNrpPMNSw8SI1bjMPRt1dxxgN3eBvXhW7Fw4EK8JDB3yk+GZz3o9cyq8qdTkIIDw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA1PR04MB10119
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_144831_736022_EA042BAB 
-X-CRM114-Status: GOOD (  27.46  )
+X-CRM114-CacheID: sfid-20260226_071049_128929_32E478E8 
+X-CRM114-Status: GOOD (  17.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,177 +162,53 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Geert,
 
-On Thu, 26 Feb 2026 10:32:30 +0100
-Geert Uytterhoeven <geert@linux-m68k.org> wrote:
+On Thu, Feb 26, 2026 at 02:22:29PM +0100, Geert Uytterhoeven wrote:
+> > +config PHY_COMMON_PROPS
+> > +       bool
+> > +       help
+> > +         This parses properties common between generic PHYs and Ethernet PHYs.
+> > +
+> > +         Select this from consumer drivers to gain access to helpers for
+> > +         parsing properties from the
+> > +         Documentation/devicetree/bindings/phy/phy-common-props.yaml schema.
+> > +
+> > +config PHY_COMMON_PROPS_TEST
+> > +       tristate "KUnit tests for PHY common props" if !KUNIT_ALL_TESTS
+> > +       select PHY_COMMON_PROPS
+> 
+> This select means that enabling KUNIT_ALL_TESTS also enables extra
+> functionality, which may not be desirable in a production system.
+> As PHY_COMMON_PROPS is bool, this extra functionality is even part of
+> the base kernel if KUNIT_ALL_TESTS=m.  Unfortunately PHY_COMMON_PROPS is
+> invisible, so this cannot just be changed from "select" to "depends on".
+> But perhaps PHY_COMMON_PROPS can be made visible if KUNIT_ALL_TESTS,
+> so the select can be turned into a dependency?
 
-> Hi Hugo,
-> 
-> On Wed, 25 Feb 2026 at 16:54, Hugo Villeneuve <hugo@hugovil.com> wrote:
-> > From: Hugo Villeneuve <hvilleneuve@dimonoff.com>
-> >
-> > Add DT bindings for GPIO charlieplex keypad.
-> >
-> > Signed-off-by: Hugo Villeneuve <hvilleneuve@dimonoff.com>
-> 
-> Thanks for your patch!
-> 
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/input/gpio-charlieplex-keypad.yaml
-> > @@ -0,0 +1,106 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +
-> > +$id: http://devicetree.org/schemas/input/gpio-charlieplex-keypad.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: GPIO charlieplex keypad
-> > +
-> > +maintainers:
-> > +  - Hugo Villeneuve <hvilleneuve@dimonoff.com>
-> > +
-> > +description: |
-> > +  The charlieplex keypad supports N^2)-N different key combinations (where N is
-> > +  the number of lines). Key presses and releases are detected by configuring
-> > +  only one line as output at a time, and reading other line states. This process
-> > +  is repeated for each line. Diodes are required to ensure current flows in only
-> > +  one direction between any pair of pins.
-> > +  This mechanism doesn't allow to detect simultaneous key presses.
-> 
-> Indeed, e.g. pressing S1 and S2 simultaneously will show a ghost
-> S5 keypress.
-> 
-> > +
-> > +  Wiring example for 3 lines keyboard with 6 switches and 3 diodes:
-> > +
-> > +  L0  --+---------------------+----------------------+
-> > +        |                     |                      |
-> > +  L1  -------+-----------+---------------------+     |
-> > +        |    |           |    |                |     |
-> > +  L2  -------------+----------------+-----+    |     |
-> > +        |    |     |     |    |     |     |    |     |
-> > +        |    |     |     |    |     |     |    |     |
-> > +        |  S1 \  S2 \    |  S3 \  S4 \    |  S5 \  S6 \
-> > +        |    |     |     |    |     |     |    |     |
-> > +        |    +--+--+     |    +--+--+     |    +--+--+
-> > +        |       |        |       |        |       |
-> > +        |    D1 v        |    D2 v        |    D3 v
-> > +        |       - (k)    |       - (k)    |       - (k)
-> > +        |       |        |       |        |       |
-> > +        +-------+        +-------+        +-------+
-> 
-> Don't you need pull-down resistors on L[0-2], and/or a way to specify
-> in DT to enable internal poll-down on GPIO controllers that support it?
-> Some controllers may support internal pull-up only, but I guess that
-> can be handled using GPIO_ACTIVE_LOW?
+Is this what you're asking for?
 
-Yes, I did not put any resistors in the diagram in order to keep it
-simple and clear.
-
-You need pull-down resistors either on the board, or specified in the
-DT like we do for our board (we use the PCAL6416 with pull-up/down
-support):
-
-  line-gpios = <&gpio20 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)
-                 ...
-
-I will add this to the example, and add a few lines explaining this in
-the description.
-
-
-> > +
-> > +  L: GPIO line
-> > +  S: switch
-> > +  D: diode (k indicates cathode)
-> > +
-> > +allOf:
-> > +  - $ref: input.yaml#
-> > +  - $ref: /schemas/input/matrix-keymap.yaml#
-> > +
-> > +properties:
-> > +  compatible:
-> > +    const: gpio-charlieplex-keypad
-> > +
-> > +  autorepeat: true
-> > +
-> > +  debounce-delay-ms:
-> > +    default: 5
-> > +
-> > +  line-gpios:
-> > +    description:
-> > +      List of GPIOs used as lines. The gpio specifier for this property
-> > +      depends on the gpio controller to which these lines are connected.
-> > +
-> > +  linux,keymap: true
-> > +
-> > +  poll-interval: true
-> > +
-> > +  settling-time-us: true
-> > +
-> > +  wakeup-source: true
-> > +
-> > +required:
-> > +  - compatible
-> > +  - line-gpios
-> > +  - linux,keymap
-> > +  - poll-interval
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/gpio/gpio.h>
-> > +    #include <dt-bindings/input/input.h>
-> > +
-> > +    charlieplex-keypad {
-> 
-> "keyboard", as per Devicetree Specification Generic Names
-> Recommendation.
-
-Ok.
-
-Thank you,
-Hugo.
-
-> 
-> > +        compatible = "gpio-charlieplex-keypad";
-> > +        debounce-delay-ms = <20>;
-> > +        poll-interval = <5>;
-> > +        settling-time-us = <2>;
-> > +
-> > +        line-gpios = <&gpio2 25 GPIO_ACTIVE_HIGH
-> > +                      &gpio2 26 GPIO_ACTIVE_HIGH
-> > +                      &gpio2 27 GPIO_ACTIVE_HIGH>;
-> > +
-> > +        /* MATRIX_KEY(output, input, key-code) */
-> > +        linux,keymap = <
-> > +            /*
-> > +             * According to wiring diagram above, if L1 is configured as
-> > +             * output and HIGH, and we detect a HIGH level on input L0,
-> > +             * then it means S1 is pressed: MATRIX_KEY(L1, L0, KEY...)
-> > +             */
-> > +            MATRIX_KEY(1, 0, KEY_F1) /* S1 */
-> > +            MATRIX_KEY(2, 0, KEY_F2) /* S2 */
-> > +            MATRIX_KEY(0, 1, KEY_F3) /* S3 */
-> > +            MATRIX_KEY(2, 1, KEY_F4) /* S4 */
-> > +            MATRIX_KEY(1, 2, KEY_F5) /* S5 */
-> > +            MATRIX_KEY(0, 2, KEY_F6) /* S6 */
-> > +        >;
-> > +    };
-> 
-> Gr{oetje,eeting}s,
-> 
->                         Geert
-> 
-> --
-> Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-> 
-> In personal conversations with technical people, I call myself a hacker. But
-> when I'm talking to journalists I just say "programmer" or something like that.
->                                 -- Linus Torvalds
-> 
-
-
--- 
-Hugo Villeneuve
+-- >8 --
+diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
+index 02467dfd4fb0..1875d5b784f6 100644
+--- a/drivers/phy/Kconfig
++++ b/drivers/phy/Kconfig
+@@ -6,7 +6,7 @@
+ menu "PHY Subsystem"
+ 
+ config PHY_COMMON_PROPS
+-	bool
++	bool "PHY common properties" if KUNIT_ALL_TESTS
+ 	help
+ 	  This parses properties common between generic PHYs and Ethernet PHYs.
+ 
+@@ -16,8 +16,7 @@ config PHY_COMMON_PROPS
+ 
+ config PHY_COMMON_PROPS_TEST
+ 	tristate "KUnit tests for PHY common props" if !KUNIT_ALL_TESTS
+-	select PHY_COMMON_PROPS
+-	depends on KUNIT
++	depends on KUNIT && PHY_COMMON_PROPS
+ 	default KUNIT_ALL_TESTS
+ 	help
+ 	  This builds KUnit tests for the PHY common property API.
+-- >8 --
 
