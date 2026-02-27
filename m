@@ -4,95 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AECE8FEFB7C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Feb 2026 19:31:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39C071039893
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Feb 2026 20:32:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KMd0qDawP3LtnNVvdXu0EXZ0bVclYbc/s4g1QlOu6ME=; b=V6fVM0kMktcfPByfzkD0qgBegf
-	td9zwAzgsvc6QIaVyY82CYJeYkAlpqYEopY9CnVYWEU15CT3wPVnJxZRrPWGIKFTwCQdQLBfEpPtB
-	Uz00rjs1UeNkhRxSgjf7CeLDRzB6BtPNZPdQo7qLqBp9eGLcj678aEGJE5+mER0KZkxxl4Mku47F3
-	b/xH+c2ZMWJudDdmdG2cF7hky+mVH6Hp4O9FIoULK6WI7dTgYsVZ1b3PGwFQOEbYXJoxI514aRHrK
-	U9s+elKTCaOqcU40gefG/8ujA/5ltJNRyckY75X0IRnUFlUAfbTouhvPVnQXpTEjYPn4aiYRlhjGX
-	IWmhxI+g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aDzUGbfAxdOnwqOOVpzQXYg8yOzdQOfX8pU6Ts9gzec=; b=dGJweOdh1KkkE00Rv6eQqdDfx/
+	G+QqhX44+/EKOEMgaYIbnuc30naXIbeHN50eekqPaG+yykcTGpWjuhFtA2K/1mEeMMBUx8mKmsPPy
+	q/GZrGY816ifkBLBiHT1vt5TpKWR0i76SxRLTUrDQL9f1HJPTD1bBB5uWTZFfk3lKz5Gjk2PH1L61
+	jtfNQbUiGpabdoT9WbaVu5wr8uQIChdFgzk69Zk9lmEsOxUd7DBDb08xI3R4cPyh/a0nYTfWtC0sc
+	DxoVWi0SpGz/mobCaEFxsf80B7snhOvtagLftGuaQvURARFXLrLJY0u5UJQACVpPFSpv79Dr/ZTHL
+	4Ul1150Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw3Yq-000000090zE-2rCj;
-	Fri, 27 Feb 2026 19:31:40 +0000
-Received: from 013.lax.mailroute.net ([199.89.1.16])
+	id 1vw4VC-000000097Xq-1k0u;
+	Fri, 27 Feb 2026 20:31:58 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw3Yk-000000090pe-39WN;
-	Fri, 27 Feb 2026 19:31:37 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 013.lax.mailroute.net (Postfix) with ESMTP id 4fMz391N4VzlfgS0;
-	Fri, 27 Feb 2026 19:31:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1772220680; x=1774812681; bh=KMd0qDawP3LtnNVvdXu0EXZ0
-	bVclYbc/s4g1QlOu6ME=; b=BId/d7GQJieiPJXeB15F3xR7jTlrDEn6whU05ToR
-	lVQj5w9r6atacQ/ykKhH8hZNvihgIKl5O1jVgbWVBbNpWMWiCmqg4ufzhpGKNtET
-	OlazOYWfWmhvjn/CYoIx37rTUIhKoCEFSMkxWTsrqAXMok9hNkwnWluCFCOecQEf
-	NrcduviqoDilLdkeXcUWJMSl6oRgkYTxWfrje0243cgJjlT5r+GXPliCRXE3h7D4
-	L+1XR9167R4wFe2XJ8jP1fzl1XyC4c4WmtjG+FEIdMyPK3SuQvRK/SR956bRoS4s
-	ecSNPm+/sCSSxJvwJ3yrWoLLIDSDs+7KoxFhufzWgu/zqA==
-X-Virus-Scanned: by MailRoute
-Received: from 013.lax.mailroute.net ([127.0.0.1])
- by localhost (013.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id F69mF0ONa_jO; Fri, 27 Feb 2026 19:31:20 +0000 (UTC)
-Received: from [100.119.48.131] (unknown [104.135.180.219])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 013.lax.mailroute.net (Postfix) with ESMTPSA id 4fMz2n0mQrzlfgRw;
-	Fri, 27 Feb 2026 19:31:12 +0000 (UTC)
-Message-ID: <9d975881-7570-495d-94ea-085e2012a9af@acm.org>
-Date: Fri, 27 Feb 2026 11:31:11 -0800
+	id 1vw4V8-000000097XT-2mjc
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 27 Feb 2026 20:31:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=aDzUGbfAxdOnwqOOVpzQXYg8yOzdQOfX8pU6Ts9gzec=; b=oLYziKNL58tq8ph5EQrtonvkyC
+	STBqxtu2UzVY8EQM7QB8yvt/B0265RmWj4A+4H477hlRXpANw10vHaC2+vW2dnGnraFlESv0W79Kg
+	kAKFDJeGHO0g7HrbyeQB6HUAq/fQFpjB5iHkyIoG7INahpNcnplcXsM2ILKb/NlkmnpEkyvQEGg3K
+	KotwOtCElRE3OMuznBYdrCkTPBh3KeLT8eM5xcXiIFMCct+SWamZG3lLxo5EGgIl33K9hDp79NNun
+	swT4oiDs1vaZPi949b78CuYYmWyGUrKm9REzl+g8j3bwfoW0By+Q8mtEp60byx59NEO+Kv2rtCCPg
+	MvEBzS2A==;
+Received: from mgamail.intel.com ([198.175.65.19])
+	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vw4V3-000000058om-2pNV
+	for linux-mediatek@lists.infradead.org;
+	Fri, 27 Feb 2026 20:31:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1772224309; x=1803760309;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=7gMMXSmdmA1tBNKDTNrc8bRUDF2VVsAI+2IBxawq7Ls=;
+  b=XbBvT3cV1wSN1WEkiD/44YU86dDQg5tBTi+x118RaXn68PIg91Nov8n3
+   3c6HH/3f+x4RQ+siQ+YRxW18wdCsKnwvqNiB5eHGtHpUhPs7DZX1SO//Z
+   +9Zc5m7Lzbk6cLuu/fxqFj3LUgh48UvlMvbgpizesZc1k2Vhx5rzfKKd5
+   5HuLwlEeYJ/QhvwqQQHyRARDGOEx3fuMCBsbg2+TDQbRaUKen3/vYoKmq
+   7kw1L/tRht85vzM9jr5PBwN/RCn1XYUo9UbgAhoRqDpBCe0lwQiNr6IKH
+   pgiNn2pVOoGJrDYgbsVANhzQ48h/bd7viGwRUTka8gpKGBHdkrkMkm51V
+   A==;
+X-CSE-ConnectionGUID: OSlOxVHNSOGpve1oATSXsg==
+X-CSE-MsgGUID: PieUtacURiqduEy+5GuLRw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11714"; a="73225491"
+X-IronPort-AV: E=Sophos;i="6.21,314,1763452800"; 
+   d="scan'208";a="73225491"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Feb 2026 12:31:01 -0800
+X-CSE-ConnectionGUID: HMmeM1m4RHiSOwEk0dTWQw==
+X-CSE-MsgGUID: Mrhtn7flRSezBFQhe6Ft4w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,314,1763452800"; 
+   d="scan'208";a="240005938"
+Received: from lkp-server02.sh.intel.com (HELO a3936d6a266d) ([10.239.97.151])
+  by fmviesa002.fm.intel.com with ESMTP; 27 Feb 2026 12:30:57 -0800
+Received: from kbuild by a3936d6a266d with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1vw4Te-00000000B2P-3TnR;
+	Fri, 27 Feb 2026 20:30:37 +0000
+Date: Sat, 28 Feb 2026 04:27:52 +0800
+From: kernel test robot <lkp@intel.com>
+To: Chen-Yu Tsai <wenst@chromium.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <helgaas@kernel.org>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Bartosz Golaszewski <brgl@bgdev.pl>, linux-pci@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 5/7] PCI: mediatek-gen3: Integrate new pwrctrl API
+Message-ID: <202602280453.4TGe7q2R-lkp@intel.com>
+References: <20260226074524.3808081-6-wenst@chromium.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/11] scsi: ufs: core: Introduce a new ufshcd vops
- negotiate_pwr_mode()
-To: Can Guo <can.guo@oss.qualcomm.com>, avri.altman@wdc.com,
- beanhuo@micron.com, martin.petersen@oracle.com
-Cc: linux-scsi@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Sai Krishna Potthuri <sai.krishna.potthuri@amd.com>,
- Ajay Neeli <ajay.neeli@amd.com>, Peter Griffin <peter.griffin@linaro.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Peter Wang <peter.wang@mediatek.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Stanley Jhu <chu.stanley@gmail.com>, Manivannan Sadhasivam
- <mani@kernel.org>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
- Adrian Hunter <adrian.hunter@intel.com>,
- Archana Patni <archana.patni@intel.com>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-samsung-soc@vger.kernel.org>,
- "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>,
- "open list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-arm-msm@vger.kernel.org>
-References: <20260227160809.2620598-1-can.guo@oss.qualcomm.com>
- <20260227160809.2620598-2-can.guo@oss.qualcomm.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20260227160809.2620598-2-can.guo@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260226074524.3808081-6-wenst@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260227_113134_870913_7F52FF46 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20260227_203150_037881_62F538C1 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,47 +111,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2/27/26 8:07 AM, Can Guo wrote:
-> Before power mode change to a target power mode, TX Equalzation Training
+Hi Chen-Yu,
 
-"Equalzation" -> "Equalization"
+kernel test robot noticed the following build errors:
 
-> (EQTR) needs be done for that target power mode. In addition, before TX
-> EQTR we need to change the power mode to HS-G1. These cannot happen
-> before the vops pwr_change_notify(PRE_CHANGE) because we don't know the
-> negotiated target power mode yet. It is neither approprite if all these
-> happen post the vops pwr_change_notify(PRE_CHANGE) as we are going to
-> change the power mode to HS-G1 for TX EQTR.
+[auto build test ERROR on pci/next]
+[also build test ERROR on pci/for-linus robh/for-next linus/master v7.0-rc1 next-20260227]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-approprite -> appropriate
+url:    https://github.com/intel-lab-lkp/linux/commits/Chen-Yu-Tsai/PCI-mediatek-gen3-Clean-up-mtk_pcie_parse_port-with-dev_err_probe/20260226-155647
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
+patch link:    https://lore.kernel.org/r/20260226074524.3808081-6-wenst%40chromium.org
+patch subject: [PATCH v2 5/7] PCI: mediatek-gen3: Integrate new pwrctrl API
+config: um-randconfig-001-20260227 (https://download.01.org/0day-ci/archive/20260228/202602280453.4TGe7q2R-lkp@intel.com/config)
+compiler: clang version 23.0.0git (https://github.com/llvm/llvm-project 9a109fbb6e184ec9bcce10615949f598f4c974a9)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260228/202602280453.4TGe7q2R-lkp@intel.com/reproduce)
 
-Additionally, if "neither" occurs in a sentence, "nor" should occur in
-the same sentence. I don't see "nor" in the above sentence?
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202602280453.4TGe7q2R-lkp@intel.com/
 
-> Introduce a new ufshcd vops negotiate_pwr_mode(), so that TX EQTR can be
-> done after vops negotiate_pwr_mode() and before vops pwr_change_notify().
+All errors (new ones prefixed by >>):
 
-This patch does much more than only introducing a new vendor operation.
-Please make sure the patch description is complete.
+   /usr/bin/ld: warning: .tmp_vmlinux1 has a LOAD segment with RWX permissions
+   /usr/bin/ld: drivers/pci/controller/pcie-mediatek-gen3.o: in function `mtk_pcie_probe':
+>> pcie-mediatek-gen3.c:(.ltext+0x7e5): undefined reference to `pci_pwrctrl_create_devices'
+>> /usr/bin/ld: pcie-mediatek-gen3.c:(.ltext+0xd45): undefined reference to `pci_pwrctrl_destroy_devices'
+   /usr/bin/ld: drivers/pci/controller/pcie-mediatek-gen3.o: in function `mtk_pcie_remove':
+>> pcie-mediatek-gen3.c:(.ltext+0xefd): undefined reference to `pci_pwrctrl_power_off_devices'
+   /usr/bin/ld: pcie-mediatek-gen3.c:(.ltext+0xff0): undefined reference to `pci_pwrctrl_destroy_devices'
+   /usr/bin/ld: drivers/pci/controller/pcie-mediatek-gen3.o: in function `mtk_pcie_device_power_down':
+   pcie-mediatek-gen3.c:(.ltext+0x10cb): undefined reference to `pci_pwrctrl_power_off_devices'
+   /usr/bin/ld: drivers/pci/controller/pcie-mediatek-gen3.o: in function `mtk_pcie_startup_port':
+>> pcie-mediatek-gen3.c:(.ltext+0x13f6): undefined reference to `pci_pwrctrl_power_on_devices'
+>> /usr/bin/ld: pcie-mediatek-gen3.c:(.ltext+0x1ae1): undefined reference to `pci_pwrctrl_power_off_devices'
+   /usr/bin/ld: drivers/pci/controller/pcie-mediatek-gen3.o: in function `mtk_pcie_suspend_noirq':
+   pcie-mediatek-gen3.c:(.ltext+0x1d19): undefined reference to `pci_pwrctrl_power_off_devices'
+   clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
-> -	return -ENOTSUPP;
-> +	return -EOPNOTSUPP;
-
-Why has ENOTSUPP been changed into EOPNOTSUPP?
-
-> -static int ufshcd_change_power_mode(struct ufs_hba *hba,
-> -			     struct ufs_pa_layer_attr *pwr_mode)
-> +static int __ufshcd_change_power_mode(struct ufs_hba *hba,
-> +				      struct ufs_pa_layer_attr *pwr_mode)
->   {
->   	int ret;
-
-The double underscore prefix is typically used in the Linux kernel to
-indicate that the caller holds a lock. That is not the case here. Please
-choose another name for this function, e.g.
-ufshcd_dme_change_power_mode().
-
-Thanks,
-
-Bart.
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
