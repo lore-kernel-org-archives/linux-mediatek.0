@@ -4,89 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7205FEFB5D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Feb 2026 15:11:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30A1BFEFB61
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Feb 2026 15:29:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W3zF+qQONPOQKUi1XnVsQnrCFcFTywFDxoHqVbunmq0=; b=W6ZN9fR9Slo18Po1hguliauwSc
-	yNEYlVhUF1SFC2wGbskTTct8iG31IDyW0eFnRRZsIL+jaVy91nUqMKqhl3KYG14m7C4SEHkXdwLoE
-	EMY1L/pdfT/z4KZh/aLUSeD9geUzaIKI/FkLp+OrOjPDGgjg34FfuwLa8xOvwOH/FmSiacvaNj+jV
-	GY1vdU+a3AW/qwD2l9FSl5i4fX0saYw/CEc12D+9VYIARiReHvJ6mw5CoEvNszyJ5PNLBV8Zry3m+
-	ZAQ62kG8xpzSZ/5BQ2H78vv7eFA6/yGAjjyTsJAJY9lXHm94mqstV//xgmLwZMmkvfKx+2yMi2ROu
-	Xl5QWYLw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dqmQSAUq7QFNoiAkvEPf6SeYuRKHHIVdHOpVVRk5YZc=; b=OfEQ+liEMdIMd3QARMFI2biOVy
+	lYSP2dEygYywI5b/vPq+0sv5NPCs1pzEoPZMiGeMlBJle0xD2nJsCnoBB4MoQEHhC0XuK/7Q/fOZf
+	mLjTEMb6W8s6o8CkPitbclIpuE8//kxbRB7kMAL5Wn1lfS/+sdlLiYt9Wf5RZILH4Hvjb7Y4NmbAo
+	ED2s8CehsSRuNmRWkVB8RnCLRHCTyApPGVYleMFIqE3OecmZrok8JciCefzt/tGW0jb6ZhD92Wtvk
+	EFMTSys/VFhRJJlf2SmE2cfiuU/vIjQviK+fpRPg12vfkkUqpTDi9EpBZot772Dg2Yhb+f51GnuNY
+	kb38nboA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvzVI-00000008YeZ-2HRL;
-	Fri, 27 Feb 2026 15:11:44 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1vvzmP-00000008czT-3eO8;
+	Fri, 27 Feb 2026 15:29:25 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvzVF-00000008Ydo-31pY
-	for linux-mediatek@lists.infradead.org;
-	Fri, 27 Feb 2026 15:11:43 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vvzUN-0006Py-1Q; Fri, 27 Feb 2026 16:10:47 +0100
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vvzUE-002ujh-08;
-	Fri, 27 Feb 2026 16:10:39 +0100
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vvzUF-00000000Fpg-136n;
-	Fri, 27 Feb 2026 16:10:39 +0100
-Message-ID: <28096f2a0ff3fb3163dd19f2ff483f3f2415180f.camel@pengutronix.de>
-Subject: Re: [PATCH 01/14] drm/connector: Introduce drm_output_color_format
- enum
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Jani Nikula	
- <jani.nikula@linux.intel.com>, Maarten Lankhorst	
- <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
- <tzimmermann@suse.de>,  David Airlie <airlied@gmail.com>, Simona Vetter
- <simona@ffwll.ch>, Harry Wentland <harry.wentland@amd.com>,  Leo Li
- <sunpeng.li@amd.com>, Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher	
- <alexander.deucher@amd.com>, Christian =?ISO-8859-1?Q?K=F6nig?=	
- <christian.koenig@amd.com>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil
- Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart	 <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
- <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Andy Yan
- <andy.yan@rock-chips.com>, Liviu Dudau	 <liviu.dudau@arm.com>, Chun-Kuang
- Hu <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>,  Heiko =?ISO-8859-1?Q?St=FCbner?=	
- <heiko@sntech.de>, Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai
- <wens@kernel.org>,  Samuel Holland <samuel@sholland.org>, Dave Stevenson
- <dave.stevenson@raspberrypi.com>,  =?ISO-8859-1?Q?Ma=EDra?= Canal	
- <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance	
- <kernel-list@raspberrypi.com>, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, amd-gfx@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Date: Fri, 27 Feb 2026 16:10:39 +0100
-In-Reply-To: <20260227-overjoyed-glaring-dogfish-89effa@houat>
-References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
-	 <20260224-drm-rework-color-formats-v1-1-bebc76604ada@kernel.org>
-	 <4ea869750681f5eee3bbb2978f4ff0ace70310a9.camel@pengutronix.de>
-	 <20260227-overjoyed-glaring-dogfish-89effa@houat>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	id 1vvzmN-00000008cyd-2q3T;
+	Fri, 27 Feb 2026 15:29:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 3A799433D9;
+	Fri, 27 Feb 2026 15:29:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2C34C2BC86;
+	Fri, 27 Feb 2026 15:29:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772206163;
+	bh=eSxvpC1A4x44gz8OQPYI1TH/oWe+icsoC0P6p5bEiWc=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=SE1Tx3kWJq9WCfTc/XyuHXYW8WuZufsw6+I9Uv9vCSjmxjxmm/h18KYPkSeSj8A8D
+	 Vp2bix50lazsq92tLoXuuQxOAXBYoN/OyMaAEmIEkCfHPF2cCD3IBhpoNysx8jch6s
+	 25f0YbO5qmrqDoLai20zNtIpO8Pw4RBhoLE+0U1Qq8Y19x2afB0nXWpAl1OjMAcYpF
+	 dc6KuSMvOKl0TWFaPQLW/sq5vRqfwBUXNL2/aXsP4hGIBjBv2bOTb62US0dYGh/Z9F
+	 TDBEfpWmeg6bbG69ghXDM2aIciHpzxAtJX5fqDEtDxLpTM2hyEsTF/qrNjZstWCNZH
+	 nbGyjYlb48sZw==
+From: Vinod Koul <vkoul@kernel.org>
+To: linux-mediatek@lists.infradead.org, 
+ Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-phy@lists.infradead.org
+In-Reply-To: <cover.1771863641.git.l.scorcia@gmail.com>
+References: <cover.1771863641.git.l.scorcia@gmail.com>
+Subject: Re: (subset) [PATCH v3 0/6] Add support for mt8167 display blocks
+Message-Id: <177220615729.330302.13271524782737465316.b4-ty@kernel.org>
+Date: Fri, 27 Feb 2026 20:59:17 +0530
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.13.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260227_071141_758256_47FEE4A8 
-X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-CacheID: sfid-20260227_072923_739003_7010D222 
+X-CRM114-Status: UNSURE (   9.05  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,18 +85,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
 
-On Fr, 2026-02-27 at 09:38 +0100, Maxime Ripard wrote:
-[...]
-> > Can we move this?
-[...]
->=20
-> I'm not sure it's worth it, the last patch in this series will remove
-> these so it's not going to stick around either.
+On Mon, 23 Feb 2026 16:22:44 +0000, Luca Leonardo Scorcia wrote:
+> This series adds support for the display blocks on MediaTek mt8167.
+> Tested on Xiaomi Mi Smart Clock x04g.
+> 
+> The first patch just does some reordering of dts nodes with no other
+> changes as this makes later patches cleaner and easier to follow.
+> 
+> v3:
+>  - Added mt8167-dsi compatible to driver instead of changing the binding;
+>  - Resolved patch formatting issues.
+> 
+> [...]
 
-I agree it's not, I just didn't look as far as patch 13.
+Applied, thanks!
 
-regards
-Philipp
+[3/6] dt-bindings: phy: mediatek,dsi-phy: Add support for mt8167
+      commit: 7df891f2c39442c120fb4f9bfdd7c80e6de84015
+
+Best regards,
+-- 
+~Vinod
+
+
 
