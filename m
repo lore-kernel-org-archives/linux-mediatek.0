@@ -4,78 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B6DEFD530F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Feb 2026 08:38:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E19F6FEFB47
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Feb 2026 12:47:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SVCcfwtAMoulozX0GhmWyuLyGfUUdKtlWPUtcenImII=; b=xBhLphbjrOvkG7efdA2SmjxFbb
-	tHz0uDexbP2D7LyR2A7UYrlYnUtLJE/Y8slWUZQ1G0lhbOGUsA18R6qgMigvwcRm5an+BXqXNAYV5
-	QBUu/XibIfgMzTeArnbDzAVribdUw9WchSVC8J1JftCsl7vhuiwWS9QaI06xud5ulahxEx4FasTmM
-	f4lIpYQVLo3PyNgTOso8gzT0W+gtDKNbR5wprDLdhb036eM0DhIx+QOkz2EtWKIyZOI85uY3iuVHf
-	TDSUY+cM3KSxtr4np4pKPzra0/qdSFiPc9Pq60LgnpfogidD7M2i9oBhlYe9wYThdtWWjwZSnWqSQ
-	VdWIN8Vw==;
+	bh=bipSVGtYuY7pSKdAP+P3qZEzZ4tmz3O7tuzLvgU8Lms=; b=ZneVxPygNjxqSAf6nzhiJOdOwd
+	sqHGAhGBISZEFOLS8UXJRwQMMLdywzoK+7ana/FfUpEbRn3X4hL5I/9M0tBgw7h+L24qJ4ZfHmo5E
+	Ku8KFQshs5M62mirTTHEtBBoMqTM+9bGOPzhLuX9YIg67zXQEDDHSAwe5tXBRbucJMuh+eeF3KecQ
+	7e4wVFNyX7C0I/k+mPYq+dsqeeWc/qBo26YjaeyumoRGy2pS9ZVGP0HpLdXuZ2woNwRvYyIe+xE7d
+	kuMyExDrqv6V8pnCJVjfTVh6XwNl5Px+q4p80NvSEhW33XvQMUwkStTg4hzE8Ap56jsFfsHaMShNH
+	tDy1arug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvtN3-000000080FV-1qCa;
-	Fri, 27 Feb 2026 08:38:49 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vvxG3-00000008LN3-2u3D;
+	Fri, 27 Feb 2026 12:47:52 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvtMX-00000007zf4-3twZ;
-	Fri, 27 Feb 2026 08:38:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E753644498;
-	Fri, 27 Feb 2026 08:38:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48D05C116C6;
-	Fri, 27 Feb 2026 08:38:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772181496;
-	bh=JxFRQuyAOAtMYqF/3/WfzrGOV/lulPZh3R/a6BPJ3vU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=h2SN9TPW9+50N0x4JTYDj0MPTo3reFNOXXZeruZ+d0HOF5CtwriLkf9ctOzcUy60t
-	 13Feqf/5Npq87ed9DNpqG9guPAWnIAmlD16H7f7SeY6Q69svSmdcBaXIhh6rhSyUIt
-	 uc0J5aRplddQ7ExJ9QC3a+DkscYbtDYEZ01johDHFF2z5IXT2geVk2iJ+h6wiIt6Gk
-	 ceDmlX7k2ActitGzwsNBQMueaa05EMQ4QbGNtTh1FRVmQt7f8JwhxmsfwDq8YJ7A6G
-	 Z4tzkS0lq+PsoWpZ/z8LWj/fjGxcTPtLRYGb8b3cWISUtpDUSuK0Lf2WdXEzs8Jmx2
-	 ww7eZk+XsqYcQ==
-Date: Fri, 27 Feb 2026 09:38:13 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
-	Jani Nikula <jani.nikula@linux.intel.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Harry Wentland <harry.wentland@amd.com>, 
-	Leo Li <sunpeng.li@amd.com>, Rodrigo Siqueira <siqueira@igalia.com>, 
-	Alex Deucher <alexander.deucher@amd.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>, 
-	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, amd-gfx@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH 01/14] drm/connector: Introduce drm_output_color_format
- enum
-Message-ID: <20260227-overjoyed-glaring-dogfish-89effa@houat>
+	id 1vvxG0-00000008LMb-3scH;
+	Fri, 27 Feb 2026 12:47:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1772196420; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=EnamxOjNOYW413bvp8pGeS0DGcHEkAoR4gzm/d5ahyYAMsTb1jVDXdl7sJOfo4Xx+o6gYDvSl/JNgJuZTEmhEEh5u34RI4Rt/k0Cg3dxIv2mYLs6VXiV/ZftQIHRkl/v+/wNSmIdx6u0n02TuJ7YGiiFfBJQGB3QnxVm/ZhURd0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1772196420; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=bipSVGtYuY7pSKdAP+P3qZEzZ4tmz3O7tuzLvgU8Lms=; 
+	b=Sz9TtfK8WTmWu/P2KZ83MAs/mRY9l6M+fl7BHgn3KfdB5hVwjBgX8tIbCuIP1cmMTzj3c6fiQf/5apxd5e5AbGSMIQt7z0VirMtcmIEoAmy/v7pk/4HEb8b1aS3B1cyJ9F8+WOnOCJw1UBQ+Etde8U3hVj7cxQTNyvi651jGMnM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772196420;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=bipSVGtYuY7pSKdAP+P3qZEzZ4tmz3O7tuzLvgU8Lms=;
+	b=a7DIPpNX4R5p+xYAxMwirNQKP0qg+cxXic7jX+XbKS9Nr/G9yePJhS7EVIogXniX
+	uUw8jCOrb0BOESi/yUFNnDsca2vCPhncgQC4k7Exq9GYnUCmpMmbwiPG2+00i+Q5JrM
+	Dg+ZzbWWVvoRijARsTvpATLEzxQscIjnk06anOvU=
+Received: by mx.zohomail.com with SMTPS id 1772196419413925.2174865442265;
+	Fri, 27 Feb 2026 04:46:59 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Jani Nikula <jani.nikula@linux.intel.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Harry Wentland <harry.wentland@amd.com>,
+ Leo Li <sunpeng.li@amd.com>, Rodrigo Siqueira <siqueira@igalia.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH 14/14] drm/display: hdmi: Use drm_output_color_format instead of
+ hdmi_colorspace
+Date: Fri, 27 Feb 2026 13:46:50 +0100
+Message-ID: <13979896.O9o76ZdvQC@workhorse>
+In-Reply-To: <20260227-dramatic-agouti-of-brotherhood-416e19@houat>
 References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
- <20260224-drm-rework-color-formats-v1-1-bebc76604ada@kernel.org>
- <4ea869750681f5eee3bbb2978f4ff0ace70310a9.camel@pengutronix.de>
+ <5558942.31r3eYUQgx@workhorse>
+ <20260227-dramatic-agouti-of-brotherhood-416e19@houat>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="4g2ghndtsljakowa"
-Content-Disposition: inline
-In-Reply-To: <4ea869750681f5eee3bbb2978f4ff0ace70310a9.camel@pengutronix.de>
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260227_003818_014000_BD086AAD 
-X-CRM114-Status: GOOD (  32.86  )
+X-CRM114-CacheID: sfid-20260227_044749_005393_6781BF87 
+X-CRM114-Status: GOOD (  30.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,150 +103,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Friday, 27 February 2026 09:29:05 Central European Standard Time Maxime Ripard wrote:
+> Hi
+> 
+> On Thu, Feb 26, 2026 at 05:24:05PM +0100, Nicolas Frattaroli wrote:
+> > On Tuesday, 24 February 2026 11:58:53 Central European Standard Time Maxime Ripard wrote:
+> > > The hdmi_colorspace enum was defined to represent the colorspace value
+> > > of the HDMI infoframes. It was later used by some HDMI drivers to
+> > > express the output format they should be setting up.
+> > > 
+> > > During the introduction of the HDMI helpers, it then was used to
+> > > represent it in the drm_connector_hdmi_state structure.
+> > > 
+> > > However, it's always been somewhat redundant with the DRM_COLOR_FORMAT_*
+> > > defines, and now with the drm_output_color_format enum. Let's
+> > > consolidate around drm_output_color_format in drm_connector_hdmi_state
+> > > to facilitate the current effort to provide a global output format
+> > > selection mechanism.
+> > > 
+> > > Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> > > ---
+> > >  drivers/gpu/drm/bridge/inno-hdmi.c                 |   6 +-
+> > >  drivers/gpu/drm/bridge/ite-it6263.c                |   2 +-
+> > >  drivers/gpu/drm/display/drm_hdmi_helper.c          |   7 +-
+> > >  drivers/gpu/drm/display/drm_hdmi_state_helper.c    |  52 ++++--
+> > >  drivers/gpu/drm/drm_bridge.c                       |   2 +-
+> > >  drivers/gpu/drm/drm_connector.c                    |  14 +-
+> > >  drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |   8 +-
+> > >  drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             |   2 +-
+> > >  drivers/gpu/drm/tests/drm_connector_test.c         |  80 ++++-----
+> > >  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 182 ++++++++++-----------
+> > >  drivers/gpu/drm/vc4/vc4_hdmi.c                     |  18 +-
+> > >  drivers/gpu/drm/vc4/vc4_hdmi.h                     |   2 +-
+> > >  include/drm/display/drm_hdmi_helper.h              |   3 +-
+> > >  include/drm/drm_connector.h                        |   7 +-
+> > >  14 files changed, 205 insertions(+), 180 deletions(-)
+> > > 
+> > > [... snip ...]
+> > > diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+> > > index 4f5b27fab475c7c733622eb8727927571f3fb8fe..171cd495976a3e16f201fd339d3d42a09dc3b63f 100644
+> > > --- a/drivers/gpu/drm/drm_connector.c
+> > > +++ b/drivers/gpu/drm/drm_connector.c
+> > > @@ -589,14 +589,14 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+> > >  
+> > >  	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
+> > >  	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
+> > >  		return -EINVAL;
+> > >  
+> > > -	if (!supported_formats || !(supported_formats & BIT(HDMI_COLORSPACE_RGB)))
+> > > +	if (!supported_formats || !(supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444)))
+> > >  		return -EINVAL;
+> > >  
+> > > -	if (connector->ycbcr_420_allowed != !!(supported_formats & BIT(HDMI_COLORSPACE_YUV420)))
+> > > +	if (connector->ycbcr_420_allowed != !!(supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420)))
+> > >  		return -EINVAL;
+> > 
+> > I don't think this will work as-is. drm_bridge_connector_init calls this
+> > function assuming hdmi_colorspace bitmasks in supported_formats.
+> 
+> Yeah, you're right I missed the conversion in drm_bridge_connector_init.
+> It should be fixed now.
+> 
+> > This may have slipped through the conversion; the synopsys dw-hdmi-qp core
+> > (separate from synopsys dw-hdmi) also assumes hdmi_colorspace, see e.g.
+> > dw_hdmi_qp_plat_data::supported_formats in include/drm/bridge/dw_hdmi_qp.h
+> > 
+> > So should be a simple fix I hope.
+> 
+> For this one, did you identify anything more than the comment in
+> dw_hdmi_qp_plat_data? I couldn't find any user of HDMI_COLORSPACE_* left
+> for the dw_hdmi_qp_plat_data.supported_formats users.
 
---4g2ghndtsljakowa
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 01/14] drm/connector: Introduce drm_output_color_format
- enum
-MIME-Version: 1.0
+Nope, it's really just the comment. My series will obviously need
+adjusting since it makes use of that member, but that's part of my
+rebase. So far, there don't seem to be any users that set the member,
+so it's just the comment documenting it.
 
-Hi Philipp
+Kind regards,
+Nicolas Frattaroli
+ 
+> Maxime
+> 
 
-On Thu, Feb 26, 2026 at 10:12:02AM +0100, Philipp Zabel wrote:
-> On Di, 2026-02-24 at 11:58 +0100, Maxime Ripard wrote:
-> > The EDID parsing code initially introduced the DRM_COLOR_FORMAT_*
-> > defines to represent the sink capabilities. Since a given sink could
-> > support multiple formats, it was first defined as a bitmask.
-> >=20
-> > However, the core and drivers have since leveraged those defines to
-> > represent both the supported formats but also the current format being
-> > used.
-> >=20
-> > Considering the latter case, the more natural, and consistent, thing to
-> > do would be to create an enum of all the possible formats, and then list
-> > the supported formats using a bitmask of the individual enum values.
-> >=20
-> > Let's create a new enum following that pattern, drm_output_color_format,
-> > while maintaining the DRM_COLOR_FORMAT_* compatibility to make the
-> > transition easier.
-> >=20
-> > Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> > ---
-> >  include/drm/drm_connector.h | 42 ++++++++++++++++++++++++++++++++++---=
------
-> >  1 file changed, 34 insertions(+), 8 deletions(-)
-> >=20
-> > diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-> > index 7eaec37ae1c735334afa7dad15a38cf0c8b761b8..c67539708f636ae3905bb84=
-24c63799bd1811f28 100644
-> > --- a/include/drm/drm_connector.h
-> > +++ b/include/drm/drm_connector.h
-> > @@ -554,10 +554,35 @@ enum drm_colorspace {
-> >  	DRM_MODE_COLORIMETRY_RGB_WIDE_FLOAT	=3D 14,
-> >  	DRM_MODE_COLORIMETRY_BT601_YCC		=3D 15,
-> >  	DRM_MODE_COLORIMETRY_COUNT
-> >  };
-> > =20
-> > +/**
-> > + * enum drm_output_color_format - Output Color Format
-> > + *
-> > + * This enum is a consolidated color format list supported by
-> > + * connectors. It's only ever really been used for HDMI and DP so far,
-> > + * so it's not exhaustive and can be extended to represent other forma=
-ts
-> > + * in the future.
-> > + *
-> > + *
-> > + * @DRM_OUTPUT_COLOR_FORMAT_RGB444:
-> > + *   RGB output format
-> > + * @DRM_OUTPUT_COLOR_FORMAT_YCBCR444:
-> > + *   YCbCr 4:4:4 output format (ie. not subsampled)
-> > + * @DRM_OUTPUT_COLOR_FORMAT_YCBCR422:
-> > + *   YCbCr 4:2:2 output format (ie. with horizontal subsampling)
-> > + * @DRM_OUTPUT_COLOR_FORMAT_YCBCR420:
-> > + *   YCbCr 4:2:0 output format (ie. with horizontal and vertical subsa=
-mpling)
-> > + */
-> > +enum drm_output_color_format {
-> > +	DRM_OUTPUT_COLOR_FORMAT_RGB444 =3D 0,
-> > +	DRM_OUTPUT_COLOR_FORMAT_YCBCR444,
-> > +	DRM_OUTPUT_COLOR_FORMAT_YCBCR422,
-> > +	DRM_OUTPUT_COLOR_FORMAT_YCBCR420,
-> > +};
-> > +
-> >  /**
-> >   * enum drm_bus_flags - bus_flags info for &drm_display_info
-> >   *
-> >   * This enum defines signal polarities and clock edge information for =
-signals on
-> >   * a bus as bitmask flags.
-> > @@ -697,14 +722,14 @@ struct drm_display_info {
-> >  	/**
-> >  	 * @subpixel_order: Subpixel order of LCD panels.
-> >  	 */
-> >  	enum subpixel_order subpixel_order;
-> > =20
-> > -#define DRM_COLOR_FORMAT_RGB444		(1<<0)
-> > -#define DRM_COLOR_FORMAT_YCBCR444	(1<<1)
-> > -#define DRM_COLOR_FORMAT_YCBCR422	(1<<2)
-> > -#define DRM_COLOR_FORMAT_YCBCR420	(1<<3)
-> > +#define DRM_COLOR_FORMAT_RGB444		(1 << DRM_OUTPUT_COLOR_FORMAT_RGB444)
-> > +#define DRM_COLOR_FORMAT_YCBCR444	(1 << DRM_OUTPUT_COLOR_FORMAT_YCBCR4=
-44)
-> > +#define DRM_COLOR_FORMAT_YCBCR422	(1 << DRM_OUTPUT_COLOR_FORMAT_YCBCR4=
-22)
-> > +#define DRM_COLOR_FORMAT_YCBCR420	(1 << DRM_OUTPUT_COLOR_FORMAT_YCBCR4=
-20)
->=20
-> Can we move this? Either up, directly after drm_output_color_format, or
-> down, directly before color_formats.
->
-> I think 8d70f395e6cb ("drm: Add support for a panel-orientation
-> connector property, v6") didn't separate the two on purpose.
 
-I'm not sure it's worth it, the last patch in this series will remove
-these so it's not going to stick around either.
 
-> >  	/**
-> >  	 * @panel_orientation: Read only connector property for built-in pane=
-ls,
-> >  	 * indicating the orientation of the panel vs the device's casing.
-> >  	 * drm_connector_init() sets this to DRM_MODE_PANEL_ORIENTATION_UNKNO=
-WN.
-> > @@ -712,14 +737,15 @@ struct drm_display_info {
-> >  	 * fb to compensate and gets exported as prop to userspace.
-> >  	 */
-> >  	int panel_orientation;
-> > =20
-> >  	/**
-> > -	 * @color_formats: HDMI Color formats, selects between RGB and YCrCb
-> > -	 * modes. Used DRM_COLOR_FORMAT\_ defines, which are _not_ the same o=
-nes
-> > -	 * as used to describe the pixel format in framebuffers, and also don=
-'t
-> > -	 * match the formats in @bus_formats which are shared with v4l.
-> > +	 * @color_formats: HDMI Color formats, selects between RGB and
-> > +	 * YCrCb modes. Uses a bitmask of DRM_OUTPUT_COLOR_FORMAT\_
->=20
-> Maybe s/YCrCb/YCbCr/ for consistency?
 
-Yep, definitely. I'll update it.
-
-Maxime
-
---4g2ghndtsljakowa
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaaFX9QAKCRAnX84Zoj2+
-dmxcAYCTnPEWQk0d2T09EPqIDncreEtsxUKKkoZBhMXxCZHvYGuTLjKpiG5d9DVP
-bimDyVcBf1TU/oK/YyoR5WUGp2e2wBBKJslWjyZOy1Ng07mJWV9f+13k42kP7JzN
-5oCetRCy+w==
-=Anpu
------END PGP SIGNATURE-----
-
---4g2ghndtsljakowa--
 
