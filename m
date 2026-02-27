@@ -4,72 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30A1BFEFB61
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Feb 2026 15:29:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60AACFEFB6C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Feb 2026 15:52:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dqmQSAUq7QFNoiAkvEPf6SeYuRKHHIVdHOpVVRk5YZc=; b=OfEQ+liEMdIMd3QARMFI2biOVy
-	lYSP2dEygYywI5b/vPq+0sv5NPCs1pzEoPZMiGeMlBJle0xD2nJsCnoBB4MoQEHhC0XuK/7Q/fOZf
-	mLjTEMb6W8s6o8CkPitbclIpuE8//kxbRB7kMAL5Wn1lfS/+sdlLiYt9Wf5RZILH4Hvjb7Y4NmbAo
-	ED2s8CehsSRuNmRWkVB8RnCLRHCTyApPGVYleMFIqE3OecmZrok8JciCefzt/tGW0jb6ZhD92Wtvk
-	EFMTSys/VFhRJJlf2SmE2cfiuU/vIjQviK+fpRPg12vfkkUqpTDi9EpBZot772Dg2Yhb+f51GnuNY
-	kb38nboA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=raohb+OnpA+Nei7LomVrzYabDf87CTd9ehaOWBdgJGk=; b=F5RkQNzbflq85ZHWZjKiXkyGRM
+	BWpTGA+UwGg3jDuhW+wO8RjNmo9eU3sFj4MYkRiA+DznvxOiWoru6Qy6pUwHDbrgZT2Eptfo7g/6B
+	RvLNdzHCxfI89BtHt4y7eFhQNOAM8kL3AGxOke5OUDjqqwglqcyh1I+oKIANQiNcLAG2Wbu9rB7Xt
+	1LZI1W2VA7c8Rvm5x7vkm4OOPSOPWoxJ3mRInrPZBQvpJiKZxWhazU4VsvMK3YxdoLxs0onGIDTsz
+	C2zpQ3nggcwN6JhhvYnd80ue2F8pFykumggOhk9tkRX4g9tFAYTGeEkuTOlHIOxWKDMs57TxfCYEc
+	vkn5elmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvzmP-00000008czT-3eO8;
-	Fri, 27 Feb 2026 15:29:25 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vw091-00000008gge-3dxS;
+	Fri, 27 Feb 2026 15:52:47 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvzmN-00000008cyd-2q3T;
-	Fri, 27 Feb 2026 15:29:24 +0000
+	id 1vw090-00000008gfk-0oBC;
+	Fri, 27 Feb 2026 15:52:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
+	Reply-To:Content-ID:Content-Description:In-Reply-To:References;
+	bh=raohb+OnpA+Nei7LomVrzYabDf87CTd9ehaOWBdgJGk=; b=KWbdtUACEoJhhrzLJoDNJ0Oo2v
+	HB5JAi9y1HLdg/8b7J4y3fLGQHM1scsnQxcekx7mp9jTLzwSxIW5aq9nRhzOZnagMJAbJPdxYnfNM
+	CBiTC7XMKiX/jl+fmh/9/FmbdL2AVxwTYwXmroqJB6jqaPR6vo0bfs/bheuxSmlKp2s0TkE/lJhZ9
+	6Aatt9a+mHZAT2biNZXh8BFr8qCoGv4ZEBOEPGjiMZHBSVVNlKqrWwc5DpB4tejW6hMy1MkD3IS+t
+	JEuiGwjOgg27YtnzYzAUtVc2Un8H9mmqZ0hKdvPvu0dG3Q6Rum3fXQbRI5A8Xzk69Tn2R+PraE4xz
+	bGgpvBCg==;
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vw08v-0000000DQnG-3Iou;
+	Fri, 27 Feb 2026 15:52:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3A799433D9;
-	Fri, 27 Feb 2026 15:29:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2C34C2BC86;
-	Fri, 27 Feb 2026 15:29:17 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 452A743810;
+	Fri, 27 Feb 2026 15:52:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99433C116C6;
+	Fri, 27 Feb 2026 15:52:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772206163;
-	bh=eSxvpC1A4x44gz8OQPYI1TH/oWe+icsoC0P6p5bEiWc=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=SE1Tx3kWJq9WCfTc/XyuHXYW8WuZufsw6+I9Uv9vCSjmxjxmm/h18KYPkSeSj8A8D
-	 Vp2bix50lazsq92tLoXuuQxOAXBYoN/OyMaAEmIEkCfHPF2cCD3IBhpoNysx8jch6s
-	 25f0YbO5qmrqDoLai20zNtIpO8Pw4RBhoLE+0U1Qq8Y19x2afB0nXWpAl1OjMAcYpF
-	 dc6KuSMvOKl0TWFaPQLW/sq5vRqfwBUXNL2/aXsP4hGIBjBv2bOTb62US0dYGh/Z9F
-	 TDBEfpWmeg6bbG69ghXDM2aIciHpzxAtJX5fqDEtDxLpTM2hyEsTF/qrNjZstWCNZH
-	 nbGyjYlb48sZw==
-From: Vinod Koul <vkoul@kernel.org>
-To: linux-mediatek@lists.infradead.org, 
- Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Chunfeng Yun <chunfeng.yun@mediatek.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-phy@lists.infradead.org
-In-Reply-To: <cover.1771863641.git.l.scorcia@gmail.com>
-References: <cover.1771863641.git.l.scorcia@gmail.com>
-Subject: Re: (subset) [PATCH v3 0/6] Add support for mt8167 display blocks
-Message-Id: <177220615729.330302.13271524782737465316.b4-ty@kernel.org>
-Date: Fri, 27 Feb 2026 20:59:17 +0530
+	s=k20201202; t=1772207557;
+	bh=f45vMFSM+cbg6BIT4gb2mHHhAB+82XYmdtpsZXu6y8o=;
+	h=From:Date:Subject:To:Cc:From;
+	b=dSX/yAbKDT8GYcoF0V1ZeVPeKXrr0so50mXacVtvjae0z/HUWE9Y4I+ZhJ15axeCP
+	 CVy54CH2evuDnlgWVBovzdakTvHnRJxAU8Evddu2bEDsiVl5TMEiPhH9AxL8JXrlm8
+	 AmzODyD4VePSTvldhpvxhQm+b0lU+hPoSeaxEOzyoLbBMHz6eRQLUuzrvu5DheJzLk
+	 2SLngo8gA/P1BGNCsEf6H54wDk/8yP+qL/3MMJRBo0dbGl0vss3LNiQhEJAsOHhp9H
+	 Q2zCZmCIBFptge0BnKYDyZRIq3bWOE42PyROuuRzyFcSM6NRRb/SRY8plxzJwp97Q3
+	 hNp4rXoowxN0g==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Fri, 27 Feb 2026 16:52:11 +0100
+Subject: [PATCH net] net: ethernet: mtk_eth_soc: Reset prog ptr to NULL in
+ case of error in mtk_xdp_setup()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.13.0
+Message-Id: <20260227-mtk-xdp-prog-ptr-fix-v1-1-b73d7588b645@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MQQqAIBAAvxJ7bqGEivpKdDBbbYlMVolA+nvSc
+ QZmMkQSpghTlUHo5siXL9DWFZhde0fIW2FQjeobpQY804HPFjDI5TAkQcsPatuN62gMDauGkga
+ hov/tDJ4SLO/7ATjD46ZrAAAA
+X-Change-ID: 20260227-mtk-xdp-prog-ptr-fix-af59b9cce7ba
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, 
+ Jesper Dangaard Brouer <hawk@kernel.org>, 
+ John Fastabend <john.fastabend@gmail.com>, 
+ Stanislav Fomichev <sdf@fomichev.me>
+Cc: Paolo Valerio <pvalerio@redhat.com>, netdev@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ bpf@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260227_072923_739003_7010D222 
-X-CRM114-Status: UNSURE (   9.05  )
+X-CRM114-CacheID: sfid-20260227_155242_639866_C431DFB5 
+X-CRM114-Status: UNSURE (   9.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,28 +99,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Reset eBPF prog pointer to NULL if mtk_open routine in mtk_xdp_setup()
+fails.
 
-On Mon, 23 Feb 2026 16:22:44 +0000, Luca Leonardo Scorcia wrote:
-> This series adds support for the display blocks on MediaTek mt8167.
-> Tested on Xiaomi Mi Smart Clock x04g.
-> 
-> The first patch just does some reordering of dts nodes with no other
-> changes as this makes later patches cleaner and easier to follow.
-> 
-> v3:
->  - Added mt8167-dsi compatible to driver instead of changing the binding;
->  - Resolved patch formatting issues.
-> 
-> [...]
+Fixes: 7c26c20da5d42 ("net: ethernet: mtk_eth_soc: add basic XDP support")
+Suggested-by: Paolo Valerio <pvalerio@redhat.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-Applied, thanks!
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index e5e2ffa9c542bfc88dc0d7553d0a6b2a169ec74b..e199f2e243d21f3545e8282ab821135e0962f5c3 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -3751,8 +3751,16 @@ static int mtk_xdp_setup(struct net_device *dev, struct bpf_prog *prog,
+ 	if (old_prog)
+ 		bpf_prog_put(old_prog);
+ 
+-	if (netif_running(dev) && need_update)
+-		return mtk_open(dev);
++	if (netif_running(dev) && need_update) {
++		int err;
++
++		err = mtk_open(dev);
++		if (err) {
++			rcu_assign_pointer(eth->prog, NULL);
++
++			return err;
++		}
++	}
+ 
+ 	return 0;
+ }
 
-[3/6] dt-bindings: phy: mediatek,dsi-phy: Add support for mt8167
-      commit: 7df891f2c39442c120fb4f9bfdd7c80e6de84015
+---
+base-commit: fd6dad4e1ae296b67b87291256878a58dad36c93
+change-id: 20260227-mtk-xdp-prog-ptr-fix-af59b9cce7ba
 
 Best regards,
 -- 
-~Vinod
-
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
