@@ -4,109 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D0FEFEE4F2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Feb 2026 18:00:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D882DFEE4F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Feb 2026 19:09:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CzbAnz6T/IhzT60BwbsGo7FPW25EednVTt62Gcqnlt4=; b=cSOWIwFm1xNVgD8LMtaQXg+ejy
-	i3ugWu0ie1P57xRipT8GYBOWzZIMD08XmfKbkIW9OrgNeHxHfT4RNuzgYaB5e/omOFI14d1uyYf1K
-	h0OwvzIo/zRtHAEi227Ykuad01BvP7g/J5fQCrOHMuegtXNAsVK6wSZ834qLGMcQVEtVcazA3oCkb
-	0NEWmRMIWuf3sZ+rL08zmQAeoyF+MOinN2vU9A45Ove02rD/nrx8t+6IXy4rO5rMA0p5XZoXk8qMa
-	U182VGTGy2DnRD4tXnmTXZRFb+MVaDfcYqxRCfa6mof7F9BmddF0Do+u6vrCKZf5ogXDKOa+7N4cz
-	WHuoEJrQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FQMm92FyAQJT+uBQvsnjueB09ZieXbwDxF1QO9oPOOM=; b=XEt01BiCZ+Q3xUuwL9x6lY3LK+
+	5EWM7qYxZQccELSn0JQ2AZAuQpJE4fxKiU7ADP6yNrX/mYd/kF3QqBE8kCQHH9caz2m3HwkOgEkSA
+	KzuYumraNuciABusZE08JExFQToTqpfNUrMp5Lpchr19DSF1pAdx/2qd6OJv1Yu48VHSvdcr/JOlr
+	urWm6ldbibKJM7C0+/hjXxHiuNeB6y+EvQcI96FqyYF+geBi6q+AQL+BJJ2cAAmLwwFWo4PYR1HKV
+	J7PJdRtE/0o6A75zTmgjW+I86LRI7wZG7xIYCqVDifxZRhIa2CwNw+T+VbkVNBmuzvLA3TdMJ5Ayy
+	PTCqyJiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwOcL-0000000A7yB-1Nf9;
-	Sat, 28 Feb 2026 18:00:41 +0000
-Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
+	id 1vwPgT-0000000ABGP-2n2P;
+	Sat, 28 Feb 2026 19:09:01 +0000
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwOcJ-0000000A7xE-2LZP
+	id 1vwPgQ-0000000ABFW-3P9I
 	for linux-mediatek@lists.infradead.org;
-	Sat, 28 Feb 2026 18:00:40 +0000
-Received: by mail-qt1-x82a.google.com with SMTP id d75a77b69052e-503347e8715so39609451cf.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 28 Feb 2026 10:00:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772301638; cv=none;
-        d=google.com; s=arc-20240605;
-        b=i8Bg/lhG7DzUTQi7uG+Yn+XJKqsg8MwDveYCF87LpkEJt8STaNPpdeb2aN2zzvaeBZ
-         LZr3y+sc0+xnPnXUxKCVUKK5wTsiN1T47dXiB4nRve7GRUiKEJ1AkXH2Kiw4LM/E7KSB
-         DERGoWQ+WRvyxm4ReBm4EfwNi4QsPZfkCsTXCh7a5a10dUfkm2SyyYEWkWALmJLC5BJv
-         qVaBB8Dh42W7tcbJlXoJNIzH5NEG01hwIZzDhv1W2dFaEh0UpdUuNR8YvRN4fEIsOYiO
-         2Kr9rhqA+9xftD6m6BXJrShPNODU2cOKtqQnMdMbKmOaMPT648HhnSd0jH+sR56YswM+
-         uJXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=CzbAnz6T/IhzT60BwbsGo7FPW25EednVTt62Gcqnlt4=;
-        fh=PyE2nhqkVl3HGobVaT5Yn8fVdR6lWbePbQP7Omq8PSs=;
-        b=crXZIysdfnWlQTgC8dRzPz093AzXL6gQIuoeQVwwR53qjnzdsH3TCA4atRBg9KhVq1
-         L5XaL3gELgZ0HRmCb6nN81p1jEGIfT0UYnl8ZB7c67gitq5kBBd1VOHuKaQn5raw+n+Y
-         z8k3Jk6S3RTVyXjs0wDUGdBCY8LuPZXBMtZV2nhqIKVMOBWskpJwM3COdVa0PhA1Zl+K
-         Y6KhK+qvaqY894vnui0gWaiTiabAnAeO8olQi3Vpvs601TilY/Rgn4p7PeVwff9BOGh8
-         VKPy3R0I4YMe1F1q5GPgJiAjptaUVTIAGvFRs5dUonRcDrCdKIj/guxBxw3WVcK0I5S5
-         yVxA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Sat, 28 Feb 2026 19:09:00 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id 98e67ed59e1d1-358e3cc5e7eso1367582a91.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 28 Feb 2026 11:08:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1772301638; x=1772906438; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=CzbAnz6T/IhzT60BwbsGo7FPW25EednVTt62Gcqnlt4=;
-        b=Q+Ga0A3pHi2wFe4bTMQAkYzSxsqkjakjiQCZKfLsbswTfG6QGatdaYbSt2qYXTFA5d
-         7LUsUwRve9QBKrlZJh/F915hH919n5JDGz49EjXSIi2Y2OPslsL+6IOqs52irnZcK6xc
-         /OoQoRKadTP12aeNcfHTDSoX6vOqU+NqUC46+UeMw609SOGLacLo2ctQTzO3URonvkyf
-         7WiFmSl6lJwSI9K29ilGTSOLLDJXleUt/m3olYVvKXtwfEdZy7qmNJpe/dT5CZZSBywJ
-         q1RAc/Nd1srBtUmMS/n9Z+die05k6rgU1fKHtPGIp53gPD70TK1kyQVxp/z07xDHwxf+
-         bPSQ==
+        d=gmail.com; s=20230601; t=1772305738; x=1772910538; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=FQMm92FyAQJT+uBQvsnjueB09ZieXbwDxF1QO9oPOOM=;
+        b=Rg7rcrILzOsTVQ1GknSs+Qz24Bdbnh34m1mLN+/JupsQZfaaO07Tqth+vienf5Io+F
+         zHuPt8FsxfDACPPDjVcMhW3bHKSIDaZ/2OmTDXCvs9YVFrW1zBL5uhqThiqUms9N0JHi
+         Y1HZMwS7uGy+Gr18KCm41fKJqt1jO/2zyH8L5VeSjzOE9RV08ai2J/TB7av/6VWqElcQ
+         8DPcjV2HS5p99rOGmb6aGcSTNfbsG9bO8L3RMEIb7lhmLvUadB4oLt7ZyL8kb//vcpVl
+         xKqXGurckC7yIeGcmdCGqXoiXYBexQZVlWbP660VT+O4oT485R3eFTciH+3q70J3d7On
+         nToA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772301638; x=1772906438;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=CzbAnz6T/IhzT60BwbsGo7FPW25EednVTt62Gcqnlt4=;
-        b=QeYgHGK1SByJGW/UEd1r/aIdoQJkGOGnth8bsx/kV4WLEAlvEvjwWUAyxsw6YnBjFv
-         5JHDrsQkB0b+1JDk3kMJG0ZDZqR2rYXdbydwRF7ykjXPGBUYh6ozCHCaNTPoKM5dUHIs
-         zYysZxVAUA885Tsr33+wGeSa88KFeToY7pqNHbz7KizncZSaJUOmr7g1fErt1bTMs+6X
-         MnjfUZrhtqDaRGdn/IBYObFN1KR+xlWXW63feJukZ34uyn1sciUl+8yV8WFud9UpcoLA
-         IxJZT7ULbkIUQE6mJK+zRfv9MZPiotfBLzZLss8FUCN3lOLUEmaGh5UmJRAOkArKSDlv
-         QUfA==
-X-Forwarded-Encrypted: i=1; AJvYcCUnbcXkYmyvW2polqHp9LOod3oydpXmYoXtJlkHcNcAR22LO8O9FC5x7CwAFufGpdWftYC4BBUXKfk6HKx+9g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy3f2Ns28GuILUndU4pA+jnyNE5srTC0KEGF9HjgVimljv0cG92
-	ach/crjMOk1FsNIvxfqz4bNSaNcCnUQEjcfh+VWk2bJS5jEl+o3pDd8/o7DBZCTGtzff1Z0jv9u
-	RmNCf29noeGX4y27IpXKdDtFjVXP0M1E=
-X-Gm-Gg: ATEYQzwqJBdbN+/TrAKBRa/9BHYFOr0UwoLCUsn+zqueBv81g3oPsdsSAkFMLlgkXXr
-	L/DRkk/m9xnkU/qc4ZRejpiX6pgRuQQLmpxr9TrumAbKvbX3MWemp1681OA/f5EfLlKm0BaTE9E
-	siZnGraLx/RDmSj0aeJyJIItLBLTlehlLekh9ngLzxn6nrbQDfvv7dwL8YcO0eHM+jtv30mAERI
-	v23F7ZHyQgCphOAlJdNuKHee51G56GCAkD6SCxSNfZo+Qk/ATE80Lc239Y8g4ma5w+fRC4J1ywm
-	XhlvPuMnu+enzAnvYj+wd2Hc
-X-Received: by 2002:ac8:5f4c:0:b0:4ff:b211:6aa6 with SMTP id
- d75a77b69052e-50752796176mr90990561cf.27.1772301637636; Sat, 28 Feb 2026
- 10:00:37 -0800 (PST)
-MIME-Version: 1.0
-References: <20260111092833.466263-1-akkun11.open@gmail.com> <6a499e1a-80fe-4fc3-af77-b5d31f689d7f@collabora.com>
-In-Reply-To: <6a499e1a-80fe-4fc3-af77-b5d31f689d7f@collabora.com>
+        d=1e100.net; s=20230601; t=1772305738; x=1772910538;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FQMm92FyAQJT+uBQvsnjueB09ZieXbwDxF1QO9oPOOM=;
+        b=YzdNBSdW/upMpEvYGraUp0PamlGkAFNsT9+CV/eGwAsHLND1nqD3lcDCSVHecDM0Yr
+         rF5ucJdzmJyGidiA98Fci0XtJoLnMzy2Kv8xv4cvBrpHQvRyimfGxnf8H7PHTNh6jEId
+         PlfxqJigTt3Ffi4LI6Mo8yRcmO8C/eRYPXs2S4TB/sQ6i1f2/SEyhpMGIteWv5exddLv
+         oMLerrtalRFJbBMMwj70XBBTNMPZZg8VDdgEAmZY/wbANu7cnTK3axNpQVWPoOGRmztK
+         hEbAJ8sSTtgw2NA85FD8EoMlxdlbTDIYfqQHmLPMPjaGj4ZC4hjNGMKkXHpnxedEklTe
+         CpNw==
+X-Forwarded-Encrypted: i=1; AJvYcCXcDZStJ5n8++cgV9Sf3Y9JwPq5crdY8QzhyU/HeXEWvI8WDlPB0QmLEskZCSu3KxVQJl3qnckf3NI2WXhBTg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxrAJGTt5b/P9UUj/ru0Jy6tcXCybgKO7PZn1Hvzp2UGj7lbGyu
+	6ktmEEWnuE5iDP1w4B/sAC9I7SdcZWmHBl5RUScRvwj7g/+0v10WgbyC/EmHY+2w
+X-Gm-Gg: ATEYQzxoUkgkFbpCePZkSIb03fikpHH35vTWP8x8ZPb2z/tWLPAS+1UoSLoOqx1hsf/
+	c70VcpjmTzPiiN5COwqr6aCdZGKtdT5k2SCzTcHY9lMJvzIvHu8txbW6Ef1wXP01YLYgXA6rMRe
+	KmJ6T+BCoxFDt/0dRh0aEdMdCzlBuKYDsndAaWUHMYm4rSuMKAzHHup6ozZ2wlr13IjD1i91Iha
+	HYgaJqmVb3v9eSG3QO8Xw8ziG7XcmG7m3d5ZK7ZAyFK52a8eugAxYk8N4ICiOuZ4DXngg7sAPa/
+	pVa1nyYjWR1nhLLwx6HVYyEAtXLzeudVqsWl2tX1Go1YHpov55b/dFURUCNRXuoTANfQF/VOXT6
+	5r+YMjcJKHEpTbIGqgbxQ0AYhNESqgNaxe+DB3A2w/Jxsk4LI0BLDi7i8GsYuuDshEgbTLkp99s
+	OFFacoRgVe4LSTiy8tRXf9SL9BpjPiV7nyso31SiYVca8MXJVSE8fYH6+v2TdsEipQiWWDC0sQt
+	cewOlU=
+X-Received: by 2002:a17:90b:3c4b:b0:349:3fe8:170d with SMTP id 98e67ed59e1d1-35965c24309mr6728918a91.3.1772305737797;
+        Sat, 28 Feb 2026 11:08:57 -0800 (PST)
+Received: from buffalo-ssd.taila54753.ts.net (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-359037af175sm11303251a91.13.2026.02.28.11.08.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 28 Feb 2026 11:08:57 -0800 (PST)
 From: Akari Tsuyukusa <akkun11.open@gmail.com>
-Date: Sun, 1 Mar 2026 03:00:26 +0900
-X-Gm-Features: AaiRm512V9E6SYs2_Yyac0rJXDDdrcUO_TD7gqKE_u9D1yEofE0XT1GKOLrzGEk
-Message-ID: <CAKr_iV40A8=8e4Bqez-mbq6Jt+ZVNH=Vbvk1mQPZq1Z_feu+ng@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: common-v1: introduce per-function
- multibase control
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	"moderated list:PIN CONTROLLER - MEDIATEK" <linux-mediatek@lists.infradead.org>, 
-	"open list:PIN CONTROL SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: lee@kernel.org
+Cc: matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	akkun11.open@gmail.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	y.oudjana@protonmail.com
+Subject: [PATCH] mfd: mt6397: Properly fix CID of MT6328, MT6331 and MT6332
+Date: Sun,  1 Mar 2026 04:08:20 +0900
+Message-ID: <20260228190820.357538-1-akkun11.open@gmail.com>
+X-Mailer: git-send-email 2.52.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_100039_600840_2ED5DD48 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20260228_110859_119317_71B40268 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,40 +101,88 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 12, 2026 at 5:31=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
-> Thanks for the patch!
-> What you're saying here makes a lot of sense, but there's one big questio=
-n for you.
->
-> Have you considered migrating those pinctrl drivers to use a PIN_FIELD_BA=
-SE()
-> like it's being done for all other(/newer) MediaTek SoCs?
->
-> Why would this not be applicable for those old ones?
+CIDs set for MT6328, MT6331 and MT6332 are not appropriate.
+Many Android downstream kernels define CID as below,
 
-Hi Angelo,
+MT6328:
 
-Thanks for your review and sorry for the too late response.
+    #define PMIC6328_E1_CID_CODE    0x2810
+    #define PMIC6328_E2_CID_CODE    0x2820
+    #define PMIC6328_E3_CID_CODE    0x2830
 
-I am developing the pinctrl driver for MT6589 and initially based
-it on the MT8135 driver, because those two SoCs are very similar.
-However, I realized that the hard-coded multi-base settings in v1
-are not compatible with MT6589, which led me to create this patch.
+MT6331/MT6332:
 
-After looking at v2, it seems likely compatible with MT6589 as well,
-so I will proceed with my development based on v2.
+    #define PMIC6331_E1_CID_CODE    0x3110
+    #define PMIC6331_E2_CID_CODE    0x3120
+    #define PMIC6331_E3_CID_CODE    0x3130
 
-Also, this patch has two flaws:
+    #define PMIC6332_E1_CID_CODE    0x3210
+    #define PMIC6332_E2_CID_CODE    0x3220
+    #define PMIC6332_E3_CID_CODE    0x3230
 
-- It hard-codes the behavior of mt8365_set_clr_mode, which would
-  cause issues if there are other SoCs similar to MT8365.
-- spec_ies_smt_set expects the IES and SMT registers to be on the same
-  base; if an SoC does not follow this, additional handling will be require=
-d.
+The current configuration incorrectly uses the revision code as the CID.
+Therefore, the driver cannot detect the same PMIC of different revisions.
+(E1/E2 for MT6328, E1/E3 for MT6331/MT6332)
+Based on these, the CID of MT6328, MT6331 and MT6332 should be corrected.
 
-Please ignore this patch for now.
+Additionally, the incorrect MT6331/MT6332 CID overlaps with the MT6320's
+actual CID:
 
-Best regards,
-Akari
+    #define PMIC6320_E1_CID_CODE    0x1020
+    #define PMIC6320_E2_CID_CODE    0x2020
+
+This causes a conflict in the switch-case statement of mt6397-irq.c,
+this prevents adding support for MT6320.
+
+Link: https://github.com/parthibx24/android_kernel_mediatek_k35/blob/4853d1fd9e40563573fa6d6b32b75d571a95e2b7/drivers/misc/mediatek/power/mt6735/pmic.h#L10-L12
+Link: https://github.com/meizuosc/m75/blob/80ef1d26c5d73e131d064138ed09ff5a2be2bed8/mediatek/platform/mt6595/kernel/core/include/mach/pmic_mt6331_6332_sw.h#L9-L15
+Link: https://github.com/toffyjan/android_Ticwatch_S_mooneye/blob/4f2a73b26f3821afc452cdce660cdbc73daf4e4a/arch/arm/mach-mt2601/include/mach/pmic_mt6320_sw.h#L29-L30
+Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
+---
+ drivers/mfd/mt6397-core.c       | 4 ++--
+ include/linux/mfd/mt6397/core.h | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index 3e58d0764c7e..1bdacda9a933 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -297,7 +297,7 @@ static const struct chip_data mt6323_core = {
+ 
+ static const struct chip_data mt6328_core = {
+ 	.cid_addr = MT6328_HWCID,
+-	.cid_shift = 0,
++	.cid_shift = 8,
+ 	.cells = mt6328_devs,
+ 	.cell_size = ARRAY_SIZE(mt6328_devs),
+ 	.irq_init = mt6397_irq_init,
+@@ -313,7 +313,7 @@ static const struct chip_data mt6357_core = {
+ 
+ static const struct chip_data mt6331_mt6332_core = {
+ 	.cid_addr = MT6331_HWCID,
+-	.cid_shift = 0,
++	.cid_shift = 8,
+ 	.cells = mt6331_mt6332_devs,
+ 	.cell_size = ARRAY_SIZE(mt6331_mt6332_devs),
+ 	.irq_init = mt6397_irq_init,
+diff --git a/include/linux/mfd/mt6397/core.h b/include/linux/mfd/mt6397/core.h
+index b774c3a4bb62..340fc72e22aa 100644
+--- a/include/linux/mfd/mt6397/core.h
++++ b/include/linux/mfd/mt6397/core.h
+@@ -12,9 +12,9 @@
+ 
+ enum chip_id {
+ 	MT6323_CHIP_ID = 0x23,
+-	MT6328_CHIP_ID = 0x30,
+-	MT6331_CHIP_ID = 0x20,
+-	MT6332_CHIP_ID = 0x20,
++	MT6328_CHIP_ID = 0x28,
++	MT6331_CHIP_ID = 0x31,
++	MT6332_CHIP_ID = 0x32,
+ 	MT6357_CHIP_ID = 0x57,
+ 	MT6358_CHIP_ID = 0x58,
+ 	MT6359_CHIP_ID = 0x59,
+-- 
+2.52.0
+
 
