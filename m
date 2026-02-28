@@ -4,62 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A249EFEE4C9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Feb 2026 12:20:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD06FEE4F2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Feb 2026 18:00:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yqjbNB/XsfYwXuWOSP8lMuHZBkrqY+ro88mw9LfBzo4=; b=iehemnEcimmfotLIm9rtLViPIY
-	V3y6wSAiOSnAE0+5AzX33HsguybTh82ATk+lXk8n0Y9HqIrVxOs6wkWCOU9jUtKDDxHtFKhgdQOms
-	1Nn65zMlmwuLiOYA85PMWh9HZnadq5i+lj1Wbp7x8cClI+QiLaUVG9i5rS5QJyGsnOYNTpn1twhYh
-	w0FeZxJ0x980d65u7gdjlKSAKKYJ22XQyb7lbRwCMV9C5UbB5Gzu3luhcszuFtzMqA2YUvd3cCXdP
-	MzjREMymhNTUQVEw7BbG4Wt7nZ4k+DdJeTOgG1d/f7DV4WVYqhtyzSYZRugAOGZOeB9fiYcmDRwh3
-	WhWdmoIQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fTZTInRmORT6/Y4amNI//U+F7+VKT8KebITqGwe/yYg=; b=rbJI7QY4nIem+5tMZzyWVC8MC6
+	4DoL+ChHN+6BKqUV2iI16fQybAm3V/fwDAnBIv38G1Bd8gfqPcqFptm25GPjTCbldunCUzd5+SRVW
+	zf8SnV32T59vspaPabY/pqOPNO0/G5ab+M+sKOZ7apUgeD32YGucSy2nW24wohxwmFFss1uTnOjxv
+	FU/Ea1IF5MjpmzLYnhc2oDe7+gJqMwT+2AVQB6wGJpDAcwrfQzzaW/R0IfhdAS5J0/n8RmbVvq/9b
+	/OTfssXzSfXfsj8ocxJtDXJ4Losf5L+GGnQi6Lle6/JwxbNJb1HuUDMf5bySuXYe9//ijKmAJUCSr
+	+Scwns2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwJJQ-00000009pLD-3BcU;
-	Sat, 28 Feb 2026 12:20:48 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vwOcD-0000000A7v9-2rwU;
+	Sat, 28 Feb 2026 18:00:33 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwJJO-00000009pKi-3Zsl;
-	Sat, 28 Feb 2026 12:20:46 +0000
+	id 1vwOcB-0000000A7u2-1UQZ;
+	Sat, 28 Feb 2026 18:00:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B90476001D;
-	Sat, 28 Feb 2026 12:20:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EC11DC19424;
-	Sat, 28 Feb 2026 12:20:44 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 10D7142B82;
+	Sat, 28 Feb 2026 18:00:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED299C19423;
+	Sat, 28 Feb 2026 17:59:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772281245;
-	bh=XIWu8pVNZqGo5T8Mi5TvCmyxj2UX5isJ1r649II4YGc=;
-	h=From:Date:Subject:To:Cc:From;
-	b=YJCVLLOvaG0vBS+h9Gw34jdd164fJQJj0T56BnTYHo0raVj4p0biZQZ/ynQFMHQI9
-	 nDejSKePPOoPW+U5HIJPfJ76XyB9cbe22p4S8tD1sG7iV+lxRVNqwGKyYbd7mC+IA+
-	 TJx8zZyvlVD1CyjzX3Q2xUqeJBwd39wVIMzRpUX25DS2QiU72aCYC+HnWejjWxhc1m
-	 wblqClO3nIsmYBkzPexh7g9+HuAmFtMCLcJ1fr2iiPJsIR+RrRrA3vWwmSCaC3C1bz
-	 4XKVct9K4GfOdRN6/KdlQh+B9lUfoY+deaX6UQeNjCvSS6tlr0isPqlYqj/ztezeNN
-	 6+7tNTPicIeTw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sat, 28 Feb 2026 13:20:33 +0100
-Subject: [PATCH net-next] net: airoha: Fix GDM2 loopback configuration for
- USB serdes
+	s=k20201202; t=1772301629;
+	bh=kHCRe4FxCpKOmGTFDbEGFmwKc5c1cbzYW9mRrhA/2zM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=Y5Ww6oOt+Lwkhhw6KzkZzqCLx2GB5Y6V/naeD+g/YVnGDnFJykP4eczgV77pSo6aG
+	 MwceHNzWz3tTt2nQUPDrqo4OH/XpY1QPEj4j2coQSntozKAfKLK4GkW1a2dH8TyfFX
+	 5fZRLH0VdmJrHIj0bW/2HmeVqQPjJBYdjnqVErnT7/OV5v8nL9A1bM8hWX1+RqOS8L
+	 j+1xUXhbGCwz3WIiQx9BfetTOcQFR4X46hu07hQziT4+MpACIMVHSm6kKP/vnmJT2+
+	 XJSlGPNpWjGSFDy3clti8s912U34ZnWDCJSJbRQ//cNsZce6q9IlsPUYRVrZhQYnRM
+	 3szaWx8Sycbcw==
+Date: Sat, 28 Feb 2026 17:59:54 +0000
+From: Jonathan Cameron <jic23@kernel.org>
+To: David Lechner <dlechner@baylibre.com>
+Cc: Francesco Lavra <flavra@baylibre.com>, Jonathan Corbet <corbet@lwn.net>,
+ Shuah Khan <skhan@linuxfoundation.org>, Lars-Peter Clausen
+ <lars@metafoo.de>, Michael Hennerich <Michael.Hennerich@analog.com>, Lucas
+ Stankus <lucas.p.stankus@gmail.com>, Nuno =?UTF-8?B?U8Oh?=
+ <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Puranjay Mohan
+ <puranjay@kernel.org>, Cosmin Tanislav <cosmin.tanislav@analog.com>, Ramona
+ Gradinariu <ramona.gradinariu@analog.com>, Antoniu Miclaus
+ <antoniu.miclaus@analog.com>, Petre Rodan <petre.rodan@subdimension.ro>,
+ Dan Robertson <dan@dlrobertson.com>, Benson Leung <bleung@chromium.org>,
+ Guenter Roeck <groeck@chromium.org>, Jiri Kosina <jikos@kernel.org>,
+ Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>, Matti Vaittinen
+ <mazziesaccount@gmail.com>, Marcelo Schmitt <marcelo.schmitt@analog.com>,
+ Esteban Blanc <eblanc@baylibre.com>, Jorge Marques
+ <jorge.marques@analog.com>, Sergiu Cuciurean <sergiu.cuciurean@analog.com>,
+ Dragos Bogdan <dragos.bogdan@analog.com>, Alisa-Dariana Roman
+ <alisa.roman@analog.com>, Trevor Gamblin <tgamblin@baylibre.com>, Renato
+ Lui Geh <renatogeh@gmail.com>, Eugen Hristev <eugen.hristev@linaro.org>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni
+ <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+ Andreas Klinger <ak@it-klinger.de>, Paul Cercueil <paul@crapouillou.net>,
+ Ramona Bolboaca <ramona.bolboaca@analog.com>, Marcus Folkesson
+ <marcus.folkesson@gmail.com>, Kent Gustavsson <kent@minoris.se>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Frank Li <Frank.Li@nxp.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team
+ <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Matteo
+ Martelli <matteomartelli3@gmail.com>, Marius Cristea
+ <marius.cristea@microchip.com>, Heiko Stuebner <heiko@sntech.de>, Maxime
+ Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Kurt Borja <kuurtb@gmail.com>, Francesco
+ Dolcini <francesco@dolcini.it>, =?UTF-8?B?Sm/Do28=?= Paulo =?UTF-8?B?R29u?=
+ =?UTF-8?B?w6dhbHZlcw==?= <jpaulo.silvagoncalves@gmail.com>, Leonard
+ =?UTF-8?B?R8O2aHJz?= <l.goehrs@pengutronix.de>, Oleksij Rempel
+ <o.rempel@pengutronix.de>, Haibo Chen <haibo.chen@nxp.com>, Salih Erim
+ <salih.erim@amd.com>, Conall O'Griofa <conall.ogriofa@amd.com>, Michal
+ Simek <michal.simek@amd.com>, Gustavo Silva <gustavograzs@gmail.com>,
+ Tomasz Duszynski <tduszyns@gmail.com>, Roan van Dijk <roan@protonic.nl>,
+ Jyoti Bhayana <jbhayana@google.com>, Mariel Tinaco
+ <Mariel.Tinaco@analog.com>, Nishant Malpani <nish.malpani25@gmail.com>, Rui
+ Miguel Silva <rmfrfs@gmail.com>, Linus Walleij <linusw@kernel.org>, Lorenzo
+ Bianconi <lorenzo@kernel.org>, Alex Lanzano <lanzano.alex@gmail.com>,
+ Jagath Jog J <jagathjog1996@gmail.com>, Jean-Baptiste Maneyrol
+ <jean-baptiste.maneyrol@tdk.com>, Remi Buisson <remi.buisson@tdk.com>,
+ Christian Eggers <ceggers@arri.de>, Mudit Sharma
+ <muditsharma.info@gmail.com>, Javier Carrasco
+ <javier.carrasco.cruz@gmail.com>, =?UTF-8?B?T25kxZllag==?= Jirman
+ <megi@xff.cz>, Song Qiang <songqiang1304521@gmail.com>, Dixit Parmar
+ <dixitparmar19@gmail.com>, Gerald Loacker <gerald.loacker@wolfvision.net>,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-iio@vger.kernel.org, chrome-platform@lists.linux.dev,
+ linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH v6 4/7] iio: Rename 'sign' field to `format` in struct
+ iio_scan_type
+Message-ID: <20260228175954.1f0950a1@jic23-huawei>
+In-Reply-To: <120c7f33-4ca1-4d35-ac1b-b65362f1adfc@baylibre.com>
+References: <20260225100421.2366864-1-flavra@baylibre.com>
+	<20260225101735.2368252-1-flavra@baylibre.com>
+	<120c7f33-4ca1-4d35-ac1b-b65362f1adfc@baylibre.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260228-airoha-fix-loopback-for-usb-serdes-v1-1-a94be0f897da@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2NywqDQAwAf0VybmA31O3jV0oPUWMNLUYSLAXx3
- 116HBhmNghxlYB7s4HLV0NtrpBPDfQTzy9BHSoDJSqJ6IqsbhPjqD/8mC0d928czXGNDmtrkEA
- ql8Qpn0u+tVBDi0vV/5PHc98PW9URsnQAAAA=
-X-Change-ID: 20260228-airoha-fix-loopback-for-usb-serdes-2670a0146195
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260228_100031_443057_2A1FA77A 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,61 +126,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Flow Control source port mapping for USB serdes needs to be configured
-according to the GDM port nbd parameter. This is a preliminary patch
-since nbd parameter is specific for the given port serdes and needs to
-be read from the DTS (in the current codebase is assigned statically).
+On Wed, 25 Feb 2026 15:27:01 -0600
+David Lechner <dlechner@baylibre.com> wrote:
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c  | 10 ++++++----
- drivers/net/ethernet/airoha/airoha_regs.h |  5 +----
- 2 files changed, 7 insertions(+), 8 deletions(-)
+> On 2/25/26 4:17 AM, Francesco Lavra wrote:
+> > This field is used to differentiate between signed and unsigned integers.
+> > A following commit will extend its use to in order to add support for non-
+> > integer scan elements; therefore, change its name from 'sign' to a more
+> > generic 'format'.
+> >   
+> 
+> Maybe Jonathan is OK with doing this all at once, but another alternative
+> could be to introduce a union to allow both names at the same time, then
+> we could make the change more gradually.
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 3779f93b47bc13ae21d4ae088dece4712dc214e5..37fc2b33d3af8a190a74efc69ed54f163afa6412 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1729,10 +1729,12 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- 		      SP_CPORT_MASK(val),
- 		      FE_PSE_PORT_CDM2 << __ffs(SP_CPORT_MASK(val)));
- 
--	if (port->id != AIROHA_GDM3_IDX && airoha_is_7581(eth))
--		airoha_fe_rmw(eth, REG_SRC_PORT_FC_MAP6,
--			      FC_ID_OF_SRC_PORT24_MASK,
--			      FIELD_PREP(FC_ID_OF_SRC_PORT24_MASK, 2));
-+	if (port->id == AIROHA_GDM4_IDX && airoha_is_7581(eth)) {
-+		u32 mask = FC_ID_OF_SRC_PORT_MASK(nbq);
-+
-+		airoha_fe_rmw(eth, REG_SRC_PORT_FC_MAP6, mask,
-+			      AIROHA_GDM2_IDX << __ffs(mask));
-+	}
- 
- 	return 0;
- }
-diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
-index ed4e3407f4a0e8b6a630ea1213ef155604479b66..29878b954c77c79ae45e63357840a10c23c517f2 100644
---- a/drivers/net/ethernet/airoha/airoha_regs.h
-+++ b/drivers/net/ethernet/airoha/airoha_regs.h
-@@ -376,10 +376,7 @@
- #define SP_CPORT_MASK(_n)		GENMASK(3 + ((_n) << 2), ((_n) << 2))
- 
- #define REG_SRC_PORT_FC_MAP6		0x2298
--#define FC_ID_OF_SRC_PORT27_MASK	GENMASK(28, 24)
--#define FC_ID_OF_SRC_PORT26_MASK	GENMASK(20, 16)
--#define FC_ID_OF_SRC_PORT25_MASK	GENMASK(12, 8)
--#define FC_ID_OF_SRC_PORT24_MASK	GENMASK(4, 0)
-+#define FC_ID_OF_SRC_PORT_MASK(_n)	GENMASK(4 + ((_n) << 3), ((_n) << 3))
- 
- #define REG_CDM5_RX_OQ1_DROP_CNT	0x29d4
- 
+Please do the union for v7.  Not so much because I mind a global change, but
+more because the chances of merge conflicts are too high.
 
----
-base-commit: 621e3634dfab890e8d97e082588b3d6d6d688d91
-change-id: 20260228-airoha-fix-loopback-for-usb-serdes-2670a0146195
+Perhaps for this series just introduce the union and use it in the driver
+here. We can then chase it through the rest of the tree as a separate step.
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+Alternatively leave it with a misleading name for now (so allow 'f' to be a
+magic sign value) and we can do the rename as a follow up.
+
+Jonathan
+
 
 
