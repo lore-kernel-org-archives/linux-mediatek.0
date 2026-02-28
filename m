@@ -4,114 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD06FEE4F2
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Feb 2026 18:00:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D0FEFEE4F2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Feb 2026 18:00:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fTZTInRmORT6/Y4amNI//U+F7+VKT8KebITqGwe/yYg=; b=rbJI7QY4nIem+5tMZzyWVC8MC6
-	4DoL+ChHN+6BKqUV2iI16fQybAm3V/fwDAnBIv38G1Bd8gfqPcqFptm25GPjTCbldunCUzd5+SRVW
-	zf8SnV32T59vspaPabY/pqOPNO0/G5ab+M+sKOZ7apUgeD32YGucSy2nW24wohxwmFFss1uTnOjxv
-	FU/Ea1IF5MjpmzLYnhc2oDe7+gJqMwT+2AVQB6wGJpDAcwrfQzzaW/R0IfhdAS5J0/n8RmbVvq/9b
-	/OTfssXzSfXfsj8ocxJtDXJ4Losf5L+GGnQi6Lle6/JwxbNJb1HuUDMf5bySuXYe9//ijKmAJUCSr
-	+Scwns2g==;
+	bh=CzbAnz6T/IhzT60BwbsGo7FPW25EednVTt62Gcqnlt4=; b=cSOWIwFm1xNVgD8LMtaQXg+ejy
+	i3ugWu0ie1P57xRipT8GYBOWzZIMD08XmfKbkIW9OrgNeHxHfT4RNuzgYaB5e/omOFI14d1uyYf1K
+	h0OwvzIo/zRtHAEi227Ykuad01BvP7g/J5fQCrOHMuegtXNAsVK6wSZ834qLGMcQVEtVcazA3oCkb
+	0NEWmRMIWuf3sZ+rL08zmQAeoyF+MOinN2vU9A45Ove02rD/nrx8t+6IXy4rO5rMA0p5XZoXk8qMa
+	U182VGTGy2DnRD4tXnmTXZRFb+MVaDfcYqxRCfa6mof7F9BmddF0Do+u6vrCKZf5ogXDKOa+7N4cz
+	WHuoEJrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwOcD-0000000A7v9-2rwU;
-	Sat, 28 Feb 2026 18:00:33 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vwOcL-0000000A7yB-1Nf9;
+	Sat, 28 Feb 2026 18:00:41 +0000
+Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwOcB-0000000A7u2-1UQZ;
-	Sat, 28 Feb 2026 18:00:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 10D7142B82;
-	Sat, 28 Feb 2026 18:00:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ED299C19423;
-	Sat, 28 Feb 2026 17:59:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772301629;
-	bh=kHCRe4FxCpKOmGTFDbEGFmwKc5c1cbzYW9mRrhA/2zM=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Y5Ww6oOt+Lwkhhw6KzkZzqCLx2GB5Y6V/naeD+g/YVnGDnFJykP4eczgV77pSo6aG
-	 MwceHNzWz3tTt2nQUPDrqo4OH/XpY1QPEj4j2coQSntozKAfKLK4GkW1a2dH8TyfFX
-	 5fZRLH0VdmJrHIj0bW/2HmeVqQPjJBYdjnqVErnT7/OV5v8nL9A1bM8hWX1+RqOS8L
-	 j+1xUXhbGCwz3WIiQx9BfetTOcQFR4X46hu07hQziT4+MpACIMVHSm6kKP/vnmJT2+
-	 XJSlGPNpWjGSFDy3clti8s912U34ZnWDCJSJbRQ//cNsZce6q9IlsPUYRVrZhQYnRM
-	 3szaWx8Sycbcw==
-Date: Sat, 28 Feb 2026 17:59:54 +0000
-From: Jonathan Cameron <jic23@kernel.org>
-To: David Lechner <dlechner@baylibre.com>
-Cc: Francesco Lavra <flavra@baylibre.com>, Jonathan Corbet <corbet@lwn.net>,
- Shuah Khan <skhan@linuxfoundation.org>, Lars-Peter Clausen
- <lars@metafoo.de>, Michael Hennerich <Michael.Hennerich@analog.com>, Lucas
- Stankus <lucas.p.stankus@gmail.com>, Nuno =?UTF-8?B?U8Oh?=
- <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Puranjay Mohan
- <puranjay@kernel.org>, Cosmin Tanislav <cosmin.tanislav@analog.com>, Ramona
- Gradinariu <ramona.gradinariu@analog.com>, Antoniu Miclaus
- <antoniu.miclaus@analog.com>, Petre Rodan <petre.rodan@subdimension.ro>,
- Dan Robertson <dan@dlrobertson.com>, Benson Leung <bleung@chromium.org>,
- Guenter Roeck <groeck@chromium.org>, Jiri Kosina <jikos@kernel.org>,
- Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>, Matti Vaittinen
- <mazziesaccount@gmail.com>, Marcelo Schmitt <marcelo.schmitt@analog.com>,
- Esteban Blanc <eblanc@baylibre.com>, Jorge Marques
- <jorge.marques@analog.com>, Sergiu Cuciurean <sergiu.cuciurean@analog.com>,
- Dragos Bogdan <dragos.bogdan@analog.com>, Alisa-Dariana Roman
- <alisa.roman@analog.com>, Trevor Gamblin <tgamblin@baylibre.com>, Renato
- Lui Geh <renatogeh@gmail.com>, Eugen Hristev <eugen.hristev@linaro.org>,
- Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni
- <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>,
- Andreas Klinger <ak@it-klinger.de>, Paul Cercueil <paul@crapouillou.net>,
- Ramona Bolboaca <ramona.bolboaca@analog.com>, Marcus Folkesson
- <marcus.folkesson@gmail.com>, Kent Gustavsson <kent@minoris.se>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team
- <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, Matteo
- Martelli <matteomartelli3@gmail.com>, Marius Cristea
- <marius.cristea@microchip.com>, Heiko Stuebner <heiko@sntech.de>, Maxime
- Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Kurt Borja <kuurtb@gmail.com>, Francesco
- Dolcini <francesco@dolcini.it>, =?UTF-8?B?Sm/Do28=?= Paulo =?UTF-8?B?R29u?=
- =?UTF-8?B?w6dhbHZlcw==?= <jpaulo.silvagoncalves@gmail.com>, Leonard
- =?UTF-8?B?R8O2aHJz?= <l.goehrs@pengutronix.de>, Oleksij Rempel
- <o.rempel@pengutronix.de>, Haibo Chen <haibo.chen@nxp.com>, Salih Erim
- <salih.erim@amd.com>, Conall O'Griofa <conall.ogriofa@amd.com>, Michal
- Simek <michal.simek@amd.com>, Gustavo Silva <gustavograzs@gmail.com>,
- Tomasz Duszynski <tduszyns@gmail.com>, Roan van Dijk <roan@protonic.nl>,
- Jyoti Bhayana <jbhayana@google.com>, Mariel Tinaco
- <Mariel.Tinaco@analog.com>, Nishant Malpani <nish.malpani25@gmail.com>, Rui
- Miguel Silva <rmfrfs@gmail.com>, Linus Walleij <linusw@kernel.org>, Lorenzo
- Bianconi <lorenzo@kernel.org>, Alex Lanzano <lanzano.alex@gmail.com>,
- Jagath Jog J <jagathjog1996@gmail.com>, Jean-Baptiste Maneyrol
- <jean-baptiste.maneyrol@tdk.com>, Remi Buisson <remi.buisson@tdk.com>,
- Christian Eggers <ceggers@arri.de>, Mudit Sharma
- <muditsharma.info@gmail.com>, Javier Carrasco
- <javier.carrasco.cruz@gmail.com>, =?UTF-8?B?T25kxZllag==?= Jirman
- <megi@xff.cz>, Song Qiang <songqiang1304521@gmail.com>, Dixit Parmar
- <dixitparmar19@gmail.com>, Gerald Loacker <gerald.loacker@wolfvision.net>,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-iio@vger.kernel.org, chrome-platform@lists.linux.dev,
- linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
- imx@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH v6 4/7] iio: Rename 'sign' field to `format` in struct
- iio_scan_type
-Message-ID: <20260228175954.1f0950a1@jic23-huawei>
-In-Reply-To: <120c7f33-4ca1-4d35-ac1b-b65362f1adfc@baylibre.com>
-References: <20260225100421.2366864-1-flavra@baylibre.com>
-	<20260225101735.2368252-1-flavra@baylibre.com>
-	<120c7f33-4ca1-4d35-ac1b-b65362f1adfc@baylibre.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-pc-linux-gnu)
+	id 1vwOcJ-0000000A7xE-2LZP
+	for linux-mediatek@lists.infradead.org;
+	Sat, 28 Feb 2026 18:00:40 +0000
+Received: by mail-qt1-x82a.google.com with SMTP id d75a77b69052e-503347e8715so39609451cf.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 28 Feb 2026 10:00:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772301638; cv=none;
+        d=google.com; s=arc-20240605;
+        b=i8Bg/lhG7DzUTQi7uG+Yn+XJKqsg8MwDveYCF87LpkEJt8STaNPpdeb2aN2zzvaeBZ
+         LZr3y+sc0+xnPnXUxKCVUKK5wTsiN1T47dXiB4nRve7GRUiKEJ1AkXH2Kiw4LM/E7KSB
+         DERGoWQ+WRvyxm4ReBm4EfwNi4QsPZfkCsTXCh7a5a10dUfkm2SyyYEWkWALmJLC5BJv
+         qVaBB8Dh42W7tcbJlXoJNIzH5NEG01hwIZzDhv1W2dFaEh0UpdUuNR8YvRN4fEIsOYiO
+         2Kr9rhqA+9xftD6m6BXJrShPNODU2cOKtqQnMdMbKmOaMPT648HhnSd0jH+sR56YswM+
+         uJXw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=CzbAnz6T/IhzT60BwbsGo7FPW25EednVTt62Gcqnlt4=;
+        fh=PyE2nhqkVl3HGobVaT5Yn8fVdR6lWbePbQP7Omq8PSs=;
+        b=crXZIysdfnWlQTgC8dRzPz093AzXL6gQIuoeQVwwR53qjnzdsH3TCA4atRBg9KhVq1
+         L5XaL3gELgZ0HRmCb6nN81p1jEGIfT0UYnl8ZB7c67gitq5kBBd1VOHuKaQn5raw+n+Y
+         z8k3Jk6S3RTVyXjs0wDUGdBCY8LuPZXBMtZV2nhqIKVMOBWskpJwM3COdVa0PhA1Zl+K
+         Y6KhK+qvaqY894vnui0gWaiTiabAnAeO8olQi3Vpvs601TilY/Rgn4p7PeVwff9BOGh8
+         VKPy3R0I4YMe1F1q5GPgJiAjptaUVTIAGvFRs5dUonRcDrCdKIj/guxBxw3WVcK0I5S5
+         yVxA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1772301638; x=1772906438; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=CzbAnz6T/IhzT60BwbsGo7FPW25EednVTt62Gcqnlt4=;
+        b=Q+Ga0A3pHi2wFe4bTMQAkYzSxsqkjakjiQCZKfLsbswTfG6QGatdaYbSt2qYXTFA5d
+         7LUsUwRve9QBKrlZJh/F915hH919n5JDGz49EjXSIi2Y2OPslsL+6IOqs52irnZcK6xc
+         /OoQoRKadTP12aeNcfHTDSoX6vOqU+NqUC46+UeMw609SOGLacLo2ctQTzO3URonvkyf
+         7WiFmSl6lJwSI9K29ilGTSOLLDJXleUt/m3olYVvKXtwfEdZy7qmNJpe/dT5CZZSBywJ
+         q1RAc/Nd1srBtUmMS/n9Z+die05k6rgU1fKHtPGIp53gPD70TK1kyQVxp/z07xDHwxf+
+         bPSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772301638; x=1772906438;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=CzbAnz6T/IhzT60BwbsGo7FPW25EednVTt62Gcqnlt4=;
+        b=QeYgHGK1SByJGW/UEd1r/aIdoQJkGOGnth8bsx/kV4WLEAlvEvjwWUAyxsw6YnBjFv
+         5JHDrsQkB0b+1JDk3kMJG0ZDZqR2rYXdbydwRF7ykjXPGBUYh6ozCHCaNTPoKM5dUHIs
+         zYysZxVAUA885Tsr33+wGeSa88KFeToY7pqNHbz7KizncZSaJUOmr7g1fErt1bTMs+6X
+         MnjfUZrhtqDaRGdn/IBYObFN1KR+xlWXW63feJukZ34uyn1sciUl+8yV8WFud9UpcoLA
+         IxJZT7ULbkIUQE6mJK+zRfv9MZPiotfBLzZLss8FUCN3lOLUEmaGh5UmJRAOkArKSDlv
+         QUfA==
+X-Forwarded-Encrypted: i=1; AJvYcCUnbcXkYmyvW2polqHp9LOod3oydpXmYoXtJlkHcNcAR22LO8O9FC5x7CwAFufGpdWftYC4BBUXKfk6HKx+9g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy3f2Ns28GuILUndU4pA+jnyNE5srTC0KEGF9HjgVimljv0cG92
+	ach/crjMOk1FsNIvxfqz4bNSaNcCnUQEjcfh+VWk2bJS5jEl+o3pDd8/o7DBZCTGtzff1Z0jv9u
+	RmNCf29noeGX4y27IpXKdDtFjVXP0M1E=
+X-Gm-Gg: ATEYQzwqJBdbN+/TrAKBRa/9BHYFOr0UwoLCUsn+zqueBv81g3oPsdsSAkFMLlgkXXr
+	L/DRkk/m9xnkU/qc4ZRejpiX6pgRuQQLmpxr9TrumAbKvbX3MWemp1681OA/f5EfLlKm0BaTE9E
+	siZnGraLx/RDmSj0aeJyJIItLBLTlehlLekh9ngLzxn6nrbQDfvv7dwL8YcO0eHM+jtv30mAERI
+	v23F7ZHyQgCphOAlJdNuKHee51G56GCAkD6SCxSNfZo+Qk/ATE80Lc239Y8g4ma5w+fRC4J1ywm
+	XhlvPuMnu+enzAnvYj+wd2Hc
+X-Received: by 2002:ac8:5f4c:0:b0:4ff:b211:6aa6 with SMTP id
+ d75a77b69052e-50752796176mr90990561cf.27.1772301637636; Sat, 28 Feb 2026
+ 10:00:37 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+References: <20260111092833.466263-1-akkun11.open@gmail.com> <6a499e1a-80fe-4fc3-af77-b5d31f689d7f@collabora.com>
+In-Reply-To: <6a499e1a-80fe-4fc3-af77-b5d31f689d7f@collabora.com>
+From: Akari Tsuyukusa <akkun11.open@gmail.com>
+Date: Sun, 1 Mar 2026 03:00:26 +0900
+X-Gm-Features: AaiRm512V9E6SYs2_Yyac0rJXDDdrcUO_TD7gqKE_u9D1yEofE0XT1GKOLrzGEk
+Message-ID: <CAKr_iV40A8=8e4Bqez-mbq6Jt+ZVNH=Vbvk1mQPZq1Z_feu+ng@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: common-v1: introduce per-function
+ multibase control
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	"moderated list:PIN CONTROLLER - MEDIATEK" <linux-mediatek@lists.infradead.org>, 
+	"open list:PIN CONTROL SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_100031_443057_2A1FA77A 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20260228_100039_600840_2ED5DD48 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,30 +121,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 25 Feb 2026 15:27:01 -0600
-David Lechner <dlechner@baylibre.com> wrote:
+On Mon, Jan 12, 2026 at 5:31=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+> Thanks for the patch!
+> What you're saying here makes a lot of sense, but there's one big questio=
+n for you.
+>
+> Have you considered migrating those pinctrl drivers to use a PIN_FIELD_BA=
+SE()
+> like it's being done for all other(/newer) MediaTek SoCs?
+>
+> Why would this not be applicable for those old ones?
 
-> On 2/25/26 4:17 AM, Francesco Lavra wrote:
-> > This field is used to differentiate between signed and unsigned integers.
-> > A following commit will extend its use to in order to add support for non-
-> > integer scan elements; therefore, change its name from 'sign' to a more
-> > generic 'format'.
-> >   
-> 
-> Maybe Jonathan is OK with doing this all at once, but another alternative
-> could be to introduce a union to allow both names at the same time, then
-> we could make the change more gradually.
+Hi Angelo,
 
-Please do the union for v7.  Not so much because I mind a global change, but
-more because the chances of merge conflicts are too high.
+Thanks for your review and sorry for the too late response.
 
-Perhaps for this series just introduce the union and use it in the driver
-here. We can then chase it through the rest of the tree as a separate step.
+I am developing the pinctrl driver for MT6589 and initially based
+it on the MT8135 driver, because those two SoCs are very similar.
+However, I realized that the hard-coded multi-base settings in v1
+are not compatible with MT6589, which led me to create this patch.
 
-Alternatively leave it with a misleading name for now (so allow 'f' to be a
-magic sign value) and we can do the rename as a follow up.
+After looking at v2, it seems likely compatible with MT6589 as well,
+so I will proceed with my development based on v2.
 
-Jonathan
+Also, this patch has two flaws:
 
+- It hard-codes the behavior of mt8365_set_clr_mode, which would
+  cause issues if there are other SoCs similar to MT8365.
+- spec_ies_smt_set expects the IES and SMT registers to be on the same
+  base; if an SoC does not follow this, additional handling will be require=
+d.
 
+Please ignore this patch for now.
+
+Best regards,
+Akari
 
