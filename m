@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B34DFD0045
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:31:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00F7DFD0045
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=3/VQHvioMjRLeeMfGwnAqFgQG1gY75vK9k/qo3JPhl0=; b=4pDbhe0oQ8zXOOl9XiwFIArO7G
-	9tRIoSaIXStQ+v0Q/QfdxgfGHoyp+1rCMynHLeXzzu4B/zzMCjw5jWQMgE2sgtrLQNGj4Bf6CnG1c
-	HHj5nnBJ30fq54y4f1cqvsKAVv9bSPTazW5UQKp5WMsPLLCrrH+KDyAmo9QxtaQy8H2gJmliNqqly
-	iWHJxX4zITaT+19Z/Fgkk3UG0bbUXU0TXhUKzlPbYHVncZudjoszYFGPCDdzP7vUgJJUowZDDAMHi
-	C1qwnT1gjbSINr3wK3FIuYJ9yZQ2Xzk85L/vukBtxqpth/ywc6ftwJHNKmA15pRWHpO0z47D2MweB
-	r8WTSUOg==;
+	bh=khzfhxSUW7CG7c3d8rNWnA9kgIragG/BMQPtGIMiFnU=; b=TKppRtDNdHuD8//rQQEDWsWwgc
+	1AZFeJ8upRZKVX2lK0iDn5JaPjlP6QlGZ0snrU1lCz1PVvOK4+34zTHGyP2D7rXDJQnXjZdU4b86q
+	lWwQvGtwnla7lv63DdY5NwfIbxT5b7frq4Fsdf8L2cudWcBoIwY28MqHZI2SVNJHdiOgfQiwZqEqs
+	1QKCCOpkLYReppRUJVnxpmx3jbYEvGroBU2n8YqsOSixi0lCd34vrYw+K+hv3iYuggXKZfXxLXa/4
+	IMTIuudn8EmFoOViSeQD3T/PEhQCD7jQkXu9jzTLFFReMsfRZpdsHXAKg2QU6uANNKlGT7TyLEOn1
+	ME/lNnkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVeh-0000000AYXL-0nXz;
-	Sun, 01 Mar 2026 01:31:35 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vwVjM-0000000AaSq-2s7I;
+	Sun, 01 Mar 2026 01:36:24 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVeE-0000000AY2w-1ieu;
-	Sun, 01 Mar 2026 01:31:10 +0000
+	id 1vwVjJ-0000000AaPw-2kpX;
+	Sun, 01 Mar 2026 01:36:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 204C041A31;
-	Sun,  1 Mar 2026 01:31:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F372C19421;
-	Sun,  1 Mar 2026 01:31:05 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 3A77E401CC;
+	Sun,  1 Mar 2026 01:36:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E136C19421;
+	Sun,  1 Mar 2026 01:36:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772328666;
-	bh=h2ill5+uxEeNEWUBCmyv1vIpyevnt2AvWrn381YkCOQ=;
+	s=k20201202; t=1772328981;
+	bh=tRcoHPL1SnJU0xLlCrcYeFzmKPCMpkkyxCC7E+YL23Q=;
 	h=From:To:Cc:Subject:Date:From;
-	b=cmWlr0xqJa2zZaM2d+KrOvikxKVvwvhn75/4k1OH1NkHU3+2AYFYEWUR1dDkNJRuu
-	 tB8bDxAZG2ay0HCAiOtlFnaDAebYWsehceVD8ynN6nI0fsv1bNQjtPrJJXg4NeQBJj
-	 GpbYP6rBKEN1Rr0+borouxuKP8pTRJPBQWjiG8jj3UFt3qdLuotKkJCbozN0NCKTfB
-	 0y9fIyXGzGAdmz5KCaDEvkKwMSxMZNsbMFqogrbiM0Jb1MQmfP2BBll0yqZfWGHnFn
-	 b7dk6oYMnMSK51/TOU5rHBwNXe5d3gohO+c0r+/I4ZP353oVm8dvd3kIzfCObhdLWh
-	 HgJNx+inQDH+g==
+	b=Lw8VzEQoN8fC/NrFfeDjHTHBOXIrjM6u2Z3sCo8oZC3oTI1uevOANXWGD2gy8fAIL
+	 hkQe7670ICAroJZxd40NP76fsD341ICkWZe4J2ng6A3gTGT3IAtU1pTocv88BxlMUM
+	 YdcSEeyiW4UPNU3xllzvCIyfFG32cJ7Jq4jEBcTskKhwiD+3BH+osEKzppJKi+paOB
+	 qy+NN6lwlEKJRaNVG7ueXuLZXMRVyWbTbtQFlwbCSioNTQ6kLACjmB4EfkdfZvMceU
+	 0dVOYMzBvl7iDBpCWDEa+LvVFM2CL/Ej1JPRQY+4AHEMOEBuUfSkVuVcNKwRgQCFVt
+	 vcD6UXONojG5Q==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
-	haoxiang_li2024@163.com
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	linux-media@vger.kernel.org,
+	thomasyen@google.com
+Cc: Peter Wang <peter.wang@mediatek.com>,
+	Bart Van Assche <bvanassche@acm.org>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
+	linux-scsi@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: FAILED: Patch "media: mtk-mdp: Fix a reference leak bug in mtk_mdp_remove()" failed to apply to 6.6-stable tree
-Date: Sat, 28 Feb 2026 20:31:03 -0500
-Message-ID: <20260301013104.1689436-1-sashal@kernel.org>
+Subject: FAILED: Patch "scsi: ufs: core: Flush exception handling work when RPM level is zero" failed to apply to 6.6-stable tree
+Date: Sat, 28 Feb 2026 20:36:18 -0500
+Message-ID: <20260301013619.1696250-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
 X-stable: review
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_173107_289478_47878074 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20260228_173621_718230_63166253 
+X-CRM114-Status: GOOD (  14.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,35 +85,49 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From f128bab57b8018e526b7eda854ca20069863af47 Mon Sep 17 00:00:00 2001
-From: Haoxiang Li <haoxiang_li2024@163.com>
-Date: Wed, 8 Oct 2025 17:01:56 +0800
-Subject: [PATCH] media: mtk-mdp: Fix a reference leak bug in mtk_mdp_remove()
+From f8ef441811ec413717f188f63d99182f30f0f08e Mon Sep 17 00:00:00 2001
+From: Thomas Yen <thomasyen@google.com>
+Date: Fri, 30 Jan 2026 00:51:51 +0800
+Subject: [PATCH] scsi: ufs: core: Flush exception handling work when RPM level
+ is zero
 
-In mtk_mdp_probe(), vpu_get_plat_device() increases the reference
-count of the returned platform device. Add platform_device_put()
-to prevent reference leak.
+Ensure that the exception event handling work is explicitly flushed during
+suspend when the runtime power management level is set to UFS_PM_LVL_0.
 
-Fixes: c8eb2d7e8202 ("[media] media: Add Mediatek MDP Driver")
-Cc: stable@vger.kernel.org
-Signed-off-by: Haoxiang Li <haoxiang_li2024@163.com>
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
+When the RPM level is zero, the device power mode and link state both
+remain active. Previously, the UFS core driver bypassed flushing exception
+event handling jobs in this configuration. This created a race condition
+where the driver could attempt to access the host controller to handle an
+exception after the system had already entered a deep power-down state,
+resulting in a system crash.
+
+Explicitly flush this work and disable auto BKOPs before the suspend
+callback proceeds. This guarantees that pending exception tasks complete
+and prevents illegal hardware access during the power-down sequence.
+
+Fixes: 57d104c153d3 ("ufs: add UFS power management support")
+Signed-off-by: Thomas Yen <thomasyen@google.com>
+Cc: Stable Tree <stable@vger.kernel.org>
+Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Link: https://patch.msgid.link/20260129165156.956601-1-thomasyen@google.com
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 ---
- drivers/media/platform/mediatek/mdp/mtk_mdp_core.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/ufs/core/ufshcd.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-index f78fa30f18648..8432833814f31 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-@@ -254,6 +254,7 @@ static void mtk_mdp_remove(struct platform_device *pdev)
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 66223d2908532..8349fe2090db6 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -9998,6 +9998,8 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
  
- 	pm_runtime_disable(&pdev->dev);
- 	vb2_dma_contig_clear_max_seg_size(&pdev->dev);
-+	platform_device_put(mdp->vpu_dev);
- 	mtk_mdp_unregister_m2m_device(mdp);
- 	v4l2_device_unregister(&mdp->v4l2_dev);
+ 	if (req_dev_pwr_mode == UFS_ACTIVE_PWR_MODE &&
+ 			req_link_state == UIC_LINK_ACTIVE_STATE) {
++		ufshcd_disable_auto_bkops(hba);
++		flush_work(&hba->eeh_work);
+ 		goto vops_suspend;
+ 	}
  
 -- 
 2.51.0
