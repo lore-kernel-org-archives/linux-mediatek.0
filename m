@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B18FD0048
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:19:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B67EFD004A
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:19:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=D8Trzem/9eAa12Dr2yVKCWeE7WHg5H40aGbdkzbgUNA=; b=AOJX9Yt8XLPfuegMwkmp+i/ysV
-	/DBZjI2hIC6ATLQ6LRutuBg//voS7KwsR7nHQh6O1p107c8mW+gL8eRW4c6QbnK9jORT9BxMQs+hS
-	Lc7xZF8VPBTJapKvybI0uZ6bOZg8+YLySwMekXeRkVMgdkrTe6UL8PWxPGYusQHJGp1aTBosun3ak
-	a/bQTZz/0aGUT6/AsMJww1rlVuLFEkqLJ8D5oKardJQ9kAmiwivINGC+3pfNZ+swyVeBQSD1WOGVT
-	NkaX4hU0yCPkVbqtDs5MbmwUPF7jfg98oOHpBkKYD12n4hbTVXrOVr6Rx3tJeU5i5fcIwHM/JVuEL
-	XFilLBJg==;
+	bh=sH2DzjOb4l8MBqMIIB7Xnv5uaPZIg2fQTKg19kF7Yi0=; b=U80CEYVAHsGtmkE+lQVD5CLg5T
+	RgmZ5OBh3mpvf1QN2s0D/tU4ey/ThFk1HtpLIqJbacJMmJ/ZDVZKiRhep2uzTEzoHvK1nTSpzXKkh
+	SwpCQ7r1El8Ey+O6Vzz2mfqwh4yoi7asDfSkaBWM8qvL8VyMHznXbzsXB7q4NsB9xrQe1kCqnRZBo
+	4lt4tv3AiHiBfgqufHaaYiODFgmOvJavRXMX3go+wLa9M4bdlEFRb7exKCOyw9+o5hTUySF9UsKcV
+	hqyc/VAtouRnq5Y6JqZmVQC9enibPG0KlCr9vA/nfgpo+nGi3NR6xzQPwpdnU8gOdD5FXqnq7RpQh
+	/ZsGzt+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVSp-0000000ATMp-1yVH;
-	Sun, 01 Mar 2026 01:19:19 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vwVT6-0000000ATe2-1hyE;
+	Sun, 01 Mar 2026 01:19:36 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVSm-0000000ATJB-0DIX;
-	Sun, 01 Mar 2026 01:19:16 +0000
+	id 1vwVSq-0000000ATNn-2V2D;
+	Sun, 01 Mar 2026 01:19:30 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 77B6D60008;
-	Sun,  1 Mar 2026 01:19:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 71F7CC19421;
-	Sun,  1 Mar 2026 01:19:14 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1E61840704;
+	Sun,  1 Mar 2026 01:19:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C6C9C19421;
+	Sun,  1 Mar 2026 01:19:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772327955;
-	bh=QygN+tm7vRSe8PUAkQZiS9VT5srWgie0sJ/PkT7UXz8=;
+	s=k20201202; t=1772327960;
+	bh=KSlzvPMcPdroCRP7Ne2TmImOphnHGVDI27z0Kahl+9A=;
 	h=From:To:Cc:Subject:Date:From;
-	b=EDQeAipZHndMtgd90fWDOyId6frQBTscRZEFh6A78uPpi7a3rmND4mJHkY70RLr++
-	 6dZLn4y7ydRCM80nW8PVk/gtEp3RPF3jqbOoG3t4N5CRym37T8C8/VDWbwO90+n7tB
-	 EiVfdXPIGUlFWYehbUL/Vx0HFy6hx+P9ox4hx5fID0SGwlIxlHM/Kz8W8BO90LZKdW
-	 WDBKgZzLaI/DC1FkQfTqk2BU2Drir4pdSkjNkbbonKoSg31GRctQIt8cpXgfS4enzD
-	 +QindDpm/wsfmquXgEGKTbvPAdrhqnfB1RpeTpILTNtZkeq+3jWdi1VomCTCxdRHqx
-	 +UdJrxWCKh5cQ==
+	b=ggc64fzMGsuekE/SfKhDa/bqLNNTNq9trPciRySyaTnuxcQYhJLWq9hxg2AP/5ZvH
+	 3GU1I1l1eURupXzgzT7khO1kMUxLuifQfwVyx8ks/bgRIMAhdFvu5JCeIz9kd5kQ/6
+	 VAzwHMJx5KY83JZRqJRJa5BmNEMFm78SAOyenxEAmzWUsw3gOtBuXj6QgEq6cHsp+p
+	 /22ooXH/gSY3pjbi40YpJZ8/t1P4XssupEZudH3sOJeZAH+uGi4YpABHkX/tZScGcN
+	 kIoIxWEWEf5D4q9l2rryF1KF778MSw8VGQ4tiiRQ94dnqbHut4eU88BJ0AcgSp3JYf
+	 cxmmYBbUt176g==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
 	haoxiang_li2024@163.com
@@ -49,14 +49,17 @@ Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
 	linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: FAILED: Patch "media: mtk-mdp: Fix a reference leak bug in mtk_mdp_remove()" failed to apply to 6.12-stable tree
-Date: Sat, 28 Feb 2026 20:19:13 -0500
-Message-ID: <20260301011913.1674123-1-sashal@kernel.org>
+Subject: FAILED: Patch "media: mtk-mdp: Fix error handling in probe function" failed to apply to 6.12-stable tree
+Date: Sat, 28 Feb 2026 20:19:17 -0500
+Message-ID: <20260301011918.1674237-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
 X-stable: review
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260228_171920_744410_F4AC9FB2 
+X-CRM114-Status: GOOD (  14.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,14 +84,18 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From f128bab57b8018e526b7eda854ca20069863af47 Mon Sep 17 00:00:00 2001
+From 8a8a3232abac5b972058a5f2cb3e33199d2a8648 Mon Sep 17 00:00:00 2001
 From: Haoxiang Li <haoxiang_li2024@163.com>
-Date: Wed, 8 Oct 2025 17:01:56 +0800
-Subject: [PATCH] media: mtk-mdp: Fix a reference leak bug in mtk_mdp_remove()
+Date: Wed, 8 Oct 2025 16:55:03 +0800
+Subject: [PATCH] media: mtk-mdp: Fix error handling in probe function
 
-In mtk_mdp_probe(), vpu_get_plat_device() increases the reference
-count of the returned platform device. Add platform_device_put()
-to prevent reference leak.
+Add mtk_mdp_unregister_m2m_device() on the error handling path to prevent
+resource leak.
+
+Add check for the return value of vpu_get_plat_device() to prevent null
+pointer dereference. And vpu_get_plat_device() increases the reference
+count of the returned platform device. Add platform_device_put() to
+prevent reference leak.
 
 Fixes: c8eb2d7e8202 ("[media] media: Add Mediatek MDP Driver")
 Cc: stable@vger.kernel.org
@@ -96,19 +103,52 @@ Signed-off-by: Haoxiang Li <haoxiang_li2024@163.com>
 Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
 ---
- drivers/media/platform/mediatek/mdp/mtk_mdp_core.c | 1 +
- 1 file changed, 1 insertion(+)
+ .../media/platform/mediatek/mdp/mtk_mdp_core.c   | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-index f78fa30f18648..8432833814f31 100644
+index 80fdc6ff57e0e..f78fa30f18648 100644
 --- a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
 +++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-@@ -254,6 +254,7 @@ static void mtk_mdp_remove(struct platform_device *pdev)
+@@ -194,11 +194,17 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+ 	}
  
- 	pm_runtime_disable(&pdev->dev);
- 	vb2_dma_contig_clear_max_seg_size(&pdev->dev);
+ 	mdp->vpu_dev = vpu_get_plat_device(pdev);
++	if (!mdp->vpu_dev) {
++		dev_err(&pdev->dev, "Failed to get vpu device\n");
++		ret = -ENODEV;
++		goto err_vpu_get_dev;
++	}
++
+ 	ret = vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp,
+ 				  VPU_RST_MDP);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to register reset handler\n");
+-		goto err_m2m_register;
++		goto err_reg_handler;
+ 	}
+ 
+ 	platform_set_drvdata(pdev, mdp);
+@@ -206,7 +212,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+ 	ret = vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to set vb2 dma mag seg size\n");
+-		goto err_m2m_register;
++		goto err_reg_handler;
+ 	}
+ 
+ 	pm_runtime_enable(dev);
+@@ -214,6 +220,12 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+ 
+ 	return 0;
+ 
++err_reg_handler:
 +	platform_device_put(mdp->vpu_dev);
- 	mtk_mdp_unregister_m2m_device(mdp);
++
++err_vpu_get_dev:
++	mtk_mdp_unregister_m2m_device(mdp);
++
+ err_m2m_register:
  	v4l2_device_unregister(&mdp->v4l2_dev);
  
 -- 
