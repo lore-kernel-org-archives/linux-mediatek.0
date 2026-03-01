@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B67EFD004A
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:19:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53CD4FD0049
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:19:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sH2DzjOb4l8MBqMIIB7Xnv5uaPZIg2fQTKg19kF7Yi0=; b=U80CEYVAHsGtmkE+lQVD5CLg5T
-	RgmZ5OBh3mpvf1QN2s0D/tU4ey/ThFk1HtpLIqJbacJMmJ/ZDVZKiRhep2uzTEzoHvK1nTSpzXKkh
-	SwpCQ7r1El8Ey+O6Vzz2mfqwh4yoi7asDfSkaBWM8qvL8VyMHznXbzsXB7q4NsB9xrQe1kCqnRZBo
-	4lt4tv3AiHiBfgqufHaaYiODFgmOvJavRXMX3go+wLa9M4bdlEFRb7exKCOyw9+o5hTUySF9UsKcV
-	hqyc/VAtouRnq5Y6JqZmVQC9enibPG0KlCr9vA/nfgpo+nGi3NR6xzQPwpdnU8gOdD5FXqnq7RpQh
-	/ZsGzt+A==;
+	bh=iJL83f8cS0Lz/WOv2T3PTU5omALFvJoW166BCUPl9S8=; b=idViRYpQjKkYWrdnAw39F/RgyP
+	JSmBl33UO8kxDZXEs3+HMMk+GVF6LXvdiFQxU5uoIdupjDdJKDm9VaUHaOS8pVwNsxgt/bf5WmBKr
+	7feHnusjmSB4yzE8TNp5pUX5L/ccqrVlngIdsDvTkth0qfii8wdusQU51YaWbwMsqQnxdHfLx6aLL
+	//n98UFhf8na1PJQXdR4QKVT7DbfY7JGhRfUUO2WJuWj3FoqfNqqWtsCELm56Xtn1hGrrpDUCvIKN
+	1vN2i8GRFUqttFjHCULyQvPvCyWmEB/NdokPo9vQhYniN8nOYzjCLUnBok9s/qINUDBv0Yusn78/5
+	UqQnebFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVT6-0000000ATe2-1hyE;
-	Sun, 01 Mar 2026 01:19:36 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vwVT7-0000000ATg7-3a4I;
+	Sun, 01 Mar 2026 01:19:37 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVSq-0000000ATNn-2V2D;
-	Sun, 01 Mar 2026 01:19:30 +0000
+	id 1vwVSt-0000000ATPe-0Y9Y;
+	Sun, 01 Mar 2026 01:19:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1E61840704;
-	Sun,  1 Mar 2026 01:19:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C6C9C19421;
-	Sun,  1 Mar 2026 01:19:19 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A913040877;
+	Sun,  1 Mar 2026 01:19:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4CD2C19421;
+	Sun,  1 Mar 2026 01:19:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772327960;
-	bh=KSlzvPMcPdroCRP7Ne2TmImOphnHGVDI27z0Kahl+9A=;
+	s=k20201202; t=1772327962;
+	bh=LdcG8ETEviyuXaC2W+MfMsfj/WLomJKJaGZKqWIdFj0=;
 	h=From:To:Cc:Subject:Date:From;
-	b=ggc64fzMGsuekE/SfKhDa/bqLNNTNq9trPciRySyaTnuxcQYhJLWq9hxg2AP/5ZvH
-	 3GU1I1l1eURupXzgzT7khO1kMUxLuifQfwVyx8ks/bgRIMAhdFvu5JCeIz9kd5kQ/6
-	 VAzwHMJx5KY83JZRqJRJa5BmNEMFm78SAOyenxEAmzWUsw3gOtBuXj6QgEq6cHsp+p
-	 /22ooXH/gSY3pjbi40YpJZ8/t1P4XssupEZudH3sOJeZAH+uGi4YpABHkX/tZScGcN
-	 kIoIxWEWEf5D4q9l2rryF1KF778MSw8VGQ4tiiRQ94dnqbHut4eU88BJ0AcgSp3JYf
-	 cxmmYBbUt176g==
+	b=PLqKCtmQ4pEQ1iXzYwdXkrmUQ9o8lXfboU/YdzR6O6wokpTbKtoJ8JH/VKo2yN9rO
+	 ff0ofNOqXnQsfuYuqdQZVf5LVNJKIzENxeTgPDY0D9doMdKi7Gm9cxEwbCP/JLUNcC
+	 Gd24uxT0LzRDZ3ZaZdkiVD9y7/QXx73YNs7DE9C+gWuAYYIFrlqQtOIGZM7EykOTCy
+	 Ady+ZzteoG1EEh1Q5gTHK2EdYRiYECVyGNhJq9ST5aG/Jip6H+EKhwMrtNHwkXq2W7
+	 bZSArM/S5gxAawqSS5GnnfTQkeFm7RIhiT3jt6KwEd6KOULctEiBlrsSCyR0NxmyRK
+	 lQRLJ1tQLMu8A==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
-	haoxiang_li2024@163.com
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	irui.wang@mediatek.com
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
 	Hans Verkuil <hverkuil+cisco@kernel.org>,
 	linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: FAILED: Patch "media: mtk-mdp: Fix error handling in probe function" failed to apply to 6.12-stable tree
-Date: Sat, 28 Feb 2026 20:19:17 -0500
-Message-ID: <20260301011918.1674237-1-sashal@kernel.org>
+Subject: FAILED: Patch "media: mediatek: encoder: Fix uninitialized scalar variable issue" failed to apply to 6.12-stable tree
+Date: Sat, 28 Feb 2026 20:19:20 -0500
+Message-ID: <20260301011920.1674351-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
 X-stable: review
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_171920_744410_F4AC9FB2 
-X-CRM114-Status: GOOD (  14.29  )
+X-CRM114-CacheID: sfid-20260228_171923_243737_A9A3AFB3 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,73 +85,58 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From 8a8a3232abac5b972058a5f2cb3e33199d2a8648 Mon Sep 17 00:00:00 2001
-From: Haoxiang Li <haoxiang_li2024@163.com>
-Date: Wed, 8 Oct 2025 16:55:03 +0800
-Subject: [PATCH] media: mtk-mdp: Fix error handling in probe function
+From 88e935de7cf8795d7a6a51385db87ecb361a7050 Mon Sep 17 00:00:00 2001
+From: Irui Wang <irui.wang@mediatek.com>
+Date: Sun, 7 Sep 2025 17:35:56 +0800
+Subject: [PATCH] media: mediatek: encoder: Fix uninitialized scalar variable
+ issue
 
-Add mtk_mdp_unregister_m2m_device() on the error handling path to prevent
-resource leak.
+UNINIT checker finds some instances of variables that are used
+without being initialized, for example using the uninitialized
+value enc_result.is_key_frm can result in unpredictable behavior,
+so initialize these variables after declaring.
 
-Add check for the return value of vpu_get_plat_device() to prevent null
-pointer dereference. And vpu_get_plat_device() increases the reference
-count of the returned platform device. Add platform_device_put() to
-prevent reference leak.
-
-Fixes: c8eb2d7e8202 ("[media] media: Add Mediatek MDP Driver")
+Fixes: 4e855a6efa54 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Encoder Driver")
 Cc: stable@vger.kernel.org
-Signed-off-by: Haoxiang Li <haoxiang_li2024@163.com>
+Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
 ---
- .../media/platform/mediatek/mdp/mtk_mdp_core.c   | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+ .../media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-index 80fdc6ff57e0e..f78fa30f18648 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-@@ -194,11 +194,17 @@ static int mtk_mdp_probe(struct platform_device *pdev)
- 	}
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+index 6faf3f659e751..b3a0a1d8b7a8e 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+@@ -850,7 +850,7 @@ static void vb2ops_venc_buf_queue(struct vb2_buffer *vb)
+ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
+ {
+ 	struct mtk_vcodec_enc_ctx *ctx = vb2_get_drv_priv(q);
+-	struct venc_enc_param param;
++	struct venc_enc_param param = { };
+ 	int ret;
+ 	int i;
  
- 	mdp->vpu_dev = vpu_get_plat_device(pdev);
-+	if (!mdp->vpu_dev) {
-+		dev_err(&pdev->dev, "Failed to get vpu device\n");
-+		ret = -ENODEV;
-+		goto err_vpu_get_dev;
-+	}
-+
- 	ret = vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp,
- 				  VPU_RST_MDP);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Failed to register reset handler\n");
--		goto err_m2m_register;
-+		goto err_reg_handler;
- 	}
+@@ -1004,7 +1004,7 @@ static int mtk_venc_encode_header(void *priv)
+ 	int ret;
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+ 	struct mtk_vcodec_mem bs_buf;
+-	struct venc_done_result enc_result;
++	struct venc_done_result enc_result = { };
  
- 	platform_set_drvdata(pdev, mdp);
-@@ -206,7 +212,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
- 	ret = vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
- 	if (ret) {
- 		dev_err(&pdev->dev, "Failed to set vb2 dma mag seg size\n");
--		goto err_m2m_register;
-+		goto err_reg_handler;
- 	}
+ 	dst_buf = v4l2_m2m_dst_buf_remove(ctx->m2m_ctx);
+ 	if (!dst_buf) {
+@@ -1125,7 +1125,7 @@ static void mtk_venc_worker(struct work_struct *work)
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+ 	struct venc_frm_buf frm_buf;
+ 	struct mtk_vcodec_mem bs_buf;
+-	struct venc_done_result enc_result;
++	struct venc_done_result enc_result = { };
+ 	int ret, i;
  
- 	pm_runtime_enable(dev);
-@@ -214,6 +220,12 @@ static int mtk_mdp_probe(struct platform_device *pdev)
- 
- 	return 0;
- 
-+err_reg_handler:
-+	platform_device_put(mdp->vpu_dev);
-+
-+err_vpu_get_dev:
-+	mtk_mdp_unregister_m2m_device(mdp);
-+
- err_m2m_register:
- 	v4l2_device_unregister(&mdp->v4l2_dev);
- 
+ 	/* check dst_buf, dst_buf may be removed in device_run
 -- 
 2.51.0
 
