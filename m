@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42FE5FD0048
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:48:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78E31FD0045
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:49:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JleOjiTgCj0mggOej+8j5CAkFXuCBc6Z/GYo/Gd4irU=; b=GZ9+uJbC2nVZhpSgvvgbTkEYdE
-	5BOQCp6AHQZ8IZOexnPOcHXAsRnddGLT3LedVtDMGKrb1OasJomqGv82dCoXkLoDLKYah73WpQYO+
-	44FVUVdDEhAg9wewrv3f4Ax3KkNhCYilD+kXm9TfYtT+P0PmfG+gpqPlZK+dd8q+XN0SgEelJwhRN
-	fpxgyjxmyLhjlIrZxODmL3yQw75j1dupuBXKDbCBwDNcmxPe13mrVPPl7is4U0teAHIg6bEfq9DXW
-	ILbyR5k+FlQ+ayQq7Cl7v6nofa2D1vYGOwtkp9crMhDAN1D6CBdhV/nu0Of+avS9L9MKhD1/Q9Hq2
-	gePMFZpg==;
+	bh=NFYfhDd+ayTpDy6nItMDakEyu2TYgkAEGdoB7TOSu6w=; b=4hX3o5cGdymH8moXrDiz7bxdQQ
+	S8MCp05l1dp1QXxGE084KRFppmJj82eNLeuZ3xvKLL9mzBbkwdXhR7isU2uIXCf/rzvgOKjkiZgOT
+	Du9Tdyw6A810+nTdFvQG64E43zUlNJSkRF1BebGmFep3eyXESZIopr5wDZamINPgBprB26e24yhaS
+	BwG6Kl7DWqeyVhnnoVf/nNzXv5KyAmPzR+9iunOLeBp/Kx6TLNr9n/KkQUBwdhVgr+/CxPb2cFKFT
+	uTxqXQ0M2BgZEo2kwK1627d6MPkPDuFx6F901WAThpedl25nCVUuX7cZP8d0k/azAptM4Gn3Bu8Nn
+	n8WPnKdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVvA-0000000Aear-44LY;
-	Sun, 01 Mar 2026 01:48:36 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vwVvX-0000000Aeqy-1gbg;
+	Sun, 01 Mar 2026 01:48:59 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVv7-0000000AeYh-00Fm;
-	Sun, 01 Mar 2026 01:48:34 +0000
+	id 1vwVvU-0000000Aenu-3C7a;
+	Sun, 01 Mar 2026 01:48:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7939B432D0;
-	Sun,  1 Mar 2026 01:48:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 96AA8C19421;
-	Sun,  1 Mar 2026 01:48:31 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4D679419D5;
+	Sun,  1 Mar 2026 01:48:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 531B4C19421;
+	Sun,  1 Mar 2026 01:48:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772329712;
-	bh=GnqiyrPx6H54np56kyfyEaN9ZySH9ie2NjzrGMOZrMw=;
+	s=k20201202; t=1772329736;
+	bh=rxfTxbtwrgdancJY4TBm3Adtj0yAsfVePPXz9bmO6bI=;
 	h=From:To:Cc:Subject:Date:From;
-	b=vGp5B7Jka3rukB9f2fURsBdnxL0Mlek7rZ/t0Xby71h/8FpHxDy/mDfUETCMNNclA
-	 nrjVHU51VY5DgewqRhn3XJJJ2R1cq9aQE6LkeCL/l3Rg899NgYZM5MpqwG0NpD4hb0
-	 FTh5d/Ft3bbNMjMiwOuADOLfgTaksiETqMYMxzW0GqkxgZ8Dg5izZHO88TlYCvg0VQ
-	 b7Kjcsegg+TiyfErc/KmW0XA3HdTejkwQihB+ciVrbhXXJugAZLE0xtznUuiLOTreK
-	 LW8fM8pc0J+ulCe3E9XtSBKtobmRR6U0JAi4XobC342G+IaWXuLjBpJpJuagnY+dbI
-	 zY1MOi/uJYG8g==
+	b=bOgAv1lhcW1Rv5e4pUerxzX2ZrojjzqZO/UgGfK7aue0p62DbK+vqeTUlIkEZqPNG
+	 E3Ogl3xQsz7y5Wu7nNEvsjK2qysRcQpHpCVse2GECZi+at4y4737CB35Nr66zazHD7
+	 udjKE02gHqNKsw0CRVsyaUdqjWRVvD7LdsGklCboIMXPOL7fGltZ12UQ2vAv7xScPh
+	 QVFU959pfGMEmGpDzmghQY9WFnsIy29FjBi+YOW9ZhP2nrUJh4rf/xi9ah9zJ0UdS4
+	 rVe8RuAhpxtCPJb4J/8CJqEKfDKvMKXtG3dd+08GS25Xufy18CvLrAfkt+/0hllZtN
+	 erhGTZjWNcowA==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
-	johan@kernel.org
-Cc: Yong Wu <yong.wu@mediatek.com>,
-	Miaoqian Lin <linmq006@gmail.com>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: FAILED: Patch "memory: mtk-smi: fix device leak on larb probe" failed to apply to 5.15-stable tree
-Date: Sat, 28 Feb 2026 20:48:30 -0500
-Message-ID: <20260301014830.1712707-1-sashal@kernel.org>
+	irui.wang@mediatek.com
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	linux-media@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: FAILED: Patch "media: mediatek: encoder: Fix uninitialized scalar variable issue" failed to apply to 5.15-stable tree
+Date: Sat, 28 Feb 2026 20:48:53 -0500
+Message-ID: <20260301014854.1713189-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
 X-stable: review
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_174833_584080_BD71A660 
-X-CRM114-Status: GOOD (  12.06  )
+X-CRM114-CacheID: sfid-20260228_174856_842133_70B9B2A4 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,40 +85,58 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From 9dae65913b32d05dbc8ff4b8a6bf04a0e49a8eb6 Mon Sep 17 00:00:00 2001
-From: Johan Hovold <johan@kernel.org>
-Date: Fri, 21 Nov 2025 17:46:23 +0100
-Subject: [PATCH] memory: mtk-smi: fix device leak on larb probe
+From 88e935de7cf8795d7a6a51385db87ecb361a7050 Mon Sep 17 00:00:00 2001
+From: Irui Wang <irui.wang@mediatek.com>
+Date: Sun, 7 Sep 2025 17:35:56 +0800
+Subject: [PATCH] media: mediatek: encoder: Fix uninitialized scalar variable
+ issue
 
-Make sure to drop the reference taken when looking up the SMI device
-during larb probe on late probe failure (e.g. probe deferral) and on
-driver unbind.
+UNINIT checker finds some instances of variables that are used
+without being initialized, for example using the uninitialized
+value enc_result.is_key_frm can result in unpredictable behavior,
+so initialize these variables after declaring.
 
-Fixes: cc8bbe1a8312 ("memory: mediatek: Add SMI driver")
-Fixes: 038ae37c510f ("memory: mtk-smi: add missing put_device() call in mtk_smi_device_link_common")
-Cc: stable@vger.kernel.org	# 4.6: 038ae37c510f
-Cc: stable@vger.kernel.org	# 4.6
-Cc: Yong Wu <yong.wu@mediatek.com>
-Cc: Miaoqian Lin <linmq006@gmail.com>
-Signed-off-by: Johan Hovold <johan@kernel.org>
-Link: https://patch.msgid.link/20251121164624.13685-3-johan@kernel.org
-Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+Fixes: 4e855a6efa54 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Encoder Driver")
+Cc: stable@vger.kernel.org
+Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
 ---
- drivers/memory/mtk-smi.c | 1 +
- 1 file changed, 1 insertion(+)
+ .../media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index dd6150d200e89..3609bfd3c64be 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -685,6 +685,7 @@ static void mtk_smi_larb_remove(struct platform_device *pdev)
- 	device_link_remove(&pdev->dev, larb->smi_common_dev);
- 	pm_runtime_disable(&pdev->dev);
- 	component_del(&pdev->dev, &mtk_smi_larb_component_ops);
-+	put_device(larb->smi_common_dev);
- }
+diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+index 6faf3f659e751..b3a0a1d8b7a8e 100644
+--- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
+@@ -850,7 +850,7 @@ static void vb2ops_venc_buf_queue(struct vb2_buffer *vb)
+ static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
+ {
+ 	struct mtk_vcodec_enc_ctx *ctx = vb2_get_drv_priv(q);
+-	struct venc_enc_param param;
++	struct venc_enc_param param = { };
+ 	int ret;
+ 	int i;
  
- static int __maybe_unused mtk_smi_larb_resume(struct device *dev)
+@@ -1004,7 +1004,7 @@ static int mtk_venc_encode_header(void *priv)
+ 	int ret;
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+ 	struct mtk_vcodec_mem bs_buf;
+-	struct venc_done_result enc_result;
++	struct venc_done_result enc_result = { };
+ 
+ 	dst_buf = v4l2_m2m_dst_buf_remove(ctx->m2m_ctx);
+ 	if (!dst_buf) {
+@@ -1125,7 +1125,7 @@ static void mtk_venc_worker(struct work_struct *work)
+ 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
+ 	struct venc_frm_buf frm_buf;
+ 	struct mtk_vcodec_mem bs_buf;
+-	struct venc_done_result enc_result;
++	struct venc_done_result enc_result = { };
+ 	int ret, i;
+ 
+ 	/* check dst_buf, dst_buf may be removed in device_run
 -- 
 2.51.0
 
