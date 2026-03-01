@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00F7DFD0045
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:36:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2D44FD0049
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:39:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=khzfhxSUW7CG7c3d8rNWnA9kgIragG/BMQPtGIMiFnU=; b=TKppRtDNdHuD8//rQQEDWsWwgc
-	1AZFeJ8upRZKVX2lK0iDn5JaPjlP6QlGZ0snrU1lCz1PVvOK4+34zTHGyP2D7rXDJQnXjZdU4b86q
-	lWwQvGtwnla7lv63DdY5NwfIbxT5b7frq4Fsdf8L2cudWcBoIwY28MqHZI2SVNJHdiOgfQiwZqEqs
-	1QKCCOpkLYReppRUJVnxpmx3jbYEvGroBU2n8YqsOSixi0lCd34vrYw+K+hv3iYuggXKZfXxLXa/4
-	IMTIuudn8EmFoOViSeQD3T/PEhQCD7jQkXu9jzTLFFReMsfRZpdsHXAKg2QU6uANNKlGT7TyLEOn1
-	ME/lNnkw==;
+	bh=vU5Xm+9O61WoBP4DWmMmAl2s5qbYHUO5E4f6yM7JsPE=; b=Kq/H2WOfZPJa4qQf7KiwL4oWmC
+	5scZNqANhlEuJvoQuN3DVLSWD4dnh0A+sbiwsZr3culoT4e1ztaus04Z1yd27XanOeabTWy47kxv5
+	B3o9O2+GTkKxxMx94y0+pXweRAyQ3gOk7bZwQNH5T7rYJmu9gwxsIMm7T8ZIxVIWut4/b0yX0/dy1
+	vAJh5tpTl0YkpsIevgePYzSgdYnkenRE9ghVJFUwzFea6ty/dE00P18uU6JkLGhbR32Bul4M6o03V
+	0C9UFJyhG5hKLTsZwm28AdK+JyZRqusrDokYyQDLIAiFEP7fHCQCGe5BRJrbZFHl74zTKsDC6vMVv
+	R+n6XgZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVjM-0000000AaSq-2s7I;
-	Sun, 01 Mar 2026 01:36:24 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vwVmj-0000000AbKJ-3j74;
+	Sun, 01 Mar 2026 01:39:53 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVjJ-0000000AaPw-2kpX;
-	Sun, 01 Mar 2026 01:36:22 +0000
+	id 1vwVmh-0000000AbIw-0nbb;
+	Sun, 01 Mar 2026 01:39:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3A77E401CC;
-	Sun,  1 Mar 2026 01:36:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E136C19421;
-	Sun,  1 Mar 2026 01:36:20 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 9B8B4434E0;
+	Sun,  1 Mar 2026 01:39:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8B67C19421;
+	Sun,  1 Mar 2026 01:39:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772328981;
-	bh=tRcoHPL1SnJU0xLlCrcYeFzmKPCMpkkyxCC7E+YL23Q=;
+	s=k20201202; t=1772329190;
+	bh=MiGfFnNFniXRLrsXeRBv0h2l3XaChwtsNbdMoEX/w7I=;
 	h=From:To:Cc:Subject:Date:From;
-	b=Lw8VzEQoN8fC/NrFfeDjHTHBOXIrjM6u2Z3sCo8oZC3oTI1uevOANXWGD2gy8fAIL
-	 hkQe7670ICAroJZxd40NP76fsD341ICkWZe4J2ng6A3gTGT3IAtU1pTocv88BxlMUM
-	 YdcSEeyiW4UPNU3xllzvCIyfFG32cJ7Jq4jEBcTskKhwiD+3BH+osEKzppJKi+paOB
-	 qy+NN6lwlEKJRaNVG7ueXuLZXMRVyWbTbtQFlwbCSioNTQ6kLACjmB4EfkdfZvMceU
-	 0dVOYMzBvl7iDBpCWDEa+LvVFM2CL/Ej1JPRQY+4AHEMOEBuUfSkVuVcNKwRgQCFVt
-	 vcD6UXONojG5Q==
+	b=WoL/0kEzbl9qRnwxeR5MQQ9e4gKc6QTH1T7xoWNMVclwzHhviyQEjB9KCL80CPKM+
+	 T97E1DCuQDChMjsyWoCVkDJadatLhQuKINJrViZlanAGnQpEaSUgMJjqa26KKDGLAr
+	 Wd69tqnmPX+vPgQ2Tb9X9gEi6NbiNkQqDwxH2bNN8rZGtVtd4w6txPhAuHL+B+PEEZ
+	 n59d0pf8QdbOwoHFW0OWvHREW0l/9Pemv99+NGpwUx05fuOB8MuFLyI8oa8OKFD53Z
+	 DGZcGXPtc+6XiWYPy8mVO8U5BqfFBP+ar0JxIsqferHtawHyDhsZfEni7Jj0EzHZ5O
+	 WtEA/4BtM0g5w==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
-	thomasyen@google.com
-Cc: Peter Wang <peter.wang@mediatek.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	linux-scsi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: FAILED: Patch "scsi: ufs: core: Flush exception handling work when RPM level is zero" failed to apply to 6.6-stable tree
-Date: Sat, 28 Feb 2026 20:36:18 -0500
-Message-ID: <20260301013619.1696250-1-sashal@kernel.org>
+	johan@kernel.org
+Cc: Yong Wu <yong.wu@mediatek.com>,
+	Miaoqian Lin <linmq006@gmail.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: FAILED: Patch "memory: mtk-smi: fix device leaks on common probe" failed to apply to 6.1-stable tree
+Date: Sat, 28 Feb 2026 20:39:48 -0500
+Message-ID: <20260301013948.1700901-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
 X-stable: review
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_173621_718230_63166253 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20260228_173951_246174_EDF52C9E 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,7 +74,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The patch below does not apply to the 6.6-stable tree.
+The patch below does not apply to the 6.1-stable tree.
 If someone wants it applied there, or to any other stable or longterm
 tree, then please email the backport, including the original git commit
 id to <stable@vger.kernel.org>.
@@ -85,50 +84,48 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From f8ef441811ec413717f188f63d99182f30f0f08e Mon Sep 17 00:00:00 2001
-From: Thomas Yen <thomasyen@google.com>
-Date: Fri, 30 Jan 2026 00:51:51 +0800
-Subject: [PATCH] scsi: ufs: core: Flush exception handling work when RPM level
- is zero
+From 6cfa038bddd710f544076ea2ef7792fc82fbedd6 Mon Sep 17 00:00:00 2001
+From: Johan Hovold <johan@kernel.org>
+Date: Fri, 21 Nov 2025 17:46:22 +0100
+Subject: [PATCH] memory: mtk-smi: fix device leaks on common probe
 
-Ensure that the exception event handling work is explicitly flushed during
-suspend when the runtime power management level is set to UFS_PM_LVL_0.
+Make sure to drop the reference taken when looking up the SMI device
+during common probe on late probe failure (e.g. probe deferral) and on
+driver unbind.
 
-When the RPM level is zero, the device power mode and link state both
-remain active. Previously, the UFS core driver bypassed flushing exception
-event handling jobs in this configuration. This created a race condition
-where the driver could attempt to access the host controller to handle an
-exception after the system had already entered a deep power-down state,
-resulting in a system crash.
-
-Explicitly flush this work and disable auto BKOPs before the suspend
-callback proceeds. This guarantees that pending exception tasks complete
-and prevents illegal hardware access during the power-down sequence.
-
-Fixes: 57d104c153d3 ("ufs: add UFS power management support")
-Signed-off-by: Thomas Yen <thomasyen@google.com>
-Cc: Stable Tree <stable@vger.kernel.org>
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
-Link: https://patch.msgid.link/20260129165156.956601-1-thomasyen@google.com
-Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
+Fixes: 47404757702e ("memory: mtk-smi: Add device link for smi-sub-common")
+Fixes: 038ae37c510f ("memory: mtk-smi: add missing put_device() call in mtk_smi_device_link_common")
+Cc: stable@vger.kernel.org	# 5.16: 038ae37c510f
+Cc: stable@vger.kernel.org	# 5.16
+Cc: Yong Wu <yong.wu@mediatek.com>
+Cc: Miaoqian Lin <linmq006@gmail.com>
+Signed-off-by: Johan Hovold <johan@kernel.org>
+Link: https://patch.msgid.link/20251121164624.13685-2-johan@kernel.org
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- drivers/ufs/core/ufshcd.c | 2 ++
+ drivers/memory/mtk-smi.c | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 66223d2908532..8349fe2090db6 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -9998,6 +9998,8 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+index 733e22f695ab7..dd6150d200e89 100644
+--- a/drivers/memory/mtk-smi.c
++++ b/drivers/memory/mtk-smi.c
+@@ -674,6 +674,7 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+ err_pm_disable:
+ 	pm_runtime_disable(dev);
+ 	device_link_remove(dev, larb->smi_common_dev);
++	put_device(larb->smi_common_dev);
+ 	return ret;
+ }
  
- 	if (req_dev_pwr_mode == UFS_ACTIVE_PWR_MODE &&
- 			req_link_state == UIC_LINK_ACTIVE_STATE) {
-+		ufshcd_disable_auto_bkops(hba);
-+		flush_work(&hba->eeh_work);
- 		goto vops_suspend;
- 	}
+@@ -917,6 +918,7 @@ static void mtk_smi_common_remove(struct platform_device *pdev)
+ 	if (common->plat->type == MTK_SMI_GEN2_SUB_COMM)
+ 		device_link_remove(&pdev->dev, common->smi_common_dev);
+ 	pm_runtime_disable(&pdev->dev);
++	put_device(common->smi_common_dev);
+ }
  
+ static int __maybe_unused mtk_smi_common_resume(struct device *dev)
 -- 
 2.51.0
 
