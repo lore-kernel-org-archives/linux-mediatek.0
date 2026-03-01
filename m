@@ -4,60 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8D5DFD0049
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:40:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A923FD0048
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:45:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MmBZlDECMd4iskXCmdZGKqFZgtL/nrNFMue+RE9cQg0=; b=sRfnHnX/6qQJ2heh6nIAUDheCT
-	xrs/Yy2rJviS8RytnizY+5SGmYD6IZ2jz24RAaqaBrDv8fTADFiZKlxzH5BqOR8LHRLyWoWuK9uKM
-	0YqB1/UypVhgNeM/YnPrRnuHJonOajT7jU3n4OhwTilap7WFlAfFckco8IESEkOmiBX0CviKKJOpo
-	sVME3t9rqLTfu6KZnY378WgwVEohgaTEF7ekuN8fmCBlm4rH3DsEtLnuLpCY9EsLLbhhZ1pHd2fj3
-	FmodhlJOYiTa6XDryEOrxtCIa5Nvp81dq0xiLC/GDXGRxF8vXw6tiuFfnK6OpA8qnFQJfXO8NgRDX
-	lHETrPGQ==;
+	bh=tU0y43ctA2aYlFT4Zg2aq9wxkaHRnozCeZRkkfr3wxA=; b=hWtcm+QfIivWHzNMwTGeRh5cJx
+	LMNECogDfywQ4CNoZ3+3Lv+5tHhgsREsKoMNJZ8AgWWNHddrNQJZpqXqcqcZy5OcmTMfP2Eoo3Jc0
+	lPjHHRqWOQ+Th5WpfhGMa9+Ira+LmVtAZ9N4PrrF32YXhWi2hb2mendRZh8O8FkhUdxbDGx1dNDLK
+	dj/FHwiD0xD7xlVWI0gam7TFZd6ge8SdczL7SoESLKfYEYl5JqcC3n5x4BeevJx/gNAehwxduHG9Q
+	9XQzmb+HL4OC1t9EXs18mhpVxbawWG+VY1ND12sTbEKXyr4lfZ1qF7nGmibs2uvcOKljLWy9ebBKh
+	s8NpV05A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVnj-0000000Ac2D-326e;
-	Sun, 01 Mar 2026 01:40:55 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vwVrs-0000000Add1-0xsw;
+	Sun, 01 Mar 2026 01:45:12 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVnX-0000000AbpL-1Chn;
-	Sun, 01 Mar 2026 01:40:43 +0000
+	id 1vwVrn-0000000AdZJ-3IbR;
+	Sun, 01 Mar 2026 01:45:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A3E796013C;
-	Sun,  1 Mar 2026 01:40:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85B7BC19421;
-	Sun,  1 Mar 2026 01:40:41 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7074A407CA;
+	Sun,  1 Mar 2026 01:45:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B600C19424;
+	Sun,  1 Mar 2026 01:45:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772329242;
-	bh=T5soqHnJuWQ3SUhbSLtaP2ZBFGoEf+2X0YiZq/yfNaU=;
+	s=k20201202; t=1772329507;
+	bh=r7w0U+t3BkYHSoclmCe+XAJmVrbSuVYfKVg+jGqjFdw=;
 	h=From:To:Cc:Subject:Date:From;
-	b=Uw5JhjidBIXkNYbGkIhRCMG0rEolqDOyK8/XhrZ85sptj+lLb5u/O3IeAFnp3WXYO
-	 Hpt+Jj3XkyAyhlgdVT5Fj7f4Kpif5rx4bS6UW7MwrK9eWVg7nWzeFwFEd+p+Cyjn26
-	 6xt9FLRhq7HtYuvk0ufqIsOpI9+8rLjVpD9zGQwtCkiGwJRExuhb2TrQuipTYtCw/V
-	 DApKFvN7h34KaxoldId/c+/wUGB89zLfIsghPrrupga7yopFq6tsLaqtqITqFtjaTi
-	 msDcL8fRxfXNh8zOocxJPFelJEgeNPAyjdT6rbLZWu+vv3Nw6K0VVkLO7k9NnXJpb/
-	 rgEt9BHflGr/A==
+	b=Rw3wLAMP93vKF568TyH9/YiMrMkAVBYpBk8r2vXueMJwN6DiW4IcOkGBQQrnouyZI
+	 lJzmxtGxx9CGy4nR3k7JzaGit0eB06b8ZcuLPb3fctMQC/WX4a5/Wx3rnYv5qeHoWW
+	 xHIoh8GPdilgJY1574/ssaF71TLcRblnhW9ZNaoYr/TB/a0fQB/gRInPWbnqqMhadv
+	 gcrGEGYsAmJ8PPu807GarFAxSm0aGw5kdOUIRLtFWPu0pSfU2W5yJhY6mLmlQ1+/bl
+	 BqjVzFFGasPCj1X/9XoKs/GpItuIcaADzn8RiI6HEYdB/0RoW7mctYI4/EFblOk5U4
+	 UvMbt4zAhJqqg==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
-	irui.wang@mediatek.com
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	linux-media@vger.kernel.org,
+	thomasyen@google.com
+Cc: Peter Wang <peter.wang@mediatek.com>,
+	Bart Van Assche <bvanassche@acm.org>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
+	linux-scsi@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: FAILED: Patch "media: mediatek: encoder: Fix uninitialized scalar variable issue" failed to apply to 6.1-stable tree
-Date: Sat, 28 Feb 2026 20:40:40 -0500
-Message-ID: <20260301014040.1701969-1-sashal@kernel.org>
+Subject: FAILED: Patch "scsi: ufs: core: Flush exception handling work when RPM level is zero" failed to apply to 6.1-stable tree
+Date: Sat, 28 Feb 2026 20:45:05 -0500
+Message-ID: <20260301014505.1707608-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
 X-stable: review
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260228_174508_361143_6FB8EE3C 
+X-CRM114-Status: GOOD (  14.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,58 +85,50 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From 88e935de7cf8795d7a6a51385db87ecb361a7050 Mon Sep 17 00:00:00 2001
-From: Irui Wang <irui.wang@mediatek.com>
-Date: Sun, 7 Sep 2025 17:35:56 +0800
-Subject: [PATCH] media: mediatek: encoder: Fix uninitialized scalar variable
- issue
+From f8ef441811ec413717f188f63d99182f30f0f08e Mon Sep 17 00:00:00 2001
+From: Thomas Yen <thomasyen@google.com>
+Date: Fri, 30 Jan 2026 00:51:51 +0800
+Subject: [PATCH] scsi: ufs: core: Flush exception handling work when RPM level
+ is zero
 
-UNINIT checker finds some instances of variables that are used
-without being initialized, for example using the uninitialized
-value enc_result.is_key_frm can result in unpredictable behavior,
-so initialize these variables after declaring.
+Ensure that the exception event handling work is explicitly flushed during
+suspend when the runtime power management level is set to UFS_PM_LVL_0.
 
-Fixes: 4e855a6efa54 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Encoder Driver")
-Cc: stable@vger.kernel.org
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
+When the RPM level is zero, the device power mode and link state both
+remain active. Previously, the UFS core driver bypassed flushing exception
+event handling jobs in this configuration. This created a race condition
+where the driver could attempt to access the host controller to handle an
+exception after the system had already entered a deep power-down state,
+resulting in a system crash.
+
+Explicitly flush this work and disable auto BKOPs before the suspend
+callback proceeds. This guarantees that pending exception tasks complete
+and prevents illegal hardware access during the power-down sequence.
+
+Fixes: 57d104c153d3 ("ufs: add UFS power management support")
+Signed-off-by: Thomas Yen <thomasyen@google.com>
+Cc: Stable Tree <stable@vger.kernel.org>
+Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+Link: https://patch.msgid.link/20260129165156.956601-1-thomasyen@google.com
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 ---
- .../media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/ufs/core/ufshcd.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-index 6faf3f659e751..b3a0a1d8b7a8e 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc.c
-@@ -850,7 +850,7 @@ static void vb2ops_venc_buf_queue(struct vb2_buffer *vb)
- static int vb2ops_venc_start_streaming(struct vb2_queue *q, unsigned int count)
- {
- 	struct mtk_vcodec_enc_ctx *ctx = vb2_get_drv_priv(q);
--	struct venc_enc_param param;
-+	struct venc_enc_param param = { };
- 	int ret;
- 	int i;
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 66223d2908532..8349fe2090db6 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -9998,6 +9998,8 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
  
-@@ -1004,7 +1004,7 @@ static int mtk_venc_encode_header(void *priv)
- 	int ret;
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
- 	struct mtk_vcodec_mem bs_buf;
--	struct venc_done_result enc_result;
-+	struct venc_done_result enc_result = { };
+ 	if (req_dev_pwr_mode == UFS_ACTIVE_PWR_MODE &&
+ 			req_link_state == UIC_LINK_ACTIVE_STATE) {
++		ufshcd_disable_auto_bkops(hba);
++		flush_work(&hba->eeh_work);
+ 		goto vops_suspend;
+ 	}
  
- 	dst_buf = v4l2_m2m_dst_buf_remove(ctx->m2m_ctx);
- 	if (!dst_buf) {
-@@ -1125,7 +1125,7 @@ static void mtk_venc_worker(struct work_struct *work)
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
- 	struct venc_frm_buf frm_buf;
- 	struct mtk_vcodec_mem bs_buf;
--	struct venc_done_result enc_result;
-+	struct venc_done_result enc_result = { };
- 	int ret, i;
- 
- 	/* check dst_buf, dst_buf may be removed in device_run
 -- 
 2.51.0
 
