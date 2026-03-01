@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2D44FD0049
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:39:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EEA3FD0045
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 01:40:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vU5Xm+9O61WoBP4DWmMmAl2s5qbYHUO5E4f6yM7JsPE=; b=Kq/H2WOfZPJa4qQf7KiwL4oWmC
-	5scZNqANhlEuJvoQuN3DVLSWD4dnh0A+sbiwsZr3culoT4e1ztaus04Z1yd27XanOeabTWy47kxv5
-	B3o9O2+GTkKxxMx94y0+pXweRAyQ3gOk7bZwQNH5T7rYJmu9gwxsIMm7T8ZIxVIWut4/b0yX0/dy1
-	vAJh5tpTl0YkpsIevgePYzSgdYnkenRE9ghVJFUwzFea6ty/dE00P18uU6JkLGhbR32Bul4M6o03V
-	0C9UFJyhG5hKLTsZwm28AdK+JyZRqusrDokYyQDLIAiFEP7fHCQCGe5BRJrbZFHl74zTKsDC6vMVv
-	R+n6XgZQ==;
+	bh=fSY7mh8iFyOASonZpGirdkM3k1pmORlaG3EiIlyJ0a8=; b=126VQ4O46tRLpbs18IeX1Osxva
+	iEyV4NqkeoJlEFAFPy/5xTL9NUzISCIDVRCRjBZZ2u7LvIQfBon1U812hQ/cgMhlnT4ryYfHqRkq+
+	WY4sWwtTQE4kqCK2/Vov01oWNjVnzamkrC09ZBKEVXE6J5iAPsUfrObrON1kFuObUm/8MH5MczcfY
+	fyUV1+QRlFGfZghgeVunVOhU+OqHNTK61lrUzpM1iCQAr0cVWhULbu++oiD8emYR/X1m1l89o7h3/
+	S3zH7VNvLT/AOA6eFqmg504Msj81o50usfwlA0VQWB50MRdDzhSzDhznYpUt3G1UnAd8AhGiNuIWR
+	WkvJe1Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVmj-0000000AbKJ-3j74;
-	Sun, 01 Mar 2026 01:39:53 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vwVmv-0000000AbPN-1lXL;
+	Sun, 01 Mar 2026 01:40:05 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVmh-0000000AbIw-0nbb;
-	Sun, 01 Mar 2026 01:39:52 +0000
+	id 1vwVmt-0000000AbOW-2lyD;
+	Sun, 01 Mar 2026 01:40:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9B8B4434E0;
-	Sun,  1 Mar 2026 01:39:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8B67C19421;
-	Sun,  1 Mar 2026 01:39:49 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1EEE16012A;
+	Sun,  1 Mar 2026 01:40:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 141F1C19421;
+	Sun,  1 Mar 2026 01:40:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772329190;
-	bh=MiGfFnNFniXRLrsXeRBv0h2l3XaChwtsNbdMoEX/w7I=;
+	s=k20201202; t=1772329202;
+	bh=GvPeFBSp28rQnDX/NpT3iu4lnh2ZFtLOp3Qwu31SJuU=;
 	h=From:To:Cc:Subject:Date:From;
-	b=WoL/0kEzbl9qRnwxeR5MQQ9e4gKc6QTH1T7xoWNMVclwzHhviyQEjB9KCL80CPKM+
-	 T97E1DCuQDChMjsyWoCVkDJadatLhQuKINJrViZlanAGnQpEaSUgMJjqa26KKDGLAr
-	 Wd69tqnmPX+vPgQ2Tb9X9gEi6NbiNkQqDwxH2bNN8rZGtVtd4w6txPhAuHL+B+PEEZ
-	 n59d0pf8QdbOwoHFW0OWvHREW0l/9Pemv99+NGpwUx05fuOB8MuFLyI8oa8OKFD53Z
-	 DGZcGXPtc+6XiWYPy8mVO8U5BqfFBP+ar0JxIsqferHtawHyDhsZfEni7Jj0EzHZ5O
-	 WtEA/4BtM0g5w==
+	b=B8MInzn9tLmZCqH2xN/TnyeRGKTnrKTmj73Qw+FVTHl+EhKK6wss0zA7WApF7ugHT
+	 EecAHJG8bFOBL+m0cyzeeSaSJkv9BKBj1xcDzhk3VVVtH03eHj6sluvVAaYahBGfdb
+	 tQ4nhjFyqwJTsvH96VxiGXksxkClkbGsGki3m0sWFzilURa3nTqTXmJ/BFfmvtdAO0
+	 MCKXnQw7gh9ZRrrufU1r//VCVYHtxiqjT+EcD2avAqEy/sXfAwqeKBFVh3zVHqu6DO
+	 sfhEUfRzit+32dn7jOMwiH92lRBa0k4uF8BKEtvJK2At6XSjC3L4ZtndTN0ZuWc+gB
+	 yOQAk4XoS3Hww==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
 	johan@kernel.org
@@ -49,17 +49,14 @@ Cc: Yong Wu <yong.wu@mediatek.com>,
 	Krzysztof Kozlowski <krzk@kernel.org>,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: FAILED: Patch "memory: mtk-smi: fix device leaks on common probe" failed to apply to 6.1-stable tree
-Date: Sat, 28 Feb 2026 20:39:48 -0500
-Message-ID: <20260301013948.1700901-1-sashal@kernel.org>
+Subject: FAILED: Patch "memory: mtk-smi: fix device leak on larb probe" failed to apply to 6.1-stable tree
+Date: Sat, 28 Feb 2026 20:40:00 -0500
+Message-ID: <20260301014000.1701156-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
 X-stable: review
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_173951_246174_EDF52C9E 
-X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,48 +81,40 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From 6cfa038bddd710f544076ea2ef7792fc82fbedd6 Mon Sep 17 00:00:00 2001
+From 9dae65913b32d05dbc8ff4b8a6bf04a0e49a8eb6 Mon Sep 17 00:00:00 2001
 From: Johan Hovold <johan@kernel.org>
-Date: Fri, 21 Nov 2025 17:46:22 +0100
-Subject: [PATCH] memory: mtk-smi: fix device leaks on common probe
+Date: Fri, 21 Nov 2025 17:46:23 +0100
+Subject: [PATCH] memory: mtk-smi: fix device leak on larb probe
 
 Make sure to drop the reference taken when looking up the SMI device
-during common probe on late probe failure (e.g. probe deferral) and on
+during larb probe on late probe failure (e.g. probe deferral) and on
 driver unbind.
 
-Fixes: 47404757702e ("memory: mtk-smi: Add device link for smi-sub-common")
+Fixes: cc8bbe1a8312 ("memory: mediatek: Add SMI driver")
 Fixes: 038ae37c510f ("memory: mtk-smi: add missing put_device() call in mtk_smi_device_link_common")
-Cc: stable@vger.kernel.org	# 5.16: 038ae37c510f
-Cc: stable@vger.kernel.org	# 5.16
+Cc: stable@vger.kernel.org	# 4.6: 038ae37c510f
+Cc: stable@vger.kernel.org	# 4.6
 Cc: Yong Wu <yong.wu@mediatek.com>
 Cc: Miaoqian Lin <linmq006@gmail.com>
 Signed-off-by: Johan Hovold <johan@kernel.org>
-Link: https://patch.msgid.link/20251121164624.13685-2-johan@kernel.org
+Link: https://patch.msgid.link/20251121164624.13685-3-johan@kernel.org
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- drivers/memory/mtk-smi.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/memory/mtk-smi.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index 733e22f695ab7..dd6150d200e89 100644
+index dd6150d200e89..3609bfd3c64be 100644
 --- a/drivers/memory/mtk-smi.c
 +++ b/drivers/memory/mtk-smi.c
-@@ -674,6 +674,7 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
- err_pm_disable:
- 	pm_runtime_disable(dev);
- 	device_link_remove(dev, larb->smi_common_dev);
-+	put_device(larb->smi_common_dev);
- 	return ret;
- }
- 
-@@ -917,6 +918,7 @@ static void mtk_smi_common_remove(struct platform_device *pdev)
- 	if (common->plat->type == MTK_SMI_GEN2_SUB_COMM)
- 		device_link_remove(&pdev->dev, common->smi_common_dev);
+@@ -685,6 +685,7 @@ static void mtk_smi_larb_remove(struct platform_device *pdev)
+ 	device_link_remove(&pdev->dev, larb->smi_common_dev);
  	pm_runtime_disable(&pdev->dev);
-+	put_device(common->smi_common_dev);
+ 	component_del(&pdev->dev, &mtk_smi_larb_component_ops);
++	put_device(larb->smi_common_dev);
  }
  
- static int __maybe_unused mtk_smi_common_resume(struct device *dev)
+ static int __maybe_unused mtk_smi_larb_resume(struct device *dev)
 -- 
 2.51.0
 
