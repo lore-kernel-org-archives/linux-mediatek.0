@@ -4,97 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C985FD0073
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 17:51:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FE0DFD0062
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 18:30:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gBxMJaUKa1C9JEFX2ZaVz3QyDUnGEtOPQuNCPOMH3xw=; b=MH/NexAN8UpI4Ij6BxtDzVL8mo
-	khJ7Xf9N7ejVAswVlewW4lPfh7cI6a3bI6Ulewl1ZGmQwhHMUTELbAZtoIz1n1nb9X15pgfWQeNvu
-	icTKQwupnE/ACgXtFaYGpi2v1OwDi5uLLJ1fSmXqt/jYGCas9FU+FOgBDHVClONYCcJoN7SSeLhuV
-	XcZqUmJ/ZeFNuD8NaH8njyGrtorAYzcjDbSU8x/MLxuEeFq/rudzs3kzU7H41q/goh8CecqUp6YbK
-	g6PJfmrd+WwdS/NuVrelJlNMRJin0WFFQERnFVKqdjka+QKysYnvQnichjxPHSXqqL46jmkRiUr6h
-	LX+3yuBA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3kqBbueUDxERIgPGXyh3nUsM0K1ytywiDUxoMxxPeN8=; b=S+G8cDcL/b53WxOE7ZXlnzGhva
+	b+3aJ0nzrOlF74tHB6gWVkDEgFeDgkrSFGK5jMeshGPurlrbMrLWxe2GDbH770J4EBtw4ApNL5XHo
+	eEarJ9BqGxv3R5iEmPg+Mx+X+Q/f52PRS5fNJPbgDeWVPaCD3VjIdOlI5d+nr3bnnahoMIe/oqbNm
+	moGH5RTRy8Fp8Wvm3AWoIbPMABV/b46doHfC6yivxT4TQsl+59JbYrXVnV8SgXCmt/gXC5Rjwb4ER
+	QZC9WD7PrBtIUiVZ/5Y+//QFC0woWdfxzE6oqhLQAfO2/Z+Rt6aPSvpQbKAPs/4T/JscIW83u517S
+	2mxpb9eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwkxN-0000000BkIJ-0avf;
-	Sun, 01 Mar 2026 17:51:53 +0000
-Received: from 011.lax.mailroute.net ([199.89.1.14])
+	id 1vwlYk-0000000Bmcu-3hpd;
+	Sun, 01 Mar 2026 18:30:30 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwkxK-0000000BkDX-0k4a;
-	Sun, 01 Mar 2026 17:51:51 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 011.lax.mailroute.net (Postfix) with ESMTP id 4fP8l76g1fz1XM31H;
-	Sun,  1 Mar 2026 17:51:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1772387495; x=1774979496; bh=gBxMJaUKa1C9JEFX2ZaVz3Qy
-	DUnGEtOPQuNCPOMH3xw=; b=BNwluevo8QwQgftfHB+DAqTk9ymT2rv4ZQaRtkv1
-	fEE+STVCIEETCbEGDy6mPRz/sGX18yEGYpRhqFMzOGhGTN2IeFLZUb2xX5fByOva
-	HSPj3fQYRzfbH8s99Gojromm8NSb7kZqaVqPqiRcwFpg0igO7/hef9tgIxeT1dUi
-	6s/15zHh1tkYNv9+Ck+Jaa7msTHuvX1wexjljDqKd5CGnECL/W8Ueahcos4OV1rt
-	k2Ub1EtAEcCNTTF6F6XWyjlYJmmStvxNYUokguq1Ocp3+fsvoTwY+RBUu7MIzxQS
-	MB8AcL9iv6pLSpoLjF0H+Q4bgEu1UABPn13zEmAVM8AF1w==
-X-Virus-Scanned: by MailRoute
-Received: from 011.lax.mailroute.net ([127.0.0.1])
- by localhost (011.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id G5Djf-GxRJGn; Sun,  1 Mar 2026 17:51:35 +0000 (UTC)
-Received: from [192.168.51.14] (c-73-231-117-72.hsd1.ca.comcast.net [73.231.117.72])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4fP8kk4Xv4z1XM5jn;
-	Sun,  1 Mar 2026 17:51:26 +0000 (UTC)
-Message-ID: <3abcef32-f872-4aa5-a7e1-c99286f426aa@acm.org>
-Date: Sun, 1 Mar 2026 09:51:25 -0800
+	id 1vwlYi-0000000BmcP-2Ff6;
+	Sun, 01 Mar 2026 18:30:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id EC6CD4382B;
+	Sun,  1 Mar 2026 18:30:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F451C116C6;
+	Sun,  1 Mar 2026 18:30:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772389827;
+	bh=vGBT1CRkaStGJJvFrAHCByqOWl2Xsq8KpNcMMUGtREM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=k1tj63LetdqMY7WPcDH0WBVp+mGiFlaHWkFu+ZO/eUKLQJlecjS4dIpgN1NsJJ00E
+	 HeN/rI/nvTUK5+p8qbwUcquDiW8szvu7cPINpGUKmeIHO6RUp7nx+Rz/s3oxDp8CYT
+	 vqI0MfOd4RhaQmHKInBARPsvNoM87+/s55MIIlxW51D5IfWwghEO5iE/xMPCWy4O6c
+	 ibNgDUzS1SL1dTpahCDeKdP+S5hxNWu+vi6iOEf56dTy2Vg0R+wKzE4X8KTV1kMIA0
+	 nIulaYaayTW64Zh1QWhJ2JCRml49ux39r1Vg/D39dc+UX5Smo/8oxu5ri0UQLrIwt6
+	 /b4T8Ucjye0+g==
+Date: Sun, 1 Mar 2026 18:30:21 +0000
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Alexei Starovoitov <ast@kernel.org>,
+	Daniel Borkmann <daniel@iogearbox.net>,
+	Jesper Dangaard Brouer <hawk@kernel.org>,
+	John Fastabend <john.fastabend@gmail.com>,
+	Stanislav Fomichev <sdf@fomichev.me>,
+	Paolo Valerio <pvalerio@redhat.com>, netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, bpf@vger.kernel.org
+Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: Reset prog ptr to NULL
+ in case of error in mtk_xdp_setup()
+Message-ID: <aaSFvfXen4XnmPpP@horms.kernel.org>
+References: <20260227-mtk-xdp-prog-ptr-fix-v1-1-b73d7588b645@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/11] scsi: ufs: core: Introduce a new ufshcd vops
- negotiate_pwr_mode()
-To: Can Guo <can.guo@oss.qualcomm.com>, avri.altman@wdc.com,
- beanhuo@micron.com, martin.petersen@oracle.com
-Cc: linux-scsi@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Sai Krishna Potthuri <sai.krishna.potthuri@amd.com>,
- Ajay Neeli <ajay.neeli@amd.com>, Peter Griffin <peter.griffin@linaro.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Peter Wang <peter.wang@mediatek.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Stanley Jhu <chu.stanley@gmail.com>, Manivannan Sadhasivam
- <mani@kernel.org>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
- Adrian Hunter <adrian.hunter@intel.com>,
- Archana Patni <archana.patni@intel.com>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-samsung-soc@vger.kernel.org>,
- "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>,
- "open list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-arm-msm@vger.kernel.org>
-References: <20260227160809.2620598-1-can.guo@oss.qualcomm.com>
- <20260227160809.2620598-2-can.guo@oss.qualcomm.com>
- <9d975881-7570-495d-94ea-085e2012a9af@acm.org>
- <5a2961af-dada-44f3-8e57-119076f10750@oss.qualcomm.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <5a2961af-dada-44f3-8e57-119076f10750@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260227-mtk-xdp-prog-ptr-fix-v1-1-b73d7588b645@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260301_095150_296914_59DEE547 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20260301_103028_619558_869582AB 
+X-CRM114-Status: UNSURE (   7.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,31 +85,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3/1/26 6:26 AM, Can Guo wrote:
-> On 2/28/2026 3:31 AM, Bart Van Assche wrote:
->> On 2/27/26 8:07 AM, Can Guo wrote:
->>> -=C2=A0=C2=A0=C2=A0 return -ENOTSUPP;
->>> +=C2=A0=C2=A0=C2=A0 return -EOPNOTSUPP;
->>
->> Why has ENOTSUPP been changed into EOPNOTSUPP?
-> I got a warning from checkpatch.pl when I add the new vops, so I change=
-d=20
-> the same for
-> ufshcd_vops_pwr_change_notify() too.
->=20
-> WARNING: ENOTSUPP is not a SUSV4 error code, prefer EOPNOTSUPP
-Hi Can,
+On Fri, Feb 27, 2026 at 04:52:11PM +0100, Lorenzo Bianconi wrote:
+> Reset eBPF prog pointer to NULL if mtk_open routine in mtk_xdp_setup()
+> fails.
+> 
+> Fixes: 7c26c20da5d42 ("net: ethernet: mtk_eth_soc: add basic XDP support")
+> Suggested-by: Paolo Valerio <pvalerio@redhat.com>
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-SUSv4 =3D Single UNIX Specification, Version 4. This is a standard that
-defines how system calls should behave. Hence, ENOTSUPP must not be
-returned as an error value by e.g. sysfs callbacks. As far as I know the
-ufshcd_vops_pwr_change_notify() return value is never returned to user
-space and hence returning ENOTSUPP from inside this function is fine.
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-If you want to keep this change in ufshcd_vops_pwr_change_notify()
-please make it a separate patch.
-
-Thanks,
-
-Bart.
+...
 
