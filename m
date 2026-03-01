@@ -4,63 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE06BFD0048
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 02:03:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C77EFD0045
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Mar 2026 02:16:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HCehjue0np/ThN8dPHI42k6tiSJrBRhqeEoFmRGdtgY=; b=4WRnOXc379iGxw/wC/5fxhITnX
-	uqTjwOTTb3rFe7ikrNQZfZ61kysN5SI4cFZ+4z37XkE7u1Lzc2Dm2qx82RBpr5b/LB0NQWR2ESLOc
-	g5w1UxkX0Y+Ywkh5ljUC3eFGOUE8iNPCCZeqVdBcDpP5AKn+/gCif8yXdYy6sXx3xXSP+PxJ009Hz
-	+JhUADbJmhTQ6o7YLo8uxnRPHBsKsVKtHAHJGKWJseT6pCnnsBXmBv7+nT2wU0aJ0plC2HYp4RoXI
-	ZH/F7uOZoiX9wHgwtouescdGiPRQE0Qky1E3OCpvOajyYCHQ2Ts+hDsxG/kPZDBVcj324WrRSuk7i
-	JQmG0yRA==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bwUkbaTki6TTnhaRVp0leO5Xd4rs/qy/Oc0xfqrFu94=; b=4dCQz8rfbUXgHDqzYe8KTdx2dP
+	wJekANlX8MJw8Tbyiz9Csst64aDRhcK4oQs8hXDr2x0bP1UWdxxAvxTCRP63p5g/yjGo3PiLaJAFc
+	Lj7NGNpnAMdtGrjkyEQKWf0w6nj7qTcWTPrFsoKf9TExQwSRtolwVNECM3PRrhtt9lYaJYzltRJLE
+	pD9EdgmoCPuK2xW/SzDdzKSER9lQfRDvlXkFAeH02/rgtvhhQjaC/UEPkbSvE/TPZrxQVJ3V7ldh7
+	SN2EyQRsSr6bjH+TJLaxwHNrV/SmXPxVqhJEg0HZgz9ePgjQIY8YBQ9jvL29dCH2cC2u1ttYkNR4z
+	d9HjzXaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwW9N-0000000Aiza-3b6D;
-	Sun, 01 Mar 2026 02:03:17 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vwWMW-0000000Ak5h-4ARz;
+	Sun, 01 Mar 2026 02:16:52 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwW9K-0000000Aixb-2LZP;
-	Sun, 01 Mar 2026 02:03:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 31D2441879;
-	Sun,  1 Mar 2026 02:03:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E30AC19421;
-	Sun,  1 Mar 2026 02:03:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772330594;
-	bh=OCgSm9Dz4TygZ5WhD58rtVpczEmAwYpt2PIP7yJz1Fs=;
-	h=From:To:Cc:Subject:Date:From;
-	b=UCr+IIbeYL2cwJlETcFZhA7MeMsnowTaOLSosejQeWF160Vj+IDySc6++FSeAGP2H
-	 wW18ApZ05Xlyfzr4Cxf0i+UTaVtg0N+2fhW8O1E53TEusZPhSK9Gbs5u9kuTHXJsGd
-	 XgF6WbVfIJwof7Fh1n8L5x/IrYgzuTNsxbQpb5u6jt4WN41826QS2IYGr3zdczupPw
-	 u38U4+u8AVguMGZKhr76QK0zJPsMT/94gextGTnQBaDqAuQRbcmty0xqhDy+MsPTeu
-	 IRgq5RZN6eqPMoeNmdwACVh2dPPLZ5cKsUffijjsMMQ+bndg1QC2RncLg5AoBecZcl
-	 /Ot3pviWiOo8Q==
-From: Sasha Levin <sashal@kernel.org>
-To: stable@vger.kernel.org,
-	thomasyen@google.com
-Cc: Peter Wang <peter.wang@mediatek.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	linux-scsi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: FAILED: Patch "scsi: ufs: core: Flush exception handling work when RPM level is zero" failed to apply to 5.10-stable tree
-Date: Sat, 28 Feb 2026 21:03:11 -0500
-Message-ID: <20260301020312.1731206-1-sashal@kernel.org>
-X-Mailer: git-send-email 2.51.0
+	id 1vwWMR-0000000Ak4z-3CQv
+	for linux-mediatek@lists.infradead.org;
+	Sun, 01 Mar 2026 02:16:49 +0000
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6211vS4p2966046;
+	Sun, 1 Mar 2026 02:16:42 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2025-04-25; bh=bwUkbaTki6TTnhaRVp0leO5Xd4rs/qy/Oc0xfqrFu94=; b=
+	aQH/qoGxFJcDCz2Q1Mb7MJya/6IRfx7s9kCy0j0GDns+bjRCi1D42pRFth0tz8uy
+	brsMgEBCaIkn0aRPHp0Qp8sh2zGF9T50lxplkscFd0t7GJLCtxWTS+XiMfc1IZTD
+	Ik//ZhrT9+1/lSMuJ4+Yvoti8N7MwEES0UWQOohMnTalPu1eFp7xGF93o173CAFY
+	EfnP9NgSwwOlg47EcetXZwMTLcZmwgV+Hq7m8U7bp606dkLxxUJxTbnhXyzR9nPA
+	JWDnAD5GkeuLluathkiLR8pn6T75sCV+UPHGk0uKpP0LAnmbMYb+6FQcn8xPpDTX
+	mRQEcwTA+QAbBBQ84ZgFrQ==
+Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4cksh8rny5-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sun, 01 Mar 2026 02:16:42 +0000 (GMT)
+Received: from pps.filterd (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 61SL0gO3036920;
+	Sun, 1 Mar 2026 02:16:41 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 4ckpt7ehhy-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sun, 01 Mar 2026 02:16:41 +0000
+Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 6212GXt4019643;
+	Sun, 1 Mar 2026 02:16:40 GMT
+Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
+	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 4ckpt7ehdg-5;
+	Sun, 01 Mar 2026 02:16:40 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: linux-scsi@vger.kernel.org, avri.altman@sandisk.com,
+        alim.akhtar@samsung.com, jejb@linux.ibm.com, peter.wang@mediatek.com
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+        wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+        chun-hung.wu@mediatek.com, alice.chao@mediatek.com,
+        cc.chou@mediatek.com, chaotian.jing@mediatek.com,
+        tun-yu.yu@mediatek.com, eddie.huang@mediatek.com,
+        naomi.chu@mediatek.com, ed.tsai@mediatek.com, bvanassche@acm.org
+Subject: Re: [PATCH v2] ufs: core: support UFSHCI 4.1 CQ entry tag
+Date: Sat, 28 Feb 2026 21:16:18 -0500
+Message-ID: <177231727974.1778274.1876634781735565722.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260210071834.1837878-1-peter.wang@mediatek.com>
+References: <20260210071834.1837878-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
-X-Patchwork-Hint: ignore
-X-stable: review
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-02-28_07,2026-02-27_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 phishscore=0 suspectscore=0
+ spamscore=0 malwarescore=0 bulkscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2602130000
+ definitions=main-2603010017
+X-Proofpoint-ORIG-GUID: VxlT5mDGgUN2wem8cDGj-jmHOqv32lPi
+X-Authority-Analysis: v=2.4 cv=D8VK6/Rj c=1 sm=1 tr=0 ts=69a3a18a cx=c_pps
+ a=XiAAW1AwiKB2Y8Wsi+sD2Q==:117 a=XiAAW1AwiKB2Y8Wsi+sD2Q==:17
+ a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=jiCTI4zE5U7BLdzWsZGv:22 a=x4eqshVgHu-cdnggieHk:22 a=VwQbUJbxAAAA:8
+ a=mpaa-ttXAAAA:8 a=QqvJkLw1XXo513EEspsA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzAxMDAxOCBTYWx0ZWRfX8LI1x4/X2Hh1
+ sL6QS0eCqyNOPXsHlaVXRoDYVdGKefsyNKENGkxgLR+sTIO47y6KUVCS2t9x9EV0f0rZ4EgRDzR
+ B3ESgo4C6IIEJ1XNmI4JWncCqYdCaZmPHUhrfIMLJiYP1pts4kRSSrnKUn+QhcMG4+bpgJRbYfA
+ 0GOaEDXaVdzrzTK0vOyQ3KVfYqGhau5uzh8djl9cbhBPNGYedaza4zHT+RdKK7r/1qrZi0MMEJ2
+ oNZvBXfzW58fUCqH2AsdViWKNl4MrFhvDZQDBYPmN0p8AWPBrDgoofpDKKzrF2bkdpA+eKQCARo
+ wM8LHqpyZ6phY+iP01BA5XOS9Yp+99OBwxUuUuzchsBicsEMXWGqm0az0oF8VhsB5VtoNj+dEGE
+ OYe5Ewx/EuGtO0G6vBLKIyLrNzPFi7ZB+tr2lKkb3825lSoR/8EyXyj5DCGT880uwSSdUu2cC3q
+ tpJguvE1HkuKsQeKbCw==
+X-Proofpoint-GUID: VxlT5mDGgUN2wem8cDGj-jmHOqv32lPi
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_180314_614394_E50709F2 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20260228_181647_915354_337A7A85 
+X-CRM114-Status: UNSURE (   7.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,65 +114,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+Message-ID: <20260301021618.4VSfBzsJMBQqwFudwkK0g8h2PtOefmVwgSeMJQQv7dc@z>
 
-The patch below does not apply to the 5.10-stable tree.
-If someone wants it applied there, or to any other stable or longterm
-tree, then please email the backport, including the original git commit
-id to <stable@vger.kernel.org>.
+On Tue, 10 Feb 2026 15:17:30 +0800, peter.wang@mediatek.com wrote:
 
-Thanks,
-Sasha
+> The UFSHCI 4.1 specification introduces a new completion queue(CQ)
+> entry format, allowing the tag to be obtained directly.
+> 
+> 
 
------------------- original commit in Linus's tree ------------------
+Applied to 7.1/scsi-queue, thanks!
 
-From f8ef441811ec413717f188f63d99182f30f0f08e Mon Sep 17 00:00:00 2001
-From: Thomas Yen <thomasyen@google.com>
-Date: Fri, 30 Jan 2026 00:51:51 +0800
-Subject: [PATCH] scsi: ufs: core: Flush exception handling work when RPM level
- is zero
+[1/1] ufs: core: support UFSHCI 4.1 CQ entry tag
+      https://git.kernel.org/mkp/scsi/c/f707860ebc84
 
-Ensure that the exception event handling work is explicitly flushed during
-suspend when the runtime power management level is set to UFS_PM_LVL_0.
-
-When the RPM level is zero, the device power mode and link state both
-remain active. Previously, the UFS core driver bypassed flushing exception
-event handling jobs in this configuration. This created a race condition
-where the driver could attempt to access the host controller to handle an
-exception after the system had already entered a deep power-down state,
-resulting in a system crash.
-
-Explicitly flush this work and disable auto BKOPs before the suspend
-callback proceeds. This guarantees that pending exception tasks complete
-and prevents illegal hardware access during the power-down sequence.
-
-Fixes: 57d104c153d3 ("ufs: add UFS power management support")
-Signed-off-by: Thomas Yen <thomasyen@google.com>
-Cc: Stable Tree <stable@vger.kernel.org>
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
-Link: https://patch.msgid.link/20260129165156.956601-1-thomasyen@google.com
-Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
----
- drivers/ufs/core/ufshcd.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 66223d2908532..8349fe2090db6 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -9998,6 +9998,8 @@ static int __ufshcd_wl_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op)
- 
- 	if (req_dev_pwr_mode == UFS_ACTIVE_PWR_MODE &&
- 			req_link_state == UIC_LINK_ACTIVE_STATE) {
-+		ufshcd_disable_auto_bkops(hba);
-+		flush_work(&hba->eeh_work);
- 		goto vops_suspend;
- 	}
- 
 -- 
-2.51.0
-
-
-
-
+Martin K. Petersen
 
