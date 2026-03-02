@@ -4,81 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58351D58E6A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2026 07:04:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C084E9B360
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2026 10:47:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=lbzbXErPHdW0qOlRybNgNCwzljqJSXf4R5NURXh6YRg=; b=V4MWQtPBuHaclsEWGVPeb1NHJa
-	50SKJkFnYVMx+Y+OQuADY+oleky/EJHbvQPPyiEbX1PEJZaGROI4cZ2jiCLdlu1IC/yrMdHrmsOY7
-	mmLzh3tUFNCXpqSxDQ+gEbN0Yg50R3Rmc0hp/BRisJghVOWArFLzARgPtxVN+cEzFmd6nIRslqswa
-	Y71UChA7hudGJqyICceYv41sMCBCDJbBXnxBPLmmSG/4gJ4nc2B6kjdMpzrCdAaebuKcTyM2iCBum
-	C1K4F69y5YN418+N2NdrJApXqi9LHmEpxwwRpWJ8sAkJDAcw7NCXkpFtS1FMO4vwMnlz0a1VqqKA/
-	UJVkeWoA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Guu5xxL90HTSu/oVrePUtkjHXxu31Oicp6v/n9zPze8=; b=19iYJqBiAdxBMQnbePBJOFgqYm
+	z34rorlZM1CG5tSE0ZnyxmZ3MPHrsgxCAJ4yAc9IXvvOsDnG7zPJaBah4Pt/Wd6sugsI3yoAfHYTY
+	agip63Xbg+QCylcDpPmnRlT7D7LzFQJ84A3Wykgd8FpYRiOQZ33fW5H03cjuk+91lWurxQJrODEW9
+	5SQzhq+1N/NMII8kBbqf8vqs5iMOcuaQ7wJKvMvpUJBcohmNgxuZ0hX+emyShIav/2IOCpZnM3uTy
+	LlQp8M+nkJas7mrM4Tco5ppoNngEq/H8osySKTY3XC+gBMY5cjOHEPYmjzl7rdPtrxOqUim0z7/yj
+	jz9pnrqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwxK5-0000000CNkb-2MxE;
-	Mon, 02 Mar 2026 07:04:09 +0000
-Received: from n169-112.mail.139.com ([120.232.169.112])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwxK2-0000000CNkB-1gv9;
-	Mon, 02 Mar 2026 07:04:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=139.com; s=dkim; l=0;
-	h=from:subject:message-id:to:cc:mime-version;
-	bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
-	b=vLKDTricHCg+/6AYueKWp5gi+6D37G/xj4PfIH17+MxNUOk6xiTXOR8ADk6Gny4K2wvSh26oe6lDd
-	 mkxzpV8sU8vj+TQeVA0EW0lsdTVeWbljYdTJG3H2/SkPoM5Jr3u7NpNfXJooUka+BAgM6dLEZ1Ildo
-	 FsapyK8RC/OxkwpU=
-X-RM-TagInfo: emlType=0                                       
-X-RM-SPAM: 
-X-RM-SPAM-FLAG: 00000000
-Received: from NTT-kernel-dev (unknown[60.247.85.88])
-	by rmsmtp-lg-appmail-27-12032 (RichMail) with SMTP id 2f0069a5341d688-016a5;
-	Mon, 02 Mar 2026 14:54:29 +0800 (CST)
-X-RM-TRANSID: 2f0069a5341d688-016a5
-From: Li hongliang <1468888505@139.com>
-To: gregkh@linuxfoundation.org,
-	stable@vger.kernel.org,
-	jibin.zhang@mediatek.com
-Cc: patches@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	ast@kernel.org,
-	daniel@iogearbox.net,
-	andrii@kernel.org,
-	martin.lau@linux.dev,
-	song@kernel.org,
-	yhs@fb.com,
-	john.fastabend@gmail.com,
-	kpsingh@kernel.org,
-	sdf@google.com,
-	haoluo@google.com,
-	jolsa@kernel.org,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	yoshfuji@linux-ipv6.org,
-	dsahern@kernel.org,
-	matthias.bgg@gmail.com,
-	willemb@google.com,
-	steffen.klassert@secunet.com,
-	bpf@vger.kernel.org,
-	netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH 6.1.y 3/3] net: fix segmentation of forwarding fraglist GRO
-Date: Mon,  2 Mar 2026 14:54:27 +0800
-Message-Id: <20260302065427.2695392-1-1468888505@139.com>
-X-Mailer: git-send-email 2.34.1
+	id 1vx0nk-0000000CjrJ-3EHa;
+	Mon, 02 Mar 2026 10:47:00 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vx0nh-0000000CjpL-1gTy;
+	Mon, 02 Mar 2026 10:46:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1772448413;
+	bh=7aN20OVVEoXV/61pR66Bp3BcXzzUo9s9PuSf/BuulD8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cBt5YerpgvE/q12nVvdCP1iW+ATX7GgIFeRKGhpGdFLn8hU2fWKHynJruhvxx4syh
+	 0yUsurxFdpVKCsmTpZ7dOINLrL6vOjXh2EJpp0fJ0INK3QyiaWy8Lk4867hVaWjoCA
+	 TDQzMtUEzfYNh4VuUkfqjMlrhERGeiKNW2vZENX/JRUP1sbOle6Hfr1yxy9wt1DA8l
+	 0kUky+p2SlfPaJME8pDjj5racIILa2gVaEO7YFwesz+inKD3kQlz5PHEupQ+ho1zwO
+	 ycl77hqB6su8NccOSr22CvfDNG5EOP+Tjil1rKacK1c2ZyE2Y0axiHHw/AEajIliv7
+	 uzCJVjLYSHuDQ==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 44F4017E0251;
+	Mon,  2 Mar 2026 11:46:53 +0100 (CET)
+Message-ID: <0eaf2427-af8f-4376-8bce-60be800c4a98@collabora.com>
+Date: Mon, 2 Mar 2026 11:46:52 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] mfd: mt6397: Properly fix CID of MT6328, MT6331 and
+ MT6332
+To: Akari Tsuyukusa <akkun11.open@gmail.com>, lee@kernel.org
+Cc: matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ y.oudjana@protonmail.com
+References: <20260228190820.357538-1-akkun11.open@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260228190820.357538-1-akkun11.open@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260301_230406_892790_AB0E707C 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20260302_024657_603459_0FD61496 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,110 +76,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jibin Zhang <jibin.zhang@mediatek.com>
+Il 28/02/26 20:08, Akari Tsuyukusa ha scritto:
+> CIDs set for MT6328, MT6331 and MT6332 are not appropriate.
+> Many Android downstream kernels define CID as below,
+> 
+> MT6328:
+> 
+>      #define PMIC6328_E1_CID_CODE    0x2810
+>      #define PMIC6328_E2_CID_CODE    0x2820
+>      #define PMIC6328_E3_CID_CODE    0x2830
+> 
+> MT6331/MT6332:
+> 
+>      #define PMIC6331_E1_CID_CODE    0x3110
+>      #define PMIC6331_E2_CID_CODE    0x3120
+>      #define PMIC6331_E3_CID_CODE    0x3130
+> 
+>      #define PMIC6332_E1_CID_CODE    0x3210
+>      #define PMIC6332_E2_CID_CODE    0x3220
+>      #define PMIC6332_E3_CID_CODE    0x3230
+> 
+> The current configuration incorrectly uses the revision code as the CID.
+> Therefore, the driver cannot detect the same PMIC of different revisions.
+> (E1/E2 for MT6328, E1/E3 for MT6331/MT6332)
+> Based on these, the CID of MT6328, MT6331 and MT6332 should be corrected.
+> 
+> Additionally, the incorrect MT6331/MT6332 CID overlaps with the MT6320's
+> actual CID:
+> 
+>      #define PMIC6320_E1_CID_CODE    0x1020
+>      #define PMIC6320_E2_CID_CODE    0x2020
+> 
+> This causes a conflict in the switch-case statement of mt6397-irq.c,
+> this prevents adding support for MT6320.
+> 
+> Link: https://github.com/parthibx24/android_kernel_mediatek_k35/blob/4853d1fd9e40563573fa6d6b32b75d571a95e2b7/drivers/misc/mediatek/power/mt6735/pmic.h#L10-L12
+> Link: https://github.com/meizuosc/m75/blob/80ef1d26c5d73e131d064138ed09ff5a2be2bed8/mediatek/platform/mt6595/kernel/core/include/mach/pmic_mt6331_6332_sw.h#L9-L15
+> Link: https://github.com/toffyjan/android_Ticwatch_S_mooneye/blob/4f2a73b26f3821afc452cdce660cdbc73daf4e4a/arch/arm/mach-mt2601/include/mach/pmic_mt6320_sw.h#L29-L30
 
-[ Upstream commit 426ca15c7f6cb6562a081341ca88893a50c59fa2 ]
+Please remove these links, these will be invalid in a few months, so they are
+irrelevant.
 
-This patch enhances GSO segment handling by properly checking
-the SKB_GSO_DODGY flag for frag_list GSO packets, addressing
-low throughput issues observed when a station accesses IPv4
-servers via hotspots with an IPv6-only upstream interface.
+> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
 
-Specifically, it fixes a bug in GSO segmentation when forwarding
-GRO packets containing a frag_list. The function skb_segment_list
-cannot correctly process GRO skbs that have been converted by XLAT,
-since XLAT only translates the header of the head skb. Consequently,
-skbs in the frag_list may remain untranslated, resulting in protocol
-inconsistencies and reduced throughput.
+Anyway:
 
-To address this, the patch explicitly sets the SKB_GSO_DODGY flag
-for GSO packets in XLAT's IPv4/IPv6 protocol translation helpers
-(bpf_skb_proto_4_to_6 and bpf_skb_proto_6_to_4). This marks GSO
-packets as potentially modified after protocol translation. As a
-result, GSO segmentation will avoid using skb_segment_list and
-instead falls back to skb_segment for packets with the SKB_GSO_DODGY
-flag. This ensures that only safe and fully translated frag_list
-packets are processed by skb_segment_list, resolving protocol
-inconsistencies and improving throughput when forwarding GRO packets
-converted by XLAT.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Signed-off-by: Jibin Zhang <jibin.zhang@mediatek.com>
-Fixes: 9fd1ff5d2ac7 ("udp: Support UDP fraglist GRO/GSO.")
-Cc: stable@vger.kernel.org
-Link: https://patch.msgid.link/20260126152114.1211-1-jibin.zhang@mediatek.com
-Signed-off-by: Paolo Abeni <pabeni@redhat.com>
-Signed-off-by: Li hongliang <1468888505@139.com>
----
- net/core/filter.c        | 2 ++
- net/ipv4/tcp_offload.c   | 3 ++-
- net/ipv4/udp_offload.c   | 3 ++-
- net/ipv6/tcpv6_offload.c | 3 ++-
- 4 files changed, 8 insertions(+), 3 deletions(-)
-
-diff --git a/net/core/filter.c b/net/core/filter.c
-index e19bf63ad9a4..d8facc927337 100644
---- a/net/core/filter.c
-+++ b/net/core/filter.c
-@@ -3326,6 +3326,7 @@ static int bpf_skb_proto_4_to_6(struct sk_buff *skb)
- 			shinfo->gso_type &= ~SKB_GSO_TCPV4;
- 			shinfo->gso_type |=  SKB_GSO_TCPV6;
- 		}
-+		shinfo->gso_type |=  SKB_GSO_DODGY;
- 	}
- 
- 	skb->protocol = htons(ETH_P_IPV6);
-@@ -3356,6 +3357,7 @@ static int bpf_skb_proto_6_to_4(struct sk_buff *skb)
- 			shinfo->gso_type &= ~SKB_GSO_TCPV6;
- 			shinfo->gso_type |=  SKB_GSO_TCPV4;
- 		}
-+		shinfo->gso_type |=  SKB_GSO_DODGY;
- 	}
- 
- 	skb->protocol = htons(ETH_P_IP);
-diff --git a/net/ipv4/tcp_offload.c b/net/ipv4/tcp_offload.c
-index 9fbb70312159..b0e62c081998 100644
---- a/net/ipv4/tcp_offload.c
-+++ b/net/ipv4/tcp_offload.c
-@@ -106,7 +106,8 @@ static struct sk_buff *tcp4_gso_segment(struct sk_buff *skb,
- 	if (skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) {
- 		struct tcphdr *th = tcp_hdr(skb);
- 
--		if (skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size)
-+		if ((skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size) &&
-+		    !(skb_shinfo(skb)->gso_type & SKB_GSO_DODGY))
- 			return __tcp4_gso_segment_list(skb, features);
- 
- 		skb->ip_summed = CHECKSUM_NONE;
-diff --git a/net/ipv4/udp_offload.c b/net/ipv4/udp_offload.c
-index 593108049ab7..58cabb2bb32a 100644
---- a/net/ipv4/udp_offload.c
-+++ b/net/ipv4/udp_offload.c
-@@ -351,7 +351,8 @@ struct sk_buff *__udp_gso_segment(struct sk_buff *gso_skb,
- 
- 	if (skb_shinfo(gso_skb)->gso_type & SKB_GSO_FRAGLIST) {
- 		 /* Detect modified geometry and pass those to skb_segment. */
--		if (skb_pagelen(gso_skb) - sizeof(*uh) == skb_shinfo(gso_skb)->gso_size)
-+		if ((skb_pagelen(gso_skb) - sizeof(*uh) == skb_shinfo(gso_skb)->gso_size) &&
-+		    !(skb_shinfo(gso_skb)->gso_type & SKB_GSO_DODGY))
- 			return __udp_gso_segment_list(gso_skb, features, is_ipv6);
- 
- 		ret = __skb_linearize(gso_skb);
-diff --git a/net/ipv6/tcpv6_offload.c b/net/ipv6/tcpv6_offload.c
-index 81959fd6fe36..976608aa049b 100644
---- a/net/ipv6/tcpv6_offload.c
-+++ b/net/ipv6/tcpv6_offload.c
-@@ -108,7 +108,8 @@ static struct sk_buff *tcp6_gso_segment(struct sk_buff *skb,
- 	if (skb_shinfo(skb)->gso_type & SKB_GSO_FRAGLIST) {
- 		struct tcphdr *th = tcp_hdr(skb);
- 
--		if (skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size)
-+		if ((skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size) &&
-+		    !(skb_shinfo(skb)->gso_type & SKB_GSO_DODGY))
- 			return __tcp6_gso_segment_list(skb, features);
- 
- 		skb->ip_summed = CHECKSUM_NONE;
--- 
-2.34.1
-
-
+Cheers,
+Angelo
 
