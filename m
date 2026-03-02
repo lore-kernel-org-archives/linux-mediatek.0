@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A11FCEB3642
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 707DAEB3640
 	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2026 23:01:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7+cweu98TOcNO2fC2HKsiZqjaNg+7ppVWQ+2CpDVZbg=; b=tJ5BNhKKYtO/z17OzpmfJtxfVk
-	mzXWg7/hKYi5q42rSx72kWUmF8osnIcMI19ocuhooddzTDf2sU5sYNXKq4BdlUa/tgQiUXWh3cu2b
-	f84uAEaF0N+L0Rc4x7kkjT0js/LHwz46yXwuHJuI5HY6fIw24iH0nga4hj0HOsFj1b2PUl7mEIuKK
-	wyKv0vMuL8jZnzOHepasplgAi4gr6NV4FLnABI5Yg18hGTvnzjJN0EqCgqSzIN552leR1Bee9gaNB
-	kun1fvLc6H4IH/onbfXcaMV31a7sE1sD3jK5Bo811EqxhOv0xorDL8x2gfnUmQyh1ty4dsOv8eN9v
-	oLJyUWvw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9xOvgBccEPgIHRjW7JLhRF8m7AtAmIUXTMKnuXsqjv0=; b=ZAtvY0PjkDsAMjsSoA5+1TjLj8
+	qdoC4KHVOQWfdCMhTn4wPA35KNCKgW1OV07DbOeexXsGH5c9SPjWPvpVvRVgD53Bs4Rl2VTZD0a5c
+	gQwSi4TCXXVU96SlU7qYCpoh0LY5rGppgT9RmcXyE1WkA8TsK7ZpXDF1QsALYhzGlRd8qUr+SdRWu
+	HFCu0vaC/RX+YFjbyTYbOV7ftK6ixtmsg3jOe0MxWi3hxp/srD8OZiz0uklxfpQ235xHErleNpKhp
+	bW+4+jlxCNXJRVOQ0TAC4m1xTJKZN1feJcEoFah6IT3CsLvXU2zSOZmBMs0LDW1+GITASUXaX2WAh
+	fK498M1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxCGF-0000000EB2r-3kL4;
-	Mon, 02 Mar 2026 23:01:11 +0000
-Received: from mx4.wp.pl ([212.77.101.12])
+	id 1vxCGG-0000000EB2v-0ftl;
+	Mon, 02 Mar 2026 23:01:12 +0000
+Received: from mx3.wp.pl ([212.77.101.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxCGC-0000000EB0H-26sv
+	id 1vxCGC-0000000EB0W-3dO8
 	for linux-mediatek@lists.infradead.org;
 	Mon, 02 Mar 2026 23:01:10 +0000
-Received: (wp-smtpd smtp.wp.pl 21305 invoked from network); 3 Mar 2026 00:01:02 +0100
+Received: (wp-smtpd smtp.wp.pl 22820 invoked from network); 3 Mar 2026 00:01:05 +0100
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
-          t=1772492462; bh=7+cweu98TOcNO2fC2HKsiZqjaNg+7ppVWQ+2CpDVZbg=;
+          t=1772492465; bh=9xOvgBccEPgIHRjW7JLhRF8m7AtAmIUXTMKnuXsqjv0=;
           h=From:To:Cc:Subject;
-          b=h7+VrX8JF7VAf1BQwDmjpfLsuhB07MJnKuPBo+NocsvngfY51YBcYWwFXDEBNbohA
-           xrTqSvXfz5Vf/Y8tyXi6wDF6oBtsjY5M4mH9mydRviOT1wKvR0X2vqWGtCl3eAXEgF
-           hUeOgVQhxxzLTh9lHd9YAP5AqyUVEYdCLfc2WpBqAk0r050TYPFlikhh+9A8XEoTXF
-           7mrlFG4VTCHkOxNoOLc70mT+hCqqhvP2tjVaMVNatTHpTlU8v0/5Azkgr6dsk4QB93
-           PjCk5kX30g11wptGqAS7q6MGSnwlPpeWO+fNCfhPk6+GqYzhJuVoNvh4n3x+v6eu6u
-           PSVaxrzGj5GxQ==
+          b=uPDCu8EGqedIL+PL3QJTUaKpbw8mc9u4Adh4qLbQ0gOUrYLrxbN+GiEgeKuBjTj/7
+           Fi9ba5J7Xp5O8MkXikCaZNTlwlRLa2kv+VACQoaI8BUjWJ4iDGcSperU8oB9lY8OhW
+           SnzdCOCb9h8ALncOtIntqzoUiPxnZzr8mzpAiJ2aKU6HVulCWGH4c6E3HfdtY1Piej
+           tpFOl0QBybyb8V4DoMysJGU4cNBop9HSlgyrTpEL+mOIqlYKb1L5yRoVuCZ+pXQJto
+           bGUPFYEppE5Km6+M+WtdwM6zESP/KV273KVnLhc2cyhHrYJYLAEvSAiKhL799ToRzn
+           LoEV4691wW/Yg==
 Received: from 83.24.116.171.ipv4.supernova.orange.pl (HELO laptop-olek.lan) (olek2@wp.pl@[83.24.116.171])
           (envelope-sender <olek2@wp.pl>)
           by smtp.wp.pl (WP-SMTPD) with TLS_AES_256_GCM_SHA384 encrypted SMTP
-          for <herbert@gondor.apana.org.au>; 3 Mar 2026 00:01:02 +0100
+          for <herbert@gondor.apana.org.au>; 3 Mar 2026 00:01:05 +0100
 From: Aleksander Jan Bajkowski <olek2@wp.pl>
 To: herbert@gondor.apana.org.au,
 	davem@davemloft.net,
@@ -56,19 +56,21 @@ To: herbert@gondor.apana.org.au,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: Aleksander Jan Bajkowski <olek2@wp.pl>
-Subject: [PATCH v2 1/2] dt-bindings: crypto: inside-secure,safexcel: add compatible for MT7981
-Date: Tue,  3 Mar 2026 00:00:38 +0100
-Message-ID: <20260302230100.70240-1-olek2@wp.pl>
+Subject: [PATCH v2 2/2] arm64: dts: mediatek: add crypto offload support on MT7981
+Date: Tue,  3 Mar 2026 00:00:39 +0100
+Message-ID: <20260302230100.70240-2-olek2@wp.pl>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260302230100.70240-1-olek2@wp.pl>
+References: <20260302230100.70240-1-olek2@wp.pl>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-WP-DKIM-Status: good (id: wp.pl)                                                      
-X-WP-MailID: d08f458a8f4368eeb35a8e26834207f2
+X-WP-MailID: c21ac2b7c0b21cfc22d068621eec5de7
 X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
-X-WP-SPAM: NO 0000009 [kFNB]                               
+X-WP-SPAM: NO 0000009 [4Wq0]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260302_150109_004996_4557F7D0 
-X-CRM114-Status: UNSURE (   7.10  )
+X-CRM114-CacheID: sfid-20260302_150109_063218_64F38243 
+X-CRM114-Status: UNSURE (   7.42  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,40 +87,39 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 The MT7981 as well as the MT7986 have a built-in EIP-97 crypto accelerator.
-This commit adds a compatible string for MT7981.
+This commit adds the missing entry in the dts.
 
 Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
 ---
-v2:
-- just add compatible strings
----
- .../devicetree/bindings/crypto/inside-secure,safexcel.yaml  | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml
-index 3dc6c5f89d32..6c797b7ce603 100644
---- a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml
-+++ b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml
-@@ -18,6 +18,7 @@ properties:
-       - items:
-           - enum:
-               - marvell,armada-3700-crypto
-+              - mediatek,mt7981-crypto
-               - mediatek,mt7986-crypto
-           - const: inside-secure,safexcel-eip97ies
-       - const: inside-secure,safexcel-eip197b
-@@ -80,7 +81,10 @@ allOf:
-         compatible:
-           not:
-             contains:
--              const: mediatek,mt7986-crypto
-+              oneOf:
-+                - enum:
-+                    - mediatek,mt7981-crypto
-+                    - mediatek,mt7986-crypto
-     then:
-       properties:
-         interrupts:
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+index 4084f4dfa3e5..94c7bf0050fc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+@@ -150,6 +150,21 @@ sgmiisys1: syscon@10070000 {
+ 			#clock-cells = <1>;
+ 		};
+ 
++		crypto@10320000 {
++			compatible = "mediatek,mt7981-crypto",
++				"inside-secure,safexcel-eip97ies";
++			reg = <0 0x10320000 0 0x40000>;
++			interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-names = "ring0", "ring1", "ring2", "ring3";
++			clocks = <&topckgen CLK_TOP_EIP97B>;
++			clock-names = "core";
++			assigned-clocks = <&topckgen CLK_TOP_EIP97B_SEL>;
++			assigned-clock-parents = <&topckgen CLK_TOP_CB_NET1_D5>;
++		};
++
+ 		uart0: serial@11002000 {
+ 			compatible = "mediatek,mt7981-uart", "mediatek,mt6577-uart";
+ 			reg = <0 0x11002000 0 0x100>;
 -- 
 2.47.3
 
