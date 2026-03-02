@@ -4,166 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D793FD0076
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2026 00:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 155DAD58E4F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2026 03:53:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oBZuljD/+5TcXwhWoGNRFrGUV3OJ0gks35QtMWEwRDI=; b=BBtecdYRycqarWU6D+7pAch9Ty
-	qkpynvxAhmZfOa+k5GXPUtOyR8fk/3ijXU2uLAxaxjwEHKoaq8ZkWfjUugL1U/Yqmv+UjC42V7j/Y
-	kVyRwUuS0RK98XBmEU0Ow5rMu7e+zG4UtSkx33vQ+0h7o0cEwtz2J4KbDMFtWRr88KHzdiIzPE9TP
-	SkNbv/BdHg9lgG8IZZFg5EqHBvWkL04VhKC9w/PylVmc+WUasZ6LNANndGK4+GNYWlGCKaP3RjGjs
-	uV6wrJoRJvInRYAmtoMSAU1LLZHRw28sP7z+ySq6Iig1cQ9Y4C7GNomMkk1r0E3Et8+p/EjeUicxU
-	BX2GPHdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=iTjjNoLU424kMgi53DPTTHLjLn86CgIRcN6erquCGlM=; b=b1lOcr+l4UO5qwrBOX8sPuDM4t
+	9MKu8ARXi7MssBpoOvONBCOb5DD10fOu50s6AcTPfIYaF8qRA9MgkKnjh/a+fwOqzXWu4c/ZXWm4b
+	GoCmL01E6aRJioFCtrxFON4UsQUEAEYjaDXtzwBtaQPUEUrod7szUL11zM3Bvt+yQUCxul30oJQh1
+	F82cApdQl1pVtiEe3goIRdxijZI1SYTInvR6pnxgYmtz5/UG9BnSRIiMu94PGB2bU5GiDeeXht/F6
+	OwsnaSza9DUYE/pUvFiFC8hRZo678oZaZUEE/zROTtFxVg3TMjWPa2/xDmSEhYVVXE07DwB15UMnZ
+	zycyl8Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwqx1-0000000C0HK-3BiI;
-	Mon, 02 Mar 2026 00:15:55 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1vwuL3-0000000CCf2-1rbg;
+	Mon, 02 Mar 2026 03:52:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwqwz-0000000C0GR-1gY4
-	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Mar 2026 00:15:54 +0000
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 621NDHwQ2475353
-	for <linux-mediatek@lists.infradead.org>; Mon, 2 Mar 2026 00:15:53 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	oBZuljD/+5TcXwhWoGNRFrGUV3OJ0gks35QtMWEwRDI=; b=CLibOj358az11iNu
-	my+7sfE+tfLmzugD6ZsrX+Fz/sytJJuWg3AM8HkNW6shh6zg0EdFjQnDOSt5W8eE
-	NYe227IFbhhsRnUD1jUTl0pwBWJtCFXAIo2n+dgUe7+hT1CqToItVHx5JjqfIfSU
-	/ltgdt3b1Aunpxqxvkvbp7mjVv/fCNOMQ2Oi/8pe3+QVyC5pmYV/0cNOwxWt+LWu
-	k0bMSUvD32CSNVgkf9ruC+5l2YQUyBv5fXXPW3sEwu+SClFmj/w2ZcOX86NDaYqp
-	IJA1yxik+c5bEvTsUfLZ5DRWsu7lQ3Ww2MrVy9iiuknpCi9dmfp/nn2J6IhcD1ur
-	ya9GdQ==
-Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com [209.85.214.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cksgq3gsh-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Mon, 02 Mar 2026 00:15:52 +0000 (GMT)
-Received: by mail-pl1-f200.google.com with SMTP id d9443c01a7336-2ae3badc00dso13883835ad.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 01 Mar 2026 16:15:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1772410552; x=1773015352; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=oBZuljD/+5TcXwhWoGNRFrGUV3OJ0gks35QtMWEwRDI=;
-        b=DVV1rDk1DQ3CCR8NiogkjzVnHyvGJYOq/M+VQA9RAkbdAZVSoKNtFV6WNwXfVnmm+q
-         BKOf24jzBz2IYHKHQzuLFLxR0rr80GPDJ8xifWzx6h8VNB8BCORVcdNcmqjvCPxw0efF
-         kNkNXPQXBdt0Hf9TvSOjqHBz+dq4LD+z11vPQYakreYuJTYQuGPj5ZxhByq3rxHKaZ+j
-         NAKRQOH5uCE0vht2yYYT+F16TOgesA3sDJnReaSOpxfShyVuC+ECH4dJklb6gXZAS5YZ
-         RGvZEOrJZPZYqPIyLSpjIKUir1w9l1rsu6ZkontY8WJ+JopogwxJ8RHorff9xEGIMdWb
-         9cpg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772410552; x=1773015352;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=oBZuljD/+5TcXwhWoGNRFrGUV3OJ0gks35QtMWEwRDI=;
-        b=AmqUs+0xh1iwTJPXHEX76ARP8Ntqa4bMtAMChyvkTMWeQxzfn7xaNg1Zmwzp9/jJKQ
-         mptGvIA9xAkkAtx+HXkOmNL2p+D+4CNAZ3dCxK9VgYI424Or1SkgaS2E6QIdlgkHUTjN
-         M/gAfqSR0F3RvQ9KVN0C73SM4N6l80Bud5ige8UpzdMruUxO95klmf5Hn9CI24MPaW+m
-         nAFEDLVvxW904dzBGnW+9t9YjF9DCaTntHBe23GeOf/wBiSdIk99MnHn/Oec5BcfoGlL
-         i0GFUP9JjL79cnj+7mtOUTK81WiNW/XhXSAOMAp6JWYJku90OnWEnlN9CbvpYzoCflh3
-         neOg==
-X-Forwarded-Encrypted: i=1; AJvYcCVMtChQsKui9avwKrygKCqxc1X9qjqgmdx2eZM5uxyQZG+v16fzMstWmoIcaERjHkcWnHyjMvPmi6r3mqYQZg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxX5JG59hDOWNZg5fEvPImW2y1dkmxrFn0zNdL0VAabLT5rp9pf
-	KXQegM6sImbDUvb6e3suzuwGw/BrR/bIrEMqyldGnbKtbMr3xw88J3PPaGlQCB+vV5MS8iylbS5
-	V0FoAExS3dBqqKxZuKoCLs9EP5QdXLpugwYCDM5cCmtKiNhlxgQKGhuMPTr9uresIa7o5nm0mq0
-	GfSKww3Bs=
-X-Gm-Gg: ATEYQzyfg5dx9Tpv+FKL2MkZjqh078Swnc4ynuO6P4t4ehcHE2rw9FuhUh8Fbgv8QiD
-	YdzMBF5RK8yjG2DLuiEMy6bWMC235dpn/rE31xJV2S0UaSC89Gpw+8SivQM1LfMNnudsyfNlvb7
-	k0YsJOqHKf2ka1sjQNMC+5L0yjoICA40gxo/iKiQ1HzOATG1BkdykzsgM9dQ7CFaYvfuw+EtA/2
-	qxhMTM6Kj6QXJQtlNYumlUIaq1xOX96uy4lh9VzFFhq8XaoIZQxAPQBdm+7kizJEf9pAgA02fRN
-	wNyCMjdZf+ajjJC2NZby9umEyuoxKIIvR/BuzroBtpfw8F+XGB7MOI/CKkNNMuULmGxXM3E1sZX
-	4cgIBmzRjTgOK4lhzpLtQi89QKEnGli7Tznq5GL4MGMuFPUA=
-X-Received: by 2002:a17:903:3804:b0:2ae:3b36:23e7 with SMTP id d9443c01a7336-2ae3b3629c3mr58200825ad.16.1772410552085;
-        Sun, 01 Mar 2026 16:15:52 -0800 (PST)
-X-Received: by 2002:a17:903:3804:b0:2ae:3b36:23e7 with SMTP id d9443c01a7336-2ae3b3629c3mr58200545ad.16.1772410551609;
-        Sun, 01 Mar 2026 16:15:51 -0800 (PST)
-Received: from [192.168.0.102] ([183.193.18.168])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2adfb6c4dd0sm120565185ad.70.2026.03.01.16.15.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 01 Mar 2026 16:15:50 -0800 (PST)
-Message-ID: <e2fe080b-c935-4090-88ce-f8b8c15b6efa@oss.qualcomm.com>
-Date: Mon, 2 Mar 2026 08:15:42 +0800
+	id 1vwuL0-0000000CCdn-2oI4;
+	Mon, 02 Mar 2026 03:52:55 +0000
+X-UUID: 482def9c15eb11f1a16f0188aa809bee-20260301
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=iTjjNoLU424kMgi53DPTTHLjLn86CgIRcN6erquCGlM=;
+	b=YBimzRrmRW+IwYcUUvJF1G9ztnIijiwkq4KDZmXpLpPkgOB8Jf5xWi/atK3uBUXrub/tJyVvDgzUclNbbUz1we/UFd5oU+rNPOO90ErLrWJH9u8js27EhQzZfrwRfxvH08XZ7MTVyZENYuGJ0fW5h7lzYNUEpuc4w3VOpfeFZ7c=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:b6ff7265-4f09-4573-9157-a0c1eb6d7181,IP:0,U
+	RL:0,TC:0,Content:0,EDM:-20,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-20
+X-CID-META: VersionHash:89c9d04,CLOUDID:a22825f1-16bd-4243-b4ca-b08ca08ab1d8,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:1|19,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:
+	0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 482def9c15eb11f1a16f0188aa809bee-20260301
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1227674129; Sun, 01 Mar 2026 20:52:49 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 2 Mar 2026 11:52:46 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 2 Mar 2026 11:52:46 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<nicolas.dufresne@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+	kyrie wu <kyrie.wu@mediatek.com>
+CC: Yunfei Dong <yunfei.dong@mediatek.com>, Maoguang Meng
+	<maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>, Irui
+ Wang <irui.wang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH v5 0/6] Add support for MT8196 video encoder
+Date: Mon, 2 Mar 2026 11:52:37 +0800
+Message-ID: <20260302035244.8994-1-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/11] scsi: ufs: core: Introduce a new ufshcd vops
- negotiate_pwr_mode()
-To: Bart Van Assche <bvanassche@acm.org>, avri.altman@wdc.com,
-        beanhuo@micron.com, martin.petersen@oracle.com
-Cc: linux-scsi@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
-        "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
-        Sai Krishna Potthuri <sai.krishna.potthuri@amd.com>,
-        Ajay Neeli <ajay.neeli@amd.com>,
-        Peter Griffin <peter.griffin@linaro.org>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Peter Wang <peter.wang@mediatek.com>,
-        Chaotian Jing <chaotian.jing@mediatek.com>,
-        Stanley Jhu <chu.stanley@gmail.com>,
-        Manivannan Sadhasivam
- <mani@kernel.org>,
-        Orson Zhai <orsonzhai@gmail.com>,
-        Baolin Wang <baolin.wang@linux.alibaba.com>,
-        Chunyan Zhang <zhang.lyra@gmail.com>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
-        Adrian Hunter <adrian.hunter@intel.com>,
-        Archana Patni <archana.patni@intel.com>,
-        open list <linux-kernel@vger.kernel.org>,
-        "open list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-samsung-soc@vger.kernel.org>,
-        "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-arm-kernel@lists.infradead.org>,
-        "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>,
-        "open list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-arm-msm@vger.kernel.org>
-References: <20260227160809.2620598-1-can.guo@oss.qualcomm.com>
- <20260227160809.2620598-2-can.guo@oss.qualcomm.com>
- <9d975881-7570-495d-94ea-085e2012a9af@acm.org>
- <5a2961af-dada-44f3-8e57-119076f10750@oss.qualcomm.com>
- <3abcef32-f872-4aa5-a7e1-c99286f426aa@acm.org>
-Content-Language: en-US
-From: Can Guo <can.guo@oss.qualcomm.com>
-In-Reply-To: <3abcef32-f872-4aa5-a7e1-c99286f426aa@acm.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: cYLuRM03m9sE3tsavjZ9zjsvWk0qiUw0
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzAyMDAwMCBTYWx0ZWRfX4Qj5mxpRlA5f
- Z6PFY3WsBS45QliAjMOjvj3j+2PBeRIl7HH09PKEgxerNN0FuDHFhVHVKoMyva+BN1f/4iWMOnj
- f8P72fVl2xnBLgSeoKYulverAIQIVfPqwrTA/wk3poChqQonE10X6HCzYL1DRwzLeAxz9pr6UbK
- 4csBzEsgiF6W0bsnsveDRn0dOGO06CKchE9sxUoOZ7KqHt+6mWsyoCsewxJJs4vo6GSry+AFgfe
- 3ep5CG3muLt6mZAQVY4PCNtt+60FcKkOv0ammd+DyNMKKMaxlrAxOhBGW+GqO8tQqL2zazWc0NF
- 8u1LbILa1T0k4pq7KNkduVf96Srv6cfu345LyfLT67YkQ0H/MuaPZnbQDClVgljzxc5MrXRjQni
- YvX7VFshfvIrvxiw9QCVWYPWt9C5wbh7wwei+9BF5s5Sy1pgtNiqzckZ7LokdBvVPdejSV+l0Gs
- uZRrp3P+HIPcQlJeISQ==
-X-Authority-Analysis: v=2.4 cv=bdRmkePB c=1 sm=1 tr=0 ts=69a4d6b8 cx=c_pps
- a=IZJwPbhc+fLeJZngyXXI0A==:117 a=4/OApUm1v7sVY8kc7hZvWg==:17
- a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
- a=3hymWB_5rKpTfOV4Hd4A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=uG9DUKGECoFWVXl0Dc02:22
-X-Proofpoint-ORIG-GUID: cYLuRM03m9sE3tsavjZ9zjsvWk0qiUw0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-01_05,2026-02-27_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 bulkscore=0 priorityscore=1501 clxscore=1015
- malwarescore=0 impostorscore=0 suspectscore=0 adultscore=0 spamscore=0
- phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2602130000
- definitions=main-2603020000
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260301_161553_736999_19CADDCF 
-X-CRM114-Status: GOOD (  17.54  )
+X-CRM114-CacheID: sfid-20260301_195254_745599_05D8EE62 
+X-CRM114-Status: GOOD (  14.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -178,38 +93,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Bart,
+This patch series add support for MT8196 video encoder.
+patch 1~3: Add a new encoder driver interface for new VCP firmware.
+patch 4: Add new encoder driver platform data.
+patch 5: Add dt-bindings.
+patch 6: Add compatible data.
 
-On 3/2/2026 1:51 AM, Bart Van Assche wrote:
-> On 3/1/26 6:26 AM, Can Guo wrote:
->> On 2/28/2026 3:31 AM, Bart Van Assche wrote:
->>> On 2/27/26 8:07 AM, Can Guo wrote:
->>>> -    return -ENOTSUPP;
->>>> +    return -EOPNOTSUPP;
->>>
->>> Why has ENOTSUPP been changed into EOPNOTSUPP?
->> I got a warning from checkpatch.pl when I add the new vops, so I 
->> changed the same for
->> ufshcd_vops_pwr_change_notify() too.
->>
->> WARNING: ENOTSUPP is not a SUSV4 error code, prefer EOPNOTSUPP
-> Hi Can,
->
-> SUSv4 = Single UNIX Specification, Version 4. This is a standard that
-> defines how system calls should behave. Hence, ENOTSUPP must not be
-> returned as an error value by e.g. sysfs callbacks. As far as I know the
-> ufshcd_vops_pwr_change_notify() return value is never returned to user
-> space and hence returning ENOTSUPP from inside this function is fine.
->
-> If you want to keep this change in ufshcd_vops_pwr_change_notify()
-> please make it a separate patch.
-Thanks for the info. I will use ENOTSUPP in next version.
+About adding new driver support, the v4l2-compliance report shows:
+"Total for mtk-vcodec-enc device /dev/video3: 47, Succeeded: 46, Failed: 1, Warnings: 0"
+The 1 Failed case is not caused by current patch set:
+                fail: v4l2-test-controls.cpp(1171): node->codec_mask & STATEFUL_ENCODER
+        test VIDIOC_(UN)SUBSCRIBE_EVENT/DQEVENT: FAIL
 
-Best Regards,
-Can Guo.
->
-> Thanks,
->
-> Bart.
+This patch set depends on "media: mediatek: vcodec: support video decoder in mt8196"[1]
+
+[1] https://patchwork.linuxtv.org/project/linux-media/list/?series=21718
+
+Change in v5:
+ - Rewrite patch5 commit subject.
+ - Add else statement in patch5.
+ - Link to v4: https://patchwork.linuxtv.org/project/linux-media/list/?series=21757
+
+Change in v4:
+ - Rework patch3 commit message.
+ - Rework patch5 commit with more details.
+ - Rebase patch onto decoder's patch set.
+ - Link to v3: https://patchwork.linuxtv.org/project/linux-media/cover/20250814085642.17343-1-kyrie.wu@mediatek.com/
+
+Change in v3:
+ - Add venc rc buffer alloc failure error handling.
+ - Add mediatek,vcp property definition in dt-bindning.
+
+Change in v2:
+ - Add support for VCP encode process.
+ - Add MT8196 encoder driver platform data.
+ - Rebase encoder patch onto decoder's patch set.
+ - Fix some review comments in v1.
+
+Irui Wang (6):
+  media: mediatek: encoder: Add a new encoder driver interface
+  media: mediatek: encoder: Add support for common firmware interface
+  media: mediatek: encoder: Add support for VCP encode process
+  media: mediatek: encoder: Add a new platform data member
+  media: dt-bindings: mediatek,vcodec-encoder: Add MT8196
+  media: mediatek: encoder: Add MT8196 encoder compatible data
+
+ .../media/mediatek,vcodec-encoder.yaml        |  22 +
+ .../mediatek/vcodec/common/mtk_vcodec_fw.c    |  19 +
+ .../mediatek/vcodec/common/mtk_vcodec_fw.h    |   2 +
+ .../vcodec/common/mtk_vcodec_fw_priv.h        |   1 +
+ .../vcodec/common/mtk_vcodec_fw_vcp.c         |   6 +
+ .../platform/mediatek/vcodec/encoder/Makefile |   1 +
+ .../mediatek/vcodec/encoder/mtk_vcodec_enc.c  |  36 +-
+ .../vcodec/encoder/mtk_vcodec_enc_drv.c       |  28 +
+ .../vcodec/encoder/mtk_vcodec_enc_drv.h       |  15 +-
+ .../vcodec/encoder/venc/venc_common_if.c      | 683 ++++++++++++++++++
+ .../vcodec/encoder/venc/venc_h264_if.c        |   8 +-
+ .../mediatek/vcodec/encoder/venc_drv_if.c     |   3 +-
+ .../mediatek/vcodec/encoder/venc_drv_if.h     |  11 +-
+ .../mediatek/vcodec/encoder/venc_ipi_msg.h    |  26 +
+ .../mediatek/vcodec/encoder/venc_vpu_if.c     |  47 +-
+ 15 files changed, 856 insertions(+), 52 deletions(-)
+ create mode 100644 drivers/media/platform/mediatek/vcodec/encoder/venc/venc_common_if.c
+
+-- 
+2.45.2
 
 
