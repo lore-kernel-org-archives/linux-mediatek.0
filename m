@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF930D58E5D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2026 05:31:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DDC9D58E60
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2026 05:31:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uFFvNBaU3ukfXIRtGlvARwBwSZQA57YUx4AEefexLes=; b=FB5IfAcN5tt+Ey8RWU40HetKZI
-	j1YbQt+FhBEp0oehwuw2QboHcriKju0C58bnlkgYzBmZ2aSWRprjz7LYHwCJWTxgOwSwoyyEEOe81
-	6xq9aVs5RLzwspfQm2PN76xmBSIm2UPOe/qmc0fsZxnHnEuZTmmvsIW0NKjQGK+hR9vXfdyXZHhms
-	tuQ4u/RqtZpeGPSuxYwsYQWn8QOVCbnqN6J1hOrf0lfscfZgWewO9BwPmtDLZS6nqHgq3m7arz8H2
-	mUssxnG/v9iVByxVGyRJyYNt6sOWXbPtG1AM7sxrwx4qVp1I+snhpmGL/HR2eKU8Cj+6XVeRAOSyE
-	RdfoO21Q==;
+	bh=6ly6u8R7bmz5Bdr6kesmUkfvdxyNrxQnN2igtDps6Mw=; b=TOu7IN4uBbQYjm2UKKE+b2xvx+
+	Yz6KDlLMjSkbzGW9bvjPVtTvQn3cC/FBqUuWw2pLoYUEdqEEqTa1124zdp7kKKpxL6036U8vQPxCz
+	tomQlmKdwiZl4v4vg6C35OwVtbp6hJfJWNWk2oYsOfMFE/zwd7VcFB5HoU43m/ui+8Hkjc5AIo+0N
+	sv6nDbRFLRhUID4KKyHhnguwwmZRGBYkEgWuBDtonDmfMB4HdsWRUtbjC9l1jSdJDTFf0QUVizTV2
+	DVTEKd+MZCQ0NF/1hZqp0DTd+I2SZP5pjg6ShWsFKpkwQh39vvJoM1i5vLqLDCr7mf1IQncXjEuOF
+	ffuluCTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwvsU-0000000CIlR-3wFa;
-	Mon, 02 Mar 2026 05:31:34 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1vwvsY-0000000CIn2-1DEg;
+	Mon, 02 Mar 2026 05:31:38 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwvsS-0000000CIjt-1mPR
+	id 1vwvsV-0000000CIlU-2NZ9
 	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Mar 2026 05:31:33 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2ae4e538abdso6038395ad.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 01 Mar 2026 21:31:32 -0800 (PST)
+	Mon, 02 Mar 2026 05:31:36 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2aae146b604so31708965ad.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 01 Mar 2026 21:31:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1772429492; x=1773034292; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1772429494; x=1773034294; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=uFFvNBaU3ukfXIRtGlvARwBwSZQA57YUx4AEefexLes=;
-        b=c4YCCbmb9pxT28cuZswgPsmq2J9CzevRA+thJCtPwKn/2jqZiWqV8pD1J+EdcEG9EW
-         Se7jxu5d2ZqBTMd8ei2J1mrtYFAl4h9VrklU2ze15bBQw7yNw7nEYbbFOnn/G/hhdCwh
-         SDlnesKlLXcF2cTa9EFPztJoWZaFcGkjHTzyQ=
+        bh=6ly6u8R7bmz5Bdr6kesmUkfvdxyNrxQnN2igtDps6Mw=;
+        b=HwjjvuJKctHASX7vOMuUFTIG5d2AV1IYzJe2uW8QHEHDzrjvGvyY1WFmSjR0G0Lqmp
+         SzC9jjB6BbpIQ3U+oZhiAfk9o/pCYalyAt5tNVvN0a3C62FDtjp8iGwmvllFsvqNdTrb
+         2WYnMP9QO0roOGwQNPgXYerV3ubMiad70IW1o=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772429492; x=1773034292;
+        d=1e100.net; s=20230601; t=1772429494; x=1773034294;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=uFFvNBaU3ukfXIRtGlvARwBwSZQA57YUx4AEefexLes=;
-        b=k2N/ZGr+pBeEiLl/StYadiTDT3Q+45eHutoZrUD6GDHy4vfC+vvTnNFhbAi1/gQH4z
-         wLInVLgmj4sJDHIzXcvhWgIGqsbgCWsQK8ry2AKaOb12+2Rj77YoOQiDlYAjyJVKVcQ7
-         EfLe1uiIwEBBZJ6m5BohlP7iI8ujqHIrbiJhFxnZRnVD/7Gz6X3ZXvw9/TPGSYQN9t3/
-         i1DN1ezZC5LmSeFT4HTSd0NoiyvxUpnQeMI2Qai3DgDUosEpCgUNArZ0p2rP6NAK6N+T
-         YwGYhP6YMTCP3oIqNuXTCZO8bvhdPnxhVDMfMv1FnCBUsXIBeQkd/ceLi/6CZivCTQ/7
-         uuvg==
-X-Forwarded-Encrypted: i=1; AJvYcCW6172TiYjwDURqexV24l7JxNky1XhtqYU9iVX2tsMaJ6jAXn9ACKpRzmHUlJV+Sod9yEAOBQJ5YvUUKke7sA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwJTfmJ6KMHxXD0Qv59YUggDv4/AUwG+EWAVdMK0L8A6jAOw8wW
-	0hndGuLZaA2WqT+1ytT9D7kz1feMWNhApFVDxexv+XbiGH6ucFKC/MiFh/V8sxBanA==
-X-Gm-Gg: ATEYQzypv3xKXRnj0M8EtAj4UeOhqRvucNVW0QjUwIVjSjJLHUTGq1pJynmLoeFur7B
-	T9gCOoxTpSH8fpjaLU8mQuMowTFjnUZCExIjvA6ItXOdeMisx1iz2SYq+8S6Hiio2EhCxUF0JaY
-	zmsnT3fHD3WRsiMum/hXhWCtU0y3zuFbYCfWNPoTLbJOzhIjnuR8OplAg+1gxLf4H3zk2H9H8Nh
-	p9Ll2GKlGqqIdtqJgKPNPTbJSO+fLNR6nKlCTEFxwJ60WxtuYgrvA3MrqZrwOpc0C/f9vJ/w7SA
-	w8p3n1tpaZCJr0IgplZOIGk3ROEnYEdza8xCz+vrCQgkI1JO22MzOm00s86w6bVp8rhQQb2I41e
-	fwLbWeKYaMdwekG0lthDDf0MMOQVQF/+0CCuE0D0laFvZUrHrGu93UU72r/kcASncosCyOiIrG8
-	2yNoajZIphKCV8qSG6KCamVwsauwEU0mN5VRPxv+LxBzWvRW2xq/deoY08c6D7CqvwbdOK+uriZ
-	X8XHD/x
-X-Received: by 2002:a17:903:2ece:b0:2ae:3a77:a1eb with SMTP id d9443c01a7336-2ae3a77a535mr70848245ad.39.1772429491782;
-        Sun, 01 Mar 2026 21:31:31 -0800 (PST)
+        bh=6ly6u8R7bmz5Bdr6kesmUkfvdxyNrxQnN2igtDps6Mw=;
+        b=q5WfsZTdkOj9/TIbjkkePqOND32MBgxknNjRlNfnhDovgN3skHm4ywY948XR0WxMdd
+         r/zrFgacqMuP861H5w8UCrEZ4F0aFGmf0g7wugGUhPJ5tnX9bLvOcql6NnoTOxjvxZog
+         OkkD3zXg0ljXext+a0xqvUT422hTJICPajy2I9YWN1O/3FN9H0cSGvUgUjwvo98GK/6Y
+         22u/sy9x5jIza7f77jJ6WFVPAh7F2a+JW8H+iznzNANP2VHbl3yHT+0FCzHGfOXRxCRf
+         L7bd5VNiC1YRd1KnQly5F+vX3e8Ux4VpKGxl3ahL4F+5F1l/p1lpx9ikGUf09+DtbFSI
+         mSVg==
+X-Forwarded-Encrypted: i=1; AJvYcCXu+L1F8NYUUj6uYmOpq7EFqc8qZ2czD0VH7T+yvtyWS3jTy9d70/KhklKSqOZ4yIBc5hMIyE1ZUz7PSuQcrw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxxOq3dPpmOeW52A8P/XNjvctA/pPtH366d/4H5AfLKH2xTDsvb
+	0bRfAAO+HBqHTxhLpETKkeBVz/IOp4s/xE7P3uztTmXHLNvo/Ll3P/nC9XQdLf3+WA==
+X-Gm-Gg: ATEYQzysxmiQjqtaCWCdOKnFHk3uQDoATWxgQc+Z7b4aHX62nVOlCWCuF8Gbg9GfC4s
+	jahK2wk5ZgmaBwyDJ2zjATQHjse0ROk7SXTnQYTqxy5Z9YkNIQfCvGeMp9bMbNVu8KfdgzD9Gh+
+	+jgsFHFuf80ZsLLWlvFbjCK9i4qm6Id4U0y+zFTy7gtpddew9ErcpF/A7RGzoRrGGi98opAjM0X
+	3Q3eSMLUVMhX+5vUkndxgB+hbqhsdBWJRbo/K1LrQ2vxa7mx6lAY04D5DXIGI/aZ5T13MOnLrV2
+	gY2QKlmUx5lrdvJ6OUyhsfJp9kKWcMYbF0F0RvOyEUxh9A6KJR3f+tikPH3ViIfFVzSPLJir6GS
+	+XWuxG00fjHnOVf5J4tuD+lrLJit0aK75tBOYl1PA48yX4aYz9+Kvov4mA0VqkI1ImBKmyR6fFq
+	8rCNkQqeYxm72SkNeiGONug4SJ7S5puipmx5mWSR6ycHzi1/ylL7QZntfeUZKp3XspPmkyZCq55
+	DLWv4L0
+X-Received: by 2002:a17:902:e74b:b0:2ad:ae4f:3458 with SMTP id d9443c01a7336-2ae2e4e2c8fmr110384055ad.55.1772429494577;
+        Sun, 01 Mar 2026 21:31:34 -0800 (PST)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:b9b7:93f7:8c3c:59d8])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ae5229cda1sm15196435ad.23.2026.03.01.21.31.29
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ae5229cda1sm15196435ad.23.2026.03.01.21.31.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Mar 2026 21:31:31 -0800 (PST)
+        Sun, 01 Mar 2026 21:31:34 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -80,19 +80,18 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	Bartosz Golaszewski <brgl@bgdev.pl>,
 	linux-pci@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: [PATCH v3 5/7] PCI: mediatek-gen3: Integrate new pwrctrl API
-Date: Mon,  2 Mar 2026 13:31:05 +0800
-Message-ID: <20260302053109.1117091-6-wenst@chromium.org>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v3 6/7] arm64: dts: mediatek: mt8195-cherry: add WiFi PCIe and BT USB power supplies
+Date: Mon,  2 Mar 2026 13:31:06 +0800
+Message-ID: <20260302053109.1117091-7-wenst@chromium.org>
 X-Mailer: git-send-email 2.53.0.473.g4a7958ca14-goog
 In-Reply-To: <20260302053109.1117091-1-wenst@chromium.org>
 References: <20260302053109.1117091-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260301_213132_524413_53118103 
-X-CRM114-Status: GOOD (  19.56  )
+X-CRM114-CacheID: sfid-20260301_213135_618137_C92E597D 
+X-CRM114-Status: GOOD (  13.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,132 +106,112 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-With the new PCI pwrctrl API and PCI slot binding and power drivers, we
-now have a way to describe and power up WiFi/BT adapters connected
-through a PCIe or M.2 slot, or exploded onto the mainboard itself.
+The MT8195 Cherry design features an M.2 E-key slot wired up with PCIe
+and USB for a WiFi+BT adapter. Previously the power was just enabled
+all the time with a default pinctrl setting that set the GPIO pin high.
 
-Integrate the PCI pwrctrl API into the PCIe driver, so that power is
-properly enabled before PCIe link training is done, allowing the
-card to successfully be detected.
+With the PCIe slot description DT binding in place, the power supplies
+can at least be added and tied to the PCIe and USB hosts. Once the
+M.2 E-key binding is merged, this description can be further converted
+to an M.2 E-key.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-Changes since v2
-- Added "select PCI_PWRCTRL_SLOT" to Kconfig to fix kernel test robot
-  compilation error
+ .../boot/dts/mediatek/mt8195-cherry.dtsi      | 47 ++++++++++++++-----
+ 1 file changed, 36 insertions(+), 11 deletions(-)
 
-I'm wondering why the two existing uses select PCI_PWRCTRL_SLOT and not
-PCI_PWRCTRL though.
----
- drivers/pci/controller/Kconfig              |  1 +
- drivers/pci/controller/pcie-mediatek-gen3.c | 38 ++++++++++++++++-----
- 2 files changed, 31 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-index 5aaed8ac6e44..e72ac6934379 100644
---- a/drivers/pci/controller/Kconfig
-+++ b/drivers/pci/controller/Kconfig
-@@ -222,6 +222,7 @@ config PCIE_MEDIATEK_GEN3
- 	depends on ARCH_AIROHA || ARCH_MEDIATEK || COMPILE_TEST
- 	depends on PCI_MSI
- 	select IRQ_MSI_LIB
-+	select PCI_PWRCTRL_SLOT
- 	help
- 	  Adds support for PCIe Gen3 MAC controller for MediaTek SoCs.
- 	  This PCIe controller is compatible with Gen3, Gen2 and Gen1 speed,
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index 7459e1c1899d..93e591f788f7 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -22,6 +22,7 @@
- #include <linux/of_device.h>
- #include <linux/of_pci.h>
- #include <linux/pci.h>
-+#include <linux/pci-pwrctrl.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/pm_domain.h>
-@@ -421,15 +422,23 @@ static int mtk_pcie_device_power_up(struct mtk_gen3_pcie *pcie)
- 		val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
- 		       PCIE_PE_RSTB;
- 		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-+	}
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index 6e99122c65ac..f1ff64a84267 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -83,6 +83,17 @@ pp3300_s3: regulator-pp3300-s3 {
+ 		vin-supply = <&pp3300_z2>;
+ 	};
+ 
++	pp3300_wlan: regulator-pp3300-wlan {
++		compatible = "regulator-fixed";
++		pinctrl-names = "default";
++		pinctrl-0 = <&pp3300_wlan_en_pin>;
++		regulator-name = "pp3300_wlan";
++		/* load switch */
++		enable-active-high;
++		gpio = <&pio 58 GPIO_ACTIVE_HIGH>;
++		vin-supply = <&pp3300_z2>;
++	};
 +
-+	err = pci_pwrctrl_power_on_devices(pcie->dev);
-+	if (err) {
-+		dev_err(pcie->dev, "Failed to power on devices: %pe\n", ERR_PTR(err));
-+		return err;
-+	}
+ 	/* system wide 3.3V power rail */
+ 	pp3300_z2: regulator-pp3300-z2 {
+ 		compatible = "regulator-fixed";
+@@ -760,10 +771,25 @@ &ovl0_in {
+ };
  
--		/*
--		 * Described in PCIe CEM specification revision 6.0.
--		 *
--		 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
--		 * for the power and clock to become stable.
--		 */
--		msleep(PCIE_T_PVPERL_MS);
-+	/*
-+	 * Described in PCIe CEM specification revision 6.0.
-+	 *
-+	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-+	 * for the power and clock to become stable.
-+	 */
-+	msleep(PCIE_T_PVPERL_MS);
- 
-+	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
- 		/* De-assert reset signals */
- 		val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
- 			 PCIE_PE_RSTB);
-@@ -449,6 +458,8 @@ static void mtk_pcie_device_power_down(struct mtk_gen3_pcie *pcie)
- 		val |= PCIE_PE_RSTB;
- 		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
- 	}
+ &pcie1 {
+-	status = "okay";
+-
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie1_pins_default>;
++	status = "okay";
 +
-+	pci_pwrctrl_power_off_devices(pcie->dev);
- }
- 
- static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
-@@ -1211,9 +1222,13 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 	pcie->soc = device_get_match_data(dev);
- 	platform_set_drvdata(pdev, pcie);
- 
-+	err = pci_pwrctrl_create_devices(pcie->dev);
-+	if (err)
-+		return dev_err_probe(dev, err, "failed to create pwrctrl devices\n");
++	pcie@0 {
++		compatible = "pciclass,0604";
++		reg = <0 0 0 0 0>;
++		device_type = "pci";
++		num-lanes = <1>;
++		vpcie3v3-supply = <&pp3300_wlan>;
++		#address-cells = <3>;
++		#size-cells = <2>;
++		ranges;
 +
- 	err = mtk_pcie_setup(pcie);
- 	if (err)
--		return err;
-+		goto err_destroy_pwrctrl;
++		wifi@0 {
++			reg = <0 0 0 0 0>;
++			wakeup-source;
++		};
++	};
+ };
  
- 	host->ops = &mtk_pcie_ops;
- 	host->sysdata = pcie;
-@@ -1226,7 +1241,12 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+ &pio {
+@@ -1179,12 +1205,6 @@ pins-vreg-en {
+ 	};
  
- err_teardown_irq_and_power_down:
- 	mtk_pcie_irq_teardown(pcie);
-+	mtk_pcie_device_power_down(pcie);
- 	mtk_pcie_power_down(pcie);
-+err_destroy_pwrctrl:
-+	if (err != -EPROBE_DEFER)
-+		pci_pwrctrl_destroy_devices(pcie->dev);
+ 	pio_default: pio-default-pins {
+-		pins-wifi-enable {
+-			pinmux = <PINMUX_GPIO58__FUNC_GPIO58>;
+-			output-high;
+-			drive-strength = <14>;
+-		};
+-
+ 		pins-low-power-pd {
+ 			pinmux = <PINMUX_GPIO25__FUNC_GPIO25>,
+ 				 <PINMUX_GPIO26__FUNC_GPIO26>,
+@@ -1222,6 +1242,12 @@ pins-low-power-pupd {
+ 		};
+ 	};
+ 
++	pp3300_wlan_en_pin: pp3300-wlan-en-pins {
++		pins-en {
++			pinmux = <PINMUX_GPIO58__FUNC_GPIO58>;
++		};
++	};
 +
- 	return err;
- }
+ 	rt1019p_pins_default: rt1019p-default-pins {
+ 		pins-amp-sdb {
+ 			pinmux = <PINMUX_GPIO100__FUNC_GPIO100>;
+@@ -1570,11 +1596,10 @@ &xhci2 {
+ };
  
-@@ -1241,7 +1261,9 @@ static void mtk_pcie_remove(struct platform_device *pdev)
- 	pci_unlock_rescan_remove();
+ &xhci3 {
+-	status = "okay";
+-
+ 	/* MT7921's USB Bluetooth has issues with USB2 LPM */
+ 	usb2-lpm-disable;
+-	vbus-supply = <&usb_vbus>;
++	vbus-supply = <&pp3300_wlan>;
++	status = "okay";
+ };
  
- 	mtk_pcie_irq_teardown(pcie);
-+	pci_pwrctrl_power_off_devices(pcie->dev);
- 	mtk_pcie_power_down(pcie);
-+	pci_pwrctrl_destroy_devices(pcie->dev);
- }
- 
- static void mtk_pcie_irq_save(struct mtk_gen3_pcie *pcie)
+ #include <arm/cros-ec-keyboard.dtsi>
 -- 
 2.53.0.473.g4a7958ca14-goog
 
