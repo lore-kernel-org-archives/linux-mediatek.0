@@ -4,55 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 627B6EB363C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2026 22:48:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A11FCEB3642
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Mar 2026 23:01:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Z0wG9Mhmgg9tD+OBPSDpFLVc2LfdmVCQi7222Nz/pSI=; b=49eNGPLpUZRXkvoSYtZqb8MzmX
-	tN6X4Vabkg2z7p87dnCY9AJ/RHuhbHpdO3HVbMQ4q1RW0LNaGl77OHVuVSdU7n8REL213ryWdZnZJ
-	29spWDt012ewDL0WmM2Q54lVk844mhchKhYs6IE/xPUhx5/UhPc8RJPIXvdKye92PsrR3wlSeViyO
-	SjRuXfPUfWJZ4iJd9NeiohLA5Ms6+PMQebCKmZYqoGYTH2+l32/9v4bWGaDEaNwBMTkpURtRSuW6H
-	IMPFeKTUA5Tbfqn0s5j3+BuVLeEMs79HXXNBCUws8YHaqwEEbgX14rlxxK2qT0WeoNXJ8wAoof7P7
-	dRstVqLA==;
+	bh=7+cweu98TOcNO2fC2HKsiZqjaNg+7ppVWQ+2CpDVZbg=; b=tJ5BNhKKYtO/z17OzpmfJtxfVk
+	mzXWg7/hKYi5q42rSx72kWUmF8osnIcMI19ocuhooddzTDf2sU5sYNXKq4BdlUa/tgQiUXWh3cu2b
+	f84uAEaF0N+L0Rc4x7kkjT0js/LHwz46yXwuHJuI5HY6fIw24iH0nga4hj0HOsFj1b2PUl7mEIuKK
+	wyKv0vMuL8jZnzOHepasplgAi4gr6NV4FLnABI5Yg18hGTvnzjJN0EqCgqSzIN552leR1Bee9gaNB
+	kun1fvLc6H4IH/onbfXcaMV31a7sE1sD3jK5Bo811EqxhOv0xorDL8x2gfnUmQyh1ty4dsOv8eN9v
+	oLJyUWvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxC3m-0000000E9Gj-2b2T;
-	Mon, 02 Mar 2026 22:48:18 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vxCGF-0000000EB2r-3kL4;
+	Mon, 02 Mar 2026 23:01:11 +0000
+Received: from mx4.wp.pl ([212.77.101.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxC3l-0000000E9Gc-2tnY
+	id 1vxCGC-0000000EB0H-26sv
 	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Mar 2026 22:48:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 54508600AE;
-	Mon,  2 Mar 2026 22:48:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD2F2C19423;
-	Mon,  2 Mar 2026 22:48:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772491696;
-	bh=I5LiEPYHyfYN2sGvuXOiWyPgDHM6sRAC8/Jw2yALC6I=;
-	h=Date:From:To:Cc:Subject:From;
-	b=ShcZ60Gp95EoSk1Xca5kitC4jfnr0AF0HIKyURkWz8DjerQR5aEyPLHcgj4+S1HN+
-	 aVZsYFFi+yYhf4WhVdi6ROytvdsj/6ZL2NjGK90HTtcZ85OX8SmJDjn6HLjac9VrMe
-	 n7zFrDkY9FFvnOPre9tFQIw/kEHyk2IpJjaKecoOlh0WSIiDxn64CpAjdMdCY9rl5c
-	 1+kaxd86GaxxD9uxpNqBR/hlsTmC/rXy8M/6hjTXfA4zPoaUO/+qViZKkVYAhn5gpr
-	 hD8Tqjx6zqGr75seA7w5UVS0sSY+ZwNBlWXovCtE1L0GBsPwqpGIX8otpolaYCA2Sz
-	 k87E+h9M4wXXQ==
-Date: Mon, 2 Mar 2026 16:48:14 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org
-Subject: W=1 pcie-mediatek.c snprintf warnings
-Message-ID: <20260302224814.GA4029890@bhelgaas>
+	Mon, 02 Mar 2026 23:01:10 +0000
+Received: (wp-smtpd smtp.wp.pl 21305 invoked from network); 3 Mar 2026 00:01:02 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
+          t=1772492462; bh=7+cweu98TOcNO2fC2HKsiZqjaNg+7ppVWQ+2CpDVZbg=;
+          h=From:To:Cc:Subject;
+          b=h7+VrX8JF7VAf1BQwDmjpfLsuhB07MJnKuPBo+NocsvngfY51YBcYWwFXDEBNbohA
+           xrTqSvXfz5Vf/Y8tyXi6wDF6oBtsjY5M4mH9mydRviOT1wKvR0X2vqWGtCl3eAXEgF
+           hUeOgVQhxxzLTh9lHd9YAP5AqyUVEYdCLfc2WpBqAk0r050TYPFlikhh+9A8XEoTXF
+           7mrlFG4VTCHkOxNoOLc70mT+hCqqhvP2tjVaMVNatTHpTlU8v0/5Azkgr6dsk4QB93
+           PjCk5kX30g11wptGqAS7q6MGSnwlPpeWO+fNCfhPk6+GqYzhJuVoNvh4n3x+v6eu6u
+           PSVaxrzGj5GxQ==
+Received: from 83.24.116.171.ipv4.supernova.orange.pl (HELO laptop-olek.lan) (olek2@wp.pl@[83.24.116.171])
+          (envelope-sender <olek2@wp.pl>)
+          by smtp.wp.pl (WP-SMTPD) with TLS_AES_256_GCM_SHA384 encrypted SMTP
+          for <herbert@gondor.apana.org.au>; 3 Mar 2026 00:01:02 +0100
+From: Aleksander Jan Bajkowski <olek2@wp.pl>
+To: herbert@gondor.apana.org.au,
+	davem@davemloft.net,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	atenart@kernel.org,
+	linux-crypto@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Aleksander Jan Bajkowski <olek2@wp.pl>
+Subject: [PATCH v2 1/2] dt-bindings: crypto: inside-secure,safexcel: add compatible for MT7981
+Date: Tue,  3 Mar 2026 00:00:38 +0100
+Message-ID: <20260302230100.70240-1-olek2@wp.pl>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+X-WP-DKIM-Status: good (id: wp.pl)                                                      
+X-WP-MailID: d08f458a8f4368eeb35a8e26834207f2
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 0000009 [kFNB]                               
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260302_150109_004996_4557F7D0 
+X-CRM114-Status: UNSURE (   7.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,24 +84,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Just noticed the following errors in W=1 builds.  I doubt there's any
-real way to actually overflow the buffer given constraints in the
-code, but these are the only warnings in drivers/pci/, so I'd like to
-get them fixed so W=1 is more useful:
+The MT7981 as well as the MT7986 have a built-in EIP-97 crypto accelerator.
+This commit adds a compatible string for MT7981.
 
-  $ make W=1 drivers/pci/controller/pcie-mediatek.o
-    CALL    scripts/checksyscalls.sh
-    DESCEND objtool
-    INSTALL libsubcmd_headers
-    CC      drivers/pci/controller/pcie-mediatek.o
-  drivers/pci/controller/pcie-mediatek.c: In function ‘mtk_pcie_parse_port’:
-  drivers/pci/controller/pcie-mediatek.c:963:43: error: ‘%d’ directive output may be truncated writing between 1 and 10 bytes into a region of size 6 [-Werror=format-truncation=]
-    963 |         snprintf(name, sizeof(name), "port%d", slot);
-	|                                           ^~
-  drivers/pci/controller/pcie-mediatek.c:963:38: note: directive argument in the range [0, 2147483647]
-    963 |         snprintf(name, sizeof(name), "port%d", slot);
-	|                                      ^~~~~~~~
-  drivers/pci/controller/pcie-mediatek.c:963:9: note: ‘snprintf’ output between 6 and 15 bytes into a destination of size 10
-    963 |         snprintf(name, sizeof(name), "port%d", slot);
-	|         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
+---
+v2:
+- just add compatible strings
+---
+ .../devicetree/bindings/crypto/inside-secure,safexcel.yaml  | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml
+index 3dc6c5f89d32..6c797b7ce603 100644
+--- a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml
++++ b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel.yaml
+@@ -18,6 +18,7 @@ properties:
+       - items:
+           - enum:
+               - marvell,armada-3700-crypto
++              - mediatek,mt7981-crypto
+               - mediatek,mt7986-crypto
+           - const: inside-secure,safexcel-eip97ies
+       - const: inside-secure,safexcel-eip197b
+@@ -80,7 +81,10 @@ allOf:
+         compatible:
+           not:
+             contains:
+-              const: mediatek,mt7986-crypto
++              oneOf:
++                - enum:
++                    - mediatek,mt7981-crypto
++                    - mediatek,mt7986-crypto
+     then:
+       properties:
+         interrupts:
+-- 
+2.47.3
+
 
