@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BECB5EDA697
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2026 17:57:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0239EDEBE6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2026 18:55:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8lHYvI4XaM23b/ks3cNwFoJCsC49zZtfLRl0dNWwiNs=; b=h4ToSUgU9eaKdue4z1hFWYX4pY
-	nBRD5V7xh4nMRO90fWc0fNc00g312juiCW1SvaWN+jE/FkigbP0BLDdSB4fa30G4UYpTUzkRaxgz4
-	1U2rrgU5VNCfYmm6HSxpOGgp4P1YOe1s/JAXFxdpibht1ZFgbNBjRa6M8b6uMhfmPQaz/cMQdsCqu
-	8cP0unseAH5xONxuEApKvUZ0Gq6IiwFyDOYHmaCQyjGqaCYlP6WS/5f5djjmZkj18FFxH3voiwTAB
-	pzxHRnwM2UYO6hplj9M8ZQ2TJL3tkdoT/+9uyVUNGffVBAtdVHfzdCDbdYCV6NL3GSU811MYRgKz5
-	I+6juq5A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zwh2kADgvZw65MCFoX1HtfudMZcZ5wfa9E3f2CLwDlw=; b=czANSxWyoCJdJfE5znEQq3RAdC
+	qg0lMGKMosNEdy5Q5QlftjIsypJlODraV/+1cblld+Y+RhK0NcRVOmdJK43mS68KcfxTrdCAZQjS5
+	vZQZao9QJ03rAciWDnxugTzuVqFCzcg4aQZ/vaNCdODeZynDJsVyKkueqtz6AsHBoXikX6xAKpqkl
+	tMqo+Micn+n6DEtVGSXMLU+BvWo+dTSNpOBDYNSLQThqdhGr+EzXlEQyarIeo92O5TsrudiIqfuzE
+	bCU3SN43E9XhBl7kXCUvvt0oXRZC38p63pBTzIB1gVLaNzBAtyogyyrfQFMtzggmydDE9zkCJBlSS
+	FM0lO2ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxTzS-0000000FgFt-0jNt;
-	Tue, 03 Mar 2026 17:57:02 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vxUtY-0000000FjQf-0FRV;
+	Tue, 03 Mar 2026 18:55:00 +0000
+Received: from mx3.wp.pl ([212.77.101.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxTzQ-0000000FgFR-0jKa;
-	Tue, 03 Mar 2026 17:57:01 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 61E7644480;
-	Tue,  3 Mar 2026 17:56:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9F0EC116C6;
-	Tue,  3 Mar 2026 17:56:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772560619;
-	bh=bubmxG6ci0dg97xq/tbfQq56C8X+tu4E9FIby9oyRm8=;
-	h=From:Date:Subject:To:Cc:From;
-	b=FjFsNgImvwWgOpJ2x+WI4WKLDwcvsAoBvdRmmOmXg5wfa6Xz/SpFFDhVGX1xXSOB7
-	 vEIyn2NrLaw7b3hNbYwILW9MV+to40lqRd85waV0qtmRj7JpXyYZi1uLRUiDAPnK7W
-	 1gpRpD6NgRHq5jY3MO5UB8D0uGmH5nEGtSXaHomq8NbUzrz7zk3LnpV1969S3rG+ci
-	 fx8tCrN+X3AinAgFmbxHA82BtSsL9ozCzl7n6L2SOBKBlQpRh8df36NLIQA3womgI1
-	 J1aBMQjzbRsM6IR9l48CgcKRGPm9VwazZ/vT/e1MOf/FBZx8e/l4mjZznKOSbCLarh
-	 Bcs6FqlA7g44w==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 03 Mar 2026 18:56:39 +0100
-Subject: [PATCH net v2] net: ethernet: mtk_eth_soc: Reset prog ptr to
- old_prog in case of error in mtk_xdp_setup()
+	id 1vxUtW-0000000FjPC-1DAz
+	for linux-mediatek@lists.infradead.org;
+	Tue, 03 Mar 2026 18:54:59 +0000
+Received: (wp-smtpd smtp.wp.pl 46139 invoked from network); 3 Mar 2026 19:54:55 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
+          t=1772564095; bh=zwh2kADgvZw65MCFoX1HtfudMZcZ5wfa9E3f2CLwDlw=;
+          h=From:To:Cc:Subject;
+          b=daMJGcVPw90CcQ/NtdndGOIiXDQQSp29B3g2jgQuGq4+gLKGJS6z+JKAuEicI/Yuf
+           zZl1EYiCUeVuvLSfk8FCwapvNdslHaxpqCCMeYAngPIMLm0UuBYIIvzevKl4yQsarf
+           ltHUismVs9QYyC6mBzs+Yb6w2MKHFjs5k6lLZqpYOcYhmQCgjW6rghMDeSYtZ0h9GH
+           zy4nWiJLdAysZoFhBicSpoXFyEBGOZuscsU2P6w+EMfY/WPUNXuKiFzhmvFCVPKjfM
+           DQNtSn//dBqzyWt/meBBjGmaw7mIHxRZ/KKYJN2XWVi4UnWfVH6qqC0+pRLBxm1dvB
+           Bpqpyzl46Q8NQ==
+Received: from 83.24.116.171.ipv4.supernova.orange.pl (HELO laptop-olek.lan) (olek2@wp.pl@[83.24.116.171])
+          (envelope-sender <olek2@wp.pl>)
+          by smtp.wp.pl (WP-SMTPD) with TLS_AES_256_GCM_SHA384 encrypted SMTP
+          for <herbert@gondor.apana.org.au>; 3 Mar 2026 19:54:55 +0100
+From: Aleksander Jan Bajkowski <olek2@wp.pl>
+To: herbert@gondor.apana.org.au,
+	davem@davemloft.net,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	atenart@kernel.org,
+	linux-crypto@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Aleksander Jan Bajkowski <olek2@wp.pl>
+Subject: [PATCH v3 2/2] arm64: dts: mediatek: add crypto offload support on MT7981
+Date: Tue,  3 Mar 2026 19:53:50 +0100
+Message-ID: <20260303185451.70794-2-olek2@wp.pl>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260303185451.70794-1-olek2@wp.pl>
+References: <20260303185451.70794-1-olek2@wp.pl>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260303-mtk-xdp-prog-ptr-fix-v2-1-97b6dbbe240f@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/32NQQ6CMBBFr0Jm7RioQsGV9zAsaBmgQdtm2hAM4
- e42PYDL/37++wcEYkMBHsUBTJsJxtkUxKUAvQx2JjRjyiBK0ZRCSPzEFffRo2c3o4+Mk9lxmOp
- OdVqTVAOkqWdKOGtfYClCn+BiQnT8zVdblav/1q3CCpW8jbJuW9Xc6+dKbOl9dTxDf57nD7C5M
- /2+AAAA
-X-Change-ID: 20260227-mtk-xdp-prog-ptr-fix-af59b9cce7ba
-To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, 
- Jesper Dangaard Brouer <hawk@kernel.org>, 
- John Fastabend <john.fastabend@gmail.com>, 
- Stanislav Fomichev <sdf@fomichev.me>, Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Paolo Valerio <pvalerio@redhat.com>, netdev@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- bpf@vger.kernel.org
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+X-WP-DKIM-Status: good (id: wp.pl)                                                      
+X-WP-MailID: b80b92edaf8e041f5f39b6bc99eed231
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 0000009 [gLPh]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260303_095700_241544_A4F9DFD9 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20260303_105458_467766_BC53BA19 
+X-CRM114-Status: UNSURE (   7.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,56 +86,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reset eBPF program pointer to old_prog and do not decrease its ref-count
-if mtk_open routine in mtk_xdp_setup() fails.
+The MT7981 as well as the MT7986 have a built-in EIP-97 crypto accelerator.
+This commit adds the missing entry in the dts.
 
-Fixes: 7c26c20da5d42 ("net: ethernet: mtk_eth_soc: add basic XDP support")
-Suggested-by: Paolo Valerio <pvalerio@redhat.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
-Changes in v2:
-- Reset prog_ptr to old_prog instead of always setting it to NULL
-- Link to v1: https://lore.kernel.org/r/20260227-mtk-xdp-prog-ptr-fix-v1-1-b73d7588b645@kernel.org
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 1060764b9f17da251a1437c4e0fb7042d14307a8..bb8ced22ca3be239ae268f042efc119c96285947 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -3770,12 +3770,21 @@ static int mtk_xdp_setup(struct net_device *dev, struct bpf_prog *prog,
- 		mtk_stop(dev);
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+index 4084f4dfa3e5..94c7bf0050fc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+@@ -150,6 +150,21 @@ sgmiisys1: syscon@10070000 {
+ 			#clock-cells = <1>;
+ 		};
  
- 	old_prog = rcu_replace_pointer(eth->prog, prog, lockdep_rtnl_is_held());
++		crypto@10320000 {
++			compatible = "mediatek,mt7981-crypto",
++				"inside-secure,safexcel-eip97ies";
++			reg = <0 0x10320000 0 0x40000>;
++			interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH>;
++			interrupt-names = "ring0", "ring1", "ring2", "ring3";
++			clocks = <&topckgen CLK_TOP_EIP97B>;
++			clock-names = "core";
++			assigned-clocks = <&topckgen CLK_TOP_EIP97B_SEL>;
++			assigned-clock-parents = <&topckgen CLK_TOP_CB_NET1_D5>;
++		};
 +
-+	if (netif_running(dev) && need_update) {
-+		int err;
-+
-+		err = mtk_open(dev);
-+		if (err) {
-+			rcu_assign_pointer(eth->prog, old_prog);
-+
-+			return err;
-+		}
-+	}
-+
- 	if (old_prog)
- 		bpf_prog_put(old_prog);
- 
--	if (netif_running(dev) && need_update)
--		return mtk_open(dev);
--
- 	return 0;
- }
- 
-
----
-base-commit: c69855ada28656fdd7e197b6e24cd40a04fe14d3
-change-id: 20260227-mtk-xdp-prog-ptr-fix-af59b9cce7ba
-
-Best regards,
+ 		uart0: serial@11002000 {
+ 			compatible = "mediatek,mt7981-uart", "mediatek,mt6577-uart";
+ 			reg = <0 0x11002000 0 0x100>;
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.47.3
 
 
