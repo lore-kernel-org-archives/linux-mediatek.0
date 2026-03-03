@@ -4,86 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EDCCEC145A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2026 14:25:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BECB5EDA697
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2026 17:57:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c/CfIfXWFFMybwcWawNA33L/UyTFgFLiRUjQhmp0KQE=; b=xDfubEvKf2KLSwe0pViERsdtzl
-	bI3PkggZ7h4U7LXHlKH1wcboD3bbql0VNLnPUiOA+2HlrHXvw6HEMhu9F6cd3/mDwqmYwjegrjodZ
-	iJBQie/oaefs53yUnFFezWadNYXFk3lQ4loLRg9+nslrTKUHg6pswOpRs3UEN//JBJO/A3r6yGca1
-	OHl9/MYTGdKVAwYYy858QHqTmaVhwhfQhRiHOZpbjHbY7/PX+iF9Y54JHvAi5edXlzvT6fdtMrYcb
-	IqJTWUb0rPyGDH2W3y+CbBpJDnohPJAltlcB1/DumriFIEWao5Pad2urtB9QY8t5MseySTE6nOTXQ
-	aEzOgMyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8lHYvI4XaM23b/ks3cNwFoJCsC49zZtfLRl0dNWwiNs=; b=h4ToSUgU9eaKdue4z1hFWYX4pY
+	nBRD5V7xh4nMRO90fWc0fNc00g312juiCW1SvaWN+jE/FkigbP0BLDdSB4fa30G4UYpTUzkRaxgz4
+	1U2rrgU5VNCfYmm6HSxpOGgp4P1YOe1s/JAXFxdpibht1ZFgbNBjRa6M8b6uMhfmPQaz/cMQdsCqu
+	8cP0unseAH5xONxuEApKvUZ0Gq6IiwFyDOYHmaCQyjGqaCYlP6WS/5f5djjmZkj18FFxH3voiwTAB
+	pzxHRnwM2UYO6hplj9M8ZQ2TJL3tkdoT/+9uyVUNGffVBAtdVHfzdCDbdYCV6NL3GSU811MYRgKz5
+	I+6juq5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxQgJ-0000000FKI0-2g4y;
-	Tue, 03 Mar 2026 14:25:03 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vxTzS-0000000FgFt-0jNt;
+	Tue, 03 Mar 2026 17:57:02 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxQgG-0000000FKGC-170I;
-	Tue, 03 Mar 2026 14:25:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772547897;
-	bh=Wuu0sJNWhS9l8RA8loMZGodMF057v2ZgnGI93IEHQH8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=LAKKkoLBDxV7fhvW7PQbnxmgd+EEhNbbiZhMIXv3zudJUMUxwzojDI/8vl/gjIRCK
-	 KTmBe+bwNOUd+Ap3ntDXb6MR3sYa0QS1x4Rfrcaus8KXPpNZyuZBpGP57Lko1P3Apa
-	 kqSWmH0N8k4nBRk5D4HweaGTGLd6BWvRpz6Fql7yjdVunGI6CImaNvJy8N25cQomuP
-	 R41mlxjoa+SyjZUuGm6bDkLHGNq3kmBR+ah7mAjmIo240KUIhymLkTBzLEb1vUGbhH
-	 7ljpQVo4NITw7KjLe1XNtCV0B/gtkI6y1YevzWozsQVp4w/Ms1K/F4nxlXkgOez76G
-	 7sMaw+DhRA53g==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D4A9D17E03E5;
-	Tue,  3 Mar 2026 15:24:56 +0100 (CET)
-Message-ID: <4b318ffd-13cb-435c-af1a-2896d0e6cadb@collabora.com>
-Date: Tue, 3 Mar 2026 15:24:56 +0100
+	id 1vxTzQ-0000000FgFR-0jKa;
+	Tue, 03 Mar 2026 17:57:01 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 61E7644480;
+	Tue,  3 Mar 2026 17:56:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9F0EC116C6;
+	Tue,  3 Mar 2026 17:56:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772560619;
+	bh=bubmxG6ci0dg97xq/tbfQq56C8X+tu4E9FIby9oyRm8=;
+	h=From:Date:Subject:To:Cc:From;
+	b=FjFsNgImvwWgOpJ2x+WI4WKLDwcvsAoBvdRmmOmXg5wfa6Xz/SpFFDhVGX1xXSOB7
+	 vEIyn2NrLaw7b3hNbYwILW9MV+to40lqRd85waV0qtmRj7JpXyYZi1uLRUiDAPnK7W
+	 1gpRpD6NgRHq5jY3MO5UB8D0uGmH5nEGtSXaHomq8NbUzrz7zk3LnpV1969S3rG+ci
+	 fx8tCrN+X3AinAgFmbxHA82BtSsL9ozCzl7n6L2SOBKBlQpRh8df36NLIQA3womgI1
+	 J1aBMQjzbRsM6IR9l48CgcKRGPm9VwazZ/vT/e1MOf/FBZx8e/l4mjZznKOSbCLarh
+	 Bcs6FqlA7g44w==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Tue, 03 Mar 2026 18:56:39 +0100
+Subject: [PATCH net v2] net: ethernet: mtk_eth_soc: Reset prog ptr to
+ old_prog in case of error in mtk_xdp_setup()
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 5/6] drm/mediatek: dsi: Add compatible for mt8167-dsi
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "l.scorcia@gmail.com" <l.scorcia@gmail.com>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>
-Cc: "robh@kernel.org" <robh@kernel.org>,
- =?UTF-8?B?Q2h1bmZlbmcgWXVuICjkupHmmKXls7Ap?= <Chunfeng.Yun@mediatek.com>,
- "simona@ffwll.ch" <simona@ffwll.ch>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "mripard@kernel.org" <mripard@kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "vkoul@kernel.org" <vkoul@kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "neil.armstrong@linaro.org" <neil.armstrong@linaro.org>
-References: <cover.1771863641.git.l.scorcia@gmail.com>
- <2fbf179c03c61f527e2583f9df4f97f6aaf3297a.1771863641.git.l.scorcia@gmail.com>
- <bc064717108de5ea1a8c98937bb03fd00794682c.camel@mediatek.com>
- <CAORyz2Ki5aPNbcY5-_mRwFgwT46VN_pRV2iP7z7x3snzrbKz=g@mail.gmail.com>
- <dcb797934bdb4467037559ee5e91bee0a568c03a.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <dcb797934bdb4467037559ee5e91bee0a568c03a.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260303-mtk-xdp-prog-ptr-fix-v2-1-97b6dbbe240f@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/32NQQ6CMBBFr0Jm7RioQsGV9zAsaBmgQdtm2hAM4
+ e42PYDL/37++wcEYkMBHsUBTJsJxtkUxKUAvQx2JjRjyiBK0ZRCSPzEFffRo2c3o4+Mk9lxmOp
+ OdVqTVAOkqWdKOGtfYClCn+BiQnT8zVdblav/1q3CCpW8jbJuW9Xc6+dKbOl9dTxDf57nD7C5M
+ /2+AAAA
+X-Change-ID: 20260227-mtk-xdp-prog-ptr-fix-af59b9cce7ba
+To: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, 
+ Jesper Dangaard Brouer <hawk@kernel.org>, 
+ John Fastabend <john.fastabend@gmail.com>, 
+ Stanislav Fomichev <sdf@fomichev.me>, Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Paolo Valerio <pvalerio@redhat.com>, netdev@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ bpf@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260303_062500_453557_AADD6C08 
-X-CRM114-Status: GOOD (  25.51  )
+X-CRM114-CacheID: sfid-20260303_095700_241544_A4F9DFD9 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,111 +85,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/03/26 08:56, CK Hu (胡俊光) ha scritto:
-> On Wed, 2026-02-25 at 09:15 +0100, Luca Leonardo Scorcia wrote:
->> External email : Please do not click links or open attachments until you have verified the sender or the content.
->>
->>
->>>> The mt8167 DSI controller is fully compatible with the one found in
->>>> mt2701. Device tree documentation is already present upstream.
->>>
->>> If mt8167 DSI is fully compatible with mt2701 DSI, I think the binding document and device tree should be modified.
->>> In device tree,
->>>
->>>      compatible = "mediatek,mt8167-dsi", "mediatek,mt2701-dsi";
->>>
->>> And this patch is not necessary.
->>
->> Hi, if I understand your review correctly that's what v2 [1] of this
->> patch did, but the change was rejected during review.
->>
->> As far as I can see there is no win-win solution here. This tricky
->> situation derives from the fact that in last year's submissions the
->> change was only partially merged - the bindings went upstream while
->> the driver did not, and now we have to work around this. In v3 I tried
->> to address the issue by actually implementing what the binding
->> document says.
->> I'll be happy to resubmit v4 but I need to know what's the consensus here.
-> 
-> You mean Krzysztof's comment?
-> He has two comment.
-> The first is 'remove'. You actually not remove "mediatek,mt8167-dsi". You change it.
-> The second is about fallback. I'm also not sure why he says it's NAK. Also a bad wording?
-> After Angelo's comment, Krzysztof does not response.
-> I also do not know what Krzysztof think.
-> I agree with Angelo. Single "mediatek,mt8167-dsi" does not reflect the hardware compatible but fallback does.
-> Maybe describe more information (hardware) to Krzysztof, and ask what's the better way to do.
-> 
+Reset eBPF program pointer to old_prog and do not decrease its ref-count
+if mtk_open routine in mtk_xdp_setup() fails.
 
-First of all: I would be happy with having
+Fixes: 7c26c20da5d42 ("net: ethernet: mtk_eth_soc: add basic XDP support")
+Suggested-by: Paolo Valerio <pvalerio@redhat.com>
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+Changes in v2:
+- Reset prog_ptr to old_prog instead of always setting it to NULL
+- Link to v1: https://lore.kernel.org/r/20260227-mtk-xdp-prog-ptr-fix-v1-1-b73d7588b645@kernel.org
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
 
-compatible = "mediatek,mt8167-dsi", "mediatek,mt2701-dsi";
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 1060764b9f17da251a1437c4e0fb7042d14307a8..bb8ced22ca3be239ae268f042efc119c96285947 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -3770,12 +3770,21 @@ static int mtk_xdp_setup(struct net_device *dev, struct bpf_prog *prog,
+ 		mtk_stop(dev);
+ 
+ 	old_prog = rcu_replace_pointer(eth->prog, prog, lockdep_rtnl_is_held());
++
++	if (netif_running(dev) && need_update) {
++		int err;
++
++		err = mtk_open(dev);
++		if (err) {
++			rcu_assign_pointer(eth->prog, old_prog);
++
++			return err;
++		}
++	}
++
+ 	if (old_prog)
+ 		bpf_prog_put(old_prog);
+ 
+-	if (netif_running(dev) && need_update)
+-		return mtk_open(dev);
+-
+ 	return 0;
+ }
+ 
 
-in the devicetree, and to drop this patch - but that's not possible, check below.
+---
+base-commit: c69855ada28656fdd7e197b6e24cd40a04fe14d3
+change-id: 20260227-mtk-xdp-prog-ptr-fix-af59b9cce7ba
 
-The problem that Krzysztof was raising is that the bindings currently define
-the "mediatek,mt8167-dsi" as single compatible with no fallback, and removing
-it would break the ABI (as the bindings are not used only for Linux, but also
-for bootloaders).
-
-Even though I can try my best to convince him, this is a real problem: mistakes
-were made in the past, and the only way to get the mt8167-dsi supported right
-now is to, unfortunately, add the compatible in mtk_dsi.c.
-
-I don't like that, and I see that you (CK) don't as well, but that's the result
-of past mistakes... and apparently we can't do anything about this if not to
-*uselessly clutter the driver* with that.
-
-So, that said...
-
-I'm sad to say that this patch is the only way to get this SoC probed by mtk_dsi
-and that there's no other way around it, because the bindings maintainers are
-forbidding us from removing the bad compatible (which was *never* used anyway)
-from there and making it right with allowing it only under 2701 fallback.
-
-I'm moving krzk to the To: field of this email in hope to get back a reply that
-sounds like "you misunderstood me, you can do it", but I'm not positive about this.
-
-Krzysztof, please confirm or deny what I said.
-
-Regards,
-Angelo
-
-
-> Regards,
-> CK
-> 
->>
->> Thanks!
->>
->> [1] https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/ff920a7cc94f2b0c03d4bb55142030fded30d07c.1771258407.git.l.scorcia@gmail.com/__;!!CTRNKA9wMg0ARbw!lIBnCRkybM1oxoARb70JlLMPlXHKqW9dwSmVqXGsvj3LE9hsWuINkPgtrlr8Jl8-atOvzYoMjtavHOr3$
->>
->>>>
->>>> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
->>>> ---
->>>>   drivers/gpu/drm/mediatek/mtk_dsi.c | 1 +
->>>>   1 file changed, 1 insertion(+)
->>>>
->>>> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
->>>> index af4871de9e4c..ad10e86b161d 100644
->>>> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
->>>> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
->>>> @@ -1301,6 +1301,7 @@ static const struct mtk_dsi_driver_data mt8188_dsi_driver_data = {
->>>>
->>>>   static const struct of_device_id mtk_dsi_of_match[] = {
->>>>          { .compatible = "mediatek,mt2701-dsi", .data = &mt2701_dsi_driver_data },
->>>> +       { .compatible = "mediatek,mt8167-dsi", .data = &mt2701_dsi_driver_data },
->>>>          { .compatible = "mediatek,mt8173-dsi", .data = &mt8173_dsi_driver_data },
->>>>          { .compatible = "mediatek,mt8183-dsi", .data = &mt8183_dsi_driver_data },
->>>>          { .compatible = "mediatek,mt8186-dsi", .data = &mt8186_dsi_driver_data },
->>>> --
->>>> 2.43.0
->>>>
->>>>
->> --
->> Luca Leonardo Scorcia
->> l.scorcia@gmail.com
-> 
-
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
