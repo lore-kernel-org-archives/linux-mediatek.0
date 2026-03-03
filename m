@@ -4,58 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E64DEDEBF1
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2026 20:20:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6960BEDEBF1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2026 21:23:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=g2z52IdWgskYeOiZeBZcRxQieKJEbjxt8gRN0ppFkwA=; b=BbHFSot8mCrNM1
-	xa/KgmG/ASm0xdHOdRcDFeRuaXxcZ+pV2b4BbmTqmOboT369QZnB3LefYkDBiWf/wzzmUZn+7CSbG
-	NEqZlc9nRKfBzw2akc3l/vY+kkpROdgPMAxMhfA0eNelppFJ94sCqOfaT29OD00nHdpP9ZtpdqACf
-	M/0mN33jtndmR24oUHDHHIxnPeVgp2RfO+QueafLIGXDgjzjwMEA7Un9HXdcyI91j05E00kJbqj56
-	X6VyZbGNesKcz5/Ze/zeZBGIMAiWp/2actkzy5yH77PRhycVnbYK6fvGX5ct9vi7goc/UTEyxsHpR
-	f6dA4Oysyy4gNoNUy7BA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=u5gz69pmhzjmRZpylNGCvi1lLrKWsJozoNBksTBcXRY=; b=yaHdeV4dmn8+5B
+	fuVoFKIluTAEn0ZKSNANdth3Hp2KSHvwFAxZHzirsfpsSMf21oA+9cb7wB7e9PN11pEdOLV0qZIal
+	STfH84CQGCQApRc2dDKHEGFmQ9fiX18ly1CsrU2DPoSWhQG/qDef9c18FnGtKdEkrHOneeHU4ocUq
+	ku1OegNusRUOUOqft4Z0BF/SRCr/6/OWGoFaHdKuYyCbz2DRClUzsk2ftQlpagvrRHp0aUy4uSize
+	cQpFrOYTBpexKUgzja5+x8ml+ogaUpmY5IfSbTFmqLUnvlPKdYU0u7WNXhnDaLKqYCuujyE9ExOHi
+	oUakfk3zHjnxSmOrjI5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxWEC-0000000FuCu-3Ama;
-	Tue, 03 Mar 2026 20:20:24 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1vxXDa-0000000Fyk4-3jLw;
+	Tue, 03 Mar 2026 21:23:50 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxWE9-0000000FuBu-348w;
-	Tue, 03 Mar 2026 20:20:23 +0000
-Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout1.routing.net (Postfix) with ESMTP id 8087F40252;
-	Tue,  3 Mar 2026 20:20:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=routing; t=1772569215;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=g2z52IdWgskYeOiZeBZcRxQieKJEbjxt8gRN0ppFkwA=;
-	b=Rvv/wlB1CnEwf/0AyjW5t6+vkFmi+9s7wkdl0DK/lAvOmmMIdJ1y/b7APPZHp8TaEOkD/M
-	oOUNXAt1mVvA1Rp9JmgRuBm3bycdnlds/+5HlnHbhpm3BH18h7VuLbWfk6WqSqsQc/WZFS
-	R6qVRWnNbJjZiQtIWQZTkZ3AUBPboLc=
-Received: from frank-u24.. (fttx-pool-217.61.147.65.bambit.de [217.61.147.65])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 4F9A91226DC;
-	Tue,  3 Mar 2026 20:20:15 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] arm64: dts: mediatek: mt7988a-bpi-r4pro: rename mgmt port to lan5
-Date: Tue,  3 Mar 2026 21:20:06 +0100
-Message-ID: <20260303202006.37515-1-linux@fw-web.de>
-X-Mailer: git-send-email 2.43.0
+	id 1vxXDZ-0000000FyjO-0JRN;
+	Tue, 03 Mar 2026 21:23:49 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 842D760097;
+	Tue,  3 Mar 2026 21:23:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 063BAC116C6;
+	Tue,  3 Mar 2026 21:23:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772573027;
+	bh=YcSocgznECK+o/we3yUad/E/8vBVLRMAT3MtSKO/W30=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=fOz+tlnehFyphQ/3M8Tq4w8E8RjCKOAmlOHznFurSZzI28e4zpb+I/DjpUwHK6V/t
+	 p4es7NsaKNZLBR/kCVeLyB2qRiidgk4hQ6ULh7H4jEUY9WTvQXv8YyTdofb9hK/fwi
+	 xMxbkCaJcBNM215s0ByGjA9DI9Y9kqxOGgxcvKFOyLzaxsqSdUnkG4AYP0BplKyt1K
+	 lwDXfKxyHc1Re2XoPas1d12x8beCocMwIsV3vE7rd9HI1zmsaWO7WqZCneKIDIZNP9
+	 jb8peg9LuPnlMH/rfiqZ+LoKXp9iZeJYix8ShkoUDlBcF1it2f4T1FwytRt/26xzdj
+	 yFQqhXNp3aR+g==
+Date: Tue, 3 Mar 2026 15:23:45 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Caleb James DeLisle <cjd@cjdns.fr>
+Cc: linux-mips@vger.kernel.org, naseefkm@gmail.com, mturquette@baylibre.com,
+	sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, tsbogend@alpha.franken.de,
+	ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
+	lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org,
+	bhelgaas@google.com, vkoul@kernel.org, neil.armstrong@linaro.org,
+	p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, nbd@nbd.name,
+	ansuelsmth@gmail.com, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 7/8] PCI: Skip bridge window reads when window is not
+ supported
+Message-ID: <20260303212345.GA4074959@bhelgaas>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260303_122021_958165_774ABD49 
-X-CRM114-Status: GOOD (  10.69  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260303190948.694783-8-cjd@cjdns.fr>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,36 +74,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Andrew LaMarche <andrewjlamarche@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+On Tue, Mar 03, 2026 at 07:09:47PM +0000, Caleb James DeLisle wrote:
+> pci_read_bridge_io() and pci_read_bridge_mmio_pref() read bridge window
+> registers unconditionally. If the registers are hardwired to zero
+> (not implemented), both base and limit will be 0. Since (0 <= 0) is
+> true, a bogus window [mem 0x00000000-0x000fffff] or [io 0x0000-0x0fff]
+> gets created.
+> 
+> pci_read_bridge_windows() already detects unsupported windows by
+> testing register writability and sets io_window/pref_window flags
+> accordingly. Check these flags at the start of pci_read_bridge_io()
+> and pci_read_bridge_mmio_pref() to skip reading registers when the
+> window is not supported.
+> 
+> Suggested-by: Bjorn Helgaas <helgaas@kernel.org>
 
-It turns out that the label mgmt confuses users and now official case is
-released where the port is labeled with number 5. So just rename it to
-lan5 to follow naming convension (lan1-4 from mxl switch and lan6 for lan-
-combo).
+I think this refers to the conversation at:
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
- arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+  https://lore.kernel.org/r/20260113210259.GA715789@bhelgaas/
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
-index a48132f09411..1175ee156cb3 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
-@@ -207,7 +207,7 @@ &gsw_phy0_led0 {
- };
- 
- &gsw_port0 {
--	label = "mgmt";
-+	label = "lan5";
- };
- 
- /* R4Pro has only port 0 connected, so disable the others */
--- 
-2.43.0
+Can you include that URL for reference?
 
+> Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
+> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+
+Acked-by: Bjorn Helgaas <bhelgaas@google.com>
+
+> ---
+>  drivers/pci/probe.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+> index bccc7a4bdd79..4eacb741b4ec 100644
+> --- a/drivers/pci/probe.c
+> +++ b/drivers/pci/probe.c
+> @@ -395,6 +395,9 @@ static void pci_read_bridge_io(struct pci_dev *dev, struct resource *res,
+>  	unsigned long io_mask, io_granularity, base, limit;
+>  	struct pci_bus_region region;
+>  
+> +	if (!dev->io_window)
+> +		return;
+> +
+>  	io_mask = PCI_IO_RANGE_MASK;
+>  	io_granularity = 0x1000;
+>  	if (dev->io_window_1k) {
+> @@ -465,6 +468,9 @@ static void pci_read_bridge_mmio_pref(struct pci_dev *dev, struct resource *res,
+>  	pci_bus_addr_t base, limit;
+>  	struct pci_bus_region region;
+>  
+> +	if (!dev->pref_window)
+> +		return;
+> +
+>  	pci_read_config_word(dev, PCI_PREF_MEMORY_BASE, &mem_base_lo);
+>  	pci_read_config_word(dev, PCI_PREF_MEMORY_LIMIT, &mem_limit_lo);
+>  	base64 = (mem_base_lo & PCI_PREF_RANGE_MASK) << 16;
+> -- 
+> 2.39.5
+> 
 
