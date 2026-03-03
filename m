@@ -4,75 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B312EB3648
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2026 01:47:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2A1EEB3648
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2026 02:29:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/0sEz2jINBRcc5irANs4F/1esK/f5shwDnPb1VrGRpU=; b=1I9RVcb1t2OqQW65l/11613p1k
-	NN92CunXEqU86akarKUaoXAI7nk5nydThLGFX4LJ4lbwxD85EcYnJHxNu8vFjHadRG/2FFNl7nIsK
-	LaxmzX3iH7a7JqcUgZT+6br4KcC4EBizLzqj3vwS1GgVB+8rbz9nrm/E1HETJu9GLDSArpko8ATOg
-	6TtgSjVpmkHk8voeoj3g7ENXcMPDao59XCZVMq1flsy6nmyC6tw1in6T+lUuji/kd8CDbzfcIMGJO
-	WWSdcNYOi4st2eHy9L+bouf0KDAIwg5eEc3MnsQEfkb/cRs6DjlBjYk2ufJrx35KUayHbekmjvFXm
-	+LO2TNIA==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=w8W3/ulCrw8vSj1DgQF8sLcFVhCCR3ueTyaIp34sDHU=; b=qYwxEj8b7woEz7Oi3iPS17jJM9
+	r0gmGU5kYj/j3usbEYvJKPx5bKsfP7JIFxuDkYDnl7+vqZdEowtz8r+etRAnoN2zMoHpdmp+9Vx4q
+	oJJbOZwVX96lYci2IMuE1wj1j7I8P613yx4eBYV+5B0Cf0sSaL3BrSCf9JSzITLhtDk80zu63VU1k
+	bP8bJq7UemWAJbcIF0BbY8H3MsBL4o+CBHzdhgnRrkp5RMS0RZjDxr8b9nGuwv9L2P4GkdWVtARKR
+	h3c31PwCmi0p3AOFSxdcAh1vbTkK4xFQkdKZP7N/LjoVTeE3tjYJuFcEz2NKcaC+D1YGCZSr75Vkn
+	H+lL/FMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxEqk-0000000EMuL-0pBb;
-	Tue, 03 Mar 2026 01:47:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vxFVb-0000000EOzp-2LVZ;
+	Tue, 03 Mar 2026 02:29:15 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxEqh-0000000EMtu-3Lo6
-	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Mar 2026 01:47:00 +0000
-X-UUID: db2ba1c416a211f1ad39f32c34db0b1c-20260302
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=/0sEz2jINBRcc5irANs4F/1esK/f5shwDnPb1VrGRpU=;
-	b=AyhzdipDzLnPrFUb27ADVujk9CLn+LGCxDWOjVBSB0JNKecd0I8oaqQlNbymcgJOoPswadaqmuVJytolhCW5H2yGLoLPv6baWXnuwFCmYjYU7Q+BweqFZTcf2/JQEQZFtljN1zjU6S0sbzq347s7ddFZlIo6WrNZSl4pNRtmViQ=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:02eceae6-bfb7-45a5-991d-9effc453b9ac,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:89c9d04,CLOUDID:3d2d2ff1-16bd-4243-b4ca-b08ca08ab1d8,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|1
-	6|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: db2ba1c416a211f1ad39f32c34db0b1c-20260302
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <ryder.lee@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1122997646; Mon, 02 Mar 2026 18:46:54 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 3 Mar 2026 09:46:51 +0800
-Received: from mussdccf250.eus.mediatek.inc (10.73.250.250) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 3 Mar 2026 09:46:50 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh@kernel.org>
-CC: Jianjun Wang <jianjun.wang@mediatek.com>, Manivannan Sadhasivam
-	<mani@kernel.org>, =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?=
-	<kwilczynski@kernel.org>, Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-pci@vger.kernel.org>, Ryder Lee
-	<ryder.lee@mediatek.com>
-Subject: [PATCH] PCI: mediatek: fix W=1 snpringf warnings
-Date: Mon, 2 Mar 2026 17:46:48 -0800
-Message-ID: <b835e360b42c5e0994f9301a34dbdf140a8d3ef5.1772493898.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1vxFVZ-0000000EOyo-3o5G;
+	Tue, 03 Mar 2026 02:29:13 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4F80760127;
+	Tue,  3 Mar 2026 02:29:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C309C19423;
+	Tue,  3 Mar 2026 02:29:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772504951;
+	bh=ZWSjDglVV8rV94EH0XRkO98jwAKM9tzwFT5sW1hwJnw=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=lK6kECNQH/MKzjx/eLAD6yVhEThloPbePGhSvt4wh4ZmBHnBrIFF2Ovamdmch2aYh
+	 /9ElB2EKdcZVeSbMr0erPOU+KiiPg9FHeRnMhU1ayUdAdp0RgpfEL6Xe76SwJfzAKJ
+	 +hq9qN2dR8MA8Q+YnKOexpUo5kMcwO6Fi1p5QEdq7/MoOPQWHW8B+kD4Zhk3yi3KBq
+	 6hawD4eIIMPJGt+IATChGupmYRIXfYxQ7/FptU+DXGXBcSJYlEo3TfgGnbpb3u+jP8
+	 lFZhBAr+EfY2Ph6lO2ybv+C6YaHhfKu5Oc6veSpEnzpUlH5MRiBGz+xrO5E6+2sP4S
+	 bi8MG6R4ZK9BQ==
+Date: Mon, 2 Mar 2026 18:29:09 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>, Andrew
+ Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Alexei Starovoitov
+ <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard
+ Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+ Stanislav Fomichev <sdf@fomichev.me>, Paolo Valerio <pvalerio@redhat.com>,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, bpf@vger.kernel.org
+Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: Reset prog ptr to NULL
+ in case of error in mtk_xdp_setup()
+Message-ID: <20260302182909.06de1942@kernel.org>
+In-Reply-To: <20260227-mtk-xdp-prog-ptr-fix-v1-1-b73d7588b645@kernel.org>
+References: <20260227-mtk-xdp-prog-ptr-fix-v1-1-b73d7588b645@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260302_174659_844902_C561D650 
-X-CRM114-Status: GOOD (  10.54  )
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,43 +76,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the following errors in W=1 builds.
+On Fri, 27 Feb 2026 16:52:11 +0100 Lorenzo Bianconi wrote:
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -3751,8 +3751,16 @@ static int mtk_xdp_setup(struct net_device *dev, struct bpf_prog *prog,
+>  	if (old_prog)
+>  		bpf_prog_put(old_prog);
+>  
+> -	if (netif_running(dev) && need_update)
+> -		return mtk_open(dev);
+> +	if (netif_running(dev) && need_update) {
+> +		int err;
+> +
+> +		err = mtk_open(dev);
+> +		if (err) {
+> +			rcu_assign_pointer(eth->prog, NULL);
+> +
+> +			return err;
+> +		}
+> +	}
+>  
+>  	return 0;
 
-  $ make W=1 drivers/pci/controller/pcie-mediatek.o
-    CALL    scripts/checksyscalls.sh
-    DESCEND objtool
-    INSTALL libsubcmd_headers
-    CC      drivers/pci/controller/pcie-mediatek.o
-  drivers/pci/controller/pcie-mediatek.c: In function ‘mtk_pcie_parse_port’:
-  drivers/pci/controller/pcie-mediatek.c:963:43: error: ‘%d’ directive output may be truncated writing between 1 and 10 bytes into a region of size 6 [-Werror=format-truncation=]
-    963 |         snprintf(name, sizeof(name), "port%d", slot);
-	|                                           ^~
-  drivers/pci/controller/pcie-mediatek.c:963:38: note: directive argument in the range [0, 2147483647]
-    963 |         snprintf(name, sizeof(name), "port%d", slot);
-	|                                      ^~~~~~~~
-  drivers/pci/controller/pcie-mediatek.c:963:9: note: ‘snprintf’ output between 6 and 15 bytes into a destination of size 10
-    963 |         snprintf(name, sizeof(name), "port%d", slot);
-	|         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/pci/controller/pcie-mediatek.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 5defa5cc4..75722524f 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -953,7 +953,7 @@ static int mtk_pcie_parse_port(struct mtk_pcie *pcie,
- 	struct mtk_pcie_port *port;
- 	struct device *dev = pcie->dev;
- 	struct platform_device *pdev = to_platform_device(dev);
--	char name[10];
-+	char name[20];
- 	int err;
- 
- 	port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
+Maybe there's something special here, not obvious without context,
+but why are we setting eth->prog to NULL rather than old_prog?
+At the very least the commit message needs to explain..
 -- 
-2.45.2
-
+pw-bot: cr
 
