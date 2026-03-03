@@ -4,94 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55C7AEA4E18
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2026 10:22:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47A3EEC1433
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Mar 2026 11:58:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cQst+PSOV/+vNa7AIa+9u6jBKddkoF+Y1hVwXQIv8B0=; b=NBNVPx9tBckonBTHt/Omq7ZjZh
-	XLiSFOc7HNmKqRG/t56U+vKZ6KcP9oYx+1pnoMG4bBnJSGOyxhDIGjtyrWrDE1fsK2q9Vxx0iZ1rx
-	3DwNdSLWsQkCHVMSWcKCT3U5l6IecKpQzksT/NHT2tqMtSqYVuN3BOHVR96hKM7eXZyfS4LjMbsw6
-	YeKvWDe9QjGXvj5pwdxmJTxrd7ZN9GRB7i8QdEsh7RqxWQvdd1eXgokHIB1IASd94qY8mYCXyV5k5
-	2kMSnpXlOjF/4J+ymI+buCL2Za6FWfWbXn0Uz9jDb7ia4PAInssz6wLNoLxTdUIZNCO+KZmiDo6A/
-	Lbz/vMBQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=a+aiHDCu9PmrUI+7fcpYIkd7HMwZLJ6c7k9ZHHUYCpA=; b=SyY7w9lNWejBPEXrA3Xh6/zf6B
+	keyM5JoCbtbpRrrO9lFfDyAmQ/1uo3fFBVuxtMLyxqPG/zJf7VmR2D/BFKEENgEVmIvg84WFjDnxC
+	Kxf9d5Geffig2QavnV8FyOnam/B9Mxdj75j4waVbjnBHcvoaznlrQgpdkdw649swq1rnavxCf+GZS
+	L0gVoIKVl2Lplf/CoaKgiMmRpJH5VsZAxnKH74u/CWn9ylxLy2BK4MljDtG25+unyBvdWTidnXERd
+	gN6cdErPvokEyMvWCKKVbpM9xHFDxB+tMotxI9vpra9I+iMVPQJ3dqf0TTA/zoQqoFDry197xUmBH
+	TeHMOe3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxMtv-0000000ExGa-38MN;
-	Tue, 03 Mar 2026 10:22:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vxOOO-0000000F7IA-1M7N;
+	Tue, 03 Mar 2026 11:58:24 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxMtt-0000000ExGR-3xd2;
-	Tue, 03 Mar 2026 10:22:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=cQst+PSOV/+vNa7AIa+9u6jBKddkoF+Y1hVwXQIv8B0=; b=n3dZti6Jeh596zuvjgaB4UqdOU
-	bVXr1jRGzjGnFKmHpVqH/fTweV9aehP24DyvUX5ab12aou5Y5Ff5Hgo8IgNqq1t0W6/uU3/xeqfaJ
-	5Pl3ypEImlpBu1sY9by8fNgr6TUBt+0rVkUuz502bZ5TF/PSNNZOwl/mR6kuRctLoyxU0CwZONEax
-	4Q89dqFMZgXZe6wIfk4ceKtFM3Yo0RD4jAEbmyz0e5BThNoTshilJw5p+qa7iBUMMabXvmTgBwEHm
-	qckf5zqn97c+H1NDBO3Or0b9EfV88kUPye7Jkz06304smXxYnH1qiF+7sEl5BlSudNfikxG/7fEmP
-	lPtlhJIw==;
-Received: from mout.web.de ([212.227.17.12])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxMtp-000000026Tn-3uZw;
-	Tue, 03 Mar 2026 10:22:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
-	s=s29768273; t=1772533344; x=1773138144; i=markus.elfring@web.de;
-	bh=cQst+PSOV/+vNa7AIa+9u6jBKddkoF+Y1hVwXQIv8B0=;
-	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
-	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
-	 cc:content-transfer-encoding:content-type:date:from:message-id:
-	 mime-version:reply-to:subject:to;
-	b=bJ0dKuac2Zj/y1ysNiPEPkZX28t6flUPArmQxQArMoV+2uv6JLWmqO2P3CtoiRUX
-	 oTTbOFQIKPV4eiDJa+731pwHaTa5KnngtqsC06kle4wz4zQ6zn4gSCrXONo8hkmvF
-	 cbR9Xz1eAO2jzd0jhvQvWNqNO4mOYqp8gQmF744Dp88o8+6SOCt+4tvP6IBXxbodc
-	 RxT4tIPEYzANFfJuXZtY97j2nhag1hL0nHH6UujdDgfnGOcqQQ+FVBZOttYY22GtN
-	 BEXJYEfp5q218x1L4ijSfiRsesJegseC/Xp61W5sok7gvuq8jlDwtQ5QJ1868Q7Iq
-	 v60H3TMsEiixhZRv4w==
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from client.hidden.invalid by smtp.web.de (mrweb105
- [213.165.67.124]) with ESMTPSA (Nemesis) id 1N79N8-1vcM042M72-013J3L; Tue, 03
- Mar 2026 11:22:24 +0100
-Message-ID: <11b010bd-3435-4e78-bfcc-4bbc13106429@web.de>
-Date: Tue, 3 Mar 2026 11:22:18 +0100
+	id 1vxOOK-0000000F7Hi-3Qe6;
+	Tue, 03 Mar 2026 11:58:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1772539097;
+	bh=aODRgbbjQIg8M73gNMETnXa7r/KLRoXLOm+tPuOfZPg=;
+	h=From:Date:Subject:To:Cc:From;
+	b=ctoNr/v9Re7nFK0WqnA/WyHeUitF2jx6LlM9JXwgMuNA+uMvU/jxUxAz9pdjoqkN7
+	 uWHg3qqsgyH5AJ9q1AZgJfU8gfJdeKU/fuF1MY3CsSAGfO1GbupECf1i4qSLASJqlb
+	 YYscBZd9yWiyci5hUD1TBt13WKpzut+0vl4bEpqjL3NVpPo0habFYDQpkn8a1QHXzg
+	 ytrO2Zdx3UDMp2n44xooSSGEH4C9p/nEPUJGt95/9jnk3mgrCZ/ij3t4Nko7yJl9fr
+	 Zk+RxeK3e/cyoz1vEIWLZCIpUtHhg+dsA112PIt/RSFIMTd6+SkcXM8pjUkxZ4aNXF
+	 FVAQNMVhb1/Qg==
+Received: from yukiji.home (amontpellier-657-1-116-247.w83-113.abo.wanadoo.fr [83.113.51.247])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A340D17E0454;
+	Tue,  3 Mar 2026 12:58:16 +0100 (CET)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Tue, 03 Mar 2026 12:58:05 +0100
+Subject: [PATCH] dt-bindings: arm: mediatek: audsys: fix formatting issues
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Chun-Hung Wu <chun-hung.wu@mediatek.com>,
- Walter Chang <walter.chang@mediatek.com>,
- Zhipeng Wang <zhipeng.wang_1@nxp.com>, linux-mediatek@lists.infradead.org,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- kernel@pengutronix.de
-Cc: LKML <linux-kernel@vger.kernel.org>,
- Alexandre Mergnat <amergnat@baylibre.com>,
- Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Dong Aisheng <aisheng.dong@nxp.com>, Fabio Estevam <festevam@gmail.com>,
- Jindong Yue <jindong.yue@nxp.com>, John Stultz <jstultz@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Richard Liu
- <xuegang.liu@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Shawn Guo <shawnguo@kernel.org>, Thomas Gleixner <tglx@kernel.org>
-References: <20260119095511.3030739-4-zhipeng.wang_1@nxp.com>
-Subject: Re: [PATCH v2 3/4] clocksource/drivers/timer-mediatek: Make
- timer-mediatek become loadable module
-Content-Language: en-GB, de-DE
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <20260119095511.3030739-4-zhipeng.wang_1@nxp.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:aYut6SNpFH3u9i+TdmBskbprmbJGoCn7YPSgqI8npb+W9tqMPs5
- qwAY5huDYPiwt6IZovA33pZN9T/vQeR5ThmUhWUBkOTUqfirMVcDJ/+gA/9RoxIl0YvsUjb
- 2DeRjGdmA7CxRcvXRdQFWxixHXJtcqeHsdNxVHN1aqwqGD1fG9lur2l4M0x4z5pETW7XomR
- WneiPGXsgmW+eGv39GxWQ==
-UI-OutboundReport: notjunk:1;M01:P0:duAUeuz/2+s=;/uPyBeUCY5kCDowLloTnNl3fY47 oFQR7YjsaasPZhRTrICLsr34vpMAuLkdC7UJKmDFJmIsc2t/pBjwOI9xYCh0fLfT4jd2XLSUO Qr4cosUr7MFYVEX3EEcdKQc2os21w5hQBP+3/Rju8/lu8lGEER5Lfu6VFOtKUcdbZI++Z8ZXh ipacq55/gATxy0qQP4OxDL75stCjNV9ZNlltgp+8A3Vlfbf8+PGrrj7+jZsAQNCF1/k0VGG2P W4TZeyzhw+KVjOH8dUWb1fu40mqf2OiV+1foXYoA2m6iip3nhbDIHfvjCQKUwBt5XH+MgR4y0 mEt83WAHplMzxbqhimBrROiPOStYPnpRtoQHBLZb4xlzhyR2/1M9ONH/ddBaT+Zx5bTOc7Qli xGJO5hIklqW7b9fiofluO1ifSmUgOWTTDrpZifsDjWq01VGsX5gM/3s794d14GTa8WcOPsf73 W4NqXNJAj2CK7LjlYJiC98SdJ7DsC9yPT+AevYSFZt65H1GYy++5sH3cfbJVxPHIUx5Csklyq w8hZtLKBb3XD437BzVlLs6eNslm7Jnoau2VsZiSM+zAWuspRY99m8hTo2xh812LMQhKUMd/Vl tSLU5l4YFO12FMrVf97tN1EllQc7wfALVPhPb6oTgVJ1vLe+wmEh+PoVvE7kS8gHt0Pk9p9KP zgAwHsNxKzujTqQaEEONSqTIiVM8o+ptL4Bi6XkcgM26C3gEGHtsR83RbYR9V7auoZITs5JoX Ai9IdUBW+esliOZDrBlNF1yIkpA6MQHVZ7+k6iV8XtwPm8LzwyhfDlLV3HzJBt0hAgwON7kI9 3xLXngE9ImC2bMrflXg5eybfLODLrRwf+tgrHejHLdYhhMGhCiHtCZ9q6U1H3eBPSd9QQSKee T07u31IhOfpJCRwZlWvkgmk28OZ48uvm/XoKni0/K91BrGSS0z/PtH5ij8vpocwkKxoDpSV3a sxaQwd0IMR1Qxl6hAbTJyUmJCQrk1Xa1EIh9sB3SkKjWt1M5m0/HDu7YFYMFVmDk++gy5/ehO r5uEosrh9/RSkT7KslonqKWBHmL+A7Ksyh7l4OwOc6dCvMbCqwEZEDqTgHFBJeBE53pno89Q0 8ELMyPZkEBnKLAlZeqew/2xoN4kNGzspM4fQ1L9hmaSlP6Vkhlmjs5BCn+ZyvVOxCZVbGIZAs /2MnqtE+qjkOuTeNc3bqbdG0sf3pr8/7weOHKRq563LfG9U8zkydWj7HeHPRZo+ru1PoUtzgk SUzOJxQ/dWKZAcHk7iXexd5bugpXF9WsHgv5aO98ABRj/mkcaDqTIhwxyz1zx0yIij3b2XjB/ m5uZ6OdNj9BbWwcvBXJ0lkkQinfyIRbMrDjiJ94sOb+MI7Yh76rj9x4B0AWOs/9NlB4HGw2QL G+mKztEVd5yDkqrWgLvbIdT9pYIAwqEnzFFoPzIAfQZzwz35iLqnMigY98zszq4yGr9eiAwby Dv6CqfA3xhVOh/05g20XsCpzJNVfqzCsjl2jN/0NllS1HW4oKpP3jwTvUp+LSC7KZB8ZgrgBh jracNFQcpO7vuIKlySfBu9SyWlEl7jLAU6yoM1hDnsnlzqpanVNRxiE92+iynW1jNl62z10LY cfb+dfIycl9nmJ8LYRxM929MnKUYi4DazNJ4CT8wNL/9bUmLRw0L3++sW9mCg2LHeeJCACi+A INLHK4K0m+fZQc3VmOvrDcLD93h5wmQerAOODzGOub+y+QGCv91LMA+qVXfr9HuX++KpnPNgB cBedNijXi2WMhXk7WA8mfToY+Af9ljt1QpjXkeBTXoh+VV44oi3jm+S4mMSzl2f8N3MoqyJ7a XWmngSZSCvZv75bxxqOtzvYNFbBOcDTW/4xhe2/JO/qWOjFWEGYPowiG/g+l+VQQackHkd6rk m2kT8Hv4yTXpfKqj+dFmcPv3HxmSWldesFdb+MjRIC6Fyy9IOnMbRZZLhS2HyZZf/4dRNRoZW T+NsJxiL87Tfk4VviFGrDulKE00MhkrtXSW2IxH6AhYw3YqnwjOWN2I8mnXHE0ioVoCsoMZZW fMy/ojZfAdY2vSGggz/s7fZQ9qBZfYDH7OSdyXwrXdHwh6bzJcHBz5+1OkyWvBwxuglJ9N9g+ c9s3hDKn7+yu4Xv83o5P+pRzl3Jk2iuiaB91zBaQuaCV4rQtZxQpjLHvNLzO+z8o/ygY5aNlV ElbY3taKoLBTbk7oZ2CG0+ojUCKDHZFe8hKbcQp9igsTfQ0GZiOtmWJy0vN2mt1SPHZ3RKzpj UTyjIBccjWEZeMC9sXhT+GT1q/moM60+4aW7EaBV/fJUKJop56iphrA/vOmn9Z0f5UklFp/BP D8cKgD29eopO3CXGs7zqh1Img7CULxw/N00Rg5mwwZdILMZK5NCec+7Fh7J4pwWgqYti/Oo+2 mRgeADyE1RUMdHMjpxsBcTWYtuVrIzuTXEwsGnwPiwUxjI44RuE+2+6eX6b3TDUM/ydlGnp9/ P3DvwAVz6ybL1oFXkBLpBWsZx5yGnt2L42CUbQX4QDlID0Gf7VJBPPoWY9caUHM35GXXbmiaK LLDUA6NcDRUfVAchGuxuh6b9NrG3bgNr0im6mTt2w/+5Uy006U9p3rH2fZRCOD4utfOCmPxyl KLfcxsOowqMTinPAikmDd4xrFFrgqOQKFI7KXsSfaOgxs6/DU0OnUw/9CS3LyeOj1PoL+r0NY kklN5K2cMzWR7mJnYrISDqVj6+k9463BN2AOAW5TPIxVo0tNDDTn3LLbRsbGVZuGW5dGMedoV 40ccVtJ0+MoPJr5EfjLiENK8nZQghXNJnPsad//UnNmMrxCtf03/4ugrOc3Js5/i8dN1B2C7O Ep5CghjrTHUFxBBX+PtdjDB4d74EMf20vStKYrIInlEmBallRFFCrWagXlpnJpO1LA+0it+3O 5AsEh5BKO2IZ8FzZ14TF45IeLZ2lT7yqipC/NIHYJ9vgxDDH+ENN4gLATyIN+fl1arLK0Vgyp Ugv8H5fej22gknaDrI7jO7iImS8iwnlKNs1bAInjkCVQtHIOScbgM7+rdjIDdf+8CvfBa9rc4 M80xE6FGCNgw2DSzsff+ptsSEZtAulH/csXv7jvArPZ/0ub8jUqaCVpqJVk9n53v7YDTu/spw IB83zRVmqvAK10vLn3WTaX5cjLep00V1+UOdy8zSp2/IwBTaxspLPNqfgTsJ47hIbLyDb8PCH bQZGfv3oFA+rK25BgONnn//UfQmwdTMPHM+DSnafjYKHNJYRDboDRvZf8L13kKJBAmPkGVOEe 8kc2cf+zUpISskvelVW87H7Wf7XqAUnPZgZYi3swOXxiQq+19EepvZE7ZF8cYYOYBefOZgkpK 82zDBqOBymOrCJQA5Dl9aUFJ2CXmc1JJZHK9/TUjNBjKVJlmotDhzfqvMMHQeN6PzmMPOM4nP x2rOsz3TmrhVLAWfk7NYXd1w5/usi+lGRual/R+hPGWnEnQvrwj+fxttE3mi+VBsTx3tJG3Bf +MXp6H96tajhhuEkJcpeK7ZEd9oNI3l2wo23wtZLwrgxeRTbTBfgJ9S4An+R2zlYi2liSV5Mv mnrHTvP3ATnwjbNoKzWimTt8Hi6uPay0GHjtbxIj+sHEdOwx+6ZQTfIy6ovmz9fk1ErMopNb3 NZH/OUpIhJknaaJPde//Me39nYG5O3xxCcyDoOG1r3O3WIy9cK4NnMP1qYV0tJiopkQ43l1A8 Y4gI13xRAjccWig7QJxbPUjxGpqfSSHABNmTWXK8R4FOV2u8RxznJHiad9CnxYP2OyQ6xu+C2 +LjXH3obPGrinsk4egfaz5TJTTU2Seq9rlL6pMdB8TPdcJDs8JXNjyiUZUq/QU/RLesOJO2M6 YZeEYrSpiQAeNhbV3tEtCwfj7EBRP2AOrBRROmNk6sKy0G24nNiIwwOirqAswG2m/omMQgmAB
- MD+4yapgDCY/5T5phxr08YZPgGEw4uDGbyW2AH00+LJjcyCv836jrHT4Fw+xBW8+c28J+/OlK PqX45SV0wFNPesoArwlXD7Pvr1Js7CLXzuIUNLr2mRIqqvrvl6bPQJ0IpasGV4vrf0YH13zlJ xc8QqEICxCr8c1SP0lcU5TsmnjK+pHT73pBPVtNzjSzFzHRV3ejFqt9eXe9wI30372uDRkdZA moEORVwjoiweFP8kTqWk7HMt6w3qeFfVc1B3sB+OdSQVWXz1zk5g8CrZDp3M7klN/VGmct92m tlWZIQgGqgw9zL3oGRosLnfwsB0X+4y3smt6CCtmWb+BVajO/OtXkwBkAe1WK63KKgMUXODkC DjEaG5BaYuB2t2dwoOLsCwbJAR8go/iRwoM2cRUdT7SGZsPqxp1kxzutmRZTml3qgWiunZSM6 vHdgYJFSNRsQvLvemmcgXEmts2ahjNReAQdJxp4TEof54G26+eiEZVOplkTPHLRR4fAirnMds 9oJotMyg9HnVGYWXkbK4vZmP2fPW9WLQh4WBFn+/OD01LvPci4qwcsvArSLHiwm4mTyw+ce/q V2buUMMoCgVITusvgzDgrsFkc5CYNnaJIhuaoNXTUANJxfHEYDP14psuleE0jWBVQXBRn9csP ln+f5pC+CqYvlLi1n61INDflahXh01ik1AgJgk0uvtKiZOjWeLZXCGal2zBk2PT06tXfepgm8 z7HWgYQJ+VPXyLD1JhqMzFhfXMOJW1fokJHZQetRploSDMeHPFs/Z5ogw9WyNV8liCRKpw1yu +Bc70JwvvCdhdGMBdKalmKxKUUv4fqw1OXouolmXVZll+PQ0VybJPH2vc9l3yEWCAY/mjlkj8 nG1655MzQ3jGOtgO5EjhOIqsvwVrKHu1jdgjZ1A6UlflKvihrR4QPl33iPtqVEOIaVXk/pTwi YK3Qtyx7oGfc48GkWM257fTmCed4zxVtt2JCbGdaybym8qywel6SXgaFDnizU/O5yb2jetZ+j VVcOZO58jYAgipNInw6w5Jv1DUYKXqWAKv/5H9rIf3i1aRCLhamH7KyBu14Tz7wONF/pZwwj5 h5PFLhWu2Jy9715WWjCsRTYGLgRpEi/DOhcHFduElh77OfUwTk7OPXyUwvttywPSIRdvs+OiX n7+Fen/62Mz/M0UcLxlagGgwfbTKIRVHzy8m4yLty1UEZhaMxDz0Yi5jkw6LVn2y4f4M/9dVl ogDgHvpjjsM120bc0sTVru0A1n3lm7/BU/GX6KNQP6izvkMMbGEiE3vUvfKsLBo+DSVgRCdgH eJ0iZtUXCCFKsz90yxCQvcv4fQn+u
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260303-mtk-audsys-dtbinding-check-warnings-v1-1-e4e1b62f060e@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXNQQ6CMBCF4auQWTumtIlGrmJYDO0IE0LRTkEN4
+ e42svze4v0bKCdhhabaIPEqKnMsqE8V+IFizyihGKyxF+OMwymPSEvQr2LIncQgsUc/sB/xTSk
+ WKVJNN8umI1dbKE/PxA/5/Cv39nDi11Ji+RihI2X08zRJbqr1ejaYvIV2338WB6WzoQAAAA==
+X-Change-ID: 20260303-mtk-audsys-dtbinding-check-warnings-a1a92e0ba312
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Eugen Hristev <eugen.hristev@linaro.org>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1772539096; l=2932;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=aODRgbbjQIg8M73gNMETnXa7r/KLRoXLOm+tPuOfZPg=;
+ b=RKhLJsRCHhqkx4Pswn7tNHxP8qIGxM0Xo5xl48hxS+sW6xU52EWeNQe4iGjV6cENkJyVHwvcI
+ iW0SClS9hcnCpwozd4yQoWGrPiqHo0o2VLYcunQN9NV4Ase8EXknNsY
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260303_102246_271107_70099E13 
-X-CRM114-Status: UNSURE (   5.66  )
+X-CRM114-CacheID: sfid-20260303_035821_055725_1AE59452 
+X-CRM114-Status: UNSURE (   7.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -107,20 +89,102 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Make the timer-mediatek driver which can register
-> an always-on timer as tick_broadcast_device on
-> MediaTek SoCs become loadable module in GKI.
+Fix indentation and drop duplicate newline to resolve the following
+'make dt_binding_check' warnings:
+```
+./Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml:52:2:
+  [warning] wrong indentation: expected 2 but found 1 (indentation)
+./Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml:84:1:
+  [warning] too many blank lines (2 > 1) (empty-lines)
+```
 
-* You may occasionally put more than 49 characters into text lines
-  of such a change description.
-  https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/=
-Documentation/process/submitting-patches.rst?h=3Dv7.0-rc2#n659
+Fixes: a8e3d66ff5c0 ("dt-bindings: arm: mediatek: audsys: Support mt8192-audsys variant")
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+ .../bindings/arm/mediatek/mediatek,audsys.yaml     | 63 +++++++++++-----------
+ 1 file changed, 31 insertions(+), 32 deletions(-)
 
-* Would a summary phrase like =E2=80=9CConvert timer-mediatek to a loadabl=
-e module=E2=80=9D
-  be more appropriate?
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml
+index 09a6c16e7e8299c5a271df24f18f7a585046a7c9..9aa39b002361d9f6fbaacae5823b3a811a0043ca 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml
+@@ -49,38 +49,37 @@ required:
+   - '#clock-cells'
+ 
+ allOf:
+- - if:
+-     properties:
+-       compatible:
+-         contains:
+-           enum:
+-             - mediatek,mt2701-audsys
+-             - mediatek,mt7622-audsys
+-   then:
+-     properties:
+-       audio-controller:
+-         $ref: /schemas/sound/mediatek,mt2701-audio.yaml#
+-
+- - if:
+-     properties:
+-       compatible:
+-         contains:
+-           const: mediatek,mt8183-audiosys
+-   then:
+-     properties:
+-       audio-controller:
+-         $ref: /schemas/sound/mediatek,mt8183-audio.yaml#
+-
+- - if:
+-     properties:
+-       compatible:
+-         contains:
+-           const: mediatek,mt8192-audsys
+-   then:
+-     properties:
+-       audio-controller:
+-         $ref: /schemas/sound/mt8192-afe-pcm.yaml#
+-
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt2701-audsys
++              - mediatek,mt7622-audsys
++    then:
++      properties:
++        audio-controller:
++          $ref: /schemas/sound/mediatek,mt2701-audio.yaml#
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8183-audiosys
++    then:
++      properties:
++        audio-controller:
++          $ref: /schemas/sound/mediatek,mt8183-audio.yaml#
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8192-audsys
++    then:
++      properties:
++        audio-controller:
++          $ref: /schemas/sound/mt8192-afe-pcm.yaml#
+ 
+ additionalProperties: false
+ 
 
+---
+base-commit: 9fad1d148df6f36105159c2503d0ecb1397bc89a
+change-id: 20260303-mtk-audsys-dtbinding-check-warnings-a1a92e0ba312
 
-Regards,
-Markus
+Best regards,
+-- 
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+
 
