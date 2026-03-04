@@ -4,75 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45595EB7EAC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 09:37:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 093E8EB7EAC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 09:46:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ctgTE9+DXOgMxpJSHAYKtJ2WsWYUb1iCLsiuJHYoxZw=; b=B6EhmrO15rYHzkq2N/yvupr1Oy
-	PlZWxuCRC0TnSpPNmMmbvzCiRZKvQPzA/nBd3eNlhZ9eIMeriG9ko/TPl4REPYwITAjhtOWjggUO4
-	7MY10EFNzLCDwBP5ykGWY+Ej88S2bvvWYr83mb/XcDnmJUMJJTbEywbTYcVxKFGKspk6CIYnEZBWH
-	tqriaEEG0ne8tpgH4L5HtkLng1opmIMNjcyJsWa6DIYc+RZaF1QsJWLc2C4Ct0eVXzNBx5LyRnRO6
-	6XoAtZAk6HY1M7SdEnm7ienHl/4OEOKIpk8oseeTQt2//xqqiAAMP/5tKBMR9FFf+Y6esOWUiu+Ni
-	8e8XrbCA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lfTfnBrpuvjk9gM0EpmuMmg2+6Rzz9it2SjPehhh8/s=; b=OxM6ZQw+0QGLv24U5O3SKkVhGg
+	e+AESdde/iLQl0syrSUYLkNKIcwbxzET7GSBlnCmeVqTfCzbeklGJHY8Q2kgiA5XqbLEioS/s+Nw8
+	q2IUE74yILQ3zbX03s0bxtQM4MHjpYgFcXKdoZjOZ2B4pZLx7sezkZv5p7oAwnXPKdVpNVYSpRb5K
+	voacJI773VvUxmZ7d/cgiHeDRjQ5aYkySRQpjVdlFHbB/41yhhlVDvduvsx/oXpQ+rVIFsmvvRsYo
+	qSnYMqSTVPMfwu4riB7bgbEUKvw7S7QmQwmChijjZADnwB7GV0ZRs3K+2wamVZZpeCr9AQYjcNgSP
+	0+B0IPXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxif5-0000000GtXp-1Oe1;
-	Wed, 04 Mar 2026 09:36:59 +0000
-Received: from azure-sdnproxy.icoremail.net ([13.76.78.106])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxif0-0000000GtVX-3Lqh;
-	Wed, 04 Mar 2026 09:36:57 +0000
-Received: from zju.edu.cn (unknown [10.98.66.117])
-	by mtasvr (Coremail) with SMTP id _____wC3Nh0Q_adpkTIFAQ--.16844S3;
-	Wed, 04 Mar 2026 17:36:17 +0800 (CST)
-Received: from localhost.localdomain (unknown [10.98.66.117])
-	by mail-app4 (Coremail) with SMTP id zi_KCgDnfYMG_adp2KCYBQ--.53298S2;
-	Wed, 04 Mar 2026 17:36:06 +0800 (CST)
-From: Fan Wu <fanwu01@zju.edu.cn>
-To: linux-media@vger.kernel.org
-Cc: tiffany.lin@mediatek.com,
-	yunfei.dong@mediatek.com,
-	mchehab@kernel.org,
-	matthias.bgg@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Fan Wu <fanwu01@zju.edu.cn>
-Subject: [PATCH] media: mediatek: vcodec: fix use-after-free in encoder release path
-Date: Wed,  4 Mar 2026 09:35:06 +0000
-Message-Id: <20260304093506.236277-1-fanwu01@zju.edu.cn>
-X-Mailer: git-send-email 2.34.1
+	id 1vxioj-0000000GvYE-2lDo;
+	Wed, 04 Mar 2026 09:46:57 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vxioh-0000000GvXh-2l1T;
+	Wed, 04 Mar 2026 09:46:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id A9CE26057A;
+	Wed,  4 Mar 2026 09:46:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AA984C19423;
+	Wed,  4 Mar 2026 09:46:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772617614;
+	bh=YzkeSeB3azCaG6bGzrn5yE/65e+g4LRb8pbV3Ay8XkA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kpHgcB4VLuLIOeqRCYsJ3mB3VyQb0uCXQOp0N4h8/D2tT4NKJNtZJh3ZZ6I5/iWt8
+	 BibQiOlxfJ7YFh8ONzTTeYSdeep4rHzyNjisYObkLi06dk3wLrj2E1PxDXhESXQF+6
+	 o7o40v/esJMejywS6kZCKy6It49GqoTb5wTAZkTAPqrYyUKQDn+z+5gA7gLRgIzQMY
+	 /vG242Z0htPhjjbJXQJ2ERtLdwh9Hgv5FQUjOQee2baU2Yr8hCeZgLo+Oi2lgLVwvG
+	 IwcFNHr3CM+Lt+eN9x6xoJU+3xoO8fCx+w71URgjxa4DxhwY2MaUEoUpOk53U2QSW4
+	 0tDTuXBpqas6A==
+Message-ID: <419c552a-a57f-4f67-9923-5315ea43a4d9@kernel.org>
+Date: Wed, 4 Mar 2026 10:46:46 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zi_KCgDnfYMG_adp2KCYBQ--.53298S2
-X-CM-SenderInfo: qrstjiaswqq6lmxovvfxof0/
-X-CM-DELIVERINFO: =?B?eygmewXKKxbFmtjJiESix3B1w3vZ3A9ovKVTomAyoQazvoRs/NHSP8GI2EvgeEEW7R
-	sfnVF/U4hEbTTFSw5kpxcvjRb6mQGmGX2Lq9AG8clAwRux2D2Ta4eYv/3f2xyhLs0q0Axz
-	y3xBfAYJQz1E2yiHyG6p9E6mavGmQbzmcFsnzP86
-X-Coremail-Antispam: 1Uk129KBj93XoWxZFyxtr13Jr1kXr1xKFWUKFX_yoWrXF17pF
-	WfKrW2kayUJr4vyF1xta18Za4ruryagr47Gw40vw1fA3sxAr4qqr42kr109FWktrZ7tF4U
-	ZrsFg3y3Gr4jyFcCm3ZEXasCq-sJn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7ZEXa
-	sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
-	0xBIdaVrnRJUUU9Gb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2
-	IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
-	e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_tr0E3s1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
-	0_Gr1j6F4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AK
-	xVW0oVCq3wAac4AC62xK8xCEY4vEwIxC4wAS0I0E0xvYzxvE52x082IY62kv0487Mc804V
-	CY07AIYIkI8VC2zVCFFI0UMc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AK
-	xVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48Icx
-	kI7VAKI48JM4x0Y48IcxkI7VAKI48G6xCjnVAKz4kxMxAIw28IcxkI7VAKI48JMxC20s02
-	6xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_Jr
-	I_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v2
-	6r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVWUJVW8JwCI42IY6xAIw20EY4v20xvaj4
-	0_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8
-	JrUvcSsGvfC2KfnxnUUI43ZEXa7IU85l1PUUUUU==
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_013655_009240_8397BF5F 
-X-CRM114-Status: GOOD (  10.86  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/8] dt-bindings: clock, reset: Add econet EN751221
+ bindings
+To: Caleb James DeLisle <cjd@cjdns.fr>
+Cc: linux-mips@vger.kernel.org, naseefkm@gmail.com, mturquette@baylibre.com,
+ sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ tsbogend@alpha.franken.de, ryder.lee@mediatek.com,
+ jianjun.wang@mediatek.com, lpieralisi@kernel.org, kwilczynski@kernel.org,
+ mani@kernel.org, bhelgaas@google.com, vkoul@kernel.org,
+ neil.armstrong@linaro.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, nbd@nbd.name, ansuelsmth@gmail.com,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20260303190948.694783-1-cjd@cjdns.fr>
+ <20260303190948.694783-2-cjd@cjdns.fr>
+ <20260304-accomplished-helpful-orca-5d6b81@quoll>
+ <7888e449-fec9-4a23-8133-ad0c9651a354@cjdns.fr>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <7888e449-fec9-4a23-8133-ad0c9651a354@cjdns.fr>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,99 +125,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The fops_vcodec_release() function frees the context structure (ctx)
-without first cancelling any pending or running work in ctx->encode_work.
-This creates a race window where the workqueue handler (mtk_venc_worker)
-may still be accessing the context memory after it has been freed.
+On 04/03/2026 10:09, Caleb James DeLisle wrote:
+>>> +
+>>> +description:
+>>> +  The EcoNet chip-scu block provides a configuration interface for clock,
+>>> +  io-muxing and other functionalities used by multiple controllers (e.g. clock,
+>>> +  pinctrl, ecc) on EN751221 SoC.
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    items:
+>>> +      - const: econet,en751221-chip-scu
+>>> +      - const: syscon
+>> And it does not fit existing syscon bindings file, because ... ?
+> 
+> 
+> If you're asking why it needs to be named "econet,en751221-chip-scu" and 
 
-Race condition:
+No, I am asking why you cannot put it with other syscon bindings - git
+grep syscon? What is missing here (we expect complete binding for given
+hardware)?
 
-    CPU 0 (release path)               CPU 1 (workqueue)
-    ---------------------               ------------------
-    fops_vcodec_release()
-      v4l2_m2m_ctx_release()
-        v4l2_m2m_cancel_job()
-        // waits for m2m job "done"
-                                        mtk_venc_worker()
-                                          v4l2_m2m_job_finish()
-                                          // m2m job "done"
-                                          // BUT worker still running!
-                                          // post-job_finish access:
-                                        other ctx dereferences
-                                          // UAF if ctx already freed
-        // returns (job "done")
-      kfree(ctx)  // ctx freed
 
-Root cause: The v4l2_m2m_ctx_release() only waits for the m2m job
-lifecycle (via TRANS_RUNNING flag), not the workqueue lifecycle.
-After v4l2_m2m_job_finish() is called, the m2m framework considers
-the job complete and v4l2_m2m_ctx_release() returns, but the worker
-function continues executing and may still access ctx.
 
-The work is queued during encode operations via:
-  queue_work(ctx->dev->encode_workqueue, &ctx->encode_work)
-The worker function accesses ctx->m2m_ctx, ctx->dev, and other ctx
-fields even after calling v4l2_m2m_job_finish().
-
-This vulnerability was confirmed with KASAN by running an instrumented
-test module that widens the post-job_finish race window. KASAN detected:
-
-  BUG: KASAN: slab-use-after-free in mtk_venc_worker+0x159/0x180
-  Read of size 4 at addr ffff88800326e000 by task kworker/u8:0/12
-
-  Workqueue: mtk_vcodec_enc_wq mtk_venc_worker
-
-  Allocated by task 47:
-    __kasan_kmalloc+0x7f/0x90
-    fops_vcodec_open+0x85/0x1a0
-
-  Freed by task 47:
-    __kasan_slab_free+0x43/0x70
-    kfree+0xee/0x3a0
-    fops_vcodec_release+0xb7/0x190
-
-Fix this by calling cancel_work_sync(&ctx->encode_work) before kfree(ctx).
-This ensures the workqueue handler is both cancelled (if pending) and
-synchronized (waits for any running handler to complete) before the
-context is freed.
-
-Placement rationale: The fix is placed after v4l2_ctrl_handler_free()
-and before list_del_init(&ctx->list). At this point, all m2m operations
-are done (v4l2_m2m_ctx_release() has returned), and we need to ensure
-the workqueue is synchronized before removing ctx from the list and
-freeing it.
-
-Note: The open error path does NOT need cancel_work_sync() because
-INIT_WORK() only initializes the work structure - it does not schedule
-it. Work is only scheduled later during device_run() operations.
-
-Fixes: 0934d3759615 ("media: mediatek: vcodec: separate decoder and encoder")
-Signed-off-by: Fan Wu <fanwu01@zju.edu.cn>
----
- .../mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c         | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-index c977ed0c09b6..4e4541b2fc8e 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
-@@ -215,6 +215,15 @@ static int fops_vcodec_release(struct file *file)
- 	v4l2_fh_exit(&ctx->fh);
- 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
- 
-+	/*
-+	 * Cancel any pending encode work before freeing the context.
-+	 * Although v4l2_m2m_ctx_release() waits for m2m job completion,
-+	 * the workqueue handler (mtk_venc_worker) may still be accessing
-+	 * the context after v4l2_m2m_job_finish() returns. Without this,
-+	 * a use-after-free occurs when the worker accesses ctx after kfree.
-+	 */
-+	cancel_work_sync(&ctx->encode_work);
-+
- 	spin_lock_irqsave(&dev->dev_ctx_lock, flags);
- 	list_del_init(&ctx->list);
- 	spin_unlock_irqrestore(&dev->dev_ctx_lock, flags);
--- 
-2.34.1
-
+Best regards,
+Krzysztof
 
