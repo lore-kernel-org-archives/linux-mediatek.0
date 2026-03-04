@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DDBBEFCE4D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B073EFCE54
 	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 23:51:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,51 +12,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xQslxQXmAlCziq3+imt8MhYq9WKREslJJ0QGMmcvOt0=; b=viQEXyIBtB2/zLDQPkOLid1hNJ
-	N50oE0EKlz7TCUpYeaizgZbh09QE7gAKD2g8wPHBDa1EBm/Fiofl5B1RMNlRFHyYnr0tO4XrpzJ+l
-	4nrdd7mSyQX+WKM+44ikNDklrhIIEQ7S0OectB58IXAS7KU8WKPcoqa7fPx7PR0KNv7/QmrtfBfbr
-	hzwHY8geHO6EgNfrDo92VxIS8fT+9Jn9rD4Rd3j+pQuaJL1+Xx4Mvus5n8J+QFiVxZVoQk2JelUSf
-	+X3siGp1Siqx7tgDnQR3v5VPYRG93a8/fLu/MAoDI6u916NM5mN0EilUXZgAXyFiOVO7WdyHjG0pC
-	3RzveJvA==;
+	bh=ITGj90b4rmhj9ra+omckXD+F4UkNt/EJau7xKxZK9QM=; b=afG0bxOnBujNSnd47kD1djdJEJ
+	J1QhEpRCaY/8dMAYoOrEC6mUBmXfFl+39e4CXQ5jcpLWw0SHNr5Bxc1qkOO/lCZoN09wcLjBHiUkQ
+	Lxo02Dt4X2x0x8VFoFDmqtIFPVKGxJ5mwTmP6+xszy3bfYxwVQWfzrGztL5tG7yNABN7tKHggbaz4
+	1JB8VtreiR7FpttoK8FGBT3Sz4ZjgiL6r/D5nlWWDlcxlLxm09E1JzYG2D1x/aqTkdDu1YkB+AfUj
+	+wibjCJyAPYyWtqRm8L4i/bIxJEHB5mFZEUv8X+QVDXFTIUINyHBKCCoHI7Y6XgzxWNlgNCQUikLr
+	qYDZ4Z4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxvze-00000000eGi-05iG;
+	id 1vxvze-00000000eHI-2IFz;
 	Wed, 04 Mar 2026 23:51:06 +0000
-Received: from mail-ot1-f44.google.com ([209.85.210.44])
+Received: from mail-ot1-f54.google.com ([209.85.210.54])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxvzX-00000000eE4-3DBT
+	id 1vxvzY-00000000eEY-3rgo
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Mar 2026 23:51:04 +0000
-Received: by mail-ot1-f44.google.com with SMTP id 46e09a7af769-7d4b9c839b1so3905559a34.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Mar 2026 15:50:59 -0800 (PST)
+	Wed, 04 Mar 2026 23:51:05 +0000
+Received: by mail-ot1-f54.google.com with SMTP id 46e09a7af769-7d18d0e6d71so5626937a34.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Mar 2026 15:51:00 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772668258; x=1773273058;
+        d=1e100.net; s=20230601; t=1772668260; x=1773273060;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=xQslxQXmAlCziq3+imt8MhYq9WKREslJJ0QGMmcvOt0=;
-        b=WAXGO/SH0uBbjbESprSWtHOwA5r8FmmbhS1bfCZ1Kt2SUxOTLmYFoITk8Ejz4bhFKK
-         0/Z8l0lJn2lYKLLH80Mg2id3ctsYdwxmFskCkFXt43Ei8ONde7x09/m8j2kx+T7A5kZP
-         WRLITM2l6zOqd6Qav4mw+Si3Mb6fV2x3nFdyKNhp8+lC9CUDbS3CRmHNY6R1sfiQpuLx
-         QfXunGB5+mgmU2GvvUMtzmRH4pTmq6sEUJ9eixoLFXHdLWVTeh/k0f2wsHp3OHb/Lq9f
-         1ArsZFrqIkkYBpWYSsL0esRcFdeHO6JVHT6HXBNEmiBIR9g/OhP/iLijY3G7fsGCl1LJ
-         4ovg==
-X-Forwarded-Encrypted: i=1; AJvYcCVdVQZSTy8Hl7BwMckQW/M9Q2qHHsfOC+syQ1QJt1I5Yn3ekJpe5+KosUnPNWb/6kP47l181LIsNgyoTHJ2XQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxJzriDbGfjzk3U30bDKXAFOouCFsY9aJXXADtZsC4FgWpngC5e
-	8FNiKwYPWVlMWDPWG+WsowI/UpmSBLLNGfXfzeXWTAlwJJRZ9BPl2suL
-X-Gm-Gg: ATEYQzyBwTT/slzQ6fw2LxyCqPcH6gSIDMxWrXniXPqf6gF028PHLdeHu8c4vhq+Nla
-	TCrVECWEbbpESXm1A4Z5PDQQtzuXPkVTJ6vONd4b4o0inODJNwvuMta+FNhsG+eIeIiMRYzdnzX
-	rGiYxNoKQaX5nzF9bxfKa9Wc3TcBlgZFOBuhRVIsP27sO90/4GOhbeZ2eXCmWJVLEvzQzHFPFnJ
-	nfw89jQOLGfeMJ6sqqKAFNTRY+wAqEkjhPIfmev5KW1Nqb1Qq10r3NuTEyE9IZ/iwKpy7mnrFbq
-	a21dFIawRBMhtkwtHJ5XX0AlE9wg9CT2+FD5w2j9C3NkEaTrQ/iiSgFUjatpERQJpfAUdSnGHB/
-	AxbL5Lcwf/XPfxPxCHP+DEELZhrR5GyxrourTOKYzduzEfgMZkMjLYTk7MTtro/ZI8YQSGALsV/
-	ljlUDG+OlwCCmXg63IBU0WsrypygSxXX27ltIRdTNaSC4zPKk=
-X-Received: by 2002:a05:6820:6ac5:b0:679:c3b5:73e5 with SMTP id 006d021491bc7-67b17703d70mr2070089eaf.30.1772668258374;
-        Wed, 04 Mar 2026 15:50:58 -0800 (PST)
+        bh=ITGj90b4rmhj9ra+omckXD+F4UkNt/EJau7xKxZK9QM=;
+        b=fi2F2pxpF1C6sFCVg6uaL0dfQJy22nlDtJimnFMgi6+fb43MXbkaBSXrI3lNnxd119
+         wQ/+clWsb6Pq2aMWW/GqYN0ZkG9VVSAWsjKnKLK096/GkL6R+vOQ+EZp0gX26CIADEot
+         gKKjT0qT7Gd2QmEq/r0M6lUenggnucPGueJ36VQ8qpO9YcW5v+lnr1O1ygaHzD41gBZS
+         cp9I9cb7KcXl/c3t+gj8+8l+UYb0CKhRkmXED5L+C6OytCfnCjF1kFzKe0TH8/Ogvu7n
+         lW3UfUiE1lQrdGvdCqtE9oHtvW6tYS0ccZcmPb3b7up7CIE9sK9l8fbpjbO9P/kbsDc+
+         vVjQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWT1OKCWIo9TMuCla4YeJSwA+6K7zur0fVUSKD1wG3+in80y4FX6mg6B1eGx0S53xbQE7Nyzz7w+lWsOhFY2w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwCTP5L9wFpnuio/0zYjQbccwbjmrHTog0GdbYDobc9Gi6USM6I
+	y10IDgtQbADidYtjtdFjHlAKP8rHS5sCrEcdXEVjzmckiZi9bMGZ0x07
+X-Gm-Gg: ATEYQzw1/qmJbT9lzl6PVViz6IXl2bS9XhI+KKp9wk3c0VA0gEZzfol+IK1tJq8cZQW
+	qcaGIgARbkmv3O05nVxwBCQLzVgAFsIq9gZg+OvFi4fGQJwC/WJ3UWuz3CPwvSakKkbMlrqeBu1
+	4KMBa4NiQC1ip40UXJwWLJ9z0WK0NX5tYg/g6G4Ve/1Sio4VJiG6/AF9LqGESk3kBNFg5ltUbGo
+	MkQ5oV4N4tGymjo82PGx8RHCwVafFQqVn1Y32ph3QfnJbtZq4I37t/Zma4QjSD6awtTDhaR/3oC
+	BKOAr2XE78cUSheTwMiQwZLpMG1j9XVdt2jazdd7DDFYkMoHP394BJrb43duI/uwC1EWTJzekGb
+	yEGxVFibEKahjJ2nOIQ8RVQT0JbHnMkc/NAf0UUq9bjy5JFpAewctbzLYI59fDWnqKqqc+/tFzi
+	eIiIoh6JDlcc5Gx0f1BnJl4TDSY8aRihfe9s1AE6Tt01Cp/Z0=
+X-Received: by 2002:a05:6820:1786:b0:679:a41d:2d2f with SMTP id 006d021491bc7-67b1770a269mr2380231eaf.30.1772668260004;
+        Wed, 04 Mar 2026 15:51:00 -0800 (PST)
 Received: from sean-HP-EliteBook-830-G6.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-679f2bfee3csm14410687eaf.7.2026.03.04.15.50.57
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-679f2bfee3csm14410687eaf.7.2026.03.04.15.50.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Mar 2026 15:50:57 -0800 (PST)
+        Wed, 04 Mar 2026 15:50:59 -0800 (PST)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
@@ -67,17 +67,17 @@ Cc: linux-wireless@vger.kernel.org,
 	jenhao.yang@mediatek.com,
 	posh.sun@mediatek.com,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 5/7] wifi: mt76: mt7925: add NAN MCU ABI and basic cmd/event support
-Date: Wed,  4 Mar 2026 17:50:18 -0600
-Message-ID: <20260304235020.40451-5-sean.wang@kernel.org>
+Subject: [PATCH 6/7] wifi: mt76: mt7925: add mac80211 NAN start/stop/change_conf ops
+Date: Wed,  4 Mar 2026 17:50:19 -0600
+Message-ID: <20260304235020.40451-6-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260304235020.40451-1-sean.wang@kernel.org>
 References: <20260304235020.40451-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_155059_880008_D7BE62CE 
-X-CRM114-Status: GOOD (  23.67  )
+X-CRM114-CacheID: sfid-20260304_155100_968961_D4462E0F 
+X-CRM114-Status: GOOD (  14.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,751 +94,156 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Add initial Neighbor Awareness Networking (NAN) MCU ABI definitions for
-mt7925 and implement basic NAN control commands.
-
-This introduces NAN command TLVs for enable/disable/configure, plus
-event parsing for NAN discovery engine indications. The new code also
-adds helper logic for configuring DW interval, cluster ID, RSSI
-thresholds and social channel scan parameters.
-
-This change only adds the firmware-facing ABI and command/event
-plumbing; it does not yet adapt or expose NAN functionality to upper
-layers (cfg80211/mac80211) in mt76. Upper-layer integration will follow
-in subsequent patches.
+Wire mac80211 NAN start/stop/change_conf callbacks to mt7925 NAN MCU
+enable/disable/config. Track the active NAN vif and notify mac80211 on
+cluster join events.
 
 Co-developed-by: Stella Liu <yu-ching.liu@mediatek.com>
 Signed-off-by: Stella Liu <yu-ching.liu@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |   2 +
- .../wireless/mediatek/mt76/mt7925/Makefile    |   2 +-
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   |   6 +-
- .../net/wireless/mediatek/mt76/mt7925/nan.c   | 386 ++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7925/nan.h   | 200 +++++++++
- .../net/wireless/mediatek/mt76/mt7925/regd.c  |  30 ++
- .../net/wireless/mediatek/mt76/mt7925/regd.h  |   3 +
- 7 files changed, 627 insertions(+), 2 deletions(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/nan.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/nan.h
+ .../net/wireless/mediatek/mt76/mt7925/main.c  | 69 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7925/nan.c   |  7 ++
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  2 +
+ 3 files changed, 78 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index 11986e164a38..ca29e015d1ab 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1075,6 +1075,7 @@ enum {
- 	MCU_UNI_EVENT_THERMAL = 0x35,
- 	MCU_UNI_EVENT_RSSI_MONITOR = 0x41,
- 	MCU_UNI_EVENT_NIC_CAPAB = 0x43,
-+	MCU_UNI_EVENT_NAN = 0x56,
- 	MCU_UNI_EVENT_WED_RRO = 0x57,
- 	MCU_UNI_EVENT_PER_STA_INFO = 0x6d,
- 	MCU_UNI_EVENT_ALL_STA_INFO = 0x6e,
-@@ -1314,6 +1315,7 @@ enum {
- 	MCU_UNI_CMD_FIXED_RATE_TABLE = 0x40,
- 	MCU_UNI_CMD_RSSI_MONITOR = 0x41,
- 	MCU_UNI_CMD_TESTMODE_CTRL = 0x46,
-+	MCU_UNI_CMD_NAN	= 0x56,
- 	MCU_UNI_CMD_RRO = 0x57,
- 	MCU_UNI_CMD_OFFCH_SCAN_CTRL = 0x58,
- 	MCU_UNI_CMD_PER_STA_INFO = 0x6d,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/Makefile b/drivers/net/wireless/mediatek/mt76/mt7925/Makefile
-index 8f1078ce3231..f9dcc0bba393 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/Makefile
-@@ -4,7 +4,7 @@ obj-$(CONFIG_MT7925_COMMON) += mt7925-common.o
- obj-$(CONFIG_MT7925E) += mt7925e.o
- obj-$(CONFIG_MT7925U) += mt7925u.o
- 
--mt7925-common-y := mac.o mcu.o regd.o main.o init.o debugfs.o
-+mt7925-common-y := mac.o mcu.o regd.o main.o init.o debugfs.o nan.o
- mt7925-common-$(CONFIG_NL80211_TESTMODE) += testmode.o
- mt7925e-y := pci.o pci_mac.o pci_mcu.o
- mt7925u-y := usb.o
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index a41e0d2fb3f9..ecf086aee930 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -7,6 +7,7 @@
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index afcc0fa4aa35..f215984495c7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -11,6 +11,7 @@
  #include "regd.h"
  #include "mcu.h"
  #include "mac.h"
 +#include "nan.h"
  
- #define MT_STA_BFER			BIT(0)
- #define MT_STA_BFEE			BIT(1)
-@@ -37,7 +38,8 @@ int mt7925_mcu_parse_response(struct mt76_dev *mdev, int cmd,
- 		   cmd == MCU_UNI_CMD(BSS_INFO_UPDATE) ||
- 		   cmd == MCU_UNI_CMD(STA_REC_UPDATE) ||
- 		   cmd == MCU_UNI_CMD(OFFLOAD) ||
--		   cmd == MCU_UNI_CMD(SUSPEND)) {
-+		   cmd == MCU_UNI_CMD(SUSPEND) ||
-+		   cmd == MCU_UNI_CMD(NAN)) {
- 		struct mt7925_mcu_uni_event *event;
+ static void
+ mt7925_init_he_caps(struct mt792x_phy *phy, enum nl80211_band band,
+@@ -442,6 +443,8 @@ mt7925_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+ 	INIT_WORK(&mvif->csa_work, mt7925_csa_work);
+ 	timer_setup(&mvif->csa_timer, mt792x_csa_timer, 0);
  
- 		skb_pull(skb, sizeof(*rxd));
-@@ -600,6 +602,8 @@ mt7925_mcu_uni_rx_unsolicited_event(struct mt792x_dev *dev,
- 		dev->fw_assert = true;
- 		mt76_connac_mcu_coredump_event(&dev->mt76, skb, &dev->coredump);
- 		return;
-+	case MCU_UNI_EVENT_NAN:
-+		mt7925_nan_mcu_event(dev, skb);
- 	default:
- 		break;
++	if (vif->type == NL80211_IFTYPE_NAN)
++		dev->nan_vif = vif;
+ out:
+ 	mt792x_mutex_release(dev);
+ 
+@@ -2297,6 +2300,69 @@ static void mt7925_channel_switch_rx_beacon(struct ieee80211_hw *hw,
  	}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-new file mode 100644
-index 000000000000..9483ee94c05e
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-@@ -0,0 +1,386 @@
-+// SPDX-License-Identifier: BSD-3-Clause-Clear
-+/* Copyright (C) 2025-2026 MediaTek Inc. */
-+
-+#include <asm/byteorder.h>
-+#include <linux/errno.h>
-+#include <linux/kernel.h>
-+#include <linux/stddef.h>
-+#include <linux/string.h>
-+#include <linux/types.h>
-+#include <linux/ieee80211.h>
-+#include <net/cfg80211.h>
-+#include <net/mac80211.h>
-+
-+#include "mt7925.h"
-+#include "mcu.h"
-+#include "nan.h"
-+#include "regd.h"
-+
-+static void mt7925_nan_set_5g_channel(struct mt792x_dev *dev,
-+				      struct mt7925_nan_enable_req_tlv *req,
-+				      struct cfg80211_nan_conf *conf)
-+{
-+	struct ieee80211_channel *chan;
-+	u32 ch5g = 0;
-+
-+	chan = conf->band_cfgs[NL80211_BAND_5GHZ].chan;
-+
-+	if (chan)
-+		dev_info(dev->mt76.dev, "MP = %u, 5g ch: %u\n",
-+			 conf->master_pref, chan->hw_value);
-+	else
-+		dev_info(dev->mt76.dev, "MP = %u, 5g ch is null\n",
-+			 conf->master_pref);
-+
-+	if (!chan)
-+		return;
-+
-+	if (!mt7925_regd_is_valid_channel(dev, NL80211_BAND_5GHZ, chan))
-+		return;
-+
-+	req->config_5g_channel = 1;
-+
-+	if (chan->hw_value == NAN_5G_LOW_DISC_CHANNEL)
-+		ch5g |= BIT(0);
-+	else if (chan->hw_value == NAN_5G_HIGH_DISC_CHANNEL)
-+		ch5g |= BIT(1);
-+
-+	req->channel_5g_val = cpu_to_le32(ch5g);
-+}
-+
-+static void mt7925_nan_set_cluster_id(struct mt7925_nan_enable_req_tlv *req,
-+				      const u8 *cluster_id)
-+{
-+	if (!cluster_id)
-+		return;
-+
-+	req->cluster_high = cpu_to_le16(*(const u16 *)(cluster_id + 4));
-+	req->cluster_low = cpu_to_le16((u16)cluster_id[3]);
-+}
-+
-+static void mt7925_nan_set_dw_interval(struct mt7925_nan_enable_req_tlv *req,
-+				       struct cfg80211_nan_conf *conf)
-+{
-+	if (conf->band_cfgs[NL80211_BAND_2GHZ].awake_dw_interval > 0) {
-+		req->config_dw.config_2dot4g_dw_band = 1;
-+		req->config_dw.dw_2dot4g_interval_val =
-+			cpu_to_le32(conf->band_cfgs[NL80211_BAND_2GHZ].awake_dw_interval);
-+	}
-+
-+	if (conf->band_cfgs[NL80211_BAND_5GHZ].awake_dw_interval > 0) {
-+		req->config_dw.config_5g_dw_band = 1;
-+		req->config_dw.dw_5g_interval_val =
-+			cpu_to_le32(conf->band_cfgs[NL80211_BAND_5GHZ].awake_dw_interval);
-+	}
-+}
-+
-+static void mt7925_nan_set_disc_beacon(struct mt7925_nan_enable_req_tlv *req,
-+				       struct cfg80211_nan_conf *conf)
-+{
-+	if (conf->discovery_beacon_interval > 0) {
-+		req->config_2dot4g_beacons = true;
-+		req->beacon_2dot4g_val = conf->discovery_beacon_interval;
-+	}
-+}
-+
-+static void mt7925_nan_set_rssi_thresholds(struct mt7925_nan_enable_req_tlv *req,
-+					   struct cfg80211_nan_conf *conf)
-+{
-+	if (conf->band_cfgs[NL80211_BAND_2GHZ].chan) {
-+		req->config_2dot4g_rssi_close = 1;
-+		req->rssi_close_2dot4g_val =
-+			abs(conf->band_cfgs[NL80211_BAND_2GHZ].rssi_close);
-+		req->config_2dot4g_rssi_middle = 1;
-+		req->rssi_middle_2dot4g_val =
-+			abs(conf->band_cfgs[NL80211_BAND_2GHZ].rssi_middle);
-+	}
-+
-+	if (conf->band_cfgs[NL80211_BAND_5GHZ].chan) {
-+		req->config_5g_rssi_close = 1;
-+		req->rssi_close_5g_val =
-+			abs(conf->band_cfgs[NL80211_BAND_5GHZ].rssi_close);
-+		req->config_5g_rssi_middle = 1;
-+		req->rssi_middle_5g_val =
-+			abs(conf->band_cfgs[NL80211_BAND_5GHZ].rssi_middle);
-+	}
-+}
-+
-+static void mt7925_nan_set_scan_params(struct mt7925_nan_enable_req_tlv *req,
-+				       struct cfg80211_nan_conf *conf)
-+{
-+	req->scan_params_val.scan_period[0] =
-+		conf->scan_period < 255 ? conf->scan_period : 255;
-+	req->scan_params_val.dwell_time[0] =
-+		conf->scan_dwell_time < 255 ? conf->scan_dwell_time : 255;
-+}
-+
-+int mt7925_nan_enable(struct ieee80211_vif *vif,
-+		      struct mt792x_dev *dev,
-+		      struct cfg80211_nan_conf *conf)
-+{
-+	struct mt76_dev *mdev = &dev->mt76;
-+	struct {
-+		u8 rsv[4];
-+		struct mt7925_nan_enable_req_tlv nan_req_tlv;
-+	} nan_cmd = {
-+		.rsv = { 0 },
-+		.nan_req_tlv = {
-+			.tag = cpu_to_le16(NAN_UNI_CMD_ENABLE_REQUEST),
-+			.len = cpu_to_le16(sizeof(struct mt7925_nan_enable_req_tlv)),
-+			.config_random_factor_force = 0,
-+			.random_factor_force_val = 0,
-+			.config_hop_count_force = 0,
-+			.hop_count_force_val = 0,
-+		},
-+	};
-+	struct mt7925_nan_enable_req_tlv *p_nan_req_tlv = &nan_cmd.nan_req_tlv;
-+
-+	if (!dev || !conf)
-+		return -EINVAL;
-+
-+	p_nan_req_tlv->master_pref = conf->master_pref;
-+
-+	mt7925_nan_set_5g_channel(dev, p_nan_req_tlv, conf);
-+	mt7925_nan_set_cluster_id(p_nan_req_tlv, conf->cluster_id);
-+	mt7925_nan_set_dw_interval(p_nan_req_tlv, conf);
-+	mt7925_nan_set_disc_beacon(p_nan_req_tlv, conf);
-+	mt7925_nan_set_rssi_thresholds(p_nan_req_tlv, conf);
-+	mt7925_nan_set_scan_params(p_nan_req_tlv, conf);
-+
-+	return mt76_mcu_send_msg(mdev, MCU_UNI_CMD(NAN), &nan_cmd, sizeof(nan_cmd), true);
-+}
-+
-+int mt7925_nan_disable(struct ieee80211_vif *vif, struct mt792x_dev *dev)
-+{
-+	struct mt76_dev *mdev = &dev->mt76;
-+	struct {
-+		u8 rsv[4];
-+		struct tlv nan_dis_tlv;
-+	} nan_cmd = {
-+		.rsv = { 0 },
-+		.nan_dis_tlv = {
-+			.tag = cpu_to_le16(NAN_UNI_CMD_DISABLE_REQUEST),
-+			.len = cpu_to_le16(sizeof(struct tlv)),
-+		},
-+	};
-+
-+	if (!dev)
-+		return -EINVAL;
-+
-+	return mt76_mcu_send_msg(mdev, MCU_UNI_CMD(NAN), &nan_cmd, sizeof(nan_cmd), true);
-+}
-+
-+static void
-+mt7925_nan_mp_tlv(struct sk_buff *skb, u8 master_pref)
-+{
-+	struct mt7925_nan_master_preference_tlv *mp_tlv = NULL;
-+	struct tlv *tlv = NULL;
-+
-+	if (!skb)
-+		return;
-+
-+	tlv = mt76_connac_mcu_add_tlv(skb, NAN_UNI_CMD_SET_MASTER_PREFERENCE,
-+				      sizeof(struct mt7925_nan_master_preference_tlv));
-+	if (!tlv)
-+		return;
-+
-+	mp_tlv = (struct mt7925_nan_master_preference_tlv *)tlv;
-+
-+	if (master_pref > NAN_MAX_MASTER_PREFERENCE)
-+		return;
-+
-+	mp_tlv->master_preference = master_pref;
-+}
-+
-+static void
-+mt7925_nan_dw_tlv(struct sk_buff *skb, struct cfg80211_nan_conf *conf)
-+{
-+	struct mt7925_nan_dw_interval_tlv *dw_tlv = NULL;
-+	struct tlv *tlv = NULL;
-+	u16 interval;
-+
-+	if (!skb || !conf)
-+		return;
-+
-+	tlv = mt76_connac_mcu_add_tlv(skb, NAN_UNI_CMD_SET_DW_INTERVAL,
-+				      sizeof(struct mt7925_nan_dw_interval_tlv));
-+
-+	if (!tlv)
-+		return;
-+
-+	dw_tlv = (struct mt7925_nan_dw_interval_tlv *)tlv;
-+
-+	/* Set DW interval for 2.4GHz and 5GHz bands if available */
-+	if (conf->band_cfgs[NL80211_BAND_2GHZ].awake_dw_interval > 0) {
-+		dw_tlv->dw_interval = conf->band_cfgs[NL80211_BAND_2GHZ].awake_dw_interval;
-+	} else if (conf->band_cfgs[NL80211_BAND_5GHZ].awake_dw_interval > 0) {
-+		dw_tlv->dw_interval = conf->band_cfgs[NL80211_BAND_5GHZ].awake_dw_interval;
-+	} else {
-+		/* Fallback to a default value or log a warning */
-+		dw_tlv->dw_interval = NAN_DEFAULT_DW_INTERVAL;
-+	}
-+
-+	/* Validate and set NAN Discovery Beacon Interval */
-+	interval = conf->discovery_beacon_interval > 0 ?
-+		   conf->discovery_beacon_interval :
-+		   NAN_DEFAULT_DISC_BCN_INTERVAL;
-+
-+	dw_tlv->disc_bcn_interval = cpu_to_le16(interval);
-+}
-+
-+static void
-+mt7925_nan_cluster_id_tlv(struct sk_buff *skb, const u8 *cluster_id)
-+{
-+	struct mt7925_nan_cluster_id_tlv *cluster_tlv = NULL;
-+	struct tlv *tlv = NULL;
-+
-+	if (!skb || !cluster_id)
-+		return;
-+
-+	tlv = mt76_connac_mcu_add_tlv(skb, NAN_UNI_CMD_SET_CLUSTER_ID,
-+				      sizeof(struct mt7925_nan_cluster_id_tlv));
-+
-+	if (!tlv)
-+		return;
-+
-+	cluster_tlv = (struct mt7925_nan_cluster_id_tlv *)tlv;
-+
-+	memcpy(cluster_tlv->cluster_id, cluster_id, ETH_ALEN);
-+}
-+
-+static void
-+mt7925_nan_sync_rssi_tlv(struct sk_buff *skb, struct cfg80211_nan_conf *conf)
-+{
-+	struct mt7925_nan_sync_rssi_tlv *rssi_tlv = NULL;
-+	struct tlv *tlv = NULL;
-+
-+	if (!skb || !conf)
-+		return;
-+
-+	tlv = mt76_connac_mcu_add_tlv(skb, NAN_UNI_CMD_SET_SYNC_RSSI,
-+				      sizeof(struct mt7925_nan_sync_rssi_tlv));
-+
-+	if (!tlv)
-+		return;
-+
-+	rssi_tlv = (struct mt7925_nan_sync_rssi_tlv *)tlv;
-+
-+	if (conf->band_cfgs[NL80211_BAND_2GHZ].chan) {
-+		rssi_tlv->rssi_close_2g =
-+			conf->band_cfgs[NL80211_BAND_2GHZ].rssi_close;
-+		rssi_tlv->rssi_middle_2g =
-+			conf->band_cfgs[NL80211_BAND_2GHZ].rssi_middle;
-+	}
-+
-+	if (conf->band_cfgs[NL80211_BAND_5GHZ].chan) {
-+		rssi_tlv->rssi_close_5g =
-+			conf->band_cfgs[NL80211_BAND_5GHZ].rssi_close;
-+		rssi_tlv->rssi_middle_5g =
-+			conf->band_cfgs[NL80211_BAND_5GHZ].rssi_middle;
-+	}
-+}
-+
-+int mt7925_nan_change_configure(struct ieee80211_vif *vif,
-+				struct mt792x_dev *dev,
-+				struct cfg80211_nan_conf *conf)
-+{
-+	struct mt76_dev *mdev = &dev->mt76;
-+	struct mt7925_nan_common_hdr *hdr = NULL;
-+	struct sk_buff *skb = NULL;
-+
-+	if (!dev || !conf)
-+		return -EINVAL;
-+
-+	skb = mt76_mcu_msg_alloc(mdev, NULL, MT7925_NAN_CONF_MAX_SIZE);
-+	if (!skb)
-+		return -ENOMEM;
-+
-+	hdr = (struct mt7925_nan_common_hdr *)skb_put(skb, sizeof(*hdr));
-+	memset(hdr, 0, sizeof(*hdr));
-+
-+	mt7925_nan_mp_tlv(skb, conf->master_pref);
-+	mt7925_nan_dw_tlv(skb, conf);
-+	mt7925_nan_cluster_id_tlv(skb, conf->cluster_id);
-+	mt7925_nan_sync_rssi_tlv(skb, conf);
-+
-+	return mt76_mcu_skb_send_msg(mdev, skb,
-+				     MCU_UNI_CMD(NAN), true);
-+}
-+
-+static void
-+mt7925_nan_mcu_handle_de_event(struct mt792x_dev *dev, struct tlv *tlv)
-+{
-+	struct mt7925_nan_de_event *de_evt = NULL;
-+	u8 cluster_id[ETH_ALEN] __aligned(2) = {0x50, 0x6f, 0x9a, 0x01, 0x00, 0x00};
-+	u16 len;
-+
-+	if (!dev || !tlv) {
-+		if (dev)
-+			dev_warn(dev->mt76.dev, "nan: failed to parse TLV\n");
-+		return;
-+	}
-+
-+	len = le16_to_cpu(tlv->len);
-+	if (len < sizeof(*tlv) + sizeof(*de_evt)) {
-+		dev_warn(dev->mt76.dev,
-+			 "nan: short de_event tlv len=%u\n", len);
-+		return;
-+	}
-+
-+	de_evt = (struct mt7925_nan_de_event *)tlv->data;
-+	if (!de_evt) {
-+		dev_warn(dev->mt76.dev, "nan: missing DE event payload\n");
-+		return;
-+	}
-+
-+	if (de_evt->event_type == NAN_EVENT_ID_DISC_MAC_ADDR)
-+		return;
-+
-+	memcpy(cluster_id, de_evt->cluster_id, ETH_ALEN);
-+
-+	dev_dbg(dev->mt76.dev, "nan: evt=%u cluster=%pM\n",
-+		de_evt->event_type, de_evt->cluster_id);
-+
-+	if (de_evt->event_type != NAN_EVENT_ID_JOINED_CLUSTER)
-+		return;
-+
-+	dev_dbg(dev->mt76.dev, "nan: anchor_master_rank=%*phN\n",
-+		NAN_ANCHOR_MASTER_RANK_NUM, de_evt->anchor_master_rank);
-+
-+	dev_dbg(dev->mt76.dev, "nan: own_nmi=%pM master_nmi=%pM\n",
-+		de_evt->own_nmi, de_evt->master_nmi);
-+}
-+
-+void mt7925_nan_mcu_event(struct mt792x_dev *dev, struct sk_buff *skb)
-+{
-+	struct tlv *tlv;
-+	u32 tlv_len;
-+
-+	if (!dev || !skb)
-+		return;
-+
-+	if (skb->len < sizeof(struct mt7925_mcu_rxd) + 4)
-+		return;
-+
-+	skb_pull(skb, sizeof(struct mt7925_mcu_rxd) + 4);
-+	tlv = (struct tlv *)skb->data;
-+	tlv_len = skb->len;
-+
-+	while (tlv_len >= sizeof(*tlv)) {
-+		u16 len = le16_to_cpu(tlv->len);
-+
-+		if (len < sizeof(*tlv) || len > tlv_len)
-+			break;
-+
-+		switch (le16_to_cpu(tlv->tag)) {
-+		case NAN_UNI_EVENT_ID_DE_EVENT_IND:
-+			mt7925_nan_mcu_handle_de_event(dev, tlv);
-+			break;
-+		default:
-+			break;
-+		}
-+
-+		tlv_len -= len;
-+		tlv = (struct tlv *)((u8 *)tlv + len);
-+	}
-+}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/nan.h b/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
-new file mode 100644
-index 000000000000..8c145e4b0b6f
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
-@@ -0,0 +1,200 @@
-+/* SPDX-License-Identifier: BSD-3-Clause-Clear */
-+/* Copyright (C) 2025-2026 MediaTek Inc. */
-+
-+#ifndef __MT7925_NAN_H
-+#define __MT7925_NAN_H
-+
-+#include <linux/if_ether.h>
-+#include <linux/types.h>
-+
-+#include "../mt76_connac_mcu.h"
-+
-+#define NAN_MAX_SOCIAL_CHANNELS		3
-+#define NAN_ANCHOR_MASTER_RANK_NUM	8
-+#define NAN_5G_LOW_DISC_CHANNEL		44
-+#define NAN_5G_HIGH_DISC_CHANNEL	149
-+#define NAN_MAX_MASTER_PREFERENCE	255
-+#define NAN_DEFAULT_DW_INTERVAL		1
-+#define NAN_DEFAULT_DISC_BCN_INTERVAL	100
-+
-+#define MT7925_NAN_CONF_MAX_SIZE					\
-+	(sizeof(struct mt7925_nan_common_hdr) +				\
-+	 sizeof(struct mt7925_nan_master_preference_tlv) +		\
-+	 sizeof(struct mt7925_nan_dw_interval_tlv) +			\
-+	 sizeof(struct mt7925_nan_cluster_id_tlv) +			\
-+	 sizeof(struct mt7925_nan_sync_rssi_tlv))
-+
-+enum nan_uni_cmd_tag {
-+	NAN_UNI_CMD_SET_MASTER_PREFERENCE	= 0,
-+	NAN_UNI_CMD_ENABLE_REQUEST		= 7,
-+	NAN_UNI_CMD_DISABLE_REQUEST		= 8,
-+	NAN_UNI_CMD_SET_DW_INTERVAL		= 26,
-+	NAN_UNI_CMD_SET_SYNC_RSSI		= 39,
-+	NAN_UNI_CMD_SET_CLUSTER_ID		= 40,
-+};
-+
-+enum nan_uni_event_tag {
-+	NAN_UNI_EVENT_ID_DE_EVENT_IND		= 19,
-+};
-+
-+enum nan_disc_event_type {
-+	NAN_EVENT_ID_DISC_MAC_ADDR		= 0,
-+	NAN_EVENT_ID_JOINED_CLUSTER		= 2,
-+};
-+
-+struct mt7925_nan_social_ch_scan_params {
-+	u8 dwell_time[NAN_MAX_SOCIAL_CHANNELS];
-+	__le16 scan_period[NAN_MAX_SOCIAL_CHANNELS];
-+} __packed;
-+
-+struct mt7925_nan_conf_dw {
-+	u8 config_2dot4g_dw_band;
-+	__le32 dw_2dot4g_interval_val;
-+
-+	u8 config_5g_dw_band;
-+	__le32 dw_5g_interval_val;
-+} __packed;
-+
-+struct mt7925_nan_enable_req_tlv {
-+	__le16 tag;
-+	__le16 len;
-+
-+	u8 master_pref;
-+	__le16 cluster_low;
-+	__le16 cluster_high;
-+
-+	u8 config_support_5g;
-+	u8 support_5g_val;
-+
-+	u8 config_sid_beacon;
-+	u8 sid_beacon_val;
-+
-+	u8 config_2dot4g_rssi_close;
-+	u8 rssi_close_2dot4g_val;
-+	u8 config_2dot4g_rssi_middle;
-+	u8 rssi_middle_2dot4g_val;
-+
-+	u8 config_2dot4g_rssi_proximity;
-+	u8 rssi_proximity_2dot4g_val;
-+	u8 config_hop_count_limit;
-+	u8 hop_count_limit_val;
-+
-+	u8 config_2dot4g_support;
-+	u8 support_2dot4g_val;
-+
-+	u8 config_2dot4g_beacons;
-+	u8 beacon_2dot4g_val;
-+
-+	u8 config_2dot4g_sdf;
-+	u8 sdf_2dot4g_val;
-+
-+	u8 config_5g_beacons;
-+	u8 beacon_5g_val;
-+
-+	u8 config_5g_sdf;
-+	u8 sdf_5g_val;
-+
-+	u8 config_5g_rssi_close;
-+	u8 rssi_close_5g_val;
-+
-+	u8 config_5g_rssi_middle;
-+	u8 rssi_middle_5g_val;
-+
-+	u8 config_5g_rssi_close_proximity;
-+	u8 rssi_close_proximity_5g_val;
-+
-+	u8 config_rssi_window_size;
-+	u8 rssi_window_size_val;
-+
-+	u8 config_oui;
-+	__le32 oui_val;
-+
-+	u8 config_intf_addr;
-+	u8 intf_addr_val[ETH_ALEN];
-+
-+	u8 config_cluster_attribute_val;
-+
-+	u8 config_scan_params;
-+	struct mt7925_nan_social_ch_scan_params scan_params_val;
-+
-+	u8 config_random_factor_force;
-+	u8 random_factor_force_val;
-+
-+	u8 config_hop_count_force;
-+	u8 hop_count_force_val;
-+
-+	u8 config_24g_channel;
-+	__le32 channel_24g_val;
-+
-+	u8 config_5g_channel;
-+	__le32 channel_5g_val;
-+
-+	struct mt7925_nan_conf_dw config_dw;
-+
-+	u8 config_disc_mac_addr_randomization;
-+	__le32 disc_mac_addr_rand_interval_sec;
-+
-+	u8 discovery_indication_cfg;
-+
-+	u8 config_subscribe_sid_beacon;
-+	__le32 subscribe_sid_beacon_val;
-+
-+	u8 enable_log_slot_statistics;
-+} __packed __aligned(4);
-+
-+struct mt7925_nan_common_hdr {
-+	u8 reserved[4];
-+};
-+
-+struct mt7925_nan_master_preference_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 master_preference;
-+	u8 reserved[3];
-+} __packed __aligned(4);
-+
-+struct mt7925_nan_dw_interval_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 dw_interval;
-+	u8 vendor_ioctl;
-+	__le16 disc_bcn_interval;
-+} __packed __aligned(4);
-+
-+struct mt7925_nan_cluster_id_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	u8 cluster_id[ETH_ALEN];
-+	u8 reserved[2];
-+} __packed __aligned(4);
-+
-+struct mt7925_nan_sync_rssi_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	s8 rssi_close_2g;
-+	s8 rssi_middle_2g;
-+	s8 rssi_close_5g;
-+	s8 rssi_middle_5g;
-+} __packed __aligned(4);
-+
-+struct mt7925_nan_de_event {
-+	u8 event_type;
-+	u8 cluster_id[ETH_ALEN];
-+	u8 anchor_master_rank[NAN_ANCHOR_MASTER_RANK_NUM];
-+	u8 own_nmi[ETH_ALEN];
-+	u8 master_nmi[ETH_ALEN];
-+};
-+
-+int mt7925_nan_enable(struct ieee80211_vif *vif,
-+		      struct mt792x_dev *dev,
-+		      struct cfg80211_nan_conf *conf);
-+
-+int mt7925_nan_disable(struct ieee80211_vif *vif,
-+		       struct mt792x_dev *dev);
-+
-+int mt7925_nan_change_configure(struct ieee80211_vif *vif,
-+				struct mt792x_dev *dev,
-+				struct cfg80211_nan_conf *conf);
-+
-+void mt7925_nan_mcu_event(struct mt792x_dev *dev, struct sk_buff *skb);
-+#endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/regd.c b/drivers/net/wireless/mediatek/mt76/mt7925/regd.c
-index 16f56ee879d4..0235437d11d5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/regd.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/regd.c
-@@ -217,6 +217,36 @@ mt7925_regd_is_valid_alpha2(const char *alpha2)
- 	return false;
  }
  
-+bool
-+mt7925_regd_is_valid_channel(struct mt792x_dev *dev,
-+			     enum nl80211_band band,
-+			     struct ieee80211_channel *chan)
++static int mt7925_start_nan(struct ieee80211_hw *hw,
++			    struct ieee80211_vif *vif,
++			    struct cfg80211_nan_conf *conf)
 +{
-+	struct ieee80211_hw *hw = mt76_hw(dev);
-+	struct wiphy *wiphy = hw->wiphy;
-+	struct ieee80211_supported_band *sband;
-+	struct ieee80211_channel *ch;
-+	int i;
++	struct mt792x_dev *dev = mt792x_hw_dev(hw);
++	struct ieee80211_bss_conf *link_conf = &vif->bss_conf;
++	int err = 0;
 +
-+	if (!chan)
-+		return false;
++	mt792x_mutex_acquire(dev);
 +
-+	sband = wiphy->bands[band];
-+	if (!sband)
-+		return false;
++	link_conf->chanreq.oper.chan = conf->band_cfgs[NL80211_BAND_2GHZ].chan;
 +
-+	for (i = 0; i < sband->n_channels; i++) {
-+		ch = &sband->channels[i];
++	err = mt7925_mcu_add_bss_info(&dev->phy, NULL, link_conf,
++				      NULL, true);
++	if (err < 0)
++		goto out;
 +
-+		if (ch->hw_value == chan->hw_value &&
-+		    ((ch->flags & IEEE80211_CHAN_DISABLED) == 0))
-+			return true;
++	err = mt7925_nan_enable(vif, dev, conf);
++
++out:
++	mt792x_mutex_release(dev);
++
++	return err;
++}
++
++static int mt7925_stop_nan(struct ieee80211_hw *hw,
++			   struct ieee80211_vif *vif)
++{
++	struct ieee80211_bss_conf *link_conf = &vif->bss_conf;
++	struct mt792x_dev *dev = mt792x_hw_dev(hw);
++	int err = 0;
++
++	mt792x_mutex_acquire(dev);
++
++	err = mt7925_nan_disable(vif, dev);
++	if (err < 0)
++		goto out;
++
++	err = mt7925_mcu_add_bss_info(&dev->phy, NULL, link_conf,
++				      NULL, false);
++out:
++	mt792x_mutex_release(dev);
++
++	return err;
++}
++
++static int mt7925_nan_change_conf(struct ieee80211_hw *hw,
++				  struct ieee80211_vif *vif,
++				  struct cfg80211_nan_conf *conf,
++				  u32 changes)
++{
++	struct mt792x_dev *dev = mt792x_hw_dev(hw);
++	int err = 0;
++
++	mt792x_mutex_acquire(dev);
++
++	err = mt7925_nan_change_configure(vif, dev, conf);
++
++	mt792x_mutex_release(dev);
++
++	return err;
++}
++
+ const struct ieee80211_ops mt7925_ops = {
+ 	.tx = mt792x_tx,
+ 	.start = mt7925_start,
+@@ -2366,6 +2432,9 @@ const struct ieee80211_ops mt7925_ops = {
+ 	.channel_switch = mt7925_channel_switch,
+ 	.abort_channel_switch = mt7925_abort_channel_switch,
+ 	.channel_switch_rx_beacon = mt7925_channel_switch_rx_beacon,
++	.start_nan = mt7925_start_nan,
++	.stop_nan = mt7925_stop_nan,
++	.nan_change_conf = mt7925_nan_change_conf,
+ };
+ EXPORT_SYMBOL_GPL(mt7925_ops);
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
+index 9483ee94c05e..bb67374c9764 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
+@@ -344,11 +344,18 @@ mt7925_nan_mcu_handle_de_event(struct mt792x_dev *dev, struct tlv *tlv)
+ 	if (de_evt->event_type != NAN_EVENT_ID_JOINED_CLUSTER)
+ 		return;
+ 
++	if (!ieee80211_vif_nan_started(dev->nan_vif)) {
++		dev_warn(dev->mt76.dev, "nan: joined-cluster event but NAN not started\n");
++		return;
 +	}
 +
-+	return false;
-+}
-+EXPORT_SYMBOL_GPL(mt7925_regd_is_valid_channel);
-+
- int mt7925_regd_change(struct mt792x_phy *phy, char *alpha2)
- {
- 	struct wiphy *wiphy = phy->mt76->hw->wiphy;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/regd.h b/drivers/net/wireless/mediatek/mt76/mt7925/regd.h
-index 0767f078862e..0b0754cf8ae7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/regd.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/regd.h
-@@ -13,6 +13,9 @@ void mt7925_regd_be_ctrl(struct mt792x_dev *dev, u8 *alpha2);
- void mt7925_regd_notifier(struct wiphy *wiphy, struct regulatory_request *req);
- bool mt7925_regd_clc_supported(struct mt792x_dev *dev);
- int mt7925_regd_change(struct mt792x_phy *phy, char *alpha2);
-+bool mt7925_regd_is_valid_channel(struct mt792x_dev *dev,
-+				  enum nl80211_band band,
-+				  struct ieee80211_channel *chan);
- int mt7925_regd_init(struct mt792x_phy *phy);
+ 	dev_dbg(dev->mt76.dev, "nan: anchor_master_rank=%*phN\n",
+ 		NAN_ANCHOR_MASTER_RANK_NUM, de_evt->anchor_master_rank);
  
- #endif
+ 	dev_dbg(dev->mt76.dev, "nan: own_nmi=%pM master_nmi=%pM\n",
+ 		de_evt->own_nmi, de_evt->master_nmi);
++
++	ieee80211_nan_cluster_joined(dev->nan_vif, cluster_id, true, GFP_KERNEL);
+ }
+ 
+ void mt7925_nan_mcu_event(struct mt792x_dev *dev, struct sk_buff *skb)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index 1f381ab356bc..d3988e5b38c0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -261,6 +261,8 @@ struct mt792x_dev {
+ 	u32 backup_l2;
+ 
+ 	struct ieee80211_chanctx_conf *new_ctx;
++
++	struct ieee80211_vif *nan_vif;
+ };
+ 
+ static inline struct mt792x_bss_conf *
 -- 
 2.43.0
 
