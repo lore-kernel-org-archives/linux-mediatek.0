@@ -4,115 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51F97EB7ECF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 12:26:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04D18EF8FEA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 13:53:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ztTpnBFSFYmuGSGK3LS/0+2twE737qGnV11/Yl3tvAw=; b=D22I8oLCNAPuSlMb4fJ8ORrwl7
-	JSjGB4cVUh8zZ1gDaPG3lR7yLhC1SulEXuQWNJmib9SGmfmLsukQVOantBO8scaBwweDtFyR3KWwx
-	pSdIWUdLLQ+HjVMC84/qH6vCC24ErDEYlFN6b3EWaY2ns8UZ8/H2r8pkQkwXYkUOUICHeP+NXnxc7
-	y/LyX+5PfMqOwOEO2kvvr1kqDzTX0gKagw/G4z3KeRGpzV+RtP3uniwt1xPn0GJUa+nqB6hlDBiOk
-	sApeDbECc5NJU90aXNlg1fQAkrUHBZefY89BMG5a+nrZGQbPFt5DStChujvsRE2NA1Lr705di7UnO
-	Xjx3SVkg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/wnzJ+GIMalP1Ve3ISBLEomH/NwB7XamANoBBX7s8LY=; b=Zx3LGKsiiSA7Pq7I3LWqnLOii1
+	Z9lw6v5864JgplbsULNEx/Rbglm46Nlg+oVkJVg6JuxE9/zFKmZpKdXelRkRuLjDtAdWEhcSp4pqN
+	HiGtIx12E8DJR9mLeeWH3Vn6+L6icBtpm/oXyKsdmBQwCW5ThynbIb8SfOV8OSLxGlz/8yQIbpOJt
+	GcKPCJhXSsR54Jd/ARPT+8rGBAGONnmNpsmPPN9a9mDkmW0P8KCtuyiQBRHx+3KljKxeCSKVExw50
+	zx9+q/hesUVYrzhbI3tAcsSMYy1JDooL+0VkixrdoRkNegJYdvzIdELk/vaFFpkkQvqFh+rfssoRv
+	06YWPjog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxlJU-0000000HBR3-3T5K;
-	Wed, 04 Mar 2026 12:26:52 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vxmfG-0000000HHQF-2Siu;
+	Wed, 04 Mar 2026 13:53:26 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxlJT-0000000HBQe-01PZ;
-	Wed, 04 Mar 2026 12:26:52 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3279E44176;
-	Wed,  4 Mar 2026 12:26:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78EE4C19423;
-	Wed,  4 Mar 2026 12:26:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772627210;
-	bh=xJAdAQOq1sUrvreai6M+WZzFPPf9zF3QcGa5LFVLw7E=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=rZwkmd4bOynmoyAhCO11hjNbkoZL0Ph6JGLPrk0AiQ6M/5zgx2J1FKxf6f8SGjSrM
-	 PYdPMHJnv8/T+YUSdbynqxuQ12KaaL7P1AaNoVohHqSRFXgMW7lULPHj7Tsnk5+sF6
-	 OYNCPXREOsi6R4fOwo/GC3i4AoRrzmu0u5h1WIer3Rpp0TjBcoO9lsxSD1zFblgTu9
-	 JVJBMSSZ8zgBq+UMH2jRjxKmGYT6spIm8o1JvvfQ3nU5/qb2kO+0n8kls5ahwmPrgU
-	 7lub5i76Y5Xk4wHFaRV8AglF5srsVLfyuPl/gh5tIxuXhwIn6iHCPJ9DGJCAyCMpjO
-	 24l06n48riTYw==
-Message-ID: <2db75ee1-396e-46f2-a151-ccae943705fc@kernel.org>
-Date: Wed, 4 Mar 2026 13:26:43 +0100
+	id 1vxmfD-0000000HHPn-2ygF;
+	Wed, 04 Mar 2026 13:53:25 +0000
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6249Kdl91455840;
+	Wed, 4 Mar 2026 13:53:17 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=qcppdkim1; bh=/wnzJ+GIMalP1Ve3ISBLEomH/NwB7XamANo
+	BBX7s8LY=; b=RueWusYY/RXjgDMZAt/vFpgCfsYkQfgiWqpDd1SyXd517IZzfsH
+	tqf0FhqZo+mJxEGVxpnHSDair1zmgYt+4cvwIW1D3n7WrnlF39GJnra9qVs+bW2/
+	F6OI/ev+8O/gRlTJt6kpYmwXl6geThSMNy5eRVcU8MPKMV7wm4IrfVrhf0r9tPzS
+	YXkoLre+tMUALevd5vChi3r2USCI0OvY3QjJdo3K6mLQubkijujoTHMrdPF5D+qk
+	VDr4TSBf/R9yCFVW3qtjehIacww4ZDkVcaijJlyve9bRF4VGkjQCw1Ru6Y6kBXbd
+	8Ct+Mo0I8UZjcfLSeiOYWFaW+RkhpTc2E8g==
+Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cpj180s19-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 04 Mar 2026 13:53:17 +0000 (GMT)
+Received: from pps.filterd (NALASPPMTA03.qualcomm.com [127.0.0.1])
+	by NALASPPMTA03.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTP id 624DrG8u012138;
+	Wed, 4 Mar 2026 13:53:16 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by NALASPPMTA03.qualcomm.com (PPS) with ESMTPS id 4cpjdf26h0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 04 Mar 2026 13:53:16 +0000
+Received: from NALASPPMTA03.qualcomm.com (NALASPPMTA03.qualcomm.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 624DrGoO012133;
+	Wed, 4 Mar 2026 13:53:16 GMT
+Received: from hu-devc-lv-u22-c.qualcomm.com (hu-cang-lv.qualcomm.com [10.81.25.255])
+	by NALASPPMTA03.qualcomm.com (PPS) with ESMTPS id 624DrGj2012128
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 04 Mar 2026 13:53:16 +0000
+Received: by hu-devc-lv-u22-c.qualcomm.com (Postfix, from userid 359480)
+	id 020425A7; Wed,  4 Mar 2026 05:53:15 -0800 (PST)
+From: Can Guo <can.guo@oss.qualcomm.com>
+To: avri.altman@wdc.com, bvanassche@acm.org, beanhuo@micron.com,
+        martin.petersen@oracle.com
+Cc: linux-scsi@vger.kernel.org, Can Guo <can.guo@oss.qualcomm.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support:Keyword:mediatek),
+        linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek),
+        linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support:Keyword:mediatek)
+Subject: [PATCH v2 00/11] scsi: ufs: Add TX Equalization support for UFS 5.0
+Date: Wed,  4 Mar 2026 05:53:02 -0800
+Message-Id: <20260304135313.413688-1-can.guo@oss.qualcomm.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: rng: mtk-rng: add SMC-based TRNG
- variants
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: Olivia Mackall <olivia@selenic.com>,
- Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sean Wang <sean.wang@mediatek.com>, linux-crypto@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <04622e0bc917aed4145a9a3b50b61f343fc89312.1772585683.git.daniel@makrotopia.org>
- <20260304-defiant-echidna-of-examination-b1e798@quoll>
- <aagiPIgoosVqsA0t@makrotopia.org>
- <8e685c37-afca-4f2e-ac0a-76a0b060805d@kernel.org>
- <aagjzL4c-3jVuOM5@makrotopia.org>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <aagjzL4c-3jVuOM5@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-QCInternal: smtphost
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: ZlYlTBYya6QoAIpUqD9_JcRxg0V1Jfc2
+X-Proofpoint-ORIG-GUID: ZlYlTBYya6QoAIpUqD9_JcRxg0V1Jfc2
+X-Authority-Analysis: v=2.4 cv=Ed7FgfmC c=1 sm=1 tr=0 ts=69a8394d cx=c_pps
+ a=ouPCqIW2jiPt+lZRy3xVPw==:117 a=ouPCqIW2jiPt+lZRy3xVPw==:17
+ a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
+ a=3WHJM1ZQz_JShphwDgj5:22 a=yxO-sryqdY87dfIgdzYA:9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA0MDExMSBTYWx0ZWRfX1u4tfO615+kx
+ qTadeaez7+wqkdXGVesFFjT8mWMq6fsxGm9OCjep3HjMsJX0HRkqZYzznf+yr7XvwPhk9fP1TP1
+ alo1qdy0i99+pBS7kouUWTTFDs+NldRp8srr0GOV+SlxhRjsEPZIiN5x5NnvsdwWb/lVFcsbM+9
+ y3lvxKpiM9BSwhQEJuGNTb+T4RDexoimiguY3cVBPaUjPlWxnRPHAEOV/R0lEbYJVzCg15MpyFO
+ pfyP7OzG6qqLtWJ3TymbKXPUQ8wJwZks/klbQP+waBaTq7cw8q4yjwpB6S14GUrVzxgA8UPoRGD
+ evXS3CNuNejzoHJGqTO2Lmjy/RBcF0ftnriK1rl/CiPsl5bjPrx4ypqojSvjK87LJ8b8/+zmHKb
+ ib7S+rOFZRAFzNT4luwwJNTiX3OcA0hOxUkoo3+xdTWMXlHq0viRJM3VVp1Dp9P7MxHMGPW3+fp
+ glL0Jxf+EkS7HpII0lQ==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-04_06,2026-03-03_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 suspectscore=0 spamscore=0 adultscore=0 lowpriorityscore=0
+ clxscore=1015 malwarescore=0 impostorscore=0 priorityscore=1501 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2603040111
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_042651_109062_AAA665EF 
-X-CRM114-Status: UNSURE (   9.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260304_055323_877698_EFB50820 
+X-CRM114-Status: GOOD (  18.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,19 +116,188 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 04/03/2026 13:21, Daniel Golle wrote:
-> On Wed, Mar 04, 2026 at 01:18:20PM +0100, Krzysztof Kozlowski wrote:
->> On 04/03/2026 13:14, Daniel Golle wrote:
->>>
->>> Starting with MT7981 and followed by MT7988 and MT7987 it is
->>> technically the same hardware, but on those ARMv8 SoCs TF-A assigns
->>
->> So they are compatible, I presume?
-> 
-> Yes. MT7988 and MT7987 are just like MT7981 in that regard.
+Hi,
 
-Then please express it with fallback.
+The UFS 5.0 standard was published today, introducing support for HS-G6
+(23.2 Gbps per lane) through the new UniPro V3.0 interconnect layer and
+M-PHY V6.0 physical layer specifications. To achieve reliable operation
+at these higher speeds, UniPro V3.0 introduces TX Equalization and
+Pre-Coding mechanisms that are essential for signal integrity.
 
-Best regards,
-Krzysztof
+This patch series implements TX Equalization support in the UFS core
+driver as specified in UFSHCI v5.0, along with the necessary vendor
+operations and a reference implementation for Qualcomm UFS host
+controllers.
+
+Background
+==========
+
+TX Equalization is a signal conditioning technique that compensates for
+channel impairments at high data rates (HS-G4 through HS-G6). It works
+by adjusting two key parameters:
+
+- PreShoot: Pre-emphasis applied before the main signal transition
+- DeEmphasis: De-emphasis applied after the main signal transition
+
+UniPro V3.0 defines TX Equalization Training (EQTR) procedure to
+automatically discover optimal TX Equalization settings. The EQTR
+procedure:
+
+1. Starts from the most reliable link state (HS-G1)
+2. Iterates through all possible PreShoot and DeEmphasis combinations
+3. Evaluates signal quality using Figure of Merit (FOM) measurements
+4. Selects the best settings for both host and device TX lanes
+
+For HS-G6, Pre-Coding is also introduced to further improve signal
+quality. Pre-Coding must be enabled on both transmitter and receiver
+when the RX_FOM indicates it is required.
+
+Implementation Overview
+=======================
+
+The implementation follows the UFSHCI v5.0 specification and consists of:
+
+Core Infrastructure (Patches 1-6):
+- New vops callback negotiate_pwr_mode() to allow vendors to negotiate
+  power mode parameters before applying TX Equalization settings
+- Support for HS-G6 gear enumeration
+- Complete TX EQTR procedure implementation in ufs-txeq.c
+- Debugfs interface for TX Equalization parameter inspection and manual
+  retraining
+- Module parameters for adaptive TX Equalization control
+
+Qualcomm Implementation (Patches 7-11):
+- PHY-specific configurations for TX EQTR procedure
+- Vendor-specific FOM measurement support
+- TX Equalization settings application
+- Enable TX Equalization for HW version 0x7 and onwards
+
+The implementation is designed to be vendor-agnostic, with platform-
+specific details handled through the vops callbacks. Other vendors can
+add support by implementing the three new vops:
+
+- tx_eqtr_notify(): Called before/after TX EQTR for vendor setup
+- apply_tx_eqtr_settings(): Apply vendor-specific PHY configurations
+- get_rx_fom(): Retrieve vendor-specific FOM measurements if needed
+
+Module Parameters
+=================
+
+The implementation provides several module parameters for flexibility:
+
+- use_adaptive_txeq: Enable/disable adaptive TX Equalization (default: false)
+- adaptive_txeq_gear: Minimum gear for adaptive TX EQ (default: HS-G6)
+- use_txeq_presets: Use only the 8 standard presets (default: true)
+- txeq_presets_selected[]: Select specific presets for EQTR
+
+Testing
+=======
+
+This patch series has been tested on Qualcomm platforms with UFS 5.0
+devices, validating:
+
+- Successful TX EQTR completion for HS-G6
+- Proper FOM evaluation and optimal settings selection
+- Pre-Coding enablement for HS-G6
+- Power mode changes with TX Equalization settings applied
+- Report of TX Equalization settings via debugfs entries
+- Report of TX EQTR histories via debug entries (see next section)
+- Re-training TX Equalization via debugfs entry
+
+Example of TX EQTR history
+==========================
+
+# cat /sys/kernel/debug/ufshcd/*ufshcd*/tx_eq_hs_gear6/device_tx_eqtr_record
+Device TX EQTR record summary -
+Target Power Mode: HS-G6, Rate-B
+Number of records: 1
+Last record timestamp: 11643252 us
+
+TX Lane 0 FOM - PreShoot\DeEmphasis
+\       0        1        2        3        4        5        6        7
+0      50       70       65        -        -        -        -        x
+1       x        x        x        x        x        x        x        x
+2     100       90       70        -        -        -        -        x
+3       x        x        x        x        x        x        x        x
+4      95       90        -        -        -        -        -        x
+5       -        -        -        -        -        -        -        x
+6       x        x        x        x        x        x        x        x
+7       x        x        x        x        x        x        x        x
+
+TX Lane 1 FOM - PreShoot\DeEmphasis
+\       0        1        2        3        4        5        6        7
+0      50       70       60        -        -        -        -        x
+1       x        x        x        x        x        x        x        x
+2     100       80       65        -        -        -        -        x
+3       x        x        x        x        x        x        x        x
+4      95       85        -        -        -        -        -        x
+5       -        -        -        -        -        -        -        x
+6       x        x        x        x        x        x        x        x
+7       x        x        x        x        x        x        x        x
+
+Patch Structure
+===============
+
+Patches 1-3: Preparatory changes for power mode negotiation and HS-G6
+Patch 4: Core TX Equalization and EQTR implementation
+Patches 5-6: Debugfs support for TX Equalization
+Patches 7-11: Qualcomm vendor implementation
+
+Next
+====
+
+One more series has been developed to enhance TX Equalization support,
+which will be submitted for review after this series is accepted:
+
+- Provide board specific (static) TX Equalization settings from DTS
+- Parse static TX Equalization settings from DTS if provided
+- Apply static TX Equalization settings if use_adaptive_txeq is disabled
+- Add support for UFS v5.0 attributes qTxEQGnSettings & wTxEQGnSettingsExt
+- Enable persistent storage and retrieval of optimal TX Equalization settings
+
+v1 -> v2:
+1. Incorporated Bart's comments.
+2. Fixed typos and coding styles.
+3. Added enum ufshcd_pmc_policy and use enum instead of boolen parameter.
+4. Updated TX Equalization debugfs entries structure.
+5. Extracted ufshcd_pause/resume_command_processing() in ufshcd.c.
+6. Updated sequence in Qualcomm's vops get_rx_fom() implementation.
+
+Can Guo (11):
+  scsi: ufs: core: Introduce a new ufshcd vops negotiate_pwr_mode()
+  scsi: ufs: core: Pass force_pmc to ufshcd_config_pwr_mode() as a
+    parameter
+  scsi: ufs: core: Add UFS_HS_G6 and UFS_HS_GEAR_MAX to enum
+    ufs_hs_gear_tag
+  scsi: ufs: core: Add support for TX Equalization
+  scsi: ufs: core: Add debugfs entries for TX Equalization params
+  scsi: ufs: core: Add support to retrain TX Equalization via debugfs
+  scsi: ufs: ufs-qcom: Fixup PAM-4 TX L0_L1_L2_L3 adaptation pattern
+    length
+  scsi: ufs: ufs-qcom: Implement vops tx_eqtr_notify()
+  scsi: ufs: ufs-qcom: Implement vops get_rx_fom()
+  scsi: ufs: ufs-qcom: Implement vops apply_tx_eqtr_settings()
+  scsi: ufs: ufs-qcom: Enable TX Equalization
+
+ drivers/ufs/core/Makefile          |    2 +-
+ drivers/ufs/core/ufs-debugfs.c     |  255 ++++++
+ drivers/ufs/core/ufs-txeq.c        | 1270 ++++++++++++++++++++++++++++
+ drivers/ufs/core/ufshcd-priv.h     |   57 +-
+ drivers/ufs/core/ufshcd.c          |  142 +++-
+ drivers/ufs/host/ufs-amd-versal2.c |   13 +-
+ drivers/ufs/host/ufs-exynos.c      |   44 +-
+ drivers/ufs/host/ufs-hisi.c        |   32 +-
+ drivers/ufs/host/ufs-mediatek.c    |   46 +-
+ drivers/ufs/host/ufs-qcom.c        |  625 +++++++++++++-
+ drivers/ufs/host/ufs-qcom.h        |   44 +
+ drivers/ufs/host/ufs-sprd.c        |   13 +-
+ drivers/ufs/host/ufshcd-pci.c      |   17 +-
+ include/ufs/ufshcd.h               |  145 +++-
+ include/ufs/unipro.h               |  140 ++-
+ 15 files changed, 2729 insertions(+), 116 deletions(-)
+ create mode 100644 drivers/ufs/core/ufs-txeq.c
+
+-- 
+2.34.1
+
 
