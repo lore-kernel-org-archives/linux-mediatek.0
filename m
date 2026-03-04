@@ -4,62 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D710EF8FF6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 14:54:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3F39EF8FF3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 14:54:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wc8JL0McLIvsZxPgoF+2RNHPVCsDGScBrPMPMhuKD4U=; b=jUEUe0+P8B/hpn
-	PpZvgxJ+9xH1OoOCgFdzeG0jn2FYS+/OOOGKV4pYCT81kuNaNUcKpOsdjs6kvQOqlzABp/Ox8xfaI
-	j0baPrABSNPD7BGIORXB0xv4YU15qmlON4srQu4oJEPJOySeJjNYYa78jiId6flv2kwVTDutzSxD2
-	+7/MRePfjQNzGm8jaGoPNJZZ4HTahvCw73hv/3IDS3baaFyx3+3O6FDNxkry6kwYEzwn5KTZ0H4Sa
-	+OKfqDQjDOp74FTs5PVMBXqFr3MPAgiZjpEUjvHy750ciRIcuyAclzJMBScxUrWj+UANApmJO8Xfy
-	QJ8c32MyKE9OYvnqg99g==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qu2Q6/LCZyt91jxZTOJF6/yJsqMfQ4a6hX3+v18jMDA=; b=a0J6aksSJhG51V6GoJ7uQ9sC2k
+	Vjoqc0gCXqcDFcUhBOesIU1Jl+UDkG6XOZLWEU2+VG3Jjb4+op33WYJtHIflcFKm2meVwIQKeLwyp
+	63de3UIXaLASu85V/DXZZJ2sCtTLBJuWigZ+aRifjktyN+74pXW9IGpngMBbhVIcv+LTHrZcpu8pC
+	85CVdQqpgNsBhoD06dMGUPZYHtApxb9jOvF5lO7BJcVwh5Y8XvS/iS22pKkXXNAKVl3vuHqj8AnUM
+	Xg8+wCIBisTiNB+3ZBXTpwxZkGBbf8VrJiYVYke+7Q2f2MYyfMwMFjaA8UGFZC/khfr3xnP5Tw+N+
+	iP8Maetw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxnbu-0000000HS74-3eD9;
-	Wed, 04 Mar 2026 14:54:02 +0000
+	id 1vxnbx-0000000HSBM-2vZV;
+	Wed, 04 Mar 2026 14:54:05 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxnbq-0000000HS3i-1P4u;
-	Wed, 04 Mar 2026 14:54:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1772636010; cv=none; 
+	id 1vxnbu-0000000HS6L-30Xc;
+	Wed, 04 Mar 2026 14:54:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1772636022; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=BGRFMqf3f+qwOZjqTu980MQjWfRmm+6+SNbTomaSi9mbXYfuqitaRFUTyBwBgfEwBSNmpK4ZS4q4NN+f8bL/o3TSa1QK8LBlqALkkxG2Dh8wrlSPw8Q9E9UYgSA1MDZrQPPALTjFEIdBdL3AsMCt+M6BVmD3QysD1Yw/x7BdnZ0=
+	b=b2o+YSmtKQ2KEfZgRhtWGUucUnQ3micjgG/cboq0xIz9ieJXTGxHTpEXp+AInGslV2lczIXfatiEqgv1JYPjCdEORW8ciXj/YX+YLtLak0xBtYNcjYxE2yROx9u4++Skw3BkH9hsYlBYpdUhQBfRvhQ615tWu+mbT8pymoOOcf4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1772636010; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=wc8JL0McLIvsZxPgoF+2RNHPVCsDGScBrPMPMhuKD4U=; 
-	b=D8BodfoRR9V3a116ajF3zxN07AORqO0G0Xaz/Sxjqfq3ZPrwXeMqC0/CiefR1Faozwhhu8ybsD8X7BZbZV8wxGX67pH0fF9xlKTT30Wd9j0rYOqV21PIoIYkiZYpO4c4zSSOuvvoceg1snynt/XgfQf/GbCfh6MXzeJDVC5E8rg=
+	t=1772636022; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=qu2Q6/LCZyt91jxZTOJF6/yJsqMfQ4a6hX3+v18jMDA=; 
+	b=cqbDKZvr17xbwccrMbWfoeAmHJ1nji4Bg/zYr7/Li1RqNRSuQhlBMyTKmad5s/wtTNwWSoYxNOQrkZIFTo5bBg5gn5xI7XiSI7nnarxbi9zrEVo93EXcrQuDPn0gyE6OqXuhAfvcQ6rnKcS3O9EgwnXgci8d9NwRs4C2gmLs/Hw=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772636010;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772636022;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
-	bh=wc8JL0McLIvsZxPgoF+2RNHPVCsDGScBrPMPMhuKD4U=;
-	b=ElhIYL4GywhiPtHr7O3w1YXxwX07rHWWHEVj1XaWc3PeGNrUJNX04l+TaMa4FxDw
-	NPGWVfdoJkenbmaXiO196xsWMUzS6IykbNicNyOenvkkQ07QHG8GRhGoNSxFEMfO2dd
-	zuIc9mwnX3zKsQXnTsHsKmJe7hIAoGc+lzmclnZk=
-Received: by mx.zohomail.com with SMTPS id 1772636008163878.5025387870418;
-	Wed, 4 Mar 2026 06:53:28 -0800 (PST)
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=qu2Q6/LCZyt91jxZTOJF6/yJsqMfQ4a6hX3+v18jMDA=;
+	b=g4jTD4l0jHugO/lMY2CPUUsAa/G2CizeHGFV3hackIYXFaohO9JVdwJd8VHXk8zc
+	qUVYPk1zACL4e7psbgn5pmrZDyks5YWCHGM8IBu1PiXQrDOiJKJ4JvpEqH2Uc9Br8PE
+	3YQ4dqB0RCnijKbMTOAIiLcjkG3UVFKkY6+EGcJQ=
+Received: by mx.zohomail.com with SMTPS id 1772636019904730.5079693332189;
+	Wed, 4 Mar 2026 06:53:39 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Subject: [PATCH v8 00/23] MediaTek UFS Cleanup and MT8196 Enablement
-Date: Wed, 04 Mar 2026 15:53:05 +0100
-Message-Id: <20260304-mt8196-ufs-v8-0-5b0eac23314f@collabora.com>
+Date: Wed, 04 Mar 2026 15:53:07 +0100
+Subject: [PATCH v8 02/23] dt-bindings: ufs: mediatek,ufs: Complete the
+ binding
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/23Qy2rDMBAF0F8xWldl9Lay6n+ULvQYN4I4bm3Hp
- AT/e6cOJXbw8grOHXFvbMC+4MAO1Y31OJWhdGcK9UvF0jGcP5GXTJlJkEaA0Lwda+EtvzQDT5h
- 09ME7NIoR+OqxKdel7P3jnnv8vlDneH9kMQzIU9e2ZTxUZ7yOnHotKFDsDxzLMHb9z/KZSSxi7
- +4kOHDhTU4YaxVT/Za60ynErg+vVL5UTXLN7YZL4kk5VSudNLqwx9WKS7Xhijg0oKMOzpum2eP
- 6waWoN1wTzxmTC8r6nOUeN//cgoAtN8S1l8II42h/scftisvtdJY4ugRgogWQu9O5B5dP0zni0
- TTSg0s2B/fM53n+BVa/AdpTAgAA
-X-Change-ID: 20251014-mt8196-ufs-cec4b9a97e53
+Message-Id: <20260304-mt8196-ufs-v8-2-5b0eac23314f@collabora.com>
+References: <20260304-mt8196-ufs-v8-0-5b0eac23314f@collabora.com>
+In-Reply-To: <20260304-mt8196-ufs-v8-0-5b0eac23314f@collabora.com>
 To: Alim Akhtar <alim.akhtar@samsung.com>, 
  Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -80,12 +76,11 @@ Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  linux-phy@lists.infradead.org, 
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Conor Dooley <conor.dooley@microchip.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+ Conor Dooley <conor.dooley@microchip.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_065358_407730_CD33EB76 
-X-CRM114-Status: GOOD (  23.80  )
+X-CRM114-CacheID: sfid-20260304_065402_845998_3257DD1D 
+X-CRM114-Status: GOOD (  20.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,139 +95,223 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In this series, the existing MediaTek UFS binding is expanded and
-completed to correctly describe not just the existing compatibles, but
-also to introduce a new compatible in the from of the MT8196 SoC.
+As it stands, the mediatek,ufs.yaml binding is startlingly incomplete.
+Its one example, which is the only real "user" of this binding in
+mainline, uses the deprecated freq-table-hz property.
 
-The resets, which until now were completely absent from both the UFS
-host controller binding and the UFS PHY binding, are introduced to both.
-This also means the driver's undocumented and, in mainline, unused reset
-logic is reworked. In particular, the PHY reset is no longer a reset of
-the host controller node, but of the PHY node.
+The resets, of which there are three optional ones, are completely
+absent.
 
-This means the host controller can reset the PHY through the common PHY
-framework.
+The clock description for MT8195 is incomplete, as is the one for
+MT8192. It's not known if the one clock binding for MT8183 is even
+correct, but I do not have access to the necessary code and
+documentation to find this out myself.
 
-The resets remain optional.
+The power supply situation is not much better; the binding describes one
+required power supply, but it's the UFS card supply, not any of the
+supplies feeding the controller silicon.
 
-Additionally, a massive number of driver cleanups are introduced. These
-were prompted by me inspecting the driver more closely as I was
-adjusting it to correspond to the binding.
+No second example is present in the binding, making verification
+difficult.
 
-The driver still implements vendor properties that are undocumented in
-the binding. I did not touch most of those, as I neither want to
-convince the bindings maintainers that they are needed without knowing
-precisely what they're for, nor do I want to argue with the driver
-authors when removing them.
+Disallow freq-table-hz and move to operating-points-v2. It's fine to
+break compatibility here, as the binding is currently unused and would
+be impossible to correctly use in its current state.
 
-Due to the "Marie Kondo with a chainsaw" nature of the driver cleanup
-patches, I humbly request that reviewers do not comment on displeasing
-code they see in the context portion of a patch before they've read the
-whole patch series, as that displeasing code may in fact be reworked in
-a subsequent patch of this series. Please keep comments focused on the
-changed lines of the diff; I know there's more that can be done, but it
-doesn't necessarily need to be part of this series.
+Add the three resets and the corresponding reset-names property. These
+resets appear to be optional, i.e. not required for the functioning of
+the device.
 
+Move the list of clock names out of the if condition, and expand it for
+the confirmed clocks I could find by cross-referencing several clock
+drivers. For MT8195, increase the minimum number of clocks to include
+the crypt and rx_symbol ones, as they're internal to the SoC and should
+always be present, and should therefore not be omitted.
+
+MT8192 gets to have at least 3 clocks, as these were the ones I could
+quickly confirm from a glance at various trees. I can't say this was an
+exhaustive search though, but it's better than the current situation.
+
+Properly document all supplies, with which pin name on the SoCs they
+supply. Complete the example with them.
+
+Also add a MT8195 example to the binding, using supply labels that I am
+pretty sure would be the right ones for e.g. the Radxa NIO 12L.
+
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+Acked-by: Vinod Koul <vkoul@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
-Changes in v8:
-- Split "Rework probe function" into two, turn the reset removal into
-  its own patch and squash the PHY changes into the common PHY framework
-  patch.
-- Leave "device reset done" logging print at INFO level
-- Remove redundant falsy check for reg_vcore in "Don't acquire
-  dvfsrc-vcore twice".
-- Change ufs_mtk_wait_idle_state to early-exit on all non-HIB states,
-  and poll for VS_HCE_BASE instead.
-- Link to v7: https://lore.kernel.org/r/20260216-mt8196-ufs-v7-0-b5f2907c6da7@collabora.com
+ .../devicetree/bindings/ufs/mediatek,ufs.yaml      | 117 ++++++++++++++++++---
+ 1 file changed, 100 insertions(+), 17 deletions(-)
 
-Changes in v7:
-- Rebase onto next-20260205, which drops "scsi: ufs: mediatek: Switch to
-  newer PM ops helpers" as Arnd sent an equivalent patch that also fixes
-  the PM-less build failure.
-- Link to v6: https://lore.kernel.org/r/20260124-mt8196-ufs-v6-0-e7c005b60028@collabora.com
+diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+index 15c347f5e660..e0aef3e5f56b 100644
+--- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
++++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+@@ -19,11 +19,28 @@ properties:
+ 
+   clocks:
+     minItems: 1
+-    maxItems: 8
++    maxItems: 13
+ 
+   clock-names:
+     minItems: 1
+-    maxItems: 8
++    items:
++      - const: ufs
++      - const: ufs_aes
++      - const: ufs_tick
++      - const: unipro_sysclk
++      - const: unipro_tick
++      - const: unipro_mp_bclk
++      - const: ufs_tx_symbol
++      - const: ufs_mem_sub
++      - const: crypt_mux
++      - const: crypt_lp
++      - const: crypt_perf
++      - const: ufs_rx_symbol0
++      - const: ufs_rx_symbol1
++
++  operating-points-v2: true
++
++  freq-table-hz: false
+ 
+   phys:
+     maxItems: 1
+@@ -31,8 +48,36 @@ properties:
+   reg:
+     maxItems: 1
+ 
++  resets:
++    items:
++      - description: reset for the UniPro layer
++      - description: reset for the cryptography engine
++      - description: reset for the host controller
++
++  reset-names:
++    items:
++      - const: unipro
++      - const: crypto
++      - const: hci
++
++  avdd09-supply:
++    description: Phandle to the 0.9V supply powering the AVDD09_UFS pin
++
++  avdd12-supply:
++    description: Phandle to the 1.2V supply powering the AVDD12_UFS pin
++
++  avdd12-ckbuf-supply:
++    description: Phandle to the 1.2V supply powering the AVDD12_CKBUF_UFS pin
++
++  avdd18-supply:
++    description: Phandle to the 1.8V supply powering the AVDD18_UFS pin
++
+   vcc-supply: true
+ 
++  vccq-supply: true
++
++  vccq2-supply: true
++
+   mediatek,ufs-disable-mcq:
+     $ref: /schemas/types.yaml#/definitions/flag
+     description: The mask to disable MCQ (Multi-Circular Queue) for UFS host.
+@@ -54,29 +99,41 @@ allOf:
+       properties:
+         compatible:
+           contains:
+-            enum:
+-              - mediatek,mt8195-ufshci
++            const: mediatek,mt8183-ufshci
+     then:
+       properties:
+         clocks:
+-          minItems: 8
++          maxItems: 1
+         clock-names:
+           items:
+             - const: ufs
+-            - const: ufs_aes
+-            - const: ufs_tick
+-            - const: unipro_sysclk
+-            - const: unipro_tick
+-            - const: unipro_mp_bclk
+-            - const: ufs_tx_symbol
+-            - const: ufs_mem_sub
+-    else:
++        avdd12-ckbuf-supply: false
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8192-ufshci
++    then:
+       properties:
+         clocks:
+-          maxItems: 1
++          minItems: 3
++          maxItems: 3
++        clocks-names:
++          minItems: 3
++          maxItems: 3
++        avdd09-supply: false
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8195-ufshci
++    then:
++      properties:
++        clocks:
++          minItems: 13
+         clock-names:
+-          items:
+-            - const: ufs
++          minItems: 13
++        avdd09-supply: false
+ 
+ examples:
+   - |
+@@ -95,8 +152,34 @@ examples:
+ 
+             clocks = <&infracfg_ao CLK_INFRA_UFS>;
+             clock-names = "ufs";
+-            freq-table-hz = <0 0>;
+ 
+             vcc-supply = <&mt_pmic_vemc_ldo_reg>;
+         };
+     };
++  - |
++    ufshci@11270000 {
++        compatible = "mediatek,mt8195-ufshci";
++        reg = <0x11270000 0x2300>;
++        interrupts = <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH>;
++        phys = <&ufsphy>;
++        clocks = <&infracfg_ao 63>, <&infracfg_ao 64>, <&infracfg_ao 65>,
++                 <&infracfg_ao 54>, <&infracfg_ao 55>,
++                 <&infracfg_ao 56>, <&infracfg_ao 90>,
++                 <&infracfg_ao 93>, <&topckgen 60>, <&topckgen 152>,
++                 <&topckgen 125>, <&topckgen 212>, <&topckgen 215>;
++        clock-names = "ufs", "ufs_aes", "ufs_tick",
++                      "unipro_sysclk", "unipro_tick",
++                      "unipro_mp_bclk", "ufs_tx_symbol",
++                      "ufs_mem_sub", "crypt_mux", "crypt_lp",
++                      "crypt_perf", "ufs_rx_symbol0", "ufs_rx_symbol1";
++
++        operating-points-v2 = <&ufs_opp_table>;
++
++        avdd12-supply = <&mt6359_vrf12_ldo_reg>;
++        avdd12-ckbuf-supply = <&mt6359_vbbck_ldo_reg>;
++        avdd18-supply = <&mt6359_vio18_ldo_reg>;
++        vcc-supply = <&mt6359_vemc_1_ldo_reg>;
++        vccq2-supply = <&mt6359_vufs_ldo_reg>;
++
++        mediatek,ufs-disable-mcq;
++    };
 
-Changes in v6:
-- Reword "Rework probe function" commit to better justify the changes
-  being made.
-- Drop "Add vendor prefix to clk-scale-up-vcore-min"
-- Add patch to remove clk-scale-up-vcore-min entirely, describing the
-  process for bringing it back (in a different form) in the commit
-  message.
-- Link to v5: https://lore.kernel.org/r/20260108-mt8196-ufs-v5-0-49215157ec41@collabora.com
-
-Changes in v5:
-- Drop "scsi: ufs: mediatek: Make scale_us in setup_clk_gating const" as
-  someone else already got a patch in for this into next.
-- Make mtk_init_boost_crypt void
-- Don't disable/enable misc regulators during suspend/resume, but enable
-  them once when acquiring with a devm helper.
-- Link to v4: https://lore.kernel.org/r/20251218-mt8196-ufs-v4-0-ddec7a369dd2@collabora.com
-
-Changes in v4:
-- bindings: Redo the supply situation, as the avdd pins don't describe
-  the vcc(q2) card supplies.
-- bindings: format clock in mt8196 example more tersely.
-- phy: use devm_reset_control_get_optional_exclusive directly
-- driver: get and enable/disable the aforementioned avdd supplies.
-- Link to v3: https://lore.kernel.org/r/20251023-mt8196-ufs-v3-0-0f04b4a795ff@collabora.com
-
-Changes in v3:
-- Split mediatek,ufs bindings change into two patches, one for
-  completing the existing binding, one for the MT8196
-- Add over a dozen driver cleanup patches
-- Add explicit support for the MT8196 compatible to the driver
-- Note: next-20251023, on which I based this, currently has a broken
-  build due to an unrelated OPP core change that was merged with no
-  build testing. I can't use next-20251022 either, as that lacks the
-  recent mediatek UFS changes. It is what it is.
-- Link to v2: https://lore.kernel.org/r/20251016-mt8196-ufs-v2-0-c373834c4e7a@collabora.com
-
-Changes in v2:
-- Reorder define in mtk_sip_svc.h
-- Use bulk reset APIs in UFS host driver
-- Link to v1: https://lore.kernel.org/r/20251014-mt8196-ufs-v1-0-195dceb83bc8@collabora.com
-
----
-Nicolas Frattaroli (23):
-      dt-bindings: phy: Add mediatek,mt8196-ufsphy variant
-      dt-bindings: ufs: mediatek,ufs: Complete the binding
-      dt-bindings: ufs: mediatek,ufs: Add mt8196 variant
-      scsi: ufs: mediatek: Move MTK_SIP_UFS_CONTROL to mtk_sip_svc.h
-      phy: mediatek: ufs: Add support for resets
-      scsi: ufs: mediatek: Rework resets
-      scsi: ufs: mediatek: Rework 0.9V regulator
-      scsi: ufs: mediatek: Rework init function
-      scsi: ufs: mediatek: Rework the crypt-boost stuff
-      scsi: ufs: mediatek: Handle misc host voltage regulators
-      scsi: ufs: mediatek: Remove undocumented downstream reset cruft
-      scsi: ufs: mediatek: Remove vendor kernel quirks cruft
-      scsi: ufs: mediatek: Use the common PHY framework
-      scsi: ufs: mediatek: Remove mediatek,ufs-broken-rtc property
-      scsi: ufs: mediatek: Rework _ufs_mtk_clk_scale error paths
-      scsi: ufs: mediatek: Clean up logging prints
-      scsi: ufs: mediatek: Rework ufs_mtk_wait_idle_state
-      scsi: ufs: mediatek: Don't acquire dvfsrc-vcore twice
-      scsi: ufs: mediatek: Rework hardware version reading
-      scsi: ufs: mediatek: Back up idle timer in per-instance struct
-      scsi: ufs: mediatek: Remove ret local from link_startup_notify
-      scsi: ufs: mediatek: Remove undocumented "clk-scale-up-vcore-min"
-      scsi: ufs: mediatek: Add MT8196 compatible, update copyright
-
- .../devicetree/bindings/phy/mediatek,ufs-phy.yaml  |  16 +
- .../devicetree/bindings/ufs/mediatek,ufs.yaml      | 173 +++-
- drivers/phy/mediatek/phy-mtk-ufs.c                 |  71 ++
- drivers/ufs/host/ufs-mediatek-sip.h                |   9 -
- drivers/ufs/host/ufs-mediatek.c                    | 958 +++++++++------------
- drivers/ufs/host/ufs-mediatek.h                    |  17 +-
- include/linux/soc/mediatek/mtk_sip_svc.h           |   3 +
- 7 files changed, 650 insertions(+), 597 deletions(-)
----
-base-commit: 11e703f54ac21f4dc609ea12ab578ffa47c87e11
-change-id: 20251014-mt8196-ufs-cec4b9a97e53
-
-Best regards,
 -- 
-Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+2.53.0
 
 
