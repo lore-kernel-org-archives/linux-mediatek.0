@@ -4,138 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57AF4EDEC02
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 02:59:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3F3EEDEC03
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 03:21:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GNZfTs8w379dlpNbAhRA+sADPJgpRD6h/Uge61yblr0=; b=MntXRLj2T8wnnKTJu9WnW1WVLD
-	0mKoXTIcb26xtKfzQMWMSHjMeygE7knIN5l361mlK2mOr36Fq2wyVwu/8jEeY6xaoeoZ+rWXFhCgx
-	KNlGU7gF39N6ScPp6RWVcC8oI5IRVuzDz3BXQIX39eS3+odOofQz7HOyzj6pAhxIAD/7jdj2Zn7I8
-	5A+KhkbgK60gGiA2jbhJyHl0ReFiDvd3VX/XMZwRzR5awG5SsAmXkn7YKH+W8zzKqS5Fbud8HiH+H
-	5kJnymNFdPsOncuSiiXCZNWY8fkI1IIwHTg+4+1VR5gAeww+oQ1D996BeOLZHtOVMdOIY4+hIZBNb
-	zK+Xbx7w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=WvEq1rmUig8x7NttJDOMhh4dSzWrjOJVnEjPiTWGkys=; b=AEYwvpO1aw5XSqiuWxP7mZft4d
+	NIuWK5+nvHgoNbhF0RBgQzW+8Ux2GnqVoB1+FSK0yQ9G+4xmivcFXqYnwzsfMDPcmxzn2MEKH8eA+
+	xBXh4tWPJr5ubKptcAPuPOEHNH9K9xKIFDsPtT2CGGGN53BXOSvqdXhrC4/2jVHVsFM8sTDwFRnAN
+	jmoqARXqrRUzTIpTEcBCdyiJR7Teg/fOCukHAlEJjvk0xVIMkQg31kzxOi1KAtUst+tMI2wcXoSYW
+	R9o2UhOLMLfDc2hG42thkUyDKtl0aK3R+9lz99Ryq377CI9IOXC1Fx/wDDPe4WvUiotd/kdEU+hJN
+	aoZei6ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxcSK-0000000GLa6-1nFc;
-	Wed, 04 Mar 2026 02:59:24 +0000
-Received: from mail-swedencentralazon11013057.outbound.protection.outlook.com ([52.101.83.57] helo=GVXPR05CU001.outbound.protection.outlook.com)
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxcSG-0000000GLXz-3d6Z;
-	Wed, 04 Mar 2026 02:59:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=E+4Y4gJSlq/G/Vy6oWJwVAVbdhTxNaYu/ZVFHuw66UyDEbjJxgvFDlZvY2/o2V1C5XSnJbzhHUL0iXx/fllHHe4NAmLVsHXfZuuaRB7KEnaPM9X+E+AywjFyMl6+ndlfA6IhiANC+jA8ED0NYG4Ss7sq4Xv+liy51afWDi/VS9fJR5l+nOi4ETpj41ICy9GNgkUU0am+bAZOC0AaiVnIR35sibavpXDnxleFWZXRdcN8ZrQK0FaAQtgqFocD1TgQ+B1jsxGTDV4OiQkQnZUYTdquL0zioG0siM+lLR7zOM4enV7t+6iDaYeplabc0u5Kyp+oBqs1yZVz+mHRzx+8pg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=GNZfTs8w379dlpNbAhRA+sADPJgpRD6h/Uge61yblr0=;
- b=BuEWBq4600NlGl1G1GWP/SK/+dK++2nPLo1essUcrrqx1x0xh+SdOqizYwZMQAGo8Erh234dR8kLZ+OXnhYE28VPe7BzzkMu/O83Jnclpyo/SqPfnb1nz8JbbFBxBI7xLi1jrkgk+3iNPDrZqFDRzeksPCKxxfaPloILn+LzaZI9ytBpPQwR6Mcl4HPkIkqSDpDh0cHFk/csMV+x5zSZTNexODfINLDHrspVnIWAaZKqCchtjReteK2jh2RkYEFmPTcYKPvSBK5J1NWQUsFRM7sTItWhDgX+VNo4E60oS9yvkdN26MIXZ2Pdh3/LL2kKJEPKZGzhPIsVS2gTR3VvsQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=GNZfTs8w379dlpNbAhRA+sADPJgpRD6h/Uge61yblr0=;
- b=N34rCtBC4ktCfBWAsbu/dlSqqKbEJ+xT0snmKgKM1658ThELWnkbcqGXXAizUNEMLCEBzGjo6JglXYkjXkoXLwWxHvGtw/Ccp749IIKE8RdFAzvLpTNuyzV5d/N4YVH9lRBdRN6elMkmpT6l4Sk+gnBs6thkFA044p1pDRVCvNCcs0LZx/1IJ7EzLEzhU3nq5kVZ3CSIQNjYfd+RO6qfImlerSHj1EFBMP5xo0Q4xnCMrKSxZzn2EjUVsBNTCj9TLyvdIVU7zdiT++1OenpLk72GwQtLqnlTZertRT6nvVYJrFqWmpARSt0Mv4cLUx4MqP8MM3rHRnuyQjXN4fzWoQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AS8PR04MB8420.eurprd04.prod.outlook.com (2603:10a6:20b:3fd::16)
- by GV2PR04MB11936.eurprd04.prod.outlook.com (2603:10a6:150:2f5::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9654.22; Wed, 4 Mar
- 2026 02:58:51 +0000
-Received: from AS8PR04MB8420.eurprd04.prod.outlook.com
- ([fe80::3f0f:857:96a5:17f]) by AS8PR04MB8420.eurprd04.prod.outlook.com
- ([fe80::3f0f:857:96a5:17f%3]) with mapi id 15.20.9678.016; Wed, 4 Mar 2026
- 02:58:51 +0000
-From: Zhipeng Wang <zhipeng.wang_1@nxp.com>
-To: daniel.lezcano@linaro.org,
-	tglx@kernel.org
-Cc: shawnguo@kernel.org,
-	s.hauer@pengutronix.de,
-	kernel@pengutronix.de,
-	festevam@gmail.com,
+	id 1vxcnJ-0000000GMWD-3ayb;
+	Wed, 04 Mar 2026 03:21:05 +0000
+Received: from azure-sdnproxy.icoremail.net ([52.229.168.213])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vxcnF-0000000GMVO-0wQF;
+	Wed, 04 Mar 2026 03:21:04 +0000
+Received: from zju.edu.cn (unknown [10.98.66.117])
+	by mtasvr (Coremail) with SMTP id _____wDXKGQUpadpay8DAQ--.1470S3;
+	Wed, 04 Mar 2026 11:20:53 +0800 (CST)
+Received: from localhost.localdomain (unknown [10.98.66.117])
+	by mail-app4 (Coremail) with SMTP id zi_KCgAH7H8PpadpruuXBQ--.53968S2;
+	Wed, 04 Mar 2026 11:20:47 +0800 (CST)
+From: Fan Wu <fanwu01@zju.edu.cn>
+To: bin.liu@mediatek.com,
+	mchehab@kernel.org,
 	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
+	angelogioacchino.delregno@collabora.com
+Cc: irui.wang@mediatek.com,
+	kyrie.wu@mediatek.com,
+	hverkuil@kernel.org,
+	linux-media@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	chun-hung.wu@mediatek.com,
-	walter.chang@mediatek.com,
-	jstultz@google.com,
-	amergnat@baylibre.com,
-	aisheng.dong@nxp.com,
-	jindong.yue@nxp.com,
-	xuegang.liu@nxp.com
-Subject: [PATCH v3 3/4] clocksource/drivers/timer-mediatek: Convert timer-mediatek to a loadable module
-Date: Wed,  4 Mar 2026 11:57:19 +0900
-Message-Id: <20260304025720.2583655-4-zhipeng.wang_1@nxp.com>
+	Fan Wu <fanwu01@zju.edu.cn>
+Subject: [PATCH] media: mtk-jpeg: fix use-after-free in release path due to uncancelled work
+Date: Wed,  4 Mar 2026 03:19:34 +0000
+Message-Id: <20260304031934.147483-1-fanwu01@zju.edu.cn>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260304025720.2583655-1-zhipeng.wang_1@nxp.com>
-References: <20260304025720.2583655-1-zhipeng.wang_1@nxp.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SI1PR02CA0060.apcprd02.prod.outlook.com
- (2603:1096:4:1f5::17) To AS8PR04MB8420.eurprd04.prod.outlook.com
- (2603:10a6:20b:3fd::16)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8420:EE_|GV2PR04MB11936:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3640b9ef-a911-4b8b-2928-08de7999f6ca
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|52116014|7416014|366016|19092799006|38350700014;
-X-Microsoft-Antispam-Message-Info: anIyW+INVIiA9H6usdk+jzXsoFm88SBxUfth7XV0jgJvl3upzaiGh6+NkZy4EXz43AKLOHWGtp9BoGQNgCyiyFjsxsAd2zCyEOmuLSn0Prn7X+0GI0YWwrfpByKuh/JJcgAWA7UllbKnPCnFb7fhC3E8w8z+CFnrkpyxOia6FHUa91gB8bGuiHJ//lNpO+14CpVN/4Xu3OxE5g4QAQWcnHGeqhnf0uj/u/Q3wBu08icaMrPyw+VHOqkgFL6bKMsuhepjt0xqqsTW+Wmbay7uUxA70xfOhktItiV0xIDkiYp+hHBP/jTb9lDLpy8tCGtADP0yiji+DEsfUJfnUByhM4UQHKqJJ2BQHamT0koz1W2rfW53s5uUADuzrylmGTfZQMZ1gc9vhaAWyAbbz6wndthNiViSdYk8t4MbNkmFz5K4ZzJlqtPOC3J8koUZ5fILPeah76ga7yI8bux2yWTrxdyBYJaNXmpmWMn92Ghw0JYToBqXQ0OscOVcDZXiUkXZkgiHa8pPaRVotHua3RWcJLPB3jC8LrLO3eceUES/u70zmi3jaBfdEgb2nsRlVX+rIy3LAcc4S4Y9u6dfnLntU4Mm3emALKg5tS2r/TsIL5ZzeQXuO+m84dyk4ZkpvEv3DPYA5dyMXqkBE1Vu4Vb8Eitts+fcabuoKRyXKuOMzAQ+lOlqbjAxDlXmsOgYcGiAjFPhJf+1miMjz+85gZed/ethcd2Yj93UcVM4kO2nEdch+eYTyro3wxORZyOZDXAGc07G+kqNAXsyzB+HsJ2CD/HMvxYrFxP0WeJdDFHCfII=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8420.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(52116014)(7416014)(366016)(19092799006)(38350700014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?iMFB24vWbrQMKhd9nMQs+RDeJtcuGXm2sZDVWpRJwN43QPVdeCssqiTWmx5h?=
- =?us-ascii?Q?6holB2ScTeMpvDXJfXQF4FkWrYEdeeDvTr3RN8VeogyiOQQfdN+CUa7RU9ym?=
- =?us-ascii?Q?LWHQzBsGf1EGS4X+R9T38pgyJVfTjlZAh4B49dNGJ5sy6hzcaBQrptUtxIpE?=
- =?us-ascii?Q?MBngiVgNywnz4mH/5h5h/VU31B/VqcJs2IuoKChLxG0NeiwwxGC5r+dZzhKB?=
- =?us-ascii?Q?qJTyYtr31HNBoDHTTSBGPz1z0E2sAV3F7PBNY/Biy7zKCu8sazdfoIM7TDBN?=
- =?us-ascii?Q?GNTunzCWSRPhX5ZdXqMKVVWK57prOlganSRBxGKnJfRLrwPagWwvuidvMjvg?=
- =?us-ascii?Q?yJyn8HxLr1iUEjdj2jD/sSYLBwFJKhy7deuBWhmGtA+xgNUx41zaaDFovExk?=
- =?us-ascii?Q?o5zNjVJI1wO4w5zu5P0YzH65+43+fHQKI9qauyU0jf+AHvXjDDddQb/z0aqc?=
- =?us-ascii?Q?AJ2r+ade/K1k1Ez2XX56nWsaLnQBkwSZzH2Xl/Akm0NfMhT+DNo4iEjUH/6p?=
- =?us-ascii?Q?PsSKzv7+GCA+lSqKhcP5oey10DY/GSLADskROkzKl7792YwnGZGkOvx0vkvI?=
- =?us-ascii?Q?O1lBOLPQPZH6Mqoz9U/4M/KHC4aFS83fzXUw8KqsoBKQzB4fApvCtxnR46or?=
- =?us-ascii?Q?5taLo2M1TyLjE1DtfDTC83XB7d9TGGDn5uf0O6eJkCgVfrPQziozLje0YrD8?=
- =?us-ascii?Q?xmrTI057vn6XEf0J0YOGWophVNUudpLdLE2SvGINZYSSQ7fUVN2GWbIsg+Zi?=
- =?us-ascii?Q?sNV+5o73JZWQAIXnNZStzEnwq6FmZBOfw2CgaYiwGWRvZmY4DyXnXAxxQHt0?=
- =?us-ascii?Q?UFMk3XO1TS/P75mrg9S6pXmGnCslqCnNqqWAq2Baadsca4rvlCQ1bGFoTG1J?=
- =?us-ascii?Q?MNk3IPjK/oInaoRdTlsNH7L2XjALvkggTgViGGemKUtTzgSZtpScSNyeHKIk?=
- =?us-ascii?Q?N5tSIxx+VsLcnAhvtlfZmkeQkYwSJ7ug/OuKE5CFZWpjItS8mn2e1UnIb5se?=
- =?us-ascii?Q?MYrBEmGZdfQpw+mrKMFBlaS8x6+qBC6/WNObMiX0sy8tyDvoyhBsMrou9o+i?=
- =?us-ascii?Q?jhDqtRyBU3R9dd1OatZS0yvSIRezaVf+zBbdIvJkFSdRxtz9i51upB732zRW?=
- =?us-ascii?Q?en6FEl0AKTrTz0k7I3XMfm/oHPqwWCSlDHlH9yaESxcONXXVyYDxCerLBU3C?=
- =?us-ascii?Q?hoD9FlGjbNYWYIPjOTacZcnnDnFgKyONeQXl0BzuK7Hdus5Ex9j0arZTWPw+?=
- =?us-ascii?Q?X+VvIfhZGk0DWDP415YTUF0hbP59bV3A94ao5lp3FxppdMrWjyDiWV8N7Xof?=
- =?us-ascii?Q?s7830maG5BQiEP+pNrRnzurEPckwFs3SeQNbYT63IDnb1EkHpYF3uXccZEZl?=
- =?us-ascii?Q?KdpvwtUIPzwvn4cYVIqLrqy848Dokbph53ILYspTAOvValp1cHQqcQTwy11K?=
- =?us-ascii?Q?/D3WswUpOI3KOzkx7o3/VzmlTvTQ21u4+OPuIiK4FxfDwH8sqc/37LYYZNev?=
- =?us-ascii?Q?pH/i7vCR/vP2+nB3bcknKGqacUaJKKKg20W3EPYC5z9joLemA9Zoy2i2o9rc?=
- =?us-ascii?Q?8gwJrgAxEMnMjk1Fma2ZSNH/8/w5vHg3zuzmIaQ+Qwl0CNx20UGCxkc8AEMF?=
- =?us-ascii?Q?OQiNV+u5nvJT2dBuGEZlKSDpmycCVRKECUzawAhNqm11IIjuMCGJq3VegQUy?=
- =?us-ascii?Q?0tMaLY4UfYqXfkHhC+A2DHc0yHVpA5M5fbriarbyybM7l+e4N1Ex+2w0sjFg?=
- =?us-ascii?Q?Nq+6uHDdHQ=3D=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3640b9ef-a911-4b8b-2928-08de7999f6ca
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8420.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Mar 2026 02:58:51.2182
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: g4J2NoamfZIQKMNaSv6lv59uW6pXTpaS/hr3olP4+l6XDHmnG7+CaPl01vNcDzjBpFMux0Ra3aXcjrtKz3mctg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV2PR04MB11936
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: zi_KCgAH7H8PpadpruuXBQ--.53968S2
+X-CM-SenderInfo: qrstjiaswqq6lmxovvfxof0/
+X-CM-DELIVERINFO: =?B?wHs4jwXKKxbFmtjJiESix3B1w3vZ3A9ovKVTomAyoQazvoRs/NHSP8GI2EvgeEEW7R
+	sfnVF/U4hEbTTFSw5kpxcvjRaT521orOwMzk1Nm8aVmx295imTs5aedcmTDXWzqBtEpH28
+	oVvlXYPDxn8ONHIm38nN5RPxYw6l01w8CbPzC/8w
+X-Coremail-Antispam: 1Uk129KBj93XoW7uryrur48Ar4DXF47ZryDtwc_yoW8Zw4DpF
+	Zag3srCFW8Grs8t34Dtay7XFyrGw1rta17Wr1UZ34Sv3sxZF1Iqryjk3W0vFWIyr92ka4a
+	vF4jq39rCr45ZFXCm3ZEXasCq-sJn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7ZEXa
+	sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
+	0xBIdaVrnRJUUUP0b4IE77IF4wAFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2
+	IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
+	e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_tr0E3s1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
+	0_Gr1j6F4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AK
+	xVW0oVCq3wAac4AC62xK8xCEY4vEwIxC4wAS0I0E0xvYzxvE52x082IY62kv0487Mc804V
+	CY07AIYIkI8VC2zVCFFI0UMc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AK
+	xVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48Icx
+	kI7VAKI48JM4x0Y48IcxkI7VAKI48G6xCjnVAKz4kxM4IIrI8v6xkF7I0E8cxan2IY04v7
+	MxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr
+	0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0E
+	wIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JV
+	WxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAI
+	cVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7IU85l1PUUUUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260303_185920_911360_1B450B6B 
-X-CRM114-Status: GOOD (  17.84  )
+X-CRM114-CacheID: sfid-20260303_192101_585415_D8FD8EF3 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,86 +90,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+The mtk_jpeg_release() function frees the context structure (ctx) without
+first cancelling any pending or running work in ctx->jpeg_work. This
+creates a race window where the workqueue callback may still be accessing
+the context memory after it has been freed.
 
-Convert the timer-mediatek driver into a loadable module so that
-it can register an always-on timer as the tick_broadcast_device on
-MediaTek SoCs. This helps support GKI modular configurations.
+Race condition:
 
-Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
-Signed-off-by: Walter Chang <walter.chang@mediatek.com>
-Tested-by: Walter Chang <walter.chang@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-Signed-off-by: Zhipeng Wang <zhipeng.wang_1@nxp.com>
+    CPU 0 (release)                    CPU 1 (workqueue)
+    ----------------                   ------------------
+    close()
+      mtk_jpeg_release()
+                                       mtk_jpegenc_worker()
+                                         ctx = work->data
+                                         // accessing ctx
+
+        kfree(ctx)  // freed!
+                                         access ctx  // UAF!
+
+The work is queued via queue_work() during JPEG encode/decode operations
+(via mtk_jpeg_device_run). If the device is closed while work is pending
+or running, the work handler will access freed memory.
+
+Fix this by calling cancel_work_sync() BEFORE acquiring the mutex. This
+ordering is critical: if cancel_work_sync() is called after mutex_lock(),
+and the work handler also tries to acquire the same mutex, it would cause
+a deadlock.
+
+Note: The open error path does NOT need cancel_work_sync() because
+INIT_WORK() only initializes the work structure - it does not schedule
+it. Work is only scheduled later during ioctl operations.
+
+Fixes: 5fb1c2361e56 ("mtk-jpegenc: add jpeg encode worker interface")
+Signed-off-by: Fan Wu <fanwu01@zju.edu.cn>
 ---
- drivers/clocksource/Kconfig          |  2 +-
- drivers/clocksource/timer-mediatek.c | 33 ++++++++++++++++++++++++++++
- 2 files changed, 34 insertions(+), 1 deletion(-)
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
-index fd9112706545..2112efb85029 100644
---- a/drivers/clocksource/Kconfig
-+++ b/drivers/clocksource/Kconfig
-@@ -488,7 +488,7 @@ config SYS_SUPPORTS_SH_CMT
- 	bool
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index c01124a349f6..8c684756d5fc 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1202,6 +1202,7 @@ static int mtk_jpeg_release(struct file *file)
+ 	struct mtk_jpeg_dev *jpeg = video_drvdata(file);
+ 	struct mtk_jpeg_ctx *ctx = mtk_jpeg_file_to_ctx(file);
  
- config MTK_TIMER
--	bool "Mediatek timer driver" if COMPILE_TEST
-+	tristate "MediaTek timer driver"
- 	depends on HAS_IOMEM
- 	select TIMER_OF
- 	select CLKSRC_MMIO
-diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-index 7bcb4a3f26fb..4ad4bac6f34b 100644
---- a/drivers/clocksource/timer-mediatek.c
-+++ b/drivers/clocksource/timer-mediatek.c
-@@ -13,6 +13,9 @@
- #include <linux/clocksource.h>
- #include <linux/interrupt.h>
- #include <linux/irqreturn.h>
-+#include <linux/module.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
- #include <linux/sched_clock.h>
- #include <linux/slab.h>
- #include "timer-of.h"
-@@ -337,5 +340,35 @@ static int __init mtk_gpt_init(struct device_node *node)
- 
- 	return 0;
- }
-+
-+#ifndef MODULE
- TIMER_OF_DECLARE(mtk_mt6577, "mediatek,mt6577-timer", mtk_gpt_init);
- TIMER_OF_DECLARE(mtk_mt6765, "mediatek,mt6765-timer", mtk_syst_init);
-+#else
-+static int mtk_timer_probe(struct platform_device *pdev)
-+{
-+	int (*timer_init)(struct device_node *node);
-+	struct device_node *np = pdev->dev.of_node;
-+
-+	timer_init = of_device_get_match_data(&pdev->dev);
-+	return timer_init(np);
-+}
-+
-+static const struct of_device_id mtk_timer_match_table[] = {
-+	{ .compatible = "mediatek,mt6577-timer", .data = mtk_gpt_init },
-+	{ .compatible = "mediatek,mt6765-timer", .data = mtk_syst_init },
-+	{ /* sentinel */ }
-+};
-+
-+static struct platform_driver mtk_timer_driver = {
-+	.probe = mtk_timer_probe,
-+	.driver = {
-+		.name = "mediatek-timer",
-+		.of_match_table = mtk_timer_match_table,
-+	},
-+};
-+module_platform_driver(mtk_timer_driver);
-+
-+MODULE_DESCRIPTION("MediaTek Timer driver");
-+MODULE_LICENSE("GPL");
-+#endif
++	cancel_work_sync(&ctx->jpeg_work);
+ 	mutex_lock(&jpeg->lock);
+ 	v4l2_m2m_ctx_release(ctx->fh.m2m_ctx);
+ 	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
 -- 
 2.34.1
 
