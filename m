@@ -4,112 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20E43EB7EA0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 08:08:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC4E1EB7EA1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 08:12:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6V4ZABAoBYAEDoOVQvmIQ76oRldfMwh5wzfjWSFa+/U=; b=Qcs0a8l/6WJtvsKfyJnQXWSeK1
-	nSXTtPHLKYgRcjTp/cynC4CszsDXM4+jKr5FYTVytC6SZAjj81TL3TyP4tO3HdDIJ46ZrGUNNbF3v
-	7lshJpEIYk8ffbie0I5v6VvZibJe0T3A1emzrp3GfCW3i9gUdSP3rrX0pv+IbCQgze9tjwfi0wKsJ
-	tcNTlgiauhE7f9ERubK/HuafdNUgKg0AhrquWifujPLiB1CgqbyDMH357UdMwiAO2t8h4O8J1cgi0
-	3QKg9pIqpK4ejQhN3lk44shi2xiJSxi8hvACQX9wlBhfyTLAVuqHcslepI6YgIENpgkQTgW8cCUQu
-	GVjNLmZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qHcEmB7+KBoX7+wwRjaxdeWRSdmt/2X8gg+/mUZox9A=; b=aYXbbrvFClEMGaqeDl2bU3IjR4
+	VWvLQjgNQL6sIPsEkndIdjSMxyM22bKbG+ZPCoTF7wIyVJ7emCj/5VTJzp+V4k6OgbBKx9lmfgAT7
+	2gRXJvo5lF8JaHVuzDfkAl+lMEwgBsxMEw/l5/yGWvCG7FQugII96uEc5HqkH9rdUGFqWYF4v3fg6
+	ssQi1ZK4hDRA2juCP9Jg8pzYlU5DbgsmNujmdvHuf9tOiNQeLD+qxwlCPB4JfqNv21oAIIWi3MZ/L
+	fCk0i4hnkJt/aRBlTGbVVf/5SkWKYpQPTDQvaesjXDSw7oTyj+ccNWS/yv6z8tLb5PxDCfQScQ+Y9
+	HNB/aKmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxhHe-0000000GhSo-2Lzt;
-	Wed, 04 Mar 2026 08:08:42 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vxhLR-0000000GiVw-2rMc;
+	Wed, 04 Mar 2026 08:12:37 +0000
+Received: from mail-francesouthazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c207::3] helo=MRWPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxhHd-0000000GhQU-136k
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 04 Mar 2026 08:08:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=6V4ZABAoBYAEDoOVQvmIQ76oRldfMwh5wzfjWSFa+/U=; b=kBrdsa3uYKNVOZ8xPGWY89AFuF
-	J8otyHRWWf59ESKsgaxT+RZJjtjpqPRX6tZhemg3HXoc89stC9VQAzAlKVjlsP2IR9xnPdm0d5Zta
-	4z04gqCfKzNu1LrVocs4WSLQh3AL4K+XcIgxzlFuBzlA/BkTtM2OKAnUORZdGQFkvSchsAAIylM1y
-	3jrfSknaqpLBNwbSXrVFOHFklHHcmqx8TQFEYbn8/Fv2HTSHJJxtOgLsyUVWbrNKc2blvgVO6a+rN
-	Wu/zKU/ZtWcqskmrbgAnqilQA4bxU26lPgAA58oYELueBakbl9rL8gnbBdXbFUSzeufC4o/7U/Bez
-	gJpLl+VQ==;
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxhHa-0000000459D-1btx
-	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Mar 2026 08:08:40 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id 98e67ed59e1d1-3597fea200dso2617850a91.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Mar 2026 00:08:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1772611715; x=1773216515; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=6V4ZABAoBYAEDoOVQvmIQ76oRldfMwh5wzfjWSFa+/U=;
-        b=GeLsPWi0o2US/4x7jHwy5SEWD/Tic2YaHwvLO8pSB5u+v6sGGHoRKfZyd/c9LDbtJq
-         5Z/2RlinWiiU6pQnWHNEhOcIge0obr7ulTLhSfObEpl7sil4M4Z9XznhT5wfRWGtnsP1
-         fUY/8Y50tp844P/txnNzCt33Ls1Tn/ghbNKIMoF690el5H5abmh3+TQgw7ajzqYl+BPt
-         r5avRK6pYCksHpv41mFlJFRRbWB+DB82c3O8AmNt1vS4/UEnHX4YLybGIMqERHhom3DT
-         JSLmmEpfrQrEPTCKrPCMRTecBZI/B+zWjBqxwMwGuYFjark6m2nVUpMZYYegpTcWDTzl
-         BtwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772611715; x=1773216515;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=6V4ZABAoBYAEDoOVQvmIQ76oRldfMwh5wzfjWSFa+/U=;
-        b=CO6Q4xs/OEXLQw0pAENAidCaCNhG5k+UVzNUL0YMNFYPXIi8NBZeHkFm2AheFhYwMp
-         2YKdyiBnr3aea+z+PjBQrD4vpdroVg1iBAeDululL4qEf8NaCt8CFnJa/l8g1hBbofFD
-         +dVjN9d4NzPLcO64yVvQusRKiEMfyKIiU203WojJ2cZ6KgAGr9tWyLSt2BxMJiVWqDpa
-         P2HwRPuRMJA5RBu6v1aDN+EQbbxJz3GjUhVWK1kSHAgSP7vZspMlM8GC9CXo2n/KAu+s
-         lASbuZbI5CS8sEAb8dQyOplMPh4oCDjYgcHYsmVDja06WhAoNMWrrOITygq52jyKtyOz
-         659w==
-X-Forwarded-Encrypted: i=1; AJvYcCVeCh/uJCaiHaIZ+oCtNL0077w2Ab4gJlIvub9hofUkswDCSo/qYIBcqNkW+rvQFLmVaFgOX+8p7clsssYt8Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyEyUOhL4nvySXVUX1KQuTAjH8BuV8AV58YPinWlOSWzxD5+QHf
-	MywrPLWnXVEzVdNe0zmr5hgoTIbLGinctrZPHv7DqBcKadppw9uJYBrm
-X-Gm-Gg: ATEYQzxRD61I4Z30gFrL4SxFajOOOK4QXGwIEe3qi2Qjfl10uNd8PpNliGe95NRaAqO
-	2AT8QHSU/LzhRwNYH8sjb5Qmo9cNAFH63qT0t2tatJGgQdQJ2RfRWzVYDBolq4wycaUSDofRhkn
-	2vEsYdREn4rjzXyiIDG96aWVQHLSnaXhnN+z444iQdBlYD2vUEeFcTnYIyrMUHsjakFypMlKR9B
-	JqLaebLm297JbMGViU1Q+qMJnJSbjaopxd2tFIvpcV2TROY8FwqebU23qAieARzh3ornGJD3sUv
-	t1la3oEYFrIUZ/jdPatFKiz3+bKsLcaWom2vbKNQzUX8en1gPiJBp8kb711Ld+YB54A/VrckNDy
-	18YJ/mHkQBTWUxdLBAv9ifPZfAZlVdS52/qytfW/kocc3q0yRAsiZTZauMhDgjVWhwMpaJzO2uk
-	RK+EU9yEe/AXcelrA9X18RR8kpayfjM699ydMn/b4=
-X-Received: by 2002:a17:90b:2fc8:b0:359:8e1c:542 with SMTP id 98e67ed59e1d1-359a6a3c1ddmr1261053a91.18.1772611715477;
-        Wed, 04 Mar 2026 00:08:35 -0800 (PST)
-Received: from DESKTOP-TIT0J8O.localdomain ([49.47.198.15])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3599c3acea3sm4504552a91.16.2026.03.04.00.08.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Mar 2026 00:08:35 -0800 (PST)
-Date: Wed, 4 Mar 2026 12:08:25 +0400
-From: Ahmed Naseef <naseefkm@gmail.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Caleb James DeLisle <cjd@cjdns.fr>, linux-mips@vger.kernel.org,
-	mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, tsbogend@alpha.franken.de,
-	ryder.lee@mediatek.com, jianjun.wang@mediatek.com,
-	lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org,
-	bhelgaas@google.com, vkoul@kernel.org, neil.armstrong@linaro.org,
-	p.zabel@pengutronix.de, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, nbd@nbd.name,
-	ansuelsmth@gmail.com, linux-clk@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 7/8] PCI: Skip bridge window reads when window is not
- supported
-Message-ID: <aafoedMHhKNuEwFE@DESKTOP-TIT0J8O.localdomain>
-References: <20260303190948.694783-8-cjd@cjdns.fr>
- <20260303213723.GA4075286@bhelgaas>
+	id 1vxhLP-0000000GiV4-1ChT;
+	Wed, 04 Mar 2026 08:12:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=UWM6H64GwYAIHhKyIHWUR5D26YKv1fNocqVU7SR7n3dF5am4w2tRJn1ahdT73rtNwxGZUumHsjyZa2oM4d1FnCg5WDv2ppjGE2Gu4WVLGsnrcaTOXZTd0EHYiOIHXTGrFcjLF7Gr/M/mGri3ozT0uZP+YGTi9cfL5M+Q+lCk4GJjSXPsyhF9bTxS3mJGDuzHQDRYrdu7lUjO+zlt1q9gJgWNE4u1VnDwC1FudhT/IMZ5e6wU0yKiypjhXrpzYIq9VaEEGCVnEkKF1mpl+ecwCcsYCuKYEYoBBUbo1JTY/Qi2p/GWdUBu0tCOUxxZByUCGXz6kp/vygwUBn9M3jxfbw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=qHcEmB7+KBoX7+wwRjaxdeWRSdmt/2X8gg+/mUZox9A=;
+ b=lt1T5mISxS9PIbwRob+T+tQCqX0kGbsaelfyERbGfarI3QUZWpBTRvNu4h0voIx/sYKyRynSxdAx3WdI7iB9NQvWIIcZ6Zi0fYbgCjLQNudqmfG9bO4YOPg2/pM8DI20/cCpOCHYMeyFtVUJ/FQCLzZN/qEZYy0QSbvmVZmNVDNR3isn8ofaBELFjwK/EiddPAvDAYVin47Q2TNW1q50mH4dUnkLUGOrr4S/mm5fmkTD1S9j4IYiwXP6+nKbBgh/xzBV9dLUqkrNjVsRXOGYPfVP2XIkstnSPzN6GnuIz38n2kBx5rsUY+tReOEf635sEM96o9a9HO+PEbzGSZiKJQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=qHcEmB7+KBoX7+wwRjaxdeWRSdmt/2X8gg+/mUZox9A=;
+ b=YKTDpEmG13lNzmGp5Wsi5zrrFJOEnLYXbewmb+vZmNqcwseFdX8CeIsix2lkjZhJHZC6ROZ2cdkdEB0YSpjHhYgRXks1qXrm54fxLJN/xp7QWJIp0NpHsv0cHEbpLxM5gIZwB50p3zkLjqASy9H1HXOb92JSVF6O/g3NHr2HLj1PG4+RExsez9j99T0y1nfAnnjcnCcJloyQErz2WSzhTlWHf5UhX6XldvQON6swwSrngNvJ4+IGlnLRgzuKiiIqVFQxpg5M/9g74hH7Te72bXAiKQUsD3FaVLjJjhDhTYr+xnPCKIJ/wy3kZKgSgBUrakz40wGyEAy4wKxOobfrpw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AS8PR04MB8420.eurprd04.prod.outlook.com (2603:10a6:20b:3fd::16)
+ by AS8PR04MB8689.eurprd04.prod.outlook.com (2603:10a6:20b:428::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9678.17; Wed, 4 Mar
+ 2026 08:12:30 +0000
+Received: from AS8PR04MB8420.eurprd04.prod.outlook.com
+ ([fe80::3f0f:857:96a5:17f]) by AS8PR04MB8420.eurprd04.prod.outlook.com
+ ([fe80::3f0f:857:96a5:17f%3]) with mapi id 15.20.9678.016; Wed, 4 Mar 2026
+ 08:12:30 +0000
+From: Zhipeng Wang <zhipeng.wang_1@nxp.com>
+To: daniel.lezcano@linaro.org,
+	tglx@kernel.org
+Cc: shawnguo@kernel.org,
+	s.hauer@pengutronix.de,
+	kernel@pengutronix.de,
+	festevam@gmail.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	chun-hung.wu@mediatek.com,
+	walter.chang@mediatek.com,
+	jstultz@google.com,
+	amergnat@baylibre.com,
+	aisheng.dong@nxp.com,
+	jindong.yue@nxp.com,
+	xuegang.liu@nxp.com
+Subject: [PATCH v4 0/4] clocksource: Add module support for timer drivers
+Date: Wed,  4 Mar 2026 17:12:03 +0900
+Message-Id: <20260304081207.4030882-1-zhipeng.wang_1@nxp.com>
+X-Mailer: git-send-email 2.34.1
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: SG2PR01CA0117.apcprd01.prod.exchangelabs.com
+ (2603:1096:4:40::21) To AS8PR04MB8420.eurprd04.prod.outlook.com
+ (2603:10a6:20b:3fd::16)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260303213723.GA4075286@bhelgaas>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AS8PR04MB8420:EE_|AS8PR04MB8689:EE_
+X-MS-Office365-Filtering-Correlation-Id: f550065b-1b27-4893-0e65-08de79c5c7ca
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|19092799006|52116014|376014|7416014|1800799024|38350700014;
+X-Microsoft-Antispam-Message-Info: qxYI7mwsbRq14d9ZGbzHIw8akIMwRF/iHIacrAwPk0pGvqSfqhHCuz42foAh7icuozoBKRtZkYnv65ewxiI9YLgx6k8LXcuS0U3miEfOEamK6luw70250IpBl95xxlsUNftEMe6OF3lgF0N/YxOKEMzInInpFO6V3Ln9Rjx2LFeQQJWSehtyCMHAD3c6UPux2HOHq4nK/ksKbE88vm/tN5pFe5Ppw7iLIZvTSZGtgjINyWCnkX82g+PGaCFp74zHg3gzcZTaF3UDlFdVuHmnwXEFb83tC416y3Tt3ILmZLMVx9RG86dwmxbrApJYovP73zD89V4hL2wN71dqj9tSR/gXHkTveHnGq8OAsYx3eWnZjv/UKDr+kuGxuoU8fJneq0KnmkoZ0X98ulUyPQHtsZXlDOvkM3ZvOXTWEgO2xSbC3cDGWUnx3a6JmuOsMG7T3SgmcB0GJUDCmbpp1vWTsWPoeYhmj9zi+aOTY0dt09LiCSVBcSCH+//jnFxc+HLzzbNzyi5ubKy5KupW1l4qsE4O9B44ebP2vtm+Bsz5WshpBHXIyowZtHRH4DmqkW4vEHUTFDgVOoDpR6HJ9qzAQ2JhUyiRmIH/QxAFXPS2/JSuB/eUJ9q1gtN6xdHkUYeM0MxqratKzk4mLH2G8fY+h7vmi1QxhiE5cAGe7BZX88tjvVDh7y3bYcFLoZocw29Gf2V4lSpbcvuJo6tP38lGznl8q8KLw7Z2yxt8Kl27QnMQoxIwZ0z7wg2HQ2zJA7K6Ri+LrE65t9sqNuJEqtsfBrZsVAEWBp97N7H8CJhs0bo=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8420.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(19092799006)(52116014)(376014)(7416014)(1800799024)(38350700014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qEkH7I9oogm14kfVeRmdeVpGrk7JTm8t2X+SBB+w91pSOY2X1oOa+JIwor6U?=
+ =?us-ascii?Q?fyqmnywpocbdl1Rfzqr15d7DA8c2duXAa9viZBubTjiDNjtwAKj41Cdi+Wld?=
+ =?us-ascii?Q?oFqYYu1JM+TDqsMgw3VWkrBkBxG6FgN8X2BVZ5XswQS/kign41fkiwxelS5o?=
+ =?us-ascii?Q?3eMBhvRKuXjqzGx0kvXTwxhFy90I7WeQCzEmkum9d+c9AynxCxJUT8IofCDd?=
+ =?us-ascii?Q?GTY9oeHgqZQJXuAV5SM5PDZE+ierTV47+9Z5awDWfIgPkMNmL1y7058Y6fOb?=
+ =?us-ascii?Q?rkYVERJL0MYsMZ2LQcLOuB3HhD4WtVR7Xg6kQZk6V3aRXH+A3pc5B0IbMupF?=
+ =?us-ascii?Q?h1zbdg+47VkxejId09Pzb/7aef3pDXeSKxvzp2rr01uqrdkcgq/oDtlkh8Z7?=
+ =?us-ascii?Q?ZIHSBS+l+6E9aajgMoOAMwO6ieUHBrBUQNnZm9M9ykv0I5FV7V5A2Vf6iAuq?=
+ =?us-ascii?Q?Tm/oivhdx5CRmX8PoLF7QS/g7ZzlTJfL8qfxq4EdQILlts5e2a6frlaL8zt5?=
+ =?us-ascii?Q?R4n5NoKOtCElx0eLElXb6AKdrcM/ttSWuFoGf41jYrgx2Tw4B5h77xKVP7bW?=
+ =?us-ascii?Q?AA7Yve7KiZeFBbVgliguqrrB+iiZHhuwVONy8o19D572fV+JenasKZlIyPVL?=
+ =?us-ascii?Q?HTQglk6X8Q6w8wu/0HStiWfV1kNJVYRbr107RqFWeoN27ZwycN67FuRsMNns?=
+ =?us-ascii?Q?SFv4wMKCZs31/v+wIdkXm4kZIDXJkuASDZ19Lbhep8Ii+YbnG8176lQJxIzS?=
+ =?us-ascii?Q?WGLupk5Kp52ioAroVx6MxOiipn7SmnMcPY1RGvcZcmDvKK4fn5HHGZHOPDku?=
+ =?us-ascii?Q?s4XrPVEmewwGKhxQZ8yt6Q+UuZDoMZtcKfvijX1cKPv01SH9MHmGylKh4hry?=
+ =?us-ascii?Q?Pd5toKjfnpEtanUE9K+yGhEdNTeBibwdSW1ZfSYCyNacY62X/bt9wL8Vvcpv?=
+ =?us-ascii?Q?subJLnl1D240rbqldMCbqj5uuEhIIYYWv/hZyFLSHR323nYYSna1wfNElf/I?=
+ =?us-ascii?Q?HF1W5ttV4CkdQGSP3KgPCli4KiDDLGSLHXzOoZ7Yb6gnDmIl+cQ3gdpaUdyX?=
+ =?us-ascii?Q?4DCSiQkkrKYGFXkqHT0CqE+8TPGMz2jQiMDnJ1ZvDW+Ru5e97N+4rLo1MGxu?=
+ =?us-ascii?Q?BpGCO6UDYgms4lN5pDGV1muiCNwum7WxObJypfJt/oICZ2QOFTbXFHFaSFmf?=
+ =?us-ascii?Q?iTxFwoeI4xqE3z8xCqf3tA2Yt1j9ixSc50X8hY2TpjV+haFgqtf8iDf6SWJ1?=
+ =?us-ascii?Q?UBF2obcbAFdFUotszr/vHnL81VcAY0Rus79eekTeNEhELWCvO9EkP1Ikha87?=
+ =?us-ascii?Q?yjCvz6/BUDZuE6dOA5U8ktX/wyMnviysOur/BQADifdGRGmz+p315KeRiKeA?=
+ =?us-ascii?Q?ibxwYHpr3EbzHs+9e8knF8FN7GR1wZDlHZpJEw/z5N43NdTDaV8hWMvjfz48?=
+ =?us-ascii?Q?4aZxOa1CdsdixgHUnEuEpVmNQVCGmWCs0rgDskJXXVQnWpixTVGMAVDspYuI?=
+ =?us-ascii?Q?7WwQVMDdUKVVvFQrv/9pu4NS/Y+NpwvwoIbS+QtKek5ohWaQ9KXUs+cUQl0j?=
+ =?us-ascii?Q?9ZXzhMQGyA4wKpS5XENIYZPuc/w8j+6ChiEsZ9ptizIEFWvkBUt0+ZhoNM36?=
+ =?us-ascii?Q?5UMQeidwbLePP4uT98hXoXIzqfnG6Kt9wYxnrQLpjrTQ18+ugZu/lsrpcMho?=
+ =?us-ascii?Q?ml9UKiMWyhNUeYdZk2fhBqOkEfpCHlCql+TODsbRn/LrAmQkFcu+8PKKCBpU?=
+ =?us-ascii?Q?Yjt6pHCNXA=3D=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f550065b-1b27-4893-0e65-08de79c5c7ca
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8420.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Mar 2026 08:12:30.2330
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: yag3VdJvNBsFr+bmOdYPxe3IGyw/CwM6COVdqaZj6jtBWwi6B1TYUwbX7Guiyfdo/t66jNFQVM6ZM20TMv5yxg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8689
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_080838_521665_14A144E9 
-X-CRM114-Status: GOOD (  27.94  )
+X-CRM114-CacheID: sfid-20260304_001235_343142_66117BEF 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,94 +148,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 03, 2026 at 03:37:23PM -0600, Bjorn Helgaas wrote:
-> On Tue, Mar 03, 2026 at 07:09:47PM +0000, Caleb James DeLisle wrote:
-> > pci_read_bridge_io() and pci_read_bridge_mmio_pref() read bridge window
-> > registers unconditionally. If the registers are hardwired to zero
-> > (not implemented), both base and limit will be 0. Since (0 <= 0) is
-> > true, a bogus window [mem 0x00000000-0x000fffff] or [io 0x0000-0x0fff]
-> > gets created.
-> > 
-> > pci_read_bridge_windows() already detects unsupported windows by
-> > testing register writability and sets io_window/pref_window flags
-> > accordingly. Check these flags at the start of pci_read_bridge_io()
-> > and pci_read_bridge_mmio_pref() to skip reading registers when the
-> > window is not supported.
-> 
-> BTW, I'm still interested in the details of how we got here.  It
-> shouldn't be too unusual to have a bridge without an I/O window or
-> maybe even without a prefetchable (64-bit) memory window.
-> 
-Hi Bjorn,
+This patch series enables SoC-specific timer drivers to be built as 
+loadable modules for Generic Kernel Image (GKI). SoC-specific timer 
+drivers provide always-on broadcast timers that complement the ARM 
+architectural timer.
 
-I'm fairly new to the PCI subsystem, so please correct me if
-any of my understanding below is wrong.
+This series is based on the previous MediaTek timer modularization work:
+Link: https://lore.kernel.org/all/20230517022557.24388-1-walter.chang@mediatek.com/
 
-Regarding the I/O window check: I only hit the issue with the
-prefetchable window. The I/O window check was added per your
-suggestion in our earlier discussion, since the same logic
-applies. Neither downstream device (MT7603, MT7663) has I/O
-BARs, so I haven't been able to test that path.
+The series includes:
+1. Export necessary functions from clocksource/mmio
+2. Remove __init markings from timer-of to support modules
+3. Convert MediaTek timer driver to support module build
+4. Convert i.MX TPM timer driver to support module build
 
-The EN7528 SoC's PCIe bridge does not implement the optional
-prefetchable memory window , the registers are hardwired to
-zero. The downstream device (MT7663 WiFi) has 64-bit
-prefetchable BARs.
+Testing performed:
+- Built and tested on i.MX8ULP platform
+- Built and tested on MediaTek platform
+- Verified both built-in and module configurations
+- Confirmed timer functionality in both configurations
 
-The problem is that pci_read_bridge_bases() reads these
-registers without checking pref_window. With both base and
-limit hardwired to zero, base(0) <= limit(0) evaluates true,
-creating a bogus [mem 0x00000000-0x000fffff pref] window.
-This makes the allocator believe the bridge has a prefetch
-window and route the prefetchable BARs through it. But since
-the hardware can't actually forward through this non-existent
-window, the device becomes unreachable.
+Changes in v4:
+- Refined the cover letter introduction to clarify that SoC-specific
+  timers act as always-on broadcast timers complementing the ARM
+  architectural timer.
+- Expanded "GKI" to "Generic Kernel Image (GKI)" in commit messages.
+- No functional changes to the code.
 
-This patch skips the register read when pref_window is not
-set, so no bogus resource is created, and the allocator
-correctly falls back to the non-prefetchable MMIO window.
+Changes in v3:
+- Reworded summary line for timer-mediatek driver as suggested.
+- Improved commit message formatting (line wrapping).
+- No functional changes to the code.
 
-As to why this hasn't surfaced before , I'm not sure. It may
-depend on whether pci_read_bridge_bases() gets called on a
-given platform and whether the downstream devices have
-prefetchable BARs. But I don't have enough experience with
-other platforms to say for certain.
+Changes in v2:
+- Added Signed-off-by from submitter (Zhipeng Wang) to all patches
+  as requested by reviewers
 
-Reagrds,
-Ahmed Naseef
+Changes in v1:
+- Fixed 'unsigned' to 'unsigned int' in clocksource_mmio_init()
+- Changed MODULE_LICENSE from "GPL v2" to "GPL" for mediatek driver
+- Added i.MX TPM timer driver module support
 
-> > Suggested-by: Bjorn Helgaas <helgaas@kernel.org>
-> > Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
-> > Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
-> > ---
-> >  drivers/pci/probe.c | 6 ++++++
-> >  1 file changed, 6 insertions(+)
-> > 
-> > diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-> > index bccc7a4bdd79..4eacb741b4ec 100644
-> > --- a/drivers/pci/probe.c
-> > +++ b/drivers/pci/probe.c
-> > @@ -395,6 +395,9 @@ static void pci_read_bridge_io(struct pci_dev *dev, struct resource *res,
-> >  	unsigned long io_mask, io_granularity, base, limit;
-> >  	struct pci_bus_region region;
-> >  
-> > +	if (!dev->io_window)
-> > +		return;
-> > +
-> >  	io_mask = PCI_IO_RANGE_MASK;
-> >  	io_granularity = 0x1000;
-> >  	if (dev->io_window_1k) {
-> > @@ -465,6 +468,9 @@ static void pci_read_bridge_mmio_pref(struct pci_dev *dev, struct resource *res,
-> >  	pci_bus_addr_t base, limit;
-> >  	struct pci_bus_region region;
-> >  
-> > +	if (!dev->pref_window)
-> > +		return;
-> > +
-> >  	pci_read_config_word(dev, PCI_PREF_MEMORY_BASE, &mem_base_lo);
-> >  	pci_read_config_word(dev, PCI_PREF_MEMORY_LIMIT, &mem_limit_lo);
-> >  	base64 = (mem_base_lo & PCI_PREF_RANGE_MASK) << 16;
-> > -- 
-> > 2.39.5
-> > 
+Chun-Hung Wu (3):
+  clocksource/drivers/mmio: Export clocksource_mmio_init()
+  clocksource/drivers/timer-of: Remove __init markings
+  clocksource/drivers/timer-mediatek: Convert timer-mediatek to a
+    loadable module
+
+Jindong Yue (1):
+  clocksource/drivers/imx-tpm: Support building imx-tpm driver as module
+
+ drivers/clocksource/Kconfig          |  4 ++--
+ drivers/clocksource/mmio.c           |  8 ++++---
+ drivers/clocksource/timer-imx-tpm.c  | 36 +++++++++++++++++++++++++---
+ drivers/clocksource/timer-mediatek.c | 33 +++++++++++++++++++++++++
+ drivers/clocksource/timer-of.c       | 23 +++++++++---------
+ drivers/clocksource/timer-of.h       |  6 ++---
+ 6 files changed, 88 insertions(+), 22 deletions(-)
+
+-- 
+2.34.1
+
 
