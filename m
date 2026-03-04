@@ -4,76 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2A03EB7EB8
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 10:14:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50172EB7ECD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 10:57:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4UJB5Tef4Xa9EPz7ddJaJCyEjLF4LufxiJyl/vDD5jg=; b=TxDsYRKH0G5zz8KTZ+prFRgxtS
-	wQL+rIKsp5JEj7je82RLss5E1BN8C+rUH41ZpRNeqzl6+6LUvV0vRZhpbJpeXVAE07ykXJ1vS3c4u
-	uw07vLT9LOLLZoiqWmUFOjt3nrDNCZhyECPaOGdbPLcMVPzEenxay/sFY+7HvtFVnofxWHPNRxCPj
-	AIiYkLwiwjBU2sTjkTNyBljyjEfuWiWJ6lm7jD6WkVBA7FEASxkhtyvyLN7+G0VrCG5fSLpNy3dT6
-	lGYPqvQNal62ySmRiDlwR1b1ckF77UP4JbJJii4gU9NLagC5T+XqFKGVuUPBb1ACwozaNbzhofBei
-	qTtcMaOw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Q0H9URFaOl3dJ+a7zQ7u6O8wxYctps5ElYmjBdzE7uk=; b=Jy01dOjKWo2mPRZIj6TGM79BOV
+	Xd4TOZZgH8Z2qSl9f5MsvVHoGyyg1QZpPc2IJpd39RHDlNfONN6vwQXC0AnFKYHBvzka0c9LJbTLo
+	XboEZmCFIIBJ6nQePzSHbzw7GJhHMMWowwtpb9RZE6/Ulfgi1HtJaQ0l8KzWLfocV2JMFeDd2N5uo
+	zXs8TQND0pVWWwsxke6M7/FfPr9wNhGm7RpcqtjBdc2vjfWm+8Mv0RupVfavVIQsjrfmSxbOblPy8
+	PjfseA5R+unCVr2lQ1qdFNdGB42Uk81B0tbjRm7DaMpPqPWwubgm1nzY3wy98PM3pjzFIk/tqAHEM
+	nejAYAUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxjFI-0000000Gxam-1qD8;
-	Wed, 04 Mar 2026 10:14:24 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1vxjud-0000000H1lT-08HK;
+	Wed, 04 Mar 2026 10:57:07 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxjFE-0000000GxZr-3gsy
-	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Mar 2026 10:14:22 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id A5AFD1A2791;
-	Wed,  4 Mar 2026 10:14:18 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 6F0655FF5C;
-	Wed,  4 Mar 2026 10:14:18 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 7C169103685F1;
-	Wed,  4 Mar 2026 11:14:09 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1772619256; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=4UJB5Tef4Xa9EPz7ddJaJCyEjLF4LufxiJyl/vDD5jg=;
-	b=B/fv+zkYhgUMX/YSdxnpxySN1eY9IVSqPBwvk+7Jk/y4L89Diiyi2gNmuiuUXZF8oG3ABu
-	leSag3vgWeKHqqglNWPEKXKEg9IH5fvb2/msgpQpFXrLJ8ovugh7lSPdR+K+0p5iTBQgJb
-	eCzNrv5jp7cWDwefB+fsTevUgg6VCM91lIzD0AnmDzXQaQ3myCErTR9oF0kDmMO1N3NFOD
-	MKowduDmUe3FsOat4B0Z1uB6evRtNc3y2JcqKXA0IbP3rVUMdr27mRABfMnQzdb1AxKbVm
-	CadNpF57ZMKmEwa0MvO/Z+pPe6kJyIK6ufJFtAJe2lD4vj2PvsUfPYVAM1M5Bg==
-Message-ID: <4a073736-9caf-4973-b7ad-a482d63bb672@bootlin.com>
-Date: Wed, 4 Mar 2026 11:14:08 +0100
+	id 1vxjua-0000000H1kk-0VDS;
+	Wed, 04 Mar 2026 10:57:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E8E1F40300;
+	Wed,  4 Mar 2026 10:57:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77182C2BCAF;
+	Wed,  4 Mar 2026 10:57:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772621822;
+	bh=z6mlT/VdSmy3w+18qyHEGpPhQGLQO3j1yCyXX/Y2eZ8=;
+	h=From:Date:Subject:To:Cc:From;
+	b=k8s2eZLuB8Bi/WwIKoUVlSSbxaGR1HjVmKVaf8cSv+gYS8hub+ZckPZyRRuLl4yeU
+	 987rkykVdsoLKX3D4mF/YBvQJ/Xg4WIAWrMrIgdLsufvrTkIPM8XV8xHKD5OhLLwfd
+	 xqrQDuNH1RdpYcK9bDRkg6xK0MFaVwJ4j77UepEhEyx7TgJQn1WTKnKIrt3KRC5pdg
+	 UkOUikktLorJAt2mwfohWGMT7jrG6Or2/dWdNEHE/6LLOgpbK3R6QAuVPpQ7ogEhY6
+	 ebsFD8EU8RjJOib2TsNg/Jc9XWWnleTSWCq9a82M8QqNgeGAvY129ftm8305r3aqrM
+	 ua7rn5x00/vxw==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Wed, 04 Mar 2026 11:56:47 +0100
+Subject: [PATCH net-next] net: airoha: Rely __field_prep for non-constant
+ masks
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 1/2] dt-bindings: net: Add support for Airoha
- AN8801/R GbE PHY
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>
-Cc: kevin-kw.huang@airoha.com, macpaul.lin@mediatek.com,
- matthias.bgg@gmail.com, kernel@collabora.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260304-add-airoha-an8801-support-v1-0-0ae4ee5a2f9d@collabora.com>
- <20260304-add-airoha-an8801-support-v1-1-0ae4ee5a2f9d@collabora.com>
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Content-Language: en-US
-In-Reply-To: <20260304-add-airoha-an8801-support-v1-1-0ae4ee5a2f9d@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+Message-Id: <20260304-airoha-__field_prep-v1-1-b185facc4e2f@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MSQqAMAwAvyI5G+jiAn5FpJQaNSBtSUEE8e8Wj
+ zMw80AhYSowNQ8IXVw4xQq6bSAcPu6EvFYGo8ygrOrQs6TDo3Mb07m6LJSxp74b9aiDtQFqWeX
+ G93+dl/f9AMLy3DNlAAAA
+X-Change-ID: 20260304-airoha-__field_prep-5e547171c33c
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_021421_063276_E2EB83E4 
-X-CRM114-Status: GOOD (  15.55  )
+X-CRM114-CacheID: sfid-20260304_025704_185590_79F65EC0 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,66 +78,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Louis-Alexis,
+Rely on __field_prep macros for non-constant masks preparing the values
+for register updates instead of open-coding.
 
-On 04/03/2026 10:35, Louis-Alexis Eyraud wrote:
-> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> Add a new binding to support the Airoha AN8801R Series Gigabit
-> Ethernet PHY.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-> ---
->  .../devicetree/bindings/net/airoha,an8801.yaml     | 81 ++++++++++++++++++++++
->  1 file changed, 81 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/net/airoha,an8801.yaml b/Documentation/devicetree/bindings/net/airoha,an8801.yaml
-> new file mode 100644
-> index 0000000000000000000000000000000000000000..f251c9d2fbbed3675c9fd7ff22174049a13a7b5e
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/airoha,an8801.yaml
-> @@ -0,0 +1,81 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/net/airoha,an8801.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Airoha AN8801R Series PHY
-> +
-> +maintainers:
-> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> +
-> +description:
-> +  The Airoha AN8801R is a low power single-port Ethernet PHY Transceiver
-> +  with Single-port serdes interface for 1000Base-X/RGMII; this chip is
-> +  compliant with 10Base-T, 100Base-TX and 1000Base-T IEEE 802.3(u,ab)
-> +  and supports Energy Efficient Ethernet (802.3az), Full Duplex Control
-> +  Flow (802.3x), auto-negotiation, crossover detect and autocorrection,
-> +  Wake-on-LAN with Magic Packet, and Jumbo Frame up to 9 Kilobytes.
-> +  This PHY also supports up to three user-configurable LEDs, which are
-> +  usually used for LAN Activity, 100M, 1000M indication.
-> +
-> +allOf:
-> +  - $ref: ethernet-phy.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - ethernet-phy-idc0ff.0421
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  leds: true
-> +
-> +required:
-> +  - reg
-> +  - leds
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Seems odd to me that leds are required. Any reason for that ?
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 3779f93b47bc13ae21d4ae088dece4712dc214e5..09acbe6695368132ddd92c3501f8711476db73f6 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -1727,7 +1727,7 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
+ 	airoha_fe_rmw(eth,
+ 		      REG_SP_DFT_CPORT(src_port >> fls(SP_CPORT_DFT_MASK)),
+ 		      SP_CPORT_MASK(val),
+-		      FE_PSE_PORT_CDM2 << __ffs(SP_CPORT_MASK(val)));
++		      __field_prep(SP_CPORT_MASK(val), FE_PSE_PORT_CDM2));
+ 
+ 	if (port->id != AIROHA_GDM3_IDX && airoha_is_7581(eth))
+ 		airoha_fe_rmw(eth, REG_SRC_PORT_FC_MAP6,
+@@ -1781,7 +1781,7 @@ static int airoha_dev_init(struct net_device *dev)
+ 	ppe_id = pse_port == FE_PSE_PORT_PPE2 ? 1 : 0;
+ 	airoha_fe_rmw(eth, REG_PPE_DFT_CPORT0(ppe_id),
+ 		      DFT_CPORT_MASK(port->id),
+-		      fe_cpu_port << __ffs(DFT_CPORT_MASK(port->id)));
++		      __field_prep(DFT_CPORT_MASK(port->id), fe_cpu_port));
+ 
+ 	return 0;
+ }
+@@ -2138,7 +2138,7 @@ static int airoha_qdma_set_chan_tx_sched(struct airoha_gdm_port *port,
+ 
+ 	airoha_qdma_rmw(port->qdma, REG_CHAN_QOS_MODE(channel >> 3),
+ 			CHAN_QOS_MODE_MASK(channel),
+-			mode << __ffs(CHAN_QOS_MODE_MASK(channel)));
++			__field_prep(CHAN_QOS_MODE_MASK(channel), mode));
+ 
+ 	return 0;
+ }
 
-Maxime
+---
+base-commit: 4ad96a7c9e2cebbbdc68369438a736a133539f1d
+change-id: 20260304-airoha-__field_prep-5e547171c33c
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
