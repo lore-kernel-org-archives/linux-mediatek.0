@@ -4,97 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A628EFCE24
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 17:22:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 462DDEFCE2A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 18:11:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=esvSqKXShpQiZv737AB88d1vgxt9UO/1oYq1M1MxJA4=; b=K2z+KbQJ5JvFpFLSzRkpgJ+TOf
-	Zdn3cpF6TJpGBNhyLM4IXX2IKgFzMyx0IN7ebXwQhb7aeYFAROri1DCXdHPuvpftCad8DoQ5PENo9
-	cGSL2lEs7r7B8UmZgbrJcDMODMwzcm7PQNzBNX7CicABL1hcDhee2Q8iFooMdojqMWRgB8RE4dDC6
-	aghwOi8xaei9htSKuy1VKpLRba6XbpI3FrU09jM48YHncVUUsYzA+W8gWazT0P45WMwj0uAPbGr6g
-	yF+px+SZcDvp2Y/2Qc3Zb9X+Ee/D3wglnybFo+FjTB6np1Wrqh8KyzSUC6pn8+ccARj6lwiEhDhMS
-	aEfECJbQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=CAARsnlrqcfDm8ekZAoMmoCRNxm299rJHElT0uztVl4=; b=dlpJrV2ObIhgxCFiy3nv0X5dnv
+	SZ8B1l7OJuxdg1nIv/g76IAZYw0FaXZQbomrHhhy9JGxLyK3pAoXymqUaftRIkowC75lrENhepzBX
+	tbUUHTc7ywEnfqKTHAVJfUycIwcw4Tkh632wu51F9vUKr7VhrqD9kaODQrdeia+C8KNLmW+YcCPMf
+	85sWQg7rfcbp1qRj/7Eklmm6FmNm3mZknhZyNhhPcVwUPx3jfSnG41UZhKUmavdQuKGncEBoutuEn
+	W7NDkRiq8Zr8PBg6ILt/vebeL6H/Dcxp1qMHbbB7gthp/c4VfIBg3WZeRvWAt7qfKJkK4xK4X5zLm
+	KcmrYcDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxpvo-00000000Azs-0T4o;
-	Wed, 04 Mar 2026 17:22:44 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vxqh4-00000000JJW-3MoD;
+	Wed, 04 Mar 2026 18:11:34 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxpvj-00000000Aur-3b0m;
-	Wed, 04 Mar 2026 17:22:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=esvSqKXShpQiZv737AB88d1vgxt9UO/1oYq1M1MxJA4=; b=d2tjJ2lV2jSHcwp+TacCI+bsij
-	61pTx25q/MTCzmQynQRZz+oEQl22XsDj+VmyvCkmvgfl/lPx0pzjoUnljVwfcPRy/dtnHRMcfUboW
-	sS2YeKsCNMX+xDbDqNtcFS4f8byTrPJOHJlXehlLW/nfq0bBTxOTplJQxebKttWHMLFiFUze8ZXmT
-	nNe6AF/qJBG7Wng2NSnXNT4EsrEIXlEzjlVUz/xtTbxfHCbdJe4sqOs32cwlKQXcn0Dqvd22ugrK4
-	6U2JIftglxiBgIIZCR4VOzdRX0UAwsV3MvAGcJ72ekBtMzkQz3PeHYhbU+/ZEJ5p8ErRHJGp5Jqke
-	/HuQe5HQ==;
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxpvf-00000005DZm-26tq;
-	Wed, 04 Mar 2026 17:22:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D6C8E43A6D;
-	Wed,  4 Mar 2026 17:22:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09C00C4CEF7;
-	Wed,  4 Mar 2026 17:22:23 +0000 (UTC)
-From: Geert Uytterhoeven <geert+renesas@glider.be>
-To: Marc Zyngier <maz@kernel.org>,
-	Thomas Gleixner <tglx@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Antoine Tenart <atenart@kernel.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
-	Daniel Palmer <daniel@thingy.jp>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Nishanth Menon <nm@ti.com>,
-	Tero Kristo <kristo@kernel.org>,
-	Santosh Shilimkar <ssantosh@kernel.org>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org,
+	id 1vxqh1-00000000JIZ-3Qdq
+	for linux-mediatek@lists.infradead.org;
+	Wed, 04 Mar 2026 18:11:33 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-824ba8f0acaso3650326b3a.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Mar 2026 10:11:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1772647890; x=1773252690; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=CAARsnlrqcfDm8ekZAoMmoCRNxm299rJHElT0uztVl4=;
+        b=Ayc0e6NaBTXyd+ouliQOboGCn4lsnIB0TVSBnNqDEf7J8qtEgLKoHkldcguUK+ELvq
+         1BzLPCCid8WD+e9sTvctw89vEmwHUZK14zPGgU6XQdUGcTkOny0YBYJ4GrRbdk48qaIq
+         tJUwV1Fi/qt0FOA+bNYHaw9X1JVgm0VqAxldXEAWprYauWq5YgmmgklQAGsW3jTAknhS
+         tLh7dM9K4mqxQGhcT3NIObX8fhj6fDfh39UF57m9h/tuPYdogloHKIopLXeJwCwAeWCu
+         gZBT/9ksJoyMap4zFi2KvMrYph+M3hygHLRevHpiX8hkETCJIQvL6+k2NHSTn7RTVERJ
+         qe7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772647890; x=1773252690;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=CAARsnlrqcfDm8ekZAoMmoCRNxm299rJHElT0uztVl4=;
+        b=Q1l7NMIOFRgFk1+4VBrga79WCJVJ40gWpscF50giCT63nPAn4cPs//nKs26KbN0zcQ
+         HvPyary37JozmPuFYRVB4RnThzxTHDqz40nwM+0mt1kDMh+Z1s9xxjz8m8xczfUSVQDu
+         AjyQtKFX0Opbvtc3V/mX/b30i43l+x2sRHOf12qfSjmKjSIAqoxo1Jxu7SJsAABP9JI6
+         jQaKkmShkqAB7tafL8WcR/5TyttzzNM4cNJzu/nXB/B2lxj9x9inycF/EadVciBv0WhC
+         CxPTwzP48brdMVEg26dgB40j4PuPMnLhK+AfMrqASn5vYNEFQwG9a7q9q6wNtBAicXuR
+         Kxtw==
+X-Forwarded-Encrypted: i=1; AJvYcCVwXtZQpVdH7DXIyKnEwXKyDCauEnc8ATwhl2+eJelFdi6jnfnjb8f1ADoIgqVa/tjhPnESuXP1nGJiTZaB7A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzjuT/OTaRRMAeNUXwEq9GU7JeRKNo2TH0LvRAKZjmwnxqXqZmk
+	glRnyaPRehCA+pFg8ncZkyFLZDtQTA7mDcIFZvdixGMnNOYxDd+MRV1k
+X-Gm-Gg: ATEYQzyO1n05TCN6IrggI+9UCcJzUz3o1cnN4EaJ7Z366g7jOt+FqCiPWPQWICRaVpw
+	usADkqOItzGylY7VhqM/ClsyK1QUZdBQjSjcIbCDY6HWEJWuoBKzwgKdVlHggznbXXkNsJ8r4tf
+	5a28jK5+siqtdB1aoyy8nnn4tOkJCDITYnivTH2YFFvHDkSrahYhow0xKNlzE5h5GUCrDfy1WOy
+	Cseu0ZNnxsf86XLwpIkkjXYnedqGroUWDgpF6Hokr3q9/jhmEA8rfNQXsvA8KEWURwUDWcCpYEa
+	SMl1tWqBxYnYte0z5Cz0NnaLOD1h/0V0I0XqMxvbDa2J3U0+wK3jdravniFkoU/cnW5EU5P4HPM
+	A1IxBHpNfJ1jRXY6Si3wR3Rz7367bWofYjMjR65ZnAkS7aKTSsD3CJUTftvTTb3c7VJkQF7fDAd
+	RK11sMyHSvBthpEUc5Ccm3ugDLzHFx71wIOc5FFv9R7CKWSK2G7ghF7kECnUqX2Ygt9PeqxK/Pf
+	GzNMGU=
+X-Received: by 2002:a05:6a00:a21b:b0:827:433c:ba7e with SMTP id d2e1a72fcca58-82972ca0908mr2672299b3a.41.1772647890346;
+        Wed, 04 Mar 2026 10:11:30 -0800 (PST)
+Received: from buffalo-ssd.taila54753.ts.net (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-829713825efsm2503835b3a.51.2026.03.04.10.11.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Mar 2026 10:11:27 -0800 (PST)
+From: Akari Tsuyukusa <akkun11.open@gmail.com>
+To: mturquette@baylibre.com,
+	sboyd@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com
+Cc: linux-clk@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-rpi-kernel@lists.infradead.org,
-	imx@lists.linux.dev,
-	linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org,
-	Geert Uytterhoeven <geert+renesas@glider.be>
-Subject: [PATCH 3/4] irqchip/gic: Use GIC_* DT binding definitions
-Date: Wed,  4 Mar 2026 18:21:58 +0100
-Message-ID: <d22488d128d39fcd90359f59559fac637bb4b04c.1772644406.git.geert+renesas@glider.be>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1772644406.git.geert+renesas@glider.be>
-References: <cover.1772644406.git.geert+renesas@glider.be>
+	Akari Tsuyukusa <akkun11.open@gmail.com>
+Subject: [PATCH 0/3] Refactor infracfg drivers to be able to use common helpers
+Date: Thu,  5 Mar 2026 03:10:21 +0900
+Message-ID: <20260304181024.738391-1-akkun11.open@gmail.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_172235_881542_0FB246EA 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20260304_101131_847475_B7AF6849 
+X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,97 +103,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace magic numbers by symbolic DT binding definitions.  This improves
-readability, and makes it easier to find where the various GIC
-interrupts types are handled.
+This series extends the MediaTek clock common framework to support
+cpumux and converts existing infracfg drivers to use the common
+helpers.
 
-Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
----
- drivers/irqchip/irq-gic-v3.c | 14 ++++++++------
- drivers/irqchip/irq-gic.c    |  6 ++++--
- 2 files changed, 12 insertions(+), 8 deletions(-)
+Currently, many MediaTek clock drivers implement their own probe and
+remove functions, leading to significant code duplication. By extending
+the mtk_clk_desc structure and the __mtk_clk_simple_probe/remove
+functions, we can handle these sequences in a unified way.
 
-diff --git a/drivers/irqchip/irq-gic-v3.c b/drivers/irqchip/irq-gic-v3.c
-index d75163e71bf22473..6ac103cb40097acc 100644
---- a/drivers/irqchip/irq-gic-v3.c
-+++ b/drivers/irqchip/irq-gic-v3.c
-@@ -35,6 +35,8 @@
- #include <asm/smp_plat.h>
- #include <asm/virt.h>
- 
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+
- #include "irq-gic-common.h"
- 
- static u8 dist_prio_irq __ro_after_init = GICV3_PRIO_IRQ;
-@@ -1602,25 +1604,25 @@ static int gic_irq_domain_translate(struct irq_domain *d,
- 			return -EINVAL;
- 
- 		switch (fwspec->param[0]) {
--		case 0:			/* SPI */
-+		case GIC_SPI:
- 			if (fwspec->param[1] > 987)
- 				pr_warn_once("SPI %u out of range (use ESPI?)\n",
- 					     fwspec->param[1]);
- 			*hwirq = fwspec->param[1] + 32;
- 			break;
--		case 1:			/* PPI */
-+		case GIC_PPI:
- 			if (fwspec->param[1] > 16)
- 				pr_warn_once("PPI %u out of range (use EPPI?)\n",
- 					     fwspec->param[1]);
- 			*hwirq = fwspec->param[1] + 16;
- 			break;
--		case 2:			/* ESPI */
-+		case GIC_ESPI:
- 			if (fwspec->param[1] > 1023)
- 				pr_warn_once("ESPI %u out of range\n",
- 					     fwspec->param[1]);
- 			*hwirq = fwspec->param[1] + ESPI_BASE_INTID;
- 			break;
--		case 3:			/* EPPI */
-+		case GIC_EPPI:
- 			if (fwspec->param[1] > 63)
- 				pr_warn_once("EPPI %u out of range\n",
- 					     fwspec->param[1]);
-@@ -1738,8 +1740,8 @@ static int gic_irq_get_fwspec_info(struct irq_fwspec *fwspec, struct irq_fwspec_
- 		struct fwnode_handle *fw;
- 
- 		switch (fwspec->param[0]) {
--		case 1:			/* PPI */
--		case 3:			/* EPPI */
-+		case GIC_PPI:
-+		case GIC_EPPI:
- 			break;
- 		default:
- 			return 0;
-diff --git a/drivers/irqchip/irq-gic.c b/drivers/irqchip/irq-gic.c
-index ec70c84e9f91dd7b..a2225ca1efeb700d 100644
---- a/drivers/irqchip/irq-gic.c
-+++ b/drivers/irqchip/irq-gic.c
-@@ -47,6 +47,8 @@
- #include <asm/smp_plat.h>
- #include <asm/virt.h>
- 
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+
- #include "irq-gic-common.h"
- 
- #ifdef CONFIG_ARM64
-@@ -1094,10 +1096,10 @@ static int gic_irq_domain_translate(struct irq_domain *d,
- 			return -EINVAL;
- 
- 		switch (fwspec->param[0]) {
--		case 0:			/* SPI */
-+		case GIC_SPI:
- 			*hwirq = fwspec->param[1] + 32;
- 			break;
--		case 1:			/* PPI */
-+		case GIC_PPI:
- 			*hwirq = fwspec->param[1] + 16;
- 			break;
- 		default:
+Summary of changes:
+- Patch 1: Add cpumux support to common mtk_clk_simple_probe/remove.
+- Patch 2: Convert MT6795 infracfg driver to the common helpers.
+- Patch 3: Convert MT7622 infracfg driver to the common helpers.
+
+Akari Tsuyukusa (3):
+  clk: mediatek: clk-mtk: Add cpumux support to common probe/remove
+    helpers
+  clk: mediatek: mt6795-infracfg: Switch to common probe/remove helpers
+  clk: mediatek: mt7622-infracfg: Switch to common probe/remove helpers
+
+ drivers/clk/mediatek/clk-mt6795-infracfg.c | 70 ++++------------------
+ drivers/clk/mediatek/clk-mt7622-infracfg.c | 70 ++++------------------
+ drivers/clk/mediatek/clk-mtk.c             | 18 +++++-
+ drivers/clk/mediatek/clk-mtk.h             |  2 +
+ 4 files changed, 41 insertions(+), 119 deletions(-)
+
 -- 
-2.43.0
+2.52.0
 
 
