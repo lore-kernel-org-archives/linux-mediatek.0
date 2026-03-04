@@ -4,69 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30856EFCE4B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 21:46:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4C8CEFCE4C
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 22:13:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NzpEAndabLXdFU83lYguNUY29Q1wC4ZmNMkxm9NkFgM=; b=40sPoTUnnR/0J/VEQGnpazBcAj
-	YVkTppBLix9fFlJxg+5guKfMojIu+cwhr6nF5PI3tiU5WUkRBLaMDc/J7EjI7JD1tx5fCOcDa0Jvd
-	N4/08G3HxJkhb7o/qFj/OyafFjnbD/4qijc7mmRA9fRCd3E+ZnJor5/x3GifXSJLuIfAMzhC0nB87
-	O8RYKzk8qtDPLQ0ADUzXANL7hJ6lTMcfzOtekZsBADeqc7ruXapeoHnwT8S/CcnOjX+CI7GbEWNAW
-	hnAXvmEHna4s4Qc5JMXjTclhFJIxtxuJqIFpk13LEM0Xbcy0woY2+e4KZNsC3bKokT+YeZmrkcwhu
-	e+txq2yQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n9YgFzJeU6iVrx+xDJlXNhmiX2UbJXq6xpTde0QURWA=; b=PXJhu8XBUMW1WhN6Bwstdq2GYs
+	rjQUZn4gjIVCwVInTJ/ED32Mqf3kGQ2y4PxOymI6dDfh/ntnxflSYAavKeHRwlVIaCos/iinbH72y
+	LLhrpO8apFh1WjU0nj1/EaSKXPQdpXVwPnfH4jPbYhyUe5U4FwVRmsi0VFiA5heP0pm/IA9IeHZVe
+	mkLbYymEsInIw8EIvyZb/7ktNr5j3Li2ZL34JtLupOc/Vv2VYMXQAKj69+mOS/KbHIDmoesbE7V3t
+	ND3JQdZjk9FdH5Jc8zAzqyKfrjehLeaOdFQPjtEZFR9m/pYMlbFpUhRaU5Qcyun1hmVVDxlqZ6ZEs
+	/ie1274Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxu3N-00000000Xf1-1PDY;
-	Wed, 04 Mar 2026 21:46:49 +0000
-Received: from mx3.wp.pl ([212.77.101.10])
+	id 1vxuTa-00000000Z1c-0t0t;
+	Wed, 04 Mar 2026 22:13:54 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxu3L-00000000XeL-15pq
-	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Mar 2026 21:46:48 +0000
-Received: (wp-smtpd smtp.wp.pl 398 invoked from network); 4 Mar 2026 22:46:42 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
-          t=1772660802; bh=NzpEAndabLXdFU83lYguNUY29Q1wC4ZmNMkxm9NkFgM=;
-          h=Subject:To:Cc:From;
-          b=kXijcwDr5eR+9K1AwEREg5sp8eO2Ui5fNQ/FNdpdD4KuEECE7vZahMbWoLbr221VF
-           YDdZcQW2bq/cH4l4B9dnHaSQIOlXrJX6lmG86qAKolf84vsSUInILkDJiH35VvpCLC
-           7Lt/fLQ7rjqjdVkIjGGYT/vj5iJODYPGx7rN82nglesI7ilXYsoPz16kYO/jdLJN8l
-           l5Resb1XzI48I8Whs3PHD7z3LKLXAZZA8GLYpCrCpUEqwcehFiHjcL0Y3OnQhEFoGd
-           qfFgyF47S1t4dK+qTNRhKK9z4bWOyKJRcVO8WrhYn5c0uSUqbCVDVsne9U1yV0dQRy
-           pEqTVWAKGk8MA==
-Received: from 83.24.116.171.ipv4.supernova.orange.pl (HELO [192.168.3.246]) (olek2@wp.pl@[83.24.116.171])
-          (envelope-sender <olek2@wp.pl>)
-          by smtp.wp.pl (WP-SMTPD) with TLS_AES_256_GCM_SHA384 encrypted SMTP
-          for <conor@kernel.org>; 4 Mar 2026 22:46:42 +0100
-Message-ID: <f9b266d7-f545-4088-b6c5-a0cc8676d60c@wp.pl>
-Date: Wed, 4 Mar 2026 22:46:41 +0100
+	id 1vxuTV-00000000Z19-0u2x;
+	Wed, 04 Mar 2026 22:13:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1772662429; x=1804198429;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=8viQ62Vl8rOScrYYff4z3W73/71vqWr9R5SU1cx41TU=;
+  b=BWf8trcmwG9u9XXu97fveeQxH11W0nEdt/ITZsW9Dz8rkJFSPW0PFvaX
+   PHaP2x9NmnZolGRBI4et/ZuDwCX8pOTHDjs+4M76HVRapsyUuu5uO/xmB
+   eu7hDNV0n7QlNjoWp1S06hHDqtAsQ5l+KyRZ3uDnhaj0P5Ggh8ONNbRJd
+   I/NPBB/DI03M/46Px7AiPPMkOv1HqhduUJs5nKQ+ba5UVkaigbA3ogsFi
+   nBsv4QejqMQaRasBkJxqdWXqvv20igF4+FKnetQ+S+CgcPTmvhQNZxNz7
+   CL5CZI2qlhP62k7WcfbqNz1m2PKdFtklES8gbBAy2jGUvX7ghMBkWWDQA
+   w==;
+X-CSE-ConnectionGUID: nwruu2y7SCaS0VnkwjfErg==
+X-CSE-MsgGUID: vVI74DhuQfqX8QaHOCKEAA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11719"; a="61309896"
+X-IronPort-AV: E=Sophos;i="6.21,324,1763452800"; 
+   d="scan'208";a="61309896"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Mar 2026 14:13:42 -0800
+X-CSE-ConnectionGUID: vKgF8lqPSuuf9WEb103q4w==
+X-CSE-MsgGUID: 4DnBmdg1RWOursf8+vRWaA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,324,1763452800"; 
+   d="scan'208";a="223440410"
+Received: from lkp-server01.sh.intel.com (HELO f27a57aa7a36) ([10.239.97.150])
+  by orviesa005.jf.intel.com with ESMTP; 04 Mar 2026 14:13:38 -0800
+Received: from kbuild by f27a57aa7a36 with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1vxuTF-000000004a9-1tK7;
+	Wed, 04 Mar 2026 22:13:33 +0000
+Date: Thu, 5 Mar 2026 06:13:31 +0800
+From: kernel test robot <lkp@intel.com>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	netdev@vger.kernel.org, kevin-kw.huang@airoha.com,
+	macpaul.lin@mediatek.com, matthias.bgg@gmail.com,
+	kernel@collabora.com, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Subject: Re: [PATCH net-next 2/2] net: phy: Introduce Airoha AN8801/R Gigabit
+ Ethernet PHY driver
+Message-ID: <202603050606.eulVmYcb-lkp@intel.com>
+References: <20260304-add-airoha-an8801-support-v1-2-0ae4ee5a2f9d@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: crypto: eip93: add clock gate and reset
- line
-To: Conor Dooley <conor@kernel.org>
-Cc: ansuelsmth@gmail.com, herbert@gondor.apana.org.au, davem@davemloft.net,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- lorenzo@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-crypto@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-References: <20260303193923.85242-1-olek2@wp.pl>
- <20260304-hardship-abreast-7a2d58cbe446@spud>
-Content-Language: en-US
-From: Aleksander Jan Bajkowski <olek2@wp.pl>
-In-Reply-To: <20260304-hardship-abreast-7a2d58cbe446@spud>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-WP-MailID: 99f604febecd4a2e8ba3ea7d20496df9
-X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
-X-WP-SPAM: NO 0000009 [oTqX]                               
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260304-add-airoha-an8801-support-v1-2-0ae4ee5a2f9d@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_134647_497927_9716F799 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20260304_141349_270312_C05D6720 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,64 +102,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Conor,
+Hi Louis-Alexis,
 
-On 3/4/26 20:08, Conor Dooley wrote:
-> On Tue, Mar 03, 2026 at 08:39:17PM +0100, Aleksander Jan Bajkowski wrote:
->> Add the clock gate and reset line, both of which are available
->> on the Airoha AN7581. Both properties are optional.
-> Why are they optional?
+kernel test robot noticed the following build warnings:
 
-No reason. In theory, a hardware designer could connect the reset
-to a fixed input signal. In practice, all SoCs on the market have
-a built-in reset and clock controller. I can mark them as required
-in the next revision.
+[auto build test WARNING on ed0abfe93fd135dac223e87a3c945017b1fa8bfc]
 
->> Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
->> ---
->>   .../crypto/inside-secure,safexcel-eip93.yaml         | 12 ++++++++++++
->>   1 file changed, 12 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml
->> index 997bf9717f9e..058454b679b4 100644
->> --- a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml
->> +++ b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml
->> @@ -48,6 +48,12 @@ properties:
->>     interrupts:
->>       maxItems: 1
->>   
->> +  clocks:
->> +    maxItems: 1
->> +
->> +  resets:
->> +    maxItems: 1
->> +
->>   required:
->>     - compatible
->>     - reg
->> @@ -57,11 +63,17 @@ additionalProperties: false
->>   
->>   examples:
->>     - |
->> +    #include <dt-bindings/clock/en7523-clk.h>
->>       #include <dt-bindings/interrupt-controller/arm-gic.h>
->> +    #include <dt-bindings/reset/airoha,en7581-reset.h>
->>   
->>       crypto@1e004000 {
->>         compatible = "airoha,en7581-eip93", "inside-secure,safexcel-eip93ies";
->>         reg = <0x1fb70000 0x1000>;
->>   
->> +      clocks = <&scuclk EN7523_CLK_CRYPTO>;
->> +
->>         interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
->> +
->> +      resets = <&scuclk EN7581_CRYPTO_RST>;
->>       };
->> -- 
->> 2.47.3
->>
-Best regards,
-Aleksander
+url:    https://github.com/intel-lab-lkp/linux/commits/Louis-Alexis-Eyraud/dt-bindings-net-Add-support-for-Airoha-AN8801-R-GbE-PHY/20260304-174023
+base:   ed0abfe93fd135dac223e87a3c945017b1fa8bfc
+patch link:    https://lore.kernel.org/r/20260304-add-airoha-an8801-support-v1-2-0ae4ee5a2f9d%40collabora.com
+patch subject: [PATCH net-next 2/2] net: phy: Introduce Airoha AN8801/R Gigabit Ethernet PHY driver
+config: sparc64-allmodconfig (https://download.01.org/0day-ci/archive/20260305/202603050606.eulVmYcb-lkp@intel.com/config)
+compiler: clang version 23.0.0git (https://github.com/llvm/llvm-project 9a109fbb6e184ec9bcce10615949f598f4c974a9)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260305/202603050606.eulVmYcb-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202603050606.eulVmYcb-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/net/phy/air_an8801.c:258:6: warning: variable 'pbus_data_h' is uninitialized when used here [-Wuninitialized]
+     258 |         if (pbus_data_h < 0)
+         |             ^~~~~~~~~~~
+   drivers/net/phy/air_an8801.c:240:30: note: initialize the variable 'pbus_data_h' to silence this warning
+     240 |         int pbus_data_l, pbus_data_h;
+         |                                     ^
+         |                                      = 0
+   1 warning generated.
 
 
+vim +/pbus_data_h +258 drivers/net/phy/air_an8801.c
+
+   236	
+   237	static int __air_buckpbus_reg_read(struct phy_device *phydev,
+   238					   u32 addr, u32 *data)
+   239	{
+   240		int pbus_data_l, pbus_data_h;
+   241		int ret;
+   242	
+   243		addr |= AN8801_PBUS_ACCESS;
+   244	
+   245		ret = __phy_write(phydev, AIR_BPBUS_MODE, MII_MMD_CTRL_ADDR);
+   246		if (ret < 0)
+   247			return ret;
+   248	
+   249		ret = __phy_write(phydev, AIR_BPBUS_RD_ADDR_HIGH, upper_16_bits(addr));
+   250		if (ret < 0)
+   251			return ret;
+   252	
+   253		ret = __phy_write(phydev, AIR_BPBUS_RD_ADDR_LOW, lower_16_bits(addr));
+   254		if (ret < 0)
+   255			return ret;
+   256	
+   257		ret = __phy_read(phydev, AIR_BPBUS_RD_DATA_HIGH);
+ > 258		if (pbus_data_h < 0)
+   259			return pbus_data_h;
+   260	
+   261		pbus_data_l = __phy_read(phydev, AIR_BPBUS_RD_DATA_LOW);
+   262		if (pbus_data_l < 0)
+   263			return pbus_data_l;
+   264	
+   265		*data = (pbus_data_h << 16) | pbus_data_l;
+   266		return 0;
+   267	}
+   268	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
