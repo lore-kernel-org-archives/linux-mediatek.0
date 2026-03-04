@@ -4,41 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19610EF8FEE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 15:00:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A11DEF8FFC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 16:32:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vqPIfe+mfsqFhoVG72QNFvYOtrojMOGGbstCn1l5Va0=; b=cwZSGNFguCqT50n1Rz1Sy47RqO
-	kavEbbNugGt1sszKj8xRKp1iPZRnnRqEbrVIsKTuVNDlH0/K3tUyFXGUH8sX89k+h4wp15Px8w3M1
-	5B9R9HPP0iHHv8ncFeNdfd5aBrvTKMjptTR1YvcFNl4kHRUZJ9A9SHlAN5+Fqk2pIMBWG2mYylvSA
-	OaLu8tVpOIgIJ32dVKAB2bn38Hw2o3pRkJdhu7sXOuM6Ykr5ZL2cRar7lKD9/FhlbfZnh6g3lV/3W
-	ImO5YJrkA/d6ufiFvje6gX9l+AA4zwILtq+4TNBO7XjOkKD3R+Pd/Qwy0aBvxtZhOCG+OwmNvdC6T
-	i6S3vA6w==;
+	bh=4E81S360LZJasm+z9mMQB95l0sk0q8GKUxtXCQeVoTg=; b=GV/GOzvLUTjwLH0Uo2et81xzsH
+	tqr+2ZpN2BBfezUgiRD1lRw/JaomwKnQdtM9vUXDxEMmY0w8++auiZsTuPFk6Mm44AOXlq+FnhoRC
+	o26CxkWGVBsHJDBsIVOBOMIxps/nRdcSkAZaoehirVYy7Fw2ibk1JtnlXw/HThoRP0ngm2/S9zzvN
+	a6xBpvPHTq8S+Pksu/937+uN/DH7zqujoZOhsS4EAcYnyJLqoXOKuI09N2qfWdxRV476S9V4Go862
+	PbvJRka25kbGculVFtH+NxwcRlOVPdB1IOfoM8tjFhfTFSZPvateqDTwTrx1widC8NxkHSm10MJnE
+	Pvf7KTGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxnhh-0000000HV6v-18Yd;
-	Wed, 04 Mar 2026 15:00:01 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1vxp9K-000000005Eg-3gjJ;
+	Wed, 04 Mar 2026 16:32:38 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxnhe-0000000HV5h-1vli;
-	Wed, 04 Mar 2026 14:59:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=vqPIfe+mfsqFhoVG72QNFvYOtrojMOGGbstCn1l5Va0=; b=BexXbVtFTtWrabAERt3I7VaQUE
-	1MDE/MWnlrPGimoVaeUcdFk3FB5zaA8BjNLAPHpAYn7v9Q4G0Kwcr5Jl3Q1XLsVswkXw0CyTTLaL/
-	g/dxJutxfPtrr083s9hbQTqwycBJ/VpA4S0S99OWCob94R/W08s1BOKSyzpRiCrzXEWM=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1vxnhP-00A7ZE-C5; Wed, 04 Mar 2026 15:59:43 +0100
-Date: Wed, 4 Mar 2026 15:59:43 +0100
-From: Andrew Lunn <andrew@lunn.ch>
+	id 1vxp9H-000000005De-1N6P;
+	Wed, 04 Mar 2026 16:32:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=4E81S360LZJasm+z9mMQB95l0sk0q8GKUxtXCQeVoTg=; b=kcAhc82XV2zj4ATHfuIl5oAz9H
+	UPBtKS/AafU12aOJQMXH35D//2gq8JYzL3mNfaqnaTYYFO/5+sGwgybnjea9DTJQYbf+gkQ3PiJGQ
+	7+8gKBfoPFnKyJv2KXp9d+gkA8/THuduL5z8Ch4B78IMQEdnoendq2zWEMG0HxbXGE4BqzmSgYvek
+	er0OB5Y6bfjxP41aJPnZGKoLtRTGqVBuAc+GMh4Hg8Iq90oKKMh0tOjYJjcjeRs1mvzdehedLVz79
+	y3Y1uJH9Bx9MpiWee51iTuYKzuH2hoH9A5ngD4rBH1UnS8Azh0X3NgxnuGWkaKnnhZON21RDILiRb
+	s4+hQCSw==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56966)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1vxp8w-000000006lU-3Xbg;
+	Wed, 04 Mar 2026 16:32:14 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1vxp8s-0000000082X-3150;
+	Wed, 04 Mar 2026 16:32:10 +0000
+Date: Wed, 4 Mar 2026 16:32:10 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
 To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
@@ -48,15 +59,15 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>, kevin-kw.huang@airoha.com,
+	Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>, kevin-kw.huang@airoha.com,
 	macpaul.lin@mediatek.com, matthias.bgg@gmail.com,
 	kernel@collabora.com, netdev@vger.kernel.org,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH net-next 2/2] net: phy: Introduce Airoha AN8801/R Gigabit
  Ethernet PHY driver
-Message-ID: <3fbfabf7-b3af-405b-ade4-4f62db2c1c45@lunn.ch>
+Message-ID: <aaheilkwpQ90xMmR@shell.armlinux.org.uk>
 References: <20260304-add-airoha-an8801-support-v1-0-0ae4ee5a2f9d@collabora.com>
  <20260304-add-airoha-an8801-support-v1-2-0ae4ee5a2f9d@collabora.com>
 MIME-Version: 1.0
@@ -64,8 +75,8 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20260304-add-airoha-an8801-support-v1-2-0ae4ee5a2f9d@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_065958_521881_DBFB6DD7 
-X-CRM114-Status: GOOD (  22.68  )
+X-CRM114-CacheID: sfid-20260304_083235_372388_615CB3C8 
+X-CRM114-Status: GOOD (  16.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,30 +91,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> +static int an8801r_did_interrupt(struct phy_device *phydev)
-> +{
-> +	u32 irq_en, irq_status;
-> +	int ret;
-> +
-> +	ret = air_buckpbus_reg_read(phydev, AN8801_BPBUS_REG_WAKE_IRQ_EN,
-> +				    &irq_en);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = air_buckpbus_reg_read(phydev, AN8801_BPBUS_REG_WAKE_IRQ_STS,
-> +				    &irq_status);
-> +	if (ret)
-> +		return ret;
-> +
-> +	if (irq_status & AN8801_IRQ_WAKE_MAGICPKT)
-> +		return 0;
-
-With a name like an8801r_did_interrupt() you would expect the return
-value to be some value of True, if there was an interrupt. I would
-suggest either a different name, or return 1. Maybe also add a
-kerneldoc header indicating the return values, since it is probably
-not going to be standard.
-
+On Wed, Mar 04, 2026 at 10:35:29AM +0100, Louis-Alexis Eyraud wrote:
 > +static void an8801r_get_wol(struct phy_device *phydev,
 > +			    struct ethtool_wolinfo *wol)
 > +{
@@ -112,36 +100,19 @@ not going to be standard.
 > +	air_buckpbus_reg_read(phydev, AN8801_BPBUS_REG_WAKEUP_CTL1, &reg_val);
 > +
 > +	wol->supported = WAKE_MAGIC;
+> +
+> +	if (reg_val & AN8801_WOL_WAKE_MAGIC_EN)
+> +		wol->wolopts |= WAKE_MAGIC;
+> +	else
+> +		wol->wolopts &= ~WAKE_MAGIC;
 
-How does WoL work on this device. Only via interrupts? If so, maybe
-you should only return WAKE_MAGIC as supported if there is a valid
-interrupt?
+Please only support WoL if you know that the PHY has been wired up in
+such a way to allow it to actually wake the system. The PHY itself
+merely supporting WoL is insufficient.
 
-> +static int an8801r_rgmii_delay_config(struct phy_device *phydev)
-> +{
-> +	switch (phydev->interface) {
-> +	case PHY_INTERFACE_MODE_RGMII_TXID:
-> +		return an8801r_rgmii_txdelay(phydev, 4);
-> +	case PHY_INTERFACE_MODE_RGMII_RXID:
-> +		return an8801r_rgmii_rxdelay(phydev, 0);
-> +	case PHY_INTERFACE_MODE_RGMII_ID:
-> +		return an8801r_rgmii_txdelay(phydev, 4);
-> +		return an8801r_rgmii_rxdelay(phydev, 0);
-
-The parameters look very odd here. 4 means 2ns, but 0 also means 0ns?
-Can this API be improved?
-
-Also, PHY_INTERFACE_MODE_RGMII_TXID means 2ns delay for TX, but it
-also means 0ns delay for RX. The code appears to be missing this
-second part.
-
-
-> +	case PHY_INTERFACE_MODE_RGMII:
-
-And here you should be disabling all delays. We have seen boards where
-the strapping is wrong, the PHY boots in RGMII_ID, but RGMII is
-required, and so the driver must fully implement
-PHY_INTERFACE_MODE_RGMII disabling the delays.
+Please look at my recent change to realtek_main.c in commit
+b826bf795564 ("net: phy: realtek: fix RTL8211F wake-on-lan support")
+to see a possible way to achieve this.
 
 > +static int an8801r_config_init(struct phy_device *phydev)
 > +{
@@ -168,8 +139,40 @@ PHY_INTERFACE_MODE_RGMII disabling the delays.
 > +	if (ret)
 > +		return ret;
 
-Why? If EEE is broken, this is not sufficient to stop a user
-re-enabling it.
+Are you sure this is safe, e.g. over a suspend/resume, and doesn't
+cause the hardware vs software state to desync?
+
+> +
+> +	prev_page = phy_select_page(phydev, AIR_PHY_PAGE_EXTENDED_1);
+> +	if (prev_page < 0)
+> +		return prev_page;
+
+No, this is buggy. Please read the phy_select_page() documentation to
+find out why.
+
+> +
+> +	/* Set the PHY to perform auto-downshift after 3 auto-negotiation
+> +	 * attempts
+> +	 */
+> +	__phy_write(phydev, AN8801_EXT_REG_PHY,
+> +		    FIELD_PREP(AN8801_EXT_PHY_CTRL1, 0x1d) |
+> +		    FIELD_PREP(AN8801_EXT_PHY_DOWNSHIFT_CTL, 1) |
+> +		    AN8801_EXT_PHY_DOWNSHIFT_EN);
+> +
+> +	ret = phy_restore_page(phydev, prev_page, ret);
+> +	if (ret)
+> +		return ret;
+
+However, the bug could've been avoided by using the appropriate
+accessor:
+
+	ret = phy_write_paged(phydev, AIR_PHY_PAGE_EXTENDED_1,
+			      AN8801_EXT_REG_PHY,
+			      FIELD_PREP(AN8801_EXT_PHY_CTRL1, 0x1d) |
+			      FIELD_PREP(AN8801_EXT_PHY_DOWNSHIFT_CTL, 1) |
+			      AN8801_EXT_PHY_DOWNSHIFT_EN);
+	if (ret < 0)
+		return ret;
 
 > +static int an8801r_read_status(struct phy_device *phydev)
 > +{
@@ -181,22 +184,21 @@ re-enabling it.
 > +	ret = genphy_read_status(phydev);
 > +	if (ret)
 > +		return ret;
+> +
+> +	if (!phydev->link)
+> +		return 0;
+> +
+> +	if (prev_speed != phydev->speed) {
 
-You configure the PHY to support downshift. If it has performed a
-downshift, does it report the actual speed in the usual registers read
-by genphy_read_status(), or is it necessary to read a vendor register?
+Maybe:
 
-> +static struct phy_driver airoha_driver[] = {
-> +{
-> +	PHY_ID_MATCH_MODEL(AN8801R_PHY_ID),
-> +	.name			= "Airoha AN8801R",
-> +	.features		= PHY_GBIT_FEATURES,
+	if (phydev->link && prev_speed != phydev->speed) {
 
-Should not be needed, if the PHY enumerates its capabilities
-correctly.
+?
 
-    Andrew
+Thanks.
 
----
-pw-bot: cr
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
