@@ -4,87 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A98B7EFCE4D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 23:20:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA391EFCE53
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 23:50:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=S8/7Iq+R5X6wke7kdfyu42X+a9yz8jbqYH+qW9takpM=; b=12Ge/Kdhm+Wrl59mLJdj5zpsTE
-	N+w+8JuWS+RAFgwcIWuHUxFVo74FFuPJj0nJFtmz4wCWJ5U6cvqW6haZc2PzLcODI3FJkZjqE+Wdw
-	7icBQoXR+PyQrdUdM/99FveIhG9RRieb++zc4mZkq9c38KREVbPkhH+fuJhG3Q9uvnpRGaBDQFVou
-	4OtmhHbvAYDy2s3PqjzxQOkUiF5YitnN79Ne4aVhXOdF7BI3BDXijlA5E2+IkHrHSuwxwN+L5FxNn
-	brd1RtdBvoMkRA9MaFfYP/n7lWnteCWH4x2xN9+1RbVkd1PzCwHPWw4wCmUyEXM0hN6tSTgfHTq2s
-	qe5NJg4Q==;
+	bh=DENFRZ7KWOZocO3IIbqB68mf1LkYaLSXQWPItVkVVdk=; b=jcATkBuaVFT+r32F8EXJiqaJXi
+	UY+47d25DGqKRyW6MHMdMH/41Ur3GsP0LXkRTiCsSjKExoHwSusE5qNhKsiNaAqKoYDSPIIU0wJxG
+	ZdOO+CQoW5TkkdAaF4o8ak9C1DprjTtFGih8Mk9ocAGz/BFLZEpJx/n0EpcN4MMrIUH71U8DhYwTD
+	zcb2SyvUUgWCg8sigffwqaTssh49By5hNc23/V/v+0qRQGiA22LAoxKk5SjoJ9wvju+iVvC9zGQ6s
+	JoCbtzHUXwk0ZzlMtE89FbEGpPm/1ZS91z9q8HBQ/QFnpl9z9TAt5mlclCY6Qj8TVaPW4WehsI5xr
+	gjmFzfMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxvW8-00000000ckB-3oHf;
-	Wed, 04 Mar 2026 23:20:36 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1vxvzJ-00000000eAc-2sSA;
+	Wed, 04 Mar 2026 23:50:45 +0000
+Received: from mail-oo1-f51.google.com ([209.85.161.51])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxvW6-00000000cjS-2CiU
+	id 1vxvzD-00000000eAF-1lOA
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Mar 2026 23:20:35 +0000
-Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-8273e0fb87aso4174823b3a.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Mar 2026 15:20:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1772666433; x=1773271233; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=S8/7Iq+R5X6wke7kdfyu42X+a9yz8jbqYH+qW9takpM=;
-        b=FjWG0ndLM2cixSo9LkkUdtdgVslSwTjLVe0uZpVq1TjQq8DMldlCMTeD2XsK6v24XH
-         RZRMBpZb45bXTA2cgPFCt76ItLDXtW2kuCtK14u+mXDo62+lqJONSn/YnueqlPfpznFm
-         ZHdtsqAZqgqW3qvfd4LclIO5xg4W4nIebmcOCQ4LbDHP/mNbkm3NNJoXIhvd6cPHlZ0g
-         KH4hKvpB1VHv9xER3zs4uVWnWauJGFhwSnmNq+/XzWB5550Zm8aZtH0RX8Ker4/DNCTb
-         A4ID1TcJd5Zt8X4ImdqdpAr2p1D+XMMrvWw0ww8uY2Lgb0LpzmWi9jJ/5txZfFT8mb50
-         4xjA==
+	Wed, 04 Mar 2026 23:50:44 +0000
+Received: by mail-oo1-f51.google.com with SMTP id 006d021491bc7-679f980a239so3496944eaf.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Mar 2026 15:50:38 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772666433; x=1773271233;
+        d=1e100.net; s=20230601; t=1772668238; x=1773273038;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=S8/7Iq+R5X6wke7kdfyu42X+a9yz8jbqYH+qW9takpM=;
-        b=fSBymAWUIeMN9UoyudMumPZ7q5RkfO+OBilT0ENkxwZfEI86JH0T3dVHJwsIazl+F/
-         DdVCEh3M/+al1YHNr7nR3bfrxKfEngjOtsttQmhGNWIKxlbVkk3oCNjVZC9TH7mfpHir
-         SYYg3RJCys5Laq/UFPHOYwlTehTBkwCbqxr59mpfo2LOP1uAr7JiH86yYAcp65YW03ud
-         z7h3PtveVAkJezT3hGCsKygS0CkeR8Y6sUyVe+bK/dh+9lWjdENQC1ZjGINvmVLKrmkv
-         1PO1nRiW6YHqj09sw7jFAj5cz/p010KiHaXABickWEiWF/MsxQHTUCvBwSHVB0pO4kz+
-         t91Q==
-X-Gm-Message-State: AOJu0YxczQEUlspjifvgKzNEZVne01DstggsDzA7eKEpfyftbvgCho44
-	uLEiHhQqx2UigI14uZKBRPxEMn5qqz9sCeUTXRBG3WN3c1vmovcPwItUUxXT9mXfakA=
-X-Gm-Gg: ATEYQzzKiFGYoRqz1NshFjYtRhiWX4rqBb7ISiipB4YBjV4c6kLNr3TiGoALXxbFB77
-	ukYpQ8wUqSGXPN+7kWaVEz49a2/+J7zR7GMt3VfYoRZ7xJWWSUjc83ca0UgQWZALDUyRr3IUvOQ
-	iNCThn6QjBkKCGT0N1N3p3wat1vSEA3Q6WOsUMdLha8rqgrNl4wl1pk6hkeKo//FS8RBKBanMXs
-	MSDz4r7eYWnfnOD2gEtxrcnjGbCZJPhbt53+UkmPa1Ngm7+JHsibJaFFRfjH+KJ5AIPDEvwu5kW
-	hEXObmzXc8roXtKS1yH4VrZdZgQTNUwSLBOjh79HlAeXWyjHC8bMiVwvHXRaWp28cFAoiMI26DW
-	dBQ63BFXa/urEhLDcN7XD7FBmTt8rIJ+o23T0lCpKS1s+m/RyxaJCaP13qDylXzxsvt0Zruwd5L
-	kokLqilgh95szhuQQ+UCXuagk/Dytb5SHR9xeSY02D/YNke+HkG+VWRQ==
-X-Received: by 2002:a05:6a00:1c98:b0:827:2eff:a29e with SMTP id d2e1a72fcca58-82972c655e8mr3140323b3a.34.1772666433049;
-        Wed, 04 Mar 2026 15:20:33 -0800 (PST)
-Received: from ryzen ([2601:644:8000:56f5::8bd])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-82739d544ffsm19730769b3a.12.2026.03.04.15.20.30
+        bh=DENFRZ7KWOZocO3IIbqB68mf1LkYaLSXQWPItVkVVdk=;
+        b=DqXd3TacVmWh72UMzuJNc6JBJcrYlKZ6ZIvG+zbLwu85/2Dn1CtfNgm9uJm9f81pkQ
+         50Rlk9oXPCx2Nx/NEduKk3R0W2mJyehfOmsu8plPBzQmYIpZ8UKbeMIMVdf3pYQ+xAPy
+         57Az/JTvJNKhBmM2+euffAVod74ZbSj/uK/whs8a212r2KsLJjevHabd1YDoewkJSOo0
+         XIIndlyTBTGghZDfB3mNpZ04gcb5mValcr9l3niqoTkTUPBzm59woSgAfdSrbBEX920e
+         1NKHhBK4hBHYs0EurevS/l0Q7YDxu9h7Ol6gtW79mGwm29Lwp1DahaiGL8Al0PrJuBEg
+         Dupw==
+X-Forwarded-Encrypted: i=1; AJvYcCVVVGjg35BOoLI3JilLsjbF6vqd74t9SWLqrq4hqr/V95aFPTKXIiNxvbBDb9OG/70r7UZGqMS8yXZLj54U9w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy7uOUL5cEHSnUbYZiGAvDd5RqUALPfQlMZEi64mAUEP45RWjWy
+	GR/9s5U6pACt16ZKP1v2+xPOD9LRJG4fjWcUY6RBLIGYvywtExxs3Ak7
+X-Gm-Gg: ATEYQzwTae2r8zrDJywN17E0DitYVcZs9WPGyX1ujPoI92fFNo7PbOYtsULG41upfmu
+	L3X2ZSfkf0+buTgU7T6WQS3epVRAykNQ2COSflMqKXMns6nd4SuSDuXXSQ5N8AXQHaH2lQs4gGg
+	X2a8sj9oMGEHNcFrwQ2IF1P44//N18sxIT0nGTftQ1/CdLcoGKzGTU+YeLiUeg7CdTnAARk6jfm
+	XMKxfJ3hDBvDjeRnttyN43lpjqdEa72dtpxWG1H91aeZ6waV0PRNbsyLjuWystCefPbnHmS1yZf
+	H4z9cGy/7Bsc5h3Rqvxfd25ZHLPlN6DOdWCw5K7dNEA0QMTqn6L9vjifLdhsE8VLijm0dhtOBzJ
+	qVHHGVjhQagx1qDNcaKyV6+K9utYNss47BcVeI1tbiFfmWQUyVAY1sL6ArhV6yIkidDlKK1wjcI
+	7quRyy+DBQ9cRm63fHJF/6ZJWOG+9CIysO2TcxCf+3BCbe8lU=
+X-Received: by 2002:a05:6820:4ccb:b0:678:cf78:1ea5 with SMTP id 006d021491bc7-67b1e90212amr2283431eaf.67.1772668237927;
+        Wed, 04 Mar 2026 15:50:37 -0800 (PST)
+Received: from sean-HP-EliteBook-830-G6.lan ([207.191.35.252])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-679f2bfee3csm14410687eaf.7.2026.03.04.15.50.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Mar 2026 15:20:31 -0800 (PST)
-From: Rosen Penev <rosenp@gmail.com>
-To: linux-mediatek@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Kees Cook <kees@kernel.org>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-hardening@vger.kernel.org (open list:KERNEL HARDENING (not covered by other areas):Keyword:\b__counted_by(_le|_be)?\b)
-Subject: [PATCH] soc: mediatek: mtk-dvfsrc: use flex array
-Date: Wed,  4 Mar 2026 15:20:14 -0800
-Message-ID: <20260304232014.164408-1-rosenp@gmail.com>
-X-Mailer: git-send-email 2.53.0
+        Wed, 04 Mar 2026 15:50:36 -0800 (PST)
+From: Sean Wang <sean.wang@kernel.org>
+To: nbd@nbd.name,
+	lorenzo.bianconi@redhat.com
+Cc: linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	yu-ching.liu@mediatek.com,
+	yuchi.wang@mediatek.com,
+	jenhao.yang@mediatek.com,
+	posh.sun@mediatek.com,
+	Sean Wang <sean.wang@mediatek.com>
+Subject: [PATCH 1/7] wifi: mt76: mt792x: advertise multicast management frame registration support
+Date: Wed,  4 Mar 2026 17:50:14 -0600
+Message-ID: <20260304235020.40451-1-sean.wang@kernel.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_152034_559121_3D816F81 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20260304_155039_460879_560BCABA 
+X-CRM114-Status: UNSURE (   7.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,68 +91,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Simplifies allocation from kzalloc + kcaloc to one allocation.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Allows extra runtime analysis with __counted_by.
+Advertise NL80211_EXT_FEATURE_MULTICAST_REGISTRATIONS so userspace can
+register to receive multicast management/action frames.
 
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
+This capability is required for NAN discovery and related operations.
+
+Co-developed-by: Stella Liu <yu-ching.liu@mediatek.com>
+Signed-off-by: Stella Liu <yu-ching.liu@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-dvfsrc.c | 18 ++++++------------
- 1 file changed, 6 insertions(+), 12 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt792x_core.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/soc/mediatek/mtk-dvfsrc.c b/drivers/soc/mediatek/mtk-dvfsrc.c
-index 548a28f50242..48b1fcf3e101 100644
---- a/drivers/soc/mediatek/mtk-dvfsrc.c
-+++ b/drivers/soc/mediatek/mtk-dvfsrc.c
-@@ -71,8 +71,8 @@ struct dvfsrc_opp {
- };
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+index 152cfcca2f90..f12cbfb35f9b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+@@ -678,6 +678,7 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
+ 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_BEACON_RATE_HE);
+ 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_ACK_SIGNAL_SUPPORT);
+ 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_CAN_REPLACE_PTK0);
++	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_MULTICAST_REGISTRATIONS);
  
- struct dvfsrc_opp_desc {
--	const struct dvfsrc_opp *opps;
- 	u32 num_opp;
-+	struct dvfsrc_opp opps[] __counted_by(num_opp);
- };
- 
- struct dvfsrc_soc_data;
-@@ -489,7 +489,6 @@ static u32 dvfsrc_get_opp_gear(struct mtk_dvfsrc *dvfsrc, u8 level)
- 
- static int dvfsrc_get_hw_opps_v4(struct mtk_dvfsrc *dvfsrc)
- {
--	struct dvfsrc_opp *dvfsrc_opps;
- 	struct dvfsrc_opp_desc *desc;
- 	u32 num_opps, gear_info;
- 	u8 num_vcore, num_dram;
-@@ -520,24 +519,19 @@ static int dvfsrc_get_hw_opps_v4(struct mtk_dvfsrc *dvfsrc)
- 		 num_opps, num_vcore, num_dram, num_emi);
- 
- 	/* Allocate everything now as anything else after that cannot fail */
--	desc = devm_kzalloc(dvfsrc->dev, sizeof(*desc), GFP_KERNEL);
-+	desc = devm_kzalloc(dvfsrc->dev, struct_size(desc, opps, num_ops + 1), GFP_KERNEL);
- 	if (!desc)
- 		return -ENOMEM;
- 
--	dvfsrc_opps = devm_kcalloc(dvfsrc->dev, num_opps + 1,
--				   sizeof(*dvfsrc_opps), GFP_KERNEL);
--	if (!dvfsrc_opps)
--		return -ENOMEM;
-+	desc->num_opp = num_opps + 1;
- 
- 	/* Read the OPP table gear indices */
- 	for (i = 0; i <= num_opps; i++) {
- 		gear_info = dvfsrc_get_opp_gear(dvfsrc, num_opps - i);
--		dvfsrc_opps[i].vcore_opp = FIELD_GET(DVFSRC_V4_GEAR_INFO_VCORE, gear_info);
--		dvfsrc_opps[i].dram_opp = FIELD_GET(DVFSRC_V4_GEAR_INFO_DRAM, gear_info);
--		dvfsrc_opps[i].emi_opp = FIELD_GET(DVFSRC_V4_GEAR_INFO_EMI, gear_info);
-+		desc->opps[i].vcore_opp = FIELD_GET(DVFSRC_V4_GEAR_INFO_VCORE, gear_info);
-+		desc->opps[i].dram_opp = FIELD_GET(DVFSRC_V4_GEAR_INFO_DRAM, gear_info);
-+		desc->opps[i].emi_opp = FIELD_GET(DVFSRC_V4_GEAR_INFO_EMI, gear_info);
- 	};
--	desc->num_opp = num_opps + 1;
--	desc->opps = dvfsrc_opps;
- 
- 	/* Assign to main structure now that everything is done! */
- 	dvfsrc->curr_opps = desc;
+ 	ieee80211_hw_set(hw, SINGLE_SCAN_ON_ALL_BANDS);
+ 	ieee80211_hw_set(hw, HAS_RATE_CONTROL);
 -- 
-2.53.0
+2.43.0
 
 
