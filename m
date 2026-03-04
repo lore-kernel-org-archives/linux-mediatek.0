@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E291DEFCE53
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 23:50:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56717EFCE53
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 23:51:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5Ifn8MRmL2Rzzn2OVQLCOQAsiMkzCVLXoTf/UR06PTs=; b=Ao/NYDOaC7ezvGR6YpPHbS9VXX
-	n7EcT9yuTJDmz8iqLWG/vKmVSIvKCRMTQcywKddyfMbAZwnk+RtCp9PRwM6QOOq5bC6NQWz8htPJ2
-	ehaiW79hPhp0/panSYuJw9XGSl9ZF0B25T6vY6cTxr/5lpbr+tQAsP166l13v4E0nwVlKYMwUlQTA
-	SMA9WmPB63957krsHksAu9f0KT4N99+Bz4kQ5mtgzU1LHppOBaWzg+UiWY6KqdraFRZjubVInNw2b
-	XI09q3nBVjHx8dOACXKThlS0qrn6EMPW7wLZE4u11Ai7h2cmm4GdanI2VKtD/5Z+7H/zczKKxJRxT
-	tHpNqOcw==;
+	bh=yQJt/N82hxCdQBdnW9TOeW6Hzsl+OXAfpLbBSMq+lAU=; b=3mNqtG7/ldp24AcnO2OrlunvP4
+	RPrzHgH9a1SjHpurQ6SEPZfUfsfnbHlPmEjqSxGiidVI2nF/ilR/corBLCRoNwCzM1McVWcubr1rU
+	WWrRm67y3tv726Vw3crfGq9XCmR4bxoRvBGTj4lCm23fuLLhMobVtAKCqRb3yOWslKnfcM09j4llW
+	gYIHwUedvAMXzH8S/it7hdyf5sHsgcQoeMqZylMtpAEImSKBPWHocPeR2pHroa15QHltfloTCrrV0
+	0tKh7AA3DRvx40RqsdbCUHsO8SEQW8mDzTwL2avCnV0MSVBIBL747UjsD6g0+564aviip4r9YG6Zp
+	kI/6X7wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxvzR-00000000eCc-3xRE;
-	Wed, 04 Mar 2026 23:50:53 +0000
-Received: from mail-ot1-f49.google.com ([209.85.210.49])
+	id 1vxvzZ-00000000eEr-0t2s;
+	Wed, 04 Mar 2026 23:51:01 +0000
+Received: from mail-ot1-f41.google.com ([209.85.210.41])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxvzM-00000000eAn-0XW1
+	id 1vxvzT-00000000eDG-1jil
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Mar 2026 23:50:52 +0000
-Received: by mail-ot1-f49.google.com with SMTP id 46e09a7af769-7d4c85307b2so5208764a34.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Mar 2026 15:50:47 -0800 (PST)
+	Wed, 04 Mar 2026 23:50:59 +0000
+Received: by mail-ot1-f41.google.com with SMTP id 46e09a7af769-7d1959ba05cso3779040a34.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Mar 2026 15:50:55 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772668247; x=1773273047;
+        d=1e100.net; s=20230601; t=1772668254; x=1773273054;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=5Ifn8MRmL2Rzzn2OVQLCOQAsiMkzCVLXoTf/UR06PTs=;
-        b=nw/FktagNOc+mpH3GJAM8yLTW/lutJzHASaq2hoes+JzhJPkSZ3rv44UpHIPbmlTVf
-         LBtgrm67DfzenWHGoZaao2au3EntmpIIqL2l/Qpp8D0xcBOj/of+EsEftZbWs8F/6+xp
-         zq8WnEXoOpP4UHCHYu8bRjpk/nKn6Ao+YQiqXduXUP/s0D3A2VDPe4h1iFMnUpQXj5L1
-         fBDDExR1PJqVtoXe77F1+p84iCv8SwmCoAvbKFYcfuhdOt7gvgXKnIFwrI0HJPC16ZSW
-         5vaXIk8M2bQdsVLdIGTyBs5dDm60QbxvVIru8K1rw7a6wzBOYNOug0MFxt2HGh+qg2Lr
-         HhFw==
-X-Forwarded-Encrypted: i=1; AJvYcCUF8psxPbkNP0n4HctF144EYeBIOPkbRacFThosZzzfwP5x2g2G1jDHKoqbgmyN/+l8NXSifWeOYgCvho+21Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx9nauV4d6f17Sgh5P8uIhPerL92UIVH842bO4tRfSowaZPmzBY
-	uEJ6PCIODXcIA//epDpt+vpPXF5bGWIRgP3J50BSEEwMXEz53KLXB1gb
-X-Gm-Gg: ATEYQzwjDGKgVjCrU22+U9+vpP2KkIx1Aj/28JVnhuC/OLB21p3XYkqLWU7/FWkFSHA
-	LZkR1kS31rjUTlH7E13n6pmRPphZaZJIpJSRs4e79kV72ob8ki11s2tsmz49otKRJvdZgdyPOx2
-	w9dcRqBCjRuCVLird/uJAcjY/CVL5DFJuThgMp+jJd8CsKhZ8XDAn73mJ42Uvjnlu/SCfX1izz0
-	YPP7cpx0zlJ2jGoLeNoue+zhsL0OyRd0V+FZnZ3OQuJMFwbS/AxohXv+mwuFKWWKLLyo6AJM8bL
-	zrqRHACdgzqZ5iQg1N6uRYfIx9Wzcwfx4e6/rB7d0pEHf/PsoP7dMGcqnmpU7UKPwcms1oGfBgF
-	8uzDpFFK4tn8BdGJh2SbuLhb0a57Y8JqPGi+Pqmyah5us7if6te5fPGTrzbfeZuXKL+wj2bTlob
-	eoAzECN4mn1TK53x8pwf7JJZJX5ON9WkzWg7ziRvl7l5Ymbpw=
-X-Received: by 2002:a05:6820:488b:b0:67a:2305:5e4e with SMTP id 006d021491bc7-67b176f8840mr1723687eaf.17.1772668246921;
-        Wed, 04 Mar 2026 15:50:46 -0800 (PST)
+        bh=yQJt/N82hxCdQBdnW9TOeW6Hzsl+OXAfpLbBSMq+lAU=;
+        b=odntdzKVXg3n4gxFjWnFethKS78G/MZsc7C2lDVCCCwPpa+qFEKYxsC1y0pywb4sst
+         HVDXUKz0qI6McDwabfgDyAGP5f6n/ZITpCz0/yBHrcs1Y6+cI2Ix7tG6/48e4LFM8jE/
+         wvmRUKGI3FUktBWYkiXmB3DvUCJTxT05UfJqRiEis3EM3re4bchbIq/8WPTyl+tafWZA
+         HZDWdZ8OHwpmD97W5kRwh5VjvrHN+tF14G85R9ueej6INpNBLhmorOXwE13zy3PIXp4z
+         0xkdnOKJ7A4/OUxpruVPb4PR6HtKkbiWFsUAqeoRe43b3pSiafY4ifBFejwtP+v79UaG
+         vlWA==
+X-Forwarded-Encrypted: i=1; AJvYcCUlfxNN2RUEID/0yElRJEzuiCkCX2ydS/jhDQqqCzKC692QjpvBwU3UYawZpjrhDebok8wdxweZmFzI+Jmqcg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwcJ2IpAhe3T/eMxx8PDgKKlIx09tJibSopqxtcfLHtJ6p8o7Gh
+	UNM7cwYEiyUA1TkWB1wPiqs22YYASdpP5Ju9fHjk1KfOZjicmn7z33G5
+X-Gm-Gg: ATEYQzwS76D0tnmz8s7tOn+NotCKfTJn+UC11SnFM1ydVplyjkrhQAnDzrm7vNEgNWa
+	K7mVRjeLsMsSUoh1CCftYSWQWoQoH/0sXF1pSQKYEiMd8EfhTOSYpNhc5Xf7e1nKGpJy6hR1oj8
+	K3X+WRH7s7UYYZbtAEWK6s157ohW/bXhuE2pprrFS+PLZcamd8pUoQRV51wekmQ71YMl5cHG1Bs
+	A+cqiwZGCpfrM4FuuakMibRlH1ulNWcf1vzt3318Ax7bNd9IXSGaGb/lcgB9MvllWrSalsUmNRT
+	kejkD/1wg/YLWgXaK0ErXZjQj8ItuXYZjnFzh33g35ZKPeZPbfd6+fqt2giGGHANiS7wCqIjVuY
+	F1OPi37vqVf37fVacWT0olqFlcxkaItUmcxn5dmlhr9+yb+k48msW30CwIj3UjJEOevX1FKzpIA
+	55tbMj7HSZKgZkmSxfmIfHwhj1IHCy/QqtccbAj3a0ok8TUmI=
+X-Received: by 2002:a05:6820:460d:b0:677:bd4a:8f75 with SMTP id 006d021491bc7-67b1e9033c7mr1661314eaf.61.1772668254388;
+        Wed, 04 Mar 2026 15:50:54 -0800 (PST)
 Received: from sean-HP-EliteBook-830-G6.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-679f2bfee3csm14410687eaf.7.2026.03.04.15.50.46
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-679f2bfee3csm14410687eaf.7.2026.03.04.15.50.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Mar 2026 15:50:46 -0800 (PST)
+        Wed, 04 Mar 2026 15:50:54 -0800 (PST)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
@@ -67,17 +67,17 @@ Cc: linux-wireless@vger.kernel.org,
 	jenhao.yang@mediatek.com,
 	posh.sun@mediatek.com,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 2/7] wifi: mt76: mt7925: guard against NULL chandef in BSS RLM TLV
-Date: Wed,  4 Mar 2026 17:50:15 -0600
-Message-ID: <20260304235020.40451-2-sean.wang@kernel.org>
+Subject: [PATCH 3/7] wifi: mt76: mt7925: guard HE 6 GHz capa lookup by HE iftype caps
+Date: Wed,  4 Mar 2026 17:50:16 -0600
+Message-ID: <20260304235020.40451-3-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260304235020.40451-1-sean.wang@kernel.org>
 References: <20260304235020.40451-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_155048_175482_41E0452A 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20260304_155055_456406_5FF60D0D 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,48 +94,54 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-mt7925_mcu_bss_rlm_tlv() dereferences chandef->chan without verifying
-that chandef and chandef->chan are present.
-
-While current callers normally provide a valid chandef, future call
-paths or partially configured interfaces may result in missing channel
-information and lead to a NULL pointer dereference.
-
-Add a defensive check and bail out early when channel information is
-not available. This does not change behaviour for normal operation.
+ieee80211_get_he_6ghz_capa() WARNs if the iftype has no sband iftype_data
+or lacks HE. Probe HE support first with ieee80211_get_he_iftype_cap()
+and only then query the 6 GHz capa. And initialize he_6ghz_capa/eht_cap
+to avoid uninitialized use.
 
 Co-developed-by: Stella Liu <yu-ching.liu@mediatek.com>
 Signed-off-by: Stella Liu <yu-ching.liu@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 1379bf6a26b5..e050c2795cb4 100644
+index e050c2795cb4..261ed6528808 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -2291,11 +2291,18 @@ void mt7925_mcu_bss_rlm_tlv(struct sk_buff *skb, struct mt76_phy *phy,
+@@ -2436,8 +2436,8 @@ mt7925_get_phy_mode_ext(struct mt76_phy *phy, struct ieee80211_vif *vif,
+ 			enum nl80211_band band,
+ 			struct ieee80211_link_sta *link_sta)
  {
- 	struct cfg80211_chan_def *chandef = ctx ? &ctx->def :
- 						  &link_conf->chanreq.oper;
--	int freq1 = chandef->center_freq1, freq2 = chandef->center_freq2;
--	enum nl80211_band band = chandef->chan->band;
- 	struct bss_rlm_tlv *req;
-+	enum nl80211_band band;
-+	int freq1, freq2;
- 	struct tlv *tlv;
+-	struct ieee80211_he_6ghz_capa *he_6ghz_capa;
+-	const struct ieee80211_sta_eht_cap *eht_cap;
++	struct ieee80211_he_6ghz_capa *he_6ghz_capa = NULL;
++	const struct ieee80211_sta_eht_cap *eht_cap = NULL;
+ 	__le16 capa = 0;
+ 	u8 mode = 0;
  
-+	if (WARN_ON_ONCE(!chandef || !chandef->chan))
-+		return;
+@@ -2445,11 +2445,18 @@ mt7925_get_phy_mode_ext(struct mt76_phy *phy, struct ieee80211_vif *vif,
+ 		he_6ghz_capa = &link_sta->he_6ghz_capa;
+ 		eht_cap = &link_sta->eht_cap;
+ 	} else {
++		const struct ieee80211_sta_he_cap *he_cap;
+ 		struct ieee80211_supported_band *sband;
+ 
+ 		sband = phy->hw->wiphy->bands[band];
+-		capa = ieee80211_get_he_6ghz_capa(sband, vif->type);
+-		he_6ghz_capa = (struct ieee80211_he_6ghz_capa *)&capa;
 +
-+	freq1 = chandef->center_freq1;
-+	freq2 = chandef->center_freq2;
-+	band = chandef->chan->band;
++		he_cap = (band == NL80211_BAND_6GHZ) ?
++			 ieee80211_get_he_iftype_cap(sband, vif->type) : NULL;
 +
- 	tlv = mt76_connac_mcu_add_tlv(skb, UNI_BSS_INFO_RLM, sizeof(*req));
- 	req = (struct bss_rlm_tlv *)tlv;
- 	req->control_channel = chandef->chan->hw_value;
++		if (he_cap) {
++			capa = ieee80211_get_he_6ghz_capa(sband, vif->type);
++			he_6ghz_capa = (struct ieee80211_he_6ghz_capa *)&capa;
++		}
+ 
+ 		eht_cap = ieee80211_get_eht_iftype_cap(sband, vif->type);
+ 	}
 -- 
 2.43.0
 
