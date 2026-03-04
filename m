@@ -4,79 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A11DEF8FFC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 16:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E667EFCE21
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 17:22:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4E81S360LZJasm+z9mMQB95l0sk0q8GKUxtXCQeVoTg=; b=GV/GOzvLUTjwLH0Uo2et81xzsH
-	tqr+2ZpN2BBfezUgiRD1lRw/JaomwKnQdtM9vUXDxEMmY0w8++auiZsTuPFk6Mm44AOXlq+FnhoRC
-	o26CxkWGVBsHJDBsIVOBOMIxps/nRdcSkAZaoehirVYy7Fw2ibk1JtnlXw/HThoRP0ngm2/S9zzvN
-	a6xBpvPHTq8S+Pksu/937+uN/DH7zqujoZOhsS4EAcYnyJLqoXOKuI09N2qfWdxRV476S9V4Go862
-	PbvJRka25kbGculVFtH+NxwcRlOVPdB1IOfoM8tjFhfTFSZPvateqDTwTrx1widC8NxkHSm10MJnE
-	Pvf7KTGg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=PpAbiTcNuxWXCJJXWHyGZl3vhOYBFmA3sjapPRM9p80=; b=JlhamfksZMMCtc+tVtBzyNJtuC
+	3Ju9D/ElzzDf6+Hojw1fiT9gp+fL0agJbSbaxUOxxxxGflfnrwWqEhzdPWf8yAju+RWuBWQTorxOj
+	ELOyApII35+ntATq77QNErHR9p4ngFHLy/8SxdjGnD5I9GUA7wvWf6Vbcn7JuqkfkoVIPgUjcSO1B
+	j/QYPm6b3Zr42iE7jH7ZHvokNxIDv3hsCrr6565y7VDsYB2G+tBPGa7AxC9pabqqQX+KTfedulMMd
+	iTWfvR/1gkMqdeyHJl9ex3HdxNSFNdGUfhO6Wb6x2tR6Wq3tRPyBwcMGVIV5qxhqlUkgC4f/ri2SZ
+	jEzXBB/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxp9K-000000005Eg-3gjJ;
-	Wed, 04 Mar 2026 16:32:38 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vxpvK-00000000AcP-2ma9;
+	Wed, 04 Mar 2026 17:22:14 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxp9H-000000005De-1N6P;
-	Wed, 04 Mar 2026 16:32:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=4E81S360LZJasm+z9mMQB95l0sk0q8GKUxtXCQeVoTg=; b=kcAhc82XV2zj4ATHfuIl5oAz9H
-	UPBtKS/AafU12aOJQMXH35D//2gq8JYzL3mNfaqnaTYYFO/5+sGwgybnjea9DTJQYbf+gkQ3PiJGQ
-	7+8gKBfoPFnKyJv2KXp9d+gkA8/THuduL5z8Ch4B78IMQEdnoendq2zWEMG0HxbXGE4BqzmSgYvek
-	er0OB5Y6bfjxP41aJPnZGKoLtRTGqVBuAc+GMh4Hg8Iq90oKKMh0tOjYJjcjeRs1mvzdehedLVz79
-	y3Y1uJH9Bx9MpiWee51iTuYKzuH2hoH9A5ngD4rBH1UnS8Azh0X3NgxnuGWkaKnnhZON21RDILiRb
-	s4+hQCSw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56966)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1vxp8w-000000006lU-3Xbg;
-	Wed, 04 Mar 2026 16:32:14 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1vxp8s-0000000082X-3150;
-	Wed, 04 Mar 2026 16:32:10 +0000
-Date: Wed, 4 Mar 2026 16:32:10 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	id 1vxpvH-00000000Abg-1Qq5;
+	Wed, 04 Mar 2026 17:22:12 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 303B840C03;
+	Wed,  4 Mar 2026 17:22:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58AC7C4CEF7;
+	Wed,  4 Mar 2026 17:22:02 +0000 (UTC)
+From: Geert Uytterhoeven <geert+renesas@glider.be>
+To: Marc Zyngier <maz@kernel.org>,
+	Thomas Gleixner <tglx@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Antoine Tenart <atenart@kernel.org>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
+	Daniel Palmer <daniel@thingy.jp>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>, kevin-kw.huang@airoha.com,
-	macpaul.lin@mediatek.com, matthias.bgg@gmail.com,
-	kernel@collabora.com, netdev@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net-next 2/2] net: phy: Introduce Airoha AN8801/R Gigabit
- Ethernet PHY driver
-Message-ID: <aaheilkwpQ90xMmR@shell.armlinux.org.uk>
-References: <20260304-add-airoha-an8801-support-v1-0-0ae4ee5a2f9d@collabora.com>
- <20260304-add-airoha-an8801-support-v1-2-0ae4ee5a2f9d@collabora.com>
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Nishanth Menon <nm@ti.com>,
+	Tero Kristo <kristo@kernel.org>,
+	Santosh Shilimkar <ssantosh@kernel.org>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-rpi-kernel@lists.infradead.org,
+	imx@lists.linux.dev,
+	linux-amlogic@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>
+Subject: [PATCH 0/4] irqchip/gic: Use GIC_* DT binding definitions
+Date: Wed,  4 Mar 2026 18:21:55 +0100
+Message-ID: <cover.1772644406.git.geert+renesas@glider.be>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260304-add-airoha-an8801-support-v1-2-0ae4ee5a2f9d@collabora.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_083235_372388_615CB3C8 
-X-CRM114-Status: GOOD (  16.97  )
+X-CRM114-CacheID: sfid-20260304_092211_417432_13FA9EF5 
+X-CRM114-Status: GOOD (  20.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,114 +93,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 04, 2026 at 10:35:29AM +0100, Louis-Alexis Eyraud wrote:
-> +static void an8801r_get_wol(struct phy_device *phydev,
-> +			    struct ethtool_wolinfo *wol)
-> +{
-> +	u32 reg_val;
-> +
-> +	air_buckpbus_reg_read(phydev, AN8801_BPBUS_REG_WAKEUP_CTL1, &reg_val);
-> +
-> +	wol->supported = WAKE_MAGIC;
-> +
-> +	if (reg_val & AN8801_WOL_WAKE_MAGIC_EN)
-> +		wol->wolopts |= WAKE_MAGIC;
-> +	else
-> +		wol->wolopts &= ~WAKE_MAGIC;
+	Hi all,
 
-Please only support WoL if you know that the PHY has been wired up in
-such a way to allow it to actually wake the system. The PHY itself
-merely supporting WoL is insufficient.
+There are still places in GIC DT bindings and GIC-related drivers where
+magic GIC and interrupt numbers are used, instead of symbolic
+definitions.  This patch series tries to improve upon that.
 
-Please look at my recent change to realtek_main.c in commit
-b826bf795564 ("net: phy: realtek: fix RTL8211F wake-on-lan support")
-to see a possible way to achieve this.
+This series has been tested on a GICv4 system.
+The last patch causes no change in generated code.
 
-> +static int an8801r_config_init(struct phy_device *phydev)
-> +{
-> +	u8 led_default_function[AN8801R_NUM_LEDS] = { 0 };
-> +	int prev_page, ret;
-> +
-> +	ret = an8801r_of_init_leds(phydev, led_default_function);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Disable Low Power Mode (LPM) */
-> +	ret = phy_write_mmd(phydev, MDIO_MMD_VEND2, AN8801_REG_PHY_INTERNAL0,
-> +			    FIELD_PREP(AN8801_PHY_INTFUNC_MASK, 0x1e));
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = phy_write_mmd(phydev, MDIO_MMD_VEND2, AN8801_REG_PHY_INTERNAL1,
-> +			    FIELD_PREP(AN8801_PHY_INTFUNC_MASK, 0x2));
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Disable EEE by default */
-> +	ret = phy_write_mmd(phydev, MDIO_MMD_AN, MDIO_AN_EEE_ADV, 0);
-> +	if (ret)
-> +		return ret;
+Noe that the first patch has a contextual conflict with "[PATCH]
+irqchip/gic-v3: Print a warning for out-of-range interrupt numbers"[1].
 
-Are you sure this is safe, e.g. over a suspend/resume, and doesn't
-cause the hardware vs software state to desync?
+Thanks for your comments!
 
-> +
-> +	prev_page = phy_select_page(phydev, AIR_PHY_PAGE_EXTENDED_1);
-> +	if (prev_page < 0)
-> +		return prev_page;
+[1] https://lore.kernel.org/62b849967d71d73e028fb65efee717986ef847e6.1772641758.git.geert+renesas@glider.be
 
-No, this is buggy. Please read the phy_select_page() documentation to
-find out why.
+Geert Uytterhoeven (4):
+  dt-bindings: interrupt-controller: arm,gic: Document symbolic
+    definitions
+  genirq: Document interaction between <linux/irq.h> and DT binding defs
+  irqchip/gic: Use GIC_* DT binding definitions
+  iirqchip/gic children: Use GIC_* DT binding definitions
 
-> +
-> +	/* Set the PHY to perform auto-downshift after 3 auto-negotiation
-> +	 * attempts
-> +	 */
-> +	__phy_write(phydev, AN8801_EXT_REG_PHY,
-> +		    FIELD_PREP(AN8801_EXT_PHY_CTRL1, 0x1d) |
-> +		    FIELD_PREP(AN8801_EXT_PHY_DOWNSHIFT_CTL, 1) |
-> +		    AN8801_EXT_PHY_DOWNSHIFT_EN);
-> +
-> +	ret = phy_restore_page(phydev, prev_page, ret);
-> +	if (ret)
-> +		return ret;
-
-However, the bug could've been avoided by using the appropriate
-accessor:
-
-	ret = phy_write_paged(phydev, AIR_PHY_PAGE_EXTENDED_1,
-			      AN8801_EXT_REG_PHY,
-			      FIELD_PREP(AN8801_EXT_PHY_CTRL1, 0x1d) |
-			      FIELD_PREP(AN8801_EXT_PHY_DOWNSHIFT_CTL, 1) |
-			      AN8801_EXT_PHY_DOWNSHIFT_EN);
-	if (ret < 0)
-		return ret;
-
-> +static int an8801r_read_status(struct phy_device *phydev)
-> +{
-> +	int prev_speed, ret;
-> +	u32 val;
-> +
-> +	prev_speed = phydev->speed;
-> +
-> +	ret = genphy_read_status(phydev);
-> +	if (ret)
-> +		return ret;
-> +
-> +	if (!phydev->link)
-> +		return 0;
-> +
-> +	if (prev_speed != phydev->speed) {
-
-Maybe:
-
-	if (phydev->link && prev_speed != phydev->speed) {
-
-?
-
-Thanks.
+ .../bindings/interrupt-controller/arm,gic-v3.yaml  | 12 +++++++++---
+ .../interrupt-controller/arm,gic-v5-iwb.yaml       |  2 ++
+ .../bindings/interrupt-controller/arm,gic-v5.yaml  |  2 ++
+ .../bindings/interrupt-controller/arm,gic.yaml     | 11 +++++++++--
+ drivers/irqchip/irq-alpine-msi.c                   |  4 +++-
+ drivers/irqchip/irq-bcm2712-mip.c                  |  4 +++-
+ drivers/irqchip/irq-crossbar.c                     |  8 +++++---
+ drivers/irqchip/irq-gic-v2m.c                      |  4 +++-
+ drivers/irqchip/irq-gic-v3-mbi.c                   |  6 ++++--
+ drivers/irqchip/irq-gic-v3.c                       | 14 ++++++++------
+ drivers/irqchip/irq-gic.c                          |  6 ++++--
+ drivers/irqchip/irq-imx-gpcv2.c                    |  4 +++-
+ drivers/irqchip/irq-meson-gpio.c                   |  4 +++-
+ drivers/irqchip/irq-mst-intc.c                     |  6 ++++--
+ drivers/irqchip/irq-mtk-cirq.c                     |  4 +++-
+ drivers/irqchip/irq-mtk-sysirq.c                   |  6 ++++--
+ drivers/irqchip/irq-qcom-mpm.c                     |  4 +++-
+ drivers/irqchip/irq-tegra.c                        |  2 +-
+ drivers/irqchip/irq-ti-sci-inta.c                  |  4 +++-
+ drivers/irqchip/irq-ti-sci-intr.c                  |  4 +++-
+ drivers/irqchip/irq-uniphier-aidet.c               |  4 +++-
+ drivers/irqchip/qcom-pdc.c                         |  4 +++-
+ include/linux/irq.h                                |  4 ++++
+ 23 files changed, 89 insertions(+), 34 deletions(-)
 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+2.43.0
+
+Gr{oetje,eeting}s,
+
+						Geert
+
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+							    -- Linus Torvalds
 
