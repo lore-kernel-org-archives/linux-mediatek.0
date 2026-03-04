@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50172EB7ECD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 10:57:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6BFBEB7ED4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 11:34:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Q0H9URFaOl3dJ+a7zQ7u6O8wxYctps5ElYmjBdzE7uk=; b=Jy01dOjKWo2mPRZIj6TGM79BOV
-	Xd4TOZZgH8Z2qSl9f5MsvVHoGyyg1QZpPc2IJpd39RHDlNfONN6vwQXC0AnFKYHBvzka0c9LJbTLo
-	XboEZmCFIIBJ6nQePzSHbzw7GJhHMMWowwtpb9RZE6/Ulfgi1HtJaQ0l8KzWLfocV2JMFeDd2N5uo
-	zXs8TQND0pVWWwsxke6M7/FfPr9wNhGm7RpcqtjBdc2vjfWm+8Mv0RupVfavVIQsjrfmSxbOblPy8
-	PjfseA5R+unCVr2lQ1qdFNdGB42Uk81B0tbjRm7DaMpPqPWwubgm1nzY3wy98PM3pjzFIk/tqAHEM
-	nejAYAUw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hLONteymYF3A1QUrNDVoPVPwVgsPF0G8apSYLaWLt0Q=; b=AhkifdePcwBiosmyuqBV8QUh72
+	l49xjbPAbzy7ZyMegLAK9+rWVYxm4v+MmfXJRvNFlnAjzasl0MAzARHRL2IwRSIlbMvQUKoCgSamb
+	XbxYOJ6VMCSu8dfkt5Ro257YQZzf4+4jpnQs9CIdNc848s12ZF7T4jccTj4jLrUpXHu0qxMxsKNq0
+	mnCkxNRvRapcKEqx0M3UdEzpe6qPUW+uoDdL7CdriU9Ej7rnC0mK/86C5RrjSwZuTFySZSWbm4bYI
+	rsu4t1t7CaSE9/eP4paEo1oJM6YW3wQ//gwkc7oCtNRpnBjrFjrzLF0dTqTlt/JnP5lrVMJbLryfZ
+	ZlHR5Lug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxjud-0000000H1lT-08HK;
-	Wed, 04 Mar 2026 10:57:07 +0000
+	id 1vxkV8-0000000H6BW-26VV;
+	Wed, 04 Mar 2026 11:34:50 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxjua-0000000H1kk-0VDS;
-	Wed, 04 Mar 2026 10:57:05 +0000
+	id 1vxkV6-0000000H6Ar-0bk9;
+	Wed, 04 Mar 2026 11:34:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E8E1F40300;
-	Wed,  4 Mar 2026 10:57:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77182C2BCAF;
-	Wed,  4 Mar 2026 10:57:02 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8177043A94;
+	Wed,  4 Mar 2026 11:34:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04F1FC19423;
+	Wed,  4 Mar 2026 11:34:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772621822;
-	bh=z6mlT/VdSmy3w+18qyHEGpPhQGLQO3j1yCyXX/Y2eZ8=;
-	h=From:Date:Subject:To:Cc:From;
-	b=k8s2eZLuB8Bi/WwIKoUVlSSbxaGR1HjVmKVaf8cSv+gYS8hub+ZckPZyRRuLl4yeU
-	 987rkykVdsoLKX3D4mF/YBvQJ/Xg4WIAWrMrIgdLsufvrTkIPM8XV8xHKD5OhLLwfd
-	 xqrQDuNH1RdpYcK9bDRkg6xK0MFaVwJ4j77UepEhEyx7TgJQn1WTKnKIrt3KRC5pdg
-	 UkOUikktLorJAt2mwfohWGMT7jrG6Or2/dWdNEHE/6LLOgpbK3R6QAuVPpQ7ogEhY6
-	 ebsFD8EU8RjJOib2TsNg/Jc9XWWnleTSWCq9a82M8QqNgeGAvY129ftm8305r3aqrM
-	 ua7rn5x00/vxw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 04 Mar 2026 11:56:47 +0100
-Subject: [PATCH net-next] net: airoha: Rely __field_prep for non-constant
- masks
+	s=k20201202; t=1772624087;
+	bh=8ynUVUDyth5bSt/By20k6bJWU9I97gy1nrt2iENQfHY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=P8pZhTA6EhprRj40CnGqbIRNhfj1qcvYxaVvXz9neh16grGyd57KyQXsPDmzkzyzd
+	 pyo4tgOInkzbL1RPptLdgqPHLZ9pFvN2R/rO4nQy0pivE3AGYgBC5A7UST7SRpGAmO
+	 auQa8sQp/G8i0Wd6U9qmRYUJyI697qHud/eii+OZ4YG+RthlAqAP3V2I+FCJttXueO
+	 c346ig/LwSV5U81xG8gs34KXaYaPW4/HeaWYtlYqYi4hajinmEBduJjQCosAgX5jmx
+	 dgTgYGycoZ7lEzPR84ocX84KLvrUVxYrCMa2+eE1u8vTE0CTkHpgLuf4/Il2MZw/Dv
+	 rdtWvNpCZLndQ==
+Date: Wed, 4 Mar 2026 12:34:45 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Olivia Mackall <olivia@selenic.com>, 
+	Herbert Xu <herbert@gondor.apana.org.au>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@mediatek.com>, linux-crypto@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: rng: mtk-rng: add SMC-based TRNG
+ variants
+Message-ID: <20260304-defiant-echidna-of-examination-b1e798@quoll>
+References: <04622e0bc917aed4145a9a3b50b61f343fc89312.1772585683.git.daniel@makrotopia.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260304-airoha-__field_prep-v1-1-b185facc4e2f@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MSQqAMAwAvyI5G+jiAn5FpJQaNSBtSUEE8e8Wj
- zMw80AhYSowNQ8IXVw4xQq6bSAcPu6EvFYGo8ygrOrQs6TDo3Mb07m6LJSxp74b9aiDtQFqWeX
- G93+dl/f9AMLy3DNlAAAA
-X-Change-ID: 20260304-airoha-__field_prep-5e547171c33c
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <04622e0bc917aed4145a9a3b50b61f343fc89312.1772585683.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_025704_185590_79F65EC0 
-X-CRM114-Status: UNSURE (   9.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260304_033448_210178_8514C3BA 
+X-CRM114-Status: GOOD (  13.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,52 +76,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rely on __field_prep macros for non-constant masks preparing the values
-for register updates instead of open-coding.
+On Wed, Mar 04, 2026 at 12:55:27AM +0000, Daniel Golle wrote:
+> diff --git a/Documentation/devicetree/bindings/rng/mtk-rng.yaml b/Documentation/devicetree/bindings/rng/mtk-rng.yaml
+> index 7e8dc62e5d3a6..6074758552ac3 100644
+> --- a/Documentation/devicetree/bindings/rng/mtk-rng.yaml
+> +++ b/Documentation/devicetree/bindings/rng/mtk-rng.yaml
+> @@ -11,12 +11,15 @@ maintainers:
+>  
+>  properties:
+>    $nodename:
+> -    pattern: "^rng@[0-9a-f]+$"
+> +    pattern: "^rng(@[0-9a-f]+)?$"
+>  
+>    compatible:
+>      oneOf:
+>        - enum:
+>            - mediatek,mt7623-rng
+> +          - mediatek,mt7981-rng
+> +          - mediatek,mt7987-rng
+> +          - mediatek,mt7988-rng
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Not compatible with each other?
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 3779f93b47bc13ae21d4ae088dece4712dc214e5..09acbe6695368132ddd92c3501f8711476db73f6 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1727,7 +1727,7 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- 	airoha_fe_rmw(eth,
- 		      REG_SP_DFT_CPORT(src_port >> fls(SP_CPORT_DFT_MASK)),
- 		      SP_CPORT_MASK(val),
--		      FE_PSE_PORT_CDM2 << __ffs(SP_CPORT_MASK(val)));
-+		      __field_prep(SP_CPORT_MASK(val), FE_PSE_PORT_CDM2));
- 
- 	if (port->id != AIROHA_GDM3_IDX && airoha_is_7581(eth))
- 		airoha_fe_rmw(eth, REG_SRC_PORT_FC_MAP6,
-@@ -1781,7 +1781,7 @@ static int airoha_dev_init(struct net_device *dev)
- 	ppe_id = pse_port == FE_PSE_PORT_PPE2 ? 1 : 0;
- 	airoha_fe_rmw(eth, REG_PPE_DFT_CPORT0(ppe_id),
- 		      DFT_CPORT_MASK(port->id),
--		      fe_cpu_port << __ffs(DFT_CPORT_MASK(port->id)));
-+		      __field_prep(DFT_CPORT_MASK(port->id), fe_cpu_port));
- 
- 	return 0;
- }
-@@ -2138,7 +2138,7 @@ static int airoha_qdma_set_chan_tx_sched(struct airoha_gdm_port *port,
- 
- 	airoha_qdma_rmw(port->qdma, REG_CHAN_QOS_MODE(channel >> 3),
- 			CHAN_QOS_MODE_MASK(channel),
--			mode << __ffs(CHAN_QOS_MODE_MASK(channel)));
-+			__field_prep(CHAN_QOS_MODE_MASK(channel), mode));
- 
- 	return 0;
- }
+>        - items:
+>            - enum:
+>                - mediatek,mt7622-rng
+> @@ -38,9 +41,22 @@ properties:
+>  
+>  required:
+>    - compatible
+> -  - reg
+> -  - clocks
+> -  - clock-names
+> +
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          not:
 
----
-base-commit: 4ad96a7c9e2cebbbdc68369438a736a133539f1d
-change-id: 20260304-airoha-__field_prep-5e547171c33c
+Use rather positive list, so drop "not:" and use cntains for only one
+compatible - mediatek,mt7623-rng.
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+> +            contains:
+> +              enum:
+> +                - mediatek,mt7981-rng
+> +                - mediatek,mt7987-rng
+> +                - mediatek,mt7988-rng
+> +    then:
+> +      required:
+> +        - reg
+> +        - clocks
+> +        - clock-names
+>  
+>  additionalProperties: false
+>  
+> @@ -53,3 +69,7 @@ examples:
+>              clocks = <&infracfg CLK_INFRA_TRNG>;
+>              clock-names = "rng";
+>      };
+> +  - |
+> +    rng {
+> +            compatible = "mediatek,mt7981-rng";
 
+Use four spaces for indentation.
+
+> +    };
+> -- 
+> 2.53.0
 
