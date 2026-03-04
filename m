@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 861C0EB7EAC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 08:29:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09B99EB7EAA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Mar 2026 08:39:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mKBM8UKfMDjsns8MQgN/S+WMhUlQzwDOI+d9b6seXj0=; b=hUC/VIyrv8SoY4z/BBLtZldJ0M
-	leiCAU1hnuLugx6aGiYP+UIJWtBqBLt3ifAgI/IKFqqZgMxz7Z6iZD4qCtPdP0K/LUtWJVDcVzFdL
-	eXXRwwS5CFNfBGekhpvLKstCu+ankOVDc4N8Xc7J7UYUSyqPhkbDQLFF5h6Af9qf2Tf31ac1bgKQP
-	DstO9CAoYgGP17pKeEHKHN+psUyYDL+OfzUUs4MljECZuqYLZTmN7PJRBrE/EBzOBJFIxgkziKXok
-	Z0xRsqK8r3UwrAWnmN83tNTzmfYji8ztougxofwr3aiJYr1yfVG3hPY45Qhbu8zLjHKfAHxZ/MfCz
-	rlIwHsvA==;
+	bh=NkMYwkNSiGtDPUi1WZOI6Yu1/NtIpt5k3EIXGbXTmvg=; b=HT+c7G77HMhyZRe3j2kHTvYqdt
+	w44TsHQYKpdhT981BYhbUhA524qrDQlHIWd+NVt3J4izxnLzfkLXRghgKcqiIH45etD8OQIW9mo4Q
+	4Zrc7a7Dx7AlgjQarhI3H44/ASeVIB6YCLmcuX2X6fjq6WmWNJAAAggnaotTiwXSneDrDQjoJGc3q
+	g30y+PaftbCH/CzLfpJ2iP2VEp3QT6McYPEYHY7s1FGhdZ5MD3PV5+nOU3eS2dyKfVeo401w5VunO
+	8+t2VjCryJtXRjDecVnZE3QgjcyBCk9YUGCwqDGG1SO2y+F70Q96xOOC5qNT/Fd9J1YNauSlrQ4BD
+	sSPiGy5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxhbT-0000000GkPI-0CKl;
-	Wed, 04 Mar 2026 08:29:11 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vxhlc-0000000GlJc-24I6;
+	Wed, 04 Mar 2026 08:39:40 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxhbQ-0000000GkOU-39St;
-	Wed, 04 Mar 2026 08:29:09 +0000
+	id 1vxhlY-0000000GlIo-3z5l;
+	Wed, 04 Mar 2026 08:39:38 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1EB6843E21;
-	Wed,  4 Mar 2026 08:29:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 758C3C19423;
-	Wed,  4 Mar 2026 08:29:07 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D6649417F6;
+	Wed,  4 Mar 2026 08:39:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 31FECC19425;
+	Wed,  4 Mar 2026 08:39:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772612947;
-	bh=4Ac7+YMVNcgLTiWD3JC9geCCgf05rClB8IFh32bwZDk=;
+	s=k20201202; t=1772613575;
+	bh=BW1MAMlh/nk9MxeyiUabogHzZOl5p0qUa7BasAromto=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kFXE641tTVclA+hL8OI6wWJfFCJHGWpuCPSFOTQ4OU5zgwI9haWAhiXzFbtrDXbmv
-	 iq8gDAtsjZRVJ+aLRPRrG/16cW1eZQrsktx/tyCfWce/C2Ac5Jm2Y65fXpxQIZyK9W
-	 T4f8JBOskKaPW3FXefOzjJ8JcCKvXWnUvpTEUjj1Oir16ucy/wiwK6Iex7XT4QKbd5
-	 mpDwFkbednxLhp/y1mJWOMoVYUorMDbZOO9O4we4n6svR53+1P8yomzJsG/gS1ztLF
-	 BNVuO3k3NgAx6E1G7SdZxH8lC8DO8DHckr5u3SC+IyZuPZnycmn7kzRz2ljeEg+NYO
-	 Z7Yu9WLXuTv4w==
-Date: Wed, 4 Mar 2026 09:29:05 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Simon Horman <horms@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Fix GDM2 loopback configuration
- for USB serdes
-Message-ID: <aaftUXaSD0u5ZhO7@lore-desk>
-References: <20260228-airoha-fix-loopback-for-usb-serdes-v1-1-a94be0f897da@kernel.org>
- <20260303141624.GD71509@kernel.org>
+	b=EfR5j+GgtqBCJg9fn4WlhlRXNMZoren5zEMp9IawERa7OzBlNPqY3ntehvva1btFW
+	 8xsJbUsmmWUhHnyf+jBxr2ja0Z8XZPiZal3Ylk/3mOuZJejvLg3d75YRVyKtZdprcg
+	 du8ajEQ+Ke7oW16KjYjfs9lxtrhRAWfHdC2W7FfL0ikdn7SSR3xv6tA9gxGOn+61Uc
+	 aJoEXQO1hg25LbX54rzdUD9KMQBbAsnJUoTM2OgDHwScrid+WkGTn1iv8KsLAC7UNK
+	 PXbWKWLa+44L3myxtKVDYzc3noL5tTlb/+Kj7FWnBEPU6Tksq/+2cPWi+vHz59pIZ2
+	 X/LjKrskKwZJA==
+Date: Wed, 4 Mar 2026 09:39:33 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Caleb James DeLisle <cjd@cjdns.fr>
+Cc: linux-mips@vger.kernel.org, naseefkm@gmail.com, 
+	mturquette@baylibre.com, sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, tsbogend@alpha.franken.de, ryder.lee@mediatek.com, 
+	jianjun.wang@mediatek.com, lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org, 
+	bhelgaas@google.com, vkoul@kernel.org, neil.armstrong@linaro.org, 
+	p.zabel@pengutronix.de, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	nbd@nbd.name, ansuelsmth@gmail.com, linux-clk@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 1/8] dt-bindings: clock, reset: Add econet EN751221
+ bindings
+Message-ID: <20260304-accomplished-helpful-orca-5d6b81@quoll>
+References: <20260303190948.694783-1-cjd@cjdns.fr>
+ <20260303190948.694783-2-cjd@cjdns.fr>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="F9TiRjTzjJbtqhOj"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260303141624.GD71509@kernel.org>
+In-Reply-To: <20260303190948.694783-2-cjd@cjdns.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_002908_850594_ADC78EBF 
-X-CRM114-Status: GOOD (  32.52  )
+X-CRM114-CacheID: sfid-20260304_003937_120882_4D7765A1 
+X-CRM114-Status: GOOD (  20.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,99 +80,147 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Mar 03, 2026 at 07:09:41PM +0000, Caleb James DeLisle wrote:
+> Add clock and reset bindings for EN751221 as well as
+> a "chip-scu" which is an additional regmap that is used
+> by the clock driver as well as others. This split of the
+> SCU across two register areas is the same as the Airoha
+> AN758x family.
 
---F9TiRjTzjJbtqhOj
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Please wrap commit message according to Linux coding style / submission
+process (neither too early nor over the limit):
+https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/process/submitting-patches.rst#L597
 
-> On Sat, Feb 28, 2026 at 01:20:33PM +0100, Lorenzo Bianconi wrote:
-> > Flow Control source port mapping for USB serdes needs to be configured
-> > according to the GDM port nbd parameter. This is a preliminary patch
-> > since nbd parameter is specific for the given port serdes and needs to
-> > be read from the DTS (in the current codebase is assigned statically).
-> >=20
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
->=20
-> Hi Lorenzo,
->=20
-> Is this a fix? If so, should it have a fixes tag? And be targeted at net?
-> Otherwise, perhaps drop the "Fix" from the subject.
+A nit, subject: drop second/last, redundant "bindings". The
+"dt-bindings" prefix is already stating that these are bindings.
+See also:
+https://elixir.bootlin.com/linux/v6.17-rc3/source/Documentation/devicetree/bindings/submitting-patches.rst#L18
 
-Hi Simon,
+> 
+> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+> ---
+>  .../bindings/clock/airoha,en7523-scu.yaml     | 19 ++++++-
+>  .../mips/econet,en751221-chip-scu.yaml        | 41 ++++++++++++++++
+>  MAINTAINERS                                   |  3 ++
+>  .../dt-bindings/clock/econet,en751221-scu.h   | 15 ++++++
+>  .../dt-bindings/reset/econet,en751221-scu.h   | 49 +++++++++++++++++++
+>  5 files changed, 126 insertions(+), 1 deletion(-)
+>  create mode 100644 Documentation/devicetree/bindings/mips/econet,en751221-chip-scu.yaml
+>  create mode 100644 include/dt-bindings/clock/econet,en751221-scu.h
+>  create mode 100644 include/dt-bindings/reset/econet,en751221-scu.h
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/airoha,en7523-scu.yaml b/Documentation/devicetree/bindings/clock/airoha,en7523-scu.yaml
+> index a8471367175b..e60e54273393 100644
+> --- a/Documentation/devicetree/bindings/clock/airoha,en7523-scu.yaml
+> +++ b/Documentation/devicetree/bindings/clock/airoha,en7523-scu.yaml
+> @@ -32,6 +32,7 @@ properties:
+>        - enum:
+>            - airoha,en7523-scu
+>            - airoha,en7581-scu
+> +          - econet,en751221-scu
+>  
+>    reg:
+>      items:
+> @@ -67,7 +68,10 @@ allOf:
+>    - if:
+>        properties:
+>          compatible:
+> -          const: airoha,en7581-scu
+> +          items:
 
-This is a preliminary patch in order to completely fix the loopback
-configuration for USB serdes but the point is we are not supporting
-USB serdes upstream yet (there is only OpenWrt support available at
-the moment). Do you think we should target net-next or net in this
-case?
+Drop items, it's just enum
 
->=20
-> Also, I think it would be worth explaining the situation
-> before and after this patch.
->=20
-> > ---
-> >  drivers/net/ethernet/airoha/airoha_eth.c  | 10 ++++++----
-> >  drivers/net/ethernet/airoha/airoha_regs.h |  5 +----
-> >  2 files changed, 7 insertions(+), 8 deletions(-)
-> >=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/eth=
-ernet/airoha/airoha_eth.c
-> > index 3779f93b47bc13ae21d4ae088dece4712dc214e5..37fc2b33d3af8a190a74efc=
-69ed54f163afa6412 100644
-> > --- a/drivers/net/ethernet/airoha/airoha_eth.c
-> > +++ b/drivers/net/ethernet/airoha/airoha_eth.c
-> > @@ -1729,10 +1729,12 @@ static int airhoha_set_gdm2_loopback(struct air=
-oha_gdm_port *port)
-> >  		      SP_CPORT_MASK(val),
-> >  		      FE_PSE_PORT_CDM2 << __ffs(SP_CPORT_MASK(val)));
-> > =20
-> > -	if (port->id !=3D AIROHA_GDM3_IDX && airoha_is_7581(eth))
-> > -		airoha_fe_rmw(eth, REG_SRC_PORT_FC_MAP6,
-> > -			      FC_ID_OF_SRC_PORT24_MASK,
-> > -			      FIELD_PREP(FC_ID_OF_SRC_PORT24_MASK, 2));
-> > +	if (port->id =3D=3D AIROHA_GDM4_IDX && airoha_is_7581(eth)) {
-> > +		u32 mask =3D FC_ID_OF_SRC_PORT_MASK(nbq);
->=20
-> AI generated code review flags that the commit message talks about nbd.
-> But here we have nbq.
+> +            - enum:
+> +                - airoha,en7581-scu
+> +                - econet,en751221-scu
+>      then:
+>        properties:
+>          reg:
+> @@ -98,3 +102,16 @@ examples:
+>                #reset-cells = <1>;
+>        };
+>      };
+> +
+> +  - |
+> +    soc {
+> +      #address-cells = <1>;
+> +      #size-cells = <1>;
 
-yes, my mistake. It is supposed to be nbq and not nbd.
+No need for new example, especially without any differences. You already
+have there two.
 
->=20
-> > +
-> > +		airoha_fe_rmw(eth, REG_SRC_PORT_FC_MAP6, mask,
-> > +			      AIROHA_GDM2_IDX << __ffs(mask));
->=20
-> Perhaps na=EFvely I would have used FIELD_PREP here.
-> Maybe that leads to an incorrect result. But if not,
-> is a shift used here for consistency with the code at
-> the beginning of this hunk?
+> +
+> +      scuclk2: clock-controller@1fb00000 {
+> +        compatible = "econet,en751221-scu";
+> +        reg = <0x1fb00000 0x970>;
+> +        #clock-cells = <1>;
+> +        #reset-cells = <1>;
+> +      };
+> +    };
+> diff --git a/Documentation/devicetree/bindings/mips/econet,en751221-chip-scu.yaml b/Documentation/devicetree/bindings/mips/econet,en751221-chip-scu.yaml
+> new file mode 100644
+> index 000000000000..7c7c8cf8d2a5
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mips/econet,en751221-chip-scu.yaml
+> @@ -0,0 +1,41 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mips/econet,en751221-chip-scu.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: EcoNet Chip SCU Controller for EN751221 SoC
+> +
+> +maintainers:
+> +  - Caleb James DeLisle <cjd@cjdns.fr>
+> +
+> +description:
+> +  The EcoNet chip-scu block provides a configuration interface for clock,
+> +  io-muxing and other functionalities used by multiple controllers (e.g. clock,
+> +  pinctrl, ecc) on EN751221 SoC.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: econet,en751221-chip-scu
+> +      - const: syscon
 
-ack, I think we can FIELD_PREP() now. In the past we can't use FIELD_PREP()
-with non-compile constant mask, but now it is doable.
+And it does not fit existing syscon bindings file, because ... ?
 
-Regards,
-Lorenzo
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    soc {
+> +      #address-cells = <1>;
+> +      #size-cells = <1>;
+> +      syscon@1fa20000 {
+> +        compatible = "econet,en751221-chip-scu", "syscon";
+> +        reg = <0x1fa20000 0x388>;
+> +      };
+> +    };
 
->=20
-> > +	}
-> > =20
-> >  	return 0;
-> >  }
->=20
-> ...
+...
 
---F9TiRjTzjJbtqhOj
-Content-Type: application/pgp-signature; name=signature.asc
+> +
+> +#define EN751221_MAX_CLKS	6
 
------BEGIN PGP SIGNATURE-----
+Drop, not a binding.
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaaftUQAKCRA6cBh0uS2t
-rK2AAP41fbpezZsic6pgjkdkADETszHQezTZrkrIfzqb/JPZoQEAsrucGpLcN550
-Cmok4JfK/ZxGWXhXITNH04hYiVkgNg0=
-=HuOh
------END PGP SIGNATURE-----
+> +
+> +#endif /* _DT_BINDINGS_CLOCK_ECONET_EN751221_SCU_H_ */
+> diff --git a/include/dt-bindings/reset/econet,en751221-scu.h b/include/dt-bindings/reset/econet,en751221-scu.h
+> new file mode 100644
 
---F9TiRjTzjJbtqhOj--
+Best regards,
+Krzysztof
+
 
