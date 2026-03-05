@@ -4,108 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CA76F3D319
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 15:50:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AA9FF3D338
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 17:08:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b+pXAeMXzWroKCOYvz9KbDSldPuur+STmUT37F1ZplU=; b=FwYhdhZEe7WJCIOKtRrjFBv7PS
-	XoJ5/2ZJXU3wxET0rPQRX5lXtFGPjU/E7S8xZFLnBBbUw6OnvP28Pdl7vk4cg72+boUmtT9mx7sRR
-	kuINbgoxFweqCmy3U2V3XeQZiGs9Snx0UvCw/CoAKR6I1IMXGqGX3FNoyWjSLGxqc5RflLKgcj5GV
-	5bc6sBTR8CFuilmVoTGIHvskISXMZ4U6Z2J2ngCm+Vpro3Q3LCZIrxTaVDxVNiO1rCxueRt6Hv5Jy
-	u2o+knTvis0AwXvUph0J2VK8JJ0fvDH5UT8fvVjXLZJ/IpVXlqyodGXAcpyu3+kFo77QlYuk9Czl2
-	NqdildpA==;
+	bh=bmtEzP0I0EuHpFfZp70CExB77nf4cTFGwGb65ql/OUY=; b=Jjttk4x2KJND2VvVsfWEP4kgLx
+	HvVu2IkMzj+O1SrZSfy3evjegIqWiwQ9IYz3X5BM9HCFisvM4GDhLzuWNmjTgFFyo2tUDnTP15Kod
+	/1fsxsejoCGGm4PDoNWicW9yCELQo6rFS8csG4fevfQegzP+aKhQwKlNxr1i1ZzC5iHUBUpa54q7j
+	zEleRr5DwvTwYC/UmgL1lvNQGcLqufb47/x8zXJllriZbAYjcn+wx+ahLSB84sDCSKRfVkLYk1f9r
+	ElfgsdtieiaUCMUQanHkGSCZFVq6oYug+LWdDCQ2N2HVw2LnmiMT4LY8fS0yOIluFCzcd491D70xa
+	dLT/2ykA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyAxe-000000029fT-1tvb;
-	Thu, 05 Mar 2026 15:50:02 +0000
-Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
+	id 1vyCBM-00000002FyK-0Xk3;
+	Thu, 05 Mar 2026 17:08:16 +0000
+Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyAxc-000000029eV-1YUT
+	id 1vyCBJ-00000002FxQ-3Vum
 	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Mar 2026 15:50:01 +0000
-Received: by mail-qt1-x82a.google.com with SMTP id d75a77b69052e-5069ad750b7so70261531cf.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Mar 2026 07:49:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772725799; cv=none;
+	Thu, 05 Mar 2026 17:08:14 +0000
+Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-8c6f21c2d81so781188185a.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 05 Mar 2026 09:08:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772730492; cv=none;
         d=google.com; s=arc-20240605;
-        b=e5Z0XRAV8shhfhO5VxjF1lsHtTv+RG6QwVl/qtHASNL0au3ZwK62PpDWr5hPTCfr43
-         PiHljlBBh+nc7R9pd160QYc8sxTSfeg4zzze3c4k6e9F0NuKRx40yJIO8QMS+Jf9B+Io
-         Ct6JZEuWcRB9BuJSz3izFYv0XcG0FrtBdeuMnGIvpWJtCR2QwKARvly+W6PMLoF24bIj
-         Xbkcm9jXTUii1EkCvUX+r8v0WrNn9SNyPQ/whIS0SHKFG4UbRSiKzTV+FCPrBc9af75f
-         m0HxVSdwd1PD3mGF72K5AgfaDZwLD66emXw9qxLMLq7tFQewvG1JKzZH82Kd2UhSH75E
-         aQag==
+        b=iWwFrXVth1h5fm7TZ9jrswqxbN/5YgRDusBsJtLRrPldsRHJD9K141v8IyKehP2vTa
+         kzYskFmCCwKgKowx5ba82W5v86RT06vGETANfYKbMP52otvGTdBjisF0aGQLB3Zx0J87
+         MQ/Mz665uBea/MfIQSCCRfz7LagfXpKsW/L5ckk+j5xtX9hUNOq1FRdQqdaQPcngUnGa
+         u2BeI7KiG6W23M5uWR/JbL0s/wa+tg59sdiK+ArYvs5ijpX3FNb6aHktbYW+ChUb/lB4
+         FgOmcCf/N1m8vXEORcSLmaeDyreaQ/bncTMiof30Gg9/ra23cffermgnMGzlgUk4aXwi
+         s2fw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=b+pXAeMXzWroKCOYvz9KbDSldPuur+STmUT37F1ZplU=;
-        fh=roxzo/C2WWKhb0tZlemRyENKPR5pMqOyRqWSB5gWcIo=;
-        b=Zmar78ypGerjoAabTvX0+y00Rv7/AtOaGPneX2QOATaMmY8W5ZIHpTIo/MlPavZ0ox
-         AGqE4Tywqmy8MyFSB+9VJF1nnLVxknTVDoAc2iAmzeeeGwAuILX3HFvTpLZ8T2XImJB9
-         +mFmDvsHnlp36JNSOIqhKBQp42bkvEM7tqZHCdII/dlhrS80kQn8h09MLR/gocU4gbGp
-         QNvkS8jJfKAHI0S4Cr0TrGqqlxM8tqDLPkTKiBAMYvoMhNxzlxpDGtH+aZf6+o5c/KrK
-         V8ePwMAWZQnIPMq7byhHlSbUd4Dgh8QEE/Rt19aqzdpioWOMQ0ADP0V+ymHCjLF3Wmog
-         7Flg==;
+        bh=bmtEzP0I0EuHpFfZp70CExB77nf4cTFGwGb65ql/OUY=;
+        fh=am8zDKtpnz+cDR273cNKYcpNZ0b1eVCVAeXjo0Y9iOw=;
+        b=X3s+cEmBZH2TvVWfY1CY8SDFs5onof/AqSwDt4teBvJgQvi7k/aKdZotOFW5j4K/f3
+         Y0NSUP5nqgnyTpLkpCk4/TlrwcODtRtLgSwrFdRUIQMsBZrabH9hABgF+vYWOMLcwKQk
+         I8cmUa0OIOrDrPnViC6NppAR2MvxPD8B6iyHCD8gT3rJG7RGt8cvmbJIqX9i+dess3Ue
+         OEMV8guqdvTOKwKkiKXGA2kH33Se+cHhBzScN/k4BKVzC5lEvctYX7ZG5KvLPMcrb7CO
+         bYnvcPNz15BRdG21vq6m7qZj5eVeuFN5nWBVLevrLxcium1NnYG9rcz+uT01sDy4zYBH
+         hNhw==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1772725799; x=1773330599; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1772730492; x=1773335292; darn=lists.infradead.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=b+pXAeMXzWroKCOYvz9KbDSldPuur+STmUT37F1ZplU=;
-        b=H1EKObGqU8Ac8iL6HtM1mWLw2YawKR2xpwcJ9XCB0Wjv285Rj1tZKrNWPF2pvmF6Cg
-         YE6O09eciRAzeR4gusRSKmVPquCfhlmTmrbDfLHJulbNtrkccdqSOZjxJWZA0K5lKlYz
-         gDcEvz4Q+HW8UM9N/+RUDAE3+UsO7UO4Fazdq8NO0aBCZ3tmghA6LD4dOmIWny+5O1C7
-         ptmGZOaB3wR+zahfe+WyqWN5MIjjUc29ghe6cd75JmoLSwMLilqc5JvOWs9FDEn/MCLT
-         qxj5Q67DoKHr7goiky8EKs/7IEZkq7uObmHCxp7bN7TlSjYXSFl/bHyNk0lIBkJi4f9s
-         VWkg==
+        bh=bmtEzP0I0EuHpFfZp70CExB77nf4cTFGwGb65ql/OUY=;
+        b=guFy3XHA6vzUPKACrk6DS1BK0BUWip35nOrweT+3gDd7GC+j0BX6T3U9qoQ7AdEuqw
+         rLLs9Eiae6YBExsAccZTpGxROiuW3auhBS8Ct1/5BfXPHBm353504u48ljYWZ4qsxZqf
+         IdCPoBdTTkuVybi0NAa5//BVJVPImOxl9gjTcHshRijOoJWHKhv81lwNKfqq7BC92FEd
+         b07q4rVDE8B5cggyr1FoxwqYkY2QwDLAekAbUmuHHjubjKTRYpot4XUqjFrZSCrvXwYN
+         qcC/GjR09gCbYvxKiSpxnrKcQ4J8X/nXuL1hLnRZk7AqJBE9OdLq6dzaOKq6FPbS4X7/
+         6M2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772725799; x=1773330599;
+        d=1e100.net; s=20230601; t=1772730492; x=1773335292;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=b+pXAeMXzWroKCOYvz9KbDSldPuur+STmUT37F1ZplU=;
-        b=vq1JW0AfXI6Vw5Cx7LRNLz7mBAoibOrzKUKo4S1wNB52G+92/BHemOoAnmeUNPz+6h
-         D1OYTAiURTy1zTbr5DEKuDaGHZGLPzCmSxOS7cVVMjpHyXFHgnrg1zIQRsetliTmhP2u
-         /dweboA0b6HicD1jWzAR0zTxO6W/MxpJ3/zI7DrHrLLwTudRCDyJRxizorfXbA2LQdq7
-         lyZJUKNbL0revQInetORkHRInENcM8dGWXr8LyGkx4vnPeDZ8gISBdvR3UJ/5/3Dvsl5
-         ahRdlD8Ec4Pvx2GWg0u+MlDn47DJ0mUM6td2j2FIuu0/sm8DejxOU5h5cD1V8SS24YC6
-         0KVA==
-X-Forwarded-Encrypted: i=1; AJvYcCXsVaGf6M4OiwGeNP01ncebchENmErIlw4IAWHw0K//RDZQN0OuOa075JJabnhJrib5/e+K++TClUMHc00uDQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxTzyKHNVLiRGqbJ1tc7tls2QUCepcX7RFqHk49DbGVfVxmqUVM
-	c7sz+rWWmyytsXRxkWDTp9wiRWDtfEX295+HG+h45T/UNggoT8yirUfYW7cOW/4eRYFR9vtSquF
-	cM1OmfQVY8gonvGKEuo3cskyqfmbcaog=
-X-Gm-Gg: ATEYQzxKAi/bTgjuSCK7dPY9JbGrbPhMtTZUZhHiifkKi6ih6ZNJnIO+qwEAkJpGut9
-	A3e86EJuwO1slHojD9t1uyRGcZm3sCkgK3NQB7dbgSwFUVod0UKkglhTsf+meBhDaueKt0b1NhW
-	DarOKH70mG19MpBTa0E/nSiYupepvKHZvqJXR7oVJVgyQa2kRZjB/7uu1HmLtm3nVRrOwlRbiP5
-	rnbfYpiqLUqKUFViHz/ibAI/IEyqmOYBMaSZhPCeIKrOBRw6h3xSFV4439TUcT5zYtbLG3SOXTp
-	j7KCXOFD6MMrLgNtEm4WcIYkJg==
-X-Received: by 2002:a05:622a:1484:b0:4ee:2510:198a with SMTP id
- d75a77b69052e-508db38c1a8mr76337861cf.39.1772725798828; Thu, 05 Mar 2026
- 07:49:58 -0800 (PST)
+        bh=bmtEzP0I0EuHpFfZp70CExB77nf4cTFGwGb65ql/OUY=;
+        b=b/ZMCtogg2GVYWhaSDqjSZW5v6I80cCeyAtTvB3TGENNPE8sxLdd5EtSMfrdLq5i19
+         srUsRO6MbvMpgPCNsRso1+gY2jxaL2GpBFKrRRqAH99JHChDobnI7PW5Ijo9PoPz0cNF
+         9pVUeecmzdMCq8YysfsBoxMx/yAjSdBhzMPatRqdDb7ei2kIiJiNpR5UBqCkxKg41NDP
+         SwSfger0VcMxwYTGlBmUz2FKNjEsGPR1XK4nlACQY1OSx0IpLmiOq1Z8TsrkSHallxoV
+         heCjPPt2vyKPv/GCnTA1DvutFuiADyRB+7ofABfjzDWRqS8EET54k8/LgSzXgG2lruHG
+         lPCQ==
+X-Forwarded-Encrypted: i=1; AJvYcCViJ/w8+1wt7MpMV+VzzdsEjraYZhQ4PgXMKa0m9GbbH1wyCPeyt1b7CEliqZL2TzA7I1opCp75Hq6empF22w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxgxvlLZpfqzJRy9Z9/JiAfsg8M7hayqPBNWVy2OB6TVf2FOYPF
+	OgrrOslk+VrI/Ksb6fJTxnBxIW2AqNmmTfEl/ev73fiXjjHWKK4GVAXRqc7TDUg9FHHbP7W6jST
+	XcLSEukiKqlGUkpfyOLLHdkO31pkTD6U=
+X-Gm-Gg: ATEYQzz1v7P9LSHAZ0G7SM++/1fUdewD2bAjlRKbXx/5RfZfmrdwCQgEkc3z25EoBr0
+	tHis3yLEI9dOHjgTxo+2uv1AbynZniJXP+6hpRiB/+bQCgAN83YqNKFkTlNuNKytI3/Im0NfDYH
+	9iYAQqWWO9XrbLeIOcPEgHK3ptrCBbnDaXXSGSX464T262XfCqZPYRklbDyUGvYOd0pzJ7Ptsmn
+	rEQ+uu/h5lwUBAFpRhukEJlXd2ljZJGQWKouxKRuogtrzZHEjkDqgi5hBNdk3pEcWybV3BkXYKd
+	RBHZMbj+
+X-Received: by 2002:a05:622a:514:b0:4ee:1875:42fa with SMTP id
+ d75a77b69052e-508f1cf7822mr5172761cf.1.1772730492300; Thu, 05 Mar 2026
+ 09:08:12 -0800 (PST)
 MIME-Version: 1.0
 References: <20260304192417.818211-1-akkun11.open@gmail.com>
- <20260304192417.818211-3-akkun11.open@gmail.com> <94465ca7-b3dc-4736-9d58-4024f2494e54@collabora.com>
-In-Reply-To: <94465ca7-b3dc-4736-9d58-4024f2494e54@collabora.com>
+ <20260304192417.818211-2-akkun11.open@gmail.com> <20260305-fair-jasper-barracuda-5ae1e6@quoll>
+ <9edef237-aab3-4f7f-a86d-ec8796ba87fe@kernel.org>
+In-Reply-To: <9edef237-aab3-4f7f-a86d-ec8796ba87fe@kernel.org>
 From: Akari Tsuyukusa <akkun11.open@gmail.com>
-Date: Fri, 6 Mar 2026 00:49:47 +0900
-X-Gm-Features: AaiRm521wTMvM9tiwSeKP0vcH6dUDJ_V9_ra6wgn6PHQaKXTEdU0XLC1ALsdj4A
-Message-ID: <CAKr_iV5cmE-GBp679Q-=bZi+186BvMvD41ctxnxNC3mTKEzuRw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] arm: dts: mediatek: mt6589: add basic support for
- Lenovo B8000-F
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Date: Fri, 6 Mar 2026 02:08:00 +0900
+X-Gm-Features: AaiRm50-oYM1aGbuVflEDYupYhPjbKtTxzvjoSVqdcYL0WBhL6OK5h-FDkNMe18
+Message-ID: <CAKr_iV4W+sSwOLD-CeyC-KZ4=rmWufh4jLiP7LRJHA+ifFL-Vg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: arm: mediatek: Add Lenovo YOGA Tablet 8/10
+To: Krzysztof Kozlowski <krzk@kernel.org>
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, sean.wang@mediatek.com, devicetree@vger.kernel.org, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	sean.wang@mediatek.com, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_075000_423872_0C577318 
-X-CRM114-Status: GOOD (  23.41  )
+X-CRM114-CacheID: sfid-20260305_090813_875741_E188132D 
+X-CRM114-Status: UNSURE (   8.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,85 +122,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo, thanks for the feedback.
-
-On Thu, Mar 5, 2026 at 6:46=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
-> Okay, but this is just a simple framebuffer and a UART; while it may be i=
-n some
-> way useful, there's already one device based on MT6589 that was upstreame=
-d with
-> just a framebuffer and a serial port, but then didn't receive any more su=
-pport.
+On Thu, Mar 5, 2026 at 5:27=E2=80=AFPM Krzysztof Kozlowski <krzk@kernel.org=
+> wrote:
+> >        - items:
+> >            - enum:
+> >                - fairphone,fp1
+> > +              - lenovo,b6000-f
+> > +              - lenovo,b6000-h
+> > +              - lenovo,b8000-f
+> > +              - lenovo,b8000-h
 >
-> Could you please extend your efforts a little and push at least some supp=
-ort for
-> clock controllers and power domains for the MT6589 SoC to make it at leas=
-t barely
-> useful?
+> I don't see users of few of these. Also, explain in commit msg
+> differences between 'f' and 'h'.
 
-Your point is valid. I saw similar minimal Device Trees in
-"arch/arm/boot/dts/mediatek/" . Currently, I am actively working on
-MT6589 kernel mainlining and Lenovo YOGA Tablet support, so I submitted
-this patch as initial support for this device.
+On Thu, Mar 5, 2026 at 5:35=E2=80=AFPM Krzysztof Kozlowski <krzk@kernel.org=
+> wrote:
+> I don't see the "blade" used either.
 
-I will send patches to add the following features in the near future
-(preferably within this month):
+Hi Kozlowski, thank you for your review.
 
-- Clock
-I wrote drivers and they seem to be working.
-However, some parent clocks are unknown.
+I will remove the unused compatible strings (b6000-f, b6000-h, b8000-h
+and blade) in v2. I will also add an explanation to the commit message
+that '-f' stands for Wi-Fi-only models and '-h' stands for 3G models.
 
-- Pinctrl
-I refactored it to common-v2, paris and it's working.
-A little more work is needed to add support for R0, TDSEL, RDSEL, and
-device tree binding.
-
-- PWRAP and MT6320 PMIC RTC
-PWRAP is working fine. This seems to be almost the same as MT8135.
-MT6320 PMIC has confirmed RTC operation, but it will take a little more
-time as I haven't written the regulator driver yet.
-
-Additional time is required to add the following features:
-
-- Power Domains (scpsys)
-I've written a driver, but I haven't checked that it works yet.
-And, some features are missing for full support.
-
-- eMMC/SD (MSDC)
-Likely compatible with "mtk-sd.c". I have written in Device Tree, but
-it is not working on the device. It needs debug mode.
-
-- USB
-Almost certainly compatible with "mediatek,mtk-musb" and
-"mediatek,generic-tphy-v1". The device is not recognized by the PC,
-and there are logs saying "couldn't find an available UDC".
-It may take more time.
-
-- UART DMA
-Boots without any errors, but I can't confirm its operation because
-I haven't soldered UART.
-
-- I2C
-I don't know the details, but the clock is supplied from the PMIC,
-but PMIC clock driver does not exist. Fortunately, MediaTek engineers
-implemented MT6589 compatibility in the I2C driver (but it is not added
-in the MT6589 Device Tree).
-
-- I2C devices (only in mainline)
-Touchscreen: syna,rmi4-i2c
-Accelerometer: bosch,bma255
-Magnetometer: bosch,bmm150
-Fuel Gauge: ti,bq27541
-Battery Charger: ti,bq24196
-
-- SPI
-Like I2C, there is a driver (it seems that the PMIC clock is not
-required for SPI), but  I don't know what devices are connected.
-
-I am committed to making MT6589 and the Lenovo YOGA Tablet fully
-functional in the mainline kernel. I will send these additional patches
-as soon as they are ready for review.
+Note, "blade" can be found in "ro.product.board" (build.prop).
+B8000-F: blade10_row_wifi
+B6000-H: blade8_row_3gdata
 
 Best regards,
 Akari
