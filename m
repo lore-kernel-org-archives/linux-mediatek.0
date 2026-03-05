@@ -4,57 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B948F47CC4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 20:00:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16083F47CC8
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 20:17:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xphpQByXIbnNH7X7R8HuZoZkSzH6oDGzFy5gh9MGIvs=; b=lQyqLf0FgYO67+rCxBT8QNBxWj
-	jR/DHCSakCrIh6k0YiuEA26vlf9Os3n32qBuXbvzO5WrHsnekfmdZyZjMftvUpnIM0jit3bx//akL
-	n+WZCMZbmmtowlkcbFhKXdyO+ssjJJYxVN8YPpvyqxFoRjzKff2ngmaM5RE7egibky3d4PRpNrwP+
-	O0zL+xIHzOlDYZu39BIjh5mT3Fr7bkU+8GpA1JIAnIquM2VgVxWjqA4pFBxuVQxFBmffpQ2RcdwZ5
-	2faqDlH7HHvflLwonOidlTHWtmoYfjvvG1BbZY4J6fYT72GzXKxu1bjrXY9mcrQSrub0kOCJErOaB
-	L0b4OroA==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sw90r/FOE423PHoUFHgtM8CmoJWr5R+Rqv6YZ6BvkC4=; b=UNxVsRLNw8E9wZiEkpPR51sqSs
+	ZkkKclJVfRBsI9LfwgpzKLQLXIoaRcUIOQoURgltStn09AEGhP3r6d2QaYr6E9a2apFsNdVhgkr0R
+	wDGamGyMFoNq85RjpBV2Q/a/ClEUcLu/fcZC9c5xR3CozGdaa5dkX+6pusSRdBw/5Ii2XCjOqsVx6
+	4jd4+F8291DHGeYkaNghIOQtpjON8Lv9JeuWbCFCRv+Np3JBjMghC9dn2KqfaWtuwjquP5JP4BeVD
+	jI97F4WdxG+aTWzNwKdFGCnv2tDOvGkuIBsIL5ZgB0h4ePelSGCfFV3HZdwmSrzMkcfqJj5hFAaKu
+	mIjh5RCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyEsK-00000002Upe-0fCN;
-	Thu, 05 Mar 2026 20:00:48 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vyF89-00000002WVy-1lOI;
+	Thu, 05 Mar 2026 20:17:09 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyEsH-00000002Uo0-0zHK;
-	Thu, 05 Mar 2026 20:00:46 +0000
+	id 1vyF88-00000002WVL-1CdS;
+	Thu, 05 Mar 2026 20:17:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 944E74167E;
-	Thu,  5 Mar 2026 20:00:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BC64C116C6;
-	Thu,  5 Mar 2026 20:00:41 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 0D45E600AE;
+	Thu,  5 Mar 2026 20:17:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 859B5C116C6;
+	Thu,  5 Mar 2026 20:17:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772740844;
-	bh=xphpQByXIbnNH7X7R8HuZoZkSzH6oDGzFy5gh9MGIvs=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=mVorKT1xS9QEG/N1aCEZT0UWqhAG/N/fc5r4aIwcvXKppGFK3//Nfby74ivZRJskH
-	 cVcrQ0Qt4GNIE7PJzTA03dKNcw/1ma3InemGFsYlRaxq+oDKqHD4FmXcSMFB5vZAwT
-	 U6szf6qee23EI03Guh57jKwzuttVyJmQ2vKusuBEy38luCJ2JavoFU8L0HUbCkyDKd
-	 1/9JTH4wf2So0LFfcZStuSIev9vilDjnh/rZ3C1o954kM6wKrzJUNKzACJfIR5iqJR
-	 cYn0qErx1QqStYULQvQlxI+9SJP0+A9IlkC85NokLtcyKlkBddRDGUXV4dNIrPh5st
-	 FNWQSWr9PHKHQ==
-Message-ID: <d7c83ef5-c7f7-4401-9032-5a86844b6d82@kernel.org>
-Date: Thu, 5 Mar 2026 21:00:39 +0100
+	s=k20201202; t=1772741826;
+	bh=T49Iokg4MDGYhn1yBad35qamzXQshEHGXwEOPwmI3qI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RyPvU7EQwmXTLBgsFNsqCesrW94aFdSnTPuhMfRkVQs3IPEHwhSG0VA0vvfl85p+5
+	 2KyVkoJBNT/FibDuxz1j1FlBwRRigxaagrx5IbqQFGMIJF+Uqk8Mrpb7JPgx/FfpWP
+	 IK1GMx4q1W0/ObUbB5Mr1gkM8Q5VxsmFUSnTAOHHRAZYSMlpoOUNYnSQk2Z/0GuPiE
+	 QanIU3+uSEP+51789ZlKF94SLrFObTufBiZOxeA8a9Ah7dlo4mgACYMWvAdx6nm/Xa
+	 QffmgxuKjJpzgkSixU1AOnXYislkN1A8uXMxe2dL9QGMVg9sdeBmqQqQzW1owpDHdd
+	 C9Vg4BpvhYEOA==
+Message-ID: <cf757315-06a2-4d8c-8b9d-f478b431822e@kernel.org>
+Date: Thu, 5 Mar 2026 21:16:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] dt-bindings: crypto: eip93: add clock gate and
- reset line
-To: Aleksander Jan Bajkowski <olek2@wp.pl>, ansuelsmth@gmail.com,
- herbert@gondor.apana.org.au, davem@davemloft.net, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, lorenzo@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20260305195903.59776-1-olek2@wp.pl>
+Subject: Re: [PATCH 1/9] workqueue: devres: Add device-managed allocate
+ workqueue
+To: Tejun Heo <tj@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>,
+ Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
+ Lai Jiangshan <jiangshanlai@gmail.com>,
+ Tobias Schrammm <t.schramm@manjaro.org>, Sebastian Reichel <sre@kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Dan Carpenter <dan.carpenter@linaro.org>, Lee Jones <lee@kernel.org>,
+ Dzmitry Sankouski <dsankouski@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>,
+ driver-core@lists.linux.dev, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev
+References: <20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com>
+ <20260223-workqueue-devm-v1-1-10b3a6087586@oss.qualcomm.com>
+ <aZx1UpYSNmapYBpU@slm.duckdns.org>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -100,13 +113,9 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20260305195903.59776-1-olek2@wp.pl>
+In-Reply-To: <aZx1UpYSNmapYBpU@slm.duckdns.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_120045_315934_EF41487F 
-X-CRM114-Status: UNSURE (   5.55  )
-X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,14 +130,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/03/2026 20:53, Aleksander Jan Bajkowski wrote:
-> Add the clock gate and reset line, both of which are available
-> on the Airoha AN7581. Both properties are mandatory.
+On 23/02/2026 16:42, Tejun Heo wrote:
+> Hello,
+> 
+> On Mon, Feb 23, 2026 at 08:27:29AM +0100, Krzysztof Kozlowski wrote:
+>> @@ -568,19 +588,31 @@ alloc_workqueue_lockdep_map(const char *fmt, unsigned int flags, int max_active,
+>>   */
+>>  #define alloc_ordered_workqueue(fmt, flags, args...)			\
+>>  	alloc_workqueue(fmt, WQ_UNBOUND | __WQ_ORDERED | (flags), 1, ##args)
+>> +#define devm_alloc_ordered_workqueue(dev, fmt, flags, args...)		\
+>> +	devm_alloc_workqueue(dev, fmt, WQ_UNBOUND | __WQ_ORDERED | (flags), 1, ##args)
+> 
+> Let's just add devm_alloc_workqueue() and devm_alloc_ordered_workqueue() and
+> skip the legacy wrappers.
 
-Why are mandatory? We see that from the diff, you must explain WHY you
-are doing things.
-
-Also, that's ABI break without that explanation.
+Ack, I will replace legacy calls then in the drivers.
 
 Best regards,
 Krzysztof
