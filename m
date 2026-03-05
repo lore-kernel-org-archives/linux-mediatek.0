@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A64ECEEF33E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 09:05:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D05B5EEF33A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 09:05:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O3m+ZBfQr6KmPEhxpy7eMNYP1AMMqlCKAQGv3MS7448=; b=xNCfzAtWMWKwvbq18f9OyHuVBL
-	BwS3lFhsMhRXrQLxV01BpTIHMJuMQhSeGrtHpS26NcL/FzpRh5kqVb9fmw6OYCUulJcp2EyFxjcJR
-	daDw3eV0lz583mLUu7kFDjSaIhPb+yZKiTRZnGHcQ4thB2i43sGbkp0xF3uWel14cPozo8/UKGwSs
-	NNtPdz8h5xsHwX2XCV5kmUWHYwBK4/eaGJGJUB3l5lPiPjl6dTIYugFf8tQ+r8NeT6O0f4+lVvs/d
-	eYNoLMwo9LW+3RhrRvZByvVIa7I8l5ZJKngu2C7CWK4bX42dW7P8fpLP42/Tz0pxxKLTm6PrT96VI
-	vmL3cDNQ==;
+	bh=jHYqPLXfbYQ9a7z10BK1whj4ELVOVX7cZAwF9gLqch0=; b=J6XKv1mpegzOHfStQ6HBaDwpwH
+	IKsT3j9NJai3y80hqod/JK426W47zKs3XR2yXL4t4ay+hrrXrMkhp8KKgR1fjrc8kCcLs1gC0TQw9
+	4uD/LoomS3AYkISnLR117K3F0SgKMuQ9R/GyV2DloO61ixkv0as5elMLUy5MX71PbpryXdRorSaUc
+	CbXVKwvw1rW8yYKsYbqDLPWG6c9O9oC1m+YFqDyeoo7Gywh0SCWJwuKZ5SCCyKnxytPo7GQ1OSARo
+	wQiAbBk3BBVdijh9QPK6sYZJd69HSmVtirQbgBbruHoDFnmiEo0cNxRdmlUQwlDvHUQQbHhrssLhG
+	272Xqzww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy4e7-00000001Hd3-1RiS;
-	Thu, 05 Mar 2026 09:05:27 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vy4eB-00000001Hlb-3LjH;
+	Thu, 05 Mar 2026 09:05:31 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy4e2-00000001HWf-1PE5;
-	Thu, 05 Mar 2026 09:05:22 +0000
+	id 1vy4e4-00000001HYh-33sn;
+	Thu, 05 Mar 2026 09:05:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id A740661344;
-	Thu,  5 Mar 2026 09:05:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CEED7C116C6;
-	Thu,  5 Mar 2026 09:05:20 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 39C6E43544;
+	Thu,  5 Mar 2026 09:05:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B135C116C6;
+	Thu,  5 Mar 2026 09:05:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772701521;
-	bh=sIOpPbGND5afLcivkJfIxu5waFc041nLNjD3trLHArs=;
+	s=k20201202; t=1772701524;
+	bh=Uw9orBa+IcWl61fHU9gR/gF8n8W1ZP87ZlyWedYU6o0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=SdiZzGCk0jG//olHlzTWO/kOiEJpJ7o6c9g50CKSWxebcaVcxhBh1aHCsCaaXrxn1
-	 lFbskQe6oMlYkyH2Xpg2r9gDsUBIYg5elnYFsSMaOpIKpuSNs9utcQN/T6D9sacupI
-	 lfsM9qTWlEk5B1hs8US0ZLUoy3yut6wckc0dO2Y76SZFyJ8fnvrKnAnTDIaSZX3ZO5
-	 9HaXROAQXiG5bKyWhDSjMsuNUv3WPyYiaNvGYMuR3YhyxS+Mxb7GPdvDFt7FswoJyL
-	 tYKvWcfFQVcb7YIbX74rPx1qMzyWlPWxCQ0EdY8bYEbD3outgsKh4UtYf877bSe3zD
-	 hyccnJEyKmOng==
+	b=W9n4BNeAR+a9xYl1ZZxbIMAGKMHoLvuxPzck6um0J6B+AXU8/FyuPEV/BbD3mPk/n
+	 O3bY9g4aqH2VgPx/EptPTBq66yMQV+zbIwBXjOjFOJel2Hj+CGvJO28k1Yo5jjPVUZ
+	 55i1ilXL9Bh3B8YvpQCybvBpvykTNze6meX1EHSSr/lc1p2dZ8io3vfZiulih2ciK0
+	 0uoLY7tOhD51wr/I/6KcePj5xR9QLDBjrzh4Mob+aRU+eTIAAcKkMxd6JDmCmfrh4F
+	 LsXoSWaQiED+0vli/1vhOcsrIOKeseaIvyf+yLUwYgjn8Zra34LHklr2vFlPR3ALmI
+	 VUPLb2cj06zRA==
 From: Maxime Ripard <mripard@kernel.org>
-Date: Thu, 05 Mar 2026 10:04:58 +0100
-Subject: [PATCH v3 06/14] drm/bridge: analogix: Convert to
+Date: Thu, 05 Mar 2026 10:04:59 +0100
+Subject: [PATCH v3 07/14] drm/bridge: cadence: Convert to
  drm_output_color_format
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260305-drm-rework-color-formats-v3-6-f3935f6db579@kernel.org>
+Message-Id: <20260305-drm-rework-color-formats-v3-7-f3935f6db579@kernel.org>
 References: <20260305-drm-rework-color-formats-v3-0-f3935f6db579@kernel.org>
 In-Reply-To: <20260305-drm-rework-color-formats-v3-0-f3935f6db579@kernel.org>
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
@@ -81,14 +81,17 @@ Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-sunxi@lists.linux.dev, Jani Nikula <jani.nikula@intel.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1747; i=mripard@kernel.org;
- h=from:subject:message-id; bh=sIOpPbGND5afLcivkJfIxu5waFc041nLNjD3trLHArs=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDJkr3S1vBT4IWX79y+djb19r7181f/WX3b0NyikBqbnKZ
- dc/mk3S6pjKwiDMySArpsjyRCbs9PL2xVUO9it/wMxhZQIZwsDFKQATsb7F2HDKIOitk5KmySlh
- s1OXZZckvdmyJ9ey6WHr7Mm2xjZ7t504xXK88vTbpevzIiflV+zQjGJsOKlrxCD8JU5N5+4i7Rs
- 5q7tW129bLXygy/Pj+a+ly5pkjT/+3Kn3e4LneSPbNxkP91pLAAA=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4972; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=Uw9orBa+IcWl61fHU9gR/gF8n8W1ZP87ZlyWedYU6o0=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDJkr3S1Lua4cNO/oqj1zN319rrD59z6jo7UnDMrl4hyU1
+ bYLHMrpmMrCIMzJICumyPJEJuz08vbFVQ72K3/AzGFlAhnCwMUpABM5XM9Yn7r0fMTxJ3+0Xu8Q
+ nrR+NduCpTXGXXx9Eyudb2bM3uZdxy6z7UcXx0+HPz6SB7kM90+6yNjQf2v9cjldtjQf+/K4Elm
+ 2N99TG7ayWPR7qd4J4rvGI+7IVba5yGHv/7k+TCrLY5vcjwMA
 X-Developer-Key: i=mripard@kernel.org; a=openpgp;
  fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260305_010524_853898_A330395A 
+X-CRM114-Status: GOOD (  17.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,29 +122,117 @@ or as a discriminant in which case we don't.
 Acked-by: Jani Nikula <jani.nikula@intel.com>
 Signed-off-by: Maxime Ripard <mripard@kernel.org>
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../gpu/drm/bridge/cadence/cdns-mhdp8546-core.c    | 24 +++++++++++-----------
+ .../gpu/drm/bridge/cadence/cdns-mhdp8546-core.h    |  2 +-
+ 2 files changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index b1687a4aa04739fa53f1039376da649ddcea7f41..1dd194bf49cd8f94a2b48f1f32baa262e5e5dbf9 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1221,13 +1221,13 @@ static void analogix_dp_bridge_mode_set(struct drm_bridge *bridge,
+diff --git a/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c b/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c
+index 9392c226ff5b11189a93bf40e840bc3f8b287b1f..e38d59e37a777948ddc63e3e08483362c9e3ba64 100644
+--- a/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c
++++ b/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.c
+@@ -1500,18 +1500,18 @@ static u32 cdns_mhdp_get_bpp(struct cdns_mhdp_display_fmt *fmt)
+ 
+ 	if (fmt->y_only)
+ 		return fmt->bpc;
+ 
+ 	switch (fmt->color_format) {
+-	case DRM_COLOR_FORMAT_RGB444:
+-	case DRM_COLOR_FORMAT_YCBCR444:
++	case DRM_OUTPUT_COLOR_FORMAT_RGB444:
++	case DRM_OUTPUT_COLOR_FORMAT_YCBCR444:
+ 		bpp = fmt->bpc * 3;
+ 		break;
+-	case DRM_COLOR_FORMAT_YCBCR422:
++	case DRM_OUTPUT_COLOR_FORMAT_YCBCR422:
+ 		bpp = fmt->bpc * 2;
+ 		break;
+-	case DRM_COLOR_FORMAT_YCBCR420:
++	case DRM_OUTPUT_COLOR_FORMAT_YCBCR420:
+ 		bpp = fmt->bpc * 3 / 2;
  		break;
  	default:
- 		video->color_depth = COLOR_8;
- 		break;
- 	}
--	if (display_info->color_formats & DRM_COLOR_FORMAT_YCBCR444)
-+	if (display_info->color_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444))
- 		video->color_space = COLOR_YCBCR444;
--	else if (display_info->color_formats & DRM_COLOR_FORMAT_YCBCR422)
-+	else if (display_info->color_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422))
- 		video->color_space = COLOR_YCBCR422;
- 	else
- 		video->color_space = COLOR_RGB;
+ 		bpp = fmt->bpc * 3;
+ 		WARN_ON(1);
+@@ -1710,30 +1710,30 @@ static void cdns_mhdp_configure_video(struct cdns_mhdp_device *mhdp,
  
  	/*
+ 	 * If YCBCR supported and stream not SD, use ITU709
+ 	 * Need to handle ITU version with YCBCR420 when supported
+ 	 */
+-	if ((pxlfmt == DRM_COLOR_FORMAT_YCBCR444 ||
+-	     pxlfmt == DRM_COLOR_FORMAT_YCBCR422) && mode->crtc_vdisplay >= 720)
++	if ((pxlfmt == DRM_OUTPUT_COLOR_FORMAT_YCBCR444 ||
++	     pxlfmt == DRM_OUTPUT_COLOR_FORMAT_YCBCR422) && mode->crtc_vdisplay >= 720)
+ 		misc0 = DP_YCBCR_COEFFICIENTS_ITU709;
+ 
+ 	bpp = cdns_mhdp_get_bpp(&mhdp->display_fmt);
+ 
+ 	switch (pxlfmt) {
+-	case DRM_COLOR_FORMAT_RGB444:
++	case DRM_OUTPUT_COLOR_FORMAT_RGB444:
+ 		pxl_repr = CDNS_DP_FRAMER_RGB << CDNS_DP_FRAMER_PXL_FORMAT;
+ 		misc0 |= DP_COLOR_FORMAT_RGB;
+ 		break;
+-	case DRM_COLOR_FORMAT_YCBCR444:
++	case DRM_OUTPUT_COLOR_FORMAT_YCBCR444:
+ 		pxl_repr = CDNS_DP_FRAMER_YCBCR444 << CDNS_DP_FRAMER_PXL_FORMAT;
+ 		misc0 |= DP_COLOR_FORMAT_YCbCr444 | DP_TEST_DYNAMIC_RANGE_CEA;
+ 		break;
+-	case DRM_COLOR_FORMAT_YCBCR422:
++	case DRM_OUTPUT_COLOR_FORMAT_YCBCR422:
+ 		pxl_repr = CDNS_DP_FRAMER_YCBCR422 << CDNS_DP_FRAMER_PXL_FORMAT;
+ 		misc0 |= DP_COLOR_FORMAT_YCbCr422 | DP_TEST_DYNAMIC_RANGE_CEA;
+ 		break;
+-	case DRM_COLOR_FORMAT_YCBCR420:
++	case DRM_OUTPUT_COLOR_FORMAT_YCBCR420:
+ 		pxl_repr = CDNS_DP_FRAMER_YCBCR420 << CDNS_DP_FRAMER_PXL_FORMAT;
+ 		break;
+ 	default:
+ 		pxl_repr = CDNS_DP_FRAMER_Y_ONLY << CDNS_DP_FRAMER_PXL_FORMAT;
+ 	}
+@@ -1825,11 +1825,11 @@ static void cdns_mhdp_configure_video(struct cdns_mhdp_device *mhdp,
+ 	    mode->crtc_vtotal % 2 == 0)
+ 		misc1 = DP_TEST_INTERLACED;
+ 	if (mhdp->display_fmt.y_only)
+ 		misc1 |= CDNS_DP_TEST_COLOR_FORMAT_RAW_Y_ONLY;
+ 	/* Use VSC SDP for Y420 */
+-	if (pxlfmt == DRM_COLOR_FORMAT_YCBCR420)
++	if (pxlfmt == DRM_OUTPUT_COLOR_FORMAT_YCBCR420)
+ 		misc1 = CDNS_DP_TEST_VSC_SDP;
+ 
+ 	cdns_mhdp_reg_write(mhdp, CDNS_DP_MSA_MISC(stream_id),
+ 			    misc0 | (misc1 << 8));
+ 
+@@ -2479,11 +2479,11 @@ static int cdns_mhdp_probe(struct platform_device *pdev)
+ 	mhdp->link.rate = mhdp->host.link_rate;
+ 	mhdp->link.num_lanes = mhdp->host.lanes_cnt;
+ 
+ 	/* The only currently supported format */
+ 	mhdp->display_fmt.y_only = false;
+-	mhdp->display_fmt.color_format = DRM_COLOR_FORMAT_RGB444;
++	mhdp->display_fmt.color_format = DRM_OUTPUT_COLOR_FORMAT_RGB444;
+ 	mhdp->display_fmt.bpc = 8;
+ 
+ 	mhdp->bridge.of_node = pdev->dev.of_node;
+ 	mhdp->bridge.ops = DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID |
+ 			   DRM_BRIDGE_OP_HPD;
+diff --git a/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.h b/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.h
+index bad2fc0c7306607a98b84730233c0e984c90576f..8e99a813db0f25eb92f0aa6675e1807c992750a6 100644
+--- a/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.h
++++ b/drivers/gpu/drm/bridge/cadence/cdns-mhdp8546-core.h
+@@ -304,11 +304,11 @@ struct cdns_mhdp_sink {
+ 	bool enhanced;
+ 	bool ssc;
+ };
+ 
+ struct cdns_mhdp_display_fmt {
+-	u32 color_format;
++	enum drm_output_color_format color_format;
+ 	u32 bpc;
+ 	bool y_only;
+ };
+ 
+ /*
 
 -- 
 2.53.0
