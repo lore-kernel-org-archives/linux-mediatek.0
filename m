@@ -4,80 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61275F30924
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 09:49:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7F17F3092B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 09:58:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9V6UJw077IAW7fFljs10GktrEjxl71X9F6H8UzRhx5k=; b=DlB8580v1E+M9BIYA9O3lEjknG
-	KtGGcG/nQN81Tjfqy1yR2IGOcVhN5Pds8Fl+wKOJRJZ0LH+uWOayiHz49JXWqNdYsE+O+IDxixoSW
-	oH1Jf5SYB8ALwz/yp8ns1hZxP9tSFDTx0pjs+qdPTpUAu3CJjZqrkUkMV37InImOfJ9xKg0KIisFb
-	pMxFvtud68qV9pzHN8WF7x/jPb0DF4MQllNi1APoz5uYY4dt0HJgBRyWv0MXxkmfPx0RdcYDnjg4u
-	VeREr8QPwRGZNBx+UpTvujN+Eo7UHv6miu2zl9rUeLH/tWOFWkfjxNSEVcvcTVIS1gZBu2rvhXwJb
-	mIHZrBsw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=t+dM/ivqOh9qFQC6P4MhMScrDFmdYfA44gwq4G7yKZA=; b=EO6Wgff9o3hGLbRZ1mEjgMWb9Y
+	X8pjlN4m1YJBwBpA6BVOh7cg4dq74rpCLLq3SpwAM2eYASht53XdJDKEPdhmOzs70HyehqqsMV79H
+	9Ym+6XBfi25NQM8BR+gGzNGEezgiKzxbiJN6LODJzBp7kYf2ZJMXp15XjG79QTTpm51Umo+jF2x+l
+	9UokVF2Q4ZM5EsooZJWBjD9FnhOwHDSJzMUji5NGpVnKObsvrJwqgHfd+ZwR1tUy3nNu3mvuOLBfK
+	G1w1AbMN0yDy/BPu8KW4chDgbDyfphobkPGpgmafDsVLDBnGeE2Sy3dQhXmCippjg/nzhUMcvSWeW
+	lBWasRjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy5Kt-00000001S32-0Suf;
-	Thu, 05 Mar 2026 09:49:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vy5TC-00000001Tun-2zi2;
+	Thu, 05 Mar 2026 09:58:14 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy5Kr-00000001S29-2PVN;
-	Thu, 05 Mar 2026 09:49:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=9V6UJw077IAW7fFljs10GktrEjxl71X9F6H8UzRhx5k=; b=oWlEnD00h2dfzlrtzZzT4BkqNF
-	EETPyiOfAWevOoqRzc0Aq4y1PiWJf0XSxlic6VUQcO3EmAV85O+18Bfp5jCJzI+SRhS8dDrTwTBBv
-	l0kiHIUwVWQhI0FBGOEhb82zRQx2CYJ8Rg01J6Hu8tnLZNecc4XZeslyuCETzdH0ay/scNSUXVLJp
-	OpQIVOLttq2sZbKNRhHpw8PmvhT3hNIcrCcjHFEkl5xegtgtYekxJAcaSsoQPpiEoYdff14AnF+Bz
-	A3zxZyhF0cs4eq479P+lx6V+sPajbXjeX2csOXeM/yA9n3xyeHoysitgIIZ/KpcwIFNmso2K03APM
-	7m+PlDrQ==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy5Kn-00000006OGU-29XL;
-	Thu, 05 Mar 2026 09:49:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772704168;
-	bh=5Xcl9IFRzjP/3Rjz3AW1FJUewvUqAGHuI2zzD0ux2VI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OeGWRPU10+rZvx1DblhD0hp2BmLkizHoDFXqZEh4qkVv8pXhocm27N8qRE5iOzXSm
-	 XKwdlsNi8O0OBdJ/2MpGrMrZuek+w7Jc2CNih/4EZMQIsf0yd2hlOgUyRX7WtMoO6x
-	 riOPG1Nj4Uk9m8Gno2fOIg8IUCriIfcdWz7XWGZ8UWOPultZsLQY3cv2EG72Uun7PM
-	 ddpg4i4/jGrRM4Gk/R1Ugj9C5NV+IKSb8Ez73zmgFXYCvGdRe2ne34pFB+NiwKkBY0
-	 K0wbt45oVrEJyUAWi9i5rrHeaiHDfa492RiAs4FjSqmlHkNUNMhRpBCh0CpTXfaDb4
-	 4PF+HK3XWUs5w==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6034617E0454;
-	Thu,  5 Mar 2026 10:49:28 +0100 (CET)
-Message-ID: <e8c587e8-61af-4ef7-b7dd-7d8da7b9aeff@collabora.com>
-Date: Thu, 5 Mar 2026 10:49:28 +0100
+	id 1vy5TA-00000001Tsg-10Qo;
+	Thu, 05 Mar 2026 09:58:13 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1772704683; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=kBoMhSSPZC5RsRfS4lwUYt+DXbeKYd998viSF8OfQgMUxb/zXbxyemZauGhuLeYTbPBelQjuTfEL9D0+cWo40OIheo5HwWCwpwlhtF3FhqUusAxKkTY416Dmd3KJxG3Sfv/E4HjLm8ThGO3Xq0gjfknscHV4kjjKHfgvW8ob+Yc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1772704683; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=t+dM/ivqOh9qFQC6P4MhMScrDFmdYfA44gwq4G7yKZA=; 
+	b=fK4RwTEpB/dukN63XUnC6gB0R4xTNhIruor1iiIurQIm8TsF4kKFxi+gMjRHWSoxFymTAVKJ+sVEYYCSrvj5kS8FLsPP41vixq+SkwRlXPTwlKClaT5CvK20ffWU7wnncuAFyu8PJwB95ylrXrsozTseCxJZpS1ZLScgCqos7R4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772704683;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=t+dM/ivqOh9qFQC6P4MhMScrDFmdYfA44gwq4G7yKZA=;
+	b=J/301NWaZdxu3OBlGpm+tcT8tF32LtInDWcbPlcVv41C/2xK55Pi9n2RO8pJgD/l
+	wkCpA7kwqrt9OFuobYiiO8tC+AKWML/dxJuO+AITRr9jlC6DgJvNBBrTSC2C5FGya/f
+	yyvNJiQC2PXlDeManSvq/+q1AWUAAinyKmpE1e2Y=
+Received: by mx.zohomail.com with SMTPS id 1772704680982221.39391748095557;
+	Thu, 5 Mar 2026 01:58:00 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: "chu.stanley@gmail.com" <chu.stanley@gmail.com>,
+ "robh@kernel.org" <robh@kernel.org>,
+ Chunfeng Yun =?UTF-8?B?KOS6keaYpeWzsCk=?= <Chunfeng.Yun@mediatek.com>,
+ "kishon@kernel.org" <kishon@kernel.org>,
+ "James.Bottomley@HansenPartnership.com"
+ <James.Bottomley@hansenpartnership.com>,
+ "bvanassche@acm.org" <bvanassche@acm.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "neil.armstrong@linaro.org" <neil.armstrong@linaro.org>,
+ "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ Chaotian Jing =?UTF-8?B?KOS6leacneWkqSk=?= <Chaotian.Jing@mediatek.com>,
+ "lgirdwood@gmail.com" <lgirdwood@gmail.com>,
+ "vkoul@kernel.org" <vkoul@kernel.org>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "broonie@kernel.org" <broonie@kernel.org>,
+ Peter Wang =?UTF-8?B?KOeOi+S/oeWPiyk=?= <peter.wang@mediatek.com>
+Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ "kernel@collabora.com" <kernel@collabora.com>
+Subject: Re: [PATCH v8 11/23] scsi: ufs: mediatek: Remove undocumented downstream
+ reset cruft
+Date: Thu, 05 Mar 2026 10:57:53 +0100
+Message-ID: <3472277.mvXUDI8C0e@workhorse>
+In-Reply-To: <3aeee75e78fed2be92038c776463a231b94462f3.camel@mediatek.com>
+References: <20260304-mt8196-ufs-v8-0-5b0eac23314f@collabora.com>
+ <20260304-mt8196-ufs-v8-11-5b0eac23314f@collabora.com>
+ <3aeee75e78fed2be92038c776463a231b94462f3.camel@mediatek.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: arm: mediatek: Add Lenovo YOGA Tablet
- 8/10
-To: Akari Tsuyukusa <akkun11.open@gmail.com>, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- sean.wang@mediatek.com
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260304192417.818211-1-akkun11.open@gmail.com>
- <20260304192417.818211-2-akkun11.open@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260304192417.818211-2-akkun11.open@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_094933_666028_FABA50EC 
-X-CRM114-Status: GOOD (  14.62  )
+X-CRM114-CacheID: sfid-20260305_015812_342931_7E6ED6EF 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,49 +105,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 04/03/26 20:24, Akari Tsuyukusa ha scritto:
-> Add the "lenovo,blade" compatible string for the Lenovo YOGA Tablet 8/10
-> family and add compatible strings for each board
-> (B6000-F, B6000-H, B8000-F, B8000-H).
+On Thursday, 5 March 2026 10:14:47 Central European Standard Time Peter Wan=
+g (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
+> On Wed, 2026-03-04 at 15:53 +0100, Nicolas Frattaroli wrote:
+> > @@ -2383,38 +2383,12 @@ MODULE_DEVICE_TABLE(of, ufs_mtk_of_match);
+> >  static int ufs_mtk_probe(struct platform_device *pdev)
+> >  {
+> >  	int err;
+> > -	struct device *dev =3D &pdev->dev, *phy_dev =3D NULL;
+> >=20
+>=20
+> Will there be a build error if phy_dev is removed?
+> Please make sure that each patch can build successfully, one by one.
+>=20
+> Thanks
+> Peter
+>=20
+>=20
+>=20
+>=20
 
-You're adding support (a devicetree) only for the B8000-F though...
+Yes, these are the kinds of mistakes that happen when you ask someone
+to pick apart patches for your downstream convenience.
 
-> 
-> These tablets are based on the "blade" platform, featuring 1GB of RAM
-> and powered by MediaTek MT8125 or MT8389 SoCs. Since these SoCs are
-> tablet-oriented variants of the MT6589, they are grouped under the
-> "mediatek,mt6589" compatible string.
-> 
-> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
-> ---
->   Documentation/devicetree/bindings/arm/mediatek.yaml | 5 +++++
->   1 file changed, 5 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index 382d0eb4d0af..69dbe389515c 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -44,6 +44,11 @@ properties:
->         - items:
->             - enum:
->                 - fairphone,fp1
-> +              - lenovo,b6000-f
-> +              - lenovo,b6000-h
-> +              - lenovo,b8000-f
-> +              - lenovo,b8000-h
-> +              - lenovo,blade
->                 - mundoreader,bq-aquaris5
->             - const: mediatek,mt6589
->         - items:
+I'll hand dealing with any further fixups and variable naming concerns
+you have over to Angelo, as I can't be bothered to deal with you
+anymore.
 
-Did you really test this with dtbs_check?
-
-...also, is the "lenovo,blade" really used for anything (bootloader)?
-
-You can either fix that or just remove the lenovo,blade compatible... but please,
-test with `make dtbs_check` before sending a v2 :-)
-
-Cheers,
-Angelo
 
 
