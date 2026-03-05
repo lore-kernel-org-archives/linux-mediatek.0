@@ -4,75 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90A24EEF319
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 08:12:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ACE6EEF31B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 08:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vc01CRGQLcw/5pqYY0c4DTGrG6YXseuv6cjG8JfPxnE=; b=USkc2VmN3Ik/Xjm+4cCsTF3pyF
-	3QpdthO2o2mwq6JSDZDtpe7WVG8IMhXJzTzLtf9a/WCp3/20kryBFkN18jd7bm/Vw+nQkX1+27Jgu
-	pJosqxqXH3DKr+7f8t0dHuP16c6oZWl0cTvXoCZqIFXkMEaVCFyzxn/EWVwKo5AK49/b3zoho/Ifg
-	kElQB7CIwgmIvhKWVN5QJRPKCKZuBBpRiQg30oxNAvfQTV6ZNgv/s0ndRtNRbz7JCUhJGu8cyrQNx
-	2VXQfhfxVASxqz0TtiAdPcdw1Bcy77UaP/BGVdLjIjdvTXGM7O/ktaqfNoPq21PZMqS40sTrY2Kk8
-	w0deUj/A==;
+	bh=IkSaF0Dsvx5a7zpRz8U8mSAGn+Ce1fQQVveZw/uuT5w=; b=jqAwehEmryGz0w42/dr/hB6d0E
+	eedvXFcpJug7tZmdzq5RHlLz4dlmV3yL7fuFpvvqOrBuys7OhYfoXlK4V4K00zEy7a3/Xed2JdlqX
+	ncpMShCjLPohpOhegtq+HaVifAso3A8Xn9FDApd4Nzta7VVktf5fCvQaGwaz8khprYq+Dzy3t9F0h
+	hNEWe3EIz7Q+qQC7sBLSfyq2OPRQGQvRhi7x3lQx+la6fnwySkugMqp4YBc6pN1lSikhNSCGOmGOu
+	5HnQTnkOVSKc9ClkY2tvDKjiO2KgpB910ad4ConEm4hmNNiZck4JFztQLluxqJTdwMVouFnH8a5bd
+	o/CwIG3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy3of-000000019xu-1Iy7;
-	Thu, 05 Mar 2026 08:12:17 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vy433-00000001C2I-3EYb;
+	Thu, 05 Mar 2026 08:27:09 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy3ob-000000019u1-3rPH;
-	Thu, 05 Mar 2026 08:12:15 +0000
+	id 1vy432-00000001C1q-1gDH;
+	Thu, 05 Mar 2026 08:27:08 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1FE22432C1;
-	Thu,  5 Mar 2026 08:12:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68FD9C19423;
-	Thu,  5 Mar 2026 08:12:12 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C157761420;
+	Thu,  5 Mar 2026 08:27:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18761C116C6;
+	Thu,  5 Mar 2026 08:27:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772698333;
-	bh=qhIDiUOpJGUOHKetZKcw0dA0wuDpf9VhjdgGMlIEdTI=;
+	s=k20201202; t=1772699227;
+	bh=A05QtUqhcS2Bq8q0WVUQ/YHtuUYveSKDtR50Qqa1If8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pVElDDFaW8UyP1bYz0ioQjWGgyilhCihlygdWb5JTaL8HYTjM9JXJGaV8uT+0c07T
-	 0oSXXdJvkcvECdbbObpOvP4MCOSJuGhIlX+2hqAPUFlHm3mQ51i28KZh43HmvWV0Qi
-	 Owt6LWQQzcLwlkEo9IMSWJ4gKXJz/BOSAgchj38W8G1ltoA8Bsvqkaex7im9kwUjNf
-	 tGQ+LERmqP3VbxlLOb6phRUOEOTwjsQZmjFwjo9ULFECnmgDQBXcVW6gj6NLRCkyaU
-	 paLH91ckAeLf0lYxqEipB2rKRpla0N0udlB+7nzLTz+QTH79fpXcAUoo59rr9V+vlj
-	 KqBv+bCawNZ3g==
-Date: Thu, 5 Mar 2026 09:12:10 +0100
+	b=ZaQ36wdXD2N4N6cd0udiKvDdAgebDVHyP9Llku295/+WBMGtnxVh+jvJhGm+LhZCP
+	 4sLJLNkJn1SrKZaJSYPnaF0JYwauw8BoBfm/09sypjY8GOk0sIwxt34voR7p1vM4hu
+	 ynBaxj3Fl1GOoK/JrUKlYp8gxHMS8urguyVqjE7zDvlUZo3s2kvOI8+m0BRAg5y9HE
+	 aBKDP9ftAv+OTXmHRWeC1xAEuDmV8MUXuftbQhn83UpALT45i9laWGf0yTcguQ7pvB
+	 FjA3mIqJVnandYLDR7EqjrAOumYGUH5GD5axV561pd/iqwy7rrK/n6ygzrdnAlyX3s
+	 wm9YJBwxZ8Fmw==
+Date: Thu, 5 Mar 2026 09:27:05 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Antoine Tenart <atenart@kernel.org>, Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Frank Li <Frank.Li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>, 
-	Daniel Palmer <daniel@thingy.jp>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Thierry Reding <thierry.reding@gmail.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Nishanth Menon <nm@ti.com>, Tero Kristo <kristo@kernel.org>, 
-	Santosh Shilimkar <ssantosh@kernel.org>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
-	Masami Hiramatsu <mhiramat@kernel.org>, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, 
-	imx@lists.linux.dev, linux-amlogic@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH 1/4] dt-bindings: interrupt-controller: arm,gic: Document
- symbolic definitions
-Message-ID: <20260305-olive-lion-of-culture-b31aef@quoll>
-References: <cover.1772644406.git.geert+renesas@glider.be>
- <36c8fe02dc911141170ea6607034422410e0ddc2.1772644406.git.geert+renesas@glider.be>
+To: Akari Tsuyukusa <akkun11.open@gmail.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, sean.wang@mediatek.com, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: arm: mediatek: Add Lenovo YOGA Tablet
+ 8/10
+Message-ID: <20260305-fair-jasper-barracuda-5ae1e6@quoll>
+References: <20260304192417.818211-1-akkun11.open@gmail.com>
+ <20260304192417.818211-2-akkun11.open@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <36c8fe02dc911141170ea6607034422410e0ddc2.1772644406.git.geert+renesas@glider.be>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_001213_982064_62F1B72C 
-X-CRM114-Status: GOOD (  11.04  )
+In-Reply-To: <20260304192417.818211-2-akkun11.open@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,24 +71,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 04, 2026 at 06:21:56PM +0100, Geert Uytterhoeven wrote:
-> Currently, the various GIC DT bindings document the magic GIC and
-> interrupt numbers used in interrupts properties, but omit any references
-> to the corresponding symbolic DT binding definitions.
+On Thu, Mar 05, 2026 at 04:24:16AM +0900, Akari Tsuyukusa wrote:
+> Add the "lenovo,blade" compatible string for the Lenovo YOGA Tablet 8/10
+> family and add compatible strings for each board
+> (B6000-F, B6000-H, B8000-F, B8000-H).
 > 
-> Add references to these symbolic definitions, and convert the examples
-> to make use of them.  This improves readability, and makes the examples
-> more similar to what actual users look like.
+> These tablets are based on the "blade" platform, featuring 1GB of RAM
+> and powered by MediaTek MT8125 or MT8389 SoCs. Since these SoCs are
+> tablet-oriented variants of the MT6589, they are grouped under the
+> "mediatek,mt6589" compatible string.
 > 
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
 > ---
->  .../bindings/interrupt-controller/arm,gic-v3.yaml    | 12 +++++++++---
->  .../interrupt-controller/arm,gic-v5-iwb.yaml         |  2 ++
->  .../bindings/interrupt-controller/arm,gic-v5.yaml    |  2 ++
->  .../bindings/interrupt-controller/arm,gic.yaml       | 11 +++++++++--
->  4 files changed, 22 insertions(+), 5 deletions(-)
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> index 382d0eb4d0af..69dbe389515c 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -44,6 +44,11 @@ properties:
+>        - items:
+>            - enum:
+>                - fairphone,fp1
+> +              - lenovo,b6000-f
+> +              - lenovo,b6000-h
+> +              - lenovo,b8000-f
+> +              - lenovo,b8000-h
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+I don't see users of few of these. Also, explain in commit msg
+differences between 'f' and 'h'.
 
 Best regards,
 Krzysztof
