@@ -4,88 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC416F30956
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 12:17:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36CF0F30955
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 12:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4Rp+9sPntSPjnpvZo0an8fygpRvqZVF/+n4W1+h1feA=; b=1tSyoLehED2h5YJM3aBsTa6KxN
-	yovPiSx3Fnkn/fGyMh0A/keujn3H9SDCgJS5mufCtcYcVADimcjviamqzse2fJiHrMXWTlTnI7nrF
-	0XwgcTDG1KuyVX1RSo/JT/LHpzvgVzXihzMqUfdpRJvRLd+5Q0UOripsFKnMJxcweveJGlJGkcjxI
-	PUh/mfXqPzzEOM8zJ2M+4POu/vm0bCNLFsOYCjfxYeVJM9pXId8Q9RGeBvXyrNJJOEDDGPXS1isxS
-	wpKyFAVsUg/nSDyb08CIaz1iowJ7D3H1Mvgx1O9KiJ3bD584X33f7tavASZuUCaOkr3xdF9bE2mDe
-	hg8vBZ1g==;
+	bh=VxlWN5VHxU2836UMOWl//1bZU+D0OzhZKMnKSPhaYT0=; b=xDKjP7iPhg1EQkBSyzgaRaEjY4
+	57Eqv3XqdAmYSx3ZHEMIg7/my8pUH4JmgclOH/bStM8yONW2F3Fh2p8c8BVP5XS6VrLwfCLee1u2a
+	JLWgnX0VlCdD4KU0yWV3WI5suOR7EM+C5Hg4tn59vV8dOZs/5j6uU72/enfDDAAx8zM1cNqpjVTxQ
+	mboqMrctKdjtwGf4hyDGpGz3mw4jx00FSL6XrYB60kvNsu7fMBeQkP1mloabGxX68m++sGCmoEinP
+	kpdPQGNWHYUKGQ6eFVOs0Tso2+d41eYofTx8lvBDSePB4fiCxeo2vwdjFu4YtifVPP3J7emP0MAJH
+	H+hUYtkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy7eM-00000001kcJ-1KhL;
-	Thu, 05 Mar 2026 12:17:54 +0000
+	id 1vy7hO-00000001l0K-0MB3;
+	Thu, 05 Mar 2026 12:21:02 +0000
 Received: from 011.lax.mailroute.net ([199.89.1.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy7eK-00000001kc0-09s4
-	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Mar 2026 12:17:53 +0000
+	id 1vy7hM-00000001kzu-1R1H;
+	Thu, 05 Mar 2026 12:21:01 +0000
 Received: from localhost (localhost [127.0.0.1])
-	by 011.lax.mailroute.net (Postfix) with ESMTP id 4fRT7z3M8Yz1XM5kW;
-	Thu,  5 Mar 2026 12:17:51 +0000 (UTC)
+	by 011.lax.mailroute.net (Postfix) with ESMTP id 4fRTCc0SNFz1XM5kW;
+	Thu,  5 Mar 2026 12:21:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
 	content-transfer-encoding:content-type:content-type:in-reply-to
 	:from:from:content-language:references:subject:subject
 	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1772713064; x=1775305065; bh=4Rp+9sPntSPjnpvZo0an8fyg
-	pRvqZVF/+n4W1+h1feA=; b=W6By8aBDX6dURmH6Py/yLiGvlBaIQGZWS5GAo4wI
-	tVNj80eO0C1ijfZ3TPs5mlBSKSPdDxnWZgVE+WGMRskZVMug0BMvNG81ba5SvXEE
-	VrROnkxXbW8ZoOrOx9sMcIB1jm2BvdtGICXgzPaxZBDOeMVPRVuTwshHBAFGz7Kg
-	Y2CKTOybvwLRrjhBofHD6Q4B4+CIPqvY+Kqxc3VG2lUvhxYePiet//newjiFnM67
-	lSE8oFeEJqKKVTOGwgaYU1HbmKfNOmK9l9wX8wnf4Z+9Lfz0ft21zcLAg09e9xNX
-	vUC4GaN8cOkuoYaeLTxiq1DJZDfDUrCxn+/+CxUUCtmV/g==
+	 s=mr01; t=1772713255; x=1775305256; bh=VxlWN5VHxU2836UMOWl//1bZ
+	U+D0OzhZKMnKSPhaYT0=; b=SZbaEMJQiSNKvzikXuJEpXYE3IOu9NrxZkkOIQu3
+	Z8sRSVIzH4KxGjFNf3F34w+/bJwhaHPTavVGVcjyX2yA6D9XEPwDzGf4Z0jSCT5T
+	J9mjFXvogOeF6uzEGdvo1THQ6mjcT3kUSgpxjhny46OfzmPb9kp82CtKc8OLGU+G
+	yqYKJe/luExc6OMM6c18dwA8jnt9W+exne8kG3Ht2x0q2Dd9ZrhyhEFnN+DGMdGZ
+	mgmZEhnrqVbJgQ1x4XhPA2hsyvFwwtDfqTBengvzCs50dr4II90r4ssu119UxKLl
+	PcucoLXwh/PoRob+bSoyOUJrNEQAyyATgWpGvDj2FY10oA==
 X-Virus-Scanned: by MailRoute
 Received: from 011.lax.mailroute.net ([127.0.0.1])
  by localhost (011.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id nh_vDxGnM4bm; Thu,  5 Mar 2026 12:17:44 +0000 (UTC)
+ id USyP4OT_KOKZ; Thu,  5 Mar 2026 12:20:55 +0000 (UTC)
 Received: from [192.168.132.187] (unknown [12.150.89.26])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: bvanassche@acm.org)
-	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4fRT7k31R0z1XM5kD;
-	Thu,  5 Mar 2026 12:17:37 +0000 (UTC)
-Message-ID: <16a44a0c-1fcf-4e3a-bf9e-d29ca5f62157@acm.org>
-Date: Thu, 5 Mar 2026 06:17:36 -0600
+	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4fRTCR58TDz1XM5kD;
+	Thu,  5 Mar 2026 12:20:51 +0000 (UTC)
+Message-ID: <f298d3f3-1382-478d-87f2-ae9b212001da@acm.org>
+Date: Thu, 5 Mar 2026 06:20:49 -0600
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] ufs: core: Avoid IRQ thread wakeup during active UIC
- command
-To: =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>,
- "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
- "jejb@linux.ibm.com" <jejb@linux.ibm.com>,
- "avri.altman@sandisk.com" <avri.altman@sandisk.com>,
- "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
- "martin.petersen@oracle.com" <martin.petersen@oracle.com>
-Cc: =?UTF-8?B?QWxpY2UgQ2hhbyAo6LaZ54+u5Z2HKQ==?= <Alice.Chao@mediatek.com>,
- =?UTF-8?B?RWRkaWUgSHVhbmcgKOm7g+aZuuWCkSk=?= <eddie.huang@mediatek.com>,
- =?UTF-8?B?Q0MgQ2hvdSAo5ZGo5b+X5p2wKQ==?= <cc.chou@mediatek.com>,
- =?UTF-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>,
- wsd_upstream <wsd_upstream@mediatek.com>,
- =?UTF-8?B?Q2hhb3RpYW4gSmluZyAo5LqV5pyd5aSpKQ==?=
- <Chaotian.Jing@mediatek.com>, =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?=
- <Chun-hung.Wu@mediatek.com>, =?UTF-8?B?TmFvbWkgQ2h1ICjmnLHoqaDnlLAp?=
- <Naomi.Chu@mediatek.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?VHVuLXl1IFl1ICjmuLjmlabogb8p?= <Tun-yu.Yu@mediatek.com>
-References: <20260304071346.1391315-1-peter.wang@mediatek.com>
- <ab2de228-47f0-40b0-b586-c970a9c0652a@acm.org>
- <fa949b2c2f9d23fa112f8b37377ca2f23c5bb258.camel@mediatek.com>
+Subject: Re: [PATCH 2/2] ufs: host: mediatek: Add VCC on delay for stability
+To: ed.tsai@mediatek.com, Peter Wang <peter.wang@mediatek.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Stanley Jhu <chu.stanley@gmail.com>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20260305083610.2672344-1-ed.tsai@mediatek.com>
+ <20260305083610.2672344-3-ed.tsai@mediatek.com>
 Content-Language: en-US
 From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <fa949b2c2f9d23fa112f8b37377ca2f23c5bb258.camel@mediatek.com>
+In-Reply-To: <20260305083610.2672344-3-ed.tsai@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_041752_107667_ECA4D70E 
-X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-CacheID: sfid-20260305_042100_397437_123A77AD 
+X-CRM114-Status: UNSURE (   8.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,24 +90,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3/4/26 9:27 PM, Peter Wang (=E7=8E=8B=E4=BF=A1=E5=8F=8B) wrote:
-> The main reason is not context switch time.
-> The problem is that a threaded IRQ handler can be preempted
-> by a regular IRQ.
-> When the system is busy, for example during kernel boot,
-> there are many other module IRQs present in the system.
+On 3/5/26 2:29 AM, ed.tsai@mediatek.com wrote:
+> Introduced a delay after enabling UFS5 VCC for MT6995 to ensure
+> voltage stability before refclk activation.
 
-Spending 500 ms in interrupts without giving the CPU a chance to run is
-excessive, isn't it? Anyway, if you really need this patch, please
-mention the above information in the patch description and combine the
-two if-statements into a single if-statement, e.g. as follows:
+Patch descriptions should use the imperative mood (Introduced ->
+Introduce).
 
-if ((!hba->mcq_enabled || !hba->mcq_esi_enabled) &&
-     !hba->active_uic_cmd)
-	...
+> +	/*
+> +	 * Add a delay after enable UFS5 VCC to ensure the voltage is
+> +	 * stable before the refclk enable.
+> +	 */
+
+after enable -> after enabling
+refclk enable -> refclk is enabled
+
+Otherwise this patch looks good to me.
 
 Thanks,
 
 Bart.
-
 
