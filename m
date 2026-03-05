@@ -4,65 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D20F7F47CB9
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 19:24:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B303BF47CC6
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 19:59:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:
-	Content-Transfer-Encoding:Content-Type:Mime-Version:References:In-Reply-To:
-	Message-Id:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T/6FQsMLnCGkibjJw9JyQAihdbLawYlk2aY7GuhBV/I=; b=qqiDPvjajWxaMg
-	pOSlfXpB11KPNGQEhalo/0ChTb9Z3MvOsrI707G5STln5TJ3jgYDxtFpMyknZhS/tAJD3QEb5YeP/
-	Ld0+TNVD+KDjujqsiLkP3qvYYhGeEZq9B3lUzGxS8H2sBWn3yJbE8Ffn4DhqDlnHC1EdE+naBqoGp
-	ETwi0A9/X/NxrXXwPog5+KZQB34f4e4SsmbjbnTao6B7M5m9qLdeNvo1GKTb6sH8qWzU958LFJNyS
-	fOqIg18vOeWxIguhRBW+NB85nHj6SwgpHE2qIaXC8F4Fyw1qISV/ckXcJaBmye4jzjgqRnh3rNCrk
-	T85QBsK0wI9XxMKGzccw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7DN+KI20/nr4bGXo2TiFQ3uVPvfOMz0EViovKfREFA0=; b=3gEHOdzRm231Et+xvRzn4zN845
+	45MOg5r69Ct5zBV7nRDqAwGWXO2sXGrIahdXyoD0XlET0AeyseqaCyqax1BqfldzO4SSKcWyRJqI5
+	k3qFzj39u+52IJPsu4a3g9wMe7b8JsKsyInI13lEStAz4B6qOfWG3KRFhcIu38Swf3pAkdeW5WkKo
+	SgBWaa71egvBqHfeAr/AsML+y1M6KdMsuhsCGYskukh6Nky5xHu7Yj7AVlEaBKJ4n6gt7dbZMk855
+	fVsUXoZZSfAOAntAjzQaXAsHCXUSlXtPTOnvPTz737Hb9e2ul+Yk2T209+e35PL58P90C0XnWgKuL
+	ds541kfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyEIi-00000002S8z-2ozh;
-	Thu, 05 Mar 2026 19:24:00 +0000
-Received: from mail.hugovil.com ([162.243.120.170])
+	id 1vyEqp-00000002UH6-0U8h;
+	Thu, 05 Mar 2026 19:59:15 +0000
+Received: from mx3.wp.pl ([212.77.101.9])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyEIf-00000002S7b-3WWm;
-	Thu, 05 Mar 2026 19:23:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hugovil.com
-	; s=x; h=Subject:Content-Transfer-Encoding:Mime-Version:Message-Id:Cc:To:From
-	:Date:subject:date:message-id:reply-to;
-	bh=T/6FQsMLnCGkibjJw9JyQAihdbLawYlk2aY7GuhBV/I=; b=FQ/tvoAE3+CW29cdkBlkTr+ymc
-	u+GZKHBdVaRp8zLyuciuoQad+jje36JbHkBjzMKldzouBa+MRr8HoApvDQqA+Cl8xzsU3l0MxWz9f
-	HU/zCz6c5n+qLIYAkobroWWRfecuD6W5ZSBtzEPmXgFdrLExYuR9vzu3zYXfsePDeV1Q=;
-Received: from modemcable168.174-80-70.mc.videotron.ca ([70.80.174.168]:40032 helo=pettiford.lan)
-	by mail.hugovil.com with esmtpa (Exim 4.92)
-	(envelope-from <hugo@hugovil.com>)
-	id 1vyEIZ-0003Lc-Kv; Thu, 05 Mar 2026 14:23:52 -0500
-Date: Thu, 5 Mar 2026 14:23:50 -0500
-From: Hugo Villeneuve <hugo@hugovil.com>
-To: Hugo Villeneuve <hugo@hugovil.com>
-Cc: robin@protonic.nl, andy@kernel.org, geert@linux-m68k.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- dmitry.torokhov@gmail.com, hvilleneuve@dimonoff.com,
- mkorpershoek@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, lee@kernel.org,
- alexander.sverdlin@gmail.com, marek.vasut@gmail.com, akurz@blala.de,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Message-Id: <20260305142350.fbc6e19c89215c3a7da2a6c0@hugovil.com>
-In-Reply-To: <20260305192101.2125660-1-hugo@hugovil.com>
-References: <20260305192101.2125660-1-hugo@hugovil.com>
-X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 70.80.174.168
-X-SA-Exim-Mail-From: hugo@hugovil.com
-Subject: Re: [PATCH v4 0/4] input: add GPIO-based charlieplex keypad
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.hugovil.com)
+	id 1vyEql-00000002UFX-3QVt
+	for linux-mediatek@lists.infradead.org;
+	Thu, 05 Mar 2026 19:59:14 +0000
+Received: (wp-smtpd smtp.wp.pl 16902 invoked from network); 5 Mar 2026 20:59:06 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=20241105;
+          t=1772740746; bh=7DN+KI20/nr4bGXo2TiFQ3uVPvfOMz0EViovKfREFA0=;
+          h=From:To:Subject;
+          b=X4JpREueQcxtL18zjrpZit6Yb5HoDpNhtqo0A7g9iGBBzW1V4lVSaPDh5+LxWd9mP
+           9jUbXdePb99PQQlnWODuKhXQSFB1souwh42ov0GVy87Tdbr9Jlhl9AzRRuU5Ew5AIn
+           enJRHoaSQly06lCAQ/FHuN6lYYHKSsT0cr7pBLCJJmrVcAZhhFnIlik1umBakRCDPd
+           yvnbsrXtK7HEqQjr7Vu6i/STrxXjy0DK+qIxFIVo8SsY+xH8qBLSURafqsbXH4haQd
+           hhmLFZUavgLYkTVvpzmnO1X0aTPAg8X4EG3orK/uhv3BAZwGgB1PnPLqH/0JhsZzwh
+           mEJHI3IKcombA==
+Received: from 83.24.116.171.ipv4.supernova.orange.pl (HELO laptop-olek.lan) (olek2@wp.pl@[83.24.116.171])
+          (envelope-sender <olek2@wp.pl>)
+          by smtp.wp.pl (WP-SMTPD) with TLS_AES_256_GCM_SHA384 encrypted SMTP
+          for <ansuelsmth@gmail.com>; 5 Mar 2026 20:59:06 +0100
+From: Aleksander Jan Bajkowski <olek2@wp.pl>
+To: ansuelsmth@gmail.com,
+	herbert@gondor.apana.org.au,
+	davem@davemloft.net,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	lorenzo@kernel.org,
+	olek2@wp.pl,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-crypto@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 1/2] dt-bindings: crypto: eip93: add clock gate and reset line
+Date: Thu,  5 Mar 2026 20:53:10 +0100
+Message-ID: <20260305195903.59776-1-olek2@wp.pl>
+X-Mailer: git-send-email 2.47.3
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-WP-MailID: c7c3f264b6f210d9aa7875ffc4db7536
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 0000009 [oWox]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_112357_882697_885AD767 
-X-CRM114-Status: GOOD (  21.88  )
+X-CRM114-CacheID: sfid-20260305_115912_318385_D6B27D6D 
+X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,88 +84,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu,  5 Mar 2026 14:20:46 -0500
-Hugo Villeneuve <hugo@hugovil.com> wrote:
+Add the clock gate and reset line, both of which are available
+on the Airoha AN7581. Both properties are mandatory.
 
-> From: Hugo Villeneuve <hvilleneuve@dimonoff.com>
-> 
-> Hello,
-> this patch series add a new GPIO charlieplex keypad driver.
-> 
-> The first two patches simply commonize two properties that are present in
-> a few bindings, so that the actual patches for the charlieplex keypad driver
-> can reuse them instead of also redefining them.
-> 
-> I have tested the driver on a custom board with a Solidrun RZ/G2LC SOM
-> with three charlieplex keyboards, all connected thru a single PCAL6416 I2C GPIO
-> expander.
-> 
-> Link: [v1] https://lore.kernel.org/all/20260203155023.536103-1-hugo@hugovil.com/
-> Link: [v2] https://lore.kernel.org/all/20260213171431.2228814-1-hugo@hugovil.com/
-> Link: [v3] https://lore.kernel.org/all/20260225155409.612478-1-hugo@hugovil.com/
-> 
-> Changes for v4:
-> - Fix indentation in comments (Andy)
-> - Add missing includes (Andy)
-> - Remove OF dependency (Andy/Dmitry)
-> - Uniformize return code variables to "err" (Andy/Dmitry)
-> - Change signed iterator to unsigned and move within loop (Andy)
-> - Remove unused platform_set_drvdata() (Andy)
-> - Fixed typo in cover letter PCAL6416 (Geert)
-> - Changed name in bindings example (Geert)
-> - Added pull resistors to bindings doc and example (Geert)
-> - Add debounce-delay-ms common property
-> - Add settling-time-us common property
+Signed-off-by: Aleksander Jan Bajkowski <olek2@wp.pl>
+---
+v2:
+- mandate clock and reset properties
+- drop extra new lines in example
+---
+ .../crypto/inside-secure,safexcel-eip93.yaml        | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-Please ignore the last two lines that were already mentioned for V3.
-
-Hugo.
-
-
-> 
-> Changes for v3:
-> - Add ASCII diagram in bindings, and reference to it in example
-> - Reorder properties alphabetically
-> - Add patch to define common input settling-time-us property
-> - Add patch to define common input debounce-delay-ms property
-> 
-> Changes for v2:
-> - Fix yamllint error for example
-> - Remove unused debug variable (nkeys)
-> - Remove support for custom linux,no-autorepeat DT property
-> - Remove support for custom gpio-activelow DT property
-> 
-> Thank you.
-> 
-> Hugo Villeneuve (4):
->   dt-bindings: input: add debounce-delay-ms common property
->   dt-bindings: input: add settling-time-us common property
->   dt-bindings: input: add GPIO charlieplex keypad
->   Input: charlieplex_keypad: add GPIO charlieplex keypad
-> 
->  .../bindings/auxdisplay/holtek,ht16k33.yaml   |   5 +-
->  .../bindings/input/cirrus,ep9307-keypad.yaml  |   7 +-
->  .../input/gpio-charlieplex-keypad.yaml        | 108 +++++++++
->  .../bindings/input/gpio-matrix-keypad.yaml    |   5 +-
->  .../devicetree/bindings/input/input.yaml      |  16 ++
->  .../input/mediatek,mt6779-keypad.yaml         |   1 +
->  .../devicetree/bindings/mfd/fsl,mc13xxx.yaml  |   2 -
->  MAINTAINERS                                   |   7 +
->  drivers/input/keyboard/Kconfig                |  14 ++
->  drivers/input/keyboard/Makefile               |   1 +
->  drivers/input/keyboard/charlieplex_keypad.c   | 214 ++++++++++++++++++
->  11 files changed, 368 insertions(+), 12 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/input/gpio-charlieplex-keypad.yaml
->  create mode 100644 drivers/input/keyboard/charlieplex_keypad.c
-> 
-> 
-> base-commit: 3bf5404fc93825ddde89992acad095a297ed9a31
-> -- 
-> 2.47.3
-> 
-> 
-
-
+diff --git a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml
+index 997bf9717f9e..10caa989f660 100644
+--- a/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml
++++ b/Documentation/devicetree/bindings/crypto/inside-secure,safexcel-eip93.yaml
+@@ -48,20 +48,31 @@ properties:
+   interrupts:
+     maxItems: 1
+ 
++  clocks:
++    maxItems: 1
++
++  resets:
++    maxItems: 1
++
+ required:
+   - compatible
+   - reg
+   - interrupts
++  - clocks
++  - resets
+ 
+ additionalProperties: false
+ 
+ examples:
+   - |
++    #include <dt-bindings/clock/en7523-clk.h>
+     #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/reset/airoha,en7581-reset.h>
+ 
+     crypto@1e004000 {
+       compatible = "airoha,en7581-eip93", "inside-secure,safexcel-eip93ies";
+       reg = <0x1fb70000 0x1000>;
+-
++      clocks = <&scuclk EN7523_CLK_CRYPTO>;
+       interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
++      resets = <&scuclk EN7581_CRYPTO_RST>;
+     };
 -- 
-Hugo Villeneuve
+2.47.3
+
 
