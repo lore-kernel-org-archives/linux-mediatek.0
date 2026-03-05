@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D160F47CD8
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 21:03:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05663F47CD9
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 21:03:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z+oK1HC6mjzut6Jep3O4wnFAo1gcFVDix5BbI9g78wE=; b=SyRLT6qLQ9CsANaBJmhQtXGJMO
-	DLRRmxXFiiKN9ghsa2VGF2ROLhsWo6BPClbHn3YdCrqK1AMmV8isLC1+tlcsltCaevevi7fGuYAi9
-	pQMgC1I6C3A/Tl2qRoy5lEAfijv4Ook5SHxhmrpWDru9A6CEMFQ1s1zGLe3D7J1Obi68Sw7AuNe7G
-	yrJQQvQPQ5uogCdt+5Ql+rlXzWAre/xue4OE6ztSiC1T8A5l9H5RIUIeKDbO2D3//wqFIt1/Yea5v
-	BCnBTDg7JlGEcV+hQrOfgS+lH2EvFePIsfq8Qh7t+KS5xYf51L6S1cad2nOZ0RF51FyqcH4N0cjfk
-	hoKMA0Nw==;
+	bh=UcA4dGEpWdmHw4cn/b0YaR4yqWgiR2CVpGOd1+AB5JA=; b=alFOj2TFZF0oUkL8m2U/SNmkU1
+	f8xNIZU8zBqKexgMUnNElfO/Sc0f2gMAJu12/DT3Tx05z1zOk/6dRXHTVrTzs8AbvKYsDMx16Xd3p
+	fREr7ZbOEueZYJK5Z2vuplCLPyyHNyu4T88PQsoMBtcY4giA7zOKTWt7G33K+ZgEwSroDDBJNh5hd
+	hykO7iSK0hNNMxHU0wx+1ELyOBoadMpb3pmmvsCNIGaWTOq+1islrMReM3sIy1u0q1QSwB+Ec6HGS
+	gLWUg4tTa+ysPTBwdATOeXK4Oo8tMhtYCfudLcalK1wk3NIk78vtdk6V5lUMSpcsOFzCmWXLjFvwr
+	1ms5Ebsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyFrN-00000002YNN-0K6d;
-	Thu, 05 Mar 2026 21:03:53 +0000
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+	id 1vyFrR-00000002YRI-0lUo;
+	Thu, 05 Mar 2026 21:03:57 +0000
+Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyFrK-00000002YKO-3OaO
+	id 1vyFrM-00000002YLe-0XAY
 	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Mar 2026 21:03:51 +0000
-Received: by mail-oi1-x22e.google.com with SMTP id 5614622812f47-463208653d6so6285761b6e.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Mar 2026 13:03:50 -0800 (PST)
+	Thu, 05 Mar 2026 21:03:53 +0000
+Received: by mail-oi1-x234.google.com with SMTP id 5614622812f47-45effa36208so5736016b6e.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 05 Mar 2026 13:03:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1772744629; x=1773349429; darn=lists.infradead.org;
+        d=baylibre-com.20230601.gappssmtp.com; s=20230601; t=1772744631; x=1773349431; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=z+oK1HC6mjzut6Jep3O4wnFAo1gcFVDix5BbI9g78wE=;
-        b=rxujHouObnO9v5pgrx9i+M2MByAbkWl7rFwSCaF1WGgB0RuQxNaPL15Qvmm6Un2VYB
-         T3KYwWLw4HIje6/OV1hD52dnHtYYPTYCIaI4H848UZaJgwZcu9/EtJZInPTDWcUzuo7W
-         J/FMFgddqm22HafgBPwBWwUh6nw4B5cL6tVd2Je2cm9PAEkYflgQZWiyLw11w8t7X+qF
-         S+g0g/c1ewd0LCcG2tWKXcEjyYZdgOK5l1UUQNOeQ0TtiJED/h0KIp6Sza35lSvPGO5Y
-         RlxZX3DukhTCfK1tpfzK6eHJlaN7cukItv7MElI7RTGsJyYzKfxWdHG0UvoeFmH8T3dU
-         soGQ==
+        bh=UcA4dGEpWdmHw4cn/b0YaR4yqWgiR2CVpGOd1+AB5JA=;
+        b=U3Ph/uV7YjHgNok5PPbWZpB7TPH9mqk45rniGjDBLOns6ZiJSUKyo31dToGa5PJ0nK
+         6GMCAd/Kvw8RR+qkHPI0Z+Fw5ihSlD4uvkpmyWo06sk+w2TKKKLh2J/kLv836ALwctXT
+         mWGxNeLyH7jbwfSVz2aH2xdJ4vn56g4/0Ev4w5yuNCcB0qn4UDDZ+aZKrQXeZymArDJN
+         qr0Rz/bBXqR1uMSAW/wO8p8OpTHEYUh8Cnerm7yAc4kugycp49+pYerBjWin0iprQpI6
+         YSAiUkHkxsh60s3GKu/kfwp0koWB/OCtvN/x2su0XID2SaA4vGysStJ168BRcdFDXOH/
+         NSWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772744629; x=1773349429;
+        d=1e100.net; s=20230601; t=1772744631; x=1773349431;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=z+oK1HC6mjzut6Jep3O4wnFAo1gcFVDix5BbI9g78wE=;
-        b=RETX4eQlhvI/8eKQuVnOFDxlU0K7nmJcFy31oMOhzvXtX7jtsFEgbIzAgW4U467v8r
-         B3KblWuPtscstG0412sq/U3FyOMBg02t9MhOJRYsp5Jw3L7khwdXzkhBpUFWgycVIC0l
-         ZoeBoUWsHf2c9ndDAAP3ih+CNCKBHsHjwbuBagN7M3FJ7lHkNHxpxoHjM12ko4VBOXvW
-         sBfj8cPkgGDyxZ4ws91PRnVLnhXtVJTlJBhBGBviDSknxEqjgMbOpTBKGjOmnbEXAwnQ
-         ZzdBxXcrWqTjwn6SnTzkYQ46It1v9CNMUVAy7qCWNXn8eO4yvbQPFoyBHBD8FLn1qDt3
-         wpUg==
-X-Forwarded-Encrypted: i=1; AJvYcCWTrA6IUwyIdBXFmJ+aJ8UnYUEH9bbmVOW2lXju9d59RVaRTTEPnaVUzElPr2KJN3QLSt7evyI3m63JSXXDeQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwgKxWt3dnS/XekvqNnH798dEi81hDB/ScGSANpD/A6+EO7hQdf
-	6ZTdFGNhXIbwkf0/ysGPawXj2ogrVtDa4tBF+6E6OVNqJ3tg3EI1lxzfBZ44u7hg6So=
-X-Gm-Gg: ATEYQzw+hlBqKbHdMieOfuQGDNxk3vtbyP9EfGa41PBT7HOJskYmQASHhpagpMj00Vk
-	RDUvCaxE+pR6Hs8u+44gJhb82JjRYlvA03Fi6pTfqES4InBJb4Ma5ELKcYw00sE3lVzirFDU+lm
-	GU6DKEYl0Om7jdnsgqP/TpS19onr9eETfmoYjiS/lKmH9nsCVTN10fRBq6rYa5mEzrdzmswJyW0
-	oPegkwMk1eh8aHpH/UKs+DXOi316uscEhur1zFDh6OkoqJ5OHOQviEEEo/BwFNPNRV12/5t0k8/
-	siQW4xjWEUOetTZIKIe8bR4HUhX7OAmOMvQBMDtQNODSmrGCN6zufo7iJdBrMH5GM5HMXY4erjh
-	mJeww6rst1UodAU5VMtoq/fgRxnxNrYwJW/RqUqQeJPmgPOPcI1X1qP1hKYhAG+a6WWV6Tj7MRm
-	OiU01GYFnS9qG7ssw0+91r0jmfzug1
-X-Received: by 2002:a05:6808:1245:b0:45c:83dc:fab with SMTP id 5614622812f47-4651ac9d13emr3575899b6e.40.1772744629200;
-        Thu, 05 Mar 2026 13:03:49 -0800 (PST)
+        bh=UcA4dGEpWdmHw4cn/b0YaR4yqWgiR2CVpGOd1+AB5JA=;
+        b=W4xfTJywB/IRwxu6BEjG13QO5+SPYUSSev/Zw5Ysw+5IIA7oD110FxhYis5rLcZtPa
+         WHP7bF92i0BwpRt/y9lnX52lIyT6oCOPj2G6PCUR3CRKlXWny1tsczn/L3NSyoqMYneB
+         g1cxHmhK4K91x/APljwWsfUbAaME+eIwfDSkC8hVPRpuF4+0MGn+l42GaWdMMo37clUK
+         NH6K5nZ2+HTsWOcTALwRwIGHKPoNB6/1JKH0+56qcESQwynPeZRtvN67PuZ8RM2Z2r12
+         oHQ+JNzs1cLfceUe8yRU0gOP5uz3ZKZd6AbZzbAWB+USg2nDHxmPDDCn9XYae2OMwepW
+         Ep6g==
+X-Forwarded-Encrypted: i=1; AJvYcCWrsHKAbh8PVTx01DnIwHXZGN+iQ+tCoUAeO8oS9gRJUwDCpK5TegN9cwc3w05oQCV/RK+WdSg6Q7Ye5Tahkw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxAA/F3B9TeP1Y/BJotrJC7wGhIN6TfAhk7hBkmOH/aKt1AVdFR
+	/Kjhe3uy9NuM3BdFvZaLZ3IU5ATdwZgfY7XiU6XXFvorpruZ6w77VoSRlIS6O41qXrU=
+X-Gm-Gg: ATEYQzzGC+15dUmDvQlpp9i0rQdef7z6eyxZ5VQrZvS0z0pajL8BOsEjalc5xgfT4Ac
+	2MnT9P8sCS9J5IFGPSERiIiz5aKqMMG2WUT+VunAntCkPj9MAjS2+dTXJn60kQdXiZTFmFoQCR4
+	5fVFtCdIhe+trf7HcEq50kDXGRj9AypwoTsZo1V3+ErpmNE8OoThouhzhqM3oeKsViXdGU/Hwwh
+	hE07EhsjVJBap5IL+5HfpiydLWnvq11rNtzJIipzTGUjfDPl89kpZCmo7wLZrlj+DO/cIMUY0uQ
+	ntVGUuBuPMqdrko6aLZM76kW6lASgVhtwjixZbd+7ZHIQNkqYkw6HuJTWV0alpTXv6dZv9l9vh6
+	m6StvsMSoEPaWquiYsBWkQ0iLKzWH9Vq/OReQgP1Tixi399hYBdQvKLum67DtePZgo2hr4jwcob
+	KM6BNZ25iUfZiRz/dGoDXeqXmspjS0
+X-Received: by 2002:a05:6808:3a1b:b0:45a:770c:d77b with SMTP id 5614622812f47-466d868336cmr549783b6e.35.1772744630984;
+        Thu, 05 Mar 2026 13:03:50 -0800 (PST)
 Received: from [127.0.1.1] ([2600:8803:e7e4:500:874e:e775:4f67:b3a5])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-464bb5d0a8csm13729227b6e.14.2026.03.05.13.03.47
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-464bb5d0a8csm13729227b6e.14.2026.03.05.13.03.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Mar 2026 13:03:48 -0800 (PST)
+        Thu, 05 Mar 2026 13:03:49 -0800 (PST)
 From: David Lechner <dlechner@baylibre.com>
-Date: Thu, 05 Mar 2026 15:03:16 -0600
-Subject: [PATCH v2 1/3] arm: dts: mediatek: mt7623: fix pinctrl child node
- names
+Date: Thu, 05 Mar 2026 15:03:17 -0600
+Subject: [PATCH v2 2/3] arm: dts: mediatek: mt7623: fix pinctrl controller
+ node name
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260305-mtk-fix-mt7623-pinctl-name-v2-1-a68854a51065@baylibre.com>
+Message-Id: <20260305-mtk-fix-mt7623-pinctl-name-v2-2-a68854a51065@baylibre.com>
 References: <20260305-mtk-fix-mt7623-pinctl-name-v2-0-a68854a51065@baylibre.com>
 In-Reply-To: <20260305-mtk-fix-mt7623-pinctl-name-v2-0-a68854a51065@baylibre.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -87,20 +87,20 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  David Lechner <dlechner@baylibre.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6122; i=dlechner@baylibre.com;
- h=from:subject:message-id; bh=bGcKPNGpFeozhudmOX3FNcg6vxKf4h+qA1CKaUdGf+U=;
- b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBpqe+d7EE4rhdk4vjfQsOiPJGSMVnkLsNCSHlEp
- YFUaYvHIxKJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaanvnQAKCRDCzCAB/wGP
- wASKB/4h28IF0/kyGOSl3y9PbwIuXm2RmgroWH8anCAiU7ebKlnD1eqDy+CS39rt05DKxbvePe8
- 0h4Of+toERsemkKi0uzfMg60PnsXSIoN0WTRmcnreybKsPbX/STQXxoP2Zk2xYo/otY95qxiUsQ
- UtMs94iw/pbyPS2cr9RggZY2JUzi/notP92My0Z9R6zvBdGvhJhRpGAkbWMvSvvNhKpjJtTqxYU
- sC8xpeqoXShPsA4MLADbNZASU7O20B/WZL2lnF7i7mfhFvW1V3XWf0kxCv6h8vnCaMSroWJECkG
- bk39848EWFzcJGOZmtjFB0a5EKTzTA/iTfSe6GofdQD6s9bv
+X-Developer-Signature: v=1; a=openpgp-sha256; l=748; i=dlechner@baylibre.com;
+ h=from:subject:message-id; bh=eCmJ2QYY/pzXcaJOToFECzaVPUqi4rn0enxXy1DnBG8=;
+ b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBpqe+keeDzlj/E9xT/ACGFnG7mZ1wqlrX2M/rwS
+ 3c+QMzSXkOJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCaanvpAAKCRDCzCAB/wGP
+ wPkSB/9rDXk0Atd75mMJ7zGgLiDNplnqqhch8xpKQT3e9Hrrvm4iPLGSt+OGOW205Azmy+tC/wI
+ V02tpJATSjdnLprbEYQvZwXlAyJ6AxL7C4EQJO55whtjDwp96tVdYsdOq37NizfgirQDCONMJoI
+ P63sli4TVU1sOfExOxVoKxV7i9KfdxuGEWYsLIwPew6A2tX7waOgNQB2JQT33CSnNFaxbQISdTC
+ U0HHTprNfh8M069tJGkqrS0uYLUY0DeY68TgBMwIbquiB1J6K0ZTJpXBwxLUCeMc/wB1QvVzU+W
+ aYD8s63dWpUxCzNW7hbBKeH573kI4/JE+9A07USkrsXZPLnm
 X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
  fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_130350_861706_82063228 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20260305_130352_176092_D071FCD7 
+X-CRM114-Status: GOOD (  10.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,240 +115,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the pinctrl child node names to adhere to the bindings. The main pin
-node is supposed to be named like "something-pins" and the pinmux node
-named like "pins-something".
+Correct the pinctrl controller node name to use the same address as the
+reg property.
 
 Signed-off-by: David Lechner <dlechner@baylibre.com>
 ---
- arch/arm/boot/dts/mediatek/mt7623.dtsi | 62 +++++++++++++++++-----------------
- 1 file changed, 31 insertions(+), 31 deletions(-)
+ arch/arm/boot/dts/mediatek/mt7623.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm/boot/dts/mediatek/mt7623.dtsi b/arch/arm/boot/dts/mediatek/mt7623.dtsi
-index 71ac2b94c6ba..f34f60cde594 100644
+index f34f60cde594..aa42377b47da 100644
 --- a/arch/arm/boot/dts/mediatek/mt7623.dtsi
 +++ b/arch/arm/boot/dts/mediatek/mt7623.dtsi
-@@ -1017,14 +1017,14 @@ bdpsys: syscon@1c000000 {
- };
- 
- &pio {
--	cir_pins_a:cir-default {
-+	cir_pins_a: cir-default-pins {
- 		pins-cir {
- 			pinmux = <MT7623_PIN_46_IR_FUNC_IR>;
- 			bias-disable;
- 		};
+@@ -249,7 +249,7 @@ pericfg: syscon@10003000 {
+ 		#reset-cells = <1>;
  	};
  
--	i2c0_pins_a: i2c0-default {
-+	i2c0_pins_a: i2c0-default-pins {
- 		pins-i2c0 {
- 			pinmux = <MT7623_PIN_75_SDA0_FUNC_SDA0>,
- 				 <MT7623_PIN_76_SCL0_FUNC_SCL0>;
-@@ -1032,40 +1032,40 @@ pins-i2c0 {
- 		};
- 	};
- 
--	i2c1_pins_a: i2c1-default {
--		pin-i2c1 {
-+	i2c1_pins_a: i2c1-default-pins {
-+		pins-i2c1 {
- 			pinmux = <MT7623_PIN_57_SDA1_FUNC_SDA1>,
- 				 <MT7623_PIN_58_SCL1_FUNC_SCL1>;
- 			bias-disable;
- 		};
- 	};
- 
--	i2c1_pins_b: i2c1-alt {
--		pin-i2c1 {
-+	i2c1_pins_b: i2c1-alt-pins {
-+		pins-i2c1 {
- 			pinmux = <MT7623_PIN_242_URTS2_FUNC_SCL1>,
- 				 <MT7623_PIN_243_UCTS2_FUNC_SDA1>;
- 			bias-disable;
- 		};
- 	};
- 
--	i2c2_pins_a: i2c2-default {
--		pin-i2c2 {
-+	i2c2_pins_a: i2c2-default-pins {
-+		pins-i2c2 {
- 			pinmux = <MT7623_PIN_77_SDA2_FUNC_SDA2>,
- 				 <MT7623_PIN_78_SCL2_FUNC_SCL2>;
- 			bias-disable;
- 		};
- 	};
- 
--	i2c2_pins_b: i2c2-alt {
--		pin-i2c2 {
-+	i2c2_pins_b: i2c2-alt-pins {
-+		pins-i2c2 {
- 			pinmux = <MT7623_PIN_122_GPIO122_FUNC_SDA2>,
- 				 <MT7623_PIN_123_HTPLG_FUNC_SCL2>;
- 			bias-disable;
- 		};
- 	};
- 
--	i2s0_pins_a: i2s0-default {
--		pin-i2s0 {
-+	i2s0_pins_a: i2s0-default-pins {
-+		pins-i2s0 {
- 			pinmux = <MT7623_PIN_49_I2S0_DATA_FUNC_I2S0_DATA>,
- 				 <MT7623_PIN_72_I2S0_DATA_IN_FUNC_I2S0_DATA_IN>,
- 				 <MT7623_PIN_73_I2S0_LRCK_FUNC_I2S0_LRCK>,
-@@ -1076,8 +1076,8 @@ pin-i2s0 {
- 		};
- 	};
- 
--	i2s1_pins_a: i2s1-default {
--		pin-i2s1 {
-+	i2s1_pins_a: i2s1-default-pins {
-+		pins-i2s1 {
- 			pinmux = <MT7623_PIN_33_I2S1_DATA_FUNC_I2S1_DATA>,
- 				 <MT7623_PIN_34_I2S1_DATA_IN_FUNC_I2S1_DATA_IN>,
- 				 <MT7623_PIN_35_I2S1_BCK_FUNC_I2S1_BCK>,
-@@ -1088,7 +1088,7 @@ pin-i2s1 {
- 		};
- 	};
- 
--	key_pins_a: keys-alt {
-+	key_pins_a: keys-alt-pins {
- 		pins-keys {
- 			pinmux = <MT7623_PIN_256_GPIO256_FUNC_GPIO256>,
- 				 <MT7623_PIN_257_GPIO257_FUNC_GPIO257> ;
-@@ -1096,7 +1096,7 @@ pins-keys {
- 		};
- 	};
- 
--	led_pins_a: leds-alt {
-+	led_pins_a: leds-alt-pins {
- 		pins-leds {
- 			pinmux = <MT7623_PIN_239_EXT_SDIO0_FUNC_GPIO239>,
- 				 <MT7623_PIN_240_EXT_XCS_FUNC_GPIO240>,
-@@ -1104,7 +1104,7 @@ pins-leds {
- 		};
- 	};
- 
--	mmc0_pins_default: mmc0default {
-+	mmc0_pins_default: mmc0-default-pins {
- 		pins-cmd-dat {
- 			pinmux = <MT7623_PIN_111_MSDC0_DAT7_FUNC_MSDC0_DAT7>,
- 				 <MT7623_PIN_112_MSDC0_DAT6_FUNC_MSDC0_DAT6>,
-@@ -1130,7 +1130,7 @@ pins-rst {
- 		};
- 	};
- 
--	mmc0_pins_uhs: mmc0 {
-+	mmc0_pins_uhs: mmc0-uhs-pins {
- 		pins-cmd-dat {
- 			pinmux = <MT7623_PIN_111_MSDC0_DAT7_FUNC_MSDC0_DAT7>,
- 				 <MT7623_PIN_112_MSDC0_DAT6_FUNC_MSDC0_DAT6>,
-@@ -1158,7 +1158,7 @@ pins-rst {
- 		};
- 	};
- 
--	mmc1_pins_default: mmc1default {
-+	mmc1_pins_default: mmc1-default-pins {
- 		pins-cmd-dat {
- 			pinmux = <MT7623_PIN_107_MSDC1_DAT0_FUNC_MSDC1_DAT0>,
- 				 <MT7623_PIN_108_MSDC1_DAT1_FUNC_MSDC1_DAT1>,
-@@ -1188,7 +1188,7 @@ pins-insert {
- 		};
- 	};
- 
--	mmc1_pins_uhs: mmc1 {
-+	mmc1_pins_uhs: mmc1-uhs-pins {
- 		pins-cmd-dat {
- 			pinmux = <MT7623_PIN_107_MSDC1_DAT0_FUNC_MSDC1_DAT0>,
- 				 <MT7623_PIN_108_MSDC1_DAT1_FUNC_MSDC1_DAT1>,
-@@ -1207,7 +1207,7 @@ pins-clk {
- 		};
- 	};
- 
--	nand_pins_default: nanddefault {
-+	nand_pins_default: nand-default-pins {
- 		pins-ale {
- 			pinmux = <MT7623_PIN_116_MSDC0_CMD_FUNC_NALE>;
- 			drive-strength = <8>;
-@@ -1236,15 +1236,15 @@ pins-we {
- 		};
- 	};
- 
--	pcie_default: pcie_pin_default {
--		pins_cmd_dat {
-+	pcie_default: pcie-default-pins {
-+		pins-cmd-dat {
- 			pinmux = <MT7623_PIN_208_AUD_EXT_CK1_FUNC_PCIE0_PERST_N>,
- 				 <MT7623_PIN_209_AUD_EXT_CK2_FUNC_PCIE1_PERST_N>;
- 			bias-disable;
- 		};
- 	};
- 
--	pwm_pins_a: pwm-default {
-+	pwm_pins_a: pwm-default-pins {
- 		pins-pwm {
- 			pinmux = <MT7623_PIN_203_PWM0_FUNC_PWM0>,
- 				 <MT7623_PIN_204_PWM1_FUNC_PWM1>,
-@@ -1254,7 +1254,7 @@ pins-pwm {
- 		};
- 	};
- 
--	spi0_pins_a: spi0-default {
-+	spi0_pins_a: spi0-default-pins {
- 		pins-spi {
- 			pinmux = <MT7623_PIN_53_SPI0_CSN_FUNC_SPI0_CS>,
- 				<MT7623_PIN_54_SPI0_CK_FUNC_SPI0_CK>,
-@@ -1264,7 +1264,7 @@ pins-spi {
- 		};
- 	};
- 
--	spi1_pins_a: spi1-default {
-+	spi1_pins_a: spi1-default-pins {
- 		pins-spi {
- 			pinmux = <MT7623_PIN_7_SPI1_CSN_FUNC_SPI1_CS>,
- 				<MT7623_PIN_199_SPI1_CK_FUNC_SPI1_CK>,
-@@ -1273,7 +1273,7 @@ pins-spi {
- 		};
- 	};
- 
--	spi2_pins_a: spi2-default {
-+	spi2_pins_a: spi2-default-pins {
- 		pins-spi {
- 			pinmux = <MT7623_PIN_101_SPI2_CSN_FUNC_SPI2_CS>,
- 				 <MT7623_PIN_104_SPI2_CK_FUNC_SPI2_CK>,
-@@ -1282,28 +1282,28 @@ pins-spi {
- 		};
- 	};
- 
--	uart0_pins_a: uart0-default {
-+	uart0_pins_a: uart0-default-pins {
- 		pins-dat {
- 			pinmux = <MT7623_PIN_79_URXD0_FUNC_URXD0>,
- 				 <MT7623_PIN_80_UTXD0_FUNC_UTXD0>;
- 		};
- 	};
- 
--	uart1_pins_a: uart1-default {
-+	uart1_pins_a: uart1-default-pins {
- 		pins-dat {
- 			pinmux = <MT7623_PIN_81_URXD1_FUNC_URXD1>,
- 				 <MT7623_PIN_82_UTXD1_FUNC_UTXD1>;
- 		};
- 	};
- 
--	uart2_pins_a: uart2-default {
-+	uart2_pins_a: uart2-default-pins {
- 		pins-dat {
- 			pinmux = <MT7623_PIN_14_GPIO14_FUNC_URXD2>,
- 				 <MT7623_PIN_15_GPIO15_FUNC_UTXD2>;
- 		};
- 	};
- 
--	uart2_pins_b: uart2-alt {
-+	uart2_pins_b: uart2-alt-pins {
- 		pins-dat {
- 			pinmux = <MT7623_PIN_200_URXD2_FUNC_URXD2>,
- 				 <MT7623_PIN_201_UTXD2_FUNC_UTXD2>;
+-	pio: pinctrl@10005000 {
++	pio: pinctrl@1000b000 {
+ 		compatible = "mediatek,mt7623-pinctrl";
+ 		reg = <0 0x1000b000 0 0x1000>;
+ 		mediatek,pctl-regmap = <&syscfg_pctl_a>;
 
 -- 
 2.43.0
