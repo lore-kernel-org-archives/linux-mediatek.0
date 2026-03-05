@@ -4,106 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34E13EEF31D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 08:35:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C56FEEF31C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 08:47:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yLBGalo57vHOv1WNYDlPXNDnXZSeJOaXNTWEV+IhS+I=; b=Iqxy8eF5by4k59paL/Q9SuCoPQ
-	NIOdMo38/G+Edcl4H1SM1X9YIF758YXhIGVBTse1YaS2jqfOM1ROvEVZUDYEGfk2mmciOvb/Usr0r
-	i5u8GC2HRd2+l55S1iQ8OwyikZ5abJBhIVV4OPO09/RpTmTkMm6HQvWMFwBwd4oo9cNbiaZNW6XYC
-	UJh8KBUrwPPyV6QVMMa6oBZZUkre2e+quVXOhsJEXpE51zOXasQsSHBOdEG5yZ5ZDap8W5kqIJ6fR
-	3MEaW9DjDqzUiGLkuCM25dI5X6XVNxrxQxogOiIsPDGQtM3vKk4sbhSnhRJdlTfT/4iMotnG1KVZr
-	uI5ET0hQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=q2hDVk7MoGPKcJzsuuiN+gEfkiCKeW5o4nvJAeHnfvA=; b=GiSHIvtwyNVbhR6ScAyjm46d8z
+	SFO8ISFyIXGOw3R9Pm6wFZPTkNLwbqhzEFiJx6oLyq0nOSUFOZnwAh3bZuCmCXjcRr3y8cHF3KrlR
+	IlKTV66DCBHOJ5Eg4INkc8fHMkq9AWKiGSr3fEwBm1kxPZMWSMkr88cNpnoeLumpNvWExkOJZgu4u
+	qPIRPby3M4Vl39dKs1XO5+nqcLIJFwA8xN7rLdfBOUtnwqRwIGHOHpzeR3O0FAI7K/dXYxf9Sh7Wt
+	Or5s6XzPmg2lFQJM3YB6wRGBY815/rKOOd7necqnzKhp6ESD3su43gaUbVn+ryUdvZ+CrBPvL82tu
+	VW6cjmIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy4BK-00000001D3z-01YF;
-	Thu, 05 Mar 2026 08:35:42 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vy4MV-00000001EYF-2K3P;
+	Thu, 05 Mar 2026 08:47:15 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy4BI-00000001D3S-0IhQ;
-	Thu, 05 Mar 2026 08:35:40 +0000
+	id 1vy4MT-00000001EY0-3Vdk;
+	Thu, 05 Mar 2026 08:47:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=q2hDVk7MoGPKcJzsuuiN+gEfkiCKeW5o4nvJAeHnfvA=; b=ENWvTV8Kjrfvybph96slwlmHRd
+	RapJMjCSbMm8ODoOD4N+zUPQbG3qIv4lmuV+3t3RxVgf4VfzSIVgDq87VvRG+ACKBibhtzClTJT4r
+	QVYVQ5XPI3qvbLzCpD5P6lM0HdPeM8hSZ0DKB+7cBcd0Adf4O4oyNuLCizFp3B9etiNZCTAhiFmb9
+	rVuVohdai89bymC5U+ZansvKJ3OypFRp+amiA0ZHCUBn8u4jkD149WpkUom839EnEn54gl8Cp8G5m
+	1zkk82RWjRMrUOwqUqnshtZruW6l5aOd3NVKq4tZAi7iZVGRKVCdlT6PkUl1lmYgwEfP5OqF0ixgH
+	mgNN6Bdw==;
+Received: from sea.source.kernel.org ([172.234.252.31])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vy4MQ-00000006Et4-1zAw;
+	Thu, 05 Mar 2026 08:47:12 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7FB736183B;
-	Thu,  5 Mar 2026 08:35:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C92D1C2BC9E;
-	Thu,  5 Mar 2026 08:35:36 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id B327141841;
+	Thu,  5 Mar 2026 08:47:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07CD4C116C6;
+	Thu,  5 Mar 2026 08:47:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772699739;
-	bh=3v6ksIsFjXtAFArpUEQxRqYodXW8WJg7q6b2KM6dLzk=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=tEWW85oBilPtIYiRrI/hP8fqzpoo++/VR64x9A/+8Lk0zZ2MoZY2jy7aHmMg7Xb5x
-	 zR1nsG9ST58czXlzl1si77TA5vbHAscMXQVIKwTCp0SQtPhlJJyD5twYJPCpTBbYkS
-	 LcIrgvaiLzjF30l2e6S0yL5XgICKvtoHi7zoka2v40NL+C+egAjTRS0mOP3zVZ2jfX
-	 zsg/d+y01GusFZex0B4D9BGXkCRY3z1Q2j5Hpd/2riN4cw2fA0TO1/ryEoj+xKZ0Zd
-	 6jhIdRcPWRdYm7mQYnlCptySzvnE7UOruc0bNasyQp04qxKUU48RwswfZB4xYXgEQQ
-	 kF0ZkoHyyr/mA==
-Message-ID: <9edef237-aab3-4f7f-a86d-ec8796ba87fe@kernel.org>
-Date: Thu, 5 Mar 2026 09:35:35 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] dt-bindings: arm: mediatek: Add Lenovo YOGA Tablet
- 8/10
+	s=k20201202; t=1772700426;
+	bh=gsMJJgM+sLQv9rst3VO6I/wn5nnKEdijZ7APePySFCs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ct5SFawGnA/+5V2qUS3BhhIEvFOJJLJ3BxGblhVFI1uw3uV/pfGxqY2MWnQ7Ay4q3
+	 ODRaryMaSmOBl9rJe3yUTKHGWiucwTdwyDJzmR0M341bxqDyNHzl40JfHZA2yTt/gI
+	 YyV5QMAJOFKsggf5gO74TxD8eJmH8ntaW4LYi7/7vaQLFyoJq2gfgU3UlPp7Kq/OY8
+	 qEfdRtOGudInbsKoHZOeiUw7Yaw8hCtw0OY3NaqcpdBRu9tCIRKSdBnf+/Um5peutI
+	 nNeaz+U/TJYde3ViIhck6TdnyhNjVY74ku3hZHqT4pFcNRrX6yvPlIICkRmU+aAZS4
+	 uZeket75KD0FQ==
+Date: Thu, 5 Mar 2026 09:47:04 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Akari Tsuyukusa <akkun11.open@gmail.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- sean.wang@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20260304192417.818211-1-akkun11.open@gmail.com>
- <20260304192417.818211-2-akkun11.open@gmail.com>
- <20260305-fair-jasper-barracuda-5ae1e6@quoll>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20260305-fair-jasper-barracuda-5ae1e6@quoll>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: Meiker Gao <ot_meiker.gao@mediatek.com>
+Cc: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Bayi Cheng <bayi.cheng@mediatek.com>, 
+	Chuanhong Guo <gch981213@gmail.com>, linux-spi@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	sirius.wang@mediatek.com, vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
+Subject: Re: [PATCH] spi: dt-bindings: mediatek,spi-mtk-nor: Add clock
+ bindings for mt8189
+Message-ID: <20260305-inquisitive-spider-of-glamour-28b9db@quoll>
+References: <20260305022740.2334033-1-ot_meiker.gao@mediatek.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20260305022740.2334033-1-ot_meiker.gao@mediatek.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260305_084710_891762_F9BE3336 
+X-CRM114-Status: GOOD (  21.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,40 +91,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/03/2026 09:27, Krzysztof Kozlowski wrote:
-> On Thu, Mar 05, 2026 at 04:24:16AM +0900, Akari Tsuyukusa wrote:
->> Add the "lenovo,blade" compatible string for the Lenovo YOGA Tablet 8/10
->> family and add compatible strings for each board
->> (B6000-F, B6000-H, B8000-F, B8000-H).
->>
->> These tablets are based on the "blade" platform, featuring 1GB of RAM
->> and powered by MediaTek MT8125 or MT8389 SoCs. Since these SoCs are
->> tablet-oriented variants of the MT6589, they are grouped under the
->> "mediatek,mt6589" compatible string.
->>
->> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
->> ---
->>  Documentation/devicetree/bindings/arm/mediatek.yaml | 5 +++++
->>  1 file changed, 5 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
->> index 382d0eb4d0af..69dbe389515c 100644
->> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
->> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
->> @@ -44,6 +44,11 @@ properties:
->>        - items:
->>            - enum:
->>                - fairphone,fp1
->> +              - lenovo,b6000-f
->> +              - lenovo,b6000-h
->> +              - lenovo,b8000-f
->> +              - lenovo,b8000-h
+On Thu, Mar 05, 2026 at 10:27:36AM +0800, Meiker Gao wrote:
+> Update mediatek,spi-mtk-nor.yaml to add conditional clock and
+> clock-names bindings for the mt8189-nor platform. The mt8189-nor
+> controller requires five specific clocks and corresponding clock-names
+> ("spi", "sf", "axi_f", "axi_h", "axi_p"). This change enforces these
+> requirements in the device tree binding schema.
 > 
-> I don't see users of few of these. Also, explain in commit msg
-> differences between 'f' and 'h'.
+> For other platforms, the minimum number of clocks and clock-names
+> remains unchanged. The patch also adds an example for mt8189-nor,
+> illustrating the new clock configuration.
+> 
+> This update ensures correct hardware description and validation for
+> mt8189-nor, improving compatibility and reducing configuration errors.
+> 
+> Signed-off-by: Meiker Gao <ot_meiker.gao@mediatek.com>
+> 
+> ---
 
-I don't see the "blade" used either.
+Not tested so limited review.
+
+>  .../bindings/spi/mediatek,spi-mtk-nor.yaml    | 78 ++++++++++++++++---
+>  1 file changed, 68 insertions(+), 10 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
+> index a453996c13f2..7e551f2cb52c 100644
+> --- a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
+> +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
+> @@ -17,8 +17,6 @@ description: |
+>    for devices other than SPI NOR flash due to limited transfer
+>    capability of this controller.
+>  
+> -allOf:
+> -  - $ref: /schemas/spi/spi-controller.yaml#
+>  
+>  properties:
+>    compatible:
+> @@ -39,6 +37,7 @@ properties:
+>        - items:
+>            - enum:
+>                - mediatek,mt8188-nor
+> +              - mediatek,mt8189-nor
+>            - const: mediatek,mt8186-nor
+>  
+>    reg:
+> @@ -56,14 +55,12 @@ properties:
+>                       design, so this is optional.
+>        - description: clock used for controller axi slave bus.
+>                       this depends on hardware design, so it is optional.
+> -
+> -  clock-names:
+> -    minItems: 2
+> -    items:
+> -      - const: spi
+> -      - const: sf
+> -      - const: axi
+> -      - const: axi_s
+> +      - description: clock used for controller axi fast bus (axi_f).
+> +                     Required for new platforms, such as mt8189.
+> +      - description: clock used for controller axi high-speed bus (axi_h).
+> +                     Required for new platforms, such as mt8189.
+> +      - description: clock used for controller axi peripheral bus (axi_p).
+> +                     Required for new platforms, such as mt8189.
+
+No, I don't understand why you remove names. This is not expected.
+Please also read writing schema and writing bindings docs explaining how
+to organize properties with variable lengths. There is plenty of
+examples to follow.
+
+>  
+>  required:
+>    - compatible
+> @@ -71,6 +68,42 @@ required:
+>    - clocks
+>    - clock-names
+>  
+> +allOf:
+> +  - $ref: /schemas/spi/spi-controller.yaml#
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: mediatek,mt8189-nor
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 5
+> +          maxItems: 5
+
+
+> +        clock-names:
+> +          minItems: 5
+> +          maxItems: 5
+
+Pointess. Drop.
+
+> +          items:
+> +            - const: spi
+> +            - const: sf
+> +            - const: axi_f
+> +            - const: axi_h
+> +            - const: axi_p
+> +    else:
+> +      properties:
+> +        clocks:
+> +          minItems: 2
+> +          maxItems: 2
+
+ABI change without explanation. Don't mix multiple changes into one
+commit.
+
+> +        clock-names:
+> +          minItems: 2
+> +          maxItems: 2
+> +          items:
+> +            - const: spi
+> +            - const: sf
+> +            - const: axi
+> +            - const: axi_s
+
+Plain wrong. So either 2 or 4.
+
+> +
+>  unevaluatedProperties: false
+>  
+>  examples:
+> @@ -97,3 +130,28 @@ examples:
+>          };
+>        };
+>      };
+> +
+> +  - |
+> +    #include <dt-bindings/clock/mt8189-clk.h>
+> +
+> +    soc {
+> +      #address-cells = <2>;
+> +      #size-cells = <2>;
+> +
+> +      nor_flash: spi@1100d000 {
+
+No, drop entire example.
 
 Best regards,
 Krzysztof
+
 
