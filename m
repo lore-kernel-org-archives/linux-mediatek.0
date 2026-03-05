@@ -4,68 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEB83F33A75
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 14:50:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBC9BF33A7E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 15:04:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dC4AdHv0QYyGquh1fcr0YPCzjOaUif1MG0lxoDw/qwU=; b=4P2rTfpsi6GuiTNV/9xRFhucNL
-	jyOvFzriThjKBkbKjosNYT1QI6FywIS9f2mvhaYEbNRQnCQAPZxdrHlzS9DG7QBiPmyKqPJONTtnL
-	hmQwNPuNoOrv1XLdQt0fIM23SGAvl+4h2kNBQWlfi4Jjcsxpa2ETXEciRPlnE55Ls3a1i5Hxwaq0P
-	7mkS9z8/HPYXkIAXs+2OnNaxykD64IYxVlLvXsfJG1pNB6qwIW3mn/mP6v11A4FZBsvmZZMBSf2PD
-	M9hnuKmB0L9OxQ8IFW/1LN1ViqwnyOp8ruFCZIar+SZwau529qDzOMVB33YwwfGQIHJKPl4ni+Vk5
-	s+/0ITNQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GyfEWDA4WY/JVJH+sN9E8894942o4AuX6wqzVKR7s0o=; b=jAWh5Qk7xF9A64AQDfmDoOeC0E
+	KCmZ0R5n+tXE1ZqvXQ5dnboXKowNVG8t5lQBq+qiFjVkpJL+PO7MToSSvl5xqMuaxDyKfwMfaO7Hj
+	GTTDBhys3xDBZLO02a1gOhI+5uN4nrN+BnGeGwyBZGodiPP4lnQMqeb8GDoPtML83YS1MzVKw2jc3
+	2NUCewD36StlFx/Apd3MmoNrlhz9fP1taq2PnrFJy2QTrmU9pRus4ZE5pXmKfONuDEF6RrwsQRA09
+	mhtQr/y0kLD6CXzNfZ1Wox8aAUfLKbn/n1lL70Ej0iOnkkUDeLVBz2hxS9ClY+8lfbeqZBoF+464z
+	9ft+jySA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyA1h-000000024CD-37mP;
-	Thu, 05 Mar 2026 14:50:09 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vyAFx-000000025FM-0PVc;
+	Thu, 05 Mar 2026 15:04:53 +0000
+Received: from mo4-p01-ob.smtp.rzone.de ([85.215.255.53])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyA1e-000000024Bo-1w6s;
-	Thu, 05 Mar 2026 14:50:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A6791438D7;
-	Thu,  5 Mar 2026 14:50:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7FC36C116C6;
-	Thu,  5 Mar 2026 14:50:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772722205;
-	bh=/WZhfj/29xuJ8osr61NntsurluVSN8see7f/hVhr8Co=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=SP9Q5uyzcmI8WcYuzR/Z8kBFrPNZ6Uy5on/4zN7Z3Copa0y37o6bxt9XelVOJsyjt
-	 8MxWnKFYpmaMIUQu/9YIFMDzeX6ybkG2q5gTIXFiZnGY+bMorwnnDuSYCK//qFTnoF
-	 SPlYrKUE9En4fH4dNPVurX1VdnYFeLrDQkhxiXVMnyp1gjOV/i/W0b4v7nNpmiaPRD
-	 8n892+bsTNtCsuQ23HAphMmcQliInVzJ+eCdjBb7D5vuzDB3mN64E1Swiq70q3xJnS
-	 PnWTgkHnWTmPv7u6+CIpcYMfgq//srGhQwITKfUPFOxomBc3rhw3ImS8Uz0PqfrGds
-	 Ttelth+aqwUOw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id B9EC73808200;
-	Thu,  5 Mar 2026 14:50:06 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1vyAFu-000000025Ei-3AUT;
+	Thu, 05 Mar 2026 15:04:52 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1772723084; cv=none;
+    d=strato.com; s=strato-dkim-0002;
+    b=cw4m37SOvk8u7b9ffp1hw9PhdWe11RmUm9AziYiNGzXYouhmCt9WhPUIIRjdNPXjJq
+    6PHfaodLGvgSyf7mKWV62+fqql0Ks+6szfCtMr1I+gdiZYSOJs4TgBIrrlDdsnwZAG2r
+    aYDhUmpoKVe5mcGCo+zng3cvNgchf53GHRZRdLyItCF8bzkSQ08KmBxO9s8G+HlDFT5V
+    tUoVqEU9LFvNGHc71KBdTeLO0++63QtmaRI95p21GjY7ndFqOxLm3j/mVr+QiVDIRRAT
+    WyIh1Pqk2ZSrKdb+oF4qoZ5MrDrQn833OyOu6Q9Tx02jSvI5vcZ6P9nwZjkY9LHHMHzl
+    ON8A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; t=1772723084;
+    s=strato-dkim-0002; d=strato.com;
+    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=GyfEWDA4WY/JVJH+sN9E8894942o4AuX6wqzVKR7s0o=;
+    b=SzhKspfABu22MxjYbpof4D4qXJH077/WPXs+E6FSiwuXMU/1oxDLqdjJyLtk1ObXKk
+    Qy7RQwUFkq4U1y6b0jicRWmqEcYtZKkbGWGtBD9QouNhpf7wNmWfTuxOMcHtQHO1gxWg
+    DNEXZug4l9cSZz/pRoSue0cRllLhwA0jUKvyUwiCA+HTb7Fq8rx5jQr8TyrJNhgqDFs6
+    Mq+cQwmMMEYdq2G+RQJPAYfC3MlwCfX4IgDg49X2yF7pkd7o4QQIevl7+keUieRE1n+S
+    KGKmXvWcTyG+HWMhTESKBXmlQ/rfvm0M+T70eDl4qPGLA+pJEDRFOBl6LpxD+0QIVj2h
+    jD3w==
+ARC-Authentication-Results: i=1; strato.com;
+    arc=none;
+    dkim=none
+X-RZG-CLASS-ID: mo01
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1772723084;
+    s=strato-dkim-0002; d=iokpp.de;
+    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=GyfEWDA4WY/JVJH+sN9E8894942o4AuX6wqzVKR7s0o=;
+    b=Ivu5PIdLe657vURoySW9zhV5BcRkIGzQS9+Q5Xt9ocPIW1Te2r0gwnf1P6Uy/DW9u0
+    Nb+/8EEaf0LdB00bTXANLcGq48MpPQEBekNLakrA7vcRDxutObNxfb747fqhPYN6wOqm
+    wa5sTTIuduFF80x6p75uQXiOqV1mwUVcZmFC68R4ap7TvCDwz7oEDtiGvtHREm0X0KKt
+    EiMZIG9F/8Nvl7ssut917fGxPGYuZwOhx0Kdu1YMdvpSdWPnz9vDAh6FEeQhcIqO/Ydq
+    HkUIm3nFVO3gTK4YckgXWMjdzPLXabl1RbLF9UX4OVKQG0Q3Ng3pwuuOYwkS0UdIwN38
+    HIzA==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; t=1772723084;
+    s=strato-dkim-0003; d=iokpp.de;
+    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
+    From:Subject:Sender;
+    bh=GyfEWDA4WY/JVJH+sN9E8894942o4AuX6wqzVKR7s0o=;
+    b=UwRwlIrvUlqsxvhWnwFKEUi5e7iADlH5h+t66RJbZEC+WpmOsIRA7DyMrjSQAOBfNk
+    tG6MBjwHM+9Mxc3tuGAQ==
+X-RZG-AUTH: ":LmkFe0i9dN8c2t4QQyGBB/NDXvjDB6pBSe9tgBDSDt0V0DBslXBtZUxPOub3IZqk"
+Received: from [10.176.235.211]
+    by smtp.strato.de (RZmta 55.0.1 AUTH)
+    with ESMTPSA id z79345225F4h63E
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256 bits))
+	(Client did not present a certificate);
+    Thu, 5 Mar 2026 16:04:43 +0100 (CET)
+Message-ID: <e116e78ad9590f5845aaaf7d4e26833a7a0194d0.camel@iokpp.de>
+Subject: Re: [PATCH v2 00/11] scsi: ufs: Add TX Equalization support for UFS
+ 5.0
+From: Bean Huo <beanhuo@iokpp.de>
+To: Can Guo <can.guo@oss.qualcomm.com>, avri.altman@wdc.com,
+ bvanassche@acm.org,  beanhuo@micron.com, martin.petersen@oracle.com
+Cc: linux-scsi@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "open
+ list:ARM/Mediatek SoC support:Keyword:mediatek"
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC
+ support:Keyword:mediatek" <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
+ <linux-mediatek@lists.infradead.org>
+Date: Thu, 05 Mar 2026 16:04:43 +0100
+In-Reply-To: <20260304135313.413688-1-can.guo@oss.qualcomm.com>
+References: <20260304135313.413688-1-can.guo@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.4-0ubuntu2.1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net v2] net: ethernet: mtk_eth_soc: Reset prog ptr to
- old_prog in case of error in mtk_xdp_setup()
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <177272220555.3153977.11048346484291533386.git-patchwork-notify@kernel.org>
-Date: Thu, 05 Mar 2026 14:50:05 +0000
-References: <20260303-mtk-xdp-prog-ptr-fix-v2-1-97b6dbbe240f@kernel.org>
-In-Reply-To: <20260303-mtk-xdp-prog-ptr-fix-v2-1-97b6dbbe240f@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: nbd@nbd.name, sean.wang@mediatek.com, andrew+netdev@lunn.ch,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- ast@kernel.org, daniel@iogearbox.net, hawk@kernel.org,
- john.fastabend@gmail.com, sdf@fomichev.me, pvalerio@redhat.com,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, bpf@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_065006_540489_919290F6 
-X-CRM114-Status: UNSURE (   7.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260305_070451_070730_0BB3B71F 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,29 +111,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Can,=20
 
-This patch was applied to netdev/net.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
+On Wed, 2026-03-04 at 05:53 -0800, Can Guo wrote:
+> Hi,
+>=20
+> The UFS 5.0 standard was published today,=C2=A0
 
-On Tue, 03 Mar 2026 18:56:39 +0100 you wrote:
-> Reset eBPF program pointer to old_prog and do not decrease its ref-count
-> if mtk_open routine in mtk_xdp_setup() fails.
-> 
-> Fixes: 7c26c20da5d42 ("net: ethernet: mtk_eth_soc: add basic XDP support")
-> Suggested-by: Paolo Valerio <pvalerio@redhat.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
+Myabe replace time sensitive wording =E2=80=9Cpublished today=E2=80=9D with=
+ stable wording?
 
-Here is the summary with links:
-  - [net,v2] net: ethernet: mtk_eth_soc: Reset prog ptr to old_prog in case of error in mtk_xdp_setup()
-    https://git.kernel.org/netdev/net/c/0abc73c8a40f
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+> introducing support for HS-G6
+> (23.2 Gbps per lane) through the new UniPro V3.0 interconnect layer and
+> M-PHY V6.0 physical layer specifications. To achieve reliable operation
+> at these higher speeds, UniPro V3.0 introduces TX Equalization and
+> Pre-Coding mechanisms that are essential for signal integrity.
+>=20
+> This patch series implements TX Equalization support in the UFS core
+> driver as specified in UFSHCI v5.0, along with the necessary vendor
+> operations and a reference implementation for Qualcomm UFS host
+> controllers.
+>=20
+> Background
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>=20
+> TX Equalization is a signal conditioning technique that compensates for
+> channel impairments at high data rates (HS-G4 through HS-G6). It works
+> by adjusting two key parameters:
+>=20
+> - PreShoot: Pre-emphasis applied before the main signal transition
+> - DeEmphasis: De-emphasis applied after the main signal transition
+>=20
+> UniPro V3.0 defines TX Equalization Training (EQTR) procedure to
+> automatically discover optimal TX Equalization settings. The EQTR
+> procedure:
+>=20
+> 1. Starts from the most reliable link state (HS-G1)
+> 2. Iterates through all possible PreShoot and DeEmphasis combinations
+> 3. Evaluates signal quality using Figure of Merit (FOM) measurements
+> 4. Selects the best settings for both host and device TX lanes
+>=20
+
+what happens when EQTR fails, mabye you have this comments in the patch.
+
+Kind regards,
+Bean
 
 
 
