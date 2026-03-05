@@ -4,92 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88B5BEEF32A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 08:51:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AAE0EEF331
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Mar 2026 09:00:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t6TRgPq7DKxCDmOZh4rGAZ9xbu66Z1j+cgR3cmV0iYU=; b=Oahjis1QZH0tGCpIgfGI2qrMAZ
-	lHPIQumicUFR5GQY97XiurzynFsrgu5Zk+9zrP01CKzoCgbFazeWi65HbMTbDNC5jgYWV3v2vigIc
-	LwS4rVSe7MvI6pmY9U/Woczqy5pmZCBSqT1t2qYFBW9ysCG1tlr9R0l1OV8YeCDBQOZNoib+Ysv8N
-	zAgQs4vpAc+1wuQHyCSAy3oy1TdoL/H/CmnvZYQgKFSKPFpsCpj+5YFDtF+Z7ppQ6cZVrR+xv85VS
-	6vSIVcRJR6KeTeWm2l5gk481cG5YPIK1VZrX5tzqiC0wOUvR0j19QQfxN9TMNv2UaRfKp+mZGNhmE
-	moFMJLVw==;
+	bh=pey75eEThoEnHQjSmZ+IVIhI1hTMvdMzabhpITD61Sw=; b=j1XoUkzr1iISgDhE+olq3Znyk7
+	6bmm9YT528juikFDn75NUW/MTODIKxhPeIZY7DiLEjnLlLBinpspaIJnATb3qYw6DTd2tnOUcITOv
+	vb5xq5FiZdZEZCyWTlTaZca+EJixwLWRigWz/7BluhlXh27frdBQOnKJyxtbvRjYArBLRKV0mkprG
+	f4TVan5meiXtLcq2kaxARRg98NFq+dLizu+cD6r9fdfslXJvPn8YFQsZNUSV2lWjjARjtHlj3SoWa
+	d9kv5CnG9MdDn9oY5zHqwry8T6nVsiTAToU7wEPQslovWpqa0a+edtsAQYwOzL2iCWMvnO6Yz4bo4
+	ns8vW9Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy4Qx-00000001FFY-2Ugx;
-	Thu, 05 Mar 2026 08:51:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vy4ZJ-00000001GbW-0VJ7;
+	Thu, 05 Mar 2026 09:00:29 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy4Qw-00000001FEp-1j2s;
-	Thu, 05 Mar 2026 08:51:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=t6TRgPq7DKxCDmOZh4rGAZ9xbu66Z1j+cgR3cmV0iYU=; b=fMH/aucrDLEuItbcN4vaR+9hXy
-	Qor8t0o1LYtC34cOB5Kkr3daQ8hPd4jvYU6Dt5RFmxlFYNG8kRoxNt8mp0ayNJ8Av4RASuK+p+g8x
-	MyD+V/8SC+qvxwyLa7HAewbPanJge8vctIq6Ahy/+dyUXH4fSKMNwD9xeTIOlikH2DxK3LLsm607b
-	+R3USvHnJfAl4aiTyswh0DZCjCXNQA2FrOwe6y3U93+QoRwtX73GSa4sGLoMaa0DhcnQwhO7QmwB7
-	AFayGkLI2l6wRtQeNYN8vV/R/IoDIsoLIinOz2CbLKS/cceExpaIiqeQ0JuJ1lwRty8MH/NTq/FoV
-	6pVMF4WA==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy4Qs-00000006FYe-2EmS;
-	Thu, 05 Mar 2026 08:51:49 +0000
-X-UUID: 62bb29a8186e11f1a16f0188aa809bee-20260305
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=t6TRgPq7DKxCDmOZh4rGAZ9xbu66Z1j+cgR3cmV0iYU=;
-	b=UCUbdqIvDYpMCCaFrsSpARAzhm/yhivo/IvE+2AAWtOp9I1zq3i47hRPwLuVknWJpm98n8BwKoS5Ck0Dg3NJY1ypOEwzLswUqKl/u9HiOe3Ll7RcduCNJ6pw565TxGj9RDqTS5SiMITW1YW5fm0foeey2RXjMhdw4cRlFCHra4E=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:72aee5c8-babf-4966-9ee5-5b30b8ef7ac0,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:44654af1-16bd-4243-b4ca-b08ca08ab1d8,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|123|836|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 62bb29a8186e11f1a16f0188aa809bee-20260305
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
-	(envelope-from <ed.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1627339890; Thu, 05 Mar 2026 01:36:20 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 5 Mar 2026 16:36:18 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 5 Mar 2026 16:36:18 +0800
-From: <ed.tsai@mediatek.com>
-To: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>, "James E.J. Bottomley"
-	<James.Bottomley@HansenPartnership.com>, "Martin K. Petersen"
-	<martin.petersen@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: Ed Tsai <ed.tsai@mediatek.com>, <linux-scsi@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH 1/2] ufs: core: Add quriks for VCC ramp-up delay
-Date: Thu, 5 Mar 2026 16:29:14 +0800
-Message-ID: <20260305083610.2672344-2-ed.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260305083610.2672344-1-ed.tsai@mediatek.com>
-References: <20260305083610.2672344-1-ed.tsai@mediatek.com>
+	id 1vy4ZF-00000001Gan-0XtV;
+	Thu, 05 Mar 2026 09:00:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1772701198; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=lZfdoF0se+mb5+rKW3KIqtNlypck4va7ch7J6QBw6dUuT9PG7Mg2DtmmnmSOZcJBGJCQeujXNJMd9/j2iapWzg/H0MpTIrtOzXpbWBYZdiB10UQuZ22YyE/K9vgHdonXDaThW1s0jZcBfNhUa/WjYgVB/FLjYVYbdA/BHbtG8BE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1772701198; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=pey75eEThoEnHQjSmZ+IVIhI1hTMvdMzabhpITD61Sw=; 
+	b=bWxyTbb1c9KT/sVbuLa54G5M3uZaF3ilAlI5btjv7vp3TFNx9U6g7NjWJR0micoyjac6ydlvSj/z6jzQrdzH5eWuICh3Jm/0C79xbpitClcnt676RAn0RVoY8ASkpCnSUwsDZ6RHYrdbcwl6eQGWwCiPZrccNzTEdNGCH+Zc/wE=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
+	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772701198;
+	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
+	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
+	bh=pey75eEThoEnHQjSmZ+IVIhI1hTMvdMzabhpITD61Sw=;
+	b=e0UEYfXBhyAFq0y9vrEVYrrtrDV+uEf53upMxDmuKue8e4yinFtsSbdw123xNaeg
+	Lsuk0z/ghpooX4ZF8vY7jCIUDwf9AvIkwX67N6LwDGWZQMVmRJLuDZSgB3oTrUzZ3ti
+	kpeJCU/HB3t4SxItxDjqa+Z6fpEDS/0AnHpj47k4=
+Received: by mx.zohomail.com with SMTPS id 1772701196666782.1404033627674;
+	Thu, 5 Mar 2026 00:59:56 -0800 (PST)
+Message-ID: <cb788f76740e88418d55ce9345e54d482969ff5a.camel@collabora.com>
+Subject: Re: [PATCH net-next 1/2] dt-bindings: net: Add support for Airoha
+ AN8801/R GbE PHY
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+To: Maxime Chevallier <maxime.chevallier@bootlin.com>, Andrew Lunn	
+ <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet	 <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
+ Abeni	 <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit	 <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>
+Cc: kevin-kw.huang@airoha.com, macpaul.lin@mediatek.com,
+ matthias.bgg@gmail.com, 	kernel@collabora.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, 	linux-kernel@vger.kernel.org
+Date: Thu, 05 Mar 2026 09:59:50 +0100
+In-Reply-To: <4a073736-9caf-4973-b7ad-a482d63bb672@bootlin.com>
+References: <20260304-add-airoha-an8801-support-v1-0-0ae4ee5a2f9d@collabora.com>
+	 <20260304-add-airoha-an8801-support-v1-1-0ae4ee5a2f9d@collabora.com>
+	 <4a073736-9caf-4973-b7ad-a482d63bb672@bootlin.com>
+Organization: Collabora Ltd
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_085147_403321_FA252BE8 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20260305_010025_230138_7A0796CF 
+X-CRM114-Status: GOOD (  19.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,78 +90,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ed Tsai <ed.tsai@mediatek.com>
+Hi Maxime,
 
-On some platforms, the VCC regulator has a slow ramp-up time. Add a
-delay after enabling VCC to ensure voltage has fully stabilized before
-we enable the clocks.
+On Wed, 2026-03-04 at 11:14 +0100, Maxime Chevallier wrote:
+> Hi Louis-Alexis,
+>=20
+> On 04/03/2026 10:35, Louis-Alexis Eyraud wrote:
+> > From: AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com>
+> >=20
+> > Add a new binding to support the Airoha AN8801R Series Gigabit
+> > Ethernet PHY.
+> >=20
+> > Signed-off-by: AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: Louis-Alexis Eyraud
+> > <louisalexis.eyraud@collabora.com>
+> > ---
+> > =C2=A0.../devicetree/bindings/net/airoha,an8801.yaml=C2=A0=C2=A0=C2=A0=
+=C2=A0 | 81
+> > ++++++++++++++++++++++
+> > =C2=A01 file changed, 81 insertions(+)
+> >=20
+> > diff --git
+> > a/Documentation/devicetree/bindings/net/airoha,an8801.yaml
+> > b/Documentation/devicetree/bindings/net/airoha,an8801.yaml
+> > new file mode 100644
+> > index
+> > 0000000000000000000000000000000000000000..f251c9d2fbbed3675c9fd7ff2
+> > 2174049a13a7b5e
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/net/airoha,an8801.yaml
+> > @@ -0,0 +1,81 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: http://devicetree.org/schemas/net/airoha,an8801.yaml#
+> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > +
+> > +title: Airoha AN8801R Series PHY
+> > +
+> > +maintainers:
+> > +=C2=A0 - AngeloGioacchino Del Regno
+> > <angelogioacchino.delregno@collabora.com>
+> > +
+> > +description:
+> > +=C2=A0 The Airoha AN8801R is a low power single-port Ethernet PHY
+> > Transceiver
+> > +=C2=A0 with Single-port serdes interface for 1000Base-X/RGMII; this
+> > chip is
+> > +=C2=A0 compliant with 10Base-T, 100Base-TX and 1000Base-T IEEE
+> > 802.3(u,ab)
+> > +=C2=A0 and supports Energy Efficient Ethernet (802.3az), Full Duplex
+> > Control
+> > +=C2=A0 Flow (802.3x), auto-negotiation, crossover detect and
+> > autocorrection,
+> > +=C2=A0 Wake-on-LAN with Magic Packet, and Jumbo Frame up to 9
+> > Kilobytes.
+> > +=C2=A0 This PHY also supports up to three user-configurable LEDs, whic=
+h
+> > are
+> > +=C2=A0 usually used for LAN Activity, 100M, 1000M indication.
+> > +
+> > +allOf:
+> > +=C2=A0 - $ref: ethernet-phy.yaml#
+> > +
+> > +properties:
+> > +=C2=A0 compatible:
+> > +=C2=A0=C2=A0=C2=A0 enum:
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - ethernet-phy-idc0ff.0421
+> > +
+> > +=C2=A0 reg:
+> > +=C2=A0=C2=A0=C2=A0 maxItems: 1
+> > +
+> > +=C2=A0 leds: true
+> > +
+> > +required:
+> > +=C2=A0 - reg
+> > +=C2=A0 - leds
+>=20
+> Seems odd to me that leds are required. Any reason for that ?
+>=20
+> Maxime
+I agree having the leds as required property is unneeded.
+I'll change it in v2.
 
-Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 12 ++++++++++++
- include/ufs/ufshcd.h      |  6 ++++++
- 2 files changed, 18 insertions(+)
-
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 899e663fea6e..bea72e7c1d32 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -9942,11 +9942,13 @@ static void ufshcd_vreg_set_lpm(struct ufs_hba *hba)
- #ifdef CONFIG_PM
- static int ufshcd_vreg_set_hpm(struct ufs_hba *hba)
- {
-+	bool vcc_on = false;
- 	int ret = 0;
- 
- 	if (ufshcd_is_ufs_dev_poweroff(hba) && ufshcd_is_link_off(hba) &&
- 	    !hba->dev_info.is_lu_power_on_wp) {
- 		ret = ufshcd_setup_vreg(hba, true);
-+		vcc_on = true;
- 	} else if (!ufshcd_is_ufs_dev_active(hba)) {
- 		if (!ufshcd_is_link_active(hba)) {
- 			ret = ufshcd_config_vreg_hpm(hba, hba->vreg_info.vccq);
-@@ -9957,6 +9959,7 @@ static int ufshcd_vreg_set_hpm(struct ufs_hba *hba)
- 				goto vccq_lpm;
- 		}
- 		ret = ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, true);
-+		vcc_on = true;
- 	}
- 	goto out;
- 
-@@ -9965,6 +9968,15 @@ static int ufshcd_vreg_set_hpm(struct ufs_hba *hba)
- vcc_disable:
- 	ufshcd_toggle_vreg(hba->dev, hba->vreg_info.vcc, false);
- out:
-+	/*
-+	 * On platforms with a slow VCC ramp-up, a delay is needed after
-+	 * turning on VCC to ensure the voltage is stable before the
-+	 * reference clock is enabled.
-+	 */
-+	if (hba->quirks & UFSHCD_QUIRK_VCC_ON_DELAY && !ret && vcc_on &&
-+	    hba->vreg_info.vcc && !hba->vreg_info.vcc->always_on)
-+		usleep_range(1000, 1100);
-+
- 	return ret;
- }
- #endif /* CONFIG_PM */
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index 8563b6648976..bf50078708b9 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -690,6 +690,12 @@ enum ufshcd_quirks {
- 	 * because it causes link startup to become unreliable.
- 	 */
- 	UFSHCD_QUIRK_PERFORM_LINK_STARTUP_ONCE		= 1 << 26,
-+
-+	/*
-+	 * On some platforms, the VCC regulator has a slow ramp-up time. Add a
-+	 * delay after enable VCC to ensure it's stable.
-+	 */
-+	UFSHCD_QUIRK_VCC_ON_DELAY			= 1 << 27,
- };
- 
- enum ufshcd_caps {
--- 
-2.45.2
-
+Regards,
+Louis-Alexis
 
