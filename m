@@ -4,130 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A6B9FCC04D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 17:33:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA1A5FCC05A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 18:37:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JoxUailnxqD4N5w8qXVcbIyyjDZ8Yddmk4m7LSP/xvQ=; b=zncBVT87HRF6KCGR6jyYELOsUK
-	3fOoRNDVM30NFs9WTZP/akeDDKiMuoijfKl0i/fdqottxu6HBBDqlakAq1AK4ZtQ8VKtGsj5b3Zfk
-	N9UVtOKKKO2xQtLXpn9zCqCQXJvKV+yHqjCcFCrC+jOCjRuF6VZG+M5WVOa37J36V6Ff3M15AMXNT
-	t5QApFnLPFHZe5JnlOw7RfuFjj8LzlqzyjQwUUHmwZNF5MtG5OGuR80tVwWLvEdggH0qK59TZfYMl
-	PY7BMMEkDuEcxJEEkuRCqHEit05PHygawqUKL+VqWHsW1uDUAfC0TIXystpA3L5Ea434Fo1UYvdw0
-	3/qh2iXQ==;
+	bh=oKyKNZTQ3z66jWtSjSN1+R3K9aCPt08hx4nox97xvHk=; b=R2xaZXjwnImJXkrwgd5JhFEWB1
+	EG8IY1KXJn2b8nyc4XP84EY3qFDBjMY6cFJDFbNMgeHqERnIv/F60Jr5vbc+F5OlZ5nsfn8aV8Oxd
+	OnJEwQe76EqPRxMmbrNfEsG7a4AYWnlVQ6WZAkow1i4EqsUIpwUrnvCxl3CXt5PL6dY1rn0v7KgBT
+	3uFzO6vGbF3/sdrQdB7ecpKg7jtEFJfNeTRIe8/qVrLPQXullD1vWyAQR45+2tTe0jlKuG/EZgWdq
+	wYllt4M8Gr8SDSO9ronAYxkiarWGFlP42MvW9ulGw7M0lCpaKc0bBKmPILlkTGPwBW8PSD4qGWrPY
+	e8j7oJPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyZ3j-00000004HTR-0q8u;
-	Fri, 06 Mar 2026 17:33:55 +0000
-Received: from mail-francecentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20a::7] helo=PA4PR04CU001.outbound.protection.outlook.com)
+	id 1vya3Q-00000004LJv-1Ju5;
+	Fri, 06 Mar 2026 18:37:40 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyZ3g-00000004HSo-3Kof;
-	Fri, 06 Mar 2026 17:33:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=HhrCapx4B1EyEWUFJbYzysiINsJn5xKk6u4y146FdfbPq3AkiK32P1Wpk+yuBGhY35n4pahQXn+zecD1ANB1OXVEDB934VxRtDWWjpw6Z6KvyLuAQx7Ak4bQkrbvVmydBk+A+l1/u6HTJBqBharMBaXN3iaALcAcas/3GzQBLrHRBUicSfbfgreyW4K1YoNWITe+gMPO/XzjwzUHNoQigveq/f5jcWljCZyE5lEWvSRqJpUt/yAb/JV2Irl+yXMQ9WV1eKWuO5scJv00I9Mtb6gteleo/3O7GbgSUVpqVkmV5TFhGqAyOMLDiayb2hGx8zKMJKGmTkV8tnMs7lF9WA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=JoxUailnxqD4N5w8qXVcbIyyjDZ8Yddmk4m7LSP/xvQ=;
- b=B5Ageh7W4QxN2TElK0xHNWwIuxUhsUqzTc/r581S1LBY5k3IZ5AC8kK7JyIgzwDnn0Ux6TpIYOMsk+6BMNQ1EJbgSw1VlJSRCcLLCWElieCElNRs9+/qDeux4MQbOOPUCR1VdA9+c4Cmlmjr4gPxGvvtT8DQ1RvDPa65FPZzFY8lotWDhcffwehy9jmD6+pKCP/Dz3b6V5XNnsvu/s8vXLGb9WZiYgOg/vubrRGb/uZZKYUIWY4gicQUAxgTEki23wNwpLzDXhRZIvrAEhwpgl+S6/VTitrb49knLJEkG/icRK+P7L3vHOl2Ga2i9tBhWcvDsCAWmJQ1bbt74GrrXA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JoxUailnxqD4N5w8qXVcbIyyjDZ8Yddmk4m7LSP/xvQ=;
- b=KH+kKFVagQe2Q/0Rb1RbTdDwpdoKs1OGAZMo4C/DS+FcapCfON6pTXj3b/gsWOMB7MQQVXZnMY4Beo9+FbAeeWxkx0mqoQy9l06LcGLQLc3L6oXW0bhSQ8HBDOyMguDEhpDHKJjl3HD+4cjpT8OwRq2mO8n9hLA2Dyr+1RamAhqcGSAr4+DsK59j1RSt52/+huMobE2C1kKBbacc8TV695TD+pKnsHZRzGmNsf+8XMtB50rs6MaNBUHyCCfcizUM6FQEDUlmRdX2hhc2azr+U9u1F/GgK98zsKCDWK/rdu5dZx6paL+GCG4Pi0H2XaWDBXCQEu3WLpFO5h82k44bRg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from PA4PR04MB9366.eurprd04.prod.outlook.com (2603:10a6:102:2a9::8)
- by PA4PR04MB9319.eurprd04.prod.outlook.com (2603:10a6:102:2a6::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9678.18; Fri, 6 Mar
- 2026 17:33:44 +0000
-Received: from PA4PR04MB9366.eurprd04.prod.outlook.com
- ([fe80::75e4:8143:ddbc:6588]) by PA4PR04MB9366.eurprd04.prod.outlook.com
- ([fe80::75e4:8143:ddbc:6588%6]) with mapi id 15.20.9654.020; Fri, 6 Mar 2026
- 17:33:44 +0000
-Date: Fri, 6 Mar 2026 12:33:34 -0500
-From: Frank Li <Frank.li@nxp.com>
-To: daniel.lezcano@linaro.org, tglx@kernel.org
-Cc: shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
-	festevam@gmail.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, chun-hung.wu@mediatek.com,
-	walter.chang@mediatek.com, jstultz@google.com,
-	amergnat@baylibre.com, aisheng.dong@nxp.com, jindong.yue@nxp.com,
-	xuegang.liu@nxp.com
-Subject: Re: [PATCH v5 3/4] clocksource/drivers/timer-mediatek: Convert
- timer-mediatek to a loadable module
-Message-ID: <aasP7rlglXyghfYY@lizhi-Precision-Tower-5810>
-References: <20260306085021.1231032-4-zhipeng.wang_1@nxp.com>
- <20260306165140.293012-1-Frank.Li@nxp.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260306165140.293012-1-Frank.Li@nxp.com>
-X-ClientProxiedBy: PH8P223CA0007.NAMP223.PROD.OUTLOOK.COM
- (2603:10b6:510:2db::10) To PA4PR04MB9366.eurprd04.prod.outlook.com
- (2603:10a6:102:2a9::8)
+	id 1vya3L-00000004LJC-1BQ5;
+	Fri, 06 Mar 2026 18:37:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1772822232; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=VMEWbvz5Hnj4zLmKTQduz85HWk/983I4lo59idwq7q35KXDHwytP9XlKfLdFURo+P+b0UhCEdR14V13S4KY87hdQZDMScQ+TvwjJqFoYhxEXiHMH5Ahrwk47FTFBB0Qi/zU/i0FKZN98kxErgKtyMm9Vupd3WuL/roxAGAobj/s=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1772822232; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=oKyKNZTQ3z66jWtSjSN1+R3K9aCPt08hx4nox97xvHk=; 
+	b=XrWbKcUyPpthDMFxY696KrDfler1hA+RB2/7EjBkQRxuEz8wOG5h++7KXIzztVwSzrNFZiK6b9cfzGOXMrBhJQuiiEWZrEin96hapASASro8tOAR0ajl1LvedgcnggAxbqm4vtzvoW8HhDFoeOLAmKOcdYsBtRZIw/fV3PuixrI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772822232;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=oKyKNZTQ3z66jWtSjSN1+R3K9aCPt08hx4nox97xvHk=;
+	b=K2UYhZDqtQWwaDNMOSNXNi/NUilmovHzmHnxXpWOa4Bg9Pj9jPWEmhsIq/DNNgbM
+	c8vlhm5MZIhtvigANBjvTPU9lxq1duvw2Y3XrP0ZyU6WfG9JCa05+wUDHYGsJiuS/3L
+	ujchqcxj/xFKK1Y75VVQDxT2pQCRfszw5vxZ7yn4=
+Received: by mx.zohomail.com with SMTPS id 1772822230152545.7385167448177;
+	Fri, 6 Mar 2026 10:37:10 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ Bart Van Assche <bvanassche@acm.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
+ "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Chaotian Jing <Chaotian.Jing@mediatek.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, kernel@collabora.com,
+ linux-scsi@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ Conor Dooley <conor.dooley@microchip.com>
+Subject: Re: [PATCH v9 03/23] dt-bindings: ufs: mediatek,ufs: Add mt8196 variant
+Date: Fri, 06 Mar 2026 19:37:02 +0100
+Message-ID: <4089450.ElGaqSPkdT@workhorse>
+In-Reply-To: <20260306163305.GA2680515-robh@kernel.org>
+References: <20260306-mt8196-ufs-v9-0-55b073f7a830@collabora.com>
+ <20260306-mt8196-ufs-v9-3-55b073f7a830@collabora.com>
+ <20260306163305.GA2680515-robh@kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PA4PR04MB9366:EE_|PA4PR04MB9319:EE_
-X-MS-Office365-Filtering-Correlation-Id: fe5a00f8-e1da-4dd0-ef9a-08de7ba68387
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|52116014|366016|19092799006|1800799024|38350700014;
-X-Microsoft-Antispam-Message-Info: b8Cre9D2i0VS1oAPwmbD1yvuql/2i5B9lNEaJHuhFSkb4BU6xF92n8MFTWsrC3SVzB/emHaRx4jKdnp29LREhv3DxZy4sn493818aexcFEA0dnpWPhu/ijfKkM9E4b5Ieh5imBX7HPagZws3XAeMFl5jF9yUsRlS+gcMc9z3T46nBwl55NVHuOJRwIt4m1B8Xzv8LAcq7x3lWqKc+076hmce4BZ4V3AJrt1oOsVylSDaUKqmaoKZpVSM2UCoETdcQlry1CD+rPflRYEnuiA3arcKqmz3dNCbnhW/LrfMA7BgXzYJrSoR/bEI32wid60jeXGrBc07Smo0+dt/fWoSXyg9K23ScCiP9+n34kcacIohusb/Zx7G00FlDz8c+QPgQmIpxaIKDrolvi2I/ALRQruWh2iwXpjVWPUcOhWy79mgbm8WIT7ec6CKHoMlhhmfqpNjrm9DQoRmDUuth4/eAFYlEm4/y3c0S4fwlZxmswIbeztggISldwZT5CQwS6gyjUjFMXg41hbYYYvLpJzvDz657ZmL00ZRAlkKMu2dZI7c0HORHo7c9HFMqrLvjHxwMUKRyJ0LyzuJgqYPNEVl3CPYdqyCpydKalGAvQSTGoDDlqWBaHmsbyaJGcMfZ8bqY/ONQbV8UDzJpezToZYdCknJ+FUnHVzsOZi9QfHT/QOuET8xG+a3j/LM1c812whGHrOj37e9hOiETbPkR4gloofvKNqp3zE50RxdmYK9rPoC4UHGBxbVIKwqlZWmEgYqare3XPY0LUFuV+HlmjtyCV95AScAoEEAlwF7cvH46yw=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(52116014)(366016)(19092799006)(1800799024)(38350700014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?y9xpw3gOicZOHYTbk+KC5jHK7innEvouk5j12hI22iwt8jv/1Tow4lswKd4N?=
- =?us-ascii?Q?izuDT7z+5jBl8cPluPMWtGRi2ApxMCWk/7cYercl+dM6apZBewbA30HPjknZ?=
- =?us-ascii?Q?TSXzFEMQNMTtvCjZGfehdJ1pgaQmyN9hBCP4R7yDNkefzPUO1C9OxwFS4b8B?=
- =?us-ascii?Q?TOt/sRuxll4wL7o/qmCJWPCRnOYwsEtV9yGo4/gisfzTy/NGewTSlE/m9HhE?=
- =?us-ascii?Q?To8x/xbOzj76ms4PIo6em5+EUl1da8R7Jc+08m9BbfrDwkJCBAppJUR2Jsoh?=
- =?us-ascii?Q?/mC1MUK5xSVuU7zY6l9DkPvyBc7tl2Qa4tF3ty2K74cx5jIYAu2KuYq/Al0o?=
- =?us-ascii?Q?RPaJlDLkpYqzAWjdzy6yT9USHw/oknufg6eyhAFEZKTJ039IIxCrbrlbVwf4?=
- =?us-ascii?Q?w1tJgcJwQeH564aZUHGyYfqkQeNRFslWOkHYn+nJoRe0ITrrodEZDxJVebJA?=
- =?us-ascii?Q?RmPWJR7bP1xHQYwsSfhFIIkMYDU8AjfiD7bVAy2jVl+ADPIwiUrQG8kCtXsg?=
- =?us-ascii?Q?hqOPPVtyQcvdvRaVtJ3nl8MBXf0ZHWBza+OnELxE77lHBWqAB8jXFTgJoAHu?=
- =?us-ascii?Q?BvAvdFANV4sUWhetx8F7edRQabOjZU6OX+z6dwEy5dPvWjVgdUfGxRdWKJOf?=
- =?us-ascii?Q?ZV9cEndudsg9Z2Nh2hBXjKGEOSzhJvS1k3wYWPLtH8P9WzogpZTVmgNcbdEL?=
- =?us-ascii?Q?VGIeq7vfVUSwRUN8Scxe3ENM/dtpZ/9oTyaRTnRjAscSs0Y/J7UiHeCU23H7?=
- =?us-ascii?Q?9TmWY3rsbYnmex5L1cklb65J5aLXIvmhMK62Iw/t9Jj3QkRMy3GkrT3jSQAx?=
- =?us-ascii?Q?WPEh5dnpW0XuVQ9VW4F7uBYR/kkv9EYvjvIJCFTVZkZ108BfRTSnux/7is/I?=
- =?us-ascii?Q?b/50mUlVLmhRsSLK5/HWy+1RWPHfehu2nLhVEmAtFwuHFgyswIDX+j8blnfO?=
- =?us-ascii?Q?+ig95NaqRZ2pwWq0iCE0awigPrji4YP18yFzoy+V6EbqnPq2oO1fAyuxjLnA?=
- =?us-ascii?Q?0W1UIsnYFozi9L5AHZfRzVEPcnVXkXvHyqRyDP0HJNVdYwEDJKJsjmGC17aV?=
- =?us-ascii?Q?7Tqk+tdkZ2pROvZnmDVqyOoMXG31+wetFXiW/JfzGvD3z4EcrSMAKMreP3Ba?=
- =?us-ascii?Q?FZuBCklay7qzarj/BIPez9Mm9h81jDkEj7b/wSPAKtXF2keNtoYHzq0MB4NS?=
- =?us-ascii?Q?sKL95MQsq6D1FZMIjxEArgH6zwqQdik/Z7EDWsHiiTry2GHA45N+spx3kv1y?=
- =?us-ascii?Q?FgTTGdmAB+q8nRyE2u8aHES0OHGTNd5C0Qn6ZvLsonD8Tx9NGIVHl99ZmKTq?=
- =?us-ascii?Q?N2C9+Q5RJ0Tso273Wv9Ayg7fJtZuGeGY8isN6L0McUjhG/B5DE1AwXOHFfot?=
- =?us-ascii?Q?KAh0BQrvmme6Igfl5corcTCVs+n98HCLGkOmWsCPfd6kPQudTsJMQzXgag73?=
- =?us-ascii?Q?32K+Bdlno3S+rl4BZwMdsl8W45EhgR3J5rXPceUoiM4n3sySypndKETOhBWF?=
- =?us-ascii?Q?MlAYobJ8+OvmcN2pt0nCwTndsioxmxLtDHIqqP0DI8F8bE7dKan/a7it+lEJ?=
- =?us-ascii?Q?q/LU/AkgbmtyBev6Sz7jUofeuBzyG4Dlz4WbW6Kn/gFaxdc/K9+X7YhfhYuk?=
- =?us-ascii?Q?9I1lSgAWj6cyCz7skpGOJoCYdImNFj0hB16J2lulwqoEP2AN8yBsjsTJWNJs?=
- =?us-ascii?Q?/A5iA110RwGXwplTMaeZV+meJLeNUNlbgZrZKnOz3DGIhnTN?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: fe5a00f8-e1da-4dd0-ef9a-08de7ba68387
-X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9366.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Mar 2026 17:33:43.5617
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: aT/EVs+SP1WT3PrDxrEAlWT67FqDfmI3AATAk2S+J6oGH2COJ7hxKTf9P0rU6osvJjJr7MnqcGynbWhqPhaS7A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA4PR04MB9319
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_093352_865436_F40DBF62 
-X-CRM114-Status: UNSURE (   6.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260306_103735_408554_606565A9 
+X-CRM114-Status: GOOD (  25.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,19 +93,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 06, 2026 at 11:51:39AM -0500, Frank Li wrote:
-> From: Frank Li (AI-BOT) <frank.li@nxp.com>
->
-> > +#include <linux/module.h>
-> > +#include <linux/of_device.h>
-> > +#include <linux/platform_device.h>
->
-> AI: Include headers should be sorted alphabetically. "of_device.h" should come
-> before "platform_device.h".
+On Friday, 6 March 2026 17:33:05 Central European Standard Time Rob Herring wrote:
+> On Fri, Mar 06, 2026 at 02:24:44PM +0100, Nicolas Frattaroli wrote:
+> > The MediaTek MT8196 SoC's UFS controller uses three additional clocks
+> > compared to the MT8195, and a different set of supplies. It is therefore
+> > not compatible with the MT8195.
+> > 
+> > While it does have a AVDD09_UFS_1 pin in addition to the AVDD09_UFS pin,
+> > it appears that these two pins are commoned together, as the board
+> > schematic I have access to uses the same supply for both, and the
+> > downstream driver does not distinguish between the two supplies either.
+> > 
+> > Add a compatible for it, and modify the binding correspondingly.
+> > 
+> > Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+> > Acked-by: Vinod Koul <vkoul@kernel.org>
+> > Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  .../devicetree/bindings/ufs/mediatek,ufs.yaml      | 58 +++++++++++++++++++++-
+> >  1 file changed, 57 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> > index e0aef3e5f56b..a82119ecbfe8 100644
+> > --- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> > +++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
+> > @@ -16,10 +16,11 @@ properties:
+> >        - mediatek,mt8183-ufshci
+> >        - mediatek,mt8192-ufshci
+> >        - mediatek,mt8195-ufshci
+> > +      - mediatek,mt8196-ufshci
+> >  
+> >    clocks:
+> >      minItems: 1
+> > -    maxItems: 13
+> > +    maxItems: 16
+> >  
+> >    clock-names:
+> >      minItems: 1
+> > @@ -37,6 +38,9 @@ properties:
+> >        - const: crypt_perf
+> >        - const: ufs_rx_symbol0
+> >        - const: ufs_rx_symbol1
+> > +      - const: ufs_sel
+> 
+> "ufs" is redundant as all the clocks are for UFS. Same comment on prior 
+> patch.
 
-Please forget it. Sorry for annoise.
+Is this naming a big enough concern to block this series with two
+explicit acks on this patch that fixes a wholly broken and useless
+binding?
 
-Frank
->
-> Frank
+> 
+> > +      - const: ufs_sel_min_src
+> > +      - const: ufs_sel_max_src
+> 
+> "src" sounds like a parent clock? If so, probably shouldn't be in the 
+> clocks list. 'assigned-clocks' is for dealing with parent clocks.
+> 
+
+I don't know what it is, and I have no way to consult any documentation
+that would tell me what it is. I am trying to put out this dumpster fire
+of a downstream turd that made its way into mainline as the review process
+has been completely subverted, and is only getting worse with each passing
+month that MediaTek is allowed to block this series from progressing while
+sneaking further changes through.
+
+> Rob
+> 
+
+
+
+
 
