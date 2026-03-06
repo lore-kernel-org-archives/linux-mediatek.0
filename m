@@ -4,81 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60F16F0183E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 14:21:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2638F51416
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 14:29:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ymvrjjPd//GaKYl9Ka0K/Hr4LIDzlDczwQ2BLU0KF2Q=; b=anigxug71J2un5L+1TK64bs/E7
-	s5cymkKdNMJGM6Xeub5YnUsTzViuL0D3xLqakkHjpruzXARexkfmNsK+KSBUUW8iIiKrblRtchBV2
-	HqCpHa4IepvVzXadIkJbdnB6wXlWwcCheVq39troKudS/tLminkb6yv3vwIywQaMSika0H83GKlO8
-	vlNXhBxy5l9xPHB5GJHyCghxHZ681vdG58tCjufiUgzrKcRSLShZpwsJGCX35GUsXBnwRKaaUqi/a
-	ufHA+I9QgwA9OImYZpbVkhmHtHbUG0BuP/TkO0OGrGxlHXWsW3CJx+ac5tpF2LbYvdJJukhaX2a0w
-	RWwNpdJw==;
+	bh=Vxe/0TVFmxaf8mHBTWsMLG13SrpPSU1L6Aa1bLInUCs=; b=UfZKrFQoD6Hpi+xWaUPSxrY/43
+	TR3QQqdLdzuNhQqSDij7+Cyvw+QWAhqIUJ50cSPMwOKGzbBaqjA/msu9LuUVelSOGu0o+NPUexb3s
+	kIrpArIWyHU1+52lMBo3cWfhm2ye3uQdZAlOb7u+poWM/29u32crgcq8Le5Zsm4ZXwFgH//9u3XiW
+	xnX5E3CZ8n4NHD/VEoZpEhbKO1EJs6lnyuaDJByspJtTDqJsR3Rk6hxz8GbMZ0wD9U67bXc89muLx
+	+E/AlTVamkMYM1qKjAbkkzu6nlcXTiT0Lb0v1ISa5cinuBlRyKcNig99jxnLWwBnckdGuk073RPBE
+	KjJ8hgdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyW3U-00000003tem-2nLU;
-	Fri, 06 Mar 2026 14:21:28 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1vyWAv-00000003ubD-2voP;
+	Fri, 06 Mar 2026 14:29:09 +0000
+Received: from mgamail.intel.com ([198.175.65.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyW3N-00000003teI-1sfV;
-	Fri, 06 Mar 2026 14:21:27 +0000
+	id 1vyWAq-00000003uaa-0EPI;
+	Fri, 06 Mar 2026 14:29:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1772806881; x=1804342881;
+  t=1772807345; x=1804343345;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=qrSWEQCzYdDInjoygqfLYRngEipu0GaqBoIRMKJNN88=;
-  b=beI8aZRrPiw57iTTUY+pmoGtR9Ni+IGO1x7GOWETJGZbdly0ODIyXtoP
-   QBKmvzO0Xp6OTclcYxwArfzH4TlIYayjoUjTinYJHh0v5of8zvJREMtnL
-   12mlwe6ww55Rii5ZctqNSgkasqna1DYP9tbIYPKOI2S7JcqodeK7pAW+X
-   dtr57aAYcMymW72Nf88MHEukcnY7kJF90akgsKuXjmTGHmT2sNgVYokFK
-   zaAV7IzBK++7UuFUCQeZa7JK/PyXW4IRVVJQXb9IaXTar/fkfB9yjiTkL
-   hMYDpRF/uwgm9INHqeCQBAy2UWk6X7cARij9NZKeavJx+kU00G2puIgJR
-   w==;
-X-CSE-ConnectionGUID: oq/ZI5jLSGaHOsnrD3lLmA==
-X-CSE-MsgGUID: pK0P/LxlRqqu5Grk7w0dDA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11721"; a="99385727"
+  bh=hKQUf5WDJPETTYg6XgZVG0XAdpM/T+JEq/CFscr1Cys=;
+  b=WH1t20P1vdLsd9hntlbAQrywomREUiMG0KHKpGvMwukYTvKiko9Jvmf/
+   4BubcwVADtamXGTm09L2c7A0hJEN71eBGMWlhn6w8oAcqfI5/WqGne0Ou
+   YkYwq01FUKezmPEAvcfzZ029CJQcSlPIPGZnPA/yKUS/1O4uGloPEdaEJ
+   sXshgQNba9LHOU4PY3ehC6O6BnmBSfp+TGh24/pwPiIBwzyDWRksHA8g1
+   I21FutR0kbV0s6vndZLlmdpBYmr4D9DPf/Q7v/pMFlxFyIwk/LAo4WMuI
+   2bg7Y8VlCfdbKkFz1Oo8xhf67WkVX9+bQf5RXkHDMtmipcD3CO918YnUu
+   g==;
+X-CSE-ConnectionGUID: 7n4m+NhTTbSfMGDSaHVTZw==
+X-CSE-MsgGUID: B9g5IH/rSQClhE7Ix4kRYw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11721"; a="73788751"
 X-IronPort-AV: E=Sophos;i="6.23,104,1770624000"; 
-   d="scan'208";a="99385727"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Mar 2026 06:21:18 -0800
-X-CSE-ConnectionGUID: Z6Kp7Gz/TD6nsUrJkzKytg==
-X-CSE-MsgGUID: 39iaiRcqTdiVpjYced1ksw==
+   d="scan'208";a="73788751"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Mar 2026 06:29:03 -0800
+X-CSE-ConnectionGUID: MTr7+eJASyulE9m7KCUGvw==
+X-CSE-MsgGUID: CljKMFE5RsuatuijuZIEVg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,104,1770624000"; 
-   d="scan'208";a="218252442"
 Received: from abityuts-desk.ger.corp.intel.com (HELO localhost) ([10.245.245.1])
-  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Mar 2026 06:21:12 -0800
-Date: Fri, 6 Mar 2026 16:21:09 +0200
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Hugo Villeneuve <hugo@hugovil.com>
-Cc: robin@protonic.nl, andy@kernel.org, geert@linux-m68k.org,
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	dmitry.torokhov@gmail.com, hvilleneuve@dimonoff.com,
-	mkorpershoek@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, lee@kernel.org,
-	alexander.sverdlin@gmail.com, marek.vasut@gmail.com, akurz@blala.de,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 4/4] Input: charlieplex_keypad: add GPIO charlieplex
- keypad
-Message-ID: <aari1Y1CPZSYEVj3@ashevche-desk.local>
-References: <20260305192101.2125660-1-hugo@hugovil.com>
- <20260305192101.2125660-5-hugo@hugovil.com>
+  by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Mar 2026 06:28:56 -0800
+Date: Fri, 6 Mar 2026 16:28:54 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Shuah Khan <skhan@linuxfoundation.org>, Tejun Heo <tj@kernel.org>,
+	Lai Jiangshan <jiangshanlai@gmail.com>,
+	Tobias Schrammm <t.schramm@manjaro.org>,
+	Sebastian Reichel <sre@kernel.org>,
+	Dan Carpenter <dan.carpenter@linaro.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>, Lee Jones <lee@kernel.org>,
+	Dzmitry Sankouski <dsankouski@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Matti Vaittinen <mazziesaccount@gmail.com>,
+	driver-core@lists.linux.dev, linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev,
+	stable@vger.kernel.org
+Subject: Re: [PATCH v2 00/10] workqueue / drivers: Add device-managed
+ allocate workqueue
+Message-ID: <aarkpqHShro9kE6-@ashevche-desk.local>
+References: <20260305-workqueue-devm-v2-0-66a38741c652@oss.qualcomm.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260305192101.2125660-5-hugo@hugovil.com>
+In-Reply-To: <20260305-workqueue-devm-v2-0-66a38741c652@oss.qualcomm.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_062121_528873_5BCF5CDB 
-X-CRM114-Status: GOOD (  19.74  )
+X-CRM114-CacheID: sfid-20260306_062904_166053_8EAE4D0C 
+X-CRM114-Status: GOOD (  17.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,141 +103,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 05, 2026 at 02:20:50PM -0500, Hugo Villeneuve wrote:
-
-> Add support for GPIO-based charlieplex keypad, allowing to control
-> N^2-N keys using N GPIO lines.
+On Thu, Mar 05, 2026 at 10:45:39PM +0100, Krzysztof Kozlowski wrote:
+> Merging / Dependency
+> ====================
+> All further patches depend on the first one, thus this probably should
+> go via one tree, e.g. power supply.  The first patch might be needed for
+> other trees as well, e.g. if more drivers are discovered, so the best if
+> it is on dedicated branch in case it has to be shared.
 > 
-> Reuse matrix keypad keymap to simplify, even if there is no concept
-> of rows and columns in this type of keyboard.
+> Changes in v2:
+> ==============
+> - See individual patches
+> - Link to v1: https://patch.msgid.link/20260223-workqueue-devm-v1-0-10b3a6087586@oss.qualcomm.com
+> 
+> Description
+> ===========
+> Add a Resource-managed version of alloc_workqueue() to fix common
+> problem of drivers mixing devm() calls with destroy_workqueue.  Such
+> naive and discouraged driver approach leads to difficult to debug bugs
+> when the driver:
+> 
+> 1. Allocates workqueue in standard way and destroys it in driver
+> remove() callback,
+> 2. Sets work struct with devm_work_autocancel(),
+> 3. Registers interrupt handler with devm_request_threaded_irq().
+> 
+> Which leads to following unbind/removal path:
+> 
+> 1. destroy_workqueue() via driver remove(),
+> Any interrupt coming now would still execute the interrupt handler,
+> which queues work on destroyed workqueue.
+> 2. devm_irq_release(),
+> 3. devm_work_drop() -> cancel_work_sync() on destroyed workqueue.
+> 
+> devm_alloc_workqueue() has two benefits:
+> 1. Solves above problem of mix-and-match devres and non-devres code in
+> driver,
+> 2. Simplify any sane drivers which were correctly using
+> alloc_workqueue() + devm_add_action_or_reset().
 
-...
+Thanks, this version LGTM, FWIW,
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-> --- a/drivers/input/keyboard/Makefile
-> +++ b/drivers/input/keyboard/Makefile
-> @@ -40,6 +40,7 @@ obj-$(CONFIG_KEYBOARD_LOCOMO)		+= locomokbd.o
->  obj-$(CONFIG_KEYBOARD_LPC32XX)		+= lpc32xx-keys.o
->  obj-$(CONFIG_KEYBOARD_MAPLE)		+= maple_keyb.o
->  obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
-> +obj-$(CONFIG_KEYBOARD_CHARLIEPLEX)	+= charlieplex_keypad.o
-
-Seem unordered. At least the all around it is ordered AFAICS.
-
->  obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
->  obj-$(CONFIG_KEYBOARD_MAX7360)		+= max7360-keypad.o
->  obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
-
-...
-
-> +/*
-> + * GPIO driven charlieplex keypad driver
-> + *
-> + * Copyright (c) 2025 Hugo Villeneuve <hvilleneuve@dimonoff.com>
-
-2026?
-
-> + *
-> + * Based on matrix_keyboard.c
-> + */
-
-...
-
-> +#include <linux/bitops.h>
-> +#include <linux/delay.h>
-> +#include <linux/dev_printk.h>
-> +#include <linux/device/devres.h>
-> +#include <linux/err.h>
-> +#include <linux/gpio/consumer.h>
-> +#include <linux/input.h>
-> +#include <linux/input/matrix_keypad.h>
-> +#include <linux/math.h>
-> +#include <linux/module.h>
-> +#include <linux/mod_devicetable.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/property.h>
-> +#include <linux/types.h>
-
-> +static void charlieplex_keypad_poll(struct input_dev *input)
-> +{
-> +	struct charlieplex_keypad *keypad = input_get_drvdata(input);
-
-> +	int oline;
-
-Why signed?
-
-> +	int code;
-> +
-> +	for (code = 0, oline = 0; oline < keypad->nlines; oline++) {
-
-Can be like
-
-	code = 0;
-	for (unsigned int oline = 0; oline < keypad->nlines; oline++) {
-
-as iterator is not used outside the loop.
-
-> +		DECLARE_BITMAP(values, MATRIX_MAX_ROWS);
-
-> +		int iline;
-
-Why signed?
-
-> +		int err;
-> +
-> +		/* Activate only one line as output at a time. */
-> +		gpiod_direction_output(keypad->line_gpios->desc[oline], 1);
-> +
-> +		if (keypad->settling_time_us)
-> +			fsleep(keypad->settling_time_us);
-> +
-> +		/* Read input on all other lines. */
-> +		err = gpiod_get_array_value_cansleep(keypad->line_gpios->ndescs,
-> +						     keypad->line_gpios->desc,
-> +						     keypad->line_gpios->info, values);
-> +		if (err)
-> +			return;
-
-> +		for (iline = 0; iline < keypad->nlines; iline++) {
-
-Can be just
-
-		for (unsigned int iline = 0; iline < keypad->nlines; iline++) {
-
-as iterator is not used outside the loop.
-
-> +			if (iline == oline)
-> +				continue; /* Do not read active output line. */
-> +
-> +			/* Check if GPIO is asserted. */
-> +			if (test_bit(iline, values)) {
-> +				code = MATRIX_SCAN_CODE(oline, iline,
-> +							get_count_order(keypad->nlines));
-> +				/*
-> +				 * Exit loop immediately since we cannot detect
-> +				 * more than one key press at a time.
-> +				 */
-> +				break;
-> +			}
-> +		}
-> +
-> +		gpiod_direction_input(keypad->line_gpios->desc[oline]);
-> +
-> +		if (code)
-> +			break;
-> +	}
-> +
-> +	charlieplex_keypad_check_switch_change(input, code);
-> +}
-
-...
-
-> +	for (unsigned int i = 0; i < keypad->nlines; i++)
-> +		gpiod_set_consumer_name(keypad->line_gpios->desc[i], "charlieplex_kbd_line");
-
-Hmm... Don't you want to give it an index?
-
-(In case you go this direction, see the kasprintf_strarray() or
- its managed variant.)
 
 -- 
 With Best Regards,
