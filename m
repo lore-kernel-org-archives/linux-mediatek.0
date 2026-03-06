@@ -4,69 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71905F01812
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 09:50:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1DAAF01825
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 10:28:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bd07phBtVSlJrsowhl6WGQ1wMUC+9E2jORlCgRImICw=; b=qEG17BLvX/s8cRwdd02V5xc3tD
-	2nUPer7nQ9KyQTkZpzACvi0cwj/3qB4z07TUDtff4y+P8gJ6McTHqWXvr8P/S/0kanKtlH52bJXoM
-	hg9mi2lJjpz1PtxQEFv1/okGckBAToLQto0bHh8b6nAW8KuRsqNnghECo4s3Sy5iSyUHQbs6WlkYH
-	h5Uk0Ur7QEJuiwRwEtT9IiwU/1L4IaCgSTwf2h8QbUk6t/SO3am6ZFCJhiJrwKK7VICvyIx+THB9L
-	x5GBPw2gV1oXKil8pCkN2qBk2wMelivfZXfEOgsnxFP/tFLUArxvZVquNBlB6qUbylJzQWs8LUpUB
-	v16i2BFA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6su7dB16JTFoMBcxeJuAhCGcoSJbu/TNjj9N42DfbC8=; b=kFn7Gwlp0ia34b
+	wg/gqMBkrBMeE7vtMvVDqUFFMlcSXqZVrVXDrP1abOOkL0BhW60lP2ZnSWGPV6BFNzdHp7fN6ezPh
+	qr8JIBGIrlhaKLrXcyVMBLQzuSeUAhVie+3YIMyntX7cD2H0igJM57PUTfTq8AzLqMILREofarTr3
+	H/rKAcJfVL+ABCPxjlUdRMR/2sX3sXtD7iyeZVfAfB8FTzjNYfRyn/l1DJXHbFq4kP0MFDB3O4qU2
+	jtLhjgCNcfa3SZlzLXpAVlPKE95J0y1Wz8hLqCJBSq+AGIxyNLYnGWlfD3AHzJCEkS8pw7lQw3prE
+	NvqxBR3mms9j37LhOjTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyRpQ-00000003NZq-2YkN;
-	Fri, 06 Mar 2026 09:50:40 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vySPh-00000003RtV-0qU7;
+	Fri, 06 Mar 2026 10:28:09 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyRpN-00000003NYH-3gbv;
-	Fri, 06 Mar 2026 09:50:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772790632;
-	bh=eOh2DPmGNAcPMGrAcM6Rp0B3989BodaM6vMWb9GBktU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=A9deMTUMmsKTLdIGI2+lwnuVwIRxkyPIFLGsjQiLFqzgLl3Fw+PKU/4m3zisOF1h3
-	 0P3orfcOAMx2hgSnwVfkyx0MZ3XLoeJw7VpstjRYYcas37JbjtiPQOL3zdWmiOL/aV
-	 TzVdE4nhrVDnPwX5KU/Kw5yiAumr+tR9U+cHNTxoHYkLdbomew0kaJ+PEeM+TZ6BQ3
-	 tcMszmQfnFdIqhNvessUzqlTCctpb2afvVovJMc13f8Ku+SrJc6ENjs+vzBtS1ANkC
-	 tcl1YvU/1OOuYFfRKPXlhgNFHawxbag1D8uk2kWgEnWahDlAcptyEVDKF/cn4EQnYf
-	 xZoaTIZ9L8V8A==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0E1C817E04DC;
-	Fri,  6 Mar 2026 10:50:32 +0100 (CET)
-Message-ID: <7fd891b7-b1ff-4668-ac99-8f8ac244d90c@collabora.com>
-Date: Fri, 6 Mar 2026 10:50:31 +0100
+	id 1vySPf-00000003Rso-3PrZ;
+	Fri, 06 Mar 2026 10:28:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id EF32760018;
+	Fri,  6 Mar 2026 10:28:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 50DCCC4CEF7;
+	Fri,  6 Mar 2026 10:28:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772792886;
+	bh=xyoECdBTPkHphTz09uglf5Fw6arG6VEmkxyNX6In6MM=;
+	h=From:Subject:Date:To:Cc:From;
+	b=uNwTMYE1DoKL3rUtZKyGsvrXvWLZnbTJMsk8I4pOEvWfvhWdENhFUy9KEBQUn0Nga
+	 dZNrWxois0UL7wprBmeNXcTjiAMVnR79fPXdgGzP0lAIWYKW9c8Fw9BxtRFxO7qPdG
+	 DOsI0lYnWj9eZQUfN6+dePTHT2QvhpYyNFayJpmiUue5b7kuzBiqXu8VgEsKLagQ9o
+	 +rWf5j3MMdp2PgBM2qDzXQg48Sx/yh31sxUdlc51+ugn6UB79Ikeumd6P+K0IEZLvD
+	 hajtjApUZNtjWmZlNKgg5nCVwGQy5BMRDGWv8xkgg+Zkm6jDXGjTIfkWW/mVseggYF
+	 3dHrvQrBCaGOA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Subject: [PATCH mt76 0/4] wifi: mt76: mt7996: Some MLO link reconfiguration
+ fixes
+Date: Fri, 06 Mar 2026 11:27:51 +0100
+Message-Id: <20260306-mt7996-deflink-lookup-link-remove-v1-0-7162b332873c@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] pmdomain: mediatek: Fix power domain count
-To: Ulf Hansson <ulf.hansson@linaro.org>, Adam Ford <aford173@gmail.com>
-Cc: linux-mediatek@lists.infradead.org,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Laura Nao <laura.nao@collabora.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
-References: <20260210053708.17239-1-aford173@gmail.com>
- <CAPDyKFrsMY8q+rvrbOdppYnefX6TA1-EhF+e+pGG6k49KpeTRA@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAPDyKFrsMY8q+rvrbOdppYnefX6TA1-EhF+e+pGG6k49KpeTRA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_015038_082160_29FCB210 
-X-CRM114-Status: GOOD (  21.12  )
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2NwQqDMBAFf0X23IVExaq/UjwU92kXNZFEpSD+u
+ 8HbzGXmpIigiNRmJwUcGtW7JPaVUf/7uhGskpxyk1emMCUv27tpKhYMs7qJZ++nfeWHAxZ/gG0
+ vYlAWgtpS6qwBg/6fx6e7rhtMaEUDcwAAAA==
+X-Change-ID: 20260304-mt7996-deflink-lookup-link-remove-1cdd0e43de81
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,65 +74,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/02/26 12:34, Ulf Hansson ha scritto:
-> On Tue, 10 Feb 2026 at 06:40, Adam Ford <aford173@gmail.com> wrote:
->>
->> The wrong value of the number of domains is wrong which leads to
->> failures when trying to enumerate nested power domains.
->>
->>   PM: genpd_xlate_onecell: invalid domain index 0
->>   PM: genpd_xlate_onecell: invalid domain index 1
->>   PM: genpd_xlate_onecell: invalid domain index 3
->>   PM: genpd_xlate_onecell: invalid domain index 4
->>   PM: genpd_xlate_onecell: invalid domain index 5
->>   PM: genpd_xlate_onecell: invalid domain index 13
->>   PM: genpd_xlate_onecell: invalid domain index 14
->>
->> Attempts to use these power domains fail, so fix this by
->> using the correct value of calculated power domains.
->>
->> Signed-off-by: Adam Ford <aford173@gmail.com>
-> 
-> We should have a fixes tag for this too I think:
-> 
-> Fixes: 88914db077b6 ("pmdomain: mediatek: Add support for Hardware
-> Voter power domains")
-> 
-> 
->> ---
->>   drivers/pmdomain/mediatek/mtk-pm-domains.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
->> index 58648f4f689b..d2b8d0332951 100644
->> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
->> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
->> @@ -1228,7 +1228,7 @@ static int scpsys_probe(struct platform_device *pdev)
->>          scpsys->soc_data = soc;
->>
->>          scpsys->pd_data.domains = scpsys->domains;
->> -       scpsys->pd_data.num_domains = soc->num_domains;
->> +       scpsys->pd_data.num_domains = num_domains;
-> 
-> Not sure this is the complete fix, as scpsys_add_one_domain() seems to
-> be using the wrong value of "num_domains" too, no?
-> 
+This is a preliminary series to properly support R1 link reconfiguration
+on AP side.
 
-No, scpsys_add_one_domain() uses num_domains from the soc_data for DIRECT_CTL,
-which is expected. Maybe that can be improved, but it's how it is supposed to work.
+---
+Lorenzo Bianconi (4):
+      wifi: mt76: mt7996: Remove link pointer dependency in mt7996_mac_sta_remove_links()
+      wifi: mt76: mt7996: Fix deflink lookup removing links
+      wifi: mt76: mt7996: Fix deflink lookup adding links
+      wifi: mt76: mt7996: Remove unnecessary phy filed in mt7996_vif_link struct
 
-So yeah, this patch is resolving an issue, and it is a complete fix.
+ .../net/wireless/mediatek/mt76/mt7996/debugfs.c    | 14 +++-
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c    |  7 +-
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c   | 82 ++++++++++++----------
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 74 +++++++++++++------
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  2 -
+ 5 files changed, 116 insertions(+), 63 deletions(-)
+---
+base-commit: 030eea77accf40477be540445fc5a5be52d810a3
+change-id: 20260304-mt7996-deflink-lookup-link-remove-1cdd0e43de81
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
->>
->>          parent = dev->parent;
->>          if (!parent) {
->> --
->> 2.51.0
->>
-> 
-> Kind regards
-> Uffe
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
 
 
