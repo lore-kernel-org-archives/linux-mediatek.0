@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98566FCB611
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 15:10:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 461DAFCB613
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 15:13:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HJLp8YBkGvKp8/JnvM955cz2XdlMFg0G7oZa34dX7UE=; b=0mo8atMDAIrsIedGT+lbITnWvM
-	mgf8Brrb1O1c7RghgZa5iz6qb9x6maaCwfca6LeBfMnx0ourtLUO4zXMiF3rrugzqh8KdVTxHpQRj
-	orcASRvj4uTYEBESEN9dB7F2ONVIiMqF5AQb0v282NKilgU+IGew9MoTrSWQJquF2Zy23XqIKEJlW
-	2Nfn72zoncQ3ICOE8aqph0RAnt6/p0x+4n121Slnl8GIYByHh6S9+dZRUL3hLyO0e716kLPt960Di
-	RBkV99KVhO4QDJ8jIvR30sgoXVan/3s8XVfpTrIEib49phsD1zWOdqFRIrKQ5AVKAQIJZVf7y2Cs2
-	eMaPcn7Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=m3yX/TuFuLRmQIgjvocQq3GX0w3ISo7+U2TC5CEV9uw=; b=YdOvowLGutBapgPvwUwTHbStYl
+	CrQ+WVv5lemeBePV1bbLnCXNxqVMBhIPnmVWTRSac3hfK29ABgMx5OkHiJpzqK9vVNgn54+lkUASh
+	+pjHr/zjV9iVydVBJKTpyB/uS2PVYTrxikBy22xsgW9nHl4Dl/vXf8yO2frR8JMS+0vkfzRxqVhDS
+	i1MDxkn83a6F68xtDJ0e5Lhg9aLu1FD8+Pfs5pqkINgjvpxQITtx38o22gnRVmk9BAWjr9g7/qoN+
+	bQIWiQqSc0sHW+IMn7INos7h0D2j0gmCSPzP6IYAyjH59iNLYkZZBcUbhy9m6pg7EYSE1rWiM31it
+	q/Hl0L2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyWoV-00000003zYM-3M13;
-	Fri, 06 Mar 2026 15:10:03 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vyWrj-0000000405h-152z;
+	Fri, 06 Mar 2026 15:13:23 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyWoT-00000003zXr-3ktv;
-	Fri, 06 Mar 2026 15:10:03 +0000
+	id 1vyWrh-0000000404d-1uwj;
+	Fri, 06 Mar 2026 15:13:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 84B0E44097;
-	Fri,  6 Mar 2026 15:09:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE34BC4CEF7;
-	Fri,  6 Mar 2026 15:09:58 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id CF3434010B;
+	Fri,  6 Mar 2026 15:13:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EC2AC4CEF7;
+	Fri,  6 Mar 2026 15:13:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772809799;
-	bh=GgoUw+SaJyllGA06GAIgRiDqdGje3nKOsdp/CsOdWJ8=;
-	h=From:Date:Subject:To:Cc:From;
-	b=DhzpAi3CoQh5QBzl/i/d0ZlPOmhmHdma6wDPKGaWVNqfKRIVkL/nQpuZXxFM7DYju
-	 B6k33hBk3hwbOZiriTqAyAHNCWdvSyPrFH69MWcRZXxAkYWhaipgPU/1ysgvTlTeST
-	 rWBcrdQAWyY4FVuzdWzoPbxqj3Pmr9QnLMbnnPEgNBZFMJ7abAx/1B4AGj/hMYLA3K
-	 IxSt4T0GX6guNElx5WFN5Y9i6ojmdOR234wh7H7/LzsqANrd8NUxa+CmOyD27OAVw5
-	 holmPDga0xVcX92eMoPbZL4DEh08kbdDbiZSK90a5zcxdSwTkN0cIu3m3wU1JwYFk/
-	 4weKS5/UeLGYg==
+	s=k20201202; t=1772810000;
+	bh=m3yX/TuFuLRmQIgjvocQq3GX0w3ISo7+U2TC5CEV9uw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jiZltdZ2gL1FgHjce7eq7UkgNdE3B4LBXJl8Qxe8+hOJHZUbs+T/gCtq822uK3SXp
+	 xTDxNlZKmvRv+qxSeUHDc/A9eyWLuenTL/NO0qMG+kcC9WNWRn6FPehz7PW1C1PX62
+	 psecRgeyD+CRzBQS0qvbuhAFLQ7u1/guxPnWe0QoV/5rHghKcPBk+lpSfZ3A9Y6Eqp
+	 o5HlFzYcgk4FIRzFpMx1H61mJumZtuX0wmQ8iT6LcOqRhntlHBrpDPWejjuz16xD2n
+	 ZcAiOJR35oELwpol4XNVFP880WiVW/ZxVYQF1Zvyb0IDwXXEUy21kxzA2BSl6Ojqm9
+	 F0dC5Vcig7fVA==
+Date: Fri, 6 Mar 2026 16:13:18 +0100
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 06 Mar 2026 16:09:47 +0100
-Subject: [PATCH net-next] net: airoha: Move GDM forward port configuration
- in ndo_open/ndo_stop callbacks
+To: Simon Horman <horms@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: airoha: Fix GDM2 loopback configuration
+ for USB serdes
+Message-ID: <aarvDt9TAn0MkUk8@lore-desk>
+References: <20260228-airoha-fix-loopback-for-usb-serdes-v1-1-a94be0f897da@kernel.org>
+ <20260303141624.GD71509@kernel.org>
+ <aaftUXaSD0u5ZhO7@lore-desk>
+ <20260306134226.GD461701@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260306-airoha-gdm-forward-ndo-open-stop-v1-1-7b7a20dd9ef0@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3NwQqDMAyA4VeRnBdoLbixVxkegomaw5qSDieI7
- 27x+F3+/4AqrlLh3R3gsmlVyw3x0cG0Ul4ElZuhD/0QUhiQ1G0lXPiLs/mfnDGzoRXJWH9WMKY
- UJ4r8TPyClikus+734jOe5wVqSMRUcgAAAA==
-X-Change-ID: 20260306-airoha-gdm-forward-ndo-open-stop-1331ca1d73d8
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="UOcuNL+C/U/0CMjH"
+Content-Disposition: inline
+In-Reply-To: <20260306134226.GD461701@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_071001_995312_7743089E 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20260306_071321_554416_24007FC3 
+X-CRM114-Status: GOOD (  25.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,93 +79,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This change allows to set GDM forward port configuration to
-FE_PSE_PORT_DROP stopping the network device. Hw design requires to stop
-packet forwarding putting the interface down.  Moreover, PPE firmware
-requires to use PPE1 for GDM3 or GDM4.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 20 +++++++++++++++-----
- 1 file changed, 15 insertions(+), 5 deletions(-)
+--UOcuNL+C/U/0CMjH
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 09acbe6695368132ddd92c3501f8711476db73f6..dc36b5b669108cc32c4fd5a5479d9024978ceeba 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1611,6 +1611,7 @@ static int airoha_dev_open(struct net_device *dev)
- 	int err, len = ETH_HLEN + dev->mtu + ETH_FCS_LEN;
- 	struct airoha_gdm_port *port = netdev_priv(dev);
- 	struct airoha_qdma *qdma = port->qdma;
-+	u32 pse_port = FE_PSE_PORT_PPE1;
- 
- 	netif_tx_start_all_queues(dev);
- 	err = airoha_set_vip_for_gdm_port(port, true);
-@@ -1634,6 +1635,14 @@ static int airoha_dev_open(struct net_device *dev)
- 			GLOBAL_CFG_RX_DMA_EN_MASK);
- 	atomic_inc(&qdma->users);
- 
-+	if (port->id == AIROHA_GDM2_IDX &&
-+	    airoha_ppe_is_enabled(qdma->eth, 1)) {
-+		/* For PPE2 always use secondary cpu port. */
-+		pse_port = FE_PSE_PORT_PPE2;
-+	}
-+	airoha_set_gdm_port_fwd_cfg(qdma->eth, REG_GDM_FWD_CFG(port->id),
-+				    pse_port);
-+
- 	return 0;
- }
- 
-@@ -1651,6 +1660,9 @@ static int airoha_dev_stop(struct net_device *dev)
- 	for (i = 0; i < ARRAY_SIZE(qdma->q_tx); i++)
- 		netdev_tx_reset_subqueue(dev, i);
- 
-+	airoha_set_gdm_port_fwd_cfg(qdma->eth, REG_GDM_FWD_CFG(port->id),
-+				    FE_PSE_PORT_DROP);
-+
- 	if (atomic_dec_and_test(&qdma->users)) {
- 		airoha_qdma_clear(qdma, REG_QDMA_GLOBAL_CFG,
- 				  GLOBAL_CFG_TX_DMA_EN_MASK |
-@@ -1742,7 +1754,7 @@ static int airoha_dev_init(struct net_device *dev)
- 	struct airoha_gdm_port *port = netdev_priv(dev);
- 	struct airoha_qdma *qdma = port->qdma;
- 	struct airoha_eth *eth = qdma->eth;
--	u32 pse_port, fe_cpu_port;
-+	u32 fe_cpu_port;
- 	u8 ppe_id;
- 
- 	airoha_set_macaddr(port, dev->dev_addr);
-@@ -1763,7 +1775,7 @@ static int airoha_dev_init(struct net_device *dev)
- 		if (airoha_ppe_is_enabled(eth, 1)) {
- 			/* For PPE2 always use secondary cpu port. */
- 			fe_cpu_port = FE_PSE_PORT_CDM2;
--			pse_port = FE_PSE_PORT_PPE2;
-+			ppe_id = 1;
- 			break;
- 		}
- 		fallthrough;
-@@ -1772,13 +1784,11 @@ static int airoha_dev_init(struct net_device *dev)
- 
- 		/* For PPE1 select cpu port according to the running QDMA. */
- 		fe_cpu_port = qdma_id ? FE_PSE_PORT_CDM2 : FE_PSE_PORT_CDM1;
--		pse_port = FE_PSE_PORT_PPE1;
-+		ppe_id = 0;
- 		break;
- 	}
- 	}
- 
--	airoha_set_gdm_port_fwd_cfg(eth, REG_GDM_FWD_CFG(port->id), pse_port);
--	ppe_id = pse_port == FE_PSE_PORT_PPE2 ? 1 : 0;
- 	airoha_fe_rmw(eth, REG_PPE_DFT_CPORT0(ppe_id),
- 		      DFT_CPORT_MASK(port->id),
- 		      __field_prep(DFT_CPORT_MASK(port->id), fe_cpu_port));
+> On Wed, Mar 04, 2026 at 09:29:05AM +0100, Lorenzo Bianconi wrote:
+> > > On Sat, Feb 28, 2026 at 01:20:33PM +0100, Lorenzo Bianconi wrote:
+> > > > Flow Control source port mapping for USB serdes needs to be configu=
+red
+> > > > according to the GDM port nbd parameter. This is a preliminary patch
+> > > > since nbd parameter is specific for the given port serdes and needs=
+ to
+> > > > be read from the DTS (in the current codebase is assigned staticall=
+y).
+> > > >=20
+> > > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > >=20
+> > > Hi Lorenzo,
+> > >=20
+> > > Is this a fix? If so, should it have a fixes tag? And be targeted at =
+net?
+> > > Otherwise, perhaps drop the "Fix" from the subject.
+> >=20
+> > Hi Simon,
+> >=20
+> > This is a preliminary patch in order to completely fix the loopback
+> > configuration for USB serdes but the point is we are not supporting
+> > USB serdes upstream yet (there is only OpenWrt support available at
+> > the moment). Do you think we should target net-next or net in this
+> > case?
+>=20
+> If there is no bug in net - given the way net can be used with in-tree co=
+de
+> - then I would not tag this as a fix.
 
----
-base-commit: e5e09233e8a9179b260460fdb28df5c24bcfbed6
-change-id: 20260306-airoha-gdm-forward-ndo-open-stop-1331ca1d73d8
+ack, fine.
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+Regards,
+Lorenzo
 
+>=20
+> >=20
+> > >=20
+> > > Also, I think it would be worth explaining the situation
+> > > before and after this patch.
+>=20
+> ...
+>=20
+
+--UOcuNL+C/U/0CMjH
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaarvDgAKCRA6cBh0uS2t
+rHS4AP93AGB12XIMmq1lglTzHPArpDsRGddVBWHb/RHvuaZHdAEA1mo58+20I1V4
+7y5FGuGUMVWZVwOEUq8W6grMJD84VAc=
+=ifxM
+-----END PGP SIGNATURE-----
+
+--UOcuNL+C/U/0CMjH--
 
