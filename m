@@ -4,143 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01FE6F0183A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 14:14:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60F16F0183E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 14:21:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YXGlJMtwlNbzmIK4AsQF7tf4SFG4KHJRxXMi3UOORvw=; b=4LtYvpc3Zze3WAVmJDJgqRmVVN
-	rnK+LKYcmYXqUsvZPccTQhtzOQq2QJcsQg6KAQkqZCvvqDk19CoLNLyP2lzDmISRmxLoVVRizXNwf
-	9Oz7Py+A6xYI6eCR3IYPd9B8p0/jw9XWC3aaJUNJ//9kDBGKY7JH48yzcrJ0WCE9EMvsBB4Pks8fO
-	df+T8Xr9vn6XRfQHpBPy+W9DJs4JPurdHeoEiskGgKql2hywha9KaHVwA0gcer3UEXRVpYb0xSG/c
-	ibSkUH7KgCJvk0tePKZShX/+YcJKiHbb6hNAiAcfR3coPL6cpivHrOIHjQzmsTC6rLxtOK1fNvW8H
-	Vtr9OcJQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ymvrjjPd//GaKYl9Ka0K/Hr4LIDzlDczwQ2BLU0KF2Q=; b=anigxug71J2un5L+1TK64bs/E7
+	s5cymkKdNMJGM6Xeub5YnUsTzViuL0D3xLqakkHjpruzXARexkfmNsK+KSBUUW8iIiKrblRtchBV2
+	HqCpHa4IepvVzXadIkJbdnB6wXlWwcCheVq39troKudS/tLminkb6yv3vwIywQaMSika0H83GKlO8
+	vlNXhBxy5l9xPHB5GJHyCghxHZ681vdG58tCjufiUgzrKcRSLShZpwsJGCX35GUsXBnwRKaaUqi/a
+	ufHA+I9QgwA9OImYZpbVkhmHtHbUG0BuP/TkO0OGrGxlHXWsW3CJx+ac5tpF2LbYvdJJukhaX2a0w
+	RWwNpdJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyVwb-00000003sfm-3y6N;
-	Fri, 06 Mar 2026 14:14:21 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1vyW3U-00000003tem-2nLU;
+	Fri, 06 Mar 2026 14:21:28 +0000
+Received: from mgamail.intel.com ([192.198.163.7])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyVwY-00000003sf7-41h7
-	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Mar 2026 14:14:20 +0000
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 626BakDb4186067
-	for <linux-mediatek@lists.infradead.org>; Fri, 6 Mar 2026 14:14:18 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	YXGlJMtwlNbzmIK4AsQF7tf4SFG4KHJRxXMi3UOORvw=; b=NcbHDJJQW/xr23HL
-	K80Rd9I2mBgtFGG6KsJXj0GBODHAV0rflxvT7L8C5nCUBWJiXlc0zoaDinnMsUBY
-	yAqd2+Tkq549Gv4CiHs9puYpOc9ouNp+H5R4Gup76+t4YUPEFA/Mcjrtt0mUp3H9
-	/SfDOezBDmkAPM9Y6hcsKrNmFZQM8z83CQn+49TS4f8XoyvuPNe5qQ77X/tO/0AR
-	fZgtdF17cN/B+qU5TEQtlDKXt5Xx5C8tEW0Cs39zIoBeLRkvEjxPeG78vG+nnBwe
-	Bcd1QfDBBk845dUA2NWujogKmLFZMkjWBRbiK5Cpocsizo5YbA56GIVpFTGrFxYB
-	yC2npw==
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com [209.85.214.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cqruk9mva-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Fri, 06 Mar 2026 14:14:17 +0000 (GMT)
-Received: by mail-pl1-f198.google.com with SMTP id d9443c01a7336-2ae4f27033cso57938955ad.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 06 Mar 2026 06:14:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1772806457; x=1773411257; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=YXGlJMtwlNbzmIK4AsQF7tf4SFG4KHJRxXMi3UOORvw=;
-        b=AcjqZhdp+07zZNwe48fWwTzpQbo0JTfrWkS/xC2I034qFgFaC9G2x3noCuziqoEHfn
-         S480DkTbQo8daelIdhpEVnPXJI1kegrW20gb9Rf2+OI73YVMVSa3MyXQqk7dK8j4imYa
-         sD5RmYVYSeLfhNhrszaa6eTgce4/nQkqfb8x5vuuts6qUZYIm21S0J9FK223ESKuWstm
-         76Y8NGkQzCMyntYyY5as33/bRO7qrtrSB88HPW1CP5o/s/rzxYg3dl4mzu9bGGVNxP1i
-         fkcEGNF7fF4ceHCw0af6fcWjhed5ozePLEtggoTJnAgE+0RaiJSKR9OHW96mNzVcyfS5
-         hdtw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772806457; x=1773411257;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=YXGlJMtwlNbzmIK4AsQF7tf4SFG4KHJRxXMi3UOORvw=;
-        b=EZVcSP41cein4Kn4PI2AEKWz2bWhXbUpyQamKQYsrCFzYAHwl8fovyqHpJZoyupwaj
-         Z+M6mXDlPDV6GDrac6WE2GqH9TZkWyoK568gLvT85TJZAM6Rng8ROqgctW0S0hkebj83
-         o+3Uc5oaX5fBgwoLtYRzjpG+2hgBXGGr3R/r7yoCKHH+Ztw/sKTu3YbCK1d7DZNuiMFn
-         enTX6PLjD6hFuq+MTIKfwlOiJc+QIatvFWlVHMp1zRskorhmenM1iGGiU0l4AoM1UV9U
-         XchwhieE4GQ7LviXWlREtq3f5gEGFPl9HqSmV5WJIkerIxIBHjECCgKRbIE8DlENwpAK
-         +DHQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXTiPAw/D0v6JMR0rl2u6luf7wDaL0akZZby+VNIRJfGAE/zRGJ1t5jcpRkA/3/4tKsE617kKawLQd9Rg4MlQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yykl+UWsHPhpFUB42qZHraUPis0X4xLAFBUs88olcs1jaRJ9DZM
-	LNPQFjvcsT6sFNdgTnESx1/b9p0xzyBjsk3pS5bv9CJij/zT4gWY8CKOnhZRjN7WPZC42v1LfAT
-	cvWclEkK+/+/lEtuUabOjlVoDWkEiJZnBTyw7Jy9cbhs6V04vNVDMUFG98Zvx/utI1kVFjHP+JS
-	s=
-X-Gm-Gg: ATEYQzx3vcOn2e6U0pfDixYmqB/NFzOvYxMz5Pb38hCa5/nkSIq5Xn+bak8i29SH5Dv
-	qTxUdSM41llZxQNToxEQDK0sQMcr+4sGvb5ylc0SzIrIVUojEgZm+5sQxkTqgMEWDhfQCxyCecH
-	tx8+lR7+7mtoSIy1hLiUurnRVmImWStBJOlpLKggwsevgOhIg3nklc3X9YdzYj+PEp2BHZu9lA+
-	VyLp4q5kgskCf2gW8zavYzouPgJwyYjed/4PW4pgDnOqIGNpdg9DWSMici+4soX8nmfSBF6yjlD
-	/gQx3NFxtSBzgDkH6KsR6eXpeJfZVUmAEUS1uCUl8GX2gJpLLRTkPfJ2QFEQ5liRdCWiEvvTmsN
-	kWJKvLkMo1LyWt340bQ1feq774gdXtIbKHJ60gzYAc6rxbXppaOWtlwzMup9fdBcLzzPeMsVYDS
-	sFRYL7JWcq1t4=
-X-Received: by 2002:a17:903:1108:b0:2ae:5426:da46 with SMTP id d9443c01a7336-2ae82432d71mr25502765ad.29.1772806456437;
-        Fri, 06 Mar 2026 06:14:16 -0800 (PST)
-X-Received: by 2002:a17:903:1108:b0:2ae:5426:da46 with SMTP id d9443c01a7336-2ae82432d71mr25502415ad.29.1772806455714;
-        Fri, 06 Mar 2026 06:14:15 -0800 (PST)
-Received: from [10.133.33.226] (tpe-colo-wan-fw-bordernet.qualcomm.com. [103.229.16.4])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ae83e585b3sm24906255ad.10.2026.03.06.06.14.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 06 Mar 2026 06:14:15 -0800 (PST)
-Message-ID: <072aa8b3-151f-4b6b-85c4-eb9c9f50b859@oss.qualcomm.com>
-Date: Fri, 6 Mar 2026 22:14:10 +0800
+	id 1vyW3N-00000003teI-1sfV;
+	Fri, 06 Mar 2026 14:21:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1772806881; x=1804342881;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=qrSWEQCzYdDInjoygqfLYRngEipu0GaqBoIRMKJNN88=;
+  b=beI8aZRrPiw57iTTUY+pmoGtR9Ni+IGO1x7GOWETJGZbdly0ODIyXtoP
+   QBKmvzO0Xp6OTclcYxwArfzH4TlIYayjoUjTinYJHh0v5of8zvJREMtnL
+   12mlwe6ww55Rii5ZctqNSgkasqna1DYP9tbIYPKOI2S7JcqodeK7pAW+X
+   dtr57aAYcMymW72Nf88MHEukcnY7kJF90akgsKuXjmTGHmT2sNgVYokFK
+   zaAV7IzBK++7UuFUCQeZa7JK/PyXW4IRVVJQXb9IaXTar/fkfB9yjiTkL
+   hMYDpRF/uwgm9INHqeCQBAy2UWk6X7cARij9NZKeavJx+kU00G2puIgJR
+   w==;
+X-CSE-ConnectionGUID: oq/ZI5jLSGaHOsnrD3lLmA==
+X-CSE-MsgGUID: pK0P/LxlRqqu5Grk7w0dDA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11721"; a="99385727"
+X-IronPort-AV: E=Sophos;i="6.23,104,1770624000"; 
+   d="scan'208";a="99385727"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Mar 2026 06:21:18 -0800
+X-CSE-ConnectionGUID: Z6Kp7Gz/TD6nsUrJkzKytg==
+X-CSE-MsgGUID: 39iaiRcqTdiVpjYced1ksw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,104,1770624000"; 
+   d="scan'208";a="218252442"
+Received: from abityuts-desk.ger.corp.intel.com (HELO localhost) ([10.245.245.1])
+  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Mar 2026 06:21:12 -0800
+Date: Fri, 6 Mar 2026 16:21:09 +0200
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Hugo Villeneuve <hugo@hugovil.com>
+Cc: robin@protonic.nl, andy@kernel.org, geert@linux-m68k.org,
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	dmitry.torokhov@gmail.com, hvilleneuve@dimonoff.com,
+	mkorpershoek@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, lee@kernel.org,
+	alexander.sverdlin@gmail.com, marek.vasut@gmail.com, akurz@blala.de,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4 4/4] Input: charlieplex_keypad: add GPIO charlieplex
+ keypad
+Message-ID: <aari1Y1CPZSYEVj3@ashevche-desk.local>
+References: <20260305192101.2125660-1-hugo@hugovil.com>
+ <20260305192101.2125660-5-hugo@hugovil.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/11] scsi: ufs: Add TX Equalization support for UFS
- 5.0
-To: Bean Huo <beanhuo@iokpp.de>, avri.altman@wdc.com, bvanassche@acm.org,
-        beanhuo@micron.com, martin.petersen@oracle.com
-Cc: linux-scsi@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        "open list:ARM/Mediatek SoC support:Keyword:mediatek"
- <linux-kernel@vger.kernel.org>,
-        "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
- <linux-arm-kernel@lists.infradead.org>,
-        "moderated list:ARM/Mediatek SoC support:Keyword:mediatek"
- <linux-mediatek@lists.infradead.org>
-References: <20260304135313.413688-1-can.guo@oss.qualcomm.com>
- <e116e78ad9590f5845aaaf7d4e26833a7a0194d0.camel@iokpp.de>
-Content-Language: en-US
-From: Can Guo <can.guo@oss.qualcomm.com>
-In-Reply-To: <e116e78ad9590f5845aaaf7d4e26833a7a0194d0.camel@iokpp.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDEzNiBTYWx0ZWRfX3+MJUZZe+xGB
- CPwbvstK2D1TfUyUe60a3YA3bG+w7ZHt3/qWdr9DAijOUyaQSE8aIt6/LNXdU4KryyjzbGgUO+D
- +49RYDbXOHpqFnf303PRrVnqIA9JKbnUgIKDKXRvzCM4TRcvtJ/rKG6OA+CD4fskw7O3VzRdMa9
- RtmifJcGKRE+dWo+tB3yqa30AayOm3r+3dnQMJzQn3VRqwEZtC3ArWDdo9n0RnqL+oDlhDuRNRn
- E6BSbIIXbbF29r8j8oe6+pVyXTQqxUh+FcX1+E0gLlvn+pFPGLK2ZuMdzBCkyevmmBOvPUGJZ7y
- P98BT3Cl6V6Yjdr7GicGDwFnXjKArDL/Jnr5Crb5HXVYJ3Rb95yisf3hQyUaU7IntH9QpQInyn+
- EpqdV5w+UeQLh2UegTOBFG4SLtfCx5B4hxx3tlbz7GKm+XY+pBAMMM8F5Cr7WkOjTg+LQ3Du+5K
- WIYmc2yKMqkhk8/6iWw==
-X-Proofpoint-ORIG-GUID: cGed84SnojBTa36H3kmeKTxtYZ2QkJCc
-X-Authority-Analysis: v=2.4 cv=DvZbOW/+ c=1 sm=1 tr=0 ts=69aae139 cx=c_pps
- a=MTSHoo12Qbhz2p7MsH1ifg==:117 a=nuhDOHQX5FNHPW3J6Bj6AA==:17
- a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
- a=i1lnRYMTL1kKw9KRX74A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=GvdueXVYPmCkWapjIL-Q:22
-X-Proofpoint-GUID: cGed84SnojBTa36H3kmeKTxtYZ2QkJCc
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-06_04,2026-03-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 impostorscore=0 malwarescore=0 bulkscore=0 adultscore=0
- suspectscore=0 clxscore=1015 phishscore=0 priorityscore=1501 spamscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2603060136
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260305192101.2125660-5-hugo@hugovil.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_061419_130407_8CC8962F 
-X-CRM114-Status: GOOD (  16.19  )
+X-CRM114-CacheID: sfid-20260306_062121_528873_5BCF5CDB 
+X-CRM114-Status: GOOD (  19.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,65 +93,145 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Mar 05, 2026 at 02:20:50PM -0500, Hugo Villeneuve wrote:
 
+> Add support for GPIO-based charlieplex keypad, allowing to control
+> N^2-N keys using N GPIO lines.
+> 
+> Reuse matrix keypad keymap to simplify, even if there is no concept
+> of rows and columns in this type of keyboard.
 
-On 3/5/2026 11:04 PM, Bean Huo wrote:
-> Can,
->
-> On Wed, 2026-03-04 at 05:53 -0800, Can Guo wrote:
->> Hi,
->>
->> The UFS 5.0 standard was published today,
-> Myabe replace time sensitive wording “published today” with stable wording?
-That is also my plan for next version, thanks!
->
->
->> introducing support for HS-G6
->> (23.2 Gbps per lane) through the new UniPro V3.0 interconnect layer and
->> M-PHY V6.0 physical layer specifications. To achieve reliable operation
->> at these higher speeds, UniPro V3.0 introduces TX Equalization and
->> Pre-Coding mechanisms that are essential for signal integrity.
->>
->> This patch series implements TX Equalization support in the UFS core
->> driver as specified in UFSHCI v5.0, along with the necessary vendor
->> operations and a reference implementation for Qualcomm UFS host
->> controllers.
->>
->> Background
->> ==========
->>
->> TX Equalization is a signal conditioning technique that compensates for
->> channel impairments at high data rates (HS-G4 through HS-G6). It works
->> by adjusting two key parameters:
->>
->> - PreShoot: Pre-emphasis applied before the main signal transition
->> - DeEmphasis: De-emphasis applied after the main signal transition
->>
->> UniPro V3.0 defines TX Equalization Training (EQTR) procedure to
->> automatically discover optimal TX Equalization settings. The EQTR
->> procedure:
->>
->> 1. Starts from the most reliable link state (HS-G1)
->> 2. Iterates through all possible PreShoot and DeEmphasis combinations
->> 3. Evaluates signal quality using Figure of Merit (FOM) measurements
->> 4. Selects the best settings for both host and device TX lanes
->>
-> what happens when EQTR fails, mabye you have this comments in the patch.
-This is a good question. In this version, once TX EQTR fails, 
-ufshcd_config_pwr_mode()
-would bail with error before calling ufshcd_change_power_mode(). But I 
-am planning
-to loosen it in next version, that is, if TX EQTR fails the TX 
-Equalization settings will remain
-unchanged and ufshcd_config_pwr_mode() would anyways go ahead change 
-power mode.
+...
 
-Thanks,
-Can Guo.
->
-> Kind regards,
-> Bean
->
->
+> --- a/drivers/input/keyboard/Makefile
+> +++ b/drivers/input/keyboard/Makefile
+> @@ -40,6 +40,7 @@ obj-$(CONFIG_KEYBOARD_LOCOMO)		+= locomokbd.o
+>  obj-$(CONFIG_KEYBOARD_LPC32XX)		+= lpc32xx-keys.o
+>  obj-$(CONFIG_KEYBOARD_MAPLE)		+= maple_keyb.o
+>  obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
+> +obj-$(CONFIG_KEYBOARD_CHARLIEPLEX)	+= charlieplex_keypad.o
+
+Seem unordered. At least the all around it is ordered AFAICS.
+
+>  obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
+>  obj-$(CONFIG_KEYBOARD_MAX7360)		+= max7360-keypad.o
+>  obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
+
+...
+
+> +/*
+> + * GPIO driven charlieplex keypad driver
+> + *
+> + * Copyright (c) 2025 Hugo Villeneuve <hvilleneuve@dimonoff.com>
+
+2026?
+
+> + *
+> + * Based on matrix_keyboard.c
+> + */
+
+...
+
+> +#include <linux/bitops.h>
+> +#include <linux/delay.h>
+> +#include <linux/dev_printk.h>
+> +#include <linux/device/devres.h>
+> +#include <linux/err.h>
+> +#include <linux/gpio/consumer.h>
+> +#include <linux/input.h>
+> +#include <linux/input/matrix_keypad.h>
+> +#include <linux/math.h>
+> +#include <linux/module.h>
+> +#include <linux/mod_devicetable.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/property.h>
+> +#include <linux/types.h>
+
+> +static void charlieplex_keypad_poll(struct input_dev *input)
+> +{
+> +	struct charlieplex_keypad *keypad = input_get_drvdata(input);
+
+> +	int oline;
+
+Why signed?
+
+> +	int code;
+> +
+> +	for (code = 0, oline = 0; oline < keypad->nlines; oline++) {
+
+Can be like
+
+	code = 0;
+	for (unsigned int oline = 0; oline < keypad->nlines; oline++) {
+
+as iterator is not used outside the loop.
+
+> +		DECLARE_BITMAP(values, MATRIX_MAX_ROWS);
+
+> +		int iline;
+
+Why signed?
+
+> +		int err;
+> +
+> +		/* Activate only one line as output at a time. */
+> +		gpiod_direction_output(keypad->line_gpios->desc[oline], 1);
+> +
+> +		if (keypad->settling_time_us)
+> +			fsleep(keypad->settling_time_us);
+> +
+> +		/* Read input on all other lines. */
+> +		err = gpiod_get_array_value_cansleep(keypad->line_gpios->ndescs,
+> +						     keypad->line_gpios->desc,
+> +						     keypad->line_gpios->info, values);
+> +		if (err)
+> +			return;
+
+> +		for (iline = 0; iline < keypad->nlines; iline++) {
+
+Can be just
+
+		for (unsigned int iline = 0; iline < keypad->nlines; iline++) {
+
+as iterator is not used outside the loop.
+
+> +			if (iline == oline)
+> +				continue; /* Do not read active output line. */
+> +
+> +			/* Check if GPIO is asserted. */
+> +			if (test_bit(iline, values)) {
+> +				code = MATRIX_SCAN_CODE(oline, iline,
+> +							get_count_order(keypad->nlines));
+> +				/*
+> +				 * Exit loop immediately since we cannot detect
+> +				 * more than one key press at a time.
+> +				 */
+> +				break;
+> +			}
+> +		}
+> +
+> +		gpiod_direction_input(keypad->line_gpios->desc[oline]);
+> +
+> +		if (code)
+> +			break;
+> +	}
+> +
+> +	charlieplex_keypad_check_switch_change(input, code);
+> +}
+
+...
+
+> +	for (unsigned int i = 0; i < keypad->nlines; i++)
+> +		gpiod_set_consumer_name(keypad->line_gpios->desc[i], "charlieplex_kbd_line");
+
+Hmm... Don't you want to give it an index?
+
+(In case you go this direction, see the kasprintf_strarray() or
+ its managed variant.)
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
 
 
