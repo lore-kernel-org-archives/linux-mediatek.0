@@ -4,65 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DCA3F01832
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 13:42:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5D65F01832
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 13:54:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zT/WbXNBnHVHbWJuWSQf2lev8lSg9jb6w/iWuODCBY8=; b=lNdVhd3+iWk3yycykaBf4LldiF
-	kz/wevYcjAW1lkRFpbx4uvTJfbxBAtLqZgmRy7YrAdqPbJH7HuHNqkjwI+dsBzgRsVdONJ36LnfN0
-	dg3f4jqnIxKFFKAw4bvYX7suY6WLfFEKmAWuxAwjI/fG0fyiEgrHS+pcLHCXTZaeMq2ZGdLoXQHPm
-	kD0McpzKggAhMz8klgxPuzKw0yiT1j/08TqF626uv6IuuNoyWf9u94L2tH7n1G2ixWySELWx1Lkpg
-	zHgxz/e1msqBn2OJyZbUyHmVxnZBJOSa+PK0hm0r14d4yW2NuQfPiXPZuKrA6jBnhwIJY12SnCQGl
-	cEuXnbLQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7ZRjQYItBA2DRAhsau54MVW/2ObSKsTdsjgSHQao8Yc=; b=LmvLd1OAe+ixwH2HsF6cnvaQfv
+	Q4zJ0wju1zogHzcvFzXwnhytE5HhrS81hHHF9lqkN0mezdg5pG37uKKu75ZHtX79ikQ/+OgSPXWNS
+	NvQ1AN/zYfwzj3P5V0ZZNjraM2Y0+0LleLGj9nTgJE/A6WbBlKrE2QWFnoDnCVzuhQadz/lgBan5v
+	AC+Wk+jypPfKsYjo63x6RFQghjlxuH6uNUvCqEKcvcKceKq58Zh/Gw+w71c1dVZ63FG4KtDa6AAnH
+	tnsyJaOs4Lm8s/pxMHzXuCk9yZpyUR38yXZlnuYyYUhwd+jgacDbNzV2G2tWFpDHiQLsFVjaC1WBO
+	1+RcUJvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyVRs-00000003oh4-41CO;
-	Fri, 06 Mar 2026 13:42:36 +0000
+	id 1vyVdC-00000003pUw-1CBd;
+	Fri, 06 Mar 2026 13:54:18 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyVRp-00000003ogQ-1PVU;
-	Fri, 06 Mar 2026 13:42:34 +0000
+	id 1vyVd9-00000003pUE-0I9N;
+	Fri, 06 Mar 2026 13:54:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D807543841;
-	Fri,  6 Mar 2026 13:42:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC650C4CEF7;
-	Fri,  6 Mar 2026 13:42:29 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6B0E44445E;
+	Fri,  6 Mar 2026 13:54:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A370CC4CEF7;
+	Fri,  6 Mar 2026 13:54:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772804551;
-	bh=23e2vXZ+LPwii7CBOaBMLFQqrS73W1YmdWJ9Cli7Hoc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=T4PtfgivqSO5bHN27uUYAlkze4+GpA/mYQUgJt6cysLhk4fsgavBVcy+Xq/leZGJI
-	 5o7/W0LUJlHfqv6NSPHW1eRcG+V9hfNCHqGQ505gLC69LYx2ADuhnWZ0Z3xk2d7HCs
-	 /Vlo+yScz7BRLVL+7Ss185bjTw3t9BFolWKrezoVn0yQkg7TTZL7sKOMrtirFi1sd9
-	 8UqAIzLo6ETemq294i3zODWwk6StVn0Akv7H8hHNV2L3C0Kh/19qdfn/XuZGBOhpBm
-	 97pdm1PhFlfFUpsg4wVEyUvZCl9b4gOXeYLiIUb7gjwkbjjnDdcct9rGV9OJ4oKL3e
-	 xd0hIyxGBEwUg==
-Date: Fri, 6 Mar 2026 13:42:26 +0000
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: Fix GDM2 loopback configuration
- for USB serdes
-Message-ID: <20260306134226.GD461701@kernel.org>
-References: <20260228-airoha-fix-loopback-for-usb-serdes-v1-1-a94be0f897da@kernel.org>
- <20260303141624.GD71509@kernel.org>
- <aaftUXaSD0u5ZhO7@lore-desk>
+	s=k20201202; t=1772805254;
+	bh=vbb0ZDwFV8ZYPJsVeXVfnr4nd375ty8LMqoFu3YrUes=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=hhH1kgkJ6XdEDguQFaA484Pqw/xlqEFtRFwIEjMK7CHfvmCdbiAoswDlhv/6TTfgb
+	 fov2CmxpniKD0hU8cM7bUcubpd9dvdG96lfn/laUEIwKbMWbBufBEXgwjY7ZPN3Pg2
+	 g4AmLhfZdq9srZuc3yFWcooTgS77TdmooWMBWB4bhbTsKUZHyZTHVei1iu/RUxOr2T
+	 z26ANScXRfZgFopSBj1ZjZ7lDqSI3VZAWGyGtVNNLzpaqYD2x6oBvP/1FC/6tw5VM8
+	 aFOZoV31ndQGOMBy8VoOaSEVwJhWU+eY4HsJTG45/vA4JBkYaG6xNs6qozcL7KFezK
+	 4PxvfpmJf6Dng==
+From: Lee Jones <lee@kernel.org>
+To: lee@kernel.org, Akari Tsuyukusa <akkun11.open@gmail.com>
+Cc: matthias.bgg@gmail.com, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ y.oudjana@protonmail.com, angelogioacchino.delregno@collabora.com
+In-Reply-To: <20260302140045.651727-1-akkun11.open@gmail.com>
+References: <20260302140045.651727-1-akkun11.open@gmail.com>
+Subject: Re: (subset) [PATCH v2] mfd: mt6397: Properly fix CID of MT6328,
+ MT6331 and MT6332
+Message-Id: <177280525240.1050023.10810002029954904296.b4-ty@kernel.org>
+Date: Fri, 06 Mar 2026 13:54:12 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aaftUXaSD0u5ZhO7@lore-desk>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.15-dev-52d38
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_054233_394668_02C0D706 
-X-CRM114-Status: GOOD (  22.64  )
+X-CRM114-CacheID: sfid-20260306_055415_128831_39E56B3B 
+X-CRM114-Status: UNSURE (   5.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,36 +74,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 04, 2026 at 09:29:05AM +0100, Lorenzo Bianconi wrote:
-> > On Sat, Feb 28, 2026 at 01:20:33PM +0100, Lorenzo Bianconi wrote:
-> > > Flow Control source port mapping for USB serdes needs to be configured
-> > > according to the GDM port nbd parameter. This is a preliminary patch
-> > > since nbd parameter is specific for the given port serdes and needs to
-> > > be read from the DTS (in the current codebase is assigned statically).
-> > > 
-> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > 
-> > Hi Lorenzo,
-> > 
-> > Is this a fix? If so, should it have a fixes tag? And be targeted at net?
-> > Otherwise, perhaps drop the "Fix" from the subject.
+On Mon, 02 Mar 2026 23:00:45 +0900, Akari Tsuyukusa wrote:
+> CIDs set for MT6328, MT6331 and MT6332 are not appropriate.
+> Many Android downstream kernels define CID as below,
 > 
-> Hi Simon,
+> MT6328:
 > 
-> This is a preliminary patch in order to completely fix the loopback
-> configuration for USB serdes but the point is we are not supporting
-> USB serdes upstream yet (there is only OpenWrt support available at
-> the moment). Do you think we should target net-next or net in this
-> case?
-
-If there is no bug in net - given the way net can be used with in-tree code
-- then I would not tag this as a fix.
-
+>     #define PMIC6328_E1_CID_CODE    0x2810
+>     #define PMIC6328_E2_CID_CODE    0x2820
+>     #define PMIC6328_E3_CID_CODE    0x2830
 > 
-> > 
-> > Also, I think it would be worth explaining the situation
-> > before and after this patch.
+> [...]
 
-...
+Applied, thanks!
+
+[1/1] mfd: mt6397: Properly fix CID of MT6328, MT6331 and MT6332
+      commit: f59b2bc3e6dbcd75c53f1881c1f08a6d3c2a72e5
+
+--
+Lee Jones [李琼斯]
 
 
