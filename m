@@ -4,100 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85483FCC062
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 19:28:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7B6BFCC066
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 19:45:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0n42meaqGDUGzjj9bzqWNF89weGMYcF1c/cak04I5XA=; b=2cCZtygBjqPdGNKI0j7nFvgBpW
-	NsI/skbYH70eQOq9y+OvZgYwc5y2K3mfx6u7cBBY/w14sZafD7vKMOTBe8qngZroBg7fntHhpsZhw
-	8x1d5M/l154Fd429ZXV1VvoGbEUrzBx3R53FFy6Ny391c9HF/QbYepftLNg6F5F+Yu7i37sYxN9LS
-	/AwcFYqnJe1SUW8AAwQ3jpgVQ0KrwhTF5ErI12pMfz9oRnonGo9LIE2sdFqbIAifl3O6o/1BWShVb
-	m0y0tl2nc5os6JH3c2ZT8nMyT8NmDfg2sDePIXIgwesXU7XVl48GvC3SOjBXOHz9Y82f5RovMHotF
-	id9/VL1Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=x+3NTRRRtkgOTvh5mtd+iKhL1Y2otrgIc1JfWN0MOUI=; b=dOW14tAdHzOZGwgIyKnzw3eYYn
+	Pcmasm2i1w52Qs/W+CJH8s8+1q78x80iwrxOMz1pg7hTwgZLdABV+KldVAKCOPBwQf9a6Rs7UWsZx
+	KuM9562iCK+XPgeyxBVzC8fXrWmGBOCEjBLn1PjWcjNlXhpDzZk9LQrJThaAidPEaxluVCwB+64fa
+	lbMx/g/w5H+lh2AR4Z7WjSD+nM5Z8czIWG6Kea1VFAbfyVZzfjUAsU2a65x/nb5Y4i6hLAEt1/d4K
+	Rt+BJxN1pKDtK2SySbjrrzTkAhxmp732TXzduMroLpkJcWSjn/EJOI5VMlZPK40Q8NSoE+Cn2doLh
+	008wuuuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyaqm-00000004P0g-29fw;
-	Fri, 06 Mar 2026 19:28:40 +0000
-Received: from omta036.useast.a.cloudfilter.net ([44.202.169.35])
+	id 1vyb7J-00000004PyU-0oJo;
+	Fri, 06 Mar 2026 19:45:45 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyaqj-00000004Ozv-3RH4
-	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Mar 2026 19:28:38 +0000
-Received: from eig-obgw-6004b.ext.cloudfilter.net ([10.0.30.210])
-	by cmsmtp with ESMTPS
-	id yWBvvBQ3vKXDJyajJvpIC0; Fri, 06 Mar 2026 19:20:57 +0000
-Received: from gator4166.hostgator.com ([108.167.133.22])
-	by cmsmtp with ESMTPS
-	id yajIvhU0tK8vzyajJvm5tu; Fri, 06 Mar 2026 19:20:57 +0000
-X-Authority-Analysis: v=2.4 cv=cJDgskeN c=1 sm=1 tr=0 ts=69ab2919
- a=1YbLdUo/zbTtOZ3uB5T3HA==:117 a=k5Y5iPg+dmTXVWgYE/XtfQ==:17
- a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=7T7KSl7uo7wA:10 a=pGLkceISAAAA:8
- a=EcUihO1BCf_UJVK-1IMA:9 a=QEXdDO2ut3YA:10 a=2aFnImwKRvkU0tJ3nQRT:22
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
-	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=0n42meaqGDUGzjj9bzqWNF89weGMYcF1c/cak04I5XA=; b=O9y9+73+ouMsaM0xhKXiJLvW2a
-	Ywu4XqNxZDNA1lNVURcPwpGMvAnMU7PlOFI9ARxlq1vzbhxgwjvRjBAFzEGF7BIbj/G0ADu2tgwij
-	9OWq5wtMF2uaEedEWgX0RivJ03Fw3lUwSIE6/s9jLLPIYYduNkyeHHCPnGH883u2sxfkPAqLV4g4T
-	jZp0qeP4m8iTd+1/5kRv3QoZXgu6+Q/fifr1woOnsqC2jPjGJlRmKZiRvjhi+jVZO5ZDI6NXIif5K
-	5qWQJVoEN5uB5MOb5wyZ65bg0DqTe0q6rhCA6aTIhk6PBhNhw9ajWpW+owBAT0rQ+YWIMkbMwZimX
-	no7nUOPw==;
-Received: from [177.238.16.13] (port=34680 helo=[192.168.0.21])
-	by gator4166.hostgator.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.99.1)
-	(envelope-from <gustavo@embeddedor.com>)
-	id 1vyajI-00000001Gcm-09F6;
-	Fri, 06 Mar 2026 13:20:56 -0600
-Message-ID: <9dbf5b85-66ec-4d3f-99d6-17cc74a8f912@embeddedor.com>
-Date: Fri, 6 Mar 2026 13:20:27 +0900
+	id 1vyb7G-00000004Pxm-2kEo;
+	Fri, 06 Mar 2026 19:45:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id DA77E42A08;
+	Fri,  6 Mar 2026 19:45:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 778D4C4CEF7;
+	Fri,  6 Mar 2026 19:45:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772826341;
+	bh=x+3NTRRRtkgOTvh5mtd+iKhL1Y2otrgIc1JfWN0MOUI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lugK7+scdJBBhiZq7oTAcGs9SAzNLQGkGinHM39UgUtCk37lQ0ue0jJ/93NWH5iXI
+	 Mi3hAHfVtTzu/EjCt7gi4SoixNl6t6yMT6Y7zQT8TAihU1LndL/eRi5SxceE/KY/1m
+	 hVE89Rs002u3eU5o1zpiQ8PPtTxkQnB4B1Y93gSRb5He2kfrUkzqHmKRxSLAogWlgx
+	 0rrmNp9pEmD5wIv7bjK6kO2DzxVFP8qhuPNleJRNLZLXItsDKyAy89CuwyxMFTSt8P
+	 O+DXLMzAI1QBJ/ZMH26MYd0gkCwBLj4KNng4lGSdrrR1Z/9zp21HsGVf+oQ+hxjfSP
+	 DtO+WQlht1LLA==
+Received: by finisterre.sirena.org.uk (Postfix, from userid 1000)
+	id A0A0C1AC52D4; Fri, 06 Mar 2026 19:45:37 +0000 (GMT)
+Date: Fri, 6 Mar 2026 19:45:37 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, Fabien Parent <parent.f@gmail.com>,
+	Val Packett <val@packett.cool>, Rob Herring <robh@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Gary Bisson <bisson.gary@gmail.com>,
+	Julien Massot <julien.massot@collabora.com>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 2/7] dt-bindings: regulator: add support for MT6392
+Message-ID: <aasu4UqZv7HMXX6V@sirena.co.uk>
+References: <20260306120521.163654-1-l.scorcia@gmail.com>
+ <20260306120521.163654-3-l.scorcia@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] soc: mediatek: mtk-dvfsrc: use flex array
-To: Rosen Penev <rosenp@gmail.com>, linux-mediatek@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Kees Cook <kees@kernel.org>, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- "open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- open "list:KERNEL" HARDENING "(not" covered by other
- "areas):Keyword:b__counted_by(_le|_be)?b" <linux-hardening@vger.kernel.org>
-References: <20260304232014.164408-1-rosenp@gmail.com>
-Content-Language: en-US
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
-In-Reply-To: <20260304232014.164408-1-rosenp@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - embeddedor.com
-X-BWhitelist: no
-X-Source-IP: 177.238.16.13
-X-Source-L: No
-X-Exim-ID: 1vyajI-00000001Gcm-09F6
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: ([192.168.0.21]) [177.238.16.13]:34680
-X-Source-Auth: gustavo@embeddedor.com
-X-Email-Count: 31
-X-Org: HG=hgshared;ORG=hostgator;
-X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
-X-Local-Domain: yes
-X-CMAE-Envelope: MS4xfOFWtXql3HcbM4A5F6K4CElHjIbzaE4aAHSaNm6u9cmhyR/aO1UzdCXfVPdOkmDat4lL4QXJN+TcW1tI20DP7egvI6vq4zRBdMMwFNwvpfAroHq7ASyx
- saBMWFyLN18+UL7BD5UHGVaWRv0rH7t7o7lPcM3KySeZrdoTSMoUjIoylt8QYwBjmZ13BEsAru6AAzLEZGy+nIga+rYTLUOCKdFQBTyelk66vA+P+1gQ6Dia
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="/GMRHJnvF89z60eQ"
+Content-Disposition: inline
+In-Reply-To: <20260306120521.163654-3-l.scorcia@gmail.com>
+X-Cookie: Think big.  Pollute the Mississippi.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_112837_942643_5E8D8844 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20260306_114542_716893_FD713605 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,73 +90,38 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
+--/GMRHJnvF89z60eQ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On 3/5/26 08:20, Rosen Penev wrote:
-> Simplifies allocation from kzalloc + kcaloc to one allocation.
-> 
-> Allows extra runtime analysis with __counted_by.
-> 
-> Signed-off-by: Rosen Penev <rosenp@gmail.com>
-> ---
->   drivers/soc/mediatek/mtk-dvfsrc.c | 18 ++++++------------
->   1 file changed, 6 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-dvfsrc.c b/drivers/soc/mediatek/mtk-dvfsrc.c
-> index 548a28f50242..48b1fcf3e101 100644
-> --- a/drivers/soc/mediatek/mtk-dvfsrc.c
-> +++ b/drivers/soc/mediatek/mtk-dvfsrc.c
-> @@ -71,8 +71,8 @@ struct dvfsrc_opp {
->   };
->   
->   struct dvfsrc_opp_desc {
-> -	const struct dvfsrc_opp *opps;
->   	u32 num_opp;
-> +	struct dvfsrc_opp opps[] __counted_by(num_opp);
->   };
->   
->   struct dvfsrc_soc_data;
-> @@ -489,7 +489,6 @@ static u32 dvfsrc_get_opp_gear(struct mtk_dvfsrc *dvfsrc, u8 level)
->   
->   static int dvfsrc_get_hw_opps_v4(struct mtk_dvfsrc *dvfsrc)
->   {
-> -	struct dvfsrc_opp *dvfsrc_opps;
->   	struct dvfsrc_opp_desc *desc;
->   	u32 num_opps, gear_info;
->   	u8 num_vcore, num_dram;
-> @@ -520,24 +519,19 @@ static int dvfsrc_get_hw_opps_v4(struct mtk_dvfsrc *dvfsrc)
->   		 num_opps, num_vcore, num_dram, num_emi);
->   
->   	/* Allocate everything now as anything else after that cannot fail */
-> -	desc = devm_kzalloc(dvfsrc->dev, sizeof(*desc), GFP_KERNEL);
-> +	desc = devm_kzalloc(dvfsrc->dev, struct_size(desc, opps, num_ops + 1), GFP_KERNEL);
+On Fri, Mar 06, 2026 at 12:03:06PM +0000, Luca Leonardo Scorcia wrote:
+> From: Fabien Parent <parent.f@gmail.com>
+>=20
+> Add binding documentation of the regulator for MT6392 SoCs.
 
-Mmhh... You should really consider building your code before submitting any patches.
+Please submit patches using subject lines reflecting the style for the
+subsystem, this makes it easier for people to identify relevant patches.
+Look at what existing commits in the area you're changing are doing and
+make sure your subject lines visually resemble what they're doing.
+There's no need to resubmit to fix this alone.
 
--Gustavo
+Acked-by: Mark Brown <broonie@kernel.org>
 
->   	if (!desc)
->   		return -ENOMEM;
->   
-> -	dvfsrc_opps = devm_kcalloc(dvfsrc->dev, num_opps + 1,
-> -				   sizeof(*dvfsrc_opps), GFP_KERNEL);
-> -	if (!dvfsrc_opps)
-> -		return -ENOMEM;
-> +	desc->num_opp = num_opps + 1;
->   
->   	/* Read the OPP table gear indices */
->   	for (i = 0; i <= num_opps; i++) {
->   		gear_info = dvfsrc_get_opp_gear(dvfsrc, num_opps - i);
-> -		dvfsrc_opps[i].vcore_opp = FIELD_GET(DVFSRC_V4_GEAR_INFO_VCORE, gear_info);
-> -		dvfsrc_opps[i].dram_opp = FIELD_GET(DVFSRC_V4_GEAR_INFO_DRAM, gear_info);
-> -		dvfsrc_opps[i].emi_opp = FIELD_GET(DVFSRC_V4_GEAR_INFO_EMI, gear_info);
-> +		desc->opps[i].vcore_opp = FIELD_GET(DVFSRC_V4_GEAR_INFO_VCORE, gear_info);
-> +		desc->opps[i].dram_opp = FIELD_GET(DVFSRC_V4_GEAR_INFO_DRAM, gear_info);
-> +		desc->opps[i].emi_opp = FIELD_GET(DVFSRC_V4_GEAR_INFO_EMI, gear_info);
->   	};
-> -	desc->num_opp = num_opps + 1;
-> -	desc->opps = dvfsrc_opps;
->   
->   	/* Assign to main structure now that everything is done! */
->   	dvfsrc->curr_opps = desc;
+--/GMRHJnvF89z60eQ
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmmrLuAACgkQJNaLcl1U
+h9AXeAf+PIlXpslfrQ8vsFtLhhUNWSZSG2c6ukWLzTxJvTlhYNpKzP2XF//6/nvm
+nLOsknmi8T7cornx+o6miEp6e88p5JtEiAaYeupKHrUi+GbOhFf364SiHG6U7TF+
+eG1zvzep5B0vPGc2GqKWOcHAG4+3xIVxYbF3rnG0gHct/qXK7S1J7RQxaA4DAdNv
+OfxEIGzD5qR/yJCjtYioMDnBibUnj9vPyrt0G3Ekcgiptn4gWziw5HnhjKacbECL
+dwlH2HrVrEB2VocQGishwscx+TftyqSSm1NiAWRtOuroXq5/a6GLX9lYvqTMlWVJ
+EtubtKoks2gAKmRLIP67uKQgfyPzww==
+=inXS
+-----END PGP SIGNATURE-----
+
+--/GMRHJnvF89z60eQ--
 
