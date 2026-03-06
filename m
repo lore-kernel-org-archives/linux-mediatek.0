@@ -4,76 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09E42F513EB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 02:16:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 737E1F513EE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 03:33:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TgGMYh2DP+ijYv+4mXIdHZZry/vv5D3g9hz3pz4gUUg=; b=2pg4v7cViVpjW5vGLC4EPCZzYC
-	mGu+lTCQBzVzC1lI3vlVZDC8mQtS0cAvzHptkA2/nmTZIgbdR8LO9ML8p8Lm7eux/j4yKp8CSPId3
-	BCSkE8kGlnxz4pu4mJ3vYF5jLf5UGiPWPAn7+can41ZoyheTxf1fvUC6KPFdtkPsRASReRG2i+G9R
-	dKVtu+YISuOgVkpTN45mKthEi5O5+qt4u8+u06AS73HS96Hgov/mh3yp0t04VzOebGY5nadGdYMdO
-	BhZ0p2KxSWSyo/Qi+hRcxRXNil2Fl4SlMLeCLHwwo5DSBXta23qIpKxegcGxrzcoDA2nleb+N2fSZ
-	+3RmCX9w==;
+	bh=Y0xcWXzGH468tdb8ojDFzDems01+IFDl6KSRGswwbzc=; b=WEGO8FF+FARhhPXLw9Mq6fRk0F
+	Zoixj6QDISZcd8bBPq0bLV3AX3lQh9ug8+byHqznOA9oF34C3tbgQRn+yurGXS26hY9y9WIVKbU+R
+	wOrnLuICAZeJohQ/fMdgtiM/FqQT6V4+SjSBrwQVdylmknk4JUEofBD+taKDhFu3Xzz238xQwYJov
+	hreOb8UZ328kRhS6hOufJuIY0MtbW962jOQjnftnQqFEeTzxvDSmlv44fKXTHelxnFFxi4jv73CLV
+	ywGQHHHOuN0EwLqr9TA9j5dF+MO0S8UoN8OthP4tHuw4dZ/dTvqbFMaz4DTkFRSYHQ+w92aUJy1U0
+	3tvizegg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyKkE-00000002sDS-07vM;
-	Fri, 06 Mar 2026 02:16:50 +0000
-Received: from 013.lax.mailroute.net ([199.89.1.16])
+	id 1vyLvy-00000002y3z-2697;
+	Fri, 06 Mar 2026 03:33:02 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyKkB-00000002sCZ-26mO;
-	Fri, 06 Mar 2026 02:16:48 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 013.lax.mailroute.net (Postfix) with ESMTP id 4fRqlz0NRJzlh1TC;
-	Fri,  6 Mar 2026 02:16:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1772763403; x=1775355404; bh=TgGMYh2DP+ijYv+4mXIdHZZr
-	y/vv5D3g9hz3pz4gUUg=; b=Fmb6MmUO9RTAb/zAArlRKoTXh9EVLjQQzSsAWOQX
-	hslDxghfplk0YRi2ns3vbTRjmbfnlpQ0LTJ4v6vGFvOy4/3BTRybHKm6AKIOqltW
-	RtXPOJIerQqy0HkY4hdpNGvXK1c41t20+3Hc9HHM1EA03h1Xgya7FPx9+qAY5Krb
-	Ux/78eLp4OSGk14UMrsd3p8Y+VEY/NPhnJ8RQa9c/XmvXE2gcFBrXRTDwRQ+Hbh/
-	xzqDxnhzm3ixaVNOJ/sTzdMbTudP9sd/takMpHJRuXozGZiOdW+W4bcLykgRFMIE
-	KirPeiOul0KqYwrY3r6+YlIcGWyony6nwL7/+qKDvOWN/g==
-X-Virus-Scanned: by MailRoute
-Received: from 013.lax.mailroute.net ([127.0.0.1])
- by localhost (013.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id OMO8-5YPHm93; Fri,  6 Mar 2026 02:16:43 +0000 (UTC)
-Received: from [192.168.132.187] (unknown [12.150.89.26])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 013.lax.mailroute.net (Postfix) with ESMTPSA id 4fRqlr0VCrzlh1TF;
-	Fri,  6 Mar 2026 02:16:39 +0000 (UTC)
-Message-ID: <fee27e1f-ce3f-4a32-9eb1-4b97f6cde0fc@acm.org>
-Date: Thu, 5 Mar 2026 20:16:38 -0600
+	id 1vyLvt-00000002xxy-2lHG;
+	Fri, 06 Mar 2026 03:32:59 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id F195B442B7;
+	Fri,  6 Mar 2026 03:32:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D05F8C19423;
+	Fri,  6 Mar 2026 03:32:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772767976;
+	bh=dHeHma9AiWF1RiaOUAgdoIsbggNG2YQxNrnoSZiH8cA=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=vMGGkGu0tSCBjE3psm8TVkzP/xK8u9zutqEo5acgnrgMLV03DcSlrz8mKYh1PLjc7
+	 /WN2XdGFoN3sBhQMDJ8FN8ATC8qonD777pR4QyPnz6bfbYU5TgsCrs2TLZg+0zXypO
+	 fQseQXN3eBWFSvgOEMxmpGnK8wT2UnWAW4enshurKdKX0g1BuXdtKiJfKsoIEpKTlO
+	 G77MCqPDMuoO1loe0l9+6DQ3auvwWyPrRcsxXk1lmdbooqM+33p+kE3IHT/X4KV3bi
+	 MAdiwlZRjDI8/uXyAvkc8j0Ass5CkjJ1rvEMXLf2MbPYzc/bRCyGUpoHdTROIisjiA
+	 u/mZXWt97GICA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id B9F823808200;
+	Fri,  6 Mar 2026 03:32:57 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] ufs: core: Add quriks for VCC ramp-up delay
-To: ed.tsai@mediatek.com, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260305083610.2672344-1-ed.tsai@mediatek.com>
- <20260305083610.2672344-2-ed.tsai@mediatek.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20260305083610.2672344-2-ed.tsai@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next] net: airoha: Rely __field_prep for non-constant
+ masks
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177276797654.3348267.16106814160751955991.git-patchwork-notify@kernel.org>
+Date: Fri, 06 Mar 2026 03:32:56 +0000
+References: <20260304-airoha-__field_prep-v1-1-b185facc4e2f@kernel.org>
+In-Reply-To: <20260304-airoha-__field_prep-v1-1-b185facc4e2f@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_181647_554959_9929F83A 
-X-CRM114-Status: UNSURE (   6.68  )
+X-CRM114-CacheID: sfid-20260305_193257_729068_D86C28D5 
+X-CRM114-Status: UNSURE (   9.60  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,11 +76,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3/5/26 2:29 AM, ed.tsai@mediatek.com wrote:
-> On some platforms, the VCC regulator has a slow ramp-up time. Add a
-> delay after enabling VCC to ensure voltage has fully stabilized before
-> we enable the clocks.
+Hello:
 
-Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Wed, 04 Mar 2026 11:56:47 +0100 you wrote:
+> Rely on __field_prep macros for non-constant masks preparing the values
+> for register updates instead of open-coding.
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+>  drivers/net/ethernet/airoha/airoha_eth.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next] net: airoha: Rely __field_prep for non-constant masks
+    https://git.kernel.org/netdev/net-next/c/7600fb3b41dd
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
