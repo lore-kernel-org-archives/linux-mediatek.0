@@ -4,82 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8A34F01832
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 13:28:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DCA3F01832
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 13:42:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vHGev/SVJHjtM5KJlxdcEOTZoj6KMMDvqCC47rp4HM0=; b=gbQG+lBRttMJ0+ilXWL3LLhs0/
-	biWffaIxjOPu4PFdRuFRdO/5EZciY9cgQYHfrFfjtyOpKWAWMQ4i3YY9sx0gRsXDfOynt6yhV+6jP
-	zRvTJFnDZfk5lAqdu2cIoK0UEGLLxV898ww2FONzjbr2BiKPIywtIgHYKv1FogteucjUHpoyLsV6c
-	6Xg9CKLxvPJBMDHUeHLYMejvsOZBgN29mxKuuUax/hv92QYsEcKDsnNPeINdVR47SFl9Y8jDtNmkn
-	XMR6r/hkitQUkDDKp+3wBjtmPUl3e5qSNpUID+jrZkQPNo+pQCjkQ7Bg4fWBVo57z5n7DACYlmbYC
-	T9s9DWLQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zT/WbXNBnHVHbWJuWSQf2lev8lSg9jb6w/iWuODCBY8=; b=lNdVhd3+iWk3yycykaBf4LldiF
+	kz/wevYcjAW1lkRFpbx4uvTJfbxBAtLqZgmRy7YrAdqPbJH7HuHNqkjwI+dsBzgRsVdONJ36LnfN0
+	dg3f4jqnIxKFFKAw4bvYX7suY6WLfFEKmAWuxAwjI/fG0fyiEgrHS+pcLHCXTZaeMq2ZGdLoXQHPm
+	kD0McpzKggAhMz8klgxPuzKw0yiT1j/08TqF626uv6IuuNoyWf9u94L2tH7n1G2ixWySELWx1Lkpg
+	zHgxz/e1msqBn2OJyZbUyHmVxnZBJOSa+PK0hm0r14d4yW2NuQfPiXPZuKrA6jBnhwIJY12SnCQGl
+	cEuXnbLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyVDi-00000003mBZ-06ye;
-	Fri, 06 Mar 2026 13:27:58 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vyVRs-00000003oh4-41CO;
+	Fri, 06 Mar 2026 13:42:36 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyVDX-00000003lx5-1P3e;
-	Fri, 06 Mar 2026 13:27:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1772803628; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=b+2T+E3pBdHAcaTERaqKvcaSqY7yg2FLPiCMTpoffB3USLW499Ox90fXyzVSmO04xxgjaieUXyzIcSxQZOdrFRxc7QkXEISL9R0pwp0080GqGvfdaB7kFaCYl5+sJOKYT3YIeG/v5xVJZgbAioHxA6tg764dRABvNrZ4AH+64B0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1772803628; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=vHGev/SVJHjtM5KJlxdcEOTZoj6KMMDvqCC47rp4HM0=; 
-	b=lOllQD+nUl534GajLJG4I2NvzitjCjtaaZNp3sjRsqGyp71lj93XC2I3eF7QrbXbXOBy85IdqfmM9Txp2bGsI+0SQPwFmp4YqNVsv+lXQxviTDmVro1x8NosufNNrA8XbL7VzRF4zTmDTdFOc2XZbwaK69SP9pjoBN4QyrmNp4g=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772803628;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=vHGev/SVJHjtM5KJlxdcEOTZoj6KMMDvqCC47rp4HM0=;
-	b=YWnHIjrBeM9MpqXxZWyFswF7+EvZWWjF2/GX7ylbPAC+8CR8K0U7hA8LfqdcryZp
-	qBEK5ImjP05WQKA+clNzw8Bv6VzVTpsEDB59thUl9IzqkHAPYE9H5f+e6Kx7zTrWidZ
-	B0R6M1wquZmiJ0iUylioZDD5jDcNYnJkGX63elGY=
-Received: by mx.zohomail.com with SMTPS id 1772803626023697.5615829679394;
-	Fri, 6 Mar 2026 05:27:06 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Fri, 06 Mar 2026 14:25:01 +0100
-Subject: [PATCH v9 20/23] scsi: ufs: mediatek: Back up idle timer in
- per-instance struct
+	id 1vyVRp-00000003ogQ-1PVU;
+	Fri, 06 Mar 2026 13:42:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id D807543841;
+	Fri,  6 Mar 2026 13:42:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC650C4CEF7;
+	Fri,  6 Mar 2026 13:42:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772804551;
+	bh=23e2vXZ+LPwii7CBOaBMLFQqrS73W1YmdWJ9Cli7Hoc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=T4PtfgivqSO5bHN27uUYAlkze4+GpA/mYQUgJt6cysLhk4fsgavBVcy+Xq/leZGJI
+	 5o7/W0LUJlHfqv6NSPHW1eRcG+V9hfNCHqGQ505gLC69LYx2ADuhnWZ0Z3xk2d7HCs
+	 /Vlo+yScz7BRLVL+7Ss185bjTw3t9BFolWKrezoVn0yQkg7TTZL7sKOMrtirFi1sd9
+	 8UqAIzLo6ETemq294i3zODWwk6StVn0Akv7H8hHNV2L3C0Kh/19qdfn/XuZGBOhpBm
+	 97pdm1PhFlfFUpsg4wVEyUvZCl9b4gOXeYLiIUb7gjwkbjjnDdcct9rGV9OJ4oKL3e
+	 xd0hIyxGBEwUg==
+Date: Fri, 6 Mar 2026 13:42:26 +0000
+From: Simon Horman <horms@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: airoha: Fix GDM2 loopback configuration
+ for USB serdes
+Message-ID: <20260306134226.GD461701@kernel.org>
+References: <20260228-airoha-fix-loopback-for-usb-serdes-v1-1-a94be0f897da@kernel.org>
+ <20260303141624.GD71509@kernel.org>
+ <aaftUXaSD0u5ZhO7@lore-desk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260306-mt8196-ufs-v9-20-55b073f7a830@collabora.com>
-References: <20260306-mt8196-ufs-v9-0-55b073f7a830@collabora.com>
-In-Reply-To: <20260306-mt8196-ufs-v9-0-55b073f7a830@collabora.com>
-To: Alim Akhtar <alim.akhtar@samsung.com>, 
- Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
- Kishon Vijay Abraham I <kishon@kernel.org>, 
- Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>, 
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, 
- "Martin K. Petersen" <martin.petersen@oracle.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>, 
- Mark Brown <broonie@kernel.org>, Chaotian Jing <Chaotian.Jing@mediatek.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>
-Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, 
- kernel@collabora.com, linux-scsi@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-phy@lists.infradead.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-X-Mailer: b4 0.14.3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aaftUXaSD0u5ZhO7@lore-desk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_052747_473892_A60EC4D2 
-X-CRM114-Status: GOOD (  15.20  )
+X-CRM114-CacheID: sfid-20260306_054233_394668_02C0D706 
+X-CRM114-Status: GOOD (  22.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,80 +77,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek UFS driver uses a function-scope static variable to back up
-a hardware register across a power change in the
-ufs_mtk_pwr_change_notify function. This is dangerous, as it's only
-correct if only ever one instance of the driver is loaded, which isn't
-true if there's more than one device on a SoC that needs it, or it
-otherwise gets loaded a second time.
+On Wed, Mar 04, 2026 at 09:29:05AM +0100, Lorenzo Bianconi wrote:
+> > On Sat, Feb 28, 2026 at 01:20:33PM +0100, Lorenzo Bianconi wrote:
+> > > Flow Control source port mapping for USB serdes needs to be configured
+> > > according to the GDM port nbd parameter. This is a preliminary patch
+> > > since nbd parameter is specific for the given port serdes and needs to
+> > > be read from the DTS (in the current codebase is assigned statically).
+> > > 
+> > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > 
+> > Hi Lorenzo,
+> > 
+> > Is this a fix? If so, should it have a fixes tag? And be targeted at net?
+> > Otherwise, perhaps drop the "Fix" from the subject.
+> 
+> Hi Simon,
+> 
+> This is a preliminary patch in order to completely fix the loopback
+> configuration for USB serdes but the point is we are not supporting
+> USB serdes upstream yet (there is only OpenWrt support available at
+> the moment). Do you think we should target net-next or net in this
+> case?
 
-Back it up into a member of the host struct instead, as this struct is
-per-instance. Rework the function to not use a pointless "ret" local as
-well.
+If there is no bug in net - given the way net can be used with in-tree code
+- then I would not tag this as a fix.
 
-Fixes: f5ca8d0c7a63 ("scsi: ufs: host: mediatek: Disable auto-hibern8 during power mode changes")
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- drivers/ufs/host/ufs-mediatek.c | 20 ++++++++------------
- drivers/ufs/host/ufs-mediatek.h |  1 +
- 2 files changed, 9 insertions(+), 12 deletions(-)
+> 
+> > 
+> > Also, I think it would be worth explaining the situation
+> > before and after this patch.
 
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index c4e70fb99e82..2198271a269a 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1398,28 +1398,24 @@ static int ufs_mtk_pwr_change_notify(struct ufs_hba *hba,
- 				const struct ufs_pa_layer_attr *dev_max_params,
- 				struct ufs_pa_layer_attr *dev_req_params)
- {
--	int ret = 0;
--	static u32 reg;
-+	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
- 
- 	switch (stage) {
- 	case PRE_CHANGE:
- 		if (ufshcd_is_auto_hibern8_supported(hba)) {
--			reg = ufshcd_readl(hba, REG_AUTO_HIBERNATE_IDLE_TIMER);
-+			host->ahit = ufshcd_readl(
-+				hba, REG_AUTO_HIBERNATE_IDLE_TIMER);
- 			ufs_mtk_auto_hibern8_disable(hba);
- 		}
--		ret = ufs_mtk_pre_pwr_change(hba, dev_max_params,
--					     dev_req_params);
--		break;
-+		return ufs_mtk_pre_pwr_change(hba, dev_max_params, dev_req_params);
- 	case POST_CHANGE:
- 		if (ufshcd_is_auto_hibern8_supported(hba))
--			ufshcd_writel(hba, reg, REG_AUTO_HIBERNATE_IDLE_TIMER);
--		break;
--	default:
--		ret = -EINVAL;
--		break;
-+			ufshcd_writel(hba, host->ahit,
-+				      REG_AUTO_HIBERNATE_IDLE_TIMER);
-+		return 0;
- 	}
- 
--	return ret;
-+	return -EINVAL;
- }
- 
- static int ufs_mtk_unipro_set_lpm(struct ufs_hba *hba, bool lpm)
-diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
-index fa27ab4d6d6c..2349d9b9375c 100644
---- a/drivers/ufs/host/ufs-mediatek.h
-+++ b/drivers/ufs/host/ufs-mediatek.h
-@@ -187,6 +187,7 @@ struct ufs_mtk_host {
- 	u16 ref_clk_gating_wait_us;
- 	u32 ip_ver;
- 	bool legacy_ip_ver;
-+	u32 ahit;
- 
- 	bool mcq_set_intr;
- 	bool is_mcq_intr_enabled;
-
--- 
-2.53.0
+...
 
 
