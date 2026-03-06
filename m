@@ -4,74 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1134F513E9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 00:29:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 178D8F513EB
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 02:15:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e206y8hZRSz3DX6+DSSzBMy8lPIoBlHv7UfWvFXYSoI=; b=0eVl9dTArSaLZ3ZnAYqRgV+Qdc
-	DPU5M1IwjaZAwIumMZZUPgYHp0hYeAHAaxgguN/RVSCbMq07Pw6/9T7Vr9hmVUJPuUiax2K/tq6YY
-	6apgDMi02QX22X/7FFwyfE6b9GyaYLWIc1XNobZqH+z+2Yiq/2siTt06rBxzpCkO4CECHXkqhAnPx
-	p07w4O8CaCi+oI3OM8IA8ri2Do/PwUJKDQNZq2yEoGdbdZi0PlMotRYH5w3j7wMxbZzn4mW2WDST+
-	Dql9ygBXljcntlqdOLvmCP/Vviac/4u9apOdKsBtVFqQJu7+OGW9TVpki7pJyNnP8ie2Np8XSyOb9
-	haMtJdrA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QQzhNc04McOCTp4ZWH0zZtCOyhhtw3rBPEi5ryyYZDs=; b=W1fjOFwQisNhKECle95A4ZaI1x
+	cx7Dsfpt3PbIm14A6VbxHeDV4BpgfQYZfQAxRRk6v/JE0TtwjooI4iKM8eUnxbKGTZWqoNVXRUZqB
+	8HDoM+qm4FkA7pZkbkAp+Z+fUQzHp/0WcI7kYATt9tAMnCtTZvVb7UHkS8IvnP78CTvtXHM5tBc0g
+	PEQcBXCstCMDQR/WkvlC3nfYwLnk3dZv7MLlaVJNW+yehnN7TOJ9kvqUtSr9Tqg/noYk+pR2aZNc/
+	WvoOIkJCXl8y9Ab0LSa4/Lh43cvz+9HwaMRvcP9Xbvc6RB9207h4lyL+hyQW/ifp07RYT7VFNMr9o
+	geh3xLHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyJ4P-00000002mhM-3yaP;
-	Fri, 06 Mar 2026 00:29:33 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vyKjI-00000002s0O-1dE8;
+	Fri, 06 Mar 2026 02:15:52 +0000
+Received: from 011.lax.mailroute.net ([199.89.1.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyJ4O-00000002mgr-3Fh4;
-	Fri, 06 Mar 2026 00:29:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 36CD6600B0;
-	Fri,  6 Mar 2026 00:29:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC8D2C116C6;
-	Fri,  6 Mar 2026 00:29:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772756971;
-	bh=H/ApE2Ifn1Gwf6HdI5rD2qg2A1C36R8oMsoc12fiRtE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LhRsuBQa2HW1msxsnJ1GDnVDwGgwkTtwysMZq4+woC0ocQdwWhGlzNU+N0+B5vfTl
-	 ovmzsoIiOGaNz3xniEY6aKgIntgyaCPQAnRlGd1Jfh2DEGL4/1++9E0+4dSVYt4nSy
-	 quDtjQhfegKASaFRSUXp1XBF3qyGZ0WNSgbN+AlRsRK3xefJMGMdowu1DmMrAJ/lh0
-	 Eg53SZTvSty8k2hpkMkJqdG65oP2uTAM+bUx3h72S6PKHjKd4UrlvpJqTa1wuQ+4vD
-	 RCohdrq5kYeD/Om8A01/jFs3Y5uitjN69tr4n4Wpoa3gAzvL84BNwm5xXNi3Jy0zrX
-	 C1sz/TvvAvvqA==
-Date: Thu, 5 Mar 2026 18:29:31 -0600
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-input@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Sen Chu <sen.chu@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Julien Massot <julien.massot@collabora.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Eddie Huang <eddie.huang@mediatek.com>,
-	linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
-	Gary Bisson <bisson.gary@gmail.com>, Lee Jones <lee@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Fabien Parent <parent.f@gmail.com>, Val Packett <val@packett.cool>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, linux-rtc@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	linux-mediatek@lists.infradead.org, Mark Brown <broonie@kernel.org>,
-	linux-pm@vger.kernel.org, Chen Zhong <chen.zhong@mediatek.com>
-Subject: Re: [PATCH 3/9] dt-bindings: input: mtk-pmic-keys: add MT6392
- binding definition
-Message-ID: <177275697060.854738.6493014317679593134.robh@kernel.org>
-References: <cover.1771865014.git.l.scorcia@gmail.com>
- <056cbc09fcbb4a2845cece69209a2a564d993ac5.1771865015.git.l.scorcia@gmail.com>
+	id 1vyKjF-00000002rzk-3Wib;
+	Fri, 06 Mar 2026 02:15:51 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 011.lax.mailroute.net (Postfix) with ESMTP id 4fRqkq3gjdz1XLyhj;
+	Fri,  6 Mar 2026 02:15:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1772763341; x=1775355342; bh=QQzhNc04McOCTp4ZWH0zZtCO
+	yhhtw3rBPEi5ryyYZDs=; b=JVocAbDcPCawaLdZUbGJ/JA5LZXFqCklWhrTCayZ
+	+PFOMpYsRetddtYRypn1ESePaMZTi6OD+Z1i7/xXGEzOBZxYwfWsAmsaj5CGwgRY
+	xhnTN37ra7EojpmRd5/rhEXtFSSIqw35jTrvhFtZwHIXmhf5MvhYZqldLW45B6n5
+	/ommnXVv+teANBYAKlJh79scM91RgXGVAwuNegFiAuoIhfJMD02uTPocuOAsDvqe
+	Msoqjo8A7nHcIu1CM4UAaSM4Dmd+LzYxgOxCc/yUe8a+BJO50HArwpMuVl5a/OZN
+	q3/Aiwori8z5C7rpzcHsEk3C5syk0Uc+rfUfqSGQEjF0BQ==
+X-Virus-Scanned: by MailRoute
+Received: from 011.lax.mailroute.net ([127.0.0.1])
+ by localhost (011.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id XSnpNyjx8kaO; Fri,  6 Mar 2026 02:15:41 +0000 (UTC)
+Received: from [192.168.132.187] (unknown [12.150.89.26])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4fRqkf112nz1XLyhh;
+	Fri,  6 Mar 2026 02:15:37 +0000 (UTC)
+Message-ID: <0c793e57-ee29-4322-8cf9-0a4a859b9981@acm.org>
+Date: Thu, 5 Mar 2026 20:15:36 -0600
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <056cbc09fcbb4a2845cece69209a2a564d993ac5.1771865015.git.l.scorcia@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] ufs: core: Add quriks for VCC ramp-up delay
+To: =?UTF-8?B?RWQgVHNhaSAo6JSh5a6X6LuSKQ==?= <Ed.Tsai@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "James.Bottomley@HansenPartnership.com"
+ <James.Bottomley@HansenPartnership.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "alim.akhtar@samsung.com" <alim.akhtar@samsung.com>,
+ "martin.petersen@oracle.com" <martin.petersen@oracle.com>,
+ "avri.altman@wdc.com" <avri.altman@wdc.com>
+Cc: "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ =?UTF-8?B?Q2h1bi1IdW5nIFd1ICjlt6vpp7/lro8p?= <Chun-hung.Wu@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ =?UTF-8?B?UGV0ZXIgV2FuZyAo546L5L+h5Y+LKQ==?= <peter.wang@mediatek.com>
+References: <20260305083610.2672344-1-ed.tsai@mediatek.com>
+ <20260305083610.2672344-2-ed.tsai@mediatek.com>
+ <fd1fb573-6d02-433e-a74a-1a015c64e3be@acm.org>
+ <0e812b2b96603f69467b57ae6e9836ef8b4bd1ff.camel@mediatek.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <0e812b2b96603f69467b57ae6e9836ef8b4bd1ff.camel@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260305_181549_945290_B937B006 
+X-CRM114-Status: GOOD (  10.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,20 +97,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 3/5/26 6:19 PM, Ed Tsai (=E8=94=A1=E5=AE=97=E8=BB=92) wrote:
+> On Thu, 2026-03-05 at 06:24 -0600, Bart Van Assche wrote:
+>> On 3/5/26 2:29 AM, ed.tsai@mediatek.com=C2=A0wrote:
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0 /*
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * On platforms with a slow VCC ramp-u=
+p, a delay is needed
+>>> after
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * turning on VCC to ensure the voltag=
+e is stable before the
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * reference clock is enabled.
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0 if (hba->quirks & UFSHCD_QUIRK_VCC_ON_DELAY=
+ && !ret && vcc_on
+>>> &&
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 hba->vreg_info.vcc =
+&& !hba->vreg_info.vcc->always_on)
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 usleep_range(1000, 1100);
+>>
+>> Since the value of the delay is platform-dependent, has it been
+>> considered to introduce a new vendor operation (vop)?
+>
+> A vop does feel a bit heavyweight for a simple sleep. How about we add
+> a new configurable variable, similar to the approach used for the VCC
+> off delay?
 
-On Mon, 23 Feb 2026 17:12:42 +0000, Luca Leonardo Scorcia wrote:
-> From: Fabien Parent <parent.f@gmail.com>
-> 
-> Add the binding documentation of the mtk-pmic-keys for the MT6392 PMICs.
-> 
-> Signed-off-by: Fabien Parent <parent.f@gmail.com>
-> Signed-off-by: Val Packett <val@packett.cool>
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> ---
->  Documentation/devicetree/bindings/input/mediatek,pmic-keys.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
+Let's postpone introducing such a configuration variable until there is
+a real need for such a configuration variable.
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
-
+Bart.
 
