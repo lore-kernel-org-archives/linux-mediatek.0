@@ -4,138 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF9D6F01815
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 08:51:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 497DBF01814
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 09:10:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oYcOFjQuZduWtNNbR5S9+8Q/AcT3kTPe/1jB6KlX3e0=; b=S8Qa7uvbeQg5/NVtwi63I0elEX
-	dmH3KJNi2Js8hoq/HGj+6BXTRdvBnpOJJLrWVKK8J/ZnbaBfJLdPenBm4JTKCH1Fp/oF5Bb0+7MWW
-	k+fFLdRBTlPAoz5iqUTkU3O2AiOqhCR6Hckubz0GBj+0/NJIab1h0KKS4R9aGLC8hlL6uMil7HeTu
-	VFPrtwPQ/vJZx9KnJeTRGD8dYRaVwV2zoemk/VZkIE3Cts3hvLfLCLya6F/6IqY86pMEmhFFKXFs7
-	D3BKgidTtXkZt8VKHd/Yi7BoBLNsRMQoQ7psXYhDi1hI1/lpwVkcvH4zRt2wLY5HiRaEJoot/bDZd
-	XYLGsTPg==;
+	bh=KH2ehL9Ncp8STDdV0VXTA3gOVhPUZmfKSKBmJQ+j2fE=; b=cRZ7IPxsM42+7mbiTyxR+byUEs
+	zO+27l+AgTlijeU8anlLI5oJwBePXzxWz7sIRzuF3Lk1IpXFGxPZ3QDRyuXjd4OwgfFHUIQQZ3Kdw
+	ZTS2piRLCDed7n+dzHGHLvGKhaXoTiQ9czzBUDKtDk14Odar74Z48KcXtcf5HZKkmHkiyOwmtvxsZ
+	vPndL/5b2jUaLzwMZ1NqnMtZF1+Ttii48EbDYVz0GH4F0S0esv+iG6i9eMpPPpVUxCEUt2RdEB8Zv
+	SRliUq9TTJ/0xAdOWkduceasNBWKSvQSexY+1zZ4HVxSHlP7KJNn+9j3CpL60km9dFpVHAX8Hk6lE
+	YzhwzN5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyQu0-00000003I2C-1TcT;
-	Fri, 06 Mar 2026 08:51:20 +0000
-Received: from mail-westeuropeazon11013002.outbound.protection.outlook.com ([52.101.72.2] helo=AM0PR02CU008.outbound.protection.outlook.com)
+	id 1vyRCP-00000003KJT-0l6Y;
+	Fri, 06 Mar 2026 09:10:21 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyQtx-00000003HyS-3TuQ;
-	Fri, 06 Mar 2026 08:51:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=jZDvN9Ii8fwvVXdycWQnbDpQiwxhXKJeFNe78bcceIGvMhpD94sB5wZWjeVQK6vlrMJjAOxSKiiLIIjsFya3HdhQgXkvXJzmh5wnpSmbwNEjnXndWOKlXXsOWHgcm7sqmRPl69bouvi3iPqPtMVtqPA7AjXFf3H7Mhb+e5DL+ncb1SeSCl0BTTbf5NSbHUni327w6SsJJ7UWbyhV9vIk98D8HGseN2CLrBTBGy6Lq3uVrVJWd2Ap5LO4KfWczy0GbXyhLlNxTD6K7ClN828CLlcwFyccwvx/YxW+EVlLa0m2LDk7NZcnSC00dQ7u5nlCmKz36JXZcE/2uN2KqXJmGg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=oYcOFjQuZduWtNNbR5S9+8Q/AcT3kTPe/1jB6KlX3e0=;
- b=RXMuE6so6vMXgsOs0MrFnZSH55ViMREGt2ue/OyVCkAb90eZPR7tGO8KPC7BAONejsJHlkwbLozUzIwj+7BmjksrBrDoVFm/GcYIUmpHYaqT0nR0pqJK4OwwSKBoIDh7juaVHizW7t2QEKdAyBkkZh7YLi5wWAPLbsGMIdbr55xTCOIexlPNbpNt1gOjFZPViC/VdH6AbrIh120Yd1RPXvWvV1ypcfqAIPqr+lz6pfrAM9MHALiXDAElyqYugOhGt6o3SgUyo2XYbAMOMgY4RCB4/LZ9UIce9TTcTq3cmIUZfPfKsWPjag6aIN0Ccngqqy/CN8p58P5pqsSDhIHR0Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oYcOFjQuZduWtNNbR5S9+8Q/AcT3kTPe/1jB6KlX3e0=;
- b=cFlgQSUHXJ19BsgaVsFofRCuQhWsIy6jOo8PX/5YzWTBHdK5uqnVOwRqRpeD63trAMU6/LVtNu0CRWHqd83KYxNN2ZF47HS9CqZGwBPzJrjRmP/wwU+z68eruRD0izuRnqVnCXI5vc+DXCfbmDq4h0JRRY6ynbzz1AShmmEXw2NsItlGkFioC8W3tpIG+L/WOEG9DncxtVDbf2mmgnMFUUVLstxFqu1O4eLL6y7neOMqQ1BpZ4Dt+HcopUg5zTzLUjXJ99iajDtvygGImHZNPzcEIRqLF5AeSqIo7GLbWyPW0WEYdvzjllatmlexRjxGE8Goyf2+z3HGwyK7NK+mvg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AS8PR04MB8420.eurprd04.prod.outlook.com (2603:10a6:20b:3fd::16)
- by DB9PR04MB8122.eurprd04.prod.outlook.com (2603:10a6:10:25d::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9678.17; Fri, 6 Mar
- 2026 08:51:14 +0000
-Received: from AS8PR04MB8420.eurprd04.prod.outlook.com
- ([fe80::3f0f:857:96a5:17f]) by AS8PR04MB8420.eurprd04.prod.outlook.com
- ([fe80::3f0f:857:96a5:17f%3]) with mapi id 15.20.9678.017; Fri, 6 Mar 2026
- 08:51:14 +0000
-From: Zhipeng Wang <zhipeng.wang_1@nxp.com>
-To: daniel.lezcano@linaro.org,
-	tglx@kernel.org
-Cc: shawnguo@kernel.org,
-	s.hauer@pengutronix.de,
-	kernel@pengutronix.de,
-	festevam@gmail.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	chun-hung.wu@mediatek.com,
-	walter.chang@mediatek.com,
-	jstultz@google.com,
-	amergnat@baylibre.com,
-	aisheng.dong@nxp.com,
-	jindong.yue@nxp.com,
-	xuegang.liu@nxp.com
-Subject: [PATCH v5 4/4] clocksource/drivers/imx-tpm: Support building imx-tpm driver as module
-Date: Fri,  6 Mar 2026 17:50:21 +0900
-Message-Id: <20260306085021.1231032-5-zhipeng.wang_1@nxp.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260306085021.1231032-1-zhipeng.wang_1@nxp.com>
-References: <20260306085021.1231032-1-zhipeng.wang_1@nxp.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SI2PR06CA0002.apcprd06.prod.outlook.com
- (2603:1096:4:186::10) To AS8PR04MB8420.eurprd04.prod.outlook.com
- (2603:10a6:20b:3fd::16)
+	id 1vyRCN-00000003KJ9-45BZ;
+	Fri, 06 Mar 2026 09:10:20 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id EC387600B0;
+	Fri,  6 Mar 2026 09:10:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6284C19422;
+	Fri,  6 Mar 2026 09:10:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772788218;
+	bh=rTyE7/aIUa4yfhraRfzQKPA0xZnv5Eq7lGRT8IrcsaQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Clp/ld2vvILJO6lLfcQwjrO4hdjk0e8gPrE3A8puIcsFpHVOICBl1jfdm7RYlprkB
+	 9/RyB8Rfm4hLHdtrNocOjmBCR1h6vPR3UToklg6txPcKdpxrS5HS2Hcvkt1Z0jQrNh
+	 jaNwBsij5aixWSPnrJXLEBE7EIRIAZuOF30ILlDWpCOUocVegnUthgdqCVdxS2RWmJ
+	 mKLHumOTsi09PYsGhG9bftB2M8KsfYxrGiXfCIYYNupQ4pbrQF2QFxAt2hsQxTd4wD
+	 YeL39Exo7lolbAap0k71R11gPhrT4jf5PdqKsCy9t67sWkkbo3EEjO1ruA9OYM3c2a
+	 dnBS9ixfLaT8A==
+Message-ID: <0b3a1fa9-4024-44b9-a42f-6b82862e2ac9@kernel.org>
+Date: Fri, 6 Mar 2026 10:10:11 +0100
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8420:EE_|DB9PR04MB8122:EE_
-X-MS-Office365-Filtering-Correlation-Id: 24f1dc47-0307-4a87-8434-08de7b5d85b4
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|19092799006|376014|52116014|366016|7416014|38350700014;
-X-Microsoft-Antispam-Message-Info: krziZQ1xWgZKf3cqfjK5YzoWQS8ZDse51RWGLG15Meht/Ov3Ufpt9XXaA5TCvdfRFZ4UCyfcGNBNf/aWHuAHeVLbWegGd5s+/ug9mjkiorjlvq3xsvS/2/923Doo4sYjNvqHR+b4miLI5ooojgkZCm928FyGI31UurLKQbRnCA3ErFCVWslWdcXDQm1NaLYU5gsLaN7XjlENFpKerSPIvhIZ5ycB7Uv97S/zmbznyMJgmHfm3htXrxE0bMzcOlPtmt5TCyLJ5MTABEM4tPjQ/jrLhp0Xk3oGbbRHpg5qFsh2aXVTBIHQ7ETOW+KQ4gWahpIOwYYAEeh28ZC1eEP/RHTSCZKwqy1DriTacGaz89v7/xh+VQUcC0LTkVFLiFPHqeInecocGkACl6tp1SwBJouLYfNuBZIP0LRQYvwTnn3ZtBwKz+NtVikaWLeDLwEQHr/UBeBQ8CGxRUi8E+HCuw2kkMKzpuevP7RkmNzLDdsI2TKmFDw0ejAnIaz+N4/gb0Z/FXRpcX7GglSbKd3uA/vdFUGWswAULtjOsLF7ynfFawBN0oepwX5DBKjMi7fJqbcShnB7mmsfBiWTvdN4/3QJ9pT2x0fHwy2qLFgtyVd4qaGrdoBw8MxkJD4u1H24SBCd1sBlFakiprWp+InZz0xo4XwpUGEGMsCvoJNXor8EZPRJAolli1xGOoZAq6qKtoYaZstqfX9Ulm4v+Jtp12MvURm+zGEhkH9heyO/K6Ms9ikjfvAjdzrvDD5RoA8fqlZuruWKHVaW8gWUiyYBnguQJGsmyLqqbO5BM9PL2TE=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8420.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(19092799006)(376014)(52116014)(366016)(7416014)(38350700014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?lA1aXshtVI76QvT+JNelQkFa7Q3gw/mwpUknf+6DVVox1V0zPm9g8tjtOXZt?=
- =?us-ascii?Q?VXJx7KpNw+kdoeEQ9Td6XyL6v+mCOBN5L73DplIaY99az+LTvwC8lgcJV3lg?=
- =?us-ascii?Q?EfHCNpIuSPxr1nXFu2UMfJBCoQq+SL6uKjoNB18bn1/yf1Q1ZnMy7Ma6ics/?=
- =?us-ascii?Q?9yRrZa8SE8H+aOhn1eETKs3Z/A7EQICNYB3G4qxT/aur0o39PQAGcjkoRIN6?=
- =?us-ascii?Q?WETsLsal/mS17K4KyDmFoShXyKrbxzoq3x5x4VAIrAXSBb0HO7NLn6bieqJT?=
- =?us-ascii?Q?CxeghXVe7VZfwYaqATPg7pb96C60/+ALuA722N1wruSu+vUvh8P3G6Fuf2I8?=
- =?us-ascii?Q?78DjMXO7a8JLV8CPLgE49BVdLZ3B7FdAkF7x04e2CejH1PxnjC0HblxX+SJx?=
- =?us-ascii?Q?0J6Jj9g2okNDdsdyRvsr1H2cUfSg9A0qOT7OHMnFqAVOTb+1kJbPCLzcaZtV?=
- =?us-ascii?Q?WfLey6aWLX4YuLz1FVnDJiG5ZcmULa2cOMtTSa9epRSg8g7B/uQ6+JxGg3QI?=
- =?us-ascii?Q?MbmclkV7nyjgVfc1LxAQwZLLf6W62hGwMeIrSgY4mTR5ObsYLQRVuqT0vvTr?=
- =?us-ascii?Q?r6r3JdsgOD7JCp6tdGR3wOvPO5nFwu5K/6To3u4V3IHorFssNXB/abwZfamc?=
- =?us-ascii?Q?mClCY7V3AMDzx/nl+VNvatzXymv5Scp2kn9ehvyHM9fFxcbWv4uQqz5KCxWY?=
- =?us-ascii?Q?rQn4fbJRevjrnuu3ANmr5PdCROLipzfNZlIIlp7JLuR9XzGKD/ceeZ26hJqi?=
- =?us-ascii?Q?AolWu0Alg4OohTQ+ip12crm9QVTHHV6f4KRn5MM95VgRwp7V5w8lT+HZ1kr6?=
- =?us-ascii?Q?8wVp8SiwYXR0lV7ln6l4eMvD1duBCcuv6B+HhalKwjB5bEn/t7UvUMaKCjRZ?=
- =?us-ascii?Q?LBMyG6zWH1Tf38yZR21kd8ZcYRYDNVnkiY2LVe7+Ac5PYe5N6vU+j72e19MQ?=
- =?us-ascii?Q?0yBT+SYagXQemI56gYIEbXOrg/NtG542EWDtDqJb90PDHfl3ztedrhuvLYHv?=
- =?us-ascii?Q?wFyr8nTKLYZcJECwiZM8G+Q1A2xyyzhaUluwes+bWkHGMjdoajshhxC3ejk0?=
- =?us-ascii?Q?yTZiymDtTo6An8H7ELYEHSLogsVYR1YyP33czWA1M2XAgizgw1E5rLETgwYG?=
- =?us-ascii?Q?8HrF7ZiLs5F/TNWr5gJTCvY/n76kh6haQnEJXP8g1sItuzOiDkNgrJdJ41wx?=
- =?us-ascii?Q?GwP3iIafkbyRkZKvL4YFX9SiVFbJKgrxYbzKFkxRtzhONDORcOpAq66/+0Ys?=
- =?us-ascii?Q?Vi+l4G977/Lx5U4/wZ6B1WxfG2hirHaNb8PN5DlSUm/2D5epCWF87/6OvGqN?=
- =?us-ascii?Q?B/DJZLFrj2PKwdfok07JDR2nauP6bHiuzHlB7bRqd/C/ZCzCam82H4H92ada?=
- =?us-ascii?Q?usCqwdIWSlNp0Jot4R3x5If1R0wgA0JMdVY8P9E/vzjTSaPhT0L1bac5Apn0?=
- =?us-ascii?Q?E3WtOe1I9tO9EZ6W9CkQvD19Hoh4hl/G7XEQu2SDocqAh8ucU2g3AfGBfzPi?=
- =?us-ascii?Q?+6xzgOdIOJsB3KyWwY9l8N4zfnKDBJoaLHE8gHU7gt4BML4MVQtpzoZNBDS2?=
- =?us-ascii?Q?11DPGTClPgdkKDtxw6nvQ9QmlAW63f1eWVbdBg0UXXIHaYkmsV/cUIyCkZHQ?=
- =?us-ascii?Q?FADMry6V7h2YYXJ7yWH87v1kAwDfjFV6DyRP7WH0o9ULBsPexwQA8iE8b5tt?=
- =?us-ascii?Q?Eml8lMa/m0xcReHZrP/wCqoO5LUBg2Dasfjjy66jANaIOl61jPuC/+MiudjR?=
- =?us-ascii?Q?5THUeFtqIQ=3D=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 24f1dc47-0307-4a87-8434-08de7b5d85b4
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8420.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Mar 2026 08:51:14.1034
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Uhy4bMNGYdAglwk2cJVJ/HaYDwCs6Tq/smgMdsiJtymQhCA7xgGW2Ybq2i34IxwPg+sSloKmLdJVocTiHCFAzA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR04MB8122
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_005117_880657_6CF326D4 
-X-CRM114-Status: GOOD (  17.97  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/4] dt-bindings: arm: mediatek: audsys: Support
+ mt8192-audsys variant
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Rob Herring <robh@kernel.org>
+Cc: krzk+dt@kernel.org, conor+dt@kernel.org, tudor.ambarus@linaro.org,
+ pratyush@kernel.org, mwalle@kernel.org, miquel.raynal@bootlin.com,
+ richard@nod.at, vigneshr@ti.com, lgirdwood@gmail.com, broonie@kernel.org,
+ matthias.bgg@gmail.com, julien.massot@collabora.com,
+ eugen.hristev@linaro.org, jiaxin.yu@mediatek.com, shane.chien@mediatek.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mtd@lists.infradead.org, linux-sound@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ kernel@collabora.com
+References: <20260115125624.73598-1-angelogioacchino.delregno@collabora.com>
+ <20260115125624.73598-4-angelogioacchino.delregno@collabora.com>
+ <CAL_JsqL=zAqyVDAP_B1VW1FWKoS9OEdTNZiZabSNxDscBryYgw@mail.gmail.com>
+ <0ccca45c-34af-4d38-ad0f-6cd080f2882d@collabora.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <0ccca45c-34af-4d38-ad0f-6cd080f2882d@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,117 +124,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jindong Yue <jindong.yue@nxp.com>
+On 10/02/2026 15:28, AngeloGioacchino Del Regno wrote:
+>>> + - if:
+>>> +     properties:
+>>> +       compatible:
+>>> +         contains:
+>>> +           const: mediatek,mt8192-audsys
+>>> +   then:
+>>> +     properties:
+>>> +       audio-controller:
+>>> +         $ref: /schemas/sound/mt8192-afe-pcm.yaml#
+>>> +
+>>>
+>>
+>> Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml:84:1:
+>> [warning] too many blank lines (2 > 1) (empty-lines)
+>>
+>> Please fix as these are warnings in linux-next now.
+>>
+> 
+> Ack. Sorry for the mistakes. Not sure how this happened.
+> 
+> Let me see when I can get some minutes to get this addressed.
+> 
 
-Change defconfig as tristate type and add platform driver
-to support building it as a module.
+This was 2 weeks ago.
 
-Signed-off-by: Jindong Yue <jindong.yue@nxp.com>
-Signed-off-by: Zhipeng Wang <zhipeng.wang_1@nxp.com>
----
- drivers/clocksource/Kconfig         |  2 +-
- drivers/clocksource/timer-imx-tpm.c | 40 +++++++++++++++++++++++++----
- 2 files changed, 36 insertions(+), 6 deletions(-)
+Warning is still there in next. Please revert your patch or take the fix
+from mailing list, but anyway this should not be broken for two weeks.
 
-diff --git a/drivers/clocksource/Kconfig b/drivers/clocksource/Kconfig
-index 2112efb85029..1ba3e9bca3db 100644
---- a/drivers/clocksource/Kconfig
-+++ b/drivers/clocksource/Kconfig
-@@ -613,7 +613,7 @@ config CLKSRC_IMX_GPT
- 	select CLKSRC_MMIO
- 
- config CLKSRC_IMX_TPM
--	bool "Clocksource using i.MX TPM" if COMPILE_TEST
-+	tristate "Clocksource using i.MX TPM"
- 	depends on (ARM || ARM64) && HAVE_CLK
- 	select CLKSRC_MMIO
- 	select TIMER_OF
-diff --git a/drivers/clocksource/timer-imx-tpm.c b/drivers/clocksource/timer-imx-tpm.c
-index 92c025b70eb6..1d593b6f0c37 100644
---- a/drivers/clocksource/timer-imx-tpm.c
-+++ b/drivers/clocksource/timer-imx-tpm.c
-@@ -8,6 +8,8 @@
- #include <linux/clocksource.h>
- #include <linux/delay.h>
- #include <linux/interrupt.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
- #include <linux/sched_clock.h>
- 
- #include "timer-of.h"
-@@ -66,7 +68,7 @@ static inline unsigned long tpm_read_counter(void)
- 	return readl(timer_base + TPM_CNT);
- }
- 
--#if defined(CONFIG_ARM)
-+#if defined(CONFIG_ARM) && !defined(MODULE)
- static struct delay_timer tpm_delay_timer;
- 
- static unsigned long tpm_read_current_timer(void)
-@@ -152,9 +154,9 @@ static struct timer_of to_tpm = {
- 	},
- };
- 
--static int __init tpm_clocksource_init(void)
-+static int tpm_clocksource_init(void)
- {
--#if defined(CONFIG_ARM)
-+#if defined(CONFIG_ARM) && !defined(MODULE)
- 	tpm_delay_timer.read_current_timer = &tpm_read_current_timer;
- 	tpm_delay_timer.freq = timer_of_rate(&to_tpm) >> 3;
- 	register_current_timer_delay(&tpm_delay_timer);
-@@ -171,7 +173,7 @@ static int __init tpm_clocksource_init(void)
- 				     clocksource_mmio_readl_up);
- }
- 
--static void __init tpm_clockevent_init(void)
-+static void tpm_clockevent_init(void)
- {
- 	clockevents_config_and_register(&to_tpm.clkevt,
- 					timer_of_rate(&to_tpm) >> 3,
-@@ -180,7 +182,7 @@ static void __init tpm_clockevent_init(void)
- 					1));
- }
- 
--static int __init tpm_timer_init(struct device_node *np)
-+static int tpm_timer_init(struct device_node *np)
- {
- 	struct clk *ipg;
- 	int ret;
-@@ -241,4 +243,32 @@ static int __init tpm_timer_init(struct device_node *np)
- 
- 	return tpm_clocksource_init();
- }
-+#ifdef MODULE
-+static int tpm_timer_probe(struct platform_device *pdev)
-+{
-+	struct device_node *np = pdev->dev.of_node;
-+
-+	return tpm_timer_init(np);
-+}
-+
-+static const struct of_device_id tpm_timer_match_table[] = {
-+	{ .compatible = "fsl,imx7ulp-tpm" },
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, tpm_timer_match_table);
-+
-+static struct platform_driver tpm_timer_driver = {
-+	.probe		= tpm_timer_probe,
-+	.driver		= {
-+		.name	= "tpm-timer",
-+		.of_match_table = tpm_timer_match_table,
-+	},
-+};
-+module_platform_driver(tpm_timer_driver);
-+
-+#else
- TIMER_OF_DECLARE(imx7ulp, "fsl,imx7ulp-tpm", tpm_timer_init);
-+#endif
-+
-+MODULE_DESCRIPTION("i.MX TPM Timer Driver");
-+MODULE_LICENSE("GPL");
--- 
-2.34.1
-
+Best regards,
+Krzysztof
 
