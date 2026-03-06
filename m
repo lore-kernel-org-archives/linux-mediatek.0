@@ -4,74 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E6DFF01812
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 09:18:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71905F01812
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 09:50:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zmrvjE16QF4hZxqUg7e0aOGEYSeU7bMbrVnHKPbyBjg=; b=S8P2Zi5+CRponyxT85FbVCj5ID
-	P7a5c4Sfcx2tvNHBgsT/AYITe2XCo4y+du/jgEfX/IbELWGNw9fR9ch2iuD11sjlg/kUnSNjfwNGY
-	HbPsQbffek/NqJT6rIraBY6g6dCvsLTBML9ODBusU2t9bwxbUyzOWb/OeGZ7EKgHnQML6qZWmKe+S
-	CUQQyj/GmkD9cHDlfhNzv95JpkQWETanNnsJFMr6ZrcE6Wb9wc4ofEOMIkAy7AYNxiGXsy6NKoMIz
-	9u75ZKQVAipNTfAu7x7Opfn64h8KsapSgEkXt3DvwXW17lLnxvbxx+GdmldCB5QLjdJrFVuj0UMqN
-	qUrbY88g==;
+	bh=Bd07phBtVSlJrsowhl6WGQ1wMUC+9E2jORlCgRImICw=; b=qEG17BLvX/s8cRwdd02V5xc3tD
+	2nUPer7nQ9KyQTkZpzACvi0cwj/3qB4z07TUDtff4y+P8gJ6McTHqWXvr8P/S/0kanKtlH52bJXoM
+	hg9mi2lJjpz1PtxQEFv1/okGckBAToLQto0bHh8b6nAW8KuRsqNnghECo4s3Sy5iSyUHQbs6WlkYH
+	h5Uk0Ur7QEJuiwRwEtT9IiwU/1L4IaCgSTwf2h8QbUk6t/SO3am6ZFCJhiJrwKK7VICvyIx+THB9L
+	x5GBPw2gV1oXKil8pCkN2qBk2wMelivfZXfEOgsnxFP/tFLUArxvZVquNBlB6qUbylJzQWs8LUpUB
+	v16i2BFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyRKZ-00000003KzO-1jMa;
-	Fri, 06 Mar 2026 09:18:47 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vyRpQ-00000003NZq-2YkN;
+	Fri, 06 Mar 2026 09:50:40 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyRKW-00000003KyL-0Rby;
-	Fri, 06 Mar 2026 09:18:45 +0000
+	id 1vyRpN-00000003NYH-3gbv;
+	Fri, 06 Mar 2026 09:50:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772788721;
-	bh=OH702f+DlOSO+MCKoOLFzipEKjfAn3TXofGaFrLTaQI=;
+	s=mail; t=1772790632;
+	bh=eOh2DPmGNAcPMGrAcM6Rp0B3989BodaM6vMWb9GBktU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aQa1sWd2F8WTv1R+3RswL7qWrKeVIWzE2vX3Cg+7Ivx3TJuCLZIkf7zjgpblReBtu
-	 iep1moGyo0iCJFd9jL6w/BUkDeKLNxsajQolbE28XCR7HLEqapCEKHqCbkdLFklcni
-	 /BhNZNbHfWOmiiDvN4Nvn+jX4EwHpXVk8YNaZOmSM8Y3OxUIvufH+4s7G432o9F6VG
-	 5tLq/lNoQBJilutcyClY3N1V4Iu/2rrt/+u0+lZifvMNIvDgBbiR4OxwDLu3Wqyje2
-	 KwCcxdAEvCKA5Emi+uvO1pcgVemR8leQMVtdxWUMHcDPcdh6bCw2C5PmU9hD8e9F0+
-	 Y8fh0QkPcc3fw==
+	b=A9deMTUMmsKTLdIGI2+lwnuVwIRxkyPIFLGsjQiLFqzgLl3Fw+PKU/4m3zisOF1h3
+	 0P3orfcOAMx2hgSnwVfkyx0MZ3XLoeJw7VpstjRYYcas37JbjtiPQOL3zdWmiOL/aV
+	 TzVdE4nhrVDnPwX5KU/Kw5yiAumr+tR9U+cHNTxoHYkLdbomew0kaJ+PEeM+TZ6BQ3
+	 tcMszmQfnFdIqhNvessUzqlTCctpb2afvVovJMc13f8Ku+SrJc6ENjs+vzBtS1ANkC
+	 tcl1YvU/1OOuYFfRKPXlhgNFHawxbag1D8uk2kWgEnWahDlAcptyEVDKF/cn4EQnYf
+	 xZoaTIZ9L8V8A==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D3AE817E04DC;
-	Fri,  6 Mar 2026 10:18:40 +0100 (CET)
-Message-ID: <e179c650-5d0e-4004-a983-e3b63d4c28c5@collabora.com>
-Date: Fri, 6 Mar 2026 10:18:40 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0E1C817E04DC;
+	Fri,  6 Mar 2026 10:50:32 +0100 (CET)
+Message-ID: <7fd891b7-b1ff-4668-ac99-8f8ac244d90c@collabora.com>
+Date: Fri, 6 Mar 2026 10:50:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] dt-bindings: arm: mediatek: audsys: Support
- mt8192-audsys variant
-To: Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>
-Cc: krzk+dt@kernel.org, conor+dt@kernel.org, tudor.ambarus@linaro.org,
- pratyush@kernel.org, mwalle@kernel.org, miquel.raynal@bootlin.com,
- richard@nod.at, vigneshr@ti.com, lgirdwood@gmail.com, broonie@kernel.org,
- matthias.bgg@gmail.com, julien.massot@collabora.com,
- eugen.hristev@linaro.org, jiaxin.yu@mediatek.com, shane.chien@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mtd@lists.infradead.org, linux-sound@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- kernel@collabora.com
-References: <20260115125624.73598-1-angelogioacchino.delregno@collabora.com>
- <20260115125624.73598-4-angelogioacchino.delregno@collabora.com>
- <CAL_JsqL=zAqyVDAP_B1VW1FWKoS9OEdTNZiZabSNxDscBryYgw@mail.gmail.com>
- <0ccca45c-34af-4d38-ad0f-6cd080f2882d@collabora.com>
- <0b3a1fa9-4024-44b9-a42f-6b82862e2ac9@kernel.org>
+Subject: Re: [PATCH 1/5] pmdomain: mediatek: Fix power domain count
+To: Ulf Hansson <ulf.hansson@linaro.org>, Adam Ford <aford173@gmail.com>
+Cc: linux-mediatek@lists.infradead.org,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Laura Nao <laura.nao@collabora.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
+References: <20260210053708.17239-1-aford173@gmail.com>
+ <CAPDyKFrsMY8q+rvrbOdppYnefX6TA1-EhF+e+pGG6k49KpeTRA@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <0b3a1fa9-4024-44b9-a42f-6b82862e2ac9@kernel.org>
+In-Reply-To: <CAPDyKFrsMY8q+rvrbOdppYnefX6TA1-EhF+e+pGG6k49KpeTRA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_011844_296571_D1FA948B 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20260306_015038_082160_29FCB210 
+X-CRM114-Status: GOOD (  21.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,38 +81,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/03/26 10:10, Krzysztof Kozlowski ha scritto:
-> On 10/02/2026 15:28, AngeloGioacchino Del Regno wrote:
->>>> + - if:
->>>> +     properties:
->>>> +       compatible:
->>>> +         contains:
->>>> +           const: mediatek,mt8192-audsys
->>>> +   then:
->>>> +     properties:
->>>> +       audio-controller:
->>>> +         $ref: /schemas/sound/mt8192-afe-pcm.yaml#
->>>> +
->>>>
->>>
->>> Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.yaml:84:1:
->>> [warning] too many blank lines (2 > 1) (empty-lines)
->>>
->>> Please fix as these are warnings in linux-next now.
->>>
+Il 12/02/26 12:34, Ulf Hansson ha scritto:
+> On Tue, 10 Feb 2026 at 06:40, Adam Ford <aford173@gmail.com> wrote:
 >>
->> Ack. Sorry for the mistakes. Not sure how this happened.
+>> The wrong value of the number of domains is wrong which leads to
+>> failures when trying to enumerate nested power domains.
 >>
->> Let me see when I can get some minutes to get this addressed.
+>>   PM: genpd_xlate_onecell: invalid domain index 0
+>>   PM: genpd_xlate_onecell: invalid domain index 1
+>>   PM: genpd_xlate_onecell: invalid domain index 3
+>>   PM: genpd_xlate_onecell: invalid domain index 4
+>>   PM: genpd_xlate_onecell: invalid domain index 5
+>>   PM: genpd_xlate_onecell: invalid domain index 13
+>>   PM: genpd_xlate_onecell: invalid domain index 14
 >>
+>> Attempts to use these power domains fail, so fix this by
+>> using the correct value of calculated power domains.
+>>
+>> Signed-off-by: Adam Ford <aford173@gmail.com>
 > 
-> This was 2 weeks ago.
+> We should have a fixes tag for this too I think:
 > 
-> Warning is still there in next. Please revert your patch or take the fix
-> from mailing list, but anyway this should not be broken for two weeks.
+> Fixes: 88914db077b6 ("pmdomain: mediatek: Add support for Hardware
+> Voter power domains")
 > 
-It's done. Sorry for the wait, but it's been extremely busy days around here.
+> 
+>> ---
+>>   drivers/pmdomain/mediatek/mtk-pm-domains.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+>> index 58648f4f689b..d2b8d0332951 100644
+>> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
+>> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+>> @@ -1228,7 +1228,7 @@ static int scpsys_probe(struct platform_device *pdev)
+>>          scpsys->soc_data = soc;
+>>
+>>          scpsys->pd_data.domains = scpsys->domains;
+>> -       scpsys->pd_data.num_domains = soc->num_domains;
+>> +       scpsys->pd_data.num_domains = num_domains;
+> 
+> Not sure this is the complete fix, as scpsys_add_one_domain() seems to
+> be using the wrong value of "num_domains" too, no?
+> 
 
-Cheers,
-Angelo
+No, scpsys_add_one_domain() uses num_domains from the soc_data for DIRECT_CTL,
+which is expected. Maybe that can be improved, but it's how it is supposed to work.
+
+So yeah, this patch is resolving an issue, and it is a complete fix.
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+>>
+>>          parent = dev->parent;
+>>          if (!parent) {
+>> --
+>> 2.51.0
+>>
+> 
+> Kind regards
+> Uffe
+
 
