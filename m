@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62DD0FCB638
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0C2FF5141C
 	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 23:23:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,69 +12,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bhrkUPLYEPGp9v5WMepaYyb+dL3jmL0m4QvuAMzcOMk=; b=gJkfH9pw8WaAfNpljXjJEAaDpC
-	XPvrtLLoz2RB7Xv7slQzObFBEnzH1nS6m358exO/IC94A6eG9xnCrhd2ed+d4lvnDXXfjA4a73Jnp
-	2AdtGrc9TG3r6x4akgtLj0sKIyJQmxunqV5IGVJWQKdrwuodgll9KY7E6/vbib5MboXsuaMVxfMPU
-	hJfs/U+MUlNeHon0rLz105khkIctB/LBXENYd0M8sBVXGEofIhbValCgP+lCNrmq4WUx9sNmQXJ6B
-	uhB1F4UDNyE0SlSEpsDSWUIjn6pDKLKloRP7riI7uhgCTMVCJ7MXvCE5ujV5MK95tRCFlosWR07lI
-	21PelYtA==;
+	bh=I9odMuMDX1nM70rzmWxmpu+kqigeVOy1ZywVNBsLqWA=; b=ujFwXdUvXO/f3fehrKxO0pXPBk
+	heGh8XFvW70zmzpswsPUtIAtD2/odzNLPmbzObV7aGQ1o+xnOcXQ8XW9KLIFYQTyplGb3x81WOlHB
+	4pM4UMFJIgnZ0zDp8RLn+dV+KOWFWOh0h19jmUoSDYIP+MTBSQEnT9A5IBKjtBjXg8EMSGiFnFiP/
+	rO7zQ+i/+YnUIfcfDCRM8FbR+xuouYGwMxFcJkbb15nAw9og+3CA9XnKmaTs/6tZl0sUZ0U6aP52P
+	/Im8izEc4O5SZxBR8wMQZ43W2KxIJPFk3qS/grwNQa145Q8plUM6WUDQNDZzKRoIEsLuyWMlSKbA7
+	dQ2gLO0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyeW9-00000004daW-1n7K;
+	id 1vyeW9-00000004daD-056B;
 	Fri, 06 Mar 2026 23:23:37 +0000
-Received: from mail-oa1-f41.google.com ([209.85.160.41])
+Received: from mail-oa1-f51.google.com ([209.85.160.51])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyeW7-00000004dZ5-0sMs
+	id 1vyeW5-00000004dYE-42Dx
 	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Mar 2026 23:23:36 +0000
-Received: by mail-oa1-f41.google.com with SMTP id 586e51a60fabf-40f1a1f77a6so3099240fac.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 06 Mar 2026 15:23:35 -0800 (PST)
+	Fri, 06 Mar 2026 23:23:35 +0000
+Received: by mail-oa1-f51.google.com with SMTP id 586e51a60fabf-4152698e745so1843809fac.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 06 Mar 2026 15:23:33 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772839414; x=1773444214;
+        d=1e100.net; s=20230601; t=1772839413; x=1773444213;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=bhrkUPLYEPGp9v5WMepaYyb+dL3jmL0m4QvuAMzcOMk=;
-        b=R0qDq5q4u3Bv/LZB0trgRZyf+O34erKyN640dTDtL+H5MZR5LAnr1SutnVye+bcCwq
-         VqlXdeUdcP+UN1mQExzakPNqyupq70d2LfrExOwgyc+4SqDjMFf1VTag+9Whbw6OsrNw
-         ICFcyyCc1RgbUxSrEMstFDXCqbd9AANEEtG2ZCsaRuEKp854y+n9Tzwd9hXObYTfuk8L
-         s4eKYCqiJIwgD6V0htZdJD4SquMZnl+hUNA7URWIKxpwhao4rXST+S5HulJFqgKwnEv/
-         qSBJ9b2Sc45weUbgQNBC5OUmuuz3wrvTtH0z3oqVb5jN0dPhm9VAtl1x2aA689UI7+jw
-         OQ8w==
-X-Forwarded-Encrypted: i=1; AJvYcCWUhEDy5APPAoq8SU1ENb6kGq0gZmX3Am07SBUuo9qkhTLJoKtxrz0llAWcVsG4CfTDu48KVIbBcU9gOYWAkQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyoUi/1UrXFeXcMcLymosiMuo5JlmfdcRJwgZBIghOK8wXR11yB
-	PF1hjZ5vcYE403tn3u8vZ+MjFfbPpurli0C1W7X1DtSl6OHueP90OAl/
-X-Gm-Gg: ATEYQzwwwQQdjgFX5cJAhQ75vjBGKQomweRrsoTO9UMetrNRB8DRkplbGNgFWJ8BkFm
-	oqNOlohLLWk66OvDILm/EVnPvwK4XG8vLoXcekIF5ZZRXUaNM9ZmBUrT5yzMmMbHiJrSItQN45/
-	VK17t0FZhPxa5oZjhn5ylY6OEvm3RzSGu6Melat1+9fYhzrkQk6QgUuZ4xhzFal5i2FNyVGvfVW
-	PPg+B1slm3uqnteZ5yBNKXmvZTYJzRHV0d+EluQ1dOxgzVJzLy0k0OHDMbr9Y7lC88w8xRIagjt
-	yWWemBS2E+anUULA0CDq+nh8AKviWvi+5Q8yH73XCkv4+ek+YWT4GqOWIi0oq3GSH0beiTMPdfH
-	rA+VFlj3ieyXwkogQ+0IxDQTRwCU4ofZR6ompssKOMrA4XIIkrk/M0QtZv482fxypPhNqvjN3Im
-	ollbCBfXJjjgG8KK7laOnuCiSyKy5sMcxB1btHRCx+a2niBZQ=
-X-Received: by 2002:a05:6870:8189:b0:3d4:fe66:28f6 with SMTP id 586e51a60fabf-416e403e732mr2191471fac.27.1772839414389;
-        Fri, 06 Mar 2026 15:23:34 -0800 (PST)
+        bh=I9odMuMDX1nM70rzmWxmpu+kqigeVOy1ZywVNBsLqWA=;
+        b=Fs0bn+rg6ql8lQ8mJb286dE/0GS0Apdp/LvVZqZEI7P/HxJ6uqKLalFUWggkBrDLY6
+         +zZw1PZKsTp3d3rHNkC6TA3QT1xh/H08jS8jKOFJ0cdjllNVChYYvh1PnTO83WeCGoSe
+         aEtwkSPk3sWKJUifXhCl/UU84K1uKuCvU6Ymxn2hai5CY969qLYb17KpQ5XFk0FfZZkd
+         YsU2k/fHsZCL7ft8TNk+xnmslZLgjkDVEzB5gAxAbeL354XIzRqVkGEJtHJA5Df1nKYf
+         DoWsKX0iOHIuDlMJv8FfQS/xXDbnpIFwsvG4Tan1q8QjmjlamAQJO4yK3Zkp8tAp9VOI
+         xP9w==
+X-Forwarded-Encrypted: i=1; AJvYcCXWxz6XCheZ5njd+5qiM7b3HWGtTHZY0MvGTh6YnHpatMeV3J+V8ZSAqP7arjqRPBjtpn3gUN+e5SB4RaxoOQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz0qYhYD2dGdav7A9UcaBbJnFOkYbBA2VFcvDangaZVs0nIdl3i
+	Yu4UuUwOg8W6EFBlmCCc6Qh4yL+nkHIcw1rct4ca67kmDMT1kp4TKE3phONBow==
+X-Gm-Gg: ATEYQzwe/syDQ9m5G9khamcqp11Aq+/So5oV5pIlbNCNEiZM5qXKGlmnTgm4AQ8DRdA
+	9olHN3m6LnhNrec1nb/RN8fZe6CvrhpmZ2HKZDfg88cjLcAYdq1CInOtypRxdwTzaHWhEnWXzJV
+	lcv5oLdPMJ04oz8PJ/3+u+nDg8Ko6iVkHo/7RkViVTN4lZfsaJ1q0ZhIVdGnY5okKSIAWmMa04m
+	3NOGFs3apqZSuf6hXO2Ozn4mSsXa8JV1jHCGb1kZGx4sH4ber1JsuJW36xEqetlEYHgoqOolIV5
+	kb9WyKX2yn++RpKj882BbBhBDvGd4nfofcfRFnWIY2c3eDU2wH/m89rfj5Tr/y+gPrUNXqYLAL9
+	g7i1P7IT/uAjuDTi2CNaw9dfebYDm8q9yMzJTos3f87MlF9By2Z+dq0CVJrnbuwiAq5l84AZgT4
+	kaWBH7xFNXo2Q4jpGotPCegA70p4r+Jz2xOaC54qloab5J7Lw=
+X-Received: by 2002:a05:6870:c232:b0:3e7:eee7:9466 with SMTP id 586e51a60fabf-416e43c76ccmr2373476fac.39.1772839412785;
+        Fri, 06 Mar 2026 15:23:32 -0800 (PST)
 Received: from sean-HP-EliteBook-830-G6.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-416e65b1c82sm2572344fac.5.2026.03.06.15.23.33
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-416e65b1c82sm2572344fac.5.2026.03.06.15.23.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Mar 2026 15:23:33 -0800 (PST)
+        Fri, 06 Mar 2026 15:23:32 -0800 (PST)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
 Cc: linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 08/19] wifi: mt76: mt7925: validate mlink in sta_hdr_trans_tlv()
-Date: Fri,  6 Mar 2026 17:22:27 -0600
-Message-ID: <20260306232238.2039675-9-sean.wang@kernel.org>
+Subject: [PATCH 07/19] wifi: mt76: mt7925: pass mlink to sta_hdr_trans_tlv()
+Date: Fri,  6 Mar 2026 17:22:26 -0600
+Message-ID: <20260306232238.2039675-8-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260306232238.2039675-1-sean.wang@kernel.org>
 References: <20260306232238.2039675-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_152335_248940_D41CC80E 
-X-CRM114-Status: UNSURE (   9.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260306_152334_025738_B717C50D 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,36 +90,76 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Replace the dead wcid NULL check in mt7925_mcu_sta_hdr_trans_tlv() with
-a WARN_ON_ONCE() guard on mlink before dereferencing mlink->wcid.
+Drop the mt792x_sta_to_link() lookup in mt7925_mcu_sta_hdr_trans_tlv()
+and pass the resolved mlink from the caller instead. The link is
+already known at the call site, making the lookup redundant.
 
-wcid is always derived from mlink, so mlink is the only meaningful
-object to validate here.
+This keeps the helper lookup-free and makes WCID selection explicit.
+
+No functional change intended.
 
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 24 +++++++++----------
+ 1 file changed, 11 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index c474dd358650..03515b891643 100644
+index fa4915b65fcc..c474dd358650 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -1082,11 +1082,11 @@ mt7925_mcu_sta_hdr_trans_tlv(struct sk_buff *skb,
+@@ -1066,9 +1066,9 @@ EXPORT_SYMBOL_GPL(mt7925_run_firmware);
+ static void
+ mt7925_mcu_sta_hdr_trans_tlv(struct sk_buff *skb,
+ 			     struct ieee80211_vif *vif,
+-			     struct ieee80211_link_sta *link_sta)
++			     struct ieee80211_link_sta *link_sta,
++			     struct mt792x_link_sta *mlink)
+ {
+-	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+ 	struct sta_rec_hdr_trans *hdr_trans;
+ 	struct mt76_wcid *wcid;
+ 	struct tlv *tlv;
+@@ -1082,15 +1082,7 @@ mt7925_mcu_sta_hdr_trans_tlv(struct sk_buff *skb,
  	else
  		hdr_trans->from_ds = true;
  
--	wcid = &mlink->wcid;
+-	if (link_sta) {
+-		struct mt792x_sta *msta = (struct mt792x_sta *)link_sta->sta->drv_priv;
+-		struct mt792x_link_sta *mlink;
 -
--	if (!wcid)
-+	if (WARN_ON_ONCE(!mlink))
- 		return;
- 
+-		mlink = mt792x_sta_to_link(msta, link_sta->link_id);
+-		wcid = &mlink->wcid;
+-	} else {
+-		wcid = &mvif->sta.deflink.wcid;
+-	}
 +	wcid = &mlink->wcid;
+ 
+ 	if (!wcid)
+ 		return;
+@@ -1127,7 +1119,10 @@ int mt7925_mcu_wtbl_update_hdr_trans(struct mt792x_dev *dev,
+ 		return PTR_ERR(skb);
+ 
+ 	/* starec hdr trans */
+-	mt7925_mcu_sta_hdr_trans_tlv(skb, vif, link_sta);
++	if (!link_sta)
++		mlink = &mvif->sta.deflink;
 +
- 	hdr_trans->dis_rx_hdr_tran = !test_bit(MT_WCID_FLAG_HDR_TRANS, &wcid->flags);
- 	if (test_bit(MT_WCID_FLAG_4ADDR, &wcid->flags)) {
- 		hdr_trans->to_ds = true;
++	mt7925_mcu_sta_hdr_trans_tlv(skb, vif, link_sta, mlink);
+ 	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
+ 				     MCU_WMWA_UNI_CMD(STA_REC_UPDATE), true);
+ }
+@@ -2028,7 +2023,10 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+ 		mt76_connac_mcu_add_tlv(skb, STA_REC_MLD_OFF,
+ 					sizeof(struct tlv));
+ 	} else {
+-		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta);
++		if (!info->link_sta)
++			mlink = &mvif->sta.deflink;
++
++		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, info->link_sta, mlink);
+ 	}
+ 
+ 	return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
 -- 
 2.43.0
 
