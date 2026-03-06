@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A78F01835
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 13:27:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8A34F01832
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 13:28:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uAtgn+OLzAwzOQTrhyuxrmnbjBStnsD707TveSFV8UU=; b=rvQ+UGFDcrmcFW1hUCMEFKya3m
-	LggRynJwYw0m7NVcJj3JHTUYfl4t5E53IG1P2uC3HwzX4i84bkxZBpvQ04ONfk05snbaqdD3/M4i4
-	iw7pTh+xwbgQB7hYmbVFrtyEv7ajyE7Yp7FN5SEZoFsBtfeD2MJEFReZ08t2zsqxyppvs83GUcNBj
-	tGckr99jZqd+LMQDzxGgGPaz8VIB0wUpbzVnnnQmZ8Z4gvgKCrJK+pPkpGeICgdixvtM32ClJN/kf
-	X2VeJzkrZoGUWyU8Nr/TnZZXvtWb/MWrtcdzJVDo3nxPdVbpgHZMi4fFEivtBBBdOuC5IecE86pV5
-	L54+tyRw==;
+	bh=vHGev/SVJHjtM5KJlxdcEOTZoj6KMMDvqCC47rp4HM0=; b=gbQG+lBRttMJ0+ilXWL3LLhs0/
+	biWffaIxjOPu4PFdRuFRdO/5EZciY9cgQYHfrFfjtyOpKWAWMQ4i3YY9sx0gRsXDfOynt6yhV+6jP
+	zRvTJFnDZfk5lAqdu2cIoK0UEGLLxV898ww2FONzjbr2BiKPIywtIgHYKv1FogteucjUHpoyLsV6c
+	6Xg9CKLxvPJBMDHUeHLYMejvsOZBgN29mxKuuUax/hv92QYsEcKDsnNPeINdVR47SFl9Y8jDtNmkn
+	XMR6r/hkitQUkDDKp+3wBjtmPUl3e5qSNpUID+jrZkQPNo+pQCjkQ7Bg4fWBVo57z5n7DACYlmbYC
+	T9s9DWLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyVDh-00000003mAR-0Qs5;
-	Fri, 06 Mar 2026 13:27:57 +0000
+	id 1vyVDi-00000003mBZ-06ye;
+	Fri, 06 Mar 2026 13:27:58 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyVDY-00000003ly8-04oc;
-	Fri, 06 Mar 2026 13:27:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1772803646; cv=none; 
+	id 1vyVDX-00000003lx5-1P3e;
+	Fri, 06 Mar 2026 13:27:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1772803628; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=KoyNx/w0Vs7amI/6bZflkFPStzak6EpCjmtYCW/hQAYMW/q0YJmNehbiDWEf6mlzL1MVEQ6GuuvJ4tmiVLPBoy7LIbvNnQtV1urqb1m+1GIcupMJq1SIvIqz2Cm5EZ4r+KgF5hIi6uu4WG0k/Sg+7RDTjBTTlErTd2LEgN4JTPo=
+	b=b+2T+E3pBdHAcaTERaqKvcaSqY7yg2FLPiCMTpoffB3USLW499Ox90fXyzVSmO04xxgjaieUXyzIcSxQZOdrFRxc7QkXEISL9R0pwp0080GqGvfdaB7kFaCYl5+sJOKYT3YIeG/v5xVJZgbAioHxA6tg764dRABvNrZ4AH+64B0=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1772803646; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=uAtgn+OLzAwzOQTrhyuxrmnbjBStnsD707TveSFV8UU=; 
-	b=ntfT9ocKoz2t8nPQMKRj/91zQEVO9dB/Kb4o2ENSWKk6WeBSD7/uLVN6i39voAyPEgB7hep0PSfEjRjnFshW8uBzLMkjZGoz4O2cZoZDILWWMUtuYMw6F0KrGGNNoQlY93tpWfemeJRwc6GwOlKdQ/CNZoc3ZlZTbAm6Hl0VJug=
+	t=1772803628; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=vHGev/SVJHjtM5KJlxdcEOTZoj6KMMDvqCC47rp4HM0=; 
+	b=lOllQD+nUl534GajLJG4I2NvzitjCjtaaZNp3sjRsqGyp71lj93XC2I3eF7QrbXbXOBy85IdqfmM9Txp2bGsI+0SQPwFmp4YqNVsv+lXQxviTDmVro1x8NosufNNrA8XbL7VzRF4zTmDTdFOc2XZbwaK69SP9pjoBN4QyrmNp4g=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772803646;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772803628;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=uAtgn+OLzAwzOQTrhyuxrmnbjBStnsD707TveSFV8UU=;
-	b=O1Bae6cz91ZVSdlg8gbtLeaPxQ+83DgJnws74h2NCWNKk5aEWZ0oVM8AzE8gJisf
-	TAlbi6gaH8TsrG5BedCnO2owaAQGGtFJrT8huRpcfxk3tAowtiRPf0uf9vjM5dW9XMm
-	1WsWg3gnlVhuoAiuMCqLzi8rJjyNiKRHFi+QAZRc=
-Received: by mx.zohomail.com with SMTPS id 1772803643983232.48689785335853;
-	Fri, 6 Mar 2026 05:27:23 -0800 (PST)
+	bh=vHGev/SVJHjtM5KJlxdcEOTZoj6KMMDvqCC47rp4HM0=;
+	b=YWnHIjrBeM9MpqXxZWyFswF7+EvZWWjF2/GX7ylbPAC+8CR8K0U7hA8LfqdcryZp
+	qBEK5ImjP05WQKA+clNzw8Bv6VzVTpsEDB59thUl9IzqkHAPYE9H5f+e6Kx7zTrWidZ
+	B0R6M1wquZmiJ0iUylioZDD5jDcNYnJkGX63elGY=
+Received: by mx.zohomail.com with SMTPS id 1772803626023697.5615829679394;
+	Fri, 6 Mar 2026 05:27:06 -0800 (PST)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Fri, 06 Mar 2026 14:25:04 +0100
-Subject: [PATCH v9 23/23] scsi: ufs: mediatek: Add MT8196 compatible,
- update copyright
+Date: Fri, 06 Mar 2026 14:25:01 +0100
+Subject: [PATCH v9 20/23] scsi: ufs: mediatek: Back up idle timer in
+ per-instance struct
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260306-mt8196-ufs-v9-23-55b073f7a830@collabora.com>
+Message-Id: <20260306-mt8196-ufs-v9-20-55b073f7a830@collabora.com>
 References: <20260306-mt8196-ufs-v9-0-55b073f7a830@collabora.com>
 In-Reply-To: <20260306-mt8196-ufs-v9-0-55b073f7a830@collabora.com>
 To: Alim Akhtar <alim.akhtar@samsung.com>, 
@@ -78,8 +78,8 @@ Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_052749_222616_EF7B278C 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20260306_052747_473892_A60EC4D2 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,67 +94,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-THe MT8196's UFS controller has a new compatible. Add the necessary
-struct definitions to support it.
+The MediaTek UFS driver uses a function-scope static variable to back up
+a hardware register across a power change in the
+ufs_mtk_pwr_change_notify function. This is dangerous, as it's only
+correct if only ever one instance of the driver is loaded, which isn't
+true if there's more than one device on a SoC that needs it, or it
+otherwise gets loaded a second time.
 
-Also update the copyrights and authors, without tabs following spaces to
-avoid checkpatch errors, to list myself as having contributed to this
-driver after the preceding rework patches.
+Back it up into a member of the host struct instead, as this struct is
+per-instance. Rework the function to not use a pointless "ret" local as
+well.
 
+Fixes: f5ca8d0c7a63 ("scsi: ufs: host: mediatek: Disable auto-hibern8 during power mode changes")
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/ufs/host/ufs-mediatek.c | 17 +++++++++++++++--
- 1 file changed, 15 insertions(+), 2 deletions(-)
+ drivers/ufs/host/ufs-mediatek.c | 20 ++++++++------------
+ drivers/ufs/host/ufs-mediatek.h |  1 +
+ 2 files changed, 9 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 1dfc299b93b5..cc9357e90958 100644
+index c4e70fb99e82..2198271a269a 100644
 --- a/drivers/ufs/host/ufs-mediatek.c
 +++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1,9 +1,11 @@
- // SPDX-License-Identifier: GPL-2.0
- /*
-  * Copyright (C) 2019 MediaTek Inc.
-+ * Copyright (C) 2025 Collabora Ltd.
-  * Authors:
-- *	Stanley Chu <stanley.chu@mediatek.com>
-- *	Peter Wang <peter.wang@mediatek.com>
-+ *      Stanley Chu <stanley.chu@mediatek.com>
-+ *      Peter Wang <peter.wang@mediatek.com>
-+ *      Nicolas Frattaroli <nicolas.frattaroli@collabora.com> (Major cleanups)
-  */
+@@ -1398,28 +1398,24 @@ static int ufs_mtk_pwr_change_notify(struct ufs_hba *hba,
+ 				const struct ufs_pa_layer_attr *dev_max_params,
+ 				struct ufs_pa_layer_attr *dev_req_params)
+ {
+-	int ret = 0;
+-	static u32 reg;
++	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
  
- #include <linux/arm-smccc.h>
-@@ -2200,6 +2202,10 @@ static const char *const ufs_mtk_regs_avdd12_ckbuf_avdd18[] = {
- 	"avdd12", "avdd12-ckbuf", "avdd18"
- };
+ 	switch (stage) {
+ 	case PRE_CHANGE:
+ 		if (ufshcd_is_auto_hibern8_supported(hba)) {
+-			reg = ufshcd_readl(hba, REG_AUTO_HIBERNATE_IDLE_TIMER);
++			host->ahit = ufshcd_readl(
++				hba, REG_AUTO_HIBERNATE_IDLE_TIMER);
+ 			ufs_mtk_auto_hibern8_disable(hba);
+ 		}
+-		ret = ufs_mtk_pre_pwr_change(hba, dev_max_params,
+-					     dev_req_params);
+-		break;
++		return ufs_mtk_pre_pwr_change(hba, dev_max_params, dev_req_params);
+ 	case POST_CHANGE:
+ 		if (ufshcd_is_auto_hibern8_supported(hba))
+-			ufshcd_writel(hba, reg, REG_AUTO_HIBERNATE_IDLE_TIMER);
+-		break;
+-	default:
+-		ret = -EINVAL;
+-		break;
++			ufshcd_writel(hba, host->ahit,
++				      REG_AUTO_HIBERNATE_IDLE_TIMER);
++		return 0;
+ 	}
  
-+static const char *const ufs_mtk_regs_avdd12_ckbuf[] = {
-+	"avdd12", "avdd12-ckbuf"
-+};
-+
- static const struct ufs_mtk_soc_data mt8183_data = {
- 	.has_avdd09 = true,
- 	.reg_names = ufs_mtk_regs_avdd12_avdd18,
-@@ -2212,10 +2218,17 @@ static const struct ufs_mtk_soc_data mt8192_8195_data = {
- 	.num_reg_names = ARRAY_SIZE(ufs_mtk_regs_avdd12_ckbuf_avdd18),
- };
+-	return ret;
++	return -EINVAL;
+ }
  
-+static const struct ufs_mtk_soc_data mt8196_data = {
-+	.has_avdd09 = true,
-+	.reg_names = ufs_mtk_regs_avdd12_ckbuf,
-+	.num_reg_names = ARRAY_SIZE(ufs_mtk_regs_avdd12_ckbuf),
-+};
-+
- static const struct of_device_id ufs_mtk_of_match[] = {
- 	{ .compatible = "mediatek,mt8183-ufshci", .data = &mt8183_data },
- 	{ .compatible = "mediatek,mt8192-ufshci", .data = &mt8192_8195_data },
- 	{ .compatible = "mediatek,mt8195-ufshci", .data = &mt8192_8195_data },
-+	{ .compatible = "mediatek,mt8196-ufshci", .data = &mt8196_data },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, ufs_mtk_of_match);
+ static int ufs_mtk_unipro_set_lpm(struct ufs_hba *hba, bool lpm)
+diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
+index fa27ab4d6d6c..2349d9b9375c 100644
+--- a/drivers/ufs/host/ufs-mediatek.h
++++ b/drivers/ufs/host/ufs-mediatek.h
+@@ -187,6 +187,7 @@ struct ufs_mtk_host {
+ 	u16 ref_clk_gating_wait_us;
+ 	u32 ip_ver;
+ 	bool legacy_ip_ver;
++	u32 ahit;
+ 
+ 	bool mcq_set_intr;
+ 	bool is_mcq_intr_enabled;
 
 -- 
 2.53.0
