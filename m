@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A17F8F0182B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 12:06:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30720F0182E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 12:06:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n1Te5dWKyFtHCAsQSaH2ONpVBfHilH2WjO8uBzqlY+c=; b=dF0OWCpIhKZYBP4i31nHlEPyvJ
-	+lQUhte8cE16WQCojI9uLKLUVpKk8VhKgW+ulw4AsWt1pFxKNbeiSZB1HvQmub94blgoBRhQ79RnT
-	urgxnmBSB0oHECNL7VO6g2Y5qZzk58Z9SR5ckua3mDXEAPP2f+3J4dKl+O8/guah8mBJwvsfH7MFa
-	JMTZtzOIfvjBcH5pQ9myxb1lU9qIBmUXGvdzgAB+wGTfPItNW1XwIsaqRe1xEkWwWqqyqsJzPqpk4
-	X+to23CYZR1FLlyP8w1Waxp3mUDK7fY9TM+/snYcnNO0o9pTSFg1S5mCTHmdIwN2a7auUc7eXEpuq
-	HnP46YWg==;
+	bh=xWHYFXyM7zqNoEaGGLabRt6WO8B9aIWRMhobpXYX2k4=; b=Od9KA+O15Ivh4Mvsp/FkrqE8pU
+	p04AZmG0ALBmBB4KClPic7GfdE9O0b/ZHSmHEGcPiYGLXT606YEN6DwJfQlDxn8cKAjewlPJfVNyu
+	BJUslvt//c5Qw7tz2DYxJlUGZu+xocNw2wMHnSgJp3sjLTAQz1wDyrOfJ+Dhbr2sAZpoXNiUjmrBP
+	V79s9sM4wYwrdfXjQjTnHUjNKqxGRwBVn5mgRVgGGskJ4Y8e/eSMno/yuIMMZJxGDy9DWUIxvByte
+	c8bBpyOjIp6Unb8c0bzYr7B6bg7tptSkZY2KxcL82NIIhIzYtPrsvwAJBplXd1Hck8L9KpI1HQeXd
+	w2n26WKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyTwW-00000003bJL-33Yu;
-	Fri, 06 Mar 2026 12:06:08 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1vyTwf-00000003bO7-1FyJ;
+	Fri, 06 Mar 2026 12:06:17 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyTwS-00000003bHt-0H3w
+	id 1vyTwc-00000003bMH-3h4Y
 	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Mar 2026 12:06:05 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-48371bb515eso136020385e9.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 06 Mar 2026 04:06:03 -0800 (PST)
+	Fri, 06 Mar 2026 12:06:15 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-439c5b40f60so2628208f8f.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 06 Mar 2026 04:06:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1772798762; x=1773403562; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1772798773; x=1773403573; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=n1Te5dWKyFtHCAsQSaH2ONpVBfHilH2WjO8uBzqlY+c=;
-        b=SkUKeGK9qF+rfw5CNgOTmGJMpume4C3UcxG8EGuMQmhzpjmtm0dS6WNvsJ5QrPCV2j
-         PsJRL5qp+VfJSkjHE+nLjRDbDujE9nksV+pcg1rP6xp2pIVGXUomcZqm2xTtBooJJLZz
-         mp+iol8qmq1bXXraj8aUUsWYjgnqb6vM8iJMJVFmWLkSH/czmLyWTIvIVJvC8pqpx3Nm
-         Bcw2bONZAkrCOEwPoIK/HvUFIdWGyQzVfTapezbU7MFCKibY7V8crilzZXYwveCZodQi
-         +YEoMZvGmEsvKuXCg7dj4Mqhl36eB1V0mPl7yRXGOE/Qo0adjJFKS4FgQCxeU4a8AgqI
-         LepA==
+        bh=xWHYFXyM7zqNoEaGGLabRt6WO8B9aIWRMhobpXYX2k4=;
+        b=YPa1Ax9GFkOmShmwFFxOfHwSCm2CmTXXSq4aDgJdoPTMnBHmPNPXswEeH4iOsTnjJM
+         owEMRxs54/deeq3g52BK8X8A9rbUy8u1J1uorQ7P+CQ1CHlOv9ne5JX7+VYK7vyRqelb
+         KznWCVCQS0uY188UWiEP45qh0LmVi4LkAxtKSM/4jhJB8oZuxiz6CCKqyTLk2MU0c2Tu
+         ttMth3hbGkV2p6HvubuCwUIvc6aUDexd6FfeRsPaMzHymgWAKWU1syyBBBDRloJBAFhP
+         lWucHvCMEY9ZipT9BGYXTxHKbiTxYmcQE/VvdkrX3+t0OLRMZ5culwmcV++IwQYtKt1d
+         mZRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772798762; x=1773403562;
+        d=1e100.net; s=20230601; t=1772798773; x=1773403573;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=n1Te5dWKyFtHCAsQSaH2ONpVBfHilH2WjO8uBzqlY+c=;
-        b=cNexCchr2l0FzXKUTF7UJF43+k1RaWqlqQkPPmmHYvdnzSnWrtSHWb0saXH4Vg1wGB
-         VsWXcgpjun4JI7kTU/AdTDdRJJ0h9E/0cfd7AiNWEGMOAKWQYH3q++Nra2PbAcFSOH3p
-         bx8DfsLlZ81PGDj7tBp8zzC0IiUK3US/BOY24OxRZ3b3GhyEUPsVTobMGW52QbUwd4df
-         qHLu9AfTHTJa5o4UFNm/DRaMzAzFKJCinbf35l5d74GEtQP8TSuaRLrSD0UHefWUQ43G
-         jffiZXfwOkfMpOHXpW4+tD5/NaRzyfZuaINiyQZ8ZdvINoxYA029/1R/Ljhk82/mDwDv
-         FXmg==
-X-Gm-Message-State: AOJu0YxdYE/a9TJPuFvf4Iih8O6Cb8s7eB8rYm221axnePL0lFpo1JES
-	9BuPVAwH2xX5UVLLQJhB2CvzfzQRcJDDFG2looJQwFq/5zLrcIMYXXL60MYYbM/5
-X-Gm-Gg: ATEYQzxhav8DB0eCquPyLLs2uyIaxF7L181riedrt/3SAUH1rSBkmUCPKut70rLg0Im
-	lRR0BmfsCaWZadvnjnloTdgMm3TUkP1dFhCZu4S6wCZMOw/RKUi3vGSUHW6FAbf5lcx09LVVBzF
-	67LVyXZX2kIAY8SvPwwy9rNKkT+Rk2gmH/ZxkdlcSE7hrCPT0z4uzvYpTOjxCB543S5H3y2M5Jn
-	YKpMcRMdTI+73Rtgl0d1rBF56eNtoM9A8WKUxPWWMHtp+hMMcYKtDZnT/lIw7wIG9wchRSHEZVT
-	thqviYpruiDH7OeBTd3k0lE2vj4HCrimxhiGD/g/tDUgpXRjVx75i7A1puNThc8BWX9aKvDRDaM
-	RZwwKMwmn816SgDQgEMo0+X/U8oZrtGwe814I4adG91u3hIeczzsMjxqsB6xwtnwuutRbOl6fxi
-	vXOpBIxdeZDZeUR5ovRrc=
-X-Received: by 2002:a05:600c:6386:b0:483:afbb:a064 with SMTP id 5b1f17b1804b1-48526918f7fmr31691795e9.1.1772798761805;
-        Fri, 06 Mar 2026 04:06:01 -0800 (PST)
+        bh=xWHYFXyM7zqNoEaGGLabRt6WO8B9aIWRMhobpXYX2k4=;
+        b=kKmCZxfktVwm1Z+7qJnVO/iwfH49Y/Al9oqtuY4VzNVmphhQhu3sVChH1rGIElyuI/
+         1128SzoFxCq/9HVEubnpzcySpVkEP2VLECYpAC/PvvRTWZaDKgXGMkI5vWsrMjoY4VUw
+         4VxDlfIefrfqSb5rNyhPowf/XoovE9nd735GeiVbxri+4zBP4YMqrlTuzn/JZWedOico
+         1RvbnIqSkS2Uo/zlo+bopRNmyUBvUCDoRegFYMl5IW1Dw3I0IDsXwu0hhCbloxn1XQbI
+         uokAsuGXp3KMvAWCBD4FGfeTocBXFYFOVcZb26NVwgX3GC/wdpLbR8XB5Kt89t7CuBYJ
+         SxOg==
+X-Gm-Message-State: AOJu0Yx0GnQ2KmYsv9KHwB7Mddhy9vjD0JrDPGHgL60YXAMC46rUnOmS
+	WqBXBpX6tzGcRS/8LJp8qt+93tOkKuNLQqVrYsvK5OFfhXqBEhJqzAPrarsdVCHF
+X-Gm-Gg: ATEYQzwLg7jIWS1u+EOpEgy7HvnBjT/JX3Vvmd7510imQypouY0ZxWH4ELgzeHgfz1D
+	pWW/4qjD0VsxScg0kTLtoZp4x4XfLrHhoaz5BoqgkajVcAO6UVcqjnfaO3nx0UxijRtru8PJj4c
+	AHYPFDaCjunNWerCSAy8mSpAmeE8LbJr+Ipk8v4eJdxqtE2RROX/HoqQBw7xersbpO2vlHeq3va
+	d5pKUF+SndcVgalSK84t3sxfuwUG2phHbuTaA8jbuYwkPbwPXgG7aMa5kAIXVLgC/vHhDAhnB6L
+	FG1AjtMjkkQfBu89LP9SxzSstZ12UdVKLcycCKVpgHHeBsnWWtpI3OQj8g93XhlwbQgTz89Vx67
+	dg9JOznQtG0RJO+zWqJHozmTSk/Ra3m9zupv1CaG+4ucH8gRJGuzWJF9uIp4dOPChSqwzK+yBxP
+	4+zUr4mkA6TTODTIlSfq+Q4+flkVnOzw==
+X-Received: by 2002:a05:6000:4283:b0:439:b912:7391 with SMTP id ffacd0b85a97d-439da34840bmr3145089f8f.10.1772798772610;
+        Fri, 06 Mar 2026 04:06:12 -0800 (PST)
 Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-439dae2b9d8sm3457225f8f.21.2026.03.06.04.06.00
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-439dae2b9d8sm3457225f8f.21.2026.03.06.04.06.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Mar 2026 04:06:01 -0800 (PST)
+        Fri, 06 Mar 2026 04:06:12 -0800 (PST)
 From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 To: linux-mediatek@lists.infradead.org
 Cc: Fabien Parent <parent.f@gmail.com>,
 	Val Packett <val@packett.cool>,
 	Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
 	Rob Herring <robh@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Sen Chu <sen.chu@mediatek.com>,
@@ -94,17 +94,17 @@ Cc: Fabien Parent <parent.f@gmail.com>,
 	linux-kernel@vger.kernel.org,
 	linux-pm@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2 1/7] dt-bindings: mfd: mt6397: Add bindings for MT6392 PMIC
-Date: Fri,  6 Mar 2026 12:03:05 +0000
-Message-ID: <20260306120521.163654-2-l.scorcia@gmail.com>
+Subject: [PATCH v2 2/7] dt-bindings: regulator: add support for MT6392
+Date: Fri,  6 Mar 2026 12:03:06 +0000
+Message-ID: <20260306120521.163654-3-l.scorcia@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260306120521.163654-1-l.scorcia@gmail.com>
 References: <20260306120521.163654-1-l.scorcia@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_040604_112995_C6C1A95E 
-X-CRM114-Status: UNSURE (   8.76  )
+X-CRM114-CacheID: sfid-20260306_040614_936175_86A9E83D 
+X-CRM114-Status: UNSURE (   9.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -122,41 +122,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Fabien Parent <parent.f@gmail.com>
 
-Add the currently supported bindings for the MT6392 PMIC.
+Add binding documentation of the regulator for MT6392 SoCs.
 
 Signed-off-by: Fabien Parent <parent.f@gmail.com>
 Signed-off-by: Val Packett <val@packett.cool>
 Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- .../devicetree/bindings/mfd/mediatek,mt6397.yaml          | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-index 6a89b479d10f..c358b2f8059c 100644
+index c358b2f8059c..bb1456d01ba9 100644
 --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
 +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-@@ -40,6 +40,10 @@ properties:
-           - mediatek,mt6358
-           - mediatek,mt6359
-           - mediatek,mt6397
-+      - items:
-+          - enum:
-+              - mediatek,mt6392
-+          - const: mediatek,mt6323
-       - items:
-           - enum:
-               - mediatek,mt6366
-@@ -72,6 +76,10 @@ properties:
+@@ -100,6 +100,7 @@ properties:
+               - mediatek,mt6328-regulator
+               - mediatek,mt6358-regulator
+               - mediatek,mt6359-regulator
++              - mediatek,mt6392-regulator
+               - mediatek,mt6397-regulator
+           - items:
                - enum:
-                   - mediatek,mt6366-rtc
-               - const: mediatek,mt6358-rtc
-+          - items:
-+              - enum:
-+                  - mediatek,mt6392-rtc
-+              - const: mediatek,mt6397-rtc
- 
-       start-year: true
- 
 -- 
 2.43.0
 
