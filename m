@@ -4,63 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F4032F01825
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 10:28:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 510EEF0182E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Mar 2026 12:05:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QACcn7d2Uq9LPlBgzroFirEryTgoxmO/1pZj/VdLAF4=; b=G1CqJE6gzDZB2JujmOrha6uCuw
-	TjI3Ybe/ucQT0J2Ljf6mcKwJ2BrALaooPrr33N7379jSV2KPoQSPlvSm0mXi9L7Y5LlH6JVEEAlb6
-	6rY0bEw2ckK2LjN6XP1HtwrmUkrCy8Sd8ufas3sazd9STuUkkKYyC77UvrTu/c3NbAugYB4/RIwaV
-	jPSx5XImnfu/eMfYWVeXYT9PxNAVDU4QgP9+3UE4U1Bitqidt5gJ1XAuKJW2JPg/8zfyiEjf5Mz8G
-	14GM3O97Fqw1j1I/wzRpFvJrXfoKsE64f3BvHJdMqXW2S/mVmz6ZMBeyiRd78zWE4LIx/N5vS4FL7
-	T4RwqZ2w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=mTkk7uiuigPho3KVdrJ5hWiT++sJi9u25O2m/ZkmXhs=; b=FQKiXRQOQ6Ol5RPWLEaNXDH7iQ
+	krGCuFxjVSlNBWYnDTjXje7JHq7ZgXvJgGXaeNm9jB0sclUatcznyRSYYVnhvfhw1E+FUz1ReZ8KQ
+	ZKJ41PCcmrpK8alJKILgxtTu4HxgDjQQGoph1l66A3PkphPtd9flCmxMz8gyY+5OLsOV8AkJ0FTM1
+	cCx1ZIuc5hXCD7rVhzrVVZtUctvhtPvckOAldoxt/DoDQvGRe3JL47qg2uAsy7D6M7s2MlN0EXjVi
+	DSunFm/S9xyVZKlDZOLRKchFY1VfLqh3ut7fX7vJijrUwRM4EatHWNkfFlRwI3PNCAoYt6qKXJ7nz
+	k3rDkqow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vySPy-00000003S4S-2bJM;
-	Fri, 06 Mar 2026 10:28:26 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vyTwK-00000003bFV-3UXE;
+	Fri, 06 Mar 2026 12:05:56 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vySPp-00000003RyX-1i3Z;
-	Fri, 06 Mar 2026 10:28:22 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 19BE8416DA;
-	Fri,  6 Mar 2026 10:28:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 989FAC19422;
-	Fri,  6 Mar 2026 10:28:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772792897;
-	bh=OL0rgue66YdTnJUJbn4fjsELZT80r00fKL12WnmaKWc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=RfjB8UbngGuQpcUAiQST0fIUHPjQzGIfArct/EdZpi9oYo1ymOWaI2GWq2PS+Ch2y
-	 2I3M+39bhy6ZU0wZJAek4Y8o0byqogzkMIZpxC0YQ0iViiPqPOZm/4pIjioSc3GmZr
-	 kG4Q2PKM/A9EOQSYCQ6mrPpnBrs6VLVmTecUFmWN5Yk+cPFsWSdlb9Wny1MumENb8i
-	 XaZEmNW3WPc1JE8SUFV5giwtsAWSyqo4UwN4Z0SAHwYsNTN8Huw9TV5M/2ysh8j5qY
-	 COcBBmBeBWdIo9hnJcxiQVYhFtnDafOV9JlyuXFXzCKXvxsROPd4OxfUKoZQw4Krs+
-	 gmE1/Eu62fLAg==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 06 Mar 2026 11:27:55 +0100
-Subject: [PATCH mt76 4/4] wifi: mt76: mt7996: Remove unnecessary phy filed
- in mt7996_vif_link struct
+	id 1vyTwI-00000003bEO-08S7
+	for linux-mediatek@lists.infradead.org;
+	Fri, 06 Mar 2026 12:05:56 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-4852a8482fcso498915e9.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 06 Mar 2026 04:05:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1772798751; x=1773403551; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=mTkk7uiuigPho3KVdrJ5hWiT++sJi9u25O2m/ZkmXhs=;
+        b=QTcApAcbSBg9nTRL9egqoB56wRtQkNYppjx1QA4G98X1OX8g3wFEA4nB4N17Tleb6P
+         BXe79HgMZFwKgoBVFQubjctA10cjWIkbVdHry4xMOnbiL/uKSXYnr0no8xRVTiaLFjx7
+         keNkZOumuk2mRH1coBz3KtOd8vH3bQY/hB212kq7h6dgOzj+935y/0cZrCwn6I7gjC/n
+         oD/yYC4HBij8mehJ//3Lv+r3Pwiq/2Pd026rDEC0C/hNE7pnSFQfIEGQYyOCo858e9rI
+         IFgUqwORWhJUmbe7bq4kjMMP0V6MA68o+R3R2DCH8KwXRwp05gOCyd5NlceBliCcWFFU
+         lYVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772798751; x=1773403551;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mTkk7uiuigPho3KVdrJ5hWiT++sJi9u25O2m/ZkmXhs=;
+        b=DR8zqn/bnJpgGcAD5ctHO0bdmrEe4WyHmLyHFhn3D4yurTwSj5U5+uJ/k6iIxSyTqS
+         lKrTNKlSbePs54fpKreJ7wplPWe5heH827KJMMT89R1baaEeQCwrviBys9wTIqKmv3No
+         PWzzIi1T1KBuio9ZWfzI6013kS05JrgC+7LkmgNfbS74/sqNCEEvysR6RJfZlfh8a1F5
+         z5T4dJs4wX+Q/zfOPx0MRIMeV3P43Du9nuW1Fy2bWOtVeVSejMQeE5LuTZZ2pLqqyA9c
+         gkyz2nPWS18JntSSpgThTDSkvnAWuBvVazXIY4HzT+9qAsDoLpj5RCeOcs2PHrphgnw5
+         HlVQ==
+X-Gm-Message-State: AOJu0YziFmNujYrFAnuGF+7OvQ46FJS5XMsYfFUuP+LoG8O1jWgGTm4s
+	sp51EIZTS70zR6+ff68tEMvkYeM6UOSNtevdIc+Vl1+l8cDQYPko5o4ij1YqwRYt
+X-Gm-Gg: ATEYQzzDBwUF6LkKy5SjwV6Jxe8Oou1ydFjqHfe+dTKKZevRqOfPEyg0/ZuN7+jIyOY
+	jU/TGPonJDmszUn5NW9Mh15YYFa73j8hsIWbOgUSJJFd+Emu+emNLcfqPUnCEscLndIaX4/2r8q
+	1zNuoj7hFON8Vq8yI0AHx+jU2Au8Bv3Mu0a1w8PZZ7+jvyflf5Ef2WYW7KaB8xxA/ZgYwhC1nRv
+	+UHrcasuS+lhDasThBOzthYZKYJz+FvdzPeUh+nxxBPTfLol7JeOyBFBh4DnIf1BOv1KWIW1MXK
+	n+/8JjazgvfOrOFRsj/T45/T2gE+cR8il5bKpbn5aqfa1dcZxdLxPJGICCvNrkHSuqyzFZ3KhbT
+	lw1NeYFIROqXL39LqlPMrmLTkpi+RtseRKH/yH+8E2iodQbpT5fBV3lxlO8l16l2LHtVFI9k5+v
+	5cRAt7EzsTKx51GSXJ4no=
+X-Received: by 2002:a05:600c:a403:b0:485:2969:cd9f with SMTP id 5b1f17b1804b1-4852969d02emr7858575e9.12.1772798751250;
+        Fri, 06 Mar 2026 04:05:51 -0800 (PST)
+Received: from luca-vm.lan ([154.61.61.58])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-439dae2b9d8sm3457225f8f.21.2026.03.06.04.05.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 06 Mar 2026 04:05:50 -0800 (PST)
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+To: linux-mediatek@lists.infradead.org
+Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Lee Jones <lee@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Val Packett <val@packett.cool>,
+	Gary Bisson <bisson.gary@gmail.com>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	Julien Massot <julien.massot@collabora.com>,
+	Fabien Parent <parent.f@gmail.com>,
+	Chen Zhong <chen.zhong@mediatek.com>,
+	linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v2 0/7] Add support for mt6392 PMIC
+Date: Fri,  6 Mar 2026 12:03:04 +0000
+Message-ID: <20260306120521.163654-1-l.scorcia@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260306-mt7996-deflink-lookup-link-remove-v1-4-7162b332873c@kernel.org>
-References: <20260306-mt7996-deflink-lookup-link-remove-v1-0-7162b332873c@kernel.org>
-In-Reply-To: <20260306-mt7996-deflink-lookup-link-remove-v1-0-7162b332873c@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_022817_536162_30A59487 
-X-CRM114-Status: GOOD (  17.79  )
+X-CRM114-CacheID: sfid-20260306_040554_083025_2E8AB91E 
+X-CRM114-Status: GOOD (  12.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,449 +116,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove unnecessary phy pointer in mt7996_vif_link struct and rely on
-mt7996_vif_link_phy() utility routine.
+The MediaTek mt6392 PMIC is usually found on devices powered by
+the mt8516/mt8167 SoC, and is yet another mt6397 variant.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- .../net/wireless/mediatek/mt76/mt7996/debugfs.c    | 14 +++-
- drivers/net/wireless/mediatek/mt76/mt7996/mac.c    |  7 +-
- drivers/net/wireless/mediatek/mt76/mt7996/main.c   | 43 +++++++++----
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c    | 74 ++++++++++++++++------
- drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  2 -
- 5 files changed, 101 insertions(+), 39 deletions(-)
+This series is mostly based around patches submitted a couple
+years ago by Fabien Parent and not merged and from Val Packett's
+submission from Jan 2025 that included extra cleanups, fixes, and a
+new dtsi file similar to ones that exist for other PMICs. Some
+comments weren't addressed and the series was ultimately not merged.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-index 76d623b2cafb4d55ddeee04b1e84be08e149860e..6cc63f87b2226e9165eeeaf56b61c1c6d4d34052 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-@@ -626,13 +626,18 @@ mt7996_sta_hw_queue_read(void *data, struct ieee80211_sta *sta)
- {
- 	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
- 	struct mt7996_vif *mvif = msta->vif;
--	struct mt7996_dev *dev = mvif->deflink.phy->dev;
-+	struct mt7996_phy *phy = mt7996_vif_link_phy(&mvif->deflink);
- 	struct ieee80211_link_sta *link_sta;
- 	struct seq_file *s = data;
- 	struct ieee80211_vif *vif;
-+	struct mt7996_dev *dev;
- 	unsigned int link_id;
- 
-+	if (!phy)
-+		return;
-+
- 	vif = container_of((void *)mvif, struct ieee80211_vif, drv_priv);
-+	dev = phy->dev;
- 
- 	rcu_read_lock();
- 
-@@ -979,13 +984,17 @@ static ssize_t mt7996_link_sta_fixed_rate_set(struct file *file,
- #define LONG_PREAMBLE 1
- 	struct ieee80211_link_sta *link_sta = file->private_data;
- 	struct mt7996_sta *msta = (struct mt7996_sta *)link_sta->sta->drv_priv;
--	struct mt7996_dev *dev = msta->vif->deflink.phy->dev;
-+	struct mt7996_phy *link_phy = mt7996_vif_link_phy(&msta->vif->deflink);
- 	struct mt7996_sta_link *msta_link;
- 	struct ra_rate phy = {};
-+	struct mt7996_dev *dev;
- 	char buf[100];
- 	int ret;
- 	u16 gi, ltf;
- 
-+	if (!link_phy)
-+		return -EINVAL;
-+
- 	if (count >= sizeof(buf))
- 		return -EINVAL;
- 
-@@ -1008,6 +1017,7 @@ static ssize_t mt7996_link_sta_fixed_rate_set(struct file *file,
- 	 * spe - off: 0, on: 1
- 	 * ltf - 1xltf: 0, 2xltf: 1, 4xltf: 2
- 	 */
-+	dev = link_phy->dev;
- 	if (sscanf(buf, "%hhu %hhu %hhu %hhu %hu %hhu %hhu %hhu %hhu %hu",
- 		   &phy.mode, &phy.bw, &phy.mcs, &phy.nss, &gi,
- 		   &phy.preamble, &phy.stbc, &phy.ldpc, &phy.spe, &ltf) != 10) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index a415cc610eeec8cb160aeac8219f421742d75bad..382b2d873021c6ae253e8ff71bce77bdedff75a3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -2167,9 +2167,14 @@ mt7996_update_vif_beacon(void *priv, u8 *mac, struct ieee80211_vif *vif)
- 
- 	for_each_vif_active_link(vif, link_conf, link_id) {
- 		struct mt7996_vif_link *link;
-+		struct mt7996_phy *link_phy;
- 
- 		link = mt7996_vif_link(dev, vif, link_id);
--		if (!link || link->phy != phy)
-+		if (!link)
-+			continue;
-+
-+		link_phy = mt7996_vif_link_phy(link);
-+		if (link_phy != phy)
- 			continue;
- 
- 		mt7996_mcu_add_beacon(dev->mt76.hw, vif, link_conf,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index b659d173268981f25344be4b3176a1e7636db7a4..745e01f0eb67dfb7f6474bc39ad25146474e2011 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -239,10 +239,13 @@ mt7996_set_hw_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
- 		link_conf = &vif->bss_conf;
- 
- 	if (cmd == SET_KEY && !sta && !link->mt76.cipher) {
-+		struct mt7996_phy *phy = mt7996_vif_link_phy(link);
-+
- 		link->mt76.cipher =
- 			mt76_connac_mcu_get_cipher(key->cipher);
--		mt7996_mcu_add_bss_info(link->phy, vif, link_conf,
--					&link->mt76, msta_link, true);
-+		if (phy)
-+			mt7996_mcu_add_bss_info(phy, vif, link_conf,
-+						&link->mt76, msta_link, true);
- 	}
- 
- 	if (cmd == SET_KEY)
-@@ -316,7 +319,6 @@ int mt7996_vif_link_add(struct mt76_phy *mphy, struct ieee80211_vif *vif,
- 		return -ENOSPC;
- 
- 	link->mld_idx = mld_idx;
--	link->phy = phy;
- 	mlink->omac_idx = idx;
- 	mlink->band_idx = band_idx;
- 	mlink->wmm_idx = vif->type == NL80211_IFTYPE_AP ? 0 : 3;
-@@ -823,15 +825,17 @@ mt7996_vif_cfg_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 
- 		for_each_vif_active_link(vif, link_conf, link_id) {
- 			struct mt7996_vif_link *link;
-+			struct mt7996_phy *phy;
- 
- 			link = mt7996_vif_link(dev, vif, link_id);
- 			if (!link)
- 				continue;
- 
--			if (!link->phy)
-+			phy = mt7996_vif_link_phy(link);
-+			if (!phy)
- 				continue;
- 
--			mt7996_mcu_add_bss_info(link->phy, vif, link_conf,
-+			mt7996_mcu_add_bss_info(phy, vif, link_conf,
- 						&link->mt76, &link->msta_link,
- 						true);
- 			mt7996_mcu_add_sta(dev, link_conf, NULL, link, NULL,
-@@ -950,10 +954,15 @@ mt7996_channel_switch_beacon(struct ieee80211_hw *hw,
- 	mutex_lock(&dev->mt76.mutex);
- 
- 	for_each_vif_active_link(vif, link_conf, link_id) {
--		struct mt7996_vif_link *link =
--			mt7996_vif_link(dev, vif, link_id);
-+		struct mt7996_vif_link *link;
-+		struct mt7996_phy *link_phy;
-+
-+		link = mt7996_vif_link(dev, vif, link_id);
-+		if (!link)
-+			continue;
- 
--		if (!link || link->phy != phy)
-+		link_phy = mt7996_vif_link_phy(link);
-+		if (link_phy != phy)
- 			continue;
- 
- 		/* Reset beacon when channel switch triggered during CAC to let
-@@ -1024,10 +1033,13 @@ mt7996_mac_sta_init_link(struct mt7996_dev *dev,
- {
- 	struct ieee80211_sta *sta = link_sta->sta;
- 	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
--	struct mt7996_phy *phy = link->phy;
-+	struct mt7996_phy *phy = mt7996_vif_link_phy(link);
- 	struct mt7996_sta_link *msta_link;
- 	int idx;
- 
-+	if (!phy)
-+		return -EINVAL;
-+
- 	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7996_WTBL_STA);
- 	if (idx < 0)
- 		return -ENOSPC;
-@@ -1571,8 +1583,8 @@ mt7996_get_stats(struct ieee80211_hw *hw,
- 
- u64 __mt7996_get_tsf(struct ieee80211_hw *hw, struct mt7996_vif_link *link)
- {
-+	struct mt7996_phy *phy = mt7996_vif_link_phy(link);
- 	struct mt7996_dev *dev = mt7996_hw_dev(hw);
--	struct mt7996_phy *phy = link->phy;
- 	union {
- 		u64 t64;
- 		u32 t32[2];
-@@ -1631,7 +1643,7 @@ mt7996_set_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 
- 	n = link->mt76.omac_idx > HW_BSSID_MAX ? HW_BSSID_0
- 					       : link->mt76.omac_idx;
--	phy = link->phy;
-+	phy = mt7996_vif_link_phy(link);
- 	if (!phy)
- 		goto unlock;
- 
-@@ -1665,7 +1677,7 @@ mt7996_offset_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	if (!link)
- 		goto unlock;
- 
--	phy = link->phy;
-+	phy = mt7996_vif_link_phy(link);
- 	if (!phy)
- 		goto unlock;
- 
-@@ -1795,9 +1807,14 @@ static void mt7996_link_rate_ctrl_update(void *data,
- 					 struct mt7996_sta_link *msta_link)
- {
- 	struct mt7996_sta *msta = msta_link->sta;
--	struct mt7996_dev *dev = msta->vif->deflink.phy->dev;
-+	struct mt7996_phy *phy = mt7996_vif_link_phy(&msta->vif->deflink);
-+	struct mt7996_dev *dev;
- 	u32 *changed = data;
- 
-+	if (!phy)
-+		return;
-+
-+	dev = phy->dev;
- 	spin_lock_bh(&dev->mt76.sta_poll_lock);
- 
- 	msta_link->changed |= *changed;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index bdb9e30c54c14cb70e548bf347d0449ad8207848..fe9dcc6b08b88aebb5d5242a50aa6d48d16f502a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -128,9 +128,16 @@ mt7996_mcu_set_sta_he_mcs(struct ieee80211_link_sta *link_sta,
- 			  struct mt7996_vif_link *link,
- 			  __le16 *he_mcs, u16 mcs_map)
- {
-+	struct mt76_phy *mphy = mt76_vif_link_phy(&link->mt76);
- 	int nss, max_nss = link_sta->rx_nss > 3 ? 4 : link_sta->rx_nss;
--	enum nl80211_band band = link->phy->mt76->chandef.chan->band;
--	const u16 *mask = link->bitrate_mask.control[band].he_mcs;
-+	enum nl80211_band band;
-+	const u16 *mask;
-+
-+	if (!mphy)
-+		return;
-+
-+	band = mphy->chandef.chan->band;
-+	mask = link->bitrate_mask.control[band].he_mcs;
- 
- 	for (nss = 0; nss < max_nss; nss++) {
- 		int mcs;
-@@ -1968,9 +1975,8 @@ mt7996_mcu_sta_bfer_tlv(struct mt7996_dev *dev, struct sk_buff *skb,
- #define EBF_MODE	BIT(0)
- #define IBF_MODE	BIT(1)
- #define BF_MAT_ORDER	4
-+	struct mt7996_phy *phy = mt7996_vif_link_phy(link);
- 	struct ieee80211_vif *vif = link_conf->vif;
--	struct mt7996_phy *phy = link->phy;
--	int tx_ant = hweight16(phy->mt76->chainmask) - 1;
- 	struct sta_rec_bf *bf;
- 	struct tlv *tlv;
- 	static const u8 matrix[BF_MAT_ORDER][BF_MAT_ORDER] = {
-@@ -1979,8 +1985,12 @@ mt7996_mcu_sta_bfer_tlv(struct mt7996_dev *dev, struct sk_buff *skb,
- 		{2, 4, 4, 0},	/* 3x1, 3x2, 3x3, 3x4 */
- 		{3, 5, 6, 0}	/* 4x1, 4x2, 4x3, 4x4 */
- 	};
-+	int tx_ant;
- 	bool ebf;
- 
-+	if (!phy)
-+		return;
-+
- 	if (!(link_sta->ht_cap.ht_supported || link_sta->he_cap.has_he))
- 		return;
- 
-@@ -1996,17 +2006,18 @@ mt7996_mcu_sta_bfer_tlv(struct mt7996_dev *dev, struct sk_buff *skb,
- 	 * ht: iBF only, since mac80211 lacks of eBF support
- 	 */
- 	if (link_sta->eht_cap.has_eht)
--		mt7996_mcu_sta_bfer_eht(link_sta, vif, link->phy, bf, ebf);
-+		mt7996_mcu_sta_bfer_eht(link_sta, vif, phy, bf, ebf);
- 	else if (link_sta->he_cap.has_he)
--		mt7996_mcu_sta_bfer_he(link_sta, vif, link->phy, bf, ebf);
-+		mt7996_mcu_sta_bfer_he(link_sta, vif, phy, bf, ebf);
- 	else if (link_sta->vht_cap.vht_supported)
--		mt7996_mcu_sta_bfer_vht(link_sta, link->phy, bf, ebf);
-+		mt7996_mcu_sta_bfer_vht(link_sta, phy, bf, ebf);
- 	else if (link_sta->ht_cap.ht_supported)
--		mt7996_mcu_sta_bfer_ht(link_sta, link->phy, bf, ebf);
-+		mt7996_mcu_sta_bfer_ht(link_sta, phy, bf, ebf);
- 	else
- 		return;
- 
- 	bf->bf_cap = ebf ? EBF_MODE : (dev->ibf ? IBF_MODE : 0);
-+	tx_ant = hweight16(phy->mt76->chainmask) - 1;
- 	if (is_mt7992(&dev->mt76) && tx_ant == 4)
- 		bf->bf_cap |= IBF_MODE;
- 
-@@ -2038,11 +2049,14 @@ mt7996_mcu_sta_bfee_tlv(struct mt7996_dev *dev, struct sk_buff *skb,
- 			struct ieee80211_link_sta *link_sta,
- 			struct mt7996_vif_link *link)
- {
--	struct mt7996_phy *phy = link->phy;
--	int tx_ant = hweight8(phy->mt76->antenna_mask) - 1;
-+	struct mt7996_phy *phy = mt7996_vif_link_phy(link);
- 	struct sta_rec_bfee *bfee;
- 	struct tlv *tlv;
- 	u8 nrow = 0;
-+	int tx_ant;
-+
-+	if (!phy)
-+		return;
- 
- 	if (!(link_sta->vht_cap.vht_supported || link_sta->he_cap.has_he))
- 		return;
-@@ -2066,6 +2080,7 @@ mt7996_mcu_sta_bfee_tlv(struct mt7996_dev *dev, struct sk_buff *skb,
- 	}
- 
- 	/* reply with identity matrix to avoid 2x2 BF negative gain */
-+	tx_ant = hweight8(phy->mt76->antenna_mask) - 1;
- 	bfee->fb_identity_matrix = (nrow == 1 && tx_ant == 2);
- }
- 
-@@ -2249,6 +2264,7 @@ mt7996_mcu_add_rate_ctrl_fixed(struct mt7996_dev *dev, struct mt7996_sta *msta,
- 	struct ieee80211_sta *sta;
- 	int ret, nrates = 0, idx;
- 	enum nl80211_band band;
-+	struct mt76_phy *mphy;
- 	bool has_he;
- 
- #define __sta_phy_bitrate_mask_check(_mcs, _gi, _ht, _he)			\
-@@ -2282,7 +2298,11 @@ mt7996_mcu_add_rate_ctrl_fixed(struct mt7996_dev *dev, struct mt7996_sta *msta,
- 	if (!link_sta)
- 		goto error_unlock;
- 
--	band = link->phy->mt76->chandef.chan->band;
-+	mphy = mt76_vif_link_phy(&link->mt76);
-+	if (!mphy)
-+		goto error_unlock;
-+
-+	band = mphy->chandef.chan->band;
- 	has_he = link_sta->he_cap.has_he;
- 	mask = link->bitrate_mask;
- 	idx = msta_link->wcid.idx;
-@@ -2362,18 +2382,25 @@ mt7996_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7996_dev *dev,
- 			     struct mt7996_vif_link *link)
- {
- #define INIT_RCPI 180
--	struct mt76_phy *mphy = link->phy->mt76;
--	struct cfg80211_chan_def *chandef = &mphy->chandef;
-+	struct mt76_phy *mphy = mt76_vif_link_phy(&link->mt76);
- 	struct cfg80211_bitrate_mask *mask = &link->bitrate_mask;
- 	u32 cap = link_sta->sta->wme ? STA_CAP_WMM : 0;
--	enum nl80211_band band = chandef->chan->band;
-+	struct cfg80211_chan_def *chandef;
- 	struct sta_rec_ra_uni *ra;
-+	enum nl80211_band band;
- 	struct tlv *tlv;
--	u32 supp_rate = link_sta->supp_rates[band];
-+	u32 supp_rate;
-+
-+	if (!mphy)
-+		return;
- 
- 	tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_RA, sizeof(*ra));
- 	ra = (struct sta_rec_ra_uni *)tlv;
- 
-+	chandef = &mphy->chandef;
-+	band = chandef->chan->band;
-+	supp_rate = link_sta->supp_rates[band];
-+
- 	ra->valid = true;
- 	ra->auto_rate = true;
- 	ra->phy_mode = mt76_connac_get_phy_mode(mphy, vif, band, link_sta);
-@@ -2722,6 +2749,7 @@ void mt7996_mcu_update_sta_rec_bw(void *data, struct ieee80211_sta *sta)
- {
- 	struct mt7996_vif_link *link = (struct mt7996_vif_link *)data;
- 	struct mt7996_sta *msta = (struct mt7996_sta *)sta->drv_priv;
-+	struct mt7996_phy *phy = mt7996_vif_link_phy(link);
- 	struct mt7996_sta_link *msta_link;
- 	struct mt7996_dev *dev;
- 	struct ieee80211_bss_conf *link_conf;
-@@ -2730,10 +2758,13 @@ void mt7996_mcu_update_sta_rec_bw(void *data, struct ieee80211_sta *sta)
- 	struct sk_buff *skb;
- 	int link_id;
- 
-+	if (!phy)
-+		return;
-+
- 	if (link->mt76.mvif != &msta->vif->mt76)
- 		return;
- 
--	dev = link->phy->dev;
-+	dev = phy->dev;
- 	link_id = link->msta_link.wcid.link_id;
- 	link_sta = link_sta_dereference_protected(sta, link_id);
- 	if (!link_sta)
-@@ -3010,6 +3041,7 @@ int mt7996_mcu_add_beacon(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- {
- 	struct mt7996_dev *dev = mt7996_hw_dev(hw);
- 	struct mt7996_vif_link *link = mt7996_vif_conf_link(dev, vif, link_conf);
-+	struct mt76_phy *mphy = link ? mt76_vif_link_phy(&link->mt76) : NULL;
- 	struct mt76_vif_link *mlink = link ? &link->mt76 : NULL;
- 	struct ieee80211_mutable_offsets offs;
- 	struct ieee80211_tx_info *info;
-@@ -3024,7 +3056,7 @@ int mt7996_mcu_add_beacon(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	if (!mlink)
- 		return -EINVAL;
- 
--	if (link->phy && link->phy->mt76->offchannel)
-+	if (mphy && mphy->offchannel)
- 		enabled = false;
- 
- 	rskb = __mt7996_mcu_alloc_bss_req(&dev->mt76, mlink,
-@@ -3075,9 +3107,9 @@ int mt7996_mcu_beacon_inband_discov(struct mt7996_dev *dev,
- {
- #define OFFLOAD_TX_MODE_SU	BIT(0)
- #define OFFLOAD_TX_MODE_MU	BIT(1)
-+	struct mt76_phy *mphy = mt76_vif_link_phy(&link->mt76);
- 	struct ieee80211_vif *vif = link_conf->vif;
- 	struct ieee80211_hw *hw = mt76_hw(dev);
--	struct mt7996_phy *phy = link->phy;
- 	struct mt76_wcid *wcid = &dev->mt76.global_wcid;
- 	struct bss_inband_discovery_tlv *discov;
- 	struct ieee80211_tx_info *info;
-@@ -3088,10 +3120,10 @@ int mt7996_mcu_beacon_inband_discov(struct mt7996_dev *dev,
- 	u8 *buf, interval;
- 	int len;
- 
--	if (!phy)
-+	if (!mphy)
- 		return -EINVAL;
- 
--	chandef = &phy->mt76->chandef;
-+	chandef = &mphy->chandef;
- 	band = chandef->chan->band;
- 
- 	if (link_conf->nontransmitted)
-@@ -3129,7 +3161,7 @@ int mt7996_mcu_beacon_inband_discov(struct mt7996_dev *dev,
- 	info = IEEE80211_SKB_CB(skb);
- 	info->control.vif = vif;
- 	info->band = band;
--	info->hw_queue |= FIELD_PREP(MT_TX_HW_QUEUE_PHY, phy->mt76->band_idx);
-+	info->hw_queue |= FIELD_PREP(MT_TX_HW_QUEUE_PHY, mphy->band_idx);
- 
- 	len = ALIGN(sizeof(*discov) + MT_TXD_SIZE + skb->len, 4);
- 	tlv = mt7996_mcu_add_uni_tlv(rskb, UNI_BSS_INFO_OFFLOAD, len);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index ee3564c0115a36ea592741f34025a9f9f701315c..d18f8794351eca4e3d3b3a314d0ac2fe7a6d8249 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -276,8 +276,6 @@ struct mt7996_vif_link {
- 	struct mt76_vif_link mt76; /* must be first */
- 
- 	struct mt7996_sta_link msta_link;
--	struct mt7996_phy *phy;
--
- 	struct cfg80211_bitrate_mask bitrate_mask;
- 
- 	u8 mld_idx;
+This series only enables three functions: regulators, keys, and RTC.
+
+I have added a handful of device tree improvements to fix some
+dtbs_check errors and addressed the comments from last year's
+reviews. The series has been tested on Xiaomi Mi Smart Clock x04g.
+
+v2: Review feedback - replaced explicit compatibles with fallbacks
+
+Fabien Parent (5):
+  dt-bindings: mfd: mt6397: Add bindings for MT6392 PMIC
+  dt-bindings: regulator: add support for MT6392
+  dt-bindings: input: mtk-pmic-keys: add MT6392 binding definition
+  mfd: mt6397: Add support for MT6392 pmic
+  regulator: mt6392: Add support for MT6392 regulator
+
+Val Packett (2):
+  input: keyboard: mtk-pmic-keys: add MT6392 support
+  arm64: dts: mt6392: add mt6392 PMIC dtsi
+
+ .../bindings/input/mediatek,pmic-keys.yaml    |   1 +
+ .../bindings/mfd/mediatek,mt6397.yaml         |   9 +
+ arch/arm64/boot/dts/mediatek/mt6392.dtsi      | 134 +++++
+ drivers/input/keyboard/mtk-pmic-keys.c        |  15 +
+ drivers/mfd/mt6397-core.c                     |  43 ++
+ drivers/mfd/mt6397-irq.c                      |   8 +
+ drivers/regulator/Kconfig                     |   9 +
+ drivers/regulator/Makefile                    |   1 +
+ drivers/regulator/mt6392-regulator.c          | 491 ++++++++++++++++++
+ include/linux/mfd/mt6392/core.h               |  42 ++
+ include/linux/mfd/mt6392/registers.h          | 487 +++++++++++++++++
+ include/linux/mfd/mt6397/core.h               |   1 +
+ include/linux/regulator/mt6392-regulator.h    |  40 ++
+ 13 files changed, 1281 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt6392.dtsi
+ create mode 100644 drivers/regulator/mt6392-regulator.c
+ create mode 100644 include/linux/mfd/mt6392/core.h
+ create mode 100644 include/linux/mfd/mt6392/registers.h
+ create mode 100644 include/linux/regulator/mt6392-regulator.h
 
 -- 
-2.53.0
+2.43.0
 
 
