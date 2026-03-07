@@ -4,131 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95B00FC9EC0
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Mar 2026 00:34:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE76AFC9ED3
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Mar 2026 07:08:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Cc:To
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HoAXh3SQ9Tz9LRhc8OIvPnjOzRFjWCfpsYPvBpkZEr8=; b=4aukaBz5i6WUBa1FUqMOUBl1sT
-	DDRDxOEF+Xv+qxmt6xKuLK1Lrlc2cXvJWdgtp8Qwz6asBFDuuiIYjx5rkaIA/eyYFmainaNfZmVPU
-	JK64Eqc574vHKPLmJ+eNMGQ7WA2Deo4G+PH5rGo8/o2qrOdlM833e0r4n/TwBnUukULrVEvSPLxr1
-	WZwsPAAIIoFYwjbFgB0iosvdFqdy2Ujjy73JwXyjd6P/kIRFKZnkG772CcY+XIGAQqgmZA8JnQb1k
-	5kGFvWXIM2O+cLD3M+Ln4kADAPYLsLBWQwsxwV6h+ycmiQk1RG6gM2HnDP8MYLaj6P4lrcwyia3fc
-	s/uXx4Bg==;
+	bh=csar4R8Mms37q1FO+Z1m04NigIS9iSsqIq0R/vlsczQ=; b=MWtdB0JWemyInk6tElCheCC4nH
+	MiSCzNUpwPb+Qr5b6wNayYWBt2NVq4fpjqj/WrgqpkGD22ODaKN02lUO6DQfnxpkkQLUWu22wdAbR
+	xN9qRL3MpGGjsbCcu6/2lqpP2Mit8Blsdr7aLWVLB5UNeTf3W+1mV0lPHLl/DzcpYebBAyT8Lj9+C
+	cWejpvksT2qK5DuQISb9GtodFE6G8FDGJ/+brjq02PLW7XPXJ/qptej0vJ4g+tTg/X41vUek33Bh9
+	NSBu1pSn9FU57SdQ0hBwx6dvhfCK+R8KtwZ0i14HZDJ/pwT0gL/xAJJ/ql/6bsQ1IQbnuTeszovmx
+	Z7HiDydg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyfco-00000004jXO-1uLQ;
-	Sat, 07 Mar 2026 00:34:34 +0000
-Received: from flow-a2-smtp.messagingengine.com ([103.168.172.137])
+	id 1vylmN-00000004xoJ-0IYb;
+	Sat, 07 Mar 2026 07:08:51 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyfce-00000004jHU-3OGp;
-	Sat, 07 Mar 2026 00:34:28 +0000
-Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
-	by mailflow.phl.internal (Postfix) with ESMTP id E23B81380A22;
-	Fri,  6 Mar 2026 19:34:23 -0500 (EST)
-Received: from phl-imap-07 ([10.202.2.97])
-  by phl-compute-02.internal (MEProxy); Fri, 06 Mar 2026 19:34:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jetm.me; h=cc:cc
-	:content-transfer-encoding:content-type:content-type:date:date
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm3; t=1772843663;
-	 x=1772850863; bh=HoAXh3SQ9Tz9LRhc8OIvPnjOzRFjWCfpsYPvBpkZEr8=; b=
-	XCxY9MznMa/MuiHsUf9e2GLh6vAnqch9tXI5SktPbF3gCC9wBXCqKGqhwLRSnJnv
-	ZCAVjIaHkxSJftmCMTrDtqkiPFDOT77EIpCJnrBz2he12ii56pbdOBhI0V7Ijs5I
-	xY9k/wOS/1FVd3nIDsMrlIYAfLP4jPHqwqXtIWinl9e3iiY7XWvFK1kHd/3PYpRQ
-	mb+AsGxRqyHc9quZ7LeUd0GpMaeGIOofMNjaUiIliaV6cLOt1go8nRAjBl9TKibX
-	CxI9C1zUNQJqGygoJIRd6jYrxVsq/2kZb7OWREV3x3mVzkHkVk9PblKboQwJa3Yy
-	e06NsPp5f0XaeJfYlDPVjg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1772843663; x=
-	1772850863; bh=HoAXh3SQ9Tz9LRhc8OIvPnjOzRFjWCfpsYPvBpkZEr8=; b=Y
-	Jg5mHKnc8+BGp84QtGwgcF9FxzS90dmabjPU8DYTX8yiHF2PFf4VcXwLQtLEA6xw
-	nW1IBZJ03zHp7Sx9cBE2kcjdtdfehhTaimsatU/GySapFBBFunhs8/bi0somERBu
-	HhuffvWjSaWFGdhvMS11MlnbM79frpU0n2N86lETyn1rUi8In0dzOUNsT7zPHgfh
-	PooOw8JQHQowSU1yk+0iUd/OYvVFzTe55PaAr93grl8k9kQ+GHuFIuRv0PBOKCxT
-	Ih22FRgeueiERgPCIrdAwIdJFTbL4UBt3qwrEiuV8WNrGx9PJscsRVpr5Vu9JDOT
-	ZBARzbdBeIysS9eijeaUA==
-X-ME-Sender: <xms:j3KraTAU-hnNENW5g4UGGib7v8xBqGxfPKqf6aKfjEdlM8SVNqDcRw>
-    <xme:j3KraUWMbNWGqhJd4db7STpu-ilM0nIHAvOlsh85nUUrzUbQFuczY4y072SqTi6_n
-    ZQcuAlQ71CGCS8rY3sNUD-wiLHD-4QG_6zyLult-nuPYnHRRWWswzE>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgddvjedtjeehucetufdoteggodetrf
-    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
-    rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
-    gurhepoffhfffugggtgffkvfevofgjfhesthekredtredtjeenucfhrhhomheplfgrvhhi
-    vghrucfvihgruceofhhlohhsshesjhgvthhmrdhmvgeqnecuggftrfgrthhtvghrnhepue
-    dttdfggfdufeeiueetffegveefffevjeehvdelfeevhffhteekgfegveeuiefhnecuffho
-    mhgrihhnpehgihhthhhusgdrtghomhenucevlhhushhtvghrufhiiigvpedunecurfgrrh
-    grmhepmhgrihhlfhhrohhmpehflhhoshhssehjvghtmhdrmhgvpdhnsggprhgtphhtthho
-    pedvfedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoheprghnghgvlhhoghhiohgrtg
-    gthhhinhhordguvghlrhgvghhnohestgholhhlrggsohhrrgdrtghomhdprhgtphhtthho
-    peefudelfeeifedusehgmhgrihhlrdgtohhmpdhrtghpthhtoheplhhoohhnghdrtdigtd
-    dtsehgmhgrihhlrdgtohhmpdhrtghpthhtoheprghrihgvlhdrrhhoshgvnhhfvghlugdr
-    jeehtdesghhmrghilhdrtghomhdprhgtphhtthhopegthhgrphhuihhsuggrrhhiohegse
-    hgmhgrihhlrdgtohhmpdhrtghpthhtohepghhiohhsrghlledtsehgmhgrihhlrdgtohhm
-    pdhrtghpthhtohepmhgrthhthhhirghsrdgsghhgsehgmhgrihhlrdgtohhmpdhrtghpth
-    htoheprhgrughoihdrtghhrhhishesghhmrghilhdrtghomhdprhgtphhtthhopehsrghm
-    uhdrthholhhjrghmohesghhmrghilhdrtghomh
-X-ME-Proxy: <xmx:j3KraUbLqOMu1hA6cw-UWeiu9gKgSKpc--opTLe8eK5ZUMBvQLf-Tw>
-    <xmx:j3KraaKBMwbOlvl67uqmV7mwaBc38ZPjPJeQn8EXXO261m09aoRbSA>
-    <xmx:j3Krad2NYPQ6c2L1sUn_98tnq0IGKSLjDzgM52GwcFAj4ijwoLE1FQ>
-    <xmx:j3KraVZOldb7g2nmU0j69fJde_8qtx1OHDjDPg_FmdrfbKi0iZZ6UA>
-    <xmx:j3KraTMa5YASg729nyEOKj3Mh47Vzow8ROdGkfqANSnyKxOENmQjQoWY>
-Feedback-ID: i9dde48b3:Fastmail
-Received: by mailuser.phl.internal (Postfix, from userid 501)
-	id BAF471EA006B; Fri,  6 Mar 2026 19:34:23 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-From: Javier Tia <floss@jetm.me>
-Date: Fri, 06 Mar 2026 18:33:37 -0600
-Subject: [PATCH 18/18] wifi: mt76: mt7925: add 320MHz bandwidth to
- bss_rlm_tlv
+	id 1vylmI-00000004xnc-2dtR
+	for linux-mediatek@lists.infradead.org;
+	Sat, 07 Mar 2026 07:08:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E054A44431
+	for <linux-mediatek@lists.infradead.org>; Sat,  7 Mar 2026 07:08:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD234C2BCB4
+	for <linux-mediatek@lists.infradead.org>; Sat,  7 Mar 2026 07:08:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772867324;
+	bh=+PW4vo+de0ZspckgLm9CKwYH4siMtdUDVAFkcNGdTis=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=NgqfRAcCG6pYkr1mXkaBARHGF6rS0MADuHvkm6Fl7W1bUJoypY8UPBbhQS4bn5779
+	 ru0VyK6I/lOLTk6Nkrw1oDd0U475cEAVv0hEa2U6YZzdOSX6DYgqp90cIho7vqoa3t
+	 cTC3YEfpdb2kbm4rMMFg7y2FZLXvrJ7SW/D00OjE+csT3J+YNo61NwtQc8asy80nPg
+	 6oZSQ/Y0A9dQu3wmjgIj7j15MnJhkHdGboaZ9uf7ct7W6ZXXdov0mQZGK3KA/yEK6y
+	 nFDuV9dSdYnomVJ8njxp5HcqNa9tVW/ZrWzyyuwjjHpOJV2QQZr2eOKmzvIRfrYDhX
+	 KFIJL87ts1ReA==
+Received: by mail-lf1-f42.google.com with SMTP id 2adb3069b0e04-5a13a06fc85so1763081e87.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 06 Mar 2026 23:08:44 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCUqy/lV1vvuAu2Ny32IhfOoy0Pv2GKHfXyqTRtYAcQKelGkxXa+6YYtYTgoeiexCZU/pTQ5IqL7k9ANIIGlqA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy94grK1kvNooJxmp/5l3zp6B9qpuKRgW/FmrJCc3c2zx37W6c3
+	Btk7HGw0ltpaWHZFEZ8+NrRBIOlKC3GLm26pTlB1kusJDxi2OULpQE2oyTrTFC4AaflvgyRjdSi
+	fhVJMowtzvy5Hlz11/G+IIhZt32JExD4=
+X-Received: by 2002:a05:6512:b08:b0:5a1:3f52:8601 with SMTP id
+ 2adb3069b0e04-5a13f528650mr1073576e87.47.1772867322919; Fri, 06 Mar 2026
+ 23:08:42 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20260306-mt7927-wifi-support-v1-18-c77e7445511d@jetm.me>
-To: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Deren Wu <deren.wu@mediatek.com>,
- Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Marcin FM <marcin@lgic.pl>,
- Cristian-Florin Radoi <radoi.chris@gmail.com>,
- George Salukvadze <giosal90@gmail.com>, Evgeny Kapusta <3193631@gmail.com>,
- Samu Toljamo <samu.toljamo@gmail.com>,
- Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>,
- Chapuis Dario <chapuisdario4@gmail.com>,
- =?utf-8?q?Thibaut_Fran=C3=A7ois?= <tibo@humeurlibre.fr>,
- =?utf-8?q?=E5=BC=A0=E6=97=AD=E6=B6=B5?= <Loong.0x00@gmail.com>,
- Javier Tia <floss@jetm.me>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1993; i=floss@jetm.me;
- h=from:subject:message-id; bh=76o6pFwpyjUyv3yPBBBAdI2dlELkl13ZIgHkl2UbS2A=;
- b=owEB7QES/pANAwAKAbXuwwuoZ3cfAcsmYgBpq3JQOB5Xx7+rlhJvXpLwxYGMyLapclMOstIQH
- E88aKo5LjmJAbMEAAEKAB0WIQSbE7ILzw7eI0VKk8m17sMLqGd3HwUCaatyUAAKCRC17sMLqGd3
- H6gDDACYdyveP2iYImYAeUIhT1CebEcBKEXBkf6+UBB9xo0vfTbrnyUiDYYgCJRD+zAuUsseDeB
- roHGHi44STPQbjBsquZDiMSDqiNQfjl5JKELfJ1Cjo2dSOKexcNKbj8YXBXzocO/oGxb4xy6L64
- +uhCJuxVJ7dpZePVEWjqFRsNIXRHoU9pxw27bTN2sdQuTcHUgUH5+KZqMBpfdlMio8MyWHj+ayH
- EOV0hYRssehxX1B7VyeTa61W9gtMEs8f5B3fkCcZ0bTjmgx/mpvd4d387Uhxjp66uTB7EjQykys
- Pr7b3PrKdJQk4Xqp2DvEs2fR030W9eRQB1Sr4rLIzOL5Y+DR8yhsk2ReBxfqsXnCcHnt3GjHaFT
- V6wKcQkHdwoG7I8vlcWT7K5HofbCHGfAeOU2gL4oUE38cPeEkP4vDt5n8TxVx/J5BjnExg+iHBB
- BDFr3nZmK8OGdnLTqP3+9jU/XF0UfjEyOw3IMdaMelFX7P+NZwv+AAR9o7jKX/C6MLwP8=
-X-Developer-Key: i=floss@jetm.me; a=openpgp;
- fpr=9B13B20BCF0EDE23454A93C9B5EEC30BA867771F
-In-Reply-To: <20260306-mt7927-wifi-support-v1-0-c77e7445511d@jetm.me>
 References: <20260306-mt7927-wifi-support-v1-0-c77e7445511d@jetm.me>
+In-Reply-To: <20260306-mt7927-wifi-support-v1-0-c77e7445511d@jetm.me>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Sat, 7 Mar 2026 01:08:31 -0600
+X-Gmail-Original-Message-ID: <CAGp9Lzq1motdBxa9uk59Nhx0rxt4XJAp5OynpWVsB_sAm6Lx8Q@mail.gmail.com>
+X-Gm-Features: AaiRm51FdRaT5F8eM2wYPfbZq4D4Kq301mf_pEP4qcp863zlhdRNAb0csgHWPYU
+Message-ID: <CAGp9Lzq1motdBxa9uk59Nhx0rxt4XJAp5OynpWVsB_sAm6Lx8Q@mail.gmail.com>
+Subject: Re: [PATCH 00/18] wifi: mt76: mt7925: add MT7927 (Filogic 380) support
+To: Javier Tia <floss@jetm.me>
+Cc: linux-wireless@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Deren Wu <deren.wu@mediatek.com>, 
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Marcin FM <marcin@lgic.pl>, Cristian-Florin Radoi <radoi.chris@gmail.com>, 
+	George Salukvadze <giosal90@gmail.com>, Evgeny Kapusta <3193631@gmail.com>, 
+	Samu Toljamo <samu.toljamo@gmail.com>, Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>, 
+	Chapuis Dario <chapuisdario4@gmail.com>, =?UTF-8?Q?Thibaut_Fran=C3=A7ois?= <tibo@humeurlibre.fr>, 
+	=?UTF-8?B?5byg5pet5ra1?= <Loong.0x00@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_163425_020480_B6D4A050 
-X-CRM114-Status: UNSURE (   8.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260306_230846_714871_C9FF486B 
+X-CRM114-Status: GOOD (  29.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -143,53 +92,228 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-bss_rlm_tlv() in mt7925_mcu_bss_rlm_tlv() has no case for
-NL80211_CHAN_WIDTH_320. When associated to a 320MHz BSS, the switch
-falls through to default and sends bw=0 (CMD_CBW_20MHZ) to firmware
-via BSS_RLM TLV. Firmware then configures the RX radio for 20MHz
-and cannot decode the AP's 320MHz frames, resulting in complete data
-path failure at 320MHz.
+Hi Javier,
 
-Add the missing NL80211_CHAN_WIDTH_320 case with CMD_CBW_320MHZ and
-center_chan2.
+On Fri, Mar 6, 2026 at 6:33=E2=80=AFPM Javier Tia <floss@jetm.me> wrote:
+>
+> This series adds support for the MediaTek MT7927 (Filogic 380) combo
+> WiFi 7 + BT 5.4 module to the mt7925 driver. The MT7927 uses PCI ID
+> 14c3:7927 (some hardware reports 14c3:6639) and shares the mt7925
+> firmware interface but requires different DMA ring layout, IRQ mapping,
+> chip initialization, and power management handling.
+>
+> Tested hardware:
+> - ASUS ROG Crosshair X870E Hero (BT 0489:e13a, WiFi 14c3:6639)
+> - ASUS ProArt X870E-Creator WiFi (BT 0489:e13a / 13d3:3588, WiFi 14c3:663=
+9)
+> - ASUS ROG Strix X870E-E (BT 0489:e13a, WiFi 14c3:7927)
+> - Gigabyte X870E Aorus Master X3D (BT 0489:e10f, WiFi 14c3:7927)
+> - Gigabyte Z790 AORUS MASTER X (BT 0489:e10f, WiFi 14c3:7927)
+> - Lenovo Legion Pro 7 16ARX9 (BT 0489:e0fa, WiFi 14c3:7927)
+> - TP-Link Archer TBE550E PCIe (BT 0489:e116, WiFi 14c3:7927)
+> - EDUP EP-MT7927BE M.2 card (WiFi 14c3:7927)
+> - Foxconn/Azurewave M.2 modules (WiFi 14c3:6639)
+> - AMD RZ738 reference design (WiFi 14c3:0738)
+>
 
-Tested on ASUS RT-BE92U: 320MHz throughput goes from 0 Mbps to
-841 Mbps (iperf3 -t30 -P8), PHY 4803 Mbps EHT-MCS11.
+Thanks for coordinating the work and delivering the driver.
 
-Reported-by: 张旭涵 <Loong.0x00@gmail.com>
-Closes: https://github.com/jetm/mediatek-mt7927-dkms/issues/15
-Assisted-by: Claude Code <noreply@anthropic.com> (claude-opus-4-6)
-Tested-by: 张旭涵 <Loong.0x00@gmail.com>
-Tested-by: Marcin FM <marcin@lgic.pl>
-Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
-Tested-by: George Salukvadze <giosal90@gmail.com>
-Tested-by: Evgeny Kapusta <3193631@gmail.com>
-Tested-by: Samu Toljamo <samu.toljamo@gmail.com>
-Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
-Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
-Tested-by: Thibaut François <tibo@humeurlibre.fr>
-Signed-off-by: Javier Tia <floss@jetm.me>
----
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 4 ++++
- 1 file changed, 4 insertions(+)
+> Tested on Arch Linux, CachyOS, EndeavourOS, Fedora (Bazzite), NixOS,
+> openSUSE Tumbleweed, and Ubuntu across kernels 6.13-6.19.
+>
+> What works:
+> - WiFi 7 with EHT 320MHz on 2.4/5/6 GHz bands
+> - 320MHz data path verified at 841 Mbps (iperf3 -t30 -P8)
+> - PCIe initialization with CBTOP remap and MT7927-specific DMA layout
+> - Runtime power management and suspend/resume (S3)
+> - DBDC (dual-band concurrent) mode
+> - Explicit band_idx assignment for stable 5GHz/6GHz operation
+> - ASPM disabled for MT7927 to prevent throughput collapse
+>
+> Known limitations (planned as follow-up series):
+> - MLO (Multi-Link Operation): tested working on 5GHz+2.4GHz STR
+>   (776 Mbps) but requires additional patches for link lifetime
+>   and error handling. Sean Wang's series [1] addresses these;
+>   MLO support will be submitted as a follow-up on top of that.
+>
+> [1] https://lore.kernel.org/linux-wireless/20260306232238.2039675-1-sean.=
+wang@kernel.org/
+> - TX retransmissions: elevated retry rate on all bands, firmware-side
+>   rate adaptation issue not addressable in the driver.
+>
+> Patches 1-11 bring up the basic driver (chip ID, firmware, DMA, init,
+> power management, 320MHz MCS, mac_reset guard, IRQ map, probe fix).
+> Patch 12 advertises EHT 320MHz capabilities, guarded by is_mt7927().
+> Patches 13-14 fix DMASHDL PM wake and disable ASPM.
+> Patch 15 adds 320MHz bandwidth handling in RXV/TXS status reporting.
+> Patch 16 fixes stale pointer comparisons in change_vif_links.
+> Patch 17 assigns explicit band_idx for stable 5GHz/6GHz operation.
+> Patch 18 adds the missing 320MHz case in bss_rlm_tlv() so firmware
+> receives the correct bandwidth when associated to a 320MHz BSS.
+>
+> The WiFi firmware ships as part of the linux-firmware package
+> (mediatek/mt6639/ directory - the firmware uses the mobile SoC codename).
+>
+> To: linux-wireless@vger.kernel.org
+> To: Felix Fietkau <nbd@nbd.name>
+> To: Lorenzo Bianconi <lorenzo@kernel.org>
+> To: Ryder Lee <ryder.lee@mediatek.com>
+> To: Shayne Chen <shayne.chen@mediatek.com>
+> To: Sean Wang <sean.wang@mediatek.com>
+> To: Matthias Brugger <matthias.bgg@gmail.com>
+> To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> To: Deren Wu <deren.wu@mediatek.com>
+> To: Ming Yen Hsieh <mingyen.hsieh@mediatek.com>
+> Cc: linux-kernel@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+> Tested-by: Marcin FM <marcin@lgic.pl>
+> Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
+> Tested-by: George Salukvadze <giosal90@gmail.com>
+> Tested-by: Evgeny Kapusta <3193631@gmail.com>
+> Tested-by: Samu Toljamo <samu.toljamo@gmail.com>
+> Tested-by: Ariel Rosenfeld <ariel.rosenfeld.750@gmail.com>
+> Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
+> Tested-by: Thibaut Fran=C3=A7ois <tibo@humeurlibre.fr>
+> Tested-by: =E5=BC=A0=E6=97=AD=E6=B6=B5 <Loong.0x00@gmail.com>
+>
+> Signed-off-by: Javier Tia <floss@jetm.me>
+> ---
+> Javier Tia (18):
+>       wifi: mt76: mt7925: add MT7927 chip ID helpers
+>       wifi: mt76: mt7925: add MT7927 firmware paths and PCI device IDs
+>       wifi: mt76: mt7925: add MT7927 CBTOP remap and chip initialization
+>       wifi: mt76: mt7925: add MT7927 DMA ring layout, IRQ map, and prefet=
+ch
+>       wifi: mt76: mt7925: skip CLR_OWN in mt7925e_mcu_init for MT7927
+>       wifi: mt76: mt7925: add MT7927 power management, DBDC, and CNM fixe=
+s
+>       wifi: mt76: mt7925: use irq_map fields instead of MT_INT_RX_DONE_AL=
+L
+>       wifi: mt76: mt7925: guard mac_reset against MT7927 DMA destruction
+>       wifi: mt76: mt7925: populate EHT 320MHz MCS map in sta_rec
+>       wifi: mt76: mt7925: enable MT7927 runtime power management
+>       wifi: mt76: mt7925: fix uninitialized is_mt7927_hw in probe
+>       wifi: mt76: mt7925: advertise EHT 320MHz capabilities for 6GHz band
+>       wifi: mt76: mt7925: restore FW_DWLD_BYPASS_DMASHDL in MT7927 PM wak=
+e path
+>       wifi: mt76: mt7925: disable ASPM for MT7927 to fix throughput colla=
+pse
+>       wifi: mt76: mt7925: handle 320MHz bandwidth in RXV and TXS
+>       wifi: mt76: mt7925: fix stale pointer comparisons in change_vif_lin=
+ks
+>       wifi: mt76: mt7925: fix MT7927 band_idx for stable 5GHz/6GHz operat=
+ion
+>       wifi: mt76: mt7925: add 320MHz bandwidth to bss_rlm_tlv
+>
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 3458aa8c79cb..025e6d14f7ce 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -2363,6 +2363,10 @@ void mt7925_mcu_bss_rlm_tlv(struct sk_buff *skb, struct mt76_phy *phy,
- 	case NL80211_CHAN_WIDTH_160:
- 		req->bw = CMD_CBW_160MHZ;
- 		break;
-+	case NL80211_CHAN_WIDTH_320:
-+		req->bw = CMD_CBW_320MHZ;
-+		req->center_chan2 = ieee80211_frequency_to_channel(freq2);
-+		break;
- 	case NL80211_CHAN_WIDTH_5:
- 		req->bw = CMD_CBW_5MHZ;
- 		break;
+The patchset should be ordered so that common changes (e.g., enabling
+320 MHz support) are added first,
+while chip-specific changes are introduced later (e.g.,
+MT7927-specific IRQ, DMA, and hardware initialization sequences).
+Before introducing chip-specific logic, try to make the functions
+generic enough so that other chips can reuse them in the same way.
+Checks such as is_mt7927 and duplicated function should only be added
+if they cannot be avoided
 
--- 
-2.53.0
+The more code we can reuse across chips, the fewer maintenance
+concerns there will be, and we can focus more effort on the
+chip-specific parts.
 
+Please reorganize the patchset order as follows:
+
+1. Common patches that can be reused by other chipsets (now or in the
+future) should come first we don't need to mention mt7927
+
+"wifi: mt76: mt7925: fix stale pointer comparisons in change_vif_links"
+"wifi: mt76: mt7925: add 320MHz bandwidth to bss_rlm_tlv"
+"wifi: mt76: mt7925: handle 320MHz bandwidth in RXV and TXS"
+"wifi: mt76: mt7925: populate EHT 320MHz MCS map in sta_rec"
+"wifi: mt76: mt7925: advertise EHT 320MHz capabilities for 6GHz band"
+
+Here we can add a helper like is_320MHz_supported() and then advertise
+EHT 320MHz capabilities, but do not need to mention is_mt7927() yet.
+
+2. Then introduce MT7927-related changes
+
+wifi: mt76: mt7925: add MT7927 chip ID helpers
+Keep the MCU part of "wifi: mt76: mt7925: add MT7927 firmware paths
+and PCI device IDs" but leave enabling the PCI device table for the
+last patch.
+
+3. IRQ handling
+
+Combine
+
+wifi: mt76: mt7925: use irq_map fields instead of MT_INT_RX_DONE_ALL
+the IRQ part of wifi: mt76: mt7925: add MT7927 DMA ring layout, IRQ
+map, and prefetch
+into one patch about irq_map handling, trying to reuse mt7925_irq as
+much as possible.
+
+4. DMA handling
+
+Combine
+
+the DMA part of "wifi: mt76: mt7925: add MT7927 DMA ring layout, IRQ
+map, and prefetch"
+"wifi: mt76: mt7925: restore FW_DWLD_BYPASS_DMASHDL in MT7927 PM wake path"
+into one patch about DMA handling, trying to reuse mt7925_dma_init as
+much as possible.
+
+5. Hardware initialization
+
+Combine
+
+"wifi: mt76: mt7925: add MT7927 CBTOP remap and chip initialization"
+"wifi: mt76: mt7925: fix uninitialized is_mt7927_hw in probe"
+"wifi: mt76: mt7925: skip CLR_OWN in mt7925e_mcu_init for MT7927"
+"wifi: mt76: mt7925: add MT7927 power management, DBDC, and CNM fixes"
+
+into one or more patches focused on pure hardware initialization in
+logical order. If the register definition is used by MT7927, add
+MT7927_ as the prefix.
+
+6. Band index fix
+
+"wifi: mt76: mt7925: fix MT7927 band_idx for stable 5GHz/6GHz operation"
+This is worth introducing helper functions and using them instead of
+implementing the logic inline.
+
+7. Low power support
+
+Combine
+
+"wifi: mt76: mt7925: enable MT7927 runtime power management"
+"wifi: mt76: mt7925: disable ASPM for MT7927 to fix throughput collapse"
+
+into one or more patches related to enabling or disabling low power support=
+.
+
+8. Final patch
+The last patch should enable the MT7927 PCI device table.
+
+>  drivers/net/wireless/mediatek/mt76/mt76_connac.h   |   8 +-
+>  drivers/net/wireless/mediatek/mt76/mt7925/init.c   |  12 +
+>  drivers/net/wireless/mediatek/mt76/mt7925/mac.c    |   9 +
+>  drivers/net/wireless/mediatek/mt76/mt7925/main.c   |  72 +++++-
+>  drivers/net/wireless/mediatek/mt76/mt7925/mcu.c    |  59 ++++-
+>  drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h |  12 +
+>  drivers/net/wireless/mediatek/mt76/mt7925/pci.c    | 248 +++++++++++++++=
++++++-
+>  .../net/wireless/mediatek/mt76/mt7925/pci_mac.c    |  13 +-
+>  .../net/wireless/mediatek/mt76/mt7925/pci_mcu.c    |  19 +-
+>  drivers/net/wireless/mediatek/mt76/mt792x.h        |   6 +
+>  drivers/net/wireless/mediatek/mt76/mt792x_dma.c    |  26 ++-
+>  drivers/net/wireless/mediatek/mt76/mt792x_regs.h   |  30 +++
+>  12 files changed, 479 insertions(+), 35 deletions(-)
+> ---
+> base-commit: 97492c019da4b62df83255e968b23b81c0315530
+> change-id: 20260305-mt7927-wifi-support-02f9738a3962
+>
+> Best regards,
+> --
+> Javier Tia <floss@jetm.me>
+>
+>
 
