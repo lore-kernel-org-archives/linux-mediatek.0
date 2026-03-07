@@ -4,90 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 210A1FC9EFB
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Mar 2026 11:03:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EA11FC9EF8
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Mar 2026 13:46:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gKq7Ur0o7o0fnfG6VoXbzm/WfSG13rcROPhghnkiHuY=; b=Kz129lhtyXwyOGTxCzxDzQnTtz
-	iJSe19D8E9eAIEfWOZug1Rzv3Za8dhnb5G+7pIfIfc+vEbIawybZU53eHkPj+9xVIRNNfmsfbp8o5
-	MMJjFgZahe18QUU09BBBA3R9OgH7Y7Jt14vpVQaVnCZ3tkmrMAZLeREJ2o3WEa606XO7cmiATrpzT
-	EYfwDHW06F5gtHcdU2SmhaRMp+6DfovsmMUc2JcpraeehNsmSebl6d+rYWHNqCeS6O/5OXxvUxy5L
-	EZwdq8GJnNkm2BXU1XYUSrljTNle/XetG3F49+WQEDr3RYVmwDhQUFgtOPHBgkHUGt0C8JwURFIDl
-	Cw7zyNGA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7kXGlgBEjIc60NESDWgmGviynt4vpuhwBaCCS09T+9g=; b=DerY4U/rKrMSC/CIjPWrWnXcFC
+	iPVTjtg2Aov1gjugNYJ8GMJE3+jOcnddDDy/AskTV+WHu6Zj8jRZFZqm+R6+20Ar7BXdHWGnmUrJc
+	uUnCYfCLcMs1d11uGDUs1io2g7YutqJmaskuRWs8/yQKfnNkZjECJieIel8f1OIXwCxm+vOJIRhBt
+	qppcdUdBS2r1RXZvvPIo0t1OsfuB3toOP1DXsXAfkZQNfqcSjJzzuRmP8o6DayI32aoqHTg14b5lO
+	9b606WM5L9MoR/7Ous5urlqZXbIte7Dc+EDAlLmVmzcXo/kOsyPf4FZX+vzicUfjoesDiXl+bBjVj
+	rifhl/TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vypRk-000000058oz-1Yr4;
-	Sat, 07 Mar 2026 11:03:48 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vyrz7-00000005EkC-1LzD;
+	Sat, 07 Mar 2026 13:46:25 +0000
+Received: from mgamail.intel.com ([198.175.65.19])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vypRd-000000058hR-42EZ;
-	Sat, 07 Mar 2026 11:03:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=gKq7Ur0o7o0fnfG6VoXbzm/WfSG13rcROPhghnkiHuY=; b=KfYWPFr2YVcrUXRrfluFTGbIdz
-	zfP6GrfPdxzliFEeNl0EUGmWfcyryLQacMv+YTvtqKM+3Q+OmiV3uNxunJFspWh1m+t5LJSKdtHKa
-	5SSGGFOgivZjhIs8Oz7PdmUD+OHCk7OBIipXu1cJyvlr0wg/KdAKgl0GOyE+LTB/RTYdRVSQWbnRa
-	kKbyPGq4M4yQAfjH19uHnoof+jyOD6Ac6/x7xUeO3omUaSgO3oLcQKAkPv82lpBdTfHGM091t6YwL
-	ajg8IJI6neZctZHkKSkCWx5qLsSNAfLWjb8Cw+Bv7tP4Wr+qBbecwLWjZey17tioABP4T/hLw+f9L
-	iR9IRxfg==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:59388 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1vypRE-00000000298-28R9;
-	Sat, 07 Mar 2026 11:03:18 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1vypR8-0000000CSwb-3P3f;
-	Sat, 07 Mar 2026 11:03:10 +0000
-In-Reply-To: <aawFuXTVAgVOrw4k@shell.armlinux.org.uk>
-References: <aawFuXTVAgVOrw4k@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	imx@lists.linux.dev,
-	Jakub Kicinski <kuba@kernel.org>,
-	Jan Petrous <jan.petrous@oss.nxp.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
+	id 1vyrz0-00000005Ejn-0DQF
+	for linux-mediatek@lists.infradead.org;
+	Sat, 07 Mar 2026 13:46:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1772891178; x=1804427178;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=zGPmb6vDH2Bxjv88omnlCAAtIYwow0MjtkGrQBi1h/w=;
+  b=JKBL0uVRUGjRZ7490zRgSK83x3SGCOuLthypYz5xhOFEVDgf5wMUwTOE
+   /6IgDcATJR6I5dlX9PdQawLPPQArkGd2Cm4DWVKVAx2W3mB1etB3UeCIM
+   PV8AmkbZBtra5r8uxj4WWLmVg7owtagAbYgaV+GKtrvCo/Dy+MM8WEhcR
+   UHdhnpQdQgCgtopKyWO7JKN7Za62GfwphYjR9QwU7xY2fW0nbghUET1JR
+   KtYiTHNb2UhwwPiu8i62AhTE5iD4RCCg8p9opH0Etx2D8E2DPS7MFh8P7
+   JlsuWa1002tzeRBxopnmxTshiVv2OF7b4Wl52e0ZqyCj9YR7rbrv39hVl
+   w==;
+X-CSE-ConnectionGUID: PiDL9YfXROa2TCHKPZ+nLQ==
+X-CSE-MsgGUID: kq8Qm3lqQ4SWEUe/a+ZbxQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11722"; a="73883553"
+X-IronPort-AV: E=Sophos;i="6.23,106,1770624000"; 
+   d="scan'208";a="73883553"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Mar 2026 05:46:11 -0800
+X-CSE-ConnectionGUID: 3raBlUHbSZOEd6CT3scGFw==
+X-CSE-MsgGUID: udvbxoShSle4r4ix8DBUCw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,106,1770624000"; 
+   d="scan'208";a="218503184"
+Received: from igk-lkp-server01.igk.intel.com (HELO 9958d990ccf2) ([10.211.93.152])
+  by orviesa010.jf.intel.com with ESMTP; 07 Mar 2026 05:46:09 -0800
+Received: from kbuild by 9958d990ccf2 with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1vyryp-000000002UT-1Rfc;
+	Sat, 07 Mar 2026 13:46:07 +0000
+Date: Sat, 7 Mar 2026 14:45:43 +0100
+From: kernel test robot <lkp@intel.com>
+To: Sean Wang <sean.wang@kernel.org>, nbd@nbd.name,
+	lorenzo.bianconi@redhat.com
+Cc: oe-kbuild-all@lists.linux.dev, linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	s32@nxp.com,
-	Samuel Holland <samuel@sholland.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Yao Zi <me@ziyao.cc>
-Subject: [PATCH net-next 7/7] net: stmmac: add documentation for clocks
+	Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH 02/19] wifi: mt76: mt7925: pass WCID indices to
+ bss_basic_tlv()
+Message-ID: <202603071400.xCvjvPoG-lkp@intel.com>
+References: <20260306232238.2039675-3-sean.wang@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1vypR8-0000000CSwb-3P3f@rmk-PC.armlinux.org.uk>
-Date: Sat, 07 Mar 2026 11:03:10 +0000
+In-Reply-To: <20260306232238.2039675-3-sean.wang@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260307_030342_039736_1F3EBE19 
-X-CRM114-Status: GOOD (  14.33  )
+X-CRM114-CacheID: sfid-20260307_054618_148188_F66999EB 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,68 +90,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add documentation covering stmmac_clk, pclk, clk_ptp_ref and clk_tx_i
-in the hope that this will help understand what each of these clocks
-are for.
+Hi Sean,
 
-There is confusion around stmmac_clk and pclk which can't be easily
-resolved today as the Imagination Technologies Pistachio board that
-pclk was introduced for has no public documentation and is likely now
-obsolete. So the origins of pclk are lost to the winds of time.
+kernel test robot noticed the following build warnings:
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- include/linux/stmmac.h | 33 ++++++++++++++++++++++++++++++++-
- 1 file changed, 32 insertions(+), 1 deletion(-)
+[auto build test WARNING on wireless-next/main]
+[also build test WARNING on wireless/main linus/master v7.0-rc2 next-20260306]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/include/linux/stmmac.h b/include/linux/stmmac.h
-index 3521b88aa345..a9c0cb61dd50 100644
---- a/include/linux/stmmac.h
-+++ b/include/linux/stmmac.h
-@@ -300,10 +300,41 @@ struct plat_stmmacenet_data {
- 	struct phylink_pcs *(*select_pcs)(struct stmmac_priv *priv,
- 					  phy_interface_t interface);
- 	void *bsp_priv;
-+
-+	/* stmmac clocks:
-+	 *  stmmac_clk: CSR clock (which can be hclk_i, clk_csr_i, aclk_i,
-+	 *    or clk_app_i depending on GMAC configuration). This clock
-+	 *    generates the MDC clock.
-+	 *
-+	 *  pclk: introduced for Imagination Technologies Pistachio board -
-+	 *    see 5f9755d26fbf ("stmmac: Add an optional register interface
-+	 *    clock"). This is probably used for cases where separate clocks
-+	 *    are provided for the host interface and register interface. In
-+	 *    this case, as the MDC clock is derived from stmmac_clk, pclk
-+	 *    can only really be the "application clock" for the "host
-+	 *    interface" and not the "register interface" aka CSR clock as
-+	 *    it is never used when determining the divider for the MDC
-+	 *    clock.
-+	 *
-+	 *  clk_ptp_ref: optional PTP reference clock (clk_ptp_ref_i). When
-+	 *    present, this clock increments the timestamp value. Otherwise,
-+	 *    the rate of stmmac_clk will be used.
-+	 *
-+	 *  clk_tx_i: MAC transmit clock, which will be 2.5MHz for 10M,
-+	 *    25MHz for 100M, or 125MHz for 1G irrespective of the interface
-+	 *    mode. For the DWMAC PHY interface modes:
-+	 *
-+	 *    GMII/MII	PHY's transmit clock for 10M (2.5MHz) or 100M (25MHz),
-+	 *		or 125MHz local clock for 1G mode
-+	 *    RMII	50MHz RMII clock divided by 2 or 20.
-+	 *    RGMII	125MHz local clock divided by 1, 5, or 50.
-+	 *    SGMII	125MHz SerDes clock divided by 1, 5, or 50.
-+	 *    TBI/RTBI	125MHz SerDes clock
-+	 */
- 	struct clk *stmmac_clk;
- 	struct clk *pclk;
- 	struct clk *clk_ptp_ref;
--	struct clk *clk_tx_i;		/* clk_tx_i to MAC core */
-+	struct clk *clk_tx_i;
- 	unsigned long clk_ptp_rate;
- 	unsigned long clk_ref_rate;
- 	struct clk_bulk_data *clks;
+url:    https://github.com/intel-lab-lkp/linux/commits/Sean-Wang/wifi-mt76-mt7925-pass-mlink-to-sta_amsdu_tlv/20260307-073047
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
+patch link:    https://lore.kernel.org/r/20260306232238.2039675-3-sean.wang%40kernel.org
+patch subject: [PATCH 02/19] wifi: mt76: mt7925: pass WCID indices to bss_basic_tlv()
+config: x86_64-rhel-9.4 (https://download.01.org/0day-ci/archive/20260307/202603071400.xCvjvPoG-lkp@intel.com/config)
+compiler: gcc-14 (Debian 14.2.0-19) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260307/202603071400.xCvjvPoG-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202603071400.xCvjvPoG-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   drivers/net/wireless/mediatek/mt76/mt7925/mcu.c: In function 'mt7925_mcu_add_bss_info':
+>> drivers/net/wireless/mediatek/mt76/mt7925/mcu.c:2867:13: warning: variable 'sta_wlan_idx' set but not used [-Wunused-but-set-variable]
+    2867 |         u16 sta_wlan_idx;
+         |             ^~~~~~~~~~~~
+
+
+vim +/sta_wlan_idx +2867 drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+
+  2856	
+  2857	int mt7925_mcu_add_bss_info(struct mt792x_phy *phy,
+  2858				    struct ieee80211_chanctx_conf *ctx,
+  2859				    struct ieee80211_bss_conf *link_conf,
+  2860				    struct ieee80211_link_sta *link_sta,
+  2861				    int enable)
+  2862	{
+  2863		struct mt792x_vif *mvif = (struct mt792x_vif *)link_conf->vif->drv_priv;
+  2864		struct mt792x_bss_conf *mconf = mt792x_link_conf_to_mconf(link_conf);
+  2865		struct mt792x_link_sta *mlink_bc;
+  2866		struct mt792x_link_sta *mlink;
+> 2867		u16 sta_wlan_idx;
+  2868	
+  2869		sta_wlan_idx = mvif->sta.deflink.wcid.idx;
+  2870	
+  2871		mlink_bc = mt792x_sta_to_link(&mvif->sta, mconf->link_id);
+  2872	
+  2873		if (link_sta) {
+  2874			struct mt792x_sta *msta = (void *)link_sta->sta->drv_priv;
+  2875	
+  2876			mlink = mt792x_sta_to_link(msta, link_sta->link_id);
+  2877			if (WARN_ON(!mlink))
+  2878				return -1;
+  2879		} else {
+  2880			mlink = &mconf->vif->sta.deflink;
+  2881		}
+  2882	
+  2883		return mt7925_mcu_add_bss_info_sta(phy, ctx, link_conf, link_sta,
+  2884						   mlink_bc->wcid.idx, mlink->wcid.idx, enable);
+  2885	}
+  2886	
+
 -- 
-2.47.3
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
