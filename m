@@ -4,179 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3429FF55102
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Mar 2026 16:07:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F34EF55102
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Mar 2026 18:01:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Date:References:Message-ID:In-Reply-To:From:Subject:Cc:To:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+QUa/mrDR2jm4grzGpAkOiTL11mQ8hjefj3OGOZ9m+s=; b=YuT66PKN9+27Jpid5IXc1pWJgJ
-	A8EYx89TiOaIF/HMLq3tJkj9qEGUC/kyFp3xYSEgQdFpdyJyn4xvsmoTTN7EWLgHn85ULDw4zDhZS
-	ILXon3erTKI4ixaFC+Rj9j/DdKf9/V0cnd3vm+0RbywNyddy3tRV9fAmh3sfUOIqP6AFPh8DbsUqJ
-	3h+c+eoNurAXoY1JiXywa38MBvKy629/GQQwz6PDbq+lIIvaRgaZQJtu7b15fJNNPR9WO0zGZ/wkk
-	bNzc6KYH/OM48HdO2bVStt7ehQKSra9mv7HOAtVF5YoYZ+x1jaOFiIUImgO2NOgbcpAnwTxFkwut1
-	Np8KyU8Q==;
+	bh=SH14p8JOOvpmdHRWzICkJWSQ6bGoCvxvt1Etu9cRC6M=; b=MSOjarS2Eh2J0gPFHU87NHrvsr
+	nYgNVdViBFh9Z+8v3MrElWSKlX+AzFpI+8TB6ZmHstaZxbirRKpFV2NwmfgBWqEdrzvGOpCZwFwkK
+	ewKRCn01MuXIFljYzbkT5dtsU4htIzoXl+SuzfsS5VimDUgeh9kdvt98M7LUDhigL9O+c6SGp1Mmx
+	4QexaCvoKx5kAdR3JM+97ufsVS01w1nGTUD5ttel5Q+2XndijQoXn8EQ2rKqd+mlcJdwnFVuL4Ia9
+	HS6W243GlDHt+VYP3in0fpqyj/XmHPzv2EuuSJhL+eK4gl40wMw3ajXIC3sWa4TXMCu/zcTM3TDvD
+	6iqES+AQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyuBl-00000005LgZ-3w0u;
-	Sat, 07 Mar 2026 16:07:37 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1vyvxc-00000005PhM-2Fd4;
+	Sat, 07 Mar 2026 18:01:08 +0000
+Received: from mgamail.intel.com ([192.198.163.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyuBj-00000005LgF-0EB6
+	id 1vyvxY-00000005PgJ-13rh
 	for linux-mediatek@lists.infradead.org;
-	Sat, 07 Mar 2026 16:07:37 +0000
-Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 627G4EGc1948677;
-	Sat, 7 Mar 2026 16:07:27 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=corp-2025-04-25; bh=+QUa/mrDR2jm4grzGp
-	AkOiTL11mQ8hjefj3OGOZ9m+s=; b=pnY4QrmfkTIAfTrgBeUkIoSdpCyTBOuehb
-	ohuHzmdDRJ7Af/NdaBWI8NctpVUZfgDO49OaRiEp58cqvtu5tIfoeJUtrocJ6UMM
-	dkADtSJa7qdQm7RnlM3cqhmn/P+XFJMDSnFOKh4EVbjz/JTQu1RYfVL9wYSd32Us
-	Q4wifvRl8oNOk2xQRkS6bsVUtng61PWRj6JW/x05sKNf11xkWWYJwkh64vKJkXh+
-	YYq+9WjP/k4OkT1hH0YZbO0h9BVFKXGr4wOukcsc6+YE7lsGcU/XKLAbcC52O2Ls
-	m3Ma/mwQlSUOxxsLfYG3Y2UQv+5Q7NcN4+Is6nafdqjeHC5sKf3Q==
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4crq7br01e-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Sat, 07 Mar 2026 16:07:27 +0000 (GMT)
-Received: from pps.filterd (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 627BTubO022714;
-	Sat, 7 Mar 2026 16:07:26 GMT
-Received: from bn8pr05cu002.outbound.protection.outlook.com (mail-eastus2azon11011035.outbound.protection.outlook.com [52.101.57.35])
-	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 4craf762dm-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Sat, 07 Mar 2026 16:07:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=LV4QTUnt8ppVLfK/gqJp1jnTNeUOI7vAFuikldd1xjCcNCelb+6xGKKtUlYD2gXV4gNLPnmWYPx1G+LUvrfHKQtBDbLq0nQ+McsY/LSbxsi7fSRHYaslwnTbRRwvcm2ub33BXJosPZ0fNKc6zDaLO5iB+cXT+05RU/qzPxXb4J+8jXVsqPEQFCRDjgm52fynZ5zSaKONKqzGKqXzVNjDpbA6u8L+sHGUKLM+SnvvLh4TOQm0mZykAQgH5SIvh3Zxt9Nd/GvC2BoBAd2WPEE6KDh+FOkpFJQXuuguOCFr16u7CSJAjpbjU1VJ3XBXEY6hfuFDfa0560I4uyYd4GNKzw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+QUa/mrDR2jm4grzGpAkOiTL11mQ8hjefj3OGOZ9m+s=;
- b=gTiNww+YPs6qBrao/T3gXL6UgXI8vWtnrDyy4L1bH3yjmkZYoAsiYUtH1ToejIlUNzUWIZwyKxBXaU2iH+I1yqxI9U5wc2ETM2P2XrPy1+ja+K7qp/Kkh2BNBiktVVrhpJkjwliUNGfvMcx+wa6UFeDONlZ9fTqV9dVIAbtcS4YSxEk26JSmhjbBhgyUBi1qLQdA5g1wUBipo4tDPw1as3EkiDF8DZLiG4WYzXGGvFSjpxMlvzZOC8j1yg89Ako9UWf/kV3LQONPpyUEkNx8/bUTRfbMPi3QFDW4Ss2F0vCw3Zk5wNs/SahQ4wJOgMLrLuuyXFYLOn+yJT8roCoqHg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+QUa/mrDR2jm4grzGpAkOiTL11mQ8hjefj3OGOZ9m+s=;
- b=M4Df4w2fXYtiF723rzOInR/mtTCPgXa7CrypqkzXsvwk3ZTaQRcq7x9KRR4hif1syCdPrj0KoKOhnq6aRXS4uECVjMlUe5HBipisrGlNvJWzaoYfGSaaHPlrDlv25FEm75kkGCN/ubWS2Bzl8dStp5vmaVpYeWGbDjyWcNQawCQ=
-Received: from CH0PR10MB5338.namprd10.prod.outlook.com (2603:10b6:610:cb::8)
- by SN7PR10MB7046.namprd10.prod.outlook.com (2603:10b6:806:346::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9678.20; Sat, 7 Mar
- 2026 16:07:23 +0000
-Received: from CH0PR10MB5338.namprd10.prod.outlook.com
- ([fe80::e525:dd71:b002:6ad5]) by CH0PR10MB5338.namprd10.prod.outlook.com
- ([fe80::e525:dd71:b002:6ad5%6]) with mapi id 15.20.9678.017; Sat, 7 Mar 2026
- 16:07:23 +0000
-To: <peter.wang@mediatek.com>
-Cc: <linux-scsi@vger.kernel.org>, <martin.petersen@oracle.com>,
-        <avri.altman@sandisk.com>, <alim.akhtar@samsung.com>,
-        <jejb@linux.ibm.com>, <wsd_upstream@mediatek.com>,
-        <linux-mediatek@lists.infradead.org>, <chun-hung.wu@mediatek.com>,
-        <alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-        <chaotian.jing@mediatek.com>, <tun-yu.yu@mediatek.com>,
-        <eddie.huang@mediatek.com>, <naomi.chu@mediatek.com>,
-        <ed.tsai@mediatek.com>, <bvanassche@acm.org>
-Subject: Re: [PATCH v2] ufs: core: Avoid IRQ thread wakeup during active UIC
- command
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-In-Reply-To: <20260306054419.3816557-1-peter.wang@mediatek.com> (peter wang's
-	message of "Fri, 6 Mar 2026 13:43:02 +0800")
-Organization: Oracle Corporation
-Message-ID: <yq1ldg3wrmc.fsf@ca-mkp.ca.oracle.com>
-References: <20260306054419.3816557-1-peter.wang@mediatek.com>
-Date: Sat, 07 Mar 2026 11:07:21 -0500
-Content-Type: text/plain
-X-ClientProxiedBy: CH2PR10CA0014.namprd10.prod.outlook.com
- (2603:10b6:610:4c::24) To CH0PR10MB5338.namprd10.prod.outlook.com
- (2603:10b6:610:cb::8)
+	Sat, 07 Mar 2026 18:01:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1772906464; x=1804442464;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=o+OgiOKCiGlbiWTc23wi3lpP9cofsuhMFa5k1sJzTRo=;
+  b=kU7KU3k6YlvUBZNO3AmAQtsYtobOTGcxnONbTRtx6ot+wuhlI3P/0N37
+   pmn2MFHmJu+s2lgOhevMEZCdwqgPBrpBIwcSVVu2MMnxdWmzfVE/i9fjv
+   /wt0eBKsmg7JckYdQgoL1yjxXhxsia6Dgd7P4VIQ9muJCqSaeDsQDF2ZQ
+   GGxHRyVeKhcmbhQQc7zXNraXHlJ3FLhjqKpcGnnRhcyZEM9SkAOys+sld
+   uv9VlUUCYzkIWvwyep4E5aE2lgnn4rqMKX6RaVxkdNIBUDBBJbdgtBnjR
+   IFtX1KtY+Oc6tPFX5Q+An2jQb0ORkzGlthUGhHKTLoVrlGnhmhA+J46sS
+   w==;
+X-CSE-ConnectionGUID: eLJQrZzwT1yt8Zawyy8rWw==
+X-CSE-MsgGUID: RWYwfqVQR7+5rEw/cgE4vw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11722"; a="73904279"
+X-IronPort-AV: E=Sophos;i="6.23,107,1770624000"; 
+   d="scan'208";a="73904279"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Mar 2026 10:00:58 -0800
+X-CSE-ConnectionGUID: FFCQ3tfLTyys6zG6cjpjeQ==
+X-CSE-MsgGUID: ymZKOBe2TbOIg+nclKliEg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,107,1770624000"; 
+   d="scan'208";a="215926897"
+Received: from lkp-server01.sh.intel.com (HELO 058beb05654c) ([10.239.97.150])
+  by fmviesa006.fm.intel.com with ESMTP; 07 Mar 2026 10:00:56 -0800
+Received: from kbuild by 058beb05654c with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1vyvxN-000000002Uj-2jOo;
+	Sat, 07 Mar 2026 18:00:53 +0000
+Date: Sun, 8 Mar 2026 01:59:59 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sean Wang <sean.wang@kernel.org>, nbd@nbd.name,
+	lorenzo.bianconi@redhat.com
+Cc: oe-kbuild-all@lists.linux.dev, linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [PATCH 02/19] wifi: mt76: mt7925: pass WCID indices to
+ bss_basic_tlv()
+Message-ID: <202603080115.kvbVwfTB-lkp@intel.com>
+References: <20260306232238.2039675-3-sean.wang@kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH0PR10MB5338:EE_|SN7PR10MB7046:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1d4479d7-4e76-4d42-5fdd-08de7c639e3b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: //THClt++1yDRZTQmXzRtlntcZp9AgEaiX9uqXTDcrZyDP3yp5PFnxp2Tt0ExpjqjuWWCCpMY3Dsh6OGL+YMcF8bqsIzM8Oq2q+4MF79X4NTBrQs50zZ8z8apFQsJvO4JMnzAEqXI97OnU00OjxI2q/E04aY51h0V/z5dWW7LzGvTdNrALz1tLjgyGHjiuPe0jLm/4whfHO6T2980A7TbCWltwtsBCE1i4JT0rlMETINsvTsA/JVmx3QConA0JVdL6AbVy9VBCZjXRJsnL1taSWIqPnVSxmi08hebmU39y79Z8v2TtFi5wff7IrHX0O0IJoyiaTGNbwsgda8cWToeHMKMToSQ6y3SsrlsFsPKDo9PxN1GN5G8PlbgUiAYpZD0cBdCZGi3NV1GRJrpseY4mBEOWtSsO6aaCM0JGtJozfUDMZah3m5pmVYRJdvUS0C0iaHFR8LlktRM5kKzLDXvnfdKGISHibN1os8TRKJdE8VbC5PqgD67FSRJtj0bg52cUazQa2NEEKgXKLluM1c5eSWkLJ8/6frXsmr3JlxgCwdPahadspe/Z0nXH09fpwfAd2z8ZHuuxwTld45eORzzskPWASttdS32fjP0aQBUSCSpaZKX5w6S5HDPdADdH2A1usMvFMH62a4RhbLLBHEmWYWOSFBQTLsIQtC21k5U3wFYbaDR8Cbaul2UuZgwFA784lWai/anqC2qtfeMo68Yk7s0VUnQv7uen2bcNHaR0I=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR10MB5338.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(366016);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?MvvDCaXX1zZlfs2lcbVqvsOkBk3H756qYigXaafCGWzUcIA5Eg58Py0rce6G?=
- =?us-ascii?Q?d/Ebo18+uK4hAcHrdw+XCM94KwfXo9x3unjep186R3UPSGf8+TH/+LBg7vK2?=
- =?us-ascii?Q?dn6PEhXnItpx59Fmf8ien3Uzy407YvA+fuQttaY4wI2SC9MEzP9T/QME3H+I?=
- =?us-ascii?Q?YMGJ+cu/27k+M3aoFsPRxmGPrdBQ8qGyc5CitLIzCs+L1LEjqoEYJKYleeIW?=
- =?us-ascii?Q?OrD6KiOV6ofOaOjMSmYeASmChc7cEV8qjSPy8/6z5+RFQNtLJ9XDR7kjVj4B?=
- =?us-ascii?Q?4L3qnEsjBstEj5x5ZHOQQ3xJjxS1B1aAk73BCLdaCmETkSnlpKWcyfoChrla?=
- =?us-ascii?Q?KLges4FRcCwMMlIxyyryJudd30fUYRGTa+sKU1p5d8eBS3jOO9QzvrfnM9iM?=
- =?us-ascii?Q?pEEU+mr5YJlHeqRcnsJcvDVkyQIPKuXRW5XJ2sJAT41ZYk02ZC6hAAkLp+nw?=
- =?us-ascii?Q?+KaUQFkaT1GNhIt0kvUwwHkHTLIMBTrQDAPbNApINdnKDJs1Lxsv2F47c/h8?=
- =?us-ascii?Q?qJZQNOEheO1duZtZE98kUBHMW+HzpSsAAZeEp9lgQxuBuvftmIb1mcVmBJI0?=
- =?us-ascii?Q?/qlFBL7O46GGlxIzLK9vDu4eTmlCOywkwmE+LHURT3I3E+VE5BOiSMl3bwkK?=
- =?us-ascii?Q?wcSBLWfIobHvtPOdyBKVPI5osB76xnnMEJGyGtGZv1+haijE/oBCmr8YdBQW?=
- =?us-ascii?Q?qeYYH0rGG/eGEj/LjpVOLpjao+UttKSf3TzK9/41JTVzNlmI3y7cLHjItoF5?=
- =?us-ascii?Q?xl4Nx+bSr2bV6cX4tXlqJAYkyo7rBrrgUCGtGp0t1rbJqv/c+1LXkWFNOJsZ?=
- =?us-ascii?Q?5w/XgOPiVFv5oU4l4cRNBNXsu5rd2v9Uid91oVjhPuOlyryvhjYEjneWeXWN?=
- =?us-ascii?Q?dndKA5J0t+jJzIEzBAhdskWLBD2E3+riOcfQ3/nxP0uvz0yow6m41eABwri+?=
- =?us-ascii?Q?2TTM+3XyI9gLpz5CUxdD+yp8/tvlx36fkUhUgknWiy7r2Za22tw58QISi0Am?=
- =?us-ascii?Q?EMSH+G4wEiN9dV4z9tY8osHToOkf3iLW3TONEOKfaj2OiM6HJA9Bkr6Cgh3/?=
- =?us-ascii?Q?Xo9ZAnlcsoNJZxHjQrsL9bSmPvJP2CD/KA6vBw0rshzIyT9+9ezWvGta7Fnp?=
- =?us-ascii?Q?DXAca5JjJHvNTmG/jt7gsyRqo31SB+rVBSbc4kTi1zzJuG2WhkB4SgYKxXXM?=
- =?us-ascii?Q?O6xlRAcODi8dF6LAmqndyi0lLdTK8eVtzNNAkNSnkoQ4nGASlGjo4UiZuzpR?=
- =?us-ascii?Q?ZEfeyuTbayllnHsX4AGra/WouzRnLSknDCHKba3VSqdoKd3sC94XwxQLaEdA?=
- =?us-ascii?Q?MgPpnWoglWns/sW4L4Qw5d6RoL6waDnKMhhUEXn5dH41n2a4hSIkt9sgRAYR?=
- =?us-ascii?Q?8I6QlSrnuDy5ryBih14AuStHz6TaT/+ZqkoSw3VKjMZEpCZmAzCOsVSiejAC?=
- =?us-ascii?Q?gvhQw/txu7FBhEwv2DQ22hE4kvPgDBXsZQu0iCTcJTFhAdAQeTyHRjAlLGjx?=
- =?us-ascii?Q?0l2FqN2LFQJPKCOSj347FA/Q9SV6meb8LDAA80I9fzMF9U9J+FbiUz+X1Qbr?=
- =?us-ascii?Q?QX2qJxeKy7Rg+PF7bF+ZXPS6ZFpueaykeVP57KAm49gTJZ1KMaa6Q0x0PjsT?=
- =?us-ascii?Q?recrarxFBRrXASL0yHcYURplLUJPIcPQG3Sc6nQ2NsPPSS2kdLzqp64jvbCB?=
- =?us-ascii?Q?Kb/ruHNXCxvp6cw0IJwI4eROOLArb7FGOAC4/AF0y50LPsZceDz8c6wDaN3O?=
- =?us-ascii?Q?sH0GivN2J9ndzTqkjDxMuC+hx5zL0gs=3D?=
-X-Exchange-RoutingPolicyChecked: RSh2RuauRkNVvYJZ5vzaNY7lmWI9hjFowiBgpfDiVN7Y+fqnxVxLa3Fvi4ARufkm8bltU6ZbxKDxkxSPgzRWadpfVHsVZQlTKewiIzFNF2Eb179Cvl1PaVX2omxYr4hugVteDtMSzUqEKmpVqu+uX2hodP0E06s4rF3XUFjBzNDSdTL2YsOxTpPR5bfWGfQ1M4b8H6NJYgOj6OnlDXzOAq/pCV6ZUmGmQ+YewLclFBjJsIjI5+rm9FGn5qHjJIr3YQOtCjJdELE+UThq5jBYQads63GSf609NhSAA5AFphFOQV2un5e+/kDgaYPZrPw7Z9bnT2boGRjNyodHIYG91A==
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: bzf37dcrSPbWaSZc9MT1Bc28TIoc8Kgy22B1afIb7mgEdFf3g7S/nw6YLjumlAVeApuQi6uuBWGAniNJWYdCGLwmCPBr1bBc4L7PA5DRDZP9utx0QP2JzusSBW2dB+YLutPC3OopcxLD1k28WBrkalXraeLZqTH1rcLQ/gv3IDhv9lp9SfMZf+6Mx0FnUzS3uUFFJilltFLP5oVfvc0jUAsffUAUPn0Gn7sytYSjiy+a6YUuNui1rpGaepHFHo9C9dpyq14Pm4/bkkBgB65XyWs5M8mxKw56x0cZHSrcbJiz3EboCNs43FTEMSPakP+7QC0f3LG1u/VpN4fvp83hr0PPVbS764Sdx2fLm2vHcEjInnsLBbpkbB00ABNxNxduQuApJCQm2A7TQfuSbgisCrdKUTTOSxJz3edzfN+5Ee/iOGMPTnQFkyAytGYmFR1WYs+XC1CVW/wXGLn1nosV+zQNA7kBpFOj1CbW4R2/Juvb3PvYWx352L0XihccXZtrUPlGxU6ToW43VhlfqR68BdT9oFSnRLnh2A6F4tDJjdytPouHyAs5WiulAnEavfMkbcvcnVbzdjgzZfdzqj6FlcTU/ua/8rDWkl3rFySSO08=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1d4479d7-4e76-4d42-5fdd-08de7c639e3b
-X-MS-Exchange-CrossTenant-AuthSource: CH0PR10MB5338.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Mar 2026 16:07:23.2554
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: av8kDE2eicqOApux8H5loPuomjgMDegZElyJbFSZcxf4A3ZY0oOtQ3S60bC0HGvsFVeIPjcwjWMKlmhG45mhZLYkZMRXHj7YH/LNF94GWvI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR10MB7046
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-07_05,2026-03-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 spamscore=0 bulkscore=0
- mlxlogscore=999 mlxscore=0 adultscore=0 malwarescore=0 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2602130000
- definitions=main-2603070152
-X-Proofpoint-GUID: Zb11p8DXHax__lh7NwRxA01oF-wDjJK4
-X-Authority-Analysis: v=2.4 cv=Br6QAIX5 c=1 sm=1 tr=0 ts=69ac4d3f cx=c_pps
- a=XiAAW1AwiKB2Y8Wsi+sD2Q==:117 a=XiAAW1AwiKB2Y8Wsi+sD2Q==:17
- a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
- a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19 a=xqWC_Br6kY4A:10 a=Yq5XynenixoA:10
- a=GoEa3M9JfhUA:10 a=VkNPw1HP01LnGYTKEx00:22 a=jiCTI4zE5U7BLdzWsZGv:22
- a=o5oIOnhZENCTenyL_yNV:22 a=D07J6oBoTCO661I0RI0A:9
-X-Proofpoint-ORIG-GUID: Zb11p8DXHax__lh7NwRxA01oF-wDjJK4
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA3MDE1MiBTYWx0ZWRfX+ZefyMCj5SCv
- DGVEdkHil62glvzu0VQ/gYExLdaVxJ0Rark26ZAnnK64WmIuylKC15wHFxo4yPLhnUIrs5/5hVf
- N03ToyDTuQ/pwv2AylvO4Oto8cIGYNy9cexO3Wqwip9EGEYHwtCYDiiXguIfKo71Rv5xMn31ZhF
- Z4v66OLusJrstUu6xtHAA5064k9hausgLrWXVeRgxQ8UyKgH+bzUBlaIpXRWQdN8HG0qmHqED7o
- VBBOTcqlQKhISFMfynBKDpwQ+FgFcobE+kYzDFlYiezzSlN3Povbq074CXktTEqWnqdl7QIfy/W
- fmZK8wLpiSVZeb42mKcAhWG0vH3DnK99lf2CvbvKwhNUs4jmj1dZdfJAhMQDKPs+vWuCuvc1hdN
- KW79sQiEQyQ2TgjOb4qBKaPzaUDywdnHpSNguZaUycwu/q8S1oX6atz5Hz+3cjOwouVfsy9eoF7
- L+9Jcc+ZnXaA1OM0QDA==
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260306232238.2039675-3-sean.wang@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260307_080735_209648_6E5DB3D6 
-X-CRM114-Status: UNSURE (   6.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260307_100104_369910_D8C3BF58 
+X-CRM114-Status: GOOD (  11.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -191,16 +90,72 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Sean,
 
-Peter,
+kernel test robot noticed the following build warnings:
 
-> Only return IRQ_WAKE_THREAD when MCQ and ESI are not enabled and no
-> UIC command is active. The default UIC command timeout is 500ms, Using
-> threaded IRQs during an active UIC command increases the risk of
-> timeout due to possible preemption by other system IRQs.
+[auto build test WARNING on wireless-next/main]
+[also build test WARNING on wireless/main linus/master v7.0-rc2 next-20260306]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-Applied to 7.1/scsi-staging, thanks!
+url:    https://github.com/intel-lab-lkp/linux/commits/Sean-Wang/wifi-mt76-mt7925-pass-mlink-to-sta_amsdu_tlv/20260307-073047
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
+patch link:    https://lore.kernel.org/r/20260306232238.2039675-3-sean.wang%40kernel.org
+patch subject: [PATCH 02/19] wifi: mt76: mt7925: pass WCID indices to bss_basic_tlv()
+config: arc-allyesconfig (https://download.01.org/0day-ci/archive/20260308/202603080115.kvbVwfTB-lkp@intel.com/config)
+compiler: arc-linux-gcc (GCC) 15.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260308/202603080115.kvbVwfTB-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202603080115.kvbVwfTB-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   drivers/net/wireless/mediatek/mt76/mt7925/mcu.c: In function 'mt7925_mcu_add_bss_info':
+>> drivers/net/wireless/mediatek/mt76/mt7925/mcu.c:2867:13: warning: variable 'sta_wlan_idx' set but not used [-Wunused-but-set-variable]
+    2867 |         u16 sta_wlan_idx;
+         |             ^~~~~~~~~~~~
+
+
+vim +/sta_wlan_idx +2867 drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+
+  2856	
+  2857	int mt7925_mcu_add_bss_info(struct mt792x_phy *phy,
+  2858				    struct ieee80211_chanctx_conf *ctx,
+  2859				    struct ieee80211_bss_conf *link_conf,
+  2860				    struct ieee80211_link_sta *link_sta,
+  2861				    int enable)
+  2862	{
+  2863		struct mt792x_vif *mvif = (struct mt792x_vif *)link_conf->vif->drv_priv;
+  2864		struct mt792x_bss_conf *mconf = mt792x_link_conf_to_mconf(link_conf);
+  2865		struct mt792x_link_sta *mlink_bc;
+  2866		struct mt792x_link_sta *mlink;
+> 2867		u16 sta_wlan_idx;
+  2868	
+  2869		sta_wlan_idx = mvif->sta.deflink.wcid.idx;
+  2870	
+  2871		mlink_bc = mt792x_sta_to_link(&mvif->sta, mconf->link_id);
+  2872	
+  2873		if (link_sta) {
+  2874			struct mt792x_sta *msta = (void *)link_sta->sta->drv_priv;
+  2875	
+  2876			mlink = mt792x_sta_to_link(msta, link_sta->link_id);
+  2877			if (WARN_ON(!mlink))
+  2878				return -1;
+  2879		} else {
+  2880			mlink = &mconf->vif->sta.deflink;
+  2881		}
+  2882	
+  2883		return mt7925_mcu_add_bss_info_sta(phy, ctx, link_conf, link_sta,
+  2884						   mlink_bc->wcid.idx, mlink->wcid.idx, enable);
+  2885	}
+  2886	
 
 -- 
-Martin K. Petersen
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
