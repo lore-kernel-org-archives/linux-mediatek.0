@@ -4,99 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41CD8F5513F
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2026 10:32:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDAFEF5513F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Mar 2026 13:25:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0Er7jqtGu/SwP74yZXXG+08yd9veX7NSpsz0SMsaehE=; b=D9KTOXg+bY+wDfiM1zgpOlrY24
-	0vfHk5NcXHNeFNoMz0l6qtrIcfzblhPfH2yVc36hkoDdviI6XGcgny5IZOqzrz8Vsrn34YKkW5Kf0
-	aLc0ZMbCB5QhcPtSTdaiY9oyGfv/hma0negI2du0dbcEVsTkOU+pmWd5NL00Dv2D1Np8XtkYI54Bw
-	HRd3wx3moQlKdiT6KUgrDQZUirfgOslyJctm6gRuRwGhUnfSrArJwDIo/6Fx98a3xPAJT9MWhr5o2
-	i+bM0NTmXmHF/mXh23eUAptqDYKQ6SfjeqB1IoC4mG0RXk53tshU8rFKipG+kEdddDpFVB0HLrkJS
-	jt/91h3Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=y6KYX64S6Zs1ktdftIkzn6LLMFQMeNQdbYnpw6juQYI=; b=jxQun/KCY4jI5W8v+ckDyn4LJ4
+	EUtsCruMhM/XyQhfFRHOmHEvFehR9REGQX/wTJXB/hLWHjQN7JhvfwMHds7MFOlrwEm0185Zf5K0u
+	xI/HGhsQV3PfTKZrvxUmFNFhGGGDXiykEfiy7eZRbYUTilGtPGME3jvHP2eOk9xMYBixZOCjsGwC6
+	COdkUTgCaTJBFnILKbN85MlWtkr5jr0Ahbklugw3Q6z9cEqrA83JSWyK3X12NZq8S6kov5tT1Gpcf
+	I/Qms6q/HEAI2ReEHV9JCXEuWij6Bf38KB5Jnt9/ISx80ajSG3/oSjWM6126LmEsjLgWtchw3LHT0
+	QSQVjBmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzBQp-00000005sRK-1ihc;
-	Sun, 08 Mar 2026 10:32:19 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1vzE8c-000000063M3-0ale;
+	Sun, 08 Mar 2026 13:25:42 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzBQl-00000005sQp-1Mx9;
-	Sun, 08 Mar 2026 10:32:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1772965935; x=1804501935;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=J09zkkMc6nwZpCtbBGADOJnfZUNEnobOKYU2m/BqZbs=;
-  b=ZL4RPRibTcPybVeJavJ3xaKoIirRXbKnwkQ80t+kTyQWxvNQCVt7k4/j
-   RY/oVubRl7nf1sC28nbh7VZQlHBwuwAW++ie3TDbvkNrV1J5sLLp/S2MC
-   H0dBMcMkhqQI6Rtm0xozGvPzxZPFixXcVxOa2UmzuDjmDA945UqbXrG+X
-   siraixChFRqdFzzjPdVjKuvBBXnxqIn0R7NTyoUHsMVDEXBpcVIJGWahq
-   JCQHoKbcU/ySp7rjZMD/C8zCBILDNBFTypwxZ5+002ivIBBEgr+FPFpQq
-   gvxlT1V6HDiBtXQowLzyaOUZ6I4f+LGeribjVnyrxreusdnlq0pupZ2Pv
-   A==;
-X-CSE-ConnectionGUID: Hm+o8lfgQCmmS8G3YqTRdQ==
-X-CSE-MsgGUID: 3lLCxKOzTnePr6g8SUG0Og==
-X-IronPort-AV: E=McAfee;i="6800,10657,11722"; a="85367081"
-X-IronPort-AV: E=Sophos;i="6.23,108,1770624000"; 
-   d="scan'208";a="85367081"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Mar 2026 03:32:10 -0700
-X-CSE-ConnectionGUID: t8zOX5JEQn2k6A5dgS2Q6w==
-X-CSE-MsgGUID: HVncasczSrez9SydP0b2aA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,108,1770624000"; 
-   d="scan'208";a="219441274"
-Received: from lkp-server01.sh.intel.com (HELO 058beb05654c) ([10.239.97.150])
-  by orviesa008.jf.intel.com with ESMTP; 08 Mar 2026 03:32:03 -0700
-Received: from kbuild by 058beb05654c with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1vzBQV-0000000031t-1c3D;
-	Sun, 08 Mar 2026 10:31:59 +0000
-Date: Sun, 8 Mar 2026 18:31:44 +0800
-From: kernel test robot <lkp@intel.com>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Avri Altman <avri.altman@wdc.com>,
-	Bart Van Assche <bvanassche@acm.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Peter Wang <peter.wang@mediatek.com>,
-	Stanley Jhu <chu.stanley@gmail.com>,
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Chaotian Jing <Chaotian.Jing@mediatek.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>
-Cc: oe-kbuild-all@lists.linux.dev,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	kernel@collabora.com, linux-scsi@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Subject: Re: [PATCH v9 19/23] scsi: ufs: mediatek: Rework hardware version
- reading
-Message-ID: <202603081809.R9OrrITa-lkp@intel.com>
-References: <20260306-mt8196-ufs-v9-19-55b073f7a830@collabora.com>
+	id 1vzE8a-000000063Lq-0VjB;
+	Sun, 08 Mar 2026 13:25:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id BA73460054;
+	Sun,  8 Mar 2026 13:25:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A154C116C6;
+	Sun,  8 Mar 2026 13:25:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772976338;
+	bh=td/5Za+N+HHAJ/2WojWGJFdEXrRuLM/SqKZCZyaAjA0=;
+	h=From:Date:Subject:To:Cc:From;
+	b=asPYyX08YKLuNZTvEcOL++nLkGAONi5kqwbfiyxe2ifrdpTmGMyx84HqVn8UF32nR
+	 KqivguLOWTL7z7VHWFMce9QVeMcYmVjAP2ksRUm0/PHOw3y8hQ05KoSe6Yz3cZt/L4
+	 e4wO3L/dsP4xN4aMhmf3QtJlOie4x/PXQy57qleJ68ThbuW3djKP2oGkNl60rDB8+w
+	 fZ+XMR8mDWVgEgAzmfRnQtcMxYvdsWhl5lp+qQ2I+7vxzS6tGdonYsidpiWFsZGKc2
+	 wQxBwzJ4JIVabLwtiyvwO9YZXC4hwXnyF8AE/jAWTWpvntVAB5F89k4Zq6rs9KBSe1
+	 7rS1L32N2U8+g==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Sun, 08 Mar 2026 14:25:20 +0100
+Subject: [PATCH mt76] wifi: mmt76: mt7996: Decrement sta counter removing
+ the link in mt7996_mac_reset_sta_iter()
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260306-mt8196-ufs-v9-19-55b073f7a830@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260308_033215_410180_E9A12423 
-X-CRM114-Status: GOOD (  14.06  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260308-mt7996_mac_reset_vif_iter-fix-v1-1-57f640aa2dcf@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqDMBBG4avIrBuIU9CkVyklBP2js4gtkyCCe
+ PcGl99bvJMKVFDo1Z2k2KXId2voHx1Na9wWGJmbiS0P9mmdyXX0fgg5TkFRUMMuKUiFmiSHYQc
+ eObrUW1B7/BQt3//357r+IcBLiG8AAAA=
+X-Change-ID: 20260308-mt7996_mac_reset_vif_iter-fix-28e272a8f10e
+To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Lorenzo Bianconi <lorenzo@kernel.org>
+X-Mailer: b4 0.14.2
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,97 +74,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
+Decrement the phy station counter  in mt7996_mac_reset_sta_iter routine
+destroying the station link.
 
-kernel test robot noticed the following build warnings:
+Fixes: ace5d3b6b49e8 ("wifi: mt76: mt7996: improve hardware restart reliability")
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-[auto build test WARNING on 11e703f54ac21f4dc609ea12ab578ffa47c87e11]
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+index a415cc610eeec8cb160aeac8219f421742d75bad..6591c07a147a5fdce7a8f7ff13da7f9eb136b002 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
+@@ -2361,6 +2361,7 @@ mt7996_mac_reset_sta_iter(void *data, struct ieee80211_sta *sta)
+ 
+ 	for (i = 0; i < ARRAY_SIZE(msta->link); i++) {
+ 		struct mt7996_sta_link *msta_link = NULL;
++		struct mt7996_phy *phy;
+ 
+ 		msta_link = rcu_replace_pointer(msta->link[i], msta_link,
+ 						lockdep_is_held(&dev->mt76.mutex));
+@@ -2368,6 +2369,10 @@ mt7996_mac_reset_sta_iter(void *data, struct ieee80211_sta *sta)
+ 			continue;
+ 
+ 		mt7996_mac_sta_deinit_link(dev, msta_link);
++		phy = __mt7996_phy(dev, msta_link->wcid.phy_idx);
++		if (phy)
++			phy->mt76->num_sta--;
++
+ 		if (msta_link != &msta->deflink)
+ 			kfree_rcu(msta_link, rcu_head);
+ 	}
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Nicolas-Frattaroli/dt-bindings-phy-Add-mediatek-mt8196-ufsphy-variant/20260306-215930
-base:   11e703f54ac21f4dc609ea12ab578ffa47c87e11
-patch link:    https://lore.kernel.org/r/20260306-mt8196-ufs-v9-19-55b073f7a830%40collabora.com
-patch subject: [PATCH v9 19/23] scsi: ufs: mediatek: Rework hardware version reading
-config: arm-randconfig-002-20260308 (https://download.01.org/0day-ci/archive/20260308/202603081809.R9OrrITa-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 8.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260308/202603081809.R9OrrITa-lkp@intel.com/reproduce)
+---
+base-commit: 030eea77accf40477be540445fc5a5be52d810a3
+change-id: 20260308-mt7996_mac_reset_vif_iter-fix-28e272a8f10e
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202603081809.R9OrrITa-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   In file included from drivers/ufs/host/ufs-mediatek.c:10:
-   drivers/ufs/host/ufs-mediatek.c: In function 'ufs_mtk_get_hw_ip_version':
->> include/linux/bitfield.h:195:40: warning: result of '268435456 << 24' requires 54 bits to represent, but 'int' only has 32 bits [-Wshift-overflow=]
-      *(_reg_p) |= (((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask)); \
-                                           ^~
-   drivers/ufs/host/ufs-mediatek.c:838:3: note: in expansion of macro 'FIELD_MODIFY'
-      FIELD_MODIFY(MTK_UFS_VER_PREFIX_M, &version, BIT(28));
-      ^~~~~~~~~~~~
-
-
-vim +195 include/linux/bitfield.h
-
-e2192de59e457a Johannes Berg      2023-01-18  142  
-e2192de59e457a Johannes Berg      2023-01-18  143  /**
-e2192de59e457a Johannes Berg      2023-01-18  144   * FIELD_PREP_CONST() - prepare a constant bitfield element
-e2192de59e457a Johannes Berg      2023-01-18  145   * @_mask: shifted mask defining the field's length and position
-e2192de59e457a Johannes Berg      2023-01-18  146   * @_val:  value to put in the field
-e2192de59e457a Johannes Berg      2023-01-18  147   *
-e2192de59e457a Johannes Berg      2023-01-18  148   * FIELD_PREP_CONST() masks and shifts up the value.  The result should
-e2192de59e457a Johannes Berg      2023-01-18  149   * be combined with other fields of the bitfield using logical OR.
-e2192de59e457a Johannes Berg      2023-01-18  150   *
-e2192de59e457a Johannes Berg      2023-01-18  151   * Unlike FIELD_PREP() this is a constant expression and can therefore
-e2192de59e457a Johannes Berg      2023-01-18  152   * be used in initializers. Error checking is less comfortable for this
-e2192de59e457a Johannes Berg      2023-01-18  153   * version, and non-constant masks cannot be used.
-e2192de59e457a Johannes Berg      2023-01-18  154   */
-e2192de59e457a Johannes Berg      2023-01-18  155  #define FIELD_PREP_CONST(_mask, _val)					\
-e2192de59e457a Johannes Berg      2023-01-18  156  	(								\
-e2192de59e457a Johannes Berg      2023-01-18  157  		/* mask must be non-zero */				\
-e2192de59e457a Johannes Berg      2023-01-18  158  		BUILD_BUG_ON_ZERO((_mask) == 0) +			\
-e2192de59e457a Johannes Berg      2023-01-18  159  		/* check if value fits */				\
-e2192de59e457a Johannes Berg      2023-01-18  160  		BUILD_BUG_ON_ZERO(~((_mask) >> __bf_shf(_mask)) & (_val)) + \
-e2192de59e457a Johannes Berg      2023-01-18  161  		/* check if mask is contiguous */			\
-e2192de59e457a Johannes Berg      2023-01-18  162  		__BF_CHECK_POW2((_mask) + (1ULL << __bf_shf(_mask))) +	\
-e2192de59e457a Johannes Berg      2023-01-18  163  		/* and create the value */				\
-e2192de59e457a Johannes Berg      2023-01-18  164  		(((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask))	\
-e2192de59e457a Johannes Berg      2023-01-18  165  	)
-e2192de59e457a Johannes Berg      2023-01-18  166  
-3e9b3112ec74f1 Jakub Kicinski     2016-08-31  167  /**
-3e9b3112ec74f1 Jakub Kicinski     2016-08-31  168   * FIELD_GET() - extract a bitfield element
-3e9b3112ec74f1 Jakub Kicinski     2016-08-31  169   * @_mask: shifted mask defining the field's length and position
-7240767450d6d8 Masahiro Yamada    2017-10-03  170   * @_reg:  value of entire bitfield
-3e9b3112ec74f1 Jakub Kicinski     2016-08-31  171   *
-3e9b3112ec74f1 Jakub Kicinski     2016-08-31  172   * FIELD_GET() extracts the field specified by @_mask from the
-3e9b3112ec74f1 Jakub Kicinski     2016-08-31  173   * bitfield passed in as @_reg by masking and shifting it down.
-3e9b3112ec74f1 Jakub Kicinski     2016-08-31  174   */
-3e9b3112ec74f1 Jakub Kicinski     2016-08-31  175  #define FIELD_GET(_mask, _reg)						\
-3e9b3112ec74f1 Jakub Kicinski     2016-08-31  176  	({								\
-2a6c045640c38a Geert Uytterhoeven 2025-11-06  177  		__BF_FIELD_CHECK_REG(_mask, _reg, "FIELD_GET: ");	\
-2a6c045640c38a Geert Uytterhoeven 2025-11-06  178  		__FIELD_GET(_mask, _reg, "FIELD_GET: ");		\
-3e9b3112ec74f1 Jakub Kicinski     2016-08-31  179  	})
-3e9b3112ec74f1 Jakub Kicinski     2016-08-31  180  
-a256ae22570ee4 Luo Jie            2025-04-17  181  /**
-a256ae22570ee4 Luo Jie            2025-04-17  182   * FIELD_MODIFY() - modify a bitfield element
-a256ae22570ee4 Luo Jie            2025-04-17  183   * @_mask: shifted mask defining the field's length and position
-a256ae22570ee4 Luo Jie            2025-04-17  184   * @_reg_p: pointer to the memory that should be updated
-a256ae22570ee4 Luo Jie            2025-04-17  185   * @_val: value to store in the bitfield
-a256ae22570ee4 Luo Jie            2025-04-17  186   *
-a256ae22570ee4 Luo Jie            2025-04-17  187   * FIELD_MODIFY() modifies the set of bits in @_reg_p specified by @_mask,
-a256ae22570ee4 Luo Jie            2025-04-17  188   * by replacing them with the bitfield value passed in as @_val.
-a256ae22570ee4 Luo Jie            2025-04-17  189   */
-a256ae22570ee4 Luo Jie            2025-04-17  190  #define FIELD_MODIFY(_mask, _reg_p, _val)						\
-a256ae22570ee4 Luo Jie            2025-04-17  191  	({										\
-a256ae22570ee4 Luo Jie            2025-04-17  192  		typecheck_pointer(_reg_p);						\
-a256ae22570ee4 Luo Jie            2025-04-17  193  		__BF_FIELD_CHECK(_mask, *(_reg_p), _val, "FIELD_MODIFY: ");		\
-a256ae22570ee4 Luo Jie            2025-04-17  194  		*(_reg_p) &= ~(_mask);							\
-a256ae22570ee4 Luo Jie            2025-04-17 @195  		*(_reg_p) |= (((typeof(_mask))(_val) << __bf_shf(_mask)) & (_mask));	\
-a256ae22570ee4 Luo Jie            2025-04-17  196  	})
-a256ae22570ee4 Luo Jie            2025-04-17  197  
-
+Best regards,
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
