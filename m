@@ -4,55 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9EC8F417EA
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2026 15:03:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEF9DF417FA
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2026 15:07:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=aIaNNoqpUBo808GUIPnwgiIcQ4MAyKT0448mvNxy0f4=; b=NBKw9R25QvQQzpoOfV7GTlQx1H
-	aY0NDHrUDzJuSHp5tlYTZA/NUSJpNAXCGF3OQJtpGLMyzuWrjvdU0fLD0vd7WQHj3cCcXqt3r8qcM
-	JF41ngEgXFe8i1xZYR7Whzg2U0NxOfP+eqw8GLipDwLOTEDMT1iD8aQS0d7Hzi01YBD7hcswiaj5O
-	tlADEjITKOUJ9v2yimlrui0szBraWCYh+Me5anoBn6kr5n4lJX4GOHxkW0DKllivYu20aynxbm7Sh
-	oW0oMSvzPfoMlvuJrhknPiCWV1Hxi72HsyJchYvFTGmnJ2KrWQ7YWzClblJmGkFLh9/Y04+r6PZ3e
-	tVPdeVkg==;
+	bh=NQjtoOjqEoEhL9SXcTYQtV0z7pkjaM4pgJfIZLDhlRI=; b=uVmACHpNHA6S7Rky7g+b6uwFF0
+	EMkvT6e3Bx200WPptULE82dcdYE2Yuul22Aze+gcbupUeb6D0o0RKL+BL5Jf0HXOP2+A/xgTdxOcq
+	yAkwJmYs0KZbu22ocl09IONDIPbUyDW7lDW+urF1SlPcVcEPu8OWO4iqqZyp+p4J6Q1e70en04wDe
+	sxyNn58jxP/xANoQ50A+fMo1phKmyFBNT3SWWTMwaA+w/RVB4Tc8VNEU/zxYvaehPNMJC7Wr9ysWF
+	CjN6RcfrwjpRZNnmQp0OW5eBMNEuxM3J61OzotETo+atANLuDu0eg4e28Ktju0+5w0iyKWX03stuc
+	Wr5EeZgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzc9B-00000007YBg-3Oy1;
-	Mon, 09 Mar 2026 15:03:53 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vzcCY-00000007Yc3-3064;
+	Mon, 09 Mar 2026 15:07:22 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzc9A-00000007YBI-1PrE;
-	Mon, 09 Mar 2026 15:03:52 +0000
+	id 1vzcCV-00000007Yaw-3pCA;
+	Mon, 09 Mar 2026 15:07:20 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C1FFB60054;
-	Mon,  9 Mar 2026 15:03:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F15C5C4CEF7;
-	Mon,  9 Mar 2026 15:03:50 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id BABF043D11;
+	Mon,  9 Mar 2026 15:07:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46592C4AF0B;
+	Mon,  9 Mar 2026 15:07:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773068631;
-	bh=6ZPA6FHZiUtujOKfWLTrb+gxh6+jEbn32xVsTeHNfxc=;
+	s=k20201202; t=1773068838;
+	bh=GdeMPNlEReEt5c3TbQB5zQABnqKdWHPzQr6+VSniZPU=;
 	h=From:Date:Subject:To:Cc:From;
-	b=IHIox8hgWdJ8ow3jhwl1CgFjB5lcHiMgNtROnf//3fOq8mPKSaFvaqFPoOfZDPUcW
-	 NGRkkIRzsVBSRrUk0Tl4N/O8nsXIfdBectEv9CrqUfsxNR3iJJ8F++ln/11Eaz5zpt
-	 +fauVQGaF7i1sWZiQaX/JC0mYRQsnRjJTo0Ca9yVBfCF1hJFjpQ3vTTDmz/4+ZKgX4
-	 5mnDD62riHVPDQx5J1IlKcpLg26Ulhpy/JjORY1GqSnW1Ygj3pEbnw8LCC0UFbwgZI
-	 5Vfxu/6+zwwRzbmIuFIf1xxLL80EQBfPxa/T2D7o7pqwDxDMZ3iZ6cJsQhu/VaYeCe
-	 LZvoOkFawWsUQ==
+	b=m+jMxgTteOqY+Vth7Dvs9wyoCR4Q8NylkAbt2g2eTL+vPR+xuq2cyI46nvHaTj/wf
+	 5IyqHm4Ut6Dv/avs+1fFeNUM5mm3s4qyNg2Cdq/dicEthSxkXEEX7zeD2V5KjTIntn
+	 yR9pLeffuUGIKQWqwujInprHXCwz3KHTWuw43X0ZtRctOakv6yil1nFBZfSgmfr//z
+	 TYP1muwsAP7ZfJBM3YJHVsJS+zBAvQrVHrNCRgutzV7csv1RBVivPyWXyQOiv05fAh
+	 JuFJAMZ1vMxdIDa7PnDe+gLM/fv9fPYjIksg6arf7PqLxDtKsNO2xFoMP5k2jGYbuh
+	 JmIkKVvWURBJg==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 09 Mar 2026 16:03:35 +0100
-Subject: [PATCH] arm64: dts: airoha: en7581: Add switch node to to EN7581
- SoC
+Date: Mon, 09 Mar 2026 16:07:03 +0100
+Subject: [PATCH] arm64: dts: airoha: en7581: Add npu node to to EN7581 SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260309-airoha-7581-dsa-switch-v1-1-448530b7f91f@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MOQ6EMAxA0asg12PJhGWWqyCKkNjEDYzi0YCEu
- DsR5Sv+P8A4Kxt8qgMy/9V0XQrqRwUh+WVm1FgMjlxPDb3Ra16Tx2f3qjGaR9v0FxKKTCQuCre
- BoMTfzKL7PR7G87wAPRnFv2gAAAA=
-X-Change-ID: 20260309-airoha-7581-dsa-switch-ffb0f2dfe4c0
+Message-Id: <20260309-airoha-7581-npu-v1-1-856a360ae9f6@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqAIBBA0avErBswS8uuEi0Gm2o2JkoRRHdPW
+ r7F/w9kTsIZxuqBxJdkOUJBU1fgdwoboyzFoJW2qlUOSdKxE/ZmaDDEE72hnrTT1lMHpYqJV7n
+ /4zS/7weYEy2JYQAAAA==
+X-Change-ID: 20260309-airoha-7581-npu-c5a7a2926ca4
 To: Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -61,6 +60,9 @@ Cc: linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
  Lorenzo Bianconi <lorenzo@kernel.org>
 X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260309_080719_991637_9696AA37 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,150 +77,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce dsa switch controller node to EN7581 SoC and EN7581
-evaluation board.
+Introduce npu controller node to EN7581 SoC and EN7581 evaluation board.
+Adjust reserved memory parameters to the values used by the npu
+controller.
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- arch/arm64/boot/dts/airoha/en7581-evb.dts | 18 +++++++
- arch/arm64/boot/dts/airoha/en7581.dtsi    | 88 +++++++++++++++++++++++++++++++
- 2 files changed, 106 insertions(+)
+ arch/arm64/boot/dts/airoha/en7581-evb.dts |  4 +++
+ arch/arm64/boot/dts/airoha/en7581.dtsi    | 43 ++++++++++++++++++++++++-------
+ 2 files changed, 38 insertions(+), 9 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/airoha/en7581-evb.dts b/arch/arm64/boot/dts/airoha/en7581-evb.dts
-index 886e2e4b5f64ce1a2a5496d35b8379fb4ac27dc2..4c6fca99ae62ec8202e211e18311f2ab7e18d2e5 100644
+index 886e2e4b5f64ce1a2a5496d35b8379fb4ac27dc2..b1a41d1e7eb676beb0e42c949c70362125ec6f0b 100644
 --- a/arch/arm64/boot/dts/airoha/en7581-evb.dts
 +++ b/arch/arm64/boot/dts/airoha/en7581-evb.dts
-@@ -81,6 +81,18 @@ conf {
- 			drive-open-drain = <1>;
- 		};
- 	};
-+
-+	mdio_pins: mdio-pins {
-+		mux {
-+			function = "mdio";
-+			groups = "mdio";
-+		};
-+
-+		conf {
-+			pins = "gpio2";
-+			output-high;
-+		};
-+	};
- };
- 
- &pcie0 {
-@@ -106,3 +118,9 @@ &eth {
- &gdm1 {
+@@ -99,6 +99,10 @@ &i2c0 {
  	status = "okay";
  };
-+
-+&switch {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&mdio_pins>;
+ 
++&npu {
 +	status = "okay";
 +};
++
+ &eth {
+ 	status = "okay";
+ };
 diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
-index ff6908a76e8eb6cf91343495d1fe531a868e41fb..caabb07a7f689e3ad67742f32d3575dfc45e9061 100644
+index ff6908a76e8eb6cf91343495d1fe531a868e41fb..3ea00b3b0a35ce1f466cbe89fefd05abef20056d 100644
 --- a/arch/arm64/boot/dts/airoha/en7581.dtsi
 +++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
-@@ -395,5 +395,93 @@ fixed-link {
- 				};
- 			};
+@@ -15,29 +15,29 @@ reserved-memory {
+ 		#size-cells = <2>;
+ 		ranges;
+ 
+-		npu-binary@84000000 {
++		npu_binary: npu-binary@84000000 {
+ 			no-map;
+ 			reg = <0x0 0x84000000 0x0 0xa00000>;
  		};
-+
-+		switch: switch@1fb58000 {
-+			compatible = "airoha,en7581-switch";
-+			reg = <0 0x1fb58000 0 0x8000>;
-+			resets = <&scuclk EN7581_GSW_RST>;
-+
-+			interrupt-controller;
-+			#interrupt-cells = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SPI 209 IRQ_TYPE_LEVEL_HIGH>;
-+
-+			status = "disabled";
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				gsw_port1: port@1 {
-+					reg = <1>;
-+					label = "lan1";
-+					phy-mode = "internal";
-+					phy-handle = <&gsw_phy1>;
-+				};
-+
-+				gsw_port2: port@2 {
-+					reg = <2>;
-+					label = "lan2";
-+					phy-mode = "internal";
-+					phy-handle = <&gsw_phy2>;
-+				};
-+
-+				gsw_port3: port@3 {
-+					reg = <3>;
-+					label = "lan3";
-+					phy-mode = "internal";
-+					phy-handle = <&gsw_phy3>;
-+				};
-+
-+				gsw_port4: port@4 {
-+					reg = <4>;
-+					label = "lan4";
-+					phy-mode = "internal";
-+					phy-handle = <&gsw_phy4>;
-+				};
-+
-+				port@6 {
-+					reg = <6>;
-+					label = "cpu";
-+					ethernet = <&gdm1>;
-+					phy-mode = "internal";
-+
-+					fixed-link {
-+						speed = <10000>;
-+						full-duplex;
-+						pause;
-+					};
-+				};
-+			};
-+
-+			mdio: mdio {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				gsw_phy1: ethernet-phy@1 {
-+					compatible = "ethernet-phy-ieee802.3-c22";
-+					reg = <9>;
-+					phy-mode = "internal";
-+				};
-+
-+				gsw_phy2: ethernet-phy@2 {
-+					compatible = "ethernet-phy-ieee802.3-c22";
-+					reg = <10>;
-+					phy-mode = "internal";
-+				};
-+
-+				gsw_phy3: ethernet-phy@3 {
-+					compatible = "ethernet-phy-ieee802.3-c22";
-+					reg = <11>;
-+					phy-mode = "internal";
-+				};
-+
-+				gsw_phy4: ethernet-phy@4 {
-+					compatible = "ethernet-phy-ieee802.3-c22";
-+					reg = <12>;
-+					phy-mode = "internal";
-+				};
-+			};
-+		};
+ 
+-		npu-flag@84b0000 {
++		npu_pkt: npu-pkt@8a000000 {
+ 			no-map;
+-			reg = <0x0 0x84b00000 0x0 0x100000>;
++			reg = <0x0 0x8a000000 0x0 0x2c00000>;
+ 		};
+ 
+-		npu-pkt@85000000 {
++		npu_txpkt: npu-txpkt@8cc00000 {
+ 			no-map;
+-			reg = <0x0 0x85000000 0x0 0x1a00000>;
++			reg = <0x0 0x8cc00000 0x0 0x4000000>;
+ 		};
+ 
+-		npu-phyaddr@86b00000 {
++		npu_txbufid: npu-txbufid@90c00000 {
+ 			no-map;
+-			reg = <0x0 0x86b00000 0x0 0x100000>;
++			reg = <0x0 0x90c00000 0x0 0x6800>;
+ 		};
+ 
+-		npu-rxdesc@86d00000 {
++		npu_ba: npu-ba@90c06800 {
+ 			no-map;
+-			reg = <0x0 0x86d00000 0x0 0x100000>;
++			reg = <0x0 0x90c06800 0x0 0x200000>;
+ 		};
  	};
- };
+ 
+@@ -347,6 +347,31 @@ i2c1: i2c@1fbf8100 {
+ 			status = "disabled";
+ 		};
+ 
++		npu: npu@1e900000 {
++			compatible = "airoha,en7581-npu";
++			reg = <0x0 0x1e900000 0x0 0x313000>;
++			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 134 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 136 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 137 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 120 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 122 IRQ_TYPE_LEVEL_HIGH>,
++				     <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
++			memory-region = <&npu_binary>, <&npu_pkt>, <&npu_txpkt>,
++					<&npu_txbufid>, <&npu_ba>;
++			memory-region-names = "firmware", "pkt", "tx-pkt",
++					      "tx-bufid", "ba";
++			status = "disabled";
++		};
++
+ 		eth: ethernet@1fb50000 {
+ 			compatible = "airoha,en7581-eth";
+ 			reg = <0 0x1fb50000 0 0x2600>,
 
 ---
 base-commit: 405c09548a695ca7be58b5b9d3ac8388630e907f
-change-id: 20260309-airoha-7581-dsa-switch-ffb0f2dfe4c0
+change-id: 20260309-airoha-7581-npu-c5a7a2926ca4
 
 Best regards,
 -- 
