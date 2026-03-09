@@ -4,90 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A76F7EFCD63
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2026 09:40:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2732EFCD7A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2026 10:04:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:Content-Type
-	:Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zzQHtoFn7yNl5mgP8jm0AT1Cso1q/JOg4cOlIoYOlsI=; b=OuHBE2DEyTEKGEAtp73ouVHaHE
-	xe/vB0TnbxoBh2LweTIezyF/h8zgFP32YJoEzVCy+k7HH0uwAoP2kik419RaCtYw+D7aUm9IyL89u
-	pJx+gY3v/R/+yXEdmXpWeUwjDxHHUdRL5MxmakiFmVgRlzne9uN8crh0b4ItcFxgTfjXkRqV2w1GZ
-	9rClQyzaw7+MWmEL0HL6YefQIn2HXE2K7LIWATB9xtlgQng4PXGT6jN19D04bu9w24S5ADxttjc2x
-	KVPwaxWVBd2cdOwS3s0HA/cNJUAGSdbnbf8DxVoFUuI7DUXplugoOFgT+ka99iNCU1ZOTgw8bVaB9
-	NQvh9aog==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NlPBU6mm/vR3l3IynQJyTnSVRzr3DXJWAgerFRXKwLY=; b=a46hRKUBBNLEL8N79LgWaHlBxF
+	KIvngDZiqfqAwpuxwDirgas3JV9JOCG0jEZJ+Zec5ocVqhTurNp+2+jdnhtUAfWwleQw+vxJVZ39i
+	J1CuNwEoaQx2jfQcXDEHIAgnxJNLnEORxeWBp0tquNlB30KOQywSgdP1zX804dFqc6RZX9g3dCkey
+	JdXHV9k84v+3EcGlgVBlYcT3+dOqfU/3ALFs1zsmX42NGT37GktfdyTuJ4kWe85wyv+HKEMljptEU
+	7RhHEAQhvCBS81AWaNRZSgQtLTQan38ZJxsoy6jAJEDBbTa/HQolj/xCtPEYXMchuOvrM7nz318le
+	Mu/ZxsSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzX6C-00000006zst-2NTX;
-	Mon, 09 Mar 2026 09:40:28 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vzXTn-000000072mr-28iT;
+	Mon, 09 Mar 2026 10:04:51 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzX68-00000006zoM-3cP0;
-	Mon, 09 Mar 2026 09:40:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=zzQHtoFn7yNl5mgP8jm0AT1Cso1q/JOg4cOlIoYOlsI=; b=EklVRTMRWDNJInw7wEHB7RRHb/
-	82NUrtdmUOum9ZETT2DLpiRY43/WK8IOOu87lPeRAGYSDpjRVO9oesANpI9vQi0E7VB33YhRMvBMZ
-	SIHih0mwONPxcnVTE6Ereza8VGeCCvuqfwi9K8X3OHY9xTu80AvcQXxccm/A5nU8Ylsb5NRkDSzdw
-	bKKy8TKdWHf3TCIdgv+wTIEl1EtRTmE0yvNJik+obwExy2HjdyiF8dJCTGf+EfBFajNfUR2lhSere
-	wbiXrG8vsmZo7evothQZHtEyc+vBt6LGoeF+WzhgY93seQQnrX8yobZX/fH+nBpFyJOq068bwsQUK
-	w4ABa7iw==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:44830 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1vzX5e-000000003Vd-2jKM;
-	Mon, 09 Mar 2026 09:39:54 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1vzX5Z-0000000CVsb-1XTm;
-	Mon, 09 Mar 2026 09:39:49 +0000
-In-Reply-To: <aa6VEsmBK-S9eNYU@shell.armlinux.org.uk>
-References: <aa6VEsmBK-S9eNYU@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	imx@lists.linux.dev,
-	Jakub Kicinski <kuba@kernel.org>,
-	Jan Petrous <jan.petrous@oss.nxp.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	s32@nxp.com,
-	Samuel Holland <samuel@sholland.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Yao Zi <me@ziyao.cc>
-Subject: [PATCH net-next v2 7/7] net: stmmac: add documentation for clocks
+	id 1vzXTj-000000072lz-48Tu;
+	Mon, 09 Mar 2026 10:04:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1773050663; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=WPKrdsecXgvpHVw3d3nA7UKT5PHJNT4CVQC1wG3jkoTNIrWS0kkfHp25A9EAsGTtUg3my3EIBZ9cAYhDH/7GZ87SYfPkLX9nWSV0hO7AsCEktYkMz08X1zMu77OuRIbRaX/3r1+PpRfXlG66IkdIhRZvRncGQ7Z9ascvWR05+D4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1773050663; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=NlPBU6mm/vR3l3IynQJyTnSVRzr3DXJWAgerFRXKwLY=; 
+	b=ITht2xuBtAY+LyVbcl9bvvuPCXhHUIobCtTsZc5aFz2E4VdopHHB54s6J/T26V2aPee8kKx0Y8T/PCGRwsXTB5HQzkXEBUtiVmomJr13U5450kH9p11rX8gGW9jmq3SEV1GAmDKZIyxElT/VTgzgGJfOPj8GKyWMbhV1gitWc0M=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773050663;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=NlPBU6mm/vR3l3IynQJyTnSVRzr3DXJWAgerFRXKwLY=;
+	b=FfyXGNfa7BdEYR+/X2BWXaCeOR1xLNi6bU3NnS6twJjCEsBQSvH3U0tRJJlNxVin
+	EthZxVdVb5u3865e3MDpOBj6BEMpriUN0Oqy+EMI529/FmafrTz8JcGKAzykVNai9Go
+	VPM5cR5IPh4kSsAqFib03nKGO6VeWMO4YndPgj5I=
+Received: by mx.zohomail.com with SMTPS id 1773050662683221.52211658341253;
+	Mon, 9 Mar 2026 03:04:22 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: "Martin K. Petersen" <martin.petersen@oracle.com>
+Cc: Rob Herring <robh@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>,
+ Peter Wang <peter.wang@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>,
+ "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Chaotian Jing <Chaotian.Jing@mediatek.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, kernel@collabora.com,
+ linux-scsi@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ Conor Dooley <conor.dooley@microchip.com>
+Subject: Re: [PATCH v9 03/23] dt-bindings: ufs: mediatek,ufs: Add mt8196 variant
+Date: Mon, 09 Mar 2026 11:04:14 +0100
+Message-ID: <5973984.DvuYhMxLoT@workhorse>
+In-Reply-To: <yq14imrwp3z.fsf@ca-mkp.ca.oracle.com>
+References: <20260306-mt8196-ufs-v9-0-55b073f7a830@collabora.com>
+ <4089450.ElGaqSPkdT@workhorse> <yq14imrwp3z.fsf@ca-mkp.ca.oracle.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <E1vzX5Z-0000000CVsb-1XTm@rmk-PC.armlinux.org.uk>
-Date: Mon, 09 Mar 2026 09:39:49 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260309_024024_913942_77EDFDDC 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20260309_030448_079243_CE5D8CDD 
+X-CRM114-Status: GOOD (  16.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,68 +92,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add documentation covering stmmac_clk, pclk, clk_ptp_ref and clk_tx_i
-in the hope that this will help understand what each of these clocks
-are for.
+On Saturday, 7 March 2026 19:01:17 Central European Standard Time Martin K. Petersen wrote:
+> 
+> Nicolas,
+> 
+> >> "ufs" is redundant as all the clocks are for UFS. Same comment on prior 
+> >> patch.
+> >
+> > Is this naming a big enough concern to block this series with two
+> > explicit acks on this patch that fixes a wholly broken and useless
+> > binding?
+> 
+> It is if it comes from one of the DT maintainers.
+> 
+> > I am trying to put out this dumpster fire of a downstream turd that
+> > made its way into mainline as the review process has been completely
+> > subverted, and is only getting worse with each passing month
+> 
+> This has to stop. Please read Documentation/process/code-of-conduct.rst.
+> 
+> 
 
-There is confusion around stmmac_clk and pclk which can't be easily
-resolved today as the Imagination Technologies Pistachio board that
-pclk was introduced for has no public documentation and is likely now
-obsolete. So the origins of pclk are lost to the winds of time.
+I apologise for my tone, it's my frustration getting the better of me.
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- include/linux/stmmac.h | 33 ++++++++++++++++++++++++++++++++-
- 1 file changed, 32 insertions(+), 1 deletion(-)
+I'll be handing off this series to someone else, so you won't have to
+deal with me anymore.
 
-diff --git a/include/linux/stmmac.h b/include/linux/stmmac.h
-index 1af3a5e197c9..937985276e6b 100644
---- a/include/linux/stmmac.h
-+++ b/include/linux/stmmac.h
-@@ -300,10 +300,41 @@ struct plat_stmmacenet_data {
- 	struct phylink_pcs *(*select_pcs)(struct stmmac_priv *priv,
- 					  phy_interface_t interface);
- 	void *bsp_priv;
-+
-+	/* stmmac clocks:
-+	 *  stmmac_clk: CSR clock (which can be hclk_i, clk_csr_i, aclk_i,
-+	 *    or clk_app_i depending on GMAC configuration). This clock
-+	 *    generates the MDC clock.
-+	 *
-+	 *  pclk: introduced for Imagination Technologies Pistachio board -
-+	 *    see 5f9755d26fbf ("stmmac: Add an optional register interface
-+	 *    clock"). This is probably used for cases where separate clocks
-+	 *    are provided for the host interface and register interface. In
-+	 *    this case, as the MDC clock is derived from stmmac_clk, pclk
-+	 *    can only really be the "application clock" for the "host
-+	 *    interface" and not the "register interface" aka CSR clock as
-+	 *    it is never used when determining the divider for the MDC
-+	 *    clock.
-+	 *
-+	 *  clk_ptp_ref: optional PTP reference clock (clk_ptp_ref_i). When
-+	 *    present, this clock increments the timestamp value. Otherwise,
-+	 *    the rate of stmmac_clk will be used.
-+	 *
-+	 *  clk_tx_i: MAC transmit clock, which will be 2.5MHz for 10M,
-+	 *    25MHz for 100M, or 125MHz for 1G irrespective of the interface
-+	 *    mode. For the DWMAC PHY interface modes:
-+	 *
-+	 *    GMII/MII	PHY's transmit clock for 10M (2.5MHz) or 100M (25MHz),
-+	 *		or 125MHz local clock for 1G mode
-+	 *    RMII	50MHz RMII clock divided by 2 or 20.
-+	 *    RGMII	125MHz local clock divided by 1, 5, or 50.
-+	 *    SGMII	125MHz SerDes clock divided by 1, 5, or 50.
-+	 *    TBI/RTBI	125MHz SerDes clock
-+	 */
- 	struct clk *stmmac_clk;
- 	struct clk *pclk;
- 	struct clk *clk_ptp_ref;
--	struct clk *clk_tx_i;		/* clk_tx_i to MAC core */
-+	struct clk *clk_tx_i;
- 	unsigned long clk_ptp_rate;
- 	unsigned long clk_ref_rate;
- 	struct clk_bulk_data *clks;
--- 
-2.47.3
+I do ask however that you don't apply patches from MediaTek blindly;
+if there's code to read an OF property, and that OF property is not
+in the binding, then the patch should be rejected, even if there's an
+Ack from the MediaTek maintainer.
+
 
 
