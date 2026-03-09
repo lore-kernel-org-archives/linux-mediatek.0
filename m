@@ -4,54 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5415F41807
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2026 15:24:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59462F417F3
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2026 15:50:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JSKon7KOnWBP0LJ2cGOvfjSkyGFqecN346MquezPp8s=; b=F6KD3JbwhCSssVXq30/zvQVfQI
-	yxZnD+wTgOxqJeFuIqUWpnjkxTzcHpUVAZ28gyzOesWZ+cOdxVaZwEU/e/vpTnZn3FmxZwVWN1x+h
-	3OKaKXTRUavi2hc4ikDs/qN8pdV23qOxHtpLONuX60HRBkMGPQLKZuMfVrTQ975pf0fmBVmZKJcJP
-	fE64vRKDygrjXHsm5Sncn04OToDpGyq1Tsnr8tGVgNAXvLF7BLM/kMRkHPnPFS0Wi2Eeoy643uV8t
-	J+df25h+EwV0WpUdJ6fq13EdSGGO+FWK3crsswsL4gcy1dwg+KDEGeQsZmykjgTw+C2bjJbG+2l8l
-	jFY7UwUg==;
+	bh=mDlQ1F3MoMglSJv1YlJJl/kF8KgvLGzPVUN0strxdnY=; b=jyK5sO/DXUlpGPmeAcKjf0xmHc
+	j45GcefRRcKKofnR6uS+GnPnAFR8Op2p9EMpHwK+/vRIphV08x9GQQWrxz7bJXUsuKKAxFjBmLwb8
+	sLtSJ9FElLHxmWF4aDrwPFcTt/5HcHJKOiap3ovfm8iRPakiamjdCMRtuMxIyTcs2mLCd2hrPMeU0
+	jWl64C7qbJbIF+r1DR1v71mu9DirsWH7z2bndSZvt2a/zI9An+zvN2uB6L02EWN87BpxFcK+Nr4I0
+	gYZ5JN9JFZP1qUCZPVbVsFEpWy8inwaE6C5+HubltKeYQoYOyv0HEAWe8VUyL3iti+aNUDAdeShMT
+	zYY749GA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzcT4-00000007asK-29Dz;
-	Mon, 09 Mar 2026 15:24:26 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vzcru-00000007duB-0ea6;
+	Mon, 09 Mar 2026 15:50:06 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzcT2-00000007aru-3zTm;
-	Mon, 09 Mar 2026 15:24:25 +0000
+	id 1vzcrr-00000007dtK-0uIU;
+	Mon, 09 Mar 2026 15:50:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0E1A660054;
-	Mon,  9 Mar 2026 15:24:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 692CAC2BC86;
-	Mon,  9 Mar 2026 15:24:23 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 04EF441781;
+	Mon,  9 Mar 2026 15:50:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55FE5C2BC86;
+	Mon,  9 Mar 2026 15:50:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773069863;
-	bh=sE7CqWgrb+zFP0Cr5jOTclWiaWDkF1Z32PDAvIwjeuU=;
+	s=k20201202; t=1773071401;
+	bh=jD+HjaNHgbAd33dUrOKzWmUqIYgmr2OAzta/dFxlHAU=;
 	h=From:Date:Subject:To:Cc:From;
-	b=StIOsqFWXfbZVtGbJOoV/8SKumKR7F8HtQXaecihqzAAH0OOUwGBfx82SQEGsMAdb
-	 DVTM5HsrJqBniAitHZ4QWn2A63Z8CTgu1IkE++yH3yhJVmn3xauYXEisDlVlDQhsBN
-	 o1DWAW00rIGOvrKM3qhr/LqBKR/46s9ll0bf5rDXMq+Yk5QDjOOoRzhxbIIRxFf522
-	 aljfq3ZIjKkKwNQbw8Zn36SBVCXm1AqYaAk1c0VSLf7UZNm+SgWRESZdQzZmQ6Uw6v
-	 4+3QmNl0Qvkhkr4RXdWE7mara2hdfcKXt711eCF3l1vlGdpa0gXeuW5sYaoPpQy2rF
-	 iqttA/lfVhQCA==
+	b=HNZOM4inoAoeLVAdbE04fEzIvpjZpd+dgYRhu5cr8IA8TjG4+ZUcs3mwuNI+t2Llc
+	 EY1Pl0xqk+nFlYuMjSA/ywSaJZOlybOuvRzYLRs5OAgb8a4n91yVz6412MiKhN0WY7
+	 zF9aSHBs44HZIAt3hkfReTMgBUSTTkzLG2r1bj1wiJrzQeGg75+lE+cxBPzTFwMd7c
+	 xviK4ZIsf1phFivTzPHUmxHTKUPskZHEt554VZg/Gx5TLjKb8OaxsdG9wpW5rQqNUq
+	 PsbqEXgxYnO8pEtYrLTNfZapiNH7+pei18yuI24Lvz2C53qFzidODL5ST7uh5oVDdk
+	 2QsilGm7dr/OA==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Mon, 09 Mar 2026 16:24:15 +0100
-Subject: [PATCH] arm64: dts: airoha: en7581: Add wdt node to to EN7581 SoC
+Date: Mon, 09 Mar 2026 16:49:49 +0100
+Subject: [PATCH] arm64: dts: airoha: en7581: Add thermal node to to EN7581
+ SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260309-airoha-7581-wdt-v1-1-ee5f09dbd7af@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MQQqAIBAAvxJ7bmE1LOsr0UFqq71oaFQQ/j3pO
- AMzLySOwgmG6oXIlyQJvoCqK5h35zdGWQqDJt1SQz06iWF32Bmr8F5OLJpJWzLMDkp1RF7l+Y/
- jlPMH+6nmCWEAAAA=
-X-Change-ID: 20260309-airoha-7581-wdt-260e02805eea
+Message-Id: <20260309-airoha-7581-thermal-zones-v1-1-f9b543981022@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MwQqDMAyA4VeRnBeIDq36KsNDsJkNaCupyJj47
+ is7fof/vyCLqWQYqwtMTs2aYkH9qGAOHBdB9cXQUNPRkwZktRQYXdvXeASxjVf8pigZO6LWucH
+ z7BlKv5u89fN/v6b7/gGVZRW3awAAAA==
+X-Change-ID: 20260309-airoha-7581-thermal-zones-6005779dacda
 To: Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -60,6 +61,9 @@ Cc: linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
  Lorenzo Bianconi <lorenzo@kernel.org>
 X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260309_085003_321964_DBD7C42E 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,36 +78,130 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce watchdog controller node to EN7581 SoC.
+Introduce thermal controller node to EN7581 SoC.
+Define thermal-zones and related cpu trips and cooling-maps.
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- arch/arm64/boot/dts/airoha/en7581.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ arch/arm64/boot/dts/airoha/en7581.dtsi | 52 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 52 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
-index ff6908a76e8eb6cf91343495d1fe531a868e41fb..97d0ee5d8315c2c838eff46efe57bf7657e60c68 100644
+index ff6908a76e8eb6cf91343495d1fe531a868e41fb..092c8ab0f4322552495dbe00b9e41e087876817e 100644
 --- a/arch/arm64/boot/dts/airoha/en7581.dtsi
 +++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
-@@ -150,6 +150,14 @@ gic: interrupt-controller@9000000 {
- 			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_LOW>;
+@@ -4,6 +4,7 @@
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/clock/en7523-clk.h>
+ #include <dt-bindings/reset/airoha,en7581-reset.h>
++#include <dt-bindings/thermal/thermal.h>
+ 
+ / {
+ 	interrupt-parent = <&gic>;
+@@ -74,6 +75,7 @@ cpu0: cpu@0 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x0>;
++			#cooling-cells = <2>;
+ 			enable-method = "psci";
+ 			clock-frequency = <80000000>;
+ 			next-level-cache = <&l2>;
+@@ -83,6 +85,7 @@ cpu1: cpu@1 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x1>;
++			#cooling-cells = <2>;
+ 			enable-method = "psci";
+ 			clock-frequency = <80000000>;
+ 			next-level-cache = <&l2>;
+@@ -92,6 +95,7 @@ cpu2: cpu@2 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x2>;
++			#cooling-cells = <2>;
+ 			enable-method = "psci";
+ 			clock-frequency = <80000000>;
+ 			next-level-cache = <&l2>;
+@@ -101,6 +105,7 @@ cpu3: cpu@3 {
+ 			device_type = "cpu";
+ 			compatible = "arm,cortex-a53";
+ 			reg = <0x3>;
++			#cooling-cells = <2>;
+ 			enable-method = "psci";
+ 			clock-frequency = <80000000>;
+ 			next-level-cache = <&l2>;
+@@ -124,6 +129,39 @@ timer {
+ 			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
+ 	};
+ 
++	thermal-zones {
++		cpu_thermal: cpu-thermal {
++			polling-delay-passive = <0>;
++			polling-delay = <0>;
++
++			thermal-sensors = <&thermal 0>;
++
++			trips {
++				cpu_hot: cpu-hot {
++					temperature = <95000>;
++					hysteresis = <1000>;
++					type = "hot";
++				};
++
++				cpu-critical {
++					temperature = <120000>;
++					hysteresis = <1000>;
++					type = "critical";
++				};
++			};
++
++			cooling-maps {
++				map0 {
++					trip = <&cpu_hot>;
++					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++							 <&cpu2 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
++							 <&cpu3 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
++				};
++			};
++		};
++	};
++
+ 	clk20m: clock-20000000 {
+ 		compatible = "fixed-clock";
+ 		#clock-cells = <0>;
+@@ -173,6 +211,11 @@ spi_nand: nand@0 {
+ 			};
  		};
  
-+		watchdog@1fbf0100 {
-+			compatible = "airoha,en7581-wdt";
-+			reg = <0x0 0x1fbf0100 0x0 0x38>;
-+
-+			clocks = <&scuclk EN7523_CLK_BUS>;
-+			clock-names = "bus";
++		chip_scu: syscon@1fa20000 {
++			compatible = "airoha,en7581-chip-scu", "syscon";
++			reg = <0x0 0x1fa20000 0x0 0x388>;
 +		};
 +
- 		spi@1fa10000 {
- 			compatible = "airoha,en7581-snand";
- 			reg = <0x0 0x1fa10000 0x0 0x140>,
+ 		scuclk: clock-controller@1fb00000 {
+ 			compatible = "airoha,en7581-scu";
+ 			reg = <0x0 0x1fb00000 0x0 0x970>;
+@@ -300,6 +343,15 @@ rng@1faa1000 {
+ 			interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
+ 		};
+ 
++		thermal: thermal-sensor@1efbd000 {
++			compatible = "airoha,en7581-thermal";
++			reg = <0x0 0x1efbd000 0x0 0xd5c>;
++			interrupts = <GIC_SPI 23 IRQ_TYPE_LEVEL_HIGH>;
++			airoha,chip-scu = <&chip_scu>;
++
++			#thermal-sensor-cells = <0>;
++		};
++
+ 		system-controller@1fbf0200 {
+ 			compatible = "airoha,en7581-gpio-sysctl", "syscon",
+ 				     "simple-mfd";
 
 ---
 base-commit: 405c09548a695ca7be58b5b9d3ac8388630e907f
-change-id: 20260309-airoha-7581-wdt-260e02805eea
+change-id: 20260309-airoha-7581-thermal-zones-6005779dacda
 
 Best regards,
 -- 
