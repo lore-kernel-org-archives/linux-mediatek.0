@@ -4,147 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4205DEFCD99
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2026 11:19:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30798EF3717
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2026 12:05:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aBuXrT3z0syHkRjP3iylAVgo7EGbnv7gdiOgzGuaCiU=; b=CmPZeum7PxxJS82zX8m3vpNdBP
-	wTiepIPyXb2zfi+sAQQZB8oM5o3/zChNH8iLTj7madt2RpBsIrZoIitAkHvErcteY9Aq8rtLK9h0S
-	VhnIuBskbsBBdFfzHjLrqakp5TKdw4emQ2YtSpjHx26qMlb84vbLJ1VoKHUglII1TigkSew51I4+O
-	iI7tG9cPoqoyAUzvnGX8anXEM305H5LGwRHPJ7IZQ62EH0iJECeiG7MBkWJZ5+wMsi73Qb5fXY170
-	ClXEqFrvbhi0XmO1hhiiVgyUvI+9TmHza6xjY0dbK/8ICv2Rx6ZVF6lUNls0Nv9Rv6SoSVtaaTEtk
-	seC1QJ1Q==;
+	bh=FuTvFKC1sI0vZzVUhcV8U+V8J4mnw3QxKN4UV/VOdpY=; b=tQGBZzDErM7XczmOYdw5RpDaHe
+	pa6eSJue8dFhlDSDmaPGnSFaXJHd4+nWYfnWjMwo2EbCfDmLvJUszGTdI+El2jZ4LHIz7M8Zju5nS
+	SdGv0AzD5q1rJ/1toHXthBZSuo87vimUYm17etAJbqiVOxZPSxZA7Hj7jliWsGbAMHgl9/lNQCNMa
+	zwEc1dP7EgKQv2aOpEFPr9ggYh3p3bkUGsRs3DYmtBzZ82q++ytq83azTWlA69GcS4P3e8bYSXsvH
+	5Ejn5kJ6SmYz/VxhNftsAqmpPKNAKvRvDGu+Me/YOC/kM9UxrgtYzxsbkBD/lEoqRHG5+jjG3N3pn
+	/Q0sP3jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzYeA-00000007Abk-3TFn;
-	Mon, 09 Mar 2026 11:19:38 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1vzZMT-00000007Ft9-0qMn;
+	Mon, 09 Mar 2026 12:05:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzYe7-00000007AaA-1qG8
-	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Mar 2026 11:19:36 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 629A0M7w1588538
-	for <linux-mediatek@lists.infradead.org>; Mon, 9 Mar 2026 11:19:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=aBuXrT3z0syHkRjP3iylAVgo
-	7EGbnv7gdiOgzGuaCiU=; b=IpI6JDD0HWnBmmlj0OFHN8/gFzwsaR6GGIPaSRWZ
-	iFf/DH7u4vd7h1Ql6MNsSNVW9oPR5VFW70oJAOTynQa/kotTy97vXA0zLfU6dzvA
-	uNntI343AApVrwilF4Ccnldt+LK7L50ujgLUmwLSHh8Zw6kc69JCAMGvA05QoRPE
-	9O4dpQc5tRl5IG1keLHk0u4cwJIhRoOu4w361lkUDa5Q2QOyO9hNNQvNH43cn8he
-	7kk5Yw7SulMX0XAPaDCMv1J1DuARQsDGemPZ4pfuNOCdlEnEvGJDhSE+ExzyMWep
-	mCjRxW8ZWiSYWgw7VY+HBiZ9DBPabub841Zlzj4UETzIkA==
-Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com [209.85.214.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4csqcy99cd-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Mon, 09 Mar 2026 11:19:34 +0000 (GMT)
-Received: by mail-pl1-f200.google.com with SMTP id d9443c01a7336-2ae4a6bb316so81940265ad.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Mar 2026 04:19:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1773055174; x=1773659974; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=aBuXrT3z0syHkRjP3iylAVgo7EGbnv7gdiOgzGuaCiU=;
-        b=hnt0Dxnt6G65uOAHn4OjZCrUDT4uY8N6aFWyXkVHoBYTvvQAsrqibYFS8U1ab0UPqC
-         xAU7MrQxCCSFoB/vOcIOqRMddUJR0bKJVxYMQuHkxGhmPUeZn03k1wXl1qJciwwAWIs6
-         tQzlZUyoUG1bARG8vzhXKuKtnBKHJe2JpYu2j0FpMFmsCLJiFt+e1SFJ/ndvz0jZ2IAj
-         ds4nMUIlYv1QTDqvKvoZ7xwRVsoQvEg7C77FnXYjX7Pw8DebNt3BXPwk+3UFLAH9fgbz
-         KDlz39uBVa07+dpALhHgaaoq6uJ9DHfEQUeJzCYShSR3dzKKuwLkc4m/r6v4+7h1juws
-         utRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773055174; x=1773659974;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=aBuXrT3z0syHkRjP3iylAVgo7EGbnv7gdiOgzGuaCiU=;
-        b=qAnRTu+UyBUo5cZST8LJs0bDKPMO4eNv1jQ6MgAYR5ycfBQ3eEgNVDefqm7OfCYkAU
-         qwsPzIhY3cdJ9z1iRxlguGrUQVxTp7pa557zHDzI4xreJY3pr6ZovTKdR7AWV8nMuS+v
-         ITaFi3DeUEuWvODl6vhlmSYpUE7Nl0gKwIu8GEtZMJa/7WjZZ3wUzFGwwm5HS8u1p5s0
-         QBj8Hip5iTnY8eSU343riZbcDHfM7H6Yvvn6XUlBb9MEWIYWPB60Es/IrDSn9aPHeFb0
-         XkM3uoZdcWHa+vSPvxKablw4YQFgVAHlc6ZpzEOEzlrK6s+ZkilPrGSWoAWM1AIOGMW7
-         gCXw==
-X-Forwarded-Encrypted: i=1; AJvYcCU1pSCiNusIXYqpujKdt328thg+NltPeAblbJ3InTPKDL3v13GlouVkO6+YCdLm4BE3FhVX6ZAbGZ1/xfunWQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyCgmEJVDXeRyUvb3jpBwiy1WudSufULvr+Nmp04H6rPHb+F17+
-	trun/z6WQF6+khd10l9ewnt9/EphjrJ6VvI2fun3iSZmCIgJHjx8YV1FXHMqBWoxLJc+mtZon/Q
-	RFUa1jbvk3AjLnuYFjIaPcGSa+mNhqjvB5m6e1H5KTOMNi1xt0jT+qCVwPHNPWVjwDZGj4c5lub
-	JAM43EaBU=
-X-Gm-Gg: ATEYQzwwg33285FxaicBBWR0MQWdMnxykMjpOfxWBCtrrJe4P5zifkrccxAHrADGeeU
-	CIHNhVf0YrNidiaNBmbUUoWtdtE8+BfyX6RJ0IP6bzyc6tbeX9078TGVO1yclhXu09+NoryW7iz
-	HkTJm5NEfpjq//1Vc94Ehskp8UKkPaONpc/TAI66/OSweP5lrd0vcqL/IHL4omS3tys8dtQ1MtB
-	x92nvV3rG3YzkBRJclaRlnZtcNtn8xwS6PjB/9AdG4xDKvQPOvZiUhEb70INIaeb7cDcDBwyUdF
-	PuCBn31iZpVavqQVKpIE9faO7CtAoZGzPUemeLj4uuQsxn0OoG2XwBjXwLZJdyDY6kVVr3Re0xx
-	jvMI8igw/qMnxHS2RPrqTJ0lwp60s+Lr1FOg=
-X-Received: by 2002:a17:902:f64e:b0:2ae:5fc0:308f with SMTP id d9443c01a7336-2ae825056cemr110474275ad.41.1773055174149;
-        Mon, 09 Mar 2026 04:19:34 -0700 (PDT)
-X-Received: by 2002:a17:902:f64e:b0:2ae:5fc0:308f with SMTP id d9443c01a7336-2ae825056cemr110474115ad.41.1773055173696;
-        Mon, 09 Mar 2026 04:19:33 -0700 (PDT)
-Received: from oss.qualcomm.com ([202.46.23.25])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ae840b2e9dsm150127135ad.85.2026.03.09.04.19.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Mar 2026 04:19:33 -0700 (PDT)
-Date: Mon, 9 Mar 2026 16:49:23 +0530
-From: Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>,
-        Alexandre Torgue <alexandre.torgue@foss.st.com>,
-        Andrew Lunn <andrew+netdev@lunn.ch>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Chen-Yu Tsai <wens@kernel.org>,
-        "David S. Miller" <davem@davemloft.net>,
-        Eric Dumazet <edumazet@google.com>, Frank Li <Frank.Li@nxp.com>,
-        imx@lists.linux.dev, Jakub Kicinski <kuba@kernel.org>,
-        Jan Petrous <jan.petrous@oss.nxp.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-        linux-mediatek@lists.infradead.org,
-        linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
-        linux-tegra@vger.kernel.org,
-        Maxime Chevallier <maxime.chevallier@bootlin.com>,
-        netdev@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
-        Pengutronix Kernel Team <kernel@pengutronix.de>, s32@nxp.com,
-        Samuel Holland <samuel@sholland.org>,
-        Sascha Hauer <s.hauer@pengutronix.de>, Yao Zi <me@ziyao.cc>
-Subject: Re: [PATCH net-next v2 4/7] net: stmmac: use u8 for ?x_queues_to_use
- and number_?x_queues
-Message-ID: <aa6su45ASA4jR2VJ@oss.qualcomm.com>
-References: <aa6VEsmBK-S9eNYU@shell.armlinux.org.uk>
- <E1vzX5K-0000000CVsE-0J0Y@rmk-PC.armlinux.org.uk>
+	id 1vzZMR-00000007Fqm-0qPH;
+	Mon, 09 Mar 2026 12:05:24 +0000
+X-UUID: 3ece589a1bb011f1a6de359d7043e138-20260309
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=FuTvFKC1sI0vZzVUhcV8U+V8J4mnw3QxKN4UV/VOdpY=;
+	b=r0CcnQf1/wNTEd0DRVJZFyrffnyVv+pogk/Qyp6jwVdMNoCFxUlhOLLCxqFsyAaCqJXlIOoSP4rC/PNPuo90wvJZQV7cC4bTKS9RkyWmbh44zhKeW6lQYB6znCRWthURaLvurh63mhMyT9FAy+sDdSF/OV/SHmIX3gOnp53un9U=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:45bef134-73db-445d-be34-f4eba1d0050a,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:89c9d04,CLOUDID:36a9b17b-8c8a-4fc4-88c0-3556e7711556,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 3ece589a1bb011f1a6de359d7043e138-20260309
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <irving-ch.lin@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1385243668; Mon, 09 Mar 2026 05:05:20 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 9 Mar 2026 20:05:17 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 9 Mar 2026 20:05:17 +0800
+From: irving.ch.lin <irving-ch.lin@mediatek.com>
+To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+	<sboyd@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Richard Cochran
+	<richardcochran@gmail.com>, Bartosz Golaszewski <brgl@kernel.org>, Chen-Yu
+ Tsai <wenst@chromium.org>, Miles Chen <miles.chen@mediatek.com>
+CC: <linux-clk@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <netdev@vger.kernel.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Qiqi Wang
+	<qiqi.wang@mediatek.com>, <sirius.wang@mediatek.com>,
+	<vince-wl.liu@mediatek.com>, <jh.hsu@mediatek.com>,
+	<irving-ch.lin@mediatek.com>
+Subject: [PATCH v6 03/18] clk: mediatek: Add MT8189 apmixedsys clock support
+Date: Mon, 9 Mar 2026 20:04:45 +0800
+Message-ID: <20260309120512.3624804-4-irving-ch.lin@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260309120512.3624804-1-irving-ch.lin@mediatek.com>
+References: <20260309120512.3624804-1-irving-ch.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <E1vzX5K-0000000CVsE-0J0Y@rmk-PC.armlinux.org.uk>
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA5MDEwNCBTYWx0ZWRfX3Cp6a77Xxkym
- V48d87rDmRIacTdxbL9lo68r3PL6weK31sam7MAsbVj1WsQg3BrbtuRKndpaYRk0iKG91T9bBuM
- D7/wX0WxtFHTDp9RLdLAUaddXYezwDdtIQvTgIz/R9eXzjoevkAkhnvs4hHgkEXWQ8+aG2+iMlM
- TY9Xx/zCcwE10UVdKRzS6TkRbXC4eV713OCOdKSuTi3XmN6wStrj8BPfjO9xOPcd0PZgXKigc0j
- hz+/zwSQK83zj+QTRANcqNNPzxfHVBzwt+6IHoaKmRbwH2FJMMpAo2mIPUgis67YPUCEpuS3din
- hHYmJrGVMo6f5x3AnbK/xVpR9r9yDfrwK/iF0vUOkXw3/aNVuBUqUOzJfBUCyuHxLQvgfTrMvCk
- CWlJl28kmr9Po/sszvlNRMQX1RJItl1O1KG/roW6R9oh4WTyIRUd5+Msi4wZF5+wuWpCmc8E8Rb
- C5ck4mOzngXfDHUrWjg==
-X-Authority-Analysis: v=2.4 cv=QJtlhwLL c=1 sm=1 tr=0 ts=69aeacc6 cx=c_pps
- a=IZJwPbhc+fLeJZngyXXI0A==:117 a=ZePRamnt/+rB5gQjfz0u9A==:17
- a=kj9zAlcOel0A:10 a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_K5XuSEh1TEqbUxoQ0s3:22
- a=2l7Dc_Zt4Q8SQ2GGjncA:9 a=CjuIK1q_8ugA:10 a=uG9DUKGECoFWVXl0Dc02:22
-X-Proofpoint-ORIG-GUID: WP3R6BR8iYqgIQjUvoVnHKB9zCBsNtU1
-X-Proofpoint-GUID: WP3R6BR8iYqgIQjUvoVnHKB9zCBsNtU1
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-09_03,2026-03-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 suspectscore=0 adultscore=0 spamscore=0 phishscore=0
- lowpriorityscore=0 malwarescore=0 priorityscore=1501 bulkscore=0
- impostorscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2602130000
- definitions=main-2603090104
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260309_041935_478527_CFE12D6E 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20260309_050523_254779_A17D2854 
+X-CRM114-Status: GOOD (  20.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,13 +95,254 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 09, 2026 at 09:39:34AM +0000, Russell King (Oracle) wrote:
-> The maximum number of queues is a compile time constant of only eight.
-> This makes using a 32-bit quantity wastefulf. Instead, use u8 for
-> these and their associated variables.
-> 
-> When reading the DT properties, saturdate at U8_MAX. Provided the core
-Nit: saturate?
+From: Irving-CH Lin <irving-ch.lin@mediatek.com>
 
-	Ayaan
+Add support for the MT8189 apmixedsys clock controller, which provides
+PLLs generated from SoC 26m.
+
+Signed-off-by: Irving-CH Lin <irving-ch.lin@mediatek.com>
+---
+ drivers/clk/mediatek/Kconfig                 |  13 ++
+ drivers/clk/mediatek/Makefile                |   1 +
+ drivers/clk/mediatek/clk-mt8189-apmixedsys.c | 192 +++++++++++++++++++
+ 3 files changed, 206 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt8189-apmixedsys.c
+
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index 2c09fd729bab..80813d7e02af 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -815,6 +815,19 @@ config COMMON_CLK_MT8188_WPESYS
+ 	help
+ 	  This driver supports MediaTek MT8188 Warp Engine clocks.
+ 
++config COMMON_CLK_MT8189
++	bool "Clock driver for MediaTek MT8189"
++	depends on ARM64 || COMPILE_TEST
++	select COMMON_CLK_MEDIATEK
++	select COMMON_CLK_MEDIATEK_FHCTL
++	default ARCH_MEDIATEK
++	help
++	  Enable this option to support the clock management for MediaTek MT8189 SoC. This
++	  includes handling of all primary clock functions and features specific to the MT8189
++	  platform. Enabling this driver ensures that the system's clock functionality aligns
++	  with the MediaTek MT8189 hardware capabilities, providing efficient management of
++	  clock speeds and power consumption.
++
+ config COMMON_CLK_MT8192
+ 	tristate "Clock driver for MediaTek MT8192"
+ 	depends on ARM64 || COMPILE_TEST
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index d8736a060dbd..66577ccb9b93 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -123,6 +123,7 @@ obj-$(CONFIG_COMMON_CLK_MT8188_VDOSYS) += clk-mt8188-vdo0.o clk-mt8188-vdo1.o
+ obj-$(CONFIG_COMMON_CLK_MT8188_VENCSYS) += clk-mt8188-venc.o
+ obj-$(CONFIG_COMMON_CLK_MT8188_VPPSYS) += clk-mt8188-vpp0.o clk-mt8188-vpp1.o
+ obj-$(CONFIG_COMMON_CLK_MT8188_WPESYS) += clk-mt8188-wpe.o
++obj-$(CONFIG_COMMON_CLK_MT8189) += clk-mt8189-apmixedsys.o
+ obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192-apmixedsys.o clk-mt8192.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
+diff --git a/drivers/clk/mediatek/clk-mt8189-apmixedsys.c b/drivers/clk/mediatek/clk-mt8189-apmixedsys.c
+new file mode 100644
+index 000000000000..9c91b7fed87e
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8189-apmixedsys.c
+@@ -0,0 +1,192 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2025 MediaTek Inc.
++ * Author: Qiqi Wang <qiqi.wang@mediatek.com>
++ */
++
++#include <linux/clk.h>
++#include <linux/delay.h>
++#include <linux/mfd/syscon.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/of_address.h>
++#include <linux/of_device.h>
++#include <linux/platform_device.h>
++#include <linux/slab.h>
++
++#include "clk-fhctl.h"
++#include "clk-mtk.h"
++#include "clk-pll.h"
++
++#include <dt-bindings/clock/mediatek,mt8189-clk.h>
++
++#define MT8189_PLL_FMAX		(3800UL * MHZ)
++#define MT8189_PLL_FMIN		(1500UL * MHZ)
++#define MT8189_PLLEN_OFS	0x70
++#define MT8189_INTEGER_BITS	8
++
++#define PLL_SETCLR(_id, _name, _reg, _en_setclr_bit,		\
++			_rstb_setclr_bit, _flags, _pd_reg,	\
++			_pd_shift, _tuner_reg, _tuner_en_reg,	\
++			_tuner_en_bit, _pcw_reg, _pcw_shift,	\
++			_pcwbits) {				\
++		.id = _id,					\
++		.name = _name,					\
++		.en_reg = MT8189_PLLEN_OFS,			\
++		.reg = _reg,					\
++		.pll_en_bit = _en_setclr_bit,			\
++		.rst_bar_mask = BIT(_rstb_setclr_bit),		\
++		.flags = _flags,				\
++		.fmax = MT8189_PLL_FMAX,			\
++		.fmin = MT8189_PLL_FMIN,			\
++		.pd_reg = _pd_reg,				\
++		.pd_shift = _pd_shift,				\
++		.tuner_reg = _tuner_reg,			\
++		.tuner_en_reg = _tuner_en_reg,			\
++		.tuner_en_bit = _tuner_en_bit,			\
++		.pcw_reg = _pcw_reg,				\
++		.pcw_shift = _pcw_shift,			\
++		.pcwbits = _pcwbits,				\
++		.pcwibits = MT8189_INTEGER_BITS,		\
++	}
++
++static const struct mtk_pll_data apmixed_plls[] = {
++	PLL_SETCLR(CLK_APMIXED_ARMPLL_LL, "armpll-ll", 0x204, 18,
++		   0, PLL_AO, 0x208, 24, 0, 0, 0, 0x208, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_ARMPLL_BL, "armpll-bl", 0x214, 17,
++		   0, PLL_AO, 0x218, 24, 0, 0, 0, 0x218, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_CCIPLL, "ccipll", 0x224, 16,
++		   0, PLL_AO, 0x228, 24, 0, 0, 0, 0x228, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_MAINPLL, "mainpll", 0x304, 15,
++		   23, HAVE_RST_BAR | PLL_AO,
++		   0x308, 24, 0, 0, 0, 0x308, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_UNIVPLL, "univpll", 0x314, 14,
++		   23, HAVE_RST_BAR, 0x318, 24, 0, 0, 0, 0x318, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_MMPLL, "mmpll", 0x324, 13,
++		   23, HAVE_RST_BAR, 0x328, 24, 0, 0, 0, 0x328, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_MFGPLL, "mfgpll", 0x504, 7,
++		   0, 0, 0x508, 24, 0, 0, 0, 0x508, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_APLL1, "apll1", 0x404, 11,
++		   0, 0, 0x408, 24, 0x040, 0x00c, 0, 0x40c, 0, 32),
++	PLL_SETCLR(CLK_APMIXED_APLL2, "apll2", 0x418, 10,
++		   0, 0, 0x41c, 24, 0x044, 0x00c, 1, 0x420, 0, 32),
++	PLL_SETCLR(CLK_APMIXED_EMIPLL, "emipll", 0x334, 12,
++		   0, PLL_AO, 0x338, 24, 0, 0, 0, 0x338, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_APUPLL2, "apupll2", 0x614, 2,
++		   0, 0, 0x618, 24, 0, 0, 0, 0x618, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_APUPLL, "apupll", 0x604, 3,
++		   0, 0, 0x608, 24, 0, 0, 0, 0x608, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_TVDPLL1, "tvdpll1", 0x42c, 9,
++		   0, 0, 0x430, 24, 0, 0, 0, 0x430, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_TVDPLL2, "tvdpll2", 0x43c, 8,
++		   0, 0, 0x440, 24, 0, 0, 0, 0x440, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_ETHPLL, "ethpll", 0x514, 6,
++		   0, 0, 0x518, 24, 0, 0, 0, 0x518, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_MSDCPLL, "msdcpll", 0x524, 5,
++		   0, 0, 0x528, 24, 0, 0, 0, 0x528, 0, 22),
++	PLL_SETCLR(CLK_APMIXED_UFSPLL, "ufspll", 0x534, 4,
++		   0, 0, 0x538, 24, 0, 0, 0, 0x538, 0, 22),
++};
++
++#define FH(_pllid, _fhid, _offset) {				\
++		.data = {					\
++			.pll_id = _pllid,			\
++			.fh_id = _fhid,				\
++			.fh_ver = FHCTL_PLLFH_V2,		\
++			.fhx_offset = _offset,			\
++			.dds_mask = GENMASK(21, 0),		\
++			.slope0_value = 0x6003c97,		\
++			.slope1_value = 0x6003c97,		\
++			.sfstrx_en = BIT(2),			\
++			.frddsx_en = BIT(1),			\
++			.fhctlx_en = BIT(0),			\
++			.tgl_org = BIT(31),			\
++			.dvfs_tri = BIT(31),			\
++			.pcwchg = BIT(31),			\
++			.dt_val = 0x0,				\
++			.df_val = 0x9,				\
++			.updnlmt_shft = 16,			\
++			.msk_frddsx_dys = GENMASK(23, 20),	\
++			.msk_frddsx_dts = GENMASK(19, 16),	\
++		},						\
++	}
++
++static struct mtk_pllfh_data pllfhs[] = {
++	FH(CLK_APMIXED_ARMPLL_LL, 0, 0x003C),
++	FH(CLK_APMIXED_ARMPLL_BL, 1, 0x0050),
++	FH(CLK_APMIXED_CCIPLL, 2, 0x0064),
++	FH(CLK_APMIXED_MAINPLL, 3, 0x0078),
++	FH(CLK_APMIXED_MMPLL, 4, 0x008C),
++	FH(CLK_APMIXED_MFGPLL, 5, 0x00A0),
++	FH(CLK_APMIXED_EMIPLL, 6, 0x00B4),
++	FH(CLK_APMIXED_TVDPLL1, 7, 0x00C8),
++	FH(CLK_APMIXED_TVDPLL2, 8, 0x00DC),
++	FH(CLK_APMIXED_MSDCPLL, 9, 0x00F0),
++	FH(CLK_APMIXED_UFSPLL, 10, 0x0104),
++	FH(CLK_APMIXED_APUPLL, 11, 0x0118),
++	FH(CLK_APMIXED_APUPLL2, 12, 0x012c),
++};
++
++static const struct of_device_id of_match_clk_mt8189_apmixed[] = {
++	{ .compatible = "mediatek,mt8189-apmixedsys" },
++	{ /* sentinel */ }
++};
++MODULE_DEVICE_TABLE(of, of_match_clk_mt8189_apmixed);
++
++static int clk_mt8189_apmixed_probe(struct platform_device *pdev)
++{
++	int r;
++	struct clk_hw_onecell_data *clk_data;
++	struct device_node *node = pdev->dev.of_node;
++	const u8 *fhctl_node = "mediatek,mt8189-fhctl";
++
++	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(apmixed_plls));
++	if (!clk_data)
++		return -ENOMEM;
++
++	fhctl_parse_dt(fhctl_node, pllfhs, ARRAY_SIZE(pllfhs));
++
++	r = mtk_clk_register_pllfhs(&pdev->dev, apmixed_plls, ARRAY_SIZE(apmixed_plls),
++				    pllfhs, ARRAY_SIZE(pllfhs), clk_data);
++	if (r)
++		goto free_apmixed_data;
++
++	r = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, clk_data);
++	if (r)
++		goto unregister_plls;
++
++	platform_set_drvdata(pdev, clk_data);
++
++	return 0;
++
++unregister_plls:
++	mtk_clk_unregister_plls(apmixed_plls, ARRAY_SIZE(apmixed_plls),
++				clk_data);
++free_apmixed_data:
++	mtk_free_clk_data(clk_data);
++	return r;
++}
++
++static void clk_mt8189_apmixed_remove(struct platform_device *pdev)
++{
++	struct device_node *node = pdev->dev.of_node;
++	struct clk_hw_onecell_data *clk_data = platform_get_drvdata(pdev);
++
++	of_clk_del_provider(node);
++	mtk_clk_unregister_pllfhs(apmixed_plls, ARRAY_SIZE(apmixed_plls), pllfhs,
++				  ARRAY_SIZE(pllfhs), clk_data);
++	mtk_free_clk_data(clk_data);
++}
++
++static struct platform_driver clk_mt8189_apmixed_drv = {
++	.probe = clk_mt8189_apmixed_probe,
++	.remove = clk_mt8189_apmixed_remove,
++	.driver = {
++		.name = "clk-mt8189-apmixed",
++		.of_match_table = of_match_clk_mt8189_apmixed,
++	},
++};
++
++module_platform_driver(clk_mt8189_apmixed_drv);
++MODULE_DESCRIPTION("MediaTek MT8189 apmixed clocks driver");
++MODULE_LICENSE("GPL");
+-- 
+2.45.2
+
 
