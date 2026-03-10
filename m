@@ -4,127 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CF66FD4F2E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 20:06:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 168DBEB105F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 21:05:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=maRFdwFBItYsUxmd+9t8qBnRnOAkqFEhAXgbmQcZeFE=; b=Ej8bqPvXnjnvq5/J6SZ0aNXLGy
-	TkR2WL0hK86/xNHJ4RgtYHXW8KwUxpPQX3924Kt/QvYsv7CZdnmqTMRA93ShuLbegzBHUlviqgnKR
-	U8zV158a19Nj3wyPHJZqb2rUc7fQJATUVsuKnb/OWchj9zuwlGGJ5dpC2pkROcoBddYF2RDy9TLjn
-	SnfsmOf6hnZ0unByeP5/fUMEOJGqg6kjuHd4KWmS7PPHlVk3wgK32/aTk8tyCxsWEeq9+0+uc4xFB
-	GPR69WRVES2kOtGCRTNUCDr9ewWFagIT6K9t5qWqj7UF6uoioUonE2R4ZxP2LEdvxyYwbZG93lUjS
-	EONx35ZA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c9AWzHTwWVclR8te48aBpya81xWgoZsHqkTM0vU7Ga0=; b=baoNjcg3Rj3ji0mCzvK7qdshdY
+	fghRhb52/n9hmXN1V8Oq0Yc2infgw9SpmLQl5kCsuuEO/8tiIEH6S41pvZ5iqfXOty2jRlXc75f8i
+	P/9U25d7UgulnFZNCOElBCd5oFGr9fli9eejSgXeYUgogi79oIgR0pHu5eIGf+rmwMZXTrH0pMYxQ
+	EBpRMxODgACgwH/ZUMKooEYLKd/L4QYdcbOGMP6M3Ms4JSdb09DUJs3NTG2k77azyxWE/QwDYnuju
+	qIWBHGWakWjX89wVEqImVmAu7rqSlOi9hed1XwEbAOBivnZKR4HP0+2+Y45jblhFpJZyUcFK8dxjY
+	GWgkIZAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w03Lx-0000000AEEn-2YaT;
-	Tue, 10 Mar 2026 20:06:53 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1w04GF-0000000AHKn-1dxN;
+	Tue, 10 Mar 2026 21:05:03 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w03Lu-0000000AEBx-0vur
-	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Mar 2026 20:06:51 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-8299f1ca86fso2212709b3a.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 13:06:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773173209; x=1773778009; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=maRFdwFBItYsUxmd+9t8qBnRnOAkqFEhAXgbmQcZeFE=;
-        b=lIqm4WZj/zjBg4NhowP4X3bYcQ68UFEz37FJkneK3n4TR1cCTZWLMESOjpg15tm8YN
-         l+TgtsO8R7n0wbxV/x+PMZ61iOVBFbbuO5FCz7WsthhOQoW8u397Mgy7EphF+cgrfEC6
-         Ieuy/pMJ7RDSBvGNpMeNLucJixqmKCsoTkg49EWp6cnkY5aPBbsmPTxnBCoXEPsR/007
-         jW7vhfcbUufP/9NuzFkRrt8ML+BU0MRpRgaaPLFnDmbbr3KkHvQmXgNgDmbwWPQV8VIj
-         +O7xIApJZGkjUw3zBhYc7RkeNaQwZcJ+Af+29r168Mt2La8VovTJbuMVfsGRmQ1/Fdmz
-         HTFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773173209; x=1773778009;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=maRFdwFBItYsUxmd+9t8qBnRnOAkqFEhAXgbmQcZeFE=;
-        b=l4cWwzoJbKH412gNINb6VgUnmINSY9lo12OWRtXtkhJgD7uWRZOlBPvWnTRIgWIlBY
-         PvhBf66rGT5+hSV8iRBALTE44UfiMg/DEKFjIvQg6m1iRJ6RtLZI/Ri+Lbrpw/8WCQRZ
-         Bby9VcYqc4mZjdKk8CyLCzqACYH6gAJ7F+LU13L07cpkfkBA8EIpxIfbNMX+8hfLfHJz
-         7Dp/PncM+a/NpCEA0iUOgsLrU1L7Chh9vAXVadv9CeRs09iKO7DwPSlXEJ1OiRD+CVr7
-         mJeqeVBzoZr0YZEPmLDp5+eiLUzx2hIC2wQEYkVkTs107Bxr6L+TajsSws1AZRvJPfjO
-         O+HA==
-X-Forwarded-Encrypted: i=1; AJvYcCWXGlGqNqOwZQHvZ4BgzidxPVXHjlAxvkYjGRJTlYkDeyjrqjeD9Al5v/gU5tEAZkFWAGi1Qd2mh9ZWEHxeWQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxeJRzLyE8OUW8Pbq90xc5rMHrRSqkyeg0hz9D43B+5YplwtszD
-	SkBspwblpCRdjsgi4QttTU5dyMctUt9AzV+wbxx5oWzt/6PiSr7rmHuA
-X-Gm-Gg: ATEYQzzA/5pN6DqyYOusW66C8+pcOFlu61+iMdfgo1vkWEsffowqb4YWbw+JnKAmKm5
-	13Hw6fYrFQDvsLl2Ih3wabAMDFfMGbkiI0wDVFi8obtwUrB4ie/yZpNb+gqHgLJsotpEzMtW8qO
-	ddAwIMRXdQocW6aiM+f5bUah8A14UmiruO8IPy/DZNYanwU7dP+rQmYT1jFT/zM+N2IThaYGSiz
-	KjAbi+r+BnN4TlvqHPXPM0qw6vM2lIhEVNAkV6V5R9Ewv8XXPzc94wspHARYCBtZsHihNOCxaHH
-	SG+zf73tHsn+2RYIsjlIi5B5YUtbUV4XTt/1yiBkgebK2CB+l7Q62Y54c9UtxZzVRGC8DAxGKNY
-	8zMNxI6Xp2OdzUBmRJEV2n5wrPEULIzC9Z0uqP9tjQSbzWUf+TmtpTgnd+3CsIXtOT1wQ4Vz/fB
-	fzsfCxDiYkeRUsG4ObEYCz7GpQTCpN7jZjd4i49H5HVZV6xwM5
-X-Received: by 2002:a05:6a00:ac0f:b0:829:7e6d:cf1f with SMTP id d2e1a72fcca58-829f721be36mr107593b3a.51.1773173209251;
-        Tue, 10 Mar 2026 13:06:49 -0700 (PDT)
-Received: from hu-ckantibh-hyd.qualcomm.com ([202.46.23.25])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-829f6dc2d0asm101660b3a.13.2026.03.10.13.06.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Mar 2026 13:06:48 -0700 (PDT)
-From: Sanjay Chitroda <sanjayembeddedse@gmail.com>
-X-Google-Original-From: Sanjay Chitroda <sanjayembedded@gmail.com>
-To: jic23@kernel.org,
-	m.tretter@pengutronix.de,
-	mchehab@kernel.org,
-	p.zabel@pengutronix.de,
-	tiffany.lin@mediatek.com,
-	andrew-ct.chen@mediatek.com,
-	yunfei.dong@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	johan@kernel.org,
-	elder@kernel.org,
-	gregkh@linuxfoundation.org,
-	pure.logic@nexus-software.ie
-Cc: dlechner@baylibre.com,
-	nuno.sa@analog.com,
-	andy@kernel.org,
-	kernel@pengutronix.de,
-	kees@kernel.org,
-	nabijaczleweli@nabijaczleweli.xyz,
-	marcelo.schmitt1@gmail.com,
-	maudspierings@gocontroll.com,
-	hverkuil+cisco@kernel.org,
-	ribalda@chromium.org,
-	straube.linux@gmail.com,
-	dan.carpenter@linaro.org,
-	lukagejak5@gmail.com,
-	ethantidmore06@gmail.com,
-	samasth.norway.ananda@oracle.com,
-	karanja99erick@gmail.com,
-	s9430939@naver.com,
-	tglx@kernel.org,
-	mingo@kernel.org,
-	sun.jian.kdev@gmail.com,
-	weibu@redadmin.org,
-	linux-iio@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	greybus-dev@lists.linaro.org,
-	linux-staging@lists.linux.dev,
-	sanjayembeddedse@gmail.com,
-	skhan@linuxfoundation.org
-Subject: [PATCH 7/7] staging: rtl8723bs: simplify cleanup using __free
-Date: Wed, 11 Mar 2026 01:35:13 +0530
-Message-Id: <20260310200513.2162018-8-sanjayembedded@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260310200513.2162018-1-sanjayembedded@gmail.com>
+	id 1w04GB-0000000AHJb-1das;
+	Tue, 10 Mar 2026 21:05:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1773176699; x=1804712699;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=UX70/uvem7sLv8Ucq/JRSZ/teAciH2nfogDypRcnTQo=;
+  b=KM7AEOWRTEMznkGvunBCZWY/r0SdITfHFd9fA+Esx20sm0Kc2eR5jMNP
+   RG+7xWKIJ53/K14rvLhgWFATeee1UQa0Hpkkv3tuwAB6jRkHjCrk9So4p
+   dWU2dgN+D83QzKlfjVWQWo0QsoJXVpJcyxFpvljzzpfha3smNWfxKHjwj
+   kSRSAZV9Pp0hjb/rYOsLgIqI2f9vYrx9JwtFyoXBbthQVuflJJlHsjyPQ
+   tyLDinPzQLXYw8rHh8xaZVTOn1dynOn5tmvxHOgvz0L8QoPHSC7vdaJVq
+   OpF7/VLFP9K++sJusneNPXYoYqjmneBute2ylmw2sYxWhtlGnk7u0ygXw
+   g==;
+X-CSE-ConnectionGUID: qAbC5t8WRCWmNv916DaXBw==
+X-CSE-MsgGUID: 7NORSNYXRbqN1bvyt+rL8g==
+X-IronPort-AV: E=McAfee;i="6800,10657,11725"; a="84565551"
+X-IronPort-AV: E=Sophos;i="6.23,112,1770624000"; 
+   d="scan'208";a="84565551"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Mar 2026 14:04:55 -0700
+X-CSE-ConnectionGUID: EsXsJIaRSueYoALZrd0I0Q==
+X-CSE-MsgGUID: O19iVFFVT2GKY+obqTRQZQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,112,1770624000"; 
+   d="scan'208";a="219358122"
+Received: from vpanait-mobl.ger.corp.intel.com (HELO localhost) ([10.245.244.54])
+  by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Mar 2026 14:04:45 -0700
+Date: Tue, 10 Mar 2026 23:04:42 +0200
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Sanjay Chitroda <sanjayembeddedse@gmail.com>
+Cc: jic23@kernel.org, m.tretter@pengutronix.de, mchehab@kernel.org,
+	p.zabel@pengutronix.de, tiffany.lin@mediatek.com,
+	andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	johan@kernel.org, elder@kernel.org, gregkh@linuxfoundation.org,
+	pure.logic@nexus-software.ie, dlechner@baylibre.com,
+	nuno.sa@analog.com, andy@kernel.org, kernel@pengutronix.de,
+	kees@kernel.org, nabijaczleweli@nabijaczleweli.xyz,
+	marcelo.schmitt1@gmail.com, maudspierings@gocontroll.com,
+	hverkuil+cisco@kernel.org, ribalda@chromium.org,
+	straube.linux@gmail.com, dan.carpenter@linaro.org,
+	lukagejak5@gmail.com, ethantidmore06@gmail.com,
+	samasth.norway.ananda@oracle.com, karanja99erick@gmail.com,
+	s9430939@naver.com, tglx@kernel.org, mingo@kernel.org,
+	sun.jian.kdev@gmail.com, weibu@redadmin.org,
+	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev, skhan@linuxfoundation.org
+Subject: Re: [PATCH 0/7] drivers: Simplify cleanup paths using __free
+Message-ID: <abCHaqV77MtrEqjU@ashevche-desk.local>
 References: <20260310200513.2162018-1-sanjayembedded@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260310200513.2162018-1-sanjayembedded@gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_130650_285951_18874700 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20260310_140459_466122_81FA099D 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,252 +101,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sanjay Chitroda <sanjayembeddedse@gmail.com>
+On Wed, Mar 11, 2026 at 01:35:06AM +0530, Sanjay Chitroda wrote:
+> From: Sanjay Chitroda <sanjayembeddedse@gmail.com>
+> 
+> Hi all,
+> 
+> This patch series replaces manual cleanup and explicit kfree() calls with
+> the __free attribute from <linux/cleanup.h>. This modernizes the memory
+> management style and simplifies common error paths without altering any
+> functional behavior.
+> 
+> The __free attribute provides automatic scope-based cleanup, making
+> resource management clearer and reducing the chances of missing cleanup
+> on early returns.
+> 
+> No functional changes are intended in this series.
+> 
+> Testing:
+>   - Compiled with W=1
+>   - Build-tested on i86_64
+> 
+> Based on:
+>   <linux-v7.0-rc2>
+> 
+> Feel free to share your valuable input in context of the cleanup API.
 
-Replace manual cleanup logic with __free attribute from cleanup.h. This
-removes explicit kfree() calls and simplifies the error handling paths.
+Do you put random people in the Cc list?
+You may try my script [1] to see the difference.
 
-No functional change intended for kmalloc().
+[1]: https://github.com/andy-shev/home-bin-tools/blob/master/ge2maintainer.sh
 
-Signed-off-by: Sanjay Chitroda <sanjayembeddedse@gmail.com>
----
- .../staging/rtl8723bs/hal/rtl8723b_hal_init.c | 13 ++-----
- drivers/staging/rtl8723bs/hal/sdio_ops.c      | 37 ++++---------------
- 2 files changed, 11 insertions(+), 39 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-index 8d259820f103..2badf7d1aec4 100644
---- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-+++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-@@ -627,7 +627,6 @@ static void hal_ReadEFuse_WiFi(
- 	u8 *pbuf
- )
- {
--	u8 *efuseTbl = NULL;
- 	u16 eFuse_Addr = 0;
- 	u8 offset, wden;
- 	u8 efuseHeader, efuseExtHdr, efuseData;
-@@ -640,7 +639,7 @@ static void hal_ReadEFuse_WiFi(
- 	if ((_offset + _size_byte) > EFUSE_MAX_MAP_LEN)
- 		return;
- 
--	efuseTbl = kmalloc(EFUSE_MAX_MAP_LEN, GFP_ATOMIC);
-+	u8 *efuseTbl __free(kfree) = kmalloc(EFUSE_MAX_MAP_LEN, GFP_ATOMIC);
- 	if (!efuseTbl)
- 		return;
- 
-@@ -702,8 +701,6 @@ static void hal_ReadEFuse_WiFi(
- 
- 	rtw_hal_set_hwreg(padapter, HW_VAR_EFUSE_BYTES, (u8 *)&used);
- 	rtw_hal_set_hwreg(padapter, HW_VAR_EFUSE_USAGE, (u8 *)&efuse_usage);
--
--	kfree(efuseTbl);
- }
- 
- static void hal_ReadEFuse_BT(
-@@ -713,7 +710,6 @@ static void hal_ReadEFuse_BT(
- 	u8 *pbuf
- )
- {
--	u8 *efuseTbl;
- 	u8 bank;
- 	u16 eFuse_Addr;
- 	u8 efuseHeader, efuseExtHdr, efuseData;
-@@ -728,7 +724,7 @@ static void hal_ReadEFuse_BT(
- 	if ((_offset + _size_byte) > EFUSE_BT_MAP_LEN)
- 		return;
- 
--	efuseTbl = kmalloc(EFUSE_BT_MAP_LEN, GFP_ATOMIC);
-+	u8 *efuseTbl __free(kfree) = kmalloc(EFUSE_BT_MAP_LEN, GFP_ATOMIC);
- 	if (!efuseTbl)
- 		return;
- 
-@@ -739,7 +735,7 @@ static void hal_ReadEFuse_BT(
- 
- 	for (bank = 1; bank < 3; bank++) { /*  8723b Max bake 0~2 */
- 		if (hal_EfuseSwitchToBank(padapter, bank) == false)
--			goto exit;
-+			return;
- 
- 		eFuse_Addr = 0;
- 
-@@ -804,9 +800,6 @@ static void hal_ReadEFuse_BT(
- 
- 	rtw_hal_set_hwreg(padapter, HW_VAR_EFUSE_BT_BYTES, (u8 *)&used);
- 	rtw_hal_set_hwreg(padapter, HW_VAR_EFUSE_BT_USAGE, (u8 *)&efuse_usage);
--
--exit:
--	kfree(efuseTbl);
- }
- 
- void Hal_ReadEFuse(
-diff --git a/drivers/staging/rtl8723bs/hal/sdio_ops.c b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-index c9cb20c61a2b..303139a75551 100644
---- a/drivers/staging/rtl8723bs/hal/sdio_ops.c
-+++ b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-@@ -179,9 +179,7 @@ static u32 sdio_read32(struct intf_hdl *intfhdl, u32 addr)
- 	if (shift == 0) {
- 		val = sd_read32(intfhdl, ftaddr, NULL);
- 	} else {
--		u8 *tmpbuf;
--
--		tmpbuf = kmalloc(8, GFP_ATOMIC);
-+		u8 *tmpbuf __free(kfree) = kmalloc(8, GFP_ATOMIC);
- 		if (!tmpbuf)
- 			return SDIO_ERR_VAL32;
- 
-@@ -189,8 +187,6 @@ static u32 sdio_read32(struct intf_hdl *intfhdl, u32 addr)
- 		sd_read(intfhdl, ftaddr, 8, tmpbuf);
- 		memcpy(&le_tmp, tmpbuf + shift, 4);
- 		val = le32_to_cpu(le_tmp);
--
--		kfree(tmpbuf);
- 	}
- 	return val;
- }
-@@ -223,19 +219,17 @@ static s32 sdio_readN(struct intf_hdl *intfhdl, u32 addr, u32 cnt, u8 *buf)
- 	if (shift == 0) {
- 		err = sd_read(intfhdl, ftaddr, cnt, buf);
- 	} else {
--		u8 *tmpbuf;
- 		u32 n;
- 
- 		ftaddr &= ~(u16)0x3;
- 		n = cnt + shift;
--		tmpbuf = kmalloc(n, GFP_ATOMIC);
-+		u8 *tmpbuf __free(kfree) = kmalloc(n, GFP_ATOMIC);
- 		if (!tmpbuf)
- 			return -ENOMEM;
- 
- 		err = sd_read(intfhdl, ftaddr, n, tmpbuf);
- 		if (!err)
- 			memcpy(buf, tmpbuf + shift, cnt);
--		kfree(tmpbuf);
- 	}
- 	return err;
- }
-@@ -326,22 +320,18 @@ static s32 sdio_writeN(struct intf_hdl *intfhdl, u32 addr, u32 cnt, u8 *buf)
- 	if (shift == 0) {
- 		err = sd_write(intfhdl, ftaddr, cnt, buf);
- 	} else {
--		u8 *tmpbuf;
- 		u32 n;
- 
- 		ftaddr &= ~(u16)0x3;
- 		n = cnt + shift;
--		tmpbuf = kmalloc(n, GFP_ATOMIC);
-+		u8 *tmpbuf __free(kfree) = kmalloc(n, GFP_ATOMIC);
- 		if (!tmpbuf)
- 			return -ENOMEM;
- 		err = sd_read(intfhdl, ftaddr, 4, tmpbuf);
--		if (err) {
--			kfree(tmpbuf);
-+		if (err)
- 			return err;
--		}
- 		memcpy(tmpbuf + shift, buf, cnt);
- 		err = sd_write(intfhdl, ftaddr, n, tmpbuf);
--		kfree(tmpbuf);
- 	}
- 	return err;
- }
-@@ -491,7 +481,6 @@ static s32 _sdio_local_read(
- 	struct intf_hdl *intfhdl;
- 	u8 mac_pwr_ctrl_on;
- 	s32 err;
--	u8 *tmpbuf;
- 	u32 n;
- 
- 	intfhdl = &adapter->iopriv.intf;
-@@ -503,7 +492,7 @@ static s32 _sdio_local_read(
- 		return _sd_cmd52_read(intfhdl, addr, cnt, buf);
- 
- 	n = round_up(cnt, 4);
--	tmpbuf = kmalloc(n, GFP_ATOMIC);
-+	u8 *tmpbuf __free(kfree) = kmalloc(n, GFP_ATOMIC);
- 	if (!tmpbuf)
- 		return -ENOMEM;
- 
-@@ -511,8 +500,6 @@ static s32 _sdio_local_read(
- 	if (!err)
- 		memcpy(buf, tmpbuf, cnt);
- 
--	kfree(tmpbuf);
--
- 	return err;
- }
- 
-@@ -529,7 +516,6 @@ s32 sdio_local_read(
- 	struct intf_hdl *intfhdl;
- 	u8 mac_pwr_ctrl_on;
- 	s32 err;
--	u8 *tmpbuf;
- 	u32 n;
- 
- 	intfhdl = &adapter->iopriv.intf;
-@@ -544,7 +530,7 @@ s32 sdio_local_read(
- 		return sd_cmd52_read(intfhdl, addr, cnt, buf);
- 
- 	n = round_up(cnt, 4);
--	tmpbuf = kmalloc(n, GFP_ATOMIC);
-+	u8 *tmpbuf __free(kfree) = kmalloc(n, GFP_ATOMIC);
- 	if (!tmpbuf)
- 		return -ENOMEM;
- 
-@@ -552,8 +538,6 @@ s32 sdio_local_read(
- 	if (!err)
- 		memcpy(buf, tmpbuf, cnt);
- 
--	kfree(tmpbuf);
--
- 	return err;
- }
- 
-@@ -570,7 +554,6 @@ s32 sdio_local_write(
- 	struct intf_hdl *intfhdl;
- 	u8 mac_pwr_ctrl_on;
- 	s32 err;
--	u8 *tmpbuf;
- 
- 	intfhdl = &adapter->iopriv.intf;
- 
-@@ -583,7 +566,7 @@ s32 sdio_local_write(
- 	)
- 		return sd_cmd52_write(intfhdl, addr, cnt, buf);
- 
--	tmpbuf = kmalloc(cnt, GFP_ATOMIC);
-+	u8 *tmpbuf __free(kfree) = kmalloc(cnt, GFP_ATOMIC);
- 	if (!tmpbuf)
- 		return -ENOMEM;
- 
-@@ -591,8 +574,6 @@ s32 sdio_local_write(
- 
- 	err = sd_write(intfhdl, addr, cnt, tmpbuf);
- 
--	kfree(tmpbuf);
--
- 	return err;
- }
- 
-@@ -880,16 +861,14 @@ void sd_int_dpc(struct adapter *adapter)
- 	}
- 
- 	if (hal->sdio_hisr & SDIO_HISR_TXERR) {
--		u8 *status;
- 		u32 addr;
- 
--		status = kmalloc(4, GFP_ATOMIC);
-+		u8 *status  __free(kfree) = kmalloc(4, GFP_ATOMIC);
- 		if (status) {
- 			addr = REG_TXDMA_STATUS;
- 			hal_sdio_get_cmd_addr_8723b(adapter, WLAN_IOREG_DEVICE_ID, addr, &addr);
- 			_sd_read(intfhdl, addr, 4, status);
- 			_sd_write(intfhdl, addr, 4, status);
--			kfree(status);
- 		}
- 	}
- 
 -- 
-2.34.1
+With Best Regards,
+Andy Shevchenko
+
 
 
