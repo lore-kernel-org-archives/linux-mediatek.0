@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D55A9F3C27D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 09:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F70EA8550
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 09:20:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QwT2Q2k4ZVZq63ntd2xl/RXmkonC2qNh8yVsjLAAWlg=; b=NpbSHqbzdF7UIllNdeeHDb8G6O
-	Rv0/3HC0+tHa51oHn8zMZjkycuruvEr/iF8dUwVRFYtT1t90Qah9V6fcHkv6KAL33sjU6yVzjxGxF
-	7WppuyO64lqUAJ3fHGAhf5bSIqpBcToJBv7ecGXFzuF58fQP2fpfuvLCZrAI8t1sDgU8BwbTcpeiL
-	ZjZXXkeFAT5WdF+cCBwJoGYbVICnMg1dLrkAVDJ5TsTh7ZeEzJrou9QvK6PKxcocmlcO4io12KGJE
-	WZSRT0NWkCIDpBisARpJQkFqTRtcZIyQjJkojIRQJk9viwqAVPrdxVtDASEOF/YwIudtOKnXO+bjx
-	d9isn5HA==;
+	bh=0m2X60AbRiPH6OZp8R6Aq2XdXF8mhqQvbj4ZWhmMt60=; b=xcTGq13V6ervZ4mGhxe6xcLcKT
+	tKT7OeC9lXezKj9IGzI7Bd5VILs4LGx0vvuPzg7txNiDizwarxepe1eY6VHKV3W8UcxGG1vwQwGkc
+	ZByWh0lPLAh/F/uMEsCVC6eEUCkDVm6M+bSw1Yv5cw1QWrKf21XDdJnpT4R2Yn0JrrRhqxGVP9Kz/
+	54BFqJlE9devOlL0FwAQv5pICWQYK2e3GhxAAThqqo2/F/6G94mTHXs/+xRtTzYwaexlNpRS7zs9p
+	3hfEbiWFprU7E3Q9VtO7zke3TucUVdW+5ar1qd+xKfYw0fQdenop9lqwnrg1KTap6NvFeS8rgk42l
+	dCTkhyxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vztFy-000000094NY-3m3g;
-	Tue, 10 Mar 2026 09:20:02 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1vztG1-000000094PS-0gn4;
+	Tue, 10 Mar 2026 09:20:05 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vztFw-000000094M7-0QSZ
+	id 1vztFy-000000094NK-42Bj
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Mar 2026 09:20:01 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-829759ca646so3156632b3a.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 02:19:59 -0700 (PDT)
+	Tue, 10 Mar 2026 09:20:04 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-823c56765fdso6285702b3a.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 02:20:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1773134399; x=1773739199; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1773134402; x=1773739202; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=QwT2Q2k4ZVZq63ntd2xl/RXmkonC2qNh8yVsjLAAWlg=;
-        b=oOsyXal4NvG1T+X8ZC3IrW0JIlDgRphy02u2f/alCdf1SetJLIU6sZZmlY/G8KXlLp
-         f6f/2kDKZCFq5h8ZAMGUikWISNaMXPuz9LNx7nw3IasSB5zWYJG2AfAQdZrUJrOLlmR9
-         njutbJA6ZaMjXTzCLIeTs+Ib9Q1zahdC1B2jY=
+        bh=0m2X60AbRiPH6OZp8R6Aq2XdXF8mhqQvbj4ZWhmMt60=;
+        b=GHEBWb5a9GPpxtIYQzRpCZQVoXj5gFOqTzYEyzSACfoXAD7pix5pPHHgatLcKfhPwh
+         2oSwz8oOPDbgyLVJrkjizEnYH3LevyzR4ZEsT8XoXaBtQGdpqOO7VLmvb878Rslu8hWP
+         ImKaqUEHHTeen8LHIGqTPI0iWkxyBE1/mWOxA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773134399; x=1773739199;
+        d=1e100.net; s=20230601; t=1773134402; x=1773739202;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=QwT2Q2k4ZVZq63ntd2xl/RXmkonC2qNh8yVsjLAAWlg=;
-        b=uxiDEhftOxoLHXQTUL0DY31evZV8HE7vLodXqTNq5oDAq3i8WsUgYi3zotaTHSubUt
-         U1wtEpScqIojkoLsSH6ieCubeHvwpGToIfeiDzBeIjSR2gG/kimf2DPemOVNypagLEIo
-         Rn0FHcSO57FE7eYw8TWGAIl1b8DFjQOVleXyWhc3apRDYHU5hVbckztMRmxyjnPl5Ua2
-         2wN9TgXbdcs8oLD1IE6t8Vw33HlpDgw2xRTkuZ8eEfkgjWXQxpTuVQWANhl+gTvXVhcv
-         OXvJnnjrDexcZttbiZghdnlq6kWQTTJ1jyHePehr+JmM+U71qzRgaff0u45v2VHBS2IB
-         94cA==
-X-Forwarded-Encrypted: i=1; AJvYcCVska535WhCcjhFpgY0WAgOIE/z6NyP+sNSHawbr6438er0mRiV2BblrVWY+IWq4PR2TO/wD7G5fVyjIztDvw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwLbU78kJldZOES/4k5rQl/rCvKDY5DwzPy4tevE9Z5CB4/MM4i
-	eeyH1OaEI9fS/hPo26ySvCi5UL+DvP95C/JCYI+/vuQgGVVZ+OpWbgS4iRDKeF9RxA==
-X-Gm-Gg: ATEYQzzj0PxlqPruB6u1HkkWIRgTRzh1tYZ8Ddx4LR9LmPO7Afq3b+qfnSoZVUYeM7p
-	vkn8yiSrkbnjQxtKFwBhvri+kXj6fVq+Tj1sKuby37PfnbU0JDd4oChqMqN5XynOa15xuJCM19q
-	sYYbav7oRyz4cHB5S77yONTl2jS0JPHcFFGb+KljYhVjaZycgpjhdnkipO0oUAOYgekQSzh5DBt
-	9JvVmFKTNiVBwst6cmD9s6ugzFqdYQ32oytyywRI4+WIsnUtBjzzA1F+bU/2v8HxTisWbyCL8YF
-	HM4PtiOooeL9K3naoWjTgWaimh1AAT1BjDgOiclAl/+P4MfkpIlrhi7gX9+pM4w/XIJonzfdxsi
-	17vIahtTJCQklrXA6NF/OsXYQI1JlxyaI75Vdy+YC53HbBGMhxOOZ86EJyK4cuqGdkYoBYlxbGU
-	9rax7wCCsxnhxbm32s/jZ/BHas28O2abSJwlUNIDf+cUNbtApMG0oBA5Do+b6BRfnB+F1f4wiz2
-	EjyYBMP
-X-Received: by 2002:a05:6a00:aa03:b0:824:b181:f492 with SMTP id d2e1a72fcca58-829a2f9ba69mr13107253b3a.45.1773134399292;
-        Tue, 10 Mar 2026 02:19:59 -0700 (PDT)
+        bh=0m2X60AbRiPH6OZp8R6Aq2XdXF8mhqQvbj4ZWhmMt60=;
+        b=RG/O+XOGw5PUy69+u4TDA1mFMmYfUP3J7yeoJ3uFvzEwkgAwHcHSIGLMsdXyFqvges
+         CLz91VBdW6+jRiof2eJWQSC2xOxZBnudJfyfJFiUY4xobRTWmZFj7zWx8CdkPKp4YRhn
+         RbD59gFxbYHT9PgY9/g2XZP+q5sdImPjCI7vxNFW6N062bgUorrtsTLoZXo2ytYWCzle
+         PK+86tvay8AszykjjlCCjHBkzOJuIy79TY2/FoaBPfr0j1FdeFJF0WB+oxoOc2JjWZNu
+         qM5/Mh0QgjyB39Z2IeeI5MwZTLva8sOnzCR9bynmaEcFBzcv4pOMjuKF4p3OSkahXtYz
+         gb/w==
+X-Forwarded-Encrypted: i=1; AJvYcCWAtxKRrBgbTr/2LcD1PodVWrFg7gwxgceDK26NzBwwtc5qTwyS8HbZkmvMUDXoPjGTAJqr/zF7irz8jdPnpw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxezegbsMhrhxlw1lyzjmFXO0HfUo+TBCSO/7kotXOxmC1ZVRE8
+	5JFgToP1a0aKr2ZvvFfQMUP2ze/BVTHrcnumvvcCKrjz6DIbL+ZaI5L2CqNahA8oLA==
+X-Gm-Gg: ATEYQzwmoCB4dnVRZnfSwGF9GZFLirmqIl8AGfu6+Iwu1We3Upr7CjDNODP6I2QO1tm
+	q9zZ1f5sBRk7oD4UaUPwYmRc2DUPJCjhK95j53tUcGfYoElxBuPA2W+csjc0ZyrmD7dTbQZhbce
+	khoKkKpOcpgl27+XhPvdPcCHXVnNiha4g0rBv1F7m8vlzlJ3rOerV+iFSh+9cPKgK3iObvoWvMY
+	kewcX8i8sW79hX116ginO7x6Cp/jgdqVK/eHsgljjsOxobCo+rATl5KvBKbjoEi7VQtO1LeQgL8
+	fOA/cGVME/6Cwbf2T+eDajK7P6irZ8UirMGiiIzE++x1QLgUDI56gkPjZOV5MNDpCfaQdZxL/dD
+	hr8fbXW5dHOeENKoUYzVGJ+dhxxCCHnkBNG5wk7hF4UZej8e9DI1R0Vn5MIwRk3xzS4umzSPe1F
+	nix/LZVDkuiLYXLYfMqz5eelNU9hCnG3VThXLpSBbPR2VNrt2Jr6OMR7jSFfJAfp5XynyMRkNug
+	7l974Kf
+X-Received: by 2002:a05:6a00:9510:b0:829:7ee0:1a44 with SMTP id d2e1a72fcca58-829a2d86b38mr12332941b3a.4.1773134402170;
+        Tue, 10 Mar 2026 02:20:02 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:ee38:e01e:e888:6900])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-829a48a3b74sm16965190b3a.45.2026.03.10.02.19.56
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-829a48a3b74sm16965190b3a.45.2026.03.10.02.19.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Mar 2026 02:19:58 -0700 (PDT)
+        Tue, 10 Mar 2026 02:20:01 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -81,18 +81,18 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-pci@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: [PATCH v4 1/7] PCI: mediatek-gen3: Clean up mtk_pcie_parse_port() with dev_err_probe()
-Date: Tue, 10 Mar 2026 17:19:40 +0800
-Message-ID: <20260310091947.2742004-2-wenst@chromium.org>
+	Bjorn Helgaas <helgaas@kernel.org>
+Subject: [PATCH v4 2/7] PCI: mediatek-gen3: Move mtk_pcie_setup_irq() out of mtk_pcie_setup()
+Date: Tue, 10 Mar 2026 17:19:41 +0800
+Message-ID: <20260310091947.2742004-3-wenst@chromium.org>
 X-Mailer: git-send-email 2.53.0.473.g4a7958ca14-goog
 In-Reply-To: <20260310091947.2742004-1-wenst@chromium.org>
 References: <20260310091947.2742004-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_022000_161550_45BF776F 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20260310_022003_018715_878DF941 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,88 +107,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_pcie_parse_port() in the pcie-mediatek-gen driver has a bunch of
+mtk_pcie_setup_irq() just sets up the IRQ domains for PCI INTx and MSI,
+and chains them to the controller's interrupt. It's not really related
+to the setup of the actual PCIe controller.
 
-    if (err) {
-    	dev_err(dev, "error message\n");
-	return err; # or goto
-    }
+Move the mtk_pcie_setup_irq() call out of and before mtk_pcie_setup(),
+and add a proper error message for when it fails. Reorder
+mtk_pcie_irq_teardown() in the remove callback to follow. Also create
+an error path in the probe function.
 
-patterns.
-
-Simplify these with dev_err_probe(). The system also gains proper
-deferred probe messages that can be seen in
-
-    /sys/kernel/debug/devices_deferred
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
+Suggested-by: Bjorn Helgaas <helgaas@kernel.org>
+Link: https://lore.kernel.org/all/20260309215056.GA603013@bhelgaas/
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/pci/controller/pcie-mediatek-gen3.c | 36 ++++++---------------
- 1 file changed, 10 insertions(+), 26 deletions(-)
+Changes since v3:
+- New patch
+---
+ drivers/pci/controller/pcie-mediatek-gen3.c | 25 ++++++++++++---------
+ 1 file changed, 14 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index 75ddb8bee168..1939cac995b5 100644
+index 1939cac995b5..04ae195d36c2 100644
 --- a/drivers/pci/controller/pcie-mediatek-gen3.c
 +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -876,10 +876,8 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 	if (!regs)
- 		return -EINVAL;
- 	pcie->base = devm_ioremap_resource(dev, regs);
--	if (IS_ERR(pcie->base)) {
--		dev_err(dev, "failed to map register base\n");
--		return PTR_ERR(pcie->base);
--	}
-+	if (IS_ERR(pcie->base))
-+		return dev_err_probe(dev, PTR_ERR(pcie->base), "failed to map register base\n");
+@@ -1152,10 +1152,6 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
+ 	if (err)
+ 		goto err_setup;
  
- 	pcie->reg_base = regs->start;
- 
-@@ -888,34 +886,20 @@ static int mtk_pcie_parse_port(struct mtk_gen3_pcie *pcie)
- 
- 	ret = devm_reset_control_bulk_get_optional_shared(dev, num_resets,
- 							  pcie->phy_resets);
--	if (ret) {
--		dev_err(dev, "failed to get PHY bulk reset\n");
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to get PHY bulk reset\n");
- 
- 	pcie->mac_reset = devm_reset_control_get_optional_exclusive(dev, "mac");
--	if (IS_ERR(pcie->mac_reset)) {
--		ret = PTR_ERR(pcie->mac_reset);
--		if (ret != -EPROBE_DEFER)
--			dev_err(dev, "failed to get MAC reset\n");
+-	err = mtk_pcie_setup_irq(pcie);
+-	if (err)
+-		goto err_setup;
 -
--		return ret;
--	}
-+	if (IS_ERR(pcie->mac_reset))
-+		return dev_err_probe(dev, PTR_ERR(pcie->mac_reset), "failed to get MAC reset\n");
+ 	return 0;
  
- 	pcie->phy = devm_phy_optional_get(dev, "pcie-phy");
--	if (IS_ERR(pcie->phy)) {
--		ret = PTR_ERR(pcie->phy);
--		if (ret != -EPROBE_DEFER)
--			dev_err(dev, "failed to get PHY\n");
--
--		return ret;
--	}
-+	if (IS_ERR(pcie->phy))
-+		return dev_err_probe(dev, PTR_ERR(pcie->phy), "failed to get PHY\n");
+ err_setup:
+@@ -1181,21 +1177,28 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+ 	pcie->soc = device_get_match_data(dev);
+ 	platform_set_drvdata(pdev, pcie);
  
- 	pcie->num_clks = devm_clk_bulk_get_all(dev, &pcie->clks);
--	if (pcie->num_clks < 0) {
--		dev_err(dev, "failed to get clocks\n");
--		return pcie->num_clks;
--	}
-+	if (pcie->num_clks < 0)
-+		return dev_err_probe(dev, pcie->num_clks, "failed to get clocks\n");
++	err = mtk_pcie_setup_irq(pcie);
++	if (err)
++		return dev_err_probe(dev, err, "Failed to setup IRQ domains\n");
++
+ 	err = mtk_pcie_setup(pcie);
+ 	if (err)
+-		return err;
++		goto err_tear_down_irq;
  
- 	ret = of_property_read_u32(dev->of_node, "num-lanes", &num_lanes);
- 	if (ret == 0) {
+ 	host->ops = &mtk_pcie_ops;
+ 	host->sysdata = pcie;
+ 
+ 	err = pci_host_probe(host);
+-	if (err) {
+-		mtk_pcie_irq_teardown(pcie);
+-		mtk_pcie_power_down(pcie);
+-		return err;
+-	}
++	if (err)
++		goto err_power_down_pcie;
+ 
+ 	return 0;
++
++err_power_down_pcie:
++	mtk_pcie_power_down(pcie);
++err_tear_down_irq:
++	mtk_pcie_irq_teardown(pcie);
++	return err;
+ }
+ 
+ static void mtk_pcie_remove(struct platform_device *pdev)
+@@ -1208,8 +1211,8 @@ static void mtk_pcie_remove(struct platform_device *pdev)
+ 	pci_remove_root_bus(host->bus);
+ 	pci_unlock_rescan_remove();
+ 
+-	mtk_pcie_irq_teardown(pcie);
+ 	mtk_pcie_power_down(pcie);
++	mtk_pcie_irq_teardown(pcie);
+ }
+ 
+ static void mtk_pcie_irq_save(struct mtk_gen3_pcie *pcie)
 -- 
 2.53.0.473.g4a7958ca14-goog
 
