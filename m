@@ -4,64 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 959F1FCA195
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Mar 2026 21:51:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E83CAFCC9A5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 00:53:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	bh=ZntSHXqEo3ImxNaMQiKGSIFbusn63yMLDARVeTc62Ro=; b=A8lpAQ3nHqLHOESbNepNhDgNlL
-	fFOzJeBxqc9Qr/S4tmighAFId6yLUt+s4H7RuabRbwViwvt5/w1KMc/eF6UQembJ61LTnHTrP3Pnu
-	tK1nQwyWKPB2sV/dD7PdZdcsTzQAzdsqEw/j+z1ylQrWYZBQZEzgxCQ8wR4Jf638CegZLazrP6cjT
-	Yo9S5jiDzKHu9YZulamqSrqoBTlm/FKf59fRxl4Brrd09gn/sEcRCrbxaOO3/gtj+xDo6YoXc5mH0
-	eFP9ytAoppbvMY0JsNv5kh2zxsaZzKax3sDYeDGYI5ORi1HVe+/KtZxTrQlvAsYbfy71ZK78HEAnl
-	HCNEsnpw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4cZtpNr2xeZJdyeS+qSCfwN53SQaiuSNWhMXvj97KgU=; b=pd3fcOAGsYqP2PiiYePxrY8va0
+	Zd2twDBVDFhv43Dd6qdDFPChBB4n85tvFWtgcK1iDj5JuefkX9+lVii83ZE7fkGbun35SElr74hD3
+	ftvbKqBIaws5aF4DHN8NWtPJkBMuVKfB7roWMJvq5LqTOWujcIRWcSjUnG43Jhn9+9HA4Wwi8QvOd
+	DN2zUeDZYnXd4oeALO1vBRoCwHXni60+BdXaO7ZIUQMK5TLtQ6nsmikDsM7X1PN5tDyT0Wjhtj8R8
+	ewOZ+QT5AuLBBzaU+V4qAVqC+sC42kpVG6i1OXe6iNKH3IQ33oKl3E+EZNGDnUuun00XcdsMXkCNT
+	UVKsmZiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vziVB-00000008CCr-0Ez5;
-	Mon, 09 Mar 2026 21:51:01 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vzlM6-00000008QjY-1Aht;
+	Tue, 10 Mar 2026 00:53:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vziV9-00000008CCk-2WBO
-	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Mar 2026 21:50:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B2D80600B0;
-	Mon,  9 Mar 2026 21:50:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E5B1C4CEF7;
-	Mon,  9 Mar 2026 21:50:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773093058;
-	bh=0rHU4vVj5DDN/y+/1giPCET0LnAzh1NaHD6e8qPrZF8=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=Di/baXmPPmn9o5zJbG+i9e25kyn30G17bL9443J73Kz+v0d8NxBGDc3oCZ8sV4Hny
-	 D9ITb6dvSmFe9BPbHLACOYV6uMFVH8yYfmrp9kqEEIWhIKZsM97emJdjh92aopZCyc
-	 WImntTK9htQXu/d/xYkv9hcKr/uxARPuoRruK8VglYx60Kdf3l+ou9TmxqhvvdpEOG
-	 DUoeFilZCg1wElf2OOe9Oc+QTxWZjT9xXPZlD0FnTH1lEjgW9x7mjeBrYz7wRsker8
-	 SzYbZuUXdiuYaay3m8U3ENxME82NgcoTbhPquL4sEztt8mpZpJ6eigeBicumSkzzIv
-	 55rYQoGM4eofA==
-Date: Mon, 9 Mar 2026 16:50:56 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Bartosz Golaszewski <brgl@bgdev.pl>, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH v3 5/7] PCI: mediatek-gen3: Integrate new pwrctrl API
-Message-ID: <20260309215056.GA603013@bhelgaas>
+	id 1vzlM4-00000008Qj4-1z1B;
+	Tue, 10 Mar 2026 00:53:49 +0000
+X-UUID: 95dfc90a1c1b11f19e7563141e833ce8-20260309
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4cZtpNr2xeZJdyeS+qSCfwN53SQaiuSNWhMXvj97KgU=;
+	b=LxNgOmsuCA+OBysOpOjLeRdPngXjdk2dJ2PcG5qayP314VIaP4rMNfhiwB/VkwdeOVJL3p2JJVOE+otzoJWy3f1qXsrOIohjXyGZRYcrZSwYR2mODKl5n61MPfh427ItEJK1TPbPidcGYAhvJKZkLb3Y0gXX3FAefxlba5h5CiE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:a80b33cd-8372-4787-b322-bf978686fb15,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:a7030d5c-a957-4259-bcca-d3af718d7034,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|123|836|888|898,TC:-5,Content:0|
+	15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 95dfc90a1c1b11f19e7563141e833ce8-20260309
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <ed.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1392198413; Mon, 09 Mar 2026 17:53:42 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 10 Mar 2026 08:53:40 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 10 Mar 2026 08:53:40 +0800
+From: <ed.tsai@mediatek.com>
+To: <bvanassche@acm.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>,
+	<peter.wang@mediatek.com>, <alice.chao@mediatek.com>,
+	<naomi.chu@mediatek.com>, <chun-hung.wu@mediatek.com>, Ed Tsai
+	<ed.tsai@mediatek.com>
+Subject: [PATCH v2 0/2] ufs: add delay for VCC ramp-up stability
+Date: Tue, 10 Mar 2026 08:52:26 +0800
+Message-ID: <20260310005230.4001904-2-ed.tsai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAGXv+5FhSO=+AUaeDSXgM9Je9uTVYq-EW43z9PAuvVKumK6oMg@mail.gmail.com>
+Content-Type: text/plain
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260309_175348_521508_30345216 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,63 +88,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 09, 2026 at 01:24:34PM +0800, Chen-Yu Tsai wrote:
-> On Sat, Mar 7, 2026 at 4:59 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
-> > On Mon, Mar 02, 2026 at 01:31:05PM +0800, Chen-Yu Tsai wrote:
-> > > With the new PCI pwrctrl API and PCI slot binding and power drivers, we
-> > > now have a way to describe and power up WiFi/BT adapters connected
-> > > through a PCIe or M.2 slot, or exploded onto the mainboard itself.
-> ...
+From: Ed Tsai <ed.tsai@mediatek.com>
 
-> > So now we have:
-> >
-> >   mtk_pcie_probe
-> >     mtk_pcie_setup
-> >       mtk_pcie_startup_port
-> >         mtk_pcie_device_power_up      <-- power up
-> >         mtk_pcie_device_power_down    # error path
-> >       mtk_pcie_setup_irq              # set up controller IRQ
-> >       mtk_pcie_device_power_down      # if mtk_pcie_setup_irq() failed
-> >     pci_host_probe                    # enumerate downstream devices
-> >     mtk_pcie_device_power_down        # if pci_host_probe() failed
-> >
-> > I think this is kind of a mess because mtk_pcie_device_power_down() is
-> > called from so many places, and some of them aren't connected to the
-> > mtk_pcie_device_power_up().
-> >
-> > In mtk_pcie_setup(), mtk_pcie_setup_irq() only deals with the
-> > *controller* IRQ and has nothing to do with the downstream devices.  I
-> > think mtk_pcie_setup_irq() should be done before
-> > mtk_pcie_startup_port() so we can abort before even powering up those
-> > devices.
-> 
-> Makes sense to me. I think it can even be moved outside of mtk_pcie_setup()?
-> That way we don't have mtk_pcie_irq_teardown() in two error paths?
-> 
-> I can send a follow up patch for that.
+Hi,
 
-What if we do those cleanups first?  That would make this patch quite
-a bit simpler and we wouldn't have to undo things.  It would be a
-shame to have a complicated patch to add this stuff, then another
-complicated patch to clean it up.
+This patch series resolves a link stability issue found on our certain
+platforms where the VCC regulator has a slow ramp-up time.
 
-> > In mtk_pcie_startup_port(), mtk_pcie_enable_msi() and the PCIe
-> > translation window setup also don't have anything to do with the
-> > downstream devices, so I think they should be done before
-> > calling mtk_pcie_device_power_up().  The only thing there that needs
-> > the downstream devices powered up is waiting for the link to come up.
-> 
-> My guess is that if the link up fails, then mtk_pcie_startup_port() is
-> going to error out anyway, so it maybe made sense to make sure a device
-> is actually present before doing any more work.
+To fix this, a delay is needed after VCC is turned on. The solution is
+implemented in two parts:
 
-Doesn't sound very convincing to me.  mtk_pcie_set_trans_table() and
-the window setup are local things with no timeouts or anything.  I
-think the logical structure is way more important than some kind of
-hand-crafted work avoidance.
+1. Introduce the new host quirks, UFSHCD_QUIRK_VCC_ON_DELAY.
+2. Apply in our new platform with UFS5 device to ensure the VCC is
+   ready before we enable the clocks.
 
-Separating the PCIe controller setup from things related to the link
-and downstream devices is pretty high on my list.
+Changes in v2:
+- Fix typos and wording issues.
 
-Bjorn
+Ed Tsai (2):
+  ufs: core: Add quirks for VCC ramp-up delay
+  ufs: host: mediatek: Add VCC on delay for stability
+
+ drivers/ufs/core/ufshcd.c       | 12 ++++++++++++
+ drivers/ufs/host/ufs-mediatek.c | 11 +++++++++++
+ drivers/ufs/host/ufs-mediatek.h |  4 ++++
+ include/ufs/ufshcd.h            |  6 ++++++
+ 4 files changed, 33 insertions(+)
+
+-- 
+2.45.2
+
 
