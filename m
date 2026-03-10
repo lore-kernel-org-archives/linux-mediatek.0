@@ -4,62 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEAC1EB105A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 14:47:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FE41EB106E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 15:18:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vAuXFE6SQ6ahZ8jbVQg2624wAFWJM5XMUjKARgfeT7I=; b=AzUcNNwlqM+Dvl50TV2dHxr0WA
-	vIR5ofQ/zKIBt1gmqP7vcDnjccUAJ21TJT/ksONiJsi15hcGuif1By3zx0OBa68UzHRxXpUIMq1JI
-	8wUM/z22cZgOa+TUIZcxgXTe/5j7KkCIlq8oeJfRv7B3H9C8nfWdMffQO40dnR1BAKYfaxUpCXhl0
-	nDrpWeR9XMpav2AK3MhtoOInHPo6LX1ACwnJXE8TYQDoiT+1vK/1OrCcKCAw2yOdL8sH88SiK9IU1
-	XK/e7z276tcKyN6qlH3ZQRR3IRJZpZnN2gSGeBgyaFDTE/YeGM7dfSFZaAYppWdypUJwhB5ySiZG7
-	aVnlHPgg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EDNookU0hrIPHrvSVbsYWuvBbqDJuN6Bhrtvi7qyIQ8=; b=UbxCXwkgGNrxNj2RIpkQmtFaNM
+	7A3scH97jCnesdHe7znkaruL/76SdL+CZmRRBHtlR93/c1SmFDkW626ii/cNc2c2yir8iXOAl4F0P
+	ekwQcr4quvcZE6tBh3CWJrlBL/pFWPvygEDAdPBNAjDwGPLmAOYZ9iqbPbrW8WL9P4dsWspke7m7F
+	LbHeU9QLbUwfzrNZ/DW5Qdwq4rOVif9iU3+kMynZx9qfMUGwUCz685jjXi8xzDt4T1MmdNlMah9Ek
+	shqF4J+8KM88quHqMMgeMDOIZUXhWZnUe9BLPm7h/CyAZJoZ3kwj2puGk29AgpZmc+DEAS7g6MdyO
+	Aan/eyUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzyMi-00000009j7U-12VU;
-	Tue, 10 Mar 2026 14:47:20 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vzyqa-00000009mXm-49fv;
+	Tue, 10 Mar 2026 15:18:13 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzyMg-00000009j75-1vBQ;
-	Tue, 10 Mar 2026 14:47:18 +0000
+	id 1vzyqY-00000009mWV-1Yic;
+	Tue, 10 Mar 2026 15:18:11 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8992160126;
-	Tue, 10 Mar 2026 14:47:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1CFDC19423;
-	Tue, 10 Mar 2026 14:47:16 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A1FD241AD1;
+	Tue, 10 Mar 2026 15:18:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08DA7C2BC86;
+	Tue, 10 Mar 2026 15:18:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773154037;
-	bh=BfbSFgreWiIQp6vhNWoyJ3zBM1Hl+T/lGWmkHzyJQyM=;
-	h=From:Date:Subject:To:Cc:From;
-	b=Dx24Uj8hsLn46ThSQMA2cMAwMvcFgW5G41kDLuikgo5F+QsEFhhHVscq6NeVDMHvp
-	 GGBcIhYHAhdDdMkKRA0zL7abaq/VYSAV1gBBsCH6PwMb0evo/CPo/Opu+E8LGGpIB1
-	 wist/aS+MXSMsSTU+AVDZAtINkF1C9cDWRPObFv6atdC6tiRoTsA+cmjxH6lz2eiyh
-	 jlZGfnd9sGePZoDs7JwJOqry1PnFkMr2VvlC/HpI4dskFBRZiXIi+WTN2sAw6DWr+Y
-	 xH7jzhefqrZTaFluiQbqjGkd9LpQ4DX3lbBQKTMKnY29428YOJqaM96ljIS2K+mhWt
-	 ulM2UB5hHdSCw==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 10 Mar 2026 15:46:53 +0100
-Subject: [PATCH net-next] net: airoha: select QDMA block according LAN/WAN
- configuration
+	s=k20201202; t=1773155889;
+	bh=XIw9pqpUWIeq3yDxTXxxYJ6+f/jDlw5eFm/WTH3oCiw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=R0MFyXz93cEAEqNTcTWR1jqicCK8xxXJZN/8WYq3aghC5ct8IymPbzVMSTP9uJnW5
+	 F7LM0XooUEucp6mXLB10WGmvUIiShNRf9IxqITR3ljeeBnhcJ7fdsPXX42z+5DI/mH
+	 iXXTJYQr90ModKovVwBI8HlAOWFRzf4TBHAV//p4DJ1TlXg5lP+lAcIf6agkFRlTb3
+	 V0/UADtXeeLftUPpnvIetO1+CFGYTx3QvGGfLFe0UhrkMA33egvcGLjjTf2RkVzvcm
+	 gbpS6kODF96S4GKmNi+g80yBaWqs+9mdddhAJBY/sgzo6dR1XvSPEVlQJaz0+bxjEP
+	 JfRnmZH65rloA==
+Date: Tue, 10 Mar 2026 15:18:03 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-sound@vger.kernel.org, linux-media@vger.kernel.org,
+	Mathieu Poirier <mathieuu.poirier@linaro.org>
+Subject: Re: [PATCH v2 4/5] ASoC: qcom:: Constify GPR packet being send over
+ GPR interface
+Message-ID: <8499f2ba-f382-4cc8-bd27-b775219bded8@sirena.org.uk>
+References: <20260310-rpmsg-send-const-v2-0-0e94c5db9bf4@oss.qualcomm.com>
+ <20260310-rpmsg-send-const-v2-4-0e94c5db9bf4@oss.qualcomm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260310-airoha-qdma-lan-wan-mode-v1-1-64ec74dea872@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MsQqEMBAFf0W2diEmYOGviMViXnRBEy+BU5D8+
- 4Urpphi5qWCrCg0dS9lfLVoik2GvqN1l7iB1Tcna+xo3GBYNKdd+ONP4UMi340zefDovLMWCAi
- OWn5lBH3+63mp9Qdg8uBtagAAAA==
-X-Change-ID: 20260310-airoha-qdma-lan-wan-mode-63d322eefef3
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="AS+M3oS+e+7iUDOB"
+Content-Disposition: inline
+In-Reply-To: <20260310-rpmsg-send-const-v2-4-0e94c5db9bf4@oss.qualcomm.com>
+X-Cookie: A fool and his honey are soon parted.
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260310_081810_431984_E98E4A75 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,120 +86,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Select the QDMA block used to send the traffic to host cpu according to
-LAN/WAN port confiugration:
-- QDMA0 is used for LAN devices
-- QDMA1 is used for WAN devices
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- drivers/net/ethernet/airoha/airoha_eth.c | 18 ++++++++----------
- drivers/net/ethernet/airoha/airoha_eth.h |  1 +
- 2 files changed, 9 insertions(+), 10 deletions(-)
+--AS+M3oS+e+7iUDOB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 3e9ec5c178f86fdd055e079078a23461edf97951..b4563b5d53bbf174d45548a5efc6fdfb79d33c19 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1754,11 +1754,13 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- static int airoha_dev_init(struct net_device *dev)
- {
- 	struct airoha_gdm_port *port = netdev_priv(dev);
--	struct airoha_qdma *qdma = port->qdma;
--	struct airoha_eth *eth = qdma->eth;
-+	struct airoha_eth *eth = port->eth;
- 	u32 fe_cpu_port;
- 	u8 ppe_id;
- 
-+	/* QDMA0 is used for lan ports while QDMA1 is used for WAN ports */
-+	port->qdma = &eth->qdma[!airoha_is_lan_gdm_port(port)];
-+	port->dev->irq = port->qdma->irq_banks[0].irq;
- 	airoha_set_macaddr(port, dev->dev_addr);
- 
- 	switch (port->id) {
-@@ -1782,7 +1784,7 @@ static int airoha_dev_init(struct net_device *dev)
- 		}
- 		fallthrough;
- 	default: {
--		u8 qdma_id = qdma - &eth->qdma[0];
-+		u8 qdma_id = port->qdma - &eth->qdma[0];
- 
- 		/* For PPE1 select cpu port according to the running QDMA. */
- 		fe_cpu_port = qdma_id ? FE_PSE_PORT_CDM2 : FE_PSE_PORT_CDM1;
-@@ -2866,11 +2868,10 @@ bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
- }
- 
- static int airoha_alloc_gdm_port(struct airoha_eth *eth,
--				 struct device_node *np, int index)
-+				 struct device_node *np)
- {
- 	const __be32 *id_ptr = of_get_property(np, "reg", NULL);
- 	struct airoha_gdm_port *port;
--	struct airoha_qdma *qdma;
- 	struct net_device *dev;
- 	int err, p;
- 	u32 id;
-@@ -2901,7 +2902,6 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 		return -ENOMEM;
- 	}
- 
--	qdma = &eth->qdma[index % AIROHA_MAX_NUM_QDMA];
- 	dev->netdev_ops = &airoha_netdev_ops;
- 	dev->ethtool_ops = &airoha_ethtool_ops;
- 	dev->max_mtu = AIROHA_MAX_MTU;
-@@ -2913,7 +2913,6 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 	dev->features |= dev->hw_features;
- 	dev->vlan_features = dev->hw_features;
- 	dev->dev.of_node = np;
--	dev->irq = qdma->irq_banks[0].irq;
- 	SET_NETDEV_DEV(dev, eth->dev);
- 
- 	/* reserve hw queues for HTB offloading */
-@@ -2934,7 +2933,7 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 	port = netdev_priv(dev);
- 	u64_stats_init(&port->stats.syncp);
- 	spin_lock_init(&port->stats.lock);
--	port->qdma = qdma;
-+	port->eth = eth;
- 	port->dev = dev;
- 	port->id = id;
- 	eth->ports[p] = port;
-@@ -3034,7 +3033,6 @@ static int airoha_probe(struct platform_device *pdev)
- 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
- 		airoha_qdma_start_napi(&eth->qdma[i]);
- 
--	i = 0;
- 	for_each_child_of_node(pdev->dev.of_node, np) {
- 		if (!of_device_is_compatible(np, "airoha,eth-mac"))
- 			continue;
-@@ -3042,7 +3040,7 @@ static int airoha_probe(struct platform_device *pdev)
- 		if (!of_device_is_available(np))
- 			continue;
- 
--		err = airoha_alloc_gdm_port(eth, np, i++);
-+		err = airoha_alloc_gdm_port(eth, np);
- 		if (err) {
- 			of_node_put(np);
- 			goto error_napi_stop;
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 59ed7569f7c33620ea694ec52384a37e1917eaf8..8cfa94ec084a16d6b2d3c94c404f25904c1150e3 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -533,6 +533,7 @@ struct airoha_qdma {
- 
- struct airoha_gdm_port {
- 	struct airoha_qdma *qdma;
-+	struct airoha_eth *eth;
- 	struct net_device *dev;
- 	int id;
- 
+On Tue, Mar 10, 2026 at 12:22:38PM +0100, Krzysztof Kozlowski wrote:
+> gpr_send_pkt() and pkt_router_send_svc_pkt() only send the GPR packet
+> they receive, without any need to actually modify it, so mark the
+> pointer to GPR packet as pointer to const for code safety and code
+> self-documentation.  Several usersof this interface can follow up and
+> also operate on pointer to const.
 
----
-base-commit: 89fe91c65992a37863241e35aec151210efc53ce
-change-id: 20260310-airoha-qdma-lan-wan-mode-63d322eefef3
+Acked-by: Mark Brown <broonie@kernel.org>
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+--AS+M3oS+e+7iUDOB
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmmwNioACgkQJNaLcl1U
+h9A6IAgAhm8FHbxPDGSY7xlMzneUZ56MJqJMAxai8u7h2VB+HRv7t/osrrSgs+eV
+IOJM5ZSrW5Ayh1fQB6oJR22Mf5XLgxWFceEgQST5ZLepvrRacQg1sXGjnEh6p0yF
+mux1im7ljE0arSzYV2kgYaOxwHRPRiz62g7yBDd8eweU2NpQqCV+d80wJ3YgQI4A
+7M/CC5jZY6s/gCOuNySpsp0Z6nnlyDvDP5htfud/brHnj+bb5LsSS6+KAM7uYPwv
+sN7Ywkq68wsEVI+O5bBtwXGvW1C6Ucga9IqbX7N1ZgPpYObwQCChJq27ekcw/SAE
+WFepehfDBjcnivcMjQl9HBc5xRdxQQ==
+=9edh
+-----END PGP SIGNATURE-----
+
+--AS+M3oS+e+7iUDOB--
 
