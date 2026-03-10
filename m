@@ -4,101 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B69DEB104F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 11:23:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAC7CFD2D69
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 12:25:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GksBf/UiRqf0K26bAdDVUWIlZ0hLiFLN/66ysciWV5U=; b=r3jOLrtcNCoNsvpzUPvVIBvl+s
-	kyhirX2n+Y7cX+FD24qb8bxVY4ZkjIyXBytDaTMYrM22EOvpZoohx7BPA1xabtiVd9YobQu1PsxRF
-	VaYPl5OFY9hq9lkCjIabBqLcAiYNcNP2NdGMNqJ8J0nQVUUZe8Hs+eommQg30Ww3FTTauAW6BOoyj
-	R1RPbZy11IA1U0gDXDQikmkdEuxSEws3oDj6b9ciEYcuBlwdx3RvzDG/nKa+dGNwDVrKrOsR55qqb
-	USMUsWeU7iMRdVv0f5BhuKXs1Ckoayzcn1czUBi6fP+HvZ5MPZd+URHPT5zRThRPgA51diVTzThrT
-	VgqStsKA==;
+	bh=liZ2cxYZp/6QE1t62IyXlp8Jg6pdGNzadfn83X3cLh8=; b=chc6TfqXN2aHlqtXqWnz7I8ejK
+	3jPqX9I6r3rIYBRdisOYRpU/2XD32CVhUFVXIJVKw0NRdRO+2d8WKMcY+O7AQ+2gKBYws7fB6B/ZH
+	O3bOyc9RGAPJO6JaGah748TFtuhfMkJteJl6DnkEU90srjItnK2Xk3tRkpJPzTikwYSJ/GOJQGvgK
+	jPl8Yk9trFAGAO96nK/62lS3nxhUmrHkr0UgEd5p+YpqpC6UoeIgCX+g+FD602U0Lv1WZw71Uq9B1
+	3lHMLfXqfdV084LGlIYIryWQPz/DqPYK11qyzFPqAcKesNf+i/zWWi+94/SFCmKnod6IX/o2wFF0+
+	9xurw4tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvAz-00000009HNA-2iBX;
-	Tue, 10 Mar 2026 11:23:01 +0000
+	id 1vzw9r-00000009TpV-0zRJ;
+	Tue, 10 Mar 2026 12:25:55 +0000
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvAu-00000009HHZ-37d6
+	id 1vzw9n-00000009Tok-0Zbi
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Mar 2026 11:22:57 +0000
+	Tue, 10 Mar 2026 12:25:53 +0000
 Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62A97foV3754619
-	for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 11:22:56 GMT
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62A8tm1W3754749
+	for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 12:25:50 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	GksBf/UiRqf0K26bAdDVUWIlZ0hLiFLN/66ysciWV5U=; b=JXrm2uLQKi7kTLgq
-	M7V7Qg6nGlbCoe0gBMQXEx0E76BQcDjn9GoWrYegfbm1H3BfyRxczwgHHnF/D6X6
-	xos8XT9TiW6puiE0266007cOQwQIEgzlYToeQcuRE+N1xaWzaG47wFdjrKl9VLqd
-	/GRCCMTiXlVj90sMlIXXUMXTW45vp5glpqdgQpRjm6b4O8eT3kA2b76zr2BZfhiU
-	jM9QrP89Vzm5HvyePCqwwzgoXkt2aq7ldbf/hRWo7HTpdpzQ0eMbeiLsESVLLU0W
-	nYA9iCt5RwjXAVy05ov32SpzNz8J0dTces544DVoZyFfKrPIErRD+QV58eOeGTYJ
-	yxGDOw==
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com [209.85.222.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ct477jx6c-1
+	liZ2cxYZp/6QE1t62IyXlp8Jg6pdGNzadfn83X3cLh8=; b=C2E2/h1S9IIaiEH+
+	afjDal5/1jJXEex6fe77nvxycyOLnufZhgmzh6+OyjCXfH379LQTXZMBEI8kNSLI
+	eP8kAGAFE4TnZlLgVoKX9BD4Yh8N8E7Rh9yxmMRRkFsoWYJoLqMJpQAiOpYDlXsR
+	svYHQ5g9EU5N42NKUf1bZqn9KHI2i4vqdLrIEKlIGtuZZdzANPqUT/3Qa0M6SzBo
+	441KsnGfXtQlP9U1CnDlaALMQUAf3lByqSZeX6oA8xBcjEUY8Udaxj81x3/spweZ
+	Ntbz3kIv8cIVJdYJVPpcHmPC2ICxTG1YKndwfsbX2kzrPeyoCIeUFw2FdayD4/xK
+	dAAVGw==
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ct477k551-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 11:22:55 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-8cd773dd39bso2119607185a.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 04:22:55 -0700 (PDT)
+	for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 12:25:50 +0000 (GMT)
+Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-8cd81c571a5so1244833485a.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 05:25:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1773141775; x=1773746575; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=GksBf/UiRqf0K26bAdDVUWIlZ0hLiFLN/66ysciWV5U=;
-        b=iKF3nm6rIQWJzHz6vAiZICkB5TUgKP5n0uscSk2w1dQL9t5hA+fiLvThaaGBAL08H0
-         uhsFMj8Fxn8xSdXrWpSXYJ6hZ5aoJoTl4sWid8bVcJ3NL55wZNI83AITipyocFnKZjVK
-         sc2vLqxXw5GHkL2hxPV02+jM8/XSuye0hFTWPhnoASm5Evy5VKxuCw2ahXJcfb3zNXQG
-         t+ZN2x9wSbuRujylKQuoUoWxqzkYEDRpRGU6fFlRAx/mssM7DQ3sbTAJ1555Iw/DmG8R
-         jPrtnV0bI6yj7QzTMYbHaiPOOMuFfYAApxbWqZ7L4VW6vix+FNm0SYws+lEMmRYD0YTl
-         D0fg==
+        d=oss.qualcomm.com; s=google; t=1773145549; x=1773750349; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=liZ2cxYZp/6QE1t62IyXlp8Jg6pdGNzadfn83X3cLh8=;
+        b=LN8j1bVOJtW1ZQ6SVYNGH757XLZz1Vg1JFnaAZJhJY30O/BHq7i1elxC8dKpHvQaXL
+         lKJ+dTdDz0wlgqfLGX2DJEemRnYc7xnuUtPBAk8w4hVOc38CpFuDKa30tHEOmEcl3R/E
+         NxtJ7RIYXHdG0wjzGe587QE7Lx6hoNlI3hiSPI52+PRVwf7PP27OIiAyGTMaSoLrFlHu
+         nim30vLutzkEPdOzeYQc9WuJAV2HDu/kEgWPREC/nxDFp7XdDMjLaD4ZOhCIezenb6n4
+         fQroCOllOQmUB1mCPBVAONuaFXexLBM85eG/F/YVbNZ1NRmrRr8XX9sjj2udjCKYE+X7
+         vCHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773141775; x=1773746575;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=GksBf/UiRqf0K26bAdDVUWIlZ0hLiFLN/66ysciWV5U=;
-        b=RgRoRgaov3cNJvQ+k+rK4COCiMggn7a1XBPs+lKQylbMOdeA8Thf2Z66Lj7DN6XEb8
-         y9GMnNVZ97N42G++qG5hgvGr6ppUbNYl09ula/wtn2EtlO9X4HCefP1y5QvY3Dr8ha6D
-         EwlFruFMlWKqalsxb6y39zjQn5yu1vAhqESxybrtyDyoKTgi76PP3Wx7N6gO2kFHsHZ+
-         tU5bpVgWM6FIWNqmN1sVqVWLR5K6R8c0euewm/tQ1jPEmYovyAOV9lhRbhZhlJTjXsZX
-         plPybdqbL3gSWu4Lm1ck1dO95cGKmyokb8HUvmHmfmE30lSyOBkkEZpiRUleQdupLJO8
-         qk0A==
-X-Forwarded-Encrypted: i=1; AJvYcCX6M+PE/eFRG3J6dtKgoifDhXq/Nio8yuGEj4HpT6MPen1KB0Od3vxig8h/nZ/5QYpHEdb4YEUqFPixAb526Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxeVaJX6xIKPk+vwZxFrUV5IXrrBmaQcraj9AUCg27VqsFZ4z7V
-	jT+jD30e/qhM4cBEOlcqwMh7zakouQpEOKyNRHMm8iRTskfv6yj4X13cS9LoD5oJj7+Zzl3W/9a
-	TM+osu3vhQGi4V1o93hKw6X2/nBGIsuzF2mwSdYO4ILh9MylyBlNDAzDovQT/8yqDL95ptiHrFC
-	k=
-X-Gm-Gg: ATEYQzxXwbpx3BN+PUwshzg9t4gX+GWvsm0+PypIjNUZJdKubfd9nfanSwA1HGwv6Wg
-	HfrZbjVEtFTulMxSbySnpszVer3RUg0qsoVLRDBBGv5y1hcpGpxqK7wXUdmaKltiRxJq+oRnBmI
-	4m8rI9doEpKuIJIW9iOm/X9x/BXsRgcDKoZ6lCIbB4gsoL5IxF/Lh5XJZfrv69MXwVTTkavSs4L
-	9BLEURv9gW8sPhK8KPbeRd775jJJk2Rjumr9WOgrM0y6FSgq28EFT1OFSBmJmzUQkZmQp1y6vdj
-	jNWm2cDVzmmIFxivOV+iHTzgRQqJN0IH9vKfB3GGRzm0tPq0SEAzos4xwH5LXVDiN1XWMN28XK6
-	Yp3uVptG3ZmNqTDp7Y+o7N4vT/Px77kzz07vA9AKbeUQT
-X-Received: by 2002:a05:620a:1a0a:b0:8cd:97a7:a345 with SMTP id af79cd13be357-8cd97a7a6b7mr115245585a.6.1773141775133;
-        Tue, 10 Mar 2026 04:22:55 -0700 (PDT)
-X-Received: by 2002:a05:620a:1a0a:b0:8cd:97a7:a345 with SMTP id af79cd13be357-8cd97a7a6b7mr115243385a.6.1773141774703;
-        Tue, 10 Mar 2026 04:22:54 -0700 (PDT)
-Received: from [127.0.1.1] ([178.197.219.94])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-48541b7f255sm67162115e9.12.2026.03.10.04.22.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Mar 2026 04:22:53 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Date: Tue, 10 Mar 2026 12:22:38 +0100
-Subject: [PATCH v2 4/5] ASoC: qcom:: Constify GPR packet being send over
- GPR interface
+        d=1e100.net; s=20230601; t=1773145549; x=1773750349;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=liZ2cxYZp/6QE1t62IyXlp8Jg6pdGNzadfn83X3cLh8=;
+        b=iucgMT4By8nvWPxhkF4/DJ/Yww+oZ+sLHDHrLwxHqpyj4SXbBYKvQL85ZrJnG+/fBQ
+         VRhB7PM3TvH+LWUsePPHhmigeYVIHVv4YLyr/ZrlJWNAimPZaW7Dx3WZPI8+3w45DhpG
+         Thdo1JSf5PfaFiat6q4aOFPjZEbf9YoW/1hA/H48n2yo+p3xYslX0dpaq7NufI2Apf5i
+         dqmIJ0beK+BAG7NTcyBaI1ag2cl6ti7dh9ERnSYtypELkRtxaqEScfRu0kP7sVBFwEfy
+         4GzjyhFIKpToKuiqJktHMK9qrocL9GadQ68lvQhcdTGYuYKFsfTlF2N06227KRvDIesQ
+         HVwQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXCTARh7YZ1ESqSACVkRj6DH9mfk7yjf9TWO7dX93a0rnW500HB6bOlcUnxAsyo+a4iWUlE6mch+L0srn9I5g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwfjgvdJsU64ZjfbpJ868+VYPECBNeiqKX/i1IeZdtEajkLF8FO
+	6gLx9FrCCz4t3oDiD0JK7CVFDemOqbQlCazchCSzhQmELOeLJ8tKcNyNRxa16d+yfsWgU6Yafce
+	jJnid+DgW4Z4avPfYze11/SveiK7DYwn3/34WrXecndqATL+z9Z/xy0sRwCbEoZTua0zsmm1/Bp
+	M=
+X-Gm-Gg: ATEYQzycIjaqvz9a1NX3DBALksUczCRdHap9TeX4q9RrsRZC8Ao/Mx5FbjdjwmgxL22
+	pw0Q5bGGrFiFO++SDWuGRFGB1bwAvNkmg9mvRthxwwg/Zs7IJRUuTLIpxA8GIHDWJsvNfRNznTk
+	1KMvTY+zXbMh0/Gy0gyWXLf4cdoi0wTSTXsCxhm6XIwqmNjT0KhpYmT28XDaCp1rwBwzkqWAnyk
+	ErNs6nsaud/3oCDBPbLTZ/U5+Eg/enoAN31xUZXMZ5v75dB8mzJuuRtkCxgl43DIg7JxIMVmhzI
+	uSLnUY5vXWjgCrBspyUJlxiG11D4xTk1ty+v9WUlNxi1O4j4h6HKkxf5EmSGOhU8czikFWrUtpR
+	ntC2SOpQs84PLSE1jUm3nCb1yK/u2d3T17ihQcLxcfgH04l+1
+X-Received: by 2002:a05:620a:29ca:b0:8cd:982d:4108 with SMTP id af79cd13be357-8cd982d4247mr136295685a.56.1773145549431;
+        Tue, 10 Mar 2026 05:25:49 -0700 (PDT)
+X-Received: by 2002:a05:620a:29ca:b0:8cd:982d:4108 with SMTP id af79cd13be357-8cd982d4247mr136292885a.56.1773145548994;
+        Tue, 10 Mar 2026 05:25:48 -0700 (PDT)
+Received: from [192.168.1.29] ([178.197.219.94])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5a13d08d8a7sm2641960e87.92.2026.03.10.05.25.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Mar 2026 05:25:48 -0700 (PDT)
+Message-ID: <b8d70886-3b39-4b1d-a91e-ade3a71a3fd5@oss.qualcomm.com>
+Date: Tue, 10 Mar 2026 13:25:45 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260310-rpmsg-send-const-v2-4-0e94c5db9bf4@oss.qualcomm.com>
-References: <20260310-rpmsg-send-const-v2-0-0e94c5db9bf4@oss.qualcomm.com>
-In-Reply-To: <20260310-rpmsg-send-const-v2-0-0e94c5db9bf4@oss.qualcomm.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/5] remoteproc: mtp_scp_ipi: Constify buffer passed to
+ scp_ipi_send()
 To: Bjorn Andersson <andersson@kernel.org>,
         Mathieu Poirier <mathieu.poirier@linaro.org>,
         Matthias Brugger <matthias.bgg@gmail.com>,
@@ -112,42 +109,74 @@ Cc: linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
         linux-arm-kernel@lists.infradead.org,
         linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
         linux-sound@vger.kernel.org, linux-media@vger.kernel.org,
-        Mathieu Poirier <mathieuu.poirier@linaro.org>,
-        Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5803;
- i=krzysztof.kozlowski@oss.qualcomm.com; h=from:subject:message-id;
- bh=ObSXKiR97buxky/PvKOJ1j+VJH8Bidr34n3hBEMA+cI=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpr/8BBvkL7GdnzghQsZVsVzlQ6xuKDR8hY+hPc
- IpGCSsqCf6JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaa//AQAKCRDBN2bmhouD
- 1x0tD/9jKwfDmntMF5yMlc1fEIOn5KFtHA3kOJbdg8NmqavLKwylVyFbeRfeIELfVTuJTZPiP2J
- ntjYCKKtRvS6juhf1SZsWvs0nGc6J1cQ2Z7htGENVpN/h6pr2g9MYj6jOL7rsWyOIlHxGHcBjiN
- I3QNpG4bZFEGc7nU2MzcusCMtM/T+qiYut14SX9K8tZII/QnJ+VofsnR9zT08J0Y6+jvCrFv4LZ
- zXWvC+NnQgfqmOWRaSsG/nFNY5E2tQP7CJf/ZKxwHYZkqTl85W3yBqFsubK57XGQo56jARyyb+C
- 1aIHQE3xwTKWpHjtaAnNWFJ0o31UaSBStTRywTRe4UGcKRhqI3HMTXpcK2ODrMO/M1koglao1Be
- EdaZHY84dxuG9b730qn9ZoP/AO/oVFz9quLdSNTq+qR2/n/8ah1dhBOjtQOy+2PhdFowFFxwqlt
- nZgDqMpCjsTqq9AFXe4pUGYrl/pEfqQZEnmx1/8V0azDfVELg697mUAJ3lgjE9yL4wozOBW9jii
- M7E2FpQFh3XsFTajda66ebiHfXhGouXlwFfVKadNOlRenl0XLLb7HOf5DmM88Q8vCzbtU00ZeDv
- wEt+JIrBeEi7p127S6TMq/2mMebHu+00vydMR5HprYQk8jHuivG2cOrKMXgO/FkhTAP9rNqTmQr
- QgwaVSTGAqkjazA==
-X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp;
- fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzEwMDA5OCBTYWx0ZWRfXx8fgvDwAZnQJ
- sBdJT/FFoynd1RfeZDZ2l9J2tbMGj9eEgpRdz88w5W8dh/x4ZhBV1DGDsXEhM7vslPcPzD8ygeX
- 2/hG+E34Dii/D2IyXbgkWnbORg2/yF7TpPa6epfTYBubiWVOZ82ZLSXHm7gya+3+htf7b/Gb/lM
- iwed0H1zQFIOuSZ28W2Y+7oylTXYXN6+cvQkO5kB73vOWurscQmewKL7eqDXIyQX7j5QzqWlTpv
- cC+o8vt/u8mGBM+GxaICMlgkm95zc3YiMCyKa49pOBwM9NxzxujxYXeQYShMNBl4/vZRh1M9Cy3
- HGn3N7ReNqCQOYRDqopSLvo+11LzIIf7R4Sf3biyPCN4ERbl2DP6vYrwDd06n6W8H5ithA7gPwG
- w2q69mF25ITWWoNbdKRWuq0Sw+CSgX+l7NMhTkuXd1ottwEK9KotJnHAGMMpuUBKkm8/lAZm2Go
- xeDV5GO9fPxVQHOJcfQ==
-X-Proofpoint-GUID: bIlak9uQT98WTZSlq_hpJwLUAOvrFOkt
-X-Authority-Analysis: v=2.4 cv=KLxXzVFo c=1 sm=1 tr=0 ts=69afff0f cx=c_pps
- a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=gOEeR9iKwsj33Yj5oN/cWg==:17
+        Mathieu Poirier <mathieuu.poirier@linaro.org>
+References: <20260310-rpmsg-send-const-v2-0-0e94c5db9bf4@oss.qualcomm.com>
+ <20260310-rpmsg-send-const-v2-1-0e94c5db9bf4@oss.qualcomm.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Content-Language: en-US
+Autocrypt: addr=krzysztof.kozlowski@oss.qualcomm.com; keydata=
+ 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
+ cwzYbmi/Et7T2+47PN9NZAOyb771QoVr8A==
+In-Reply-To: <20260310-rpmsg-send-const-v2-1-0e94c5db9bf4@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzEwMDEwOCBTYWx0ZWRfX3krXJSony1Ce
+ rnX22QhcyvqZRmSYNwYKIhBSSDcci5iV5fsvfH5cWnbk0SAdlO2rQr+BQ6ZwrATWcwmfDGn02Qe
+ u1BgO7rmRg+RWKiWeudUh+BFzTnux0ZG8rWa8itnyHHWNfwNLrspaoWbwW+32PmIeINMPz6E9H8
+ E2txHKZad1pKbZTaG/hfYHFJLVMlKrydSg3NNqrZP3XV6inEEPmf332NhKWhd21cIvJ9rr/x0Ro
+ FGH4xNXsLgWxjPJDYx2zMyuZPr0k9FsdYSRC2JtR1ty7jAzOn55q9g4gNdrA5UzaC7TQNTHmb3m
+ pcjWMJnyIZpA4KbQr520ug4gcDTpqFzEpdnM/q/mX2nzqydAXiSExfxPomREOA2n6i12NUA8tMM
+ 57NjqescT5QQRrGOPxKRamiXaet6ulFimN4ZBYxj7m0ERVOLW1e2zx9OyEwPM3jrxE/AtQHZzDo
+ ghNwCpT/9EaZ7hAJYKg==
+X-Proofpoint-GUID: BQo0Dsi1xsFvz81LvCOHt6juCxb4-kYB
+X-Authority-Analysis: v=2.4 cv=KLxXzVFo c=1 sm=1 tr=0 ts=69b00dce cx=c_pps
+ a=qKBjSQ1v91RyAK45QCPf5w==:117 a=gOEeR9iKwsj33Yj5oN/cWg==:17
  a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10
  a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=qTtUXMQ633XYL2vtSbcA:9 a=QEXdDO2ut3YA:10
- a=PEH46H7Ffwr30OY-TuGO:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: bIlak9uQT98WTZSlq_hpJwLUAOvrFOkt
+ a=VwQbUJbxAAAA:8 a=KKAkSRfTAAAA:8 a=F0yalOKIwk99E2MxTuAA:9 a=QEXdDO2ut3YA:10
+ a=zZCYzV9kfG8A:10 a=NFOGd7dJGGMPyQGDc5-O:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: BQo0Dsi1xsFvz81LvCOHt6juCxb4-kYB
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-10_02,2026-03-09_02,2025-10-01_01
@@ -155,10 +184,10 @@ X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  suspectscore=0 malwarescore=0 bulkscore=0 impostorscore=0 spamscore=0
  phishscore=0 priorityscore=1501 lowpriorityscore=0 adultscore=0 clxscore=1015
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2603100098
+ reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2603100108
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_042256_914436_47C7AF01 
-X-CRM114-Status: GOOD (  19.27  )
+X-CRM114-CacheID: sfid-20260310_052551_338246_9ADE7D5F 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -173,143 +202,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-gpr_send_pkt() and pkt_router_send_svc_pkt() only send the GPR packet
-they receive, without any need to actually modify it, so mark the
-pointer to GPR packet as pointer to const for code safety and code
-self-documentation.  Several usersof this interface can follow up and
-also operate on pointer to const.
+On 10/03/2026 12:22, Krzysztof Kozlowski wrote:
+> scp_ipi_send() should only send the passed buffer, without modifying its
+> contents, so mark pointer 'buf' as pointer to const.
+> 
+> Acked-by: Mathieu Poirier <mathieuu.poirier@linaro.org>
 
-Acked-by: Mathieu Poirier <mathieuu.poirier@linaro.org>
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
----
+This email bounces:
 
-Depends on previous patches.
----
- drivers/soc/qcom/apr.c            | 8 ++++----
- include/linux/soc/qcom/apr.h      | 4 ++--
- sound/soc/qcom/qdsp6/audioreach.c | 6 +++---
- sound/soc/qcom/qdsp6/audioreach.h | 4 ++--
- sound/soc/qcom/qdsp6/q6apm.c      | 3 ++-
- sound/soc/qcom/qdsp6/q6apm.h      | 2 +-
- 6 files changed, 14 insertions(+), 13 deletions(-)
+"Your message wasn't delivered to mathieuu.poirier@linaro.org because
+the address couldn't be found, or is unable to receive mail."
 
-diff --git a/drivers/soc/qcom/apr.c b/drivers/soc/qcom/apr.c
-index 78e72379a6e0..ea7f83916d8d 100644
---- a/drivers/soc/qcom/apr.c
-+++ b/drivers/soc/qcom/apr.c
-@@ -123,10 +123,10 @@ gpr_port_t *gpr_alloc_port(struct apr_device *gdev, struct device *dev,
- }
- EXPORT_SYMBOL_GPL(gpr_alloc_port);
- 
--static int pkt_router_send_svc_pkt(struct pkt_router_svc *svc, struct gpr_pkt *pkt)
-+static int pkt_router_send_svc_pkt(struct pkt_router_svc *svc, const struct gpr_pkt *pkt)
- {
- 	struct packet_router *pr = svc->pr;
--	struct gpr_hdr *hdr;
-+	const struct gpr_hdr *hdr;
- 	unsigned long flags;
- 	int ret;
- 
-@@ -139,13 +139,13 @@ static int pkt_router_send_svc_pkt(struct pkt_router_svc *svc, struct gpr_pkt *p
- 	return ret ? ret : hdr->pkt_size;
- }
- 
--int gpr_send_pkt(struct apr_device *gdev, struct gpr_pkt *pkt)
-+int gpr_send_pkt(struct apr_device *gdev, const struct gpr_pkt *pkt)
- {
- 	return pkt_router_send_svc_pkt(&gdev->svc, pkt);
- }
- EXPORT_SYMBOL_GPL(gpr_send_pkt);
- 
--int gpr_send_port_pkt(gpr_port_t *port, struct gpr_pkt *pkt)
-+int gpr_send_port_pkt(gpr_port_t *port, const struct gpr_pkt *pkt)
- {
- 	return pkt_router_send_svc_pkt(port, pkt);
- }
-diff --git a/include/linux/soc/qcom/apr.h b/include/linux/soc/qcom/apr.h
-index 6e1b1202e818..58fa1df96347 100644
---- a/include/linux/soc/qcom/apr.h
-+++ b/include/linux/soc/qcom/apr.h
-@@ -191,7 +191,7 @@ int apr_send_pkt(struct apr_device *adev, struct apr_pkt *pkt);
- gpr_port_t *gpr_alloc_port(gpr_device_t *gdev, struct device *dev,
- 				gpr_port_cb cb, void *priv);
- void gpr_free_port(gpr_port_t *port);
--int gpr_send_port_pkt(gpr_port_t *port, struct gpr_pkt *pkt);
--int gpr_send_pkt(gpr_device_t *gdev, struct gpr_pkt *pkt);
-+int gpr_send_port_pkt(gpr_port_t *port, const struct gpr_pkt *pkt);
-+int gpr_send_pkt(gpr_device_t *gdev, const struct gpr_pkt *pkt);
- 
- #endif /* __QCOM_APR_H_ */
-diff --git a/sound/soc/qcom/qdsp6/audioreach.c b/sound/soc/qcom/qdsp6/audioreach.c
-index 241c3b4479c6..c84e098230c6 100644
---- a/sound/soc/qcom/qdsp6/audioreach.c
-+++ b/sound/soc/qcom/qdsp6/audioreach.c
-@@ -579,10 +579,10 @@ EXPORT_SYMBOL_GPL(audioreach_alloc_graph_pkt);
- int audioreach_send_cmd_sync(struct device *dev, gpr_device_t *gdev,
- 			     struct gpr_ibasic_rsp_result_t *result, struct mutex *cmd_lock,
- 			     gpr_port_t *port, wait_queue_head_t *cmd_wait,
--			     struct gpr_pkt *pkt, uint32_t rsp_opcode)
-+			     const struct gpr_pkt *pkt, uint32_t rsp_opcode)
- {
- 
--	struct gpr_hdr *hdr = &pkt->hdr;
-+	const struct gpr_hdr *hdr = &pkt->hdr;
- 	int rc;
- 
- 	mutex_lock(cmd_lock);
-@@ -622,7 +622,7 @@ int audioreach_send_cmd_sync(struct device *dev, gpr_device_t *gdev,
- }
- EXPORT_SYMBOL_GPL(audioreach_send_cmd_sync);
- 
--int audioreach_graph_send_cmd_sync(struct q6apm_graph *graph, struct gpr_pkt *pkt,
-+int audioreach_graph_send_cmd_sync(struct q6apm_graph *graph, const struct gpr_pkt *pkt,
- 				   uint32_t rsp_opcode)
- {
- 
-diff --git a/sound/soc/qcom/qdsp6/audioreach.h b/sound/soc/qcom/qdsp6/audioreach.h
-index 89f172aab8c0..6262b9251440 100644
---- a/sound/soc/qcom/qdsp6/audioreach.h
-+++ b/sound/soc/qcom/qdsp6/audioreach.h
-@@ -844,8 +844,8 @@ int audioreach_map_memory_regions(struct q6apm_graph *graph,
- 				  bool is_contiguous);
- int audioreach_send_cmd_sync(struct device *dev, gpr_device_t *gdev, struct gpr_ibasic_rsp_result_t *result,
- 			     struct mutex *cmd_lock, gpr_port_t *port, wait_queue_head_t *cmd_wait,
--			     struct gpr_pkt *pkt, uint32_t rsp_opcode);
--int audioreach_graph_send_cmd_sync(struct q6apm_graph *graph, struct gpr_pkt *pkt,
-+			     const struct gpr_pkt *pkt, uint32_t rsp_opcode);
-+int audioreach_graph_send_cmd_sync(struct q6apm_graph *graph, const struct gpr_pkt *pkt,
- 				   uint32_t rsp_opcode);
- int audioreach_set_media_format(struct q6apm_graph *graph,
- 				const struct audioreach_module *module,
-diff --git a/sound/soc/qcom/qdsp6/q6apm.c b/sound/soc/qcom/qdsp6/q6apm.c
-index 44841fde3856..3527ad1acbca 100644
---- a/sound/soc/qcom/qdsp6/q6apm.c
-+++ b/sound/soc/qcom/qdsp6/q6apm.c
-@@ -29,7 +29,8 @@ struct apm_graph_mgmt_cmd {
- 
- static struct q6apm *g_apm;
- 
--int q6apm_send_cmd_sync(struct q6apm *apm, struct gpr_pkt *pkt, uint32_t rsp_opcode)
-+int q6apm_send_cmd_sync(struct q6apm *apm, const struct gpr_pkt *pkt,
-+			uint32_t rsp_opcode)
- {
- 	gpr_device_t *gdev = apm->gdev;
- 
-diff --git a/sound/soc/qcom/qdsp6/q6apm.h b/sound/soc/qcom/qdsp6/q6apm.h
-index 7ce08b401e31..a39f6046f886 100644
---- a/sound/soc/qcom/qdsp6/q6apm.h
-+++ b/sound/soc/qcom/qdsp6/q6apm.h
-@@ -138,7 +138,7 @@ int q6apm_map_memory_regions(struct q6apm_graph *graph,
- int q6apm_unmap_memory_regions(struct q6apm_graph *graph,
- 			       unsigned int dir);
- /* Helpers */
--int q6apm_send_cmd_sync(struct q6apm *apm, struct gpr_pkt *pkt,
-+int q6apm_send_cmd_sync(struct q6apm *apm, const struct gpr_pkt *pkt,
- 			uint32_t rsp_opcode);
- 
- /* Callback for graph specific */
+I got it from ack here:
+https://lore.kernel.org/all/aS3AU0gEEOvWs4Uw@p14s/
 
--- 
-2.51.0
+so a hint: it's nice to have templates for responses, to avoid making
+mistakes in own name/address. Mine is for example very long, so even I
+could not type it correctly...
 
+
+Best regards,
+Krzysztof
 
