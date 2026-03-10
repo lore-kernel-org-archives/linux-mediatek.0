@@ -4,101 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C491FD4F16
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 18:21:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1B65FD4F16
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 18:37:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RYHwf92flHnUfSHhGWu39REnpB8D3KhXnDbPehoNQKQ=; b=AmVmwgsXf2MTsF0xTkaw9LjZbq
-	lXqRBx7kncl5MSwQwCBySCo8RxqtxZQvOQPep/DX8FnED1FnPoIqYZdzK+GK8sTfUQvakBGuHJiVW
-	kJdJz94Kk9X8+XMmSPUCQVqKGCH4YEvk58q2nJZNnUWA5AGysAcj5QqkYs7RsPcbL17fBHi4NHPo/
-	2Fv1PsC2PHgpIB36SHO6juw2i6yYgmuErAcah5u1Jv35zm573XvoUtvxsrxn1Gik/xwH+Khaae5Bb
-	QoG2+wOdzUwFNnZLDEY7zu3UfeqIEnqr/B+qCiE7qHePP94JOFyUv5VuOReaOT6ZPDQ8TZtZ8VAK8
-	1dRXHzqg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mEydtYkjbJ0qWFFzbilGZORGZlN37D01JySG0l90LLg=; b=usKp8jdR9kiBhUatfg5EeBJ2VL
+	V7M07vpvnK3LXqgJkCMjchAgHW9HIHwyLHJDqDgQQ01oAgWAPFRPxXsVGFDCOeutpG0tQtKmLUIRX
+	MWLvBpKr2ZYcxiDpOotK4ALG23cGzYOzwz4oVc5ZTPDPLRqG22I0BX0LCz9FXoecoVlEPnHc7ecUw
+	oUZBos4ZwoXP7YzDYjCmHVeWqXWtNKJ+mvZ38ZT/YLz/163oRyUI627m8UnXD8CV75UqaKqUDDVPk
+	g3k28EXaSCRqQt7SMtx2dbS51W1+XEcn2rsMLWciMntAw8t/s5KpXOYV8kXg6ynqgW375ujwStOA7
+	gCY6gaCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w01hy-0000000A4Iq-38px;
-	Tue, 10 Mar 2026 18:21:30 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1w01xe-0000000A5uI-0EyK;
+	Tue, 10 Mar 2026 18:37:42 +0000
+Received: from mail-dy1-x132f.google.com ([2607:f8b0:4864:20::132f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w01hy-0000000A4Ig-1JUJ
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 10 Mar 2026 18:21:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=RYHwf92flHnUfSHhGWu39REnpB8D3KhXnDbPehoNQKQ=; b=hDA03riEyd4trQK7mkI9WR9nXr
-	ip8ZNFjNmuEBcr2DED5jPbr3OxFGh9ZEM/9mo0LkPr/2j09S9fpcHV40oZBHABHibKPXnojRcCAnY
-	YZAArXcjzLMarWWkYYza0TFAJanC+tfVrW9DltfWVqwRjlbSMZ/R8y1vKsdCNg2GcMZkDeUn8tphs
-	XUwNxarPR15GX7KYz75UsF3ZvyjdZLkYzN/Jjc8U8gY1weRVoHx3tqMcvlLiQ6lDy5nwp5IzhQ8w1
-	AbhRGGBpofHYuGJu3eek/GjrXCsKZvO5q6377VurgIDSuvFfiMHZWcmXqNGtIriu9IgwrHzoR7jB8
-	Lw+HtydQ==;
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w01hu-0000000FJz1-3o94
+	id 1w01xc-0000000A5tC-0Plo
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Mar 2026 18:21:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8A83A442C8
-	for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 18:21:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6DCE2C2BCC7
-	for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 18:21:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773166882;
-	bh=RYHwf92flHnUfSHhGWu39REnpB8D3KhXnDbPehoNQKQ=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=VLp7+7J9llrwvCmETGQRw3htvlndh6m1nt/RRmA9Uxn1bhz+K/B+q6H0nosrrJG24
-	 ualDb+AMHRYw11phgtZL8RQve4Fni7wZOk59ZLka5e+KPtlbhUxjNSzE/u7nYiB2MG
-	 4bV3VcillBEcNpXDxDtrt3iOrWD9Xz8KTLy0tBBoJR7VPRwrGT4Bipusr7CoKRL2ml
-	 l7zOALrl2J90A/S7t+sxsILHs96E/Odocww2PrRZOWkgKyzHu0R0BCxGsyhR7v+CIf
-	 Ky6UMX9xuNxOpFUg5ny0u2vMeWHrFW3AaDx6+eRfY/UL0WbUJETU9XHUwMA1DbqaxY
-	 zFxqVd4KpzOUg==
-Received: by mail-ed1-f52.google.com with SMTP id 4fb4d7f45d1cf-6616cb8c80cso8361559a12.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 11:21:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVxKTsa3Y30noBmsCQL3TrUquapDnjfPfXrhgO3mJoei00mtcgW7m17MdROnuRytw8+2qaLwdWja0Urj7V3AA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywix3tjH8m617NNxtfVbN09skX0y9eKXEvGW9scE3G1/xYZJaTm
-	M18ch6rh3Lh0n42BJ3DEAK818IdqcNE/whD9NUFeUwX6rJZ1zsKG98WIKgJ37nNPFWo2A4rsFAB
-	Pt+BHhHyJz/KofFVc6VDGYJ3/GeGI4w==
-X-Received: by 2002:a05:6402:a290:20b0:662:aa89:2ffd with SMTP id
- 4fb4d7f45d1cf-662aa89325dmr2220648a12.18.1773166880808; Tue, 10 Mar 2026
- 11:21:20 -0700 (PDT)
+	Tue, 10 Mar 2026 18:37:41 +0000
+Received: by mail-dy1-x132f.google.com with SMTP id 5a478bee46e88-2b4520f6b32so16213711eec.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 11:37:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1773167858; x=1773772658; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=mEydtYkjbJ0qWFFzbilGZORGZlN37D01JySG0l90LLg=;
+        b=gEz3VL4I+ykr8mVFtkCDq8w7YWPlBtvV2TDNDGwVZLtt+R0jyxZDgJQ2xOqxlqrbC3
+         9P3yTVTPaYq9vfP2vhFnCvn9lqrmQ9U2KJpFqCW7UyZ85HTM8/WeCmkw054FHShi/V3L
+         nBAR4afLYQFHbdsC0WjcyV7r7P/xuNTEWeeWo4lClK4TjXDJpyqESktnMNngaMmaL4Af
+         UXTchjvtoKb6zw9nKx4spCzFBMRu2cYidA0ptQir3eNdURgVT89ctPoycgqqd32A/4W6
+         Loe1IQMQWgsrmZ9Ca6h70EdMsbvegVRX5PcWy1tE+yZmWLsTS+qZXT4IHmwSTxf/nKB1
+         rZQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1773167858; x=1773772658;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mEydtYkjbJ0qWFFzbilGZORGZlN37D01JySG0l90LLg=;
+        b=iKBsu2IPHjN6qPzK8egQrdWSWks/4gWe8zes6g5W8rROkxuCC1HTeafQq7eJxvWzZx
+         TcDYMytHgf5D1H8MPRdqiBAIlMxwuZUweFZ0dbir28k2D8LXglk9sgRzvZcSxGhblIhM
+         0c43oBoHjiaGmqaNm7BwdUYfjCiyRPfFMdF62IPxSeQ8ZcKd+LNkt0zAF9AgIQkCWAP1
+         A7HZiIYDT7y7A9d69DrlZvLWXCZzRe0qOsYsPiN5iObMoz/YeVOzkixCQo3OhMfp89bu
+         +gitUsrC86vnfp01L7wvIhEThh5Gdp+3F+KwRBR+YrjtT37yJ6XdN/BRm+0pTSETwMn9
+         tDwA==
+X-Forwarded-Encrypted: i=1; AJvYcCVKCCtrcaxPc6crHkP9K1xrG4tdUc1l6EEeaTxGZr/8MufwSFOZLFsk7RrU8kvfY8wo9X+jBAANmXsBORMvZQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwY3ibGAhoTPppvBJXcqi5ppfjFVwrouvrVGsSFtAo+jDU/gvTa
+	AUDcxlKUb070Pt02GtggLWvZ6EtmBBeKcUx1x92sHPVOvUO59QYz7RZQ
+X-Gm-Gg: ATEYQzxfnYb6y9LDB8gihSrZPFzd+dBTpslWZPs54YITJnoOtFql68wdULdCAiIcnKv
+	x6sEtBktFUyT80dCv5olCUnVjBKa5kC+5WR8L+HmNyyYPr7HP3WqUOymze9pkC7A71VhRQ1QQy3
+	KBtra1iLLZ/ONRHZAE0b5KyEcnpNH4gxS2oyIYlKCu1Nu8AWH0GOCcfyV0U/zr1Bw6fDlU8u+Om
+	kGYqD0GpFAA7GjB9QLpG8d9uI9Ufo2voZCRnRnKNxoY73pDV2AvoZMAsk+mNkCAxHtPiJn8rpSR
+	TdHTEUq2wezayJ5fnav/K3rAEO455UlOSYC7hVBwqKDauJ5cZqdcc1af4wn3Fkiv1P9X2pfHkA2
+	MggaEXFxoGmM8dj+YuaCkHLh+iHKPKrocA4Sb09lbVR4d5gfhR0nkvFT626x7FesGnCtK7tBL/R
+	0aXaIvDYMtEo+HRncP2bFyKj4VKjcIIuPqyyJgF86D9XH1ziPdmAqFIIOm/iUxNkE2
+X-Received: by 2002:a05:7300:2156:b0:2b8:29e2:93e9 with SMTP id 5a478bee46e88-2be4e08fccdmr5761447eec.37.1773167858414;
+        Tue, 10 Mar 2026 11:37:38 -0700 (PDT)
+Received: from google.com ([2a00:79e0:2ebe:9:5df8:fa34:6102:3b03])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2be4f96f64dsm14294515eec.27.2026.03.10.11.37.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Mar 2026 11:37:37 -0700 (PDT)
+Date: Tue, 10 Mar 2026 18:37:34 +0000
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
+Cc: Hugo Villeneuve <hugo@hugovil.com>, robin@protonic.nl, andy@kernel.org, 
+	geert@linux-m68k.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	hvilleneuve@dimonoff.com, mkorpershoek@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, lee@kernel.org, alexander.sverdlin@gmail.com, 
+	marek.vasut@gmail.com, akurz@blala.de, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-input@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4 4/4] Input: charlieplex_keypad: add GPIO charlieplex
+ keypad
+Message-ID: <abBkk4Ng-_MDHd6t@google.com>
+References: <20260305192101.2125660-1-hugo@hugovil.com>
+ <20260305192101.2125660-5-hugo@hugovil.com>
+ <aari1Y1CPZSYEVj3@ashevche-desk.local>
 MIME-Version: 1.0
-References: <20260306-mt8196-ufs-v9-0-55b073f7a830@collabora.com>
- <4089450.ElGaqSPkdT@workhorse> <yq14imrwp3z.fsf@ca-mkp.ca.oracle.com> <5973984.DvuYhMxLoT@workhorse>
-In-Reply-To: <5973984.DvuYhMxLoT@workhorse>
-From: Rob Herring <robh@kernel.org>
-Date: Tue, 10 Mar 2026 13:21:09 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqKGxrNuaTb9+n3ZYjAdY=UHC6z-neXK-aieTXeROCN5og@mail.gmail.com>
-X-Gm-Features: AaiRm53EXEYwn_27B-gILkkR9Yt_6ubl80Y5DTYqzcMmOl6Xp1DwezMjgTnFj3c
-Message-ID: <CAL_JsqKGxrNuaTb9+n3ZYjAdY=UHC6z-neXK-aieTXeROCN5og@mail.gmail.com>
-Subject: Re: [PATCH v9 03/23] dt-bindings: ufs: mediatek,ufs: Add mt8196 variant
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: "Martin K. Petersen" <martin.petersen@oracle.com>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Avri Altman <avri.altman@wdc.com>, Bart Van Assche <bvanassche@acm.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
-	Kishon Vijay Abraham I <kishon@kernel.org>, Peter Wang <peter.wang@mediatek.com>, 
-	Stanley Jhu <chu.stanley@gmail.com>, 
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Chaotian Jing <Chaotian.Jing@mediatek.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, 
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>, kernel@collabora.com, 
-	linux-scsi@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
-	Conor Dooley <conor.dooley@microchip.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <aari1Y1CPZSYEVj3@ashevche-desk.local>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_182127_333359_6EE56977 
-X-CRM114-Status: GOOD (  23.04  )
+X-CRM114-CacheID: sfid-20260310_113740_131315_70A4197B 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,51 +105,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 9, 2026 at 5:04=E2=80=AFAM Nicolas Frattaroli
-<nicolas.frattaroli@collabora.com> wrote:
->
-> On Saturday, 7 March 2026 19:01:17 Central European Standard Time Martin =
-K. Petersen wrote:
-> >
-> > Nicolas,
-> >
-> > >> "ufs" is redundant as all the clocks are for UFS. Same comment on pr=
-ior
-> > >> patch.
-> > >
-> > > Is this naming a big enough concern to block this series with two
-> > > explicit acks on this patch that fixes a wholly broken and useless
-> > > binding?
-> >
-> > It is if it comes from one of the DT maintainers.
-> >
-> > > I am trying to put out this dumpster fire of a downstream turd that
-> > > made its way into mainline as the review process has been completely
-> > > subverted, and is only getting worse with each passing month
-> >
-> > This has to stop. Please read Documentation/process/code-of-conduct.rst=
-.
+On Fri, Mar 06, 2026 at 04:21:09PM +0200, Andy Shevchenko wrote:
+> On Thu, Mar 05, 2026 at 02:20:50PM -0500, Hugo Villeneuve wrote:
+> > +static void charlieplex_keypad_poll(struct input_dev *input)
+> > +{
+> > +	struct charlieplex_keypad *keypad = input_get_drvdata(input);
+> 
+> > +	int oline;
+> 
+> Why signed?
+> 
+> > +	int code;
+> > +
+> > +	for (code = 0, oline = 0; oline < keypad->nlines; oline++) {
+> 
+> Can be like
+> 
+> 	code = 0;
+> 	for (unsigned int oline = 0; oline < keypad->nlines; oline++) {
+> 
+> as iterator is not used outside the loop.
+> 
+> > +		DECLARE_BITMAP(values, MATRIX_MAX_ROWS);
+> 
+> > +		int iline;
+> 
+> Why signed?
 
-I have little doubt that that is an accurate description of
-downstream. And if properties are getting added without bindings, then
-that is certainly a problem that should be complained about.
+Does it make any difference given practical limits on nlines?
 
-> >
-> >
->
-> I apologise for my tone, it's my frustration getting the better of me.
->
-> I'll be handing off this series to someone else, so you won't have to
-> deal with me anymore.
->
-> I do ask however that you don't apply patches from MediaTek blindly;
-> if there's code to read an OF property, and that OF property is not
-> in the binding, then the patch should be rejected, even if there's an
-> Ack from the MediaTek maintainer.
+Thanks.
 
-There's functionality to find undocumented compatibles in kernel code
-(make dt_compatible_check), but not properties. Sounds like I need to
-add that.
-
-Rob
+-- 
+Dmitry
 
