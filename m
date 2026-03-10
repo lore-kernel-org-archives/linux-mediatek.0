@@ -4,94 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F402FFCC9A2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 00:55:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5623FFCC9AE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 03:00:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=U1F0aD+CzjJwe4XQ5783eJK+juRpKEbGlXhwX8wPolo=; b=edKFfjD/ahvrsQOAyRZxV6cFQh
-	b5TuT6WDENKb/4ImOgrEmt9gOgesZRSrAEvSPoJYXqCgAqcSxxzusfaFc+Ixo1c+3PWFMB0TagbQK
-	porc7GAq4mYXHeXsAu/wN5jrH+BHQYuqd1bvLe8sPXhpqtcQZWRCQpmgsiYFhaBGlmislT7hGjagc
-	6dXBpk3NTvgShi8Z/cmefTwdYrOvuL+AKY092i5WEBD4xo9EUpAegzyJUad1GBRHge+3PrycAeQwB
-	IN2Uf6nNh+UkxC1FEyZRaDBJ2BisoVN5sQxnmN8fyT9k5UtaBsYg11j+BQXiSWa2kKRBLmrInb+On
-	bKfPIrfQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9jUAQ5D4wJOfJgWpzyrFt3Hw32ZGQnCnoTnBRH4Vot0=; b=iEiMp63qOLNXgeREqM0IvnA2sE
+	mDIy/MzkA0U9HME7oFD0XjssrYppuY1jYBCK/K3+2kN/Fk62SdAiq/6C49rpR8Y55jMYoteY7uFBj
+	fJCP40Yjh0fPE0EkWIeaxpXs61A+QB+PapLolzfqfBCiY5vr02Ws2xQsPK4QOlNSNWr2amBCaNlbO
+	AoPC18wi+OXG9T2qcLNmjr4n14xO3Qdz4l5Yr15RpgR3hdL6TSRhbDV3WWe4RQKvlnvQJ0xqT20wc
+	Z2eBcNVMj7o9lBp4qpK8dpWwHak+oYyrF3dxhM5k/z2ek9KyWDyqxuKQOeQUfq/xoSDHQdiObyp8W
+	AX6QjsQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzlNi-00000008R26-0FFf;
-	Tue, 10 Mar 2026 00:55:30 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vznKu-00000008bjx-0kJl;
+	Tue, 10 Mar 2026 03:00:44 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzlNh-00000008R1o-0Etj;
-	Tue, 10 Mar 2026 00:55:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=U1F0aD+CzjJwe4XQ5783eJK+juRpKEbGlXhwX8wPolo=; b=oJJ5o8KAnd7bBwThxtOnLdaT7I
-	eV88PCKMUcnWfm8Y+R7k8ekEpgpzjwLhl222t7Nd0d6UBYxv+Zyd3ES2kVV9+5P/TBtZrToseAGV8
-	SzvqudcMR1u8E72wn3yY/om7ap70oBnzfTsW6qidim5Fg1Te1UbUtyW4RlkfIrvVsihZrcpROqjV/
-	VrDtKOGPGI4Z6vsL0JgyXqAe+B0lKvZgeKAETlU2+VZeOpU89YjMzcgQIfTWwc///yb6jCT7NW2ba
-	OoQsB6l1L40XhJF66rTVi7JtLgJXV7DqxYHcW5Sajvn/CZv/XcTum3l7Pqwbd4SFcq0X5pcHFoU2d
-	1kVPMdnw==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzlNd-0000000DQrJ-07Ma;
-	Tue, 10 Mar 2026 00:55:27 +0000
-X-UUID: ce1086481c1b11f19e7563141e833ce8-20260309
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=U1F0aD+CzjJwe4XQ5783eJK+juRpKEbGlXhwX8wPolo=;
-	b=ndT/5ptxiBIT6feVvAtTWMDVvoTf6PdX++UVQgm9TfSyryXJYbxNFIbOvr5IcLMjqtyH6rMOmolpvnOwJlYsKGIDRjFqW0wRTSl8XKnXDQFEe8Ivj62MC/lENLg8HtTun9PHjIwpM1/R2+D1rbBvyeO8R/r6VzZhKSr7zNjLIWM=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:5497872a-47d4-41f2-9d59-eab04f1e9896,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:fa4573f1-16bd-4243-b4ca-b08ca08ab1d8,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|123|836|888|898,TC:-5,Cont
-	ent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0
-	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ce1086481c1b11f19e7563141e833ce8-20260309
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
-	(envelope-from <ed.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1675852559; Mon, 09 Mar 2026 17:55:17 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 10 Mar 2026 08:55:14 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 10 Mar 2026 08:55:14 +0800
-From: <ed.tsai@mediatek.com>
-To: <bvanassche@acm.org>, Peter Wang <peter.wang@mediatek.com>, Chaotian Jing
-	<chaotian.jing@mediatek.com>, Stanley Jhu <chu.stanley@gmail.com>, "James
- E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, "Martin K. Petersen"
-	<martin.petersen@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>,
-	<alice.chao@mediatek.com>, <naomi.chu@mediatek.com>,
-	<chun-hung.wu@mediatek.com>, Ed Tsai <ed.tsai@mediatek.com>,
-	<linux-scsi@vger.kernel.org>
-Subject: [PATCH v2 2/2] ufs: host: mediatek: Add VCC on delay for stability
-Date: Tue, 10 Mar 2026 08:52:30 +0800
-Message-ID: <20260310005230.4001904-6-ed.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260310005230.4001904-2-ed.tsai@mediatek.com>
-References: <20260310005230.4001904-2-ed.tsai@mediatek.com>
+	id 1vznKq-00000008biU-178H;
+	Tue, 10 Mar 2026 03:00:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id B27EC600AE;
+	Tue, 10 Mar 2026 03:00:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 662F8C4CEF7;
+	Tue, 10 Mar 2026 03:00:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773111639;
+	bh=3+2lYVzbzk7uvgRnRhf4lG9qT2OLixK/h/w5dFHyCmM=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=T061+9v1A1Vba7QK0q0xa5c44YReaYrIOcS7933froKRzwqMRNC/gmyoeYLFgPD6/
+	 n7m+q4CVSjgYii94cB7EYQtH7AMZf7ewoJIO6F0wHSmsvtVZ8sHlDltvb/28kDVTO9
+	 3XRt959HRdvNFrf986WW5sy+ciopDIlHOgw5Ql4eUzi28V4z3+1TNi6y85iu8L+Qk6
+	 ggJRDYwJ0vOOzLeot5p0xOPDlVOrPpbZOjnr2/1GlOnIUirKNhpQ9lFcNp6CG0c7Wz
+	 DaAhdF0rjC+hlPiJneKgi/7sQaxoUUI1lBFGEv8sROHHyJ11uB8uY7dN0+gR38ldYx
+	 Q57Vpn6ZKGXBQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id BA0053808200;
+	Tue, 10 Mar 2026 03:00:37 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_005525_680629_7C3FF192 
-X-CRM114-Status: GOOD (  11.75  )
+Subject: Re: [PATCH net-next v2] net: airoha: Make flow control source port
+ mapping dependent on nbq parameter
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177311163655.2039470.10429303373608059245.git-patchwork-notify@kernel.org>
+Date: Tue, 10 Mar 2026 03:00:36 +0000
+References: <20260306-airoha-fix-loopback-for-usb-serdes-v2-1-319de9c96826@kernel.org>
+In-Reply-To: <20260306-airoha-fix-loopback-for-usb-serdes-v2-1-319de9c96826@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,62 +72,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ed Tsai <ed.tsai@mediatek.com>
+Hello:
 
-Introduce a delay after enabling UFS5 VCC for MT6995 to ensure
-voltage stability before refclk activation.
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Signed-off-by: Ed Tsai <ed.tsai@mediatek.com>
----
- drivers/ufs/host/ufs-mediatek.c | 11 +++++++++++
- drivers/ufs/host/ufs-mediatek.h |  4 ++++
- 2 files changed, 15 insertions(+)
+On Fri, 06 Mar 2026 09:07:27 +0100 you wrote:
+> Flow control source port mapping for USB serdes needs to be configured
+> according to the GDM port nbq parameter. This is a preliminary patch
+> since nbq parameter is specific for the given port serdes and needs to
+> be read from the DTS (in the current codebase is assigned statically).
+> 
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> 
+> [...]
 
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index b3daaa07e925..4618d7834414 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1960,6 +1960,8 @@ static int ufs_mtk_apply_dev_quirks(struct ufs_hba *hba)
- 
- static void ufs_mtk_fixup_dev_quirks(struct ufs_hba *hba)
- {
-+	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-+
- 	ufshcd_fixup_dev_quirks(hba, ufs_mtk_dev_fixups);
- 
- 	if (ufs_mtk_is_broken_vcc(hba) && hba->vreg_info.vcc) {
-@@ -1971,6 +1973,15 @@ static void ufs_mtk_fixup_dev_quirks(struct ufs_hba *hba)
- 		hba->dev_quirks &= ~UFS_DEVICE_QUIRK_DELAY_BEFORE_LPM;
- 	}
- 
-+	/*
-+	 * Add a delay after enabling UFS5 VCC to ensure the voltage
-+	 * is stable before the refclk is enabled.
-+	 */
-+	if (hba->dev_info.wspecversion >= 0x0500 &&
-+	    (host->ip_ver == IP_VER_MT6995_A0 ||
-+	     host->ip_ver == IP_VER_MT6995_B0))
-+		hba->quirks |= UFSHCD_QUIRK_VCC_ON_DELAY;
-+
- 	ufs_mtk_vreg_fix_vcc(hba);
- 	ufs_mtk_vreg_fix_vccqx(hba);
- 	ufs_mtk_fix_ahit(hba);
-diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
-index 9747277f11e8..8547a6f04990 100644
---- a/drivers/ufs/host/ufs-mediatek.h
-+++ b/drivers/ufs/host/ufs-mediatek.h
-@@ -220,6 +220,10 @@ enum {
- 	IP_VER_MT6991_B0 = 0x10470000,
- 	IP_VER_MT6993    = 0x10480000,
- 
-+	/* UFSHCI 5.0 */
-+	IP_VER_MT6995_A0 = 0x10490000,
-+	IP_VER_MT6995_B0 = 0x10500000,
-+
- 	IP_VER_NONE      = 0xFFFFFFFF
- };
- 
+Here is the summary with links:
+  - [net-next,v2] net: airoha: Make flow control source port mapping dependent on nbq parameter
+    https://git.kernel.org/netdev/net-next/c/bf3471e6e6c0
+
+You are awesome, thank you!
 -- 
-2.45.2
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
