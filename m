@@ -4,56 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0D2CFD4F34
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 21:07:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CFD7FD4F34
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 21:12:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4rgSHk9mt4aX5G8sCDclSDSiSH/P9YjdRhYPNztsSTY=; b=YgkBPFuAPlBb5Quuwik2f9CscP
-	f5Wf/A7HUSft+FQ0qmpFWkq17cVNt6MKD5FtzlWCohK9XLQ3IVKkGaX1fL+i97e0E8cUdlIhBVFIL
-	dQljBQgPLADRCIZ9PN1+gjXHYCZWZ2qrxMKP5YVDg5eekvpvZFrZW/D4OJHJ8QVCNZeRjYm2UHmxc
-	Pbbd4yM5Ldj6CikIfAZ9h0kP2W7470kGeVJvSRATJLtskUvZK3y1QApt9MWA/7kbyuiBQvCB9LGUt
-	V5F3Yuqm1ncMhkt/STMNPZszQYvzNu3U3h0xPuFmRqOB7AyV5GgqUZ/r8GsM0TQBD9Li3ePS9Yn+V
-	R7L4BT9A==;
+	bh=i5LyOSyQR+WxYPgSuKX5OqGq4sbxPsf5B8CngvOJ/I0=; b=JTwHm0HEkCHC8rm77NqaD4KDoI
+	YAGO+q3TTlWobDULM1hNe4t/EcpJmHXnBPAFqbkJjowmBMGVarfr98FD/02x9mY/Tr9PcAbWdzBrP
+	ktU3YsMllbmExLz/X8E2S1SWrBfQEn2upnczMfuJaVfBaYqA/qjp4EH4uflGLB9bTSpK3uAHh2LDT
+	cUBQTP9coFPuSQd+cO4VzJluinW382Wne0mY33ckQs/PcGOWmkMVczjakQnLZkhMcjIpLyrckAT0T
+	JBALdjpzONFWLEMfbyyeV2RJWArhfbETaEKhGCZIrXQM4XjC7+3Ut7coH0Ba2C/R7fcS3YKcEStZ3
+	Tl4v0C9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w04Ig-0000000AHXh-3n1J;
-	Tue, 10 Mar 2026 21:07:34 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1w04NA-0000000AHmi-3oVs;
+	Tue, 10 Mar 2026 21:12:12 +0000
+Received: from mgamail.intel.com ([198.175.65.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w04Ie-0000000AHWy-2zXD;
-	Tue, 10 Mar 2026 21:07:33 +0000
+	id 1w04N7-0000000AHlb-1Ywf;
+	Tue, 10 Mar 2026 21:12:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1773176852; x=1804712852;
+  t=1773177129; x=1804713129;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=QD0ocCLo29LGXqoE2UpeJgKKNEmmXUqDI3RgU/UG4UM=;
-  b=e8CayDXU63BGQGKu/CyvFVFWeag6z9HIFZgmL3VykdnHZCoAD6aW2Qad
-   gI4LDNOnP8f4RYV5fqJFyTzbA4CGmsTN/qyqdyqDlel/RVcx5TYGbbHqS
-   ndjjXwUpYci50CjOTjcBPMufZKMXcMB7CT87HbjS8mR2soda7y54BSh44
-   Xm7bkLDEl/TuyMwb6WGzhrXn//2kPIPU/+3B9EJlYN7fCxIoUvXU/7bGh
-   qEB0rh+vJSyNrQNyAA22m00d7SqwWSiIf3GekcTcRMzfkNp+7/gqHjtEn
-   JVsFpTrPheW1vVcLAlQfdxCWAWWpRI1HKdPLD2sZ2F3ODc4zvpN4PQYXk
-   w==;
-X-CSE-ConnectionGUID: 75XrrOYtTvqGQCJLnqRlLQ==
-X-CSE-MsgGUID: 2UM5VsdFTiWIRl/MYjyrYA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11725"; a="84867496"
+  bh=pehZhuiQQpthYsgXZoLR8NFfpxutBnuajwfJq5hQwx4=;
+  b=HHrPO1BTIz3YdIFFlmqsIRSxEIoYXkpemTKo5LsfCFfvjzzPzW1tqIXe
+   /SusDys9HUQafTZwD8Wi0pvFiLOsnR1AHXcJqBFUbKS22ZncDef91XrB2
+   Hgo0TaiaoFfqgWoBdChn0z9QW7Izm1RifvImnq3/sO5JImGfSWfaFOXCU
+   mcD5XBEZnBQa0AB+A/Q9wSqr0P8On9ns0HRvMqjHaL9Xy1AduWPrHPm9M
+   OQyc9MsfYqpMgQhyXyK493e3Hi6O3hR1KogPR3m+Mtl7bh97cn3+BcaW3
+   FfvUNY5AET45+5i8zmef5jE/Qcg59g7bcQTkkpFTjXbt716m+Na6xAY03
+   Q==;
+X-CSE-ConnectionGUID: hb4WAQcpRrqMg1FwAja7lw==
+X-CSE-MsgGUID: XLV+yfeKQ6GkNK4Eovd7zA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11725"; a="77841732"
 X-IronPort-AV: E=Sophos;i="6.23,112,1770624000"; 
-   d="scan'208";a="84867496"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Mar 2026 14:07:28 -0700
-X-CSE-ConnectionGUID: uZWVu9RWRJeylP2ReXAurA==
-X-CSE-MsgGUID: MPB2+mqHR0uif6GIR6yszg==
+   d="scan'208";a="77841732"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Mar 2026 14:12:06 -0700
+X-CSE-ConnectionGUID: ixppP8mBRc2aAsqY+2t1EQ==
+X-CSE-MsgGUID: +u7wFx7eQXiY/mTugiKMyQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,112,1770624000"; 
-   d="scan'208";a="216978035"
 Received: from vpanait-mobl.ger.corp.intel.com (HELO localhost) ([10.245.244.54])
-  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Mar 2026 14:07:19 -0700
-Date: Tue, 10 Mar 2026 23:07:16 +0200
+  by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Mar 2026 14:11:58 -0700
+Date: Tue, 10 Mar 2026 23:11:56 +0200
 From: Andy Shevchenko <andriy.shevchenko@intel.com>
 To: Sanjay Chitroda <sanjayembeddedse@gmail.com>
 Cc: jic23@kernel.org, m.tretter@pengutronix.de, mchehab@kernel.org,
@@ -75,19 +73,19 @@ Cc: jic23@kernel.org, m.tretter@pengutronix.de, mchehab@kernel.org,
 	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, greybus-dev@lists.linaro.org,
 	linux-staging@lists.linux.dev, skhan@linuxfoundation.org
-Subject: Re: [PATCH 1/7] staging: greybus: simplify cleanup using __free
-Message-ID: <abCIBPZzZBfMoOtm@ashevche-desk.local>
+Subject: Re: [PATCH 2/7] iio: ssp_sensors: simplify cleanup using __free
+Message-ID: <abCJHOuBcPo4W2GQ@ashevche-desk.local>
 References: <20260310200513.2162018-1-sanjayembedded@gmail.com>
- <20260310200513.2162018-2-sanjayembedded@gmail.com>
+ <20260310200513.2162018-3-sanjayembedded@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260310200513.2162018-2-sanjayembedded@gmail.com>
+In-Reply-To: <20260310200513.2162018-3-sanjayembedded@gmail.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_140732_785121_72BD13FB 
-X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-CacheID: sfid-20260310_141209_751122_B3C33C45 
+X-CRM114-Status: UNSURE (   8.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,39 +101,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 11, 2026 at 01:35:07AM +0530, Sanjay Chitroda wrote:
-
+On Wed, Mar 11, 2026 at 01:35:08AM +0530, Sanjay Chitroda wrote:
+> 
 > Replace manual cleanup logic with __free attribute from cleanup.h. This
 > removes explicit kfree() calls and simplifies the error handling paths.
 > 
 > No functional change intended for kmalloc().
 
+Why this is a series? You can avoid spamming tons of unrelated people with this
+by sending patches individually.
+
 ...
 
-> +	struct gb_camera_configure_streams_request *req __free(kfree) =
-> +	    kmalloc(req_size, GFP_KERNEL);
-> +	struct gb_camera_configure_streams_response *resp __free(kfree) =
-> +	    kmalloc(resp_size, GFP_KERNEL);
->  	if (!req || !resp) {
-
-Now this check should be done in a better way.
-
-> -		kfree(req);
-> -		kfree(resp);
->  		return -ENOMEM;
->  	}
+>  	case SSP_HUB2AP_WRITE:
+> -		buffer = kzalloc(length, GFP_KERNEL | GFP_DMA);
+> +		char *buffer __free(kfree) = kzalloc(length, GFP_KERNEL | GFP_DMA);
+>  		if (!buffer)
+>  			return -ENOMEM;
 >  
+>  		ret = spi_read(data->spi, buffer, length);
+>  		if (ret < 0) {
+>  			dev_err(SSP_DEV, "spi read fail\n");
+> -			kfree(buffer);
+>  			break;
+>  		}
+>  
+>  		ret = ssp_parse_dataframe(data, buffer, length);
+>  
+> -		kfree(buffer);
+>  		break;
 
->  done_skip_pm_put:
->  	mutex_unlock(&gcam->mutex);
+Now you can return directly.
 
-To complete this, one may add a prerequisite to use guard()() first.
+		return ssp_parse_dataframe(data, buffer, length);
 
-> -	kfree(req);
-> -	kfree(resp);
->  	return ret;
->  }
+But also add a prerequisite to convert to guard()() et alai.
 
+>  	default:
 
 -- 
 With Best Regards,
