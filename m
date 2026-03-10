@@ -4,69 +4,197 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19AC9EFCD9F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 09:45:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC63BEFCD9F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 09:59:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AUKCgb/6rFAp2KPC7McERCizJUEbCTrmZZm2r9c2yW0=; b=nXps4e5wqzVJ7x5w5ZmcJFGrCV
-	BxRkwozJQ+rHfrK8srQqoIDttcGff9FXxoj5nAtmrn36c9QwniqrrTNn+Dm1hnLc5OrQE/isaAjD+
-	YV8NFBL1iXzdntYH0AtYnuIv3HGH4g629uwAlTDkKLVi7BLOaprotVt6pqp3j82kHGUU61k3YQlR7
-	CppgUGNmYPrt5pr4HDhJ9EsMLBC7NqYZAYDtHj68z73onamOFu/pF4q9Mn4bbNQnC94Sghdr+YHiX
-	wEqUwZxRscgIXwdBquvJkpKTLxvDwEseb67RTLLqPUNpk1ewLdHnlQnejEKycolyZ6BY7NfaSolwl
-	m0JZU2WQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lgUe0TFn6d0vjPmbLxKtIohMDX7uiKOUBiGY0vO4PaI=; b=IodKen+i03CSIat+gYYyuQffnv
+	zdJVTY/yqppm0tBqBf239o6fMjVf/tbblJ1H+SX+CDJJnEIUSd0ffGaDtGvMwPPP97eZRo5cScAQ5
+	Mk4iQys16p440IsrifomK2X8x1TNJZXK7nMeSP21/8fQajdn7vi6m2d6jAhkU+otyxysD87vLoZDd
+	cTc0VzlNMhI76f102mT2P7WQTrNh9UXdxPK+sXJMVldIKLOyjPu4LgXDPSWPR/GVSecm3L07AJuEw
+	T8o35Hj2gui8MbfTfKlEEFW14hKr6mljpFr34XWc/HRr0lQRdX91sEtAMgcpUJU7bwZtO5N0qDLpt
+	8Gbg17oQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzte7-000000097oj-3ST5;
-	Tue, 10 Mar 2026 09:44:59 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1vztsL-000000099HE-26bf;
+	Tue, 10 Mar 2026 09:59:41 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzte5-000000097nb-35Ww
+	id 1vztsI-000000099G7-3JOm
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Mar 2026 09:44:58 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vztdz-0002P1-68; Tue, 10 Mar 2026 10:44:51 +0100
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vztdw-004fwu-2z;
-	Tue, 10 Mar 2026 10:44:50 +0100
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vztdy-000000004Bl-0pVJ;
-	Tue, 10 Mar 2026 10:44:50 +0100
-Message-ID: <fef2059f0e184f918102e4d0656207fec09dbc83.camel@pengutronix.de>
-Subject: Re: [PATCH] reset-controller: ti: introduce a new reset handler
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Zexin Wang <ot_zexin.wang@mediatek.com>, Matthias Brugger
-	 <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	 <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, 
-	Project_Global_Chrome_Upstream_Group@mediatek.com, Sirius Wang
-	 <sirius.wang@mediatek.com>, Jack Hsu <jh.hsu@mediatek.com>, Vince Liu
-	 <vince-wl.liu@mediatek.com>
-Date: Tue, 10 Mar 2026 10:44:50 +0100
-In-Reply-To: <20260310033942.29585-1-ot_zexin.wang@mediatek.com>
-References: <20260310033942.29585-1-ot_zexin.wang@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	Tue, 10 Mar 2026 09:59:39 +0000
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62A904bU2021596
+	for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 09:59:37 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	lgUe0TFn6d0vjPmbLxKtIohMDX7uiKOUBiGY0vO4PaI=; b=Xs8tsJIaHuFREk0D
+	X0/b6Es/83vmE0IH6BgNgd5sda9mPkmieLyMsDF91whgiJgXQNXYiRb9QkHR88TD
+	xoFPVRMob0nwQEJZYcIlCSkPjptYkjXDDlNmqPdsbk5H+Hxasl+ROILF1FMEJZ1j
+	OxYjgdH8cK+LX09gX42fk04Fkk5YoGJOsmdYW/Jqngt1old/BEWmTec/7GpG9emm
+	YEC4IebUlfSG/DzZlTLx+gNgmlVm6iUjcSNnYpC2cDKWHCjZUK6Yy6FjEXRRf+fz
+	xF8VV3ASO7vKPZkyGumge0dPKpyzsutqg2gW/2O1rrH8wWoghWSNZdORS0lPZCv/
+	Uc3+aw==
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com [209.85.219.71])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4csyhbuntt-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 09:59:36 +0000 (GMT)
+Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-89a08e6cd15so542407746d6.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 02:59:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1773136776; x=1773741576; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=lgUe0TFn6d0vjPmbLxKtIohMDX7uiKOUBiGY0vO4PaI=;
+        b=Stw/h4ucR3Mrko7bS8w10inw2oi7cr+nyFp+pDvYDLfmkzcElJJGk4vg7odt3BqXu1
+         Q+gFZQHby5/zVr6aAxac7Hvzg7+jqmWZtUN3SmdtmEn46exML42dHUOT5P+gl1hVUfkT
+         nHhy1THvvXQTqZ6wUNtnbTZeDvnz++h+6+gjQUc4LJVOp/NA2554rmmWQyGXLFgtclJ6
+         uxXjVRlzh9aqOra90QrChYNdaV+DQXgNOQWnsESod/7XHVJ2HAMdGaTCHzfQGhzo7IYv
+         hijZ5g7e8dSlZPKy6zIornfuH7kqpk4snM+GBPGXk5lw6BT4XnHkXJ8U0AvUpiAzqdFN
+         IjLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1773136776; x=1773741576;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=lgUe0TFn6d0vjPmbLxKtIohMDX7uiKOUBiGY0vO4PaI=;
+        b=vT+7jwBkf+qUXy8Xm8jectSlw/cNPwoBSw+f6J7jDcLBt6B+vAdgOonN8PBNE74PM/
+         Aw8+Ubiv6IyxrbmUF79DjKen1LRTRZp2E2Ph7y8CBjJWWoSZzD8aXKRwOlGDAI7hFfVt
+         GucTRZl88kOBK3Ge80FwTAbdDyZTU1KFohHHrWx30khXKrkCZlgI/nBfWOo4Ifk0rc7/
+         GEC0jZm2JXFZd1fVBmYQ+PRhgJ/1JPZ6DKBdLoww+DTCowsTrlCZtMpxq+B23aAeOVIa
+         6skgxsv7vDXtKGXIYbDb7f8tGKyyctJRd7S218jHDZuqrtr9n/mmLtEyXt6yI46ENlOL
+         p6lA==
+X-Forwarded-Encrypted: i=1; AJvYcCUd8qZYNL3pyCh9HX82U1ObiBDRIdJJpgA9OomS8nfP4AKVSCEMH4UsM1fxdcAR0MNYc5h1cLYUwUDj82IfTA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxq3anmWbtuQSw3IOWRrZvvZ4LzVOoVVuEkQ2EH1OsflUkPcHqR
+	jIdbze5B980gv6HBODwhUGH/rFWLJbHGe/i7DbZtYd6g3NwcuC8KwiYJ88HelCFqzrfx7poimJV
+	civJFe1YgvqlKSq58+VuYJLlWZOMdQqPhVkf5FGvz8gBY4DJo9q9kAbskr/x6XOY+4cpmvTDLZu
+	k=
+X-Gm-Gg: ATEYQzya2GhxwK2fzXL69I71lYbEcpbNfJWZ3dzAGjODWzJvHDgayzyAyu1LWQYX+Dg
+	lIaK4eNqpodM+Kgalk8iQcXgzi1FgZwU3PzPZTFUmjaOwSLiongxvQ27kLx2gG92+jbfZj8eqJb
+	cMpIgaRsMbQgMclChEdC2JDa5WdnJ/ze8cVenAOshiBGQTiXRYXK2fHmGB4T/m+oFpR3QztQUK0
+	4MWZPW9pjGM1vtGiaBXRoWu0Dlr7nT9mDWIJp+vYplq0VXWZGc0fzK4PKqwCWWwVALPbwBO28w0
+	Z7FDxG5zIS3/tNTAbuZ7RSY7VRVR93ZKmQPr3p6Bk3MN/NIWuClJn2GZ51YWeBBEIwc+xBFjT9n
+	GUsRsaA9cV55vQ5iFcikBbKRJ4uRtmxdRtMrXkWackJcF2A9X
+X-Received: by 2002:ad4:5de1:0:b0:89a:258:c1d5 with SMTP id 6a1803df08f44-89a30ad59bemr219718056d6.50.1773136776360;
+        Tue, 10 Mar 2026 02:59:36 -0700 (PDT)
+X-Received: by 2002:ad4:5de1:0:b0:89a:258:c1d5 with SMTP id 6a1803df08f44-89a30ad59bemr219717766d6.50.1773136775932;
+        Tue, 10 Mar 2026 02:59:35 -0700 (PDT)
+Received: from [192.168.1.29] ([178.197.219.94])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-485419b8526sm68327405e9.0.2026.03.10.02.59.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Mar 2026 02:59:35 -0700 (PDT)
+Message-ID: <9a9cb7f8-54cc-4c43-a5a0-f022394351eb@oss.qualcomm.com>
+Date: Tue, 10 Mar 2026 10:59:32 +0100
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 01/10] workqueue: devres: Add device-managed allocate
+ workqueue
+To: Tejun Heo <tj@kernel.org>, Sebastian Reichel <sre@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        "Rafael J. Wysocki" <rafael@kernel.org>,
+        Danilo Krummrich <dakr@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+        Shuah Khan <skhan@linuxfoundation.org>,
+        Lai Jiangshan <jiangshanlai@gmail.com>,
+        Tobias Schrammm <t.schramm@manjaro.org>,
+        Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+        Dan Carpenter <dan.carpenter@linaro.org>,
+        Krzysztof Kozlowski <krzk@kernel.org>, Lee Jones <lee@kernel.org>,
+        Dzmitry Sankouski <dsankouski@gmail.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>,
+        Matti Vaittinen <mazziesaccount@gmail.com>,
+        driver-core@lists.linux.dev, linux-doc@vger.kernel.org,
+        linux-kernel@vger.kernel.org,
+        Sebastian Reichel <sebastian.reichel@collabora.com>,
+        linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev
+References: <20260305-workqueue-devm-v2-0-66a38741c652@oss.qualcomm.com>
+ <20260305-workqueue-devm-v2-1-66a38741c652@oss.qualcomm.com>
+ <aapTSyrkqqZ8j_XL@slm.duckdns.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Content-Language: en-US
+Autocrypt: addr=krzysztof.kozlowski@oss.qualcomm.com; keydata=
+ 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
+ cwzYbmi/Et7T2+47PN9NZAOyb771QoVr8A==
+In-Reply-To: <aapTSyrkqqZ8j_XL@slm.duckdns.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Authority-Analysis: v=2.4 cv=Rcmdyltv c=1 sm=1 tr=0 ts=69afeb88 cx=c_pps
+ a=UgVkIMxJMSkC9lv97toC5g==:117 a=gOEeR9iKwsj33Yj5oN/cWg==:17
+ a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
+ a=EUspDBNiAAAA:8 a=VwQbUJbxAAAA:8 a=f4WQo65-w8K6TlvLPnkA:9 a=QEXdDO2ut3YA:10
+ a=1HOtulTD9v-eNWfpl4qZ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzEwMDA4NSBTYWx0ZWRfX+Yz1mvJqX+EO
+ hXawXJECWOFLEXL8Ie7pnh7gfHBm7H6tlQB8esggso8nWPzm194hx+OI4xZbdniO++0oY9z5jig
+ MBFWUwdfmsc5/IGqNfK11ohilH2YGRvLoj+XNXro/HuUNeUjWvDGNsqKlvER88XgSFrKTgx6q68
+ rFAV6+tPUj99M2CzVilTfZ9OEkqipiXeiHpitr6N6DJ1x44Kn+RaBW4FAE51lSgw4w8Y3+7hGD2
+ Yj0B1E50ACOjHWhWRRzJiIMMTimL+mdjnALz/iYWaHkzi4huLX8tYqY5ZGbIBf4lADP7u4Vpzrh
+ F/MdtIEiUpUvt2ySjrNF+KhCzdCRutenbfXeg+geSw1HE9QjuFcx/nITF7UWcBSkr3OkWmC2tkc
+ UxJHcpH3Nl4xonwg0x+LtQvLAUahuFrs3iO6PJbLdCJQ4BUbeupyYz9duCbUswa0RuUzsw/TUD6
+ 36fh9S1krG6Vz/DwXmQ==
+X-Proofpoint-GUID: nzrWDwAWObMfTx2PNQc4mDjNP8v8f-9h
+X-Proofpoint-ORIG-GUID: nzrWDwAWObMfTx2PNQc4mDjNP8v8f-9h
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-10_01,2026-03-09_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0 adultscore=0 suspectscore=0 spamscore=0 priorityscore=1501
+ impostorscore=0 clxscore=1015 bulkscore=0 phishscore=0 malwarescore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2603100085
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_024457_770060_223B3940 
-X-CRM114-Status: GOOD (  24.49  )
+X-CRM114-CacheID: sfid-20260310_025938_960781_BB70A2B6 
+X-CRM114-Status: GOOD (  17.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,111 +209,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Di, 2026-03-10 at 11:39 +0800, Zexin Wang wrote:
-> Introduce ti_syscon_reset() to integrate assert and deassert together.
-> If some modules need do serialized assert and deassert operations
-> to reset itself, reset_control_reset can be called for convenience.
+On 06/03/2026 05:08, Tejun Heo wrote:
+> On Thu, Mar 05, 2026 at 10:45:40PM +0100, Krzysztof Kozlowski wrote:
+>> Add a Resource-managed version of alloc_workqueue() to fix common
+>> problem of drivers mixing devm() calls with destroy_workqueue.  Such
+>> naive and discouraged driver approach leads to difficult to debug bugs
+>> when the driver:
+>>
+>> 1. Allocates workqueue in standard way and destroys it in driver
+>>    remove() callback,
+>> 2. Sets work struct with devm_work_autocancel(),
+>> 3. Registers interrupt handler with devm_request_threaded_irq().
+>>
+>> Which leads to following unbind/removal path:
+>>
+>> 1. destroy_workqueue() via driver remove(),
+>>    Any interrupt coming now would still execute the interrupt handler,
+>>    which queues work on destroyed workqueue.
+>> 2. devm_irq_release(),
+>> 3. devm_work_drop() -> cancel_work_sync() on destroyed workqueue.
+>>
+>> devm_alloc_workqueue() has two benefits:
+>> 1. Solves above problem of mix-and-match devres and non-devres code in
+>>    driver,
+>> 2. Simplify any sane drivers which were correctly using
+>>    alloc_workqueue() + devm_add_action_or_reset().
+>>
+>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> 
+> Acked-by: Tejun Heo <tj@kernel.org>
+> 
+> Please let me know how you wanna route the patch.
 
-With this change, reset_control_reset() would stop returning -ENOTSUPP
-on all existing platforms using ti,syscon-reset. But it wouldn't work
-correctly because no delays are specified.
+Like I described in cover letter, so I propose this going via one tree,
+e.g. power supply. The first patch might be needed for other trees as
+well, e.g. if more drivers are discovered, so the best if it is on
+dedicated branch in case it has to be shared just in case.
 
-Note that reset_control_reset() was introduced to support hardware that
-is hard-wired to create reset pulses of a fixed length, with no
-individual control over assertion and deassertion. If the consumer
-driver does not need to work on such hardware, using
-reset_control_reset() over reset_control_assert()/deassert() is not
-necessary.
+Does this look reasonable @Tejun, @Sebastian?
 
-> Signed-off-by: Zexin Wang <ot_zexin.wang@mediatek.com>
-> ---
->  drivers/reset/reset-ti-syscon.c | 34 +++++++++++++++++++++++++++++++++
->  1 file changed, 34 insertions(+)
->=20
-> diff --git a/drivers/reset/reset-ti-syscon.c b/drivers/reset/reset-ti-sys=
-con.c
-> index 23f86ddb8668..f37685e32b0a 100644
-> --- a/drivers/reset/reset-ti-syscon.c
-> +++ b/drivers/reset/reset-ti-syscon.c
-> @@ -7,6 +7,7 @@
->   *	Suman Anna <afd@ti.com>
->   */
-> =20
-> +#include <linux/delay.h>
->  #include <linux/mfd/syscon.h>
->  #include <linux/module.h>
->  #include <linux/of.h>
-> @@ -42,12 +43,14 @@ struct ti_syscon_reset_control {
->   * @regmap: regmap handle containing the memory-mapped reset registers
->   * @controls: array of reset controls
->   * @nr_controls: number of controls in control array
-> + * @reset_duration_us: time of controller assert reset
->   */
->  struct ti_syscon_reset_data {
->  	struct reset_controller_dev rcdev;
->  	struct regmap *regmap;
->  	struct ti_syscon_reset_control *controls;
->  	unsigned int nr_controls;
-> +	unsigned int reset_duration_us;
->  };
-> =20
->  #define to_ti_syscon_reset_data(_rcdev)	\
-> @@ -150,9 +153,37 @@ static int ti_syscon_reset_status(struct reset_contr=
-oller_dev *rcdev,
->  		!(control->flags & STATUS_SET);
->  }
-> =20
-> +/**
-> + * ti_syscon_reset() - perform a full reset cycle on a device
-> + * @rcdev: reset controller entity
-> + * @id: ID of the reset to be asserted and deasserted
-> + *
-> + * This function performs a full reset cycle by asserting and then
-> + * deasserting the reset signal for a device. It ensures the device
-> + * is properly reset and ready for operation.
-> + *
-> + * Return: 0 for successful request, else a corresponding error value
-> + */
-> +static int ti_syscon_reset(struct reset_controller_dev *rcdev,
-> +		   unsigned long id)
-> +{
-> +	struct ti_syscon_reset_data *data =3D to_ti_syscon_reset_data(rcdev);
-> +	int ret;
-
-This should keep returning -ENOTSUPP for unspecified delays.
-
-> +	ret =3D ti_syscon_reset_assert(rcdev, id);
-> +	if (ret)
-> +		return ret;
-> +
-> +	if (data->reset_duration_us)
-> +		usleep_range(data->reset_duration_us, data->reset_duration_us * 2);
-> +
-> +	return ti_syscon_reset_deassert(rcdev, id);
-> +}
-> +
->  static const struct reset_control_ops ti_syscon_reset_ops =3D {
->  	.assert		=3D ti_syscon_reset_assert,
->  	.deassert	=3D ti_syscon_reset_deassert,
-> +	.reset		=3D ti_syscon_reset,
->  	.status		=3D ti_syscon_reset_status,
->  };
-> =20
-> @@ -196,6 +227,9 @@ static int ti_syscon_reset_probe(struct platform_devi=
-ce *pdev)
->  		controls[i].flags =3D be32_to_cpup(list++);
->  	}
-> =20
-> +	of_property_read_u32(pdev->dev.of_node, "reset-duration-us",
-> +			     &data->reset_duration_us);
-
-This OF property is missing documentation. At the very least
-ti_syscon_reset would need to be gated behind existence of this
-property or a new compatible. But, since there is one delay for all
-reset lines, this is the maximum of all per-consumer necessary delays.
-This is a fixed property of the SoC. So why specify it in the device
-tree at all? You could just derive it from a SoC specific compatible.
-
-regards
-Philipp
+Best regards,
+Krzysztof
 
