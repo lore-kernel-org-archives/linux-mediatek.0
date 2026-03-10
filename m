@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6A20FCC9AD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 03:25:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B84BFCC9B3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 03:25:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uHxroCmvUbDZdSuabhWIfcDNQo8xx33ypV1WgOxP5VE=; b=nffV7y9pNNXN2q6bvhxNWq80lm
-	wd0x0Grq2eLSgp9y6nEZU9doKhB88KQYSzwsxjKs3feoY1QYcI7QMslkT0Hiw7iqUX3KY2JGfShim
-	Yv/TIDScYGJgJqzWGXJ0/88NYptgioFSm2rSA/hm5L3H/wZIhO6eLbaiZW+NCGN4OIisuEn3xSTZF
-	b/NomlGKGlCXFEOnF44dtteEMBh92pBND8DEcQHh1v3NLmrxjbxp/fJbdpI7cbp9nltHsoNVr3fF5
-	jsEEMs5pot/Oe8I3cFyPw6tBQovwrxd5/1wD9PI1mAHBCYm2BDFB4wM35MI+cR8ggL+laf1WeAGAi
-	ox+W6SQQ==;
+	bh=9DNho1J2CisM3xAD9Y1bBejtF+SOOT6CZm5ayFQyPks=; b=wL3OR4WPjxn1+Q7kD31X0Uk/O6
+	nRmDgc1AJY+2rG9Dfml8sp22vVIWNI0vphfDkOhBCst5Eqyak/ir1ZCA3f0rnCrWJrzh1KzILLWV4
+	uhDoC6J6xak6DNzlJ66EsPqDD00yaKgnYBjSqmIiZBq71OSAGSS30AhDolyZWQQxMjCe3m3MYg6d+
+	9zcgSHOB9aUPrZZh/jofoFQcgnnZOTThtxf4bJCoKdRF7rnc4NYU7T49hiNkEYSfK4bAh34r89fvr
+	ftyxeMkIn9Dp3V6RFimdEqToz507cIxKB/twrUGJBNTZJsSmFrHUZo9DMsYjYGjwBogMZsNUtzJnV
+	sRffA/FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vznjA-00000008eCu-03Xg;
-	Tue, 10 Mar 2026 03:25:48 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1vznjD-00000008eF5-19oJ;
+	Tue, 10 Mar 2026 03:25:51 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vznj7-00000008eAr-0ldy
+	id 1vznjB-00000008eDQ-0mPj
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Mar 2026 03:25:47 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d9443c01a7336-2ab46931cf1so84671565ad.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Mar 2026 20:25:44 -0700 (PDT)
+	Tue, 10 Mar 2026 03:25:50 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2ae4988e039so60248995ad.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Mar 2026 20:25:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1773113144; x=1773717944; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1773113148; x=1773717948; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=uHxroCmvUbDZdSuabhWIfcDNQo8xx33ypV1WgOxP5VE=;
-        b=VebyXercAqYVTAf4H1PhX60HbGE8UG2DnJDyTBxRAz7efS4Eo2SVVZx7QJSPB6TWcu
-         Ek3v8qZoEgvj5ln/r/EiV2WpMD8Sx3CnOyWCyXhn/dgx5lpYzvmn0tqTHMXzDc3sWuZS
-         wPNovrcI77e/0FNo231os+9NHTRfRKaxwzOfQ=
+        bh=9DNho1J2CisM3xAD9Y1bBejtF+SOOT6CZm5ayFQyPks=;
+        b=JmskACW6StPKHr2n4ompnQwA52k1ukteKHVFTjs+cmDIze4LMUIih2YHiOT1/EelbZ
+         xbCXh7JxLnrINypL6IRQI9J7vcWFg6srlnrT4xgXGgXO8WAJdds7A+kbPNLgJRnlVeqy
+         Cdt4cBTpAfAUrTsBAXmQIPxM1KQ+5xxAJm/sY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773113144; x=1773717944;
+        d=1e100.net; s=20230601; t=1773113148; x=1773717948;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=uHxroCmvUbDZdSuabhWIfcDNQo8xx33ypV1WgOxP5VE=;
-        b=Akle/o1kNdRIqV7njqechgyZ1befTQdbC9fbVOoL1QZazeZOylcCp3fRrx0HaRD0aE
-         2i2Bc8sMdHGSRhcbEtFBeY0OCYTPs201OhXo80QVsHmKYwRfRXUFVfsFMcFJFlvD+oqu
-         VlRGSgaDZIO7ZcTtv5cb3Rj6HMu2clWZu3ANyLCMsgwfRip9EzEOkI1CI7imY8RNzZDq
-         9pG4XGSF2bpGB3iDdIntLkXx/DpkjXXi8DEMz+IeO3kJdCUHCy16j/Aoh9AnkVBWOesT
-         1EzAeCPvSy6mAtMhkVv9AXpLwKj3KrYenzf2PvlR81Lu7EP6AKgJ9QQaGNoXYKOyPlvW
-         gK+w==
-X-Forwarded-Encrypted: i=1; AJvYcCXhndfQO6a3r4G4O694EtoMsqcmnfhxrvXhUCjIZbG91NxOtIBA4apqQ9OHnvejmA94pvJ0ZGjgWyJ/m0vWmA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyuGlQZExrbobG5ZLhcmNzfIiPvfS8fJh7wNYDPcnAwdsQqXPgq
-	1pvjk8dUPZPXIfikcsTlcBHSil+PLDurSFIXqr33fBu8XKGNFyh68H+g2GLXeNpUQQ==
-X-Gm-Gg: ATEYQzyhcRjeCinXJw3YSSS/TFL3ol4bThWuKmrQb4N4UCvdY8JCLBRUqXuQTLiTCOT
-	k41NOWP29DDb2RjRuKoz9LklPu2TLHYNtfSXzbLre53hUGysmN421Yk5vvHjWIvt7Fkd6j2qwwK
-	wz+kwGsbgTjidUvJeTkh9tn71FeHDI6wIKuvx641qkw4MxYTOBjtxMQCpt/PREVCLg2fkWpZ9CN
-	y5t51yvDoGeCxhlp/v/hfInvkDAgQ0x6rrIEG3zDUoKJZWCVmaZk7a/5KPlIFmgks6lIhw556E5
-	V8vHB4+2bSxXu1FI5ETLfYMgRn+zO0SMwTt3Ht13pwigQiEiTdXMtMy4wm2D9LY4yIosmLphIMu
-	UhGPMPu0w/pd9t1QSQ4TVGdvu1QRqixOjPyIMqWXZw6qU8xVlSY/wiVC1PW24gRblIjXcnTdDDH
-	+1T29GpoY8NuCMPn9PZwei7JI2059dInrknxScyl/o5o0k1wpFsYk0iYYGLsBMy2VJ+TELHM3gU
-	Un08vUv
-X-Received: by 2002:a17:903:2349:b0:2a0:d454:5372 with SMTP id d9443c01a7336-2aea1f2f79emr17542375ad.22.1773113144386;
-        Mon, 09 Mar 2026 20:25:44 -0700 (PDT)
+        bh=9DNho1J2CisM3xAD9Y1bBejtF+SOOT6CZm5ayFQyPks=;
+        b=Cm03Wxsr6GtL1ub6jJY7BYCWhulE/Bri+kHpNYx1st0Ma1JSue9dX1EJJpMSVAww6T
+         NZuXjQTRl+3ZLEbFTcMIfqnLXNh20MhFpVnQyRyh2A0nHAqdJ/02FwFA2XP4ALJQzor6
+         z+p3WxcvUMCh0Bw0q1+IJYIq9H1y1JGMMwdInhqFYDb31f9MsJM2PVO2ncLtyQgrhjDb
+         6+48uVVvsOVMTC4A0C1881yx4NtMDBsjj4uvVUMEzYTiSXMD7LYEBqmWI4rz3O50R8jx
+         ei0OXYm2qzIYww0jPVVdWHs333nJyKrZtgUo+r6sGrswU3nzCMFg2zkwmLCeDOMYY73V
+         eJaw==
+X-Forwarded-Encrypted: i=1; AJvYcCX/U754XV+oOKnR+QT7I0ykNLYG4YnzTs2GEkq8IsEPYVW5SIoibMx620JhexX8A0sME6LmFxx4kn7ji4auVA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxl92BrndodP0FpcSHWMjq8fGJbwh1Tb4jgCrnk7pMgjCPI59WH
+	J5sjI1MGCkdTRhA39mtE1fkg/ifvjsulzvK+NSe80bB4Zagp3eYujeQ0oKwo5oGOYw==
+X-Gm-Gg: ATEYQzzuz+rU27SDJY0p6Xana7WccI6lYuDB4adYCqsvnmkEMM6SElwSWMiMPzEldtQ
+	T5xeM+SxCBzQMtBJmCny4HcF6o/c1qF5HE1FIIBGKcEo+RCoHvLtHuR/2+nuLRu7M97ZPRf0jf5
+	Uwb+9C48b0rmjXMhEWoMPLH2noXTEbfm4BpJndHkxgN56BG8ubtmmxRIgX4gw9Spl/8/ivpCpAU
+	JVXHm6XiyRVKp3E/fedgiM73+qFCAGeOi87iUdsedVI3/rSiFJeUsFBuje8YsRzcD8U5tJ1ksWQ
+	+7mxlJu7n5ceIKUR2Y+DR+qDLnQCRv28PiqITxp4KC0ySz7NXEbotPRZJk7HzxKlJC+RiMOKkip
+	beMcrgkl065bsNbSP4Y5/f/rVnNUTxplaLBFy2NKRVi+SmIbSlbt3d0EwmLZi2XsUbThpBrPtH4
+	xiA9SJ5hH1l8lEaRybpC4izjPsDWGxepQv+oG8gik1QKP5evlVt1TuOVRP2VAIAegEDT7+qtKEv
+	mBsELe9rYKcrIk1Z4o=
+X-Received: by 2002:a17:902:da2d:b0:2a7:aac1:7201 with SMTP id d9443c01a7336-2aea197b887mr18842765ad.3.1773113148339;
+        Mon, 09 Mar 2026 20:25:48 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:ee38:e01e:e888:6900])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ae83e575e6sm126695095ad.5.2026.03.09.20.25.41
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ae83e575e6sm126695095ad.5.2026.03.09.20.25.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Mar 2026 20:25:43 -0700 (PDT)
+        Mon, 09 Mar 2026 20:25:47 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -87,17 +87,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH RESEND 1/4] drm/prime: Limit scatter list size with dedicated DMA device
-Date: Tue, 10 Mar 2026 11:25:06 +0800
-Message-ID: <20260310032511.2545500-2-wenst@chromium.org>
+Subject: [PATCH RESEND 2/4] drm/gem-dma: Support dedicated DMA device for allocation and mapping
+Date: Tue, 10 Mar 2026 11:25:07 +0800
+Message-ID: <20260310032511.2545500-3-wenst@chromium.org>
 X-Mailer: git-send-email 2.53.0.473.g4a7958ca14-goog
 In-Reply-To: <20260310032511.2545500-1-wenst@chromium.org>
 References: <20260310032511.2545500-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260309_202545_223603_75B11EC7 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20260309_202549_238469_4798C057 
+X-CRM114-Status: GOOD (  17.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,34 +112,93 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If a dedicated DMA device is specified for the DRM device, then the
-scatter list size limit should pertain to the DMA device.
+Support for a dedicated DMA device for prime imports was added in commit
+143ec8d3f939 ("drm/prime: Support dedicated DMA device for dma-buf imports").
+This allowed the DRM driver to provide a dedicated DMA device when its
+own underlying device was not capable of DMA, for example when it is a
+USB device (the original target) or a virtual device. The latter case is
+common on embedded SoCs, on which the display pipeline is composed of
+various fixed function blocks, and the DRM device is simply a made-up
+device, an address space managing the routing between the blocks, or
+whichever block the implementor thought made sense at the time. The
+point is that the chosen device is often not the actual device doing
+the DMA. Various drivers have used workarounds or reimplemented the
+GEM DMA helpers to get the DMA addresses and IOMMUs to work correctly.
 
-Use the dedicated DMA device, if given, to limit the scatter list size.
-This only applies to drivers that have called drm_dev_set_dma_dev() and
-are using drm_prime_pages_to_sg() either directly or through the SHMEM
-helpers. At the time of this writing, the former case only includes the
-Rockchip DRM driver, while the latter case includes the gud, udl, and
-the tiny appletbdrm and gm12u320 drivers.
+Add support for the dedicated DMA device to the GEM DMA helpers.
+
+No existing driver currently uses the GEM DMA helpers and calls
+drm_dev_set_dma_dev() to set a dedicated DMA device, so no existing
+users should be affected.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/gpu/drm/drm_prime.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/drm_gem_dma_helper.c | 21 ++++++++++++---------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_prime.c b/drivers/gpu/drm/drm_prime.c
-index 51fdb06d3e9f..9b44c78cd77f 100644
---- a/drivers/gpu/drm/drm_prime.c
-+++ b/drivers/gpu/drm/drm_prime.c
-@@ -859,7 +859,7 @@ struct sg_table *drm_prime_pages_to_sg(struct drm_device *dev,
+diff --git a/drivers/gpu/drm/drm_gem_dma_helper.c b/drivers/gpu/drm/drm_gem_dma_helper.c
+index ecb9746f4da8..70f83e464476 100644
+--- a/drivers/gpu/drm/drm_gem_dma_helper.c
++++ b/drivers/gpu/drm/drm_gem_dma_helper.c
+@@ -146,12 +146,13 @@ struct drm_gem_dma_object *drm_gem_dma_create(struct drm_device *drm,
+ 		return dma_obj;
+ 
+ 	if (dma_obj->map_noncoherent) {
+-		dma_obj->vaddr = dma_alloc_noncoherent(drm->dev, size,
++		dma_obj->vaddr = dma_alloc_noncoherent(drm_dev_dma_dev(drm),
++						       size,
+ 						       &dma_obj->dma_addr,
+ 						       DMA_TO_DEVICE,
+ 						       GFP_KERNEL | __GFP_NOWARN);
+ 	} else {
+-		dma_obj->vaddr = dma_alloc_wc(drm->dev, size,
++		dma_obj->vaddr = dma_alloc_wc(drm_dev_dma_dev(drm), size,
+ 					      &dma_obj->dma_addr,
+ 					      GFP_KERNEL | __GFP_NOWARN);
+ 	}
+@@ -236,12 +237,14 @@ void drm_gem_dma_free(struct drm_gem_dma_object *dma_obj)
+ 		drm_prime_gem_destroy(gem_obj, dma_obj->sgt);
+ 	} else if (dma_obj->vaddr) {
+ 		if (dma_obj->map_noncoherent)
+-			dma_free_noncoherent(gem_obj->dev->dev, dma_obj->base.size,
++			dma_free_noncoherent(drm_dev_dma_dev(gem_obj->dev),
++					     dma_obj->base.size,
+ 					     dma_obj->vaddr, dma_obj->dma_addr,
+ 					     DMA_TO_DEVICE);
+ 		else
+-			dma_free_wc(gem_obj->dev->dev, dma_obj->base.size,
+-				    dma_obj->vaddr, dma_obj->dma_addr);
++			dma_free_wc(drm_dev_dma_dev(gem_obj->dev),
++				    dma_obj->base.size, dma_obj->vaddr,
++				    dma_obj->dma_addr);
+ 	}
+ 
+ 	drm_gem_object_release(gem_obj);
+@@ -432,7 +435,7 @@ struct sg_table *drm_gem_dma_get_sg_table(struct drm_gem_dma_object *dma_obj)
+ 	if (!sgt)
  		return ERR_PTR(-ENOMEM);
  
- 	if (dev)
--		max_segment = dma_max_mapping_size(dev->dev);
-+		max_segment = dma_max_mapping_size(drm_dev_dma_dev(dev));
- 	if (max_segment == 0)
- 		max_segment = UINT_MAX;
- 	err = sg_alloc_table_from_pages_segment(sg, pages, nr_pages, 0,
+-	ret = dma_get_sgtable(obj->dev->dev, sgt, dma_obj->vaddr,
++	ret = dma_get_sgtable(drm_dev_dma_dev(obj->dev), sgt, dma_obj->vaddr,
+ 			      dma_obj->dma_addr, obj->size);
+ 	if (ret < 0)
+ 		goto out;
+@@ -539,12 +542,12 @@ int drm_gem_dma_mmap(struct drm_gem_dma_object *dma_obj, struct vm_area_struct *
+ 	if (dma_obj->map_noncoherent) {
+ 		vma->vm_page_prot = vm_get_page_prot(vma->vm_flags);
+ 
+-		ret = dma_mmap_pages(dma_obj->base.dev->dev,
++		ret = dma_mmap_pages(drm_dev_dma_dev(dma_obj->base.dev),
+ 				     vma, vma->vm_end - vma->vm_start,
+ 				     virt_to_page(dma_obj->vaddr));
+ 	} else {
+-		ret = dma_mmap_wc(dma_obj->base.dev->dev, vma, dma_obj->vaddr,
+-				  dma_obj->dma_addr,
++		ret = dma_mmap_wc(drm_dev_dma_dev(dma_obj->base.dev), vma,
++				  dma_obj->vaddr, dma_obj->dma_addr,
+ 				  vma->vm_end - vma->vm_start);
+ 	}
+ 	if (ret)
 -- 
 2.53.0.473.g4a7958ca14-goog
 
