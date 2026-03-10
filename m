@@ -4,60 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5623FFCC9AE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 03:00:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 788B8FCC9B3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 03:25:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9jUAQ5D4wJOfJgWpzyrFt3Hw32ZGQnCnoTnBRH4Vot0=; b=iEiMp63qOLNXgeREqM0IvnA2sE
-	mDIy/MzkA0U9HME7oFD0XjssrYppuY1jYBCK/K3+2kN/Fk62SdAiq/6C49rpR8Y55jMYoteY7uFBj
-	fJCP40Yjh0fPE0EkWIeaxpXs61A+QB+PapLolzfqfBCiY5vr02Ws2xQsPK4QOlNSNWr2amBCaNlbO
-	AoPC18wi+OXG9T2qcLNmjr4n14xO3Qdz4l5Yr15RpgR3hdL6TSRhbDV3WWe4RQKvlnvQJ0xqT20wc
-	Z2eBcNVMj7o9lBp4qpK8dpWwHak+oYyrF3dxhM5k/z2ek9KyWDyqxuKQOeQUfq/xoSDHQdiObyp8W
-	AX6QjsQg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OoV76OKOjG7uxIKEUxi5pEmwh+JGNhbt1HMoxK+jnjw=; b=23/mfohxPsA66ibEScJnCxmVDO
+	fOxKcFDFSALTVEtUQl5IN0w0QysEnw9eFzxWaCWT42zDbVcrTt5A/7fVGXM0N4Kz4f0uBhygmd0aG
+	DjIQ8O3UdvyPeL+VrO4UrmXdUF/Qy3VmqFL+fqX4GikrbUeEtcOPeAKtY645UHa7m25q0wKS5MNMH
+	pgtgSW5eX6l5fIcxWkAAU0vcdN5zl+AB1pb4kcI2MwF4WdHzECF9vCNvrDVXkR+2MjR/ao0y+Qmo2
+	y6bS99vjZlt2owGYCPulCm87eFVutRTN/ZjRNh6Yd+0qYSRcF2D55cgmTFJT9R++1qOoDh7x3arYm
+	yPisFE3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vznKu-00000008bjx-0kJl;
-	Tue, 10 Mar 2026 03:00:44 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vznj6-00000008eAP-0l2c;
+	Tue, 10 Mar 2026 03:25:44 +0000
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vznKq-00000008biU-178H;
-	Tue, 10 Mar 2026 03:00:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B27EC600AE;
-	Tue, 10 Mar 2026 03:00:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 662F8C4CEF7;
-	Tue, 10 Mar 2026 03:00:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773111639;
-	bh=3+2lYVzbzk7uvgRnRhf4lG9qT2OLixK/h/w5dFHyCmM=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=T061+9v1A1Vba7QK0q0xa5c44YReaYrIOcS7933froKRzwqMRNC/gmyoeYLFgPD6/
-	 n7m+q4CVSjgYii94cB7EYQtH7AMZf7ewoJIO6F0wHSmsvtVZ8sHlDltvb/28kDVTO9
-	 3XRt959HRdvNFrf986WW5sy+ciopDIlHOgw5Ql4eUzi28V4z3+1TNi6y85iu8L+Qk6
-	 ggJRDYwJ0vOOzLeot5p0xOPDlVOrPpbZOjnr2/1GlOnIUirKNhpQ9lFcNp6CG0c7Wz
-	 DaAhdF0rjC+hlPiJneKgi/7sQaxoUUI1lBFGEv8sROHHyJ11uB8uY7dN0+gR38ldYx
-	 Q57Vpn6ZKGXBQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id BA0053808200;
-	Tue, 10 Mar 2026 03:00:37 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1vznj3-00000008e9i-3oju
+	for linux-mediatek@lists.infradead.org;
+	Tue, 10 Mar 2026 03:25:43 +0000
+Received: by mail-pg1-x535.google.com with SMTP id 41be03b00d2f7-c73bc3dd25fso524578a12.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Mar 2026 20:25:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1773113141; x=1773717941; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=OoV76OKOjG7uxIKEUxi5pEmwh+JGNhbt1HMoxK+jnjw=;
+        b=lFR+M6XWZe1CN5RSP2b5Lcf80Zwm7zJAUokRwQWqn9YkIUN3A9i567Gv2XXfiy1nvz
+         xRkM4qgnTtd/K/hnG18X9e1zjdFfSFsQU3XPEQkxhvn+5ewu/7wdWI3kdv7IRn93RE0x
+         VyuQn9cCB1sli6QItvDPB9S4c9/XdzlBLLhY8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1773113141; x=1773717941;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=OoV76OKOjG7uxIKEUxi5pEmwh+JGNhbt1HMoxK+jnjw=;
+        b=AkStll6W7rIQXPnBhiecloFzWUnO2SkQ8HsmFUhrehpEtOQOGNW0MxmjCdDKYyBdzi
+         YlKt9Z4aqq8mJaL3wFPEiJG/Qxij1KBeQm4EZJ1MGvVIxFXcSUyF8fp7rilCEjoouF3F
+         5LB6jnGDmtiPGTEXe4fPPdjceItk+rwnPlKpDF1HxCwExkzWoFBtCzUkfh6+v4Fpw5Gv
+         vOwOz0YUCm+0YK5+KSJ2+DG9GhF5mrZc6rq9KzCHRr+JlZtIiYi/NTK3pLHmjR7pfK03
+         n055Hc3HYFJHPOERfvZu+YD814iO322TM8dDOa8T25WYa8lAl99JDAqCO4MHu1szNBuh
+         HcyA==
+X-Forwarded-Encrypted: i=1; AJvYcCXZ65zEOW0e60y8Cr1Bu5fAVu8ItVKrAuDP7hmAGkt5jp3358qi5XqMWt7TR8eS3xargxONeuPMZdQN3B9GKA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzk16+QaL6aLa+eKVxok8mCqTZ1w/8D7KDuHTaHTPtQqyosmxoH
+	lc+LbMIeBCrOC7I0MHg+mE27zHQWjpwCaSsrxVy8nKjj7ezd5jy/8SCIf6sJ2EPs/g==
+X-Gm-Gg: ATEYQzysvm6fCUFnVj+tkmHNx4G8XOCDBkdSAZ7QNtXjeBJGCW1BLu3GfIFZfmnaQk5
+	ZeA5I9R4LO3ZEJkI+wYqmV7WPym+aFMZVVMhbz9FmvNXoLM/sX8xQ24C4pPX871cSP6ao6jsnBL
+	h6ooobSKop7PC/m9voEJkRbMEvdxnA7X36KaGyEqlmllGWIpRKg/tI6pV5OgCWNGhGCdfSvwSYd
+	RPOk90rhk3LMwjT6uoxx78moAY8zQ+3mmzn1q6wyDpjLSZ6DmYpcllVxeYXJitixBvtdStjTZ38
+	xDZqDqDlrRoNgO0vf9lBRG/ReSrS+zj99GdIQ/dnZwqhetUWCK0C7DGijXlyvj3D2275jklgopB
+	s9hdLVY9v2wOi1nLrYXaqo8UWplUetq+S7LKqkM9RH5ueqn+lvSUwq8fcpIOlwA+Va7eC+qCUi5
+	feS2euoJAXqRE456CVVZVzU13Y7t3/SJ6TT+eF/Bt8IpQ2I2DTZ9FzXdfJlePoDbVnGEUqhPMC8
+	KiCBsrQ
+X-Received: by 2002:a17:903:2452:b0:2ae:5752:af82 with SMTP id d9443c01a7336-2ae82498328mr120569975ad.49.1773113140915;
+        Mon, 09 Mar 2026 20:25:40 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:ee38:e01e:e888:6900])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ae83e575e6sm126695095ad.5.2026.03.09.20.25.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Mar 2026 20:25:39 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej@kernel.org>,
+	Samuel Holland <samuel@sholland.org>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+	linux-sunxi@lists.linux.dev,
+	Paul Kocialkowski <paulk@sys-base.io>,
+	linux-mediatek@lists.infradead.org,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH RESEND 0/4] drm/gem-dma: Support dedicated DMA device for allocation
+Date: Tue, 10 Mar 2026 11:25:05 +0800
+Message-ID: <20260310032511.2545500-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.53.0.473.g4a7958ca14-goog
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v2] net: airoha: Make flow control source port
- mapping dependent on nbq parameter
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <177311163655.2039470.10429303373608059245.git-patchwork-notify@kernel.org>
-Date: Tue, 10 Mar 2026 03:00:36 +0000
-References: <20260306-airoha-fix-loopback-for-usb-serdes-v2-1-319de9c96826@kernel.org>
-In-Reply-To: <20260306-airoha-fix-loopback-for-usb-serdes-v2-1-319de9c96826@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260309_202542_002412_07BDA493 
+X-CRM114-Status: GOOD (  17.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,29 +109,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+(resent with Samuel's email address fixed)
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Hi folks,
 
-On Fri, 06 Mar 2026 09:07:27 +0100 you wrote:
-> Flow control source port mapping for USB serdes needs to be configured
-> according to the GDM port nbq parameter. This is a preliminary patch
-> since nbq parameter is specific for the given port serdes and needs to
-> be read from the DTS (in the current codebase is assigned statically).
-> 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
+This series expands the "dedicated DMA device" support in DRM to the GEM
+DMA helpers, and converts the MediaTek DRM driver to setting the DMA
+device and dropping the custom GEM helpers that implemented this
+function.
 
-Here is the summary with links:
-  - [net-next,v2] net: airoha: Make flow control source port mapping dependent on nbq parameter
-    https://git.kernel.org/netdev/net-next/c/bf3471e6e6c0
+Various display drivers implement the "dedicated DMA device" support
+with custom GEM helpers. These include Exynos, MediaTek, and Rockchip
+to name a few. Allwinner does something entirely different, calling
+of_dma_configure() on the virtual display device using the OF node of
+the actual DMA device. Recently this causes a warning if IOMMUs are
+involved.
 
-You are awesome, thank you!
+This series intends to allow the core helpers to deal with it, and not
+have every driver implement it in slightly different ways, duplicating
+code.
+
+Patch 1 adds dedicated DMA device support to drm_prime_pages_to_sg().
+I believe this was missing from the original change that added dedicated
+DMA devices for PRIME.
+
+Patch 2 adds support for dedicated DMA device to the GEM DMA helpers
+for GEM buffer allocation and mmap.
+
+Patch 3 converts the MediaTek DRM driver to use the dedicated DMA device
+support, and drop all the remaining custom GEM callbacks that deal with
+it.
+
+Patch 4 converts the Allwinner sun4i DRM driver to use the dedicated DMA
+device support, instead of the of_dma_configure() hack it currently has.
+
+The series should be merged through drm-misc-next so that other drivers
+can take advantage of the change.
+
+I also intend to try to convert the Exynos and Rockchip drivers, however
+both also have options to set DMA_ATTR_NO_KERNEL_MAPPING when using
+dma_alloc_attrs() to allocate memory for the buffers. I intend to
+resurrect the DRM_MODE_DUMB_KERNEL_MAP work from Rob Herring [1]
+to handle this. The Rockchip driver also has custom IOMMU attachment
+that I'm still trying to understand.
+
+
+Thanks
+ChenYu
+
+
+Chen-Yu Tsai (4):
+  drm/prime: Limit scatter list size with dedicated DMA device
+  drm/gem-dma: Support dedicated DMA device for allocation and mapping
+  drm/mediatek: Set dedicated DMA device and drop custom GEM callbacks
+  drm/sun4i: Use backend/mixer as dedicated DMA device
+
+ drivers/gpu/drm/drm_gem_dma_helper.c   |  21 ++-
+ drivers/gpu/drm/drm_prime.c            |   2 +-
+ drivers/gpu/drm/mediatek/mtk_crtc.c    |   1 -
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c |  21 +--
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h |   1 -
+ drivers/gpu/drm/mediatek/mtk_gem.c     | 231 -------------------------
+ drivers/gpu/drm/mediatek/mtk_gem.h     |  17 --
+ drivers/gpu/drm/sun4i/sun4i_backend.c  |  27 +--
+ drivers/gpu/drm/sun4i/sun8i_mixer.c    |  27 +--
+ 9 files changed, 46 insertions(+), 302 deletions(-)
+ delete mode 100644 drivers/gpu/drm/mediatek/mtk_gem.c
+ delete mode 100644 drivers/gpu/drm/mediatek/mtk_gem.h
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.53.0.473.g4a7958ca14-goog
 
 
