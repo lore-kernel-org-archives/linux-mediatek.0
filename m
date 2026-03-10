@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FAEEFD4F2A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 20:06:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEF4DFD4F2A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 20:06:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zN04QOyvuNYqHR2KOr7qmaUFc0qRULIxaBq4auralkg=; b=ARGOUcjeRgwMwahjLCuuQ6pYd8
-	9mBqBHOFUdEWA35tEDr2AxJrSd6MCjPKcLUrDuBF8E8LMOGXr7AiL82Sgh7yHzaorRxzFGCT6k0m6
-	nnv/pu6TQQxNw6ATQWqbppeqEn5gL5+Tt1Jf8mGgA+Bwv22874FjZOTli3KyvSHoAAtOzrAGql55J
-	iGRj/dPs/+wNHF1Ki3TGb/grz/cQjf6zVdQCppKzt9K/Cg4+Jq3X2JzeD41jDGzYFO61Yea8w4piM
-	2dys71C3do8bpjO7azaIEQdrP5LskYcVnkUr8h4LxkBKnLuzaG3mR8u48lZKN2Q5GNuqNn2fwXEJJ
-	BZ0OkFkg==;
+	bh=+FCnsZqgY0C/inqnWcqsCfogd4Ir01+XklcEE3giunQ=; b=i1sovZmhs9wQ2wrYK0eYT5dwhl
+	ogmnMSU1bVRJmo8UDys7h3l15V/jO09Y8u2/BljTlz/5G8xhlilZIDeiV35OyEdEJtzkjyedtSycs
+	ckCaTPL49kp8MGUWTuRT40KSevS2PyDDnpUbGcqwKYr4bSFsWBM1boHyDEEKDoY9y8mKHdR/0Wp8B
+	CQ58GME323PQ0iwXKhdXkjvwjNPNomTsc4U7PYYpSEyb30Ih7UffXzuHNiB75PpxECP433+RA7Mli
+	DgF9IBqoY1fGlioDVbebDlB1DHv4aTq9qVziFBhl1AogBGsQSAa/mRlnbr4nxzKVDTlfCwMPHWk9z
+	taW+R3WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w03LC-0000000ADmo-2tby;
-	Tue, 10 Mar 2026 20:06:08 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1w03LN-0000000ADs0-3gpf;
+	Tue, 10 Mar 2026 20:06:17 +0000
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w03L9-0000000ADlI-2U5X
+	id 1w03LL-0000000ADqB-0eJP
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Mar 2026 20:06:05 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-829b2018c94so2370726b3a.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 13:06:03 -0700 (PDT)
+	Tue, 10 Mar 2026 20:06:16 +0000
+Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-829756f3ee9so5955259b3a.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 13:06:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773173163; x=1773777963; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1773173174; x=1773777974; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zN04QOyvuNYqHR2KOr7qmaUFc0qRULIxaBq4auralkg=;
-        b=SheI5TSDpUb6bHAxnHW2kUXrl+I36NXS8on0JYnxpZeSYNlJk97yzWZ0jtGfh2rQqY
-         Z3xp2opjui+LjfDEuAKu5X/1b4qshSJI3/Ai5i+vGpN8U5sNA1oolLlkZUjTHtaFSPTZ
-         hdCLvvUmaSVYC8F4h9gvtHVxKlsWtqe3IW0xHiXqdpc2UhfalFXgKg/rmFKRGJJew/HG
-         SdsTIUDeSEFbv3s9psPbnRjwzUCKpdpn0Xc9RgdSIz2TidOp9+RrAt+bsH1GdmtkKZkK
-         pTeXc7YKvpO7a1h3ctXnIHNwTVZC66e2FFxUydtDyv8v0tVXatlZEp/ewq+T6jeS6rDI
-         OtwQ==
+        bh=+FCnsZqgY0C/inqnWcqsCfogd4Ir01+XklcEE3giunQ=;
+        b=Nw/6OKipbPcSjCe+tbX4Y6k/pLH/sa9SMvp+Q44DxnqwdkOQmp+lYPoA7kvDeUtqEn
+         qo+AKZRjwgYp+DIV8FAn0zBnFrMDPLJ3770owQvDb6pQcgojuasU070ZU+2cjVLer8DH
+         rSs9dXDubjvtHJvidwoiFm5wUfheFswccPCqg8PvCPFHyYuesl7fUzM6lXD4AR8h2hnp
+         wTlu2KBdYM/QOEihoS17kouCuJFEH3R4fHyeth71mGFKNEhgV90+v1Odg4VjlXyEXsa7
+         GInEWOtY0A1DTnA2cDyYcLyDuVFQWvOLJMpP6vkrHxi+e+bQmMgAi3lftlCeNNdLGqBf
+         kmPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773173163; x=1773777963;
+        d=1e100.net; s=20230601; t=1773173174; x=1773777974;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=zN04QOyvuNYqHR2KOr7qmaUFc0qRULIxaBq4auralkg=;
-        b=GZ9W0jUsnfa84u3wYiQrH4PKch9kFXwlAH1PZKXbI65IajEkzSGwd5E9nwN3BP1ltO
-         kNGaZTP4hiOF8TdOkCZlzXNv9AkxvrHLAgeui23vDHGgrdLy3utbMS6LFaN/x3YMCap5
-         idvqKzoNlfnkfrnEn5BbjFt7o35ik+8pcRbrbpad1166Fsi45LwxoGaL0FF28ERYEz8w
-         70Mnj0T31oa+BMclHkB2R1ib0e5PeDu/OC2I7jiXLs5/Nm9eBDWqGiC/l0Z5zC6ssmoL
-         zW20yx6ny7jlBRJ9gscmgvG8T2yOQHHZAMbT9ygxV60PYFYAQCS1KGTg5rYVtObl7Fch
-         IEmA==
-X-Forwarded-Encrypted: i=1; AJvYcCWys3w8AeoH58AY7VJrgwd/5c9QSOxCbZHCONPdquO7hulXSTEG2NhD9vE/fM/ItQiJzv+6NnaJgK+yqFv5SA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwtBm7YRnRB2YFpk4WUtJ2YusEp1aY/FCwENZvsuwGPMtq8vGHU
-	VFEvawmFoe0hCYBQypT5olePxlQBYAJTaDotCdoVbFO0141/d9csfet3
-X-Gm-Gg: ATEYQzyF3pJDyQTl5+QCjeL1JNEczg0gPOBRRnjq/AQwxpNioi5R6d/SmkRdXBWef72
-	Acc7U5K8q5DepF5Qmc1jTjrK0IY8A7BIX8EHmDouDoR2+SYs9BdBAkX7gxJKQcVhos47rDVsIK2
-	B8Jo+3cMMiFGyTrmdVFmLX1GyXUpmhn1wfBiKDAuJyfeOpJB1v3OcBc2vUC0D7SeNPz97piPBY4
-	vqjGy5KiySn51y9Fi/HWG07VsrwO4O5eBy+hqZ/LTj2c+/NxeiLI+Lpz82DIlgqY08Ea8Vp72nH
-	PJkYsbnwD1TktM+7JP20/9PdgVwER8y/Lz1AYMQFpGrEt0vz/mY2K5k11Obd7W8CihnqfR1J7Vp
-	LgqG/49A70cr8mV9+6roAvIUQv8snqWdzEP89pjgL0M4VZPjSwViOGb5V1D9+y3nFPQ27+pl5L6
-	Z/vajwjK8T1U0gdHiuLXrTceoCZ4JcBuGoCTk8QFC79t14HJ3E
-X-Received: by 2002:a05:6a00:3696:b0:81f:4a06:6f5 with SMTP id d2e1a72fcca58-829f6e71c7bmr133338b3a.4.1773173162881;
-        Tue, 10 Mar 2026 13:06:02 -0700 (PDT)
+        bh=+FCnsZqgY0C/inqnWcqsCfogd4Ir01+XklcEE3giunQ=;
+        b=k0mqOo7kFllwDVjGkR3qosjrkFrddLmjcNQzsmzwjQ4ii7O0vPigMPbJK9lZ15RjCl
+         tMIY7D8gD0Fw3+01nH73TfnPqcunyNYVK8G4nKHUlsNe2BTHJVTTBdebVIbL7kTKMmyt
+         60U91nRy7f32Uib1wFbSRMcBBuam+oDz7Tj30wMgMjMSywuWXfytucMVYLOZkafZGY3V
+         JOTG7Wi75MECXNcWtpuA/cv7p9s8HNDHUDEyWz19sZJK5MEvaskxEvprHbZFxb74qt1z
+         ZEwV23QzBgGfTYitkd4TVX8jpruUSk4YQ0Lf6Eebwtgk960SSadH7i62xBDhc+m6qGfN
+         UZvA==
+X-Forwarded-Encrypted: i=1; AJvYcCVYHGTkoXvu/wRNXAEBHaSJXHc8BQQv26oC1aKy8Ocs0AjkUkY0stKMTTbtHerVMGLNJuMT+M4FZEPfYIxtAg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzwJBKYDUhcLihUp7sX2uihCZbAYtyPK46eIaGakkZ0bjDBJC18
+	ITHqtPwkSPNKMGtxPEjy/V2BpwtGv7n7gOUo5STHPurdexb71yD/b31I
+X-Gm-Gg: ATEYQzw4NF3ZYp7dm6Q5fN7yWTIQFH1wsodEdlHQm2cQYVJQzufq/WjE8Pu6Zd3rXJY
+	bryQjuUXMTOsvacTObPKIjLdaGaW/4sc91f9NjnVkQNIZV2XrrIfvvdPMV++T3moUCkbBUN8QKV
+	BfblbC/9g5GDKKlnS86CZUP3ZQG6x8CFxWC//ysLgfNeAuOm8wopQokoh+ya0LUDERw/OBykHCJ
+	eef26BBseUn2DA9nbnd5AYx1BbpxcgkBrcoIvs0ywWlbp5i5DpXblb611OdVj0/QIp11wyG2ar2
+	HpNlP/+ZB1UjJTWcBwlQGrcjCHCZexbSv4JRSgjxqo6XZqSozzgAYDQ+TyY3F2TzrpWs5lZKzVs
+	UUp2uf6vCwaDuavvo1mc653b18rGFt/AUx8H8dVmYExCn60wcRXiLwnuh4mWNyHvnd7uLk0FJC6
+	p86ahctSuGZmvvE3KkYJ5RfKyCyxFNe19TloYVjN8mMdD8/EBw
+X-Received: by 2002:a05:6a00:3d4e:b0:81c:6ca8:7ff8 with SMTP id d2e1a72fcca58-829f71c43f1mr119633b3a.61.1773173174414;
+        Tue, 10 Mar 2026 13:06:14 -0700 (PDT)
 Received: from hu-ckantibh-hyd.qualcomm.com ([202.46.23.25])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-829f6dc2d0asm101660b3a.13.2026.03.10.13.05.51
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-829f6dc2d0asm101660b3a.13.2026.03.10.13.06.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Mar 2026 13:06:02 -0700 (PDT)
+        Tue, 10 Mar 2026 13:06:14 -0700 (PDT)
 From: Sanjay Chitroda <sanjayembeddedse@gmail.com>
 X-Google-Original-From: Sanjay Chitroda <sanjayembedded@gmail.com>
 To: jic23@kernel.org,
@@ -114,17 +114,17 @@ Cc: dlechner@baylibre.com,
 	linux-staging@lists.linux.dev,
 	sanjayembeddedse@gmail.com,
 	skhan@linuxfoundation.org
-Subject: [PATCH 3/7] iio: st_sensors: simplify cleanup using __free
-Date: Wed, 11 Mar 2026 01:35:09 +0530
-Message-Id: <20260310200513.2162018-4-sanjayembedded@gmail.com>
+Subject: [PATCH 4/7] media: mediatek: vcodec: simplify cleanup using __free
+Date: Wed, 11 Mar 2026 01:35:10 +0530
+Message-Id: <20260310200513.2162018-5-sanjayembedded@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260310200513.2162018-1-sanjayembedded@gmail.com>
 References: <20260310200513.2162018-1-sanjayembedded@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_130603_649070_39E57805 
-X-CRM114-Status: UNSURE (   9.81  )
+X-CRM114-CacheID: sfid-20260310_130615_196402_341E5703 
+X-CRM114-Status: UNSURE (   8.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -149,38 +149,28 @@ No functional change intended for kmalloc().
 
 Signed-off-by: Sanjay Chitroda <sanjayembeddedse@gmail.com>
 ---
- drivers/iio/common/st_sensors/st_sensors_core.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ .../media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c   | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/iio/common/st_sensors/st_sensors_core.c b/drivers/iio/common/st_sensors/st_sensors_core.c
-index dac593be5695..f641b62e692b 100644
---- a/drivers/iio/common/st_sensors/st_sensors_core.c
-+++ b/drivers/iio/common/st_sensors/st_sensors_core.c
-@@ -501,14 +501,14 @@ static int st_sensors_read_axis_data(struct iio_dev *indio_dev,
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
+index 2da11521fc7b..3184939f793a 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
+@@ -96,7 +96,7 @@ static ssize_t mtk_vdec_dbgfs_read(struct file *filp, char __user *ubuf,
+ 	int total_len = 200 * (dbgfs->inst_count == 0 ? 1 : dbgfs->inst_count);
+ 	int used_len = 0, curr_len, ret;
+ 	bool dbgfs_index[MTK_VDEC_DBGFS_MAX] = {0};
+-	char *buf = kmalloc(total_len, GFP_KERNEL);
++	char *buf __free(kfree) = kmalloc(total_len, GFP_KERNEL);
  
- 	byte_for_channel = DIV_ROUND_UP(ch->scan_type.realbits +
- 					ch->scan_type.shift, 8);
--	outdata = kmalloc(byte_for_channel, GFP_DMA | GFP_KERNEL);
-+	u8 *outdata __free(kfree) = kmalloc(byte_for_channel, GFP_DMA | GFP_KERNEL);
- 	if (!outdata)
+ 	if (!buf)
  		return -ENOMEM;
- 
- 	err = regmap_bulk_read(sdata->regmap, ch->address,
- 			       outdata, byte_for_channel);
- 	if (err < 0)
--		goto st_sensors_free_memory;
-+		return err;
- 
- 	if (byte_for_channel == 1)
- 		*data = (s8)*outdata;
-@@ -517,9 +517,6 @@ static int st_sensors_read_axis_data(struct iio_dev *indio_dev,
- 	else if (byte_for_channel == 3)
- 		*data = (s32)sign_extend32(get_unaligned_le24(outdata), 23);
- 
--st_sensors_free_memory:
--	kfree(outdata);
--
- 	return err;
+@@ -134,7 +134,6 @@ static ssize_t mtk_vdec_dbgfs_read(struct file *filp, char __user *ubuf,
+ 	mutex_unlock(&dbgfs->dbgfs_lock);
+ read_buffer:
+ 	ret = simple_read_from_buffer(ubuf, count, ppos, buf, used_len);
+-	kfree(buf);
+ 	return ret;
  }
  
 -- 
