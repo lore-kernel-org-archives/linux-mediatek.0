@@ -4,63 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8A08FD2D69
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 12:30:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19A42EB1054
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 14:35:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ELrrCbxIPB/3LJIx8lDJKH/BBlwUfQI6JhtI01g48AA=; b=WLfkowh0+uXx4uKnbNldqpGBvF
-	6R4mXVj3zMd8F23TQkiWZH4nyPfmPkoDliuBnliKeqE2qLkgnkOXtidXrBxW6C/Ga+fUDYyNSjrha
-	OdYf5OfPC6FwuazNIM7YnZqx1dJftANLSovgCl869Xv4zgE5MgTBAaDyiiaATcz/UT1TDtKGJMY6p
-	JK0Yg5m4HWEY1YGbhk0j29GbabaEhRoDg8QbCzsDkF3YykJtbx87SlDXbPDNVgaGXAeKG+Hy0zeBl
-	j0Sot9uVhykjhgHNEUV4YmDEWtAoOE3jKUNiXSEi6Rfc/k+fWCqNrGt7PCNjp3OQr7UN5PbNc6ck0
-	AoKKW34w==;
+	bh=d806grPeQ8uBN9NDC8eu5sQU9snIGboano6I7hkTXxM=; b=CpXbwPcakZQuMS0cFVFZVvd/k5
+	M5D7mGfVziRAkhPUcopAuRCGY8uMS59bKmUz+yjjRzHKOe/xjfd3TqJZvRjGz0p1ZxWZOArcVDGsr
+	cRzK5/3Gbhh+yV99LNQ3KLiLWpnHLN7OJaci9QuJQQQND+IGkQdDjAddf0eWfGNRVTEUJ2SXO8rFg
+	ybyNQY/B+gpWxzoAR1s8+fRFYyB9hi+fu5wtfrShbxBrGbDoXCAZwww5i/FZ8BsljPWFL5SiNUYSV
+	TkVrXIRTBEczgDBShkSC7ZONzRag7STHSL9qx1aJPqxfCE85iW5FyPfUi0F0o/d2WdvoqrsfChPfw
+	DrTG4fSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzwE1-00000009UI5-2y1O;
-	Tue, 10 Mar 2026 12:30:13 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vzyBG-00000009hql-0y3a;
+	Tue, 10 Mar 2026 14:35:30 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzwDy-00000009UHO-2tU3;
-	Tue, 10 Mar 2026 12:30:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 933FF408D7;
-	Tue, 10 Mar 2026 12:30:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68D47C19425;
-	Tue, 10 Mar 2026 12:30:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773145809;
-	bh=TzlCotxcVT6dvedJ0FiuS4FRNkDSl+AbCRH0nt2v3jU=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=oMuqiL5KD/vE1T73WmdbrD7Ys72rQc4Gj/7cE98alu6HSeOGlVn/QMZYHFrt3ZXHM
-	 TMcZ4f2OE9l6gnGZxp8LUFqKYIUCHVJtZgsDspWwhqIo1NpsRAj2dZsz/OSDf3ki5n
-	 cAaDVOx+oF+SclLCMH/HYHssnfVPAgjt8+p5geEAt1hb4YjznDLyHDKHOH3QUzM21U
-	 5MCW68OxflZWKyfojLH67hpcKx+VP0U+JakijCwEBRBIqy8NqHnPvWYFRxVhrexNrv
-	 CBb2r6BJRJT0/TSafCp4wLTQBFIYS995fb24DFVSycGil1bmoxZ/FmIaQONKcGKTbc
-	 YiJ4YfCJh04Ww==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 7CDF53808200;
-	Tue, 10 Mar 2026 12:30:07 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1vzyBC-00000009hpO-3V0Y;
+	Tue, 10 Mar 2026 14:35:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1773153322;
+	bh=MCaUrPZ7HH0j4tc8Pv0peQvEHxCMTJOGP8a7fiNrsJw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kioFQrk9hpQNl8vRItusxFTj3b+x03BuCXswwwB5fvv0EzbKu/tP2WQQFk2KFJQk9
+	 J80TXeL8AHbz/7AUrSTZZPNAu4l+wO24Hey93re8DnweOihwLCQOPvEUlgifoFd9qd
+	 Ae1bBGbOqfe+ghl8AZ3CpNpp5IhnJw0tCp72sXAurqtk6JJmbSYIoiDxE7sSJm9Qhe
+	 1E2DB4mP5D4GAVKT0q/iDq6MdjUfn1tFI0o0BKUb9RQ656xSrDtHl2dQvBxBZ+7l2v
+	 VFw3PepGSWsScTOha8D68l6Sivf4l61O9U+uAZ3Kw9pVNKaLXguZH9oEAHbN6W7lg+
+	 LK74gVBrPhbBw==
+Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B509217E0EB0;
+	Tue, 10 Mar 2026 15:35:21 +0100 (CET)
+Message-ID: <8d965895-c77b-4d67-8365-3ea6a8ef5fca@collabora.com>
+Date: Tue, 10 Mar 2026 15:35:20 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next] net: airoha: Move GDM forward port configuration
- in ndo_open/ndo_stop callbacks
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <177314580605.2263385.3496529123194142050.git-patchwork-notify@kernel.org>
-Date: Tue, 10 Mar 2026 12:30:06 +0000
-References: <20260306-airoha-gdm-forward-ndo-open-stop-v1-1-7b7a20dd9ef0@kernel.org>
-In-Reply-To: <20260306-airoha-gdm-forward-ndo-open-stop-v1-1-7b7a20dd9ef0@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/5] remoteproc: mtp_scp: Constify buffer passed to
+ scp_send_ipi()
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+ Bjorn Andersson <andersson@kernel.org>,
+ Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Srinivas Kandagatla <srini@kernel.org>,
+ Konrad Dybcio <konradybcio@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: linux-remoteproc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-sound@vger.kernel.org,
+ linux-media@vger.kernel.org, Mathieu Poirier <mathieuu.poirier@linaro.org>
+References: <20260310-rpmsg-send-const-v2-0-0e94c5db9bf4@oss.qualcomm.com>
+ <20260310-rpmsg-send-const-v2-2-0e94c5db9bf4@oss.qualcomm.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260310-rpmsg-send-const-v2-2-0e94c5db9bf4@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_053010_770863_AA9F890F 
-X-CRM114-Status: UNSURE (   8.47  )
+X-CRM114-CacheID: sfid-20260310_073527_102162_810FF07D 
+X-CRM114-Status: UNSURE (   7.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,29 +86,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net-next.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
-
-On Fri, 06 Mar 2026 16:09:47 +0100 you wrote:
-> This change allows to set GDM forward port configuration to
-> FE_PSE_PORT_DROP stopping the network device. Hw design requires to stop
-> packet forwarding putting the interface down.  Moreover, PPE firmware
-> requires to use PPE1 for GDM3 or GDM4.
+Il 10/03/26 12:22, Krzysztof Kozlowski ha scritto:
+> scp_send_ipi() should only send the passed buffer, without modifying its
+> contents, so mark pointer 'buf' as pointer to const.
 > 
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> 
-> [...]
+> Acked-by: Mathieu Poirier <mathieuu.poirier@linaro.org>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-Here is the summary with links:
-  - [net-next] net: airoha: Move GDM forward port configuration in ndo_open/ndo_stop callbacks
-    https://git.kernel.org/netdev/net-next/c/46097d011f77
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
 
+Please fix the commit title - that should be `remoteproc: mtk_scp: .....`
+
+After which:
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
