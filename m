@@ -4,75 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF723FCC9B2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 03:40:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2433FCC9BC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 04:50:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=6KEPQoelIaSRZixu2FcCj8GjygNUojPP6SBnzoaIaQY=; b=drjMHCZbj/1W+SC5qbesacp5kZ
-	EHcMClOmUMIZyyHU4PxfDOA6UT1N9ObFXbm+5bXeQWW3bYC+Pf0NCUdGnabNacnVL3KHURssKMTbe
-	WRS2d/VmntCnvNp1YrnzRvn4+K8hLxad9gUM09ZCqxm5ctgbhcQNzFAf9Ux5EhOcNIEwPkF5V6LND
-	/Gczc4br2MXUgHSJQf/O9CofV9Kj1rYS9cYI1wFDmjld+/cRumazpXvygysloX4qKQCLkRL9UgOYN
-	yU8dNa4puCyvKqDDnLpKhWoDpRcjPiDAobbWHKbp/yw7YvVMQMOD3CajqysWCAiAYAx1/KUUsRCNo
-	AuqGN+eA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TEKfTgbEhZq5Nx64xwP1FBHJw6oBbygo97C/fty+4xg=; b=FVDwsWsoETS6xBqYgtnZ17T7lt
+	1pSN5dYOfP2EKIevPPxlwRxpZmfFq0ysLVxbGcihG+2h65tCC6yshJKc5q1FqBWMH0lABQtC+dl7W
+	ovCPVlPlSgiLKrMXHTBxeGW3ncGoXBDXieYK9l9g5OUHnj1DB3ReL/eBjXJtBOT/7I9vqhlUNl29i
+	bgIB9PgKG1x91jD/RwKlodCc4t/ntwICFda67VEz32lknLC9eBi1luDsauWjzDvgkDbm5CKHkL2Sp
+	tFkVGhT2/laZSwFXUmckXqEYUlLsljlmvp92IJFPrZ8XHZcHABqt52hl8ZvEjJ+bKbhV7RRKOSAfn
+	oYmObmjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vznws-00000008fnF-3e5w;
-	Tue, 10 Mar 2026 03:39:58 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1vzp2h-00000008iJ5-1PV1;
+	Tue, 10 Mar 2026 04:50:03 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vznwq-00000008fmp-40yQ;
-	Tue, 10 Mar 2026 03:39:58 +0000
-X-UUID: ca3b15581c3211f1a6de359d7043e138-20260309
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6KEPQoelIaSRZixu2FcCj8GjygNUojPP6SBnzoaIaQY=;
-	b=dn3elXuSOMc/ZhVpFeTpGSkt5AawsCldeNzBhrwCLr0m4xlPcMAC4sSl8aTzG+uZuOQTPO1UBnqG1zNlO+12W1MYUvHXHLqPe9mywZw0DRdlimrIzm/+jl91jiwwnmnGlQpoVcRN9lR7VsHTQrodeEWugHhWokExR9OTNOvAD6Y=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:2f2e8b69-e70e-4450-9e32-c5dee589ae78,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:89c9d04,CLOUDID:4f480f5c-a957-4259-bcca-d3af718d7034,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
-	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
-	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ca3b15581c3211f1a6de359d7043e138-20260309
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <ot_zexin.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1051562269; Mon, 09 Mar 2026 20:39:49 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 10 Mar 2026 11:39:46 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 10 Mar 2026 11:39:45 +0800
-From: Zexin Wang <ot_zexin.wang@mediatek.com>
-To: Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>, Zexin Wang
-	<ot_zexin.wang@mediatek.com>, Sirius Wang <sirius.wang@mediatek.com>, "Jack
- Hsu" <jh.hsu@mediatek.com>, Vince Liu <vince-wl.liu@mediatek.com>
-Subject: [PATCH] reset-controller: ti: introduce a new reset handler
-Date: Tue, 10 Mar 2026 11:39:35 +0800
-Message-ID: <20260310033942.29585-1-ot_zexin.wang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
+	id 1vzp2d-00000008iIM-2LgP
+	for linux-mediatek@lists.infradead.org;
+	Tue, 10 Mar 2026 04:50:01 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-5a140efd2d5so3825941e87.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Mar 2026 21:49:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773118197; cv=none;
+        d=google.com; s=arc-20240605;
+        b=J7fft0gHVXvCCIAxgci+kdpQgb0qB1mRt7VHVAreBbRTTmk0/gby0FzqmmHtwr9jhv
+         lw/O45KlGeIkfd7xf2xjtWQp+eSzy0TG66GLOAXOzIxFVADdCa4jx4l7yHT/UWOlCheQ
+         6jL48FJ+T5w7OwSqCojpJ3aL2hai476mgbj0NgAekH3UV8la49eBNl50cIYu1OR42IvH
+         bk/9rDuW15vy+nRIUU3rkMLQWpn6jdsjXygIKj2jySg1eDyX7jKWY6fLRxwHLeOVT2Wh
+         9x92eGhpxlwuKZAoroWEjatcb3uDO5NCrgaRIGhfT/4MxQzpyW4Kawj1hQsF/9uc0XyD
+         oiWw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=TEKfTgbEhZq5Nx64xwP1FBHJw6oBbygo97C/fty+4xg=;
+        fh=Gg2muWPVn7BIam4kWE1vbJH1z/LoVO01EE3QfzWWGOk=;
+        b=SYBdqDcIRTTnwQKyXxaqOpx1fC1oAoWmYBeA7yix4mfJFqoWNLbKnmrMGHjV8KVkwK
+         vGonWPMqDD/7kvz6iD9N84ul4UluBDpioKz84jHEuGD3jeS6uFwp95libtMlw10BOjSS
+         iuw2yFYtsJV9JO3Qdcy0xJlBzdx7cKbKQ7za69Y1OBXuacABRHCmqwMxjyK5Xi6D4C/H
+         BsjmdAA2OFL9MFnL1FoTOsXtgmy16RrW8M8M/OlkjyA8NPj3yBlWmuTg0iSMUGx1qisf
+         CnoXgKCx1+P00iDE9OS18Y7rtK5h88jquZbgzwA94uqeqSwXlPaRRO1QQFAfKbS5/lMb
+         bIGA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1773118197; x=1773722997; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=TEKfTgbEhZq5Nx64xwP1FBHJw6oBbygo97C/fty+4xg=;
+        b=W2G8NeLaBVZbgMuKizS8nFmRDHcJz8nejx0s3lQra7pt5fI2v699wh0HoB3UaaqGvk
+         TVg41PSoKt9bjf5kAbOFVzSAnRdSdO7/BjB8ujYw9mdMw7G1gws2CvYPv6SScNhMHWDN
+         OEN5QNBCy4lF1IhMvwTJ1qLC/PXf57FzzODm0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1773118197; x=1773722997;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=TEKfTgbEhZq5Nx64xwP1FBHJw6oBbygo97C/fty+4xg=;
+        b=gDqnJQ4owyFuzOovvxhx80+mxPm7WNw2S+wqLWstbK9xl+BJJB//uon7A3F6oL1EFd
+         BfvFMOqvV32c76IkefPdq8WzotLej/5dYvevA4LWMxNhMbY7wp0na+on46tiAX1iT+zJ
+         oadtNMbcZBtoXbQPsyEy4lkxdVksuVzSu2w8yekw0Gr9StXsJujX/AhdXRoBBbpAjD//
+         EIOEb3ZAYd3BXabLeayy832exKnLb9FewOFbJXRGearphySFZyEsv+EcwfwzI8EyqrwB
+         xNuMRwKz5yDe4iL6+ZqGOC2tkBEv7usV41LcnVajFm5Ev3nNrq+vQdQzvzf0O5RWdvJE
+         Ki2w==
+X-Forwarded-Encrypted: i=1; AJvYcCWdh3XIMsj4nkfKqyxQK+/CUgixX88cLQz3/3/c54YU7+EnCQOCbG5hWQRtvM+8kQiBTjFFf+1ynNAt24/BYw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YybpTNgf3W2helurYmVOXB3elgnwL7eXUNYUVFofnsS8XPAZgoo
+	rhQzllG2eitYbhxdNzHsztG72dHe011DAvd0s30oJgqEKPvnoXXvojNJUxsR+nhti0eJ4PXa0ZT
+	Q64aktWu1hn7UhF5yWGSXSREgT605/5ROkliGKIsY
+X-Gm-Gg: ATEYQzweA/3iDIRFRgN3tPf0cTLhJ54KETpB1u4tBs/Zg84F6FiQLBh/uxqCfQYcZHG
+	MjYd9vLQZuqbqNU/+2N5P5G9yrSqo/+HH7KRV6P61+llclzAqtf3/0iYgyAW7uD6eJJImDlHlDP
+	py3y2CRh8nrOFLt6qHz++31usO/KKssRsHTuwzDkDwKOZIRZzsqKZdnMdPOCC+tKm33ajW8Eyt2
+	/rLWQkC12kszaFXXhkw0cpxK123qJd6/eF9RzfyrDzyM5pm2l6eQ9G0BtlukCYJD1dpCx3QKmK6
+	O8Txf0lg4hOS5Nww7ncW3aQiX+uhw/Bu2JBqEfvYx7/2n/Dg
+X-Received: by 2002:a05:6512:682:b0:5a1:30b2:f2c with SMTP id
+ 2adb3069b0e04-5a13cd5e33bmr4296147e87.42.1773118197277; Mon, 09 Mar 2026
+ 21:49:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+References: <CAGXv+5FhSO=+AUaeDSXgM9Je9uTVYq-EW43z9PAuvVKumK6oMg@mail.gmail.com>
+ <20260309215056.GA603013@bhelgaas>
+In-Reply-To: <20260309215056.GA603013@bhelgaas>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 10 Mar 2026 12:49:45 +0800
+X-Gm-Features: AaiRm52BnH_hbfy2T5LoFoBuz9-oVGOul1adbuGmfRTlnBvnGQgJ2RzpGs8zhxc
+Message-ID: <CAGXv+5HHm6Tdis7s5ZNd9ErNrCHv73U7fFxsN3z+DS+q=pxK0w@mail.gmail.com>
+Subject: Re: [PATCH v3 5/7] PCI: mediatek-gen3: Integrate new pwrctrl API
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
+	=?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Bartosz Golaszewski <brgl@bgdev.pl>, linux-pci@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260309_203957_008021_1B56E039 
-X-CRM114-Status: GOOD (  14.16  )
+X-CRM114-CacheID: sfid-20260309_214959_699357_0F4E28B3 
+X-CRM114-Status: GOOD (  33.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,91 +120,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce ti_syscon_reset() to integrate assert and deassert together.
-If some modules need do serialized assert and deassert operations
-to reset itself, reset_control_reset can be called for convenience.
+On Tue, Mar 10, 2026 at 5:50=E2=80=AFAM Bjorn Helgaas <helgaas@kernel.org> =
+wrote:
+>
+> On Mon, Mar 09, 2026 at 01:24:34PM +0800, Chen-Yu Tsai wrote:
+> > On Sat, Mar 7, 2026 at 4:59=E2=80=AFAM Bjorn Helgaas <helgaas@kernel.or=
+g> wrote:
+> > > On Mon, Mar 02, 2026 at 01:31:05PM +0800, Chen-Yu Tsai wrote:
+> > > > With the new PCI pwrctrl API and PCI slot binding and power drivers=
+, we
+> > > > now have a way to describe and power up WiFi/BT adapters connected
+> > > > through a PCIe or M.2 slot, or exploded onto the mainboard itself.
+> > ...
+>
+> > > So now we have:
+> > >
+> > >   mtk_pcie_probe
+> > >     mtk_pcie_setup
+> > >       mtk_pcie_startup_port
+> > >         mtk_pcie_device_power_up      <-- power up
+> > >         mtk_pcie_device_power_down    # error path
+> > >       mtk_pcie_setup_irq              # set up controller IRQ
+> > >       mtk_pcie_device_power_down      # if mtk_pcie_setup_irq() faile=
+d
+> > >     pci_host_probe                    # enumerate downstream devices
+> > >     mtk_pcie_device_power_down        # if pci_host_probe() failed
+> > >
+> > > I think this is kind of a mess because mtk_pcie_device_power_down() i=
+s
+> > > called from so many places, and some of them aren't connected to the
+> > > mtk_pcie_device_power_up().
+> > >
+> > > In mtk_pcie_setup(), mtk_pcie_setup_irq() only deals with the
+> > > *controller* IRQ and has nothing to do with the downstream devices.  =
+I
+> > > think mtk_pcie_setup_irq() should be done before
+> > > mtk_pcie_startup_port() so we can abort before even powering up those
+> > > devices.
+> >
+> > Makes sense to me. I think it can even be moved outside of mtk_pcie_set=
+up()?
+> > That way we don't have mtk_pcie_irq_teardown() in two error paths?
+> >
+> > I can send a follow up patch for that.
+>
+> What if we do those cleanups first?  That would make this patch quite
+> a bit simpler and we wouldn't have to undo things.  It would be a
+> shame to have a complicated patch to add this stuff, then another
+> complicated patch to clean it up.
 
-Signed-off-by: Zexin Wang <ot_zexin.wang@mediatek.com>
----
- drivers/reset/reset-ti-syscon.c | 34 +++++++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+Sure.
 
-diff --git a/drivers/reset/reset-ti-syscon.c b/drivers/reset/reset-ti-syscon.c
-index 23f86ddb8668..f37685e32b0a 100644
---- a/drivers/reset/reset-ti-syscon.c
-+++ b/drivers/reset/reset-ti-syscon.c
-@@ -7,6 +7,7 @@
-  *	Suman Anna <afd@ti.com>
-  */
- 
-+#include <linux/delay.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of.h>
-@@ -42,12 +43,14 @@ struct ti_syscon_reset_control {
-  * @regmap: regmap handle containing the memory-mapped reset registers
-  * @controls: array of reset controls
-  * @nr_controls: number of controls in control array
-+ * @reset_duration_us: time of controller assert reset
-  */
- struct ti_syscon_reset_data {
- 	struct reset_controller_dev rcdev;
- 	struct regmap *regmap;
- 	struct ti_syscon_reset_control *controls;
- 	unsigned int nr_controls;
-+	unsigned int reset_duration_us;
- };
- 
- #define to_ti_syscon_reset_data(_rcdev)	\
-@@ -150,9 +153,37 @@ static int ti_syscon_reset_status(struct reset_controller_dev *rcdev,
- 		!(control->flags & STATUS_SET);
- }
- 
-+/**
-+ * ti_syscon_reset() - perform a full reset cycle on a device
-+ * @rcdev: reset controller entity
-+ * @id: ID of the reset to be asserted and deasserted
-+ *
-+ * This function performs a full reset cycle by asserting and then
-+ * deasserting the reset signal for a device. It ensures the device
-+ * is properly reset and ready for operation.
-+ *
-+ * Return: 0 for successful request, else a corresponding error value
-+ */
-+static int ti_syscon_reset(struct reset_controller_dev *rcdev,
-+		   unsigned long id)
-+{
-+	struct ti_syscon_reset_data *data = to_ti_syscon_reset_data(rcdev);
-+	int ret;
-+
-+	ret = ti_syscon_reset_assert(rcdev, id);
-+	if (ret)
-+		return ret;
-+
-+	if (data->reset_duration_us)
-+		usleep_range(data->reset_duration_us, data->reset_duration_us * 2);
-+
-+	return ti_syscon_reset_deassert(rcdev, id);
-+}
-+
- static const struct reset_control_ops ti_syscon_reset_ops = {
- 	.assert		= ti_syscon_reset_assert,
- 	.deassert	= ti_syscon_reset_deassert,
-+	.reset		= ti_syscon_reset,
- 	.status		= ti_syscon_reset_status,
- };
- 
-@@ -196,6 +227,9 @@ static int ti_syscon_reset_probe(struct platform_device *pdev)
- 		controls[i].flags = be32_to_cpup(list++);
- 	}
- 
-+	of_property_read_u32(pdev->dev.of_node, "reset-duration-us",
-+			     &data->reset_duration_us);
-+
- 	data->rcdev.ops = &ti_syscon_reset_ops;
- 	data->rcdev.owner = THIS_MODULE;
- 	data->rcdev.of_node = np;
--- 
-2.45.2
+> > > In mtk_pcie_startup_port(), mtk_pcie_enable_msi() and the PCIe
+> > > translation window setup also don't have anything to do with the
+> > > downstream devices, so I think they should be done before
+> > > calling mtk_pcie_device_power_up().  The only thing there that needs
+> > > the downstream devices powered up is waiting for the link to come up.
+> >
+> > My guess is that if the link up fails, then mtk_pcie_startup_port() is
+> > going to error out anyway, so it maybe made sense to make sure a device
+> > is actually present before doing any more work.
+>
+> Doesn't sound very convincing to me.  mtk_pcie_set_trans_table() and
+> the window setup are local things with no timeouts or anything.  I
+> think the logical structure is way more important than some kind of
+> hand-crafted work avoidance.
 
+I understand. I merely meant that I have no actual knowledge of why it
+happened, or if there are any concerns from the hardware side.
+
+> Separating the PCIe controller setup from things related to the link
+> and downstream devices is pretty high on my list.
+
+Makes sense to me.
+
+I'll send an updated version.
+
+
+Thanks
+ChenYu
 
