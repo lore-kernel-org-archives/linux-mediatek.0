@@ -4,95 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A95E1FCC9DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 09:20:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19AC9EFCD9F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 09:45:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=af02IVkQlyjh7MHZRvKNkK4tswtXHtMfEowyRfn4+2I=; b=PmaoCtOXBElZ0KO5WrKCHB/NkO
-	MN0o7Wlc8jURnMy6oNuqKoUNVi7BVrasgFQaI21f7Y8dMDhzu+3SZ0fkyDC2t5EW56bNGRVHxHdPS
-	Liw4CCHYRUcxOaZGN9nsFzXffqcR3bKbebSqJSVA+2rH1sxI6pepNvKfw8YQtrkfi3GxkPdIRWvK7
-	sF1g6fNCqF9n3aMEASJu2t1OuctViQMWiSLpV7AdTBTAxG0ZGiluH0MaNuhoucFsYMWkBapApZMBm
-	9hSClDyC3juSGlj5R+rE8IXiyH7TbrwEezXvY+wqvk6ZuJ5OUB/NmehyxGrOU351dxf/Dr+SchnTY
-	oT3rSP2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AUKCgb/6rFAp2KPC7McERCizJUEbCTrmZZm2r9c2yW0=; b=nXps4e5wqzVJ7x5w5ZmcJFGrCV
+	BxRkwozJQ+rHfrK8srQqoIDttcGff9FXxoj5nAtmrn36c9QwniqrrTNn+Dm1hnLc5OrQE/isaAjD+
+	YV8NFBL1iXzdntYH0AtYnuIv3HGH4g629uwAlTDkKLVi7BLOaprotVt6pqp3j82kHGUU61k3YQlR7
+	CppgUGNmYPrt5pr4HDhJ9EsMLBC7NqYZAYDtHj68z73onamOFu/pF4q9Mn4bbNQnC94Sghdr+YHiX
+	wEqUwZxRscgIXwdBquvJkpKTLxvDwEseb67RTLLqPUNpk1ewLdHnlQnejEKycolyZ6BY7NfaSolwl
+	m0JZU2WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vztGF-000000094ZD-3vIj;
-	Tue, 10 Mar 2026 09:20:19 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1vzte7-000000097oj-3ST5;
+	Tue, 10 Mar 2026 09:44:59 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vztGD-000000094XF-0bPs
+	id 1vzte5-000000097nb-35Ww
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Mar 2026 09:20:18 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-829a568f3ccso2008947b3a.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 02:20:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1773134416; x=1773739216; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=af02IVkQlyjh7MHZRvKNkK4tswtXHtMfEowyRfn4+2I=;
-        b=gGkbg225eENXa5j/Gd29olES4oHEHZlgBnaFU1fxiub/LSnJKgRk3ry98Qa6pQg++v
-         dBM0H6aSLGEtckJmlrX2eaG3LU3la81n2WQsUYxD6vA/sgYp4gq2si+9JqJCE4mwvaxs
-         iDWVY4q/APgnoyHgQd4qS2pkJ0kY3rnXBO5p0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773134416; x=1773739216;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=af02IVkQlyjh7MHZRvKNkK4tswtXHtMfEowyRfn4+2I=;
-        b=tU86LpwJ0FaaIK4Qo2THmYDQazi9EWkrM+tLW/ICsm/QvaSyrOKsi8t20R6/UNeasz
-         TE/wEEgfybbE5u3mvdf/ieGUTh4ru9GJyqLzD78sQ2zBWJD7W9v+5zSeWPLHmnFFKj7C
-         CbdYWCBjDKJSaLxsAgBuWHuawHj7tiZ/7NUc1h3063lju/Bit7PFRU3YqQgc9uM7XsV5
-         kuraBFGtIqeYp8auzdrjyKxJZZTsjsTRUn4lrnlCF9lTSauB9DC5JxHPCX8GNhwiZcPE
-         X+vMl3p+B5ZNVZAywS54RLBc312/Wz8dX3d3t2k7l/vm0Us7jl2BdRYl6FUaoGtM/zPv
-         fR4Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVRq5SwmMP3oK4CanKU49diQ76eB4OpV/AYIy7w4UeiDO19327niRbbf/hCICNlJ5kH+0krkuNpe8/Tam7nTg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwupUkeUuhpSBPJ5KQA2s4sPejwYK4KTqy/ogt4fGyZzJ47I3IQ
-	DSWCubTFq2B4pFqVBYcrddm7UpKt7wIp2Ee50j3VLyQOJGkCjZ9Lr2evQxGFsNRe0g==
-X-Gm-Gg: ATEYQzwlaW++O25Yi7zB2FhNmhmJI2urfexcSOoLtR1dBl6cH5g8WtjJj14woTgufiW
-	dvmSkCF8E7LZ78gqr7LpUMR4y4HMpEP2K5XHk8qAYEybkOfmkPwgAZUGq4zcZoPypbGdSqEEkK4
-	RdDIqfNRtziDr1bifb12wSnLFzsrytQMpzkshjxCUhkJZMAbr1DxGfaN8GawqLJW82sdcF8ZJxq
-	LzYqRwhHKwgD3XIShP3A5cQIO23HyJqUnQocxDPu0fYnb8vNDQ0wlKSrZjYBjLkb1pmu5IVlE/4
-	ihtl2XzFnwaF6EKqEAjLJ5y/LKF/2kRbRdxqH1UHxbMnvotnXUlS74s2odvyAk67XnRIDPGAxUk
-	WZo9jt9TwAq0B8bHT1PhFG9V+mHOY/5HLA3G42uM6tym9prq91Y+Oy6gw7msYU2mdQHHjFlTYGB
-	hfmycO97BL8hCR42oQeR7dadvWpjuxs3KIKErHQ+bcTdFWmCOltGT4vAiwve/M1sD/TGzlHn6XQ
-	qHQ6AZJ
-X-Received: by 2002:a05:6a00:2d1e:b0:819:5db9:6ac0 with SMTP id d2e1a72fcca58-829a2f397femr11923975b3a.37.1773134416561;
-        Tue, 10 Mar 2026 02:20:16 -0700 (PDT)
-Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:ee38:e01e:e888:6900])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-829a48a3b74sm16965190b3a.45.2026.03.10.02.20.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Mar 2026 02:20:16 -0700 (PDT)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>,
-	linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: [PATCH v4 7/7] PCI: mediatek-gen3: Integrate new pwrctrl API
-Date: Tue, 10 Mar 2026 17:19:46 +0800
-Message-ID: <20260310091947.2742004-8-wenst@chromium.org>
-X-Mailer: git-send-email 2.53.0.473.g4a7958ca14-goog
-In-Reply-To: <20260310091947.2742004-1-wenst@chromium.org>
-References: <20260310091947.2742004-1-wenst@chromium.org>
+	Tue, 10 Mar 2026 09:44:58 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1vztdz-0002P1-68; Tue, 10 Mar 2026 10:44:51 +0100
+Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1vztdw-004fwu-2z;
+	Tue, 10 Mar 2026 10:44:50 +0100
+Received: from pza by lupine with local (Exim 4.98.2)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1vztdy-000000004Bl-0pVJ;
+	Tue, 10 Mar 2026 10:44:50 +0100
+Message-ID: <fef2059f0e184f918102e4d0656207fec09dbc83.camel@pengutronix.de>
+Subject: Re: [PATCH] reset-controller: ti: introduce a new reset handler
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Zexin Wang <ot_zexin.wang@mediatek.com>, Matthias Brugger
+	 <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	 <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, Sirius Wang
+	 <sirius.wang@mediatek.com>, Jack Hsu <jh.hsu@mediatek.com>, Vince Liu
+	 <vince-wl.liu@mediatek.com>
+Date: Tue, 10 Mar 2026 10:44:50 +0100
+In-Reply-To: <20260310033942.29585-1-ot_zexin.wang@mediatek.com>
+References: <20260310033942.29585-1-ot_zexin.wang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2-0+deb13u1 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_022017_188884_6D86E812 
-X-CRM114-Status: GOOD (  19.91  )
+X-CRM114-CacheID: sfid-20260310_024457_770060_223B3940 
+X-CRM114-Status: GOOD (  24.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,135 +81,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-With the new PCI pwrctrl API and PCI slot binding and power drivers, we
-now have a way to describe and power up WiFi/BT adapters connected
-through a PCIe or M.2 slot, or exploded onto the mainboard itself.
+On Di, 2026-03-10 at 11:39 +0800, Zexin Wang wrote:
+> Introduce ti_syscon_reset() to integrate assert and deassert together.
+> If some modules need do serialized assert and deassert operations
+> to reset itself, reset_control_reset can be called for convenience.
 
-Integrate the PCI pwrctrl API into the PCIe driver, so that power is
-properly enabled before PCIe link training is done, allowing the
-card to successfully be detected.
+With this change, reset_control_reset() would stop returning -ENOTSUPP
+on all existing platforms using ti,syscon-reset. But it wouldn't work
+correctly because no delays are specified.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Reviewed-by: Manivannan Sadhasivam <mani@kernel.org>
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-Changes since v3:
-- Adapted changes to movement of existing setup code
+Note that reset_control_reset() was introduced to support hardware that
+is hard-wired to create reset pulses of a fixed length, with no
+individual control over assertion and deassertion. If the consumer
+driver does not need to work on such hardware, using
+reset_control_reset() over reset_control_assert()/deassert() is not
+necessary.
 
-Changes since v2:
-- Added "select PCI_PWRCTRL_SLOT" to Kconfig to fix kernel test robot
-  compilation error
+> Signed-off-by: Zexin Wang <ot_zexin.wang@mediatek.com>
+> ---
+>  drivers/reset/reset-ti-syscon.c | 34 +++++++++++++++++++++++++++++++++
+>  1 file changed, 34 insertions(+)
+>=20
+> diff --git a/drivers/reset/reset-ti-syscon.c b/drivers/reset/reset-ti-sys=
+con.c
+> index 23f86ddb8668..f37685e32b0a 100644
+> --- a/drivers/reset/reset-ti-syscon.c
+> +++ b/drivers/reset/reset-ti-syscon.c
+> @@ -7,6 +7,7 @@
+>   *	Suman Anna <afd@ti.com>
+>   */
+> =20
+> +#include <linux/delay.h>
+>  #include <linux/mfd/syscon.h>
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+> @@ -42,12 +43,14 @@ struct ti_syscon_reset_control {
+>   * @regmap: regmap handle containing the memory-mapped reset registers
+>   * @controls: array of reset controls
+>   * @nr_controls: number of controls in control array
+> + * @reset_duration_us: time of controller assert reset
+>   */
+>  struct ti_syscon_reset_data {
+>  	struct reset_controller_dev rcdev;
+>  	struct regmap *regmap;
+>  	struct ti_syscon_reset_control *controls;
+>  	unsigned int nr_controls;
+> +	unsigned int reset_duration_us;
+>  };
+> =20
+>  #define to_ti_syscon_reset_data(_rcdev)	\
+> @@ -150,9 +153,37 @@ static int ti_syscon_reset_status(struct reset_contr=
+oller_dev *rcdev,
+>  		!(control->flags & STATUS_SET);
+>  }
+> =20
+> +/**
+> + * ti_syscon_reset() - perform a full reset cycle on a device
+> + * @rcdev: reset controller entity
+> + * @id: ID of the reset to be asserted and deasserted
+> + *
+> + * This function performs a full reset cycle by asserting and then
+> + * deasserting the reset signal for a device. It ensures the device
+> + * is properly reset and ready for operation.
+> + *
+> + * Return: 0 for successful request, else a corresponding error value
+> + */
+> +static int ti_syscon_reset(struct reset_controller_dev *rcdev,
+> +		   unsigned long id)
+> +{
+> +	struct ti_syscon_reset_data *data =3D to_ti_syscon_reset_data(rcdev);
+> +	int ret;
 
-I'm wondering why the two existing uses select PCI_PWRCTRL_SLOT and not
-PCI_PWRCTRL though.
----
- drivers/pci/controller/Kconfig              |  1 +
- drivers/pci/controller/pcie-mediatek-gen3.c | 38 ++++++++++++++++-----
- 2 files changed, 31 insertions(+), 8 deletions(-)
+This should keep returning -ENOTSUPP for unspecified delays.
 
-diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-index 5aaed8ac6e44..e72ac6934379 100644
---- a/drivers/pci/controller/Kconfig
-+++ b/drivers/pci/controller/Kconfig
-@@ -222,6 +222,7 @@ config PCIE_MEDIATEK_GEN3
- 	depends on ARCH_AIROHA || ARCH_MEDIATEK || COMPILE_TEST
- 	depends on PCI_MSI
- 	select IRQ_MSI_LIB
-+	select PCI_PWRCTRL_SLOT
- 	help
- 	  Adds support for PCIe Gen3 MAC controller for MediaTek SoCs.
- 	  This PCIe controller is compatible with Gen3, Gen2 and Gen1 speed,
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index f1a70b92cc9f..3800d0d730f2 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -22,6 +22,7 @@
- #include <linux/of_device.h>
- #include <linux/of_pci.h>
- #include <linux/pci.h>
-+#include <linux/pci-pwrctrl.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/pm_domain.h>
-@@ -421,15 +422,23 @@ static int mtk_pcie_device_power_up(struct mtk_gen3_pcie *pcie)
- 		val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
- 		       PCIE_PE_RSTB;
- 		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
-+	}
- 
--		/*
--		 * Described in PCIe CEM specification revision 6.0.
--		 *
--		 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
--		 * for the power and clock to become stable.
--		 */
--		msleep(PCIE_T_PVPERL_MS);
-+	err = pci_pwrctrl_power_on_devices(pcie->dev);
-+	if (err) {
-+		dev_err(pcie->dev, "Failed to power on devices: %pe\n", ERR_PTR(err));
-+		return err;
-+	}
- 
-+	/*
-+	 * Described in PCIe CEM specification revision 6.0.
-+	 *
-+	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-+	 * for the power and clock to become stable.
-+	 */
-+	msleep(PCIE_T_PVPERL_MS);
-+
-+	if (!(pcie->soc->flags & SKIP_PCIE_RSTB)) {
- 		/* De-assert reset signals */
- 		val &= ~(PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
- 			 PCIE_PE_RSTB);
-@@ -449,6 +458,8 @@ static void mtk_pcie_device_power_down(struct mtk_gen3_pcie *pcie)
- 		val |= PCIE_PE_RSTB;
- 		writel_relaxed(val, pcie->base + PCIE_RST_CTRL_REG);
- 	}
-+
-+	pci_pwrctrl_power_off_devices(pcie->dev);
- }
- 
- static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
-@@ -1209,9 +1220,15 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- 	if (err)
- 		return dev_err_probe(dev, err, "Failed to setup IRQ domains\n");
- 
-+	err = pci_pwrctrl_create_devices(pcie->dev);
-+	if (err) {
-+		goto err_teardown_irq;
-+		dev_err_probe(dev, err, "failed to create pwrctrl devices\n");
-+	}
-+
- 	err = mtk_pcie_setup(pcie);
- 	if (err)
--		goto err_tear_down_irq;
-+		goto err_destroy_pwrctrl;
- 
- 	host->ops = &mtk_pcie_ops;
- 	host->sysdata = pcie;
-@@ -1225,6 +1242,9 @@ static int mtk_pcie_probe(struct platform_device *pdev)
- err_power_down_pcie:
- 	mtk_pcie_device_power_down(pcie);
- 	mtk_pcie_power_down(pcie);
-+err_destroy_pwrctrl:
-+	if (err != -EPROBE_DEFER)
-+		pci_pwrctrl_destroy_devices(pcie->dev);
- err_tear_down_irq:
- 	mtk_pcie_irq_teardown(pcie);
- 	return err;
-@@ -1240,7 +1260,9 @@ static void mtk_pcie_remove(struct platform_device *pdev)
- 	pci_remove_root_bus(host->bus);
- 	pci_unlock_rescan_remove();
- 
-+	pci_pwrctrl_power_off_devices(pcie->dev);
- 	mtk_pcie_power_down(pcie);
-+	pci_pwrctrl_destroy_devices(pcie->dev);
- 	mtk_pcie_irq_teardown(pcie);
- }
- 
--- 
-2.53.0.473.g4a7958ca14-goog
+> +	ret =3D ti_syscon_reset_assert(rcdev, id);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (data->reset_duration_us)
+> +		usleep_range(data->reset_duration_us, data->reset_duration_us * 2);
+> +
+> +	return ti_syscon_reset_deassert(rcdev, id);
+> +}
+> +
+>  static const struct reset_control_ops ti_syscon_reset_ops =3D {
+>  	.assert		=3D ti_syscon_reset_assert,
+>  	.deassert	=3D ti_syscon_reset_deassert,
+> +	.reset		=3D ti_syscon_reset,
+>  	.status		=3D ti_syscon_reset_status,
+>  };
+> =20
+> @@ -196,6 +227,9 @@ static int ti_syscon_reset_probe(struct platform_devi=
+ce *pdev)
+>  		controls[i].flags =3D be32_to_cpup(list++);
+>  	}
+> =20
+> +	of_property_read_u32(pdev->dev.of_node, "reset-duration-us",
+> +			     &data->reset_duration_us);
 
+This OF property is missing documentation. At the very least
+ti_syscon_reset would need to be gated behind existence of this
+property or a new compatible. But, since there is one delay for all
+reset lines, this is the maximum of all per-consumer necessary delays.
+This is a fixed property of the SoC. So why specify it in the device
+tree at all? You could just derive it from a SoC specific compatible.
+
+regards
+Philipp
 
