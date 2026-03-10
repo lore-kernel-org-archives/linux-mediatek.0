@@ -4,55 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CFD7FD4F34
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 21:12:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22D84EB1076
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Mar 2026 21:43:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i5LyOSyQR+WxYPgSuKX5OqGq4sbxPsf5B8CngvOJ/I0=; b=JTwHm0HEkCHC8rm77NqaD4KDoI
-	YAGO+q3TTlWobDULM1hNe4t/EcpJmHXnBPAFqbkJjowmBMGVarfr98FD/02x9mY/Tr9PcAbWdzBrP
-	ktU3YsMllbmExLz/X8E2S1SWrBfQEn2upnczMfuJaVfBaYqA/qjp4EH4uflGLB9bTSpK3uAHh2LDT
-	cUBQTP9coFPuSQd+cO4VzJluinW382Wne0mY33ckQs/PcGOWmkMVczjakQnLZkhMcjIpLyrckAT0T
-	JBALdjpzONFWLEMfbyyeV2RJWArhfbETaEKhGCZIrXQM4XjC7+3Ut7coH0Ba2C/R7fcS3YKcEStZ3
-	Tl4v0C9A==;
+	bh=2f8R5GEyxkZQIaf64bF4zBHCOUbaQ3TEBtHbXujsVTs=; b=Qf7icrWIgTKJWW/4hbgJOK65a2
+	V8+ZPiIalZnsFb/11mVMJHk0NhRDeNOrEuSokYC6zERw5C9wIIq3L4E3SPmIweNbmCanfMvc9hzLs
+	oemnre7QsEvSNOIr7SdPJMXFGYaMCa1JSp6Mho9OlHQrAQOtjVGqoNIX+Pg86mVs8YgEHwt11hulC
+	w02dfyuXSiNotRrHCSV96K2Ayiha3iciCEyp8I42kkb131ivSW1kmYztz/rVfZqR73oMFdh6FozaZ
+	dr6hntUCWA1oAllDOr18OIXphS2diYio4BYgFU4Za6t509aobJVn+aEEvcWy90U9nzuZjyCsUa7OS
+	eoVgLK8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w04NA-0000000AHmi-3oVs;
-	Tue, 10 Mar 2026 21:12:12 +0000
-Received: from mgamail.intel.com ([198.175.65.15])
+	id 1w04qy-0000000AJDE-0ftZ;
+	Tue, 10 Mar 2026 21:43:00 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w04N7-0000000AHlb-1Ywf;
-	Tue, 10 Mar 2026 21:12:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1773177129; x=1804713129;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=pehZhuiQQpthYsgXZoLR8NFfpxutBnuajwfJq5hQwx4=;
-  b=HHrPO1BTIz3YdIFFlmqsIRSxEIoYXkpemTKo5LsfCFfvjzzPzW1tqIXe
-   /SusDys9HUQafTZwD8Wi0pvFiLOsnR1AHXcJqBFUbKS22ZncDef91XrB2
-   Hgo0TaiaoFfqgWoBdChn0z9QW7Izm1RifvImnq3/sO5JImGfSWfaFOXCU
-   mcD5XBEZnBQa0AB+A/Q9wSqr0P8On9ns0HRvMqjHaL9Xy1AduWPrHPm9M
-   OQyc9MsfYqpMgQhyXyK493e3Hi6O3hR1KogPR3m+Mtl7bh97cn3+BcaW3
-   FfvUNY5AET45+5i8zmef5jE/Qcg59g7bcQTkkpFTjXbt716m+Na6xAY03
-   Q==;
-X-CSE-ConnectionGUID: hb4WAQcpRrqMg1FwAja7lw==
-X-CSE-MsgGUID: XLV+yfeKQ6GkNK4Eovd7zA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11725"; a="77841732"
-X-IronPort-AV: E=Sophos;i="6.23,112,1770624000"; 
-   d="scan'208";a="77841732"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Mar 2026 14:12:06 -0700
-X-CSE-ConnectionGUID: ixppP8mBRc2aAsqY+2t1EQ==
-X-CSE-MsgGUID: +u7wFx7eQXiY/mTugiKMyQ==
-X-ExtLoop1: 1
-Received: from vpanait-mobl.ger.corp.intel.com (HELO localhost) ([10.245.244.54])
-  by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Mar 2026 14:11:58 -0700
-Date: Tue, 10 Mar 2026 23:11:56 +0200
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
+	id 1w04qu-0000000AJC5-3dC6;
+	Tue, 10 Mar 2026 21:42:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=2f8R5GEyxkZQIaf64bF4zBHCOUbaQ3TEBtHbXujsVTs=; b=HwIp2Gov4Vq8cd4o8z42qkD5qX
+	m94Yotc3CL7E1pNYm9Ix9lffgY3gHInitMQayEaOhwQMZcMFc/PgBVjgi2gpyAcEg90EgwigfbEsA
+	+C6sb/M7WpXY2IfRQkDu22vPgylEym7pQhl+IyUq2X7g4cgU7nzhax5STJ3biRzAQ9xo=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1w04qH-00B5j1-QZ; Tue, 10 Mar 2026 22:42:17 +0100
+Date: Tue, 10 Mar 2026 22:42:17 +0100
+From: Andrew Lunn <andrew@lunn.ch>
 To: Sanjay Chitroda <sanjayembeddedse@gmail.com>
 Cc: jic23@kernel.org, m.tretter@pengutronix.de, mchehab@kernel.org,
 	p.zabel@pengutronix.de, tiffany.lin@mediatek.com,
@@ -73,20 +59,17 @@ Cc: jic23@kernel.org, m.tretter@pengutronix.de, mchehab@kernel.org,
 	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, greybus-dev@lists.linaro.org,
 	linux-staging@lists.linux.dev, skhan@linuxfoundation.org
-Subject: Re: [PATCH 2/7] iio: ssp_sensors: simplify cleanup using __free
-Message-ID: <abCJHOuBcPo4W2GQ@ashevche-desk.local>
+Subject: Re: [PATCH 7/7] staging: rtl8723bs: simplify cleanup using __free
+Message-ID: <02b2587c-c885-48b0-90af-0b8d65a3a593@lunn.ch>
 References: <20260310200513.2162018-1-sanjayembedded@gmail.com>
- <20260310200513.2162018-3-sanjayembedded@gmail.com>
+ <20260310200513.2162018-8-sanjayembedded@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260310200513.2162018-3-sanjayembedded@gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+In-Reply-To: <20260310200513.2162018-8-sanjayembedded@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_141209_751122_B3C33C45 
-X-CRM114-Status: UNSURE (   8.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260310_144256_932024_13217264 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,47 +84,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 11, 2026 at 01:35:08AM +0530, Sanjay Chitroda wrote:
+On Wed, Mar 11, 2026 at 01:35:13AM +0530, Sanjay Chitroda wrote:
+> From: Sanjay Chitroda <sanjayembeddedse@gmail.com>
 > 
 > Replace manual cleanup logic with __free attribute from cleanup.h. This
 > removes explicit kfree() calls and simplifies the error handling paths.
 > 
 > No functional change intended for kmalloc().
+> 
+> Signed-off-by: Sanjay Chitroda <sanjayembeddedse@gmail.com>
+> ---
+>  .../staging/rtl8723bs/hal/rtl8723b_hal_init.c | 13 ++-----
+>  drivers/staging/rtl8723bs/hal/sdio_ops.c      | 37 ++++---------------
+>  2 files changed, 11 insertions(+), 39 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
+> index 8d259820f103..2badf7d1aec4 100644
+> --- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
 
-Why this is a series? You can avoid spamming tons of unrelated people with this
-by sending patches individually.
+rtl8723bs is a networking device.
 
-...
+https://www.kernel.org/doc/html/latest/process/maintainer-netdev.html
 
->  	case SSP_HUB2AP_WRITE:
-> -		buffer = kzalloc(length, GFP_KERNEL | GFP_DMA);
-> +		char *buffer __free(kfree) = kzalloc(length, GFP_KERNEL | GFP_DMA);
->  		if (!buffer)
->  			return -ENOMEM;
->  
->  		ret = spi_read(data->spi, buffer, length);
->  		if (ret < 0) {
->  			dev_err(SSP_DEV, "spi read fail\n");
-> -			kfree(buffer);
->  			break;
->  		}
->  
->  		ret = ssp_parse_dataframe(data, buffer, length);
->  
-> -		kfree(buffer);
->  		break;
+says:
 
-Now you can return directly.
+Low level cleanup constructs (such as __free()) can be used when
+building APIs and helpers, especially scoped iterators. However,
+direct use of __free() within networking core and drivers is
+discouraged.
 
-		return ssp_parse_dataframe(data, buffer, length);
+Please drop this patch.
 
-But also add a prerequisite to convert to guard()() et alai.
+You might also want to check other subsystems and see if they have
+similar policies for these magic operators.
 
->  	default:
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+	Andrew
 
