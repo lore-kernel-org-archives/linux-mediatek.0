@@ -4,74 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55237FD88D4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 00:28:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1360FD88D5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 00:28:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=1ATRiGzqYc/km5OI3xmsPtelJTLro5lPbW2iw0ZmTlE=; b=BdRGM3xRAWCZHjqTuZOnHHTIAS
-	PlpGemByLukYuSdB+2x1eN400tWWSpXufWlAumUdXk+8WpNVqgmQNbDT2dX9UF0LgNkGA0PaIeHbc
-	j2icLvDEhUdEtk86jI4iJxtlLfTLp92J8NaQfbb+Yj9ZHYcX0aGx7Ixbr+2XcswSNa1+vNKOeWG5J
-	yG+4/BWyP/wZzimwN5J/YuPbXzOPXzs83x4zuxfcxrmj3mI49Ht6/H1/iTfv7D13/0TorAAKfAZoD
-	Htgty9lOPlhWBqxHUa3Sl1Si/vRe2XAxHJ1pnjQdlISU82quTbm6lhhUHiyMGWW16BV5EIFghIGNl
-	27WHEYEw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uV7lH3FIJA3CkRWr9ZibC3b+y2jhZmrH7643sTDjV0c=; b=rozKIpHcLQNFH5ZFmQ+kv9YAhu
+	Wr3CC5BJCyP5XBjOWSnutg3abx4TxwlMIPd1CPtsnPybzQf7MgC75DMXNM5JVyf5hKoH9mebhlGWt
+	N77ZJZmtm5hSsaKQvAZcBo9RZyZ4WiNTqQIbLNd2DLGWuAkODsXnBD1rL+PVNgAoK8HEkBk55YeD2
+	xj9YA+wok1USGJsRroup71/nHcjAvxKipJV7F7RMpdTPVO1QTDXKVR8iEM5EbqlUW3DbaYyhKdHo6
+	wqdmonQIBdjiNRnHeyfk+OF1ORA0ReKIynwvfrmfDZn9LS45jeQU8TkX6mNDCmRU8fyq+wxltWzsG
+	RWNIhcng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w07RA-0000000ARJ6-4AFi;
-	Wed, 11 Mar 2026 00:28:32 +0000
-Received: from mail-oi1-f180.google.com ([209.85.167.180])
+	id 1w07RH-0000000ARL4-21eL;
+	Wed, 11 Mar 2026 00:28:39 +0000
+Received: from mail-oi1-f173.google.com ([209.85.167.173])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w07R8-0000000ARIi-3Cwg
+	id 1w07RF-0000000ARKL-1sS3
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Mar 2026 00:28:31 +0000
-Received: by mail-oi1-f180.google.com with SMTP id 5614622812f47-464bc03efd8so7998877b6e.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 17:28:29 -0700 (PDT)
+	Wed, 11 Mar 2026 00:28:38 +0000
+Received: by mail-oi1-f173.google.com with SMTP id 5614622812f47-466f1c3c627so2454147b6e.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 17:28:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773188909; x=1773793709;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=1ATRiGzqYc/km5OI3xmsPtelJTLro5lPbW2iw0ZmTlE=;
-        b=FqvOsc2XR4C/loznHzNpb4m+h560dOQjM1suViyduBMFu/jyKn7FqTojLuzaMp8eJR
-         oLZx1KtpxH/kno0UqHpK2Aiog1DDklDZdiAlPHhEK4DPjOC6lMfQkJVQ9/GvH1aunTfH
-         303+cEySnNMEBXBqykt1zPWM2yHDSWolk9lyCUGFgVY4GZ+lBMQKxQNvFEHrqsMDz1ed
-         9Py8sYx42uyT/jJBoqGbew1zK3bhIdEceZKiHvEebWFNQd3niWoJ5cZpWUjt1yWTriXe
-         ZbWVhSPM0LhdjvYS5jDzGtAKw/JLuoXnXs7oJ+9gVX6jYRgNd8n66/BAaFx38+1XJ2ld
-         FT4Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWS6E2Vv5Z/NUV/ndNMxmaPdG5pUjOHVi8a/twa6VjHfslA4qQIj2cPoJFF0kJN111vJQ0g1mqcI1JJ7m7Saw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzk/wNwzKJ1LKX6HYI85134CkN+rmWRPEHVGIMJONKkM1rw9uRj
-	Rncld4MUpiGQWcZdFzytcpUPBa+zLpZonWyRiyjReawiMTpPPCYpmHjj
-X-Gm-Gg: ATEYQzwdoo+hulhP6HP57+cGAUqVV8ChFb9AQKToQNiQL/KzskDsdvsq6zWU2hb3vpF
-	+nUyXBukj2hhiTMVD+b6GDJv89Tsqy9EcnVNhWbO76VXb/9CwAkLxS8zumizugxu1x3q4L987NA
-	0lh8oqWj9eUOJq+QBRA0/zqijMdVf8a7gsx87UZwOYSmqo3/esLW+s4vTILpaQQYrE1SFGsvwuj
-	B+H8N19SiHtHQjS4E3rmTt5iiARHKjET9qRdDXhDIpG5yZ7MVmKwQXNW+AH5icf5ApH1l6XlYB0
-	Q/7XEO0N8MaMhvms+mTP1nMt5YlBMZItBAXB9WaaNtpzNs8X6E4DVqiCZ6SzVjjpw5/8ayaCSKK
-	JX2cFymHiFVdKLQUZPg44Gk2uRB8rX7LwIhbJVtilekd//i/qgQIPothS1LE+rrUfRJ8t99cOr0
-	VZQ+t/P/8FiRyvoUzwVIRCIavVtIB0OwIdyBjv2n2gE2FXnPE=
-X-Received: by 2002:a05:6808:13c1:b0:450:d471:dce5 with SMTP id 5614622812f47-467333f0844mr413343b6e.6.1773188908872;
-        Tue, 10 Mar 2026 17:28:28 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1773188916; x=1773793716;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=uV7lH3FIJA3CkRWr9ZibC3b+y2jhZmrH7643sTDjV0c=;
+        b=B3QgpKYid5NTOWZ18ZQmSDSa9IdVcQz40EKHVPqF7+Qg7lKJWIfe7ZzwV/8hGWQRio
+         J3jDwddVKmH9/1P5fRw2L/mWBO+dG68bbX3oMTIMM7YWeygeYki7AZ1ye1fLR4ZYIhmY
+         F3fKApDYIGerGR8Dr3WIwdj3XMRILtuA7/8NrOW1Q/b8cgP6hcS4ZBGJEYMd9vIKpCTF
+         A0DePHtuFPoeksdbsRq6Y5Jx67qc+1vOKMaN8NdYecEGEdE1kMeMRzM9RXGxrmkz6Rxu
+         vxD5amimwhnr+2vhAz4cy9Hhm7PNfAHokDEkcgvw7ZxoF0uC3bK1177tdwNcLfzBDiT1
+         jlEQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXb4huGQgLrguoL8Zm3kgCCafmKWifwxiQdLF45suXMRgiE8u0Dnd+Mseye3FEFcwpyO/fqZ6LMpLasT3SEmA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzuoGeHAC+CBf8KZ02RnufghZiPsr/ISpAO3kG6h25/KbdwR+/c
+	FLe4+JUITVV80Lf8Zebkzoo730Rt4bhL3ihG0jCOcP6Db+6dsY0Bp1Q8
+X-Gm-Gg: ATEYQzyStgydv3W1kEFGfC2gWuBRn3T4BxOD4HGnnWqYNDqzLvx/6DY/MA+IGAQSPhE
+	3QXBzJNHyxVhryBe6TKf4Bg2fXIIbWIM650GcpgEDOAX2ASQEtOGCaGr6PP6Y38v736gu1vxq+q
+	Kor7cQZR/GgHFMImZHrBa5UV+neEkpeGy65chAME6oIhbcZBs1AMRkfLfBHDihBK51a0TwfPPzn
+	Ba+juTgVSk+Cn9sF1Xa368h35bV3LxDSBuyKgM2k/FPK1VBIvCvuz1mhvsQOTIPuPxdUSRMLlhn
+	y1+JXmufPDog4t4kZL1+VKnHismNu0uPSsguzZdG0zpYpPKMAKa0Kz/By8BVCEgHjKoRTao2v0X
+	RY7NwQb4WokJrKWu3TI06kC5hmtAu7oQstgY6+EBU33Q+KxnB4bPrVEpVfmhXM6pbfgs+CaI79Q
+	+it3nasVD3FKtE6oL5VuX9aYAzGbRS7Grg0nnvogeEt33zxHg=
+X-Received: by 2002:a05:6808:178d:b0:45a:9068:642a with SMTP id 5614622812f47-46733506ea9mr429126b6e.35.1773188915884;
+        Tue, 10 Mar 2026 17:28:35 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4177e72b40asm516497fac.20.2026.03.10.17.28.28
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4177e72b40asm516497fac.20.2026.03.10.17.28.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Mar 2026 17:28:28 -0700 (PDT)
+        Tue, 10 Mar 2026 17:28:35 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name,
 	lorenzo.bianconi@redhat.com
 Cc: linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 1/2] wifi: mt76: mt792x: describe USB WFSYS reset with a descriptor
-Date: Tue, 10 Mar 2026 19:28:24 -0500
-Message-ID: <20260311002825.15502-1-sean.wang@kernel.org>
+	Sean Wang <sean.wang@mediatek.com>,
+	stable@vger.kernel.org
+Subject: [PATCH 2/2] wifi: mt76: mt792x: fix mt7925u USB WFSYS reset handling
+Date: Tue, 10 Mar 2026 19:28:25 -0500
+Message-ID: <20260311002825.15502-2-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260311002825.15502-1-sean.wang@kernel.org>
+References: <20260311002825.15502-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_172830_808183_8CA779A6 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20260310_172837_493778_1274D32F 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,86 +91,67 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Prepare mt792xu_wfsys_reset() for chips that share the same USB WFSYS
-reset flow but use different register definitions.
+mt7925u uses different reset/status registers from mt7921u. Reusing the
+mt7921u register set causes the WFSYS reset to fail.
 
-This is a pure refactor of the current mt7921u path and keeps the reset
-sequence unchanged.
+Add a chip-specific descriptor in mt792xu_wfsys_reset() to select the
+correct registers and fix mt7925u failing to initialize after a warm
+reboot.
 
+Fixes: d28e1a48952e ("wifi: mt76: mt792x: introduce mt792x-usb module")
+Cc: stable@vger.kernel.org
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt792x_usb.c   | 40 +++++++++++++++----
- 1 file changed, 32 insertions(+), 8 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt792x_regs.h |  4 ++++
+ drivers/net/wireless/mediatek/mt76/mt792x_usb.c  | 13 ++++++++++++-
+ 2 files changed, 16 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
+index 7ddde9286861..d2a8b2b0df32 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
+@@ -392,6 +392,10 @@
+ #define MT_CBTOP_RGU_WF_SUBSYS_RST	MT_CBTOP_RGU(0x600)
+ #define MT_CBTOP_RGU_WF_SUBSYS_RST_WF_WHOLE_PATH BIT(0)
+ 
++#define MT7925_CBTOP_RGU_WF_SUBSYS_RST	0x70028600
++#define MT7925_WFSYS_INIT_DONE_ADDR	0x184c1604
++#define MT7925_WFSYS_INIT_DONE		0x00001d1e
++
+ #define MT_HW_BOUND			0x70010020
+ #define MT_HW_CHIPID			0x70010200
+ #define MT_HW_REV			0x70010204
 diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-index 552808458138..a92e872226cf 100644
+index a92e872226cf..47827d1c5ccb 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-@@ -206,6 +206,24 @@ static void mt792xu_epctl_rst_opt(struct mt792x_dev *dev, bool reset)
- 	mt792xu_uhw_wr(&dev->mt76, MT_SSUSB_EPCTL_CSR_EP_RST_OPT, val);
- }
+@@ -224,6 +224,15 @@ static const struct mt792xu_wfsys_desc mt7921_wfsys_desc = {
+ 	.need_status_sel = true,
+ };
  
-+struct mt792xu_wfsys_desc {
-+	u32 rst_reg;
-+	u32 done_reg;
-+	u32 done_mask;
-+	u32 done_val;
-+	u32 delay_ms;
-+	bool need_status_sel;
-+};
-+
-+static const struct mt792xu_wfsys_desc mt7921_wfsys_desc = {
-+	.rst_reg = MT_CBTOP_RGU_WF_SUBSYS_RST,
-+	.done_reg = MT_UDMA_CONN_INFRA_STATUS,
-+	.done_mask = MT_UDMA_CONN_WFSYS_INIT_DONE,
-+	.done_val = MT_UDMA_CONN_WFSYS_INIT_DONE,
-+	.delay_ms = 0,
-+	.need_status_sel = true,
++static const struct mt792xu_wfsys_desc mt7925_wfsys_desc = {
++	.rst_reg = MT7925_CBTOP_RGU_WF_SUBSYS_RST,
++	.done_reg = MT7925_WFSYS_INIT_DONE_ADDR,
++	.done_mask = U32_MAX,
++	.done_val = MT7925_WFSYS_INIT_DONE,
++	.delay_ms = 20,
++	.need_status_sel = false,
 +};
 +
  int mt792xu_dma_init(struct mt792x_dev *dev, bool resume)
  {
  	int err;
-@@ -236,25 +254,31 @@ EXPORT_SYMBOL_GPL(mt792xu_dma_init);
+@@ -254,7 +263,9 @@ EXPORT_SYMBOL_GPL(mt792xu_dma_init);
  
  int mt792xu_wfsys_reset(struct mt792x_dev *dev)
  {
-+	const struct mt792xu_wfsys_desc *desc = &mt7921_wfsys_desc;
+-	const struct mt792xu_wfsys_desc *desc = &mt7921_wfsys_desc;
++	const struct mt792xu_wfsys_desc *desc = is_mt7925(&dev->mt76) ?
++						&mt7925_wfsys_desc :
++						&mt7921_wfsys_desc;
  	u32 val;
  	int i;
  
- 	mt792xu_epctl_rst_opt(dev, false);
- 
--	val = mt792xu_uhw_rr(&dev->mt76, MT_CBTOP_RGU_WF_SUBSYS_RST);
-+	val = mt792xu_uhw_rr(&dev->mt76, desc->rst_reg);
- 	val |= MT_CBTOP_RGU_WF_SUBSYS_RST_WF_WHOLE_PATH;
--	mt792xu_uhw_wr(&dev->mt76, MT_CBTOP_RGU_WF_SUBSYS_RST, val);
-+	mt792xu_uhw_wr(&dev->mt76, desc->rst_reg, val);
- 
--	usleep_range(10, 20);
-+	if (desc->delay_ms)
-+		msleep(desc->delay_ms);
-+	else
-+		usleep_range(10, 20);
- 
--	val = mt792xu_uhw_rr(&dev->mt76, MT_CBTOP_RGU_WF_SUBSYS_RST);
-+	val = mt792xu_uhw_rr(&dev->mt76, desc->rst_reg);
- 	val &= ~MT_CBTOP_RGU_WF_SUBSYS_RST_WF_WHOLE_PATH;
--	mt792xu_uhw_wr(&dev->mt76, MT_CBTOP_RGU_WF_SUBSYS_RST, val);
-+	mt792xu_uhw_wr(&dev->mt76, desc->rst_reg, val);
-+
-+	if (desc->need_status_sel)
-+		mt792xu_uhw_wr(&dev->mt76, MT_UDMA_CONN_INFRA_STATUS_SEL, 0);
- 
--	mt792xu_uhw_wr(&dev->mt76, MT_UDMA_CONN_INFRA_STATUS_SEL, 0);
- 	for (i = 0; i < MT792x_WFSYS_INIT_RETRY_COUNT; i++) {
--		val = mt792xu_uhw_rr(&dev->mt76, MT_UDMA_CONN_INFRA_STATUS);
--		if (val & MT_UDMA_CONN_WFSYS_INIT_DONE)
-+		val = mt792xu_uhw_rr(&dev->mt76, desc->done_reg);
-+		if ((val & desc->done_mask) == desc->done_val)
- 			break;
- 
- 		msleep(100);
 -- 
 2.43.0
 
