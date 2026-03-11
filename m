@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43C401049525
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 09:50:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15EEB1049524
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 09:50:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jtkXXLPioyWW3Nha1qMzs0mPGG4eok73ub81lNtbqSo=; b=VorYhjd6ijyZfYOaaJZxQ8QZtw
-	77CfssM7tntYGWVIcRnZZU2D+8Iss5iwexWvLj9xtoQrmdnFeTHAv6ZNZozXPjm2Tttf3bLzUy6Fh
-	ggmGV0l06wrERp0YfZHp5D2mEN/lpOKr8YZPb/joicZEEUNQPcTNS5uIPIqSQAaG6SMx4o4e20502
-	XuLDHUjkU2F0/W6Pg+EcT5Mcf2X8YHg+ziQeuSmUSgk12aNJ/wvFuTOeJqItMlnwVA2ulTg1reC5M
-	j6bkPodnDnF1XVANif5ohu+fBpRdZhqicjL1ei2xLu/QqIhzrsor02sTYhAsttkQKgKD2zQCQCokO
-	qzd4Y1wQ==;
+	bh=Y1z9EtizHwE3LeSySxAXfxT/FNlt1Ydhsh1vDf6WdY0=; b=r8e6j80iAZc0Az5z4V3TPbh2kX
+	3HjECWdymF6yVYokdFVfKvQT1ngyc8zu0XLK48eE3VqvgDPV61V5oIa6U60U5h25ObMzsRlvPl7yP
+	WLVQazX5Ggoli4Zw8lBvBUtR2SEcRmwj9eW7Im59aKCDEw5IYeUg8Mkr/xyT7UuQ60LI+cm8h9e3K
+	ieOgAlfWftewRkK6+JcnGbLMIPa3NDXHAdxOD9ZgO5elHRdJeA998y4LRfKpKdYydVu9cAZ+diKn0
+	WsKyGnEsrRzB9nh9m7XDNpfuSgOiQO9+UBxVQLGnMkx4NYP5HIlkdIkfAkMjX6r7jrTY+KSQKafqi
+	vMX50Hww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0GCf-0000000BJnz-10RO;
-	Wed, 11 Mar 2026 09:50:09 +0000
+	id 1w0GCm-0000000BJsV-0Umv;
+	Wed, 11 Mar 2026 09:50:16 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0GCd-0000000BJmm-2ZP6
+	id 1w0GCl-0000000BJqq-0pdd
 	for linux-mediatek@bombadil.infradead.org;
-	Wed, 11 Mar 2026 09:50:07 +0000
+	Wed, 11 Mar 2026 09:50:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=jtkXXLPioyWW3Nha1qMzs0mPGG4eok73ub81lNtbqSo=; b=HmqLd4VWqOJ8XZnMKh5AS4xpbP
-	0wUoBShj7s3kEPF0l3NlRbmEXSXVVYH+kBid/TP6uIFBPgj2cpgCwLSwq/18RFV8t8SNa3sHmXM97
-	JOQXL0UumCZqtTnVqMW3o04eLCEluG0ws5SHy349aXI+9mvC1mcea6rhMkvV9JLrync3twZQMdwSD
-	33zB9pNrpFs7h44qwCxr/IQ8bOSeQBqjg2+jeRm1uAlUHAN6PUjUHCimVzrGesXet4Mul0ot5AsOp
-	jgfm4f5azOmYPwVrw8rDr3FgpAst4qN5+RjPAckPIiimSSrNzHxmFcVleld6xPjFJucy6IziTGnwv
-	NubzDK1A==;
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	bh=Y1z9EtizHwE3LeSySxAXfxT/FNlt1Ydhsh1vDf6WdY0=; b=n1ckW/1KBbhpl7z4uQOpjvSFWp
+	Yz5nbsLfsKeRgbRTl682FGihDmMRH9eiBouJAmylcTZWUtCGTLMokoBoXGEHAFLi/kbN5UJuDZmQo
+	fVgubV0LG6YJP7akqBc5tYJHQ+09PMymxawazC4OW9aryXO8k7FLoyaZKViUdaoo6gdyle1LmL+fW
+	XJf1HS+v62BNV2/dIn7Rbz/cjYX6ViJXydQ7i4uTjdHrLAsscwCYgRNaxPjJ8nNniV+Ookpk1pLEv
+	9VHlwqxU0yW+93fQvMJTjJwtVGst34NdL1O7HAOW/HzTGQXkstx/HOen3Plh5VFgrmHYyPmUpvLD3
+	KA3aW7LQ==;
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0GCa-0000000GbhM-2vtW
+	id 1w0GCh-0000000Gbjs-2COI
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Mar 2026 09:50:06 +0000
-Received: by mail-pf1-x434.google.com with SMTP id d2e1a72fcca58-829759ca646so3868782b3a.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Mar 2026 02:50:04 -0700 (PDT)
+	Wed, 11 Mar 2026 09:50:14 +0000
+Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-82984c077b2so3213983b3a.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Mar 2026 02:50:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1773222603; x=1773827403; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1773222610; x=1773827410; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=jtkXXLPioyWW3Nha1qMzs0mPGG4eok73ub81lNtbqSo=;
-        b=Rztxc30wRr+9QwGxPWOZWRJk5V3CptaNlorWMJ7JJXjmW0dgLjSU+Mc3uuJOe36klf
-         zadHxMGYwnjaD7o5aPwGgbyaLE/LVo64UHRgs0Cmfe7K7uEuL5+oz0UNJfHxEiRLI6uu
-         a3KV8ugUX5xsgKHz7XHcJ4dxjGtfe1upIr0Fs=
+        bh=Y1z9EtizHwE3LeSySxAXfxT/FNlt1Ydhsh1vDf6WdY0=;
+        b=SqmOEeKNwfe/CWfZRZIpGbs4sAoFiP9ThftR2xXSdZIEdl2mzBQRWATW9SN9foR0sh
+         RW4AQgtKz1lBvxnMwT6M6nbOWSBENVvf/Qc0/bHZDKE+0i2XHl5tTBFG504Y4rO4h9VI
+         A+7HtlLQBCqBG17n4XDXBNkG0wX+zG/07nnV8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773222603; x=1773827403;
+        d=1e100.net; s=20230601; t=1773222610; x=1773827410;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=jtkXXLPioyWW3Nha1qMzs0mPGG4eok73ub81lNtbqSo=;
-        b=Q+9ngVzcLom0pMBem8xilUYN2QPJuChu5QrFYC1qOjwHZ+jg6Va2e6N/b41GxIM+qs
-         YTx7gjIQ+6CufphzMKIohcPWTVHZjaKqpIlT+C7K2ygwy4Vzjb5zd6SGlDutzkVNLLT2
-         FKggKGW2znhHWgiO5/bhw7twkJ9kcdThoo9DoY0oa0p6OZ8bFJS4p0Vft5AbJhn/g8G4
-         dZHCPDRhYF9tr2+i4l0ce1hnk7/Xaa6+WjNHcbRryiRqDzEffTl7HF8NA8ScU6B23Lm4
-         SrFjdWsXrfIvzvfo11J59mzp9RK5KUmE9SJX+GZ1ZMDc9fMWVRqjyei+dM+OFdwast3o
-         FEaw==
-X-Forwarded-Encrypted: i=1; AJvYcCWm/uDsDFZfq63APq7OdgQie2Qi+teEQZIGEhqeCZCX4ehKV862JlJEe3DmY1z3IrCZD3a3PN4Rl1O+pVmB5w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzDEF6hNkJa+3ov6lhK5PcgSvwQ0gX/5YbORuTN9KTNT3MhuZyi
-	1ZqJtYiru3ItGm2PB2asKd1sCDlxHu+3ZWyHDF0oSed4GtW0XvIMRQoP4TOuk296rg==
-X-Gm-Gg: ATEYQzwPx1wEhRHApJEugVozKw6hpZ7mCdBAID8r6GEjmvE6/wOCT7Y3p0NiDmm0T1a
-	ELyiFTtwcQIvhfSt4SAs2X+GhiemdwMiyFbisEdt0D8I4d410y6cwkfUSeVwKb104QoGMlKe+zB
-	5r9nrKUcf6KASdx6hkoUuw06avl4VmpqRpJ+/9skvs9/OZSwlBMlgR1S19uOiQqZKkjRqKh6mqz
-	AmoVkTxJWy5Y1URsZfdAokbAQaBrvkcjcUW5XuusHrUoX5aaS7H2u9PUgR8o87DwQD77G2TidCZ
-	VSQbBiCnf7fNntQjeaJXY6lNW87G6rWTIpZWghLcAWEf6j4PKr7sKmsP3rdpLSjc1TIcal4JDVP
-	h9d/sv5PHOFHCzFP0h4BWUKVzC3KOSsWZ4nyHo3FobeKfce41sUmsyKQa2AEes28qteH7hJzhye
-	81cdWlVPCoBBMre+7ZF3ZykMCWTCzxova75Dg/pxJYsgguNHwVNY0X0nLwgnLrYo3JvYVxP+ZAU
-	/1t/We0
-X-Received: by 2002:a05:6a00:3006:b0:81f:9b0a:812a with SMTP id d2e1a72fcca58-829f70af1ebmr1872729b3a.14.1773222602308;
-        Wed, 11 Mar 2026 02:50:02 -0700 (PDT)
+        bh=Y1z9EtizHwE3LeSySxAXfxT/FNlt1Ydhsh1vDf6WdY0=;
+        b=Rh82aVnxJRhDAJ/MM3EnN7rRVK2rddb2TwpQus1ZwwSbXyQkrM9vOY5HlfuaTyIsnK
+         LcAqxxAVOrbDsLIOm1Fk99EjZMrtEqrlzA9BlKKMNmI1FYzmmRXwYCDnkRCu5ImHCWDn
+         pMuxgW2d0H5UQq5nlMbTYV+ISDjRGEx4RUIJR3MSTrBoosuqvnKEnMC3riQ928kaSxBv
+         tLvPlN6mGzdlkbVRbA/MF6VuVPbWrSy+R7fcT1yPigqhJsFGgNihPCSjj3c/Tuzqv0H1
+         Pn5xWua+a4uZUkEnZpnFTrupp4IXudZc2t5Dc1/XjELKUqU8t45XY/MpEVY21CFl/gL8
+         udqQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXPqFHXmciED3JsWtTuLQX1CSi6KoGIIbMskXvd44zlu8lWNZlQGDNVl/kAP1Er1iMRKXBYU6SnYYm1PeJ1lA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzHxaMjsx7hq6wsi2F4a3DlocTHx3hi7YVI3vkc/ndPOvskzs6I
+	kQ+3IYJ5pWAxyyCJ7hDRSbVF3iBxremd+wYo0OqiBrrP9Z91PCZi5zzN7KmqDNwtCQ==
+X-Gm-Gg: ATEYQzwu8iBh3CxpmdxkuWLz0q0Sg+n5pNOZ+HalUQ62KSBgqSBxpUU+j/omMQT5R+e
+	f5/BueZAtVAX6sV10CL4Hp0N4otVo9d8cKF5K3pcAmXa3D6zbqlV7tlifzHy/qZ74HLZoyxlNwr
+	1ZMkqi15wyOszNTV57Nu1vTR9DBV5wFASdcE1pgODZZ7C/FHRt81Eo5aDj0RahwOpFKTx9dlSgN
+	tHWX2xK2MiBMpGi+IrSOv3LnqyKLySWGxTLD8emj1zkzF5QarZIDapf1SMJlgKpmVRNjKzuPNS2
+	Xg47Xh0Of0+Ltn7DWhweZtMgM8C/Uok8dFgWnBkj1LST6rcJoCZ4gJlnr3nuAsbpFuNUg+DCdcJ
+	FDynl9BKY6uuyGRE+YXFT/xYSnRW0nKqacouzelWEpRplrb34t2ju5nrZIeU1WcU0bo8/ux5+8R
+	tQ+pcbXhoHhUXPD/M4Osgw/Hm2VADXF00F129u3D4VXiXCpGXYXgfVDWyNV07SVE7bHtXY6Dl9g
+	E6W9E1u
+X-Received: by 2002:a05:6a00:950c:b0:829:6f28:1d6 with SMTP id d2e1a72fcca58-829f6e7b408mr1826676b3a.13.1773222610050;
+        Wed, 11 Mar 2026 02:50:10 -0700 (PDT)
 Received: from wenstp920.tpe.corp.google.com ([2a00:79e0:201d:8:805b:14e9:f783:bcae])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-829f6e22f85sm1887598b3a.27.2026.03.11.02.49.57
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-829f6e22f85sm1887598b3a.27.2026.03.11.02.50.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Mar 2026 02:50:00 -0700 (PDT)
+        Wed, 11 Mar 2026 02:50:09 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -102,17 +102,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 2/4] drm/gem-dma: Support dedicated DMA device for allocation and mapping
-Date: Wed, 11 Mar 2026 17:49:26 +0800
-Message-ID: <20260311094929.3393338-3-wenst@chromium.org>
+Subject: [PATCH v2 4/4] drm/sun4i: Use backend/mixer as dedicated DMA device
+Date: Wed, 11 Mar 2026 17:49:28 +0800
+Message-ID: <20260311094929.3393338-5-wenst@chromium.org>
 X-Mailer: git-send-email 2.53.0.473.g4a7958ca14-goog
 In-Reply-To: <20260311094929.3393338-1-wenst@chromium.org>
 References: <20260311094929.3393338-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260311_095004_838534_2141BDA3 
-X-CRM114-Status: GOOD (  17.36  )
+X-CRM114-CacheID: sfid-20260311_095011_776840_558DBFD8 
+X-CRM114-Status: GOOD (  22.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,94 +127,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support for a dedicated DMA device for prime imports was added in commit
-143ec8d3f939 ("drm/prime: Support dedicated DMA device for dma-buf imports").
-This allowed the DRM driver to provide a dedicated DMA device when its
-own underlying device was not capable of DMA, for example when it is a
-USB device (the original target) or a virtual device. The latter case is
-common on embedded SoCs, on which the display pipeline is composed of
-various fixed function blocks, and the DRM device is simply a made-up
-device, an address space managing the routing between the blocks, or
-whichever block the implementor thought made sense at the time. The
-point is that the chosen device is often not the actual device doing
-the DMA. Various drivers have used workarounds or reimplemented the
-GEM DMA helpers to get the DMA addresses and IOMMUs to work correctly.
+The sun4i DRM driver deals with DMA constraints in a peculiar way.
+Instead of using the actual DMA device in various helpers, it justs
+reconfigures the DMA constraints of the virtual display device using
+the DMA device's device tree node by calling of_dma_configure().
 
-Add support for the dedicated DMA device to the GEM DMA helpers.
+Turns out of_dma_configure() should only be called from bus code.
+Lately this also triggers a big warning through of_iommu_configure()
+and ultimately __iommu_probe_device():
 
-No existing driver currently uses the GEM DMA helpers and calls
-drm_dev_set_dma_dev() to set a dedicated DMA device, so no existing
-users should be affected.
+    late IOMMU probe at driver bind, something fishy here!
 
-Reviewed-by: Thomas Zimmermann <tzimmermann@suse.de>
+Now that the GEM DMA helpers have proper support for allocating
+and mapping buffers with a dedicated DMA device, switch over to
+it as the proper solution.
+
+The mixer change was tested on a Pine H64 model B. The backend change
+was only compile tested. Though I don't expect any issues, help testing
+on an older device would be appreciated.
+
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/gpu/drm/drm_gem_dma_helper.c | 21 ++++++++++++---------
- 1 file changed, 12 insertions(+), 9 deletions(-)
+ drivers/gpu/drm/sun4i/sun4i_backend.c | 27 +++++++++++++++------------
+ drivers/gpu/drm/sun4i/sun8i_mixer.c   | 27 +++++++++++++++------------
+ 2 files changed, 30 insertions(+), 24 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_gem_dma_helper.c b/drivers/gpu/drm/drm_gem_dma_helper.c
-index ecb9746f4da8..70f83e464476 100644
---- a/drivers/gpu/drm/drm_gem_dma_helper.c
-+++ b/drivers/gpu/drm/drm_gem_dma_helper.c
-@@ -146,12 +146,13 @@ struct drm_gem_dma_object *drm_gem_dma_create(struct drm_device *drm,
- 		return dma_obj;
+diff --git a/drivers/gpu/drm/sun4i/sun4i_backend.c b/drivers/gpu/drm/sun4i/sun4i_backend.c
+index 6391bdc94a5c..a57fb5151def 100644
+--- a/drivers/gpu/drm/sun4i/sun4i_backend.c
++++ b/drivers/gpu/drm/sun4i/sun4i_backend.c
+@@ -798,18 +798,21 @@ static int sun4i_backend_bind(struct device *dev, struct device *master,
+ 	dev_set_drvdata(dev, backend);
+ 	spin_lock_init(&backend->frontend_lock);
  
- 	if (dma_obj->map_noncoherent) {
--		dma_obj->vaddr = dma_alloc_noncoherent(drm->dev, size,
-+		dma_obj->vaddr = dma_alloc_noncoherent(drm_dev_dma_dev(drm),
-+						       size,
- 						       &dma_obj->dma_addr,
- 						       DMA_TO_DEVICE,
- 						       GFP_KERNEL | __GFP_NOWARN);
- 	} else {
--		dma_obj->vaddr = dma_alloc_wc(drm->dev, size,
-+		dma_obj->vaddr = dma_alloc_wc(drm_dev_dma_dev(drm), size,
- 					      &dma_obj->dma_addr,
- 					      GFP_KERNEL | __GFP_NOWARN);
- 	}
-@@ -236,12 +237,14 @@ void drm_gem_dma_free(struct drm_gem_dma_object *dma_obj)
- 		drm_prime_gem_destroy(gem_obj, dma_obj->sgt);
- 	} else if (dma_obj->vaddr) {
- 		if (dma_obj->map_noncoherent)
--			dma_free_noncoherent(gem_obj->dev->dev, dma_obj->base.size,
-+			dma_free_noncoherent(drm_dev_dma_dev(gem_obj->dev),
-+					     dma_obj->base.size,
- 					     dma_obj->vaddr, dma_obj->dma_addr,
- 					     DMA_TO_DEVICE);
- 		else
--			dma_free_wc(gem_obj->dev->dev, dma_obj->base.size,
--				    dma_obj->vaddr, dma_obj->dma_addr);
-+			dma_free_wc(drm_dev_dma_dev(gem_obj->dev),
-+				    dma_obj->base.size, dma_obj->vaddr,
-+				    dma_obj->dma_addr);
- 	}
+-	if (of_property_present(dev->of_node, "interconnects")) {
+-		/*
+-		 * This assume we have the same DMA constraints for all our the
+-		 * devices in our pipeline (all the backends, but also the
+-		 * frontends). This sounds bad, but it has always been the case
+-		 * for us, and DRM doesn't do per-device allocation either, so
+-		 * we would need to fix DRM first...
+-		 */
+-		ret = of_dma_configure(drm->dev, dev->of_node, true);
+-		if (ret)
+-			return ret;
+-	}
++	/*
++	 * This assume we have the same DMA constraints for all our the
++	 * devices in our pipeline (all the backends, but also the
++	 * frontends). This sounds bad, but it has always been the case
++	 * for us, and DRM doesn't do per-device allocation either, so
++	 * we would need to fix DRM first...
++	 *
++	 * Always use the first bound backend as the DMA device. While
++	 * our device trees always have all backends enabled, some in
++	 * the wild may actually have the first one disabled. If both
++	 * are enabled, the order in which they are bound is guaranteed
++	 * since the driver adds components in order.
++	 */
++	if (drm_dev_dma_dev(drm) == drm->dev)
++		drm_dev_set_dma_dev(drm, dev);
  
- 	drm_gem_object_release(gem_obj);
-@@ -432,7 +435,7 @@ struct sg_table *drm_gem_dma_get_sg_table(struct drm_gem_dma_object *dma_obj)
- 	if (!sgt)
- 		return ERR_PTR(-ENOMEM);
+ 	backend->engine.node = dev->of_node;
+ 	backend->engine.ops = &sun4i_backend_engine_ops;
+diff --git a/drivers/gpu/drm/sun4i/sun8i_mixer.c b/drivers/gpu/drm/sun4i/sun8i_mixer.c
+index 02acc7cbdb97..4071ab38b4ae 100644
+--- a/drivers/gpu/drm/sun4i/sun8i_mixer.c
++++ b/drivers/gpu/drm/sun4i/sun8i_mixer.c
+@@ -536,18 +536,21 @@ static int sun8i_mixer_bind(struct device *dev, struct device *master,
+ 	mixer->engine.ops = &sun8i_engine_ops;
+ 	mixer->engine.node = dev->of_node;
  
--	ret = dma_get_sgtable(obj->dev->dev, sgt, dma_obj->vaddr,
-+	ret = dma_get_sgtable(drm_dev_dma_dev(obj->dev), sgt, dma_obj->vaddr,
- 			      dma_obj->dma_addr, obj->size);
- 	if (ret < 0)
- 		goto out;
-@@ -539,12 +542,12 @@ int drm_gem_dma_mmap(struct drm_gem_dma_object *dma_obj, struct vm_area_struct *
- 	if (dma_obj->map_noncoherent) {
- 		vma->vm_page_prot = vm_get_page_prot(vma->vm_flags);
+-	if (of_property_present(dev->of_node, "iommus")) {
+-		/*
+-		 * This assume we have the same DMA constraints for
+-		 * all our the mixers in our pipeline. This sounds
+-		 * bad, but it has always been the case for us, and
+-		 * DRM doesn't do per-device allocation either, so we
+-		 * would need to fix DRM first...
+-		 */
+-		ret = of_dma_configure(drm->dev, dev->of_node, true);
+-		if (ret)
+-			return ret;
+-	}
++	/*
++	 * This assume we have the same DMA constraints for all our the
++	 * devices in our pipeline (all the backends, but also the
++	 * frontends). This sounds bad, but it has always been the case
++	 * for us, and DRM doesn't do per-device allocation either, so
++	 * we would need to fix DRM first...
++	 *
++	 * Always use the first bound backend as the DMA device. While
++	 * our device trees always have all backends enabled, some in
++	 * the wild may actually have the first one disabled. If both
++	 * are enabled, the order in which they are bound is guaranteed
++	 * since the driver adds components in order.
++	 */
++	if (drm_dev_dma_dev(drm) == drm->dev)
++		drm_dev_set_dma_dev(drm, dev);
  
--		ret = dma_mmap_pages(dma_obj->base.dev->dev,
-+		ret = dma_mmap_pages(drm_dev_dma_dev(dma_obj->base.dev),
- 				     vma, vma->vm_end - vma->vm_start,
- 				     virt_to_page(dma_obj->vaddr));
- 	} else {
--		ret = dma_mmap_wc(dma_obj->base.dev->dev, vma, dma_obj->vaddr,
--				  dma_obj->dma_addr,
-+		ret = dma_mmap_wc(drm_dev_dma_dev(dma_obj->base.dev), vma,
-+				  dma_obj->vaddr, dma_obj->dma_addr,
- 				  vma->vm_end - vma->vm_start);
- 	}
- 	if (ret)
+ 	/*
+ 	 * While this function can fail, we shouldn't do anything
 -- 
 2.53.0.473.g4a7958ca14-goog
 
