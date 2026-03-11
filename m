@@ -4,65 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95F981049524
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 09:55:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 637781125821
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 13:45:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ChRjhNFSIwUq/BCT+B2OsF/gxvK+pIo9qeBf2Ct4RKo=; b=YGZ3CwAh3+pjUfO/2hkalcvAwu
-	EINcnlWd+ZEc2gt8IrbR0/KOdmLFBQoUjERqbkZWa2XurD3OiQuyXzb7ayeSd0oAVVeOgj3fsMV6E
-	i9xFrra581euEEsbseBzmjJmiyQ4Ez22U2jENfU21/HdJu0sR+aFVgdpQyRfPN77mRRr6RSyOLW2/
-	CSmRsTkIYMZBuEU7GO272qxxlHK8yzjwimsfVZ86R24+qs0iNlz5FYukh6BPZmcme/APECzU7IFmi
-	Lzg2FoXS8gHDGqZiy8FyPRxsvPhkg9sP3W80LIE4pR0Uypda49yAK288U2w0+AeO2v9qsoK0qIefh
-	mk9uGtDQ==;
+	bh=jXoQ4qn4p2rlfas67F4FlkbLt3TK5BG0guhQiVcY+yM=; b=N6Hquq6cZGZanKdCLmrdglwM0Y
+	DfpE7JTvijCxZPKD9aRJkkma4VjbrLUUWIBxhLsL9PK5hKYI26qg/75nMkj2hPf1aZWNpNia1Fbwa
+	tu7JRp4kSab4IxHmVMt17AhM6TDnMaqK6bx5Tc2nDFOXOC8w9aNSGYzW6D1ef5DSYgA1ZG1gla777
+	wgxC/XkNTN4zU2Ftv/IW8vQ76WK6QXdd4NtvJ/St/AC2FKKxeXGagRouaZBNJjbhHM2OX/l0rQsA5
+	6pIziWH+FAd3x2aNTXNAIic0m9jmRAO48dpMPDd2g+rTvCFRQXRTYO0PEvThzn+XQrpSOLk/yvrwT
+	gDyulamA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0GHi-0000000BLq7-3FjW;
-	Wed, 11 Mar 2026 09:55:22 +0000
+	id 1w0Jsr-0000000Bf8c-3RSB;
+	Wed, 11 Mar 2026 13:45:57 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0GHg-0000000BLp2-0a4a;
-	Wed, 11 Mar 2026 09:55:21 +0000
+	id 1w0Jsp-0000000Bf80-2pd8;
+	Wed, 11 Mar 2026 13:45:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7018440ACD;
-	Wed, 11 Mar 2026 09:55:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F2C79C4CEF7;
-	Wed, 11 Mar 2026 09:55:18 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E081543277;
+	Wed, 11 Mar 2026 13:45:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 719EDC4CEF7;
+	Wed, 11 Mar 2026 13:45:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773222919;
-	bh=t3YWAFTGJfOXq166ei+fVp8S8uwUghjUXQoCv8h1vNQ=;
+	s=k20201202; t=1773236754;
+	bh=pc0vg9WjAyTbfNOOBHaoUmZFj7t/eqgu7tp2pVK/158=;
 	h=From:Date:Subject:To:Cc:From;
-	b=n2WwGH3Oubl+RCowhtf7QOox4ccYXoouIKknsp9xZq+3+xkBZdXAaVPo/L/W6X1KN
-	 fqlk75bWVJ4DeOMQ46Zhx2NUZL4lfKoD+hseFsPo9r58cEGlhXnTQ/W9TY5ghmPZsO
-	 lvGVap6Y9V8M9Rae4s7WWRLmttsf8cPuJZpD/cTN5UEde9uPM0B2C0CRMDwlVdyGmv
-	 H+R3VBIFtcbEi1d+VFdXK+KjUXTAUG10C7050EoQiYwMoqapsat47H6zt9XKjGWL3Q
-	 er+gUZTHTy2Eou6nArhNIcJWW30Rbu5OjuAXLZ13m3OdGAZD7DJ6hQHJVpRqcS2q1Z
-	 LBSLuG9jowyYw==
+	b=rYce17jUN2vp6ipqi9AlpYpDfQcQQlaktVjIjp63o1qPnCBTINiQ5TKeFhlzzwbRE
+	 lALRHcpMGDljAArJJJG/c5sO2bLvujSruguOwvMT61I7mrTXRlL4hqKx+HeMqQnPWr
+	 JvYKnN5HbCrXMr1KLJC+ek9pcAm3A4Xga1VaeRI7baG74RnNI54FGRYDWeL8eFQI8p
+	 TXOc+AvRqKENB0PNIRe2JLgeUcN++0ktGIfDXBeVftJMCM7Vv9llIsQaz9G2fYWT+N
+	 /EYLvEmjjDV1rIuDwfZpyxCa1hCD3LFwJLYh/X8M9aQp/bFGStpjcOiuE+3kjsF/KU
+	 CKGoRzAqaYT7g==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Wed, 11 Mar 2026 10:54:57 +0100
-Subject: [PATCH net-next] net: airoha: Remove airoha_dev_stop() in
- airoha_remove()
+Date: Wed, 11 Mar 2026 14:45:36 +0100
+Subject: [PATCH v3] arm64: dts: airoha: en7581: Add switch node to to
+ EN7581 SoC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260311-airoha-remove-ndo_stop-remove-v1-1-596fe853b2e1@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/zXMQQqEMAwAwK9IzhZsq674lUUkatQctpFURBD/b
- lnwOJe5IJIyRWizC5QOjiwhweYZjCuGhQxPyeAKVxfeWoOssqJR+slBJkzSx12217ZqHH7KAdF
- 7SMemNPP5/7/dfT+/JnIIbwAAAA==
-X-Change-ID: 20260311-airoha-remove-ndo_stop-remove-1582a74baa33
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
+Message-Id: <20260311-airoha-7581-dsa-switch-v3-1-e81478911819@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4XNTQ7CIBCG4asY1o4B+kddeQ/jAtqhTDTFQIOap
+ neXdqUL4/L9knlmZhEDYWTH3cwCJorkxxzFfsc6p8cBgfrcTHJZ84K3oCl4p6GplIA+aogPmjo
+ H1hpuZW+x7DjLx/eAlp4bfL7kdhQnH17bnyTW9S+ZBAgoS1UV3DS2FfZ0xTDi7eDDwFYzyQ9H8
+ J+OzI6qZN1Ko2tl1JezLMsbyNBl8gUBAAA=
+X-Change-ID: 20260309-airoha-7581-dsa-switch-ffb0f2dfe4c0
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: Andrew Lunn <andrew@lunn.ch>, 
+ Benjamin Larsson <benjamin.larsson@genexis.eu>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ devicetree@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>
 X-Mailer: b4 0.14.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260311_025520_201983_C3CE2602 
-X-CRM114-Status: UNSURE (   8.69  )
+X-CRM114-CacheID: sfid-20260311_064555_755445_E631349D 
+X-CRM114-Status: UNSURE (   9.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,30 +81,156 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Do not call airoha_dev_stop routine explicitly in airoha_remove()
-since it is already executed by unregister_netdev() if necessary
+Introduce dsa switch controller node to EN7581 SoC and EN7581
+evaluation board.
 
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/airoha/airoha_eth.c | 1 -
- 1 file changed, 1 deletion(-)
+Changes in v3:
+- Fix switch interrupt line.
+- Link to v2: https://lore.kernel.org/r/20260310-airoha-7581-dsa-switch-v2-1-852692ba68b8@kernel.org
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 3e9ec5c178f86fdd055e079078a23461edf97951..de5089e7dcd85080188641ae4c976b3d731cc3b4 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -3095,7 +3095,6 @@ static void airoha_remove(struct platform_device *pdev)
- 		if (!port)
- 			continue;
+Changes in v2:
+- Fix ethernet-phy node name
+- Remove unnecessary phy-mode property in ethernet-phy nodes.
+- Link to v1: https://lore.kernel.org/r/20260309-airoha-7581-dsa-switch-v1-1-448530b7f91f@kernel.org
+---
+ arch/arm64/boot/dts/airoha/en7581-evb.dts | 18 +++++++
+ arch/arm64/boot/dts/airoha/en7581.dtsi    | 84 +++++++++++++++++++++++++++++++
+ 2 files changed, 102 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/airoha/en7581-evb.dts b/arch/arm64/boot/dts/airoha/en7581-evb.dts
+index 886e2e4b5f64ce1a2a5496d35b8379fb4ac27dc2..4c6fca99ae62ec8202e211e18311f2ab7e18d2e5 100644
+--- a/arch/arm64/boot/dts/airoha/en7581-evb.dts
++++ b/arch/arm64/boot/dts/airoha/en7581-evb.dts
+@@ -81,6 +81,18 @@ conf {
+ 			drive-open-drain = <1>;
+ 		};
+ 	};
++
++	mdio_pins: mdio-pins {
++		mux {
++			function = "mdio";
++			groups = "mdio";
++		};
++
++		conf {
++			pins = "gpio2";
++			output-high;
++		};
++	};
+ };
  
--		airoha_dev_stop(port->dev);
- 		unregister_netdev(port->dev);
- 		airoha_metadata_dst_free(port);
- 	}
+ &pcie0 {
+@@ -106,3 +118,9 @@ &eth {
+ &gdm1 {
+ 	status = "okay";
+ };
++
++&switch {
++	pinctrl-names = "default";
++	pinctrl-0 = <&mdio_pins>;
++	status = "okay";
++};
+diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
+index ff6908a76e8eb6cf91343495d1fe531a868e41fb..f86605ddf8754513fbe38ab262ee72feaff7deb2 100644
+--- a/arch/arm64/boot/dts/airoha/en7581.dtsi
++++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
+@@ -395,5 +395,89 @@ fixed-link {
+ 				};
+ 			};
+ 		};
++
++		switch: switch@1fb58000 {
++			compatible = "airoha,en7581-switch";
++			reg = <0 0x1fb58000 0 0x8000>;
++			resets = <&scuclk EN7581_GSW_RST>;
++
++			interrupt-controller;
++			#interrupt-cells = <1>;
++			interrupt-parent = <&gic>;
++			interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH>;
++
++			status = "disabled";
++
++			ports {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				gsw_port1: port@1 {
++					reg = <1>;
++					label = "lan1";
++					phy-mode = "internal";
++					phy-handle = <&gsw_phy1>;
++				};
++
++				gsw_port2: port@2 {
++					reg = <2>;
++					label = "lan2";
++					phy-mode = "internal";
++					phy-handle = <&gsw_phy2>;
++				};
++
++				gsw_port3: port@3 {
++					reg = <3>;
++					label = "lan3";
++					phy-mode = "internal";
++					phy-handle = <&gsw_phy3>;
++				};
++
++				gsw_port4: port@4 {
++					reg = <4>;
++					label = "lan4";
++					phy-mode = "internal";
++					phy-handle = <&gsw_phy4>;
++				};
++
++				port@6 {
++					reg = <6>;
++					label = "cpu";
++					ethernet = <&gdm1>;
++					phy-mode = "internal";
++
++					fixed-link {
++						speed = <10000>;
++						full-duplex;
++						pause;
++					};
++				};
++			};
++
++			mdio: mdio {
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				gsw_phy1: ethernet-phy@9 {
++					compatible = "ethernet-phy-ieee802.3-c22";
++					reg = <9>;
++				};
++
++				gsw_phy2: ethernet-phy@10 {
++					compatible = "ethernet-phy-ieee802.3-c22";
++					reg = <10>;
++				};
++
++				gsw_phy3: ethernet-phy@11 {
++					compatible = "ethernet-phy-ieee802.3-c22";
++					reg = <11>;
++				};
++
++				gsw_phy4: ethernet-phy@12 {
++					compatible = "ethernet-phy-ieee802.3-c22";
++					reg = <12>;
++				};
++			};
++		};
+ 	};
+ };
 
 ---
-base-commit: 482aac8b56ca21d06c588517970579474d56736e
-change-id: 20260311-airoha-remove-ndo_stop-remove-1582a74baa33
+base-commit: 405c09548a695ca7be58b5b9d3ac8388630e907f
+change-id: 20260309-airoha-7581-dsa-switch-ffb0f2dfe4c0
 
 Best regards,
 -- 
