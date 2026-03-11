@@ -4,84 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22815FD88D9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 01:52:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3361FD88D6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 02:18:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Rh3CN2uldfsUMBEc85BMCXs4hxfEksQQNF/0Y33Jdck=; b=Xp/wIDBRwFJ8BY9xGP1Nmg9r3x
-	RC9NegIXjfKZzOLM3dVDq4I/btsV7yZxYrRJI2LjKDH4i6Jpv/XFZdpIqPqi9MRI8eo8MK8KITJkM
-	F0V5TzC12/uLE2PAmzwkqVDRzdZVmpJiSEECvi7XdtWuygUxr6Wiw3kxN5V6XLfSuvd1YpntG0Q0k
-	4gphOR6BkWEFP14ckzgJ5mS4FQh1X2UQUlubIABGZ7AIIp5rrqJiiFGHCop2Hyt4/1JIl2KA5612x
-	rnKGGz0ahd/72uksTcLDYL3L2vhZgGSBq2JeDWh2841PjvTabKJyEhtbEqs2njOe+1ZZOJCjldDNb
-	V2jA8h/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1ZAqF770CjctREhKahUCDqzMAEkw+GXfuiDNjYlwSLk=; b=JPTug052q+rCCGcMHFpPqxy17/
+	RC4oO666DawfCYIppsLnEy0/uoVvtJpNhbp4xXUhnUVnxTPn/CzA/e8xEC4E23swlYJf6YoLVi+u4
+	r+kVtwro5Zm5ABEPVl2OC7p+D05zrSO8coIZlsxgwJETLB3PdD+qxnQT6QukH+LfvE8GDM63ymLBZ
+	NthUZmocdgENtfMawtKhQvl5cRkODKK+xwWaAjY1fd9tHpSiCFL1XU+Fk8Dv9WocN9XeJEAoneCGv
+	inxuyuVtBImWdd0N99yidGlu3B7RqAjRME7wyrmyGJeBrQJiwIiUFwhKaDWRfuCiNyKscaeMgK8tW
+	QE9A0Ytw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w08kg-0000000AWLb-0Jh1;
-	Wed, 11 Mar 2026 01:52:46 +0000
-Received: from mgamail.intel.com ([198.175.65.10])
+	id 1w099Q-0000000AXrM-1Zrj;
+	Wed, 11 Mar 2026 02:18:20 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w08kY-0000000AWKM-2atA
+	id 1w099N-0000000AXqd-3SqE
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Mar 2026 01:52:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1773193957; x=1804729957;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=XGzlhdpEKBTOsnraVyGUlevcXvDh7h412ghI53fuwyA=;
-  b=S1DMIs/SDrYMZU5ug4b499zB1b5/ibLcWFYIC6WKTAjATQlsyUXR+Lwi
-   TME4Zmq53bflbqzjbCfaogPvTv4uwc1R7WPB9lXE+iSND2AoDR6tPmdE9
-   IpzQmQ5tG8Zm+N2o64iNRfU2Etk7IkbL/Zssy1TDZnJKFStFf3eLPv+SZ
-   fg0/XvfyKhwf/rxfEANWvBWitNKQ255BrvkStyPiKePPk/dsVA5ZjZdDa
-   hj88KLF8dvEmYybA/MlFtewpppoy04QiVQ2mwTpXG2Q4QiVajRwC8ua1K
-   6x89gzg98Wkv0xkKCt8b0vxlT69eiQ74I0JZr18anx+sm/HereY0hUh+U
-   Q==;
-X-CSE-ConnectionGUID: mGbNFB9SRUG9ttsVm6F3NQ==
-X-CSE-MsgGUID: RM2h34k3SoSQKgISPRAv6g==
-X-IronPort-AV: E=McAfee;i="6800,10657,11725"; a="91638157"
-X-IronPort-AV: E=Sophos;i="6.23,113,1770624000"; 
-   d="scan'208";a="91638157"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Mar 2026 18:52:33 -0700
-X-CSE-ConnectionGUID: BL63HbhrT9y9yaaHYc0/8A==
-X-CSE-MsgGUID: 3SkngTNZQH+Vh8p5N1VljQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,113,1770624000"; 
-   d="scan'208";a="218213338"
-Received: from lkp-server01.sh.intel.com (HELO 418530b1a366) ([10.239.97.150])
-  by fmviesa008.fm.intel.com with ESMTP; 10 Mar 2026 18:52:31 -0700
-Received: from kbuild by 418530b1a366 with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1w08kO-000000000W1-1j3V;
-	Wed, 11 Mar 2026 01:52:28 +0000
-Date: Wed, 11 Mar 2026 09:51:45 +0800
-From: kernel test robot <lkp@intel.com>
-To: Chen-Yu Tsai <wenst@chromium.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <helgaas@kernel.org>
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Bartosz Golaszewski <brgl@bgdev.pl>, linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 7/7] PCI: mediatek-gen3: Integrate new pwrctrl API
-Message-ID: <202603110916.8SVCCZYO-lkp@intel.com>
-References: <20260310091947.2742004-8-wenst@chromium.org>
+	Wed, 11 Mar 2026 02:18:19 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2ad9f316d68so60777635ad.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 19:18:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1773195497; x=1773800297; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:references
+         :in-reply-to:user-agent:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=1ZAqF770CjctREhKahUCDqzMAEkw+GXfuiDNjYlwSLk=;
+        b=CpCNtKYBIHFzcFD8Y5h6c8fwQNKe09bIhk56EXR7hKxd7Qvlbaw1ysr9KvnscucpbI
+         HRmWgl0nZWKAZvDWTf5StzMDaeDGiFA0NMkK49j0paSCqaNoYbn7DZPKPrUBV7peTRWi
+         mIF1+igk1+VbxHBQxigX1PU/JwoV4jTCMl8lBp/ZdOWKFVBloljHxhIMETC0NxD5II8D
+         qUFvVbNSadYhm2y1axW3n6U6GuH9DQA3aU2zyn6Zd/33rW42btRfwGnAQvp7T+aDfJPI
+         x8bAJrweFa6g/r8GscCpMcbOd9zUN66QmNvhambuyulFvXUvqwm6wCXHr7KlhyY+ZZw9
+         7lhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1773195497; x=1773800297;
+        h=content-transfer-encoding:mime-version:message-id:references
+         :in-reply-to:user-agent:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1ZAqF770CjctREhKahUCDqzMAEkw+GXfuiDNjYlwSLk=;
+        b=eu64o+f0CKU1C9nnhiD3amVHQv5wOATIl+k3dWNViClv+6OaWacbSq6hRPAFJ74AKj
+         eiiBpiDuuqNg0TFt5kHwGduV/aA6xievtzm1+B4Sh/lbsSUKo3h419iecHwON/Lb+TNz
+         J2+luy5aVYpCPP+bKd+kZPFsy252z06KzHqpx16gfLNYp1JGklfknmN/AaCZbCQ39WeN
+         yB/xepCG2uDDGYrMboIBEr5A4+0/X6HXlxhUyE/+4+04fK4pKVEEvF8ZacDcHKrlt5CO
+         EVENmHaNkVDD7kn20TzC49EivywuIQqynso41afEieqXdFhPA9HPYjoPzW2+LMAs2oG5
+         Fc2g==
+X-Forwarded-Encrypted: i=1; AJvYcCVUfHs2C4c/hQDgjTaIJ1/U2tVSB5b/sTWA1dLXlA1rRTgpxwmzeYzdV3r2RtLn9mQGApK/1Rl0bcDQ1FeCUw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw7jn+lxaDVNIyaeAHTVOtIUm46jPF7XtdQyiVB/COXVIP5RQkD
+	7YggdPerwbB6GGhMJDIvimNHWcH/u5lFpWp5lJnNaDni8fTtWFELdEdW
+X-Gm-Gg: ATEYQzwuOFIKYqHCzjTQnOiW6ZaCYGDKXupX89Vumpfm3u5DTf7VCXaVXUtgZkZnlKi
+	jVhccJZihlLbcU5oQOHudfVC5yYBg0B9NBcd6kp87uxFBhBOTw0FHuAwznxs1YGoI86dgpkccqp
+	oQZlCcqeslc0Sd3HbnFjiVNK7PZ7xREIi3GJpKB9wpgEF+GD7wNk8Zo3Uz0f/hpJzhSos8Mr8Ud
+	J7dbm/mG9LBrscSGeEyd99XYa5Nt8bj49kvKU2WnimpYdeJVUky5MlR3VcoFy4lEWOzVB/ipx4E
+	XNylNy1iVmmMn/enKhtqjAkZzW19SVIP//ZmlxQ1HJz+1AHFezX2PUd1kyfXaJo43dVD1uCpdvr
+	5yqodSJ2qzAX1oj1Ig+l0+OI448gMtSU6p2xTkgZfL3/NHOhEEztpAKP817AC8/luJoWsN0tCYC
+	ltq9fevb+Gu+3keiyJ62nKh+adhHo515XD6Eo=
+X-Received: by 2002:a17:903:1666:b0:2a9:47ff:101c with SMTP id d9443c01a7336-2aeae8eb7dcmr9366255ad.46.1773195496591;
+        Tue, 10 Mar 2026 19:18:16 -0700 (PDT)
+Received: from ehlo.thunderbird.net ([2401:4900:aab1:729a::4bc6:faff])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2aeae34e009sm5679355ad.46.2026.03.10.19.18.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Mar 2026 19:18:16 -0700 (PDT)
+Date: Wed, 11 Mar 2026 07:27:18 +0530
+From: Sanjay Chitroda <sanjayembeddedse@gmail.com>
+To: David Lechner <dlechner@baylibre.com>, jic23@kernel.org,
+ m.tretter@pengutronix.de, mchehab@kernel.org, p.zabel@pengutronix.de,
+ tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
+ yunfei.dong@mediatek.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, johan@kernel.org, elder@kernel.org,
+ gregkh@linuxfoundation.org, pure.logic@nexus-software.ie
+CC: nuno.sa@analog.com, andy@kernel.org, kernel@pengutronix.de, kees@kernel.org,
+ nabijaczleweli@nabijaczleweli.xyz, marcelo.schmitt1@gmail.com,
+ maudspierings@gocontroll.com, hverkuil+cisco@kernel.org,
+ ribalda@chromium.org, straube.linux@gmail.com, dan.carpenter@linaro.org,
+ lukagejak5@gmail.com, ethantidmore06@gmail.com,
+ samasth.norway.ananda@oracle.com, karanja99erick@gmail.com,
+ s9430939@naver.com, tglx@kernel.org, mingo@kernel.org,
+ sun.jian.kdev@gmail.com, weibu@redadmin.org, linux-iio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
+ skhan@linuxfoundation.org
+Subject: Re: [PATCH 0/7] drivers: Simplify cleanup paths using __free
+User-Agent: Thunderbird for Android
+In-Reply-To: <79bfac24-dcb4-4fb9-90d8-3ef2393f51e3@baylibre.com>
+References: <20260310200513.2162018-1-sanjayembedded@gmail.com> <79bfac24-dcb4-4fb9-90d8-3ef2393f51e3@baylibre.com>
+Message-ID: <7F16ED38-6BC1-4D31-B5B6-6C1E45D24C25@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260310091947.2742004-8-wenst@chromium.org>
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_185240_506402_784F2BC5 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20260310_191817_869247_E73840F1 
+X-CRM114-Status: UNSURE (   9.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,96 +116,54 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chen-Yu,
-
-kernel test robot noticed the following build errors:
-
-[auto build test ERROR on pci/next]
-[also build test ERROR on pci/for-linus linus/master v7.0-rc3 next-20260310]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Chen-Yu-Tsai/PCI-mediatek-gen3-Clean-up-mtk_pcie_parse_port-with-dev_err_probe/20260310-175537
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/pci/pci.git next
-patch link:    https://lore.kernel.org/r/20260310091947.2742004-8-wenst%40chromium.org
-patch subject: [PATCH v4 7/7] PCI: mediatek-gen3: Integrate new pwrctrl API
-config: sparc64-randconfig-001-20260310 (https://download.01.org/0day-ci/archive/20260311/202603110916.8SVCCZYO-lkp@intel.com/config)
-compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260311/202603110916.8SVCCZYO-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202603110916.8SVCCZYO-lkp@intel.com/
-
-All error/warnings (new ones prefixed by >>):
-
->> drivers/pci/controller/pcie-mediatek-gen3.c:1225:8: error: use of undeclared label 'err_teardown_irq'
-    1225 |                 goto err_teardown_irq;
-         |                      ^
->> drivers/pci/controller/pcie-mediatek-gen3.c:1248:1: warning: unused label 'err_tear_down_irq' [-Wunused-label]
-    1248 | err_tear_down_irq:
-         | ^~~~~~~~~~~~~~~~~~
-   1 warning and 1 error generated.
 
 
-vim +/err_teardown_irq +1225 drivers/pci/controller/pcie-mediatek-gen3.c
+On 11 March 2026 3:22:28=E2=80=AFam IST, David Lechner <dlechner@baylibre=
+=2Ecom> wrote:
+>On 3/10/26 3:05 PM, Sanjay Chitroda wrote:
+>> From: Sanjay Chitroda <sanjayembeddedse@gmail=2Ecom>
+>>=20
+>> Hi all,
+>>=20
+>> This patch series replaces manual cleanup and explicit kfree() calls wi=
+th
+>> the __free attribute from <linux/cleanup=2Eh>=2E This modernizes the me=
+mory
+>> management style and simplifies common error paths without altering any
+>> functional behavior=2E
+>>=20
+>> The __free attribute provides automatic scope-based cleanup, making
+>> resource management clearer and reducing the chances of missing cleanup
+>> on early returns=2E
+>>=20
+>> No functional changes are intended in this series=2E
+>>=20
+>> Testing:
+>>   - Compiled with W=3D1
+>>   - Build-tested on i86_64
+>>=20
+>> Based on:
+>>   <linux-v7=2E0-rc2>
+>>=20
+>> Feel free to share your valuable input in context of the cleanup API=2E
+>>=20
+>> Thanks,
+>> Sanjay Chitroda
+>>=20
+>> Sanjay Chitroda (7):
+>>   staging: greybus: simplify cleanup using __free
+>>   iio: ssp_sensors: simplify cleanup using __free
+>>   iio: st_sensors: simplify cleanup using __free
+>>   media: mediatek: vcodec: simplify cleanup using __free
+>>   media: chips-media: coda: simplify cleanup using __free
+>>   media: allegro: simplify cleanup using __free
+>>   staging: rtl8723bs: simplify cleanup using __free
+>
+>There is no reason to put patches from different subsystems
+>in the same series when there is no dependency between them=2E
+>It just make for more noise for everyone=2E
+>
 
-  1201	
-  1202	static int mtk_pcie_probe(struct platform_device *pdev)
-  1203	{
-  1204		struct device *dev = &pdev->dev;
-  1205		struct mtk_gen3_pcie *pcie;
-  1206		struct pci_host_bridge *host;
-  1207		int err;
-  1208	
-  1209		host = devm_pci_alloc_host_bridge(dev, sizeof(*pcie));
-  1210		if (!host)
-  1211			return -ENOMEM;
-  1212	
-  1213		pcie = pci_host_bridge_priv(host);
-  1214	
-  1215		pcie->dev = dev;
-  1216		pcie->soc = device_get_match_data(dev);
-  1217		platform_set_drvdata(pdev, pcie);
-  1218	
-  1219		err = mtk_pcie_setup_irq(pcie);
-  1220		if (err)
-  1221			return dev_err_probe(dev, err, "Failed to setup IRQ domains\n");
-  1222	
-  1223		err = pci_pwrctrl_create_devices(pcie->dev);
-  1224		if (err) {
-> 1225			goto err_teardown_irq;
-  1226			dev_err_probe(dev, err, "failed to create pwrctrl devices\n");
-  1227		}
-  1228	
-  1229		err = mtk_pcie_setup(pcie);
-  1230		if (err)
-  1231			goto err_destroy_pwrctrl;
-  1232	
-  1233		host->ops = &mtk_pcie_ops;
-  1234		host->sysdata = pcie;
-  1235	
-  1236		err = pci_host_probe(host);
-  1237		if (err)
-  1238			goto err_power_down_pcie;
-  1239	
-  1240		return 0;
-  1241	
-  1242	err_power_down_pcie:
-  1243		mtk_pcie_device_power_down(pcie);
-  1244		mtk_pcie_power_down(pcie);
-  1245	err_destroy_pwrctrl:
-  1246		if (err != -EPROBE_DEFER)
-  1247			pci_pwrctrl_destroy_devices(pcie->dev);
-> 1248	err_tear_down_irq:
-  1249		mtk_pcie_irq_teardown(pcie);
-  1250		return err;
-  1251	}
-  1252	
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Thanks for the feedback=2E I will split unrelated patches into
+separate series per subsystem or individual in future submissions=2E
 
