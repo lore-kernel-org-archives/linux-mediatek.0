@@ -4,110 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E593FD88F9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 04:55:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76327FD88FF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 05:33:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=csAuxU4WY1Se481wrqRHAT1G6rL7KDqCbNJuB1aP/kY=; b=Q3qJ3Q7j4JWBf4JFgj3SPhFp0c
-	M8lb6i63ltOrrqTL5goC9A9UjBq6pz1Q6ybU10v6dkdMSalDiaUveXrEBr9VL4x/gJc7upVtMQDVW
-	v8IFVMl3tk//2E1tQpsqCKIxDIt1LNnDOLHI/r+1gjlqbEOgt3wGjKyoekSA+7HUNyu3Zk1BjimUh
-	tV14wNiDXqLXbqojsyCqrTeCfvBrI6d7S6S+XHM1668CptlUJ5+CJ4q1Az39p36ClJtP9eM4hjh8L
-	S5Lj2W3c4FF4WzJq0noS5F4Tk1km4369X5wVJy49iur0AOzpS4F6Mv1GOECg4jJlgi8jY8U2qEKDI
-	8jPwHpDw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=AGlrfHOTy9gWBLetoSSm6Wb/8lTbHkvB8tLya/EDP7E=; b=imnGrKC2b6i7Cx7OPcs9Xxg6cP
+	Olx03PNCnZwSjjjavCIriMiIsU59HsOy+boP5GosK2ulnVgIlXGh05bCmquXknQTJ6ZvVhBtMoiQh
+	nE7h61KV+K0sod5UpKiFhgkvuIm5L2Q9qdhkDztiM7G3jUl3COdccc/KBV35e+PzZV6Ynot1rXWU8
+	Vm5NJpSSS7sshZxJFtUYVHQAlA0Md4AcT0gTBgtvh9+CUn/z8vv/lXKnEFWGIzF9qOkns0IqMHqSM
+	1Q2OfEHBWYwl9zKCpzYVQRKxBiRwMuC8TOCJ2HZGH8jHvQDVUBswnPhz11s+IE9w/cGjMgbbEcn5k
+	k250EtWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0BbU-0000000Ajdu-2Cn3;
-	Wed, 11 Mar 2026 04:55:28 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1w0CCX-0000000AnNI-47p7;
+	Wed, 11 Mar 2026 05:33:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0BbR-0000000Ajci-1sjA
-	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Mar 2026 04:55:26 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-59de8155501so8169457e87.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 21:55:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773204923; cv=none;
-        d=google.com; s=arc-20240605;
-        b=h2PoiNmR8x1Z5H24AvJQnzpyFDPsvmjdKZnu6wQ/7Oj/wXsvGMNXiI/5wCm9ltmjUb
-         eW2V0aSj1oDgRjgCNwgXfZxO8FBhGvf8bsZ3CZMMLIpMZJKJKv0nDRbPWSuqPGi4SaeG
-         +AQwmirUUcJS8G1BPvvdiCRMJbWRriImwET0+vRsXQ02Ka4REIMPETKJnM33ROF3Z3X7
-         o3Qo6dpJeRavz4dFJCwRIRXmlakB7ZfEcw13JUKEMTcWChLatdYyJlaFRP2/jmRpTBXB
-         +O7KjEYM8DWpd2RnVjaTauqw7VfIStTigquEVPU3PjDw9iq32HIStdm+K3qDRDRJvA6s
-         7DvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=csAuxU4WY1Se481wrqRHAT1G6rL7KDqCbNJuB1aP/kY=;
-        fh=UNIy2mNSgaBNLbOcxfYCI0aRPKPFkmlht6cziOIoDBg=;
-        b=hcfWbs+old1QtO8Pf96R5I2sph8FxQC1k36ibg/6A+X3VXkYgqnO0BQpy+yAYi3u1d
-         Ktnfzu+9jQBp5HulKeLfPMeBPzk63dG+bGT4efliXWvJc2IUWO5GBtenb7C0goCIGP9m
-         Y1P7zkJE8NsuA/8YndMDz9luBgjtEaRiuxNnl8EY2VuurgCYFSBk2Qz3dCggx9hdbx3n
-         xRKR3Bk48WtzQYM6GBGBrBRtYa8qA40uXN7Z4ORLQya4+WQMhWMZSfyG1rizRNs2rSGr
-         7EhSoTXY0Atq0mq4DbQAPgpVuwkQRIzn+Jyc4QpGKBKQOxNlDO2x2uTeBvWmFsC38YKo
-         kRCA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1773204923; x=1773809723; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=csAuxU4WY1Se481wrqRHAT1G6rL7KDqCbNJuB1aP/kY=;
-        b=kZAdDF3GZh8whYQe8EjvyMyBgSfepbwkxXMAHva8ufIzMKd+QzomJHNRd9RVrz5pij
-         /GK7ILWK7kfSx5wXMJBD1Y8jfALC25wU0mF0yoDDIoznHRfqz3P9dtAvP1AGglBiVAZr
-         wziPkskhq3L9rhU4kxYXmW+FxO2k3dLRvY0Xs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773204923; x=1773809723;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=csAuxU4WY1Se481wrqRHAT1G6rL7KDqCbNJuB1aP/kY=;
-        b=B6vVQA4DQH/MbWVeDzjsc+GAoW2DUr5LTBtR1GSimLA0oespMZIIFmb497Dy17bSJ5
-         pmYh6EPQmlSyQYU56TK45UfYMNuK+VjxS+Jz24ZJOjO+ziUCK1AwvbTrcWyvY/4d0wzF
-         iJ+imTNSkFcr9j+jRliAksQzqAewInzYcy10CxmKpXWTpIdnJd3tEvVp5bLU1Va9q4k/
-         X5T1k47Ni0T0knbgHADqP5/pt+lv3TkCc5w8tYToPl4LTWq1nkh7NqH6GK3iTOWJ6tp1
-         9q/WcRStznI0J46CE40iJ1DGSAwam0fGmeDSug4tkl7V3QBu9Wm99PccVh9MioiUGq40
-         x/VA==
-X-Forwarded-Encrypted: i=1; AJvYcCUmMgFryeFUIRIN1xJsQ2E4nilI8VZ0rohLaeSFRRIchQ6gAKrXk/YVeB21wYiiWrse3TbsrG4MiXD1PdFEaQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy4JI41V8rL9OyMuQLNz/b9Gm7N4V1s965RhndECdGPwXcuN1u/
-	aUntKIH6cEubUfYJym4mSN7oLoMF6Lln9jyzaZ0Y/rILLGusJDWxbVTdjPao3duZROynZL14OzV
-	mNAUQhzKhzLZHl5r/us1wqitHXDmSslhC5/+aRDq1
-X-Gm-Gg: ATEYQzxxOsoowvyjDoPTutY6hkweh94ujx1P4U6JYw5MLH3XUJrTr3KXAYAuTz0tdBz
-	bK4UZdlOPIZpCanyAkMod2KW4k2FYbGv8MXS+pTYiFGABeFJm1Mk/XcRtz1dUL528AOBlKR4Pk9
-	jJVeYeSVlHtCh8qa1ot58WsiuSRhyEFT1GYGzzXEWOE3iPr98vPOoUEXHwSHW/cKOZs/bWFYH9/
-	S4ApV635QvlknpmgmLbVll2++LU3uLEzw9fRq+O2FJpV5DtqP5CpFtP6QH5SBGNQvHoEl2I3W8Q
-	or7Oufxtcrqt8JfBXY8Odfv/z908MOFBUE0hcA==
-X-Received: by 2002:a05:6512:619:b0:5a1:3da6:3587 with SMTP id
- 2adb3069b0e04-5a156bbdbc3mr242495e87.16.1773204923158; Tue, 10 Mar 2026
- 21:55:23 -0700 (PDT)
+	id 1w0CCV-0000000AnMV-0zko;
+	Wed, 11 Mar 2026 05:33:44 +0000
+X-UUID: dc3d7e6a1d0b11f19e7563141e833ce8-20260310
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=AGlrfHOTy9gWBLetoSSm6Wb/8lTbHkvB8tLya/EDP7E=;
+	b=uClA1T6VorTScWotg7M4MI4An3J0n0vvWTJYunUgEoZsl6WAj999tBt01iR9lPVjTaXo4f8LY7hpp9s3mU0UKzBsWMFYC8XWb9t/ztizXYH7bYz0+Lj6GfRA1ketQZjp2S4nlFBEl//Xne4b49KioEyAel+L2nMFxnZ7uh/5uTY=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.12,REQID:c83b69cf-bd41-4b89-af5c-ec156d7f0ed0,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:e7bac3a,CLOUDID:8badc47b-8c8a-4fc4-88c0-3556e7711556,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:102|836|888|898,TC:-5,Content:0|15|5
+	0,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: dc3d7e6a1d0b11f19e7563141e833ce8-20260310
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <ot_meiker.gao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 992462540; Tue, 10 Mar 2026 22:33:40 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 11 Mar 2026 13:33:37 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 11 Mar 2026 13:33:37 +0800
+From: Meiker Gao <ot_meiker.gao@mediatek.com>
+To: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Bayi Cheng
+	<bayi.cheng@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>
+CC: <linux-spi@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<sirius.wang@mediatek.com>, <vince-wl.liu@mediatek.com>,
+	<jh.hsu@mediatek.com>, Meiker Gao <ot_meiker.gao@mediatek.com>
+Subject: [PATCH] spi: dt-bindings: mediatek,spi-mtk-nor: Add clock bindings for mt8189
+Date: Wed, 11 Mar 2026 13:33:33 +0800
+Message-ID: <20260311053335.785292-1-ot_meiker.gao@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-References: <20260310032511.2545500-1-wenst@chromium.org> <20260310032511.2545500-4-wenst@chromium.org>
- <b2acf78f-4ff9-4e3f-802d-5318e6f25c20@suse.de>
-In-Reply-To: <b2acf78f-4ff9-4e3f-802d-5318e6f25c20@suse.de>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 11 Mar 2026 12:55:11 +0800
-X-Gm-Features: AaiRm51TX-eh65P-jmgUubiAbXiGD5qlFS3vQBfHYDDCC5yEHtzRczjcYjc_Cmg
-Message-ID: <CAGXv+5HJKjM77PdZjwUossTzrPx+LvgVaS=-sGcGNec77TJLzw@mail.gmail.com>
-Subject: Re: [PATCH RESEND 3/4] drm/mediatek: Set dedicated DMA device and
- drop custom GEM callbacks
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej@kernel.org>, 
-	Samuel Holland <samuel@sholland.org>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	linux-sunxi@lists.linux.dev, Paul Kocialkowski <paulk@sys-base.io>, 
-	linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_215525_663380_56F2FD32 
-X-CRM114-Status: GOOD (  31.45  )
+X-CRM114-CacheID: sfid-20260310_223343_302504_CD0C64EA 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,83 +90,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 10, 2026 at 4:21=E2=80=AFPM Thomas Zimmermann <tzimmermann@suse=
-.de> wrote:
->
-> Hi
->
-> Am 10.03.26 um 04:25 schrieb Chen-Yu Tsai:
-> > In commit 9b54a32c7c6a ("drm/mediatek: mtk_gem: Partial refactor and
-> > use drm_gem_dma_object") the MediaTek DRM driver was refactored to use
-> > drm_gem_dma_object, but custom callbacks were still needed to deal with
-> > using the first device of the pipeline as the DMA device, instead of
-> > the MMSYS device that the DRM driver binds to.
-> >
-> > Turns out there is already partial support for dedicated DMA devices in
-> > the DRM subsystem for PRIME imports. The preceding patches add support
-> > for dedicated DMA devices to the GEM DMA helpers.
-> >
-> > This allows us to just set the dedicated DMA device for the DRM device,
-> > and drop all the custom GEM callbacks. Also drop the .dma_dev field
-> > from the driver private data as it is no longer needed.
->
-> My impression is that this patch should be split up: first replace
-> dma_dev with the dma device; then replace the now-duplicate code with
-> shared helpers.
+Update mediatek,spi-mtk-nor.yaml to add conditional clock and
+clock-names bindings for the mt8189-nor platform. The mt8189-nor
+controller requires five specific clocks and corresponding clock-names
+("spi", "sf", "axi_f", "axi_h", "axi_p"). This change enforces these
+requirements in the device tree binding schema.
 
-I'm not sure which of the following you are thinking about:
+For other platforms, the minimum number of clocks and clock-names
+remains unchanged. The patch also adds an example for mt8189-nor,
+illustrating the new clock configuration.
 
-a) one patch with just the drm_dev_set_dma_dev() call,
-   one patch dropping the custom GEM callbacks
+This update ensures correct hardware description and validation for
+mt8189-nor, improving compatibility and reducing configuration errors.
 
-In this case the first patch has no actual effect, since nothing is using
-drm_dev->dma_dev. I think this is not a good split.
+Signed-off-by: Meiker Gao <ot_meiker.gao@mediatek.com>
+(cherry picked from commit c3180d35e52b5213764a89403e71f9a34d7bb842)
+---
+ .../bindings/spi/mediatek,spi-mtk-nor.yaml    | 45 ++++++++++++++-----
+ 1 file changed, 33 insertions(+), 12 deletions(-)
 
-b) one patch adding drm_dev_set_dma_dev() and replacing priv->dma_dev
-   with drm_dev_dma_dev(),
-   one patch dropping the custom GEM callbacks
+diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
+index a453996c13f2..bd6f43a0c399 100644
+--- a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
++++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
+@@ -17,9 +17,6 @@ description: |
+   for devices other than SPI NOR flash due to limited transfer
+   capability of this controller.
+ 
+-allOf:
+-  - $ref: /schemas/spi/spi-controller.yaml#
+-
+ properties:
+   compatible:
+     oneOf:
+@@ -27,6 +24,7 @@ properties:
+           - mediatek,mt8173-nor
+           - mediatek,mt8186-nor
+           - mediatek,mt8192-nor
++          - mediatek,mt8189-nor
+       - items:
+           - enum:
+               - mediatek,mt2701-nor
+@@ -39,6 +37,7 @@ properties:
+       - items:
+           - enum:
+               - mediatek,mt8188-nor
++              - mediatek,mt8189-nor
+           - const: mediatek,mt8186-nor
+ 
+   reg:
+@@ -56,14 +55,8 @@ properties:
+                      design, so this is optional.
+       - description: clock used for controller axi slave bus.
+                      this depends on hardware design, so it is optional.
+-
+-  clock-names:
+-    minItems: 2
+-    items:
+-      - const: spi
+-      - const: sf
+-      - const: axi
+-      - const: axi_s
++      - description: clock used for controller axi_f, axi_h, and
++                     axi_p to support the new platform.
+ 
+ required:
+   - compatible
+@@ -71,6 +64,34 @@ required:
+   - clocks
+   - clock-names
+ 
++allOf:
++  - $ref: /schemas/spi/spi-controller.yaml#
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt8189-nor
++    then:
++      properties:
++        clocks:
++          maxItems: 5
++        clock-names:
++          items:
++            - const: spi
++            - const: sf
++            - const: axi_f
++            - const: axi_h
++            - const: axi_p
++    else:
++      properties:
++        clocks:
++          maxItems: 4
++        clock-names:
++          items:
++            - const: spi
++            - const: sf
++            - const: axi
++
+ unevaluatedProperties: false
+ 
+ examples:
+@@ -81,7 +102,7 @@ examples:
+       #address-cells = <2>;
+       #size-cells = <2>;
+ 
+-      nor_flash: spi@1100d000 {
++      spi@1100d000 {
+         compatible = "mediatek,mt8173-nor";
+         reg = <0 0x1100d000 0 0xe0>;
+         interrupts = <1>;
+-- 
+2.45.2
 
-In this case the first patch would modify a bunch of places that then
-get dropped in the second. The churn maybe isn't worth it.
-
-c) one patch adding drm_dev_set_dma_dev() and replacing
-   drm_gem_prime_import_dev() with drm_gem_prime_import(),
-   one patch dropping the custom GEM callbacks
-
-Functionally the second patch would depend on the first.
-
-
-I still think having one single patch is better.
-
-> > There are slight differences in the mmap helper: the VM_DONTDUMP and
-> > VM_IO flags are no longer set. Both were lifted from drm_gem_mmap_obj()=
-.
-> > VM_IO probably doesn't make sense since the buffer is allocated using
-> > dma_alloc_attrs().
->
-> We can add VM_DONTDUMP to gem-dma's mmap helper. [1] It's most likely
-> the right thing to not dump graphics buffers and standard practice in
-> most other GEM memory managers.
-
-Makes sense. I can add a patch to the series to do this.
-
-> [1]
-> https://elixir.bootlin.com/linux/v6.19.6/source/drivers/gpu/drm/drm_gem_d=
-ma_helper.c#L537
->
-> >
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
->
-> The changes look correct, so I'm here's the
->
-> Reviewed-by: Thomas Zimmermann <tzimmermann@suse.de>
->
-> But this patch requires a review from the driver maintainer as well.
-
-Sure, and I need to respin the series because I forgot to remove the
-deleted file from the Makefile.
-
-
-Thanks
-ChenYu
 
