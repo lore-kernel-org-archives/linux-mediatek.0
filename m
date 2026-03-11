@@ -4,89 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1933FD0636
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 07:06:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BB96FD063E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 07:10:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+4cmoup3FIXPRIl6fbPgnHbI6pJNN7pfNFC8X0IdKRM=; b=3PhGlcCby/3wnPFRTIVvPpmteK
-	IeSpLfqwiCGdEfaG9FzheczuVEvJnWpyjYen3VRAKMJTzMw6stcXAoSuA01KFTRJPEcZvYesP2JzY
-	s9fFrr7+A3AroRwZUh4Q2tP6Iz/Nv79lgg2DIwdD1HCIfwRvwLLpVEVtRgjrITb9W5UJ1WDrSvYq7
-	M7Hztc6pXlLLLUxFskAYL1MjPTvgG3/I2s5eMtpYOnzZ7T57WgHIebcH7oefIhNDk4ufTTRNrA2D8
-	swZzoFbO6lUYI2txDuk9mCWMXRczInFO/uZUWxstUyUAI6Wxpf9LUsedVGiHtPrgi6TzM2v3hpKWl
-	ZkgmEx6g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tX4ZLHA/bUIFbWr7H2gnVooppDntw3ZcXObgNgRB3Lk=; b=MC1kw6hbxscoizDvjT8l1GtnJj
+	skCSd7o1C7QJAYHlzbIdLK+5j/KK5mhcn+rGC+4gSm04/XQ8X74oUYRW9EVgNByZpatt0UIbogR3i
+	bLayL2IAr9lWTpdqMptmAWSR2NANaC1VoNlv9/6DfGAxxxvpSPxFjiA1wI/NaHZZ3+sPz0FJ9KP6n
+	+pXpaB9YjExiHUwXq+LMyblkS0O2HdjZ/Ao3oATDFflqWJj0iLISQRNNAHHcSfb1hde+t/NdZptCb
+	DABTjSvGD3V0oJEqGWOgbUBIPMFWyWvvPXDvcE/3Qv2zXW6R7KvqLm0I66dBjWloXq53F+nczNe7d
+	7mqAxPbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0Dee-0000000AzMd-3iNv;
-	Wed, 11 Mar 2026 07:06:52 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1w0Dia-0000000B28B-26ba;
+	Wed, 11 Mar 2026 07:10:56 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0Ded-0000000AzL5-1Wmu;
-	Wed, 11 Mar 2026 07:06:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=+4cmoup3FIXPRIl6fbPgnHbI6pJNN7pfNFC8X0IdKRM=; b=HnVQnMV8fWdmpubJpuRRlD/ahV
-	rRN6gqYoeXHj2MSRauKF1hI2G5t552/JXyXS366KTPb88zyV97Aho9vhYwfB23E3sNMcRFa9Q/ESD
-	+nLb0YRfrkPMIDQxI/bY+KaW3wr85xiEr9nRa9mdFaZ+X9WU7t8Sg3BTNBOJ4ur7pxa1jyczmPT84
-	L98V4zysKd2OA8hB9adLJQmkysRs1EzRN5QKoJWmOrzdfNSiRUpFB+P1jt0ZJKThpOmAuwuw5txYx
-	W8d674ctS/znfF0N7KtxFmh0NqjVEjwn/ROfxgH0rXLbJmK+ezV4Ojdf1lOYIJdLThGK9T9dcfTYA
-	f9i9R1nw==;
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0DeZ-0000000GCfW-1MRG;
-	Wed, 11 Mar 2026 07:06:50 +0000
+	id 1w0DiY-0000000B26i-36rA;
+	Wed, 11 Mar 2026 07:10:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7660940ADC;
-	Wed, 11 Mar 2026 07:06:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B573EC4CEF7;
-	Wed, 11 Mar 2026 07:06:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1773212805;
-	bh=RR9Qvte44D15VS4RtzccJeT1Fg0fLFhuLfeFArrffZg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fUOLBM+tf+Xmbt4WSJJkpYCsoDglyB9XUWNK0x+zAm8AzvWVlSG6KBa41S0GrubbI
-	 ZoQEs3UNBN2LOcYgEJ6duyxKpBwLRZSWELKfr9B6JshcfZLRBatSuaNYTSxGZyhzsU
-	 bxuv3gMR4x0ml1VaUAGr5vrWLWForGzRwzofRA0Q=
-Date: Wed, 11 Mar 2026 08:06:28 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: Andy Shevchenko <andriy.shevchenko@intel.com>,
-	Sanjay Chitroda <sanjayembeddedse@gmail.com>, jic23@kernel.org,
-	m.tretter@pengutronix.de, mchehab@kernel.org,
-	p.zabel@pengutronix.de, tiffany.lin@mediatek.com,
-	andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	johan@kernel.org, elder@kernel.org, pure.logic@nexus-software.ie,
-	dlechner@baylibre.com, nuno.sa@analog.com, andy@kernel.org,
-	kernel@pengutronix.de, kees@kernel.org,
-	nabijaczleweli@nabijaczleweli.xyz, marcelo.schmitt1@gmail.com,
-	maudspierings@gocontroll.com, hverkuil+cisco@kernel.org,
-	ribalda@chromium.org, straube.linux@gmail.com, lukagejak5@gmail.com,
-	ethantidmore06@gmail.com, samasth.norway.ananda@oracle.com,
-	karanja99erick@gmail.com, s9430939@naver.com, tglx@kernel.org,
-	mingo@kernel.org, sun.jian.kdev@gmail.com, weibu@redadmin.org,
-	linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, greybus-dev@lists.linaro.org,
-	linux-staging@lists.linux.dev, skhan@linuxfoundation.org
-Subject: Re: [PATCH 1/7] staging: greybus: simplify cleanup using __free
-Message-ID: <2026031100-old-retry-ee2c@gregkh>
-References: <20260310200513.2162018-1-sanjayembedded@gmail.com>
- <20260310200513.2162018-2-sanjayembedded@gmail.com>
- <abCIBPZzZBfMoOtm@ashevche-desk.local>
- <abEQ6HA0CGGCyV1B@stanley.mountain>
+	by tor.source.kernel.org (Postfix) with ESMTP id 176146132E;
+	Wed, 11 Mar 2026 07:10:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4469EC4CEF7;
+	Wed, 11 Mar 2026 07:10:53 +0000 (UTC)
+Received: by venus (Postfix, from userid 1000)
+	id 7A22B180696; Wed, 11 Mar 2026 08:10:45 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>, 
+ Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
+ Tejun Heo <tj@kernel.org>, Lai Jiangshan <jiangshanlai@gmail.com>, 
+ Tobias Schrammm <t.schramm@manjaro.org>, Sebastian Reichel <sre@kernel.org>, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+ Dan Carpenter <dan.carpenter@linaro.org>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, Lee Jones <lee@kernel.org>, 
+ Dzmitry Sankouski <dsankouski@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Matti Vaittinen <mazziesaccount@gmail.com>, driver-core@lists.linux.dev, 
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, chrome-platform@lists.linux.dev, 
+ stable@vger.kernel.org
+In-Reply-To: <20260305-workqueue-devm-v2-0-66a38741c652@oss.qualcomm.com>
+References: <20260305-workqueue-devm-v2-0-66a38741c652@oss.qualcomm.com>
+Subject: Re: (subset) [PATCH v2 00/10] workqueue / drivers: Add
+ device-managed allocate workqueue
+Message-Id: <177321304548.505649.413926339032568347.b4-ty@collabora.com>
+Date: Wed, 11 Mar 2026 08:10:45 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <abEQ6HA0CGGCyV1B@stanley.mountain>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260311_070647_613407_3919FE4B 
-X-CRM114-Status: GOOD (  10.43  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,19 +76,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 11, 2026 at 09:51:20AM +0300, Dan Carpenter wrote:
-> On Tue, Mar 10, 2026 at 11:07:16PM +0200, Andy Shevchenko wrote:
-> > To complete this, one may add a prerequisite to use guard()() first.
-> > 
+
+On Thu, 05 Mar 2026 22:45:39 +0100, Krzysztof Kozlowski wrote:
+> Merging / Dependency
+> ====================
+> All further patches depend on the first one, thus this probably should
+> go via one tree, e.g. power supply.  The first patch might be needed for
+> other trees as well, e.g. if more drivers are discovered, so the best if
+> it is on dedicated branch in case it has to be shared.
 > 
-> I don't think we're encouraging people to re-write existing staging
-> code to use cleanup.h magic...  It's unclear if I have to review these
-> patches or if they're auto NAKed because we're not doing the conversions.
+> [...]
 
-I've already rejected them, we don't want this type of changes in
-staging at this point in time.
+Applied, thanks!
 
-thanks,
+[02/10] power: supply: cw2015: Free allocated workqueue
+        commit: db254b0b232358ab1aeadebe8d147c99a3569559
+[03/10] power: supply: max77705: Drop duplicated IRQ error message
+        commit: 2064c64ceb1996ee02a6bbb1de05fd6e8028e3e4
+[04/10] power: supply: max77705: Free allocated workqueue and fix removal order
+        commit: 1e668baadefb16e81269dbfebf3ffc2672e3a3bb
+[05/10] power: supply: mt6370: Simplify with devm_alloc_ordered_workqueue()
+        commit: f23afa01040a41882a048e4957a7acac1426da6f
+[06/10] power: supply: ipaq_micro: Simplify with devm
+        commit: 2cfc7cac68e19c4acb236b8db6065bbaff5deee8
 
-greg k-h
+Best regards,
+-- 
+Sebastian Reichel <sebastian.reichel@collabora.com>
+
 
