@@ -4,104 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3361FD88D6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 02:18:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54E04FD88E2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 03:00:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:References:In-Reply-To:Subject:CC:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1ZAqF770CjctREhKahUCDqzMAEkw+GXfuiDNjYlwSLk=; b=JPTug052q+rCCGcMHFpPqxy17/
-	RC4oO666DawfCYIppsLnEy0/uoVvtJpNhbp4xXUhnUVnxTPn/CzA/e8xEC4E23swlYJf6YoLVi+u4
-	r+kVtwro5Zm5ABEPVl2OC7p+D05zrSO8coIZlsxgwJETLB3PdD+qxnQT6QukH+LfvE8GDM63ymLBZ
-	NthUZmocdgENtfMawtKhQvl5cRkODKK+xwWaAjY1fd9tHpSiCFL1XU+Fk8Dv9WocN9XeJEAoneCGv
-	inxuyuVtBImWdd0N99yidGlu3B7RqAjRME7wyrmyGJeBrQJiwIiUFwhKaDWRfuCiNyKscaeMgK8tW
-	QE9A0Ytw==;
+	bh=/i0cqElL3FWQttc5ynUxbLCGYQL0cUYEinne5EtnxvI=; b=I8gLGfYZGOpeVr/iYNAo7zH38W
+	puGVo7Ktn72cCNuyistBwzvvganf8K6Z+gD2oSdZeqEd32kNpRKe2VdGPKtwDXy/okPFzyZZMwUqb
+	spkWHLa6H7b7IcdRGqZDMYW6R+DeiHh4JuYua0ZYKgRTiOLoClaN6wGNIC3zMl0WxLGnZ2huk0m2E
+	dzvF915gVImENGWjqP3yf7nv1Z9gVpItlqovQD2JyM0Abe573cyEHgoC426kIg5/hsmW/GXoXWb0r
+	5CDcYkO9fUBDA+57YvEg6a9VBUizyvpWgPCI8ROJtNnKJOd3jOXxjrU0oz+yycAQLNrc4isywLqKh
+	F/nPpA7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w099Q-0000000AXrM-1Zrj;
-	Wed, 11 Mar 2026 02:18:20 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1w09oF-0000000Aa88-2KFh;
+	Wed, 11 Mar 2026 03:00:31 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w099N-0000000AXqd-3SqE
-	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Mar 2026 02:18:19 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2ad9f316d68so60777635ad.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Mar 2026 19:18:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773195497; x=1773800297; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:user-agent:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=1ZAqF770CjctREhKahUCDqzMAEkw+GXfuiDNjYlwSLk=;
-        b=CpCNtKYBIHFzcFD8Y5h6c8fwQNKe09bIhk56EXR7hKxd7Qvlbaw1ysr9KvnscucpbI
-         HRmWgl0nZWKAZvDWTf5StzMDaeDGiFA0NMkK49j0paSCqaNoYbn7DZPKPrUBV7peTRWi
-         mIF1+igk1+VbxHBQxigX1PU/JwoV4jTCMl8lBp/ZdOWKFVBloljHxhIMETC0NxD5II8D
-         qUFvVbNSadYhm2y1axW3n6U6GuH9DQA3aU2zyn6Zd/33rW42btRfwGnAQvp7T+aDfJPI
-         x8bAJrweFa6g/r8GscCpMcbOd9zUN66QmNvhambuyulFvXUvqwm6wCXHr7KlhyY+ZZw9
-         7lhg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773195497; x=1773800297;
-        h=content-transfer-encoding:mime-version:message-id:references
-         :in-reply-to:user-agent:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1ZAqF770CjctREhKahUCDqzMAEkw+GXfuiDNjYlwSLk=;
-        b=eu64o+f0CKU1C9nnhiD3amVHQv5wOATIl+k3dWNViClv+6OaWacbSq6hRPAFJ74AKj
-         eiiBpiDuuqNg0TFt5kHwGduV/aA6xievtzm1+B4Sh/lbsSUKo3h419iecHwON/Lb+TNz
-         J2+luy5aVYpCPP+bKd+kZPFsy252z06KzHqpx16gfLNYp1JGklfknmN/AaCZbCQ39WeN
-         yB/xepCG2uDDGYrMboIBEr5A4+0/X6HXlxhUyE/+4+04fK4pKVEEvF8ZacDcHKrlt5CO
-         EVENmHaNkVDD7kn20TzC49EivywuIQqynso41afEieqXdFhPA9HPYjoPzW2+LMAs2oG5
-         Fc2g==
-X-Forwarded-Encrypted: i=1; AJvYcCVUfHs2C4c/hQDgjTaIJ1/U2tVSB5b/sTWA1dLXlA1rRTgpxwmzeYzdV3r2RtLn9mQGApK/1Rl0bcDQ1FeCUw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw7jn+lxaDVNIyaeAHTVOtIUm46jPF7XtdQyiVB/COXVIP5RQkD
-	7YggdPerwbB6GGhMJDIvimNHWcH/u5lFpWp5lJnNaDni8fTtWFELdEdW
-X-Gm-Gg: ATEYQzwuOFIKYqHCzjTQnOiW6ZaCYGDKXupX89Vumpfm3u5DTf7VCXaVXUtgZkZnlKi
-	jVhccJZihlLbcU5oQOHudfVC5yYBg0B9NBcd6kp87uxFBhBOTw0FHuAwznxs1YGoI86dgpkccqp
-	oQZlCcqeslc0Sd3HbnFjiVNK7PZ7xREIi3GJpKB9wpgEF+GD7wNk8Zo3Uz0f/hpJzhSos8Mr8Ud
-	J7dbm/mG9LBrscSGeEyd99XYa5Nt8bj49kvKU2WnimpYdeJVUky5MlR3VcoFy4lEWOzVB/ipx4E
-	XNylNy1iVmmMn/enKhtqjAkZzW19SVIP//ZmlxQ1HJz+1AHFezX2PUd1kyfXaJo43dVD1uCpdvr
-	5yqodSJ2qzAX1oj1Ig+l0+OI448gMtSU6p2xTkgZfL3/NHOhEEztpAKP817AC8/luJoWsN0tCYC
-	ltq9fevb+Gu+3keiyJ62nKh+adhHo515XD6Eo=
-X-Received: by 2002:a17:903:1666:b0:2a9:47ff:101c with SMTP id d9443c01a7336-2aeae8eb7dcmr9366255ad.46.1773195496591;
-        Tue, 10 Mar 2026 19:18:16 -0700 (PDT)
-Received: from ehlo.thunderbird.net ([2401:4900:aab1:729a::4bc6:faff])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2aeae34e009sm5679355ad.46.2026.03.10.19.18.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 10 Mar 2026 19:18:16 -0700 (PDT)
-Date: Wed, 11 Mar 2026 07:27:18 +0530
-From: Sanjay Chitroda <sanjayembeddedse@gmail.com>
-To: David Lechner <dlechner@baylibre.com>, jic23@kernel.org,
- m.tretter@pengutronix.de, mchehab@kernel.org, p.zabel@pengutronix.de,
- tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
- yunfei.dong@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, johan@kernel.org, elder@kernel.org,
- gregkh@linuxfoundation.org, pure.logic@nexus-software.ie
-CC: nuno.sa@analog.com, andy@kernel.org, kernel@pengutronix.de, kees@kernel.org,
- nabijaczleweli@nabijaczleweli.xyz, marcelo.schmitt1@gmail.com,
- maudspierings@gocontroll.com, hverkuil+cisco@kernel.org,
- ribalda@chromium.org, straube.linux@gmail.com, dan.carpenter@linaro.org,
- lukagejak5@gmail.com, ethantidmore06@gmail.com,
- samasth.norway.ananda@oracle.com, karanja99erick@gmail.com,
- s9430939@naver.com, tglx@kernel.org, mingo@kernel.org,
- sun.jian.kdev@gmail.com, weibu@redadmin.org, linux-iio@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
- skhan@linuxfoundation.org
-Subject: Re: [PATCH 0/7] drivers: Simplify cleanup paths using __free
-User-Agent: Thunderbird for Android
-In-Reply-To: <79bfac24-dcb4-4fb9-90d8-3ef2393f51e3@baylibre.com>
-References: <20260310200513.2162018-1-sanjayembedded@gmail.com> <79bfac24-dcb4-4fb9-90d8-3ef2393f51e3@baylibre.com>
-Message-ID: <7F16ED38-6BC1-4D31-B5B6-6C1E45D24C25@gmail.com>
+	id 1w09oD-0000000Aa7a-1c2V;
+	Wed, 11 Mar 2026 03:00:29 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 677D060132;
+	Wed, 11 Mar 2026 03:00:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1298CC19423;
+	Wed, 11 Mar 2026 03:00:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773198028;
+	bh=bOXGmh6jsTxCsgYCU4QHEri4xQgWhuXk6jt33pBkt/M=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=MBo62BpPJVP29oqsWlvaUEmQVEicBzq1LzxONNHQoQJeAlOHFN27fwIYhsEkwpaUf
+	 543muqKkM5o5/dNrAJRZigmxY2M5WVe/1QCjnsHxq0Mcj6jR+1xkc+2RCaU2IwQxrD
+	 8OgHEkmTQoJAw3xcls+LC8RLLSGdUfS9cRTaEyfHqnau6evdCT0yl2CbgAW3GNHzQo
+	 uXZZ3ur23R3qcmztDAFeJ4hQoEMzpQjWuBdaFQCFYCdoE8yAwMNPNbWjq/Hguns5vE
+	 1tAT4z+YuaROAdOa0CEyQs/19Dtnb7TN9at5Tao5oFzqNZZe0R2S/6Pnx5s7vWg4fI
+	 Ck8Kh3oKcVFEA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id B9F783808200;
+	Wed, 11 Mar 2026 03:00:25 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_191817_869247_E73840F1 
-X-CRM114-Status: UNSURE (   9.05  )
-X-CRM114-Notice: Please train this message.
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v2 0/7] net: stmmac: start to shrink memory usage
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177319802455.3019253.1878262013471339195.git-patchwork-notify@kernel.org>
+Date: Wed, 11 Mar 2026 03:00:24 +0000
+References: <aa6VEsmBK-S9eNYU@shell.armlinux.org.uk>
+In-Reply-To: <aa6VEsmBK-S9eNYU@shell.armlinux.org.uk>
+To: Russell King (Oracle) <linux@armlinux.org.uk>
+Cc: andrew@lunn.ch, alexandre.torgue@foss.st.com, andrew+netdev@lunn.ch,
+ angelogioacchino.delregno@collabora.com, wens@kernel.org,
+ davem@davemloft.net, edumazet@google.com, Frank.Li@nxp.com,
+ imx@lists.linux.dev, kuba@kernel.org, jan.petrous@oss.nxp.com,
+ jonathanh@nvidia.com, linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, maxime.chevallier@bootlin.com,
+ mohd.anwar@oss.qualcomm.com, netdev@vger.kernel.org, pabeni@redhat.com,
+ kernel@pengutronix.de, s32@nxp.com, samuel@sholland.org,
+ s.hauer@pengutronix.de, me@ziyao.cc
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,54 +79,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
+
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Mon, 9 Mar 2026 09:38:26 +0000 you wrote:
+> Hi,
+> 
+> Start shrinking stmmac's memory usage by avoiding using "int" for
+> members that are only used for 0/1 (boolean) values, or values that
+> can't be larger than 255.
+> 
+> In addition, as struct stmmac_dma_cfg is approximately a cache line,
+> shrinks below a cache line as a result of this patch set, and is
+> required, there is no point separately allocating this from
+> struct plat_stmmacenet_data. Embed it into the end of this struct
+> and set the existing pointer to avoid large wide-spread changes.
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,v2,1/7] net: stmmac: provide plat_dat->dma_cfg in stmmac_plat_dat_alloc()
+    https://git.kernel.org/netdev/net-next/c/7a6387dec8ce
+  - [net-next,v2,2/7] net: stmmac: convert plat_stmmacenet_data booleans to type bool
+    https://git.kernel.org/netdev/net-next/c/c3d08424e025
+  - [net-next,v2,3/7] net: stmmac: reorder structs to reduce memory consumption
+    https://git.kernel.org/netdev/net-next/c/3357642e65e9
+  - [net-next,v2,4/7] net: stmmac: use u8 for ?x_queues_to_use and number_?x_queues
+    https://git.kernel.org/netdev/net-next/c/94808793fed7
+  - [net-next,v2,5/7] net: stmmac: use u8 for host_dma_width and similar struct members
+    https://git.kernel.org/netdev/net-next/c/758ed85aadd0
+  - [net-next,v2,6/7] net: stmmac: add documentation for stmmac_dma_cfg members
+    https://git.kernel.org/netdev/net-next/c/9fe167ab790b
+  - [net-next,v2,7/7] net: stmmac: add documentation for clocks
+    https://git.kernel.org/netdev/net-next/c/315bab9411f3
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
-On 11 March 2026 3:22:28=E2=80=AFam IST, David Lechner <dlechner@baylibre=
-=2Ecom> wrote:
->On 3/10/26 3:05 PM, Sanjay Chitroda wrote:
->> From: Sanjay Chitroda <sanjayembeddedse@gmail=2Ecom>
->>=20
->> Hi all,
->>=20
->> This patch series replaces manual cleanup and explicit kfree() calls wi=
-th
->> the __free attribute from <linux/cleanup=2Eh>=2E This modernizes the me=
-mory
->> management style and simplifies common error paths without altering any
->> functional behavior=2E
->>=20
->> The __free attribute provides automatic scope-based cleanup, making
->> resource management clearer and reducing the chances of missing cleanup
->> on early returns=2E
->>=20
->> No functional changes are intended in this series=2E
->>=20
->> Testing:
->>   - Compiled with W=3D1
->>   - Build-tested on i86_64
->>=20
->> Based on:
->>   <linux-v7=2E0-rc2>
->>=20
->> Feel free to share your valuable input in context of the cleanup API=2E
->>=20
->> Thanks,
->> Sanjay Chitroda
->>=20
->> Sanjay Chitroda (7):
->>   staging: greybus: simplify cleanup using __free
->>   iio: ssp_sensors: simplify cleanup using __free
->>   iio: st_sensors: simplify cleanup using __free
->>   media: mediatek: vcodec: simplify cleanup using __free
->>   media: chips-media: coda: simplify cleanup using __free
->>   media: allegro: simplify cleanup using __free
->>   staging: rtl8723bs: simplify cleanup using __free
->
->There is no reason to put patches from different subsystems
->in the same series when there is no dependency between them=2E
->It just make for more noise for everyone=2E
->
-
-Thanks for the feedback=2E I will split unrelated patches into
-separate series per subsystem or individual in future submissions=2E
 
