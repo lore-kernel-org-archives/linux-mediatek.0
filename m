@@ -4,104 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 811E7103E2E6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 20:57:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C8A4103E2E7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 20:58:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
 	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XFQ/QAVUt2bC4UBVG90/SucbtwxVRuUMolNaHVPHXSY=; b=zZaeUnWEsgwfaxQE7I06my+glo
-	zB7A3Ea5c0pdHq3rzhcaVJ0awN5OMDGiQsQik5J0SinQrOZS2GgwAi7wO+ZixG6YeTl1hKheqvkw1
-	y6OHARjlBWYHG0CJlAHJ/LJP6rSw7vYMK1CebJclrGXQNAn+PsqqY9ZOe7az0kDyhpHA1mxs7mx8B
-	ad7PI0OKgQNSjnf5S/B6D19Ck1unAJFNwQD5v1xcgiRUDgTubQVjxYAc0MIb/cjLyEaKi5D2M/7jy
-	zkiXmhMVZfijdIQO3vy0Jf/imBDoFxQLKe2EA85UzrU9ab1M/bjVcZJDMUptM0XSCzTF4DgbAdc6x
-	Li89Gm+A==;
+	bh=ZFSrsAzKQ3Nc+Aho7d7gG2Ra3wQyS/1tLF/F02PD+Zo=; b=pjsrgoM0Ed762hOXKc5qhV9c8N
+	dibIPbBd0pTZ7tafoVSChdKvRPC9QaJt61WeN0JiAT23B96HhoMURjwC8iDzSd0ndsetukxeAbGTu
+	iXGG2PPzAYBKiJuxX7G+oAKQ1f+82Rcy1suIWW/i/YxOoDOiKNsHgFp0Zv/2+PmR3JFnfvFVtYBQh
+	lmy/TqA6RlBT65Q+LBqtJvpQvG1WCAoMW7oz4p1yPO9kSZf3Fh6wx3ElUIDjZ26BsQa/gnfOQkfUF
+	3esW9eSmXnHXKENY0ojak4P1hI/QueuiBugJUQg9peARvYAg8HyyUbbk8tEcSiYv6Muzo91qla+o7
+	HK1BDiZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0QcW-0000000CWmR-2hhv;
-	Wed, 11 Mar 2026 20:57:32 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1w0Qde-0000000CWpw-12cT;
+	Wed, 11 Mar 2026 20:58:42 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0QcT-0000000CWm6-3UMa
+	id 1w0Qda-0000000CWpb-4BQY
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Mar 2026 20:57:30 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-b94358796a1so33161566b.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Mar 2026 13:57:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773262647; cv=none;
+	Wed, 11 Mar 2026 20:58:41 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-b8f9568e074so37738066b.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Mar 2026 13:58:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773262717; cv=none;
         d=google.com; s=arc-20240605;
-        b=ljFe6t4VZQH70ePYI+ROmaiH8qE98IePz/WCLklCnyr7qVS/12ha6wCuBUUm69eUzh
-         tShRzKIjuYqKkYNiaLldhf9qzWw4jHIOwRO4ASPFMgVMVz7bjWdAAZvMSinfORvbm99N
-         pGf4JoogxN55Wm9V4KPyTKFGuUJi4+manmwA4HOoiVKCMjG5oZRL5ZrSB7SC+vkDj81A
-         Qha7tB+5/rqBpb69w0jXsH8HriVmLO1lu9H8V+d18Ao7kVRUAuvhF9yHxr3bsa5m1iq4
-         D27zd44KvJyAcjoLvQdX3y35WwddKyHMahuLTM6BTtAonVgu3ftwq0Uz3A/8VoV3anjw
-         vMzg==
+        b=OV6fVoOm1mRRj9QbtR+IvVESEiV+PbJGh3DXt4zaUNBASb9o5z270Rb+lEIaWK2Aum
+         FIGqug4ph721ClAkwUBDbkljvUKyQIDxtsxpgy3//7m+tUR5keWn/vbOUYh94zfquqG/
+         CQAkHXw5KdIVLYJz7rcAS3RdQi09jAWnUNipBfXhIm3ESNzMM/0BvK+1FlmiCVltUniv
+         N1y0uU5P1CrtPxF+OxrZUsATjuhzUmpuKNwYjZLjZpyGKEHiA/c83AOZTDmkLgUWsuY4
+         abX89Tv34P5Q8MiIplhwU1kP6f7nep4exksb4MaSaspq8Xj3AcdrGg97C2irOcAvf8ZC
+         GbvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=XFQ/QAVUt2bC4UBVG90/SucbtwxVRuUMolNaHVPHXSY=;
-        fh=u4Q1xZGtIosGtuH6Q5tvV6L/K3OHW4sG23whQoIstlQ=;
-        b=RphsuUUpK4ZkUv2QI2lsBbBxFXV5qPNA+EhSRL0MmoCSpVs5NcXyYdwGzEFHKdHXTc
-         28DIOMAkxNVdCZDUNKSD59qqYuEbhke1f9kTCgq2XNgwDwK45Hcq1fXvuzBXrLcmDe/G
-         kWLzt2pay5BfqOyoEjsmQ27ZpnAnkqQ1KqIf0RBAiWFgcFXeJ2ypTSRhMIvilCvV+jAA
-         hd/9jG5LyHYop2c1vNXurDnS1t+qj9v5Azpgr0CavV10ylqkhFx4QvSWsBaJ7k/ClEzl
-         JDZRIu20XQTubXddfLPPkNXfAcpw9DbTJbBEWg9xU5B03phUniXim/GSPGz0kExDJsCj
-         4tQw==;
+        bh=ZFSrsAzKQ3Nc+Aho7d7gG2Ra3wQyS/1tLF/F02PD+Zo=;
+        fh=xb1Nvtcy2mNkm4jTMaxV6QVXXlpe45XGDyTIH19Ibts=;
+        b=WZ6y6+OsSuM7PqeeMMVeD0BQEGAJ+lv0QyNcwNd2wnkOi0EdaA3f61lOE1Xl25FoXo
+         tS6N9ILmGSV+hZdb7Xer6OL7OvLa/CSbSSCJ/FHvXIqdU3l6kYtmVQmbPPemdROfNzxD
+         28LyO+gg6t9p0yTKtF3UpXe0Xu4r5/roCZIQC2Y7fBMWhXRiWyyeleOLDd/RFTbAt10u
+         cvh/qPblVOxv8izX/6ZOSZwVoHvjx8GW0bsxLPZ3RBrtoOwAx/dudYL6WQUj4kM5l3rz
+         lW8yyPXR9LdEt998OUHRrEaEDD6W7/clWMWxcwSQ/CC7tpy6q7yC21j8MtyIip0mnx5V
+         qOfA==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773262647; x=1773867447; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1773262717; x=1773867517; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=XFQ/QAVUt2bC4UBVG90/SucbtwxVRuUMolNaHVPHXSY=;
-        b=RTvr2cuV/xWJ6bubUs2auf3ONt+YyYueFa54Hj7rbOENXWo3feApkbVTP2np+tsajc
-         Bxn6MTPb8QKMUCgD4X1H3T8d/LGpYIIzbqirwOJeTpfhaN7xt+HBELnNKv5tn1MnlDLT
-         vb3H+i+d81OaduIzv+nszB/JMpTVfWWB9HnTnHe39d9ODDj+7htmay6rpYymK/pG8ozQ
-         bPKrKLt6REKgnjCMKdvG9VKPDkW35XIe/Lq5R+JBsSttLMtTFbjiDHck6WXX2X9IXBtq
-         3wAO/hQC6VVO+bJQXwqGBWgHOuthy/JlNXPRk4OZ9R4L77jkBAfJrp0KpeSivK6ydtVm
-         2cGg==
+        bh=ZFSrsAzKQ3Nc+Aho7d7gG2Ra3wQyS/1tLF/F02PD+Zo=;
+        b=P9SKDqzoSkrti7i3yTkVxO1YcrxXhBHdDP+q54GPbuyp1cvB54sDaXXz+RD02Vh4n7
+         YyvT4iyYEVpR+zo1kpOwOXRQ2AQYQwEifQSlCZJqUrLiYHCq2myn52/LyRV16BBle6LZ
+         +gHTznjkrXW9ZFJpykgYv9pBofoL1e6dfHihJIeaXL8jXZCnJbuVcKUCUYesxWjJBW4u
+         mniMS04oHz2E1hn80Yqg1AyjV7KYoPX8SiMQt1w8Dkm0WM/8eUfzjPEQyTB0EpuzrEJG
+         0j8A9GRNDjuXD9NilUKXTt2w1TUX69BIH7pdwnRG9/lTr/ObJgd0ppf/DYV13n149aTz
+         U09Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773262647; x=1773867447;
+        d=1e100.net; s=20230601; t=1773262717; x=1773867517;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=XFQ/QAVUt2bC4UBVG90/SucbtwxVRuUMolNaHVPHXSY=;
-        b=HfPd60jpCZILuje4sxBRH9MdnTA1Jb+6x5KF+QANE8O0TxB1xGX+ymItbRJu6pLoMl
-         27e2bSb72o+YbqtL4wzU8n4AcXpohwTofOULzcdoOjR+GlBsTM4QpQCZe7agdh3XnEeT
-         WTVioxQSLREFWngcTLRoBtjn6RxcBWh0UiIa4tYZdqP/difX29GK4qnbtCoM4NZ6rGK3
-         UOC7hvmH/nTvrpiNWCksICtU0oVYsWZqE07Iv94ruNrDNPU7B159o9+7ulmln/iY5IbR
-         b6KLT0DerUNwvl3XYbF53U296BCMb/HdtoWvZIz96lfpN4Z8kUeyfisvSfuyYvKbGTSS
-         fG3w==
-X-Forwarded-Encrypted: i=1; AJvYcCVNn/R7iBK+b7y7t8xgw6DpLXhh1/PWxhlrlvQgb3+TZtE/ZhUmvnlktleBxtT4OxD/MPh7xPTKEc5jmegtSA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx4V13TtGMarnqia6D7soTtBzxLcVRWQ5d0NOih/HJd1CFh1qyA
-	UQkbMbnUXTlEeTvUDkKfxrq5hNNVfzSw26wnQOqYDkXCCbRVhz/pSVXuT2rWt7nWRy6ukavpKUv
-	+rJwlrvu3pFkttNWk0WX78xU4TiALr3s=
-X-Gm-Gg: ATEYQzzB5uy9uauBRnUsivKSGcoSKVnOGoSU+LsLZRduSeaemv2VdrFq+eiHHJd56eG
-	0LPw8ao8fYXik4ejtlVh/IQKHH5x3Kmg07yYFS6Hkb7YT9GiGJnZzfOb3ymVQZd1NMNAnyKbLXS
-	Lmgnz9m+ewgx9dCU7I+2LRMQriVE+ddhsIw7gea64y+puZeVmjFRqsKin6LhFQYrRcRsswTxIoH
-	UHtODy4kb5UzUBTt26D/odhDHVyfJZ5wJOE3lr13N/U8k7EzV/nLsrBsOg7uEZwyfjj2eTT2qMR
-	tAwOTg==
-X-Received: by 2002:a17:906:7955:b0:b90:71a2:3e76 with SMTP id
- a640c23a62f3a-b972e70af16mr238634666b.61.1773262647344; Wed, 11 Mar 2026
- 13:57:27 -0700 (PDT)
+        bh=ZFSrsAzKQ3Nc+Aho7d7gG2Ra3wQyS/1tLF/F02PD+Zo=;
+        b=cDtV4r0OjGWNM7rBn0rNpBMlAG+xGtQjgEROPyxiuxEYn6ufdocN+1f1CMKJQY5XvC
+         fCvDnJt2CGWFYrvkua/Q60RQFrnIESYXknBw5s0Y9VoIbBWtP0gDvzxY5cN+uuztZ7lq
+         sHdU0e+CwLEQ48cdMOHuJ93XMzo78KRJaUej9rlfQKAgaV3Gi0nfImyp8IGt4XN5xB7o
+         E5ooJTZE643Mf0QoJtHcHBzBw8IYE4HVJmgfQub9hbTRRDYGqpcqb1JRqAl6GyfQ9ER3
+         ndME6J4L6kmmV/CmrpGAb2+/vMWPkqgIPRsu6SBP8803jlGKRQtq04/WaxDCKmi7x7Zr
+         cn2A==
+X-Forwarded-Encrypted: i=1; AJvYcCUbgph5Vz3L1tdigQUSuIsqqKasYzbT8Qii0VWF8L5A+s+zsCIQnGhgLzE+g18QYM/Er03jZJSjqPvQyENpYw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzyZOU6MeUl1mW/JUmzrwKYODg3jHA4fWrz2kh1MH4xtwjOiZTj
+	gb6NVqcphEg0lPM9GysjYPJ47Dowlgvnh5fTgaPWRZwBKGnyZPEa03JDBpSLZMCgKh6FjMcKF0d
+	UURn/Y6/0lcF/5YDkJ0jXYxwOYbJmPhw=
+X-Gm-Gg: ATEYQzyXcs5mNH+I5/cQ8GYnTWkayrkdtSYpPmAKAKkAhqGfHE/VV7IweJjvwGQgi5Z
+	lXiWEDKkkqPmrcqReSdwyLMDYABIXOH2ha3zpewBDICypsWhNwy7DZLlpIct6Di5hSCHQ/Ph0E3
+	VhsHDTSZxreaZ7qe1Fi5JCKC1tmCKWsd4sW5knB6PexlbL6qSOlSB1k3IHleu0fPusXv0J1xnd8
+	l2znNYO3JjHaPGiSn7rGHtrvkndOXuL7NK4JoROJAKOayf5fD6wZIDDhSySvzKa4lYNhCh8bNN5
+	E8iaYQ==
+X-Received: by 2002:a17:907:72cb:b0:b8f:a323:bda7 with SMTP id
+ a640c23a62f3a-b972e52dc74mr220526566b.46.1773262716821; Wed, 11 Mar 2026
+ 13:58:36 -0700 (PDT)
 MIME-Version: 1.0
 References: <CANAPQzi3BkfnRS4CEXAA560O5cO8e6MEYxeVVx1u+xUeXS-gmA@mail.gmail.com>
  <CAGp9LzoidBL1iYYC371+Fw+drbArLRTneJKxCoFiitx=dweKCg@mail.gmail.com>
- <CANAPQzjiBf8Rqphn2SypYN2O6bddj6vB=63Mp=T5YVEt2oGvyw@mail.gmail.com> <CANAPQzgiE1rMP3F=5NJg3hp2uBXtq44+vTRBdkHwdfHyXJ8MQQ@mail.gmail.com>
-In-Reply-To: <CANAPQzgiE1rMP3F=5NJg3hp2uBXtq44+vTRBdkHwdfHyXJ8MQQ@mail.gmail.com>
+ <CANAPQzjiBf8Rqphn2SypYN2O6bddj6vB=63Mp=T5YVEt2oGvyw@mail.gmail.com>
+ <CANAPQzgiE1rMP3F=5NJg3hp2uBXtq44+vTRBdkHwdfHyXJ8MQQ@mail.gmail.com> <CANAPQzgD312EPSbvaQTE6U+wn85L65+xZHms7DP509ApxWvSZA@mail.gmail.com>
+In-Reply-To: <CANAPQzgD312EPSbvaQTE6U+wn85L65+xZHms7DP509ApxWvSZA@mail.gmail.com>
 From: bryam vargas <bryamestebanvargas@gmail.com>
-Date: Wed, 11 Mar 2026 15:57:15 -0500
-X-Gm-Features: AaiRm501XYuf6_xNncggL8WilcZ-LyyUOcc71F3ioiC44yhoD1Fm0RW2lRnL-J0
-Message-ID: <CANAPQzgD312EPSbvaQTE6U+wn85L65+xZHms7DP509ApxWvSZA@mail.gmail.com>
+Date: Wed, 11 Mar 2026 15:58:25 -0500
+X-Gm-Features: AaiRm51mj2z7E16-DLghbuJqU-OBnWUBTx9_-Sl-BUmLGVcviCRtpbSjAbPv6jM
+Message-ID: <CANAPQzgXN2UOjuwV1fRofN2syxG933kSaB9S7DyFAykHHMRzew@mail.gmail.com>
 Subject: Re: [PATCH 1/2] mt76: connac: fix txpower_cur not updated in mt76_connac_mcu_set_rate_txpower()
 To: Sean Wang <sean.wang@kernel.org>
 Cc: linux-wireless@vger.kernel.org, nbd@nbd.name, lorenzo@kernel.org, 
 	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260311_135729_926861_85ED5F00 
-X-CRM114-Status: GOOD (  12.99  )
+X-CRM114-CacheID: sfid-20260311_135839_064048_344297C1 
+X-CRM114-Status: GOOD (  16.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,73 +117,122 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From 6c75ad481f0c3667d6ae2a2c8f7c2df08b1d52b5 Mon Sep 17 00:00:00 2001
+From 9fabc33e722f321b4048ada6d4667ddacbb1495a Mon Sep 17 00:00:00 2001
 From: bryam <bryamestebanvargas@gmail.com>
-Date: Mon, 9 Mar 2026 11:52:53 -0500
-Subject: [PATCH v2 1/2] mt76: mt7921: add mt7921-specific get_txpower callback
+Date: Mon, 9 Mar 2026 12:25:37 -0500
+Subject: [PATCH v2 2/2] mt76: mt7921u: trigger USB reset only on wfsys timeout
 
-Instead of updating txpower_cur in the write path
-(mt76_connac_mcu_set_rate_txpower), implement a mt7921-specific
-.get_txpower callback that derives the reported TX power directly
-from the SKU limits at query time.
+Instead of unconditionally scheduling a USB device reset at the start
+of the reset sequence, trigger it only when mt792xu_wfsys_reset()
+returns -ETIMEDOUT, which indicates the chip is in a latched state
+(SEFI - Single Event Functional Interrupt) where register writes over
+USB become silent no-ops.
 
-This avoids mixing write-side configuration with reporting logic.
-The callback uses mt76_get_power_bound() for SAR constraints and
-chain delta, then mt76_get_rate_power_limits() for per-rate EEPROM
-limits, yielding the actual TX power value.
+This avoids the race condition where usb_queue_reset_device() was
+scheduled asynchronously while the driver continued normal reset
+operations on the same device.
 
-Fixes: 3b4a3bdba808 ("mt76: mt7921: add support for reporting tx power")
+Tested-on: Minisforum NAB9 (MT7921U USB adapter) at 2400m altitude,
+           Bogota, Colombia. Cosmic radiation causes periodic SEFI
+           events; USB reset restores connectivity without intervention.
+
 Signed-off-by: Bryam Vargas <bryamestebanvargas@gmail.com>
 ---
- .../net/wireless/mediatek/mt76/mt7921/main.c  | 27 ++++++++++++++++++-
- 1 file changed, 26 insertions(+), 1 deletion(-)
+ .../net/wireless/mediatek/mt76/mt7921/usb.c   | 32 +++++++++----------
+ .../net/wireless/mediatek/mt76/mt792x_usb.c   | 16 ++++------
+ 2 files changed, 23 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 67383c4..35454e5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -1517,6 +1517,31 @@ static void mt7921_rfkill_poll(struct ieee80211_hw *hw)
-     wiphy_rfkill_set_hw_state(hw->wiphy, ret ? false : true);
- }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+index 8c8c78f..44c7437 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/usb.c
+@@ -86,33 +86,33 @@ static int mt7921u_mcu_init(struct mt792x_dev *dev)
 
+ static int mt7921u_mac_reset(struct mt792x_dev *dev)
+ {
+-    struct usb_interface *intf = to_usb_interface(dev->mt76.dev);
+     int err;
+
+     mt76_txq_schedule_all(&dev->mphy);
+     mt76_worker_disable(&dev->mt76.tx_worker);
+-
+     set_bit(MT76_RESET, &dev->mphy.state);
+     set_bit(MT76_MCU_RESET, &dev->mphy.state);
+-
+     wake_up(&dev->mt76.mcu.wait);
+     skb_queue_purge(&dev->mt76.mcu.res_q);
+-
+     mt76u_stop_rx(&dev->mt76);
+     mt76u_stop_tx(&dev->mt76);
+
+-    /* When the chip enters a latched state (SEFI - Single Event
+-     * Functional Interrupt, e.g. from cosmic radiation at altitude),
+-     * all register writes over USB become silent no-ops.
+-     * usb_queue_reset_device() electrically resets the chip via the
+-     * USB hub regardless of internal state -- identical to probe().
+-     * Async variant required to avoid deadlock in workqueue context.
+-     */
+-    dev_warn(dev->mt76.dev,
+-         "mt7921u: scheduling USB reset for chip recovery\n");
+-    usb_queue_reset_device(intf);
+-
+-    mt792xu_wfsys_reset(dev);
++    err = mt792xu_wfsys_reset(dev);
++    if (err == -ETIMEDOUT) {
++        /* Chip is in a latched state (SEFI - Single Event Functional
++         * Interrupt, e.g. from cosmic radiation at altitude).
++         * Register writes over USB become silent no-ops; schedule an
++         * electrical USB reset via the hub as last resort.
++         * usb_queue_reset_device() is async to avoid deadlock in
++         * workqueue context.
++         */
++        struct usb_interface *intf = to_usb_interface(dev->mt76.dev);
 +
-+static int mt7921_get_txpower(struct ieee80211_hw *hw,
-+                  struct ieee80211_vif *vif,
-+                  unsigned int link_id, int *dbm)
-+{
-+    struct mt76_phy *phy = mt76_vif_phy(hw, vif);
-+    struct mt76_power_limits limits;
-+    int n_chains, delta;
-+    s8 tx_power;
++        dev_warn(dev->mt76.dev,
++             "mt7921u: wfsys reset timed out, scheduling USB reset\n");
++        usb_queue_reset_device(intf);
++        goto out;
++    }
+
+     clear_bit(MT76_MCU_RESET, &dev->mphy.state);
+     err = mt76u_resume_rx(&dev->mt76);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
+b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
+index cfd385e..4737384 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
+@@ -269,7 +269,6 @@ EXPORT_SYMBOL_GPL(mt792xu_wfsys_reset);
+
+ int mt792xu_init_reset(struct mt792x_dev *dev)
+ {
+-    struct usb_interface *intf = to_usb_interface(dev->mt76.dev);
+
+     set_bit(MT76_RESET, &dev->mphy.state);
+
+@@ -279,15 +278,14 @@ int mt792xu_init_reset(struct mt792x_dev *dev)
+     mt76u_stop_rx(&dev->mt76);
+     mt76u_stop_tx(&dev->mt76);
+
+-    /* Same rationale as mt7921u_mac_reset(): if the chip is in a
+-     * latched state (SEFI), register writes over USB are no-ops.
+-     * Schedule a USB port reset before software reset sequence.
+-     */
+-    dev_warn(dev->mt76.dev,
+-         "mt7921u: scheduling USB device reset (init_reset path)\n");
+-    usb_queue_reset_device(intf);
++    if (mt792xu_wfsys_reset(dev) == -ETIMEDOUT) {
++        struct usb_interface *intf = to_usb_interface(dev->mt76.dev);
 +
-+    if (!phy)
-+        return -EINVAL;
-+
-+    if (!phy->chandef.chan)
-+        return mt76_get_txpower(hw, vif, link_id, dbm);
-+
-+    n_chains = hweight16(phy->chainmask);
-+    delta = mt76_tx_power_path_delta(n_chains);
-+    tx_power = mt76_get_power_bound(phy, phy->chandef.chan->max_power);
-+    tx_power = mt76_get_rate_power_limits(phy, phy->chandef.chan,
-+                          &limits, tx_power);
-+    *dbm = DIV_ROUND_UP(tx_power + delta, 2);
-+    return 0;
-+}
-+
- const struct ieee80211_ops mt7921_ops = {
-     .tx = mt792x_tx,
-     .start = mt7921_start,
-@@ -1541,7 +1566,7 @@ const struct ieee80211_ops mt7921_ops = {
-     .wake_tx_queue = mt76_wake_tx_queue,
-     .release_buffered_frames = mt76_release_buffered_frames,
-     .channel_switch_beacon = mt7921_channel_switch_beacon,
--    .get_txpower = mt76_get_txpower,
-+    .get_txpower = mt7921_get_txpower,
-     .get_stats = mt792x_get_stats,
-     .get_et_sset_count = mt792x_get_et_sset_count,
-     .get_et_strings = mt792x_get_et_strings,
++        dev_warn(dev->mt76.dev,
++             "mt792xu: wfsys reset timed out, scheduling USB reset\n");
++        usb_queue_reset_device(intf);
++    }
+
+-    mt792xu_wfsys_reset(dev);
+
+     clear_bit(MT76_RESET, &dev->mphy.state);
+
 --
 2.43.0
 
