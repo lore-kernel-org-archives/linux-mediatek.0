@@ -4,103 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18F9A112584E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 16:15:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F4C51125854
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Mar 2026 17:13:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7N2W7yYjM2zRG3DC8FowUvkEvnAbADu41ZCuJNvKKrY=; b=iXi46BhCKl6mN8nnrZjvbtSoyt
-	8Te+VVAqqzN5g5GQhXYRR8F/5P7fWGnzCIymso1+rRQsbW51Z84GJUq5ElcseBuT9HeDIOqJgeaeu
-	pbIaXR+eY/P1wK5rN91r3Kk7v2ZWmWl7joHJvwut2GsiVAwqaterf0eLelpPm0bqJ4VGkv/Cf1NzG
-	t9uSutLiBTYcw54mO66OJc6TnOANLNlIEbpDE7Z8s+EVw6jZSHzozLiaW4zOFoAC2/AuIz3kQD2c1
-	b7I4RUDUXzYUS1BHAx2OvC5+l7YMXpXP9j2D9a+kky3OZYRZxBGDHRzzXdNHR4w4u0kBawttirxAI
-	FjGSJ02A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SWK6hCFWTtJ6HB5p0G57+QkEA4hYw/yDHOa1YtvvqTE=; b=S/yAy4Q3lUxmNuufW4ig73LptZ
+	8/6fVfGZj4rmLHIcIA84YZBK+YG2Dm6CFccHcQOhP7NWNcgpHWw68JbBprQmcJC81Q7T0guPp1wi0
+	ihydGWMRxvRYFom22v+dlYxTEWscFKnDWrvVqwkpAqaJAbiq9hRUJhTBr3Uf3X80nFldAsbO9GxBS
+	TFrw9KL4VBKQI0Yht/MWb2kwY0Pt09tI3J3W5z48p3diTUA37E3kCVctSsf+DyhrK6a4rn1Gp4SNo
+	SNKQg5Qb6Q2IqkGjv/MQk5yzD1ku2pbfSn4zcWIEJXYm/DmCiRVGclCNYmNtgGq3pxz+hDFj3stYx
+	+11HTmJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0MDB-0000000Bu9C-3mD0;
-	Wed, 11 Mar 2026 16:15:05 +0000
-Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830])
+	id 1w0N7e-0000000C0Kq-2lf0;
+	Wed, 11 Mar 2026 17:13:26 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0MD9-0000000Bu8V-3njt
-	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Mar 2026 16:15:05 +0000
-Received: by mail-qt1-x830.google.com with SMTP id d75a77b69052e-509134ab2d2so292361cf.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Mar 2026 09:15:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773245702; cv=none;
-        d=google.com; s=arc-20240605;
-        b=SRhDX0+glXh+ZFQwLyPzhIZAYM4Mpfwc05XhL9rq7lcKpvNMNPNZETcGGkKLMLS3vA
-         c1RBk5I1EKP2i93KVRlwiAlFjnFLgHuGhvBgOuNw9VMFI2VG1eqNTdHIWRuC4sJOVew6
-         w6mIUd5bl69dW9ptl8tokfn0W0V4iAzQXWEB3c3S2plFvA03SCcoqa9mJl8bYlDlT7iK
-         FjCVTGri4MU5Pv5kmrjr1nut/bJpZsaCxHWDsMmldwbu9/4mMfDV5jDJNntMYsUYYCUK
-         Hf2H0fCukNyPQSa4u8z3xdrlKbNr9fKhEHaLXxRZ6/XiQ5K/OExnA4xxjKQUxl6sb0yk
-         SAXQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=7N2W7yYjM2zRG3DC8FowUvkEvnAbADu41ZCuJNvKKrY=;
-        fh=X3GRzi0DHsH+VLtR/6IpEBQ9x9kvPRLNvYlNZvDh3X8=;
-        b=Cg4srVVEGaxmqLGa4qou8sfjRK1jNT0+KbLqoytuw8C3AR2hMt/aJbb5+4aEtGNzST
-         4ZHC06ztJMm3iIMMimGRx9SPXZ8XF0mP26d2BmL9y2zmo2Po26lawIllkX0w66r9J4JQ
-         hnZmUNalH2irbl5s83f6ECl/6CCG0xFQZpG9o56ysR5wRTAguosl/1ze+rNWMLATCsrM
-         uWAT8qehJ9S70RTGUnniN9VYCyedzpsl5KQXPy2TzrYqwJ6TyvlFUTIZPlrojmEeiuLu
-         MXYJu+Ye2avocyyHteZWXLQ6RDgRpx+PrgCwgOS94wncBOsHmWgAWctHBozFGN+MAwwC
-         Jm3g==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773245702; x=1773850502; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=7N2W7yYjM2zRG3DC8FowUvkEvnAbADu41ZCuJNvKKrY=;
-        b=dJY5K+OF5RYxCHzLvnhhFc9admR6t6G+10IDAlDOhfXMwNPVP8/bZKVTDz+iPDEdMV
-         9P3qX12nDJMG6N81hXhK2h2NoqPkffatoW4s5TSZiNlQWZMPcxeRROEhtyEo3hXzK+jN
-         Ei/c/R7mSsywtoDrHj/CoAyy1kVvSmQi1w+CxqrAcBARSChjQecVU3Vuz4CtAigLQfLF
-         5Iel/kS9xZ5CjZOag9XZyagB+effrvdqhk5dwqRqQRZku+ZijYOgOcaQdMqrDpaaso2c
-         7BxVJPV9tLFu976+O6S7X4uFSBWawhCKci93KbSgGU8UeJlmzbsk14CcwqMS9FYM6Oap
-         zGvQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773245702; x=1773850502;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7N2W7yYjM2zRG3DC8FowUvkEvnAbADu41ZCuJNvKKrY=;
-        b=t6HO7+82wpsMuyNvbO+nup6lVUPwvXRz7eoYo+pGOSs+hY+bHaUMHOfID+5YZQJ3gu
-         fYkI0LYMEI08mfIxdsx9lh6rIKCE49PtRHQ6KqfaV/TJ3mLuLIPRFpGnj+w4v37VlHfp
-         rdbc8Ih5HmppacwSzpcWMSacWrZShrBS1yM8SitcLXtuOm5e7SQCC/vZG/4lkcJyD7hw
-         NB1TBCzhsrOdlWalbE2h/JomVLR+QLDV+o5khJZJ8VCe5nMOAzmh/v9EwuUuekt+oPm2
-         PFNM01xxtRvdIrluPszS8x4Y9wxYcFE023qZKkuN5WGvAfyGbfgi73wgnYMff1LL5otV
-         ec5A==
-X-Forwarded-Encrypted: i=1; AJvYcCVyAXsBg/QO5Lo894E8KhKHFz19jUxIPkenJeOJ9A7dq3QN+BZJ2jTt2dYTjKQZIlt8ATIRhD11GTO0tXsydA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwK8Tu6MVIj/Wo+s82HWt2V0XnCueHbVkLAOlpC5W30e8OcEZSa
-	AbccqwoOF83/vOUGRfbuU43JH81/mxjZGEAt1zhSzTRNtynM/lP4cvVRORRsU8dUAPNw6Em1orO
-	tLrbYXgCQxQ7dIrx7GmO4TGqLdEw0ew==
-X-Gm-Gg: ATEYQzygf5S26iBekwYyeT7XEOLw3J+hfBsUNXXYdvjt8nR7ahhAujY9g/paJzTdnKI
-	OOtzT0yjke+Lg06HI//qxKBhbrilWlAxs72DhcOOyf5GKBz8NmoQhZLJxQF4zkUdQCIYnbkxCke
-	Lk4gQG6Mb98VbGni2eWckV+On52ZvEBl9Pgtsc+mlqAiZbpe25QFTxTHZ92C9XXbjhRNedxMi46
-	TwAHp/CBlcufReA4FsvK3P1B7sIg+3jLFVNDuFQQ+X4XCmEdgg7L/XUSs1Q3BfefyjeUD9WbLBk
-	BVTTVCuh3oHK/2O59g==
-X-Received: by 2002:ac8:5f8f:0:b0:509:2222:4201 with SMTP id
- d75a77b69052e-5093a1c2b09mr36139601cf.69.1773245701913; Wed, 11 Mar 2026
- 09:15:01 -0700 (PDT)
+	id 1w0N7X-0000000C0Ga-0iUI;
+	Wed, 11 Mar 2026 17:13:21 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A584D2B975D;
+	Wed, 11 Mar 2026 18:13:00 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1773249191; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=SWK6hCFWTtJ6HB5p0G57+QkEA4hYw/yDHOa1YtvvqTE=;
+	b=ScMfa/rIt+JO2UGaejqsHDrxK9iGnuiAq4qO6/cHHWUrsvrFfnT3ETm4u359ls5vDUucD2
+	9V1qjHS0x9+EzvNn4fP7gMLIEMyqFnx9Kvs57sWwt1ExiJ7OYRneS4IWuW+S1/XXBGwTB2
+	sZSQWsGD6O8oh0O/NujEZdUnKGubYr5JiLgcWocenLugK+xWr+Z1rqtWtRUDEuLWYBu7CO
+	EsVDjo4s+fVhNa/7MNaMzzgyzNBQHMPcFpj5d0w79dzwpsamqyvlrA9+lW0BH0DM0eD099
+	FNoQtPkVo1GiLfNDRIVAiC1oIgF5XpcwqSF2JB9ha6PMJKnoJVhQTv/GLOhTKQ==
+Message-ID: <de6e8440-99a1-4be7-80aa-3645fdb0bdb9@cjdns.fr>
+Date: Wed, 11 Mar 2026 18:12:59 +0100
 MIME-Version: 1.0
-References: <20260311002825.15502-1-sean.wang@kernel.org> <20260311002825.15502-2-sean.wang@kernel.org>
-In-Reply-To: <20260311002825.15502-2-sean.wang@kernel.org>
-From: Nick <morrownr@gmail.com>
-Date: Wed, 11 Mar 2026 11:14:35 -0500
-X-Gm-Features: AaiRm50riU_uOb2IzOgK4aB6NSrm2_y0b6pNwKh9O2M9Qcys0qvy4wS0pXJ7QU8
-Message-ID: <CAFktD2cbFJrLS4ggc+yf582BYmw=jJsntfbDR65ssMpVGM2BKA@mail.gmail.com>
-Subject: Re: [PATCH 2/2] wifi: mt76: mt792x: fix mt7925u USB WFSYS reset handling
-To: Sean Wang <sean.wang@kernel.org>
-Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, linux-wireless@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, Sean Wang <sean.wang@mediatek.com>, 
-	stable@vger.kernel.org, Satadru Pramanik <satadru@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird Beta
+Subject: Re: [PATCH v2 2/8] clk: airoha: Add econet EN751221 clock/reset
+ support to en7523-scu
+To: Brian Masney <bmasney@redhat.com>
+Cc: linux-mips@vger.kernel.org, naseefkm@gmail.com, mturquette@baylibre.com,
+ sboyd@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ tsbogend@alpha.franken.de, ryder.lee@mediatek.com,
+ jianjun.wang@mediatek.com, lpieralisi@kernel.org, kwilczynski@kernel.org,
+ mani@kernel.org, bhelgaas@google.com, vkoul@kernel.org,
+ neil.armstrong@linaro.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, nbd@nbd.name, ansuelsmth@gmail.com,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20260309131818.74467-1-cjd@cjdns.fr>
+ <20260309131818.74467-3-cjd@cjdns.fr> <abF-qFC1Oa4dz-fh@redhat.com>
+Content-Language: en-US
+From: Caleb James DeLisle <cjd@cjdns.fr>
+In-Reply-To: <abF-qFC1Oa4dz-fh@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260311_091503_958062_173F221F 
-X-CRM114-Status: GOOD (  17.50  )
+X-CRM114-CacheID: sfid-20260311_101319_582917_DFB02C79 
+X-CRM114-Status: GOOD (  36.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,84 +80,437 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> From: Sean Wang <sean.wang@mediatek.com>
->
-> mt7925u uses different reset/status registers from mt7921u. Reusing the
-> mt7921u register set causes the WFSYS reset to fail.
->
-> Add a chip-specific descriptor in mt792xu_wfsys_reset() to select the
-> correct registers and fix mt7925u failing to initialize after a warm
-> reboot.
->
-> Fixes: d28e1a48952e ("wifi: mt76: mt792x: introduce mt792x-usb module")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt792x_regs.h |  4 ++++
->  drivers/net/wireless/mediatek/mt76/mt792x_usb.c  | 13 ++++++++++++-
->  2 files changed, 16 insertions(+), 1 deletion(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-> index 7ddde9286861..d2a8b2b0df32 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-> @@ -392,6 +392,10 @@
->  #define MT_CBTOP_RGU_WF_SUBSYS_RST     MT_CBTOP_RGU(0x600)
->  #define MT_CBTOP_RGU_WF_SUBSYS_RST_WF_WHOLE_PATH BIT(0)
->
-> +#define MT7925_CBTOP_RGU_WF_SUBSYS_RST 0x70028600
-> +#define MT7925_WFSYS_INIT_DONE_ADDR    0x184c1604
-> +#define MT7925_WFSYS_INIT_DONE         0x00001d1e
-> +
->  #define MT_HW_BOUND                    0x70010020
->  #define MT_HW_CHIPID                   0x70010200
->  #define MT_HW_REV                      0x70010204
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-> index a92e872226cf..47827d1c5ccb 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt792x_usb.c
-> @@ -224,6 +224,15 @@ static const struct mt792xu_wfsys_desc mt7921_wfsys_desc = {
->         .need_status_sel = true,
->  };
->
-> +static const struct mt792xu_wfsys_desc mt7925_wfsys_desc = {
-> +       .rst_reg = MT7925_CBTOP_RGU_WF_SUBSYS_RST,
-> +       .done_reg = MT7925_WFSYS_INIT_DONE_ADDR,
-> +       .done_mask = U32_MAX,
-> +       .done_val = MT7925_WFSYS_INIT_DONE,
-> +       .delay_ms = 20,
-> +       .need_status_sel = false,
-> +};
-> +
->  int mt792xu_dma_init(struct mt792x_dev *dev, bool resume)
->  {
->         int err;
-> @@ -254,7 +263,9 @@ EXPORT_SYMBOL_GPL(mt792xu_dma_init);
->
->  int mt792xu_wfsys_reset(struct mt792x_dev *dev)
->  {
-> -       const struct mt792xu_wfsys_desc *desc = &mt7921_wfsys_desc;
-> +       const struct mt792xu_wfsys_desc *desc = is_mt7925(&dev->mt76) ?
-> +                                               &mt7925_wfsys_desc :
-> +                                               &mt7921_wfsys_desc;
->         u32 val;
->         int i;
->
-> --
-> 2.43.0
->
+Hello Brian,
 
-Sean, testing results from: Satadru Pramanik <satadru@gmail.com>
+Thank you for taking the time!
 
-"The updated patches from
-https://patchwork.kernel.org/project/linux-wireless/list/?series=1064695
-do NOT work. I get the -110 error with them on a warm reboot.
-Reverting to the kernel with the older patch restores my adapter
-connection on a warm reboot."
 
-You are welcome to stop by the Github issue where this issue is being discussed:
+On 11/03/2026 15:39, Brian Masney wrote:
+> Hi Caleb,
+>
+> On Mon, Mar 09, 2026 at 01:18:12PM +0000, Caleb James DeLisle wrote:
+>> EcoNet EN751221 clock/reset driver is significantly similar to the
+>> EN7523 / EN7581, however the EN751221 does not have a neat batch of clock
+>> divider registers so there are fewer known clocks, and the frequency of
+>> each clock is derived differently. This clock driver will probably work
+>> correctly on EN751627, EN7528, and EN7580.
+>>
+>> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+>> ---
+>>   drivers/clk/Kconfig      |   6 +-
+>>   drivers/clk/clk-en7523.c | 238 ++++++++++++++++++++++++++++++++++++++-
+>>   2 files changed, 236 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/drivers/clk/Kconfig b/drivers/clk/Kconfig
+>> index 3d803b4cf5c1..47df6073a72b 100644
+>> --- a/drivers/clk/Kconfig
+>> +++ b/drivers/clk/Kconfig
+>> @@ -218,13 +218,13 @@ config COMMON_CLK_CS2000_CP
+>>   	  If you say yes here you get support for the CS2000 clock multiplier.
+>>   
+>>   config COMMON_CLK_EN7523
+>> -	bool "Clock driver for Airoha EN7523 SoC system clocks"
+>> +	bool "Clock driver for Airoha/EcoNet SoC system clocks"
+>>   	depends on OF
+>> -	depends on ARCH_AIROHA || COMPILE_TEST
+>> +	depends on ARCH_AIROHA || ECONET || COMPILE_TEST
+>>   	default ARCH_AIROHA
+>>   	help
+>>   	  This driver provides the fixed clocks and gates present on Airoha
+>> -	  ARM silicon.
+>> +	  and EcoNet silicon.
+>>   
+>>   config COMMON_CLK_EP93XX
+>>   	tristate "Clock driver for Cirrus Logic ep93xx SoC"
+>> diff --git a/drivers/clk/clk-en7523.c b/drivers/clk/clk-en7523.c
+>> index 08cc8e5acf43..f7bd7034cf7f 100644
+>> --- a/drivers/clk/clk-en7523.c
+>> +++ b/drivers/clk/clk-en7523.c
+>> @@ -1,5 +1,6 @@
+>>   // SPDX-License-Identifier: GPL-2.0-only
+>>   
+>> +#include <linux/bitfield.h>
+>>   #include <linux/delay.h>
+>>   #include <linux/clk-provider.h>
+>>   #include <linux/io.h>
+>> @@ -11,6 +12,8 @@
+>>   #include <dt-bindings/clock/en7523-clk.h>
+>>   #include <dt-bindings/reset/airoha,en7523-reset.h>
+>>   #include <dt-bindings/reset/airoha,en7581-reset.h>
+>> +#include <dt-bindings/clock/econet,en751221-scu.h>
+>> +#include <dt-bindings/reset/econet,en751221-scu.h>
+>>   
+>>   #define RST_NR_PER_BANK			32
+>>   
+>> @@ -33,15 +36,49 @@
+>>   #define   REG_RESET_CONTROL_PCIEHB	BIT(29)
+>>   #define   REG_RESET_CONTROL_PCIE1	BIT(27)
+>>   #define   REG_RESET_CONTROL_PCIE2	BIT(26)
+>> +#define REG_HIR				0x064
+>> +#define   REG_HIR_MASK			GENMASK(31, 16)
+>>   /* EN7581 */
+>>   #define REG_NP_SCU_PCIC			0x88
+>>   #define REG_NP_SCU_SSTR			0x9c
+>>   #define REG_PCIE_XSI0_SEL_MASK		GENMASK(14, 13)
+>>   #define REG_PCIE_XSI1_SEL_MASK		GENMASK(12, 11)
+>>   #define REG_CRYPTO_CLKSRC2		0x20c
+>> +/* EN751221 */
+>> +#define EN751221_REG_SPI_DIV		0x0cc
+>> +#define EN751221_REG_SPI_DIV_MASK	GENMASK(31, 8)
+>> +#define EN751221_SPI_BASE		500000000
+>> +#define EN751221_SPI_BASE_EN7526C	400000000
+>> +#define EN751221_REG_BUS		0x284
+>> +#define EN751221_REG_BUS_MASK		GENMASK(21, 12)
+>> +#define EN751221_REG_SSR3		0x094
+>> +#define EN751221_REG_SSR3_GSW_MASK	GENMASK(9, 8)
+>>   
+>>   #define REG_RST_CTRL2			0x830
+>>   #define REG_RST_CTRL1			0x834
+>> +#define EN751221_REG_RST_DMT		0x84
+>> +#define EN751221_REG_RST_USB		0xec
+>> +
+>> +#define EN751221_MAX_CLKS		6
+>> +
+>> +enum en_hir {
+>> +	HIR_UNKNOWN	= -1,
+>> +	HIR_TC3169	= 0,
+>> +	HIR_TC3182	= 1,
+>> +	HIR_RT65168	= 2,
+>> +	HIR_RT63165	= 3,
+>> +	HIR_RT63365	= 4,
+>> +	HIR_MT751020	= 5,
+>> +	HIR_MT7505	= 6,
+>> +	HIR_EN751221	= 7,
+>> +	HIR_EN7526C	= 8,
+>> +	HIR_EN751627	= 9,
+>> +	HIR_EN7580	= 10,
+>> +	HIR_EN7528	= 11,
+>> +	HIR_EN7523	= 12,
+>> +	HIR_EN7581	= 13,
+>> +	HIR_MAX		= 14,
+>> +};
+>>   
+>>   struct en_clk_desc {
+>>   	int id;
+>> @@ -93,6 +130,8 @@ static const u32 bus7581_base[] = { 600000000, 540000000 };
+>>   static const u32 npu7581_base[] = { 800000000, 750000000, 720000000, 600000000 };
+>>   static const u32 crypto_base[] = { 540000000, 480000000 };
+>>   static const u32 emmc7581_base[] = { 200000000, 150000000 };
+>> +/* EN751221 */
+>> +static const u32 gsw751221_base[] = { 500000000, 250000000, 400000000, 200000000 };
+>>   
+>>   static const struct en_clk_desc en7523_base_clks[] = {
+>>   	{
+>> @@ -300,6 +339,13 @@ static const u16 en7581_rst_ofs[] = {
+>>   	REG_RST_CTRL1,
+>>   };
+>>   
+>> +static const u16 en751221_rst_ofs[] = {
+>> +	REG_RST_CTRL2,
+>> +	REG_RST_CTRL1,
+>> +	EN751221_REG_RST_DMT,
+>> +	EN751221_REG_RST_USB,
+>> +};
+>> +
+>>   static const u16 en7523_rst_map[] = {
+>>   	/* RST_CTRL2 */
+>>   	[EN7523_XPON_PHY_RST]		= 0,
+>> @@ -405,8 +451,61 @@ static const u16 en7581_rst_map[] = {
+>>   	[EN7581_XPON_MAC_RST]		= RST_NR_PER_BANK + 31,
+>>   };
+>>   
+>> +static const u16 en751221_rst_map[] = {
+>> +	/* RST_CTRL2 */
+>> +	[EN751221_XPON_PHY_RST]		= 0,
+>> +	[EN751221_GFAST_RST]		= 1,
+>> +	[EN751221_CPU_TIMER2_RST]	= 2,
+>> +	[EN751221_UART3_RST]		= 3,
+>> +	[EN751221_UART4_RST]		= 4,
+>> +	[EN751221_UART5_RST]		= 5,
+>> +	[EN751221_I2C2_RST]		= 6,
+>> +	[EN751221_XSI_MAC_RST]		= 7,
+>> +	[EN751221_XSI_PHY_RST]		= 8,
+>> +
+>> +	/* RST_CTRL1 */
+>> +	[EN751221_PCM1_ZSI_ISI_RST]	= RST_NR_PER_BANK + 0,
+>> +	[EN751221_FE_QDMA1_RST]		= RST_NR_PER_BANK + 1,
+>> +	[EN751221_FE_QDMA2_RST]		= RST_NR_PER_BANK + 2,
+>> +	[EN751221_FE_UNZIP_RST]		= RST_NR_PER_BANK + 3,
+>> +	[EN751221_PCM2_RST]		= RST_NR_PER_BANK + 4,
+>> +	[EN751221_PTM_MAC_RST]		= RST_NR_PER_BANK + 5,
+>> +	[EN751221_CRYPTO_RST]		= RST_NR_PER_BANK + 6,
+>> +	[EN751221_SAR_RST]		= RST_NR_PER_BANK + 7,
+>> +	[EN751221_TIMER_RST]		= RST_NR_PER_BANK + 8,
+>> +	[EN751221_INTC_RST]		= RST_NR_PER_BANK + 9,
+>> +	[EN751221_BONDING_RST]		= RST_NR_PER_BANK + 10,
+>> +	[EN751221_PCM1_RST]		= RST_NR_PER_BANK + 11,
+>> +	[EN751221_UART_RST]		= RST_NR_PER_BANK + 12,
+>> +	[EN751221_GPIO_RST]		= RST_NR_PER_BANK + 13,
+>> +	[EN751221_GDMA_RST]		= RST_NR_PER_BANK + 14,
+>> +	[EN751221_I2C_MASTER_RST]	= RST_NR_PER_BANK + 16,
+>> +	[EN751221_PCM2_ZSI_ISI_RST]	= RST_NR_PER_BANK + 17,
+>> +	[EN751221_SFC_RST]		= RST_NR_PER_BANK + 18,
+>> +	[EN751221_UART2_RST]		= RST_NR_PER_BANK + 19,
+>> +	[EN751221_GDMP_RST]		= RST_NR_PER_BANK + 20,
+>> +	[EN751221_FE_RST]		= RST_NR_PER_BANK + 21,
+>> +	[EN751221_USB_HOST_P0_RST]	= RST_NR_PER_BANK + 22,
+>> +	[EN751221_GSW_RST]		= RST_NR_PER_BANK + 23,
+>> +	[EN751221_SFC2_PCM_RST]		= RST_NR_PER_BANK + 25,
+>> +	[EN751221_PCIE0_RST]		= RST_NR_PER_BANK + 26,
+>> +	[EN751221_PCIE1_RST]		= RST_NR_PER_BANK + 27,
+>> +	[EN751221_CPU_TIMER_RST]	= RST_NR_PER_BANK + 28,
+>> +	[EN751221_PCIE_HB_RST]		= RST_NR_PER_BANK + 29,
+>> +	[EN751221_SIMIF_RST]		= RST_NR_PER_BANK + 30,
+>> +	[EN751221_XPON_MAC_RST]		= RST_NR_PER_BANK + 31,
+>> +
+>> +	/* RST_DMT */
+>> +	[EN751221_DMT_RST]		= 2 * RST_NR_PER_BANK + 0,
+>> +
+>> +	/* RST_USB */
+>> +	[EN751221_USB_PHY_P0_RST]	= 3 * RST_NR_PER_BANK + 6,
+>> +	[EN751221_USB_PHY_P1_RST]	= 3 * RST_NR_PER_BANK + 7,
+>> +};
+>> +
+>>   static int en7581_reset_register(struct device *dev, void __iomem *base,
+>> -				 const u16 *rst_map, int nr_resets);
+>> +				 const u16 *rst_map, int nr_resets,
+>> +				 const u16 *rst_reg_ofs);
+>>   
+>>   static u32 en7523_get_base_rate(const struct en_clk_desc *desc, u32 val)
+>>   {
+>> @@ -604,7 +703,8 @@ static int en7523_clk_hw_init(struct platform_device *pdev,
+>>   	en7523_register_clocks(&pdev->dev, clk_data, base, np_base);
+>>   
+>>   	return en7581_reset_register(&pdev->dev, np_base, en7523_rst_map,
+>> -				     ARRAY_SIZE(en7523_rst_map));
+>> +				     ARRAY_SIZE(en7523_rst_map),
+>> +				     en7581_rst_ofs);
+> I assume the mix of en7523 and en7581 is ok here?
 
-https://github.com/morrownr/USB-WiFi/issues/688#
 
-Nick
+Correct, en7581 came first, then when en7523 was added they reused the 
+function. I'm only changing the offsets to be passed in because en751221 
+has more reset registers so different offset table than the others.
+
+
+>>   }
+>>   
+>>   static void en7581_register_clocks(struct device *dev, struct clk_hw_onecell_data *clk_data,
+>> @@ -705,7 +805,8 @@ static const struct reset_control_ops en7581_reset_ops = {
+>>   };
+>>   
+>>   static int en7581_reset_register(struct device *dev, void __iomem *base,
+>> -				 const u16 *rst_map, int nr_resets)
+>> +				 const u16 *rst_map, int nr_resets,
+>> +				 const u16 *rst_reg_ofs)
+>>   {
+>>   	struct en_rst_data *rst_data;
+>>   
+>> @@ -713,7 +814,7 @@ static int en7581_reset_register(struct device *dev, void __iomem *base,
+>>   	if (!rst_data)
+>>   		return -ENOMEM;
+>>   
+>> -	rst_data->bank_ofs = en7581_rst_ofs;
+>> +	rst_data->bank_ofs = rst_reg_ofs;
+>>   	rst_data->idx_map = rst_map;
+>>   	rst_data->base = base;
+>>   
+>> @@ -752,7 +853,123 @@ static int en7581_clk_hw_init(struct platform_device *pdev,
+>>   	writel(val | 3, base + REG_NP_SCU_PCIC);
+>>   
+>>   	return en7581_reset_register(&pdev->dev, base, en7581_rst_map,
+>> -				     ARRAY_SIZE(en7581_rst_map));
+>> +				     ARRAY_SIZE(en7581_rst_map),
+>> +				     en7581_rst_ofs);
+>> +}
+>> +
+>> +static enum en_hir get_hw_id(void __iomem *np_base)
+>> +{
+>> +	u32 val = FIELD_GET(REG_HIR_MASK, readl(np_base + REG_HIR));
+>> +
+>> +	if (val < HIR_MAX)
+>> +		return (enum en_hir) val;
+> No space with the cast.
+OK
+>> +
+>> +	return HIR_UNKNOWN;
+>> +}
+>> +
+>> +static void en751221_try_register_clk(struct device *dev, int key,
+>> +				      struct clk_hw_onecell_data *clk_data,
+>> +				      const char *name, u32 rate)
+>> +{
+>> +	struct clk_hw *hw;
+>> +
+>> +	hw = clk_hw_register_fixed_rate(dev, name, NULL, 0, rate);
+>> +	if (IS_ERR(hw) || key >= EN751221_MAX_CLKS)
+>> +		pr_err("Failed to register clk %s: %pe\n", name, hw);
+> Is %pe correct in the case when key >= EN751221_MAX_CLKS?
+Hmm, it's gonna give a pointer address, indeed that's not so nice. I'll 
+re-work this so it makes more sense.
+>> +	else
+>> +		clk_data->hws[key] = hw;
+> Should the error code be returned here? I know the function has try in
+> it's name, however if this fails, then it still registers it.
+
+
+This function follows the general pattern of en7581_register_clocks(). 
+If a clock can't be registered, leave clk_data->hws[key] as NULL, log, 
+and continue. There's only two possible reasons for failing, if 
+clk_hw_register_fixed_rate() fails then it's not registered because it 
+failed. If key >= EN751221_MAX_CLKS, it does register but I'll fix this 
+so it's checking that before clk_hw_register_fixed_rate().
+
+
+>> +}
+>> +
+>> +static void en751221_register_clocks(struct device *dev,
+>> +				     struct clk_hw_onecell_data *clk_data,
+>> +				     struct regmap *map, void __iomem *np_base)
+>> +{
+>> +	enum en_hir hid = get_hw_id(np_base);
+>> +	struct clk_hw *hw;
+>> +	u32 rate;
+>> +	u32 div;
+>> +	int err;
+>> +
+>> +	/* PCI */
+>> +	hw = en7523_register_pcie_clk(dev, np_base);
+>> +	clk_data->hws[EN751221_CLK_PCIE] = hw;
+>> +
+>> +	/* SPI */
+>> +	rate = EN751221_SPI_BASE;
+>> +	if (hid == HIR_EN7526C)
+>> +		rate = EN751221_SPI_BASE_EN7526C;
+>> +
+>> +	err = regmap_read(map, EN751221_REG_SPI_DIV, &div);
+>> +	if (err) {
+>> +		pr_err("Failed reading fixed clk div %s: %d\n",
+>> +		       "spi", err);
+>> +	} else {
+>> +		div = FIELD_GET(EN751221_REG_SPI_DIV_MASK, div) * 2;
+>> +		if (!div)
+>> +			div = 40;
+> Should 40 be documented a little better with a #define?
+Ok yes, makes sense.
+>> +
+>> +		en751221_try_register_clk(dev, EN751221_CLK_SPI, clk_data,
+>> +					  "spi", rate / div);
+>> +	}
+>> +
+>> +	/* BUS */
+>> +	rate = FIELD_GET(EN751221_REG_BUS_MASK,
+>> +			 readl(np_base + EN751221_REG_BUS));
+>> +	rate *= 1000000;
+>> +	en751221_try_register_clk(dev, EN751221_CLK_BUS, clk_data, "bus",
+>> +				  rate);
+>> +
+>> +	/* CPU */
+>> +	en751221_try_register_clk(dev, EN751221_CLK_CPU, clk_data, "cpu",
+>> +				  rate * 4);
+>> +
+>> +	/* HPT */
+>> +	switch (hid) {
+>> +	case HIR_EN751221:
+>> +	case HIR_EN751627:
+>> +	case HIR_EN7526C:
+>> +	case HIR_EN7580:
+>> +	case HIR_EN7528:
+>> +		rate = 200000000;
+>> +		break;
+>> +	case HIR_MT7505:
+>> +		rate = 100000000;
+>> +		break;
+>> +	case HIR_MT751020:
+>> +		rate = 800000000 / 3;
+>> +		break;
+>> +	default:
+>> +		rate = 250000000;
+> Should a warning be logged here or in get_hw_id() above? hid can be set
+> to HIR_UNKNOWN here.
+
+Now that I'm looking at this again, I'm starting to think it might be 
+better to just remove it and use a fixed-clock in the DT. I wrote it 
+aiming for completeness, but this particular clock has so much code 
+supporting it, I'm feeling like it just doesn't make any sense.
+
+Let me know if you have a feeling on this because I'm swaying in the 
+direction of just re-sending with it removed.
+
+>
+>> +	}
+>> +	en751221_try_register_clk(dev, EN751221_CLK_HPT, clk_data, "hpt",
+>> +				  rate);
+>> +
+>> +	/* GSW */
+>> +	rate = FIELD_GET(EN751221_REG_SSR3_GSW_MASK,
+>> +			 readl(np_base + EN751221_REG_SSR3));
+>> +	en751221_try_register_clk(dev, EN751221_CLK_GSW, clk_data, "gsw",
+>> +				  gsw751221_base[rate]);
+>> +}
+>> +
+>> +static int en751221_clk_hw_init(struct platform_device *pdev,
+>> +				struct clk_hw_onecell_data *clk_data)
+>> +{
+>> +	struct regmap *map;
+>> +	void __iomem *base;
+>> +
+>> +	map = syscon_regmap_lookup_by_compatible("econet,en751221-chip-scu");
+>> +	if (IS_ERR(map))
+>> +		return PTR_ERR(map);
+>> +
+>> +	base = devm_platform_ioremap_resource(pdev, 0);
+>> +	if (IS_ERR(base))
+>> +		return PTR_ERR(base);
+>> +
+>> +	en751221_register_clocks(&pdev->dev, clk_data, map, base);
+> Again, any reason why the error handling is missing here?
+
+
+I followed the same logic that was used for the en7581 and en7523, but I 
+think the logic is reasonable. If a clock fails to register, you either 
+log and continue, or you blow up the whole probe(), which is just going 
+to make it more frustrating to debug since then no clocks will register 
+and anything downstream of them will be unhappy.
+
+Thanks,
+
+Caleb
+
+
+>
+> Brian
+>
+>
+>> +
+>> +	return en7581_reset_register(&pdev->dev, base, en751221_rst_map,
+>> +				     ARRAY_SIZE(en751221_rst_map),
+>> +				     en751221_rst_ofs);
+>>   }
+>>   
+>>   static int en7523_clk_probe(struct platform_device *pdev)
+>> @@ -799,9 +1016,20 @@ static const struct en_clk_soc_data en7581_data = {
+>>   	.hw_init = en7581_clk_hw_init,
+>>   };
+>>   
+>> +static const struct en_clk_soc_data en751221_data = {
+>> +	.num_clocks = EN751221_MAX_CLKS,
+>> +	.pcie_ops = {
+>> +		.is_enabled = en7523_pci_is_enabled,
+>> +		.prepare = en7523_pci_prepare,
+>> +		.unprepare = en7523_pci_unprepare,
+>> +	},
+>> +	.hw_init = en751221_clk_hw_init,
+>> +};
+>> +
+>>   static const struct of_device_id of_match_clk_en7523[] = {
+>>   	{ .compatible = "airoha,en7523-scu", .data = &en7523_data },
+>>   	{ .compatible = "airoha,en7581-scu", .data = &en7581_data },
+>> +	{ .compatible = "econet,en751221-scu", .data = &en751221_data },
+>>   	{ /* sentinel */ }
+>>   };
+>>   
+>> -- 
+>> 2.39.5
+>>
 
