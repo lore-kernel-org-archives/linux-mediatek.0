@@ -4,62 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A594106ACD6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 18:31:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C6D5106ACD6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 19:19:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
-	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
-	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K5etVeL98LZEHyzHQa37h7AqJhMn11WQ1wIdnDqMKIY=; b=hW0zrB3xDnwMX3SlrB0pd0m1S2
-	ob5Gouj66WyC98KfeKpJpG3+1ZTh7JHGWljzY5YWF6UCQVdZ1v6oh7s209KbVQYr9c9LaKImPho5j
-	BV/cHEr6LQIqqGbPO11VfuraoK98vvx2cwpJM8gMEHDaOFwAByu/hhLKOuAdF+X2vpL5flHe3C56j
-	Nh87egSTgNl6NBam7vWpL5oHVxkJSyN6HGscVYN0ybHo7xljBSMKQw81UT+1fsXavQZv9gxu8oFpE
-	UELcy2pqpybnXgf6jqUjsSZ8kf+nx2p+BKerfUow5IVdLscdnW3XiBZ1P0G+iQ2E0RooCz4AAS2tP
-	QM+jzGZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FN0iLvgqSyaZiDl0c3ZhPpZly7Om5f6dGlIUMbmjzk0=; b=yXYa5DlorF5Kqqf/sjzq0LigGY
+	2bJ/H8viGAUWNLLxbYEdt7CPSXxatlw19K0Tdpj/Y7nFH+PFDcYTVX+O5pJzv+mKXDiA0NLhAW6Xd
+	4zKsI3MyNc0j5zJJSKkdjWWt9ImOXoXAt9B2RkgI7sOgYCmc/x3AZFJW7uuPJF83TindfssbDMTbZ
+	kLMJwWa/KWyt50Os4BqofcV6rFCaUeb72wzsEi62NZg6gZhe6FSzfPRz/KosJwqW7S6/Bn7ARO/HY
+	oxOSKLDtSwTnztvYq1AcPgE1tPo6hHJWqrmKt21BpTUIMTbYKbxpvsi2BaY+DeBcQR/rn8HY1tlf9
+	1TZK1npg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0koJ-0000000Etol-1gSS;
-	Thu, 12 Mar 2026 18:31:03 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w0lYz-0000000F44R-2fyZ;
+	Thu, 12 Mar 2026 19:19:17 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0koI-0000000EtoO-0Igs
-	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Mar 2026 18:31:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 808C460054;
-	Thu, 12 Mar 2026 18:31:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12C81C116C6;
-	Thu, 12 Mar 2026 18:31:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773340261;
-	bh=PqviWeqBkV89c2EnIpZbKL1eDclZ3wMLXwzqVGaqFZ0=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=jHBxBoKY5+vOt2hEzIWlSjiH3mlSZWjGaY5rMOBL6UWlK4uXXdrxC1/5HFVl8ie08
-	 ea4VGIcydBwZrp2Gkpvx7dd+mo4PFgdgw0UR56+/Nq9q5WTkOmufB23fLnX1qZbuwD
-	 WoWYoYPQ2J/U9+rpNZt3w1x6ZRtZ7ZbFr0YkVlp4+iA7bC7cOT1TXSepWcjFl2F1Ca
-	 711+UyvKAWZw18bUPcUEq19kKaVxBRXJtOfptKGCT2CK0fL4KEj9yVKGKnaSvWmGv/
-	 m2Kp2gzUym6Qb5zOSL7bKkZB7D7c55ZQg+J5ZIEkBVMkUrjo9fEC8h1T9k5+D+HY8f
-	 OvEXztfeNaQpQ==
-Date: Thu, 12 Mar 2026 13:31:00 -0500
-Content-Type: text/plain; charset="utf-8"
+	id 1w0lYw-0000000F400-3dYz;
+	Thu, 12 Mar 2026 19:19:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:
+	Content-Transfer-Encoding:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=FN0iLvgqSyaZiDl0c3ZhPpZly7Om5f6dGlIUMbmjzk0=; b=Rjyu4ApzIxwhbYaBKr9aLMN4mW
+	wTQ5fY8ljYeOKQc85LselN817PPUcLQiZnw97paxa4NL5iWGghfHegh39Deoj+qWIq2HdAv8sAMfH
+	IcT17lT5ywum3IO3s5G2+QJvj9/NtREj4AT7qGXtcmb1Tw5DMZQqeaDUTXFoJIIC55JdndywOcrrG
+	sYypCCcg+6yLStBRJbTcEtHOMkVFumuTUtQK9Q6sPq49nYZsfMmZvqgWAjw170kHjPYvcXcj1UHEJ
+	aRyi0B6j9b/cGT2ha/Jzw4IDlAkQXOgpJN66Y7aNCZlFWvC4KO7wHGGxMGk/bkxkit1waypSaE7lH
+	gZ3B46Bw==;
+Received: from mail-norwayeastazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20f::7] helo=OSPPR02CU001.outbound.protection.outlook.com)
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w0lYp-00000001rHE-2ImK;
+	Thu, 12 Mar 2026 19:19:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=SCUFLp1CvJedzR4MwF9yFcypz3w/fRljMwPR99hW+f+U7XDRkZ6FpiKgGBxYxa2pWSEddIK1XwqGtuXqESYN7MYtojSFVa8sI4wl3ZVfPHTTGe9WQROeDrfL0N0MiC4URoME16Nkw9y1K1jkQgbhuj/kiUZh1fp3iNj11J+v5yVgzslCJ/Y1eiWChStqTWHP3jI3V/qYxSNrZVoyfhOfE0WpzEgFigEH2TgIjfvtYdcWwnVFbYqClEeLac9k1UeunXcC+7B+U2/hUErxk6lzD9H53IDN72KTuD7tIXQqlUrHUELxyea0yR5F+XbECB6b0f82KNYX1o7eQ6Uj5qy1lA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FN0iLvgqSyaZiDl0c3ZhPpZly7Om5f6dGlIUMbmjzk0=;
+ b=nYmrgWbeDOnanGnfeKHbiE/oFq4QPy4UnfpuWtGbj2D6s+0mma0d7BMz0cPWkasqhsyFS73mbGe40RvDqOdBmy0+wTc1NnJBak7zgkPYGiNGdeXnrlewxV49vr+VBuvgbPRzWUrBbB88pqfIIja0Dyk+mAY4/HkzrgFzlCrsI+Zjbg90zCWSJ875lGBhMlIyoIwMrA5fRNvkBblaAAtwH7p/0gNKByMyfGlyJmdjsMxQqgrmk2/GSu1VcEHvyEaeBp9BBPZHkUxuiNspCo6cfW++U6E67WRHQuCHivZbFmTYF4Z+u+lc6zhtHSSyE5fK4Nv/hn4TSBL8ns57c+wSjA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FN0iLvgqSyaZiDl0c3ZhPpZly7Om5f6dGlIUMbmjzk0=;
+ b=QrxtgTzx0Cnj8qBJ1Q2jyXHdsGOnSCKfICLEb97i7JpV7WR/GcJ5+aNaFRkj/0gZNPuVOb3w+ep0UKEpF5FWgyrDHs/tQvhcG70SBi4l6n17vEXi1YSI2jnF4sVodag1NA61iAP0dPxSXJY3DMzKOCD7xJ3eGOKZGtIU4nvlTj8x7ivoKd1GWPVxw1/cyew4sMnuVBeob5+ghUTw9kxI2vuJzhRDnLkq9w5tjNmv/GQ9ZH00OV3yveHgmQj+EFuh5mOBee9ERw9KB8DzHYAu6KdTZA+vNk7G8przGn6shkaDZif30Ac3CZax0XvfvkuDYzfh/9Yav50EnbVl+OY9oQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com (2603:10a6:102:2a9::8)
+ by PAXPR04MB9124.eurprd04.prod.outlook.com (2603:10a6:102:22f::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9700.15; Thu, 12 Mar
+ 2026 19:19:01 +0000
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588]) by PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588%6]) with mapi id 15.20.9700.010; Thu, 12 Mar 2026
+ 19:19:01 +0000
+From: Frank Li <Frank.Li@nxp.com>
+To: linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	imx@lists.linux.dev,
+	openbmc@lists.ozlabs.org,
+	linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	broonie@kernel.org
+Cc: Frank Li <frank.li@nxp.com>,
+	Pei Xiao <xiaopei01@kylinos.cn>
+Subject: Re: [PATCH 13/17] spi: stm32: Use helper function devm_clk_get_enabled()
+Date: Thu, 12 Mar 2026 15:18:47 -0400
+Message-ID: <20260312191849.3483369-1-Frank.Li@nxp.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <d239cda51bb3dcc84da4a7194a30f3be82422f70.1773306858.git.xiaopei01@kylinos.cn>
+References: <d239cda51bb3dcc84da4a7194a30f3be82422f70.1773306858.git.xiaopei01@kylinos.cn>
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: SA0PR11CA0050.namprd11.prod.outlook.com
+ (2603:10b6:806:d0::25) To PA4PR04MB9366.eurprd04.prod.outlook.com
+ (2603:10a6:102:2a9::8)
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: mani@kernel.org, linux-mediatek@lists.infradead.org, 
- kwilczynski@kernel.org, krzk+dt@kernel.org, matthias.bgg@gmail.com, 
- naseefkm@gmail.com, lpieralisi@kernel.org, bhelgaas@google.com, 
- conor+dt@kernel.org, ryder.lee@mediatek.com, linux-kernel@vger.kernel.org, 
- angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org, 
- linux-pci@vger.kernel.org, ansuelsmth@gmail.com, linux-mips@vger.kernel.org
-To: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <20260312165332.569772-2-cjd@cjdns.fr>
-References: <20260312165332.569772-1-cjd@cjdns.fr>
- <20260312165332.569772-2-cjd@cjdns.fr>
-Message-Id: <177334026016.3889069.9474337544951486443.robh@kernel.org>
-Subject: Re: [PATCH 1/3] dt-bindings: PCI: mediatek: Add support for EcoNet
- EN7528
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PA4PR04MB9366:EE_|PAXPR04MB9124:EE_
+X-MS-Office365-Filtering-Correlation-Id: cafe27e4-5d9f-4509-b351-08de806c3757
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|19092799006|1800799024|366016|7416014|376014|52116014|38350700014|921020|18002099003|56012099003|22082099003;
+X-Microsoft-Antispam-Message-Info: 3aEIg0x714ONy/TGnss+dpNElwUBDBOtqtjeVADmFEq4l2NmUWF0QuFTOp25HCtLDclVsqiZtduHVdhyrUSEr3xKmoo/eLTv86w4eLVq7zDhwKeA3mqX7vKmHS6yMcfz58ustb6/IpI56s/28yE8/r1TFJVZgRh0BWwhzPjxY0DIrm26HcPxKlH9v3SUh/4Lzed8XUJiJkQ8TemnhEttYpclV9ibjW/iY4JkZxzKpuonSXPdsxJbGePB4tEO0FI9CYD1zY4br4prOKCM9V46mFGLYcuscnceOPkri1RM3YTPJ+1rg9s9OSO58Ke21bcoMZBA0HMSG0xK3BXBbkDiANdvSxLye8ruSZ5q00Q/E8grzKI3n2j5Tc+QpF9hkb8PrIbvPguody9XOSQxgpcyOMpmv8BdeLFXgqXTUQUC9anMDKus3lVsa7d4vjO5zDnz0kxdh4UoMseunbkYujGHfC9z7Biowl7mk8E3PQIr6+LxbmarNSrLCTEn2YuGGEoAPZULSCcLJRVa5NS+jzed6v2HR1pnSjSP6vbbkIphm3RGbrUXLJNRe/4DIDHRCHlxObaBr64rUHh4nm/sCON0yyQ5cMVddXF6+glzHo1uaiPONNkSJKRkQCV2T7YlrlOc/ey3op/gc7cp9d4o3wuTFBzvnw0dAlYNIbQE6UlM8ar5FVMpP5qwRENJd82JzOkgBph+SGiW3pFjnPaC+Dhl0E2AXQgSjLRQCho4qkWlZ120ycbmRajd8o3h2mkS/Nnuk323fi7fXOMCRuvUvJVwzTvFnkTmPU4sla0HY1PoPFtzG1gCb0g9UUtlGp2kK1es
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(19092799006)(1800799024)(366016)(7416014)(376014)(52116014)(38350700014)(921020)(18002099003)(56012099003)(22082099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?tW+A9EX5RZ5EsqzQUPb05l1LZf2iFbW9gwYEfg3lDMd0RF0RhGMDnR1ezXae?=
+ =?us-ascii?Q?V3pY3SBygXvaXs663Rjs6TLluyjyi1M7/zLWwYKy16FHMBpznQ57QaLsK7+w?=
+ =?us-ascii?Q?QuDBU/wG1RLyrH+HjRtYdTRC9iD9SpALFwEP/DQ98HTqYNvzsWDT+SOsgQjc?=
+ =?us-ascii?Q?KCGau/PTBaKVI+vmdp2ugichMSpsUNtPHlsHMwD9Ej4bPFwDP9QRScRQ5v3Z?=
+ =?us-ascii?Q?QEEato9CO/gOgWoG1Jwzwd/imbBt6jqOouC/OeiFKynQuMATpoYGFhZUO05W?=
+ =?us-ascii?Q?EtPbzNhc4HfRAG3Yv/YCwgVwq4Pz1RozCupHlRKp83+de55oSb2UqRwP7uAL?=
+ =?us-ascii?Q?rEA4YuixPVMRP90KuyRjav6HiOcUfcU+4hwuIxqTO31dKDaGcH9e1qFlrdlc?=
+ =?us-ascii?Q?EosJ6jWv08/KRfZU8jHCfww6gnUpLfmkd8xeOjWHeJJdVifri9/FEluMBQPn?=
+ =?us-ascii?Q?c4n7+mIzTI/tfDiMceK3QFlqIbqIaZKHGXq7wXRkwcmCKqItw+R69fSO8R2O?=
+ =?us-ascii?Q?3DnEGjVCp2tkQma+fkOkwLmnxuxkE1NkFLvT7B4/zDI2kVBtROx8CapZf5ZR?=
+ =?us-ascii?Q?RhYNqPaxu36JtgsPz3hotwDA1VjABGFEl3Uc1yw2FyHysXX6+WpOWFXqT7mn?=
+ =?us-ascii?Q?a8pul+rLAM8whnAzcHRI7+TVbe21MeMpdqxuU4wjK5X2b6kGW8dYwBDku9kF?=
+ =?us-ascii?Q?83nniHbh0YQet6lMfRKAeYhTm78Nv6YogMreyUNdbQ2OfFZb2XyflL8W8ZDF?=
+ =?us-ascii?Q?TASs9owrvQ0r89+sQ1owEqR/qDF9293ZGNlu74isQh5mUI1s/h9/vZHhB9mp?=
+ =?us-ascii?Q?ybuG4pjXngaPao0OEwdhitUUARggDJmI8P7lNei4DKNi7Ou+dEWev5kOG4/E?=
+ =?us-ascii?Q?q3DLT+XZMmTdWsPs9xPhYY8u3YiiqzrVVHdFfVGADWwhS7/1lDCggtsoPG7U?=
+ =?us-ascii?Q?1Hz5YS8s/jVwnT3bnG+3sW22Gh9O54upq9aCxP5B/CfIq9NF0280dXlUNGuL?=
+ =?us-ascii?Q?WYWi5PfQX3POpWT81ltQIJ/4eFBbLZK7FD6klSxpBC/xurtzJ6J1TZs+PFkm?=
+ =?us-ascii?Q?qIkVw55NSTXRQ41MWOHZJBioAko0F9D5GiP+FK6x+lkyC000UgzUE5U8Vof8?=
+ =?us-ascii?Q?rLSZic0DR2UITPOjZkioBz9SV5gNSjfryJJuZGQU5hw3HFFgvWN7vOz6AmXf?=
+ =?us-ascii?Q?eDmDOPTKxgCDllAjvos7ZX1g5/TiehY29vHMgR4s+UhVKJgJun/TLMziugx5?=
+ =?us-ascii?Q?hcfT4C88eU7DS9zJFP0EjKWITniDL3QuB4+5/iE3GArHJSuvgFXpLVCnR9s/?=
+ =?us-ascii?Q?2iPf9AALVoMQAhXrXY+e2aH3VJC3ELFeYXKnLA46WlXcl8ZwkqN6/Bzi7bOi?=
+ =?us-ascii?Q?Cdzzi2+LAjjimV3er1LEK3/S0ySXb/NmWnn9oMPd3eTNrqtN+ITImWnp2Wex?=
+ =?us-ascii?Q?asXFG7/5ILsiUszPCAsIvj4rggy04hqD0xrP+Mv5HKpa1mbEXuYTa/dYsxZj?=
+ =?us-ascii?Q?GjUWUOtcqr7F6q3lMLhYTKebtI/xTQ1wk90AX6/eJk3jo6x8aMQ5DXaEoSPb?=
+ =?us-ascii?Q?sIgUhsFaiKyoR4jsH8bq61PuwAIguf4b8txUQKFIV8QBUu7jY8a7qDZa0p2m?=
+ =?us-ascii?Q?urGnCJWXNXBBBJGiHpDANAesntuofba0atN0wUIerSsMldX5c2N2jYEomY6S?=
+ =?us-ascii?Q?w3mjHjZPQ3p4xJpr+P9ps7EvbJk3Hx9LkvwWgKxqDU8KHa0j?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cafe27e4-5d9f-4509-b351-08de806c3757
+X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9366.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Mar 2026 19:19:01.2102
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: pLSmNN5PTAZaNj78b1rum8bHuxMH5RZQei+ffR0AoGypPT06GaMvb9FJFI7l0IQ8+Rgq9MqW5ibtnVrP+DxCzA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR04MB9124
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260312_191907_653025_54A4AB09 
+X-CRM114-Status: UNSURE (   5.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,44 +157,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Frank Li (AI-BOT) <frank.li@nxp.com>
 
-On Thu, 12 Mar 2026 16:53:30 +0000, Caleb James DeLisle wrote:
-> Introduce EcoNet EN7528 SoC compatible in MediaTek PCIe controller
-> binding.
-> 
-> EcoNet PCIe controller has the same configuration model as
-> Mediatek v2 but is initiallized more similarly to an MT7621
-> PCIe.
-> 
-> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
-> ---
->  .../bindings/pci/mediatek-pcie.yaml           | 81 +++++++++++++++++++
->  1 file changed, 81 insertions(+)
-> 
+> +	spi->clk = devm_clk_get_enabled(&pdev->dev, NULL);
+> +	if (IS_ERR(spi->clk))
+> +		return dev_err_probe(&pdev->dev, PTR_ERR(spi->clk), "clk get failed: %d\n", ret);
 
-My bot found errors running 'make dt_binding_check' on your patch:
+AI: Bug: format string references undefined variable 'ret'. Should use
+PTR_ERR(spi->clk) directly or remove the %d format specifier.
 
-yamllint warnings/errors:
+> +	if (ret)
+> +		return dev_err_probe(&pdev->dev, "controller configuration
+> +				     failed: %d\n", ret);
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/mediatek-pcie.example.dtb: pcie@0,0: 'device_type' is a required property
-	from schema $id: http://devicetree.org/schemas/pci/pci-bus-common.yaml
+AI: Missing error code argument to dev_err_probe(). Should be:
+return dev_err_probe(&pdev->dev, ret, "controller configuration failed\n");
 
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.kernel.org/project/devicetree/patch/20260312165332.569772-2-cjd@cjdns.fr
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
-
+Frank
 
