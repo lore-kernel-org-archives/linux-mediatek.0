@@ -4,72 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4BCB106ACD9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 18:29:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A594106ACD6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 18:31:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JR/B2dFDOfK/tmEdPLA1FD2R6WjIJ7KHea/shfA4u74=; b=w0lA95sucU9YoEsdcU9ca9Vi8W
-	OXcL2YtG05WqTinGpilJDTXPsKba22P/dxd+0Phwj7Jo34ErpckeMgO5u+KWC8DLDMN72UjgJ128O
-	RcrI59fpo3Z3zc9VyLvTKYv/NhkofkprRFdev2TKCRvDcn6RYb88xl/+gNginq7EEAu7/7xrlWM4E
-	MTPUNr8dPA8ImnOqDwXJ8wHXcL08o63vXTdvD7VLO5fLnNj8QDVJaVCeDHZ49/Ebk0kwnby9XUkw8
-	7ZW7D7zPTkauAePLR9CB6XGoZcMz4GWoObs6uS8c3zawFQ5lIJmYuu6qW2INzIB70kibWIvmexCOS
-	SaPJLYFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:
+	References:In-Reply-To:To:Cc:From:MIME-Version:Content-Transfer-Encoding:
+	Content-Type:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K5etVeL98LZEHyzHQa37h7AqJhMn11WQ1wIdnDqMKIY=; b=hW0zrB3xDnwMX3SlrB0pd0m1S2
+	ob5Gouj66WyC98KfeKpJpG3+1ZTh7JHGWljzY5YWF6UCQVdZ1v6oh7s209KbVQYr9c9LaKImPho5j
+	BV/cHEr6LQIqqGbPO11VfuraoK98vvx2cwpJM8gMEHDaOFwAByu/hhLKOuAdF+X2vpL5flHe3C56j
+	Nh87egSTgNl6NBam7vWpL5oHVxkJSyN6HGscVYN0ybHo7xljBSMKQw81UT+1fsXavQZv9gxu8oFpE
+	UELcy2pqpybnXgf6jqUjsSZ8kf+nx2p+BKerfUow5IVdLscdnW3XiBZ1P0G+iQ2E0RooCz4AAS2tP
+	QM+jzGZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0knG-0000000EtQ8-0NQT;
-	Thu, 12 Mar 2026 18:29:58 +0000
-Received: from mail.hugovil.com ([162.243.120.170])
+	id 1w0koJ-0000000Etol-1gSS;
+	Thu, 12 Mar 2026 18:31:03 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0knA-0000000EtLQ-2YKW;
-	Thu, 12 Mar 2026 18:29:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hugovil.com
-	; s=default; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject
-	:Cc:To:From:subject:date:message-id:reply-to;
-	bh=JR/B2dFDOfK/tmEdPLA1FD2R6WjIJ7KHea/shfA4u74=; b=qMQtASNc/qr6quYrPy2H+lf8ry
-	jcAAZ/5H8x/HX8pKxRGVtSGKJNkhC+SG3AHMUMFVgt2wZJEL7FV1fTbA+Mz6dJzaz3S5z4h3+rf+u
-	5UPUX9X+ZDMTjPxFgJhYyc+Z3cgiZXh6xKGmHsmzFjuLmu517lLsI+23PUWeKi4Y/Io8=;
-Received: from modemcable168.174-80-70.mc.videotron.ca ([70.80.174.168] helo=pettiford.lan)
-	by mail.hugovil.com with esmtpa (Exim 4.98.2)
-	(envelope-from <hugo@hugovil.com>)
-	id 1w0kNI-000000008Fl-00uW;
-	Thu, 12 Mar 2026 14:03:08 -0400
-From: Hugo Villeneuve <hugo@hugovil.com>
-To: robin@protonic.nl,
-	andy@kernel.org,
-	geert@linux-m68k.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	dmitry.torokhov@gmail.com,
-	hvilleneuve@dimonoff.com,
-	mkorpershoek@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	lee@kernel.org,
-	alexander.sverdlin@gmail.com,
-	marek.vasut@gmail.com,
-	akurz@blala.de
-Cc: devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-input@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	hugo@hugovil.com
-Subject: [PATCH v5 0/4] input: add GPIO-based charlieplex keypad
-Date: Thu, 12 Mar 2026 14:00:54 -0400
-Message-ID: <20260312180304.3865850-1-hugo@hugovil.com>
-X-Mailer: git-send-email 2.47.3
-MIME-Version: 1.0
+	id 1w0koI-0000000EtoO-0Igs
+	for linux-mediatek@lists.infradead.org;
+	Thu, 12 Mar 2026 18:31:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 808C460054;
+	Thu, 12 Mar 2026 18:31:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12C81C116C6;
+	Thu, 12 Mar 2026 18:31:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773340261;
+	bh=PqviWeqBkV89c2EnIpZbKL1eDclZ3wMLXwzqVGaqFZ0=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
+	b=jHBxBoKY5+vOt2hEzIWlSjiH3mlSZWjGaY5rMOBL6UWlK4uXXdrxC1/5HFVl8ie08
+	 ea4VGIcydBwZrp2Gkpvx7dd+mo4PFgdgw0UR56+/Nq9q5WTkOmufB23fLnX1qZbuwD
+	 WoWYoYPQ2J/U9+rpNZt3w1x6ZRtZ7ZbFr0YkVlp4+iA7bC7cOT1TXSepWcjFl2F1Ca
+	 711+UyvKAWZw18bUPcUEq19kKaVxBRXJtOfptKGCT2CK0fL4KEj9yVKGKnaSvWmGv/
+	 m2Kp2gzUym6Qb5zOSL7bKkZB7D7c55ZQg+J5ZIEkBVMkUrjo9fEC8h1T9k5+D+HY8f
+	 OvEXztfeNaQpQ==
+Date: Thu, 12 Mar 2026 13:31:00 -0500
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Spam_score: -1.0
-X-Spam_bar: -
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_112952_640559_80AC46F0 
-X-CRM114-Status: GOOD (  12.95  )
+MIME-Version: 1.0
+From: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: mani@kernel.org, linux-mediatek@lists.infradead.org, 
+ kwilczynski@kernel.org, krzk+dt@kernel.org, matthias.bgg@gmail.com, 
+ naseefkm@gmail.com, lpieralisi@kernel.org, bhelgaas@google.com, 
+ conor+dt@kernel.org, ryder.lee@mediatek.com, linux-kernel@vger.kernel.org, 
+ angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org, 
+ linux-pci@vger.kernel.org, ansuelsmth@gmail.com, linux-mips@vger.kernel.org
+To: Caleb James DeLisle <cjd@cjdns.fr>
+In-Reply-To: <20260312165332.569772-2-cjd@cjdns.fr>
+References: <20260312165332.569772-1-cjd@cjdns.fr>
+ <20260312165332.569772-2-cjd@cjdns.fr>
+Message-Id: <177334026016.3889069.9474337544951486443.robh@kernel.org>
+Subject: Re: [PATCH 1/3] dt-bindings: PCI: mediatek: Add support for EcoNet
+ EN7528
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,82 +74,44 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hugo Villeneuve <hvilleneuve@dimonoff.com>
 
-Hello,
-this patch series add a new GPIO charlieplex keypad driver.
+On Thu, 12 Mar 2026 16:53:30 +0000, Caleb James DeLisle wrote:
+> Introduce EcoNet EN7528 SoC compatible in MediaTek PCIe controller
+> binding.
+> 
+> EcoNet PCIe controller has the same configuration model as
+> Mediatek v2 but is initiallized more similarly to an MT7621
+> PCIe.
+> 
+> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+> ---
+>  .../bindings/pci/mediatek-pcie.yaml           | 81 +++++++++++++++++++
+>  1 file changed, 81 insertions(+)
+> 
 
-The first two patches simply commonize two properties that are present in
-a few bindings, so that the actual patches for the charlieplex keypad driver
-can reuse them instead of also redefining them.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-I have tested the driver on a custom board with a Solidrun RZ/G2LC SOM
-with three charlieplex keyboards, all connected thru a single PCAL6416 I2C GPIO
-expander.
+yamllint warnings/errors:
 
-Link: [v1] https://lore.kernel.org/all/20260203155023.536103-1-hugo@hugovil.com/
-Link: [v2] https://lore.kernel.org/all/20260213171431.2228814-1-hugo@hugovil.com/
-Link: [v3] https://lore.kernel.org/all/20260225155409.612478-1-hugo@hugovil.com/
-Link: [v4] https://lore.kernel.org/all/20260305192101.2125660-1-hugo@hugovil.com/
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/pci/mediatek-pcie.example.dtb: pcie@0,0: 'device_type' is a required property
+	from schema $id: http://devicetree.org/schemas/pci/pci-bus-common.yaml
 
-Changes for v5:
-- Add Reviewed-by tags (Rob)
-- Replace GPIO with line in settling-time-us property description (Rob)
-- Reorder Makefile entry (Andy)
-- Change copyright date to 2026 (Andy)
-- Change some signed variables to unsigned (Andy)
-- Move some variables declaration within loop (Andy)
-- Add proper labels for GPIO pin names (Andy)
+doc reference errors (make refcheckdocs):
 
-Changes for v4:
-- Fix indentation in comments (Andy)
-- Add missing includes (Andy)
-- Remove OF dependency (Andy/Dmitry)
-- Uniformize return code variables to "err" (Andy/Dmitry)
-- Change signed iterator to unsigned and move within loop (Andy)
-- Remove unused platform_set_drvdata() (Andy)
-- Fixed typo in cover letter PCAL6416 (Geert)
-- Changed name in bindings example (Geert)
-- Added pull resistors to bindings doc and example (Geert)
+See https://patchwork.kernel.org/project/devicetree/patch/20260312165332.569772-2-cjd@cjdns.fr
 
-Changes for v3:
-- Add ASCII diagram in bindings, and reference to it in example
-- Reorder properties alphabetically
-- Add patch to define common input settling-time-us property
-- Add patch to define common input debounce-delay-ms property
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
 
-Changes for v2:
-- Fix yamllint error for example
-- Remove unused debug variable (nkeys)
-- Remove support for custom linux,no-autorepeat DT property
-- Remove support for custom gpio-activelow DT property
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
-Thank you.
+pip3 install dtschema --upgrade
 
-Hugo Villeneuve (4):
-  dt-bindings: input: add debounce-delay-ms common property
-  dt-bindings: input: add settling-time-us common property
-  dt-bindings: input: add GPIO charlieplex keypad
-  Input: charlieplex_keypad: add GPIO charlieplex keypad
-
- .../bindings/auxdisplay/holtek,ht16k33.yaml   |   5 +-
- .../bindings/input/cirrus,ep9307-keypad.yaml  |   7 +-
- .../input/gpio-charlieplex-keypad.yaml        | 108 +++++++++
- .../bindings/input/gpio-matrix-keypad.yaml    |   5 +-
- .../devicetree/bindings/input/input.yaml      |  16 ++
- .../input/mediatek,mt6779-keypad.yaml         |   1 +
- .../devicetree/bindings/mfd/fsl,mc13xxx.yaml  |   2 -
- MAINTAINERS                                   |   7 +
- drivers/input/keyboard/Kconfig                |  14 ++
- drivers/input/keyboard/Makefile               |   1 +
- drivers/input/keyboard/charlieplex_keypad.c   | 223 ++++++++++++++++++
- 11 files changed, 377 insertions(+), 12 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/input/gpio-charlieplex-keypad.yaml
- create mode 100644 drivers/input/keyboard/charlieplex_keypad.c
-
-
-base-commit: 6d4b67a2a76a4ff2393fe88119ae4332821b82b4
--- 
-2.47.3
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
