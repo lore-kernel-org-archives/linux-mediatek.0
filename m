@@ -4,67 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAD49106ACC9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 16:12:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 018A0106ACC9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 16:30:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3UeY5pu9w23zqf3XqZlvtlFA2ndSXKRbw7aNwE9W7d4=; b=oaKPnorGy8QI2TJ2u5DOk5NQje
-	KhdOrIOU/79DnDme5gzurMPrUZDtdSjXI9t+Q3mrPGcx32qEcN+SFvccyUkIGITKISlGh3bj0AvqQ
-	kZVQcGmdUac9TZ99uFJW34P9Ml9eh3L/rRjzdDSCQDQErckkypIY55hCBUAoE1un+bEKzj9zX/sQf
-	6fxJRRFEwgt93qGP3iKDhRHmmhOzEwi+sSMTa6SMH8Njs1FVqdXBKszCZLuAgFsD+ieYhUpKYq+aZ
-	qS1MPWbd1WgD2wlDztkh8Vr5Dp6tyoqzlBB1fw3Ms+vCZsn9NFoho2DQf1Q7nogmG/x0SdGtqmwjM
-	OmPzJoOQ==;
+	bh=KM8KaYwOxl26cN0NYbbOg/R+fvkWdnp9O3HOgTyJzNA=; b=Jf5RKZyw5d6R8qJ49ioWPaw/PN
+	MHPZk9megCjqbCJLT1DCSJHNZFQLhUd9lG2/2X+Aj+Tz2QHpI1qxEGB7fjIvcYzX2dp1ykyk22s/8
+	tjUwTuNlRqTXnDHGE1PuEjdUTE0lg7xJLKr55J+szqbXSDlECR2yJ3tnCr7NwtFoYS7zmz/L1fmLO
+	/j7z66dLehyej8051Cpzj5CbteGWuGn+5vg6eGovPgP2720bRNuXcT/mrt9FSmr6wlltbGk9NzX+U
+	MRol2NthPO1Tssi4iqbNTgHcYq2lihLXXinJn4dv6toccIcKx7/ZHoTggAhxUcC4Ke/gE5cRfQEsr
+	i3M/Pp+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0ieA-0000000EVUw-17QD;
-	Thu, 12 Mar 2026 16:12:26 +0000
-Received: from mail.hugovil.com ([162.243.120.170])
+	id 1w0ivl-0000000EYZk-3iy1;
+	Thu, 12 Mar 2026 16:30:37 +0000
+Received: from mail-dl1-x122f.google.com ([2607:f8b0:4864:20::122f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0ie8-0000000EVTp-0r05;
-	Thu, 12 Mar 2026 16:12:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hugovil.com
-	; s=default; h=Content-Transfer-Encoding:Mime-Version:Message-Id:Subject:Cc:
-	To:From:Date:subject:date:message-id:reply-to;
-	bh=3UeY5pu9w23zqf3XqZlvtlFA2ndSXKRbw7aNwE9W7d4=; b=d0h3OrG/LBtm/b0eInaGvDnYxD
-	66XPnLPamntvvXAU07VBhv9o1G92E9m/daBkKCXiSCl3Y38dKXeZGVXej0NHaH7b4Vozxlnb1m2AJ
-	L5YEKfeDpOw8pyM53jQJnPOVt/AeHeZoMf7BaDGK3uqKdQ3SHbqK8XAcfrDWXrNHfPtM=;
-Received: from modemcable168.174-80-70.mc.videotron.ca ([70.80.174.168] helo=pettiford.lan)
-	by mail.hugovil.com with esmtpa (Exim 4.98.2)
-	(envelope-from <hugo@hugovil.com>)
-	id 1w0ie2-000000007FN-0dAi;
-	Thu, 12 Mar 2026 12:12:18 -0400
-Date: Thu, 12 Mar 2026 12:12:17 -0400
-From: Hugo Villeneuve <hugo@hugovil.com>
-To: Andy Shevchenko <andriy.shevchenko@intel.com>
-Cc: robin@protonic.nl, andy@kernel.org, geert@linux-m68k.org,
- robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- dmitry.torokhov@gmail.com, hvilleneuve@dimonoff.com,
- mkorpershoek@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, lee@kernel.org,
- alexander.sverdlin@gmail.com, marek.vasut@gmail.com, akurz@blala.de,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 4/4] Input: charlieplex_keypad: add GPIO charlieplex
- keypad
-Message-Id: <20260312121217.122a6e5b3f5bb1dc64ae8f5b@hugovil.com>
-In-Reply-To: <aari1Y1CPZSYEVj3@ashevche-desk.local>
-References: <20260305192101.2125660-1-hugo@hugovil.com>
-	<20260305192101.2125660-5-hugo@hugovil.com>
-	<aari1Y1CPZSYEVj3@ashevche-desk.local>
-X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Spam_score: -2.0
-X-Spam_bar: --
+	id 1w0ivi-0000000EYYZ-0Kz5
+	for linux-mediatek@lists.infradead.org;
+	Thu, 12 Mar 2026 16:30:36 +0000
+Received: by mail-dl1-x122f.google.com with SMTP id a92af1059eb24-12732165d1eso1549874c88.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Mar 2026 09:30:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773333033; cv=none;
+        d=google.com; s=arc-20240605;
+        b=QE3YkNsXGwXzgI6fSHR3c0xzGmmlxyq/012Ccilvobzhfaq3XTUWJUBGwGQ+0pwwTh
+         HjW28qiXIvTSYdX+UFXprSWPdB0XvAPSKvVBPtYeknNrcsdvnIcU9fNWFV13cTCgoMDO
+         eVDBMn3xbH+sAsOLJ6qp3ZVrx5Nz74fKkg9DaS/d40oFWhz9kqaAiPBfbhk4Ti1YWhAr
+         uHrWiMISGUGzpDpsOkk0SYQnU5d2BzgDwXlobEMmzJ1FXlOQ72nRC1Q/RIKuAR41zcFs
+         PnB/mrrw85Zbteft9VjK5r72KOXFVPUQkXcmiNi0ZprdxX7ZYgwQDFnGyq51wxcufq9/
+         eE/w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=KM8KaYwOxl26cN0NYbbOg/R+fvkWdnp9O3HOgTyJzNA=;
+        fh=ybGudt9KMel28B6BLCoOXWdQ7tHVsNuTZKWuLQycxtA=;
+        b=gL2V3j3F7eVuXKeIXaNu3ERdw6XgGTeHVFmxOeOuw+NwYnAv82Quwv3Tip/dE8GdIT
+         FByLxAT74gaRUEMEKps6yykfzPVM6HwUuIAI6bmNMBccVOaug+viPkpZrpvQY/LmoIna
+         XushPja6XHlIe05yMBJKzvlF08d2CgjI/tfrjd5+tNRvx3MDFzqwJ7rSaKoizVXC89DH
+         dNezgSSb11/pZRYvmnOOqpaAQn7MXFPrOleWX2aa2GBAMUlaa0SOuDGtAdmm4WjLWNzD
+         30Mw4KXDqzbDcCUJjYMx8Pj6OL8oJoKeLmQSjsyfd4/P/3zrKL1t8FIUIU/qA9OBbxaz
+         SiHw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1773333033; x=1773937833; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=KM8KaYwOxl26cN0NYbbOg/R+fvkWdnp9O3HOgTyJzNA=;
+        b=HEuKx7WgDUL0QzK/MIdP3GAem4gPQqOXvNeIjIuaPd8fP72cf2Gcyg+YlL/lW7CfMs
+         AaFu1HuDJ5r935bxjwk8K/Lxr4y/OCGmlaTlfJLuBY7V44upc6Pn6V2shg02YiMJmJB9
+         2zOIcEnmUZ52LHQ3Ps/hPDX51XUnl8x8fJ6UY3LDhJQwiUYWCZPi+FSGthMCVwnHyzRK
+         G7jV66rC2NIaD59ggqL7RDOT/wxL7icxMJr40wFG7/EbB/jvUuUpAD8+fPzpP/Qd70sk
+         Fl7HhUVB/spp701tCl+XjVl1hIFDlhg+YRMry2rbXT4D/8WatjvMy8Jrjd0giu2GiAto
+         PbTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1773333033; x=1773937833;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=KM8KaYwOxl26cN0NYbbOg/R+fvkWdnp9O3HOgTyJzNA=;
+        b=O8xJUB+zaLJwUhOrqcashX//3TftSinB7FKFNQyIGkoV3zVHdq61sZemlV3zXXBUsD
+         E5bmraAopiaE6ilyejT4x969oqJOziUpWNbT8U/tzlPxRn7lkySpLa3IVBO+8nP5Cc7w
+         swOHzQTjQ3VzBG0kGwhmMvs/y9uhd27k/OOzdXxLMqvWeWJdscCKC44YWoNfeICFEAwl
+         SiamW9nskP6pq8qI5iMsmYVWOqKx7S9zIaAYRCy97XDR9VcnGpMQfCy6qwF0PYJMuo9u
+         mpPrcIESPzgj+YlITmuJE4zcGsHbZngM8FJBlvvVB9bq0nhKoFaQH3jsNzYzm16gONkF
+         2ruQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXbd56rF6wnu8KTvJFbUWJXCr1WU2e7ns05X12FFV/oXtmdqm4Ry/RC2kM7eQHeA5c4P5UFLntoNq/Tsa44BQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx5aJ6it68QroXoIcGsn5yl1/7PeglMAyWnbsIdqmLFVO68kcws
+	QgNCsAYkuVuf3Ui9Rzius29iamjdUAXaedXTJIpMBRHnjdaa9xjgWVN0HbvhwWHsShwhOHik+31
+	Q3yMbq5EULG69ytrcGNu6HNKiD3MdKVI=
+X-Gm-Gg: ATEYQzwfNa5EyFs4OOa/NgHo5lOVSzL4iPe3q7LUpn6DCqr0LixVqJIcFlOeTxfFnU6
+	R8uqlvb9MkYE9NgB8JIzBHDuS3SP/VjjiN0rpUlzJd5+qIzL5HIkq9oNLIvAoS5HixRCmn7ZXlq
+	UIxLJYAKecwqSXUWRGVhsOBAuAMd3H3Z0oiPf3Vx7GdDl4EE8hMJ0VDeJQKD7fVtXnjgFEOnhbI
+	nbIO1AH+WDO5dokiLSIgrSLjlojWFvmQwAXoiZwRmtWsAdCy5Wfc0ysqOg+vPlKWE6OaX5UZUd2
+	X6WfE2rE
+X-Received: by 2002:a05:7022:784:b0:119:e56b:98a0 with SMTP id
+ a92af1059eb24-128f3d17f5amr93984c88.7.1773333032705; Thu, 12 Mar 2026
+ 09:30:32 -0700 (PDT)
+MIME-Version: 1.0
+References: <CANAPQzi3BkfnRS4CEXAA560O5cO8e6MEYxeVVx1u+xUeXS-gmA@mail.gmail.com>
+ <CAGp9LzoidBL1iYYC371+Fw+drbArLRTneJKxCoFiitx=dweKCg@mail.gmail.com>
+ <CANAPQzjiBf8Rqphn2SypYN2O6bddj6vB=63Mp=T5YVEt2oGvyw@mail.gmail.com>
+ <CANAPQzgiE1rMP3F=5NJg3hp2uBXtq44+vTRBdkHwdfHyXJ8MQQ@mail.gmail.com>
+ <CANAPQzgD312EPSbvaQTE6U+wn85L65+xZHms7DP509ApxWvSZA@mail.gmail.com>
+ <CANAPQzgXN2UOjuwV1fRofN2syxG933kSaB9S7DyFAykHHMRzew@mail.gmail.com> <CAGp9Lzr4KsXEXbj+4h+Lk2fKU7z6BqtL5krzZmu-_So2-bN4_Q@mail.gmail.com>
+In-Reply-To: <CAGp9Lzr4KsXEXbj+4h+Lk2fKU7z6BqtL5krzZmu-_So2-bN4_Q@mail.gmail.com>
+From: bryam vargas <bryamestebanvargas@gmail.com>
+Date: Thu, 12 Mar 2026 11:30:19 -0500
+X-Gm-Features: AaiRm53n6pmgqCbUrPSX8yo07dBdb14BIJ-x5VM49Aymd3MRBVn5ECKANeFOA0Q
+Message-ID: <CANAPQzj24sTgnuXMo3wqVDhA==UQ6JQLESk0AernQUUmZvTi2w@mail.gmail.com>
+Subject: Re: [PATCH 1/2] mt76: connac: fix txpower_cur not updated in mt76_connac_mcu_set_rate_txpower()
+To: Sean Wang <sean.wang@kernel.org>
+Cc: linux-wireless@vger.kernel.org, nbd@nbd.name, lorenzo@kernel.org, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_091224_346757_8AAD33B5 
-X-CRM114-Status: GOOD (  25.89  )
+X-CRM114-CacheID: sfid-20260312_093035_219620_4D4665D1 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,181 +121,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+Hi Sean,
 
-On Fri, 6 Mar 2026 16:21:09 +0200
-Andy Shevchenko <andriy.shevchenko@intel.com> wrote:
+Thanks for the thorough v2 review on both patches =E2=80=94 really helpful.
 
-> On Thu, Mar 05, 2026 at 02:20:50PM -0500, Hugo Villeneuve wrote:
-> 
-> > Add support for GPIO-based charlieplex keypad, allowing to control
-> > N^2-N keys using N GPIO lines.
-> > 
-> > Reuse matrix keypad keymap to simplify, even if there is no concept
-> > of rows and columns in this type of keyboard.
-> 
-> ...
-> 
-> > --- a/drivers/input/keyboard/Makefile
-> > +++ b/drivers/input/keyboard/Makefile
-> > @@ -40,6 +40,7 @@ obj-$(CONFIG_KEYBOARD_LOCOMO)		+= locomokbd.o
-> >  obj-$(CONFIG_KEYBOARD_LPC32XX)		+= lpc32xx-keys.o
-> >  obj-$(CONFIG_KEYBOARD_MAPLE)		+= maple_keyb.o
-> >  obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
-> > +obj-$(CONFIG_KEYBOARD_CHARLIEPLEX)	+= charlieplex_keypad.o
-> 
-> Seem unordered. At least the all around it is ordered AFAICS.
+I spent the last few days digging deeper into the txpower reporting
+path across mt76 sub-drivers (mt7615, mt7915, mt7996, mt7921, mt7925)
+to find the most efficient fix. Turns out, Razvan Grigore already
+nailed it 13 months ago:
 
-Will fix it.
+  https://patchwork.kernel.org/project/linux-wireless/patch/20250211081247.=
+5892-3-razvan.grigore@vampirebyte.ro/
 
+His patch adds 3 lines to mt7921_set_tx_sar_pwr() =E2=80=94 same pattern as
+mt7915 (mcu.c:3393) and mt7996 (mcu.c:4802):
 
-> 
-> >  obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
-> >  obj-$(CONFIG_KEYBOARD_MAX7360)		+= max7360-keypad.o
-> >  obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
-> 
-> ...
-> 
-> > +/*
-> > + * GPIO driven charlieplex keypad driver
-> > + *
-> > + * Copyright (c) 2025 Hugo Villeneuve <hvilleneuve@dimonoff.com>
-> 
-> 2026?
+  tx_power =3D mt76_get_power_bound(mphy, hw->conf.power_level);
+  tx_power =3D mt76_get_rate_power_limits(mphy, mphy->chandef.chan,
+                                        &limits_array, tx_power);
+  mphy->txpower_cur =3D tx_power;
 
-Ok
+This runs before mt76_connac_mcu_set_rate_txpower(), so it uses the
+same SAR-bounded, DT-capped value that the firmware receives. And
+since set_tx_sar_pwr() is called from all four paths you pointed out
+(init, config, regd_update, set_sar_specs), it covers every scenario
+=E2=80=94 including the ones Lucid Duck's BSS_CHANGED_TXPOWER approach miss=
+es
+when not associated.
 
+I'm withdrawing both of my patches. Razvan's approach is the right
+one, and I don't want to duplicate his work.
 
-> 
-> > + *
-> > + * Based on matrix_keyboard.c
-> > + */
-> 
-> ...
-> 
-> > +#include <linux/bitops.h>
-> > +#include <linux/delay.h>
-> > +#include <linux/dev_printk.h>
-> > +#include <linux/device/devres.h>
-> > +#include <linux/err.h>
-> > +#include <linux/gpio/consumer.h>
-> > +#include <linux/input.h>
-> > +#include <linux/input/matrix_keypad.h>
-> > +#include <linux/math.h>
-> > +#include <linux/module.h>
-> > +#include <linux/mod_devicetable.h>
-> > +#include <linux/platform_device.h>
-> > +#include <linux/property.h>
-> > +#include <linux/types.h>
-> 
-> > +static void charlieplex_keypad_poll(struct input_dev *input)
-> > +{
-> > +	struct charlieplex_keypad *keypad = input_get_drvdata(input);
-> 
-> > +	int oline;
-> 
-> Why signed?
+What I'll focus on instead:
 
-Will change this one, and others noted below to unsigned.
+- Testing: I'll verify Razvan's patch on my MT7921U (NAB9, 2400m
+  altitude, daily use serving real users) and provide Tested-by.
 
+- SEFI/USB reset: You're right that v2 was premature. I'll file a
+  proper bug with full dmesg, lsusb topology, and usbmon captures
+  first, then propose a fix only after the failure mode is understood.
 
-> 
-> > +	int code;
-> > +
-> > +	for (code = 0, oline = 0; oline < keypad->nlines; oline++) {
-> 
-> Can be like
-> 
-> 	code = 0;
-> 	for (unsigned int oline = 0; oline < keypad->nlines; oline++) {
-> 
-> as iterator is not used outside the loop.
+- WF_MIB over USB: Still interested in your thoughts on my March 12
+  email about MT_MIB_SDR9/36/37 returning 0 on mt7921u. From what
+  I've seen, the USB variant has several gaps beyond txpower =E2=80=94 surv=
+ey
+  data, channel time counters =E2=80=94 that I'd like to help close.
 
-Ok, will do.
-
-
-> 
-> > +		DECLARE_BITMAP(values, MATRIX_MAX_ROWS);
-> 
-> > +		int iline;
-> 
-> Why signed?
-> 
-> > +		int err;
-> > +
-> > +		/* Activate only one line as output at a time. */
-> > +		gpiod_direction_output(keypad->line_gpios->desc[oline], 1);
-> > +
-> > +		if (keypad->settling_time_us)
-> > +			fsleep(keypad->settling_time_us);
-> > +
-> > +		/* Read input on all other lines. */
-> > +		err = gpiod_get_array_value_cansleep(keypad->line_gpios->ndescs,
-> > +						     keypad->line_gpios->desc,
-> > +						     keypad->line_gpios->info, values);
-> > +		if (err)
-> > +			return;
-> 
-> > +		for (iline = 0; iline < keypad->nlines; iline++) {
-> 
-> Can be just
-> 
-> 		for (unsigned int iline = 0; iline < keypad->nlines; iline++) {
-> 
-> as iterator is not used outside the loop.
-
-Ok.
-
-
-> 
-> > +			if (iline == oline)
-> > +				continue; /* Do not read active output line. */
-> > +
-> > +			/* Check if GPIO is asserted. */
-> > +			if (test_bit(iline, values)) {
-> > +				code = MATRIX_SCAN_CODE(oline, iline,
-> > +							get_count_order(keypad->nlines));
-> > +				/*
-> > +				 * Exit loop immediately since we cannot detect
-> > +				 * more than one key press at a time.
-> > +				 */
-> > +				break;
-> > +			}
-> > +		}
-> > +
-> > +		gpiod_direction_input(keypad->line_gpios->desc[oline]);
-> > +
-> > +		if (code)
-> > +			break;
-> > +	}
-> > +
-> > +	charlieplex_keypad_check_switch_change(input, code);
-> > +}
-> 
-> ...
-> 
-> > +	for (unsigned int i = 0; i < keypad->nlines; i++)
-> > +		(keypad->line_gpios->desc[i], "charlieplex_kbd_line");
-> 
-> Hmm... Don't you want to give it an index?
-
-Makes sense, will do.
-
-I will also change for "keypad->line_gpios->ndescs" in the loop
-iterator.
-
-
-> 
-> (In case you go this direction, see the kasprintf_strarray() or
->  its managed variant.)
-> 
-> -- 
-> With Best Regards,
-> Andy Shevchenko
-> 
-> 
-
-
--- 
-Hugo Villeneuve
+Best regards,
+Bryam Vargas
 
