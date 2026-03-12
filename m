@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23F8C105A593
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 13:02:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B508311258BE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 13:48:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0LStWSPNrAVu2+taudNy9vX/kBtznm/umzUbJyEYkdk=; b=hJMRNt1q/KKpOPkzqj8ZCkXRqw
-	ttsIU2fxVW1FKeF7l8S43iusIf4Rs0ymC8gxQ8XlOUpBEoJUdt4bqAh3p0sFfZMrD2CApn5ub6U4Z
-	i4hlR1ltB8P2MCeeuNNjkQboz2uZuNcmlwmH0Y1s2Ncx3iKRegGbNCdp1CPax74SLyg+d0ZJjvMcy
-	joL7nyb44pChTTRhID7VPWaCSuN1CbliXR9vWaffnEoTRKoHymmPcIzCbpjb6nonuQQag4fsodwmM
-	5DL0pLAWcoRG7fHA1AFcdPVwW4lji2EQamZUTdyNiNxVc7IBueYfV9FDyZZXyt5r3lkMWw1i/81mM
-	VbZvNlXw==;
+	bh=hZ1cV2LLgnPEE2dsXWB/c5r0xPHUTJ/5lEyY2D94EpA=; b=mwEWPRqx07uaR6t0G7H9K0aTLz
+	CmaIIr8DQ2Xm3m4KyPEvqBWCWFUnihqYy8nqVyeF9srx7F2tuumNNxYpsu51e3mjhwRju25hglB4t
+	zoGHOw/nyJZVi+Q+EiIVesL7OmxdpW/HOI4GQyZ8Dau/16RNwyNLTlR4MekqNZ8usRV4ocAHMrnQY
+	MqPFP6YmW1KgIKrNH+cREItLCRO8pios4Eq+anG3PV4JOwrau79DHEq5Py0OCxWpOSzmIHAOBtZ27
+	XOY60+w6rLKyb8EzEG/4EOQh5sl3eQCPFXnLA4ZNmKr6SeSf9nDAy+jnyFHiznw4lyVURHKLigrsy
+	X0RNGQ6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0fgK-0000000E682-3dc9;
-	Thu, 12 Mar 2026 13:02:28 +0000
+	id 1w0gOx-0000000E9qT-0Eks;
+	Thu, 12 Mar 2026 13:48:35 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0fgI-0000000E67I-317t;
-	Thu, 12 Mar 2026 13:02:26 +0000
+	id 1w0gOu-0000000E9q3-144L;
+	Thu, 12 Mar 2026 13:48:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AB13160131;
-	Thu, 12 Mar 2026 13:02:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75297C19424;
-	Thu, 12 Mar 2026 13:02:23 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5160F60141;
+	Thu, 12 Mar 2026 13:48:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD00DC4CEF7;
+	Thu, 12 Mar 2026 13:48:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773320545;
-	bh=6JGSpqVxm5Xk2m9ccSi9/f5mq6saFDm1oVr7MCpFyr4=;
+	s=k20201202; t=1773323311;
+	bh=hcAPt99+1FVBi2us+P3Rabs49pP9IyapSrVjbDkk1dk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ijzuRMZaAG0cxBMl7gDHrSzew3fvUz+nBqTiXPU+NIp69zqt1wfJfesyFC/fVZS3+
-	 fpJQfT7RAlMy6CdCes95jyDBXqJ9b0oy2+/mIhMf1FRNGI13AM1NqmAm86j3/A/552
-	 5kQ9+UXYzpoZsbEKqCumRSSwg+UQG2vj14Bds3PbgErv5h43Bs/xRG8wi00G2nRngr
-	 EIIwDGkg6bJW4vTpgIQrRiJEabuw4Tb1FNbFO22KU/UjrislDHxxzWqcPdnp2DTFq5
-	 sey6Gzv43mUHHEgvpwlNQvy8QnAR90ilRc2oUbTs2Xh0giY+jhiCjSVqkQ2SFWQMPl
-	 im56x+2su4L1w==
-Date: Thu, 12 Mar 2026 13:02:20 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Pei Xiao <xiaopei01@kylinos.cn>
-Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
-	openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH 13/17] spi: stm32: Use helper function
- devm_clk_get_enabled()
-Message-ID: <8fe16029-2830-44c3-bf32-5aea31f72c62@sirena.org.uk>
-References: <cover.1773306858.git.xiaopei01@kylinos.cn>
- <d239cda51bb3dcc84da4a7194a30f3be82422f70.1773306858.git.xiaopei01@kylinos.cn>
+	b=AN6+VsgPxg7z6yjxM0AzUPLK0tr3TY1t+CVdtXMKx9gCqygejoDStChHpikQhSPvu
+	 1kuuPyE8kCoIEVpeI7KkPIIQ3/7AMG1HCc9obe+YLaLzmsyYYa/l5bKlzNHY3sp4Ts
+	 Ob+TvU3svpa8BO1XfpPB2p49uRSJ1XwYCzFYU1xE3WfDWTPHCkpu2XhvdV8rBOTt6z
+	 VAz9ffpUb2BNCz3n6QdlxTs+Xtr89ork8F0nDcU5OFXOTPkU6yn6tZHR2nWsqGfUAk
+	 N/yJR5mJjHQdhTBerG47JPk0ySEzhSvZzhLMgiRjv9zaNxh3ksYdI9Bhka29EwfX3O
+	 zXw/8BUSvMr9Q==
+Date: Thu, 12 Mar 2026 08:48:30 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"David S. Miller" <davem@davemloft.net>, kevin-kw.huang@airoha.com,
+	matthias.bgg@gmail.com, Heiner Kallweit <hkallweit1@gmail.com>,
+	Paolo Abeni <pabeni@redhat.com>, netdev@vger.kernel.org,
+	macpaul.lin@mediatek.com, devicetree@vger.kernel.org,
+	Jakub Kicinski <kuba@kernel.org>, kernel@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Russell King <linux@armlinux.org.uk>,
+	Andrew Lunn <andrew+netdev@lunn.ch>, Andrew Lunn <andrew@lunn.ch>,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next 1/2] dt-bindings: net: Add support for Airoha
+ AN8801/R GbE PHY
+Message-ID: <177332330960.2900818.4098843765589208189.robh@kernel.org>
+References: <20260304-add-airoha-an8801-support-v1-0-0ae4ee5a2f9d@collabora.com>
+ <20260304-add-airoha-an8801-support-v1-1-0ae4ee5a2f9d@collabora.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="9knHiRnV8mpI+WJ7"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <d239cda51bb3dcc84da4a7194a30f3be82422f70.1773306858.git.xiaopei01@kylinos.cn>
-X-Cookie: I feel better about world problems now!
+In-Reply-To: <20260304-add-airoha-an8801-support-v1-1-0ae4ee5a2f9d@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,32 +82,19 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---9knHiRnV8mpI+WJ7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+On Wed, 04 Mar 2026 10:35:28 +0100, Louis-Alexis Eyraud wrote:
+> From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> Add a new binding to support the Airoha AN8801R Series Gigabit
+> Ethernet PHY.
+> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> ---
+>  .../devicetree/bindings/net/airoha,an8801.yaml     | 81 ++++++++++++++++++++++
+>  1 file changed, 81 insertions(+)
+> 
 
-On Thu, Mar 12, 2026 at 05:29:05PM +0800, Pei Xiao wrote:
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-> +	if (!cfg->has_device_mode && device_mode)
-> +		return dev_err_probe(&pdev->dev, -EPERM, "spi-slave not
-> +				     supported\n");
-
-Similar thing in this driver here.
-
---9knHiRnV8mpI+WJ7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmmyuVsACgkQJNaLcl1U
-h9CkwggAg24YBsU71i5Djghu/lHhxeErxA+7HBjAV3TstCzfospFBacxZTrIypgS
-mWtgo+SwmXbDn6WiyjDlwpIMTI6PFDzzMn6x6sxwj5/OD1osR2cJ2SYzYSbwFxbQ
-uoJphNgSht3FEaDioOtHfdrgiLIkMm+/TYlf1u7+ZzrgI4ueyhtCfs0dN8EfdB+q
-pAJUva6gft4S6N3uS4kagfQP8e+IwxXr5fekxL3p7Y9XYpa30rHE56Oc7sbGWGma
-+WP0OfGjImbuvKtGxAPKoGBte/kLIrsSHoAFhTLSytjUxs4uuftK3Y5g3d7zq1fh
-+TRESnlE15ixsifgA+1umZAfcpBjfA==
-=ouCy
------END PGP SIGNATURE-----
-
---9knHiRnV8mpI+WJ7--
 
