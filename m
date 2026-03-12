@@ -4,71 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4601105A591
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 12:46:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 439D6105A591
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 12:54:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Cu0/vkFmMk0Ue8ZkW498EotzCpiawJx4KvRh/Hyd1uQ=; b=GUHwusHxIC2shKQXgdMEu3d7Z3
-	zZ8nYU+1yCn/H3XqpF0ogpd9L49wk0zP8s7Z9SuqUGRJrGzfPv8Ue5jgFRtjWpTAaYIrQbKzKUgbV
-	2ZFFKzo/7BkAscc/CxCUjlGdPaZ60fI8RPfZ1hM043Owf92vbXTTRrozJiDtV+DONfSvZfe4L6hTJ
-	U62xFXEE1C+lTyX9GDqfaH+oREAUNGJ+S/Njy2b15RVz9iD/hBmCfw0k7AJjonVTwBGULpcBuB0Yr
-	1SB1CWMuARDxO1k30wP/5AjFlbu7ruJ3yuncU3N7iTgTjJo5vkQMp2HdJuFTPlX3YCb0aS93a+qiI
-	RweUiu+w==;
+	bh=ty54VHF8yvxuGGhYDMh9gmHeinItwH7ANN23MMH9uWY=; b=cHXUXthpiCzxXC5ybHcBPzzw+p
+	oPxA0ZxP5seHpepMhqOCMjZHFvRzk9Bu2fIbor4elHJooeJViJEKzYzGc3dfKXqDnoepKDOIVBD/I
+	9uqdFvBGQVTG7aTT+oOCO4k85PdcYvfx0tlyYzN93ZmQjGNz9NoZWzphpxCw6FZ27NYR5GkxST1fm
+	NBnFumZLVd+FzSZTQeLzFOXLC3wEpYuCNel/pkQpyy2J1uD1dFl4C+T9YXDZhFP+wpJxruDiAvY+z
+	p317fW4lqYjW8bjByOZ2AZe7mdcZn08udK5We/P/d+BCC+yV6maJgwV3qseQV8aE8+FlhvmDSlxkF
+	Ju4Prj4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0fR9-0000000E4Mr-2W6w;
-	Thu, 12 Mar 2026 12:46:47 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1w0fYk-0000000E5CS-198p;
+	Thu, 12 Mar 2026 12:54:38 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0fR7-0000000E4MD-2rf1;
-	Thu, 12 Mar 2026 12:46:46 +0000
+	id 1w0fYi-0000000E5BX-3Mmu;
+	Thu, 12 Mar 2026 12:54:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=ty54VHF8yvxuGGhYDMh9gmHeinItwH7ANN23MMH9uWY=; b=kMtNQ9z2CnLqEMO6QVI6AsYFu4
+	p4vCkcIYP0BRhQX6mi6YmMOpRWN/5HDZwIiByI+fiTbEOUagbmItK+vCKRedXnHjPUWFED1yvMaDb
+	K5NpY0FiOkdqGJ4JXnWq+a/WBlufnF8Px98t3WqNJnlRewwF4I3yihNeuwHVsFASSMNMH4mfIJlIO
+	bxPSMqxS4T6PPjfSHBLEb4PTHcAgXBL8ZArqW8B6dR3EQH/zch0z1JNSnQwgQkU0N54jIhGN8Vrb7
+	rMBjd7yiXwLRYBkaeeGueFOC9FFEHgwX3bj1k96o2SnpTO7NyxnOTv+qB2Qr8uXZb1hI0Ec5M78Hq
+	QZLDuh1g==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w0fYf-00000001Aei-2b4P;
+	Thu, 12 Mar 2026 12:54:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773319601;
-	bh=mY+91mincze6m6Vha1kTJqvDpfgu54oXIdulrrOWVak=;
+	s=mail; t=1773320062;
+	bh=C/NkVQNNGo4EQd299QTibe2nPSsMByDx86rINHtzd0k=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=jVierYV/GlJ8hYRKH5G0X3lUl+ORL1jv32MHDZPBr8uxj4Qg8i6fdzr2QgGOHFwXs
-	 UOls6/3zWdZT4CPpTYj7JUvCDTSB8lVXMqZXbV7K5zWYlKA0hRckuJES4CXKwnLPQ7
-	 rSdxWXl3iErmSh9C2vN03XFrXSR7uNNz5gSA/EmBkyPDGWe05E/cXd76aUn5/2eOCX
-	 FVfN6cL2YecwE602yiAeVnt2VX6P/RP2WeTZwhKnLiU+X+9X93CcCdaQTUl7NG64E/
-	 CyfThuVug++ZhGNRd14tzJiby6TrwWQZ0Mhsn2IgBvGy2iM4PdgMrnAqTPtrqGFs5n
-	 sCgN5+eQoxiNg==
+	b=a9/GnhF43SOshCt13goOtyiT7ex3KghXkeWXTMkpgmNGBt3q6iEvZMer3LCfCIrEU
+	 K9aV3S3iQ6AarYvHvlc5ASgRi7zLQxukgD/xlaJIYBp/jZplWE2jClMpwA9sssn1TC
+	 VwwE2ahGtr/lW/cSWg+tygIXyXeVWuW5G/m2/4PmuuBk/qT4KySus/vDAExMOS1T8X
+	 PsuLEQ+LQ3hUFjZU71nLdz0rTocJ4aBUMXL7Oqy8pGhY6AQ6xySHkrfW3VSFfcBvei
+	 CJgbXTQpULor4IwYL1rWqitUy2qzZySClowt+dveTv0CsqAyfObtIHQYrKJpo4VrIO
+	 wBipJWp1+ye0Q==
 Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C776017E0E6C;
-	Thu, 12 Mar 2026 13:46:40 +0100 (CET)
-Message-ID: <108e6fad-401c-427a-bc30-8ddd00bd93a5@collabora.com>
-Date: Thu, 12 Mar 2026 13:46:40 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D89D517E0E6C;
+	Thu, 12 Mar 2026 13:54:21 +0100 (CET)
+Message-ID: <f5b3a8d9-cb5e-4341-a89d-0a07bd4207ac@collabora.com>
+Date: Thu, 12 Mar 2026 13:54:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] pmdomain: mediatek: Fix power domain count
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Adam Ford <aford173@gmail.com>, linux-mediatek@lists.infradead.org,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Laura Nao <laura.nao@collabora.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org
-References: <20260210053708.17239-1-aford173@gmail.com>
- <CAPDyKFrsMY8q+rvrbOdppYnefX6TA1-EhF+e+pGG6k49KpeTRA@mail.gmail.com>
- <7fd891b7-b1ff-4668-ac99-8f8ac244d90c@collabora.com>
- <CAPDyKFqbS+PUkLXkjoHjbiVFCYM4FxQeHdJk_LVVfLA5nGEZ-A@mail.gmail.com>
+Subject: Re: [PATCH 2/2] arm: dts: mediatek: mt6589: add basic support for
+ Lenovo B8000-F
+To: Akari Tsuyukusa <akkun11.open@gmail.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, sean.wang@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20260304192417.818211-1-akkun11.open@gmail.com>
+ <20260304192417.818211-3-akkun11.open@gmail.com>
+ <94465ca7-b3dc-4736-9d58-4024f2494e54@collabora.com>
+ <CAKr_iV5cmE-GBp679Q-=bZi+186BvMvD41ctxnxNC3mTKEzuRw@mail.gmail.com>
+ <0994fef0-88f2-4277-aa46-0b6a33c53bfa@collabora.com>
+ <CAKr_iV6tVkT1be8EjXoNjMerTek0s79W2-n2shzt-wrmB1bYgA@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <CAPDyKFqbS+PUkLXkjoHjbiVFCYM4FxQeHdJk_LVVfLA5nGEZ-A@mail.gmail.com>
+In-Reply-To: <CAKr_iV6tVkT1be8EjXoNjMerTek0s79W2-n2shzt-wrmB1bYgA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_054645_888202_5251FB1E 
-X-CRM114-Status: GOOD (  29.00  )
+X-CRM114-CacheID: sfid-20260312_125433_757292_DCE28809 
+X-CRM114-Status: GOOD (  22.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,111 +96,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/03/26 18:29, Ulf Hansson ha scritto:
-> On Fri, 6 Mar 2026 at 10:50, AngeloGioacchino Del Regno
+Il 12/03/26 05:36, Akari Tsuyukusa ha scritto:
+> On Fri, Mar 6, 2026 at 11:06 PM AngeloGioacchino Del Regno
 > <angelogioacchino.delregno@collabora.com> wrote:
+>> Ouch. Well, it's mostly done then, hopefully sooner than later :-)
+> 
+> Thank you for your consideration.
+> 
+>>> - PWRAP and MT6320 PMIC RTC
+>> Start upstreaming the RTC (and MFD parts) right now maybe?
+>> That all depends on the actual state of things, of course.
 >>
->> Il 12/02/26 12:34, Ulf Hansson ha scritto:
->>> On Tue, 10 Feb 2026 at 06:40, Adam Ford <aford173@gmail.com> wrote:
->>>>
->>>> The wrong value of the number of domains is wrong which leads to
->>>> failures when trying to enumerate nested power domains.
->>>>
->>>>    PM: genpd_xlate_onecell: invalid domain index 0
->>>>    PM: genpd_xlate_onecell: invalid domain index 1
->>>>    PM: genpd_xlate_onecell: invalid domain index 3
->>>>    PM: genpd_xlate_onecell: invalid domain index 4
->>>>    PM: genpd_xlate_onecell: invalid domain index 5
->>>>    PM: genpd_xlate_onecell: invalid domain index 13
->>>>    PM: genpd_xlate_onecell: invalid domain index 14
->>>>
->>>> Attempts to use these power domains fail, so fix this by
->>>> using the correct value of calculated power domains.
->>>>
->>>> Signed-off-by: Adam Ford <aford173@gmail.com>
->>>
->>> We should have a fixes tag for this too I think:
->>>
->>> Fixes: 88914db077b6 ("pmdomain: mediatek: Add support for Hardware
->>> Voter power domains")
->>>
->>>
->>>> ---
->>>>    drivers/pmdomain/mediatek/mtk-pm-domains.c | 2 +-
->>>>    1 file changed, 1 insertion(+), 1 deletion(-)
->>>>
->>>> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
->>>> index 58648f4f689b..d2b8d0332951 100644
->>>> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
->>>> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
->>>> @@ -1228,7 +1228,7 @@ static int scpsys_probe(struct platform_device *pdev)
->>>>           scpsys->soc_data = soc;
->>>>
->>>>           scpsys->pd_data.domains = scpsys->domains;
->>>> -       scpsys->pd_data.num_domains = soc->num_domains;
->>>> +       scpsys->pd_data.num_domains = num_domains;
->>>
->>> Not sure this is the complete fix, as scpsys_add_one_domain() seems to
->>> be using the wrong value of "num_domains" too, no?
->>>
+>> Remember that you can upstream whatever is clean and works fine, that doesn't
+>> have hard dependencies on other components.
+> 
+> mediatek,mt6397.yaml says that "regulators are needed",
+
+ARGH! Forgot about that :-)
+
+> so I have to complete the regulator driver.
+> It will be completed soon.
+> 
+>>> - Power Domains (scpsys)
 >>
->> No, scpsys_add_one_domain() uses num_domains from the soc_data for DIRECT_CTL,
->> which is expected. Maybe that can be improved, but it's how it is supposed to work.
->>
->> So yeah, this patch is resolving an issue, and it is a complete fix.
+>> The power domains should be handled by mtk-pm-domains.c - not sure what you wrote
+>> but if you did it on mtk-scpsys.c that's wrong.
 > 
-> I had a closer look and unfortunately, it still looks weird to me.
-> 
-> More precisely, we are allocating and registering a number of genpds,
-> that corresponds to the sum of "soc->num_domains +
-> soc->num_hwv_domains". The index each genpd gets in the array (struct
-> genpd_onecell_data) must correspond to the index specified in DT, for
-> both a consumer-node and a child-domain-node, right?
-> 
-> It seems like adding them dynamically changes the index. In other
-> words, the index specified using the "reg" property in a
-> child-domain-node, may not match what a consumer-node should specify
-> in its "power-domains" property. Isn't that a problem? Perhaps not,
-> because we never have both "scpsys_domain_data" and
-> "scpsys_hwv_domain_data", but then why are we adding them in ->probe()
-> with "soc->num_domains + soc->num_hwv_domains"?
+> Ohno! I wrote in mtk-scpsys.c, thank you for telling me about this.
 > 
 
-As you understood, having both is not really supported right now, and the
-intention there was to have the flexibility to do so without restructuring
-the entire thing in the future.
+I really have to add a comment in that driver saying that it's deprecated and it
+shall never be used ever again, if not for already present legacy SoCs, which
+should get anyway migrated to mtk-pm-domains for good measure (but I don't have
+any of those, and I can't do that myself).
 
-Though, from what I understand, the confusion comes from a single line (and
-reading it again, I do agree, because I got confused myself for a moment as
-well, and I'm the one who wrote this, so that's bad bad bad):
+>>> - eMMC/SD (MSDC)
+>> I can confirm that the MSDC controller in MT6589 will work with mtk-sd, there may
+>> be some very small modifications to be done.... if any.
+>> The mtk-sd driver does support "very old" SoCs already :-)
+> 
+> I forgot to add "CONFIG_REGULATOR_FIXED_VOLTAGE=y".
+> SD is working and can boot from it.
+> However, increasing the frequency causes errors,
+> so adjustments are necessary.
 
-	num_domains = soc->num_domains + soc->num_hwv_domains;
+Told ya! :-)
 
-where, to avoid confusion, this should've been:
+Cool to know that you're getting nicer and nicer progress over this!
 
-	num_domains = soc->num_domains ?
-		      soc->num_domains : soc->num_hwv_domains;
+> 
+>> Keep up the good work!
+> 
+> I will continue to do my best!
+> Further news will be sent via patch.
+> 
 
-(perhaps with a check `if (num_domains && num_hwv_domains) dev_err(only one
-  supported)` but being this taken from hardcoded data, I'm not really for it)
-
-...and still, like the proposed fix does:
-
-        scpsys->pd_data.num_domains = num_domains;
-
-
-While I agree, again, in that the code could be improved (and it shall be),
-how the logic behaves, right now, with the proposed fix, still looks good to me.
-
-I can eventually just send a patch that clarifies the `num_domains` if you prefer.
+Patiently waiting, and excited to see the news!
 
 Cheers,
 Angelo
-
-> [...]
-> 
-> Kind regards
-> Uffe
-
-
 
