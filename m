@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A610B106ACC9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 16:38:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C631106ACC9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 16:38:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EKAEulDdVQpUy/F6OpD/8nSvWxKf3rH6D2RiMfRuwp8=; b=t8bjHDSEA6gPiZxD0+dY1mMgmx
-	vo9NPy4pPp7Nbky99itd8/NuBZyy0BVEpdhkRBlPgsE1b5/KGYL1er6qhn6qteFfUQlgfySxPP0KB
-	nqKtYy+2SsxAALNqxk3kZCjasc5x8gQAGv6ahejZgVV7dOLd3aDbfIIjqTZARf7oul6FFM8Q2kPZI
-	raknl6JW1i16t0Va7p0VXU8u8iSHg0RaEEvbDgFlAWmX/EpAupFm5pQHX1saUstwh9aqbUJGYxEiZ
-	9yAa+hoL9LX5Tcjc24FMB7xhJKRKjbeuvotDIzB8HCBzsnIc0Un9p/ylAGuX0iJ86kP4C9bCeRai+
-	B+Yafzww==;
+	bh=OkpaxYlsToPKG5PCwsUr7hGf9f4Il4PfIr73LI8TjoI=; b=1yG0xkGnN/a+/p+n4ZLA5kzWN4
+	qXrICnXoO9cMW6DD4JtRBnIKVdgGfMOlBr6OttZ7CmajQCD4VsWN37uR6apEH3BgJW0mzhzP+cIRP
+	Jyc1dxsc7/RbkMqLR0I/6nW65mFD4U9iL7448EQLs19bLwuzfLfTGlPfDx5W7bBWjk0F1o34xwm7t
+	LZVSF/kTR0GegfKjAuR085yOQb5ORIYsJ5pgZKME9FLJPSz4WdN2hVBQaQdpN6AIqrMPhlN5WzpOP
+	MlH3vopumhKdACdIwbHB8pVmDsjUyXYZZeZ/VtXepAYwVJ1Q498JJmcJZRAJSJzKVNmSyMUyNPpuu
+	nQ3q6iMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0j39-0000000EaGz-3QrT;
-	Thu, 12 Mar 2026 16:38:16 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
+	id 1w0j3E-0000000EaL8-2rsP;
+	Thu, 12 Mar 2026 16:38:20 +0000
+Received: from m16.mail.163.com ([220.197.31.5])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0j36-0000000EaCC-1F8R;
-	Thu, 12 Mar 2026 16:38:14 +0000
+	id 1w0j37-0000000EaDm-0pxP;
+	Thu, 12 Mar 2026 16:38:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=EK
-	AEulDdVQpUy/F6OpD/8nSvWxKf3rH6D2RiMfRuwp8=; b=mM77P+dWkFeNfJifuo
-	hzNgYr2j2etbXn1mIt//3mZFUnDmV36czGxa8guAgfzEEaaikrU6M8afVB+7xLFC
-	1A9UQQsbZQ0W99NKeGbqhaEKMWyOGe3sXMu36sf79x6LFxIe0nKFrGULWQl714LD
-	2G2U43Eun5aGjegfT6ztU/KeI=
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=Ok
+	paxYlsToPKG5PCwsUr7hGf9f4Il4PfIr73LI8TjoI=; b=eQpOfdy+f+3rEs3ayp
+	FFmg+oe9VhQ3UaTIEtJHMFqD2J11J7uJDGqT3O8mqbS5EMx1SV9iS8pw1NSyp9sV
+	VbyBj0KSBU/yDfCijZroSmu8kGdORGgLCYOpkIga+NuvRuln8eeWRq1+67iHhVpn
+	1fiqSRB8KcMquhbnxU9p2D25Q=
 Received: from zhb.. (unknown [])
-	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wDnN1Gl67JpMC_OAQ--.12929S3;
-	Fri, 13 Mar 2026 00:36:59 +0800 (CST)
+	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wDnN1Gl67JpMC_OAQ--.12929S6;
+	Fri, 13 Mar 2026 00:37:02 +0800 (CST)
 From: Hans Zhang <18255117159@163.com>
 To: lpieralisi@kernel.org,
 	jingoohan1@gmail.com,
@@ -57,24 +57,24 @@ Cc: robh@kernel.org,
 	linux-pci@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Hans Zhang <18255117159@163.com>
-Subject: [PATCH v8 1/5] PCI: Add pcie_get_link_speed() helper for safe array access
-Date: Fri, 13 Mar 2026 00:36:48 +0800
-Message-Id: <20260312163652.113228-2-18255117159@163.com>
+Subject: [PATCH v8 4/5] PCI: controller: Validate max-link-speed
+Date: Fri, 13 Mar 2026 00:36:51 +0800
+Message-Id: <20260312163652.113228-5-18255117159@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260312163652.113228-1-18255117159@163.com>
 References: <20260312163652.113228-1-18255117159@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDnN1Gl67JpMC_OAQ--.12929S3
-X-Coremail-Antispam: 1Uf129KBjvJXoW7WF48JF4fKFW8CrWUXr13urg_yoW8ZF43pF
-	W2kw1Fyr10qF13Xr43Zas8uFy5X3ZxGFW7GrW7GasF9F43Jr9xXr4a9rWfJr9akrsrZry2
-	qF13tF4UC3W2yF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zEF1vxUUUUU=
+X-CM-TRANSID: _____wDnN1Gl67JpMC_OAQ--.12929S6
+X-Coremail-Antispam: 1Uf129KBjvJXoWxur1rGryftF1rKryUGFyDKFg_yoW5Zr18pa
+	9rA3WIyF1UJF45ur4Dt3Z8WF1Yq3ZxZrWDJ3s3W3W7uFnxGFZ8GFyj9FyftF97KFs7ur17
+	X3W7tF47GanFyF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0piqg43UUUUU=
 X-Originating-IP: [240e:b8f:927e:1000:1caf:6d92:f4ee:5e02]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCxAssz2my66tRVQAA3z
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCxA4t0Gmy665RnQAA3l
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_093812_817531_F9654F67 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20260312_093813_576941_D2D38A5F 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,63 +89,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The pcie_link_speed[] array is indexed by PCIe generation numbers
-(1 = 2.5 GT/s, 2 = 5 GT/s, ...).  Several drivers use it directly,
-which can lead to out-of-bounds accesses if an invalid generation
-number is used.
+Add validation for the "max-link-speed" DT property in three more
+drivers, using the pcie_get_link_speed() helper.
 
-Introduce a helper function pcie_get_link_speed() that returns the
-corresponding enum pci_bus_speed value for a given generation number,
-or PCI_SPEED_UNKNOWN if the generation is out of range.  This will
-allow us to safely handle invalid values after the range check is
-removed from of_pci_get_max_link_speed().
+- brcmstb: If the value is missing or invalid, fall back to no
+  limitation (pcie->gen = 0).  Fix the previous incorrect logic.
+- mediatek-gen3: If the value is missing or invalid, use the maximum
+  speed supported by the controller.
+- rzg3s-host: If the value is missing or invalid, fall back to Gen2.
+
+This ensures that all users of of_pci_get_max_link_speed() are ready
+for the removal of the central range check.
 
 Signed-off-by: Hans Zhang <18255117159@163.com>
 ---
- drivers/pci/pci.h   |  2 ++
- drivers/pci/probe.c | 16 ++++++++++++++++
- 2 files changed, 18 insertions(+)
+ drivers/pci/controller/pcie-brcmstb.c       | 5 +++--
+ drivers/pci/controller/pcie-mediatek-gen3.c | 2 +-
+ drivers/pci/controller/pcie-rzg3s-host.c    | 2 +-
+ 3 files changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
-index 13d998fbacce..6bf3e59f42e5 100644
---- a/drivers/pci/pci.h
-+++ b/drivers/pci/pci.h
-@@ -108,6 +108,8 @@ struct pcie_tlp_log;
- 				 PCI_EXP_DEVCTL_FERE | PCI_EXP_DEVCTL_URRE)
+diff --git a/drivers/pci/controller/pcie-brcmstb.c b/drivers/pci/controller/pcie-brcmstb.c
+index 062f55690012..714bcab97b60 100644
+--- a/drivers/pci/controller/pcie-brcmstb.c
++++ b/drivers/pci/controller/pcie-brcmstb.c
+@@ -1442,7 +1442,7 @@ static int brcm_pcie_start_link(struct brcm_pcie *pcie)
+ 	cls = FIELD_GET(PCI_EXP_LNKSTA_CLS, lnksta);
+ 	nlw = FIELD_GET(PCI_EXP_LNKSTA_NLW, lnksta);
+ 	dev_info(dev, "link up, %s x%u %s\n",
+-		 pci_speed_string(pcie_link_speed[cls]), nlw,
++		 pci_speed_string(pcie_get_link_speed(cls)), nlw,
+ 		 ssc_good ? "(SSC)" : "(!SSC)");
  
- extern const unsigned char pcie_link_speed[];
-+unsigned char pcie_get_link_speed(int speed);
-+
- extern bool pci_early_dump;
+ 	return 0;
+@@ -2072,7 +2072,8 @@ static int brcm_pcie_probe(struct platform_device *pdev)
+ 		return PTR_ERR(pcie->clk);
  
- extern struct mutex pci_rescan_remove_lock;
-diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-index bccc7a4bdd79..a95afbcee421 100644
---- a/drivers/pci/probe.c
-+++ b/drivers/pci/probe.c
-@@ -783,6 +783,22 @@ const unsigned char pcie_link_speed[] = {
- };
- EXPORT_SYMBOL_GPL(pcie_link_speed);
+ 	ret = of_pci_get_max_link_speed(np);
+-	pcie->gen = (ret < 0) ? 0 : ret;
++	if (pcie_get_link_speed(ret) == PCI_SPEED_UNKNOWN)
++		pcie->gen = 0;
  
-+/**
-+ * pcie_link_speed_value - Get speed value from PCIe generation number
-+ * @speed: PCIe speed (1-based: 1 = 2.5GT, 2 = 5GT, ...)
-+ *
-+ * Returns the speed value (e.g., PCIE_SPEED_2_5GT) if @speed is valid,
-+ * otherwise returns PCI_SPEED_UNKNOWN.
-+ */
-+unsigned char pcie_get_link_speed(int speed)
-+{
-+	if (speed <= 0 || speed >= ARRAY_SIZE(pcie_link_speed))
-+		return PCI_SPEED_UNKNOWN;
-+
-+	return pcie_link_speed[speed];
-+}
-+EXPORT_SYMBOL_GPL(pcie_get_link_speed);
-+
- const char *pci_speed_string(enum pci_bus_speed speed)
- {
- 	/* Indexed by the pci_bus_speed enum */
+ 	pcie->ssc = of_property_read_bool(np, "brcm,enable-ssc");
+ 
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index 75ddb8bee168..3b903ef7d3cf 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -1150,7 +1150,7 @@ static int mtk_pcie_setup(struct mtk_gen3_pcie *pcie)
+ 		return err;
+ 
+ 	err = of_pci_get_max_link_speed(pcie->dev->of_node);
+-	if (err) {
++	if (pcie_get_link_speed(err) != PCI_SPEED_UNKNOWN) {
+ 		/* Get the maximum speed supported by the controller */
+ 		max_speed = mtk_pcie_get_controller_max_link_speed(pcie);
+ 
+diff --git a/drivers/pci/controller/pcie-rzg3s-host.c b/drivers/pci/controller/pcie-rzg3s-host.c
+index 2809112e6317..00a11f986117 100644
+--- a/drivers/pci/controller/pcie-rzg3s-host.c
++++ b/drivers/pci/controller/pcie-rzg3s-host.c
+@@ -966,7 +966,7 @@ static int rzg3s_pcie_set_max_link_speed(struct rzg3s_pcie_host *host)
+ 	ls = readw_relaxed(host->pcie + pcie_cap + PCI_EXP_LNKSTA);
+ 	cs2 = readl_relaxed(host->axi + RZG3S_PCI_PCSTAT2);
+ 
+-	switch (pcie_link_speed[host->max_link_speed]) {
++	switch (pcie_get_link_speed(host->max_link_speed)) {
+ 	case PCIE_SPEED_5_0GT:
+ 		max_supported_link_speeds = GENMASK(PCI_EXP_LNKSTA_CLS_5_0GB - 1, 0);
+ 		link_speed = PCI_EXP_LNKCTL2_TLS_5_0GT;
 -- 
 2.34.1
 
