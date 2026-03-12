@@ -4,72 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF5B8106ACCF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 16:53:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AE2E106ACCD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 17:07:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Hun8qRSx+c81aOcVRS1X8gTZpBZdlow4lndHrL4U0TU=; b=V1lyE38u7bMGr0pJqjv5VJ9cQE
-	w4TJwBlEa/XnjSzdBwuxuShbSbiz2NejfTHvlhv86pHaqCtR12swZikf47OCaBwmPYQbpVPbWbrM7
-	n0/NaSSldyRZRko/MxuWbyFGl5O7C57NFVwgbsOREzlzmaatdPjO3cNFtZZmad4tVAwaDotIcL2WT
-	Fq+DhuUJGhk9iG1T1JbkE2n4eQ+LgcJNn1inlwhATAt69//6cBDPr2lbYg9eNvw1SVnJfuO8mkhOQ
-	cU/MsNKkEHnEFDhwiQzwXo+ZGZDhfCkDXTnes764OC+JFMxBg/8aP5kiHaLIEJrBjUtK66EZq+7fI
-	qZku4afA==;
+	bh=r5d3U58A7EbRwEFn4KrmQ5cld9P0wudWqSFmPnXCnnU=; b=zmy8TuYtIL5Cqyo4o/+ZZQ+nvu
+	fCWQ577M5tR3IEew4gpRbeLetEQZ14KgrIRtWBVwTZ9Z9CiDB1YXoAou43U061/YhRvDKi9fok30/
+	26f94vYk/VVVYxgZNAW6aXSoj0VDpl1ttRqR182aarZSfsRa3dSy/LEtpFTWcjCYA56JsfZxTAYhK
+	dKwYZJ6HH5uXp7vUET5FUIevGgWxD6L7cVPP3dkrS0QUX2BskfbI5hgNdIk6EoB9Kd5/mWDdGGV57
+	R28at6795bgC64xwbEWO/NkDU7WC2/P4zt2FoZthX2MWhKKsTAS+Po9cpyNYMRI/WB/TGyMclTA4y
+	r0O0fJ9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0jIJ-0000000EdQV-3O0k;
-	Thu, 12 Mar 2026 16:53:55 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1w0jV8-0000000EfI9-29nP;
+	Thu, 12 Mar 2026 17:07:10 +0000
+Received: from mail-pl1-x663.google.com ([2607:f8b0:4864:20::663])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0jIG-0000000EdNT-0O4Z
+	id 1w0jV6-0000000EfHC-0zQU
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Mar 2026 16:53:53 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 3CFE82C870D;
-	Thu, 12 Mar 2026 17:53:46 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1773334428; h=from:subject:date:message-id:to:cc:mime-version:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=Hun8qRSx+c81aOcVRS1X8gTZpBZdlow4lndHrL4U0TU=;
-	b=l8A/OjO19AB3kGar5jy2BBZYBTLdZ7lVnXXpGFSz56etijPSpu4wle11E7UW/z1bTNeGGP
-	VyllTeK0O611Ym3xdVvxt8SHI9Gz8GWcoTGTwj3retpeKTc1yJrPetAvzdDAZUXckThZxR
-	aaZIb4N70qETFbUIP7qDzz1um6QGfyzrQLmAVBQ72v50smTnwl5Q7r7cFt9VlWAZG7nLQc
-	4w/Ee0no8N6EubpBSmdMCnBMlCLz5B6pBvWps6FXY4aZ+jlgpwfNbja92SyNlijW9AIjim
-	fG4Wr9f575atj+GH6GRc9eFo6PIhMlmW81byoy/WXOu06DwaPz8CseuMQ1b/8Q==
-From: Caleb James DeLisle <cjd@cjdns.fr>
-To: linux-pci@vger.kernel.org
-Cc: linux-mips@vger.kernel.org,
-	naseefkm@gmail.com,
-	ryder.lee@mediatek.com,
-	bhelgaas@google.com,
-	lpieralisi@kernel.org,
-	kwilczynski@kernel.org,
-	mani@kernel.org,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	ansuelsmth@gmail.com,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Caleb James DeLisle <cjd@cjdns.fr>,
-	Bjorn Helgaas <helgaas@kernel.org>
-Subject: [PATCH 3/3] PCI: Skip bridge window reads when window is not supported
-Date: Thu, 12 Mar 2026 16:53:32 +0000
-Message-Id: <20260312165332.569772-4-cjd@cjdns.fr>
-In-Reply-To: <20260312165332.569772-1-cjd@cjdns.fr>
-References: <20260312165332.569772-1-cjd@cjdns.fr>
+	Thu, 12 Mar 2026 17:07:09 +0000
+Received: by mail-pl1-x663.google.com with SMTP id d9443c01a7336-2ad9516a653so5998625ad.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Mar 2026 10:07:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1773335227; x=1773940027;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:dkim-signature:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=r5d3U58A7EbRwEFn4KrmQ5cld9P0wudWqSFmPnXCnnU=;
+        b=HpDe2JjEoeIsHcUkh2A6OPUtv6ASwm5Tu/8qvuxKEKGskX3KwbBYRQkjmaf6MwRSFC
+         sK1+OuDekw6mj2+l7ctBsl4djbiK6Uh9ZCNqVcyGvwz7tCriT2mGGLXOyhfp1PctL6xB
+         ZI5LuG4w4jbFFjO1lifPbeZ/Cda/LWRSr1yl87TqCA5YvroEdgLIE90lLOISzmovUBIj
+         Xto/IisSYJPmkPvhwA2MBlNaoEU7AKwFq8KfnYG3OYc3n5aDTLS39h5vBn71BxjDsY/S
+         F051JwrZvjVw8nW7WbQ4NpE2ZF6NXms/FaRDSazPE0AB1CVfEOUG2Yu1vyekEpJoL8zr
+         n1cQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXD88ZLJT5nrjc7fuA5K0zZs7Ahsxa2JTc0R4yjidfCYLqOaBFnLVwniU2unuAuEl9yXtZUFcZyYXcg5kiqiw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxA1SRbnRZ/7NDfrv/UwGQfV29n4iQ84B3WwB4n74yBsIZ3rL2L
+	A/aolVZXCtYAii7q2/fMgEfRcRbl1ytiQUIM7ysrC4eVhd7SDzjoZCRJuc0gcxGb+QIscn4xI2G
+	JrpBIEyhtZYjAvBU6RzV5Bz+kt1ayQfCyz5tSS+Q4wZ0BLWPG52H+zv2w7W8y1nAZ3AzWieygjf
+	nrkL2BVNKipeO9GyEGXRSYPraKImfWnh6QUDJeRmreiPGoE6cdmvcpO0Cn1Zxjsyd4LaDDWoL+9
+	yXNP0QrT3eV9MBv+8cufm6Vxc0QiUpK
+X-Gm-Gg: ATEYQzwiw0UtCYuQDMHsuJkps7y/khDRaNmNrJCEyV+k+HvpE7vMpxVCo5ltS3kyLwk
+	6OC2LYDkqQyCwhbcfpJYkrAg7cPHMwrYAWZ5j5jXx1TgSaipDt4b2KEnpDqpZ0VRXS77fFP6P+a
+	tRv5bx1wkPlaceid7qtMm5lZYLUotuPmiiuWuSnomVlwFz0/cZ+eZPVsV6ubvg5sFWAZBzJAxX2
+	N/+g88A59GbVVv8OMcSvRgxOQ8uqzrziWyiGNGRnOYez5tqia/4RRI8EXCyImvZbql/RNw/kA5n
+	lyvd5X/oO5UtXSR/sK9YX0MfVsUB4Mv1dn7Vbfo4lfyIHCtJh/nirgO6At7dpnYW5elK54abF9M
+	EA86ek61zdRRFwRsfjvD/JwdvnaEF2LaE/ySzKM8NvHBFNEXqPDRWXIcuJN98nh4AXQWM3fz7n7
+	bT7YnrEbY9RCYssv1vXDgXBiypEIx696VX4XnS4i0RRfVmMcWqlEoeBxXerA5AAK3t
+X-Received: by 2002:a17:903:903:b0:2ae:57e6:616c with SMTP id d9443c01a7336-2aeca941dd2mr2603095ad.3.1773335226708;
+        Thu, 12 Mar 2026 10:07:06 -0700 (PDT)
+Received: from smtp-us-east1-p01-i01-si01.dlp.protect.broadcom.com (address-144-49-247-117.dlp.protect.broadcom.com. [144.49.247.117])
+        by smtp-relay.gmail.com with ESMTPS id d9443c01a7336-2aeae32c4f4sm7651135ad.45.2026.03.12.10.07.06
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Mar 2026 10:07:06 -0700 (PDT)
+X-Relaying-Domain: broadcom.com
+X-CFilter-Loop: Reflected
+Received: by mail-qv1-f72.google.com with SMTP id 6a1803df08f44-89a09295650so68537076d6.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 12 Mar 2026 10:07:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=broadcom.com; s=google; t=1773335225; x=1773940025; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=r5d3U58A7EbRwEFn4KrmQ5cld9P0wudWqSFmPnXCnnU=;
+        b=BkP0uoDG275QgTYWd9u9oDfIuu6+NIUu32H0dtvGxPE2MTgVTLcZBMVbwuzHzw1KSc
+         SfaRRgjaInscN5wZRtLOMXmc6vVosD0/CKGhIhgHOISSZzTl7I6QIKdnMPyr5fLqctU9
+         gnpj6fTifERm2xN2nHzWyQ/llZF9Upb6MdllE=
+X-Forwarded-Encrypted: i=1; AJvYcCX3zddRwRdzQXazosJ9iUcqQXHVGn1nQ8td6szpqhy7OFMOuyTJb171m8LRWVteDgd1EJ8zeBSSjEaq35DP4A==@lists.infradead.org
+X-Received: by 2002:a05:6214:29c8:b0:89a:116b:e674 with SMTP id 6a1803df08f44-89a81d5dfcemr7819686d6.20.1773335225411;
+        Thu, 12 Mar 2026 10:07:05 -0700 (PDT)
+X-Received: by 2002:a05:6214:29c8:b0:89a:116b:e674 with SMTP id 6a1803df08f44-89a81d5dfcemr7818666d6.20.1773335224670;
+        Thu, 12 Mar 2026 10:07:04 -0700 (PDT)
+Received: from [10.67.48.245] ([192.19.223.252])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-89a65d17023sm38864336d6.49.2026.03.12.10.07.01
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Mar 2026 10:07:04 -0700 (PDT)
+Message-ID: <9040aef7-1981-44c8-a25b-2179b892d37e@broadcom.com>
+Date: Thu, 12 Mar 2026 10:06:59 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Last-TLS-Session-Version: TLSv1.3
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 4/5] PCI: controller: Validate max-link-speed
+To: Hans Zhang <18255117159@163.com>, lpieralisi@kernel.org,
+ jingoohan1@gmail.com, mani@kernel.org, kwilczynski@kernel.org,
+ bhelgaas@google.com, helgaas@kernel.org, florian.fainelli@broadcom.com,
+ jim2101024@gmail.com
+Cc: robh@kernel.org, ilpo.jarvinen@linux.intel.com,
+ linux-arm-msm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, claudiu.beznea.uj@bp.renesas.com,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+ linux-omap@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20260312163652.113228-1-18255117159@163.com>
+ <20260312163652.113228-5-18255117159@163.com>
+Content-Language: en-US, fr-FR
+From: Florian Fainelli <florian.fainelli@broadcom.com>
+Autocrypt: addr=florian.fainelli@broadcom.com; keydata=
+ xsBNBFPAG8ABCAC3EO02urEwipgbUNJ1r6oI2Vr/+uE389lSEShN2PmL3MVnzhViSAtrYxeT
+ M0Txqn1tOWoIc4QUl6Ggqf5KP6FoRkCrgMMTnUAINsINYXK+3OLe7HjP10h2jDRX4Ajs4Ghs
+ JrZOBru6rH0YrgAhr6O5gG7NE1jhly+EsOa2MpwOiXO4DE/YKZGuVe6Bh87WqmILs9KvnNrQ
+ PcycQnYKTVpqE95d4M824M5cuRB6D1GrYovCsjA9uxo22kPdOoQRAu5gBBn3AdtALFyQj9DQ
+ KQuc39/i/Kt6XLZ/RsBc6qLs+p+JnEuPJngTSfWvzGjpx0nkwCMi4yBb+xk7Hki4kEslABEB
+ AAHNMEZsb3JpYW4gRmFpbmVsbGkgPGZsb3JpYW4uZmFpbmVsbGlAYnJvYWRjb20uY29tPsLB
+ IQQQAQgAywUCZWl41AUJI+Jo+hcKAAG/SMv+fS3xUQWa0NryPuoRGjsA3SAUAAAAAAAWAAFr
+ ZXktdXNhZ2UtbWFza0BwZ3AuY29tjDAUgAAAAAAgAAdwcmVmZXJyZWQtZW1haWwtZW5jb2Rp
+ bmdAcGdwLmNvbXBncG1pbWUICwkIBwMCAQoFF4AAAAAZGGxkYXA6Ly9rZXlzLmJyb2FkY29t
+ Lm5ldAUbAwAAAAMWAgEFHgEAAAAEFQgJChYhBNXZKpfnkVze1+R8aIExtcQpvGagAAoJEIEx
+ tcQpvGagWPEH/2l0DNr9QkTwJUxOoP9wgHfmVhqc0ZlDsBFv91I3BbhGKI5UATbipKNqG13Z
+ TsBrJHcrnCqnTRS+8n9/myOF0ng2A4YT0EJnayzHugXm+hrkO5O9UEPJ8a+0553VqyoFhHqA
+ zjxj8fUu1px5cbb4R9G4UAySqyeLLeqnYLCKb4+GklGSBGsLMYvLmIDNYlkhMdnnzsSUAS61
+ WJYW6jjnzMwuKJ0ZHv7xZvSHyhIsFRiYiEs44kiYjbUUMcXor/uLEuTIazGrE3MahuGdjpT2
+ IOjoMiTsbMc0yfhHp6G/2E769oDXMVxCCbMVpA+LUtVIQEA+8Zr6mX0Yk4nDS7OiBlvOwE0E
+ U8AbwQEIAKxr71oqe+0+MYCc7WafWEcpQHFUwvYLcdBoOnmJPxDwDRpvU5LhqSPvk/yJdh9k
+ 4xUDQu3rm1qIW2I9Puk5n/Jz/lZsqGw8T13DKyu8eMcvaA/irm9lX9El27DPHy/0qsxmxVmU
+ pu9y9S+BmaMb2CM9IuyxMWEl9ruWFS2jAWh/R8CrdnL6+zLk60R7XGzmSJqF09vYNlJ6Bdbs
+ MWDXkYWWP5Ub1ZJGNJQ4qT7g8IN0qXxzLQsmz6tbgLMEHYBGx80bBF8AkdThd6SLhreCN7Uh
+ IR/5NXGqotAZao2xlDpJLuOMQtoH9WVNuuxQQZHVd8if+yp6yRJ5DAmIUt5CCPcAEQEAAcLB
+ gQQYAQIBKwUCU8AbwgUbDAAAAMBdIAQZAQgABgUCU8AbwQAKCRCTYAaomC8PVQ0VCACWk3n+
+ obFABEp5Rg6Qvspi9kWXcwCcfZV41OIYWhXMoc57ssjCand5noZi8bKg0bxw4qsg+9cNgZ3P
+ N/DFWcNKcAT3Z2/4fTnJqdJS//YcEhlr8uGs+ZWFcqAPbteFCM4dGDRruo69IrHfyyQGx16s
+ CcFlrN8vD066RKevFepb/ml7eYEdN5SRALyEdQMKeCSf3mectdoECEqdF/MWpfWIYQ1hEfdm
+ C2Kztm+h3Nkt9ZQLqc3wsPJZmbD9T0c9Rphfypgw/SfTf2/CHoYVkKqwUIzI59itl5Lze+R5
+ wDByhWHx2Ud2R7SudmT9XK1e0x7W7a5z11Q6vrzuED5nQvkhAAoJEIExtcQpvGagugcIAJd5
+ EYe6KM6Y6RvI6TvHp+QgbU5dxvjqSiSvam0Ms3QrLidCtantcGT2Wz/2PlbZqkoJxMQc40rb
+ fXa4xQSvJYj0GWpadrDJUvUu3LEsunDCxdWrmbmwGRKqZraV2oG7YEddmDqOe0Xm/NxeSobc
+ MIlnaE6V0U8f5zNHB7Y46yJjjYT/Ds1TJo3pvwevDWPvv6rdBeV07D9s43frUS6xYd1uFxHC
+ 7dZYWJjZmyUf5evr1W1gCgwLXG0PEi9n3qmz1lelQ8lSocmvxBKtMbX/OKhAfuP/iIwnTsww
+ 95A2SaPiQZA51NywV8OFgsN0ITl2PlZ4Tp9hHERDe6nQCsNI/Us=
+In-Reply-To: <20260312163652.113228-5-18255117159@163.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-DetectorID-Processed: b00c1d49-9d2e-4205-b15f-d015386d3d5e
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_095352_336709_27043DF4 
-X-CRM114-Status: UNSURE (   8.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260312_100708_270129_1D67326C 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,51 +156,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-pci_read_bridge_io() and pci_read_bridge_mmio_pref() read bridge window
-registers unconditionally. If the registers are hardwired to zero
-(not implemented), both base and limit will be 0. Since (0 <= 0) is
-true, a bogus window [mem 0x00000000-0x000fffff] or [io 0x0000-0x0fff]
-gets created.
+On 3/12/26 09:36, Hans Zhang wrote:
+> Add validation for the "max-link-speed" DT property in three more
+> drivers, using the pcie_get_link_speed() helper.
+> 
+> - brcmstb: If the value is missing or invalid, fall back to no
+>    limitation (pcie->gen = 0).  Fix the previous incorrect logic.
+> - mediatek-gen3: If the value is missing or invalid, use the maximum
+>    speed supported by the controller.
+> - rzg3s-host: If the value is missing or invalid, fall back to Gen2.
+> 
+> This ensures that all users of of_pci_get_max_link_speed() are ready
+> for the removal of the central range check.
+> 
+> Signed-off-by: Hans Zhang <18255117159@163.com>
+> ---
+>   drivers/pci/controller/pcie-brcmstb.c       | 5 +++--
 
-pci_read_bridge_windows() already detects unsupported windows by
-testing register writability and sets io_window/pref_window flags
-accordingly. Check these flags at the start of pci_read_bridge_io()
-and pci_read_bridge_mmio_pref() to skip reading registers when the
-window is not supported.
+For pcie-brcmstb.c:
 
-Suggested-by: Bjorn Helgaas <helgaas@kernel.org>
-Link: https://lore.kernel.org/all/20260113210259.GA715789@bhelgaas/
-Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
-Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
----
- drivers/pci/probe.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-index bccc7a4bdd79..4eacb741b4ec 100644
---- a/drivers/pci/probe.c
-+++ b/drivers/pci/probe.c
-@@ -395,6 +395,9 @@ static void pci_read_bridge_io(struct pci_dev *dev, struct resource *res,
- 	unsigned long io_mask, io_granularity, base, limit;
- 	struct pci_bus_region region;
- 
-+	if (!dev->io_window)
-+		return;
-+
- 	io_mask = PCI_IO_RANGE_MASK;
- 	io_granularity = 0x1000;
- 	if (dev->io_window_1k) {
-@@ -465,6 +468,9 @@ static void pci_read_bridge_mmio_pref(struct pci_dev *dev, struct resource *res,
- 	pci_bus_addr_t base, limit;
- 	struct pci_bus_region region;
- 
-+	if (!dev->pref_window)
-+		return;
-+
- 	pci_read_config_word(dev, PCI_PREF_MEMORY_BASE, &mem_base_lo);
- 	pci_read_config_word(dev, PCI_PREF_MEMORY_LIMIT, &mem_limit_lo);
- 	base64 = (mem_base_lo & PCI_PREF_RANGE_MASK) << 16;
+Reviewed-by: Florian Fainelli <florian.fainelli@broadcom.com>
 -- 
-2.39.5
+Florian
 
 
