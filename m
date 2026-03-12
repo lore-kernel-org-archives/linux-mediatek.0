@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58DF4106ACD1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 16:53:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F50C106ACD0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 16:53:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XfeLkzD3jHviFHfsrPQFth60rKx2osGAGkwc8bgjjGk=; b=wy0w/Okow7R9ihNZJhkXUKtQMo
-	oyjcf9vTVapgkq26PqehtJeJgZuxodPHPBHXQNNBooK7CTViFGq9lfkw79V5nkmk5YkvukOEufuTv
-	Ur6OuNuGpBU730trDEW7oZDzGSY4RYkKgvyO+Ndnbpxt0VI6BQts46cTYiKpr9p/zvSyNsbuzKE7M
-	GxBPrUv5BGQnGJ+SAxBvVFoDKe6su5zJvL4BTJVdf8UnNSnpUPVfddeM7EecZcc/86Ruu/ar0MvLI
-	7SF92U7wNShdmxVnvNjpRWTtVpNCYPV4iNZcf/L12xGf5kJed48DdTfz00FcJlUiotKoiQv0K7XPo
-	ho8kkq1Q==;
+	bh=2wRrh0jjOE1IlR0y3h0y6zJysK8/ZS3R6V1I2f9MRJ0=; b=skKeElWY17VAs+Ax6z/lzons+n
+	HfUyd/PH1OFzAceHoW0kUvzxsLHiVekhRXrZ/kTCg0LdnBptsL5b1X7zs+y9ikMOl8dldKYjPNJpg
+	u6Fdjk6sFDyfuWyP2ZA5HhBmUkx7ACrxkXFbTRG69esj6VjWHCUVjwKHUiiXuHLf7UBJgIQxzK9Y1
+	LW0SVmDCAviGi9II+Px0j7gjZBMrhkSOo6EjBRlPs8Q+GTvcK9r3w1xVSRaTk55IZ+dYaNhyRzpeJ
+	xkid+lEb7jNIZ3QhSkYu6podcoxQNx1wBHydFzgNKfmnq1r+RbYmja5HmJGx+uAx9siau5bjuN2Av
+	mUA6C21g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0jIC-0000000EdMG-179U;
-	Thu, 12 Mar 2026 16:53:48 +0000
+	id 1w0jIE-0000000EdNo-2HpL;
+	Thu, 12 Mar 2026 16:53:50 +0000
 Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0jI9-0000000EdKe-3mEf
+	id 1w0jIC-0000000EdLN-0gih
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Mar 2026 16:53:47 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id AEC552C7C38;
-	Thu, 12 Mar 2026 17:53:40 +0100 (CET)
+	Thu, 12 Mar 2026 16:53:49 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id D26A42C7647;
+	Thu, 12 Mar 2026 17:53:43 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1773334423; h=from:subject:date:message-id:to:cc:mime-version:
+	t=1773334425; h=from:subject:date:message-id:to:cc:mime-version:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=XfeLkzD3jHviFHfsrPQFth60rKx2osGAGkwc8bgjjGk=;
-	b=bCBQVD9cJe9/f7Ts4lwAfzQ3rCqUU5OICxzvkbKnmPRDnRBybPrjcJA/h7urTkxBHCtxJy
-	k09A2nov3B6wYJ6EN8nKttBYyUBWdNLK1Gri0xB63RmPl1IqKmc6EJEmOUDVMjabV5VbAa
-	9XyFkoD77ySp7Id2ZC2dvj/jRm3PUyf++s+ZnYYHN6JuuTcM8YCYJ3NshUJ7W5M5Wbgjrd
-	ZK/1WrPlmszCT2Q+6Q6kJkLiudYWWnBrn4oxy8fTW/ylr0DXunrD6x/0afrVYkCkAXUw+H
-	cglfV/kl2ZFxMJVEeRQpofYKIugKXYxkZhuO99fJfyKarDGQKnbGP8kbYPHL2Q==
+	bh=2wRrh0jjOE1IlR0y3h0y6zJysK8/ZS3R6V1I2f9MRJ0=;
+	b=fsNWYQq6USMpXF0rR0mv+U64jAph+cKLF0yfrSDuf0EO7gDAO/vv1mWn4Mb1qF/GvQPzPD
+	M21VhGyb6Nee3jLkiwnjMkqbqymrOPU2kjPl4uf3AsyLU7WOJSvxpHNqzbjjr+Lq32u94N
+	JNcG/W0kcICuYUr1K4XGzjIm1o597SfDThe9mUHuHidbf3d3AeMmmAKHvKNxa8DOxZfD8g
+	sMzZ7D2KsbZ9iitpqRdb0oWiLcx0O1gWDlG2LQySJdE/95MP6DdroTjl/CvzI0DcCtieZU
+	4eCXnAyQqJeje39IKuo5Uztq85XuC0uugtDRRIvAuLMeCN8CqiI7TRCGQjqVTA==
 From: Caleb James DeLisle <cjd@cjdns.fr>
 To: linux-pci@vger.kernel.org
 Cc: linux-mips@vger.kernel.org,
@@ -57,18 +57,17 @@ Cc: linux-mips@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Caleb James DeLisle <cjd@cjdns.fr>
-Subject: [PATCH 1/3] dt-bindings: PCI: mediatek: Add support for EcoNet EN7528
-Date: Thu, 12 Mar 2026 16:53:30 +0000
-Message-Id: <20260312165332.569772-2-cjd@cjdns.fr>
+Subject: [PATCH 2/3] PCI: mediatek: Add support for EcoNet EN7528 SoC
+Date: Thu, 12 Mar 2026 16:53:31 +0000
+Message-Id: <20260312165332.569772-3-cjd@cjdns.fr>
 In-Reply-To: <20260312165332.569772-1-cjd@cjdns.fr>
 References: <20260312165332.569772-1-cjd@cjdns.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_095346_120075_CF0DE6E7 
-X-CRM114-Status: UNSURE (   8.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260312_095348_611855_35340F78 
+X-CRM114-Status: GOOD (  19.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,121 +82,199 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Introduce EcoNet EN7528 SoC compatible in MediaTek PCIe controller
-binding.
+Add support for the PCIe present on the EcoNet EN7528 (and EN751221) SoCs.
 
-EcoNet PCIe controller has the same configuration model as
-Mediatek v2 but is initiallized more similarly to an MT7621
-PCIe.
+These SoCs have a mix of Gen1 and Gen2 capable ports, but the Gen2 ports
+require re-training after startup.
 
+Co-developed-by: Ahmed Naseef <naseefkm@gmail.com>
+Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
+Co-developed-by: Caleb James DeLisle <cjd@cjdns.fr>
 Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
 ---
- .../bindings/pci/mediatek-pcie.yaml           | 81 +++++++++++++++++++
- 1 file changed, 81 insertions(+)
+ drivers/pci/controller/Kconfig         |   2 +-
+ drivers/pci/controller/pcie-mediatek.c | 118 +++++++++++++++++++++++++
+ 2 files changed, 119 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-index 0b8c78ec4f91..ae95b635f304 100644
---- a/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-@@ -14,6 +14,7 @@ properties:
-     oneOf:
-       - enum:
-           - airoha,an7583-pcie
-+          - econet,en7528-pcie
-           - mediatek,mt2712-pcie
-           - mediatek,mt7622-pcie
-           - mediatek,mt7629-pcie
-@@ -226,6 +227,31 @@ allOf:
+diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
+index 5aaed8ac6e44..f6a5fcacb38d 100644
+--- a/drivers/pci/controller/Kconfig
++++ b/drivers/pci/controller/Kconfig
+@@ -209,7 +209,7 @@ config PCI_MVEBU
  
-         mediatek,pbus-csr: false
+ config PCIE_MEDIATEK
+ 	tristate "MediaTek PCIe controller"
+-	depends on ARCH_AIROHA || ARCH_MEDIATEK || COMPILE_TEST
++	depends on ARCH_AIROHA || ARCH_MEDIATEK || ECONET || COMPILE_TEST
+ 	depends on OF
+ 	depends on PCI_MSI
+ 	select IRQ_MSI_LIB
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 5defa5cc4c2b..84064061652a 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -14,6 +14,7 @@
+ #include <linux/irqchip/chained_irq.h>
+ #include <linux/irqchip/irq-msi-lib.h>
+ #include <linux/irqdomain.h>
++#include <linux/kconfig.h>
+ #include <linux/kernel.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/msi.h>
+@@ -77,6 +78,7 @@
  
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: econet,en7528-pcie
-+    then:
-+      properties:
-+        clocks:
-+          maxItems: 1
-+
-+        clock-names:
-+          maxItems: 1
-+
-+        reset: false
-+
-+        reset-names: false
-+
-+        power-domain: false
-+
-+        mediatek,pbus-csr: false
-+
-+      required:
-+        - phys
-+        - phy-names
-+
- unevaluatedProperties: false
+ #define PCIE_CONF_VEND_ID	0x100
+ #define PCIE_CONF_DEVICE_ID	0x102
++#define PCIE_CONF_REV_CLASS	0x104
+ #define PCIE_CONF_CLASS_ID	0x106
  
- examples:
-@@ -436,3 +462,58 @@ examples:
-             };
-         };
-     };
+ #define PCIE_INT_MASK		0x420
+@@ -89,6 +91,11 @@
+ #define MSI_MASK		BIT(23)
+ #define MTK_MSI_IRQS_NUM	32
+ 
++#define EN7528_HOST_MODE	0x00804201
++#define EN7528_LINKUP_REG	0x50
++#define EN7528_RC0_LINKUP	BIT(1)
++#define EN7528_RC1_LINKUP	BIT(2)
 +
-+  # EN7528
-+  - |
-+    #include <dt-bindings/interrupt-controller/mips-gic.h>
-+    #include <dt-bindings/clock/en7523-clk.h>
-+    #include <dt-bindings/reset/airoha,en7523-reset.h>
+ #define PCIE_AHB_TRANS_BASE0_L	0x438
+ #define PCIE_AHB_TRANS_BASE0_H	0x43c
+ #define AHB2PCIE_SIZE(x)	((x) & GENMASK(4, 0))
+@@ -753,6 +760,86 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+ 	return 0;
+ }
+ 
++static int mtk_pcie_startup_port_en7528(struct mtk_pcie_port *port)
++{
++	struct mtk_pcie *pcie = port->pcie;
++	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
++	struct resource *mem = NULL;
++	struct resource_entry *entry;
++	u32 val, link_mask;
++	int err;
 +
-+    soc_3 {
-+        #address-cells = <1>;
-+        #size-cells = <1>;
++	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
++	if (entry)
++		mem = entry->res;
++	if (!mem)
++		return -EINVAL;
 +
-+        pcie@1fb81000 {
-+          compatible = "econet,en7528-pcie";
-+          device_type = "pci";
-+          linux,pci-domain = <0>;
-+          #address-cells = <3>;
-+          #size-cells = <2>;
++	if (!pcie->cfg) {
++		dev_err(pcie->dev, "EN7528: pciecfg syscon not available\n");
++		return -EINVAL;
++	}
 +
-+          reg = <0x1fb81000 0x1000>;
-+          reg-names = "port0";
++	/* Assert all reset signals */
++	writel(0, port->base + PCIE_RST_CTRL);
 +
-+          clocks = <&scuclk EN7523_CLK_PCIE>;
-+          clock-names = "sys_ck0";
++	/*
++	 * Enable PCIe link down reset, if link status changed from link up to
++	 * link down, this will reset MAC control registers and configuration
++	 * space.
++	 */
++	writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
 +
-+          phys = <&pcie_phy0>;
-+          phy-names = "pcie-phy0";
++	/*
++	 * Described in PCIe CEM specification sections 2.2 (PERST# Signal) and
++	 * 2.2.1 (Initial Power-Up (G3 to S0)). The deassertion of PERST#
++	 * should be delayed 100ms (TPVPERL) for the power and clock to become
++	 * stable.
++	 */
++	msleep(100);
 +
-+          ranges = <0x01000000 0 0x00000000 0x1f600000 0 0x00010000>,
-+                   <0x82000000 0 0x20000000 0x20000000 0 0x08000000>;
++	/* De-assert PHY, PE, PIPE, MAC and configuration reset */
++	val = readl(port->base + PCIE_RST_CTRL);
++	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
++	       PCIE_MAC_SRSTB | PCIE_CRSTB;
++	writel(val, port->base + PCIE_RST_CTRL);
 +
-+          interrupt-parent = <&intc>;
-+          interrupts = <23>;
-+          interrupt-names = "pcie_irq";
-+          bus-range = <0x00 0xff>;
-+          #interrupt-cells = <1>;
-+          interrupt-map-mask = <0 0 0 7>;
-+          interrupt-map = <0 0 0 1 &pcie_intc 0>,
-+              <0 0 0 2 &pcie_intc 1>,
-+              <0 0 0 3 &pcie_intc 2>,
-+              <0 0 0 4 &pcie_intc 3>;
++	writel(PCIE_CLASS_CODE | PCIE_REVISION_ID,
++	       port->base + PCIE_CONF_REV_CLASS);
++	writel(EN7528_HOST_MODE, port->base);
 +
-+          pcie_intc: interrupt-controller {
-+            interrupt-controller;
-+            #address-cells = <0>;
-+            #interrupt-cells = <1>;
-+          };
++	link_mask = (port->slot == 0) ? EN7528_RC0_LINKUP : EN7528_RC1_LINKUP;
 +
-+          slot0: pcie@0,0 {
-+            reg = <0x0000 0 0 0 0>;
-+            #address-cells = <3>;
-+            #size-cells = <2>;
-+            ranges;
-+          };
-+        };
-+    };
++	/* 100ms timeout value should be enough for Gen1/2 training */
++	err = regmap_read_poll_timeout(pcie->cfg, EN7528_LINKUP_REG, val,
++				       !!(val & link_mask), 20,
++				       100 * USEC_PER_MSEC);
++	if (err) {
++		dev_err(pcie->dev, "EN7528: port%d link timeout\n", port->slot);
++		return -ETIMEDOUT;
++	}
++
++	/* Set INTx mask */
++	val = readl(port->base + PCIE_INT_MASK);
++	val &= ~INTX_MASK;
++	writel(val, port->base + PCIE_INT_MASK);
++
++	if (IS_ENABLED(CONFIG_PCI_MSI))
++		mtk_pcie_enable_msi(port);
++
++	/* Set AHB to PCIe translation windows */
++	val = lower_32_bits(mem->start) |
++	      AHB2PCIE_SIZE(fls(resource_size(mem)));
++	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
++
++	val = upper_32_bits(mem->start);
++	writel(val, port->base + PCIE_AHB_TRANS_BASE0_H);
++
++	writel(WIN_ENABLE, port->base + PCIE_AXI_WINDOW0);
++
++	return 0;
++}
++
+ static void __iomem *mtk_pcie_map_bus(struct pci_bus *bus,
+ 				      unsigned int devfn, int where)
+ {
+@@ -1149,6 +1236,30 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+ 	if (err)
+ 		goto put_resources;
+ 
++	/* Retrain Gen1 links to reach Gen2 where supported */
++	if (pcie->soc->startup == mtk_pcie_startup_port_en7528) {
++		struct pci_bus *bus = host->bus;
++		struct pci_dev *rc = NULL;
++
++		while ((rc = pci_get_class(PCI_CLASS_BRIDGE_PCI << 8, rc))) {
++			int ret = -EOPNOTSUPP;
++
++			if (rc->bus != bus)
++				continue;
++
++			#if IS_BUILTIN(CONFIG_PCIE_MEDIATEK)
++			ret = pcie_retrain_link(rc, true);
++			#endif
++
++			if (!ret)
++				dev_info(dev, "port%d link retrained\n",
++					 PCI_SLOT(rc->devfn));
++			else
++				dev_info(dev, "port%d failed to retrain %pe\n",
++					 PCI_SLOT(rc->devfn), ERR_PTR(ret));
++		}
++	}
++
+ 	return 0;
+ 
+ put_resources:
+@@ -1264,8 +1375,15 @@ static const struct mtk_pcie_soc mtk_pcie_soc_mt7629 = {
+ 	.quirks = MTK_PCIE_FIX_CLASS_ID | MTK_PCIE_FIX_DEVICE_ID,
+ };
+ 
++static const struct mtk_pcie_soc mtk_pcie_soc_en7528 = {
++	.ops = &mtk_pcie_ops_v2,
++	.startup = mtk_pcie_startup_port_en7528,
++	.setup_irq = mtk_pcie_setup_irq,
++};
++
+ static const struct of_device_id mtk_pcie_ids[] = {
+ 	{ .compatible = "airoha,an7583-pcie", .data = &mtk_pcie_soc_an7583 },
++	{ .compatible = "econet,en7528-pcie", .data = &mtk_pcie_soc_en7528 },
+ 	{ .compatible = "mediatek,mt2701-pcie", .data = &mtk_pcie_soc_v1 },
+ 	{ .compatible = "mediatek,mt7623-pcie", .data = &mtk_pcie_soc_v1 },
+ 	{ .compatible = "mediatek,mt2712-pcie", .data = &mtk_pcie_soc_mt2712 },
 -- 
 2.39.5
 
