@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 609D6FED2C7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4E21FED2CC
 	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 04:16:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,64 +12,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EfQVAwu90WVWHQAGRueCitKle/Ck+lGKT93AOgn7lLs=; b=kQ2g6SQmla4ipy8P2V02eISkH7
-	s7nhJ0PN2xVUI1iVxP0VSDW0mdOGyqcLonhvl3pO9DP2c51yaMCN+Hnea+PbPuhwvb/unKwez4g/q
-	0eIZSoYRAVQt/khTs/lB3aOcZ2tiaSdSd30HUme0Pn1/3ZakCXlXn7SUg547DQdn9w5lHr+HUK6aG
-	6iQ51PiBvUfEcc1dTV/QHjexx5yqCPZRI5q9KsM5oIq5jEJNpwdF7GXHZfJwb5xPj0rVRWF3rElho
-	CUxryNXYCujKqsrhYBsRwCIYBTRFEA1j46kmFENAH3UxCwE9Q4s4jgv2oc/c2EwKKDiJuNDXHxNL/
-	J3sufcgg==;
+	bh=TU3zKdAv8f6aur/yAOI6IEeaGLd3rNJfqjevfSWZ60U=; b=3LlyBD4PudRX2XeIHGXSGNwH2E
+	EO/lSD402PPvXCax3Z41/JyP1a3cRV27cxzMb/bWHgBmer0z0LTfoavZUN7oyk+wYUpUCQg1YlBBP
+	GFNZZCAOUwyj7IRzLH+FCSojOIgTfWNQgX6X6lyVD3qttzRmgGp0t40EfCRAjPiAFobfHT7gKR0Q3
+	/hncPvRRQDY17mv9wJGcDMfgJX+Rj8qu6lQnifRzuftrKK6LfYwHQl9IOv3j/BWFWL8DlzeVbpvOM
+	L/Hx6c8qdSnvYb/ASJXgyEkTtwrnlr7xk+knJiDBqCsjz2A0zFpbkwNNmOuVM7rLb64wTkMIKG2mH
+	b2dOz2qA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0XTK-0000000DEU2-229O;
+	id 1w0XTK-0000000DEUl-3RTv;
 	Thu, 12 Mar 2026 04:16:30 +0000
 Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0XTE-0000000DEOL-45lE
+	id 1w0XTI-0000000DERk-37ab
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Mar 2026 04:16:27 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-3590042fa8eso334782a91.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Mar 2026 21:16:24 -0700 (PDT)
+	Thu, 12 Mar 2026 04:16:29 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-35a02f3b8feso214976a91.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Mar 2026 21:16:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773288984; x=1773893784; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1773288988; x=1773893788; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=EfQVAwu90WVWHQAGRueCitKle/Ck+lGKT93AOgn7lLs=;
-        b=aY4uywCtDnJwGgR8ThIu+X5RQGDkuMbCRYT5HKoc6WaFp+mweatSqkAjky5xza6tWN
-         FB+PQn6OR8kbTE0zxnFxkgb+slIT0Y+ATUIkTavPz5bv6HU4gzQHL/bky1UBYwRU9PCW
-         wT3ISvkbcFZawCjZP44QUvfOXA91mtOTleWCB4buz4xwiyf3WeXo0dnFZZn15HX91Ll+
-         UJllFZv5uBfiApRhsvcsJ78BKNj2AbxZ30K3kQjF4uHQP4C3AhpF/GrhngH7sasmaITD
-         +w5o8mtUSXqlaVzFXQ9yG0DKKe9DV9ch6XyJPecnp2kQqBhZeJp6xx8fLIrGLgGC285E
-         IY6g==
+        bh=TU3zKdAv8f6aur/yAOI6IEeaGLd3rNJfqjevfSWZ60U=;
+        b=Hmo06y7tIRM5WuBcZ6SJ1NzHh6wn/8FhuoVo+lrSLyxC29S8YKlQtquXag1UnDfEj1
+         25WAPUqjtZ88/PFh+sVPpzUk6G4ag2awXnleD+UusSPxZNfQzcheuVHfwAGBE5Dl3nQG
+         XZ6aFN5mylgsYfGKxw6YBEpP0l8gtW/Ary91lhNyxxKZGObun6USigC9CUgsPvZmT005
+         zfBGvayhIClJLzUfEbdvlJ/SCfhvdGMHEXc/lZD8gSY2XfAApgpE70UTTs9BuYDGe4cY
+         U+wvURcQujgecQzzzhzeRn7sY5R4vsXAIDUpNBtY0xTZQ7B4hsNEIAYcjT4trVdDZsAG
+         TMpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773288984; x=1773893784;
+        d=1e100.net; s=20230601; t=1773288988; x=1773893788;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=EfQVAwu90WVWHQAGRueCitKle/Ck+lGKT93AOgn7lLs=;
-        b=vAkqx59IZt6m45C6S5jiabvBCGW7aYPeL0ddZ142As4mnlgwUEt5xnMigeTTA68NHn
-         QJWVaL05MI+glyfQxQdxVBfjX97wvguW9tLu7ZBffuhudz4D55j+w4Xcw6D0yrQJ2TXu
-         2E2XK3S55CRToJH7lRZLProWOkvvQKFJRMsL+MnOfy2H9corQm2lyoFNQFpbhdo2fevC
-         6D9f0qM6NFWhgOG02XT96rF2ajtSkensmu4v1SlFUe3lloSHBsjfCXDiWpmx9iGfyn0G
-         gU4dbX/9ZkYK15EnoYkpMrviVKJswiwptknO0IZEGfklxh20TyVH6C2xFyXE79gtnG24
-         qM5Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUznTNZYe9xO/PN7pufYXlOj2fxnoVlDKKJw5uf0ch5XDolGpoN2ZDqBTHcbUPr2yP8guYSL6vi56FSlc2muw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzn7YSqURlBvEc123tE1mM6t4OG1CU519yzdOH8OS5kW+fja/gy
-	0MhCx5FRBnDDNLOy5wqZCTnw3CZoRTp4uddANGImv5NPiTgrPJCWRWtQ
-X-Gm-Gg: ATEYQzyXFhagRmG7Cm5W+9iJaUvRJLISyvKV0BWQb+8vRZgNau1Em0s36EMV7dCNnvp
-	60aK7kyHOEA8XAniOXUk51BFGKWZ8h2cQPwI+mk4PDzg7WZPx8WKARzt6XPQPz3FfWga2qE/jPN
-	pf+Qit7iMUsMsJLUPl6inT58er7cUCVldiw4lU+ZOJusTZq2vlneNJP4qjxnL7wZZJLwQ6G8mDW
-	b3aRjEDovFOCDPwPkQLeZqmtS4vVA8gTKXToX6MwGZXg9bs1Kd6IozmNj6ELht7EHjGRz+QvFOo
-	ndmT6nUhOo+Qq491ACNQuJnHXaDGnKfiuCV29cDP+G8dWAW2HPHUoFfbzUAv8Pztqjo2ER6OWBg
-	BC+qCjcPwzV83Jpc1OcPmoUbz+cO8R4Mjq9pH0TK7GtwdD93MO3k9Du9JoQVpkRW5Hh50Glt2KC
-	+WVT35lvyiaqD380Pc5/rX3O/Wt196YClYgCJjFjI+iWen3tYv9gS/chNQ6IF3q72CzD2xHOhfG
-	iETJpc=
-X-Received: by 2002:a17:90a:e7d2:b0:359:f43d:4a78 with SMTP id 98e67ed59e1d1-35a01284a88mr4254615a91.20.1773288984290;
-        Wed, 11 Mar 2026 21:16:24 -0700 (PDT)
+        bh=TU3zKdAv8f6aur/yAOI6IEeaGLd3rNJfqjevfSWZ60U=;
+        b=o2AfHL0Nbg2SkXp5nOsIitADNNqloX2vzrlO6QRYMTVl79HdA3fXg4ntQIL8ic5nH+
+         5USnG553eV5Ps3m/AImwOgno34FexceUlJWgxN3X86qrpW9OmcI2yVw7miyONv9jDuKQ
+         qfYaBV8+3ddCXnncfmXiObv2e3QJsL0iSVRm/qQASYdvIBzJQxljEVtmkDDAofmHXfAO
+         WwCI1tfAtOQz01lHrThhrj/90T6ahdiPrOgyfHoF7EjzhJeeUHdPUIuKKDLXtnqxw8Ub
+         arRlpLL+OnpaaNidKORPIEhIF3bIgTUd2TEhRrMoxTa3RbJRPK2eh7aa3R5KCnTP8z7B
+         JyhA==
+X-Forwarded-Encrypted: i=1; AJvYcCUr/LLU01pBvx4UM9z6LKPoalCPLWB6CX9tuEinsuDED5L2XIH9fLWmir1vHbfu2rZVGkoAPWT5+370ZQVRtg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz2kI8ST1Zh4tzvVhUnz2zeUzhD47gCrlDorDbK+Nfw6l6O/TMQ
+	OQoOqJPK2NR7zNpsQnRZZFYXMUpvPHsNpJkcwbEHeHL1wxyoIrgQknha
+X-Gm-Gg: ATEYQzwiWvAaoc1KJ/HLIAGsFuy4eenj7GVT0KagG8pd6PTdzXjN/d5Yt4X0hVQ05FF
+	AaSL07VE626uElGfcefh/4NnTkUzB+r8iL92XxLtfPgCrqBkTC+FAt6FM7ZVTxECTtMwXLCr+Ts
+	f1ZDQZy/gR1ar1JnBhVexSP2S6jk2nzrv15wwsj1rOw/EMfdAl2AmVeunkFB/8Av3uUx5HS9zWS
+	9FrbMyDpoM0ODTTPb1sWpACr+H9vMuGDlFQUyZdGBIcdN0nQf2Re7DP7lPWSjSvycO+82z42GSW
+	RVP57FiwRl+KHNeiEemX0yM5Ah8JYOz3TepNdbtk/CHXn0BC9PfRw08e9rgO7uUrhQWHmRaqMUz
+	rSoXQiTW+DDPnK8ZR9dx5eJ30VhktbTWcck82sQNGj3rAFexGskLq/zZdo7HHGvA7nVGMm7WZez
+	TlaTe85e66BIeQMWnmOjNAstOPM5XEWAIIdLwFcW1G8SDPwq1fs7G5VEhBu4T7weQW0B4g7ehNx
+	aRD9qo=
+X-Received: by 2002:a17:90b:37ce:b0:359:120f:d3aa with SMTP id 98e67ed59e1d1-35a01201dd9mr4941745a91.14.1773288988147;
+        Wed, 11 Mar 2026 21:16:28 -0700 (PDT)
 Received: from buffalo-ssd.taila54753.ts.net (M014013071096.v4.enabler.ne.jp. [14.13.71.96])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-35a02fca40bsm5018229a91.10.2026.03.11.21.16.20
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-35a02fca40bsm5018229a91.10.2026.03.11.21.16.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Mar 2026 21:16:24 -0700 (PDT)
+        Wed, 11 Mar 2026 21:16:27 -0700 (PDT)
 From: Akari Tsuyukusa <akkun11.open@gmail.com>
 To: robh@kernel.org,
 	krzk+dt@kernel.org,
@@ -99,17 +99,17 @@ Cc: devicetree@vger.kernel.org,
 	seiya.wang@mediatek.com,
 	tinghan.shen@mediatek.com,
 	Akari Tsuyukusa <akkun11.open@gmail.com>
-Subject: [PATCH 5/6] pinctrl: mediatek: mt8188: Fix include guard comment in the header
-Date: Thu, 12 Mar 2026 13:15:32 +0900
-Message-ID: <20260312041533.187553-6-akkun11.open@gmail.com>
+Subject: [PATCH 6/6] dt-bindings: pinctrl: mediatek: mt8188: Fix include guard comment
+Date: Thu, 12 Mar 2026 13:15:33 +0900
+Message-ID: <20260312041533.187553-7-akkun11.open@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260312041533.187553-1-akkun11.open@gmail.com>
 References: <20260312041533.187553-1-akkun11.open@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260311_211625_622952_8973FA99 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20260311_211628_910341_1456F4B0 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,22 +126,22 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Correct the mismatched macro name in the #endif comment.
 
-Fixes: 11b918d90aeb ("pinctrl: mediatek: add mt8188 driver")
+Fixes: 9f1bdd7e8221 ("dt-bindings: pinctrl: mediatek: add support for mt8188")
 Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h | 2 +-
+ include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h b/drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h
-index a487323748e2..a688e919b32c 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h
-@@ -2256,4 +2256,4 @@ static const struct mtk_pin_desc mtk_pins_mt8188[] = {
- 	)
- };
+diff --git a/include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h b/include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h
+index 2688da2f621f..66a451953838 100644
+--- a/include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h
++++ b/include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h
+@@ -1277,4 +1277,4 @@
+ #define PINMUX_GPIO176__FUNC_B_GPIO176 (MTK_PIN_NO(176) | 0)
+ #define PINMUX_GPIO176__FUNC_B0_SPMI_M_SDA (MTK_PIN_NO(176) | 1)
  
--#endif /* __PINCTRL__MTK_MT8188_H */
-+#endif /* __PINCTRL_MTK_MT8188_H */
+-#endif /* __MEDIATEK_MT8188-PINFUNC_H */
++#endif /* __MEDIATEK_MT8188_PINFUNC_H */
 -- 
 2.53.0
 
