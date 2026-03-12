@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2C46105A593
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 12:31:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70679105A593
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 12:32:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=g6OV6/7musXxeaE+YI/UTtQtxVXYnl5U80un6cKHwT8=; b=iE6La0r0oA4vBcup6Aym9J82AP
-	px/msVBYBm+OGQuE3zUJzmCmMLdkiqoP/dy/PckMVm63PXXiZOd1Zt9yPu/SHUUoWDKAFyjN1lEKo
-	0wXIPgb85O2OqDSKtZvfMZKAkeVjtyTVgtp8q7z1eoOez/gKywFZ1r5UsYUGXbC6gAOSqse3P2rXt
-	icCQpzevjbpwNh0+AVox/LFakKyPMXx4W986ySbzHqeQsmoyW7bAPTuwJuFYsbGy1WzGHlDBSsQUT
-	kL7iJqUeAhciN4RXHEdcChWf7aX366L80EEOSaCz1ad+gMZunN8fR3mnAr8Q8jq/JPdiiOPbicOIP
-	SIFBNVbg==;
+	bh=Dx5xrfB8QljT3YKbLMbYG97YqGaj2w38cqstIXSxVL0=; b=gHN+Z2CSfcxb5lbOzLIIAj+0de
+	lowL5Rx2pBhwFruvDXxhkWcNTIjSBojEmVBr73DyiMR1eIWbOtQ6nHWI6UtDI75BVKjoWj/fkuMTT
+	Utlcs37KHrVeMf4pAcFnzC2NDe3C4pijEMQbHPdHLxQjqFoQCAXtockIXIAfft0Xb775LuS4pZIFD
+	lHlOIdy+AvjQxcqXASRIbCfBBLIPnCfWJVZxsseThG/80K43Uu61zDkejYpwuxl1PWek9BYIgKwws
+	m7LNqFVTmxAuHBov0t1q64ShJ0XXmZzXXZcAiokklqBkGxtLLYG4xUooyAcRzhigOhCSt7PlBzdxV
+	GA31r4vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0fCN-0000000E2ln-1BDR;
-	Thu, 12 Mar 2026 12:31:31 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1w0fDe-0000000E2yO-1sgh;
+	Thu, 12 Mar 2026 12:32:50 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0fCI-0000000E2kj-1oJJ;
-	Thu, 12 Mar 2026 12:31:30 +0000
+	id 1w0fDb-0000000E2ws-0CUw;
+	Thu, 12 Mar 2026 12:32:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773318683;
-	bh=gDX4Ye1h2qpbq7w/g5XbwbOmEL2tD+9twVkJmshODY0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Mmxw8NDPSOhoemTb2DqKWY7cl1FxbNTWVmoo175N7a5yfZeQSUQZyyaGvF/Y7JyHj
-	 ChzA6xpuCPT+7q3rugMXstQAkpehoN0MLJCikjd0vgrpVLZHa8cFD6O5J+DYiVRHhD
-	 1XGMz/rctdtd6KpvfcIeGam2J2Q0tDrCwJAduRJls3RT80A6Z7Lv+N/3wYRjjQtoo3
-	 sITY4vdxs+mzPHLNPEvNeVpBYXWWzzVA0SHTMJ0RBGC5muMA1ZLdJrJHXtuE1ckrBy
-	 9GOT81h0CoJmWztpH+udqqCAwogmwCmy4KeN91DxzMqhbOsCF68K+/Aql7D+t37IH/
-	 px8b5q0ii8OIw==
-Received: from [192.168.1.100] (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1773318764;
+	bh=o2UthO2WXzmSPYdwO0w/waxNRhhzupLP6L1ZNdbYEYE=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=G0STWHdqnJMF17OLN9SHIkyTCwRJMshhFVor33igF9UbKgMbSXRj6a07H4kmcB/nH
+	 QvEJEwwTRLaeq1UnbZ+TMFjOK18j1AGkRptVxhVCJNt3DkQ34+D7m2+x9QsuXOqS0z
+	 0Yqz4tTWIvJj7MR22SPc9bh77yjmFs5KZEDfpCCT63BDJBTloTgLZnD2iy59oj9Dug
+	 GFp6A+4gZLEHkBiiB1R7mN0xCkemziqDr0MiBffLXGwGbYa8kQcmIe2biEXHDAl1E4
+	 trVNlbuoTKODkdX+2T5nCX9PFEpkF8OuOMoPp//lUAue1bJIk4BtbO4yu+TC9yLZDW
+	 Z0tYcVs9NlLHQ==
+Received: from IcarusMOD.eternityproject.eu (2-237-20-237.ip236.fastwebnet.it [2.237.20.237])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 35B1017E0E6C;
-	Thu, 12 Mar 2026 13:31:22 +0100 (CET)
-Message-ID: <cbe7771d-9da3-444b-98fd-61c6ef504c91@collabora.com>
-Date: Thu, 12 Mar 2026 13:31:21 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/6] pinctrl: mediatek: Fix gpio-ranges and include guard
- issues
-To: Akari Tsuyukusa <akkun11.open@gmail.com>, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- sean.wang@kernel.org, linusw@kernel.org
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-gpio@vger.kernel.org, hui.liu@mediatek.com, nfraprado@collabora.com,
- linus.walleij@linaro.org, mars.cheng@mediatek.com, andy.teng@mediatek.com,
- hanks.chen@mediatek.com, sam.shih@mediatek.com, rafal@milecki.pl,
- ben.ho@mediatek.com, erin.lo@mediatek.com, zhiyong.tao@mediatek.com,
- Jason-ch.Chen@mediatek.com, amergnat@baylibre.com, seiya.wang@mediatek.com,
- tinghan.shen@mediatek.com
-References: <20260312041533.187553-1-akkun11.open@gmail.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EBCEA17E05B5;
+	Thu, 12 Mar 2026 13:32:43 +0100 (CET)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
+To: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+ matthias.bgg@gmail.com, sean.wang@kernel.org, linusw@kernel.org, 
+ Akari Tsuyukusa <akkun11.open@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-gpio@vger.kernel.org, hui.liu@mediatek.com, nfraprado@collabora.com, 
+ mars.cheng@mediatek.com, andy.teng@mediatek.com, hanks.chen@mediatek.com, 
+ sam.shih@mediatek.com, rafal@milecki.pl, ben.ho@mediatek.com, 
+ erin.lo@mediatek.com, zhiyong.tao@mediatek.com, Jason-ch.Chen@mediatek.com, 
+ amergnat@baylibre.com, seiya.wang@mediatek.com, tinghan.shen@mediatek.com, 
+ Linus Walleij <linusw@kernel.org>
 In-Reply-To: <20260312041533.187553-1-akkun11.open@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+References: <20260312041533.187553-1-akkun11.open@gmail.com>
+Subject: Re: (subset) [PATCH 0/6] pinctrl: mediatek: Fix gpio-ranges and
+ include guard issues
+Message-Id: <177331876391.53170.11935383567217800525.b4-ty@collabora.com>
+Date: Thu, 12 Mar 2026 13:32:43 +0100
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_053128_699814_7924DCC0 
-X-CRM114-Status: GOOD (  21.48  )
+X-CRM114-CacheID: sfid-20260312_053247_234381_803AFDA2 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,7 +82,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/03/26 05:15, Akari Tsuyukusa ha scritto:
+On Thu, 12 Mar 2026 13:15:27 +0900, Akari Tsuyukusa wrote:
 > While looking at MediaTek's Pinctrl driver and device tree, I discovered
 > that on some SoCs, the gpio-ranges count was a little less than the pins
 > defined. This means that the last pin will no longer be available.
@@ -93,67 +92,19 @@ Il 12/03/26 05:15, Akari Tsuyukusa ha scritto:
 > the beginning. These issues do not affect the compiled kernel, but they
 > affect the readability and consistency of the code.
 > 
-> This series addresses the cases that can be confirmed correct without
-> requiring datasheet verification:
-> 
-> - mt6795 : gpio-ranges 196 -> 197
-> - mt7981b: gpio-ranges 56 -> 57
-> - mt7986a: gpio-ranges 100 -> 101
-> - mt6779 : include guard #endif comment fix
-> - mt8188 : include guard #endif comment fix (two files)
-> 
-> The following additional issues were identified during this investigation
-> but are not included in this series as they require further analysis
-> or datasheet confirmation:
-> 
-> MT6779: gpio-ranges = <&pio 0 0 210>;
->      This matches the number of pins, but GPIO203 to 209 don't have
->      GPIO function, and the driver also has no control over those pins.
->      Probably needs to be fixed to "gpio-ranges = <&pio 0 0 203>;"
-> 
-> MT8183: gpio-ranges = <&pio 0 0 192>;
->      This seems correct because it matches "pinctrl-mtk-mt8183.h".
->      But, mode/dir/di/do are defined from pin 0 to 192.
->      "pinctrl-mt8183.c" looks wrong.
-> 
-> MT8188: gpio-ranges = <&pio 0 0 176>;
->      According to "pinctrl-mtk-mt8188.h", GPIO0 to 176 have GPIO function,
->      and GPIO177 to 189 are EINT only pin, but mode/dir/di/do are defined
->      from pin 0 to 177. "pinctrl-mt8188.c" is likely to be wrong.
->      At least "176" is wrong, probably "gpio-ranges = <&pio 0 0 177>;"
-> 
-> MT8192: gpio-ranges = <&pio 0 0 220>;
->      "pinctrl-mtk-mt8192.h" defines GPIO0 to 227 which have GPIO function,
->      but mode/dir/di/do are defined from pin 0 to 228.
->      "pinctrl-mt8192.c" looks wrong.
->      Also, probably "gpio-ranges = <&pio 0 0 229>;"
-> 
-> MT8195: gpio-ranges = <&pio 0 0 144>;
->      Like MT8188, GPIO144 to 164 don't have GPIO function,
->      but mode/dir/di/do are defined from pin 0 to pin 144.
->      "pinctrl-mt8195.c" is likely to be wrong.
-> 
+> [...]
 
-The whole series is
+Applied to v7.0-next/dts64, thanks!
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+[1/6] arm64: dts: mediatek: mt6795: Fix gpio-ranges pin count
+      commit: c4c4823c8a5baa10b8100b01f49d7c3f4a871689
+[2/6] arm64: dts: mediatek: mt7981b: Fix gpio-ranges pin count
+      commit: b62a927f4a46a7f58d88ba3d5fb6e88e1a4b4603
+[3/6] arm64: dts: mediatek: mt7986a: Fix gpio-ranges pin count
+      commit: 820ed0c1a13c5fafb36232538d793f99a0986ef3
 
-> 
-> Akari Tsuyukusa (6):
->    arm64: dts: mediatek: mt6795: Fix gpio-ranges pin count
->    arm64: dts: mediatek: mt7981b: Fix gpio-ranges pin count
->    arm64: dts: mediatek: mt7986a: Fix gpio-ranges pin count
->    pinctrl: mediatek: mt6779: Fix include guard comment in the header
->    pinctrl: mediatek: mt8188: Fix include guard comment in the header
->    dt-bindings: pinctrl: mediatek: mt8188: Fix include guard comment
-> 
->   arch/arm64/boot/dts/mediatek/mt6795.dtsi              | 2 +-
->   arch/arm64/boot/dts/mediatek/mt7981b.dtsi             | 2 +-
->   arch/arm64/boot/dts/mediatek/mt7986a.dtsi             | 2 +-
->   drivers/pinctrl/mediatek/pinctrl-mtk-mt6779.h         | 2 +-
->   drivers/pinctrl/mediatek/pinctrl-mtk-mt8188.h         | 2 +-
->   include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h | 2 +-
->   6 files changed, 6 insertions(+), 6 deletions(-)
-> 
+Cheers,
+Angelo
+
 
 
