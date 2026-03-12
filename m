@@ -4,77 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFD90106ACCB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 16:38:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D43FD106ACD0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 16:53:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jqSuO3F12+BG9vDtSc8L1vzzspX/dhmwJJslZsHS+5w=; b=uKQBBDxd7uXF+p/xpu5pFDZKdd
-	K4ym2pqVg1h+RPecZX4ayyPTMeOlPSiQWzaZAM0Q/BgW0V6YLy3HlACU57YzcISDM3UOvqTxZABxq
-	xH0R2uk8pjHDE2OXziiFkO5jPMfUXqd2WoZ/p1TpM/C0vuvuz+GjLIoYaFASS5KVlMY0kwoWGUMAT
-	tu8JDYyQaUSj2RcySgD6e0d/2dGii1hLg2xRFTEoSkIS79M/lHbtoWl6EeeGw0Xh4h54m+y4dnsRQ
-	p39dem7YQ5uoZUZ1dG0ySEZ44poca1sPMCALVWTbRkxJT6T+VhaRY6j7K9fwBt6RfMUcaL9yg6WzW
-	kO12XDvg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wefQB/YrEwzehXLAtsdppMxnT8At0wKkKraQvz4IB4w=; b=FYDM8d1OVVBB8h7wCrlmBrlZ9k
+	gDILqG6R3GcWGo2F4njbRoDadtoG+w51v0kyTNSd8Q8UaI+G0bF/V/heOggoqCjA3rBQ9lHLjxoCW
+	xtAT/dy2i5Pj4JkpmKciGsIZvp2vqJIr3+EwTaffOf1GumZyTrUWzLwB02Xrc6fk9K5M8xO7D46ay
+	1DEPxdRKV8I7ONxVSRdFPKmbIiiBMF1tu5fvEikY+/tDKxNcXD5Uy4hOBrE3h5bhr3dlIZjrrTPJT
+	12Csc1Q/Hv4+i4PKZNeP0kGsRoHhbc33L+oFbld2QzlIWE4Es+uLFsvpLt1YTQaeJi5h+yeDSocvY
+	T2h8b6iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0j3L-0000000EaSo-2rBH;
-	Thu, 12 Mar 2026 16:38:27 +0000
-Received: from m16.mail.163.com ([117.135.210.5])
+	id 1w0jIA-0000000EdL6-02SM;
+	Thu, 12 Mar 2026 16:53:46 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0j3C-0000000EaGw-1vCY;
-	Thu, 12 Mar 2026 16:38:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=jq
-	SuO3F12+BG9vDtSc8L1vzzspX/dhmwJJslZsHS+5w=; b=X2NtGY0w8SBaIDWXj5
-	Il37UHQvb343cKnDnms4MUpmABVPpI9rNone/r00hKvAMwWSH449oZcM9PLYLNel
-	49+SQmv2PRoO2drBhMBpbnm10yvwzTJ9xAxa+DnrjZLU3nJ7BJehmDf1FWJIgOvF
-	L74Z2m3KlLuP6+Y6PtqCHbIz4=
-Received: from zhb.. (unknown [])
-	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wDnN1Gl67JpMC_OAQ--.12929S5;
-	Fri, 13 Mar 2026 00:37:01 +0800 (CST)
-From: Hans Zhang <18255117159@163.com>
-To: lpieralisi@kernel.org,
-	jingoohan1@gmail.com,
-	mani@kernel.org,
-	kwilczynski@kernel.org,
+	id 1w0jI7-0000000EdK7-2cDz
+	for linux-mediatek@lists.infradead.org;
+	Thu, 12 Mar 2026 16:53:45 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 168E92C68F2;
+	Thu, 12 Mar 2026 17:53:35 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1773334420; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding; bh=wefQB/YrEwzehXLAtsdppMxnT8At0wKkKraQvz4IB4w=;
+	b=n9Kc2AfTjy4sFM893g5O1EOtNM0/YhkY/UpTLFpSmSMh9oHm1+X2eb/7bRA0NjEC4M9PNT
+	0iRteEAt8IBJGrJLgizBhs8ZKKoHUx1LrrgsYJQcMxtcyc8lcG1COELuN3gq6SWHKBC3z9
+	sDA4J+fn5EQjakPVmoVjMtnxCjZgk9pBK4sDM0jttTqk6J39LL1GBD/Mf1BR/fFuphlFn5
+	qW2gePI7QzcQqUa2WeNc9Q7Y8gMuHTTrfwTJg0205vmhFuegLW84cY520kd/Im48MJsyau
+	twdExVe7TJZ2Eatj9hCxXPZfh3m/pQXnsdN4Zh5I3BvCDbOgsn6I5Z8FPQMJ5Q==
+From: Caleb James DeLisle <cjd@cjdns.fr>
+To: linux-pci@vger.kernel.org
+Cc: linux-mips@vger.kernel.org,
+	naseefkm@gmail.com,
+	ryder.lee@mediatek.com,
 	bhelgaas@google.com,
-	helgaas@kernel.org,
-	florian.fainelli@broadcom.com,
-	jim2101024@gmail.com
-Cc: robh@kernel.org,
-	ilpo.jarvinen@linux.intel.com,
-	linux-arm-msm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-renesas-soc@vger.kernel.org,
-	claudiu.beznea.uj@bp.renesas.com,
+	lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	mani@kernel.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	ansuelsmth@gmail.com,
 	linux-mediatek@lists.infradead.org,
-	linux-tegra@vger.kernel.org,
-	linux-omap@vger.kernel.org,
-	bcm-kernel-feedback-list@broadcom.com,
-	linux-pci@vger.kernel.org,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	Hans Zhang <18255117159@163.com>
-Subject: [PATCH v8 3/5] PCI: j721e: Validate max-link-speed from DT
-Date: Fri, 13 Mar 2026 00:36:50 +0800
-Message-Id: <20260312163652.113228-4-18255117159@163.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260312163652.113228-1-18255117159@163.com>
-References: <20260312163652.113228-1-18255117159@163.com>
+	Caleb James DeLisle <cjd@cjdns.fr>
+Subject: [PATCH 0/3] PCI: mediatek: Add support for EcoNet SoCs
+Date: Thu, 12 Mar 2026 16:53:29 +0000
+Message-Id: <20260312165332.569772-1-cjd@cjdns.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDnN1Gl67JpMC_OAQ--.12929S5
-X-Coremail-Antispam: 1Uf129KBjvdXoW7JF4rZw1ftr4xWFyxGF1DGFg_yoWDXFXE9F
-	1UXFWrAr4Uuryakr1YyryayF95A34Uuw18Wa4rtF4fAFyxWay5ZrnxAFWUWa97u3W7JF17
-	JFyDKFn5J3ZFkjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7xRMjjg7UUUUU==
-X-Originating-IP: [240e:b8f:927e:1000:1caf:6d92:f4ee:5e02]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCxA0t0Gmy661RhQAA39
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_093818_907173_67AA5116 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20260312_095343_861457_B0D1CF7D 
+X-CRM114-Status: UNSURE (   7.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,31 +80,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the new pcie_get_link_speed() helper to validate the value read from
-the "max-link-speed" DT property.  If the value is missing or invalid,
-fall back to Gen2 (speed = 2).  This prepares for the removal of the
-range check in of_pci_get_max_link_speed().
+Add EcoNet EN7528 (and EN751221) PCIe support.
 
-Signed-off-by: Hans Zhang <18255117159@163.com>
----
- drivers/pci/controller/cadence/pci-j721e.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+This is split from a larger PCIe patchset which crossed multiple
+subsystems. I'm not labeling this a v3 because it's a new patchset, but
+I'm keeping the historical record anyway.
 
-diff --git a/drivers/pci/controller/cadence/pci-j721e.c b/drivers/pci/controller/cadence/pci-j721e.c
-index 6f2501479c70..bfdfe98d5aba 100644
---- a/drivers/pci/controller/cadence/pci-j721e.c
-+++ b/drivers/pci/controller/cadence/pci-j721e.c
-@@ -202,7 +202,8 @@ static int j721e_pcie_set_link_speed(struct j721e_pcie *pcie,
- 	int ret;
- 
- 	link_speed = of_pci_get_max_link_speed(np);
--	if (link_speed < 2)
-+	if ((link_speed < 2) ||
-+	    (pcie_get_link_speed(link_speed) == PCI_SPEED_UNKNOWN))
- 		link_speed = 2;
- 
- 	val = link_speed - 1;
+Changes from econet-pcie v2:
+* mediatek-pcie.yaml add missing constraints to PCI node properties
+* econet-pcie v2: https://lore.kernel.org/linux-mips/20260309131818.74467-1-cjd@cjdns.fr
+
+Changes from econet-pcie v1:
+* pcie-mediatek.c Exclude pcie_retrain_link() when building as a module
+* econet-pcie v1: https://lore.kernel.org/linux-mips/20260303190948.694783-1-cjd@cjdns.fr/
+
+Caleb James DeLisle (3):
+  dt-bindings: PCI: mediatek: Add support for EcoNet EN7528
+  PCI: mediatek: Add support for EcoNet EN7528 SoC
+  PCI: Skip bridge window reads when window is not supported
+
+ .../bindings/pci/mediatek-pcie.yaml           |  81 ++++++++++++
+ drivers/pci/controller/Kconfig                |   2 +-
+ drivers/pci/controller/pcie-mediatek.c        | 118 ++++++++++++++++++
+ drivers/pci/probe.c                           |   6 +
+ 4 files changed, 206 insertions(+), 1 deletion(-)
+
+
+base-commit: 3fa5e5702a82d259897bd7e209469bc06368bf31
 -- 
-2.34.1
+2.39.5
 
 
