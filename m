@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6934C1067058
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 15:44:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAD49106ACC9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 16:12:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F5qwJavBVWV92QiDrDH0xvkLoJ9dwrCz5qZjjPc0g9E=; b=mmKR0iuc27a800+gf1q/xKz05I
-	Ng4u64oO5drf90zTM0LN/hlGSxLYU4oNKpu/ICfQsSwwjLJlrsX1jlOEFbqKGFdrdmDJgOL5dnLEr
-	udZmFcnmPLKfdKyR4Nbv9JuYoKnIIRLXR9ajRWuMhDmsMK7yJeab3kPWKrJtEcgAHN4njbJnsIDUb
-	I2VsATqR4CgR1Bm8ntvTvHhjEzXKrIMQ1VoDsS9mtL4505+ArMEc2RokCcjfNSfRHwSgbQnBDBR2i
-	b/aJTt+yVCqZjD7VSvbf35j1PpLTrt//4vzVa9d5IwaRNxv3/ZLh+uEAJqCMBrsdZALqzU7u0BiqJ
-	ETpW2z9w==;
+	bh=3UeY5pu9w23zqf3XqZlvtlFA2ndSXKRbw7aNwE9W7d4=; b=oaKPnorGy8QI2TJ2u5DOk5NQje
+	KhdOrIOU/79DnDme5gzurMPrUZDtdSjXI9t+Q3mrPGcx32qEcN+SFvccyUkIGITKISlGh3bj0AvqQ
+	kZVQcGmdUac9TZ99uFJW34P9Ml9eh3L/rRjzdDSCQDQErckkypIY55hCBUAoE1un+bEKzj9zX/sQf
+	6fxJRRFEwgt93qGP3iKDhRHmmhOzEwi+sSMTa6SMH8Njs1FVqdXBKszCZLuAgFsD+ieYhUpKYq+aZ
+	qS1MPWbd1WgD2wlDztkh8Vr5Dp6tyoqzlBB1fw3Ms+vCZsn9NFoho2DQf1Q7nogmG/x0SdGtqmwjM
+	OmPzJoOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0iDR-0000000EQZp-2C05;
-	Thu, 12 Mar 2026 15:44:49 +0000
+	id 1w0ieA-0000000EVUw-17QD;
+	Thu, 12 Mar 2026 16:12:26 +0000
 Received: from mail.hugovil.com ([162.243.120.170])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0iDO-0000000EQYK-14QB;
-	Thu, 12 Mar 2026 15:44:47 +0000
+	id 1w0ie8-0000000EVTp-0r05;
+	Thu, 12 Mar 2026 16:12:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=hugovil.com
 	; s=default; h=Content-Transfer-Encoding:Mime-Version:Message-Id:Subject:Cc:
 	To:From:Date:subject:date:message-id:reply-to;
-	bh=F5qwJavBVWV92QiDrDH0xvkLoJ9dwrCz5qZjjPc0g9E=; b=KIdjU6BjZrTcnKue5AEEHNUND+
-	YKAvDSMLR/2ccfbak/Pa7FUnAEyf4/sqXKJTX197jkN81KUcGBVp0bf/TyScvrp8iZweuWzT/EFYW
-	9aIBUhGh1VMwNOL/2zloVVeP0Ue/xtjxHPoEKbexVUHjX8gOy7nFbuRb3VE06LM5OTwU=;
+	bh=3UeY5pu9w23zqf3XqZlvtlFA2ndSXKRbw7aNwE9W7d4=; b=d0h3OrG/LBtm/b0eInaGvDnYxD
+	66XPnLPamntvvXAU07VBhv9o1G92E9m/daBkKCXiSCl3Y38dKXeZGVXej0NHaH7b4Vozxlnb1m2AJ
+	L5YEKfeDpOw8pyM53jQJnPOVt/AeHeZoMf7BaDGK3uqKdQ3SHbqK8XAcfrDWXrNHfPtM=;
 Received: from modemcable168.174-80-70.mc.videotron.ca ([70.80.174.168] helo=pettiford.lan)
 	by mail.hugovil.com with esmtpa (Exim 4.98.2)
 	(envelope-from <hugo@hugovil.com>)
-	id 1w0iDC-0000000072H-0dJm;
-	Thu, 12 Mar 2026 11:44:34 -0400
-Date: Thu, 12 Mar 2026 11:44:33 -0400
+	id 1w0ie2-000000007FN-0dAi;
+	Thu, 12 Mar 2026 12:12:18 -0400
+Date: Thu, 12 Mar 2026 12:12:17 -0400
 From: Hugo Villeneuve <hugo@hugovil.com>
-To: Rob Herring <robh@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
 Cc: robin@protonic.nl, andy@kernel.org, geert@linux-m68k.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, dmitry.torokhov@gmail.com,
- hvilleneuve@dimonoff.com, mkorpershoek@kernel.org, matthias.bgg@gmail.com,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ dmitry.torokhov@gmail.com, hvilleneuve@dimonoff.com,
+ mkorpershoek@kernel.org, matthias.bgg@gmail.com,
  angelogioacchino.delregno@collabora.com, lee@kernel.org,
  alexander.sverdlin@gmail.com, marek.vasut@gmail.com, akurz@blala.de,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 2/4] dt-bindings: input: add settling-time-us common
- property
-Message-Id: <20260312114433.5432b94423d7caf3968658a1@hugovil.com>
-In-Reply-To: <20260312150210.GA3121485-robh@kernel.org>
+Subject: Re: [PATCH v4 4/4] Input: charlieplex_keypad: add GPIO charlieplex
+ keypad
+Message-Id: <20260312121217.122a6e5b3f5bb1dc64ae8f5b@hugovil.com>
+In-Reply-To: <aari1Y1CPZSYEVj3@ashevche-desk.local>
 References: <20260305192101.2125660-1-hugo@hugovil.com>
-	<20260305192101.2125660-3-hugo@hugovil.com>
-	<20260312150210.GA3121485-robh@kernel.org>
+	<20260305192101.2125660-5-hugo@hugovil.com>
+	<aari1Y1CPZSYEVj3@ashevche-desk.local>
 X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 Mime-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
@@ -62,8 +63,8 @@ Content-Transfer-Encoding: 7bit
 X-Spam_score: -2.0
 X-Spam_bar: --
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_084446_386025_389A2D81 
-X-CRM114-Status: GOOD (  18.37  )
+X-CRM114-CacheID: sfid-20260312_091224_346757_8AAD33B5 
+X-CRM114-Status: GOOD (  25.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,49 +79,181 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
+Hi Andy,
 
-On Thu, 12 Mar 2026 10:02:10 -0500
-Rob Herring <robh@kernel.org> wrote:
+On Fri, 6 Mar 2026 16:21:09 +0200
+Andy Shevchenko <andriy.shevchenko@intel.com> wrote:
 
-> On Thu, Mar 05, 2026 at 02:20:48PM -0500, Hugo Villeneuve wrote:
-> > From: Hugo Villeneuve <hvilleneuve@dimonoff.com>
+> On Thu, Mar 05, 2026 at 02:20:50PM -0500, Hugo Villeneuve wrote:
+> 
+> > Add support for GPIO-based charlieplex keypad, allowing to control
+> > N^2-N keys using N GPIO lines.
 > > 
-> > Add common property that can be reused by other bindings.
-> > 
-> > Signed-off-by: Hugo Villeneuve <hvilleneuve@dimonoff.com>
-> > ---
-> > Note: a similar property is used by gpio-matrix-keypad.yaml:
-> >   col-scan-delay-us
-> > ---
-> >  Documentation/devicetree/bindings/input/input.yaml | 8 ++++++++
-> >  1 file changed, 8 insertions(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/input/input.yaml b/Documentation/devicetree/bindings/input/input.yaml
-> > index 502e0b7eb500a..14652d324e2ca 100644
-> > --- a/Documentation/devicetree/bindings/input/input.yaml
-> > +++ b/Documentation/devicetree/bindings/input/input.yaml
-> > @@ -66,6 +66,14 @@ properties:
-> >        reset automatically. Device with key pressed reset feature can specify
-> >        this property.
-> >  
-> > +  settling-time-us:
-> > +    description:
-> > +      Delay, in microseconds, when activating an output line/col/row GPIO
-> > +      before we can reliably read other input GPIOs that maybe affected by this
-> > +      output. This can be the case for an output with a RC circuit that affects
-> > +      ramp-up/down times.
+> > Reuse matrix keypad keymap to simplify, even if there is no concept
+> > of rows and columns in this type of keyboard.
 > 
-> Whether it is GPIOs or not depends on the implementation. Just drop 
-> 'GPIO' and replace 'GPIOs' with 'lines'.
+> ...
+> 
+> > --- a/drivers/input/keyboard/Makefile
+> > +++ b/drivers/input/keyboard/Makefile
+> > @@ -40,6 +40,7 @@ obj-$(CONFIG_KEYBOARD_LOCOMO)		+= locomokbd.o
+> >  obj-$(CONFIG_KEYBOARD_LPC32XX)		+= lpc32xx-keys.o
+> >  obj-$(CONFIG_KEYBOARD_MAPLE)		+= maple_keyb.o
+> >  obj-$(CONFIG_KEYBOARD_MATRIX)		+= matrix_keypad.o
+> > +obj-$(CONFIG_KEYBOARD_CHARLIEPLEX)	+= charlieplex_keypad.o
+> 
+> Seem unordered. At least the all around it is ordered AFAICS.
 
-Ok, will do for V5.
+Will fix it.
 
-Hugo
 
 > 
-> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> >  obj-$(CONFIG_KEYBOARD_MAX7359)		+= max7359_keypad.o
+> >  obj-$(CONFIG_KEYBOARD_MAX7360)		+= max7360-keypad.o
+> >  obj-$(CONFIG_KEYBOARD_MPR121)		+= mpr121_touchkey.o
 > 
-> Rob
+> ...
 > 
+> > +/*
+> > + * GPIO driven charlieplex keypad driver
+> > + *
+> > + * Copyright (c) 2025 Hugo Villeneuve <hvilleneuve@dimonoff.com>
+> 
+> 2026?
+
+Ok
+
+
+> 
+> > + *
+> > + * Based on matrix_keyboard.c
+> > + */
+> 
+> ...
+> 
+> > +#include <linux/bitops.h>
+> > +#include <linux/delay.h>
+> > +#include <linux/dev_printk.h>
+> > +#include <linux/device/devres.h>
+> > +#include <linux/err.h>
+> > +#include <linux/gpio/consumer.h>
+> > +#include <linux/input.h>
+> > +#include <linux/input/matrix_keypad.h>
+> > +#include <linux/math.h>
+> > +#include <linux/module.h>
+> > +#include <linux/mod_devicetable.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/property.h>
+> > +#include <linux/types.h>
+> 
+> > +static void charlieplex_keypad_poll(struct input_dev *input)
+> > +{
+> > +	struct charlieplex_keypad *keypad = input_get_drvdata(input);
+> 
+> > +	int oline;
+> 
+> Why signed?
+
+Will change this one, and others noted below to unsigned.
+
+
+> 
+> > +	int code;
+> > +
+> > +	for (code = 0, oline = 0; oline < keypad->nlines; oline++) {
+> 
+> Can be like
+> 
+> 	code = 0;
+> 	for (unsigned int oline = 0; oline < keypad->nlines; oline++) {
+> 
+> as iterator is not used outside the loop.
+
+Ok, will do.
+
+
+> 
+> > +		DECLARE_BITMAP(values, MATRIX_MAX_ROWS);
+> 
+> > +		int iline;
+> 
+> Why signed?
+> 
+> > +		int err;
+> > +
+> > +		/* Activate only one line as output at a time. */
+> > +		gpiod_direction_output(keypad->line_gpios->desc[oline], 1);
+> > +
+> > +		if (keypad->settling_time_us)
+> > +			fsleep(keypad->settling_time_us);
+> > +
+> > +		/* Read input on all other lines. */
+> > +		err = gpiod_get_array_value_cansleep(keypad->line_gpios->ndescs,
+> > +						     keypad->line_gpios->desc,
+> > +						     keypad->line_gpios->info, values);
+> > +		if (err)
+> > +			return;
+> 
+> > +		for (iline = 0; iline < keypad->nlines; iline++) {
+> 
+> Can be just
+> 
+> 		for (unsigned int iline = 0; iline < keypad->nlines; iline++) {
+> 
+> as iterator is not used outside the loop.
+
+Ok.
+
+
+> 
+> > +			if (iline == oline)
+> > +				continue; /* Do not read active output line. */
+> > +
+> > +			/* Check if GPIO is asserted. */
+> > +			if (test_bit(iline, values)) {
+> > +				code = MATRIX_SCAN_CODE(oline, iline,
+> > +							get_count_order(keypad->nlines));
+> > +				/*
+> > +				 * Exit loop immediately since we cannot detect
+> > +				 * more than one key press at a time.
+> > +				 */
+> > +				break;
+> > +			}
+> > +		}
+> > +
+> > +		gpiod_direction_input(keypad->line_gpios->desc[oline]);
+> > +
+> > +		if (code)
+> > +			break;
+> > +	}
+> > +
+> > +	charlieplex_keypad_check_switch_change(input, code);
+> > +}
+> 
+> ...
+> 
+> > +	for (unsigned int i = 0; i < keypad->nlines; i++)
+> > +		(keypad->line_gpios->desc[i], "charlieplex_kbd_line");
+> 
+> Hmm... Don't you want to give it an index?
+
+Makes sense, will do.
+
+I will also change for "keypad->line_gpios->ndescs" in the loop
+iterator.
+
+
+> 
+> (In case you go this direction, see the kasprintf_strarray() or
+>  its managed variant.)
+> 
+> -- 
+> With Best Regards,
+> Andy Shevchenko
+> 
+> 
+
+
+-- 
+Hugo Villeneuve
 
