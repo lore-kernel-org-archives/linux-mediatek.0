@@ -4,60 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAD43FED2DE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 07:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1332EFED2F6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Mar 2026 09:29:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:References:
-	In-Reply-To:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NGQFtN65jqZPHApCqR8fT1iH+UK6PY6v44zsFoBO/rU=; b=3fQHuYppqAfJkV
-	Dyfa8kpAOGc/3RGg6t6qRHSWaTnw8nz2OsqtVgjm+DHm7u17rBpga9KCfyzR40s1IC5J8PKV8OFlF
-	r7GteuOwt5A+bGV5CqpJP+ggaSwe+K+AJU/Vp+OU+hLHtQ8hC0rM5cv4vYmNGjp3mlFRluZ+31lky
-	Jf6cSBnhd82LhuwCF3NkuZ7upcjLFncQr7jOzCCdWIOePZo3XI+qJHYTWitpHcjaoKdtu3dQLVKTa
-	/MRDcjmyKGVlU6m5CgLPUtnAl3+UhLKr8aNeZDPNKh4J49en5VcGHPAJQ/jPOENR8zlwqnuca9/CB
-	H97IQ4u1VRSbVhf+lllQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ugOuw7T4v0idjV2XykkyxgOkdjTkO0dLS5Nelx4Rb/8=; b=TGSFA8bvsDD1dp7CPXrMBw2LM2
+	p/4t1kXSzLfkNizPP7U+zNMwJEQJeOuFhOnXC8O8RI1XvVhxazqTf3LO6TICa2e9MTCwTSnYzQ68L
+	sBadXq3TJXZscKdzBGBF1aU04cybSVBjfmzhpaLWOO2A2CeTJWAq/bzyRXUekR+THr88EYTWkjqQQ
+	caGmzkBDd/TqZRDuAshxqLSEXoJKPG0NbraNaDFprH4HJc4T2Lz8ZH3Zl1/zV+hzH5RM9bdzhDhgY
+	a9CNnSxmnXw4FK5BSukaZdhZw2p6KyX2FqXwkL+peqsDGsnq3UBD8uLErBiJX6/toAT1zTotne78V
+	qXHi9pag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0adx-0000000DYHT-12dn;
-	Thu, 12 Mar 2026 07:39:41 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1w0cME-0000000Dj2w-1kWx;
+	Thu, 12 Mar 2026 09:29:30 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0adr-0000000DYH0-0ymc;
-	Thu, 12 Mar 2026 07:39:39 +0000
-Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
-	by mxout2.routing.net (Postfix) with ESMTP id F0A8060244;
-	Thu, 12 Mar 2026 07:39:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=routing; t=1773301168;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=NGQFtN65jqZPHApCqR8fT1iH+UK6PY6v44zsFoBO/rU=;
-	b=WwL+dAsjvDAwGuZnVMJgvw+33+ocdTXcPGYqWKyxtPC9CadFv0zPwLqzVKS/bB3ZOlOMKe
-	BOfF0YtZEc+oTSCdBlCB4sqONtWFuk2NhKRDzkCtiyCun1BQOSsPf7F+AnWeb2uxhh8AE5
-	Iyoh/UEenaJm83mHOngDw9ZmtPzgZj0=
-Received: from ehlo.thunderbird.net (fttx-pool-217.61.148.188.bambit.de [217.61.148.188])
-	by mxbox4.masterlogin.de (Postfix) with ESMTPSA id 542F08007E;
-	Thu, 12 Mar 2026 07:39:27 +0000 (UTC)
-Date: Thu, 12 Mar 2026 08:39:26 +0100
-From: Frank Wunderlich <linux@fw-web.de>
-To: Laura Nao <laura.nao@collabora.com>
-Subject: Re: [PATCH] thermal/drivers/mediatek/lvts: fix mt7987 thermal crash
-User-Agent: K-9 Mail for Android
-In-Reply-To: <20260311093519.15810-1-laura.nao@collabora.com>
-References: <20260309064439.4296-1-linux@fw-web.de> <20260311093519.15810-1-laura.nao@collabora.com>
-Message-ID: <8B371D2A-3C7E-4514-B495-9ED58FB60A80@fw-web.de>
+	id 1w0cMB-0000000DizO-3RIH;
+	Thu, 12 Mar 2026 09:29:29 +0000
+X-UUID: ee98c7281df511f1a21c59e7364eecb8-20260312
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:364da13e-4297-4e51-b36c-abb76dbed6cc,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:20
+X-CID-META: VersionHash:89c9d04,CLOUDID:3fe1568a4ae880f33e74b65e970bdd58,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:102|850|898,TC:nil,Content:0|15|50,EDM:5
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: ee98c7281df511f1a21c59e7364eecb8-20260312
+X-User: xiaopei01@kylinos.cn
+Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <xiaopei01@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 885957485; Thu, 12 Mar 2026 17:29:13 +0800
+From: Pei Xiao <xiaopei01@kylinos.cn>
+To: linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	imx@lists.linux.dev,
+	openbmc@lists.ozlabs.org,
+	linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	broonie@kernel.org
+Cc: Pei Xiao <xiaopei01@kylinos.cn>
+Subject: [PATCH 00/17] cleanup in spi by use devm_clk_get_enabled
+Date: Thu, 12 Mar 2026 17:28:52 +0800
+Message-Id: <cover.1773306858.git.xiaopei01@kylinos.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Mail-ID: 63a00dde-0e31-408d-98f9-570225501692
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_003935_561078_EEB36939 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20260312_022928_165785_3A90775E 
+X-CRM114-Status: UNSURE (   5.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,77 +78,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: rafael@kernel.org, linux-pm@vger.kernel.org, daniel.lezcano@linaro.org, daniel@makrotopia.org, linux-kernel@vger.kernel.org, laura.nao@collabora.com, linux-mediatek@lists.infradead.org, lukasz.luba@arm.com, matthias.bgg@gmail.com, rui.zhang@intel.com, linux-arm-kernel@lists.infradead.org, angelogioacchino.delregno@collabora.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 11=2E M=C3=A4rz 2026 10:35:19 MEZ schrieb Laura Nao <laura=2Enao@collabo=
-ra=2Ecom>:
->Hi!
->
->On 3/9/26 07:44, Frank Wunderlich wrote:
->> From: Frank Wunderlich <frank-w@public-files=2Ede>
->>
->> On mt7987 we see a crash due to missing ops entry=2E
->>
->> [    1=2E518540] Internal error: Oops: 0000000096000005 [#1]  SMP
->> =2E=2E=2E
->> [    1=2E564481] pc : lvts_get_temp+0x84/0xc4
->> [    1=2E564492] lr : lvts_get_temp+0x60/0xc4
->> =2E=2E=2E
->> [    1=2E620900] Call trace:
->> [    1=2E631753]  lvts_get_temp+0x84/0xc4 (P)
->> [    1=2E645471]  __thermal_zone_get_temp+0x24/0x11c
->> [    1=2E656502]  __thermal_zone_device_update+0x9c/0x52c
->>
->> Add the new ops member added in 7=2E0-rc1 for mt7987 too=2E
->>
->> Fixes: a4c40559499f ("thermal/drivers/mediatek/lvts: Add platform ops t=
-o support alternative conversion logic")
->
->I think the Fixes tag should reference=20
->"thermal/drivers/mediatek/lvts_thermal: Add mt7987 support", as the=20
->commit introducing the ops also updated all existing data structs (seems=
-=20
->like mt7987 support landed right after)=2E
+I know that many old SPI drivers should not be modified for hardware
+stability and to reduce maintenance effort. But I can't help cleaning them
+up. To minimize the introduction of issues, I tried not to modify the
+timing of those hardware clock enables.
 
-Ok, i will change this=2E Have not looked on order how commits
-are applied=2E Both commits were new in 7=2E0=2E
+Pei Xiao (17):
+  spi: axiado: Use helper function devm_clk_get_enabled()
+  spi: bcm63xx-hsspi: Use helper function devm_clk_get_enabled()
+  spi: bcmbca-hsspi: Use helper function devm_clk_get_enabled()
+  spi: img-spfi: Use helper function devm_clk_get_enabled()
+  spi: imx: Use helper function devm_clk_get_enabled()
+  spi: npcm-pspi: Use helper function devm_clk_get_enabled()
+  spi: orion: Use helper function devm_clk_get_enabled()
+  spi: rockchip-sfc: Use helper function devm_clk_get_enabled()
+  spi: sifive: Use helper function devm_clk_get_enabled()
+  spi: slave-mt27xx: Use helper function devm_clk_get_enabled()
+  spi: st: Use helper function devm_clk_get_enabled()
+  spi: stm32-qspi: Use helper function devm_clk_get_enabled()
+  spi: stm32: Use helper function devm_clk_get_enabled()
+  spi: sunplus-sp7021: Use helper function devm_clk_get_enabled()
+  spi: uniphier: Use helper function devm_clk_get_enabled()
+  spi: zynq-qspi: Use helper function devm_clk_get_enabled()
+  spi: zynqmp-gqspi: Use helper function devm_clk_get_enabled()
 
->> Signed-off-by: Frank Wunderlich <frank-w@public-files=2Ede>
->> ---
->>  drivers/thermal/mediatek/lvts_thermal=2Ec | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/drivers/thermal/mediatek/lvts_thermal=2Ec b/drivers/therma=
-l/mediatek/lvts_thermal=2Ec
->> index a9617d5e0077=2E=2E5671531d4c23 100644
->> --- a/drivers/thermal/mediatek/lvts_thermal=2Ec
->> +++ b/drivers/thermal/mediatek/lvts_thermal=2Ec
->> @@ -2026,6 +2026,7 @@ static const struct lvts_data mt7987_lvts_ap_data=
- =3D {
->>  	=2Etemp_offset	=3D LVTS_COEFF_B_MT7987,
->>  	=2Egt_calib_bit_offset =3D 32,
->>  	=2Edef_calibration =3D 19380,
->
->You'll probably need to define num_cal_offsets too, since the number of=
-=20
->calibration bytes was also made configurable (not sure if this is=20
->already addressed by a separate patch)=2E
+ drivers/spi/spi-axiado.c         | 23 +++----------
+ drivers/spi/spi-bcm63xx-hsspi.c  | 44 +++++++-----------------
+ drivers/spi/spi-bcmbca-hsspi.c   | 47 +++++++++----------------
+ drivers/spi/spi-img-spfi.c       | 14 ++------
+ drivers/spi/spi-imx.c            | 15 ++------
+ drivers/spi/spi-npcm-pspi.c      | 19 ++++------
+ drivers/spi/spi-orion.c          | 10 ++----
+ drivers/spi/spi-rockchip-sfc.c   | 20 ++---------
+ drivers/spi/spi-sifive.c         | 20 ++++-------
+ drivers/spi/spi-slave-mt27xx.c   |  8 +----
+ drivers/spi/spi-st-ssc4.c        | 14 +++-----
+ drivers/spi/spi-stm32-qspi.c     | 17 +++------
+ drivers/spi/spi-stm32.c          | 59 ++++++++++----------------------
+ drivers/spi/spi-sunplus-sp7021.c | 15 +-------
+ drivers/spi/spi-uniphier.c       | 15 +++-----
+ drivers/spi/spi-zynq-qspi.c      | 28 ++++-----------
+ drivers/spi/spi-zynqmp-gqspi.c   | 17 ++-------
+ 17 files changed, 95 insertions(+), 290 deletions(-)
 
-Thanks for pointing to this=2E
-Should i change in same patch or in separate one?
+-- 
+2.25.1
 
->> +	=2Eops =3D &lvts_platform_ops_mt7988,
->>  };
->> =20
->>  static const struct lvts_data mt7988_lvts_ap_data =3D {
->
->Best,
->
->Laura
-
-
-
-regards Frank
 
