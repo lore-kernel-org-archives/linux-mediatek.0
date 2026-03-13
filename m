@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03CF5107BCCC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 16:56:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FA7D107BCCC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 16:57:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jqSuO3F12+BG9vDtSc8L1vzzspX/dhmwJJslZsHS+5w=; b=I5I2dn85EYa8a1i3dU8Y4Lu1Az
-	ZJDM4dzGxVCXJxm2hyekfwjcXcvIr3S0S8of+KQZoAg3gT7KX5IfW6PnJFhQ+P2EHwN0/ASN27xgS
-	Bt8J+8AOnYzVeTby4sYbbNJvz2IT4iKys0G+XNAoUn8L//hI/2vm5dlrEa9+vqJxJJIEjtnYchLVX
-	lDFKapcHA9veQqMtOpD4Vmgb/znhrUC45sDp4vgsUJDgkmJmoWk1AoIcYJOo5Vuyf3cFQ+/P1ep4Q
-	fEV5UNXV3D6DKZ707Q62mTU8O3VGoPzczI5oTaWLirtBLIli1ll+FoFZT+gCNNk8yD48YcVA1VCND
-	e+XM2HWw==;
+	bh=q894oIJ4bYAg9Q9C0Fcsffh5Nho2Uop1nYGfUhyAYk8=; b=JmjwaJG2tI741+j+sXQE49WVDJ
+	aaxnsgA6mKLs98RT1Vdr3z6csxNTn+MBnWOh+lAxs0UAfaQRHUna8TI8pdVcnZpm2gW+2t84owd1v
+	0zAulkP/xKpRCB3pl0wXdvltWlVb8EJV/GM/YCLO16ayNlshHYz7xTQFtXP4pXNPfWEzoJe8y3uaM
+	sO1Sy8S+DjSbw08i4Snbd0ZFgaIYoQlWbOIhV3CnTPUz7A8QnZ2WjKxf6ElBihQY9x2qld8EG3lWz
+	PM8lvc4VsIShRLSIF6RcvrS8pzfk8VbdqE8S0bnEdW7hvsehQREEwKMCSL2b1Ecvu3c7rK/2EEDjM
+	ttP2SuKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w15oj-00000000hjZ-0ELy;
-	Fri, 13 Mar 2026 16:56:53 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
+	id 1w15op-00000000hoL-12ww;
+	Fri, 13 Mar 2026 16:56:59 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w15oO-00000000hT5-1Xml;
-	Fri, 13 Mar 2026 16:56:35 +0000
+	id 1w15oW-00000000hXw-3vEf;
+	Fri, 13 Mar 2026 16:56:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=jq
-	SuO3F12+BG9vDtSc8L1vzzspX/dhmwJJslZsHS+5w=; b=n0zuwsdNS0gS17QGuF
-	pXTmwopfCpJ8kBSb5N88HeJgmtmFZvZAnII+cqt0DOza14sHfaLdvpzkHzRkQo2T
-	XJHHJeWpoCPt9gFP3ON1hFls3+xe0tbEdUBgiI5oYe+sdRNKkwY2IWJ5GWVk2THK
-	IhNHb25YDUWgP+ZvqO5ewpr2Q=
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=q8
+	94oIJ4bYAg9Q9C0Fcsffh5Nho2Uop1nYGfUhyAYk8=; b=m2cjwkogHtHe/O5pqd
+	kWiwyVGQ8lSJ/meJz2zbEGfPfBRorzSQ4FlJsI3+6O/rr4YMXjNgzb+OU8j3mEXG
+	EKjoClLTg3FD4cNd3b0B2Z52Mm7Pba82yphj+Kw1VRw5RhG8x527BTL8+3u6s43U
+	pGElVMECG/vRE0mB8nSMlWq+8=
 Received: from zhb.. (unknown [])
-	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wAX2JV7QbRpTApJAw--.54345S5;
-	Sat, 14 Mar 2026 00:55:28 +0800 (CST)
+	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wAX2JV7QbRpTApJAw--.54345S4;
+	Sat, 14 Mar 2026 00:55:27 +0800 (CST)
 From: Hans Zhang <18255117159@163.com>
 To: lpieralisi@kernel.org,
 	jingoohan1@gmail.com,
@@ -58,24 +58,24 @@ Cc: robh@kernel.org,
 	linux-kernel@vger.kernel.org,
 	shawn.lin@rock-chips.com,
 	Hans Zhang <18255117159@163.com>
-Subject: [PATCH v9 3/5] PCI: j721e: Validate max-link-speed from DT
-Date: Sat, 14 Mar 2026 00:55:20 +0800
-Message-Id: <20260313165522.123518-4-18255117159@163.com>
+Subject: [PATCH v9 2/5] PCI: dwc: Use pcie_get_link_speed() helper for safe array access
+Date: Sat, 14 Mar 2026 00:55:19 +0800
+Message-Id: <20260313165522.123518-3-18255117159@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260313165522.123518-1-18255117159@163.com>
 References: <20260313165522.123518-1-18255117159@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wAX2JV7QbRpTApJAw--.54345S5
-X-Coremail-Antispam: 1Uf129KBjvdXoW7JF4rZw1ftr4xWFyxGF1DGFg_yoWDXFXE9F
-	1UXFWrAr4Uuryakr1YyryayF95A34Uuw18Wa4rtF4fAFyxWay5ZrnxAFWUWa97u3W7JF17
-	JFyDKFn5J3ZFkjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7xRNDGYtUUUUU==
+X-CM-TRANSID: _____wAX2JV7QbRpTApJAw--.54345S4
+X-Coremail-Antispam: 1Uf129KBjvJXoW3GFWrCFW8Jr4UXw15GF4UArb_yoW7KFWUpa
+	y5tFyIyF18JF45ur4Yyas5ZFyYqFnxCrW7GwsxW3Z29FyakrZxKa48tFWftryfKFsFvry3
+	Kr17t3W7CF13tr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0ziksqXUUUUU=
 X-Originating-IP: [240e:b8f:927e:1000:ce47:698d:adec:5bb5]
-X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCxAD3m2m0QYDJ6wAA3W
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7B-2mmm0QX8AsgAA3O
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_095634_429118_14E95E98 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20260313_095641_357194_8F082957 
+X-CRM114-Status: GOOD (  13.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,30 +90,131 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the new pcie_get_link_speed() helper to validate the value read from
-the "max-link-speed" DT property.  If the value is missing or invalid,
-fall back to Gen2 (speed = 2).  This prepares for the removal of the
-range check in of_pci_get_max_link_speed().
+Replace direct indexing of pcie_link_speed[] with the new helper
+pcie_get_link_speed() in all DesignWare core and glue drivers. This
+ensures that out-of-range generation numbers do not cause out-of-bounds
+accesses when the helper returns PCI_SPEED_UNKNOWN, and prepares for
+the removal of the range check in of_pci_get_max_link_speed().
+
+The actual validation of the "max-link-speed" DT property (e.g., fallback
+to a safe default and warning) is added in subsequent patches for each
+driver that reads the property.
 
 Signed-off-by: Hans Zhang <18255117159@163.com>
 ---
- drivers/pci/controller/cadence/pci-j721e.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/pci/controller/dwc/pcie-designware-host.c | 2 +-
+ drivers/pci/controller/dwc/pcie-designware.c      | 2 +-
+ drivers/pci/controller/dwc/pcie-qcom-common.c     | 2 +-
+ drivers/pci/controller/dwc/pcie-qcom-ep.c         | 4 ++--
+ drivers/pci/controller/dwc/pcie-qcom.c            | 6 +++---
+ drivers/pci/controller/dwc/pcie-tegra194.c        | 2 +-
+ 6 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/pci/controller/cadence/pci-j721e.c b/drivers/pci/controller/cadence/pci-j721e.c
-index 6f2501479c70..bfdfe98d5aba 100644
---- a/drivers/pci/controller/cadence/pci-j721e.c
-+++ b/drivers/pci/controller/cadence/pci-j721e.c
-@@ -202,7 +202,8 @@ static int j721e_pcie_set_link_speed(struct j721e_pcie *pcie,
- 	int ret;
+diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
+index 6ae6189e9b8a..0e05c5280344 100644
+--- a/drivers/pci/controller/dwc/pcie-designware-host.c
++++ b/drivers/pci/controller/dwc/pcie-designware-host.c
+@@ -1081,7 +1081,7 @@ static void dw_pcie_program_presets(struct dw_pcie_rp *pp, enum pci_bus_speed sp
+ static void dw_pcie_config_presets(struct dw_pcie_rp *pp)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+-	enum pci_bus_speed speed = pcie_link_speed[pci->max_link_speed];
++	enum pci_bus_speed speed = pcie_get_link_speed(pci->max_link_speed);
  
- 	link_speed = of_pci_get_max_link_speed(np);
--	if (link_speed < 2)
-+	if ((link_speed < 2) ||
-+	    (pcie_get_link_speed(link_speed) == PCI_SPEED_UNKNOWN))
- 		link_speed = 2;
+ 	/*
+ 	 * Lane equalization settings need to be applied for all data rates the
+diff --git a/drivers/pci/controller/dwc/pcie-designware.c b/drivers/pci/controller/dwc/pcie-designware.c
+index 5741c09dde7f..06792ba92aa7 100644
+--- a/drivers/pci/controller/dwc/pcie-designware.c
++++ b/drivers/pci/controller/dwc/pcie-designware.c
+@@ -861,7 +861,7 @@ static void dw_pcie_link_set_max_speed(struct dw_pcie *pci)
+ 	ctrl2 = dw_pcie_readl_dbi(pci, offset + PCI_EXP_LNKCTL2);
+ 	ctrl2 &= ~PCI_EXP_LNKCTL2_TLS;
  
- 	val = link_speed - 1;
+-	switch (pcie_link_speed[pci->max_link_speed]) {
++	switch (pcie_get_link_speed(pci->max_link_speed)) {
+ 	case PCIE_SPEED_2_5GT:
+ 		link_speed = PCI_EXP_LNKCTL2_TLS_2_5GT;
+ 		break;
+diff --git a/drivers/pci/controller/dwc/pcie-qcom-common.c b/drivers/pci/controller/dwc/pcie-qcom-common.c
+index 01c5387e53bf..5aa73c628737 100644
+--- a/drivers/pci/controller/dwc/pcie-qcom-common.c
++++ b/drivers/pci/controller/dwc/pcie-qcom-common.c
+@@ -22,7 +22,7 @@ void qcom_pcie_common_set_equalization(struct dw_pcie *pci)
+ 	 * applied.
+ 	 */
+ 
+-	for (speed = PCIE_SPEED_8_0GT; speed <= pcie_link_speed[pci->max_link_speed]; speed++) {
++	for (speed = PCIE_SPEED_8_0GT; speed <= pcie_get_link_speed(pci->max_link_speed); speed++) {
+ 		if (speed > PCIE_SPEED_32_0GT) {
+ 			dev_warn(dev, "Skipped equalization settings for unsupported data rate\n");
+ 			break;
+diff --git a/drivers/pci/controller/dwc/pcie-qcom-ep.c b/drivers/pci/controller/dwc/pcie-qcom-ep.c
+index 18460f01b2c6..4b7184d4a6fa 100644
+--- a/drivers/pci/controller/dwc/pcie-qcom-ep.c
++++ b/drivers/pci/controller/dwc/pcie-qcom-ep.c
+@@ -152,7 +152,7 @@
+ #define WAKE_DELAY_US				2000 /* 2 ms */
+ 
+ #define QCOM_PCIE_LINK_SPEED_TO_BW(speed) \
+-		Mbps_to_icc(PCIE_SPEED2MBS_ENC(pcie_link_speed[speed]))
++		Mbps_to_icc(PCIE_SPEED2MBS_ENC(pcie_get_link_speed(speed)))
+ 
+ #define to_pcie_ep(x)				dev_get_drvdata((x)->dev)
+ 
+@@ -531,7 +531,7 @@ static int qcom_pcie_perst_deassert(struct dw_pcie *pci)
+ 
+ 	qcom_pcie_common_set_equalization(pci);
+ 
+-	if (pcie_link_speed[pci->max_link_speed] == PCIE_SPEED_16_0GT)
++	if (pcie_get_link_speed(pci->max_link_speed) == PCIE_SPEED_16_0GT)
+ 		qcom_pcie_common_set_16gt_lane_margining(pci);
+ 
+ 	/*
+diff --git a/drivers/pci/controller/dwc/pcie-qcom.c b/drivers/pci/controller/dwc/pcie-qcom.c
+index 67a16af69ddc..5c7c105bb745 100644
+--- a/drivers/pci/controller/dwc/pcie-qcom.c
++++ b/drivers/pci/controller/dwc/pcie-qcom.c
+@@ -170,7 +170,7 @@
+ #define QCOM_PCIE_CRC8_POLYNOMIAL		(BIT(2) | BIT(1) | BIT(0))
+ 
+ #define QCOM_PCIE_LINK_SPEED_TO_BW(speed) \
+-		Mbps_to_icc(PCIE_SPEED2MBS_ENC(pcie_link_speed[speed]))
++		Mbps_to_icc(PCIE_SPEED2MBS_ENC(pcie_get_link_speed(speed)))
+ 
+ struct qcom_pcie_resources_1_0_0 {
+ 	struct clk_bulk_data *clks;
+@@ -320,7 +320,7 @@ static int qcom_pcie_start_link(struct dw_pcie *pci)
+ 
+ 	qcom_pcie_common_set_equalization(pci);
+ 
+-	if (pcie_link_speed[pci->max_link_speed] == PCIE_SPEED_16_0GT)
++	if (pcie_get_link_speed(pci->max_link_speed) == PCIE_SPEED_16_0GT)
+ 		qcom_pcie_common_set_16gt_lane_margining(pci);
+ 
+ 	/* Enable Link Training state machine */
+@@ -1579,7 +1579,7 @@ static void qcom_pcie_icc_opp_update(struct qcom_pcie *pcie)
+ 				ret);
+ 		}
+ 	} else if (pcie->use_pm_opp) {
+-		freq_mbps = pcie_dev_speed_mbps(pcie_link_speed[speed]);
++		freq_mbps = pcie_dev_speed_mbps(pcie_get_link_speed(speed));
+ 		if (freq_mbps < 0)
+ 			return;
+ 
+diff --git a/drivers/pci/controller/dwc/pcie-tegra194.c b/drivers/pci/controller/dwc/pcie-tegra194.c
+index 06571d806ab3..47f08adfbd79 100644
+--- a/drivers/pci/controller/dwc/pcie-tegra194.c
++++ b/drivers/pci/controller/dwc/pcie-tegra194.c
+@@ -310,7 +310,7 @@ static void tegra_pcie_icc_set(struct tegra_pcie_dw *pcie)
+ 	speed = FIELD_GET(PCI_EXP_LNKSTA_CLS, val);
+ 	width = FIELD_GET(PCI_EXP_LNKSTA_NLW, val);
+ 
+-	val = width * PCIE_SPEED2MBS_ENC(pcie_link_speed[speed]);
++	val = width * PCIE_SPEED2MBS_ENC(pcie_get_link_speed(speed));
+ 
+ 	if (icc_set_bw(pcie->icc_path, Mbps_to_icc(val), 0))
+ 		dev_err(pcie->dev, "can't set bw[%u]\n", val);
 -- 
 2.34.1
 
