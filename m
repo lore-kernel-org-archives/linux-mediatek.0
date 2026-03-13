@@ -4,61 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8D9E107BCC6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 16:20:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A168107BCCC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 16:28:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=/M+GnmDCtsfBn1UUijMGSd4Iwqm7U1rMqM48OOCC7vA=; b=z6aoReA/V2UxWU
-	SwNFNtUu6iUHamxjpj/rYYDNWgAgFkQCm+JCjNfaIpxxWGJ5hMv0EmmiQA7K4ugVQdN/DKpkAHmf7
-	fe0fJKkXv1V47XxQv+jPdxhVIEG/qY7F3wn3UGug8ywss2VHqfVlrYZfs5HgSBIdas8ZH29t6m6W2
-	ncDYu4CPsjRVsA9R9QaabszRzLQtXgSmDPJ7mD+PVHKN/y7t1w5CiC2l/GLhnq3DV5hKomXc+dz/S
-	0cN2pKqR+QdYEN9WcnGbEbvrbLO+Rd+n0Fpx1rKga8Q/HlqbL3aCxC415YRX3GTgA88jPrETYs00b
-	m6Z4RM/awFtivgcgS8VA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=r7kxCwfDRwI+tNs9J9TlgCVBRvf2s9ZxZyAXU4E5xVg=; b=se/0idLmURXdqYnPLQPRuCd+1G
+	CiB2KWQm1FyKcBp/Kok3kvr4v8n6nTJBL2re1w/HMtG0Yn7coA1qjti05airduyygy9HvaUwq3xm2
+	yD6xuyQVKWRZQwC2sfgCWeNGn8E8XF+1lD1IH8L09XP+NwkwYpBDh/q9gLKrXqaBU0BPwSccqpkpE
+	uYR5ommbCML5wx6bG+2xuwXRWOABnV2IxN4UHCd/LaIAXD9zX2qNfwDHxT6a0ZKmx96/1DBZMH81H
+	rOVAV5ILu3yj5Q4+QPI3xmO108hnJP29t/tQP4CarVNNz74/NV1aeX0hE227vX/GyVaR/9/0XJyy/
+	ZfMkuWuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w15F7-00000000dCS-29YM;
-	Fri, 13 Mar 2026 16:20:05 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w15Nb-00000000eEM-0lPT;
+	Fri, 13 Mar 2026 16:28:51 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w15F5-00000000dBx-0CnA
-	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Mar 2026 16:20:04 +0000
+	id 1w15NY-00000000eDM-1G5m;
+	Fri, 13 Mar 2026 16:28:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id DF17E6012B;
-	Fri, 13 Mar 2026 16:20:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A11DC19421;
-	Fri, 13 Mar 2026 16:20:01 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 01CCC44380;
+	Fri, 13 Mar 2026 16:28:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A123C2BC86;
+	Fri, 13 Mar 2026 16:28:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773418801;
-	bh=qAx+Oi9Zys6AfZVuERSj3778VmVSGb+4dt2WbzWNnQM=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=aJJdKmObhu0oGQFhPmZibqPGYMFcDKPzl/9mB3J36PzGzxkoMjSRfSXBX5MI0LL8Y
-	 pt0ITmWwZ0jIFLyCA7aoy9lBG3RymPxRzsJzBJqj9vWiPGBDsMvxyCk1l4os2eRDQw
-	 td/eczCuJoDYZVCoWeUpHqTcASeAbGh03dx5BnecNOqSl5p8et+K9XAW9thTzVqO3b
-	 s/I705px3CQoKAPV7BVcBJhNeqLLFdX+8LQVO4gyx7Ajt5S0G3iXsKebM7Hq9TDP32
-	 7yBAcD9E5By8FtKu6VFIJzSwH6k/XctO3Gii1WV2rs0k324wL/AIFYIKMEq1Ns9reR
-	 WsWhPuulyJLwQ==
-Date: Fri, 13 Mar 2026 11:20:00 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Caleb James DeLisle <cjd@cjdns.fr>
-Cc: linux-pci@vger.kernel.org, linux-mips@vger.kernel.org,
-	naseefkm@gmail.com, ryder.lee@mediatek.com, bhelgaas@google.com,
-	lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org,
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	ansuelsmth@gmail.com, linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 3/3] PCI: Skip bridge window reads when window is not
- supported
-Message-ID: <20260313162000.GA1385506@bhelgaas>
+	s=k20201202; t=1773419327;
+	bh=xz7HYdb1hOl3DJa7Hqbhm8rgb1ssw/IvqbgQXX1MSR0=;
+	h=From:Date:Subject:To:Cc:From;
+	b=mPTb0cvQTn1Ic7HMQNrbdhW0F0J3mGvt9sPq0HU4KoFUVESW0gec6WNmKNGwbqNrG
+	 Pc65+HAUvKC3l5t+ofY1hK1rrWJ8QCdl2rUICk/QaoEH1TEzvYubUcfDYB1UjkBdcJ
+	 ug8twP4qhw87Y/gYxX5vQFOa74WP53kkp4FTazRDZSx2pchqGwyE7EFkw3UY5kT1lG
+	 zXBqfdl7gpOEL5WkcchQbZgoIUaqs+f4p5NXZKoYB3NO/TKwk1QNWc+DHbWLsrFvwQ
+	 3eqsOhSvzu4D/zwtlX0ZhWKuXT/XdguYwlG6bM/HFZ0L3RoiV0dBjtxCpSYOgKdgDY
+	 fSwMeLXLdomAA==
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+Date: Fri, 13 Mar 2026 17:28:36 +0100
+Subject: [PATCH net-next v2] net: airoha: select QDMA block according
+ LAN/WAN configuration
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260312165332.569772-4-cjd@cjdns.fr>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260313-airoha-qdma-lan-wan-mode-v2-1-7d577db6e40c@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4WNQQ6CMBREr2L+2m9oS8C48h6GRUMH+BFabQliC
+ He34QIuZvEymTcbJURBottpo4hFkgSfQZ9P1A7W92BxmUkXuiqMKthKDIPlt5ssj9bzJ2cKDlw
+ ZZ7QGOnSG8vwV0cl6qB/kMbPHOlOTm0HSHOL3+FzU0f/XL4oVVyXaunSw11rfn4ge4yXEnpp93
+ 3/oxCE4ywAAAA==
+X-Change-ID: 20260310-airoha-qdma-lan-wan-mode-63d322eefef3
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+X-Mailer: b4 0.14.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260313_092848_387198_DDD6F310 
+X-CRM114-Status: GOOD (  19.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,235 +78,144 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 12, 2026 at 04:53:32PM +0000, Caleb James DeLisle wrote:
-> pci_read_bridge_io() and pci_read_bridge_mmio_pref() read bridge window
-> registers unconditionally. If the registers are hardwired to zero
-> (not implemented), both base and limit will be 0. Since (0 <= 0) is
-> true, a bogus window [mem 0x00000000-0x000fffff] or [io 0x0000-0x0fff]
-> gets created.
-> 
-> pci_read_bridge_windows() already detects unsupported windows by
-> testing register writability and sets io_window/pref_window flags
-> accordingly. Check these flags at the start of pci_read_bridge_io()
-> and pci_read_bridge_mmio_pref() to skip reading registers when the
-> window is not supported.
-> 
-> Suggested-by: Bjorn Helgaas <helgaas@kernel.org>
-> Link: https://lore.kernel.org/all/20260113210259.GA715789@bhelgaas/
-> Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
-> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+Before this patch even GDM ports were assigned to QDMA0 while odd GDM
+ports were using QDMA1, so, based on the DTS configuration, both QDMA0
+and QDMA1 can theoretically receive traffic destinated to the host cpu
+from LAN or WAN GDM ports.
+Airoha folks reported the hw design assumes the LAN traffic destinated
+to the host cpu is be forwarded to QDMA0 while traffic received on WAN
+GDM port is managed by QDMA1. For this reason, select QDMA block according
+to the GDM port LAN or WAN configuration:
+- QDMA0 is used for GDM LAN devices
+- QDMA1 is used for GDM WAN device
 
-I'd like to apply this, but I don't understand what's going on here.
+Assuming a device with three GDM ports, a typical configuration could be:
+- MT7530 DSA switch -> GDM1 (eth0) -> QDMA0 (LAN traffic)
+- External PHY      -> GDM2 (eth1) -> QDMA1 (WAN traffic)
+- External PHY      -> GDM3 (eth2) -> QDMA0 (LAN traffic)
 
-I instrumented a kernel to return zero for all reads of Root Port
-prefetchable window registers, and it worked correctly: It didn't
-create a bogus [mem 0x00000000-0x000fffff] window (see below for a
-possible explanation), didn't claim to have assigned a prefetchable
-window, and the 64-bit prefetchable BAR of the downstream device was
-correctly placed in the non-prefetchable window.
+We can then bridge eth0 DSA port (lanX) with eth2 since they all tx/rx
+LAN traffic.
 
-I'm booting this in qemu, and the current behavior with a functional
-prefetchable window is this:
+Please note this patch introduces a change not visible to the user since
+airoha_eth driver currently supports just the internal phy available via
+the MT7530 DSA switch and there are no WAN interfaces officially supported
+since PCS/external phy is not merged mainline yet (it will be posted with
+following patches).
 
-  pci 0000:00:1c.3: PCI bridge to [bus 04]
-  pci 0000:00:1c.3:   bridge window [io  0x4000-0x4fff]
-  pci 0000:00:1c.3:   bridge window [mem 0xfe200000-0xfe3fffff]
-  pci 0000:00:1c.3:   bridge window [mem 0xfd000000-0xfd1fffff 64bit pref]
-  pci 0000:04:00.0: [1033:0194] type 00 class 0x0c0330 PCIe Endpoint
-  pci 0000:04:00.0: BAR 0 [mem 0xfe200000-0xfe203fff 64bit]
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+---
+Changes in v2:
+- Update commit log.
+- Link to v1: https://lore.kernel.org/r/20260310-airoha-qdma-lan-wan-mode-v1-1-64ec74dea872@kernel.org
+---
+ drivers/net/ethernet/airoha/airoha_eth.c | 18 ++++++++----------
+ drivers/net/ethernet/airoha/airoha_eth.h |  1 +
+ 2 files changed, 9 insertions(+), 10 deletions(-)
 
-With the instrumented kernel where the prefetchable window registers
-are effectively hardwired to zero, I see this:
-
-  pci 0000:00:1c.3: PCI bridge to [bus 04]
-  pci 0000:00:1c.3:   bridge window [io  0x4000-0x4fff]
-  pci 0000:00:1c.3:   bridge window [mem 0xfe200000-0xfe3fffff]
-  pci 0000:04:00.0: [1033:0194] type 00 class 0x0c0330 PCIe Endpoint
-  pci 0000:04:00.0: BAR 0 [mem 0xfe200000-0xfe203fff 64bit]
-
-So the 04:00.0 BAR 0 was put in the non-prefetchable window as we
-would expect when there's no prefetchable window.
-
-Either there's something else going on with EcoNet EN7528 or I don't
-understand the explanation.
-
-Based on the link above, Root Port 1 doesn't implement a prefetchable
-window, but Linux thinks it does and puts a mt7615e WiFi device BAR in
-the non-existent window, so it doesn't work.  I assume RP 1 is
-0001:00:01.0, and the mt7615e WiFi is 0001:01:00.0, and the mt7615e
-doesn't work:
-
-  pci 0001:00:01.0: [14c3:0811] type 01 class 0x060400 PCIe Root Port
-  pci 0001:00:01.0: PCI bridge to [bus 00]
-  pci 0001:00:01.0:   bridge window [mem 0x00000000-0x000fffff]
-  pci 0001:00:01.0: bridge configuration invalid ([bus 00-00]), reconfiguring
-  pci 0001:00:01.0: PCI bridge to [bus 01-ff]
-  pci 0001:00:01.0: bridge window [mem 0x28000000-0x280fffff]: assigned
-  pci 0001:00:01.0: bridge window [mem 0x28100000-0x282fffff pref]: assigned
-  pci 0001:01:00.0: BAR 0 [mem 0x28100000-0x281fffff 64bit pref]: assigned
-  WARNING: CPU: 3 PID: 1777 at target-mipsel_24kc_musl/linux-econet_en7528/mt76-2025.11.06~eb567bc7/mt7615/eeprom.c:31 mt7615_eeprom_init+0x484/0x548 [mt7615_common]
-  mt7615e 0001:01:00.0: Firmware is not ready for download
-
-The [mem 0x00000000-0x000fffff] window mentioned above is not a
-hardware problem.  This is the non-prefetchable window, which is
-required for all bridges, and if it hasn't been initialized and
-contains the power-up values, this is the window.  So all this is
-telling us is that there was no firmware that programmed the window
-before Linux.
-
-FWIW, I'll attach my instrumentation patches below.  Maybe you can
-similarly instrument your kernel to see the actual config accesses to
-the RP in question.
-
-Also, minor nit: Caleb appears to be the author, but the first
-sign-off is from Ahmed, so the Author vs Signed-off-by order is wrong;
-see
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?id=v6.19#n449
-
-Bjorn
-
-
-commit 012e94d89d10 ("PCI: Log config accesses")
-Author: Bjorn Helgaas <bhelgaas@google.com>
-Date:   Sat Jan 24 12:46:02 2026 -0600
-
-    PCI: Log config accesses
-
-
-diff --git a/drivers/pci/access.c b/drivers/pci/access.c
-index b123da16b63b..8b03af748238 100644
---- a/drivers/pci/access.c
-+++ b/drivers/pci/access.c
-@@ -32,6 +32,49 @@ DEFINE_RAW_SPINLOCK(pci_lock);
- # define pci_unlock_config(f)	raw_spin_unlock_irqrestore(&pci_lock, f)
- #endif
- 
-+/* domain, bus, dev, fn */
-+static u64 pci_log_cfg_dev = (0LL << 32) | PCI_DEVID(0, PCI_DEVFN(0x1c, 3));
-+
-+#define PCI_CFG_FMT	"pci %04x:%02x:%02x.%d: %s %#06x "
-+#define PCI_CFG_FMT_1	PCI_CFG_FMT "%#04x\n"
-+#define PCI_CFG_FMT_2	PCI_CFG_FMT "%#06x\n"
-+#define PCI_CFG_FMT_4	PCI_CFG_FMT "%#010x\n"
-+
-+static void pci_log_cfg(struct pci_bus *bus, unsigned int devfn, char *op,
-+		        int pos, int len, u32 val, int res)
-+{
-+	u64 dev_match = ((u64) pci_domain_nr(bus) << 32) | devfn;
-+	u32 domain = pci_log_cfg_dev >> 32;
-+
-+	if (pci_log_cfg_dev != dev_match)
-+		return;
-+
-+	if (res) {
-+		pr_info(PCI_CFG_FMT "failed (%d)\n",
-+			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
-+			op, pos, res);
-+		return;
-+	}
-+
-+	switch (len) {
-+	case 1:
-+		pr_info(PCI_CFG_FMT_1,
-+			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
-+			op, pos, val);
-+		break;
-+	case 2:
-+		pr_info(PCI_CFG_FMT_2,
-+			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
-+			op, pos, val);
-+		break;
-+	default:
-+		pr_info(PCI_CFG_FMT_4,
-+			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
-+			op, pos, val);
-+		break;
-+	}
-+}
-+
- #define PCI_OP_READ(size, type, len) \
- int noinline pci_bus_read_config_##size \
- 	(struct pci_bus *bus, unsigned int devfn, int pos, type *value)	\
-@@ -50,6 +93,7 @@ int noinline pci_bus_read_config_##size \
- 	else								\
- 		*value = (type)data;					\
- 	pci_unlock_config(flags);					\
-+	pci_log_cfg(bus, devfn, "rd", pos, len, (u32) *value, res);	\
- 									\
- 	return res;							\
- }
-@@ -67,6 +111,7 @@ int noinline pci_bus_write_config_##size \
- 	pci_lock_config(flags);						\
- 	res = bus->ops->write(bus, devfn, pos, len, value);		\
- 	pci_unlock_config(flags);					\
-+	pci_log_cfg(bus, devfn, "wr", pos, len, value, res);		\
- 									\
- 	return res;							\
- }
-commit 744b78273da8 ("PCI: Override pref window reads to return 0")
-Author: Bjorn Helgaas <bhelgaas@google.com>
-Date:   Fri Mar 13 10:39:27 2026 -0500
-
-    PCI: Override pref window reads to return 0
-
-
-diff --git a/drivers/pci/access.c b/drivers/pci/access.c
-index 8b03af748238..675926bddc54 100644
---- a/drivers/pci/access.c
-+++ b/drivers/pci/access.c
-@@ -40,6 +40,43 @@ static u64 pci_log_cfg_dev = (0LL << 32) | PCI_DEVID(0, PCI_DEVFN(0x1c, 3));
- #define PCI_CFG_FMT_2	PCI_CFG_FMT "%#06x\n"
- #define PCI_CFG_FMT_4	PCI_CFG_FMT "%#010x\n"
- 
-+static int pci_override_cfg_rd(struct pci_bus *bus, unsigned int devfn,
-+			       int pos, int len, u32 *value)
-+{
-+	u64 dev_match = ((u64) pci_domain_nr(bus) << 32) | devfn;
-+
-+	if (pci_log_cfg_dev != dev_match)
-+		return -ENODEV;
-+
-+	if (!(pos == 0x24 || pos == 0x26 || pos == 0x28 || pos == 0x2c))
-+		return -ENODEV;
-+
-+	*value = 0;
-+
-+#if 0
-+	u32 domain = pci_log_cfg_dev >> 32;
-+	switch (len) {
-+	case 1:
-+		pr_info("override " PCI_CFG_FMT_1,
-+			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
-+			"rd", pos, *value);
-+		break;
-+	case 2:
-+		pr_info("override " PCI_CFG_FMT_2,
-+			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
-+			"rd", pos, *value);
-+		break;
-+	default:
-+		pr_info("override " PCI_CFG_FMT_4,
-+			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
-+			"rd", pos, *value);
-+		break;
-+	}
-+#endif
-+
-+	return 0;
-+}
-+
- static void pci_log_cfg(struct pci_bus *bus, unsigned int devfn, char *op,
- 		        int pos, int len, u32 val, int res)
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+index 3e9ec5c178f86fdd055e079078a23461edf97951..b4563b5d53bbf174d45548a5efc6fdfb79d33c19 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.c
++++ b/drivers/net/ethernet/airoha/airoha_eth.c
+@@ -1754,11 +1754,13 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
+ static int airoha_dev_init(struct net_device *dev)
  {
-@@ -87,7 +124,9 @@ int noinline pci_bus_read_config_##size \
- 		return PCIBIOS_BAD_REGISTER_NUMBER;			\
- 									\
- 	pci_lock_config(flags);						\
--	res = bus->ops->read(bus, devfn, pos, len, &data);		\
-+	res = pci_override_cfg_rd(bus, devfn, pos, len, &data);		\
-+	if (res)							\
-+		res = bus->ops->read(bus, devfn, pos, len, &data);	\
- 	if (res)							\
- 		PCI_SET_ERROR_RESPONSE(value);				\
- 	else								\
+ 	struct airoha_gdm_port *port = netdev_priv(dev);
+-	struct airoha_qdma *qdma = port->qdma;
+-	struct airoha_eth *eth = qdma->eth;
++	struct airoha_eth *eth = port->eth;
+ 	u32 fe_cpu_port;
+ 	u8 ppe_id;
+ 
++	/* QDMA0 is used for lan ports while QDMA1 is used for WAN ports */
++	port->qdma = &eth->qdma[!airoha_is_lan_gdm_port(port)];
++	port->dev->irq = port->qdma->irq_banks[0].irq;
+ 	airoha_set_macaddr(port, dev->dev_addr);
+ 
+ 	switch (port->id) {
+@@ -1782,7 +1784,7 @@ static int airoha_dev_init(struct net_device *dev)
+ 		}
+ 		fallthrough;
+ 	default: {
+-		u8 qdma_id = qdma - &eth->qdma[0];
++		u8 qdma_id = port->qdma - &eth->qdma[0];
+ 
+ 		/* For PPE1 select cpu port according to the running QDMA. */
+ 		fe_cpu_port = qdma_id ? FE_PSE_PORT_CDM2 : FE_PSE_PORT_CDM1;
+@@ -2866,11 +2868,10 @@ bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
+ }
+ 
+ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+-				 struct device_node *np, int index)
++				 struct device_node *np)
+ {
+ 	const __be32 *id_ptr = of_get_property(np, "reg", NULL);
+ 	struct airoha_gdm_port *port;
+-	struct airoha_qdma *qdma;
+ 	struct net_device *dev;
+ 	int err, p;
+ 	u32 id;
+@@ -2901,7 +2902,6 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+ 		return -ENOMEM;
+ 	}
+ 
+-	qdma = &eth->qdma[index % AIROHA_MAX_NUM_QDMA];
+ 	dev->netdev_ops = &airoha_netdev_ops;
+ 	dev->ethtool_ops = &airoha_ethtool_ops;
+ 	dev->max_mtu = AIROHA_MAX_MTU;
+@@ -2913,7 +2913,6 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+ 	dev->features |= dev->hw_features;
+ 	dev->vlan_features = dev->hw_features;
+ 	dev->dev.of_node = np;
+-	dev->irq = qdma->irq_banks[0].irq;
+ 	SET_NETDEV_DEV(dev, eth->dev);
+ 
+ 	/* reserve hw queues for HTB offloading */
+@@ -2934,7 +2933,7 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
+ 	port = netdev_priv(dev);
+ 	u64_stats_init(&port->stats.syncp);
+ 	spin_lock_init(&port->stats.lock);
+-	port->qdma = qdma;
++	port->eth = eth;
+ 	port->dev = dev;
+ 	port->id = id;
+ 	eth->ports[p] = port;
+@@ -3034,7 +3033,6 @@ static int airoha_probe(struct platform_device *pdev)
+ 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
+ 		airoha_qdma_start_napi(&eth->qdma[i]);
+ 
+-	i = 0;
+ 	for_each_child_of_node(pdev->dev.of_node, np) {
+ 		if (!of_device_is_compatible(np, "airoha,eth-mac"))
+ 			continue;
+@@ -3042,7 +3040,7 @@ static int airoha_probe(struct platform_device *pdev)
+ 		if (!of_device_is_available(np))
+ 			continue;
+ 
+-		err = airoha_alloc_gdm_port(eth, np, i++);
++		err = airoha_alloc_gdm_port(eth, np);
+ 		if (err) {
+ 			of_node_put(np);
+ 			goto error_napi_stop;
+diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
+index 59ed7569f7c33620ea694ec52384a37e1917eaf8..8cfa94ec084a16d6b2d3c94c404f25904c1150e3 100644
+--- a/drivers/net/ethernet/airoha/airoha_eth.h
++++ b/drivers/net/ethernet/airoha/airoha_eth.h
+@@ -533,6 +533,7 @@ struct airoha_qdma {
+ 
+ struct airoha_gdm_port {
+ 	struct airoha_qdma *qdma;
++	struct airoha_eth *eth;
+ 	struct net_device *dev;
+ 	int id;
+ 
+
+---
+base-commit: 8f921f61005450589c0bc1a941a5ddde21d9aed9
+change-id: 20260310-airoha-qdma-lan-wan-mode-63d322eefef3
+
+Best regards,
+-- 
+Lorenzo Bianconi <lorenzo@kernel.org>
+
 
