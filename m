@@ -4,66 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7DF3105F7AE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 14:30:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB157105F7AF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 14:31:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iLyUsWaVlQC9E+siGH2OmLxSLjSqGkW8HsrRxZdao8c=; b=WuE8Qa4AZhMMZXfVIWfXn8GHCe
-	rtSOLOJ/Se1a/rIQuIgx0j05G4UouwxEvdBw3o+pl8uabAp4WYz1fDeXLHS1XZ3fvuheP5APQnWZj
-	70qZRwrNVNX/1E3XSaMyU8DrvWe7eL9q0481wKIIALOjqJXewPmFIZi/KlLyzyOxnEFxUNADmQ2Ar
-	0dhfmaFP6btVCxNk+sazrP3fbIo56ljV4Yz05mpV2xxSnzc3NHmp4LttpvqxWC6i3kDkhX4i+pglU
-	FFEmDAFNbM1ouQ2yFj7H6gnVjbCpRPv0cdD137n4/i8ADxifq4XSeQyEQqHjPEa8y+H5QV7rWbvWc
-	HcGIytcg==;
+	bh=C+eA7efjGJYjTYnY0MH0Uqs9uJP4yAsRPi8k20Uaquc=; b=XWvm/sGjmARPsuwneSG37tst9t
+	V8100vEW/g0AUoBegpTqfoW1WZB4hVd0koYAHjO+DET+zr9Y1KL5Xf0mDYaHYMtCHKLtAG+IDwyYv
+	8k2YmZU+eefh4tjMybzYZ+w3TAL4LPalstWz/xdlPFwh3RAO2Ld2tNsSuXqKvWDeosEosSZ3SLzgv
+	UYaQcq9MKgUis70VRF12ID7pQ/CNg8/XiT+n30H+gIfsH3TfHQRihRo24j2uCaa13rmFFWVw8U3+k
+	xMjTBZiIJXhHfMl9h5TEX1/x3YhokWbiAOxYr9GB1ynKjZHBXpdgXkgPkSa1lBm6LmLFvm19ibSAr
+	cTVzXgFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w13X2-00000000OOb-0k9v;
-	Fri, 13 Mar 2026 14:30:28 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w13YP-00000000Oh9-3SxW;
+	Fri, 13 Mar 2026 14:31:53 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w13Wy-00000000ONz-3saY;
-	Fri, 13 Mar 2026 14:30:26 +0000
+	id 1w13YO-00000000OgN-01y8;
+	Fri, 13 Mar 2026 14:31:52 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id AA6744096E;
-	Fri, 13 Mar 2026 14:30:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDEF9C19421;
-	Fri, 13 Mar 2026 14:30:20 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 300E86012B;
+	Fri, 13 Mar 2026 14:31:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1517AC19421;
+	Fri, 13 Mar 2026 14:31:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773412222;
-	bh=Ay+vXhiV8XuqkQrW882GrFkmgzuSWH9fywkBW8jtW0Y=;
+	s=k20201202; t=1773412310;
+	bh=sxCpbTctA+RZNdC597cmoMASeWWFt3FxcZxm5LfrmZY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=X4msbIrI1iihPXJ8SoRunh20u/9NK5f72rlEZlV6GLsN4qXi4RhYIeTTYKS7Kkouo
-	 F22RbtH9apeRv1EeWqcqN2ZzJC0ydp8RCQoXrKJwlGufxdF6IddJiPAogM7bUdOUL2
-	 MBJj0OzyPg/77huTVLU3RhIycLaWGNjA0p8aTs3OhtIB/4/wWH33lqGD8jVf0ZPuo3
-	 MKihnbw7Vd9l7AhMPVTMBo+QW/e4hDzx3KcRRnOaEIkW4X+vurkqd5sgvM1S8V43mL
-	 Gm3PQTyxz7eBfWkPag7RU07e9x5U6xux0cZZDHSl3manqfOL4dUBSveGp0TZ22WPMd
-	 UPooWldAcCwPw==
-Date: Fri, 13 Mar 2026 14:30:18 +0000
+	b=vAypwmcy7+uC/mkkjD9zZ7DERx2WdIGWr8DmzfMV9N/WE+TqdxkV1l1QHvW77tR9Z
+	 RGAh0XSObqRoomk32pz3RCTz4KyYv3jNyTDND5HI9Itlet9VNHcZJhHd+oGcAFU9dt
+	 2oHHN0SkgDHy76DPA5nl3rSKN10TciiIb/wGwDFSR2lwk3AOxmLM+J6ePZOTIbOvaQ
+	 9ZD+3Rt+6s4CIFZZJX8njW81mntAqhPgCkMgM0w8MG1FgWdRI5qxG/VKQni2Fop+WJ
+	 RXbeX0HnnMbuLvRH8fi6RAuSIsClxs5gery43kaTTKl3nB10M27k5F00fi3e2l55Xf
+	 YTq4OPWLxsPRg==
+Date: Fri, 13 Mar 2026 14:31:46 +0000
 From: Simon Horman <horms@kernel.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Jakub Kicinski <kuba@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: select QDMA block according
- LAN/WAN configuration
-Message-ID: <20260313143018.GD461701@kernel.org>
-References: <20260310-airoha-qdma-lan-wan-mode-v1-1-64ec74dea872@kernel.org>
- <20260312172430.GA1267298@kernel.org>
- <abMsvOMnnuTdoG-9@lore-desk>
- <20260312172248.68742f98@kernel.org>
- <abP2dLNIw6zqkxL4@lore-desk>
+Subject: Re: [PATCH net v2] net: airoha: Remove airoha_dev_stop() in
+ airoha_remove()
+Message-ID: <20260313143146.GE461701@kernel.org>
+References: <20260313-airoha-remove-ndo_stop-remove-net-v2-1-67542c3ceeca@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <abP2dLNIw6zqkxL4@lore-desk>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_073025_005621_5FAA3425 
-X-CRM114-Status: GOOD (  23.57  )
+In-Reply-To: <20260313-airoha-remove-ndo_stop-remove-net-v2-1-67542c3ceeca@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,36 +72,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 13, 2026 at 12:35:16PM +0100, Lorenzo Bianconi wrote:
-> > On Thu, 12 Mar 2026 22:14:36 +0100 Lorenzo Bianconi wrote:
-> > > > Is this a bug fix?
-> > > > If so, perhaps it is for net with a fixes tag.  
-> > > 
-> > > I guess we do not need to target net tree since airoha_eth driver currently
-> > > supports just the LAN interface via the MT7530 DSA switch connected to GDM1
-> > > and there are no WAN interfaces officially supported (PCS/external phy is not
-> > > merged mainline yet, it is only available in OpenWrt).
-> > > 
-> > > > 
-> > > > And at any rate, could you add some description of the before and after
-> > > > behaviour?  
-> > > 
-> > > Theoretically, before this patch, GDM ports were equally distributed between
-> > > QDMA0 and QDMA1 while this patch assigns LAN interfaces to QDMA0 and WAN
-> > > interface to QDMA1. However, for the reason explained above, this change is
-> > > not currently visible to the user.
-> > 
-> > Please update the commit message. And please try harder to explain 
-> > the patches, this happens a lot with your submissions..
+On Fri, Mar 13, 2026 at 12:27:00PM +0100, Lorenzo Bianconi wrote:
+> Do not run airoha_dev_stop routine explicitly in airoha_remove()
+> since ndo_stop() callback is already executed by unregister_netdev() in
+> __dev_close_many routine if necessary and, doing so, we will end up causing
+> an underflow in the qdma users atomic counters. Rely on networking subsystem
+> to stop the device removing the airoha_eth module.
 > 
-> ack, fine. Sorry for not beeing very clear about this (and other
-> patches), I will pay more attention in the future.
-> Do you think we should target net-next or net for this patch?
+> Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581 SoC")
+> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> ---
+> Changes in v2:
+> - Target net tree instead of net-next
+> - Add missing Fixes tag and improve commit log.
+> - Link to v1: https://lore.kernel.org/netdev/20260311-airoha-remove-ndo_stop-remove-v1-1-596fe853b2e1@kernel.org/
 
-Hi Lorenzo,
+Thanks Lorenzo,
 
-As per your explanation above it seems to me that there is
-no user-visible change. And I assume that implies no bug manifests.
+This seems much clearer.
 
-If so, net-next sounds right to me.
+Reviewed-by: Simon Horman <horms@kernel.org>
+
 
