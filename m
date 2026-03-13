@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08FE2105F78C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 11:27:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29155105F79B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 11:29:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=uA/rNulRTxWHctK6UBlfPlCL+E+76lVkqP930nG+w/M=; b=lQGZuOv613XyTc1x0GAuTMQ0fB
-	5K8NU6s5w3kyJiwwVY9pohkQwy3VptesHpcwG7wFPSIufUr+uaLtYZW0wgmAojiph6QLXC5PrWiLE
-	YLM+mqfoIND3nmU3cBmA5GBsIKF0+s9DjX4NsFYUcx8c0CuuZAvGwaYqT0su8fpt0+nIfM23lQxwc
-	dR5y5lrdrHVL4vC4YYspBZSzH0RazAUwfqOV0ry2GZr9RmisjtqAwk3Ggwx1dyVbRi02pOYJ4JFTs
-	nu2J+4mxAsO1wUy78ejmL+sA7HoK25DLxakr4z/8D3W1RPoNeO5X2xYlDRZW5Bviks2s+E0jvCR/8
-	XL7g6eZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=We4xbhCLnVGWb+FeULUEnWlzdRYYUPWL5jBwuKXCQdE=; b=Wy+LCt5E94AFFjR37ZpS4CKAmX
+	vRKgD86a8fSAsV5zuHsxHyj6h9HAxcT8ZvgcbUIoWjVXXCx1hYKnwpFGHP23kmFbWYzyYGGaPmmxS
+	plOCfoRHW93Y6bXQvINj2CnISvAiy7sLP9tCWgwlO3YsND717NrTeJ9Uk81kUIv287Kjxtk1gVek7
+	s/yhr9O/DDf+sguzllctKLI7/hCstTmgWmiUwUbaSLNXxBZAw0BjEgFbvcifi5PUJReeVva3h+rrg
+	840CoIOB1pnvFBLVcFeZDNKVE0s1tYtDATdJHvdt5Vz3gHvbg5Z5oMI7R0kuTzOn8eyweK+lTZSGC
+	Tj509VgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w10fr-000000001dG-3eGU;
-	Fri, 13 Mar 2026 11:27:23 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w10hc-000000001sh-36ay;
+	Fri, 13 Mar 2026 11:29:12 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w10fo-000000001ca-3f6e;
-	Fri, 13 Mar 2026 11:27:22 +0000
+	id 1w10hZ-000000001s6-1RfQ;
+	Fri, 13 Mar 2026 11:29:09 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B3D2643CE3;
-	Fri, 13 Mar 2026 11:27:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18212C2BC87;
-	Fri, 13 Mar 2026 11:27:17 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 633696012B;
+	Fri, 13 Mar 2026 11:29:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 97075C19421;
+	Fri, 13 Mar 2026 11:29:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773401238;
-	bh=yu3FkG+te6lxyT/bb+2rXQeEoH7RigJXJoMuJhFsNTo=;
-	h=From:Date:Subject:To:Cc:From;
-	b=VkuFG7CqgnngorKkNP8EVkcvw8KHppTq1S8ym9pdykjO6+Dx/sXPY9uPMZnGitYMA
-	 kN+q0FVrXimGMmJcoZynErulWon5i0aIgpQpHfbbp6Pegs9VCiFtNuaajaVY8TD+c0
-	 PhQfm10nWEj7eXyY4HK/4QxoOY1kIz+hR8vvRZqzjz7+UZtMli7Mn/AFRccrN/7day
-	 PIrmU5/+swJMtprhE/CW6bF/vPxKWrfcOlks2wHiou1lQxRvD0WrwOPMyZzxhEnwl6
-	 LVtgPbqm8M28mnMYn4wAeqcLM5U5ZvKPt/EtQ/pViqjN0UlpztAwCf4ZP+VuD5EFk8
-	 25Lu6REBCtozQ==
+	s=k20201202; t=1773401348;
+	bh=We4xbhCLnVGWb+FeULUEnWlzdRYYUPWL5jBwuKXCQdE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Hc3EiEhRZ459XQjJbLdmBLwVMNVL783S6CzqheN9VJdxfHy/efoHoocDgjuT/2Teg
+	 dPO4Mno6qvsTahx9yPBlXH9IhUW68z6GP7G6azE4TDK5J0mSxYn6ZsPCmIU51sk7vs
+	 zX//xodgRr6coA0rKDOpkVkQgcHRShX20pMP06IRVk5O1Y8inrMxAEq1Ij/ULNpXxI
+	 2cOISIldv7ZgzbO7TGuVgsoYOqiWKjHrUQyL5JQetvM7tuRidRcUj53ORwskHDp5uU
+	 7p/+sN7npJDPticbnDu9K5s6E28HEGslt2EK7PBCkMQF1LSnYKiUzAfToY3mGj1/vi
+	 wFCmNRydPfjdw==
+Date: Fri, 13 Mar 2026 12:29:05 +0100
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 13 Mar 2026 12:27:00 +0100
-Subject: [PATCH net v2] net: airoha: Remove airoha_dev_stop() in
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH net-next] net: airoha: Remove airoha_dev_stop() in
  airoha_remove()
+Message-ID: <abP1ARU0xdMUq8_e@lore-desk>
+References: <20260311-airoha-remove-ndo_stop-remove-v1-1-596fe853b2e1@kernel.org>
+ <20260312182128.33d2d88c@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260313-airoha-remove-ndo_stop-remove-net-v2-1-67542c3ceeca@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/z3NQQqDMBCF4avIrDsQI1rpVUqRNJmYWZiRiUhBv
- HuDC5cf/Lx3QCFlKvBqDlDaubDkCvtowCeXZ0IO1WCNHUzXduhYJTlUWmQnzEGmssl6mzYMg2/
- 915nx2UeoO6tS5N/18YYawOc8/6J8JGJ4AAAA
-X-Change-ID: 20260313-airoha-remove-ndo_stop-remove-net-d6c1cba0875f
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-X-Mailer: b4 0.14.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_042720_937961_8E9C5BE1 
-X-CRM114-Status: UNSURE (   9.47  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="5IoUYz3qF2Nrx8Dy"
+Content-Disposition: inline
+In-Reply-To: <20260312182128.33d2d88c@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,42 +73,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Do not run airoha_dev_stop routine explicitly in airoha_remove()
-since ndo_stop() callback is already executed by unregister_netdev() in
-__dev_close_many routine if necessary and, doing so, we will end up causing
-an underflow in the qdma users atomic counters. Rely on networking subsystem
-to stop the device removing the airoha_eth module.
 
-Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
-Changes in v2:
-- Target net tree instead of net-next
-- Add missing Fixes tag and improve commit log.
-- Link to v1: https://lore.kernel.org/netdev/20260311-airoha-remove-ndo_stop-remove-v1-1-596fe853b2e1@kernel.org/
----
- drivers/net/ethernet/airoha/airoha_eth.c | 1 -
- 1 file changed, 1 deletion(-)
+--5IoUYz3qF2Nrx8Dy
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 62bcbbbe2a95651ac1f7f30c3752ccbc7bc5662f..56cf9a926a83da38bb03373ced9728f1fecdbce7 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -3083,7 +3083,6 @@ static void airoha_remove(struct platform_device *pdev)
- 		if (!port)
- 			continue;
- 
--		airoha_dev_stop(port->dev);
- 		unregister_netdev(port->dev);
- 		airoha_metadata_dst_free(port);
- 	}
+> On Wed, 11 Mar 2026 10:54:57 +0100 Lorenzo Bianconi wrote:
+> > Do not call airoha_dev_stop routine explicitly in airoha_remove()
+> > since it is already executed by unregister_netdev() if necessary
+>=20
+> This one is a fix I think? We underflow the atomic if the port
+> is already down. Once again, commit message way too terse :(
 
----
-base-commit: 99600f79b28c83c68bae199a3d8e95049a758308
-change-id: 20260313-airoha-remove-ndo_stop-remove-net-d6c1cba0875f
+Hi Jakub,
 
-Best regards,
--- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+ack, I will post v2 targetting net instead of net-next improving the commit
+message.
 
+Regards,
+Lorenzo
+
+> --=20
+> pw-bot: cr
+
+--5IoUYz3qF2Nrx8Dy
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCabP1AQAKCRA6cBh0uS2t
+rLEVAQDiiXdm1BxS4JyeMV9BgqqOADTgmX5CNx0dAqXpb0bI2gD8D4YNYpnLwf8r
+7QtzRLSdbg5A7rAQwhMMQ70zeScODQ8=
+=zyl8
+-----END PGP SIGNATURE-----
+
+--5IoUYz3qF2Nrx8Dy--
 
