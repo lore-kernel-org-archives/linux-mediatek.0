@@ -4,109 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 991FD105F7A6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 13:15:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 352D4105F7A8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 13:39:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=17g9oVjOPIwfZSYPCwhUWDDqsFzDgVso7+HuctQb88E=; b=U8auWugbBhA5igE/umwSb50gYM
-	6MAgAsOfLyMmrWRYSrepnbdlRn7LoAr5d7xxmgvmdqxpNpCUXaWqS2YjY+xyS/yrWrTM25vrAgbq0
-	SPy27TpNhsrvbzTZ46v6XtQ03zvI1kQ9vycfKb5yXNsl5CmcJebCkAGgYc2pnYXPIVBYm46G+sY1v
-	klkffT371CIw9R+DsI6kTekhFWFpXSUpNbw8SYOHwx7WUPbdtB8uro51vKTSKTz4r2vqEjf9sBz98
-	2OVgLqpqBMmeKWvcEYVI7h+k5pHadCcen6omht3JRWebBuIjPDB+ftE8flxh0cWxSXPAKi3hTRxel
-	TTVu8SHg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bbmpUbqD0N8VkUB+0HATgrDu7cmWh2fulphWKjIGSEE=; b=JMf4h7AAgOkyHCh0Ygut1k0v2l
+	mEj2of3NcHLHfZmYq6xUHmiWpeoBKXjjJoKao1B3TiZmwDuZwTZ98SmKS8w9DZtPPP4BW6Vm+h9Vu
+	M1CV0xZsNz8cwFrtmj/IZxrVSRFtc7G7N7Dsc9ka1feq9kGb6Venawi6aQwWFeqgaKuXJtNZVtgms
+	9+25LdlDTdPNrwgM8geMeqfTxxi6EJsXfSu9GGVf1vcLnM0LukDAudFbeFnUZd+dTvpNnycz2xR83
+	Nm+9fKGe+jOaOsDObXYXPY8SeNHQRhFB6qYanG9UxReK2MfjhpNq+J6i/5gZcFEgQyHujpIdRkTY2
+	g8XHjMJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w12Ml-00000000CMz-0NiA;
-	Fri, 13 Mar 2026 13:15:47 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w12jj-00000000ILg-0FVq;
+	Fri, 13 Mar 2026 13:39:31 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w12Mf-00000000CL8-0ZKm;
-	Fri, 13 Mar 2026 13:15:42 +0000
+	id 1w12jg-00000000IKY-26Oe;
+	Fri, 13 Mar 2026 13:39:29 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3EFDA6183E;
-	Fri, 13 Mar 2026 13:15:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F433C19421;
-	Fri, 13 Mar 2026 13:15:36 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D95564340A;
+	Fri, 13 Mar 2026 13:39:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 346EAC19421;
+	Fri, 13 Mar 2026 13:39:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773407739;
-	bh=Qw/LcwSMdovwaZO6KN+5dsJbL865DdR+kv448gNqyYA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=E7KArtpNHlSpMc177+PemtgESfaY/CWfV/tk3gFV4oz5uBFJbZ4QXIP7CWyIDIDf6
-	 IzKcRWD6gafYmQgcKt1FKUP0UJCSHV7KBxH5o7c4hffPRVBv9JCQvn037VLNRCekUT
-	 Ey/GeKLdw6PPLe7o9eyFz+20H4ARvVeAWsUbynNKHjiDhTlmE3+uLUCgzYsl+B4Zr1
-	 4mks966RHrWmDuO+TnowQbSgeDGEJjnmxqR1SJHZB0iZpIsb5fKC4aPlkXUY6+tPDN
-	 JE3nRWTOkPPZgbX4awLmvEcNUGWttY8vu22M1X4huvipbfxn9BS7itOkqwfLJFf6WA
-	 lIx2jk6mdI5wg==
-Message-ID: <3b947ce4-a054-4ac0-b8c7-f8afa03df333@kernel.org>
-Date: Fri, 13 Mar 2026 14:15:34 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] spi: dt-bindings: mediatek,spi-mtk-nor: Add clock
- bindings for mt8189
-To: Meiker Gao <ot_meiker.gao@mediatek.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Bayi Cheng <bayi.cheng@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>
-Cc: linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, sirius.wang@mediatek.com,
- vince-wl.liu@mediatek.com, jh.hsu@mediatek.com
-References: <20260311034342.721583-1-ot_meiker.gao@mediatek.com>
+	s=k20201202; t=1773409167;
+	bh=KWZSAbiyjrzLNM2qSo3Ip3kXkUGs7ZYJJB5Q/aqWnT0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mxNon3Ju/MbjR7gDaOoInJKcBn18JpU5KIrveljutUqMhVAnRGm6HSdGUiMWgptyT
+	 ZbTiz8JcUO3YeEgTDVS/oIUOCTzW/r2vQ2YHBMziRlyG/ad1kBXO7BwoC27o5C/PaU
+	 bRPajOTudgJvEoXwvxozIztPGvZT1cCkpqOegnBA4Ux1xgGfbstlyAbmygbBwvpKfp
+	 PL7OfrRL5xxn0Bu5TwiY/NF8DclcRSs2t/Py4642WrLNnd4rlESzTJvWrDWJAx5hv2
+	 BD0mv9+IFKxFFxLwUoHy1tJw1a0ws4LR5Yb4a0NrNqNg+Ek0DDsMII9E9HjmHhEjmf
+	 yW+0Pwxf17pkg==
+Date: Fri, 13 Mar 2026 14:39:25 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20260311034342.721583-1-ot_meiker.gao@mediatek.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: Akari Tsuyukusa <akkun11.open@gmail.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, sean.wang@kernel.org, 
+	linusw@kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	hui.liu@mediatek.com, nfraprado@collabora.com, linus.walleij@linaro.org, 
+	mars.cheng@mediatek.com, andy.teng@mediatek.com, hanks.chen@mediatek.com, 
+	sam.shih@mediatek.com, rafal@milecki.pl, ben.ho@mediatek.com, erin.lo@mediatek.com, 
+	zhiyong.tao@mediatek.com, Jason-ch.Chen@mediatek.com, amergnat@baylibre.com, 
+	seiya.wang@mediatek.com, tinghan.shen@mediatek.com
+Subject: Re: [PATCH 6/6] dt-bindings: pinctrl: mediatek: mt8188: Fix include
+ guard comment
+Message-ID: <20260313-cunning-fresh-rattlesnake-ab8087@quoll>
+References: <20260312041533.187553-1-akkun11.open@gmail.com>
+ <20260312041533.187553-7-akkun11.open@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20260312041533.187553-7-akkun11.open@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260313_063928_556209_1DD98B52 
+X-CRM114-Status: GOOD (  12.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,29 +79,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/03/2026 04:43, Meiker Gao wrote:
-> Update mediatek,spi-mtk-nor.yaml to add conditional clock and
-> clock-names bindings for the mt8189-nor platform. The mt8189-nor
-> controller requires five specific clocks and corresponding clock-names
-> ("spi", "sf", "axi_f", "axi_h", "axi_p"). This change enforces these
-> requirements in the device tree binding schema.
+On Thu, Mar 12, 2026 at 01:15:33PM +0900, Akari Tsuyukusa wrote:
+> Correct the mismatched macro name in the #endif comment.
 > 
-> For other platforms, the minimum number of clocks and clock-names
-> remains unchanged. The patch also adds an example for mt8189-nor,
-> illustrating the new clock configuration.
-> 
-> This update ensures correct hardware description and validation for
-> mt8189-nor, improving compatibility and reducing configuration errors.
-> 
-> Signed-off-by: Meiker Gao <ot_meiker.gao@mediatek.com>
-> (cherry picked from commit c3180d35e52b5213764a89403e71f9a34d7bb842)
-> ---
->  .../bindings/spi/mediatek,spi-mtk-nor.yaml    | 46 ++++++++++++++-----
->  1 file changed, 34 insertions(+), 12 deletions(-)
+> Fixes: 9f1bdd7e8221 ("dt-bindings: pinctrl: mediatek: add support for mt8188")
 
-How many times are you going to send it? I got three in my mailbox. But
-still no answer to provided review...
+No bug here, otherwise explain user-visible issues.
+
+> Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
+> ---
+>  include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h b/include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h
+> index 2688da2f621f..66a451953838 100644
+> --- a/include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h
+> +++ b/include/dt-bindings/pinctrl/mediatek,mt8188-pinfunc.h
+> @@ -1277,4 +1277,4 @@
+>  #define PINMUX_GPIO176__FUNC_B_GPIO176 (MTK_PIN_NO(176) | 0)
+>  #define PINMUX_GPIO176__FUNC_B0_SPMI_M_SDA (MTK_PIN_NO(176) | 1)
+>  
+> -#endif /* __MEDIATEK_MT8188-PINFUNC_H */
+> +#endif /* __MEDIATEK_MT8188_PINFUNC_H */
+
+No, just a churn. This has no benefit, because it is obvious which if/endif
+this corresponds to.
 
 Best regards,
 Krzysztof
+
 
