@@ -4,80 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A97F106FD7D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 06:01:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D933106FD84
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 06:09:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=osjqpkcUGH04w/bazaArwGn2fG6Xlho1hcQWsHgcK/E=; b=qX1uDpOM/S0/n8RSYTOUevphNT
-	QSJ/Th23xw4QII4RYoXHBdVkWb3l0/7882kP0C0IbFamydaXIegxIrqGzdj5fAUm6Q3/xRRtKUNIB
-	2AvsXERoURP/tyf4f6wh4l1Ko2iUvcwPRRJjYp78qL0Gq3SCSlyk+fCR/JRoIGY6gJMGRooaQHaTt
-	3M70e7w5xTYosmbdWKzd8FFldnZl3YoJ9AdWPKknxA6MDkXrRklH0kOlfvi1nbzF/VeSUXfAKmEPA
-	17a9kUCGdysnwcbx8BiVCCBh2RQgg1+3v5CqErHrXhH2LRqYgw4dPrLGdBU/eYTSJ95f8I+El36gV
-	UNd8rR5w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7Dt1/l/WoXyTuy6aqz2OOvey0lNxSk4HxxKWUs5Xeac=; b=Gyr9q9RX1wOTroFwfhpyEGQDhn
+	NfbMvaiT9xR6q+EQQ/Lp3UdF5Fjx2yPELvUrhB8BYA5GQIQNADgUixb13mx4kXqGoxUCQWWKwOpH8
+	TCaLHMZUuPGH7ygCMF5W3uLQbvtVP4HFJ+uWeHky+H/AqBmQdEPO8osPg3Fz02gz3jK/LdVa9eOiz
+	S3KR98McCnB19McIUwZR2xRp2jNOf6w3bK6ZWmsKPmfdBQPiYoypBAsYNcgLRk8GSYZAx77nzbZ+s
+	SdS3dDAOL6I/OiiA6dEQ0Ya8scNXSTqwMLo2HJJMfv2eZOmFBSOICElxXDb+OxfI6xkg20hnkS2+S
+	G0+KuqBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0va9-0000000GiUv-3IMR;
-	Fri, 13 Mar 2026 06:01:09 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1w0vhr-0000000Gk2S-1CzH;
+	Fri, 13 Mar 2026 06:09:07 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0va6-0000000GiTs-0JRg
-	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Mar 2026 06:01:07 +0000
-X-UUID: 02b1cdfc1ea211f19e7563141e833ce8-20260312
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=osjqpkcUGH04w/bazaArwGn2fG6Xlho1hcQWsHgcK/E=;
-	b=k7nnHI1H7N4d6YDuAFOOImkCIDNCZmQtA5JXQLSJvZFzW209TAavrB2zXsv6kKEZ/gn8rURUNoQ8EP+rFwe1Ov6rOndrp0Pa6gojH9CZj/FNwavtBg7kC3yC2fTl2wwLxjX8VVBcMQUVNvAcaCwRjD/zWXQWFYj81DnQZu+9D9Y=;
+	id 1w0vho-0000000Gk0Q-1HOz;
+	Fri, 13 Mar 2026 06:09:06 +0000
+X-UUID: 1f3293ac1ea311f1a21c59e7364eecb8-20260313
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.12,REQID:5dca50c9-2fd4-4f85-9e6a-aefd92277e85,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:e7bac3a,CLOUDID:b763f6f9-dfaf-419f-9dd3-d093c7e8f968,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|836|888|898,TC:-5,Co
-	ntent:0|15|50,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL
-	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.11,REQID:7bc6b968-39e1-4f72-bcff-73ca10c27e16,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:20
+X-CID-META: VersionHash:89c9d04,CLOUDID:c109a704f89f73548902f755b0defa24,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:102|850|898,TC:nil,Content:0|15|50,EDM:5
+	,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+	:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 02b1cdfc1ea211f19e7563141e833ce8-20260312
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <shayne.chen@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1804373448; Thu, 12 Mar 2026 23:01:00 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 13 Mar 2026 14:00:58 +0800
-Received: from [10.233.130.16] (10.233.130.16) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.2562.29 via Frontend
- Transport; Fri, 13 Mar 2026 14:00:58 +0800
-Message-ID: <35014cbb30533d7d73a25540b4b283ee67b87e39.camel@mediatek.com>
-Subject: Re: [PATCH mt76 6/6] wifi: mt76: mt7996: fix issues with manually
- triggered radar detection
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Felix Fietkau <nbd@nbd.name>, linux-wireless
-	<linux-wireless@vger.kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn
- Tsai <evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
-	linux-mediatek <linux-mediatek@lists.infradead.org>, StanleyYP Wang
-	<StanleyYP.Wang@mediatek.com>
-Date: Fri, 13 Mar 2026 14:00:57 +0800
-In-Reply-To: <abKbwL6jgtKtLFdD@lore-desk>
-References: <20260312095724.2117448-1-shayne.chen@mediatek.com>
-	 <20260312095724.2117448-6-shayne.chen@mediatek.com>
-	 <abKbwL6jgtKtLFdD@lore-desk>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.3-0ubuntu1 
+X-UUID: 1f3293ac1ea311f1a21c59e7364eecb8-20260313
+X-User: xiaopei01@kylinos.cn
+Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <xiaopei01@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 288646284; Fri, 13 Mar 2026 14:08:57 +0800
+From: Pei Xiao <xiaopei01@kylinos.cn>
+To: broonie@kernel.org,
+	linux-spi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	imx@lists.linux.dev,
+	openbmc@lists.ozlabs.org,
+	linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Cc: Pei Xiao <xiaopei01@kylinos.cn>
+Subject: [PATCH v2 00/17] cleanup in spi by use devm_clk_get_enabled
+Date: Fri, 13 Mar 2026 14:08:16 +0800
+Message-Id: <cover.1773381582.git.xiaopei01@kylinos.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_230106_142737_480F5337 
-X-CRM114-Status: GOOD (  18.37  )
+X-CRM114-CacheID: sfid-20260312_230904_657509_2DCC8602 
+X-CRM114-Status: UNSURE (   5.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,92 +81,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2026-03-12 at 11:56 +0100, Lorenzo Bianconi wrote:
-> > From: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
-> >=20
-> > Disallow triggering radar detection on non-DFS channels to prevent
-> > paused
-> > TX queues from failing to resume, as a channel switch is not
-> > performed in
-> > this case.
->=20
-> I guess we are missing a Fixes tag here.
->=20
-> >=20
-> > Signed-off-by: StanleyYP Wang <StanleyYP.Wang@mediatek.com>
-> > Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
-> > ---
-> > =C2=A0.../wireless/mediatek/mt76/mt7996/debugfs.c=C2=A0=C2=A0 | 22
-> > +++++++++++++++----
-> > =C2=A01 file changed, 18 insertions(+), 4 deletions(-)
-> >=20
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-> > b/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-> > index 76d623b2cafb..e26bed6b97e7 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt7996/debugfs.c
-> > @@ -226,14 +226,23 @@ mt7996_radar_trigger(void *data, u64 val)
-> > =C2=A0#define RADAR_BACKGROUND	2
-> > =C2=A0	struct mt7996_dev *dev =3D data;
-> > =C2=A0	struct mt7996_phy *phy =3D mt7996_band_phy(dev,
-> > NL80211_BAND_5GHZ);
-> > -	int rdd_idx;
-> > +	struct cfg80211_chan_def *chandef;
-> > +	int rdd_idx, ret;
-> > =C2=A0
-> > =C2=A0	if (!phy || !val || val > RADAR_BACKGROUND)
-> > =C2=A0		return -EINVAL;
-> > =C2=A0
-> > -	if (val =3D=3D RADAR_BACKGROUND && !dev->rdd2_phy) {
-> > -		dev_err(dev->mt76.dev, "Background radar is not
-> > enabled\n");
-> > -		return -EINVAL;
-> > +	if (test_bit(MT76_SCANNING, &phy->mt76->state))
-> > +		return -EBUSY;
-> > +
-> > +	if (val =3D=3D RADAR_BACKGROUND) {
-> > +		if (!dev->rdd2_phy ||
-> > !cfg80211_chandef_valid(&dev->rdd2_chandef)) {
-> > +			dev_err(dev->mt76.dev, "Background radar
-> > is not enabled\n");
->=20
-> nit: I guess it is better to specify a different error message if
-> rdd2_chandef
-> is=C2=A0 invalid.
->=20
-Will split the error message in v2.
+I know that many old SPI drivers should not be modified for hardware
+stability and to reduce maintenance effort. But I can't help cleaning them
+up. To minimize the introduction of issues, I tried not to modify the
+timing of those hardware clock enables.
+---
+changes in v2: fix error message but having a line break
+Missing error code argument to dev_err_probe()
+---
+Pei Xiao (17):
+  spi: axiado: Use helper function devm_clk_get_enabled()
+  spi: bcm63xx-hsspi: Use helper function devm_clk_get_enabled()
+  spi: bcmbca-hsspi: Use helper function devm_clk_get_enabled()
+  spi: img-spfi: Use helper function devm_clk_get_enabled()
+  spi: imx: Use helper function devm_clk_get_enabled()
+  spi: npcm-pspi: Use helper function devm_clk_get_enabled()
+  spi: orion: Use helper function devm_clk_get_enabled()
+  spi: rockchip-sfc: Use helper function devm_clk_get_enabled()
+  spi: sifive: Use helper function devm_clk_get_enabled()
+  spi: slave-mt27xx: Use helper function devm_clk_get_enabled()
+  spi: st: Use helper function devm_clk_get_enabled()
+  spi: stm32-qspi: Use helper function devm_clk_get_enabled()
+  spi: stm32: Use helper function devm_clk_get_enabled()
+  spi: sunplus-sp7021: Use helper function devm_clk_get_enabled()
+  spi: uniphier: Use helper function devm_clk_get_enabled()
+  spi: zynq-qspi: Use helper function devm_clk_get_enabled()
+  spi: zynqmp-gqspi: Use helper function devm_clk_get_enabled()
 
-Thanks,
-Shayne
+ drivers/spi/spi-axiado.c         | 23 +++----------
+ drivers/spi/spi-bcm63xx-hsspi.c  | 44 +++++++-----------------
+ drivers/spi/spi-bcmbca-hsspi.c   | 47 +++++++++-----------------
+ drivers/spi/spi-img-spfi.c       | 14 ++------
+ drivers/spi/spi-imx.c            | 15 ++-------
+ drivers/spi/spi-npcm-pspi.c      | 19 ++++-------
+ drivers/spi/spi-orion.c          | 10 ++----
+ drivers/spi/spi-rockchip-sfc.c   | 20 ++---------
+ drivers/spi/spi-sifive.c         | 20 ++++-------
+ drivers/spi/spi-slave-mt27xx.c   |  8 +----
+ drivers/spi/spi-st-ssc4.c        | 14 +++-----
+ drivers/spi/spi-stm32-qspi.c     | 17 +++-------
+ drivers/spi/spi-stm32.c          | 58 ++++++++++----------------------
+ drivers/spi/spi-sunplus-sp7021.c | 15 +--------
+ drivers/spi/spi-uniphier.c       | 15 +++------
+ drivers/spi/spi-zynq-qspi.c      | 28 ++++-----------
+ drivers/spi/spi-zynqmp-gqspi.c   | 17 ++--------
+ 17 files changed, 94 insertions(+), 290 deletions(-)
 
-> Regards,
-> Lorenzo
->=20
-> > +			return -EINVAL;
-> > +		}
-> > +		chandef =3D &dev->rdd2_chandef;
-> > +	} else {
-> > +		chandef =3D &phy->mt76->chandef;
-> > =C2=A0	}
-> > =C2=A0
-> > =C2=A0	rdd_idx =3D mt7996_get_rdd_idx(phy, val =3D=3D
-> > RADAR_BACKGROUND);
-> > @@ -242,6 +251,11 @@ mt7996_radar_trigger(void *data, u64 val)
-> > =C2=A0		return -EINVAL;
-> > =C2=A0	}
-> > =C2=A0
-> > +	ret =3D cfg80211_chandef_dfs_required(dev->mt76.hw->wiphy,
-> > chandef,
-> > +					=C2=A0=C2=A0=C2=A0 NL80211_IFTYPE_AP);
-> > +	if (ret <=3D 0)
-> > +		return ret;
-> > +
-> > =C2=A0	return mt7996_mcu_rdd_cmd(dev, RDD_RADAR_EMULATE, rdd_idx,
-> > 0);
-> > =C2=A0}
-> > =C2=A0
-> > --=20
-> > 2.51.0
-> >=20
+-- 
+2.25.1
 
 
