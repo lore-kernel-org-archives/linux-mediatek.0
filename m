@@ -4,93 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FFD8107BCDD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 22:09:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62DAE107BCE8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 23:19:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wG4Mk7n9a3KJbym01Ex6ddbGHyReReOxJaeGp+QfjVw=; b=iukN3tFyyPHbA1U74BkFBAKgmD
-	z6dMMUmEDc91MT06qGZEKAOtCkRQh2ieP50oLlU2BD+vGv9DK5Lt30Ae2Gl4E/z/wBL9NnhnyFrda
-	Dcw2SQisq9zVXLknFEV1E5poRsqHSvYPimypHjXb9dhwieMA+O4gjhit6cO+aAev50e7MwKUl7AT4
-	TxYnCO1Qfy8yJPnIjbBP6J0Dh2uA/tqTDHF/0nEaqFE8IHpPklyZhcw3ivvB5mBVNsbJ7NsA1g2uZ
-	C4pniPNGun9sHNiM9PuPN/L4qNIZJbLWZIYMfBHw8Ljs9U79I1PiuUCQ01DGphiZ5ziOg8N3Z7o6L
-	5BxyTSSA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GQzkI1YP70rsOy4iyQi3ymlvQNl9NOp+GKktgX8WIx0=; b=lnXflBYLNzk+GoMHjURhxAAUf3
+	9lke/A4bMY9vTTaoLcqRJJDdsPMOrwh16dwsUeoT5Wk3gkbNcQwhf3z4IjYgw8zuuoRssQ8LaLD1Y
+	UgD6VvKNjUhGPi1+9W/ep/WGYsTFpGlol+t3JfCPaz03nGtyeg/pN4lIMGiXf3KGKJ2dfPYWL1WQQ
+	4WCA4s3Q5CtRNKghKt50R5toYAlOUg6o6h5ibmtDz+4rNVchgFl6QLVd9jnEu0PX5o0OaKwFVb7Ru
+	MgtNOXZp4wSNsuNrGD6rxS3jWF09jeTe7G6IRYnGBKpj6U7t6FnlmNfLPqrQQvgWN5bOS6UkLsssz
+	M7R+2Aqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w1AhD-00000001FwY-2siF;
-	Fri, 13 Mar 2026 22:09:27 +0000
-Received: from 013.lax.mailroute.net ([199.89.1.16])
+	id 1w1Bn8-00000001JSu-2w1c;
+	Fri, 13 Mar 2026 23:19:38 +0000
+Received: from mgamail.intel.com ([192.198.163.13])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w1AhA-00000001Fw6-3fkb;
-	Fri, 13 Mar 2026 22:09:26 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by 013.lax.mailroute.net (Postfix) with ESMTP id 4fXdtr3Yg6zlfgfG;
-	Fri, 13 Mar 2026 22:09:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
-	content-transfer-encoding:content-type:content-type:in-reply-to
-	:from:from:content-language:references:subject:subject
-	:user-agent:mime-version:date:date:message-id:received:received;
-	 s=mr01; t=1773439748; x=1776031749; bh=wG4Mk7n9a3KJbym01Ex6ddbG
-	HyReReOxJaeGp+QfjVw=; b=EiiSUDggAbDN741zNUtPvkEmiBs/8fU8NAHvA866
-	Ekt0EPS3Ao28nSSTI2CDvN9+h3oEgjXkCk+o27IN/DLDgr9yCo5AviQzOuMB91Jg
-	otE1KqyTy9cT2OTbOZFlpT2rBkBjf9A/1lehnN+9N+OgI9PXTQkJ8S2GJVUpTwYh
-	5FGccKmzXkV2Cypig5nfBEmliM4OMX1xv+a+PJcQ3A34A4LGJkSYQF+p69yKL7ra
-	5m1Lnded5H/dE+vXk3yTXi/yKgnyXB/TrTZa1MCBoV3pnqSuXSwLvLIQCeRxiPaz
-	wkKKsbdVqf9WElcmlwydUzcTCGZIeox4j51vE4sY4meYbA==
-X-Virus-Scanned: by MailRoute
-Received: from 013.lax.mailroute.net ([127.0.0.1])
- by localhost (013.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id rvzoD7aQMck2; Fri, 13 Mar 2026 22:09:08 +0000 (UTC)
-Received: from [100.119.48.131] (unknown [104.135.180.219])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: bvanassche@acm.org)
-	by 013.lax.mailroute.net (Postfix) with ESMTPSA id 4fXdtQ5jBczlfl7l;
-	Fri, 13 Mar 2026 22:09:02 +0000 (UTC)
-Message-ID: <fff6bc07-169b-48aa-a6c2-0d243bad0d82@acm.org>
-Date: Fri, 13 Mar 2026 15:09:01 -0700
+	id 1w1Bn5-00000001JSU-1IIo;
+	Fri, 13 Mar 2026 23:19:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1773443975; x=1804979975;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=taL4VuSTv2A1JaSTkD9QBZhRkJcauZHEdBcYGm6zPLA=;
+  b=CCOIbhrhIeddhS2bnKpiJ83IhhqsrefNdd8yiHcX4QBx9gXOHyJD9AsW
+   PEswpJdWqFLRF2fKse0LIx2P3J79M8vMYEyavN6X0qTvf+eotLxMfSxOD
+   VkdN8fXEheTbrWMghbSS1IkR4T4bvMaLl3s2st4wXzJpT1vr7Nc13FRai
+   v5x0GJddpICrcGnVDPHjgzgvgoPnjzpA+Be90A+yR+QoBPiZ8Mn6cMIKl
+   X66lLS4PmoqadegbQ0tTl/5qmi4nWtq5ONaWp6WYyxB2Bnn5ncIyJR3Fg
+   Ekhh70sBgbzI3ozSPJMzECT+bTW7PZX8llgWpBrGRux1h7lP87H5MybSJ
+   A==;
+X-CSE-ConnectionGUID: WcVUJHirSLiZr4yXJb8uNA==
+X-CSE-MsgGUID: aP743cDPSgynSNxCRlZwQQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11728"; a="77163510"
+X-IronPort-AV: E=Sophos;i="6.23,119,1770624000"; 
+   d="scan'208";a="77163510"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Mar 2026 16:19:30 -0700
+X-CSE-ConnectionGUID: 20DZDlkLT22uPy9QR+yoag==
+X-CSE-MsgGUID: I5XDbt38SwKG+gCbSTqdfQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,119,1770624000"; 
+   d="scan'208";a="217268540"
+Received: from lkp-server01.sh.intel.com (HELO 418530b1a366) ([10.239.97.150])
+  by fmviesa006.fm.intel.com with ESMTP; 13 Mar 2026 16:19:25 -0700
+Received: from kbuild by 418530b1a366 with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1w1Bms-000000004OZ-3Iu0;
+	Fri, 13 Mar 2026 23:19:22 +0000
+Date: Sat, 14 Mar 2026 07:19:20 +0800
+From: kernel test robot <lkp@intel.com>
+To: Hans Zhang <18255117159@163.com>, lpieralisi@kernel.org,
+	jingoohan1@gmail.com, mani@kernel.org, kwilczynski@kernel.org,
+	bhelgaas@google.com, helgaas@kernel.org,
+	florian.fainelli@broadcom.com, jim2101024@gmail.com
+Cc: oe-kbuild-all@lists.linux.dev, robh@kernel.org,
+	ilpo.jarvinen@linux.intel.com, linux-arm-msm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org, claudiu.beznea.uj@bp.renesas.com,
+	linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+	linux-omap@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
+	linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Hans Zhang <18255117159@163.com>
+Subject: Re: [PATCH v8 1/5] PCI: Add pcie_get_link_speed() helper for safe
+ array access
+Message-ID: <202603140748.u17h0ZM8-lkp@intel.com>
+References: <20260312163652.113228-2-18255117159@163.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 01/12] scsi: ufs: core: Introduce a new ufshcd vops
- negotiate_pwr_mode()
-To: Can Guo <can.guo@oss.qualcomm.com>, avri.altman@wdc.com,
- beanhuo@micron.com, martin.petersen@oracle.com, mani@kernel.org
-Cc: linux-scsi@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Sai Krishna Potthuri <sai.krishna.potthuri@amd.com>,
- Ajay Neeli <ajay.neeli@amd.com>, Peter Griffin <peter.griffin@linaro.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Peter Wang <peter.wang@mediatek.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Stanley Jhu <chu.stanley@gmail.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- "Bao D. Nguyen" <quic_nguyenb@quicinc.com>,
- Adrian Hunter <adrian.hunter@intel.com>,
- Archana Patni <archana.patni@intel.com>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-samsung-soc@vger.kernel.org>,
- "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>,
- "open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>
-References: <20260308151409.3779137-1-can.guo@oss.qualcomm.com>
- <20260308151409.3779137-2-can.guo@oss.qualcomm.com>
-Content-Language: en-US
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <20260308151409.3779137-2-can.guo@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260312163652.113228-2-18255117159@163.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_150924_936119_9F88A7CD 
-X-CRM114-Status: GOOD (  14.02  )
+X-CRM114-CacheID: sfid-20260313_161935_419701_EAC551EF 
+X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,85 +97,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 3/8/26 8:13 AM, Can Guo wrote:
-> +static int exynos_ufs_negotiate_pwr_mode(struct ufs_hba *hba,
-> +					 const struct ufs_pa_layer_attr *dev_max_params,
-> +					 struct ufs_pa_layer_attr *dev_req_params)
-> +{
-> +	struct ufs_host_params host_params;
-> +	int ret;
-> +
-> +	if (!dev_req_params) {
-> +		pr_err("%s: incoming dev_req_params is NULL\n", __func__);
-> +		return -EINVAL;
-> +	}
-> +
-> +	ufshcd_init_host_params(&host_params);
-> +
-> +	/* This driver only support symmetric gear setting e.g. hs_tx_gear == hs_rx_gear */
-> +	host_params.hs_tx_gear = exynos_ufs_get_hs_gear(hba);
-> +	host_params.hs_rx_gear = exynos_ufs_get_hs_gear(hba);
-> +
-> +	ret = ufshcd_negotiate_pwr_params(&host_params, dev_max_params, dev_req_params);
-> +	if (ret)
-> +		pr_err("%s: failed to determine capabilities\n", __func__);
-> +
-> +	return ret;
-> +}
+Hi Hans,
 
-The dev_req_params test is not necessary since the UFS core never passes 
-a NULL pointer as third argument, isn't it? I propose to remove the
-dev_req_params test.
+kernel test robot noticed the following build warnings:
 
-> +static int ufs_hisi_negotiate_pwr_mode(struct ufs_hba *hba,
-> +				       const struct ufs_pa_layer_attr *dev_max_params,
-> +				       struct ufs_pa_layer_attr *dev_req_params)
-> +{
-> +	struct ufs_host_params host_params;
-> +	int ret;
-> +
-> +	if (!dev_req_params) {
-> +		dev_err(hba->dev, "%s: incoming dev_req_params is NULL\n", __func__);
-> +		return -EINVAL;
-> +	}
-> +
-> +	ufs_hisi_set_dev_cap(&host_params);
-> +	ret = ufshcd_negotiate_pwr_params(&host_params, dev_max_params, dev_req_params);
-> +	if (ret)
-> +		dev_err(hba->dev, "%s: failed to determine capabilities\n", __func__);
-> +
-> +	return ret;
-> +}
+[auto build test WARNING on 80234b5ab240f52fa45d201e899e207b9265ef91]
 
-Same comment here - please remove the dev_req_params test.
+url:    https://github.com/intel-lab-lkp/linux/commits/Hans-Zhang/PCI-Add-pcie_get_link_speed-helper-for-safe-array-access/20260313-220734
+base:   80234b5ab240f52fa45d201e899e207b9265ef91
+patch link:    https://lore.kernel.org/r/20260312163652.113228-2-18255117159%40163.com
+patch subject: [PATCH v8 1/5] PCI: Add pcie_get_link_speed() helper for safe array access
+config: alpha-allnoconfig (https://download.01.org/0day-ci/archive/20260314/202603140748.u17h0ZM8-lkp@intel.com/config)
+compiler: alpha-linux-gcc (GCC) 15.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260314/202603140748.u17h0ZM8-lkp@intel.com/reproduce)
 
-> +static int ufs_qcom_negotiate_pwr_mode(struct ufs_hba *hba,
-> +				       const struct ufs_pa_layer_attr *dev_max_params,
-> +				       struct ufs_pa_layer_attr *dev_req_params)
->   {
->   	struct ufs_qcom_host *host = ufshcd_get_variant(hba);
->   	struct ufs_host_params *host_params = &host->host_params;
-> +	int ret;
-> +
-> +	if (!dev_req_params) {
-> +		pr_err("%s: incoming dev_req_params is NULL\n", __func__);
-> +		return -EINVAL;
-> +	}
-> +
-> +	ret = ufshcd_negotiate_pwr_params(host_params, dev_max_params, dev_req_params);
-> +	if (ret)
-> +		dev_err(hba->dev, "%s: failed to determine capabilities\n", __func__);
-> +
-> +	return ret;
-> +}
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202603140748.u17h0ZM8-lkp@intel.com/
 
-Also here, please remove the dev_req_params test.
+All warnings (new ones prefixed by >>):
 
-Additionally, I see that identical "if (ret) dev_err(...)" code occurs
-in the three callbacks shown above. Shouldn't that code be moved into
-the only caller of these functions in the UFS core?
+>> Warning: drivers/pci/probe.c:793 expecting prototype for pcie_link_speed_value(). Prototype was for pcie_get_link_speed() instead
 
-Thanks,
-
-Bart.
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
