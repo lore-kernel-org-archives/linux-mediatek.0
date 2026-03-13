@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DADE6106FD84
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 06:09:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F47B106FD84
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 06:09:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rAhVxta6V2SCbFoU96jfQLb5ZeKv/YN7RIFaGVx1brQ=; b=CssYDoXuzHPjkQpdL9143gTJ5K
-	WUqT4YhH7D8FA4Pi4hT+m1PX7CJgC0NRNU9qt6d2BMOtvKpD3laXZflF7TZlbqQ5/82D58c06yOeH
-	ZZNnKUbhR0hdJM2ddf8P+9xGf7Fz6sQbQj53KdxSbI1/5xUWqHdukjvgLbw6bADCOcxclybKUz96f
-	VjtDPBE+X700RD8PTf/OPJuAdE1gxRwYpiCRCVqLX+IGF1ZANNSdbUqUPYqn2xyblZJ7g4eF1teb4
-	bMRdYw4sTVVRD/mg/xhfsBLO9dRphPQQrelDF/OzbSTIcx96Ob+OAL6iVhuNK+UQP7Opelvhgsn7h
-	dUJzfu1g==;
+	bh=wIuhPV5XI8V33LptvvioGcjJyoSG63ONYpXJUzmp4o4=; b=mzqgwvvSb1lkCK/Is9W38DyWGv
+	m7halBza24fe6I3SlBwEDPz7bLXdANEvztAsEZB+lZYLCI3IrZKumz3Uru3OONWaZK9ebUWhsUwDH
+	i9QUnN5sCgvSd3E7Ib2lixYFLabvYvU2PoiT0FmkQBE347H4Dgyiy0bZd5drw6u4vtRCSygyeaYpV
+	OysX0r15SHRWcHYsm0Tukh187Yf5rWm/GjF+o2MIszrha3rkDS8AO9GRDw8JWH/A5SuUbH2evkvPZ
+	EBm40ctNLvaXProop9KIQf4qEKfkkZCRsHX0imQJbwirMkL9BTE6gHbjkGKFOuMH1J4tJW4IEYyj8
+	M1/TjSVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0via-0000000Gl51-34PR;
-	Fri, 13 Mar 2026 06:09:52 +0000
+	id 1w0vib-0000000Gl6D-31Hm;
+	Fri, 13 Mar 2026 06:09:53 +0000
 Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0vhy-0000000Gk1p-126b;
+	id 1w0vhw-0000000Gk2E-2PJD;
 	Fri, 13 Mar 2026 06:09:15 +0000
-X-UUID: 22eeeeaa1ea311f1a21c59e7364eecb8-20260313
+X-UUID: 2250e20a1ea311f1a21c59e7364eecb8-20260313
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:4b6aa0af-ffb4-4b0d-a0cc-f9d15f63a572,IP:0,U
+X-CID-O-INFO: VERSION:1.3.11,REQID:be500e60-1ecc-4643-8493-a33481b3c948,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:da9e4b9454dc511ca8a48fba8da5b2c6,BulkI
+X-CID-META: VersionHash:89c9d04,CLOUDID:c3a3e7e624be805ff82687162505ea97,BulkI
 	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
 	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
 	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -39,12 +39,12 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 22eeeeaa1ea311f1a21c59e7364eecb8-20260313
+X-UUID: 2250e20a1ea311f1a21c59e7364eecb8-20260313
 X-User: xiaopei01@kylinos.cn
 Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
 	(envelope-from <xiaopei01@kylinos.cn>)
 	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 974837560; Fri, 13 Mar 2026 14:09:03 +0800
+	with ESMTP id 1722470595; Fri, 13 Mar 2026 14:09:02 +0800
 From: Pei Xiao <xiaopei01@kylinos.cn>
 To: broonie@kernel.org,
 	linux-spi@vger.kernel.org,
@@ -57,17 +57,17 @@ To: broonie@kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com
 Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH v2 14/17] spi: sunplus-sp7021: Use helper function devm_clk_get_enabled()
-Date: Fri, 13 Mar 2026 14:08:30 +0800
-Message-Id: <5951a0403ac15a2f46ad8f126ccccc5a209e85d1.1773381582.git.xiaopei01@kylinos.cn>
+Subject: [PATCH v2 12/17] spi: stm32-qspi: Use helper function devm_clk_get_enabled()
+Date: Fri, 13 Mar 2026 14:08:28 +0800
+Message-Id: <74030eaa592b4a27ec75a4dffe49a5029c5dc6b8.1773381582.git.xiaopei01@kylinos.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1773381582.git.xiaopei01@kylinos.cn>
 References: <cover.1773381582.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_230914_642010_FA3C841F 
-X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-CacheID: sfid-20260312_230913_547595_5AF2D432 
+X-CRM114-Status: UNSURE (   9.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,49 +90,53 @@ Simplify code.
 
 Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
 ---
- drivers/spi/spi-sunplus-sp7021.c | 15 +--------------
- 1 file changed, 1 insertion(+), 14 deletions(-)
+ drivers/spi/spi-stm32-qspi.c | 17 +++++------------
+ 1 file changed, 5 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/spi/spi-sunplus-sp7021.c b/drivers/spi/spi-sunplus-sp7021.c
-index 789b092fe8c0..35601212fb78 100644
---- a/drivers/spi/spi-sunplus-sp7021.c
-+++ b/drivers/spi/spi-sunplus-sp7021.c
-@@ -389,11 +389,6 @@ static int sp7021_spi_target_transfer_one(struct spi_controller *ctlr, struct sp
+diff --git a/drivers/spi/spi-stm32-qspi.c b/drivers/spi/spi-stm32-qspi.c
+index df1bbacec90a..9ff9975edef4 100644
+--- a/drivers/spi/spi-stm32-qspi.c
++++ b/drivers/spi/spi-stm32-qspi.c
+@@ -819,25 +819,19 @@ static int stm32_qspi_probe(struct platform_device *pdev)
+ 
+ 	init_completion(&qspi->match_completion);
+ 
+-	qspi->clk = devm_clk_get(dev, NULL);
++	qspi->clk = devm_clk_get_enabled(dev, NULL);
+ 	if (IS_ERR(qspi->clk))
+-		return PTR_ERR(qspi->clk);
+-
++		return dev_err_probe(dev, PTR_ERR(qspi->clk),
++				     "can not enable the clock\n");
+ 	qspi->clk_rate = clk_get_rate(qspi->clk);
+ 	if (!qspi->clk_rate)
+ 		return -EINVAL;
+ 
+-	ret = clk_prepare_enable(qspi->clk);
+-	if (ret) {
+-		dev_err(dev, "can not enable the clock\n");
+-		return ret;
+-	}
+-
+ 	rstc = devm_reset_control_get_exclusive(dev, NULL);
+ 	if (IS_ERR(rstc)) {
+ 		ret = PTR_ERR(rstc);
+ 		if (ret == -EPROBE_DEFER)
+-			goto err_clk_disable;
++			goto err_defer;
+ 	} else {
+ 		reset_control_assert(rstc);
+ 		udelay(2);
+@@ -886,8 +880,7 @@ static int stm32_qspi_probe(struct platform_device *pdev)
+ 	pm_runtime_dont_use_autosuspend(qspi->dev);
+ err_dma_free:
+ 	stm32_qspi_dma_free(qspi);
+-err_clk_disable:
+-	clk_disable_unprepare(qspi->clk);
++err_defer:
+ 
  	return ret;
  }
- 
--static void sp7021_spi_disable_unprepare(void *data)
--{
--	clk_disable_unprepare(data);
--}
--
- static void sp7021_spi_reset_control_assert(void *data)
- {
- 	reset_control_assert(data);
-@@ -460,7 +455,7 @@ static int sp7021_spi_controller_probe(struct platform_device *pdev)
- 	if (pspim->s_irq < 0)
- 		return pspim->s_irq;
- 
--	pspim->spi_clk = devm_clk_get(dev, NULL);
-+	pspim->spi_clk = devm_clk_get_enabled(dev, NULL);
- 	if (IS_ERR(pspim->spi_clk))
- 		return dev_err_probe(dev, PTR_ERR(pspim->spi_clk), "clk get fail\n");
- 
-@@ -468,14 +463,6 @@ static int sp7021_spi_controller_probe(struct platform_device *pdev)
- 	if (IS_ERR(pspim->rstc))
- 		return dev_err_probe(dev, PTR_ERR(pspim->rstc), "rst get fail\n");
- 
--	ret = clk_prepare_enable(pspim->spi_clk);
--	if (ret)
--		return dev_err_probe(dev, ret, "failed to enable clk\n");
--
--	ret = devm_add_action_or_reset(dev, sp7021_spi_disable_unprepare, pspim->spi_clk);
--	if (ret)
--		return ret;
--
- 	ret = reset_control_deassert(pspim->rstc);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "failed to deassert reset\n");
 -- 
 2.25.1
 
