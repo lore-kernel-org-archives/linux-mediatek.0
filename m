@@ -4,60 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB157105F7AF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 14:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBBE1105F7BC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 15:25:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C+eA7efjGJYjTYnY0MH0Uqs9uJP4yAsRPi8k20Uaquc=; b=XWvm/sGjmARPsuwneSG37tst9t
-	V8100vEW/g0AUoBegpTqfoW1WZB4hVd0koYAHjO+DET+zr9Y1KL5Xf0mDYaHYMtCHKLtAG+IDwyYv
-	8k2YmZU+eefh4tjMybzYZ+w3TAL4LPalstWz/xdlPFwh3RAO2Ld2tNsSuXqKvWDeosEosSZ3SLzgv
-	UYaQcq9MKgUis70VRF12ID7pQ/CNg8/XiT+n30H+gIfsH3TfHQRihRo24j2uCaa13rmFFWVw8U3+k
-	xMjTBZiIJXhHfMl9h5TEX1/x3YhokWbiAOxYr9GB1ynKjZHBXpdgXkgPkSa1lBm6LmLFvm19ibSAr
-	cTVzXgFA==;
+	bh=QN552TZqrouE4+tCPS0mMoQgQIkZUkN7DTnt9deeNgM=; b=pHii39O+8zGnSO+KJgvOWNAdkL
+	VnHj6RxvcTAWNqeU/kQgO+UIGjPEK3jVepLsfyX/jDnVhOYZlgqzFMUsMG6Viz9fjdYjPB7gpzn8I
+	z4bCG2vlQAFrSTNuE1poLRSdj+v7iOovl1/ympfXh53QUE++l6dOsiLAjAdX/Nfzccv9vg5D7tC2M
+	e0vuGt8+LKaM5a81QBnH5xpW+U7n4R5ACSnNqIJCfoXTww9vLRXwRp4p5JKsCKDyiEWJc23Ms09Tu
+	X22eidrDToXm9RXlpbhGcWNQ5fnhhbtku/ndP5PnzcKWBi4sH/h5IjALdeM0DwdcH369ViPtdMN7h
+	SO6+P6Mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w13YP-00000000Oh9-3SxW;
-	Fri, 13 Mar 2026 14:31:53 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w14Ob-00000000Y41-1BbD;
+	Fri, 13 Mar 2026 15:25:49 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w13YO-00000000OgN-01y8;
-	Fri, 13 Mar 2026 14:31:52 +0000
+	id 1w14OX-00000000Y2R-0ekq;
+	Fri, 13 Mar 2026 15:25:46 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 300E86012B;
-	Fri, 13 Mar 2026 14:31:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1517AC19421;
-	Fri, 13 Mar 2026 14:31:48 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D811E6012B;
+	Fri, 13 Mar 2026 15:25:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16977C19425;
+	Fri, 13 Mar 2026 15:25:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773412310;
-	bh=sxCpbTctA+RZNdC597cmoMASeWWFt3FxcZxm5LfrmZY=;
+	s=k20201202; t=1773415542;
+	bh=QN552TZqrouE4+tCPS0mMoQgQIkZUkN7DTnt9deeNgM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vAypwmcy7+uC/mkkjD9zZ7DERx2WdIGWr8DmzfMV9N/WE+TqdxkV1l1QHvW77tR9Z
-	 RGAh0XSObqRoomk32pz3RCTz4KyYv3jNyTDND5HI9Itlet9VNHcZJhHd+oGcAFU9dt
-	 2oHHN0SkgDHy76DPA5nl3rSKN10TciiIb/wGwDFSR2lwk3AOxmLM+J6ePZOTIbOvaQ
-	 9ZD+3Rt+6s4CIFZZJX8njW81mntAqhPgCkMgM0w8MG1FgWdRI5qxG/VKQni2Fop+WJ
-	 RXbeX0HnnMbuLvRH8fi6RAuSIsClxs5gery43kaTTKl3nB10M27k5F00fi3e2l55Xf
-	 YTq4OPWLxsPRg==
-Date: Fri, 13 Mar 2026 14:31:46 +0000
-From: Simon Horman <horms@kernel.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	b=Fv+rSfGYabwP29m0niuzYlLhX9bOxuPNCmBYvMs+Ek1Dz3+5ljQy9LX0Cd2Dsx6As
+	 Q1OaGBzr6TzuiTRXxmFZHiXnz79grkRBVLyFXAeOnsHZO8frG+9i3VYFaTTpICT2Ar
+	 AtYKENf4NqVPykJDonzFGRhX2TD5cMBF1Og7tUv5RPKq9TOkyJetHCps0o3AYetZs0
+	 pV3DyvRCNjiRvL/ExWJbryBjn2OU6+ZmqPcRPAW3FhRp+v8+tjbSB5Y0x+NmTQJqTR
+	 cUMXJZdl5U+qAJDqjWPDxOtdUvurTS054bCgDfwMjYkRQWrMDwxY6RziW9bb2rkRad
+	 vtUc20nJA39oQ==
+Date: Fri, 13 Mar 2026 16:25:39 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Simon Horman <horms@kernel.org>
+Cc: Jakub Kicinski <kuba@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net v2] net: airoha: Remove airoha_dev_stop() in
- airoha_remove()
-Message-ID: <20260313143146.GE461701@kernel.org>
-References: <20260313-airoha-remove-ndo_stop-remove-net-v2-1-67542c3ceeca@kernel.org>
+Subject: Re: [PATCH net-next] net: airoha: select QDMA block according
+ LAN/WAN configuration
+Message-ID: <abQsc6sPZ4d4tekm@lore-desk>
+References: <20260310-airoha-qdma-lan-wan-mode-v1-1-64ec74dea872@kernel.org>
+ <20260312172430.GA1267298@kernel.org>
+ <abMsvOMnnuTdoG-9@lore-desk>
+ <20260312172248.68742f98@kernel.org>
+ <abP2dLNIw6zqkxL4@lore-desk>
+ <20260313143018.GD461701@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="GSGfyO71opm8Yq0x"
 Content-Disposition: inline
-In-Reply-To: <20260313-airoha-remove-ndo_stop-remove-net-v2-1-67542c3ceeca@kernel.org>
+In-Reply-To: <20260313143018.GD461701@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,25 +77,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 13, 2026 at 12:27:00PM +0100, Lorenzo Bianconi wrote:
-> Do not run airoha_dev_stop routine explicitly in airoha_remove()
-> since ndo_stop() callback is already executed by unregister_netdev() in
-> __dev_close_many routine if necessary and, doing so, we will end up causing
-> an underflow in the qdma users atomic counters. Rely on networking subsystem
-> to stop the device removing the airoha_eth module.
-> 
-> Fixes: 23020f0493270 ("net: airoha: Introduce ethernet support for EN7581 SoC")
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> ---
-> Changes in v2:
-> - Target net tree instead of net-next
-> - Add missing Fixes tag and improve commit log.
-> - Link to v1: https://lore.kernel.org/netdev/20260311-airoha-remove-ndo_stop-remove-v1-1-596fe853b2e1@kernel.org/
 
-Thanks Lorenzo,
+--GSGfyO71opm8Yq0x
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-This seems much clearer.
+> On Fri, Mar 13, 2026 at 12:35:16PM +0100, Lorenzo Bianconi wrote:
+> > > On Thu, 12 Mar 2026 22:14:36 +0100 Lorenzo Bianconi wrote:
+> > > > > Is this a bug fix?
+> > > > > If so, perhaps it is for net with a fixes tag. =20
+> > > >=20
+> > > > I guess we do not need to target net tree since airoha_eth driver c=
+urrently
+> > > > supports just the LAN interface via the MT7530 DSA switch connected=
+ to GDM1
+> > > > and there are no WAN interfaces officially supported (PCS/external =
+phy is not
+> > > > merged mainline yet, it is only available in OpenWrt).
+> > > >=20
+> > > > >=20
+> > > > > And at any rate, could you add some description of the before and=
+ after
+> > > > > behaviour? =20
+> > > >=20
+> > > > Theoretically, before this patch, GDM ports were equally distribute=
+d between
+> > > > QDMA0 and QDMA1 while this patch assigns LAN interfaces to QDMA0 an=
+d WAN
+> > > > interface to QDMA1. However, for the reason explained above, this c=
+hange is
+> > > > not currently visible to the user.
+> > >=20
+> > > Please update the commit message. And please try harder to explain=20
+> > > the patches, this happens a lot with your submissions..
+> >=20
+> > ack, fine. Sorry for not beeing very clear about this (and other
+> > patches), I will pay more attention in the future.
+> > Do you think we should target net-next or net for this patch?
+>=20
+> Hi Lorenzo,
+>=20
+> As per your explanation above it seems to me that there is
+> no user-visible change. And I assume that implies no bug manifests.
+>=20
+> If so, net-next sounds right to me.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+ack, I will rework the commit log and repost to net-next.
 
+Regards,
+Lorenzo
+
+--GSGfyO71opm8Yq0x
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCabQscwAKCRA6cBh0uS2t
+rCrfAQCuZd7o/lQVJ85m7ozENElbP9fJ7xRXRRkm8z78rsSGewEAt4L9X5zunMFy
+HP3y/+3pF9RbCTIWqcdw6i6Z4JT7yAA=
+=y/aX
+-----END PGP SIGNATURE-----
+
+--GSGfyO71opm8Yq0x--
 
