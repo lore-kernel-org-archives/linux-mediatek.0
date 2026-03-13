@@ -4,95 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27444105F78C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 10:14:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA3FE105F79B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 11:25:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Cc:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=UKgT/k2C1o+kran4uP7qxt2QlYjHx6wAEaZEYpVB9nI=; b=HAYj8TCU3whAyDqQk+BI2qmmQ/
-	eoLS151rCycmNxGNuZo1/enOILDEpIXQrvMxpLN9FuehpatcyTk8KM39ttjbjTPk+z1qGi8e24GzO
-	RrsONIJq6wve5Depddvuen2zBG+Un+EmYsmfbE13vI6FxNIuRv6WTF5FR7PIqO6nZKhb3lwRLko/B
-	ixwTB3DsuuMmhdUnjFMJbGcxoGoBwgeVz36wuJCs1MJO03ruoxyC3C23j/Qyqpnl0PiNIHmoMJYpR
-	+Xgphy8aKNAvyYthaoe7wFw2b6K656IMcX1qw2H8fVzrOY5qn9KZY42DiO3Woy5YCFuT3AheXPKI0
-	taqAwFvw==;
+	bh=GyRvJlRhY8jPRhKnZ9bp3+S6rw2AeCh8tRAok2f8lWo=; b=M1I8UkDLs/PaXbbe64rREATJg+
+	QdhoaRPtuzxDwylF/Q4y0Q8FdOz7OngPVBBWAKwa0yC485y18JNN/7bVsR8lideDlSrxcSz7YQFiw
+	MfpWeEFvMyVHlN7M2/QWnayO+h26qYylijp1KuDmfQUUtH6gwzTzhNg4dmSivc7LT+0qiGYAxCHk4
+	05SfhLAGgQ4gs4kNPVy1H2Fk7y0EUZ9mo8hAlcBFRxHCz9WBl3tzsOAl5h9vOKCKfqu8f9a5tOTsM
+	HfNlXFxANKABjvSTLWmCQan5Hj5HnlFKwVt+ujaXFu9S2/QV7DdAHeOSM91iGfqmEDWBy4kin+xMT
+	Wj7tBR7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0zXC-0000000HUpe-39Ma;
-	Fri, 13 Mar 2026 10:14:22 +0000
-Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734])
+	id 1w10e0-000000001QS-2eXn;
+	Fri, 13 Mar 2026 11:25:28 +0000
+Received: from mailgate02.uberspace.is ([185.26.156.114])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0zXA-0000000HUoq-0IAV
+	id 1w10dw-000000001PC-1Mq5
 	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Mar 2026 10:14:22 +0000
-Received: by mail-qk1-x734.google.com with SMTP id af79cd13be357-8cb5c9ba82bso12438885a.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Mar 2026 03:14:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773396858; cv=none;
-        d=google.com; s=arc-20240605;
-        b=T/iMSj7um+uKJdlgQngJQeVjCfILUJxWC0LBEPmUZAdUbWAMpUpOEUdWjS5WvR7Ycj
-         uYLew8xlBCumsNjx4tpX4vw0SKkJURhw1n+DRX9OJVZ5a39nHIzfzNySTUE6OdsTnvvg
-         OFCV5g/3Tj9fVlqfhv0+Ab1J2evurLF4xtMuZJsRdKIJ7udtPA7pl3qvw9au0JWIaEuS
-         HLFqIJ2yW5+ITth8AtyqYiyZUJut7PJH4kF1CcexcSqgsYBDxPyO987PmE8LNQ5mEmW4
-         Rm+GkSKMJwwgBadIylFWaYwvfaNkjvAunkCbxNgmMp1epyyBw+/3yIPshp1QlAJp+05m
-         Hkvw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=UKgT/k2C1o+kran4uP7qxt2QlYjHx6wAEaZEYpVB9nI=;
-        fh=7q9slQwJZ94/e6e481MFJgYPeNForZhGYqL2OGSLeAY=;
-        b=IsWtXKVSJ1RYuxt6OHcCosyp7Yp+SImKTl+0HkVZb+c3QamYkwidWGwykkGIYBTLER
-         VM9L9eij0k54u8IPXlYX+IuWn5JPaMICEakB2jDJFA7U4Cn0TfReubkYAs1hcFzc5LX0
-         7TekfdlThCuIXYErrH6hpqMhWkw3wH/t1+YLxUugAZoEa+x/+WthTB/zA/qfvbbpWX7Z
-         qrIt8Lh5dONUvTfFoKhoUaVMv1fjKRZulcvfHxZRk/avp5uVrkJYnpUS/j2w+mKd6F7E
-         yxD3390WZgIBf9uk5jf4jFFTKa9gSQ7l54OwBvmiU2qpm4nLMAtSAjHnxWKXzg0X2t4P
-         63jQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773396858; x=1774001658; darn=lists.infradead.org;
-        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=UKgT/k2C1o+kran4uP7qxt2QlYjHx6wAEaZEYpVB9nI=;
-        b=Ymc+GvRaZHBRXzpw6bZcPrQwmXvbntKvs+8Wvh3nK0pDNdKvRLExv/EX4dmS/pmDLk
-         hJb8CPiKJYs33sTcrJaiRidROTKG/vDfizsixKcqdnxltKop0MlcR6VbK5N+tSv9+/tW
-         ENH4DnJEUCtuXO5NKDI0Nt7Hj9DLBeKBPU4eK2OtVbbdZ20PHycTu4VnAP3CTGP7S8I8
-         zUvrGW0Jr4f6v2lb3U6N6fuHvmjoboiMjzV8iphOXBVICJ/P/nyS7UOkatIWsFgTRvh2
-         60z1EY9KMnyrwjUnZk/jMS0CSLsG0KE9UllcaBgGPNdLEgz2g0o4Iaq+VT72OsDhnMWv
-         KsjQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773396858; x=1774001658;
-        h=to:subject:message-id:date:from:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=UKgT/k2C1o+kran4uP7qxt2QlYjHx6wAEaZEYpVB9nI=;
-        b=KkHJe72kMHCXAN8/J+KuM6eT+dvg8R94NCaKpP+YD94kW0l85a5UJTqpoMCfvqnL8H
-         xlt7WC0DxJavwU0UZ+L2csYThnrxffW97kPpxJmHN9LI3bVUc9rgEjj/k4yzRPhj5whJ
-         4SOQI5AU3TLQhrAEJs83XO8pWYoaQFp0HQrlk67bcvVkZKTxohc4O2AljEqQwcrg9JA4
-         qjiKh5n1XB8RTBMRkS52mDIHCWQ7fwZoQSH47nxRZaZuFXbgQdBbKqGzNoYeUx+bzkMy
-         tIoVcsSZ3lGQqAqsyp27tcIqGv4J+mFKitGUwWG9BrNald0GSOc4RA2/1Yh/o+ICoNlP
-         zDmw==
-X-Gm-Message-State: AOJu0Yy5ahssnELc8AovTaEqCVT12HiPlkDIa3nFU5vOkJ05dLfzFO4Z
-	t+ySh4AJ9+I6ek3vllvyoxrjDAl82qZLAJIf1u8/D5UxvfDg2KaDQbhC15MewkZzuQDGe4b7pvO
-	4P7IUrcDB8BTq0rwIa3m8X4en+1BM6rYT/ph8
-X-Gm-Gg: ATEYQzz6zlwsiJi1Sb8hvcnBbwfAS1DgU05SmW9DBozKtw67fSG9BwqeqXxZ9pG47Lb
-	8Zd0FjFuvg9j/kt6JubE97fJcvpHbhqLcUazTQ0Q1WhAjhEdIMWB183lQXO2h4Si+W/rzxM5JbU
-	7v02zAa7596vuitcKb/MzXFu++xwx1oSBHNRPmeOhAmYP0np3l1RPJ7xG4n7DSQRfj9QWK/yfzF
-	ydDb0VlXhtToPc69L0MZa08oQVDMUQRkr8REANbVqhnw5siWGV8Ho0BDEcpewa4xVDwVYi8gVDl
-	A4PuUjqnTyooydP5qYE=
-X-Received: by 2002:a05:620a:2549:b0:8cd:8f18:d1f4 with SMTP id
- af79cd13be357-8cdb5a4abf2mr347328885a.6.1773396857911; Fri, 13 Mar 2026
- 03:14:17 -0700 (PDT)
+	Fri, 13 Mar 2026 11:25:26 +0000
+Received: from perseus.uberspace.de (perseus.uberspace.de [95.143.172.134])
+	by mailgate02.uberspace.is (Postfix) with ESMTPS id 0D07E17FA2B
+	for <linux-mediatek@lists.infradead.org>; Fri, 13 Mar 2026 12:25:15 +0100 (CET)
+Received: (qmail 12959 invoked by uid 988); 13 Mar 2026 11:25:14 -0000
+Authentication-Results: perseus.uberspace.de;
+	auth=pass (plain)
+Received: from unknown (HELO unkown) (::1)
+	by perseus.uberspace.de (Haraka/3.1.1) with ESMTPSA; Fri, 13 Mar 2026 12:25:14 +0100
+From: David Bauer <mail@david-bauer.net>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH mt76] wifi: mt76: mt7915: set mt76 specific PS flag
+Date: Fri, 13 Mar 2026 12:25:00 +0100
+Message-ID: <20260313112502.2026974-1-mail@david-bauer.net>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-From: Never Min <never.min@gmail.com>
-Date: Fri, 13 Mar 2026 18:14:07 +0800
-X-Gm-Features: AaiRm50TsotB-kwFdxtccjiho5ZTwHKzVX8fDD7ANi7AzhC2MnHOZQ2Ew6k0od4
-Message-ID: <CAJEczdQ1eVLhbf_52yrQReOTtGidPvi+feTmRZ7nxzATUyuhXg@mail.gmail.com>
-Subject: -join
-To: linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Rspamd-Bar: /
+X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-2.999991) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
+X-Rspamd-Score: -0.099991
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=david-bauer.net; s=uberspace;
+	h=from:to:cc:subject:date;
+	bh=zV7neuLkSOIlzYViwAfwLRYPEUuyu/AOjQWX/yJqh5c=;
+	b=p4GdMm6OX8p1shu1IHk2C2EUFa/IUErWxQ39poHEQ6qhB1JV89F/6YstW2qr41yXeR7tO76Z1n
+	QbrVXYQLeP+ViXsEQAe5xdidL81a4BSDQC7u2HQNGxG1SOpObTXwHbb9vRh9oy7sR7YL8trnTZTt
+	Yf/WvESlH6FdUDAno6aeYfzLqq5L+EyWwHMk0j2wpSyFGTaoVXklM9ImPpp2waAmG9AvBLloCeVk
+	2hmQi3VqU3RJHujs+mX7/hGnt3JmrXs4V0bf5T432QhXd2uz3UHgF6tH9tuaFaMYFd+BMRwJ1GAU
+	fl9f7yveIsotOybZL6E3CbnGXPGVHTp8EpH2J9KE29w4xKlIS/A+yyJLCkigdN0qdOehV2N80EiT
+	FAsfU2jkqP8wsqB3+cUcWpUfIBm6uyu5TV81Fj3YTyBMijj7zCTlFtt/Zlza3hwCQRxu242OxV1+
+	g0UhYj5euxqqe6QpuHyBvsz9v6ea9tsK6F4UTEXwORvLXwQj/eul3C822xHO1ecqEbGQ1ohK6z1P
+	Ajeq4A5rAZGvwSgco66kcVWf5b4uB/e97basxzAPo7Uz66arXjxfu+LObAZ7YOFncSyIibiWKo0x
+	uaPZZ3ZSbgxEc2zc0peNTwlj3csPIONcN4IC2hdjeqVL9SJmx6CQB0yuaCch3aszEwzQaU14gSKD
+	w=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_031420_140112_45DD3193 
-X-CRM114-Status: UNSURE (   2.13  )
+X-CRM114-CacheID: sfid-20260313_042524_691898_A89E62FB 
+X-CRM114-Status: UNSURE (   8.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,5 +88,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
--join
+mt76 tracks the PSM state of a sta internally with a wcid flag. TX to
+such clients is skipped based on the presence of this flag.
+
+This flag was not added to the PS state notify handler for MT7915 chips.
+Without this flag, mt76 queues pending frames to the hardware,
+accounting for airtime when a PSM notification is received while in a TX
+iteration.
+
+Set the PS flag for the STA WCID to prevent this from happening. TX gets
+skipped in presence of this flag.
+
+Signed-off-by: David Bauer <mail@david-bauer.net>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 51a52ed072eb4..0598bea29e498 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -421,6 +421,11 @@ static void mt7915_mcu_rx_ps_sync(struct mt7915_dev *dev, struct sk_buff *skb)
+ 	if (!sta)
+ 		goto out;
+ 
++	if (p->ps_bit)
++		set_bit(MT_WCID_FLAG_PS, &wcid->flags);
++	else
++		clear_bit(MT_WCID_FLAG_PS, &wcid->flags);
++
+ 	ieee80211_sta_ps_transition_ni(sta, !!p->ps_bit);
+ 
+ out:
+-- 
+2.51.0
+
 
