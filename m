@@ -4,65 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBBE1105F7BC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 15:25:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8D9E107BCC6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 16:20:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QN552TZqrouE4+tCPS0mMoQgQIkZUkN7DTnt9deeNgM=; b=pHii39O+8zGnSO+KJgvOWNAdkL
-	VnHj6RxvcTAWNqeU/kQgO+UIGjPEK3jVepLsfyX/jDnVhOYZlgqzFMUsMG6Viz9fjdYjPB7gpzn8I
-	z4bCG2vlQAFrSTNuE1poLRSdj+v7iOovl1/ympfXh53QUE++l6dOsiLAjAdX/Nfzccv9vg5D7tC2M
-	e0vuGt8+LKaM5a81QBnH5xpW+U7n4R5ACSnNqIJCfoXTww9vLRXwRp4p5JKsCKDyiEWJc23Ms09Tu
-	X22eidrDToXm9RXlpbhGcWNQ5fnhhbtku/ndP5PnzcKWBi4sH/h5IjALdeM0DwdcH369ViPtdMN7h
-	SO6+P6Mg==;
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=/M+GnmDCtsfBn1UUijMGSd4Iwqm7U1rMqM48OOCC7vA=; b=z6aoReA/V2UxWU
+	SwNFNtUu6iUHamxjpj/rYYDNWgAgFkQCm+JCjNfaIpxxWGJ5hMv0EmmiQA7K4ugVQdN/DKpkAHmf7
+	fe0fJKkXv1V47XxQv+jPdxhVIEG/qY7F3wn3UGug8ywss2VHqfVlrYZfs5HgSBIdas8ZH29t6m6W2
+	ncDYu4CPsjRVsA9R9QaabszRzLQtXgSmDPJ7mD+PVHKN/y7t1w5CiC2l/GLhnq3DV5hKomXc+dz/S
+	0cN2pKqR+QdYEN9WcnGbEbvrbLO+Rd+n0Fpx1rKga8Q/HlqbL3aCxC415YRX3GTgA88jPrETYs00b
+	m6Z4RM/awFtivgcgS8VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w14Ob-00000000Y41-1BbD;
-	Fri, 13 Mar 2026 15:25:49 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w15F7-00000000dCS-29YM;
+	Fri, 13 Mar 2026 16:20:05 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w14OX-00000000Y2R-0ekq;
-	Fri, 13 Mar 2026 15:25:46 +0000
+	id 1w15F5-00000000dBx-0CnA
+	for linux-mediatek@lists.infradead.org;
+	Fri, 13 Mar 2026 16:20:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D811E6012B;
-	Fri, 13 Mar 2026 15:25:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16977C19425;
-	Fri, 13 Mar 2026 15:25:41 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id DF17E6012B;
+	Fri, 13 Mar 2026 16:20:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A11DC19421;
+	Fri, 13 Mar 2026 16:20:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773415542;
-	bh=QN552TZqrouE4+tCPS0mMoQgQIkZUkN7DTnt9deeNgM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Fv+rSfGYabwP29m0niuzYlLhX9bOxuPNCmBYvMs+Ek1Dz3+5ljQy9LX0Cd2Dsx6As
-	 Q1OaGBzr6TzuiTRXxmFZHiXnz79grkRBVLyFXAeOnsHZO8frG+9i3VYFaTTpICT2Ar
-	 AtYKENf4NqVPykJDonzFGRhX2TD5cMBF1Og7tUv5RPKq9TOkyJetHCps0o3AYetZs0
-	 pV3DyvRCNjiRvL/ExWJbryBjn2OU6+ZmqPcRPAW3FhRp+v8+tjbSB5Y0x+NmTQJqTR
-	 cUMXJZdl5U+qAJDqjWPDxOtdUvurTS054bCgDfwMjYkRQWrMDwxY6RziW9bb2rkRad
-	 vtUc20nJA39oQ==
-Date: Fri, 13 Mar 2026 16:25:39 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Simon Horman <horms@kernel.org>
-Cc: Jakub Kicinski <kuba@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] net: airoha: select QDMA block according
- LAN/WAN configuration
-Message-ID: <abQsc6sPZ4d4tekm@lore-desk>
-References: <20260310-airoha-qdma-lan-wan-mode-v1-1-64ec74dea872@kernel.org>
- <20260312172430.GA1267298@kernel.org>
- <abMsvOMnnuTdoG-9@lore-desk>
- <20260312172248.68742f98@kernel.org>
- <abP2dLNIw6zqkxL4@lore-desk>
- <20260313143018.GD461701@kernel.org>
+	s=k20201202; t=1773418801;
+	bh=qAx+Oi9Zys6AfZVuERSj3778VmVSGb+4dt2WbzWNnQM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:From;
+	b=aJJdKmObhu0oGQFhPmZibqPGYMFcDKPzl/9mB3J36PzGzxkoMjSRfSXBX5MI0LL8Y
+	 pt0ITmWwZ0jIFLyCA7aoy9lBG3RymPxRzsJzBJqj9vWiPGBDsMvxyCk1l4os2eRDQw
+	 td/eczCuJoDYZVCoWeUpHqTcASeAbGh03dx5BnecNOqSl5p8et+K9XAW9thTzVqO3b
+	 s/I705px3CQoKAPV7BVcBJhNeqLLFdX+8LQVO4gyx7Ajt5S0G3iXsKebM7Hq9TDP32
+	 7yBAcD9E5By8FtKu6VFIJzSwH6k/XctO3Gii1WV2rs0k324wL/AIFYIKMEq1Ns9reR
+	 WsWhPuulyJLwQ==
+Date: Fri, 13 Mar 2026 11:20:00 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Caleb James DeLisle <cjd@cjdns.fr>
+Cc: linux-pci@vger.kernel.org, linux-mips@vger.kernel.org,
+	naseefkm@gmail.com, ryder.lee@mediatek.com, bhelgaas@google.com,
+	lpieralisi@kernel.org, kwilczynski@kernel.org, mani@kernel.org,
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	ansuelsmth@gmail.com, linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 3/3] PCI: Skip bridge window reads when window is not
+ supported
+Message-ID: <20260313162000.GA1385506@bhelgaas>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="GSGfyO71opm8Yq0x"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260313143018.GD461701@kernel.org>
+In-Reply-To: <20260312165332.569772-4-cjd@cjdns.fr>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,67 +73,235 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Mar 12, 2026 at 04:53:32PM +0000, Caleb James DeLisle wrote:
+> pci_read_bridge_io() and pci_read_bridge_mmio_pref() read bridge window
+> registers unconditionally. If the registers are hardwired to zero
+> (not implemented), both base and limit will be 0. Since (0 <= 0) is
+> true, a bogus window [mem 0x00000000-0x000fffff] or [io 0x0000-0x0fff]
+> gets created.
+> 
+> pci_read_bridge_windows() already detects unsupported windows by
+> testing register writability and sets io_window/pref_window flags
+> accordingly. Check these flags at the start of pci_read_bridge_io()
+> and pci_read_bridge_mmio_pref() to skip reading registers when the
+> window is not supported.
+> 
+> Suggested-by: Bjorn Helgaas <helgaas@kernel.org>
+> Link: https://lore.kernel.org/all/20260113210259.GA715789@bhelgaas/
+> Signed-off-by: Ahmed Naseef <naseefkm@gmail.com>
+> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
 
---GSGfyO71opm8Yq0x
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I'd like to apply this, but I don't understand what's going on here.
 
-> On Fri, Mar 13, 2026 at 12:35:16PM +0100, Lorenzo Bianconi wrote:
-> > > On Thu, 12 Mar 2026 22:14:36 +0100 Lorenzo Bianconi wrote:
-> > > > > Is this a bug fix?
-> > > > > If so, perhaps it is for net with a fixes tag. =20
-> > > >=20
-> > > > I guess we do not need to target net tree since airoha_eth driver c=
-urrently
-> > > > supports just the LAN interface via the MT7530 DSA switch connected=
- to GDM1
-> > > > and there are no WAN interfaces officially supported (PCS/external =
-phy is not
-> > > > merged mainline yet, it is only available in OpenWrt).
-> > > >=20
-> > > > >=20
-> > > > > And at any rate, could you add some description of the before and=
- after
-> > > > > behaviour? =20
-> > > >=20
-> > > > Theoretically, before this patch, GDM ports were equally distribute=
-d between
-> > > > QDMA0 and QDMA1 while this patch assigns LAN interfaces to QDMA0 an=
-d WAN
-> > > > interface to QDMA1. However, for the reason explained above, this c=
-hange is
-> > > > not currently visible to the user.
-> > >=20
-> > > Please update the commit message. And please try harder to explain=20
-> > > the patches, this happens a lot with your submissions..
-> >=20
-> > ack, fine. Sorry for not beeing very clear about this (and other
-> > patches), I will pay more attention in the future.
-> > Do you think we should target net-next or net for this patch?
->=20
-> Hi Lorenzo,
->=20
-> As per your explanation above it seems to me that there is
-> no user-visible change. And I assume that implies no bug manifests.
->=20
-> If so, net-next sounds right to me.
+I instrumented a kernel to return zero for all reads of Root Port
+prefetchable window registers, and it worked correctly: It didn't
+create a bogus [mem 0x00000000-0x000fffff] window (see below for a
+possible explanation), didn't claim to have assigned a prefetchable
+window, and the 64-bit prefetchable BAR of the downstream device was
+correctly placed in the non-prefetchable window.
 
-ack, I will rework the commit log and repost to net-next.
+I'm booting this in qemu, and the current behavior with a functional
+prefetchable window is this:
 
-Regards,
-Lorenzo
+  pci 0000:00:1c.3: PCI bridge to [bus 04]
+  pci 0000:00:1c.3:   bridge window [io  0x4000-0x4fff]
+  pci 0000:00:1c.3:   bridge window [mem 0xfe200000-0xfe3fffff]
+  pci 0000:00:1c.3:   bridge window [mem 0xfd000000-0xfd1fffff 64bit pref]
+  pci 0000:04:00.0: [1033:0194] type 00 class 0x0c0330 PCIe Endpoint
+  pci 0000:04:00.0: BAR 0 [mem 0xfe200000-0xfe203fff 64bit]
 
---GSGfyO71opm8Yq0x
-Content-Type: application/pgp-signature; name=signature.asc
+With the instrumented kernel where the prefetchable window registers
+are effectively hardwired to zero, I see this:
 
------BEGIN PGP SIGNATURE-----
+  pci 0000:00:1c.3: PCI bridge to [bus 04]
+  pci 0000:00:1c.3:   bridge window [io  0x4000-0x4fff]
+  pci 0000:00:1c.3:   bridge window [mem 0xfe200000-0xfe3fffff]
+  pci 0000:04:00.0: [1033:0194] type 00 class 0x0c0330 PCIe Endpoint
+  pci 0000:04:00.0: BAR 0 [mem 0xfe200000-0xfe203fff 64bit]
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCabQscwAKCRA6cBh0uS2t
-rCrfAQCuZd7o/lQVJ85m7ozENElbP9fJ7xRXRRkm8z78rsSGewEAt4L9X5zunMFy
-HP3y/+3pF9RbCTIWqcdw6i6Z4JT7yAA=
-=y/aX
------END PGP SIGNATURE-----
+So the 04:00.0 BAR 0 was put in the non-prefetchable window as we
+would expect when there's no prefetchable window.
 
---GSGfyO71opm8Yq0x--
+Either there's something else going on with EcoNet EN7528 or I don't
+understand the explanation.
+
+Based on the link above, Root Port 1 doesn't implement a prefetchable
+window, but Linux thinks it does and puts a mt7615e WiFi device BAR in
+the non-existent window, so it doesn't work.  I assume RP 1 is
+0001:00:01.0, and the mt7615e WiFi is 0001:01:00.0, and the mt7615e
+doesn't work:
+
+  pci 0001:00:01.0: [14c3:0811] type 01 class 0x060400 PCIe Root Port
+  pci 0001:00:01.0: PCI bridge to [bus 00]
+  pci 0001:00:01.0:   bridge window [mem 0x00000000-0x000fffff]
+  pci 0001:00:01.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+  pci 0001:00:01.0: PCI bridge to [bus 01-ff]
+  pci 0001:00:01.0: bridge window [mem 0x28000000-0x280fffff]: assigned
+  pci 0001:00:01.0: bridge window [mem 0x28100000-0x282fffff pref]: assigned
+  pci 0001:01:00.0: BAR 0 [mem 0x28100000-0x281fffff 64bit pref]: assigned
+  WARNING: CPU: 3 PID: 1777 at target-mipsel_24kc_musl/linux-econet_en7528/mt76-2025.11.06~eb567bc7/mt7615/eeprom.c:31 mt7615_eeprom_init+0x484/0x548 [mt7615_common]
+  mt7615e 0001:01:00.0: Firmware is not ready for download
+
+The [mem 0x00000000-0x000fffff] window mentioned above is not a
+hardware problem.  This is the non-prefetchable window, which is
+required for all bridges, and if it hasn't been initialized and
+contains the power-up values, this is the window.  So all this is
+telling us is that there was no firmware that programmed the window
+before Linux.
+
+FWIW, I'll attach my instrumentation patches below.  Maybe you can
+similarly instrument your kernel to see the actual config accesses to
+the RP in question.
+
+Also, minor nit: Caleb appears to be the author, but the first
+sign-off is from Ahmed, so the Author vs Signed-off-by order is wrong;
+see
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?id=v6.19#n449
+
+Bjorn
+
+
+commit 012e94d89d10 ("PCI: Log config accesses")
+Author: Bjorn Helgaas <bhelgaas@google.com>
+Date:   Sat Jan 24 12:46:02 2026 -0600
+
+    PCI: Log config accesses
+
+
+diff --git a/drivers/pci/access.c b/drivers/pci/access.c
+index b123da16b63b..8b03af748238 100644
+--- a/drivers/pci/access.c
++++ b/drivers/pci/access.c
+@@ -32,6 +32,49 @@ DEFINE_RAW_SPINLOCK(pci_lock);
+ # define pci_unlock_config(f)	raw_spin_unlock_irqrestore(&pci_lock, f)
+ #endif
+ 
++/* domain, bus, dev, fn */
++static u64 pci_log_cfg_dev = (0LL << 32) | PCI_DEVID(0, PCI_DEVFN(0x1c, 3));
++
++#define PCI_CFG_FMT	"pci %04x:%02x:%02x.%d: %s %#06x "
++#define PCI_CFG_FMT_1	PCI_CFG_FMT "%#04x\n"
++#define PCI_CFG_FMT_2	PCI_CFG_FMT "%#06x\n"
++#define PCI_CFG_FMT_4	PCI_CFG_FMT "%#010x\n"
++
++static void pci_log_cfg(struct pci_bus *bus, unsigned int devfn, char *op,
++		        int pos, int len, u32 val, int res)
++{
++	u64 dev_match = ((u64) pci_domain_nr(bus) << 32) | devfn;
++	u32 domain = pci_log_cfg_dev >> 32;
++
++	if (pci_log_cfg_dev != dev_match)
++		return;
++
++	if (res) {
++		pr_info(PCI_CFG_FMT "failed (%d)\n",
++			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
++			op, pos, res);
++		return;
++	}
++
++	switch (len) {
++	case 1:
++		pr_info(PCI_CFG_FMT_1,
++			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
++			op, pos, val);
++		break;
++	case 2:
++		pr_info(PCI_CFG_FMT_2,
++			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
++			op, pos, val);
++		break;
++	default:
++		pr_info(PCI_CFG_FMT_4,
++			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
++			op, pos, val);
++		break;
++	}
++}
++
+ #define PCI_OP_READ(size, type, len) \
+ int noinline pci_bus_read_config_##size \
+ 	(struct pci_bus *bus, unsigned int devfn, int pos, type *value)	\
+@@ -50,6 +93,7 @@ int noinline pci_bus_read_config_##size \
+ 	else								\
+ 		*value = (type)data;					\
+ 	pci_unlock_config(flags);					\
++	pci_log_cfg(bus, devfn, "rd", pos, len, (u32) *value, res);	\
+ 									\
+ 	return res;							\
+ }
+@@ -67,6 +111,7 @@ int noinline pci_bus_write_config_##size \
+ 	pci_lock_config(flags);						\
+ 	res = bus->ops->write(bus, devfn, pos, len, value);		\
+ 	pci_unlock_config(flags);					\
++	pci_log_cfg(bus, devfn, "wr", pos, len, value, res);		\
+ 									\
+ 	return res;							\
+ }
+commit 744b78273da8 ("PCI: Override pref window reads to return 0")
+Author: Bjorn Helgaas <bhelgaas@google.com>
+Date:   Fri Mar 13 10:39:27 2026 -0500
+
+    PCI: Override pref window reads to return 0
+
+
+diff --git a/drivers/pci/access.c b/drivers/pci/access.c
+index 8b03af748238..675926bddc54 100644
+--- a/drivers/pci/access.c
++++ b/drivers/pci/access.c
+@@ -40,6 +40,43 @@ static u64 pci_log_cfg_dev = (0LL << 32) | PCI_DEVID(0, PCI_DEVFN(0x1c, 3));
+ #define PCI_CFG_FMT_2	PCI_CFG_FMT "%#06x\n"
+ #define PCI_CFG_FMT_4	PCI_CFG_FMT "%#010x\n"
+ 
++static int pci_override_cfg_rd(struct pci_bus *bus, unsigned int devfn,
++			       int pos, int len, u32 *value)
++{
++	u64 dev_match = ((u64) pci_domain_nr(bus) << 32) | devfn;
++
++	if (pci_log_cfg_dev != dev_match)
++		return -ENODEV;
++
++	if (!(pos == 0x24 || pos == 0x26 || pos == 0x28 || pos == 0x2c))
++		return -ENODEV;
++
++	*value = 0;
++
++#if 0
++	u32 domain = pci_log_cfg_dev >> 32;
++	switch (len) {
++	case 1:
++		pr_info("override " PCI_CFG_FMT_1,
++			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
++			"rd", pos, *value);
++		break;
++	case 2:
++		pr_info("override " PCI_CFG_FMT_2,
++			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
++			"rd", pos, *value);
++		break;
++	default:
++		pr_info("override " PCI_CFG_FMT_4,
++			domain, bus->number, PCI_SLOT(devfn), PCI_FUNC(devfn),
++			"rd", pos, *value);
++		break;
++	}
++#endif
++
++	return 0;
++}
++
+ static void pci_log_cfg(struct pci_bus *bus, unsigned int devfn, char *op,
+ 		        int pos, int len, u32 val, int res)
+ {
+@@ -87,7 +124,9 @@ int noinline pci_bus_read_config_##size \
+ 		return PCIBIOS_BAD_REGISTER_NUMBER;			\
+ 									\
+ 	pci_lock_config(flags);						\
+-	res = bus->ops->read(bus, devfn, pos, len, &data);		\
++	res = pci_override_cfg_rd(bus, devfn, pos, len, &data);		\
++	if (res)							\
++		res = bus->ops->read(bus, devfn, pos, len, &data);	\
+ 	if (res)							\
+ 		PCI_SET_ERROR_RESPONSE(value);				\
+ 	else								\
 
