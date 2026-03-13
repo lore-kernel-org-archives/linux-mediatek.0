@@ -4,66 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A168107BCCC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 16:28:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8773107BCCD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 16:56:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=r7kxCwfDRwI+tNs9J9TlgCVBRvf2s9ZxZyAXU4E5xVg=; b=se/0idLmURXdqYnPLQPRuCd+1G
-	CiB2KWQm1FyKcBp/Kok3kvr4v8n6nTJBL2re1w/HMtG0Yn7coA1qjti05airduyygy9HvaUwq3xm2
-	yD6xuyQVKWRZQwC2sfgCWeNGn8E8XF+1lD1IH8L09XP+NwkwYpBDh/q9gLKrXqaBU0BPwSccqpkpE
-	uYR5ommbCML5wx6bG+2xuwXRWOABnV2IxN4UHCd/LaIAXD9zX2qNfwDHxT6a0ZKmx96/1DBZMH81H
-	rOVAV5ILu3yj5Q4+QPI3xmO108hnJP29t/tQP4CarVNNz74/NV1aeX0hE227vX/GyVaR/9/0XJyy/
-	ZfMkuWuA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OkJydil17J/bKKSpOmhf5pXuHazCRZk9UtAzqTsen3Q=; b=E93TaQlfFL8IWIYcBr8TmSHlWH
+	RmE3wPO8GLzkT31PnUqLbPVKPdoDG8bfAZ+Jfl0TzrgZQUyqjakRGYLoygEDgU0qxSoGnr4ulauMk
+	zIJgfc4bnljRhB7tg80MDEy3LHuc1X3BwlH3kwiB5GSkrCLj59UxVn/NIWc9f42x1axjGXN++PWcQ
+	PocLLPXkZK95/NlG+EEi1qXx8c4ha2qk/XO40v9Mzx3/8/12pb93yokGXPb3Djhr7Oo/Nb4+ehljG
+	xeUhbefuR9DYwEq5FgeMhzC2lA+wNDdCOTicbPFWJa03HTCg641E6IUKqs9pL1G0mu/N7mfB63XuI
+	objUcb+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w15Nb-00000000eEM-0lPT;
-	Fri, 13 Mar 2026 16:28:51 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w15oR-00000000hXR-3M0f;
+	Fri, 13 Mar 2026 16:56:35 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w15NY-00000000eDM-1G5m;
-	Fri, 13 Mar 2026 16:28:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 01CCC44380;
-	Fri, 13 Mar 2026 16:28:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A123C2BC86;
-	Fri, 13 Mar 2026 16:28:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773419327;
-	bh=xz7HYdb1hOl3DJa7Hqbhm8rgb1ssw/IvqbgQXX1MSR0=;
-	h=From:Date:Subject:To:Cc:From;
-	b=mPTb0cvQTn1Ic7HMQNrbdhW0F0J3mGvt9sPq0HU4KoFUVESW0gec6WNmKNGwbqNrG
-	 Pc65+HAUvKC3l5t+ofY1hK1rrWJ8QCdl2rUICk/QaoEH1TEzvYubUcfDYB1UjkBdcJ
-	 ug8twP4qhw87Y/gYxX5vQFOa74WP53kkp4FTazRDZSx2pchqGwyE7EFkw3UY5kT1lG
-	 zXBqfdl7gpOEL5WkcchQbZgoIUaqs+f4p5NXZKoYB3NO/TKwk1QNWc+DHbWLsrFvwQ
-	 3eqsOhSvzu4D/zwtlX0ZhWKuXT/XdguYwlG6bM/HFZ0L3RoiV0dBjtxCpSYOgKdgDY
-	 fSwMeLXLdomAA==
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 13 Mar 2026 17:28:36 +0100
-Subject: [PATCH net-next v2] net: airoha: select QDMA block according
- LAN/WAN configuration
+	id 1w15oL-00000000hSn-3eFH;
+	Fri, 13 Mar 2026 16:56:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=Ok
+	Jydil17J/bKKSpOmhf5pXuHazCRZk9UtAzqTsen3Q=; b=ilnG01luwp4pP7OtqS
+	TeutnXAU6Ie9XpK9O0LxT8hJVpPwJeTyCsUp07tSOFcvHSSbbTrwFIMmG4J1wpqE
+	bbPVjL2lOpuHzhAYmvO8SowPA/HrN3pCfsAcwjQ4cZkJ95DZfFr6jHHolzwk/W2q
+	RSKrp86ldpZmjMP11D7JsY9RU=
+Received: from zhb.. (unknown [])
+	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wAX2JV7QbRpTApJAw--.54345S2;
+	Sat, 14 Mar 2026 00:55:24 +0800 (CST)
+From: Hans Zhang <18255117159@163.com>
+To: lpieralisi@kernel.org,
+	jingoohan1@gmail.com,
+	mani@kernel.org,
+	kwilczynski@kernel.org,
+	bhelgaas@google.com,
+	helgaas@kernel.org,
+	florian.fainelli@broadcom.com,
+	jim2101024@gmail.com
+Cc: robh@kernel.org,
+	ilpo.jarvinen@linux.intel.com,
+	linux-arm-msm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	claudiu.beznea.uj@bp.renesas.com,
+	linux-mediatek@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	linux-omap@vger.kernel.org,
+	bcm-kernel-feedback-list@broadcom.com,
+	linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	shawn.lin@rock-chips.com,
+	Hans Zhang <18255117159@163.com>
+Subject: [PATCH v9 0/5] PCI: of: Remove max-link-speed generation validation
+Date: Sat, 14 Mar 2026 00:55:17 +0800
+Message-Id: <20260313165522.123518-1-18255117159@163.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260313-airoha-qdma-lan-wan-mode-v2-1-7d577db6e40c@kernel.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4WNQQ6CMBREr2L+2m9oS8C48h6GRUMH+BFabQliC
- He34QIuZvEymTcbJURBottpo4hFkgSfQZ9P1A7W92BxmUkXuiqMKthKDIPlt5ssj9bzJ2cKDlw
- ZZ7QGOnSG8vwV0cl6qB/kMbPHOlOTm0HSHOL3+FzU0f/XL4oVVyXaunSw11rfn4ge4yXEnpp93
- 3/oxCE4ywAAAA==
-X-Change-ID: 20260310-airoha-qdma-lan-wan-mode-63d322eefef3
-To: Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-X-Mailer: b4 0.14.2
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wAX2JV7QbRpTApJAw--.54345S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxAw1kuw17CF4kAF4DCFyfZwb_yoWrtr1fpa
+	y2qFWFyF1xtF4ava17J3WUuFyYg3ZxAFWjkryfWw17ZFnxCF13XFySgF4FvF9rKrZF9r12
+	q3W2q3W7KFyjyaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pi2-esUUUUU=
+X-Originating-IP: [240e:b8f:927e:1000:ce47:698d:adec:5bb5]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCxB32mmm0QX3JqwAA32
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_092848_387198_DDD6F310 
-X-CRM114-Status: GOOD (  19.10  )
+X-CRM114-CacheID: sfid-20260313_095630_349047_D5CEB66E 
+X-CRM114-Status: GOOD (  14.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,144 +88,110 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Before this patch even GDM ports were assigned to QDMA0 while odd GDM
-ports were using QDMA1, so, based on the DTS configuration, both QDMA0
-and QDMA1 can theoretically receive traffic destinated to the host cpu
-from LAN or WAN GDM ports.
-Airoha folks reported the hw design assumes the LAN traffic destinated
-to the host cpu is be forwarded to QDMA0 while traffic received on WAN
-GDM port is managed by QDMA1. For this reason, select QDMA block according
-to the GDM port LAN or WAN configuration:
-- QDMA0 is used for GDM LAN devices
-- QDMA1 is used for GDM WAN device
+Hi,
 
-Assuming a device with three GDM ports, a typical configuration could be:
-- MT7530 DSA switch -> GDM1 (eth0) -> QDMA0 (LAN traffic)
-- External PHY      -> GDM2 (eth1) -> QDMA1 (WAN traffic)
-- External PHY      -> GDM3 (eth2) -> QDMA0 (LAN traffic)
+This series moves the validation from the common OF function to the
+individual PCIe controller drivers.  To protect against out-of-bounds
+accesses to the pcie_link_speed[] array, we first introduce a helper
+function pcie_get_link_speed() that safely returns the speed value
+(or PCI_SPEED_UNKNOWN) for a given generation number.
 
-We can then bridge eth0 DSA port (lanX) with eth2 since they all tx/rx
-LAN traffic.
+Then all direct uses of pcie_link_speed[] as an array are converted to
+use the new helper, ensuring that even if an invalid generation number
+reaches those code paths, no out-of-bounds access occurs.
 
-Please note this patch introduces a change not visible to the user since
-airoha_eth driver currently supports just the internal phy available via
-the MT7530 DSA switch and there are no WAN interfaces officially supported
-since PCS/external phy is not merged mainline yet (it will be posted with
-following patches).
+For several drivers that read the "max-link-speed" property
+(pci-j721e, brcmstb, mediatek-gen3, rzg3s-host), we add an explicit
+validation step: if the value is missing, out of range, or unsupported
+by the hardware, a safe default is used (usually Gen2). Other drivers
+(mainly DesignWare glue drivers) rely on the helper to safely handle
+invalid values, but do not yet include fallback logic or warnings.
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
-Changes in v2:
-- Update commit log.
-- Link to v1: https://lore.kernel.org/r/20260310-airoha-qdma-lan-wan-mode-v1-1-64ec74dea872@kernel.org
----
- drivers/net/ethernet/airoha/airoha_eth.c | 18 ++++++++----------
- drivers/net/ethernet/airoha/airoha_eth.h |  1 +
- 2 files changed, 9 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 3e9ec5c178f86fdd055e079078a23461edf97951..b4563b5d53bbf174d45548a5efc6fdfb79d33c19 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -1754,11 +1754,13 @@ static int airhoha_set_gdm2_loopback(struct airoha_gdm_port *port)
- static int airoha_dev_init(struct net_device *dev)
- {
- 	struct airoha_gdm_port *port = netdev_priv(dev);
--	struct airoha_qdma *qdma = port->qdma;
--	struct airoha_eth *eth = qdma->eth;
-+	struct airoha_eth *eth = port->eth;
- 	u32 fe_cpu_port;
- 	u8 ppe_id;
- 
-+	/* QDMA0 is used for lan ports while QDMA1 is used for WAN ports */
-+	port->qdma = &eth->qdma[!airoha_is_lan_gdm_port(port)];
-+	port->dev->irq = port->qdma->irq_banks[0].irq;
- 	airoha_set_macaddr(port, dev->dev_addr);
- 
- 	switch (port->id) {
-@@ -1782,7 +1784,7 @@ static int airoha_dev_init(struct net_device *dev)
- 		}
- 		fallthrough;
- 	default: {
--		u8 qdma_id = qdma - &eth->qdma[0];
-+		u8 qdma_id = port->qdma - &eth->qdma[0];
- 
- 		/* For PPE1 select cpu port according to the running QDMA. */
- 		fe_cpu_port = qdma_id ? FE_PSE_PORT_CDM2 : FE_PSE_PORT_CDM1;
-@@ -2866,11 +2868,10 @@ bool airoha_is_valid_gdm_port(struct airoha_eth *eth,
- }
- 
- static int airoha_alloc_gdm_port(struct airoha_eth *eth,
--				 struct device_node *np, int index)
-+				 struct device_node *np)
- {
- 	const __be32 *id_ptr = of_get_property(np, "reg", NULL);
- 	struct airoha_gdm_port *port;
--	struct airoha_qdma *qdma;
- 	struct net_device *dev;
- 	int err, p;
- 	u32 id;
-@@ -2901,7 +2902,6 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 		return -ENOMEM;
- 	}
- 
--	qdma = &eth->qdma[index % AIROHA_MAX_NUM_QDMA];
- 	dev->netdev_ops = &airoha_netdev_ops;
- 	dev->ethtool_ops = &airoha_ethtool_ops;
- 	dev->max_mtu = AIROHA_MAX_MTU;
-@@ -2913,7 +2913,6 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 	dev->features |= dev->hw_features;
- 	dev->vlan_features = dev->hw_features;
- 	dev->dev.of_node = np;
--	dev->irq = qdma->irq_banks[0].irq;
- 	SET_NETDEV_DEV(dev, eth->dev);
- 
- 	/* reserve hw queues for HTB offloading */
-@@ -2934,7 +2933,7 @@ static int airoha_alloc_gdm_port(struct airoha_eth *eth,
- 	port = netdev_priv(dev);
- 	u64_stats_init(&port->stats.syncp);
- 	spin_lock_init(&port->stats.lock);
--	port->qdma = qdma;
-+	port->eth = eth;
- 	port->dev = dev;
- 	port->id = id;
- 	eth->ports[p] = port;
-@@ -3034,7 +3033,6 @@ static int airoha_probe(struct platform_device *pdev)
- 	for (i = 0; i < ARRAY_SIZE(eth->qdma); i++)
- 		airoha_qdma_start_napi(&eth->qdma[i]);
- 
--	i = 0;
- 	for_each_child_of_node(pdev->dev.of_node, np) {
- 		if (!of_device_is_compatible(np, "airoha,eth-mac"))
- 			continue;
-@@ -3042,7 +3040,7 @@ static int airoha_probe(struct platform_device *pdev)
- 		if (!of_device_is_available(np))
- 			continue;
- 
--		err = airoha_alloc_gdm_port(eth, np, i++);
-+		err = airoha_alloc_gdm_port(eth, np);
- 		if (err) {
- 			of_node_put(np);
- 			goto error_napi_stop;
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index 59ed7569f7c33620ea694ec52384a37e1917eaf8..8cfa94ec084a16d6b2d3c94c404f25904c1150e3 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -533,6 +533,7 @@ struct airoha_qdma {
- 
- struct airoha_gdm_port {
- 	struct airoha_qdma *qdma;
-+	struct airoha_eth *eth;
- 	struct net_device *dev;
- 	int id;
- 
+Finally, the range check is removed from of_pci_get_max_link_speed(),
+so that future PCIe generations can be supported without modifying
+drivers/pci/of.c.
 
 ---
-base-commit: 8f921f61005450589c0bc1a941a5ddde21d9aed9
-change-id: 20260310-airoha-qdma-lan-wan-mode-63d322eefef3
+Changes for v9:
+- Modify the parameter passed to pcie_get_link_speed to unsigned int. If the DT
+  configuration specifies max-link-speed = -1, the obtained max_link_speed will
+  be 0xff. Therefore, it will be greater than the length of the array pcie_link_speed.
+  Thus, the condition speed <= 0 is removed. (For patch 0001. Shawn)
+- Modify the commit message for patch 0005. (Shawn)
 
-Best regards,
+Changes for v8:
+https://patchwork.kernel.org/project/linux-pci/cover/20260312163652.113228-1-18255117159@163.com/
+
+- Expand series from 2 to 5 patches to introduce pcie_get_link_speed() helper
+  and split validation into per-driver changes.
+- Add pcie_get_link_speed() helper for safe pcie_link_speed[] array access (Bjorn)
+- Move max-link-speed validation from DWC core to individual drivers; add explicit
+  fallback logic only for pci-j721e, brcmstb, mediatek-gen3, rzg3s-host.
+- Convert all remaining direct pcie_link_speed[] accesses to use the new helper.
+- Update commit messages to reflect the new design.
+
+Changes for v7:
+https://patchwork.kernel.org/project/linux-pci/cover/20260308142629.75392-1-18255117159@163.com/
+
+- Add validation in dw_pcie_get_link_speed() (Bjorn)
+- Modify it so that two patches constitute one series.
+
+Changes for v6:
+https://patchwork.kernel.org/project/linux-pci/patch/20251218132036.308094-1-18255117159@163.com/
+
+- It'd be good to return the actual errno as of_property_read_u32() can return
+  -EINVAL, -ENODATA and -EOVERFLOW. (Mani)
+
+Changes for v5:
+https://patchwork.kernel.org/project/linux-pci/patch/20251218125909.305300-1-18255117159@163.com/
+
+- Delete the check for speed. (Mani)
+
+Changes for v4:
+https://patchwork.kernel.org/project/linux-pci/patch/20251105134701.182795-1-18255117159@163.com/
+
+- Add pcie_max_supported_link_speed.(Ilpo)
+
+Changes for v3:
+https://patchwork.kernel.org/project/linux-pci/patch/20251101164132.14145-1-18255117159@163.com/
+
+- Modify the commit message.
+- Add Reviewed-by tag.
+
+Changes for v2:
+https://patchwork.kernel.org/project/linux-pci/cover/20250529021026.475861-1-18255117159@163.com/
+- The following files have been deleted:
+  Documentation/devicetree/bindings/pci/pci.txt
+
+  Update to this file again:
+  dtschema/schemas/pci/pci-bus-common.yaml
+---
+
+Hans Zhang (5):
+  PCI: Add pcie_get_link_speed() helper for safe array access
+  PCI: dwc: Use pcie_get_link_speed() and validate max-link-speed
+  PCI: j721e: Validate max-link-speed from DT
+  PCI: controller: Validate max-link-speed
+  PCI: of: Remove max-link-speed generation validation
+
+ drivers/pci/controller/cadence/pci-j721e.c       |  3 ++-
+ .../pci/controller/dwc/pcie-designware-host.c    |  2 +-
+ drivers/pci/controller/dwc/pcie-designware.c     |  2 +-
+ drivers/pci/controller/dwc/pcie-qcom-common.c    |  2 +-
+ drivers/pci/controller/dwc/pcie-qcom-ep.c        |  4 ++--
+ drivers/pci/controller/dwc/pcie-qcom.c           |  6 +++---
+ drivers/pci/controller/dwc/pcie-tegra194.c       |  2 +-
+ drivers/pci/controller/pcie-brcmstb.c            |  5 +++--
+ drivers/pci/controller/pcie-mediatek-gen3.c      |  2 +-
+ drivers/pci/controller/pcie-rzg3s-host.c         |  2 +-
+ drivers/pci/of.c                                 | 16 ++++++++--------
+ drivers/pci/pci.h                                |  2 ++
+ drivers/pci/probe.c                              | 16 ++++++++++++++++
+ 13 files changed, 42 insertions(+), 22 deletions(-)
+
+
+base-commit: 80234b5ab240f52fa45d201e899e207b9265ef91
 -- 
-Lorenzo Bianconi <lorenzo@kernel.org>
+2.34.1
 
 
