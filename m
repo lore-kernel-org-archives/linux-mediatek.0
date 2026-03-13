@@ -4,70 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 132DE106FD85
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 06:11:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83E00106FD87
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Mar 2026 06:23:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FCwiQBS2b/8NO+ecTEO2hWqJI1tslaKEJu2/cZSm9zo=; b=VY65qLuSY6xLVVEPIuIJlI3hxl
-	DYRe4ii7opXHar0K5B8f1zCyRTbzbS0SPk076Fwtbb6JQTDERyCI+QuSTUVD24qfVXyF69l2aP8mn
-	ZL9a2MvSgy+x5gQOPmxEmz4hxln3LDqoEk+rsxVER9bwKSn1V8gZkxTCFKRelNw/0l3v9JHV37rGx
-	Pb4/WYumdWiTVADy+SjAgoKvEkABYg106eMoh3Y7dGkuXOOkndI5X5lAxQQDoe8jdgy5+BTw3fH6U
-	Ub5btaBW8dcfR8CKO4PVrfD2qMFr9Rx5fRZZSCXf/gPtOLcAlmAun80aygjQJyzEk+0IahMuUeDRK
-	rp33eiVg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ToG08eSiKjJV3VqptVXImyuqNUPfUBbEss8R/TV/gYI=; b=Sm+m+S6GvxIrUhn0J4/kN+/LNP
+	ooZDdatSgNBNILAKKGJWaqSZHM8JJ4BFpCqXlnFxBUQvQeAET8gTvGmJfY56XBKufNwI7jLg73wwE
+	YhWuGKudLTdq5QBBjFItIJQ6eipIm6Xs+7qUpKF6Fn7pCdPvOXnXs5hStr8rgrBhrPWQBXC/ahgXm
+	6JDk27p39jreDmNeEx4mYc8VQp6M/6zUrhWSmpSyZaj9CSjuN+L/5ILKndxa7rATmkI4nLmRs1PJX
+	+PmrH0DTJ6oD40wcySoLHfjUXGEMw8wM96IHlti57SQ5qftFHwLBtH/Stw5ubAWjQI24JuRKzP49q
+	q1acVJ/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0vji-0000000GmYm-38lp;
-	Fri, 13 Mar 2026 06:11:02 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1w0vvc-0000000GqCK-3Gjq;
+	Fri, 13 Mar 2026 06:23:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0vi1-0000000GkB3-2DSg;
-	Fri, 13 Mar 2026 06:09:22 +0000
-X-UUID: 232b65a61ea311f1a21c59e7364eecb8-20260313
+	id 1w0vvZ-0000000GqBU-0mJB
+	for linux-mediatek@lists.infradead.org;
+	Fri, 13 Mar 2026 06:23:19 +0000
+X-UUID: 1d4986e81ea511f1a6de359d7043e138-20260312
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ToG08eSiKjJV3VqptVXImyuqNUPfUBbEss8R/TV/gYI=;
+	b=QW20RXfWO4Y3C9IGyboYw/Dx1TofqiBjJZx1gVDYiY3ahW9ovWBO69YKtIrC7KIl5TNYhcwuXcjJAxp3Nj+Fl2Xvyk0AWsqFw7kTjCAjKq7ERMhNqVXFBeRRng4yXJHY1/S5WU1yIP9RyT88HVF2yGHzUoJkPTFshf8w2UQE3k0=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:c8a9d279-432f-492d-9f48-25c0337194fd,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:f1052d52361289b7187d9926712f3283,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
-	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.12,REQID:1e43e25c-000f-4d9c-a11a-97ce684ec2e9,IP:0,U
+	RL:0,TC:0,Content:0,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:25
+X-CID-META: VersionHash:e7bac3a,CLOUDID:bca8f6f9-dfaf-419f-9dd3-d093c7e8f968,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|836|888|898,TC:-5,Content:
+	0|15|50,EDM:5,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:
+	0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 232b65a61ea311f1a21c59e7364eecb8-20260313
-X-User: xiaopei01@kylinos.cn
-Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <xiaopei01@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 149379704; Fri, 13 Mar 2026 14:09:04 +0800
-From: Pei Xiao <xiaopei01@kylinos.cn>
-To: broonie@kernel.org,
-	linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev,
-	openbmc@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH v2 15/17] spi: uniphier: Use helper function devm_clk_get_enabled()
-Date: Fri, 13 Mar 2026 14:08:31 +0800
-Message-Id: <4ac33e258a01b52641e9a40577614d5f71cec985.1773381582.git.xiaopei01@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1773381582.git.xiaopei01@kylinos.cn>
-References: <cover.1773381582.git.xiaopei01@kylinos.cn>
+X-UUID: 1d4986e81ea511f1a6de359d7043e138-20260312
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <shayne.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 855875841; Thu, 12 Mar 2026 23:23:13 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Fri, 13 Mar 2026 14:23:11 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Fri, 13 Mar 2026 14:23:11 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: linux-wireless <linux-wireless@vger.kernel.org>
+CC: Johannes Berg <johannes@sipsolutions.net>, Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+	Evelyn Tsai <evelyn.tsai@mediatek.com>, Money Wang <money.wang@mediatek.com>,
+	linux-mediatek <linux-mediatek@lists.infradead.org>, Shayne Chen
+	<shayne.chen@mediatek.com>
+Subject: [PATCH wireless-next 2/2] wifi: mt76: mt7996: fix capability of EHT-MCS 15 in MRU
+Date: Fri, 13 Mar 2026 14:21:50 +0800
+Message-ID: <20260313062150.3165433-2-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260313062150.3165433-1-shayne.chen@mediatek.com>
+References: <20260313062150.3165433-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_230921_381330_D5341155 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20260312_232317_253794_23B51A9C 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,72 +89,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-devm_clk_get() and clk_prepare_enable() can now be replaced by
-devm_clk_get_enabled() when driver enables the clocks. Moreover, it is no
-longer necessary to unprepare and disable the clocks explicitly.
-Simplify code.
+According to the definition in IEEE Std 802.11be-2024, Table 9-417r:
+- If 80 MHz is not supported, bit 1-3 are set to 0.
+- If 160 MHz is not supported, bit 2-3 are set to 0.
+- If 320 MHz is not supported, bit 3 is set to 0.
 
-Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
+Fixes: 348533eb968d ("wifi: mt76: mt7996: add EHT capability init")
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/spi/spi-uniphier.c | 15 ++++-----------
- 1 file changed, 4 insertions(+), 11 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/spi/spi-uniphier.c b/drivers/spi/spi-uniphier.c
-index 9e1d364a6198..f6fe5ab9f893 100644
---- a/drivers/spi/spi-uniphier.c
-+++ b/drivers/spi/spi-uniphier.c
-@@ -666,28 +666,24 @@ static int uniphier_spi_probe(struct platform_device *pdev)
- 	}
- 	priv->base_dma_addr = res->start;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index 00a8286bd136..a08bc07a7f93 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -1492,7 +1492,6 @@ mt7996_init_eht_caps(struct mt7996_phy *phy, enum nl80211_band band,
+ 	struct ieee80211_sta_eht_cap *eht_cap = &data->eht_cap;
+ 	struct ieee80211_eht_cap_elem_fixed *eht_cap_elem = &eht_cap->eht_cap_elem;
+ 	struct ieee80211_eht_mcs_nss_supp *eht_nss = &eht_cap->eht_mcs_nss_supp;
+-	enum nl80211_chan_width width = phy->mt76->chandef.width;
+ 	int nss = hweight8(phy->mt76->antenna_mask);
+ 	int sts = hweight16(phy->mt76->chainmask);
+ 	u8 val;
+@@ -1568,11 +1567,16 @@ mt7996_init_eht_caps(struct mt7996_phy *phy, enum nl80211_band band,
+ 		u8_encode_bits(u8_get_bits(1, GENMASK(1, 0)),
+ 			       IEEE80211_EHT_PHY_CAP5_MAX_NUM_SUPP_EHT_LTF_MASK);
  
--	priv->clk = devm_clk_get(&pdev->dev, NULL);
-+	priv->clk = devm_clk_get_enabled(&pdev->dev, NULL);
- 	if (IS_ERR(priv->clk)) {
- 		dev_err(&pdev->dev, "failed to get clock\n");
- 		ret = PTR_ERR(priv->clk);
- 		goto out_host_put;
- 	}
+-	val = width == NL80211_CHAN_WIDTH_320 ? 0xf :
+-	      width == NL80211_CHAN_WIDTH_160 ? 0x7 :
+-	      width == NL80211_CHAN_WIDTH_80 ? 0x3 : 0x1;
+-	eht_cap_elem->phy_cap_info[6] =
+-		u8_encode_bits(val, IEEE80211_EHT_PHY_CAP6_MCS15_SUPP_MASK);
++	eht_cap_elem->phy_cap_info[6] = IEEE80211_EHT_PHY_CAP6_MCS15_SUPP_MASK;
++	if (band != NL80211_BAND_6GHZ) {
++		eht_cap_elem->phy_cap_info[6] &=
++			~IEEE80211_EHT_PHY_CAP6_MCS15_SUPP_320MHZ;
++
++		if (band != NL80211_BAND_5GHZ)
++			eht_cap_elem->phy_cap_info[6] &=
++				~(IEEE80211_EHT_PHY_CAP6_MCS15_SUPP_160MHZ |
++				  IEEE80211_EHT_PHY_CAP6_MCS15_SUPP_80MHZ);
++	}
  
--	ret = clk_prepare_enable(priv->clk);
--	if (ret)
--		goto out_host_put;
--
- 	irq = platform_get_irq(pdev, 0);
- 	if (irq < 0) {
- 		ret = irq;
--		goto out_disable_clk;
-+		goto out_host_put;
- 	}
- 
- 	ret = devm_request_irq(&pdev->dev, irq, uniphier_spi_handler,
- 			       0, "uniphier-spi", priv);
- 	if (ret) {
- 		dev_err(&pdev->dev, "failed to request IRQ\n");
--		goto out_disable_clk;
-+		goto out_host_put;
- 	}
- 
- 	init_completion(&priv->xfer_done);
-@@ -716,7 +712,7 @@ static int uniphier_spi_probe(struct platform_device *pdev)
- 	if (IS_ERR_OR_NULL(host->dma_tx)) {
- 		if (PTR_ERR(host->dma_tx) == -EPROBE_DEFER) {
- 			ret = -EPROBE_DEFER;
--			goto out_disable_clk;
-+			goto out_host_put;
- 		}
- 		host->dma_tx = NULL;
- 		dma_tx_burst = INT_MAX;
-@@ -766,9 +762,6 @@ static int uniphier_spi_probe(struct platform_device *pdev)
- 		host->dma_tx = NULL;
- 	}
- 
--out_disable_clk:
--	clk_disable_unprepare(priv->clk);
--
- out_host_put:
- 	spi_controller_put(host);
- 	return ret;
+ 	val = u8_encode_bits(nss, IEEE80211_EHT_MCS_NSS_RX) |
+ 	      u8_encode_bits(nss, IEEE80211_EHT_MCS_NSS_TX);
 -- 
-2.25.1
+2.51.0
 
 
